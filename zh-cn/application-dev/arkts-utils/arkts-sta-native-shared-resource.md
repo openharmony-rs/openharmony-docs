@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS-Sta对象默认按共享引用在线程间传递。若业务需要让宿主线程和[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)任务共同访问Native大对象，可以使用[ANI简介](../ani/ani-introduction.md)中介绍的ANI暴露Native资源接口，并通过Native句柄访问同一份C++资源。共享资源的线程安全由C++侧锁或原子能力保证。
 

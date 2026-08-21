@@ -1,8 +1,8 @@
 # 媒体查询
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lanshouren-->
-<!--Designer: @lanshouren-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,10 +10,10 @@
 >
 >  - 从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  - media属性值默认为设备的真实尺寸大小、物理像素和真实的屏幕分辨率。
+>  - media属性值默认为设备的真实尺寸大小和物理像素。
 
 
-媒体查询（Media Query）应用十分广泛，开发者经常需要根据设备的大致类型或者特定的特征和设备参数（例如屏幕分辨率）来修改应用的样式。使用媒体查询针对设备和应用的属性信息，可以设计出相匹配的布局样式。
+媒体查询（Media Query）应用十分广泛，开发者经常需要根据设备的大致类型或者特定的特征和设备参数（例如屏幕尺寸）来修改应用的样式。使用媒体查询针对设备和应用的属性信息，可以设计出相匹配的布局样式。
 
 
 ## CSS语法规则
@@ -32,7 +32,7 @@
 
 >  **说明：**
 >
->  - 不支持&lt;=，&gt;=，&lt;，&gt;操作符;
+>  - 不支持&lt;=，&gt;=，&lt;，&gt;操作符；
 >  - 从API version 9开始，支持多重()嵌套使用；
 >  - media语句整体长度不能超过 512 个字符；
 >  - 单个media条件长度不能超过32个字符；
@@ -54,7 +54,7 @@
 | 类型              | 说明                                       |
 | --------------- | ---------------------------------------- |
 | and             | 将多个媒体特征（Media&nbsp;Feature）以“与”的方式连接成一个媒体查询，只有当所有媒体特征都为true，查询条件成立。另外，它还可以将媒体类型和媒体功能结合起来。<br/>例如：screen&nbsp;and&nbsp;(device-type:&nbsp;liteWearable)&nbsp;and&nbsp;(max-height:&nbsp;454)&nbsp;表示当设备类型是智能穿戴同时应用的最大高度小于等于454个像素单位时成立。 |
-| or<sup>9+</sup> | 将多个媒体特征以“或”的方式连接成一个媒体查询，如果存在结果为true的媒体特征，则查询条件成立。<br/>例如：screen&nbsp;and&nbsp;(max-height:&nbsp;454) &nbsp;or&nbsp;&nbsp;（round-screen：true）表示当应用高度小于等于454个像素单位或者设备屏幕是圆形时，条件成立。 |
+| or<sup>9+</sup> | 将多个媒体特征以“或”的方式连接成一个媒体查询，如果存在结果为true的媒体特征，则查询条件成立。<br/>例如：screen&nbsp;and&nbsp;(max-height:&nbsp;454) &nbsp;or&nbsp;&nbsp;(round-screen:&nbsp;true)表示当应用高度小于等于454个像素单位或者设备屏幕是圆形时，条件成立。 |
 
 
 
@@ -72,6 +72,7 @@
 | aspect-ratio     | 应用页面显示区域的宽度与高度的比值。<br/>例如：aspect-ratio: 1/2 |
 | min-aspect-ratio | 应用页面显示区域的宽度与高度的最小比值。                     |
 | max-aspect-ratio | 应用页面显示区域的宽度与高度的最大比值。                     |
+| device-type      | 设备的类型。<br/>可选值：liteWearable、smartVision。 |
 | round-screen     | 屏幕类型，圆形屏幕为 true，&nbsp;非圆形屏幕为&nbsp;false。 |
 
 

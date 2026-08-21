@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 概述
 ArkTS-Dyn运行时采用单线程架构，其并发模型基于Worker API构建。该API继承自W3C的Web Worker标准，原本主要适用于Web场景，核心是将线程划分为宿主线程与Worker线程两种角色。随着ArkTS-Sta引入共享并发特性，原有Worker API的局限性逐渐显现 —— 其基于Web场景设计的线程角色划分，在多线程环境下会增加开发者的理解难度和使用门槛。为此，ArkTS-Sta推出了全新的并发API：EAWorker。EAWorker是"Exclusive ArkTS Worker"的缩写，顾名思义，它在多线程环境中依然保持线程独占性，与传统Worker一样隐式绑定事件循环以处理异步任务。但相比之下，EAWorker有两处关键改进：

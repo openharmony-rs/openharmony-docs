@@ -1,4 +1,4 @@
-# 查询和操作自定义节点
+# 查询和操作NDK节点
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
@@ -16,41 +16,46 @@ uniqueId是系统分配的唯一标识的节点Id。
 
 从API version 20开始，使用[OH_ArkUI_NodeUtils_GetNodeUniqueId](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getnodeuniqueid)接口，可以获取目标节点的uniqueId。使用[OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getnodehandlebyuniqueid)接口，可以通过uniqueId获取目标节点的指针。
 
-<!-- @[ndknodequeryoperate1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/InquireUniqueId.cpp) -->
+<!-- @[ndknodequeryoperate1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/InquireUniqueId.cpp) -->  
 
 ``` C++
-ArkUI_NativeNodeAPI_1* nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
-ArkUI_NodeHandle testNode = nodeAPI->createNode(ARKUI_NODE_COLUMN);
-ArkUI_NumberValue value[] = {VALUE_1};
-ArkUI_AttributeItem item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-value[0].f32 = VALUE_2;
-nodeAPI->setAttribute(testNode, NODE_WIDTH, &item);
-nodeAPI->setAttribute(testNode, NODE_HEIGHT, &item);
-struct IdList {
-    int32_t id = -1;
-};
-IdList *idl = new IdList;
-int32_t uid = -1;
-OH_ArkUI_NodeUtils_GetNodeUniqueId(testNode, &uid);
-idl->id = uid;
-auto button = nodeAPI->createNode(ARKUI_NODE_BUTTON);
-value[0].f32 = VALUE_3;
-nodeAPI->setAttribute(button, NODE_WIDTH, &item);
-nodeAPI->setAttribute(button, NODE_HEIGHT, &item);
-nodeAPI->addChild(testNode, button);
-nodeAPI->registerNodeEvent(button, NODE_ON_CLICK, 1, idl);
-OH_LOG_Print(LOG_APP, LOG_WARN, LOG_PRINT, "GetNodeUniqueId", "GetNodeHandleByUniqueId success1");
-nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
-    auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
-    if (targetId == 1) {
-        auto idl = (IdList *)OH_ArkUI_NodeEvent_GetUserData(event);
-        ArkUI_NodeHandle Test_Column;
-        auto ec = OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId(idl->id, &Test_Column);
-        if (ec == 0) {
-            OH_LOG_Print(LOG_APP, LOG_WARN, LOG_PRINT, "GetNodeUniqueId", "GetNodeHandleByUniqueId success");
-        }
-    }
-});
+const unsigned int VALUE_1 = 480;
+const unsigned int VALUE_2 = 300;
+const unsigned int VALUE_3 = 50;
+    std::shared_ptr<ArkUIBaseNode> InquireUniqueId::GetNodeUniqueId()
+    {
+        ArkUI_NativeNodeAPI_1* nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
+        ArkUI_NodeHandle testNode = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+        ArkUI_NumberValue value[] = {VALUE_1};
+        ArkUI_AttributeItem item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+        value[0].f32 = VALUE_2;
+        nodeAPI->setAttribute(testNode, NODE_WIDTH, &item);
+        nodeAPI->setAttribute(testNode, NODE_HEIGHT, &item);
+        struct IdList {
+            int32_t id = -1;
+        };
+        static IdList idl;
+        int32_t uid = -1;
+        OH_ArkUI_NodeUtils_GetNodeUniqueId(testNode, &uid);
+        idl.id = uid;
+        auto button = nodeAPI->createNode(ARKUI_NODE_BUTTON);
+        value[0].f32 = VALUE_3;
+        nodeAPI->setAttribute(button, NODE_WIDTH, &item);
+        nodeAPI->setAttribute(button, NODE_HEIGHT, &item);
+        nodeAPI->addChild(testNode, button);
+        nodeAPI->registerNodeEvent(button, NODE_ON_CLICK, 1, &idl);
+        OH_LOG_Print(LOG_APP, LOG_WARN, LOG_PRINT, "GetNodeUniqueId", "GetNodeHandleByUniqueId success1");
+        nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
+            auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
+            if (targetId == 1) {
+                auto idl = (IdList *)OH_ArkUI_NodeEvent_GetUserData(event);
+                ArkUI_NodeHandle Test_Column;
+                auto ec = OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId(idl->id, &Test_Column);
+                if (ec == 0) {
+                    OH_LOG_Print(LOG_APP, LOG_WARN, LOG_PRINT, "GetNodeUniqueId", "GetNodeHandleByUniqueId success");
+                }
+            }
+        });
 ```
 
 ## 通过用户id获取节点信息
@@ -59,7 +64,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
 
 1. ArkTS侧接入Native组件。
 
-   <!-- @[ndknodequeryoperate2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/GetNodeById.ets) -->
+   <!-- @[ndknodequeryoperate2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/GetNodeById.ets) -->  
    
    ``` TypeScript
    import nativeNode from 'libentry.so';
@@ -89,7 +94,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
 
 2. 新建`GetNodeByIdExample.h`文件，在其中创建Text节点并设置id属性，通过OH_ArkUI_NodeUtils_GetAttachedNodeHandleById接口拿到节点。
 
-   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/GetNodeByIdExample.h) -->
+   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/GetNodeByIdExample.h) -->  
    
    ``` C
    // GetNodeByIdExample.h
@@ -104,12 +109,6 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
    std::shared_ptr<ArkUIBaseNode> CreateGetNodeByIdExample()
    {
        auto nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
-       
-       // 创建传入事件节点结构体
-       struct A {
-           ArkUI_NodeHandle node;
-       };
-       A* a = new A;
        
        // 创建根节点Scroll
        ArkUI_NodeHandle scroll = nodeAPI->createNode(ARKUI_NODE_SCROLL);
@@ -148,8 +147,6 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
        nodeAPI->setAttribute(text0, NODE_MARGIN, &item_margin);
        ArkUI_AttributeItem text0_id = {.string = "Text0_CAPI"};
        nodeAPI->setAttribute(text0, NODE_ID, &text0_id);
-       a->node = text0;
-       
        // 创建Row
        ArkUI_NodeHandle row0 = nodeAPI->createNode(ARKUI_NODE_ROW);
        ArkUI_NumberValue width_value[] = {{.f32=330}};
@@ -167,18 +164,17 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
        nodeAPI->setAttribute(bt0, NODE_MARGIN, &item_margin);
        ArkUI_AttributeItem bt0_item = {.string = "GetAttachedNodeHandleById"};
        nodeAPI->setAttribute(bt0, NODE_BUTTON_LABEL, &bt0_item);
-       nodeAPI->registerNodeEvent(bt0, NODE_ON_CLICK, 0, a);
+       nodeAPI->registerNodeEvent(bt0, NODE_ON_CLICK, 0, text0);
        
        // 注册事件
        auto onClick = [](ArkUI_NodeEvent *event) {
-           ArkUI_NodeHandle node = OH_ArkUI_NodeEvent_GetNodeHandle(event);
            auto nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
-           
+
            if (OH_ArkUI_NodeEvent_GetTargetId(event) == 0) {  // GetAttachedNodeHandleById
-               A* a = (A*)OH_ArkUI_NodeEvent_GetUserData(event);
+               auto text0 = (ArkUI_NodeHandle)OH_ArkUI_NodeEvent_GetUserData(event);
                ArkUI_NodeHandle node = nullptr;
                auto res = OH_ArkUI_NodeUtils_GetAttachedNodeHandleById("Text0_CAPI", &node);
-               if (node == a->node) {
+               if (res == ARKUI_ERROR_CODE_NO_ERROR && node == text0) {
                    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "GetNodeByIdExample", "get Text0_CAPI success");
                } else {
                    OH_LOG_Print(LOG_APP, LOG_ERROR, 0xFF00, "GetNodeByIdExample", "get Text0_CAPI failed");
@@ -202,7 +198,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
 
 3. 在`NativeEntry.cpp`中，挂载Native节点。
 
-   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->
+   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->  
    
    ``` C++
    // NativeEntry.cpp
@@ -263,7 +259,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
 
 1. ArkTS侧接入Native组件。
 
-   <!-- @[ndknodequeryoperate4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/MoveTo.ets) -->
+   <!-- @[ndknodequeryoperate4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/MoveTo.ets) -->  
    
    ``` TypeScript
    // MoveTo.ets
@@ -294,7 +290,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
 
 2. 新建`MoveTo.h`文件，在其中创建Stack节点，通过OH_ArkUI_NodeUtils_MoveTo接口移动Stack节点。
 
-   <!-- @[ndknodequeryoperate5_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/MoveToExample.h) -->
+   <!-- @[ndknodequeryoperate5_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/MoveToExample.h) -->  
    
    ``` C
    // MoveToExample.h
@@ -362,7 +358,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
        // 创建Stack
        ArkUI_NodeHandle stack0 = nodeAPI->createNode(ARKUI_NODE_STACK);
        ArkUI_NumberValue stack_value[] = {{.f32=50}};
-       ArkUI_AttributeItem stack_item1 = {stack_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
+       ArkUI_AttributeItem stack_item1 = {stack_value, sizeof(stack_value) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(stack0, NODE_WIDTH, &stack_item1);
        nodeAPI->setAttribute(stack0, NODE_HEIGHT, &stack_item1);
        ArkUI_NumberValue stack_bc[] = {{.u32 = 0xFFFFB6C1}};
@@ -412,12 +408,16 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
    
        // 注册事件
        auto onClick = [](ArkUI_NodeEvent *event) {
-           ArkUI_NodeHandle node = OH_ArkUI_NodeEvent_GetNodeHandle(event);
            auto nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
            
            if (OH_ArkUI_NodeEvent_GetTargetId(event) == 0) {  // MoveTo
+               ArkUI_NodeHandle eventNode = OH_ArkUI_NodeEvent_GetNodeHandle(event);
                A* a = (A*)OH_ArkUI_NodeEvent_GetUserData(event);
-               auto res = OH_ArkUI_NodeUtils_MoveTo(a->node, a->targetParent, 2);
+               if (a != nullptr) {
+                   OH_ArkUI_NodeUtils_MoveTo(a->node, a->targetParent, 2);
+                   nodeAPI->unregisterNodeEvent(eventNode, NODE_ON_CLICK);
+                   delete a;
+               }
            }
        };
        nodeAPI->registerNodeEventReceiver(onClick);
@@ -444,7 +444,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
 
 3. 在`NativeEntry.cpp`中，挂载Native节点。
 
-   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->
+   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->  
    
    ``` C++
    // NativeEntry.cpp
@@ -503,7 +503,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
 
 1. ArkTS侧接入Native组件。
 
-   <!-- @[ndknodequeryoperate6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/Attribute.ets) -->
+   <!-- @[ndknodequeryoperate6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/Attribute.ets) -->  
    
    ``` TypeScript
    
@@ -553,7 +553,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
 
 2. 新建`Attribute_util.h`用于设置组件属性。
 
-   <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/Attribute_util.h) -->
+   <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/Attribute_util.h) -->  
    
    ``` C
    #ifndef MYAPPLICATION_ATTRIBUTE_UTIL_H
@@ -590,17 +590,17 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
        }
        int32_t ImageSyncLoad()
        {
-           ArkUI_NumberValue NODE_TRANSLATE_ITEM_VALUE[] = {{.i32 = 1}};
-           ArkUI_AttributeItem NODE_BORDER_WIDTH_ITEM = {NODE_TRANSLATE_ITEM_VALUE, 1};
-           return api_->setAttribute(node_, NODE_IMAGE_SYNC_LOAD, &NODE_BORDER_WIDTH_ITEM);
+           ArkUI_NumberValue NODE_IMAGE_SYNC_LOAD_value[] = {{.i32 = 1}};
+           ArkUI_AttributeItem NODE_IMAGE_SYNC_LOAD_item = {NODE_IMAGE_SYNC_LOAD_value, 1};
+           return api_->setAttribute(node_, NODE_IMAGE_SYNC_LOAD, &NODE_IMAGE_SYNC_LOAD_item);
        }
    };
    #endif // MYAPPLICATION_ATTRIBUTE_UTIL_H
    ```
 
-3. 在`nai_init.cpp`中，挂载Native节点。
+3. 在`napi_init.cpp`中，挂载Native节点。
 
-   <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/napi_init.cpp) -->  
    
    ``` C++
    #include "Attribute_util.h"
@@ -713,22 +713,22 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
 
     ```ts
     import { NodeController, FrameNode, UIContext, BuilderNode, ExpandMode, LengthUnit } from '@kit.ArkUI';
-    
+
     const TEST_TAG: string = "FrameNode ";
-    
+
     // BasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新
     class BasicDataSource implements IDataSource {
       private listeners: DataChangeListener[] = [];
       private originDataArray: string[] = [];
-    
+
       public totalCount(): number {
         return 0;
       }
-    
+
       public getData(index: number): string {
         return this.originDataArray[index];
       }
-    
+
       // 该方法为框架侧调用，为LazyForEach组件向其数据源处添加listener监听
       registerDataChangeListener(listener: DataChangeListener): void {
         if (this.listeners.indexOf(listener) < 0) {
@@ -736,7 +736,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
           this.listeners.push(listener);
         }
       }
-    
+
       // 该方法为框架侧调用，为对应的LazyForEach组件在数据源处去除listener监听
       unregisterDataChangeListener(listener: DataChangeListener): void {
         const pos = this.listeners.indexOf(listener);
@@ -745,14 +745,14 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
           this.listeners.splice(pos, 1);
         }
       }
-    
+
       // 通知LazyForEach组件需要重载所有子组件
       notifyDataReload(): void {
         this.listeners.forEach(listener => {
           listener.onDataReloaded();
         })
       }
-    
+
       // 通知LazyForEach组件需要在index对应索引处添加子组件
       notifyDataAdd(index: number): void {
         this.listeners.forEach(listener => {
@@ -760,7 +760,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
           // 写法2：listener.onDatasetChange([{type: DataOperationType.ADD, index: index}]);
         })
       }
-    
+
       // 通知LazyForEach组件在index对应索引处数据有变化，需要重建该子组件
       notifyDataChange(index: number): void {
         this.listeners.forEach(listener => {
@@ -768,7 +768,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
           // 写法2：listener.onDatasetChange([{type: DataOperationType.CHANGE, index: index}]);
         })
       }
-    
+
       // 通知LazyForEach组件需要在index对应索引处删除该子组件
       notifyDataDelete(index: number): void {
         this.listeners.forEach(listener => {
@@ -776,7 +776,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
           // 写法2：listener.onDatasetChange([{type: DataOperationType.DELETE, index: index}]);
         })
       }
-    
+
       // 通知LazyForEach组件将from索引和to索引处的子组件进行交换
       notifyDataMove(from: number, to: number): void {
         this.listeners.forEach(listener => {
@@ -785,36 +785,36 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
           //         [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
         })
       }
-    
+
       notifyDatasetChange(operations: DataOperation[]): void {
         this.listeners.forEach(listener => {
           listener.onDatasetChange(operations);
         })
       }
     }
-    
+
     class MyDataSource extends BasicDataSource {
       private dataArray: string[] = []
-    
+
       public totalCount(): number {
         return this.dataArray.length;
       }
-    
+
       public getData(index: number): string {
         return this.dataArray[index];
       }
-    
+
       public addData(index: number, data: string): void {
         this.dataArray.splice(index, 0, data);
         this.notifyDataAdd(index);
       }
-    
+
       public pushData(data: string): void {
         this.dataArray.push(data);
         this.notifyDataAdd(this.dataArray.length - 1);
       }
     }
-    
+
     class Params {
       data: MyDataSource | null = null;
       scroller: Scroller | null = null;
@@ -823,7 +823,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
         this.scroller = scroller;
       }
     }
-    
+
     @Builder
     function buildData(params: Params) {
       List({ scroller: params.scroller }) {
@@ -850,13 +850,13 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
       .cachedCount(5)
       .listDirection(Axis.Horizontal)
     }
-    
+
     class MyNodeController extends NodeController {
       private rootNode: FrameNode | null = null;
       private uiContext: UIContext | null = null;
       private data: MyDataSource = new MyDataSource();
       private scroller: Scroller = new Scroller();
-    
+
       makeNode(uiContext: UIContext): FrameNode | null {
         this.uiContext = uiContext;
         for (let i = 0; i <= 20; i++) {
@@ -895,7 +895,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
           console.info(TEST_TAG + " getChild(3, ExpandMode.NOT_EXPAND)  result: fail.");
         }
       }
-      
+
       // 以展开的方式获取节点
       getChildWithExpand() {
         const childNode = this.rootNode!.getChild(3, ExpandMode.EXPAND);
@@ -906,7 +906,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
           console.info(TEST_TAG + " getChild(3, ExpandMode.EXPAND)  result: fail.");
         }
       }
-      
+
       getChildWithLazyExpand() {
         const childNode = this.rootNode!.getChild(3, ExpandMode.LAZY_EXPAND);
         console.info(TEST_TAG + " getChild(3, ExpandMode.LAZY_EXPAND): " + childNode?.getId());
@@ -917,13 +917,13 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
         }
       }
     }
-    
+
     @Entry
     @Component
     struct Index {
       private myNodeController: MyNodeController = new MyNodeController();
       private scroller: Scroller = new Scroller();
-    
+
       build() {
         Scroll(this.scroller) {
           Column({ space: 8 }) {
@@ -939,7 +939,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
                 .width(300)
                 .height(100)
             }
-    
+
             Button("getFirstChildIndexWithoutExpand")
                 .width(300)
                 .onClick(() => {
@@ -972,10 +972,10 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
         }
       }
     ```
-  
+
 2. NDK侧通过[OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid)接口获取ArkTS组件，并通过懒展开模式获取对应的子组件信息。
 
-   <!-- @[ndknodequeryoperate9_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/ShowSubcomponentInfo.h) -->
+   <!-- @[ndknodequeryoperate9_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/ShowSubcomponentInfo.h) -->  
    
    ``` C
    ArkUI_NodeHandle childNode = nullptr;
@@ -988,7 +988,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
    ArkUI_NodeHandle child = nullptr;
    auto result = OH_ArkUI_NodeUtils_GetChildWithExpandMode(childNode, 3, &child, 0);
    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "Manager",
-       "firstChildIndex - lastChildIndex == %{d -- %{public}d, -- getResult = %{public}d",
+       "firstChildIndex - lastChildIndex == %{public}d -- %{public}d, -- getResult = %{public}d",
        index, index1, result);
    ```
 
@@ -1003,14 +1003,14 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
 
    ```ts
    //Index.ets
-   
+
    import testNapi from 'libentry.so';
    import { NodeContent } from '@kit.ArkUI';
-   
+
    @Component
    struct TestContent {
      private nodeContent: NodeContent = new NodeContent();
-   
+
      aboutToAppear() {
        // 通过C-API创建节点，并添加到管理器nodeContent上
        testNapi.createNativeNode(this.nodeContent);
@@ -1022,7 +1022,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
        }
      }
    }
-   
+
    @Entry
    @Component
    struct Index {
@@ -1037,10 +1037,10 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
        }
        .height('100%')
      }
-   }   
+   }
    ```
 
-2. 新建`Attribute_util .h`用于设置组件属性。
+2. 新建`Attribute_util.h`用于设置组件属性。
 
    ```C++
    #ifndef MYAPPLICATION_ATTRIBUTE_UTIL_H
@@ -1066,47 +1066,47 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
      ArkUI_AttributeItem NODE_HEIGHT_Item = {NODE_HEIGHT_value, 1};
      return api_->setAttribute(node_, NODE_HEIGHT, &NODE_HEIGHT_Item);
    }
-   
+
    int32_t buttonLabel(std::string text) {
      ArkUI_AttributeItem NODE_TRANSLATE_ITEM_LABEL = {.string = text.c_str()};
      return api_->setAttribute(node_, NODE_BUTTON_LABEL, &NODE_TRANSLATE_ITEM_LABEL);
    }
-   
+
    int32_t text(std::string str) {
      ArkUI_AttributeItem TEXT_ITEM = {.string = str.c_str()};
      return api_->setAttribute(node_, NODE_TEXT_CONTENT, &TEXT_ITEM);
    }
-   
-   int32_t visibility(int isSHow) {
-     ArkUI_NumberValue NODE_VISIBILITY_ITEM_VALUE = {.i32 = isSHow};
-     ArkUI_AttributeItem NODE_VISIBILITY__ITEM = {&NODE_VISIBILITY_ITEM_VALUE, 1};
-     return api_->setAttribute(node_, NODE_VISIBILITY, &NODE_VISIBILITY__ITEM);
+
+   int32_t visibility(int isShow) {
+     ArkUI_NumberValue NODE_VISIBILITY_ITEM_VALUE = {.i32 = isShow};
+     ArkUI_AttributeItem NODE_VISIBILITY_ITEM = {&NODE_VISIBILITY_ITEM_VALUE, 1};
+     return api_->setAttribute(node_, NODE_VISIBILITY, &NODE_VISIBILITY_ITEM);
    }
-   
+
    int32_t margin(float value) {
-     ArkUI_NumberValue NODE_margin_ITEM_VALUE = {.f32 = value};
-     ArkUI_AttributeItem NODE_MARGIN_ITEM = {&NODE_margin_ITEM_VALUE, 1};
+     ArkUI_NumberValue NODE_MARGIN_ITEM_VALUE = {.f32 = value};
+     ArkUI_AttributeItem NODE_MARGIN_ITEM = {&NODE_MARGIN_ITEM_VALUE, 1};
      return api_->setAttribute(node_, NODE_MARGIN, &NODE_MARGIN_ITEM);
    }
    };
-   
-   #endif // MYAPPLICATION_ATTRIBUTE_UTIL_H  
+
+   #endif // MYAPPLICATION_ATTRIBUTE_UTIL_H
    ```
 
-3. 在`nai_init.cpp`中，挂载Native节点。
+3. 在`napi_init.cpp`中，挂载Native节点。
 
    ```C++
    #include "napi/native_api.h"
-   #include "AttributeUtil.h"
+   #include "Attribute_util.h"
    #include <arkui/native_interface.h>
    #include <arkui/native_node.h>
    #include <arkui/native_node_napi.h>
    #include <hilog/log.h>
-   
+
    static ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
    static ArkUI_NodeHandle textNode = nullptr;
    static bool showText = false;
-   
+
    namespace Event {
      void onClickFunc(ArkUI_NodeEvent *event) {
        AttributeUtil textAttr(textNode, nodeAPI);
@@ -1118,11 +1118,11 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
        showText = !showText;
        bool isOnRenderTree = false;
        OH_ArkUI_NativeModule_IsInRenderState(textNode, &isOnRenderTree);
-       OH_LOG_Print(LOG_APP, LOG_INFO, 1, "event","on render tree statie is %{public}d", isOnRenderTree);
+       OH_LOG_Print(LOG_APP, LOG_INFO, 1, "event","on render tree state is %{public}d", isOnRenderTree);
      }
    } // namespace Event
-   
-   
+
+
    static napi_value NAPI_Global_createNativeNode(napi_env env, napi_callback_info info) {
      size_t argc = 1;
      napi_value args[1] = {nullptr};
@@ -1146,7 +1146,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
      textNode = nodeAPI->createNode(ARKUI_NODE_TEXT);
      nodeAPI->addChild(columnTest, textNode);
      AttributeUtil textAttr(textNode, nodeAPI);
-     textAttr.text("hello word");
+     textAttr.text("hello world");
      OH_ArkUI_NodeContent_AddNode(contentHandle, columnTest);
      return nullptr;
    }
@@ -1158,7 +1158,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
    return exports;
    }
    EXTERN_C_END
-   
+
    static napi_module demoModule = {
      .nm_version = 1,
      .nm_flags = 0,
@@ -1168,7 +1168,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
      .nm_priv = ((void *)0),
      .reserved = {0},
    };
-   
+
    extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
 
     ```

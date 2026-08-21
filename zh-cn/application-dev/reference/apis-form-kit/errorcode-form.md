@@ -284,7 +284,7 @@ The form edit page is not in the foreground. The current operation is not suppor
 
 **处理步骤**
 
-检查[半模态卡片编辑页](../../form/arkts-ui-widget-event-formeditextensionability-overview.md#半模态卡片编辑)是否已打开。
+检查[半模态卡片编辑页](../../form/arkts-ui-widget-event-formeditextensionability.md#半模态卡片编辑)是否已打开。
 
 ## 16501015 不能关闭其他应用的半模态卡片编辑页
 
@@ -335,7 +335,7 @@ Some internal server error occurs.
 **可能原因**
 
 1. 当前系统繁忙。
-2. 当前系统数据内部数据异常。
+2. 当前系统内部数据异常。
 
 **处理步骤**
 

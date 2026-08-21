@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS-Dyn已经提供了Sendable对象来实现跨线程共享能力，但这是基于内存隔离的，只能实现部分数据共享，不能实现主流编程语言并发的内存共享模型。
 

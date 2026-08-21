@@ -133,6 +133,7 @@ The specified user ID is invalid.
 
 1. 检查调用接口中指定的user ID是否是有效的user ID。
 2. 检查调用者user ID和指定设置的user ID是否是同一user ID，DA模式下不允许跨用户设置策略。
+<!--DelEnd-->
 
 ## 9200007 系统服务工作异常
 
@@ -155,7 +156,6 @@ The system ability works abnormally.
 **处理步骤**
 
 系统服务内部工作异常，请稍后重试，或者重启设备尝试。
-<!--DelEnd-->
 
 ## 9200008 系统订阅事件无效
 
@@ -347,11 +347,11 @@ The self-activation credential of the enterprise device administrator is invalid
 
 **可能原因**
 
-1、企业ID不匹配。
+1. 企业ID不匹配。
 
-2、应用appIdentifier配置失败。
+2. 应用appIdentifier配置失败。
 
-3、激活凭证缺少必需字段或者证书链校验失败。
+3. 激活凭证缺少必需字段或者证书链校验失败。
 
 **处理步骤**
 
@@ -779,7 +779,7 @@ The location is inoperable.
 
 **错误信息**
 
-set default data sim failed.
+Failed to set the default data SIM card. The airplane mode is enabled or no SIM card is inserted.
 
 **错误描述**
 
@@ -1204,6 +1204,24 @@ Restricted account.
 
 确认系统账号的类型是否支持此类操作。
 
+## 9201042 切换开关状态失败
+
+**错误信息**
+
+Failed to toggle the switch state.
+
+**错误描述**
+
+当切换开关状态失败时，会产生此错误码。
+
+**可能原因**
+
+当前设备蓝牙、Wi-Fi、NFC或星闪等相关服务处于异常状态。
+
+**处理步骤**
+
+确认设备相关服务是否正常运行。
+
 ## 9201043 API调用的前置条件未满足
 
 **错误信息**
@@ -1212,7 +1230,7 @@ Prerequisites for the API call have not been satisfied. For example, distributed
 
 **错误描述**
 
-当API调用的前置条件未满足时，会产生此错误码。
+在未禁用设备间单向传输能力的情况下添加允许分布式双向协同应用名单时，会产生此错误码。
 
 **可能原因**
 
@@ -1220,7 +1238,7 @@ Prerequisites for the API call have not been satisfied. For example, distributed
 
 **处理步骤**
 
-先通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。
+先通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。
 
 ## 9201044 指定权限未被禁用
 
@@ -1248,7 +1266,7 @@ This permission cannot be disallowed.
 
 **错误描述**
 
-需要禁用指定权限时，会产生此错误码。
+禁用APL等级不为normal或system_basic的权限时，会产生此错误码。
 
 **可能原因**
 
@@ -1266,7 +1284,7 @@ The number of signed-in accounts reaches the upper limit.
 
 **错误描述**
 
-当前设备上已登录的系统账号数量达到最大上限。
+当前设备上已登录的系统账号数量达到上限。
 
 **可能原因**
 

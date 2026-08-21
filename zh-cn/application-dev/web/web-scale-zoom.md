@@ -27,7 +27,7 @@ Web组件支持手势缩放、鼠标滚轮、键盘缩放，以方便用户调�
 > 另外，网页的内容宽度也会限制缩小的比例。
 
 ArkTS-Dyn示例：
-<!-- @[ControlWebGestureZooming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlWebGestureZooming.ets) -->
+<!-- @[ControlWebGestureZooming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlWebGestureZooming.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -47,8 +47,10 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[ControlWebGestureZooming](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebManagementZooming/entry/src/main/ets/pages/ControlWebGestureZooming.ets) -->
+<!-- @[ControlWebGestureZooming](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebManagementZooming/entry/src/main/ets/pages/ControlWebGestureZooming.ets) --> 
+
 ``` TypeScript
+
 import { webview } from '@kit.ArkWeb';
 import { Entry, Component, Column, Web } from '@ohos.arkui.component';
 
@@ -77,7 +79,7 @@ ArkWeb默认支持通过`Ctrl`+按键`'-'/'+'` 或者 `Ctrl`+鼠标滚轮进行�
 通过拦截键盘事件来阻止按键缩放：
 
 ArkTS-Dyn示例：
-<!-- @[ControlMouseAndKeyBoardZooming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlMouseAndKeyBoardZooming.ets) -->
+<!-- @[ControlMouseAndKeyBoardZooming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlMouseAndKeyBoardZooming.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -108,8 +110,10 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[ControlMouseAndKeyBoardZooming](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebManagementZooming/entry/src/main/ets/pages/ControlMouseAndKeyBoardZooming.ets) -->
+<!-- @[ControlMouseAndKeyBoardZooming](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebManagementZooming/entry/src/main/ets/pages/ControlMouseAndKeyBoardZooming.ets) --> 
+
 ``` TypeScript
+
 import { webview } from '@kit.ArkWeb';
 import { KeyCode } from '@kit.InputKit';
 import { Entry, Component, Column, Web, KeyType, KeyEvent, ModifierKeyStateGetter } from '@ohos.arkui.component';
@@ -185,7 +189,7 @@ struct WebComponent {
 应用可以通过[onScaleChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onscalechange9)接口监听页面缩放比例的变化。该接口事件对应手势事件（双指缩放），`event.newScale`对应网页属性`visualViewport.scale`。
 
 ArkTS-Dyn示例：
-<!-- @[MonitorZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/MonitorZoomRatio.ets) -->
+<!-- @[MonitorZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/MonitorZoomRatio.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -207,8 +211,10 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[MonitorZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebManagementZooming/entry/src/main/ets/pages/MonitorZoomRatio.ets) -->
+<!-- @[MonitorZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebManagementZooming/entry/src/main/ets/pages/MonitorZoomRatio.ets) --> 
+
 ``` TypeScript
+
 import { webview } from '@kit.ArkWeb';
 import { Entry, Component, Column, Web } from '@ohos.arkui.component';
 
@@ -243,7 +249,7 @@ struct WebComponent {
 `zoomIn`将当前网页进行放大，比例为25%；`zoomOut`将当前网页进行缩小，比例为20%。
 
 ArkTS-Dyn示例：
-<!-- @[ControlZoomByFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByFixedRatio.ets) -->
+<!-- @[ControlZoomByFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByFixedRatio.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -279,8 +285,10 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[ControlZoomByFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByFixedRatio.ets) -->
+<!-- @[ControlZoomByFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByFixedRatio.ets) --> 
+
 ``` TypeScript
+
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Entry, Component, Column, Button, Web } from '@ohos.arkui.component';
@@ -319,7 +327,7 @@ struct WebComponent {
 `zoom`基于当前网页比例进行缩放，入参要求大于0，当入参为1时为默认加载网页的缩放比例，入参小于1为缩小，入参大于1为放大。
 
 ArkTS-Dyn示例：
-<!-- @[ControlZoomByInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByInput.ets) -->
+<!-- @[ControlZoomByInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByInput.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -354,8 +362,10 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[ControlZoomByInput](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByInput.ets) -->
+<!-- @[ControlZoomByInput](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByInput.ets) --> 
+
 ``` TypeScript
+
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Entry, Component, Column, TextInput, InputType, Button, Web } from '@ohos.arkui.component';
@@ -435,7 +445,7 @@ struct WebComponent {
       Web({ src: 'www.example.com', controller: this.controller })
         .zoomAccess(true)
         .onScaleChange((event) => {
-          console.error('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
+          console.info('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
           this.pageFactor = event.newScale;
         })
     }
@@ -444,8 +454,11 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[ControlZoomToFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebManagementZooming/entry/src/main/ets/pages/ControlZoomToFixedRatio.ets) -->
+<!-- @[ControlZoomToFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebManagementZooming/entry/src/main/ets/pages/ControlZoomToFixedRatio.ets) --> 
+
 ``` TypeScript
+
+
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Entry, Component, Column, TextInput, InputType, Button, Web } from '@ohos.arkui.component';

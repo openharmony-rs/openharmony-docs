@@ -22,22 +22,14 @@ Invalid parameter value.
 
 **可能原因**
 
-1. 账号为空或账号长度大于1024。
-
+1. 账号为空或账号长度大于1024字符。
 2. 账号类型错误。
-
 3. aesKey或iv非法。
-
 4. 系统时间晚于授权到期时间。
-
 5. fd（文件描述符，File Descriptor）小于0。
-
 6. tokenId等于0。
-
 7. 包名为空。
-
 8. appIndex小于0。
-
 9. userId小于0。
 
 **处理步骤**
@@ -57,7 +49,6 @@ Credential service busy due to too many tasks or duplicate tasks.
 **可能原因**
 
 1. 当前运行的加解密任务数大于100。
-
 2. 加解密任务重复。
 
 **处理步骤**
@@ -72,7 +63,7 @@ Credential task time out.
 
 **错误描述**
 
-DLP（数据防泄漏，Data Loss Prevention）文件加解密操作在规定时间内未完成，导致操作超时失败。
+DLP（数据防泄露，Data Loss Prevention）文件加解密操作在规定时间内未完成，导致操作超时失败。
 
 **可能原因**
 
@@ -95,7 +86,6 @@ DLP凭据服务发生内部错误，无法正常提供凭据相关服务。
 **可能原因**
 
 1. DLP凭据服务不存在。
-
 2. DLP凭据服务异常。
 
 **处理步骤**
@@ -115,7 +105,6 @@ Credential authentication server error.
 **可能原因**
 
 1. 凭据认证服务器无法连接。
-
 2. 凭据认证服务器不存在。
 
 **处理步骤**
@@ -189,17 +178,13 @@ Failed to operate the DLP file.
 **可能原因**
 
 1. 当前用户不在授权范围内。
-
 2. 安装沙箱应用失败。
-
 3. 关联link文件失败。
-
 4. 同时打开的DLP文件数超过1000个。
 
 **处理步骤**
 
 1. 请确认访问权限。
-
 2. 请等待一段时间或重启后重试，并注意控制同时打开的DLP文件数量不超过1000个。
 
 <!--Del-->
@@ -216,7 +201,6 @@ DLP文件被设置为只读模式，不允许进行写入或修改权限等操�
 **可能原因**
 
 1. 尝试去掉只读DLP文件的权限。
-
 2. 尝试写只读DLP文件。
 
 **处理步骤**
@@ -237,13 +221,9 @@ DLP相关的系统服务无法正常运行，导致相关功能不可用。
 **可能原因**
 
 1. DLP权限服务无法正常启动。
-
 2. DLP权限服务的RPC（远程过程调用，Remote Procedure Call）对象无法获取。
-
 3. DLP权限服务依赖的其他服务无法正常启动。
-
 4. IPC（进程间通信，Inter-Process Communication）数据读取写入失败。
-
 5. 服务未初始化。
 
 **处理步骤**
@@ -336,7 +316,7 @@ The uri field is missing in the want parameter.
 
 **可能原因**
 
-调用DLP文件打开相关API时，want参数中未包含uri参数。want参数用于指定操作目标和参数配置，uri参数为必填参数。
+调用DLP文件相关API时，want参数中未包含uri参数。want参数用于指定操作目标和参数配置，uri参数为必填参数。
 
 **处理步骤**
 
@@ -449,7 +429,6 @@ Parameter error.
 **可能原因**
 
 1. 策略格式错误。
-
 2. 参数范围错误。
 
 **处理步骤**
@@ -489,9 +468,7 @@ The file is not supported.
 **可能原因**
 
 1. 文件路径不存在。
-
 2. 文件类型不支持。
-
 3. 文件权限不支持。
 
 **处理步骤**
@@ -514,13 +491,67 @@ A system error has occurred.
 **可能原因**
 
 1. 服务无法正常启动。
-
 2. 服务依赖的服务无法正常启动。
-
 3. IPC数据读写失败。
-
 4. 服务未初始化。
 
 **处理步骤**
 
 系统服务内部工作异常，请稍后重试或重启设备。
+
+## 19100023 指定的用户ID与当前用户ID不一致
+
+**错误信息**
+
+The specified userId is inconsistent with the current userId.
+
+**错误描述**
+
+指定的用户ID与当前用户ID不一致。
+
+**可能原因**
+
+指定的用户ID与当前用户ID不一致。
+
+**处理步骤**
+
+请确保传入的用户ID与当前用户ID一致。当前用户ID可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。
+
+## 19100024 个人空间用户不支持设置受控应用
+
+**错误信息**
+
+The specified userId belongs to a personal space user and cannot be managed.
+
+**错误描述**
+
+指定的用户ID属于个人空间用户，无法设置受控应用列表。
+
+**可能原因**
+
+指定的用户ID属于个人空间用户，无法设置受控应用列表。
+
+**处理步骤**
+
+请确保传入的用户ID不属于个人空间用户。
+
+## 19100025 文件无效
+
+**错误信息**
+
+The file is invalid.
+
+**错误描述**
+
+传入的文件无效，可能是路径不存在，或进程对文件无读取权限导致无法访问。
+
+**可能原因**
+
+1. 文件路径不存在或拼写错误。
+2. 进程对目标文件无读取权限。可能原因包括：进程身份被拒绝访问、文件被其他进程占用等。
+
+**处理步骤**
+
+请检查以下内容：
+1. 确认文件路径存在且拼写正确。
+2. 确认进程对该文件具有读取权限，且文件未被其他进程占用。

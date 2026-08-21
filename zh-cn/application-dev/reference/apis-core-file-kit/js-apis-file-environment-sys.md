@@ -177,6 +177,10 @@ getExternalStorageDir(): string
 
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
 
+**设备行为差异**：
+- 在API版本26.0.0及之后：该接口在PC/2in1和Tablet中可正常调用，在其他设备类型中返回801错误码。
+- 在API版本26.0.0之前：该接口在PC/2in1可正常调用，在其他设备类型中返回801错误码。
+
 **系统接口**：此接口为系统接口。
 
 **返回值：**
@@ -218,6 +222,10 @@ getUserHomeDir(): string
 **需要权限**：ohos.permission.FILE_ACCESS_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
+
+**设备行为差异**：
+- 在API版本26.0.0及之后：该接口在PC/2in1和Tablet中可正常调用，在其他设备类型中返回801错误码。
+- 在API版本26.0.0之前：该接口在PC/2in1可正常调用，在其他设备类型中返回801错误码。
 
 **系统接口**：此接口为系统接口。
 

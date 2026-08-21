@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-列表弹窗。
+列表选择弹窗。
 
 >  **说明：**
 >  本模块同时支持ArkTS-Dyn、ArkTS-Sta。
@@ -32,11 +32,11 @@
 | message    | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否     |  否     | 弹窗内容。<br/>文本超长时会触发滚动条。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
 | autoCancel | boolean                           | 否     | 是     | 点击遮障层时，是否关闭弹窗。<br>默认值：true<br>值为true时，点击遮障层关闭弹窗，值为false时，点击遮障层不关闭弹窗。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
 | confirm    | [ActionSheetButtonOptions](#actionsheetbuttonoptions对象说明) | 否  | 是  | 确认Button的使能状态、默认焦点、按钮风格、文本内容和点击回调。在弹窗获焦且未进行tab键走焦时，该按钮默认响应Enter键。多重弹窗情况下，可自动获焦并连续响应。默认响应Enter键能力在defaultFocus为true时不生效。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23|
-| cancel     | [VoidCallback](ts-types.md#voidcallback12) | 否     | 是     | 点击遮障层关闭dialog时的回调。  <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23|
+| cancel     | [VoidCallback](ts-types.md#voidcallback12) | 否     | 是     | 点击遮障层关闭弹窗时的回调。  <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23|
 | alignment  | [DialogAlignment](ts-methods-alert-dialog-box.md#dialogalignment枚举说明) | 否     | 是     |  弹窗在竖直方向上的对齐方式。<br>默认值：DialogAlignment.Bottom  <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** <br/>若在[UIExtension](../js-apis-arkui-uiExtension.md)中设置showInSubWindow为true，弹窗将基于UIExtension的宿主窗口对齐。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
 | offset     | [ActionSheetOffset](#actionsheetoffset18对象说明) | 否      | 是      | 弹窗相对alignment所在位置的偏移量。<br/>默认值：<br/>1.alignment设置为Top、TopStart、TopEnd时默认值为{dx:&nbsp;0,dy:&nbsp;"40vp"} <br/>2.alignment设置为其他时默认值为{dx:&nbsp;0,dy:&nbsp;"-40vp"} <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23|
 | sheets     | Array&lt;[SheetInfo](#sheetinfo对象说明)&gt; | 否       |  否       | 设置选项内容，每个选择项支持设置图片、文本和选中的回调。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
-| maskRect<sup>10+</sup> | [Rectangle](ts-methods-alert-dialog-box.md#rectangle8类型说明) | 否     | 是     | 弹窗遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。<br/>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } <br/>**说明：** <br/>showInSubWindow为true时，maskRect不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
+| maskRect<sup>10+</sup> | [Rectangle](ts-methods-alert-dialog-box.md#rectangle8类型说明) | 否     | 是     | 弹窗遮障层区域，在遮障层区域内的事件不透传，在遮障层区域外的事件透传。<br/>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } <br/>**说明：** <br/>showInSubWindow为true时，maskRect不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
 | showInSubWindow<sup>11+</sup> | boolean | 否 | 是 | 某弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。值为true表示在子窗口显示弹窗。<br/>默认值：false，弹窗显示在应用内，而非独立子窗口。<br/>**说明：** <br/>showInSubWindow为true的弹窗无法触发显示另一个showInSubWindow为true的弹窗。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
 | isModal<sup>11+</sup> | boolean | 否 | 是 | 弹窗是否为模态窗口，模态窗口有蒙层，非模态窗口无蒙层。值为false时，弹窗为非模态窗口，无蒙层。<br/>默认值：true，此时弹窗有蒙层。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
 | backgroundColor<sup>11+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | 否 | 是 | 弹窗背板颜色。<br/>默认值：Color.Transparent<br/>**说明：** <br/>backgroundColor会与模糊属性backgroundBlurStyle叠加产生效果，如果不符合预期，可将backgroundBlurStyle设置为BlurStyle.NONE，即可取消模糊。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
@@ -100,7 +100,7 @@ type LevelMode = import('../api/@ohos.promptAction').LevelMode
 
 | 类型                                                        | 说明                 |
 | ----------------------------------------------------------- | -------------------- |
-| import('../api/@ohos.promptAction').[LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 设置弹窗的显示层级。 |
+| import('../api/@ohos.promptAction').[LevelMode](../js-apis-promptAction.md#levelmode15) | 设置弹窗的显示层级。 |
 
 ## ImmersiveMode<sup>15+</sup>
 
@@ -120,11 +120,11 @@ type ImmersiveMode = import('../api/@ohos.promptAction').ImmersiveMode
 
 | 类型                                                         | 说明                       |
 | ------------------------------------------------------------ | -------------------------- |
-| import('../api/@ohos.promptAction').[ImmersiveMode](../js-apis-promptAction.md#immersivemode15枚举说明) | 设置页面内弹窗的蒙层效果。 |
+| import('../api/@ohos.promptAction').[ImmersiveMode](../js-apis-promptAction.md#immersivemode15) | 设置页面内弹窗的蒙层效果。 |
 
 ## DismissDialogAction<sup>12+</sup>
 
-Dialog关闭的信息。
+弹窗关闭的信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -140,8 +140,8 @@ Dialog关闭的信息。
 
 | 名称    | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| dismiss | [Callback](./ts-types.md#callback12)&lt;void&gt;                                         | 否   | 否   | Dialog关闭回调函数。开发者需要退出时调用，不需要退出时无需调用此函数。 |
-| reason  | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否   | 否   | Dialog无法关闭原因。根据开发者需求选择不同操作下，Dialog是否关闭。 |
+| dismiss | [Callback](./ts-types.md#callback12)&lt;void&gt;                                         | 否   | 否   | 弹窗关闭回调函数。开发者需要退出时调用，不需要退出时无需调用此函数。 |
+| reason  | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否   | 否   | 弹窗无法关闭原因。根据开发者需求选择不同操作下，弹窗是否关闭。 |
 
 ### dismiss<sup>23+</sup>
 
@@ -185,7 +185,7 @@ Dialog关闭回调函数。开发者需要退出时调用，不需要退出时�
 
 ## ActionSheetOffset<sup>18+</sup>对象说明
 
-弹窗的对齐方式。
+弹窗的偏移量。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -240,8 +240,78 @@ static show(value: ActionSheetOptions)
 
 该示例通过点击按钮弹出列表选择弹窗。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button('Click to Show ActionSheet')
+        .onClick(() => {
+          this.getUIContext().showActionSheet({
+            title: 'ActionSheet title',
+            subtitle: 'ActionSheet subtitle',
+            message: 'message',
+            autoCancel: true,
+            confirm: {
+              defaultFocus: true,
+              value: 'Confirm button',
+              action: () => {
+                console.info('Get ActionSheet handled');
+              }
+            },
+            cancel: () => {
+              console.info('ActionSheet canceled');
+            },
+            onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+              console.info(`reason= ${dismissDialogAction.reason}`);
+              console.info('ActionSheet onWillDismiss');
+              if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                dismissDialogAction.dismiss();
+              }
+              if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                dismissDialogAction.dismiss();
+              }
+            },
+            alignment: DialogAlignment.Bottom,
+            offset: { dx: 0, dy: -10 },
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          })
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Flex, Button, FlexDirection, ItemAlign, FlexAlign, DialogAlignment,
+  DismissDialogAction, DismissReason } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct ActionSheetExample {
@@ -310,8 +380,80 @@ struct ActionSheetExample {
 
 在2in1设备上设置[showInSubWindow](#actionsheetoptions对象说明)为true时，可以弹出在主窗外显示的弹窗。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button('Click to Show ActionSheet')
+        .onClick(() => {
+          this.getUIContext().showActionSheet({
+            title: 'ActionSheet title',
+            subtitle: 'ActionSheet subtitle',
+            message: 'message',
+            autoCancel: true,
+            showInSubWindow: true,
+            isModal: true,
+            confirm: {
+              defaultFocus: true,
+              value: 'Confirm button',
+              action: () => {
+                console.info('Get ActionSheet handled');
+              }
+            },
+            cancel: () => {
+              console.info('ActionSheet canceled');
+            },
+            onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+              console.info(`reason= ${dismissDialogAction.reason}`);
+              console.info('ActionSheet onWillDismiss');
+              if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                dismissDialogAction.dismiss();
+              }
+              if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                dismissDialogAction.dismiss();
+              }
+            },
+            alignment: DialogAlignment.Center,
+            offset: { dx: 0, dy: -10 },
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          })
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Flex, Button, FlexDirection, ItemAlign, FlexAlign, DialogAlignment,
+  DismissDialogAction, DismissReason } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct ActionSheetExample {
@@ -382,6 +524,8 @@ struct ActionSheetExample {
 
 该示例通过配置[transition](#actionsheetoptions对象说明)实现弹窗的显示和消失动画。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -438,14 +582,155 @@ struct ActionSheetExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Margin, DialogAlignment, TransitionEffect, Curve, ColumnOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('ActionSheet Set Duration')
+        .onClick(() => {
+          this.getUIContext().showActionSheet({
+            title: 'ActionSheet 1',
+            message: 'Set Animation Duration open 3 second, close 100 ms',
+            autoCancel: true,
+            alignment: DialogAlignment.Top,
+            transition: TransitionEffect.asymmetric(TransitionEffect.OPACITY
+              .animation({ duration: 3000, curve: Curve.Sharp })
+              .combine(TransitionEffect.scale({ x: 1.5, y: 1.5 }).animation({ duration: 3000, curve: Curve.Sharp })),
+              TransitionEffect.OPACITY.animation({ duration: 100, curve: Curve.Smooth })
+                .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 }).animation({ duration: 100, curve: Curve.Smooth }))),
+            offset: { dx: 0, dy: -20 },
+            confirm: {
+              value: 'button',
+              action: () => {
+                console.info('Button-clicking callback');
+              }
+            },
+            cancel: () => {
+              console.info('Closed callbacks');
+            },
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          })
+        }).backgroundColor(0x317aff).height("88px")
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![image-action-animation](figures/image-action-animation.gif)
 
 ### 示例4（设置弹窗的样式）
 
 该示例定义了ActionSheet的样式，如宽度、高度、背景色、阴影等。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
+      Button('Click to Show ActionSheet')
+        .onClick(() => {
+          this.getUIContext().showActionSheet({
+            title: 'ActionSheet title',
+            subtitle: 'ActionSheet subtitle',
+            message: 'message',
+            autoCancel: true,
+            width: 300,
+            height: 350,
+            cornerRadius: 20,
+            borderWidth: 1,
+            borderStyle: BorderStyle.Solid, // 使用borderStyle属性，需要和borderWidth属性一起使用
+            borderColor: Color.Blue, // 使用borderColor属性，需要和borderWidth属性一起使用
+            backgroundColor: Color.White,
+            shadow: ({
+              radius: 20,
+              color: Color.Grey,
+              offsetX: 50,
+              offsetY: 0
+            }),
+            confirm: {
+              defaultFocus: true,
+              value: 'Confirm button',
+              action: () => {
+                console.info('Get ActionSheet handled');
+              }
+            },
+            cancel: () => {
+              console.info('ActionSheet canceled');
+            },
+            onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+              console.info(`reason= ${dismissDialogAction.reason}`);
+              console.info('ActionSheet onWillDismiss');
+              if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                dismissDialogAction.dismiss();
+              }
+              if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                dismissDialogAction.dismiss();
+              }
+            },
+            alignment: DialogAlignment.Bottom,
+            offset: { dx: 0, dy: -10 },
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          })
+        })
+    }.width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Flex, Button, FlexDirection, ItemAlign, DialogAlignment, BorderStyle,
+  Color, DismissDialogAction, DismissReason } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct ActionSheetExample {
@@ -526,8 +811,80 @@ struct ActionSheetExample {
 
 <!--RP1-->该示例展示了在悬停态下设置dialog布局区域的效果。<!--RP1End-->
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button('Click to Show ActionSheet')
+        .onClick(() => {
+          this.getUIContext().showActionSheet({
+            title: 'ActionSheet title',
+            subtitle: 'ActionSheet subtitle',
+            message: 'message',
+            autoCancel: true,
+            confirm: {
+              defaultFocus: true,
+              value: 'Confirm button',
+              action: () => {
+                console.info('Get ActionSheet handled');
+              }
+            },
+            cancel: () => {
+              console.info('ActionSheet canceled');
+            },
+            onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+              console.info(`reason= ${dismissDialogAction.reason}`);
+              console.info('ActionSheet onWillDismiss');
+              if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                dismissDialogAction.dismiss();
+              }
+              if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                dismissDialogAction.dismiss();
+              }
+            },
+            alignment: DialogAlignment.Bottom,
+            offset: { dx: 0, dy: -10 },
+            enableHoverMode: true,
+            hoverModeArea: HoverModeAreaType.TOP_SCREEN,
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          })
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Flex, Button, FlexDirection, ItemAlign, FlexAlign, DialogAlignment,
+  DismissDialogAction, DismissReason, HoverModeAreaType } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct ActionSheetExample {
@@ -600,6 +957,8 @@ struct ActionSheetExample {
 
 从API version 19开始，在[ActionSheetOptions](#actionsheetoptions对象说明)中新增了onDidAppear、onDidDisappear、onWillAppear和onWillDisappear属性。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -671,6 +1030,80 @@ struct Example1 {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Text, State, Margin, DialogAlignment, ColumnOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Example1 {
+  @State log: string = 'Log information:';
+  flag: boolean = false;
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('ActionSheet')
+        .onClick(() => {
+          this.getUIContext().showActionSheet({
+            title: 'ActionSheet',
+            message: 'message',
+            autoCancel: true,
+            alignment: DialogAlignment.Bottom,
+            offset: { dx: 0, dy: -20 },
+            confirm: {
+              value: 'button',
+              action: () => {
+                console.info('ActionSheet Button-clicking callback');
+              }
+            },
+            cancel: () => {
+              console.info('ActionSheet Closed callbacks');
+            },
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('ActionSheet apples')
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('ActionSheet bananas')
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('ActionSheet pears')
+                }
+              }
+            ],
+            onDidAppear: () => {
+              this.log += '# onDidAppear';
+              console.info('ActionSheet,is onDidAppear!');
+            },
+            onDidDisappear: () => {
+              this.log += '# onDidDisappear';
+              console.info('ActionSheet,is onDidDisappear!');
+            },
+            onWillAppear: () => {
+              this.log = 'Log information:onWillAppear';
+              console.info('ActionSheet,is onWillAppear!');
+            },
+            onWillDisappear: () => {
+              this.log += '# onWillDisappear';
+              console.info('ActionSheet,is onWillDisappear!');
+            }
+          })
+        })
+      Text(this.log).fontSize(30).margin({ top: 200 } as Margin)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![image-action-lifecycle](figures/image-action-lifecycle.gif)
 
 ### 示例7（自定义背景模糊效果参数）
@@ -679,12 +1112,15 @@ struct Example1 {
 
 从API version 19开始，在[ActionSheetOptions](#actionsheetoptions对象说明)中新增了backgroundBlurStyleOptions属性。
 
+ArkTS-Dyn示例：
+
 ```ts
 @Entry
 @Component
 struct ActionSheetExample {
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Button("ActionSheet")
@@ -731,6 +1167,64 @@ struct ActionSheetExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Stack, Image, Column, Button, $r, Alignment, DialogAlignment, BlurStyle,
+  ThemeColorMode, AdaptiveColor, BackgroundBlurStyleOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.bg'))
+      Column(undefined) {
+        Button("ActionSheet")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showActionSheet({
+              title: 'ActionSheet Title',
+              subtitle: 'ActionSheet Subtitle',
+              message: 'ActionSheet Text',
+              sheets: [
+                {
+                  title: 'Apples',
+                  action: () => {
+                    console.info('apples');
+                  }
+                },
+                {
+                  title: 'Bananas',
+                  action: () => {
+                    console.info('bananas');
+                  }
+                },
+                {
+                  title: 'Pears',
+                  action: () => {
+                    console.info('pears');
+                  }
+                }
+              ],
+              alignment: DialogAlignment.Center,
+              backgroundColor: undefined,
+              backgroundBlurStyle: BlurStyle.Thin,
+              backgroundBlurStyleOptions: {
+                colorMode: ThemeColorMode.LIGHT,
+                adaptiveColor: AdaptiveColor.AVERAGE,
+                scale: 1,
+                blurOptions: { grayscale: [20, 20] },
+              } as BackgroundBlurStyleOptions,
+            });
+          })
+      }.width('100%')
+    }
+  }
+}
+```
+
 ![image-action-backgroundBlurStyleOptions](figures/image-action-backgroundBlurStyleOptions.png)
 
 ### 示例8（自定义背景效果参数）
@@ -739,12 +1233,15 @@ struct ActionSheetExample {
 
 从API version 19开始，在[ActionSheetOptions](#actionsheetoptions对象说明)中新增了backgroundEffect属性。
 
+ArkTS-Dyn示例：
+
 ```ts
 @Entry
 @Component
 struct ActionSheetExample {
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Button("ActionSheet")
@@ -791,4 +1288,214 @@ struct ActionSheetExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Stack, Image, Column, Button, $r, Alignment, DialogAlignment, BlurStyle, Color } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.bg'))
+      Column() {
+        Button("ActionSheet")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showActionSheet({
+              title: 'ActionSheet Title',
+              subtitle: 'ActionSheet Subtitle',
+              message: 'ActionSheet Text',
+              sheets: [
+                {
+                  title: 'Apples',
+                  action: () => {
+                    console.info('apples');
+                  }
+                },
+                {
+                  title: 'Bananas',
+                  action: () => {
+                    console.info('bananas');
+                  }
+                },
+                {
+                  title: 'Pears',
+                  action: () => {
+                    console.info('pears');
+                  }
+                }
+              ],
+              alignment: DialogAlignment.Center,
+              backgroundColor: undefined,
+              backgroundBlurStyle: BlurStyle.Thin,
+              backgroundEffect: {
+                radius: 60,
+                saturation: 0,
+                brightness: 1,
+                color: Color.White,
+                blurOptions: { grayscale: [20, 20] }
+              },
+            });
+          })
+      }.width('100%')
+    }
+  }
+}
+```
+
 ![image-action-backgroundEffect](figures/image-action-backgroundEffect.png)
+
+### 示例9（设置弹窗的显示层级与顺序）
+
+该示例通过配置[ActionSheetOptions](#actionsheetoptions对象说明)中的levelMode、levelUniqueId、immersiveMode和levelOrder属性，实现页面内嵌入式弹窗的层级、蒙层效果及显示顺序控制。
+
+从API version 15开始，在ActionSheetOptions中新增了levelMode、levelUniqueId和immersiveMode属性。从API version 18开始，在ActionSheetOptions中新增了levelOrder属性。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Column({ space: 5 }) {
+      Text('页面级Dialog')
+        .id('target_text')
+        .fontSize(20)
+        .margin({ top: 100 })
+      Button('显示embedded类型的ActionSheet')
+        .onClick(() => {
+          // 获取页面内目标节点的UniqueId，用于指定弹窗挂载的页面层级
+          const node = this.getUIContext().getFrameNodeById('target_text');
+          this.getUIContext().showActionSheet({
+            title: 'Embedded ActionSheet',
+            message: '该弹窗为页面内嵌入式弹窗，随页面路由切换而隐藏。',
+            autoCancel: true,
+            alignment: DialogAlignment.Center,
+            offset: { dx: 0, dy: -20 },
+            // showInSubWindow为false时levelMode属性才生效
+            showInSubWindow: false,
+            // 设置弹窗为页面内嵌入式层级，随路由导航切换而隐藏
+            levelMode: LevelMode.EMBEDDED,
+            // 指定弹窗挂载到目标节点所在的页面层级，仅在levelMode为EMBEDDED时生效
+            levelUniqueId: node?.getUniqueId(),
+            // 设置弹窗蒙层效果，遵循父节点布局约束进行显示
+            immersiveMode: ImmersiveMode.DEFAULT,
+            // 设置弹窗显示顺序，数值越大显示越靠前
+            levelOrder: LevelOrder.clamp(1),
+            confirm: {
+              value: '确认',
+              action: () => {
+                console.info('Button-clicking callback');
+              }
+            },
+            cancel: () => {
+              console.info('Closed callbacks');
+            },
+            sheets: [
+              {
+                title: '苹果',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: '香蕉',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: '梨',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          })
+        }).backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Text, Margin, DialogAlignment,
+  LevelOrder, ColumnOptions } from '@kit.ArkUI';
+import { LevelMode, ImmersiveMode } from '@ohos.promptAction';
+
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Text('页面级Dialog')
+        .id('target_text')
+        .fontSize(20)
+        .margin({ top: 100 } as Margin)
+      Button('显示embedded类型的ActionSheet')
+        .onClick(() => {
+          // 获取页面内目标节点的UniqueId，用于指定弹窗挂载的页面层级
+          const node = this.getUIContext().getFrameNodeById('target_text');
+          this.getUIContext().showActionSheet({
+            title: 'Embedded ActionSheet',
+            message: '该弹窗为页面内嵌入式弹窗，随页面路由切换而隐藏。',
+            autoCancel: true,
+            alignment: DialogAlignment.Center,
+            offset: { dx: 0, dy: -20 },
+            // showInSubWindow为false时levelMode属性才生效
+            showInSubWindow: false,
+            // 设置弹窗为页面内嵌入式层级，随路由导航切换而隐藏
+            levelMode: LevelMode.EMBEDDED,
+            // 指定弹窗挂载到目标节点所在的页面层级，仅在levelMode为EMBEDDED时生效
+            levelUniqueId: node?.getUniqueId(),
+            // 设置弹窗蒙层效果，遵循父节点布局约束进行显示
+            immersiveMode: ImmersiveMode.DEFAULT,
+            // 设置弹窗显示顺序，数值越大显示越靠前
+            levelOrder: LevelOrder.clamp(1),
+            confirm: {
+              value: '确认',
+              action: () => {
+                console.info('Button-clicking callback');
+              }
+            },
+            cancel: () => {
+              console.info('Closed callbacks');
+            },
+            sheets: [
+              {
+                title: '苹果',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: '香蕉',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: '梨',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          })
+        }).backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![image-action-levelmode](figures/image-action-levelmode.png)

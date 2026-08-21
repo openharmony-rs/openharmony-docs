@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS侧通过`loadLibrary`加载native库后，运行时会进入native库的`ANI_Constructor`，由它完成函数或方法绑定。这个流程用于把ArkTS声明的`native function`/`native method`连接到C++实现。
 

@@ -1,4 +1,4 @@
-# @ohos.dlpPermission (数据防泄漏)
+# @ohos.dlpPermission (数据防泄露)
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
@@ -6,7 +6,7 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-数据防泄漏（Data Loss Prevention，简称为DLP）是系统级的数据防泄漏解决方案，提供跨设备文件的权限管理、加密存储、授权访问等能力。DLP通过加密技术对敏感文件进行保护，生成.dlp格式的加密文件。当打开DLP文件时，系统会自动创建隔离的DLP沙箱环境，确保文件内容不会泄漏到非授权环境。企业级DLP文件支持细粒度的权限控制，包括查看、编辑、复制、打印、截屏等操作权限的管理。
+数据防泄露（Data Loss Prevention，简称为DLP）是系统级的数据防泄露解决方案，提供跨设备文件的权限管理、加密存储、授权访问等能力。DLP通过加密技术对敏感文件进行保护，生成.dlp格式的加密文件。当打开DLP文件时，系统会自动创建隔离的DLP沙箱环境，确保文件内容不会泄露到非授权环境。企业级DLP文件支持细粒度的权限控制，包括查看、编辑、复制、打印、截屏等操作权限的管理。
 
 **使用场景**： 
 - 企业办公场景下，保护敏感文档不被非授权访问和泄露。
@@ -25,6 +25,7 @@
 - **DLPFileAccess**：DLP 文件授权类型枚举，定义文件的访问级别。
 - **ActionType**：文件权限到期后执行动作的枚举。
 - **AccountType**：授权账号类型枚举。
+- **PluginCmd**：执行插件命令枚举。
 
 ### 核心接口类型
 
@@ -42,7 +43,7 @@
 
 ### 核心类
 
-- **DlpConnManager**：是数据防泄漏系统的核心管理类，在SA（System Ability）中注册或注销回调能力。
+- **DlpConnManager**：是数据防泄露系统的核心管理类，在SA（System Ability）中注册或注销回调能力。
 
 ![](figures/normal_dlpPermission_main_class.png)
 
@@ -94,6 +95,7 @@ isDLPFile(fd: number): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -103,14 +105,14 @@ isDLPFile(fd: number): Promise&lt;boolean&gt;
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 
-let uri = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
+let uri = 'file://docs/storage/Users/currentUser/Documents/test.txt.dlp';
 let file: number | undefined = undefined;
 file = fileIo.openSync(uri).fd;
 dlpPermission.isDLPFile(file).then((isDLPFile: boolean) => {
     console.info(JSON.stringify(isDLPFile));
-}).catch((error: BusinessError)=> {
-    console.error(error.message);
-}).finally(()=> {
+}).catch((error: BusinessError) => {
+    console.error(`Failed to check if file is DLP file. Code: ${error.code}, message: ${error.message}`);
+}).finally(() => {
     if (file !== undefined) {
         fileIo.closeSync(file);
     }
@@ -141,6 +143,7 @@ isDLPFile(fd: number, callback: AsyncCallback&lt;boolean&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -154,8 +157,8 @@ let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 let file: number | undefined = undefined;
 file = fileIo.openSync(uri).fd;
 dlpPermission.isDLPFile(file, (err, isDLPFile) => {
- if (err != undefined) {
-    console.error('isDLPFile error,', err.code, err.message);
+ if (err) {
+    console.error(`Failed to check if file is DLP file. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('isDLPFile:', isDLPFile);
   }
@@ -168,6 +171,8 @@ dlpPermission.isDLPFile(file, (err, isDLPFile) => {
 getDLPPermissionInfo(): Promise&lt;DLPPermissionInfo&gt;
 
 查询当前DLP沙箱的权限信息，包括文件授权类型及可执行操作（如查看、编辑、复制等）。仅支持在DLP沙箱应用中调用，使用Promise异步回调。
+
+建议先调用[isInSandbox](#dlppermissionisinsandbox)判断当前是否处于沙箱环境。
 
 在DLP沙箱中处理文件时，可根据权限信息判断当前用户可以执行哪些操作，避免调用无权限的功能。
 
@@ -185,6 +190,7 @@ getDLPPermissionInfo(): Promise&lt;DLPPermissionInfo&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -199,8 +205,8 @@ dlpPermission.isInSandbox().then(async (inSandbox) => { // 是否在沙箱内。
     dlpPermission.getDLPPermissionInfo().then((permissionInfo: dlpPermission.DLPPermissionInfo) => {
       console.info('permissionInfo', JSON.stringify(permissionInfo));
     }).catch((error: BusinessError)=> {
-      console.error(JSON.stringify(error));
-    })
+      console.error(`Failed to get DLP permission info. Code: ${error.code}, message: ${error.message}`);
+    });
   }
 });
 ```
@@ -209,7 +215,7 @@ dlpPermission.isInSandbox().then(async (inSandbox) => { // 是否在沙箱内。
 
 getDLPPermissionInfo(callback: AsyncCallback&lt;DLPPermissionInfo&gt;): void
 
-查询当前DLP沙箱的权限信息。返回的权限信息包括文件的授权类型和可执行的操作权限(如查看、编辑、复制等)。仅支持在DLP沙箱应用中调用。使用callback异步回调。
+查询当前DLP沙箱的权限信息。返回的权限信息包括文件的授权类型和可执行的操作权限（如查看、编辑、复制等）。仅支持在DLP沙箱应用中调用。使用callback异步回调。
 
 在DLP沙箱中处理文件时，可根据权限信息判断当前用户可以执行哪些操作，避免调用无权限的功能。
 
@@ -228,6 +234,7 @@ getDLPPermissionInfo(callback: AsyncCallback&lt;DLPPermissionInfo&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -240,8 +247,8 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 dlpPermission.isInSandbox().then((inSandbox) => { // 是否在沙箱内。
   if (inSandbox) {
     dlpPermission.getDLPPermissionInfo((err, permissionInfo) => { 
-      if (err != undefined) {
-        console.error('getDLPPermissionInfo error', err.code, err.message);
+      if (err) {
+        console.error(`Failed to get DLP permission info. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info('permissionInfo', JSON.stringify(permissionInfo));
       }
@@ -264,7 +271,7 @@ getOriginalFileName(fileName: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| fileName | string | 是 | 指定要查询的DLP文件名。长度不超过255字节，超出此范围抛出错误码19100001。 |
+| fileName | string | 是 | 指定要查询的DLP文件名。长度不超过255字节，超出此范围抛出错误码401。 |
 
 **返回值：**
 
@@ -278,6 +285,7 @@ getOriginalFileName(fileName: string): string
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -312,6 +320,7 @@ getDLPSuffix(): string
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100011 | The system ability works abnormally. |
 
 **示例：**
@@ -329,7 +338,7 @@ on(type: 'openDLPFile', listener: Callback&lt;AccessedDLPFileInfo&gt;): void
 
 监听打开DLP文件。调用成功后，当DLP文件被打开时会触发回调通知当前应用。仅支持在非DLP沙箱应用中调用。
 
- 当应用需要在DLP文件打开后执行特定操作(如记录日志、更新界面)时，可注册该监听。
+当应用需要在DLP文件打开后执行特定操作（如记录日志、更新界面）时，可注册该监听。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -347,6 +356,7 @@ on(type: 'openDLPFile', listener: Callback&lt;AccessedDLPFileInfo&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -384,6 +394,7 @@ off(type: 'openDLPFile', listener?: Callback&lt;AccessedDLPFileInfo&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -420,6 +431,7 @@ isInSandbox(): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -458,6 +470,7 @@ isInSandbox(callback: AsyncCallback&lt;boolean&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -468,7 +481,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.isInSandbox((err, isInSandbox) => {
   if (err) {
-    console.error('isInSandbox error', err.code, err.message);
+    console.error(`Failed to check sandbox status. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('isInSandbox：', JSON.stringify(isInSandbox));
   }
@@ -497,6 +510,7 @@ getDLPSupportedFileTypes(): Promise&lt;Array&lt;string&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -534,6 +548,7 @@ getDLPSupportedFileTypes(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): vo
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
@@ -544,8 +559,8 @@ getDLPSupportedFileTypes(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): vo
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getDLPSupportedFileTypes((err, fileTypes) => {
-  if (err != undefined) {
-    console.error('getDLPSupportedFileTypes error', err.code, err.message);
+  if (err) {
+    console.error(`Failed to get DLP supported file types. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('fileTypes', JSON.stringify(fileTypes));
   }
@@ -564,7 +579,7 @@ setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。不对Array长度进行限制，每个string不超过4095字节，超出此范围抛出错误码19100001。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。不对Array长度进行限制，每个string不超过4095字节，超出此范围抛出错误码401。 |
 
 **返回值：**
 
@@ -579,6 +594,7 @@ setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -610,7 +626,7 @@ setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码19100001。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码401。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。err为undefined时表示设置成功；否则为错误对象。 |
 
 **错误码：**
@@ -620,6 +636,7 @@ setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -632,12 +649,11 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 dlpPermission.isInSandbox().then((inSandbox) => { // 是否在沙箱内。
   if (inSandbox) {
-    dlpPermission.setRetentionState([uri], (err, retentionState) => {
-      if (err != undefined) {
-        console.error('setRetentionState error,', err.code, err.message);
+    dlpPermission.setRetentionState([uri], (err) => {
+      if (err) {
+        console.error(`Failed to set retention state. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info('setRetentionState success');
-        console.info('retentionState：', JSON.stringify(retentionState));
       }
     }); // 设置沙箱保留。
   }
@@ -650,7 +666,7 @@ dlpPermission.isInSandbox().then((inSandbox) => { // 是否在沙箱内。
 
 cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
-取消沙箱保留状态即恢复DLP文件关闭时自动卸载沙箱策略。使用Promise异步回调。
+取消沙箱保留状态，即恢复DLP文件关闭时自动卸载沙箱策略。使用Promise异步回调。
 
 该接口用于取消沙箱保留状态，恢复默认行为以释放系统资源，适用于不再频繁访问DLP文件的场景。
 
@@ -660,7 +676,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要取消保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码19100001。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要取消保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码401。 |
 
 **返回值：**
 
@@ -675,6 +691,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -705,8 +722,8 @@ cancelRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要取消保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码19100001。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。err为undefined时表示设置成功；否则为错误对象。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要取消保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码401。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。err为undefined时表示取消成功；否则为错误对象。 |
 
 **错误码：**
 
@@ -715,6 +732,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;vo
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -725,8 +743,8 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 dlpPermission.cancelRetentionState([uri], (err, res) => {
-  if (err != undefined) {
-    console.error('cancelRetentionState error,', err.code, err.message);
+  if (err) {
+    console.error(`Failed to cancel retention state. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('cancelRetentionState success');
   }
@@ -747,7 +765,7 @@ getRetentionSandboxList(bundleName?: string): Promise&lt;Array&lt;RetentionSandb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| bundleName | string | 否 | 指定应用包名，用于查询该应用的保留沙箱信息列表。当需要查询其他应用的保留沙箱信息时传入此参数，当需要查询当前应用的保留沙箱信息时可不传此参数。长度范围[7, 128]字节，超出此范围抛出错误码19100001。 |
+| bundleName | string | 否 | 指定应用包名，用于查询该应用的保留沙箱信息列表。当需要查询其他应用的保留沙箱信息时传入此参数，当需要查询当前应用的保留沙箱信息时可不传此参数。长度范围[7, 128]字节，超出此范围抛出错误码401。 |
 
 **返回值：**
 
@@ -762,6 +780,7 @@ getRetentionSandboxList(bundleName?: string): Promise&lt;Array&lt;RetentionSandb
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -792,7 +811,7 @@ getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| bundleName | string | 是 | 指定应用包名，用于查询该应用的保留沙箱信息列表。长度范围[7, 128]字节，超出此范围抛出错误码19100001。 |
+| bundleName | string | 是 | 指定应用包名，用于查询该应用的保留沙箱信息列表。长度范围[7, 128]字节，超出此范围抛出错误码401。 |
 | callback | AsyncCallback&lt;Array&lt;[RetentionSandboxInfo](#retentionsandboxinfo)&gt;&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
 
 **错误码：**
@@ -802,6 +821,7 @@ getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -811,9 +831,9 @@ getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.getRetentionSandboxList("bundleName", (err, sandboxList) => {
-  if (err != undefined) {
-    console.error('getRetentionSandboxList error,', err.code, err.message);
+dlpPermission.getRetentionSandboxList('bundleName', (err, sandboxList) => {
+  if (err) {
+    console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('sandboxList', JSON.stringify(sandboxList));
   }
@@ -826,7 +846,7 @@ getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo
 
 查询当前应用的保留沙箱信息列表。使用callback异步回调。
 
-该接口用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。
+该接口用于查询当前应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。仅支持在非DLP沙箱应用中调用。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -843,6 +863,7 @@ getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -853,10 +874,10 @@ getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getRetentionSandboxList((err, retentionSandboxList) => {
-  if (err != undefined) {
-    console.error('getRetentionSandboxList error,', err.code, err.message);
+  if (err) {
+    console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('res', JSON.stringify(retentionSandboxList));
+    console.info('retentionSandboxList', JSON.stringify(retentionSandboxList));
   }
 }); // 获取沙箱保留列表。
 ```
@@ -883,6 +904,7 @@ getDLPFileAccessRecords(): Promise&lt;Array&lt;AccessedDLPFileInfo&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -903,7 +925,7 @@ dlpPermission.getDLPFileAccessRecords().then((accessRecords) => { // 获取DLP�
 
 getDLPFileAccessRecords(callback: AsyncCallback&lt;Array&lt;AccessedDLPFileInfo&gt;&gt;): void
 
-查询最近访问的DLP文件列表。调用成功后返回文件访问记录，用于追踪和管理DLP文件的使用情况。使用callback异步回调。
+查询最近访问的DLP文件列表。调用成功后返回文件访问记录，用于追踪和管理DLP文件的使用情况。仅支持在非DLP沙箱应用中调用。使用callback异步回调。
 
 该接口用于获取最近访问的DLP文件记录列表，便于审计追踪和文件使用情况管理。
 
@@ -922,6 +944,7 @@ getDLPFileAccessRecords(callback: AsyncCallback&lt;Array&lt;AccessedDLPFileInfo&
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -932,8 +955,8 @@ getDLPFileAccessRecords(callback: AsyncCallback&lt;Array&lt;AccessedDLPFileInfo&
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getDLPFileAccessRecords((err, accessRecords) => {
-  if (err != undefined) {
-    console.error('getDLPFileAccessRecords error,', err.code, err.message);
+  if (err) {
+    console.error(`Failed to get DLP file access records. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('accessRecords', JSON.stringify(accessRecords));
   }
@@ -976,6 +999,7 @@ startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 | 19100016 | The uri field is missing in the want parameter. |
@@ -1006,7 +1030,7 @@ if (context !== undefined) {
 ## dlpPermission.setSandboxAppConfig<sup>11+</sup>
 setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 
-设置沙箱应用配置信息，配置信息为JSON字符串格式，具体内容由应用自行设置。调用成功后，沙箱应用将按照配置信息运行。使用Promise异步回调。
+设置沙箱应用配置信息，配置信息为JSON字符串格式，具体内容由应用自行设置。调用成功后，沙箱应用将按照配置信息运行。使用Promise异步回调。仅支持在非DLP沙箱应用中调用。
 
 该接口用于设置沙箱应用的配置信息，以便应用按需传递自定义参数。
 
@@ -1016,7 +1040,7 @@ setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| configInfo | string | 是 | 沙箱应用配置信息。长度不超过2<sup>22</sup>-1字节，超出此范围抛出错误码19100001。 |
+| configInfo | string | 是 | 沙箱应用配置信息。长度不超过2<sup>22</sup>-1字节，超出此范围抛出错误码401。 |
 
 **返回值：**
 
@@ -1031,6 +1055,7 @@ setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -1041,8 +1066,8 @@ setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.setSandboxAppConfig('configInfo').then((configInfo) => { // 设置沙箱应用配置信息。
-  console.info('configInfo：', configInfo);
+dlpPermission.setSandboxAppConfig('configInfo').then(() => { // 设置沙箱应用配置信息。
+  console.info('setSandboxAppConfig success');
 }).catch((error: BusinessError)=> {
   console.error(JSON.stringify(error));
 });
@@ -1053,7 +1078,7 @@ cleanSandboxAppConfig(): Promise&lt;void&gt;
 
 清理沙箱应用配置信息。调用成功后，沙箱应用配置将被清除，恢复默认状态。使用Promise异步回调。
 
-该接口用于清理沙箱应用的配置信息，恢复默认状态以防止配置残留影响后续使用。
+该接口用于清理沙箱应用的配置信息，恢复默认状态以防止配置残留影响后续使用。仅支持在非沙箱应用中调用。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1069,6 +1094,7 @@ cleanSandboxAppConfig(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -1079,8 +1105,8 @@ cleanSandboxAppConfig(): Promise&lt;void&gt;
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.cleanSandboxAppConfig().then((configInfo) => { // 清理沙箱应用配置信息。
-  console.info('configInfo：', configInfo);
+dlpPermission.cleanSandboxAppConfig().then(() => { // 清理沙箱应用配置信息。
+  console.info('cleanSandboxAppConfig success');
 }).catch((error: BusinessError)=> {
   console.error(JSON.stringify(error));
 });
@@ -1106,6 +1132,7 @@ getSandboxAppConfig(): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 | 19100018 | The application is not authorized. |
@@ -1146,6 +1173,7 @@ isDLPFeatureProvided(): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100011 | The system ability works abnormally. |
 
 **示例：**
@@ -1156,7 +1184,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 dlpPermission.isDLPFeatureProvided().then((isFeatureProvided) => { // 查询当前系统是否提供加密保护特性。
   console.info('isFeatureProvided', JSON.stringify(isFeatureProvided));
 }).catch((err: BusinessError) => {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错。
+  console.error(`Failed to check if DLP feature is provided. Code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
 });
 ```
 
@@ -1189,6 +1217,7 @@ setEnterprisePolicy(policy: EnterprisePolicy): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 | 19100021 | Failed to set the enterprise policy. |
@@ -1239,7 +1268,7 @@ try {
     dlpPermission.setEnterprisePolicy(enterprisePolicy);
     console.info('set enterprise policy success'); 
 } catch (err) { 
-    console.error('error:' + err.code + err.message); // 失败报错。 
+    console.error(`Failed to set enterprise policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1296,7 +1325,7 @@ DLP文件授权类型的枚举。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | uri | string | 否 | 否 | 表示DLP文件的uri。不超过4095字节。 |
-| lastOpenTime | number | 否 | 否 | 表示DLP文件最近打开时间。单位：s。 |
+| lastOpenTime | number | 否 | 否 | 表示DLP文件最近打开时间戳。单位：s。 |
 
 ## DLPManagerResult<sup>11+</sup>
 
@@ -1308,7 +1337,7 @@ DLP文件授权类型的枚举。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| resultCode | number | 否 | 否 | 表示打开DLP权限管理应用并退出后返回的结果码。取值范围为0到3。|
+| resultCode | number | 否 | 否 | 表示打开DLP权限管理应用并退出后返回的结果码。取值范围为0到3。0表示成功，其它表示失败。|
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 否 | 表示打开DLP权限管理应用并退出后返回的数据。 |
 
 ## RetentionSandboxInfo
@@ -1331,7 +1360,7 @@ DLP文件授权类型的枚举。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| policyString | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度不超过2<sup>22</sup>字节，超出此范围抛出错误码19100001。 |
+| policyString | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度不超过2<sup>22</sup>字节，超出此范围输出错误日志。 |
 
 ## dlpPermission.generateDlpFileForEnterprise<sup>21+</sup>
 
@@ -1353,8 +1382,8 @@ generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPPr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| plaintextFd | number | 是 | 明文文件的文件描述符。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。|
-| dlpFd | number | 是 | 加密文件的文件描述符。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。|
+| plaintextFd | number | 是 | 明文文件的文件描述符。取值范围为[0, 2<sup>31</sup>-1]。当plaintextFd小于0时，打印错误日志，函数停止运行；当plaintextFd大于2<sup>31</sup>-1时，plaintextFd的值被截断。|
+| dlpFd | number | 是 | 加密文件的文件描述符。取值范围为[0, 2<sup>31</sup>-1]。当dlpFd小于0时，打印错误日志，函数停止运行；当dlpFd大于2<sup>31</sup>-1时，dlpFd的值被截断。|
 | property | [DLPProperty](#dlpproperty21) | 是 | DLP文件通用策略。 |
 | customProperty | [CustomProperty](#customproperty21) | 是 | 企业定制策略。 |
 
@@ -1364,13 +1393,14 @@ generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPPr
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**错误码：**
+**错误码：**   
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1388,7 +1418,7 @@ import { fileIo } from '@kit.CoreFileKit';
 
 let plaintextFd: number | undefined = undefined;
 let dlpFd: number | undefined = undefined;
-let plainFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt";
+let plainFilePath: string = 'file://docs/storage/Users/currentUser/Documents/test.txt';
 let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
 plaintextFd = fileIo.openSync(plainFilePath, fileIo.OpenMode.READ_ONLY).fd; // 打开明文文件。
 dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).fd; // 打开DLP文件。
@@ -1407,7 +1437,7 @@ let customProperty: dlpPermission.CustomProperty = {
 dlpPermission.generateDlpFileForEnterprise(plaintextFd, dlpFd, dlpProperty, customProperty).then((res) => {
   console.info('Successfully generate DLP file for enterprise.');
 }).catch((error: BusinessError)=> {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to generate DLP file for enterprise. Code: ${error.code}, message: ${error.message}`);
 }).finally(()=>{
   if (dlpFd) {
     fileIo.closeSync(dlpFd);
@@ -1437,8 +1467,8 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| dlpFd | number | 是 | 待解密DLP文件的fd。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
-| plaintextFd | number | 是 | 目标解密文件的fd。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
+| dlpFd | number | 是 | 待解密DLP文件的dlpFd。取值范围为[0, 2<sup>31</sup>-1]。当dlpFd小于0时，打印错误日志，函数停止运行；当dlpFd大于2<sup>31</sup>-1时，dlpFd的值被截断。 |
+| plaintextFd | number | 是 | 目标解密文件的plaintextFd。取值范围为[0, 2<sup>31</sup>-1]。当plaintextFd小于0时，打印错误日志，函数停止运行；当plaintextFd大于2<sup>31</sup>-1时，plaintextFd的值被截断。 |
 
 **返回值：**
 
@@ -1453,6 +1483,7 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1509,7 +1540,7 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| dlpFd | number | 是 | 待查询策略的DLP文件的fd。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
+| dlpFd | number | 是 | 待查询策略的DLP文件的dlpFd。取值范围为[0, 2<sup>31</sup>-1]。当dlpFd小于0时，打印错误日志，函数停止运行；当dlpFd大于2<sup>31</sup>-1时，dlpFd的值被截断。 |
 
 **返回值：**
 
@@ -1524,6 +1555,7 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1586,8 +1618,8 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| enterprise | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度不超过2<sup>22</sup>字节，超出此范围抛出错误码19100001。 |
-| options | [DlpFileQueryOptions](#dlpfilequeryoptions) | 否 | 是 | 企业DLP文件的查询选项，默认为空。**起始版本**：26.0.0**模型约束**：此接口仅可在Stage模型下使用。 |
+| enterprise | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度不超过2<sup>22</sup>字节，超出此范围抛出错误码401。 |
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions) | 否 | 是 | 企业DLP文件的查询选项，默认为空。**起始版本：** 26.0.0**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## DLPProperty<sup>21+</sup>
 
@@ -1598,20 +1630,20 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ownerAccount | string | 否 | 否 | 表示权限设置者账号。长度不超过255字节，超出此范围抛出错误码19100001。 |
-| ownerAccountID | string | 否 | 否 | 表示权限设置者账号的ID。长度不超过255字节，超出此范围抛出错误码19100001。 |
+| ownerAccount | string | 否 | 否 | 表示权限设置者账号。长度不超过255字节，超出此范围抛出错误码401。 |
+| ownerAccountID | string | 否 | 否 | 表示权限设置者账号的ID。长度不超过255字节，超出此范围抛出错误码401。 |
 | ownerAccountType | [AccountType](#accounttype21) | 否 | 否 | 表示权限设置者账号类型。 |
 | authUserList | Array&lt;[AuthUser](#authuser21)&gt; | 否 | 是 | 表示授权用户列表，默认为空。 |
-| contactAccount | string | 否 | 否 | 表示联系人账号。长度不超过255字节，超出此范围抛出错误码19100001。 |
+| contactAccount | string | 否 | 否 | 表示联系人账号。长度不超过255字节，超出此范围抛出错误码401。 |
 | offlineAccess | boolean | 否 | 否 | 表示是否是离线打开。true表示允许离线打开，false表示不可离线打开。 |
 | everyoneAccessList | Array&lt;[DLPFileAccess](#dlpfileaccess)&gt; | 否 | 是 | 表示授予所有人的权限，默认为空。 |
 | expireTime | number | 否 | 是 | 表示文件权限到期时间戳，默认为空。取值范围大于等于0，超出此范围抛出错误码。单位：s。 |
 | actionUponExpiry | [ActionType](#actiontype21) | 否 | 是 | 表示到期后文件是否允许打开（打开后拥有编辑权限），仅在expireTime不为空时生效，默认为空。 |
-| fileId | string | 否 | 是 | 表示文件的标识，默认为空。长度不超过255字节，超出此范围抛出错误码19100001。 |
+| fileId | string | 否 | 是 | 表示文件的标识，默认为空。长度不超过255字节，超出此范围抛出错误码401。 |
 | allowedOpenCount | number | 否 | 是 | 表示允许打开的次数，默认为0。无范围限制。 |
 | waterMarkConfig<sup>23+</sup> | boolean | 否 | 是 | 表示是否要求添加水印。true表示要求添加水印，false表示不要求添加水印，默认为空。 |
-| countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，默认为0，单位：秒。取值范围大于等于0。无范围限制。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| extensionFields<sup>24+</sup> | Record<string, Object> | 否 | 是 | 表示DLP文件的扩展属性，默认为空。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，默认为0，单位：s。取值范围为[-2<sup>31</sup>, 2<sup>31</sup>-1]<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| extensionFields<sup>24+</sup> | Record\<string, Object> | 否 | 是 | 表示DLP文件的扩展属性，默认为空。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## AuthUser<sup>21+</sup>
 
@@ -1621,10 +1653,10 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| authAccount | string | 否 | 否 | 表示被授权用户账号。不超过255字节，超出此范围抛出错误码19100001。 |
+| authAccount | string | 否 | 否 | 表示被授权用户账号。不超过255字节，超出此范围抛出错误码401。 |
 | authAccountType | [AccountType](#accounttype21) | 否 | 否 | 表示被授权用户账号类型。 |
 | dlpFileAccess | [DLPFileAccess](#dlpfileaccess) | 否 | 否 | 表示被授予的权限。 |
-| permExpiryTime | number | 否 | 否 | 表示授权到期时间。取值范围大于等于0，超出此范围将被强转为非符号整数。单位：s。 |
+| permExpiryTime | number | 否 | 否 | 表示授权到期时间戳。取值范围大于等于0，超出此范围将被强转为无符号整数。单位：s。 |
 
 ## DlpConnPlugin<sup>21+</sup>
 
@@ -1633,6 +1665,8 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 > **说明：**
 >
 > [registerPlugin](#registerplugin21)接口的参数需要继承该接口，[connectServer](#connectserver21)由SA（System Ability）侧调用，通过callback进行回传参数。
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
 
 ### connectServer<sup>21+</sup>
 connectServer(requestId: string, requestData: string, callback: Callback\<string\>): void
@@ -1664,6 +1698,7 @@ connectServer(requestId: string, requestData: string, callback: Callback\<string
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100011 | The system ability works abnormally. |
   
 **示例：**
@@ -1679,7 +1714,7 @@ export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
   connectServer(requestId: string, requestData: string, callback: Callback<string>): void {
     let callbackJson = JSON.stringify({
       'requestId': requestId,
-    }); // 构造回调JSON数据
+    }); // 构造回调JSON数据。
     callback(callbackJson);  // 调用回调函数返回结果。
   }
 }
@@ -1695,6 +1730,8 @@ let plugin: dlpPermission.DlpConnPlugin = new DataCapsulePlugin();
 > **说明：**
 >
 > registerPlugin接口将回调能力注册进SA（System Ability），而unregisterPlugin接口将回调能力从SA（System Ability）中注销。
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
 
 ### constructor<sup>21+</sup>
 
@@ -1713,6 +1750,7 @@ constructor()
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
   
 **示例：**
 
@@ -1745,7 +1783,7 @@ static registerPlugin(plugin: DlpConnPlugin): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 注册结果，返回该回调的唯一标识ID。取值范围为[0, 2<sup>64</sup>-1]。|
+| number | 注册结果，返回该回调的唯一标识ID。取值范围为[0, 2<sup>53</sup>-1]。|
 
 **错误码：**
 
@@ -1754,6 +1792,7 @@ static registerPlugin(plugin: DlpConnPlugin): number
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1789,7 +1828,7 @@ static unregisterPlugin(): void
   
 提供将回调从SA（System Ability）侧注销的能力。
 
-该接口可用于应用退出时注销回调释放资源，确保回调能力正确释放。
+该接口可用于应用退出时注销回调以释放资源。
 
 > **说明：**
 >
@@ -1806,6 +1845,7 @@ static unregisterPlugin(): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1823,7 +1863,7 @@ dlpPermission.DlpConnManager.unregisterPlugin();
 
 表示企业DLP文件的查询选项。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1888,7 +1928,7 @@ let options: dlpPermission.DlpFileQueryOptions = {
 dlpPermission.queryOpenedEnterpriseDlpFiles(options).then((uris: Array<string>) => {
   console.info("try to query opened enterprise dlp files, result: ", JSON.stringify(uris));
 }).catch((error: BusinessError)=> {
-  console.error(error.message);
+  console.error(`Failed to query opened enterprise DLP files. Code: ${error.code}, message: ${error.message}`);
 }).finally(()=> {
   console.info("after querying opened enterprise dlp files");
 });
@@ -1906,7 +1946,7 @@ closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt
 >
 > 该接口仅能关闭调用方应用通过[generateDlpFileForEnterprise](#dlppermissiongeneratedlpfileforenterprise21)生成的企业DLP文件。
   
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1952,4 +1992,185 @@ dlpPermission.closeOpenedEnterpriseDlpFiles(options).then(() => {
 }).finally(()=> {
   console.info("after closing opened enterprise dlp files");
 });
+```
+
+## dlpPermission.setControlledAppLists
+
+setControlledAppLists(appLists: Array&lt;string&gt;, userId?: number): Promise&lt;void&gt;
+
+设置受企业DLP控制的应用程序列表。使用Promise异步回调。
+  
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.DLP_POLICY_MANAGER
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| appLists | Array&lt;string&gt; | 是 | 被管控的应用的appIdentifier列表。<br> 数组最大长度为100，超过最大长度返回19100001错误码。<br>数组中每个元素为应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)，单个appIdentifier最大长度为4096字节，超过最大长度返回19100001错误码。|
+| userId | number | 否 | 为其配置受控应用列表的用户ID。<br>若参数未指定，则默认使用当前用户。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 19100001 | Invalid parameter value. |
+| 19100011 | The system ability works abnormally. |
+| 19100023 | The specified userId is inconsistent with the current userId. |
+| 19100024 | The specified userId belongs to a personal space user and cannot be managed. |
+
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let appList: Array<string> = ['appId1', 'appId2'];
+let userId: number = 100;
+dlpPermission.setControlledAppLists(appList, userId).then(() => {
+  console.info("Successfully set controlled appLists.");
+}).catch((error: BusinessError) => {
+  console.error(error.message);
+}).finally(() => {
+  console.info("Completed set controlled appLists operation.");
+});
+```
+
+## dlpPermission.getControlledAppLists
+
+getControlledAppLists(): Promise&lt;Array&lt;string&gt;&gt;
+
+获取当前用户受企业DLP控制的应用程序列表。使用Promise异步回调。
+
+>**说明：**
+>
+> 该接口仅能查询通过[setControlledAppLists](#dlppermissionsetcontrolledapplists)设置的受企业DLP控制的应用程序列表。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.DLP_POLICY_MANAGER
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回当前用户受企业DLP控制的应用程序列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 19100011 | The system ability works abnormally. |
+
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dlpPermission.getControlledAppLists().then((res) => {
+  console.info('res', JSON.stringify(res));
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+}).finally(() => {
+  console.info("Completed getControlledAppLists operation.");
+})
+```
+
+## PluginCmd
+
+可以执行的插件命令枚举。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| CMD_BASE_INSTALL_PLUGIN | 0x1001 | 表示安装插件的命令。 |
+| CMD_BASE_INSTALL_CONFIG_FILE | 0x1002 | 表示安装配置文件的命令。 |
+| CMD_BASE_INSTALL_SUFFIX_FILTER_FILE | 0x1003 | 表示安装后缀过滤文件的命令。  |
+| CMD_BASE_UNINSTALL_PLUGIN | 0x1004 | 表示卸载插件的命令。 |
+| CMD_BASE_QUERY_TRANSPARENT_CRYPTO_STATUS | 0x1005 | 表示查询透明加解密状态的命令。 |
+| CMD_EVENT_REPORT_COMMON | 0x2001 | 表示向插件发送通用数据的命令。 |
+
+## dlpPermission.processPluginCommand
+
+processPluginCommand(code: PluginCmd, message: string): Promise&lt;string&gt;
+
+处理透明加解密场景下的插件相关命令。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.DLP_POLICY_MANAGER
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| code | [PluginCmd](#plugincmd) | 是 | 表示要进行处理的插件命令。|
+| message | string | 是 | 要进行处理的信息。长度不超过4096字节，超出此范围抛出错误码19100001。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;string&gt; | Promise对象，返回当前命令执行结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 19100001 | Invalid parameter value. |
+| 19100011 | The system ability works abnormally. |
+| 19100025 | The file is invalid. |
+
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const cmd: dlpPermission.PluginCmd = dlpPermission.PluginCmd.CMD_BASE_INSTALL_PLUGIN;
+const message: string = "testPath";
+dlpPermission.processPluginCommand(cmd, message).then((res) => {
+  console.info('res', JSON.stringify(res));
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+}).finally(() => {
+  console.info("Completed processPluginCommand operation.");
+})
 ```

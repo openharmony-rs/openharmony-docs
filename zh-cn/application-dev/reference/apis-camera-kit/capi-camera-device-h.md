@@ -40,6 +40,7 @@
 | [Camera_ErrorCode OH_CameraDevice_GetSensorPhysicalSize(const Camera_Device* camera, float* width, float* height)](#oh_cameradevice_getsensorphysicalsize) | 获取相机传感器的物理尺寸。 |
 | [Camera_ErrorCode OH_CameraDevice_GetSensorPixelArraySize(const Camera_Device* camera, uint32_t* width, uint32_t* height)](#oh_cameradevice_getsensorpixelarraysize) | 获取相机传感器的像素阵列大小。 |
 | [Camera_ErrorCode OH_CameraDevice_GetSensorColorFilterArrangement(const Camera_Device* camera, OH_Camera_SensorColorFilterArrangement* sensorCFA)](#oh_cameradevice_getsensorcolorfilterarrangement) | 获取相机传感器的滤色阵列排列方式。 |
+| [Camera_ErrorCode OH_CameraDevice_GetAutomotiveCameraPosition(const Camera_Device* camera, OH_Camera_AutomotiveCameraPosition* automotiveCameraPosition)](#oh_cameradevice_getautomotivecameraposition) | 获取Car设备相机摄像头的位置。 |
 
 ## 函数说明
 
@@ -400,4 +401,28 @@ Camera_ErrorCode OH_CameraDevice_GetSensorColorFilterArrangement(const Camera_De
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
+### OH_CameraDevice_GetAutomotiveCameraPosition()
+
+```c
+Camera_ErrorCode OH_CameraDevice_GetAutomotiveCameraPosition(const Camera_Device* camera, OH_Camera_AutomotiveCameraPosition* automotiveCameraPosition)
+```
+
+**描述**
+
+获取Car设备相机摄像头的位置。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [Camera_Device](capi-oh-camera-camera-device.md)* camera | 指向用于检索属性的Camera_Device的指针。 |
+| [OH_Camera_AutomotiveCameraPosition](capi-camera-h.md#oh_camera_automotivecameraposition)* automotiveCameraPosition | 输出参数，返回Car设备摄像头位置枚举值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 

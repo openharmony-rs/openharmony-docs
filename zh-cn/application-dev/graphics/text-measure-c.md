@@ -32,11 +32,11 @@
 
 | 接口名 | 描述 | 
 | -------- | -------- |
-| double OH_Drawing_TypographyGetLongestLine(OH_Drawing_Typography\*) | 获取最长行的宽度，建议实际使用时将返回值向上取整。 | 
-| double OH_Drawing_TypographyGetLongestLineWithIndent(OH_Drawing_Typography\*) | 获取最长行的宽度（该宽度包含当前行缩进的宽度），建议实际使用时将返回值向上取整。 | 
-| size_t OH_Drawing_TypographyGetLineCount (OH_Drawing_Typography\* ) | 获取文本行数。 | 
-| OH_Drawing_LineMetrics\* OH_Drawing_TypographyGetLineMetrics (OH_Drawing_Typography\* ) | 获取段落行的度量信息。包含行的高度、宽度、起始坐标等信息。 | 
-| double OH_Drawing_TextStyleGetLetterSpacing (OH_Drawing_TextStyle \*) | 获取文本的字符间距。 | 
+| double OH_Drawing_TypographyGetLongestLine(OH_Drawing_Typography\* typography) | 获取最长行的宽度，建议实际使用时将返回值向上取整。 | 
+| double OH_Drawing_TypographyGetLongestLineWithIndent(OH_Drawing_Typography\* typography) | 获取最长行的宽度（该宽度包含当前行缩进的宽度），建议实际使用时将返回值向上取整。 | 
+| size_t OH_Drawing_TypographyGetLineCount(OH_Drawing_Typography\* typography) | 获取文本行数。 | 
+| OH_Drawing_LineMetrics\* OH_Drawing_TypographyGetLineMetrics(OH_Drawing_Typography\* typography) | 获取段落行的度量信息。包含行的高度、宽度、起始坐标等信息。 | 
+| double OH_Drawing_TextStyleGetLetterSpacing(OH_Drawing_TextStyle\* style) | 获取文本的字符间距。 | 
 
 
 ## 开发步骤
@@ -80,7 +80,7 @@
    OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
    ```
 
-4. 调用排版接口并设置段落排版宽度，对段落进行塑型排版。
+4. 调用排版接口并设置段落排版宽度，对段落进行塑形排版。
 
    <!-- @[c_text_metrics_layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
@@ -91,12 +91,12 @@
 
 5. 调用段落测量信息获取接口，获取指定数据。
 
-   <!-- @[c_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[c_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
    
    ``` C++
    // case1: 获取排版后最长行行宽
    double longestLine = OH_Drawing_TypographyGetLongestLine(typography);
-   DRAWING_LOGI("第%{public}d行 longestLine: %{public}f", longestLine);
+   DRAWING_LOGI("longestLine: %{public}f", longestLine);
    
    // case2:获取排版后段落行数
    size_t lineCnt = OH_Drawing_TypographyGetLineCount(typography);
@@ -120,7 +120,7 @@
    OH_Drawing_Font_Metrics fontMetrics;
    // 获取文本字体属性
    bool result = OH_Drawing_TextStyleGetFontMetrics(typography, myTextStyle, &fontMetrics);
-   DRAWING_LOGI("result: %{public}zu, fontMetrics ascent: %{public}f" , result, fontMetrics.ascent);
+   DRAWING_LOGI("result: %{public}d, fontMetrics ascent: %{public}f", result, fontMetrics.ascent);
    // 获取排版对象的指定行位置信息，该接口需要在OH_Drawing_TypographyLayout接口调用之后调用
    OH_Drawing_LineMetrics lineMetric;
    OH_Drawing_TypographyGetLineMetricsAt(typography, 0, &lineMetric);

@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 **Mangling** 是对ArkTS/ETS中的类型与函数签名进行编码的规则，用于在运行时唯一标识一个方法，包括区分函数的重载。Mangling结果是一段字符串，拼接了参数类型和返回类型的编码。
 

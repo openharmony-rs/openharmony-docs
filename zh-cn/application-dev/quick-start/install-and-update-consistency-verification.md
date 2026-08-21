@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 随着应用发展越来越复杂，应用也被拆成多个模块进行开发维护，不同的团队负责单个或者多个模块，应用在安装更新过程中会针对不同的字段进行一致性校验和验证，保证应用的安全合法性。本文介绍多模块安装或更新时，签名证书、配置文件的一致性校验规则。
@@ -36,7 +36,7 @@
 |<!--DelRow--> singleton|标识应用是否安装在0用户下。|否|是|
 |<!--DelRow--> appType|标识应用是三方应用或系统应用。|是|是|
 |<!--DelRow--> isStage|标识应用是否为Stage模型。|是，FA模型和Stage模型在同版本中不允许变更。|否|
-|targetBundleName|标识当前包所指定的目标应用，配置该字段的应用为具有overlay特征的应用。该字段来源[app.json5配置文件](./app-configuration-file.md)中targetBundleName字段。|是|是|
+|targetBundleName|标识当前包所指定的目标应用，配置该字段的应用为具有overlay特征的应用。该字段来源于[app.json5配置文件](./app-configuration-file.md)中targetBundleName字段。|是|是|
 |targetPriority|标识当前应用的优先级。该字段来源于[app.json5配置文件](./app-configuration-file.md)中的targetPriority字段。|是|是|
 |bundleType|标识应用的类型。该字段来源于[app.json5配置文件](./app-configuration-file.md)中的bundleType字段。|是|是|
 |installationFree|标识是否支持免安装。该字段来源于[module.json5配置文件](./module-configuration-file.md)中的installationFree字段。|是|是|

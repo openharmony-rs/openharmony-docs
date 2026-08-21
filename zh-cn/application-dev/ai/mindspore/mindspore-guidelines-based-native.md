@@ -1,4 +1,4 @@
-# 使用MindSpore Lite实现图像分类（C/C++）
+# 使用MindSpore Lite实现图像分类 (C/C++)
 
 <!--Kit: MindSpore Lite Kit-->
 <!--Subsystem: AI-->
@@ -12,10 +12,6 @@
 开发者可以使用[MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md)，在UI代码中直接集成MindSpore Lite能力，快速部署AI算法，进行AI模型推理，实现图像分类的应用。
 
 图像分类可实现对图像中物体的识别，在医学影像分析、自动驾驶、电子商务、人脸识别等领域有广泛的应用。
-
-## 基本概念
-
-- N-API：用于构建ArkTS本地化组件的一套接口。可利用N-API，将C/C++开发的库封装成ArkTS模块。
 
 ## 开发流程
 
@@ -96,7 +92,7 @@
    }
    ```
 
-3. 创建上下文，设置线程数、设备类型等参数，并加载模型。本样例模型，不支持使用NNRt推理。
+3. 创建上下文，设置线程数、设备类型等参数，并加载模型。本样例模型，不支持使用[NNRt](mindspore-lite-term.md#nnrt神经网络运行时)推理。
 
    <!-- @[napi_image_classification_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 
@@ -331,9 +327,9 @@
 
 1. 在 entry/src/main/cpp/types/libentry/Index.d.ts，定义ArkTS接口`runDemo()` 。内容如下：
 
-   <!-- @[index_image_classification_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/types/libentry/index.d.ts) -->
+   <!-- @[index_image_classification_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/types/libentry/Index.d.ts) -->
    
-   ```typescript
+   ``` TypeScript
    export const runDemo: (a: number[], b:Object) => Array<number>;
    ```
 
@@ -351,13 +347,12 @@
 ### 实现图像输入和预处理，并执行推理
 
 1. 此处以获取相册图片为例，调用[@ohos.file.picker](../../reference/apis-core-file-kit/js-apis-file-picker.md) 实现相册图片文件的选择。
-2. 根据模型的输入尺寸，调用[@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md) （实现图片处理）、[@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md) （实现基础文件操作） API对选择图片进行裁剪、获取图片buffer数据，并进行标准化处理。
+2. 根据模型的输入尺寸，调用[@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md)（实现图片处理）、[@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)（实现基础文件操作）API对选择图片进行裁剪、获取图片buffer数据，并进行标准化处理。
 3. 在 entry/src/main/ets/pages/Index.ets 中，调用封装的ArkTS模块，最后对推理结果进行处理。
 
-<!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/ets/pages/Index.ets) --> 
 
-```typescript
-// Index.ets
+``` TypeScript
 import msliteNapi from 'libentry.so';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -381,16 +376,19 @@ struct Index {
   @State maxIndex: number = 0;
   @State maxArray: Array<number> = [];
   @State maxIndexArray: Array<number> = [];
+  // ...
 
   build() {
     Row() {
       Column() {
         Text(this.message)
+        // ...
         Button() {
           Text('photo')
             .fontSize(30)
             .fontWeight(FontWeight.Bold)
         }
+        // ...
         .onClick(() => {
           let resMgr = this.getUIContext()?.getHostContext()?.getApplicationContext().resourceManager;
           if (resMgr === null || resMgr === undefined){
@@ -525,9 +523,9 @@ struct Index {
 
                         hilog.info(0xFF00, TAG, '%{public}s',
                           `MS_LITE_LOG: *** Finished MSLite Demo ***`);
-                      }).catch((error: BusinessError) => {
-                        hilog.error(0xFF00, TAG, '%{public}s',
-                          `MS_LITE_ERR: getRawFileContent promise error is: ${error}`);
+                        }).catch((error: BusinessError) => {
+                          hilog.error(0xFF00, TAG, '%{public}s',
+                            `MS_LITE_ERR: getRawFileContent promise error is: ${error}`);
                       })
                     })
                     // 5.关闭文件
@@ -549,7 +547,7 @@ struct Index {
 
 ### 调测验证
 
-1. 在DevEco Studio中连接设备，点击Run entry，编译Hap，有如下显示：
+1. 在DevEco Studio中连接设备，点击Run entry，编译HAP，有如下显示：
 
    ```shell
    Launching com.samples.mindsporelitecdemo

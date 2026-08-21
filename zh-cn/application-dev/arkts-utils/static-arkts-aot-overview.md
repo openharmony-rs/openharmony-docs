@@ -4,7 +4,7 @@
 <!--Owner: @NingQiCheng-->
 <!--Designer: @wanzixuan330-->
 <!--Tester: @haoyabo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 AOT（Ahead Of Time）是面向应用的预先编译优化能力。它将方舟字节码进一步编译为设备侧可执行的AOT产物，使应用在运行时命中相关已编译代码时直接执行机器码，减少解释执行开销。AOT产物生成并可用后，应用在冷启动、首帧和核心业务路径中可获得性能收益。
 

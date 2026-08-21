@@ -15,12 +15,13 @@
     - [@ohos.account.distributedAccount (分布式账号管理)(系统接口)](js-apis-distributed-account-sys.md)
     - [@ohos.account.osAccount (系统账号管理)(系统接口)](js-apis-osAccount-sys.md)
     <!--DelEnd-->
+    - [系统账号约束列表](appendix-osAccount-constraints.md)
   - 设备管理<!--device-management-arkts-->
     - [@ohos.batteryInfo (电量信息)](js-apis-battery-info.md)
     - [@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial.md)
     - [@ohos.deviceInfo (设备信息)](js-apis-device-info.md)
     - [@ohos.power (系统电源管理)](js-apis-power.md)
-    - [@ohos.runningLock (Runninglock锁)](js-apis-runninglock.md)
+    - [@ohos.runningLock (RunningLock锁)](js-apis-runninglock.md)
     - [@ohos.thermal (热管理)](js-apis-thermal.md)
     - [@ohos.usbManager (USB管理)](js-apis-usbManager.md)
     - [@ohos.usbManager.serial (串口管理)](js-apis-serialManager.md)
@@ -41,6 +42,7 @@
     <!--DelEnd-->
   - 数据文件处理<!--data-file-processing-arkts-->
     - [@ohos.app.ability.PrintExtensionAbility (打印扩展能力)](js-apis-app-ability-PrintExtensionAbility.md)
+    - [PrintExtensionContext](js-apis-PrintExtensionContext.md)
     - [@ohos.pasteboard (剪贴板)](js-apis-pasteboard.md)
     - [@ohos.print (打印)](js-apis-print.md)
     - [@ohos.scan (扫描)](js-apis-scan.md)
@@ -60,7 +62,7 @@
   - 进程线程通信<!--process-thread-communi-arkts-->
     - [系统定义的公共事件](common_event/commonEventManager-definitions.md)
     <!--Del-->
-    - [系统定义的公共事件(系统接口)](common_event/commonEventManager-definitions-sys.md)
+    - [系统定义的公共事件（系统接口）](common_event/commonEventManager-definitions-sys.md)
     <!--DelEnd-->
     - [@ohos.commonEventManager (公共事件模块)](js-apis-commonEventManager.md)
     - [@ohos.events.emitter (Emitter)](js-apis-emitter.md)
@@ -82,6 +84,7 @@
     - [@ohos.annotation (注解)](js-apis-annotation.md)
     - [@ohos.customization.customConfig (定制配置)](js-apis-customization-customConfig.md)
     - [@ohos.settings (设置数据项名称)](js-apis-settings.md)
+    - [@ohos.settingsLite (设置信息)](js-apis-settings-lite.md)
     - [@ohos.wallpaper (壁纸)](js-apis-wallpaper.md)
     - [@ohos.resourceschedule.systemload (性能功耗热融合档位)](js-apis-resourceschedule-systemload.md)
     - [@ohos.systemDateTime (系统时间、时区)](js-apis-date-time.md)
@@ -105,7 +108,7 @@
     - [@system.request (上传下载)](js-apis-system-request.md)
     - [@ohos.screenLock (锁屏管理)](js-apis-screen-lock.md)
     <!--Del-->
-    - [@ohos.commonEvent (公共事件模块)(系统应用)(已废弃)](js-apis-commonEvent-sys.md)
+    - [@ohos.commonEvent (公共事件模块)(系统应用)](js-apis-commonEvent-sys.md)
     - [@ohos.usb (USB管理)(系统接口)](js-apis-usb-deprecated-sys.md)
     - [@ohos.systemParameter (系统属性)(系统接口)](js-apis-system-parameter-sys.md)
     <!--DelEnd-->
@@ -172,7 +175,7 @@
   - [热管理错误码](errorcode-thermal.md)
   - [上传下载错误码](errorcode-request.md)
   - [时间时区服务错误码](errorcode-time.md)
-  - [事件错误码](errorcode-CommonEventService.md)
+  - [公共事件错误码](errorcode-CommonEventService.md)
   <!--Del-->
   - [系统参数错误码](errorcode-system-parameterV9.md)
   <!--DelEnd-->

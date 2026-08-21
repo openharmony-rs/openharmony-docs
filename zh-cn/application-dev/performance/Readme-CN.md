@@ -68,7 +68,7 @@
     - [使用HiDumper命令行工具优化性能](performance-optimization-using-hidumper.md)
     - [使用SmartPerf-Host分析应用性能](performance-optimization-using-smartperf-host.md)
     - [常用trace使用指导](common-trace-using-instructions.md)
-    - [状态变量组件定位工具实践](state_variable_dfx_pratice.md)
+    - [状态变量组件定位工具实践](state-variable-dfx-practice.md)
     - [应用滑动场景帧率问题分析实践](long-frame-optimization.md)
     - [时延类性能问题分析实践](delay_related_performance.md)
     - [Web性能问题分析案例](web-analyse.md)

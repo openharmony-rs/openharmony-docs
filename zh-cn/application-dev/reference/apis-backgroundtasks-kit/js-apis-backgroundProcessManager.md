@@ -64,7 +64,7 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
 let childProcessPid = 33333;
 try {
-    backgroundProcessManager.setProcessPriority(childProcessPid,
+    await backgroundProcessManager.setProcessPriority(childProcessPid,
         backgroundProcessManager.ProcessPriority.PROCESS_INACTIVE);
 } catch (error) {
     console.error(`setProcessPriority failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -105,15 +105,17 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
 let childProcessPid = 33333;
 try {
-    backgroundProcessManager.resetProcessPriority(childProcessPid); 
+    await backgroundProcessManager.resetProcessPriority(childProcessPid); 
 } catch (error) {
     console.error(`resetProcessPriority failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## backgroundProcessManager.setPowerSaveMode<sup>20+</sup>
+## backgroundProcessManager.setPowerSaveMode
 
-setPowerSaveMode(pid: number, powerSaveMode: PowerSaveMode): Promise&lt;void&gt;
+ArkTS-Dyn: setPowerSaveMode(pid: number, powerSaveMode: PowerSaveMode): Promise&lt;void&gt;
+
+ArkTS-Sta: setPowerSaveMode(pid: int, powerSaveMode: PowerSaveMode): Promise&lt;void&gt;
 
 设置进程的能效模式，使用Promise异步回调。
 
@@ -128,12 +130,16 @@ setPowerSaveMode(pid: number, powerSaveMode: PowerSaveMode): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | number    | 是        | 进程号。  |
-| powerSaveMode | [PowerSaveMode](#powersavemode20) | 是 | 能效模式。 |
+| pid         | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是        | 进程号。<br>取值为正整数。  |
+| powerSaveMode | [PowerSaveMode](#powersavemode) | 是 | 能效模式。 |
 
 **返回值：**
 
@@ -159,17 +165,23 @@ setPowerSaveMode(pid: number, powerSaveMode: PowerSaveMode): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
-let pid = 33333;
+let pid = 33333;  // 请开发者替换为实际的进程号
 try {
-    backgroundProcessManager.setPowerSaveMode(pid, backgroundProcessManager.PowerSaveMode.EFFICIENCY_MODE); 
+  backgroundProcessManager.setPowerSaveMode(pid, backgroundProcessManager.PowerSaveMode.EFFICIENCY_MODE).then(() => {
+    console.info('setPowerSaveMode promise');
+  }).catch((err: BusinessError) => {
+    console.error(`setPowerSaveMode failed, promise errCode: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    console.error(`setPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`setPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## backgroundProcessManager.isPowerSaveMode<sup>20+</sup>
+## backgroundProcessManager.isPowerSaveMode
 
-isPowerSaveMode(pid: number): Promise&lt;boolean&gt;
+ArkTS-Dyn: isPowerSaveMode(pid: number): Promise&lt;boolean&gt;
+
+ArkTS-Sta: isPowerSaveMode(pid: int): Promise&lt;boolean&gt;
 
 查询进程是否处于能效模式，使用Promise异步回调。
 
@@ -179,11 +191,15 @@ isPowerSaveMode(pid: number): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | number    | 是        | 进程号。  |
+| pid         | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是        | 进程号。<br>取值为正整数。  |
 
 **返回值：**
 
@@ -207,19 +223,23 @@ isPowerSaveMode(pid: number): Promise&lt;boolean&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
-let pid = 33333;
+let pid = 33333;  // 请开发者替换为实际的进程号
 try {
-    backgroundProcessManager.isPowerSaveMode(pid).then((result: boolean) => {
-        console.info("isPowerSaveMode: " + result.toString());
-    });
+  backgroundProcessManager.isPowerSaveMode(pid).then((result: boolean) => {
+    console.info(`isPowerSaveMode: ${result}`);
+  }).catch((err: BusinessError) => {
+    console.error(`isPowerSaveMode failed, promise errCode: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    console.error(`isPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`isPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## backgroundProcessManager.getPowerSaveMode<sup>23+</sup>
+## backgroundProcessManager.getPowerSaveMode
 
-getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
+ArkTS-Dyn: getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
+
+ArkTS-Sta: getPowerSaveMode(pid: int): Promise&lt;PowerSaveMode&gt;
 
 获取进程能效模式。使用Promise异步回调。
 
@@ -229,17 +249,21 @@ getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
 
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | number    | 是        | 进程号。<br>取值范围：大于0的整数。  |
+| pid         | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是        | 进程号。<br>取值为正整数。  |
 
 **返回值：**
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise<[PowerSaveMode](#powersavemode20)> | Promise对象。返回进程能效模式状态。 |
+| Promise<[PowerSaveMode](#powersavemode)> | Promise对象。返回进程能效模式状态。 |
 
 **错误码：**
 
@@ -256,14 +280,16 @@ getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
-// 请开发者替换为实际的进程号
-let pid = 33333;
+
+let pid = 33333;  // 请开发者替换为实际的进程号
 try {
-    backgroundProcessManager.getPowerSaveMode(pid).then((result: backgroundProcessManager.PowerSaveMode) => {
-        console.info("getPowerSaveMode: " + result.toString());
-    });
+  backgroundProcessManager.getPowerSaveMode(pid).then((result: backgroundProcessManager.PowerSaveMode) => {
+    console.info(`getPowerSaveMode: ${result}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getPowerSaveMode failed, promise errCode: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    console.error(`getPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`getPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -282,7 +308,11 @@ try {
 | PROCESS_BACKGROUND   | 1        | 该档位相较PROCESS_INACTIVE压制效果更显著，获取到的CPU资源更少。推荐执行处于后台的图文页面等用户无感知业务的后台子进程时设置该档位。  |
 | PROCESS_INACTIVE     | 2        | 推荐正在执行播放音频、导航等用户可感知业务的后台子进程时设置该档位。                                             |
 
-## PowerSaveMode<sup>20+</sup>
+## PowerSaveMode
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 能效模式。
 

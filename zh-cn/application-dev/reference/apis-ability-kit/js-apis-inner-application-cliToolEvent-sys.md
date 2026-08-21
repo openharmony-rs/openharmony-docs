@@ -15,8 +15,7 @@ CliToolEvent用于描述CLI工具进程运行期间产生的会话事件信息�
 > 本模块仅适用于ArkTS-Dyn。
 >
 > 本模块接口为系统接口。
->
-> 本模块接口仅可在Stage模型下使用。
+
 
 ## 导入模块
 
@@ -38,8 +37,8 @@ CLI工具会话事件信息。
 
 | 名称          | 类型                              | 只读 | 可选 | 说明              |
 | ------------- | --------------------------------- | ---- | ---- | ----------------- |
-| toolEventType | [ToolEventType](#tooleventtype)   | 是   | 否   | CLI工具事件类型。 |
-| data          | string                            | 是   | 否   | CLI工具事件数据。 |
+| toolEventType | [ToolEventType](#tooleventtype)   | 否   | 否   | CLI工具事件类型。 |
+| data          | string                            | 否   | 否   | CLI工具事件数据。 |
 
 ## ToolEventType
 

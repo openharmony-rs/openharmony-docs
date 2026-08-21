@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-OpenLinkOptions可以作为[openLink()](js-apis-inner-application-uiAbilityContext.md#openlink12)的入参，用于标识是否仅打开AppLinking和传递键值对可选参数。
+OpenLinkOptions作为[openLink()](js-apis-inner-application-uiAbilityContext.md#openlink12)的入参，用于控制应用启动方式。支持配置是否仅通过AppLinking方式启动、传递自定义键值对参数、控制失败提示显示以及处理启动结果回调，适用于需要控制应用拉起行为和获取启动结果的场景。
 
 > **说明：**
 >
@@ -32,9 +32,9 @@ import { OpenLinkOptions } from '@kit.AbilityKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | appLinkingOnly | boolean | 否 | 是 | 表示是否必须以<!--RP1-->[AppLinking](../../application-models/app-linking-startup.md)<!--RP1End-->的方式启动UIAbility。<br />- 取值为true时，如果不存在与AppLinking相匹配的UIAbility，直接返回。<br />- 取值为false时，如果不存在与AppLinking相匹配的UIAbility，AppLinking会退化为[DeepLinking](../../application-models/deep-linking-startup.md)。默认值为false。<br />aa命令隐式拉起Ability时可以通过设置"--pb appLinkingOnly true/false"以AppLinking的方式进行启动。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
-| parameters | ArkTS-Dyn: Record\<string, Object><br>ArkTS-Sta: Record\<string, RecordData> | 否 | 是 | 表示WantParams参数。<br/>**说明**：具体使用规则请参考[want](./js-apis-app-ability-want.md)中的parameters属性。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| parameters | ArkTS-Dyn: Record\<string, Object><br>ArkTS-Sta: Record\<string, RecordData> | 否 | 是 | 表示WantParams参数，用于向被拉起的UIAbility传递键值对形式的额外数据。键为字符串类型，值为任意类型的对象。<br/>**说明**：具体使用规则请参考[want](./js-apis-app-ability-want.md)中的parameters属性。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | hideFailureTipDialog<sup>21+</sup> | boolean | 否 | 是 | 表示[Deep Linking](../../application-models/deep-linking-startup.md)找不到应用时是否显示“暂无可用打开方式”的弹窗。<br />- 取值为true时，不显示“暂无可用打开方式”的弹窗。<br />- 取值为false时，显示“暂无可用打开方式”的弹窗。默认值为false。<br/>**说明**：appLinkingOnly字段为true时不会触发Deep Linking流程，该字段不会生效。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 21开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
-| completionHandler<sup>21+</sup> | [CompletionHandler](js-apis-app-ability-completionHandler.md#completionhandler) | 否 | 是 | 拉起应用结果的操作类，用于处理拉起应用的结果。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 21开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 21 |
+| completionHandler<sup>21+</sup> | [CompletionHandler](js-apis-app-ability-completionHandler.md#completionhandler) | 否 | 是 | 拉起应用结果的操作类，用于处理拉起应用的结果。不传时不处理拉起结果。该类包含[onRequestSuccess](js-apis-app-ability-completionHandler.md#onrequestsuccess)和[onRequestFailure](js-apis-app-ability-completionHandler.md#onrequestfailure)两个回调方法，用于接收拉起应用成功或失败的回调。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 21开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 21 |
 
 **示例：**
 
@@ -64,6 +64,7 @@ ArkTS-Dyn示例：
             .height('5%')
             .margin({ bottom: '12vp' })
             .onClick(() => {
+              // 获取UIAbilityContext
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
               let link: string = 'https://www.example.com';
               let completionHandler: CompletionHandler = {
@@ -90,21 +91,27 @@ ArkTS-Dyn示例：
                 completionHandler: completionHandler
               };
               try {
+                // 用openLink接口拉起目标应用。
                 context.openLink(
                   link,
                   openLinkOptions,
+                  // 结果回调：err为错误信息，result包含返回码resultCode和want参数。
                   (err, result) => {
-                    hilog.error(DOMAIN, TAG, `openLink callback error.code: ${JSON.stringify(err)}`);
+                    if (err) {
+                      hilog.error(DOMAIN, TAG, `openLink callback error.code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`); 
+                      return;
+                    }
                     hilog.info(DOMAIN, TAG, `openLink callback result: ${JSON.stringify(result.resultCode)}`);
                     hilog.info(DOMAIN, TAG, `openLink callback result data: ${JSON.stringify(result.want)}`);
                   }
+                // 调用成功打印日志，调用失败捕获错误。
                 ).then(() => {
                   hilog.info(DOMAIN, TAG, `open link success.`);
-                }).catch((err: BusinessError) => {
-                  hilog.error(DOMAIN, TAG, `open link failed, errCode: ${JSON.stringify(err.code)}`);
+                }).catch ((err: BusinessError) => {
+                  hilog.error(DOMAIN, TAG, `open link failed, errCode: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
                 });
               } catch (e) {
-                hilog.error(DOMAIN, TAG, `open link failed, errCode: ${JSON.stringify(e.code)}`);
+                hilog.error(DOMAIN, TAG, `open link failed, errCode: ${JSON.stringify(e.code)}, message: ${JSON.stringify(e.message)}`);
               }
             })
         }

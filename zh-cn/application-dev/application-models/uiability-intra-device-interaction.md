@@ -897,7 +897,7 @@ export default class ColdStartAbility extends UIAbility {
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { Want, UIAbility } from '@kit.AbilityKit';
+    import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
     import { window, UIContext } from '@kit.ArkUI';
     const DOMAIN_NUMBER: number = 0xFF00;
     const TAG: string = '[HotStartAbility]';

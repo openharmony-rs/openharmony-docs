@@ -41,6 +41,8 @@
 
 - WebNativeMessagingExtensionAbility仅用于浏览器扩展与应用通信场景，不支持如后台服务等其他场景使用。
 
+- 应用包名仅允许使用小写英文字母、数字、下划线（_）、点（.）。
+
 ## 运作机制
 
 ### 整体流程
@@ -186,7 +188,7 @@ function sendMessageToNative() {
        {message: nativeMessage},
        function(response) {
        // 收到一次应用回复的信息后断开连接
-       console.info("sendNativeMessage收到应用程序响应:", JSON.stringify (response));
+       console.info("sendNativeMessage收到应用程序响应:", JSON.stringify(response));
        }
      )
    }
@@ -249,7 +251,7 @@ function sendMessageToNative() {
          let writeLen = await fileIo.write(fdWrite, writeBuffer.buffer);
          hilog.info(DOMAIN_NUMBER, TAG, 'write pipe length %{public}d', writeLen);
        } catch (err) {
-         hilog.error(DOMAIN_NUMBER, TAG, 'fileIo failed, error code: ' + err.code + " message: " + err.code);
+         hilog.error(DOMAIN_NUMBER, TAG, 'fileIo failed, error code: ' + err.code + " message: " + err.message);
        }
      }
    
@@ -531,7 +533,7 @@ function sendMessageToNative() {
      }
      onDisconnect(connection:webNativeMessagingExtensionManager.ConnectionNativeInfo) {
        // disconnect
-       console.error(`onDisconnect id ${connection.connectionId} is connected`);
+       console.error(`onDisconnect id ${connection.connectionId} is disconnected`);
      }
      onFailed(code:webNativeMessagingExtensionManager.NmErrorCode, errMsg:string) {
        console.error(`onFailed error code is ${code}, errMsg is ${errMsg}`);

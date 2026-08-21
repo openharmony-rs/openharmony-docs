@@ -6,7 +6,7 @@
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
-typeNode提供创建具体类型的FrameNode能力，可通过FrameNode的基础接口进行自定义的挂载，使用占位容器进行显示。
+typeNode提供创建具体类型的FrameNode能力，可通过FrameNode的基础接口进行自定义的挂载，使用占位容器进行显示。适用于需要通过代码动态创建具体类型组件节点并进行自定义挂载的场景。
 
 > **说明：**
 >
@@ -103,7 +103,7 @@ abstract initialize(content?: string | Resource, value?: TextOptions): TextAttri
 
 createNode(context: UIContext, nodeType: 'Text'): Text
 
-创建Text类型的FrameNode节点。
+创建Text类型的FrameNode节点。使用typeNode创建Text节点时，当传入的UIContext对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -141,7 +141,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // 创建Text
     let text = typeNode.createNode(uiContext, 'Text');
-    text.initialize("Hello").fontColor(Color.Blue).fontSize(14);
+    text.initialize('Hello').fontColor(Color.Blue).fontSize(14);
     typeNode.getAttribute(text, 'Text')?.fontWeight(FontWeight.Bold);
     col.appendChild(text);
     return node;
@@ -233,13 +233,13 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // 创建Text
     let text = typeNode.createNode(uiContext, 'Text');
-    text.initialize("Hello");
+    text.initialize('Hello');
     // 获取Text的属性
     typeNode.getAttribute(text, 'Text')?.fontColor(Color.Red)
     col.appendChild(text);
     // 创建另一个Text用于对比
     let text2 = typeNode.createNode(uiContext, 'Text');
-    text2.initialize("world");
+    text2.initialize('world');
     col.appendChild(text2);
     return node;
   }
@@ -351,7 +351,7 @@ bindController(node: FrameNode, controller: TextController, nodeType: 'Text'): v
 | ------------------ | ------------------ | ------------------- | ------------------- |
 | node | [FrameNode](./js-apis-arkui-frameNode.md) | 是   | 绑定文本控制器的目标节点。 |
 | controller | [TextController](arkui-ts/ts-basic-components-text.md#textcontroller11) | 是   | 文本控制器。 |
-| nodeType | 'Text' | 是 | 绑定输入框控制器的目标节点的节点类型为Text。 |
+| nodeType | 'Text' | 是 | 绑定文本控制器的目标节点的节点类型为Text。 |
 
 **错误码：**
 
@@ -380,7 +380,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // 创建Text
     let text = typeNode.createNode(uiContext, 'Text');
-    text.initialize("Hello").fontColor(Color.Blue).fontSize(14);
+    text.initialize('Hello').fontColor(Color.Blue).fontSize(14);
     typeNode.getAttribute(text, 'Text')?.fontWeight(FontWeight.Bold)
     // 绑定TextController
     typeNode.bindController(text, this.controller, 'Text');
@@ -562,7 +562,7 @@ import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
 // 继承NodeController实现自定义Column控制器
 class MyColumnController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
-    let node = new FrameNode(uiContext)
+    let node = new FrameNode(uiContext);
     node.commonAttribute
     // 创建Column
     let col = typeNode.createNode(uiContext, 'Column')
@@ -659,13 +659,13 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // 创建Column
     let col1 = typeNode.createNode(uiContext, 'Column');
-    col1.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    col1.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     // 获取Column的属性
-    typeNode.getAttribute(col1, 'Column')?.backgroundColor(Color.Blue).width("100%")
+    typeNode.getAttribute(col1, 'Column')?.backgroundColor(Color.Blue).width('100%');
     col.appendChild(col1);
     // 创建另一个Column用于对比
     let col2 = typeNode.createNode(uiContext, 'Column');
-    col2.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    col2.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     col.appendChild(col2);
     return node;
   }
@@ -910,13 +910,13 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // 创建Row
     let row1 = typeNode.createNode(uiContext, 'Row');
-    row1.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    row1.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     // 获取Row的属性
-    typeNode.getAttribute(row1, 'Row')?.backgroundColor(Color.Blue).width("100%")
+    typeNode.getAttribute(row1, 'Row')?.backgroundColor(Color.Blue).width('100%');
     col.appendChild(row1);
     // 创建另一个Row用于对比
     let row2 = typeNode.createNode(uiContext, 'Row');
-    row2.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    row2.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     col.appendChild(row2);
     return node;
   }
@@ -1074,7 +1074,7 @@ class MyStackController extends NodeController {
       .backgroundColor(Color.Gray)
     node.appendChild(stack)
     let text = typeNode.createNode(uiContext, 'Text')
-    text.initialize("This is Text")
+    text.initialize('This is Text')
     // 向stack添加text
     stack.appendChild(text)
     return node;
@@ -1165,13 +1165,13 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // 创建Stack
     let stack1 = typeNode.createNode(uiContext, 'Stack');
-    stack1.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    stack1.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     // 获取Stack的属性
-    typeNode.getAttribute(stack1, 'Stack')?.backgroundColor(Color.Blue).width("100%")
+    typeNode.getAttribute(stack1, 'Stack')?.backgroundColor(Color.Blue).width('100%')
     col.appendChild(stack1);
     // 创建另一个Stack用于对比
     let stack2 = typeNode.createNode(uiContext, 'Stack');
-    stack2.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    stack2.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     col.appendChild(stack2);
     return node;
   }
@@ -1331,7 +1331,7 @@ class MyGridRowController extends NodeController {
     // 创建GridCol
     let gridCol = typeNode.createNode(uiContext, 'GridCol')
     gridCol.initialize({ span: 2, offset: 4 })
-      .height("100%")
+      .height('100%')
       .backgroundColor(Color.Red)
     // 向gridRow添加gridCol
     gridRow.appendChild(gridCol)
@@ -1494,7 +1494,7 @@ class MyGridRowController extends NodeController {
     // 创建GridCol
     let gridCol = typeNode.createNode(uiContext, 'GridCol')
     gridCol.initialize({ span: 2, offset: 4 })
-      .height("100%")
+      .height('100%')
       .backgroundColor(Color.Red)
     // 向gridRow添加gridCol
     gridRow.appendChild(gridCol)
@@ -1743,13 +1743,13 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // 创建Flex
     let flex1 = typeNode.createNode(uiContext, 'Flex');
-    flex1.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    flex1.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     // 获取Flex的属性
-    typeNode.getAttribute(flex1, 'Flex')?.backgroundColor(Color.Blue).width("100%")
+    typeNode.getAttribute(flex1, 'Flex')?.backgroundColor(Color.Blue).width('100%')
     col.appendChild(flex1);
     // 创建另一个Flex用于对比
     let flex2 = typeNode.createNode(uiContext, 'Flex');
-    flex2.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    flex2.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     col.appendChild(flex2);
     return node;
   }
@@ -1911,7 +1911,7 @@ class MySwiperController extends NodeController {
 
     // 创建Text
     let text0 = typeNode.createNode(uiContext, 'Text')
-    text0.initialize("0")
+    text0.initialize('0')
       .width('100%')
       .height('100%')
       .textAlign(TextAlign.Center)
@@ -1919,7 +1919,7 @@ class MySwiperController extends NodeController {
     swiperNode.appendChild(text0)
     // 创建另一个Text用于切换
     let text1 = typeNode.createNode(uiContext, 'Text')
-    text1.initialize("1")
+    text1.initialize('1')
       .width('100%')
       .height('100%')
       .textAlign(TextAlign.Center)
@@ -2432,7 +2432,7 @@ class MyScrollController extends NodeController {
     // 创建Scroll并设置属性
     let scrollNode = typeNode.createNode(uiContext, 'Scroll');
     scrollNode.initialize(scroller).size({ width: '100%', height: 500 });
-    typeNode.getAttribute(scrollNode, "Scroll")?.friction(0.6);
+    typeNode.getAttribute(scrollNode, 'Scroll')?.friction(0.6);
 
     let colNode = typeNode.createNode(uiContext, 'Column');
     // 向scroll添加column
@@ -2584,7 +2584,7 @@ typeNode.getScrollAttribute(node);
 
 getEvent(node: FrameNode, nodeType: 'Scroll'): UIScrollEvent | undefined
 
-获取Scroll节点中持有的UIScrollEvent对象，用于设置滚动事件。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
+获取Scroll节点中持有的UIScrollEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2615,7 +2615,7 @@ getEvent(node: FrameNode, nodeType: 'Scroll'): UIScrollEvent | undefined
 
 getScrollEvent(node: FrameNode): UIScrollEvent | undefined
 
-获取Scroll节点中持有的UIScrollEvent对象，用于设置滚动事件。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
+获取Scroll节点中持有的UIScrollEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2911,13 +2911,13 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // 创建RelativeContainer
     let relative1 = typeNode.createNode(uiContext, 'RelativeContainer');
-    relative1.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    relative1.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     // 获取RelativeContainer的属性
-    typeNode.getAttribute(relative1, 'RelativeContainer')?.backgroundColor(Color.Blue).width("100%")
+    typeNode.getAttribute(relative1, 'RelativeContainer')?.backgroundColor(Color.Blue).width('100%')
     col.appendChild(relative1);
     // 创建另一个RelativeContainer用于对比
     let relative2 = typeNode.createNode(uiContext, 'RelativeContainer');
-    relative2.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    relative2.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     col.appendChild(relative2);
     return node;
   }
@@ -2981,7 +2981,7 @@ Divider类型的FrameNode节点类型。不允许添加子组件。
 
 | 类型                                                     | 说明                                                         |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;DividerInterface, DividerAttribute&gt; | 提供Divider类型FrameNode节点。<br/> DividerInterface用于[TypedFrameNode](./js-apis-arkui-frameNode.md#typedframenode12)的[initialize](./js-apis-arkui-frameNode.md#属性)接口的入参，入参为RelativeContainer组件的构造函数类型。 <br/> DividerAttribute用于TypedFrameNode的[attribute](./js-apis-arkui-frameNode.md#属性)接口的返回值，返回Divider组件的属性设置对象。<br/> DividerInterface表示Divider的[接口](./arkui-ts/ts-basic-components-divider.md#接口)，DividerAttribute表示Divider的[属性](./arkui-ts/ts-basic-components-divider.md#属性)。 |
+| TypedFrameNode&lt;DividerInterface, DividerAttribute&gt; | 提供Divider类型FrameNode节点。<br/> DividerInterface用于[TypedFrameNode](./js-apis-arkui-frameNode.md#typedframenode12)的[initialize](./js-apis-arkui-frameNode.md#属性)接口的入参，入参为Divider组件的构造函数类型。 <br/> DividerAttribute用于TypedFrameNode的[attribute](./js-apis-arkui-frameNode.md#属性)接口的返回值，返回Divider组件的属性设置对象。<br/> DividerInterface表示Divider的[接口](./arkui-ts/ts-basic-components-divider.md#接口)，DividerAttribute表示Divider的[属性](./arkui-ts/ts-basic-components-divider.md#属性)。 |
 
 ## Divider<sup>23+</sup>
 type Divider = DividerFrameNode
@@ -3489,7 +3489,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // 创建Search
     let search = typeNode.createNode(uiContext, 'Search');
-    search.initialize({ value: "Search" })
+    search.initialize({ value: 'Search' })
       .searchButton('SEARCH')
       .textFont({ size: 14, weight: 400 })
     col.appendChild(search);
@@ -3717,7 +3717,7 @@ Image类型的FrameNode节点类型。不允许添加子组件。
 
 createNode(context: UIContext, nodeType: 'Image'): Image
 
-创建Image类型的FrameNode节点。
+创建Image类型的FrameNode节点。使用typeNode创建Image节点时，当传入的UIContext对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3962,7 +3962,7 @@ class MyListController extends NodeController {
     // 创建List
     let listNode = typeNode.createNode(uiContext, 'List');
     listNode.initialize({ space: 3 }).size({ width: '100%', height: '100%' });
-    typeNode.getAttribute(listNode, "List")?.friction(0.6);
+    typeNode.getAttribute(listNode, 'List')?.friction(0.6);
 
     // 在list下创建ListItemGroup节点
     let listItemGroupNode = typeNode.createNode(uiContext, 'ListItemGroup');
@@ -3980,7 +3980,7 @@ class MyListController extends NodeController {
     // 创建ListItem，添加Text至ListItem，添加至listItemGroup
     let listItemNode2 = typeNode.createNode(uiContext, 'ListItem');
     listItemNode2.initialize({ style: ListItemStyle.CARD }).borderWidth(1).backgroundColor('#FF00FF');
-    typeNode.getAttribute(listItemNode2, "ListItem")?.height(100);
+    typeNode.getAttribute(listItemNode2, 'ListItem')?.height(100);
     let text2 = typeNode.createNode(uiContext, 'Text');
     text2.initialize('ListItem2');
     listItemNode2.appendChild(text2);
@@ -4043,7 +4043,7 @@ typeNode.createNode(uiContext);
 
 getEvent(node: FrameNode, nodeType: 'List'): UIListEvent | undefined
 
-获取List节点中持有的UIListEvent对象，用于设置滚动事件。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
+获取List节点中持有的UIListEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -4074,7 +4074,7 @@ getEvent(node: FrameNode, nodeType: 'List'): UIListEvent | undefined
 
 getListEvent(node: FrameNode): UIListEvent | undefined
 
-获取List节点中持有的UIListEvent对象，用于设置滚动事件。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
+获取List节点中持有的UIListEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -4546,7 +4546,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // 创建TextInput
     let textInput = typeNode.createNode(uiContext, 'TextInput');
-    textInput.initialize({ text: "TextInput" });
+    textInput.initialize({ text: 'TextInput' });
     col.appendChild(textInput);
     return node;
   }
@@ -4732,7 +4732,7 @@ struct FrameNodeTypeTest {
 ### bindController('TextInput')<sup>20+</sup>
 bindController(node: FrameNode, controller: TextInputController, nodeType: 'TextInput'): void
 
-将输入框控制器[TextInputController](arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)绑定到[TextInput](#textinput)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口从API版本26.0.0开始支持声明式方式创建的节点。
+将输入框控制器[TextInputController](arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)绑定到[TextInput](#textinput)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API版本26.0.0开始，该接口支持声明式方式创建的节点，API版本26.0.0以下版本不支持。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4776,7 +4776,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // 创建、初始化TextInput，默认获焦
     let textInput = typeNode.createNode(uiContext, 'TextInput');
-    textInput.initialize({ text: "TextInput" })
+    textInput.initialize({ text: 'TextInput' })
       .defaultFocus(true)
     col.appendChild(textInput);
     // 绑定TextInputController，设置光标位置
@@ -4805,7 +4805,7 @@ struct FrameNodeTypeTest {
 
 bindTextInputController(node: FrameNode, controller: TextInputController): void
 
-将输入框控制器[TextInputController](arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)绑定到[TextInput](#textinput)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口从API版本26.0.0开始支持声明式方式创建的节点。
+将输入框控制器[TextInputController](arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)绑定到[TextInput](#textinput)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API版本26.0.0开始，该接口支持声明式方式创建的节点，API版本26.0.0以下版本不支持。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4892,7 +4892,7 @@ Button类型的FrameNode节点类型。以子组件模式创建允许添加一�
 
 | 类型                                                   | 说明                                                         |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;ButtonInterface, ButtonAttribute&gt; | 提供Button类型FrameNode节点。<br/> ButtonInterface用于[TypedFrameNode](./js-apis-arkui-frameNode.md#typedframenode12)的[initialize](./js-apis-arkui-frameNode.md#属性)接口的入参，入参为Button组件的构造函数类型。 <br/> ButtonAttribute用于TypedFrameNode的[attribute](./js-apis-arkui-frameNode.md#属性)接口的返回值，返回Button组件的属性设置对象。<br/> 接口入参label不为空时，以label模式创建Button组件，以此模式创建无法包含子组件，并且不允许再设置子组件，否则会抛出异常。且label模式和子组件模式在第一次initialize创建之后无法在后续的initialize进行动态修改，如需要包含子组件，第一次initialize时不要设置label参数。<br/> 以子组件模式创建时，只能包含一个子组件，不能设置多个子组件，否则会抛出异常。<br/> ButtonInterface表示Button的[接口](./arkui-ts/ts-basic-components-button.md#接口)，ButtonAttribute表示Button的[属性](./arkui-ts/ts-basic-components-button.md#属性)。 |
+| TypedFrameNode&lt;ButtonInterface, ButtonAttribute&gt; | 提供Button类型FrameNode节点。<br/> ButtonInterface用于[TypedFrameNode](./js-apis-arkui-frameNode.md#typedframenode12)的[initialize](./js-apis-arkui-frameNode.md#属性)接口的入参，入参为Button组件的构造函数类型。 <br/> ButtonAttribute用于TypedFrameNode的[attribute](./js-apis-arkui-frameNode.md#属性)接口的返回值，返回Button组件的属性设置对象。<br/> 接口入参label不为空时，以label模式创建Button组件，以此模式创建时无法包含子组件，并且不允许再设置子组件，否则会抛出异常。且label模式和子组件模式在第一次initialize创建之后无法在后续的initialize进行动态修改，如需要包含子组件，第一次initialize时不要设置label参数。<br/> 以子组件模式创建时，只能包含一个子组件，不能设置多个子组件，否则会抛出异常。<br/> ButtonInterface表示Button的[接口](./arkui-ts/ts-basic-components-button.md#接口)，ButtonAttribute表示Button的[属性](./arkui-ts/ts-basic-components-button.md#属性)。 |
 
 ### createNode('Button')
 
@@ -4940,9 +4940,9 @@ class MyButtonController extends NodeController {
     node.appendChild(col)
     // 创建Button
     let button = typeNode.createNode(uiContext, 'Button')
-    button.initialize("This is Button")
+    button.initialize('This is Button')
       .onClick(() => {
-        uiContext.getPromptAction().showToast({ message: "Button clicked" })
+        uiContext.getPromptAction().showToast({ message: 'Button clicked' })
       })
     col.appendChild(button)
 
@@ -5008,12 +5008,12 @@ class MyButtonController extends NodeController {
       .height('100%')
     node.appendChild(col)
     let button = typeNode.createNode(uiContext, 'Button')
-    button.initialize("This is Button")
+    button.initialize('This is Button')
       .onClick(() => {
-        uiContext.getPromptAction().showToast({ message: "Button clicked" })
+        uiContext.getPromptAction().showToast({ message: 'Button clicked' })
       })
     // 获取Button属性
-    typeNode.getAttribute(button,'Button')?.buttonStyle(ButtonStyleMode.TEXTUAL)
+    typeNode.getAttribute(button, 'Button')?.buttonStyle(ButtonStyleMode.TEXTUAL);
     col.appendChild(button)
 
     return node;
@@ -5458,8 +5458,8 @@ class MyWaterFlowController extends NodeController {
 
   // 计算FlowItem高
   private getHeight() {
-    let ret = Math.floor(Math.random() * this.maxHeight);
-    return (ret > this.minHeight ? ret : this.minHeight);
+    let randomHeight = Math.floor(Math.random() * this.maxHeight);
+    return (randomHeight > this.minHeight ? randomHeight : this.minHeight);
   }
 
   makeNode(uiContext: UIContext): FrameNode | null {
@@ -5471,13 +5471,13 @@ class MyWaterFlowController extends NodeController {
       .columnsTemplate('1fr 1fr')
       .columnsGap(10)
       .rowsGap(5);
-    typeNode.getAttribute(waterFlowNode, "WaterFlow")?.friction(0.6);
+    typeNode.getAttribute(waterFlowNode, 'WaterFlow')?.friction(0.6);
 
     // 创建FlowItem并设置属性
     for (let i = 0; i < 20; i++) {
       let flowItemNode = typeNode.createNode(uiContext, 'FlowItem');
       flowItemNode.attribute.size({ height: this.getHeight() });
-      typeNode.getAttribute(flowItemNode, "FlowItem")?.width('100%');
+      typeNode.getAttribute(flowItemNode, 'FlowItem')?.width('100%');
       waterFlowNode.appendChild(flowItemNode);
 
       let text = typeNode.createNode(uiContext, 'Text');
@@ -5545,7 +5545,7 @@ typeNode.createNode(uiContext);
 
 getEvent(node: FrameNode, nodeType: 'WaterFlow'): UIWaterFlowEvent | undefined
 
-获取[WaterFlow](#waterflow)节点中持有的UIWaterFlowEvent对象，用于设置滚动事件。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
+获取[WaterFlow](#waterflow)节点中持有的UIWaterFlowEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5576,7 +5576,7 @@ getEvent(node: FrameNode, nodeType: 'WaterFlow'): UIWaterFlowEvent | undefined
 
 getWaterFlowEvent(node: FrameNode): UIWaterFlowEvent | undefined
 
-获取WaterFlow节点中持有的UIWaterFlowEvent对象，用于设置滚动事件。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
+获取WaterFlow节点中持有的UIWaterFlowEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -7138,13 +7138,13 @@ class MyGridController extends NodeController {
       .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
       .columnsGap(10)
       .rowsGap(10);
-    typeNode.getAttribute(gridNode, "Grid")?.friction(0.6);
+    typeNode.getAttribute(gridNode, 'Grid')?.friction(0.6);
 
     // 创建GridItem并设置属性
     for (let i = 0; i < 25; i++) {
       let gridItemNode = typeNode.createNode(uiContext, 'GridItem');
       gridItemNode.initialize({ style: GridItemStyle.NONE }).size({ height: '100%' });
-      typeNode.getAttribute(gridItemNode, "GridItem")?.width('100%');
+      typeNode.getAttribute(gridItemNode, 'GridItem')?.width('100%');
 
       let text = typeNode.createNode(uiContext, 'Text');
       text.initialize((i % 5).toString())
@@ -7212,7 +7212,7 @@ typeNode.createNode(uiContext);
 
 getEvent(node: FrameNode, nodeType: 'Grid'): UIGridEvent | undefined
 
-获取Grid节点中持有的UIGridEvent对象，用于设置滚动事件。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
+获取Grid节点中持有的UIGridEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7243,7 +7243,7 @@ getEvent(node: FrameNode, nodeType: 'Grid'): UIGridEvent | undefined
 
 getGridEvent(node: FrameNode): UIGridEvent | undefined
 
-获取Grid节点中持有的UIGridEvent对象，用于设置滚动事件。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
+获取Grid节点中持有的UIGridEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -8011,7 +8011,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // 创建marquee
     let marquee = typeNode.createNode(uiContext, 'Marquee');
-    marquee.initialize({start:true,src:'Marquee, if need display, src shall be long'})
+    marquee.initialize({ start: true, src: 'Marquee, if need display, src shall be long' })
       .width(100);
     col.appendChild(marquee);
     return node;
@@ -8173,7 +8173,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // 创建textArea
     let textArea = typeNode.createNode(uiContext, 'TextArea');
-    textArea.initialize({ text: "TextArea" });
+    textArea.initialize({ text: 'TextArea' });
     col.appendChild(textArea);
     return node;
   }
@@ -8361,7 +8361,7 @@ struct FrameNodeTypeTest {
 
 bindController(node: FrameNode, controller: TextAreaController, nodeType: 'TextArea'): void
 
-将输入框控制器[TextAreaController](arkui-ts/ts-basic-components-textarea.md#textareacontroller8)绑定到[TextArea](#textarea14)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口从API版本26.0.0开始支持声明式方式创建的节点。
+将输入框控制器[TextAreaController](arkui-ts/ts-basic-components-textarea.md#textareacontroller8)绑定到[TextArea](#textarea14)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API版本26.0.0开始，该接口支持声明式方式创建的节点，API版本26.0.0以下版本不支持。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -8405,7 +8405,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // 创建、初始化TextArea，默认获焦
     let textArea = typeNode.createNode(uiContext, 'TextArea');
-    textArea.initialize({ text: "TextArea" })
+    textArea.initialize({ text: 'TextArea' })
       .defaultFocus(true)
     col.appendChild(textArea);
     // 绑定TextAreaController，设置光标位置
@@ -8805,7 +8805,7 @@ class MyCheckboxController extends NodeController {
     // 创建另一个Checkbox
     let checkbox1 = typeNode.createNode(uiContext, 'Checkbox')
     checkbox1.initialize({ name: 'checkbox2', group: 'checkboxGroup1' })
-    // 给首个Checkbox设置形状属性
+    // 给另一个Checkbox设置形状属性
     typeNode.getAttribute(checkbox1,'Checkbox')?.shape(CheckBoxShape.ROUNDED_SQUARE)
     // 将两个checkbox添加至col进行比较
     col.appendChild(checkbox)
@@ -9717,7 +9717,7 @@ Select类型的FrameNode节点类型。
 
 createNode(context: UIContext, nodeType: 'Select'): Select
 
-创建Select类型的FrameNode节点。
+创建Select类型的FrameNode节点。使用typeNode创建Select节点时，当传入的UIContext对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -9759,7 +9759,7 @@ class MySelectController extends NodeController {
     node.appendChild(col)
     // 创建Select并设置选项
     let select = typeNode.createNode(uiContext, 'Select')
-    select.initialize([{ value: "option one" }, { value: "option two" }, { value: "option three" }])
+    select.initialize([{ value: 'option one' }, { value: 'option two' }, { value: 'option three' }])
     col.appendChild(select)
     return node;
   }
@@ -9829,7 +9829,7 @@ Select类型的FrameNode节点。
 
 createSelectNode(context: UIContext): Select
 
-创建Select类型的FrameNode节点。
+创建Select类型的FrameNode节点。使用typeNode创建Select节点时，当传入的UIContext对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -9883,7 +9883,7 @@ type Toggle = TypedFrameNode&lt;ToggleInterface, ToggleAttribute&gt;
 
 createNode(context: UIContext, nodeType: 'Toggle', options?: ToggleOptions): Toggle
 
-创建Toggle类型的FrameNode节点。
+创建Toggle类型的FrameNode节点。使用typeNode创建Toggle节点时，当传入的UIContext对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -9901,7 +9901,7 @@ createNode(context: UIContext, nodeType: 'Toggle', options?: ToggleOptions): Tog
 | ------------------ | ------------------ | ------------------- | ------------------- |
 | context | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Toggle' | 是 | 创建Toggle类型的节点。 |
-| options | [ToggleOptions](./arkui-ts/ts-basic-components-toggle.md#toggleoptions18对象说明) | 否 | 创建Toggle节点的接口参数，仅可通过ToggleOptions中的type属性设置开关样式。 |
+| options | [ToggleOptions](./arkui-ts/ts-basic-components-toggle.md#toggleoptions18对象说明) | 否 | 创建Toggle节点的接口参数，仅可通过ToggleOptions中的type属性设置开关样式。不传入该参数时，需通过initialize接口设置Toggle的type属性。 |
 
 **返回值：**
 
@@ -10063,7 +10063,7 @@ Toggle类型的FrameNode节点。
 ### createToggleNode<sup>23+</sup>
 createToggleNode(context: UIContext, options?: ToggleOptions, frameNodeOptions?: FrameNodeOptions): Toggle
 
-创建Toggle类型的FrameNode节点。
+创建Toggle类型的FrameNode节点。使用typeNode创建Toggle节点时，当传入的UIContext对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -10114,7 +10114,7 @@ class MyNodeController extends NodeController {
       .width('100%').height('100%').margin({ top: 5 });
     node.appendChild(col);
     let text = typeNode.createNode(uiContext, 'Text');
-    text.initialize("Hello").fontColor(Color.Blue).fontSize(14);
+    text.initialize('Hello').fontColor(Color.Blue).fontSize(14);
     col.appendChild(text);
     return node;
   }
@@ -10151,7 +10151,7 @@ class MyNodeController extends NodeController {
   }
 
   addCommonEvent(frameNode: FrameNode) {
-    let gridEvent: UIGridEvent | undefined = typeNode.getEvent(frameNode, "Grid");
+    let gridEvent: UIGridEvent | undefined = typeNode.getEvent(frameNode, 'Grid');
     gridEvent?.setOnWillScroll((scrollOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => {
       console.info(`onWillScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}, scrollSource = ${scrollSource}`)
     })
@@ -10183,7 +10183,6 @@ class MyNodeController extends NodeController {
 @Entry
 @Component
 struct Index {
-  @State index: number = 0;
   private myNodeController: MyNodeController = new MyNodeController();
   @State numbers: string[] = []
 
@@ -10197,7 +10196,7 @@ struct Index {
 
   build() {
     Column() {
-      Button("add CommonEvent to Grid")
+      Button('add CommonEvent to Grid')
         .onClick(() => {
           this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling()!)
         })
@@ -10222,7 +10221,7 @@ struct Index {
       .height(300)
 
       NodeContainer(this.myNodeController)
-    }.width("100%")
+    }.width('100%')
   }
 }
 ```

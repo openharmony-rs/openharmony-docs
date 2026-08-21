@@ -2,12 +2,12 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @kunsilva-->
+<!--Owner: @th_0927-->
 <!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-hdc（OpenHarmony Device Connector）是提供给开发人员的命令行调试工具，用于与设备进行交互调试、数据传输、日志查看以及应用安装等操作。该工具支持在Windows/Linux/MacOS系统上运行，为开发者提供高效，便捷的设备调试能力。
+hdc（OpenHarmony Device Connector）是提供给开发人员的命令行调试工具，用于与设备进行交互调试、数据传输、日志查看以及应用安装等操作。该工具支持在Windows/Linux/MacOS系统上运行，为开发者提供高效、便捷的设备调试能力。
 
 hdc包含三部分：
 
@@ -61,7 +61,7 @@ hdc支持USB和无线两种连接调试方式。在设备的设置>系统>开发
       echo $SHELL
       ```
 
-      - 如果输出结果为bin/bash，执行以下命令打开.bashrc文件。
+      - 如果输出结果为/bin/bash，执行以下命令打开.bashrc文件。
 
          ```shell
          vi ~/.bashrc
@@ -742,7 +742,7 @@ hdc uninstall [-n|-k|-s|-h] bundlename
 
 | 参数名 | 说明 |
 | -------- | -------- |
-| bundlename | 应用安装包。 |
+| bundlename | 应用包名。 |
 | -n | 可选参数，指定Bundle名称卸载应用。|
 | -k | 可选参数，卸载应用时保存应用数据。默认卸载应用时不保存应用数据。 |
 | -s | 根据场景判断，卸载应用间HSP时必选参数，其他场景为可选参数。卸载指定的共享库。|
@@ -1413,7 +1413,7 @@ hdc bugreport [FILE]
 
 | 返回信息 | 说明 |
 | -------- | -------- |
-| -------------------------------[base]-------------------------------<br/><br/>BuildId: xxx<br/>RleaseType: xxx<br/>OsVersion: default/default/default/default/xxx<br/>DeviceType: default<br/>Manufacture: default<br/>----- | 设备基本信息。 |
+| -------------------------------[base]-------------------------------<br/><br/>BuildId: xxx<br/>ReleaseType: xxx<br/>OsVersion: default/default/default/default/xxx<br/>DeviceType: default<br/>Manufacture: default<br/>----- | 设备基本信息。 |
 
 **使用方法**：
 
@@ -1422,7 +1422,7 @@ $ hdc bugreport
 -------------------------------[base]-------------------------------
 
 BuildId: xxx
-RleaseType: xxx
+ReleaseType: xxx
 OsVersion: default/default/default/default/xxx
 DeviceType: default
 Manufacture: default

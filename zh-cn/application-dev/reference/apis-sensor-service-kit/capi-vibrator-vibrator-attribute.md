@@ -3,7 +3,7 @@
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
 <!--Designer: @andeszhang-->
-<!--Tester: @liuhaonan2-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
 ```c
@@ -26,5 +26,5 @@ Vibrator_Attribute结构体用于描述马达的属性信息。开发者使用�
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t vibratorId | 马达ID，取值原则：通过系统接口获取有效值。指定要操作的马达设备标识，不同ID对应设备上不同的振动马达。取值范围为[0, 最大支持的马达数-1]。 |
+| int32_t vibratorId | 马达ID，取值原则：通过系统接口获取有效值。指定要操作的马达设备标识，不同ID对应设备上不同的马达。取值范围为[0, 最大支持的马达数-1]。 |
 | [Vibrator_Usage](capi-vibrator-type-h.md#vibrator_usage) usage | 振动场景。指定振动的应用场景，不同场景对应不同的振动模式（如通知、按键、闹钟等各有相应的振动效果），可选值见Vibrator_Usage枚举定义。 |

@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 如果一个接口已在宿主线程中实现，Worker可以通过以下方式调用该接口。
 
@@ -66,7 +66,7 @@
    
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
    
-   workerPort.onmessage = async (e: MessageEvents) => {
+   workerPort.onmessage = (e: MessageEvents) => {
      if (e.data === 'start') {
        try {
          // 调用方法

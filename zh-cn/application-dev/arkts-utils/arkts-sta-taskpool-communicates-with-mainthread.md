@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 [taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)任务通常通过返回值向宿主线程返回最终结果。如果任务执行过程中还需要持续通知进度、分段返回数据或上报状态，可以使用Task.sendData发送中间数据，并在宿主线程通过onReceiveData注册回调接收。
 

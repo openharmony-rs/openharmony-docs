@@ -55,7 +55,7 @@ ArkTS-Sta: Slider(options?: SliderOptions, content_?: CustomBuilder)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| value | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined \| Bindable\<double\> | 否 | 是 | 当前进度值。取值为undefined时，按默认值处理。<br/>默认值：与属性min的取值一致。<br />从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>取值范围： [min, max]<br/>小于min时取min，大于max时取max。<br/>$$运算符为系统组件提供TS变量的引用，使得TS变量和slider组件的value值保持同步。详细使用示例请参考[示例7（设置滑动条的双向绑定）](#示例7设置滑动条的双向绑定)。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
+| value | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined \| Bindable\<double\> | 否 | 是 | 当前进度值。取值为undefined时，按默认值处理。<br/>默认值：与属性min的取值一致。<br />从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>取值范围： [min, max]<br/>小于min时取min，大于max时取max。<br/>$$运算符为系统组件提供TS变量的引用，使得TS变量和Slider组件的value值保持同步。详细使用示例请参考[示例7（设置滑动条的双向绑定）](#示例7设置滑动条的双向绑定)。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 | min | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 是 | 设置最小值。<br/>默认值：0 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 | max | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 是 | 设置最大值。<br/>默认值：100<br/>**说明：** <br/>min >= max异常情况，min取默认值0，max取默认值100。<br/>value不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 | step | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 是 | 设置Slider滑动步长。<br/>默认值：1<br/>取值范围：[0.01, max - min]<br/>**说明：** <br/>若设置的step值小于0或大于max值，则按默认值显示。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
@@ -173,7 +173,7 @@ ArkTS-Sta: trackColor(value: ResourceColor | LinearGradient | undefined)
 
 trackColorMetrics(color: ColorMetricsLinearGradient | undefined)
 
-设置滑轨轨道的线性渐变背景颜色。
+设置滑轨的线性渐变背景颜色。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -189,7 +189,7 @@ trackColorMetrics(color: ColorMetricsLinearGradient | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | ArkTS-Dyn: [ColorMetricsLinearGradient](#colormetricslineargradient23)<br/>ArkTS-Sta: [ColorMetricsLinearGradient](#colormetricslineargradient23) \| undefined | 是   | 滑轨轨道的线性渐变背景颜色。<br/>设置渐变色时，如果color的值为undefined，渐变色设置无效，轨道背景颜色默认取值为：`$r('sys.color.ohos_id_color_component_normal')`。 |
+| color  | ArkTS-Dyn: [ColorMetricsLinearGradient](#colormetricslineargradient23)<br/>ArkTS-Sta: [ColorMetricsLinearGradient](#colormetricslineargradient23) \| undefined | 是   | 滑轨的线性渐变背景颜色。<br/>设置渐变色时，如果color的值为undefined，渐变色设置无效，滑轨背景颜色默认取值为：`$r('sys.color.ohos_id_color_component_normal')`。 |
 
 ### selectedColor
 
@@ -444,7 +444,7 @@ ArkTS-Dyn: trackBorderRadius(value: Length)
 
 ArkTS-Sta: trackBorderRadius(value: Length | undefined)
 
-设置底板圆角半径。
+设置滑轨圆角半径。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -460,7 +460,7 @@ ArkTS-Sta: trackBorderRadius(value: Length | undefined)
 
 | 参数名 | 类型                         | 必填 | 说明                             |
 | ------ | ---------------------------- | ---- | -------------------------------- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 底板圆角半径。取值为undefined时，按默认值处理。<br/>默认值：<br/>style值为SliderStyle.OutSet时默认值为'2vp'。<br/>style值为SliderStyle.InSet时默认值为'10vp'。<br/>**说明：** <br/>设定值小于0时取默认值。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 滑轨圆角半径。取值为undefined时，按默认值处理。<br/>默认值：<br/>style值为SliderStyle.OutSet时默认值为'2vp'。<br/>style值为SliderStyle.InSet时默认值为'10vp'。<br/>**说明：** <br/>设定值小于0时取默认值。 |
 
 ### selectedBorderRadius<sup>12+</sup>
 
@@ -484,7 +484,7 @@ ArkTS-Sta: selectedBorderRadius(value: Dimension | undefined)
 
 | 参数名 | 类型                         | 必填 | 说明                             |
 | ------ | ---------------------------- | ---- | -------------------------------- |
-| value  | ArkTS-Dyn: [Dimension](ts-types.md#dimension10)<br/>ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined| 是   | 已选择部分的圆角半径。取值为undefined时，按默认值处理。<br/>默认值：当style值为SliderStyle.InSet或SliderStyle.OutSet时，跟随底板圆角；当style值为SliderStyle.NONE时，为0。<br/>**说明：** <br/>不支持Percentage类型。设定值小于0时取默认值。 |
+| value  | ArkTS-Dyn: [Dimension](ts-types.md#dimension10)<br/>ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined| 是   | 已滑动部分的圆角半径。取值为undefined时，按默认值处理。<br/>默认值：当style值为SliderStyle.InSet或SliderStyle.OutSet时，跟随底板圆角；当style值为SliderStyle.NONE时，为0。<br/>**说明：** <br/>不支持Percentage类型。设定值小于0时取默认值。 |
 
 ### blockSize<sup>10+</sup>
 
@@ -749,8 +749,8 @@ ArkTS-Sta: prefix\<T extends Object>(content: ComponentContent\<T> | undefined, 
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| content | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: [ComponentContent\<T>](../js-apis-arkui-ComponentContent.md) \| undefined | 是   | 自定义组件内容，用于定义滑块前缀的可视化内容，该内容会显示在滑块的起始位置。取值为undefined时，则不使用前缀。 |
-| options | ArkTS-Dyn: [SliderPrefixOptions](#sliderprefixoptions20)<br/>ArkTS-Sta: [SliderPrefixOptions](#sliderprefixoptions20) \| undefined | 否   | 滑块前缀的配置选项，用于设置与无障碍功能相关的属性。取值为undefined时，则不使用前缀。 <br/>默认值：null |
+| content | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: [ComponentContent\<T>](../js-apis-arkui-ComponentContent.md) \| undefined | 是   | 自定义组件内容，用于定义滑动条前缀的可视化内容，该内容会显示在滑动条的起始位置。取值为undefined时，则不使用前缀。 |
+| options | ArkTS-Dyn: [SliderPrefixOptions](#sliderprefixoptions20)<br/>ArkTS-Sta: [SliderPrefixOptions](#sliderprefixoptions20) \| undefined | 否   | 滑动条前缀的配置选项，用于设置与无障碍功能相关的属性。取值为undefined时，则不使用前缀。 <br/>默认值：null |
 
 ### suffix<sup>20+</sup>
 
@@ -774,8 +774,8 @@ ArkTS-Sta: suffix\<T extends Object>(content: ComponentContent\<T> | undefined, 
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| content | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: [ComponentContent\<T>](../js-apis-arkui-ComponentContent.md) \| undefined    | 是   | 自定义组件内容，用于定义滑块后缀的可视化内容，该内容会显示在滑块的结束位置。取值为undefined时，则不使用后缀。 |
-| options | ArkTS-Dyn: [SliderSuffixOptions](#slidersuffixoptions20)<br/>ArkTS-Sta: [SliderSuffixOptions](#slidersuffixoptions20) \| undefined | 否   | 滑块后缀的配置选项，用于设置与无障碍功能相关的属性。取值为undefined时，则不使用后缀。 <br/>默认值：null |
+| content | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: [ComponentContent\<T>](../js-apis-arkui-ComponentContent.md) \| undefined    | 是   | 自定义组件内容，用于定义滑动条后缀的可视化内容，该内容会显示在滑动条的结束位置。取值为undefined时，则不使用后缀。 |
+| options | ArkTS-Dyn: [SliderSuffixOptions](#slidersuffixoptions20)<br/>ArkTS-Sta: [SliderSuffixOptions](#slidersuffixoptions20) \| undefined | 否   | 滑动条后缀的配置选项，用于设置与无障碍功能相关的属性。取值为undefined时，则不使用后缀。 <br/>默认值：null |
 
 ### showSteps<sup>20+</sup>
 
@@ -874,7 +874,7 @@ attributeModifier(modifier: AttributeModifier\<SliderAttribute> | AttributeModif
 
 ## ColorMetricsLinearGradient<sup>23+</sup>
 
-滑轨轨道的线性渐变背景颜色。
+滑轨的线性渐变背景颜色。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -906,7 +906,7 @@ ColorMetricsLinearGradient的构造函数。
 
 ## ColorMetricsStop<sup>23+</sup>
 
-线性渐变颜色断点类型，用于描述渐进色颜色断点。
+线性渐变颜色断点类型，用于描述渐变色颜色断点。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1078,7 +1078,7 @@ Slider组件滑块形状枚举。
 
 ## SlideRange<sup>12+</sup>对象说明
 
-定义SlideRange中使用的回调类型。
+设置有效滑动区间的参数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

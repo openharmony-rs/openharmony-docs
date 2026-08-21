@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 [EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)适合需要独占线程、长期驻留或固定线程上下文的任务。宿主线程可以通过EAWorker.run向EAWorker提交任务，也可以通过MessageHandler和Message按消息类型进行即时通信。
 

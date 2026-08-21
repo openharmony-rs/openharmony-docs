@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS侧的`bigint`传入native函数后，在C++侧表现为`std.core.BigInt`对象，而不是ANI基本整数类型。native侧需要读取BigInt值时，可以调用`std.core.BigInt`提供的`getLong(): long`方法获取对应值。
 

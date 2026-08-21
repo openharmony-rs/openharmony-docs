@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS-Sta静态Native能力以[ANI简介](../ani/ani-introduction.md)中介绍的ANI为主。若业务需要“转移所有权”的语义，可以使用Native资源句柄加显式移交协议：宿主线程创建Native资源后，将句柄传给[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)任务，并在宿主线程侧标记该句柄已移交，后续不再访问该资源。
 

@@ -1,10 +1,10 @@
 # 使用JSVM-API接口处理异步操作
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -12,7 +12,7 @@
 
 ## 基本概念
 
-Promise是JavaScript中用来处理异步操作的对象，Promise有pending（待定）、fulfilled（已兑现）和rejected（已拒绝）三种状态，Promise的初始状态是pending，resolve函数可以使其状态从pending变为fulfilled（已兑现），reject函数可以使其状态从pending变为rejected(已拒绝)，一旦兑现或拒绝Promise的状态将不能更改。下面是一些基本概念：
+Promise是JavaScript中用来处理异步操作的对象，Promise有pending（待定）、fulfilled（已兑现）和rejected（已拒绝）三种状态，Promise的初始状态是pending，resolve函数可以使其状态从pending变为fulfilled（已兑现），reject函数可以使其状态从pending变为rejected（已拒绝），一旦兑现或拒绝Promise的状态将不能更改。下面是一些基本概念：
 
 - **同步**： 同步是指代码按照顺序一行一行地执行，每行代码的执行都会等待上一行代码执行完成后再继续执行。在同步执行中，如果某个操作需要花费较长时间，那么整个程序的执行就会被阻塞，直到该操作完成才能继续执行后续代码。
 - **异步**：异步是指任务可以同时执行，不需要等待上一个任务结束。在JavaScript中，常见的异步操作包括定时器、事件监听、网络请求等。异步任务不会阻塞后续任务的执行，而是通过回调函数或Promise对象来处理任务的结果。
@@ -43,11 +43,14 @@ JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
 
 cpp部分代码
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_ispromise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPromise/ispromise/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_IsPromise的样例方法
 static JSVM_Value IsPromise(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -76,9 +79,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(isPromise())JS";
+const char *SRC_CALL_NATIVE = R"JS(isPromise())JS";
 ```
-<!-- @[oh_jsvm_ispromise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPromise/ispromise/src/main/cpp/hello.cpp) -->
 
 预期结果：
 ```txt
@@ -95,11 +97,14 @@ OH_JSVM_CreatePromise用于创建一个Promise对象。
 
 cpp部分代码
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_resolvedeferred_and_rejectdeferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPromise/resolvereject/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_CreatePromise、OH_JSVM_ResolveDeferred、OH_JSVM_RejectDeferred的样例方法
 static JSVM_Value CreatePromise(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -127,7 +132,8 @@ static JSVM_Value ResolveRejectDeferred(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 第一个参数为向resolve传入的信息，第二个参数为向reject传入的信息，第三个参数为Promise的状态
     bool status = false;
-    OH_JSVM_GetValueBool(env, args[2], &status);
+    constexpr size_t PROMISE_STATUS_ARG_INDEX = 2;
+    OH_JSVM_GetValueBool(env, args[PROMISE_STATUS_ARG_INDEX], &status);
     // 创建Promise对象
     JSVM_Deferred deferred = nullptr;
     JSVM_Value promise = nullptr;
@@ -156,16 +162,15 @@ static JSVM_CallbackStruct param[] = {
 static JSVM_CallbackStruct *method = param;
 // CreatePromise,ResolveRejectDeferred方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
-    {"createPromise", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
-    {"resolveRejectDeferred", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"createPromise", nullptr, method, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"resolveRejectDeferred", nullptr, method+1, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(createPromise();
-                                 resolveRejectDeferred('success', 'fail', true);
-                                 resolveRejectDeferred('success', 'fail', false);)JS";
+const char *SRC_CALL_NATIVE_CREATE_PROMISE = R"JS(createPromise())JS";
+const char *SRC_CALL_NATIVE_RESOLVE_REJECT_DEFERRED1 = R"JS(resolveRejectDeferred('success', 'fail', true))JS";
+const char *SRC_CALL_NATIVE_RESOLVE_REJECT_DEFERRED2 = R"JS(resolveRejectDeferred('success', 'fail', false))JS";
 ```
-<!-- @[oh_jsvm_resolvedeferred_and_rejectdeferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPromise/resolvereject/src/main/cpp/hello.cpp) -->
 
 预期结果：
 ```txt
@@ -180,7 +185,7 @@ OH_JSVM_RejectDeferred reject
 
 以下仅对 cpp 部分代码进行展示，其余框架代码如 `TestJSVM` 函数参考 [使用JSVM-API接口进行任务队列相关开发](use-jsvm-execute_tasks.md) OH_JSVM_SetMicrotaskPolicy 段落中的实现。
 
-```cpp
+``` C++
 static int PromiseRegisterHandler(JSVM_VM vm, JSVM_Env env) {
     const char *defineFunction = R"JS(
         var x1 = 0;

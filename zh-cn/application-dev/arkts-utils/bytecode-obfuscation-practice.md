@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 由于不同包类型的用途及构建流程的差异，开发者对不同包类型使用混淆有不同的注意事项。本文对[HAP](../quick-start/hap-package.md)、[HAR](../quick-start/har-package.md)和[HSP](../quick-start/in-app-hsp.md)三种包类型分别提供建议，帮助开发者高效使用混淆。
 
@@ -73,7 +73,7 @@
     * obfuscation-rules.txt中配置HAR包对外导出接口及其相关属性名称、此次构建过程不能被混淆的名称等。
     * consumer-rules.txt配置不能被二次混淆的接口、属性等名称。
 
-3. HAR包功能验证。需注意，在构建本模块HAR时会进行一次混淆，当发布后的HAR包被依赖时，如果使用方开启混淆，则本HAR包发布后的代码还会跟随使用方被二次混淆，因为需要充分验证使用方开启混淆时HAR包功能是否正常。
+3. HAR包功能验证。需注意，在构建本模块HAR时会进行一次混淆，当发布后的HAR包被依赖时，如果使用方开启混淆，则本HAR包发布后的代码还会跟随使用方被二次混淆，因此需要充分验证使用方开启混淆时HAR包功能是否正常。
 
 4. 发布HAR包。
 

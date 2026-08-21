@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 Record、Tuple等容器类型传入native后，本质上仍按对象或专用ANI类型访问。ArkTS侧把`Record<K, V>`或元组传给native函数时，C++侧通常需要读取键值、按下标读取元素，或调用容器内置方法。
 

@@ -13,7 +13,7 @@
 
  > **说明：** 
  > 
- > 当前使用C/C++的方式从API version 12开始支持验签，从API version 20开始支持签名。
+ > 当前使用C/C++的方式从API版本12开始支持验签，从API版本20开始支持签名。
 
 ## RSA
 
@@ -124,11 +124,11 @@
 
 | PSS参数 | 枚举值 | 获取 | 设置 | 
 | -------- | -------- | -------- | -------- |
-| md | PSS_MD_NAME_STR | √ | - | 
-| mgf | PSS_MGF_NAME_STR | √ | - | 
-| mgf1_md | PSS_MGF1_MD_STR | √ | - | 
+| md | PSS_MD_NAME_STR | √ | － | 
+| mgf | PSS_MGF_NAME_STR | √ | － | 
+| mgf1_md | PSS_MGF1_MD_STR | √ | － | 
 | saltLen | PSS_SALT_LEN_NUM | √ | √ | 
-| trailer_field | PSS_TRAILER_FIELD_NUM | √ | - | 
+| trailer_field | PSS_TRAILER_FIELD_NUM | √ | － | 
 
 ### PKCS1模式下的OnlySign/OnlyVerify
 
@@ -296,4 +296,6 @@ Ed25519是基于椭圆曲线的签名验签算法。
 
 | 非对称密钥类型 | 字符串参数 | API版本 |
 | -------- | -------- | -------- |
-| ML-DSA | ML-DSA | 26.0.0+ |
+| ML-DSA-44 | ML-DSA | 26.0.0+ |
+| ML-DSA-65 | ML-DSA | 26.0.0+ |
+| ML-DSA-87 | ML-DSA | 26.0.0+ |

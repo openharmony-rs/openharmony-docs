@@ -8,7 +8,7 @@
 
 ## 简介
 
-地址越界问题是指访问了不合法的地址，导致程序运行出现异常，通常表现为应用崩溃（Crash），其故障原因为释放后使用（use after free）、重复释放（double-free）、栈溢出（stack-overflow）、堆溢出（heap-overflow）等。由于应用崩溃日志信息有限且非崩溃第一现场，地址越界问题定位较为困难，一般依赖ASan、HWASan、GWP-ASan等检测工具以获取更多内存操作信息。从API13开始推荐[使用HWASan检测工具](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-hwasan-detection)进行地址越界问题的分析。
+地址越界问题是指访问了不合法的地址，导致程序运行出现异常，通常表现为应用崩溃（Crash），其故障原因为释放后使用（use after free）、重复释放（double-free）、栈溢出（stack-overflow）、堆溢出（heap-overflow）等。由于应用崩溃日志信息有限且非崩溃第一现场，地址越界问题定位较为困难，一般依赖ASan、HWASan、GWP-ASan等检测工具以获取更多内存操作信息。从API版本13开始推荐[使用HWASan检测工具](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-hwasan-detection)进行地址越界问题的分析。
 
 ## 常见越界类型与影响
 
@@ -24,7 +24,7 @@
 
 **方式一：通过DevEco Studio获取日志**
 
-DevEco Studio会收集设备/data/log/faultlog/faultlogger/路径下的进程崩溃故障日志到FaultLog下，根据进程名和故障和时间分类显示。获取日志的方法参见：[DevEco Studio使用指南-FaultLog](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-fault-log)。
+DevEco Studio会收集设备/data/log/faultlog/faultlogger/路径下的进程崩溃故障日志到FaultLog下，根据进程名、故障类型和时间分类显示。获取日志的方法参见：[DevEco Studio使用指南-FaultLog](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-fault-log)。
 
 **方式二：通过HiAppEvent接口订阅**
 
@@ -461,8 +461,7 @@ Use After Free at 0x5b46ddaff0 (0 bytes into a 16-byte allocation at 0x5b46ddaff
 
     | 故障特征  | 来源 | 提取规则                                                      |
     | ----------- | -------- | --------------------------------------------------------------- |
-    | 故障特征1 | 使用栈 | 过滤基础库后，取栈顶的前两帧（so名+相对偏移） |
-    | 故障特征2 | 释放栈 | 过滤基础库后，取栈顶的前两帧（so名+相对偏移） |
+    | 故障特征 | 释放栈 | 过滤基础库后，取栈顶的前两帧（so名+相对偏移） |
 
 2. Double Free
 
@@ -475,7 +474,7 @@ Use After Free at 0x5b46ddaff0 (0 bytes into a 16-byte allocation at 0x5b46ddaff
 
     | 故障特征 | 来源     | 提取规则                                                      |
     | ---------- | ------------ | --------------------------------------------------------------- |
-    | 故障特征 | 使用栈 | 过滤基础库后，取栈顶的前两帧（so名+相对偏移） |
+    | 故障特征 | 报错栈 | 过滤基础库后，取栈顶的前两帧（so名+相对偏移） |
 
 ### 生成聚类特征
 
@@ -505,14 +504,13 @@ Use After Free at 0x5bab376000 (0 bytes into a 64-byte allocation at 0x5bab37600
 根据聚类规则：
 
 - 从“at”处提取故障类型：Use After Free。
-- 分别对使用栈与释放栈进行标准化。
+- 对释放栈进行标准化。
 - 过滤基础库栈帧后，取栈顶前两帧作为关键特征。
 
 最终生成的聚类特征如下：
 
 | 故障特征   | 聚类特征 |
 |---|---|
-| 故障特征1-使用栈 | /data/storage/el1/bundle/libs/arm64/libsample.so+0x7ba4<br>/data/storage/el1/bundle/libs/arm64/libsample.so+0x849c |
-| 故障特征2-释放栈 | /data/storage/el1/bundle/libs/arm64/libsample.so+0x7b9c<br>/data/storage/el1/bundle/libs/arm64/libsample.so+0x849c |
+| 故障特征-释放栈 | /data/storage/el1/bundle/libs/arm64/libsample.so+0x7b9c<br>/data/storage/el1/bundle/libs/arm64/libsample.so+0x849c |
 
 开发者可通过比对多份日志的聚类特征来归并AddrSanitizer故障，也可以对故障类型和故障特征内容计算哈希值，用于问题分类统计与自动化分析。

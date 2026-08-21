@@ -6,7 +6,9 @@
 <!--SE: @zhangboren-->
 <!--TSE: @TerryTsao-->
 
-@SyncMonitor用于状态管理V2中，同步监听状态变量修改，使得状态变量具有深度监听的能力。开发指南见：[\@SyncMonitor装饰器：状态变量修改同步监听](../../../ui/state-management-static/arkts-static-new-syncmonitor.md)。
+@SyncMonitor用于状态管理V2中，同步监听状态变量修改，使得状态变量具有深度监听的能力。
+
+在ArkTS-Sta中使用时，开发指南参考：[\@SyncMonitor装饰器：状态变量修改同步监听](../../../ui/state-management-static/arkts-static-new-syncmonitor.md)。
 
 > **说明：**
 >

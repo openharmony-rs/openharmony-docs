@@ -1,20 +1,14 @@
 # Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
 Node-API是用于封装JavaScript能力为Native插件的API，独立于底层JavaScript，并作为Node.js的一部分。
-
-## 支持的能力
-
-Node-API可以去除底层的JavaScript引擎的差异，提供一套稳定的接口。
-
-OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层对接了ArkJS等引擎。当前支持Node-API标准库中的部分接口。
 
 ## 引入Node-API能力
 
@@ -30,9 +24,18 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 libace_napi.z.so
 ```
 
+## 支持的能力
+
+Node-API可以去除底层的JavaScript引擎的差异，提供一套稳定的接口。
+
+OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层对接了ArkJS等引擎。当前支持Node-API标准库中的部分接口，并进行了能力扩展，具体请参考[Node-API组件扩展的接口](#node-api组件扩展的接口)。
+
 ## 已从Node-API组件标准库中导出的符号列表
 
-从Node-API标准库导出的接口，其使用方法及行为基于[Node.js](https://nodejs.org/docs/latest-v12.x/api/n-api.html)，并进行了部分[能力拓展](#node-api组件扩展的接口)。
+从Node-API标准库导出的接口，其使用方法及行为基于[Node.js](https://nodejs.org/docs/latest-v18.x/api/n-api.html)。部分接口存在差异，请参考[已导出符号列表与标准库对应符号的差异](#已导出符号列表与标准库对应符号的差异)。
+
+> **注意：**
+> 使用 NAPI 接口时，应确保环境、对象和值有效且符合规格；无效或跨生命周期使用可能导致失败、崩溃或未定义行为。开发过程常见问题可参考[Node-API常见问题](../../napi/use-napi-faqs.md)。
 
 |符号类型|符号名|说明|起始支持API版本|
 | --- | --- | --- | --- |
@@ -66,7 +69,7 @@ libace_napi.z.so
 |FUNC|napi_create_external_arraybuffer|分配一个附加有外部数据的js `ArrayBuffer`。|10|
 |FUNC|napi_create_object|创建一个默认的js `Object`。|10|
 |FUNC|napi_create_symbol|创建一个js `Symbol`。|10|
-|FUNC|napi_create_typedarray|通过现有的`ArrayBuffer`创建一个js `TypeArray`。|10|
+|FUNC|napi_create_typedarray|通过现有的`ArrayBuffer`创建一个js  `TypedArray`。|10|
 |FUNC|napi_create_dataview|通过现有的`ArrayBuffer`创建一个js `DataView`。|10|
 |FUNC|napi_create_int32|通过一个C的`int32_t`数据创建js `Number`。|10|
 |FUNC|napi_create_uint32|通过一个C的`uint32_t`数据创建js `Number`。|10|
@@ -135,7 +138,7 @@ libace_napi.z.so
 |FUNC|napi_queue_async_work|将异步工作对象加到队列，由底层去调度执行。|10|
 |FUNC|napi_cancel_async_work|取消入队的异步任务。|10|
 |FUNC|napi_async_init|创建一个异步资源上下文环境（不支持与async_hook相关能力）。|11|
-|FUNC|napi_make_callback|在异步资源上下文环境中回调JS函数(不支持与async_hook相关能力)。|11|
+|FUNC|napi_make_callback|在异步资源上下文环境中回调JS函数（不支持与async_hook相关能力）。|11|
 |FUNC|napi_async_destroy|销毁先前创建的异步资源上下文环境（不支持与async_hook相关能力）。|11|
 |FUNC|napi_open_callback_scope|创建一个回调作用域（不支持与async_hook相关能力）。|11|
 |FUNC|napi_close_callback_scope|关闭先前创建的回调作用域（不支持与async_hook相关能力）。|11|
@@ -171,7 +174,7 @@ libace_napi.z.so
 |FUNC|napi_get_all_property_names|获取一个数组，其中包含此对象过滤后的属性名称。|10|
 |FUNC|napi_detach_arraybuffer|分离给定`ArrayBuffer`的底层数据。|10|
 |FUNC|napi_is_detached_arraybuffer|判断给定的`ArrayBuffer`是否已被分离过。|10|
-|FUNC|napi_run_script|将给定对象作为js代码运行。当前接口实际为空实现，可使用系统拓展接口`napi_run_script_path`接口，提升安全性。|10|
+|FUNC|napi_run_script|将给定对象作为js代码运行。当前接口实际为空实现，可使用系统扩展接口`napi_run_script_path`接口，提升安全性。|10|
 |FUNC|napi_set_instance_data|绑定与当前运行的环境相关联的数据项。|11|
 |FUNC|napi_get_instance_data|检索与当前运行的环境相关联的数据项。|11|
 |FUNC|napi_add_env_cleanup_hook|注册环境清理钩子函数。|11|
@@ -224,7 +227,7 @@ libace_napi.z.so
 
 **参数：**
 
-- code: OpenHarmony中支持String或Number类型,但标准库接口的code类型仅支持String类型。
+- code: OpenHarmony中支持String或Number类型，但标准库接口的code类型仅支持String类型。
 
 **返回：**
 
@@ -238,7 +241,7 @@ libace_napi.z.so
 
 **参数：**
 
-- code: OpenHarmony中支持String或Number类型,但标准库接口的code类型仅支持String类型。
+- code: OpenHarmony中支持String或Number类型，但标准库接口的code类型仅支持String类型。
 
 **返回：**
 
@@ -463,7 +466,7 @@ libace_napi.z.so
 
 - 该导出接口暂时不支持async_hooks资源管理机制。
 
-- 该导出接口不会校验入参async_resource_name是否为String类型对象，入参async_resource_name推荐传入String对象，用于描述创建的异步工作对象。入参async_resource_name为String时，trace信息将包含该描述，反之传入非String对象，trace信息将不包含该描述。
+- 该导出接口不校验async_resource_name参数类型，建议传入String对象描述异步工作对象。String类型参数会在trace信息中显示，null或undefined则不会显示，其他类型将导致崩溃。
 
 - 由于当前暂不支持async_hooks资源管理机制，入参async_resource暂时也不做处理。
 
@@ -887,7 +890,7 @@ napi_status napi_coerce_to_native_binding_object(napi_env env,
 
 - [in] detach_cb: 解绑回调，一般在序列化时调用，可在对象解绑时执行一些清理操作。
 
-- [in] attach_cb: 绑定回调，一般在序列化时调用。
+- [in] attach_cb: 绑定回调，一般在反序列化时调用。
 
 - [in] native_object: 需要传递给回调的参数，不能为空。
 
@@ -1421,7 +1424,7 @@ napi_status napi_remove_wrap_sendable(napi_env env, napi_value js_object, void**
 
 **描述：**
 
-移除并获取ArkTS对象封装的native实例，移除后回调将不再触发，需手动delete释放内存。
+移除并获取ArkTS对象包裹的native实例，移除后回调后续会被自动触发，需注意避免出现重复释放问题。
 
 **起始版本：** 12
 
@@ -1929,7 +1932,7 @@ napi_status napi_throw_business_error(napi_env env,
 
 **描述：**
 
-抛出一个带文本信息的ArkTS Error, 指定错误码为int32_t类型，错误信息为字符串类型。使用该接口需要注意以下几点：
+抛出一个带文本信息的ArkTS Error，指定错误码为int32_t类型，错误信息为字符串类型。使用该接口需要注意以下几点：
 1. 入参env和msg不可以为nullptr，否则会返回napi_invalid_arg。
 2. 当前上下文中存在ArkTS Error的时候，调用接口会返回napi_pending_exception。
 

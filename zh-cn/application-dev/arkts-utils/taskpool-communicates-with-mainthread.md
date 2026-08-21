@@ -4,26 +4,13 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 如果Task不仅需要返回最终执行结果，还需定时通知宿主线程状态和数据变化，或分段返回大量数据（如从数据库读取大量数据），可按以下方式实现。
 
 下面以多个图片加载任务结果实时返回为例说明。
 
-1. 实现接收Task消息的方法。
-
-   <!-- @[receive_task_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) -->
-   
-   ``` TypeScript
-   import { taskpool } from '@kit.ArkTS';
-   import { IconItemSource } from './IconItemSource';
-   
-   function notice(data: number): void {
-     console.info('子线程任务已执行完，共加载图片: ', data);
-   }
-   ```
-
-2. 在需要执行的Task中，添加sendData()接口将消息发送给宿主线程。在宿主线程通过onReceiveData()接口接收消息。这样宿主线程就可以通过notice()接口接收到Task发送的数据。
+在需要执行的Task中，添加sendData()接口将消息发送给宿主线程。在宿主线程通过onReceiveData()接口接收消息。这样宿主线程就可以通过notice()接口接收到Task发送的数据。
 
    <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IconItemSource.ets) -->
    
@@ -44,9 +31,9 @@
    ``` TypeScript
    import { taskpool } from '@kit.ArkTS';
    import { IconItemSource } from './IconItemSource';
-   
+   // 实现接收Task消息的方法
    function notice(data: number): void {
-     console.info('子线程任务已执行完，共加载图片: ', data);
+     console.info('子线程已加载数据，共加载图片: ', data);
    }
    
    // 通过Task的sendData方法，即时通知宿主线程信息
@@ -88,6 +75,9 @@
                taskpool.execute(loadPictureTask).then((res: object) => {
                  iconItemSourceList = res as IconItemSource[];
                  this.message = 'success';
+               }).catch((e: BusinessError) => {
+                 this.message = 'failed';
+                 console.error(`taskpool: execute: Code: ${e.code}, message: ${e.message}`);
                })
              })
          }

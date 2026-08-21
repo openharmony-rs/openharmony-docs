@@ -118,8 +118,8 @@
 | HDMI<sup>19+</sup>        | 27 | HDMI设备（例如HDMI、ARC、eARC等）。<br>**ArkTS-Dyn起始版本：** 19<br>**ArkTS-Sta起始版本：** 23           |
 | LINE_DIGITAL<sup>19+</sup>        | 28 | 有线数字设备（例如S/PDIF等）。<br>**ArkTS-Dyn起始版本：** 19<br>**ArkTS-Sta起始版本：** 23           |
 | REMOTE_DAUDIO<sup>18+</sup>        | 29 | 分布式设备。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
-| HEARING_AID<sup>20+</sup>        | 30 | 助听器设备。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
-| NEARLINK<sup>20+</sup>        | 31 | 星闪设备。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| HEARING_AID<sup>20+</sup>        | 30 | 助听器设备。<br>应用调用获取设备的相关接口时，该类型默认返回匿名类型。从API版本26.0.0开始，如需获取具体设备类型，可先调用[declareDeviceTypesCompatibility](./arkts-apis-audio-AudioRoutingManager.md#declaredevicetypescompatibility)进行设备类型兼容声明。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| NEARLINK<sup>20+</sup>        | 31 | 星闪设备。<br>应用调用获取设备的相关接口时，该类型默认返回匿名类型。从API版本26.0.0开始，如需获取具体设备类型，可先调用[declareDeviceTypesCompatibility](./arkts-apis-audio-AudioRoutingManager.md#declaredevicetypescompatibility)进行设备类型兼容声明。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | SYSTEM_PRIVATE<sup>22+</sup> | 200 | 系统私有设备（由于该设备在系统中属于私有设备，因此应用程序可以忽略该设备）。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23 |
 | DEFAULT<sup>9+</sup> | 1000   | 默认设备类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 
@@ -139,6 +139,24 @@
 | PREFERRED_DEFAULT | 1      | 更偏好使用蓝牙或星闪录音，是否使用低延迟或高质量录音取决于系统。 |
 | PREFERRED_LOW_LATENCY  | 2      | 更偏好使用蓝牙或星闪低延迟模式进行录音。 |
 | PREFERRED_HIGH_QUALITY | 3      | 更偏好使用蓝牙或星闪高质量模式进行录音。 |
+
+## NoiseReductionMode
+
+表示录音降噪模式的枚举。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称 | 值 | 说明 |
+| :--- | :--- | :--- |
+| FIDELITY | 0 | 保真模式，不进行降噪。 |
+| PURE_VOCALS | 1 | 纯人声模式，强降噪。 |
+| STANDARD | 2 | 标准模式，弱降噪。 |
 
 ## CommunicationDeviceType<sup>9+</sup>
 
@@ -611,6 +629,70 @@
 | SOURCE_TYPE_UNPROCESSED<sup>14+</sup>     | 14 |  麦克风纯净录音的音频源（系统不做任何算法处理）。<br>**系统能力：** SystemCapability.Multimedia.Audio.Core<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
 | SOURCE_TYPE_LIVE<sup>20+</sup>     | 17 |  直播场景的音频源，在支持的设备上会提供系统回声消除能力。<br>**系统能力：** SystemCapability.Multimedia.Audio.Core<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
+## AudioPlaybackCaptureMode
+
+表示内录（录制设备内部应用的声音）模式的枚举。不同模式决定可录制的目标播放流类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+| 名称 | 值 | 说明 |
+| :--- | :--- | :--- |
+| MODE_DEFAULT | 0x0 | 默认模式。录制大部分音频流，但不包括提示音流和隐私流。 |
+| MODE_MEDIA | 0x1 | 媒体模式。录制媒体、语音消息和未知类型的音频流。 |
+| MODE_EXCLUDING_SELF | 0x8000 | 排除自身模式。录制除应用自身播放的音频以外的音频流。 |
+
+## PlaybackCaptureStartState
+
+表示调用[requestPlaybackCaptureStart](arkts-apis-audio-AudioCapturer.md#requestplaybackcapturestart)后异步返回的内录启动状态的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+| 名称 | 值 | 说明 |
+| :--- | :--- | :--- |
+| STATE_SUCCESS | 0 | 启动内录成功。 |
+| STATE_FAILED | 1 | 启动内录失败。原因是音频打断请求被拒绝或发生系统内部错误。 |
+| STATE_NOT_AUTHORIZED | 2 | 用户未授权，启动内录失败。 |
+
+## AudioPlaybackCaptureMode
+
+表示内录（录制设备内部应用的声音）模式的枚举。不同模式决定可录制的目标播放流类型。支持通过按位或组合枚举值，当前仅支持MODE_DEFAULT（0x0）、MODE_MEDIA（0x1）、MODE_EXCLUDING_SELF（0x8000），以及MODE_MEDIA和MODE_EXCLUDING_SELF的按位或组合（0x8001）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+| 名称 | 值 | 说明 |
+| :--- | :--- | :--- |
+| MODE_DEFAULT | 0x0 | 默认模式。录制大部分音频流，但不包括提示音流和隐私流。 |
+| MODE_MEDIA | 0x1 | 媒体模式。录制媒体、语音消息和未知类型的音频流。 |
+| MODE_EXCLUDING_SELF | 0x8000 | 排除自身模式。录制除应用自身播放的音频以外的音频流。 |
+
+## PlaybackCaptureStartState
+
+表示调用[requestPlaybackCaptureStart](arkts-apis-audio-AudioCapturer.md#requestplaybackcapturestart)后异步返回的内录启动状态的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+| 名称 | 值 | 说明 |
+| :--- | :--- | :--- |
+| STATE_SUCCESS | 0 | 启动内录成功。 |
+| STATE_FAILED | 1 | 启动内录失败。原因是音频打断请求被拒绝或发生系统内部错误。 |
+| STATE_NOT_AUTHORIZED | 2 | 用户未授权，启动内录失败。 |
+
 ## AudioScene<sup>8+</sup>
 
 表示音频场景的枚举。
@@ -798,7 +880,7 @@
 
 | 名称               | 值     | 说明             |
 | ------------------ | ------ | ---------------- |
-| UNAVAILABLE_DEVICE | -2     | 表示返听由于输入\输出设备而不可用（如出声设备变更）。    |
+| UNAVAILABLE_DEVICE | -2     | 表示返听由于输入/输出设备而不可用（如出声设备变更）。    |
 | UNAVAILABLE_SCENE  | -1     | 表示返听由于音频场景而不可用（如音频焦点、低时延管控）。 |
 | AVAILABLE_IDLE     |  0     | 表示返听可用。     |
 | AVAILABLE_RUNNING  |  1     | 表示返听运行中。   |
@@ -846,7 +928,6 @@
 
 | 名称                   | 值 | 说明      |
 | :--------------------- |:--|:--------|
-| DEFAULT_BEHAVIOR<sup>24+</sup> | 0x00000000 | 默认行为，用于清空音频会话行为设置。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
-| VOIP_PRIVACY_TYPE_PUBLIC | 0x00000001 | 非隐私VoIP，允许VoIP录音流与其他应用的录音流同时进行录音。<br/>**注意：** VoIP通话流属于隐私流，请谨慎使用该接口并确保符合隐私保护要求。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
-| MUTE_WHEN_INTERRUPTED<sup>24+</sup> | 0x00000002 | 当系统需要停止或暂停音频流时，执行强制静音替代。<br/>调用[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)接口配置该行为时，必须同步调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)接口，否则配置将无法生效。<br/>在音频会话场景下，当音频流静音或恢复时，应用将分别收到[AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_MUTE与[AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE的通知。<br/>在AudioRenderer和AudioCapturer场景下，当音频流静音或恢复时，应用将分别收到[InterruptHint](#interrupthint).INTERRUPT_HINT_MUTE与[InterruptHint](#interrupthint).INTERRUPT_HINT_UNMUTE的通知。<br/>**注意：** 该标志不能与PAUSE_WHEN_INTERRUPTED共存，若同时设置，仅PAUSE_WHEN_INTERRUPTED生效。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
+| DEFAULT_BEHAVIOR | 0x00000000 | 默认行为，用于清空音频会话行为设置。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
+| MUTE_WHEN_INTERRUPTED | 0x00000002 | 当系统需要停止或暂停音频流时，执行强制静音替代。<br/>调用[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)接口配置该行为时，必须同步调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)接口，否则配置将无法生效。<br/>在音频会话场景下，当音频流静音或恢复时，应用将分别收到[AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_MUTE与[AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE的通知。<br/>在AudioRenderer和AudioCapturer场景下，当音频流静音或恢复时，应用将分别收到[InterruptHint](#interrupthint).INTERRUPT_HINT_MUTE与[InterruptHint](#interrupthint).INTERRUPT_HINT_UNMUTE的通知。<br/>**注意：** 该标志不能与PAUSE_WHEN_INTERRUPTED共存，若同时设置，仅PAUSE_WHEN_INTERRUPTED生效。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
 | PAUSE_WHEN_INTERRUPTED | 0x00000004 | 当系统需要停止音频流时，执行暂停替代。<br/>调用[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)接口配置该行为时，必须同步调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)接口，否则配置将无法生效。<br/>在音频会话场景下，当音频流暂停或恢复时，应用将分别收到[AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE与[AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_RESUME的通知。<br/>在AudioRenderer和AudioCapturer场景下，当音频流暂停或恢复时，应用将分别收到[InterruptHint](#interrupthint).INTERRUPT_HINT_PAUSE与[InterruptHint](#interrupthint).INTERRUPT_HINT_RESUME的通知。<br/>**注意：** 该标志不能与MUTE_WHEN_INTERRUPTED共存，若同时设置，仅该标志生效。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |

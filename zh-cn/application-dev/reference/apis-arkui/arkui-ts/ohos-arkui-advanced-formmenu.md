@@ -48,13 +48,7 @@ import { AddFormMenuItem } from '@ohos.arkui.advanced.FormMenu';
 
 ## AddFormMenuItem 
 
-```ts
-AddFormMenuItem(
-  want: Want,
-  componentId: string,
-  options?: AddFormOptions
-): void
-```
+AddFormMenuItem(want: Want, componentId: string, options?: AddFormOptions): void
 
 **装饰器类型：**@Builder
 
@@ -158,11 +152,11 @@ struct Index {
             }
           },
           style: {
-            // options: {
-            //   startIcon: $r("app.media.icon"), // 菜单图标,可以自己提供。系统默认采用"sys.media.ic_public_add"
-            //   content: "添加到桌面",  // 菜单内容，可以自己提供。默认使用"sys.string.ohos_add_form_to_desktop"
-            //   endIcon: $r("app.media.icon") // 菜单图标，可以自己提供
-            // }
+            options: {
+              startIcon: $r("app.media.icon"), // 菜单图标，可以自己提供。系统默认采用"sys.media.ic_public_add"
+              content: "添加到桌面",  // 菜单内容，可以自己提供。默认使用"sys.string.ohos_add_form_to_desktop"
+              endIcon: $r("app.media.icon") // 菜单图标，可以自己提供
+            }
           }
         }
       )

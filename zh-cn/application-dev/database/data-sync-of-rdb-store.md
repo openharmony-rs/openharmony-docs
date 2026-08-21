@@ -122,7 +122,7 @@
 3. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，默认采用多设备协同表模式进行数据存储和管理。
 
    ArkTS-Dyn示例：
-   <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
+   <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->  
    
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
@@ -571,7 +571,7 @@
 使用单版本表模式进行数据同步，基本开发步骤与[使用多设备协同表模式进行数据同步](#使用多设备协同表模式进行数据同步)相似。不过在创建数据表时（即使用多设备协同表模式进行数据同步中的步骤3），需要将进行跨设备同步的数据表设置为SINGLE_VERSION单版本类型。示例如下：
 
    ArkTS-Dyn示例：
-   <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
+   <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->  
    
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
@@ -638,7 +638,7 @@
 
 ### schema文件名及路径要求
 
-schema文件名及路径不支持自定义，否则使用单版本表模式进行数据同步将读取不到对应文件，设置分布表也会失败。 
+schema文件名及路径不支持自定义，否则使用单版本表模式进行数据同步将读取不到对应文件，设置分布式表也会失败。 
 
 -  文件名：sync_schema.json
 
@@ -651,15 +651,15 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 - dbSchema：schema名称，array[db]，必填字段。
   - version：当前schema版本，int类型，必填字段。
   - bundleName：应用包名，string类型，必填字段。
-  - dbName：数据库名称，string类型，必填字段。如示例中数据库名为"RdbTest.db"，则此处配置为："RdbTest"。
+  - dbName：数据库名称，string类型，必填字段。如示例中数据库名为"RdbTest.db"，则此处配置为："RdbTest"。<!--RP21--><!--RP21End-->
   - tables：数据库中表信息，array[table]。
-    - tableName：表名，string，必填字段。
-    - deviceSyncFields：指定端端同步对应的列，array[string]，其中字段必须在fields中，且必须在数据库表中，否则不会同步；该字段为必填字段，否则设置分布式表失败。<!--RP1--><!--RP1End-->
+    - tableName：表名，string类型，必填字段。
+    - deviceSyncFields：指定端端同步对应的列，array[string]，必填字段。其中字段必须在fields中，且必须在数据库表中，否则不会同步；未填写该字段时设置分布式表失败。<!--RP1--><!--RP1End-->
     - fields：数据库表字段详细信息，array[field]。
       - columnName：字段名，string类型，必填字段。
       - type：字段类型，string类型，必填字段，可选参数范围为：["Text", "Integer", "Long", "Float", "Double", "Blob" ]。
-      - primaryKey：该字段表示是否为指定解冲突列，与表中是否为主键无关，bool类型。若是自增表，该字段为必填字段。其中：true表示为解冲突列，false表示非解冲突列，默认为false。
-      - autoIncrement：是否自增属性，必须与表结构中对应，bool类型。关系型数据库跨设备数据同步不支持同步自增主键。其中：true表示自增主键，false表示非自增主，键默认为false。
+      - primaryKey：该字段表示是否为指定解冲突列，与表中是否为主键无关，bool类型。如果这张表没有配置解冲突列时，有主键表默认主键为解冲突列，无主键表默认rowid为解冲突列。若是自增主键表，该字段为必填字段。其中：true表示为解冲突列，false表示非解冲突列，默认为false。
+      - autoIncrement：是否自增属性，必须与表结构中对应，bool类型。关系型数据库跨设备数据同步不支持同步自增主键。其中：true表示自增主键，false表示非自增主键，默认为false。
       - notNull：是否非空，bool类型，非必填字段。其中：true表示非空字段，false表示可以为空字段，默认为false。
 
 ### schema示例

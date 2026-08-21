@@ -2154,6 +2154,131 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### invokeAnalysisTool
+
+invokeAnalysisTool(config: ToolInvokeConfig, callback: Callback&lt;AnalysisToolResult&gt;): Promise&lt;string&gt;
+
+触发分析工具的执行。使用callback异步回调。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限：** ohos.permission.CONTROL_IMAGEVIDEO_ANALYSIS
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                                         |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| config    | [ToolInvokeConfig](#toolinvokeconfig) | 是   | 调用分析工具的配置。 |
+| callback  | Callback&lt;[AnalysisToolResult](#analysistoolresult)&gt; | 是   | 回调函数，用于返回分析工具结果。 |
+
+**返回值：**
+
+| 类型                  | 说明                        |
+| --------------------- | --------------------------- |
+| Promise&lt;string&gt; | Promise对象，返回任务ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported tool type.<br>2. The length of **param** in **ToolInvokeConfig** exceeds 16KB. |
+| 23800301 | Internal system error. Possible causes:<br>1. IPC timeout;<br>2. System exception. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+let callback = (result: photoAccessHelper.AnalysisToolResult) => {
+  console.info('invokeAnalysisTool callback result: ' + JSON.stringify(result));
+};
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('invokeAnalysisToolDemo');
+  let config: photoAccessHelper.ToolInvokeConfig = {
+    type: photoAccessHelper.AnalysisToolType.IMAGE_RETRIEVAL_TOOL_TYPE,
+    param: '{"key":"value"}'
+  };
+
+  try {
+    let taskId = await phAccessHelper.invokeAnalysisTool(config, callback);
+    console.info('do invokeAnalysisTool successfully');
+  } catch (err) {
+    console.error('failed to do invokeAnalysisTool');
+  }
+}
+```
+
+### cancelAnalysisTool
+
+cancelAnalysisTool(config: ToolCancelConfig): Promise&lt;void&gt;
+
+取消分析工具的执行。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限：** ohos.permission.CONTROL_IMAGEVIDEO_ANALYSIS
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                                         |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| config    | [ToolCancelConfig](#toolcancelconfig) | 是   | 取消分析工具的配置。 |
+
+**返回值：**
+
+| 类型                  | 说明                        |
+| --------------------- | --------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Invalid task id.<br>2. The length of **param** in **ToolCancelConfig** exceeds 16KB. |
+| 23800301 | Internal system error. Possible causes:<br>1. IPC timeout;<br>2. System exception. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('cancelAnalysisToolDemo');
+  let config: photoAccessHelper.ToolCancelConfig = {
+    taskId: '123456',
+    param: '{"key":"value"}'
+  };
+
+  try {
+    await phAccessHelper.cancelAnalysisTool(config);
+    console.info('do cancelAnalysisTool successfully');
+  } catch (err) {
+    console.error('failed to do cancelAnalysisTool');
+  }
+}
+```
+
 ### createAssetsForAppWithMode<sup>12+</sup>
 
 createAssetsForAppWithMode(bundleName: string, appName: string, appId: string, tokenId: number, authorizationMode: AuthorizationMode, photoCreationConfigs:Array\<PhotoCreationConfig>): Promise\<Array\<string>>
@@ -3980,6 +4105,66 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### convertAssetToCompatibleAsset
+
+convertAssetToCompatibleAsset(assets: Array&lt;PhotoAsset&gt;): Promise&lt;Array&lt;PhotoAsset&gt;&gt;
+
+转换传入的PhotoAsset属性到媒体库兼容文件格式属性。
+
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名        | 类型                                | 必填 | 说明                                                         |
+| ------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
+| assets        | Array&lt;[PhotoAsset](#photoasset)&gt; | 是   | 待转换的资产数组。                                           |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;Array&lt;[PhotoAsset](#photoasset)&gt;&gt; | Promise对象，返回转换后的资产数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202      | Called by non-system application.        |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. Invalid Array&lt;PhotoAsset&gt;.|
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [photoAccessHelper.PhotoKeys.URI, photoAccessHelper.PhotoKeys.WIDTH, photoAccessHelper.PhotoKeys.HEIGHT],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let assets: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
+    let compatibleAssets: Array<photoAccessHelper.PhotoAsset> = await phAccessHelper.convertAssetToCompatibleAsset(assets);
+    console.info(`convertAssetToCompatibleAsset successfully, compatibleAssets count: ${compatibleAssets.length}`);
+  } catch (err) {
+    console.error(`failed to convertAssetToCompatibleAsset with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ### getAssetCompatibleUris
 
 getAssetCompatibleUris(bundleName: string, assets: Array&lt;PhotoAsset&gt;, compatibleFlag?: number): Promise&lt;Array&lt;string&gt;&gt;
@@ -5259,7 +5444,7 @@ setFavorite(favoriteState: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAssetChangeRequest.setFavorite](#setfavorite11)替代。
+> 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAssetChangeRequest.setFavorite](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#setfavorite)替代。
 
 **系统接口**：此接口为系统接口。
 
@@ -5271,7 +5456,7 @@ setFavorite(favoriteState: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名        | 类型                        | 必填   | 说明                                 |
 | ---------- | ------------------------- | ---- | ---------------------------------- |
-| favoriteState | boolean                   | 是    | 是否设置为收藏文件， true：设置为收藏文件，false：取消收藏。 |
+| favoriteState | boolean                   | 是    | 是否设置为收藏文件，true：设置为收藏文件，false：取消收藏。 |
 | callback   | AsyncCallback&lt;void&gt; | 是    | callback返回void。                              |
 
 **错误码：**
@@ -5322,7 +5507,7 @@ setFavorite(favoriteState: boolean): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAssetChangeRequest.setFavorite](#setfavorite11)替代。
+> 从API version 10开始支持，从API version 11开始废弃。建议使用[MediaAssetChangeRequest.setFavorite](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#setfavorite)替代。
 
 **系统接口**：此接口为系统接口。
 
@@ -5334,7 +5519,7 @@ setFavorite(favoriteState: boolean): Promise&lt;void&gt;
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| favoriteState | boolean | 是    | 是否设置为收藏文件， true：设置为收藏文件，false：取消收藏。 |
+| favoriteState | boolean | 是    | 是否设置为收藏文件，true：设置为收藏文件，false：取消收藏。 |
 
 **返回值：**
 
@@ -7101,6 +7286,73 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+
+### getReadOnlyFdWithCached
+
+getReadOnlyFdWithCached(): Promise&lt;number&gt;
+
+以只读方式打开当前文件。若打开的是云图库中的视频文件，则视频将被缓存至图库沙箱。其他类型的资源文件不会被缓存。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**返回值：**
+
+| 类型                    | 说明            |
+| --------------------- | ------------- |
+| Promise&lt;number&gt; | Promise对象，返回文件描述符。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201    | Permission denied. |
+| 202     | Called by non-system application.         |
+| 23800151     | Scene parameters validate failed, possible causes: The image and video files corresponding to the photoasset do not exist.        |
+| 23800302       | Failed to open the file. Possible causes: 1. Unable to access cloud images due to network connectivity issues; 2. File system malfunction. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getReadOnlyFdDemo');
+  try {
+    // 需要保证设备中存在可读取图片视频文件。
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let photoAsset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      return;
+    }
+    let fd: number = await photoAsset.getReadOnlyFdWithCached();
+    if (fd !== undefined) {
+      console.info('File fd: ' + fd);
+      photoAsset.close(fd);
+    } else {
+      console.error('Failed To Get ReadOnlyFd With Cached fd: ' + fd);
+    }
+  } catch (err) {
+    console.error(`Failed To Get ReadOnly Fd With Cached err: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## SharedPhotoAsset<sup>13+</sup>
 
 共享图片资产。
@@ -7950,59 +8202,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### setFavorite<sup>11+</sup>
-
-setFavorite(favoriteState: boolean): void
-
-将文件设置为收藏文件。
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**参数：**
-
-| 参数名        | 类型      | 必填   | 说明                                 |
-| ---------- | ------- | ---- | ---------------------------------- |
-| favoriteState | boolean | 是    | 是否设置为收藏文件， true：设置为收藏文件；false：取消收藏。 |
-
-**错误码：**
-
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.         |
-
-**示例：**
-
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
-
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-  console.info('setFavoriteDemo');
-  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-  let fetchOption: photoAccessHelper.FetchOptions = {
-    fetchColumns: [],
-    predicates: predicates
-  };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
-  let asset = await fetchResult.getFirstObject();
-  let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
-  assetChangeRequest.setFavorite(true);
-  phAccessHelper.applyChanges(assetChangeRequest).then(() => {
-    console.info('apply setFavorite successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`apply setFavorite failed with error: ${err.code}, ${err.message}`);
-  });
-}
-```
-
 ### setHidden<sup>11+</sup>
 
 setHidden(hiddenState: boolean): void
@@ -8164,6 +8363,68 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('apply setEditData successfully');
   }).catch((err: BusinessError) => {
     console.error(`apply setEditData failed with error: ${err.code}, ${err.message}`);
+  });
+}
+```
+
+### setCameraEditData
+
+setCameraEditData(editData: MediaAssetEditData): void
+
+保存资产的相机编辑数据。
+
+**起始版本**：26.1.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名        | 类型      | 必填   | 说明                                 |
+| ---------- | ------- | ---- | ---------------------------------- |
+| editData | [MediaAssetEditData](#mediaasseteditdata11) | 是   | 待保存的资产相机编辑数据。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202        |  Called by non-system application.         |
+| 23800151 | The scenario parameter verification fails. Possible causes: The input parameter is not within the valid range. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('setCameraEditDataDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let asset = await fetchResult.getFirstObject();
+  let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+
+  let assetEditData: photoAccessHelper.MediaAssetEditData = new photoAccessHelper.MediaAssetEditData('system', '1.0');
+  // 当前仅为示意，使用时请替换为实际应用沙箱资源，需要确保fileUri对应的资源存在。
+  let fileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.jpg';
+  assetChangeRequest.addResource(photoAccessHelper.ResourceType.IMAGE_RESOURCE, fileUri);
+  assetEditData.data = '123456';
+  assetChangeRequest.setCameraEditData(assetEditData);
+  phAccessHelper.applyChanges(assetChangeRequest).then(() => {
+    console.info('apply setCameraEditData successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`apply setCameraEditData failed with error: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -9116,105 +9377,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | ------------ | ------ | ---- | ---- | ------- |
 | comment<sup>23+</sup>    | string | 是    | 否   | 用于[MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)类型校验。<br>如果类（如MediaAssetsChangeRequest）对象可以访问，就说明该类是MediaChangeRequest的实现类。 |
 
-### constructor<sup>11+</sup>
-
-constructor(assets: Array&lt;PhotoAsset&gt;)
-
-构造函数。
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明       |
-| -------- | ------------------------- | ---- | ---------- |
-| assets | Array&lt;[PhotoAsset](#photoasset)&gt; | 是   | 需要变更的资产数组。 |
-
-**错误码：**
-
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.   |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.          |
-
-**示例：**
-
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
-
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-  console.info('MediaAssetsChangeRequest constructorDemo');
-  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-  let fetchOption: photoAccessHelper.FetchOptions = {
-    fetchColumns: [],
-    predicates: predicates
-  };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
-  let photoAssetList: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
-  let assetsChangeRequest: photoAccessHelper.MediaAssetsChangeRequest = new photoAccessHelper.MediaAssetsChangeRequest(photoAssetList);
-}
-```
-
-### setFavorite<sup>11+</sup>
-
-setFavorite(favoriteState: boolean): void
-
-将文件设置为收藏文件。
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**参数：**
-
-| 参数名        | 类型      | 必填   | 说明                                 |
-| ---------- | ------- | ---- | ---------------------------------- |
-| favoriteState | boolean | 是    | 是否设置为收藏文件， true：设置为收藏文件；false：取消收藏。 |
-
-**错误码：**
-
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.         |
-
-**示例：**
-
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
-
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-  console.info('setFavoriteDemo');
-  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-  let fetchOption: photoAccessHelper.FetchOptions = {
-    fetchColumns: [],
-    predicates: predicates
-  };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
-  let photoAssetList: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
-  let assetsChangeRequest: photoAccessHelper.MediaAssetsChangeRequest = new photoAccessHelper.MediaAssetsChangeRequest(photoAssetList);
-  assetsChangeRequest.setFavorite(true);
-  phAccessHelper.applyChanges(assetsChangeRequest).then(() => {
-    console.info('apply setFavorite successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`apply setFavorite failed with error: ${err.code}, ${err.message}`);
-  });
-}
-```
-
 ### setHidden<sup>11+</sup>
 
 setHidden(hiddenState: boolean): void
@@ -9836,7 +9998,9 @@ operateAttribute(operation: AlbumOperation): void
 
 **系统接口**：此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_MEDIALIB_THUMB_DB
+**需要权限**：
+- API版本26.1.0+：ohos.permission.ACCESS_MEDIALIB_THUMB_DB 或 ohos.permission.WRITE_IMAGEVIDEO
+- API版本26.0.0：ohos.permission.ACCESS_MEDIALIB_THUMB_DB
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -9854,7 +10018,7 @@ operateAttribute(operation: AlbumOperation): void
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. The attr of operation is invalid.<br>2. The type of operation is invalid.<br>3. The values or operation is incorrect. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. The attr of operation is invalid.<br>2. The type of operation is invalid.<br>3. The values of operation is incorrect. |
 | 23800201 | Unsupported operation type. It is recommended to check the logs.<br>Possible causes:<br>1. Unsupported AlbumAttribute for the album.<br>2. Unsupported AlbumOperationType for the AlbumAttribute.<br>3. Other operation limit. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -13560,6 +13724,7 @@ async function example(context: Context) {
 | NICK_NAME_ATTR | 'nickname' | 相册昵称。<br>**系统接口**：此接口为系统接口。 |
 | EXTRA_INFO_ATTR | 'extra_info' | 相册扩展信息操作属性。<br>**系统接口**：此接口为系统接口。 |
 | IS_REMOVED_ATTR | 'is_removed' | 相册是否已删除。<br>- 现支持人像相册。<br>- 值为1表示该相册已删除。<br>- 值为0表示该相册未删除或已恢复。<br>**系统接口**：此接口为系统接口。 |
+| FRIEND_ID_ATTR | 'friend_id' | 相册亲友圈信息操作属性。<br>**起始版本：** 26.1.0<br>**系统接口**：此接口为系统接口。 |
 ## AlbumOperationType
 
 枚举，设置相册属性的操作类型。
@@ -13937,6 +14102,36 @@ try {
 | ANALYSIS\_MAGIC\_EMOJI<sup>24+</sup>        | 21 | 魔法表情分析类别。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。    |
 | ANALYSIS\_AI\_EDIT<sup>24+</sup>        | 22 | AI编辑分析类别。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。    |
 
+## AnalysisToolType
+
+表示智慧分析工具类型的枚举。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                            | 值  | 说明       |
+| :---------------------------- | :- | :------- |
+| ANALYSIS\_BASE\_TOOL\_TYPE   | 0  | 基础分析工具类型，用于触发所有智慧分析算法。    |
+| IMAGE\_RETRIEVAL\_TOOL\_TYPE               | 1  | 图像检索工具类型。    |
+| NEGATIVE\_FILTER\_TOOL\_TYPE                 | 2  | 负向过滤类型，用于过滤低质量/重复/不当图像。    |
+| FACE\_RECOGNITION\_TOOL\_TYPE                | 3  | 人物识别类型。    |
+| BATCH\_SIMILARITY\_SELECTION\_TOOL\_TYPE              | 4  | 相似去重类型，计算图像间的视觉/语义相似度，辅助去重和关联分析。    |
+| BALANCED\_SELECTION\_TOOL\_TYPE      | 5  | 平衡性选材类型，故事主题与平衡性选材，按叙事角色均衡选取图像。    |
+| COVER\_GRID\_SELECTION\_TOOL\_TYPE        | 6  | 封面优选与排序类型，生成封面风格的多图网格布局，用于社交媒体发布。    |
+| HIGHLIGHT\_TOOL\_TYPE         | 7  | 图库时刻场景类型。   |
+| SEARCH\_TOOL\_TYPE            | 8  | 搜索场景类型。   |
+| SELECTION\_TOOL\_TYPE     | 9  | 图库精选视图场景类型。    |
+| PORTRAIT\_ALBUM\_TOOL\_TYPE    | 10 | 人像相册场景类型。    |
+| CLASSIFY\_ALBUM\_TOOL\_TYPE      | 11 | 分类相册场景类型。    |
+| SIMILARITY\_CLEANING\_TOOL\_TYPE        | 12 | 图库相似清理场景类型。    |
+| EDIT\_RECOMMENDATION\_TOOL\_TYPE        | 13 | 图库主动推荐场景类型。    |
+| AI\_SEARCH\_TOOL\_TYPE        | 14 | 图库智慧搜索场景类型。    |
+
 ## AnalysisConfig<sup>24+</sup>
 
 资产分析配置。
@@ -13966,6 +14161,57 @@ try {
 | 名称  | 类型                | 只读 | 可选 | 说明                                              |
 | ---- | ------- | ---- |  ---- | ----- |
 | result | number  | 否 | 否 | 资产分析的结果码。 |
+
+## ToolInvokeConfig
+
+调用分析工具的配置。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| type | [AnalysisToolType](#analysistooltype)  | 否 | 否 | 要调用的分析工具类型。 |
+| param | string  | 否 | 是 | 调用分析工具的参数，以JSON字符串格式表示，总长度不超过16KB。|
+
+## AnalysisToolResult
+
+分析工具执行结果。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| errCode | number  | 否 | 否 | 工具执行的错误码。<br>可能返回的错误码：<br>0 - 表示成功。<br>23800203 - 表示设备温度过高。<br>23800204 - 表示设备电量过低。<br>23800205 - 表示存储空间不足。<br>23800206 - 表示省电模式已开启。<br>23800207 - 表示智慧分析服务正在运行。<br>23800208 - 表示智慧分析开关已关闭。<br>23800209 - 表示分析服务异常，查看日志了解详情。<br>23800301 - 表示系统内部错误。|
+| result | string  | 否 | 是 | 工具执行结果，以JSON字符串格式表示。 |
+
+## ToolCancelConfig
+
+取消分析工具的配置。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| taskId | string  | 否 | 否 | 要取消的任务ID，必须是[invokeAnalysisTool](#invokeanalysistool)返回的有效ID。 |
+| param | string  | 否 | 是 | 用于取消分析工具的参数，以JSON字符串格式提供。总长度不得超过16KB。|
 
 ## HighlightAlbumInfoType<sup>12+</sup>
 
@@ -14336,7 +14582,6 @@ try {
 | ---- | ------- | ---- |  ---- | ----- |
 | fileId | number  | 否 | 否 | 媒体资产（图片/视频）的id。<br>**系统接口**：此接口为系统接口。  |
 | dateDay | string  | 否 | 否 | 创建媒体文件的日期。<br>**系统接口**：此接口为系统接口。  |
-| isFavorite | boolean  | 否 | 否 | 表示媒体资产（图片/视频）的收藏状态。true表示资产已收藏，false表示资产未收藏。<br>**系统接口**：此接口为系统接口。  |
 | isHidden | boolean  | 否 | 否 | 表示媒体资产（图片/视频）的隐藏状态。true表示资产已隐藏，false表示资产未隐藏。<br>**系统接口**：此接口为系统接口。  |
 | strongAssociation | [StrongAssociationType](#strongassociationtype20)  | 否 | 否 | 图片的强关联类型。<br>**系统接口**：此接口为系统接口。  |
 | thumbnailVisible | [ThumbnailVisibility](#thumbnailvisibility14)  | 否 | 否 | 缩略图的可访问性。<br>**系统接口**：此接口为系统接口。  |

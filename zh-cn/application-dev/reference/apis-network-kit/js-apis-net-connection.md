@@ -51,7 +51,7 @@ ArkTS-Sta: createNetConnection(netSpecifier?: NetSpecifier, timeout?: int): NetC
 | 参数名       | 类型                          | 必填 | 说明                                                         |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
 | netSpecifier | [NetSpecifier](#netspecifier) | 否   | 需要监听网络的网络特征，缺省则表示监听默认网络。                   |
-| timeout      | ArkTS-Dyn: number<br />ArkTS-Sta: int  | 否   | 获取netSpecifier指定网络时的超时时间，传入值需为uint32_t范围内的整数，仅netSpecifier存在时生效，默认值为0。<br>**说明**：当监听网络不存在时，会尝试激活此网络。若超过设置的超时时间，且注册了网络状态监听，则会触发netUnavailable事件。|
+| timeout      | ArkTS-Dyn: number<br />ArkTS-Sta: int  | 否   | 获取netSpecifier指定网络时的超时时间（单位：ms），传入值需为uint32_t范围内的整数，仅netSpecifier存在时生效，默认值为0。<br>**说明**：当监听网络不存在时，会尝试激活此网络。若超过设置的超时时间，且注册了网络状态监听，则会触发netUnavailable事件。|
 
 **返回值：**
 
@@ -298,7 +298,9 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { http } from '@kit.NetworkKit';
 
-let exclusionStr = "192.168,baidu.com";
+// 将exclusionStr以逗号分隔为数组。
+let exclusionStr = "192.168,test.com";
+// exclusionArray将exclusionStr以逗号分隔为数组。
 let exclusionArray = exclusionStr.split(',');
 connection.setAppHttpProxy({
   host: "192.168.xx.xxx",
@@ -312,13 +314,13 @@ let options: http.HttpRequestOptions = {
 // 发起一个HTTP请求。
 httpRequest.request("EXAMPLE_URL", options, (err: BusinessError, data: http.HttpResponse) => {
   if (!err) {
-   console.info(`Result: ${data.result}`);
-   console.info(`code: ${data.responseCode}`);
-   console.info(`type: ${JSON.stringify(data.resultType)}`);
-   console.info(`header: ${JSON.stringify(data.header)}`);
-   console.info(`cookies: ${data.cookies}`); // 从API version 8开始支持cookie。
+   console.info('Succeeded to get result: ' + JSON.stringify(data.result));
+   console.info('Succeeded to get code: ' + JSON.stringify(data.responseCode));
+   console.info('Succeeded to get type: ' + JSON.stringify(data.resultType));
+   console.info('Succeeded to get header: ' + JSON.stringify(data.header));
+   console.info('Succeeded to get cookies: ' + JSON.stringify(data.cookies)); // 从API version 8开始支持cookie。
   } else {
-   console.error(`error: ${JSON.stringify(err)}`);
+   console.error(`Failed to get request. Code:${err.code}, message:${err.message}`);
   }
 });
 ```
@@ -381,7 +383,7 @@ connection.getDefaultHttpProxy((error: BusinessError|null, data: connection.Http
     console.error(`Failed to get default http proxy. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);+
 });
 ```
 
@@ -425,9 +427,9 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
-  console.info(JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
-  console.info(JSON.stringify(error));
+  console.error(`Failed to get request. Code:${error.code}, message:${error.message} `);
 });
 ```
 
@@ -437,10 +439,10 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
-  console.info(JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: Error) => {
   let businessError = error as BusinessError;
-  console.info(JSON.stringify(businessError));
+  console.error(`Failed to get request. Code:${error.code}, message:${error.message} `);
 });
 ```
 
@@ -537,9 +539,9 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getAppNet().then((data: connection.NetHandle) => {
-  console.info(JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
-  console.info(JSON.stringify(error));
+  console.error(`Failed to get request. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -549,10 +551,10 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getAppNet().then((data: connection.NetHandle) => {
-  console.info(JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: Error) => {
   let businessError = error as BusinessError;
-  console.info(JSON.stringify(businessError));
+  console.error(`Failed to get request. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -690,7 +692,7 @@ netCon.on('netLost', (netHandle: connection.NetHandle) => {
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
   if (error) {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request. Code:${error.code}, message:${error.message}`);
   }
 });
 ```
@@ -729,7 +731,7 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -746,7 +748,7 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.netId = 0;
   connection.setAppNet(netHandle).then(() => {
-    console.info("setAppNet success");
+    console.info("Succeeded to setAppNet");
   }).catch((error: BusinessError) => {
     console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
@@ -779,6 +781,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 ArkTS-Dyn示例：
 ```ts
+
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -793,7 +796,7 @@ let netCon = connection.createNetConnection({
 netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
   console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   connection.setAppNet(netHandle).then(() => {
-    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: BusinessError) => {
     console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
@@ -805,7 +808,7 @@ netCon.on('netLost', (netHandle: connection.NetHandle) => {
   // 网络丢失时，需要主动解除指定网络的绑定关系
   netHandle.netId = 0;
   connection.setAppNet(netHandle).then(() => {
-    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: BusinessError) => {
     console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
@@ -814,7 +817,7 @@ netCon.on('netLost', (netHandle: connection.NetHandle) => {
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
   if (error) {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
   }
 });
 
@@ -833,7 +836,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
 
   connection.setAppNet(netHandle).then(() => {
-    console.info("setAppNet success");
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: Error) => {
     let businessError = error as BusinessError;
     console.error(`Failed to setAppNet. Code:${businessError.code}, message:${businessError.message}`);
@@ -1267,10 +1270,10 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
       console.error(`Failed to get net capabilities. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+    console.info("Succeeded to get data: " + JSON.stringify(data));
   })
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -1293,7 +1296,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   })
 }).catch((error: Error) => {
   let businessError = error as BusinessError;
-  console.error(JSON.stringify(businessError));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -1353,7 +1356,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   })
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -1372,7 +1375,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   })
 }).catch((error: Error) => {
   let businessError = error as BusinessError;
-  console.error(JSON.stringify(businessError));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -1496,8 +1499,8 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.isDefaultNetMetered((error: BusinessError, data: boolean) => {
-  console.error(JSON.stringify(error));
-  console.info(`data: ${data}`);
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1507,8 +1510,8 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.isDefaultNetMetered((error: BusinessError|null, data: boolean|undefined) => {
-  console.error(JSON.stringify(error));
-  console.info(`data: ${data}`);
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1548,7 +1551,7 @@ isDefaultNetMetered(): Promise\<boolean>
 import { connection } from '@kit.NetworkKit';
 
 connection.isDefaultNetMetered().then((data: boolean) => {
-  console.info(`isDefaultNetMetered success: ${data}`);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1629,8 +1632,8 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.hasDefaultNet((error: BusinessError, data: boolean) => {
-  console.error(JSON.stringify(error));
-  console.info(`data: ${data}`);
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1640,8 +1643,8 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.hasDefaultNet((error: BusinessError|null, data: boolean|undefined) => {
-  console.error(JSON.stringify(error));
-  console.info(`data: ${data}`);
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1681,7 +1684,7 @@ hasDefaultNet(): Promise\<boolean>
 import { connection } from '@kit.NetworkKit';
 
 connection.hasDefaultNet().then((data: boolean) => {
-  console.info(`data: ${data}`);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1770,7 +1773,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle, (error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
   });
 });
 ```
@@ -1782,7 +1785,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle, (error: BusinessError|null) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
   });
 });
 ```
@@ -1831,7 +1834,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle).then(() => {
-    console.info(`report success`);
+    console.info(`Succeeded to report`);
   });
 });
 ```
@@ -1885,7 +1888,7 @@ connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle)
       console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("report success");
+    console.info("Succeeded to report");
   });
 });
 ```
@@ -1934,7 +1937,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetDisconnected(netHandle).then( () => {
-    console.info(`report success`);
+    console.info(`Succeeded to report`);
   });
 });
 ```
@@ -2046,7 +2049,7 @@ getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Arr
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -2083,7 +2086,7 @@ let option: connection.QueryOptions = {
 connection.getAddressesByNameWithOptions("www.example.com", option).then((data: connection.NetAddress[]) => {
   console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`get ERROR msg: ${JSON.stringify(err)}`)
+  console.error(`Failed to get msg. Code:${err.code}, message:${err.message}`)
 });
 ```
 
@@ -2096,7 +2099,7 @@ connection.getAddressesByNameWithOptions("www.example.com", option).then((data: 
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称 | 类型  | 只读 | 可选 | 说明               |
 | ------ | ------| ---- | ---- | ------------------ |
@@ -2110,7 +2113,7 @@ connection.getAddressesByNameWithOptions("www.example.com", option).then((data: 
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称  |值         | 说明               |
 | ------ |---------- | ------------------ |
@@ -2126,7 +2129,8 @@ addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<voi
 
 > **说明：**
 >
-> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。
+> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
+> 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法删除。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -2195,7 +2199,8 @@ addCustomDnsRule(host: string, ip: Array\<string\>): Promise\<void\>
 
 > **说明：**
 >
-> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。
+> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
+> 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法删除。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -2242,7 +2247,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"]).then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -2255,7 +2260,7 @@ connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"]).then(() => {
   console.info("success");
 }).catch((error: Error) => {
   let businessError = error as BusinessError;
-  console.error(JSON.stringify(businessError));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -2267,6 +2272,7 @@ removeCustomDnsRule(host: string, callback: AsyncCallback\<void\>): void
 
 > **说明：**
 >
+> 删除前需确认当前无线程正在使用该自定义规则，以避免冲突。<br>
 > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
@@ -2335,6 +2341,7 @@ removeCustomDnsRule(host: string): Promise\<void\>
 
 > **说明：**
 >
+> 删除前需确认当前无线程正在使用该自定义规则，以避免冲突。<br>
 > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
@@ -2381,7 +2388,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.removeCustomDnsRule("xxxx").then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -2394,7 +2401,7 @@ connection.removeCustomDnsRule("xxxx").then(() => {
   console.info("success");
 }).catch((error: Error) => {
   let businessError = error as BusinessError;
-  console.error(JSON.stringify(businessError));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -2403,6 +2410,11 @@ connection.removeCustomDnsRule("xxxx").then(() => {
 clearCustomDnsRules(callback: AsyncCallback\<void\>): void
 
 删除当前应用程序的所有的自定义DNS规则。使用callback异步回调。
+
+ > **说明：**
+ >
+ > 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
+ > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -2465,6 +2477,11 @@ clearCustomDnsRules(): Promise\<void\>
 
 删除当前应用程序的所有的自定义DNS规则。使用Promise异步回调。
 
+ > **说明：**
+ >
+ > 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
+ > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
+
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
@@ -2500,7 +2517,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.clearCustomDnsRules().then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -2513,7 +2530,7 @@ connection.clearCustomDnsRules().then(() => {
   console.info("success");
 }).catch((error: Error) => {
   let businessError = error as BusinessError;
-  console.error(JSON.stringify(businessError));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -2534,7 +2551,7 @@ setPacFileUrl(pacFileUrl: string): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -2569,7 +2586,7 @@ getPacFileUrl(): string
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **返回值：**
 
@@ -2591,7 +2608,7 @@ getPacFileUrl(): string
 import { connection } from '@kit.NetworkKit';
 
 let pacFileUrl = connection.getPacFileUrl();
-console.info(pacFileUrl);
+console.info("Succeeded to get pacFileUrl");
 ```
 
 ## connection.findProxyForUrl<sup>20+</sup>
@@ -2610,7 +2627,7 @@ findProxyForUrl(url: string): string
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -2765,9 +2782,9 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
   let netExtAttribute: string = "xxx";
   connection.setNetExtAttribute(netHandle, netExtAttribute).then(() => {
-    console.info("setNetExtAttribute success");
+    console.info("Succeeded to setNetExtAttribute");
   }).catch((error: BusinessError) => {
-    console.error(`setNetExtAttribute failed, err: ${error.code}`);
+    console.error("setNetExtAttribute failed, err: " + error.code);
   })
 });
 ```
@@ -2865,9 +2882,9 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     return;
   }
   connection.getNetExtAttribute(netHandle).then((netExtAttribute: string) => {
-    console.info(`getNetExtAttribute: ${netExtAttribute}`);
+    console.info("Succeeded to getNetExtAttribute: " + netExtAttribute);
   }).catch((error: BusinessError) => {
-    console.error(`getNetExtAttribute failed, err: ${error.code}`);
+    console.error("getNetExtAttribute failed, err: " + error.code);
   })
 });
 ```
@@ -2917,7 +2934,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let netHandle = connection.getDefaultNetSync();
 if (netHandle.netId != 0) {
   let netExtAttribute: string = connection.getNetExtAttributeSync(netHandle);
-  console.info(`getNetExtAttribute: ${netExtAttribute}`);
+  console.info("Succeeded to getNetExtAttribute: " + netExtAttribute);
 }
 ```
 
@@ -2939,7 +2956,7 @@ getIpNeighTable(): Promise\<Array\<NetIpMacInfo>>
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -2966,12 +2983,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
   if (data.length !== 0) {
-    console.info(`ipAddress:${data[0].ipAddress}`);
-    console.info(`ifaceName:${data[0].iface}`);
-    console.info(`macAddress:${data[0].macAddress}`);
+    console.info(`Succeeded to get ipAddress: ${JSON.stringify(data.ipAddress)}`);
+    console.info(`Succeeded to get iface: ${JSON.stringify(data.iface)}`);
+    console.info(`Succeeded to get macAddress: ${JSON.stringify(data.macAddress)}`);
   }
 }).catch((error: BusinessError) => {
-  console.error(`error fetching ip neigh table. Code:${error.code}, message:${error.message}`);
+  console.error(`Failed to get ip neigh table. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2995,7 +3012,7 @@ ArkTS-Dyn: getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote:
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -3033,9 +3050,9 @@ let protocol = connection.ProtocolType.PROTO_TYPE_TCP;
 let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 6666 };
 let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
 connection.getConnectOwnerUid(protocol, local, remote).then((uid) => {
-  console.info(`uid: ${uid}`);
+  console.info(`Succeeded to get uid: ${uid}`);
 }).catch((error: BusinessError) => {
-  console.error(`getConnectOwnerUid failed. errorCode: ${error.code} message:${error.message}`);
+  console.error(`Failed to get ConnectOwnerUid. errorCode: ${error.code} message:${error.message}`);
 });
 ```
 
@@ -3059,7 +3076,7 @@ ArkTS-Sta: getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, rem
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3100,10 +3117,10 @@ let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 
 let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
 try {
   let uid = connection.getConnectOwnerUidSync(protocol, local, remote);
-  console.info(`uid: ${uid}`);
+  console.info(`Succeeded to get uid: ${uid}`);
 } catch (e) {
   let err = e as BusinessError;
-  console.error(`getConnectOwnerUid failed. errorCode: ${err.code} message:${err.message}`);
+  console.error(`Failed to get ConnectOwnerUid. errorCode: ${err.code} message:${err.message}`);
 }
 ```
 
@@ -3155,9 +3172,9 @@ getDnsAscii(host: string, flag?: ConversionProcess): string
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsAscii("www.示例.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.xn--fsq092h.com
+console.info("Succeeded to getDnsAscii: " + result);  // 预期结果：www.xn--fsq092h.com
 let result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.example.com
+console.info("Succeeded to getDnsAscii: " + result);  // 预期结果：www.example.com
 ```
 
 ## connection.getDnsUnicode<sup>23+</sup>
@@ -3170,7 +3187,7 @@ getDnsUnicode(host: string, flag?: ConversionProcess): string
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -3201,9 +3218,9 @@ getDnsUnicode(host: string, flag?: ConversionProcess): string
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.示例.com
+console.info("Succeeded to getDnsUnicode: " + result);  // 预期结果：www.示例.com
 let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.example.com
+console.info("Succeeded to getDnsUnicode: " + result);  // 预期结果：www.example.com
 ```
 
 ## connection.getSystemNetPortStates<sup>24+</sup>
@@ -3228,7 +3245,7 @@ getSystemNetPortStates(): Promise\<NetPortStatesInfo>
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -3328,9 +3345,9 @@ let options: connection.TraceRouteOptions = {
 };
 
 connection.queryTraceRoute(dest, options).then((data: connection.TraceRouteInfo[]) => {
-    console.info(JSON.stringify(data));
+    console.info('Succeeded to getDefaultHttpProxy:' + JSON.stringify(data));
 }).catch((err: BusinessError) => {
-    console.error(JSON.stringify(err));
+    console.error(`Failed to get request. Code:${err.code}, message:${err.message}`);
 });
 ```
 
@@ -3388,9 +3405,58 @@ let dest: string = "www.example.com";
 let duration: number = 10;
 
 connection.queryProbeResult(dest, duration).then((data: connection.ProbeResultInfo) => {
-    console.info(`LossRate: ${data.lossRate}, RTT: ${data.rtt}`);
+    console.info(`Succeeded to get LossRate: ${data.lossRate}, Succeeded to getRTT: ${data.rtt}`);
 }).catch((err: BusinessError) => {
-    console.error(JSON.stringify(err));
+    console.error(`Failed to get request. Code:${err.code}, message:${err.message}`);
+});
+```
+
+## connection.refreshGlobalHttpProxy
+
+refreshGlobalHttpProxy(): Promise\<HttpProxy\>
+
+通知系统重新认证全局代理。
+
+>**说明：**
+>
+>若当前未配置全局代理或代理配置信息有误（例如未正确配置username和password），则会抛出2100003错误码。可通过[getDefaultHttpProxy](#connectiongetdefaulthttpproxy10)接口查询当前代理配置信息。
+
+**需要权限**：ohos.permission.INTERNET
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ----------------------- |
+| Promise\<[HttpProxy](#httpproxy10)\> | Promise对象，返回全局代理配置信息。其中username和password字段固定为空字符串，不返回有效信息。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                          |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100002 | Failed to connect to the service.|
+| 2100003 | System internal error.            |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.refreshGlobalHttpProxy().then((data: connection.HttpProxy) => {
+  console.info(`Succeeded to refresh global http proxy: ${JSON.stringify(data)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to refresh global http proxy. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3400,13 +3466,13 @@ connection.queryProbeResult(dest, duration).then((data: connection.ProbeResultIn
 
 > **说明：**
 >
->（1）设备从无网络状态转变为有网络状态时，将触发netAvailable事件、netCapabilitiesChange事件和netConnectionPropertiesChange事件；
+>（1）设备从无网络状态转变为有网络状态时，将触发[on('netAvailable')](#onnetavailable)事件、[on('netCapabilitiesChange')](#onnetcapabilitieschange)事件和[on('netConnectionPropertiesChange')](#onnetconnectionpropertieschange)事件；
 >
->（2）接收到netAvailable事件后，若设备从有网络状态转变为无网络状态，将触发netLost事件；
+>（2）接收到[on('netAvailable')](#onnetavailable)事件后，若设备从有网络状态转变为无网络状态，将触发[on('netLost')](#onnetlost)事件；
 >
->（3）若未接收到netAvailable事件，则将直接接收到netUnavailable事件；
+>（3）若未接收到[on('netAvailable')](#onnetavailable)事件，则将直接接收到[on('netUnavailable')](#onnetunavailable)事件；
 >
->（4）设备从WiFi网络切换至蜂窝网络时，将先触发netLost事件（WiFi丢失），随后触发netAvailable事件（蜂窝可用）。
+>（4）设备从WiFi网络切换至蜂窝网络时，将先触发[on('netLost')](#onnetlost)事件（WiFi丢失），随后触发[on('netAvailable')](#onnetavailable)事件（蜂窝可用）。
 
 ### register
 
@@ -3416,7 +3482,7 @@ register(callback: AsyncCallback\<void>): void
 
 >**注意：**
 >
->使用完register接口后需要及时调用unregister取消注册。
+>使用完register接口后需要及时调用[unregister](#unregister)取消注册。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -3456,7 +3522,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to register.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3467,7 +3533,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.register((error: BusinessError | null) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to register.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3511,7 +3577,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to unregister.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3522,15 +3588,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to unregister.Code:${error.code}, message:${error.message}`);
 });
 ```
 
 ### on('netAvailable')
 
-on(type: 'netAvailable', callback: Callback\<NetHandle>): void
+on(type: 'netAvailable', callback: Callback\<NetHandle\>): void
 
-订阅网络可用事件。此接口需在调用register接口之前调用。若无需接收网络状态变化的回调通知，应使用unregister取消订阅默认的网络状态变化通知。
+订阅网络可用事件。此接口需在调用[register](#register)接口之前调用。若无需接收网络状态变化的回调通知，应使用[unregister](#unregister)取消订阅默认的网络状态变化通知。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3538,7 +3604,7 @@ on(type: 'netAvailable', callback: Callback\<NetHandle>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -3548,8 +3614,6 @@ on(type: 'netAvailable', callback: Callback\<NetHandle>): void
 | callback | Callback\<[NetHandle](#nethandle)> | 是   | 回调函数，返回数据网络句柄。|
 
 **示例：**
-
-ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3564,38 +3628,14 @@ netCon.on('netAvailable', (data: connection.NetHandle) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to register.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络可用事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to unregister.Code:${error.code}, message:${error.message}`);
 });
 
-```
-
-ArkTS-Sta示例：
-```ts
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 创建NetConnection对象。
-let netCon: connection.NetConnection = connection.createNetConnection();
-
-// 先使用on接口订阅网络可用事件。
-netCon.on('netAvailable', (data: connection.NetHandle|undefined) => {
-  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
-});
-
-// 注册网络状态变化事件。此接口要在调用on后调用。
-netCon.register((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-
-// 使用unregister接口取消订阅网络可用事件。
-netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
 ```
 
 ### on('netBlockStatusChange')
@@ -3607,8 +3647,6 @@ on(type: 'netBlockStatusChange', callback: Callback\<NetBlockStatusInfo>): void
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3637,44 +3675,19 @@ netCon.on('netBlockStatusChange', (data: connection.NetBlockStatusInfo) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络阻塞状态事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 ```
-
-ArkTS-Sta示例：
-```ts
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 创建NetConnection对象。
-let netCon: connection.NetConnection = connection.createNetConnection();
-
-// 先使用on接口订阅网络阻塞状态事件。
-netCon.on('netBlockStatusChange', (data: connection.NetBlockStatusInfo|undefined) => {
-  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
-});
-
-// 注册网络状态变化事件。此接口要在调用on后调用。
-netCon.register((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-
-// 使用unregister接口取消订阅网络阻塞状态事件。
-netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-```
-
 
 ### onNetBlockStatusChange
 
-onNetBlockStatusChange(callback: Callback\<NetBlockStatusInfo>): void;
+onNetBlockStatusChange(callback: Callback\<NetBlockStatusInfo\>): void;
 
 订阅网络阻塞状态事件。此接口需要在调用register接口之前调用。若无需接收网络状态变化的回调通知，应使用unregister取消订阅默认的网络状态变化通知。
 
@@ -3722,7 +3735,7 @@ netCon.unregister((error: BusinessError|null) => {
 
 on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 
-订阅网络能力变化事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络能力变化事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3730,9 +3743,7 @@ on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 23
-  
- **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -3743,7 +3754,6 @@ on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3758,36 +3768,12 @@ netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络能力变化事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-```
-
-ArkTS-Sta示例：
-```ts
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 创建NetConnection对象。
-let netCon: connection.NetConnection = connection.createNetConnection();
-
-// 先使用on接口订阅网络能力变化事件。
-netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo|undefined) => {
-  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
-});
-
-// 注册网络状态变化事件。此接口要在调用on后调用。
-netCon.register((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-
-// 使用unregister接口取消订阅网络能力变化事件。
-netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3795,13 +3781,13 @@ netCon.unregister((error: BusinessError|null) => {
 
 on(type: 'netConnectionPropertiesChange', callback: Callback\<NetConnectionPropertyInfo\>): void
 
-订阅网络连接信息变化事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络连接信息变化事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -3812,7 +3798,6 @@ on(type: 'netConnectionPropertiesChange', callback: Callback\<NetConnectionPrope
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3827,53 +3812,27 @@ netCon.on('netConnectionPropertiesChange', (data: connection.NetConnectionProper
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络连接信息变化事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
-```
-
-ArkTS-Sta示例：
-```ts
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 创建NetConnection对象。
-let netCon: connection.NetConnection = connection.createNetConnection();
-
-// 先使用on接口订阅网络连接信息变化事件。
-netCon.on('netConnectionPropertiesChange', (data: connection.NetConnectionPropertyInfo|undefined) => {
-  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
-});
-
-// 注册网络状态变化事件。此接口要在调用on后调用。
-netCon.register((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-
-// 使用unregister接口取消订阅网络连接信息变化事件。
-netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
 ```
 
 ### on('netLost')
 
 on(type: 'netLost', callback: Callback\<NetHandle>): void
 
-订阅网络丢失事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络丢失事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3885,8 +3844,6 @@ on(type: 'netLost', callback: Callback\<NetHandle>): void
 | callback | Callback\<[NetHandle](#nethandle)> | 是   | 回调函数，数据网络句柄(netHandle)。|
 
 **示例：**
-
-ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3910,34 +3867,10 @@ netCon.unregister((error: BusinessError) => {
 });
 
 ```
-
-ArkTS-Sta示例：
-```ts
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 创建NetConnection对象。
-let netCon: connection.NetConnection = connection.createNetConnection();
-
-// 先使用on接口订阅网络丢失事件
-netCon.on('netLost', (data: connection.NetHandle|undefined) => {
-  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
-});
-
-// 注册网络状态变化事件。此接口要在调用on后调用。
-netCon.register((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-
-// 使用unregister接口取消订阅网络丢失事件。
-netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-```
   
 ### onNetLost
 
-onNetLost(callback: Callback\<NetHandle>): void
+onNetLost(callback: Callback\<NetHandle\>): void
 
 订阅网络丢失事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
 
@@ -3964,19 +3897,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 创建NetConnection对象。
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// 先使用on接口订阅网络丢失事件
-netCon.onNetLost((value) => {
-  console.info(`Succeeded to get data: ${JSON.stringify(value)}`);
+// 先使用on接口订阅网络丢失事件。
+netCon.on('netLost', (data: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
-netCon.register((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
+netCon.register((error: BusinessError) => {
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络丢失事件。
-netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
+netCon.unregister((error: BusinessError) => {
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3985,15 +3918,13 @@ netCon.unregister((error: BusinessError|null) => {
 
 on(type: 'netUnavailable', callback: Callback\<void>): void
 
-订阅网络不可用事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络不可用事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -4005,8 +3936,6 @@ on(type: 'netUnavailable', callback: Callback\<void>): void
 | callback | Callback\<void> | 是   | 回调函数，无返回结果。|
 
 **示例：**
-
-ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4021,45 +3950,21 @@ netCon.on('netUnavailable', () => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get register.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络不可用事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get unregister.Code:${error.code}, message:${error.message}`);
 });
 
-```
-
-ArkTS-Sta示例：
-```ts
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 创建NetConnection对象。
-let netCon: connection.NetConnection = connection.createNetConnection();
-
-// 先使用on接口订阅网络不可用事件。
-netCon.on('netUnavailable', () => {
-  console.info("Succeeded to get unavailable net event");
-});
-
-// 注册网络状态变化事件。此接口要在调用on后调用。
-netCon.register((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-
-// 使用unregister接口取消订阅网络不可用事件。
-netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
 ```
 
 ### onNetUnavailable
 
-onNetUnavailable(callback: Callback\<void>): void
+onNetUnavailable(callback: Callback\<void\>): void
 
-订阅网络不可用事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络不可用事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -4085,18 +3990,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let netCon: connection.NetConnection = connection.createNetConnection();
 
 // 先使用on接口订阅网络不可用事件。
-netCon.onNetUnavailable((value) => {
+netCon.on('netUnavailable', () => {
   console.info("Succeeded to get unavailable net event");
 });
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
-netCon.register((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
+netCon.register((error: BusinessError) => {
+  console.error(`Failed to get register.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络不可用事件。
-netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
+netCon.unregister((error: BusinessError) => {
+  console.error(`Failed to get unregister.Code:${error.code}, message:${error.message}`);
 });
 ```
 ## NetHandle
@@ -4115,7 +4020,7 @@ netCon.unregister((error: BusinessError|null) => {
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
-| netId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否  |  网络ID，取值为0代表没有默认网络，其余有效取值必须大于等于100。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| netId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否  |  网络ID，取值为0代表没有默认网络，其余有效取值必须大于等于100。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
 
 ### bindSocket<sup>9+</sup>
 
@@ -4168,7 +4073,7 @@ interface Data {
               port:8080,
               family:1} as socket.NetAddress, (error: Error) => {
       if (error) {
-        console.error('bind fail');
+        console.error(`Failed to bind. Code:${error.code}, message:${error.message}`);
         return;
       }
       netHandle.bindSocket(tcp, (error: BusinessError, data: void) => {
@@ -4176,13 +4081,13 @@ interface Data {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-          console.info(JSON.stringify(data));
+          console.info('Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
         }
       });
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.info(`on message, message: ${JSON.stringify(value.message)}, remoteInfo: ${JSON.stringify(value.remoteInfo)}`);
+      console.info("Succeeded to get message, message:" + value.message + ", Succeeded to get remoteInfo:" + value.remoteInfo);
     };
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
@@ -4192,14 +4097,14 @@ interface Data {
         return;
       }
       udp.on('message', (data: Data) => {
-        console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+        console.info("Succeeded to get data: " + JSON.stringify(data));
       });
       netHandle.bindSocket(udp, (error: BusinessError, data: void) => {
         if (error) {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-          console.info(JSON.stringify(data));
+          console.info('Succeeded to get defaultHttpProxy: ' + JSON.stringify(data));
         }
       });
     });
@@ -4264,11 +4169,11 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
               port:8080,
               family:1} as socket.NetAddress, (error: Error) => {
       if (error) {
-        console.error('bind fail');
+        console.error('Failed to bind');
         return;
       }
       netHandle.bindSocket(tcp).then(() => {
-        console.info("bind socket success");
+        console.info("Succeeded to bind socket");
       }).catch((error: BusinessError) => {
         console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
       });
@@ -4288,7 +4193,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
         console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
       });
       netHandle.bindSocket(udp).then(() => {
-        console.info("bind socket success");
+        console.info("Succeeded to bind socket");
       }).catch((error: BusinessError) => {
         console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
       });
@@ -4481,7 +4386,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.getAddressesByNameWithOptions(host, option).then((data: connection.NetAddress[]) => {
     console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
-    console.error(`get ERROR msg: ${JSON.stringify(err)}`)
+    console.error(`Failed to get addresses by name. Code:${err.code}, message:${err.message}`);
   });
 });
 ```
@@ -4645,15 +4550,19 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                  | 值   | 说明                   |
 | ------------------------ | ---- | ---------------------- |
-| NET_CAPABILITY_MMS | 0 | 表示网络可以访问运营商的MMSC（Multimedia&nbsp;Message&nbsp;Service，多媒体短信服务）发送和接收彩信。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
-| NET_CAPABILITY_NOT_METERED | 11 | 表示网络流量未被计费。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
-| NET_CAPABILITY_INTERNET  | 12   | 表示该网络应具有访问Internet的能力，此能力由网络提供者设置，但该网络访问Internet的连通性并未被网络管理成功验证。网络连通性可以通过NET_CAPABILITY_VALIDATED和NET_CAPABILITY_CHECKING_CONNECTIVITY判断。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
-| NET_CAPABILITY_NOT_VPN | 15 | 表示网络不使用VPN（Virtual&nbsp;Private&nbsp;Network，虚拟专用网络）。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
-| NET_CAPABILITY_VALIDATED | 16   | 表示网络管理通过该网络与华为云地址成功建立连接，此能力由网络管理模块设置。<br>**注意：** 网络管理可能会与华为云地址建立连接失败，导致网络能力不具备此标记位，但不完全代表该网络无法访问互联网。另外，对于新完成连接的网络，由于网络正在进行连通性验证，此值可能无法反映真实的验证结果。对此，应用可以通过NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup>检查网络是否正在检测连通性。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
-| NET_CAPABILITY_PORTAL<sup>12+</sup> | 17   | 表示系统发现该网络存在强制网络门户，需要用户登陆认证，该能力由网络管理模块设置。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23 |
-| NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup> | 31   | 表示网络管理正在检验当前网络的连通性，此值会在网络连接时设置。当此值存在时，NET_CAPABILITY_VALIDATED的值不准确，连通性检测结束后不再设置，此时可以通过判断NetCap是否包含NET_CAPABILITY_VALIDATED判断连通性。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23 |
+| NET_CAPABILITY_MMS | 0 | 表示网络可以访问运营商的MMSC（Multimedia&nbsp;Message&nbsp;Service，多媒体短信服务）发送和接收彩信。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
+| NET_CAPABILITY_NOT_METERED | 11 | 表示网络流量未被计费。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
+| NET_CAPABILITY_INTERNET  | 12   | 表示该网络应具有访问Internet的能力，此能力由网络提供者设置，但该网络访问Internet的连通性并未被网络管理成功验证。网络连通性可以通过NET_CAPABILITY_VALIDATED和NET_CAPABILITY_CHECKING_CONNECTIVITY判断。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
+| NET_CAPABILITY_NOT_VPN | 15 | 表示网络不使用VPN（Virtual&nbsp;Private&nbsp;Network，虚拟专用网络）。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
+| NET_CAPABILITY_VALIDATED | 16   | 表示网络管理通过该网络与华为云地址成功建立连接，此能力由网络管理模块设置。<br>**注意：** 网络管理可能会与华为云地址建立连接失败，导致网络能力不具备此标记位，但不完全代表该网络无法访问互联网。另外，对于新完成连接的网络，由于网络正在进行连通性验证，此值可能无法反映真实的验证结果。对此，应用可以通过NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup>检查网络是否正在检测连通性。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
+| NET_CAPABILITY_PORTAL<sup>12+</sup> | 17   | 表示系统发现该网络存在强制网络门户，需要用户登录认证，该能力由网络管理模块设置。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23 |
+| NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup> | 31   | 表示网络管理正在检验当前网络的连通性，此值会在网络连接时设置。当此值存在时，NET_CAPABILITY_VALIDATED的值不准确，连通性检测结束后不再设置，此时可以通过判断NetCap是否包含NET_CAPABILITY_VALIDATED判断连通性。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23 |
 
 ## NetBearType
 
@@ -4661,13 +4570,16 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 |            名称         | 值   | 说明        |
 | ----------------------- | ---- | ---------- |
-| BEARER_CELLULAR | 0    | 蜂窝网络。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
-| BEARER_WIFI     | 1    | Wi-Fi网络。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
-| BEARER_BLUETOOTH<sup>12+</sup> | 2    | 蓝牙网络。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23 |
-| BEARER_ETHERNET | 3    | 以太网网络。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| BEARER_CELLULAR | 0    | 蜂窝网络。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
+| BEARER_WIFI     | 1    | Wi-Fi网络。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
+| BEARER_BLUETOOTH<sup>12+</sup> | 2    | 蓝牙网络。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23 |
+| BEARER_ETHERNET | 3    | 以太网网络。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | BEARER_VPN<sup>12+</sup>| 4    | VPN网络。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23 |
 
 ## ConversionProcess<sup>23+</sup>
@@ -4678,7 +4590,7 @@ ASCII/Unicode转码转换流程参数的枚举。
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称 | 值 | 说明 |
 | ---------------- | --------------- | --------------------------- |
@@ -4696,7 +4608,7 @@ TCP状态。
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 |            名称         | 值   | 说明        |
 | ----------------------- | ---- | ---------- |
@@ -4742,9 +4654,9 @@ TCP状态。
 
 | 名称    | 类型   | 只读 | 可选 | 说明                      |
 | ------ | ------ | ---| --- |------------------------- |
-| host  | string |  否 | 否  | 代理服务器主机名。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23 |
-| port  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否   | 主机端口。取值范围[0,65535]。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
-| exclusionList  | Array\<string\> | 否 | 否   | 不使用代理的主机名列表，主机名支持域名、IP地址以及通配符形式，详细匹配规则如下：<br/>1、域名匹配规则：<br/>（1）完全匹配：代理服务器主机名只要与列表中的任意一个主机名完全相同，就可以匹配。<br/>（2）包含匹配：代理服务器主机名只要包含列表中的任意一个主机名，就可以匹配。<br/>例如，如果在主机名列表中设置了 “ample.com”，则  “ample.com”、“www.ample.com”、“ample.com:80”都会被匹配，而 “www.example.com”、“ample.com.org”则不会被匹配。<br/>2、IP地址匹配规则：代理服务器主机名只要与列表中的任意一个IP地址完全相同，就可以匹配。<br/>3、域名跟IP地址可以同时添加到列表中进行匹配。<br/>4、单个“\*”是唯一有效的通配符，当列表中只有通配符时，将与所有代理服务器主机名匹配，表示禁用代理。通配符只能单独添加，不可以与其他域名、IP地址一起添加到列表中，否则通配符将不生效。<br/>5、匹配规则不区分主机名大小写。<br/>6、匹配主机名时，不考虑http和https等协议前缀。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23 |
+| host  | string |  否 | 否  | 代理服务器主机名。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23 |
+| port  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否   | 主机端口。取值范围[0,65535]。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
+| exclusionList  | Array\<string\> | 否 | 否   | 不使用代理的主机名列表，主机名支持域名、IP地址以及通配符形式，详细匹配规则如下：<br/>1、域名匹配规则：<br/>（1）完全匹配：代理服务器主机名只要与列表中的任意一个主机名完全相同，就可以匹配。<br/>（2）包含匹配：代理服务器主机名只要包含列表中的任意一个主机名，就可以匹配。<br/>例如，如果在主机名列表中设置了 “ample.com”，则  “ample.com”、“www.ample.com”、“ample.com:80”都会被匹配，而 “www.example.com”、“ample.com.org”则不会被匹配。<br/>2、IP地址匹配规则：代理服务器主机名只要与列表中的任意一个IP地址完全相同，就可以匹配。<br/>3、域名跟IP地址可以同时添加到列表中进行匹配。<br/>4、单个“\*”是唯一有效的通配符，当列表中只有通配符时，将与所有代理服务器主机名匹配，表示禁用代理。通配符只能单独添加，不可以与其他域名、IP地址一起添加到列表中，否则通配符将不生效。<br/>5、匹配规则不区分主机名大小写。<br/>6、匹配主机名时，不考虑http和https等协议前缀。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23 |
 | username<sup>12+</sup>  | string | 否 | 是 | 使用代理的用户名。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
 | password<sup>12+</sup>  | string | 否 | 是  | 使用代理的用户密码。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
 
@@ -4801,7 +4713,7 @@ SOCKS5代理配置信息。
 | 名称                     | 类型                                | 只读 | 可选  | 说明                                                         |
 | ----------------------- | ----------------------------------- | ----|---- | ------------------------------------------------------------ |
 | netCapabilities         | [NetCapabilities](#netcapabilities) |  否 | 否  | 存储数据网络的传输能力和承载类型。                                |
-| bearerPrivateIdentifier | string                              |  否 | 是 | 网络标识符，蜂窝网络的标识符是"slot0"（对应SIM卡1）、"slot1"（对应SIM卡2）。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
+| bearerPrivateIdentifier | string                              |  否 | 是 |  网络标识符。<br/>- 蜂窝网络：标识符为simId，可通过[sim.getSimAccountInfo](../apis-telephony-kit/js-apis-sim.md#simgetsimaccountinfo10)接口获取对应卡槽的simId（例如"simId1"，其中1表示当前SIM卡的索引）；<br/>- Wi-Fi网络：标识符固定为wlan0，但从API version 12开始，应用可通过传递已注册的WLAN热点信息来指定希望激活的WLAN网络；<br/>- 以太网：标识符为eth，可在hdc shell中执行ifconfig命令查看具体的网卡标识（例如"eth0"）。 |
 
 **示例：**
 
@@ -4825,7 +4737,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
    bearerPrivateIdentifier: `${networkId}`
  });
  netConnectionWlan.register((error: BusinessError) => {
-   console.error(JSON.stringify(error));
+   console.error(`Failed to get register.Code:${error.code}, message:${error.message}`);
  });
 });
 ```
@@ -4850,7 +4762,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
     bearerPrivateIdentifier: `${networkId}`
   });
   netConnectionWlan.register((error: BusinessError|null) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get register.Code:${error.code}, message:${error.message}`);
   });
 });
 ```
@@ -4884,8 +4796,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称                  | 类型                                | 只读| 可选 | 说明                     |
 | --------------------- | ----------------------|------------ | --- | ------------------------ |
-| linkUpBandwidthKbps   | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 | 是 |  上行（设备到网络）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
-| linkDownBandwidthKbps | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 | 是 |  下行（网络到设备）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
+| linkUpBandwidthKbps   | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 | 是 |  上行（设备到网络）带宽，单位(Kbps，千比特每秒)。0表示无法评估当前网络带宽。|
+| linkDownBandwidthKbps | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 | 是 |  下行（网络到设备）带宽，单位(Kbps，千比特每秒)。0表示无法评估当前网络带宽。|
 | networkCap            | Array\<[NetCap](#netcap)>           | 否 | 是 |  网络具体能力。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。           |
 | bearerTypes           | Array\<[NetBearType](#netbeartype)> |  否 | 否 |  网络类型。数组里面只包含了一种网络类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
@@ -4903,8 +4815,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
-| netHandle            | [NetHandle](#nethandle)                             | 否 | 否   |网络句柄。|
-| connectionProperties | [ConnectionProperties](#connectionproperties)       | 否 | 否   |网络连接信息。           |
+| netHandle            | [NetHandle](#nethandle)                             | 否 | 否   |网络句柄。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23|
+| connectionProperties | [ConnectionProperties](#connectionproperties)       | 否 | 否   |网络连接信息。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23           |
 
 ## NetBlockStatusInfo<sup>11+</sup>
 
@@ -4920,8 +4832,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
-| netHandle            | [NetHandle](#nethandle)               | 否 | 否   |网络句柄。   |
-| blocked              | boolean                               | 否 | 否   | 标识当前网络是否是堵塞状态。true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
+| netHandle            | [NetHandle](#nethandle)               | 否 | 否   |网络句柄。 <br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23  |
+| blocked              | boolean                               | 否 | 否   | 标识当前网络是否是堵塞状态。true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23 |
 
 ## ConnectionProperties
 
@@ -4953,7 +4865,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | 名称           | 类型                        | 只读 | 可选|     说明      |
 | -------------- | ---------------|------------ | --- |-------------- |
 | interface      | string                      | 否 | 否 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br> **ArkTS-Dyn起始版本：** 8|
-| iface      | string                      | 否 | 否 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Sta。 <br> **ArkTS-Sta起始版本：** 22|
+| iface      | string                      | 否 | 否 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Sta。 <br> **ArkTS-Sta起始版本：** 23|
 | destination    | [LinkAddress](#linkaddress) | 否 | 否 |目的地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
 | gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
 | hasGateway     | boolean                     | 否 | 否 |true：有网关；false：无网关。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
@@ -5045,7 +4957,7 @@ IP邻居表条目信息。
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
@@ -5084,7 +4996,7 @@ TCP端口状态信息。
 | ------ | ------ | --- |---|------------------------- |
 | tcpLocalIp    | string | 否 | 否 |TCP网络本地IP地址。                       |
 | tcpLocalPort  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |TCP网络本地端口，取值范围\[0, 65535]。 |
-| tcpRemoteIp   | string | 否 | 是 |TCP网络远程IP地址。  |
+| tcpRemoteIp   | string | 否 | 否 |TCP网络远程IP地址。  |
 | tcpRemotePort | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |TCP网络远程端口，取值范围\[0, 65535]。 |
 | tcpUid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |监听该TCP端口的用户UID。 |
 | tcpPid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |监听该TCP端口的进程PID。 |

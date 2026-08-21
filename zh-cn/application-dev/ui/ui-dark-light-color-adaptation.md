@@ -302,7 +302,7 @@
 ``` TypeScript
 onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
   try {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
     this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT);
   } catch (err) {
     hilog.error(DOMAIN, 'testTag', 'Failed to set colorMode. Cause: %{public}s', JSON.stringify(err));
@@ -331,8 +331,12 @@ ArkTS-Dyn示例：
 
 ``` TypeScript
 onCreate(): void {
-  this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
-  AppStorage.setOrCreate('currentColorMode', this.context.config.colorMode);
+  try {
+    this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+  } catch (e) {
+    hilog.error(DOMAIN, 'EntryAbility', `setColorMode failed, error: ${JSON.stringify(e)}`);
+  }
+  // ...
 }
 ```
 
@@ -528,9 +532,9 @@ onCreate(): void {
 
         colorModeChange() {
           if (this.mode % 2 === 0) {
-            return $r("app.color.color_light")
+            this.textColor = $r("app.color.color_light")
           } else {
-            return $r("app.color.color_night")
+            this.textColor = $r("app.color.color_night")
           }
         }
 
@@ -579,7 +583,7 @@ onCreate(): void {
     本示例展示OH_ArkUI_SetForceDarkConfig接口的基础使用方式，自定义反色算法根据开发者实际场景进行设置，便于深浅色切换时展示不同的颜色值。
 
       ```c++
-      OH_ArkUI_SetForceDarkConfig(nullptr, true, ArkUI_NodeType::ARKUI_NODE_UNDEFINED, nullptr); // 对所有组件使用x系统默认反色算法，即三原色取反。
+      OH_ArkUI_SetForceDarkConfig(nullptr, true, ArkUI_NodeType::ARKUI_NODE_UNDEFINED, nullptr); // 对所有组件使用系统默认反色算法，即三原色取反。
       ```
 
       ```ts

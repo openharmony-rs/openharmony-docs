@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-蒙版滤镜对象。
+蒙版滤镜对象，用于对绘制内容施加模糊效果。
 
 > **说明：**
 >
@@ -45,7 +45,7 @@ ArkTS-Sta: static createBlurMaskFilter(blurType: BlurType, sigma: double): MaskF
 
 | 参数名     | 类型                   | 必填 | 说明                                 |
 | ---------- | --------------------- | ---- | ----------------------------------- |
-| blurType   | [BlurType](arkts-apis-graphics-drawing-e.md#blurtype12) | 是   | 模糊类型。                           |
+| blurType   | [BlurType](arkts-apis-graphics-drawing-e.md#blurtype12) | 是   | 模糊类型，用于指定蒙版滤镜的模糊操作方式。                           |
 | sigma      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 高斯模糊的标准偏差，必须为大于0的浮点数。 |
 
 **返回值：**
@@ -54,25 +54,25 @@ ArkTS-Sta: static createBlurMaskFilter(blurType: BlurType, sigma: double): MaskF
 | ------------------------- | ------------------ |
 | ArkTS-Dyn: [MaskFilter](arkts-apis-graphics-drawing-MaskFilter.md)<br/>ArkTS-Sta: [MaskFilter](arkts-apis-graphics-drawing-MaskFilter.md) \| undefined | 返回创建的蒙版滤镜对象。创建失败时返回undefined。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
+**错误码：** 
+ 
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。 
+ 
+| 错误码ID | 错误信息 | 
+| ------- | --------------------------------------------| 
 | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
 
 **示例：**
 
 ArkTS-Dyn示例：
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
-    let maskFilter = drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10);
+    let maskFilter = drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10.0);
   }
 }
 ```

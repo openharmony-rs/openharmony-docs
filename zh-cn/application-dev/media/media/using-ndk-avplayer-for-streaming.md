@@ -73,32 +73,32 @@
    | OH_AVPlayerOnInfoCallback | 必要事件，监听播放器的过程信息。<br>需要播放器在AV_IDLE状态下、未调用设置资源接口前完成设置监听。如果在调用设置资源接口后再设置监听，会导致无法收到资源设置过程中上报的OH_AVPlayerOnInfoCallback事件。 |
    | OH_AVPlayerOnErrorCallback | 必要事件，监听播放器的错误信息。<br>需要播放器在AV_IDLE状态下、未调用设置资源接口前完成设置监听。如果在调用设置资源接口后再设置监听，会导致无法收到资源设置过程中上报的OH_AVPlayerOnErrorCallback事件。 |
 
-   <!-- @[OH_AVPlayer_SetOnInfoCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[OH_AVPlayer_SetOnInfoCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->  
    
    ``` C++
    // 设置回调，监听信息。
-   LOG("call OH_AVPlayer_SetPlayerOnInfoCallback");
+   LOG("call OH_AVPlayer_SetOnInfoCallback");
    int32_t ret = OH_AVPlayer_SetOnInfoCallback(player, OHAVPlayerOnInfoCallback, nullptr);
-   LOG("OH_AVPlayer_SetPlayerOnInfoCallback ret:%{public}d", ret);
+   LOG("OH_AVPlayer_SetOnInfoCallback ret:%{public}d", ret);
    ```
 
-   <!-- @[OH_AVPlayer_SetOnErrorCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[OH_AVPlayer_SetOnErrorCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->  
    
    ``` C++
-   LOG("call OH_AVPlayer_SetPlayerOnErrorCallback");
+   LOG("call OH_AVPlayer_SetOnErrorCallback");
    ret = OH_AVPlayer_SetOnErrorCallback(player, OHAVPlayerOnErrorCallback, nullptr);
-   LOG("OH_AVPlayer_SetPlayerOnErrorCallback ret:%{public}d", ret);
+   LOG("OH_AVPlayer_SetOnErrorCallback ret:%{public}d", ret);
    ```
 
 3. 设置资源：调用[OH_AVPlayer_SetURLSource()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_seturlsource)，设置属性URL（支持点播和直播源），AVPlayer进入[AVPlayerState](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate).AV_INITIALIZED（初始化）状态。
 
-   <!-- @[OH_AVPlayer_SetURLSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[OH_AVPlayer_SetURLSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->  
    
    ``` C++
    LOG("player %{public}s >> URL source", url);
-   LOG("call %{public}s", "OH_AVPlayer_SetUrlSource");
+   LOG("call %{public}s", "OH_AVPlayer_SetURLSource");
    ret = OH_AVPlayer_SetURLSource(player, url);
-   LOG("OH_AVPlayer_SetUrlSource ret:%{public}d", ret);
+   LOG("OH_AVPlayer_SetURLSource ret:%{public}d", ret);
    ```
 
 4. （可选）设置智能追帧：直播场景下调用[OH_AVPlayer_SetPlaybackStrategy()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setplaybackstrategy)，设置AVPlayer启用智能追帧。

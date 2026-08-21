@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @Jemtaly; @tongdiaoZS; @m0_52007851; @zhangrunze13-->
 <!--Tester: @m30041553-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 了解Taihe工具的基本概念后，本文将通过实际案例代码，介绍如何将现有Node-API模块迁移至Taihe ANI模块。首先，介绍Taihe IDL工具自动生成代码的结构，帮助开发者更好地理解从Node-API迁移到Taihe IDL的基本流程。本文将从初学者视角出发，说明如何识别接口并使用Taihe IDL进行描述。
 

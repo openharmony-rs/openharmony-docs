@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 本模块提供只读数组接口。`ReadonlyArray<T>`允许读取、遍历、查询和派生新数组，但不提供修改原数组内容或长度的接口。
 

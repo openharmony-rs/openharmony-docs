@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS-Sta应用可以通过Native方法调用C++能力。与动态ArkTS中通过Node-API创建运行环境、序列化Sendable对象的方式不同，ArkTS-Sta静态场景使用[ANI简介](../ani/ani-introduction.md)中介绍的ANI（ArkTS Native Interface）绑定native方法，并通过ani_vm在线程中附加ArkTS运行环境。
 

@@ -2,9 +2,9 @@
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Designer: @wang_zhaoyong-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 线性容器实现能按顺序访问的数据结构，其底层主要通过数组实现，包括ArrayList、Vector、List、LinkedList、Deque、Queue和Stack。
@@ -162,7 +162,7 @@ Stack支持增、删、改、查操作，常用API如下：
 | 操作 | 方法 | 描述 |
 | --------- | ------- | ------- |
 | 增加元素 | push(item: T) | 在栈顶增加一个元素。 |
-| 访问元素 | peek() | 获取栈顶元素，不进行出队操作。 |
+| 访问元素 | peek() | 获取栈顶元素，不进行出栈操作。 |
 | 访问元素 | locate(element: T) | 获取元素对应的位置。 |
 | 访问元素 | ArkTS-Dyn: forEach(callbackFn: (value: T, index?: number, stack?: Stack&lt;T&gt;) =&gt; void, thisArg?: Object) <br/> ArkTS-Sta: forEach(callbackFn: (value: T, index?: int, stack?: Stack&lt;T&gt;) =&gt; void, thisArg?: Object) | 遍历访问整个Stack容器的每个元素，并执行指定的回调函数。 |
 | 访问元素 | ArkTS-Dyn: \[Symbol.iterator]():IterableIterator&lt;T&gt; <br/> ArkTS-Sta: $_iterator(): IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
@@ -200,7 +200,7 @@ Vector支持增、删、改、查操作，常用API如下：
 | 修改元素 | setLength(newSize:number) | 设置Vector的长度大小。 |
 | 删除元素 | remove(element: T) | 删除第一个匹配到的元素。 |
 | 删除元素 | removeByIndex(index:number) | 删除index位置对应的元素。 |
-| 删除元素 | removeByRange(fromIndex:number,toIndex:number) | 删除指定范围内的元素。 |
+| 删除元素 | removeByRange(fromIndex:number, toIndex:number) | 删除指定范围内的元素。 |
 
 ## 线性容器的使用
 

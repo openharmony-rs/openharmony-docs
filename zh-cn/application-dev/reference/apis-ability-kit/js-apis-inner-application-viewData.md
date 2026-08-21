@@ -7,13 +7,19 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @HelloCrease-->
 
-自动填充的视图数据信息。
+ViewData用于表示自动填充的视图数据信息，包含应用名称、页面URL、页面节点信息和页面坐标与宽高等关键数据，适用于需要获取和处理页面视图信息以实现自动填充功能的场景。
 
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **起始版本：** 26.0.0
+
+## 导入模块
+
+```ts
+import { autoFillManager } from '@kit.AbilityKit';
+```
 
 ## ViewData
 
@@ -29,7 +35,7 @@
 
 | 名称          | 类型                                                              | 只读 | 可选 | 说明      |
 | ------------- | ----------------------------------------------------------------- | ---- | ---- | --------- |
-| bundleName    | string                                                            | 否   | 否   | 应用名称。 |
+| bundleName    | string                                                            | 否   | 否   | 应用的名称。 |
 | pageUrl       | string                                                            | 否   | 否   | 页面的url。 |
 | pageNodeInfos | Array\<[PageNodeInfo](js-apis-inner-application-pageNodeInfo.md)> | 否   | 否   | 页面节点的信息。 |
-| pageRect      | [AutoFillRect](js-apis-inner-application-autoFillRect.md)         | 否   | 否   | 页面的坐标和宽高信息。 |
+| pageRect      | [AutoFillRect](js-apis-inner-application-autoFillRect.md)         | 否   | 否   | 页面的位置坐标与宽高信息。在PC/2in1设备上，密码保险箱以弹窗形式展示，为保证弹窗位置跟随输入框，left和top需置为0。 |

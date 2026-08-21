@@ -89,6 +89,8 @@ Allows a system service to set the keep-alive flag for other applications.
 
 **Valid since**: 14
 
+**Supported devices**: PCs/2-in-1 devices | wearables
+
 ## ohos.permission.ACCESS_BBOX_DIR
 
 Allows a system application to access the bbox directory.
@@ -4446,25 +4448,6 @@ Allows a system application to obtain the page information of a specified applic
 
 **Valid since**: 18
 
-## ohos.permission.ACCESS_DDK_USB_SERIAL
-
-Allows a peripheral extension driver to access the USB Serial DDK APIs.
-
-The APIs can be used to develop the following types of peripheral extension drivers:
-
-Peripherals connected to the host via a USB bus and:
-
-1. InterfaceClass of the peripheral is Communication Device Control Class (0x02) and InterfaceSubClass follows ACMSubClass model(0x02).
-2. The peripheral can simulate traditional serial communication through a USB interface.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Valid since**: 18
-
 ## ohos.permission.ACCESS_CUSTOM_RINGTONE
 
 Allows an application to access the RBT library.
@@ -5744,3 +5727,31 @@ Allows an agent application to stop specific applications using CLI commands.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
 
 **Since**: 26.0.0
+
+## ohos.permission.CAMERA_SHARED
+
+Allows a system application to access the camera together with other applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Car
+
+**Valid since**: 26.0.0
+
+## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
+
+Allows an application to manage clone preferences.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Valid since**: 26.0.0

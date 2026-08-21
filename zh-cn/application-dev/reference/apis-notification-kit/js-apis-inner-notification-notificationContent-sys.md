@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-描述通知类型。
+NotificationContent中定义通知的内容结构，提供多种通知类型的内容描述接口。当应用需要发布通知时，可根据通知的展示需求（如普通文本、长文本、多行文本、图片、实况窗），选择对应的内容类型接口构造[通知内容](../../notification/notification-glossary.md#notification-content通知内容)。
 
 > **说明：**
 >
@@ -25,7 +25,7 @@
 
 | 名称           | 类型                                                                        | 只读 | 可选 | 说明               |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
-| liveView<sup>11+</sup>       | [NotificationLiveViewContent](#notificationliveviewcontent11)              | 否  | 是  | 普通实况窗类型通知内容。<br>**系统接口**：此接口为系统接口。|
+| liveView<sup>11+</sup>       | [NotificationLiveViewContent](#notificationliveviewcontent11)              | 否  | 是  | 普通实况窗类型[通知内容](../../notification/notification-glossary.md#notification-content通知内容)。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23|
 
 ## NotificationBasicContent
 
@@ -41,11 +41,11 @@
 
 | 名称           | 类型                                                                        | 只读 | 可选 | 说明               |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
-| structuredText<sup>21+</sup> | Map<string, string> |  否  |  是  | 通知结构化字段。当前仅支持服务提醒类短信在通知中心结构化展示。默认为空。（key/value大小不超过512字节，超出部分会被截断，最多支持3对结构化数据，超出部分会被忽略。）<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：23   |
+| structuredText<sup>21+</sup> | Map<string, string> |  否  |  是  | 通知结构化字段。当前仅支持服务提醒类短信在[通知中心](../../notification/notification-glossary.md#notification-center通知中心)结构化展示。默认为空。（key/value大小不超过512字节，超出部分会被截断，最多支持3对结构化数据，超出部分会被忽略。）<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：23   |
 
 ## NotificationLiveViewContent<sup>11+</sup>
 
-描述普通实况通知。
+描述[普通实况通知](../../notification/notification-glossary.md#normal-live-view普通实况通知)。继承自[NotificationBasicContent](#notificationbasiccontent)。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -55,7 +55,7 @@
 | -------------- | ------------------------------------------------------------------ | --- | --- | ------------------------------------------------------|
 | status         | [LiveViewStatus](#liveviewstatus11)                                | 否  | 否  | 通知状态。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23                  |
 | version        | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                             | 否  | 是  | 通知版本号（如果数据库存储版本号为0xffffffff，则本次更新和结束不校验版本号大小，否则需要校验本次版本号>数据库存储版本号）。不填默认为0xffffffff。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23|
-| extraInfo      | Record<string, Object\>                                               | 否  | 是  | 实况通知附加内容。默认为空。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23           |
+| extraInfo      | ArkTS-Dyn: Record<string, Object\><br/>ArkTS-Sta: Record<string, RecordData>                                               | 否  | 是  | [实况通知](../../notification/notification-glossary.md#live-view-notification实况通知)附加内容。默认为空。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23           |
 | pictureInfo    | Record<string, Array<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\>\> | 否  | 是  | 实况通知附加内容中的图片信息。默认为空。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23|
 | isLocalUpdateOnly<sup>12+</sup> | boolean                                           | 否  | 是  | 实况窗是否只在本地更新。默认为false。<br> - true：是。<br> - false：否。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23     |
 | extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  否  |  是  | 点击辅助区的跳转动作。默认为空。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23       |
@@ -63,15 +63,19 @@
 
 ## NotificationSystemLiveViewContent<sup>18+</sup>
 
-描述系统实况窗通知内容。不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。继承自[NotificationBasicContent](./js-apis-inner-notification-notificationContent.md#notificationbasiccontent)。
+描述[系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)[通知内容](../../notification/notification-glossary.md#notification-content通知内容)，用于在实况窗中展示实时状态信息。不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。继承自[NotificationBasicContent](#notificationbasiccontent)。
+
+> **说明：**
+>
+> 实际显示效果依赖于设备能力和[通知中心](../../notification/notification-glossary.md#notification-center通知中心)UI样式。
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：18
 
 **ArkTS-Sta起始版本**：23
-
-**系统接口**：此接口为系统接口。
 
 | 名称                         | 类型                                             | 只读| 可选 | 说明                               |
 | ---------------------------- | ----------------------------------------------- | --- | --- | -----------------------------------|
@@ -80,7 +84,11 @@
 
 ## NotificationCapsule<sup>11+</sup>
 
-描述通知胶囊。
+描述[通知胶囊](../../notification/notification-glossary.md#notification-capsule通知胶囊)，用于在实况窗中展示胶囊形态。
+
+> **说明：**
+>
+> 实际显示效果依赖于设备能力和[通知中心](../../notification/notification-glossary.md#notification-center通知中心)UI样式。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -89,12 +97,12 @@
 | 名称                  |  类型                         | 只读 | 可选 | 说明                              |
 | --------------------- | ---------------------------- | ---- | ---- | -------------------------------- |
 | content<sup>12+</sup> | string                       |  否  |  是  | 胶囊的拓展文本。默认为空。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23                   |
-| time<sup>18+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否  |  是  | 即时任务类实况胶囊展示时长（单位：秒）。默认值为0。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23   |
+| time<sup>18+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否  |  是  | 即时任务类实况胶囊展示时长。默认值为0。<br>单位：秒。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23   |
 | capsuleButtons<sup>18+</sup> | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  否  |  是  | 即时任务类实况胶囊的按钮（最多支持2个）。默认为空。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23      |
 
 ## LiveViewStatus<sup>11+</sup>
 
-描述普通实况通知的状态。
+描述[普通实况通知](../../notification/notification-glossary.md#normal-live-view普通实况通知)的状态。
 
 **系统能力**：SystemCapability.Security.AccessToken
 
@@ -111,7 +119,7 @@
 
 ## NotificationIconButton<sup>18+</sup>
 
-描述系统通知按钮。
+描述系统[通知按钮](../../notification/notification-glossary.md#notification-button通知按钮)。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -123,10 +131,10 @@
 
 | 名称          | 类型                    | 只读 | 可选 | 说明                                      |
 | ------------ | ----------------------- | ---- | ---- | ---------------------------------------- |
-| name         | string                  | 否   |  否  | 按钮标识，用于区分同一通知的多个不同按钮。   |
+| name         | string                  | 否   |  否  | 按钮标识，用于区分同一通知的多个不同按钮。字符串长度不超过202字节，超出部分会被截断。不可为空字符串。   |
 | iconResource | [IconType](#icontype18) | 否   |  否  | 按钮的背景图。                             |
-| text         | string                  | 否   |  是  | 按钮展示的信息。默认为空。                           |
-| hidePanel    | boolean                 | 否   |  是  | 点击按钮时，是否隐藏通知中心。默认为false。<br> - true：是。<br> - false：否。   |
+| text         | string                  | 否   |  是  | 按钮展示的信息。默认为空。字符串长度不超过202字节，超出部分会被截断。             |
+| hidePanel    | boolean                 | 否   |  是  | 点击按钮时，是否隐藏[通知中心](../../notification/notification-glossary.md#notification-center通知中心)。默认为false。<br> - true：是。<br> - false：否。   |
 
 ## IconType<sup>18+</sup>
 
@@ -149,7 +157,7 @@ type IconType = Resource | image.PixelMap
 
 ## LiveViewTypes<sup>18+</sup>
 
-描述实况通知的类型。
+描述[实况通知](../../notification/notification-glossary.md#live-view-notification实况通知)的类型。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -167,6 +175,16 @@ type IconType = Resource | image.PixelMap
 
 ## NotificationMultiLineContent
 
+描述多行文本通知。继承自[NotificationBasicContent](#notificationbasiccontent)。
+
+> **说明：**
+>
+> - 当该类型通知与其他通知形成[组通知](../../notification/notification-glossary.md#group-notification组通知)时，该通知类型的展示效果默认为折叠态，显示的标题与正文为该类型继承的[普通文本](#notificationbasiccontent)中的`title`与`text`。<br>当该类型通知单独展示，没有与其他通知形成组通知时，该通知类型的展示效果默认为展开态，显示的标题为展开时的标题`longTitle`，多行文本内容`lines`作为正文多行显示。
+>
+> - 用户点击成组展示的通知，查看各个通知详情时，该通知的展示效果变化为展开态。
+>
+> - 实际显示效果依赖于设备能力和[通知中心](../../notification/notification-glossary.md#notification-center通知中心)UI样式。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：7
@@ -175,4 +193,4 @@ type IconType = Resource | image.PixelMap
 
 | 名称           | 类型    | 只读 | 可选 | 说明                             |
 | -------------- | ------ | ---- | --- | -------------------------------- |
-| lineWantAgents<sup>20+</sup>       | Array<[WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  否  | 是  | 点击多行文本中某一行文本消息触发的wantAgent。不同行的文本分别对应于不同的wantAgent。该字段配置的行数不能大于[lines](./js-apis-inner-notification-notificationContent.md#notificationmultilinecontent)字段配置的行数。默认为空。<br>**系统接口**：此接口为系统接口。<br>**需要权限**：ohos.permission.NOTIFICATION_AGENT_CONTROLLER |
+| lineWantAgents<sup>20+</sup>       | Array<[WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  否  | 是  | 点击多行文本中某一行文本消息触发的wantAgent。不同行的文本分别对应于不同的wantAgent。该字段配置的行数不能大于[lines](./js-apis-inner-notification-notificationContent.md#notificationmultilinecontent)字段配置的行数。默认为空。<br>**系统接口**：此接口为系统接口。<br>**需要权限**：ohos.permission.NOTIFICATION_AGENT_CONTROLLER<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |

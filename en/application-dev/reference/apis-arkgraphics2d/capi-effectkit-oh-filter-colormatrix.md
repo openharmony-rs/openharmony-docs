@@ -3,12 +3,14 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @hanamaru-->
-<!--Designer: @gaoweihua-->
+<!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-```
-struct OH_Filter_ColorMatrix {...}
+```c
+struct OH_Filter_ColorMatrix {
+    // ...
+};
 ```
 
 ## Overview

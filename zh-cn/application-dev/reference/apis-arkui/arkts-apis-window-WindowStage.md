@@ -34,7 +34,7 @@ getMainWindow(callback: AsyncCallback&lt;Window&gt;): void
 
 获取该WindowStage实例下的主窗口，使用callback异步回调。
 
-调用该接口前，建议先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。
+调用该接口前，建议先通过[loadContent](#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -78,7 +78,7 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -135,7 +135,7 @@ getMainWindow(): Promise&lt;Window&gt;
 
 获取该WindowStage实例下的主窗口，使用Promise异步回调。
 
-调用该接口前，建议先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。
+调用该接口前，建议先通过[loadContent](#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -179,7 +179,7 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -233,7 +233,7 @@ getMainWindowSync(): Window
 
 获取该WindowStage实例下的主窗口，该接口为同步调用。
 
-调用该接口前，建议先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。
+调用该接口前，建议先通过[loadContent](#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -277,7 +277,7 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -324,7 +324,7 @@ createSubWindow(name: string, callback: AsyncCallback&lt;Window&gt;): void
 
 创建该WindowStage实例下的子窗口，使用callback异步回调。
 
-子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
+子窗口创建后无标题栏，默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -340,8 +340,8 @@ createSubWindow(name: string, callback: AsyncCallback&lt;Window&gt;): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                          |
 | -------- | -------------------------------------- | ---- | --------------------------------------------- |
-| name     | string                                 | 是   | 子窗口的名字。                                |
-| callback | AsyncCallback&lt;[Window](arkts-apis-window-Window.md)&gt; | 是   | 回调函数。返回当前WindowStage下的子窗口对象。 |
+| name     | string                                 | 是   | 子窗口的名字，用于唯一标识子窗口。建议使用有意义的窗口名称作为标识符。 |
+| callback | AsyncCallback&lt;[Window](arkts-apis-window-Window.md)&gt; | 是   | 回调函数。返回当前WindowStage对应主窗口下的子窗口对象。 |
 
 **错误码：**
 
@@ -350,7 +350,8 @@ createSubWindow(name: string, callback: AsyncCallback&lt;Window&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and can not be created again.|
+| 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and cannot be created again.|
+| 1300005 | This window stage is abnormal.<br>适用版本：9|
 
 **示例：**
 
@@ -378,7 +379,7 @@ export default class EntryAbility extends UIAbility {
         windowClass = data;
         console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
         if (!windowClass) {
-          console.info('Failed to load the content. Cause: windowClass is null');
+          console.info('Failed to create the subwindow. Cause: windowClass is null');
         }
         else {
           windowClass.resize(500, 1000);
@@ -431,7 +432,7 @@ createSubWindow(name: string): Promise&lt;Window&gt;
 
 创建该WindowStage实例下的子窗口，使用Promise异步回调。
 
-子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
+子窗口创建后无标题栏，默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -453,7 +454,7 @@ createSubWindow(name: string): Promise&lt;Window&gt;
 
 | 类型                             | 说明                                             |
 | -------------------------------- | ------------------------------------------------ |
-| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前WindowStage下的子窗口对象。 |
+| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前WindowStage对应主窗口下的子窗口对象。 |
 
 **错误码：**
 
@@ -462,7 +463,8 @@ createSubWindow(name: string): Promise&lt;Window&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and can not be created again.|
+| 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and cannot be created again.|
+| 1300005 | This window stage is abnormal.<br>适用版本：9|
 
 **示例：**
 
@@ -529,7 +531,7 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 
 创建该WindowStage实例下的子窗口，使用Promise异步回调。
 
-非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
+非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后无标题栏，默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#subwindowoptions11)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
@@ -548,13 +550,13 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
 | name   | string | 是   | 子窗口的名字。 |
-| options  | [SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | 是   | 子窗口参数。  |
+| options  | [SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | 是   | 子窗口创建参数。  |
 
 **返回值：**
 
 | 类型                             | 说明                                             |
 | -------------------------------- | ------------------------------------------------ |
-| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前WindowStage下创建的子窗口对象。 |
+| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前WindowStage对应主窗口下的子窗口对象。 |
 
 **错误码：**
 
@@ -564,7 +566,7 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. The subWindow has been created and can not be created again. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. The subWindow has been created and cannot be created again. |
 | 1300005 | This window stage is abnormal. |
 
 **示例：**
@@ -620,7 +622,7 @@ getSubWindow(callback: AsyncCallback&lt;Array&lt;Window&gt;&gt;): void
 
 | 参数名   | 类型                                                | 必填 | 说明                                              |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;[Window](arkts-apis-window-Window.md)&gt;&gt; | 是   | 回调函数。返回当前WindowStage下的所有子窗口对象。 |
+| callback | AsyncCallback&lt;Array&lt;[Window](arkts-apis-window-Window.md)&gt;&gt; | 是   |  回调函数。返回当前WindowStage对应主窗口下的所有子窗口，若无子窗口则返回空数组。 |
 
 **错误码：**
 
@@ -628,7 +630,8 @@ getSubWindow(callback: AsyncCallback&lt;Array&lt;Window&gt;&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal.<br>适用版本：10+ |
+| 1300005 | This window stage is abnormal.<br>适用版本：9|
 
 **示例：**
 <!--code_no_check-->
@@ -677,7 +680,7 @@ getSubWindow(): Promise&lt;Array&lt;Window&gt;&gt;
 
 | 类型                                          | 说明                                                 |
 | --------------------------------------------- | ---------------------------------------------------- |
-| Promise&lt;Array&lt;[Window](arkts-apis-window-Window.md)&gt;&gt; | Promise对象。返回当前WindowStage下的所有子窗口对象。 |
+| Promise&lt;Array&lt;[Window](arkts-apis-window-Window.md)&gt;&gt; | Promise对象。返回当前WindowStage对应主窗口下的所有子窗口，若无子窗口则返回空数组。 |
 
 **错误码：**
 
@@ -685,7 +688,8 @@ getSubWindow(): Promise&lt;Array&lt;Window&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal.<br>适用版本：10+ |
+| 1300005 | This window stage is abnormal.<br>适用版本：9|
 
 **示例：**
 <!--code_no_check-->
@@ -746,6 +750,7 @@ loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300005 | This window stage is abnormal.<br>适用版本：9|
 
 **示例：**
 
@@ -850,6 +855,7 @@ loadContent(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300005 | This window stage is abnormal.<br>适用版本：9|
 
 **示例：**
 
@@ -879,7 +885,6 @@ export default class EntryAbility extends UIAbility {
     } catch (exception) {
       console.error(`Failed to load the content. Cause code: ${exception.code}, message: ${exception.message}`);
     }
-    ;
   }
 };
 ```
@@ -946,6 +951,7 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300005 | This window stage is abnormal.<br>适用版本：9|
 
 **示例：**
 
@@ -1290,7 +1296,7 @@ export struct Index {
 
 loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
-根据指定路由页面名称为当前WindowStage加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用promise异步回调。
+根据指定路由页面名称为当前WindowStage加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用Promise异步回调。
 
 建议在UIAbility启动过程中使用该接口，重复调用该接口将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
 
@@ -1437,7 +1443,7 @@ export struct Index {
 
 releaseUIContent(): Promise&lt;void&gt;
 
-销毁WindowStage的主窗页面内容，使用Promise异步回调。<br>如果应用在前台时调用该接口，页面内容不会立即销毁，会等到应用退后台后再销毁。在主窗没有加载页面内容时调用该接口不生效不报错。
+销毁WindowStage的主窗口页面内容，使用Promise异步回调。<br>如果应用在前台时调用该接口，页面内容不会立即销毁，会等到应用退至后台后再销毁。在主窗口没有加载页面内容时调用该接口不生效不报错。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1504,7 +1510,7 @@ export default class EntryAbility extends UIAbility {
 
 on(eventType: 'windowStageEvent', callback: Callback&lt;WindowStageEventType&gt;): void
 
-开启WindowStage生命周期变化的监听。
+开启WindowStage生命周期变化的监听。对于状态间的顺序有要求的情况下，推荐使用[on('windowStageLifecycleEvent')](#onwindowstagelifecycleevent20)接口。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1562,7 +1568,7 @@ export default class EntryAbility extends UIAbility {
 
 onWindowStageEvent(callback: Callback&lt;WindowStageEventType&gt;): void
 
-开启WindowStage生命周期变化的监听。
+开启WindowStage生命周期变化的监听。对于状态间的顺序有要求的情况下，推荐使用[onWindowStageLifecycleEvent](#onwindowstagelifecycleevent23)接口。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1638,7 +1644,7 @@ off(eventType: 'windowStageEvent', callback?: Callback&lt;WindowStageEventType&g
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | eventType  | string                                                       | 是   | 监听事件，固定为'windowStageEvent'，即WindowStage生命周期变化事件。 |
-| callback | Callback&lt;[WindowStageEventType](arkts-apis-window-e.md#windowstageeventtype9)&gt; | 否   | 回调函数。返回当前的WindowStage生命周期状态。若传入参数，则关闭该监听。若未传入参数，则关闭所有WindowStage生命周期变化的监听。                |
+| callback | Callback&lt;[WindowStageEventType](arkts-apis-window-e.md#windowstageeventtype9)&gt; | 否   | 回调函数，用于指定要注销的监听。若传入参数，则关闭该监听。若未传入参数，则关闭该WindowStage所有生命周期变化的监听。                |
 
 **错误码：**
 
@@ -1662,9 +1668,9 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
-    windowStage.loadContent('page/Index', (err) =>{
-      if(err.code) {
-        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+    windowStage.loadContent('page/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -1712,7 +1718,7 @@ offWindowStageEvent(callback?: Callback&lt;WindowStageEventType&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;[WindowStageEventType](arkts-apis-window-e.md#windowstageeventtype9)&gt; | 否   | 回调函数。返回当前的WindowStage生命周期状态。若传入参数，则关闭该监听。若未传入参数，则关闭所有WindowStage生命周期变化的监听。                |
+| callback | Callback&lt;[WindowStageEventType](arkts-apis-window-e.md#windowstageeventtype9)&gt; | 否   | 回调函数，用于指定要注销的监听。若传入参数，则关闭该监听。若未传入参数，则关闭该WindowStage所有生命周期变化的监听。                |
 
 **错误码：**
 
@@ -1943,7 +1949,7 @@ off(eventType: 'windowStageLifecycleEvent', callback?: Callback&lt;WindowStageLi
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | eventType  | string                                                       | 是   | 监听事件，固定为'windowStageLifecycleEvent'，即WindowStage生命周期变化事件。 |
-| callback | Callback&lt;[WindowStageLifecycleEventType](arkts-apis-window-e.md#windowstagelifecycleeventtype20)&gt; | 否   | 回调函数。返回当前的WindowStage生命周期状态。若传入参数，则关闭该监听。若未传入参数，则关闭所有WindowStage生命周期变化的监听。                |
+| callback | Callback&lt;[WindowStageLifecycleEventType](arkts-apis-window-e.md#windowstagelifecycleeventtype20)&gt; | 否   | 回调函数，用于指定要注销的监听。若传入参数，则关闭该监听。若未传入参数，则关闭该WindowStage所有生命周期变化的监听。                |
 
 **错误码：**
 
@@ -2006,7 +2012,7 @@ offWindowStageLifecycleEvent(callback?: Callback&lt;WindowStageLifecycleEventTyp
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;[WindowStageLifecycleEventType](arkts-apis-window-e.md#windowstagelifecycleeventtype20)&gt; | 否   | 回调函数。返回当前的WindowStage生命周期状态。若传入参数，则关闭该监听。若未传入参数，则关闭所有WindowStage生命周期变化的监听。                |
+| callback | Callback&lt;[WindowStageLifecycleEventType](arkts-apis-window-e.md#windowstagelifecycleeventtype20)&gt; | 否   | 回调函数，用于指定要注销的监听。若传入参数，则关闭该监听。若未传入参数，则关闭该WindowStage所有生命周期变化的监听。                |
 
 **错误码：**
 
@@ -2052,7 +2058,7 @@ export default class EntryAbility extends UIAbility {
 
 on(eventType: 'windowStageClose', callback: Callback&lt;void&gt;): void
 
-开启点击主窗三键区的关闭按钮监听事件。点击主窗口的三键区域的关闭键时触发该回调函数，将不执行注册的[UIAbility.onPrepareToTerminate](../apis-ability-kit/js-apis-app-ability-uiAbility.md#onpreparetoterminate10)生命周期回调函数。
+开启主窗口标题栏关闭按钮的点击事件监听。点击主窗口标题栏关闭按钮时，触发该回调函数，将不执行注册的[UIAbility.onPrepareToTerminate](../apis-ability-kit/js-apis-app-ability-uiAbility.md#onpreparetoterminate10)生命周期回调函数。
 
 当重复注册窗口关闭事件的监听时，最后一次注册成功的监听事件生效。
 
@@ -2082,8 +2088,8 @@ on(eventType: 'windowStageClose', callback: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| eventType  | string                                                       | 是   | 监听事件，固定为'windowStageClose'，即开启主窗三键区的关闭按钮监听。|
-| callback | Callback&lt;void&gt; | 是   | 回调函数。当点击主窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有boolean类型的返回值，该返回值决定当前主窗是否继续关闭，true表示不关闭，false表示关闭。|
+| eventType  | string                                                       | 是   | 监听事件，固定为'windowStageClose'，即主窗口标题栏关闭按钮的点击事件。|
+| callback | Callback&lt;void&gt; | 是   | 回调函数。当点击主窗口右上角关闭按钮事件发生时的回调。回调函数内部逻辑需要有boolean类型的返回值，该返回值决定当前主窗口是否继续关闭，true表示不关闭，false表示关闭。|
 
 **错误码：**
 
@@ -2110,7 +2116,8 @@ export default class EntryAbility extends UIAbility {
     try {
       windowStage.on('windowStageClose', () => {
         console.info('Succeeded in enabling the listener for window stage close event.');
-        return false;
+        // Return true, indicating that the current main window will not be closed.
+        return true;
       });
     } catch (exception) {
       console.error(`Failed to enable the listener for window stage close event. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -2173,7 +2180,8 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     const callback = () => {
         console.info('Succeeded in enabling the listener for window stage close event.');
-        return false;
+        // Return true, indicating that the current main window will not be closed.
+        return true;
     }
     try {
       windowStage.onWindowStageClose(callback);
@@ -2215,7 +2223,7 @@ off(eventType: 'windowStageClose', callback?: Callback&lt;void&gt;): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | eventType  | string                                                       | 是   | 监听事件，固定为'windowStageClose'，即关闭主窗口关闭事件的监听。 |
-| callback | Callback&lt;void&gt; | 否   | 回调函数。当点击主窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有boolean类型的返回值，该返回值决定当前主窗是否继续关闭，true表示不关闭，false表示关闭。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有主窗口关闭的监听。 |
+| callback | Callback&lt;void&gt; | 否   | 回调函数，用于指定要注销的监听。如果传入参数，则关闭该监听。如果未传入参数，则关闭主窗口所有关闭事件的监听。 |
 
 **错误码：**
 
@@ -2276,7 +2284,7 @@ offWindowStageClose(callback?: Callback&lt;void, boolean&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;void, boolean&gt; | 否   | 回调函数。当点击主窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有boolean类型的返回值，该返回值决定当前主窗是否继续关闭，true表示不关闭，false表示关闭。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有主窗口关闭的监听。 |
+| callback | Callback&lt;void, boolean&gt; | 否   | 回调函数，用于指定要注销的监听。如果传入参数，则关闭该监听。如果未传入参数，则关闭主窗口所有关闭事件的监听。 |
 
 **错误码：**
 
@@ -2374,10 +2382,10 @@ export default class EntryAbility extends UIAbility {
           console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
           return;
         }
-        console.info('onWindowStageCreate');
+        console.info('Succeeded in loading the content.');
       try {
         windowStage.setDefaultDensityEnabled(true);
-        console.info('Succeeded in loading the content.');
+        console.info('Succeeded in setting default density enabled.');
       } catch (exception) {
         console.error(`Failed to set default density enabled. Cause code: ${exception.code}, message: ${exception.message}`);
       }
@@ -2404,10 +2412,10 @@ export default class EntryAbility extends UIAbility {
           console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
           return;
         }
-        console.info('onWindowStageCreate');
+        console.info('Succeeded in loading the content.');
       try {
         windowStage.setDefaultDensityEnabled(true);
-        console.info('Succeeded in loading the content.');
+        console.info('Succeeded in setting default density enabled.');
       } catch (exception) {
         let error = exception as BusinessError;
         console.error(`Failed to set default density enabled. Cause code: ${error.code}, message: ${error.message}`);
@@ -2451,7 +2459,7 @@ setCustomDensity(density: number): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300005 | This window stage is abnormal. |
 
 **示例：**
@@ -2562,9 +2570,9 @@ export default class EntryAbility extends UIAbility {
 
 setWindowModal(isModal: boolean): Promise&lt;void&gt;
 
-设置主窗的模态属性是否启用，使用Promise异步回调。
+设置主窗口的模态属性是否启用，使用Promise异步回调。
 
-主窗口调用该接口时，设置主窗口模态属性是否启用。启用主窗口模态属性后，其相同应用进程下的其他主窗口以及其他主窗口的子窗口不能响应用户操作，直到该主窗口关闭或者主窗口的模态属性被禁用。
+主窗口调用该接口时，设置主窗口模态属性是否启用。启用主窗口模态属性后，该主窗口所在应用进程下的其他主窗口以及其他主窗口的子窗口不能响应用户操作，直到该主窗口关闭或者该主窗口的模态属性被禁用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2601,7 +2609,7 @@ setWindowModal(isModal: boolean): Promise&lt;void&gt;
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally. |
-| 1300005 | This window stage is abnormal. |
+| 1300005 | This window stage is abnormal. Possible cause: The window is not created or destroyed.<br>适用版本：20+ |
 
 **示例：**
 
@@ -2744,11 +2752,9 @@ export default class EntryAbility extends UIAbility {
 
 setWindowRectAutoSave(enabled: boolean): Promise&lt;void&gt;
 
-设置是否启用最后关闭的主窗尺寸的记忆功能，使用Promise异步回调。
+设置是否启用最后关闭的主窗口尺寸的记忆功能，使用Promise异步回调。
 
 启用记忆功能后，在同一个UIAbility下，记忆最后关闭的主窗口的尺寸；此主窗口再次启动时，以记忆的尺寸按照规则进行打开。
-
-层叠规则：1、当前实例是自由窗口时，打开下一实例窗口层叠时，大小要跟随。2、当前实例是最大化或全屏窗口时，打开下一个实例窗口层叠时，保持最大化。
 
 记忆规则：
 |上一次窗口状态|记忆规则|
@@ -2857,7 +2863,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise&lt;void&gt;
 
-设置是否启用主窗的尺寸记忆功能，使用Promise异步回调。
+设置是否启用主窗口的尺寸记忆功能，使用Promise异步回调。
 
 在同一个UIAbility下，可记忆最后关闭的主窗口尺寸，也可针对每个主窗口尺寸单独进行记忆。只有在UIAbility启动模式为specified，且isSaveBySpecifiedFlag设置为true时，才能针对每个主窗口尺寸进行单独记忆。
 
@@ -3003,7 +3009,7 @@ isWindowRectAutoSave(): Promise&lt;boolean&gt;
 | ------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300003 | This window manager service works abnormally. |
+| 1300003 | This window manager service works abnormally. <br>适用版本：20+ |
 
 **示例：**
 
@@ -3069,7 +3075,7 @@ ArkTS-Sta: setImageForRecent(imageResource: long | image.PixelMap, value: ImageF
 
 > **说明：**
 >
-> 调用该接口前，建议先通过[loadContent](#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用窗口未完成页面加载就直接调用该接口，功能将不会生效。此时多任务中只显示应用启动页。
+> 调用该接口前，建议先通过[loadContent](#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用窗口未完成页面加载就直接调用该接口，功能将不会生效。此时多任务中只显示应用启动页。该接口不支持应用在后台状态时调用，否则返回错误码1300002。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3102,7 +3108,7 @@ ArkTS-Sta: setImageForRecent(imageResource: long | image.PixelMap, value: ImageF
 | ------- | ------------------------------ |
 | 201     | Permission verification failed. The application does not have the permission required or a non-system application calls the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. The WindowStage is running in the background. 3. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
 
@@ -3224,7 +3230,7 @@ removeImageForRecent(): Promise&lt;void&gt;
 | ------- | ------------------------------ |
 | 201     | Permission verification failed. The application does not have the permission required or a non-system application calls the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**

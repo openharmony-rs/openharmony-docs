@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ConcurrentQueue是一种线程安全队列容器，支持异步等待式的插入、弹出操作，也支持立即返回的非阻塞操作。队列为空时，`pop()`会异步等待直到队列中有元素；队列满时，`push()`会异步等待直到队列有空余容量。
 

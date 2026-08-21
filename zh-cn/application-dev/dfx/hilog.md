@@ -2,9 +2,9 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @liuyifeifei;@buzhenwang-->
-<!--Designer: @shenchenkai-->
-<!--Tester: @liyang2235-->
+<!--Owner: @suxunquan-->
+<!--Designer: @milkbread123-->
+<!--Tester: @yufeifei-->
 <!--Adviser: @jinqiuheng-->
 
 HiLog日志系统，提供给系统框架、服务、以及应用，用于打印日志，记录用户操作、系统运行状态等。开发者可以通过hilog命令行查询相关日志信息。
@@ -48,7 +48,7 @@ HiLog日志系统，提供给系统框架、服务、以及应用，用于打印
 
 > **说明：**
 >
-> 日志级别：I表示Info级别，其余级别参考[日志等级](../reference/apis-performance-analysis-kit/capi-log-h.md#loglevel)首字母。
+> 日志级别：I表示Info级别，其余级别参考[LogLevel](../reference/apis-performance-analysis-kit/capi-log-h.md#loglevel)首字母。
 >
 > domainID：A03200中A表示应用日志（LOG_APP），3200表示domainID为0x3200。
 >
@@ -443,7 +443,7 @@ $ param get hilog.loggable.global
 I
 ```
 <!--RP17-->
-全局日志级别默认为INFO;
+全局日志级别默认为INFO；
 <!--RP17End-->
 
 <!--RP16-->
@@ -661,7 +661,7 @@ Set flow control by domain to disabled successfully
 
 本条日志表示进程com.example.myapplication存在日志打印超限，在17:02:34.219时间点前，有3091行日志由于超限管控丢弃，未打印出来。
 
-**处理方式**：可参考[进程超限开关](#进程超限开关)，关闭对应管控机制。
+**处理方式**：可参考[进程超限开关](#进程超限开关)，关闭对应管控机制。建议每个应用进程每秒打印日志量不超过50KB，否则可能会触发日志超限，导致日志丢失。
 
 
 ### 系统日志
@@ -676,7 +676,7 @@ domainID维度管控，打印到LOG_CORE buffer里面的系统日志适配了dom
 
 本条日志表示domainID为02C02的日志存在日志打印超限，在17:02:34.219时间点前，有108行日志由于超限管控丢弃，未打印出来。
 
-**处理方式**：可参考[domain超限开关](#domain超限开关)，关闭对应管控机制。
+**处理方式**：可参考[domain超限开关](#domain超限开关)，关闭对应管控机制。建议每个domainID每秒打印日志量不超过50KB，否则可能会触发日志超限，导致日志丢失。
 
 
 ## 日志丢失处理方法

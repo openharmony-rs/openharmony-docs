@@ -6,7 +6,7 @@
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
-提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
+提供查询数据库后生成的结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
 
 LiteResultSet实例不会实时刷新。使用结果集后，如果数据库中的数据发生变化（如增删改操作），需要重新查询才能获取到最新的数据。
 
@@ -64,13 +64,14 @@ getColumnNames(): Array\<string>
 **示例：**
 
 ```ts
-async function getColumnNamesExample(store : relationalStore.RdbStore){
+async function getColumnNamesExample(store: relationalStore.RdbStore) {
   try {
     let resultSet: relationalStore.LiteResultSet | undefined;
     // 联表查询EMPLOYEE1和EMPLOYEE2，并获取重名的列名。store为获取到的RdbStore实例。
     resultSet = await store.querySqlWithoutRowCount("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
     if (resultSet != undefined) {
       const names = resultSet.getColumnNames();
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`Failed to get column names: code:${err.code}, message:${err.message}`);
@@ -86,7 +87,7 @@ ArkTS-Sta: getColumnIndex(columnName: string): int
 
 根据指定的列名获取列索引。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -98,13 +99,13 @@ ArkTS-Sta: getColumnIndex(columnName: string): int
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | -------------------------- |
-| columnName | string | 是   | 表示结果集中指定列的名称。当结果集中包含重名列时，返回值会不符合预期。 |
+| columnName | string | 是   | 表示结果集中指定列的名称。 |
 
 **返回值：**
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回指定列的索引。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回指定列的索引。当结果集中包含重名列时，返回值会不符合预期。 |
 
 **错误码：**
 
@@ -112,7 +113,7 @@ ArkTS-Sta: getColumnIndex(columnName: string): int
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
@@ -134,6 +135,7 @@ async function getColumnIndexExample(store : relationalStore.RdbStore){
       const ageIndex = resultSet.getColumnIndex("AGE");
       const salaryIndex = resultSet.getColumnIndex("SALARY");
     }
+    resultSet!.close();
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
   }
@@ -148,7 +150,7 @@ ArkTS-Sta: getColumnName(columnIndex: int): string
 
 根据指定的列索引获取列名。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -174,7 +176,7 @@ ArkTS-Sta: getColumnName(columnIndex: int): string
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800013  | Column index is out of bounds. |
 | 14800014  | The target instance is already closed. |
@@ -196,6 +198,7 @@ async function getColumnNameExample(store : relationalStore.RdbStore){
       const name = resultSet.getColumnName(1);
       const age = resultSet.getColumnName(2);
       const salary = resultSet.getColumnName(3);
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -211,7 +214,7 @@ ArkTS-Sta: getColumnType(columnIdentifier: int | string): Promise\<ColumnType>
 
 根据指定的列索引或列名称获取列数据类型，使用Promise异步回调。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -237,7 +240,7 @@ ArkTS-Sta: getColumnType(columnIdentifier: int | string): Promise\<ColumnType>
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011     | The current operation failed because the database is corrupted. |
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                                           |
 | 14800013     | Column index is out of bounds.                                        |
@@ -268,6 +271,7 @@ async function getColumnTypeExample(store : relationalStore.RdbStore){
       let assetDataType = await resultSet.getColumnType(6);
       let assetsDataType = await resultSet.getColumnType(7);
       let floatArrayType = await resultSet.getColumnType(8);
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -283,7 +287,7 @@ ArkTS-Sta: getColumnTypeSync(columnIdentifier: int | string): ColumnType
 
 根据指定的列索引或列名称获取列数据类型。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core 
 
@@ -309,7 +313,7 @@ ArkTS-Sta: getColumnTypeSync(columnIdentifier: int | string): ColumnType
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011     | The current operation failed because the database is corrupted. |
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                                           |
 | 14800013     | Column index is out of bounds.                                        |
@@ -340,6 +344,7 @@ async function getColumnTypeSyncExample(store : relationalStore.RdbStore){
       let assetDataType = resultSet.getColumnTypeSync(6);
       let assetsDataType = resultSet.getColumnTypeSync(7);
       let floatArrayType = resultSet.getColumnTypeSync(8);
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -353,7 +358,7 @@ goToNextRow(): boolean
 
 移动结果集到下一行。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -373,7 +378,7 @@ goToNextRow(): boolean
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800014  | The target instance is already closed. |
@@ -393,6 +398,7 @@ async function goToNextRowExample(store : relationalStore.RdbStore) {
     resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
     if (resultSet != undefined) {
       resultSet.goToNextRow();
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -410,7 +416,7 @@ ArkTS-Sta: getValue(columnIndex: int): ValueType
 
 ArkTS-Dyn：如果值类型为INTEGER，值大于Number.MAX_SAFE_INTEGER或小于Number.MIN_SAFE_INTEGER时，如果不希望丢失精度，建议使用[getString](#getstring23)接口获取。<br>
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -450,6 +456,7 @@ async function getValueExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.getValue(resultSet.getColumnIndex("NAME"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -466,9 +473,9 @@ ArkTS-Sta: getBlob(columnIndex: int): Uint8Array
 以字节数组的形式获取当前行中指定列的值。
 
 如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成字节数组类型返回指定值，如果该列内容为空时，会返回空字节数组。<br>
-如果当前列的数据类型为ASSET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。
+如果当前列的数据类型为ASSET、ASSETS、FLOATVECTOR、BIGINT类型，会抛出错误码14800041。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -509,6 +516,7 @@ async function getBlobExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.getBlob(resultSet.getColumnIndex("CODES"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -528,7 +536,7 @@ ArkTS-Sta: getString(columnIndex: int): string
 如果当前列中的值为DOUBLE类型，可能存在精度的丢失，建议使用[getDouble](#getdouble23)接口获取。<br>
 如果当前列的数据类型为ASSET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -569,6 +577,7 @@ async function getStringExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -589,7 +598,7 @@ ArkTS-Dyn：如果当前列的数据类型为INTEGER，值大于Number.MAX_SAFE_
 如果当前列的数据类型为DOUBLE时，如果不希望丢失精度，建议使用[getDouble](#getdouble23)接口获取。<br>
 如果当前列的数据类型为ASSET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -630,6 +639,7 @@ async function getLongExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -648,7 +658,7 @@ ArkTS-Sta: getDouble(columnIndex: int): double
 如果当前列的数据类型为INTEGER、DOUBLE、TEXT会转成double类型返回指定值，非数字的TEXT、BLOB类型会返回0.0。如果该列内容为空时，会返回0.0。<br>
 如果当前列的数据类型为ASSET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。<br>
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -689,6 +699,7 @@ async function getDoubleExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -706,7 +717,7 @@ ArkTS-Sta: getAsset(columnIndex: int): Asset
 
 如果当前列的数据类型为Asset类型，会以Asset类型返回指定值；如果当前列中的值为null时，会返回null；如果当前列的数据类型非Asset类型，则返回14800041。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -747,6 +758,7 @@ async function getAssetExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const doc = resultSet.getAsset(resultSet.getColumnIndex("DOC"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -764,7 +776,7 @@ ArkTS-Sta: getAssets(columnIndex: int): Assets
 
 如果当前列的数据类型为Assets类型，会以Assets类型返回指定值；如果当前列中的值为null时，会返回null；如果当前列的数据类型非Assets类型，则返回14800041。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -805,6 +817,7 @@ async function getAssetsExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.getAssets(resultSet.getColumnIndex("DOCS"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -818,7 +831,7 @@ getRow(): ValuesBucket
 
 获取当前行的数据。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -838,7 +851,7 @@ getRow(): ValuesBucket
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800014  | The target instance is already closed. |
@@ -859,6 +872,7 @@ async function getRowExample(store : relationalStore.RdbStore) {
       resultSet.goToNextRow();
       const rowData = resultSet.getRow();
       console.info(`rowData: ${JSON.stringify(rowData)}`);
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -914,6 +928,7 @@ async function getCurrentRowDataExample(store : relationalStore.RdbStore) {
       resultSet.goToNextRow();
       const rowData = resultSet.getCurrentRowData();
       console.info(`rowData: ${JSON.stringify(rowData)}`);
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`Failed to get row data: code:${err.code}, message:${err.message}`);
@@ -929,7 +944,7 @@ ArkTS-Sta: getRows(maxCount: int, position?: int): Promise<Array\<ValuesBucket>>
 
 从结果集中获取指定数量的数据，使用Promise异步回调。禁止与[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)的其他接口并发调用，否则获取的数据可能非预期。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -956,7 +971,7 @@ ArkTS-Sta: getRows(maxCount: int, position?: int): Promise<Array\<ValuesBucket>>
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800014  | The target instance is already closed. |
@@ -995,6 +1010,7 @@ async function getRowsExample(store : relationalStore.RdbStore) {
         console.info(JSON.stringify(rows[0]));
         position += rows.length;
       }
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -1085,6 +1101,7 @@ async function getRowsDataExample(store : relationalStore.RdbStore) {
         });
         position += rowsData.length;
       }
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`Failed to get rows data: code:${err.code}, message:${err.message}`);
@@ -1100,7 +1117,7 @@ ArkTS-Sta: isColumnNull(columnIndex: int): boolean
 
 检查当前行中指定列的值是否为null。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1126,7 +1143,7 @@ ArkTS-Sta: isColumnNull(columnIndex: int): boolean
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------- |
-| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800013  | Column index is out of bounds. |
@@ -1147,6 +1164,7 @@ async function isColumnNullExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.isColumnNull(resultSet.getColumnIndex("NAME"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -1158,9 +1176,9 @@ async function isColumnNullExample(store : relationalStore.RdbStore) {
 
 close(): void
 
-关闭结果集，若不关闭可能会引起fd泄露和内存泄露。
+关闭结果集，若不关闭可能会引起fd泄漏和内存泄漏。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

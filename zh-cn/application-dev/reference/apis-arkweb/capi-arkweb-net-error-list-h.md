@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明ArkWeb网络协议栈错误码。
+声明ArkWeb网络协议栈错误码。该枚举定义了ArkWeb网络协议栈中可能出现的各种错误类型，覆盖网络连接、SSL/TLS、证书验证、HTTP/2、QUIC、缓存等多个方面的错误场景。开发者可以通过这些错误码快速定位网络请求失败的原因，便于进行故障诊断和错误处理。
 
 **引用文件：** <web/arkweb_net_error_list.h>
 
@@ -46,7 +46,7 @@ enum ArkWeb_NetError
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKWEB_NET_OK = 0 | 正常。 |
+| ARKWEB_NET_OK = 0 | 正常。|
 | ARKWEB_ERR_IO_PENDING = -1 | 异步IO操作尚未完成。这通常并不表示致命错误。通常，这个错误将作为通知生成，以等待某个外部通知，表明IO操作最终已完成。 |
 | ARKWEB_ERR_FAILED = -2 | 发生了通用故障。 |
 | ARKWEB_ERR_ABORTED = -3 | 操作被中止（由于用户操作）。 |
@@ -75,7 +75,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_BLOCKED_BY_RESPONSE = -27 | 请求失败，因为响应不满足要求（例如“X-Frame-Options”和“Content Security Policy”检查以及“Cross Origin Resource Policy”）。 |
 | ARKWEB_ERR_CLEARTEXT_NOT_PERMITTED = -29 | 由于系统策略禁止某些或所有明文请求，请求被阻止。 |
 | ARKWEB_ERR_BLOCKED_BY_CSP = -30 | 请求被内容安全策略阻止。 |
-| ARKWEB_ERR_H2_OR_QUIC_REQUIRED = -31 | 由于没有H/2或QUIC会话，请求被阻止。 |
+| ARKWEB_ERR_H2_OR_QUIC_REQUIRED = -31 | 由于没有HTTP/2或QUIC会话，请求被阻止。 |
 | ARKWEB_ERR_BLOCKED_BY_ORB = -32 | 请求被CORB或ORB阻止。 |
 | ARKWEB_ERR_CONNECTION_CLOSED = -100 | 连接已关闭（对应于TCP FIN）。 |
 | ARKWEB_ERR_CONNECTION_RESET = -101 | 连接被重置（对应于TCP RST）。 |
@@ -95,7 +95,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_PROXY_AUTH_UNSUPPORTED = -115 | 代理请求进行身份验证（用于建立隧道，但使用的方法不受支持）。 |
 | ARKWEB_ERR_BAD_SSL_CLIENT_AUTH_CERT = -117 | SSL握手未能成功，原因是客户端证书不正确或缺失。 |
 | ARKWEB_ERR_CONNECTION_TIMED_OUT = -118 | 连接尝试超时。 |
-| ARKWEB_ERR_HOST_RESOLVER_QUEUE_TOO_LARGE = -119 | 有太多待处理的DNS解析，因此队列中的一个请求被中止了。 |
+| ARKWEB_ERR_HOST_RESOLVER_QUEUE_TOO_LARGE = -119 | DNS解析队列已满，无法接受新的解析请求。 |
 | ARKWEB_ERR_SOCKS_CONNECTION_FAILED = -120 | 为目标主机建立到SOCKS代理服务器的连接失败。 |
 | ARKWEB_ERR_SOCKS_CONNECTION_HOST_UNREACHABLE = -121 | SOCKS代理服务器无法建立与目标主机的连接，因为该主机无法访问。 |
 | ARKWEB_ERR_ALPN_NEGOTIATION_FAILED = -122 | 协商备用协议的请求失败。 |
@@ -111,12 +111,12 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY = -135 | SSL客户端证书没有私钥。 |
 | ARKWEB_ERR_PROXY_CERTIFICATE_INVALID = -136 | HTTPS代理提供的证书无效。 |
 | ARKWEB_ERR_NAME_RESOLUTION_FAILED = -137 | 在尝试进行域名解析（DNS）时发生错误。 |
-| ARKWEB_ERR_NETWORK_ACCESS_DENIED = -138 | 访问网络的权限被拒绝。这用于区分很可能是由防火墙导致的错误和其他访问被拒绝的错误。另请参阅ERR_ACCESS_DENIED。 |
+| ARKWEB_ERR_NETWORK_ACCESS_DENIED = -138 | 访问网络的权限被拒绝。这用于区分很可能是由防火墙导致的错误和其他访问被拒绝的错误。另请参阅ARKWEB_ERR_ACCESS_DENIED。 |
 | ARKWEB_ERR_TEMPORARILY_THROTTLED = -139 | 请求节流模块取消了此请求，以避免DDOS攻击。 |
 | ARKWEB_ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140 | 通过HTTPS代理创建SSL隧道连接的请求收到了302（临时重定向）响应。响应体可能包含请求失败原因的说明。 |
 | ARKWEB_ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141 | 我们无法使用客户端证书的私钥签署SSL客户端身份验证握手的CertificateVerify数据。 |
 | ARKWEB_ERR_MSG_TOO_BIG = -142 | 消息对于传输来说太大了。（例如，UDP消息超过了大小阈值）。 |
-| ARKWEB_ERR_WS_PROTOCOL_ERROR = -145 | Websocket协议错误。表示由于帧格式错误或其他协议违规，我们正在终止连接。 |
+| ARKWEB_ERR_WS_PROTOCOL_ERROR = -145 | WebSocket协议错误。表示由于帧格式错误或其他协议违规，我们正在终止连接。 |
 | ARKWEB_ERR_ADDRESS_IN_USE = -147 | 当尝试绑定已使用的地址时返回。 |
 | ARKWEB_ERR_SSL_HANDSHAKE_NOT_COMPLETED = -148 | 由于SSL握手尚未完成，操作失败。 |
 | ARKWEB_ERR_SSL_BAD_PEER_PUBLIC_KEY = -149 | SSL对等方的公钥无效。 |
@@ -128,7 +128,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_SSL_UNRECOGNIZED_NAME_ALERT = -159 | SSL服务器向我们发送了一个致命的unrecognized_name警告。 |
 | ARKWEB_ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR = -160 | 无法按照请求设置套接字的接收缓冲区大小。 |
 | ARKWEB_ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR = -161 | 无法按照请求设置套接字的发送缓冲区大小。 |
-| ARKWEB_ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE = -162 |尽管setsockopt返回成功代码，但无法将套接字的接收缓冲区大小设置为所请求的值。 |
+| ARKWEB_ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE = -162 | 尽管setsockopt返回成功代码，但无法将套接字的接收缓冲区大小设置为所请求的值。 |
 | ARKWEB_ERR_SOCKET_SEND_BUFFER_SIZE_UNCHANGEABLE = -163 | 尽管setsockopt返回成功代码，但无法将套接字的发送缓冲区大小设置为所请求的值。 |
 | ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_BAD_FORMAT = -164 | 无法将客户端证书从平台存储导入到SSL库中。 |
 | ARKWEB_ERR_ICANN_NAME_COLLISION = -166 | 将主机名解析为IP地址列表时，包含了IPv4地址“127.0.53.53”。这是ICANN推荐的一个特殊IP地址，用于指示存在名称冲突，并提醒管理员注意潜在问题。 |
@@ -145,7 +145,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_EARLY_DATA_REJECTED = -178 | TLS 1.3 Early Data被服务器拒绝。这将在从套接字返回任何数据之前收到。应该禁用Early Data并重试请求。 |
 | ARKWEB_ERR_WRONG_VERSION_ON_EARLY_DATA = -179 | 提供了TLS 1.3 Early Data，但服务器以TLS 1.2或更早版本进行响应。这是为了解决Early Data和TLS 1.2之间向后兼容问题的内部错误代码。 |
 | ARKWEB_ERR_TLS13_DOWNGRADE_DETECTED = -180 | 启用了TLS 1.3，但协商了一个较低版本，并且服务器返回了一个值，表明它支持TLS 1.3。 |
-| ARKWEB_ERR_SSL_KEY_USAGE_INCOMPATIBLE = -181 |  服务器的证书有一个与协商的TLS密钥交换方法不兼容的keyUsage扩展。 |
+| ARKWEB_ERR_SSL_KEY_USAGE_INCOMPATIBLE = -181 | 服务器的证书有一个与协商的TLS密钥交换方法不兼容的keyUsage扩展。 |
 | ARKWEB_ERR_INVALID_ECH_CONFIG_LIST = -182 | 通过DNS获取的ECHConfigList无法解析。 |
 | ARKWEB_ERR_ECH_NOT_NEGOTIATED = -183 | 已启用ECH（Encrypted Client Hello，加密客户端Hello），但服务器无法解密加密的ClientHello。 |
 | ARKWEB_ERR_ECH_FALLBACK_CERTIFICATE_INVALID = -184 | ECH（Encrypted Client Hello）已启用，但服务器无法解密加密的ClientHello，并且没有提供对公共名称有效的证书。 |
@@ -164,7 +164,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_CERT_VALIDITY_TOO_LONG = -213 | 证书的有效期太长。 |
 | ARKWEB_ERR_CERTIFICATE_TRANSPARENCY_REQUIRED = -214 | 此连接需要证书透明度，但服务器未提供符合策略的CT信息。 |
 | ARKWEB_ERR_CERT_SYMANTEC_LEGACY = -215 | 证书链接到不再受信任的旧版Symantec根证书。 |
-| ARKWEB_ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217 |已知该证书被除设备所有者之外的其他实体拦截。 |
+| ARKWEB_ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217 | 已知该证书被除设备所有者之外的其他实体拦截。 |
 | ARKWEB_ERR_SSL_OBSOLETE_VERSION_OR_CIPHER = -218 | 连接使用了SSL/TLS或加密算法的过时版本。 |
 | ARKWEB_ERR_CERT_END = -219 | 紧接在最后一个证书错误代码之后的值。 |
 | ARKWEB_ERR_INVALID_URL = -300 | URL无效。 |
@@ -283,7 +283,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_DNS_SEARCH_EMPTY = -805 | 后缀搜索列表规则阻止了给定主机名的解析。 |
 | ARKWEB_ERR_DNS_SORT_ERROR = -806 | 未能根据RFC3484对地址进行排序。 |
 | ARKWEB_ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808 | 未能解析DNS-over-HTTPS服务器的主机名。 |
-| ARKWEB_ERR_DNS_NAME_HTTPS_ONLY = -809 | DNS已识别请求因不安全的连接（http/ws）而被禁止。应用程序应该像处理HTTP重定向一样处理这个错误，将连接重定向到安全的https或wss。 |
+| ARKWEB_ERR_DNS_NAME_HTTPS_ONLY = -809 | DNS已识别请求因不安全的连接（HTTP/WS）而被禁止。应用程序应该像处理HTTP重定向一样处理这个错误，将连接重定向到安全的HTTPS或WSS。 |
 | ARKWEB_ERR_DNS_REQUEST_CANCELED = -810 | 与此任务相关的所有DNS请求已被取消。 |
 | ARKWEB_ERR_DNS_NO_MATCHING_SUPPORTED_ALPN = -811 | HTTPS记录的主机名解析预期未能使用受支持协议的ALPN值进行解析。 |
 

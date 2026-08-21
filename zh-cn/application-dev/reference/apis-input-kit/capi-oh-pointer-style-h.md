@@ -45,7 +45,7 @@ enum Input_PointerStyle
 
 | 枚举项        | 描述     |图示 |
 | ------------ | ------ |------ |
-| DEFAULT = 0    | 默认     |![Default.png](./figures/Default.png)|
+| DEFAULT = 0    | 应用未设置时显示的光标样式。    |![Default.png](./figures/Default.png)|
 | EAST = 1    | 向东箭头   |![East.png](./figures/East.png)|
 | WEST = 2    | 向西箭头   |![West.png](./figures/West.png)|
 | SOUTH = 3    | 向南箭头   |![South.png](./figures/South.png)|
@@ -84,7 +84,7 @@ enum Input_PointerStyle
 | MIDDLE_BTN_SOUTH_EAST = 36   | 向东南滚动  |![MID_Btn_South_East.png](./figures/MID_Btn_South_East.png)|
 | MIDDLE_BTN_SOUTH_WEST = 37   | 向西南滚动  |![MID_Btn_South_West.png](./figures/MID_Btn_South_West.png)|
 | MIDDLE_BTN_NORTH_SOUTH_WEST_EAST = 38   | 四向锥形移动 |![MID_Btn_North_South_West_East.png](./figures/MID_Btn_North_South_West_East.png)|
-| HORIZONTAL_TEXT_CURSOR = 39 | 垂直文本选择 |![Horizontal_Text_Cursor.png](./figures/Horizontal_Text_Cursor.png)|
+| HORIZONTAL_TEXT_CURSOR = 39 | 水平文本选择 |![Horizontal_Text_Cursor.png](./figures/Horizontal_Text_Cursor.png)|
 | CURSOR_CROSS = 40 | 十字光标 |![Cursor_Cross.png](./figures/Cursor_Cross.png)|
 | CURSOR_CIRCLE = 41 | 圆形光标 |![Cursor_Circle.png](./figures/Cursor_Circle.png)|
 | LOADING = 42 | 正在载入动画光标 |![Loading.png](./figures/Loading.png)|
@@ -94,7 +94,7 @@ enum Input_PointerStyle
 | RUNNING_RIGHT = 46   | 后台运行中动画光标(拓展2) |![Loading_Right.png](./figures/Loading_Right.png)|
 | AECH_DEVELOPER_DEFINED_ICON = 47   | 圆形自定义光标 |![Custom_Cursor_Circle.png](./figures/Custom_Cursor_Circle.png)|
 | SCREENRECORDER_CURSOR = 48   | 录屏光标  |![ScreenRecorder_Cursor.png](./figures/ScreenRecorder_Cursor.png)|
-| LASER_CURSOR = 49   | 悬浮光标。手写笔进入空鼠模式时使用该光标，无法直接设置 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor.png](./figures/Laser_Cursor.png)|
-| LASER_CURSOR_DOT = 50   | 点击光标。手写笔进入空鼠模式时使用该光标，无法直接设置 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
-| LASER_CURSOR_DOT_RED = 51   | 激光笔光标。手写笔进入空鼠模式时使用该光标，无法直接设置 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
+| LASER_CURSOR = 49   | 悬浮光标。手写笔进入空鼠模式时使用该光标，无法直接设置。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor.png](./figures/Laser_Cursor.png)|
+| LASER_CURSOR_DOT = 50   | 点击光标。手写笔进入空鼠模式时使用该光标，无法直接设置。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
+| LASER_CURSOR_DOT_RED = 51   | 激光笔光标。手写笔进入空鼠模式时使用该光标，无法直接设置。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
 | DEVELOPER_DEFINED_ICON = -100 | 自定义光标，开发者可使用[OH_Input_SetCustomCursor](./capi-oh-input-manager-h.md#oh_input_setcustomcursor)设置自定义光标，不支持使用[OH_Input_SetPointerStyle](./capi-oh-input-manager-h.md#oh_input_setpointerstyle)直接设置。 |自定义光标样式，通过接口设置。|

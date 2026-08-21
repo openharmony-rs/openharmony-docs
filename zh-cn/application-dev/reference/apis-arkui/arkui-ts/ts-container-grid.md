@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @rongShao-Z; @guozejun-->
-<!--Designer: @zcdqs-->
+<!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -64,8 +64,8 @@ Grid(scroller?: Scroller, layoutOptions?: GridLayoutOptions)
 
 | 参数名   | 类型                                    | 必填 | 说明                                                     |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| scroller | [Scroller](ts-container-scroll.md#scroller) | 否   | 可滚动组件的控制器。用于与可滚动组件进行绑定。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。 |
-| layoutOptions<sup>10+</sup> | [GridLayoutOptions](#gridlayoutoptions10对象说明) | 否 | Grid布局选项。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| scroller | [Scroller](ts-container-scroll.md#scroller) | 否   | 可滚动组件的控制器。用于与可滚动组件进行绑定。不设置时不绑定外部控制器，组件自行管理滚动行为。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。 |
+| layoutOptions<sup>10+</sup> | [GridLayoutOptions](#gridlayoutoptions10对象说明) | 否 | Grid布局选项，用于配置GridItem跨行跨列等布局信息。不传入时，Grid按照rowsTemplate、columnsTemplate等常规属性以及GridItem自身属性进行布局，不启用GridLayoutOptions提供的布局选项。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## GridLayoutOptions<sup>10+</sup>对象说明
 
@@ -161,7 +161,7 @@ ArkTS-Sta: columnsTemplate(value: string | ItemFillPolicy | undefined)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                      |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
-| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[ItemFillPolicy](./ts-types.md#itemfillpolicy22)<br/>ArkTS-Sta: string&nbsp;\|&nbsp;[ItemFillPolicy](./ts-types.md#itemfillpolicy22)&nbsp;\|&nbsp;undefined | 是   | 当前网格组件布局列的数量。 |
+| value | ArkTS-Dyn: string&nbsp;\|&nbsp;[ItemFillPolicy](./ts-types.md#itemfillpolicy22)<br/>ArkTS-Sta: string&nbsp;\|&nbsp;[ItemFillPolicy](./ts-types.md#itemfillpolicy22)&nbsp;\|&nbsp;undefined | 是 | 当前网格组件布局列的数量。value为string类型时，表示固定列数或repeat函数形式；value为ItemFillPolicy类型时，根据断点自动确定列数。 |
 
 ### rowsTemplate
 
@@ -254,7 +254,7 @@ ArkTS-Sta: columnsGap(value: Length | undefined)
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)  <br/>ArkTS-Sta: [Length](ts-types.md#length)  \| undefined | 是   | 列与列的间距。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: [Length](ts-types.md#length)  <br/>ArkTS-Sta: [Length](ts-types.md#length)  \| undefined | 是 | 列与列的间距。<br/>默认值：0 <br/>取值范围：[0, +∞)，设置为小于0的值时，按默认值0显示。<br/>取值为undefined时，按默认值处理。 |
 
 ### rowsGap
 
@@ -278,7 +278,7 @@ ArkTS-Sta: rowsGap(value: Length | undefined)
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)  <br/>ArkTS-Sta: [Length](ts-types.md#length)  \| undefined | 是   | 行与行的间距。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: [Length](ts-types.md#length)  <br/>ArkTS-Sta: [Length](ts-types.md#length)  \| undefined | 是 | 行与行的间距。<br/>默认值：0 <br/>取值范围：[0, +∞)，设置为小于0的值时，按默认值0显示。<br/>取值为undefined时，按默认值处理。 |
 
 ### scrollBar
 
@@ -356,7 +356,7 @@ ArkTS-Dyn: scrollBarWidth(value: number | string)
 
 ArkTS-Sta: scrollBarWidth(value: double | string | undefined)
 
-设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过Grid组件主轴方向的高度，则滚动条的宽度会变为默认值。
+设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过Grid组件主轴方向的可视尺寸，则滚动条的宽度会变为默认值4vp。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -372,7 +372,7 @@ ArkTS-Sta: scrollBarWidth(value: double | string | undefined)
 
 | 参数名 | 类型                       | 必填 | 说明                                      |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string \| undefined | 是   | 滚动条的宽度。<br/>默认值：4<br/>单位：vp<br/>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string \| undefined | 是 | 滚动条的宽度。<br/>默认值：4<br/>单位：vp<br/>取值范围：[0, +∞)，设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。<br/>取值为undefined时，按默认值处理。 |
 
 ### scrollBarWidth
 
@@ -380,7 +380,7 @@ ArkTS-Dyn: scrollBarWidth(value: number | string | Resource)
 
 ArkTS-Sta: scrollBarWidth(value: Resource | undefined)
 
-设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过Grid组件主轴方向的高度，则滚动条的宽度会变为4vp。支持Resource资源类型。
+设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过Grid组件主轴方向的可视尺寸，则滚动条的宽度会变为默认值4vp。支持Resource资源类型。
 
 未通过该接口设置时，设置滚动条的宽度为4vp。
 
@@ -407,9 +407,9 @@ ArkTS-Dyn: cachedCount(value: number)
 
 ArkTS-Sta: cachedCount(value: int | undefined)
 
-设置预加载的GridItem的数量，只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了[virtualScroll](ts-rendering-control-repeat.md#virtualscroll)开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效。<!--Del-->具体使用可参考[减少应用白块说明](../../../performance/arkts-performance-improvement-recommendation.md#减少应用滑动白块)。<!--DelEnd-->
+设置主轴方向前后两侧分别预加载的网格行/列数，只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了[virtualScroll](ts-rendering-control-repeat.md#virtualscroll)开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效。<!--Del-->具体使用可参考[减少应用白块说明](../../../performance/arkts-performance-improvement-recommendation.md#减少应用滑动白块)。<!--DelEnd-->
 
-设置缓存后会在Grid显示区域上下各缓存cachedCount*列数个GridItem。
+设置缓存后，会在Grid显示区域沿主轴方向的前后两侧分别预加载cachedCount个网格行/列。垂直滚动时，上下两侧分别预加载cachedCount行；水平滚动时，左右两侧分别预加载cachedCount列。
 
 [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了[virtualScroll](ts-rendering-control-repeat.md#virtualscroll)开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)超出显示和缓存范围的GridItem会被释放。
 
@@ -434,9 +434,9 @@ ArkTS-Dyn: cachedCount(count: number, show: boolean)
 
 ArkTS-Sta: cachedCount(count: int | undefined, show: boolean | undefined)
 
-设置预加载的GridItem数量，并配置是否显示预加载节点。
+设置主轴方向前后两侧分别预加载的网格行/列数，并配置是否显示预加载节点，只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了[virtualScroll](ts-rendering-control-repeat.md#virtualscroll)开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效。
 
-设置缓存后会在Grid显示区域上下各缓存cachedCount*列数个GridItem。配合裁剪[clip](ts-universal-attributes-sharp-clipping.md#clip12)或内容裁剪[clipContent](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
+设置缓存后，会在Grid显示区域沿主轴方向的前后两侧分别预加载cachedCount个网格行/列。垂直滚动时，上下两侧分别预加载cachedCount行；水平滚动时，左右两侧分别预加载cachedCount列。配合裁剪[clip](ts-universal-attributes-sharp-clipping.md#clip12)或内容裁剪[clipContent](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -464,6 +464,10 @@ ArkTS-Sta: editMode(value: boolean | undefined)
 
 设置Grid是否进入编辑模式，进入编辑模式可以拖拽Grid组件内部[GridItem](ts-container-griditem.md)。
 
+> **说明：**
+>
+> 此属性仅在rowsTemplate和columnsTemplate都不设置时生效。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -485,6 +489,10 @@ ArkTS-Dyn: layoutDirection(value: GridDirection)
 ArkTS-Sta: layoutDirection(value: GridDirection | undefined)
 
 设置布局的主轴方向。
+
+> **说明：**
+>
+> 此属性仅在rowsTemplate和columnsTemplate都不设置时生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -508,6 +516,10 @@ ArkTS-Sta: maxCount(value: int | undefined)
 
 设置可显示的最大行数或列数。设置为小于1的值时，按默认值显示。
 
+> **说明：**
+>
+> 此属性仅在rowsTemplate和columnsTemplate都不设置时生效。
+
 当layoutDirection是Row/RowReverse时，表示可显示的最大列数。
 
 当layoutDirection是Column/ColumnReverse时，表示可显示的最大行数。
@@ -526,7 +538,7 @@ ArkTS-Sta: maxCount(value: int | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
-| value  | ArkTS-Dyn: number <br/>ArkTS-Sta: int  \| undefined | 是   | 可显示的最大行数或列数。<br/>默认值：Infinity<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: number <br/>ArkTS-Sta: int  \| undefined | 是 | 可显示的最大行数或列数。<br/>默认值：Infinity<br/>取值范围：[1, +∞)，设置为小于1的值时，按默认值Infinity处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### minCount<sup>8+</sup>
 
@@ -535,6 +547,10 @@ ArkTS-Dyn: minCount(value: number)
 ArkTS-Sta: minCount(value: int | undefined)
 
 设置可显示的最小行数或列数。设置为小于1的值时，按默认值显示。
+
+> **说明：**
+>
+> 此属性仅在rowsTemplate和columnsTemplate都不设置时生效。
 
 当layoutDirection是Row/RowReverse时，表示可显示的最小列数。
 
@@ -554,7 +570,7 @@ ArkTS-Sta: minCount(value: int | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value  | ArkTS-Dyn: number<br/> ArkTS-Sta: int&nbsp;\|&nbsp;undefined | 是   | 可显示的最小行数或列数。<br/>默认值：1<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: number<br/> ArkTS-Sta: int&nbsp;\|&nbsp;undefined | 是 | 可显示的最小行数或列数。<br/>默认值：1<br/>取值范围：[1, +∞)，设置为小于1的值时，按默认值1处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### cellLength<sup>8+</sup>
 
@@ -563,6 +579,10 @@ ArkTS-Dyn: cellLength(value: number)
 ArkTS-Sta: cellLength(value: double | undefined)
 
 设置一行的高度或者一列的宽度。
+
+> **说明：**
+>
+> 此属性仅在rowsTemplate和columnsTemplate都不设置时生效。
 
 当layoutDirection是Row/RowReverse时，表示一行的高度。
 
@@ -580,7 +600,7 @@ ArkTS-Sta: cellLength(value: double | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                                    |
 | ------ | ------ | ---- | ------------------------------------------------------- |
-| value  | ArkTS-Dyn: number<br/> ArkTS-Sta: double&nbsp;\|&nbsp;undefined | 是   | 一行的高度或者一列的宽度。<br/>默认值：第一个元素的大小<br/>单位：vp<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值显示。<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: number<br/> ArkTS-Sta: double&nbsp;\|&nbsp;undefined | 是 | 一行的高度或者一列的宽度。<br/>默认值：当layoutDirection是Row/RowReverse时，为首个GridItem的高度；当layoutDirection是Column/ColumnReverse时，为首个GridItem的宽度。<br/>单位：vp <br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值显示。<br/>取值为undefined时，按默认值处理。 |
 
 ### multiSelectable<sup>8+</sup>
 
@@ -701,7 +721,7 @@ ArkTS-Sta: nestedScroll(value: NestedScrollOptions | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | ArkTS-Dyn: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明)<br/> ArkTS-Sta: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明)&nbsp;\|&nbsp;undefined | 是   | 嵌套滚动选项。<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明)<br/> ArkTS-Sta: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明)&nbsp;\|&nbsp;undefined | 是 | 嵌套滚动选项，用于设置Grid组件与父组件的嵌套滚动联动行为。<br/>取值为undefined时，按默认值处理。 |
 
 ### friction<sup>10+</sup>
 
@@ -709,7 +729,7 @@ ArkTS-Dyn: friction(value: number | Resource)
 
 ArkTS-Sta: friction(value: double | Resource | undefined)
 
-设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。
+设置摩擦系数，手动滑动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -725,7 +745,7 @@ ArkTS-Sta: friction(value: double | Resource | undefined)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                        |
 | ------ | ---------------------------------------------------- | ---- | ----------------------------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/> ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 摩擦系数。<br/>默认值：非可穿戴设备为0.6，可穿戴设备为0.9。<br/>从API version 11开始，非可穿戴设备默认值为0.7。<br/>从API version 12开始，非可穿戴设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/> ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 摩擦系数。<br/>默认值：非Wearable设备为0.6，Wearable设备为0.9。<br/>从API version 11开始，非Wearable设备默认值为0.7。<br/>从API version 12开始，非Wearable设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### alignItems<sup>12+</sup>
 
@@ -819,7 +839,7 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
-| supported  | boolean \| undefined | 是   | 当前Grid组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。</br>true表示支持空分支节点；false表示不支持空分支节点。</br>值为undefined时，按false处理。 |
+| supported  | boolean \| undefined | 是   | 当前Grid组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。<br/>true表示支持空分支节点；false表示不支持空分支节点。<br/>值为undefined时，按false处理。 |
 
 ### editModeOptions<sup>23+</sup>
 
@@ -841,7 +861,7 @@ editModeOptions(options?: EditModeOptions)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options   | [EditModeOptions](ts-container-scrollable-common.md#editmodeoptions23对象说明) | 否   | 编辑模式选项。|
+| options   | [EditModeOptions](ts-container-scrollable-common.md#editmodeoptions23对象说明) | 否   | 编辑模式选项，用于配置Grid编辑模式下的多选聚拢动画、预览角标、多选样式、双指滑动多选等行为。需要调整上述行为时传入；不传入时，各选项使用EditModeOptions对象说明中的默认值。 |
 
 ### enableEditMode
 
@@ -955,7 +975,7 @@ ArkTS-Sta: onItemDragStart(event: OnItemDragStartCallback | undefined)
 
 拖拽浮起的GridItem可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考[示例16（实现GridItem自定义拖拽）](#示例16实现griditem自定义拖拽)。
 
-不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考[示例17（通过拖拽事件实现griditem拖拽）](#示例17通过拖拽事件实现griditem拖拽)。
+不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考[示例17（通过拖拽事件实现GridItem拖拽）](#示例17通过拖拽事件实现griditem拖拽)。从API版本26.0.0开始，可以使用[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口实现该效果，参考[示例22（使用OnMove进行拖拽）](#示例22使用onmove进行拖拽)。它同时支持跨行跨列的GridItem的拖拽，但需注意Grid必须是可滚动的。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -995,7 +1015,7 @@ ArkTS-Sta: onItemDragEnter(event: ((event: ItemDragInfo) => void) | undefined)
 
 | 参数名 | 类型                                  | 必填 | 说明           |
 | ------ | ------------------------------------- | ---- | -------------- |
-| event  | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。 |
+| event  | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明)) => void<br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明)) => void) \| undefined | 是   | 拖拽进入网格元素范围时触发的回调。<br/>undefined：不使用该回调函数。 |
 
 ### onItemDragMove<sup>8+</sup>
 
@@ -1015,7 +1035,7 @@ ArkTS-Sta: onItemDragMove(event: ((event: ItemDragInfo, itemIndex: int, insertIn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| event | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: number, insertIndex: number) => void <br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: int, insertIndex: int) => void) \|&nbsp;undefined | 是 | 在Grid的网格区域内拖拽移动GridItem时触发的回调。<br/>event：拖拽点的信息。<br/>itemIndex：拖拽起始位置。<br/>insertIndex：拖拽插入位置。<br/>undefined：不使用该回调函数。 |
+| event | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: number, insertIndex: number) => void <br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: int, insertIndex: int) => void) \|&nbsp;undefined | 是 | 在Grid的网格区域内拖拽移动GridItem时触发的回调。<br/>event：拖拽点的信息。<br/>itemIndex：拖拽起始位置，表示被拖拽的GridItem在Grid中的索引值。<br/>insertIndex：当前拖拽插入位置，表示GridItem在拖拽移动过程中的目标插入索引值。<br/>undefined：不使用该回调函数。 |
 
 ### onItemDragLeave<sup>8+</sup>
 
@@ -1097,7 +1117,7 @@ onReachStart(event: () => void)
 
 网格到达起始位置时触发。
 
-Grid初始化时会触发一次，Grid滚动到起始位置时触发一次。Grid边缘效果为弹簧效果时，划动经过起始位置时触发一次，回弹回起始位置时再触发一次。
+Grid初始化时会触发一次，Grid滚动到起始位置时触发一次。Grid边缘效果为弹簧效果时，滑动经过起始位置时触发一次，回弹返回起始位置时再触发一次。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1119,9 +1139,9 @@ Grid初始化时会触发一次，Grid滚动到起始位置时触发一次。Gri
 
 onReachEnd(event: () => void)
 
-网格到达末尾位置时触发。不满一屏并且最后一个子组件末端在Grid内时触发。
+网格到达末尾位置时触发。当网格内容不满一屏，并且最后一个子组件末端在Grid内时触发。
 
-Grid边缘效果为弹簧效果时，划动经过末尾位置时触发一次，回弹回末尾位置时再触发一次。
+Grid边缘效果为弹簧效果时，滑动经过末尾位置时触发一次，回弹返回末尾位置时再触发一次。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1377,7 +1397,7 @@ setOnWillScroll(callback:  OnWillScrollCallback | undefined): void
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [OnWillScrollCallback](./ts-container-scrollable-common.md#onwillscrollcallback12)&nbsp;\|&nbsp;undefined | 是   | onWillScroll事件的回调函数。 |
+| callback  | [OnWillScrollCallback](./ts-container-scrollable-common.md#onwillscrollcallback12)&nbsp;\|&nbsp;undefined | 是   | onWillScroll事件的回调函数。传入undefined时，会重置事件回调。 |
 
 ### setOnDidScroll<sup>19+</sup>
 
@@ -1401,7 +1421,7 @@ setOnDidScroll(callback: OnScrollCallback | undefined): void
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [OnScrollCallback](./ts-container-scrollable-common.md#onscrollcallback12)&nbsp;\|&nbsp;undefined | 是   | onDidScroll事件的回调函数。 |
+| callback  | [OnScrollCallback](./ts-container-scrollable-common.md#onscrollcallback12)&nbsp;\|&nbsp;undefined | 是   | onDidScroll事件的回调函数。传入undefined时，会重置事件回调。 |
 
 ### setOnScrollIndex<sup>19+</sup>
 
@@ -1425,7 +1445,7 @@ setOnScrollIndex(callback: OnGridScrollIndexCallback | undefined): void
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [OnGridScrollIndexCallback](#ongridscrollindexcallback19)&nbsp;\|&nbsp;undefined | 是   | onScrollIndex事件的回调函数。 |
+| callback  | [OnGridScrollIndexCallback](#ongridscrollindexcallback19)&nbsp;\|&nbsp;undefined | 是   | onScrollIndex事件的回调函数。传入undefined时，会重置事件回调。 |
 
 ## OnGridScrollIndexCallback<sup>19+</sup>
 
@@ -1457,6 +1477,8 @@ Grid组件可见区域item变化事件的回调类型。
 ### 示例1（固定行列Grid）
 
 可以使用[GridLayoutOptions](#gridlayoutoptions10对象说明)中的onGetRectByIndex指定GridItem的位置和大小。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -1536,6 +1558,91 @@ struct GridExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ColumnOptions, Text, ForEach, Grid, GridItem, GridLayoutOptions, TextAlign, Margin } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct GridExample {
+  @State numbers1: string[] = ['0', '1', '2', '3', '4'];
+  @State numbers2: string[] = ['0', '1', '2', '3', '4', '5'];
+  layoutOptions3: GridLayoutOptions = {
+    regularSize: [1, 1],
+    onGetRectByIndex: (index: int): [int, int, int, int] => {
+      if (index == 0) {
+        return [0, 0, 1, 1];
+      } else if (index == 1) {
+        return [0, 1, 2, 2];
+      } else if (index == 2) {
+        return [0, 3, 3, 3];
+      } else if (index == 3) {
+        return [3, 0, 3, 3];
+      } else if (index == 4) {
+        return [4, 3, 2, 2];
+      } else {
+        return [5, 5, 1, 1];
+      }
+    }
+  };
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Grid() {
+        ForEach(this.numbers1, (day: string) => {
+          ForEach(this.numbers1, (day: string) => {
+            GridItem() {
+              Text(day)
+                .fontSize(16)
+                .backgroundColor(0xF9CF93)
+                .width('100%')
+                .height('100%')
+                .textAlign(TextAlign.Center)
+            }
+          // ForEach的key生成函数需显式指定返回类型string。
+          }, (day: string): string => day)
+        // ForEach的key生成函数需显式指定返回类型string。
+        }, (day: string): string => day)
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .width('90%')
+      .backgroundColor(0xFAEEE0)
+      .height(300)
+
+      Text('GridLayoutOptions的使用：onGetRectByIndex。').fontColor(0x000000).fontSize(14).width('90%')
+
+      Grid(undefined, this.layoutOptions3) {
+        ForEach(this.numbers2, (day: string) => {
+          GridItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .height('100%')
+          .width('100%')
+        // ForEach的key生成函数需显式指定返回类型string。
+        }, (day: string): string => day)
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr 1fr 1fr')
+      .rowsTemplate('1fr 1fr 1fr 1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .width('90%')
+      .backgroundColor(0xFAEEE0)
+      .height(300)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![grid](figures/grid.gif)
 
 ### 示例2（可滚动Grid和滚动事件）
@@ -1543,6 +1650,8 @@ struct GridExample {
 可滚动Grid，包括所有滚动属性和事件。
 
 GridDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给Grid提供子组件。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -1687,6 +1796,157 @@ struct GridExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+// GridDataSource.ets
+
+import { IDataSource, DataChangeListener } from '@ohos.arkui.component';
+
+export class GridDataSource implements IDataSource<string> {
+  private list: Array<string> = [];
+  private listeners: Array<DataChangeListener> = [];
+
+  constructor(list: Array<string>) {
+    this.list = list;
+  }
+
+  totalCount(): int {
+    return this.list.length;
+  }
+
+  getData(index: int): string {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 通知控制器数据位置变化
+  notifyDataMove(from: int, to: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    })
+  }
+
+  // 重新加载所有数据
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
+
+  // 交换元素位置
+  public swapItem(from: int, to: int): void {
+    let temp: string = this.list[from];
+    this.list[from] = this.list[to];
+    this.list[to] = temp;
+    this.notifyDataReload()
+  }
+}
+```
+
+```ts
+// xxx.ets
+
+import { Entry, Component, Column, ColumnOptions, Text, Button, Grid, GridItem, LazyForEach, Scroller, BarState, Color, EdgeEffect, ScrollState, TextAlign, Margin, ComputedBarAttribute, ScrollPageOptions } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridExample {
+  numbers: GridDataSource = new GridDataSource([]);
+  scroller: Scroller = new Scroller();
+  @State gridPosition: number = 0; // 0代表滚动到grid顶部，1代表中间值，2代表滚动到grid底部。
+
+  aboutToAppear(): void {
+    let list: Array<string> = [];
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < 5; j++) {
+        list.push(j.toString());
+      }
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Text('Grid').fontColor(0x000000).fontSize(16).width('90%')
+      Grid(this.scroller) {
+        LazyForEach(this.numbers, (item: string, index: int) => {
+          GridItem() {
+            Text(item)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(80)
+              .textAlign(TextAlign.Center)
+          }
+        // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: string, index: int): string => index.toString())
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .friction(0.6)
+      .enableScrollInteraction(true)
+      .supportAnimation(false)
+      .multiSelectable(false)
+      .edgeEffect(EdgeEffect.Spring)
+      .scrollBar(BarState.On)
+      .scrollBarColor(Color.Grey)
+      .scrollBarWidth(4)
+      .width('90%')
+      .backgroundColor(0xFAEEE0)
+      .height(300)
+      .onScrollIndex((first: int, last: int): void => {
+        console.info(first.toString());
+        console.info(last.toString());
+      })
+      .onScrollBarUpdate((index: int, offset: double): ComputedBarAttribute => {
+        console.info('XXX' + 'Grid onScrollBarUpdate,index : ' + index.toString() + ',offset' + offset.toString());
+        return { totalOffset: (index / 5) * (80 + 10) - offset, totalLength: 80 * 5 + 10 * 4 } as ComputedBarAttribute;
+      })  // 只适用于当前示例代码数据源，如果数据源有变化，则需要修改该部分代码，或者删掉此属性
+      .onDidScroll((scrollOffset: double, scrollState: ScrollState): void => {
+        console.info(scrollOffset.toString());
+        console.info(scrollState.toString());
+      })
+      .onScrollStart((): void => {
+        console.info('XXX' + 'Grid onScrollStart');
+      })
+      .onScrollStop((): void => {
+        console.info('XXX' + 'Grid onScrollStop');
+      })
+      .onReachStart((): void => {
+        this.gridPosition = 0;
+        console.info('XXX' + 'Grid onReachStart');
+      })
+      .onReachEnd((): void => {
+        this.gridPosition = 2;
+        console.info('XXX' + 'Grid onReachEnd');
+      })
+
+      Button('next page')
+        .onClick((): void => { // 点击后滑到下一页
+          this.scroller.scrollPage({ next: true } as ScrollPageOptions);
+        })
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![scrollerExample2](figures/scrollerExample2.gif)
 
 ### 示例3（可滚动Grid设置跨行跨列节点）
@@ -1694,6 +1954,8 @@ struct GridExample {
 [GridLayoutOptions](#gridlayoutoptions10对象说明)的使用：irregularIndexes与onGetIrregularSizeByIndex。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -1781,6 +2043,95 @@ struct GridExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ColumnOptions, Text, Grid, GridItem, LazyForEach, Scroller, GridLayoutOptions, BarState, TextAlign, Margin } from '@ohos.arkui.component';
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridExample {
+  numbers: GridDataSource = new GridDataSource([]);
+  scroller: Scroller = new Scroller();
+  layoutOptions1: GridLayoutOptions = {
+    regularSize: [1, 1],        // 只支持[1, 1]
+    irregularIndexes: [0, 6],   // 索引为0和6的GridItem占用一行
+  };
+
+  layoutOptions2: GridLayoutOptions = {
+    regularSize: [1, 1],
+    irregularIndexes: [0, 7],   // 索引为0和7的GridItem占用的列数由onGetIrregularSizeByIndex指定
+    onGetIrregularSizeByIndex: (index: int): [int, int] => {
+      if (index === 0) {
+        return [1, 5];
+      }
+      return [1, index % 6 + 1];
+    }
+  };
+
+  aboutToAppear(): void {
+    let list: string[] = [];
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < 5; j++) {
+        list.push(j.toString());
+      }
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Text('Grid1').fontColor(0x000000).fontSize(16).width('90%')
+      Grid(this.scroller, this.layoutOptions1) {
+        LazyForEach(this.numbers, (item: string, index: int) => {
+          GridItem() {
+            Text(item)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(80)
+              .textAlign(TextAlign.Center)
+          }.selectable(false)
+        // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: string, index: int): string => index.toString())
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .multiSelectable(true)
+      .scrollBar(BarState.Off)
+      .width('90%')
+      .backgroundColor(0xFAEEE0)
+      .height(300)
+
+      Text('Grid2').fontColor(0x000000).fontSize(16).width('90%')
+      // 不使用scroll，需要undefined占位
+      Grid(undefined, this.layoutOptions2) {
+        LazyForEach(this.numbers, (item: string, index: int) => {
+          GridItem() {
+            Text(item)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(80)
+              .textAlign(TextAlign.Center)
+          }
+        // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: string, index: int): string => index.toString())
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .scrollBar(BarState.Off)
+      .width('90%')
+      .backgroundColor(0xFAEEE0)
+      .height(300)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![gridLayoutOptions](figures/gridLayoutOptions.gif)
 
 ### 示例4（Grid嵌套滚动）
@@ -1788,6 +2139,8 @@ struct GridExample {
 [nestedScroll](#nestedscroll10)和[onScrollFrameBegin](#onscrollframebegin10)的使用。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -1964,6 +2317,185 @@ struct GridExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Stack, Column, Row, Text, List, ListItem, ListOptions, Grid, GridItem, LazyForEach, Scroller, BarState, EdgeEffect, GridDirection, NestedScrollMode, NestedScrollOptions, TouchEvent, TouchType, ScrollState, Alignment, TextAlign, ShadowOptions, TranslateOptions, Padding, Margin, OnScrollFrameBeginHandlerResult } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridExample {
+  @State colors: int[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  numbers: GridDataSource = new GridDataSource([]);
+  @State translateY: number = 0;
+  private scroller: Scroller = new Scroller();
+  private gridScroller: Scroller = new Scroller();
+  private touchDown: boolean = false;
+  private listTouchDown: boolean = false;
+  private scrolling: boolean = false;
+
+  aboutToAppear(): void {
+    let list: string[] = [];
+    for (let i = 0; i < 100; i++) {
+      list.push(i.toString());
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  build() {
+    Stack() {
+      Column() {
+        Row() {
+          Text('Head')
+        }
+
+        Column() {
+          List({ scroller: this.scroller } as ListOptions) {
+            ListItem() {
+              Grid() {
+                GridItem() {
+                  Text('GoodsTypeList1')
+                }
+                .backgroundColor(this.colors[0])
+                .columnStart(0)
+                .columnEnd(1)
+
+                GridItem() {
+                  Text('GoodsTypeList2')
+                }
+                .backgroundColor(this.colors[1])
+                .columnStart(0)
+                .columnEnd(1)
+
+                GridItem() {
+                  Text('GoodsTypeList3')
+                }
+                .backgroundColor(this.colors[2])
+                .columnStart(0)
+                .columnEnd(1)
+
+                GridItem() {
+                  Text('GoodsTypeList4')
+                }
+                .backgroundColor(this.colors[3])
+                .columnStart(0)
+                .columnEnd(1)
+
+                GridItem() {
+                  Text('GoodsTypeList5')
+                }
+                .backgroundColor(this.colors[4])
+                .columnStart(0)
+                .columnEnd(1)
+              }
+              .scrollBar(BarState.Off)
+              .columnsGap(15)
+              .rowsGap(10)
+              .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
+              .columnsTemplate('1fr')
+              .width('100%')
+              .height(200)
+            }
+
+            ListItem() {
+              Grid(this.gridScroller) {
+                LazyForEach(this.numbers, (item: string, index: int) => {
+                  GridItem() {
+                    Text(item)
+                      .fontSize(16)
+                      .backgroundColor(0xF9CF93)
+                      .width('100%')
+                      .height('100%')
+                      .textAlign(TextAlign.Center)
+                  }
+                  .width('100%')
+                  .height(40)
+                  .shadow({ radius: 10, color: '#909399', offsetX: 1, offsetY: 1 } as ShadowOptions)
+                  .borderRadius(10)
+                  .translate({ x: 0, y: this.translateY } as TranslateOptions)
+                // LazyForEach的key生成函数需显式指定返回类型string。
+                }, (item: string, index: int): string => item)
+              }
+              .columnsTemplate('1fr 1fr')
+              .friction(0.3)
+              .columnsGap(15)
+              .rowsGap(10)
+              .scrollBar(BarState.Off)
+              .width('100%')
+              .height('100%')
+              .layoutDirection(GridDirection.Column)
+              .nestedScroll({
+                scrollForward: NestedScrollMode.PARENT_FIRST,
+                scrollBackward: NestedScrollMode.SELF_FIRST
+              } as NestedScrollOptions)
+              .onTouch((event: TouchEvent): void => {
+                if (event.type == TouchType.Down) {
+                  this.listTouchDown = true;
+                } else if (event.type == TouchType.Up) {
+                  this.listTouchDown = false;
+                }
+              })
+            }
+          }
+          .scrollBar(BarState.Off)
+          .edgeEffect(EdgeEffect.None)
+          .onTouch((event: TouchEvent): void => {
+            if (event.type == TouchType.Down) {
+              this.touchDown = true;
+            } else if (event.type == TouchType.Up) {
+              this.touchDown = false;
+            }
+          })
+          .onScrollFrameBegin((offset: double, state: ScrollState): OnScrollFrameBeginHandlerResult => {
+            if (this.scrolling && offset > 0) {
+              let newOffset = this.scroller.currentOffset()!.yOffset;
+              if (newOffset >= 590) {
+                this.gridScroller.scrollBy(0, offset);
+                return { offsetRemain: 0 } as OnScrollFrameBeginHandlerResult;
+              } else if (newOffset + offset > 590) {
+                this.gridScroller.scrollBy(0, newOffset + offset - 590);
+                return { offsetRemain: 590 - newOffset } as OnScrollFrameBeginHandlerResult;
+              }
+            }
+            return { offsetRemain: offset } as OnScrollFrameBeginHandlerResult;
+          })
+          .onScrollStart((): void => {
+            if (this.touchDown && !this.listTouchDown) {
+              this.scrolling = true;
+            }
+          })
+          .onScrollStop((): void => {
+            this.scrolling = false;
+          })
+        }
+        .width('100%')
+        .height('100%')
+        .padding({ left: 10, right: 10 } as Padding)
+      }
+
+      Row() {
+        Text('Top')
+          .width(30)
+          .height(30)
+          .borderRadius(50)
+      }
+      .padding(5)
+      .borderRadius(50)
+      .backgroundColor('#ffffff')
+      .shadow({ radius: 10, color: '#909399', offsetX: 1, offsetY: 1 } as ShadowOptions)
+      .margin({ right: 22, bottom: 15 } as Margin)
+      .onClick((): void => {
+        this.scroller.scrollTo({ xOffset: 0, yOffset: 0 });
+        this.gridScroller.scrollTo({ xOffset: 0, yOffset: 0 });
+      })
+    }
+    .align(Alignment.BottomEnd)
+  }
+}
+```
+
 ![nestedScrollExample4](figures/nestedScrollExample4.gif)
 
 ### 示例5（Grid拖拽场景）
@@ -1978,6 +2510,8 @@ struct GridExample {
 > 预览器窗口不支持显示拖拽跟手。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2052,6 +2586,83 @@ struct GridExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ColumnOptions, Text, Grid, GridItem, LazyForEach, Scroller, ItemDragInfo, TextAlign, Margin, Builder } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridExample {
+  numbers: GridDataSource = new GridDataSource([]);
+  scroller: Scroller = new Scroller();
+  @State text: string = 'drag';
+
+  @Builder pixelMapBuilder() { // 拖拽过程样式
+    Column() {
+      Text(this.text)
+        .fontSize(16)
+        .backgroundColor(0xF9CF93)
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
+    }
+  }
+
+  aboutToAppear(): void {
+    let list: string[] = [];
+    for (let i = 1; i <= 15; i++) {
+      list.push(i + '');
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  changeIndex(index1: int, index2: int): void { // 交换数组位置
+    this.numbers.swapItem(index1, index2);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Grid(this.scroller) {
+        LazyForEach(this.numbers, (item: string, index: int) => {
+          GridItem() {
+            Text(item)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width(80)
+              .height(80)
+              .textAlign(TextAlign.Center)
+          }
+          // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: string, index: int): string => item)
+      }
+      .columnsTemplate('1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .width('90%')
+      .backgroundColor(0xFAEEE0)
+      .height(300)
+      .editMode(true) // 设置Grid是否进入编辑模式，进入编辑模式可以拖拽Grid组件内部GridItem
+      .supportAnimation(true) // 设置支持动画
+      .onItemDragStart((event: ItemDragInfo, itemIndex: int) => { // 第一次拖拽此事件绑定的组件时，触发回调。
+        this.text = this.numbers.getData(itemIndex);
+        return this.pixelMapBuilder(); // 设置拖拽过程中显示的图片。
+      })
+      .onItemDrop((event: ItemDragInfo, itemIndex: int, insertIndex: int, isSuccess: boolean): void => { // 绑定此事件的组件可作为拖拽释放目标，当在本组件范围内停止拖拽行为时，触发回调。
+        // isSuccess=false时，说明drop的位置在grid外部；insertIndex > length时，说明有新增元素的事件发生
+        if (!isSuccess || insertIndex >= this.numbers.totalCount()) {
+          return;
+        }
+        console.info('itemIndex:' + itemIndex + ', insertIndex:' + insertIndex); // itemIndex拖拽起始位置，insertIndex拖拽插入位置
+        this.changeIndex(itemIndex, insertIndex);
+      })
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 示例图：
 
 网格子组件开始拖拽：
@@ -2075,6 +2686,8 @@ struct GridExample {
 [layoutDirection](#layoutdirection8)、[maxCount](#maxcount8)、[minCount](#mincount8)、[cellLength](#celllength8)的使用。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2122,6 +2735,55 @@ struct GridExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Scroll, Column, ColumnOptions, Blank, Text, Grid, GridItem, LazyForEach, Color, GridDirection, Alignment, Margin } from '@ohos.arkui.component';
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridExample {
+  numbers: GridDataSource = new GridDataSource([]);
+
+  aboutToAppear(): void {
+    let list: string[] = [];
+    for (let i = 1; i <= 30; i++) {
+      list.push(i + '');
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  build() {
+    Scroll() {
+      Column({ space: 5 } as ColumnOptions) {
+        Blank()
+        Text('rowsTemplate、columnsTemplate都不设置时，layoutDirection、maxCount、minCount、cellLength才生效')
+          .fontSize(16).fontColor(0x000000).width('90%')
+        Grid() {
+          LazyForEach(this.numbers, (day: string) => {
+            GridItem() {
+              Text(day).fontSize(16).backgroundColor(0xF9CF93)
+            }.width(40).height(80).borderWidth(2).borderColor(Color.Red)
+          // ForEach的key生成函数需显式指定返回类型string。
+          }, (day: string): string => day)
+        }
+        .height(300)
+        .columnsGap(10)
+        .rowsGap(10)
+        .backgroundColor(0xFAEEE0)
+        .maxCount(6)
+        .minCount(2)
+        .cellLength(0)
+        .layoutDirection(GridDirection.Row)
+      }
+      .width('90%').margin({ top: 5, left: 5, right: 5 } as Margin)
+      .align(Alignment.Center)
+    }
+  }
+}
+```
+
 ![cellLength](figures/cellLength.gif)
 
 ### 示例7（双指缩放修改Grid列数）
@@ -2129,6 +2791,8 @@ struct GridExample {
 双指缩放修改Grid列数。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2209,10 +2873,98 @@ struct GridExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ColumnOptions, Row, Text, Grid, GridItem, LazyForEach, BarState, Curve, AnimateParam, PinchGesture, GestureEvent, TextAlign, Margin } from '@ohos.arkui.component';
+import { State, AppStorage } from '@ohos.arkui.stateManagement';
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridExample {
+  numbers: GridDataSource = new GridDataSource([]);
+  @State columns: int = 2;
+
+  aboutToAppear(): void {
+    let lastCount: int | undefined = AppStorage.get<int>('columnsCount');
+    if (lastCount != undefined) {
+      this.columns = lastCount;
+    }
+
+    let list: string[] = [];
+    for (let i = 0; i < 20; i++) {
+      for (let j = 0; j < 20; j++) {
+        list.push(j.toString());
+      }
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Row() {
+        Text('双指缩放改变列数')
+          .height('5%')
+          .margin({ top: 10, left: 20 } as Margin)
+      }
+
+      Grid() {
+        LazyForEach(this.numbers, (day: string, index: int) => {
+          GridItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(80)
+              .textAlign(TextAlign.Center)
+          }
+        // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: string, index: int): string => item)
+      }
+      .columnsTemplate('1fr '.repeat(this.columns))
+      .columnsGap(10)
+      .rowsGap(10)
+      .width('90%')
+      .scrollBar(BarState.Off)
+      .backgroundColor(0xFAEEE0)
+      .height('100%')
+      .cachedCount(3)
+      // 切换列数item位置重排动画
+      .animation({
+        duration: 300,
+        curve: Curve.Smooth
+      } as AnimateParam)
+      .priorityGesture(
+        PinchGesture()
+          .onActionEnd((event: GestureEvent): void => {
+            console.info('end scale:' + event.scale);
+            // 手指分开，减少列数以放大Item，触发阈值可以自定义，示例为2
+            if (event.scale > 2) {
+              this.columns--;
+            } else if (event.scale < 0.6) {
+              this.columns++;
+            }
+            // 可以根据设备屏幕宽度设定最大和最小列数，此处以最小1列最大4列为例
+            if (this.columns > 4) {
+              this.columns = 4;
+            } else if (this.columns < 1) {
+              this.columns = 1;
+            }
+            AppStorage.setOrCreate<int>('columnsCount', this.columns);
+          })
+      )
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![pinch](figures/grid-pinch.gif)
 
 ### 示例8（设置自适应列数）
 属性[columnsTemplate](#columnstemplate)中auto-fill、auto-fit和auto-stretch的使用示例。
+
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -2278,6 +3030,74 @@ struct GridColumnsTemplate {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ColumnOptions, Text, ForEach, Grid, GridItem, Color, BorderOptions } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct GridColumnsTemplate {
+  data: number[] = [0, 1, 2, 3, 4, 5];
+  data1: number[] = [0, 1, 2, 3, 4, 5];
+  data2: number[] = [0, 1, 2, 3, 4, 5];
+
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Text('auto-fill 根据设定的列宽自动计算列数').width('90%')
+      Grid() {
+        ForEach(this.data, (item: number) => {
+          GridItem() {
+            Text('N' + item).height(80)
+          }
+          .backgroundColor(Color.Orange)
+        })
+      }
+      .width('90%')
+      .border({ width: 1, color: Color.Black } as BorderOptions)
+      .columnsTemplate('repeat(auto-fill, 70)')
+      .columnsGap(10)
+      .rowsGap(10)
+      .height(150)
+
+      Text('auto-fit 先根据设定的列宽计算列数，余下的空间会均分到每一列中').width('90%')
+      Grid() {
+        ForEach(this.data1, (item: number) => {
+          GridItem() {
+            Text('N' + item).height(80)
+          }
+          .backgroundColor(Color.Orange)
+        })
+      }
+      .width('90%')
+      .border({ width: 1, color: Color.Black } as BorderOptions)
+      .columnsTemplate('repeat(auto-fit, 70)')
+      .columnsGap(10)
+      .rowsGap(10)
+      .height(150)
+
+      Text('auto-stretch 先根据设定的列宽计算列数，余下的空间会均分到每个列间距中').width('90%')
+      Grid() {
+        ForEach(this.data2, (item: number) => {
+          GridItem() {
+            Text('N' + item).height(80)
+          }
+          .backgroundColor(Color.Orange)
+        })
+      }
+      .width('90%')
+      .border({ width: 1, color: Color.Black } as BorderOptions)
+      .columnsTemplate('repeat(auto-stretch, 70)')
+      .columnsGap(10)
+      .rowsGap(10)
+      .height(150)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ![gridColumnsTemplate](figures/gridColumnsTemplate.png)
 
 ### 示例9（以当前行最高的GridItem的高度为其他GridItem的高度）
@@ -2286,6 +3106,8 @@ struct GridColumnsTemplate {
 在默认情况下，左右两个GridItem的高度可能是不同的；在设置了Grid的[alignItems](#alignitems12)属性为GridItemAlignment.STRETCH后，一行左右两个GridItem中原本高度较小的GridItem会以另一个高度较大的GridItem的高度作为自己的高度。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2314,7 +3136,7 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Grid() {
-        LazyForEach(this.data, (item: number) => {
+        LazyForEach(this.data, (item: string) => {
           // GridItem和Column不设置高度，默认会自适应子组件大小，设置STRETCH的场景下，会变成与当前行最高节点同高。
           // 若设置高度，则会保持已设置的高度，不会与当前行最高节点同高。
           GridItem() {
@@ -2345,12 +3167,76 @@ struct Index {
 }
 
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ColumnOptions, Grid, GridItem, LazyForEach, Text, Color, BarState, Alignment, GridItemAlignment, BorderOptions, Margin } from '@ohos.arkui.component';
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct Index {
+  data: GridDataSource = new GridDataSource([]);
+  items: number[] = [];
+
+  aboutToAppear(): void {
+    let list: string[] = [];
+    for (let i = 0; i < 100; i++) {
+      list.push(i.toString());
+      this.items.push(this.getSize());
+    }
+    this.data= new GridDataSource(list);
+  }
+
+  getSize(): number {
+    let ret = Math.floor(Math.random() * 5);
+    return Math.max(1, ret);
+  }
+
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Grid() {
+        LazyForEach(this.data, (item: string, index: int) => {
+          // GridItem和Column不设置高度，默认会自适应子组件大小，设置STRETCH的场景下，会变成与当前行最高节点同高。
+          // 若设置高度，则会保持已设置的高度，不会与当前行最高节点同高。
+          GridItem() {
+            Column() {
+              Column().height(100).backgroundColor('#D5D5D5').width('100%')
+              // 中间的Text设置flexGrow(1)来自适应填满父组件的空缺
+              Text('这是一段文字。'.repeat(Double.toInt(this.items[index])))
+                .flexGrow(1).width('100%').align(Alignment.TopStart)
+                .backgroundColor('#F7F7F7')
+              Column().height(50).backgroundColor('#707070').width('100%')
+            }
+          }
+          .border({ color: Color.Black, width: 1 } as BorderOptions)
+        // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: string, index: int): string => item)
+      }
+      .columnsGap(10)
+      .rowsGap(5)
+      .columnsTemplate('1fr 1fr')
+      .width('80%')
+      .height('100%')
+      // Grid设置alignItems为STRETCH，以当前行最高的GridItem的高度为其他GridItem的高度。
+      .alignItems(GridItemAlignment.STRETCH)
+      .scrollBar(BarState.Off)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ![gridAlignItems](figures/gridAlignItems.png)
 
 ### 示例10（设置边缘渐隐）
 通过[fadingEdge](ts-container-scrollable-common.md#fadingedge14)属性来设置边缘渐隐效果。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2401,6 +3287,56 @@ struct GridExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ColumnOptions, Text, Grid, GridItem, LazyForEach, Scroller, TextAlign, Margin } from '@ohos.arkui.component';
+import { LengthMetrics } from '@kit.ArkUI';
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridExample {
+  numbers: GridDataSource = new GridDataSource([]);
+  scroller: Scroller = new Scroller();
+
+  aboutToAppear(): void {
+    let list: string[] = [];
+    for (let i = 0; i <= 10; i++) {
+      for (let j = 0; j < 5; j++) {
+        list.push(j.toString());
+      }
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Text('Grid').fontColor(0x000000).fontSize(16).width('90%')
+      Grid(this.scroller) {
+        LazyForEach(this.numbers, (day: string, index: int) => {
+          GridItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(80)
+              .textAlign(TextAlign.Center)
+          }
+        // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: string, index: int): string => item)
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(20)
+      .height('90%')
+      .fadingEdge(true, { fadingEdgeLength: LengthMetrics.vp(80) })
+
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![fadingEdge_grid](figures/fadingEdge_grid.gif)
 
 ### 示例11（单边边缘效果）
@@ -2408,6 +3344,8 @@ struct GridExample {
 该示例通过[edgeEffect](#edgeeffect10)接口，实现了Grid组件设置单边边缘效果。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2457,11 +3395,63 @@ struct GridExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ColumnOptions, Text, Grid, GridItem, LazyForEach, Scroller, TextAlign, EdgeEffect, EffectEdge, Margin } from '@ohos.arkui.component';
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridExample {
+  numbers: GridDataSource = new GridDataSource([]);
+  scroller: Scroller = new Scroller();
+
+  aboutToAppear(): void {
+    let list: string[] = [];
+    for (let i = 0; i <= 10; i++) {
+      for (let j = 0; j < 5; j++) {
+        list.push(j.toString());
+      }
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Grid(this.scroller) {
+        LazyForEach(this.numbers, (day: string, index: int) => {
+          GridItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(80)
+              .textAlign(TextAlign.Center)
+          }
+        // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: string, index: int): string => item)
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(20)
+      .edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true, effectEdge: EffectEdge.START })
+      .width('90%')
+      .backgroundColor(0xDCDCDC)
+      .height('80%')
+
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![edgeEffect_grid](figures/edgeEffect_grid.gif)
 
 ### 示例12（方向键走焦换行模式）
 
 从API version 20开始，该示例通过[focusWrapMode](#focuswrapmode20)接口，实现了Grid组件方向键走焦换行效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -2543,6 +3533,89 @@ struct GridExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Text, Grid, GridItem, Scroller, TextAlign, FocusWrapMode, Margin } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct GridExample {
+  scroller: Scroller = new Scroller();
+  build() {
+    Column() {
+      Grid(this.scroller) {
+        GridItem() {
+          Text('A')
+            .focusable(true)
+            .fontSize(18)
+            .fontWeight(5)
+            .backgroundColor(0xF9CF93)
+            .width('100%')
+            .height(80)
+            .textAlign(TextAlign.Center)
+        }
+        GridItem() {
+          Text('B')
+            .focusable(true)
+            .fontSize(18)
+            .fontWeight(5)
+            .backgroundColor(0xF9CF93)
+            .width('100%')
+            .height(80)
+            .textAlign(TextAlign.Center)
+        }
+        GridItem() {
+          Text('C')
+            .focusable(true)
+            .fontSize(18)
+            .fontWeight(5)
+            .backgroundColor(0xF9CF93)
+            .width('100%')
+            .height(80)
+            .textAlign(TextAlign.Center)
+        }
+        GridItem() {
+          Text('D')
+            .focusable(true)
+            .fontSize(18)
+            .fontWeight(5)
+            .backgroundColor(0xF9CF93)
+            .width('100%')
+            .height(80)
+            .textAlign(TextAlign.Center)
+        }
+        GridItem() {
+          Text('E')
+            .focusable(true)
+            .fontSize(18)
+            .fontWeight(5)
+            .backgroundColor(0xF9CF93)
+            .width('100%')
+            .height(80)
+            .textAlign(TextAlign.Center)
+        }
+        GridItem() {
+          Text('F')
+            .focusable(true)
+            .fontSize(18)
+            .fontWeight(5)
+            .backgroundColor(0xF9CF93)
+            .width('100%')
+            .height(80)
+            .textAlign(TextAlign.Center)
+        }
+      }
+      .focusWrapMode(FocusWrapMode.WRAP_WITH_ARROW)
+      .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(20)
+      .backgroundColor(0xDCDCDC)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![edgeEffect_grid](figures/gridFocus.gif)
 
 ### 示例13（设置滚动事件）
@@ -2550,6 +3623,8 @@ struct GridExample {
 该示例通过[typeNode](../js-apis-arkui-typeNode.md)中的[getEvent('Grid')](../js-apis-arkui-typeNode.md#geteventgrid19)获取[UIGridEvent](#uigridevent19)，并为Grid设置滚动事件回调，用于事件监听方因无法直接修改页面代码而无法使用声明式接口设置回调的场景。
 
 从API version 19开始，新增UIGridEvent接口。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
@@ -2638,11 +3713,107 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Text, Button, Grid, GridItem, ForEach, NodeContainer, FrameNode, UIGridEvent, ScrollState, ScrollSource, TextAlign, OnScrollFrameBeginHandlerResult } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { NodeController, typeNode } from '@kit.ArkUI';
+import { UIContext } from '@ohos.arkui.UIContext';
+
+class MyNodeController extends NodeController {
+  public rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode!.commonAttribute.width(100);
+    return this.rootNode;
+  }
+
+  addCommonEvent(frameNode: FrameNode): void {
+    let gridEvent: UIGridEvent | undefined = typeNode.getGridEvent(frameNode);
+    gridEvent?.setOnWillScroll((scrollOffset: number, scrollState: ScrollState, scrollSource: ScrollSource): void => {
+      console.info(`onWillScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}, scrollSource = ${scrollSource}`);
+    });
+    gridEvent?.setOnDidScroll((scrollOffset: number, scrollState: ScrollState): void => {
+      console.info(`onDidScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}`);
+    });
+    gridEvent?.setOnReachStart((): void => {
+      console.info(`onReachStart`);
+    });
+    gridEvent?.setOnReachEnd((): void => {
+      console.info(`onReachEnd`);
+    });
+    gridEvent?.setOnScrollStart((): void => {
+      console.info(`onScrollStart`);
+    });
+    gridEvent?.setOnScrollStop((): void => {
+      console.info(`onScrollStop`);
+    });
+    gridEvent?.setOnScrollFrameBegin((offset: number, state: ScrollState): OnScrollFrameBeginHandlerResult => {
+      console.info(`onScrollFrameBegin offset = ${offset}, state = ${state}`);
+      return { offsetRemain: offset } as OnScrollFrameBeginHandlerResult;
+    });
+    gridEvent?.setOnScrollIndex((first: int, last: int): void => {
+      console.info(`onScrollIndex start = ${first}, end = ${last}`);
+    });
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State index: number = 0;
+  private myNodeController: MyNodeController = new MyNodeController();
+  numbers: string[] = [];
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < 5; j++) {
+        this.numbers.push(j.toString());
+      }
+    }
+  }
+
+  build() {
+    Column() {
+      Button('add CommonEvent to Grid')
+        .onClick((): void => {
+          this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling()!);
+        })
+      Grid() {
+        ForEach(this.numbers, (day: string, index: int) => {
+          GridItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(80)
+              .textAlign(TextAlign.Center)
+          }
+        // ForEach的key生成函数需显式指定返回类型string。
+        }, (day: string, index: int): string => index.toString() + day)
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .enableScrollInteraction(true)
+      .width('90%')
+      .backgroundColor(0xFAEEE0)
+      .height(300)
+      NodeContainer(this.myNodeController)
+    }.width('100%')
+  }
+}
+```
 ### 示例14（滚动到指定位置）
 
 该示例通过[scrollToIndex](ts-container-scroll.md#scrolltoindex)接口，实现了Grid组件滚动到指定位置。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2698,6 +3869,65 @@ struct GridScrollToIndexSample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ColumnOptions, Text, Button, Grid, GridItem, LazyForEach, Scroller, ScrollAlign, TextAlign, EdgeEffect, BarState, Color, Margin } from '@ohos.arkui.component';
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridScrollToIndexSample {
+  numbers: GridDataSource = new GridDataSource([]);
+  scroller: Scroller = new Scroller();
+  aboutToAppear(): void {
+    let list: string[] = [];
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        list.push((i * 5 + j  + 1).toString());
+      }
+    }
+    this.numbers =  new GridDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('scrollToIndex')
+        .onClick((): void => { // 滚动到对应的位置
+          this.scroller.scrollToIndex(25, true, ScrollAlign.START);
+        })
+      Grid(this.scroller) {
+        LazyForEach(this.numbers, (day: string, index: int) => {
+          GridItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(80)
+              .textAlign(TextAlign.Center)
+          }
+        // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: string, index: int): string => item)
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .friction(0.6)
+      .enableScrollInteraction(true)
+      .supportAnimation(false)
+      .multiSelectable(false)
+      .edgeEffect(EdgeEffect.Spring)
+      .scrollBar(BarState.On)
+      .scrollBarColor(Color.Grey)
+      .scrollBarWidth(4)
+      .width('90%')
+      .backgroundColor(0xFAEEE0)
+      .height(300)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
 ![grid_scrollToIndex](figures/gridScrollToIndex.gif)
 
 
@@ -2706,6 +3936,8 @@ struct GridScrollToIndexSample {
 该示例通过[PanGesture](./ts-basic-gestures-pangesture.md#pangesture-1)接口，实现了Grid组件一边滑动一边选择的效果。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2719,21 +3951,21 @@ enum SlideActionType {
   END
 }
 // 热区
-let HOT_AREA_LENGTH: number;
+let HOT_AREA_LENGTH: number = 0;
 try {
   HOT_AREA_LENGTH =
     Math.round(display.getDefaultDisplaySync().densityDPI * 10 / 25.4 / display.getDefaultDisplaySync().densityPixels);
 } catch (error) {
-  console.info('Failed to get default display for HOT_AREA_LENGTH:', error);
+  console.error('Failed to get default display for HOT_AREA_LENGTH:', error);
 }
 // 滚动曲线: 贝塞尔曲线
 const SLIDE_SELECT_SPEED_CURVE = curves.cubicBezierCurve(0.33, 0, 0.67, 1);
 // 滚动速度: 最大速度
-let AUTO_SPEED_MAX: number;
+let AUTO_SPEED_MAX: number = 0;
 try {
   AUTO_SPEED_MAX = Math.round(2400 / display.getDefaultDisplaySync().densityPixels);
 } catch (error) {
-  console.info('Failed to get default display for AUTO_SPEED_MAX:', error);
+  console.error('Failed to get default display for AUTO_SPEED_MAX:', error);
 }
 @Entry
 @Component
@@ -3003,11 +4235,311 @@ struct GridExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ColumnOptions, Stack, Text, Grid, GridItem, LazyForEach, Scroller, Button, Image, Row, TextAlign, EdgeEffect, BarState, Color, PanDirection, PanGesture, GestureMask, GestureEvent, GestureRecognizer, BaseGestureEvent, FingerInfo, GestureControl, GestureJudgeResult, Edge, Margin, $r } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { GridDataSource } from './GridDataSource';
+import { display } from '@kit.ArkUI';
+import curves from '@ohos.curves';
+
+enum SlideActionType {
+  START,
+  UPDATE,
+  END
+}
+// 热区
+let HOT_AREA_LENGTH: number = 0;
+try {
+  HOT_AREA_LENGTH =
+    Math.round(display.getDefaultDisplaySync().densityDPI * 10 / 25.4 / display.getDefaultDisplaySync().densityPixels);
+} catch (error) {
+  console.error('Failed to get default display for HOT_AREA_LENGTH:', error);
+}
+// 滚动曲线: 贝塞尔曲线
+const SLIDE_SELECT_SPEED_CURVE = curves.cubicBezierCurve(0.33, 0, 0.67, 1);
+// 滚动速度: 最大速度
+let AUTO_SPEED_MAX: number = 0;
+try {
+  AUTO_SPEED_MAX = Math.round(2400 / display.getDefaultDisplaySync().densityPixels);
+} catch (error) {
+  console.error('Failed to get default display for AUTO_SPEED_MAX:', error);
+}
+@Entry
+@Component
+struct GridExample {
+  numbers: GridDataSource = new GridDataSource([]);
+  scroller: Scroller = new Scroller();
+  @State selectedIndexes: Array<string> = new Array<string>();
+  // 滑动多选时，当前变更选中状态的item
+  @State updateIndex: number = -1;
+  @State lastUpdateIndex: number = -1;
+  // 是否可进行滑动多选
+  @State canSlideSelect: boolean = false;
+  @State isAutoScroll: boolean = false;
+  // 停止手势
+  @State stopGesture: boolean = false;
+  private scrollStartIndex: int = 0;
+  private scrollEndIndex: int = 0;
+  // 滑动的初始点位
+  @State startIndex: number = -1;
+  @State endIndex: number = -1;
+  // 滚动部位显示区域的高度
+  @State contentHeight: number = 0;
+  @State areaY: number = 0;
+  // 列表宽度
+  @State listWidth: number = 0;
+  // 滑动过程中是否将经过的点设为选中状态
+  @State setChecked: boolean = false;
+  aboutToAppear(): void {
+    let list: string[] = [];
+    for (let i = 0; i < 20; i++) {
+      for (let j = 0; j < 20; j++) {
+        list.push((20 * i + j + 1).toString());
+      }
+    }
+    this.numbers = new GridDataSource(list);
+  }
+  /**
+   * 获取当前点位
+   * @param finger
+   * @returns
+   */
+  getIndex(finger: FingerInfo): number {
+    // 初始化数据
+    let index = -1;
+    try {
+      index = this.scroller.getItemIndex(finger.localX, finger.localY);
+      if (index === -1) {
+        for (let i = this.scrollStartIndex; i <= this.scrollEndIndex; i++) {
+          const item = this.scroller.getItemRect(i);
+          if (finger.localY < item.y ||
+            finger.localY >= item.y && finger.localY <= item.y + item.height && finger.localX < item.x) {
+            break;
+          }
+          index = i;
+        }
+      }
+    } catch (error) {
+      this.stopGesture = true;
+      return index;
+    }
+    return index;
+  }
+  slideActionStart(index: number): void {
+    if (index < 0) {
+      return;
+    }
+    console.debug('start index: ' + index.toString());
+    const targetIndex = index + 1;
+    this.setChecked = !this.selectedIndexes.includes(targetIndex.toString());
+    this.startIndex = index;
+    this.selectedIndexes.push(targetIndex.toString());
+    this.updateIndex = index;
+
+  }
+  slideActionUpdate(index: number): void {
+    if (!this.canSlideSelect) {
+      return;
+    }
+    if (this.startIndex === -1) {
+      // （初始接触点在空隙）时，重新配置滑动的初始数据
+      this.slideActionStart(index);
+      return;
+    }
+    if (index === -1) {
+      return;
+    }
+
+    this.lastUpdateIndex = this.updateIndex;
+    this.setItemChecked(index);
+    this.updateIndex = index;
+  }
+  setItemChecked(index: number):void {
+    const start = Math.min(this.startIndex, index);
+    const end = Math.max(this.startIndex, index);
+    for (let i = start; i < end+1;i++) {
+      const item = (i+1).toString();
+      if (this.setChecked) {
+        this.selectedIndexes.push(item);
+      } else {
+        if (this.selectedIndexes.includes(item)) {
+          this.selectedIndexes = this.selectedIndexes.filter(selectIndex => selectIndex != item);
+        }
+      }
+
+    }
+  }
+  /**
+   * 滑动结束
+   */
+  slideActionEnd(): void {
+    this.startIndex = -1;
+    this.updateIndex = -1;
+    this.scroller.scrollBy(0, 0);
+    this.isAutoScroll = false;
+  }
+  /**
+   * 自动滚动--
+   * @param finger
+   */
+  autoScroll(finger: FingerInfo): void {
+    // 不可多选
+    if (!this.canSlideSelect) {
+      return;
+    }
+    let pointY = finger.globalY - this.areaY;
+    if (pointY <= HOT_AREA_LENGTH) {
+      if (this.isAutoScroll && pointY <= 0) {
+        return;
+      }
+      const speedFlag = pointY > 0 ? SLIDE_SELECT_SPEED_CURVE
+        .interpolate(1 - pointY / HOT_AREA_LENGTH) : 1;
+      this.scroller.scrollEdge(Edge.Top, {
+        velocity: speedFlag * AUTO_SPEED_MAX
+      });
+      this.isAutoScroll = true;
+    } else if (pointY > this.contentHeight - HOT_AREA_LENGTH) {
+      if (this.isAutoScroll && pointY >= this.contentHeight) {
+        return;
+      }
+      const speedFlag = pointY < this.contentHeight ? SLIDE_SELECT_SPEED_CURVE
+        .interpolate(1 - (this.contentHeight - pointY) / HOT_AREA_LENGTH) : 1;
+      this.scroller.scrollEdge(Edge.Bottom, {
+        velocity: speedFlag * AUTO_SPEED_MAX
+      });
+      this.isAutoScroll = true;
+    } else {
+      if (this.isAutoScroll) {
+        this.scroller.scrollBy(0, 0);
+        this.isAutoScroll = false;
+      }
+    }
+  }
+
+  panGestureAction(type: SlideActionType, event: GestureEvent | undefined): void {
+    if (this.stopGesture || !event) {
+      return;
+    }
+    const finger = event!.fingerList[0];
+    const index = this.getIndex(finger);
+    switch (type) {
+      case SlideActionType.START: {
+        this.slideActionStart(index);
+        break;
+      }
+      case SlideActionType.UPDATE: {
+        this.slideActionUpdate(index);
+        this.autoScroll(finger);
+        break;
+      }
+      case SlideActionType.END: {
+        this.slideActionEnd();
+        break;
+      }
+      default: {
+      }
+    }
+  }
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Grid(this.scroller) {
+        LazyForEach(this.numbers, (day: string, index: int) => {
+          GridItem() {
+            Stack() {
+              Text(day)
+                .fontSize(16)
+                .backgroundColor(0xF9CF93)
+                .width('100%')
+                .height(80)
+                .textAlign(TextAlign.Center)
+              if (this.canSlideSelect) {
+                // $r('app.media.gouxuan')和$r('app.media.weigouxuan')需要替换为开发者所需的图像资源文件。
+                Image(this.selectedIndexes.includes(day) ? $r('app.media.gouxuan') :$r('app.media.weigouxuan'))
+                  .width(30)
+                  .height(30)
+                  .position({right:5,top:5})
+                  .draggable(false)
+              }
+
+            }
+          }
+        // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: string, index: int): string => item)
+      }
+      .columnsTemplate('1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .friction(0.6)
+      .enableScrollInteraction(true)
+      .supportAnimation(false)
+      .multiSelectable(false)
+      .edgeEffect(EdgeEffect.Spring)
+      .scrollBar(BarState.On)
+      .scrollBarColor(Color.Grey)
+      .scrollBarWidth(4)
+      .width('90%')
+      .height('85%')
+      .draggable(!this.canSlideSelect)
+      .backgroundColor(0xFAEEE0)
+      .onAreaChange((oldVal, newVal): void => {
+        this.listWidth = newVal.width as number;
+        this.areaY = newVal.globalPosition.y as number;
+        this.contentHeight = newVal.height as number;
+      })
+      .onScrollIndex((start: int, end: int): void => {
+        this.scrollStartIndex = start;
+        this.scrollEndIndex = end;
+      })
+      .gesture(
+        // 手势滑动
+        PanGesture({ direction: PanDirection.Vertical })
+          .onActionStart((event: GestureEvent | undefined): void => {
+            this.panGestureAction(SlideActionType.START, event);
+          })
+          .onActionUpdate((event: GestureEvent | undefined): void => {
+            this.panGestureAction(SlideActionType.UPDATE, event);
+          })
+          .onActionEnd((event?: GestureEvent): void => {
+            this.panGestureAction(SlideActionType.END, event);
+          }),
+        GestureMask.Normal
+      )
+      .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+        recognizers: Array<GestureRecognizer>): GestureJudgeResult => {
+        if (this.canSlideSelect && current.isBuiltIn() &&
+          current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+          return GestureJudgeResult.REJECT;
+        }
+        return GestureJudgeResult.CONTINUE;
+      })
+      Row() {
+        Button('开始编辑').onClick((): void => {
+          this.selectedIndexes = [];
+          this.canSlideSelect = true;
+        })
+        Button('结束编辑').onClick((): void => {
+          this.canSlideSelect = false;
+          this.selectedIndexes = [];
+        })
+      }
+      .margin({
+        bottom: 30
+      } as Margin)
+      Text(`${this.selectedIndexes.join(',')}`)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![gridScrollWithPanGesture](figures/gridScrollWithPanGesture.gif)
 
 ### 示例16（实现GridItem自定义拖拽）
 
 该示例通过[gesture](./ts-gesture-settings.md#gesture)接口，实现了GridItem组件自定义拖拽效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { curves } from '@kit.ArkUI';
@@ -3018,7 +4550,6 @@ struct GridItemExample {
   @State numbers: number[] = [];
   @State dragItem: number = -1;
   @State scaleItem: number = -1;
-  @State item: number = -1;
   private dragRefOffsetX: number = 0;
   private dragRefOffsetY: number = 0;
   @State offsetX: number = 0;
@@ -3263,13 +4794,282 @@ struct GridItemExample {
                 })
               })
           )
-        }, (item: number) => item.toString())
+        // ForEach的key生成函数需显式指定返回类型string。
+        }, (item: number): string => item.toString())
       }
       .width('90%')
       .editMode(true)
       .scrollBar(BarState.Off)
       .columnsTemplate('1fr 1fr 1fr')
     }.width('100%').height('100%').backgroundColor('#0D182431').padding({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Text, Grid, GridItem, ForEach, TextAlign, Curve, HitTestMode, BarState, GestureGroup, GestureMode, LongPressGesture, PanGesture, PanDirection, GestureEvent, ShadowOptions, TranslateOptions, Margin } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import curves from '@ohos.curves';
+
+@Entry
+@Component
+struct GridItemExample {
+  numbers: number[] = [];
+  @State dragItem: number = -1;
+  @State scaleItem: number = -1;
+  private dragRefOffsetX: number = 0;
+  private dragRefOffsetY: number = 0;
+  @State offsetX: number = 0;
+  @State offsetY: number = 0;
+  private FIX_VP_X: number = 108;
+  private FIX_VP_Y: number = 120;
+
+  aboutToAppear(): void {
+    for (let i = 1; i <= 11; i++) {
+      this.numbers.push(i);
+    }
+  }
+
+  itemMove(index: int, newIndex: int): void {
+    console.info('index:' + index + ' newIndex:' + newIndex);
+    if (!this.isDraggable(newIndex)) {
+      return;
+    }
+    let tmp = this.numbers.splice(index, 1);
+    this.numbers.splice(newIndex, 0, tmp[0]);
+  }
+
+  // 向下滑
+  down(index: int): void {
+    // 指定固定GridItem不响应事件
+    if (!this.isDraggable(index + 3)) {
+      return;
+    }
+    this.offsetY -= this.FIX_VP_Y;
+    this.dragRefOffsetY += this.FIX_VP_Y;
+    this.itemMove(index, index + 3);
+  }
+
+  // 向下滑(右下角为空)
+  down2(index: int): void {
+    if (!this.isDraggable(index + 3)) {
+      return;
+    }
+    this.offsetY -= this.FIX_VP_Y;
+    this.dragRefOffsetY += this.FIX_VP_Y;
+    this.itemMove(index, index + 3);
+  }
+
+  // 向上滑
+  up(index: int): void {
+    if (!this.isDraggable(index - 3)) {
+      return;
+    }
+    this.offsetY += this.FIX_VP_Y;
+    this.dragRefOffsetY -= this.FIX_VP_Y;
+    this.itemMove(index, index - 3);
+  }
+
+  // 向左滑
+  left(index: int): void {
+    if (!this.isDraggable(index - 1)) {
+      return;
+    }
+    this.offsetX += this.FIX_VP_X;
+    this.dragRefOffsetX -= this.FIX_VP_X;
+    this.itemMove(index, index - 1);
+  }
+
+  // 向右滑
+  right(index: int): void {
+    if (!this.isDraggable(index + 1)) {
+      return;
+    }
+    this.offsetX -= this.FIX_VP_X;
+    this.dragRefOffsetX += this.FIX_VP_X;
+    this.itemMove(index, index + 1);
+  }
+
+  // 向右下滑
+  lowerRight(index: int): void {
+    if (!this.isDraggable(index + 4)) {
+      return;
+    }
+    this.offsetX -= this.FIX_VP_X;
+    this.dragRefOffsetX += this.FIX_VP_X;
+    this.offsetY -= this.FIX_VP_Y;
+    this.dragRefOffsetY += this.FIX_VP_Y;
+    this.itemMove(index, index + 4);
+  }
+
+  // 向右上滑
+  upperRight(index: int): void {
+    if (!this.isDraggable(index - 2)) {
+      return;
+    }
+    this.offsetX -= this.FIX_VP_X;
+    this.dragRefOffsetX += this.FIX_VP_X;
+    this.offsetY += this.FIX_VP_Y;
+    this.dragRefOffsetY -= this.FIX_VP_Y;
+    this.itemMove(index, index - 2);
+  }
+
+  // 向左下滑
+  lowerLeft(index: int): void {
+    if (!this.isDraggable(index + 2)) {
+      return;
+    }
+    this.offsetX += this.FIX_VP_X;
+    this.dragRefOffsetX -= this.FIX_VP_X;
+    this.offsetY -= this.FIX_VP_Y;
+    this.dragRefOffsetY += this.FIX_VP_Y;
+    this.itemMove(index, index + 2);
+  }
+
+  // 向左上滑
+  upperLeft(index: int): void {
+    if (!this.isDraggable(index - 4)) {
+      return;
+    }
+    this.offsetX += this.FIX_VP_X;
+    this.dragRefOffsetX -= this.FIX_VP_X;
+    this.offsetY += this.FIX_VP_Y;
+    this.dragRefOffsetY -= this.FIX_VP_Y;
+    this.itemMove(index, index - 4);
+  }
+
+  isDraggable(index: int): boolean {
+    console.info('index:' + index)
+    return index > 1;
+  }
+
+  build() {
+    Column() {
+      Grid() {
+        ForEach(this.numbers, (item: number) => {
+          GridItem() {
+            Text(item + '')
+              .fontSize(16)
+              .width('100%')
+              .textAlign(TextAlign.Center)
+              .height(100)
+              .borderRadius(10)
+              .backgroundColor(0xF9CF93)
+              .shadow(this.scaleItem == item ? {
+                radius: 70,
+                color: '#15000000',
+                offsetX: 0,
+                offsetY: 0
+              } as ShadowOptions : {
+                radius: 0,
+                color: '#15000000',
+                offsetX: 0,
+                offsetY: 0
+              } as ShadowOptions)
+              .animation({ curve: Curve.Sharp, duration: 300 })
+          }
+          // 指定固定GridItem不响应事件
+          .hitTestBehavior(this.isDraggable(this.numbers.indexOf(item)) ? HitTestMode.Default : HitTestMode.None)
+          .scale({ x: this.scaleItem == item ? 1.05 : 1, y: this.scaleItem == item ? 1.05 : 1 })
+          .zIndex(this.dragItem == item ? 1 : 0)
+          .translate(this.dragItem == item ? { x: this.offsetX, y: this.offsetY } as TranslateOptions : { x: 0, y: 0 } as TranslateOptions)
+          .padding(10)
+          .gesture(
+            // 以下组合手势为顺序识别，当长按手势事件未正常触发时则不会触发拖动手势事件
+            GestureGroup(GestureMode.Sequence,
+              LongPressGesture({ repeat: true })
+                .onAction((event?: GestureEvent): void => {
+                  this.getUIContext()?.animateTo({ curve: Curve.Friction, duration: 300 }, () => {
+                    this.scaleItem = item;
+                  })
+                })
+                .onActionEnd((): void => {
+                  this.getUIContext()?.animateTo({ curve: Curve.Friction, duration: 300 }, () => {
+                    this.scaleItem = -1;
+                  })
+                }),
+              PanGesture({ fingers: 1, direction: PanDirection.All, distance: 0 })
+                .onActionStart((): void => {
+                  this.dragItem = item;
+                  this.dragRefOffsetX = 0;
+                  this.dragRefOffsetY = 0;
+                })
+                .onActionUpdate((event: GestureEvent): void => {
+                  this.offsetY = event.offsetY - this.dragRefOffsetY;
+                  this.offsetX = event.offsetX - this.dragRefOffsetX;
+                  this.getUIContext()?.animateTo({ curve: curves.interpolatingSpring(0, 1, 400, 38) }, () => {
+                    let index = this.numbers.indexOf(this.dragItem);
+                    if (this.offsetY >= this.FIX_VP_Y / 2 && (this.offsetX <= 44 && this.offsetX >= -44) &&
+                      ![8, 9, 10].includes(index)) {
+                      // 向下滑
+                      this.down(index);
+                    } else if (this.offsetY <= -this.FIX_VP_Y / 2 && (this.offsetX <= 44 && this.offsetX >= -44) &&
+                      ![0, 1, 2].includes(index)) {
+                      // 向上滑
+                      this.up(index);
+                    } else if (this.offsetX >= this.FIX_VP_X / 2 && (this.offsetY <= 50 && this.offsetY >= -50) &&
+                      ![2, 5, 8, 10].includes(index)) {
+                      // 向右滑
+                      this.right(index);
+                    } else if (this.offsetX <= -this.FIX_VP_X / 2 && (this.offsetY <= 50 && this.offsetY >= -50) &&
+                      ![0, 3, 6, 9].includes(index)) {
+                      // 向左滑
+                      this.left(index);
+                    } else if (this.offsetX >= this.FIX_VP_X / 2 && this.offsetY >= this.FIX_VP_Y / 2 &&
+                      ![2, 5, 7, 8, 9, 10].includes(index)) {
+                      // 向右下滑
+                      this.lowerRight(index);
+                    } else if (this.offsetX >= this.FIX_VP_X / 2 && this.offsetY <= -this.FIX_VP_Y / 2 &&
+                      ![0, 1, 2, 5, 8].includes(index)) {
+                      // 向右上滑
+                      this.upperRight(index);
+                    } else if (this.offsetX <= -this.FIX_VP_X / 2 && this.offsetY >= this.FIX_VP_Y / 2 &&
+                      ![0, 3, 6, 9, 10].includes(index)) {
+                      // 向左下滑
+                      this.lowerLeft(index);
+                    } else if (this.offsetX <= -this.FIX_VP_X / 2 && this.offsetY <= -this.FIX_VP_Y / 2 &&
+                      ![0, 1, 2, 3, 6, 9].includes(index)) {
+                      // 向左上滑
+                      this.upperLeft(index);
+                    } else if (this.offsetX >= this.FIX_VP_X / 2 && this.offsetY >= this.FIX_VP_Y / 2 &&
+                      [7].includes(index)) {
+                      // 向右下滑(右下角为空)
+                      this.down2(index);
+                    }
+                  })
+                })
+                .onActionEnd((): void => {
+                  this.getUIContext()?.animateTo({ curve: curves.interpolatingSpring(0, 1, 400, 38) }, () => {
+                    this.dragItem = -1;
+                  })
+                  this.getUIContext()?.animateTo({
+                    curve: curves.interpolatingSpring(14, 1, 170, 17), delay: 150
+                  }, () => {
+                    this.scaleItem = -1;
+                  })
+                })
+            )
+              .onCancel((): void => {
+                this.getUIContext()?.animateTo({ curve: curves.interpolatingSpring(0, 1, 400, 38) }, () => {
+                  this.dragItem = -1;
+                })
+                this.getUIContext()?.animateTo({
+                  curve: curves.interpolatingSpring(14, 1, 170, 17)
+                }, () => {
+                  this.scaleItem = -1;
+                })
+              })
+          )
+          // ForEach的key生成函数需显式指定返回类型string。
+        }, (item: number): string => item.toString())
+      }
+      .width('90%')
+      .editMode(true)
+      .scrollBar(BarState.Off)
+      .columnsTemplate('1fr 1fr 1fr')
+    }.width('100%').height('100%').backgroundColor('#0D182431').padding({ top: 5 } as Margin)
   }
 }
 ```
@@ -3281,6 +5081,8 @@ struct GridItemExample {
 该示例通过[拖拽事件](./ts-universal-events-drag-drop.md)实现拖拽GridItem到Grid边缘时Grid自动滚动的功能。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -3308,7 +5110,7 @@ struct Example {
   build() {
     Column({ space: 5 }) {
       Grid() {
-        LazyForEach(this.numbers, (item: number, index: number) => {
+        LazyForEach(this.numbers, (item: string, index: number) => {
           GridItem() {
             Text(item + '')
               .fontSize(16)
@@ -3347,11 +5149,83 @@ struct Example {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ColumnOptions, Text, Grid, GridItem, LazyForEach, TextAlign, DragEvent, DragItemInfo } from '@ohos.arkui.component';
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct Example {
+  numbers: GridDataSource = new GridDataSource([]);
+
+  aboutToAppear(): void {
+    let list: string[] = [];
+    for (let index = 0; index < 100; index++) {
+      list.push(index.toString());
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  private dragFromIndex: int = -1;
+
+  changeIndex(index1: int, index2: int): void { // 交换数组位置
+    console.info(index1 + 'index2:' + index2);
+    this.numbers.swapItem(index1, index2);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Grid() {
+        LazyForEach(this.numbers, (item: string, index: int) => {
+          GridItem() {
+            Text(item + '')
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width(80)
+              .height(80)
+              .textAlign(TextAlign.Center)
+          }
+          .width(90)
+          .height(90)
+          .selectable(true)
+          .selected(true)
+          .allowDrop(new Array<string>())
+          .onDragStart((event: DragEvent): DragItemInfo => {
+            this.dragFromIndex = index;
+            return { extraInfo: index + '' };
+          })
+          .onDragEnter((event: DragEvent, extraParams?: string): void => {
+            console.info(index + '' + extraParams);
+          })
+          .onDragEnd((event: DragEvent, extraParams?: string): void => {
+            console.info('onDragEnd' + index + '' + extraParams);
+          })
+          .onDrop((event: DragEvent, extraParams?: string): void => {
+            console.info('drop:' + item + '' + extraParams + JSON.stringify(event!));
+            this.changeIndex(this.dragFromIndex, index);
+          })
+        // ForEach的key生成函数需显式指定返回类型string。
+        }, (item: string, index: int): string => item + '+' + index)
+      }
+      .columnsGap(5)
+      .rowsGap(5)
+      .columnsTemplate('1fr 1fr 1fr')
+      .height(300)
+    }
+    .width('100%')
+  }
+}
+```
+
 ![universal-drag-drop-GridItem](figures/universal-drag-drop-GridItem.gif)
 
 ### 示例18（Grid组件基于断点配置列数）
 
 从API version 22开始，该示例展示了Grid组件支持基于断点配置列数效果。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -3399,6 +5273,54 @@ struct GridExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ColumnOptions, Text, Grid, GridItem, LazyForEach, TextAlign, BarState, PresetFillType, FlexAlign, Margin } from '@ohos.arkui.component';
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridExample {
+  numbers: GridDataSource = new GridDataSource([]);
+
+  aboutToAppear(): void {
+    let list: string[] = [];
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < 5; j++) {
+        list.push(j.toString());
+      }
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Grid(undefined) {
+        LazyForEach(this.numbers, (day: string, index: int) => {
+          GridItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(80)
+              .textAlign(TextAlign.Center)
+          }
+          // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: string, index: int): string => item)
+      }
+      .columnsTemplate({fillType:PresetFillType.BREAKPOINT_SM2MD3LG5})
+      .columnsGap(10)
+      .rowsGap(10)
+      .scrollBar(BarState.Off)
+      .width('100%')
+      .backgroundColor(0xFAEEE0)
+      .height(300)
+    }.width('100%').height('10%').justifyContent(FlexAlign.SpaceBetween)
+  }
+}
+```
 Grid宽度属于sm及更小的断点区间时显示2列。
 
 ![sm_grid](figures/grid_itemFillPolicy_SM.png)
@@ -3416,6 +5338,8 @@ Grid宽度属于lg及更大的断点区间时显示5列。
 从API version 22 开始，该示例实现了获取内容总大小的功能。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -3495,6 +5419,89 @@ struct GridExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ColumnOptions, Row, Text, Button, Grid, GridItem, LazyForEach, Scroller, Color, TextAlign, EdgeEffect, BarState, Margin } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { GridDataSource } from './GridDataSource';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct GridExample {
+  numbers: GridDataSource = new GridDataSource([]);
+  scroller: Scroller = new Scroller();
+  @State contentWidth: number = -1;
+  @State contentHeight: number = -1;
+
+  aboutToAppear(): void {
+    let list: string[] = [];
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 5; j++) {
+        list.push(j.toString());
+      }
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Text('可滚动Grid和LazyForEach')
+      Row() {
+        // 点击按钮来调用contentSize函数获取内容尺寸
+        Button('GetContentSize')
+          .onClick((): void => {
+            // Scroller未绑定组件时会抛异常，需要加上try catch保护
+            try {
+              // 通过调用contentSize函数获取内容尺寸的宽度值
+              this.contentWidth = this.scroller.contentSize().width;
+              // 通过调用contentSize函数获取内容尺寸的高度值
+              this.contentHeight = this.scroller.contentSize().height;
+            } catch (error) {
+              let err: BusinessError = error as BusinessError;
+              console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+            }
+          })
+        // 将获取到的内容尺寸信息通过文本进行呈现
+        Text('Width：' + this.contentWidth + '，Height：' + this.contentHeight)
+          .fontColor(Color.Red)
+          .height(50)
+      }
+
+      Grid(this.scroller) {
+        LazyForEach(this.numbers, (day: string, index: int) => {
+          GridItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(80)
+              .textAlign(TextAlign.Center)
+          }
+          .margin(20)
+          // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: string, index: int): string => item)
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .friction(0.6)
+      .enableScrollInteraction(true)
+      .supportAnimation(false)
+      .multiSelectable(false)
+      .edgeEffect(EdgeEffect.Spring)
+      .scrollBar(BarState.On)
+      .scrollBarColor(Color.Grey)
+      .scrollBarWidth(4)
+      .width('90%')
+      .backgroundColor(0xFAEEE0)
+      .height(300)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
 ![gridContentSize](figures/gridContentSize.gif)
 
 ### 示例20（设置多选聚拢动画）
@@ -3504,6 +5511,8 @@ struct GridExample {
 从API version 23开始，Grid组件新增[editModeOptions](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -3600,6 +5609,91 @@ struct GridExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ColumnOptions, Flex, Text, Grid, GridItem, LazyForEach, Divider, TextAlign, FlexDirection, FlexAlign, ItemAlign, ResponseType, MenuPreviewMode, HapticFeedbackMode, Margin } from '@ohos.arkui.component';
+import { State, Builder } from '@ohos.arkui.stateManagement';
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridExample {
+  numbers: GridDataSource = new GridDataSource(['1', '2', '3', '4', '5', '6', '7', '8', '9']);
+  @State isSelected: Array<boolean> = new Array<boolean>();
+  selectedCount: int = 0;
+
+  onPageShow(): void {
+    let i: number = 0;
+    for (i = 0; i < 9; i++) {
+      this.isSelected.push(false);
+    }
+  }
+
+  @Builder
+  MenuBuilder() {
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      Text('menu item 1')
+        .fontSize(18)
+        .width(120)
+        .height(50)
+        .textAlign(TextAlign.Center)
+      Divider().height(10)
+      Text('menu item 2')
+        .fontSize(18)
+        .width(120)
+        .height(50)
+        .textAlign(TextAlign.Center)
+    }.width(100)
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Text('Grid')
+      Grid() {
+        LazyForEach(this.numbers, (day: string, index: number) => {
+          GridItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .selected(this.isSelected[index])
+          // 设置多选显示效果
+          .opacity(this.isSelected[index] ? 0.4 : 1.0)
+          .bindContextMenu(this.MenuBuilder, ResponseType.LongPress,
+            { preview: MenuPreviewMode.IMAGE, hapticFeedbackMode: HapticFeedbackMode.ENABLED })
+          .onClick((): void => {
+            this.isSelected[index] = !this.isSelected[index];
+            console.info(`item:${index}, this.isSelected[item]:${this.isSelected[index]}`)
+            if (this.isSelected[index]) {
+              ++this.selectedCount;
+            } else {
+              --this.selectedCount;
+            }
+          })
+        // ForEach的key生成函数需显式指定返回类型string。
+        }, (day: string): string => day)
+      }
+      .editModeOptions({
+        enableGatherSelectedItemsAnimation: true, onGetPreviewBadge: (): int => {
+          return this.selectedCount;
+        }
+      })
+      .columnsTemplate('1fr 1fr 1fr')
+      .rowsTemplate('1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .width('90%')
+      .backgroundColor(0xFAEEE0)
+      .height(300)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![gridMultiselectAnimation](figures/gridMultiselectAnimation.gif)
 
 ### 示例21（设置滑动多选）
@@ -3609,6 +5703,8 @@ struct GridExample {
 从API版本26.0.0开始，Grid组件新增[enableEditMode](#enableeditmode)接口和[onEditModeChange](#oneditmodechange)事件。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -3687,7 +5783,7 @@ struct GridExample {
           this.enableEditMode = !this.enableEditMode;
         })
         Button('TwoFinger: ' + this.enableTwoFingerSelect).onClick(() => {
-          this.enableTwoFingerSelect = !this.enableTwoFingerSelect
+          this.enableTwoFingerSelect = !this.enableTwoFingerSelect;
         })
       }
       .margin({
@@ -3698,4 +5794,524 @@ struct GridExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ColumnOptions, Stack, Row, Text, Button, Grid, GridItem, LazyForEach, TextAlign, Margin } from '@ohos.arkui.component';
+import { State, Watch } from '@ohos.arkui.stateManagement';
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridExample {
+  numbers: GridDataSource = new GridDataSource([]);
+  @State @Watch('onEditModeChanged') enableEditMode: boolean = false;
+  @State enableTwoFingerSelect: boolean = false;
+  @State selectedIndexes: Array<number> = new Array<number>();
+
+  onEditModeChanged(propertyName: string): void {
+    console.info(`enableEditMode changed to: ${this.enableEditMode}`);
+    if (!this.enableEditMode) {
+      console.info('enableEditMode changed to false, clearing selectedIndexes');
+      this.selectedIndexes = [];
+    }
+  }
+
+  aboutToAppear(): void {
+    let list: string[] = [];
+    for (let i = 0; i < 20; i++) {
+      for (let j = 0; j < 20; j++) {
+        list.push((20 * i + j + 1).toString());
+      }
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Grid() {
+        LazyForEach(this.numbers, (day: string, index: int) => {
+          GridItem() {
+            Stack() {
+              Text(day)
+                .fontSize(16)
+                .backgroundColor(0xF9CF93)
+                .width('100%')
+                .height(80)
+                .textAlign(TextAlign.Center)
+            }
+          }
+          .selected(this.selectedIndexes.includes(index))
+          .onSelect((isSelected: boolean): void => {
+            console.info('item ' + index.toString() + ' is ' + (isSelected ? 'selected' : 'unselected'));
+            if (isSelected) {
+              this.selectedIndexes.push(index);
+            } else {
+              let deleted = this.selectedIndexes.findIndex((value) => value === index);
+              if (deleted !== -1) {
+                this.selectedIndexes.splice(deleted, 1);
+              }
+            }
+          })
+        // ForEach的key生成函数需显式指定返回类型string。
+        }, (item: string): string => item)
+      }
+      .columnsTemplate('1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .width('90%')
+      .height('50%')
+      .backgroundColor(0xFAEEE0)
+      .enableEditMode(this.enableEditMode!!)
+      .onEditModeChange((data: boolean): void => {
+        // 也可以不使用enableEditMode双向绑定，在此处实现onEditModeChanged中的业务逻辑
+        console.info(`onEditModeChange:${data}`)
+      })
+      .editModeOptions({ useDefaultMultiSelectStyle: true, enableTwoFingerMultiSelect: this.enableTwoFingerSelect })
+
+      Row() {
+        Button('EditMode: ' + this.enableEditMode).onClick((): void => {
+          this.enableEditMode = !this.enableEditMode;
+        })
+        Button('TwoFinger: ' + this.enableTwoFingerSelect).onClick((): void => {
+          this.enableTwoFingerSelect = !this.enableTwoFingerSelect
+        })
+      }
+      .margin({
+        bottom: 30
+      } as Margin)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![grid_two_finger_select](figures/grid_two_finger_select.gif)
+
+### 示例22（使用OnMove进行拖拽）
+
+从API版本26.0.0开始，该示例展示了Grid使用LazyForEach的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口进行拖拽排序的效果，支持拖动到Grid边缘时触发Grid的自动滚动，同时Grid存在跨行跨列节点。
+
+ArkTS-Dyn示例：
+
+```ts
+// RectGridDataSource.ets
+export class Rects {
+  id: number = 0
+  // rectSize表示该GridItem占用的[行, 列]数，默认[1, 1]为规则节点
+  rectSize: [number, number] = [1, 1]
+  constructor(id_: number) {
+    this.id = id_
+  }
+}
+
+// LazyForEach的数据源，实现IDataSource接口，负责管理数据及通知UI刷新
+export class RectGridDataSource implements IDataSource {
+  private list: Array<Rects> = [];
+  private listeners: DataChangeListener[] = [];
+
+  constructor(list: Rects[]) {
+    this.list = list;
+  }
+
+  // 返回数据总数
+  totalCount(): number {
+    return this.list.length;
+  }
+
+  // 根据索引获取对应的数据项
+  getData(index: number): Rects {
+    return this.list[index];
+  }
+
+  // 注册数据变更监听器
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  // 注销数据变更监听器
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 通知控制器数据位置变化
+  notifyDataMove(from: number, to: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    })
+  }
+
+  // 重新加载所有数据
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
+
+  // 将from位置的元素移动到to位置，并通知UI全部重载刷新
+  public moveItem(from: number, to: number): void {
+    let tmp = this.list.splice(from, 1);  // 先移除被拖拽项
+    this.list.splice(to, 0, tmp[0]);      // 将被拖拽项插入到目标位置
+    this.notifyDataReload()
+  }
+}
+```
+
+```ts
+// xxx.ets
+import { RectGridDataSource, Rects } from './RectGridDataSource';
+
+@Entry
+@Component
+struct GridOnMoveExample {
+  numbers: RectGridDataSource = new RectGridDataSource([]);
+
+  // 网格布局选项（实际生效），声明不规则节点的索引及各自占用的行列数
+  @State layoutOptions: GridLayoutOptions = {
+    regularSize: [1, 1],
+    irregularIndexes: [4, 5, 6, 7, 8, 13],   // 设置哪些索引对应的GridItem为不规则节点
+    onGetIrregularSizeByIndex: (index: number) => {
+      return this.numbers.getData(index).rectSize
+    }
+  };
+
+  // 布局选项（备份），用于拖拽时通过整体赋值触发layoutOptions刷新
+  layoutOptions_back: GridLayoutOptions = {
+    regularSize: [1, 1],
+    irregularIndexes: [4, 5, 6, 7, 8, 13],
+    onGetIrregularSizeByIndex: (index: number) => {
+      return this.numbers.getData(index).rectSize
+    }
+  };
+
+  build() {
+    Row() {
+      Grid(undefined, this.layoutOptions) {
+        LazyForEach(this.numbers, (item: Rects) => {
+          GridItem() {
+            Text(item.id.toString())
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              // 设置高度，跨行GridItem需额外增加外边距(规则GridItem的间距为2*10)用于界面对齐
+              .size({ height: 100 * item.rectSize[0] + (item.rectSize[0] - 1) * 20, width: '100%'})
+          }.margin(10)
+          .borderRadius(10)
+          .backgroundColor(0xF9CF93)
+        }, (index: Rects) => index.id.toString())
+          // 当拖拽松手时，被拖拽项落位位置与拖拽前不同时触发，from为起始索引，to为目标索引
+          .onMove((from:number, to:number) => {
+            console.info("Grid onMove from " + from + " to " + to)
+            // 更新数据源
+            this.numbers.moveItem(from, to)
+            if (from < to) {  // 被拖拽项索引小于目标位置索引
+              // 先保存被拖拽项在irregularIndexes数组中的位置，避免后续循环更新产生重复值后indexOf定位错误
+              let from_idx = -1
+              if (this.layoutOptions.irregularIndexes?.includes(from)) {
+                from_idx = this.layoutOptions.irregularIndexes.indexOf(from)
+              }
+
+              // 被拖拽项与目标位置之间的元素整体前移一位（索引-1）
+              if (this.layoutOptions.irregularIndexes != undefined) {
+                let len = this.layoutOptions.irregularIndexes.length
+                for (let i = len - 1; i >= 0; i --) {
+                  let irregularIndex = this.layoutOptions.irregularIndexes[i]
+                  if (irregularIndex > from && irregularIndex <= to) {
+                    this.layoutOptions.irregularIndexes[i] --
+                  }
+                }
+              }
+
+              // 若被拖拽项本身为不规则节点，更新其索引到目标位置
+              if (from_idx != -1 && this.layoutOptions.irregularIndexes != undefined) {
+                this.layoutOptions.irregularIndexes[from_idx] = to
+              }
+            } else {  // 被拖拽项索引大于等于目标位置索引
+              // 先保存被拖拽项在irregularIndexes数组中的位置，避免后续循环更新产生重复值后indexOf定位错误
+              let from_idx = -1
+              if (this.layoutOptions.irregularIndexes?.includes(from)) {
+                from_idx = this.layoutOptions.irregularIndexes.indexOf(from)
+              }
+
+              // 目标位置至被拖拽项之间的元素整体后移一位（索引+1）
+              if (this.layoutOptions.irregularIndexes != undefined) {
+                let len = this.layoutOptions.irregularIndexes.length
+                for (let i = 0; i < len; i ++) {
+                  let irregularIndex = this.layoutOptions.irregularIndexes[i]
+                  if (irregularIndex >= to && irregularIndex < from) {
+                    this.layoutOptions.irregularIndexes[i] ++
+                  }
+                }
+              }
+
+              // 若被拖拽项本身为不规则节点，更新其索引到目标位置
+              if (from_idx != -1 && this.layoutOptions.irregularIndexes != undefined) {
+                this.layoutOptions.irregularIndexes[from_idx] = to
+              }
+            }
+            // 通过备份对象整体赋值，强制layoutOptions刷新生效
+            this.layoutOptions_back.irregularIndexes = this.layoutOptions.irregularIndexes
+            this.layoutOptions = this.layoutOptions_back
+            console.info("Grid this.layoutOptions.irregularIndexes " + this.layoutOptions.irregularIndexes)
+          },
+            {
+              onLongPress: (index: number) => {
+                // GridItem长按浮起时触发
+                console.info('Grid onLongPress: ' + index);
+              },
+              onDrop: (index: number) => {
+                // 拖拽的GridItem松手时触发
+                console.info('Grid onDrop: ' + index);
+              },
+              onDragStart: (index: number) => {
+                // GridItem长按浮起并开始拖拽时触发
+                console.info('Grid onDragStart: ' + index);
+              },
+              onMoveThrough: (from: number, to: number) => {
+                // GridItem拖拽过程中持续触发
+                console.info('Grid onMoveThrough From: ' + from + ' to: ' + to);
+              }
+            })
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr')   // 四列等宽布局
+      .width('100%')
+      .height('100%')
+      .backgroundColor(0xFAEEE0)
+    }
+  }
+
+  aboutToAppear(): void {
+    // 初始化100个矩形数据并设置各不规则节点的跨占尺寸
+    let list: Rects[] = [];
+    for (let i = 0; i < 100; i++) {
+      list.push(new Rects(i));
+    }
+    list[4].rectSize = [2, 2] // 2行2列
+    list[5].rectSize = [1, 2] // 1行2列
+    list[6].rectSize = [1, 2] // 1行2列
+    list[7].rectSize = [2, 1] // 2行1列
+    list[8].rectSize = [2, 1] // 2行1列
+    list[13].rectSize = [1, 4]  // 1行4列
+    this.numbers = new RectGridDataSource(list);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// RectGridDataSource.ets
+import { IDataSource, DataChangeListener } from '@ohos.arkui.component';
+
+export class Rects {
+  id: number = 0;
+  // rectSize表示该GridItem占用的[行, 列]数，默认[1, 1]为规则节点
+  rectSize: [number, number] = [1, 1];
+  constructor(id_: number) {
+    this.id = id_;
+  }
+}
+
+// LazyForEach的数据源，实现IDataSource接口，负责管理数据及通知UI刷新
+export class RectGridDataSource implements IDataSource<Rects> {
+  private list: Array<Rects> = [];
+  private listeners: Array<DataChangeListener> = [];
+
+  constructor(list: Array<Rects>) {
+    this.list = list;
+  }
+
+  // 返回数据总数
+  totalCount(): int {
+    return this.list.length;
+  }
+
+  // 根据索引获取对应的数据项
+  getData(index: int): Rects {
+    return this.list[index];
+  }
+
+  // 注册数据变更监听器
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  // 注销数据变更监听器
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos: int = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 通知控制器数据位置变化
+  notifyDataMove(from: int, to: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    })
+  }
+
+  // 重新加载所有数据
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
+
+  // 将from位置的元素移动到to位置，并通知UI全部重载刷新
+  public moveItem(from: int, to: int): void {
+    let tmp = this.list.splice(from, 1);  // 先移除被拖拽项
+    this.list.splice(to, 0, tmp[0]);      // 将被拖拽项插入到目标位置
+    this.notifyDataReload();
+  }
+}
+```
+
+```ts
+import { Entry, Component, Row, Text, Grid, GridItem, LazyForEach, TextAlign, GridLayoutOptions, Margin } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { RectGridDataSource, Rects } from './RectGridDataSource';
+
+@Entry
+@Component
+struct GridOnMoveExample {
+  numbers: RectGridDataSource = new RectGridDataSource([]);
+
+  // 网格布局选项（实际生效），声明不规则节点的索引及各自占用的行列数
+  @State layoutOptions: GridLayoutOptions = {
+    regularSize: [1, 1],
+    irregularIndexes: [4, 5, 6, 7, 8, 13],   // 设置哪些索引对应的GridItem为不规则节点
+    onGetIrregularSizeByIndex: (index: int): [int, int] => {
+      let rectSize = this.numbers.getData(index).rectSize;
+      return [rectSize[0].toInt(), rectSize[1].toInt()];
+    }
+  } as GridLayoutOptions;
+
+  // 布局选项（备份），用于拖拽时通过整体赋值触发layoutOptions刷新
+  layoutOptions_back: GridLayoutOptions = {
+    regularSize: [1, 1],
+    irregularIndexes: [4, 5, 6, 7, 8, 13],
+    onGetIrregularSizeByIndex: (index: int): [int, int] => {
+      let rectSize = this.numbers.getData(index).rectSize;
+      return [rectSize[0].toInt(), rectSize[1].toInt()];
+    }
+  } as GridLayoutOptions;
+
+  build() {
+    Row() {
+      Grid(undefined, this.layoutOptions) {
+        LazyForEach(this.numbers, (item: Rects) => {
+          GridItem() {
+            Text(item.id.toString())
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              // 设置高度，跨行GridItem需额外增加外边距(规则GridItem的间距为2*10)用于界面对齐
+              .size({ height: 100 * item.rectSize[0] + (item.rectSize[0] - 1) * 20, width: '100%'})
+          }.margin(10)
+          .borderRadius(10)
+          .backgroundColor(0xF9CF93)
+        // ForEach的key生成函数需显式指定返回类型string。
+        }, (index: Rects): string => index.id.toString())
+          // 当拖拽松手时，被拖拽项落位位置与拖拽前不同时触发，from为起始索引，to为目标索引
+          .onMove((from: int, to: int): void => {
+            console.info("Grid onMove from " + from + " to " + to)
+            // 更新数据源
+            this.numbers.moveItem(from, to)
+            let irregularIndexes = this.layoutOptions.irregularIndexes;
+            if (irregularIndexes != undefined) {
+              if (from < to) {  // 被拖拽项索引小于目标位置索引
+                // 先保存被拖拽项在irregularIndexes数组中的位置，避免后续循环更新产生重复值后indexOf定位错误
+                let from_idx = -1
+                if (irregularIndexes.includes(from)) {
+                  from_idx = irregularIndexes.indexOf(from)
+                }
+
+                // 被拖拽项与目标位置之间的元素整体前移一位（索引-1）
+                let len = irregularIndexes.length
+                for (let i = len - 1; i >= 0; i --) {
+                  let irregularIndex = irregularIndexes[i]
+                  if (irregularIndex > from && irregularIndex <= to) {
+                    irregularIndexes[i] --
+                  }
+                }
+
+                // 若被拖拽项本身为不规则节点，更新其索引到目标位置
+                if (from_idx != -1) {
+                  irregularIndexes[from_idx] = to
+                }
+              } else {  // 被拖拽项索引大于等于目标位置索引
+                // 先保存被拖拽项在irregularIndexes数组中的位置，避免后续循环更新产生重复值后indexOf定位错误
+                let from_idx = -1
+                if (irregularIndexes.includes(from)) {
+                  from_idx = irregularIndexes.indexOf(from)
+                }
+
+                // 目标位置至被拖拽项之间的元素整体后移一位（索引+1）
+                let len = irregularIndexes.length
+                for (let i = 0; i < len; i ++) {
+                  let irregularIndex = irregularIndexes[i]
+                  if (irregularIndex >= to && irregularIndex < from) {
+                    irregularIndexes[i] ++
+                  }
+                }
+
+                // 若被拖拽项本身为不规则节点，更新其索引到目标位置
+                if (from_idx != -1) {
+                  irregularIndexes[from_idx] = to
+                }
+              }
+            }
+            // 通过备份对象整体赋值，强制layoutOptions刷新生效
+            this.layoutOptions_back.irregularIndexes = irregularIndexes
+            this.layoutOptions = this.layoutOptions_back
+            console.info("Grid this.layoutOptions.irregularIndexes " + this.layoutOptions.irregularIndexes)
+          },
+            {
+              onLongPress: (index: int): void => {
+                // GridItem长按浮起时触发
+                console.info('Grid onLongPress: ' + index);
+              },
+              onDrop: (index: int): void => {
+                // 拖拽的GridItem松手时触发
+                console.info('Grid onDrop: ' + index);
+              },
+              onDragStart: (index: int): void => {
+                // GridItem长按浮起并开始拖拽时触发
+                console.info('Grid onDragStart: ' + index);
+              },
+              onMoveThrough: (from: int, to: int): void => {
+                // GridItem拖拽过程中持续触发
+                console.info('Grid onMoveThrough From: ' + from + ' to ' + to);
+              }
+            })
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr')   // 四列等宽布局
+      .width('100%')
+      .height('100%')
+      .backgroundColor(0xFAEEE0)
+    }
+  }
+
+  aboutToAppear(): void {
+    // 初始化100个矩形数据并设置各不规则节点的跨占尺寸
+    let list: Rects[] = [];
+    for (let i = 0; i < 100; i++) {
+      list.push(new Rects(i));
+    }
+    list[4].rectSize = [2, 2] // 2行2列
+    list[5].rectSize = [1, 2] // 1行2列
+    list[6].rectSize = [1, 2] // 1行2列
+    list[7].rectSize = [2, 1] // 2行1列
+    list[8].rectSize = [2, 1] // 2行1列
+    list[13].rectSize = [1, 4]  // 1行4列
+    this.numbers = new RectGridDataSource(list);
+  }
+}
+```
+
+![grid-onmove-drag](figures/grid-onmove-drag.gif)

@@ -7,7 +7,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-\@Watch应用于对状态变量的监听。如果开发者需要关注某个状态变量的值是否改变，可以使用\@Watch为状态变量设置回调函数。
+[\@Watch](../../reference/apis-arkui/arkui-ts/ts-state-management-watch.md#watch)应用于对状态变量的监听。如果开发者需要关注某个状态变量的值是否改变，可以使用\@Watch为状态变量设置回调函数。
 
 
 \@Watch提供了状态变量的监听能力，\@Watch仅能监听到可以观察到的变化。
@@ -29,7 +29,7 @@
 
 | \@Watch补充变量装饰器 | 说明                                       |
 | -------------- | ---------------------------------------- |
-| 装饰器参数          | 必填。常量字符串，字符串需要有引号。是(string)&nbsp;=&gt;&nbsp;void自定义成员函数的方法的引用。 |
+| 装饰器参数          | 必填。常量字符串，字符串需要有引号。是(string)&nbsp;=&gt;&nbsp;void&nbsp;自定义成员函数的方法的引用。 |
 | 可装饰的自定义组件变量    | 可监听所有装饰器装饰的状态变量。不允许监听常规变量。               |
 | 装饰器的顺序         | 装饰器顺序不影响实际功能，开发者可以根据自己的需要决定装饰器顺序的先后。建议[\@State](./arkts-state.md)、[\@Prop](./arkts-prop.md)、[\@Link](./arkts-link.md)等装饰器在\@Watch装饰器之前，以保持整体风格的一致。 |
 | \@Watch触发时机 | 使用\@Watch来监听状态变量变化时，回调触发时间是变量真正变化、被赋值的时间。详细示例请参考使用场景中的[@Watch的触发时机](#watch的触发时机)。 |
@@ -38,7 +38,7 @@
 
 | 类型                                       | 说明                                       |
 | ---------------------------------------- | ---------------------------------------- |
-| (changedPropertyName?&nbsp;:&nbsp;string)&nbsp;=&gt;&nbsp;void | 该函数是自定义组件的成员函数，changedPropertyName是被watch的属性名。<br/>在多个状态变量绑定同一个\@Watch的回调方法的时候，可以通过changedPropertyName进行不同的逻辑处理<br/>将属性名作为字符串输入参数，不返回任何内容。 |
+| (changedPropertyName?&nbsp;:&nbsp;string)&nbsp;=&gt;&nbsp;void | 该函数是自定义组件的成员函数，changedPropertyName是被监听的属性名。<br/>在多个状态变量绑定同一个\@Watch的回调方法的时候，可以通过changedPropertyName进行不同的逻辑处理<br/>将属性名作为字符串输入参数，不返回任何内容。 |
 
 
 ## 观察变化和行为表现
@@ -58,7 +58,7 @@
 
 - 开发者应关注性能，属性值更新函数会延迟组件的重新渲染（具体请见上面的行为表现），因此，回调函数应仅执行快速运算；
 
-- 不建议在\@Watch函数中调用[async await](../../arkts-utils/async-concurrency-overview.md)，因为\@Watch设计的用途是为了快速的计算，异步行为可能会导致重新渲染速度的性能问题。
+- 不建议在\@Watch函数中调用async/await，因为\@Watch设计的用途是为了快速的计算，异步行为可能会导致重新渲染速度的性能问题。
 
 - \@Watch参数为必选，且参数类型必须是string，否则编译期会报错。不建议开发者传入undefined，传入后编译不会报错，相当于传入“undefined”。
 
@@ -114,7 +114,7 @@ change() {
 以下示例展示组件更新和\@Watch的处理步骤。count在CountModifier中由\@State装饰，在TotalView中由\@Prop装饰。
 
 
-<!-- @[count_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/CountModifier.ets) -->
+<!-- @[count_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/CountModifier.ets) --> 
 
 ``` TypeScript
 @Component
@@ -129,6 +129,8 @@ struct TotalView {
 
   build() {
     Text(`Total: ${this.total}`)
+      .fontSize(20)
+      .margin(10)
   }
 }
 
@@ -140,14 +142,19 @@ struct CountModifier {
   build() {
     Column() {
       Button('add to basket')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.count++;
         })
       TotalView({ count: this.count })
     }
+    .width('100%')
   }
 }
 ```
+
+![watch-count-modifier](figures/watch-count-modifier.gif)
 
 处理步骤：
 
@@ -163,7 +170,7 @@ struct CountModifier {
 以下示例说明了如何在子组件中观察\@Link变量。
 
 
-<!-- @[basket_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/BasketModifier.ets) -->
+<!-- @[basket_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/BasketModifier.ets) --> 
 
 ``` TypeScript
 class PurchaseItem {
@@ -232,7 +239,7 @@ struct BasketModifier {
 
 2. \@Link装饰的BasketViewer shopBasket值发生变化；
 
-3. 状态管理框架调用\@Watch函数BasketViewer onBasketUpdated 更新BasketViewer TotalPurchase的值；
+3. 状态管理框架调用\@Watch函数BasketViewer onBasketUpdated 更新BasketViewer totalPurchase的值；
 
 4. \@Link shopBasket的改变，新增了数组项，ForEach组件会执行item Builder，渲染构建新的Item项；\@State totalPurchase改变，对应的Text组件也重新渲染；重新渲染是异步发生的。
 
@@ -242,9 +249,9 @@ struct BasketModifier {
 
 ### \@Watch的触发时机
 
-为了展示\@Watch回调触发时间是根据状态变量真正变化的时间，本示例在子组件中同时使用\@Link和[\@ObjectLink](./arkts-observed-and-objectlink.md)装饰器，分别观察不同的状态对象。通过在父组件中更改状态变量并观察\@Watch回调的先后顺序，来表明@Watch触发的时机与赋值、同步的关系。
+为了展示\@Watch回调触发时间是根据状态变量真正变化的时间，本示例在子组件中同时使用\@Link和[\@ObjectLink](./arkts-observed-and-objectlink.md)装饰器，分别观察不同的状态对象。通过在父组件中更改状态变量并观察\@Watch回调的先后顺序，来表明\@Watch触发的时机与赋值、同步的关系。
 
-<!-- @[parent_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/ParentComponent.ets) -->
+<!-- @[parent_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/ParentComponent.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -292,19 +299,26 @@ struct ParentComponent {
         .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
         this.getUIContext()
           .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text8').id)}`)
+        .fontSize(20)
+        .margin(10)
       Text(`${this.type2} ${this.taskB.isFinished ? this.getUIContext()
         .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
         this.getUIContext()
           .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text8').id)}`)
+        .fontSize(20)
+        .margin(10)
       ChildComponent({ taskA: this.taskA, taskB: this.taskB })
       // 请将$r('app.string.watch_text9')替换为实际资源文件，在本示例中该资源文件的value值为"切换任务状态"
       Button(this.getUIContext()
         .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text9').id))
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.taskB = new Task(!this.taskB.isFinished);
           this.taskA = new Task(!this.taskA.isFinished);
         })
     }
+    .width('100%')
   }
 }
 
@@ -338,14 +352,21 @@ struct ChildComponent {
         .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
         this.getUIContext()
           .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text8').id)}`)
+        .fontSize(20)
+        .margin(10)
       Text(`${this.type2} ${this.taskB.isFinished ? this.getUIContext()
         .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
         this.getUIContext()
           .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text8').id)}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![watch-parent-component](figures/watch-parent-component.gif)
 
 处理步骤如下：
 
@@ -361,14 +382,14 @@ struct ChildComponent {
 
 3. 通过日志可以看到，父组件的回调顺序和修改顺序一致，而子组件中\@Link和\@ObjectLink的回调触发顺序与父组件中变量更新的顺序不同。这是因为父组件的变量更新是即时的，但子组件中\@Link和\@ObjectLink获取更新数据的时机不同。\@Link的状态更新是同步的，状态变化会立刻触发\@Watch回调。而\@ObjectLink的更新依赖于父组件的同步，当父组件刷新并将更新后的变量传递给子组件时，\@Watch回调才会触发，因此触发顺序略晚于\@Link。
 
-4. 这是符合预期的行为，展示了\@Watch回调的触发时机是根据状态变量真正变化的时间。因为\@Link直接同步，而\@ObjectLink需要等父组件更新子组件变量。类似地，\@Prop也可能表现出与\@ObjectLink类似的行为，其回调触发时间也会略晚。
+4. 这是符合预期的行为，展示了\@Watch回调的触发时机是根据状态变量真正变化的时间。因为\@Link直接同步，而\@ObjectLink需要等父组件更新子组件变量。类似地，当父组件的数据源变化时，\@Prop也会表现出与\@ObjectLink类似的行为，其回调触发时间也会略晚。
 
 ### 使用changedPropertyName进行不同的逻辑处理
 
 以下示例说明了如何在\@Watch函数中使用changedPropertyName进行不同的逻辑处理。
 
 
-<!-- @[use_property_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/UsePropertyName.ets) -->
+<!-- @[use_property_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/UsePropertyName.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -387,21 +408,34 @@ struct UsePropertyName {
 
   build() {
     Column() {
-      Text(`Number of apples: ${this.apple.toString()}`).fontSize(30)
-      Text(`Number of cabbages: ${this.cabbage.toString()}`).fontSize(30)
-      Text(`Total number of fruits: ${this.fruit.toString()}`).fontSize(30)
+      Text(`Number of apples: ${this.apple.toString()}`)
+        .fontSize(30)
+        .margin(10)
+      Text(`Number of cabbages: ${this.cabbage.toString()}`)
+        .fontSize(30)
+        .margin(10)
+      Text(`Total number of fruits: ${this.fruit.toString()}`)
+        .fontSize(30)
+        .margin(10)
       Button('Add apples')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.apple++;
         })
       Button('Add cabbages')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.cabbage++;
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![watch-use-property-name](figures/watch-use-property-name.gif)
 
 处理步骤如下：
 

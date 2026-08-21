@@ -5,7 +5,9 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-AbilityRunningInfo是记录Ability运行信息和状态的数据结构，通过[getAbilityRunningInfos](js-apis-app-ability-abilityManager.md#abilitymanagergetabilityrunninginfos14)方法获取。
+
+AbilityRunningInfo是记录Ability运行信息和状态的数据结构，包含Ability的标识信息、进程信息、启动时间和当前状态等。通过[getAbilityRunningInfos](js-apis-app-ability-abilityManager.md#abilitymanagergetabilityrunninginfos14)方法获取。
+
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
@@ -32,7 +34,7 @@ import { abilityManager } from '@kit.AbilityKit';
 | pid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 进程ID。 |
 | uid | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 所属应用程序的UID。  |
 | processName | string | 否 | 否 | 进程的名称。  |
-| startTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | Ability的启动时间。 |
+| startTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | Ability的启动时间，单位：ms。 |
 | abilityState | [abilityManager.AbilityState](js-apis-app-ability-abilityManager.md#abilitystate14) | 否 | 否 | Ability的状态。  |
 
 **示例：**
@@ -42,6 +44,7 @@ import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 获取Ability运行信息
   abilityManager.getAbilityRunningInfos()
     .then((data: abilityManager.AbilityRunningInfo[]) => {
       for (let i = 0; i < data.length; i++) {
@@ -53,10 +56,11 @@ try {
       let code = (err as BusinessError).code;
       let msg = (err as BusinessError).message;
       console.error(`getAbilityRunningInfos fail, error code: ${code}, error msg: ${msg}`);
-    })
-} catch (e) {
-  let code = (e as BusinessError).code;
-  let msg = (e as BusinessError).message;
+    });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  // 处理获取Ability运行信息失败的情况
   console.error(`getAbilityRunningInfos fail, error code: ${code}, error msg: ${msg}`);
 }
 ```

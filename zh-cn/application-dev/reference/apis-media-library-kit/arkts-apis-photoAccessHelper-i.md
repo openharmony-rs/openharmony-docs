@@ -172,6 +172,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | uri       | string  | 否 | 否 | 媒体文件资源uri。 |
 | mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否  | 媒体资产的类型（图片/视频）。 |
 | albumUri  | string  | 否 | 否 | 媒体资产（图片/视频）所属相册的uri。  |
+| isFavorite | boolean  | 否 | 否 | 表示媒体资产（图片/视频）的收藏状态。true表示资产已收藏，false表示资产未收藏。<br>**起始版本：** 26.0.0   |
 
 ## PhotoAssetChangeData<sup>20+</sup>
 

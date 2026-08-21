@@ -13,7 +13,7 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 
 ## 导入模块
@@ -70,10 +70,10 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置红外载波频率及红外电平信号模式
+            // 设置红外频率及红外电平信号模式
             infraredEmitter.transmitInfrared(38000, [100, 200, 300, 400]);
           } catch (error) {
-            console.error(`Failed to set infrared frequencies, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            console.error(`Failed to transmit infrared signal, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -111,7 +111,7 @@ struct Index {
 
 getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
-查询设备支持的红外信号的频率范围。
+查询设备支持的红外信号的频率范围。建议先使用[hasIrEmitter](#infraredemitterhasiremitter23)接口查询设备是否支持红外发射器。
 
 **需要权限**：ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
@@ -190,7 +190,7 @@ struct Index {
 }
 ```
 
-##  InfraredFrequency
+## InfraredFrequency
 
 红外信号的频率范围。
 
@@ -252,8 +252,8 @@ struct Index {
             // 查询是否有红外发射器
             infraredEmitter.hasIrEmitter().then((result: boolean) => {
               console.info(`Succeeded in querying infrared emitter: ${JSON.stringify(result)}.`);
-            }).catch((error: BusinessError)=> {
-              console.error(`Failed to query infrared emitter, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);})
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to query infrared emitter, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`)})
         })
     }
   }

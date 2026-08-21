@@ -12,7 +12,7 @@ typedef struct OH_PixelmapNative
 
 ## 概述
 
-定义像素图片信息。
+定义像素图信息。
 
 **起始版本：** 15
 

@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-描述应用的包信息。
+NotificationCommonDef中定义了通知相关接口中使用的通用数据结构。
 
 > **说明：**
 >
@@ -25,8 +25,8 @@
 
 | 名称   | 类型   | 只读 | 可选 | 说明   |
 | ------ | ------ | ----| -- |  ------ |
-| bundle | string | 否  | 否 | 应用程序的包名。 |
-| uid    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 是 | 应用程序的UID。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)获取，默认为0。 应用分身<!--Del-->或车机<!--DelEnd-->场景下，此参数为必填项。|
+| bundle | string | 否  | 否 | 应用的包名。 |
+| uid    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 是 | 应用的UID。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)获取，默认为0。 应用分身<!--Del-->或车机<!--DelEnd-->场景下，此参数为必填项。|
 
 ## GrantedBundleInfo<sup>22+</sup>
 
@@ -40,9 +40,9 @@
 
 | 名称   | 类型   | 只读 | 可选 | 说明   |
 | ------ | ------ | ----| -- |  ------ |
-| bundleName | string | 否  | 否 | 应用程序的包名。 |
-| appIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是  | 否 | 应用包的分身索引标识，仅在分身应用中生效。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中appIndex获取。 |
-| appName    | string | 是  | 是 | 标识应用的名称。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中label获取。 |
+| bundleName | string | 否  | 否 | 应用的包名。 |
+| appIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是  | 否 | 应用的分身索引标识，仅在分身应用中生效。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中appIndex获取。 |
+| appName    | string | 是  | 是 | 应用的名称。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中label获取。 |
 
 ## UserGrantSetting
 

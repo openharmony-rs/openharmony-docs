@@ -62,7 +62,7 @@ Failed to connect to the service.
 
 **处理步骤**
 
-重启系统。
+等待一段时间后重试，或检查通知服务运行状态，必要时重启通知服务。
 
 ## 1600004 通知开关关闭
 
@@ -80,7 +80,7 @@ Notification disabled.
 
 **处理步骤**
 
-通知设置里开启应用通知开关。
+[通知设置](../../notification/notification-glossary.md#notification-setting通知设置)里开启应用通知开关。
 
 ## 1600005 通知渠道关闭
 
@@ -90,7 +90,7 @@ Notification slot disabled.
 
 **错误描述**
 
-当通知渠道关闭时，方法将返回该错误码。
+当[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)关闭时，方法将返回该错误码。
 
 **可能原因**
 
@@ -98,9 +98,9 @@ Notification slot disabled.
 
 **处理步骤**
 
-1、通知设置里查看应用是否有该类型渠道，没有需要新增。
+1. [通知设置](../../notification/notification-glossary.md#notification-setting通知设置)里查看应用是否有该类型渠道，没有需要新增。
 
-2、通知设置里查看应用该类型渠道状态，要保持开启状态。
+2. 通知设置里查看应用该类型渠道状态，要保持开启状态。
 
 <!--Del-->
 ## 1600006 通知删除失败
@@ -111,7 +111,7 @@ Notification deletion disabled.
 
 **错误描述**
 
-通知设置了禁止删除属性，方法将返回该错误码。
+[通知设置](../../notification/notification-glossary.md#notification-setting通知设置)了禁止删除属性，方法将返回该错误码。
 
 **可能原因**
 
@@ -156,7 +156,7 @@ The user does not exist.
 
 **处理步骤**
 
-检查传入的用户信息。
+确认传入的用户信息是否正确。
 
 ## 1600009 通知发布频度超过限制
 
@@ -226,9 +226,9 @@ No memory space.
 
 **可能原因**
 
-内存空间不足。
+1. 内存空间不足。
 
-内存申请出现错误。
+2. 内存申请出现错误。
 
 **处理步骤**
 
@@ -257,19 +257,27 @@ A notification dialog box is already displayed.
 
 **错误信息**
 
-No permission.
+1. No permission.
+
+2. The right of liveView is not enabled.
 
 **错误描述**
 
-没有相关权限，方法将返回该错误码。
+1. 没有相关权限，方法将返回该错误码。
+
+2. 当应用发布三方实况类型通知，且未申请实况窗权益时，将返回该错误码。
 
 **可能原因**
 
-没有相关权限。
+1. 没有相关权限。
+
+2. 应用未申请对应场景的权益。
 
 **处理步骤**
 
-确认是否具有相关权限。
+1. 确认是否具有相关权限。
+
+2. 请确认是否申请实况窗权益。
 
 ## 1600015 当前通知状态不支持重复配置
 
@@ -335,7 +343,7 @@ The notification settings window is already displayed.
 
 **错误描述**
 
-通知设置页面已经拉起，方法将返回该错误码。
+[通知设置](../../notification/notification-glossary.md#notification-setting通知设置)页面已经拉起，方法将返回该错误码。
 
 **可能原因**
 
@@ -392,7 +400,7 @@ Distributed operation timed out.
 
 **错误描述**
 
-调用通知的跨设备协同接口（例如通知跨设备点击跳转、通知跨设备快捷回复等），跨设备通信超时，将返回该错误码。
+调用通知的[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)接口（例如通知跨设备点击跳转、通知跨设备快捷回复等），跨设备通信超时，将返回该错误码。
 
 **可能原因**
 
@@ -423,7 +431,7 @@ The specified bundle is invalid.
 检查包信息是否正确。
 <!--DelEnd-->
 
-## 1600023 app NotificationSubscriberExtensionAbility未实现
+## 1600023 应用未实现NotificationSubscriberExtensionAbility
 
 **错误信息**
 
@@ -431,7 +439,7 @@ The application does not implement the NotificationSubscriberExtensionAbility.
 
 **错误描述**
 
-应用未实现NotificationSubscriberExtensionAbility。
+应用未实现NotificationSubscriberExtensionAbility，将返回该错误码。
 
 **可能原因**
 
@@ -450,7 +458,7 @@ The specified bundle has no custom ringtone information.
 
 **错误描述**
 
-指定的应用未配置自定义铃声信息，将返回该错误码。
+指定的应用未配置[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)信息，将返回该错误码。
 
 **可能原因**
 
@@ -470,7 +478,7 @@ Geofencing disabled.
 
 **错误描述**
 
-当地理围栏开关为关闭状态时，方法将返回该错误码。
+当[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)开关为关闭状态时，方法将返回该错误码。
 
 **可能原因**
 
@@ -478,7 +486,7 @@ Geofencing disabled.
 
 **处理步骤**
 
-需要用户在通知设置里开启地理围栏开关。
+需要用户在[通知设置](../../notification/notification-glossary.md#notification-setting通知设置)里开启地理围栏开关。
 <!--DelEnd-->
 
 <!--Del-->
@@ -490,7 +498,7 @@ The location switch is off.
 
 **错误描述**
 
-位置功能的开关未开启导致注册地理围栏失败。
+位置功能的开关未开启导致注册[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)失败。
 
 **可能原因**
 
@@ -510,7 +518,7 @@ The "Awareness & suggestions" switch of the location-based service is off.
 
 **错误描述**
 
-位置系统服务的“感知与提醒”开关关闭，导致注册地理围栏失败。
+位置系统服务的“感知与提醒”开关关闭，导致注册[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)失败。
 
 **可能原因**
 
@@ -534,9 +542,27 @@ This notification is not supported.
 
 **可能原因**
 
-设置稍后提醒时，该通知类型为三方实况、系统实况或者其他无法删除的类型。
+设置[稍后提醒](../../notification/notification-glossary.md#notification-snooze稍后提醒)时，该通知类型为三方实况、系统实况或者其他无法删除的类型。
 
 **处理步骤**
 
 设置稍后提醒时，检查该通知类型是否为三方实况、系统实况或者其他无法删除的类型。
 <!--DelEnd-->
+
+## 1600029 系统无法找到实况窗卡片自定义扩展区的ExtensionAbility
+
+**错误信息**
+
+The system failed to find the ExtensionAbility instance for the custom Live View widget template.
+
+**错误描述**
+
+当应用发布三方实况类型通知时，系统未找到自定义扩展区的ExtensionAbility实例，方法将返回该错误码。
+
+**可能原因**
+
+应用未配置或未正确配置实况窗卡片自定义扩展区的ExtensionAbility。
+
+**处理步骤**
+
+检查应用是否正确配置实况窗卡片自定义扩展区的ExtensionAbility。

@@ -23,22 +23,25 @@ Invalid Parameter. Error message: messageInfo.
 
 **可能原因**
 
-1. tokenId值为0。
-2. 指定的权限名为空或者权限名长度大于256。
-3. 请求授权/撤销权限的flag取值非法。
-4. 注册监听的参数检查错误。
-5. 指定的Context不属于当前应用。
-6. 请求的权限不属于同一个权限组。
-7. 请求的权限中存在应用未声明的权限。
-8. 请求的全局开关类型非法。
-9. 指定的权限名不是[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)。
-10. 指定的数组成员个数超过1024或成员均为无效值。
-11. 请求查看权限使用记录的起始结束时间不合法。
-12. 指定的权限名未在应用中声明。
+- tokenId值为0。
+- 指定的权限名为空或者权限名长度大于256。
+- 请求授权/撤销权限的flag取值非法。
+- 注册监听的参数检查错误。
+- 指定的Context不属于当前应用。
+- 请求的权限不属于同一个权限组。
+- 请求的权限中存在应用未声明的权限。
+- 请求的全局开关类型非法。
+- 指定的权限名不是[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)。
+- 指定的数组成员个数超过1024或成员均为无效值。
+- 请求查看权限使用记录的起始结束时间不合法。
+- 指定的权限名未在应用中声明。
+<!--Del-->
+- 指定的子身份资料标识符不是大于0的整数、不存在，或不属于当前用户。
+<!--DelEnd-->
 
 **处理步骤**
 
-检查入参，修正参数值为有效值，有效值请参考各[接口参数说明](js-apis-abilityAccessCtrl.md)。
+检查入参，修正参数值为有效值，有效值请参考[@ohos.abilityAccessCtrl (程序访问控制管理)](js-apis-abilityAccessCtrl.md)中对应接口的参数说明。
 
 <!--Del-->
 ## 12100002 tokenId不存在
@@ -49,7 +52,7 @@ TokenId does not exist.
 
 **错误描述**
 
-当指定的tokenId不符合条件时，将返回该错误码。
+当指定的tokenId不存在或对应的进程非应用进程时，将返回该错误码。
 
 **可能原因**
 
@@ -69,7 +72,7 @@ Permission does not exist.
 
 **错误描述**
 
-当指定的权限名不符合条件时，将返回该错误码。
+当指定的权限不存在或未被申请时，将返回该错误码。
 
 **可能原因**
 
@@ -90,17 +93,41 @@ The API is not used in pair with others.
 
 **错误描述**
 
-当接口未配套使用时，将返回该错误码。
+当接口未按配套关系调用，或在未解除配套关系前重复调用时，将返回该错误码。
 
 **可能原因**
 
-1. 当前接口在未配套使用的情况下，重复调用。
-2. 当前接口在未配套使用的情况下，单独调用。
+- 当前接口在未解除配套关系前，使用相同入参重复调用。
+- 当前接口在未配套使用的情况下，单独调用。
+<!--Del-->
+- 查询当前用户的权限使用记录开关状态时，未配套调用设置当前用户权限使用记录开关状态的接口。
+- 查询当前用户的权限弹窗开关状态时，未配套调用设置当前用户权限弹窗开关状态的接口。
+<!--DelEnd-->
 
 **处理步骤**
 
-1. 检查当前接口是否有配套使用，如调用启动记录的接口后，在未调用停止记录的接口前，不可再次使用相同的入参调用启动记录接口。
-2. 检查当前接口是否有配套使用，如停止记录的接口需要在启动记录的接口调用之后方可调用，注销监听接口需要在注册监听接口调用之后方可调用。
+检查当前接口是否有配套使用：
+
+- 注册监听接口和注销监听接口需配套使用：调用注册监听接口后，在未调用对应注销监听接口前，不可再次使用相同的入参调用注册监听接口；注销监听接口需要在对应注册监听接口调用之后方可调用。
+<!--Del-->
+- 启动记录的接口和停止记录的接口需配套使用：调用启动记录的接口后，在未调用对应停止记录的接口前，不可再次使用相同的入参调用启动记录接口；停止记录的接口需要在对应启动记录的接口调用之后方可调用。
+- 查询当前用户权限使用记录开关状态的接口和设置当前用户权限使用记录开关状态的接口需配套使用。
+- 查询当前用户权限弹窗开关状态的接口和设置当前用户权限弹窗开关状态的接口需配套使用。
+<!--DelEnd-->
+
+相关方法：
+<!--Del-->
+- 开始使用权限：[privacyManager.startUsingPermission](js-apis-privacyManager-sys.md#privacymanagerstartusingpermission)
+- 停止使用权限：[privacyManager.stopUsingPermission](js-apis-privacyManager-sys.md#privacymanagerstopusingpermission)
+- 设置当前用户权限使用记录开关状态：[privacyManager.setPermissionUsedRecordToggleStatus](js-apis-privacyManager-sys.md#privacymanagersetpermissionusedrecordtogglestatus18)
+- 查询当前用户权限使用记录开关状态：[privacyManager.getPermissionUsedRecordToggleStatus](js-apis-privacyManager-sys.md#privacymanagergetpermissionusedrecordtogglestatus18)
+- 设置当前用户权限弹窗开关状态：[setPermissionRequestToggleStatus](js-apis-abilityAccessCtrl-sys.md#setpermissionrequesttogglestatus12)
+- 查询当前用户权限弹窗开关状态：[getPermissionRequestToggleStatus](js-apis-abilityAccessCtrl-sys.md#getpermissionrequesttogglestatus12)
+- 订阅权限使用状态变更事件：[privacyManager.on](js-apis-privacyManager-sys.md#privacymanageron)
+- 取消订阅权限使用状态变更事件：[privacyManager.off](js-apis-privacyManager-sys.md#privacymanageroff)
+<!--DelEnd-->
+- 订阅自身权限状态变更事件：[on](js-apis-abilityAccessCtrl.md#on18)
+- 取消订阅自身权限状态变更事件：[off](js-apis-abilityAccessCtrl.md#off18)
 
 
 ## 12100005 监听器数量超过限制
@@ -115,39 +142,43 @@ The number of listeners exceeds the limit.
 
 **可能原因**
 
-该错误码表示当前监听器数量超过限制200个。
+注册的监听器数量超过系统限制的200个上限。
 
 **处理步骤**
 
 及时释放已注册的无用的监听器。
 
 <!--Del-->
-## 12100006 指定的应用不支持被授予或被取消授予指定的权限
+## 12100006 指定操作不允许
 
 **错误信息**
 
-The specified application does not support the permissions granted or ungranted as specified.
+Operation not allowed.
 
 **错误描述**
 
-当指定的应用不支持被授予或被取消授予指定的权限时，将返回该错误码。
+当调用的操作不满足当前场景的执行条件时，将返回该错误码。
 
 **可能原因**
 
-1. 输入的tokenId是远端设备的身份标识，尚未支持分布式授权和取消授权。
-2. 入参指定的tokenId为沙箱应用，被禁止申请指定的权限。
+1. 授予、撤销授权或查询权限标志场景下，输入的tokenId是远端设备的身份标识，或指定应用为不支持该操作的沙箱应用。
+2. 设置当前用户权限弹窗开关场景下，该权限的开关状态已通过指定子身份资料的接口设置。
+3. 设置指定子身份资料权限弹窗开关场景下，该权限的开关状态已通过当前用户的接口设置。
+4. 设置当前用户权限使用记录开关场景下，开关状态已通过指定子身份资料的接口设置。
+5. 设置指定子身份资料权限使用记录开关场景下，开关状态已通过当前用户的接口设置。
+
 
 **处理步骤**
 
-1. 请确认tokenId的获取方式是否正确。
-2. 确认待授权的沙箱应用是否为特殊的受限沙箱应用进程，部分模式下的沙箱应用被禁止授予大部分权限。
+1. 授予、撤销授权或查询权限标志场景下，请确认tokenId表示本地应用，且目标应用不是受限沙箱应用。
+2. 设置权限弹窗开关或权限使用记录开关场景下，请使用与当前开关状态一致的接口，或先清除另一接口设置的开关状态。
 <!--DelEnd-->
 
 ## 12100007 系统服务工作异常
 
 **错误信息**
 
-The service is abnormal.
+Service exception.
 
 **错误描述**
 
@@ -175,7 +206,7 @@ Out of memory.
 
 **可能原因**
 
-系统内存不足。
+系统内存不足，无法完成内存申请操作。
 
 **处理步骤**
 
@@ -190,26 +221,26 @@ Common inner error.
 
 **错误描述**
 
-当服务内部发生错误或权限弹框发生错误时，将返回该错误码。
+当服务内部发生错误或权限弹窗发生错误时，将返回该错误码。
 
 **可能原因**
 
 1. 内部错误
    - 系统服务内部异常或数据库错误。
-2. 权限弹框错误
-   - 应用处于后台，无法正常拉起弹框。
-   - 设备处于锁屏状态，无法正常拉起弹框。
-   - 拉起弹框后未及时处理，弹框进程因应用退出而被系统回收，例如用户在多任务界面清理应用进程。
+2. 权限弹窗错误
+   - 应用处于后台，无法正常拉起弹窗。
+   - 设备处于锁屏状态，无法正常弹出弹窗。
+   - 拉起弹窗后未及时处理，弹窗进程因应用退出而被系统回收，例如用户在多任务界面清理应用进程。
 
 **处理步骤**
 
 1. 内部错误
    - 建议重启设备后重试。
-2. 权限弹框错误
-   - 确认应用处于前台状态后再发起弹框请求。
-   - 确认设备处于解锁状态后再发起弹框请求。
-   - 确认弹框已被及时处理，若弹框进程因应用退出而被系统回收则无需额外操作。
-3. 若您的问题仍无法解决，请通过在线提单提交问题说明及日志信息，支持人员会及时处理。
+2. 权限弹窗错误
+   - 确认应用处于前台状态后再发起弹窗请求。
+   - 确认设备处于解锁状态后再发起弹窗请求。
+   - 确认弹窗已被及时处理，若弹窗进程因应用退出而被系统回收则无需额外操作。
+3. 若问题仍无法解决，请开发者通过在线提交工单反馈问题说明及日志信息，技术支持人员会及时处理。
 
 ## 12100010 存在未被处理的请求
 
@@ -246,7 +277,7 @@ All permissions in the permission list have been granted.
 
 **处理步骤**
 
-无需处理，返回此错误码表示申请权限已被授权，不会拉起权限设置弹框。
+无需处理，返回此错误码表示申请权限已被授权，不会弹出权限设置弹窗。
 
 ## 12100012 输入的权限中存在未被用户拒绝过的权限
 
@@ -282,7 +313,7 @@ The specific global switch is already open.
 
 **处理步骤**
 
-无需处理，返回此错误码表示全局开关已开启，不会拉起全局开关设置弹框。
+无需处理，返回此错误码表示全局开关已开启，不会弹出全局开关设置弹窗。
 
 ## 12100014 非预期的权限
 
@@ -296,9 +327,9 @@ Unexpected permission.
 
 **可能原因**
 
-1. [再次拉起权限设置弹框](js-apis-abilityAccessCtrl.md#requestpermissiononsetting12)时，传入了manual_settings授权方式的权限。
+1. 调用[requestPermissionOnSetting](js-apis-abilityAccessCtrl.md#requestpermissiononsetting12)再次弹出权限设置弹窗时，传入了manual_settings授权方式的权限。
 2. 授权或取消授权时，传入了非user_grant和manual_settings授权方式的权限。
-3. [拉起跳转设置页弹窗](js-apis-abilityAccessCtrl.md#openpermissiononsetting22)时，传入了非manual_settings授权方式的权限。
+3. 调用[openPermissionOnSetting](js-apis-abilityAccessCtrl.md#openpermissiononsetting22)拉起跳转设置页弹窗时，传入了非manual_settings授权方式的权限。
 
 **处理步骤**
 
@@ -322,5 +353,5 @@ The queried data exceeds the upper limit.
 
 **处理步骤**
 
-请减少单次查询的权限或应用数量，分批进行查询。
+请减少单次查询的权限或应用数量，分批进行查询。具体上限请参考[@ohos.abilityAccessCtrl (程序访问控制管理)](js-apis-abilityAccessCtrl.md)中对应接口的参数说明。
 <!--DelEnd-->

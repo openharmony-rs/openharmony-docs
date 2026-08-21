@@ -57,8 +57,8 @@
 | [OH_AudioStream_PrivacyType](#oh_audiostream_privacytype) | OH_AudioStream_PrivacyType | 用于标识对应播放音频流是否支持被其他应用录制。 |
 | [OH_AudioData_Callback_Result](#oh_audiodata_callback_result) | OH_AudioData_Callback_Result | 定义音频数据回调结果。 |
 | [OH_AudioStream_LatencyType](#oh_audiostream_latencytype) | OH_AudioStream_LatencyType | 定义音频时延类型。 |
-| [OH_AudioStream_PlaybackCaptureMode](#oh_audiostream_playbackcapturemode) | OH_AudioStream_PlaybackCaptureMode | 表示内录（录制设备内部应用的声音）的过滤类型，每种过滤类型可录制不同的播放流类型。该API暂不对外支持。 |
-| [OH_AudioStream_PlaybackCaptureStartState](#oh_audiostream_playbackcapturestartstate) | OH_AudioStream_PlaybackCaptureStartState | 定义内录的启动状态，该状态在调用[OH_AudioCapturer_RequestPlaybackCaptureStart](./capi-native-audiocapturer-h.md#oh_audiocapturer_requestplaybackcapturestart)函数后异步返回。该API暂不对外支持。 |
+| [OH_AudioStream_PlaybackCaptureMode](#oh_audiostream_playbackcapturemode) | OH_AudioStream_PlaybackCaptureMode | 表示内录（录制设备内部应用的声音）的过滤类型，每种过滤类型可录制不同的播放流类型。该API最初仅对特定系统应用可用，从API版本26.0.0开始，支持任意应用使用。 |
+| [OH_AudioStream_PlaybackCaptureStartState](#oh_audiostream_playbackcapturestartstate) | OH_AudioStream_PlaybackCaptureStartState | 定义内录的启动状态，该状态在调用[OH_AudioCapturer_RequestPlaybackCaptureStart](./capi-native-audiocapturer-h.md#oh_audiocapturer_requestplaybackcapturestart)函数后异步返回。该API最初仅对特定系统应用可用，从API版本26.0.0开始，支持任意应用使用。 |
 
 ### 函数
 
@@ -90,6 +90,8 @@ enum OH_AudioStream_Result
 | AUDIOSTREAM_ERROR_ILLEGAL_STATE = 2 | 非法状态。 |
 | AUDIOSTREAM_ERROR_SYSTEM = 3 | 系统通用错误。 |
 | AUDIOSTREAM_ERROR_UNSUPPORTED_FORMAT = 4 | 不支持的音频格式，如不支持的编码类型、采样格式等。<br>**起始版本：** 19 |
+| AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY = 6800104 | 不支持的音频流能力，例如功能或配置不支持。<br>**起始版本：** 26.0.0 |
+| AUDIOSTREAM_ERROR_SERVICE_DIED = 6800302 | 音频服务进程异常结束。<br>**起始版本：** 26.0.0 |
 
 ### OH_AudioStream_Type
 
@@ -123,9 +125,9 @@ enum OH_AudioStream_SampleFormat
 | 枚举项 | 描述 |
 | -- | -- |
 | AUDIOSTREAM_SAMPLE_U8 = 0 | Unsigned 8位。 |
-| AUDIOSTREAM_SAMPLE_S16LE = 1 | Short 16位小端。 |
-| AUDIOSTREAM_SAMPLE_S24LE = 2 | Short 24位小端。 |
-| AUDIOSTREAM_SAMPLE_S32LE = 3 | Short 32位小端。 |
+| AUDIOSTREAM_SAMPLE_S16LE = 1 | Signed 16位小端。 |
+| AUDIOSTREAM_SAMPLE_S24LE = 2 | Signed 24位小端。 |
+| AUDIOSTREAM_SAMPLE_S32LE = 3 | Signed 32位小端。 |
 | AUDIOSTREAM_SAMPLE_F32LE = 4 | Float 32位小端。<br>**起始版本：** 17 |
 
 ### OH_AudioStream_EncodingType
@@ -208,7 +210,7 @@ enum OH_AudioStream_DirectPlaybackMode
 | -- | -- |
 | AUDIOSTREAM_DIRECT_PLAYBACK_NOT_SUPPORTED = 0 | 该模式代表不支持direct通路播放。 |
 | AUDIOSTREAM_DIRECT_PLAYBACK_BITSTREAM_SUPPORTED = 1 | 该模式代表支持不解码的direct通路播放。 |
-| AUDIOSTREAM_DIRECT_PLAYBACK_PCM_SUPPORTED = 2 | 该模式代表支持pcm编码的direct通路播放。 |
+| AUDIOSTREAM_DIRECT_PLAYBACK_PCM_SUPPORTED = 2 | 该模式代表支持PCM编码的direct通路播放。 |
 
 ### OH_AudioStream_VolumeMode
 
@@ -272,6 +274,7 @@ enum OH_AudioStream_SourceType
 | AUDIOSTREAM_SOURCE_TYPE_CAMCORDER = 13 | 录像。<br>**起始版本：** 13 |
 | AUDIOSTREAM_SOURCE_TYPE_UNPROCESSED = 14 | 麦克风纯净录音（系统不做任何算法处理）。<br>**起始版本：** 14 |
 | AUDIOSTREAM_SOURCE_TYPE_LIVE = 17 | 直播。<br>**起始版本：** 20 |
+| AUDIOSTREAM_SOURCE_TYPE_VOICE_DOWNLINK = 22 | 蜂窝通话下行录音（通话中对方声音）。使用此输入流的音频采集器应在蜂窝通话开始后创建。使用[OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer)创建采集流时需要ohos.permission.CAPTURE_PLAYBACK_DOWNLINK权限，否则函数将返回错误。<br>**起始版本：** 26.0.0 |
 
 ### OH_AudioStream_Event
 
@@ -466,7 +469,7 @@ enum OH_AudioStream_PlaybackCaptureMode
 
 **描述**
 
-表示内录（录制设备内部应用的声音）的过滤类型，每种过滤类型可录制不同的播放流类型。该API暂不对外支持。
+表示内录（录制设备内部应用的声音）的过滤类型，每种过滤类型可录制不同的播放流类型。该API最初仅对特定系统应用可用，从API版本26.0.0开始，支持任意应用使用。
 
 **起始版本：** 23
 
@@ -484,7 +487,7 @@ enum OH_AudioStream_PlaybackCaptureStartState
 
 **描述**
 
-定义内录的启动状态，该状态在调用[OH_AudioCapturer_RequestPlaybackCaptureStart](./capi-native-audiocapturer-h.md#oh_audiocapturer_requestplaybackcapturestart)函数后异步返回。该API暂不对外支持。
+定义内录的启动状态，该状态在调用[OH_AudioCapturer_RequestPlaybackCaptureStart](./capi-native-audiocapturer-h.md#oh_audiocapturer_requestplaybackcapturestart)函数后异步返回。该API最初仅对特定系统应用可用，从API版本26.0.0开始，支持任意应用使用。
 
 **起始版本：** 23
 

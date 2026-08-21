@@ -89,18 +89,18 @@ struct Index {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "reason": "The object data is decorated with @Observed",
-  "isObserved": true,
-  "decoratorInfo": [{
-    "decoratorName": "@State",
-    "dependentInfo": [{
-      "elementId": 6,
-      "elementName": "Text"
-    }],
-    "owningComponentId": 2,
-    "stateVariableName": "info",
-    "owningComponentOrClassName": "Index"
-  }]
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "info",
+        "owningComponentOrClassName": "Index",
+        "owningComponentId": 2,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 6
+        }]
+    }]
 }
 ```
 若使用@Track，此时将以@Track装饰的属性维度展示属性与组件的绑定关系。
@@ -137,29 +137,27 @@ struct Index {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "reason": "The object data is decorated with @Observed",
-  "isObserved": true,
-  "decoratorInfo": [{
-      "decoratorName": "@Track",
-      "dependentInfo": [{
-        "elementId": 7,
-        "elementName": "Text"
-      }],
-      "owningComponentId": -1,
-      "stateVariableName": "age",
-      "owningComponentOrClassName": "Info"
-    },
-    {
-      "decoratorName": "@Track",
-      "dependentInfo": [{
-        "elementId": 6,
-        "elementName": "Text"
-      }],
-      "owningComponentId": -1,
-      "stateVariableName": "name",
-      "owningComponentOrClassName": "Info"
-    }
-  ]
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@Track",
+        "stateVariableName": "age",
+        "owningComponentOrClassName": "Info",
+        "owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 7
+        }]
+    }, {
+        "decoratorName": "@Track",
+        "stateVariableName": "name",
+        "owningComponentOrClassName": "Info",
+        "owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 6
+        }]
+    }]
 }
 ```
 若在V2自定义组件中使用，将以对象整体的维度展示对象与组件的绑定关系。
@@ -207,43 +205,36 @@ struct ParamChild {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "reason": "The object data is decorated with @Observed",
-  "isObserved": true,
-  "decoratorInfo": [{
-      "decoratorName": "@State",
-      "dependentInfo": [{
-          "elementId": 8,
-          "elementName": "ParamChild"
-        },
-        {
-          "elementId": 7,
-          "elementName": "Text"
-        },
-        {
-          "elementId": 6,
-          "elementName": "Text"
-        }
-      ],
-      "owningComponentId": 2,
-      "stateVariableName": "info",
-      "owningComponentOrClassName": "Index"
-    },
-    {
-      "decoratorName": "@Observed(mix used in V2)",
-      "dependentInfo": [{
-          "elementId": 12,
-          "elementName": "Text"
-        },
-        {
-          "elementId": 11,
-          "elementName": "Text"
-        }
-      ],
-      "owningComponentId": -1,
-      "stateVariableName": "Any @Observed Object Property",
-      "owningComponentOrClassName": "Info"
-    }
-  ]
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "info",
+        "owningComponentOrClassName": "Index",
+        "owningComponentId": 2,
+        "dependentInfo": [{
+            "elementName": "ParamChild",
+            "elementId": 8
+        }, {
+            "elementName": "Text",
+            "elementId": 7
+        }, {
+            "elementName": "Text",
+            "elementId": 6
+        }]
+    }, {
+        "decoratorName": "@Observed(mix used in V2)",
+        "stateVariableName": "Any @Observed Object Property",
+        "owningComponentOrClassName": "Info",
+        "owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 12
+        }, {
+            "elementName": "Text",
+            "elementId": 11
+        }]
+    }]
 }
 ```
 ### @ObservedV2/@Trace观察场景
@@ -282,29 +273,27 @@ struct Index {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "reason": "The object data is decorated with V2 @ObservedV2 and @Trace",
-  "isObserved": true,
-  "decoratorInfo": [{
-      "decoratorName": "@Trace",
-      "dependentInfo": [{
-        "elementId": 7,
-        "elementName": "Text"
-      }],
-      "owningComponentId": -1,
-      "stateVariableName": "age",
-      "owningComponentOrClassName": "Info"
-    },
-    {
-      "decoratorName": "@Trace",
-      "dependentInfo": [{
-        "elementId": 6,
-        "elementName": "Text"
-      }],
-      "owningComponentId": -1,
-      "stateVariableName": "name",
-      "owningComponentOrClassName": "Info"
-    }
-  ]
+    "isObserved": true,
+    "reason": "The object data is decorated with V2 @ObservedV2 and @Trace",
+    "decoratorInfo": [{
+        "decoratorName": "@Trace",
+        "stateVariableName": "age",
+        "owningComponentOrClassName": "Info",
+        "owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 7
+        }]
+    }, {
+        "decoratorName": "@Trace",
+        "stateVariableName": "name",
+        "owningComponentOrClassName": "Info",
+        "owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 6
+        }]
+    }]
 }
 ```
 ### ObjectLiteral观察场景
@@ -361,43 +350,36 @@ struct ParamChild {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "reason": "The object data is object literal decorated with V1 decorators or wrapped by makeObserved",
-  "isObserved": true,
-  "decoratorInfo": [{
-      "decoratorName": "@State",
-      "dependentInfo": [{
-          "elementId": 8,
-          "elementName": "ParamChild"
-        },
-        {
-          "elementId": 7,
-          "elementName": "Text"
-        },
-        {
-          "elementId": 6,
-          "elementName": "Text"
-        }
-      ],
-      "owningComponentId": 2,
-      "stateVariableName": "info",
-      "owningComponentOrClassName": "Index"
-    },
-    {
-      "decoratorName": "V1 Decorated ObjectLiteral(mix used in V2)",
-      "dependentInfo": [{
-          "elementId": 12,
-          "elementName": "Text"
-        },
-        {
-          "elementId": 11,
-          "elementName": "Text"
-        }
-      ],
-      "owningComponentId": -1,
-      "stateVariableName": "Any Object Literal Property",
-      "owningComponentOrClassName": "Info"
-    }
-  ]
+    "isObserved": true,
+    "reason": "The object data is object literal decorated with V1 decorators or wrapped by makeObserved",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "info",
+        "owningComponentOrClassName": "Index",
+        "owningComponentId": 2,
+        "dependentInfo": [{
+            "elementName": "ParamChild",
+            "elementId": 8
+        }, {
+            "elementName": "Text",
+            "elementId": 7
+        }, {
+            "elementName": "Text",
+            "elementId": 6
+        }]
+    }, {
+        "decoratorName": "V1 Decorated ObjectLiteral(mix used in V2)",
+        "stateVariableName": "Any Object Literal Property",
+        "owningComponentOrClassName": "Info",
+        "owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 12
+        }, {
+            "elementName": "Text",
+            "elementId": 11
+        }]
+    }]
 }
 ```
 ### Built-in观察场景
@@ -448,46 +430,41 @@ struct ParamChild {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "reason": "The object data is built-in type data (Array/Map/Set/Date) decorated with V1/V2 decorators or wrapped by makeObserved",
-  "isObserved": true,
-  "decoratorInfo": [{
-      "decoratorName": "@State",
-      "dependentInfo": [{
-          "elementId": 7,
-          "elementName": "ParamChild"
-        },
-        {
-          "elementId": 6,
-          "elementName": "Text"
-        }
-      ],
-      "owningComponentId": 2,
-      "stateVariableName": "arr",
-      "owningComponentOrClassName": "Index"
-    },
-    {
-      "decoratorName": "V1 Decorated BuiltInType(mix used in V2)",
-      "dependentInfo": [{
-        "elementId": 10,
-        "elementName": "Text"
-      }],
-      "owningComponentId": -1,
-            // "__OB_ANY_INDEX"表示数组任意元素变化时，通知关联的组件刷新
-      "stateVariableName": "__OB_ANY_INDEX",
-      "owningComponentOrClassName": "Array"
-    },
-    {
-      "decoratorName": "V1 Decorated BuiltInType(mix used in V2)",
-      "dependentInfo": [{
-        "elementId": 10,
-        "elementName": "Text"
-      }],
-      "owningComponentId": -1,
-            // "__OB_LENGTH"表示数组长度变化时，通知关联的组件刷新
-      "stateVariableName": "__OB_LENGTH",
-      "owningComponentOrClassName": "Array"
-    }
-  ]
+    "isObserved": true,
+    "reason": "The object data is built-in type data (Array/Map/Set/Date) decorated with V1/V2 decorators or wrapped by makeObserved",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "arr",
+        "owningComponentOrClassName": "Index",
+        "owningComponentId": 2,
+        "dependentInfo": [{
+            "elementName": "ParamChild",
+            "elementId": 7
+        }, {
+            "elementName": "Text",
+            "elementId": 6
+        }]
+    }, {
+        "decoratorName": "V1 Decorated BuiltInType(mix used in V2)",
+        // "__OB_ANY_INDEX"表示数组任意元素变化时，通知关联的组件刷新
+        "stateVariableName": "__OB_ANY_INDEX",
+        "owningComponentOrClassName": "Array",
+        "owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 10
+        }]
+    }, {
+        "decoratorName": "V1 Decorated BuiltInType(mix used in V2)",
+        // "__OB_LENGTH"表示数组长度变化时，通知关联的组件刷新
+        "stateVariableName": "__OB_LENGTH",
+        "owningComponentOrClassName": "Array",
+        "owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 10
+        }]
+    }]
 }
 ```
 
@@ -528,18 +505,18 @@ struct Index {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "isObserved": true,
-  "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-  "decoratorInfo": [{
-    "decoratorName": "@State",
-    "stateVariableName": "info",
-    "owningComponentOrClassName": "Index",
-    "owningComponentId": 4,
-    "dependentInfo": [{
-      "elementName": "Text",
-      "elementId": 6
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "info",
+        "owningComponentOrClassName": "Index",
+        "owningComponentId": 4,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 6
+        }]
     }]
-  }]
 }
 ```
 而相同的代码在ArkTS-Sta上，却无法观察。
@@ -575,9 +552,9 @@ struct Index {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "reason": "The object data is not an observable object",
-  "isObserved": false,
-  "decoratorInfo": []
+    "isObserved": false,
+    "reason": "The object data is not an observable object",
+    "decoratorInfo": []
 }
 ```
 为class添加@Observed装饰，或为属性添加@Track装饰后，对象属性方能被观察。
@@ -614,17 +591,17 @@ struct Index {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "reason": "The object data is decorated with @Observed",
-  "isObserved": true,
-  "decoratorInfo": [{
-    "decoratorName": "@State",
-    "dependentInfo": [{
-      "elementId": 5,
-      "elementName": "Text"
-    }],
-    "owningComponentId": 2,
-    "stateVariableName": "info",
-    "owningComponentOrClassName": "Index"
-  }]
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "info",
+        "owningComponentOrClassName": "Index",
+        "owningComponentId": 2,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 5
+        }]
+    }]
 }
 ```

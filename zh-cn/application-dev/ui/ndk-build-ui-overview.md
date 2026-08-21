@@ -76,7 +76,7 @@ ArkUI NDK接口能力主要包括：
 | [查询和操作自定义节点](ndk-node-query-operate.md) | 介绍了如何对自定义节点进行查询和操作。 |
 | [通过EmbeddedComponent拉起EmbeddedUIExtensionAbility](ndk-embedded-component.md) | 介绍了如何在Native侧通过EmbeddedComponent拉起EmbeddedUIExtensionAbility。主要用于有进程隔离需求的模块化开发场景。 |
 | [使用文本](ndk-styled-string.md) | 介绍了Text组件与字体引擎如何配套使用。 |
-| [在NDK中保证多实例场景功能正常](ndk-scope-task.md) | 介绍了如何在NDK多线程场景中保证接口调用的功能正常。 |
+| [在NDK中保证多实例场景功能正常](ndk-scope-task.md) | 介绍了如何在NDK多实例场景中保证接口调用的功能正常。 |
 | [使用多线程NDK接口并行化构建UI页面](ndk-build-on-multi-thread.md) | 介绍了如何使用NDK进行多线程UI组件创建。 |
 
 

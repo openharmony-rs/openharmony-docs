@@ -8,6 +8,10 @@
 
 Web组件提供了应用接管网页中媒体播放的能力，用来支持应用增强网页的媒体播放，如画质增强等。
 
+## 约束与限制
+
+受系统控件回调处理能力限制，单个Web组件实例内建议同时托管的本地播放器实例不超过6个。超出建议数量可能导致页面卡顿或者冻结，建议仅托管页面可见、正在播放的视频内容。
+
 ## 使用场景
 
 网页播放媒体时，存在以下问题：网页清晰度低、网页播放器播放控件功能有限、某些视频无法播放。
@@ -1002,7 +1006,7 @@ ArkTS-Dyn示例：
                 event.result?.setGestureEventResult(false);
                 return;
               }
-              // 将触摸事件传递给NodeContrloller
+              // 将触摸事件传递给NodeController
               let ret = native_player_info.node_controller.postTouchEvent(event.touchEvent);
               console.info(`WebComponent.postTouchEvent, ret[${ret}], touchEvent[${JSON.stringify(event.touchEvent)}]`);
               event.result?.setGestureEventResult(ret);

@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS参数进入native函数后，C++侧需要按ANI类型接收，并根据声明类型决定是否装箱、拆箱或做运行时类型识别。
 

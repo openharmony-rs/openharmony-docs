@@ -10,7 +10,7 @@
 
 ## 实现原理
 
-应用发送通知时携带唯一标识字段[appMessageId](../../application-dev/reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)，分布式通知接收到多渠道发布的通知后，会根据该字段进行判断，从而实现通知去重。
+应用发送通知时携带唯一标识字段[appMessageId](../../application-dev/reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)，[分布式通知](notification-glossary.md#distributed-notification分布式通知)接收到多渠道发布的通知后，会根据该字段进行判断，从而实现通知去重。
 
 设备只会展示第一条通知，后续收到的重复通知会被静默去重，不展示、不提醒。
 
@@ -33,7 +33,16 @@
 
 1. 导入模块。
 
+   ArkTS-Dyn示例：
    <!-- @[clear_duplicate_notifications_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
+   
+   ``` TypeScript
+   import { notificationManager } from '@kit.NotificationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[clear_duplicate_notifications_header](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
@@ -42,12 +51,41 @@
 
 2. 发布通知消息，通知消息中包含`appMessageId`字段。
 
+   ArkTS-Dyn示例：
    <!-- @[pub_appMsgId_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
    
    ``` TypeScript
    // publish回调
    let publishCallback = (err: BusinessError): void => {
      if (err) {
+       console.error(`Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+     } else {
+       console.info(`Succeeded in publishing notification.`);
+     }
+   };
+   // 通知Request对象
+   let notificationRequest: notificationManager.NotificationRequest = {
+     id: 1,
+     content: {
+       notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+       normal: {
+         title: 'test_title',
+         text: 'test_text',
+         additionalText: 'test_additionalText'
+       }
+     },
+     appMessageId: 'test_appMessageId_1'
+   };
+   notificationManager.publish(notificationRequest, publishCallback);
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[pub_appMsgId_notify](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
+   
+   ``` TypeScript
+   // publish回调
+   let publishCallback = (err: BusinessError | null): void => {
+     if (err && err.code !== 0) {
        console.error(`Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
      } else {
        console.info(`Succeeded in publishing notification.`);

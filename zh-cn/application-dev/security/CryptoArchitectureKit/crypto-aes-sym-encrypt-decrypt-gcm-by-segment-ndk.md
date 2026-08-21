@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-对应的算法规格请查看[对称密钥加解密算法规格：AES](crypto-sym-encrypt-decrypt-spec.md#aes)。
+对应的算法规格请查看[对称密钥加解密算法规格：AES](crypto-encryption-decryption.md#aes)。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -20,7 +20,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 调用[OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create)和[OH_CryptoSymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate)，生成密钥算法为AES、密钥长度为128位的对称密钥（OH_CryptoSymKey）。
    
-   如何生成AES对称密钥，开发者可参考下文示例，并结合[对称密钥生成和转换规格：AES](crypto-sym-key-generation-conversion-spec.md#aes)和[随机生成对称密钥](crypto-generate-sym-key-randomly-ndk.md)文档进行理解。参考文档与当前示例可能存在入参差异，请注意区分。
+   如何生成AES对称密钥，开发者可参考下文示例，并结合[对称密钥生成和转换规格：AES](crypto-key-generation-conversion.md#aes)和[随机生成对称密钥](crypto-generate-sym-key-randomly-ndk.md)文档进行理解。参考文档与当前示例可能存在入参差异，请注意区分。
 
 **加密**
 
@@ -43,9 +43,10 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
    
    - 由于已使用update传入数据，此处传入null。
    - final输出结果可能为null，在访问具体数据前，需要先判断结果是否为null，以避免产生异常。
-   > **注意：**
-   > 在GCM模式下，final会返回authTag，作为解密操作时初始化的认证信息，需要保存。
-   > 在GCM模式下，算法库当前只支持16字节的authTag，作为解密操作时初始化的认证信息。示例中authTag恰好为16字节。
+
+   > **说明：**
+   >
+   > 在GCM模式下，一次加密流程中，将每次update和最后final的结果拼接起来，会得到“密文 + authTag”，authTag为末尾的16字节。其余部分均为密文。如果final的data参数传入null，则final的结果就是authTag。
 
 **解密**
 

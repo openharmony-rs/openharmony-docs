@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 异步并发用于描述代码执行到异步等待点后被挂起，并在异步操作完成后继续执行的能力。ArkTS-Sta通过[Promise](../reference/apis-arkts/arkts-sta-promise.md)和async/await提供异步并发能力，适用于I/O非阻塞操作、轻量级任务编排，以及有明确顺序或并行关系的异步逻辑。
 

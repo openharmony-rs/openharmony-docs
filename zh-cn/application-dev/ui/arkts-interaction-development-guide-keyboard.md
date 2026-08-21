@@ -29,7 +29,7 @@
 
 Web组件的KeyEvent流程与上述过程有所不同。在[onKeyPreIme](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#onkeypreime12)返回false时，Web组件不会匹配快捷键。而在第三次按键派发过程中，Web组件会将未消费的[KeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)重新派发回ArkUI，在重新派发过程中再执行匹配快捷键等操作。
 
-## onKeyEvent & onKeyPreIme
+## onKeyEvent、onKeyPreIme和onKeyEventDispatch
 
 ```ts
 onKeyEvent(event: (event: KeyEvent) => void): T
@@ -303,7 +303,7 @@ struct KeyEventPreventBubble {
 
 ![zh-cn_image_0000001511900508](figures/onKeyEvent02.gif)
 
-使用OnKeyPreIme屏蔽在输入框中使用方向左键。
+使用onKeyPreIme屏蔽在输入框中使用方向左键。
 
 ArkTS-Dyn示例：
 
@@ -384,6 +384,7 @@ ArkTS-Dyn示例：
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { KeyCode } from '@kit.InputKit';
 
 const TAG = '[Sample_Eventproject]';
 const DOMAIN = 0xF811;
@@ -489,7 +490,7 @@ struct Index {
 
 ![zh-cn_image_00012427111](figures/onKeyEvent03.PNG)
 
-使用OnKeyPreIme实现回车提交（建议使用物理键盘）。
+使用onKeyPreIme实现回车提交（建议使用物理键盘）。
 
 ArkTS-Dyn示例：
 
@@ -515,7 +516,7 @@ struct TextAreaDemo {
       TextArea({ controller: this.controller, text: this.text })
         .onKeyPreIme((event: KeyEvent) => {
           hilog.info(DOMAIN, TAG, `${BUNDLE + JSON.stringify(event)}`);
-          if (event.keyCode === 2054 && event.type === KeyType.Down) { // 回车键物理码
+          if (event.keyCode === KeyCode.KEYCODE_ENTER && event.type === KeyType.Down) { // 回车键物理码
             const hasCtrl = event?.getModifierKeyState?.(['Ctrl']);
             if (hasCtrl) {
               hilog.info(DOMAIN, TAG, BUNDLE + 'Line break');

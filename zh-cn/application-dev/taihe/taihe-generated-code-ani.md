@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @Jemtaly; @tongdiaoZS; @m0_52007851; @zhangrunze13-->
 <!--Tester: @m30041553-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 本文档旨在介绍Taihe ANI后端生成的代码和函数调用链，帮助用户理解如何在自己的代码中使用并调试这些自动生成的接口。
 

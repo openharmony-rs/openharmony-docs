@@ -83,7 +83,7 @@ targetId是无效的，或者其对应的节点已销毁。
 1. 检查targetId是否非负数；
 2. 检查targetId对应的节点是否有效；
 
-## 120005 指定的targetId对应的节点未挂载在节点树上
+## 120005 指定的targetId对应的节点未挂载在组件树上
 
 **错误信息**
 
@@ -91,7 +91,7 @@ The node of targetId is not in the component tree.
 
 **错误描述**
 
-当将半模态页面指定为EMBEDDED模式时，指定的targetId对应的节点未挂载在节点树上时，方法将返回该错误码。
+当将半模态页面指定为EMBEDDED模式时，指定的targetId对应的节点未挂载在组件树上时，方法将返回该错误码。
 
 **可能原因**
 

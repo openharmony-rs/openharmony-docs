@@ -17,7 +17,7 @@
    import { cryptoFramework } from '@kit.CryptoArchitectureKit';
    ```
 
-2. 基于已有的CRL数据，调用[cert.createX509CRL](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509crl11)创建X509证书吊销列表的对象。
+2. 基于已有的CRL数据，调用[cert.createX509CRL](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509crl11)创建X.509证书吊销列表的对象。
 
 3. 解析证书吊销列表信息。
 
@@ -119,9 +119,9 @@ function crlSample(): void {
     let revokedFlag = true;
     let serial: bigint = BigInt('0');
     cert.createX509Cert(certBlob, (err, x509Cert) => {
-      serial = x509Cert.getCertSerialNumber();
       if (err == null) {
         try {
+          serial = x509Cert.getCertSerialNumber();
           // 检查证书是否被吊销。
           revokedFlag = x509Crl.isRevoked(x509Cert);
           console.info(`revokedFlag is: ${revokedFlag}`);

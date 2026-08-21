@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS-Sta对象默认可以在线程间共享。多个线程同时修改同一份可变数据，或一个线程读取、另一个线程修改同一份数据时，需要使用同步机制保护临界区。ArkTS-Sta提供[Mutex (互斥锁)](../reference/apis-arkts/arkts-sta-mutex.md)、[RWLock (读写锁)](../reference/apis-arkts/arkts-sta-rwlock.md)和[AsyncLock (异步锁)](../reference/apis-arkts/arkts-sta-asynclock.md)，分别适用于同步临界区、读多写少和异步流程。
 

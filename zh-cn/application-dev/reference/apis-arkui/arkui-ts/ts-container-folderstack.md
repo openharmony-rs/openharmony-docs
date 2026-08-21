@@ -1,8 +1,8 @@
 # FolderStack
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fenglinbailu-->
-<!--Designer: @lanshouren-->
+<!--Owner: @fenglinbailu; @song-song-song-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -410,7 +410,6 @@ struct Index {
       .alignContent(Alignment.Bottom)
       .height("100%")
       .width("100%")
-      .backgroundColor('rgb(39, 135, 217)')
 
     }
     .height("100%")
@@ -579,7 +578,6 @@ struct attributeDemo {
       .alignContent(Alignment.Bottom)
       .height("100%")
       .width("100%")
-      .backgroundColor('rgb(39, 135, 217)')
     }
     .height("100%")
     .width("100%")

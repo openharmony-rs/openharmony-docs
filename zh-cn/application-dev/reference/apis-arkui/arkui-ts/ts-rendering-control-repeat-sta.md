@@ -1,4 +1,10 @@
 # Repeat (ArkTS-Sta)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @maorh-->
+<!--Designer: @keerecles-->
+<!--Tester: @khq-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 >
@@ -228,6 +234,7 @@ Repeat数据源参数联合类型。
 | totalCount | int | 否 | 是  | 期望加载的数据项总数，可以不等于数据源长度（实际传入Repeat的数组的长度）。<br>取值范围：自然数。<br>totalCount缺省或超出取值范围时，totalCount取值为数据源长度，列表正常滚动。<br>totalCount = 0时，不加载数据。<br>0 < totalCount <= 数据源长度时，界面中只渲染区间[0, totalCount - 1]范围内的数据。<br>totalCount > 数据源长度时，Repeat将渲染区间[0, totalCount - 1]范围内的数据，容器组件滚动条样式根据totalCount值变化。在容器组件滚动过程中，应用需要保证在列表即将滑动到数据源末尾时请求后续数据。开发者需要对数据请求的错误场景（如网络延迟）进行保护操作，直到数据源全部加载完成，否则列表滑动过程中会出现滚动效果异常。建议配合使用[onLazyLoading](#onlazyloading)实现数据懒加载。<br>除totalCount属性外，开发者也可以通过[onTotalCount](#ontotalcount)方法设置自定义方法，计算期望加载的数据项总数。 |
 | reusable | boolean | 否 | 是  | 是否开启复用功能。<br>true：开启复用。<br>false：关闭复用。<br>默认值：true |
 | disableVirtualScroll | boolean | 否 | 是 | 是否关闭懒加载模式。<br>true：关闭懒加载模式，列表节点全部加载。<br>false：使用懒加载模式。<br>默认值：false<br>该接口仅适用于ArkTS-Sta。 |
+| memoryOptimizationStrategy | [RepeatMemOptStrategy](#repeatmemoptstrategy) | 否 | 是 | Repeat的内存优化策略。该参数在创建Repeat时设定，不支持动态修改。<br>DEFAULT：默认模式。<br>ENABLE_AUTO_CACHE_OPTIMIZATION：Repeat自动优化内存。<br>默认值：DEFAULT|
 
 **示例**
 
@@ -452,3 +459,60 @@ struct Repeat_Virtual_1_2 {
 运行效果：
 
 ![repeat_sta_vs_demo](figures/repeat_sta_vs_demo.jpeg)
+
+## RepeatMemOptStrategy
+  
+Repeat内存优化策略枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| DEFAULT | 0 | 无内存优化策略。 |
+| ENABLE_AUTO_CACHE_OPTIMIZATION | 1 | 自动内存优化策略，当Repeat子节点内存占用较高时，建议使用此策略以降低内存使用量。<br>当应用退后台时、Repeat所在组件不可见时（[visibility](./ts-universal-attributes-visibility.md#visibility)属性设置为Visible以外的值，或组件面积为0，不考虑遮挡）、整机低内存时（[MemoryLevel](../../apis-ability-kit/js-apis-app-ability-abilityConstant.md#memorylevel)达到MEMORY_LEVEL_LOW或MEMORY_LEVEL_CRITICAL），释放Repeat预加载区域的所有子节点。<br>当应用恢复前台、Repeat组件恢复显示时，列表滑动时恢复缓存池中的节点。 |
+
+**示例：**
+
+```ts
+import { Entry, Component, Column, Text, Color, Repeat, RepeatItem, RepeatMemOptStrategy, List, ListItem } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Repeat_Virtual_1_2 {
+  @State simpleList: Array<string> = new Array<string>();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 50; i++) {
+      this.simpleList.push(`data_${i}`); // 向数组中添加一些数据
+    }
+  }
+
+  build() {
+    Column() {
+      List() {
+        Repeat<string>(this.simpleList) // 必须声明数据类型<T>
+          .each((ri: RepeatItem<string>) => { // RepeatItem可以省略
+            ListItem() {
+              Text(`#${ri.index}: ${ri.item}`).fontColor(Color.Red)
+            }
+          })
+          .key((item: string) => item)
+          .virtualScroll({memoryOptimizationStrategy: RepeatMemOptStrategy.ENABLE_AUTO_CACHE_OPTIMIZATION}) // 配置Repeat的内存优化策略，将自动优化内存
+          .template('ttype_a', (ri: RepeatItem<string>) => { // RepeatItem可以省略
+            ListItem() {
+              Text(`#${ri.index}: ${ri.item}`).fontColor(Color.Blue)
+            }
+          }, { cachedCount: 1 })
+          .templateId((item: string, index: int) => index % 2 === 0 ? 'ttype_a' : '')
+      }.height('40%')
+    }
+  }
+}
+```

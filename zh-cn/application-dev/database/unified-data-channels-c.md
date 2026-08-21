@@ -37,7 +37,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景，提供了标准�
 
 ## 接口说明
 
-详细的接口说明请参考[UDMF接口文档](../reference/apis-arkdata/capi-udmf-h.md)。
+详细的接口说明请参考UDMF接口文档[udmf.h](../reference/apis-arkdata/capi-udmf-h.md)。
 
 | 接口名称                                                                                    | 描述                                          | 
 |-----------------------------------------------------------------------------------------|---------------------------------------------|
@@ -47,7 +47,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景，提供了标准�
 | int OH_UdmfRecord_AddHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink) | 向OH_UdmfRecord添加超链接类型数据。             |
 | OH_UdmfData* OH_UdmfData_Create()                            | 创建一个指向统一数据对象OH_UdmfData的指针。                 |
 | int OH_UdmfData_AddRecord(OH_UdmfData* pThis, OH_UdmfRecord* record) | 向OH_UdmfData中增加一条OH_UdmfRecord数据记录。      |
-| int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData *unifiedData, char *key, unsigned int keyLen)        | 从统一数据管理框架数据库中写入统一数据对象OH_UdmfData数据。                          |
+| int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)        | 向统一数据管理框架数据库中写入统一数据对象OH_UdmfData数据。                          |
 | void OH_UdsHyperlink_Destroy(OH_UdsHyperlink* pThis)         | 销毁超链接类型指针指向的实例对象。 |
 | void OH_UdmfRecord_Destroy(OH_UdmfRecord* pThis)             | 销毁指向统一数据记录OH_UdmfRecord的指针。                   |
 | void OH_UdmfData_Destroy(OH_UdmfData* pThis)                 | 销毁指向统一数据对象OH_UdmfData的指针。                     |
@@ -107,7 +107,7 @@ libudmf.so, libhilog_ndk.z.so
 ``` C++
 int32_t SetHyperlinkData(OH_UdsHyperlink* hyperlink, OH_UdmfRecord* record, OH_UdmfData* data)
 {
-    // 2.设置hyperlink中的URL和描述信息。
+    // 2. 设置hyperlink中的URL和描述信息。
     int ret = OH_UdsHyperlink_SetUrl(hyperlink, "www.demo.com");
     if (ret != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Hyperlink set url error!");
@@ -132,10 +132,9 @@ int32_t SetHyperlinkData(OH_UdsHyperlink* hyperlink, OH_UdmfRecord* record, OH_U
     }
     return UDMF_E_OK;
 }
-
 int32_t CreateDataTest()
 {
-    // 1.创建hyperlink的UDS数据结构、OH_UdmfRecord对象及OH_UdmfData对象。
+    // 1. 创建hyperlink的UDS数据结构、OH_UdmfRecord对象及OH_UdmfData对象。
     OH_UdsHyperlink* hyperlink = OH_UdsHyperlink_Create();
     OH_UdmfRecord* record = OH_UdmfRecord_Create();
     OH_UdmfData* data = OH_UdmfData_Create();
@@ -147,7 +146,7 @@ int32_t CreateDataTest()
         OH_UdmfData_Destroy(data);
         return ret;
     }
-    // 构建数据操作选项。
+    // 5. 构建数据操作选项。
     OH_UdmfOptions* options = OH_UdmfOptions_Create();
     ret = OH_UdmfOptions_SetIntention(options, Udmf_Intention::UDMF_INTENTION_DATA_HUB);
     if (ret != Udmf_ErrCode::UDMF_E_OK) {
@@ -201,6 +200,7 @@ int32_t ProcessHyperlinks(OH_UdmfRecord* record, unsigned int recordTypeIdCount,
             int32_t ret = OH_UdmfRecord_GetHyperlink(record, hyperlink);
             if (ret != Udmf_ErrCode::UDMF_E_OK) {
                 OH_LOG_ERROR(LOG_APP, "Fail get hyperlink from record!");
+                OH_UdsHyperlink_Destroy(hyperlink);
                 return ret;
             }
             // 读取OH_UdsHyperlink中的各项信息。
@@ -276,6 +276,7 @@ int32_t GetDataTest()
     ret = HandleUdmfHyperlinkData(readData, dataSize, dataArray);
     if (ret != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Get Data error!");
+        OH_Udmf_DestroyDataArray(dataArray, dataSize);
         return ret;
     }
     // 5.销毁指针。
@@ -376,7 +377,7 @@ int32_t UpdateDataTest()
 
 ## 使用UDMF删除UDS数据
 
-下面继续以获取超链接OH_UdsHyperlink类型数据场景为例，说明如何使用UDS与UDMF。
+下面继续以删除超链接OH_UdsHyperlink类型数据场景为例，说明如何使用UDS与UDMF。
 1. 构建数据操作选项。
 2. 通过数据操作选项删除数据。
 3. 判断OH_UdmfData是否有对应的类型。
@@ -432,7 +433,7 @@ int32_t ProcessDataElement(OH_UdmfData* data)
 
 int32_t ProcessHyperlinkDataFromArray(OH_UdmfData* readData, unsigned int dataSize, OH_UdmfData** dataArray)
 {
-    for (unsigned int i = 0; i < dataSize - 1; i++) {
+    for (unsigned int i = 0; i < dataSize; i++) {
         OH_UdmfData* data = OH_UDMF_GetDataElementAt(dataArray, i);
         // 3. 判断OH_UdmfData是否有对应的类型。
         if (!OH_UdmfData_HasType(data, UDMF_META_HYPERLINK)) {
@@ -477,6 +478,7 @@ int32_t DeleteDataTest()
     OH_UdmfData** dataArray = &readData;
     ret = ProcessHyperlinkDataFromArray(readData, dataSize, dataArray);
     if (ret != UDMF_E_OK) {
+        OH_Udmf_DestroyDataArray(dataArray, dataSize);
         OH_LOG_ERROR(LOG_APP, "Process hyperlink data error!");
         return ret;
     }

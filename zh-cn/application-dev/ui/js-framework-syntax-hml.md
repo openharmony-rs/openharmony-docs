@@ -150,7 +150,7 @@ export default {
   ```html
   <!-- xxx.hml -->
   <div>
-     <!-- 使用事件冒泡模式绑定事件回调函数。5+ -->;
+     <!-- 使用事件冒泡模式绑定事件回调函数。5+ -->
       <div on:touchstart.bubble="touchstartfunc" style="background-color: red; width: 10%; height: 100%"></div>
       <div on:touchstart="touchstartfunc" style="background-color: orange; width: 10%; height: 100%"></div>
       <!-- 绑定事件回调函数，但阻止事件向上传递。5+ -->
@@ -178,7 +178,7 @@ export default {
   ```
 
 > **说明：**
-> 采用旧写法(onclick)的事件绑定在最小API版本6以下时采用不冒泡处理，在最小API版本为6及6以上时采用冒泡处理。
+> 采用旧写法（onclick）的事件绑定在最小API版本6以下时采用不冒泡处理，在最小API版本为6及6以上时采用冒泡处理。
 
 ## 捕获事件绑定<sup>5+</sup>
 

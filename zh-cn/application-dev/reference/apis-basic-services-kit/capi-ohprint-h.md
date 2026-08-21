@@ -2,8 +2,8 @@
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
  <!--Owner: @guoshengbang-->
- <!--Designer: @Q-haosu-->
- <!--Tester: @Q-haosu-->
+ <!--Designer: @baozewei-->
+ <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
 
 ## 概述
@@ -18,7 +18,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [OH_Print](capi-oh-print.md)
+**相关模块：** [Print](capi-oh-print.md)
 
 ## 汇总
 
@@ -579,7 +579,7 @@ Print_ErrorCode OH_Print_RegisterPrinterChangeListener(Print_PrinterChangeCallba
 
 | 类型                                                 | 说明                                                         |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | 返回 [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode) 表示执行成功。<br>         [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode) 需要 ohos.permission.PRINT 权限。<br>         [PRINT_ERROR_RPC_FAILURE](capi-ohprint-h.md#print_errorcode) 无法连接到打印服务能力。 |
+| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | 返回 [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode) 表示执行成功。<br>         [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode) 需要 ohos.permission.PRINT 权限。<br>         [PRINT_ERROR_RPC_FAILURE](capi-ohprint-h.md#print_errorcode) 无法连接到打印服务。 |
 
 ### OH_Print_UnregisterPrinterChangeListener()
 

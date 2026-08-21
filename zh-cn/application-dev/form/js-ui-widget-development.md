@@ -18,14 +18,14 @@ FormExtensionAbility类拥有如下API接口，具体的API介绍详见[@ohos.ap
 | onUpdateForm(formId: string, wantParams?: Record<string, Object>): void                          | 卡片提供方接收更新卡片的通知接口。 |
 | onChangeFormVisibility(newStatus:&nbsp;Record&lt;string,&nbsp;number&gt;):&nbsp;void             | 卡片提供方接收修改可见性的通知接口。 |
 | onFormEvent(formId:&nbsp;string,&nbsp;message:&nbsp;string):&nbsp;void                           | 卡片提供方接收处理卡片事件的通知接口。 |
-| onRemoveForm(formId:&nbsp;string):&nbsp;void                                                     | 卡片提供方接收销毁卡片的通知接口。 |
+| onRemoveForm(formId:&nbsp;string):&nbsp;void                                                     | 卡片提供方接收删除卡片的通知接口。 |
 | onConfigurationUpdate(newConfig:&nbsp;Configuration):&nbsp;void                                  | 当系统配置更新时调用。 |
 
 formProvider类部分API接口如下，具体的API介绍详见[@ohos.app.form.formProvider (formProvider)](../reference/apis-form-kit/js-apis-app-form-formProvider.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| setFormNextRefreshTime(formId:&nbsp;string,&nbsp;minute:&nbsp;number,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | 设置指定卡片的下一次更新时间，使用callback异步回调。 |
+| setFormNextRefreshTime(formId:&nbsp;string,&nbsp;minute:&nbsp;number,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | 设置指定卡片的下一次刷新时间，使用callback异步回调。 |
 | setFormNextRefreshTime(formId:&nbsp;string,&nbsp;minute:&nbsp;number):&nbsp;Promise&lt;void&gt; | 设置指定卡片的下一次更新时间，使用Promise异步回调。 |
 | updateForm(formId:&nbsp;string,&nbsp;formBindingData:&nbsp;formBindingData.FormBindingData,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | 更新指定的卡片，使用callback异步回调。 |
 | updateForm(formId:&nbsp;string,&nbsp;formBindingData:&nbsp;formBindingData.FormBindingData):&nbsp;Promise&lt;void&gt; | 更新指定的卡片，使用Promise异步回调。 |
@@ -347,7 +347,7 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
    | src | 表示卡片对应的UI代码的完整路径。 | 字符串 | 否 |
    | window | 用于定义与显示窗口相关的配置。 | 对象 | 可缺省，缺省值参考[window标签](./arkts-ui-widget-configuration.md#window标签)表格。 |
    | isDefault | 表示该卡片是否为默认卡片，每个UIAbility有且只有一个默认卡片。<br/>-&nbsp;true：默认卡片。<br/>-&nbsp;false：非默认卡片。 | 布尔值 | 否 |
-   | colorMode<sup>(deprecated)</sup> | 表示卡片的主题样式，取值范围如下：<br/>-&nbsp;auto：跟随系统的颜色模式值选取主题。<br/>-&nbsp;dark：深色主题。<br/>-&nbsp;light：浅色主题。<br/>**说明：**<br/>1. 从API version 12开始支持该配置项，从API version 20开始废弃该配置项，卡片主题样式统一跟随系统的颜色模式。<br/> | 字符串 | 可缺省，缺省值为“auto”。 |
+   | colorMode<sup>(deprecated)</sup> | 表示卡片的颜色模式，取值范围如下：<br/>-&nbsp;auto：跟随系统的颜色模式值选取主题。<br/>-&nbsp;dark：深色主题。<br/>-&nbsp;light：浅色主题。<br/>**说明：**<br/>1. 从API version 12开始支持该配置项，从API version 20开始废弃该配置项，卡片主题样式统一跟随系统的颜色模式。<br/> | 字符串 | 可缺省，缺省值为“auto”。 |
    | supportDimensions | 表示卡片支持的外观规格，取值范围：<!--RP2--><!--RP2End--><br/>-&nbsp;1&nbsp;\*&nbsp;2：表示1行2列的二宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;2：表示2行2列的四宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;4：表示2行4列的八宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;3：表示2行3列的六宫格。<br/>-&nbsp;3&nbsp;\*&nbsp;3：表示3行3列的九宫格。<br/>-&nbsp;4&nbsp;\*&nbsp;4：表示4行4列的十六宫格。<br/>-&nbsp;6&nbsp;\*&nbsp;4：表示6行4列的二十四宫格。<br>**说明**：&nbsp;2&nbsp;\*&nbsp;3和&nbsp;3&nbsp;\*&nbsp;3仅支持手表设备<!--RP3--><!--RP3End-->。 | 字符串数组 | 否 |
    | defaultDimension | 表示卡片的默认外观规格，取值必须在该卡片supportDimensions配置的列表中。 | 字符串 | 否 |
    | updateEnabled | 表示卡片是否支持周期性刷新，取值范围：<br/>-&nbsp;true：表示支持周期性刷新，可以在定时刷新（updateDuration）和定点刷新（scheduledUpdateTime）两种方式任选其一，优先选择定时刷新。<br/>-&nbsp;false：表示不支持周期性刷新。 | 布尔类型 | 否 |

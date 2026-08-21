@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -674,7 +674,7 @@ The basic implementation is similar to the aforementioned dynamic routing with *
 4. Each routing page registers its module name, route name, and the **WrappedBuilder**-encapsulated build function with the routing management module.
 5. The routing management module completes dynamic imports and route transitions as needed.
 
-For details about the building process, refer to the **Navigation** example for [auto-generating dynamic routes](https://gitcode.com/harmonyos-cases/cases/blob/master/CommonAppDevelopment/common/routermodule/README_AUTO_GENERATE.md).
+For details about the building process, refer to the **Navigation** example for [auto-generating dynamic routes](https://gitcode.com/HarmonyOS-Cases/cases/blob/master/CommonAppDevelopment/common/routermodule/README_AUTO_GENERATE.md).
 
 **Solution 2: System Routing Table**
 

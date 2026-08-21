@@ -47,7 +47,7 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
 2. 调用UI测试框架能力，页面中执行点击操作。
 3. 通过<!--RP2-->[添加断言](unittest-guidelines.md#断言能力)<!--RP2End-->，验证操作后当前页面的实际变化是否与预期结果一致。
 
-开发步骤如下:
+开发步骤如下：
 
 1. 在main > ets > pages文件夹下编写clickToAfter.ets页面代码，作为被测示例demo。
     
@@ -252,7 +252,7 @@ export default function abilityTest() {
     })
 
     /**
-     * 查找类型为'Image'的控件，并进行对其进行双指放大操作
+     * 查找类型为'Image'的控件，并对其进行双指放大操作
      */
     it('componentPinch', TestType.FUNCTION, async () => {
       let driver: Driver = Driver.create();
@@ -498,7 +498,7 @@ export default function abilityTest() {
     })
     /**
      * 基于控件的文本输入，指定以复制粘贴方式注入输入指定文本
-     * 指定以追加方式输入，即在输入文本签不清空原有内容
+     * 指定以追加方式输入，即在输入文本前不清空原有内容
      */
     it('componentInputTextAddition', TestType.FUNCTION, async () => {
       let driver = Driver.create();
@@ -1263,7 +1263,7 @@ hdc shell uitest screenCap -p /data/local/tmp/1.png
 | -i | - | 不过滤不可见控件，也不做窗口合并。|
 | -a | - | 保存控件的BackgroundColor、Content、FontColor、FontSize、extraAttrs属性数据。<br>**说明** ：默认不保存上述属性数据， **-a和-i不可同时使用。** | 
 | -b | \<bundleName\> | 获取指定包名对应目标窗口的控件树信息。|
-| -w | \<windowId\>  | 获取指定ID目标窗口的控件树信息。<br> **说明:**<br>可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->, 包含应用对应窗口的id。|
+| -w | \<windowId\>  | 获取指定ID目标窗口的控件树信息。<br> **说明：**<br>可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->，包含应用对应窗口的id。|
 | -m | \<true\|false\> | 指定在获取控件树信息时是否合并窗口信息。true表示合并窗口信息，false表示不合并窗口信息，不设置时默认为true。 |
 | -d | \<displayId\>  | 多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：**<br> 1. 从API version 20开始支持该命令。<br>2. 可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->，包含应用对应窗口的DisplayId。|
 
@@ -1282,7 +1282,7 @@ hdc shell uitest dumpLayout -p /data/local/tmp/1.json
 |-------|--------------|-----------------|
 | -W    | \<true/false> |  录制过程中是否保存操作坐标对应的控件信息到/data/local/tmp/record.csv文件中。true表示保存控件信息，false表示仅记录坐标信息，不设置时默认为true。 <br> **说明：** 从API version 20开始支持该命令。|
 | -l    | - |  在每次操作后保存当前布局信息，文件保存路径：/data/local/tmp/layout_录制启动时间戳_操作序号.json。 <br> **说明：** 从API version 20开始支持该命令。| 
-| -c    | \<true/false> | 是否将录制到的操作事件信息打印到控制台，true表示打印，false表示打印，不设置时默认为true。<br> **说明：** 从API version 20开始支持该命令。 | 
+| -c    | \<true/false> | 是否将录制到的操作事件信息打印到控制台，true表示打印，false表示不打印，不设置时默认为true。<br> **说明：** 从API version 20开始支持该命令。 | 
 
 ```bash
 # 将当前界面操作记录到/data/local/tmp/record.csv，结束录制操作使用Ctrl+C结束录制。
@@ -1316,12 +1316,12 @@ hdc shell uitest uiRecord read
      "LENGTH": "0", // 总体步长
      "MAX_VEL": "40000", // 最大速度
      "VELO": "0.000000", // 离手速度
-     "W1_BOUNDS": "{"bottom":361,"left":37,"right":118,"top":280}", // 起点控件边界
+     "W1_BOUNDS": "{\"bottom\":361,\"left\":37,\"right\":118,\"top\":280}", // 起点控件边界
      "W1_HIER": "ROOT,3,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0", // 起点控件页面层级
      "W1_ID": "", // 起点控件id
      "W1_Text": "", // 起点控件text
      "W1_Type": "Image", // 起点控件类型
-     "W2_BOUNDS": "{"bottom":361,"left":37,"right":118,"top":280}", // 终点控件边界
+     "W2_BOUNDS": "{\"bottom\":361,\"left\":37,\"right\":118,\"top\":280}", // 终点控件边界
      "W2_HIER": "ROOT,3,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0", // 终点控件页面层级
      "W2_ID": "", // 终点控件id
      "W2_Text": "", // 终点控件text
@@ -1479,7 +1479,7 @@ hdc shell uitest --version
 
 >**说明**
 >
-> 仅元能力aa test拉起的测试HAP才能调用Uitest的能力，且测试HAP的<!--RP7-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP7End-->需为normal。
+> 仅元能力aa test拉起的测试HAP才能调用UITest的能力，且测试HAP的<!--RP7-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP7End-->需为normal。
 
 ```shell  
 hdc shell uitest start-daemon
@@ -1493,7 +1493,7 @@ hdc shell uitest start-daemon
 介绍通过设置控件属性作为查找条件，在应用界面上查找组件对象，具体代码请参考[控件查找示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/findCommentExample.test.ets)。
 
 ### 模拟点击操作事件能力实例
-介绍模拟用户在应用界面上进行点击，长按，双击等事件,具体代码请参考[点击事件示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/clickEvent.test.ets)。
+介绍模拟用户在应用界面上进行点击，长按，双击等事件，具体代码请参考[点击事件示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/clickEvent.test.ets)。
 
 ### 模拟鼠标操作能力实例
 介绍模拟鼠标左击、右击、滑轮事件，具体代码请参考[鼠标操作事件示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/MouseEvent.test.ets)。

@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 Declgen是互操作场景下，在ArkTS-Dyn与ArkTS-Sta之间进行声明文件双向转换的工具，支持以下两个方向：
 

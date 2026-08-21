@@ -29,19 +29,23 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 | 名称                                  |    值   |   说明                         |
 | ------------------------------------- | -------- | ---------------------------- |
-| INVALID_PARAMS                        | 401      | 非法入参。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23                  |
-| NOT_SUPPORT                           | 801      | 操作不支持。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23                 |
-| ERR_OUT_OF_MEMORY                     | 17620001 | 内存操作失败。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23                   |
-| ERR_RUNTIME_ERROR                     | 17620002 | 获取Native对象失败或参数转换失败。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23           |
-| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>            | 17620003 | 表示参数检查失败。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20  <br>**ArkTS-Sta起始版本：** 23           |
+| INVALID_PARAMS                        | 401      | 非法入参。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23    <br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。               |
+| NOT_SUPPORT                           | 801      | 操作不支持。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23    <br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。             |
+| ERR_OUT_OF_MEMORY                     | 17620001 | 内存操作失败。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23   <br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。                  |
+| ERR_RUNTIME_ERROR                     | 17620002 | 获取Native对象失败或参数转换失败。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23     <br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。        |
+| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>            | 17620003 | 表示参数检查失败。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20  <br>**ArkTS-Sta起始版本：** 23    <br>**模型约束：** 此接口仅可在Stage模型下使用。         |
 | ERR_INVALID_CALL          | 17620004 | 表示无效的函数调用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0  <br>**ArkTS-Sta起始版本：** 26.0.0           |
-| ERR_CRYPTO_OPERATION                  | 17630001 | 密码操作错误。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23    |
+| ERR_CRYPTO_OPERATION                  | 17630001 | 密码操作错误。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23   <br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。   |
 
 ## DataBlob
 
 二进制数据的封装接口，核心字段data为Uint8Array类型。
 
  **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+ **模型约束：**
+ - API版本12+：此接口可在Stage模型和FA模型下使用。
+ - API版本9-11：此接口仅可在Stage模型下使用。
 
  **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -51,7 +55,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
  
 | 名称 | 类型       | 只读 | 可选 | 说明   |
 | ---- | ---------- | ---- | ---- | ------ |
-| data | Uint8Array | 否   | 否   | 数据。 |
+| data | Uint8Array | 否   | 否   | 数据。|
 
 > **说明：**
 >
@@ -65,13 +69,13 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 > **说明：**
 >
-> iv（Initialization Vector，初始化向量）是用于对称加密模式（如 CBC/CTR/OFB/CFB/GCM/CCM/Poly1305）中引入随机性或唯一性的字节序列，保证相同明文在相同密钥下产生不同密文。
+> iv（Initialization Vector，初始化向量）是用于对称加密模式（如 CBC/CTR/OFB/CFB/GCM/CCM/ChaCha20-Poly1305）中引入随机性或唯一性的字节序列，保证相同明文在相同密钥下产生不同密文。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -79,7 +83,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| algName | string | 否   | 否   | 指明对称加解密参数的算法模式。可选值如下：<br/> - "IvParamsSpec"：适用于CBC\|CTR\|OFB\|CFB模式。<br/> - "GcmParamsSpec"：适用于GCM模式。<br/> - "CcmParamsSpec"：适用于CCM模式。 |
+| algName | string | 否   | 否   | 指明对称加解密参数的算法模式。可选值如下：<br/> - "IvParamsSpec"：适用于CBC\|CTR\|OFB\|CFB模式。<br/> - "GcmParamsSpec"：适用于GCM模式。<br/> - "CcmParamsSpec"：适用于CCM模式。<br/>- "AeadParamsSpec"：适用于AES-GCM，AES-CCM，SM4-GCM和ChaCha20-Poly1305算法。 |
 
 > **说明：**
 >
@@ -93,9 +97,9 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -103,7 +107,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 名称 | 类型                  | 只读 | 可选 | 说明                                                         |
 | ---- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv   | [DataBlob](#datablob) | 否   | 否  | 指明加解密参数iv。常见取值如下：<br/>- AES的CBC\|CTR\|OFB\|CFB模式：iv长度为16字节。<br/>- 3DES的CBC\|OFB\|CFB模式：iv长度为8字节。<br/>- SM4<sup>10+</sup>的CBC\|CTR\|OFB\|CFB模式：iv长度为16字节。 |
+| iv   | [DataBlob](#datablob) | 否   | 否  | 加解密参数iv。常见长度如下：<br/>- AES的CBC\|CTR\|OFB\|CFB模式：iv长度为16字节。<br/>- 3DES的CBC\|OFB\|CFB模式：iv长度为8字节。<br/>- SM4<sup>10+</sup>的CBC\|CTR\|OFB\|CFB模式：iv长度为16字节。 |
 
 > **说明：**
 >
@@ -111,15 +115,15 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 ## GcmParamsSpec
 
-加解密参数[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
+加解密参数[ParamsSpec](#paramsspec)的子类，封装使用GCM AEAD模式进行加密或解密的参数，需要IV、AAD和认证标签。它是[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
 
 适用于GCM模式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -128,26 +132,25 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
 | iv      | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数iv，长度为1~128字节，常用为12字节。                             |
-| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad，长度为0~INT_MAX字节，常用为16字节。                             |
+| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad，长度为0~INT_MAX字节。                             |
 | authTag | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数authTag，长度为16字节。<br/>采用GCM模式加密时，需从[doFinal()](#dofinal)或[doFinalSync()](#dofinalsync12)输出的[DataBlob](#datablob)中提取末尾16字节，作为[init()](#init-1)或[initSync()](#initsync12)方法中GcmParamsSpec的authTag。 |
 
 > **说明：**
 >
 > 1. 传入[init()](#init-1)方法前需要指定其algName属性（来源于父类[ParamsSpec](#paramsspec)）。
-> 2. 对于1~128字节长度的iv，加解密算法库无额外限制，但结果取决于底层OpenSSL的支持情况。
-> 3. 当aad参数不需要使用或aad长度为0时，可以将aad的data属性设置为一个空的Uint8Array，来构造GcmParamsSpec，写法为aad: { data: new Uint8Array() }。
+> 2. 当aad参数不需要使用或aad长度为0时，可以将aad的data属性设置为一个空的Uint8Array，来构造GcmParamsSpec，写法为aad: { data: new Uint8Array() }。
 
 ## CcmParamsSpec
 
-加解密参数[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
+加解密参数[ParamsSpec](#paramsspec)的子类，封装使用CCM AEAD模式进行加密或解密的参数，需要IV、AAD和认证标签。它是[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
 
 适用于CCM模式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -165,9 +168,9 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 ## Poly1305ParamsSpec<sup>22+</sup>
 
-加解密参数[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
+加解密参数[ParamsSpec](#paramsspec)的子类，封装使用ChaCha20-Poly1305 AEAD模式进行加密或解密的参数，需要nonce、AAD和认证标签。它是[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
 
-适用于[ChaCha20算法](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#chacha20)Poly1305模式。
+适用于[ChaCha20算法](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#chacha20)Poly1305模式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -179,8 +182,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv      | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数iv，长度为12字节。                              |
-| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad，长度为任意字节。                             |
+| iv      | [DataBlob](#datablob) | 否   | 否   | nonce（通过iv字段传入），长度为12字节。                              |
+| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad。                             |
 | authTag | [DataBlob](#datablob) | 否   | 否   | 指定加解密参数authTag，长度为16字节。 |
 
 > **说明：**
@@ -191,9 +194,9 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 ## AeadParamsSpec
 
-用于AEAD（带关联数据的认证加密）对称加解密的[init()](#init-1)方法参数，继承自[ParamsSpec](#paramsspec)。
+用于AEAD（带附加数据的认证加密）对称加解密的[init()](#init-1)方法参数，继承自[ParamsSpec](#paramsspec)。
 
-适用于[AES算法](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#aes)的CCM/GCM分组模式、SM4算法的GCM模式和ChaCha20算法的Poly1305模式。
+适用于[AES算法](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#aes)的CCM/GCM分组模式、SM4算法的GCM模式和ChaCha20算法的Poly1305模式。
 
 > **说明：**
 >
@@ -216,19 +219,19 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| nonce      | Uint8Array | 否   | 否   | 指明加解密参数nonce。对于AES算法的CCM模式长度为7-13字节；对于AES算法的GCM模式、SM4算法的GCM模式长度为1-128字节；对于ChaCha20算法的Poly1305模式长度为12字节。       |
-| authenticatedData     | Uint8Array | 否   | 是   | 指明加解密参数aad，长度为任意字节。                             |
-| tagLen | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否   | 是   | 指定加解密参数authTag长度，单位为字节。对于AES算法的CCM模式，tagLen仅支持4、6、8、10、12、14、16，若不填则默认为12；对于AES算法的GCM模式与SM4算法的GCM模式，tagLen仅支持4、8、12、13、14、15、16，若不填则默认为16；对于ChaCha20算法的Poly1305模式，tagLen仅支持16。 |
+| nonce      | Uint8Array | 否   | 否   | 指明加解密参数nonce。<br>**说明：** <br>对于AES-CCM，nonce长度的取值范围为7~13字节。<br>对于AES-GCM，nonce长度范围为1~128字节，推荐使用12字节。 <br>对于SM4-GCM，nonce长度范围为1~128字节，推荐使用12字节。 <br>对于ChaCha20-Poly1305，nonce长度必须为12字节。     |
+| authenticatedData     | Uint8Array | 否   | 是   | 指定可选的附加认证数据。                             |
+| tagLen | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否   | 是   | 认证标签长度，单位为字节。<br>加密时，标签将被添加到密文末尾。<br>解密时，标签应位于密文末尾。<br>取值应为整数。<br>**说明：** <br>对于AES-CCM，默认值为12。支持的取值为4、6、8、10、12、14和16。<br>对于AES-GCM，默认值为16。支持的取值为4、8、12、13、14、15和16。<br>对于SM4-GCM，默认值为16。支持的取值为4、8、12、13、14、15和16。<br>对于ChaCha20-Poly1305，默认值为16。支持的取值为16。 |
 
 ## CryptoMode
 
-表示加解密操作的枚举。
+枚举加密和解密的密码操作模式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -245,42 +248,38 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
-
 | 名称         | 值   | 说明             |
 | ------------ | ---- | ---------------- |
-| DSA_P_BN | 101 | DSA算法的素模数p。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| DSA_Q_BN | 102 | DSA算法中密钥参数q（p-1的素因子）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| DSA_G_BN | 103 | DSA算法的参数g。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| DSA_SK_BN | 104 | DSA算法的私钥sk。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| DSA_PK_BN | 105 | DSA算法的公钥pk。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| ECC_FP_P_BN | 201 | ECC算法中表示椭圆曲线Fp域的素数p。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| ECC_A_BN | 202 | ECC算法中椭圆曲线的第一个系数a。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| ECC_B_BN | 203 | ECC算法中椭圆曲线的第二个系数b。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| ECC_G_X_BN | 204 | ECC算法中基点g的x坐标。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| ECC_G_Y_BN | 205 | ECC算法中基点g的y坐标。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| ECC_N_BN | 206 | ECC算法中基点g的阶n。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| ECC_H_NUM | 207 | ECC算法中的余因子h。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| ECC_SK_BN | 208 | ECC算法中的私钥sk。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| ECC_PK_X_BN | 209 | ECC算法中，公钥pk（椭圆曲线上的一个点）的x坐标。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| ECC_PK_Y_BN | 210 | ECC算法中，公钥pk（椭圆曲线上的一个点）的y坐标。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| ECC_FIELD_TYPE_STR | 211 | ECC算法中，椭圆曲线的域类型（当前只支持Fp域）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| ECC_FIELD_SIZE_NUM | 212 | ECC算法中域的大小，单位为bits（注：对于Fp域，域的大小为素数p的bits长度）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| ECC_CURVE_NAME_STR | 213 | ECC算法中的SECG(Standards for Efficient Cryptography Group)曲线名称。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| RSA_N_BN | 301 | RSA算法中的模数n。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| RSA_SK_BN | 302 | RSA算法中的私钥sk（即私钥指数d）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| RSA_PK_BN | 303 | RSA算法中的公钥pk（即公钥指数e）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| DH_P_BN<sup>11+</sup> | 401 | DH算法中的素数p。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
-| DH_G_BN<sup>11+</sup> | 402 | DH算法中的参数g。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
-| DH_L_NUM<sup>11+</sup> | 403 | DH算法中私钥长度，单位为bits。 <br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23|
-| DH_SK_BN<sup>11+</sup> | 404 | DH算法中的私钥sk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
-| DH_PK_BN<sup>11+</sup> | 405 | DH算法中的公钥pk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
-| ED25519_SK_BN<sup>11+</sup> | 501 | Ed25519算法中的私钥sk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
-| ED25519_PK_BN<sup>11+</sup> | 502 | Ed25519算法中的公钥pk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
-| X25519_SK_BN<sup>11+</sup> | 601 | X25519算法中的私钥sk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
-| X25519_PK_BN<sup>11+</sup> | 602 | X25519算法中的公钥pk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
+| DSA_P_BN | 101 | DSA算法的素模数p。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework |
+| DSA_Q_BN | 102 | DSA算法中密钥参数q（p-1的素因子）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework |
+| DSA_G_BN | 103 | DSA算法的参数g。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23  <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| DSA_SK_BN | 104 | DSA算法的私钥sk。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| DSA_PK_BN | 105 | DSA算法的公钥pk。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_FP_P_BN | 201 | ECC算法中表示椭圆曲线Fp域的素数p。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_A_BN | 202 | ECC算法中椭圆曲线的第一个系数a。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_B_BN | 203 | ECC算法中椭圆曲线的第二个系数b。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_G_X_BN | 204 | ECC算法中基点g的x坐标。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_G_Y_BN | 205 | ECC算法中基点g的y坐标。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_N_BN | 206 | ECC算法中基点g的阶n。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_H_NUM | 207 | ECC算法中的余因子h。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_SK_BN | 208 | ECC算法中的私钥sk。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_PK_X_BN | 209 | ECC算法中，公钥pk（椭圆曲线上的一个点）的x坐标。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_PK_Y_BN | 210 | ECC算法中，公钥pk（椭圆曲线上的一个点）的y坐标。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_FIELD_TYPE_STR | 211 | ECC算法中，椭圆曲线的域类型（当前只支持Fp域）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_FIELD_SIZE_NUM | 212 | ECC算法中域的大小，单位为bits（注：对于Fp域，域的大小为素数p的bits长度）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_CURVE_NAME_STR | 213 | ECC算法中的SECG(Standards for Efficient Cryptography Group)曲线名称。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| RSA_N_BN | 301 | RSA算法中的模数n。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| RSA_SK_BN | 302 | RSA算法中的私钥sk（即私钥指数d）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| RSA_PK_BN | 303 | RSA算法中的公钥pk（即公钥指数e）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| DH_P_BN<sup>11+</sup> | 401 | DH算法中的素数p。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
+| DH_G_BN<sup>11+</sup> | 402 | DH算法中的参数g。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
+| DH_L_NUM<sup>11+</sup> | 403 | DH算法中私钥长度，单位为bits。 <br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
+| DH_SK_BN<sup>11+</sup> | 404 | DH算法中的私钥sk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
+| DH_PK_BN<sup>11+</sup> | 405 | DH算法中的公钥pk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
+| ED25519_SK_BN<sup>11+</sup> | 501 | Ed25519算法中的私钥sk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
+| ED25519_PK_BN<sup>11+</sup> | 502 | Ed25519算法中的公钥pk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
+| X25519_SK_BN<sup>11+</sup> | 601 | X25519算法中的私钥sk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
+| X25519_PK_BN<sup>11+</sup> | 602 | X25519算法中的公钥pk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
 
 ## AsyKeyDataItem
 
@@ -299,16 +298,16 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 名称         | 值   | 说明             |
 | ------------ | ---- | ---------------- |
 | ML_DSA_PRIVATE_SEED | 0 | 表示ML-DSA（Module-Lattice-Based Digital Signature Algorithm）私钥的种子。 |
-| ML_DSA_PRIVATE_RAW | 1 | 表示ML-DSA私钥的原始数据。 |
-| ML_DSA_PUBLIC_RAW | 2 | 表示ML-DSA公钥的原始数据。 |
+| ML_DSA_PRIVATE_RAW | 1 | 表示ML-DSA私钥的原始私钥数据。 |
+| ML_DSA_PUBLIC_RAW | 2 | 表示ML-DSA公钥的原始公钥数据。 |
 | ML_KEM_PRIVATE_SEED | 3 | 表示ML-KEM（Module-Lattice-Based Key-Encapsulation Mechanism）私钥的种子。 |
-| ML_KEM_PRIVATE_RAW | 4 | 表示ML-KEM私钥的原始数据。 |
-| ML_KEM_PUBLIC_RAW | 5 | 表示ML-KEM公钥的原始数据。 |
-| EC_PRIVATE_K | 6 | 表示椭圆曲线（EC）私钥的 K。 |
-| EC_PRIVATE_04_X_Y_K | 7 | 表示椭圆曲线（EC）私钥的 04\|\|X\|\|Y\|\|K。 |
-| EC_PUBLIC_X_Y | 8 | 表示椭圆曲线（EC）公钥的 X\|\|Y。 |
-| EC_PUBLIC_04_X_Y | 9 | 表示椭圆曲线（EC）公钥的 04\|\|X\|\|Y。 |
-| EC_PUBLIC_COMPRESS_X | 10 | 表示椭圆曲线（EC）公钥的 02\|\|X 或 03\|\|X。 |
+| ML_KEM_PRIVATE_RAW | 4 | 表示ML-KEM私钥的原始私钥数据。 |
+| ML_KEM_PUBLIC_RAW | 5 | 表示ML-KEM公钥的原始公钥数据。 |
+| EC_PRIVATE_K | 6 | 表示椭圆曲线（EC）上的私钥标量k。 |
+| EC_PRIVATE_04_X_Y_K | 7 | 表示椭圆曲线（EC）密钥的复合编码04\|\|X\|\|Y\|\|K，其中04\|\|X\|\|Y为非压缩公钥点，K为私钥标量。|
+| EC_PUBLIC_X_Y | 8 | 表示椭圆曲线（EC）公钥的 X\|\|Y格式编码数据。 |
+| EC_PUBLIC_04_X_Y | 9 | 表示椭圆曲线（EC）公钥的 04\|\|X\|\|Y格式编码数据。|
+| EC_PUBLIC_COMPRESS_X | 10 | 表示椭圆曲线（EC）公钥的 02\|\|X 或 03\|\|X格式编码数据。|
 
 ## AsyKeySpecType<sup>10+</sup>
 
@@ -316,9 +315,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -335,43 +334,35 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 表示加解密参数的枚举。这些参数支持通过[setCipherSpec](#setcipherspec10)接口设置，通过[getCipherSpec](#getcipherspec10)接口获取。
 
-当前只支持RSA算法和SM2算法，从API version 11开始，增加对SM2_MD_NAME_STR参数的支持，详细规格请参考[加解密规格](../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md)。
+当前只支持RSA算法和SM2算法，详细规格请参考[加解密规格](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-API version 10-11 系统能力为 SystemCapability.Security.CryptoFramework；从 API version 12 开始为SystemCapability.Security.CryptoFramework.Cipher。
-
 | 名称         | 值   | 说明             |
 | ------------ | ---- | ---------------- |
-| OAEP_MD_NAME_STR | 100 | 表示RSA算法中，使用PKCS1_OAEP模式时，消息摘要功能的算法名。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| OAEP_MGF_NAME_STR | 101 | 表示RSA算法中，使用PKCS1_OAEP模式时，掩码生成算法（目前仅支持MGF1）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| OAEP_MGF1_MD_STR | 102 | 表示RSA算法中，使用PKCS1_OAEP模式时，MGF1掩码生成功能的消息摘要算法。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| OAEP_MGF1_PSRC_UINT8ARR | 103 | 表示RSA算法中，使用PKCS1_OAEP模式时，pSource的字节流。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| SM2_MD_NAME_STR<sup>11+</sup> | 104 | 表示SM2算法中，使用的摘要算法名。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
+| OAEP_MD_NAME_STR | 100 | 表示RSA算法中，使用PKCS1_OAEP模式时，消息摘要功能的算法名。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Cipher <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| OAEP_MGF_NAME_STR | 101 | 表示RSA算法中，使用PKCS1_OAEP模式时，掩码生成算法（目前仅支持MGF1）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Cipher <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| OAEP_MGF1_MD_STR | 102 | 表示RSA算法中，使用PKCS1_OAEP模式时，MGF1掩码生成功能的消息摘要算法。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Cipher <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| OAEP_MGF1_PSRC_UINT8ARR | 103 | 表示RSA算法中，使用PKCS1_OAEP模式时，pSource的字节流。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Cipher <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| SM2_MD_NAME_STR<sup>11+</sup> | 104 | 表示SM2算法中，使用的摘要算法名。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Cipher <br>API版本11：SystemCapability.Security.CryptoFramework|
 
 ## SignSpecItem<sup>10+</sup>
 
 表示签名验签参数的枚举。这些参数支持通过[setSignSpec](#setsignspec10)、[setVerifySpec](#setverifyspec10)接口设置，通过[getSignSpec](#getsignspec10)、[getVerifySpec](#getverifyspec10)接口获取。
 
-当前只支持RSA算法和SM2算法，从API version 11开始，增加对SM2_USER_ID_UINT8ARR参数的支持。从API版本26.0.0开始，支持ML-DSA算法。详细规格请参考[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 10-11 系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为 SystemCapability.Security.CryptoFramework.Signature。
+当前只支持RSA算法和SM2算法，从API版本26.0.0开始，支持ML-DSA算法。详细规格请参考[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。
 
 | 名称         | 值   | 说明             |
 | ------------ | ---- | ---------------- |
-| PSS_MD_NAME_STR | 100 | 表示RSA算法中，使用PSS模式时，消息摘要功能的算法名。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PSS_MGF_NAME_STR | 101 | 表示RSA算法中，使用PSS模式时，掩码生成算法（目前仅支持MGF1）。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PSS_MGF1_MD_STR | 102 | 表示RSA算法中，使用PSS模式时，MGF1掩码生成功能的消息摘要参数。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PSS_SALT_LEN_NUM | 103 | 表示RSA算法中，使用PSS模式时，盐值的长度，长度以字节为单位。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PSS_TRAILER_FIELD_NUM | 104 | 表示RSA算法中，使用PSS模式时，用于编码操作的整数。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| SM2_USER_ID_UINT8ARR<sup>11+</sup> | 105 | 表示SM2算法中，用户身份标识字段。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ML_DSA_DETERMINISTIC_BOOL | 106 | 表示ML-DSA算法中，是否使用确定性签名，该参数仅对签名时有效，不设置时默认值为false。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| ML_DSA_MU_BOOL | 107 | 表示ML-DSA算法中，是否使用外部μ哈希模式，不设置时默认值为false，设置为true时，待签名数据需是64字节的哈希。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| ML_DSA_CONTEXT_UINT8ARR | 108 | 表示ML-DSA算法中，设置上下文字符串，最大长度为255字节，用于标识签名验签场景，该参数在设置ML_DSA_MU_BOOL为true时无效，不设置时默认值为空字符串。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| PSS_MD_NAME_STR | 100 | 表示RSA算法中，使用PSS模式时，消息摘要功能的算法名。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| PSS_MGF_NAME_STR | 101 | 表示RSA算法中，使用PSS模式时，掩码生成算法（目前仅支持MGF1）。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| PSS_MGF1_MD_STR | 102 | 表示RSA算法中，使用PSS模式时，MGF1掩码生成功能的消息摘要算法。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| PSS_SALT_LEN_NUM | 103 | 表示RSA算法中，使用PSS模式时，盐值的长度，长度以字节为单位。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| PSS_TRAILER_FIELD_NUM | 104 | 表示RSA算法中，使用PSS模式时，用于编码操作的整数。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| SM2_USER_ID_UINT8ARR<sup>11+</sup> | 105 | 表示SM2算法中，用户身份标识字段。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本11：SystemCapability.Security.CryptoFramework <br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ML_DSA_DETERMINISTIC_BOOL | 106 |表示ML-DSA签名和验证过程中是否使用确定性签名。不设置时默认值为false。<br>**系统能力：** <br>SystemCapability.Security.CryptoFramework.Signature <br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| ML_DSA_MU_BOOL | 107 | 表示ML-DSA签名和验证过程中的mu参数值。不设置时默认值为false，设置为true时，待签名数据需是64字节的哈希。<br>**系统能力：** <br>SystemCapability.Security.CryptoFramework.Signature <br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| ML_DSA_CONTEXT_UINT8ARR | 108 | 表示ML-DSA签名和验证过程中的上下文数据。最大长度为255字节，用于标识签名验签场景，该参数在设置ML_DSA_MU_BOOL为true时无效，不设置时默认值为空字符串。<br>**系统能力：** <br>SystemCapability.Security.CryptoFramework.Signature <br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## AsyKeySpec<sup>10+</sup>
 
@@ -379,9 +370,9 @@ API version 10-11 系统能力为SystemCapability.Security.CryptoFramework；从
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -400,9 +391,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -422,9 +413,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -443,9 +434,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -463,9 +454,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -481,9 +472,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -499,9 +490,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -520,9 +511,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -545,9 +536,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -566,9 +557,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -587,9 +578,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -609,9 +600,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -629,9 +620,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -650,9 +641,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -672,9 +663,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -692,9 +683,9 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -712,9 +703,9 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -733,9 +724,9 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -753,9 +744,9 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -773,9 +764,9 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -788,15 +779,15 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 ## DHCommonParamsSpec<sup>11+</sup>
 
-密钥参数[AsyKeySpec](#asykeyspec10)的子类，用于指定DH算法中公私钥包含的参数。
+密钥参数[AsyKeySpec](#asykeyspec10)的子类，用于指定DH算法中公私钥包含的公共参数。
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -816,9 +807,9 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -837,9 +828,9 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -858,9 +849,9 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -878,9 +869,9 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Kdf
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Kdf。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Kdf
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -896,9 +887,9 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Kdf
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Kdf。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Kdf
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -909,7 +900,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | password | string \| Uint8Array | 否   | 否   | 用户输入的原始密码。|
 | salt | Uint8Array | 否   | 否   | 盐值。 |
 | iterations | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 迭代次数，需要为正整数。 |
-| keySize | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 派生得到的密钥字节长度，单位为bytes。 |
+| keySize | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 派生得到的密钥字节长度，需要为正整数，单位为bytes。 |
 
 > **说明：**
 >
@@ -931,8 +922,8 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | key | string \| Uint8Array | 否   | 否   | 密钥材料。|
 | salt | Uint8Array | 否   | 否   | 盐值。 |
-| info | Uint8Array | 否   | 否   | 拓展信息。 |
-| keySize | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 派生得到的密钥字节长度，单位为bytes。 |
+| info | Uint8Array | 否   | 否   | 扩展信息。 |
+| keySize | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 派生得到的密钥字节长度，需要为正整数，单位为bytes。 |
 
 > **说明：**
 >
@@ -958,7 +949,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | passphrase | string \| Uint8Array | 否   | 否   | 用户输入的原始密码。|
 | salt | Uint8Array | 否   | 否   | 盐值。 |
-| n | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 迭代次数，需要为正整数。 |
+| n | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | CPU/内存开销参数，需要为正整数。 |
 | p | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 并行化参数，需要为正整数。 |
 | r | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 块大小参数，需要为正整数。 |
 | maxMemory | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 最大内存限制参数，需要为正整数，单位为bytes。 |
@@ -983,7 +974,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------ |
 | key | string \| Uint8Array | 否   | 否   | 密钥材料。|
-| info | Uint8Array | 否   | 否   | 附加信息。 |
+| info | Uint8Array | 否   | 否   | 共享信息。|
 | keySize | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 派生得到的密钥字节长度，需要为正整数，单位为bytes。 |
 
 > **说明：**
@@ -1031,7 +1022,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | password | string | 否   | 否   | 密码。|
-| cipherName | string | 否   | 否   | 算法名。 |
+| cipherName | string | 否   | 否   | 用于编码私钥的对称密码算法。 |
 
 > **说明：**
 >
@@ -1040,7 +1031,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 > - cipherName是必选参数，指定编码用到的算法。当前仅支持AES-128-CBC、AES-192-CBC、AES-256-CBC、DES-EDE3-CBC。
 
 ## MacSpec<sup>18+</sup>
-消息认证码参数，计算HMAC、CMAC消息认证码时，需要构建子类对象并作为输入参数。
+消息认证码参数，计算HMAC或CMAC时，需要构建子类对象并作为输入参数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1052,14 +1043,14 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| algName | string | 否   | 否   | 消息验证码算法名。|
+| algName | string | 否   | 否   | 消息认证码算法名。|
 
 > **说明：**
 >
-> algName是必选参数，表示消息验证码算法。
+> algName是必选参数，表示消息认证码算法。
 
 ## HmacSpec<sup>18+</sup>
-消息认证码参数[MacSpec](#macspec18)的子类，作为HMAC消息验证码计算的输入。
+消息认证码参数[MacSpec](#macspec18)的子类，作为HMAC计算的输入。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1078,7 +1069,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 > mdName是必选参数，表示HMAC摘要算法。
 
 ## CmacSpec<sup>18+</sup>
-消息认证码参数[MacSpec](#macspec18)的子类，作为CMAC消息验证码计算的输入。
+消息认证码参数[MacSpec](#macspec18)的子类，作为CMAC计算的输入。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1090,7 +1081,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| cipherName | string | 否   | 否   | 对称加密算法名。 |
+| cipherName | string | 否   | 否   | CMAC使用的对称密码算法名。 |
 
 > **说明：**
 >
@@ -1098,7 +1089,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 
 ## EccSignatureSpec<sup>20+</sup>
 
-包含（r、s）的ECC/SM2签名数据的结构体。
+包含（r、s）的ECC/SM2签名数据的对象。
 
 > **说明：**
 >
@@ -1131,9 +1122,9 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -1156,9 +1147,9 @@ getEncoded(): DataBlob
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -1199,7 +1190,7 @@ ArkTS-Dyn: getKeySize(): number
 
 ArkTS-Sta: getKeySize(): int
 
-以同步方式获取密钥的比特长度。密钥可以是对称密钥、公钥或私钥。
+获取密钥大小，单位为bits。密钥可以是对称密钥、公钥或私钥。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1215,7 +1206,7 @@ ArkTS-Sta: getKeySize(): int
 
 | 类型                  | 说明              |
 | --------------------- | ------------------------ |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 获取密钥的比特长度，单位为bytes。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 密钥大小，单位为bits。 |
 
 **错误码：**
 
@@ -1254,13 +1245,13 @@ async function testGenerateAesKey() {
 
 clearMem(): void
 
-同步方法，将系统底层内存中的密钥内容清零。建议在不再使用对称密钥实例时调用此函数，避免密钥数据在内存中存留过久。
+同步方法，将系统底层内存中的密钥数据清零。建议在不再使用对称密钥实例时调用此函数，避免密钥数据在内存中存留过久。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.SymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -1278,13 +1269,13 @@ async function testGenerateAesKeyFun() {
   console.info('key blob: '+ encodedKey.data);
   key.clearMem();
   encodedKey = key.getEncoded();
-  console.info('key blob：' + encodedKey.data);
+  console.info('key blob: ' + encodedKey.data);
 }
 ```
 
 ## PubKey
 
-公钥，是[Key](#key)的子类，在非对称加解密、验签、密钥协商时需要将其对象作为输入使用。
+公钥，是[Key](#key)的子类，在非对称加密、签名验证、密钥协商时需要将其对象作为输入使用。
 
 公钥可以通过非对称密钥生成器[AsyKeyGenerator](#asykeygenerator)、[AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10)来生成。
 
@@ -1302,9 +1293,9 @@ ArkTS-Sta: getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | int
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1367,9 +1358,9 @@ async function testgetAsyKeySpec() {
   let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
   let keyPair = await generatorBySpec.generateKeyPair();
-  let key = keyPair.pubKey;
-  let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
-  console.info('ecc item --- p: ' + p.toString(16));
+  let pubKey = keyPair.pubKey;
+  let eccPrimeP = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+  console.info('ecc item --- p: ' + eccPrimeP.toString(16));
 }
 ```
 
@@ -1415,14 +1406,14 @@ async function testgetAsyKeySpec() {
 
 getEncodedDer(format: string): DataBlob
 
-支持根据指定的密钥格式（如规范、压缩状态等），获取符合ASN.1语法和DER编码的公钥数据。目前仅支持ECC压缩和非压缩格式的公钥数据。
+支持根据指定的密钥格式（如规范、压缩状态等），获取符合ASN.1语法和DER编码的公钥数据。
 
 > **说明：**
 >
 > 本接口和[Key.getEncoded()](#getencoded)的区别是：
 >
 > 1. 本接口可根据入参决定数据的输出格式。
-> 2. [Key.getEncoded()](#getencoded)接口，不支持指定密钥格式，生成的数据格式与原始数据格式保持一致。（原始数据格式，指通过[convertKey](#convertkey-3)接口生成密钥对象时的数据格式）。
+> 2. [Key.getEncoded()](#getencoded)接口，不支持指定获取密钥数据的格式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1436,7 +1427,7 @@ getEncodedDer(format: string): DataBlob
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | 是   | 用于指定当前密钥格式。<br>在API version 12-24，取值仅支持"X509\|COMPRESSED"和"X509\|UNCOMPRESSED"。<br>从API版本26.0.0开始，RSA公钥格式取值支持"PKCS1"和"X509"。 |
+| format  | string | 是   | 用于指定当前密钥格式。支持EC密钥，format取值支持"X509\|COMPRESSED"和"X509\|UNCOMPRESSED"。<br>从API版本26.0.0开始，支持RSA密钥，format取值支持"PKCS1"和"X509"。<br>从API版本26.0.0开始，支持ML-DSA和ML-KEM密钥，format取值支持"X509"。 |
 
 **返回值：**
 
@@ -1466,7 +1457,7 @@ async function testGetEncodedDer() {
   let keyPair = await generator.convertKey(pubKeyBlob, null);
   let key = keyPair.pubKey;
   let returnBlob = key.getEncodedDer('X509|UNCOMPRESSED');
-  console.info('returnBlob data：' + returnBlob.data);
+  console.info('returnBlob data: ' + returnBlob.data);
 }
 ```
 
@@ -1488,13 +1479,13 @@ getEncodedPem(format: string): string
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | 是   | 指定的获取密钥字符串的编码格式。其中，公钥可为'PKCS1' 或'X509'格式。|
+| format  | string | 是   | 指定的获取密钥字符串的编码格式。支持RSA密钥，format取值支持"X509"或"PKCS1"。<br>从API版本26.0.0起，支持EC、ML-DSA和ML-KEM密钥，format取值支持"X509"。|
 
 **返回值：**
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| string | 用于获取指定密钥格式的具体内容。 |
+| string | PEM编码的公钥数据。 |
 
 **错误码：**
 以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
@@ -1633,7 +1624,7 @@ function eccGetKeyDataTest() {
 
 ## PriKey
 
-私钥，是[Key](#key)的子类，在非对称加解密、签名、密钥协商时需要将其作为输入使用。
+私钥，是[Key](#key)的子类，在非对称解密、签名、密钥协商时需要将其作为输入使用。
 
 私钥可以通过非对称密钥生成器[AsyKeyGenerator](#asykeygenerator)、[AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10)来生成。
 
@@ -1645,13 +1636,13 @@ function eccGetKeyDataTest() {
 
 clearMem(): void
 
-同步方法，清零系统底层内存中的密钥内容。
+同步方法，清零系统底层内存中的密钥数据。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -1669,7 +1660,7 @@ async function testClearMem() {
   keyGenPromise.then(keyPair => {
     let priKey = keyPair.priKey;
     let returnBlob = priKey.getEncodedDer('PKCS8');
-    console.info('returnBlob data：' + returnBlob.data);
+    console.info('returnBlob data: ' + returnBlob.data);
     priKey.clearMem(); // 对于非对称私钥，clearMem()释放内部密钥结构。执行clearMem后，不支持getEncoded()。
   });
 }
@@ -1685,9 +1676,9 @@ ArkTS-Sta: getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | int
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1749,9 +1740,9 @@ async function testgetAsyKeySpec() {
   let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
   let keyPair = await generatorBySpec.generateKeyPair();
-  let key = keyPair.priKey;
-  let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
-  console.info('ecc item --- p: ' + p.toString(16));
+  let pirKey = keyPair.priKey;
+  let eccPrimeP = pirKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+  console.info('ecc item --- p: ' + eccPrimeP.toString(16));
 }
 ```
 
@@ -1798,14 +1789,10 @@ getEncodedDer(format: string): DataBlob
 
 支持根据指定的密钥格式（如采用哪个规范），获取满足ASN.1语法、DER编码的私钥数据。
 
-在API version 12-24，仅支持获取PKCS8格式的ECC私钥数据。
-
-从API版本26.0.0开始，增加支持获取PKCS1和PKCS8格式的RSA私钥数据。
-
 > **说明：**
 >
 > 本接口和[Key.getEncoded()](#getencoded)的区别是：<br/>
-> 1. 本接口可根据入参决定数据的输出格式，当前支持获取PKCS8格式的ECC私钥数据。
+> 1. 本接口可根据入参决定数据的输出格式。
 > 2. [Key.getEncoded()](#getencoded)接口，不支持指定密钥格式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1820,13 +1807,13 @@ getEncodedDer(format: string): DataBlob
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | 是   | 用于指定当前密钥格式。<br>在API version 12-24，取值仅支持"PKCS8"。<br>从API版本26.0.0开始，RSA私钥格式支持"PKCS1"和"PKCS8"。 |
+| format  | string | 是   | 用于指定当前密钥格式。支持EC密钥，format取值支持"PKCS8"。<br>从API版本26.0.0开始，支持RSA密钥，format取值支持"PKCS1"和"PKCS8"。<br>从API版本26.0.0开始，支持ML-DSA和ML-KEM密钥，format取值支持"PKCS8"。 |
 
 **返回值：**
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| [DataBlob](#datablob) | 返回满足ASN.1语法和DER编码的指定密钥格式的ECC私钥数据。 |
+| [DataBlob](#datablob) | DER编码的私钥数据。 |
 
 **错误码：**
 以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
@@ -1850,7 +1837,7 @@ async function testGetEncodedDer() {
   keyGenPromise.then(keyPair => {
     let priKey = keyPair.priKey;
     let returnBlob = priKey.getEncodedDer('PKCS8');
-    console.info('returnBlob data：' + returnBlob.data);
+    console.info('returnBlob data: ' + returnBlob.data);
   });
 }
 ```
@@ -1873,13 +1860,13 @@ getEncodedPem(format: string): string
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | 是   | 指定的获取密钥字符串的编码格式。其中，私钥可为'PKCS1' 或'PKCS8'格式。从API版本26.0.0起，ECC算法的私钥可为'EC'格式。|
+| format  | string | 是   | 指定的获取密钥字符串的编码格式。支持RSA密钥，format取值支持"PKCS8"或"PKCS1"。<br>从API版本26.0.0起，支持EC密钥，format取值支持"PKCS8"或"EC"。<br>从API版本26.0.0起，支持ML-DSA和ML-KEM密钥，format取值支持"PKCS8"。|
 
 **返回值：**
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| string | 用于获取指定密钥格式的具体内容。 |
+| string | PEM编码的私钥数据。 |
 
 **错误码：**
 
@@ -1942,13 +1929,13 @@ getEncodedPem(format: string, config: KeyEncodingConfig): string
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
 | format  | string | 是   | 指定的获取密钥字符串的编码格式。其中，私钥可为'PKCS1' 或'PKCS8'格式。|
-| config | [KeyEncodingConfig](#keyencodingconfig18) | 是 | 指定编码的算法和口令，对私钥进行编码操作。 |
+| config | [KeyEncodingConfig](#keyencodingconfig18) | 是 | 用于加密私钥的参数。 |
 
 **返回值：**
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| string | 用于获取指定密钥格式的具体内容。如果填了config参数，则获取编码后的内容。 |
+| string | PEM编码的加密的私钥数据。 |
 
 **错误码：**
 
@@ -2320,9 +2307,9 @@ function eccGetKeyDataTest() {
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -2337,15 +2324,15 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 createSymKeyGenerator(algName: string): SymKeyGenerator
 
-通过指定算法名称获取相应的对称密钥生成器实例。
+创建对应算法的对称密钥生成器实例。
 
-支持的规格详见[对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md)。
+支持的规格详见[对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.SymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -2355,13 +2342,13 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 待生成对称密钥生成器的算法名称。<br/>具体取值详见[对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md)一节中的“字符串参数”。 |
+| algName | string | 是   | 待生成对称密钥生成器的算法名称。<br/>具体取值详见[对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)一节中的“字符串参数”。 |
 
 **返回值：**
 
 | 类型                                | 说明                       |
 | ----------------------------------- | -------------------------- |
-| [SymKeyGenerator](#symkeygenerator) | 返回对称密钥生成器的对象。 |
+| [SymKeyGenerator](#symkeygenerator) | 返回对称密钥生成器实例。 |
 
 **错误码：**
 
@@ -2382,9 +2369,7 @@ let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
 
 ## SymKeyGenerator
 
-对称密钥生成器。
-
-在使用该类的方法前，先使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)构建SymKeyGenerator实例。
+对称密钥生成器接口，定义生成对称密钥的方法。调用前，需通过[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)方法创建一个SymKeyGenerator实例。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -2394,9 +2379,9 @@ let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.SymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -2412,9 +2397,7 @@ generateSymKey(callback: AsyncCallback\<SymKey>): void
 
 获取对称密钥生成器随机生成的密钥。使用callback异步回调。
 
-必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
-
-目前支持使用OpenSSL的RAND_priv_bytes()作为底层能力生成随机密钥。
+目前使用OpenSSL的RAND_priv_bytes()作为底层能力生成随机密钥。
 
 > **说明：**
 >
@@ -2422,9 +2405,9 @@ generateSymKey(callback: AsyncCallback\<SymKey>): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.SymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -2454,7 +2437,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   symKeyGenerator.generateSymKey((err, symKey) => {
-    console.info('Generate symKey result: success, algName：' + symKey.algName);
+    console.info('Generate symKey result: success, algName: ' + symKey.algName);
   });
 ```
 
@@ -2479,15 +2462,13 @@ generateSymKey(): Promise\<SymKey>
 
 获取该对称密钥生成器随机生成的密钥。使用Promise异步回调。
 
-必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
-
-目前支持使用OpenSSL的RAND_priv_bytes()作为底层能力生成随机密钥。
+目前使用OpenSSL的RAND_priv_bytes()作为底层能力生成随机密钥。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.SymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -2551,9 +2532,7 @@ generateSymKeySync(): SymKey
 
 同步获取对称密钥生成器随机生成的密钥。
 
-必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
-
-目前支持使用OpenSSL的RAND_priv_bytes()作为底层能力生成随机密钥。
+目前使用OpenSSL的RAND_priv_bytes()作为底层能力生成随机密钥。
 
 > **说明：**
 >
@@ -2601,9 +2580,7 @@ function testGenerateSymKeySync() {
 
 convertKey(key: DataBlob, callback: AsyncCallback\<SymKey>): void
 
-根据指定数据生成对称密钥。使用callback异步回调。
-
-必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
+将指定数据转换为对称密钥。使用callback异步回调。
 
 > **说明：**
 >
@@ -2611,9 +2588,9 @@ convertKey(key: DataBlob, callback: AsyncCallback\<SymKey>): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.SymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -2689,15 +2666,13 @@ function testConvertKey() {
 
 convertKey(key: DataBlob): Promise\<SymKey>
 
-根据指定数据生成对称密钥。使用Promise异步回调。
-
-在使用本函数前，需先通过[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器。
+将指定数据转换为对称密钥。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.SymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -2747,7 +2722,7 @@ function testConvertKey() {
   let keyMaterialBlob = genKeyMaterialBlob();
   symKeyGenerator.convertKey(keyMaterialBlob)
     .then(symKey => {
-      console.info('Convert symKey result: success, algName：' + symKey.algName);
+      console.info('Convert symKey result: success, algName: ' + symKey.algName);
     }).catch((error: BusinessError) => {
       console.error(`Convert symKey failed, ${error.code}, ${error.message}`);
     });
@@ -2786,9 +2761,7 @@ async function testConvertKey() {
 
 convertKeySync(key: DataBlob): SymKey
 
-根据指定数据生成对称密钥。
-
-必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
+将指定数据转换为对称密钥。
 
 > **说明：**
 >
@@ -2839,7 +2812,7 @@ function testConvertKeySync() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
   let key = symKeyGenerator.convertKeySync(keyBlob);
   let encodedKey = key.getEncoded();
-  console.info('key encoded data：' + encodedKey.data);
+  console.info('key encoded data: ' + encodedKey.data);
 }
 ```
 
@@ -2847,15 +2820,15 @@ function testConvertKeySync() {
 
 createAsyKeyGenerator(algName: string): AsyKeyGenerator
 
-通过指定算法名称的字符串，获取相应的非对称密钥生成器实例。
+创建对应算法的非对称密钥生成器实例。
 
-支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md)。
+支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -2865,7 +2838,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名  | 类型   | 必填 | 说明                             |
 | ------- | ------ | ---- | -------------------------------- |
-| algName | string | 是   | 非对称密钥生成支持的算法名。详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md)中的字符串参数。 |
+| algName | string | 是   | 非对称密钥生成支持的算法名。详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)中的字符串参数。 |
 
 **返回值：**
 
@@ -2893,7 +2866,7 @@ let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 
 ## AsyKeyGenerator
 
-非对称密钥生成器。在使用该类的方法前，需要先使用[createAsyKeyGenerator](#cryptoframeworkcreateasykeygenerator)方法构建一个AsyKeyGenerator实例。
+非对称密钥生成器接口，定义生成非对称密钥的方法。调用前，需通过[createAsyKeyGenerator](#cryptoframeworkcreateasykeygenerator)方法创建一个AsyKeyGenerator实例。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -2903,9 +2876,9 @@ let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -2923,9 +2896,9 @@ generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -2970,9 +2943,9 @@ generateKeyPair(): Promise\<KeyPair>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -3079,17 +3052,52 @@ try {
 
 ### convertKey
 
+convertKey(pubKey: DataBlob, priKey: DataBlob, callback: AsyncCallback\<KeyPair\>): void
+
+转换密钥数据为非对称密钥对对象。使用callback异步回调。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明                                                         |
+| ------ | ------------------------- | ---- | ------------------------------------------------------------ |
+| pubKey | [DataBlob](#datablob)     | 是   | 公钥数据。                                           |
+| priKey | [DataBlob](#datablob)     | 是   | 私钥数据。                                           |
+| callback | AsyncCallback\<[KeyPair](#keypair)\> | 是   | 回调函数。转换成功时，err为undefined，data为转换后的密钥对；否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                                 |
+| -------- | --------------------------------------------------------- |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error.          |
+
+### convertKey<sup>10+</sup>
+
 convertKey(pubKey: DataBlob | null, priKey: DataBlob | null, callback: AsyncCallback\<KeyPair\>): void
 
 解析密钥数据，生成非对称密钥对象。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
-
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -3097,8 +3105,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名     | 类型       | 必填 | 说明                           |
 | -------- | ----------- | ---- | ------------------------------ |
-| pubKey   | [DataBlob](#datablob) \| null<sup>10+</sup>    | 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
-| priKey   | [DataBlob](#datablob) \| null<sup>10+</sup>   | 是   | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
+| pubKey   | [DataBlob](#datablob) \| null   | 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
+| priKey   | [DataBlob](#datablob) \| null  | 是   | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
 | callback | AsyncCallback\<[KeyPair](#keypair)> | 是   | 回调函数。当获取非对称密钥成功，err为undefined，data为获取到的KeyPair；否则为错误对象。 |
 
 **错误码：**
@@ -3110,6 +3118,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -3138,17 +3147,57 @@ asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
 
 ### convertKey
 
+convertKey(pubKey: DataBlob, priKey: DataBlob): Promise\<KeyPair\>
+
+转换密钥数据为非对称密钥对对象。使用Promise异步回调。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明                                                         |
+| ------ | ------------------------- | ---- | ------------------------------------------------------------ |
+| pubKey | [DataBlob](#datablob)     | 是   | 公钥数据。                                           |
+| priKey | [DataBlob](#datablob)     | 是   | 私钥数据。                                           |
+
+**返回值：**
+
+| 类型                            | 说明                                             |
+| ------------------------------- | ------------------------------------------------ |
+| Promise\<[KeyPair](#keypair)\> | Promise对象，返回获取到的非对称密钥对。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                          |
+| -------- | ------------------------------------------------- |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.                                     |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error.          |
+
+### convertKey<sup>10+</sup>
+
 convertKey(pubKey: DataBlob | null, priKey: DataBlob | null): Promise\<KeyPair>
 
 解析密钥数据，生成非对称密钥对象。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
-
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -3156,8 +3205,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
-| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| pubKey | [DataBlob](#datablob) \| null | 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| priKey | [DataBlob](#datablob) \| null | 是   | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
 
 **返回值：**
 
@@ -3174,6 +3223,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -3248,8 +3298,8 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定公钥材料。如果公钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
-| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定私钥材料。如果私钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
+| pubKey | [DataBlob](#datablob) \| null | 是   | 指定公钥材料。如果公钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
+| priKey | [DataBlob](#datablob) \| null | 是   | 指定私钥材料。如果私钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
 
 **返回值：**
 
@@ -3266,6 +3316,7 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -3336,6 +3387,7 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -3577,6 +3629,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -3625,7 +3678,7 @@ function TestConvertPemKeyBySync() {
 
 convertPemKeySync(pubKey: string | null, priKey: string | null, password: string): KeyPair
 
-解析密钥数据，生成非对称密钥对象。支持加密的私钥，同步传入私钥口令解密私钥。使用同步方法。
+解析密钥数据，生成非对称密钥对象。支持加密的私钥，同步传入私钥口令解密私钥。
 
 > **说明：**
 > convertPemKeySync接口与convertPemKey接口注意事项相同，见[convertPemKey](#convertpemkey18)接口说明。
@@ -3705,13 +3758,13 @@ function TestConvertPemKeyBySync() {
 
 createAsyKeyGeneratorBySpec(asyKeySpec: AsyKeySpec): AsyKeyGeneratorBySpec
 
-指定密钥参数，获取非对称密钥生成器实例。
+创建指定密钥规格的非对称密钥生成器实例。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -3721,13 +3774,13 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 | 参数名  | 类型   | 必填 | 说明                             |
 | ------- | ------ | ---- | -------------------------------- |
-| asyKeySpec | [AsyKeySpec](#asykeyspec10) | 是   | 密钥参数。非对称密钥生成器根据指定的这些参数生成公/私钥。<br>支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md)。|
+| asyKeySpec | [AsyKeySpec](#asykeyspec10) | 是   | 密钥参数。非对称密钥生成器根据指定的这些参数生成公/私钥。<br>支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)。|
 
 **返回值：**
 
 | 类型                                            | 说明                       |
 | ----------------------------------------------- | -------------------------- |
-| [AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10) | 返回非对称密钥生成器实例。 |
+| [AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10) | 返回AsyKeyGeneratorBySpec实例。 |
 
 **错误码：**
 
@@ -3775,7 +3828,7 @@ let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPa
 
 ## AsyKeyGeneratorBySpec<sup>10+</sup>
 
-非对称密钥生成器。在使用该类的方法前，需要先使用[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法构建一个AsyKeyGeneratorBySpec实例。
+指定密钥规格的非对称密钥生成器接口，定义根据指定密钥规格生成非对称密钥的方法。调用前，需通过[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法构建一个AsyKeyGeneratorBySpec实例。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -3785,9 +3838,9 @@ let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPa
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -3807,9 +3860,9 @@ generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -3884,9 +3937,9 @@ generateKeyPair(): Promise\<KeyPair>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -4088,9 +4141,9 @@ generatePriKey(callback: AsyncCallback\<PriKey>): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -4159,15 +4212,15 @@ function testGeneratePriKey() {
 
 generatePriKey(): Promise\<PriKey>
 
-获取该非对称密钥生成器生成的密钥。使用Promise异步回调。
+获取该非对称密钥生成器生成的私钥。使用Promise异步回调。
 
 当使用[PRIVATE_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的私钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的私钥。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -4282,7 +4335,7 @@ async function testGeneratePriKey() {
 
 generatePriKeySync(): PriKey
 
-同步获取该非对称密钥生成器生成的密钥。
+使用该非对称密钥生成器生成私钥。该接口以同步方式返回结果。
 
 当使用[PRIVATE_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的私钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的私钥。
 
@@ -4366,9 +4419,9 @@ generatePubKey(callback: AsyncCallback\<PubKey>): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -4437,15 +4490,15 @@ function testGeneratePubKey() {
 
 generatePubKey(): Promise\<PubKey>
 
-获取该非对称密钥生成器生成的密钥。使用Promise异步回调。
+获取该非对称密钥生成器生成的公钥。使用Promise异步回调。
 
 当使用[PUBLIC_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的公钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的公钥。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -4561,7 +4614,7 @@ async function testGeneratePubKey()
 
 generatePubKeySync(): PubKey
 
-同步获取该非对称密钥生成器生成的密钥。
+同步获取该非对称密钥生成器生成的公钥。
 
 当使用[PUBLIC_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的公钥；使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数时，可以从生成的密钥对中获取指定的公钥。
 
@@ -4637,19 +4690,19 @@ function testGeneratePubKeySync() {
 
 ## ECCKeyUtil<sup>11+</sup>
 
-用于根据椭圆曲线名称为非对称密钥对生成公共参数。
+提供ECC密钥参数生成和基于指定椭圆曲线的点转换工具。
 
 ### genECCCommonParamsSpec<sup>11+</sup>
 
 static genECCCommonParamsSpec(curveName: string): ECCCommonParamsSpec
 
-根据椭圆曲线相应的NID（Name Identifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#ecc)和[SM2密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#sm2)。
+根据椭圆曲线相应的NID（Name Identifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#ecc)和[SM2密钥生成规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#sm2)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -4701,7 +4754,7 @@ static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 >
 > 根据RFC5480规范中第2.2节的描述：<br/>
 > 1. 非压缩的点数据，表示为：前缀0x04\|x坐标\|y坐标；
-> 2. 压缩的点数据，对于Fp素数域上的点（当前暂不支持F2m域），表示为：前缀0x03\|x坐标 (坐标y是奇数时)，前缀0x02\|x坐标 (坐标y是偶数时)。
+> 2. 压缩的点数据，对于Fp素数域上的点（当前暂不支持F2m域），表示为：前缀0x03\|x坐标（坐标y是奇数时），前缀0x02\|x坐标（坐标y是偶数时）。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4798,8 +4851,8 @@ async function doTest() {
   let keyPair = await generator.generateKeyPair();
   let eccPkX = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
   let eccPkY = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_Y_BN);
-  console.info('ECC_PK_X_BN 16：' + eccPkX.toString(16));
-  console.info('ECC_PK_Y_BN 16：' + eccPkY.toString(16));
+  console.info('ECC_PK_X_BN 16: ' + eccPkX.toString(16));
+  console.info('ECC_PK_Y_BN 16: ' + eccPkY.toString(16));
   // 将eccPkX.toString(16)结果放入x，eccPkY.toString(16)结果放入y。
   let returnPoint: cryptoFramework.Point = {
     x: BigInt('0x' + eccPkX.toString(16)),
@@ -4845,13 +4898,13 @@ ArkTS-Dyn: static genDHCommonParamsSpec(pLen: number, skLen?: number): DHCommonP
 
 ArkTS-Sta: static genDHCommonParamsSpec(pLen: int, skLen?: int): DHCommonParamsSpec
 
-根据素数P的长度和私钥长度（bit位数）生成DH公共密钥参数。详见[DH密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#dh)。
+根据素数P的长度和私钥长度（bit位数）生成DH公共密钥参数。详见[DH密钥生成规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#dh)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -5025,13 +5078,13 @@ try {
 
 createCipher(transformation: string): Cipher
 
-通过指定算法名称，获取相应的[Cipher](#cipher)实例。
+创建加解密实例。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -5041,19 +5094,18 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名         | 类型   | 必填 | 说明                                                         |
 | -------------- | ------ | ---- | ------------------------------------------------------------ |
-| transformation | string | 是   | 待生成Cipher的算法名称（含密钥长度）、加密模式以及填充方法的组合。<br>支持的规格详见[对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md)和[非对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md)。 |
+| transformation | string | 是   | 待生成Cipher的算法名称（含密钥长度）、加密模式以及填充方法的组合。<br>支持的规格详见[对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md)和[非对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md)。 |
 
 > **说明：**
 >
-> 1. 目前对称加解密中，PKCS5和PKCS7的实现相同，其padding长度和分组长度保持一致。在3DES中均按8字节填充，在AES中均按16字节填充。另有NoPadding表示不填充。
+> 目前对称加解密中，PKCS #5和PKCS #7的实现相同，其padding长度和分组长度保持一致。在3DES中均按8字节填充，在AES中均按16字节填充。另有NoPadding表示不填充。
 > <br/>开发者需要自行了解密码学不同分组模式的差异，以便选择合适的参数规格。例如选择ECB和CBC模式时，建议启用填充，否则必须确保明文长度是分组大小的整数倍；选择其他模式时，可以不启用填充，此时密文长度和明文长度一致（即可能不是分组大小的整数倍）。
-> 2. 使用RSA或SM2进行非对称加解密时，必须创建两个Cipher对象，分别进行加密和解密操作，不能对同一个Cipher对象进行加解密。对称加解密没有此要求，只要算法规格一致，可以对同一个Cipher对象进行加解密操作。
 
 **返回值：**
 
 | 类型              | 说明                     |
 | ----------------- | ------------------------ |
-| [Cipher](#cipher) | 返回加解密生成器的对象。 |
+| [Cipher](#cipher) | 返回对应算法的Cipher实例。 |
 
 **错误码：**
 
@@ -5074,7 +5126,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let cipherAlgName = '3DES192|ECB|PKCS7';
 try {
   let cipher = cryptoFramework.createCipher(cipherAlgName);
-  console.info('cipher algName：' + cipher.algName);
+  console.info('cipher algName: ' + cipher.algName);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
@@ -5083,9 +5135,9 @@ try {
 
 ## Cipher
 
-提供加解密的算法操作功能，按序调用本类中的[init()](#init-1)、[update()](#update)、[doFinal()](#dofinal)方法，可以实现对称加密/对称解密/非对称加密/非对称解密。
+加解密接口，定义对称加解密和非对称加解密方法。调用前，需通过[createCipher(transformation: string): Cipher](#cryptoframeworkcreatecipher)方法创建一个Cipher实例。按序调用Cipher实例中的[init()](#init-1)、[update()](#update)、[doFinal()](#dofinal)方法，可以实现对称加密/对称解密/非对称加密/非对称解密。
 
-完整的加解密流程示例可参考[开发指南](../../security/CryptoArchitectureKit/crypto-encryption-decryption-overview.md)。
+完整的加解密流程示例可参考[开发指南](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md)。
 
 一次完整的加/解密流程在对称加密和非对称加密中略有不同：
 
@@ -5100,9 +5152,9 @@ try {
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -5114,6 +5166,45 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 ### init
 
+init(opMode: CryptoMode, key: Key, params: ParamsSpec, callback: AsyncCallback\<void>): void
+
+初始化加解密的[cipher](#cipher)对象。使用callback异步回调。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
+
+必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名     | 类型                      | 必填 | 说明                                                         |
+| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| opMode   | [CryptoMode](#cryptomode) | 是   | 加密或者解密模式。                                           |
+| key      | [Key](#key)               | 是   | 指定加密或解密的密钥。                                       |
+| params   | [ParamsSpec](#paramsspec) | 是   | 指定加密或解密的参数，例如IV。                               |
+| callback | AsyncCallback\<void>      | 是   | 回调函数。当加解密初始化成功，err为undefined，否则为错误对象。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                                 |
+| -------- | --------------------------------------------------------- |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.                                            |
+| 17620002 | Failed to obtain the native object or convert parameters.                                          |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
+| 17630001 | Crypto operation error.|
+
+### init<sup>10+</sup>
+
 init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCallback\<void>): void
 
 初始化加解密的[cipher](#cipher)对象，使用callback异步回调获取结果。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
@@ -5122,11 +5213,11 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCal
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
-
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -5134,9 +5225,9 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名     | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| opMode   | [CryptoMode](#cryptomode) | 是   | 加密或者解密模式。                                           |
-| key      | [Key](#key)               | 是   | 指定加密或解密的密钥。                                       |
-| params   | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前只支持ParamsSpec， API 10之后增加支持null。 |
+| opMode   | [CryptoMode](#cryptomode) | 是   | 要执行的操作（加密或解密）。                                           |
+| key      | [Key](#key)               | 是   | 用于加密或解密的密钥。                                       |
+| params   | [ParamsSpec](#paramsspec) \| null | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前只支持ParamsSpec，API 10之后增加支持null。 |
 | callback | AsyncCallback\<void>      | 是   | 回调函数。当加解密初始化成功，err为undefined，否则为错误对象。     |
 
 **错误码：**
@@ -5148,10 +5239,54 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                            |
 | 17620002 | Failed to obtain the native object or convert parameters.                                          |
-| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
 | 17630001 | Crypto operation error.|
 
 ### init
+
+init(opMode: CryptoMode, key: Key, params: ParamsSpec): Promise\<void>
+
+初始化加解密的cipher对象。使用Promise异步回调。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
+
+必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明                                                         |
+| ------ | ------------------------- | ---- | ------------------------------------------------------------ |
+| opMode | [CryptoMode](#cryptomode) | 是   | 加密或者解密模式。                                           |
+| key    | [Key](#key)               | 是   | 指定加密或解密的密钥。                                       |
+| params | [ParamsSpec](#paramsspec) | 是   | 指定加密或解密的参数，例如IV。                               |
+
+**返回值：**
+
+| 类型           | 说明                                   |
+| -------------- | -------------------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                          |
+| -------- | ------------------------------------------------- |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.                                     |
+| 17620002 | Failed to obtain the native object or convert parameters.                                    |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
+| 17630001 | Crypto operation error.|
+
+### init<sup>10+</sup>
 
 init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise\<void>
 
@@ -5161,11 +5296,11 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise\<void>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
-
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -5173,9 +5308,9 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | ------ | ------------------------- | ---- | ------------------------------------------------------------ |
-| opMode | [CryptoMode](#cryptomode) | 是   | 加密或者解密模式。                                           |
-| key    | [Key](#key)               | 是   | 指定加密或解密的密钥。                                       |
-| params | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前仅支持ParamsSpec，从API 10开始增加对null的支持。 |
+| opMode | [CryptoMode](#cryptomode) | 是   | 要执行的操作（加密或解密）。                                           |
+| key    | [Key](#key)               | 是   | 用于加密或解密的密钥。                                       |
+| params | [ParamsSpec](#paramsspec) \| null | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前只支持ParamsSpec，API 10之后增加支持null。 |
 
 **返回值：**
 
@@ -5192,7 +5327,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                     |
 | 17620002 | Failed to obtain the native object or convert parameters.                                    |
-| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
 | 17630001 | Crypto operation error.|
 
 ### initSync<sup>12+</sup>
@@ -5228,7 +5363,7 @@ initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
 | 17630001 | Crypto operation error. |
 
 ### update
@@ -5257,15 +5392,15 @@ ArkTS-Sta: update(data: DataBlob, callback: AsyncCallback\<DataBlob | null>): vo
 >
 >    算法库未对单次或累计的update数据量设置限制。对于大数据量的对称加解密操作，建议分多次调用update方法传入数据。
 >
->    AES使用多次update操作的示例代码详见[使用AES对称密钥分段加解密](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)。
+>    AES使用多次update操作的示例代码详见[使用aes对称密钥gcm模式分段加解密](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式分段加解密)。
 > 3. RSA、SM2非对称加解密不支持update操作。
 > 4. 对于CCM模式的对称加解密算法，加密时只能调用1次update接口加密数据并调用doFinal接口获取tag，或直接调用doFinal接口加密数据并获取tag，解密时只能调用1次update接口或调用1次doFinal接口解密数据并验证tag。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -5287,7 +5422,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                               |
 | 17620002 | Failed to obtain the native object or convert parameters.                            |
-| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
 | 17630001 | Crypto operation error.                     |
 
 ### update
@@ -5306,15 +5441,15 @@ ArkTS-Sta: update(data: DataBlob): Promise\<DataBlob | null>
 > <br/>（例如对于ECB和CBC模式，不论update传入的数据是否为分组长度的整数倍，都会以分组作为基本单位进行加/解密，并输出本次update新产生的加/解密分组结果。<br/>可以理解为，update只要凑满一个新的分组就会有输出，如果没有凑满则此次update输出为null，把当前还没被加/解密的数据留着，等下一次update/doFinal传入数据的时候，拼接起来继续凑分组。<br/>最后doFinal的时候，会把剩下的还没加/解密的数据，根据[createCipher](#cryptoframeworkcreatecipher)时设置的padding模式进行填充，补齐到分组的整数倍长度，再输出剩余加解密结果。<br/>而对于可以将分组密码转化为流模式实现的模式，还可能出现密文长度和明文长度相同的情况等。）
 > 2. 根据数据量，可以不调用update（即init完成后直接调用doFinal）或多次调用update。<br/>
 >    算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的对称加解密，可以采用多次update的方式传入数据。<br/>
->    AES使用多次update操作的示例代码详见[使用AES对称密钥分段加解密](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)。
+>    AES使用多次update操作的示例代码详见[使用aes对称密钥gcm模式分段加解密](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式分段加解密)。
 > 3. RSA、SM2非对称加解密不支持update操作。
 > 4. 对于CCM模式的对称加解密算法，加密时只能调用1次update接口加密数据并调用doFinal接口获取tag，或直接调用doFinal接口加密数据并获取tag，解密时只能调用1次update接口或调用1次doFinal接口解密数据并验证tag。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -5341,7 +5476,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                |
 | 17620002 | Failed to obtain the native object or convert parameters.                               |
-| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
 | 17630001 | Crypto operation error.                      |
 
 ### updateSync<sup>12+</sup>
@@ -5385,10 +5520,45 @@ ArkTS-Sta: updateSync(data: DataBlob): DataBlob | null
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
 | 17630001 | Crypto operation error. |
 
 ### doFinal
+
+doFinal(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
+
+完成加解密操作，对输入数据进行加密或解密，然后反馈输出数据。加解密操作完成后，数据无法更新。使用callback异步回调。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名     | 类型                                  | 必填 | 说明                                                         |
+| -------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
+| data     | [DataBlob](#datablob)                 | 是   | 加密或解密的数据。不可传入{data: Uint8Array(空) }。       |
+| callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数。最终加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.           |
+| 17620002 | Failed to obtain the native object or convert parameters.          |
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
+| 17630001 | Crypto operation error. |
+
+### doFinal<sup>10+</sup>
 
 ArkTS-Dyn: doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 
@@ -5409,15 +5579,15 @@ ArkTS-Sta: doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob | nu
 >  3. doFinal的结果可能为null，因此使用.data字段访问doFinal结果的具体数据前，请记得先判断结果是否为null，避免产生异常。<br/>
 >    对于加密，CFB、OFB和CTR模式，如果doFinal传null, 则返回结果为null。<br/>
 >    对于解密，GCM、CCM、CFB、OFB和CTR模式，如果doFinal传null，则返回结果为null；对于解密，其他模式，如果明文是加密块大小的整倍数，调用update传入所有密文，调用doFinal传null, 则返回结果为null。<br/>
->  4. 非对称加解密时多次doFinal操作的示例代码详见[使用RSA非对称密钥分段加解密](../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md)，SM2和RSA的操作类似。
+>  4. 非对称加解密时多次doFinal操作的示例代码详见[使用RSA非对称密钥分段加解密](../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt.md#使用rsa非对称密钥分段加解密)，SM2和RSA的操作类似。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
-
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -5425,7 +5595,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名     | 类型                                  | 必填 | 说明                                                         |
 | -------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| data     | [DataBlob](#datablob) \| null<sup>10+</sup>                 | 是   | 加密或解密的数据。在对称加解密中可为null，但不可传入{data: Uint8Array(空) }。API 10前仅支持DataBlob，API 10后增加null支持。       |
+| data     | [DataBlob](#datablob) \| null                 | 是   | 加密或解密的数据。在对称加解密中可为null，但不可传入{data: Uint8Array(空) }。API 10前仅支持DataBlob，API 10后增加null支持。       |
 | callback | ArkTS-Dyn: AsyncCallback\<[DataBlob](#datablob)><br>ArkTS-Sta: AsyncCallback\<[DataBlob](#datablob)> \| null | 是   | 回调函数。最终加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
 
 **错误码：**
@@ -5441,7 +5611,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
-更多加解密流程的完整示例请参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
+更多加解密流程的完整示例请参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式加解密)。
 
 ArkTS-Dyn示例：
 
@@ -5485,7 +5655,7 @@ function cipherByCallback() {
       cipher.update(plainText, (err, encryptUpdate) => {
         cipher.doFinal(null, (err, tag) => {
           gcmParams.authTag = tag;
-          console.info('encryptUpdate plainText：' + encryptUpdate.data);
+          console.info('encryptUpdate plainText: ' + encryptUpdate.data);
         });
       });
     });
@@ -5551,6 +5721,47 @@ function cipherByCallback() {
 
 ### doFinal
 
+doFinal(data: DataBlob): Promise\<DataBlob>
+
+完成加解密操作，对输入数据进行加密或解密，然后反馈输出数据。加解密操作完成后，数据无法更新。使用Promise异步回调。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名 | 类型                  | 必填 | 说明                 |
+| ---- | --------------------- | ---- | -------------------- |
+| data | [DataBlob](#datablob) | 是   | 加密或者解密的数据。不可传入{data: Uint8Array(空) }。 |
+
+**返回值：**
+
+| 类型                            | 说明                                             |
+| ------------------------------- | ------------------------------------------------ |
+| Promise\<[DataBlob](#datablob)> | Promise对象，返回剩余数据的加/解密结果DataBlob。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.                                |
+| 17620002 | Failed to obtain the native object or convert parameters.                               |
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
+| 17630001 | Crypto operation error.                      |
+
+
+### doFinal<sup>10+</sup>
+
 ArkTS-Dyn: doFinal(data: DataBlob | null): Promise\<DataBlob>
 
 ArkTS-Sta: doFinal(data: DataBlob | null): Promise\<DataBlob | null>
@@ -5573,15 +5784,15 @@ ArkTS-Sta: doFinal(data: DataBlob | null): Promise\<DataBlob | null>
 >     对于加密，CFB、OFB 和 CTR 模式，如果doFinal传入null，则返回结果为null。
 >
 >     对于解密，GCM、CCM、CFB、OFB和CTR模式，如果doFinal传null，则返回结果为null；对于其他模式，如果明文是加密块大小的整倍数，调用update传入所有密文，调用doFinal传null, 则返回结果为null。
->  4. 非对称加解密时多次doFinal操作的示例代码详见[使用RSA非对称密钥分段加解密](../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md)，SM2和RSA的操作类似。
+>  4. 非对称加解密时多次doFinal操作的示例代码详见[使用RSA非对称密钥分段加解密](../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt.md#使用rsa非对称密钥分段加解密)，SM2和RSA的操作类似。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
-
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -5589,7 +5800,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
-| data | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 加密或者解密的数据。data参数允许为null，但不允许传入{data: Uint8Array(空) }。API 10之前只支持DataBlob，API 10之后增加支持null。 |
+| data | [DataBlob](#datablob) \| null | 是   | 加密或者解密的数据。data参数允许为null，但不允许传入{data: Uint8Array(空) }。API 10之前只支持DataBlob，API 10之后增加支持null。 |
 
 **返回值：**
 
@@ -5605,12 +5816,12 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                |
 | 17620002 | Failed to obtain the native object or convert parameters.                               |
-| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
 | 17630001 | Crypto operation error.                      |
 
 **示例：**
 
-此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
+此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式加解密)。
 
 ArkTS-Dyn示例：
 
@@ -5758,7 +5969,7 @@ ArkTS-Sta: doFinalSync(data: DataBlob | null): DataBlob | null
 
 **示例：**
 
-此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
+此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式加解密)。
 
 ArkTS-Dyn示例：
 
@@ -5860,9 +6071,9 @@ setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -5907,9 +6118,9 @@ getCipherSpec(itemType: CipherSpecItem): string | Uint8Array
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -5955,13 +6166,13 @@ function testGetCipherSpec() {
 
 createSign(algName: string): Sign
 
-生成Sign实例。
+创建签名实例。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -5971,13 +6182,13 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 指定签名算法：RSA、ECC、DSA、SM2<sup>10+</sup>或Ed25519<sup>11+</sup>。使用RSA PKCS1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。签名时，通过设置OnlySign参数可传入数据摘要仅作签名。<br>支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。 |
+| algName | string | 是   | 指定签名算法：RSA、ECC、DSA、SM2<sup>10+</sup>、Ed25519<sup>11+</sup>和ML-DSA<sup>26.0.0+</sup>。使用RSA PKCS #1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。签名时，通过设置OnlySign参数可传入数据摘要仅作签名。<br>支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。 |
 
 **返回值**：
 
 | 类型 | 说明                               |
 | ---- | ---------------------------------- |
-| [Sign](#sign) | 返回由输入算法指定生成的Sign对象。 |
+| [Sign](#sign) | 返回对应算法的Sign实例。 |
 
 **错误码：**
 以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
@@ -6006,9 +6217,9 @@ let signer5 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256|OnlySign');
 
 ## Sign
 
-Sign类，使用Sign方法之前需要创建该类的实例进行操作，通过[createSign(algName: string): Sign](#cryptoframeworkcreatesign)方法构造此实例。按序调用本类中的init、update、sign方法完成签名操作。签名操作的示例代码详见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+签名接口，定义基于私钥对数据进行签名的方法。调用前，需通过[createSign(algName: string): Sign](#cryptoframeworkcreatesign)方法构造此实例。按序调用本类中的init、update、sign方法完成签名操作。签名操作的示例代码详见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
 
-Sign类不支持重复初始化，当业务方需要使用新密钥签名时，需要重新创建新Sign对象并调用init初始化。
+Sign实例不支持重复初始化，当业务方需要使用新密钥签名时，需要重新创建新Sign实例并调用init初始化。
 
 业务方使用时，调用createSign接口确定签名的模式，调用init接口设置密钥。
 
@@ -6028,9 +6239,9 @@ Sign类不支持重复初始化，当业务方需要使用新密钥签名时，�
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -6044,15 +6255,15 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 init(priKey: PriKey, callback: AsyncCallback\<void>): void
 
-使用私钥初始化Sign对象。使用callback异步回调。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
+使用私钥初始化Sign实例。使用callback异步回调。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
 
-Sign类不支持重复初始化。
+Sign实例不支持重复初始化。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -6075,20 +6286,21 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 
 ### init
 
 init(priKey: PriKey): Promise\<void>
 
-使用私钥初始化Sign对象。使用Promise异步回调。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
+使用私钥初始化Sign实例。使用Promise异步回调。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
 
-Sign类不支持重复初始化。
+Sign实例不支持重复初始化。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -6116,6 +6328,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 
 ### initSync<sup>12+</sup>
 
@@ -6123,7 +6336,7 @@ initSync(priKey: PriKey): void
 
 使用私钥初始化Sign对象，通过同步方式获取结果。initSync、updateSync、signSync为三段式接口，需要成组使用。其中initSync和signSync必选，updateSync可选。
 
-Sign类不支持重复调用initSync。
+Sign实例不支持重复调用initSync。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6149,6 +6362,7 @@ Sign类不支持重复调用initSync。
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 
 ### update
 
@@ -6162,15 +6376,15 @@ update(data: DataBlob, callback: AsyncCallback\<void>): void
 >
 > 根据数据量，可以不调用update（即[init](#init-2)完成后直接调用[sign](#sign-1)）或多次调用update。<br/>
 > 算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的签名操作，采用多次update的方式传入数据，避免一次性申请过大内存。<br/>
-> 签名使用多次update操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，其余算法操作类似。<br/>
+> 签名使用多次update操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#使用rsa密钥对pkcs1模式分段签名验签)，其余算法操作类似。<br/>
 > OnlySign模式下，不支持update操作，需要直接使用sign传入数据。<br/>
 > 当使用DSA算法进行签名，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -6192,7 +6406,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.          |
-| 17620004 | Invalid function call. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### update
@@ -6201,21 +6415,21 @@ update(data: DataBlob): Promise\<void>
 
 追加待签名数据，使用Promise异步回调方式完成更新。
 
-在使用本函数前，必须先使用[Sign](#sign)方法对[init()](#init-3)实例进行初始化。
+在使用本函数前，必须先使用[init()](#init-3)方法对[Sign](#sign)实例进行初始化。
 
 > **说明：**
 >
 > 根据数据量，可以不调用update（即[init](#init-3)完成后直接调用[sign](#sign-2)）或多次调用update。<br/>
 > 算法库不对单次或累计的update数据量设置大小限制。建议在处理大数据量的签名操作时，采用多次update方式传入数据，以避免一次性申请过多内存。
-> 签名使用多次update操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，其余算法操作类似。<br/>
+> 签名使用多次update操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#使用rsa密钥对pkcs1模式分段签名验签)，其余算法操作类似。<br/>
 > OnlySign模式下，不支持update操作，需要直接使用sign传入数据。<br/>
 > 当使用DSA算法进行签名，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -6242,7 +6456,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620004 | Invalid function call. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### updateSync<sup>12+</sup>
@@ -6257,7 +6471,7 @@ updateSync(data: DataBlob): void
 >
 > 根据数据量，可以不调用updateSync（即[initSync](#initsync12-1)完成后直接调用[signSync](#signsync12)）或多次调用updateSync。<br/>
 > 算法库目前没有对updateSync（单次或累计）的数据量设置大小限制，建议对于大数据量的签名操作，采用多次updateSync的方式传入数据，避免一次性申请过大内存。<br/>
-> 签名使用多次updateSync操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，其余算法操作类似。<br/>
+> 签名使用多次updateSync操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#使用rsa密钥对pkcs1模式分段签名验签)，其余算法操作类似。<br/>
 > OnlySign模式下，不支持updateSync操作，需要直接使用signSync传入数据。<br/>
 > 当使用DSA算法进行签名，并设置了摘要算法为NoHash时，则不支持updateSync操作，updateSync接口会返回错误码ERR_CRYPTO_OPERATION。
 
@@ -6284,41 +6498,42 @@ updateSync(data: DataBlob): void
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620004 | Invalid function call. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### sign
 
 sign(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
 
-对数据进行签名。使用callback异步回调。
+对数据进行签名，返回签名结果。使用callback异步回调。Sign类不支持重复调用sign。
 
 **ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明       |
-| -------- | -------------------- | ---- | ---------- |
-| data     | [DataBlob](#datablob)            | 是   | 传入的消息。 |
-| callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数，用于获取签名结果DataBlob数据。当签名成功，err为undefined，data为获取到的签名结果；否则为错误对象。 |
+| 参数名     | 类型                      | 必填 | 说明                                                         |
+| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| data     | [DataBlob](#datablob)     | 是   | 待签名的数据。                                               |
+| callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数。签名成功时，err为undefined，data为签名结果；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
-| 错误码ID | 错误信息               |
-| -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
+| 错误码ID | 错误信息                                                 |
+| -------- | --------------------------------------------------------- |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
 | 17630001 | crypto operation error. |
 
 ### sign<sup>10+</sup>
@@ -6353,6 +6568,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### sign
@@ -6365,9 +6581,9 @@ sign(data: DataBlob): Promise\<DataBlob>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -6432,6 +6648,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 ### signSync<sup>12+</sup>
 
@@ -6469,10 +6686,11 @@ signSync(data: DataBlob | null): DataBlob
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
 
 ArkTS-Dyn示例：
 
@@ -6604,7 +6822,7 @@ function signByCallback() {
 
 **示例：**
 
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -6670,7 +6888,7 @@ async function signByPromise() {
 
 **示例：**
 
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -6740,7 +6958,7 @@ setSignSpec(itemType: SignSpecItem, itemValue: number): void
 
 设置签名参数。常用签名参数可通过[createSign](#cryptoframeworkcreatesign)指定，其他参数则通过本接口设置。
 
-只支持RSA算法、SM2算法，从API version 11开始，支持SM2算法设置签名参数。
+当前仅支持RSA算法、SM2算法，从API version 11开始，支持SM2算法设置签名参数。
 
 **ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
 
@@ -6748,9 +6966,9 @@ setSignSpec(itemType: SignSpecItem, itemValue: number): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -6771,6 +6989,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
+| 17620002 | Failed to obtain the native object or convert parameters. <br>适用版本：26.0.0+|
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 
 **示例：**
 
@@ -6872,7 +7093,6 @@ setSignSpec(itemType: SignSpecItem, itemValue: number \| Uint8Array \| boolean):
 | 17630001 | Crypto operation error. |
 
 **示例：**
-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -6936,9 +7156,9 @@ ArkTS-Sta: getSignSpec(itemType: SignSpecItem): string | int
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -6966,6 +7186,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -6984,13 +7205,13 @@ function testGetSignSpec() {
 
 createVerify(algName: string): Verify
 
-生成Verify实例。
+创建验签实例。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -7000,13 +7221,13 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 指定签名算法：RSA、ECC、DSA、SM2<sup>10+</sup>或Ed25519<sup>11+</sup>。使用RSA PKCS1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。使用RSA算法验签时，设置Recover参数可支持验签恢复。<br>支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。 |
+| algName | string | 是   | 指定签名验证算法：RSA、ECC、DSA、SM2<sup>10+</sup>、Ed25519<sup>11+</sup>和ML-DSA<sup>26.0.0+</sup>。使用RSA PKCS #1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。使用RSA算法验签时，设置Recover参数可支持验签恢复。<br>支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。 |
 
 **返回值**：
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
-| Verify | 返回由输入算法指定生成的Verify对象。 |
+| [Verify](#verify) | 返回对应算法的Verify实例。 |
 
 **错误码：**
 
@@ -7032,15 +7253,15 @@ let verifier3 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
 
 ## Verify
 
-Verify类，使用Verify方法之前需要创建该类的实例进行操作，通过[createVerify(algName: string): Verify](#cryptoframeworkcreateverify)方法构造此实例。按序调用本类中的init、update、verify方法完成签名操作。验签操作的示例代码详见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+验签接口，定义基于公钥对签名数据进行验签的方法。调用前，需通过[createVerify(algName: string): Verify](#cryptoframeworkcreateverify)方法构造此实例。按序调用本类中的init、update、verify方法完成签名操作。验签操作的示例代码详见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
 
-Verify类不支持重复初始化，当业务方需要使用新密钥验签时，需要重新创建新Verify对象并调用init初始化。
+Verify实例不支持重复初始化，当业务方需要使用新密钥验签时，需要重新创建新Verify实例并调用init初始化。
 
 业务方使用时，在createVerify时确定验签的模式，调用init接口设置密钥。
 
-当被签名的消息较短时，可在init初始化后，（无需update）直接调用verify接口传入被签名的消息和签名(signatureData)进行验签。
+当被签名的消息较短时，可在init初始化后，（无需update）直接调用verify接口传入被签名的消息和签名（signatureData）进行验签。
 
-当被签名的消息较长时，可通过update接口分段传入被签名的消息，最后调用verify接口对消息全文进行验签。verify接口的data入参在API 10之前只支持DataBlob， API 10之后增加支持null。业务方可在循环中调用update接口，循环结束后调用verify传入签名(signatureData)进行验签。
+当被签名的消息较长时，可通过update接口分段传入被签名的消息，最后调用verify接口对消息全文进行验签。verify接口的data入参在API 10之前只支持DataBlob， API 10之后增加支持null。业务方可在循环中调用update接口，循环结束后调用verify传入签名（signatureData）进行验签。
 
 当使用DSA算法进行验签，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
@@ -7052,9 +7273,9 @@ Verify类不支持重复初始化，当业务方需要使用新密钥验签时�
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -7068,13 +7289,13 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 init(pubKey: PubKey, callback: AsyncCallback\<void>): void
 
-传入公钥初始化Verify对象。使用callback异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
+传入公钥初始化Verify实例。使用callback异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -7096,19 +7317,20 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### init
 
 init(pubKey: PubKey): Promise\<void>
 
-传入公钥初始化Verify对象。使用Promise异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
+传入公钥初始化Verify实例。使用Promise异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -7136,6 +7358,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 
 ### initSync<sup>12+</sup>
 
@@ -7167,6 +7390,7 @@ initSync(pubKey: PubKey): void
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 
 ### update
 
@@ -7180,15 +7404,15 @@ update(data: DataBlob, callback: AsyncCallback\<void>): void
 >
 > 根据数据量，可以不调用update（即[init](#init-4)完成后直接调用[verify](#verify-1)）或多次调用update。<br/>
 > 算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的验签操作，采用多次update的方式传入数据，避免一次性申请过大内存。<br/>
-> 验签使用多次update操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，其余算法操作类似。<br/>
+> 验签使用多次update操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#使用rsa密钥对pkcs1模式分段签名验签)，其余算法操作类似。<br/>
 > OnlyVerify模式下，不支持update操作，直接使用verify传入数据即可。<br/>
 > 当使用DSA算法进行验签，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -7210,7 +7434,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620004 | Invalid function call. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### update
@@ -7225,15 +7449,15 @@ update(data: DataBlob): Promise\<void>
 >
 > 根据数据量，可以不调用update（即[init](#init-5)完成后直接调用[verify](#verify-2)）或多次调用update。<br/>
 > 算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的验签操作，采用多次update的方式传入数据，避免一次性申请过大内存。<br/>
-> 验签使用多次update操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，其余算法操作类似。<br/>
+> 验签使用多次update操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#使用rsa密钥对pkcs1模式分段签名验签)，其余算法操作类似。<br/>
 > OnlyVerify模式下，不支持update操作，直接使用verify传入数据即可。<br/>
 > 当使用DSA算法进行验签，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -7260,7 +7484,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620004 | Invalid function call. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### updateSync<sup>12+</sup>
@@ -7275,8 +7499,8 @@ updateSync(data: DataBlob): void
 >
 > 根据数据量，可以不调用updateSync（即[initSync](#initsync12-2)完成后直接调用[verifySync](#verifysync12)）或多次调用updateSync。<br/>
 > 算法库目前没有对updateSync（单次或累计）的数据量设置大小限制，建议对于大数据量的验签操作，采用多次updateSync的方式传入数据，避免一次性申请过大内存。<br/>
-> 验签使用多次updateSync操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，其余算法操作类似。<br/>
-> OnlyVerify模式下，不支持update操作，需要直接使用verifySync传入数据。<br/>
+> 验签使用多次updateSync操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#使用rsa密钥对pkcs1模式分段签名验签)，其余算法操作类似。<br/>
+> OnlyVerify模式下，不支持updateSync操作，需要直接使用verifySync传入数据。<br/>
 > 当使用DSA算法进行验签，并设置了摘要算法为NoHash时，则不支持updateSync操作，updateSync接口会返回错误码ERR_CRYPTO_OPERATION。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -7302,7 +7526,7 @@ updateSync(data: DataBlob): void
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620004 | Invalid function call. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### verify
@@ -7315,9 +7539,9 @@ verify(data: DataBlob, signatureData: DataBlob, callback: AsyncCallback\<boolean
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -7373,6 +7597,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### verify
@@ -7385,9 +7610,9 @@ verify(data: DataBlob, signatureData: DataBlob): Promise\<boolean>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -7454,6 +7679,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 ### verifySync<sup>12+</sup>
 
@@ -7492,10 +7718,11 @@ verifySync(data: DataBlob | null, signatureData: DataBlob): boolean
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
 
 ArkTS-Dyn示例：
 
@@ -7645,7 +7872,7 @@ function verifyByCallback() {
 
 **示例：**
 
-更多示例请参见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+更多示例请参见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -7721,7 +7948,7 @@ async function verifyByPromise() {
 
 **示例：**
 
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -7834,7 +8061,7 @@ recover(signatureData: DataBlob): Promise\<DataBlob | null>
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620004 | Invalid function call. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 **示例：**
@@ -7954,16 +8181,16 @@ recoverSync(signatureData: DataBlob): DataBlob | null
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620004 | Invalid function call. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### setVerifySpec<sup>10+</sup>
 
 setVerifySpec(itemType: SignSpecItem, itemValue: number): void
 
-设置验签参数。常用的签名参数可以直接通过[createVerify](#cryptoframeworkcreateverify)来指定，剩余参数可以通过本接口指定。
+设置验签参数。常用的验签参数可以直接通过[createVerify](#cryptoframeworkcreateverify)来指定，剩余参数可以通过本接口指定。
 
-支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置验签参数。
+支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置签名验证参数。
 
 验签的参数应当与签名的参数保持一致。
 
@@ -7973,9 +8200,9 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -7996,6 +8223,9 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
+| 17620002 | Failed to obtain the native object or convert parameters. <br>适用版本：26.0.0+ |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 
 **示例：**
 
@@ -8168,9 +8398,9 @@ ArkTS-Sta: getVerifySpec(itemType: SignSpecItem): string | int
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -8197,6 +8427,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -8215,13 +8446,13 @@ function testGetVerifySpec() {
 
 createKeyAgreement(algName: string): KeyAgreement
 
-生成KeyAgreement实例。
+创建密钥协商实例。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.KeyAgreement
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.KeyAgreement。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.KeyAgreement
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -8231,13 +8462,13 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 指定密钥协商算法：目前仅支持ECC，从API version 11开始，增加支持X25519和DH。<br>支持的规格详见[密钥协商规格](../../security/CryptoArchitectureKit/crypto-key-agreement-overview.md)。 |
+| algName | string | 是   | 指定密钥协商算法：目前仅支持ECDH，从API version 11开始，增加支持X25519和DH。<br>支持的规格详见[密钥协商规格](../../security/CryptoArchitectureKit/crypto-key-agreement-overview.md)。 |
 
 **返回值**：
 
 | 类型         | 说明                                       |
 | ------------ | ------------------------------------------ |
-| KeyAgreement | 返回由输入算法指定生成的KeyAgreement对象。 |
+| KeyAgreement | 返回对应算法的KeyAgreement实例。 |
 
 **错误码：**
 
@@ -8259,7 +8490,7 @@ let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
 
 ## KeyAgreement
 
-KeyAgreement类，使用密钥协商方法之前需要创建该类的实例进行操作，通过[createKeyAgreement(algName: string): KeyAgreement](#cryptoframeworkcreatekeyagreement)方法构造此实例。
+密钥协商接口，定义基于非对称密钥对生成共享密钥的方法。调用前，需通过[createKeyAgreement(algName: string): KeyAgreement](#cryptoframeworkcreatekeyagreement)方法构造此实例。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -8269,9 +8500,9 @@ KeyAgreement类，使用密钥协商方法之前需要创建该类的实例进�
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.KeyAgreement
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.KeyAgreement。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.KeyAgreement
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -8279,7 +8510,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 名称    | 类型   | 只读 | 可选 | 说明                         |
 | ------- | ------ | ---- | ---- | ---------------------------- |
-| algName | string | 是   | 否   | 密钥协商指定的算法名称。 |
+| algName | string | 是   | 否   | 密钥协商的算法名称。 |
 
 ### generateSecret
 
@@ -8289,9 +8520,9 @@ generateSecret(priKey: PriKey, pubKey: PubKey, callback: AsyncCallback\<DataBlob
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.KeyAgreement
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.KeyAgreement。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.KeyAgreement
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -8324,9 +8555,9 @@ generateSecret(priKey: PriKey, pubKey: PubKey): Promise\<DataBlob>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.KeyAgreement
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.KeyAgreement。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.KeyAgreement
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -8493,15 +8724,19 @@ async function testGenerateSecretSync() {
 
 createMd(algName: string): Md
 
-生成Md实例，用于进行消息摘要的计算与操作。
+创建消息摘要实例。
 
 支持的规格详见[MD消息摘要算法规格](../../security/CryptoArchitectureKit/crypto-generate-message-digest-overview.md#支持的算法与规格)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+**模型约束：**
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.MessageDigest。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.MessageDigest
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -8517,7 +8752,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 类型 | 说明                                    |
 | ---- | --------------------------------------- |
-| Md   | 返回由输入算法指定生成的[Md](#md)对象。 |
+| [Md](#md)  | 返回对应算法的Md实例。 |
 
 **错误码：**
 
@@ -8544,7 +8779,7 @@ try {
 
 ## Md
 
-Md类，调用Md方法进行消息摘要（Message Digest）计算。调用前，需要通过[createMd](#cryptoframeworkcreatemd)构造Md实例。
+消息摘要接口，定义计算消息摘要的方法。调用前，需通过[createMd](#cryptoframeworkcreatemd)方法创建一个Md实例。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -8554,9 +8789,11 @@ Md类，调用Md方法进行消息摘要（Message Digest）计算。调用前�
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.MessageDigest。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.MessageDigest
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -8578,11 +8815,13 @@ update(input: DataBlob, callback: AsyncCallback\<void>): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+**模型约束：**
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.MessageDigest。
-
-**设备行为差异：** 该接口仅在Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在Lite Wearable设备中返回undefined。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.MessageDigest
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -8617,9 +8856,11 @@ update(input: DataBlob): Promise\<void>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.MessageDigest。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.MessageDigest
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **设备行为差异：** 该接口仅在Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在Lite Wearable设备中返回undefined。
 
@@ -8661,6 +8902,8 @@ updateSync(input: DataBlob): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
 
 **ArkTS-Dyn起始版本：** 12
@@ -8691,11 +8934,13 @@ digest(callback: AsyncCallback\<DataBlob>): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+**模型约束：**
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.MessageDigest。
-
-**设备行为差异：** 该接口仅在Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在Lite Wearable设备中返回undefined。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.MessageDigest
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -8763,9 +9008,11 @@ digest(): Promise\<DataBlob>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.MessageDigest。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.MessageDigest
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **设备行为差异：** 该接口仅在Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在Lite Wearable设备中返回undefined。
 
@@ -8860,21 +9107,21 @@ let plainText = "123456";
 function mdTest() {
     let inData = StringToUint8Array(plainText);
     let md = cryptoFramework.createMd('SHA256');
-    console.info("createMd " + typeof md);
+    console.info('createMd ' + typeof md);
 
     md.update({data: inData}, function (finishErr) {
         if (finishErr) {
-            console.error("Digest update failed. Code:" + finishErr.code + " : " + finishErr.message);
+            console.error('Digest update failed. Code: ' + finishErr.code + " : " + finishErr.message);
         } else {
-            console.info("Digest update successfully.");
+            console.info('Digest update successfully.');
         }
     })
 
     md.digest(function (finishErr, digestOutput){
         if (finishErr) {
-            console.error("Digest failed. Code:" + finishErr.code + " : " + finishErr.message);
+            console.error('Digest failed. Code: ' + finishErr.code + " : " + finishErr.message);
         } else {
-            console.info("Digest successfully:" + digestOutput);
+            console.info('Digest successfully:' + digestOutput);
         }
     })
 }
@@ -8896,6 +9143,8 @@ digestSync(): DataBlob
 通过同步方式返回Md的计算结果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
 
@@ -8995,7 +9244,7 @@ function mdTestSync() {
     let mdResult = md.digestSync();
     console.info('Digest successfully. result:' + mdResult.data);
     let mdLen = md.getMdLength();
-    console.info("Digest successfully. md len: " + mdLen);
+    console.info('Digest successfully. md len: ' + mdLen);
 }
 
 export default {
@@ -9018,9 +9267,13 @@ ArkTS-Sta: getMdLength() : int
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+**模型约束：**
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.MessageDigest。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.MessageDigest
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -9055,15 +9308,15 @@ function getLength() {
 
 createMac(algName: string): Mac
 
-生成Mac实例，用于消息认证码的计算与操作。
+创建消息认证码实例。
 
 支持的规格详见[HMAC消息认证码算法规格](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Mac。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -9079,7 +9332,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 类型 | 说明                                      |
 | ---- | ----------------------------------------- |
-| Mac  | 返回由输入算法指定生成的[Mac](#mac)对象。 |
+| [Mac](#mac) | 返回对应算法的Mac实例。 |
 
 **错误码：**
 
@@ -9109,7 +9362,7 @@ try {
 
 createMac(macSpec: MacSpec): Mac
 
-生成Mac实例，用于进行消息认证码的计算与操作。
+创建消息认证码实例。
 
 支持的规格详见[MAC消息认证码算法规格](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。
 
@@ -9125,13 +9378,13 @@ createMac(macSpec: MacSpec): Mac
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| macSpec | [MacSpec](#macspec18) | 是   | 根据消息验证码的不同算法，指定入参结构体，支持算法请参考[MAC消息认证码算法规格](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。 |
+| macSpec | [MacSpec](#macspec18) | 是   | 根据消息认证码的不同算法，指定入参参数，支持算法请参考[MAC消息认证码算法规格](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。 |
 
 **返回值**：
 
 | 类型 | 说明                                      |
 | ---- | ----------------------------------------- |
-| Mac  | 返回由指定入参结构体生成的[Mac](#mac)对象。 |
+| [Mac](#mac)  | 返回对应算法的Mac实例。 |
 
 **错误码：**
 
@@ -9165,7 +9418,7 @@ try {
 
 ## Mac
 
-Mac类，调用Mac方法进行消息认证码（Message Authentication Code）计算。调用前，需要通过[createMac](#cryptoframeworkcreatemac)构造Mac实例。
+消息认证码接口，定义基于对称密钥计算消息认证码的方法。调用前，需通过[createMac](#cryptoframeworkcreatemac)方法创建一个Mac实例。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -9175,9 +9428,9 @@ Mac类，调用Mac方法进行消息认证码（Message Authentication Code）�
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Mac。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -9195,13 +9448,13 @@ init(key: SymKey, callback: AsyncCallback\<void>): void
 
   > **说明：**
   >
-  > 建议通过[HMAC密钥生成规格](../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md#hmac)创建对称密钥生成器，调用[generateSymKey](#generatesymkey)随机生成对称密钥或调用[convertKey](#convertkey)传入与密钥规格长度一致的二进制密钥数据生成密钥。<br/>当指定“HMAC”生成对称密钥生成器时，仅支持调用[convertKey](#convertkey)传入长度在[1,4096]范围内（单位为bytes）的任意二进制密钥数据生成密钥。
+  > 建议通过[HMAC密钥生成规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#hmac)创建对称密钥生成器，调用[generateSymKey](#generatesymkey)随机生成对称密钥或调用[convertKey](#convertkey)传入与密钥规格长度一致的二进制密钥数据生成密钥。<br/>当指定“HMAC”生成对称密钥生成器时，仅支持调用[convertKey](#convertkey)传入长度在[1,4096]范围内（单位为bytes）的任意二进制密钥数据生成密钥。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
-
-API version 9-11 系统能力为SystemCapability.Security.CryptoFramework；从API version 12 开始为SystemCapability.Security.CryptoFramework.Mac。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -9232,9 +9485,9 @@ init(key: SymKey): Promise\<void>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
-
-API version 9-11 系统能力为SystemCapability.Security.CryptoFramework；从API version 12 开始为SystemCapability.Security.CryptoFramework.Mac。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -9304,9 +9557,9 @@ update(input: DataBlob, callback: AsyncCallback\<void>): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Mac。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -9341,9 +9594,9 @@ update(input: DataBlob): Promise\<void>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Mac。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -9410,13 +9663,13 @@ updateSync(input: DataBlob): void
 
 doFinal(callback: AsyncCallback\<DataBlob>): void
 
-返回Mac的计算结果。使用callback异步回调。
+完成MAC计算并获取MAC计算结果。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Mac。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -9426,7 +9679,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名   | 类型                     | 必填 | 说明     |
 | -------- | ------------------------ | ---- | -------- |
-| callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数，用于获取Mac的计算结果。当Mac计算成功，err为undefined，data为获取到的Mac计算结果；否则为错误对象。 |
+| callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数，用于获取Mac的计算结果。当MAC计算成功，err为undefined，data为获取到的Mac计算结果；否则为错误对象。 |
 
 **错误码：**
 
@@ -9495,13 +9748,13 @@ function hmacByCallback() {
 
 doFinal(): Promise\<DataBlob>
 
-返回Mac的计算结果。使用Promise异步回调。
+完成MAC计算并获取MAC计算结果。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Mac。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -9511,7 +9764,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 类型               | 说明        |
 | ------------------ | ----------- |
-| Promise\<[DataBlob](#datablob)> | Promise对象，返回Mac的计算结果。 |
+| Promise\<[DataBlob](#datablob)> | Promise对象，返回MAC计算结果。 |
 
 **错误码：**
 
@@ -9547,7 +9800,7 @@ async function hmacByPromise() {
 
 doFinalSync(): DataBlob
 
-通过同步方式返回Mac的计算结果。
+通过同步方式完成MAC计算并获取MAC计算结果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9561,7 +9814,7 @@ doFinalSync(): DataBlob
 
 | 类型               | 说明        |
 | ------------------ | ----------- |
-| [DataBlob](#datablob) | 返回Mac的计算结果。 |
+| [DataBlob](#datablob) | 返回MAC计算结果。 |
 
 **错误码：**
 
@@ -9605,9 +9858,9 @@ ArkTS-Sta: getMacLength(): int
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
-
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Mac。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -9693,13 +9946,17 @@ async function testGetMacLength() {
 
 createRandom(): Random
 
-生成Random实例，用于进行随机数的计算与设置种子。
+创建随机数实例。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+**模型约束：**
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Rand。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -9709,7 +9966,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 类型   | 说明                                            |
 | ------ | ----------------------------------------------- |
-| [Random](#random) | 返回由输入算法指定生成的[Random](#random)对象。<br>支持的规格详见框架概述[随机数算法规格](../../security/CryptoArchitectureKit/crypto-generate-random-number.md#支持的算法与规格)。 |
+| [Random](#random) | 返回Random实例。 |
 
 **错误码：**
 
@@ -9735,7 +9992,7 @@ try {
 
 ## Random
 
-Random类，调用Random方法生成随机数。调用前，需要通过[createRandom](#cryptoframeworkcreaterandom)构造Random实例。
+随机数接口，定义随机数生成的方法。调用前，需通过[createRandom](#cryptoframeworkcreaterandom)创建一个Random实例。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -9745,9 +10002,11 @@ Random类，调用Random方法生成随机数。调用前，需要通过[createR
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Rand。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -9767,11 +10026,13 @@ ArkTS-Sta: generateRandom(len: int, callback: AsyncCallback\<DataBlob>): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+**模型约束：**
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Rand。
-
-**设备行为差异：** 该接口仅在Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在Lite Wearable设备中返回undefined。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -9840,9 +10101,11 @@ ArkTS-Sta: generateRandom(len: int): Promise\<DataBlob>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Rand。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **设备行为差异：** 该接口仅在Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在Lite Wearable设备中返回undefined。
 
@@ -9956,11 +10219,11 @@ function randTest() {
     let seed = new Uint8Array([1, 2, 3]);
     rand.setSeed({ data : seed });
 
-    rand.generateRandom(12, function (finishErr, randData){
+    rand.generateRandom(12, function (finishErr, randData) {
         if (finishErr) {
-            console.error("GenerateRandom failed. Code:" + finishErr.code + " : " + finishErr.message);
+            console.error('GenerateRandom failed. Code:' + finishErr.code + ' : ' + finishErr.message);
         } else {
-            console.info("GenerateRandom successfully:" + randData);
+            console.info('GenerateRandom successfully: ' + randData);
         }
     })
 }
@@ -9985,9 +10248,13 @@ ArkTS-Sta: generateRandomSync(len: int): DataBlob
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+**模型约束：**
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本10-11：此接口仅可在Stage模型下使用。
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Rand。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -10085,9 +10352,9 @@ function randTestSync() {
     try {
         let randData = rand.generateRandomSync(randLen);
         if (randData != null) {
-            console.info("GenerateRandom successfully: " + randData.data);
+            console.info('GenerateRandom successfully: ' + randData.data);
         } else {
-            console.error("GenerateRandom failed!");
+            console.error('GenerateRandom failed!');
         }
     } catch (error) {
         console.error(`GenerateRandom random number failed. Code: ${error.code}, message: ${error.message}`);
@@ -10108,9 +10375,11 @@ export default {
 
 enableHardwareEntropy(): void
 
-开启硬件熵源。
+开启硬件熵源。将从TEE中获取安全随机数作为该随机数实例的熵源。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Rand
 
@@ -10190,9 +10459,13 @@ setSeed(seed: DataBlob): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+**模型约束：**
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Rand。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -10266,13 +10539,13 @@ function TestGenerateRandom() {
 
 createKdf(algName: string): Kdf
 
-密钥派生函数（key derivation function）实例生成。
+创建密钥派生函数实例。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Kdf
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Kdf。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Kdf
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -10282,13 +10555,13 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 | 参数名  | 类型   | 必填 | 说明                              |
 | ------- | ------ | ---- | --------------------------------- |
-| algName | string | 是   | 指定密钥派生算法（包含HMAC配套的散列函数）：目前支持PBKDF2、HKDF算法、SCRYPT算法，如"PBKDF2\|SHA256", "HKDF\|SHA256", "SCRYPT"。<br>支持的规格详见[密钥派生函数规格](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md)。|
+| algName | string | 是   | 指定密钥派生算法（包含HMAC配套的散列函数）：目前支持PBKDF2、HKDF算法、SCRYPT算法，如"PBKDF2\|SHA256"、 "HKDF\|SHA256"、 "SCRYPT"和"X963KDF\|SHA256"等。<br>支持的规格详见[密钥派生函数规格](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md)。|
 
 **返回值**：
 
 | 类型         | 说明                                       |
 | ------------ | ------------------------------------------ |
-| [Kdf](#kdf11) | 返回由输入算法指定生成的Kdf对象。 |
+| [Kdf](#kdf11) | 返回对应算法的Kdf实例。 |
 
 **错误码：**
 
@@ -10310,7 +10583,7 @@ let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
 
 ## Kdf<sup>11+</sup>
 
-密钥派生函数（key derivation function）类，使用密钥派生方法之前需要创建该类的实例进行操作，通过createKdf(algName: string): Kdf方法构造此实例。
+密钥派生函数（KDF）接口，定义基于密钥派生参数派生密钥的方法。调用前，需通过[createKdf](#cryptoframeworkcreatekdf11)方法构造此实例。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -10320,9 +10593,9 @@ let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Kdf
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Kdf。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Kdf
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -10340,9 +10613,9 @@ generateSecret(params: KdfSpec, callback: AsyncCallback\<DataBlob>): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Kdf
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Kdf。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Kdf
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -10473,9 +10746,9 @@ generateSecret(params: KdfSpec): Promise\<DataBlob>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Kdf
-
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Kdf。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Kdf
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -10684,7 +10957,7 @@ generateSecretSync(params: KdfSpec): DataBlob
 
 static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
 
-从ASN1 DER格式的sm2签名数据获取r和s。
+从ASN.1 DER编码的ECC/SM2签名数据获取r和s。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -10698,13 +10971,13 @@ static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| data   | Uint8Array        | 是   | ASN1 DER格式的签名数据。 |
+| data   | Uint8Array        | 是   | ASN.1 DER编码的签名数据。 |
 
 **返回值：**
 
 | 类型               | 说明     |
 | ------------------ | -------- |
-| [EccSignatureSpec](#eccsignaturespec20) | 包含r和s的数据结构体。 |
+| [EccSignatureSpec](#eccsignaturespec20) | 包含r和s的数据对象。 |
 
 **错误码：**
 
@@ -10742,7 +11015,7 @@ static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
 
 static genEccSignature(spec: EccSignatureSpec): Uint8Array
 
-将（r、s）的ECC/SM2签名数据转换为ASN1 DER格式。
+将（r、s）的ECC/SM2签名数据转换为ASN.1 DER编码。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -10762,7 +11035,7 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array
 
 | 类型               | 说明     |
 | ------------------ | -------- |
-| Uint8Array | ASN1 DER格式的签名数据。 |
+| Uint8Array | ASN.1 DER编码的签名数据。 |
 
 **错误码：**
 
@@ -10841,7 +11114,7 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array
 
 createKem(algNameId: KemAlgNameId): Kem
 
-生成Kem实例，用于密钥封装和解封装操作。
+创建一个用于密钥封装和解封装操作的Kem实例。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -10863,7 +11136,7 @@ createKem(algNameId: KemAlgNameId): Kem
 
 | 类型        | 说明                          |
 | ----------- | ----------------------------- |
-| [Kem](#kem) | 返回根据输入算法生成的Kem对象。 |
+| [Kem](#kem) | 返回对应算法的Kem实例。 |
 
 **错误码：**
 
@@ -10895,7 +11168,7 @@ function createKem() {
 
 ## Kem
 
-Kem类，使用密钥封装方法之前需要创建该类的实例进行操作，通过[createKem](#cryptoframeworkcreatekem)方法构造此实例。
+密钥封装机制（KEM）接口，定义基于密钥封装机制进行密钥封装和解封装的方法。调用前，需通过[createKem(algNameId: KemAlgNameId): Kem](#cryptoframeworkcreatekem)方法创建一个Kem实例。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

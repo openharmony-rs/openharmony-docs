@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明avsession基本信息。
+声明AVSession基本信息。
 
 **引用文件：** <multimedia/av_session/native_avsession_base.h>
 
@@ -58,7 +58,7 @@ enum AVSession_Type
 | -- | -- |
 | SESSION_TYPE_AUDIO = 0 | 音频会话类型（指媒体类音频，如音乐）。 |
 | SESSION_TYPE_VIDEO = 1 | 视频会话类型（指媒体类投屏视频）。 |
-| SESSION_TYPE_VOICE_CALL = 2 | 音频通话会话类型（指人机交互相关的音频，如语音助手）。 |
+| SESSION_TYPE_VOICE_CALL = 2 | 音频通话会话类型（指语音通话）。 |
 | SESSION_TYPE_VIDEO_CALL = 3 | 视频通话会话类型（指视频电话）。 |
 | SESSION_TYPE_PHOTO = 4 | 相片会话类型。 |
 
@@ -106,7 +106,7 @@ enum AVSession_LoopMode
 | -- | -- |
 | LOOP_MODE_SEQUENCE = 0 | 按顺序播放。 |
 | LOOP_MODE_SINGLE = 1 | 单曲循环。 |
-| LOOP_MODE_LIST = 2 | 按表单循环。 |
+| LOOP_MODE_LIST = 2 | 列表循环。 |
 | LOOP_MODE_SHUFFLE = 3 | 随机播放。 |
 | LOOP_MODE_CUSTOM = 4 | 自定义播放。 |
 
@@ -181,7 +181,7 @@ enum AVSession_ConnectionState
 | -- | -- |
 | STATE_CONNECTING = 0 | 表示设备正处于连接状态。 |
 | STATE_CONNECTED = 1 | 表示设备处于已连接状态。 |
-| STATE_DISCONNECTED = 6 | 表示设备已处于断开默认连接的状态。 |
+| STATE_DISCONNECTED = 6 | 表示设备已断开连接。 |
 
 ### AVSession_AVCastCategory
 
@@ -214,10 +214,10 @@ enum AVSession_DeviceType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DEVICE_TYPE_LOCAL = 0 | 一种设备类型，标识音频路由为设备自身的内置扬声器或音频插孔。 |
-| DEVICE_TYPE_TV = 2 | 一种设备类型，标识音频路由为电视端。 |
-| DEVICE_TYPE_SMART_SPEAKER = 3 | 一种设备类型，标识音频路由为智能音箱端。 |
-| DEVICE_TYPE_BLUETOOTH = 10 | 一种设备类型，标识音频路由为蓝牙设备端。 |
+| DEVICE_TYPE_LOCAL = 0 | 标识音频路由为设备自身的内置扬声器或音频插孔。 |
+| DEVICE_TYPE_TV = 2 | 标识音频路由为电视端。 |
+| DEVICE_TYPE_SMART_SPEAKER = 3 | 标识音频路由为智能音箱端。 |
+| DEVICE_TYPE_BLUETOOTH = 10 | 标识音频路由为蓝牙设备端。 |
 
 ### AVSession_ProtocolType
 
@@ -234,8 +234,8 @@ enum AVSession_ProtocolType
 | 枚举项 | 描述 |
 | -- | -- |
 | TYPE_LOCAL = 0 | 默认为本地设备。包括设备本身的内置扬声器或音频插孔，A2DP（Advanced Audio Distribution Profile）设备。 |
-| TYPE_CAST_PLUS_STREAM = 2 | Cast+的Stream模式。表示媒体正在其他设备上展示，应用需要一个AVCastController来控制远程播放。 |
-| TYPE_DLNA = 4 | DLNA（DIGITAL LIVING NETWORK ALLIANCE）协议。表示设备支持DLNA协议，应用需要一个AVCastController来控制远程播放。 |
+| TYPE_CAST_PLUS_STREAM = 2 | Cast+的Stream模式。表示媒体正在其他设备上展示，应用需要一个[OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)来控制远程播放。 |
+| TYPE_DLNA = 4 | DLNA（DIGITAL LIVING NETWORK ALLIANCE）协议。表示设备支持DLNA协议，应用需要一个[OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)来控制远程播放。 |
 | TYPE_CAST_PLUS_AUDIO = 8 | 表示该设备支持高清晰度的音频投播，以获得更好的音质。 |
 
 ### AVSession_AVCastControlCommandType
@@ -259,7 +259,7 @@ enum AVSession_AVCastControlCommandType
 | CAST_CONTROL_CMD_PLAY_PREVIOUS = 4 | 上一首命令。 |
 | CAST_CONTROL_CMD_FAST_FORWARD = 5 | 快进命令。 |
 | CAST_CONTROL_CMD_REWIND = 6 | 快退命令。 |
-| CAST_CONTROL_CMD_SEEK = 7 | 跳转某一节点命令。 |
+| CAST_CONTROL_CMD_SEEK = 7 | 跳转到指定播放位置命令。 |
 | CAST_CONTROL_CMD_SET_VOLUME = 8 | 设置音量命令。 |
 | CAST_CONTROL_CMD_SET_SPEED = 9 | 设置播放倍速命令。 |
 
@@ -277,13 +277,13 @@ enum AVSession_PlaybackSpeed
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SPEED_FORWARD_0_75_X = 0 | 以正常播速的0.75倍速播放视频。 |
-| SPEED_FORWARD_1_00_X = 1 | 以正常播速（1.00x）播放视频。 |
-| SPEED_FORWARD_1_25_X = 2 | 以正常播速的1.25倍速播放视频。 |
-| SPEED_FORWARD_1_75_X = 3 | 以正常播速的1.75倍速播放视频。 |
-| SPEED_FORWARD_2_00_X = 4 | 以正常播速的2倍速播放视频。 |
-| SPEED_FORWARD_0_50_X = 5 | 以正常播速的0.5倍速播放视频。 |
-| SPEED_FORWARD_1_50_X = 6 | 以正常播速的1.5倍速播放视频。 |
+| SPEED_FORWARD_0_75_X = 0 | 以正常播速的0.75倍速播放音视频。 |
+| SPEED_FORWARD_1_00_X = 1 | 以正常播速（1.00x）播放音视频。 |
+| SPEED_FORWARD_1_25_X = 2 | 以正常播速的1.25倍速播放音视频。 |
+| SPEED_FORWARD_1_75_X = 3 | 以正常播速的1.75倍速播放音视频。 |
+| SPEED_FORWARD_2_00_X = 4 | 以正常播速的2倍速播放音视频。 |
+| SPEED_FORWARD_0_50_X = 5 | 以正常播速的0.5倍速播放音视频。 |
+| SPEED_FORWARD_1_50_X = 6 | 以正常播速的1.5倍速播放音视频。 |
 
 ### AVSession_PlaybackFilter
 
@@ -299,9 +299,9 @@ enum AVSession_PlaybackFilter
 
 | 枚举项 | 描述 |
 | -- | -- |
-| FILTER_STATE = 1 << 0 | 过滤出状态。 |
-| FILTER_POSITION = 1 << 1 | 过滤出位置。 |
-| FILTER_SPEED = 1 << 2 | 过滤出倍速。 |
-| FILTER_VOLUME = 1 << 3 | 过滤出音量。 |
+| FILTER_STATE = 1 << 0 | 过滤状态。 |
+| FILTER_POSITION = 1 << 1 | 过滤位置。 |
+| FILTER_SPEED = 1 << 2 | 过滤倍速。 |
+| FILTER_VOLUME = 1 << 3 | 过滤音量。 |
 
 

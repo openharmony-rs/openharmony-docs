@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 ## Overview
 
@@ -1218,7 +1218,7 @@ Obtains the action of a mouse event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Mouse action.|
+| int32_t | Mouse action. Returns **-1** if **mouseEvent** is NULL.|
 
 ### OH_Input_SetMouseEventDisplayX()
 
@@ -1267,7 +1267,7 @@ Obtains the X coordinate of the mouse event in the relative coordinate system wi
 
 | Type| Description|
 | -- | -- |
-| int32_t | X coordinate of the mouse event in the relative coordinate system with the upper-left corner of the specified screen as the origin.|
+| int32_t | X coordinate of the mouse event in the relative coordinate system with the upper-left corner of the specified screen as the origin. Returns **-1** if **mouseEvent** is NULL.|
 
 ### OH_Input_SetMouseEventDisplayY()
 
@@ -1316,7 +1316,7 @@ Obtains the Y coordinate of the mouse event in the relative coordinate system wi
 
 | Type| Description|
 | -- | -- |
-| int32_t | Y coordinate of the mouse event in the relative coordinate system with the upper-left corner of the specified screen as the origin.|
+| int32_t | Y coordinate of the mouse event in the relative coordinate system with the upper-left corner of the specified screen as the origin. Returns **-1** if **mouseEvent** is NULL.|
 
 ### OH_Input_SetMouseEventButton()
 
@@ -1365,7 +1365,7 @@ Obtains the button of a mouse event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Mouse button. For details, see [Input_MouseEventButton](#input_mouseeventbutton).|
+| int32_t | Mouse button. Returns **-1** if **mouseEvent** is NULL.<br>For details, see [Input_MouseEventButton](#input_mouseeventbutton).|
 
 ### OH_Input_SetMouseEventAxisType()
 
@@ -1414,7 +1414,7 @@ Obtains the axis type of a mouse event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Enumerates mouse axis types. For details, see [InputEvent_MouseAxis](#inputevent_mouseaxis).|
+| int32_t | Enumerates mouse axis types. Returns **-1** if **mouseEvent** is NULL.<br>For details, see [InputEvent_MouseAxis](#inputevent_mouseaxis).|
 
 ### OH_Input_SetMouseEventAxisValue()
 
@@ -1463,7 +1463,7 @@ Obtains the axis value of a mouse axis event.
 
 | Type| Description|
 | -- | -- |
-| float | Axis event value.|
+| float | Axis event value. Returns **-1** if **mouseEvent** is NULL.|
 
 ### OH_Input_SetMouseEventActionTime()
 
@@ -3400,7 +3400,7 @@ Registers a listener for device hot swap events.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | **OH_Input_RegisterDeviceListener** status code, specifically:<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the listener is null.|
+| [Input_Result](#input_result) | **OH_Input_RegisterDeviceListener** status code, specifically:<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the listener is null;<br>         [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
 
 ### OH_Input_UnregisterDeviceListener()
 

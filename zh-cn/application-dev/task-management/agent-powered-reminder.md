@@ -104,7 +104,7 @@
 
    - 定义日历实例。
      
-      <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) --> 
+      <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->  
       
       ``` TypeScript
       let calendar: reminderAgentManager.ReminderRequestCalendar = {
@@ -112,7 +112,7 @@
         dateTime: {
           // 指明提醒的目标时间
           year: date.getFullYear(),
-          month: date.getUTCMonth() + 1,
+          month: date.getMonth() + 1,
           day: date.getDate(),
           hour: date.getHours(),
           minute: date.getMinutes(),

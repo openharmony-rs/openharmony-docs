@@ -21,12 +21,12 @@
 | void OH_HiTrace_SetId(const HiTraceId \*id) | 将当前线程TLS中的跟踪标识设置为id。 | 
 | void OH_HiTrace_ClearId(void) | 清除当前线程的跟踪标识。 | 
 | HiTraceId OH_HiTrace_CreateSpan(void) | 创建跟踪分支。创建一个HiTraceId，使用当前线程TLS中的chainId、spanId初始化HiTraceId的chainId、parentSpanId，并为HiTraceId生成一个新的spanId，返回该HiTraceId。 | 
-| bool OH_HiTrace_IsIdValid(const HiTraceId \*id) | 判断HiTraceId是否有效。<br/>true：HiTraceId有效；false：HiTraceId无效。 | 
-| bool OH_HiTrace_IsFlagEnabled(const HiTraceId \*id, HiTrace_Flag flag) | 判断HiTraceId中指定的跟踪标志是否已启用。<br/>true：指定的跟踪标志已启用；false：指定的跟踪标志未启用。 | 
+| bool OH_HiTrace_IsIdValid(const HiTraceId \*id) | 判断HiTraceId是否有效。<br>true：HiTraceId有效；false：HiTraceId无效。 | 
+| bool OH_HiTrace_IsFlagEnabled(const HiTraceId \*id, HiTrace_Flag flag) | 判断HiTraceId中指定的跟踪标志是否已启用。<br>true：指定的跟踪标志已启用；false：指定的跟踪标志未启用。 | 
 | void OH_HiTrace_EnableFlag(const HiTraceId \*id, HiTrace_Flag flag) | 启用HiTraceId中指定的跟踪标志。 | 
 | void OH_HiTrace_Tracepoint(HiTrace_Communication_Mode mode, HiTrace_Tracepoint_Type type, const HiTraceId \*id, const char \*fmt, ...) | HiTraceMeter跟踪信息埋点。 | 
 
-下表所示的接口提供对HiTraceId的一些拓展操作，这些接口仅在C/C++中提供。
+下表所示的接口提供对HiTraceId的一些扩展操作，这些接口仅在C/C++中提供。
 
 | 方法 | 接口描述 | 
 | -------- | -------- |
@@ -39,8 +39,8 @@
 | void OH_HiTrace_SetSpanId(HiTraceId \*id, uint64_t spanId) | 设置分支ID到HiTraceId中。 | 
 | uint64_t OH_HiTrace_GetParentSpanId(const HiTraceId \*id) | 获取HiTraceId中的父分支ID。 | 
 | void OH_HiTrace_SetParentSpanId(HiTraceId \*id, uint64_t parentSpanId) | 设置父分支ID到HiTraceId中。 | 
-| int OH_HiTrace_IdToBytes(const HiTraceId\* id, uint8_t\* pIdArray, int len) | 将HiTraceId转换为字节数组，用于缓存或通信传递。 | 
-| void OH_HiTrace_IdFromBytes(HiTraceId \*id, const uint8_t \*pIdArray, int len) | 根据字节数组创建HiTraceId。 | 
+| int OH_HiTrace_IdToBytes(const HiTraceId\* id, uint8_t\* pIdArray, int len) | 将HiTraceId序列化为大端序字节数组，支持本地缓存及跨设备传输。 | 
+| void OH_HiTrace_IdFromBytes(HiTraceId \*id, const uint8_t \*pIdArray, int len) | 根据大端序字节数组创建HiTraceId。 | 
 
 
 ## 开发步骤
@@ -73,19 +73,19 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
 
    <!-- @[hitracechain_ndk_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/CMakeLists.txt) -->
    
-   ``` Text
+   ``` cmake
    # the minimum version of CMake.
    cmake_minimum_required(VERSION 3.5.0)
    project(HiTraceChainTest03)
    
-   set(NATIVERENDER_ROOT_PATH &#36;{CMAKE_CURRENT_SOURCE_DIR})
+   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
    
    if(DEFINED PACKAGE_FIND_FILE)
-       include(&#36;{PACKAGE_FIND_FILE})
+       include(${PACKAGE_FIND_FILE})
    endif()
    
-   include_directories(&#36;{NATIVERENDER_ROOT_PATH}
-                       &#36;{NATIVERENDER_ROOT_PATH}/include)
+   include_directories(${NATIVERENDER_ROOT_PATH}
+                       ${NATIVERENDER_ROOT_PATH}/include)
    
    add_library(entry SHARED napi_init.cpp)
    target_link_libraries(entry PUBLIC libace_napi.z.so libhitrace_ndk.z.so libhilog_ndk.z.so)

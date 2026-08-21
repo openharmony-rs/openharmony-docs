@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 本模块提供应用信息的查询能力，支持应用包信息[BundleInfo](js-apis-bundleManager-bundleInfo.md)、应用程序信息[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)、UIAbility组件信息[AbilityInfo](js-apis-bundleManager-abilityInfo.md)、ExtensionAbility组件信息[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)等信息的查询。
@@ -87,6 +87,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | PARTNER_AGENT<sup>23+</sup> | 36 | [PartnerAgentExtensionAbility](../apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)：基于蓝牙通信技术，提供设备发现与设备下线的通知功能。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 | AGENT<sup>24+</sup> | 37 | [AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)：提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
 | AGENT_UI<sup>24+</sup> | 38 | [AgentUIExtensionAbility](js-apis-agent-agentUIExtensionAbility.md)：为开发者提供接入端侧Agent UI界面显示能力。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
+| MODULAR_OBJECT | 39 | [modular_object_extension_ability](capi-modular-object-extension-ability-h.md)：提供[模块化对象](../../application-models/modular-object-extension-overview.md)扩展能力，可以将应用自身功能封装为独立的功能模块，开放给其他应用使用。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0|
 | UNSPECIFIED      | 255 | 不指定类型<!--Del-->，配合[queryExtensionAbilityInfo接口](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo)可以查询所有类型的ExtensionAbility<!--DelEnd-->。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 <!--RP2--><!--RP2End-->
 
@@ -274,6 +275,22 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 | GET_ABILITY_INFO_ONLY_SYSTEM_APP  | 0x00000010 | 获取系统应用对应的AbilityInfo。                           |
 | GET_ABILITY_INFO_WITH_APP_LINKING | 0x00000040 | 获取通过<!--RP3-->[域名校验](../../application-models/app-linking-startup.md#实现原理)<!--RP3End-->筛选的AbilityInfo。          |
 | GET_ABILITY_INFO_WITH_SKILL       | 0x00000080 | 获取包含skills的AbilityInfo。                    |
+
+## BundleInstallStatus
+
+应用安装状态枚举。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称 | 值 | 说明 |
+| -------- | ------ | ------------------------------------------------------------ |
+| BUNDLE_NOT_EXIST   | 1 | 应用未安装。 |
+| BUNDLE_INSTALLING  | 2 | 应用正在安装。 |
+| BUNDLE_INSTALLED   | 3 | 应用已安装。 |
 
 ## bundleManager.getBundleInfoForSelf
 
@@ -1117,7 +1134,7 @@ ArkTS-Sta: getBundleInfo(bundleName: string, bundleFlags: int, userId: int, call
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
 | bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](#bundleflag)。|
 | userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的bundleInfo；否则为错误对象。 |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleInfo；否则为错误对象。 |
 
 **错误码：**
 
@@ -1749,7 +1766,7 @@ ArkTS-Sta: getAppCloneIdentity(uid: int): Promise\<AppCloneIdentity>
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<[AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14)> | Promise对象，返回AppCloneIdentity数组。 |
+| Promise\<[AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14)> | Promise对象，返回AppCloneIdentity信息。 |
 
 **错误码：**
 
@@ -1900,7 +1917,6 @@ ArkTS-Sta: getAbilityInfo(uri: string, abilityFlags: int): Promise\<Array\<Abili
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
-| 17700003 | The ability is not found.    |
 
 **示例：**
 
@@ -1947,6 +1963,80 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getAbilityInfo failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.getBundleInstallStatus
+
+getBundleInstallStatus(bundleName: string): BundleInstallStatus
+
+获取指定应用的安装状态。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | ------ | ---- | ------------------------------------------------------- |
+| bundleName | string | 是 | 表示应用包名。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------------ | ------------------------------------ |
+| [BundleInstallStatus](#bundleinstallstatus) | 返回指定应用的安装状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 17700001 | The specified bundle is not found. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 请开发者替换为实际的包名
+let bundleName: string = 'com.ohos.demo';
+
+try {
+  let bundleInstallStatus = bundleManager.getBundleInstallStatus(bundleName);
+  hilog.info(0x0000, 'testTag', 'bundle install status:' + bundleInstallStatus);
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleInstallStatus failed. Cause: %{public}s', message);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 请开发者替换为实际的包名
+let bundleName: string = 'com.ohos.demo';
+
+try {
+  let bundleInstallStatus = bundleManager.getBundleInstallStatus(bundleName);
+  hilog.info(0x0000, 'testTag', 'bundle install status:' + bundleInstallStatus);
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleInstallStatus failed. Cause: %{public}s', message);
 }
 ```
 
@@ -2170,8 +2260,6 @@ try {
     hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: %{public}d  %{public}s', err.code, err.message);
   });
 } catch (err) {
-  let code = (err as BusinessError).code;
-  let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: error %{public}d  %{public}s', err.code, err.message);
 }
 ```
@@ -2386,7 +2474,7 @@ type Metadata = _Metadata
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: SystemCapability.BundleManager.BundleFramework.Core
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -2662,7 +2750,7 @@ ArkTS-Dyn: type Skill = _Skill.Skill
 
 ArkTS-Sta: type Skill = _Skill
 
-skill信息。
+Skill信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2674,7 +2762,7 @@ skill信息。
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| ArkTS-Dyn: [_Skill.Skill](js-apis-bundleManager-skill.md#skill-1)<br>ArkTS-Sta: [_Skill](js-apis-bundleManager-skill.md#skill-1) |skill信息。 |
+| ArkTS-Dyn: [_Skill.Skill](js-apis-bundleManager-skill.md#skill-1)<br>ArkTS-Sta: [_Skill](js-apis-bundleManager-skill.md#skill-1) |Skill信息。 |
 
 ## SkillUrl<sup>12+</sup>
 

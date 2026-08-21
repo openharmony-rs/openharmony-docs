@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ANI类型体系由基本类型和扩展对象类型组成，native函数签名、装箱判断和类型转换都依赖这套对应关系。编写native代码时，需要先确认ArkTS侧声明的参数类型，再结合[Mangling规则](ani-name-mangling.md)确定签名，并判断是否需要在`ani_ref`、`ani_object`和具体对象类型之间转换。
 

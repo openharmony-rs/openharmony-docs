@@ -1,10 +1,10 @@
 # 使用Node-API接口创建和获取string值
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -358,8 +358,7 @@ static napi_value CreateExternalStringUtf16(napi_env env, napi_callback_info inf
         NAPI_AUTO_LENGTH,       // 字符串长度，如果传入NAPI_AUTO_LENGTH，则字符串需要以'\0'结尾
         StringFinalizerUTF16,   // 字符串的析构回调函数
         nullptr,                // 传递给析构回调函数的hint参数，本例不需要
-        &result                 // 接受创建的ArkTS字符串值
-    );
+        &result);               // 接收创建的ArkTS字符串值
     // 重要：str指向的内存必须在ArkTS string对象的整个生命周期内保持有效。
     // 而且在调用此接口后，str指向的内存内容必须保持不可变。任何对该内存的写入操作都可能导致程序崩溃。
     if (status != napi_ok) {
@@ -385,7 +384,7 @@ ArkTS侧示例代码
 <!-- @[ark_napi_create_external_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s',
+hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_external_string_utf16:%{public}s',
   testNapi.CreateExternalStringUtf16());
 ```
 通过napi_create_external_string_utf16接口创建出的ArkTS string对象受GC管理，其生命周期结束，GC会回收ArkTS string对象，同时触发StringFinalizerUTF16函数来回收ArkTS string对象指向的native侧资源。
@@ -426,8 +425,7 @@ static napi_value CreateExternalStringAscii(napi_env env, napi_callback_info inf
         NAPI_AUTO_LENGTH,       // 字符串长度，如果传入NAPI_AUTO_LENGTH，则字符串需要以'\0'结尾
         StringFinalizerASCII,   // 字符串的析构回调函数
         nullptr,                // 传递给析构回调函数的hint参数，本例不需要
-        &result                 // 接受创建的ArkTS字符串值
-    );
+        &result);               // 接收创建的ArkTS字符串值
     // 重要：str指向的内存必须在ArkTS string对象的整个生命周期内保持有效。
     // 而且在调用此接口后，str指向的内存内容必须保持不可变。任何对该内存的写入操作都可能导致程序崩溃。
     if (status != napi_ok) {
@@ -453,7 +451,7 @@ ArkTS侧示例代码
 <!-- @[ark_napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s',
+hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_external_string_ascii:%{public}s',
   testNapi.CreateExternalStringAscii());
 ```
 通过napi_create_external_string_ascii接口创建出的ArkTS string对象受GC管理，其生命周期结束，GC会回收ArkTS string对象，同时触发StringFinalizerASCII函数来回收ArkTS string对象指向的native侧资源。

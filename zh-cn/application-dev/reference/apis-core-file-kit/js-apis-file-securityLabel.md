@@ -6,7 +6,7 @@
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
-该模块提供文件数据安全等级的相关功能：向应用程序提供查询、设置文件数据安全等级的ArkTS接口。
+该模块提供文件数据安全等级的相关功能：向应用程序提供查询、设置文件数据安全等级的ArkTS接口。该功能可以帮助应用实现对不同安全等级文件的分级管理和访问控制，解决数据安全管控的需求，提升应用的数据安全合规性。
 
 > **说明：**
 >
@@ -60,7 +60,7 @@ type DataLevel = 's0' | 's1' | 's2' | 's3' | 's4'
 
 setSecurityLabel(path:string, type:DataLevel):Promise&lt;void&gt;
 
-设置文件或目录的数据安全等级。使用Promise异步回调。
+设置文件或目录的数据安全等级，用于实现文件的分级管理和访问控制。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -108,7 +108,7 @@ setSecurityLabel(path:string, type:DataLevel):Promise&lt;void&gt;
 
 setSecurityLabel(path:string, type:DataLevel, callback: AsyncCallback&lt;void&gt;):void
 
-设置文件或目录的数据安全等级。使用callback异步回调。
+设置文件或目录的数据安全等级，用于实现文件的分级管理和访问控制。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -153,7 +153,7 @@ setSecurityLabel(path:string, type:DataLevel, callback: AsyncCallback&lt;void&gt
 
 setSecurityLabelSync(path:string, type:DataLevel):void
 
-以同步方法设置文件或目录的数据安全等级。
+以同步方法设置文件或目录的数据安全等级，用于实现文件的分级管理和访问控制。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -246,7 +246,7 @@ getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
   | 参数名   | 类型                        | 必填 | 说明                       |
   | -------- | --------------------------- | ---- | -------------------------- |
   | path     | string                      | 是   | 文件或目录的应用沙箱路径。                  |
-  | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数，返回安全等级。 |
+  | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数，返回数据安全等级。 |
 
 **错误码：**
 

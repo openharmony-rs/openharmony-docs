@@ -2,14 +2,14 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-列表包含一系列相同宽度的列表项。适合连续、多行呈现同类数据，例如图片和文本。
+List是ArkUI中的列表容器组件，用于呈现连续、多行或多列的同类数据，例如图片和文本，支持垂直或水平滚动。配合LazyForEach或Repeat可实现懒加载，提升长列表场景下的启动速度并减少内存消耗；支持预加载以减少滚动丢帧、提升流畅性；支持单列/多列布局、分组列表、吸顶吸底等能力，适用于消息列表、商品列表、设置页面等场景。
 
-List的懒加载是指组件按需加载可见区域可见的子组件。相比全量加载，使用懒加载可以提升应用启动速度，减少内存消耗。List和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，懒加载能力存在差异：
+List的懒加载是指组件按需加载显示区域内的子组件。相比全量加载，使用懒加载可以提升应用启动速度，减少内存消耗。List和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，懒加载能力存在差异：
 
  - 当List和ForEach结合，会一次性创建所有的子组件，在需要的时候布局和渲染屏幕范围内的节点。当用户滑动时，划出屏幕范围的节点不会下树销毁，划入屏幕范围的节点会布局和渲染。
 
@@ -17,9 +17,9 @@ List的懒加载是指组件按需加载可见区域可见的子组件。相比�
 
  - 当List和带[virtualScroll](./ts-rendering-control-repeat.md#virtualscroll)的Repeat结合，它的懒加载行为和LazyForEach一致。当List和不带virtualScroll的Repeat结合，它的懒加载行为和ForEach一致。
 
-如果可滚动组件嵌套List组件，并且滚动方向相同，List组件又没有设置主轴尺寸时，List组件会全量加载子组件，导致懒加载失效。该场景推荐使用List嵌套[ListItemGroup](ts-container-listitemgroup.md)组件以实现优化性能。
+如果可滚动组件嵌套List组件，并且滚动方向相同，List组件又没有设置主轴尺寸时，List组件会全量加载子组件，导致懒加载失效。该场景推荐使用List嵌套[ListItemGroup](ts-container-listitemgroup.md)组件以优化性能。
 
-List的预加载是指除了加载显示区域内可见的子组件外，还支持空闲时隙提前加载部分显示区域外不可见的子组件。使用预加载可以减少滚动丢帧，提升流畅性。预加载需要结合懒加载才会生效。List支持通过[cachedCount](#cachedcount)设置预加载的数量。默认会预加载显示区域上下各一屏子组件（最大预加载16行子组件）。List和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，预加载能力存在差异：
+List的预加载是指除了加载显示区域内可见的子组件外，还支持在空闲时隙提前加载部分显示区域外不可见的子组件。使用预加载可以减少滚动丢帧，提升流畅性。预加载需要结合懒加载才会生效。List支持通过[cachedCount](#cachedcount)设置预加载的数量。默认会预加载显示区域上下各一屏子组件（最大预加载16行子组件）。List和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，预加载能力存在差异：
 
  - 当List和ForEach结合，如果设置了cachedCount，除了会布局显示区域内子组件外，还会在空闲时隙预布局显示区域外cachedCount范围内的子组件。
 
@@ -37,13 +37,13 @@ List的预加载是指除了加载显示区域内可见的子组件外，还支�
 
 ## 子组件
 
-仅支持[ListItem](ts-container-listitem.md)、[ListItemGroup](ts-container-listitemgroup.md)子组件和自定义组件。自定义组件在List下使用时，建议使用ListItem或ListItemGroup作为自定义组件的顶层组件，不建议给自定义组件设置属性和事件方法。
+仅支持[ListItem](ts-container-listitem.md)、[ListItemGroup](ts-container-listitemgroup.md)子组件和自定义组件。自定义组件在List下使用时，请使用ListItem或ListItemGroup作为自定义组件的顶层组件，请勿直接给自定义组件设置属性和事件方法，因为List通过ListItem或ListItemGroup管理子组件的布局和事件处理，直接设置可能导致部分功能无法正常生效。
 
 支持通过渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)）动态生成子组件，更推荐使用LazyForEach或Repeat以优化性能。
 
 > **说明：**
 >
-> 如果在处理大量子组件时遇到卡顿问题，请考虑采用懒加载、缓存列表项、动态预加载、组件复用和布局优化等方法来进行优化。最佳实践请参考[优化长列表加载慢丢帧问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-best-practices-long-list)。
+> 在处理大量子组件时遇到卡顿问题，请采用懒加载、缓存列表项、动态预加载、组件复用和布局优化等方法进行优化。
 >
 > 从API version 21开始，List单个子组件的宽高最大为16777216px；API version 20及之前，List单个子组件的宽高最大为1000000px。子组件超出该大小可能导致滚动或显示异常。
 >
@@ -83,7 +83,7 @@ List(options?: [ListOptions](#listoptions18对象说明))
 
 | 参数名  | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| options    | [ListOptions](#listoptions18对象说明)  | 否   | 设置List组件参数。 |
+| options    | [ListOptions](#listoptions18对象说明)  | 否   | 设置List组件参数。不传入时使用默认配置。 |
 
 ## ListOptions<sup>18+</sup>对象说明
 
@@ -105,10 +105,10 @@ List(options?: [ListOptions](#listoptions18对象说明))
 
 | 名称       | 类型                                    | 只读 | 可选 | 说明                                                     |
 | ------------ | ------------------------------------------- | ---- | -- | ------------------------------------------------------------ |
-| initialIndex<sup>7+</sup> | number | 否 | 是 | 设置当前List初次加载时显示区域起始位置的item索引值。<br/>默认值：0<br/>**说明：** <br/>设置为负数或超过了当前List最后一个item的索引值时视为无效取值，无效取值按默认值显示。<br/>从API version 14开始，如果在List组件创建完成后首次布局前（如List的[onAttach](ts-universal-events-show-hide.md#onattach12)事件中），调用Scroller滚动控制器中不带动画的scrollToIndex或scrollEdge方法，会覆盖initialIndex设置的值。<br/>设置了initialIndex后，List从initialIndex对应的子组件开始布局，在这之前的子组件未参与布局，无法计算准确大小，因此通过[currentOffset](ts-container-scroll.md#currentoffset)接口获取到的List的滚动总偏移量通过估算得出，可能会有误差。可通过设置[childrenMainSize](#childrenmainsize12)确保List的滚动总偏移量的准确性。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
-| space<sup>7+</sup>        | number&nbsp;\|&nbsp;string                  | 否   | 是 | 子组件主轴方向的间隔。<br/>默认值：0<br/>参数类型为number时单位为vp。<br/>**说明：** <br/>设置为负数或者大于等于List内容区长度时，按默认值显示。<br/>space参数值小于List分割线宽度时，子组件主轴方向的间隔取分割线宽度。<br/> List子组件的[visibility](./ts-appendix-enums.md#visibility)属性设置为None时不显示，但该子组件上下的space还是会生效。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
-| spaceWidth        | [Dimension](ts-types.md#dimension10)                  | 否   | 是 | 子组件主轴方向的间隔。<br/>默认值：0<br/>**说明：** <br/>设置为负数或者大于等于List内容区长度时，按默认值显示。<br/>space参数值小于List分割线宽度时，子组件主轴方向的间隔取分割线宽度。<br/>List子组件的visibility属性设置为None时不显示，但该子组件上下的space还是会生效。如果同时设置了spaceWidth和space，则spaceWidth优先生效。当spaceWidth为undefined或null时，space生效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0|
-| scroller<sup>7+</sup>      | [Scroller](ts-container-scroll.md#scroller) | 否   | 是 | 可滚动组件的控制器。与List绑定后，可以通过它控制List的滚动。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、List、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| initialIndex<sup>7+</sup> | number | 否 | 是 | 设置当前List初次加载时显示区域起始位置的item索引值。<br/>默认值：0。当stackFromEnd为true时，默认值为总item个数-1。<br/>**说明：** <br/>设置为负数或超过了当前List最后一个item的索引值时视为无效取值，无效取值按默认值显示。<br/>从API version 14开始，如果在List组件创建完成后首次布局前（如List的[onAttach](ts-universal-events-show-hide.md#onattach12)事件中），调用Scroller滚动控制器中不带动画的scrollToIndex或scrollEdge方法，会覆盖initialIndex设置的值。<br/>设置了initialIndex后，List从initialIndex对应的子组件开始布局，在这之前的子组件未参与布局，无法计算准确大小，因此通过[currentOffset](ts-container-scroll.md#currentoffset)接口获取到的List的滚动总偏移量通过估算得出，可能会有误差。可通过设置[childrenMainSize](#childrenmainsize12)确保List的滚动总偏移量的准确性。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| space<sup>7+</sup> | number&nbsp;\|&nbsp;string | 否 | 是 | 子组件主轴方向的间隔。<br/>默认值：0<br/>参数类型为number时单位为vp。<br/>**说明：** <br/>设置为负数或者大于等于List内容区长度时，按默认值显示。<br/>space参数值小于List分割线宽度时，子组件主轴方向的间隔取分割线宽度。<br/> List子组件的visibility属性设置为None时不显示，但该子组件上下的space还是会生效。<br/>如果同时设置了spaceWidth和space，则spaceWidth优先生效。当spaceWidth为undefined或null时，space生效。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| spaceWidth | [Dimension](ts-types.md#dimension10) | 否 | 是 | 子组件主轴方向的间隔。<br/>默认值：0<br/>参数类型为number时单位为vp。<br/>**说明：** <br/>设置为负数或者大于等于List内容区长度时，按默认值显示。<br/>spaceWidth参数值小于List分割线宽度时，子组件主轴方向的间隔取分割线宽度。<br/>List子组件的visibility属性设置为None时不显示，但该子组件上下的spaceWidth间隔还是会生效。如果同时设置了spaceWidth和space，则spaceWidth优先生效。当spaceWidth为undefined或null时，space生效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| scroller<sup>7+</sup> | [Scroller](ts-container-scroll.md#scroller) | 否 | 是 | 可滚动组件的控制器。与List绑定后，可以通过它控制List的滚动。默认不绑定滚动控制器。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 属性
 
@@ -150,7 +150,7 @@ ArkTS-Sta: divider(value: ListDividerOptions | null | undefined)
 
 设置ListItem分割线样式，默认无分割线。
 
-List的分割线画在主轴方向两个子组件之间，第一个子组件上方和最后一个子组件下方不会绘制分割线。
+List的分割线画在主轴方向两个子组件之间，第一个子组件上方和最后一个子组件下方不会绘制分割线。分割线的宽度会影响子组件之间的间隔，当space或spaceWidth值小于分割线宽度时，子组件主轴方向的间隔取分割线宽度。
 
 多列模式下，ListItem与ListItem之间的分割线起始边距从每一列的交叉轴方向起始边开始计算，单列模式从List交叉轴方向起始边开始计算。
 
@@ -206,7 +206,7 @@ ArkTS-Sta: cachedCount(value: int | undefined)
 
 List设置cachedCount后，显示区域外上下各会预加载并布局cachedCount行ListItem。计算ListItem行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。
 
-List下嵌套使用LazyForEach，并且LazyForEach下嵌套使用ListItemGroup时，LazyForEach会在List显示区域外上下各会创建cachedCount个ListItemGroup。
+List下嵌套使用LazyForEach，并且LazyForEach下嵌套使用ListItemGroup时，LazyForEach会在List显示区域外上下各创建cachedCount个ListItemGroup。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -230,9 +230,9 @@ List下嵌套使用LazyForEach，并且LazyForEach下嵌套使用ListItemGroup�
 
 cachedCount(count: number, show: boolean)
 
-设置列表中ListItem/ListItemGroup的预加载数量，并配置是否显示预加载节点。
+设置列表的预加载行数，并配置是否显示预加载节点。懒加载场景才会预加载List显示区域外上下各cachedCount行，非懒加载场景会全量加载。
 
-List设置cachedCount后，显示区域外上下各会预加载并布局cachedCount行ListItem。计算ListItem行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合[clip](ts-universal-attributes-sharp-clipping.md#clip12)或[clipContent](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
+List设置cachedCount后，显示区域外上下各会预加载并布局cachedCount行。计算预加载行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合裁剪[clip](ts-universal-attributes-sharp-clipping.md#clip12)或内容裁剪[clipContent](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
 
 > **说明：**
 >
@@ -252,8 +252,8 @@ List设置cachedCount后，显示区域外上下各会预加载并布局cachedCo
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| count  | number | 是   | 预加载的ListItem的数量。<br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。 <br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
-| show  | boolean | 是   | 被预加载的ListItem是否需要显示。设置为true时显示预加载的ListItem，设置为false时不显示预加载的ListItem。 <br/> 默认值：false |
+| count  | number | 是   | 列表的预加载行数。<br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。 <br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
+| show  | boolean | 是   | 被预加载的ListItem/ListItemGroup是否需要显示。设置为true时显示预加载的ListItem/ListItemGroup，设置为false时不显示预加载的ListItem/ListItemGroup。 <br/> 默认值：false |
 
 ### cachedCount<sup>22+</sup>
 
@@ -261,13 +261,13 @@ ArkTS-Dyn: cachedCount(count: number | CacheCountInfo, show: boolean)
 
 ArkTS-Sta: cachedCount(count: int | CacheCountInfo | undefined, show: boolean | undefined)
 
-设置列表中ListItem/ListItemGroup的预加载数量，并配置是否显示预加载节点。
+设置列表的预加载行数，并配置是否显示预加载节点。懒加载场景才会根据count或CacheCountInfo在List显示区域外预加载，非懒加载场景会全量加载。
 
-若cachedCount属性的第一个参数为number类型，在帧间空闲时隙会在显示区域外上下各预加载并布局count行ListItem。
+若cachedCount属性的第一个参数为number类型，在帧间空闲时隙会在显示区域外上下各预加载并布局count行。
 
-若cachedCount属性的第一个参数为CacheCountInfo类型，当已缓存行数小于CacheCountInfo.minCount时，会在帧间空闲时隙预加载和布局。当已缓存行数大于CacheCountInfo.maxCount时，会将超出范围的节点销毁或回收复用。UI空闲时（无动画或用户操作），会在显示区域外上下各预加载CacheCountInfo.maxCount行ListItem。
+若cachedCount属性的第一个参数为CacheCountInfo类型，当已缓存行数小于CacheCountInfo.minCount时，会在帧间空闲时隙预加载和布局。当已缓存行数大于CacheCountInfo.maxCount时，会将超出范围的节点销毁或回收复用。UI空闲时（无动画或用户操作），会在显示区域外上下各预加载CacheCountInfo.maxCount行。
 
-在计算ListItem行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合[clip](ts-universal-attributes-sharp-clipping.md#clip12)或[clipContent](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
+计算预加载行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合[clip](ts-universal-attributes-sharp-clipping.md#clip12)或[clipContent](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
 
 默认行为：count参数默认为number类型，数值根据屏幕内显示的节点个数设置，最大值为16。预加载的ListItem默认不参与绘制。
 
@@ -292,8 +292,8 @@ ArkTS-Sta: cachedCount(count: int | CacheCountInfo | undefined, show: boolean | 
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| count  | ArkTS-Dyn: number&nbsp;\|&nbsp;[CacheCountInfo](ts-types.md#cachecountinfo22对象说明)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[CacheCountInfo](ts-types.md#cachecountinfo22对象说明)&nbsp;\|&nbsp;undefined | 是   | 当参数类型为number时，表示预加载的ListItem的数量。 <br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 <br>当参数类型为CacheCountInfo时，表示预加载的最大最小范围。<br/>取值为undefined时，按默认行为处理。|
-| show  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 被预加载的ListItem是否需要显示。<br/>true：显示预加载的ListItem。<br/>false：不显示预加载的ListItem。<br/>取值为undefined时，不显示预加载的ListItem。 |
+| count  | ArkTS-Dyn: number&nbsp;\|&nbsp;[CacheCountInfo](ts-types.md#cachecountinfo22对象说明)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[CacheCountInfo](ts-types.md#cachecountinfo22对象说明)&nbsp;\|&nbsp;undefined | 是   | 当参数类型为number时，表示列表的预加载行数。 <br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 <br>当参数类型为CacheCountInfo时，表示预加载的最大最小范围。<br/>取值为undefined时，按默认行为处理。|
+| show  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 被预加载的ListItem/ListItemGroup是否需要显示。<br/>true：显示预加载的ListItem/ListItemGroup。<br/>false：不显示预加载的ListItem/ListItemGroup。<br/>取值为undefined时，不显示预加载的ListItem/ListItemGroup。 |
 
 ### edgeEffect
 
@@ -303,7 +303,7 @@ edgeEffect(value: EdgeEffect, options?: EdgeEffectOptions)
 
 > **说明：**
 >
-> 当List组件的内容区小于一屏时，默认没有回弹效果。若要启用回弹效果，可以通过设置edgeEffect属性的options参数为{ alwaysEnabled: true }来实现。
+> 当List组件的内容区小于一屏时，默认没有回弹效果。若要启用回弹效果，设置edgeEffect属性的options参数为{ alwaysEnabled: true }即可。
 
 **ArkTS模式:** 该接口仅适用于ArkTS-Dyn。
 
@@ -407,8 +407,8 @@ lanes(value: number | LengthConstrain, gutter?: Dimension)
 
 | 参数名               | 类型                                                         | 必填 | 说明                                     |
 | -------------------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) | 是   | List组件的布局列数或行数。<br/>默认值：1 <br/>取值范围：[1, +∞)|
-| gutter<sup>10+</sup> | [Dimension](ts-types.md#dimension10)                         | 否   | 列间距或行间距。<br />默认值：0 <br/>取值范围：[0, +∞)<br/>**说明：**<br/>gutter为列间距或行间距，当列数或行数大于1时生效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) | 是   | List组件的布局列数或行数。<br/>默认值：1 <br/>取值范围：[1, +∞)，传入小于1的值时按默认值处理。|
+| gutter<sup>10+</sup> | [Dimension](ts-types.md#dimension10)                         | 否   | 列间距或行间距。<br />默认值：0<br/>参数类型为number时单位为vp。<br/>取值范围：[0, +∞)，传入负值时按默认值处理。<br/>**说明：**<br/>gutter为列间距或行间距，当列数或行数大于1时生效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### lanes<sup>22+</sup>
 
@@ -416,7 +416,7 @@ ArkTS-Dyn: lanes(value: number | LengthConstrain | ItemFillPolicy, gutter?: Dime
 
 ArkTS-Sta: lanes(value: int | LengthConstrain | ItemFillPolicy | undefined, gutter?: Dimension | undefined)
 
-设置List组件布局列的数量和列的间距，默认按固定一列显示。
+设置List组件交叉轴方向的布局数量和间距。List垂直滚动时，设置列数和列间距；List水平滚动时，设置行数和行间距。默认按一列或一行显示。在多列或多行模式下，ListItemGroup在垂直滚动时独占一行，在水平滚动时独占一列；ListItemGroup中的ListItem按照List组件的lanes属性设置值来布局。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -434,8 +434,8 @@ ArkTS-Sta: lanes(value: int | LengthConstrain | ItemFillPolicy | undefined, gutt
 
 | 参数名               | 类型                                                         | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value                | ArkTS-Dyn: number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22)&nbsp;\|&nbsp;undefined  | 是   | 当前List组件布局列的数量。<br/> 设置为number类型时，根据number类型的数值确定列数，number类型取值范围：[1, +∞)。<br/>设置为LengthConstrain类型时，根据LengthConstrain中的最大最小值确定列数。<br/>设置为ItemFillPolicy类型时，根据List组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数，该类型只在List滚动方向为垂直方向时才生效。 |
-| gutter | ArkTS-Dyn: [Dimension](ts-types.md#dimension10)<br/>ArkTS-Sta: [Dimension](ts-types.md#dimension10) \|&nbsp;undefined                         | 否   | 列间距。<br />默认值：0 <br/>取值为undefined时，列间距为0。<br/>取值范围：[0, +∞) |
+| value | ArkTS-Dyn: number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22)&nbsp;\|&nbsp;undefined | 是 | 当前List组件交叉轴方向的布局数量。List垂直滚动时表示列数，水平滚动时表示行数。<br/>设置为number类型时，根据number类型的数值确定列数或行数，number类型取值范围：[1, +∞)，传入小于1的值时按默认值处理。<br/>设置为LengthConstrain类型时，垂直滚动时根据列宽的最大值和最小值确定列数，水平滚动时根据行高的最大值和最小值确定行数。<br/>设置为ItemFillPolicy类型时，根据List组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数，该类型只在List滚动方向为垂直方向时才生效。 |
+| gutter | ArkTS-Dyn: [Dimension](ts-types.md#dimension10)<br/>ArkTS-Sta: [Dimension](ts-types.md#dimension10) \|&nbsp;undefined | 否 | List垂直滚动时表示列间距，水平滚动时表示行间距。<br />默认值：0<br/>参数类型为number时单位为vp。<br/>取值范围：[0, +∞)，传入负值时按默认值处理。<br/>**说明：**<br/>当列数或行数大于1时生效。<br/>取值为undefined时，按默认值处理。 |
 
 ### alignListItem<sup>9+</sup>
 
@@ -467,7 +467,7 @@ ArkTS-Dyn: sticky(value: StickyStyle)
 
 ArkTS-Sta: sticky(value: StickyStyle | undefined)
 
-配合[ListItemGroup](ts-container-listitemgroup.md)组件使用，设置ListItemGroup中header是否要吸顶或footer是否要吸底。sticky属性可以设置为 StickyStyle.Header \| StickyStyle.Footer 以同时支持header吸顶和footer吸底。从API version 20开始，sticky属性也可以设置为StickyStyle.BOTH，以同时支持header吸顶和footer吸底。
+配合[ListItemGroup](ts-container-listitemgroup.md)组件使用，设置ListItemGroup中header是否要吸顶或footer是否要吸底。从API version 20开始，sticky属性支持StickyStyle.BOTH枚举值，可直接设置为StickyStyle.BOTH以同时支持header吸顶和footer吸底，效果与StickyStyle.Header | StickyStyle.Footer相同。API version 20之前，可通过StickyStyle.Header | StickyStyle.Footer达到相同效果。
 
 > **说明：** 
 >
@@ -595,7 +595,7 @@ nestedScroll(value: NestedScrollOptions)
 
 friction(value: number | Resource)
 
-设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程。设置为小于等于0的值时，按默认值处理。
+设置摩擦系数，手动滑动滚动区域时生效，仅影响惯性滚动过程。设置为小于等于0的值时，按默认值处理。
 
 **ArkTS模式:** 该接口仅适用于ArkTS-Dyn。
 
@@ -613,7 +613,7 @@ friction(value: number | Resource)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 摩擦系数。<br/>默认值：非wearable设备为0.6，wearable设备为0.9。<br/>从API version 11开始，非wearable设备默认值为0.7。<br/>从API version 12开始，非wearable设备默认值为0.75。 |
+| value  | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 摩擦系数。<br/>默认值：非Wearable设备为0.6，Wearable设备为0.9。<br/>从API version 11开始，非Wearable设备默认值为0.7。<br/>从API version 12开始，非Wearable设备默认值为0.75。<br/>取值范围：(0, +∞) |
 
 ### contentStartOffset<sup>11+</sup>
 
@@ -637,7 +637,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| value  | number | 是   | 内容区域起始偏移量。<br/>默认值：0<br/>单位：vp <br/>**说明：**<br/>设置为负数时，按默认值处理。|
+| value  | number | 是   | 内容区域起始偏移量。<br/>默认值：0<br/>单位：vp <br/>**说明：**<br/>设置为负数时，按默认值处理。<br/>取值范围：[0, +∞)|
 
 ### contentStartOffset<sup>22+</sup>
 
@@ -663,7 +663,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| offset  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 内容区域起始偏移量。<br/>默认值：0<br/>参数类型为number时单位为vp。 <br/>设置异常值如负数、非数字Resource与undefined时，按默认值处理。|
+| offset | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是 | 内容区域起始偏移量。<br/>默认值：0<br/>参数类型为number时单位为vp。 <br/>设置异常值如负数、非数字Resource时，按默认值处理。<br/>参数类型为number时取值范围：[0, +∞)<br/>取值为undefined时，按默认值处理。 |
 
 ### contentEndOffset<sup>11+</sup>
 
@@ -687,7 +687,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
-| value  | number | 是   | 内容区末尾偏移量。<br/>默认值：0<br/>单位：vp <br/>**说明：**<br/>设置为负数时，按默认值处理。|
+| value  | number | 是   | 内容区末尾偏移量。<br/>默认值：0<br/>单位：vp <br/>**说明：**<br/>设置为负数时，按默认值处理。<br/>取值范围：[0, +∞)|
 
 ### contentEndOffset<sup>22+</sup>
 
@@ -713,7 +713,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
-| offset  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 内容区末尾偏移量。<br/>默认值：0<br/>参数类型为number时单位为vp。 <br/>设置异常值如负数、非数字Resource与undefined时，按默认值处理。|
+| offset | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是 | 内容区末尾偏移量。<br/>默认值：0<br/>参数类型为number时单位为vp。 <br/>设置异常值如负数、非数字Resource时，按默认值处理。<br/>参数类型为number时取值范围：[0, +∞)<br/>取值为undefined时，按默认值处理。 |
 
 ### childrenMainSize<sup>12+</sup>
 
@@ -724,7 +724,7 @@ ArkTS-Sta: childrenMainSize(value: ChildrenMainSize | undefined)
 设置List组件的子组件在主轴方向的大小信息。
 
 > **说明：** 
-> - 该属性通过向List组件提供所有子组件在主轴方向的大小信息，确保在面对子组件主轴大小不一致、增删子组件、使用[scrollToIndex](ts-container-scroll.md#scrolltoindex)等场景时，List组件能够维护其滑动位置准确性。这样，[scrollTo](ts-container-scroll.md#scrollto)可以准确的跳转到指定位置，[currentOffset](ts-container-scroll.md#currentoffset)可以获取到当前准确的滑动位置，内置滚动条可以实现平滑移动无跳变。
+> - 该属性通过向List组件提供所有子组件在主轴方向的大小信息，确保在面对子组件主轴大小不一致、增删子组件、使用[scrollToIndex](ts-container-scroll.md#scrolltoindex)等场景时，List组件能够维护其滑动位置准确性。这样，[scrollTo](ts-container-scroll.md#scrollto)可以准确地跳转到指定位置，[currentOffset](ts-container-scroll.md#currentoffset)可以获取到当前准确的滑动位置，内置滚动条可以实现平滑移动无跳变。
 > - 当子组件是ListItemGroup时，需要根据ListItemGroup的列数、ListItemGroup中ListItem在主轴方向的间距以及ListItemGroup中header、footer和ListItem的大小，来准确计算出ListItemGroup在主轴方向的整体大小，并传递给List组件。
 > - 如果子组件有ListItemGroup，必须为每一个ListItemGroup设置[childrenMainSize](./ts-container-listitemgroup.md#childrenmainsize12)属性。List组件和每一个ListItemGroup组件都要通过childrenMainSize属性接口一对一绑定一个ChildrenMainSize对象。
 > - 多列场景使用LazyForEach生成子组件时，需确保LazyForEach全部生成ListItemGroup组件或者全部生成ListItem组件。
@@ -856,7 +856,7 @@ ArkTS-Sta: syncLoad(enable: boolean | undefined)
 
 editModeOptions(options?: EditModeOptions)
 
-配置编辑模式选项参数。
+配置List组件编辑模式的行为选项，包括多选聚拢动画开关、预览徽标获取、默认多选样式等。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -872,17 +872,17 @@ editModeOptions(options?: EditModeOptions)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options| [EditModeOptions](ts-container-scrollable-common.md#editmodeoptions23对象说明)  | 否   | 编辑模式选项。|
+| options| [EditModeOptions](ts-container-scrollable-common.md#editmodeoptions23对象说明)  | 否   | 编辑模式选项，用于自定义List编辑模式的特性行为。当需要自定义编辑模式行为时传入此参数，不传入时使用默认配置。|
 
 ### editMode<sup>(deprecated)</sup>
 
 editMode(value: boolean)
 
-设置当前List组件是否处于可编辑模式。可参考[示例3](#示例3设置编辑模式)实现删除选中的list项。
+设置当前List组件是否处于可编辑模式。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
+> 从API version 7开始支持，从API version 9开始废弃。此接口已完全移除，无替代接口。如需实现编辑状态切换和删除列表项，可通过自定义状态变量控制删除按钮的显示与隐藏，并在删除按钮的点击事件中更新数据源，具体实现方式请参考[示例3](#示例3自定义编辑和删除模式)。
 
 **ArkTS模式:** 该接口仅适用于ArkTS-Dyn。
 
@@ -894,7 +894,7 @@ editMode(value: boolean)
 
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
-| value  | boolean | 是   | 当前List组件是否处于可编辑模式。<br/>默认值：false，当前List组件不处于可编辑模式。 |
+| value  | boolean | 是   | 当前List组件是否处于可编辑模式。true表示当前List组件处于可编辑模式，false表示当前List组件不处于可编辑模式。<br/>默认值：false |
 
 ### supportEmptyBranchInLazyLoading<sup>23+</sup>
 
@@ -916,7 +916,7 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
-| supported  | boolean \| undefined | 是   | 当前List组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子组件的空分支节点。</br>true表示支持空分支节点；false表示不支持空分支节点。</br>值为undefined时，按false处理。 |
+| supported  | boolean \| undefined | 是   | 当前List组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子组件的空分支节点。<br/>true表示支持空分支节点；false表示不支持空分支节点。<br/>值为undefined时，按false处理。 |
 
 ### backPressBehavior
 
@@ -1017,7 +1017,7 @@ ListItemGroup吸顶或吸底效果枚举。
 
 | 名称     |  值  | 说明                                     |
 | ------ | ------ | ---------------------------------------- |
-| NONE   | 0 | 默认无项目滚动对齐效果。            |
+| NONE   | 0 | 默认无列表项滚动结束对齐效果。            |
 | START  | 1 | 视图中的第一项将在列表的开头对齐。<br/>**说明：**<br/>当列表位移至末端，需要将末端的item完整显示，可能出现开头不对齐的情况。 |
 | CENTER | 2 | 视图中的中间项将在列表中心对齐。<br/>**说明：**<br/>顶端和末尾的item都可以在列表中心对齐，列表显示可能露出空白。 |
 | END    | 3 | 视图中的最后一项将在列表末尾对齐。<br/>**说明：**<br/>当列表位移至顶端，需要将顶端的item完整显示，可能出现末尾不对齐的情况。 |
@@ -1038,8 +1038,8 @@ ListItemGroup吸顶或吸底效果枚举。
 
 | 名称     |  值  | 说明                                     |
 | ------ | ------ | ---------------------------------------- |
-| NORMAL   | 0 | 默认列表限位动画速度，通常用于列表项尺寸较大，划一下滚动一个列表项场景。            |
-| SLOW  | 1 | 列表限位动画速度较慢，通常用于列表项尺寸较小，划一下滚动多个列表项场景。 |
+| NORMAL   | 0 | 默认列表限位动画速度，适用于列表项主轴方向尺寸较大（如接近列表视口主轴尺寸），每次划动仅滚动一个列表项的场景。            |
+| SLOW  | 1 | 列表限位动画速度低于NORMAL，适用于列表项主轴方向尺寸较小（如远小于列表视口主轴尺寸），每次划动需滚动多个列表项的场景。 |
 
 ## ListBackPressBehavior
 
@@ -1075,7 +1075,7 @@ ListItemGroup吸顶或吸底效果枚举。
 
 | 名称     | 类型     | 只读 | 可选 | 说明                   |
 | ------- | -------- | ---- | -- | ---------------------- |
-| onFinish | ()=>void | 否   | 是 | 在收起动画完成后触发。 |
+| onFinish | ()=>void | 否   | 是 | 在收起动画完成后触发。未设置此属性时不触发回调。 |
 
 ## ListDividerOptions<sup>18+</sup>对象说明
 
@@ -1115,6 +1115,10 @@ ArkTS-Dyn: onScrollIndex(event: (start: number, end: number, center: number) => 
 ArkTS-Sta: onScrollIndex(event: ((start: int, end: int, center: int) => void) | undefined)
 
 有子组件划入或划出List显示区域时触发。计算索引值时，ListItemGroup作为一个整体占一个索引值，不计算ListItemGroup内部ListItem的索引值。
+
+> **说明：**
+>
+> 与[onScrollVisibleContentChange](#onscrollvisiblecontentchange12)相比，onScrollIndex将ListItemGroup整体计为一个索引值，且回调仅返回首尾及中间索引值。如需获取ListItemGroup内部header、footer或ListItem的详细索引信息，请使用onScrollVisibleContentChange。
 
 List的边缘效果为弹簧效果时，在List划动到边缘继续划动和松手回弹过程不会触发onScrollIndex事件。
 
@@ -1260,7 +1264,7 @@ onScrollStart(event: () => void)
 
 onScrollStop(event: () => void)
 
-列表滑动停止时触发。手拖动列表或列表的滚动条触发的滑动，手离开屏幕后滑动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滑动控制器触发的带动画的滑动，动画停止会触发该事件。
+列表滑动停止时触发。手指拖动列表或列表的滚动条触发的滑动，手离开屏幕后滑动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滑动控制器触发的带动画的滑动，动画停止会触发该事件。
 
 **ArkTS模式:** 该接口仅适用于ArkTS-Dyn。
 
@@ -1316,7 +1320,7 @@ ArkTS-Sta: onItemDragStart(event: OnItemDragStartCallback | undefined)
 
 开始拖拽List的子组件[ListItem](ts-container-listitem.md)时触发。
 
-不支持拖动到List边缘时触发List的自动滚动，可以使用ForEach、LazyForEach、Repeat的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口实现该效果，参考[示例12（使用OnMove进行拖拽）](#示例12使用onmove进行拖拽)。但需注意[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口不支持跨ListItemGroup拖拽。
+不支持拖动到List边缘时触发List的自动滚动，可以使用ForEach、LazyForEach、Repeat的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口实现该效果，参考[示例12（使用onMove进行拖拽）](#示例12使用onmove进行拖拽)。但需注意[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口不支持跨ListItemGroup拖拽。
 
 >**说明：**
 >
@@ -1356,7 +1360,7 @@ ArkTS-Sta: onItemDragEnter(event: ((event: ItemDragInfo) => void) | undefined)
 
 | 参数名 | 类型                                                      | 必填 | 说明           |
 | ------ | --------------------------------------------------------- | ---- | -------------- |
-| event  | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。 |
+| event  | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明)) => void<br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明)) => void) \| undefined | 是   | 拖拽进入列表范围时触发的回调。<br/>undefined：不使用该回调函数。 |
 
 ### onItemDragMove<sup>8+</sup>
 
@@ -1462,7 +1466,7 @@ onItemDelete(event: (index: number) => boolean)
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
+> 从API version 7开始支持，从API version 9开始废弃。此接口已完全移除，无替代接口。如需实现删除列表项，可在自定义删除按钮的点击事件中更新数据源，具体实现方式请参考[示例3](#示例3自定义编辑和删除模式)。
 
 **ArkTS模式:** 该接口仅适用于ArkTS-Dyn。
 
@@ -1480,7 +1484,7 @@ onItemDelete(event: (index: number) => boolean)
 
 | 类型    | 说明           |
 | ------- | -------------- |
-| boolean | 是否已经删除。 |
+| boolean | 是否确认删除当前列表项。返回值为true时继续删除流程，返回值为false时取消删除流程。 |
 
 ### onWillScroll<sup>23+</sup> 
 
@@ -1549,7 +1553,7 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](#scrollstate�
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 12开始废弃，建议使用[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)替代。
+> 从API version 7开始支持，从API version 12开始废弃。建议使用[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)替代。
 
 **ArkTS模式:** 该接口仅适用于ArkTS-Dyn。
 
@@ -1565,7 +1569,7 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](#scrollstate�
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
 | scrollOffset | number | 是 | 相对于上一帧的偏移量，List的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
-| scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是 | 当前滑动状态。 |
+| scrollState | [ScrollState](#scrollstate枚举说明) | 是 | 当前滑动状态。 |
 
 ### onEditModeChange
 
@@ -1783,7 +1787,7 @@ closeAllSwipeActions(options?: CloseSwipeActionOptions): void
 
 | 参数名  | 类型                                  | 必填 | 说明                                            |
 | ------- | ------------------------------------ | ---- | ----------------------------------------------- |
-| options | [CloseSwipeActionOptions](#closeswipeactionoptions11对象说明) | 否   | 收起[EXPANDED](ts-container-listitem.md#swipeactionstate11枚举说明)状态的[ListItem](ts-container-listitem.md)的回调事件集合。 |
+| options | [CloseSwipeActionOptions](#closeswipeactionoptions11对象说明) | 否   | 收起[EXPANDED](ts-container-listitem.md#swipeactionstate11枚举说明)状态的[ListItem](ts-container-listitem.md)的回调事件集合。不传入时不设置回调事件。 |
 
 
 **错误码**：
@@ -1970,7 +1974,7 @@ setOnScrollVisibleContentChange(callback: OnScrollVisibleContentChangeCallback |
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  |  [OnScrollVisibleContentChangeCallback](./ts-container-list.md#onscrollvisiblecontentchangecallback12)&nbsp;\|&nbsp;undefined | 是   | onScrollVisibleContentChange事件的回调函数。 |
+| callback  |  [OnScrollVisibleContentChangeCallback](#onscrollvisiblecontentchangecallback12)&nbsp;\|&nbsp;undefined | 是   | onScrollVisibleContentChange事件的回调函数。 |
 
 ## OnListScrollIndexCallback<sup>19+</sup>
 
@@ -2006,6 +2010,8 @@ List组件可见区域item变化事件的回调类型。
 该示例实现了设置纵向列表，并在当前显示界面发生改变时回调索引。
 
 ListDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给List提供子组件。 
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2130,6 +2136,133 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+// ListDataSource.ets
+import { IDataSource, DataChangeListener } from '@ohos.arkui.component';
+
+export class ListDataSource implements IDataSource<number> {
+  private list: Array<number> = [];
+  private listeners: Array<DataChangeListener> = [];
+
+  constructor(list: Array<number>) {
+    this.list = list;
+  }
+
+  totalCount(): int {
+    return this.list.length;
+  }
+
+  getData(index: int): number {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos: int = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 通知LazyForEach组件需要重载所有子组件
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    });
+  }
+
+  // 通知控制器数据删除
+  notifyDataDelete(index: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    });
+  }
+
+  // 通知控制器添加数据
+  notifyDataAdd(index: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    });
+  }
+
+  // 在指定索引位置删除一个元素
+  public deleteItem(index: int): void {
+    this.list.splice(index, 1);
+    this.notifyDataDelete(index);
+  }
+
+  // 在指定索引位置插入一个元素
+  public insertItem(index: int, data: number): void {
+    this.list.splice(index, 0, data);
+    this.notifyDataAdd(index);
+  }
+
+  public reloadData(): void {
+    this.notifyDataReload();
+  }
+}
+```
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, LazyForEach, Text, ListOptions, ListDividerOptions, Axis, BarState, EdgeEffect, TextAlign, Padding, ScrollState, VisibleListContentInfo } from '@ohos.arkui.component';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0 } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%').height(100).fontSize(16)
+              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+          }
+        }, (item: number, index: int): string => item.toString())
+      }
+      .listDirection(Axis.Vertical) // 排列方向
+      .scrollBar(BarState.Off)
+      .friction(0.6)
+      .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 } as ListDividerOptions) // 每行之间的分界线
+      .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
+      .onScrollIndex((firstIndex: int, lastIndex: int, centerIndex: int): void => {
+        console.info('first' + firstIndex);
+        console.info('last' + lastIndex);
+        console.info('center' + centerIndex);
+      })
+      .onScrollVisibleContentChange((start: VisibleListContentInfo, end: VisibleListContentInfo): void => {
+        console.info(' start index: ' + start.index +
+                    ' start item group area: ' + start.itemGroupArea +
+                    ' start index in group: ' + start.itemIndexInGroup);
+        console.info(' end index: ' + end.index +
+                    ' end item group area: ' + end.itemGroupArea +
+                    ' end index in group: ' + end.itemIndexInGroup);
+      })
+      .onDidScroll((scrollOffset: double, scrollState: ScrollState): void => {
+        console.info(`onScroll scrollState = ScrollState` + scrollState + `, scrollOffset = ` + scrollOffset);
+      })
+      .width('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![list1](figures/list1.gif)
 
 
@@ -2137,6 +2270,8 @@ struct ListExample {
 该示例展示了不同ListItemAlign枚举值下，List组件交叉轴方向子元素对齐效果。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2152,7 +2287,7 @@ struct ListLanesExample {
   build() {
     Column() {
       List({ space: 20, initialIndex: 0 }) {
-        LazyForEach(this.arr, (item: string) => {
+        LazyForEach(this.arr, (item: number) => {
           ListItem() {
             Text('' + item)
               .width('100%')
@@ -2163,7 +2298,7 @@ struct ListLanesExample {
               .backgroundColor(0xFFFFFF)
           }
           .border({ width: 2, color: Color.Green })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .height(300)
       .width('90%')
@@ -2187,13 +2322,66 @@ struct ListLanesExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, List, ListItem, LazyForEach, Text, Button, ListOptions, ListItemAlign, BarState, Color, TextAlign, Padding } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListLanesExample {
+  arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]);
+  @State alignListItem: ListItemAlign = ListItemAlign.Start;
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0 } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+          .border({ width: 2, color: Color.Green })
+        }, (item: number, index: int): string => item.toString())
+      }
+      .height(300)
+      .width('90%')
+      .friction(0.6)
+      .border({ width: 3, color: Color.Red })
+      .lanes({ minLength: 40, maxLength: 40 })
+      .alignListItem(this.alignListItem)
+      .scrollBar(BarState.Off)
+
+      Button('点击更改alignListItem:' + this.alignListItem).onClick((): void => {
+        if (this.alignListItem == ListItemAlign.Start) {
+          this.alignListItem = ListItemAlign.Center;
+        } else if (this.alignListItem == ListItemAlign.Center) {
+          this.alignListItem = ListItemAlign.End;
+        } else {
+          this.alignListItem = ListItemAlign.Start;
+        }
+      })
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![list](figures/list-alignListItem.gif)
 
 
-### 示例3（设置编辑模式）
-该示例展示了如何设置当前List组件是否处于可编辑模式。
+### 示例3（自定义编辑和删除模式）
+该示例展示了如何通过自定义状态变量控制删除按钮的显示与隐藏，并在删除按钮的点击事件中更新数据源，实现列表项删除效果。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2210,7 +2398,7 @@ struct ListExample {
     Stack({ alignContent: Alignment.TopStart }) {
       Column() {
         List({ space: 20, initialIndex: 0 }) {
-          LazyForEach(this.arr, (item: number, index?: number) => {
+          LazyForEach(this.arr, (item: number, index: number) => {
             ListItem() {
               Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) {
                 Text('' + item)
@@ -2252,12 +2440,71 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Stack, StackOptions, Column, List, ListOptions, ListItem, LazyForEach, Flex, FlexOptions, FlexDirection, ItemAlign, Text, Button, BarState, TextAlign, Alignment, Padding, Margin } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  @State editFlag: boolean = false;
+
+  build() {
+    Stack({ alignContent: Alignment.TopStart } as StackOptions) {
+      Column() {
+        List({ space: 20, initialIndex: 0 } as ListOptions) {
+          LazyForEach(this.arr, (item: number, index: int) => {
+            ListItem() {
+              Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center } as FlexOptions) {
+                Text('' + item)
+                  .width('100%')
+                  .height(80)
+                  .fontSize(20)
+                  .textAlign(TextAlign.Center)
+                  .borderRadius(10)
+                  .backgroundColor(0xFFFFFF)
+                  .flexShrink(1)
+                if (this.editFlag) {
+                  Button() {
+                    Text('delete').fontSize(16)
+                  }.width('30%').height(40)
+                  .onClick((): void => {
+                    console.info(this.arr.getData(index) + 'Delete');
+                    this.arr.deleteItem(index);
+                    this.arr.reloadData();
+                    console.info(JSON.stringify(this.arr));
+                    this.editFlag = false;
+                  }).stateEffect(true)
+                }
+              }
+            }
+          }, (item: number, index: int) => item.toString() + index.toString())
+        }.width('90%')
+        .scrollBar(BarState.Off)
+        .friction(0.6)
+      }.width('100%')
+
+      Button('edit list')
+        .onClick((): void => {
+          this.editFlag = !this.editFlag;
+        }).margin({ top: 5, left: 20 } as Margin)
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![list](figures/list3.gif)
 
 ### 示例4（设置限位对齐）
 该示例展示了List组件设置居中限位的实现效果。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2309,7 +2556,60 @@ struct ListExample {
     }
   }
 }
+```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Row, List, ListItem, LazyForEach, Text, ListOptions, Scroller, TextAlign, EdgeEffect, Axis, ScrollSnapAlign, Padding } from '@ohos.arkui.component';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([]);
+  private scrollerForList: Scroller = new Scroller();
+
+  aboutToAppear(): void {
+    let list: number[] = [];
+    for (let i = 0; i < 20; i++) {
+      list.push(i);
+    }
+    this.arr = new ListDataSource(list);
+  }
+
+  build() {
+    Column() {
+      Row() {
+        List({ space: 20, initialIndex: 3, scroller: this.scrollerForList } as ListOptions) {
+          LazyForEach(this.arr, (item: number, index: int) => {
+            ListItem() {
+              Text('' + item)
+                .width('100%').height(100).fontSize(16)
+                .textAlign(TextAlign.Center)
+            }
+            .borderRadius(10).backgroundColor(0xFFFFFF)
+            .width('60%')
+            .height('80%')
+          }, (item: number, index: int): string => item.toString())
+        }
+        .chainAnimation(true)
+        .edgeEffect(EdgeEffect.Spring)
+        .listDirection(Axis.Horizontal)
+        .height('100%')
+        .width('100%')
+        .scrollSnapAlign(ScrollSnapAlign.CENTER)
+        .borderRadius(10)
+        .backgroundColor(0xDCDCDC)
+      }
+      .width('100%')
+      .height('100%')
+      .backgroundColor(0xDCDCDC)
+      .padding({ top: 10 } as Padding)
+    }
+  }
+}
 ```
 
 ![list](figures/list4.gif)
@@ -2321,9 +2621,12 @@ struct ListExample {
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
+ArkTS-Dyn示例：
+
 <!--code_no_check-->
 ```ts
 // xxx.ets
+import { BusinessError } from '@kit.BasicServicesKit';
 import { ListDataSource } from './ListDataSource';
 
 @Entry
@@ -2344,7 +2647,8 @@ struct ListExample {
     try {
       this.listChildrenSize.splice(0, 5, [300, 300, 300, 300, 300]);
     } catch (error) {
-      console.info('Failed to splice childrenMainSize for first 5 items:', error);
+      let err: BusinessError = error as BusinessError;
+      console.error(`Failed to splice childrenMainSize for first 5 items. Code: ${err.code}, message: ${err.message}`);
     }
   }
 
@@ -2361,7 +2665,7 @@ struct ListExample {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .backgroundColor(Color.Gray)
       .layoutWeight(1)
@@ -2387,15 +2691,90 @@ struct ListExample {
     }
   }
 }
+```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Row, List, ListItem, LazyForEach, Text, Button, ListOptions, RowOptions, ListScroller, ChildrenMainSize, BarState, ListItemAlign, Color, TextAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([]);
+  private scroller: ListScroller = new ListScroller();
+  @State listSpace: number = 10;
+  @State listChildrenSize: ChildrenMainSize = new ChildrenMainSize(100);
+  aboutToAppear(): void {
+    // 初始化数据源。
+    let list: number[] = [];
+    for (let i = 0; i < 10; i++) {
+      list.push(i);
+    }
+    this.arr = new ListDataSource(list);
+    // 前5个item的主轴大小不是默认大小100，因此需要通过ChildrenMainSize通知List。
+    try {
+      this.listChildrenSize.splice(0, 5, [300, 300, 300, 300, 300]);
+    } catch (error) {
+      console.error('Failed to splice childrenMainSize for first 5 items:', error);
+    }
+  }
+
+  build() {
+    Column() {
+      List({ space: this.listSpace, initialIndex: 4, scroller: this.scroller } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text('item-' + item)
+              .height( item < 5 ? 300 : this.listChildrenSize.childDefaultSize)
+              .width('90%')
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number, index: int): string => item.toString())
+      }
+      .backgroundColor(Color.Gray)
+      .layoutWeight(1)
+      .scrollBar(BarState.On)
+      .childrenMainSize(this.listChildrenSize)
+      .alignListItem(ListItemAlign.Center)
+      Row({ space: 18 } as RowOptions) {
+        Button() { Text('item size + 50') }.onClick((): void => {
+          this.listChildrenSize.childDefaultSize += 50;
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
+        Button() { Text('item size - 50') }.onClick((): void => {
+          if (this.listChildrenSize.childDefaultSize === 0) {
+            return;
+          }
+          this.listChildrenSize.childDefaultSize -= 50;
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
+        Button() { Text('scrollTo (0, 310)') }.onClick((): void => {
+          // 310: 跳转到item 1顶部与List顶部平齐的位置。
+          // 如果不设置childrenMainSize，item高度不一致时scrollTo会不准确。
+          this.scroller.scrollTo({ xOffset: 0, yOffset: 310 })
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
+      }.height('20%')
+    }
+  }
+}
 ```
 
 ![list](figures/list5.gif)
 
 ### 示例6（获得子组件索引信息）
 该示例展示了含有group时，获得List组件的Item索引相关信息。
+
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
 class TimeTableDataSource implements IDataSource {
   private list: TimeTable[] = [];
 
@@ -2465,13 +2844,14 @@ struct ListItemGroupExample {
   @State listIndexInfo: VisibleListContentInfo = { index: -1 };
   @State mess:string = 'null';
   @State itemBackgroundColorArr: boolean[] = [false];
+  private headerText: string = '';
   @Builder
-  itemHead(text: string) {
-    Text(text)
+  itemHead() {
+    Text(this.headerText)
       .fontSize(20)
-      .backgroundColor(0xAABBCC)
+      .backgroundColor('#fff1f3f5')
       .width('100%')
-      .padding(10)
+      .padding(5)
   }
 
   @Builder
@@ -2500,7 +2880,7 @@ struct ListItemGroupExample {
             }, (item: string) => item)
           }
           .divider({ strokeWidth: 1, color: Color.Blue }) // 每行之间的分界线
-        },(item: string) => item)
+        }, (item: TimeTable) => item.title)
       }
       .width('90%')
       .sticky(StickyStyle.Header | StickyStyle.Footer)
@@ -2513,7 +2893,8 @@ struct ListItemGroupExample {
                 this.listIndexInfo =
                   this.scroller.getVisibleListContentInfo(event.fingerList[0].localX, event.fingerList[0].localY);
               } catch (error) {
-                console.info('Failed to get visible list content info:', error);
+                let err: BusinessError = error as BusinessError;
+                console.error(`Failed to get visible list content info. Code: ${err.code}, message: ${err.message}`);
               }
               let itemIndex:string = 'undefined';
               if (this.listIndexInfo.itemIndexInGroup != undefined ) {
@@ -2545,7 +2926,176 @@ interface TimeTable {
   title: string;
   projects: string[];
 }
+```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, ListItemGroup, LazyForEach, Text, ListOptions, ListItemGroupOptions, ListScroller, BarState, Color, TextAlign, StickyStyle, Padding, IDataSource, DataChangeListener, GestureEvent, PanGesture, TapGesture, VisibleListContentInfo, Builder } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+class TimeTableDataSource implements IDataSource<TimeTable> {
+  private list: Array<TimeTable> = [];
+
+  constructor(list: Array<TimeTable>) {
+    this.list = list;
+  }
+
+  totalCount(): int {
+    return this.list.length;
+  }
+
+  getData(index: int): TimeTable {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+  }
+}
+
+class ProjectsDataSource implements IDataSource<string> {
+  private list: Array<string> = [];
+
+  constructor(list: Array<string>) {
+    this.list = list;
+  }
+
+  totalCount(): int {
+    return this.list.length;
+  }
+
+  getData(index: int): string {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+  }
+}
+
+@Entry
+@Component
+struct ListItemGroupExample {
+  private timeTable: TimeTable[] = [
+    {
+      title: '星期一',
+      projects: ['语文', '数学', '英语']
+    },
+    {
+      title: '星期二',
+      projects: ['物理', '化学', '生物']
+    },
+    {
+      title: '星期三',
+      projects: ['历史', '地理', '政治']
+    },
+    {
+      title: '星期四',
+      projects: ['美术', '音乐', '体育']
+    }
+  ];
+  private scroller: ListScroller = new ListScroller();
+  private headerText: string = '';
+  private footerNum: int = 0;
+  @State listIndexInfo: VisibleListContentInfo = { index: -1 } as VisibleListContentInfo;
+  @State mess: string = 'null';
+  itemBackgroundColorArr: boolean[] = [false, false, false, false, false, false, false, false, false, false, false, false];
+  @Builder
+  itemHead() {
+    Text(this.headerText)
+      .fontSize(20)
+      .backgroundColor(0xAABBCC)
+      .width('100%')
+      .padding(10)
+  }
+
+  @Builder
+  itemFoot() {
+    Text('共' + this.footerNum + '节课')
+      .fontSize(16)
+      .backgroundColor(0xAABBCC)
+      .width('100%')
+      .padding(5)
+  }
+
+  build() {
+    Column() {
+      List({ space: 20, scroller: this.scroller } as ListOptions) {
+        LazyForEach(new TimeTableDataSource(this.timeTable), (item: TimeTable, index: int) => {
+          this.headerText = item.title;
+          this.footerNum = item.projects.length;
+          ListItemGroup({ header: this.itemHead, footer: this.itemFoot } as ListItemGroupOptions) {
+            LazyForEach(new ProjectsDataSource(item.projects), (project: string, subIndex: int) => {
+              ListItem() {
+                Text(project)
+                  .width('100%')
+                  .height(100)
+                  .fontSize(20)
+                  .textAlign(TextAlign.Center)
+                  .backgroundColor(this.itemBackgroundColorArr[index * 3 + subIndex] ? 0x68B4FF : 0xFFFFFF)
+              }
+            }, (item: string, index: int): string => item)
+          }
+          .divider({ strokeWidth: 1, color: Color.Blue }) // 每行之间的分界线
+        }, (item: TimeTable, index: int): string => item.title)
+      }
+      .width('90%')
+      .sticky(StickyStyle.BOTH)
+      .scrollBar(BarState.Off)
+      .gesture(
+        PanGesture()
+          .onActionUpdate((event: GestureEvent): void => {
+            let finger = event.fingerList[0];
+            if (finger != undefined) {
+              let localX = finger.localX;
+              let localY = finger.localY;
+              if (localX != undefined && localY != undefined) {
+                try {
+                  this.listIndexInfo =
+                    this.scroller.getVisibleListContentInfo(localX, localY);
+                } catch (error) {
+                  console.error('Failed to get visible list content info:', error);
+                }
+                let itemIndex: string = 'undefined';
+                let itemIndexInGroup = this.listIndexInfo.itemIndexInGroup;
+                let index = this.listIndexInfo.index;
+                if (itemIndexInGroup != undefined) {
+                  itemIndex = itemIndexInGroup.toString();
+                  if (index != undefined && index >= 0 && itemIndexInGroup >= 0) {
+                    this.itemBackgroundColorArr[index * 3 + itemIndexInGroup] = true;
+                  }
+                }
+                this.mess = 'index:' + (index != undefined ? index.toString() : 'undefined') + ' itemIndex:' + itemIndex;
+              }
+            }
+          }))
+      .gesture(
+        TapGesture({ count: 1 })
+          .onAction((event: GestureEvent): void => {
+            if (event) {
+              for (let i = 0; i < this.itemBackgroundColorArr.length; i++) {
+                this.itemBackgroundColorArr[i] = false;
+              }
+            }
+          })
+      )
+      Text('您当前位置Item索引为' + this.mess)
+        .fontColor(Color.Red)
+        .height(50)
+    }.width('100%').height('90%').backgroundColor(0xDCDCDC).padding({ top: 5 } as Padding)
+  }
+}
+
+interface TimeTable {
+  title: string;
+  projects: string[];
+}
 ```
 
 ![list](figures/getItemIndex_listGroup.gif)
@@ -2554,6 +3104,8 @@ interface TimeTable {
 该示例实现了List组件开启边缘渐隐效果并设置边缘渐隐长度。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2587,6 +3139,40 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, LazyForEach, Text, ListOptions, Scroller, TextAlign, Padding, LengthMetrics } from '@ohos.arkui.component';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+  scrollerForList: Scroller = new Scroller();
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0, scroller: this.scrollerForList } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%').height(100).fontSize(16)
+              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+          }
+        }, (item: number, index: int): string => item.toString())
+      }
+      .fadingEdge(true, { fadingEdgeLength: LengthMetrics.vp(80) })
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![fadingEdge_list](figures/fadingEdge_list.gif)
 
 ### 示例8（单边边缘效果）
@@ -2594,6 +3180,8 @@ struct ListExample {
 该示例通过edgeEffect接口，实现了List组件设置单边边缘效果。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2614,7 +3202,7 @@ struct ListExample {
               .width('100%').height(100).fontSize(16)
               .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .edgeEffect(EdgeEffect.Spring, {alwaysEnabled: true, effectEdge: EffectEdge.START})
       .width('90%').height('90%')
@@ -2627,11 +3215,48 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, LazyForEach, Text, ListOptions, Scroller, TextAlign, Padding, EdgeEffect, EffectEdge } from '@ohos.arkui.component';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+  scrollerForList: Scroller = new Scroller();
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0, scroller: this.scrollerForList } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%').height(100).fontSize(16)
+              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+          }
+        }, (item: number, index: int): string => item.toString())
+      }
+      .edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true, effectEdge: EffectEdge.START })
+      .width('90%').height('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![edgeEffect_list](figures/edgeEffect_list.gif)
 
 ### 示例9（设置折行走焦）
 
 从API version 20开始，该示例通过[focusWrapMode](#focuswrapmode20)接口，实现了List组件方向键走焦换行效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -2642,7 +3267,7 @@ struct ListExample {
     Stack({ alignContent: Alignment.TopStart }) {
       Column() {
         List({ space: 40, initialIndex: 0 }) {
-          ForEach(this.arr, (item: number, index?: number) => {
+          ForEach(this.arr, (item: number, index: number) => {
             ListItem() {
               Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) {
                 Text('' + item)
@@ -2657,7 +3282,7 @@ struct ListExample {
                   .offset({ left: 5 })
               }
             }
-          }, (item: string, index?: number) => item)
+          }, (item: number, index: number) => item.toString() + index.toString())
         }
         .lanes(2)
         .contentStartOffset(20)
@@ -2674,6 +3299,53 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Stack, StackOptions, Column, List, ListItem, ForEach, Flex, FlexOptions, Text, ListOptions, Alignment, FlexDirection, ItemAlign, BarState, FocusWrapMode, ListItemAlign, TextAlign, Padding } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ListExample {
+  arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+  build() {
+    Stack({ alignContent: Alignment.TopStart } as StackOptions) {
+      Column() {
+        List({ space: 40, initialIndex: 0 } as ListOptions) {
+          ForEach(this.arr, (item: number, index?: int) => {
+            ListItem() {
+              Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center } as FlexOptions) {
+                Text('' + item)
+                  .width(150)
+                  .height(93)
+                  .fontSize(30)
+                  .textAlign(TextAlign.Center)
+                  .borderRadius(10)
+                  .backgroundColor(0xFFFFFF)
+                  .flexShrink(1)
+                  .focusable(true)
+                  .offset({ left: 5 })
+              }
+            }
+          }, (item: number, index?: int) => item.toString())
+        }
+        .lanes(2)
+        .contentStartOffset(20)
+        .contentEndOffset(20)
+        .width('100%')
+        .scrollBar(BarState.Off)
+        .friction(0.6)
+        .focusWrapMode(FocusWrapMode.WRAP_WITH_ARROW)
+        .alignListItem(ListItemAlign.Center)
+        .offset({ left: 20 })
+      }.width('90%')
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![edgeEffect_list](figures/focusWrapMode_list.gif)
 
 ### 示例10（设置显示区域外插入数据时，保持显示内容不变）
@@ -2681,6 +3353,8 @@ struct ListExample {
 该示例通过maintainVisibleContentPosition接口，实现了上滑无限加载历史消息场景。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2721,11 +3395,56 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, LazyForEach, Text, ListOptions, TextAlign } from '@ohos.arkui.component';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([990, 991, 992, 993, 994, 995, 996, 997, 998, 999]);
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 9 } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text('message:' + item)
+              .width('100%').height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number, index: int): string => item.toString())
+      }
+      .maintainVisibleContentPosition(true)
+      .onScrollIndex((start: int): void => {
+        if (start < 5) {
+          for (let i = 0; i < 10; i++) {
+            this.arr.insertItem(0, this.arr.getData(0) - 1);
+          }
+        }
+      })
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding(12)
+  }
+}
+```
+
 ![edgeEffect_list](figures/list_maintainvisiblecontentposition.gif)
 
 ### 示例11（设置滚动条的边距）
 
 从API version 20开始，该示例展示了通过[scrollBarMargin](./ts-container-scrollable-common.md#scrollbarmargin20)属性设置滚动条边距并避让[contentStartOffset](#contentstartoffset11)、[contentEndOffset](#contentendoffset11)区域的效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -2739,7 +3458,7 @@ struct ListScrollBarMarginExample {
   build() {
     Column() {
       List({ space: 40, initialIndex: 0 }) {
-        ForEach(this.arr, (item: number, index?: number) => {
+        ForEach(this.arr, (item: number, index: number) => {
           ListItem() {
             Text('' + item)
               .width('100%')
@@ -2749,7 +3468,7 @@ struct ListScrollBarMarginExample {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
-        }, (item: string, index?: number) => item)
+        }, (item: number, index: number) => item.toString() + index.toString())
       }
       .contentStartOffset(20)
       .contentEndOffset(20)
@@ -2765,11 +3484,53 @@ struct ListScrollBarMarginExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, ForEach, Text, ListOptions, BarState, TextAlign, Padding, LengthMetrics } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ListScrollBarMarginExample {
+  arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  build() {
+    Column() {
+        List({ space: 40, initialIndex: 0 } as ListOptions) {
+          ForEach(this.arr, (item: number, index?: int) => {
+            ListItem() {
+              Text('' + item)
+                .width('100%')
+                .height(100)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
+            }
+          }, (item: number, index?: int) => item.toString())
+      }
+      .contentStartOffset(20)
+      .contentEndOffset(20)
+      .scrollBar(BarState.On)
+      .scrollBarMargin({ start: LengthMetrics.vp(20), end: LengthMetrics.vp(20) })
+      .width('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![list_contentStartOffset](figures/list_contentStartOffset.gif)
 
-### 示例12（使用OnMove进行拖拽）
+### 示例12（使用onMove进行拖拽）
 
 从API version 12开始，该示例展示了使用ForEach的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口进行拖拽排序的效果，支持拖动到List边缘时触发List的自动滚动。
+
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -2809,6 +3570,50 @@ struct ForEachSort {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Row, List, ListItem, ForEach, Text, TextAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct ForEachSort {
+  @State arr: Array<string> = new Array<string>();
+
+  build() {
+    Row() {
+      List() {
+        ForEach(this.arr, (item: string) => {
+          ListItem() {
+            Text(item.toString())
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .size({ height: 100, width: '100%' })
+          }.margin(10)
+          .borderRadius(10)
+          .backgroundColor('#FFFFFFFF')
+        }, (item: string) => item)
+          .onMove((from: int, to: int): void => {
+            let tmp = this.arr.splice(from, 1);
+            this.arr.splice(to, 0, tmp[0]);
+          })
+      }
+      .width('100%')
+      .height('100%')
+      .backgroundColor('#FFDCDCDC')
+    }
+  }
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.arr.push(i.toString());
+    }
+  }
+}
+```
+
 ![list_onMove](figures/list_onMove.gif)
 
 ### 示例13（基于断点配置lanes）
@@ -2816,6 +3621,8 @@ struct ForEachSort {
 从API version 22开始，该示例展示了List组件支持基于断点配置lanes效果。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2837,7 +3644,7 @@ struct ListExample {
               .width('100%').height(100).fontSize(16)
               .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .lanes({ fillType: PresetFillType.BREAKPOINT_SM2MD3LG5}, 10)
       .width('90%').height(600)
@@ -2846,6 +3653,41 @@ struct ListExample {
     .height('100%')
     .backgroundColor(0xDCDCDC)
     .padding({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, LazyForEach, Text, ListOptions, Scroller, TextAlign, Padding, PresetFillType } from '@ohos.arkui.component';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+  scrollerForList: Scroller = new Scroller();
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0, scroller: this.scrollerForList } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%').height(100).fontSize(16)
+              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+          }
+        }, (item: number, index: int): string => item.toString())
+      }
+      .lanes({ fillType: PresetFillType.BREAKPOINT_SM2MD3LG5 }, 10)
+      .width('90%').height(600)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 } as Padding)
   }
 }
 ```
@@ -2865,6 +3707,8 @@ List宽度属于lg及更大的断点区间时显示5列。
 ### 示例14（获取内容总大小）
 
 从API version 22 开始，该示例实现了List组件获取内容总大小的功能。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -2891,7 +3735,7 @@ struct ListExample {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .width('90%').height('90%')
 
@@ -2906,7 +3750,7 @@ struct ListExample {
             this.contentHeight = this.scrollerForList.contentSize().height;
           } catch (error) {
             let err: BusinessError = error as BusinessError;
-            console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+            console.error(`Failed to get contentSize of the List. Code: ${err.code}, message: ${err.message}`);
           }
         })
       // 将获取到的内容尺寸信息通过文本进行呈现
@@ -2922,11 +3766,73 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, ForEach, Text, Button, ListOptions, Scroller, Color, TextAlign, Padding } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  scrollerForList: Scroller = new Scroller()
+  @State contentWidth: number = -1;
+  @State contentHeight: number = -1;
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0, scroller: this.scrollerForList } as ListOptions) {
+        ForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .width('90%').height('90%')
+
+      // 点击按钮来调用contentSize函数获取内容尺寸
+      Button('GetContentSize')
+        .onClick((): void => {
+          // Scroller未绑定组件时会抛异常，需要加上try catch保护
+          try {
+            // 通过调用contentSize函数获取内容尺寸的宽度值
+            this.contentWidth = this.scrollerForList.contentSize().width;
+            // 通过调用contentSize函数获取内容尺寸的高度值
+            this.contentHeight = this.scrollerForList.contentSize().height;
+          } catch (error) {
+            let err: BusinessError = error as BusinessError;
+            console.error(`Failed to get contentSize of the List, code=${err.code}, message=${err.message}`);
+          }
+        })
+      // 将获取到的内容尺寸信息通过文本进行呈现
+      Text('Width：' + this.contentWidth + '，Height：' + this.contentHeight)
+        .fontColor(Color.Red)
+        .height(50)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![list_contentStartOffset](figures/listContentSize.gif)
 
 ### 示例15（在两个列表之间实现拖拽功能）
 
-该示例通过OnItemDragStart等事件实现了ListItem在两个List组件间的拖拽效果。
+该示例通过onItemDragStart等事件实现了ListItem在两个List组件间的拖拽效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -3042,11 +3948,132 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, List, ListItem, ForEach, Stack, Row, Text, ListOptions, Scroller, ItemDragInfo, SizeOptions, Color, ComponentV2, Builder } from '@ohos.arkui.component';
+import { ObservedV2, Trace, Param, Local, Require } from '@ohos.arkui.stateManagement';
+
+@ObservedV2
+class ListData {
+  @Trace public title: string = '';
+  @Trace public data: string[] = [];
+
+  constructor(title: string, data: string[]) {
+    this.title = title;
+    this.data = data;
+  }
+}
+
+class DraggingData {
+  public data?: string;
+}
+
+@ComponentV2
+struct DraggableList {
+  @Require @Param data: string[];
+  @Require @Param draggingData: DraggingData;
+
+  @Builder
+  ItemBuilder(data: string, size: SizeOptions, event: ItemDragInfo): void {
+    Stack() {
+      Text(data)
+    }
+    .backgroundColor(Color.White)
+    .borderRadius(4)
+    .size(size)
+  }
+
+  viewWidth: number = 0;
+  lastInsertIndex: number = 0;
+  scroller: Scroller = new Scroller();
+
+  build() {
+    List({ scroller: this.scroller } as ListOptions) {
+      ForEach(this.data, (item: string) => {
+        ListItem() {
+          Text(item)
+        }
+        .width('100%')
+        .height('10%')
+        .margin(10)
+        .backgroundColor(Color.White)
+        .borderRadius(4)
+        .aspectRatio(1)
+      }, (item: string) => item)
+    }
+    .width('50%')
+    .layoutWeight(1)
+    .padding(10)
+    .onItemDragStart((event: ItemDragInfo, itemIndex: int) => {
+      let rect = this.scroller.getItemRect(itemIndex);
+      let size: SizeOptions = {
+        width: rect.width,
+        height: rect.height
+      };
+      this.lastInsertIndex = itemIndex;
+      this.draggingData.data = this.data[itemIndex];
+      this.data.splice(itemIndex, 1);
+
+      return this.ItemBuilder(this.draggingData.data!, size, event);
+    })
+    .onItemDragEnter((event: ItemDragInfo): void => {
+      console.info('Item drag enter at position:', event.x, event.y);
+    })
+    .onItemDragMove((event: ItemDragInfo, itemIndex: int, insertIndex: int): void => {
+      if (this.lastInsertIndex != insertIndex) {
+        console.info('insertIndex change from ', this.lastInsertIndex, 'to', insertIndex);
+        this.lastInsertIndex = insertIndex;
+      }
+    })
+    .onItemDragLeave((event: ItemDragInfo, itemIndex: int): void => {
+      console.info('Item ' + itemIndex + ' drag leave at position:', event.x, event.y);
+    })
+    .onItemDrop((event: ItemDragInfo, itemIndex: int, insertIndex: int, isSuccess: boolean): void => {
+      if (!isSuccess) {
+        this.draggingData.data = undefined;
+        return;
+      }
+      if (insertIndex >= 0) {
+        this.data.splice(insertIndex, 0, this.draggingData.data!);
+      }
+      this.draggingData.data = undefined;
+    })
+    .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions): void => {
+      this.viewWidth = newValue.width as number;
+    })
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local data: ListData[] = [
+    new ListData('A', ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8']),
+    new ListData('B', ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8']),
+  ]
+  @Local draggingData: DraggingData = new DraggingData();
+
+  build() {
+    Stack() {
+      Row() {
+        DraggableList({ data: this.data[0].data, draggingData: this.draggingData })
+        DraggableList({ data: this.data[1].data, draggingData: this.draggingData })
+      }
+    }
+    .backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
 ![OnItemDrag](figures/listOnItemDrag.gif)
 
 ### 示例16（实现ListItemGroup中点击项的居中效果）
 
 该示例使用[scrollToItemInGroup](#scrolltoitemingroup11)接口，实现了点击[ListItemGroup](./ts-container-listitemgroup.md)中的[ListItem](./ts-container-listitem.md)时将其居中的效果。
+
+ArkTS-Dyn示例：
 
 ``` ts
 import { util } from '@kit.ArkTS';
@@ -3082,7 +4109,7 @@ struct ContactsList {
         // ...
       ],
       key: util.generateRandomUUID(true)
-    } as ContactsGroup,
+    },
     {
       title: 'B',
       contacts: [
@@ -3091,7 +4118,7 @@ struct ContactsList {
         // ...
       ],
       key: util.generateRandomUUID(true)
-    } as ContactsGroup,
+    },
     // ...
   ]
 
@@ -3146,6 +4173,107 @@ struct ContactsList {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, List, ListItem, ListItemGroup, ForEach, Row, Image, Text, ListScroller, ListOptions, ListItemGroupOptions, ListDividerOptions, ScrollAlign, ScrollState, FlexAlign, GestureEvent, TapGesture, Color, Resource, $r, OnScrollFrameBeginHandlerResult, Builder } from '@ohos.arkui.component';
+import { util } from '@kit.ArkTS';
+
+class Contact {
+  key: string = util.generateRandomUUID(true);
+  name: string;
+  icon: Resource;
+
+  constructor(name: string, icon: Resource) {
+    this.name = name;
+    this.icon = icon;
+  }
+}
+
+interface ContactsGroup {
+  title: string;
+  contacts: Array<Contact>;
+  key: string;
+}
+
+@Entry
+@Component
+struct ContactsList {
+  private scroller: ListScroller = new ListScroller();
+  private contactsGroups: ContactsGroup[] = [
+    {
+      title: 'A',
+      contacts: [
+        new Contact('艾佳', $r('app.media.icon')),
+        new Contact('安安', $r('app.media.icon')),
+        new Contact('Angela', $r('app.media.icon'))
+      ],
+      key: util.generateRandomUUID(true)
+    },
+    {
+      title: 'B',
+      contacts: [
+        new Contact('白叶', $r('app.media.icon')),
+        new Contact('伯明', $r('app.media.icon'))
+      ],
+      key: util.generateRandomUUID(true)
+    },
+  ]
+  private headerText: string = '';
+
+  @Builder
+  itemHead() {
+    Text(this.headerText)
+      .fontSize(20)
+      .backgroundColor('#fff1f3f5')
+      .width('100%')
+      .padding(5)
+  }
+
+  build() {
+    List({ scroller: this.scroller } as ListOptions) {
+      ForEach(this.contactsGroups, (item: ContactsGroup, index: int) => {
+        this.headerText = item.title;
+        ListItemGroup({ header: this.itemHead } as ListItemGroupOptions) {
+          ForEach(item.contacts, (contact: Contact, subIndex: int) => {
+            ListItem() {
+              Row() {
+                Image(contact.icon)
+                  .width(40)
+                  .height(40)
+                  .margin(10)
+                Text(contact.name).fontSize(20)
+              }
+              .width('100%')
+              .justifyContent(FlexAlign.Start)
+              .margin(10)
+            }
+            .gesture(
+              TapGesture({ count: 1 })
+                .onAction((event: GestureEvent): void => {
+                  if (event) {
+                    const itemRect = this.scroller.getItemRectInGroup(index, subIndex);
+                    console.info('第' + (index + 1) + '个ListItemGroup的第' + (subIndex + 1) + '个ListItem的 x:' + itemRect.x +
+                      ' y:' + itemRect.y + ' width:' + itemRect.width + ' height:' + itemRect.height)
+                    this.scroller.scrollToItemInGroup(index, subIndex, true, ScrollAlign.CENTER);
+                  }
+                })
+            )
+          }, (contact: Contact, subIndex: int): string => JSON.stringify(contact))
+        }
+        .divider({ strokeWidth: 4 } as ListDividerOptions)
+        .width('100%')
+      }, (item: ContactsGroup, index: int): string => JSON.stringify(item))
+    }
+    .onScrollFrameBegin((offset: double, state: ScrollState): OnScrollFrameBeginHandlerResult => {
+      console.info('List scrollFrameBegin offset: ' + offset + ' state: ' + state.toString());
+      return { offsetRemain: offset } as OnScrollFrameBeginHandlerResult;
+    })
+  }
+}
+```
+
 ![scrollToItemInGroup](figures/scrollToItemInGroup.gif)
 
 ### 示例17（设置多选聚拢动画）
@@ -3155,6 +4283,8 @@ struct ContactsList {
 从API version 23开始，List组件新增[editModeOptions](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -3246,6 +4376,84 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, ColumnOptions, List, ListItem, LazyForEach, Text, Flex, FlexOptions, Divider, ListOptions, Color, BarState, TextAlign, ResponseType, MenuPreviewMode, HapticFeedbackMode, FlexDirection, FlexAlign, ItemAlign, Margin, Builder } from '@ohos.arkui.component';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  isSelected: boolean[] = [];
+  selectedCount: int = 0;
+
+  onPageShow(): void {
+    let i: number = 0;
+    for (i = 0; i < 10; i++) {
+      this.isSelected.push(false);
+    }
+  }
+
+  @Builder
+  MenuBuilder() {
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center } as FlexOptions) {
+      Text('menu item 1')
+        .fontSize(18)
+        .width(120)
+        .height(50)
+        .textAlign(TextAlign.Center)
+      Divider().height(10)
+      Text('menu item 2')
+        .fontSize(18)
+        .width(120)
+        .height(50)
+        .textAlign(TextAlign.Center)
+    }.width(100)
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      List({ space: 10 } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+            ListItem() {
+              Text(item.toString())
+                .fontSize(16)
+                .backgroundColor(Color.White)
+                .width('100%')
+                .height(50)
+                .textAlign(TextAlign.Center)
+            }
+            .selected(this.isSelected[index])
+            .opacity(this.isSelected[index] ? 0.4 : 1.0)
+            .bindContextMenu(this.MenuBuilder, ResponseType.LongPress,
+              { preview: MenuPreviewMode.IMAGE, hapticFeedbackMode: HapticFeedbackMode.ENABLED })
+            .onClick((): void => {
+              this.isSelected[index] = !this.isSelected[index];
+              console.info(`item:${item}, this.isSelected[index]:${this.isSelected[index]}`)
+              if (this.isSelected[index]) {
+                ++this.selectedCount;
+              } else {
+                --this.selectedCount;
+              }
+            })
+        }, (item: number, index: int): string => item.toString())
+      }
+      .editModeOptions({
+        enableGatherSelectedItemsAnimation: true, onGetPreviewBadge: (): int => {
+          return this.selectedCount;
+        }
+      })
+      .width('90%')
+      .height(300)
+      .scrollBar(BarState.Off)
+    }.width('100%').margin({ top: 5 } as Margin).backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
 ![listMultiselectAnimation](figures/listMultiselectAnimation.gif)
 
 ### 示例18（设置滑动多选）
@@ -3255,6 +4463,8 @@ struct ListExample {
 从API版本26.0.0开始，List组件新增enableEditMode接口和onEditModeChange事件。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -3266,7 +4476,6 @@ import { ListDataSource } from './ListDataSource';
 struct ListExample {
   private arr: ListDataSource = new ListDataSource([]);
   @State @Watch('onEditModeChanged') enableEditMode: boolean = false;
-  @State isSelected: boolean[] = [];
   @State selectedIndexes: number[] = [];
 
   onEditModeChanged() {
@@ -3278,7 +4487,7 @@ struct ListExample {
   }
 
   aboutToAppear() {
-    let list: string[] = [];
+    let list: number[] = [];
     for (let i = 0; i < 10; i++) {
         list.push(i);
     }
@@ -3288,7 +4497,7 @@ struct ListExample {
   build() {
     Column({ space: 5 }) {
       List({ space: 10 }) {
-        LazyForEach(this.arr, (item: number) => {
+        LazyForEach(this.arr, (item: number, index: number) => {
           ListItem() {
             Text(item.toString())
               .fontSize(16)
@@ -3298,6 +4507,16 @@ struct ListExample {
               .textAlign(TextAlign.Center)
           }
           .selected(this.selectedIndexes.includes(index))
+          .onSelect((isSelected: boolean) => {
+            if (isSelected) {
+              this.selectedIndexes.push(index);
+            } else {
+              let deleted = this.selectedIndexes.findIndex((value) => value === index);
+              if (deleted !== -1) {
+                this.selectedIndexes.splice(deleted, 1);
+              }
+            }
+          })
         }, (item: number) => item.toString())
       }
       .width('90%')
@@ -3310,6 +4529,77 @@ struct ListExample {
       })
       .editModeOptions({ useDefaultMultiSelectStyle: true, enableTwoFingerMultiSelect: true })
     }.width('100%').padding({ top: 10 }).backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, LazyForEach, Text, ListOptions, ColumnOptions, Color, BarState, TextAlign, Padding } from '@ohos.arkui.component';
+import { State, Watch } from '@ohos.arkui.stateManagement';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([]);
+  @State @Watch('onEditModeChanged') enableEditMode: boolean = false;
+  isSelected: boolean[] = [];
+  selectedIndexes: number[] = [];
+
+  onEditModeChanged(propName: string): void {
+    console.info(`enableEditMode changed to: ${this.enableEditMode}`);
+    if (!this.enableEditMode) {
+      console.info('enableEditMode changed to false, clearing selectedIndexes');
+      this.selectedIndexes = [];
+    }
+  }
+
+  aboutToAppear(): void {
+    let list: number[] = [];
+    for (let i = 0; i < 10; i++) {
+        list.push(i);
+    }
+    this.arr = new ListDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      List({ space: 10 } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text(item.toString())
+              .fontSize(16)
+              .backgroundColor(Color.White)
+              .width('100%')
+              .height(50)
+              .textAlign(TextAlign.Center)
+          }
+          .selected(this.selectedIndexes.includes(index))
+          .onSelect((isSelected: boolean): void => {
+            if (isSelected) {
+              this.selectedIndexes.push(index);
+            } else {
+              let deleted = this.selectedIndexes.findIndex((value) => value === index);
+              if (deleted !== -1) {
+                this.selectedIndexes.splice(deleted, 1);
+              }
+            }
+          })
+        }, (item: number, index: int): string => item.toString())
+      }
+      .width('90%')
+      .height(300)
+      .scrollBar(BarState.Off)
+      .enableEditMode(this.enableEditMode!!)
+      .onEditModeChange((data: boolean): void => {
+        // 在此处也可实现onEditModeChanged中的业务逻辑
+        console.info(`onEditModeChange:${data}`)
+      })
+      .editModeOptions({ useDefaultMultiSelectStyle: true, enableTwoFingerMultiSelect: true })
+    }.width('100%').padding({ top: 10 } as Padding).backgroundColor('#FFDCDCDC')
   }
 }
 ```

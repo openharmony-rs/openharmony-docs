@@ -99,7 +99,7 @@ background配置选项。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------ | ---- | ---- | ------- |
-| align<sup>10+</sup>          | [Alignment](ts-appendix-enums.md#alignment) | 否 | 是   | 自定义背景与组件的对齐方式。该属性仅对CustomBuilder类型的背景生效。如果设置了ignoresLayoutSafeAreaEdges，则背景的布局区域为包含了扩展安全区的范围。<br/>默认值：Alignment.Center<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23 |
+| align<sup>10+</sup>          | [Alignment](ts-appendix-enums.md#alignment) | 否 | 是   | 自定义背景与组件的对齐方式。该属性仅对CustomBuilder类型的背景生效。如果设置了ignoresLayoutSafeAreaEdges，则背景的布局区域为包含了扩展安全区的范围。如果设置null/undefined，则使用Alignment.TopStart值。<br/>默认值：Alignment.Center<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23 |
 | ignoresLayoutSafeAreaEdges | Array<[LayoutSafeAreaEdge](ts-universal-attributes-expand-safe-area.md#layoutsafeareaedge12)> | 否 | 是   | 配置背景要扩展到的安全区，包括：状态栏，导航栏和[safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)。<br/> 默认值：<br/>- CustomBuilder背景：[]，不扩展。<br/>- ResourceColor背景：[LayoutSafeAreaEdge.ALL]，扩展至所有方向。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 20<br/> **ArkTS-Sta起始版本：** 23 |
 
 > **说明：**
@@ -517,7 +517,7 @@ backgroundBlurStyle(style: Optional\<BlurStyle>, options?: BackgroundBlurStyleOp
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | style                 | Optional\<[BlurStyle](#blurstyle9)> | 是   | 背景模糊样式。模糊样式中封装了模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度五个参数。<br/>当style的值为undefined时，恢复为默认关闭模糊的背景。 |
-| options | [BackgroundBlurStyleOptions](#backgroundblurstyleoptions10对象说明) | 否   | 背景模糊选项。<br/>该参数在ArkTS卡片中，暂不支持使用。                                            |
+| options | [BackgroundBlurStyleOptions](#backgroundblurstyleoptions10对象说明) | 否   | 背景模糊选项。用于配置模糊激活策略和不生效时的背景色。不传入时使用默认激活策略[BlurStyleActivePolicy](#blurstyleactivepolicy14).ALWAYS_ACTIVE。<br/>该参数在ArkTS卡片中，暂不支持使用。                                            |
 | sysOptions   |  [SystemAdaptiveOptions](#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
 
 **返回值：**
@@ -1242,7 +1242,7 @@ struct BlurEffectsExample {
         Text('blur')
           .blur(5).margin(10)
         Text('blur')
-          .blur(10, undefined).margin(10) // 内容模糊半径为5，禁用系统自适应优化策略。
+          .blur(10, undefined).margin(10) // 内容模糊半径为10，不设置灰阶。
         Text('blur')
           .blur(15).margin(10)
       }.width('90%').height(40)
@@ -1340,7 +1340,7 @@ struct Index {
         }
         // blendMode采用离屏渲染，SRC_OVER模式下会将当前组件内容覆盖显示在下方画布之上
         .blendMode(BlendMode.SRC_OVER, BlendApplyType.OFFSCREEN)
-        // backgroundEffect配置组件背景的圆角、饱和度、亮度及动态RGBA颜色
+        // backgroundEffect配置组件背景的模糊半径、饱和度、亮度及动态RGBA颜色
         .backgroundEffect({
           radius: this.rad,
           saturation: this.satVal,

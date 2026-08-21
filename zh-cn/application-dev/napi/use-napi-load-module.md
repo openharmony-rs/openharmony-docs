@@ -1,10 +1,10 @@
 # 使用Node-API接口在主线程中进行模块加载
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 场景介绍
 
@@ -119,6 +119,8 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
           ]
         }
       },
+    // ...
+    },
     ```
 
 2. 使用napi_load_module加载Test文件，调用函数test以及获取变量value：
@@ -172,7 +174,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
     export {value, test};
     ```
 
-1. 需要当前模块的build-profile.json5文件中进行以下配置：
+1. 需要在当前模块的build-profile.json5文件中进行以下配置：
 
     ```json
     {
@@ -430,7 +432,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
 
 1. 在当前模块下的oh-package.json5文件中配置dependencies项：
 
-    ```json
+    ``` JSON5
     {
       "dependencies": {
         "@ohos/axios": "2.2.4",

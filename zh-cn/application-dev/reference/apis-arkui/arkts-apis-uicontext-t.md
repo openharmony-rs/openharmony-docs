@@ -36,7 +36,7 @@ ArkTS-Sta: type CustomBuilderWithId = (id: int)&nbsp;=&gt;&nbsp;void
 | -------- | -------- | -------- | -------- |
 | id | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是 | 组件ID。 |
 
-## ClickEventListenerCallback<sup>12+</sup>
+## ClickEventListenerCallback
 
 type ClickEventListenerCallback = (event: ClickEvent, node?: FrameNode) => void
 
@@ -83,7 +83,7 @@ Pan手势事件监听函数类型。
 | current | [GestureRecognizer](arkui-ts/ts-gesture-common.md#gesturerecognizer12) | 是   | 触发事件监听的手势识别器的相关信息。  |
 | node    | [FrameNode](js-apis-arkui-frameNode.md)         | 否   | 触发事件监听的手势事件所绑定的组件。 |
 
-## GestureEventListenerCallback<sup>12+</sup>
+## GestureEventListenerCallback
 
 type GestureEventListenerCallback = (event: GestureEvent, node?: FrameNode) => void
 
@@ -174,7 +174,7 @@ type GestureListenerCallback = (info: GestureTriggerInfo) => void
 | ------- | ----------------- | ---- | --------------------------------- |
 | info   | [GestureTriggerInfo](arkts-apis-uicontext-i.md#gesturetriggerinfo20)     | 是   |  交互触发的手势详情。 |
 
-## PointerStyle<sup>12+</sup>
+## PointerStyle
 
 type PointerStyle = pointer.PointerStyle
 
@@ -192,7 +192,7 @@ type PointerStyle = pointer.PointerStyle
 | -- | -- |
 |[pointer.PointerStyle](../apis-input-kit/js-apis-pointer.md#pointerstyle) |光标样式。|
 
-## Context<sup>12+</sup>
+## Context
 
 type Context = common.Context
 
@@ -211,3 +211,25 @@ type Context = common.Context
 | 类型 |说明   |
 | ------ | ------------------- |
 | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) |Context的具体类型为当前Ability关联的Context对象。|
+
+## OnOverlayBackPressCallback
+
+type OnOverlayBackPressCallback = () => boolean
+
+定义拦截Overlay侧滑返回事件的回调类型。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本 26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 是否拦截返回事件。<br/>返回true表示拦截返回事件，事件不会向下层组件传递；返回false表示不拦截，事件将向下层组件透传。 |

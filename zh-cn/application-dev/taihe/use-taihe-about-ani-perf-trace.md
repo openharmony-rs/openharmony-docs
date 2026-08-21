@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @Jemtaly; @tongdiaoZS; @m0_52007851; @zhangrunze13-->
 <!--Tester: @m30041553-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 性能拆解模式简介
 
@@ -16,7 +16,7 @@ Taihe在ANI场景下提供按需开启的性能拆解模式，该模式旨在拆
 
 ## 基本概念
 
-性能拆解模式自Taihe编译器工具1.10版本起引入，自该版本后，Taihe会在生成的ANI桥接代码中增加分阶段的trace信息。编译相应文件时如果定义`TH_ANI_ENABLE_PERF_TRACE`宏，则在运行时每次调用都会输出参数转换、Native调用和返回值转换等阶段的耗时信息。
+开启性能拆解模式后，Taihe会在生成的ANI桥接代码中增加分阶段的trace信息。编译相应文件时如果定义`TH_ANI_ENABLE_PERF_TRACE`宏，则在运行时每次调用都会输出参数转换、Native调用和返回值转换等阶段的耗时信息。
 
 一次调用通常会被拆分为以下几个阶段：
 

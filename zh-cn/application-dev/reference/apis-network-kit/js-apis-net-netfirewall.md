@@ -136,21 +136,25 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
 > **说明**
 > 
-> 1. 防火墙规则优先级说明（[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)和[addNetFirewallRule](#netfirewalladdnetfirewallrule)无调用顺序要求）：
->    - 调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为阻止，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：
+> 1. 防火墙规则优先级说明（[setNetFirewallPolicy](#netfirewallsetnetfirewallpolicy)和[addNetFirewallRule](#netfirewalladdnetfirewallrule)无调用顺序要求）：
+>    - 调用[setNetFirewallPolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为阻止，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：
 >      - 显式阻止规则
 >      - 显式允许规则
 >      - 默认阻止策略
->    - 调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为允许，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：
+>    - 调用[setNetFirewallPolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为允许，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：
 >      - 显式允许规则
 >      - 显式阻止规则
 >      - 默认允许策略
 >    - 防火墙IP规则和域名规则冲突时（域名解析的IP与IP规则的IP相同，规则行为冲突）：
 >      - 若以域名方式访问，则域名规则优先级高于IP规则，不受域名解析出的IP的规则影响。
 >      - 若以IP方式访问，遵循以下原则：
->        - 域名规则放行，若以IP方式访问之前经历过域名解析过程，则IP规则拦截或者默认策略拦截是不生效的，最终以IP方式访问是放行的。
->        - 域名规则放行，若以IP方式访问之前未经历过域名解析过程，则IP规则拦截或者默认策略拦截是生效的，最终以IP方式访问是拦截的。
->        - 域名规则拦截，则IP规则放行或者默认策略放行是生效的，最终以IP方式访问是放行的。
+>        - 域名规则放行时，IP规则或默认策略的拦截均不生效，最终以IP方式访问放行。
+>        - 域名规则拦截时，IP规则或默认策略的放行仍生效，最终以IP方式访问放行。
+>       - 系统侧识别域名访问与IP访问的方式：
+>         - 若目标IP与系统网络层域名缓存表中的IP地址匹配，则认为应用侧以域名形式访问；
+>         - 若目标IP未匹配上系统网络层域名缓存表中的任意IP地址，则认为应用侧以IP形式访问；
+>         - 其中，系统网络层会主动查询防火墙配置的DNS信息，并缓存对应的IP地址，使域名放行规则生效。
+>   
 > 2. 规则类型补充说明：
 >    - 当addNetFirewallRule的入参rule.type配置为RULE_IP时：
 >      - 若rule.action为RULE_ALLOW，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段允许通行；
@@ -248,7 +252,8 @@ let ipRule: netFirewall.NetFirewallRule = {
       startPort: 443,
       endPort: 443
     }],
-  userId: 100
+  userId: 100,
+  interface:"wlan0" // 从API版本26.0.0开始支持
 };
 netFirewall.addNetFirewallRule(ipRule).then((result: number) => {
   console.info('rule Id: ', result);
@@ -272,7 +277,8 @@ let domainRule: netFirewall.NetFirewallRule = {
       isWildcard: true,
       domain: "*.example.cn"
     }],
-  userId: 100
+  userId: 100,
+  interface:"wlan0" // 从API版本26.0.0开始支持
 };
 netFirewall.addNetFirewallRule(domainRule).then((result: number) => {
   console.info('rule Id: ', result);
@@ -292,7 +298,8 @@ let dnsRule: netFirewall.NetFirewallRule = {
    primaryDns: "4.4.4.4",
    standbyDns: "8.8.8.8",
   },
-  userId: 100
+  userId: 100,
+  interface:"wlan0" // 从API版本26.0.0开始支持
 };
 netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
   console.info('rule Id: ', result);
@@ -418,7 +425,8 @@ let ipRuleUpd: netFirewall.NetFirewallRule = {
       startIp: "10.20.1.1",
       endIp: "10.20.1.10"
     }],
-  userId: 100
+  userId: 100,
+  interface:"wlan0" // 从API版本26.0.0开始支持
 };
 netFirewall.updateNetFirewallRule(ipRuleUpd).then(() => {
   console.info('update firewall rule success.');
@@ -556,7 +564,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口。当type=RULE_IP时有效，否则将被忽略。最多10个。   |
 | domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表，当type=RULE_DOMAIN时有效，否则将被忽略，目前不支持中文域名。         |
 | dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 |是 |DNS：当type=RULE_DNS时有效，否则将被忽略。当type=RULE_DNS时，该字段不能为空。                 |
-
+| interface   | string                                                      | 否 |是 |物理网卡名称，例如wlan0。当type=RULE_IP时有效，否则将被忽略。可选，最多16个字符。<br> **ArkTS-Dyn起始版本：** 26.0.0 **<br>ArkTS-Sta起始版本：** 26.0.0 <br>**模型约束**：此接口仅可在Stage模型下使用。                |
 ## RequestParam
 
 查询输入信息结构。

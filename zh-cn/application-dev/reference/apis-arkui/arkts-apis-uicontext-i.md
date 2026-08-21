@@ -1,8 +1,8 @@
 # Interfaces (其他)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin; @liyi0903; @mayaolll-->
-<!--Designer: @piggyguy; @liyi0903; @jiangdayuan-->
+<!--Owner: @yihao-lin; @liyi0903; @huangxiaolinabc-->
+<!--Designer: @piggyguy; @liyi0903; @fangzhiyuan1-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -45,8 +45,8 @@ Router和NavDestination等页面信息，若无对应的Router或NavDestination�
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- |-------- | -------- |
-| routerPageInfo | observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo) | 否 |是 | Router信息。 |
-| navDestinationInfo | observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo) | 否 |是| NavDestination信息。 |
+| routerPageInfo | observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo) | 否 |是 | Router页面信息，包含当前Router页面的路由状态和页面信息。当页面为Router页面时，可通过此属性获取对应的Router页面信息；若当前页面不是Router页面，则该属性为undefined。若无对应的Router页面信息，则该属性为undefined。 |
+| navDestinationInfo | observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo) | 否 |是| NavDestination页面信息，包含当前NavDestination页面的导航状态和页面信息。当页面为NavDestination页面时，可通过此属性获取对应的NavDestination页面信息；若当前页面不是NavDestination页面，则该属性为undefined。若无对应的NavDestination页面信息，则该属性为undefined。 |
 
 ## OverlayManagerOptions<sup>15+</sup>
 
@@ -56,8 +56,9 @@ Router和NavDestination等页面信息，若无对应的Router或NavDestination�
 
 | 名称             | 类型                | 只读 | 可选   | 说明                     |
 | --------------- | ---------------------- | ------------ | --------------------- | --------------------- |
-| renderRootOverlay   | boolean | 否 | 是 | 是否渲染overlay根节点，true表示渲染overlay根节点，false表示不渲染overlay根节点，默认值为true。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23|
+| renderRootOverlay   | boolean | 否 | 是 | 是否渲染overlay根节点，true表示渲染overlay根节点，false表示不渲染overlay根节点，默认值为true。通过将该参数设置为false，可以解决[OverlayManager](arkts-apis-uicontext-overlaymanager.md)显示在[PhotoPickerComponent](../apis-media-library-kit/ohos-file-PhotoPickerComponent.md)上层时，PhotoPickerComponent无法选中照片的问题。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23|
 | enableBackPressedEvent<sup>19+</sup>   | boolean | 否 | 是 | 是否支持通过侧滑手势关闭OverlayManager下的ComponentContent，true表示可以通过侧滑关闭，false表示不可以通过侧滑关闭，默认值为false。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23 |
+| onBackPress   | [OnOverlayBackPressCallback](arkts-apis-uicontext-t.md#onoverlaybackpresscallback) | 否 | 是 | 拦截Overlay侧滑返回事件的回调。<br/>**说明：**<br/>1. 注册该回调且**enableBackPressedEvent**设置为true时，侧滑返回事件不会自动关闭Overlay，而是调用该回调决定事件是否向下层组件传递。<br/>2. 返回true表示拦截该事件（事件被消费，不会向下层传递）；返回false表示不拦截，事件将向下层组件透传。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本 26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0|
 
 ## GestureTriggerInfo<sup>20+</sup>
 
@@ -96,7 +97,7 @@ Router和NavDestination等页面信息，若无对应的Router或NavDestination�
 
 ## SwiperContentInfo<sup>22+</sup>
 
-Swiper组件的内容区信息。
+Swiper组件的内容区信息，包含Swiper组件标识、唯一标识符及当前显示状态的子组件信息，用于获取Swiper运行时的内容区状态。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -108,13 +109,13 @@ Swiper组件的内容区信息。
 
 | 名称      | 类型 | 只读  | 可选 | 说明                    |
 | --------- | ---- | ----- | ---- | ----------------------- |
-| id        | string  | 否 | 否 | Swiper组件的id。 |
+| id        | string  | 否 | 否 | Swiper组件通过通用属性id设置的标识符，由开发者指定。 |
 | uniqueId  | ArkTS-Dyn: number <br>ArkTS-Sta: int  | 否 | 否 | Swiper组件的唯一标识符。 |
 | swiperItemInfos   | Array\<[SwiperItemInfo](#swiperiteminfo22)\> | 否 | 否 | 当前处于显示状态的Swiper子组件的信息。 |
 
 ## SwiperItemInfo<sup>22+</sup>
 
-Swiper子组件的信息。
+Swiper子组件的信息，包含子组件的唯一标识符和索引，可通过SwiperContentInfo获取。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -127,4 +128,4 @@ Swiper子组件的信息。
 | 名称      | 类型 | 只读  | 可选 | 说明                    |
 | --------- | ---- | ----- | ---- | -----------------------|
 | uniqueId  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 否 | Swiper子组件的唯一标识符。   |
-| index     | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 否 | Swiper子组件在Swiper中的索引。 |
+| index     | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 否 | Swiper子组件在Swiper中的索引，取值从0开始，最大值为Swiper子组件数量-1。 |

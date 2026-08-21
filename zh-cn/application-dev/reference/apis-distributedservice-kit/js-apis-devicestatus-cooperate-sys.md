@@ -9,6 +9,8 @@
 
 > **说明**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口均为系统接口。
@@ -29,6 +31,10 @@ prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
@@ -45,13 +51,33 @@ prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
-示例：
+**示例**：
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   cooperate.prepareCooperate((error: BusinessError) => {
+    if (error) {
+      console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+        [`code`, `message`])}`);
+      return;
+    }
+    console.info(`Keyboard mouse crossing prepareCooperate success.`);
+  });
+} catch (error) {
+  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+try {
+  cooperate.prepareCooperate((error: BusinessError<void>|null, info: undefined) => {
     if (error) {
       console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
         [`code`, `message`])}`);
@@ -75,6 +101,10 @@ prepareCooperate(): Promise&lt;void&gt;;
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 
 | 类型                | 说明                      |
@@ -93,6 +123,8 @@ prepareCooperate(): Promise&lt;void&gt;;
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -100,6 +132,22 @@ try {
   cooperate.prepareCooperate().then(() => {
     console.info(`Keyboard mouse crossing prepareCooperate success.`);
   }, (error: BusinessError) => {
+    console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+      [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+try {
+  cooperate.prepareCooperate().then(() => {
+    console.info(`Keyboard mouse crossing prepareCooperate success.`);
+  }, (error: Error): void => {
     console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
       [`code`, `message`])}`);
   });
@@ -121,6 +169,10 @@ unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 
 **系统能力**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
@@ -139,11 +191,31 @@ unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   cooperate.unprepareCooperate((error: BusinessError) => {
+    if (error) {
+      console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
+        [`code`, `message`])}`);
+      return;
+    }
+    console.info(`Keyboard mouse crossing unprepareCooperate success.`);
+  });
+} catch (error) {
+  console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+try {
+  cooperate.unprepareCooperate((error: BusinessError<void>|null, info: undefined) => {
     if (error) {
       console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
         [`code`, `message`])}`);
@@ -167,6 +239,10 @@ unprepareCooperate(): Promise&lt;void&gt;;
 
 **系统能力**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 
 | 类型                | 说明                      |
@@ -184,6 +260,8 @@ unprepareCooperate(): Promise&lt;void&gt;;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -200,11 +278,29 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+try {
+  cooperate.unprepareCooperate().then(() => {
+    console.info(`Keyboard mouse crossing unprepareCooperate success.`);
+  }, (error: Error): void => {
+    console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
+      [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
+}
+```
+
 
 
 ## cooperate.activateCooperate<sup>11+</sup>
 
-activateCooperate(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback&lt;void&gt;): void;
+ArkTS-Dyn: activateCooperate(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: activateCooperate(targetNetworkId: string, inputDeviceId: int, callback: AsyncCallback&lt;void&gt;): void
 
 启动键鼠穿越，使用Callback异步回调。
 
@@ -212,12 +308,16 @@ activateCooperate(targetNetworkId: string, inputDeviceId: number, callback: Asyn
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名          | 类型                      | 必填 | 说明                                                         |
 | --------------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | targetNetworkId | string                    | 是   | 键鼠穿越目标设备描述符。                                     |
-| inputDeviceId   | number                    | 是   | 待穿越输入设备标识符。                                       |
+| inputDeviceId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是   | 待穿越输入设备标识符。                                       |
 | callback        | AsyncCallback&lt;void&gt; | 是   | 回调函数，键鼠穿越启动成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -232,6 +332,8 @@ activateCooperate(targetNetworkId: string, inputDeviceId: number, callback: Asyn
 | 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -251,9 +353,29 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let targetNetworkId: string = "networkId";
+let inputDeviceId: int = 0;
+try {
+  cooperate.activateCooperate(targetNetworkId, inputDeviceId, (error: BusinessError<void>|null, info: undefined) => {
+    if (error) {
+      console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      return;
+    }
+    console.info(`Start Keyboard mouse crossing success.`);
+  });
+} catch (error) {
+  console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
 ## cooperate.activateCooperate<sup>11+</sup>
 
-activateCooperate(targetNetworkId: string, inputDeviceId: number): Promise&lt;void&gt;;
+ArkTS-Dyn: activateCooperate(targetNetworkId: string, inputDeviceId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: activateCooperate(targetNetworkId: string, inputDeviceId: int): Promise&lt;void&gt;
 
 启动键鼠穿越，使用Promise异步回调。
 
@@ -261,12 +383,16 @@ activateCooperate(targetNetworkId: string, inputDeviceId: number): Promise&lt;vo
 
 **系统能力**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名          | 类型   | 必填 | 说明                     |
 | --------------- | ------ | ---- | ------------------------ |
 | targetNetworkId | string | 是   | 键鼠穿越目标设备描述符。 |
-| inputDeviceId   | number | 是   | 待穿越输入设备标识符。   |
+| inputDeviceId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 待穿越输入设备标识符。   |
 
 **返回值：**
 
@@ -287,6 +413,8 @@ activateCooperate(targetNetworkId: string, inputDeviceId: number): Promise&lt;vo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -296,6 +424,22 @@ try {
   cooperate.activateCooperate(targetNetworkId, inputDeviceId).then(() => {
     console.info(`Start Keyboard mouse crossing success.`);
   }, (error: BusinessError) => {
+    console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+let targetNetworkId: string = "networkId";
+let inputDeviceId: int = 0;
+try {
+  cooperate.activateCooperate(targetNetworkId, inputDeviceId).then(() => {
+    console.info(`Start Keyboard mouse crossing success.`);
+  }, (error: Error): void => {
     console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
   });
 } catch (error) {
@@ -314,6 +458,10 @@ deactivateCooperate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): 
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -334,11 +482,29 @@ deactivateCooperate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): 
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   cooperate.deactivateCooperate(false, (error: BusinessError) => {
+    if (error) {
+      console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      return;
+    }
+    console.info(`Stop Keyboard mouse crossing success.`);
+  });
+} catch (error) {
+  console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+try {
+  cooperate.deactivateCooperate(false, (error: BusinessError<void>|null, info: undefined) => {
     if (error) {
       console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
       return;
@@ -359,6 +525,10 @@ deactivateCooperate(isUnchained: boolean): Promise&lt;void&gt;;
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -383,6 +553,8 @@ deactivateCooperate(isUnchained: boolean): Promise&lt;void&gt;;
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -390,6 +562,20 @@ try {
   cooperate.deactivateCooperate(false).then(() => {
     console.info(`Stop Keyboard mouse crossing success.`);
   }, (error: BusinessError) => {
+    console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+try {
+  cooperate.deactivateCooperate(false).then(() => {
+    console.info(`Stop Keyboard mouse crossing success.`);
+  }, (error: Error): void => {
     console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
   });
 } catch (error) {
@@ -408,6 +594,10 @@ getCooperateSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -428,12 +618,31 @@ getCooperateSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let deviceDescriptor = "networkId";
 try {
   cooperate.getCooperateSwitchState(deviceDescriptor, (error: BusinessError, data: boolean) => {
+    if (error) {
+      console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      return;
+    }
+    console.info(`Get the status success, data: ${JSON.stringify(data)}`);
+  });
+} catch (error) {
+  console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+let deviceDescriptor: string = "networkId";
+try {
+  cooperate.getCooperateSwitchState(deviceDescriptor, (error: BusinessError|null, data: boolean|undefined) => {
     if (error) {
       console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
       return;
@@ -454,6 +663,10 @@ getCooperateSwitchState(networkId: string): Promise&lt;boolean&gt;;
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -479,6 +692,8 @@ getCooperateSwitchState(networkId: string): Promise&lt;boolean&gt;;
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -494,6 +709,21 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let deviceDescriptor: string = "networkId";
+try {
+  cooperate.getCooperateSwitchState(deviceDescriptor).then((data: boolean): void => {
+    console.info(`Get the status success, data: ${JSON.stringify(data)}`);
+  }, (error: Error): void => {
+    console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
 
 
 ## cooperate.on('cooperateMessage')<sup>11+</sup>
@@ -502,9 +732,15 @@ on(type: 'cooperateMessage', callback: Callback&lt;CooperateMessage&gt;): void;
 
 注册监听键鼠穿越状态。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的接口ArkTS-Sta是[onCooperateMessage](#cooperateoncooperatemessage23)。
+
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Dyn起始版本**：11
 
 **参数**：
 
@@ -546,9 +782,15 @@ off(type: 'cooperateMessage', callback?: Callback&lt;CooperateMessage&gt;): void
 
 取消监听键鼠穿越状态。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的接口ArkTS-Sta是[offCooperateMessage](#cooperateoffcooperatemessage23)。
+
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Dyn起始版本**：11
 
 **参数：**
 
@@ -606,15 +848,116 @@ try {
 ```
 
 
+## cooperate.onCooperateMessage<sup>23+</sup>
+
+onCooperateMessage(callback: Callback&lt;CooperateMessage&gt;): void
+
+注册监听键鼠穿越状态。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的接口ArkTS-Dyn是[cooperate.on('cooperateMessage')](#cooperateoncooperatemessage11)。
+
+**需要权限**：ohos.permission.COOPERATE_MANAGER
+
+**系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Sta起始版本**：23
+
+**参数**：
+
+| 参数名   | 类型                                                  | 必填 | 说明                                 |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
+| callback | Callback&lt;[CooperateMessage](#cooperatemessage11)&gt; | 是   | 回调函数，异步返回键鼠穿越状态消息。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息          |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例**：
+
+```ts
+function callback(msg: cooperate.CooperateMessage): void {
+  console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
+}
+
+try {
+  cooperate.onCooperateMessage(callback);
+} catch (error) {
+  console.error(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+## cooperate.offCooperateMessage<sup>23+</sup>
+
+offCooperateMessage(callback?: Callback&lt;CooperateMessage&gt;): void
+
+取消监听键鼠穿越状态。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的接口ArkTS-Dyn是[cooperate.off('cooperateMessage')](#cooperateoffcooperatemessage11)。
+
+**需要权限**：ohos.permission.COOPERATE_MANAGER
+
+**系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[CooperateMessage](#cooperatemessage11)&gt; | 否   | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息          |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例**：
+
+```ts
+function callbackOn(msgOn: cooperate.CooperateMessage): void {
+  console.info(`Keyboard mouse crossing event: ${JSON.stringify(msgOn)}`);
+}
+
+function callbackOff(msgOff: cooperate.CooperateMessage): void {
+  console.info(`Keyboard mouse crossing event: ${JSON.stringify(msgOff)}`);
+}
+
+try {
+  cooperate.onCooperateMessage(callbackOn);
+  cooperate.offCooperateMessage(callbackOff);
+} catch (error) {
+  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
 ## cooperate.on('cooperateMouse')<sup>12+</sup>
 
 on(type: 'cooperateMouse', networkId: string, callback: Callback&lt;MouseLocation&gt;): void;
 
 注册监听指定设备鼠标光标位置。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的接口ArkTS-Sta是[onCooperateMouseEvent](#cooperateoncooperatemouseevent23)。
+
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Dyn起始版本**：12
 
 **参数**：
 
@@ -658,9 +1001,15 @@ off(type: 'cooperateMouse', networkId: string, callback?: Callback&lt;MouseLocat
 
 取消监听指定设备鼠标光标位置。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的接口ArkTS-Sta是[offCooperateMouseEvent](#cooperateoffcooperatemouseevent23)。
+
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Dyn起始版本**：12
 
 **参数：**
 
@@ -718,9 +1067,127 @@ try {
 }
 ```
 
+## cooperate.onCooperateMouseEvent<sup>23+</sup>
+
+onCooperateMouseEvent(networkId: string, callback: Callback&lt;MouseLocation&gt;): void
+
+注册监听指定设备鼠标光标位置。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的接口ArkTS-Dyn是[cooperate.on('cooperateMouse')](#cooperateoncooperatemouse12)。
+
+**需要权限**：ohos.permission.COOPERATE_MANAGER
+
+**系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Sta起始版本**：23
+
+**参数**：
+
+| 参数名   | 类型                                                  | 必填 | 说明                                 |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
+| networkId| string                                                | 是   | 目标设备描述符。                     |
+| callback | Callback&lt;[MouseLocation](#mouselocation12)&gt; | 是   | 回调函数，异步返回指定监听设备鼠标光标位置信息。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息          |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+
+**示例**：
+
+```ts
+function callback(data: cooperate.MouseLocation): void {
+  console.info('displayX:' + data.displayX + 'displayY:' + data.displayY + 'displayWidth:' +
+    data.displayWidth + 'displayHeight:' + data.displayHeight);
+}
+
+try {
+  let networkId: string = 'Default';
+  cooperate.onCooperateMouseEvent(networkId, callback);
+} catch (error) {
+  console.error(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+## cooperate.offCooperateMouseEvent<sup>23+</sup>
+
+offCooperateMouseEvent(networkId: string, callback?: Callback&lt;MouseLocation&gt;): void
+
+取消监听指定设备鼠标光标位置。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的接口ArkTS-Dyn是[cooperate.off('cooperateMouse')](#cooperateoffcooperatemouse12)。
+
+**需要权限**：ohos.permission.COOPERATE_MANAGER
+
+**系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| networkId| string                                                | 是   | 目标设备描述符。                                             |
+| callback | Callback&lt;[MouseLocation](#mouselocation12)&gt; | 否   | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息          |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+
+**示例**：
+
+```ts
+function callbackOn(data: cooperate.MouseLocation): void {
+  console.info('Register mouse location listener');
+}
+
+function callbackOff(data: cooperate.MouseLocation): void {
+  console.info('Unregister mouse location listener');
+}
+
+try {
+  let networkId: string = 'Default';
+  cooperate.onCooperateMouseEvent(networkId, callbackOn);
+  cooperate.offCooperateMouseEvent(networkId, callbackOff);
+} catch (error) {
+  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+```ts
+function callbackOn(data: cooperate.MouseLocation): void {
+  console.info('Register mouse location listener');
+}
+
+try {
+  let networkId: string = 'Default';
+  cooperate.onCooperateMouseEvent(networkId, callbackOn);
+  cooperate.offCooperateMouseEvent(networkId);
+} catch (error) {
+  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
 ## cooperate.activateCooperateWithOptions<sup>20+</sup>
 
-activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number, cooperateOptions?: CooperateOptions ): Promise&lt;void&gt;
+ArkTS-Dyn: activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number, cooperateOptions?: CooperateOptions ): Promise&lt;void&gt;
+
+ArkTS-Sta: activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: int, cooperateOptions?: CooperateOptions ): Promise&lt;void&gt;
 
 启动键鼠穿越，使用选项开始屏幕跳转。
 
@@ -728,12 +1195,16 @@ activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number, coo
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名    | 类型   | 必填 | 说明                     |
 | --------- | ------ | ---- | ------------------------ |
 | targetNetworkId | string | 是   | 键鼠穿越目标设备描述符。 |
-| inputDeviceId   | number | 是   |  发起穿越操作的输入设备ID。   |
+| inputDeviceId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   |  发起穿越操作的输入设备ID。   |
 |cooperateOptions | [CooperateOptions](#cooperateoptions20) | 否   | 穿越可选控制参数，用于控制穿出点具体位置等。不设置此参数时，本接口能力与[cooperate.activateCooperate](#cooperateactivatecooperate11-1)相同。 |
 
 **返回值：**
@@ -754,6 +1225,8 @@ activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number, coo
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -770,12 +1243,32 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let targetNetworkId: string = "networkId";
+let inputDeviceId: int = 0;
+try {
+  cooperate.activateCooperateWithOptions(targetNetworkId, inputDeviceId).then(() => {
+    console.info(`activateCooperateWithOptions success.`);
+  }, (error: Error): void => {
+    console.error(`activateCooperateWithOptions, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`activateCooperateWithOptions, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
 
 ## CooperateMessage<sup>11+</sup>
 
 键鼠穿越的消息。
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 | 名称      | 类型           |只读 | 可选 | 说明                     |
 | --------- | -------------- | ---- | ---- | ------------------------ |
@@ -789,18 +1282,28 @@ try {
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 | 名称           | 类型            | 只读 | 可选 | 说明                           |
 | ---------------- | -------------- | ---- | ---- | ------------------------------ |
-| displayX       | number         | 否   | 否   | 鼠标指针位于屏幕的X坐标上的位置，单位：px。 |
-| displayY       | number         | 否   | 否   | 鼠标指针位于屏幕的Y坐标上的位置，单位：px。 |
-| displayWidth   | number         | 否   | 否   | 屏幕宽度，单位：px。                      |
-| displayHeight  | number         | 否   | 否   | 屏幕高度，单位：px。                      |
+| displayX       | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 否   | 否   | 鼠标指针位于屏幕的X坐标上的位置，单位：px。 |
+| displayY       | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 否   | 否   | 鼠标指针位于屏幕的Y坐标上的位置，单位：px。 |
+| displayWidth   | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 否   | 否   | 屏幕宽度，单位：px。                      |
+| displayHeight  | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 否   | 否   | 屏幕高度，单位：px。                      |
 
 ## CooperateState<sup>11+</sup>
 
 键鼠穿越状态的枚举。
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
+> 枚举值类型：ArkTS-Dyn为number，ArkTS-Sta为int。
 
 | 名称                           |  值 | 说明                   |
 | ------------------------------ | ---- | ---------------------- |
@@ -819,11 +1322,15 @@ try {
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 | 名称      | 类型           | 只读 | 可选 | 说明                     |
 | --------- | -------------- | ---- | ---- | ------------------------ |
-| displayX      | number         | 否   | 否   | 鼠标X坐标位置，单位：px。 |
-| displayY      | number         | 否   | 否   | 鼠标Y坐标位置，单位：px。 |
-| displayId     | number         | 否   | 否   | 对端设备屏幕标识。 |
+| displayX      | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 否   | 否   | 鼠标X坐标位置，单位：px。 |
+| displayY      | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 否   | 否   | 鼠标Y坐标位置，单位：px。 |
+| displayId     | ArkTS-Dyn: number<br/>ArkTS-Sta: long         | 否   | 否   | 对端设备屏幕标识。 |
 
 ## cooperate.prepare<sup>(deprecated)</sup>
 

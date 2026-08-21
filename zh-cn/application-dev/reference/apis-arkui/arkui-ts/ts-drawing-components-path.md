@@ -39,7 +39,7 @@ new Path(options?: PathOptions)
 
 | 参数名                                             | 类型         | 必填 | 说明                   |
 | ------ | ---------------- | ---- | ------------------------------------------------------------ |
-| options  | [PathOptions](ts-drawing-components-path.md#pathoptions18对象说明) | 否   | Path绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| options  | [PathOptions](ts-drawing-components-path.md#pathoptions18对象说明) | 否   | Path绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。<br>**说明：**从API version 18开始，使用PathOptions参数时需在Stage模型下使用。  |
 
 ### Path
 
@@ -57,7 +57,7 @@ Path(options?: PathOptions)
 
 | 参数名                                             | 类型         | 必填 | 说明                   |
 | ------ | ---------------- | ---- | ------------------------------------------------------------ |
-| options  | [PathOptions](ts-drawing-components-path.md#pathoptions18对象说明) | 否   | Path绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| options  | [PathOptions](ts-drawing-components-path.md#pathoptions18对象说明) | 否   | Path绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。<br>**说明：**从API version 18开始，使用PathOptions参数时需在Stage模型下使用。  |
 
 ## PathOptions<sup>18+</sup>对象说明
 

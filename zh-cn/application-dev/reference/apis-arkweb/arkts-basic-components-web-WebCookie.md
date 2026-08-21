@@ -32,6 +32,10 @@ WebCookie的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 ## setCookie<sup>(deprecated)</sup>
 
 setCookie()
@@ -44,6 +48,10 @@ setCookie()
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 ## saveCookie<sup>(deprecated)</sup>
 
 saveCookie()
@@ -55,3 +63,7 @@ saveCookie()
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[saveCookieAsync<sup>9+</sup>](./arkts-apis-webview-WebCookieManager.md#savecookieasync)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23

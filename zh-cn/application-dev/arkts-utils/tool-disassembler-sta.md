@@ -1,10 +1,10 @@
-# Disassembler反汇编工具（ArkTS-Sta）
+# Disassembler反汇编工具 (ArkTS-Sta)
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 

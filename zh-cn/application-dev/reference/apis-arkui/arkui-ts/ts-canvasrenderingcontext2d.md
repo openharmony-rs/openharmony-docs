@@ -19,6 +19,8 @@ CanvasRenderingContext2D对象与Canvas组件绑定后，可在Canvas组件上�
 > * [beginPath](#beginpath)、[moveTo](#moveto)、[lineTo](#lineto)、[closePath](#closepath)、[bezierCurveTo](#beziercurveto)、[quadraticCurveTo](#quadraticcurveto)、[arc](#arc)、[arcTo](#arcto)、[ellipse](#ellipse)、[rect](#rect)和[roundRect](#roundrect20)接口只能对CanvasRenderingContext2D中的路径生效，无法对[OffscreenCanvasRenderingContext2D](./ts-offscreencanvasrenderingcontext2d.md)和[Path2D](./ts-components-canvas-path2d.md)对象中设置的路径生效。
 >
 > * Canvas组件的宽或高超过8000px时使用CPU渲染，会导致性能明显下降，此时推荐使用[自定义渲染节点 (RenderNode)](../../../ui/arkts-user-defined-arktsNode-renderNode.md)。
+>
+> * 图形变换接口([rotate](#rotate)、[scale](#scale)、[transform](#transform)、[setTransform](#settransform)、[translate](#translate))与[getPixelMap](#getpixelmap)/[getImageData](#getimagedata)/[toDataURL](#todataurl)接口在不同帧执行时，后者创建出来的内容没有图形变换效果。
 
 ## 接口
 
@@ -4431,7 +4433,7 @@ on(type: 'onAttach', callback: Callback\<void>): void
 
 | 参数名 | 类型      | 必填 | 说明                                                                   |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| type   | string | 是   | 订阅CanvasRenderingContext2D与Canvas组件发生绑定的回调。<br>异常值undefined或null按无效值处理。 |
+| type   | string | 是   | 订阅CanvasRenderingContext2D与Canvas组件发生绑定的事件类型，固定为'onAttach'。<br>异常值undefined或null按无效值处理。 |
 | callback   | [Callback](ts-types.md#callback12)\<void> | 是   | 订阅CanvasRenderingContext2D与Canvas组件发生绑定后触发的回调。<br>异常值undefined或null按无效值处理。|
 
 **错误码：**
@@ -4468,7 +4470,7 @@ on(type: 'onDetach', callback: Callback\<void>): void
 
 | 参数名 | 类型      | 必填 | 说明                                                                   |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| type   | string | 是   | 订阅CanvasRenderingContext2D与Canvas组件解除绑定的回调。<br>异常值undefined或null按无效值处理。 |
+| type   | string | 是   | 订阅CanvasRenderingContext2D与Canvas组件解除绑定的事件类型，固定为'onDetach'。<br>异常值undefined或null按无效值处理。 |
 | callback   | [Callback](ts-types.md#callback12)\<void> | 是   | 订阅CanvasRenderingContext2D与Canvas组件解除绑定后触发的回调。<br>异常值undefined或null按无效值处理。 |
 
 **错误码：**
@@ -4502,7 +4504,7 @@ off(type: 'onAttach', callback?: Callback\<void>): void
 
 | 参数名 | 类型      | 必填 | 说明                                                                   |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| type   | string | 是   | 取消订阅CanvasRenderingContext2D与Canvas组件发生绑定的回调。<br>异常值undefined或null按无效值处理。 |
+| type   | string | 是   | 取消订阅CanvasRenderingContext2D与Canvas组件发生绑定的事件类型，固定为'onAttach'。<br>异常值undefined或null按无效值处理。 |
 | callback   | [Callback](ts-types.md#callback12)\<void> | 否   | 为空表示取消所有订阅CanvasRenderingContext2D与Canvas组件发生绑定后触发的回调。<br>非空则取消订阅发生绑定对应的回调。<br>异常值undefined或null按无效值处理。 |
 
 **错误码：**
@@ -4529,7 +4531,7 @@ off(type: 'onDetach', callback?: Callback\<void>): void
 
 | 参数名 | 类型      | 必填 | 说明                                                                   |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| type   | string | 是   | 取消订阅CanvasRenderingContext2D与Canvas组件解除绑定的回调。<br>异常值undefined或null按无效值处理。 |
+| type   | string | 是   | 取消订阅CanvasRenderingContext2D与Canvas组件解除绑定的事件类型，固定为'onDetach'。<br>异常值undefined或null按无效值处理。 |
 | callback   | [Callback](ts-types.md#callback12)\<void> | 否   | 为空代表取消所有订阅CanvasRenderingContext2D与Canvas组件解除绑定后触发的回调。<br>非空代表取消订阅解除绑定对应的回调。<br>异常值undefined或null按无效值处理。 |
 
 **错误码：**
@@ -5027,8 +5029,8 @@ type ImageSmoothingQuality = "high" | "low" | "medium"
 <!--Table: 25%; 10%; 10%; 10%; 45%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | -------------- | ------ | ---------------- | ------------------------ |
-| width                    | number | 是 | 否 | 只读属性，文本方块的宽度。 |
-| height                   | number | 是 | 否 | 只读属性，文本方块的高度。 |
+| width                    | number | 是 | 否 | 只读属性，文本方块的宽度。<br>单位：vp<br>当CanvasRenderingContext2D对象的单位模式设置为LengthMetricsUnit.PX时，单位为px。 |
+| height                   | number | 是 | 否 | 只读属性，文本方块的高度。<br>单位：vp<br>当CanvasRenderingContext2D对象的单位模式设置为LengthMetricsUnit.PX时，单位为px。 |
 | actualBoundingBoxAscent  | number | 是 | 否 | 只读属性，从[CanvasRenderingContext2D.textBaseline](#canvastextbaseline类型说明)属性标明的水平线到渲染文本的矩形边界顶部的距离。 |
 | actualBoundingBoxDescent | number | 是 | 否 | 只读属性，从[CanvasRenderingContext2D.textBaseline](#canvastextbaseline类型说明)属性标明的水平线到渲染文本的矩形边界底部的距离。 |
 | actualBoundingBoxLeft    | number | 是 | 否 | 只读属性，平行于基线，从[CanvasRenderingContext2D.textAlign](#canvastextalign类型说明)属性确定的对齐点到文本矩形边界左侧的距离。 |

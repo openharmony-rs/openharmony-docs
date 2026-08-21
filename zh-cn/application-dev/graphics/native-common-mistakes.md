@@ -82,7 +82,7 @@ int32_t OH_NativeImage_ReleaseNativeWindowBuffer(OH_NativeImage* image,OHNativeW
 
 ```c++
 OH_NativeImage *image_ = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
-OHNativeWindow *nativewindow_ = OH_NativeImage_AcquireNativeWindow();
+OHNativeWindow *nativewindow_ = OH_NativeImage_AcquireNativeWindow(image_);
 
 // 错误：OH_NativeImage_Destroy中会减少OHNativeWindow引用计数，无需再调用OH_NativeWindow_DestroyNativeWindow
 OH_NativeImage_Destroy(image_);
@@ -98,7 +98,7 @@ OH_NativeImage_Destroy中会减少OHNativeWindow引用计数，无需再调用OH
 
 ```c++
 OH_NativeImage *image_ = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
-OHNativeWindow *nativewindow_ = OH_NativeImage_AcquireNativeWindow();
+OHNativeWindow *nativewindow_ = OH_NativeImage_AcquireNativeWindow(image_);
 
 // 释放NativeImage时将image_和nativewindow_置空，防止后续使用野指针
 OH_NativeImage_Destroy(image_);
@@ -267,11 +267,11 @@ if (error) {
 OH_NativeWindow_NativeWindowFlushBuffer(nativewindow_, buffer, fence, region);
 ```
 
-## 内存泄露问题
+## 内存泄漏问题
 
-### 典型内存泄露原因
+### 典型内存泄漏原因
 
-额外执行了增加引用计数接口，未配套执行减少引用计数接口导致泄露。
+额外执行了增加引用计数接口，未配套执行减少引用计数接口导致泄漏。
 
 ### 典型错误代码及解决方案
 
@@ -286,7 +286,7 @@ if (ret != NATIVE_ERROR_OK) {
     return;
 }
 
-// 错误：对buffer增加了引用计数，绘制流程走到异常分支，异常分支未相应减少引用计数，导致泄露
+// 错误：对buffer增加了引用计数，绘制流程走到异常分支，异常分支未相应减少引用计数，导致泄漏
 if (error) {
     OH_NativeWindow_NativeWindowAbortBuffer(nativewindow_, buffer);
     return;
@@ -320,7 +320,7 @@ if (error) {
 }
 
 OH_NativeWindow_NativeWindowFlushBuffer(nativewindow_, buffer, fence, region);
-OH_NativeWindow_NativeObjectReference(buffer);
+OH_NativeWindow_NativeObjectUnreference(buffer);
 ```
 
 **典型错误代码2**
@@ -341,7 +341,7 @@ OH_NativeWindow_NativeObjectUnreference(buffer);
 
 **具体解析**
 
-OH_NativeImage_AcquireNativeWindowBuffer接口获取的buffer会增加引用计数，OH_NativeImage_ReleaseNativeWindowBuffer接口只在成功时减少引用计数，未对返回值做处理会导致内存泄露。
+OH_NativeImage_AcquireNativeWindowBuffer接口获取的buffer会增加引用计数，OH_NativeImage_ReleaseNativeWindowBuffer接口只在成功时减少引用计数，未对返回值做处理会导致内存泄漏。
 
 修改：OH_NativeImage_ReleaseNativeWindowBuffer接口返回不为NATIVE_ERROR_OK时，额外调用OH_NativeWindow_NativeObjectUnreference减少一次引用计数。
 

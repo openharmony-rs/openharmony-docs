@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 开发者可以通过[AttachCurrentThread](#attachcurrentthread)接口将当前线程提供给ArkTS-Sta虚拟机，并获取静态虚拟机的env。开发者可以使用该env在当前执行特定重载/长时任务，避免对于ArkTS-Sta虚拟机系统调用造成影响。任务完成后，开发者需要手动调用[DetachCurrentThread](#detachcurrentthread)释放对应的系统资源。
 

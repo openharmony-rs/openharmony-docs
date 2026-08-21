@@ -120,7 +120,7 @@ getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
+| 201      | Permission denied. <br>适用版本：22+                          |
 
 **示例：**
 
@@ -159,7 +159,7 @@ getCellularDataFlowType(): Promise\<DataFlowType\>
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
+| 201      | Permission denied. <br>适用版本：22+                           |
 
 **示例：**
 
@@ -196,7 +196,7 @@ getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
+| 201      | Permission denied. <br>适用版本：22+                           |
 
 **示例：**
 
@@ -235,7 +235,7 @@ getCellularDataState(): Promise\<DataConnectState\>
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
+| 201      | Permission denied. <br>适用版本：22+                           |
 
 **示例：**
 
@@ -277,7 +277,7 @@ isCellularDataEnabled(callback: AsyncCallback\<boolean\>): void
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                               |
+| 8300999  | Unknown error.                               |
 
 **示例：**
 
@@ -319,7 +319,7 @@ isCellularDataEnabled(): Promise\<boolean\>
 | 201      | Permission denied.                           |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                               |
+| 8300999  | Unknown error.                              |
 
 **示例：**
 
@@ -359,7 +359,7 @@ isCellularDataEnabledSync(): boolean
 | 201      | Permission denied.                           |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                          |
+| 8300999  | Unknown error.                          |
 
 **示例：**
 
@@ -404,7 +404,7 @@ isCellularDataRoamingEnabled(slotId: number, callback: AsyncCallback\<boolean\>)
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                               |
+| 8300999  | Unknown error.                               |
 
 **示例：**
 
@@ -454,7 +454,7 @@ isCellularDataRoamingEnabled(slotId: number): Promise\<boolean\>
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                               |
+| 8300999  | Unknown error.                               |
 
 **示例：**
 
@@ -498,11 +498,11 @@ isCellularDataRoamingEnabledSync(slotId: number): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 8300001  | Invalid parameter value.                                     |
 | 8300002  | Operation failed. Cannot connect to service.                 |
 | 8300003  | System internal error.                                       |
-| 8300999  | Internal error.                                          |
+| 8300999  | Unknown error code.                                          |
 
 **示例：**
 
@@ -715,6 +715,58 @@ data.getActiveApnName().then((apn: string) => {
 });
 ```
 
+## data.showSystemApnSettings
+
+showSystemApnSettings(context: Context): Promise\<void>
+
+打开当前默认移动数据卡对应的APN配置界面。使用Promise异步回调。
+
+> **说明：**
+>
+>- 该接口仅支持查看和选择当前已添加的通用APN，不支持新建或修改。
+>
+>- 若未插入SIM卡或设备不支持APN配置，将无法打开该配置界面。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Telephony.CellularData
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**设备行为差异**：该接口在Phone、Tablet中可正常调用，在其他设备类型中调用不生效。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明           |
+| ------ | ------ | ---- | -------------- |
+| context    | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | Stage模型的应用上下文（仅支持UIAbilityContext和ExtensionContext）。 |
+
+**返回值：**
+
+| 类型                                                    | 说明                          |
+| ------------------------------------------------------- | ----------------------------- |
+| Promise\<void>  |Promise对象。无返回结果的Promise对象。|
+
+**示例：**
+
+> **说明：** 
+>
+> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```ts
+import { data } from '@kit.TelephonyKit';
+import { common } from '@kit.AbilityKit';
+
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+data.showSystemApnSettings(context).then(() => {
+  console.info("showSystemApnSettings success");
+}).catch(() => {
+  console.error("showSystemApnSettings failed");
+});
+```
+
 ## DataFlowType
 
 描述蜂窝数据流类型。 
@@ -753,8 +805,8 @@ APN信息。
 |------------|----------|---------|------------|-------------|
 | apnName   | string     | 否      | 否         | APN名称。    |
 | apn       | string     | 否      | 否         | APN。        |
-| mcc       | string     | 否      | 否         | Sim卡的mcc。 |
-| mnc       | string     | 否      | 否         | Sim卡的mnc。 |
+| mcc       | string     | 否      | 否         | SIM卡的mcc。 |
+| mnc       | string     | 否      | 否         | SIM卡的mnc。 |
 | user      | string     | 否      | 是         | 用户名。     |
 | type      | string     | 否      | 是         | APN类型。    |
 | proxy     | string     | 否      | 是         | 代理地址。   |

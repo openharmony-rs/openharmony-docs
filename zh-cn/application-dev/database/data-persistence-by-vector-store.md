@@ -40,7 +40,7 @@
 | 类型 | 描述 | 是否支持 |
 | -------- | -------- | -------- |
 | NULL | 空值 | 是 |
-| INTEGER | 整形 | 是 |
+| INTEGER | 整型 | 是 |
 | DOUBLE | 浮点类型 | 是 |
 | TEXT | 字符串类型 | 是 |
 | BLOB | 二进制类型 | 是 |
@@ -333,7 +333,7 @@ SQL语句中的函数，如下所示：
 
    ArkTS-Dyn示例：
 
-   <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+    <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
    
    ``` TypeScript
    let resultSet: relationalStore.ResultSet | undefined = undefined;
@@ -364,7 +364,18 @@ SQL语句中的函数，如下所示：
      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
      resultSet?.close();
    }
-   
+
+   // 搭载OpenHarmony 7.0.0及以上版本的设备，支持使用表达式进行加权打分，基于表达式得分排序查询
+   try {
+     // 创建第二张表
+     let CREATE_SQL = 'CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY, location text, people text, age int, repr floatvector(2));';
+     await store!.execute(CREATE_SQL);
+     let resultSet = await store!.querySql("select *, (1000 * (location='local') + 500 * (people like 'Mike') + 100 * (age > 18)) as score from test1 where repr <-> '[6.2, 7.3]' < 0.8 order by score limit 5;");
+     resultSet!.close();
+   } catch (err) {
+     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   }
+
    // 子查询
    try {
      // 创建第二张表
@@ -517,7 +528,7 @@ SQL语句中的函数，如下所示：
 
    | 类型   | 计算符号 | 备注说明   |
    | ------ | -------- | ---------- |
-   | L2     | <->      | 欧式距离。|
+   | L2     | <->      | 欧氏距离。|
    | COSINE | <=>      | 余弦距离。|
 
    **表3** 扩展语法参数(parameter)

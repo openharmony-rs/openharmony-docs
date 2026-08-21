@@ -64,7 +64,7 @@ ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, form
 |-------------|---|-------------------|
 | TYPE_BIG | 0 | 表示 4 x 4 的尺寸。默认卡片宽度为200，默认高度为200。 |
 | TYPE_MID | 1 | 表示 4 x 2 的尺寸。默认卡片宽度为200，默认高度为100。 |
-| TYPE_SMALL | 2 | 表示 2 x 1 的尺寸。默认卡片宽度为137， 默认高度为83。 |
+| TYPE_SMALL | 2 | 表示 2 x 1 的尺寸。默认卡片宽度为137，默认高度为83。 |
 
 ## 示例
 
@@ -96,14 +96,14 @@ struct Index {
       let thumbImage = await context.resourceManager.getMediaContent($r('app.media.foreground').id);
       this.contentForm = {
         uniformDataType: 'general.content-form',
-        title: "Content form title",
+        title: 'Content form title',
         thumbData: appIcon,
-        description: "Content form description",
+        description: 'Content form description',
         appIcon: thumbImage,
-        appName: "com.test.demo"
+        appName: 'com.test.demo'
       };
     } catch (err) {
-      console.error("Init data error");
+      console.error(`Init data error`);
     }
   }
 
@@ -120,7 +120,7 @@ struct Index {
           formWidth: 110,
           formHeight: 50,
           handleOnClick: () => {
-            console.info("Clicked card");
+            console.info(`Clicked card`);
           }
         })
       }

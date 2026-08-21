@@ -59,7 +59,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 |                类型               | 必填 |              说明               |
 | ------| --------------------------------- | ---- | -------------------------------------- |
-| want| [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是  | 包含bundleName，abilityName以及用户自定参数用于拉起Ability。 |
+| want| [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是  | 包含bundleName，abilityName以及用户自定义参数用于拉起Ability。 |
 | callback| AsyncCallback&lt;void&gt;       | 是  | 回调函数。当拉起一个应用的Ability成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -85,7 +85,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     };
     this.context.startAbility(want, (error: BusinessError) => {
       if (error) {
-        console.error(`FormExtensionContext startAbility, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+        console.error(`FormExtensionContext startAbility, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
       } else {
         console.info('FormExtensionContext startAbility success');
       }
@@ -146,7 +146,7 @@ startAbility(want: Want): Promise&lt;void&gt;
 
 | 参数名 |                类型               | 必填 |              说明               |
 | ------| --------------------------------- | ---- | -------------------------------------- |
-| want| [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是  | 包含bundleName，abilityName以及用户自定参数用于拉起Ability。 |
+| want| [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是  | 包含bundleName，abilityName以及用户自定义参数用于拉起Ability。 |
 
 **返回值：**
 
@@ -307,10 +307,10 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
         console.info('----------- onConnect -----------');
       },
       onDisconnect(elementName) {
-        console.info('----------- onDisconnect -----------')
+        console.info('----------- onDisconnect -----------');
       },
       onFailed(code) {
-        console.error(`onFailed, code: ${code}`)
+        console.error(`onFailed, code: ${code}`);
       }
     };
 

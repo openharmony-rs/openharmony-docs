@@ -9,7 +9,7 @@
 
 ## Props
 
-自定义组件可以通过props声明属性，父组件通过设置属性向子组件传递参数，props支持类型包括：String，Number，Boolean，Array，Object，Function。camelCase (驼峰命名法) 的 prop 名，在外部父组件传递参数时需要使用 kebab-case (短横线分隔命名) 形式，即当属性compProp在父组件引用时需要转换为comp-prop。给自定义组件添加props，通过父组件向下传递参数的示例如下：
+自定义组件可以通过props声明属性，父组件通过设置属性向子组件传递参数，props支持类型包括：String，Number，Boolean，Array，Object。camelCase (驼峰命名法) 的 prop 名，在外部父组件传递参数时需要使用 kebab-case (短横线分隔命名) 形式，即当属性compProp在父组件引用时需要转换为comp-prop。给自定义组件添加props，通过父组件向下传递参数的示例如下：
 
 ```html
 <!-- comp.hml -->
@@ -140,4 +140,4 @@ export default {
 }
 ```
 
-这里声明的第一个计算属性message默认只有getter函数，message的值会取决于objTitle的值的变化。getter函数只能读取不能改变参数值，例如data中初始化定义的time，当需要赋值给计算属性的时候可以提供一个setter函数，如示例中的notice。
+这里声明的第一个计算属性message默认只有getter函数，message的值会取决于objTitle的值的变化。getter函数只能读取不能改变计算属性的值，例如data中初始化定义的time，当需要赋值给计算属性的时候可以提供一个setter函数，如示例中的notice。

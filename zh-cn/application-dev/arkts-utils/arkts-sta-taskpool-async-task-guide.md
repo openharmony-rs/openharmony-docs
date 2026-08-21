@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 对于相机预览帧处理、传感器数据处理、批量上传等高频耗时任务，如果提交速度高于处理速度，直接使用taskpool.execute提交所有任务可能导致任务堆积。ArkTS-Sta可以使用[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)提供的AsyncRunner限制同类任务的并发度，并通过等待队列容量控制等待任务数量。
 

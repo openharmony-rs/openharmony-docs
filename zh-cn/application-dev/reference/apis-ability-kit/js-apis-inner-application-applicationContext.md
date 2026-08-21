@@ -69,7 +69,7 @@ let lifecycleId: number;
 export default class EntryAbility extends UIAbility {
   onCreate() {
     console.info('MyAbility onCreate');
-    let AbilityLifecycleCallback: AbilityLifecycleCallback = {
+    let abilityLifecycleCallback: AbilityLifecycleCallback = {
       onAbilityCreate(ability) {
         console.info(`AbilityLifecycleCallback onAbilityCreate ability: ${ability}`);
       },
@@ -102,15 +102,35 @@ export default class EntryAbility extends UIAbility {
         console.info(`AbilityLifecycleCallback onAbilityContinue ability: ${ability}`);
       }
     }
-    // 1.通过context属性获取applicationContext
+
+    // 通过context属性获取applicationContext
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     try {
-      // 2.通过applicationContext注册监听应用内生命周期
-      lifecycleId = applicationContext.on('abilityLifecycle', AbilityLifecycleCallback);
+      // 通过applicationContext注册监听应用内生命周期
+      lifecycleId = applicationContext.on('abilityLifecycle', abilityLifecycleCallback);
     } catch (paramError) {
       console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
     console.info(`registerAbilityLifecycleCallback lifecycleId: ${lifecycleId}`);
+  }
+
+  // 不再需要或应用退出时取消监听应用内UIAbility生命周期
+  onDestroy() {
+    // 通过context属性获取applicationContext
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      applicationContext.off('abilityLifecycle', lifecycleId, (error, data) => {
+        if (error) {
+          console.error(`Failed to unregister abilityLifecycle callback. Code: ${error.code}, message: ${error.message}`);
+        } else {
+          console.info(`unregisterAbilityLifecycleCallback success, data: ${JSON.stringify(data)}`);
+        }
+      });
+    } catch (paramError) {
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
+    }
   }
 }
 ```
@@ -231,7 +251,7 @@ off(type: 'abilityLifecycle', callbackId: number,  callback: AsyncCallback\<void
 | ------------- | -------- | ---- | -------------------------- |
 | type | string | 是   | 此类型表示应用内UIAbility的生命周期，固定为'abilityLifecycle'。 |
 | callbackId    | number | 是   | 通过[ApplicationContext.on('abilityLifecycle')](#applicationcontextonabilitylifecycle)接口注册监听应用内UIAbility的生命周期时返回的ID。 |
-| callback | AsyncCallback\<void> | 是   | 回调方法。当取消监听应用内生命周期成功，err为undefined，否则为错误对象。   |
+| callback | AsyncCallback\<void> | 是   | 回调方法。当取消监听应用内UIAbility的生命周期成功，err为undefined，否则为错误对象。   |
 
 **错误码**：
 
@@ -251,18 +271,20 @@ let lifecycleId: number;
 
 export default class EntryAbility extends UIAbility {
   onDestroy() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     console.info(`stage applicationContext: ${applicationContext}`);
     try {
+      // 取消监听应用内UIAbility生命周期
       applicationContext.off('abilityLifecycle', lifecycleId, (error, data) => {
         if (error) {
-          console.error(`unregisterAbilityLifecycleCallback fail, err: ${JSON.stringify(error)}`);
+          console.error(`Failed to unregister abilityLifecycle callback. Code: ${error.code}, message: ${error.message}`);
         } else {
           console.info(`unregisterAbilityLifecycleCallback success, data: ${JSON.stringify(data)}`);
         }
       });
     } catch (paramError) {
-      console.error(`error code: ${(paramError as BusinessError).code}, error code: ${(paramError as BusinessError).message}`);
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
   }
 }
@@ -412,9 +434,11 @@ let lifecycleId: number;
 
 export default class MyAbility extends UIAbility {
   onDestroy() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     console.info(`stage applicationContext: ${applicationContext}`);
     try {
+      // 取消监听应用内UIAbility生命周期
       applicationContext.off('abilityLifecycle', lifecycleId);
     } catch (paramError) {
       console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
@@ -576,7 +600,7 @@ let callbackId: number;
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.info('MyAbility onCreate')
+    console.info('MyAbility onCreate');
     let environmentCallback: EnvironmentCallback = {
       onConfigurationUpdated(config) {
         console.info(`onConfigurationUpdated config: ${JSON.stringify(config)}`);
@@ -585,15 +609,34 @@ export default class EntryAbility extends UIAbility {
         console.info(`onMemoryLevel level: ${level}`);
       }
     };
-    // 1.获取applicationContext
+    // 通过context属性获取applicationContext
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     try {
-      // 2.通过applicationContext注册监听系统环境变化
+      // 通过applicationContext注册监听系统环境变化
       callbackId = applicationContext.on('environment', environmentCallback);
     } catch (paramError) {
       console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
     console.info(`registerEnvironmentCallback callbackId: ${callbackId}`);
+  }
+
+  // 不再需要或应用退出时取消对系统环境变化的监听
+  onDestroy() {
+    // 通过context属性获取applicationContext
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      applicationContext.off('environment', callbackId, (error, data) => {
+        if (error) {
+          console.error(`Failed to unregister environment callback. Code: ${error.code}, message: ${error.message}`);
+        } else {
+          console.info(`unregisterEnvironmentCallback success, data: ${JSON.stringify(data)}`);
+        }
+      });
+    } catch (paramError) {
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
+    }
   }
 }
 ```
@@ -704,11 +747,13 @@ let callbackId: number;
 
 export default class EntryAbility extends UIAbility {
   onDestroy() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     try {
+      // 取消对系统环境变化的监听
       applicationContext.off('environment', callbackId, (error, data) => {
         if (error) {
-          console.error(`unregisterEnvironmentCallback fail, err: ${JSON.stringify(error)}`);
+          console.error(`Failed to unregister environment callback. Code: ${error.code}, message: ${error.message}`);
         } else {
           console.info(`unregisterEnvironmentCallback success, data: ${JSON.stringify(data)}`);
         }
@@ -829,8 +874,10 @@ let callbackId: number;
 
 export default class MyAbility extends UIAbility {
   onDestroy() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     try {
+      // 取消对系统环境变化的监听
       applicationContext.off('environment', callbackId);
     } catch (paramError) {
       console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
@@ -921,7 +968,7 @@ on(type: 'applicationStateChange', callback: ApplicationStateChangeCallback): vo
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
 | type     | string                                   | 是   | 此类型表示当前应用进程状态变化，固定为'applicationStateChange'。 |
-| callback | [ApplicationStateChangeCallback](js-apis-app-ability-applicationStateChangeCallback.md) | 是   | 当前应用进程状态切换时触发的回调方法。 |
+| callback | [ApplicationStateChangeCallback](js-apis-app-ability-applicationStateChangeCallback.md) | 是   | 当前应用进程状态变化时触发的回调方法。 |
 
 **错误码**：
 
@@ -937,27 +984,40 @@ on(type: 'applicationStateChange', callback: ApplicationStateChangeCallback): vo
 import { UIAbility, ApplicationStateChangeCallback } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+let applicationStateChangeCallback: ApplicationStateChangeCallback = {
+  onApplicationForeground() {
+    console.info('applicationStateChangeCallback onApplicationForeground');
+  },
+  onApplicationBackground() {
+    console.info('applicationStateChangeCallback onApplicationBackground');
+  }
+}
+
 export default class MyAbility extends UIAbility {
   onCreate() {
     console.info('MyAbility onCreate');
-    let applicationStateChangeCallback: ApplicationStateChangeCallback = {
-      onApplicationForeground() {
-        console.info('applicationStateChangeCallback onApplicationForeground');
-      },
-      onApplicationBackground() {
-        console.info('applicationStateChangeCallback onApplicationBackground');
-      }
-    }
-
-    // 1.获取applicationContext
+    // 通过context属性获取applicationContext
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     try {
-      // 2.通过applicationContext注册当前应用进程状态监听
+      // 通过applicationContext注册当前应用进程状态监听
       applicationContext.on('applicationStateChange', applicationStateChangeCallback);
     } catch (paramError) {
       console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
     console.info('Register applicationStateChangeCallback');
+  }
+
+  // 不再需要或应用退出时取消所有已注册的该类型事件的监听。
+  onDestroy() {
+    // 通过context属性获取applicationContext
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      applicationContext.off('applicationStateChange', applicationStateChangeCallback);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
   }
 }
 ```
@@ -1064,9 +1124,10 @@ let applicationStateChangeCallback: ApplicationStateChangeCallback = {
 
 export default class MyAbility extends UIAbility {
   onDestroy() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     try {
-      // 本例中的callback字段取值为ApplicationStateChangeCallback，需要替换为实际值。
+      // 本例中的callback参数取值为ApplicationStateChangeCallback，需要替换为实际值。
       // 如果callback字段不传入参数，则取消所有已注册的该类型事件的监听。
       applicationContext.off('applicationStateChange', applicationStateChangeCallback);
     } catch (paramError) {
@@ -1165,46 +1226,61 @@ onSystemConfigurationUpdated(callback: systemConfiguration.UpdatedCallback): voi
 import { UIAbility, systemConfiguration, ConfigurationConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+let callBack: systemConfiguration.UpdatedCallback = {
+  onColorModeUpdated(colorMode: ConfigurationConstant.ColorMode) {
+    console.info(`system configuration updated colormode:` + colorMode);
+  },
+  onFontSizeScaleUpdated(fontSizeScale: number) {
+    console.info(`system configuration updated ability:` + fontSizeScale);
+  },
+  onFontWeightScaleUpdated(fontWeightScale: number) {
+    console.info(`system configuration updated ability:` + fontWeightScale);
+  },
+  onLanguageUpdated(language: string) {
+    console.info(`system configuration updated ability:` + language);
+  },
+  onFontIdUpdated(fontId: string) {
+    console.info(`system configuration updated ability:` + fontId);
+  },
+  onMCCUpdated(mcc: string) {
+    console.info(`system configuration updated ability:` + mcc);
+  },
+  onMNCUpdated(mnc: string) {
+    console.info(`system configuration updated ability:` + mnc);
+  },
+  onHasPointerDeviceUpdated(hasPointerDevice: boolean) {
+    console.info(`system configuration updated ability:` + hasPointerDevice);
+  },
+  onLocaleUpdated(locale: string) {
+    console.info(`system configuration updated ability:` + locale);
+  }
+}
+
 export default class EntryAbility extends UIAbility {
   onForeground() {
-    let CallBack: systemConfiguration.UpdatedCallback = {
-      onColorModeUpdated(colorMode: ConfigurationConstant.ColorMode) {
-        console.info(`system configuration updated colormode:` + colorMode);
-      },
-      onFontSizeScaleUpdated(fontSizeScale: number) {
-        console.info(`system configuration updated ability:` + fontSizeScale);
-      },
-      onFontWeightScaleUpdated(fontWeightScale: number) {
-        console.info(`system configuration updated ability:` + fontWeightScale);
-      },
-      onLanguageUpdated(language: string) {
-        console.info(`system configuration updated ability:` + language);
-      },
-      onFontIdUpdated(fontId: string) {
-        console.info(`system configuration updated ability:` + fontId);
-      },
-      onMCCUpdated(mcc: string) {
-        console.info(`system configuration updated ability:` + mcc);
-      },
-      onMNCUpdated(mnc: string) {
-        console.info(`system configuration updated ability:` + mnc);
-      },
-      onHasPointerDeviceUpdated(hasPointerDevice: boolean) {
-        console.info(`system configuration updated ability:` + hasPointerDevice);
-      },
-      onLocaleUpdated(locale: string) {
-        console.info(`system configuration updated ability:` + locale);
-      }
-    }
-    // 1.通过context属性获取applicationContext
+    // 通过context属性获取applicationContext
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     try {
-      // 2.通过applicationContext注册监听
-      applicationContext.onSystemConfigurationUpdated(CallBack);
+      // 通过applicationContext注册监听
+      applicationContext.onSystemConfigurationUpdated(callBack);
     } catch (paramError) {
       console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
     }
     console.info(`onSystemConfigurationUpdated finish`);
+  }
+
+  // 不需要时或应用退出时可以取消监听
+  onDestroy() {
+    // 通过context属性获取applicationContext
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // 通过applicationContext取消监听
+      applicationContext.offSystemConfigurationUpdated(callBack);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
   }
 }
 ```
@@ -1237,7 +1313,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onForeground() {
-    let CallBack: systemConfiguration.UpdatedCallback = {
+    let callBack: systemConfiguration.UpdatedCallback = {
       onColorModeUpdated(colorMode: ConfigurationConstant.ColorMode) {
         console.info(`system configuration updated colormode:` + colorMode);
       },
@@ -1267,10 +1343,11 @@ export default class EntryAbility extends UIAbility {
       }
     }
     // 1.通过context属性获取applicationContext
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     try {
       // 2.通过applicationContext取消监听
-      applicationContext.offSystemConfigurationUpdated(CallBack);
+      applicationContext.offSystemConfigurationUpdated(callBack);
     } catch (paramError) {
       console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
     }
@@ -1317,7 +1394,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class MyAbility extends UIAbility {
   onForeground() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
+    // 获取运行中的进程信息
     applicationContext.getRunningProcessInformation().then((data) => {
       console.info(`The process running information is: ${JSON.stringify(data)}`);
     }).catch((error: Error): void => {
@@ -1346,7 +1425,7 @@ getRunningProcessInformation(callback: AsyncCallback\<Array\<ProcessInformation>
 
 | 参数名        | 类型     | 必填 | 说明                       |
 | ------------- | -------- | ---- | -------------------------- |
-| callback    | AsyncCallback\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>>   | 是   | 回调函数，返回有关运行进程的信息。 |
+| callback    | AsyncCallback\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>>   | 是   | 回调函数，用于获取运行进程信息。 |
 
 **错误码**：
 
@@ -1365,14 +1444,16 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class MyAbility extends UIAbility {
   onForeground() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
+    // 获取运行中的进程信息
     applicationContext.getRunningProcessInformation((err, data) => {
       if (err) {
-        console.error(`getRunningProcessInformation failed, err: ${JSON.stringify(err)}`);
+        console.error(`Failed to get running process information. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info(`The process running information is: ${JSON.stringify(data)}`);
       }
-    })
+    });
   }
 }
 ```
@@ -1417,7 +1498,9 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class MyAbility extends UIAbility {
   onBackground() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
+    // 终止应用的所有进程
     applicationContext.killAllProcesses();
   }
 }
@@ -1471,7 +1554,9 @@ let isClearPageStack = false;
 
 export default class MyAbility extends UIAbility {
   onBackground() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
+    // 终止应用的所有进程，并清除页面堆栈
     applicationContext.killAllProcesses(isClearPageStack);
   }
 }
@@ -1499,7 +1584,7 @@ killAllProcesses(callback: AsyncCallback\<void\>): void
 
 | 参数名        | 类型     | 必填 | 说明                       |
 | ------------- | -------- | ---- | -------------------------- |
-| callback    | AsyncCallback\<void\>   | 是   | 回调函数。当终止应用所在的进程成功，err为undefined，否则为错误对象。 |
+| callback    | AsyncCallback\<void\>   | 是   | 回调函数。当终止应用的所有进程成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1517,10 +1602,12 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class MyAbility extends UIAbility {
   onBackground() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
+    // 终止应用的所有进程
     applicationContext.killAllProcesses(error => {
       if (error) {
-        console.error(`killAllProcesses fail, error: ${JSON.stringify(error)}`);
+        console.error(`Failed to kill all processes. Code: ${error.code}, message: ${error.message}`);
       }
     });
   }
@@ -1574,7 +1661,9 @@ export default class MyAbility extends UIAbility {
         return;
       }
       console.info(`Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
+      // 获取应用上下文
       let applicationContext = this.context.getApplicationContext();
+      // 设置应用为深色模式
       applicationContext.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
     });
   }
@@ -1629,7 +1718,9 @@ export default class MyAbility extends UIAbility {
       }
       console.info(`Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
     });
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
+    // 设置应用语言为中文
     applicationContext.setLanguage('zh-cn');
   }
 }
@@ -1676,7 +1767,9 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class MyAbility extends UIAbility {
   onBackground() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
+    // 清理当前应用的应用文件路径下的所有数据
     applicationContext.clearUpApplicationData();
   }
 }
@@ -1704,7 +1797,7 @@ clearUpApplicationData(callback: AsyncCallback\<void\>): void
 **参数：**
 | 参数名        | 类型     | 必填 | 说明                       |
 | ------------- | -------- | ---- | -------------------------- |
-| callback | AsyncCallback\<void> | 是   | 回调方法。清理应用本身的数据成功时，error为undefined，否则返回错误对象。  |
+| callback | AsyncCallback\<void> | 是   | 回调方法。当清理当前应用的应用文件路径下的所有数据，同时撤销应用向用户申请的权限成功时，error为undefined，否则返回错误对象。  |
 
 **错误码**：
 
@@ -1723,10 +1816,12 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class MyAbility extends UIAbility {
   onBackground() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
+    // 清理当前应用的应用文件路径下的所有数据
     applicationContext.clearUpApplicationData(error => {
       if (error) {
-        console.error(`clearUpApplicationData fail, error: ${JSON.stringify(error)}`);
+        console.error(`Failed to clear up application data. Code: ${error.code}, message: ${error.message}`);
       }
     });
   }
@@ -1759,7 +1854,7 @@ restartApp(want: Want): void
 **参数：**
 | 参数名        | 类型     | 必填 | 说明                       |
 | ------------- | -------- | ---- | -------------------------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | Want类型参数，传入需要启动的UIAbility信息，校验abilityName，不校验bundleName。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | Want类型参数，传入需要启动的UIAbility信息。系统仅校验abilityName字段的有效性，不校验bundleName字段。 |
 
 **错误码**：
 
@@ -1802,12 +1897,13 @@ struct Index {
           };
           if (this.context) {
             try {
+              // 重启应用并拉起指定UIAbility
               this.context.restartApp(want);
             } catch (err) {
               hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
             }
           } else {
-            hilog.error(0x0000, 'testTag', "%{public}s", 'AppContext is null');
+            hilog.error(0x0000, 'testTag', '%{public}s', 'AppContext is null');
           }
         })
     }
@@ -1855,11 +1951,13 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class MyAbility extends UIAbility {
   onBackground() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     try {
+      // 获取当前应用的分身索引
       let appCloneIndex = applicationContext.getCurrentAppCloneIndex();
     } catch (error) {
-      console.error(`getCurrentAppCloneIndex fail, error: ${JSON.stringify(error)}`);
+      console.error(`Failed to get current app clone index. Code: ${error.code}, message: ${error.message}`);
     }
   }
 }
@@ -1915,6 +2013,7 @@ struct Index {
       familySrc: $rawfile('font/medium.ttf')  // 'font/medium.ttf'仅作为示例，实际使用时请替换为真实的字体资源文件。
     });
 
+    // 设置应用使用注册的自定义字体
     this.context.getApplicationContext().setFont('fontName');
   }
 
@@ -2015,8 +2114,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onCreate() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     try {
+      // 设置当前应用进程支持进程资源的缓存
       applicationContext.setSupportedProcessCache(true);
     } catch (error) {
       let code = (error as BusinessError).code;
@@ -2064,7 +2165,9 @@ export default class MyAbility extends UIAbility {
       if (err?.code) {
         return;
       }
+      // 获取应用上下文
       let applicationContext = this.context.getApplicationContext();
+      // 设置应用字体大小缩放比例
       applicationContext.setFontSizeScale(2);
     });
   }
@@ -2109,9 +2212,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onCreate() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     let currentInstanceKey = '';
     try {
+      // 获取当前应用多实例的唯一实例标识
       currentInstanceKey = applicationContext.getCurrentInstanceKey();
     } catch (error) {
       let code = (error as BusinessError).code;
@@ -2161,8 +2266,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onCreate() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     try {
+      // 获取应用的所有多实例的唯一实例标识
       applicationContext.getAllRunningInstanceKeys();
     } catch (error) {
       let code = (error as BusinessError).code;
@@ -2204,8 +2311,10 @@ import { window } from '@kit.ArkUI';
 
 export default class MyAbilityStage extends AbilityStage {
   onCreate() {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     try {
+      // 获取应用当前进程内的所有WindowStage对象
       applicationContext.getAllWindowStages().then((data: window.WindowStage[]) => {
         let windowStage: window.WindowStage[] = data;
         console.info(`WindowStages size ${windowStage.length}`);
@@ -2231,8 +2340,6 @@ enableDelayedProcessExit(): Promise\<void>
 
 **起始版本**：26.0.0
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -2257,8 +2364,8 @@ enableDelayedProcessExit(): Promise\<void>
 
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit'
-import { hilog } from '@kit.PerformanceAnalysisKit'
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit'
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -2290,8 +2397,6 @@ disableDelayedProcessExit(): Promise\<void>
 
 **起始版本**：26.0.0
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -2315,9 +2420,9 @@ disableDelayedProcessExit(): Promise\<void>
 **示例：**
 
 ```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit'
-import { hilog } from '@kit.PerformanceAnalysisKit'
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit'
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -2343,11 +2448,9 @@ export default class EntryAbility extends UIAbility {
 
 startSelfUIAbility(want: Want): Promise\<void>
 
-当前进程延迟退出期间，在当前进程启动一个自身UIAbility，启动成功后，当前进程不再退出。
+当前进程延迟退出期间，在当前进程启动一个自身UIAbility，启动成功后，当前进程不再退出。仅支持主线程调用。
 
 **起始版本**：26.0.0
-
-**原子化服务API（仅ArkTS-Dyn）**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2477,9 +2580,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();
     try {
       let instanceId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+      // 根据实例ID获取UIAbility实例
       let uiAbility = applicationContext.getUIAbilityByInstanceId(instanceId);
       console.info(`getUIAbilityByInstanceId succeed, ability: ${uiAbility}`);
     } catch (error) {

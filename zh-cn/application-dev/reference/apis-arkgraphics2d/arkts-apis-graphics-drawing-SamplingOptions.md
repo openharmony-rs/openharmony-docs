@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-采样选项对象。
+采样选项对象，用于配置图像采样时的过滤模式，控制图像缩放或变换过程中的像素采样方式。典型使用场景为在Canvas上绘制图像（如drawImage）时，以不同过滤模式决定图像的采样质量与渲染效果。
 
 > **说明：**
 >
@@ -43,13 +43,11 @@ constructor()
 
 ArkTS-Dyn示例：
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
-    const pen = new drawing.Pen();
+  draw(context: DrawContext) {
     let samplingOptions = new drawing.SamplingOptions();
   }
 }
@@ -73,7 +71,7 @@ class DrawingRenderNode extends RenderNode {
 
 constructor(filterMode: FilterMode)
 
-构造一个新的采样选项对象。
+构造一个新的采样选项对象，可通过指定filterMode参数适配不同的图像采样场景。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -85,7 +83,7 @@ constructor(filterMode: FilterMode)
 
 | 参数名     | 类型                   | 必填 | 说明                                 |
 | ---------- | --------------------- | ---- | ----------------------------------- |
-| filterMode | [FilterMode](arkts-apis-graphics-drawing-e.md#filtermode12)    | 是   | 过滤模式。                    |
+| filterMode | [FilterMode](arkts-apis-graphics-drawing-e.md#filtermode12)    | 是   | 过滤模式，用于指定图像采样时的过滤算法。                    |
 
 **错误码：**
 
@@ -99,12 +97,11 @@ constructor(filterMode: FilterMode)
 
 ArkTS-Dyn示例：
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
+  draw(context: DrawContext) {
     let samplingOptions = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
   }
 }

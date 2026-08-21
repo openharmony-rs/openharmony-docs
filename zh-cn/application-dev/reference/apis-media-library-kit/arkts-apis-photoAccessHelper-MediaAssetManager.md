@@ -55,7 +55,7 @@ static requestImage(context: Context, asset: PhotoAsset, requestOptions: Request
 | -------- | ---------------------------------------- |
 | 201      |  Permission denied         |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.        |
+| 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out.  |
 
 **示例：**
 
@@ -136,7 +136,7 @@ static requestImageData(context: Context, asset: PhotoAsset, requestOptions: Req
 | -------- | ---------------------------------------- |
 | 201      |  Permission denied         |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.        |
+| 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
 
@@ -214,10 +214,10 @@ static requestMovingPhoto(context: Context, asset: PhotoAsset, requestOptions: R
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied         |
+| 201      |  Permission denied.         |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 801   | Capability not supported.       |
-| 14000011       | System inner fail         |
+| 801   | Capability not supported. <br> 适用版本：18+      |
+| 14000011       | System inner fail.         |
 
 **示例：**
 
@@ -297,8 +297,8 @@ static requestVideoFile(context: Context, asset: PhotoAsset, requestOptions: Req
 | -------- | ---------------------------------------- |
 | 201      |  Permission denied         |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 801  | Capability not supported.       |
-| 14000011       | System inner fail.        |
+| 801  | Capability not supported. <br> 适用版本：15+      |
+| 14000011       | System inner fail.<br>Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
 

@@ -12,7 +12,7 @@ typedef struct OH_AVSession OH_AVSession
 
 ## 概述
 
-播控会话对象定义。可以用OH_AVSession_Create创建一个会话对象。
+播控会话结构体定义。可通过OH_AVSession_Create创建一个会话对象。
 
 **起始版本：** 13
 

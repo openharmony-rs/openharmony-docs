@@ -360,7 +360,7 @@ console.info('Float view limits: ' + JSON.stringify(limits));
 
 ## TemplateProperty
 
-切换悬浮窗模板并修改窗口尺寸时需要提供的参数配置。
+切换闪控窗模板并修改窗口尺寸时需要提供的参数配置。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -630,7 +630,7 @@ let newSize: window.Size = {
 let templateProperty: floatView.TemplateProperty = {
   templateType: floatView.FloatViewTemplateType.HORIZONTAL_BAR,
   size: newSize,
-}
+};
 try {
   this.floatViewController?.switchTemplate(templateProperty).then(() => {
     console.info('Succeeded in switching window type and size.');

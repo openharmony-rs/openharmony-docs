@@ -10,7 +10,7 @@
 
 从API version 7开始，LazyForEach为开发者提供了基于数据源渲染出一系列子组件的能力。具体而言，LazyForEach从数据源中按需迭代数据，并在每次迭代时创建相应组件。当LazyForEach用于滚动容器时，框架会根据滚动容器可视区域按需创建组件，当组件滑出可视区域外时，框架会销毁并回收组件以降低内存占用。</br>
 本文档依次介绍了LazyForEach的[基础特性](#基础特性)、[高级特性](#高级特性)和[常见问题](#常见问题)，开发者可以按需阅读。在[首次渲染](#首次渲染)小节中，给出了简单的示例，可以帮助开发者快速上手LazyForEach的使用。</br>
-本文档对应的API接口说明参见[LazyForEach API参数说明](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)。
+本文档对应的API接口说明参见[LazyForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)。
 
 > **说明：**
 >
@@ -768,7 +768,7 @@ struct PreciselyModifyingDataTwo {
 使用该接口时请注意以下事项。
 
 1. 不要将`onDatasetChange`与其他操作数据的接口混用。
-2. 传入`onDatasetChange`的`operations`中，每一项`operation`的`index`均从修改前的原数组中查找。因此，`operations`中的`index`不总是与`Datasource`中的`index`一一对应，并且不能为负数。
+2. 传入`onDatasetChange`的`operations`中，每一项`operation`的`index`均从修改前的原数组中查找。因此，`operations`中的`index`不总是与`DataSource`中的`index`一一对应，并且不能为负数。
 
    第一个例子清楚地显示了这一点:
 
@@ -788,7 +788,7 @@ struct PreciselyModifyingDataTwo {
    "Hello k","Hello l" 被删除了，而 "Hello k" 在原数组中的 index=10，因此第四个 operation 为 `{ type: DataOperationType.DELETE, index: 10, count: 2 }`。
 
 3. 在同一个`onDatasetChange`批量处理数据时，如果多个`DataOperation`操作同一个`index`，只有第一个`DataOperation`生效。
-4. 部分操作由开发者传入键值，LazyForEach不再重复调用`keygenerator`获取键值，开发者需保证传入键值的正确性。
+4. 部分操作由开发者传入键值，LazyForEach不再重复调用`keyGenerator`获取键值，开发者需保证传入键值的正确性。
 5. 若操作集合中包含RELOAD操作，则其他操作均不生效。
 
 ## 高级特性
@@ -1501,7 +1501,7 @@ struct ImageFlickeringDuringRerenders {
 
 @Component
 struct ImageFlickeringChildComponent {
-  // 用状态变量来驱动UI刷新，而不是通过Lazyforeach的api来驱动UI刷新
+  // 用状态变量来驱动UI刷新，而不是通过LazyForEach的api来驱动UI刷新
   @ObjectLink data: ImageFliceringStringData;
 
   build() {

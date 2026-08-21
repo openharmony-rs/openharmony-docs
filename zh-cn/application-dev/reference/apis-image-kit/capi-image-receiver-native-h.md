@@ -148,7 +148,7 @@ Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageReceiverOptions](capi-image-nativemodule-oh-imagereceiveroptions.md)* options| 表示OH_ImageReceiverOptions对象的指针。 |
-| [Image_Size](capi-image-nativemodule-image-size.md) size | 表示Image_Size对象的指针。 |
+| [Image_Size](capi-image-nativemodule-image-size.md) size | 表示将设置的Image_Size对象。 |
 
 **返回：**
 
@@ -531,7 +531,7 @@ Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative *re
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageReceiverNative](capi-image-nativemodule-oh-imagereceivernative.md) *receiver | 处理回调的OH_ImageReceiverNative对象。 |
-| [OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagearrivecallback) callback | 要注册的OH_ImageReceiver_ImageArriveCallback回调。 |
+| [OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagearrivecallback) callback | 要注销的OH_ImageReceiver_ImageArriveCallback回调。 |
 
 **返回：**
 

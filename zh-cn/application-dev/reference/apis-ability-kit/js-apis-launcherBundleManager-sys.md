@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 本模块支持launcher应用（桌面有图标的应用）所需的查询能力，支持[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)、[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息的查询。
@@ -230,7 +230,7 @@ ArkTS-Sta: getAllLauncherAbilityInfo(userId: int, callback: AsyncCallback\<Array
 | 801 | Capability not support. |
 | 17700004 | The specified user ID is not found.      |
 
-示例：
+**示例：**
 
 ArkTS-Dyn示例:
 ```ts
@@ -744,8 +744,8 @@ startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string, options
 
 | 参数名        | 类型   | 必填 | 说明         |
 | ------------ | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundle-ShortcutInfo.md) | 是   | 应用的快捷方式信息。 |
-| startReason  | string   | 是   | 快捷方式的启动原因，取值包括：[AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](js-apis-app-ability-abilityConstant.md#常量)，表示桌面快捷方式启动。 |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | 是   | 应用的快捷方式信息。 |
+| startReason  | string   | 是   | 快捷方式的启动原因，取值范围：[AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](js-apis-app-ability-abilityConstant.md#常量)，表示桌面快捷方式启动。 |
 | options      | [StartOptions](js-apis-app-ability-startOptions-sys.md)   | 否   | 启动Ability所携带的参数，用于指定目标Ability的窗口模式。 |
 
 **返回值：**

@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -26,7 +26,7 @@
 
 1. 获取该示例工程依赖的jsoncpp文件，从[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)下载源码的压缩包，并按照README的**Amalgamated source**中介绍的操作步骤得到jsoncpp.cpp、json.h和json-forwards.h三个文件。
 
-2. 新建Native C++工程，并将jsoncpp导入到新建工程内，目录结构如下。
+2. 在DevEco Studio中，新建Native C++工程，并将jsoncpp导入到新建工程内，目录结构如下。
 
    ```yml
    entry:
@@ -49,7 +49,7 @@
              - Index.ets
    ```
 
-3. 编辑“CMakeLists.txt”文件，添加源文件及动态库。
+3. 编辑工程中的“entry > src > main > cpp > CMakeLists.txt”文件，添加源文件及动态库。
 
    ```cmake
    # 新增jsoncpp.cpp(解析订阅事件中的json字符串)源文件
@@ -58,7 +58,7 @@
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
    ```
 
-4. 编辑“napi_init.cpp”文件，导入依赖的文件，并定义LOG_TAG。
+4. 编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，导入依赖的文件，并定义LOG_TAG。
 
    ```c++
    #include "napi/native_api.h"
@@ -74,7 +74,7 @@
 
    - onReceive类型观察者
 
-      编辑“napi_init.cpp”文件，定义onReceive类型观察者相关方法：
+      编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，定义onReceive类型观察者相关方法：
 
       ```c++
       // 定义一个变量，用来缓存创建的观察者的指针。
@@ -112,6 +112,8 @@
                           auto externalLog = writer.write(params["external_log"]);
                           auto logOverLimit = params["log_over_limit"].asBool();
                           auto externalCallbackLog = params["external_callback_log"].asString();
+                          auto applicationGCInfo = params["application_gc_info"].asString();
+                          auto applicationIOInfo = params["application_io_info"].asString();
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.app_running_unique_id=%{public}s", appRunningUniqueId.c_str());
@@ -132,6 +134,8 @@
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_callback_log=%{public}s", externalCallbackLog.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.application_gc_info=%{public}s", applicationGCInfo.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.application_io_info=%{public}s", applicationIOInfo.c_str());
                       }
                   }
               }
@@ -155,7 +159,7 @@
 
    - onTrigger类型观察者
 
-      编辑“napi_init.cpp”文件，定义OnTrigger类型观察者相关方法：
+      编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，定义OnTrigger类型观察者相关方法：
 
       ```c++
       // 定义一个变量，用来缓存创建的观察者的指针。
@@ -195,7 +199,9 @@
                       auto externalLog = writer.write(eventInfo["external_log"]);
                       auto logOverLimit = eventInfo["log_over_limit"].asBool();
                       auto process_life_time = eventInfo["process_life_time"].asString();
-                      auto externalCallbackLog = params["external_callback_log"].asString();
+                      auto externalCallbackLog = eventInfo["external_callback_log"].asString();
+                      auto applicationGCInfo = eventInfo["application_gc_info"].asString();
+                      auto applicationIOInfo = eventInfo["application_io_info"].asString();
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.app_running_unique_id=%{public}s", appRunningUniqueId.c_str());
@@ -217,6 +223,8 @@
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_life_time=%{public}s", process_life_time.c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_callback_log=%{public}s", externalCallbackLog.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.application_gc_info=%{public}s", applicationGCInfo.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.application_io_info=%{public}s", applicationIOInfo.c_str());
                   }
               }
           }
@@ -247,7 +255,7 @@
 
 6. 将RegisterWatcher注册为ArkTS接口。
 
-   编辑“napi_init.cpp”文件，将RegisterWatcher注册为ArkTS接口：
+   编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，将RegisterWatcher注册为ArkTS接口：
 
    ```c++
    static napi_value Init(napi_env env, napi_value exports)
@@ -260,13 +268,13 @@
    }
    ```
 
-   编辑“index.d.ts”文件，定义ArkTS接口：
+   编辑工程中的“entry > src > main > cpp > types > libentry > Index.ets”文件，定义ArkTS接口：
 
    ```typescript
    export const registerWatcher: () => void;
    ```
 
-7. 编辑“EntryAbility.ets”文件，在onCreate()函数中新增接口调用。
+7. 编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，在onCreate()函数中新增接口调用。
 
    ```typescript
    // 导入依赖模块
@@ -277,19 +285,22 @@
    testNapi.registerWatcher();
    ```
 
-8. 编辑“Index.ets”文件，新增按钮触发卡顿事件。
+8. 编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，新增按钮触发卡顿事件。
 
    ```typescript
    Button("appFreeze").onClick(() => {
      setTimeout(()=>{
-       while(true) {}
+        // 构造场景故障
+        let date = Date.now();
+        while (Date.now() - date < 15000) {
+        };
      }, 1000)
    })
    ```
 
-9. 点击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中点击按钮“appFreeze”，触发一次应用无响应事件。
+9. 点击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中点击按钮“appFreeze”，触发一次应用冻屏事件。
 
-### 验证观察者是否订阅到应用无响应事件
+### 验证观察者是否订阅到应用冻屏事件
 
 1. 应用工程崩溃退出后再次运行可以在Log窗口看到对系统事件数据的处理日志。
 
@@ -318,6 +329,8 @@
    HiAppEvent eventInfo.params.log_over_limit=0
    HiAppEvent eventInfo.params.process_life_time=18
    HiAppEvent eventInfo.params.external_callback_log=THREAD_BLOCK_3S:log3s THREAD_BLOCK_6S:log6s
+   HiAppEvent eventInfo.params.application_gc_info={"averagePause":48.4983,"count":3,"lastEndTime":1711440881768,"lastStartTime":1711440881708,"lastType":Local GC,"maxPause":"10.733","minPause":"2.832"}
+   HiAppEvent eventInfo.params.application_io_info={"cancelled_write_bytes":4096,"rchar":14557921,"read_bytes":0,"syscr":6934,"syscw":118,"wchar":909,"write_bytes":"4096"}
    ```
 
 2. 若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。

@@ -51,7 +51,7 @@ Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮�
       .textAlign(TextAlign.Center)
       .fontSize(30)
   }
-  // ···
+  // ...
   .loop(true)
   ```
 
@@ -230,7 +230,7 @@ Swiper提供了默认的导航点样式和导航点箭头样式，导航点默�
 
 - 自定义导航点样式
 
-  选中的导航点，直径设为30vp，且颜色为蓝色；未选中的导航点，直径设为15vp，颜色设为红色。
+  选中的导航点，宽度设为30vp且高度设为15vp，且颜色为蓝色；未选中的导航点，直径设为15vp，颜色设为红色。
 
   ArkTS-Dyn示例：
 
@@ -459,7 +459,7 @@ ArkTS-Sta示例：
 @Entry
 @Component
 export struct SwiperPageSwitchMethod {
-  private swiperBackgroundColors: Color[] = [Color.Blue, Color.Brown, Color.Gray, Color.Green, Color.Orange,
+  private swiperBackgroundColors: Color[] = [Color.Blue, Color.Gray, Color.Green, Color.Orange, Color.Brown,
     Color.Pink, Color.Red, Color.Yellow];
   private swiperAnimationMode: (SwiperAnimationMode | boolean | undefined)[] = [undefined, true, false,
     SwiperAnimationMode.NO_ANIMATION, SwiperAnimationMode.DEFAULT_ANIMATION, SwiperAnimationMode.FAST_ANIMATION];
@@ -965,7 +965,7 @@ export struct SwiperAndTabsLinkage {
             .width('100%')
 
             Swiper(this.swiperController) {
-              LazyForEach(this.swiperData, (item: string) => {
+              LazyForEach(this.swiperData, (item: number) => {
                 Text(item.toString())
                   .onAppear(()=>{
                     console.info('onAppear ' + item.toString());
@@ -978,7 +978,7 @@ export struct SwiperAndTabsLinkage {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, (item: string) => item)
+              }, (item: number) => item.toString())
             }
             .loop(false)
             .onSelected((index: number) => {

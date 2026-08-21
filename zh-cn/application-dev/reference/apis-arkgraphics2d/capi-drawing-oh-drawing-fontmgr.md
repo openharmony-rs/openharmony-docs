@@ -11,7 +11,7 @@ typedef struct OH_Drawing_FontMgr OH_Drawing_FontMgr
 
 ## 概述
 
-定义字体管理类, 用于字体管理。
+定义字体管理类，用于字体管理。
 
 **起始版本：** 12
 

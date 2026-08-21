@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 在ArkTS-Sta应用开发中，多线程开发主要用于将耗时计算、密集I/O、同步调度、长时任务或常驻任务从当前线程拆分出去执行，避免阻塞当前线程并提升资源利用率。
 

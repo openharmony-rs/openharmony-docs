@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -170,13 +170,13 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
               this.drawText();
             })
           } else {
-            console.error(`MayTest Need create subscriber`);
+            console.error(`Need create subscriber`);
           }
         })
     }
   
     drawText(): void {
-      console.error('MayTest drawText')
+      console.error('drawText')
       this.context.reset()
       this.context.direction = 'inherit'
       this.context.font = '30px sans-serif'
@@ -247,13 +247,13 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
                 this.drawText();
               })
           } else {
-            console.error(`MayTest Need create subscriber`);
+            console.error(`Need create subscriber`);
           }
         })
     }
   
     drawText(): void {
-      console.error('MayTest drawText')
+      console.error('drawText')
       this.context.reset()
       this.context.direction = 'inherit'
       this.context.font = '30px sans-serif'

@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@ReusableV2装饰[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件，达成组件复用的效果。
+为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用[\@ReusableV2](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-reusablev2.md#reusablev2)装饰[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件，达成组件复用的效果。
 
 在阅读本文前，建议提前阅读：[\@Reusable装饰器：V1组件复用](./arkts-reusable.md)。
 
@@ -901,7 +901,7 @@ struct Index {
 
   build() {
     Column() {
-      ForEach(this.simpleList, (num: number, index) => {
+      ForEach(this.simpleList, (num: number, index: number) => {
         Row() {
           Button('Click to change')
             .margin({ right: 10 })
@@ -1085,7 +1085,7 @@ struct Index {
 @ReusableV2
 @ComponentV2
 struct ChildComponent {
-  @Param @Require data: string;
+  @Require @Param data: string;
 
   aboutToAppear(): void {
     hilog.info(DOMAIN, TAG, 'ChildComponent aboutToAppear', this.data);

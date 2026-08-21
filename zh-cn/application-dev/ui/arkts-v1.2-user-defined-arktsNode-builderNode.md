@@ -134,6 +134,8 @@ struct Index {
 }
 ```
 
+![ArkTSNode-BuilderNodeSta01](figures/ArkTSNode-BuilderNodeSta01.jpg)
+
 结合使用BuilderNode和RenderNode。
 
 开发者将BuilderNode的RenderNode挂载到其他RenderNode下时，必须显式指定[RenderOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#renderoptions)中selfIdealSize属性的具体数值，该selfIdealSize属性的值将作为BuilderNode的布局约束。不建议采用这种方式挂载节点。
@@ -222,6 +224,8 @@ struct Index {
   }
 }
 ```
+
+![ArkTSNode-BuilderNodeSta02](figures/ArkTSNode-BuilderNodeSta02.jpg)
 
 ## 更新组件树
 
@@ -324,6 +328,8 @@ struct Index {
 }
 ```
 
+![ArkTSNode-BuilderNodeSta03](figures/ArkTSNode-BuilderNodeSta03.gif)
+
 ## 解除实体节点引用关系
 
 由于BuilderNode对应的是后端的实体节点，正常的内存释放依赖前端对象的回收。如果期望直接释放BuilderNode对后端节点的引用，则可以通过调用[dispose](../reference/apis-arkui/js-apis-arkui-builderNode-static.md#dispose)解除引用关系，此时持有的前端BuilderNode对象不再影响后端节点的生命周期。
@@ -362,7 +368,8 @@ import {
   State,
   BuilderNode,
   FrameNode,
-  NodeController
+  NodeController,
+  ColumnOptions
 } from '@kit.ArkUI';
 
 export class Params {
@@ -443,7 +450,7 @@ struct Index {
 
   build(): void {
     Row() {
-      Column() {
+      Column({ space: 5 } as ColumnOptions) {
         NodeContainer(this.textNodeController)
           .width('100%')
           .height(200)
@@ -466,3 +473,5 @@ struct Index {
   }
 }
 ```
+
+![ArkTSNode-BuilderNodeSta04](figures/ArkTSNode-BuilderNodeSta04.gif)

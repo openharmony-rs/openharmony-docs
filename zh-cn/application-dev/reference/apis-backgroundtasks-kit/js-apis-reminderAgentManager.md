@@ -57,6 +57,7 @@ ArkTS-Sta: publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
+| 201      | Permission denied. |
 | 401 | If the input parameter is not valid parameter. |
 | 1700001    | Notification is not enabled. |
 | 1700002    | The number of reminders exceeds the limit. |
@@ -146,6 +147,7 @@ ArkTS-Sta: publishReminder(reminderReq: ReminderRequest): Promise\<int>
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
+| 201      | Permission denied. |
 | 401 | If the input parameter is not valid parameter. |
 | 1700001    | Notification is not enabled. |
 | 1700002    | The number of reminders exceeds the limit. |
@@ -1520,9 +1522,7 @@ reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => 
 
 ## ReminderRequestCalendar
 
-ReminderRequestCalendar extends ReminderRequest
-
-日历实例对象，用于设置提醒的时间。
+日历实例对象，用于设置提醒的时间。ReminderRequestCalendar继承自[ReminderRequest](#reminderrequest)。
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -1541,9 +1541,7 @@ ReminderRequestCalendar extends ReminderRequest
 
 ## ReminderRequestAlarm
 
-ReminderRequestAlarm extends ReminderRequest
-
-闹钟实例对象，用于设置提醒的时间。
+闹钟实例对象，用于设置提醒的时间。ReminderRequestAlarm继承自[ReminderRequest](#reminderrequest)。
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -1560,9 +1558,7 @@ ReminderRequestAlarm extends ReminderRequest
 
 ## ReminderRequestTimer
 
-ReminderRequestTimer extends ReminderRequest
-
-倒计时实例对象，用于设置提醒的时间。
+倒计时实例对象，用于设置提醒的时间。ReminderRequestTimer继承自[ReminderRequest](#reminderrequest)。
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 

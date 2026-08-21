@@ -21,12 +21,12 @@
 
 ## 创建StyledString对象
 
-使用[OH_ArkUI_StyledString_Create](../reference/apis-arkui/capi-styled-string-h.md#oh_arkui_styledstring_create)接口创建StyledString对象，需要传入[段落样式](#设置段落样式)。
+使用[OH_ArkUI_StyledString_Create](../reference/apis-arkui/capi-styled-string-h.md#oh_arkui_styledstring_create)接口创建StyledString对象，需要传入[段落样式](#设置段落样式)和字体集合。
 
 <!-- @[styledstring_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StyledStringSample/entry/src/main/cpp/manager.cpp) -->
 
 ``` C++
-// 创建StyledString并设置文本内容
+// 创建StyledString对象
 ArkUI_StyledString *styledString = OH_ArkUI_StyledString_Create(typographyStyle, fontCollection);
 ```
 
@@ -56,7 +56,7 @@ StyledString支持为文本中的不同部分设置不同的样式，包括段�
 <!-- @[styledstring_paragraph_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StyledStringSample/entry/src/main/cpp/manager.cpp) -->
 
 ``` C++
-// 创建字体集合与段落样式
+// 创建字体集合与段落样式，并设置对齐方式和最大行数
 OH_Drawing_FontCollection *fontCollection = OH_Drawing_CreateFontCollection();
 OH_Drawing_TypographyStyle *typographyStyle = OH_Drawing_CreateTypographyStyle();
 OH_Drawing_SetTypographyTextAlign(typographyStyle, OH_Drawing_TextAlign::TEXT_ALIGN_CENTER);
@@ -138,7 +138,7 @@ nodeApi->setAttribute(text, NODE_TEXT_CONTENT_WITH_STYLED_STRING, &styledStringI
 
 ## 序列化与反序列化
 
-从API version 14开始，StyledString提供了序列化和反序列化功能，支持将格式化字符串转换为字节数组或HTML格式，便于数据的存储、传输和跨平台使用。
+从API version 14开始，StyledString提供了序列化和反序列化功能，支持将字节数据反序列化为描述符，或将描述符转换为HTML格式，便于数据的存储、传输和跨平台使用。
 
 **表3** 序列化与反序列化接口
 
@@ -175,15 +175,10 @@ static void SerializeAndDeserializeStyledString()
     const char* html = OH_ArkUI_ConvertToHtml(desc);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "styledString", "html: [%{public}s]", html);
     size_t resultSize = dataSize + 2;
-    uint8_t *buf1 = (uint8_t *)malloc(10 * sizeof(uint8_t));
-    if (buf1 == nullptr) {
-        OH_ArkUI_StyledString_Descriptor_Destroy(desc);
-        return;
-    }
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "styledString", "resultSize: %{public}zu", resultSize);
     uint8_t *buf2 = (uint8_t *)malloc(resultSize * sizeof(uint8_t));
 
-    // 序列化字节数组
+    // 验证反序列化后的数据
     if (buf2 != nullptr) {
         if (resultSize >= dataSize) {
             for (size_t i = 0; i < dataSize; i++) {
@@ -193,7 +188,6 @@ static void SerializeAndDeserializeStyledString()
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "styledString",
                          "Buf too small: %{public}zu < %{public}zu", resultSize, dataSize);
             free(buf2);
-            free(buf1);
             OH_ArkUI_StyledString_Descriptor_Destroy(desc);
             return;
         }
@@ -203,7 +197,6 @@ static void SerializeAndDeserializeStyledString()
             "Before: %{public}zu, After: %{public}zu, Equal: %{public}d", dataSize, resultSize, equal);
         free(buf2);
     }
-    free(buf1);
 
     // 释放描述符
     OH_ArkUI_StyledString_Descriptor_Destroy(desc);

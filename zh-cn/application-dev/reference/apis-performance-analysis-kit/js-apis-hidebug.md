@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-为应用提供多种调试、调优的方法。包括但不限于内存、CPU、GPU、GC等相关数据的获取，进程trace、profiler采集，VM堆快照转储等。由于该模块的接口大多比较耗费性能，接口调用较为耗时，且基于HiDebug模块定义，该模块内的接口仅建议在应用调试、调优阶段使用。若需要在其他场景使用时，请认真评估所需调用的接口对应用性能的影响。
+为应用提供多种调试、调优的方法，帮助开发者定位性能瓶颈、优化应用性能。主要功能包括：内存数据分析、CPU使用率监控、trace采集、profiler采集、VM堆快照转储。由于该模块的接口大多比较耗费性能，接口调用较为耗时，且基于HiDebug模块定义，该模块内的接口仅建议在应用调试、调优阶段使用。若需要在其他场景使用时，请认真评估所需调用的接口对应用性能的影响。
 
 > **说明**：
 >
@@ -272,8 +272,8 @@ ArkTS-Sta: getServiceDump(serviceid: int, fd: int, args: Array\<string>): void
 
 | 参数名   | 类型                                    | 必填 | 说明                         |
 | -------- |---------------------------------------| ---- |----------------------------|
-| serviceid | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是   | 基于用户输入的service id获取系统服务信息。 |
-| fd | ArkTS-Dyn: number<br/> ArkTS-Sta: int                                | 是   | 文件描述符，接口会向该fd写入数据。         |
+| serviceid | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是   | 系统服务ID，用于标识要获取信息的系统服务。取值由系统定义，取值范围[0, 255]。传入无效值时返回错误码401。 |
+| fd | ArkTS-Dyn: number<br/> ArkTS-Sta: int                                | 是   | 文件描述符，接口会向该fd写入数据。传入无效文件描述符时返回错误码401。         |
 | args | Array&lt;string&gt;                   | 是   | 系统服务的dump接口参数列表。string长度的最大值为254。 |
 
 **错误码**：
@@ -282,7 +282,7 @@ ArkTS-Sta: getServiceDump(serviceid: int, fd: int, args: Array\<string>): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | the parameter check failed,Possible causes:1.the parameter type error 2.the args parameter is not string array.  |
+| 401 | The parameter check failed,Possible causes:1.The parameter type error. 2.The args parameter is not string array.  |
 | 11400101 | ServiceId invalid. The system ability does not exist.                                           |
 
 **示例**：
@@ -360,7 +360,7 @@ startJsCpuProfiling(filename: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | the parameter check failed,Parameter type error.                        |
+| 401 | The parameter check failed,Parameter type error.                        |
 
 **示例**：
 
@@ -432,7 +432,7 @@ dumpJsHeapData(filename: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | the parameter check failed, Parameter type error.                      |
+| 401 | The parameter check failed, Parameter type error.                      |
 
 **示例**：
 
@@ -461,7 +461,7 @@ dumpJsHeapData(filename: string, needClean: boolean): void
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
-**模型约束**：此接口仅可在stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -684,7 +684,7 @@ ArkTS-Sta: startAppTraceCapture(tags: long[], flag: TraceFlag, limitSize: int): 
 
 trace单位流量：应用每秒产生的trace大小，系统推荐值为300KB/s，建议开发者采用自身应用的实测值，单位KB/s。
 
-trace单位流量实测方法：limitSize设置为最大值500M，调用startAppTraceCapture接口，在应用上操作N秒后，调用stopAppTraceCapture停止采集，然后查看trace大小S（Kb）。那么trace单位流量 = S/N（Kb/s）。
+trace单位流量实测方法：limitSize设置为最大值500M，调用startAppTraceCapture接口，在应用上操作N秒后，调用stopAppTraceCapture停止采集，然后查看trace大小S（KB）。那么trace单位流量 = S/N（KB/s）。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -696,9 +696,9 @@ trace单位流量实测方法：limitSize设置为最大值500M，调用startApp
 
 | 参数名   | 类型                                          | 必填 | 说明                                 |
 | -------- |---------------------------------------------| ---- |------------------------------------|
-| tags     | ArkTS-Dyn: number[] <br/> ArkTS-Sta: long[] | 是   | trace范围，详情请见[tags](#hidebugtags12)。   |
+| tags     | ArkTS-Dyn: number[] <br/> ArkTS-Sta: long[] | 是   | trace范围，详情请见[tags](#tags12)。   |
 | flag     | TraceFlag                                   | 是   | 详情请见[TraceFlag](#traceflag12)。        |
-| limitSize| ArkTS-Dyn: number <br/> ArkTS-Sta: int      | 是   | 开启trace文件大小限制，单位为Byte，单个文件大小上限为500MB。 |
+| limitSize| ArkTS-Dyn: number <br/> ArkTS-Sta: int      | 是   | 开启trace文件大小限制，单位为Byte，取值范围（0, 500MB]。超出范围时返回错误码401。 |
 
 **返回值**：
 
@@ -712,7 +712,7 @@ trace单位流量实测方法：limitSize设置为最大值500M，调用startApp
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | Invalid argument, Possible causes:1.The limit parameter is too small 2.The parameter is not within the enumeration type 3.The parameter type error or parameter order error. |
+| 401 | Invalid argument, Possible causes:1.The limit parameter is too small. 2.The parameter is not within the enumeration type. 3.The parameter type error or parameter order error. |
 | 11400102 | Capture trace already enabled.                                         |
 | 11400103 | No write permission on the file.                                |
 | 11400104 | Abnormal trace status.                                 |
@@ -992,7 +992,7 @@ setAppResourceLimit(type: string, value: number, enableDebugLog: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | Invalid argument, Possible causes:1.The limit parameter is too small 2.The parameter is not in the specified type 3.The parameter type error or parameter order error.  |
+| 401 | Invalid argument, Possible causes:1.The limit parameter is too small. 2.The parameter is not in the specified type. 3.The parameter type error or parameter order error.  |
 | 11400104 | Set limit failed due to remote exception. |
 
 **示例**：
@@ -1211,7 +1211,7 @@ ArkTS-Sta: getVMRuntimeStat(item: string): long
 
 | 错误码ID | 错误信息                                                                                                       |
 | ------- |------------------------------------------------------------------------------------------------------------|
-| 401 | Possible causes:1. Invalid parameter, a string parameter required. 2. Invalid parameter, unknown property. |
+| 401 | Possible causes: 1. Invalid parameter, a string parameter required. 2. Invalid parameter, unknown property. |
 
 **示例**：
 
@@ -1278,7 +1278,7 @@ VM内存信息。
 | threadId           | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 线程号。      |
 | cpuUsage           | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 线程CPU使用率。 |
 
-## hidebug.tags<sup>12+</sup>
+## tags<sup>12+</sup>
 
 ### 常量
 
@@ -1639,7 +1639,7 @@ dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 
 > **注意**：
 >
-> 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
+> 系统通过该接口转储快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
 >
 > 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 
@@ -1698,7 +1698,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise&lt;string&gt;
 
 > **注意**：
 >
-> 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
+> 系统通过该接口转储快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
 >
 > 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 

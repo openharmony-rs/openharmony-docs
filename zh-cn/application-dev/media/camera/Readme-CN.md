@@ -20,7 +20,7 @@
   - [拍照实践(ArkTS)](camera-shooting-case.md)
   - [录像(ArkTS)](camera-recording.md)
   - [录像实践(ArkTS)](camera-recording-case.md)
-  - [元数据(ArkTS)](camera-metadata.md)
+  - [元数据（ArkTS）](camera-metadata.md)
   - [手电筒使用(ArkTS)](camera-torch-use.md)
   - [适配不同折叠状态的摄像头变更(ArkTS)](camera-foldable-display.md)
   - [分段式拍照(ArkTS)](camera-deferred-capture.md)
@@ -43,7 +43,7 @@
   - [性能提升实践(仅对系统应用开放)(ArkTS)](camera-performance-improvement-sys.md)
   <!--DelEnd-->
 - 开发相机应用必选能力(C/C++)<!--camera-dev-native-mandatory-->
-  - [相机管理(C/C++)](native-camera-device-management.md)
+  - [相机管理 (C/C++)](native-camera-device-management.md)
   - [设备输入(C/C++)](native-camera-device-input.md)
   - [会话管理(C/C++)](native-camera-session-management.md)
 - 开发相机应用基础能力(C/C++)<!--camera-dev-native-->
@@ -55,8 +55,16 @@
   - [录像(C/C++)](native-camera-recording.md)
   - [录像实践(C/C++)](native-camera-recording-case.md)
   - [元数据(C/C++)](native-camera-metadata.md)
-  - [手电筒使用(C/C++)](native-camera-torch-use.md)
+  - [手电筒使用(C++)](native-camera-torch-use.md)
   - [压力管控(C/C++)](native-camera-system-pressure.md)
   - [微距能力设置(C/C++)](native-camera-macro.md)
   - [多摄同开(C/C++)](native-camera-concurrent-open.md)
   - [YUV拍照(C/C++)](native-camera-yuv-shooting.md)<!--RP2--><!--RP2End-->
+- Camera Kit常见问题<!--camera-dev-faq-->
+  - 相机无法启动<!--camera-dev-faq-start-->
+    - [相机API调用时序问题](camera-api-faq.md)
+    - [相机预览流启动问题](camera-previewoutput-faq.md)
+    - [会话配置问题](camera-sessionconfig-faq.md)
+  - [相机预览画面旋转异常问题](camera-rotation-faq.md)
+  - [白平衡相关问题](camera-whitebalance-faq.md)
+  - [色彩空间配置异常问题](camera-colorspace-faq.md)

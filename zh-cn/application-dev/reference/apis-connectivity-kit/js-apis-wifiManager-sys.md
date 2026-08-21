@@ -173,8 +173,8 @@ WLAN配置信息。
 | staticIp | [IpConfig](#ipconfig) | 否 | 是 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 否 | 是 | 代理配置。  <br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
 | configStatus<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 返回当前网络是否允许参与选网。 <br />  1 - 允许参与选网，2 - 禁止参与 <br /> 3 - 永久禁止参与，4 - 未知 <br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
-| isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true：允许自动连接。<br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 17<br />**ArkTS-Sta起始版本：** 23|
-| isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全WiFi检测。false:不是安全Wifi，true：是安全WiFi。<br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
+| isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true:允许自动连接。<br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 17<br />**ArkTS-Sta起始版本：** 23|
+| isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全Wi-Fi检测。false: 不是安全Wi-Fi，true: 是安全Wi-Fi。<br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
 ## IpType
 
 表示IP类型的枚举。
@@ -1813,7 +1813,7 @@ on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"streamChange"字符串。 |
-| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数，返回0:无，1：向下，2：向上，3：双向。 |
+| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数，返回0: 无，1: 向下，2: 向上，3: 双向。 |
 
 **错误码：**
 
@@ -1847,7 +1847,7 @@ onStreamChange(callback: Callback&lt;int&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;int&gt; | 是 | 状态改变回调函数，返回0:无，1：下行流，2：上行流，3：双向流。 |
+| callback | Callback&lt;int&gt; | 是 | 状态改变回调函数，返回0: 无，1: 下行流，2: 上行流，3: 双向流。 |
 
 **错误码：**
 
@@ -2428,7 +2428,7 @@ wifi支持的能力。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.Communication.WiFi.Core
+**系统能力：** SystemCapability.Communication.WiFi.STA
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -2452,7 +2452,7 @@ setWifiCapability(capability: WifiCapability, enable: boolean): void
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用
 
-**系统能力：** SystemCapability.Communication.WiFi.Core
+**系统能力：** SystemCapability.Communication.WiFi.STA
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -2477,7 +2477,7 @@ setWifiCapability(capability: WifiCapability, enable: boolean): void
 | 202 | System API is not allowed called by Non-system application. |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
-| 2601000  | Operation failed. |
+| 2501000  | Operation failed. |
 
 **示例：**
 ```ts
@@ -2497,7 +2497,7 @@ getWifiCapability(capability: WifiCapability): boolean
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用
 
-**系统能力：** SystemCapability.Communication.WiFi.Core
+**系统能力：** SystemCapability.Communication.WiFi.STA
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -2527,7 +2527,7 @@ getWifiCapability(capability: WifiCapability): boolean
 | 202 | System API is not allowed called by Non-system application. |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
-| 2601000  | Operation failed. |
+| 2501000  | Operation failed. |
 
 **示例：**
 ```ts

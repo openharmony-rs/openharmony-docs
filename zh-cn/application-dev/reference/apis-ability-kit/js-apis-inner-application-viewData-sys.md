@@ -17,6 +17,12 @@
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[ViewData](js-apis-inner-application-viewData.md)。
 
+## 导入模块
+
+```ts
+import { autoFillManager } from '@kit.AbilityKit';
+```
+
 ## ViewData
 
 **系统接口**：此接口为系统接口。
@@ -27,7 +33,7 @@
 
 | 名称                         | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| moduleName                   | string  | 否   | 否   | 模块名称。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| abilityName                  | string  | 否   | 否   | Ability名称。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| moduleName                   | string  | 否   | 否   | 模块名称，用于指定自动填充数据所属的模块。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| abilityName                  | string  | 否   | 否   | Ability名称，用于指定自动填充数据所属的Ability。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | isUserSelected<sup>12+</sup> | boolean | 否   | 否   | 表示填充内容是否由用户选择。true为用户选择，false为非用户选择。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | isOtherAccount<sup>12+</sup> | boolean | 否   | 否   | 表示是否拉起密码箱中其他账号信息供用户选择。true为拉起其他账号信息，false为不拉起其他账号信息。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |

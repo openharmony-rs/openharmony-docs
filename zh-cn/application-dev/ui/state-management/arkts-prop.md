@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Prop装饰的变量可以和父组件建立单向同步关系。
+[\@Prop](../../reference/apis-arkui/arkui-ts/ts-state-management-prop.md#prop)装饰的变量可以和父组件建立单向同步关系。
 
 在阅读\@Prop文档前，建议开发者首先了解[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考[状态管理常见问题](./arkts-state-management-faq.md)。
 
@@ -68,7 +68,7 @@
   this.title = new Model('Hi');
   ```
 
-- 当装饰的类型是Object或者class复杂类型时，可以观察到自身的赋值和第一层的属性的变化，属性即object.keys(observedObject)返回的所有属性。复杂类型完整示例请参考[从父组件中的\@State类对象属性到\@Prop简单类型的同步](#从父组件中的state类对象属性到prop简单类型的同步)。
+- 当装饰的类型是Object或者class复杂类型时，可以观察到自身的赋值和第一层的属性的变化，属性即Object.keys(observedObject)返回的所有属性。复杂类型完整示例请参考[从父组件中的\@State类对象属性到\@Prop简单类型的同步](#从父组件中的state类对象属性到prop简单类型的同步)。
 
   <!-- @[prop_seventeen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
   
@@ -193,7 +193,7 @@ struct Father {
 
 ## 限制条件
 
-- \@Prop装饰变量时会进行深拷贝，在拷贝的过程中除了[基本类型](../../quick-start/introduction-to-arkts.md#类型)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)、[Date](#装饰date类型变量)、[Array](#装饰array类型变量)外，都会丢失类型。例如，对于通过NAPI提供的复杂类型（如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)），由于其部分实现在Native侧，因此无法在ArkTS侧通过深拷贝获得完整的数据；同样，RegExp类型在拷贝过程中会丢失原类型，导致被\@Prop装饰后无法调用正则相关函数。
+- \@Prop装饰变量时会进行深拷贝，在拷贝的过程中除了[基本类型](../../quick-start/arkts-language-guide-basics.md#类型)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)、[Date](#装饰date类型变量)、[Array](#装饰array类型变量)外，都会丢失类型。例如，对于通过NAPI提供的复杂类型（如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)），由于其部分实现在Native侧，因此无法在ArkTS侧通过深拷贝获得完整的数据；同样，RegExp类型在拷贝过程中会丢失原类型，导致被\@Prop装饰后无法调用正则相关函数。
 
 - \@Prop不支持装饰Function类型的变量，API version 23之前，应用在运行时会出现错误。
 

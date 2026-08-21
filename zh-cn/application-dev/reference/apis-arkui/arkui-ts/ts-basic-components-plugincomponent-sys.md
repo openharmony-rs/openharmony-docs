@@ -6,14 +6,14 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供外部应用组件嵌入式显示功能，即外部应用提供的UI可在本应用内显示。如需通过跨进程通信实现更新，请参考[@ohos.pluginComponent](../js-apis-plugincomponent.md)。
+提供外部应用组件嵌入式显示功能，即外部应用提供的UI可在本应用内显示。适用于需要跨应用复用UI组件的场景，如嵌入其他应用的页面或卡片，实现应用间的界面协同与数据交互。如需通过跨进程通信实现更新，请参考[@ohos.pluginComponent](../js-apis-plugincomponent.md)。
 
 
 >  **说明：**
 >
->  - 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 该组件从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  - 本模块系统接口。
+>  - 本模块为系统接口。
 
 ## 子组件
 
@@ -25,6 +25,10 @@
 PluginComponent(options: PluginComponentOptions)
 
 创建插件组件，用于显示外部应用提供的UI。
+
+**使用场景：**
+- 跨应用组件复用：在本应用页面中嵌入其他应用提供的UI组件。
+- 服务化集成：将其他应用的特定功能页面以组件形式嵌入当前应用展示。
 
 **系统接口：** 此接口为系统接口。
 
@@ -50,12 +54,14 @@ PluginComponent(options: PluginComponentOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 类型   | 只读 |可选 | 说明                        |
+| 名称       | 类型   | 只读 | 可选 | 说明                        |
 | ---------- | ------ | ------ | ------ |--------------------------- |
 | template<sup>9+</sup>   | [PluginComponentTemplate](#plugincomponenttemplate9类型说明) | 否 | 否 | 组件模板，用于跟提供方定义的组件绑定。                |
-| data<sup>9+</sup>       | any | 否 | 否  | 传给插件组件提供方使用的数据。 |
+| data<sup>9+</sup>       | any | 否 | 否  | 传给插件组件提供方使用的数据，类型不限（支持对象、字符串等）。具体数据格式由使用方与提供方协商定义。 |
 
 ## PluginComponentTemplate<sup>9+</sup>类型说明
+
+定义插件组件模板信息，用于与提供方定义的组件绑定。
 
 **系统接口：** 此接口为系统接口。
 
@@ -63,20 +69,20 @@ PluginComponent(options: PluginComponentOptions)
 
 | 名称       | 类型  | 只读 | 可选 | 说明                        |
 | ---------- | ------ | ------ | ------ | --------------------------- |
-| source     | string | 否 | 否 | 组件模板名。                |
-| bundleName | string | 否 | 否 | 提供方Ability的bundleName。 |
+| source     | string | 否 | 否 | 组件模板，取值可为模板绝对路径（不建议）、相对HAP包的相对路径（多HAP场景使用"相对路径&模块名称"格式）或FA模型下的AbilityName，详见[属性](#属性)。                |
+| bundleName | string | 否 | 否 | 提供方应用的bundleName。使用绝对路径提供模板时不需要填写，使用应用包提供模板时需要填写，详见[属性](#属性)。 |
 
 ## 属性
 
-必须显式设置组件宽高为非0有效值。
+必须显式设置组件宽高为非0有效值，否则组件将无法正常显示。
 
 > **说明：**
 >
 > 模板支持两种提供方式：
 >
-> 1.使用绝对路径进行资源提供：source字段填写模板绝对路径，bundleName不需要填写。仅适用于不需要加载资源的单独模板页面，不建议使用。
+> 1. 使用绝对路径进行资源提供：source字段填写模板绝对路径，bundleName不需要填写。仅适用于不需要加载资源的单独模板页面，不建议使用。
 >
-> 2.通过应用包进行资源提供：bundleName字段需要填写应用包名；source字段填写相对hap包的模板相对路径，对于多hap场景，通过“相对路径&模块名称”的方式进行hap包的确认。
+> 2. 通过应用包进行资源提供：bundleName字段需要填写应用包名；source字段填写相对HAP包的模板相对路径，对于多HAP场景，通过“相对路径&模块名称”的方式进行HAP包的确认。
 >
 >  例如：{source: 'pages/PluginProviderExample.ets&entry', bundleName: 'com.example.provider'}
 >
@@ -105,7 +111,7 @@ onComplete(callback:&nbsp;VoidCallback)
 
 | 参数名  | 类型                                                     | 必填 | 说明                                                     |
 | ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | [VoidCallback](../../apis-basic-services-kit/js-apis-base.md#callback) | 是   | 回调函数，组件加载完成时触发的回调。 |
+| callback | [VoidCallback](../../apis-basic-services-kit/js-apis-base.md#callback) | 是   | 组件加载完成时触发事件回调。 |
 
 ### onError
 
@@ -121,11 +127,13 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 | 参数名    | 类型                                                         | 必填 | 说明                                            |
 | --------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| callback  | [PluginErrorCallback](#pluginerrorcallback18类型说明)          | 是   | 发生错误时调用回调。 |
+| callback  | [PluginErrorCallback](#pluginerrorcallback18)          | 是   | 组件加载错误时触发事件回调。 |
 
-## PluginErrorCallback<sup>18+</sup>类型说明
+## PluginErrorCallback<sup>18+</sup>
 
-发生错误时调用回调。
+type PluginErrorCallback = (info: PluginErrorData) => void
+
+发生错误时触发事件回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -133,9 +141,9 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数     | 类型               | 描述                        |
-| -------- | ------------------ | --------------------------- |
-| info     | [PluginErrorData](#pluginerrordata18类型说明)  | 发生错误时提供的数据。 |
+| 参数名     | 类型         | 必填      | 说明                        |
+| -------- | ------------------| ------ | --------------------------- |
+| info     | [PluginErrorData](#pluginerrordata18类型说明) | 是  | 发生错误时提供的数据。 |
 
 ## PluginErrorData<sup>18+</sup>类型说明
 
@@ -163,9 +171,9 @@ onError(callback:&nbsp;PluginErrorCallback)
 | package path is empty. | 包路径为空。 | 检查PluginComponentTemplate参数中source字段是否有误。  |
 | Query Active OsAccountIds failed! | 获取激活的用户ID失败。 | 检查Account服务是否异常，或检查应用是否具备用户ID查询权限。    |
 | Template source is empty. | 模板source为空。 | 检查PluginComponentTemplate参数中source字段是否有误。  |
-| Bms bundleManager is nullptr. | 获取BundleManager失败。 |  检查BMS服务是否异常，或检查应用是否具备ohos.permission.GET_BUNDLE_INFO_PRIVILEGED,ohos.permission.GET_BUNDLE_INFO,ohos.permission.REQUIRE_FORM权限。                  |
+| Bms bundleManager is nullptr. | 获取BundleManager失败。 |  检查BMS服务是否异常，或检查应用是否具备ohos.permission.GET_BUNDLE_INFO_PRIVILEGED、ohos.permission.GET_BUNDLE_INFO和ohos.permission.REQUIRE_FORM权限。                  |
 | App bundleName is empty. | 应用包名为空。  | 检查PluginComponentTemplate参数中bundleName字段是否有误。                   |
-| Bms get bundleName failed! | 获取包名失败。  |  检查PluginComponentTemplate参数中bundleName字段是否有误，或检查bundleName字段对应的包是否已正确安装，或检查BMS服务是否异常，或检查应用是否具备ohos.permission.GET_BUNDLE_INFO_PRIVILEGED,ohos.permission.GET_BUNDLE_INFO,ohos.permission.REQUIRE_FORM权限。                |
+| Bms get bundleName failed! | 获取包名失败。  |  检查PluginComponentTemplate参数中bundleName字段是否有误，或检查bundleName字段对应的包是否已正确安装，或检查BMS服务是否异常，或检查应用是否具备ohos.permission.GET_BUNDLE_INFO_PRIVILEGED、ohos.permission.GET_BUNDLE_INFO和ohos.permission.REQUIRE_FORM权限。                |
 | Bms moduleResPaths is empty. | 插件包moduleResPaths属性为空。 |  检查bundleName字段对应的包的moduleResPaths属性是否异常，或检查BMS服务是否异常                   |
 | Bms get hapPath failed! Cannot find hap according to BundleName and ModuleName! | 获取hapPath失败。  |   检查PluginComponentTemplate参数中bundleName字段是否有误，检查bundleName字段对应的模块是否已正确安装。               |
 
@@ -184,7 +192,7 @@ onError(callback:&nbsp;PluginErrorCallback)
 使用方应用的bundleName为"com.example.user"，包含一个页面。
 - EntryAbility(UIAbility)加载入口页面文件ets/pages/Index.ets，Index.ets内容如下：
   ```ts
-  import plugin from "./plugin_component";
+  import plugin from './plugin_component';
 
   interface Info {
     errcode: number,
@@ -214,7 +222,7 @@ onError(callback:&nbsp;PluginErrorCallback)
           .height(100)
           .margin({ top: 20 })
           .onClick(() => {
-            plugin.Request();
+            plugin.request();
             console.info("Button('Request')");
           })
         PluginComponent({
@@ -226,7 +234,7 @@ onError(callback:&nbsp;PluginErrorCallback)
             console.info("onComplete");
           })
           .onError((info: Info) => {
-            console.error("onError" + info.errcode + ":" + info.msg);
+            console.error(`Failed to load PluginComponent. Code: ${info.errcode}, message: ${info.msg}`);
           })
       }
       .width('100%')
@@ -255,7 +263,7 @@ onError(callback:&nbsp;PluginErrorCallback)
 提供方应用的bundleName为"com.example.provider"，包含一个页面。
 - EntryAbility(UIAbility)加载入口页面文件ets/pages/Index.ets，Index.ets内容如下：
   ```ts
-  import plugin from "./plugin_component";
+  import plugin from './plugin_component';
 
   @Entry
   @Component
@@ -279,7 +287,7 @@ onError(callback:&nbsp;PluginErrorCallback)
           .height(100)
           .margin({ top: 20 })
           .onClick(() => {
-            plugin.Push();
+            plugin.push();
             this.message = "Button('Push')";
             console.info("Button('Push')");
           })
@@ -296,28 +304,27 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 ### Plugin组件工具
 
-Plugin组件工具，用于使用方与提供方之间进行通信。需要根据模型类型选择对应代码，并拷贝至项目中。
+Plugin组件工具，用于使用方与提供方之间进行通信。根据模型类型选择对应代码，并拷贝至项目中。
 
 ### FA模型
 ```js
 // 当前示例代码仅适用于FA模型
-import pluginComponentManager from '@ohos.pluginComponent'
+import { pluginComponentManager } from '@kit.ArkUI';
 
-var providerBundleName = 'com.example.provider'
-var providerAbilityName = 'com.example.provider.EntryAbility'
-var providerName = 'Index'
+const providerBundleName = 'com.example.provider';
+const providerAbilityName = 'com.example.provider.EntryAbility';
+const providerName = 'Index';
 
 // push事件监听
-function onPushListener(source, template, data, extraData) {
-    console.info("onPushListener template.source=" + template.source)
-    console.info("onPushListener template.ability=" + template.ability)
-    console.info("onPushListener data=" + JSON.stringify(data))
-    console.info("onPushListener extraData=" + JSON.stringify(extraData))
+const onPushListener = (source, template, data, extraData) => {
+    console.info('onPushListener template.source=' + template.source);
+    console.info('onPushListener template.ability=' + template.ability);
+    console.info('onPushListener data=' + JSON.stringify(data));
+    console.info('onPushListener extraData=' + JSON.stringify(extraData));
 }
 
 // request事件监听
-function onRequestListener(source, name, data)
-{
+const onRequestListener = (source, name, data) => {
     console.info("onRequestListener name=" + name);
     console.info("onRequestListener data=" + JSON.stringify(data));
     return {template:"pluginTemplate", data:data};
@@ -329,7 +336,7 @@ export default {
         pluginComponentManager.on("push", onPushListener)
         pluginComponentManager.on("request", onRequestListener)
     },
-    Push() {
+    push() {
         // 组件提供方主动发送事件，want: 提供方信息
         pluginComponentManager.push(
             {
@@ -352,7 +359,7 @@ export default {
             }
         )
     },
-    Request() {
+    request() {
         // 组件使用方主动发送事件，want: 提供方信息
         pluginComponentManager.request({
             want: {
@@ -367,6 +374,10 @@ export default {
             jsonPath: "",
         },
             (err, data) => {
+                if (err) {
+                    console.error("request_callback: err=" + JSON.stringify(err));
+                    return;
+                }
                 console.info("request_callback: componentTemplate.ability=" + data.componentTemplate.ability)
                 console.info("request_callback: componentTemplate.source=" + data.componentTemplate.source)
                 console.info("request_callback: data=" + JSON.stringify(data.data))
@@ -380,24 +391,24 @@ export default {
 ### Stage模型
 ```js
 // 当前示例代码仅适用于Stage模型
-import pluginComponentManager from '@ohos.pluginComponent'
+import { pluginComponentManager } from '@kit.ArkUI';
 
-var userBundleName = 'com.example.user'
-var userAbilityName = 'com.example.user.EntryAbility'
-var providerBundleName = 'com.example.provider'
-var providerAbilityName = 'com.example.provider.EntryAbility'
-var providerName = 'Index'
+let userBundleName: string = 'com.example.user';
+let userAbilityName: string = 'com.example.user.EntryAbility';
+let providerBundleName: string = 'com.example.provider';
+let providerAbilityName: string = 'com.example.provider.EntryAbility';
+let providerName: string = 'Index';
 
 // push事件监听
-function onPushListener(source, template, data, extraData) {
-    console.info("onPushListener template.source=" + template.source)
-    console.info("onPushListener template.ability=" + template.ability)
-    console.info("onPushListener data=" + JSON.stringify(data))
-    console.info("onPushListener extraData=" + JSON.stringify(extraData))
+const onPushListener = (source, template, data, extraData) => {
+    console.info('onPushListener template.source=' + template.source);
+    console.info('onPushListener template.ability=' + template.ability);
+    console.info('onPushListener data=' + JSON.stringify(data));
+    console.info('onPushListener extraData=' + JSON.stringify(extraData));
 }
 
 // request事件监听
-function onRequestListener(source, name, data) {
+const onRequestListener = (source, name, data) => {
     console.info("onRequestListener name=" + name)
     console.info("onRequestListener data=" + JSON.stringify(data))
     return { template: "pluginTemplate", data: data }
@@ -409,7 +420,7 @@ export default {
         pluginComponentManager.on("push", onPushListener)
         pluginComponentManager.on("request", onRequestListener)
     },
-    Push() {
+    push() {
         // 组件提供方主动发送事件，owner:使用方，target:提供方
         pluginComponentManager.push(
             {
@@ -436,7 +447,7 @@ export default {
             }
         )
     },
-    Request() {
+    request() {
         // 组件使用方主动发送事件，owner:使用方，target:提供方
         pluginComponentManager.request({
             owner: {
@@ -455,6 +466,10 @@ export default {
             jsonPath: "",
         },
             (err, data) => {
+                if (err) {
+                    console.error("request_callback: err=" + JSON.stringify(err));
+                    return;
+                }
                 console.info("request_callback: componentTemplate.ability=" + data.componentTemplate.ability)
                 console.info("request_callback: componentTemplate.source=" + data.componentTemplate.source)
                 console.info("request_callback: data=" + JSON.stringify(data.data))

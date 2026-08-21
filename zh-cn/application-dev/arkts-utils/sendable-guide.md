@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 Sendable对象在不同并发实例间默认采用引用传递，这种方式比序列化更高效，且不会丢失类成员方法。因此，Sendable能够解决两个关键场景的问题：
 
 - 跨并发实例传输大数据（例如达到100KB以上的数据）。
@@ -16,7 +16,7 @@ Sendable对象在不同并发实例间默认采用引用传递，这种方式比
 由于跨并发实例序列化的开销随数据量线性增长，因此当传输数据量较大时（100KB的数据传输耗时约为1ms），跨并发实例的拷贝开销会影响应用性能。使用引用传递方式传输对象可提升性能。
 
 **示例：**
-<!-- @[across_concurrent_instance_transfer_large_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/bigdata/src/main/ets/pages/Index.ets) -->
+<!-- @[across_concurrent_instance_transfer_large_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableScenarios/bigdata/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -26,7 +26,7 @@ import { BusinessError, emitter } from '@kit.BasicServicesKit';
 // 在并发函数中模拟数据处理
 @Concurrent
 async function taskFunc(obj: Test) {
-  console.info('test task res1 is: ' + obj.data1.name + ' res2 is: ' + obj.data2.name);
+  console.info(`test task res1 is: ${obj.data1.name} res2 is: ${obj.data2.name}`);
 }
 
 async function test() {
@@ -59,24 +59,26 @@ struct Index {
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
           let sensorTask = new taskpool.LongTask(sensorListener);
-          emitter.on({ eventId: 0 }, (data) => {
-            // Do something here
-            console.info(`Receive ACCELEROMETER data: {${data.data?.x}, ${data.data?.y}, ${data.data?.z}}`);
-          });
+          // ...
           taskpool.execute(sensorTask).then(() => {
+            this.listenerTask = 'success';
             console.info('Add listener of ACCELEROMETER success');
           }).catch((e: BusinessError) => {
             // Process error
+            this.listenerTask = 'failed';
           })
-          this.listenerTask = 'success';
         })
       Text(this.dataProcessingTask)
         .id('Data processing task')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          test();
-          this.dataProcessingTask = 'success';
+          test().then(() => {
+            this.dataProcessingTask = 'success';
+          }).catch((e: BusinessError) => {
+            this.dataProcessingTask = 'failed';
+            console.error('taskpool execute failed. Code: ' + e.code + ', message: ' + e.message);
+          })
         })
     }
     .height('100%')
@@ -86,7 +88,7 @@ struct Index {
 ```
 
 
-<!-- @[across_concurrent_instance_transfer_large_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/bigdata/src/main/ets/pages/sendable.ets) -->  
+<!-- @[across_concurrent_instance_transfer_large_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableScenarios/bigdata/src/main/ets/pages/sendable.ets) -->  
 
 ``` TypeScript
 // 将数据量较大的数据在Sendable class中组装
@@ -124,7 +126,7 @@ export class Test {
 在序列化传输实例对象时，会丢失方法。因此，若需调用实例方法，应使用引用传递。处理数据时，若需解析数据，可使用[ASON工具](ason-parsing-generation.md)。
 
 **示例：**
-<!-- @[across_concurrent_instance_pass_class_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/crossconcurrency/src/main/ets/pages/Index.ets) --> 
+<!-- @[across_concurrent_instance_pass_class_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableScenarios/crossconcurrency/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { taskpool, ArkTSUtils } from '@kit.ArkTS';
@@ -133,22 +135,21 @@ import { SendableTestClass, ISendable } from './sendable';
 // 在并发函数中模拟数据处理
 @Concurrent
 async function taskFunc(sendableObj: SendableTestClass) {
-  console.info('SendableTestClass: name is: ' + sendableObj.printName() + ', age is: ' + sendableObj.printAge() +
-    ', sex is: ' + sendableObj.printSex());
+  console.info(`SendableTestClass: name is: ${sendableObj.printName()}, age is: ${sendableObj.printAge()}, sex is: ${sendableObj.printSex()}`);
   sendableObj.setAge(28);
-  console.info('SendableTestClass: age is: ' + sendableObj.printAge());
+  console.info(`SendableTestClass: age is: ${sendableObj.printAge()}`);
 
   // 解析sendableObj.arr数据生成JSON字符串
   let str = ArkTSUtils.ASON.stringify(sendableObj.arr);
-  console.info('SendableTestClass: str is: ' + str);
+  console.info(`SendableTestClass: str is: ${str}`);
 
   // 解析该数据并生成ISendable数据
   let jsonStr = '{"name": "Alexa", "age": 23, "sex": "female"}';
   let obj = ArkTSUtils.ASON.parse(jsonStr) as ISendable;
-  console.info('SendableTestClass: type is: ' + typeof obj);
-  console.info('SendableTestClass: name is: ' + (obj as object)?.['name']); // 输出: 'Alexa'
-  console.info('SendableTestClass: age is: ' + (obj as object)?.['age']); // 输出: 23
-  console.info('SendableTestClass: sex is: ' + (obj as object)?.['sex']); // 输出: 'female'
+  console.info(`SendableTestClass: type is: ${typeof obj}`);
+  console.info(`SendableTestClass: name is: ${(obj as object)?.['name']}`); // 输出: 'Alexa'
+  console.info(`SendableTestClass: age is: ${(obj as object)?.['age']}`); // 输出: 23
+  console.info(`SendableTestClass: sex is: ${(obj as object)?.['sex']}`); // 输出: 'female'
 }
 
 async function test() {
@@ -174,7 +175,7 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          test();
+          await test();
           this.message = 'success';
         })
     }
@@ -184,7 +185,7 @@ struct Index {
 }
 ```
 
-<!-- @[across_concurrent_instance_pass_class_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/crossconcurrency/src/main/ets/pages/sendable.ets) --> 
+<!-- @[across_concurrent_instance_pass_class_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableScenarios/crossconcurrency/src/main/ets/pages/sendable.ets) --> 
 
 ``` TypeScript
 // 定义模拟类Test，模仿开发过程中需传递带方法的class

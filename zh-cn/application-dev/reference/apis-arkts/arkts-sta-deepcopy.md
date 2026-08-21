@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 本模块提供对象与集合的深拷贝能力。开发者可以使用`deepcopy`对值进行递归复制；对于无默认构造函数的类实例，可通过实现`Cloneable`接口并在子类中重写`clone`方法来自定义拷贝逻辑。
 

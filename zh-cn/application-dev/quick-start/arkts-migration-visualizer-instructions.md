@@ -4,7 +4,7 @@
 <!--Owner: @cy917474985-->
 <!--Designer: @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 工具简介
 

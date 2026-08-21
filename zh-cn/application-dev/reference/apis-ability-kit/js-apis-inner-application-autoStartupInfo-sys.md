@@ -5,6 +5,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
+
 定义开机自启动应用组件信息。
 
 > **说明：**
@@ -25,20 +26,21 @@
 
 | 名称                        | 类型                                 | 只读 | 可选 | 说明                                                         |
 | --------------------------- | ------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| bundleName                  | string                               | 否   | 否   | 应用程序的Bundle名称。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| bundleName                  | string                               | 否   | 否   | 应用程序的Bundle名称。用于唯一标识应用程序。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | moduleName                  | string                               | 否   | 是   | 应用程序的Module名称。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| abilityName                 | string                               | 否   | 否   | 应用程序的Ability名称。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| abilityName                 | string                               | 否   | 否   | 应用程序的Ability名称，用于标识启动的具体Ability组件。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | abilityTypeName             | string                               | 否   | 是   | 应用程序的Ability类型。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| appCloneIndex<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 分身应用索引。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| appCloneIndex<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 分身应用索引。默认值为0，表示主应用。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | userId<sup>20+</sup>        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 是   | 应用程序所属的用户ID，用于区分同一设备上不同用户账号下的应用。<br>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 | setterUserId<sup>20+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 是   | 设置者的用户ID，记录了将当前应用设置为开机自启动的用户ID。<br>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| canUserModify<sup>20+</sup> | boolean                              | 是   | 是   | 表示是否允许开发者修改此应用的开机自启动状态，true表示允许，false表示不允许。<br>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| canUserModify<sup>20+</sup> | boolean                              | 是   | 是   | 表示是否允许开发者修改此应用的开机自启动状态，true表示允许，false表示不允许。默认值为false。<br>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 
 **示例：**
 
 ```ts
 import { autoStartupManager, common } from '@kit.AbilityKit';
 
+// 设置应用开机自启动
 autoStartupManager.setApplicationAutoStartup({
   bundleName: 'com.example.autostartupapp',
   moduleName: 'entry',

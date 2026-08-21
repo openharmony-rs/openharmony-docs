@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 应用启动或进入复杂页面时，可能需要初始化多个业务模块，例如定位、导航、订单、推荐等。如果这些初始化逻辑都在宿主线程串行执行，会增加页面可交互前的等待时间。ArkTS-Sta中可以使用[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)并发执行彼此独立的初始化任务，在全部任务完成后再将模块实例返回宿主线程使用。
 

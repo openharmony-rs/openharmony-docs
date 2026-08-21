@@ -95,13 +95,14 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
 3. 编辑“napi_init.cpp”文件，导入依赖的文件并定义LOG_TAG：
 
    ArkTS-Dyn：
-   <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
+   <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    #include "napi/native_api.h"
    // 根据工程中三方库jsoncpp的位置适配引用json.h的路径
    #include "../../../build/jsoncpp-1.9.6/include/json/json.h"
    #include "hiappevent/hiappevent.h"
+   #include "hiappevent/hiappevent_param.h"
    #include "hilog/log.h"
    
    #undef LOG_TAG
@@ -392,12 +393,9 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
    ArkTS-Dyn：
 
    编辑“napi_init.cpp”文件。
-   <!-- @[AppEvent_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
+   <!-- @[AppEvent_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
-   
-   // ...
-   
    static napi_value Init(napi_env env, napi_value exports)
    {
        napi_property_descriptor desc[] = {

@@ -1,10 +1,10 @@
 # Node-API开发规范
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 获取JS传入参数及其数量
 
@@ -296,7 +296,7 @@ napi_create_arraybuffer等同于JS代码中的`new ArrayBuffer(size)`，其生�
 
 ## 数据转换
 
-**【建议】** 尽可能的减少数据转换次数，避免不必要的复制。
+**【建议】** 尽可能地减少数据转换次数，避免不必要的复制。
 
 - **减少数据转换次数：** 频繁的数据转换可能会导致性能下降，可以通过批量处理数据或者使用更高效的数据结构来优化性能。
 - **避免不必要的数据复制：** 在进行数据转换时，可以使用Node-API提供的接口来直接访问原始数据，而不是创建新的副本。
@@ -434,7 +434,7 @@ extern "C" void napi_onLoad()
 }
 ```
 
-## 正确的使用napi_create_external系列接口创建的JS Object
+## 正确地使用napi_create_external系列接口创建的JS Object
 
 **【规则】** napi_create_external系列接口创建出来的JS对象仅允许在当前线程传递和使用，跨线程传递（如使用worker的post_message）将会导致应用crash。若需跨线程传递绑定有Native对象的JS对象，请使用napi_coerce_to_native_binding_object接口绑定JS对象和Native对象。具体API说明详见[API参考](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-object#napi_create_external)。
 

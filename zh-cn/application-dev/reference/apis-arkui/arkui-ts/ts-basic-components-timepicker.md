@@ -28,7 +28,7 @@
 
 TimePicker(options?: TimePickerOptions)
 
-创建滑动选择器，默认使用24小时的时间区间。
+创建时间选择器，默认使用24小时的时间区间。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -79,7 +79,7 @@ Date对象用于处理日期和时间，使用方式如下。
 
 | 参数名   | 类型   | 必填 | 说明   |
 | ------- | ------ | ---- | ------ |
-| value   | number&nbsp;\|&nbsp;string  | 是 | 设置日期格式。<br/>number：毫秒，自1970年1月1日00:00:00开始的毫秒数。<br/>string：时间格式的字符串，如‘2025-02-20 08:00:00’或‘2025-02-20T08:00:00’。|
+| value   | number&nbsp;\|&nbsp;string  | 是 | 设置日期时间。<br/>number：毫秒，自1970年1月1日00:00:00开始的毫秒数。<br/>string：表示时间的字符串，如'2025-02-20 08:00:00'或'2025-02-20T08:00:00'。|
 
 **方式3：** new Date(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number)
 
@@ -561,7 +561,7 @@ dateTimeOptions(value: DateTimeOptions | undefined)
 
 enableHapticFeedback(enable: boolean)
 
-设置是否支持触控反馈。
+设置是否开启触控反馈。
 
 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
 
@@ -595,7 +595,7 @@ enableHapticFeedback(enable: boolean)
 
 enableHapticFeedback(enable: Optional\<boolean>)
 
-设置是否支持触控反馈。与[enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback12)相比，enable参数新增了对undefined类型的支持。
+设置是否开启触控反馈。与[enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback12)相比，enable参数新增了对undefined类型的支持。
 
 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
 
@@ -1106,6 +1106,7 @@ struct TimePickerExample {
       TimePicker({
         selected: this.selectedTime,
       })
+        .useMilitaryTime(false)
         .enableCascade(true)
         .loop(true)
         .onChange((value: TimePickerResult) => {

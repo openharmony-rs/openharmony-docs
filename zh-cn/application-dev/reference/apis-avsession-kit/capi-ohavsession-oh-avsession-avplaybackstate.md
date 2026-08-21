@@ -12,7 +12,7 @@ typedef struct OH_AVSession_AVPlaybackState OH_AVSession_AVPlaybackState
 
 ## 概述
 
-播控播放状态的对象。
+播放状态对象。
 
 **起始版本：** 23
 

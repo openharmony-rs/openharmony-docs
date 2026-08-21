@@ -175,7 +175,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | uri         | string    | 否  | 是   | 表示证书或凭据的唯一标识符，最大长度为256字节。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 | outData         | Uint8Array    | 否  | 是   | 表示签名结果。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 | credentialDetailList<sup>22+</sup>         | Array<[Credential](#credential)>    | 否  | 是   | 表示凭据详细信息。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
-| uriList         | Array\<string>    | 否  | 是   | 表示证书URI列表。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
+| uriList         | Array\<string>    | 否  | 是   | 表示证书URI列表。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CMHandle
 
@@ -201,9 +201,11 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称        | 类型                                | 只读 | 可选 | 说明  |
 | ----------- | ----------------------------------- | ---- | ---- | ---- |
-| certData    | Uint8Array                           | 否   | 否  | 表示证书文件数据，最大长度为8196字节。 |
+| certData    | Uint8Array                           | 否   | 否  | 表示证书文件数据。当certFormat传入PEM_DER，最大长度为8KB。当certFormat传入P7B，最大长度为300KB。 |
 | certFormat  | [CertFileFormat](#certfileformat)   | 否   | 是  | 表示证书文件格式。默认值：PEM_DER。 |
 | certScope   | [CertScope](#certscope18)         | 否   | 是  | 表示用户CA证书的存储位置。默认值：CURRENT_USER。 |
 
@@ -222,7 +224,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | CM_ERROR_INCORRECT_FORMAT  | 17500003      | 表示输入证书或凭据的数据格式无效。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 | CM_ERROR_MAX_CERT_COUNT_REACHED<sup>12+</sup>  | 17500004      | 表示证书或凭据数量达到上限。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
 | CM_ERROR_NO_AUTHORIZATION<sup>12+</sup>  | 17500005      | 表示应用未经用户授权。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
-| CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | 表示设备进入坚盾守护模式。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | 表示设备进入坚盾守护模式。该模式下CA证书安装操作受限。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
 | CM_ERROR_STORE_PATH_NOT_SUPPORTED<sup>20+</sup> | 17500009 | 表示不支持指定的证书存储路径。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
 | CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | 表示访问USB Key服务失败。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
 | CM_ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup> | 17500011 | 表示输入参数校验失败。<br>例如：参数格式不正确、参数范围无效。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
@@ -341,6 +343,8 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称       | 值 | 说明      |
 | ---------- | ------ | --------- |
 | PEM_DER   | 0      | 表示证书文件格式为PEM或DER。 |
@@ -366,7 +370,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | keystore | Uint8Array                   | 是   | 表示带有密钥对和证书的密钥库文件，最大长度为20480字节。 |
 | keystorePwd | string | 是   | 表示密钥库文件的密码，长度限制32字节以内。 |
-| certAlias | string | 是   | 表示用户输入的凭据别名，当前仅支持传入数字、字母或下划线，长度建议32字节以内。 |
+| certAlias | string | 是   | 表示用户输入的凭据别名，当前仅支持传入数字、字母或下划线，最大长度32字节。 |
 | callback | AsyncCallback\<[CMResult](#cmresult)> | 是   | 回调函数。当安装私有凭据成功时，err为null，data为[CMResult](#cmresult)对象中的uri属性；否则为错误对象。 |
 
 **错误码：**
@@ -387,11 +391,11 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 /* 安装的凭据数据需要业务赋值，本例数据非凭据数据 */
 let keystore: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
-let keystorePwd: string = "123456";
+let keystorePwd: string = '123456';
 try {
-  certificateManager.installPrivateCertificate(keystore, keystorePwd, "test", (err, cmResult) => {
+  certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test', (err, cmResult) => {
     if (err != null) {
       console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
     } else {
@@ -424,7 +428,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | keystore | Uint8Array                   | 是   | 表示带有密钥对和证书的密钥库文件，最大长度为20480字节。 |
 | keystorePwd | string | 是   | 表示密钥库文件的密码，长度限制32字节以内。 |
-| certAlias | string | 是   | 表示用户输入的凭据别名，当前仅支持传入数字、字母或下划线，长度建议32字节以内。 |
+| certAlias | string | 是   | 表示用户输入的凭据别名，当前仅支持传入数字、字母或下划线，最大长度32字节。 |
 
 **返回值**：
 
@@ -452,9 +456,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 /* 安装的凭据数据需要业务赋值，本例数据非凭据数据 */
 let keystore: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
-let keystorePwd: string = "123456";
+let keystorePwd: string = '123456';
 try {
   certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test').then((cmResult) => {
     let uri: string = cmResult?.uri ?? '';
@@ -462,7 +466,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -488,7 +492,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | ----------- | ---------- | ---- | ------------------------------------------------------------ |
 | keystore    | Uint8Array | 是   | 表示带有密钥对和证书的密钥库文件，最大长度为20480字节。                           |
 | keystorePwd | string     | 是   | 表示密钥库文件的密码。<br>长度限制：32字节以内。                   |
-| certAlias   | string     | 是   | 表示用户输入的凭据别名，当前仅支持传入数字、字母或下划线。<br>长度建议：32字节以内。 |
+| certAlias   | string     | 是   | 表示用户输入的凭据别名，当前仅支持传入数字、字母或下划线，最大长度32字节。 |
 | level   | [AuthStorageLevel](#authstoragelevel18)   | 是   | 表示凭据的存储级别。 |
 
 **返回值：**
@@ -517,9 +521,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 /* 安装的凭据数据需要业务赋值，本例数据非凭据数据。 */
 let keystore: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
-let keystorePwd: string = "123456";
+let keystorePwd: string = '123456';
 try {
   /* 安装凭据在首次解锁设备后可以使用。 */
   let level = certificateManager.AuthStorageLevel.EL2;
@@ -529,7 +533,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -644,7 +648,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get private certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get private certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -688,7 +692,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 let uri: string = 'test'; /* 业务删除私有凭据，需要使用凭据的唯一标识符，此处省略 */
 try {
-  certificateManager.uninstallPrivateCertificate(uri, (err, result) => {
+  certificateManager.uninstallPrivateCertificate(uri, (err) => {
     if (err != null) {
       console.error(`Failed to uninstall private certificate. Code: ${err.code}, message: ${err.message}`);
     } else {
@@ -744,12 +748,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let uri: string = 'test'; /* 业务删除私有凭据，需要使用凭据的唯一标识符，此处省略 */
 try {
-  certificateManager.uninstallPrivateCertificate(uri).then((cmResult) => {
+  certificateManager.uninstallPrivateCertificate(uri).then(() => {
     console.info('Succeeded in uninstalling private certificate.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to uninstall private certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to uninstall private certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -759,15 +763,17 @@ try {
 
 installUserTrustedCertificate(certificate: CertBlob): Promise\<CMResult>
 
-安装用户CA证书。当入参certificate.certFormat为P7B时，输入的P7B证书文件中最多只能包含20本证书。使用Promise异步回调。
+安装用户CA证书。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT或ohos.permission.ACCESS_USER_TRUSTED_CERT
+**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -802,7 +808,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 /* 安装的CA证书数据需要业务赋值，本例数据非CA证书数据 */
 let certData: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
 try {
   let certBlob: certificateManager.CertBlob = {
@@ -816,7 +822,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to install user trusted certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -869,15 +875,15 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 /* 安装的CA证书数据需要业务赋值，本例数据非CA证书数据 */
 let certData: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
 try {
   let result: certificateManager.CMResult = certificateManager.installUserTrustedCertificateSync(certData, certificateManager.CertScope.CURRENT_USER);
   let certUri = result.uri;
   if (certUri === undefined) {
-    console.error("The result of install user trusted certificate is undefined.");
+    console.error('The result of install user trusted certificate is undefined.');
   } else {
-    console.info("Succeeded to install user trusted certificate.");
+    console.info('Succeeded in installing user trusted certificate.');
   }
 } catch (error) {
   console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
@@ -920,7 +926,7 @@ uninstallUserTrustedCertificateSync(certUri: string) : void
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
-let certUri: string = "test"; /* 业务删除证书，需要使用证书的标识符，此处省略 */
+let certUri: string = 'test'; /* 业务删除证书，需要使用证书的标识符，此处省略 */
 try {
   certificateManager.uninstallUserTrustedCertificateSync(certUri);
 } catch (error) {
@@ -971,7 +977,7 @@ const req: certificateManager.CMSignatureSpec = {
   purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN,
   padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
   digest: certificateManager.CmKeyDigest.CM_DIGEST_SHA256
-}
+};
 try {
   certificateManager.init(uri, req, (err, cmHandle) => {
     if (err != null) {
@@ -979,7 +985,7 @@ try {
     } else {
       console.info('Succeeded in initiating.');
     }
-  })
+  });
 } catch (error) {
   console.error(`Failed to init. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1034,14 +1040,14 @@ const req: certificateManager.CMSignatureSpec = {
   purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY,
   padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
   digest: certificateManager.CmKeyDigest.CM_DIGEST_MD5
-}
+};
 try {
   certificateManager.init(uri, req).then((handle) => {
     console.info('Succeeded in initiating.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to init. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to init. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1091,7 +1097,7 @@ let srcData: Uint8Array = new Uint8Array([
   0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08
 ]);
 try {
-  certificateManager.update(cmHandle, srcData, (err, result) => {
+  certificateManager.update(cmHandle, srcData, (err) => {
     if (err != null) {
       console.error(`Failed to update. Code: ${err.code}, message: ${err.message}`);
     } else {
@@ -1153,12 +1159,12 @@ let srcData: Uint8Array = new Uint8Array([
   0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08
 ]);
 try {
-  certificateManager.update(cmHandle, srcData).then((result) => {
+  certificateManager.update(cmHandle, srcData).then(() => {
     console.info('Succeeded in updating.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to update. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to update. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1225,7 +1231,7 @@ try {
 
 finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
-完成验签的操作，使用Callback回调异步返回结果。
+完成验签的操作，是验签流程的最后一步，需要先调用init和update接口。使用Callback异步回调。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1335,7 +1341,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to finish signature. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 
   /* 签名的结果 */
   let signRes: Uint8Array = new Uint8Array([
@@ -1347,7 +1353,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to finish verification. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch(error) {
   console.error(`Failed to finish. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1357,7 +1363,7 @@ try {
 
 abort(handle: Uint8Array, callback: AsyncCallback\<void>): void
 
-中止签名、验签的操作，使用Callback异步回调。
+中止签名、验签的操作。与finish方法互斥，一个签名验签流程只能选择调用其中一个方法。使用Callback异步回调。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1393,7 +1399,7 @@ let cmHandle: Uint8Array = new Uint8Array([
   0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08
 ]);
 try {
-  certificateManager.abort(cmHandle, (err, cmResult) => {
+  certificateManager.abort(cmHandle, (err) => {
     if (err != null) {
       console.error(`Failed to abort. Code: ${err.code}, message: ${err.message}`);
     } else {
@@ -1409,7 +1415,7 @@ try {
 
 abort(handle: Uint8Array): Promise\<void>
 
-中止签名、验签的操作。使用Promise异步回调。
+中止签名、验签的操作。与finish方法互斥，一个签名验签流程只能选择调用其中一个方法。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1451,12 +1457,12 @@ let cmHandle: Uint8Array = new Uint8Array([
   0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08
 ]);
 try {
-  certificateManager.abort(cmHandle).then((result) => {
+  certificateManager.abort(cmHandle).then(() => {
     console.info('Succeeded in aborting.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to abort. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to abort. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1517,7 +1523,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get Public certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get Public certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1575,7 +1581,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to check if the application is authorized. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to check if the application is authorized. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1628,7 +1634,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get all user trusted certificates. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get all user trusted certificates. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1691,7 +1697,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get current user trusted certificates. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get current user trusted certificates. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1751,7 +1757,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get user trusted certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1803,7 +1809,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get all private certificates installed by the application. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get all private certificates installed by the application. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1849,34 +1855,34 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 try {
   /* 获取系统CA的存储位置 */
   let property1: certificateManager.CertStoreProperty = {
-    certType: certificateManager.CertType.CA_CERT_SYSTEM,
-  }
+    certType: certificateManager.CertType.CA_CERT_SYSTEM
+  };
   let systemCAPath = certificateManager.getCertificateStorePath(property1);
-  console.info(`Success to get system ca path: ${systemCAPath}`);
+  console.info(`Succeeded in getting system CA path: ${systemCAPath}`);
 
   /* 获取当前用户的用户CA存储位置 */
   let property2: certificateManager.CertStoreProperty = {
     certType: certificateManager.CertType.CA_CERT_USER,
-    certScope: certificateManager.CertScope.CURRENT_USER,
-  }
+    certScope: certificateManager.CertScope.CURRENT_USER
+  };
   let userCACurrentPath = certificateManager.getCertificateStorePath(property2);
-  console.info(`Success to get current user's user ca path: ${userCACurrentPath}`);
+  console.info(`Succeeded in getting current user's user CA path: ${userCACurrentPath}`);
 
   /* 获取设备公共的用户CA存储位置 */
   let property3: certificateManager.CertStoreProperty = {
     certType: certificateManager.CertType.CA_CERT_USER,
-    certScope: certificateManager.CertScope.GLOBAL_USER,
-  }
+    certScope: certificateManager.CertScope.GLOBAL_USER
+  };
   let globalCACurrentPath = certificateManager.getCertificateStorePath(property3);
-  console.info(`Success to get global user's user ca path: ${globalCACurrentPath}`);
+  console.info(`Succeeded in getting global user's user CA path: ${globalCACurrentPath}`);
 
   /* 获取SM算法系统CA的存储位置 */
   let property4: certificateManager.CertStoreProperty = {
     certType: certificateManager.CertType.CA_CERT_SYSTEM,
-    certAlg: certificateManager.CertAlgorithm.SM,
-  }
+    certAlg: certificateManager.CertAlgorithm.SM
+  };
   let smSystemCAPath = certificateManager.getCertificateStorePath(property4);
-  console.info(`Success to get SM system ca path: ${smSystemCAPath}`);
+  console.info(`Succeeded in getting SM system CA path: ${smSystemCAPath}`);
 } catch (error) {
   console.error(`Failed to get store path. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1896,7 +1902,7 @@ getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **设备行为差异：**
-- 从API版本26.0.0开始，该接口在所有设备上无行为差异。
+- 从API版本26.0.0开始，该接口在Phone、PC/2in1、Tablet设备可正常调用，在其他设备中返回801错误码。
 - 在API版本22-24，该接口在PC/2in1设备可正常调用，在其他设备中返回801错误码。
 
 **参数**：
@@ -1922,7 +1928,7 @@ getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 | 801      | Capability not supported. The application does not have the permission required to call the API. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | Indicates that the certificate does not exist. |
-| 17500010 | Indicates that access USB key service failed. |
+| 17500010 | Indicates that access USB Key service failed. |
 | 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.  |
 
 **示例**：
@@ -1932,18 +1938,22 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyUri: string = 'test'; /* USB凭据的唯一标识符，此处省略 */
 let ukeyInfo: certificateManager.UkeyInfo = { /* USB凭据的属性信息，此处省略 */
-  certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
-}
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT
+};
 try {
   certificateManager.getUkeyCertificate(keyUri, ukeyInfo).then((cmResult) => {
-    let list = cmResult.credentialDetailList;
-    console.info('Succeeded in getting detail of USB key certificate.');
+    if (cmResult?.credentialDetailList === undefined) {
+       console.info('The result of getting detail of USB Key certificate is undefined.');
+     } else {
+       let list = cmResult.credentialDetailList;
+       console.info('Succeeded in getting detail of USB Key certificate.');
+     }
   }).catch((error: Error) => {
     let err = error as BusinessError;
-    console.error(`Failed to get detail of USB key certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+    console.error(`Failed to get detail of USB Key certificate. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-  console.error(`Failed to get detail of USB key certificate. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to get detail of USB Key certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1961,7 +1971,9 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet设备可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -1985,7 +1997,7 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 | 201         | Permission verification failed. The application does not have the permission required to call the API. |
 | 801         | Capability not supported. |
 | 17500001    | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
-| 17500010    | Indicates that access USB key service failed. |
+| 17500010    | Indicates that access USB Key service failed. |
 | 17500011    | Parameter verification failed. Possible causes: the ukeyInfo parameter is invalid. For example, the parameter format is incorrect or the value range is invalid. |
 
 **示例**：
@@ -1996,18 +2008,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let ukeyProvider: string = 'testProvider'; /* USB凭据提供商，此处省略 */
 let ukeyInfo: certificateManager.UkeyInfo = { /* USB凭据的属性信息，此处省略 */
-  certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
-}
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT
+};
 try {
   certificateManager.getUkeyCertificateList(ukeyProvider, ukeyInfo).then((cmResult) => {
     let list: Array<certificateManager.Credential> = cmResult.credentialDetailList ?? [];
-    console.info('Succeeded in getting USB key certificate list.');
+    console.info('Succeeded in getting USB Key certificate list.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
-    console.error(`Failed to get USB key certificate list. Code: ${err.code}, message: ${err.message}`);
-  })
+    console.error(`Failed to get USB Key certificate list. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-  console.error(`Failed to get USB key certificate list. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to get USB Key certificate list. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -2025,15 +2037,17 @@ importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Pro
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet设备可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| keyUri | string | 是 | 表示USB key证书凭据的uri。<br>keyUri参数用于标识证书实体，可以通过调用[getUkeyCertificateList](#certificatemanagergetukeycertificatelist)接口得到，最大长度为256字节。 |
-| cert | Uint8Array | 是 | 表示待导入的证书数据。最大长度为10KB。<br>证书数据格式遵循SKF规范的定义。 |
-| ukeyInfo | [UkeyInfo](#ukeyinfo22) | 是 | 表示USB key证书凭据属性信息。<br>UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN、PURPOSE_ENCRYPT或PURPOSE_DEFAULT。 |
+| keyUri | string | 是 | 表示USB Key证书凭据的uri。<br>keyUri参数用于标识证书实体，可以通过调用[getUkeyCertificateList](#certificatemanagergetukeycertificatelist)接口得到，最大长度为256字节。 |
+| cert | Uint8Array | 是 | 表示待导入的证书数据。最大长度为10KB。<br>证书数据格式遵循SKF（Smart Key Framework）规范的定义。 |
+| ukeyInfo | [UkeyInfo](#ukeyinfo22) | 是 | 表示USB Key证书凭据属性信息。<br>UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN、PURPOSE_ENCRYPT或PURPOSE_DEFAULT。 |
 
 **返回值**：
 
@@ -2050,8 +2064,8 @@ importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Pro
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 801 | Capability not supported. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
-| 17500002 | The certificate identified by keyuri does not exist. |
-| 17500010 | Indicates that access USB key service failed. |
+| 17500002 | The certificate identified by keyUri does not exist. |
+| 17500010 | Indicates that access USB Key service failed. |
 | 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
 
 **示例**：
@@ -2061,21 +2075,21 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 /* keyUri和cert数据需要业务赋值，本例数据仅为示例 */
-let keyUri: string = 'test'; /* USB key证书的uri，可通过getUkeyCertificateList获取 */
+let keyUri: string = 'test'; /* USB Key证书的uri，可通过getUkeyCertificateList获取 */
 let certData: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
 let ukeyInfo: certificateManager.UkeyInfo = {
-  certPurpose: certificateManager.CertificatePurpose.PURPOSE_SIGN,
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_SIGN
 };
 try {
   certificateManager.importUkeyCertificate(keyUri, certData, ukeyInfo).then(() => {
-    console.info('Succeeded in importing USB key certificate.');
+    console.info('Succeeded in importing USB Key certificate.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
-    console.error(`Failed to import USB key certificate. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to import USB Key certificate. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (error) {
-  console.error(`Failed to import USB key certificate. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to import USB Key certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```

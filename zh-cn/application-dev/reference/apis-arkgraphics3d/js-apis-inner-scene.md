@@ -1,7 +1,7 @@
 # Scene
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
@@ -17,8 +17,8 @@
 ## 导入模块
 
 ```ts
-import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastParameters,RenderResourceFactory,
-  SceneResourceFactory, SceneComponent, RenderContext, RenderConfiguration, RenderParameters, Scene } from '@kit.ArkGraphics3D';
+import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastParameters, RenderResourceFactory, CameraParameters, EffectParameters,
+  SceneResourceFactory, SceneComponent, RenderContext, SoftShadowConfig, PCFConfig, RenderConfiguration, RenderParameters, Scene } from '@kit.ArkGraphics3D';
 ```
 
 ## SceneResourceParameters
@@ -33,7 +33,7 @@ import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastPar
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | 否 | 否 | 要创建资源的名称，可由开发者自定填写，用于标识该场景资源。|
+| name | string | 否 | 否 | 要创建资源的名称，可由开发者自定义填写，用于标识该场景资源。|
 | uri | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr) | 否 | 是 | 3D场景所需的资源文件路径。默认值为undefined。|
 
 **示例：**
@@ -53,9 +53,9 @@ function createShaderPromise(): Promise<Shader> {
         uri: $rawfile("shaders/custom_shader/custom_material_sample.shader") };
       let shader: Shader = await sceneFactory.createShader(sceneResourceParameter);
       resolve(shader);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -63,7 +63,7 @@ function createShaderPromise(): Promise<Shader> {
 
 ## SceneNodeParameters
 
-场景节点参数对象，它用于提供场景节点层次中的名称和路径。
+场景节点参数对象，用于提供场景节点层次中的名称和路径。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -74,7 +74,7 @@ function createShaderPromise(): Promise<Shader> {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | name | string | 否 | 否 | 要创建的节点名称，可由开发者自定义填写，用于标识场景节点。|
-| path | string | 否 | 是 | 场景节点层次中的路径。用于指定创建的摄影机、灯光或节点在场景节点层次中的放置位置。每层之间使用'/'符号进行分割。如果未提供，则将其设置为根节点的子节点。默认值为undefined。|
+| path | string | 否 | 是 | 场景节点层次中的路径。用于指定创建的相机、灯光或节点在场景节点层次中的放置位置。每层之间使用'/'符号进行分割。如果未提供，则将其设置为根节点的子节点。默认值为undefined。|
 
 **示例：**
 
@@ -93,9 +93,9 @@ function createNodePromise() : Promise<Node> {
         path:"/rootNode_/empty_node" };
       let node: Node = await sceneFactory.createNode(sceneNodeParameter);
       resolve(node);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -114,7 +114,7 @@ function createNodePromise() : Promise<Node> {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | 否 | 否 | 被射线击中的3D场景节点，可通过该节点操作目标物体（如移动、旋转、隐藏）。 |
-| centerDistance | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 命中物体包围盒中心到摄像机中心的距离，单位为世界坐标系下的场景单位（比如cm、m、km等），取值范围大于0。 |
+| centerDistance | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 命中物体包围盒中心到相机中心的距离，单位为世界坐标系下的场景单位（比如cm、m、km等），取值范围大于0。 |
 | hitPosition | [Position3](js-apis-inner-scene-types.md#position3) | 否 | 否 | 射线与物体碰撞点的精确世界坐标（{x: number, y: number, z: number}），单位为世界坐标系下的场景单位（比如cm、m、km等）。 |
 
 ## RaycastParameters<sup>20+</sup>
@@ -226,7 +226,7 @@ function createImageResource(): Promise<Image> {
 ### createImageStream
 createImageStream(params: SceneResourceParameters): Promise\<ImageStream>
 
-根据指定场景名称参数创建流图片，使用Promise异步回调。
+根据指定场景资源参数创建流图片，使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -312,12 +312,12 @@ function createMeshResource(): Promise<MeshResource> {
     { x: 0, y: 1, z: 1 }
   ];
   geometry.indices = [
-    0, 1, 2, 2, 3, 0,     // front
-    4, 5, 6, 6, 7, 4,     // back
-    0, 4, 5, 5, 1, 0,     // bottom
-    1, 5, 6, 6, 2, 1,     // right
-    3, 2, 6, 6, 7, 3,     // top
-    3, 7, 4, 4, 0, 3      // left
+    0, 1, 2, 2, 3, 0, // front
+    4, 5, 6, 6, 7, 4, // back
+    0, 4, 5, 5, 1, 0, // bottom
+    1, 5, 6, 6, 2, 1, // right
+    3, 2, 6, 6, 7, 3, // top
+    3, 7, 4, 4, 0, 3  // left
   ];
   geometry.topology = PrimitiveTopology.TRIANGLE_LIST;
   geometry.normals = [
@@ -350,7 +350,7 @@ function createMeshResource(): Promise<MeshResource> {
     { r: 1, g: 1, b: 1, a: 1 },
     { r: 0, g: 0, b: 0, a: 1 }
   ];
-  // 加载图片资源，路径和文件名可根据项目实际资源自定义
+  // 创建网格资源，路径和文件名可根据项目实际资源自定义
   let sceneResourceParameter: SceneResourceParameters = {
     name: "cubeMesh",
     uri: $rawfile("image/Cube_BaseColor.png")
@@ -394,7 +394,7 @@ function createSamplerResource(): Promise<Sampler> {
     return Promise.reject(new Error("RenderContext is null"));
   }
   const renderResourceFactory: RenderResourceFactory = renderContext.getRenderResourceFactory();
-  // 加载图片资源，路径和文件名可根据项目实际资源自定义
+  // 创建采样器资源，路径和文件名可根据项目实际资源自定义
   let samplerParams: SceneResourceParameters = {
     name: "sampler1",
     uri: $rawfile("image/Cube_BaseColor.png")
@@ -518,9 +518,9 @@ function createCameraPromise(): Promise<Camera> {
       // 创建相机
       let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
       resolve(camera);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -568,9 +568,9 @@ function createCameraPromise(): Promise<Camera> {
       // 创建相机
       let camera: Camera = await sceneFactory.createCamera(nodeParameter, camParameter);
       resolve(camera);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -616,9 +616,9 @@ function createLightPromise() : Promise<Light> {
       // 创建平行光
       let light: Light = await sceneFactory.createLight(sceneLightParameter, LightType.DIRECTIONAL);
       resolve(light);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -664,9 +664,9 @@ function createNodePromise(): Promise<Node> {
       // 创建节点
       let node: Node = await sceneFactory.createNode(sceneNodeParameter);
       resolve(node);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -712,9 +712,9 @@ function createMaterialPromise() : Promise<Material> {
       // 创建材质
       let material: Material = await sceneFactory.createMaterial(sceneMaterialParameter, MaterialType.SHADER);
       resolve(material);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -760,9 +760,9 @@ function createEnvironmentPromise(): Promise<Environment> {
       // 创建Environment
       let env: Environment = await sceneFactory.createEnvironment(sceneEnvironmentParameter);
       resolve(env);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -815,9 +815,9 @@ function createGeometryPromise() : Promise<Geometry> {
       // 根据场景节点参数和网格资源创建几何对象
       let geometry: Geometry = await sceneFactory.createGeometry({ name: "GeometryName" }, meshRes);
       resolve(geometry);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -861,12 +861,12 @@ function createEffect() : Promise<Effect> {
       }
       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
       // 特效ID，固定格式为'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'，比如'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'
-      let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"}
+      let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"};
       let effect: Effect = await sceneFactory.createEffect(params);
       resolve(effect);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -884,8 +884,8 @@ function createEffect() : Promise<Effect> {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | 否 | 否 | 要创建场景组件的名称，可由开发者自定填写，用于标识场景组件。|
-| property | ArkTS-Dyn: Record<string, string \| number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1) \| boolean \| number[] \| string[] \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1)[] \| [Vec2](js-apis-inner-scene-types.md#vec2)[] \| [Vec3](js-apis-inner-scene-types.md#vec3)[] \| [Vec4](js-apis-inner-scene-types.md#vec4)[] \| null \| undefined><br>ArkTS-Sta: Record<string, string \| double \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1) \| boolean \| double[] \| string[] \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1)[] \| [Vec2](js-apis-inner-scene-types.md#vec2)[] \| [Vec3](js-apis-inner-scene-types.md#vec3)[] \| [Vec4](js-apis-inner-scene-types.md#vec4)[] \| null \| undefined> | 是 | 否 | 组件的属性集合，以键值对形式存储。支持多种基础类型和复杂类型，用于描述场景组件的各种属性，单位及取值范围取决于具体场景组件。|
+| name | string | 否 | 否 | 要创建场景组件的名称，可由开发者自定义填写，用于标识场景组件。|
+| property | ArkTS-Dyn: Record<string, string \| number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource) \| boolean \| number[] \| string[] \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource)[] \| [Vec2](js-apis-inner-scene-types.md#vec2)[] \| [Vec3](js-apis-inner-scene-types.md#vec3)[] \| [Vec4](js-apis-inner-scene-types.md#vec4)[] \| null \| undefined><br>ArkTS-Sta: Record<string, string \| double \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource) \| boolean \| double[] \| string[] \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource)[] \| [Vec2](js-apis-inner-scene-types.md#vec2)[] \| [Vec3](js-apis-inner-scene-types.md#vec3)[] \| [Vec4](js-apis-inner-scene-types.md#vec4)[] \| null \| undefined> | 是 | 否 | 组件的属性集合，以键值对形式存储。支持多种基础类型和复杂类型，用于描述场景组件的各种属性，单位及取值范围取决于具体场景组件。|
 
 ## RenderContext<sup>20+</sup>
 
@@ -917,7 +917,7 @@ import { Scene, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D'
 function getRenderResourceFactory(): void {
   const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
   if (!renderContext) {
-    console.error("RenderContext is null");
+    console.error("Failed to get default render context");
     return;
   }
   const renderResourceFactory: RenderResourceFactory = renderContext.getRenderResourceFactory();
@@ -957,7 +957,7 @@ import { Scene, RenderContext } from '@kit.ArkGraphics3D';
 function loadPlugin(): Promise<boolean> {
   const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
   if (!renderContext) {
-    console.error("RenderContext is null");
+    console.error("Failed to get default render context");
     return Promise.reject(new Error("RenderContext is null"));
   }
   return renderContext.loadPlugin("pluginName");
@@ -1000,7 +1000,7 @@ function registerResourcePath(): void {
     .then(() => {
       const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
       if (!renderContext) {
-        console.error("RenderContext is null");
+        console.error("Failed to get default render context");
         return false;
       }
       // 注册路径检索名"myproto"及其对应的资产路径目录"OhosRawFile://shaders/custom_shader/"
@@ -1011,9 +1011,9 @@ function registerResourcePath(): void {
     })
     .then(result => {
       if (result) {
-        console.info("resource path registration success");
+        console.info("Succeeded in registering resource path");
       } else {
-        console.error("resource path registration failed");
+        console.error("Failed to register resource path");
       }
     });
 }
@@ -1083,7 +1083,7 @@ PCF（Percentage Closer Filtering，百分比邻近过滤）软阴影配置类�
 
 ## Scene
 
-用于设置场景。
+用于设置场景。Scene采用树状层次结构组织场景节点，根节点（root）作为场景的入口。
 
 ### 属性
 
@@ -1100,7 +1100,7 @@ PCF（Percentage Closer Filtering，百分比邻近过滤）软阴影配置类�
 
 static load(uri?: ResourceStr): Promise\<Scene>
 
-通过传入的资源路径加载资源，使用Promise异步回调。
+通过传入的资源路径加载资源，使用Promise异步回调。调用后，应该在Scene使用完毕时调用[destroy](#destroy)释放资源，否则可能导致资源泄漏。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -1160,8 +1160,8 @@ async function loadModelFromAbsolutePath(context: common.UIAbilityContext): Prom
   // 使用绝对路径加载模型
   Scene.load(load_uri).then((scene: Scene) => {
     // 加载成功后的逻辑处理
-  }).catch((error: string) => {
-    console.error('Scene load failed: ' + error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -1183,7 +1183,7 @@ getNodeByPath(path: string, type?: NodeType): Node | null
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | path | string | 是 | 场景节点层次中的路径。每层之间使用'/'符号进行分割。|
-| type | [NodeType](js-apis-inner-scene-nodes.md#nodetype) | 否 | 预期返回的节点类型。默认值为空。|
+| type | [NodeType](js-apis-inner-scene-nodes.md#nodetype) | 否 | 预期返回的节点类型。当需要确保返回特定类型的节点时传入此参数，不传入时返回路径上找到的第一个节点（不限制类型）。默认值为空。|
 
 **返回值：**
 
@@ -1359,7 +1359,7 @@ function ImportSceneTest() {
       return;
     }
     // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-    let content = await result.getResourceFactory().createScene($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.glb"))
+    let content = await result.getResourceFactory().createScene($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.glb"));
     console.info("TEST ImportSceneTest");
     result.importScene("helmet", content, null);
   });
@@ -1443,14 +1443,14 @@ function createComponentTest(): Promise<SceneComponent> {
   return Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.glb"))
     .then(scene => {
       if (!scene) {
-        return Promise.reject(new Error("Scene load failed"));
+        return Promise.reject(new Error("Failed to load scene"));
       }
       // RenderConfigurationComponent为引擎内置组件，创建时无需依赖插件
       return scene.createComponent(scene.root, "RenderConfigurationComponent");
     })
     .then(component => {
       if (!component) {
-        return Promise.reject(new Error("createComponent failed"));
+        return Promise.reject(new Error("Failed to create component"));
       }
       return component;
     });
@@ -1492,15 +1492,15 @@ function getComponentTest() {
   Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.glb"))
     .then(async (result: Scene | undefined) => {
       if (!result) {
-        console.error("Scene load failed");
+        console.error("Failed to load scene");
         return;
       }
       console.info("TEST getComponentTest");
       let component = result.getComponent(result.root, "myComponent");
       if (component) {
-        console.info("getComponent success");
+        console.info("Succeeded in getting component");
       } else {
-        console.warn("Component not found");
+        console.error("Failed to get component");
       }
     });
 }
@@ -1510,7 +1510,7 @@ function getComponentTest() {
 
 static getDefaultRenderContext(): RenderContext | null
 
-获取当前图形对象所关联的渲染环境信息。
+获取当前图形对象所关联的渲染上下文。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -1533,9 +1533,9 @@ function getDefaultRenderContextTest() {
   console.info("TEST getDefaultRenderContextTest");
   const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
   if (renderContext) {
-    console.info("getDefaultRenderContext success");
+    console.info("Succeeded in getting default render context");
   } else {
-    console.error("RenderContext is null");
+    console.error("Failed to get default render context");
   }
 }
 ```
@@ -1580,9 +1580,9 @@ function CloneNode() {
       let name = "cloneNode_";
       let clone = result.cloneNode(node, parent, name);
       if (clone) {
-        console.info("cloneNode success");
+        console.info("Succeeded in cloning node");
       } else {
-        console.error("cloneNode failed");
+        console.error("Failed to clone node");
       }
     });
 }

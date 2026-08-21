@@ -14,6 +14,8 @@
 >
 > - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 在OpenHarmony 7.0.0之前，支持在Tablet设备的非[电脑模式](../../windowmanager/freeform-window-overview.md#电脑模式)、Phone设备使用闪控球功能，其他设备不可用；从OpenHarmony 7.0.0开始，支持在Phone、PC/2in1、Tablet设备使用闪控球功能，其他设备不可用。
+>
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
 **闪控球和闪控窗对比**
@@ -73,7 +75,7 @@ create(config: FloatingBallConfiguration): Promise&lt;FloatingBallController&gt;
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 该接口在Tablet设备的非电脑模式、Phone设备下可正常调用，在其他设备、Tablet设备的电脑模式下调用返回801错误码。
+**设备行为差异：** 在OpenHarmony 7.0.0之前，该接口在Tablet设备的非[电脑模式](../../windowmanager/freeform-window-overview.md#电脑模式)、Phone设备下可正常调用，在其他设备、Tablet设备的[电脑模式](../../windowmanager/freeform-window-overview.md#电脑模式)下调用返回801错误码。从OpenHarmony 7.0.0开始，支持在Phone、PC/2in1、Tablet设备使用，其他设备调用返回801错误码。
 
 **参数：**
 
@@ -117,7 +119,7 @@ try {
   }).catch((err: BusinessError): void => {
     console.error(`Failed to create floating ball controller. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to create floating ball controller. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -203,7 +205,7 @@ try {
   }).catch((err: BusinessError): void => {
     console.error(`Failed to start floating ball. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to start floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -265,7 +267,7 @@ try {
   }).catch((err: BusinessError): void => {
     console.error(`Failed to update floating ball. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to update floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -353,7 +355,7 @@ let onStateChange = (state: floatingBall.FloatingBallState) => {
 };
 try {
   floatingBallController.on('stateChange', onStateChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to on stateChange floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -445,7 +447,7 @@ let onStateChange = (state: floatingBall.FloatingBallState) => {
 };
 try {
   floatingBallController.off('stateChange', onStateChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to off stateChange floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -537,7 +539,7 @@ let onClick = () => {
 };
 try {
   floatingBallController.on('click', onClick);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to on click floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -629,7 +631,7 @@ let onClick = () => {
 };
 try {
   floatingBallController.off('click', onClick);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to off click floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -782,8 +784,8 @@ try {
   }).catch((err: BusinessError): void => {
     console.error(`Failed to restore floating ball main window. Cause code: ${err.code}, message: ${err.message}`);
   });
-} catch(e) {
-  console.error(`Failed to create floating ball controller. Cause:${e.code}, message:${e.message}`);
+} catch (e) {
+  console.error(`Failed to restore floating ball main window. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
@@ -866,8 +868,8 @@ onDestroy(callback: Callback&lt;string&gt;): void
 |------------|------------|
 | 1300019 | Wrong parameters for operating the floating ball. Possible cause: Callback is null or not callable. |
 | 1300022 | Repeated floating ball operation. |
-| 1300023 | Floating ball internal error. Possible cause: The floating ball controller is null. |
-| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball window has not been created or has been destroyed. |
+| 1300023 | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
 **示例：**
 
@@ -909,8 +911,8 @@ offDestroy(callback?: Callback&lt;string&gt;): void
 | 错误码ID | 错误信息 |
 |------------|------------|
 | 1300019 | Wrong parameters for operating the floating ball. Possible cause: Callback is null or not callable. |
-| 1300023 | Floating ball internal error. Possible cause: The floating ball controller is null. |
-| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball window has not been created or has been destroyed. |
+| 1300023 | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
 **示例：**
 
@@ -942,7 +944,7 @@ try {
 | template | [FloatingBallTemplate](#floatingballtemplate) | 否 | 否 | 闪控球模板。 |
 | title | string | 否 | 否 | 闪控球标题，不可为空字符串，大小不超过64字节。 |
 | content | string | 否 | 是 | 闪控球内容，大小不超过64字节。不传入时默认为空字符串，不显示闪控球内容。 |
-| backgroundColor | string | 否 | 是 | 闪控球背景颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'），不传入时闪控球跟随系统深浅色模式的默认背景色。 |
+| backgroundColor | string | 否 | 是 | 闪控球背景颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'）。格式错误时返回错误码[1300019](errorcode-window.md#1300019-闪控球参数校验错误)。不传入时闪控球跟随系统深浅色模式的默认背景色。 |
 | titleColor | string | 否 | 是 | 闪控球标题文字颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'），不传入时根据背景色色度自动填充，若背景色为亮色则填充黑色('#E5000000')，若背景色为暗色则填充白色('#E5FFFFFF')。配置此属性时，必须配置背景色backgroundColor，否则返回错误码[1300019](errorcode-window.md#1300019-闪控球参数校验错误)。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0  <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | contentColor | string | 否 | 是 | 闪控球内容文字颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'），不传入时根据背景色色度自动填充，若背景色为亮色则填充黑色('#99000000')，若背景色为暗色则填充白色('#99FFFFFF')。配置此属性时，必须配置背景色backgroundColor，否则返回错误码[1300019](errorcode-window.md#1300019-闪控球参数校验错误)。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0  <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | icon | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 是 | 闪控球图标，图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取）。建议图标像素宽高为128px*128px。实际显示效果依赖于设备能力和闪控球UI样式。 |

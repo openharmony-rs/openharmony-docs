@@ -3,7 +3,7 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -818,7 +818,7 @@ try {
 
 pairDeviceOutOfBand(transport: BluetoothTransport, p192Data: OobData | null, p256Data: OobData | null): Promise&lt;void&gt;
 
-通过带外（Out of Band, [OOB](../../connectivity/terminology.md#oob)）通信机制发起与对端蓝牙设备的配对流程。使用Promise异步回调。
+通过带外（Out of Band, [OOB](../../connectivity/bluetooth/terminology.md#oob)）通信机制发起与对端蓝牙设备的配对流程。使用Promise异步回调。
 
 - 蓝牙配对状态通过[on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange)的回调结果获取。
 
@@ -835,8 +835,8 @@ pairDeviceOutOfBand(transport: BluetoothTransport, p192Data: OobData | null, p25
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
 | transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | 是    | 表示在配对对端设备时使用的传输方式。<br>- 若使用传统蓝牙（BR/EDR），则传入TRANSPORT_BR_EDR。若使用低功耗蓝牙（BLE），则传入TRANSPORT_LE。不支持其他[BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport)类型。|
-| p192Data | [OobData](#oobdata23) \| null | 是    | 配对过程中使用的OOB数据。P-192指一种椭圆曲线算法，其秘钥长度为192位，在蓝牙4.1及以前的传统配对方案中广泛使用。<br>- 若不使用该值，需传入null。<br>- p192Data与p256Data需至少传入一个有效值，若两者同时传入，则p256Data生效，p192Data不生效。|
-| p256Data | [OobData](#oobdata23) \| null | 是    | 配对过程中使用的OOB数据。P-256指一种椭圆曲线算法，其秘钥长度为256位，自蓝牙4.2开始成为安全连接的核心基础。基于P-256的OOB数据相比基于P-192的OOB数据具有更强的抗攻击能力与保密性。若非必须兼容蓝牙4.1或更早版本的旧设备，推荐使用p256Data。<br>- 若不使用该值，需传入null。<br>- p192Data与p256Data需至少传入一个有效值，若两者同时传入，则p256Data生效，p192Data不生效。|
+| p192Data | [OobData](#oobdata23) \| null | 是    | 配对过程中使用的OOB数据。P-192指一种椭圆曲线算法，其密钥长度为192位，在蓝牙4.1及以前的传统配对方案中广泛使用。<br>- 若不使用该值，需传入null。<br>- p192Data与p256Data需至少传入一个有效值，若两者同时传入，则p256Data生效，p192Data不生效。|
+| p256Data | [OobData](#oobdata23) \| null | 是    | 配对过程中使用的OOB数据。P-256指一种椭圆曲线算法，其密钥长度为256位，自蓝牙4.2开始成为安全连接的核心基础。基于P-256的OOB数据相比基于P-192的OOB数据具有更强的抗攻击能力与保密性。若非必须兼容蓝牙4.1或更早版本的旧设备，推荐使用p256Data。<br>- 若不使用该值，需传入null。<br>- p192Data与p256Data需至少传入一个有效值，若两者同时传入，则p256Data生效，p192Data不生效。|
 
 **返回值：**
 
@@ -892,7 +892,7 @@ try {
 
 generateLocalOobData(transport: BluetoothTransport): Promise&lt;OobData&gt;
 
-获取本机的带外（Out of Band, [OOB](../../connectivity/terminology.md#oob)）通信数据。使用Promise异步回调。
+获取本机的带外（Out of Band, [OOB](../../connectivity/bluetooth/terminology.md#oob)）通信数据。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -939,6 +939,90 @@ try {
     });
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+## connection.setCarKeyDfxData
+
+setCarKeyDfxData(deviceId: string, action: CarKeyActionType): void
+
+把车钥匙执行开卡、删卡的操作通知蓝牙。
+
+**起始版本**：26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
+
+| 参数名      | 类型     | 必填   | 说明                                  |
+| -------- | ------ | ---- | ----------------------------------- |
+| deviceId | string  | 是    | 表示远端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| action | [CarKeyActionType](js-apis-bluetooth-connection-sys.md#carkeyactiontype)  | 是    | 表示车钥匙执行的操作，例如开卡、删卡。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|202 | Non-system applications are not allowed to use system APIs. |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例**：
+
+```js
+try {
+    connection.setCarKeyDfxData('11:22:33:44:55:66', connection.CarKeyActionType.CAR_KEY_ACTION_ADD);
+} catch (err) {
+    console.error(`Failed to set car key dfx data. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
+## connection.getCarKeyDfxData
+
+getCarKeyDfxData(): string
+
+获取车钥匙维测数据，例如蓝牙车钥匙连接、配对等维测数据。
+
+**起始版本**：26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值**：
+
+| 类型     | 说明            |
+| ------ | ------------- |
+| string | 以字符串格式返回车钥匙维测数据。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|202 | Non-system applications are not allowed to use system APIs. |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例**：
+
+```js
+try {
+    let dfxData = connection.getCarKeyDfxData();
+} catch (err) {
+    console.error(`Failed to get car key dfx data. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1141,3 +1225,20 @@ try {
 | DEVICE_ROLE_CENTRAL_ONLY      | 1    | 表示该蓝牙设备仅支持作为中心设备。 |
 | DEVICE_ROLE_BOTH_PREFER_PERIPHERAL | 2    | 表示该蓝牙设备既可以作为中心设备，也可以作为外围设备，但优先作为外围设备。 |
 | DEVICE_ROLE_BOTH_PREFER_CENTRAL | 3    |  表示该蓝牙设备既可以作为中心设备，也可以作为外围设备，但优先作为中心设备。  |
+
+## CarKeyActionType
+
+枚举，车钥匙执行的操作。
+
+**起始版本**：26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称           | 值   | 说明                 |
+| -------------- | ---- | -------------------- |
+| CAR_KEY_ACTION_ADD       | 0    | 表示车钥匙执行开卡操作。 |
+| CAR_KEY_ACTION_DELETE      | 1    | 表示车钥匙执行删卡操作。 |

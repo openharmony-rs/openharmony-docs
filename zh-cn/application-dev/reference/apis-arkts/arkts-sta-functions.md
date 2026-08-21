@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 本模块提供URI编码和解码相关的全局函数。推荐优先使用`encodeURI`、`decodeURI`、`encodeURIComponent`和`decodeURIComponent`；`escape`和`unescape`仅用于兼容旧代码。
 

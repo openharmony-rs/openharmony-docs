@@ -5,7 +5,8 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-FormEditExtensionAbility模块提供卡片编辑功能，继承自[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。
+
+FormEditExtensionAbility模块提供卡片编辑功能，支持用户在卡片提供方应用内编辑卡片内容，适用于需要动态更新卡片展示信息、实现卡片个性化配置的场景。继承自[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。
 
 > **说明：**
 >
@@ -22,7 +23,7 @@ import { FormEditExtensionAbility } from '@kit.FormKit';
 ```
 ## FormEditExtensionAbility
 
-提供卡片编辑功能。
+提供卡片编辑功能，继承此类并实现生命周期方法后，可实现卡片编辑界面，用于在用户长按卡片等场景下触发卡片编辑。
 
 ### 属性
 
@@ -33,6 +34,7 @@ import { FormEditExtensionAbility } from '@kit.FormKit';
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
-  | 名称 | 类型    | 只读 | 可选  |说明|
-  | ------ | ------ | ---- | ---- | ---- |
-  | context |  [FormEditExtensionContext](./js-apis-inner-application-formEditExtensionContext.md) | 否   | 否 |FormEditExtensionAbility的上下文环境，默认值是继承自[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#uiextensioncontext-1)的对象。|
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ---- |
+| context |  [FormEditExtensionContext](./js-apis-inner-application-formEditExtensionContext.md) | 否   | 否 | FormEditExtensionAbility的上下文环境，[FormEditExtensionContext](./js-apis-inner-application-formEditExtensionContext.md)继承自[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#uiextensioncontext-1)。提供拉起编辑页面的能力。|

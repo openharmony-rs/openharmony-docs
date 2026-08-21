@@ -31,11 +31,11 @@ AVSession会对后台音频播放、VoIP通话进行约束。因此，长音频�
 
 ## 创建不同类型的会话
 
-AVSession在构造方法中支持不同的类型参数，由 [AVSessionType](../../reference/apis-avsession-kit/arkts-apis-avsession-t.md#avsessiontype10) 定义，不同的类型代表了不同场景的控制能力，对于播控中心来说，会展示不同的控制模版。
+AVSession在构造方法中支持不同的类型参数，由 [AVSessionType](../../reference/apis-avsession-kit/arkts-apis-avsession-t.md#avsessiontype10) 定义，不同的类型代表了不同场景的控制能力，对于播控中心来说，会展示不同的控制模板。
 
-- audio类型，播控中心的控制样式为：收藏，上一首，播放/暂停，下一首，循环模式。
+- audio类型，播控中心的控制样式为：收藏、上一首、播放/暂停、下一首、循环模式。
 
-- video类型，播控中心的控制样式为：快退，上一首，播放/暂停，下一首，快进。
+- video类型，播控中心的控制样式为：快退、上一首、播放/暂停、下一首、快进。
 
 - voice_call类型，通话类型。
 
@@ -92,7 +92,7 @@ struct Index {
 
 ### 元数据信息
 
-元数据信息[AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10)包括：当前媒体的ID（assetId），上一首媒体的ID（previousAssetId），下一首媒体的ID（nextAssetId），标题（title），专辑作者（author），专辑名称（album），词作者（writer），媒体时长（duration）等。
+元数据信息[AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10)包括：当前媒体的ID（assetId）、上一首媒体的ID（previousAssetId）、下一首媒体的ID（nextAssetId）、标题（title）、专辑作者（author）、艺术家（artist）、专辑名称（album）、词作者（writer）、媒体图片（mediaImage）和媒体时长（duration）等。
 
 <!-- @[setAVMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SetAVMetadata.ets) -->
 
@@ -156,7 +156,7 @@ struct Index {
 >
 > - lyric字段仅支持LRC格式（时间标签+歌词信息，如[00:25.44]歌词信息）的歌词内容，若应用传入其他格式的歌词内容，系统播控中心存在解析失败从而导致歌词显示异常问题。
 >
-> - 传入的歌词字符串大小均不允许超过40960字节，否则会由于系统传输限制导致歌词信息设置失效。
+> - lyric字段和singleLyricText字段的大小均不允许超过40960字节，否则会由于系统传输限制导致歌词信息设置失效。
 
 <!-- @[settingLyrics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingLyrics.ets) -->
 
@@ -281,7 +281,7 @@ struct Index {
 
 系统的播控中心会根据应用设置的信息自动计算播放进度，而不需要应用实时更新播放进度；但是当应用的state、position、speed信息发生变化的时候，必须同步更新AVPlaybackState信息，否则系统播控中心展示的应用状态信息、进度条信息等会出现异常。
 
-应用在真实播放开始时，再上报进度起始position；若播放存在buffer状态，可以先上报播放状态为AVSessionManager.PlaybackState.PLAYBACK_STATE_BUFFERING，来通知系统不刷新进度。
+应用在真实播放开始时，再上报进度起始position；若播放存在缓冲状态，可以先上报播放状态为AVSessionManager.PlaybackState.PLAYBACK_STATE_BUFFERING，来通知系统不刷新进度。
 
 关于进度条有一些特殊情况需要处理：
 
@@ -297,7 +297,7 @@ struct Index {
 
 3. 广告等内容的时长设置
 
-   对于有前贴广告、后贴广告的资源来说，建议这么处理：
+   对于有前贴片广告、后贴片广告的资源来说，建议按以下方式处理：
    - 播放广告时，单独设置广告的时长 duration。
    - 当进入到正片播放的时候，则重新设置一次新的时长，以与广告进行区分。
 
@@ -360,7 +360,7 @@ struct Index {
 
 ### 播放状态信息
 
-播放状态信息[AVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avplaybackstate10)包括：当前媒体的播放状态（state）、播放位置（position）、播放倍速（speed）、缓冲时间（bufferedTime）、循环模式（loopMode）、是否收藏（isFavorite）、正在播放的媒体ID（activeItemId）、自定义媒体数据（extras）等。
+播放状态信息[AVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avplaybackstate10)包括：当前媒体的播放状态（state）、播放位置（position，包含elapsedTime已播放时长和updateTime更新时间戳）、播放倍速（speed）、缓冲时间（bufferedTime）、循环模式（loopMode）、是否收藏（isFavorite）、正在播放的媒体ID（activeItemId）、自定义媒体数据（extras）等。
 
 <!-- @[settingGeneralStateInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingGeneralStateInformation.ets) -->  
 
@@ -416,7 +416,7 @@ struct Index {
 
 > **说明：**
 >
-> 创建AVSession后，请先注册应用支持的控制命令，再激活 Session。 
+> 创建AVSession后，请先注册应用支持的控制命令，再激活Session。 
 
 音视频类应用支持的控制命令列表：
 
@@ -536,7 +536,7 @@ struct Index {
   
             // 设置支持的快进快退的时长设置给AVSession。
             let metadata: AVSessionManager.AVMetadata = {
-              assetId: '0', // Specified by the application, used to identify the media asset in the application media library.
+              assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
               title: 'TITLE',
               mediaImage: 'IMAGE',
               skipIntervals: AVSessionManager.SkipIntervals.SECONDS_10,
@@ -549,12 +549,12 @@ struct Index {
               // ...
             });
   
-            session.on('fastForward', (time ?: number) => {
+            session.on('fastForward', (time?: number) => {
               console.info(`on fastForward , do fastForward task`);
               // ...
               // do some tasks ···
             });
-            session.on('rewind', (time ?: number) => {
+            session.on('rewind', (time?: number) => {
               console.info(`on rewind , do rewind task`);
               // ...
               // do some tasks ···
@@ -719,8 +719,8 @@ struct Index {
           let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
           // ...
 
-          session.on('seek', (position: number) => {
-            console.info(`on seek , the time is ${JSON.stringify(position)}`);
+          session.on('seek', (time: number) => {
+            console.info(`on seek , the time is ${time}`);
             // ...
 
             // 由于应用内seek可能会触发较长的缓冲等待，可以先把状态设置为 Buffering。
@@ -742,7 +742,7 @@ struct Index {
             // 应用内更新新的位置后，也需要同步更新状态给系统。
             playbackState.state = AVSessionManager.PlaybackState.PLAYBACK_STATE_PLAY; // 播放状态。
             playbackState.position = {
-              elapsedTime: position, // 已经播放的位置，以ms为单位。
+              elapsedTime: time, // 已经播放的位置，以ms为单位。
               updateTime: new Date().getTime(), // 应用更新当前位置的时间戳，以ms为单位。
             }
             session.setAVPlaybackState(playbackState, (err) => {
@@ -775,7 +775,7 @@ struct Index {
 应用正确接入AVSession后，可以通过注册控制指令的方式来实现监听蓝牙、有线耳机的按键事件，AVSession提供了如下两种实现方式：
 - 方式一（推荐使用）：
 
- 应用按需[注册需要的控制指令](#控制命令的处理)，目前支持转换的AVSession控制指令如下：
+  应用可以根据[控制命令的处理](#控制命令的处理)按需注册需要的控制命令，目前支持转换的AVSession控制命令如下：
   | 控制命令 | 功能说明   |
   | ------  | -------------------------|
   | play    | 播放命令。 |
@@ -854,7 +854,7 @@ struct Index {
 
 - 方式二：
 
-  通过AVSession注册[on('handleKeyEvent')](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhandlekeyevent10)指令。该回调接口会直接转发媒体按键事件[KeyEvent](../../reference/apis-input-kit/js-apis-keyevent.md)。应用需要自行识别按键事件的类型，并响应事件实现对应的功能。目前支持转发的按键事件类型如下：
+  通过AVSession注册[on('handleKeyEvent')](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhandlekeyevent10)命令。该回调接口会直接转发媒体按键事件[KeyEvent](../../reference/apis-input-kit/js-apis-keyevent.md)。应用需要自行识别按键事件的类型，并响应事件实现对应的功能。目前支持转发的按键事件类型如下：
 
   | 按键类型([KeyCode](../../reference/apis-input-kit/js-apis-keycode.md#keycode)) | 功能说明   |
   | ------  | -------------------------|

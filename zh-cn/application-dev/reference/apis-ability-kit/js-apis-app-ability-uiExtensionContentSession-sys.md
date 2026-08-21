@@ -417,7 +417,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -491,7 +491,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -568,7 +568,7 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -658,7 +658,7 @@ Ability的终止方式包括以下几种情况：
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -737,7 +737,7 @@ Ability的终止方式包括以下几种情况：
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -820,7 +820,7 @@ Ability的终止方式包括以下几种情况：
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
