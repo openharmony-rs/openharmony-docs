@@ -384,7 +384,7 @@ ArkTS-Sta: getLineMetrics(lineNumber: int): LineMetrics | undefined
 
 | 类型                                       | 说明       |
 | ---------------------------------------- | -------- |
-| ArkTS-Dyn: [LineMetrics](#linemetrics12) <br> ArkTS-Sta: [LineMetrics](#linemetrics12) \| undefined | 行信息、文本样式信息、以及字体属性信息。<br>当行号小于0或超出实际行，返回无效值。当[LayoutManager](#layoutmanager12)没有和组件绑定时，返回无效值。 |
+| ArkTS-Dyn: [LineMetrics](#linemetrics12) <br> ArkTS-Sta: [LineMetrics](#linemetrics12) \| undefined | 行信息、文本样式信息、以及字体属性信息。<br>当行号小于0或超出实际行数，返回无效值。当[LayoutManager](#layoutmanager12)没有和组件绑定时，返回无效值。 |
 
 ### getRectsForRange<sup>14+</sup>
 
@@ -952,7 +952,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => void
 
-文本变换后回调。
+文本变化后回调。
 
 **ArkTS-Dyn起始版本：** 12
 
