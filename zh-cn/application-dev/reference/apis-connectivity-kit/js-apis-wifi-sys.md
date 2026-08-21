@@ -220,7 +220,7 @@ addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;)
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。 |
-  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当操作成功时，err为0，data为添加的网络配置ID，如果data值为-1，表示添加失败。当err为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当操作成功时，error为0，data为添加的网络配置ID，如果data值为-1，表示添加失败。当error为非0，表示处理出现错误。 |
 
 **示例：**
 

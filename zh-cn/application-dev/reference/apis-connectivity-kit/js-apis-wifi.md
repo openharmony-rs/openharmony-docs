@@ -284,7 +284,7 @@ addUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boolean&
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | 是 | WLAN配置信息。 |
-  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当操作成功时，err为0，data表示操作结果，true: 成功， false: 失败。如果err为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当操作成功时，异步错误对象error为0，data表示操作结果，true: 成功， false: 失败。如果异步错误对象error为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
@@ -397,7 +397,7 @@ removeUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boole
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | 是 | WLAN配置信息。 |
-  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当操作成功时，err为0，data表示操作结果，true: 成功， false: 失败。如果err为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当操作成功时，异步错误对象error为0，data表示操作结果，true: 成功， false: 失败。如果error 为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts

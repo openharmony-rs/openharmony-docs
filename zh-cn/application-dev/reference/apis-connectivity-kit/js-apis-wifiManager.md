@@ -243,7 +243,7 @@ getScanResults(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;&nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo)&gt;&gt; | 是 | 回调函数。当成功时，err为0，data为扫描到的热点；否则err为非0值，data为空。 |
+| callback | AsyncCallback&lt;&nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo)&gt;&gt; | 是 | 回调函数。当成功时，异步错误对象err为0，data为扫描到的热点；否则err为非0值，data为空。 |
 
 **错误码：**
 
@@ -555,7 +555,7 @@ WLAN配置信息。
 | netId<sup>22+</sup> | number | 否 | 是 | 分配的网络ID。 |
 | eapConfig<sup>10+</sup> | [WifiEapConfig](#wifieapconfig10) | 否 | 是 | 可扩展身份验证协议配置。只有securityType为WIFI_SEC_TYPE_EAP时需要填写。 |
 | wapiConfig<sup>12+</sup> | [WifiWapiConfig](#wifiwapiconfig12) | 否 | 是 | WAPI身份验证协议配置。只有securityType为WIFI_SEC_TYPE_WAPI_CERT或WIFI_SEC_TYPE_WAPI_PSK时需要填写。 |
-| showNoInternetDialog | boolean | 否 | 是 | 当首次网络探测检测到无互联网连接时，是否显示提示框。若为false，默认网络绑定到蜂窝网络，不显示提示框；若为true，显示无互联网连接提示框，提示用户选择默认网络绑定。默认值为true。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| showNoInternetDialog | boolean | 否 | 是 | 当首次网络探测检测到无互联网连接时，是否显示提示框。若为false，默认网络绑定到蜂窝网络，不显示提示框；若为true，显示无互联网连接提示框，提示用户选择默认网络绑定。默认值为true。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 
 ## WifiEapConfig<sup>10+</sup>
 
@@ -781,7 +781,7 @@ addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&g
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
-| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。err为0时：操作成功，data为添加的网络配置ID，如果data值为-1，表示添加失败。<br /> err为非0值时：操作出现错误。 |
+| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。error为0时：操作成功，data为添加的网络配置ID，如果data值为-1，表示添加失败。<br /> error为非0值时：操作出现错误。 |
 
 **错误码：**
 
@@ -888,7 +888,7 @@ removeCandidateConfig(networkId: number, callback: AsyncCallback&lt;void&gt;): v
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | networkId | number | 是 | 网络配置ID。 |
-  | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当操作成功时，err为0。如果err为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当操作成功时，error为0。如果error为非0，表示处理出现错误。 |
 
 **错误码：**
 
@@ -1243,7 +1243,7 @@ addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;)
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。如果bssidType无指定值，则bssidType默认为随机设备地址类型。 |
-| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当操作成功时，err为0，data为添加的网络配置ID，如果data值为-1，表示添加失败。当操作错误，err为非0值。 |
+| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当操作成功时，error为0，data为添加的网络配置ID，如果data值为-1，表示添加失败。当操作错误，error为非0值。 |
 
 **错误码：**
 
@@ -1457,7 +1457,7 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiLinkedInfo](#wifilinkedinfo)&gt; | 是 | 回调函数。当获取成功时，err为0，data表示WLAN连接信息。如果err为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[WifiLinkedInfo](#wifilinkedinfo)&gt; | 是 | 回调函数。当获取成功时，error为0，data表示WLAN连接信息。如果error为非0，表示处理出现错误。 |
 
 **错误码：**
 
@@ -2184,7 +2184,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;[WifiP2pGroupInfo](#wifip2pgroupinfo)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示当前组信息。如果error为非0，表示处理出现错误。如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的deviceAddress为真实设备地址，否则为随机设备地址。 |
+| callback | AsyncCallback&lt;[WifiP2pGroupInfo](#wifip2pgroupinfo)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示当前组信息。如果err为非0，表示处理出现错误。如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的deviceAddress为真实设备地址，否则为随机设备地址。 |
 
 **错误码：**
 
@@ -2362,7 +2362,7 @@ API 11起：ohos.permission.GET_WIFI_INFO
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pDevice](#wifip2pdevice)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示本端设备信息。如果error为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[WifiP2pDevice](#wifip2pdevice)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示本端设备信息。如果err为非0，表示处理出现错误。 |
 
 **错误码：**
 
