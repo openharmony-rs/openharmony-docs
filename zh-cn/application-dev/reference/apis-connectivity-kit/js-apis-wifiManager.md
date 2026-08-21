@@ -6,7 +6,7 @@
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
 
-该模块主要提供WLAN基础功能（无线接入、无线加密、无线漫游等）、P2P（peer-to-peer）服务的基础功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
+该模块主要提供Wi-Fi基础功能（无线接入、无线加密、无线漫游等）、P2P（peer-to-peer）服务的基础功能和Wi-Fi消息通知的相应服务，让应用可以通过Wi-Fi和其他设备互联互通。
 
 > **说明：**
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -23,7 +23,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 isWifiActive(): boolean
 
-查询WLAN开关是否已激活。
+查询Wi-Fi开关是否已激活。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -94,7 +94,7 @@ enableWifi(): void
 
 disableWifi(): void
 
-关闭WLAN。
+关闭Wi-Fi。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 (ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用)
 
@@ -200,7 +200,7 @@ getScanResults(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 
 获取扫描结果，使用Promise异步回调。
 
-- 返回一个Promise对象，解析后得到一个包含多个WifiScanInfo对象的数组，每个对象表示一个WLAN网络的扫描信息。
+- 返回一个Promise对象，解析后得到一个包含多个WifiScanInfo对象的数组，每个对象表示一个Wi-Fi网络的扫描信息。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[wifiManager.getScanInfoList](#wifimanagergetscaninfolist10)替代。
@@ -231,7 +231,7 @@ getScanResults(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 
 获取扫描结果，使用callback异步回调。
 
-- 通过回调函数返回一个包含多个WifiScanInfo对象的数组，每个对象表示一个WLAN网络的扫描信息。
+- 通过回调函数返回一个包含多个WifiScanInfo对象的数组，每个对象表示一个Wi-Fi网络的扫描信息。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[wifiManager.getScanInfoList](#wifimanagergetscaninfolist10)替代。
@@ -303,7 +303,7 @@ getScanResults(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 
 getScanResultsSync(): &nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo)&gt;
 
-获取扫描结果，使用同步方式返回一个包含多个WifiScanInfo对象的数组，每个对象表示一个WLAN网络的扫描信息。
+获取扫描结果，使用同步方式返回一个包含多个WifiScanInfo对象的数组，每个对象表示一个Wi-Fi网络的扫描信息。
 
 > **说明：**
 >
@@ -419,7 +419,7 @@ getScanInfoList(): Array&lt;WifiScanInfo&gt;
 
 ## WifiScanInfo
 
-WLAN热点信息。
+Wi-Fi热点信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -430,13 +430,13 @@ WLAN热点信息。
 | bssid | string | 否 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | bssidType<sup>10+</sup>| [DeviceAddressType](#deviceaddresstype10) | 否 | 否 | 热点的BSSID类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | capabilities | string | 否 | 否 | 热点能力。 |
-| securityType | [WifiSecurityType](#wifisecuritytype) | 否 | 否 | WLAN加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| securityType | [WifiSecurityType](#wifisecuritytype) | 否 | 否 | Wi-Fi加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | rssi | number | 否 | 否 | 热点的信号强度(dBm)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| band | number | 否 | 否 | WLAN接入点的频段，1表示2.4GHz；2表示5GHz。 |
-| frequency | number | 否 | 否 | WLAN接入点的频率。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| channelWidth | number | 否 | 否 | WLAN接入点的带宽，具体定义参见[WifiChannelWidth](#wifichannelwidth)。 |
+| band | number | 否 | 否 | Wi-Fi接入点的频段，1表示2.4GHz；2表示5GHz。 |
+| frequency | number | 否 | 否 | Wi-Fi接入点的频率。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| channelWidth | number | 否 | 否 | Wi-Fi接入点的带宽，具体定义参见[WifiChannelWidth](#wifichannelwidth)。 |
 | centerFrequency0 | number | 否 | 否 | 热点的中心频率。 |
-| centerFrequency1 | number | 否 | 否 | 热点的中心频率。如果热点使用两个不重叠的WLAN信道，则返回两个中心频率，分别用centerFrequency0和centerFrequency1表示。 |
+| centerFrequency1 | number | 否 | 否 | 热点的中心频率。如果热点使用两个不重叠的Wi-Fi信道，则返回两个中心频率，分别用centerFrequency0和centerFrequency1表示。 |
 | infoElems | Array&lt;[WifiInfoElem](#wifiinfoelem)&gt; | 否 | 否 | 信息元素。 |
 | timestamp | number | 否 | 否 | 时间戳。 |
 | supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 热点支持的最高Wi-Fi级别。 |
@@ -444,9 +444,9 @@ WLAN热点信息。
 
 ## DeviceAddressType<sup>10+</sup>
 
-WLAN设备地址（MAC/BSSID）类型。是标识WLAN设备或接入点的唯一地址。
+Wi-Fi设备地址（MAC/BSSID）类型。是标识Wi-Fi设备或接入点的唯一地址。
 
-在WLAN相关操作中，如连接指定的WLAN网络、获取设备信息等，需要使用DeviceAddressType类型的参数。
+在Wi-Fi相关操作中，如连接指定的Wi-Fi网络、获取设备信息等，需要使用DeviceAddressType类型的参数。
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
@@ -510,7 +510,7 @@ WLAN设备地址（MAC/BSSID）类型。是标识WLAN设备或接入点的唯一
 
 ## WifiInfoElem
 
-WLAN热点信息。
+Wi-Fi热点信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -539,7 +539,7 @@ WLAN热点信息。
 
 ## WifiDeviceConfig
 
-WLAN配置信息。
+Wi-Fi配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -561,7 +561,7 @@ WLAN配置信息。
 
 可扩展身份验证协议配置信息。
 
-- WifiEapConfig是一个用于配置WLAN网络EAP认证的类型。
+- WifiEapConfig是一个用于配置Wi-Fi网络EAP认证的类型。
 - 包含EAP认证方式、第二阶段认证方式、身份信息、密码、证书等配置项。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -670,7 +670,7 @@ WAPI认证方式的枚举。
 
 ## WifiCategory<sup>12+</sup>
 
-表示热点支持的最高WLAN类别。可以用于识别和区分不同WLAN技术标准的热点。
+表示热点支持的最高Wi-Fi类别。可以用于识别和区分不同Wi-Fi技术标准的热点。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -684,7 +684,7 @@ WAPI认证方式的枚举。
 
 ## ConnectSettings
 
-连接WLAN设置信息。
+连接Wi-Fi设置信息。
 
 **起始版本：** 26.0.0
 
@@ -707,10 +707,10 @@ WAPI认证方式的枚举。
 
 addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
-添加候选网络配置，使用Promise异步回调，使用前先开启WLAN。
+添加候选网络配置，使用Promise异步回调，使用前先开启Wi-Fi。
 
-- 通过传入[WifiDeviceConfig](#wifideviceconfig)对象，配置WLAN网络的详细信息，如SSID、密码、安全类型等。
-- 返回一个Promise对象，解析后得到一个数字，表示配置的ID，用于区分和管理不同WLAN配置。
+- 通过传入[WifiDeviceConfig](#wifideviceconfig)对象，配置Wi-Fi网络的详细信息，如SSID、密码、安全类型等。
+- 返回一个Promise对象，解析后得到一个数字，表示配置的ID，用于区分和管理不同Wi-Fi配置。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -722,7 +722,7 @@ addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
+| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
 
 **返回值：**
 
@@ -767,8 +767,8 @@ addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&g
 
 添加候选网络配置，使用callback异步回调。
 
-- 将指定的WLAN设备配置添加为候选网络，添加后的网络在没有连接记录的情况下无法触发自动回连，可以通过[connectToCandidateConfig](#wifimanagerconnecttocandidateconfig)或[connectToCandidateConfigWithUserAction](#wifimanagerconnecttocandidateconfigwithuseraction20)方法实现候选网络连接，页面确认连接成功后，可实现自动回连。
-- 候选网络属于应用维度添加的网络配置，和系统网络配置是相互隔离的，在系统WLAN页面不可见。
+- 将指定的Wi-Fi设备配置添加为候选网络，添加后的网络在没有连接记录的情况下无法触发自动回连，可以通过[connectToCandidateConfig](#wifimanagerconnecttocandidateconfig)或[connectToCandidateConfigWithUserAction](#wifimanagerconnecttocandidateconfigwithuseraction20)方法实现候选网络连接，页面确认连接成功后，可实现自动回连。
+- 候选网络属于应用维度添加的网络配置，和系统网络配置是相互隔离的，在系统Wi-Fi页面不可见。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -780,7 +780,7 @@ addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&g
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
+| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
 | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。error为0时：操作成功，data为添加的网络配置ID，如果data值为-1，表示添加失败。<br /> error为非0值时：操作出现错误。 |
 
 **错误码：**
@@ -818,7 +818,7 @@ removeCandidateConfig(networkId: number): Promise&lt;void&gt;
 
 移除候选网络配置，使用Promise异步回调。
 
-- 从系统中删除指定网络ID的WLAN候选配置，清理不再需要的WLAN候选配置，释放系统资源。
+- 从系统中删除指定网络ID的Wi-Fi候选配置，清理不再需要的Wi-Fi候选配置，释放系统资源。
 - 只能移除通过[addCandidateConfig](#wifimanageraddcandidateconfig)添加的候选配置，移除后该候选网络将不再被系统自动连接。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
@@ -874,7 +874,7 @@ removeCandidateConfig(networkId: number, callback: AsyncCallback&lt;void&gt;): v
 
 移除指定的候选网络配置，使用callback异步回调。
 
-- 从系统中删除指定网络ID的WLAN候选配置，清理不再需要的WLAN候选配置，释放系统资源。
+- 从系统中删除指定网络ID的Wi-Fi候选配置，清理不再需要的Wi-Fi候选配置，释放系统资源。
 - 只能移除通过[addCandidateConfig](#wifimanageraddcandidateconfig)添加的候选配置，移除后该候选网络将不再被系统自动连接。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
@@ -922,7 +922,7 @@ removeDevice(id: number): void
 
 移除网络配置。
 
-- 通过网络配置ID删除已保存的WLAN网络配置信息。
+- 通过网络配置ID删除已保存的Wi-Fi网络配置信息。
 - 移除后对应的网络配置将不再可用，设备也不会再自动连接该网络。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 (ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用)
@@ -966,7 +966,7 @@ getCandidateConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 获取候选网络配置。
 
 - 候选网络是指曾经连接过或者手动添加的网络配置。
-- 该接口返回当前应用添加的所有已保存但当前未连接的WLAN候选网络配置。
+- 该接口返回当前应用添加的所有已保存但当前未连接的Wi-Fi候选网络配置。
 - 用于展示可连接的网络列表。
 
 **需要权限：**
@@ -1078,7 +1078,7 @@ connectToCandidateConfig(settings: ConnectSettings): Promise&lt;void&gt;
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | settings | [ConnectSettings](#connectsettings) | 是 | 连接WLAN设置信息。 |
+  | settings | [ConnectSettings](#connectsettings) | 是 | 连接Wi-Fi设置信息。 |
 
  **返回值：**
 
@@ -1121,7 +1121,7 @@ connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
 - 调用此接口时，系统将提示用户确认是否信任并连接到指定的候选网络。
 - 用户确认是连接过程中的必要步骤，未获得用户信任确认前，连接操作不会执行。
-- 建议在发起连接前先通过startScan接口触发一次WLAN扫描，通过[wifiManager.on('wifiScanStateChange')](#wifimanageronwifiscanstatechange)方法监听到扫描结果刷新后再连接，以提高连接成功率。
+- 建议在发起连接前先通过startScan接口触发一次Wi-Fi扫描，通过[wifiManager.on('wifiScanStateChange')](#wifimanageronwifiscanstatechange)方法监听到扫描结果刷新后再连接，以提高连接成功率。
 
 > **说明：**
 > 调用[wifiManager.connectToCandidateConfig](#wifimanagerconnecttocandidateconfig)连接候选网络时，不会返回用户响应结果。
@@ -1188,7 +1188,7 @@ addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。如果bssidType无指定值，则bssidType默认为随机设备地址类型。 |
+| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。如果bssidType无指定值，则bssidType默认为随机设备地址类型。 |
 
 **返回值：**
 
@@ -1242,7 +1242,7 @@ addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。如果bssidType无指定值，则bssidType默认为随机设备地址类型。 |
+| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。如果bssidType无指定值，则bssidType默认为随机设备地址类型。 |
 | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当操作成功时，error为0，data为添加的网络配置ID，如果data值为-1，表示添加失败。当操作错误，error为非0值。 |
 
 **错误码：**
@@ -1361,7 +1361,7 @@ connectToNetwork(networkId: number): void
 
 getSignalLevel(rssi: number, band: number): number
 
-查询WLAN信号强度。
+查询Wi-Fi信号强度。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1372,7 +1372,7 @@ getSignalLevel(rssi: number, band: number): number
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | rssi | number | 是 | 热点的信号强度(dBm)。 |
-  | band | number | 是 | WLAN接入点的频段，1表示2.4GHz；2表示5GHz。 |
+  | band | number | 是 | Wi-Fi接入点的频段，1表示2.4GHz；2表示5GHz。 |
 
 **返回值：**
 
@@ -1410,7 +1410,7 @@ getSignalLevel(rssi: number, band: number): number
 
 getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
-获取WLAN连接信息。使用Promise异步回调。
+获取Wi-Fi连接信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1426,7 +1426,7 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;[WifiLinkedInfo](#wifilinkedinfo)&gt; | Promise对象。表示WLAN连接信息。 |
+  | Promise&lt;[WifiLinkedInfo](#wifilinkedinfo)&gt; | Promise对象。表示Wi-Fi连接信息。 |
 
 **错误码：**
 
@@ -1443,7 +1443,7 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
-获取WLAN连接信息。使用callback异步回调。
+获取Wi-Fi连接信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 。 
 
@@ -1457,7 +1457,7 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiLinkedInfo](#wifilinkedinfo)&gt; | 是 | 回调函数。当获取成功时，error为0，data表示WLAN连接信息。如果error为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[WifiLinkedInfo](#wifilinkedinfo)&gt; | 是 | 回调函数。当获取成功时，error为0，data表示Wi-Fi连接信息。如果error为非0，表示处理出现错误。 |
 
 **错误码：**
 
@@ -1487,7 +1487,7 @@ wifiManager.getLinkedInfo().then((data: wifiManager.WifiLinkedInfo) => {
 
 getLinkedInfoSync(): WifiLinkedInfo
 
-获取WLAN连接信息，使用同步方式返回结果。
+获取Wi-Fi连接信息，使用同步方式返回结果。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 。 
 
@@ -1501,7 +1501,7 @@ getLinkedInfoSync(): WifiLinkedInfo
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | [WifiLinkedInfo](#wifilinkedinfo) | 表示WLAN连接信息。 |
+  | [WifiLinkedInfo](#wifilinkedinfo) | 表示Wi-Fi连接信息。 |
 
 **错误码：**
 
@@ -1527,7 +1527,7 @@ getLinkedInfoSync(): WifiLinkedInfo
 
 ## WifiLinkedInfo
 
-提供WLAN连接的相关信息。
+提供Wi-Fi连接的相关信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -1537,18 +1537,18 @@ getLinkedInfoSync(): WifiLinkedInfo
 | ssid | string | 否 | 否 | 热点的SSID（Service Set Identifier，服务集标识符），用于获取当前设备已连接的Wi-Fi热点的公开名称（即无线网络的名称），编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | bssid | string | 否 | 否 | 热点的BSSID（Basic Service Set Identifier，基本服务集标识符）即无线网络的MAC地址。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | rssi | number | 否 | 否 | 热点的信号强度(dBm)。<br>RSSI（Received Signal Strength Indicator，接收信号强度指示），其标准取值范围为-127dBm至0dBm。在正常使用场景下，常见有效范围为-100dBm（弱信号）至-30dBm（强信号），接近0dBm表示信号极强。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| band | number | 否 | 否 | WLAN接入点的频段，1表示2.4GHz；2表示5GHz。 |
-| linkSpeed | number | 否 | 否 | WLAN接入点的上行速度，单位Mbps。 |
-| rxLinkSpeed<sup>10+</sup> | number | 否 | 否 | WLAN接入点的下行速度，单位Mbps。 |
+| band | number | 否 | 否 | Wi-Fi接入点的频段，1表示2.4GHz；2表示5GHz。 |
+| linkSpeed | number | 否 | 否 | Wi-Fi接入点的上行速度，单位Mbps。 |
+| rxLinkSpeed<sup>10+</sup> | number | 否 | 否 | Wi-Fi接入点的下行速度，单位Mbps。 |
 | maxSupportedTxLinkSpeed<sup>10+</sup> | number | 否 | 否 | 当前支持的最大上行速率，单位Mbps。 |
 | maxSupportedRxLinkSpeed<sup>10+</sup> | number | 否 | 否 | 当前支持的最大下行速率，单位Mbps。 |
-| frequency | number | 否 | 否 | WLAN接入点的频率。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| isHidden | boolean | 否 | 否 | WLAN接入点是否是隐藏网络，true表示是隐藏网络，false表示不是隐藏网络。 |
-| isRestricted | boolean | 否 | 否 | WLAN接入点是否限制数据量，true表示限制，false表示不限制。 |
+| frequency | number | 否 | 否 | Wi-Fi接入点的频率。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| isHidden | boolean | 否 | 否 | Wi-Fi接入点是否是隐藏网络，true表示是隐藏网络，false表示不是隐藏网络。 |
+| isRestricted | boolean | 否 | 否 | Wi-Fi接入点是否限制数据量，true表示限制，false表示不限制。 |
 | macType | number | 否 | 否 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址。 |
 | macAddress | string | 否 | 否 | 设备的MAC地址。 |
-| ipAddress | number | 否 | 否 | WLAN连接的IP地址。<br>1. IP地址在WiFi连接信息和"设置 > 关于本机 > 状态信息"中可以查看。<br>2. ipAddress值为number类型，需要转换为点分十进制格式的IP地址（如192.168.1.1），具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4)。|
-| connState | [ConnState](#connstate) | 否 | 否 | WLAN连接状态。 |
+| ipAddress | number | 否 | 否 | Wi-Fi连接的IP地址。<br>1. IP地址在WiFi连接信息和"设置 > 关于本机 > 状态信息"中可以查看。<br>2. ipAddress值为number类型，需要转换为点分十进制格式的IP地址（如192.168.1.1），具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4)。|
+| connState | [ConnState](#connstate) | 否 | 否 | Wi-Fi连接状态。 |
 | channelWidth<sup>10+</sup> | [WifiChannelWidth](#wifichannelwidth) | 否 | 否 | 当前连接热点的信道带宽。 |
 | wifiStandard<sup>10+</sup> | [WifiStandard](#wifistandard10) | 否 | 否 | 当前路由器支持的最高Wi-Fi标准。 |
 | supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 当前设备连接Wi-Fi后支持的最高协议版本。 |
@@ -1571,26 +1571,26 @@ getLinkedInfoSync(): WifiLinkedInfo
 
 ## ConnState
 
-表示WLAN连接状态的枚举。
+表示Wi-Fi连接状态的枚举。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | SCANNING | 0 | 设备正在搜索可用的AP。 |
-| CONNECTING | 1 | 正在建立WLAN连接。 |
-| AUTHENTICATING | 2 | WLAN连接正在认证中。 |
-| OBTAINING_IPADDR | 3 | 正在获取WLAN连接的IP地址。 |
-| CONNECTED | 4 | WLAN连接已建立。 |
-| DISCONNECTING | 5 | WLAN连接正在断开。 |
-| DISCONNECTED | 6 | WLAN连接已断开。 |
-| UNKNOWN | 7 | WLAN连接建立失败。 |
+| CONNECTING | 1 | 正在建立Wi-Fi连接。 |
+| AUTHENTICATING | 2 | Wi-Fi连接正在认证中。 |
+| OBTAINING_IPADDR | 3 | 正在获取Wi-Fi连接的IP地址。 |
+| CONNECTED | 4 | Wi-Fi连接已建立。 |
+| DISCONNECTING | 5 | Wi-Fi连接正在断开。 |
+| DISCONNECTED | 6 | Wi-Fi连接已断开。 |
+| UNKNOWN | 7 | Wi-Fi连接建立失败。 |
 
 ## wifiManager.isConnected
 
 isConnected(): boolean
 
-查询WLAN是否已连接。
+查询Wi-Fi是否已连接。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1631,7 +1631,7 @@ isConnected(): boolean
 
 disconnect(): void
 
-断开WLAN连接。
+断开Wi-Fi连接。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 (ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或
    ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用)
@@ -1665,7 +1665,7 @@ disconnect(): void
 
 isFeatureSupported(featureId: number): boolean
 
-判断设备是否支持指定的WLAN特性。
+判断设备是否支持指定的Wi-Fi特性。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2118,7 +2118,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 ## WifiP2pLinkedInfo
 
-提供WLAN连接的相关信息。
+提供Wi-Fi连接的相关信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -2698,7 +2698,7 @@ stopDiscoverDevices(): void
 
 getMultiLinkedInfo(): &nbsp;Array&lt;WifiLinkedInfo&gt;
 
-获取MLO(Multi-Link Operation，多链路操作)WLAN连接信息。
+获取MLO(Multi-Link Operation，多链路操作)Wi-Fi连接信息。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2760,7 +2760,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
-注册WLAN状态改变事件，在业务退出时，要调用off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册Wi-Fi状态改变事件，在业务退出时，要调用off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2800,7 +2800,7 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WLAN状态改变事件。使用callback异步回调。
+取消注册Wi-Fi状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2846,7 +2846,7 @@ off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
 on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
-注册WLAN连接状态改变事件，在业务退出时，要调用off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册Wi-Fi连接状态改变事件，在业务退出时，要调用off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2883,7 +2883,7 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WLAN连接状态改变事件。使用callback异步回调。
+取消注册Wi-Fi连接状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3010,7 +3010,7 @@ off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
 on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
-注册WLAN接收信号强度(RSSI)变化事件，在业务退出时，要调用off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册Wi-Fi接收信号强度(RSSI)变化事件，在业务退出时，要调用off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3038,7 +3038,7 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WLAN接收信号强度(RSSI)变化事件。使用callback异步回调。
+取消注册Wi-Fi接收信号强度(RSSI)变化事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 

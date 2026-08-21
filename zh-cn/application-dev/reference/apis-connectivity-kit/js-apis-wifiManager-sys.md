@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-该模块主要提供WLAN基础功能、P2P（peer-to-peer）功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
+该模块主要提供Wi-Fi基础功能、P2P（peer-to-peer）功能和Wi-Fi消息通知的相应服务，让应用可以通过Wi-Fi和其他设备互联互通。
 
 > **说明：**
 >
@@ -24,7 +24,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 enableSemiWifi(): void
 
-使能WLAN半关闭（STA关闭，P2P、HML等功能可用），异步接口，需要通过注册"wifiStateChange"事件的回调来监听是否使能成功。
+使能Wi-Fi半关闭（STA关闭，P2P、HML等功能可用），异步接口，需要通过注册"wifiStateChange"事件的回调来监听是否使能成功。
 
 **系统接口：** 此接口为系统接口。
 
@@ -62,8 +62,8 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 设置是否始终允许扫描。
 
-- 该接口控制设备是否可以在WLAN开关关闭时支持热点扫描功能。
-- 启用后即使WLAN开关关闭，系统仍可以扫描附近的WLAN热点。
+- 该接口控制设备是否可以在Wi-Fi开关关闭时支持热点扫描功能。
+- 启用后即使Wi-Fi开关关闭，系统仍可以扫描附近的Wi-Fi热点。
 - 主要用于支持网络发现和位置定位等场景。
 
 **系统接口：** 此接口为系统接口。
@@ -145,7 +145,7 @@ getScanAlwaysAllowed(): boolean
 
 ## WifiDeviceConfig
 
-WLAN配置信息。
+Wi-Fi配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -293,7 +293,7 @@ connectToDevice(config: WifiDeviceConfig): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
+| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
 
 **错误码：**
 
@@ -327,7 +327,7 @@ connectToDevice(config: WifiDeviceConfig): void
 
 ## WifiLinkedInfo
 
-提供WLAN连接的相关信息。
+提供Wi-Fi连接的相关信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -569,7 +569,7 @@ updateNetwork(config: WifiDeviceConfig): number
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。 |
+  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。 |
 
 **返回值：**
 
@@ -811,7 +811,7 @@ try {
 
 ## DisconnectedReason <sup>10+</sup>
 
-表示WLAN断开原因的枚举，用于诊断网络连接问题和优化连接策略。
+表示Wi-Fi断开原因的枚举，用于诊断网络连接问题和优化连接策略。
 
 **系统接口：** 此接口为系统接口。
 
@@ -827,7 +827,7 @@ try {
 
 startPortalCertification(): void
 
-启动Portal认证流程，用于处理需要Web页面认证的公共WLAN网络（如酒店、机场、咖啡厅等场所的网络）。
+启动Portal认证流程，用于处理需要Web页面认证的公共Wi-Fi网络（如酒店、机场、咖啡厅等场所的网络）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -912,7 +912,7 @@ enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDevice
 | -------- | -------- | -------- | -------- |
 | isHiLinkEnable | boolean | 是 | 是否使能hiLink。true:使能，&nbsp;false:去使能。 |
 | bssid | string | 是 | 热点的MAC地址，例如：00:11:22:33:44:55。 |
-| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN的配置信息。config.bssid必须和第二个参数bssid保持一致。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
+| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi的配置信息。config.bssid必须和第二个参数bssid保持一致。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
 
 **错误码：**
 
@@ -1053,7 +1053,7 @@ try {
 
 isHotspotDualBandSupported(): boolean
 
-检查当前设备的WLAN热点功能是否支持双频段（同时支持2.4GHz和5GHz频段）。
+检查当前设备的Wi-Fi热点功能是否支持双频段（同时支持2.4GHz和5GHz频段）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1094,7 +1094,7 @@ try {
 
 isOpenSoftApAllowed(): boolean
 
-检查在某些情况下是否能够操作WLAN热点。当飞行模式开启时，如果系统不支持SoftAP和STA共存，也不支持信号桥接，则无法操作热点开关。
+检查在某些情况下是否能够操作Wi-Fi热点。当飞行模式开启时，如果系统不支持SoftAP和STA共存，也不支持信号桥接，则无法操作热点开关。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1135,7 +1135,7 @@ try {
 
 setHotspotConfig(config: HotspotConfig): void
 
-设置WLAN热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
+设置Wi-Fi热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1203,7 +1203,7 @@ try {
 
 getHotspotConfig(): HotspotConfig
 
-获取WLAN热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
+获取Wi-Fi热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1287,7 +1287,7 @@ try {
 
 ## StationInfo
 
-接入的设备信息。包含连接到WLAN网络的设备详细信息。
+接入的设备信息。包含连接到Wi-Fi网络的设备详细信息。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1399,7 +1399,7 @@ try {
 
 getHotspotBlockList(): Array&lt;StationInfo&gt;
 
-获取当前WLAN热点的黑名单设备列表。该接口返回被热点拉黑的设备信息列表，仅在设备作为热点(AP)模式下有效。
+获取当前Wi-Fi热点的黑名单设备列表。该接口返回被热点拉黑的设备信息列表，仅在设备作为热点(AP)模式下有效。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1442,7 +1442,7 @@ try {
 
 deletePersistentGroup(netId: number): void
 
-删除指定网络ID的永久WLAN组配置。该接口用于清除已保存的WLAN网络配置信息，使其不再自动连接。
+删除指定网络ID的永久Wi-Fi组配置。该接口用于清除已保存的Wi-Fi网络配置信息，使其不再自动连接。
 
 - 根据网络ID删除之前与P2P设备建立的永久组信息，后续与该P2P设备进行P2P连接时需要重新进行P2P协商。
 
@@ -1619,7 +1619,7 @@ try {
 
 on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 
-注册WLAN流变更事件，在业务退出时，要调用off(type: 'streamChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册Wi-Fi流变更事件，在业务退出时，要调用off(type: 'streamChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1697,7 +1697,7 @@ wifiManager.off("streamChange", recvStreamChangeFunc);
 
 on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
-注册WLAN设备配置更改事件，在业务退出时，要调用off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册Wi-Fi设备配置更改事件，在业务退出时，要调用off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1728,7 +1728,7 @@ on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WLAN设备配置更改事件。使用callback异步回调。
+取消注册Wi-Fi设备配置更改事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1775,7 +1775,7 @@ wifiManager.off("deviceConfigChange", recvDeviceConfigChangeFunc);
 
 on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
-注册WLAN热点STA加入事件，在业务退出时，要调用off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册Wi-Fi热点STA加入事件，在业务退出时，要调用off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1806,7 +1806,7 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
 off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册WLAN热点的STA加入事件。使用callback异步回调。
+取消注册Wi-Fi热点的STA加入事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1853,7 +1853,7 @@ wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
-注册WLAN热点STA离开事件，在业务退出时，要调用off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册Wi-Fi热点STA离开事件，在业务退出时，要调用off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1884,7 +1884,7 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
 off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册WLAN热点STA离开事件。使用callback异步回调。
+取消注册Wi-Fi热点STA离开事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1929,7 +1929,7 @@ wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
 ## WifiScanInfo
 
-提供WLAN扫描的相关信息。
+提供Wi-Fi扫描的相关信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 

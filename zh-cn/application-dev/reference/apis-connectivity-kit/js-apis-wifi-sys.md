@@ -6,7 +6,7 @@
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
 
-该模块主要提供WLAN基础功能（如启用或禁用WLAN、网络配置管理、热点管理）、P2P（peer-to-peer）功能（如设备发现、连接管理、永久组管理）和WLAN消息通知（如连接状态变更、热点设备接入或离开等事件通知）等服务，适用于设备通过WLAN进行网络连接、热点共享、点对点数据传输及互联互通等场景。
+该模块主要提供Wi-Fi基础功能（如启用或禁用Wi-Fi、网络配置管理、热点管理）、P2P（peer-to-peer）功能（如设备发现、连接管理、永久组管理）和Wi-Fi消息通知（如连接状态变更、热点设备接入或离开等事件通知）等服务，适用于设备通过Wi-Fi进行网络连接、热点共享、点对点数据传输及互联互通等场景。
 
 > **说明：**
 >
@@ -25,7 +25,7 @@ import wifi from '@ohos.wifi';
 
 enableWifi(): boolean
 
-启动WLAN。
+启动Wi-Fi。
 
 **系统接口：** 此接口为系统接口。
 
@@ -55,7 +55,7 @@ try {
 
 disableWifi(): boolean
 
-禁用WLAN。
+禁用Wi-Fi。
 
 **系统接口：** 此接口为系统接口。
 
@@ -98,7 +98,7 @@ addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。 |
+  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。 |
 
 **返回值：**
 
@@ -141,7 +141,7 @@ try {
 
 ## WifiDeviceConfig
 
-WLAN配置信息。
+Wi-Fi配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -219,7 +219,7 @@ addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;)
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。 |
+  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。 |
   | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当操作成功时，error为0，data为添加的网络配置ID，如果data值为-1，表示添加失败。当error为非0，表示处理出现错误。 |
 
 **示例：**
@@ -309,7 +309,7 @@ connectToDevice(config: WifiDeviceConfig): boolean
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。 |
+  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。 |
 
 **返回值：**
 
@@ -380,7 +380,7 @@ try {
 
 ## WifiLinkedInfo
 
-提供WLAN连接的相关信息。
+提供Wi-Fi连接的相关信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -583,7 +583,7 @@ updateNetwork(config: WifiDeviceConfig): number
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。 |
+  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。 |
 
 **返回值：**
 
