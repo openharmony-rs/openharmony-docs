@@ -1,9 +1,9 @@
 # @ohos.file.hash (文件哈希处理)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 该模块提供文件哈希处理能力，对文件内容进行哈希处理，适用于数据完整性校验、版本比对与内容去重等场景，可确保计算结果的不可变性与一致性，并支持流式处理大文件。
@@ -20,7 +20,7 @@ import { hash } from '@kit.CoreFileKit';
 
 ## 使用说明
 
-使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取沙箱路径的方式及其接口用法可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。
+使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径pathDir，获取沙箱路径的方式及其接口用法可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。
 
 ## hash.hash
 
