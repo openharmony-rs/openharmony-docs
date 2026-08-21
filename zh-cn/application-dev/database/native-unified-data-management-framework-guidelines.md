@@ -82,6 +82,27 @@ libudmf.so
 
 <!-- @[udmf_sample_head_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
 
+<div class="same-source-code">
+
+``` C++
+#include <cstdint>
+#include <cstdio>
+#include <cstring>
+#include <database/udmf/utd.h>
+#include <database/udmf/uds.h>
+#include <database/udmf/udmf.h>
+#include <database/udmf/udmf_meta.h>
+#include <database/udmf/udmf_err_code.h>
+#include <hilog/log.h>
+
+#undef LOG_TAG
+#define LOG_TAG "MY_LOG"
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp?same_code_link_text=udmf_sample_head_file" target="_blank" rel="nofollow">napi_init.cpp</a></p>
+
+</div>
+
 ## 通过不同方式获取纯文本类型数据
 
 下面以获取纯文本数据的查询场景为例，说明如何使用UTD。
