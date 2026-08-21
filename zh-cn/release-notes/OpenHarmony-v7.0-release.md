@@ -383,3 +383,5 @@ HiDebug新增支持注册内存导出监听器，用于在内存占用较高或�
 | [793](https://gitcode.com/openharmony/applications_photos/issues/793) | 进程com.ohos.photos低概率出现cppcrash，崩溃栈为libimage_effect_impl.so | 图库进入编辑模式出现黑屏，退出后重新进入编辑模式可恢复。 | OpenHarmony7.1 |
 | [6750](https://gitcode.com/openharmony/web_webview/issues/6750) | 进程com.ohos.note:render低概率出现cppcrash，崩溃栈为libarkweb_engine.so | 记事本应用白屏，重启应用可恢复。 | OpenHarmony7.1 |
 | [472](https://gitcode.com/openharmony/communication_bluetooth_service/issues/472) | 进程bluetooth_service低概率出现cppcrash，崩溃栈为libbtstack.z.so | 蓝牙服务会自动重启，用户无明显感知。 | OpenHarmony7.1 |
+
+<!--no_check-->
