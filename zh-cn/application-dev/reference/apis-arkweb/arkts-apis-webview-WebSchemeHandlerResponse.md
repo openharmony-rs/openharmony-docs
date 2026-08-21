@@ -56,6 +56,7 @@ struct WebComponent {
           response.setEncoding("utf-8")
           response.setHeaderByName("header1", "value1", false)
           response.setNetErrorCode(WebNetErrorList.NET_OK)
+          response.setCustomErrorCode(1001)
           console.info("[schemeHandler] getUrl:" + response.getUrl())
           console.info("[schemeHandler] getStatus:" + response.getStatus())
           console.info("[schemeHandler] getStatusText:" + response.getStatusText())
@@ -63,6 +64,7 @@ struct WebComponent {
           console.info("[schemeHandler] getEncoding:" + response.getEncoding())
           console.info("[schemeHandler] getHeaderByName:" + response.getHeaderByName("header1"))
           console.info("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
+          console.info("[schemeHandler] getCustomErrorCode:" + response.getCustomErrorCode())
 
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -389,6 +391,50 @@ getHeaderByName(name: string): string
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
 | string | 指定名称的响应头字段对应的值。|
+
+**示例：**
+
+完整示例代码参考[constructor](#constructor12)。
+
+## setCustomErrorCode
+
+setCustomErrorCode(customErrorCode: number): void
+
+给当前的Response设置自定义错误码。详情参考[WebResourceError.getCustomErrorCode](arkts-basic-components-web-WebResourceError.md#getcustomerrorcode)。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名   | 类型    |  必填  | 说明                       |
+| --------| ------- | ---- | ---------------------------|
+|  customErrorCode | number | 是   | 该响应的自定义错误码。 |
+
+**示例：**
+
+完整示例代码参考[constructor](#constructor12)。
+
+## getCustomErrorCode
+
+getCustomErrorCode(): number
+
+获取当前Response的自定义错误码。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型    | 说明                                     |
+| ------- | --------------------------------------- |
+| number | 当前Response的自定义错误码。|
 
 **示例：**
 

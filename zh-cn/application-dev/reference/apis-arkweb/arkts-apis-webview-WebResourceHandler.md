@@ -130,7 +130,7 @@ didFail(code: WebNetErrorList): void
 
 didFail(code: WebNetErrorList, completeIfNoResponse: boolean): void
 
-通知ArkWeb内核，被拦截请求将返回失败。若completeIfNoResponse为false，调用前需调用[didReceiveResponse](#didreceiveresponse12)传入响应头。若completeIfNoResponse为true，且调用前未调用[didReceiveResponse](#didreceiveresponse12)，则自动生成一个响应头，网络错误码为-104，详情参见[WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist)。
+通知ArkWeb内核，被拦截请求将返回失败。若completeIfNoResponse为false，调用前需调用[didReceiveResponse](#didreceiveresponse12)传入响应头。若completeIfNoResponse为true，且调用前未调用[didReceiveResponse](#didreceiveresponse12)，则自动生成一个响应头，详情参见[WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -198,7 +198,7 @@ struct WebComponent {
               }
 
               try {
-                // 直接调用didFail(WebNetErrorList.ERR_FAILED, true)，若此前未调用didReceiveResponse，系统将自动生成响应头，网络错误码为-104（对应ERR_CONNECTION_FAILED）
+                // 直接调用didFail(WebNetErrorList.ERR_FAILED, true)，若此前未调用didReceiveResponse，系统将自动生成响应头。
                 resourceHandler.didFail(WebNetErrorList.ERR_FAILED, true);
               } catch (error) {
                 // 当error.code为17100101(The errorCode is either ARKWEB_NET_OK or outside the range of error codes in WebNetErrorList)
@@ -210,6 +210,86 @@ struct WebComponent {
 
             this.schemeHandler.onRequestStop((request: webview.WebSchemeHandlerRequest) => {
               console.info('[schemeHandler] onRequestStop');
+            });
+
+            this.controller.setWebSchemeHandler('https', this.schemeHandler);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        .javaScriptAccess(true)
+        .domStorageAccess(true)
+    }
+  }
+}
+```
+
+## didFail
+
+didFail(code: WebNetErrorList, completeIfNoResponse: boolean, customErrorCode: number): void
+
+通知ArkWeb内核，被拦截请求应返回失败，并携带自定义错误码。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名   | 类型    |  必填  | 说明                       |
+| --------| ------- | ---- | ---------------------------|
+|  code | [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | 是   | 网络错误码。 |
+|  completeIfNoResponse | boolean | 是   | 值为true时，若之前未调用过[didReceiveResponse](#didreceiveresponse12)，则会自动生成一个response以完成此次网络请求；值为false时，若之前未调用过[didReceiveResponse](#didreceiveresponse12)，将等待应用调用[didReceiveResponse](#didreceiveresponse12)并传入response，不会直接完成此次网络请求。 |
+|  customErrorCode | number | 是   | 该请求的自定义错误码，会通过[onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive)事件直接传递给应用。详情参考[WebResourceError.getCustomErrorCode](arkts-basic-components-web-WebResourceError.md#getcustomerrorcode)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                              |
+| -------- | ------------------------------------- |
+| 17100021 | The resource handler is invalid. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview, WebNetErrorList } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          try {
+            this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+              console.info("[schemeHandler] onRequestStart");
+              try {
+                console.info("[schemeHandler] onRequestStart url:" + request.getRequestUrl());
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+
+              if (request.getRequestUrl().endsWith("example.com")) {
+                return false;
+              }
+
+              try {
+                resourceHandler.didFail(WebNetErrorList.ERR_FAILED, true, 1001);
+              } catch (error) {
+                console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              return true;
+            })
+
+            this.schemeHandler.onRequestStop((request: webview.WebSchemeHandlerRequest) => {
+              console.info("[schemeHandler] onRequestStop");
             });
 
             this.controller.setWebSchemeHandler('https', this.schemeHandler);
