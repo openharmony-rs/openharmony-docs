@@ -1614,7 +1614,7 @@ ArkTS-Sta: getSimLabel(slotId: int): Promise\<SimLabel\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[SimLabel](#simlabel20) \>| 以Promise形式返回获取SIM卡的标签信息。 |
+| Promise\<[SimLabel](#simlabel20) \>|Promise对象，返回获取SIM卡的标签信息。 |
 
 **错误码：**
 
