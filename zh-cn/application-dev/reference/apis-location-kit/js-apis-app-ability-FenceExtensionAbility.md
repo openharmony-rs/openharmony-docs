@@ -20,7 +20,6 @@ import { FenceExtensionAbility } from '@kit.LocationKit';
 ```
 
 ## 约束限制
-
 为保障系统安全性和稳定性，防止FenceExtensionAbility滥用系统资源，系统对其能力进行管控，不支持部分模块的引用，详情请参考[附录](#附录)。
 
 ## FenceExtensionAbility
@@ -31,17 +30,21 @@ import { FenceExtensionAbility } from '@kit.LocationKit';
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | context | [FenceExtensionContext](js-apis-app-ability-FenceExtensionContext.md) | 否 | 否 | 围栏服务上下文。 |
 
 ### onFenceStatusChange
 
-onFenceStatusChange(transition: geoLocationManager.GeofenceTransition, additions: Record&lt;string, string&gt;): void;
+onFenceStatusChange(transition: geoLocationManager.GeofenceTransition, additions: Record&lt;string, string&gt;): void
 
 接收系统通知的地理围栏事件，根据围栏事件类型和数据进行相应处理。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 | 参数名 |  类型 | 必填  | 说明  |
@@ -69,8 +72,8 @@ export class MyFenceExtensionAbility extends FenceExtensionAbility {
           abilityName: 'EntryAbility',
           parameters:
           {
-            "geofenceId": transition?.geofenceId,
-            "transitionEvent": transition?.transitionEvent,
+            'geofenceId': transition?.geofenceId,
+            'transitionEvent': transition?.transitionEvent,
           }
         } as Want
       ],
@@ -102,6 +105,8 @@ onDestroy(): void;
 接收FenceExtensionAbility的销毁事件并处理，会在FenceExtensionAbility销毁前回调。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **示例：**
 
