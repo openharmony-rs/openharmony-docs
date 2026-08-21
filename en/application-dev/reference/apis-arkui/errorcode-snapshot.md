@@ -16,9 +16,9 @@
 
 An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled.
 
-**Symptom**
+**Description**
 
-This error code is reported when image loading fails.
+This error code is reported when image loading fails. This error code is represented as a string type.
 
 **Possible Cause**
 
@@ -34,9 +34,9 @@ Set the **delay** parameter of a snapshot API to ensure that the image is loaded
 
 Timeout.
 
-**Symptom**
+**Description**
 
-This error code is reported when image loading timeout occurs.
+This error code is reported when image loading timeout occurs. This error code is represented as a string type.
 
 **Possible Cause**
 
@@ -52,9 +52,9 @@ Use the asynchronous API corresponding to the current snapshot API.
 
 Unsupported color space or dynamic range mode in snapshot options.
 
-**Symptom**
+**Description**
 
-The color space or dynamic range mode set in the snapshot option is not supported.
+This error code is reported when the color space or dynamic range mode set in the snapshot option is not supported. This error code is represented as a string type.
 
 **Possible Cause**
 
@@ -70,9 +70,9 @@ Change the color space or dynamic range mode to a supported value.
 
 isAuto(true) is not supported for offscreen node snapshots.
 
-**Symptom**
+**Description**
 
-The **isAuto** parameter of the color space or dynamic range mode is set to **true** for offscreen node snapshot.
+This error code is reported when the **isAuto** parameter of the color space or dynamic range mode is set to **true** for offscreen node snapshot. This error code is represented as a string type.
 
 **Possible Cause**
 

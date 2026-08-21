@@ -14,11 +14,11 @@
 
 **Error Message**
 
-the component cannot be focused.
+The node cannot be focused.
 
 **Description**
 
-This error code is reported when the current component is not focusable.
+This error code is reported when the current component is not focusable. This error code is represented as a string type.
 
 **Possible Causes**
 
@@ -36,7 +36,7 @@ This component has an unfocusable ancestor.
 
 **Description**
 
-This error code is reported when an ancestor of the current component is not focusable.
+This error code is reported when an ancestor of the current component is not focusable. This error code is represented as a string type.
 
 **Possible Causes**
 
@@ -50,16 +50,16 @@ Check whether the ancestor component is focusable and whether **focusable** is s
 
 **Error Message**
 
-the component is not on tree or does not exist.
+The node is not on the tree or does not exist.
 
 **Description**
 
-This error code is reported when the provided ID points to a non-existent, detached, or invisible component.
+This error code is reported when the provided ID points to a non-existent, detached, or invisible component. This error code is represented as a string type.
 
 **Possible Causes**
 
 - The provided ID is incorrect, or the component has been destroyed.
-
+ 
 - Focus is requested for a component that is not focusable. For details about such components, see [Component Focusability](../../ui/arkts-common-events-focus-event.md#component-focusability).
 
 **Solution**

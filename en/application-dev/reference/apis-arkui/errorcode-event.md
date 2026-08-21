@@ -14,11 +14,11 @@
 
 **Error Message**
 
-Component does not support prevent function.
+Component does not support the preventDefault method.
 
 **Description**
 
-This error code is reported when an attempt is made to call **preventDefault** on a component that does not support default event prevention.
+This error code is reported when an attempt is made to call **preventDefault** on a component that does not support default event prevention. This error code is represented as a string type.
 
 **Possible Causes**
 
@@ -36,7 +36,7 @@ The component does not support specific properties or events.
 
 **Description**
 
-This error code is reported when an attempt is made to use attributes or events that are not supported by the component.
+This error code is reported when an attempt is made to use attributes or events that are not supported by the component. This error code is represented as a string type.
 
 **Possible Causes**
 
@@ -54,7 +54,7 @@ Component is not a scroll container.
 
 **Description**
 
-This error code is reported when the component is not a scrollable container.
+This error code is reported when the component is not a scrollable container. This error code is represented as a string type.
 
 **Possible Causes**
 
@@ -72,7 +72,7 @@ Buffer is not large enough.
 
 **Description**
 
-This error code is reported when the buffer size is insufficient.
+This error code is reported when the buffer size is insufficient. This error code is represented as a string type.
 
 **Possible Causes**
 
@@ -90,7 +90,7 @@ The input event pointer is not a cloned event pointer.
 
 **Description**
 
-This error code is reported when the input event is not a cloned event.
+This error code is reported when the input event is not a cloned event. This error code is represented as a string type.
 
 **Possible Causes**
 
@@ -108,7 +108,7 @@ The component status is abnormal.
 
 **Description**
 
-This error code is reported when the component state is abnormal.
+This error code is reported when the component state is abnormal. This error code is represented as a string type.
 
 **Possible Causes**
 
@@ -122,11 +122,11 @@ Use the component that has been mounted but is not destroyed.
 
 **Error Message**
 
-No component hit to response to the event.
+No component is hit to respond to the event.
 
 **Description**
 
-This error code is reported when no component is found to handle the event.
+This error code is reported when no component is found to handle the event. This error code is represented as a string type.
 
 **Possible Causes**
 
@@ -144,7 +144,7 @@ The gesture recognizer type is not supported.
 
 **Description**
 
-This error code is reported when the gesture recognizer type is not supported.
+This error code is reported when the gesture recognizer type is not supported. This error code is represented as a string type.
 
 **Possible Causes**
 
