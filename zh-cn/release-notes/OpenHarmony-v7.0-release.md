@@ -367,7 +367,7 @@ HiDebug新增支持注册内存导出监听器，用于在内存占用较高或�
 
 | ISSUE单 | 问题描述 | 
 | ------- | ------- |
-| [468](https://gitcode.com/openharmony/systemabilitymgr_safwk/issues/468) | 进程foundation在wukong压测下出现内存泄露，5天内存占用增长100M左右。 |
+| [468](https://gitcode.com/openharmony/systemabilitymgr_safwk/issues/468) | 进程foundation在wukong压测下出现内存泄漏，5天内存占用增长100M左右。 |
 | [329](https://gitcode.com/openharmony/applications_contacts/issues/329)<br />[192](https://gitcode.com/openharmony/telephony_telephony_data/issues/192) |
 | [193](https://gitcode.com/openharmony/telephony_telephony_data/issues/193) | 首次启动联系人应用的时间超出基线要求。 |
 | [73886](https://gitcode.com/openharmony/arkui_ace_engine/issues/73886) | 开机完成时延较长，不满足基线要求。 |
