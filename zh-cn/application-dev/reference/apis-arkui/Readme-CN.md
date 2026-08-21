@@ -723,6 +723,7 @@
     - [native_render.h](capi-native-render-h.md)
     - [grid.h](capi-grid-h.md)
     - [list.h](capi-list-h.md)
+    - [list_item.h](capi-list-item-h.md)
     - [native_type.h](capi-native-type-h.md)
     - [native_type_visual.h](capi-native-type-visual-h.md)
     - [native_xcomponent_key_event.h](capi-native-xcomponent-key-event-h.md)
@@ -980,6 +981,7 @@
     - [ArkUI_ParallelGestureEvent](capi-arkui-nativemodule-arkui-parallelgestureevent.md)
     - [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)
     - [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)
+    - [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)
 - 错误码<!--arkui-arkts-errcode-->
   - UI界面<!--arkui-ui-arkts-errcode-->
     - [接口调用异常错误码](errorcode-internal.md)

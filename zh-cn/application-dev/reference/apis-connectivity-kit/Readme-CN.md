@@ -42,6 +42,7 @@
   <!--Del-->
   - [@ohos.bluetooth.a2dp (蓝牙a2dp模块)(系统接口)](js-apis-bluetooth-a2dp-sys.md)
   - [@ohos.bluetooth.access (蓝牙access模块)(系统接口)](js-apis-bluetooth-access-sys.md)
+   - [@ohos.bluetooth.bas (蓝牙bas模块)(系统接口)](js-apis-bluetooth-bas-sys.md)
   - [@ohos.bluetooth.baseProfile (蓝牙baseProfile模块)(系统接口)](js-apis-bluetooth-baseProfile-sys.md)
   - [@ohos.bluetooth.ble (蓝牙ble模块)(系统接口)](js-apis-bluetooth-ble-sys.md)
   - [@ohos.bluetooth.connection (蓝牙connection模块)(系统接口)](js-apis-bluetooth-connection-sys.md)
@@ -76,7 +77,7 @@
     - [oh_wifi.h](capi-oh-wifi-h.md)
 - 错误码<!--connectivity-arkts-errcode-->
   - [蓝牙服务子系统错误码](errorcode-bluetoothManager.md)
-  - [WIFI错误码](errorcode-wifi.md)
+  - [Wi-Fi错误码](errorcode-wifi.md)
   - [NFC错误码](errorcode-nfc.md)
   - [SE(secureElement)错误码](errorcode-se.md)
   - [融合短距服务子系统错误码](errorcode-fusionConnectivity.md)

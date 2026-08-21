@@ -25,6 +25,7 @@
 - **DLPFileAccess**：DLP 文件授权类型枚举，定义文件的访问级别。
 - **ActionType**：文件权限到期后执行动作的枚举。
 - **AccountType**：授权账号类型枚举。
+- **PluginCmd**：执行插件命令枚举。
 
 ### 核心接口类型
 
@@ -2062,5 +2063,80 @@ dlpPermission.getControlledAppLists().then((res) => {
   console.error(JSON.stringify(error));
 }).finally(() => {
   console.info("Completed getControlledAppLists operation.");
+})
+```
+
+## PluginCmd
+
+可以执行的插件命令枚举。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| CMD_BASE_INSTALL_PLUGIN | 0x1001 | 表示安装插件的命令。 |
+| CMD_BASE_INSTALL_CONFIG_FILE | 0x1002 | 表示安装配置文件的命令。 |
+| CMD_BASE_INSTALL_SUFFIX_FILTER_FILE | 0x1003 | 表示安装后缀过滤文件的命令。  |
+| CMD_BASE_UNINSTALL_PLUGIN | 0x1004 | 表示卸载插件的命令。 |
+| CMD_BASE_QUERY_TRANSPARENT_CRYPTO_STATUS | 0x1005 | 表示查询透明加解密状态的命令。 |
+| CMD_EVENT_REPORT_COMMON | 0x2001 | 表示向插件发送通用数据的命令。 |
+
+## dlpPermission.processPluginCommand
+
+processPluginCommand(code: PluginCmd, message: string): Promise&lt;string&gt;
+
+处理透明加解密场景下的插件相关命令。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.DLP_POLICY_MANAGER
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| code | [PluginCmd](#plugincmd) | 是 | 表示要进行处理的插件命令。|
+| message | string | 是 | 要进行处理的信息。长度不超过4096字节，超出此范围抛出错误码19100001。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;string&gt; | Promise对象，返回当前命令执行结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 19100001 | Invalid parameter value. |
+| 19100011 | The system ability works abnormally. |
+| 19100025 | The file is invalid. |
+
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const cmd: dlpPermission.PluginCmd = dlpPermission.PluginCmd.CMD_BASE_INSTALL_PLUGIN;
+const message: string = "testPath";
+dlpPermission.processPluginCommand(cmd, message).then((res) => {
+  console.info('res', JSON.stringify(res));
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+}).finally(() => {
+  console.info("Completed processPluginCommand operation.");
 })
 ```
