@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=a982f9d9be2aa48466f66955fc58f87c03f60f05 translatedAt=2026-08-20T07:25:35.052Z pushedAt=2026-08-21T01:46:49.564Z -->
+<!-- md-trans-meta sourceCommit=a982f9d9be2aa48466f66955fc58f87c03f60f05 translatedAt=2026-08-20T07:25:35.052Z pushedAt=2026-08-21T04:13:42.648Z -->
 
 ```c
 typedef struct {...} ArkUI_NativeGestureAPI_1
