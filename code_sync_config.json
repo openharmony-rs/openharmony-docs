@@ -44299,5 +44299,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/form/arkts-ui-liveform-sceneanimation-development.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":81,
+						"name":"liveform_modulejson5",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
