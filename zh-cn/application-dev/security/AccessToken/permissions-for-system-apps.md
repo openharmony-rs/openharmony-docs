@@ -9078,6 +9078,20 @@
 
 **起始版本**：26.1.0
 
+## ohos.permission.vehicle.AutoWiredProjection
+
+允许应用使用有线投屏服务，以查询DP设备信息、投屏状态等。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 
 允许系统应用将下载模型的授权结果发送给模型管理服务。
