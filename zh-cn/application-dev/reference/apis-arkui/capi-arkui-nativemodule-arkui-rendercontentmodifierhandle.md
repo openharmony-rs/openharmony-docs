@@ -1,4 +1,4 @@
-# ArkUI_RenderContentModifierHandle
+# ArkUI_RenderContentModifier*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
