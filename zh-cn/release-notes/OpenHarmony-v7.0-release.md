@@ -253,3 +253,111 @@ HiDebug新增支持注册内存导出监听器，用于在内存占用较高或�
 - 支持来电全屏/横幅、铃声/振动。
 - 支持移动数据、APN、数据漫游等设置。
 - 支持飞行模式拨号提示、接近光防误触。
+
+
+## 配套关系
+
+**表1** 版本软件和工具配套关系
+
+| 软件 | 版本 | 备注 | 
+| -------- | -------- | -------- |
+| OpenHarmony | 7.0 Release | NA | 
+| Public SDK | Ohos_sdk_public 26.0.0.105 (API Version 26.0.0 Release) | 面向应用开发者提供，不包含需要使用系统权限的系统接口。通过DevEco Studio默认获取的SDK为Public SDK。 | 
+| HUAWEI DevEco Studio（可选） | 26.0.0 Release | OpenHarmony应用开发推荐使用。<br />*待发布*。 | 
+| HUAWEI DevEco Device Tool（可选） | 4.0 Release | OpenHarmony智能设备集成开发环境推荐使用。<br />[请点击这里获取](https://device.harmonyos.com/cn/develop/ide#download)。 | 
+| HarmonyOS SDK for OpenHarmony | 7.0 Release | 面向OpenHarmony生态提供的标准化开发工具套件，扩展了OpenHarmony SDK的能力。<br />详见[HarmonyOS SDK for OpenHarmony](https://gitcode.com/harmonyos-sdk-for-openharmony/docs/blob/master/README.md) | 
+
+
+### 前提条件
+
+1. 注册gitcode账号。
+
+2. 注册gitcode的SSH公钥，请参考[gitcode帮助中心](https://docs.gitcode.com/docs/help/home/user_center/security_management/ssh)。
+
+3. 安装[git客户端](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)和[git-lfs](https://gitcode.com/gh_mirrors/gi/git-lfs?source_module=search_result_repo)并配置用户信息。
+  
+   ```shell
+   git config --global user.name "yourname"
+   git config --global user.email "your-email-address"
+   git config --global credential.helper store
+   ```
+
+4. 执行如下命令安装gitcode的repo工具。
+
+   下述命令中的安装路径以"~/bin"为例，请用户自行创建所需目录。
+  
+   ```shell
+   mkdir ~/bin
+   curl https://raw.gitcode.com/gitcode-dev/repo/raw/main/repo-py3 -o ~/bin/repo
+   chmod a+x ~/bin/repo
+   pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
+   ```
+
+5. 将repo添加到环境变量。
+
+   ```shell
+   vim ~/.bashrc               # 编辑环境变量
+   export PATH=~/bin:$PATH     # 在环境变量的最后添加一行repo路径信息
+   source ~/.bashrc            # 应用环境变量
+   ```
+
+
+### 通过repo获取
+
+**方式一（推荐）**
+
+通过repo + ssh 下载（需注册公钥，请参考[gitcode帮助中心](https://docs.gitcode.com/docs/help/home/user_center/security_management/ssh)）。
+
+- 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
+   ```shell
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-7.0-Release --no-repo-verify
+   repo sync -c
+   repo forall -c 'git lfs pull'
+   ```
+   
+- 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
+   ```shell
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v7.0-Release --no-repo-verify
+   repo sync -c
+   repo forall -c 'git lfs pull'
+   ```
+
+**方式二**
+
+通过repo + https 下载。
+
+- 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
+   ```shell
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-7.0-Release --no-repo-verify
+   repo sync -c
+   repo forall -c 'git lfs pull'
+   ```
+   
+- 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
+   ```shell
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v7.0-Release --no-repo-verify
+   repo sync -c
+   repo forall -c 'git lfs pull'
+   ```
+
+### 从镜像站点获取
+
+**表2** 获取源码路径
+
+| 版本源码 | **版本信息** | **下载站点** | **SHA256校验码** | **软件包容量** |
+|---------------------------------------|------------|------------------------------------------------------------|------------------------------------------------------------|--------|
+| 全量代码（标准、轻量和小型系统）        | 7.0 Release    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/code-v7.0-Release.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/code-v7.0-Release.tar.gz.sha256) | 69.3 GB |
+| Hi3861解决方案（二进制）        | 7.0 Release    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/hispark_pegasus.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/hispark_pegasus.tar.gz.sha256) | 28.8 MB |
+| Hi3863解决方案（二进制）        | 7.0 Release    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/hispark_pegasus_3863.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/hispark_pegasus_3863.tar.gz.sha256) | 8.0 MB |
+| Hi3861 64K解决方案（二进制）        | 7.0 Release    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/hispark_pegasus_64k.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/hispark_pegasus_64k.tar.gz.sha256) | 7.9 MB |
+| Hi3863 64K解决方案（二进制）        | 7.0 Release    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/hispark_pegasus_3863_64k.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/hispark_pegasus_3863_64k.tar.gz.sha256) | 3.0 MB |
+| Hi3516解决方案-LiteOS（二进制） | 7.0 Release    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/hispark_taurus_LiteOS.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/hispark_taurus_LiteOS.tar.gz.sha256) | 359.7 MB |
+| Hi3516解决方案-Linux（二进制）  | 7.0 Release    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/hispark_taurus_Linux.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/hispark_taurus_Linux.tar.gz.sha256) | 238.5 MB |
+| RK3568标准系统解决方案（二进制）ROM包        | 7.0 Release    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/dayu200_standard_arm32_rom.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/dayu200_standard_arm32_rom.tar.gz.sha256) | 4.0 GB |
+| RK3568标准系统解决方案（二进制）XTS包        | 7.0 Release    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/dayu200_standard_arm32_xts.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/dayu200_standard_arm32_xts.tar.gz.sha256) | 4.4 GB |
+| P7885标准系统解决方案（二进制）ROM包        | 7.0 Release    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/dayu600_standard_arm32_rom.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/dayu600_standard_arm32_rom.tar.gz.sha256) | 6.0 GB |
+| P7885标准系统解决方案（二进制）XTS包        | 7.0 Release    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/dayu600_standard_arm32_xts.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/dayu600_standard_arm32_xts.tar.gz.sha256) | 4.5 GB |
+| 标准系统Public SDK包（Mac）             | 26.0.0.105 | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/ohos-sdk-mac-public.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/ohos-sdk-mac-public.tar.gz.sha256) | 1.3 GB |
+| 标准系统Public SDK包（Mac-M1）             | 26.0.0.105  | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/L2-SDK-MAC-M1-PUBLIC.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/L2-SDK-MAC-M1-PUBLIC.tar.gz.sha256) | 1.2 GB |
+| 标准系统Public SDK包（Windows/Linux）   | 26.0.0.105   | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/ohos-sdk-windows_linux-public.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/ohos-sdk-windows_linux-public.tar.gz.sha256) | 3.0 GB |
+
