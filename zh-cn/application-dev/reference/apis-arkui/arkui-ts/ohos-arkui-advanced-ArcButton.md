@@ -66,12 +66,12 @@ ArcButton({ options: ArcButtonOptions })
 | status           | [ArcButtonStatus](#arcbuttonstatus)                          | 否  | 否  | 弧形按钮状态。<br/>默认值：ArcButtonStatus.NORMAL。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | label     | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 否  | 弧形按钮显示文本。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | backgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否   | 否  | 弧形按钮背景模糊能力。<br/>默认值：BlurStyle.NONE。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| backgroundColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否  | 否  | 弧形按钮背景颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.Black。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| shadowColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否  | 否  | 弧形按钮阴影颜色。<br/>默认值：Color.Black。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| backgroundColor  | ColorMetrics  | 否  | 否  | 弧形按钮背景颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.Black。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| shadowColor      | ColorMetrics  | 否  | 否  | 弧形按钮阴影颜色。<br/>默认值：Color.Black。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | shadowEnabled    | boolean                                                      | 否  | 否  | 弧形按钮阴影开关。<br/>默认值：false<br/>值为true时，显示阴影。值为false时，不显示阴影。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 否  | 弧形按钮文本大小，单位：fp。<br/>默认值：19fp。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| fontColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 否  | 弧形按钮文本颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.White。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| pressedFontColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否  | 否  | 弧形按钮按下文本颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.White。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| fontSize | LengthMetrics | 否  | 否  | 弧形按钮文本大小，单位：fp。<br/>默认值：19fp。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| fontColor | ColorMetrics  | 否   | 否  | 弧形按钮文本颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.White。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| pressedFontColor | ColorMetrics  | 否  | 否  | 弧形按钮按下文本颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.White。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | fontStyle | [FontStyle](ts-appendix-enums.md#fontstyle)                  | 否  | 否  | 弧形按钮文本样式。<br/>默认值：FontStyle.Normal。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | fontFamily | string \| [Resource](ts-types.md#resource)                   | 否  | 否  | 弧形按钮字体名。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | fontMargin | [LocalizedMargin](ts-types.md#localizedmargin12)             | 否  | 否  | 弧形按钮文本边距，单位：vp。<br/>默认值：{start: 24vp, top: 10vp, end: 24vp, bottom: 16vp}。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
@@ -108,12 +108,12 @@ ArcButton的默认样式或自定义样式参数。
 | status              | [ArcButtonStatus](#arcbuttonstatus)                          |否   |是   | 弧形按钮状态。<br/>默认值：ArcButtonStatus.NORMAL。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | label               | [ResourceStr](ts-types.md#resourcestr)                       |否 |是 | 弧形按钮显示文本。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | backgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否  | 是 | 弧形按钮背景模糊能力。<br/>默认值：BlurStyle.NONE。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| backgroundColor     | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否 | 是 | 弧形按钮背景颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.Black。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| shadowColor         | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否  | 是 | 弧形按钮阴影颜色。<br/>默认值：Color.Black。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| backgroundColor     | ColorMetrics  | 否 | 是 | 弧形按钮背景颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.Black。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| shadowColor         | ColorMetrics  | 否  | 是 | 弧形按钮阴影颜色。<br/>默认值：Color.Black。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | shadowEnabled       | boolean                                                      | 否 | 是 | 弧形按钮阴影开关。<br/>默认值：false<br/>值为true时，显示阴影。值为false时，不显示阴影。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| fontSize            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 弧形按钮文本大小，单位：fp。<br/>默认值：19fp。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| fontColor           | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  |否  |是  | 弧形按钮文本颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.White。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| pressedFontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否  | 是 | 弧形按钮按下文本颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.White。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| fontSize            | LengthMetrics | 否  | 是 | 弧形按钮文本大小，单位：fp。<br/>默认值：19fp。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| fontColor           | ColorMetrics  |否  |是  | 弧形按钮文本颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.White。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| pressedFontColor    | ColorMetrics  | 否  | 是 | 弧形按钮按下文本颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.White。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | fontStyle           | [FontStyle](ts-appendix-enums.md#fontstyle)                  | 否  | 是 | 弧形按钮文本样式。<br/>默认值：FontStyle.Normal。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | fontFamily          | string \| [Resource](ts-types.md#resource)                   |否  |是  | 弧形按钮字体名。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | fontMargin          | [LocalizedMargin](ts-types.md#localizedmargin12)             | 否  | 是 | 弧形按钮文本边距，单位：vp。<br/>默认值：{start: 24vp, top: 10vp, end: 24vp, bottom: 16vp}。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |

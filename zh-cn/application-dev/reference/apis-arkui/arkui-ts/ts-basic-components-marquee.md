@@ -15,7 +15,7 @@
 >
 >  为了不影响滚动帧率，建议在滚动类组件中Marquee的个数不超过4个，或者使用[Text](ts-basic-components-text.md)组件的[TextOverflow.MARQUEE](ts-appendix-enums.md#textoverflow)替代。
 >
-> 对于Marquee组件动态帧率的场景，可以使用[MarqueeDynamicSyncScene](../arkts-apis-uicontext-marqueedynamicsyncscene.md)接口实现。
+> 对于Marquee组件动态帧率的场景，可以使用MarqueeDynamicSyncScene接口实现。
 >
 > 在文本宽度小于跑马灯组件宽度时，使用[属性动画](ts-animatorproperty.md)实现滚动。
 
@@ -61,7 +61,7 @@ Marquee初始化参数。
 | loop<sup>8+</sup> | number | 否 | 是 | 设置重复滚动的次数，小于等于零时无限循环。<br>默认值：-1<br>**说明：**<br>ArkTS卡片上该参数设置任意值都仅在可见时滚动一次。当设置为大于0的有限次数且播放完毕后，不可以通过改变start参数重置滚动次数重新开始播放。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | fromStart<sup>8+</sup> | boolean | 否 | 是 | 设置文本的滚动方向。<br>true：表示文本从头部位置开始正向滚动；false：表示文本反向滚动。<br>默认值：true<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | src<sup>8+</sup> | string | 否 | 否 | 需要滚动的文本。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 两轮跑马灯之间的间距。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br> 默认值：跑马灯组件宽度。 <br>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| spacing<sup>23+</sup> | LengthMetrics | 否 | 是 | 两轮跑马灯之间的间距。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br> 默认值：跑马灯组件宽度。 <br>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | delay<sup>23+</sup> | number | 否 | 是 | 设置两轮滚动之间的延迟时间。<br>默认值：0 <br>取值范围：[0, +∞)，设置的值小于0时等价于设置0。<br>单位：毫秒<br>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## 属性
@@ -138,7 +138,7 @@ fontFamily(value: string | Resource)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 字体列表。默认字体'HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和注册自定义字体[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
+| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 字体列表。默认字体'HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和注册自定义字体loadFontSync。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
 
 ### allowScale
 

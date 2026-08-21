@@ -6,7 +6,7 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-EmbeddedComponent用于支持在当前页面嵌入本应用内或满足跨应用权限条件的其他[EmbeddedUIExtensionAbility](../../apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)提供的UI。EmbeddedUIExtensionAbility在独立进程中运行，完成页面布局和渲染。
+EmbeddedComponent用于支持在当前页面嵌入本应用内或满足跨应用权限条件的其他EmbeddedUIExtensionAbility提供的UI。EmbeddedUIExtensionAbility在独立进程中运行，完成页面布局和渲染。
 
 通常用于有进程隔离诉求的模块化开发场景。
 
@@ -48,7 +48,7 @@ EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type:
 
 | 参数名                | 类型                          | 必填 |说明   |
 | --------------------- | ---------------------------------------------------------- | ---- | ------------------------------------ |
-| loader                | import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | 是   | 要加载的EmbeddedUIExtensionAbility。 |
+| loader                | import('../api/@ohos.app.ability.Want').default | 是   | 要加载的EmbeddedUIExtensionAbility。 |
 | type                  | [EmbeddedType](ts-appendix-enums.md#embeddedtype12)                              | 是   | 提供方的类型，当前支持值为[EmbeddedType](ts-appendix-enums.md#embeddedtype12).EMBEDDED_UI_EXTENSION，表示嵌入的是EmbeddedUIExtensionAbility提供的UI。                       |
 
 ### EmbeddedComponent
@@ -67,7 +67,7 @@ EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type:
 
 | 参数名                | 类型                          | 必填 |说明   |
 | --------------------- | ---------------------------------------------------------- | ---- | ------------------------------------ |
-| loader                | import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | 是   | 要加载的EmbeddedUIExtensionAbility。 |
+| loader                | import('../api/@ohos.app.ability.Want').default | 是   | 要加载的EmbeddedUIExtensionAbility。 |
 | type                  | [EmbeddedType](ts-appendix-enums.md#embeddedtype12)                              | 是   | 提供方的类型，当前支持值为[EmbeddedType](ts-appendix-enums.md#embeddedtype12).EMBEDDED_UI_EXTENSION，表示嵌入的是EmbeddedUIExtensionAbility提供的UI。                       |
 | options| [EmbeddedOptions](#embeddedoptions) | 否   | 嵌入式组件的可选配置项，用于设置占位符、DPI跟随策略、窗口模式跟随策略等。详见[EmbeddedOptions](#embeddedoptions)。                     |
 
@@ -89,7 +89,7 @@ EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type:
 
 onTerminated(callback: import('../api/@ohos.base').Callback&lt;TerminationInfo&gt;)
 
-被拉起的EmbeddedUIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult)或者[terminateSelf](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself)正常退出时，触发本回调函数。
+被拉起的EmbeddedUIExtensionAbility通过调用terminateSelfWithResult或者terminateSelf正常退出时，触发本回调函数。
 
 > **说明：**
 >
@@ -103,7 +103,7 @@ onTerminated(callback: import('../api/@ohos.base').Callback&lt;TerminationInfo&g
 
 | 参数名   | 类型   | 必填 | 说明     |
 | -------  | ------ | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| callback | import('../api/@ohos.base').[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)> | 是 | 回调函数，入参用于接收EmbeddedUIExtensionAbility的返回结果，类型为[TerminationInfo](#terminationinfo)。 |
+| callback | import('../api/@ohos.base').Callback\<[TerminationInfo](#terminationinfo)> | 是 | 回调函数，入参用于接收EmbeddedUIExtensionAbility的返回结果，类型为[TerminationInfo](#terminationinfo)。 |
 
 > **说明：**
 >
@@ -128,7 +128,7 @@ onError(callback: import('../api/@ohos.base').ErrorCallback)
 
 | 参数名 | 类型                                                                         | 必填                                                                       | 说明      |
 | ------ | ---------------------------------------------------------------------------- | --------- | --------- |
-| callback    | import('../api/@ohos.base').[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是 | 回调函数，入参用于接收异常信息，类型为[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)，可通过参数中的`code`、`name`和`message`获取错误信息并做处理。 |
+| callback    | import('../api/@ohos.base').ErrorCallback | 是 | 回调函数，入参用于接收异常信息，类型为BusinessError，可通过参数中的`code`、`name`和`message`获取错误信息并做处理。 |
 
 > **说明：**
 >
@@ -143,7 +143,7 @@ onError(callback: import('../api/@ohos.base').ErrorCallback)
 
 onDrawReady(callback: Callback\<void>)
 
-被拉起的[EmbeddedUIExtensionAbility](../../apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md#embeddeduiextensionability)绘制第一帧时触发该回调。
+被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发该回调。
 
 > **说明：**
 >
@@ -161,7 +161,7 @@ onDrawReady(callback: Callback\<void>)
 
 | 参数名 | 类型                               | 必填 | 说明                                    |
 | ------ | ---------------------------------- | ---- | --------------------------------------- |
-| callback   | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<void> | 是   | 回调函数，在EmbeddedUIExtensionAbility绘制第一帧时触发。 |
+| callback   | Callback\<void> | 是   | 回调函数，在EmbeddedUIExtensionAbility绘制第一帧时触发。 |
 
 ## EmbeddedOptions
 
@@ -177,8 +177,8 @@ onDrawReady(callback: Callback\<void>)
 
 | 名称                               | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ---------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| placeholder                        | [ComponentContent](../js-apis-arkui-ComponentContent.md)     | 否   | 是   | 设置占位符，在EmbeddedComponent与EmbeddedUIExtensionAbility建立连接前显示。<br>默认值：null，表示不显示占位符。 |
-| areaChangePlaceholder              | Record\<string, [ComponentContent](../js-apis-arkui-ComponentContent.md)> | 否   | 是   | 设置尺寸变化占位符，在EmbeddedComponent尺寸发生变化并且内部渲染未完成时显示。key为尺寸变化场景类型（如“FOLD_TO_EXPAND”表示折叠展开场景），value为对应场景的占位符组件。当前支持的键值包括：FOLD_TO_EXPAND。传入不支持的键值时，该占位符不生效。默认值：null，表示不设置尺寸变化占位符。 |
+| placeholder                        | ComponentContent     | 否   | 是   | 设置占位符，在EmbeddedComponent与EmbeddedUIExtensionAbility建立连接前显示。<br>默认值：null，表示不显示占位符。 |
+| areaChangePlaceholder              | Record\<string, ComponentContent> | 否   | 是   | 设置尺寸变化占位符，在EmbeddedComponent尺寸发生变化并且内部渲染未完成时显示。key为尺寸变化场景类型（如“FOLD_TO_EXPAND”表示折叠展开场景），value为对应场景的占位符组件。当前支持的键值包括：FOLD_TO_EXPAND。传入不支持的键值时，该占位符不生效。默认值：null，表示不设置尺寸变化占位符。 |
 | dpiFollowStrategy                  | [EmbeddedDpiFollowStrategy](#embeddeddpifollowstrategy)    | 否   | 是   | 设置DPI，使其能够跟随宿主或EmbeddedUIExtensionAbility。<br> 默认值：FOLLOW_UI_EXTENSION_ABILITY_DPI，表示跟随EmbeddedUIExtensionAbility。 |
 | windowModeFollowStrategy | [EmbeddedWindowModeFollowStrategy](#embeddedwindowmodefollowstrategy) | 否   | 是   | 设置窗口模式，使其能够跟随宿主或EmbeddedUIExtensionAbility。<br> 默认值：FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE，表示窗口模式跟随EmbeddedUIExtensionAbility。<br>**起始版本：** 26.0.0 |
 
@@ -227,7 +227,7 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
 | 名称 | 类型                      | 只读 | 可选 | 说明                                                 |
 | ---- | -------------------------| ---- | ---- | ---------------------------------------------------- |
 | code | number                                                     | 否 | 否 | 被拉起的EmbeddedUIExtensionAbility退出时返回的结果码，由`terminateSelfWithResult`或者`terminateSelf`被调用时传入的数据决定。若通过`terminateSelf`退出，code取默认值0。 |
-| want | import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | 否 | 是 | 被拉起的EmbeddedUIExtensionAbility退出时返回的数据。若通过`terminateSelf`退出，则该值为undefined。   |
+| want | import('../api/@ohos.app.ability.Want').default | 否 | 是 | 被拉起的EmbeddedUIExtensionAbility退出时返回的数据。若通过`terminateSelf`退出，则该值为undefined。   |
 
 ## 示例（加载EmbeddedComponent）
 

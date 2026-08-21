@@ -345,7 +345,7 @@ backButtonIcon(value: string | PixelMap | Resource | SymbolGlyphModifier)
 
 | 参数名 | 类型                                                         | 必填 | 说明                 |
 | ------ | ------------------------------------------------------------ | ---- | -------------------- |
-| value  | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[SymbolGlyphModifier<sup>12+</sup>](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)    | 是   | 标题栏中返回键图标。 |
+| value  | string&nbsp;\|&nbsp;PixelMap&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[SymbolGlyphModifier<sup>12+</sup>](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)    | 是   | 标题栏中返回键图标。 |
 
 ### backButtonIcon<sup>19+</sup>
 
@@ -369,7 +369,7 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessi
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| icon  | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 是   | 标题栏中返回键图标。 |
+| icon  | string&nbsp;\|&nbsp;PixelMap&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 是   | 标题栏中返回键图标。 |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 返回键无障碍播报内容。</br>默认值：系统语言是中文时为“返回”，系统语言是英文时为“back”。 |
 
 ### hideNavBar<sup>9+</sup>
@@ -490,7 +490,7 @@ systemBarStyle(style: Optional&lt;SystemBarStyle&gt;)
 
 >**说明：**
 >
-> 1. 不建议混合使用systemBarStyle属性和window设置状态栏样式的相关接口，例如：[setWindowSystemBarProperties](../arkts-apis-window-Window.md#setwindowsystembarproperties9)。
+> 1. 不建议混合使用systemBarStyle属性和window设置状态栏样式的相关接口，例如：setWindowSystemBarProperties。
 > 2. 初次设置Navigation/NavDestination的systemBarStyle属性时，会备份当前状态栏样式用于后续的恢复场景。
 > 3. Navigation总是以首页（路由栈内没有NavDestination时）或者栈顶NavDestination设置的状态栏样式为准。
 > 4. Navigation首页或者任何栈顶NavDestination页面，如果设置了有效的systemBarStyle，则会使用设置的样式，反之如果之前已经备份了样式，则使用备份的样式，否则不做任何处理。
@@ -512,7 +512,7 @@ systemBarStyle(style: Optional&lt;SystemBarStyle&gt;)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)&gt; | 是   | 系统状态栏样式。 |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;SystemBarStyle&gt; | 是   | 系统状态栏样式。 |
 
 ### recoverable<sup>14+</sup>
 
@@ -607,7 +607,7 @@ Navigation双栏模式下，支持设置右侧页面显示默认占位页，占�
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| placeholder  |[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) | 是   |设置Navigation双栏模式下右侧的默认占位页。|
+| placeholder  |ComponentContent | 是   |设置Navigation双栏模式下右侧的默认占位页。|
 
 ### divider<sup>23+</sup>
 
@@ -1202,7 +1202,7 @@ removeByName(name: string): number
 
 removeByNavDestinationId(navDestinationId: string): boolean
 
-将路由栈内指定navDestinationId的NavDestination页面删除。navDestinationId可以在NavDestination的[onReady](ts-basic-components-navdestination.md#onready11)回调中获取，也可以在[NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo)中获取。
+将路由栈内指定navDestinationId的NavDestination页面删除。navDestinationId可以在NavDestination的[onReady](ts-basic-components-navdestination.md#onready11)回调中获取，也可以在NavDestinationInfo中获取。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2117,8 +2117,8 @@ Navigation分割线颜色及上下边距。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
 | scrollEffectType | [ScrollEffectType](#scrolleffecttype) | 否 | 是 | 标题栏滚动模糊效果类型。<br/>默认值：ScrollEffectType.COMMON_BLUR |
-| blurEffectiveStartOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 启用标题栏滚动模糊效果的最小滑动距离。当用户滑动距离超过该值时，开始应用模糊效果。<br/>不支持使用[LengthMetrics.percent](../js-apis-arkui-graphics.md#percent12)设置最小滑动距离。<br/>默认值：0vp |
-| blurEffectiveEndOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 达到标题栏最终模糊样式的最大滑动距离。当用户滑动距离达到该值时，模糊效果达到最终状态。<br/>不支持使用[LengthMetrics.percent](../js-apis-arkui-graphics.md#percent12)设置最大滑动距离。<br/>默认值：8vp |
+| blurEffectiveStartOffset | LengthMetrics | 否 | 是 | 启用标题栏滚动模糊效果的最小滑动距离。当用户滑动距离超过该值时，开始应用模糊效果。<br/>不支持使用LengthMetrics.percent设置最小滑动距离。<br/>默认值：0vp |
+| blurEffectiveEndOffset | LengthMetrics | 否 | 是 | 达到标题栏最终模糊样式的最大滑动距离。当用户滑动距离达到该值时，模糊效果达到最终状态。<br/>不支持使用LengthMetrics.percent设置最大滑动距离。<br/>默认值：8vp |
 
 ## NavigationTitleOptions<sup>11+</sup>
 
@@ -2136,23 +2136,23 @@ Navigation分割线颜色及上下边距。
 | backgroundBlurStyleOptions<sup>19+</sup>   | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明)        | 否    | 是    | 标题栏背景模糊选项。<br/>**说明：** <br/>只在设置了backgroundBlurStyle时生效。<br/>不建议与backgroundEffect同时使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | backgroundEffect<sup>19+</sup>   | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)        | 否    | 是    | 设置标题栏背景属性包括：模糊半径，亮度，饱和度，颜色等。<br/>**说明：** <br/>不建议与backgroundBlurStyleOptions同时使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | barStyle<sup>12+</sup>   | [BarStyle](#barstyle12枚举说明)        | 否    | 是    | 设置标题栏布局方式。<br/>默认值：BarStyle.STANDARD<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| paddingStart<sup>12+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | 否    | 是    | 标题栏起始端内间距。<br/>仅支持以下任一场景：<br/>1. 显示返回图标，即[hideBackButton](#hidebackbutton)为false；<br/>2. 使用非自定义标题，即[title](#title)类型为ResourceStr或NavigationCommonTitle。<br/>默认值：<br/>LengthMetrics.resource(`$r('sys.float.margin_left')`)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| paddingEnd<sup>12+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | 否    | 是    | 标题栏结束端内间距。<br/>仅支持以下任一场景：<br/>1. 使用非自定义菜单，即[menus](#menus)为Array&lt;NavigationMenuItem&gt;；<br/>2. 没有右上角菜单，且使用非自定义标题，即[title](#title)类型为ResourceStr或NavigationCommonTitle。<br/>默认值：<br/>LengthMetrics.resource(`$r('sys.float.margin_right')`)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| paddingStart<sup>12+</sup>   | LengthMetrics        | 否    | 是    | 标题栏起始端内间距。<br/>仅支持以下任一场景：<br/>1. 显示返回图标，即[hideBackButton](#hidebackbutton)为false；<br/>2. 使用非自定义标题，即[title](#title)类型为ResourceStr或NavigationCommonTitle。<br/>默认值：<br/>LengthMetrics.resource(`$r('sys.float.margin_left')`)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| paddingEnd<sup>12+</sup>   | LengthMetrics        | 否    | 是    | 标题栏结束端内间距。<br/>仅支持以下任一场景：<br/>1. 使用非自定义菜单，即[menus](#menus)为Array&lt;NavigationMenuItem&gt;；<br/>2. 没有右上角菜单，且使用非自定义标题，即[title](#title)类型为ResourceStr或NavigationCommonTitle。<br/>默认值：<br/>LengthMetrics.resource(`$r('sys.float.margin_right')`)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | mainTitleModifier<sup>13+</sup>   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否    | 是    | 主标题属性修改器。<br/>1. 通过Modifier设置的属性会覆盖系统默认的属性（如果Modifier设置了fontSize，maxFontSize，minFontSize任一属性，则系统设置的大小相关属性不生效，以开发者的设置为准）；<br/>2. 不设该属性或者设置了异常值，则恢复系统默认设置；<br/>3. [Free](#navigationtitlemode枚举说明)模式下设置字体大小时，原有滑动改变标题大小的效果失效。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | subTitleModifier<sup>13+</sup>   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否    | 是    | 子标题属性修改器。<br/>1. 通过Modifier设置的属性会覆盖系统默认的属性（如果Modifier设置了fontSize，maxFontSize，minFontSize任一属性，则系统设置的大小相关属性不生效，以开发者的设置为准）；<br/>2. 不设该属性或者设置了异常值，则恢复系统默认设置。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | enableHoverMode<sup>13+</sup>   | boolean | 否    | 是    | 是否响应悬停态。<br/>使用规则：<br/>1. 需满足Navigation为全屏大小；<br/>2. 标题栏显示模式为[Free](#navigationtitlemode枚举说明)时或者标题栏布局方式为[STANDARD](#barstyle12枚举说明)时，此接口设置无效。<br/>true：响应悬停态；false：不响应悬停态。<br/>默认值：false<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | scrollEffectOptions | [ScrollEffectOptions](#scrolleffectoptions) | 否 | 是 | 标题栏滚动模糊效果选项。默认值undefined，不启用标题栏的滚动模糊。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| systemMaterial | [Material](#material) | 否    | 是    | 标题栏系统材质。默认值为undefined。系统材质效果取决于设备算力，详见[系统材质](../arkts-apis-uimaterial.md)。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| systemMaterial | [Material](#material) | 否    | 是    | 标题栏系统材质。默认值为undefined。系统材质效果取决于设备算力，详见系统材质。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 > **systemMaterial属性说明**
 >
-> 标题栏材质生效的范围是：返回键背板，menu按钮背板，menu的更多弹窗的背板。当应用级系统材质开关配置为disable时，无论systemMaterial设置为何值，标题栏材质效果都不生效，应用级系统材质开关请参考[MaterialState](../arkts-apis-uimaterial.md#materialstate)。标题栏系统材质设置不同值的效果：
+> 标题栏材质生效的范围是：返回键背板，menu按钮背板，menu的更多弹窗的背板。当应用级系统材质开关配置为disable时，无论systemMaterial设置为何值，标题栏材质效果都不生效，应用级系统材质开关请参考MaterialState。标题栏系统材质设置不同值的效果：
 >
 > - undefined（默认值），应用级系统材质开关配置为default时，标题栏无材质效果；应用级系统材质开关配置为enable时，标题栏生效系统默认的沉浸式材质效果。
 >
-> - [Material.empty](../arkts-apis-uimaterial.md#empty)，标题栏无材质效果。
+> - Material.empty，标题栏无材质效果。
 >
-> - [Material](../arkts-apis-uimaterial.md#material)，应用级系统材质开关配置为default或者enable时，生效指定的材质效果。
+> - Material，应用级系统材质开关配置为default或者enable时，生效指定的材质效果。
 
 ## NavigationToolbarOptions<sup>11+</sup>
 
@@ -2265,7 +2265,7 @@ type SystemBarStyle = import('../api/@ohos.window').default.SystemBarStyle
 
 | 类型     | 说明               |
 | -------- | ------------------ |
-| import('../api/@ohos.window').default.[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)   | 状态栏文字颜色。<br/>默认值：`'#0xE5FFFFFF'`|
+| import('../api/@ohos.window').default.SystemBarStyle   | 状态栏文字颜色。<br/>默认值：`'#0xE5FFFFFF'`|
 
 ## Material
 
@@ -2283,7 +2283,7 @@ type Material = import('../api/@ohos.arkui.uiMaterial').default.Material
 
 | 类型     | 说明               |
 | -------- | ------------------ |
-| import('../api/@ohos.arkui.uiMaterial').default.[Material](../arkts-apis-uimaterial.md#material)   | 系统材质。|
+| import('../api/@ohos.arkui.uiMaterial').default.Material   | 系统材质。|
 
 ## HomePathInfo<sup>20+</sup>
 
@@ -5458,7 +5458,7 @@ export struct PageTwo {
 
 ### 示例18（设置Navigation可恢复）
 
-该示例演示如何使用[recoverable](#recoverable14)配置Navigation可恢复，需要开发者在应用模块初始化时启用[UIAbility](../../apis-ability-kit/js-apis-app-ability-uiAbility.md)的备份恢复功能，可参考[UIAbility备份恢复](../../../application-models/ability-recover-guideline.md)。
+该示例演示如何使用[recoverable](#recoverable14)配置Navigation可恢复，需要开发者在应用模块初始化时启用UIAbility的备份恢复功能，可参考[UIAbility备份恢复](../../../application-models/ability-recover-guideline.md)。
 
 从API version 14开始，新增recoverable接口。
 

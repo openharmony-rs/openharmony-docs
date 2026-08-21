@@ -49,7 +49,7 @@ AtomicServiceMenuBar的构造函数。
 
 | 参数名   | 类型                            | 必填   |  说明         |
 | ---- | ----------------------------- | ---- | -------------------- |
-| uiContext | [UIContext](../arkts-apis-uicontext-uicontext.md) | 是    | 当前元服务的上下文信息。 |
+| uiContext | UIContext | 是    | 当前元服务的上下文信息。 |
 
 ### setVisible
 

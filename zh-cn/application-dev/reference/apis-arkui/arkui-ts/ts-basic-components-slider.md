@@ -578,7 +578,7 @@ prefix(content: ComponentContent, options?: SliderPrefixOptions)
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| content | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 是   | 滑动条前缀的可视化内容，显示在滑动条起始位置。 |
+| content | ComponentContent | 是   | 滑动条前缀的可视化内容，显示在滑动条起始位置。 |
 | options | [SliderPrefixOptions](#sliderprefixoptions20) | 否   | 滑动条前缀的配置选项，用于设置与无障碍功能相关的属性。 <br/>默认值：null |
 
 ### suffix<sup>20+</sup>
@@ -597,7 +597,7 @@ suffix(content: ComponentContent, options?: SliderSuffixOptions)
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| content | [ComponentContent](../js-apis-arkui-ComponentContent.md)    | 是   | 滑动条后缀的可视化内容，显示在滑动条结束位置。 |
+| content | ComponentContent    | 是   | 滑动条后缀的可视化内容，显示在滑动条结束位置。 |
 | options | [SliderSuffixOptions](#slidersuffixoptions20) | 否   | 滑动条后缀的配置选项，用于设置与无障碍功能相关的属性。 <br/>默认值：null |
 
 ### showSteps<sup>20+</sup>
@@ -695,7 +695,7 @@ ColorMetricsLinearGradient的构造函数。
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
-| color | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 否 | 线性渐变颜色断点的颜色值。 |
+| color | ColorMetrics | 否 | 否 | 线性渐变颜色断点的颜色值。 |
 | offset | [Length](ts-types.md#length) | 否 | 否 | 线性渐变颜色断点的断点值，取值为0~1之间的比例值。小于0置为0，大于1置为1。 <br>**说明：** <br/>如果传入字符串类型且内容为数字，则转换为对应的数值。例如'10vp'转换为10，'10%'转换为0.1。 |
 
 ## SliderCustomContentOptions<sup>20+</sup>
@@ -1806,7 +1806,7 @@ struct SliderExample {
 
 ### 示例9（设置滑轨的背景颜色）
 
-通过[trackColorMetrics](#trackcolormetrics23)设置指定色域的渐变断点值。示例中的colorSpace使用了ColorSpace.DISPLAY_P3类型，需要对应窗口调用setWindowColorSpace接口，将当前窗口设置为广色域模式，设置窗口色域模式为广色域参照方法[setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace9)。
+通过[trackColorMetrics](#trackcolormetrics23)设置指定色域的渐变断点值。示例中的colorSpace使用了ColorSpace.DISPLAY_P3类型，需要对应窗口调用setWindowColorSpace接口，将当前窗口设置为广色域模式，设置窗口色域模式为广色域参照方法setWindowColorSpace。
 
 从API version 23开始，新增trackColorMetrics接口。
 

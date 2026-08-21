@@ -131,7 +131,7 @@ padding(padding: LengthMetrics): ToolBarModifier
 
 | 参数名  | 类型     | 必填 | 说明                                                                                  |
 | ------- |--------| ---- |-------------------------------------------------------------------------------------|
-| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 工具栏左右内边距，仅在子项数量小于5个时生效。<br/>工具栏默认在子项数量小于5个时padding为24vp，大于等于5个时为0vp。 |
+| padding | LengthMetrics | 是   | 工具栏左右内边距，仅在子项数量小于5个时生效。<br/>工具栏默认在子项数量小于5个时padding为24vp，大于等于5个时为0vp。 |
 
 **返回值：**
 
@@ -155,7 +155,7 @@ height(height: LengthMetrics): ToolBarModifier
 
 | 参数名  | 类型                              | 必填 | 说明                                 |
 | ------- |---------------------------------| ---- |------------------------------------|
-| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 工具栏高度。<br/>工具栏高度默认为56vp（不包含分割线）。 |
+| height | LengthMetrics | 是   | 工具栏高度。<br/>工具栏高度默认为56vp（不包含分割线）。 |
 
 **返回值：**
 

@@ -26,7 +26,7 @@ Failed to create the in-memory database.
 
 **处理步骤**
 
-使用[genSessionId](js-apis-data-distributedobject.md#distributeddataobjectgensessionid)生成随机的sessionId，避免和其他分布式数据对象使用相同的sessionId。
+使用genSessionId生成随机的sessionId，避免和其他分布式数据对象使用相同的sessionId。
 
 ## 15400002 参数错误
 
@@ -78,4 +78,4 @@ The sessionId of the distributed object has been set.
 
 **处理步骤**
 
-使用[setSessionId](js-apis-data-distributedobject.md#setsessionid9-2)取消已设置的sessionId，再进行设置资产或资产数组。
+使用setSessionId取消已设置的sessionId，再进行设置资产或资产数组。

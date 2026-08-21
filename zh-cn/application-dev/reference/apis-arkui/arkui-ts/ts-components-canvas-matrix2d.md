@@ -52,7 +52,7 @@ constructor(unit: LengthMetricsUnit)
 
 | 参数名 | 类型 | 必填 | 说明                              |
 | ------ | -------- | ---- | ------------------------------------- |
-| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 是   | 用来配置Matrix2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md)。<br>默认值：DEFAULT<br>异常值NaN和Infinity按默认值处理。|
+| unit  | LengthMetricsUnit | 是   | 用来配置Matrix2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md)。<br>默认值：DEFAULT<br>异常值NaN和Infinity按默认值处理。|
 
 ## 属性
 
@@ -73,7 +73,7 @@ constructor(unit: LengthMetricsUnit)
 
 >  **说明：**
 >  
->  可使用[px2vp](../arkts-apis-uicontext-uicontext.md#px2vp12)接口进行单位转换。
+>  可使用px2vp接口进行单位转换。
 
 **示例：**
 

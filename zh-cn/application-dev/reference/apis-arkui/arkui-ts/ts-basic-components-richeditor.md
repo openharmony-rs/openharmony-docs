@@ -76,7 +76,7 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 默认在输入控件失去焦点时，关闭自定义键盘。
 
-自定义键盘支持接续功能，使用[setCustomKeyboardContinueFeature](../arkts-apis-uicontext-uicontext.md#setcustomkeyboardcontinuefeature23)接口，可以设置自定义键盘之间切换时是否接续。
+自定义键盘支持接续功能，使用setCustomKeyboardContinueFeature接口，可以设置自定义键盘之间切换时是否接续。
 
 > **说明：**
 >
@@ -90,7 +90,7 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 | 参数名                | 类型                                        | 必填 | 说明                             |
 | --------------------- | ------------------------------------------- | ---- | -------------------------------- |
-| value                 | [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>23+</sup> \| undefined<sup>23+</sup> | 是   | 自定义键盘。                     <br/>传入undefined时默认使用系统键盘。|
+| value                 | [CustomBuilder](ts-types.md#custombuilder8) \| ComponentContent<sup>23+</sup> \| undefined<sup>23+</sup> | 是   | 自定义键盘。                     <br/>传入undefined时默认使用系统键盘。|
 | options<sup>12+</sup> | [KeyboardOptions](#keyboardoptions12) \| undefined<sup>23+</sup>      | 否   | 设置自定义键盘是否支持避让功能。 <br>传入undefined或省略时默认不支持避让。|
 
 ### bindSelectionMenu
@@ -315,7 +315,7 @@ editMenuOptions(editMenu: EditMenuOptions)
 
 与[bindSelectionMenu](#bindselectionmenu)的区别：editMenuOptions在系统默认菜单风格基础上添加扩展项，触发条件不变，适合仅需扩展菜单项的场景；bindSelectionMenu完全自定义菜单风格和触发条件，适合需要深度自定义菜单的场景。
 
-调用[disableMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)或[disableSystemServiceMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)接口屏蔽文本选择菜单内的系统服务菜单项时，editMenuOptions接口内回调方法[onCreateMenu](./ts-text-common.md#oncreatemenu12)的入参列表中不包含被屏蔽的菜单选项。
+调用disableMenuItems或disableSystemServiceMenuItems接口屏蔽文本选择菜单内的系统服务菜单项时，editMenuOptions接口内回调方法[onCreateMenu](./ts-text-common.md#oncreatemenu12)的入参列表中不包含被屏蔽的菜单选项。
 
 >**说明：**
 >
@@ -523,7 +523,7 @@ scrollBarColor(color: Optional\<ColorMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                     |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)> | 是   | 设置组件滚动条颜色。<br />默认值：'#66182431'，显示为灰色。<br />**说明：** 设置异常值时按默认值处理。 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<ColorMetrics> | 是   | 设置组件滚动条颜色。<br />默认值：'#66182431'，显示为灰色。<br />**说明：** 设置异常值时按默认值处理。 |
 
 ### includeFontPadding<sup>23+</sup>
 
@@ -573,7 +573,7 @@ compressLeadingPunctuation(enabled: Optional\<boolean>)
 >
 >  行首标点符号默认不压缩。
 >
-> 支持压缩的标点符号，请参考[ParagraphStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)的行首压缩的标点范围。
+> 支持压缩的标点符号，请参考ParagraphStyle的行首压缩的标点范围。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -630,7 +630,7 @@ orphanCharOptimization(enabled: Optional\<boolean>)
 
 适用于长文排版、电子书阅读等需要避免段落末行仅剩一个字影响阅读体验的场景。不通过该接口设置，默认不启用孤字优化。
 
-孤字优化通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。启用后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[RichEditorParagraphStyle](#richeditorparagraphstyle11)的wordBreak属性为非BREAK_ALL并且待排版文本首个[TextStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)的[locale](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)为“zh-Hans”或“zh-Hant”时生效。
+孤字优化通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。启用后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[RichEditorParagraphStyle](#richeditorparagraphstyle11)的wordBreak属性为非BREAK_ALL并且待排版文本首个TextStyle的locale为“zh-Hans”或“zh-Hant”时生效。
 
 **起始版本：** 26.0.0
 
@@ -986,7 +986,7 @@ onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
 调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
 
 <!--Del-->
-从API版本26.0.0开始，在输入框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20)设置键盘的样式。<!--DelEnd-->
+从API版本26.0.0开始，在输入框将要绑定输入法前，可以通过`UIContext`的系统接口setKeyboardAppearanceConfig设置键盘的样式。<!--DelEnd-->
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1192,7 +1192,7 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 | 名称               | 类型                                                                   | 只读 | 可选  | 说明               |
 |------------------|-------------------------------------------------------------------|-----|-------|-----------|
 | spanPosition     | [RichEditorSpanPosition](#richeditorspanposition)                 | 否 | 否   | Span位置。|
-| valuePixelMap    | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)                    | 否 | 是   | 图片内容。|
+| valuePixelMap    | PixelMap                    | 否 | 是   | 图片内容。|
 | valueResourceStr | [ResourceStr](ts-types.md#resourcestr)                            | 否 | 是   | 图片资源id。|
 | imageStyle       | [RichEditorImageSpanStyleResult](#richeditorimagespanstyleresult) | 否 | 否 | 图片样式。|
 | offsetInSpan     | [number, number] | 否 | 否 | Span里图片的起始和结束位置。|
@@ -1577,7 +1577,7 @@ addImageSpan(value: PixelMap | ResourceStr, options?: RichEditorImageSpanOptions
 
 | 参数名     | 类型                                     | 必填   | 说明  |
 | ------- | ---------------------------------------- | ---- | ----- |
-| value   | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [ResourceStr](ts-types.md#resourcestr) | 是    | 图片内容。 |
+| value   | PixelMap \| [ResourceStr](ts-types.md#resourcestr) | 是    | 图片内容。 |
 | options | [RichEditorImageSpanOptions](#richeditorimagespanoptions) | 否 | 图片选项。<br>当需要设置图片样式、偏移位置或段落样式时传入此参数；不传入时，图片将使用默认样式插入到内容末尾。|
 
 **返回值：**
@@ -2027,7 +2027,7 @@ SymbolSpan样式选项。
 
 | 名称       | 类型                                      | 只读 | 可选   | 说明             |
 | -------- | ---------------------------------------- | ---- | ---------|----- |
-| pixelMap | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)  | 否 | 否    | 图片内容。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| pixelMap | PixelMap  | 否 | 否    | 图片内容。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | size     | \[[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)\]  | 否 | 否    | 图片大小，默认单位为vp。不支持设置百分比。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## RichEditorParagraphResult<sup>11+</sup>
@@ -2071,7 +2071,7 @@ SymbolSpan样式选项。
 | fontSize                |  [Length](ts-types.md#length) \| number  | 否 | 是    | 设置字体大小，Length为number类型时，使用fp单位。number类型取值范围：(0, +∞)。设置为0或负值时，按默认值处理。字体默认大小为16fp。不支持设置百分比字符串。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | fontStyle                | [FontStyle](ts-appendix-enums.md#fontstyle) | 否 | 是    | 字体样式。<br/>默认值：FontStyle.Normal。          <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | fontWeight               | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string | 否 | 是    | 字体粗细。<br>number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。超出范围时按默认值400生效。<br>string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"分别对应FontWeight中相应的枚举值。<br>默认值：FontWeight.Normal。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| fontFamily               | [ResourceStr](ts-types.md#resourcestr) | 否 | 是    | 设置字体列表，当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。默认字体:'HarmonyOS Sans'。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| fontFamily               | [ResourceStr](ts-types.md#resourcestr) | 否 | 是    | 设置字体列表，当前支持'HarmonyOS Sans'字体和注册自定义字体。默认字体:'HarmonyOS Sans'。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | decoration               | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface) | 否 | 是    | 设置文本装饰线的样式、颜色和粗细。<br/>type默认值：TextDecorationType.None <br/>color默认值：跟随字体颜色。<br/>style默认值：TextDecorationStyle.SOLID <br/>thicknessScale默认值：1.0 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | textShadow<sup>11+</sup> | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> | 否 | 是    | 设置文字阴影效果。<br>默认值：undefined，不设置文字阴影效果。<br>该接口支持以数组形式入参，实现多重文字阴影。<br>**说明：**<br>仅支持设置阴影模糊半径、颜色和偏移量，不支持智能取色。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | lineHeight<sup>12+</sup>    | number \| string \| [Resource](ts-types.md#resource) | 否 | 是    | 设置文本的文本行高。<br>默认值：不设置时自适应字体大小。<br>number类型取值范围：(0, +∞)，设置值不大于0时，不限制文本行高，自适应字体大小。number类型时单位为fp，不支持设置百分比字符串。当lineHeight设置值小于当前字号下文本渲染出的实际高度时，[fallbackLineSpacing](#fallbacklinespacing23)属性将生效。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -2079,7 +2079,7 @@ SymbolSpan样式选项。
 | fontFeature<sup>12+</sup> | string | 否 | 是 | 设置文字特性效果，比如数字等宽的特性。如果未设置，默认为变宽数字。设置无效字符保持默认。<br/>格式为：normal \| \<feature-tag-value\><br/>\<feature-tag-value\>的格式为：\<string\> \[ \<integer\> \| on \| off ]<br/>\<feature-tag-value\>的个数可以有多个，中间用','隔开。<br/>例如，使用等宽时钟数字的输入格式为："ss01" on。<br/>Font Feature当前支持的属性见[fontFeature](ts-basic-components-text.md#fontfeature12)属性列表。<br/>设置 Font Feature 属性，Font Feature 是 OpenType 字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。<br/>更多 Font Feature 能力介绍可参考 https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop 和 https://sparanoid.com/lab/opentype-features/<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | halfLeading<sup>18+</sup> | boolean |否 | 是    | 文本是否将行间距平分至行的顶部与底部。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | textBackgroundStyle<sup>18+</sup> | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明) | 否 | 是    | 文本背景样式。<br />默认值：<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| strokeWidth<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| number    | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是[PERCENT](../js-apis-arkui-graphics.md#lengthunit12)，当前设置不生效，作为0处理。<br>值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。<br>默认值：0。<br>单位：LengthMetrics类型时跟随LengthMetrics，number类型时是vp。<br>取值范围：(-∞, +∞)<br>与[shaderStyle](#richeditorparagraphstyle11)同时设置时，shaderStyle不生效。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| strokeWidth<sup>23+</sup> | LengthMetrics \| number    | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是PERCENT，当前设置不生效，作为0处理。<br>值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。<br>默认值：0。<br>单位：LengthMetrics类型时跟随LengthMetrics，number类型时是vp。<br>取值范围：(-∞, +∞)<br>与[shaderStyle](#richeditorparagraphstyle11)同时设置时，shaderStyle不生效。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | strokeColor<sup>23+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | 否   | 是 | 文本描边颜色。<br/>默认值：跟随字体颜色。<br/>设置异常值时跟随字体颜色。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 否 | 是 | 文本描边拐角样式。<br/>默认值：StrokeJoinStyle.MITER_JOIN。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
@@ -2379,7 +2379,7 @@ type OnHoverCallback = (status: boolean, event: HoverEvent) => void
 | 名称               | 类型                                                                   | 只读 | 可选  | 说明               |
 |------------------|-------------------------------------------------------------------|-----|----------|--------|
 | spanPosition     | [RichEditorSpanPosition](#richeditorspanposition)                 | 否 | 否   | Span位置。|
-| value            | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [ResourceStr](ts-types.md#resourcestr)  | 否 | 否   | 图片内容。|
+| value            | PixelMap \| [ResourceStr](ts-types.md#resourcestr)  | 否 | 否   | 图片内容。|
 | imageStyle       | [RichEditorImageSpanStyle](#richeditorimagespanstyle) | 否 | 是 | 图片样式。|
 
 ## RichEditorUrlStyle<sup>19+</sup>

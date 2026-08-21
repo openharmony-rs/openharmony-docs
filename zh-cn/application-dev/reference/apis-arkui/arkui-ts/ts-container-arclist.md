@@ -105,7 +105,7 @@ space(space: Optional\<LengthMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                               |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| space  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | 列表子项之间的间距。<br>默认值：LengthMetrics.vp(0)<br>ArcList子组件的[visibility](ts-universal-attributes-visibility.md#visibility)属性设置为None时不显示，但该子组件上下的space还会生效。 |
+| space  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;LengthMetrics&gt; | 是   | 列表子项之间的间距。<br>默认值：LengthMetrics.vp(0)<br>ArcList子组件的[visibility](ts-universal-attributes-visibility.md#visibility)属性设置为None时不显示，但该子组件上下的space还会生效。 |
 
 ### scrollBar
 
@@ -219,7 +219,7 @@ scrollBarWidth(width: Optional\<LengthMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | ArcList滚动条在按压态下的宽度。<br>默认值：LengthMetrics.vp(24)<br>非按压态宽度：LengthMetrics.vp(4)<br>设置为负值、undefined等异常值时，按滚动条的普通态宽度处理。<br>单位：vp |
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;LengthMetrics&gt; | 是   | ArcList滚动条在按压态下的宽度。<br>默认值：LengthMetrics.vp(24)<br>非按压态宽度：LengthMetrics.vp(4)<br>设置为负值、undefined等异常值时，按滚动条的普通态宽度处理。<br>单位：vp |
 
 ### scrollBarColor
 
@@ -235,7 +235,7 @@ scrollBarColor(color: Optional\<ColorMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                     |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 设置滚动条颜色。<br>默认值：ColorMetrics.numeric(0xA9FFFFFF) |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;ColorMetrics&gt; | 是   | 设置滚动条颜色。<br>默认值：ColorMetrics.numeric(0xA9FFFFFF) |
 
 ### flingSpeedLimit
 
@@ -406,7 +406,7 @@ onDidScroll(handler: Optional\<OnScrollCallback>)
 | ------------ | ------------------------------------------- | ---- | --- | ------------------------------------------------------------ |
 | initialIndex | number                                      | 否   | 是 | 设置当前ArcList初次加载时视窗起始位置显示的item的索引值。<br>默认值：0<br>**说明：** <br>设置为负数或超过了当前ArcList最后一个item的索引值时视为无效取值，无效取值按默认值显示。 |
 | scroller     | [Scroller](ts-container-scroll.md#scroller) | 否   | 是 | 可滚动组件的控制器。与ArcList绑定后，可以通过它控制ArcList的滚动。不设置时不绑定滚动控制器。<br>**说明：** <br>不允许和其他滚动类组件，如：[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。 |
-| header       | [ComponentContent](../js-apis-arkui-ComponentContent.md)                            | 否   | 是 | ArcList的头部组件，用于在列表顶部显示标题或自定义内容。不设置时不显示头部组件。                                               |
+| header       | ComponentContent                            | 否   | 是 | ArcList的头部组件，用于在列表顶部显示标题或自定义内容。不设置时不显示头部组件。                                               |
 
 ## ArcScrollIndexHandler
 

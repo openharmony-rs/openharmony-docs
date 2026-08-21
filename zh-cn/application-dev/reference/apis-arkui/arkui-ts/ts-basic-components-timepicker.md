@@ -529,7 +529,7 @@ type DateTimeOptions = import('../api/@ohos.intl').default.DateTimeOptions
 
 | 类型                                                         | 说明                                       |
 | ------------------------------------------------------------ | ------------------------------------------ |
-| import('../api/@ohos.intl').default.[DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated) | 创建时间、日期格式化对象时可设置的配置项。 |
+| import('../api/@ohos.intl').default.DateTimeOptions | 创建时间、日期格式化对象时可设置的配置项。 |
 
 ## OnTimePickerChangeCallback<sup>18+</sup>
 

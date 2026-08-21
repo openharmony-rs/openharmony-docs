@@ -114,7 +114,7 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 
 ## NativeXComponentParameters<sup>19+</sup>
 
-定义XComponent的具体配置参数。通过这种构造参数创建的XComponent，可以将其对应的[FrameNode](../js-apis-arkui-frameNode.md)对象传递至Native侧，使用NDK接口进行Surface生命周期的相关设置和[添加事件监听](../../../ui/ndk-add-component-events.md)。
+定义XComponent的具体配置参数。通过这种构造参数创建的XComponent，可以将其对应的FrameNode对象传递至Native侧，使用NDK接口进行Surface生命周期的相关设置和[添加事件监听](../../../ui/ndk-add-component-events.md)。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -138,7 +138,7 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
   > 
   > 对于SURFACE类型的XComponent组件，其背景色默认为不透明的纯黑色。在API version 18之前，该组件的[renderFit](./ts-universal-attributes-renderfit.md#renderfit18)通用属性仅支持设置为RenderFit.RESIZE_FILL；在API version 18及之后，支持所有的RenderFit枚举值。
   > 
-  > 对于使用[ArkUI NDK接口](../../../ui/ndk-access-the-arkts-page.md)创建的XComponent组件，不支持使用属性获取函数[getAttribute](../capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)获取其renderFit属性值。
+  > 对于使用[ArkUI NDK接口](../../../ui/ndk-access-the-arkts-page.md)创建的XComponent组件，不支持使用属性获取函数getAttribute获取其renderFit属性值。
   
 ### enableAnalyzer<sup>12+</sup>
 
@@ -219,11 +219,11 @@ hdrBrightness(brightness: number)
 hdrBrightness(brightness: number, type?: HdrType)
 
 用于调整组件显示HDR内容时的亮度。<br>
-当参数type设置为非[HdrType](#hdrtype24枚举说明).DEFAULT时，调用该接口前需先检查[Display](../js-apis-display.md#display)的hdrFormats属性是否包含对应的[HDRFormat](../../apis-arkgraphics2d/js-apis-hdrCapability.md#hdrformat)。<br>仅当hdrFormats包含对应的HDRFormat时，当前设备才支持对应的HDR类型，参数设置才会生效；否则将使用默认值[HdrType](#hdrtype24枚举说明).DEFAULT。<br>
+当参数type设置为非[HdrType](#hdrtype24枚举说明).DEFAULT时，调用该接口前需先检查Display的hdrFormats属性是否包含对应的HDRFormat。<br>仅当hdrFormats包含对应的HDRFormat时，当前设备才支持对应的HDR类型，参数设置才会生效；否则将使用默认值[HdrType](#hdrtype24枚举说明).DEFAULT。<br>
 其映射关系如下：
    | type取值 | hdrFormats需包含的HDRFormat |
    | -------- | -------- |
-   | [HdrType](#hdrtype24枚举说明).AIHDR | [HDRFormat](../../apis-arkgraphics2d/js-apis-hdrCapability.md#hdrformat).VIDEO_AIHDR |
+   | [HdrType](#hdrtype24枚举说明).AIHDR | HDRFormat.VIDEO_AIHDR |
 
 > **说明：**
 > 
@@ -642,7 +642,7 @@ getXComponentSurfaceRotation(): Required\<SurfaceRotationOptions>
 
 lockCanvas(): DrawingCanvas | null
 
-返回可用于向XComponent上绘制内容的画布对象。具体绘制方法请参考[Canvas](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
+返回可用于向XComponent上绘制内容的画布对象。具体绘制方法请参考Canvas。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 

@@ -235,7 +235,7 @@ setDragImage(pixelMap: PixelMap, offsetX: number,offsetY: number): boolean
 
 | 参数名      | 参数类型     | 必填   | 描述                                       |
 | -------- | -------- | ---- | ---------------------------------------- |
-| pixelMap | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 前端传入的图片资源。 |
+| pixelMap | PixelMap | 是    | 前端传入的图片资源。 |
 | offsetX  | number   | 是    | 相对于图片的横向偏移量。                             |
 | offsetY  | number   | 是    | 相对于图片的纵向偏移量。                            |
 

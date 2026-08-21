@@ -148,8 +148,8 @@ type ToolBarV2ItemAction = (index: number) => void
 | 名称                  | 类型                                                          | 只读 | 可选 | 说明                                                       |
 |:--------------------|:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
 | text                | [ResourceStr](ts-types.md#resourcestr)                      | 否  | 否  | 工具栏子项的文本。<br/>装饰器类型：@Trace                                                |
-| color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项的文本的颜色。<br/>默认值：$r('sys.color.font_primary')<br/>装饰器类型：@Trace       |
-| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项在激活态下文本的颜色。<br></div>默认值：$r('sys.color.font_emphasize')<br/>装饰器类型：@Trace |
+| color               | ColorMetrics | 否  | 是  | 工具栏子项的文本的颜色。<br/>默认值：$r('sys.color.font_primary')<br/>装饰器类型：@Trace       |
+| activatedColor | ColorMetrics | 否  | 是  | 工具栏子项在激活态下文本的颜色。<br></div>默认值：$r('sys.color.font_emphasize')<br/>装饰器类型：@Trace |
 
 ### constructor
 
@@ -182,8 +182,8 @@ ToolBarV2ItemText的构造函数。
 | 名称                  | 类型                                                          | 只读 | 可选 | 说明                                                       |
 | :------------------ |:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
 | text                | [ResourceStr](ts-types.md#resourcestr)                      | 否  | 否  | 工具栏子项的文本。                                                |
-| color          | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项的文本的颜色。<br/>默认值：$r('sys.color.font_primary')       |
-| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项在激活态下文本的颜色。<br/>默认值：$r('sys.color.font_emphasize') |
+| color          | ColorMetrics | 否  | 是  | 工具栏子项的文本的颜色。<br/>默认值：$r('sys.color.font_primary')       |
+| activatedColor | ColorMetrics | 否  | 是  | 工具栏子项在激活态下文本的颜色。<br/>默认值：$r('sys.color.font_emphasize') |
 
 ## ToolBarV2ItemImage
 
@@ -202,8 +202,8 @@ ToolBarV2ItemText的构造函数。
 | 名称                 | 类型                                                          | 只读 | 可选 | 说明                                                       |
 |:-------------------|:------------------------------------------------------------|:---|:---| :---------------------------------------------------------|
 | src                | [ResourceStr](ts-types.md#resourcestr)                      | 否  | 否 |  工具栏子项的图标。<br/>装饰器类型：@Trace                                                |
-| color              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是 |  工具栏子项的图标的颜色。<br/>默认值：$r('sys.color.icon_primary')<br/>装饰器类型：@Trace       |
-| activatedColor     | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是 | 工具栏子项在激活态下图标的颜色。<br/>默认值：$r('sys.color.icon_emphasize')<br/>装饰器类型：@Trace |
+| color              | ColorMetrics | 否  | 是 |  工具栏子项的图标的颜色。<br/>默认值：$r('sys.color.icon_primary')<br/>装饰器类型：@Trace       |
+| activatedColor     | ColorMetrics | 否  | 是 | 工具栏子项在激活态下图标的颜色。<br/>默认值：$r('sys.color.icon_emphasize')<br/>装饰器类型：@Trace |
 
 ### constructor
 
@@ -236,8 +236,8 @@ ToolBarV2ItemImage的构造函数。
 | 名称                  | 类型                                                          | 只读 | 可选 | 说明                                                       |
 |:--------------------|:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
 | src                 | [ResourceStr](ts-types.md#resourcestr)                      | 否  | 否  | 工具栏子项的图标。                                                |
-| color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项的图标的颜色。<br/>默认值：$r('sys.color.icon_primary')       |
-| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项在激活态下图标的颜色。<br/>默认值：$r('sys.color.icon_emphasize') |
+| color               | ColorMetrics | 否  | 是  | 工具栏子项的图标的颜色。<br/>默认值：$r('sys.color.icon_primary')       |
+| activatedColor | ColorMetrics | 否  | 是  | 工具栏子项在激活态下图标的颜色。<br/>默认值：$r('sys.color.icon_emphasize') |
 
 ## ToolBarV2ItemIconType
 
@@ -283,7 +283,7 @@ backgroundColor(backgroundColor: ColorMetrics): ToolBarV2Modifier
 
 | 参数名             | 类型                                                          | 必填 | 说明                                                                |
 | --------------- |-------------------------------------------------------------| -- | ----------------------------------------------------------------- |
-| backgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是  | 工具栏背景色。<br />默认背景色为\$r('sys.color.ohos\_id\_color\_toolbar\_bg')。 |
+| backgroundColor | ColorMetrics | 是  | 工具栏背景色。<br />默认背景色为\$r('sys.color.ohos\_id\_color\_toolbar\_bg')。 |
 
 **返回值：**
 
@@ -307,7 +307,7 @@ padding(padding: LengthMetrics): ToolBarV2Modifier
 
 | 参数名     | 类型                                                            | 必填 | 说明                                                                  |
 | ------- |---------------------------------------------------------------| -- | ------------------------------------------------------------------- |
-| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是  | 工具栏左右内边距，仅在子项数量小于5个时生效，超过则设置值无效。<br ></div>当子项数量少于5个时，工具栏默认左右内边距为24vp；当子项数量达到或超过5个时，工具栏默认左右内边距为0vp。 |
+| padding | LengthMetrics | 是  | 工具栏左右内边距，仅在子项数量小于5个时生效，超过则设置值无效。<br ></div>当子项数量少于5个时，工具栏默认左右内边距为24vp；当子项数量达到或超过5个时，工具栏默认左右内边距为0vp。 |
 
 **返回值：**
 
@@ -330,7 +330,7 @@ height(height: LengthMetrics): ToolBarV2Modifier
 
 | 参数名    | 类型                                                                 | 必填 | 说明                                |
 | ------ | ------------------------------------------------------------------ | -- | --------------------------------- |
-| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是  | 工具栏高度。<br />工具栏高度默认为56vp（不包含分割线）。 |
+| height | LengthMetrics | 是  | 工具栏高度。<br />工具栏高度默认为56vp（不包含分割线）。 |
 
 **返回值：**
 

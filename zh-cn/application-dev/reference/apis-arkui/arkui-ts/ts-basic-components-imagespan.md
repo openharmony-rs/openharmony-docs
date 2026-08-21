@@ -32,7 +32,7 @@ ImageSpan(value: ResourceStr | PixelMap)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) \|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp; | 是 | 图片的数据源，支持本地图片和网络图片。<br>使用网络图片时，需要申请权限ohos.permission.INTERNET。具体申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。<br>当使用相对路径引用图片资源时，例如`ImageSpan("common/test.jpg")`，不支持跨包/跨模块调用该ImageSpan组件，建议使用`$r`方式来管理需全局使用的图片资源。<br>\- 支持的图片格式包括png、jpg、bmp、svg、gif、webp和heif。<br>\- 支持`Base64`字符串。格式`data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data]`，其中`[base64 data]`为`Base64`字符串数据。<br>\- 支持file://data/storage路径前缀的字符串，用于读取本应用安装目录下file文件夹下的图片资源。需要保证应用安装目录路径下的文件有可读权限。 |
+| value | [ResourceStr](ts-types.md#resourcestr) \|&nbsp;PixelMap&nbsp; | 是 | 图片的数据源，支持本地图片和网络图片。<br>使用网络图片时，需要申请权限ohos.permission.INTERNET。具体申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。<br>当使用相对路径引用图片资源时，例如`ImageSpan("common/test.jpg")`，不支持跨包/跨模块调用该ImageSpan组件，建议使用`$r`方式来管理需全局使用的图片资源。<br>\- 支持的图片格式包括png、jpg、bmp、svg、gif、webp和heif。<br>\- 支持`Base64`字符串。格式`data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data]`，其中`[base64 data]`为`Base64`字符串数据。<br>\- 支持file://data/storage路径前缀的字符串，用于读取本应用安装目录下file文件夹下的图片资源。需要保证应用安装目录路径下的文件有可读权限。 |
 
 
 ## 属性
@@ -85,7 +85,7 @@ alt(value:&nbsp;PixelMap)
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 设置图片加载过程中显示的占位图，支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型。 |
+| value  | PixelMap | 是   | 设置图片加载过程中显示的占位图，支持PixelMap类型。 |
 
 ### colorFilter<sup>14+</sup>
 

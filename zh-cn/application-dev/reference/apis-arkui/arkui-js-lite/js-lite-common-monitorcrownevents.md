@@ -18,7 +18,7 @@ setMonitorForCrownEvents(handler: Function): void
 
 为当前页面设置旋转表冠事件监听器，当旋转表冠事件触发时，监听器会触发回调。
 
-该监听器在发生[页面路由](../js-apis-router.md)时将自动移除，使用[clearMonitorForCrownEvents()](#clearmonitorforcrownevents)接口可手动移除。
+该监听器在发生页面路由时将自动移除，使用[clearMonitorForCrownEvents()](#clearmonitorforcrownevents)接口可手动移除。
 
 > **说明：**
 >

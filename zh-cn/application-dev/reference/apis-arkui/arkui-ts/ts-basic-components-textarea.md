@@ -82,7 +82,7 @@ placeholderFont(value: Font)
 
 > **说明：**
 >
-> 可以使用[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)注册自定义字体。
+> 可以使用loadFontSync注册自定义字体。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -267,7 +267,7 @@ fontFamily(value: ResourceStr)
 
 > **说明：**
 >
-> 可以使用[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)注册自定义字体。
+> 可以使用loadFontSync注册自定义字体。
 
 ### inputFilter<sup>8+</sup>
 
@@ -498,7 +498,7 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 当设置自定义键盘时，可以通过绑定[onKeyPreIme](ts-universal-events-key.md#onkeypreime12)事件规避物理键盘的输入。
 
-从API version 23开始，自定义键盘可以通过[setCustomKeyboardContinueFeature](../arkts-apis-uicontext-uicontext.md#setcustomkeyboardcontinuefeature23)开启接续，在切换至其他自定义键盘时，会直接切换，不会触发键盘关闭和拉起动画。
+从API version 23开始，自定义键盘可以通过setCustomKeyboardContinueFeature开启接续，在切换至其他自定义键盘时，会直接切换，不会触发键盘关闭和拉起动画。
 
 > **说明：**
 >
@@ -514,7 +514,7 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 | 参数名                | 类型                                        | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value                 |[CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> \| undefined<sup>22+</sup> | 是   | 自定义键盘。设定值为undefined时，关闭自定义键盘。 |
+| value                 |[CustomBuilder](ts-types.md#custombuilder8) \| ComponentContent<sup>22+</sup> \| undefined<sup>22+</sup> | 是   | 自定义键盘。设定值为undefined时，关闭自定义键盘。 |
 | options<sup>12+</sup> | [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)       | 否   | 设置自定义键盘是否支持避让功能。不传入时，默认不支持避让功能。                             |
 
 ### type<sup>11+</sup>
@@ -924,7 +924,7 @@ lineSpacing(value: LengthMetrics)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 文本的行间距。|
+| value  | LengthMetrics | 是   | 文本的行间距。|
 
 ### lineSpacing<sup>20+</sup>
 
@@ -942,7 +942,7 @@ lineSpacing(value: LengthMetrics, options?: LineSpacingOptions)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 文本的行间距。设置值不大于0时，取默认值0。 |
+| value  | LengthMetrics | 是   | 文本的行间距。设置值不大于0时，取默认值0。 |
 | options  | [LineSpacingOptions](ts-text-common.md#linespacingoptions20对象说明) | 否   | 设置行间距配置项。|
 
 ### lineBreakStrategy<sup>12+</sup>
@@ -969,7 +969,7 @@ editMenuOptions(editMenu: EditMenuOptions)
 
 设置自定义菜单扩展项，允许用户设置扩展项的文本内容、图标、回调方法。
 
-调用[disableMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)或[disableSystemServiceMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)接口屏蔽文本选择菜单内的系统服务菜单项时，editMenuOptions接口内回调方法[onCreateMenu](./ts-text-common.md#oncreatemenu12)的入参列表中不包含被屏蔽的菜单选项。
+调用disableMenuItems或disableSystemServiceMenuItems接口屏蔽文本选择菜单内的系统服务菜单项时，editMenuOptions接口内回调方法[onCreateMenu](./ts-text-common.md#oncreatemenu12)的入参列表中不包含被屏蔽的菜单选项。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1087,7 +1087,7 @@ strokeWidth(width: Optional\<LengthMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。|
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<LengthMetrics> | 是   | 文本描边的宽度。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。|
 
 ### strokeColor<sup>20+</sup>
 
@@ -1233,7 +1233,7 @@ scrollBarColor(thumbColor: ColorMetrics | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| thumbColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&nbsp;\|&nbsp;undefined | 是 | 滚动条的颜色。|
+| thumbColor | ColorMetrics&nbsp;\|&nbsp;undefined | 是 | 滚动条的颜色。|
 
 ### compressLeadingPunctuation<sup>23+</sup>
 
@@ -1245,7 +1245,7 @@ compressLeadingPunctuation(enabled: Optional\<boolean>)
 >
 > - 行首标点符号默认不压缩。
 >
-> - 支持压缩的标点符号，请参考[ParagraphStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)的行首压缩的标点范围。
+> - 支持压缩的标点符号，请参考ParagraphStyle的行首压缩的标点范围。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1265,7 +1265,7 @@ orphanCharOptimization(enabled: Optional\<boolean>)
 
 设置文本排版时是否使能孤字优化。不通过该接口设置，默认不使能孤字优化。
 
-孤字优化通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[wordBreak](#wordbreak12)为非BREAK_ALL并且待排版文本首个[TextStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)的[locale](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)为“zh-Hans”或“zh-Hant”时生效。
+孤字优化通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[wordBreak](#wordbreak12)为非BREAK_ALL并且待排版文本首个TextStyle的locale为“zh-Hans”或“zh-Hant”时生效。
 
 **起始版本：** 26.0.0
 
@@ -1746,7 +1746,7 @@ onWillAttachIME(callback: Callback\<IMEClient> | undefined)
 在输入框将要绑定输入法前触发该回调。
 
 <!--Del-->
-在输入框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20)设置键盘的样式。<!--DelEnd-->
+在输入框将要绑定输入法前，可以通过`UIContext`的系统接口setKeyboardAppearanceConfig设置键盘的样式。<!--DelEnd-->
 
 从API version 22开始，调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法可以设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
 
@@ -1976,9 +1976,9 @@ struct TextAreaExample {
 
 ### 示例3（设置自定义键盘）
 
-该示例通过[customKeyboard](#customkeyboard10)（从API version 10开始）属性分别将value中的入参类型设置为[CustomBuilder](ts-types.md#custombuilder8)和[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)，实现了自定义键盘的功能。
+该示例通过[customKeyboard](#customkeyboard10)（从API version 10开始）属性分别将value中的入参类型设置为[CustomBuilder](ts-types.md#custombuilder8)和ComponentContent，实现了自定义键盘的功能。
 
-从API version 22开始[customKeyboard](#customkeyboard10)属性新增了入参类型[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)。
+从API version 22开始[customKeyboard](#customkeyboard10)属性新增了入参类型ComponentContent。
 
 ```ts
 // xxx.ets

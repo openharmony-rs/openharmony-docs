@@ -70,10 +70,10 @@ constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | settings | [RenderingContextSettings](#renderingcontextsettings) | 否    | 用于配置CanvasRenderingContext2D对象的参数，当需要开启抗锯齿等高级配置时传入此参数，不传入时使用默认配置（不开启抗锯齿）。见[RenderingContextSettings](#renderingcontextsettings)。<br>异常值undefined和null按[RenderingContextSettings](#renderingcontextsettings)的默认值处理。 |
 
-| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否    | 用于配置CanvasRenderingContext2D对象的单位模式，配置后无法更改。DEFAULT（默认vp单位，适合大多数场景）、PX（px像素单位，适合需要精确像素控制的场景）。<br>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT |
+| unit  | LengthMetricsUnit | 否    | 用于配置CanvasRenderingContext2D对象的单位模式，配置后无法更改。DEFAULT（默认vp单位，适合大多数场景）、PX（px像素单位，适合需要精确像素控制的场景）。<br>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT |
 **示例：**
 
-以下示例展示了配置CanvasRenderingContext2D对象的单位模式，默认单位模式为LengthMetricsUnit.DEFAULT，对应默认单位vp，配置后无法动态更改。详细说明见[LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12)。
+以下示例展示了配置CanvasRenderingContext2D对象的单位模式，默认单位模式为LengthMetricsUnit.DEFAULT，对应默认单位vp，配置后无法动态更改。详细说明见LengthMetricsUnit。
 
 ```ts
 // xxx.ets
@@ -123,7 +123,7 @@ struct LengthMetricsUnitDemo {
 | ------ | ------ | ----- | -------- | --------------------------- |
 | width | number | 是 | 否 | CanvasRenderingContext2D的组件宽度。<br>默认单位：vp <br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | height | number | 是 | 否 | CanvasRenderingContext2D的组件高度。<br>默认单位：vp <br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| canvas<sup>13+</sup> | [FrameNode](../../apis-arkui/js-apis-arkui-frameNode.md) | 是 | 否 | 获取和CanvasRenderingContext2D关联的Canvas组件的FrameNode实例，可用于监听关联的Canvas组件的可见状态。<br>默认值：null <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| canvas<sup>13+</sup> | FrameNode | 是 | 否 | 获取和CanvasRenderingContext2D关联的Canvas组件的FrameNode实例，可用于监听关联的Canvas组件的可见状态。<br>默认值：null <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## toDataURL
 

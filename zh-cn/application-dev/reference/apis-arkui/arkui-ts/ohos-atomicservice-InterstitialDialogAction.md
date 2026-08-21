@@ -77,7 +77,7 @@ closeDialog(): void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | - | - | - | - | - |
-| uiContext | [UIContext](../arkts-apis-uicontext-uicontext.md) | 否 | 否 | UI上下文实例。 |
+| uiContext | UIContext | 否 | 否 | UI上下文实例。 |
 | bottomOffsetType | [BottomOffset](#bottomoffset) | 否 | 是 | 弹框距离底部偏移类型。默认值为[BottomOffset](#bottomoffset).OFFSET_FOR_BAR。 |
 | title | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 弹框标题文本。默认为空字符串。 |
 | subtitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 弹框副标题文本。默认为空字符串。 |

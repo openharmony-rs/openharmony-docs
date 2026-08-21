@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Image为图片组件，常用于在应用中显示图片。Image支持加载[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)、[ResourceStr](ts-types.md#resourcestr)和[DrawableDescriptor](#drawabledescriptor10)类型的数据源，支持png、jpg、jpeg、bmp、svg、webp、gif、heif和tiff类型的图片格式，不支持apng和svga格式。
+Image为图片组件，常用于在应用中显示图片。Image支持加载PixelMap、[ResourceStr](ts-types.md#resourcestr)和[DrawableDescriptor](#drawabledescriptor10)类型的数据源，支持png、jpg、jpeg、bmp、svg、webp、gif、heif和tiff类型的图片格式，不支持apng和svga格式。
 
 > **说明：**
 >
@@ -56,7 +56,7 @@ Image加载成功且组件不设置宽高时，其显示大小自适应父组件
 >
 > - src由有效值（可正常解析并加载的图片资源）切换为无效值（无法解析或加载的图片路径）时，组件保持显示此前成功加载的图片内容，不进行清除或重置操作。
 >
-> - 当Image组件入参为[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型时，只有当PixelMap对象发生变化（即指向一个新的PixelMap实例），Image组件才能感知到数据的变化。仅修改PixelMap对象的内容（如像素值）而不更换对象引用，无法触发数据变化的感知。
+> - 当Image组件入参为PixelMap类型时，只有当PixelMap对象发生变化（即指向一个新的PixelMap实例），Image组件才能感知到数据的变化。仅修改PixelMap对象的内容（如像素值）而不更换对象引用，无法触发数据变化的感知。
 >
 > - Image组件入参为Base64字符串时，Base64字符串通用格式为`data:image/subtype;base64,Base64EncodedData`，其中subtype为类型声明，Base64EncodedData为数据对应的base64编码，其他为固定字符串。例如：png图像对应的入参为`data:image/png;base64,iVBORw0KGgo...`。
 >
@@ -77,7 +77,7 @@ Image加载成功且组件不设置宽高时，其显示大小自适应父组件
 <!--Table: 10%; 20%; 10%; 60%-->
 | 参数名  | 类型                                     | 必填   | 说明                                     |
 | ---- | ---------------------------------------- | ---- | ---------------------------------------- |
-| src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10) | 是    | 图片的数据源，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>1. PixelMap格式为像素图，常用于图片编辑的场景。<br>2. ResourceStr包含Resource和string格式。<br>string格式可用于加载网络图片和本地图片。当[使用相对路径显示图片](#示例25使用相对路径显示图片)时，不支持跨包/跨模块调用该Image组件，建议使用Resource格式来管理需全局使用的图片资源。<br>从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resource目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable 设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)中相关介绍。<br>- 支持`Base64`字符串。<br>- 传入的字符串为https网络图片地址时，建议参考[示例2（下载与显示静态网络图片）](#示例2下载与显示静态网络图片)。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br>Resource格式可以跨包/跨模块访问资源文件，是访问本地图片的推荐方式，具体示例参考[访问跨HAP/HSP包资源](../../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。<br/>3. 当传入资源id或name为普通图片时，生成DrawableDescriptor对象。传入[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)类型可播放PixelMap数组动画。<br>**说明：**<br/>- ArkTS卡片上支持gif图片格式动效，但仅在显示时播放一次。<br/>- ArkTS卡片上不支持http:/\/等网络相关路径前缀和file:/\/路径前缀的字符串。 |
+| src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10) | 是    | 图片的数据源，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>1. PixelMap格式为像素图，常用于图片编辑的场景。<br>2. ResourceStr包含Resource和string格式。<br>string格式可用于加载网络图片和本地图片。当[使用相对路径显示图片](#示例25使用相对路径显示图片)时，不支持跨包/跨模块调用该Image组件，建议使用Resource格式来管理需全局使用的图片资源。<br>从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resource目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable 设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)中相关介绍。<br>- 支持`Base64`字符串。<br>- 传入的字符串为https网络图片地址时，建议参考[示例2（下载与显示静态网络图片）](#示例2下载与显示静态网络图片)。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考constructor。沙箱路径需要使用fileUri.getUriFromPath(path)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br>Resource格式可以跨包/跨模块访问资源文件，是访问本地图片的推荐方式，具体示例参考[访问跨HAP/HSP包资源](../../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。<br/>3. 当传入资源id或name为普通图片时，生成DrawableDescriptor对象。传入AnimatedDrawableDescriptor类型可播放PixelMap数组动画。<br>**说明：**<br/>- ArkTS卡片上支持gif图片格式动效，但仅在显示时播放一次。<br/>- ArkTS卡片上不支持http:/\/等网络相关路径前缀和file:/\/路径前缀的字符串。 |
 
 ### Image<sup>12+</sup>
 
@@ -179,7 +179,7 @@ alt(value:&nbsp;string&nbsp;|&nbsp;Resource &nbsp;|&nbsp;PixelMap)
 
 占位图支持使用[objectFit](#objectfit)设置填充效果，与图片的填充效果一致。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+当组件的参数类型为AnimatedDrawableDescriptor时设置该属性不生效。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -191,7 +191,7 @@ alt(value:&nbsp;string&nbsp;|&nbsp;Resource &nbsp;|&nbsp;PixelMap)
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>12+</sup> | 是   | 设置图片加载过程中显示的占位图，支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型图片，不支持网络图片。<br>- 支持`Base64`字符串。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br/>默认值：null<br/>由有效值（可正常解析并加载的图片资源）切换为无效值（无法解析或加载的图片路径）时，组件保持显示此前成功加载的图片内容，不进行清除或重置操作。 |
+| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;PixelMap<sup>12+</sup> | 是   | 设置图片加载过程中显示的占位图，支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持PixelMap类型图片，不支持网络图片。<br>- 支持`Base64`字符串。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考constructor。沙箱路径需要使用fileUri.getUriFromPath(path)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br/>默认值：null<br/>由有效值（可正常解析并加载的图片资源）切换为无效值（无法解析或加载的图片路径）时，组件保持显示此前成功加载的图片内容，不进行清除或重置操作。 |
 
 ### alt<sup>22+</sup>
 
@@ -205,7 +205,7 @@ alt(src:&nbsp;ResourceStr&nbsp;|&nbsp;PixelMap &nbsp;|&nbsp;ImageAlt)
 
 占位图支持使用[objectFit](#objectfit)设置填充效果，与图片的填充效果一致。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+当组件的参数类型为AnimatedDrawableDescriptor时设置该属性不生效。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -219,7 +219,7 @@ alt(src:&nbsp;ResourceStr&nbsp;|&nbsp;PixelMap &nbsp;|&nbsp;ImageAlt)
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| src  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)\|&nbsp;[ImageAlt](#imagealt22) | 是   | 设置图片加载过程中和加载失败时的占位图，支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型图片，不支持网络图片。<br>- 支持`Base64`字符串。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。 |
+| src  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;PixelMap\|&nbsp;[ImageAlt](#imagealt22) | 是   | 设置图片加载过程中和加载失败时的占位图，支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持PixelMap类型图片，不支持网络图片。<br>- 支持`Base64`字符串。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考constructor。沙箱路径需要使用fileUri.getUriFromPath(path)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。 |
 
 ### objectFit
 
@@ -267,7 +267,7 @@ objectRepeat(value: ImageRepeat)
 
 设置图片的重复样式，从中心点向两边重复，剩余空间不足放下一张图片时会截断。SVG类型图源不支持该属性。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+当组件的参数类型为AnimatedDrawableDescriptor时设置该属性不生效。
 
 设置合法的[resizable](#resizable11)时，该属性不生效。
 
@@ -289,7 +289,7 @@ interpolation(value: ImageInterpolation)
 
 定义图片插值效果。用于优化图片缩放时的锯齿问题。SVG类型图源不支持该属性。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+当组件的参数类型为AnimatedDrawableDescriptor时设置该属性不生效。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -311,7 +311,7 @@ renderMode(value: ImageRenderMode)
 
 设置[ColorFilter](#colorfilter9)时，该属性设置不生效。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+当组件的参数类型为AnimatedDrawableDescriptor时设置该属性不生效。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -331,7 +331,7 @@ sourceSize(value: ImageSourceSize)
 
 设置图片解码尺寸。仅在目标尺寸小于图源尺寸时生效。SVG类型图源和PixelMap资源不支持该属性。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+当组件的参数类型为AnimatedDrawableDescriptor时设置该属性不生效。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -351,7 +351,7 @@ matchTextDirection(value: boolean)
 
 设置图片是否跟随系统语言方向，在RTL语言环境下显示镜像翻转显示效果。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+当组件的参数类型为AnimatedDrawableDescriptor时设置该属性不生效。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -373,7 +373,7 @@ fitOriginalSize(value: boolean)
 
 图片组件已设置width、height属性时，fitOriginalSize属性不生效。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+当组件的参数类型为AnimatedDrawableDescriptor时设置该属性不生效。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -393,7 +393,7 @@ fillColor(value: ResourceColor)
 
 设置填充颜色。仅对SVG图源生效，设置后会替换SVG图片中所有可绘制元素的填充颜色。如需对png图片进行修改颜色，可以使用[colorFilter](#colorfilter9)。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+当组件的参数类型为AnimatedDrawableDescriptor时设置该属性不生效。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -413,7 +413,7 @@ fillColor(color: ResourceColor|ColorContent)
 
 设置填充颜色。仅对SVG图源生效，设置后会替换SVG图片中所有可绘制元素的填充颜色。如需对png图片进行修改颜色，可以使用[colorFilter](#colorfilter9)。如果想重置填充颜色可以传入[ColorContent](#colorcontent15)类型。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+当组件的参数类型为AnimatedDrawableDescriptor时设置该属性不生效。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -431,9 +431,9 @@ fillColor(color: ResourceColor|ColorContent)
 
 fillColor(color: ResourceColor|ColorContent|ColorMetrics)
 
-设置填充颜色。仅对SVG图源生效，设置后会替换SVG图片中所有可绘制元素的填充颜色。如需对png图片进行修改颜色，可以使用[colorFilter](#colorfilter9)。如果想重置填充颜色可以传入[ColorContent](#colorcontent15)类型。支持通过传入[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型设置P3色域颜色值<!--Del-->，从API version 24开始，支持BT2020色域颜色值<!--DelEnd-->，可在支持高色域的设备上获得更丰富的色彩表现。
+设置填充颜色。仅对SVG图源生效，设置后会替换SVG图片中所有可绘制元素的填充颜色。如需对png图片进行修改颜色，可以使用[colorFilter](#colorfilter9)。如果想重置填充颜色可以传入[ColorContent](#colorcontent15)类型。支持通过传入ColorMetrics类型设置P3色域颜色值<!--Del-->，从API version 24开始，支持BT2020色域颜色值<!--DelEnd-->，可在支持高色域的设备上获得更丰富的色彩表现。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+当组件的参数类型为AnimatedDrawableDescriptor时设置该属性不生效。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -445,7 +445,7 @@ fillColor(color: ResourceColor|ColorContent|ColorMetrics)
 
 | 参数名 | 类型                                       | 必填 | 说明           |
 | ------ | ------------------------------------------ | ---- | -------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15)\|[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 设置填充颜色。 <br/>**说明：**<br/> 默认不对组件进行填充。当传入异常值时，系统将使用默认的主题色：浅色模式下为黑色，深色模式下为白色。 <br/>从API version 21开始，当[supportSvg2](#supportsvg221)设置为true时，fillColor依赖SVG图源中fill属性的参数配置。当SVG图源中fill属性为'none'时，fillColor不生效。当supportSvg2设置为false时，fillColor生效，替换SVG图片中所有可绘制元素的填充颜色。|
+| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15)\|ColorMetrics | 是   | 设置填充颜色。 <br/>**说明：**<br/> 默认不对组件进行填充。当传入异常值时，系统将使用默认的主题色：浅色模式下为黑色，深色模式下为白色。 <br/>从API version 21开始，当[supportSvg2](#supportsvg221)设置为true时，fillColor依赖SVG图源中fill属性的参数配置。当SVG图源中fill属性为'none'时，fillColor不生效。当supportSvg2设置为false时，fillColor生效，替换SVG图片中所有可绘制元素的填充颜色。|
 
 ### autoResize
 
@@ -459,7 +459,7 @@ autoResize(value: boolean)
 
 图片放大显示时：.interpolation(.High)
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)和SVG时设置该属性不生效。
+当组件的参数类型为AnimatedDrawableDescriptor和SVG时设置该属性不生效。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -479,7 +479,7 @@ syncLoad(value: boolean)
 
 设置是否同步加载图片。建议加载尺寸较小的本地图片时将syncLoad设为true，因为耗时较短，在主线程上执行即可。不建议对网络图片使用同步加载，应使用异步加载，或将网络下载与Image的显示剥离，避免阻塞UI线程导致AppFreeze。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+当组件的参数类型为AnimatedDrawableDescriptor时设置该属性不生效。
 
 如果加载图片时出现闪烁，设置syncLoad为true。详情请参见[并发优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-click-to-click-response-optimization#section715115119192)。
 
@@ -501,7 +501,7 @@ copyOption(value: CopyOptions)
 
 设置图片是否可复制。当copyOption设置为非CopyOptions.None时，支持使用长按、鼠标右击、快捷组合键'CTRL+C'等方式进行复制。SVG图片不支持复制。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+当组件的参数类型为AnimatedDrawableDescriptor时设置该属性不生效。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -565,7 +565,7 @@ colorFilter(value: ColorFilter | DrawingColorFilter | ResourceColor)
 
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| [ResourceColor](ts-types.md#resourcecolor) | 是   | 图像颜色的滤镜值。<br/>[ColorFilter](ts-types.md#colorfilter9)、[DrawingColorFilter](#drawingcolorfilter12)类型及SVG图源的相关说明，请参考[colorFilter](#colorfilter9)的接口说明。 [ResourceColor](ts-types.md#resourcecolor)类型的输入颜色值，默认按照[DrawingColorFilter](#drawingcolorfilter12).[createBlendModeColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md#createblendmodecolorfilter)的SRC_ATOP模式进行绘制。 |
+| value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| [ResourceColor](ts-types.md#resourcecolor) | 是   | 图像颜色的滤镜值。<br/>[ColorFilter](ts-types.md#colorfilter9)、[DrawingColorFilter](#drawingcolorfilter12)类型及SVG图源的相关说明，请参考[colorFilter](#colorfilter9)的接口说明。 [ResourceColor](ts-types.md#resourcecolor)类型的输入颜色值，默认按照[DrawingColorFilter](#drawingcolorfilter12).createBlendModeColorFilter的SRC_ATOP模式进行绘制。 |
 
 ### draggable<sup>9+</sup>
 
@@ -591,13 +591,13 @@ enableAnalyzer(enable:&nbsp;boolean)
 
 不能和[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时overlay中[CustomBuilder](ts-types.md#custombuilder8)属性将失效。该特性依赖设备能力。
 
-分析图像要求是静态非矢量图，即svg、gif等图像类型不支持分析，支持传入[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)进行分析，目前仅支持[RGBA_8888](../../apis-image-kit/arkts-apis-image-e.md#pixelmapformat7)类型，使用方式见[示例5（开启图像AI分析）](#示例5开启图像ai分析)。
+分析图像要求是静态非矢量图，即svg、gif等图像类型不支持分析，支持传入PixelMap进行分析，目前仅支持RGBA_8888类型，使用方式见[示例5（开启图像AI分析）](#示例5开启图像ai分析)。
 
 [alt](#alt)占位图不支持分析，[objectRepeat](#objectrepeat)属性仅在取值为ImageRepeat.NoRepeat时支持分析，隐私遮罩属性[obscured](ts-universal-attributes-obscured.md#obscured)打开时不支持分析。
 
 基于完整原始图像进行分析，设置[clip](ts-universal-attributes-sharp-clipping.md#clip12)、[margin](ts-universal-attributes-size.md#margin)、[borderRadius](ts-universal-attributes-border.md#borderradius)、[position](ts-universal-attributes-location.md#position)和[objectFit](#objectfit)属性导致图像显示不完整，或使用[renderMode](#rendermode)设置蒙层，仍基于完整原始图像进行分析。 [copyOption](#copyoption9)属性不影响AI分析功能。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+当组件的参数类型为AnimatedDrawableDescriptor时设置该属性不生效。
 
 > **说明：**
 >
@@ -627,7 +627,7 @@ resizable(value: ResizableOptions)
 
 当设置 top +bottom 大于原图的高或者 left + right 大于原图的宽时 [ResizableOptions](#resizableoptions11) 属性设置不生效。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)和SVG时设置该属性不生效。
+当组件的参数类型为AnimatedDrawableDescriptor和SVG时设置该属性不生效。
 
 >**说明：**
 >
@@ -858,7 +858,7 @@ antialiased(isAntialiased: Optional\<boolean>)
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --------- |-----------|-----------|-----------|-----------|
 | slice | [EdgeWidths](ts-types.md#edgewidths9) |  否  |  是  | 边框宽度类型，用于描述组件边框不同方向的宽度。<br>**说明：**<br>只有当bottom和right同时大于0时，该属性生效。<br>当设置了top时，图片顶部拉伸，图片的像素值保持不变。<br>当设置了right时，图片右部拉伸，图片的像素值保持不变。<br>当设置了bottom时，图片底部拉伸，图片的像素值保持不变。<br>当设置了left时，图片左部拉伸，图片的像素值保持不变。<br>每个方向的宽度默认值为0，传入数字时默认单位为vp。<br>设置了EdgeWidths后的效果如图1（设置EdgeWidths效果图）所示。|
-| lattice<sup>12+</sup> | [DrawingLattice](#drawinglattice12) |  否  |  是  | 矩形网格对象。<br>**说明：**<br> 通过@ohos.graphics.drawing的[createImageLattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md#createimagelattice12)接口创建Lattice类型作为入参。将图像划分为矩形网格，同时处于偶数列和偶数行上的网格图像是固定的，不会被拉伸。其他位置的网格图像会根据slice进行拉伸。<br>该参数对[backgroundImageResizable](ts-universal-attributes-background.md#backgroundimageresizable12)接口不生效。<br> 传入数字时默认单位为px。 |
+| lattice<sup>12+</sup> | [DrawingLattice](#drawinglattice12) |  否  |  是  | 矩形网格对象。<br>**说明：**<br> 通过@ohos.graphics.drawing的createImageLattice接口创建Lattice类型作为入参。将图像划分为矩形网格，同时处于偶数列和偶数行上的网格图像是固定的，不会被拉伸。其他位置的网格图像会根据slice进行拉伸。<br>该参数对[backgroundImageResizable](ts-universal-attributes-background.md#backgroundimageresizable12)接口不生效。<br> 传入数字时默认单位为px。 |
 
 **图1** 设置EdgeWidths效果图
 ![edgewidths](figures/edgewidths.png)
@@ -877,8 +877,8 @@ antialiased(isAntialiased: Optional\<boolean>)
 
 | 名称     | 类型  | 只读  | 可选    | 说明           |
 | -------- | ---- | -----|-----|---- |
-| placeholder | [ResourceStr](ts-types.md#resourcestr)  \|  [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)  |  否   |    是  |  加载过程中的占位图。 |
-| error |   [ResourceStr](ts-types.md#resourcestr)  \|  [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)   |   否  |   是   |  加载失败的占位图。 |
+| placeholder | [ResourceStr](ts-types.md#resourcestr)  \|  PixelMap  |  否   |    是  |  加载过程中的占位图。 |
+| error |   [ResourceStr](ts-types.md#resourcestr)  \|  PixelMap   |   否  |   是   |  加载失败的占位图。 |
 
 ## DynamicRangeMode<sup>12+</sup>枚举说明
 
@@ -908,7 +908,7 @@ antialiased(isAntialiased: Optional\<boolean>)
 
 | 名称     | 值    | 说明                    |
 | ------ | -------------------------- | -------------------------- |
-| AUTO | 0 | 读取图片携带的EXIF元数据作为显示方向，支持旋转和镜像。<br/>[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)和[DrawableDescriptor](#drawabledescriptor10)类型的图片不包含头信息，调用该接口时图片显示效果不变化。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>![imageRotateOrientation_0](figures/imageRotateOrientation_0.png) |
+| AUTO | 0 | 读取图片携带的EXIF元数据作为显示方向，支持旋转和镜像。<br/>PixelMap和[DrawableDescriptor](#drawabledescriptor10)类型的图片不包含头信息，调用该接口时图片显示效果不变化。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>![imageRotateOrientation_0](figures/imageRotateOrientation_0.png) |
 | UP | 1 | 默认按照当前图片的像素数据进行显示，不做任何处理。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | RIGHT | 2 | 将当前图片顺时针旋转90度后显示。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>![imageRotateOrientation_2](figures/imageRotateOrientation_2.png) |
 | DOWN | 3 | 将当前图片顺时针旋转180度后显示。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>![imageRotateOrientation_3](figures/imageRotateOrientation_3.png) |
@@ -953,7 +953,7 @@ type DrawableDescriptor = import ('../api/@ohos.arkui.drawableDescriptor').Drawa
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| import ('../api/@ohos.arkui.drawableDescriptor').[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)  | 返回一个DrawableDescriptor对象。 |
+| import ('../api/@ohos.arkui.drawableDescriptor').DrawableDescriptor  | 返回一个DrawableDescriptor对象。 |
 
 ## DrawingColorFilter<sup>12+</sup>
 
@@ -969,7 +969,7 @@ type DrawingColorFilter = import('../api/@ohos.graphics.drawing').default.ColorF
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| import('../api/@ohos.graphics.drawing').default.[ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)  | 返回一个颜色滤波器。 |
+| import('../api/@ohos.graphics.drawing').default.ColorFilter  | 返回一个颜色滤波器。 |
 
 ## DrawingLattice<sup>12+</sup>
 
@@ -985,7 +985,7 @@ type DrawingLattice = import('../api/@ohos.graphics.drawing').default.Lattice
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| import('../api/@ohos.graphics.drawing').default.[Lattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md) | 返回一个矩阵网格对象。 |
+| import('../api/@ohos.graphics.drawing').default.Lattice | 返回一个矩阵网格对象。 |
 
 ## ImageMatrix<sup>15+</sup>对象说明
 
@@ -1001,7 +1001,7 @@ type ImageMatrix = Matrix4Transit
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [Matrix4Transit](../js-apis-matrix4.md#matrix4transit) | 返回当前的矩阵对象。 |
+| Matrix4Transit | 返回当前的矩阵对象。 |
 
 ## ColorContent<sup>15+</sup>
 
@@ -1027,7 +1027,7 @@ onComplete(callback: (event?: { width: number, height: number, componentWidth: n
 
 图片数据加载成功和解码成功时均触发该回调，返回成功加载的图片尺寸。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时该事件不触发。
+当组件的参数类型为AnimatedDrawableDescriptor时该事件不触发。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -1055,7 +1055,7 @@ onError(callback: ImageErrorCallback)
 
 图片加载异常时触发该回调。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时该事件不触发。
+当组件的参数类型为AnimatedDrawableDescriptor时该事件不触发。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -1075,7 +1075,7 @@ onFinish(event: () =&gt; void)
 
 当加载的源文件为带动效的SVG格式图片时，SVG动效播放完成时会触发这个回调。如果动效为无限循环动效，则不会触发这个回调。
 
-仅支持SVG格式的图片。当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时该事件不触发。
+仅支持SVG格式的图片。当组件的参数类型为AnimatedDrawableDescriptor时该事件不触发。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -1095,7 +1095,7 @@ type ImageErrorCallback = (error: ImageError) => void
 
 图片加载异常时触发此回调。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时该事件不触发。
+当组件的参数类型为AnimatedDrawableDescriptor时该事件不触发。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -1113,7 +1113,7 @@ type ImageErrorCallback = (error: ImageError) => void
 
 图片加载异常时触发回调的返回对象。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时该事件不触发。
+当组件的参数类型为AnimatedDrawableDescriptor时该事件不触发。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1141,7 +1141,7 @@ type BusinessError\<T = void> = import('../api/@ohos.base').BusinessError\<T>
 
 | 类型  | 说明   |
 | ---- | ------ |
-| import('../api/@ohos.base').[BusinessError\<T>](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 图片加载异常返回的错误信息。 |
+| import('../api/@ohos.base').BusinessError\<T> | 图片加载异常返回的错误信息。 |
 
 以下是错误信息的详细介绍：ImageError的error属性为错误信息对象，其中code为错误码，message为错误信息。
 
@@ -1162,7 +1162,7 @@ type BusinessError\<T = void> = import('../api/@ohos.base').BusinessError\<T>
 | 102090    | uri is invalid.                | 数据加载 | 包内文件 | 传入的包内文件URI无效或格式错误。 | 请检查包内文件URI格式，确认文件存在于对应HAP/HSP包内。 |
 | 102091    | get asset failed.              | 数据加载 | 包内文件 | 获取包内资源失败，可能为资源缺失或包未正确安装。 | 请确认包内资源存在，并确认对应包已正确安装。 |
 | 102110    | open file failed.              | 数据加载 | 媒体库文件 | 打开媒体库文件失败，可能为文件不存在、被占用或缺少权限。 | 请确认文件存在，并确认已申请所需媒体库读取权限。 |
-| 102111    | get file stat failed.          | 数据加载 | 媒体库文件 | 获取媒体库文件[stat](../../apis-core-file-kit/js-apis-file-fs.md#fileiostat)信息（文件大小、修改时间、访问权限等元数据）失败，可能为文件不可访问或已损坏。 | 请确认文件可被正常访问，必要时重新选择文件。 |
+| 102111    | get file stat failed.          | 数据加载 | 媒体库文件 | 获取媒体库文件stat信息（文件大小、修改时间、访问权限等元数据）失败，可能为文件不可访问或已损坏。 | 请确认文件可被正常访问，必要时重新选择文件。 |
 | 102112    | read file failed.              | 数据加载 | 媒体库文件 | 读取媒体库文件数据失败，可能为I/O异常或文件损坏。 | 请确认文件完整可读，必要时重新获取或拷贝文件。 |
 | 102130    | decoded data is empty.         | 数据加载 | 媒体库缩略图文件 | 解码后得到的图片数据为空，可能为缩略图不存在或生成失败。 | 请确认原文件可正常生成缩略图，必要时更换图源。 |
 | 102131    | load shared memory image data timeout. | 数据加载 | 共享内存文件 | 从共享内存加载图片数据超时，可能为数据未及时写入或消费方处理过慢。 | 请确认共享内存数据写入与读取节奏匹配，必要时增大超时或检查数据流。 |
@@ -1187,7 +1187,7 @@ type RequestDownloadInfo = import('../api/@ohos.request.cacheDownload').default.
 
 | 类型  | 说明   |
 | ---- | ------ |
-| import('../api/@ohos.request.cacheDownload').default.[DownloadInfo](../../apis-basic-services-kit/js-apis-request-cacheDownload.md#downloadinfo20) | 网络资源加载异常时返回的下载信息，包含资源信息、网络请求信息与性能统计信息。 |
+| import('../api/@ohos.request.cacheDownload').default.DownloadInfo | 网络资源加载异常时返回的下载信息，包含资源信息、网络请求信息与性能统计信息。 |
 
 ## 示例
 
@@ -1302,7 +1302,7 @@ struct ImageExample2 {
 
 ### 示例3（下载与显示网络gif图片）
 
-该示例使用[cacheDownload.download](../../apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloaddownload)接口下载网络gif图片。
+该示例使用cacheDownload.download接口下载网络gif图片。
 
 使用网络图片时，需要申请权限ohos.permission.INTERNET。具体申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。
 
@@ -1551,7 +1551,7 @@ struct drawingLatticeTest {
 
 ### 示例8（播放PixelMap数组动画）
 
-该示例通过[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)对象播放PixelMap数组动画。
+该示例通过AnimatedDrawableDescriptor对象播放PixelMap数组动画。
 
 ```ts
 import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
@@ -1804,7 +1804,7 @@ struct ImageExample {
 
 ### 示例13（为图片设置扫光效果）
 
-该示例通过[linearGradient](./ts-basic-components-datapanel.md#lineargradient10)接口和[animateTo()](../arkts-apis-uicontext-uicontext.md#animateto)接口实现了给图片设置扫光效果。
+该示例通过[linearGradient](./ts-basic-components-datapanel.md#lineargradient10)接口和animateTo()接口实现了给图片设置扫光效果。
 
 ```ts
 import { curves } from '@kit.ArkUI';
@@ -2282,7 +2282,7 @@ struct OrientationExample {
 
 ### 示例22（获取图片的exif信息并设置图像内容的显示方向）
 
-该示例通过[getImageProperty](../../apis-image-kit/arkts-apis-image-ImageSource.md#getimageproperty11)接口，获取图片的exif信息，再根据获取到的exif信息，通过[orientation](#orientation14)属性设置图像内容显示为正确方向。
+该示例通过getImageProperty接口，获取图片的exif信息，再根据获取到的exif信息，通过[orientation](#orientation14)属性设置图像内容显示为正确方向。
 
 ```ts
 import { image } from '@kit.ImageKit';
@@ -2402,7 +2402,7 @@ struct Example {
 
 ### 示例23（动态切换SVG图片的填充颜色）
 
-通过按钮切换不同色域下的颜色值，动态改变SVG图片的填充颜色效果，以展示[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型的使用方式和显示差异。
+通过按钮切换不同色域下的颜色值，动态改变SVG图片的填充颜色效果，以展示ColorMetrics类型的使用方式和显示差异。
 
 ```ts
 import { ColorMetrics } from '@kit.ArkUI';

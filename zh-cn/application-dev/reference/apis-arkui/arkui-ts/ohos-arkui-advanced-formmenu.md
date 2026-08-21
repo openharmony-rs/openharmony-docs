@@ -59,7 +59,7 @@ AddFormMenuItem(
 
 | 参数名           | 类型                        | 必填 | 说明                                                             |
 | -------------- | ------------------------------- | ---- | ---------------------------------------------------------------- |
-| want           | [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want)                            | 是   | 待发布功能组件的want信息。                                         |
+| want           | Want                            | 是   | 待发布功能组件的want信息。                                         |
 | componentId    | string                          | 是   | 应用内功能组件ID，组件ID对应的界面与待添加的服务卡片界面相似。 |
 | options| [AddFormOptions](#addformoptions) | 否   | 添加卡片选项。                                                         |
 
@@ -72,7 +72,7 @@ AddFormMenuItem(
 **参数：**
 | 名称             | 类型|只读|可选| 说明                                                      |
 | --------------- | ---- | ---- | ---- | ---------------------------------------------------------------- |
-| formBindingData | [formBindingData.FormBindingData](../../apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdata) | 否 | 是 | 卡片数据。 |
+| formBindingData | formBindingData.FormBindingData | 否 | 是 | 卡片数据。 |
 | callback        | AsyncCallback\<string>                                                                                                | 否 | 是  | 返回添加卡片是否成功的结果回调。返回为0表示卡片添加成功，非0表示卡片添加失败，失败时请参考[卡片错误码信息](../../apis-form-kit/errorcode-form.md)进行排查。  |
 | style           | [FormMenuItemStyle](#formmenuitemstyle)                                                                              | 否| 是  | 菜单自定义样式信息。|
 

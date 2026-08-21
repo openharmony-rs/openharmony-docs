@@ -160,7 +160,7 @@ fontFamily(value: ResourceStr)
 
 | 参数名 | 类型                                   | 必填 | 说明                                                         |
 | ------ | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 字体列表。默认字体为'HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
+| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 字体列表。默认字体为'HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和注册自定义字体。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
 
 ### textShadow<sup>11+</sup>
 

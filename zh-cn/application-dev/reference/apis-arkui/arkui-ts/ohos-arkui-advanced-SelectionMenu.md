@@ -65,7 +65,7 @@ SelectionMenuOptions定义SelectionMenu的可选菜单类型项及其配置参�
 | onPaste | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | 否 | 是 | 替代内置系统菜单粘贴项的事件回调。<br>生效前提是一定要有controller参数，有系统默认菜单才能替换内置粘贴功能。<br>**说明：**<br> event为返回信息。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onCut | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | 否 | 是 | 替代内置系统菜单剪切项的事件回调。<br>生效前提是一定要有controller参数，有系统默认菜单才能替换内置剪切功能。<br>**说明：**<br>event为返回信息。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | onSelectAll | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | 否 | 是 | 替代内置系统菜单全选项的事件回调。<br>生效前提是一定要有controller参数，有系统默认菜单才能替换内置全选功能。<br>**说明：**<br>event为返回信息。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | 是 | 菜单背景板使用的系统材质，用于实现菜单背景的视觉效果（如模糊、透明度等）。不同系统材质包含不同的属性，影响最终的显示效果。具体材质类型及属性请参考[uiMaterial.Material](../arkts-apis-uimaterial.md#material)。默认值：undefined，无材质效果。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| backgroundSystemMaterial | uiMaterial.Material    | 否 | 是 | 菜单背景板使用的系统材质，用于实现菜单背景的视觉效果（如模糊、透明度等）。不同系统材质包含不同的属性，影响最终的显示效果。具体材质类型及属性请参考uiMaterial.Material。默认值：undefined，无材质效果。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## EditorMenuOptions
 

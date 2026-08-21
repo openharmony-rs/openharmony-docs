@@ -211,7 +211,7 @@ backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier)
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[SymbolGlyphModifier<sup>12+</sup>](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 是   | 标题栏返回键图标。 |
+| value  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;PixelMap&nbsp;\|&nbsp;[SymbolGlyphModifier<sup>12+</sup>](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 是   | 标题栏返回键图标。 |
 
 ### backButtonIcon<sup>19+</sup>
 
@@ -235,7 +235,7 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibility
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| icon  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 是   | 标题栏返回键图标。 |
+| icon  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;PixelMap&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 是   | 标题栏返回键图标。 |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 返回键无障碍播报内容。<br/>默认值：系统语言是中文时为“返回”，系统语言是英文时为“back”。 |
 
 ### menus<sup>12+</sup>
@@ -338,7 +338,7 @@ systemBarStyle(style: Optional&lt;SystemBarStyle&gt;)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| style | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)&gt; | 是 | 系统状态栏样式。设置后进入该NavDestination时，系统状态栏会切换到对应样式。 |
+| style | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;SystemBarStyle&gt; | 是 | 系统状态栏样式。设置后进入该NavDestination时，系统状态栏会切换到对应样式。 |
 
 ### systemTransition<sup>14+</sup>
 systemTransition(type: NavigationSystemTransitionType)
@@ -482,7 +482,7 @@ preferredOrientation(orientation: Optional&lt;Orientation&gt;)
 >   2. NavDestination所属的Navigation的大小占满整个应用页面；
 >   3. NavDestination类型为[NavDestinationMode](#navdestinationmode枚举说明11).STANDARD。
 >
-> - 设置显示方向的实际效果依赖于具体的设备支持情况，具体参考窗口的[setPreferredOrientation](../arkts-apis-window-Window.md#setpreferredorientation9-1)接口。
+> - 设置显示方向的实际效果依赖于具体的设备支持情况，具体参考窗口的setPreferredOrientation接口。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -510,7 +510,7 @@ enableStatusBar(enabled: Optional&lt;boolean&gt;, animated?: boolean)
 >   3. NavDestination的大小占满整个Navigation组件；
 >   4. NavDestination类型为[NavDestinationMode](#navdestinationmode枚举说明11).STANDARD。
 >
-> - 设置系统状态栏的实际效果依赖于具体的设备支持情况，具体参考窗口的[setSpecificSystemBarEnabled](../arkts-apis-window-Window.md#setspecificsystembarenabled11)接口。
+> - 设置系统状态栏的实际效果依赖于具体的设备支持情况，具体参考窗口的setSpecificSystemBarEnabled接口。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -539,7 +539,7 @@ enableNavigationIndicator(enabled: Optional&lt;boolean&gt;)
 > 3. NavDestination的大小占满整个Navigation组件；
 > 4. NavDestination类型为[NavDestinationMode](#navdestinationmode枚举说明11).STANDARD。
 >
-> 设置系统导航条的实际效果依赖于具体的设备支持情况，具体参考窗口的[setSpecificSystemBarEnabled](../arkts-apis-window-Window.md#setspecificsystembarenabled11)接口。
+> 设置系统导航条的实际效果依赖于具体的设备支持情况，具体参考窗口的setSpecificSystemBarEnabled接口。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -621,7 +621,7 @@ onShown(callback: Callback\<VisibilityChangeReason>)
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |  [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[VisibilityChangeReason](#visibilitychangereason21)><sup>21+</sup> | 是   | 当该NavDestination页面显示时触发此回调。<br/>在API version 21之前，当NavDestination页面显示时触发回调。<br/>从API version 21开始，回调会提供入参VisibilityChangeReason以说明onShown触发的原因。|
+| callback   |  Callback\<[VisibilityChangeReason](#visibilitychangereason21)><sup>21+</sup> | 是   | 当该NavDestination页面显示时触发此回调。<br/>在API version 21之前，当NavDestination页面显示时触发回调。<br/>从API version 21开始，回调会提供入参VisibilityChangeReason以说明onShown触发的原因。|
 
 ### onHidden<sup>10+</sup>
 
@@ -639,7 +639,7 @@ onHidden(callback: Callback\<VisibilityChangeReason>)
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[VisibilityChangeReason](#visibilitychangereason21)><sup>21+</sup> | 是   | 当该NavDestination页面隐藏时触发此回调。<br/>在API version 21之前，当NavDestination页面隐藏时触发回调。<br/>从API version 21开始，该回调会提供入参VisibilityChangeReason以说明onHidden触发的原因。|
+| callback   | Callback\<[VisibilityChangeReason](#visibilitychangereason21)><sup>21+</sup> | 是   | 当该NavDestination页面隐藏时触发此回调。<br/>在API version 21之前，当NavDestination页面隐藏时触发回调。<br/>从API version 21开始，该回调会提供入参VisibilityChangeReason以说明onHidden触发的原因。|
 
 ### onWillAppear<sup>12+</sup>
 
@@ -767,7 +767,7 @@ onReady(callback:&nbsp;import('../api/@ohos.base').Callback<[NavDestinationConte
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |  import('../api/@ohos.base').[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<[NavDestinationContext](#navdestinationcontext11)>   | 是   | 当NavDestination即将构建子组件之前会触发此回调。|
+| callback   |  import('../api/@ohos.base').Callback<[NavDestinationContext](#navdestinationcontext11)>   | 是   | 当NavDestination即将构建子组件之前会触发此回调。|
 
 ### onSaveState
 
@@ -832,7 +832,7 @@ NavDestination返回时触发该回调。
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ---------------- |
-|callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<ESObject\>\>| 是 | 页面返回回调，入参为[pop](ts-basic-components-navigation.md#pop11)、[popToName](ts-basic-components-navigation.md#poptoname11)、[popToIndex](ts-basic-components-navigation.md#poptoindex11)接口传入的result参数。如果不传该参数，入参为undefined。|
+|callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt)\<Callback\<ESObject\>\>| 是 | 页面返回回调，入参为[pop](ts-basic-components-navigation.md#pop11)、[popToName](ts-basic-components-navigation.md#poptoname11)、[popToIndex](ts-basic-components-navigation.md#poptoindex11)接口传入的result参数。如果不传该参数，入参为undefined。|
 
 ### onActive<sup>17+</sup>
 
@@ -853,7 +853,7 @@ NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ---------------- |
-|callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[NavDestinationActiveReason](#navdestinationactivereason17)\>\>| 是 | NavDestination由非激活态变为激活态的原因。|
+|callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt)\<Callback\<[NavDestinationActiveReason](#navdestinationactivereason17)\>\>| 是 | NavDestination由非激活态变为激活态的原因。|
 
 ### onInactive<sup>17+</sup>
 
@@ -874,7 +874,7 @@ NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ---------------- |
-|callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[NavDestinationActiveReason](#navdestinationactivereason17)\>\>| 是 | NavDestination由激活态变为非激活态的原因。|
+|callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt)\<Callback\<[NavDestinationActiveReason](#navdestinationactivereason17)\>\>| 是 | NavDestination由激活态变为非激活态的原因。|
 
 ### onNewParam<sup>19+</sup>
 
@@ -897,7 +897,7 @@ onNewParam(callback: &nbsp;Optional\<Callback\<ESObject\>\>)
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ---------------- |
-|callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<ESObject\>\>| 是 | onNewParam触发时的回调函数，入参为路由跳转时传递到目标页面的数据。|
+|callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt)\<Callback\<ESObject\>\>| 是 | onNewParam触发时的回调函数，入参为路由跳转时传递到目标页面的数据。|
 
 ## SaveStateCallback
 
@@ -1081,7 +1081,7 @@ NavDestination自定义动画接口。
 | duration | number | 否 | 是 | 转场动画的持续时间。<br/>取值范围：[0, +∞)<br/>默认值：1000（毫秒）<br/>单位：ms |
 | curve | [Curve](ts-appendix-enums.md#curve) | 否 | 是 | 动画的曲线类型，默认值为[Curve.EaseInOut](ts-appendix-enums.md#curve)。 |
 | delay | number | 否 | 是 | 转场动画的延迟。<br/>取值范围：[0, +∞)<br/>默认值：0（毫秒）<br/>单位：ms |
-| event | Callback\<void> | 否 | 否 | 指定转场动效的闭包函数，系统会根据闭包中对组件UI状态的修改，生成对应的过渡动画。参见[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)中的event。 |
+| event | Callback\<void> | 否 | 否 | 指定转场动效的闭包函数，系统会根据闭包中对组件UI状态的修改，生成对应的过渡动画。参见animateTo中的event。 |
 
 ## NavDestinationTransitionDelegate<sup>15+</sup>
 
@@ -1122,7 +1122,7 @@ type Orientation = import('../api/@ohos.window').default.Orientation
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| import('../api/@ohos.window').default.[Orientation](../arkts-apis-window-e.md#orientation9) | Orientation枚举类型，用于指定页面显示方向。 |
+| import('../api/@ohos.window').default.Orientation | Orientation枚举类型，用于指定页面显示方向。 |
 
 ## 示例
 
