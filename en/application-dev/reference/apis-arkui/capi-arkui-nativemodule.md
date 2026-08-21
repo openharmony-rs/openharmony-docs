@@ -70,3 +70,5 @@ The preceding APIs are applicable to scenarios where input events, drag operatio
 | [styled_string.h](capi-styled-string-h.md) | Declares styled string APIs of ArkUI on the native side.|
 | [xcomponent.h](capi-xcomponent-h.md) | Defines the enumerations of the **XComponent** component.|
 | [error_code.h](capi-arkui-nativemodule-arkui-error-code-h.md) |  Enumerates error codes of ArkUI native APIs.|
+
+<!--no_check-->
