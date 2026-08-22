@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 > **说明：**
-> - 从API Version 6开始，该接口不再维护，推荐使用新接口[`@ohos.net.http`](js-apis-http.md)。
+> - 从API Version 6开始，该接口不再维护，推荐使用新接口[`@ohos.net.http (数据请求)`](js-apis-http.md)。
 > 
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
