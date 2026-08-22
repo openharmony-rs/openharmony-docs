@@ -68,7 +68,7 @@ This file declares the C APIs provided by Quality of Service (QoS) for setting, 
 ### OH_QoS_GewuSession
 
 ```c
-typedef unsigned int OH_QoS_GewuSession;
+typedef unsigned int OH_QoS_GewuSession
 ```
 
 **Description**
@@ -80,7 +80,7 @@ Gewu session handle, which identifies a session created via `OH_QoS_GewuCreateSe
 ### OH_QoS_GewuRequest
 
 ```c
-typedef unsigned int OH_QoS_GewuRequest;
+typedef unsigned int OH_QoS_GewuRequest
 ```
 
 **Description**

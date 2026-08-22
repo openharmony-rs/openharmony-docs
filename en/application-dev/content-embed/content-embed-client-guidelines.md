@@ -6,7 +6,7 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:39:25.834Z pushedAt=2026-06-25T06:42:42.796Z -->
+<!-- md-trans-meta sourceCommit=068eaaa3611f352f0dd1b78149184a8ea814bbff translatedAt=2026-08-20T06:21:50.389Z pushedAt=2026-08-20T12:06:28.830Z -->
 
 ## When to Use
 
@@ -24,7 +24,7 @@ Typical use cases include:
 
 ## Constraints
 
-Before calling the APIs, ensure that the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. For details about checking whether a system capability is supported, see [canIUse()](../reference/common/init.md#caniuse). You must also declare the `ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION` permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+Before calling the APIs, ensure that the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. For details about checking whether a system capability is supported, see [canIUse()](../reference/common/syscap__ndk_8h.md#caniuse). You must also declare the `ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION` permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
 ## Available APIs
 
@@ -442,3 +442,5 @@ void HandleProxy(ContentEmbed_ExtensionProxy* proxy)
     OH_ContentEmbed_Proxy_StopWork(proxy);
 }
 ```
+
+<!--no_check-->

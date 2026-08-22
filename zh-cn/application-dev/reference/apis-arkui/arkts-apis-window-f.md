@@ -197,7 +197,7 @@ findWindow(name: string): Window
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
 
 **示例：**
 
@@ -1013,7 +1013,7 @@ setStartWindowBackgroundColor(moduleName: string, abilityName: string, color: Co
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801     | Capability not supported.function setStartWindowBackgroundColor can not to work correctly due to limited device capabilities. |
+| 801     | Capability not supported.function setStartWindowBackgroundColor can not work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 | 1300016 | Parameter error. Possible cause: Parameter exceeds the allowed length. |
 

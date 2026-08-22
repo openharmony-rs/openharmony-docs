@@ -16,7 +16,7 @@ typedef struct MediaLibrary_RequestId {...} MediaLibrary_RequestId
 
 当请求媒体库资源时，会返回此类型。
 
-请求ID可用于取消请求。
+请求ID可用于取消对应的媒体库资源请求。
 
 如果请求失败，值将全为零，如 "00000000-0000-0000-0000-000000000000"。
 
@@ -32,6 +32,6 @@ typedef struct MediaLibrary_RequestId {...} MediaLibrary_RequestId
 
 | 名称 | 描述 |
 | -- | -- |
-| char requestId[UUID_STR_MAX_LENGTH] | 请求ID。 |
+| char requestId[UUID_STR_MAX_LENGTH] | 请求ID，用于标识媒体库资源请求，可用于取消该请求。 |
 
 

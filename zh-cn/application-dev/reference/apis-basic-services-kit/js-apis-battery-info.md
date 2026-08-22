@@ -27,7 +27,7 @@ import { batteryInfo } from '@kit.BasicServicesKit';
 
 | 名称      | 类型        | 只读 |  说明     |
 | --------------- | ------------------- | ---- | ---------------------|
-| batterySOC                                | number                                         | 是   | 表示当前设备剩余电池电量百分比，取值范围是[0，100]。<br>**原子化服务API：** 从 API version 12开始，该接口支持在原子化服务中使用。                           |
+| batterySOC                                | number                                         | 是   | 表示当前设备剩余电池电量百分比，取值范围是[0, 100]。<br>**原子化服务API：** 从 API version 12开始，该接口支持在原子化服务中使用。                           |
 | chargingStatus                            | [BatteryChargeState](#batterychargestate)      | 是   | 表示当前设备电池的充电状态。<br>**原子化服务API：** 从 API version 12开始，该接口支持在原子化服务中使用。                               |
 | healthStatus                              | [BatteryHealthState](#batteryhealthstate)      | 是   | 表示当前设备电池的健康状态。                               |
 | pluggedType                               | [BatteryPluggedType](#batterypluggedtype)      | 是   | 表示当前设备连接的充电器类型。                             |
@@ -136,7 +136,7 @@ import { batteryInfo } from '@kit.BasicServicesKit';
 
 ## CommonEventBatteryChangedKey<sup>9+</sup>
 
-表示COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键。开发者需先订阅COMMON_EVENT_BATTERY_CHANGED公共事件，在事件回调中通过这些查询键从事件附加数据中提取对应的电池状态信息。详细使用方法请参见[@ohos.commonEventManager (公共事件模块)](js-apis-commonEventManager.md)。
+表示COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键。开发者需先订阅[COMMON_EVENT_BATTERY_CHANGED](./common_event/commonEventManager-definitions.md#common_event_battery_changed)公共事件，在事件回调中通过这些查询键从事件附加数据中提取对应的电池状态信息。详细使用方法请参见[@ohos.commonEventManager (公共事件模块)](js-apis-commonEventManager.md)。
 
 **系统能力**：SystemCapability.PowerManager.BatteryManager.Core
 

@@ -131,11 +131,11 @@ struct Index {
             }
           },
           style: {
-            // options: {
-            //   startIcon: $r("app.media.icon"), // 菜单图标,可以自己提供。系统默认采用"sys.media.ic_public_add"
-            //   content: "添加到桌面",  // 菜单内容，可以自己提供。默认使用"sys.string.ohos_add_form_to_desktop"
-            //   endIcon: $r("app.media.icon") // 菜单图标，可以自己提供
-            // }
+            options: {
+              startIcon: $r("app.media.icon"), // 菜单图标，可以自己提供。系统默认采用"sys.media.ic_public_add"
+              content: "添加到桌面",  // 菜单内容，可以自己提供。默认使用"sys.string.ohos_add_form_to_desktop"
+              endIcon: $r("app.media.icon") // 菜单图标，可以自己提供
+            }
           }
         }
       )
@@ -221,6 +221,6 @@ struct WidgetCard {
 
 **调用高级自定义控件桌面加桌结果**
 
-左侧是formbindingdata为空加桌结果，右侧是formbindingdata为{ data: 'share' }的加桌结果。
+左侧是formBindingData为空加桌结果，右侧是formBindingData为{ data: 'share' }的加桌结果。
 
 ![zh-cn_image_0000001616959836](figures/add-form-to-desktop-result.jpeg)
