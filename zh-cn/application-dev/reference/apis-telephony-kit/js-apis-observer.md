@@ -1083,8 +1083,8 @@ onGetSimActiveState\(slotId: number, callback: Callback\<boolean\>\): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| slotId   | number            | 是    | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
-|callback  | Callback&lt;boolean&gt;|是| 回调函数，返回SIM卡是否激活。<br/>- true：激活。<br/>- false：未激活。|
+| slotId   | number            | 是    | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。    |
+|callback  | Callback&lt;boolean&gt;|是| 回调函数，返回SIM卡是否激活。<br>- true：激活。<br>- false：未激活。|
 
 **错误码：**
 
@@ -1125,7 +1125,7 @@ offGetSimActiveState\(callback?: Callback\<boolean\>\): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-|callback  | Callback&lt;boolean&gt;|否| 回调函数，返回SIM卡是否激活。<br/>- true：激活。<br/>- false：未激活。|
+|callback  | Callback&lt;boolean&gt;|否| 回调函数，返回SIM卡是否激活。<br>- true：激活。<br>- false：未激活。|
 
 **错误码：**
 

@@ -33,7 +33,7 @@ getRadioTech\(slotId: number, callback: AsyncCallback<[NetworkRadioTech](#networ
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| slotId   | number                                                       | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | number                                                       | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
 | callback | AsyncCallback\<[NetworkRadioTech](#networkradiotech11)\> | 是   | 回调函数。返回当前接入的CS域和PS域无线接入技术。其中，CS域为电路交换域，PS为分组交换域。 |
 
 **错误码：**
@@ -81,7 +81,7 @@ getRadioTech\(slotId: number\): Promise\<[NetworkRadioTech](#networkradiotech11)
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -130,7 +130,7 @@ getRadioTechSync\(slotId: number\): [NetworkRadioTech](#networkradiotech11)
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -224,7 +224,7 @@ getNetworkState\(slotId: number, callback: AsyncCallback\<NetworkState\>\): void
 
 | 参数名   | 类型                                           | 必填 | 说明                                   |
 | -------- | ---------------------------------------------- | ---- | -------------------------------------- |
-| slotId   | number                                         | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | number                                         | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
 | callback | AsyncCallback\<[NetworkState](#networkstate)\> | 是   | 回调函数。返回当前网络状态。                             |
 
 **错误码：**
@@ -270,7 +270,7 @@ getNetworkState\(slotId?: number\): Promise\<NetworkState\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 否   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br/> 未指定卡槽时，默认为卡槽1。 |
+| slotId | number | 否   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。<br> 未指定卡槽时，默认为卡槽1。 |
 
 **返回值：**
 
@@ -319,7 +319,7 @@ getNetworkSelectionMode\(slotId: number, callback: AsyncCallback\<NetworkSelecti
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| slotId   | number                                                       | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | number                                                       | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
 | callback | AsyncCallback\<[NetworkSelectionMode](#networkselectionmode)\> | 是   | 回调函数。返回当前选网模式。                             |
 
 **错误码：**
@@ -362,7 +362,7 @@ getNetworkSelectionMode\(slotId: number\): Promise\<NetworkSelectionMode\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -408,7 +408,7 @@ getISOCountryCodeForNetwork\(slotId: number, callback: AsyncCallback\<string\>\)
 
 | 参数名   | 类型                    | 必填 | 说明                                     |
 | -------- | ----------------------- | ---- | ---------------------------------------- |
-| slotId   | number                  | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。   |
+| slotId   | number                  | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。   |
 | callback | AsyncCallback\<string\> | 是   | 回调函数。返回国家码，例如：CN(中国)。如果设备没有注册任何网络，接口返回空字符串。|
 
 **错误码：**
@@ -451,7 +451,7 @@ getISOCountryCodeForNetwork\(slotId: number\): Promise\<string\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -496,7 +496,7 @@ getISOCountryCodeForNetworkSync\(slotId: number\): string
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -620,7 +620,7 @@ getSignalInformation\(slotId: number, callback: AsyncCallback\<Array\<SignalInfo
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| slotId   | number                                                       | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                       |
+| slotId   | number                                                       | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。                       |
 | callback | AsyncCallback\<Array\<[SignalInformation](#signalinformation)\>\> | 是   | 回调函数，返回从[SignalInformation](#signalinformation)中派生出的子类对象的数组。|
 
 **错误码：**
@@ -663,7 +663,7 @@ getSignalInformation\(slotId: number\): Promise\<Array\<SignalInformation\>\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -708,7 +708,7 @@ getSignalInformationSync\(slotId: number\): Array\<SignalInformation\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -756,7 +756,7 @@ isNrSupported\(\): boolean
 
 | 类型    | 说明                             |
 | ------- | -------------------------------- |
-| boolean | - true：支持。<br/>- false：不支持。 |
+| boolean | - true：支持。<br>- false：不支持。 |
 
 **示例：**
 
@@ -781,13 +781,13 @@ isNrSupported\(slotId: number\): boolean
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
 
 **返回值：**
 
 | 类型               | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| boolean | - true：支持。<br/>- false：不支持。 |
+| boolean | - true：支持。<br>- false：不支持。 |
 
 **示例：**
 
@@ -812,7 +812,7 @@ isNRSupported\(\): boolean
 
 | 类型    | 说明                             |
 | ------- | -------------------------------- |
-| boolean | - true：支持。<br/>- false：不支持。 |
+| boolean | - true：支持。<br>- false：不支持。 |
 
 **示例：**
 
@@ -834,13 +834,13 @@ isNRSupported\(slotId: number\): boolean
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
 
 **返回值：**
 
 | 类型               | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| boolean | - true：支持。<br/>- false：不支持。 |
+| boolean | - true：支持。<br>- false：不支持。 |
 
 **示例：**
 
@@ -865,7 +865,7 @@ isRadioOn\(callback: AsyncCallback\<boolean\>\): void
 
 | 参数名   | 类型                     | 必填 | 说明                                                    |
 | -------- | ------------------------ | ---- | ------------------------------------------------------- |
-| callback | AsyncCallback\<boolean\> | 是   | 回调函数。返回主卡的Radio状态。<br/>- true：Radio打开。<br/>- false：Radio关闭。 |
+| callback | AsyncCallback\<boolean\> | 是   | 回调函数。返回主卡的Radio状态。<br>- true：Radio打开。<br>- false：Radio关闭。 |
 
 **错误码：**
 
@@ -909,8 +909,8 @@ isRadioOn\(slotId: number, callback: AsyncCallback\<boolean\>\): void
 
 | 参数名   | 类型                     | 必填 | 说明                                                    |
 | -------- | ------------------------ | ---- | ------------------------------------------------------- |
-| slotId   | number                   | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                  |
-| callback | AsyncCallback\<boolean\> | 是   | 回调函数。返回指定卡槽的Radio状态。<br/>- true：Radio打开。<br/>- false：Radio关闭。 |
+| slotId   | number                   | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。                  |
+| callback | AsyncCallback\<boolean\> | 是   | 回调函数。返回指定卡槽的Radio状态。<br>- true：Radio打开。<br>- false：Radio关闭。 |
 
 **错误码：**
 
@@ -955,13 +955,13 @@ isRadioOn\(slotId?: number\): Promise\<boolean\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 否   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br/>如果不指定slotId，默认判断主卡Radio是否打开 |
+| slotId | number | 否   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。<br>如果不指定slotId，默认判断主卡Radio是否打开 |
 
 **返回值：**
 
 | 类型               | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| Promise\<boolean\> | 以Promise形式返回判断Radio是否打开的结果。<br/>- true：Radio打开。<br/>- false：Radio关闭。 |
+| Promise\<boolean\> | 以Promise形式返回判断Radio是否打开的结果。<br>- true：Radio打开。<br>- false：Radio关闭。 |
 
 **错误码：**
 
@@ -1002,7 +1002,7 @@ getOperatorName\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 | 参数名   | 类型                    | 必填 | 说明                                       |
 | -------- | ----------------------- | ---- | ------------------------------------------ |
-| slotId   | number                  | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。     |
+| slotId   | number                  | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。     |
 | callback | AsyncCallback\<string\> | 是   | 回调函数，返回运营商名称。例如：中国移动。 |
 
 **错误码：**
@@ -1045,7 +1045,7 @@ getOperatorName\(slotId: number\): Promise\<string\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -1090,7 +1090,7 @@ getOperatorNameSync\(slotId: number\): string
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -1198,11 +1198,11 @@ try {
 | longOperatorName     | string                              |  否  |  否  | 注册网络的长运营商名称。                                     |
 | shortOperatorName    | string                              |  否  |  否  | 注册网络的短运营商名称。                                     |
 | plmnNumeric          | string                              |  否  |  否  | 注册网络的PLMN(Public Land Mobile Network，公共陆地移动网络)码。                                           |
-| isRoaming            | boolean                             |  否  |  否  | 是否处于漫游状态。<br/>- true：处于漫游状态。<br/>- false：未处于漫游状态。                                           |
+| isRoaming            | boolean                             |  否  |  否  | 是否处于漫游状态。<br>- true：处于漫游状态。<br>- false：未处于漫游状态。                                           |
 | regState             | [RegState](#regstate)               |  否  |  否  | 设备的网络注册状态。                                         |
 | cfgTech<sup>8+</sup> | [RadioTechnology](#radiotechnology) |  否  |  否  | 设备的无线接入技术。                                         |
 | nsaState             | [NsaState](#nsastate)               |  否  |  否  | 设备的NSA网络注册状态。                                      |
-| isCaActive           | boolean                             |  否  |  否  | CA(Carrier Aggregation，载波聚合)的状态。<br/>- true：CA已激活。<br/>- false：CA未激活。                                                   |
+| isCaActive           | boolean                             |  否  |  否  | CA(Carrier Aggregation，载波聚合)的状态。<br>- true：CA已激活。<br>- false：CA未激活。                                                   |
 | isEmergency          | boolean                             |  否  |  否  | 此设备是否只允许拨打紧急呼叫。                               |
 
 
