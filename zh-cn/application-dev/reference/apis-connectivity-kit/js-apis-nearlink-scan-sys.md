@@ -34,4 +34,4 @@ import { scan } from '@kit.ConnectivityKit';
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| SCAN_MODE_LOW_LATENCY | 2 | 表示高功率扫描模式，具有更高的扫描频率，功耗较高。 |
+| SCAN_MODE_LOW_LATENCY | 2 | 表示低延迟扫描模式，具有更高的扫描频率，功耗较高。 |

@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供了基于低功耗蓝牙（Bluetooth Low Energy，[BLE](../../connectivity/bluetooth/terminology.md#ble)）技术的蓝牙能力，支持发起BLE扫描、发送BLE广播报文、以及基于通用属性协议（Generic Attribute Profile，[GATT](../../connectivity/bluetooth/terminology.md#gatt)）的连接和传输数据。
+本模块提供了基于低功耗蓝牙（Bluetooth Low Energy，[BLE](../../connectivity/bluetooth/terminology.md#ble)）技术的蓝牙能力，支持发起BLE扫描、发送BLE广播报文、以及基于通用属性协议（Generic Attribute Profile，[GATT](../../connectivity/bluetooth/terminology.md#gatt)）的连接和传输数据。适用于智能穿戴设备、健康监测、物联网设备互联等低功耗短距离无线通信场景，有助于降低设备功耗、延长续航时间。
 
 > **说明：**
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -69,7 +69,7 @@ type BluetoothTransport = connection.BluetoothTransport
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| [connection.BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | 远程设备的传输类型。 |
+| [connection.BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | 远端设备的传输类型。 |
 
 
 ## ble.createGattServer
@@ -174,7 +174,7 @@ createGattClientDevice(deviceId: string, setting: GattSetting): GattClientDevice
 
 | 类型                                    | 说明                                   |
 | ------------------------------------- | ------------------------------------ |
-| [GattClientDevice](#gattclientdevice) | GATT客户端类，使用client端方法之前需要创建该类的实例进行操作。 |
+| [GattClientDevice](#gattclientdevice) | client端类，使用client端方法之前需要创建该类的实例进行操作。 |
 
 **错误码**：
 
@@ -182,6 +182,7 @@ createGattClientDevice(deviceId: string, setting: GattSetting): GattClientDevice
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801     | Capability not supported. Failed to call the API because the short-range chip is not inserted on the 2in1 device.               |
 
 **示例**：
@@ -271,7 +272,7 @@ getConnectedBLEDevices(profile: BleProfile): Array&lt;string&gt;
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Array&lt;string&gt; | 返回和本机设备已建立GATT连接的BLE设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 取消配对该设备或蓝牙关闭后，若重新获取，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法 |
+| Array&lt;string&gt; | 返回和本机设备已建立GATT连接的BLE设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 取消配对该设备或蓝牙关闭后，若重新获取，该虚拟地址会变更。蓝牙子系统会根据该地址的实际使用情况决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法 |
 
 **错误码**：
 
@@ -317,8 +318,8 @@ startBLEScan(filters: Array&lt;ScanFilter&gt;, options?: ScanOptions): void
 
 | 参数名     | 类型                                     | 必填   | 说明                                  |
 | ------- | -------------------------------------- | ---- | ----------------------------------- |
-| filters | Array&lt;[ScanFilter](#scanfilter)&gt; | 是    | 表示扫描结果过滤策略集合，符合过滤条件的设备发现会保留。<br>-若该参数设置为null，将扫描所有可发现的周边BLE设备，但是不建议使用此方式，可能扫描到非预期设备，并增加功耗。 |
-| options | [ScanOptions](#scanoptions)            | 否    | 表示扫描的参数配置。                     |
+| filters | Array&lt;[ScanFilter](#scanfilter)&gt; | 是    | 表示扫描结果过滤策略集合，符合过滤条件的设备会被保留。<br>-若该参数设置为null，将扫描所有可发现的周边BLE设备，但是不建议使用此方式，可能扫描到非预期设备，并增加功耗。 |
+| options | [ScanOptions](#scanoptions)            | 否    | 表示扫描的参数配置。不填写时使用默认配置。                     |
 
 **错误码**：
 
@@ -337,16 +338,16 @@ startBLEScan(filters: Array&lt;ScanFilter&gt;, options?: ScanOptions): void
 
 ```js
 import { common } from '@kit.ConnectivityKit';
-function onReceiveEvent(data: Array<ble.ScanResult>) {
+let onReceiveEvent = (data: Array<ble.ScanResult>) => {
     console.info('BLE scan device find result = '+ JSON.stringify(data));
 }
 try {
-    ble.on("BLEDeviceFind", onReceiveEvent);
+    ble.on('BLEDeviceFind', onReceiveEvent);
     let addressInfo : common.BluetoothAddress = {
         address:"XX:XX:XX:XX:XX:XX",
         addressType:common.BluetoothAddressType.REAL,
         rawAddressType:common.BluetoothRawAddressType.PUBLIC
-    }
+    };
     let scanFilter: ble.ScanFilter = {
         deviceId:"XX:XX:XX:XX:XX:XX",
         address:addressInfo, // 使用address时不需要重复设置deviceId
@@ -357,8 +358,8 @@ try {
     interval: 500,
     dutyMode: ble.ScanDuty.SCAN_MODE_LOW_POWER,
     matchMode: ble.MatchMode.MATCH_MODE_AGGRESSIVE
-    }
-    ble.startBLEScan([scanFilter],scanOptions);
+    };
+    ble.startBLEScan([scanFilter], scanOptions);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -432,7 +433,7 @@ startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, advResponse?
 | ----------- | ------------------------------------- | ---- | -------------- |
 | setting     | [AdvertiseSetting](#advertisesetting) | 是    | BLE广播的相关参数。    |
 | advData     | [AdvertiseData](#advertisedata)       | 是    | BLE广播报文内容。   |
-| advResponse | [AdvertiseData](#advertisedata)       | 否    | BLE扫描回复广播报文。 |
+| advResponse | [AdvertiseData](#advertisedata)       | 否    | BLE扫描回复广播报文。若不填写，则不携带扫描回复广播报文。 |
 
 **错误码**：
 
@@ -492,7 +493,7 @@ try {
         serviceData:[serviceDataUnit],
         advertiseName:"testName" // 需申请ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME权限
     };
-    ble.startAdvertising(setting, advData ,advResponse);
+    ble.startAdvertising(setting, advData, advResponse);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -545,7 +546,7 @@ startAdvertising(advertisingParams: AdvertisingParams, callback: AsyncCallback&l
 
 首次启动发送BLE广播报文。使用Callback异步回调。
 - 启动成功后，蓝牙子系统会分配相关资源，并使用Callback异步返回该广播的标识。
-- 若携带了发送广播持续时间，则一定时间后，广播会停止发送，但分配的广播资源还存在，可以通过[ble.enableAdvertising](#bleenableadvertising11)重新启动发送该广播。
+- 若携带了发送广播持续时间，则达到该持续时间后，广播会停止发送，但分配的广播资源还存在，可以通过[ble.enableAdvertising](#bleenableadvertising11)重新启动发送该广播。
 - 从API version 15开始，应用可多次调用，支持发起多路广播，每一路广播通过不同的ID标识管理。
 - 当应用不再需要该广播时，需调用API version 11开始支持的[ble.stopAdvertising](#blestopadvertising11)完全停止该广播，不要与API version 10开始支持的[ble.stopAdvertising](#blestopadvertising)混用。
 
@@ -564,7 +565,7 @@ startAdvertising(advertisingParams: AdvertisingParams, callback: AsyncCallback&l
 | 参数名               | 类型                                    | 必填  | 说明                             |
 | ------------------- | --------------------------------------- | ----- | ------------------------------- |
 | advertisingParams   | [AdvertisingParams](#advertisingparams11) | 是    | 启动BLE广播的相关参数。           |
-| callback            | AsyncCallback&lt;number&gt;             | 是    | 广播ID标识，通过注册回调函数获取。 |
+| callback            | AsyncCallback&lt;number&gt;             | 是    | 回调函数。当广播启动成功，err为undefined，data为分配的广播ID标识；否则为错误对象。 |
 
 **错误码**：
 
@@ -629,14 +630,14 @@ try {
         advertisingData: advData,
         advertisingResponse: advResponse,
         duration: 0
-    }
+    };
     let advHandle = 0xFF;
     ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
         if (err) {
             return;
         } else {
             advHandle = outAdvHandle;
-            console.info("advHandle: " + advHandle);
+            console.info('advHandle: ' + advHandle);
         }
     });
 } catch (err) {
@@ -651,7 +652,7 @@ startAdvertising(advertisingParams: AdvertisingParams): Promise&lt;number&gt;
 
 首次启动发送BLE广播报文。使用Promise异步回调。
 - 启动成功后，蓝牙子系统会分配相关资源，并使用Promise异步返回该广播的标识。
-- 若携带了发送广播持续时间，则一定时间后，广播会停止发送，但分配的广播资源还存在，可以通过[ble.enableAdvertising](#bleenableadvertising11)重新启动发送该广播。
+- 若携带了发送广播持续时间，则达到该持续时间后，广播会停止发送，但分配的广播资源还存在，可以通过[ble.enableAdvertising](#bleenableadvertising11)重新启动发送该广播。
 - 从API version 15开始，应用可多次调用，支持发起多路广播，每一路广播通过不同的ID标识管理。
 - 当应用不再需要该广播时，需调用API version 11开始支持的[ble.stopAdvertising](#blestopadvertising11-1)完全停止该广播，不要与API version 10开始支持的[ble.stopAdvertising](#blestopadvertising)混用。
 
@@ -773,7 +774,7 @@ enableAdvertising(advertisingEnableParams: AdvertisingEnableParams, callback: As
 | 参数名                    | 类型                                                 | 必填  | 说明                             |
 | ------------------------- | --------------------------------------------------- | ----- | ------------------------------- |
 | advertisingEnableParams   | [AdvertisingEnableParams](#advertisingenableparams11) | 是    | 临时启动BLE广播的相关参数。        |
-| callback                  | AsyncCallback&lt;void&gt;                           | 是    | 回调函数。                        |
+| callback                  | AsyncCallback&lt;void&gt;                           | 是    | 回调函数。当重新启动广播成功，err为undefined，否则为错误对象。                        |
 
 **错误码**：
 
@@ -840,22 +841,17 @@ try {
     ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
         if (err) {
             return;
-        } else {
-            advHandle = outAdvHandle;
-            console.info("advHandle: " + advHandle);
         }
-    });
-
-    let advertisingEnableParams: ble.AdvertisingEnableParams = {
-        advertisingId: advHandle,
-        duration: 0
-    }
-
-    // after 3s, advertising disabled, then enable the advertising
-    ble.enableAdvertising(advertisingEnableParams, (err) => {
-        if (err) {
-            return;
+        advHandle = outAdvHandle;
+        let advertisingEnableParams: ble.AdvertisingEnableParams = {
+            advertisingId: advHandle,
+            duration: 0
         }
+        ble.enableAdvertising(advertisingEnableParams, (err) => {
+            if (err) {
+                return;
+            }
+        });
     });
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
@@ -889,7 +885,7 @@ enableAdvertising(advertisingEnableParams: AdvertisingEnableParams): Promise&lt;
 
 | 类型                       | 说明          |
 | -------------------------- | ------------ |
-| Promise&lt;void&gt;      | 回调函数。    |
+| Promise&lt;void&gt;      | Promise对象，无返回结果。    |
 
 **错误码**：
 
@@ -951,26 +947,21 @@ try {
         advertisingData: advData,
         advertisingResponse: advResponse,
         duration: 300
-    }
+    };
     let advHandle = 0xFF;
     ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
         if (err) {
             return;
-        } else {
-            advHandle = outAdvHandle;
-            console.info("advHandle: " + advHandle);
         }
-    });
-
-    let advertisingEnableParams: ble.AdvertisingEnableParams = {
-        advertisingId: advHandle,
-        duration: 0
-    }
-
-    // after 3s, advertising disabled, then enable the advertising
-    ble.enableAdvertising(advertisingEnableParams)
-        .then(() => {
-            console.info("enable success");
+        advHandle = outAdvHandle;
+        let advertisingEnableParams: ble.AdvertisingEnableParams = {
+            advertisingId: advHandle,
+            duration: 0
+        }
+        ble.enableAdvertising(advertisingEnableParams)
+            .then(() => {
+                console.info("enable success");
+            });
     });
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
@@ -998,7 +989,7 @@ disableAdvertising(advertisingDisableParams: AdvertisingDisableParams, callback:
 | 参数名                    | 类型                                                   | 必填  | 说明                             |
 | ------------------------- | ----------------------------------------------------- | ----- | ------------------------------- |
 | advertisingDisableParams  | [AdvertisingDisableParams](#advertisingdisableparams11) | 是    | 临时关闭BLE广播的相关参数。        |
-| callback                  | AsyncCallback&lt;void&gt;                             | 是    | 回调函数。                        |
+| callback                  | AsyncCallback&lt;void&gt;                             | 是    | 回调函数。当停止广播成功，err为undefined，否则为错误对象。                        |
 
 **错误码**：
 
@@ -1060,24 +1051,21 @@ try {
         advertisingData: advData,
         advertisingResponse: advResponse,
         duration: 0
-    }
+    };
     let advHandle = 0xFF;
     ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
         if (err) {
             return;
-        } else {
-            advHandle = outAdvHandle;
-            console.info("advHandle: " + advHandle);
         }
-    });
-
-    let advertisingDisableParams: ble.AdvertisingDisableParams = {
-        advertisingId: advHandle
-    }
-    ble.disableAdvertising(advertisingDisableParams, (err) => {
-        if (err) {
-            return;
+        advHandle = outAdvHandle;
+        let advertisingDisableParams: ble.AdvertisingDisableParams = {
+            advertisingId: advHandle
         }
+        ble.disableAdvertising(advertisingDisableParams, (err) => {
+            if (err) {
+                return;
+            }
+        });
     });
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
@@ -1110,7 +1098,7 @@ disableAdvertising(advertisingDisableParams: AdvertisingDisableParams): Promise&
 
 | 类型                       | 说明          |
 | -------------------------- | ------------ |
-| Promise&lt;void&gt;        | 回调函数。    |
+| Promise&lt;void&gt;        | Promise对象，无返回结果。    |
 
 **错误码**：
 
@@ -1167,33 +1155,31 @@ try {
         manufactureData:[manufactureDataUnit],
         serviceData:[serviceDataUnit]
     };
-    let advertisingParams: ble.AdvertisingParams = {
+let advertisingParams: ble.AdvertisingParams = {
         advertisingSettings: setting,
         advertisingData: advData,
         advertisingResponse: advResponse,
         duration: 0
-    }
+    };
     let advHandle = 0xFF;
     ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
         if (err) {
             return;
-        } else {
-            advHandle = outAdvHandle;
-            console.info("advHandle: " + advHandle);
         }
-    });
-
-    let advertisingDisableParams: ble.AdvertisingDisableParams = {
-        advertisingId: advHandle
-    }
-    ble.disableAdvertising(advertisingDisableParams)
-        .then(() => {
-            console.info("enable success");
+        advHandle = outAdvHandle;
+        let advertisingDisableParams: ble.AdvertisingDisableParams = {
+            advertisingId: advHandle
+        }
+        ble.disableAdvertising(advertisingDisableParams)
+            .then(() => {
+                console.info("disable success");
+            });
     });
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
+
 
 ## ble.stopAdvertising<sup>11+</sup>
 
@@ -1216,7 +1202,7 @@ stopAdvertising(advertisingId: number, callback: AsyncCallback&lt;void&gt;): voi
 | 参数名                    | 类型                          | 必填  | 说明                         |
 | ------------------------- | ---------------------------- | ----- | --------------------------- |
 | advertisingId             | number                       | 是    | 需要停止的广播ID标识。        |
-| callback                  | AsyncCallback&lt;void&gt;    | 是    | 回调函数。                   |
+| callback                  | AsyncCallback&lt;void&gt;    | 是    | 回调函数。当完全停止广播成功，err为undefined，否则为错误对象。                   |
 
 **错误码**：
 
@@ -1278,21 +1264,18 @@ try {
         advertisingData: advData,
         advertisingResponse: advResponse,
         duration: 0
-    }
+    };
     let advHandle = 0xFF;
     ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
         if (err) {
             return;
-        } else {
-            advHandle = outAdvHandle;
-            console.info("advHandle: " + advHandle);
         }
-    });
-
-    ble.stopAdvertising(advHandle, (err) => {
-        if (err) {
-            return;
-        }
+        advHandle = outAdvHandle;
+        ble.stopAdvertising(advHandle, (err) => {
+            if (err) {
+                return;
+            }
+        });
     });
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
@@ -1326,7 +1309,7 @@ stopAdvertising(advertisingId: number): Promise&lt;void&gt;
 
 | 类型                       | 说明          |
 | -------------------------- | ------------ |
-| Promise&lt;void&gt;        | 回调函数。    |
+| Promise&lt;void&gt;        | Promise对象，无返回结果。    |
 
 **错误码**：
 
@@ -1388,20 +1371,17 @@ try {
         advertisingData: advData,
         advertisingResponse: advResponse,
         duration: 0
-    }
+    };
     let advHandle = 0xFF;
     ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
         if (err) {
             return;
-        } else {
-            advHandle = outAdvHandle;
-            console.info("advHandle: " + advHandle);
         }
-    });
-
-    ble.stopAdvertising(advHandle)
-        .then(() => {
-            console.info("enable success");
+        advHandle = outAdvHandle;
+        ble.stopAdvertising(advHandle)
+            .then(() => {
+                console.info("stop success");
+            });
     });
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
@@ -1442,8 +1422,8 @@ on(type: 'advertisingStateChange', callback: Callback&lt;AdvertisingStateChangeI
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
-function onReceiveEvent(data: ble.AdvertisingStateChangeInfo) {
+import { BusinessError } from '@kit.BasicServicesKit';
+let onReceiveEvent = (data: ble.AdvertisingStateChangeInfo) => {
     console.info('bluetooth advertising state = ' + JSON.stringify(data));
 }
 try {
@@ -1487,8 +1467,8 @@ off(type: 'advertisingStateChange', callback?: Callback&lt;AdvertisingStateChang
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
-function onReceiveEvent(data: ble.AdvertisingStateChangeInfo) {
+import { BusinessError } from '@kit.BasicServicesKit';
+let onReceiveEvent = (data: ble.AdvertisingStateChangeInfo) => {
     console.info('bluetooth advertising state = ' + JSON.stringify(data));
 }
 try {
@@ -1537,8 +1517,8 @@ on(type: 'BLEDeviceFind', callback: Callback&lt;Array&lt;ScanResult&gt;&gt;): vo
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
-function onReceiveEvent(data: Array<ble.ScanResult>) {
+import { BusinessError } from '@kit.BasicServicesKit';
+let onReceiveEvent = (data: Array<ble.ScanResult>) => {
     console.info('bluetooth device find = '+ JSON.stringify(data));
 }
 try {
@@ -1586,8 +1566,8 @@ off(type: 'BLEDeviceFind', callback?: Callback&lt;Array&lt;ScanResult&gt;&gt;): 
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
-function onReceiveEvent(data: Array<ble.ScanResult>) {
+import { BusinessError } from '@kit.BasicServicesKit';
+let onReceiveEvent = (data: Array<ble.ScanResult>) => {
     console.info('bluetooth device find = '+ JSON.stringify(data));
 }
 try {
@@ -1643,7 +1623,7 @@ server端添加服务。该操作会在蓝牙子系统中注册该服务，表�
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 创建descriptors。
 let descriptors: Array<ble.BLEDescriptor> = [];
 let arrayBuffer = new ArrayBuffer(2);
@@ -1657,8 +1637,8 @@ descriptors[0] = descriptor;
 // 创建characteristics。
 let characteristics: Array<ble.BLECharacteristic> = [];
 let arrayBufferC = new ArrayBuffer(8);
-let cccV = new Uint8Array(arrayBufferC);
-cccV[0] = 1;
+let cccValue = new Uint8Array(arrayBufferC);
+cccValue[0] = 1;
 let characteristic: ble.BLECharacteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
   characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB', characteristicValue: arrayBufferC, descriptors:descriptors};
 characteristics[0] = characteristic;
@@ -1679,7 +1659,7 @@ try {
 
 removeService(serviceUuid: string): void
 
-删除Server端已添加的服务。
+删除server端已添加的服务。
 - 该服务曾通过[addService](#addservice)添加。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -1713,7 +1693,7 @@ removeService(serviceUuid: string): void
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let server: ble.GattServer = ble.createGattServer();
 try {
     server.removeService('00001810-0000-1000-8000-00805F9B34FB');
@@ -1726,7 +1706,7 @@ try {
 
 removeAllServices(): void
 
-删除Server端所有服务。
+删除server端所有服务。
 
 **起始版本**：26.0.0
 
@@ -1897,7 +1877,7 @@ close(): void
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let server: ble.GattServer = ble.createGattServer();
 try {
     server.close();
@@ -1941,6 +1921,7 @@ connect(deviceId: string, autoConnect?: boolean): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
+|401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.               |
 |801     | Capability not supported. Failed to call the API because the short-range chip is not inserted on the 2in1 device.               |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -1991,6 +1972,7 @@ disconnect(deviceId: string): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
+|401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.               |
 |801     | Capability not supported. Failed to call the API because the short-range chip is not inserted on the 2in1 device.               |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -2052,7 +2034,7 @@ server端发送特征值变化通知或者指示给client端。使用Callback异
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let arrayBufferC = new ArrayBuffer(8);
 let notifyCharacter: ble.NotifyCharacteristic = {
     serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
@@ -2064,7 +2046,7 @@ try {
     let gattServer: ble.GattServer = ble.createGattServer();
     gattServer.notifyCharacteristicChanged('XX:XX:XX:XX:XX:XX', notifyCharacter, (err: BusinessError) => {
         if (err) {
-            console.error('notifyCharacteristicChanged callback failed');
+            console.error(`notifyCharacteristicChanged callback failed. Code: ${err.code}, message: ${err.message}`);
         } else {
             console.info('notifyCharacteristicChanged callback successful');
         }
@@ -2079,11 +2061,12 @@ try {
 
 notifyCharacteristicChanged(deviceId: string, notifyCharacteristic: NotifyCharacteristic): Promise&lt;void&gt;
 
-server端发送特征值变化通知或者指示给对端设备。使用Promise异步回调。
+server端发送特征值变化通知或者指示给client端。使用Promise异步回调。
 
 - 建议该特征值的Client Characteristic Configuration描述符notification（通知）或indication（指示）能力已被使能。
 - 蓝牙标准协议规定Client Characteristic Configuration描述符的数据内容长度为2字节，bit0和bit1分别表示notification（通知）和indication（指示）能力是否使能，例如bit0 = 1表示notification enabled。
 - 该特征值数据内容变化时调用。
+- [notifyCharacteristic](#notifycharacteristic)入参的characteristicValue数据长度默认限制为（MTU-3）字节，MTU大小可从订阅的回调[on('BLEMtuChange')](#onblemtuchange)获取。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -2122,7 +2105,7 @@ server端发送特征值变化通知或者指示给对端设备。使用Promise�
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let arrayBufferC = new ArrayBuffer(8);
 let notifyCharacter: ble.NotifyCharacteristic = {
     serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
@@ -2184,14 +2167,14 @@ client请求是指通过下述接口订阅回调收到的请求消息：
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 /* send response */
 let arrayBufferCCC = new ArrayBuffer(8);
 let cccValue = new Uint8Array(arrayBufferCCC);
 cccValue[0] = 1;
 let serverResponse: ble.ServerResponse = {
     deviceId: 'XX:XX:XX:XX:XX:XX',
-    transId: 0,
+    transId: 0, // transId需要从订阅的characteristicRead/characteristicWrite/descriptorRead/descriptorWrite回调事件中获取，此处0仅为示例
     status: 0,
     offset: 0,
     value: arrayBufferCCC
@@ -2241,12 +2224,12 @@ server端订阅client的特征值读请求事件，server端收到该事件后�
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let arrayBufferCCC = new ArrayBuffer(8);
 let cccValue = new Uint8Array(arrayBufferCCC);
 cccValue[0] = 1;
 let gattServer: ble.GattServer = ble.createGattServer();
-function ReadCharacteristicReq(characteristicReadRequest: ble.CharacteristicReadRequest) {
+let readCharacteristicReq = (characteristicReadRequest: ble.CharacteristicReadRequest) => {
     let deviceId: string = characteristicReadRequest.deviceId;
     let transId: number = characteristicReadRequest.transId;
     let offset: number = characteristicReadRequest.offset;
@@ -2260,7 +2243,7 @@ function ReadCharacteristicReq(characteristicReadRequest: ble.CharacteristicRead
         console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
     }
 }
-gattServer.on('characteristicRead', ReadCharacteristicReq);
+gattServer.on('characteristicRead', readCharacteristicReq);
 ```
 
 
@@ -2298,7 +2281,7 @@ server端取消订阅client的特征值读请求事件。
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let gattServer: ble.GattServer = ble.createGattServer();
     gattServer.off('characteristicRead');
@@ -2344,11 +2327,11 @@ server端订阅client的特征值写请求事件，server端收到该事件后�
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let arrayBufferCCC = new ArrayBuffer(8);
 let cccValue = new Uint8Array(arrayBufferCCC);
 let gattServer: ble.GattServer = ble.createGattServer();
-function WriteCharacteristicReq(characteristicWriteRequest: ble.CharacteristicWriteRequest) {
+let writeCharacteristicReq = (characteristicWriteRequest: ble.CharacteristicWriteRequest) => {
     let deviceId: string = characteristicWriteRequest.deviceId;
     let transId: number = characteristicWriteRequest.transId;
     let offset: number = characteristicWriteRequest.offset;
@@ -2366,7 +2349,7 @@ function WriteCharacteristicReq(characteristicWriteRequest: ble.CharacteristicWr
         console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
     }
 }
-gattServer.on('characteristicWrite', WriteCharacteristicReq);
+gattServer.on('characteristicWrite', writeCharacteristicReq);
 ```
 
 
@@ -2404,7 +2387,7 @@ server端取消订阅client的特征值写请求事件。
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let gattServer: ble.GattServer = ble.createGattServer();
     gattServer.off('characteristicWrite');
@@ -2450,12 +2433,12 @@ server端订阅client的描述符读请求事件，server端收到该事件后�
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let arrayBufferDesc = new ArrayBuffer(8);
 let descValue = new Uint8Array(arrayBufferDesc);
 descValue[0] = 1;
 let gattServer: ble.GattServer = ble.createGattServer();
-function ReadDescriptorReq(descriptorReadRequest: ble.DescriptorReadRequest) {
+let readDescriptorReq = (descriptorReadRequest: ble.DescriptorReadRequest) => {
     let deviceId: string = descriptorReadRequest.deviceId;
     let transId: number = descriptorReadRequest.transId;
     let offset: number = descriptorReadRequest.offset;
@@ -2469,7 +2452,7 @@ function ReadDescriptorReq(descriptorReadRequest: ble.DescriptorReadRequest) {
         console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
     }
 }
-gattServer.on('descriptorRead', ReadDescriptorReq);
+gattServer.on('descriptorRead', readDescriptorReq);
 ```
 
 
@@ -2507,7 +2490,7 @@ server端取消订阅client的描述符读请求事件。
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let gattServer: ble.GattServer = ble.createGattServer();
     gattServer.off('descriptorRead');
@@ -2553,11 +2536,11 @@ server端订阅client的描述符写请求事件，server端收到该事件后�
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let arrayBufferDesc = new ArrayBuffer(8);
 let descValue = new Uint8Array(arrayBufferDesc);
 let gattServer: ble.GattServer = ble.createGattServer();
-function WriteDescriptorReq(descriptorWriteRequest: ble.DescriptorWriteRequest) {
+let writeDescriptorReq = (descriptorWriteRequest: ble.DescriptorWriteRequest) => {
     let deviceId: string = descriptorWriteRequest.deviceId;
     let transId: number = descriptorWriteRequest.transId;
     let offset: number = descriptorWriteRequest.offset;
@@ -2575,7 +2558,7 @@ function WriteDescriptorReq(descriptorWriteRequest: ble.DescriptorWriteRequest) 
         console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
     }
 }
-gattServer.on('descriptorWrite', WriteDescriptorReq);
+gattServer.on('descriptorWrite', writeDescriptorReq);
 ```
 
 
@@ -2613,7 +2596,7 @@ server端取消订阅client的描述符写请求事件。
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
 let gattServer: ble.GattServer = ble.createGattServer();
 gattServer.off('descriptorWrite');
@@ -2708,7 +2691,7 @@ server端取消订阅GATT profile协议的连接状态变化事件。
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let gattServer: ble.GattServer = ble.createGattServer();
     gattServer.off('connectionStateChange');
@@ -2726,6 +2709,8 @@ server端订阅MTU（最大传输单元）大小变更事件。使用Callback异
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -2734,7 +2719,7 @@ server端订阅MTU（最大传输单元）大小变更事件。使用Callback异
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| type     | string                                   | 是    | 事件回调类型，支持的事件为'BLEMtuChange'，表示MTU状态变化事件。<br>当收到了client端发起了MTU协商请求时，触发该事件。 |
+| type     | string                                   | 是    | 事件回调类型，支持的事件为'BLEMtuChange'，表示MTU状态变化事件。<br>当收到client端发起的MTU协商请求时，触发该事件。 |
 | callback | Callback&lt;number&gt; | 是    | 指定订阅的回调函数，会携带协商后的MTU大小。单位：Byte。 |
 
 **错误码**：
@@ -2750,7 +2735,7 @@ server端订阅MTU（最大传输单元）大小变更事件。使用Callback异
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let gattServer: ble.GattServer = ble.createGattServer();
     gattServer.on('BLEMtuChange', (mtu: number) => {
@@ -2769,6 +2754,8 @@ off(type: 'BLEMtuChange', callback?: Callback&lt;number&gt;): void
 server端取消订阅MTU（最大传输单元）大小变更事件。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -2794,7 +2781,7 @@ server端取消订阅MTU（最大传输单元）大小变更事件。
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let gattServer: ble.GattServer = ble.createGattServer();
     gattServer.off('BLEMtuChange');
@@ -2834,6 +2821,7 @@ getConnectedState(deviceId: string): ProfileConnectionState
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.               |
 |2900003 | Bluetooth disabled.            |
@@ -2871,7 +2859,7 @@ readPhy(deviceId: string): Promise&lt;PhyValue&gt;
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| deviceId     | string | 是    | 需要传输数据的client端蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId     | string | 是    | 需要读取物理通道类型的client端蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。 |
 
 **返回值**：
 
@@ -2886,7 +2874,9 @@ readPhy(deviceId: string): Promise&lt;PhyValue&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.            |
 |2900099 | Operation failed.              |
 |2901003 | The connection is not established. |
@@ -2913,6 +2903,7 @@ server端设置和指定设备连接链路的物理通道类型。使用Promise�
 
 - 需先由client端发起连接，并等待连接成功后，再调用该方法。
 - 本端server调用setPhy设置和指定设备连接链路的物理通道类型后，底层会根据对端设备能力，协商出本端和对端设备均支持的物理通道类型作为最终结果。例如本端支持并设置[BLE_PHY_2M](#blephy23)，但对端设备仅支持[BLE_PHY_1M](#blephy23)，则最终设置的结果仍为[BLE_PHY_1M](#blephy23)。
+- 协商后的最终物理通道类型可通过订阅[onBlePhyUpdate](#onblephyupdate23)事件获取。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -2924,7 +2915,7 @@ server端设置和指定设备连接链路的物理通道类型。使用Promise�
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| deviceId     | string | 是    | 需要传输数据的client端蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId     | string | 是    | 需要设置物理通道类型的client端蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。 |
 | phyValue     | [PhyValue](#phyvalue23) | 是    | 连接链路的物理通道类型配置参数。 |
 
 **返回值**：
@@ -2940,7 +2931,9 @@ server端设置和指定设备连接链路的物理通道类型。使用Promise�
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.            |
 |2900099 | Operation failed.              |
 |2901003 | The connection is not established. |
@@ -2986,17 +2979,18 @@ onBlePhyUpdate(callback: Callback&lt;PhyValue&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例**：
 
 ```js
-function BlePhyCallback(data:ble.PhyValue) {
+let blePhyCallback = (data:ble.PhyValue) => {
     console.info(`txPhy: ${data.txPhy}, rxPhy: ${data.rxPhy}`);
 }
 let gattServer: ble.GattServer = ble.createGattServer();
 try {
-    gattServer.onBlePhyUpdate(BlePhyCallback);
+    gattServer.onBlePhyUpdate(blePhyCallback);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -3027,17 +3021,18 @@ offBlePhyUpdate(callback?: Callback&lt;PhyValue&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例**：
 
 ```js
-function BlePhyCallback(data:ble.PhyValue) {
+let blePhyCallback = (data:ble.PhyValue) => {
     console.info(`txPhy: ${data.txPhy}, rxPhy: ${data.rxPhy}`);
 }
 let gattServer: ble.GattServer = ble.createGattServer();
 try {
-    gattServer.offBlePhyUpdate(BlePhyCallback);
+    gattServer.offBlePhyUpdate(blePhyCallback);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -3083,7 +3078,7 @@ client端主动发起和server蓝牙设备的GATT协议连接。
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.connect();
@@ -3099,7 +3094,7 @@ disconnect(): void
 
 client断开与远端蓝牙低功耗设备的连接。
 
-- client可通过订阅[on('BLEConnectionStateChange')](#onbleconnectionstatechange)事件来感知连接是否成功。
+- client可通过订阅[on('BLEConnectionStateChange')](#onbleconnectionstatechange)事件来感知断连是否成功。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3124,7 +3119,7 @@ client断开与远端蓝牙低功耗设备的连接。
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.disconnect();
@@ -3163,7 +3158,7 @@ close(): void
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.close();
@@ -3178,6 +3173,8 @@ try {
 getDeviceName(callback: AsyncCallback&lt;string&gt;): void
 
 client获取server端设备名称。使用Callback异步回调。
+
+- 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3209,18 +3206,22 @@ client获取server端设备名称。使用Callback异步回调。
 
 ```js
 import { ble, constant } from '@kit.ConnectivityKit';
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let gattClient: ble.GattClientDevice = ble.createGattClientDevice("11:22:33:44:55:66");
-function ConnectStateChanged(state: ble.BLEConnectionChangeState) {
+let connectStateChanged = (state: ble.BLEConnectionChangeState) => {
     console.info('bluetooth connect state changed');
     let connectState: ble.ProfileConnectionState = state.state;
     if (connectState == constant.ProfileConnectionState.STATE_CONNECTED) {
-        gattClient.getDeviceName((err: BusinessError, data: string)=> {
-            console.info('device name err ' + JSON.stringify(err));
+        gattClient.getDeviceName((err: BusinessError, data: string) => {
+            if (err) {
+                console.error(`getDeviceName failed. Code: ${err.code}, message: ${err.message}`);
+                return;
+            }
             console.info('device name' + JSON.stringify(data));
-        })
+        });
     }
 }
+gattClient.on('BLEConnectionStateChange', connectStateChanged);
 // callback
 try {
     gattClient.connect();
@@ -3234,7 +3235,9 @@ try {
 
 getDeviceName(): Promise&lt;string&gt;
 
-client获取远端蓝牙低功耗设备的名称。使用Promise异步回调。
+client获取server端设备名称。使用Promise异步回调。
+
+- 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3266,10 +3269,10 @@ client获取远端蓝牙低功耗设备的名称。使用Promise异步回调。
 
 ```js
 import { ble, constant } from '@kit.ConnectivityKit';
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let gattClient: ble.GattClientDevice = ble.createGattClientDevice("11:22:33:44:55:66");
-gattClient.on('BLEConnectionStateChange', ConnectStateChanged);
-function ConnectStateChanged(state: ble.BLEConnectionChangeState) {
+gattClient.on('BLEConnectionStateChange', connectStateChanged);
+let connectStateChanged = (state: ble.BLEConnectionChangeState) => {
     console.info('bluetooth connect state changed');
     let connectState: ble.ProfileConnectionState = state.state;
     if (connectState == constant.ProfileConnectionState.STATE_CONNECTED) {
@@ -3293,7 +3296,8 @@ getServices(callback: AsyncCallback&lt;Array&lt;GattService&gt;&gt;): void
 
 client获取server端支持的所有服务能力，即服务发现流程。使用Callback异步回调。
 
-应用调用该方法后，才能调用其他读写特征值、描述符等其他方法，且需确保server支持的服务能力中包含需要操作的特征值或描述符。包含接口如下所示：
+- 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
+- 应用调用该方法后，才能调用其他读写特征值、描述符等其他方法，且需确保server支持的服务能力中包含需要操作的特征值或描述符。包含接口如下所示：
 
 - [readCharacteristicValue](#readcharacteristicvalue)
 - [readDescriptorValue](#readdescriptorvalue)
@@ -3332,11 +3336,11 @@ client获取server端支持的所有服务能力，即服务发现流程。使�
 
 ```js
 import { ble, constant } from '@kit.ConnectivityKit';
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // callback 模式。
 let getServices = (code: BusinessError, gattServices: Array<ble.GattService>) => {
     if (code && code.code != 0) {
-        console.info('bluetooth code is ' + code.code);
+        console.error(`getServices failed. Code: ${code.code}, message: ${code.message}`);
         return;
     }
     let services: Array<ble.GattService> = gattServices;
@@ -3346,13 +3350,14 @@ let getServices = (code: BusinessError, gattServices: Array<ble.GattService>) =>
     }
 }
 let device: ble.GattClientDevice = ble.createGattClientDevice("11:22:33:44:55:66");
-function ConnectStateChanged(state: ble.BLEConnectionChangeState) {
+let connectStateChanged = (state: ble.BLEConnectionChangeState) => {
     console.info('bluetooth connect state changed');
     let connectState: ble.ProfileConnectionState = state.state;
     if (connectState == constant.ProfileConnectionState.STATE_CONNECTED) {
         device.getServices(getServices);
     }
 }
+device.on('BLEConnectionStateChange', connectStateChanged);
 
 try {
     device.connect();
@@ -3366,7 +3371,9 @@ try {
 
 getServices(): Promise&lt;Array&lt;GattService&gt;&gt;
 
-client端获取蓝牙低功耗设备的所有服务，即服务发现。使用Promise异步回调。
+client端获取server端支持的所有服务能力，即服务发现流程。使用Promise异步回调。
+
+- 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3398,10 +3405,10 @@ client端获取蓝牙低功耗设备的所有服务，即服务发现。使用Pr
 
 ```js
 import { ble, constant } from '@kit.ConnectivityKit';
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // Promise 模式。
 let device: ble.GattClientDevice = ble.createGattClientDevice("11:22:33:44:55:66");
-function ConnectStateChanged(state: ble.BLEConnectionChangeState) {
+let connectStateChanged = (state: ble.BLEConnectionChangeState) => {
     console.info('bluetooth connect state changed');
     let connectState: ble.ProfileConnectionState = state.state;
     if (connectState == constant.ProfileConnectionState.STATE_CONNECTED) {
@@ -3410,6 +3417,7 @@ function ConnectStateChanged(state: ble.BLEConnectionChangeState) {
         });
     }
 }
+device.on('BLEConnectionStateChange', connectStateChanged);
 try {
     device.connect();
 } catch (err) {
@@ -3464,8 +3472,8 @@ client端从指定的server端特征值读取数据。使用Callback异步回调
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
-function readCcc(code: BusinessError, BLECharacteristic: ble.BLECharacteristic) {
+import { BusinessError } from '@kit.BasicServicesKit';
+let readCcc = (code: BusinessError, BLECharacteristic: ble.BLECharacteristic) => {
   if (code.code != 0) {
       return;
   }
@@ -3514,6 +3522,8 @@ client端从指定的server端特征值读取数据。使用Promise异步回调�
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数**：
 
 | 参数名            | 类型                                      | 必填   | 说明       |
@@ -3548,7 +3558,7 @@ client端从指定的server端特征值读取数据。使用Promise异步回调�
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let descriptors: Array<ble.BLEDescriptor> = [];
 let bufferDesc = new ArrayBuffer(2);
 let descV = new Uint8Array(bufferDesc);
@@ -3589,6 +3599,8 @@ client端从指定的server端描述符读取数据。使用Callback异步回调
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明                      |
@@ -3618,8 +3630,8 @@ client端从指定的server端描述符读取数据。使用Callback异步回调
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
-function readDesc(code: BusinessError, BLEDescriptor: ble.BLEDescriptor) {
+import { BusinessError } from '@kit.BasicServicesKit';
+let readDesc = (code: BusinessError, BLEDescriptor: ble.BLEDescriptor) => {
     if (code.code != 0) {
         return;
     }
@@ -3661,6 +3673,8 @@ client端从指定的server端描述符读取数据。使用Promise异步回调�
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数**：
 
 | 参数名        | 类型                              | 必填   | 说明       |
@@ -3695,7 +3709,7 @@ client端从指定的server端描述符读取数据。使用Promise异步回调�
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let bufferDesc = new ArrayBuffer(2);
 let descV = new Uint8Array(bufferDesc);
 descV[0] = 0; // 以Client Characteristic Configuration描述符为例，表示bit0、bit1均为0，notification和indication均不开启
@@ -3761,7 +3775,7 @@ client端向指定的server端特征值写入数据。使用Callback异步回调
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let descriptors: Array<ble.BLEDescriptor> = [];
 let bufferDesc = new ArrayBuffer(2);
 let descV = new Uint8Array(bufferDesc);
@@ -3777,8 +3791,8 @@ cccV[0] = 1;
 let characteristic: ble.BLECharacteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
   characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
   characteristicValue: bufferCCC, descriptors:descriptors};
-function writeCharacteristicValueCallBack(code: BusinessError) {
-    if (code != null) {
+let writeCharacteristicValueCallBack = (code: BusinessError) => {
+    if (code) {
         return;
     }
     console.info('bluetooth writeCharacteristicValue success');
@@ -3844,7 +3858,7 @@ client端向指定的server端特征值写入数据。使用Promise异步回调�
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let descriptors: Array<ble.BLEDescriptor>  = [];
 let bufferDesc = new ArrayBuffer(2);
 let descV = new Uint8Array(bufferDesc);
@@ -3916,7 +3930,7 @@ client端向指定的server端描述符写入数据。使用Callback异步回调
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let bufferDesc = new ArrayBuffer(2);
 let descV = new Uint8Array(bufferDesc);
 descV[0] = 0; // 以Client Characteristic Configuration描述符为例，表示bit0、bit1均为0，notification和indication均不开启
@@ -3930,7 +3944,7 @@ try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.writeDescriptorValue(descriptor, (err: BusinessError) => {
         if (err) {
-            console.error('writeDescriptorValue callback failed');
+            console.error(`writeDescriptorValue callback failed. Code: ${err.code}, message: ${err.message}`);
         } else {
             console.info('writeDescriptorValue callback successful');
         }
@@ -3993,7 +4007,7 @@ client端向指定的server端描述符写入数据。使用Promise异步回调�
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let bufferDesc = new ArrayBuffer(2);
 let descV = new Uint8Array(bufferDesc);
 descV[0] = 0; // 以Client Characteristic Configuration描述符为例，表示bit0、bit1均为0，notification和indication均不开启
@@ -4044,6 +4058,7 @@ client端获取GATT连接链路信号强度 (Received Signal Strength Indication
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.         |
 |801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
 |2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20-21 |
 |2900099 | Operation failed.                        |
 |2901003 | The connection is not established.<br>适用版本：20+                |
@@ -4051,13 +4066,16 @@ client端获取GATT连接链路信号强度 (Received Signal Strength Indication
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // callback
 try {
     let gattClient: ble.GattClientDevice = ble.createGattClientDevice("XX:XX:XX:XX:XX:XX");
     gattClient.connect();
-    let rssi = gattClient.getRssiValue((err: BusinessError, data: number)=> {
-        console.info('rssi err ' + JSON.stringify(err));
+    let rssi = gattClient.getRssiValue((err: BusinessError, data: number) => {
+        if (err) {
+            console.error(`getRssiValue failed. Code: ${err.code}, message: ${err.message}`);
+            return;
+        }
         console.info('rssi value' + JSON.stringify(data));
     })
 } catch (err) {
@@ -4096,6 +4114,7 @@ client端获取GATT连接链路信号强度 (Received Signal Strength Indication
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.               |
 |801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
 |2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20-21 |
 |2900099 | Operation failed.                        |
 |2901003 | The connection is not established.<br>适用版本：20+                |
@@ -4103,7 +4122,7 @@ client端获取GATT连接链路信号强度 (Received Signal Strength Indication
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
     let gattClient: ble.GattClientDevice = ble.createGattClientDevice("XX:XX:XX:XX:XX:XX");
@@ -4154,7 +4173,7 @@ client端同server端协商[MTU](../../connectivity/bluetooth/terminology.md#mtu
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.setBLEMtuSize(128);
@@ -4168,7 +4187,7 @@ try {
 
 setBLEMtu(mtu: number): Promise&lt;number&gt;
 
-client端同server端协商[MTU](../../connectivity/bluetooth/terminology.md#mtu)（最大传输单元）大小。<br>
+client端同server端协商[MTU](../../connectivity/bluetooth/terminology.md#mtu)（最大传输单元）大小。与[setBLEMtuSize](#setblemtusize)相比，本接口直接通过Promise返回实际协商成功的MTU结果，无需额外订阅[on('BLEMtuChange')](#onblemtuchange-1)事件获取协商结果。<br>
 - 需先调用[connect](#connect-1)方法，等GATT profile连接成功后才能使用。<br>
 - 需保证入参符合取值范围，不在取值范围内会直接返回异常。<br>
 - 如果未协商，MTU大小默认为23字节。
@@ -4203,7 +4222,9 @@ client端同server端协商[MTU](../../connectivity/bluetooth/terminology.md#mtu
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
 |2900011 | The operation is busy. The last operation is not complete.                        |
 |2900099 | Operation failed.                        |
 |2901003 | The connection is not established.                |
@@ -4269,7 +4290,7 @@ client端启用或者禁用接收server端特征值内容变更通知的能力�
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 创建descriptors。
 let descriptors: Array<ble.BLEDescriptor> = [];
 let arrayBuffer = new ArrayBuffer(2);
@@ -4286,9 +4307,9 @@ try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.setCharacteristicChangeNotification(characteristic, false, (err: BusinessError) => {
         if (err) {
-            console.error('notifyCharacteristicChanged callback failed');
+            console.error(`setCharacteristicChangeNotification callback failed. Code: ${err.code}, message: ${err.message}`);
         } else {
-            console.info('notifyCharacteristicChanged callback successful');
+            console.info('setCharacteristicChangeNotification callback successful');
         }
     });
 } catch (err) {
@@ -4349,7 +4370,7 @@ client端启用或者禁用接收server端特征值内容变更通知的能力�
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 创建descriptors。
 let descriptors: Array<ble.BLEDescriptor> = [];
 let arrayBuffer = new ArrayBuffer(2);
@@ -4418,7 +4439,7 @@ client端启用或者禁用接收server端特征值内容变更指示的能力�
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 创建descriptors。
 let descriptors: Array<ble.BLEDescriptor> = [];
 let arrayBuffer = new ArrayBuffer(2);
@@ -4435,9 +4456,9 @@ try {
   let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
   device.setCharacteristicChangeIndication(characteristic, false, (err: BusinessError) => {
     if (err) {
-      console.error('notifyCharacteristicChanged callback failed');
+      console.error(`setCharacteristicChangeIndication callback failed. Code: ${err.code}, message: ${err.message}`);
     } else {
-      console.info('notifyCharacteristicChanged callback successful');
+      console.info('setCharacteristicChangeIndication callback successful');
     }
   });
 } catch (err) {
@@ -4498,7 +4519,7 @@ client端启用或者禁用接收server端特征值内容变更指示的能力�
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 创建descriptors。
 let descriptors: Array<ble.BLEDescriptor> = [];
 let arrayBuffer = new ArrayBuffer(2);
@@ -4556,15 +4577,15 @@ client端订阅server端特征值变化事件。使用Callback异步回调。<br
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
-function CharacteristicChange(characteristicChangeReq: ble.BLECharacteristic) {
+import { BusinessError } from '@kit.BasicServicesKit';
+let characteristicChange = (characteristicChangeReq: ble.BLECharacteristic) => {
     let serviceUuid: string = characteristicChangeReq.serviceUuid;
     let characteristicUuid: string = characteristicChangeReq.characteristicUuid;
     let value: Uint8Array = new Uint8Array(characteristicChangeReq.characteristicValue);
 }
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
-    device.on('BLECharacteristicChange', CharacteristicChange);
+    device.on('BLECharacteristicChange', characteristicChange);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -4605,7 +4626,7 @@ client端取消订阅server端特征值变化事件。
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.off('BLECharacteristicChange');
@@ -4649,14 +4670,14 @@ client端订阅GATT profile协议的连接状态变化事件。使用Callback异
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
-function ConnectStateChanged(state: ble.BLEConnectionChangeState) {
+import { BusinessError } from '@kit.BasicServicesKit';
+let connectStateChanged = (state: ble.BLEConnectionChangeState) => {
     console.info('bluetooth connect state changed');
     let connectState: ble.ProfileConnectionState = state.state;
 }
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
-    device.on('BLEConnectionStateChange', ConnectStateChanged);
+    device.on('BLEConnectionStateChange', connectStateChanged);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -4697,7 +4718,7 @@ client端取消订阅GATT profile协议的连接状态变化事件。
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.off('BLEConnectionStateChange');
@@ -4741,7 +4762,7 @@ client端订阅MTU（最大传输单元）大小变更事件。使用Callback异
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     gattClient.on('BLEMtuChange', (mtu: number) => {
@@ -4787,7 +4808,7 @@ client端取消订阅MTU（最大传输单元）大小变更事件。
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.off('BLEMtuChange');
@@ -4825,20 +4846,21 @@ client端设备订阅server端设备服务变化的通知事件，使用Callback
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-function ServiceChangedEvent() : void {
+let serviceChangedEvent = (): void => {
     console.info("service has changed.");
 }
 
 let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 // 需预先调用connect接口先连上server端设备
 try {
-    gattClient.on('serviceChange', ServiceChangedEvent);
+    gattClient.on('serviceChange', serviceChangedEvent);
 } catch (err) {
     console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
@@ -4872,20 +4894,21 @@ client端设备取消订阅server端设备服务变化的通知事件。<br>
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-function ServiceChangedEvent() : void {
+let serviceChangedEvent = (): void => {
     console.info("service has changed.");
 }
 
 let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 // 需预先调用connect接口先连上server端设备
 try {
-    gattClient.off('serviceChange', ServiceChangedEvent);
+    gattClient.off('serviceChange', serviceChangedEvent);
 } catch (err) {
     console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
@@ -4917,6 +4940,7 @@ getConnectedState(): ProfileConnectionState
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.               |
 |2900003 | Bluetooth disabled.            |
@@ -4967,6 +4991,7 @@ updateConnectionParam(param: ConnectionParam): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.               |
 |2900003 | Bluetooth disabled.            |
@@ -5038,6 +5063,7 @@ client端设置连接链路的物理通道类型。使用Promise异步回调。
 
 - 需先调用[connect](#connect)方法发起连接，并等待连接成功后，再调用该方法。
 - 本端client调用setPhy设置物理通道类型后，底层会根据对端设备能力，协商出本端和对端设备均支持的物理通道类型作为最终结果。例如本端支持并设置[BLE_PHY_2M](#blephy23)，但对端设备仅支持[BLE_PHY_1M](#blephy23)，则最终设置的结果仍为[BLE_PHY_1M](#blephy23)。
+- 协商后的最终物理通道类型可通过订阅[onBlePhyUpdate](#onblephyupdate23-1)事件获取。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -5064,6 +5090,7 @@ client端设置连接链路的物理通道类型。使用Promise异步回调。
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900003 | Bluetooth disabled.            |
 |2900099 | Operation failed.              |
@@ -5104,22 +5131,23 @@ onBlePhyUpdate(callback: Callback&lt;PhyValue&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例**：
 
 ```js
-function BlePhyCallback(data:ble.PhyValue) {
+let blePhyCallback = (data:ble.PhyValue) => {
     console.info(`txPhy: ${data.txPhy}, rxPhy: ${data.rxPhy}`);
 }
 let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 try {
-    gattClient.onBlePhyUpdate(BlePhyCallback);
+    gattClient.onBlePhyUpdate(blePhyCallback);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -5145,22 +5173,23 @@ offBlePhyUpdate(callback?: Callback&lt;PhyValue&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例**：
 
 ```js
-function BlePhyCallback(data:ble.PhyValue) {
+let blePhyCallback = (data:ble.PhyValue) => {
     console.info(`txPhy: ${data.txPhy}, rxPhy: ${data.rxPhy}`);
 }
 let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 try {
-    gattClient.offBlePhyUpdate(BlePhyCallback);
+    gattClient.offBlePhyUpdate(blePhyCallback);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -5172,7 +5201,7 @@ createBleScanner(): BleScanner
 
 创建一个[BleScanner](#blescanner15)实例对象，可用于发起或停止BLE扫描等流程。
 
-**原子化服务API**: 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -5187,7 +5216,6 @@ createBleScanner(): BleScanner
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { ble } from '@kit.ConnectivityKit';
 let bleScanner: ble.BleScanner = ble.createBleScanner();
 console.info('create bleScanner success');
@@ -5222,7 +5250,7 @@ startScan(filters: Array&lt;ScanFilter&gt;, options?: ScanOptions): Promise&lt;v
 | 参数名     | 类型                                     | 必填   | 说明                                  |
 | ------- | -------------------------------------- | ---- | ----------------------------------- |
 | filters | Array&lt;[ScanFilter](#scanfilter)&gt; | 是    | 扫描BLE广播的过滤条件集合，符合过滤条件的设备会被上报。<br>- 若该参数设置为null，将扫描所有可发现的周边BLE设备，但是不建议使用此方式，可能扫描到非预期设备，并增加功耗。<br>- 围栏模式下（[ScanReportMode](#scanreportmode15)设置为FENCE_SENSITIVITY_LOW或FENCE_SENSITIVITY_HIGH时），该参数不可设置为null，需传入非空过滤器。<br>- 过滤器资源为所有应用共享，建议单个应用使用过滤器数量不超过3个，否则过滤器资源占满将导致开启扫描失败，返回2900009错误码。 |
-| options | [ScanOptions](#scanoptions)            | 否    | 扫描的配置参数。                     |
+| options | [ScanOptions](#scanoptions)            | 否    | 扫描的配置参数。不填写时使用默认配置。                     |
 
 **返回值**：
 
@@ -5248,14 +5276,14 @@ startScan(filters: Array&lt;ScanFilter&gt;, options?: ScanOptions): Promise&lt;v
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { ble } from '@kit.ConnectivityKit';
 let bleScanner: ble.BleScanner = ble.createBleScanner();
-function onReceiveEvent(scanReport: ble.ScanReport) {
+let onReceiveEvent = (scanReport: ble.ScanReport) => {
     console.info('BLE scan device find result = '+ JSON.stringify(scanReport));
 }
 try {
-    bleScanner.on("BLEDeviceFind", onReceiveEvent);
+    bleScanner.on('BLEDeviceFind', onReceiveEvent);
     let scanFilter: ble.ScanFilter = {
             deviceId:"XX:XX:XX:XX:XX:XX",
             name:"test",
@@ -5266,8 +5294,8 @@ try {
         dutyMode: ble.ScanDuty.SCAN_MODE_LOW_POWER,
         matchMode: ble.MatchMode.MATCH_MODE_AGGRESSIVE,
         reportMode: ble.ScanReportMode.FENCE_SENSITIVITY_LOW
-    }
-    bleScanner.startScan([scanFilter],scanOptions);
+    };
+    bleScanner.startScan([scanFilter], scanOptions);
     console.info('startScan success');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -5311,7 +5339,7 @@ stopScan(): Promise&lt;void&gt;
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { ble } from '@kit.ConnectivityKit';
 let bleScanner: ble.BleScanner = ble.createBleScanner();
 try {
@@ -5359,9 +5387,9 @@ on(type: 'BLEDeviceFind', callback: Callback&lt;ScanReport&gt;): void
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { ble } from '@kit.ConnectivityKit';
-function onReceiveEvent(scanReport: ble.ScanReport) {
+let onReceiveEvent = (scanReport: ble.ScanReport) => {
     console.info('bluetooth device find = '+ JSON.stringify(scanReport));
 }
 let bleScanner: ble.BleScanner = ble.createBleScanner();
@@ -5408,9 +5436,9 @@ off(type: 'BLEDeviceFind', callback?: Callback&lt;ScanReport&gt;): void
 **示例**：
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { ble } from '@kit.ConnectivityKit';
-function onReceiveEvent(scanReport: ble.ScanReport) {
+let onReceiveEvent = (scanReport: ble.ScanReport) => {
     console.info('bluetooth device find = '+ JSON.stringify(scanReport));
 }
 let bleScanner: ble.BleScanner = ble.createBleScanner();
@@ -5424,7 +5452,16 @@ try {
 
 ## GattService
 
-GATT服务结构定义，可包含多个特征值[BLECharacteristic](#blecharacteristic)和依赖的其他服务。
+GATT服务结构定义，可包含多个特征值[BLECharacteristic](#blecharacteristic)和依赖的其他服务。GATT数据结构层级关系如下图所示：
+
+```mermaid
+graph TD
+    GS[GattService] --> CH1[BLECharacteristic 1]
+    GS --> CH2[BLECharacteristic 2]
+    CH1 --> D1[BLEDescriptor 1]
+    CH1 --> D2[BLEDescriptor 2]
+    GS --> IS[依赖的其他服务]
+```
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5437,7 +5474,7 @@ GATT服务结构定义，可包含多个特征值[BLECharacteristic](#blecharact
 | serviceUuid     | string                                   | 否 | 否    | 服务UUID，标识一个GATT服务。例如：00001888-0000-1000-8000-00805f9b34fb。 |
 | isPrimary       | boolean                                  | 否 | 否    | 是否是主服务。true表示是主服务，false表示是次要服务。                |
 | characteristics | Array&lt;[BLECharacteristic](#blecharacteristic)&gt; | 否 | 否    | 当前服务包含的特征值列表。                             |
-| includeServices | Array&lt;[GattService](#gattservice)&gt; | 否 | 是    | 当前服务依赖的其它服务。                             |
+| includeServices | Array&lt;[GattService](#gattservice)&gt; | 否 | 是    | 当前服务依赖的其它服务。若不设置此参数，则默认不依赖其它服务。                             |
 
 
 
@@ -5455,9 +5492,9 @@ GATT特征值结构定义，是服务[GattService](#gattservice)的核心数据�
 | characteristicUuid  | string                  | 否 | 否    | 特征值UUID。例如：00002a11-0000-1000-8000-00805f9b34fb。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | characteristicValue | ArrayBuffer                              | 否 | 否    | 特征值的数据内容。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                      |
 | descriptors         | Array&lt;[BLEDescriptor](#bledescriptor)&gt; | 否 | 否    | 特征值包含的描述符列表。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                |
-| properties  | [GattProperties](#gattproperties) | 否 | 是     | 特征值支持的属性。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。     |
-| characteristicValueHandle<sup>18+</sup> | number                           | 否    | 是    | 特征值的唯一标识句柄。当server端BLE蓝牙设备提供了多个相同UUID特征值时，可以通过此句柄区分不同的特征值。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。                      |
-| permissions<sup>20+</sup> | [GattPermissions](#gattpermissions20)   | 否    | 是    | 特征值读写操作需要的权限。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                  |
+| properties  | [GattProperties](#gattproperties) | 否 | 是     | 特征值支持的属性。若不设置此参数，则使用默认属性值。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。     |
+| characteristicValueHandle<sup>18+</sup> | number                           | 否    | 是    | 特征值的唯一标识句柄。当server端BLE蓝牙设备提供了多个相同UUID特征值时，可以通过此句柄区分不同的特征值。若不设置此参数，则内容为undefined。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。                      |
+| permissions<sup>20+</sup> | [GattPermissions](#gattpermissions20)   | 否    | 是    | 特征值读写操作需要的权限。若不设置此参数，则使用默认权限值。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                  |
 
 
 ## BLEDescriptor
@@ -5474,8 +5511,8 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 | characteristicUuid | string      | 否 | 否    | 描述符所属的特征值UUID。例如：00002a11-0000-1000-8000-00805f9b34fb。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | descriptorUuid     | string      | 否 | 否    | 描述符UUID。例如：00002902-0000-1000-8000-00805f9b34fb。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | descriptorValue    | ArrayBuffer | 否 | 否    | 描述符的数据内容。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                              |
-| descriptorHandle<sup>18+</sup> | number        | 否    | 是    | 描述符的唯一标识句柄。当server端BLE蓝牙设备提供了多个相同UUID描述符时，可以通过此句柄区分不同的描述符。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。                      |
-| permissions<sup>20+</sup> | [GattPermissions](#gattpermissions20)       | 否    | 是    | 描述符读写操作需要的权限。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                  |
+| descriptorHandle<sup>18+</sup> | number        | 否    | 是    | 描述符的唯一标识句柄。当server端BLE蓝牙设备提供了多个相同UUID描述符时，可以通过此句柄区分不同的描述符。若不设置此参数，则内容为undefined。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。                      |
+| permissions<sup>20+</sup> | [GattPermissions](#gattpermissions20)       | 否    | 是    | 描述符读写操作需要的权限。若不设置此参数，则使用默认权限值。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                  |
 
 
 ## NotifyCharacteristic
@@ -5627,7 +5664,7 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 | 名称       | 类型        | 只读 | 可选   | 说明                                 |
 | -------- | ----------- | ---- | ---- | ---------------------------------- |
 | deviceId | string      | 否 | 否    | 扫描到的蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。<br>基于信息安全考虑，若应用开启扫描时没有在[ScanFilter](#scanfilter)中配置[实际MAC地址](./js-apis-bluetooth-common.md#bluetoothaddresstype)，则此处获取的设备地址为[虚拟MAC地址](./js-apis-bluetooth-common.md#bluetoothaddresstype)。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。|
-| address<sup>23+</sup> | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 否 | 是 | 扫描到的蓝牙设备地址信息，包括地址与地址类型。|
+| address<sup>23+</sup> | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 否 | 是 | 扫描到的蓝牙设备地址信息，包括地址与地址类型。若不设置此参数，则内容为undefined。|
 | rssi     | number      | 否 | 否    | 扫描到的设备信号强度，单位：dBm。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | data     | ArrayBuffer | 否 | 否    | 扫描到的设备发送的原始未解析的广播报文内容。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | deviceName | string | 否 | 否    | 扫描到的设备名称，从原始数据data字段中解析而来，在蓝牙协议中广播数据类型为0x09。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -5636,7 +5673,7 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 | manufacturerDataMap<sup>22+</sup>  | Map\<number, Uint8Array> | 否 | 是    | 扫描到的设备制造商数据集合，从原始数据data字段中解析而来，在蓝牙协议中广播数据类型为0xFF。若广播报文中携带设备制造商数据，则该字段有值，否则内容为undefined。<br>- Map的key表示制造商ID，value表示对应制造商数据的具体内容。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。  |
 | serviceDataMap<sup>22+</sup>  | Map\<string, Uint8Array> | 否 | 是    | 扫描到的设备服务数据集合，从原始数据data字段中解析而来，在蓝牙协议中广播数据类型为0x16。若广播报文中携带设备服务数据，则该字段有值，否则内容为undefined。<br>- Map的key表示服务UUID，value表示对应UUID服务的具体内容。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。   |
 | serviceUuids<sup>22+</sup>  | string[] | 否 | 是    | 扫描到的设备服务UUID集合，从原始数据data字段中解析而来，在蓝牙协议中，16-bit UUID的广播数据类型为0x03，32-bit UUID类型为0x05，128-bit UUID类型为0x07。若广播报文中携带设备服务UUID，则该字段有值，否则内容为undefined。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。   |
-| txPowerLevel<sup>22+</sup>  | number | 否 | 是    | 扫描到的设备广播发送功率，从原始数据data字段中解析而来，在蓝牙协议中广播数据类型为0x0A。若广播报文中携带设备广播发送功率，则该字段有值，否则内容为undefined。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。   |
+| txPowerLevel<sup>22+</sup>  | number | 否 | 是    | 扫描到的设备广播发送功率，单位：dBm，从原始数据data字段中解析而来，在蓝牙协议中广播数据类型为0x0A。若广播报文中携带设备广播发送功率，则该字段有值，否则内容为undefined。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。   |
 | advertisingDataMap<sup>22+</sup>  | Map\<number, Uint8Array> | 否 | 是    | 扫描到的设备广播数据集，从原始数据data字段中解析而来。<br>- Map的key表示广播数据类型，value表示对应数据类型的具体内容，如advertisingDataMap字段中key为0x0A的对应value含义为txPowerLevel值。<br>- 若广播报文中携带任意广播数据内容，则该字段有值，否则内容为undefined。 <br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。    |
 
 
@@ -5674,7 +5711,7 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 | serviceData     | Array&lt;[ServiceData](#servicedata)&gt; | 否 | 否    | 要携带的服务数据内容。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。               |
 | includeDeviceName | boolean     | 否 | 是    | 是否携带本机的设备名称作为广播名称。<br>true表示携带，false表示不携带，默认值为false。<br>若应用需要自定义广播名称，可通过advertiseName进行设置。本参数不可与advertiseName同时使用。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。        |
 | includeTxPower<sup>18+</sup> | boolean     | 否    | 是    | 是否携带广播发送功率。<br>true表示携带广播发送功率，false表示不携带广播发送功率，默认值为false。<br>携带该值后，广播报文长度将多占用3个字节。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。      |
-| advertiseName<sup>23+</sup> | string     | 否    | 是    | 要携带的自定义广播名称。<br>不可与includeDeviceName同时使用。<br>**需要权限**：[ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name)<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。      |
+| advertiseName<sup>23+</sup> | string     | 否    | 是    | 要携带的自定义广播名称。若不设置此参数，则默认不携带自定义广播名称。<br>不可与includeDeviceName同时使用。<br>**需要权限**：[ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name)<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。      |
 
 ## AdvertisingParams<sup>11+</sup>
 
@@ -5690,7 +5727,7 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 | ------------------- | ------------------------------- | ----- | ----- | ------------------------ |
 | advertisingSettings<sup>11+</sup> | [AdvertiseSetting](#advertisesetting) | 否 | 否    | 广播的发送参数。    |
 | advertisingData<sup>11+</sup>    | [AdvertiseData](#advertisedata) | 否 | 否    | 需要发送的广播报文数据内容。      |
-| advertisingResponse<sup>11+</sup> | [AdvertiseData](#advertisedata) | 否 | 是    | 回复扫描请求的广播报文数据内容。 |
+| advertisingResponse<sup>11+</sup> | [AdvertiseData](#advertisedata) | 否 | 是    | 回复扫描请求的广播报文数据内容。若不填写，则不携带扫描回复广播报文。在扩展广播模式下（isExtended为true时），与connectable不能共存：connectable为true时本参数需为空，connectable为false时本参数不能为空。 |
 | duration<sup>11+</sup>    | number   | 否 | 是    | 发送广播的持续时间。取值范围：[1, 65535]，单位：10ms。<br>如果未指定此参数或者将其设置为0，则会持续发送广播。    |
 
 ## AdvertisingEnableParams<sup>11+</sup>
@@ -5703,7 +5740,7 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 
 | 名称                | 类型                   | 只读 | 可选  | 说明                      |
 | ------------------- | --------------------- | ----- | ----- | ------------------------ |
-| advertisingId       | number                | 否 | 否    | 需要启动的广播标识。     |
+| advertisingId       | number                | 否 | 否    | 需要启动的广播标识。该值由[ble.startAdvertising](#blestartadvertising11)首次启动广播时分配。     |
 | duration            | number                | 否 | 是    | 发送广播的持续时间。取值范围：[1, 65535]，单位：10ms。<br>如果未指定此参数或者将其设置为0，则会持续发送广播。   |
 
 ## AdvertisingDisableParams<sup>11+</sup>
@@ -5716,7 +5753,7 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 
 | 名称                | 类型                   | 只读 | 可选  | 说明                      |
 | ------------------- | --------------------- | ----- | ----- | ------------------------ |
-| advertisingId       | number                | 否 | 否    | 需要停止的广播标识。     |
+| advertisingId       | number                | 否 | 否    | 需要停止的广播标识。该值由[ble.startAdvertising](#blestartadvertising11)首次启动广播时分配。     |
 
 ## AdvertisingStateChangeInfo<sup>11+</sup>
 
@@ -5774,7 +5811,7 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 <!--Table: 19%; 13%; 8%; 8%; 52%-->
 | 名称                                     | 类型    | 只读 | 可选  | 说明                                                         |
 | ------------------------------------------ | -------- | ---- | ---- | ------------------------------------------------------------ |
-| deviceId                                 | string      | 否 | 是    | 过滤该BLE设备地址的广播报文。例如："XX:XX:XX:XX:XX:XX"。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。  |
+| deviceId                                 | string      | 否 | 是    | 过滤该BLE设备地址的广播报文。例如："XX:XX:XX:XX:XX:XX"。若同时设置了[address](#address23)参数，则以address参数为准，deviceId不生效。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。  |
 | address<sup>23+</sup> | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 否 | 是 | 过滤该BLE设备地址和地址类型的广播报文。<br>与deviceId相比，本参数支持同时指定BLE设备地址和地址类型来对BLE广播报文进行过滤。<br>若deviceId与本参数同时指定，本参数生效，deviceId不生效。|
 | name                                     | string      | 否 | 是    | 过滤该BLE设备名称的广播报文。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。    |
 | serviceUuid                              | string      | 否 | 是    | 过滤包含该服务UUID的广播报文，serviceUuid通常在外围设备的广播报文中携带，表示外围设备支持的服务UUID。例如：00001888-0000-1000-8000-00805f9b34fb。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -5786,7 +5823,7 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 | manufactureId               | number      | 否 | 是     | 过滤包含该制造商标识符的广播报文。例如：0x0006。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | manufactureData             | ArrayBuffer | 否 | 是     | 搭配manufactureId过滤器使用，过滤包含该制造商数据的广播报文。例如：[0x1F,0x2F,0x3F]。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | manufactureDataMask         | ArrayBuffer | 否 | 是     | 搭配manufactureData过滤器使用，可设置过滤部分制造商数据。例如：[0xFF,0xFF,0xFF]。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
-| rssiThreshold<sup>23+</sup>    | number      | 否 | 是     | 过滤信号强度大于或等于该信号强度门限值的广播报文，蓝牙协议上规定可设置范围为[-128, 127]，建议设置[-90, 127]范围内的门限值。 <br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| rssiThreshold<sup>23+</sup>    | number      | 否 | 是     | 过滤信号强度大于或等于该信号强度门限值的广播报文，蓝牙协议上规定可设置范围为[-128, 127]，单位：dBm，建议设置[-90, 127]范围内的门限值。 <br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 
 
 ## ScanOptions
@@ -5826,7 +5863,7 @@ BLE扫描的配置参数。
 | indicate | boolean   | 否 | 是    | 该特征值是否支持向对端设备指示特征值内容。<br>true表示支持，对端设备需要回复确认，false表示不支持。默认值为false。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | broadcast<sup>20+</sup> | boolean   | 否 | 是    | 该特征值是否支持作为广播内容由server端发送。<br>true表示支持，server端可将特征值内容以[ServiceData](#servicedata)类型在广播报文中携带，false表示不支持。默认值为false。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
 | authenticatedSignedWrite<sup>20+</sup> | boolean   | 否 | 是    | 该特征值是否支持签名写入操作，通过对写入内容进行签名校验替代加密流程。<br>true表示支持，且该特征值权限[GattPermissions](#gattpermissions20)中的writeSigned或writeSignedMitm需设置为true，否则该属性不生效，false表示不支持。默认值为false。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
-| extendedProperties<sup>20+</sup> | boolean   | 否 | 是    | 该特征值是否存在扩展属性。<br>true表示存在扩展属性，false表示不存在。默认值为false。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
+| extendedProperties<sup>20+</sup> | boolean   | 否 | 是    | 该特征值是否存在扩展属性。<br>true表示存在扩展属性，即该特征值关联了特征值扩展属性描述符（UUID：00002900-0000-1000-8000-00805f9b34fb），用于定义附加的特征值属性（如可靠写入等）；false表示不存在扩展属性。默认值为false。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
 
 
 ## GattPermissions<sup>20+</sup>
@@ -5917,7 +5954,19 @@ BLE扫描的配置参数。
 
 ## AdvertisingState<sup>11+</sup>
 
-枚举，不同操作对应的BLE广播状态。
+枚举，不同操作对应的BLE广播状态。广播状态转换关系如下图所示：
+
+```mermaid
+stateDiagram-v2
+    [*] --> STARTED: startAdvertising
+    STARTED --> ENABLED: enableAdvertising
+    ENABLED --> DISABLED: disableAdvertising
+    DISABLED --> ENABLED: enableAdvertising
+    STARTED --> STOPPED: stopAdvertising (释放资源)
+    ENABLED --> STOPPED: stopAdvertising (释放资源)
+    DISABLED --> STOPPED: stopAdvertising (释放资源)
+    STOPPED --> [*]
+```
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -5972,7 +6021,7 @@ BLE扫描的配置参数。
 | --------  | ---- | ------------------------------ |
 | ON_FOUND  | 1    | 扫描到符合过滤条件的BLE广播报文时，触发上报，可搭配常规和围栏上报模式使用。 <br> **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。      |
 | ON_LOST | 2    | 当不再扫描到符合过滤条件的BLE广播报文时，触发上报，只搭配围栏上报模式使用。 <br> **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用    |
-| ON_BATCH<sup>19+</sup> | 3    | 扫描到符合过滤条件的BLE广播报文时，以[ScanOptions](#scanoptions)中的interval字段为周期触发上报。 <br> **原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用    |
+| ON_BATCH<sup>19+</sup> | 3    | 扫描到符合过滤条件的BLE广播报文时，以[ScanOptions](#scanoptions)中的interval字段为周期触发上报，只搭配批量上报模式（[BATCH](#scanreportmode15)）使用。 <br> **原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用    |
 
 ## GattDisconnectReason<sup>20+</sup>
 

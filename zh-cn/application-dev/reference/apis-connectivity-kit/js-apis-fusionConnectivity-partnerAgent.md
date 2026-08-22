@@ -382,7 +382,7 @@ try {
 
 | 名称                 | 类型   | 只读 | 可选   | 说明                                       |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| bluetoothAddress     | [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 否 | 是    | 该设备的蓝牙地址信息。 |
+| bluetoothAddress     | [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 否 | 否    | 该设备的蓝牙地址信息。 |
 
 ## PartnerAgentExtensionAbilityDestroyReason
 

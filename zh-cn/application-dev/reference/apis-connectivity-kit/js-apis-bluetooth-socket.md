@@ -73,11 +73,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 let serverSocket = (code: BusinessError, number: number) => {
   if (code) {
-    console.error('sppListen error, code is ' + code);
+    console.error(`sppListen error, code is ${code.code}, message is ${code.message}`);
     return;
   } else {
     serverNumber = number;
-    console.info('sppListen success, serverNumber = ' + serverNumber);
+    console.info(`sppListen success, serverNumber = ${serverNumber}`);
   }
 }
 
@@ -86,7 +86,7 @@ let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
 try {
     socket.sppListen('server1', sppOption, serverSocket);
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
 ```
 
@@ -113,12 +113,21 @@ getL2capPsm(serverSocket: number): number
 | ---------------------------------------- | -------------------------- |
 | number | 返回L2CAP链路类型套接字的psm值。<br>- [SppType](#spptype)设置为SPP_L2CAP_BLE时，返回值的有效值范围为[0x01, 0xFF]。<br>- [SppType](#spptype)设置为SPP_L2CAP时，返回值的有效值范围为[0x0000, 0xFFFF]。<br>- 服务端通道建立异常或[SppType](#spptype)非L2CAP链路类型时，返回-1。|          
 
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+|801 | Capability not supported. |
+
 **示例：**
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 服务端获取客户端设备地址。
+// 服务端获取L2CAP链路类型套接字的psm值。
 let serverNumber = 1; // 此处serverNumber需赋值为调用sppListen接口后，回调中得到的serverNumber。
 try {
     let l2capPsm: number = socket.getL2capPsm(serverNumber);
@@ -167,17 +176,17 @@ let clientNumber = -1;
 let serverNumber = 1;
 let acceptClientSocket = (code: BusinessError, number: number) => {
   if (code) {
-    console.error('sppListen error, code is ' + code);
+    console.error(`sppAccept error, code is ${code.code}, message is ${code.message}`);
     return;
   } else {
     clientNumber = number; // 获取的clientNumber用作客户端后续读/写操作socket的id。
-    console.info('sppListen success, clientNumber = ' + clientNumber);
+    console.info(`sppAccept success, clientNumber = ${clientNumber}`);
   }
 }
 try {
     socket.sppAccept(serverNumber, acceptClientSocket); // serverNumber是sppListen回调中得到的serverNumber。
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
 ```
 
@@ -190,7 +199,7 @@ sppConnect(deviceId: string, options: SppOptions, callback: AsyncCallback&lt;num
 - 通过[SppOptions](#sppoptions)参数的type表示需要连接的服务类型。
 - 需确保服务端设备已具备需要连接的服务。服务端可通过[socket.sppListen](#socketspplisten)注册并监听连接请求。
 - 连接建立成功后，即可通过[socket.sppWrite](#socketsppwrite)或[socket.sppWriteAsync](#socketsppwriteasync18)接口，同服务端进行数据传输。
-- 当客户端不再需要已建立的连接时，可通过[socket.sppCloseclientSocket](#socketsppcloseclientsocket)主动断开连接。
+- 当客户端不再需要已建立的连接时，可通过[socket.sppCloseClientSocket](#socketsppcloseclientsocket)主动断开连接。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -225,11 +234,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let clientSocket = (code: BusinessError, number: number) => {
   if (code) {
-    console.error('sppConnect error, code is ' + code);
+    console.error(`sppConnect error, code is ${code.code}, message is ${code.message}`);
     return;
   } else {
     // 获取的number用作客户端后续读/写操作的socket id。
-    console.info('bluetooth clientSocket Number: ' + number);
+    console.info(`bluetooth clientSocket Number: ${number}`);
   }
 }
 
@@ -238,7 +247,7 @@ let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
 try {
     socket.sppConnect('XX:XX:XX:XX:XX:XX', sppOption, clientSocket);
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
 ```
 
@@ -247,7 +256,7 @@ try {
 
 getDeviceId(clientSocket: number): string
 
-客户端和服务端均可使用，获取套接字连接中的对端设备蓝牙地址。
+客户端和服务端均可使用，获取套接字连接中的对端设备蓝牙地址。若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -261,7 +270,7 @@ getDeviceId(clientSocket: number): string
 
 | 类型                                       | 说明                         |
 | ---------------------------------------- | -------------------------- |
-| string | 返回对端设备地址。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 已配对的地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。 |
+| string | 返回对端设备地址。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 已配对的地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址是否仍被其他应用使用来决定变更时机：若其他应用正在使用该地址，则不会立即变更；当无应用使用时，地址将被回收并在下次获取时分配新的虚拟地址。 |
 
 **错误码**：
 
@@ -388,6 +397,15 @@ sppWrite(clientSocket: number, data: ArrayBuffer): void
 - 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
 - 若开发者需感知传输过程中异常断连等错误，建议使用[socket.sppWriteAsync](#socketsppwriteasync18)。
 - 按照蓝牙协议规范，数据通道在空闲状态需进入休眠模式以降低功耗。蓝牙子系统实现上，通道在5-7s内没有数据交互时会进入休眠模式，将导致下次调用此接口发送数据前，会耗费500ms左右退出休眠模式才开始发送数据。
+
+数据通道状态转换示意如下：
+```mermaid
+stateDiagram-v2
+    [*] --> 活跃
+    活跃 --> 休眠: 空闲5-7s无数据交互
+    休眠 --> 活跃: 发送数据(唤醒约500ms)
+    活跃 --> 活跃: 每3s发送心跳保活
+```
 - 若想减少每次发送数据前退出休眠模式的耗时，建议每3s左右可往数据通道上发送一次任意大小的心跳数据，对数据通道进行保活，可防止进入休眠模式，但同时也会提高设备功耗。
 <!--RP1--><!--RP1End-->
 
@@ -398,7 +416,7 @@ sppWrite(clientSocket: number, data: ArrayBuffer): void
 | 参数名          | 类型          | 必填   | 说明            |
 | ------------ | ----------- | ---- | ------------- |
 | clientSocket | number      | 是    | 客户端套接字的ID。<br>该值是调用[socket.sppAccept](#socketsppaccept)或[socket.sppConnect](#socketsppconnect)接口，通过其异步callback获取到的。 |
-| data         | ArrayBuffer | 是    | 写入的数据。        |
+| data         | ArrayBuffer | 是    | 写入的数据。<br>对于L2CAP链路类型（SPP_L2CAP/SPP_L2CAP_BLE），数据大小不能超过当前链路的最大发送数据大小，可通过[socket.getMaxTransmitDataSize](#socketgetmaxtransmitdatasize22)接口获取。        |
 
 **错误码**：
 
@@ -485,6 +503,10 @@ off(type: 'sppRead', clientSocket: number, callback?: Callback&lt;ArrayBuffer&gt
 
 取消订阅套接字读请求事件。
 
+- 须在调用[socket.on('sppRead')](#socketonsppread)成功订阅后，才能调用该接口取消订阅。
+- 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
+- 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
+
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
@@ -522,12 +544,12 @@ try {
 
 sppWriteAsync(clientSocket: number, data: ArrayBuffer): Promise&lt;void&gt;
 
-客户端和服务端均可使用，向对端设备发送数据。使用Promise异步回调。该接口支持断开连接时，会抛出错误码并返回。
+客户端和服务端均可使用，向对端设备发送数据。使用Promise异步回调。当连接断开时，该接口会抛出错误码并返回。
 - 仅在双方成功建立连接后，调用本接口才有效。
 - 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
 - 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
 - 按照蓝牙协议规范，数据通道在空闲状态需进入休眠模式以降低功耗。蓝牙子系统实现上，通道在5-7s内没有数据交互时会进入休眠模式，将导致下次调用此接口发送数据前，会耗费500ms左右退出休眠模式才开始发送数据。
-- 若想减少每次发送数据前退休眠模式的耗时，建议每3s左右可往数据通道上发送一次任意大小的心跳数据，对数据通道进行保活，可防止进入休眠模式，但同时也会提高设备功耗。
+- 若想减少每次发送数据前退出休眠模式的耗时，建议每3s左右可往数据通道上发送一次任意大小的心跳数据，对数据通道进行保活，可防止进入休眠模式，但同时也会提高设备功耗。
 <!--RP3--><!--RP3End-->
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
@@ -551,6 +573,7 @@ sppWriteAsync(clientSocket: number, data: ArrayBuffer): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 |801 | Capability not supported.          |
 |2901054 | IO error. |
 |2900099 | Operation failed. |
@@ -563,6 +586,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let clientNumber = 1; // 入参clientNumber由sppAccept或sppConnect接口获取。
 let arrayBuffer = new ArrayBuffer(8);
 let data = new Uint8Array(arrayBuffer);
+data[0] = 123;
 try {
     socket.sppWriteAsync(clientNumber, arrayBuffer).then(() => {
       console.info("sppWrite success");
@@ -577,7 +601,7 @@ try {
 
 sppReadAsync(clientSocket: number): Promise&lt;ArrayBuffer&gt;
 
-客户端和服务端均可使用，读取对端发送数据的异步接口。使用Promise异步回调。该接口支持断开连接时，会抛出错误码并返回。
+客户端和服务端均可使用，读取对端发送数据的异步接口。使用Promise异步回调。当连接断开时，该接口会抛出错误码并返回。
 
 - 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
 - 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
@@ -606,6 +630,7 @@ sppReadAsync(clientSocket: number): Promise&lt;ArrayBuffer&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 |801 | Capability not supported.          |
 |2901054 | IO error. |
 |2900099 | Operation failed. |
@@ -638,7 +663,7 @@ async function readAsync(clientNumber: number) {
 
 getMaxReceiveDataSize(clientSocket: number): number
 
-客户端和服务端均可使用，获取当前套接字链路类型下最大接收数据的大小。
+客户端和服务端均可使用，获取当前套接字链路类型下最大接收数据的大小。通过[socket.sppReadAsync](#socketsppreadasync18)或[socket.on('sppRead')](#socketonsppread)接收数据时，单次接收的数据大小受此返回值约束（SPP_RFCOMM链路类型无此限制）。例如在文件传输、数据同步等需要接收大量数据的场景中，可调用此接口获取单次接收的最大数据量，以便对接收数据进行分片处理。
 
 - 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
 - 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
@@ -659,6 +684,15 @@ getMaxReceiveDataSize(clientSocket: number): number
 | ----------------------------- | ---------- |
 | number | 返回最大接收数据的大小，单位：Byte。 |
 
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+|801 | Capability not supported. |
+
 **示例：**
 
 ```js
@@ -677,7 +711,7 @@ try {
 
 getMaxTransmitDataSize(clientSocket: number): number
 
-客户端和服务端均可使用，获取套接字当前链路类型下最大发送数据的大小。
+客户端和服务端均可使用，获取套接字当前链路类型下最大发送数据的大小。调用[socket.sppWrite](#socketsppwrite)或[socket.sppWriteAsync](#socketsppwriteasync18)发送数据时，单次发送的数据大小不应超过此返回值（SPP_RFCOMM链路类型无此限制）。例如在文件传输、音视频数据传输等需要发送大量数据的场景中，可调用此接口获取单次发送的最大数据量，以便对发送数据进行分片处理。
 
 - 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
 - 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
@@ -697,6 +731,15 @@ getMaxTransmitDataSize(clientSocket: number): number
 | ----------------------------- | ---------- |
 | number | 返回最大发送数据的大小，单位：Byte。 |
 
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+|801 | Capability not supported. |
+
 **示例：**
 
 ```js
@@ -715,7 +758,7 @@ try {
 
 isConnected(clientSocket: number): boolean
 
-客户端和服务端均可使用，检查当前链路是否已连接。
+客户端和服务端均可使用，检查当前链路是否已连接。需在调用[socket.sppConnect](#socketsppconnect)或[socket.sppAccept](#socketsppaccept)接口获取到有效的客户端套接字ID后使用。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -730,6 +773,15 @@ isConnected(clientSocket: number): boolean
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
 | boolean | 套接字链路是否已连接，true表示已连接，false表示未连接。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+|801 | Capability not supported. |
 
 **示例：**
 
@@ -757,7 +809,7 @@ try {
 | uuid   | string              | 否    | 否    | RFCOMM套接字链路类型的服务UUID，例如"00001101-0000-1000-8000-00805F9B34FB"。<br>- 建议开发者使用自定义的服务UUID（可通过工具函数[util.generateRandomUUID](../apis-arkts/js-apis-util.md#utilgeneraterandomuuid9)生成），也可以使用标准协议定义的Serial Port UUID服务(00001101-0000-1000-8000-00805F9B34FB)。<br>- SppType设置为SPP_RFCOMM时该参数必选。<br>- SppType设置为SPP_L2CAP或SPP_L2CAP_BLE时设置为空字符串。|
 | secure | boolean             | 否    | 否    | 是否是安全通道。true表示是安全通道，false表示非安全通道。    |
 | type   | [SppType](#spptype)            | 否    | 否    | 蓝牙套接字链路类型。    |
-| psm<sup>20+</sup>   | number              | 否    | 是    |协议/服务多路复用器值，用于标识特定的服务数据传输通道。不填写该参数时默认值为-1。<br>对于客户端：<br>- SppType设置为SPP_RFCOMM时，该参数不填。<br>-  SppType设置为SPP_L2CAP_BLE或SPP_L2CAP时，需和服务端的psm值保持一致。<br>对于服务端：<br>- SppType设置为SPP_RFCOMM时，该参数不填。<br>- SppType设置为SPP_L2CAP_BLE时，psm值必须由系统自动分配，有效值范围为[0x01, 0xFF]。<br>- SppType设置为SPP_L2CAP时，psm值可以主动设置或蓝牙子系统分配，若为主动设置，其有效范围为[0x00, 0xFFFF]，并且需要满足低位字节最低位必须为1，高位字节最低位必须为0；若为蓝牙子系统分配，该参数不填，可以通过[socket.getL2capPsm](#socketgetl2cappsm20)接口获取psm值。|
+| psm<sup>20+</sup>   | number              | 否    | 是    |协议/服务多路复用器值，用于标识特定的服务数据传输通道。不填写该参数时默认值为-1。<br>对于客户端：<br>- SppType设置为SPP_RFCOMM时，该参数不填。<br>- SppType设置为SPP_L2CAP_BLE或SPP_L2CAP时，需和服务端的psm值保持一致。<br>对于服务端：<br>- SppType设置为SPP_RFCOMM时，该参数不填。<br>- SppType设置为SPP_L2CAP_BLE时，psm值必须由系统自动分配，有效值范围为[0x01, 0xFF]。<br>- SppType设置为SPP_L2CAP时，psm值可以主动设置或蓝牙子系统分配，若为主动设置，其有效范围为[0x01, 0xFFFF]，并且需要满足低位字节最低位必须为1，高位字节最低位必须为0；若为蓝牙子系统分配，该参数不填，可以通过[socket.getL2capPsm](#socketgetl2cappsm20)接口获取psm值。|
 
 
 

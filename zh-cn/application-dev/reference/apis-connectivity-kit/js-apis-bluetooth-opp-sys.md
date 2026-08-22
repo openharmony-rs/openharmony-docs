@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-OPP模块提供了使用蓝牙传输文件的功能，包括发送文件、接收文件和获取文件传输进度等。
+OPP（Object Push Profile，对象推送配置）模块提供了使用蓝牙传输文件的功能，包括发送文件、接收文件和获取文件传输进度等。
 
 > **说明：**
 >
@@ -35,7 +35,7 @@ createOppServerProfile(): OppServerProfile
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
-| OppServerProfile | 返回profile实例。 |
+| [OppServerProfile](#oppserverprofile) | 返回profile实例。 |
 
 **错误码**：
 
@@ -50,6 +50,7 @@ createOppServerProfile(): OppServerProfile
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { opp } from '@kit.ConnectivityKit';
 try {
     let oppProfile = opp.createOppServerProfile();
     console.info('oppServer success');
@@ -96,15 +97,15 @@ sendFile(deviceId: string, fileHolds: Array&lt;FileHolder&gt;): Promise&lt;void&
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs.                 |
 |203 | This function is prohibited by enterprise management policies.                 |
-|401 | Invalid parameter.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900003 | Bluetooth switch is off.                 |
-|2900004 | Profile is not supported.                 |
+|2900003 | Bluetooth disabled.                 |
+|2900004 | Profile not supported.                 |
 |2900099 | Failed to send file.                        |
-|2903001 | The file type is not supported.                 |
-|2903002 | Current Transfer Information is busy.                 |
-|2903003 | The file is not accessible.                        |
+|2903001 | The file type is not supported. | 文件类型不被支持。请检查待传输文件的类型是否在蓝牙OPP支持的范围内，更换为支持的文件类型后重试。 |
+|2903002 | Current Transfer Information is busy. | 当前已有文件传输任务正在进行。请等待当前传输完成或取消当前传输后再重试。 |
+|2903003 | The file is not accessible. | 文件无法访问。请检查文件路径是否正确、文件是否存在以及是否有访问权限，确保文件可访问后重试。 |
 
 **示例：**
 
@@ -130,7 +131,7 @@ try {
         };
         fileHolders.push(fileHolder);
     }
-    oppProfile.sendFile("11:22:33:44:55:66", fileHolders);
+    oppProfile.sendFile('11:22:33:44:55:66', fileHolders);
     // 等待文件传输完后，记得关闭文件描述符  fs.close(file.fd);
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -141,7 +142,7 @@ try {
 
 setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise&lt;void&gt;
 
-蓝牙接收文件。使用Promise异步回调。
+确认是否接收蓝牙传入的文件。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -153,8 +154,8 @@ setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise&lt;void&gt
 
 | 参数名     | 类型                          | 必填   | 说明                       |
 | ------- | --------------------------- | ---- | ------------------------ |
-| accept | boolean | 是    | 表示是否接受接收文件。true表示接受，false表示不接受。 |
-| fileFd | number| 是    | 接收的文件描述符，接收过程中需要保持开启。 |
+| accept | boolean | 是    | 表示是否同意接收文件。true表示同意接收，false表示拒绝接收。 |
+| fileFd | number| 是    | 接收的文件描述符。当accept为true时，接收过程中需要保持开启直到接收完成。 |
 
 **返回值：**
 
@@ -171,14 +172,14 @@ setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise&lt;void&gt
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs.                 |
 |203 | This function is prohibited by enterprise management policies.                 |
-|401 | Invalid parameter.                |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900003 | Bluetooth switch is off.                 |
-|2900004 | Profile is not supported.                 |
+|2900003 | Bluetooth disabled.                 |
+|2900004 | Profile not supported.                 |
 |2900099 | Failed to confirm the received file information.                        |
-|2903002 | Current Transfer Information is busy.                 |
-|2903003 | The file is not accessible.                        |
+|2903002 | Current Transfer Information is busy. | 当前已有文件传输任务正在进行。请等待当前传输完成或取消当前传输后再重试。 |
+|2903003 | The file is not accessible. | 文件无法访问。请检查文件描述符是否有效、文件是否存在以及是否有访问权限，确保文件可访问后重试。 |
 
 **示例：**
 
@@ -186,11 +187,11 @@ setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise&lt;void&gt
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs} from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
-// 创建fileHolders
+// 创建并设置接收文件确认
 let file: fs.File | undefined = undefined;
 try {
     let oppProfile = opp.createOppServerProfile();
-    let pathDir = "/test.jpg"; // 应用根据实际情况填写路径
+    let pathDir = '/test.jpg'; // 应用根据实际情况填写路径
     file = fs.openSync(pathDir, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
     oppProfile.setIncomingFileConfirmation(true, file.fd);
 } catch (err) {
@@ -241,18 +242,17 @@ on(type: 'transferStateChange', callback: Callback&lt;OppTransferInformation&gt;
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
-// 创建fileHolders
+// 订阅文件传输状态变化事件
 try {
     let oppProfile = opp.createOppServerProfile();
-    oppProfile.on("transferStateChange", (data: opp.OppTransferInformation) => {
+    oppProfile.on('transferStateChange', (data: opp.OppTransferInformation) => {
         if (data.status == opp.TransferStatus.PENDING) {
-          console.info("[opp_js] waiting to transfer : " + data.remoteDeviceName);
-        } else if (data.status == opp.TransferStatus.RUNNING){
-          console.info("[opp_js] running data.currentBytes " + data.currentBytes + " data.totalBytes" + data.totalBytes);
-        } else if (data.status == opp.TransferStatus.FINISH){
-          console.info("[opp_js] transfer finished, result is " + data.result);
+          console.info('[opp_js] waiting to transfer : ' + data.remoteDeviceName);
+        } else if (data.status == opp.TransferStatus.RUNNING) {
+          console.info('[opp_js] running data.currentBytes ' + data.currentBytes + ' data.totalBytes' + data.totalBytes);
+        } else if (data.status == opp.TransferStatus.FINISH) {
+          console.info('[opp_js] transfer finished, result is ' + data.result);
         }
       });
 } catch (err) {
@@ -277,6 +277,7 @@ off(type: 'transferStateChange', callback?: Callback&lt;OppTransferInformation&g
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | 是    | 事件回调类型，支持的事件为'transferStateChange'，调用off('transferStateChange')后，停止接收文件传输进度和状态变化事件。 |
+| callback | Callback&lt;[OppTransferInformation](#opptransferinformation)&gt; | 否    | 表示文件传输进度和状态变化事件的回调函数。如果传入该参数，则取消订阅指定回调；如果不传入，则取消所有订阅。 |
 
 **错误码**：
 
@@ -297,12 +298,11 @@ off(type: 'transferStateChange', callback?: Callback&lt;OppTransferInformation&g
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
-// 创建fileHolders
+// 取消订阅文件传输状态变化事件
 try {
     let oppProfile = opp.createOppServerProfile();
-    oppProfile.off("transferStateChange");
+    oppProfile.off('transferStateChange');
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -312,7 +312,7 @@ try {
 
 on(type: 'receiveIncomingFile', callback: Callback&lt;OppTransferInformation&gt;): void
 
-订阅蓝牙文件传输事件以接收文件。
+订阅蓝牙文件传输事件以接收文件。当收到PENDING状态的通知后，需调用[setIncomingFileConfirmation](#setincomingfileconfirmation)方法确认是否接收该文件。与[on('transferStateChange')](#ontransferstatechange)的区别：receiveIncomingFile用于通知有文件待接收，需配合setIncomingFileConfirmation确认接收；transferStateChange用于监听传输过程中的进度和状态变化。开发者可根据实际场景选择订阅或同时订阅两者。
 
 **系统接口**：此接口为系统接口。
 
@@ -324,8 +324,8 @@ on(type: 'receiveIncomingFile', callback: Callback&lt;OppTransferInformation&gt;
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| type     | string                                   | 是    | 事件回调类型，支持的事件为'receiveIncomingFile'，当on('receiveIncomingFile')调用完成后，表示可以收到是否有文件传输通知的事件。 |
-| callback | Callback&lt;[OppTransferInformation](#opptransferinformation)&gt; | 是    | 表示文件传输进度和状态变化事件的回调函数。                  |
+| type     | string                                   | 是    | 事件回调类型，支持的事件为'receiveIncomingFile'，当on('receiveIncomingFile')调用完成后，可以收到文件传输通知事件。 |
+| callback | Callback&lt;[OppTransferInformation](#opptransferinformation)&gt; | 是    | 表示接收文件传输通知事件的回调函数。                  |
 
 **错误码**：
 
@@ -346,18 +346,17 @@ on(type: 'receiveIncomingFile', callback: Callback&lt;OppTransferInformation&gt;
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
-// 创建fileHolders
+// 订阅接收文件事件
 try {
     let oppProfile = opp.createOppServerProfile();
-    oppProfile.on("receiveIncomingFile", (data: opp.OppTransferInformation) => {
+    oppProfile.on('receiveIncomingFile', (data: opp.OppTransferInformation) => {
         if (data.status == opp.TransferStatus.PENDING) {
-          console.info("[opp_js] received file waiting to confirm : " + data.remoteDeviceName);
-        } else if (data.status == opp.TransferStatus.RUNNING){
-          console.info("[opp_js] running data.currentBytes " + data.currentBytes + " data.totalBytes" + data.totalBytes);
-        } else if (data.status == opp.TransferStatus.FINISH){
-          console.info("[opp_js] transfer finished, result is " + data.result);
+          console.info('[opp_js] received file waiting to confirm : ' + data.remoteDeviceName);
+        } else if (data.status == opp.TransferStatus.RUNNING) {
+          console.info('[opp_js] running data.currentBytes ' + data.currentBytes + ' data.totalBytes' + data.totalBytes);
+        } else if (data.status == opp.TransferStatus.FINISH) {
+          console.info('[opp_js] transfer finished, result is ' + data.result);
         }
       });
 } catch (err) {
@@ -369,7 +368,7 @@ try {
 
 off(type: 'receiveIncomingFile', callback?: Callback&lt;OppTransferInformation&gt;): void
 
-取消订阅蓝牙文件传输完成的事件。
+取消订阅接收蓝牙文件传输通知的事件。
 
 **系统接口**：此接口为系统接口。
 
@@ -382,6 +381,7 @@ off(type: 'receiveIncomingFile', callback?: Callback&lt;OppTransferInformation&g
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | 是    | 事件回调类型，支持的事件为'receiveIncomingFile'，调用off('receiveIncomingFile')后，停止接收文件传输通知的事件。 |
+| callback | Callback&lt;[OppTransferInformation](#opptransferinformation)&gt; | 否    | 表示文件传输通知事件的回调函数。如果传入该参数，则取消订阅指定回调；如果不传入，则取消所有订阅。 |
 
 **错误码**：
 
@@ -403,10 +403,10 @@ off(type: 'receiveIncomingFile', callback?: Callback&lt;OppTransferInformation&g
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 import { opp } from '@kit.ConnectivityKit';
-// 创建fileHolders
+// 取消订阅接收文件事件
 try {
     let oppProfile = opp.createOppServerProfile();
-    oppProfile.off("receiveIncomingFile");
+    oppProfile.off('receiveIncomingFile');
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -441,18 +441,17 @@ cancelTransfer(): Promise&lt;void&gt;
 |203 | This function is prohibited by enterprise management policies.          |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900003 | Bluetooth switch is off.                 |
-|2900004 | Profile is not supported.                 |
+|2900003 | Bluetooth disabled.                 |
+|2900004 | Profile not supported.                 |
 |2900099 | Failed to cancel the current transfer.                        |
-|2903002 | Current Transfer Information is busy.                 |
+|2903002 | Current Transfer Information is busy. | 当前已有文件传输任务正在进行。请等待当前传输完成后再重试。 |
 
 **示例：**
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
-// 创建fileHolders
+// 取消文件传输
 try {
     let oppProfile = opp.createOppServerProfile();
     oppProfile.cancelTransfer();
@@ -490,21 +489,20 @@ getCurrentTransferInformation(): Promise&lt;[OppTransferInformation](#opptransfe
 |203 | This function is prohibited by enterprise management policies.          |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900003 | Bluetooth switch is off.                 |
-|2900004 | Profile is not supported.                 |
+|2900003 | Bluetooth disabled.                 |
+|2900004 | Profile not supported.                 |
 |2900099 | Failed to obtain the current transmission information.                        |
-|2903004 | Current Transfer Information is empty.                 |
+|2903004 | Current Transfer Information is empty. | 当前没有正在进行的文件传输任务。请先发起文件传输后再调用此接口获取传输信息。 |
 
 **示例：**
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
-// 创建fileHolders
+// 获取当前传输的文件信息
 try {
     let oppProfile = opp.createOppServerProfile();
-    let data = oppProfile.getCurrentTransferInformation();
+    let data = await oppProfile.getCurrentTransferInformation();
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -514,7 +512,7 @@ try {
 
 setLastReceivedFileUri(uri: string): Promise&lt;void&gt;
 
-设置最后一个接收文件的URI。使用Promise异步回调。
+设置最后一个接收文件的URI。例如，当应用对已接收文件进行处理后，可通过本接口更新系统记录的文件URI，以便后续传输状态查询和文件管理能正确关联。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -526,7 +524,7 @@ setLastReceivedFileUri(uri: string): Promise&lt;void&gt;
 
 | 参数名     | 类型                          | 必填   | 说明                       |
 | ------- | --------------------------- | ---- | ------------------------ |
-| uri | string | 是    | 最后一个接收文件的URI。 |
+| uri | string | 是    | 最后一个接收文件的URI，格式为file://开头的文件路径，例如：file://media/Photo/1/IMG_1739266559_000/test.jpg。 |
 
 **返回值：**
 
@@ -547,7 +545,7 @@ setLastReceivedFileUri(uri: string): Promise&lt;void&gt;
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
-|2900004 | Profile is not supported.                 |
+|2900004 | Profile not supported.                 |
 |2900099 | Failed to set the URI of the last file.                        |
 
 **示例：**
@@ -555,10 +553,10 @@ setLastReceivedFileUri(uri: string): Promise&lt;void&gt;
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 import { opp } from '@kit.ConnectivityKit';
-// 创建fileHolders
+// 设置最后一个接收文件的URI
 try {
     let oppProfile = opp.createOppServerProfile();
-    oppProfile.setLastReceivedFileUri("file://media/Photo/1/IMG_1739266559_000/screenshot_20250211_173419.jpg"); // 应用根据实际情况填写路径
+    oppProfile.setLastReceivedFileUri('file://media/Photo/1/IMG_1739266559_000/screenshot_20250211_173419.jpg'); // 应用根据实际情况填写路径
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -596,8 +594,8 @@ try {
 | result | [TransferResult](#transferresult) | 否    | 否    | 传输结果。                |
 | currentBytes | number | 否    | 否    | 当前传输的字节数。                |
 | totalBytes | number | 否    | 否    | 需要传输的总字节数。                |
-| currentCount | number | 否    | 否    | 本次传输当前文件序列。                |
-| totalCount | number | 否    | 否    | 本次传输总传输的文件个数。                |
+| currentCount | number | 否    | 否    | 本次传输中当前文件的序号。                |
+| totalCount | number | 否    | 否    | 本次传输的文件总个数。                |
 
 ## DirectionType
 
