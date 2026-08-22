@@ -10,7 +10,9 @@
 
 当应用进行音频输入时，系统会根据音频流类型选择对应的输入设备（SOURCE_TYPE_MIC：内置MIC录音；SOURCE_TYPE_VOICE_COMMUNICATION：跟随当前输出设备）。若默认输入设备不满足应用需求，应用可通过[setBluetoothAndNearlinkPreferredRecordCategory](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setbluetoothandnearlinkpreferredrecordcategory21)或[selectMediaInputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#selectmediainputdevice21)实现音频输入设备路由切换。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。
+从API版本26.0.0开始，PC/2in1设备还支持基于[AudioDeviceEnhanceManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md)和[native_audio_device_enhance_manager.h](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md)的输入设备切换能力，应用可按应用级或音频流级精确指定输入设备，满足多设备场景下对收音来源的控制需求。
+
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。其中，[PC/2in1设备输入设备切换](#pc2in1设备输入设备切换)的完整示例请参见[ArkTS示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS)和[C/C++示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC)。
 
 ## 选择使用蓝牙或者星闪设备进行录音
 
@@ -129,3 +131,51 @@ let audioSessionManager = audioManager.getSessionManager();
     // ...
   });
 ```
+
+## PC/2in1设备输入设备切换
+
+PC/2in1设备通常连接多路输入设备（如内置麦克风、USB/蓝牙耳机麦克风等），系统默认的设备选择策略往往不能满足应用需求。通过本能力，应用可按**应用级**或**音频流级**精确指定输入设备，满足多设备场景下对收音来源的控制需求。
+
+### 查询能力是否支持
+
+使用前需先通过[isEnhancedRoutingSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md#isenhancedroutingsupported)或[OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_isenhancedroutingsupported)查询系统是否支持该能力，不支持时调用输入设备切换接口不生效，将继续使用当前输入设备。
+
+ArkTS示例：
+
+<!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
+
+C/C++示例：
+
+使用前需添加头文件：
+
+<!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+
+<!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+
+### 切换输入设备
+
+输入设备切换支持应用级和音频流级两种粒度，应用级对应用下所有录制流生效，音频流级仅对指定录制流生效，且音频流级的优先级高于应用级。
+
+> **说明：**
+>
+> 若某条录制流已通过音频流级接口指定了专属输入设备，则该流使用其专属输入设备，应用内其他录制流仍使用应用级设置的输入设备或系统默认输入设备。
+
+ArkTS示例：
+
+**应用级：** 通过[selectInputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md#selectinputdevice)选择指定的输入设备，设置成功后对应用下创建的所有录制流生效。
+
+<!-- @[select_InputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
+
+**音频流级：** 通过[selectInputDeviceForAudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md#selectinputdeviceforaudiocapturer)为指定音频录制流选择输入设备，设置成功后仅对该录制流生效。
+
+<!-- @[select_InputDeviceForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
+
+C/C++示例：
+
+**应用级：** 通过[OH_AudioDeviceEnhanceManager_SelectInputDevice](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectinputdevice)选择指定的输入设备。
+
+<!-- @[select_InputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+
+**音频流级：** 通过[OH_AudioDeviceEnhanceManager_SelectInputDeviceForAudioCapturer](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectinputdeviceforaudiocapturer)为指定音频录制流选择输入设备。
+
+<!-- @[select_InputDeviceForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->

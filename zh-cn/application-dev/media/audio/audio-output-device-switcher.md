@@ -8,6 +8,10 @@
 
 当应用进行音频输出时，系统将依据音频流类型自动匹配对应的输出设备。如果系统输出设备不满足应用需求，应用可通过`AVCastPicker`或`setDefaultOutputDevice`实现音频输出设备路由切换。在连接音频外设（如蓝牙耳机、有线耳机）的情况下，应用还可通过`setMediaOutputDevice`强制将媒体输出切换到扬声器。
 
+从API版本26.0.0开始，PC/2in1设备还支持基于[AudioDeviceEnhanceManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md)和[native_audio_device_enhance_manager.h](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md)的输出设备切换能力，应用可按应用级或音频流级精确指定输出设备，满足多设备场景下对声音输出去向的控制需求。
+
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。其中，[PC/2in1设备输出设备切换](#pc2in1设备输出设备切换)的完整示例请参见[ArkTS示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS)和[C/C++示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC)。
+
 ## 使用场景
 
 1. 若应用需要为用户提供可视化、可交互的音频输出设备切换入口时，可以使用`AVCastPicker`组件，开发者只需在布局中放置该组件，系统会自动检测当前可用的音频输出设备列表，用户点击后即可完成路由切换。
@@ -200,4 +204,50 @@
      });
    ```
 
-以上为各功能实现的代码片段，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。
+## PC/2in1设备输出设备切换
+
+PC/2in1设备通常连接多路输出设备（如内置扬声器、外接音箱、USB/蓝牙耳机等），系统默认的设备选择策略往往不能满足应用需求。通过本能力，应用可按**应用级**或**音频流级**精确指定输出设备，满足多设备场景下对声音输出去向的控制需求。
+
+### 查询能力是否支持
+
+使用前需先通过[isEnhancedRoutingSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md#isenhancedroutingsupported)或[OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_isenhancedroutingsupported)查询系统是否支持该能力，不支持时调用输出设备切换接口不生效，将继续使用当前输出设备。
+
+ArkTS示例：
+
+<!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
+
+C/C++示例：
+
+使用前需添加头文件：
+
+<!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+
+<!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+
+### 切换输出设备
+
+输出设备切换支持应用级和音频流级两种粒度，应用级对应用下所有播放流生效，音频流级仅对指定播放流生效，且音频流级的优先级高于应用级。
+
+> **说明：**
+>
+> 若某条播放流已通过音频流级接口指定了专属输出设备，则该流使用其专属输出设备，应用内其他播放流仍使用应用级设置的输出设备或系统默认输出设备。
+
+ArkTS示例：
+
+**应用级：** 通过[selectOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md#selectoutputdevice)选择指定的输出设备，设置成功后对应用下创建的所有播放流生效。
+
+<!-- @[select_OutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
+
+**音频流级：** 通过[selectOutputDeviceForAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md#selectoutputdeviceforaudiorenderer)为指定音频播放流选择输出设备，设置成功后仅对该播放流生效。
+
+<!-- @[select_OutputDeviceForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
+
+C/C++示例：
+
+**应用级：** 通过[OH_AudioDeviceEnhanceManager_SelectOutputDevice](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectoutputdevice)选择指定的输出设备。
+
+<!-- @[select_OutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+
+**音频流级：** 通过[OH_AudioDeviceEnhanceManager_SelectOutputDeviceForAudioRenderer](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectoutputdeviceforaudiorenderer)为指定音频播放流选择输出设备。
+
+<!-- @[select_OutputDeviceForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
