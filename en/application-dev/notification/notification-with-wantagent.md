@@ -6,7 +6,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=2d26d65ed8809e3397733f0dc440ee753e9d6e8a translatedAt=2026-08-13T03:11:58.637Z pushedAt=2026-08-13T07:48:09.338Z -->
+<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:22:56.472Z pushedAt=2026-08-22T07:16:56.792Z -->
 
 An application requests [WantAgent](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) from Ability Kit and encapsulates it into the notification. When a notification is published, the user may tap a message or a button in the notification panel to start the target application or publish a common event.
 
@@ -113,9 +113,9 @@ The following figure shows a notification carrying action buttons.
 
    > **NOTE**
    >
-   > - If **WantAgent** is encapsulated in a notification, **WantAgent** is triggered when the notification is tapped. If a notification contains action buttons, the buttons are displayed when the notification is tapped and **WantAgent** is triggered when the notification is tapped again.
+   > - If **WantAgent** is encapsulated in a notification message, you can tap the notification to trigger **WantAgent**. When the notification message contains **actionButtons**, tapping the notification first displays the **actionButtons**, and tapping the notification again triggers **WantAgent**.
    >
-   > - If **WantAgent** is encapsulated in the action buttons, the buttons are displayed under the notification when the notification is tapped and **WantAgent** is triggered when a button is tapped.
+   > - If **WantAgent** is encapsulated in a [notification button](notification-glossary.md#notification-button), after you tap the notification, a notification button appears below the notification, and you can tap the button to trigger **WantAgent**.
 
    <!-- @[pub_want_agent_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
 

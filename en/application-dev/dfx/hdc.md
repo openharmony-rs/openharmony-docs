@@ -2,10 +2,11 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @kunsilva-->
+<!--Owner: @th_0927-->
 <!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=5e8f9d2a844f282b995b6f70d4fe57e8d0729081 translatedAt=2026-08-22T07:46:18.525Z pushedAt=2026-08-22T10:31:15.589Z -->
 
 OpenHarmony Device Connector (hdc) is a command line tool used to interact with devices for debugging, data transfer, log viewing, and application installation. It can run on Windows, Linux, and MacOS to provide efficient and convenient device debugging capabilities.
 
@@ -203,6 +204,7 @@ hdc can be used with other debugging tools. The following table lists the tools.
 | <!--DelRow-->[wukong](../application-test/wukong-guidelines.md) | Wukong stability tool|
 | <!--DelRow-->[UItest](../application-test/uitest-guidelines.md) | UI test framework|
 | <!--DelRow-->[SmartPerf Device daemon](../application-test/smartperf-guidelines.md#smartperf-device-daemon)| SmartPerf Device-daemon tool commands|
+
 <!--RP1--><!--RP1End-->
 
 ### Obtaining the Help Information
@@ -742,7 +744,7 @@ hdc uninstall [-n|-k|-s|-h] bundlename
 
 | Name| Description|
 | -------- | -------- |
-| bundlename | Application installation package.|
+| bundlename | Application bundle name. |
 | -n | Used to uninstall an application with a specified bundle name. This parameter is optional.|
 | -k | Used to uninstall an application with or without retaining the application data. This parameter is optional. By default, the application data is deleted along the uninstall.|
 | -s |  Used to uninstall an HSP. This parameter is mandatory only for the HSP uninstallation.|
@@ -949,7 +951,6 @@ Forwardport result:OK
 > **NOTE**
 >
 > When creating a local port forwarding task, the PC uses the TCP protocol and the specified **port**. By default, **127.0.0.1:port** is listened for. If the **-e** parameter is used to specify the IP address of the host that to be listened when the service process starts, the PC listens for the **IP:port** specified by **-e**.
-
 
 ### Creating a Remote Port Forwarding
 
@@ -1172,7 +1173,6 @@ $ hdc -e 0.0.0.0 -m # Set the local listening IP address to 0.0.0.0 for port for
 >
 > 3. Only one server instance is allowed in the running environment. If a server is running, a new server instance cannot be started in the foreground.
 
-
 ## Operating the Device
 
 | Command| Description|
@@ -1201,7 +1201,7 @@ hdc hilog [-h]
 
 | Value| Description|
 | -------- | -------- |
-| Returned value| Log information obtained.|
+| Return value| Log information obtained.|
 
 **Usage**
 
@@ -1431,9 +1431,7 @@ Manufacture: default
 
 ## hdc Debugging Logs
 
-
 ### Server Logs
-
 
 **Specify the log level at runtime**
 
@@ -1601,7 +1599,7 @@ Kill subservers finish
 
 ### OHOS_HDC_SERVER_PORT
 
- 
+Default value: 8710
 
 Used to set the listening port number when the server is running. This port is used for data communication between the client and the server.
 
@@ -1611,13 +1609,13 @@ For example, set **OHOS_HDC_SERVER_PORT** to **18710**.
 
 ### OHOS_HDC_LOG_LEVEL
 
- 
+Default value: 3
 
 Used to set the log level for the server. For details, see [Server Logs](#server-logs).
 
 ### OHOS_HDC_HEARTBEAT
 
- 
+Default: enabled
 
 Used to set whether to enable the heartbeat functionality for the server and daemon. This functionality is enabled by default.
 
@@ -1629,7 +1627,7 @@ When *OHOS_HDC_HEARTBEAT* is set to other values, the heartbeat functionality is
 
 ### OHOS_HDC_CMD_RECORD
 
- 
+Default: disabled
 
 Sets whether to enable the hdc command recording functionality. This functionality is enabled by default. This functionality records only the executed hdc commands but not the command execution results.
 
@@ -1647,7 +1645,7 @@ The recording log files are stored in the following paths:
 
 ### OHOS_HDC_ENCRYPT_CHANNEL
 
- 
+Default: disabled
 
 Used to set the encryption functionality of the TCP connection channel between the server and the daemon. By default, the encryption functionality is disabled.
 
@@ -1665,7 +1663,7 @@ Default: The log flushing function is disabled for the computer-side subserver p
 
 Sets the maximum number of log files that can be flushed to disks for the computer-side subserver process. The value is an integer ranging from 1 to 20. If the value is greater than 20, the value is automatically truncated to 20. If the value is 0 or a negative number, log flushing is not allowed.
 
-The logs of the subserver process are flushed to the .hdc_subserver directory in the TEMP directory. The location of the TEMP directory varies depending on the platform. For details, see the table in "Obtaining Server Process Logs" under "Server Process Logs".
+The logs of the subserver process are flushed to the .hdc_subserver directory in the TEMP directory. The location of the TEMP directory varies depending on the platform. For details, see the table in "Obtain logs" under [Server Logs](#server-logs).
 
 This parameter is supported starting from API version 26.0.0.
 
@@ -1691,6 +1689,7 @@ The following example describes how to set environment variables by setting **OH
 | 3.1.0e | 15 or later| - The **file send** command supports the **-b** parameter. For details, see [Transferring Files](#transferring-files).<br>- The **file recv** command supports the **-b** parameter. For details, see [Transferring Files](#transferring-files).<br>- The **shell** command supports the **-b** parameter. For details, see [Running Interactive Commands](#running-interactive-commands).|
 | 3.2.0b | 20 | - The port forwarding task can listen for the IP address of the remote host. For details, see [Creating a Local Port Forwarding](#creating-a-local-port-forwarding).|
 | 3.2.0e | 26.0.0 or later| - The **shell** command supports the **-b** parameter. If the **command** parameter is not specified, the interactive shell session is entered by default. For details, see [Running Interactive Commands](#running-interactive-commands).|
+
 > **NOTE**
 >
 > If the current hdc version is too early, the compatibility of some functionalities may be affected. You can download the latest version based on the API version description.
@@ -1946,7 +1945,6 @@ Modify the registry information in the PC as follows:
 2. Enter the following address in the address bar, and press **Enter**.
 
    **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography\Protect\Providers\df9d8cd0-1501-11d1-8c7a-00c04fc297eb**;
-   
 
 3. Right-click to create a DWORD (32-bit) value (D), set its name to **ProtectionPolicy** and value to **1** (hexadecimal), and click **OK**.
 
@@ -2147,6 +2145,7 @@ The public key verification on the device fails, and the current computer is rej
 **Possible Causes**
 
 1. The public key file is missing on the device.
+
 2. The public key file on the device does not match that on the computer.
 
 **Solution**

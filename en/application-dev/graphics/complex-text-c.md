@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=8e9d3b746529fedba672cd46a96d4746984bcb6c translatedAt=2026-08-15T01:50:51.244Z pushedAt=2026-08-15T08:21:26.128Z -->
+<!-- md-trans-meta sourceCommit=0876b7ba2fa1777332890da7f5059310feded633 translatedAt=2026-08-22T01:32:39.473Z pushedAt=2026-08-22T03:29:31.656Z -->
 
 When drawing text, simple text can be drawn and displayed by selecting appropriate fonts, sizes, and colors. Additionally, complex text drawing is supported by setting other styles, languages, paragraphs, etc.
 
@@ -431,17 +431,17 @@ OH_Drawing_DestroyTypography(typography);
 
 Text shadow creates a 3D effect for text by adding depth against the background. It is usually used to improve the visual appeal or readability of text, especially in scenarios with low color contrast.
 
-**TextShadow** has three attributes: **color** (shadow color), **point** (shadow offset from the text), and **blurRadius** (shadow radius).
+Text shadow has three attributes: `color` (the shadow color), `offset` (the offset of the shadow relative to the current text), and `blurRadius` (the shadow radius).
 
 To use the shadow effect, you need to set the shadow effect array in the text style so that the shadow effect takes effect when the text is drawn.
 
-| API Definition| Description| 
+| API Definition| Description|
 | -------- | -------- |
-| OH_Drawing_Point\* OH_Drawing_PointCreate(float x, float y) | Creates an **OH_Drawing_Point** object.| 
-| OH_Drawing_TextShadow\* OH_Drawing_CreateTextShadow(void) | Creates an **OH_Drawing_TextShadow** object.| 
-| void OH_Drawing_SetTextShadow(OH_Drawing_TextShadow\* shadow, uint32_t color, OH_Drawing_Point\* offset, double blurRadius) | Sets a text shadow.| 
-| void OH_Drawing_TextStyleAddShadow(OH_Drawing_TextStyle\* style, const OH_Drawing_TextShadow\* shadow) | Adds a shadow to a text shadow container.| 
-| void OH_Drawing_DestroyTextShadow(OH_Drawing_TextShadow\* shadow) | Destroys an **OH_Drawing_TextShadow** object and reclaims the memory occupied by the object.| 
+| OH_Drawing_Point\* OH_Drawing_PointCreate(float x, float y) | Creates an **OH_Drawing_Point** object.|
+| OH_Drawing_TextShadow\* OH_Drawing_CreateTextShadow(void) | Creates an **OH_Drawing_TextShadow** object. |
+| void OH_Drawing_SetTextShadow(OH_Drawing_TextShadow\* shadow, uint32_t color, OH_Drawing_Point\* offset, double blurRadius) | Sets a text shadow. |
+| void OH_Drawing_TextStyleAddShadow(OH_Drawing_TextStyle\* style, const OH_Drawing_TextShadow\* shadow) | Adds a shadow to a text shadow container. |
+| void OH_Drawing_DestroyTextShadow(OH_Drawing_TextShadow\* shadow) | Destroys an **OH_Drawing_TextShadow** object and reclaims the memory occupied by the object. |
 
 The following is an example:
 
@@ -939,10 +939,10 @@ The following figures show the effect.
 
 Set the line height scaling coefficient.
 
-| API Definition| Description| 
+| API Definition| Description|
 | -------- | -------- |
 | [void OH_Drawing_SetTextStyleFontHeight(OH_Drawing_TextStyle* style, double fontHeight)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight) | Enables line height scaling.|
-| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributeint) | Enables the line height scaling style. The input ID is **OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE**.|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributeint) | Enables the line height scaling style. The input ID is **OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE**. |
 
 The following is an example:
 
@@ -1212,5 +1212,3 @@ OH_Drawing_DestroyTextShadow(shadowCopy);
 ```
 
 ![styleCopy](figures/styleCopy.png)
-
-<!--no_check-->

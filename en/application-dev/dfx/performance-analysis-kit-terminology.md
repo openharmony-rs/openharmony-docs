@@ -1,4 +1,4 @@
-# Performance Analysis Kit Terminology
+# Glossary
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
@@ -6,19 +6,19 @@
 <!--Designer: @liyueric-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=6fbea4e9a2d9a7dbd0952cf27b912f34ab97177e translatedAt=2026-07-31T01:35:38.941Z pushedAt=2026-07-31T08:32:42.652Z -->
+<!-- md-trans-meta sourceCommit=304f46af47633abbffe3d5c05e20f76267b2f4cd translatedAt=2026-08-22T01:24:09.272Z pushedAt=2026-08-22T02:30:22.634Z -->
 
 ## General
 
 ### Log Version
 
-Log version refers to the system version where the logging feature is enabled. It records various system running information, including the running status of applications, system error information, and debugging information. You can use hdc or a third-party application to view and analyze the information for debugging and optimization.
+A system version with logging enabled. It records various system running information, including the running status of apps, system error information, and debugging information. You can use hdc or a third-party app to view and analyze the information for debugging and optimization.
 
 On the device, you can go to **Settings** > **About phone** > **Software version** to check the version. The log version ends with **log**. For example, **BRA-AL00 5.0.0.36(C00E15R4P92log)** is a log version.
 
 ### Nolog Version
 
-Nolog version refers to the system version where the logging feature is disabled. It does not record system running information, so it is more lightweight and runs faster. However, it is difficult for debugging and optimization due to the lack of logging.
+A system version with logging disabled. It does not record information generated during system operation, making it relatively lightweight and faster. However, without logging, debugging and optimization can be more difficult for developers.
 
 On the device, you can go to **Settings** > **About phone** > **Software version** to check the version. The nolog version does not end with **log**. For example, **BRA-AL00 5.0.0.36 (C00E15R4P92)** is a nolog version.
 

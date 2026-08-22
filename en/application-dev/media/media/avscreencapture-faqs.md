@@ -2,11 +2,11 @@
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=3692b2f13706e00100fce76ce4f745bacc7102e6 translatedAt=2026-08-11T01:49:48.392Z pushedAt=2026-08-11T12:19:49.841Z -->
+<!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=9debe03e456cd9546017cca228787eecf595247b translatedAt=2026-08-22T02:08:54.300Z pushedAt=2026-08-22T06:48:20.456Z -->
 
 ## Error Code AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT Is Reported When the Number of Instances Exceeds the Limit
 

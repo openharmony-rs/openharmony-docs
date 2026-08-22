@@ -6,21 +6,30 @@
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9f16298947fff422a95582209d672f68fd597026 translatedAt=2026-08-06T01:49:31.539Z pushedAt=2026-08-06T08:09:10.700Z -->
+<!-- md-trans-meta sourceCommit=f9938d6881d9e92a63ad87d1f78918b5a1c28c39 translatedAt=2026-08-22T01:44:50.687Z pushedAt=2026-08-22T06:21:57.299Z -->
 
 In the scenario where multiple audio streams are concurrently playing, the system has preset a default [audio focus strategy](audio-playback-concurrency.md#audio-focus-strategy) for unified audio focus management across all audio streams (including playback and recording).
 
 When the default focus strategy provided by the system cannot meet app requirements, you can use the APIs provided by audio session management to manage the focus of audio streams within the app, customize the focus strategy for audio streams, and adjust the timing for releasing audio focus to meet specific needs. The sample code in this document is all ArkTS. If you need to use OHAudio for development, see [Using OHAudio for Audio Session (C/C++)](using-ohaudio-for-session.md).
 
+Audio session management provides two focus management approaches: [independent focus management for audio streams](#independent-focus-management-for-audio-streams) and [unified focus management for an audio session](#unified-focus-management-for-an-audio-session). You can choose an appropriate focus management approach based on your own business requirements.
+
+The [audio session strategy](#audio-session-strategy) set by either approach takes effect on all streams, and the activation and release timing is the same: activate before audio stream playback and release after it stops.
+
+| Comparison Item | Independent Focus Management | Unified Focus Management |
+|:---|:---|:---|
+| Focus management approach | AudioSession does not hold focus; each audio stream requests and releases focus independently. | AudioSession holds focus in a unified manner and manages the focus request and release of audio streams. |
+| Applicable audio stream types | Applicable to both playback streams and recording streams. | Applicable to playback streams (except STREAM_USAGE_ALARM, STREAM_USAGE_NOTIFICATION, STREAM_USAGE_ACCESSIBILITY, and so on); not applicable to recording streams. |
+
 The audio session APIs can be used to implement the following features:
 
-- When the system default focus strategy cannot meet the current app requirements, you can [use an audio session to modify the focus strategy](#using-an-audio-session-to-modify-the-focus-strategy) to adapt a focus strategy that suits your needs.
+- [Independent focus management for audio streams](#independent-focus-management-for-audio-streams): The system default focus strategy cannot meet the current app requirements, and only the focus strategy of the audio stream needs to be adjusted.
 
-  Typical scenario: When an app plays a short video, it interrupts background music. The app expects the background music to automatically resume after its own audio stream stops. (This scenario requires the app to activate the audio session before starting the audio stream and deactivate the audio session after the audio stream stops.)
+  **Typical scenario:** When an app plays a short video, it interrupts background music. The app expects the background music to automatically resume after its own audio stream stops. This scenario requires the app to activate the audio session before starting the audio stream and deactivate the audio session after the audio stream stops.
 
-- When an app needs to start multiple audio streams in a business process and must ensure the integrity of the entire process, you can [use an audio session to request a focus strategy](#using-an-audio-session-to-request-a-focus-strategy) to adapt a focus strategy that suits your business scenario.
+- [Unified focus management for an audio session](#unified-focus-management-for-an-audio-session): Multiple audio streams need to be started and the continuity of the playback process must be ensured, so as to prevent other apps' audio from resuming due to focus release when audio streams switch.
 
-  Typical scenario: When an app plays multiple audio clips consecutively, during the gaps between clips, the app does not want other affected background audio to automatically resume. Instead, it wants to maintain audio focus continuity throughout the entire playback process. (This scenario requires the app to activate the audio session before the entire playback process starts and deactivate the audio session after the entire playback process ends.)
+  **Typical scenario:** When an app plays multiple audio clips consecutively, during the gaps between clips, the app does not want other affected background audio to automatically resume. Instead, it wants to maintain audio focus continuity throughout the entire playback process. This scenario requires the app to activate the audio session before the entire playback process starts and deactivate the audio session after the entire playback process ends.
 
 > **NOTE**
 >
@@ -42,26 +51,6 @@ import { audio } from '@kit.AudioKit';
 let audioManager = audio.getAudioManager();
 // Create an audio session manager.
 let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
-```
-
-## Setting a Session-Level Recording Stream Mute Prompt
-
-Starting from API version 24, when an app has muted the recording stream in the current audio session on the service side, you can call [setCapturerMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setcapturermutehint24) to report this state to the system audio module. The system audio module adjusts its strategy based on the reported state to reduce power consumption. Note that this feature currently takes effect only on certain PC/2-in-1 devices. This API does not actually trigger muting or perform mute processing on recording data. It only notifies the system audio module that the app has muted the recording stream in the current audio session. You still need to handle the recording data yourself, for example, by not sending captured data or by sending mute data.
-
-This API can only be called when there is a running recording stream in the current audio session. Otherwise, error code `6800103` is returned. If a recording stream has both the stream-level mute prompt API [AudioCapturer.setMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setmutehint24) and the session-level mute prompt API called, the stream-level setting takes precedence. Therefore, when the mute states of multiple recording streams in the app are consistent, you can use the session-level API for unified reporting. When the mute states of different recording streams are inconsistent, use the stream-level API for specific recording streams. If you create a Mic audio source recording stream to call the session-level API, you need to request the microphone permission `ohos.permission.MICROPHONE`. No system query API is currently provided. If you need to display the mute prompt state on the UI, you must maintain the most recently set state yourself. In the following example, `muteHint` set to `true` indicates reporting a mute prompt, and `false` indicates canceling the mute prompt.
-
-<!-- @[set_capturer_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-try {
-  await audioSessionManager.setCapturerMuteHint(muteHint);
-  console.info(`setCapturerMuteHint ${muteHint} success.`);
-  // ...
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`setCapturerMuteHint ${muteHint} failed. Code: ${error.code}, message: ${error.message}`);
-  // ...
-}
 ```
 
 ## Audio Session Strategy
@@ -95,13 +84,11 @@ The system preset audio concurrency modes are as follows:
 > - When an app uses the above modes through AudioSession, the system will try its best to satisfy the focus policy, but it may not be fully guaranteed in all scenarios.
 > - The concurrency mode (CONCURRENCY_MIX_WITH_OTHERS) takes effect both when the current app requests focus and when other apps subsequently request focus. The duck mode (CONCURRENCY_DUCK_OTHERS) and pause mode (CONCURRENCY_PAUSE_OTHERS) take effect only when the current app requests focus. When other apps subsequently request focus, their concurrency modes take precedence.
 
-## Using an Audio Session to Modify the Focus Strategy
+## Independent Focus Management for Audio Streams
 
 When the system default focus strategy cannot meet the current app requirements, you can modify the focus strategy by specifying an [audio session strategy](#audio-session-strategy) and then activating the AudioSession.
 
 After the AudioSession is successfully activated, new audio streams started by the app will follow the modified focus strategy.
-
-When using AudioSession to modify the focus strategy, the AudioSession does not hold the focus. The focus is still held by individual audio streams.
 
 For OHAudio development, see [Using OHAudio for Audio Session (C/C++)](using-ohaudio-for-session.md).
 
@@ -210,7 +197,7 @@ The audio session deactivation event (AudioSessionDeactivatedEvent) contains the
 
 ### Sample
 
-The following shows the sample code for modifying the focus strategy using AudioSession.
+The following shows the sample code for independent focus management for audio streams.
 
 <!-- @[audio_session_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
@@ -266,7 +253,7 @@ let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionMana
   });
 ```
 
-## Using an Audio Session to Request a Focus Strategy
+## Unified Focus Management for an Audio Session
 
 When an app needs to start multiple audio streams and ensure process continuity, you can request focus through AudioSession to ensure the continuity of multi-audio-stream playback.
 
@@ -291,7 +278,7 @@ Typical usage scenarios are as follows:
 
 ### Audio Session Scene
 
-When using AudioSession to request a focus strategy, the system provides three audio session scenes. Before activating the AudioSession, you must call [setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) to set the corresponding audio session scene. When the AudioSession is activated, the system requests the corresponding audio focus based on the audio session scene selected by the app.
+When an audio session holds focus in a unified manner, the system provides three audio session scenes. Before activating the AudioSession, you must call [setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) to set the corresponding audio session scene. When the AudioSession is activated, the system requests the corresponding audio focus based on the audio session scene selected by the app.
 
 | Name                   | Value | Description      |
 | :--------------------- |:--|:--------|
@@ -305,7 +292,7 @@ The focus requested by AudioSession and the focus requested by AudioRenderer hav
 
 You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#onaudiosessionstatechanged20) to listen for AudioSession focus and state changes. To maintain state consistency between the app and the system and ensure a good user experience, you should listen for AudioSession focus state events and respond accordingly when the focus changes.
 
-[on('audioSessionStateChanged')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#onaudiosessionstatechanged20) includes the information of [AudioSession deactivation events](#audiosession-deactivation-event). When [using an audio session to request a focus strategy](#using-an-audio-session-to-request-a-focus-strategy), you do not need to additionally listen for audio session deactivation events (AudioSessionDeactivatedEvent).
+[on('audioSessionStateChanged')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#onaudiosessionstatechanged20) includes the information of [AudioSession deactivation events](#audiosession-deactivation-event). When [unified focus management for an audio session](#unified-focus-management-for-an-audio-session) is used, you do not need to additionally listen for audio session deactivation events (`AudioSessionDeactivatedEvent`).
 
 > **NOTE**
 >
@@ -447,7 +434,7 @@ You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/ark
 
 ### Sample
 
-The following shows the sample code for requesting a focus strategy using AudioSession.
+The following shows the sample code for unified focus management for an audio session.
 
 <!-- @[audio_session_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
@@ -543,6 +530,26 @@ import { BusinessError } from '@kit.BasicServicesKit';
   });
 ```
 
+## Setting Session-Level Recording Stream Mute Hint
+
+Starting from API version 24, when an app has muted the recording stream in the current audio session on the service side, you can call [setCapturerMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setcapturermutehint24) to report this state to the system audio module. The system audio module adjusts its strategy based on the reported state to reduce power consumption. Note that this feature currently takes effect only on certain PCs/2-in-1 devices. This API does not actually trigger muting or perform mute processing on recording data. It only notifies the system audio module that the app has muted the recording stream in the current audio session. You still need to handle the recording data yourself, for example, by not sending captured data or by sending mute data.
+
+This API can only be called when there is a running recording stream in the current audio session. Otherwise, error code `6800103` is returned. If a recording stream has both the stream-level mute prompt API [AudioCapturer.setMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setmutehint24) and the session-level mute prompt API called, the stream-level setting takes precedence. Therefore, when the mute states of multiple recording streams in the app are consistent, you can use the session-level API for unified reporting. When the mute states of different recording streams are inconsistent, use the stream-level API for specific recording streams. If you create a Mic audio source recording stream to call the session-level API, you need to request the microphone permission `ohos.permission.MICROPHONE`. No system query API is currently provided. If you need to display the mute prompt state on the UI, you must maintain the most recently set state yourself. In the following example, `muteHint` set to `true` indicates reporting a mute prompt, and `false` indicates canceling the mute prompt.
+
+<!-- @[set_capturer_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+try {
+  await audioSessionManager.setCapturerMuteHint(muteHint);
+  console.info(`setCapturerMuteHint ${muteHint} success.`);
+  // ...
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`setCapturerMuteHint ${muteHint} failed. Code: ${error.code}, message: ${error.message}`);
+  // ...
+}
+```
+
 ## Enabling Mute Suggestion Notifications for Mixed Playback
 
 Starting from API version 23, when the current application plays audio in the **CONCURRENCY_MIX_WITH_OTHERS** concurrency mode, if audio from other applications is playing simultaneously, the audio from both will be mixed. In certain scenarios (such as games or broadcasts), applications can enable mute suggestion notifications to enhance user experience.
@@ -614,5 +621,3 @@ import { BusinessError } from '@kit.BasicServicesKit';
     console.error(`Failed to activate audio session. Code: ${err.code}, message: ${err.message}`);
   });
 ```
-
-<!--no_check-->
