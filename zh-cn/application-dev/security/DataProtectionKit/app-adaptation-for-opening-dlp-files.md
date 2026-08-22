@@ -38,7 +38,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
 **三方应用分享：**
 
-应用在应用内通过文件Picker的方式，选择文件并设置加密分享。用户在设备上的操作流程如下：
+在应用内通过文件Picker的方式，选择文件并设置加密分享。用户在设备上的操作流程如下：
 
 1. 在应用内通过文件Picker选择文件。
 
@@ -108,7 +108,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     应用可以支持从最近打开列表、文件选择器中选择DLP文件，打开DLP文件的场景，按如下流程适配：
 
-     2.1 设置[Want](../../reference/apis-ability-kit/js-apis-inner-ability-want.md)参数，指定action为"ohos.want.action.viewData"，bundleName、abilityName分别为选择打开DLP文件的应用的bundleName、abilityName，uri为需要打开的DLP文件的URI，在parameters中设置fileName的name值为DLP文件的文件名。
+     2.1 设置[Want](../../reference/apis-ability-kit/js-apis-inner-ability-want.md)参数，指定action为"ohos.want.action.viewData"，uri为需要打开的DLP文件的URI，在parameters中设置fileName的name值为DLP文件的文件名。
 
     2.2 获取[UIAbilityContext](../../reference/apis-ability-kit/js-apis-app-ability-common.md#uiabilitycontext)的context。
 
@@ -186,11 +186,9 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     3.1 普通应用内权限设置。
 
-    3.1.1 当前支持生成DLP文件的原文件类型: ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".odp", ".odt", ".pdf", ".pot", ".potm", ".potx", ".ppa", ".ppam", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".rtf", ".txt", ".wps", ".xla", ".xlam", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltm", ".xltx", ".xlw", ".xml", ".xps"。
+    3.1.1 首先要有一个DLP权限应用有读写权限的（比如文件管理的文档目录下）。
 
-    3.1.2 首先要有一个DLP权限应用有读写权限的（比如文件管理的文档目录下）并且属于以上文件类型之一的原文件。
-
-    3.1.3 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用。调用[startDLPManagerForResult](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionstartdlpmanagerforresult11)，拉起DLP管理应用的设置权限页面，输入相关的授权账号信息，点击保存，在拉起的filepicker中选择DLP文件的保存路径，保存DLP文件。
+    3.1.2 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用。调用[startDLPManagerForResult](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionstartdlpmanagerforresult11)，拉起DLP管理应用的设置权限页面，输入相关的授权账号信息，点击保存，在拉起的filepicker中选择DLP文件的保存路径，保存DLP文件。
 
     <!-- @[dlp_generateDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -312,7 +310,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
 6. 获取当前可支持DLP方案的文件扩展名类型列表。
 
-    [getDLPSupportedFileTypes](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongetdlpsupportedfiletypes)用于应用判断能否生成DLP文件。该接口可用在实现类似文件管理器设置DLP权限的场景。
+    [getDLPSupportedFileTypes](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongetdlpsupportedfiletypes)用于应用判断当前文件能否生成进行加密。
 
     <!-- @[dlp_getDLPSupportedFileTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -470,7 +468,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     }
     ```
 
-   9.2 调用接口[cancelRetentionState](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissioncancelretentionstate)取消保留沙箱，该接口只允许沙箱中调用。
+   9.2 调用接口[cancelRetentionState](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissioncancelretentionstate)取消保留沙箱。
 
     <!-- @[dlp_cancelRetentionState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -492,7 +490,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     }
     ```
 
-    9.3. 调用接口[getRetentionSandboxList](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongetretentionsandboxlist)获取保留沙箱记录，该接口允许原应用和DLP沙箱分身中调用。
+    9.3. 调用接口[getRetentionSandboxList](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongetretentionsandboxlist)获取保留沙箱记录。
 
     使用该接口的前置条件：由demo应用打开DLP文件。
 
@@ -525,10 +523,6 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     - 原应用写配置，DLP沙箱分身读配置。
 
-    - DLP沙箱分身写配置，DLP沙箱分身读配置。
-
-    - DLP沙箱分身写配置，原应用读配置。
-
     **应用与DLP沙箱分身数据共享**
 
     - 每次调用设置配置信息接口会覆盖上次调用的设置内容。
@@ -540,8 +534,6 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     10.1 设置配置信息。
 
     把需要保存的配置信息转成string类型，调用[setSandboxAppConfig](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionsetsandboxappconfig11)接口设置配置信息。
-
-    普通应用和DLP沙箱分身都可以调用该接口，但DLP沙箱分身必须在读取DLP文件内容之前才允许调用。
 
     <!-- @[dlp_setSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -618,6 +610,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     使用该接口的前置条件：链接DLP凭据服务器。
 
     [isDLPFeatureProvided](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionisdlpfeatureprovided12)用于查询当前系统是否提供DLP特性。
+    
     <!-- @[dlp_isDLPFeature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
