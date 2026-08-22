@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-PartnerAgentExtensionAbility是外设互通扩展能力的基础类，提供设备发现与设备下线的通知功能，需要应用继承实现。应用模块级配置文件[module.json5](../../quick-start/module-configuration-file.md) 中的[extensionabilities](../../quick-start/module-configuration-file.md#extensionabilities标签)的type属性应该配置为partnerAgent。
+PartnerAgentExtensionAbility是外设互通扩展能力的基础类，提供设备发现与扩展能力销毁的通知功能，需要应用继承实现。适用于需要及时感知已注册外设被发现的状态并进行业务联动的场景，帮助应用通过系统通知被动获取设备状态变化，无需主动轮询，提升跨设备协同效率。应用模块级配置文件[module.json5](../../quick-start/module-configuration-file.md) 中的[extensionabilities](../../quick-start/module-configuration-file.md#extensionabilities标签)的type属性应该配置为partnerAgent。
 
 > **说明：**
 >
@@ -52,7 +52,7 @@ type PartnerAgentExtensionAbilityDestroyReason = partnerAgent.PartnerAgentExtens
 | [partnerAgent.PartnerAgentExtensionAbilityDestroyReason](js-apis-fusionConnectivity-partnerAgent.md#partneragentextensionabilitydestroyreason) | PartnerAgentExtensionAbility被销毁的原因。 |
 
 ## PartnerAgentExtensionAbility 
-PartnerAgentExtensionAbility是外设互通扩展能力的基础类，提供设备发现与设备下线的通知功能，需要应用继承实现。本能力继承自[ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md)。
+PartnerAgentExtensionAbility提供设备发现与扩展能力销毁的通知功能，本能力继承自[ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md)，需要应用继承实现。
 
 ### 属性
 
@@ -78,7 +78,7 @@ onDestroyWithReason(reason: PartnerAgentExtensionAbilityDestroyReason): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| reason | [PartnerAgentExtensionAbilityDestroyReason](js-apis-fusionConnectivity-partnerAgent.md#partneragentextensionabilitydestroyreason) | 是 | 通知销毁该应用的原因。 |
+| reason | [PartnerAgentExtensionAbilityDestroyReason](js-apis-fusionConnectivity-partnerAgent.md#partneragentextensionabilitydestroyreason) | 是 | 通知销毁该外设互通扩展能力的原因。不同枚举值代表不同的销毁场景，应用可根据不同的销毁原因执行相应的资源释放或状态保存逻辑，枚举值的具体含义请参考[PartnerAgentExtensionAbilityDestroyReason](js-apis-fusionConnectivity-partnerAgent.md#partneragentextensionabilitydestroyreason)。 |
 
 **示例：**
 
@@ -121,8 +121,8 @@ export default class PartnerAgentExtAbility extends PartnerAgentExtensionAbility
 PartnerAgentExtensionAbility不支持以下模块的引用。
 | Kit | 模块 |
 | ------ | ------ |
-| Ability Kit | [@ohos.backgroundTaskManager (后台任务管理)](../../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md) |
-| Ability Kit | [@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](../../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md) |
+| Background Tasks Kit | [@ohos.backgroundTaskManager (后台任务管理)](../../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md) |
+| Background Tasks Kit | [@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](../../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md) |
 | <!--DelRow-->Camera Kit | [@ohos.multimedia.camera (相机管理)(系统接口)](../../reference/apis-camera-kit/js-apis-camera-sys.md) |
 | Camera Kit | [@ohos.multimedia.cameraPicker (相机选择器)](../../reference/apis-camera-kit/js-apis-cameraPicker.md) |
 | Connectivity Kit | [@ohos.connectedTag (有源标签)](../../reference/apis-connectivity-kit/js-apis-connectedTag.md) |
