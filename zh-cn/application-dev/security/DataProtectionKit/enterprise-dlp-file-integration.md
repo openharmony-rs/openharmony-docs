@@ -6,15 +6,13 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-## 查询或关闭已打开的DLP文件
-
-### 场景介绍
+## 场景介绍
 
 Data Protection Kit为应用提供了根据文件标签查询或关闭某一类DLP文件的能力，应用可在生成/打开文件时设置自定义的文件标签，在设备的状态发生变化时，如果应用判断当前设备处于风险场景，则可以通过自定义的文件标签，查询当前是否存在打开的DLP文件，并可关闭这些文件从而防止敏感数据在风险场景泄露。
 
 除此之外，Data Protection Kit为应用提供向SA（System Ability）侧注册通信插件的能力，应用注册通信插件后，系统SA可通过该插件向应用发起通信。涉及DLP文件的生成、还原等相关能力，均依赖企业预先注册该通信插件，系统SA通过该插件可实时向应用获取需要的信息。
 
-### 开发步骤
+## 开发步骤
 
 1. 导入模块。
     <!-- @[dlp_include_dlpPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
