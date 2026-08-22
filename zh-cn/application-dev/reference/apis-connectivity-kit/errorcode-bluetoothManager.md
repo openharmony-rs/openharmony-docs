@@ -41,7 +41,7 @@ Bluetooth disabled.
 
 **可能原因**
 
-蓝牙开关已关闭。
+蓝牙开关被用户手动关闭，或因系统异常（如低电量、省电模式等）导致蓝牙服务自动关闭。
 
 **处理步骤**
 
@@ -99,7 +99,7 @@ The maximum number of connections has been reached.
 
 **处理步骤**
 
-检查已配对设备数量，是否超出阈值。
+检查已配对设备数量，若超出阈值，请先断开部分已连接的设备，再重新尝试连接。
 
 ## 2900007 异步接口调用超时
 
@@ -135,7 +135,7 @@ pimpl或proxy为空。
 
 **处理步骤**
 
-重新打开蓝牙开关，执行配对流程。
+检查蓝牙服务是否正常运行，尝试重新打开蓝牙开关以重启蓝牙服务后，再调用相关接口。
 
 ## 2900009 硬件资源不足
 
@@ -173,7 +173,7 @@ Resources have reached the upper limit.
 
 **处理步骤**
 
-调用对应接口释放资源。
+调用对应的资源释放接口释放资源，例如调用停止扫描接口或断开已建立的连接后重试。
 
 ## 2900011 操作频繁
 
@@ -207,7 +207,7 @@ The user does not respond.
 
 **可能原因**
 
-用户在一定时间内未执行规定操作，导致前置操作超时。
+用户在系统规定的超时时限内未完成前置操作，导致前置操作超时。
 
 **处理步骤**
 
@@ -288,7 +288,8 @@ Operation failed.
 
 **处理步骤**
 
-检查接口调用的前置依赖条件，具体处理步骤可参考[蓝牙接口调用报错2900099](../../connectivity/bluetooth/bluetooth-faq-2900099-errorcode.md)。
+1. 检查接口调用的前置依赖条件，具体处理步骤可参考[蓝牙接口调用报错2900099](../../connectivity/bluetooth/bluetooth-faq-2900099-errorcode.md)
+2. 检查传入的设备地址是否为有效的已配对设备地址，避免使用虚拟地址或不存在的地址。
 
 ### 无效参数
 **错误信息**
@@ -781,7 +782,7 @@ The connection is not authenticated.
 
 **错误描述**
 
-GATT处于未认证的状态下，执行需要认证权限的特征值或描述符读写操作。此操作是否需要加密由server端特征值或描述符的权限指定。
+GATT处于未认证的状态下，执行需要认证权限的特征值或描述符读写操作。此操作是否需要认证由server端特征值或描述符的权限指定。
 
 **可能原因**
 
@@ -857,11 +858,11 @@ Failed to start scan as Ble scan is already started by the app.
 
 **可能原因**
 
-Ble扫描已被app开启。
+BLE扫描已被应用开启。
 
 **处理步骤**
 
-检查是否已经开启扫描。
+检查是否已经开启扫描。若已开启，请先调用停止扫描接口停止当前扫描后，再重新开启扫描。
 
 ## 2902054 广播报文超限
 
@@ -903,7 +904,7 @@ Invalid advertising id.
 
 **错误信息**
 
-HID application is not int the foreground.
+HID application is not in the foreground.
 
 **错误描述**
 
@@ -921,7 +922,7 @@ HID application is not int the foreground.
 
 **错误信息**
 
-Any HID application has been registered.
+Another HID application has been registered.
 
 **错误描述**
 

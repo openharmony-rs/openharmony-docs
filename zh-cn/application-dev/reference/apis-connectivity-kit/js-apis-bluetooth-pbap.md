@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供基于电话簿访问协议（Phone Book Access Profile，[PBAP](../../connectivity/bluetooth/terminology.md#pbap)）的蓝牙电话簿访问能力，支持获取连接状态等方法。
+本模块提供基于电话簿访问协议（Phone Book Access Profile，[PBAP](../../connectivity/terminology.md#pbap)）的蓝牙电话簿访问能力，支持创建PSE服务端实例、获取设备间蓝牙电话簿服务连接状态等，适用于本端设备作为PSE对外提供电话簿访问服务的场景，可帮助开发者快速实现蓝牙电话簿的共享与连接管理功能。
 
 > **说明：**
 >
@@ -35,7 +35,7 @@ type BaseProfile = baseProfile.BaseProfile
 
 createPbapServerProfile(): PbapServerProfile
 
-创建蓝牙电话簿访问协议中的[PSE](../../connectivity/bluetooth/terminology.md#pse)实例。通过该实例可使用本端作为PSE设备的接口，如：获取和其他设备间的蓝牙电话簿服务连接状态。
+创建蓝牙电话簿访问协议中的[PSE](../../connectivity/terminology.md#pse)实例。通过该实例可使用本端作为PSE设备的接口，如：获取本端和其他设备间的蓝牙电话簿服务连接状态。典型使用场景包括：车载蓝牙系统访问手机电话簿、跨设备联系人同步等需要本端作为电话簿服务端的场景。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
@@ -43,7 +43,7 @@ createPbapServerProfile(): PbapServerProfile
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
-|PbapServerProfile | 返回PSE实例。<br>- 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。<br>- 和该实例角色相对应的是[PCE](../../connectivity/bluetooth/terminology.md#pce)角色。 |
+|[PbapServerProfile](#pbapserverprofile) | 返回PSE实例。<br>- 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。<br>- 和该实例角色相对应的是[PCE](../../connectivity/terminology.md#pce)角色。 |
 
 **错误码**：
 
@@ -51,12 +51,12 @@ createPbapServerProfile(): PbapServerProfile
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例：**
 
 ```js
+import { pbap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
@@ -66,3 +66,11 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+## PbapServerProfile
+
+该实例表示蓝牙电话簿访问协议中的[PSE](../../connectivity/terminology.md#pse)角色。
+- 使用该类的接口前，需通过[createPbapServerProfile](#pbapcreatepbapserverprofile)接口构造该类的实例。
+- 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。
+- 和该实例角色相对应的是[PCE](../../connectivity/terminology.md#pce)角色。
+
