@@ -233,7 +233,7 @@ void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)
 
 **描述**
 
-销毁文本跑马灯模式配置项指针。与[OH_ArkUI_TextMarqueeOptions_Create](#oh_arkui_textmarqueeoptions_create)成对使用，否则会导致内存泄漏。
+销毁文本跑马灯模式配置项对象。与[OH_ArkUI_TextMarqueeOptions_Create](#oh_arkui_textmarqueeoptions_create)成对使用，否则会导致内存泄漏。
 
 **起始版本：** 23
 

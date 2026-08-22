@@ -61,9 +61,9 @@ Gauge(options: GaugeOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| value<sup>8+</sup> | number | 否 | 否 | 量规图的当前数据值，即图中指针指向位置。用于组件创建时量规图初始值的预置。<br>默认值：0<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** <br>value不在min和max范围内时使用min作为默认值。 |
-| min<sup>8+</sup> | number | 否 | 是 | 当前数据段最小值。<br>默认值：0<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** <br>不传入时默认最小值为0。<br>min大于max时使用默认值0和100。<br>max和min支持负数。 |
-| max<sup>8+</sup> | number | 否 | 是 | 当前数据段最大值。<br>默认值：100<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** <br>不传入时默认最大值为100。<br>min大于max时使用默认值0和100。<br>max和min支持负数。 |
+| value<sup>8+</sup> | number | 否 | 否 | 量规图的当前数据值，即图中指针指向位置。用于组件创建时量规图初始值的预置。<br>默认值：0<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** <br>value不在min和max范围内时，取min作为实际值。 |
+| min<sup>8+</sup> | number | 否 | 是 | 当前数据段最小值。<br>默认值：0<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** <br>不传入时默认值为0。<br>min大于max时，min取0，max取100。<br>max和min支持负数。 |
+| max<sup>8+</sup> | number | 否 | 是 | 当前数据段最大值。<br>默认值：100<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** <br>不传入时默认值为100。<br>min大于max时，min取0，max取100。<br>max和min支持负数。 |
 
 ## 属性
 
@@ -85,7 +85,7 @@ value(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 量规图的数据值，可用于动态修改量规图的数据值。<br>**说明：** <br>value不在min和max范围内时使用min作为默认值。<br>默认值：0 |
+| value  | number | 是   | 量规图的数据值，可用于动态修改量规图的数据值。<br>**说明：** <br>value不在min和max范围内时，取min作为实际值。<br>默认值：0 |
 
 ### startAngle
 

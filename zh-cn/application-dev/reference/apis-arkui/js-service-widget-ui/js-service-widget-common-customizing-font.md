@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-font-face用于定义字体样式。应用可以在style中定义font-face来指定相应的字体名和字体资源，然后在font-family样式中引用该字体。
+@font-face用于定义字体样式。应用可以在style中定义@font-face来指定相应的字体名和字体资源，然后在font-family样式中引用该字体。
 
 
 自定义字体可以是从项目中的字体文件或网络字体文件中加载的字体。
@@ -42,7 +42,7 @@ font-face用于定义字体样式。应用可以在style中定义font-face来指
 
 ## 使用font-face
 
-可以在style中定义font-face，然后在font-family样式中指定该font-face的名称，从而应用font-face定义的字体。示例如下：
+可以在style中定义@font-face，然后在font-family样式中指定该@font-face的名称，从而应用@font-face定义的字体。示例如下：
 
 - 页面布局
   

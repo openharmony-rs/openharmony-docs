@@ -511,6 +511,7 @@ struct TextTimerStart {
 @Entry
 @Component
 struct TextTimerDemo {
+  // 示例仅展示样式配置，可移除controller定义；或添加按钮演示计时器控制功能
   textTimerController: TextTimerController = new TextTimerController();
   @State countValue: number = 5025678;
 

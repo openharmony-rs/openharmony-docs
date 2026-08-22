@@ -72,7 +72,7 @@ circleRadius(value: Length)
 
 | 参数名 | 类型                         | 必填 | 说明                               |
 | ------ | ---------------------------- | ---- | ---------------------------------- |
-| value  | [Length](ts-types.md#length) | 是   |宫格中圆点的半径。<br>取值范围：(0, sideLength/11]。设置小于等于0的值时，按默认值处理；超过最大值时，按最大值处理。|
+| value  | [Length](ts-types.md#length) | 是   |宫格中圆点的半径。<br>默认值：6vp。<br>取值范围：(0, sideLength/11]。设置小于等于0的值时，按默认值处理；超过最大值时，按最大值处理。|
 
 ### backgroundColor
 backgroundColor(value: ResourceColor)
@@ -187,7 +187,7 @@ autoReset(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 在完成密码输入后再次在组件区域按下时是否重置组件状态。<br>true：重置组件状态（即清除之前输入的密码）；false：不重置组件状态。 |
+| value  | boolean | 是   | 在完成密码输入后再次在组件区域按下时是否重置组件状态。<br>默认值：true。<br>true：重置组件状态（即清除之前输入的密码）；false：不重置组件状态。 |
 
 ### activateCircleStyle<sup>12+</sup>
 

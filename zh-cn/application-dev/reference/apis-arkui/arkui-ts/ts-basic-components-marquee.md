@@ -361,7 +361,7 @@ struct MarqueeExample {
 @Component
 struct MarqueeStop4 {
   @State change: boolean = true;
-  @State scrollDirection: String = '正向滚动';
+  @State scrollDirection: string = '正向滚动';
   @State marqueeText: string =
     'This is the text with the text overflow set marquee This is the text with the text overflow set marquee This is the text with the text overflow set marquee';
   @State numberStart: number = 0;

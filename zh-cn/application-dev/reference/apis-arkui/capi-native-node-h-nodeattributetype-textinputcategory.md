@@ -2205,6 +2205,7 @@ NODE_TEXT_AREA_CUSTOM_KEYBOARD = 8036
 | -- | -- |
 | .object | 自定义键盘，参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。 |
 | .value[0]?.i32 | 设置自定义键盘是否支持避让功能。<br>1表示支持避让，0表示不支持避让。<br>默认值：0。 |
+
 **返回：**
 
 | 类型 | 说明 |
