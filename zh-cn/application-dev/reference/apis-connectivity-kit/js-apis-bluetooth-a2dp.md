@@ -120,7 +120,6 @@ getPlayingState(deviceId: string): PlayingState
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    // deviceId为已连接对端设备的MAC地址，可通过connectionStateMachineOn等连接状态变化回调或相关蓝牙接口获取
     let state = a2dpSrc.getPlayingState('XX:XX:XX:XX:XX:XX');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);

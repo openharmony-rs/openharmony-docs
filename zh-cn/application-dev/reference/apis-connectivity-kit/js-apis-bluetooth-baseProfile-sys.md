@@ -76,18 +76,15 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy, callback: 
 **示例：**
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { a2dp } from '@kit.ConnectivityKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
     a2dpSrc.setConnectionStrategy('XX:XX:XX:XX:XX:XX', 0, (err: BusinessError) => {
-        if (err) {
-            console.error(`Failed to set connection strategy. Code: ${err.code}, message: ${err.message}`);
-            return;
-        }
+        console.info('setConnectionStrategy, err: ' + JSON.stringify(err));
     });
 } catch (err) {
-    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
 
@@ -134,7 +131,7 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy): Promise&l
 **示例：**
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { a2dp } from '@kit.ConnectivityKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
@@ -185,19 +182,15 @@ getConnectionStrategy(deviceId: string, callback: AsyncCallback&lt;ConnectionStr
 **示例：**
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
-import { a2dp, baseProfile } from '@kit.ConnectivityKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { a2dp } from '@kit.ConnectivityKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
     a2dpSrc.getConnectionStrategy('XX:XX:XX:XX:XX:XX', (err: BusinessError, data: baseProfile.ConnectionStrategy) => {
-        if (err) {
-            console.error(`Failed to get connection strategy. Code: ${err.code}, message: ${err.message}`);
-            return;
-        }
-        console.info('getConnectionStrategy, data: ' + JSON.stringify(data));
+        console.info('getConnectionStrategy, err: ' + JSON.stringify(err) + ', data: ' + JSON.stringify(data));
     });
 } catch (err) {
-    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
 
@@ -243,8 +236,8 @@ getConnectionStrategy(deviceId: string): Promise&lt;ConnectionStrategy&gt;
 **示例：**
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
-import { a2dp, baseProfile } from '@kit.ConnectivityKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { a2dp } from '@kit.ConnectivityKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
     a2dpSrc.getConnectionStrategy('XX:XX:XX:XX:XX:XX').then((data: baseProfile.ConnectionStrategy) => {

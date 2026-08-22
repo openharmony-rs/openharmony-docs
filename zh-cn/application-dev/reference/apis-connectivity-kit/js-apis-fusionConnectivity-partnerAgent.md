@@ -100,10 +100,9 @@ bindDevice(deviceAddress: PartnerDeviceAddress, deviceCapability: DeviceCapabili
 
 ```js
 import { partnerAgent, common } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let btAddr: common.BluetoothAddress = {
-    'address': '11:22:33:44:55:66',
+    "address": "11:22:33:44:55:66",
     "addressType": common.BluetoothAddressType.REAL,
   };
   let deviceAddress: partnerAgent.PartnerDeviceAddress = {
@@ -117,7 +116,7 @@ try {
     "supportMediaControl": true,
     "supportTelephonyControl": true,
   };
-  partnerAgent.bindDevice(deviceAddress, capability, businessCap, 'testAbilityName')
+  partnerAgent.bindDevice(deviceAddress, capability, businessCap, "testAbilityName")
     .then(() => {
       console.info(`bind device success: ${btAddr.address}`);
     })
@@ -281,7 +280,7 @@ getBoundDevices(): PartnerDeviceAddress[]
 **示例**：
 
 ```js
-import { partnerAgent } from '@kit.ConnectivityKit';
+import { partnerAgent, common } from '@kit.ConnectivityKit';
 try {
   let devices = partnerAgent.getBoundDevices();
   console.info(`bound devices: ${devices}`);

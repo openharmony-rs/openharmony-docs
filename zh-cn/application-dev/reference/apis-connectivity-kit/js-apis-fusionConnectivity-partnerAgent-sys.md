@@ -68,7 +68,6 @@ enableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise&lt;void&gt;
 
 ```js
 import { partnerAgent, common } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let btAddr: common.BluetoothAddress = {
     "address": "11:22:33:44:55:66",
@@ -134,7 +133,6 @@ disableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise&lt;void&gt;
 
 ```js
 import { partnerAgent, common } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let btAddr: common.BluetoothAddress = {
     "address": "11:22:33:44:55:66",

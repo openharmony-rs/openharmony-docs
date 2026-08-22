@@ -127,7 +127,7 @@ try {
     let a2dpSrc = a2dp.createA2dpSrcProfile(); // 以a2dp举例
     let retArray = a2dpSrc.getConnectedDevices();
 } catch (err) {
-    console.error('errCode:' + (err as BusinessError).code + ',errMessage:' + (err as BusinessError).message);
+    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
 }
 ```
 
@@ -220,10 +220,10 @@ on(type: 'connectionStateChange', callback: Callback&lt;StateChangeParam&gt;): v
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import { a2dp, baseProfile } from '@kit.ConnectivityKit';
+import { a2dp } from '@kit.ConnectivityKit';
 
-const onReceiveEvent = (data: baseProfile.StateChangeParam) => {
-    console.info('a2dp state = ' + JSON.stringify(data));
+function onReceiveEvent(data: baseProfile.StateChangeParam) {
+    console.info('a2dp state = '+ JSON.stringify(data));
 }
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile(); // 以a2dp举例
@@ -266,10 +266,10 @@ off(type: 'connectionStateChange', callback?: Callback&lt;[StateChangeParam](#st
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import { a2dp, baseProfile } from '@kit.ConnectivityKit';
+import { a2dp } from '@kit.ConnectivityKit';
 
-const onReceiveEvent = (data: baseProfile.StateChangeParam) => {
-    console.info('a2dp state = ' + JSON.stringify(data));
+function onReceiveEvent(data: baseProfile.StateChangeParam) {
+    console.info('a2dp state = '+ JSON.stringify(data));
 }
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile(); // 以a2dp举例

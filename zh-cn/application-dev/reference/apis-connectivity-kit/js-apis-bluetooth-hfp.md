@@ -64,7 +64,7 @@ try {
     let hfpAgProfile = hfp.createHfpAgProfile();
     console.info('hfpAg success');
 } catch (err) {
-    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
 
@@ -98,13 +98,11 @@ createHfpHfProfile(): HandsFreeHfProfile
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
-
 try {
     let hfProfile = hfp.createHfpHfProfile();
     console.info('hf success');
 } catch (err) {
-    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 

@@ -51,11 +51,12 @@ createOppServerProfile(): OppServerProfile
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 import { opp } from '@kit.ConnectivityKit';
+// 创建fileHolders
 try {
     let oppProfile = opp.createOppServerProfile();
-    console.info('oppServer success');
+    oppProfile.off("receiveIncomingFile");
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+      console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
 
@@ -131,7 +132,7 @@ try {
         };
         fileHolders.push(fileHolder);
     }
-    oppProfile.sendFile('11:22:33:44:55:66', fileHolders);
+    oppProfile.sendFile("11:22:33:44:55:66", fileHolders);
     // 等待文件传输完后，记得关闭文件描述符  fs.close(file.fd);
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -187,11 +188,11 @@ setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise&lt;void&gt
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs} from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
-// 创建并设置接收文件确认
+// 创建fileHolders
 let file: fs.File | undefined = undefined;
 try {
     let oppProfile = opp.createOppServerProfile();
-    let pathDir = '/test.jpg'; // 应用根据实际情况填写路径
+    let pathDir = "/test.jpg"; // 应用根据实际情况填写路径
     file = fs.openSync(pathDir, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
     oppProfile.setIncomingFileConfirmation(true, file.fd);
 } catch (err) {
@@ -242,17 +243,18 @@ on(type: 'transferStateChange', callback: Callback&lt;OppTransferInformation&gt;
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
-// 订阅文件传输状态变化事件
+// 创建fileHolders
 try {
     let oppProfile = opp.createOppServerProfile();
-    oppProfile.on('transferStateChange', (data: opp.OppTransferInformation) => {
+    oppProfile.on("transferStateChange", (data: opp.OppTransferInformation) => {
         if (data.status == opp.TransferStatus.PENDING) {
-          console.info('[opp_js] waiting to transfer : ' + data.remoteDeviceName);
-        } else if (data.status == opp.TransferStatus.RUNNING) {
-          console.info('[opp_js] running data.currentBytes ' + data.currentBytes + ' data.totalBytes' + data.totalBytes);
-        } else if (data.status == opp.TransferStatus.FINISH) {
-          console.info('[opp_js] transfer finished, result is ' + data.result);
+          console.info("[opp_js] waiting to transfer : " + data.remoteDeviceName);
+        } else if (data.status == opp.TransferStatus.RUNNING){
+          console.info("[opp_js] running data.currentBytes " + data.currentBytes + " data.totalBytes" + data.totalBytes);
+        } else if (data.status == opp.TransferStatus.FINISH){
+          console.info("[opp_js] transfer finished, result is " + data.result);
         }
       });
 } catch (err) {
@@ -298,11 +300,12 @@ off(type: 'transferStateChange', callback?: Callback&lt;OppTransferInformation&g
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
-// 取消订阅文件传输状态变化事件
+// 创建fileHolders
 try {
     let oppProfile = opp.createOppServerProfile();
-    oppProfile.off('transferStateChange');
+    oppProfile.off("transferStateChange");
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -346,17 +349,18 @@ on(type: 'receiveIncomingFile', callback: Callback&lt;OppTransferInformation&gt;
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
-// 订阅接收文件事件
+// 创建fileHolders
 try {
     let oppProfile = opp.createOppServerProfile();
-    oppProfile.on('receiveIncomingFile', (data: opp.OppTransferInformation) => {
+    oppProfile.on("receiveIncomingFile", (data: opp.OppTransferInformation) => {
         if (data.status == opp.TransferStatus.PENDING) {
-          console.info('[opp_js] received file waiting to confirm : ' + data.remoteDeviceName);
-        } else if (data.status == opp.TransferStatus.RUNNING) {
-          console.info('[opp_js] running data.currentBytes ' + data.currentBytes + ' data.totalBytes' + data.totalBytes);
-        } else if (data.status == opp.TransferStatus.FINISH) {
-          console.info('[opp_js] transfer finished, result is ' + data.result);
+          console.info("[opp_js] received file waiting to confirm : " + data.remoteDeviceName);
+        } else if (data.status == opp.TransferStatus.RUNNING){
+          console.info("[opp_js] running data.currentBytes " + data.currentBytes + " data.totalBytes" + data.totalBytes);
+        } else if (data.status == opp.TransferStatus.FINISH){
+          console.info("[opp_js] transfer finished, result is " + data.result);
         }
       });
 } catch (err) {
@@ -402,11 +406,12 @@ off(type: 'receiveIncomingFile', callback?: Callback&lt;OppTransferInformation&g
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
-// 取消订阅接收文件事件
+// 创建fileHolders
 try {
     let oppProfile = opp.createOppServerProfile();
-    oppProfile.off('receiveIncomingFile');
+    oppProfile.cancelTransfer();
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -450,11 +455,12 @@ cancelTransfer(): Promise&lt;void&gt;
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
-// 取消文件传输
+// 创建fileHolders
 try {
     let oppProfile = opp.createOppServerProfile();
-    oppProfile.cancelTransfer();
+    let data = oppProfile.getCurrentTransferInformation();
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -499,10 +505,10 @@ getCurrentTransferInformation(): Promise&lt;[OppTransferInformation](#opptransfe
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 import { opp } from '@kit.ConnectivityKit';
-// 获取当前传输的文件信息
+// 创建fileHolders
 try {
     let oppProfile = opp.createOppServerProfile();
-    let data = await oppProfile.getCurrentTransferInformation();
+    oppProfile.setLastReceivedFileUri("file://media/Photo/1/IMG_1739266559_000/screenshot_20250211_173419.jpg"); // 应用根据实际情况填写路径
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
