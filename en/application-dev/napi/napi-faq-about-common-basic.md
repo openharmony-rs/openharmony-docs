@@ -215,11 +215,11 @@ What are the precautions for using **napi_env** in multi-thread mode? Is there a
 
 2. When using **env** to call Node-APIs, note that most Node-APIs can only be called on the ArkTS thread to which **env** belongs. Otherwise, thread-safety issues may arise.
 
-   <!--Del-->[Reference](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。<!--DelEnd-->
+   <!--Del-->[Reference](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)<!--DelEnd-->
 
 3. Do not cache napi_env. Otherwise, thread-safety issues and **use-after-free** issues may occur.
 
-   <!--Del-->[Reference](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。<!--DelEnd-->
+   <!--Del-->[Reference](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)<!--DelEnd-->
 
 4. [Why cannot napi_env be cached?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-ndk-73)
 
