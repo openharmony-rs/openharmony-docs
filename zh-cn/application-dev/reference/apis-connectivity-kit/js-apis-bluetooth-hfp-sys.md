@@ -85,7 +85,7 @@ try {
     let hfpAg = hfp.createHfpAgProfile();
     hfpAg.connect('XX:XX:XX:XX:XX:XX');
 } catch (err) {
-    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
 
@@ -141,7 +141,7 @@ try {
     let hfpAg = hfp.createHfpAgProfile();
     hfpAg.disconnect('XX:XX:XX:XX:XX:XX');
 } catch (err) {
-    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
 
@@ -208,12 +208,11 @@ connect(deviceId: string): void
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let hf = hfp.createHfpHfProfile();
     hf.connect('XX:XX:XX:XX:XX:XX');
 } catch (err) {
-    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -266,11 +265,10 @@ disconnect(deviceId: string): void
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let hf = hfp.createHfpHfProfile();
     hf.disconnect('XX:XX:XX:XX:XX:XX');
 } catch (err) {
-    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```

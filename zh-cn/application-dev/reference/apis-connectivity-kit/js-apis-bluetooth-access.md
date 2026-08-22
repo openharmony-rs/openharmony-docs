@@ -271,7 +271,7 @@ on(type: 'stateChange', callback: Callback&lt;BluetoothState&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function onReceiveEvent(data: access.BluetoothState) {
-    console.info('bluetooth state = ' + JSON.stringify(data));
+    console.info('bluetooth state = '+ JSON.stringify(data));
 }
 try {
     access.on('stateChange', onReceiveEvent);
@@ -314,7 +314,7 @@ off(type: 'stateChange', callback?: Callback&lt;BluetoothState&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function onReceiveEvent(data: access.BluetoothState) {
-    console.info('bluetooth state = ' + JSON.stringify(data));
+    console.info('bluetooth state = '+ JSON.stringify(data));
 }
 try {
     access.on('stateChange', onReceiveEvent);
@@ -473,7 +473,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let deviceIds = access.getPersistentDeviceIds();
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
 }
 ```
 
@@ -522,9 +522,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let deviceId = '11:22:33:44:55:66'  // 该地址可通过BLE扫描获取
     let isValid = access.isValidRandomDeviceId(deviceId);
-    console.info('isValid: ' + isValid);
+    console.info("isValid: " + isValid);
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
 }
 ```
 
@@ -571,7 +571,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let inputUuid: string = '1801';
     let convertedUuid: string = access.convertUuid(inputUuid);
-    console.info('convertedUuid: ' + convertedUuid);
+    console.info("convertedUuid: " + convertedUuid);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -608,7 +608,7 @@ isBluetoothSupported(): boolean
 ```js
 try {
     let isSupported: boolean = access.isBluetoothSupported();
-    console.info('isSupported: ' + isSupported);
+    console.info("isSupported: " + isSupported);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }

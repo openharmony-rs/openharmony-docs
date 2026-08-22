@@ -194,7 +194,7 @@ let sdp: hid.HidDeviceSdp = {
     "subclass": hid.Subclass.SUBCLASS_KEYBOARD,
     "descriptors": descriptors,
 };
-let inQos: hid.HidDeviceQos = {
+let inqos: hid.HidDeviceQos = {
     "serviceType": hid.ServiceType.SERVICE_BEST_EFFORT,
     "tokenRate": 0,
     "tokenBucketSize": 0,
@@ -202,14 +202,14 @@ let inQos: hid.HidDeviceQos = {
     "latency": -1,
     "delayVariation": -1,
 };
-let outQos: hid.HidDeviceQos = {};
+let outqos: hid.HidDeviceQos = {};
 function registerStateCallback(callback: boolean) {
     console.info(`state: ${callback}`);
 }
 
 try {
     let hidDevice: hid.HidDeviceProfile = hid.createHidDeviceProfile();
-    hidDevice.registerHidDevice(sdp, inQos, outQos, registerStateCallback);
+    hidDevice.registerHidDevice(sdp, inqos, outqos, registerStateCallback)
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -293,7 +293,7 @@ import { common } from '@kit.ConnectivityKit';
 let device: common.BluetoothAddress = {
     "address": "11:22:33:44:55:66",
     "addressType": common.BluetoothAddressType.REAL,
-};
+}
 try {
     let hidDevice: hid.HidDeviceProfile = hid.createHidDeviceProfile();
     hidDevice.connect(device);

@@ -73,11 +73,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 let serverSocket = (code: BusinessError, number: number) => {
   if (code) {
-    console.error(`sppListen error, code is ${code.code}, message is ${code.message}`);
+    console.error('sppListen error, code is ' + code);
     return;
   } else {
     serverNumber = number;
-    console.info(`sppListen success, serverNumber = ${serverNumber}`);
+    console.info('sppListen success, serverNumber = ' + serverNumber);
   }
 }
 
@@ -86,7 +86,7 @@ let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
 try {
     socket.sppListen('server1', sppOption, serverSocket);
 } catch (err) {
-    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
 
@@ -127,7 +127,7 @@ getL2capPsm(serverSocket: number): number
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 服务端获取L2CAP链路类型套接字的psm值。
+// 服务端获取客户端设备地址。
 let serverNumber = 1; // 此处serverNumber需赋值为调用sppListen接口后，回调中得到的serverNumber。
 try {
     let l2capPsm: number = socket.getL2capPsm(serverNumber);
@@ -176,17 +176,17 @@ let clientNumber = -1;
 let serverNumber = 1;
 let acceptClientSocket = (code: BusinessError, number: number) => {
   if (code) {
-    console.error(`sppAccept error, code is ${code.code}, message is ${code.message}`);
+    console.error('sppListen error, code is ' + code);
     return;
   } else {
     clientNumber = number; // 获取的clientNumber用作客户端后续读/写操作socket的id。
-    console.info(`sppAccept success, clientNumber = ${clientNumber}`);
+    console.info('sppListen success, clientNumber = ' + clientNumber);
   }
 }
 try {
     socket.sppAccept(serverNumber, acceptClientSocket); // serverNumber是sppListen回调中得到的serverNumber。
 } catch (err) {
-    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
 
@@ -234,11 +234,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let clientSocket = (code: BusinessError, number: number) => {
   if (code) {
-    console.error(`sppConnect error, code is ${code.code}, message is ${code.message}`);
+    console.error('sppConnect error, code is ' + code);
     return;
   } else {
     // 获取的number用作客户端后续读/写操作的socket id。
-    console.info(`bluetooth clientSocket Number: ${number}`);
+    console.info('bluetooth clientSocket Number: ' + number);
   }
 }
 
@@ -247,7 +247,7 @@ let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
 try {
     socket.sppConnect('XX:XX:XX:XX:XX:XX', sppOption, clientSocket);
 } catch (err) {
-    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
 
@@ -586,7 +586,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let clientNumber = 1; // 入参clientNumber由sppAccept或sppConnect接口获取。
 let arrayBuffer = new ArrayBuffer(8);
 let data = new Uint8Array(arrayBuffer);
-data[0] = 123;
 try {
     socket.sppWriteAsync(clientNumber, arrayBuffer).then(() => {
       console.info("sppWrite success");

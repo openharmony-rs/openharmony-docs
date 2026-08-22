@@ -62,7 +62,7 @@ enableWearDetection(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 try {
     wearDetection.enableWearDetection('XX:XX:XX:XX:XX:XX', (err) => {
         if (err) {
-            console.error(`enableWearDetection error, code: ${err.code}, message: ${err.message}`);
+            console.error("enableWearDetection error");
         }
     });
 } catch (err) {
@@ -113,7 +113,7 @@ enableWearDetection(deviceId: string): Promise&lt;void&gt;
 ```js
 try {
     wearDetection.enableWearDetection('XX:XX:XX:XX:XX:XX').then(() => {
-        console.info('enableWearDetection');
+        console.info("enableWearDetection");
     });
 } catch (err) {
     console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
@@ -159,7 +159,7 @@ disableWearDetection(deviceId: string, callback: AsyncCallback&lt;void&gt;): voi
 try {
     wearDetection.disableWearDetection('XX:XX:XX:XX:XX:XX', (err) => {
         if (err) {
-            console.error(`disableWearDetection error, code: ${err.code}, message: ${err.message}`);
+            console.error("disableWearDetection error");
         }
     });
 } catch (err) {
@@ -210,7 +210,7 @@ disableWearDetection(deviceId: string): Promise&lt;void&gt;
 ```js
 try {
     wearDetection.disableWearDetection('XX:XX:XX:XX:XX:XX').then(() => {
-        console.info('disableWearDetection');
+        console.info("disableWearDetection");
     });
 } catch (err) {
     console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
@@ -255,10 +255,6 @@ isWearDetectionSupported(deviceId: string, callback: AsyncCallback&lt;boolean&gt
 ```js
 try {
     wearDetection.isWearDetectionSupported('XX:XX:XX:XX:XX:XX', (err, supported) => {
-        if (err) {
-            console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
-            return;
-        }
         console.info('device support wear detection ' + supported);
     });
 } catch (err) {
@@ -354,10 +350,6 @@ isWearDetectionEnabled(deviceId: string, callback: AsyncCallback&lt;boolean&gt;)
 ```js
 try {
     wearDetection.isWearDetectionEnabled('XX:XX:XX:XX:XX:XX', (err, enabled) => {
-        if (err) {
-            console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
-            return;
-        }
         console.info('device enable wear detection ' + enabled);
     });
 } catch (err) {

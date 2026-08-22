@@ -117,13 +117,10 @@ setShareType(deviceId: string, type: ShareType, callback: AsyncCallback&lt;void&
 **示例：**
 
 ```js
-import { pbap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    // deviceId通过蓝牙设备扫描获取，例如通过bluetooth.getPairedDevices()等接口
-    let deviceId = 'XX:XX:XX:XX:XX:XX';
-    pbapServerProfile.setShareType(deviceId, 0, (err: BusinessError) => {
+    pbapServerProfile.setShareType('XX:XX:XX:XX:XX:XX', 0, (err: BusinessError) => {
        console.info('setShareType'); 
     });
 } catch (err) {
@@ -175,14 +172,11 @@ setShareType(deviceId: string, type: ShareType): Promise&lt;void&gt;
 **示例：**
 
 ```js
-import { pbap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    // deviceId通过蓝牙设备扫描获取，例如通过bluetooth.getPairedDevices()等接口
-    let deviceId = 'XX:XX:XX:XX:XX:XX';
-    pbapServerProfile.setShareType(deviceId, 0).then(() => {
-        console.info('setShareType');
+    pbapServerProfile.getPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX', (err, authorization) => {
+        console.info('authorization ' + authorization);
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -338,13 +332,10 @@ setPhoneBookAccessAuthorization(deviceId: string, authorization: AccessAuthoriza
 **示例：**
 
 ```js
-import { pbap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    // deviceId通过蓝牙设备扫描获取，例如通过bluetooth.getPairedDevices()等接口
-    let deviceId = 'XX:XX:XX:XX:XX:XX';
-    pbapServerProfile.setPhoneBookAccessAuthorization(deviceId, 0, (err: BusinessError) => {
+    pbapServerProfile.setPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX', 0, (err: BusinessError) => {
        console.info('setPhoneBookAccessAuthorization'); 
     });
 } catch (err) {
@@ -396,13 +387,10 @@ setPhoneBookAccessAuthorization(deviceId: string, authorization: AccessAuthoriza
 **示例：**
 
 ```js
-import { pbap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    // deviceId通过蓝牙设备扫描获取，例如通过bluetooth.getPairedDevices()等接口
-    let deviceId = 'XX:XX:XX:XX:XX:XX';
-    pbapServerProfile.setPhoneBookAccessAuthorization(deviceId, 0).then(() => {
+    pbapServerProfile.setPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX', 0).then(() => {
         console.info('setPhoneBookAccessAuthorization');
     });
 } catch (err) {
@@ -507,13 +495,10 @@ getPhoneBookAccessAuthorization(deviceId: string): Promise&lt;AccessAuthorizatio
 **示例：**
 
 ```js
-import { pbap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    // deviceId通过蓝牙设备扫描获取，例如通过bluetooth.getPairedDevices()等接口
-    let deviceId = 'XX:XX:XX:XX:XX:XX';
-    pbapServerProfile.getPhoneBookAccessAuthorization(deviceId).then((authorization) => {
+    pbapServerProfile.getPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX').then((authorization) => {
         console.info('authorization ' + authorization);
     });
 } catch (err) {
