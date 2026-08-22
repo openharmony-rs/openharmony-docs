@@ -6,13 +6,11 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-## 生成加密文件
-
-### 场景介绍
+## 场景介绍
 
 Data Protection Kit为应用提供了将明文文件生成DLP文件的能力和将DLP文件解密还原成原始明文文件的能力。应用无需自定义加密文件格式，只需使用OpenHarmony提供的DLP文件生成和解密能力来对敏感文件实现加密保护。
 
-### 开发步骤
+## 开发步骤
 
 1. 接口所需模块导入。 
     <!-- @[dlp_include_dlpPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
@@ -80,9 +78,9 @@ Data Protection Kit为应用提供了将明文文件生成DLP文件的能力和�
 
     3.1 申请权限：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
-    3.2 需要获取明文文件和加密文件的文件描述符。设置DLP文件通用策略[DLPProperty](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlpproperty21)和企业定制策略[CustomProperty](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#customproperty21)。
+    3.2 需要获取明文文件和加密文件的文件描述符。
 
-    3.3 调用[dlpPermission.generateDlpFileForEnterprise](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongeneratedlpfileforenterprise21)将明文文件加密生成企业账号DLP文件。
+    3.3 调用[dlpPermission.decryptDlpFile](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiondecryptdlpfile21)将明文文件加密生成企业账号DLP文件。
 
     <!-- @[dlp_decryptDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
