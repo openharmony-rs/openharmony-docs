@@ -59,7 +59,7 @@
 
 <!-- @[MaterialStateConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/module.json5) -->
 
-```json5
+``` JSON5
 {
   "module": {
     "name": "entry",
