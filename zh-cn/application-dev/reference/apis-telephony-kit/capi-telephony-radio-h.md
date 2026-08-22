@@ -52,7 +52,7 @@ Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) *state | 用户接收网络状态信息的结构体。 |
+| [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) *state | 用于接收网络状态信息的结构体。 |
 
 **返回：**
 
@@ -82,7 +82,7 @@ Telephony_RadioResult OH_Telephony_GetNetworkStateForSlot(int32_t slotId, Teleph
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t slotId | 卡槽ID。 |
-| [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) *state | 用户接收网络状态信息的结构体。 |
+| [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) *state | 用于接收网络状态信息的结构体。 |
 
 **返回：**
 
