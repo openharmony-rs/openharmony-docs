@@ -60,7 +60,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
     access.factoryReset((err: BusinessError) => {
         if (err) {
-            console.error(`Failed to factoryReset. Code: ${err.code}, message: ${err.message}`);
+            console.error("factoryReset error");
         }
     });
 } catch (err) {
@@ -105,7 +105,7 @@ factoryReset(): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     access.factoryReset().then(() => {
-        console.info('factoryReset');
+        console.info("factoryReset");
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -191,7 +191,7 @@ restrictBluetooth(): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     access.restrictBluetooth().then(() => {
-        console.info('restrictBluetooth');
+        console.info("restrictBluetooth");
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -247,9 +247,7 @@ try {
         "dialogType": 0,
         "dialogResult": true,
     };
-    access.notifyDialogResult(notifyDialogResultParams).then(() => {
-        console.info("notifyDialogResult");
-    });
+    access.notifyDialogResult(notifyDialogResultParams);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }

@@ -61,7 +61,7 @@ createPanProfile(): PanProfile
 
 ```js
 try {
-    let panProfile: pan.PanProfile = pan.createPanProfile();
+    let panProfile : pan.PanProfile= pan.createPanProfile();
     console.info('pan success');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -110,7 +110,7 @@ try {
     let panProfile: pan.PanProfile = pan.createPanProfile();
     let isPanSupported: boolean = panProfile.isPanSupported();
 } catch (err) {
-    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -159,6 +159,6 @@ try {
     let panProfile: pan.PanProfile = pan.createPanProfile();
     let isTetheringOn: boolean = panProfile.isTetheringOn();
 } catch (err) {
-    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```

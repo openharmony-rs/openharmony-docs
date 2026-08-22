@@ -167,11 +167,14 @@ cancelPairedDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-// callback
+// promise
 try {
-    connection.cancelPairedDevice('11:22:33:44:55:66', (err: BusinessError) => {
-        console.error(`Failed to cancel paired device. Code: ${err.code}, message: ${err.message}`);
-    });
+    connection.cancelPairedDevice('11:22:33:44:55:66').then(() => {
+        console.info('cancelPairedDevice');
+    }, (error: BusinessError) => {
+        console.error('cancelPairedDevice: errCode:' + error.code + ',errMessage' + error.message);
+    })
+
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -220,14 +223,12 @@ cancelPairedDevice(deviceId: string): Promise&lt;void&gt;
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-// promise
 try {
-    connection.cancelPairedDevice('11:22:33:44:55:66').then(() => {
-        console.info('cancelPairedDevice');
-    }, (error: BusinessError) => {
-        console.error(`Failed to cancel paired device. Code: ${error.code}, message: ${error.message}`);
+    connection.disconnectAllowedProfiles('68:13:24:79:4C:8C').then(() => {
+        console.info('disconnectAllowedProfiles');
+    }, (err: BusinessError) => {
+        console.error('disconnectAllowedProfiles:errCode' + err.code + ', errMessage: ' + err.message);
     });
-
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -272,12 +273,12 @@ cancelPairingDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-    connection.cancelPairingDevice('XX:XX:XX:XX:XX:XX', (err: BusinessError) => {
+    connection.disconnectAllowedProfiles('68:13:24:79:4C:8C', (err: BusinessError) => {
         if (err) {
             console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
             return;
         }
-        console.info('cancelPairingDevice success');
+        console.info('disconnectAllowedProfiles, err: ' + JSON.stringify(err));
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -328,10 +329,16 @@ cancelPairingDevice(deviceId: string): Promise&lt;void&gt;
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-    connection.cancelPairingDevice('XX:XX:XX:XX:XX:XX').then(() => {
-        console.info('cancelPairingDevice success');
+    let controlDeviceActionParams: connection.ControlDeviceActionParams = {
+        deviceId: '40:DC:A5:E5:75:C3',
+        type: connection.ControlType.PLAY,
+        typeValue: connection.ControlTypeValue.ENABLE,
+        controlObject: connection.ControlObject.LEFT_EAR
+    };
+    connection.controlDeviceAction(controlDeviceActionParams).then(() => {
+        console.info('controlDeviceAction success');
     }, (err: BusinessError) => {
-        console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+        console.error('controlDeviceAction: errCode' + err.code + ', errMessage: ' + err.message);
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -377,11 +384,7 @@ getLocalProfileUuids(callback: AsyncCallback&lt;Array&lt;ProfileUuids&gt;&gt;): 
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.getLocalProfileUuids((err: BusinessError, data: Array<connection.ProfileUuids>) => {
-        if (err) {
-            console.error(`Failed to get local profile uuids. Code: ${err.code}, message: ${err.message}`);
-            return;
-        }
-        console.info('getLocalProfileUuids, data: ' + JSON.stringify(data));
+        console.info('getLocalProfileUuids, err: ' + JSON.stringify(err) + ', data: ' + JSON.stringify(data));
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -476,13 +479,10 @@ disconnectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;)
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+// callback
 try {
-    connection.disconnectAllowedProfiles('68:13:24:79:4C:8C', (err: BusinessError) => {
-        if (err) {
-            console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-            return;
-        }
-        console.info('disconnectAllowedProfiles, err: ' + JSON.stringify(err));
+    connection.cancelPairedDevice('11:22:33:44:55:66', (err: BusinessError) => {
+        console.info('cancelPairedDevice, device name err:' + JSON.stringify(err));
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -903,21 +903,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let transport: connection.BluetoothTransport = connection.BluetoothTransport.TRANSPORT_LE;
     let addressInfo: common.BluetoothAddress = {
-        address: '11:22:33:44:55:66',
-        addressType: common.BluetoothAddressType.REAL, // 必须为实际MAC地址类型
-        rawAddressType: common.BluetoothRawAddressType.RANDOM
+        "address": "11:22:33:44:55:66",
+        "addressType": common.BluetoothAddressType.REAL, // 必须为实际MAC地址类型
+        "rawAddressType": common.BluetoothRawAddressType.RANDOM
     };
     let confirmHash: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10]);
     let randomHash: Uint8Array = new Uint8Array([0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11]);
     let oobData: connection.OobData = {
-        deviceId: addressInfo,
-        confirmationHash: confirmHash,
-        randomizerHash: randomHash,
-        deviceName: 'testName',
-        deviceRole: connection.DeviceRole.DEVICE_ROLE_PERIPHERAL_ONLY
-    };
+        "deviceId": addressInfo,
+        "confirmationHash": confirmHash,
+        "randomizerHash": randomHash,
+        "deviceName": "testName",
+        "deviceRole": connection.DeviceRole.DEVICE_ROLE_PERIPHERAL_ONLY
+    }
     connection.pairDeviceOutOfBand(transport, null, oobData).then(() => {
-        console.info('pairDeviceOutOfBand');
+        console.info('pairDeviceOufOfBand');
     }, (err: BusinessError) => {
         console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
     });

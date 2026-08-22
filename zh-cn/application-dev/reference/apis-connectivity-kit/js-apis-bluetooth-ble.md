@@ -338,16 +338,16 @@ startBLEScan(filters: Array&lt;ScanFilter&gt;, options?: ScanOptions): void
 
 ```js
 import { common } from '@kit.ConnectivityKit';
-let onReceiveEvent = (data: Array<ble.ScanResult>) => {
+function onReceiveEvent(data: Array<ble.ScanResult>) {
     console.info('BLE scan device find result = '+ JSON.stringify(data));
 }
 try {
-    ble.on('BLEDeviceFind', onReceiveEvent);
+    ble.on("BLEDeviceFind", onReceiveEvent);
     let addressInfo : common.BluetoothAddress = {
         address:"XX:XX:XX:XX:XX:XX",
         addressType:common.BluetoothAddressType.REAL,
         rawAddressType:common.BluetoothRawAddressType.PUBLIC
-    };
+    }
     let scanFilter: ble.ScanFilter = {
         deviceId:"XX:XX:XX:XX:XX:XX",
         address:addressInfo, // 使用address时不需要重复设置deviceId
@@ -358,8 +358,8 @@ try {
     interval: 500,
     dutyMode: ble.ScanDuty.SCAN_MODE_LOW_POWER,
     matchMode: ble.MatchMode.MATCH_MODE_AGGRESSIVE
-    };
-    ble.startBLEScan([scanFilter], scanOptions);
+    }
+    ble.startBLEScan([scanFilter],scanOptions);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -493,7 +493,7 @@ try {
         serviceData:[serviceDataUnit],
         advertiseName:"testName" // 需申请ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME权限
     };
-    ble.startAdvertising(setting, advData, advResponse);
+    ble.startAdvertising(setting, advData ,advResponse);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -630,14 +630,14 @@ try {
         advertisingData: advData,
         advertisingResponse: advResponse,
         duration: 0
-    };
+    }
     let advHandle = 0xFF;
     ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
         if (err) {
             return;
         } else {
             advHandle = outAdvHandle;
-            console.info('advHandle: ' + advHandle);
+            console.info("advHandle: " + advHandle);
         }
     });
 } catch (err) {
@@ -835,23 +835,25 @@ try {
         advertisingSettings: setting,
         advertisingData: advData,
         advertisingResponse: advResponse,
-        duration: 300
+        duration: 0
     }
     let advHandle = 0xFF;
     ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
         if (err) {
             return;
+        } else {
+            advHandle = outAdvHandle;
+            console.info("advHandle: " + advHandle);
         }
-        advHandle = outAdvHandle;
-        let advertisingEnableParams: ble.AdvertisingEnableParams = {
-            advertisingId: advHandle,
-            duration: 0
+    });
+
+    let advertisingDisableParams: ble.AdvertisingDisableParams = {
+        advertisingId: advHandle
+    }
+    ble.disableAdvertising(advertisingDisableParams, (err) => {
+        if (err) {
+            return;
         }
-        ble.enableAdvertising(advertisingEnableParams, (err) => {
-            if (err) {
-                return;
-            }
-        });
     });
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
@@ -946,22 +948,24 @@ try {
         advertisingSettings: setting,
         advertisingData: advData,
         advertisingResponse: advResponse,
-        duration: 300
-    };
+        duration: 0
+    }
     let advHandle = 0xFF;
     ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
         if (err) {
             return;
+        } else {
+            advHandle = outAdvHandle;
+            console.info("advHandle: " + advHandle);
         }
-        advHandle = outAdvHandle;
-        let advertisingEnableParams: ble.AdvertisingEnableParams = {
-            advertisingId: advHandle,
-            duration: 0
-        }
-        ble.enableAdvertising(advertisingEnableParams)
-            .then(() => {
-                console.info("enable success");
-            });
+    });
+
+    let advertisingDisableParams: ble.AdvertisingDisableParams = {
+        advertisingId: advHandle
+    }
+    ble.disableAdvertising(advertisingDisableParams)
+        .then(() => {
+            console.info("enable success");
     });
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
@@ -1050,22 +1054,28 @@ try {
         advertisingSettings: setting,
         advertisingData: advData,
         advertisingResponse: advResponse,
-        duration: 0
-    };
+        duration: 300
+    }
     let advHandle = 0xFF;
     ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
         if (err) {
             return;
+        } else {
+            advHandle = outAdvHandle;
+            console.info("advHandle: " + advHandle);
         }
-        advHandle = outAdvHandle;
-        let advertisingDisableParams: ble.AdvertisingDisableParams = {
-            advertisingId: advHandle
+    });
+
+    let advertisingEnableParams: ble.AdvertisingEnableParams = {
+        advertisingId: advHandle,
+        duration: 0
+    }
+
+    // after 3s, advertising disabled, then enable the advertising
+    ble.enableAdvertising(advertisingEnableParams, (err) => {
+        if (err) {
+            return;
         }
-        ble.disableAdvertising(advertisingDisableParams, (err) => {
-            if (err) {
-                return;
-            }
-        });
     });
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
@@ -1155,25 +1165,31 @@ try {
         manufactureData:[manufactureDataUnit],
         serviceData:[serviceDataUnit]
     };
-let advertisingParams: ble.AdvertisingParams = {
+    let advertisingParams: ble.AdvertisingParams = {
         advertisingSettings: setting,
         advertisingData: advData,
         advertisingResponse: advResponse,
-        duration: 0
-    };
+        duration: 300
+    }
     let advHandle = 0xFF;
     ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
         if (err) {
             return;
+        } else {
+            advHandle = outAdvHandle;
+            console.info("advHandle: " + advHandle);
         }
-        advHandle = outAdvHandle;
-        let advertisingDisableParams: ble.AdvertisingDisableParams = {
-            advertisingId: advHandle
-        }
-        ble.disableAdvertising(advertisingDisableParams)
-            .then(() => {
-                console.info("disable success");
-            });
+    });
+
+    let advertisingEnableParams: ble.AdvertisingEnableParams = {
+        advertisingId: advHandle,
+        duration: 0
+    }
+
+    // after 3s, advertising disabled, then enable the advertising
+    ble.enableAdvertising(advertisingEnableParams)
+        .then(() => {
+            console.info("enable success");
     });
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
@@ -1264,18 +1280,21 @@ try {
         advertisingData: advData,
         advertisingResponse: advResponse,
         duration: 0
-    };
+    }
     let advHandle = 0xFF;
     ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
         if (err) {
             return;
+        } else {
+            advHandle = outAdvHandle;
+            console.info("advHandle: " + advHandle);
         }
-        advHandle = outAdvHandle;
-        ble.stopAdvertising(advHandle, (err) => {
-            if (err) {
-                return;
-            }
-        });
+    });
+
+    ble.stopAdvertising(advHandle, (err) => {
+        if (err) {
+            return;
+        }
     });
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
@@ -1371,17 +1390,20 @@ try {
         advertisingData: advData,
         advertisingResponse: advResponse,
         duration: 0
-    };
+    }
     let advHandle = 0xFF;
     ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
         if (err) {
             return;
+        } else {
+            advHandle = outAdvHandle;
+            console.info("advHandle: " + advHandle);
         }
-        advHandle = outAdvHandle;
-        ble.stopAdvertising(advHandle)
-            .then(() => {
-                console.info("stop success");
-            });
+    });
+
+    ble.stopAdvertising(advHandle)
+        .then(() => {
+            console.info("enable success");
     });
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
@@ -1422,8 +1444,8 @@ on(type: 'advertisingStateChange', callback: Callback&lt;AdvertisingStateChangeI
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
-let onReceiveEvent = (data: ble.AdvertisingStateChangeInfo) => {
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+function onReceiveEvent(data: ble.AdvertisingStateChangeInfo) {
     console.info('bluetooth advertising state = ' + JSON.stringify(data));
 }
 try {
@@ -1467,8 +1489,8 @@ off(type: 'advertisingStateChange', callback?: Callback&lt;AdvertisingStateChang
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
-let onReceiveEvent = (data: ble.AdvertisingStateChangeInfo) => {
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+function onReceiveEvent(data: ble.AdvertisingStateChangeInfo) {
     console.info('bluetooth advertising state = ' + JSON.stringify(data));
 }
 try {
@@ -1517,8 +1539,8 @@ on(type: 'BLEDeviceFind', callback: Callback&lt;Array&lt;ScanResult&gt;&gt;): vo
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
-let onReceiveEvent = (data: Array<ble.ScanResult>) => {
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+function onReceiveEvent(data: Array<ble.ScanResult>) {
     console.info('bluetooth device find = '+ JSON.stringify(data));
 }
 try {
@@ -1566,8 +1588,8 @@ off(type: 'BLEDeviceFind', callback?: Callback&lt;Array&lt;ScanResult&gt;&gt;): 
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
-let onReceiveEvent = (data: Array<ble.ScanResult>) => {
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+function onReceiveEvent(data: Array<ble.ScanResult>) {
     console.info('bluetooth device find = '+ JSON.stringify(data));
 }
 try {
@@ -1623,7 +1645,7 @@ server端添加服务。该操作会在蓝牙子系统中注册该服务，表�
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 // 创建descriptors。
 let descriptors: Array<ble.BLEDescriptor> = [];
 let arrayBuffer = new ArrayBuffer(2);
@@ -1637,8 +1659,8 @@ descriptors[0] = descriptor;
 // 创建characteristics。
 let characteristics: Array<ble.BLECharacteristic> = [];
 let arrayBufferC = new ArrayBuffer(8);
-let cccValue = new Uint8Array(arrayBufferC);
-cccValue[0] = 1;
+let cccV = new Uint8Array(arrayBufferC);
+cccV[0] = 1;
 let characteristic: ble.BLECharacteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
   characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB', characteristicValue: arrayBufferC, descriptors:descriptors};
 characteristics[0] = characteristic;
@@ -1693,7 +1715,7 @@ removeService(serviceUuid: string): void
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let server: ble.GattServer = ble.createGattServer();
 try {
     server.removeService('00001810-0000-1000-8000-00805F9B34FB');
@@ -1877,7 +1899,7 @@ close(): void
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let server: ble.GattServer = ble.createGattServer();
 try {
     server.close();
@@ -2034,7 +2056,7 @@ server端发送特征值变化通知或者指示给client端。使用Callback异
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let arrayBufferC = new ArrayBuffer(8);
 let notifyCharacter: ble.NotifyCharacteristic = {
     serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
@@ -2046,7 +2068,7 @@ try {
     let gattServer: ble.GattServer = ble.createGattServer();
     gattServer.notifyCharacteristicChanged('XX:XX:XX:XX:XX:XX', notifyCharacter, (err: BusinessError) => {
         if (err) {
-            console.error(`notifyCharacteristicChanged callback failed. Code: ${err.code}, message: ${err.message}`);
+            console.error('notifyCharacteristicChanged callback failed');
         } else {
             console.info('notifyCharacteristicChanged callback successful');
         }
@@ -2105,7 +2127,7 @@ server端发送特征值变化通知或者指示给client端。使用Promise异�
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let arrayBufferC = new ArrayBuffer(8);
 let notifyCharacter: ble.NotifyCharacteristic = {
     serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
@@ -2167,14 +2189,14 @@ client请求是指通过下述接口订阅回调收到的请求消息：
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 /* send response */
 let arrayBufferCCC = new ArrayBuffer(8);
 let cccValue = new Uint8Array(arrayBufferCCC);
 cccValue[0] = 1;
 let serverResponse: ble.ServerResponse = {
     deviceId: 'XX:XX:XX:XX:XX:XX',
-    transId: 0, // transId需要从订阅的characteristicRead/characteristicWrite/descriptorRead/descriptorWrite回调事件中获取，此处0仅为示例
+    transId: 0,
     status: 0,
     offset: 0,
     value: arrayBufferCCC
@@ -2224,12 +2246,12 @@ server端订阅client的特征值读请求事件，server端收到该事件后�
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let arrayBufferCCC = new ArrayBuffer(8);
 let cccValue = new Uint8Array(arrayBufferCCC);
 cccValue[0] = 1;
 let gattServer: ble.GattServer = ble.createGattServer();
-let readCharacteristicReq = (characteristicReadRequest: ble.CharacteristicReadRequest) => {
+function ReadCharacteristicReq(characteristicReadRequest: ble.CharacteristicReadRequest) {
     let deviceId: string = characteristicReadRequest.deviceId;
     let transId: number = characteristicReadRequest.transId;
     let offset: number = characteristicReadRequest.offset;
@@ -2243,7 +2265,7 @@ let readCharacteristicReq = (characteristicReadRequest: ble.CharacteristicReadRe
         console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
     }
 }
-gattServer.on('characteristicRead', readCharacteristicReq);
+gattServer.on('characteristicRead', ReadCharacteristicReq);
 ```
 
 
@@ -2281,7 +2303,7 @@ server端取消订阅client的特征值读请求事件。
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let gattServer: ble.GattServer = ble.createGattServer();
     gattServer.off('characteristicRead');
@@ -2327,11 +2349,11 @@ server端订阅client的特征值写请求事件，server端收到该事件后�
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let arrayBufferCCC = new ArrayBuffer(8);
 let cccValue = new Uint8Array(arrayBufferCCC);
 let gattServer: ble.GattServer = ble.createGattServer();
-let writeCharacteristicReq = (characteristicWriteRequest: ble.CharacteristicWriteRequest) => {
+function WriteCharacteristicReq(characteristicWriteRequest: ble.CharacteristicWriteRequest) {
     let deviceId: string = characteristicWriteRequest.deviceId;
     let transId: number = characteristicWriteRequest.transId;
     let offset: number = characteristicWriteRequest.offset;
@@ -2349,7 +2371,7 @@ let writeCharacteristicReq = (characteristicWriteRequest: ble.CharacteristicWrit
         console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
     }
 }
-gattServer.on('characteristicWrite', writeCharacteristicReq);
+gattServer.on('characteristicWrite', WriteCharacteristicReq);
 ```
 
 
@@ -2387,7 +2409,7 @@ server端取消订阅client的特征值写请求事件。
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let gattServer: ble.GattServer = ble.createGattServer();
     gattServer.off('characteristicWrite');
@@ -2433,12 +2455,12 @@ server端订阅client的描述符读请求事件，server端收到该事件后�
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let arrayBufferDesc = new ArrayBuffer(8);
 let descValue = new Uint8Array(arrayBufferDesc);
 descValue[0] = 1;
 let gattServer: ble.GattServer = ble.createGattServer();
-let readDescriptorReq = (descriptorReadRequest: ble.DescriptorReadRequest) => {
+function ReadDescriptorReq(descriptorReadRequest: ble.DescriptorReadRequest) {
     let deviceId: string = descriptorReadRequest.deviceId;
     let transId: number = descriptorReadRequest.transId;
     let offset: number = descriptorReadRequest.offset;
@@ -2452,7 +2474,7 @@ let readDescriptorReq = (descriptorReadRequest: ble.DescriptorReadRequest) => {
         console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
     }
 }
-gattServer.on('descriptorRead', readDescriptorReq);
+gattServer.on('descriptorRead', ReadDescriptorReq);
 ```
 
 
@@ -2490,7 +2512,7 @@ server端取消订阅client的描述符读请求事件。
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let gattServer: ble.GattServer = ble.createGattServer();
     gattServer.off('descriptorRead');
@@ -2536,11 +2558,11 @@ server端订阅client的描述符写请求事件，server端收到该事件后�
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let arrayBufferDesc = new ArrayBuffer(8);
 let descValue = new Uint8Array(arrayBufferDesc);
 let gattServer: ble.GattServer = ble.createGattServer();
-let writeDescriptorReq = (descriptorWriteRequest: ble.DescriptorWriteRequest) => {
+function WriteDescriptorReq(descriptorWriteRequest: ble.DescriptorWriteRequest) {
     let deviceId: string = descriptorWriteRequest.deviceId;
     let transId: number = descriptorWriteRequest.transId;
     let offset: number = descriptorWriteRequest.offset;
@@ -2558,7 +2580,7 @@ let writeDescriptorReq = (descriptorWriteRequest: ble.DescriptorWriteRequest) =>
         console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
     }
 }
-gattServer.on('descriptorWrite', writeDescriptorReq);
+gattServer.on('descriptorWrite', WriteDescriptorReq);
 ```
 
 
@@ -2596,7 +2618,7 @@ server端取消订阅client的描述符写请求事件。
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
 let gattServer: ble.GattServer = ble.createGattServer();
 gattServer.off('descriptorWrite');
@@ -2691,7 +2713,7 @@ server端取消订阅GATT profile协议的连接状态变化事件。
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let gattServer: ble.GattServer = ble.createGattServer();
     gattServer.off('connectionStateChange');
@@ -2735,7 +2757,7 @@ server端订阅MTU（最大传输单元）大小变更事件。使用Callback异
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let gattServer: ble.GattServer = ble.createGattServer();
     gattServer.on('BLEMtuChange', (mtu: number) => {
@@ -2781,7 +2803,7 @@ server端取消订阅MTU（最大传输单元）大小变更事件。
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let gattServer: ble.GattServer = ble.createGattServer();
     gattServer.off('BLEMtuChange');
@@ -2985,12 +3007,12 @@ onBlePhyUpdate(callback: Callback&lt;PhyValue&gt;): void
 **示例**：
 
 ```js
-let blePhyCallback = (data:ble.PhyValue) => {
+function BlePhyCallback(data:ble.PhyValue) {
     console.info(`txPhy: ${data.txPhy}, rxPhy: ${data.rxPhy}`);
 }
 let gattServer: ble.GattServer = ble.createGattServer();
 try {
-    gattServer.onBlePhyUpdate(blePhyCallback);
+    gattServer.onBlePhyUpdate(BlePhyCallback);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -3027,12 +3049,12 @@ offBlePhyUpdate(callback?: Callback&lt;PhyValue&gt;): void
 **示例**：
 
 ```js
-let blePhyCallback = (data:ble.PhyValue) => {
+function BlePhyCallback(data:ble.PhyValue) {
     console.info(`txPhy: ${data.txPhy}, rxPhy: ${data.rxPhy}`);
 }
 let gattServer: ble.GattServer = ble.createGattServer();
 try {
-    gattServer.offBlePhyUpdate(blePhyCallback);
+    gattServer.offBlePhyUpdate(BlePhyCallback);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -3078,7 +3100,7 @@ client端主动发起和server蓝牙设备的GATT协议连接。
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.connect();
@@ -3119,7 +3141,7 @@ client断开与远端蓝牙低功耗设备的连接。
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.disconnect();
@@ -3158,7 +3180,7 @@ close(): void
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.close();
@@ -3206,22 +3228,18 @@ client获取server端设备名称。使用Callback异步回调。
 
 ```js
 import { ble, constant } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let gattClient: ble.GattClientDevice = ble.createGattClientDevice("11:22:33:44:55:66");
-let connectStateChanged = (state: ble.BLEConnectionChangeState) => {
+function ConnectStateChanged(state: ble.BLEConnectionChangeState) {
     console.info('bluetooth connect state changed');
     let connectState: ble.ProfileConnectionState = state.state;
     if (connectState == constant.ProfileConnectionState.STATE_CONNECTED) {
-        gattClient.getDeviceName((err: BusinessError, data: string) => {
-            if (err) {
-                console.error(`getDeviceName failed. Code: ${err.code}, message: ${err.message}`);
-                return;
-            }
+        gattClient.getDeviceName((err: BusinessError, data: string)=> {
+            console.info('device name err ' + JSON.stringify(err));
             console.info('device name' + JSON.stringify(data));
-        });
+        })
     }
 }
-gattClient.on('BLEConnectionStateChange', connectStateChanged);
 // callback
 try {
     gattClient.connect();
@@ -3269,10 +3287,10 @@ client获取server端设备名称。使用Promise异步回调。
 
 ```js
 import { ble, constant } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let gattClient: ble.GattClientDevice = ble.createGattClientDevice("11:22:33:44:55:66");
-gattClient.on('BLEConnectionStateChange', connectStateChanged);
-let connectStateChanged = (state: ble.BLEConnectionChangeState) => {
+gattClient.on('BLEConnectionStateChange', ConnectStateChanged);
+function ConnectStateChanged(state: ble.BLEConnectionChangeState) {
     console.info('bluetooth connect state changed');
     let connectState: ble.ProfileConnectionState = state.state;
     if (connectState == constant.ProfileConnectionState.STATE_CONNECTED) {
@@ -3336,11 +3354,11 @@ client获取server端支持的所有服务能力，即服务发现流程。使�
 
 ```js
 import { ble, constant } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 // callback 模式。
 let getServices = (code: BusinessError, gattServices: Array<ble.GattService>) => {
     if (code && code.code != 0) {
-        console.error(`getServices failed. Code: ${code.code}, message: ${code.message}`);
+        console.info('bluetooth code is ' + code.code);
         return;
     }
     let services: Array<ble.GattService> = gattServices;
@@ -3350,14 +3368,13 @@ let getServices = (code: BusinessError, gattServices: Array<ble.GattService>) =>
     }
 }
 let device: ble.GattClientDevice = ble.createGattClientDevice("11:22:33:44:55:66");
-let connectStateChanged = (state: ble.BLEConnectionChangeState) => {
+function ConnectStateChanged(state: ble.BLEConnectionChangeState) {
     console.info('bluetooth connect state changed');
     let connectState: ble.ProfileConnectionState = state.state;
     if (connectState == constant.ProfileConnectionState.STATE_CONNECTED) {
         device.getServices(getServices);
     }
 }
-device.on('BLEConnectionStateChange', connectStateChanged);
 
 try {
     device.connect();
@@ -3405,10 +3422,10 @@ client端获取server端支持的所有服务能力，即服务发现流程。�
 
 ```js
 import { ble, constant } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 // Promise 模式。
 let device: ble.GattClientDevice = ble.createGattClientDevice("11:22:33:44:55:66");
-let connectStateChanged = (state: ble.BLEConnectionChangeState) => {
+function ConnectStateChanged(state: ble.BLEConnectionChangeState) {
     console.info('bluetooth connect state changed');
     let connectState: ble.ProfileConnectionState = state.state;
     if (connectState == constant.ProfileConnectionState.STATE_CONNECTED) {
@@ -3417,7 +3434,6 @@ let connectStateChanged = (state: ble.BLEConnectionChangeState) => {
         });
     }
 }
-device.on('BLEConnectionStateChange', connectStateChanged);
 try {
     device.connect();
 } catch (err) {
@@ -3472,8 +3488,8 @@ client端从指定的server端特征值读取数据。使用Callback异步回调
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
-let readCcc = (code: BusinessError, BLECharacteristic: ble.BLECharacteristic) => {
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+function readCcc(code: BusinessError, BLECharacteristic: ble.BLECharacteristic) {
   if (code.code != 0) {
       return;
   }
@@ -3558,7 +3574,7 @@ client端从指定的server端特征值读取数据。使用Promise异步回调�
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let descriptors: Array<ble.BLEDescriptor> = [];
 let bufferDesc = new ArrayBuffer(2);
 let descV = new Uint8Array(bufferDesc);
@@ -3630,8 +3646,8 @@ client端从指定的server端描述符读取数据。使用Callback异步回调
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
-let readDesc = (code: BusinessError, BLEDescriptor: ble.BLEDescriptor) => {
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+function readDesc(code: BusinessError, BLEDescriptor: ble.BLEDescriptor) {
     if (code.code != 0) {
         return;
     }
@@ -3709,7 +3725,7 @@ client端从指定的server端描述符读取数据。使用Promise异步回调�
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let bufferDesc = new ArrayBuffer(2);
 let descV = new Uint8Array(bufferDesc);
 descV[0] = 0; // 以Client Characteristic Configuration描述符为例，表示bit0、bit1均为0，notification和indication均不开启
@@ -3775,7 +3791,7 @@ client端向指定的server端特征值写入数据。使用Callback异步回调
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let descriptors: Array<ble.BLEDescriptor> = [];
 let bufferDesc = new ArrayBuffer(2);
 let descV = new Uint8Array(bufferDesc);
@@ -3791,8 +3807,8 @@ cccV[0] = 1;
 let characteristic: ble.BLECharacteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
   characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
   characteristicValue: bufferCCC, descriptors:descriptors};
-let writeCharacteristicValueCallBack = (code: BusinessError) => {
-    if (code) {
+function writeCharacteristicValueCallBack(code: BusinessError) {
+    if (code != null) {
         return;
     }
     console.info('bluetooth writeCharacteristicValue success');
@@ -3858,7 +3874,7 @@ client端向指定的server端特征值写入数据。使用Promise异步回调�
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let descriptors: Array<ble.BLEDescriptor>  = [];
 let bufferDesc = new ArrayBuffer(2);
 let descV = new Uint8Array(bufferDesc);
@@ -3930,7 +3946,7 @@ client端向指定的server端描述符写入数据。使用Callback异步回调
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let bufferDesc = new ArrayBuffer(2);
 let descV = new Uint8Array(bufferDesc);
 descV[0] = 0; // 以Client Characteristic Configuration描述符为例，表示bit0、bit1均为0，notification和indication均不开启
@@ -3944,7 +3960,7 @@ try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.writeDescriptorValue(descriptor, (err: BusinessError) => {
         if (err) {
-            console.error(`writeDescriptorValue callback failed. Code: ${err.code}, message: ${err.message}`);
+            console.error('writeDescriptorValue callback failed');
         } else {
             console.info('writeDescriptorValue callback successful');
         }
@@ -4007,7 +4023,7 @@ client端向指定的server端描述符写入数据。使用Promise异步回调�
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let bufferDesc = new ArrayBuffer(2);
 let descV = new Uint8Array(bufferDesc);
 descV[0] = 0; // 以Client Characteristic Configuration描述符为例，表示bit0、bit1均为0，notification和indication均不开启
@@ -4066,16 +4082,13 @@ client端获取GATT连接链路信号强度 (Received Signal Strength Indication
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 // callback
 try {
     let gattClient: ble.GattClientDevice = ble.createGattClientDevice("XX:XX:XX:XX:XX:XX");
     gattClient.connect();
-    let rssi = gattClient.getRssiValue((err: BusinessError, data: number) => {
-        if (err) {
-            console.error(`getRssiValue failed. Code: ${err.code}, message: ${err.message}`);
-            return;
-        }
+    let rssi = gattClient.getRssiValue((err: BusinessError, data: number)=> {
+        console.info('rssi err ' + JSON.stringify(err));
         console.info('rssi value' + JSON.stringify(data));
     })
 } catch (err) {
@@ -4122,7 +4135,7 @@ client端获取GATT连接链路信号强度 (Received Signal Strength Indication
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
     let gattClient: ble.GattClientDevice = ble.createGattClientDevice("XX:XX:XX:XX:XX:XX");
@@ -4173,7 +4186,7 @@ client端同server端协商[MTU](../../connectivity/bluetooth/terminology.md#mtu
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.setBLEMtuSize(128);
@@ -4290,7 +4303,7 @@ client端启用或者禁用接收server端特征值内容变更通知的能力�
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 // 创建descriptors。
 let descriptors: Array<ble.BLEDescriptor> = [];
 let arrayBuffer = new ArrayBuffer(2);
@@ -4307,9 +4320,9 @@ try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.setCharacteristicChangeNotification(characteristic, false, (err: BusinessError) => {
         if (err) {
-            console.error(`setCharacteristicChangeNotification callback failed. Code: ${err.code}, message: ${err.message}`);
+            console.error('notifyCharacteristicChanged callback failed');
         } else {
-            console.info('setCharacteristicChangeNotification callback successful');
+            console.info('notifyCharacteristicChanged callback successful');
         }
     });
 } catch (err) {
@@ -4370,7 +4383,7 @@ client端启用或者禁用接收server端特征值内容变更通知的能力�
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 // 创建descriptors。
 let descriptors: Array<ble.BLEDescriptor> = [];
 let arrayBuffer = new ArrayBuffer(2);
@@ -4439,7 +4452,7 @@ client端启用或者禁用接收server端特征值内容变更指示的能力�
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 // 创建descriptors。
 let descriptors: Array<ble.BLEDescriptor> = [];
 let arrayBuffer = new ArrayBuffer(2);
@@ -4456,9 +4469,9 @@ try {
   let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
   device.setCharacteristicChangeIndication(characteristic, false, (err: BusinessError) => {
     if (err) {
-      console.error(`setCharacteristicChangeIndication callback failed. Code: ${err.code}, message: ${err.message}`);
+      console.error('notifyCharacteristicChanged callback failed');
     } else {
-      console.info('setCharacteristicChangeIndication callback successful');
+      console.info('notifyCharacteristicChanged callback successful');
     }
   });
 } catch (err) {
@@ -4519,7 +4532,7 @@ client端启用或者禁用接收server端特征值内容变更指示的能力�
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 // 创建descriptors。
 let descriptors: Array<ble.BLEDescriptor> = [];
 let arrayBuffer = new ArrayBuffer(2);
@@ -4577,15 +4590,15 @@ client端订阅server端特征值变化事件。使用Callback异步回调。<br
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
-let characteristicChange = (characteristicChangeReq: ble.BLECharacteristic) => {
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+function CharacteristicChange(characteristicChangeReq: ble.BLECharacteristic) {
     let serviceUuid: string = characteristicChangeReq.serviceUuid;
     let characteristicUuid: string = characteristicChangeReq.characteristicUuid;
     let value: Uint8Array = new Uint8Array(characteristicChangeReq.characteristicValue);
 }
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
-    device.on('BLECharacteristicChange', characteristicChange);
+    device.on('BLECharacteristicChange', CharacteristicChange);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -4626,7 +4639,7 @@ client端取消订阅server端特征值变化事件。
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.off('BLECharacteristicChange');
@@ -4670,14 +4683,14 @@ client端订阅GATT profile协议的连接状态变化事件。使用Callback异
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
-let connectStateChanged = (state: ble.BLEConnectionChangeState) => {
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+function ConnectStateChanged(state: ble.BLEConnectionChangeState) {
     console.info('bluetooth connect state changed');
     let connectState: ble.ProfileConnectionState = state.state;
 }
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
-    device.on('BLEConnectionStateChange', connectStateChanged);
+    device.on('BLEConnectionStateChange', ConnectStateChanged);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -4718,7 +4731,7 @@ client端取消订阅GATT profile协议的连接状态变化事件。
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.off('BLEConnectionStateChange');
@@ -4762,7 +4775,7 @@ client端订阅MTU（最大传输单元）大小变更事件。使用Callback异
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     gattClient.on('BLEMtuChange', (mtu: number) => {
@@ -4808,7 +4821,7 @@ client端取消订阅MTU（最大传输单元）大小变更事件。
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
     device.off('BLEMtuChange');
@@ -4853,14 +4866,14 @@ client端设备订阅server端设备服务变化的通知事件，使用Callback
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let serviceChangedEvent = (): void => {
+function ServiceChangedEvent() : void {
     console.info("service has changed.");
 }
 
 let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 // 需预先调用connect接口先连上server端设备
 try {
-    gattClient.on('serviceChange', serviceChangedEvent);
+    gattClient.on('serviceChange', ServiceChangedEvent);
 } catch (err) {
     console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
@@ -4901,14 +4914,14 @@ client端设备取消订阅server端设备服务变化的通知事件。<br>
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let serviceChangedEvent = (): void => {
+function ServiceChangedEvent() : void {
     console.info("service has changed.");
 }
 
 let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 // 需预先调用connect接口先连上server端设备
 try {
-    gattClient.off('serviceChange', serviceChangedEvent);
+    gattClient.off('serviceChange', ServiceChangedEvent);
 } catch (err) {
     console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
@@ -5142,12 +5155,12 @@ onBlePhyUpdate(callback: Callback&lt;PhyValue&gt;): void
 **示例**：
 
 ```js
-let blePhyCallback = (data:ble.PhyValue) => {
+function BlePhyCallback(data:ble.PhyValue) {
     console.info(`txPhy: ${data.txPhy}, rxPhy: ${data.rxPhy}`);
 }
 let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 try {
-    gattClient.onBlePhyUpdate(blePhyCallback);
+    gattClient.onBlePhyUpdate(BlePhyCallback);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -5184,12 +5197,12 @@ offBlePhyUpdate(callback?: Callback&lt;PhyValue&gt;): void
 **示例**：
 
 ```js
-let blePhyCallback = (data:ble.PhyValue) => {
+function BlePhyCallback(data:ble.PhyValue) {
     console.info(`txPhy: ${data.txPhy}, rxPhy: ${data.rxPhy}`);
 }
 let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 try {
-    gattClient.offBlePhyUpdate(blePhyCallback);
+    gattClient.offBlePhyUpdate(BlePhyCallback);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -5216,6 +5229,7 @@ createBleScanner(): BleScanner
 **示例**：
 
 ```js
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { ble } from '@kit.ConnectivityKit';
 let bleScanner: ble.BleScanner = ble.createBleScanner();
 console.info('create bleScanner success');
@@ -5276,14 +5290,14 @@ startScan(filters: Array&lt;ScanFilter&gt;, options?: ScanOptions): Promise&lt;v
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { ble } from '@kit.ConnectivityKit';
 let bleScanner: ble.BleScanner = ble.createBleScanner();
-let onReceiveEvent = (scanReport: ble.ScanReport) => {
+function onReceiveEvent(scanReport: ble.ScanReport) {
     console.info('BLE scan device find result = '+ JSON.stringify(scanReport));
 }
 try {
-    bleScanner.on('BLEDeviceFind', onReceiveEvent);
+    bleScanner.on("BLEDeviceFind", onReceiveEvent);
     let scanFilter: ble.ScanFilter = {
             deviceId:"XX:XX:XX:XX:XX:XX",
             name:"test",
@@ -5294,8 +5308,8 @@ try {
         dutyMode: ble.ScanDuty.SCAN_MODE_LOW_POWER,
         matchMode: ble.MatchMode.MATCH_MODE_AGGRESSIVE,
         reportMode: ble.ScanReportMode.FENCE_SENSITIVITY_LOW
-    };
-    bleScanner.startScan([scanFilter], scanOptions);
+    }
+    bleScanner.startScan([scanFilter],scanOptions);
     console.info('startScan success');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -5339,7 +5353,7 @@ stopScan(): Promise&lt;void&gt;
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { ble } from '@kit.ConnectivityKit';
 let bleScanner: ble.BleScanner = ble.createBleScanner();
 try {
@@ -5387,9 +5401,9 @@ on(type: 'BLEDeviceFind', callback: Callback&lt;ScanReport&gt;): void
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { ble } from '@kit.ConnectivityKit';
-let onReceiveEvent = (scanReport: ble.ScanReport) => {
+function onReceiveEvent(scanReport: ble.ScanReport) {
     console.info('bluetooth device find = '+ JSON.stringify(scanReport));
 }
 let bleScanner: ble.BleScanner = ble.createBleScanner();
@@ -5436,9 +5450,9 @@ off(type: 'BLEDeviceFind', callback?: Callback&lt;ScanReport&gt;): void
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { ble } from '@kit.ConnectivityKit';
-let onReceiveEvent = (scanReport: ble.ScanReport) => {
+function onReceiveEvent(scanReport: ble.ScanReport) {
     console.info('bluetooth device find = '+ JSON.stringify(scanReport));
 }
 let bleScanner: ble.BleScanner = ble.createBleScanner();

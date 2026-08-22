@@ -173,18 +173,17 @@ sequenceDiagram
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-// callback
+// promise
 try {
-    connection.pairDevice('11:22:33:44:55:66', (err: BusinessError) => {
-        if (err) {
-            console.error(`pairDevice errCode: ${err.code}, errMessage: ${err.message}`);
-            return;
-        }
-    });
+    connection.pairDevice('11:22:33:44:55:66').then(() => {
+        console.info('pairDevice');
+    }, (error: BusinessError) => {
+        console.error('pairDevice: errCode:' + error.code + ',errMessage' + error.message);
+    })
+
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
-
 ```
 
 
@@ -235,11 +234,11 @@ pairDevice(deviceId: string): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
-    connection.pairDevice('11:22:33:44:55:66').then(() => {
-        console.info('pairDevice');
+    connection.setDevicePinCode('11:22:33:44:55:66', '12345').then(() => {
+        console.info('setDevicePinCode');
     }, (error: BusinessError) => {
-        console.error('pairDevice: errCode:' + error.code + ',errMessage' + error.message);
-    });
+        console.error('setDevicePinCode: errCode:' + error.code + ',errMessage' + error.message);
+    })
 
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -549,11 +548,7 @@ getRemoteProfileUuids(deviceId: string, callback: AsyncCallback&lt;Array&lt;Prof
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.getRemoteProfileUuids('XX:XX:XX:XX:XX:XX', (err: BusinessError, data: Array<connection.ProfileUuids>) => {
-        if (err) {
-            console.error('getRemoteProfileUuids: errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-            return;
-        }
-        console.info('getRemoteProfileUuids, data: ' + JSON.stringify(data));
+        console.info('getRemoteProfileUuids, err: ' + JSON.stringify(err) + ', data: ' + JSON.stringify(data));
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -849,8 +844,8 @@ setDevicePairingConfirmation(deviceId: string, accept: boolean): void
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 // 订阅“pinRequired”配对请求事件，收到对端配对请求后设置配对确认。
-let onReceivePinRequiredEvent = (data: connection.PinRequiredParam) => { // data为配对请求的入参，配对请求参数。
-    console.info('pin required  = ' + JSON.stringify(data));
+function onReceivePinRequiredEvent(data: connection.PinRequiredParam) { // data为配对请求的入参，配对请求参数。
+    console.info('pin required  = '+ JSON.stringify(data));
     connection.setDevicePairingConfirmation(data.deviceId, true);
 }
 try {
@@ -898,14 +893,13 @@ setDevicePinCode(deviceId: string, code: string, callback: AsyncCallback&lt;void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-// callback
+// promise
 try {
-    connection.setDevicePinCode('11:22:33:44:55:66', '12345', (err: BusinessError) => {
-        if (err) {
-            console.error(`setDevicePinCode errCode: ${err.code}, errMessage: ${err.message}`);
-            return;
-        }
-    });
+    connection.setRemoteDeviceName('11:22:33:44:55:66', 'RemoteDeviceName').then(() => {
+        console.info('setRemoteDeviceName success');
+    }, (error: BusinessError) => {
+        console.error('setRemoteDeviceName: errCode: ' + error.code + ',errMessage' + error.message);
+    })
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -954,16 +948,14 @@ setDevicePinCode(deviceId: string, code: string): Promise&lt;void&gt;
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-// promise
 try {
-    connection.setDevicePinCode('11:22:33:44:55:66', '12345').then(() => {
-        console.info('setDevicePinCode');
-    }, (error: BusinessError) => {
-        console.error('setDevicePinCode: errCode:' + error.code + ',errMessage' + error.message);
-    });
-
+  connection.connectAllowedProfiles('68:13:24:79:4C:8C').then(() => {
+      console.info('connectAllowedProfiles');
+    }, (err: BusinessError) => {
+      console.error('connectAllowedProfiles:errCode' + err.code + ', errMessage: ' + err.message);
+  });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
 
@@ -1135,7 +1127,7 @@ startBluetoothDiscovery(): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let onReceiveEvent = (data: Array<string>) => {
+function onReceiveEvent(data: Array<string>) {
     console.info('data length' + data.length);
 }
 try {
@@ -1278,10 +1270,8 @@ setRemoteDeviceName(deviceId: string, name: string): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
-    connection.setRemoteDeviceName('11:22:33:44:55:66', 'RemoteDeviceName').then(() => {
-        console.info('setRemoteDeviceName success');
-    }, (error: BusinessError) => {
-        console.error('setRemoteDeviceName: errCode: ' + error.code + ',errMessage' + error.message);
+    connection.getLastConnectionTime('11:22:33:44:55:66').then((time: number) => {
+        console.info(`connectionTime: ${time}`);
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -1379,7 +1369,7 @@ on(type: 'batteryChange', callback: Callback&lt;BatteryInfo&gt;): void
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 let onReceiveEvent: (data: connection.BatteryInfo) => void = (data: connection.BatteryInfo) => {
-    console.info('BatteryInfo = ' + JSON.stringify(data));
+    console.info('BatteryInfo = '+ JSON.stringify(data));
 }
 try {
     connection.on('batteryChange', onReceiveEvent);
@@ -1423,7 +1413,7 @@ off(type: 'batteryChange', callback?: Callback&lt;BatteryInfo&gt;): void
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 let onReceiveEvent: (data: connection.BatteryInfo) => void = (data: connection.BatteryInfo) => {
-    console.info('BatteryInfo = ' + JSON.stringify(data));
+    console.info('BatteryInfo = '+ JSON.stringify(data));
 }
 try {
     connection.on('batteryChange', onReceiveEvent);
@@ -1475,8 +1465,8 @@ on(type: 'bluetoothDeviceFind', callback: Callback&lt;Array&lt;string&gt;&gt;): 
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let onReceiveEvent = (data: Array<string>) => { // data为蓝牙设备地址集合。
-    console.info('bluetooth device find = ' + JSON.stringify(data));
+function onReceiveEvent(data: Array<string>) { // data为蓝牙设备地址集合。
+    console.info('bluetooth device find = '+ JSON.stringify(data));
 }
 try {
     connection.on('bluetoothDeviceFind', onReceiveEvent);
@@ -1523,8 +1513,8 @@ off(type: 'bluetoothDeviceFind', callback?: Callback&lt;Array&lt;string&gt;&gt;)
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let onReceiveEvent = (data: Array<string>) => {
-    console.info('bluetooth device find = ' + JSON.stringify(data));
+function onReceiveEvent(data: Array<string>) {
+    console.info('bluetooth device find = '+ JSON.stringify(data));
 }
 try {
     connection.on('bluetoothDeviceFind', onReceiveEvent);
@@ -1571,8 +1561,8 @@ on(type: 'bondStateChange', callback: Callback&lt;BondStateParam&gt;): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let onReceiveEvent = (data: connection.BondStateParam) => { // data为回调函数入参，表示配对的状态。
-    console.info('pair state = ' + JSON.stringify(data));
+function onReceiveEvent(data: connection.BondStateParam) { // data为回调函数入参，表示配对的状态。
+    console.info('pair state = '+ JSON.stringify(data));
 }
 try {
     connection.on('bondStateChange', onReceiveEvent);
@@ -1618,8 +1608,8 @@ off(type: 'bondStateChange', callback?: Callback&lt;BondStateParam&gt;): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let onReceiveEvent = (data: connection.BondStateParam) => {
-    console.info('bond state = ' + JSON.stringify(data));
+function onReceiveEvent(data: connection.BondStateParam) {
+    console.info('bond state = '+ JSON.stringify(data));
 }
 try {
     connection.on('bondStateChange', onReceiveEvent);
@@ -1666,8 +1656,8 @@ on(type: 'pinRequired', callback: Callback&lt;PinRequiredParam&gt;): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let onReceiveEvent = (data: connection.PinRequiredParam) => { // data为配对请求参数。
-    console.info('pin required = ' + JSON.stringify(data));
+function onReceiveEvent(data: connection.PinRequiredParam) { // data为配对请求参数。
+    console.info('pin required = '+ JSON.stringify(data));
 }
 try {
     connection.on('pinRequired', onReceiveEvent);
@@ -1713,8 +1703,8 @@ off(type: 'pinRequired', callback?: Callback&lt;PinRequiredParam&gt;): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let onReceiveEvent = (data: connection.PinRequiredParam) => {
-    console.info('pin required = ' + JSON.stringify(data));
+function onReceiveEvent(data: connection.PinRequiredParam) {
+    console.info('pin required = '+ JSON.stringify(data));
 }
 try {
     connection.on('pinRequired', onReceiveEvent);
@@ -1764,7 +1754,7 @@ on(type: 'discoveryResult', callback: Callback&lt;Array&lt;DiscoveryResult&gt;&g
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 let onReceiveEvent: (data: Array<connection.DiscoveryResult>) => void = (data: Array<connection.DiscoveryResult>) => { // data为蓝牙设备扫描结果集合。
-    console.info('bluetooth device find = ' + JSON.stringify(data));
+    console.info('bluetooth device find = '+ JSON.stringify(data));
 }
 try {
     connection.on('discoveryResult', onReceiveEvent);
@@ -1810,7 +1800,7 @@ off(type: 'discoveryResult', callback?: Callback&lt;Array&lt;DiscoveryResult&gt;
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 let onReceiveEvent: (data: Array<connection.DiscoveryResult>) => void = (data: Array<connection.DiscoveryResult>) => { // data为蓝牙设备扫描结果集合。
-    console.info('bluetooth device find = ' + JSON.stringify(data));
+    console.info('bluetooth device find = '+ JSON.stringify(data));
 }
 try {
     connection.on('discoveryResult', onReceiveEvent);
@@ -1852,11 +1842,11 @@ onScanModeChange(callback: Callback&lt;ScanMode&gt;): void
 **示例**：
 
 ```js
-let scanModeChangeEvent = (scanMode: connection.ScanMode) => {
+function ScanModeChangeEvent(scanMode: connection.ScanMode) {
     console.info(`Scan mode has changed, new mode: ${scanMode}`);
 }
 try {
-    connection.onScanModeChange(scanModeChangeEvent);
+    connection.onScanModeChange(ScanModeChangeEvent);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -1894,11 +1884,11 @@ offScanModeChange(callback?: Callback&lt;ScanMode&gt;): void
 **示例**：
 
 ```js
-let scanModeChangeEvent = (scanMode: connection.ScanMode) => {
+function ScanModeChangeEvent(scanMode: connection.ScanMode) {
     console.info(`Scan mode has changed, new mode: ${scanMode}`);
 }
 try {
-    connection.offScanModeChange(scanModeChangeEvent);
+    connection.offScanModeChange(ScanModeChangeEvent);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -2167,7 +2157,7 @@ getVirtualAddressByHash(algorithmType: HashAlgorithmType, hashValue: string): st
 // 若查询的真实地址为11:22:33:44:55:AA,
 // 对应的64位哈希值为 d2204cb9b6d3d3962cc90fa54130efb4c10b57deb2e1aafd255596e0d4fd6789,
 // 当HashAlgorithmType为HASH_ALGORITHM_SHA256时取后32位哈希值
-let hashValue: string = 'c10b57deb2e1aafd255596e0d4fd6789';
+let hashValue: string = "c10b57deb2e1aafd255596e0d4fd6789";
 try {
   let addr: string = connection.getVirtualAddressByHash(connection.HashAlgorithmType.HASH_ALGORITHM_SHA256, hashValue);
 } catch (err) {
@@ -2208,11 +2198,11 @@ onAclStateChange(callback: Callback&lt;AclStateResult&gt;): void
 **示例**：
 
 ```js
-let aclStateChangeEvent = (aclStateResult: connection.AclStateResult) => {
-    console.info('acl state changed:' + JSON.stringify(aclStateResult));
+function AclStateChangeEvent(aclStateResult: connection.AclStateResult) {
+    console.info('acl state changed:'+ JSON.stringify(aclStateResult));
 }
 try {
-    connection.onAclStateChange(aclStateChangeEvent);
+    connection.onAclStateChange(AclStateChangeEvent);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -2251,11 +2241,11 @@ offAclStateChange(callback?: Callback&lt;AclStateResult&gt;): void
 **示例**：
 
 ```js
-let aclStateChangeEvent = (aclStateResult: connection.AclStateResult) => {
-    console.info('acl state changed:' + JSON.stringify(aclStateResult));
+function AclStateChangeEvent(aclStateResult: connection.AclStateResult) {
+    console.info('acl state changed:'+ JSON.stringify(aclStateResult));
 }
 try {
-    connection.offAclStateChange(aclStateChangeEvent);
+    connection.offAclStateChange(AclStateChangeEvent);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
