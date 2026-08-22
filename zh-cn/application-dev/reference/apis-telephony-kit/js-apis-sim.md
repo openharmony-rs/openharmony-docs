@@ -1274,8 +1274,7 @@ getOpKey\(slotId: number\): Promise\<string\>
 
 | 类型             | 说明                                      |
 | ---------------- | ----------------------------------------- |
-| Promise<string\> | 以Promise形式返回指定卡槽中SIM卡的Opk
-Key。 |
+| Promise<string\> | 以Promise形式返回指定卡槽中SIM卡的OpKey。 |
 
 **错误码：**
 
