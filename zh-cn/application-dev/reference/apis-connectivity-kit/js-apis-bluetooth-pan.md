@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供基于蓝牙个人局域网协议（Personal Area Networking，[PAN](../../connectivity/bluetooth/terminology.md#pan)）的蓝牙共享网络能力，支持获取连接状态等方法。
+本模块提供基于蓝牙个人局域网协议（Personal Area Networking，[PAN](../../connectivity/terminology.md#pan)）的蓝牙共享网络能力，支持本端作为NAP设备和PANU设备查询PAN支持状态、网络共享状态及获取连接状态等，适用于需要通过蓝牙实现个人局域网共享网络的场景。
 
 > **说明：**
 >
@@ -47,7 +47,7 @@ createPanProfile(): PanProfile
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
-| PanProfile | 返回PAN实例。该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。 |
+| [PanProfile](#panprofile) | 返回PAN实例。该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。 |
 
 **错误码**：
 
@@ -55,14 +55,13 @@ createPanProfile(): PanProfile
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例**：
 
 ```js
 try {
-    let panProfile : pan.PanProfile= pan.createPanProfile();
+    let panProfile: pan.PanProfile = pan.createPanProfile();
     console.info('pan success');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -71,7 +70,7 @@ try {
 
 ## PanProfile
 
-表示蓝牙PAN通信的实例。
+表示蓝牙PAN通信的实例，提供查询本端PAN支持状态、网络共享状态等能力，适用于蓝牙个人局域网共享网络场景。
 - 使用PanProfile方法之前需要创建该类的实例进行操作，通过[createPanProfile](#pancreatepanprofile)方法构造此实例。
 - 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。
 
@@ -79,9 +78,11 @@ try {
 
 isPanSupported(): boolean
 
-本端作为NAP角色时使用，获取本端网络共享状态。
+本端作为NAP角色时使用，查询本端设备是否支持PAN能力（静态能力判断）。与isTetheringOn的区别：本方法判断设备是否具备PAN能力，isTetheringOn判断当前网络共享是否已开启（运行时状态）。
 
 **起始版本**：26.0.0
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -95,11 +96,12 @@ isPanSupported(): boolean
 
 **错误码**：
 
-以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-|2900099 | Operation failed.                        |
+|201 | Permission denied.                 |
+|801 | Capability not supported. Only can be called on phone, tablet, and 2in1 devices. Failed to call the API when the short-range chip is not inserted on 2in1 device.          |
 
 **示例：**
 
@@ -108,7 +110,7 @@ try {
     let panProfile: pan.PanProfile = pan.createPanProfile();
     let isPanSupported: boolean = panProfile.isPanSupported();
 } catch (err) {
-    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
 ```
 
@@ -117,6 +119,14 @@ try {
 isTetheringOn(): boolean
 
 本端作为NAP时使用，获取本端网络共享状态。
+
+**设备行为差异**：
+
+| 设备类型 | 说明 |
+| -------- | -------- |
+| phone/tablet/2in1 | 支持该接口。 |
+| 其他设备类型 | 不支持该接口。 |
+| 2in1（未插入短距芯片） | 不支持该接口。 |
 
 **起始版本**：26.0.0
 
@@ -149,6 +159,6 @@ try {
     let panProfile: pan.PanProfile = pan.createPanProfile();
     let isTetheringOn: boolean = panProfile.isTetheringOn();
 } catch (err) {
-    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
 ```

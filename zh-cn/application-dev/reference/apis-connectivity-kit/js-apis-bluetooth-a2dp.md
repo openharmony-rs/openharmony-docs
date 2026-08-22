@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供基于增强音频分发协议（Advanced Audio Distribution Profile，[A2DP](../../connectivity/bluetooth/terminology.md#a2dp)）的蓝牙媒体音频能力，支持获取媒体播放状态和连接状态等方法。
+本模块提供基于增强音频分发协议（Advanced Audio Distribution Profile，[A2DP](../../connectivity/terminology.md#a2dp)）的蓝牙媒体音频能力，支持获取媒体播放状态和连接状态等方法，适用于蓝牙无线音频播放、音乐串流等需要通过蓝牙设备传输媒体音频的场景。
 
 > **说明：**
 >
@@ -37,7 +37,7 @@ type BaseProfile = baseProfile.BaseProfile
 
 createA2dpSrcProfile(): A2dpSourceProfile
 
-创建蓝牙媒体[A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source)实例。通过该实例可以使用本端作为A2DP Source设备的方法，如：获取和其他设备间的蓝牙媒体音频播放状态。
+创建蓝牙媒体[A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source)实例。通过该实例，可以使用本端作为A2DP Source设备时提供的各项方法，如：获取和其他设备间的蓝牙媒体音频播放状态。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -53,7 +53,6 @@ createA2dpSrcProfile(): A2dpSourceProfile
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                         |
 |801 | Capability not supported.                |
 
 
@@ -81,7 +80,7 @@ try {
 
 getPlayingState(deviceId: string): PlayingState
 
-获取本端和对端设备间的媒体音频播放状态。
+获取本端和对端设备间的媒体音频播放状态。例如，在音乐播放器应用中可用于检查蓝牙音频是否正在播放，从而同步更新界面的播放/暂停按钮状态。
 
 - 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取媒体音频播放状态。
 
@@ -93,7 +92,7 @@ getPlayingState(deviceId: string): PlayingState
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 对端设备地址，格式为MAC地址（6段十六进制字符以冒号分隔），例如："XX:XX:XX:XX:XX:XX"。 |
 
 **返回值：**
 
@@ -121,6 +120,7 @@ getPlayingState(deviceId: string): PlayingState
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
+    // deviceId为已连接对端设备的MAC地址，可通过connectionStateMachineOn等连接状态变化回调或相关蓝牙接口获取
     let state = a2dpSrc.getPlayingState('XX:XX:XX:XX:XX:XX');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -142,7 +142,7 @@ try {
 
 ## CodecInfo<sup>11+</sup>
 
-蓝牙媒体音频使用的编解码器。
+蓝牙媒体音频使用的编解码器。不同编解码器支持的位深、声道模式、采样率、码率和帧长与音频接收器设备端能力有关。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -152,8 +152,8 @@ try {
 | codecBitsPerSample  | [CodecBitsPerSample](#codecbitspersample11)  | 否    | 否    | 每个采样点的位深，默认值为CODEC_BITS_PER_SAMPLE_NONE。 |
 | codecChannelMode    | [CodecChannelMode](#codecchannelmode11) | 否    | 否    | 编解码器的声道模式，默认值为CODEC_CHANNEL_MODE_NONE。 |
 | codecSampleRate     | [CodecSampleRate](#codecsamplerate11) | 否    | 否    | 编解码器的采样率，默认值为CODEC_SAMPLE_RATE_NONE。 |
-| codecBitRate<sup>19+<sup/>     | [CodecBitRate](#codecbitrate19) | 否    | 是    | 编解码器的码率，默认值为CODEC_BIT_RATE_ABR。 |
-| codecFrameLength<sup>19+<sup/>     | [CodecFrameLength](#codecframelength19) | 否    | 是    |编解码器的帧长，默认值为CODEC_FRAME_LENGTH_10MS。 |
+| codecBitRate<sup>19+</sup>     | [CodecBitRate](#codecbitrate19) | 否    | 是    | 编解码器的码率，默认值为CODEC_BIT_RATE_ABR。 |
+| codecFrameLength<sup>19+</sup>     | [CodecFrameLength](#codecframelength19) | 否    | 是    |编解码器的帧长，默认值为CODEC_FRAME_LENGTH_10MS。 |
 
 ## CodecInfoList<sup>19+</sup>
 
@@ -164,11 +164,11 @@ try {
 | 名称        | 类型                    | 只读   | 可选   | 说明                                     |
 | ------------------- | ----------------------- | ---- | ---- | -------------------------------------- |
 | codecType           | [CodecType](#codectype11)      | 否    | 否    | 编解码器类型。 |
-| codecBitsPerSampleArray  | [CodecBitsPerSample](#codecbitspersample11)[] | 否    | 否    | 编解码器支持的位深能力集合。 |
-| codecChannelModeArray    | [CodecChannelMode](#codecchannelmode11)[] | 否    | 否    | 编解码器支持的声道模式能力集合。 |
-| codecSampleRateArray     | [CodecSampleRate](#codecsamplerate11)[] | 否    | 否    | 编解码器支持的采样率能力集合。 |
-| codecBitRateArray     | [CodecBitRate](#codecbitrate19)[] | 否    | 否    | 编解码器支持的码率能力集合。 |
-| codecFrameLengthArray     | [CodecFrameLength](#codecframelength19)[] | 否    | 否    | 编解码器支持的帧长能力集合。 |
+| codecBitsPerSampleArray  | [CodecBitsPerSample](#codecbitspersample11)[] | 否    | 否    | 编解码器支持的位深能力集合，具体支持值与音频接收器设备端能力有关。 |
+| codecChannelModeArray    | [CodecChannelMode](#codecchannelmode11)[] | 否    | 否    | 编解码器支持的声道模式能力集合，具体支持值与音频接收器设备端能力有关。 |
+| codecSampleRateArray     | [CodecSampleRate](#codecsamplerate11)[] | 否    | 否    | 编解码器支持的采样率能力集合，具体支持值与音频接收器设备端能力有关。 |
+| codecBitRateArray     | [CodecBitRate](#codecbitrate19)[] | 否    | 否    | 编解码器支持的码率能力集合，具体支持值与音频接收器设备端能力有关。 |
+| codecFrameLengthArray     | [CodecFrameLength](#codecframelength19)[] | 否    | 否    | 编解码器支持的帧长能力集合，具体支持值与音频接收器设备端能力有关。 |
 
 ## CodecType<sup>11+</sup>
 
@@ -231,7 +231,7 @@ try {
 
 ## CodecBitRate<sup>19+</sup>
 
-枚举，蓝牙媒体音频编解码器的码率，表示单位时间内音频数据的传输量，单位为kbps。码率影响音频音质和文件大小。
+枚举，蓝牙媒体音频编解码器的码率，表示单位时间内音频数据的传输量，单位为kbps。码率影响音频音质和传输带宽。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -245,13 +245,13 @@ try {
 | CODEC_BIT_RATE_480000  | 5 | 480kbps |
 | CODEC_BIT_RATE_640000  | 6 | 640kbps |
 | CODEC_BIT_RATE_960000  | 7 | 960kbps |
-| CODEC_BIT_RATE_ABR  | 8 | 自适应码率（根据网络条件自动调整）。|
+| CODEC_BIT_RATE_ABR  | 8 | 自适应码率（根据蓝牙链路质量自动调整）。|
 | CODEC_BIT_RATE_1500000<sup>21+</sup>  | 9 | 1500kbps |
 | CODEC_BIT_RATE_2300000<sup>21+</sup>  | 10 | 2300kbps |
 
 ## CodecFrameLength<sup>19+</sup>
 
-枚举，蓝牙媒体音频编解码器的帧长，表示一帧音频数据播放的时长。
+枚举，蓝牙媒体音频编解码器的帧长，表示一帧音频数据播放的时长，单位为ms。帧长影响音频传输的延迟和效率。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
