@@ -25,7 +25,7 @@ import { tag } from '@kit.ConnectivityKit';
 
 ## TagSession
 
-TagSession是所有nfcTag技术类型[nfctech](js-apis-nfctech.md)的基类， 提供建立连接和发送数据等共同接口。
+TagSession是所有nfcTag技术类型[nfctech](js-apis-nfctech.md)的基类，提供建立连接和发送数据等共同接口。
 
 需要通过其子类来访问以下接口。在下面的示例中 统一用 getXXX()表示获取子类实例的方法。
 
@@ -64,7 +64,7 @@ console.info("tag tagInfo: " + tagInfo);
 
 ### connectTag<sup>(deprecated)</sup>
 
-connectTag(): boolean;
+connectTag(): boolean
 
 和标签建立连接。在从标签读取数据或将数据写入标签之前，必须调用此方法。
 
@@ -95,7 +95,7 @@ console.info("connectStatus: " + connectStatus);
 
 ### connect<sup>9+</sup>
 
-connect(): void;
+connect(): void
 
 和标签建立连接。在从标签读取数据或将数据写入标签之前，必须调用此方法。
 
@@ -523,7 +523,7 @@ sendData(data: number[]): Promise<number[]>
 **示例：**
 
 ```js
-import tag from '@kit.ConnectivityKit';
+import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@ohos.base';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，tagInfo是nfc服务在分派标签时给出的对象
@@ -536,13 +536,13 @@ function tagSessionDemo() {
             console.error("tagSession connectTag failed.");
             return;
         }
-    }  
+    }
 
     let cmdData = [0x01, 0x02, 0x03, 0x04]; // 更改为正确的 data
     tag.getIsoDep(tagInfo).sendData(cmdData).then((response) => {
-    console.info("tagSession sendData Promise response: " + response);
-    }).catch((err : BusinessError)=> {
-    console.error("tagSession sendData Promise err: " + err);
+        console.info("tagSession sendData Promise response: " + response);
+    }).catch((err : BusinessError) => {
+        console.error("tagSession sendData Promise err: " + err);
     });
 }
 ```
@@ -585,7 +585,7 @@ function tagSessionDemo() {
     }
 
     let cmdData = [0x01, 0x02, 0x03, 0x04]; // 更改为正确的 data
-    tag.getIsoDep(tagInfo).sendData(cmdData, (err, response)=> {
+    tag.getIsoDep(tagInfo).sendData(cmdData, (err, response) => {
         if (err) {
             console.error("tagSession sendData AsyncCallback err: " + err);
         } else {
@@ -641,7 +641,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // getXXX，可以是getIsoDep、getNdef、getMifareClassic...
 
 function tagSessionDemo() {
-// 如果没有连接，请先连接tag
+    // 如果没有连接，请先连接tag
     try {
         if (!tag.getIsoDep(tagInfo).isConnected()) {
             tag.getIsoDep(tagInfo).connect();
@@ -653,9 +653,9 @@ function tagSessionDemo() {
 
     let cmdData = [0x01, 0x02, 0x03, 0x04]; // 更改为正确的 data
     try {
-    tag.getIsoDep(tagInfo).transmit(cmdData).then((response) => {
+        tag.getIsoDep(tagInfo).transmit(cmdData).then((response) => {
         console.info("tagSession transmit Promise response: " + response);
-    }).catch((err : BusinessError)=> {
+    }).catch((err : BusinessError) => {
         console.error("tagSession transmit Promise err: " + err);
     });
     } catch (businessError) {
@@ -717,7 +717,7 @@ function tagSessionDemo() {
 
     let cmdData = [0x01, 0x02, 0x03, 0x04]; // 更改为正确的 data
     try {
-        tag.getIsoDep(tagInfo).transmit(cmdData, (err, response)=> {
+        tag.getIsoDep(tagInfo).transmit(cmdData, (err, response) => {
             if (err) {
                 console.error("tagSession transmit AsyncCallback err: " + err);
             } else {
