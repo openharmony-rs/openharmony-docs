@@ -6,7 +6,7 @@
 <!--Designer: @wambers584-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e3c52b80ea412371fb2dea52b278788d7531f840 translatedAt=2026-07-16T06:46:03.912Z pushedAt=2026-07-16T11:13:12.561Z -->
+<!-- md-trans-meta sourceCommit=eb297c120685014d3e534d0011425fa2c96518e7 translatedAt=2026-08-11T10:12:49.868Z pushedAt=2026-08-12T02:49:08.103Z -->
 
 Window rotation provides a rich set of rotation policies, enabling apps to adapt their orientation in various scenarios.
 
@@ -22,7 +22,7 @@ For example, on a tri-fold device, portrait display is expected in the folded st
 
 The sample code is as follows:
 
-<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { window } from '@kit.ArkUI'
@@ -35,19 +35,22 @@ import { display } from '@kit.ArkUI';
 struct Index {
   @State currentOrientation: string = 'UNSPECIFIED';
   private stage: window.WindowStage = (this.getUIContext().getHostContext() as common.UIAbilityContext).windowStage;
+  private foldDisplayModeCallback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
+    console.info(`Listening enabled. Data: ${data}`);
+    this.getBreakPointAndSetOrientation();
+  };
 
   aboutToAppear() {
-    let ret: boolean = false;
-    ret = display.isFoldable();
+    const ret = display.isFoldable();
     if (ret) {
-      let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
-        console.info(`Listening enabled. Data: ${data}`);
-        this.getBreakPointAndSetOrientation();
-      };
-      display.on('foldDisplayModeChange', callback);
+      display.on('foldDisplayModeChange', this.foldDisplayModeCallback);
     } else {
       this.getBreakPointAndSetOrientation();
     }
+  }
+
+  aboutToDisappear() {
+    display.off('foldDisplayModeChange', this.foldDisplayModeCallback);
   }
 
   private getBreakPointAndSetOrientation(): void {
@@ -55,7 +58,7 @@ struct Index {
     let displayWidth = displayInfo.width;
     let displayHeight = displayInfo.height;
     let heightBp = displayHeight / displayWidth;
-    if(displayWidth > displayHeight) {
+    if (displayWidth > displayHeight) {
       let temp = displayWidth;
       displayWidth = displayHeight;
       displayHeight = temp;
@@ -71,13 +74,14 @@ struct Index {
       this.currentOrientation = 'PORTRAIT';
     }
   }
+
   build() {
     RelativeContainer() {
       Text(this.currentOrientation)
         .fontWeight(600)
         .fontSize(30)
         .textAlign(TextAlign.Center)
-        .position({y: 300})
+        .position({ y: 300 })
         .width('100%')
     }
     .height('100%')
@@ -124,9 +128,9 @@ The definitions of screen orientation and window orientation in the landscape di
 
 If you want to accurately know the current window orientation to select a rotation policy (for example, locking the current orientation on a video playback page), it is recommended to first obtain [display.rotation](../reference/apis-arkui/js-apis-display.md#attributes) or [display.orientation](../reference/apis-arkui/js-apis-display.md#attributes), and then use [convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23) to convert the screen orientation to the window orientation. The following is a specific example:
 
-1. Obtain the target screen orientation. Call [getDefaultDisplaySync()](../reference/apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9) to obtain the screen orientation.
+1. Obtain the target screen orientation. Call [getDefaultDisplaySync()](../reference/apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9) to obtain the **Display** object of the target screen, and then obtain the screen orientation through [display.orientation](../reference/apis-arkui/js-apis-display.md#attributes).
 
-2. Convert the screen orientation to the window orientation. Call [convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23) to convert the screen orientation [display.orientation](../reference/apis-arkui/js-apis-display.md#attributes) to the window orientation [orientation](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19).
+2. Convert the screen orientation to the window orientation. Call [convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23) to convert [display.orientation](../reference/apis-arkui/js-apis-display.md#attributes) to the window [orientation](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19).
 
 3. Convert the window orientation to a rotation policy. The window orientation must be further converted to the window [orientation](../reference/apis-arkui/arkts-apis-window-e.md#orientation9), which represents the rotation policy recognized by the system, before it can be passed to **setPreferredOrientation()**.
 

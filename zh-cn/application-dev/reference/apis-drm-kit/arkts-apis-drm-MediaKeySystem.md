@@ -1,15 +1,17 @@
 # Interface (MediaKeySystem)
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
+
 支持MediaKeySystem实例管理、设备证书申请与处理、会话创建、离线媒体密钥管理、获取DRM度量记录、设备属性等。在调用MediaKeySystem方法之前，必须使用[createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem)创建一个MediaKeySystem实例。
 
 > **说明：**
 >
-> 本模块首批接口从API版本11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -40,9 +42,9 @@ setConfigurationString(configName: string, value: string): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401 | The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
@@ -81,9 +83,9 @@ getConfigurationString(configName: string): string
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed, the param's length is zero or too big(exceeds 4096 Bytes).                              |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401 | The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. Parameter verification failed, the param's length is zero or too big (exceeds 4096 Bytes). |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
@@ -162,8 +164,8 @@ getConfigurationByteArray(configName: string): Uint8Array
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.        |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
@@ -196,8 +198,8 @@ getStatistics(): StatisticKeyValue[]
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
@@ -230,8 +232,8 @@ getMaxContentProtectionLevel(): ContentProtectionLevel
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
@@ -266,8 +268,8 @@ generateKeySystemRequest(): Promise<ProvisionRequest\>
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
@@ -313,8 +315,8 @@ processKeySystemResponse(response: Uint8Array): Promise<void\>
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.         |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
@@ -351,8 +353,8 @@ getCertificateStatus(): CertificateStatus
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
@@ -387,7 +389,7 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.               |
-| 24700101                |  All unknown errors                  |
+| 24700101                |  All unknown errors.                 |
 
 **示例：**
 
@@ -424,12 +426,13 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.               |
-| 24700101                |  All unknown errors                  |
+| 24700101                |  All unknown errors.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
+
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 mediaKeySystem.off('keySystemRequired');
 ```
@@ -462,10 +465,10 @@ createMediaKeySession(level: ContentProtectionLevel): MediaKeySession
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.The param level exceeds reasonable range, please use value in ContentProtectionLevel.          |
-| 24700101                 |  All unknown errors                  |
-| 24700104                 |  Meet max MediaKeySession num limit                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401 | The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. The param level exceeds reasonable range, please use value in ContentProtectionLevel. |
+| 24700101                 |  All unknown errors.                 |
+| 24700104                 |  Meet max MediaKeySession num limit.                  |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
@@ -498,9 +501,9 @@ createMediaKeySession(): MediaKeySession
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700104                 |  Meet max MediaKeySession num limit                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700104                 |  Meet max MediaKeySession num limit.                  |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
@@ -533,8 +536,8 @@ getOfflineMediaKeyIds(): Uint8Array[]
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
@@ -574,8 +577,8 @@ getOfflineMediaKeyStatus(mediaKeyId: Uint8Array): OfflineMediaKeyStatus
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
@@ -610,9 +613,9 @@ clearOfflineMediaKeys(mediaKeyId: Uint8Array): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.           |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401                |  The parameter check failed.Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.           |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
@@ -641,8 +644,8 @@ destroy(): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 

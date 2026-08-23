@@ -1,14 +1,16 @@
 # text_common.h
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8a65b118b29a0c9d1936c3b96f0e90c33fab49ab translatedAt=2026-08-10T03:42:33.263Z pushedAt=2026-08-11T02:19:20.333Z -->
 
 ## Overview
 
-Defines common text enumerations and APIs.
+Defines common text enumerations and APIs, covering text alignment, decoration line styles, copy and paste, overflow handling, line break policies, and menu customization. It is applicable to scenarios such as text boxes and text display, helping you flexibly control text styles and interaction behavior while reducing development complexity.
 
 **File to include:** <arkui/node_attributes/text_common.h>
 
@@ -28,13 +30,13 @@ Defines common text enumerations and APIs.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md) | ArkUI_StyledString_Descriptor | Defines the styled string descriptor object supported by the text component.|
-| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md) | ArkUI_ShowCounterConfig | Defines the text input character counter configuration.|
-| [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md) | ArkUI_TextContentBaseController | Defines a basic controller for text content.|
-| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md) | ArkUI_TextMenuItem | Defines a text menu item.|
-| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md) | ArkUI_TextMenuItemArray | Defines a text menu item array.|
-| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md) | ArkUI_TextEditMenuOptions | Defines text menu extension options.|
-| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md) | ArkUI_TextSelectionMenuOptions | Defines custom text selection menu options.|
+| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md) | ArkUI_StyledString_Descriptor | Defines the styled string descriptor object supported by the text component, enabling style configuration and management of text content. This struct is applicable when rich text display and style customization are required. |
+| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md) | ArkUI_ShowCounterConfig | Defines the text input character counter configuration for managing character counting. This struct is applicable when character count limits and real-time prompts are needed for user input, helping users track input progress and prevent exceeding character limits. |
+| [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md) | ArkUI_TextContentBaseController | Defines a basic controller for text content, providing content control capabilities for text components. This struct supports operations such as obtaining, setting, and updating text content. It is applicable when dynamic content management and real-time control of text components are needed, helping you manage displayed text content more flexibly. |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md) | ArkUI_TextMenuItem | Defines a text menu item for setting attributes such as a title, icon, and enabled state, supporting text selection menus customization. |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md) | ArkUI_TextMenuItemArray | Defines a text menu item array for carrying multiple text menu item data in text selection menu or context menu scenarios. |
+| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md) | ArkUI_TextEditMenuOptions | Defines text menu extension options for extending the functionality of the text editing menu. This struct is applicable when you need to customize text editing menu operations. |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md) | ArkUI_TextSelectionMenuOptions | Defines custom text selection menu options, supporting custom configuration of menu content, style, and behavior. This struct is applicable when customization of text selection menu interactions is needed. |
 | [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md) | OH_ArkUI_DecorationStyleOptions | Defines decoration style options.|
 
 ### Enums
@@ -45,7 +47,7 @@ Defines common text enumerations and APIs.
 | [ArkUI_TextVerticalAlignment](#arkui_textverticalalignment) | ArkUI_TextVerticalAlignment | Enumerates text vertical alignment styles.|
 | [ArkUI_TextContentAlign](#arkui_textcontentalign) | ArkUI_TextContentAlign | Enumerates vertical alignment styles in the text content area.|
 | [ArkUI_TextDirection](#arkui_textdirection) | ArkUI_TextDirection | Enumerates text layout directions.|
-| [ArkUI_EnterKeyType](#arkui_enterkeytype) | ArkUI_EnterKeyType | Enumerates the types of the **Enter** key for a single-line text box.|
+| [ArkUI_EnterKeyType](#arkui_enterkeytype) | ArkUI_EnterKeyType | Enumerates the types of the **Enter** key for single-line text input. |
 | [ArkUI_TextDecorationType](#arkui_textdecorationtype) | ArkUI_TextDecorationType | Enumerates text decoration types.|
 | [ArkUI_TextDecorationStyle](#arkui_textdecorationstyle) | ArkUI_TextDecorationStyle | Enumerates text decoration styles.|
 | [ArkUI_TextCase](#arkui_textcase) | ArkUI_TextCase | Enumerates text cases.|
@@ -65,25 +67,25 @@ Defines common text enumerations and APIs.
 | -- | -- |
 | [typedef void (\*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, void* userData)](#arkui_textcreatemenucallback) | Callback for the text menu creation event. This callback is triggered when a text menu is created, allowing you to set menu data in it.|
 | [typedef void (\*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray* items, void* userData)](#arkui_textpreparemenucallback) | Callback for the text menu preparation event. This callback is called when the text selection area changes and before the menu is displayed, allowing you to set menu data in it.|
-| [typedef bool (\*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item, int32_t start, int32_t end, void* userData)](#arkui_textmenuitemclickcallback) | Callback for the text menu item click event. This callback is called when a menu item is clicked. You can intercept the default processing behavior in this callback.|
-| [ArkUI_ShowCounterConfig* OH_ArkUI_ShowCounterConfig_Create()](#oh_arkui_showcounterconfig_create) | Creates a text input counter configuration object.|
-| [void OH_ArkUI_ShowCounterConfig_Dispose(ArkUI_ShowCounterConfig* config)](#oh_arkui_showcounterconfig_dispose) | Disposes of the text input counter configuration object.|
+| [typedef bool (\*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item, int32_t start, int32_t end, void* userData)](#arkui_textmenuitemclickcallback) | Callback for the text menu item click event. This callback is called when a menu item is clicked. You can intercept the default processing behavior in this callback. It is applicable when custom logic needs to be executed upon a menu item click, such as validating clipboard content before pasting, attaching custom information when copying, or logging operations before sharing. |
+| [ArkUI_ShowCounterConfig* OH_ArkUI_ShowCounterConfig_Create()](#oh_arkui_showcounterconfig_create) | Creates a text input counter configuration object. When this object is no longer used, call [OH_ArkUI_ShowCounterConfig_Dispose](#oh_arkui_showcounterconfig_dispose) to dispose of it. |
+| [void OH_ArkUI_ShowCounterConfig_Dispose(ArkUI_ShowCounterConfig* config)](#oh_arkui_showcounterconfig_dispose) | Disposes of the text input counter configuration object created by [OH_ArkUI_ShowCounterConfig_Create](#oh_arkui_showcounterconfig_create). |
 | [void OH_ArkUI_ShowCounterConfig_SetCounterTextColor(ArkUI_ShowCounterConfig* config, uint32_t color)](#oh_arkui_showcounterconfig_setcountertextcolor) | Sets the text color of the counter when the text input has not reached the maximum character limit.|
 | [void OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor(ArkUI_ShowCounterConfig* config, uint32_t color)](#oh_arkui_showcounterconfig_setcountertextoverflowcolor) | Sets the text color of the counter when the text input exceeds the maximum character limit.|
 | [uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig* config)](#oh_arkui_showcounterconfig_getcountertextcolor) | Obtains the text color of the counter when the text input has not reached the maximum character limit.|
 | [uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor(ArkUI_ShowCounterConfig* config)](#oh_arkui_showcounterconfig_getcountertextoverflowcolor) | Obtains the text color of the counter when the text input exceeds the maximum character limit.|
-| [ArkUI_TextMenuItem* OH_ArkUI_TextMenuItem_Create()](#oh_arkui_textmenuitem_create) | Creates a text menu item object.|
-| [void OH_ArkUI_TextMenuItem_Dispose(ArkUI_TextMenuItem* textMenuItem)](#oh_arkui_textmenuitem_dispose) | Disposes of a text menu item object.|
-| [ArkUI_TextEditMenuOptions* OH_ArkUI_TextEditMenuOptions_Create()](#oh_arkui_texteditmenuoptions_create) | Creates a text menu extension object.|
-| [void OH_ArkUI_TextEditMenuOptions_Dispose(ArkUI_TextEditMenuOptions* editMenuOptions)](#oh_arkui_texteditmenuoptions_dispose) | Disposes of a text menu extension object.|
-| [ArkUI_TextSelectionMenuOptions* OH_ArkUI_TextSelectionMenuOptions_Create()](#oh_arkui_textselectionmenuoptions_create) | Creates a custom text selection menu object.|
-| [void OH_ArkUI_TextSelectionMenuOptions_Dispose(ArkUI_TextSelectionMenuOptions* selectionMenuOptions)](#oh_arkui_textselectionmenuoptions_dispose) | Disposes of a custom text selection menu object.|
-| [ArkUI_TextContentBaseController* OH_ArkUI_TextContentBaseController_Create()](#oh_arkui_textcontentbasecontroller_create) | Creates a basic controller object for text content.|
-| [void OH_ArkUI_TextContentBaseController_Dispose(ArkUI_TextContentBaseController* controller)](#oh_arkui_textcontentbasecontroller_dispose) | Disposes of a basic controller object for text content.|
+| [ArkUI_TextMenuItem* OH_ArkUI_TextMenuItem_Create()](#oh_arkui_textmenuitem_create) | Creates a text menu item object for customizing the text selection menu or extending the system menu. It is applicable when custom menu items need to be added, such as sharing to a specific platform or performing custom editing operations. When this object is no longer used, call [OH_ArkUI_TextMenuItem_Dispose](#oh_arkui_textmenuitem_dispose) to dispose of it. |
+| [void OH_ArkUI_TextMenuItem_Dispose(ArkUI_TextMenuItem* textMenuItem)](#oh_arkui_textmenuitem_dispose) | Disposes of the text menu item object created by [OH_ArkUI_TextMenuItem_Create](#oh_arkui_textmenuitem_create). |
+| [ArkUI_TextEditMenuOptions* OH_ArkUI_TextEditMenuOptions_Create()](#oh_arkui_texteditmenuoptions_create) | Creates a text menu extension object for extending the text editing menu functionality. It is applicable when custom menu items need to be added to the text editing component, such as inserting special characters or performing quick formatting. When this object is no longer used, call [OH_ArkUI_TextEditMenuOptions_Dispose](#oh_arkui_texteditmenuoptions_dispose) to dispose of it. |
+| [void OH_ArkUI_TextEditMenuOptions_Dispose(ArkUI_TextEditMenuOptions* editMenuOptions)](#oh_arkui_texteditmenuoptions_dispose) | Disposes of the text menu extension object created by [OH_ArkUI_TextEditMenuOptions_Create](#oh_arkui_texteditmenuoptions_create). |
+| [ArkUI_TextSelectionMenuOptions* OH_ArkUI_TextSelectionMenuOptions_Create()](#oh_arkui_textselectionmenuoptions_create) | Creates a custom text selection menu object for configuring the content and behavior of the text selection menu. It is applicable when the text selection menu needs to be fully customized, such as replacing the default menu and adding application-specific operations. When this object is no longer used, call [OH_ArkUI_TextSelectionMenuOptions_Dispose](#oh_arkui_textselectionmenuoptions_dispose) to dispose of it. |
+| [void OH_ArkUI_TextSelectionMenuOptions_Dispose(ArkUI_TextSelectionMenuOptions* selectionMenuOptions)](#oh_arkui_textselectionmenuoptions_dispose) | Disposes of the custom text selection menu object created by [OH_ArkUI_TextSelectionMenuOptions_Create](#oh_arkui_textselectionmenuoptions_create). |
+| [ArkUI_TextContentBaseController* OH_ArkUI_TextContentBaseController_Create()](#oh_arkui_textcontentbasecontroller_create) | Creates a text content base controller object. When this object is no longer used, call [OH_ArkUI_TextContentBaseController_Dispose](#oh_arkui_textcontentbasecontroller_dispose) to dispose of it. |
+| [void OH_ArkUI_TextContentBaseController_Dispose(ArkUI_TextContentBaseController* controller)](#oh_arkui_textcontentbasecontroller_dispose) | Disposes of the text content base controller object created by [OH_ArkUI_TextContentBaseController_Create](#oh_arkui_textcontentbasecontroller_create). |
 | [void OH_ArkUI_TextContentBaseController_DeleteBackward(ArkUI_TextContentBaseController* controller)](#oh_arkui_textcontentbasecontroller_deletebackward) | Deletes the character before the cursor in editing state; deletes the last character of the text box component in other states.|
 | [void OH_ArkUI_TextContentBaseController_ScrollToVisible(ArkUI_TextContentBaseController* controller, int32_t start, int32_t end)](#oh_arkui_textcontentbasecontroller_scrolltovisible) | Passes the start and end indexes to the bound text box component, and scrolls the text within the range to the visible area.|
-| [OH_ArkUI_DecorationStyleOptions* OH_ArkUI_DecorationStyleOptions_Create()](#oh_arkui_decorationstyleoptions_create) | Creates a decoration style object. When the object is no longer used, call [OH_ArkUI_DecorationStyleOptions_Destroy](capi-text-common-h.md#oh_arkui_decorationstyleoptions_destroy) to destroy it.|
-| [void OH_ArkUI_DecorationStyleOptions_Destroy(OH_ArkUI_DecorationStyleOptions* options)](#oh_arkui_decorationstyleoptions_destroy) | Destroys a decoration style object.|
+| [OH_ArkUI_DecorationStyleOptions* OH_ArkUI_DecorationStyleOptions_Create()](#oh_arkui_decorationstyleoptions_create) | Creates a decoration style object for setting the type, style, and color of text decorative lines. It is applicable when decoration effects such as underlines or strikethroughs need to be added to text, for example, in rich text editors, hyperlink text, or price tags. When this object is no longer used, call [OH_ArkUI_DecorationStyleOptions_Destroy](#oh_arkui_decorationstyleoptions_destroy) to destroy it. |
+| [void OH_ArkUI_DecorationStyleOptions_Destroy(OH_ArkUI_DecorationStyleOptions* options)](#oh_arkui_decorationstyleoptions_destroy) | Destroys the decoration style object created by [OH_ArkUI_DecorationStyleOptions_Create](#oh_arkui_decorationstyleoptions_create). |
 
 ## Enum Description
 
@@ -172,7 +174,7 @@ enum ArkUI_EnterKeyType
 
 **Description**
 
-Enumerates the types of the **Enter** key for a single-line text box.
+Enumerates the types of the **Enter** key for single-line text input.
 
 **Since:** 12
 
@@ -295,9 +297,9 @@ Enumerates word break rules.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_WORD_BREAK_NORMAL = 0 | Word breaks can occur between any two characters for Chinese, Japanese, and Korean (CJK) text, but can occur only at a space character for non-CJK text (such as English).|
-| ARKUI_WORD_BREAK_BREAK_ALL = 1 | Word breaks can occur between any two characters for non-CJK text. CJK text behavior is the same as for **NORMAL**.|
-| ARKUI_WORD_BREAK_BREAK_WORD = 2 | This option has the same effect as **BREAK_ALL** for non-CJK text, except that if it preferentially wraps lines at appropriate characters (for example, spaces) whenever possible. CJK text behavior is the same as for **NORMAL**.|
+| ARKUI_WORD_BREAK_NORMAL = 0 | Word breaks can occur between any two characters for Chinese, Japanese, and Korean (CJK) text, but can occur only at a space character for non-CJK text (such as English). It is applicable to general scenarios where line break control requirements are not high. |
+| ARKUI_WORD_BREAK_BREAK_ALL = 1 | Word breaks can occur between any two characters for non-CJK text. Word breaks can occur between any two characters for Chinese, Japanese, and Korean (CJK) text. |
+| ARKUI_WORD_BREAK_BREAK_WORD = 2 | Word breaks can occur between any two characters for non-CJK text, except that if it preferentially wraps lines at appropriate characters (for example, spaces) whenever possible. CJK text behavior is the same as for **NORMAL**. |
 | ARKUI_WORD_BREAK_HYPHENATION = 3 | Line breaks can occur between any two syllabic units for non-CJK text. CJK text behavior is the same as for **NORMAL**.<br>**Since:** 18|
 
 ### ArkUI_EllipsisMode
@@ -353,13 +355,13 @@ Enumerates the IDs of text menu items.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_TEXT_MENU_ITEM_ID_CUT = 0 | Clip.|
+| ARKUI_TEXT_MENU_ITEM_ID_CUT = 0 | Cut. |
 | ARKUI_TEXT_MENU_ITEM_ID_COPY = 1 | Copy.|
 | ARKUI_TEXT_MENU_ITEM_ID_PASTE = 2 | Paste.|
 | ARKUI_TEXT_MENU_ITEM_ID_SELECT_ALL = 3 | Select all.|
-| ARKUI_TEXT_MENU_ITEM_ID_COLLABORATION_SERVICE = 4 | Collaboration service. For example, cross-device interaction, including cross-device camera access.|
+| ARKUI_TEXT_MENU_ITEM_ID_COLLABORATION_SERVICE = 4 | Collaboration service that provides cross-device interaction capabilities, such as cross-device camera access. |
 | ARKUI_TEXT_MENU_ITEM_ID_CAMERA_INPUT = 5 | Camera input.|
-| ARKUI_TEXT_MENU_ITEM_ID_AI_WRITER = 6 | AI-assisted writing. This menu item requires the large language model. If no large language model is available, this menu item does not take effect.|
+| ARKUI_TEXT_MENU_ITEM_ID_AI_WRITER = 6 | AI-assisted writing. This menu item depends on a large language model to take effect. |
 | ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE = 7 | ID for the translate menu item. The translation service is provided for the selected text.|
 | ARKUI_TEXT_MENU_ITEM_ID_SEARCH = 8 | Search. This menu item launches a browser to search for the selected text.|
 | ARKUI_TEXT_MENU_ITEM_ID_SHARE = 9 | ID for the share menu item. This menu item launches a window for sharing the selected text.|
@@ -368,7 +370,7 @@ Enumerates the IDs of text menu items.
 | ARKUI_TEXT_MENU_ITEM_ID_PHONE_NUMBER = 12 | ID for the phone call menu item. This menu item provides the redirection service for the selected phone number, launching the phone dialer page.|
 | ARKUI_TEXT_MENU_ITEM_ID_ADDRESS = 13 | ID for the navigation menu item. This menu item provides the redirection service for the selected address, launching the map application.|
 | ARKUI_TEXT_MENU_ITEM_ID_DATA_TIME = 14 | ID for the event creation menu item. This menu item provides the redirection service for the selected date and time, launching the page for creating a calendar event.|
-| ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15 | Ask AI. This menu item provides the AI query capability for the selected text.|
+| ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15 | Ask AI. This menu item provides the AI query capability for the selected text. This menu item depends on a large language model to take effect. |
 | ARKUI_TEXT_MENU_ITEM_ID_AUTO_FILL = 16 | Autofill. For example, the account and password can be automatically filled.<br>**Since:** 24|
 | ARKUI_TEXT_MENU_ITEM_ID_PASSWORD_VAULT = 17 | Password vault.<br>**Since:** 24|
 | ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_BEGIN = 10000 | Start ID of a custom menu item. In addition to the built-in menu item IDs, you can also customize menu item IDs.|
@@ -389,7 +391,7 @@ Enumerates line break policies.
 | Value| Description|
 | -- | -- |
 | OH_ARKUI_LINE_BREAK_STRATEGY_GREEDY = 0 | Greedy mode.<br>Places as many words on a line as possible and moves to the next line only if no more words can fit into the same line.|
-| OH_ARKUI_LINE_BREAK_STRATEGY_HIGH_QUALITY = 1 | High-quality mode.<br>Fills in lines as much as possible on the basis of **BALANCED**, which may results in a large blank area on the last line.|
+| OH_ARKUI_LINE_BREAK_STRATEGY_HIGH_QUALITY = 1 | High-quality mode.<br>Fills in lines as much as possible on the basis of **BALANCED**, which may result in a large blank area on the last line.|
 | OH_ARKUI_LINE_BREAK_STRATEGY_BALANCE = 2 | Balance mode.<br>Without splitting words, the width of each line in a paragraph is the same as much as possible.|
 
 ### ArkUI_TextSpanType
@@ -430,7 +432,6 @@ Enumerates the response types of a custom text selection menu.
 | ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2 | The menu is displayed when the component is selected.|
 | ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | If this type and other types are set, the menu corresponding to the type is displayed when the operation of another type is triggered. If this type is set but other types are not set, the menu corresponding to this type is displayed when the operation of another type is triggered. For example, if there are two menus whose response types are **ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK** and **ARKUI_TEXT_RESPONSE_TYPE_DEFAULT** respectively, the menu corresponding to **ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK** is displayed when you right-click the menu, and the menu corresponding to **ARKUI_TEXT_RESPONSE_TYPE_DEFAULT** is displayed when you hold down the right mouse button.|
 
-
 ## Function Description
 
 ### ArkUI_TextCreateMenuCallback()
@@ -443,6 +444,10 @@ typedef void (*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, voi
 
 Callback for the text menu creation event. This callback is triggered when a text menu is created, allowing you to set menu data in it.
 
+> **NOTE**
+>
+> This callback and **ArkUI_TextPrepareMenuCallback** are both used for menu data setting, but their trigger timings differ: this callback is triggered when a menu is created, while **ArkUI_TextPrepareMenuCallback** is triggered after the text selection area changes and before the menu is displayed. Both can be registered simultaneously to handle menu initialization and selection change scenarios respectively.
+
 **Since:** 22
 
 **Parameters**
@@ -450,7 +455,7 @@ Callback for the text menu creation event. This callback is triggered when a tex
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object, which is created and released by the system. You can call [OH_ArkUI_TextMenuItemArray_Insert](capi-native-type-h.md#oh_arkui_textmenuitemarray_insert) and [OH_ArkUI_TextMenuItemArray_Erase](capi-native-type-h.md#oh_arkui_textmenuitemarray_erase) to modify the array in the callback.|
-| void\* userData | Pointer to the user-defined data.|
+| void\* userData | Pointer to the user-defined data, which is passed by you when registering the callback and returned as-is when the callback is triggered. It is used to obtain context data in the callback. The value **null** indicates that no custom data is passed. |
 
 ### ArkUI_TextPrepareMenuCallback()
 
@@ -469,7 +474,7 @@ Callback for the text menu preparation event. This callback is called when the t
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object, which is created and released by the system. You can call [OH_ArkUI_TextMenuItemArray_Insert](capi-native-type-h.md#oh_arkui_textmenuitemarray_insert) and [OH_ArkUI_TextMenuItemArray_Erase](capi-native-type-h.md#oh_arkui_textmenuitemarray_erase) to modify the array in the callback.|
-| void\* userData | Pointer to the user-defined data.|
+| void\* userData | Pointer to the user-defined data, which is passed by you when registering the callback and returned as-is when the callback is triggered. It is used to obtain context data in the callback. The value **null** means no custom data is passed. |
 
 ### ArkUI_TextMenuItemClickCallback()
 
@@ -479,7 +484,7 @@ typedef bool (*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item, 
 
 **Description**
 
-Callback for the text menu item click event. This callback is called when a menu item is clicked. You can intercept the default processing behavior in this callback.
+Callback for the text menu item click event. This callback is called when a menu item is clicked. You can intercept the default processing behavior in this callback. It is applicable when custom logic needs to be executed upon a menu item click, such as validating clipboard content before pasting, attaching custom information when copying, or logging operations before sharing.
 
 **Since:** 22
 
@@ -488,9 +493,9 @@ Callback for the text menu item click event. This callback is called when a menu
 | Name| Description|
 | -- | -- |
 | const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object, indicating the clicked text menu item.|
-| int32_t start | Start index of the selected text.|
-| int32_t end | End index of the selected text.|
-| void\* userData | Pointer to the user-defined data.|
+| int32_t start | Start index of the selected text. It is passed by the system when the callback is triggered and indicates the start position of the selected text. The index starts from 0. |
+| int32_t end | End index of the selected text. It is passed by the system when the callback is triggered and indicates the end position of the selected text. The index starts from 0, and the end index is greater than or equal to the start index. |
+| void\* userData | Pointer to the user-defined data, which is passed by you when registering the callback and returned as-is when the callback is triggered. It is used to obtain context data in the callback. The value **null** means no custom data is passed. |
 
 **Returns**
 
@@ -506,7 +511,7 @@ ArkUI_ShowCounterConfig* OH_ArkUI_ShowCounterConfig_Create()
 
 **Description**
 
-Creates a text input counter configuration object.
+Creates a text input counter configuration object. When this object is no longer used, call [OH_ArkUI_ShowCounterConfig_Dispose](#oh_arkui_showcounterconfig_dispose) to dispose of it.
 
 **Since:** 22
 
@@ -524,7 +529,7 @@ void OH_ArkUI_ShowCounterConfig_Dispose(ArkUI_ShowCounterConfig* config)
 
 **Description**
 
-Disposes of the text input counter configuration object.
+Disposes of the text input counter configuration object created by [OH_ArkUI_ShowCounterConfig_Create](#oh_arkui_showcounterconfig_create).
 
 **Since:** 22
 
@@ -532,7 +537,7 @@ Disposes of the text input counter configuration object.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Pointer to the text input counter configuration object to be disposed of.|
+| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Pointer to the text input counter configuration object to be disposed of. |
 
 ### OH_ArkUI_ShowCounterConfig_SetCounterTextColor()
 
@@ -542,7 +547,7 @@ void OH_ArkUI_ShowCounterConfig_SetCounterTextColor(ArkUI_ShowCounterConfig* con
 
 **Description**
 
-Sets the text color of the counter when the text input has not reached the maximum character limit.
+Sets the text color of the counter when the text input has not reached the maximum character limit. If this API is not called, the default color is **0x66182431**, displayed as gray.
 
 **Since:** 22
 
@@ -550,8 +555,8 @@ Sets the text color of the counter when the text input has not reached the maxim
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Pointer to the text input counter configuration object.|
-| uint32_t color | Text color of the counter when the text input has not reached the maximum character limit, in **0xARGB** format. The default value is **0x66182431**.|
+| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Pointer to the text input counter configuration object. It must be created using **OH_ArkUI_ShowCounterConfig_Create()** before use. |
+| uint32_t color | Text color of the counter when the text input has not reached the maximum character limit, in 0xARGB format. |
 
 ### OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor()
 
@@ -561,7 +566,7 @@ void OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor(ArkUI_ShowCounterCon
 
 **Description**
 
-Sets the text color of the counter when the text input exceeds the maximum character limit.
+Sets the text color of the counter when the text input exceeds the maximum character limit. If this API is not called, the default color is **0x99FA2A2D**, displayed as red.
 
 **Since:** 22
 
@@ -570,7 +575,7 @@ Sets the text color of the counter when the text input exceeds the maximum chara
 | Name| Description|
 | -- | -- |
 | [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Pointer to the text input counter configuration object.|
-| uint32_t color | Text color of the counter when the text input exceeds the maximum character limit, in **0xARGB** format. The default value is **0x99FA2A2D**.|
+| uint32_t color | Text color of the counter when the text input exceeds the maximum character limit, in 0xARGB format. |
 
 ### OH_ArkUI_ShowCounterConfig_GetCounterTextColor()
 
@@ -594,7 +599,7 @@ Obtains the text color of the counter when the text input has not reached the ma
 
 | Type| Description|
 | -- | -- |
-| uint32_t | Text color of the counter when the text input has not reached the maximum character limit, in **0xARGB** format. **0** is returned if the color is not set using [OH_ArkUI_ShowCounterConfig_SetCounterTextColor](capi-text-common-h.md#oh_arkui_showcounterconfig_setcountertextcolor).|
+| uint32_t | Text color of the counter when the text input has not reached the maximum character limit, in 0xARGB format. **0** is returned if the color is not set using [OH_ArkUI_ShowCounterConfig_SetCounterTextColor](#oh_arkui_showcounterconfig_setcountertextcolor); otherwise, the set color value is returned. |
 
 ### OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor()
 
@@ -618,7 +623,7 @@ Obtains the text color of the counter when the text input exceeds the maximum ch
 
 | Type| Description|
 | -- | -- |
-| uint32_t | Text color of the counter when the text input exceeds the maximum character limit, in **0xARGB** format. **0** is returned if the color is not set using [OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor](capi-text-common-h.md#oh_arkui_showcounterconfig_setcountertextoverflowcolor).|
+| uint32_t | Text color of the counter when the text input exceeds the maximum character limit, in 0xARGB format. **0** is returned if the color is not set using [OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor](#oh_arkui_showcounterconfig_setcountertextoverflowcolor); otherwise, the set color value is returned. |
 
 ### OH_ArkUI_TextMenuItem_Create()
 
@@ -628,7 +633,7 @@ ArkUI_TextMenuItem* OH_ArkUI_TextMenuItem_Create()
 
 **Description**
 
-Creates a text menu item object.
+Creates a text menu item object for customizing the text selection menu or extending the system menu. It is applicable when custom menu items need to be added, such as sharing to a specific platform or performing custom editing operations. When this object is no longer used, call [OH_ArkUI_TextMenuItem_Dispose](#oh_arkui_textmenuitem_dispose) to dispose of it.
 
 **Since:** 22
 
@@ -636,7 +641,7 @@ Creates a text menu item object.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_TextMenuItem*](capi-arkui-nativemodule-arkui-textmenuitem.md) | Pointer to the **ArkUI_TextMenuItem** object.|
+| [ArkUI_TextMenuItem*](capi-arkui-nativemodule-arkui-textmenuitem.md) | Pointer to the text menu item object, used to represent a single menu item in the text selection menu. |
 
 ### OH_ArkUI_TextMenuItem_Dispose()
 
@@ -646,7 +651,7 @@ void OH_ArkUI_TextMenuItem_Dispose(ArkUI_TextMenuItem* textMenuItem)
 
 **Description**
 
-Disposes of a text menu item object.
+Disposes of the text menu item object created by [OH_ArkUI_TextMenuItem_Create](#oh_arkui_textmenuitem_create).
 
 **Since:** 22
 
@@ -664,7 +669,7 @@ ArkUI_TextEditMenuOptions* OH_ArkUI_TextEditMenuOptions_Create()
 
 **Description**
 
-Creates a text menu extension object.
+Creates a text menu extension object for extending the text editing menu functionality. It is applicable when custom menu items need to be added to the text editing component, such as inserting special characters or performing quick formatting. When this object is no longer used, call [OH_ArkUI_TextEditMenuOptions_Dispose](#oh_arkui_texteditmenuoptions_dispose) to dispose of it.
 
 **Since:** 22
 
@@ -672,7 +677,7 @@ Creates a text menu extension object.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_TextEditMenuOptions*](capi-arkui-nativemodule-arkui-texteditmenuoptions.md) | Pointer to the **ArkUI_TextEditMenuOptions** object.|
+| [ArkUI_TextEditMenuOptions*](capi-arkui-nativemodule-arkui-texteditmenuoptions.md) | Pointer to the text menu extension object, used to extend the functionality of the text editing menu. |
 
 ### OH_ArkUI_TextEditMenuOptions_Dispose()
 
@@ -682,7 +687,7 @@ void OH_ArkUI_TextEditMenuOptions_Dispose(ArkUI_TextEditMenuOptions* editMenuOpt
 
 **Description**
 
-Disposes of a text menu extension object.
+Disposes of the text menu extension object created by [OH_ArkUI_TextEditMenuOptions_Create](#oh_arkui_texteditmenuoptions_create).
 
 **Since:** 22
 
@@ -700,7 +705,7 @@ ArkUI_TextSelectionMenuOptions* OH_ArkUI_TextSelectionMenuOptions_Create()
 
 **Description**
 
-Creates a custom text selection menu object.
+Creates a custom text selection menu object for configuring the content and behavior of the text selection menu. It is applicable when the text selection menu needs to be fully customized, such as replacing the default menu and adding application-specific operations. When this object is no longer used, call [OH_ArkUI_TextSelectionMenuOptions_Dispose](#oh_arkui_textselectionmenuoptions_dispose) to dispose of it.
 
 **Since:** 22
 
@@ -708,7 +713,7 @@ Creates a custom text selection menu object.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_TextSelectionMenuOptions*](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md) | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
+| [ArkUI_TextSelectionMenuOptions*](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md) | Pointer to the custom text selection menu object, used for custom configuration of menu content, styles, and behavior. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_Dispose()
 
@@ -718,7 +723,7 @@ void OH_ArkUI_TextSelectionMenuOptions_Dispose(ArkUI_TextSelectionMenuOptions* s
 
 **Description**
 
-Disposes of a custom text selection menu object.
+Disposes of the custom text selection menu object created by [OH_ArkUI_TextSelectionMenuOptions_Create](#oh_arkui_textselectionmenuoptions_create).
 
 **Since:** 22
 
@@ -736,7 +741,7 @@ ArkUI_TextContentBaseController* OH_ArkUI_TextContentBaseController_Create()
 
 **Description**
 
-Creates a basic controller object for text content.
+Creates a text content base controller object. When this object is no longer used, call [OH_ArkUI_TextContentBaseController_Dispose](#oh_arkui_textcontentbasecontroller_dispose) to dispose of it.
 
 **Since:** 23
 
@@ -744,7 +749,7 @@ Creates a basic controller object for text content.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_TextContentBaseController*](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md) | Pointer to the controller object.|
+| [ArkUI_TextContentBaseController*](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md) | Pointer to the text content base controller object, used for content control of text components, supporting operations such as obtaining, setting, and updating text content. |
 
 ### OH_ArkUI_TextContentBaseController_Dispose()
 
@@ -754,7 +759,7 @@ void OH_ArkUI_TextContentBaseController_Dispose(ArkUI_TextContentBaseController*
 
 **Description**
 
-Disposes of a basic controller object for text content.
+Disposes of the text content base controller object created by [OH_ArkUI_TextContentBaseController_Create](#oh_arkui_textcontentbasecontroller_create).
 
 **Since:** 23
 
@@ -762,7 +767,7 @@ Disposes of a basic controller object for text content.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)* controller | Pointer to the controller to be disposed of.|
+| [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)* controller | Pointer to the text content base controller object to be disposed of. |
 
 ### OH_ArkUI_TextContentBaseController_DeleteBackward()
 
@@ -774,13 +779,17 @@ void OH_ArkUI_TextContentBaseController_DeleteBackward(ArkUI_TextContentBaseCont
 
 Deletes the character before the cursor in editing state; deletes the last character of the text box component in other states.
 
+> **NOTE**
+>
+> Before use, ensure that the controller has been bound to the input box component.
+
 **Since:** 23
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)* controller | Pointer to the configuration object to be modified.|
+| [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)* controller | Pointer to the text content base controller object. It must be created through **OH_ArkUI_TextContentBaseController_Create()** before use. |
 
 ### OH_ArkUI_TextContentBaseController_ScrollToVisible()
 
@@ -798,7 +807,7 @@ Passes the start and end indexes to the bound text box component, and scrolls th
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)* controller | Pointer to the configuration object to be modified.<br>Pass the start and end indexes to the bound text box component and scroll the text within the range.|
+| [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)* controller | Pointer to the text content base controller object. It must be created using **OH_ArkUI_TextContentBaseController_Create()** before use.<br>This controller passes the start index and end index to the bound input box component for scrolling. |
 | int32_t start | Start text index.<br>The start index must be less than or equal to the end index. Otherwise, the API call is invalid. The value range is [0, Total length of the text in the text box]. If the start index is less than 0, the start index is regarded as 0. If the start index is greater than the total length, the start index is regarded as the total length.|
 | int32_t end | End text index.<br>The end index must be greater than or equal to the start index. Otherwise, the API call is invalid. The value range is [0, Total length of the text in the text box]. If the end index is less than 0, the end index is regarded as 0. If the end index is greater than the total length, the end index is regarded as the total length.|
 
@@ -810,7 +819,7 @@ OH_ArkUI_DecorationStyleOptions* OH_ArkUI_DecorationStyleOptions_Create()
 
 **Description**
 
-Creates a decoration style object. When the object is no longer used, call [OH_ArkUI_DecorationStyleOptions_Destroy](capi-text-common-h.md#oh_arkui_decorationstyleoptions_destroy) to destroy it.
+Creates a decoration style object for setting the type, style, and color of text decorative lines. It is applicable when decoration effects such as underlines or strikethroughs need to be added to text, for example, in rich text editors, hyperlink text, or price tags. When this object is no longer used, call [OH_ArkUI_DecorationStyleOptions_Destroy](#oh_arkui_decorationstyleoptions_destroy) to destroy it.
 
 **Since:** 24
 
@@ -818,7 +827,7 @@ Creates a decoration style object. When the object is no longer used, call [OH_A
 
 | Type| Description|
 | -- | -- |
-| [OH_ArkUI_DecorationStyleOptions*](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md) | Pointer to the [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md) object.|
+| [OH_ArkUI_DecorationStyleOptions*](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md) | Pointer to the decoration style object, used to define the decorative line style. |
 
 ### OH_ArkUI_DecorationStyleOptions_Destroy()
 
@@ -828,7 +837,7 @@ void OH_ArkUI_DecorationStyleOptions_Destroy(OH_ArkUI_DecorationStyleOptions* op
 
 **Description**
 
-Destroys a decoration style object.
+Destroys the decoration style object created by [OH_ArkUI_DecorationStyleOptions_Create](#oh_arkui_decorationstyleoptions_create).
 
 **Since:** 24
 

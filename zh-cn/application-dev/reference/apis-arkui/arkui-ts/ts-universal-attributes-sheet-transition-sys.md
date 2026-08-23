@@ -27,7 +27,7 @@
 | 名称              | 类型                                       | 只读 | 可选   | 说明              |
 | --------------- | ------------------------------- | --------- | ---- | --------------- |
 | offset<sup>14+</sup>       | [Position](ts-types.md#position) | 否 | 否    | 设置半模态弹窗偏移量。仅当半模态为底部弹窗时，支持设置底部间距。不支持设置半模态的[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的detents属性。y轴设置为正数时不生效，将回退至默认值0vp。<br> 默认值：x轴坐标为0vp，y轴坐标为0vp。<br>**系统接口：** 此接口为系统接口。|
-| edgeLightMode | [EdgeLightMode](ts-appendix-enums-sys.md#edgelightmode) | 否 | 是 | 设置半模态弹窗边缘光效动画模式。未设置该属性时，边缘光效动画默认关闭。对于半模态弹窗的边缘光效动画，EDGELIGHT_AUTO：在所有算力设备都关闭；EDGELIGHT_ENABLED：开启边缘光效动画；EDGELIGHT_DISABLED：关闭边缘光效动画。<br>默认值：EdgeLightMode.EDGELIGHT_DISABLED<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。|
+| edgeLightMode | [EdgeLightMode](ts-appendix-enums-sys.md#edgelightmode) | 否 | 是 | 设置半模态弹窗边缘光效动画模式。边缘流光动画仅在[SheetType](ts-universal-attributes-sheet-transition.md#sheettype11枚举说明)为BOTTOM样式时生效。未设置该属性时，边缘光效动画默认关闭。对于半模态弹窗的边缘光效动画，EDGELIGHT_AUTO：在所有算力设备都关闭；EDGELIGHT_ENABLED：开启边缘光效动画；EDGELIGHT_DISABLED：关闭边缘光效动画。<br>默认值：EdgeLightMode.EDGELIGHT_DISABLED<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。|
 | blurSnapshot | [BlurSnapshotOptions](#blursnapshotoptions) | 否 | 是 | 半模态模糊快照优化选项，用于降低模糊渲染的计算开销。当使用blurStyle或systemMaterial设置模糊或材质效果时发现功耗明显增加时，可开启模糊优化。开启后，若半模态配置了blurStyle或systemMaterial，其模糊效果将使用快照渲染以降低计算开销；若未设置blurStyle或systemMaterial，则开启enableBlurSnapshot不产生模糊优化效果。该属性在半模态展示后不支持和undefined之间的动态切换，若在展示后尝试切换则设置不生效。半模态的POPUP类型不支持模糊优化，若在POPUP类型上设置enableBlurSnapshot=true则该设置不生效。<br>默认值：undefined，关闭模糊优化<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。|
 
 ## BlurSnapshotOptions

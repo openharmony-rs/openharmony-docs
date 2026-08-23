@@ -3,10 +3,10 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=caf68b250cfd940a1ec05de03c506dce62c7d685 translatedAt=2026-07-28T06:43:43.757Z pushedAt=2026-07-29T01:18:47.731Z -->
+<!-- md-trans-meta sourceCommit=ecd7cd79839bf1e15faca3bff98a5f8311712f1d translatedAt=2026-08-19T07:06:10.544Z pushedAt=2026-08-19T08:54:22.619Z -->
 
 ## Overview
 
@@ -104,9 +104,9 @@ The converged short-range communication service provides unified management of s
 
 Provides interconnection services between partner devices and OpenHarmony devices. Within the module, interconnection services such as media control, phone call reverse control, and health monitoring can be implemented. For details, see [@ohos.FusionConnectivity.partnerAgent (Device Status Notification Module)](../reference/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgent.md).
 
-- **Fusion connectivity module**<br/>
+- **Converged ranging module**<br/>
 
-  Provides the NearLink [HADM](terminology.md#high-accuracy-distance-measurement-hadm) ranging service. Within the module, the NearLink HADM ranging capability can be used. For details, see [@ohos.FusionConnectivity.ranging](../reference/apis-connectivity-kit/js-apis-fusionConnectivity-ranging.md).
+  Provides the NearLink [HADM](fusion-connectivity/fusion-connectivity-terminology.md#high-accuracy-distance-measurement-hadm) ranging service. Within the module, the NearLink HADM ranging capability can be used. For details, see [@ohos.FusionConnectivity.ranging](../reference/apis-connectivity-kit/js-apis-fusionConnectivity-ranging.md).
 
 ### Working Principles
 

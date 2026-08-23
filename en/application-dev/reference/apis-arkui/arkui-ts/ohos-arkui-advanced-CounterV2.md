@@ -14,7 +14,7 @@ This component is implemented based on [state management V2](../../../ui/state-m
 
 > **NOTE**
 >
-> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **CounterV2**, the compilation toolchain generates an additional node __Common__ and attaches the universal attributes or universal events to __Common__, rather than directly applying them to **CounterV2** itself. This may cause the universal attributes or universal events you set to not take effect or behave unexpectedly. Therefore, setting universal attributes and universal events for **CounterV2** is not recommended.
+> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **CounterV2**, the compilation toolchain generates an additional node \_\_Common\_\_ and attaches the universal attributes or universal events to \_\_Common\_\_, rather than directly applying them to **CounterV2** itself. This may cause the universal attributes or universal events you set to not take effect or behave unexpectedly. Therefore, setting universal attributes and universal events for **CounterV2** is not recommended.
 >
 > - This component API can only be used in the stage model.
 

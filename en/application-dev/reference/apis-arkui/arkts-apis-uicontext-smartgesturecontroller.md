@@ -6,13 +6,13 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-08-05T03:02:04.794Z pushedAt=2026-08-06T01:55:48.798Z -->
+<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:54:14.191Z pushedAt=2026-08-11T06:05:03.590Z -->
 
 Provides the capabilities of smart gestures enabling, listening, selected state control, and dynamic smart gesture behaviors decision. It is suitable for scenarios where an app integrates smart gestures, listens for the system's default gesture handling intent, and customizes gesture response behaviors, helping the app flexibly control the smart gesture interaction process.
 
 > **NOTE**
 >
-> To use the following APIs, you need to obtain the **SmartGestureController** instance using [getSmartGestureController()](./arkts-apis-uicontext-uicontext.md#getsmartgesturecontroller) in **UIContext**.
+> To use the following APIs, you need to obtain a **SmartGestureController** instance using [getSmartGestureController()](./arkts-apis-uicontext-uicontext.md#getsmartgesturecontroller) in **UIContext**.
 
 **Since**: 26.0.0
 
@@ -82,7 +82,7 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_01](figures/smartgesture_01.png)
+![smartgesture_01](figures/smartgesture_01.PNG)
 
 ## registerMonitor
 
@@ -92,11 +92,11 @@ Registers a callback for listening to smart gestures. Before the system handles 
 
 > **NOTE**
 >
-> - This API enables an app to receive the system's handling intent before the system processes the current smart gesture event and perform custom intervention.
-> - An app can use this callback to customize the behavior of the current smart gesture.
-> - An app can register multiple listener callbacks, which are triggered in last-registered, first-executed order. When a listener callback consumes the smart gesture event, that is, when the return value [GestureHandlingResolution](#gesturehandlingresolution).isConsumed is **true**, subsequent listener callbacks are no longer executed.
-> - When an app registers the same callback repeatedly, only the first registration is retained, and duplicate registrations do not take effect.
-> - The callback return value must be a valid [GestureHandlingResolution](#gesturehandlingresolution) instance; otherwise, the override does not take effect.
+> - This API allows an app to receive the processing intent of the current smart gesture event before the system handles it, and perform custom intervention.
+> - An app can use this callback to customize the behavior decision for the current smart gesture.
+> - An app can register multiple listener callbacks, which are triggered in last-registered-first-executed order. When a listener callback consumes the smart gesture event, that is, when the return value [Class (GestureHandlingResolution)](./arkts-apis-uicontext-gesturehandlingresolution.md).isConsumed is **true**, subsequent listener callbacks will not be executed.
+> - When an app registers the same callback repeatedly, only the first registered callback is retained, and duplicate registrations do not take effect.
+> - The callback return value must be a valid [Class (GestureHandlingResolution)](./arkts-apis-uicontext-gesturehandlingresolution.md) instance; otherwise, the current override does not take effect.
 
 **Since**: 26.0.0
 
@@ -110,7 +110,7 @@ Registers a callback for listening to smart gestures. Before the system handles 
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| monitorCallback | [Callback](arkui-ts/ts-types.md#callback12)&lt;[BaseGestureHandlingProposal](#basegesturehandlingproposal), [GestureHandlingResolution](#gesturehandlingresolution)&gt; | Yes| Callback for listening to smart gestures. The callback parameter is the default action handling provided by the system. The return value is used to declare whether to consume the current smart gesture and whether to replace the default action handling.|
+| monitorCallback | [Callback](arkui-ts/ts-types.md#callback12)&lt;[BaseGestureHandlingProposal](./arkts-apis-uicontext-basegesturehandlingproposal.md), [GestureHandlingResolution](./arkts-apis-uicontext-gesturehandlingresolution.md)&gt; | Yes | Smart gesture listener callback. The callback parameter is the default action handling provided by the system, and the return value declares whether to consume the current smart gesture and whether to replace the default action handling. |
 
 **Example**
 
@@ -165,7 +165,7 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_01](figures/smartgesture_01.png)
+![smartgesture_01](figures/smartgesture_01.PNG)
 
 ## unregisterMonitor
 
@@ -185,7 +185,7 @@ Unregisters a callback for listening to smart gestures.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| monitorCallback | [Callback](arkui-ts/ts-types.md#callback12)&lt;[BaseGestureHandlingProposal](#basegesturehandlingproposal), [GestureHandlingResolution](#gesturehandlingresolution)&gt; | Yes| Callback to unregister.|
+| monitorCallback | [Callback](arkui-ts/ts-types.md#callback12)&lt;[BaseGestureHandlingProposal](./arkts-apis-uicontext-basegesturehandlingproposal.md), [GestureHandlingResolution](./arkts-apis-uicontext-gesturehandlingresolution.md)&gt; | Yes | Smart gesture listener callback to unregister. |
 
 **Example**
 
@@ -239,7 +239,7 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_01](figures/smartgesture_01.png)
+![smartgesture_01](figures/smartgesture_01.PNG)
 
 ## clearMonitors
 
@@ -307,7 +307,7 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_01](figures/smartgesture_01.png)
+![smartgesture_01](figures/smartgesture_01.PNG)
 
 ## requestSelected
 
@@ -384,7 +384,7 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_02](figures/smartgesture_02.png)
+![smartgesture_02](figures/smartgesture_02.PNG)
 
 ## clearSelected
 
@@ -450,841 +450,7 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_02](figures/smartgesture_02.png)
-
-## BaseGestureHandlingProposal
-
-Base class for smart gesture handling. When the [registerMonitor](#registermonitor) API is used to dynamically customize smart gesture behavior, the callback parameter type is an instance of a specific subclass type.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name| Type| Read-Only| Optional| Description|
-| ---- | ---- | ---- | ---- | ---- |
-| action | [SmartGestureAction](arkui-ts/ts-appendix-enums.md#smartgestureaction) | No| No| Final action to be taken by a smart gesture.|
-| operateIntention | [OperateIntention](arkui-ts/ts-appendix-enums.md#operateintention) | No| No| Underlying operation intent of a smart gesture.|
-
-**Example**
-
-This example shows how to obtain smart gesture handling information from **BaseGestureHandlingProposal** in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
-
-```ts
-import {
-  BaseGestureHandlingProposal, GestureHandlingResolution,
-} from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SmartGestureControllerExample {
-  private controller = this.getUIContext().getSmartGestureController();
-  private smartGestureMonitor = (proposal: BaseGestureHandlingProposal) => {
-    console.info('smartGesture action is ', proposal.action, ', operateIntention is ', proposal.operateIntention);
-    return new GestureHandlingResolution(true);
-  };
-
-  aboutToAppear(): void {
-    this.controller.enableSmartTapAndSlideGestures(true);
-    this.controller.registerMonitor(this.smartGestureMonitor);
-  }
-
-  aboutToDisappear(): void {
-    this.controller.clearMonitors();
-    this.controller.enableSmartTapAndSlideGestures(false);
-  }
-
-  build() {
-    Scroll() {
-      Column({ space: 12 }) {
-        Text('Text component')
-          .id('target_text')
-          .fontSize(18)
-          .width('100%')
-          .padding(12)
-          .borderRadius(10)
-          .borderWidth(1)
-          .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
-          .onClick(() => {
-            console.info('smartGesture click is triggered');
-          })
-      }.width('100%')
-    }
-    .layoutWeight(1)
-    .width('100%')
-    .height('100%')
-    .padding(12)
-  }
-}
-```
-
-![smartgesture_01](figures/smartgesture_01.png)
-
-## TargetedGestureProposal
-
-Base class for smart gesture handling with a target node.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name| Type| Read-Only| Optional| Description|
-| ---- | ---- | ---- | ---- | ---- |
-| node | [FrameNode](js-apis-arkui-frameNode.md#framenode-1) | No| No| Target node for handling the current smart gesture.|
-
-**Example**
-
-This example shows how to obtain smart gesture handling information from **TargetedGestureProposal** in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
-
-```ts
-import {
-  BaseGestureHandlingProposal,
-  GestureHandlingResolution,
-  TargetedGestureProposal,
-} from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SmartGestureControllerExample {
-  private controller = this.getUIContext().getSmartGestureController();
-  private smartGestureMonitor = (proposal: BaseGestureHandlingProposal) => {
-    let targetProposal = proposal as TargetedGestureProposal;
-    console.info('smartGesture action is', targetProposal.action, ', operateIntention is',
-      targetProposal.operateIntention, ', nodeId is', targetProposal.node.getId());
-    return new GestureHandlingResolution(true);
-  };
-
-  aboutToAppear(): void {
-    this.controller.enableSmartTapAndSlideGestures(true);
-    this.controller.registerMonitor(this.smartGestureMonitor);
-  }
-
-  aboutToDisappear(): void {
-    this.controller.clearMonitors();
-    this.controller.enableSmartTapAndSlideGestures(false);
-  }
-
-  build() {
-    Scroll() {
-      Column({ space: 12 }) {
-        Text('Text component')
-          .id('target_text')
-          .fontSize(18)
-          .width('100%')
-          .padding(12)
-          .borderRadius(10)
-          .borderWidth(1)
-          .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
-          .onClick(() => {
-            console.info('smartGesture click is triggered');
-          })
-      }.width('100%')
-    }
-    .layoutWeight(1)
-    .width('100%')
-    .height('100%')
-    .padding(12)
-  }
-}
-```
-
-![smartgesture_01](figures/smartgesture_01.png)
-
-## ClickActionProposal
-
-Handles the click action of a smart gesture. When the [registerMonitor](#registermonitor) API is used to dynamically customize smart gesture behavior, if **selectedProposal** in the returned object [GestureHandlingResolution](#gesturehandlingresolution) is set to an object of the click type, the click action of the target component will be triggered.
-
-> **NOTE**
->
-> - This action handler follows the "select first, then click" handling semantics.
-> - When the target node has not been selected yet, this handling prioritizes establishing the selected state and does not immediately trigger a click.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-### constructor
-
-constructor(node: FrameNode)
-
-Constructor for handling the click action of a smart gesture.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type| Mandatory| Description|
-| ---- | ---- | ---- | ---- |
-| node | [FrameNode](js-apis-arkui-frameNode.md#framenode-1) | Yes| Target node that responds to the click action.|
-
-**Example**
-
-This example shows how to customize the smart gesture action as the click action for handling in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
-
-```ts
-import {
-  BaseGestureHandlingProposal,
-  ClickActionProposal,
-  GestureHandlingResolution,
-  TargetedGestureProposal,
-} from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SmartGestureControllerExample {
-  private controller = this.getUIContext().getSmartGestureController();
-  private smartGestureMonitor = (proposal: BaseGestureHandlingProposal) => {
-    let targetProposal = proposal as TargetedGestureProposal;
-    // Consume the current smart gesture. Subsequently, the default action handling is rewritten through selectedProposal.
-    let result = new GestureHandlingResolution(true);
-    console.info('smartGesture action is', targetProposal.action, ', operateIntention is',
-      targetProposal.operateIntention, ', nodeId is', targetProposal.node.getId());
-    if (targetProposal.node && targetProposal.node.getId() == 'target_text') {
-      let clickProposal = new ClickActionProposal(targetProposal.node);
-      result.selectedProposal = clickProposal;
-    }
-    return result;
-  };
-
-  aboutToAppear(): void {
-    this.controller.enableSmartTapAndSlideGestures(true);
-    this.controller.registerMonitor(this.smartGestureMonitor);
-  }
-
-  aboutToDisappear(): void {
-    this.controller.clearMonitors();
-    this.controller.enableSmartTapAndSlideGestures(false);
-  }
-
-  build() {
-    Scroll() {
-      Column({ space: 12 }) {
-        Text('Text component')
-          .id('target_text')
-          .fontSize(18)
-          .width('100%')
-          .padding(12)
-          .borderRadius(10)
-          .borderWidth(1)
-          .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
-          .onClick(() => {
-            console.info('smartGesture click is triggered');
-          })
-      }.width('100%')
-    }
-    .layoutWeight(1)
-    .width('100%')
-    .height('100%')
-    .padding(12)
-  }
-}
-```
-
-![smartgesture_01](figures/smartgesture_01.png)
-
-## SelectActionProposal
-
-Handles the selection action of a smart gesture. When the [registerMonitor](#registermonitor) API is used to dynamically customize smart gesture behavior, if **selectedProposal** in the returned object [GestureHandlingResolution](#gesturehandlingresolution) is set to an object of the selection type, the target component will be selected.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-### constructor
-
-constructor(node: FrameNode)
-
-Constructor for handling the selection action of a smart gesture.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type| Mandatory| Description|
-| ---- | ---- | ---- | ---- |
-| node | [FrameNode](js-apis-arkui-frameNode.md#framenode-1) | Yes| Target node that responds to the selected action.|
-
-**Example**
-
-This example shows how to customize the smart gesture action as the selection action for handling in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
-
-```ts
-import {
-  BaseGestureHandlingProposal,
-  GestureHandlingResolution,
-  SelectActionProposal,
-} from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SmartGestureControllerExample {
-  private controller = this.getUIContext().getSmartGestureController();
-  private smartGestureMonitor = (proposal: BaseGestureHandlingProposal) => {
-    let result = new GestureHandlingResolution(true);
-    let node = this.getUIContext().getFrameNodeById('target_text2');
-    if (node) {
-      let selectProposal = new SelectActionProposal(node);
-      result.selectedProposal = selectProposal;
-    }
-    return result;
-  };
-
-  aboutToAppear(): void {
-    this.controller.enableSmartTapAndSlideGestures(true);
-    this.controller.registerMonitor(this.smartGestureMonitor);
-  }
-
-  aboutToDisappear(): void {
-    this.controller.clearMonitors();
-    this.controller.enableSmartTapAndSlideGestures(false);
-  }
-
-  build() {
-    Scroll() {
-      Column({ space: 12 }) {
-        Text('Text component 1')
-          .id('target_text1')
-          .fontSize(18)
-          .width('100%')
-          .padding(12)
-          .borderRadius(10)
-          .borderWidth(1)
-          .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
-          .onClick(() => {
-            console.info('smartGesture click is triggered');
-          })
-        Text('Text component 2')
-          .id('target_text2')
-          .fontSize(18)
-          .width('100%')
-          .padding(12)
-          .borderRadius(10)
-          .borderWidth(1)
-          .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
-          .onClick(() => {
-            console.info('smartGesture click is triggered');
-          })
-      }.width('100%')
-    }
-    .layoutWeight(1)
-    .width('100%')
-    .height('100%')
-    .padding(12)
-  }
-}
-```
-
-![smartgesture_03](figures/smartgesture_03.png)
-
-## NoneActionProposal
-
-Handles the empty action of a smart gesture. When the [registerMonitor](#registermonitor) API is used to dynamically customize smart gesture behavior, if **selectedProposal** in the returned object [GestureHandlingResolution](#gesturehandlingresolution) is set to an object of the empty type, no action will be triggered.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-### constructor
-
-constructor()
-
-Constructor for handling the empty action of a smart gesture.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Example**
-
-This example shows how to customize the smart gesture action as the empty action for handling in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
-
-```ts
-import {
-  BaseGestureHandlingProposal,
-  GestureHandlingResolution,
-  NoneActionProposal,
-} from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SmartGestureControllerExample {
-  private controller = this.getUIContext().getSmartGestureController();
-  private smartGestureMonitor = (proposal: BaseGestureHandlingProposal) => {
-    let result = new GestureHandlingResolution(true);
-    let noneProposal = new NoneActionProposal();
-    result.selectedProposal = noneProposal;
-    return result;
-  };
-
-  aboutToAppear(): void {
-    this.controller.enableSmartTapAndSlideGestures(true);
-    this.controller.registerMonitor(this.smartGestureMonitor);
-  }
-
-  aboutToDisappear(): void {
-    this.controller.clearMonitors();
-    this.controller.enableSmartTapAndSlideGestures(false);
-  }
-
-  build() {
-    Scroll() {
-      Column({ space: 12 }) {
-        Text('Text component 1')
-          .id('target_text1')
-          .fontSize(18)
-          .width('100%')
-          .padding(12)
-          .borderRadius(10)
-          .borderWidth(1)
-          .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
-          .onClick(() => {
-            console.info('smartGesture click is triggered');
-          })
-        Text('Text component 2')
-          .id('target_text2')
-          .fontSize(18)
-          .width('100%')
-          .padding(12)
-          .borderRadius(10)
-          .borderWidth(1)
-          .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
-          .onClick(() => {
-            console.info('smartGesture click is triggered');
-          })
-      }.width('100%')
-    }
-    .layoutWeight(1)
-    .width('100%')
-    .height('100%')
-    .padding(12)
-  }
-}
-```
-
-![smartgesture_07](figures/smartgesture_07.png)
-
-## BackPressActionProposal
-
-Handles the back action of a smart gesture. When the [registerMonitor](#registermonitor) API is used to dynamically customize smart gesture behavior, if **selectedProposal** in the returned object [GestureHandlingResolution](#gesturehandlingresolution) is set to an object of the back type, the previous page will be returned.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-### constructor
-
-constructor()
-
-Constructor for handling the back action of a smart gesture.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Example**
-
-This example shows how to customize the smart gesture action as the back action for handling in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
-
-```ts
-import {
-  BackPressActionProposal,
-  BaseGestureHandlingProposal,
-  GestureHandlingResolution,
-} from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SmartGestureControllerExample {
-  private controller = this.getUIContext().getSmartGestureController();
-  private smartGestureMonitor = (proposal: BaseGestureHandlingProposal) => {
-    let result = new GestureHandlingResolution(true);
-    let backProposal = new BackPressActionProposal();
-    result.selectedProposal = backProposal;
-    return result;
-  };
-
-  aboutToAppear(): void {
-    this.controller.enableSmartTapAndSlideGestures(true);
-    this.controller.registerMonitor(this.smartGestureMonitor);
-  }
-
-  aboutToDisappear(): void {
-    this.controller.clearMonitors();
-    this.controller.enableSmartTapAndSlideGestures(false);
-  }
-
-  build() {
-    Scroll() {
-      Column({ space: 12 }) {
-        Text('Text component 1')
-          .id('target_text1')
-          .fontSize(18)
-          .width('100%')
-          .padding(12)
-          .borderRadius(10)
-          .borderWidth(1)
-          .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
-          .onClick(() => {
-            console.info('smartGesture click is triggered');
-          })
-        Text('Text component 2')
-          .id('target_text2')
-          .fontSize(18)
-          .width('100%')
-          .padding(12)
-          .borderRadius(10)
-          .borderWidth(1)
-          .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
-          .onClick(() => {
-            console.info('smartGesture click is triggered');
-          })
-      }.width('100%')
-    }
-    .layoutWeight(1)
-    .width('100%')
-    .height('100%')
-    .padding(12)
-  }
-}
-```
-
-![smartgesture_07](figures/smartgesture_07.png)
-
-## PageSwitchActionProposal
-
-Handles the page switching action of a smart gesture. The default direction is forward, including rightward and downward. When the [registerMonitor](#registermonitor) API is used to dynamically customize smart gesture behavior, if **selectedProposal** in the returned object [GestureHandlingResolution](#gesturehandlingresolution) is set to an object of the page switching type, the page switching action of the target component will be triggered.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-### constructor
-
-constructor(node: FrameNode, pageCount: number)
-
-Constructor for handling the page switching action of a smart gesture.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type| Mandatory| Description|
-| ---- | ---- | ---- | ---- |
-| node | [FrameNode](js-apis-arkui-frameNode.md#framenode-1) | Yes| Target node that responds to the page switching action.|
-| pageCount | number | Yes | Number of pages to turn.<br>Value range: [0, +∞). Values less than 0 are treated as 0.<br>The unit is pages. |
-
-### Attributes
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name| Type| Read-Only| Optional| Description|
-| ---- | ---- | ---- | ---- | ---- |
-| pageCount | number | No | No | Number of pages to be turned by a smart gesture.<br>Value range: [0, +∞). Values less than 0 are treated as 0.<br>Unit: page. |
-
-**Example**
-
-This example shows how to customize the smart gesture action as the page switching action for handling in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
-
-```ts
-import {
-  BaseGestureHandlingProposal,
-  GestureHandlingResolution,
-  PageSwitchActionProposal,
-} from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SmartGestureControllerExample {
-  private controller = this.getUIContext().getSmartGestureController();
-  private smartGestureMonitor = (proposal: BaseGestureHandlingProposal) => {
-    let result = new GestureHandlingResolution(true);
-    let node = this.getUIContext().getFrameNodeById('target_swiper');
-    if (node) {
-      let pageSwitchProposal = new PageSwitchActionProposal(node, 2);
-      result.selectedProposal = pageSwitchProposal;
-    }
-    return result;
-  };
-
-  aboutToAppear(): void {
-    this.controller.enableSmartTapAndSlideGestures(true);
-    this.controller.registerMonitor(this.smartGestureMonitor);
-  }
-
-  aboutToDisappear(): void {
-    this.controller.clearMonitors();
-    this.controller.enableSmartTapAndSlideGestures(false);
-  }
-
-  build() {
-    Scroll() {
-      Column({ space: 12 }) {
-        Swiper() {
-          Column({ space: 8 }) {
-            Text('page 0')
-          }
-          .justifyContent(FlexAlign.Start)
-          .padding(12)
-
-          Column({ space: 8 }) {
-            Text('page 1')
-          }
-          .justifyContent(FlexAlign.Start)
-          .padding(12)
-
-          Column({ space: 8 }) {
-            Text('page 2')
-          }
-          .justifyContent(FlexAlign.Start)
-          .padding(12)
-        }
-        .width(180)
-        .height(180)
-        .id('target_swiper')
-        .index(0)
-        .loop(false)
-        .borderRadius(12)
-        .borderWidth(1)
-      }.width('100%')
-    }
-    .layoutWeight(1)
-    .width('100%')
-    .height('100%')
-    .padding(12)
-  }
-}
-```
-
-![smartgesture_04](figures/smartgesture_04.png)
-
-## ScrollActionProposal
-
-Handles the scrolling action of a smart gesture. The default direction is forward, including rightward and downward. When the [registerMonitor](#registermonitor) API is used to dynamically customize smart gesture behavior, if **selectedProposal** in the returned object [GestureHandlingResolution](#gesturehandlingresolution) is set to an object of the scrolling type, the scrolling action of the target component will be triggered.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-### constructor
-
-constructor(node: FrameNode, distance: number)
-
-Constructor for handling the scrolling action of a smart gesture.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type| Mandatory| Description|
-| ---- | ---- | ---- | ---- |
-| node | [FrameNode](js-apis-arkui-frameNode.md#framenode-1) | Yes| Target node that responds to the scrolling action.|
-| distance | number | Yes | Scroll distance.<br>Value range: [0, +∞). Values less than 0 are treated as 0.<br>Unit: vp. |
-
-### Attributes
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name| Type| Read-Only| Optional| Description|
-| ---- | ---- | ---- | ---- | ---- |
-| distance | number | No | Yes | Scroll distance of a smart gesture.<br>Value range: [0, +∞). Values less than 0 are treated as 0.<br>Unit: vp. |
-
-**Example**
-
-This example shows how to customize the smart gesture action as the scrolling action for handling in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
-
-```ts
-import {
-  BaseGestureHandlingProposal,
-  GestureHandlingResolution,
-  ScrollActionProposal,
-} from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SmartGestureControllerExample {
-  private controller = this.getUIContext().getSmartGestureController();
-  private arrayList = [0, 1, 2, 3, 4, 5, 6];
-  private smartGestureMonitor = (proposal: BaseGestureHandlingProposal) => {
-    let result = new GestureHandlingResolution(true);
-    let node = this.getUIContext().getFrameNodeById('target_list');
-    if (node) {
-      let scrollProposal = new ScrollActionProposal(node, 60);
-      result.selectedProposal = scrollProposal;
-    }
-    return result;
-  };
-
-  aboutToAppear(): void {
-    this.controller.enableSmartTapAndSlideGestures(true);
-    this.controller.registerMonitor(this.smartGestureMonitor);
-  }
-
-  aboutToDisappear(): void {
-    this.controller.clearMonitors();
-    this.controller.enableSmartTapAndSlideGestures(false);
-  }
-
-  build() {
-    Scroll() {
-      Column({ space: 12 }) {
-        List({ space: 8 }) {
-          ForEach(this.arrayList, (item: number) => {
-            ListItem() {
-              Column({ space: 6 }) {
-                Text(`inner list item ${item}`)
-                  .id(`inner_list_item_${item}`)
-                  .fontSize(14)
-                  .padding(8)
-                  .width('100%')
-                  .borderRadius(10)
-                  .borderWidth(1)
-                  .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
-                  .onClick(() => {
-                    console.info('smartGesture click is triggered');
-                  })
-              }
-              .width('100%')
-            }
-          }, (item: number) => item.toString())
-        }
-        .id('target_list')
-        .width('100%')
-        .height(80)
-        .borderRadius(12)
-        .borderWidth(1)
-      }.width('100%')
-    }
-    .layoutWeight(1)
-    .width('100%')
-    .height('100%')
-    .padding(12)
-  }
-}
-```
-
-![smartgesture_05](figures/smartgesture_05.png)
-
-## GestureHandlingResolution
-
-Declaration class of the smart gesture handling resolution.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-### constructor
-
-constructor(isConsumed: boolean)
-
-Constructor for the smart gesture handling resolution.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type| Mandatory| Description|
-| ---- | ---- | ---- | ---- |
-| isConsumed | boolean | Yes | Whether to consume the current smart gesture.<br>The value **true** indicates that the current smart gesture is consumed. In this case, if [selectedProposal](#attributes-2) is not set, the system default action handler is used; if [selectedProposal](#attributes-2) is set, the custom action handler is used.<br>The value **false** indicates that the gesture is not consumed, and the system treats this smart gesture as unhandled. |
-
-### Attributes
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name| Type| Read-Only| Optional| Description|
-| ---- | ---- | ---- | ---- | ---- |
-| isConsumed | boolean | No | No | Whether to consume the current smart gesture.<br>The value **true** indicates that the current smart gesture is consumed. In this case, if **selectedProposal** is not set, the system default action handler is used; if **selectedProposal** is set, the custom action handler is used.<br>The value **false** indicates that the gesture is not consumed, and the system treats this smart gesture as unhandled. |
-| selectedProposal | [BaseGestureHandlingProposal](#basegesturehandlingproposal) | No | Yes | Smart gesture handling behavior specified by the user.<br>When **isConsumed** is **true**, if **selectedProposal** is not set, the system default action handling is used; if **selectedProposal** is set, the custom action handling is used.<br>When **isConsumed** is **false**, the **selectedProposal** setting does not take effect. |
+![smartgesture_02](figures/smartgesture_02.PNG)
 
 ## Example
 
@@ -1437,5 +603,5 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_06](figures/smartgesture_06.png)
+![smartgesture_06](figures/smartgesture_06.PNG)
 <!--no_check-->

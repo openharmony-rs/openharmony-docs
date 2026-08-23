@@ -8,7 +8,7 @@
 
 MediaAssetsChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
 
-批量资产变更请求。
+批量媒体资产变更请求。
 
 > **说明：**
 >
@@ -35,7 +35,7 @@ constructor(assets: Array&lt;PhotoAsset&gt;)
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assets | Array&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | 是   | 需要变更的资产数组。 |
+| assets | Array&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | 是   | 需要变更的媒体资产数组。 |
 
 **错误码：**
 
@@ -51,6 +51,7 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('MediaAssetsChangeRequest constructorDemo');
@@ -95,6 +96,7 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {

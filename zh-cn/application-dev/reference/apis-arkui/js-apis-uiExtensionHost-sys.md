@@ -634,11 +634,11 @@ export default class EntryAbility extends UIExtensionAbility {
 
 | 名称                         | 类型        | 只读  | 可选    | 说明                             |
 | ------------------------------ | ----------- | --------------- | ----------------- | -------------------------------- |
-| uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | 是 | 否 |UIExtensionComponent的位置和宽高。 |
+| uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 |UIExtensionComponent的位置和宽高。 |
 
 ## 完整示例
 
-本示例展示文档中主要API在UIExtensionAbility中的基础使用方式，示例应用需采用系统签名，且`bundleName`为"com.example.uiextensiondemo", 被拉起的`UIExtensionAbility`为"ExampleUIExtensionAbility"。
+本示例展示文档中主要API在UIExtensionAbility中的基础使用方式，示例应用需采用系统签名，且`bundleName`为"com.example.uiextensiondemo"， 被拉起的`UIExtensionAbility`为"ExampleUIExtensionAbility"。
 
 - 示例应用中的EntryAbility(UIAbility)加载首页文件：`pages/Index.ets`，其中内容如下：
 

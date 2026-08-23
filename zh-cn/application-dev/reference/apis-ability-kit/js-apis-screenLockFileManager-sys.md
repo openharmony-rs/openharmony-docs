@@ -55,7 +55,7 @@ acquireAccess(dataType: DataType): AccessStatus
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed, usually returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameter is left unspecified. 2. Incorrect parameter types. |
 | 801 | The specified SystemCapability name was not found. |
 | 29300001 | Invalid DataType. |
 | 29300002 | The system ability works abnormally. |
@@ -116,7 +116,7 @@ releaseAccess(dataType: DataType): ReleaseStatus
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed, usually returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameter is left unspecified. 2. Incorrect parameter types. |
 | 801      | The specified SystemCapability name was not found.           |
 | 29300001 | Invalid DataType.                                           |
 | 29300002 | The system ability works abnormally.                          |
@@ -175,7 +175,7 @@ queryAppKeyState(dataType: DataType): KeyStatus
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed, usually returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameter is left unspecified. 2. Incorrect parameter types. |
 | 801      | The specified SystemCapability name was not found.           |
 | 29300001 | Invalid DataType.                                           |
 | 29300002 | The system ability works abnormally.                          |

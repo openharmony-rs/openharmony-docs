@@ -236,13 +236,13 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t 
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t windowId | 需要过滤触摸事件的窗口ID。 |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | 函数返回的执行结果。<br> 返回OK，表示接口调用成功。<br> 返回INVAILD_WINDOW_ID，表示参数windowId无效。<br> 返回WINDOW_MANAGER_ERRORCODE_INVALID_PARAM，表示参数touchEventFilter无效。<br> 返回SERVICE_ERROR，表示窗口管理服务异常。 |
+| [OH_NativeWindowManager_TouchEventFilter](#oh_nativewindowmanager_toucheventfilter) touchEventFilter | 多模触摸事件的过滤函数。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | 返回窗口管理接口的通用状态码，具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | 函数返回的执行结果。<br> 返回OK，表示接口调用成功。<br> 返回INVAILD_WINDOW_ID，表示参数windowId无效。<br> 返回WINDOW_MANAGER_ERRORCODE_INVALID_PARAM，表示参数touchEventFilter无效。<br> 返回SERVICE_ERROR，表示窗口管理服务异常。 |
 
 ### OH_NativeWindowManager_UnregisterTouchEventFilter()
 

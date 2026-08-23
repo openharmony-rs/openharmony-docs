@@ -11,6 +11,12 @@ PageNodeInfo用于描述自动填充场景下的页面节点信息，包含节�
 
 **起始版本：** 26.0.0
 
+## 导入模块
+
+```ts
+import { autoFillManager } from '@kit.AbilityKit';
+```
+
 ## PageNodeInfo
 
 **起始版本：** 26.0.0

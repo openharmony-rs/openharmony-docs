@@ -29,6 +29,8 @@ getPaymentServices(): [AbilityInfo](../apis-ability-kit/js-apis-bundleManager-ab
 
 获取所有支付类型的服务列表。如果应用程序声明支持HCE功能，并且声明了"payment-aid"，则会包含在列表里面，参考[HCE卡模拟和AID列表的声明定义](js-apis-cardEmulation.md#hce卡模拟和aid列表的声明定义)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation

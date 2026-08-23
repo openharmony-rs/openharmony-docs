@@ -259,7 +259,7 @@ Describes information about the touchpad swipe gesture option.
 
 | Name      | Type  | Read-Only| Optional| Description                                                    |
 | ---------- | ------ |----|----|--------------------------------------------------------|
-| stay | boolean | No | Yes | Whether the swipe gesture stays on the touchpad for 1s before it is lifted. The value **true** indicates that the swipe gesture stays on the touchpad for 1s, and **false** indicates the opposite. The default value is **false**.|
+| stay | boolean | No | Yes | Whether to hold fingers on the touchpad for 1s after swiping. The value **true** indicates holding fingers on the touchpad for 1s after swiping; the value **false** indicates otherwise. The default value is **false**.|
 | speed       | number | No | Yes | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **2000**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value 2000 is used. If the value is a negative number, an error code indicating a parameter error is returned. |
 
 
@@ -883,7 +883,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. 1. Incorrect parameter types; 2. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1353,7 +1353,7 @@ let on: On = ON.originalText('123'); // Use the static constructor ON to create 
 
 ## Component<sup>9+</sup>
 
-Represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This module is available since API version 9.
+Represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This module is available since API version 9. This object can be obtained through APIs such as [Driver.findComponent](#findcomponent9), [Driver.findComponents](#findcomponents9), and [Driver.waitForComponent](#waitforcomponent9).
 
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
@@ -2616,7 +2616,7 @@ async function demo() {
 
 ## Driver<sup>9+</sup>
 
-The **Driver** class is the main entrance of the UiTest framework. This class provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
+The **Driver** class is the main entrance of the UiTest framework. This class provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. Call [Driver.create()](#create9) to create an instance.
 
 All APIs provided by this class, except **Driver.create()** and **Driver.createUIEventObserver()**, use an asynchronous method (promise) to return the result and must be invoked using **await**.  
 
@@ -3224,7 +3224,7 @@ import { Driver } from '@kit.TestKit';
 async function demo() {
   // Create a Driver object.
   let driver: Driver = Driver.create();
-  // Perform a tap operation at the coordinate (100,100).
+  // Perform a tap operation at coordinates (100,100).
   await driver.click(100, 100);
 }
 ```
@@ -3689,7 +3689,7 @@ async function demo() {
     speed: 800,   // Swipe speed: 800 px/s
     pressure: 0.5  // Touch pressure value.
   };
-  // Swipes from the start coordinate point to the target coordinate point, and specifies the swipe speed and touch pressure.
+  // Swipe from the start coordinates to the target coordinates, and specify the swipe speed and touch pressure.
   await driver.swipeBetweenWithOptions({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
@@ -3839,9 +3839,9 @@ async function demo() {
   let options: TouchOptions = {
     speed: 800,     // Drag speed: 800 px/s
     duration: 2000, // Click duration before dragging: 2000 ms.
-    pressure: 0.5   // Touch pressure value.
+    pressure: 0.5  // Touch pressure value.
   };
-  // Drag from the start coordinate point to the target coordinate point, and specify the drag speed, click duration, and touch pressure.
+  // Drag from the start coordinates to the target coordinates, and specify the drag speed, click duration, and touch pressure.
   await driver.dragBetweenWithOptions({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
@@ -5136,7 +5136,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
-Drags the mouse pointer from the start point to the end point. This API uses a promise to return the result. Since API version 26.0.0, this API supports cross-screen mouse dragging.
+Drags the mouse pointer from the start point to the end point. This API uses a promise to return the result. For API version 26.0.0 and earlier, this API does not support cross-screen mouse dragging. The start point and end point must be on the same screen. Otherwise, error code 401 will be returned. Since API version 26.0.0, this API supports cross-screen mouse dragging.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5183,7 +5183,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
 
-Drags the mouse from the start point to the end point. You can specify the dragging speed and the duration before dragging. This API uses a promise to return the result. Since API version 26.0.0, this API supports cross-screen mouse dragging.
+Drags the mouse from the start point to the end point. You can specify the dragging speed and the duration before dragging. This API uses a promise to return the result. For API version 26.0.0 and earlier, this API does not support cross-screen mouse dragging. The start point and end point must be on the same screen. Otherwise, error code 401 will be returned. Since API version 26.0.0, this API supports cross-screen mouse dragging.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -5275,7 +5275,7 @@ async function demo() {
   let driver: Driver = Driver.create();
   let touchOptions: TouchOptions = {
     speed: 800,     // Drag speed: 800 px/s
-    duration: 2000  // Click duration before dragging: 2000 ms.
+    duration: 2000, // Click duration before dragging: 2000 ms.
   };
   let keyOptions: KeyOptions = {
     key1: 2072,  // Ctrl key
@@ -5929,7 +5929,7 @@ import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  // Simulate a knuckle gesture to draw an S on the display.
+  // Simulate a knuckle gesture to draw an S on the screen.
   let pointers: PointerMatrix = PointerMatrix.create(1, 6);
   pointers.setPoint(0, 0, { x: 750, y: 300 });
   pointers.setPoint(0, 1, { x: 500, y: 100 });
@@ -6174,7 +6174,7 @@ async function demo() {
 
 ## UiWindow<sup>9+</sup>
 
-The **UiWindow** class represents a window on the UI and provides APIs for obtaining window attributes, dragging a window, and adjusting the window size.
+The **UiWindow** class represents a window on the UI and provides APIs for obtaining window attributes, dragging a window, and adjusting the window size. Objects of this class can be obtained through the [Driver.findWindow](#findwindow9) API.
 
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
@@ -7302,7 +7302,7 @@ Specifies the focused attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                 |
 | ------ | ------- | ---- | ----------------------------------------------------- |
-| b      | boolean | No  | Focused status of the component. The value **true** indicates that the component is focused, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Focused status of the component. The value **true** indicates that the component is focused, and **false** indicates the opposite. The default value is **true**.|
 
 **Return value**
 

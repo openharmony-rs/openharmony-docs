@@ -6,7 +6,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-07-30T02:31:58.495Z pushedAt=2026-08-01T06:42:55.875Z -->
+<!-- md-trans-meta sourceCommit=48422a8cba8102090ab3a5b055a79ff6f52ce339 translatedAt=2026-08-21T02:21:04.857Z pushedAt=2026-08-21T06:00:04.950Z -->
 
 A gradient object that allows multiple color breakpoints to be set through the **addColorStop** method, achieving smooth color transitions. It is suitable for canvas filling and stroking scenarios.
 
@@ -30,7 +30,7 @@ Sets the gradient breakpoint value, including the offset and color. You can call
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ---- | ---------------------------------------- |
-| offset | number | Yes | Proportion of the distance from the breakpoint to the start point to the total length. The value range is [0, 1].<br>Setting **offset** < 0 or **offset** > 1 produces no gradient effect.<br>Abnormal values **undefined** and **null** are treated as invalid, and the breakpoint is not added. NaN causes the **CanvasGradient** object to be abnormal and unable to generate gradient effects properly. Infinity causes the entire **CanvasGradient** to not take effect.|
+| offset | number | Yes | Proportion of the distance from the gradient breakpoint to the start point to the total length. The value range is [0, 1].<br>Setting **offset** < 0 or **offset** > 1 produces no gradient effect.<br>Abnormal values **undefined** and **null** are treated as invalid, and the gradient breakpoint is not added. NaN causes the **CanvasGradient** object to be abnormal and unable to generate gradient effects properly. Infinity causes the entire **CanvasGradient** to not take effect. |
 | color | string | Yes | Gradient color. The string type supports the following formats: **'rgb(255, 255, 255)'**, **'rgba(255, 255, 255, 1.0)'**, **'#RGB'**, **'#ARGB'**, **'#RRGGBB'**, and **'#AARRGGBB'**. For details, see the **string** type description in [ResourceColor](ts-types.md#resourcecolor).<br>If the color is not set in the specified format, no gradient effect is produced. When **null** or **undefined** is set, it is treated as invalid and the breakpoint is not added.|
 
 **Example**
@@ -86,8 +86,8 @@ Sets the gradient breakpoint value, including the offset and color. Colors in RG
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ---- | ---------------------------------------- |
-| offset | number | Mandatory | Ratio of the distance from the gradient point to the start point to the total length. The value range is [0, 1].<br>No gradient effect is produced when **offset** is set to a value less than 0 or greater than 1.<br>The abnormal values **undefined** and **null** are treated as invalid, and the breakpoint is not added. NaN causes the **CanvasGradient** object to become abnormal and fail to generate a gradient effect. Infinity causes the entire **CanvasGradient** to not take effect. |
-| color  | string \| [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | Mandatory | Color of the gradient. The string type supports the following formats: **'rgb(255, 255, 255)'**, **'rgba(255, 255, 255, 1.0)'**, **'#RGB'**, **'#ARGB'**, **'#RRGGBB'**, and **'#AARRGGBB'**.<br>You can use the [colorWithSpace](../js-apis-arkui-graphics.md#colorwithspace20) method to construct a color with a specified color space attribute. The **ColorMetrics** type can construct a color with the specified color space attribute [ColorSpace](ts-appendix-enums.md#colorspace20) set to **sRGB** or **DISPLAY_P3**. Since API version 26.0.0, constructing a color in the BT2020 color space is supported, along with HDR brightening. All gradient breakpoints in the same **CanvasGradient** object must use the same color space attribute. If different color spaces are set, an exception is thrown with error code 103701, the breakpoint is not added, and the **CanvasGradient** object retains its previous state.<br>No gradient effect is produced when the color is not set in the required format. **null** and **undefined** are treated as invalid, and the breakpoint is not added.   |
+| offset | number | Yes | Proportion of the distance from the gradient breakpoint to the start point to the total length. The value range is [0, 1].<br>Setting **offset** < 0 or **offset** > 1 produces no gradient effect.<br>Abnormal values **undefined** and **null** are treated as invalid, and the gradient breakpoint is not added. NaN causes the **CanvasGradient** object to be abnormal and unable to generate gradient effects properly. Infinity causes the entire **CanvasGradient** to not take effect. |
+| color  | string \| [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | Yes | Color of the gradient. The string type supports the following formats: **'rgb(255, 255, 255)'**, **'rgba(255, 255, 255, 1.0)'**, **'#RGB'**, **'#ARGB'**, **'#RRGGBB'**, and **'#AARRGGBB'**.<br>You can use the [colorWithSpace](../js-apis-arkui-graphics.md#colorwithspace20) method to construct a color with a specified color space attribute. The **ColorMetrics** type can construct a color with the specified color space attribute [ColorSpace](ts-appendix-enums.md#colorspace20) set to **sRGB** or **DISPLAY_P3**. Since API version 26.0.0, constructing a color in the BT2020 color space is supported, along with HDR brightening. All gradient breakpoints in the same **CanvasGradient** object must use the same color space attribute. If different color spaces are set, an exception is thrown with error code 103701, the breakpoint is not added, and the **CanvasGradient** object retains its previous state.<br>No gradient effect is produced when the color is not set in the required format. **null** and **undefined** are treated as invalid, and the breakpoint is not added.   |
 
 **Error codes**
 
@@ -232,4 +232,3 @@ struct CanvasGradientDemo {
 ```
 
 ![canvasGradientHdr](figures/canvasGradientHdr.png)
-<!--no_check-->

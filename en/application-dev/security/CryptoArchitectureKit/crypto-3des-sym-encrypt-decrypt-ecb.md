@@ -6,9 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=2b7e61b474280f2fed65c3e4a8cd33d50b5456e7 translatedAt=2026-07-29T04:49:07.486Z pushedAt=2026-07-29T06:23:49.040Z -->
+<!-- md-trans-meta sourceCommit=9fdfc79fd811dbd3830944fd4ada4372911e5c41 translatedAt=2026-08-07T03:23:47.915Z pushedAt=2026-08-07T07:41:45.494Z -->
 
-For details about the algorithm specifications, see [3DES](crypto-sym-encrypt-decrypt-spec.md#3des).
+For the corresponding algorithm specifications, see [Symmetric Key Encryption/Decryption Algorithm Specifications: 3DES](crypto-encryption-decryption.md#3des).
 
 ## How to Develop
 
@@ -16,7 +16,7 @@ For details about the algorithm specifications, see [3DES](crypto-sym-encrypt-de
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 192-bit 3DES symmetric key (**SymKey**).
 
-   In addition to the example in this topic, [3DES](crypto-sym-key-generation-conversion-spec.md#3des) and [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key.md) may help you better understand how to generate a 3DES symmetric key. Note that the input parameters in the reference documents may be different from those in the example below.
+To learn how to generate a 3DES symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: 3DES](crypto-key-generation-conversion.md#3des) and [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key.md). Note that the referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'3DES192|ECB|PKCS7'** to create a **Cipher** instance for encryption. The key type is **3DES192**, block cipher mode is **ECB**, and the padding mode is **PKCS7**.
 
@@ -47,6 +47,8 @@ For details about the algorithm specifications, see [3DES](crypto-sym-encrypt-de
 3. Call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) to pass in the data to be decrypted (ciphertext).
 
 4. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the decrypted data.
+
+If 3DES decryption fails with error code 17630001, see [Failed to Call doFinal During Decryption Using DES/3DES](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#failed-to-call-dofinal-during-decryption-using-des3des).
 
 ## Example
 
@@ -174,3 +176,5 @@ If CBC, CTR, OFB, or CFB mode is used, set the IV in the same way. If ECB mode i
   cipher.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, iv);
   // This code snippet only demonstrates the differences between CBC, CTR, OFB, and CFB block cipher modes. For other processes, refer to the development example.
   ```
+
+  <!--no_check-->

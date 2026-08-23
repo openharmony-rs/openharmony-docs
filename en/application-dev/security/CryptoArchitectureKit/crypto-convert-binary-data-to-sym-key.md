@@ -6,12 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:25:39.503Z pushedAt=2026-08-07T08:46:01.015Z -->
 
 This topic uses 3DES and HMAC as an example to describe how to convert binary data into a symmetric key (**SymKey**). That is, convert a piece of external or internal binary data into a key object for subsequent operations, such as encryption and decryption.
 
 ## Converting Binary Data into a 3DES Key
 
-For details about the algorithm specifications, see [3DES](crypto-sym-key-generation-conversion-spec.md#3des).
+For the corresponding algorithm specifications, see [Symmetric Key Generation and Conversion Specifications: 3DES](crypto-key-generation-conversion.md#3des).
 
 1. Obtain the 3DES binary key data and encapsulate it into a [DataBlob](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#datablob) object.
 
@@ -24,7 +25,7 @@ For details about the algorithm specifications, see [3DES](crypto-sym-key-genera
 - Example: Convert binary data into a 192-bit 3DES key (using callback-based APIs).
 
   <!-- @[generate_3des_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/3des/Callback.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -61,12 +62,11 @@ For details about the algorithm specifications, see [3DES](crypto-sym-key-genera
     }
   }
   ```
-
 
 - Example using synchronous API [convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12):
 
   <!-- @[generate_3des_key_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/3des/Sync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -86,32 +86,25 @@ For details about the algorithm specifications, see [3DES](crypto-sym-key-genera
     // Convert the data into a symmetric key.
     let keyMaterialBlob = genKeyMaterialBlob();
     try {
-      symKeyGenerator.convertKey(keyMaterialBlob, (error, key) => {
-        if (error) {// If the service logic fails to be executed, the first parameter of the callback returns error information, that is, throw an exception asynchronously.
-          let e: BusinessError = error as BusinessError;
-          console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
-          return;
-        }
-        console.info('key algName: ' + key.algName);
-        console.info('key format: ' + key.format);
-        let encodedKey = key.getEncoded(); // Obtain the binary data of the symmetric key and output the data as a byte array. The length is 24 bytes.
-        console.info('key getEncoded hex: ' + encodedKey.data);
-      })
+      let key = symKeyGenerator.convertKeySync(keyMaterialBlob);
+      console.info('key algName: ' + key.algName);
+      console.info('key format: ' + key.format);
+      let encodedKey = key.getEncoded(); // Obtain the binary data of the symmetric key, which is 24 bytes in length.
+      console.info('key getEncoded length: ' + encodedKey.data.length);
     } catch (error) {// Throw an exception immediately when an error is detected during parameter check.
       let e: BusinessError = error as BusinessError;
-      console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
+      console.error(`convertKeySync failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```
 
-
 ## Converting Binary Data into an HMAC Key
 
-For details, see [HMAC](crypto-sym-key-generation-conversion-spec.md#hmac).
+For the corresponding algorithm specifications, see [Symmetric Key Generation and Conversion Specifications: HMAC](crypto-key-generation-conversion.md#hmac).
 
 1. Obtain the HMAC binary key data and encapsulate it into a [DataBlob](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#datablob) object.
 
-2. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) with the string parameter **'HMAC'** to create a symmetric key generator (**SymKeyGenerator**) object for an HMAC key of [1, 32768] bits.
+2. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) with the string parameter 'HMAC' to create a symmetric key generator (**SymKeyGenerator**) for the HMAC algorithm, which supports key lengths ranging from [1, 4096] bytes.
 
 3. Call [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to convert the binary data into a symmetric key (**SymKey**).
 
@@ -120,7 +113,7 @@ For details, see [HMAC](crypto-sym-key-generation-conversion-spec.md#hmac).
 - Example using **await** to generate a HMAC key:
 
   <!-- @[generate_hmac_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/hmac/Await.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -138,11 +131,10 @@ For details, see [HMAC](crypto-sym-key-generation-conversion-spec.md#hmac).
   }
   ```
 
-
 - Example using synchronous API [convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12):
 
   <!-- @[generate_hmac_key_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/hmac/Sync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -159,3 +151,5 @@ For details, see [HMAC](crypto-sym-key-generation-conversion-spec.md#hmac).
     console.info('key encoded data: ' + encodedKey.data);
   }
   ```
+
+  <!--no_check-->

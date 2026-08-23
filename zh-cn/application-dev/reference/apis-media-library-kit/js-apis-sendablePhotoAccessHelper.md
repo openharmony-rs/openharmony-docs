@@ -54,7 +54,7 @@ getPhotoAccessHelper(context: Context): PhotoAccessHelper
 
 ```ts
 // 此处获取的phAccessHelper实例为全局对象，后续使用到phAccessHelper的地方默认为使用此处获取的对象，如未添加此段代码报phAccessHelper未定义的错误请自行添加。
-// 请在组件内获取context，确保this.getUiContext().getHostContext()返回结果为UIAbilityContext
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -155,7 +155,7 @@ getBurstAssets(burstKey: string, options: photoAccessHelper.FetchOptions): Promi
 
 | 参数名   | 类型                                                      | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| burstKey | string                                                    | 是   | 一组连拍照片的唯一标识：uuid（可传入[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)的BURST_KEY）。字符串长度为36字节。|
+| burstKey | string                                                    | 是   | 一组连拍照片的唯一标识uuid，可传入[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)的BURST_KEY。字符串长度为36个字符。 |
 | options  | [photoAccessHelper.FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | 是   | 连拍照片检索选项。                                           |
 
 **返回值：**
@@ -192,12 +192,19 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   };
   let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
   let photoAssetList: Array<sendablePhotoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
+  if (!photoAssetList || photoAssetList.length === 0) {
+  console.info('photoAssetList is empty');
+  return;
+  }
   let photoAsset: sendablePhotoAccessHelper.PhotoAsset;
   // burstKey为36位的uuid，可以根据photoAccessHelper.PhotoKeys获取。
   for(photoAsset of photoAssetList){
+    // 获取BURST_KEY（连拍照片唯一标识的键名），用于后续从photoAsset中提取burstKey值。
     let burstKey: string = photoAccessHelper.PhotoKeys.BURST_KEY.toString();
+    // 获取照片的burstKey（连拍照片唯一标识），用于后续查询同一连拍组下的所有照片。
     let photoAccessBurstKey: photoAccessHelper.MemberType = photoAsset.get(burstKey).toString();
     try {
+      // 根据burstKey查询同一连拍组下的所有照片资源。
       let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await
       phAccessHelper.getBurstAssets(photoAccessBurstKey, fetchOption);
       if (fetchResult !== undefined) {
@@ -234,7 +241,7 @@ createAsset(photoType: PhotoType, extension: string, options?: photoAccessHelper
 | --------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
 | photoType | [PhotoType](#phototype)                                     | 是   | 创建的文件类型，IMAGE或者VIDEO类型。 |
 | extension | string                                                      | 是   | 文件名后缀参数，例如：'jpg'。字符串长度的取值范围为[1, 255]。        |
-| options   | [photoAccessHelper.CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions) | 否   | 创建选项，例如{title: 'testPhoto'}。<br>文件名中不允许出现非法英文字符。<br>API18开始，非法字符包括： \ / : * ? " < > \| <br>API10-17，非法字符包括：. .. \ / : * ? " ' ` < > \| { } [ ]|
+| options   | [photoAccessHelper.CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions) | 否   | 创建选项，例如{title: 'testPhoto'}。<br>文件名中不允许出现非法字符。<br>API18开始，非法字符包括： \ / : * ? " < > \| <br>API10-17，非法字符包括：. .. \ / : * ? " ' ` < > \| { } [ ] |
 
 **返回值：**
 
@@ -446,13 +453,13 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   try {
     console.info('use function...');
   } catch (err) {
-    console.error(`function error ...`);
+    console.error(`function error. Code: ${err.code}, message: ${err.message}`);
   }finally{
       try{
           phAccessHelper?.release();
           console.info(`release success`);
       } catch(e){
-          console.error(`release error :${e}`);
+          console.error(`release error. Code: ${e.code}, message: ${e.message}`);
       }
   }
 }
@@ -526,7 +533,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 get(member: string): photoAccessHelper.MemberType
 
-获取PhotoAsset成员参数的值。
+获取PhotoAsset成员属性的值。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -534,7 +541,7 @@ get(member: string): photoAccessHelper.MemberType
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| member | string | 是   | 成员参数名称，在get时，除了'uri'、'media_type'、'subtype'和'display_name'四个属性之外，其他的属性都需要在fetchColumns中填入需要get的[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)，例如：get title属性fetchColumns: ['title']。 |
+| member | string | 是   | 成员属性名称。<br>在get时，除了'uri'、'media_type'、'subtype'和'display_name'四个属性之外，其他的属性都需要在fetchColumns中填入需要get的[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)，例如：get title属性fetchColumns: ['title']。字符串长度的取值范围为[1, 255]。 |
 
 **返回值：**
 
@@ -586,7 +593,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 set(member: string, value: string): void
 
-设置PhotoAsset成员参数。
+设置PhotoAsset成员属性。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -594,8 +601,8 @@ set(member: string, value: string): void
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| member | string | 是   | 成员参数名称例如：[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE。字符串长度的取值范围为[1, 255]。 |
-| value  | string | 是   | 设置成员参数名称，只能修改[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE的值。title的参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ]  |
+| member | string | 是   | 成员属性名称例如：[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE。字符串长度的取值范围为[1, 255]。 |
+| value  | string | 是   | 设置成员参数的值，只能修改[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE的值。title的参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。<br>- 不允许出现的非法字符，包括：. \ / : * ? " ' ` < > \| { } [ ]  |
 
 **错误码：**
 
@@ -683,6 +690,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   console.info('photoAsset get photoAssetTitle = ', photoAssetTitle);
   photoAsset.set(title, 'newTitle3');
   try {
+   // 将修改后的照片元数据提交到数据库进行持久化保存。
     await photoAsset.commitModify();
     let newPhotoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
     console.info('photoAsset get newPhotoAssetTitle = ', newPhotoAssetTitle);
@@ -706,7 +714,7 @@ getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 
 | 参数名 | 类型                                                  | 必填 | 说明         |
 | ------ | ----------------------------------------------------- | ---- | ------------ |
-| size   | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 否   | 缩略图尺寸。 |
+| size   | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 否   | 缩略图尺寸。不传时使用系统默认尺寸。 |
 
 **返回值：**
 
@@ -909,7 +917,7 @@ getFirstObject(): Promise&lt;T&gt;
 
 | 类型             | 说明                                  |
 | ---------------- | ------------------------------------- |
-| Promise&lt;T&gt; | Promise对象，返回结果集中第一个对象。 |
+| Promise&lt;T&gt; | Promise对象，返回结果集中第一个文件资产对象。 |
 
 **错误码：**
 
@@ -955,7 +963,7 @@ getNextObject(): Promise&lt;T&gt;
 
 | 类型             | 说明                                  |
 | ---------------- | ------------------------------------- |
-| Promise&lt;T&gt; | Promise对象，返回结果集中下一个对象。 |
+| Promise&lt;T&gt; | Promise对象，返回结果集中当前位置的下一个文件资产对象。 |
 
 **错误码：**
 
@@ -1000,7 +1008,7 @@ getLastObject(): Promise&lt;T&gt;
 
 | 类型             | 说明                                    |
 | ---------------- | --------------------------------------- |
-| Promise&lt;T&gt; | Promise对象，返回结果集中最后一个对象。 |
+| Promise&lt;T&gt; | Promise对象，返回结果集中最后一个文件资产对象。 |
 
 **错误码：**
 
@@ -1050,7 +1058,7 @@ getObjectByPosition(index: number): Promise&lt;T&gt;
 
 | 类型             | 说明                                          |
 | ---------------- | --------------------------------------------- |
-| Promise&lt;T&gt; | Promise对象，返回结果集中指定索引的一个对象。 |
+| Promise&lt;T&gt; | Promise对象，返回结果集中指定索引位置的文件资产对象。 |
 
 **错误码：**
 
@@ -1268,7 +1276,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 commitModify(): Promise&lt;void&gt;
 
-更新相册属性修改到数据库中。使用Promise异步回调。
+将相册属性修改更新到数据库。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -1308,6 +1316,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   };
   let albumList: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.Album> = await phAccessHelper.getAlbums(sendablePhotoAccessHelper.AlbumType.USER, sendablePhotoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
   let album: sendablePhotoAccessHelper.Album = await albumList.getFirstObject();
+ // 修改相册名称并将修改提交到数据库进行持久化保存。
   album.albumName = 'hello';
   album.commitModify().then(() => {
     console.info('commitModify successfully');

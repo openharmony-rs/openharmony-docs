@@ -354,8 +354,8 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled. <br>适用版本：10+ |
-| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -550,8 +550,8 @@ startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): 
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled. <br>适用版本：10+ |
-| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -964,8 +964,8 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled. <br>适用版本：10+ |
-| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000012 | The application is controlled.  |
+| 16000013 | The application is controlled by EDM.  |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1042,8 +1042,8 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled. <br>适用版本：10+ |
-| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000012 | The application is controlled.  |
+| 16000013 | The application is controlled by EDM.  |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1131,8 +1131,8 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled. <br>适用版本：10+ |
-| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000012 | The application is controlled.  |
+| 16000013 | The application is controlled by EDM.  |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1589,7 +1589,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称、Bundle名称等。 |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要连接的Ability的信息，如Ability名称、Bundle名称等。 |
 | options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 连接选项对象，包含服务连接成功、断开或失败时的回调函数。 |
 
 **返回值：**
@@ -1681,9 +1681,9 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 连接Ability的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
-| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 连接选项，用于返回连接成功、连接中断或连接失败的信息。 |
+| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 连接选项对象，包含服务连接成功、断开或失败时的回调函数。 |
 
 **返回值：**
 
@@ -2576,7 +2576,7 @@ openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
+| 16000010 | The call with the continuation flag is forbidden. |
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |

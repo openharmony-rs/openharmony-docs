@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1993d65f86820c55830e90f5d305df8ab2681357 translatedAt=2026-07-30T02:41:33.711Z pushedAt=2026-08-01T06:42:55.903Z -->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-08-21T02:23:08.218Z pushedAt=2026-08-21T07:32:26.152Z -->
 
 The **Flex** component is a container that uses the flexible box model for layout. It provides an efficient mechanism for arranging and aligning child elements, as well as distributing available space among them.
 

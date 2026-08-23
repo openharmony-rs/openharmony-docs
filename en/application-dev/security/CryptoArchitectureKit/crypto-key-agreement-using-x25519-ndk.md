@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:30:42.883Z pushedAt=2026-08-10T09:20:38.951Z -->
 
 For details about the algorithm specifications, see [X25519](crypto-key-agreement-overview.md#x25519).
 
@@ -13,7 +14,7 @@ For details about the algorithm specifications, see [X25519](crypto-key-agreemen
 
 1. Call [OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create), [OH_CryptoAsymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_generate), and [OH_CryptoAsymKeyGenerator_Convert](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_convert) to generate an asymmetric key (**keyPair**) of the X25519 type.
 
-   For details about how to generate an X25519 asymmetric key pair, see the following example. To learn more, see [X25519](crypto-asym-key-generation-conversion-spec.md#x25519) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly-ndk.md). There may be differences between the input parameters in the reference documents and those in the following example.
+    For details on how to generate an X25519 asymmetric key, refer to the example below, along with [Asymmetric Key Generation and Conversion Specifications: X25519](crypto-key-generation-conversion.md#x25519) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly-ndk.md). Note that the referenced documents may differ from the current example in terms of input parameters.
 
 2. Call [OH_CryptoKeyAgreement_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_create) and specify the string parameter **X25519** to create a key protocol generator of the X25519 type.
 
@@ -47,7 +48,7 @@ static OH_Crypto_ErrCode CompareSecrets(Crypto_DataBlob secret1, Crypto_DataBlob
     return CRYPTO_OPERTION_ERROR;
 }
 
-static OH_Crypto_ErrCode CovertKeyPairByBlob(OH_CryptoAsymKeyGenerator *x25519Gen, OH_CryptoKeyPair **keyPair)
+static OH_Crypto_ErrCode ConvertKeyPairByBlob(OH_CryptoAsymKeyGenerator *x25519Gen, OH_CryptoKeyPair **keyPair)
 {
     uint8_t pubKeyArray[] = {48, 42, 48, 5, 6, 3, 43, 101, 110, 3, 33, 0, 36, 98, 216, 106, 74, 99, 179, 203, 81, 145,
                              147, 101, 139, 57, 74, 225, 119, 196, 207, 0, 50, 232, 93, 147, 188, 21, 225, 228, 54, 251,
@@ -73,7 +74,7 @@ OH_Crypto_ErrCode doTestX25519KeyAgreement()
         return ret;
     }
 
-    ret = CovertKeyPairByBlob(x25519Gen, &keyPairA);
+    ret = ConvertKeyPairByBlob(x25519Gen, &keyPairA);
     if (ret != CRYPTO_SUCCESS) {
         goto goto_cleanup;
     }
@@ -113,6 +114,8 @@ goto_cleanup:
     OH_CryptoKeyPair_Destroy(keyPairA);
     OH_CryptoKeyPair_Destroy(keyPairB);
     OH_CryptoAsymKeyGenerator_Destroy(x25519Gen);
-    return CRYPTO_SUCCESS;
+    return ret;
 }
 ```
+
+<!--no_check-->

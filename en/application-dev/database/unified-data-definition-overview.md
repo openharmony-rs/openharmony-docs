@@ -6,7 +6,6 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:38:54.532Z pushedAt=2026-06-25T10:20:25.130Z -->
 
 Efficient data interaction is critical for interaction between devices and applications. The Unified Data Management Framework (UDMF) provides unified data definitions for different applications and devices to reduce the costs in application and service data interaction.
 
@@ -30,7 +29,8 @@ During interactions between devices and applications, a single interaction may c
 
 As shown in the preceding figure, **UnifiedRecord** identifies different records, which contain different data. In each **UnifiedRecord**, the same data is stored in different formats.
 
+## Samples
 
+For the development of unified data definitions, the following sample is available for reference:
 
-
-
+- [UTDType (ArkTS) (API11)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DataManagement/UDMF/UniformTypeDescriptor/UTDType)
