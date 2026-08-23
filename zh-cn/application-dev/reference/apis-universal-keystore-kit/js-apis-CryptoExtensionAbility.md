@@ -10,7 +10,7 @@
 模块提供外部密钥扩展能力，包括资源管理、PIN码认证管理、密码操作、通用操作等接口能力。
 
 ExtensionAbility功能与约束：
-1. 设备管理，单个ExtensionAbility实现，最多支持10个UKey接入。
+1. 设备管理，系统最多注册10个CryptoExtensionAbility Provider。
 2. 句柄管理，针对同一个UKey资源（例如，容器下的密钥），支持应用维度资源句柄管理。
    - 支持多个OpenHarmony应用，打开同一个UKey密钥资源。例如：OpenHarmony应用1打开容器A后，OpenHarmony应用2也可以再次打开容器A。
    - 支持多个OpenHarmony应用，操作同一个UKey密钥资源。例如：OpenHarmony应用1操作容器A中的私钥签名后，OpenHarmony应用2也验证PIN码后，也可以操作容器A中的私钥进行签名，两者互不影响。
@@ -214,7 +214,7 @@ onGetProperty(handle: string, propertyId: string, params: Array\<huksExternalCry
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ----- | ---- | ------|
 | handle | string | 是   | 资源句柄。 |
-| propertyId | string | 是   | 查找操作的属性名称，是GMT 0016-2023中定义的SKF接口名，要业务针对接口名适配。 |
+| propertyId | string | 是   | 查找操作的属性名称。建议使用GMT 0016-2023中定义的SKF接口名，业务需要针对接口名适配。 |
 | params  | Array\<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> \| [HuksCryptoExtensionParam](#hukscryptoextensionparam)[] | 是 | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
 
 **返回值：**
@@ -968,16 +968,16 @@ CryptoExtensionAbility不支持以下模块的引用。
 | MDM Kit | [@ohos.enterprise.browser（浏览器管理）](../../reference/apis-mdm-kit/js-apis-enterprise-browser.md) |
 | MDM Kit | [@ohos.enterprise.bundleManager（包管理）](../../reference/apis-mdm-kit/js-apis-enterprise-bundleManager.md) |
 | MDM Kit | [@ohos.enterprise.common（Enterprise公共模块）](../../reference/apis-mdm-kit/js-apis-enterprise-common.md) |
-| MDM Kit | [@ohos.enterprise.dateTimeManager （系统时间管理）(系统接口)](../../reference/apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md) |
+| MDM Kit | [@ohos.enterprise.dateTimeManager（系统时间管理）(系统接口)](../../reference/apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md) |
 | MDM Kit | [@ohos.enterprise.deviceControl（设备控制管理）](../../reference/apis-mdm-kit/js-apis-enterprise-deviceControl.md) |
 | MDM Kit | [@ohos.enterprise.deviceInfo（设备信息管理）](../../reference/apis-mdm-kit/js-apis-enterprise-deviceInfo.md) |
-| MDM Kit | [@ohos.enterprise.deviceSettings （设备设置管理）](../../reference/apis-mdm-kit/js-apis-enterprise-deviceSettings.md) |
+| MDM Kit | [@ohos.enterprise.deviceSettings（设备设置管理）](../../reference/apis-mdm-kit/js-apis-enterprise-deviceSettings.md) |
 | MDM Kit | [@ohos.enterprise.EnterpriseAdminExtensionAbility（企业设备管理扩展能力）](../../reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md) |
 | MDM Kit | [@ohos.enterprise.locationManager（位置服务管理）](../../reference/apis-mdm-kit/js-apis-enterprise-locationManager.md) |
 | MDM Kit | [@ohos.enterprise.networkManager（网络管理）](../../reference/apis-mdm-kit/js-apis-enterprise-networkManager.md) |
-| MDM Kit | [@ohos.enterprise.restrictions （限制类策略）](../../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md) |
+| MDM Kit | [@ohos.enterprise.restrictions（限制类策略）](../../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md) |
 | MDM Kit | [@ohos.enterprise.securityManager（安全管理）](../../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md) |
-| MDM Kit | [@ohos.enterprise.systemManager （系统管理）](../../reference/apis-mdm-kit/js-apis-enterprise-systemManager.md) |
+| MDM Kit | [@ohos.enterprise.systemManager（系统管理）](../../reference/apis-mdm-kit/js-apis-enterprise-systemManager.md) |
 | MDM Kit | [@ohos.enterprise.telephonyManager（通话管理）](../../reference/apis-mdm-kit/js-apis-enterprise-telephonyManager.md) |
 | MDM Kit | [@ohos.enterprise.usbManager（USB管理）](../../reference/apis-mdm-kit/js-apis-enterprise-usbManager.md) |
 | MDM Kit | [@ohos.enterprise.wifiManager（Wi-Fi管理）](../../reference/apis-mdm-kit/js-apis-enterprise-wifiManager.md) |

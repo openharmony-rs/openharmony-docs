@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:19:03.560Z pushedAt=2026-06-29T14:04:00.233Z -->
+<!-- md-trans-meta sourceCommit=060731dc86ce43c3269dd7ff91aed611767ebd94 translatedAt=2026-08-20T06:24:51.984Z pushedAt=2026-08-20T13:09:39.990Z -->
 
 ## When to Use
 
@@ -92,7 +92,7 @@ struct TestDemo14 {
           let res = inputDevice.supportKeysSync(Number(idTemp), [KeyCode.KEYCODE_FINGERPRINT_SLIDE_UP,
             KeyCode.KEYCODE_FINGERPRINT_SLIDE_DOWN]);
           if (res[0] && res[1]) {
-            console.info(`keyPressed ${idTemp} Device id list supportKeysSync : ${JSON.stringify(res)}`);
+            console.info(`keyPressed ${idTemp} Device id list supportKeysSync: ${JSON.stringify(res)}`);
             resolve(true);
             return;
           }

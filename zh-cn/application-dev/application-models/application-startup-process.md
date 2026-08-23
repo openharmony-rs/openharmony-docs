@@ -11,7 +11,7 @@
 
 应用启动是指用户通过入口（如桌面图标、快捷方式等）触发系统拉起应用的过程。在应用模型中，一次典型的应用启动会依次经历**进程启动**、**AbilityStage启动**、**UIAbility启动**三个阶段，并在此过程中触发对应的生命周期回调。理解三者的关系与时序，有助于开发者在正确的时机完成初始化、资源申请与界面加载。
 
-- **进程启动**：[进程](./process-model-stage.md)是系统进行资源分配的基本单位。当应用的首个进程创建时，意味着应用的启动。默认情况下，应用中（同一Bundle名称）的所有[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件运行在同一个独立进程（主进程）中。如果目标进程尚未创建，系统会先创建应用进程，并在进程内创建主线程进入消息循环；若进程已存在（如热启动场景），则直接复用已有进程。
+- **进程启动**：进程是系统进行资源分配的基本单位，详见[进程模型概述](process-model-overview.md)。当应用的首个进程创建时，意味着应用的启动。默认情况下，应用中（同一Bundle名称）的所有[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件运行在同一个独立进程（主进程）中。如果目标进程尚未创建，系统会先创建应用进程，并在进程内创建主线程进入消息循环；若进程已存在（如热启动场景），则直接复用已有进程。
 
 - **AbilityStage启动**：[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)是一个[Module](../quick-start/application-package-overview.md#应用的多module设计机制)级别的组件管理器，应用的[HAP](../quick-start/hap-package.md)在首次加载时会创建一个AbilityStage实例，每个HAP对应一个AbilityStage实例。在开始加载对应Module的第一个应用组件实例之前，系统会先创建AbilityStage，并在创建完成后执行其[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期回调，用于通知开发者可以对该Module进行初始化。
 

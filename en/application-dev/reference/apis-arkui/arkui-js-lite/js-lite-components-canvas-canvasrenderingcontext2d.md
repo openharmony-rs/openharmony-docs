@@ -6,7 +6,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=015e6dd99f8bdcdb767d5f0c5dc94490a11f868d translatedAt=2026-07-31T01:11:56.749Z pushedAt=2026-07-31T12:04:26.563Z -->
+<!-- md-trans-meta sourceCommit=8e880edaf39c5dd7dc006f9782f0e30f7cde7998 translatedAt=2026-08-20T09:33:06.569Z pushedAt=2026-08-21T02:05:35.438Z -->
 
 **CanvasRenderingContext2D** allows you to draw rectangles and text on a canvas.
 

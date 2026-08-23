@@ -13,9 +13,9 @@ HiLog模块是OpenHarmony提供的C/C++日志记录模块，用于在应用运�
 
 使用场景：开发者在应用开发过程中需要记录运行日志用于问题定位、流程追踪和行为分析时使用本模块接口。通过DEBUG级别日志记录调试日志，跟踪业务流程和运行状态；通过INFO级别日志记录非正常情况下的业务关键节点信息，比如无网络信号或登录失败；在出现异常或错误时，通过WARN、ERROR、FATAL级别日志记录故障信息，快速定位问题根因。
 
-**系统能力：**SystemCapability.HiviewDFX.HiLog
+**系统能力：** SystemCapability.HiviewDFX.HiLog
 
-**起始版本：**8
+**起始版本：** 8
 
 ## 文件汇总
 

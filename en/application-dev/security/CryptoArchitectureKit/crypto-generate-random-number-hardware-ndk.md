@@ -6,12 +6,14 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-07T03:29:25.065Z pushedAt=2026-08-10T09:13:59.738Z -->
 
-From API version 21, you can generate secure random number with hardware entropy sources.
+Starting from API version 21, you can choose to use a hardware entropy source to generate secure random numbers.
 
 Random numbers are used to generate temporary session keys and asymmetric encryption algorithm keys. In encryption and decryption, a secure random number generator must feature randomness, unrepeatability, and unpredictability.
 
 A stronger entropy source makes random numbers harder to predict or replicate, achieving true randomness.
+
 <!--Del-->You need to use HUKS for generating random numbers with hardware entropy sources. For systems or devices with a secure environment (such as TEE and secure chip), after the hardware entropy source is enabled, the secure random number (with hardware entropy source) is obtained from the TEE through HUKS as the entropy source of the algorithm library. The secure environment depends on the hardware. The implementation in the open source repository is simulated, and subject to adaptation by OEM vendors.<!--DelEnd-->
 
 You need to call the [HUKS](../../../application-dev/security/UniversalKeystoreKit/huks-overview.md) APIs to implement the hardware entropy source.
@@ -28,7 +30,7 @@ It will be helpful if you have basic knowledge of encryption and decryption and 
 
 - **Internal state**
 
-  A value in the random number generator memory. The same internal state produces a random number of the same sequence.
+  A value in the random number generator memory. When the internal state is the same, the random number generator will generate a fixed sequence of random numbers.
 
 - **Random seed**
 
@@ -93,7 +95,7 @@ OH_Crypto_ErrCode doTestHardwareRandomNumber()
 
     // Generate a random number of the given length.
     Crypto_DataBlob out = {0};
-    uint32_t randomLength = 24; // Generate a 24-byte random number.
+    int randomLength = 24; // Generate a 24-byte random number.
     ret = OH_CryptoRand_GenerateRandom(rand, randomLength, &out);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoRand_Destroy(rand);

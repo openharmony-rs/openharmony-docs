@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=d5ecb221a878dd87726b231c0cae0dc40333ae04 translatedAt=2026-07-30T02:56:25.329Z pushedAt=2026-07-30T06:55:49.669Z -->
+<!-- md-trans-meta sourceCommit=b8305a550528c0cbc83fb737a1c2658198f914df translatedAt=2026-08-21T03:19:30.601Z pushedAt=2026-08-21T09:12:04.414Z -->
 
 ## Available APIs
 
@@ -126,7 +126,7 @@ This section describes how to use the C/C++ APIs provided by HiAppEvent to subsc
           const char *names[] = {EVENT_RESOURCE_OVERLIMIT};
           // Add the events to watch, for example, system events.
           OH_HiAppEvent_SetAppEventFilter(systemEventWatcher, DOMAIN_OS, 0, names, 1);
-          // Set the implemented callback function. When the observer receives an event, the OnReceive callback is triggered immediately.
+          // Set the implemented callback function. The OnReceive callback is triggered immediately when the watcher receives an event.
           OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcher, OnReceive);
           // Add a watcher to listen for the specified event.
           OH_HiAppEvent_AddWatcher(systemEventWatcher);

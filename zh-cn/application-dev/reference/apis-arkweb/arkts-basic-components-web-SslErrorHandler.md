@@ -10,9 +10,9 @@ SslErrorHandler是Web组件中处理SSL证书验证错误的类。当加载安�
 
 > **说明：**
 >
-> - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 本Class首批接口从API version 9开始支持。
+> - 本Class从API version 9开始支持。
 >
 > - 示例效果请以真机运行为准。
 
@@ -52,4 +52,4 @@ handleCancel(abortLoading: boolean): void
 
 | 参数名          | 类型 | 必填  | 说明             |
 | --------------- | -------- | ----  |------- |
-| abortLoading    | boolean  | 是    | 是否在取消请求后停止加载页面。<br>true表示停止加载页面，false表示继续加载页面。 |
+| abortLoading    | boolean  | 是    | SSL错误页场景，拒绝错误证书后是否终止页面加载；abortLoading为false时表示不终止，为true时表示终止。 |

@@ -6,7 +6,7 @@
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=97b7cfe47e44ccd95055b91afef33a85efa622a9 translatedAt=2026-08-07T04:36:10.539Z pushedAt=2026-08-07T10:15:04.631Z -->
+<!-- md-trans-meta sourceCommit=97b7cfe47e44ccd95055b91afef33a85efa622a9 translatedAt=2026-08-07T04:36:10.539Z pushedAt=2026-08-12T10:10:19.558Z -->
 
 WebviewController is the core controller for various behaviors of the **Web** component, providing extensive functions such as page loading and navigation control, JavaScript interaction, lifecycle management, scroll control, page zoom and content search, message port communication, and cache and certificate management. A WebviewController object can control only one **Web** component, and methods on WebviewController (except static methods) can be called only after the **Web** component is bound to WebviewController.
 
@@ -5150,7 +5150,7 @@ Sets a custom user agent, which will overwrite the default user agent.
 >
 > - When **src** of the **Web** component is not set to a URL, it is recommended to call **setCustomUserAgent** to set **User-Agent** first, and then use **loadUrl** to load a specific page.
 >
-> - For the definition and usage scenarios of the default **User-Agent**, see [User-Agent Development Guide](../../web/web-default-user-agent.md).
+> - For the definition and usage scenarios of the default **User-Agent**, see [User-Agent Development Guide](../../web/web-default-userAgent.md).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -8564,7 +8564,7 @@ struct Example{
 
 setUrlTrustList(urlTrustList: string): void
 
-Sets a URL trust list for the Web. Only URLs in the trust list are allowed to be loaded or navigated to. Otherwise, they are intercepted and an alert page is displayed.
+Sets a URL trustlist for the Web. Only URLs in the trustlist are allowed to be loaded or navigated to. Otherwise, they are intercepted and an alert page is displayed.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -8572,7 +8572,7 @@ Sets a URL trust list for the Web. Only URLs in the trust list are allowed to be
 
 | Name | Type   | Mandatory| Description                 |
 | ------- | ------ | ---- | :-------------------- |
-| urlTrustList | string | Yes | URL whitelist, configured in JSON format. The maximum size is 10 MB.<br/>The whitelist setting API uses an overwrite mode. When the API is called multiple times, the last setting takes effect.<br/>When this parameter is set to an empty string, the whitelist is canceled and access to all URLs is allowed.<br/>JSON format example:<br/>{<br/>&nbsp;&nbsp;"UrlPermissionList":&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"https",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example1.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;443,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"pathA/pathB"<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"http",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example2.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;80,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"test1/test2/test3"<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>} |
+| urlTrustList | string | Yes | URL trustlist, configured in JSON format. The maximum size is 10 MB.<br/>The trustlist setting API uses an overwrite mode. When the API is called multiple times, the last setting takes effect.<br/>When this parameter is set to an empty string, the trustlist is canceled and access to all URLs is allowed.<br/>JSON format example:<br/>{<br/>&nbsp;&nbsp;"UrlPermissionList":&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"https",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example1.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;443,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"pathA/pathB"<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"http",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example2.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;80,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"test1/test2/test3"<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>} |
 
 **Parameters in JSON format**:
 
@@ -8581,7 +8581,7 @@ Sets a URL trust list for the Web. Only URLs in the trust list are allowed to be
 | scheme | string   | No| Optional parameter. The supported protocols are HTTP and HTTPS.|
 | host | string | Yes | Mandatory parameter. Exact match: the request is allowed only when the host field of the URL exactly matches the rule field. Multiple rules can take effect simultaneously for the same host. |
 | port | number | No| Optional parameter.|
-| path | string | No| Optional parameter. This field uses prefix matching. For example, in **pathA/pathB/pathC**, **pathA/pathB/** is specified, and all level-3 directories such as **pathC** can be accessed, which must be a complete directory name or file name. Partial matching is not allowed.|
+| path | string | No| Optional parameter. This field uses prefix matching. For example, in **pathA/pathB/pathC**, all level-3 directories such as **pathC** can be accessed, which must be a complete directory name or file name. Partial matching is not allowed.|
 
 **Error codes**
 
@@ -8619,7 +8619,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
         Button('Cancel the trustlist.')
           .onClick(() => {
             try {
-              // An empty string disables the whitelist mechanism, allowing access to all URLs.
+              // An empty string disables the trustlist mechanism, allowing access to all URLs.
               this.controller.setUrlTrustList("");
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -8645,7 +8645,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
           })
         Web({ src: 'http://untrust.example.com/test', controller: this.controller }).onControllerAttached(() => {
           try {
-            // Set the whitelist in the onControllerAttached callback to ensure it takes effect before the URL is loaded. In this case, untrusted web pages cannot be accessed, and an error page is displayed.
+            // Set the trustlist in the onControllerAttached callback to ensure it takes effect before the URL is loaded. In this case, untrusted web pages cannot be accessed, and an error page is displayed.
             this.controller.setUrlTrustList(this.urltrustList);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -11147,7 +11147,7 @@ For details about the sample code, see [setUserAgentClientHintsEnabled](#setuser
 
 setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcard: boolean): void
 
-Sets a URL trust list for the Web. Only URLs in the trust list are allowed to be loaded or navigated to. Otherwise, they are intercepted and an alert page is displayed. This API extends the control over opaque origin URLs and wildcard rules.
+Sets a URL trustlist for the Web. Only URLs in the trustlist are allowed to be loaded or navigated to. Otherwise, they are intercepted and an alert page is displayed. This API extends the control over opaque origin URLs and wildcard rules.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -11155,7 +11155,7 @@ Sets a URL trust list for the Web. Only URLs in the trust list are allowed to be
 
 | Name | Type   | Mandatory| Description                 |
 | ------- | ------ | ---- | :-------------------- |
-| urlTrustList | string | Yes | URL whitelist configured in JSON format, with a maximum size of 10 MB.<br/>The whitelist setting uses an overwrite mode. When this API is called multiple times, the last setting takes effect.<br/>When this parameter is set to an empty string, the whitelist is canceled and all URLs are allowed.<br/>JSON format example:<br/>{<br/>&nbsp;&nbsp;"UrlPermissionList":&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"https",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example1.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;443,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"pathA/pathB"<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"http",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example2.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;80,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"test1/test2/test3"<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>} |
+| urlTrustList | string | Yes | URL trustlist configured in JSON format, with a maximum size of 10 MB.<br/>The trustlist setting uses an overwrite mode. When this API is called multiple times, the last setting takes effect.<br/>When this parameter is set to an empty string, the trustlist is canceled and all URLs are allowed.<br/>JSON format example:<br/>{<br/>&nbsp;&nbsp;"UrlPermissionList":&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"https",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example1.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;443,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"pathA/pathB"<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"http",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example2.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;80,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"test1/test2/test3"<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>} |
 | allowOpaqueOrigin | boolean | Yes | Whether to allow loadUrl to directly load [opaque origin URLs](https://mdn.org.cn/en-US/docs/Web/URI/Reference/Schemes) such as javascript/data. The value **true** means allowed, and **false** means not allowed. |
 | supportWildcard | boolean | Yes| Whether to support wildcard matching for **host** and **path**. For example, to allow access to **a.example.com** and **b.example.com** when ***.example.com** is configured in the trustlist. **true** to support, and **false** otherwise.|
 
@@ -11205,7 +11205,7 @@ struct WebComponent {
       Button('Setting the wildcardlist')
         .onClick(() => {
           try {
-            // Set the wildcard allowlist so that all URLs are allowed for access.
+            // Set the wildcard trustlist so that all URLs are allowed for access.
             this.controller.setUrlTrustList(this.urlWildcardList, true, true);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -11214,7 +11214,7 @@ struct WebComponent {
       Button('Cancel the trustlist.')
         .onClick(() => {
           try {
-            // Pass an empty string to the allowlist to disable the allowlist mechanism, so that all URLs are allowed for access.
+            // Pass an empty string to the trustlist to disable the trustlist mechanism, so that all URLs are allowed for access.
             this.controller.setUrlTrustList("");
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -11240,7 +11240,7 @@ struct WebComponent {
         })
       Web({ src: 'http://untrust.example.com/test', controller: this.controller }).onControllerAttached(() => {
         try {
-          // Set the allowlist in the onControllerAttached callback to ensure it takes effect before the URL is loaded. In this case, untrusted web pages cannot be accessed and an error page is displayed.
+          // Set the trustlist in the onControllerAttached callback to ensure it takes effect before the URL is loaded. In this case, untrusted web pages cannot be accessed and an error page is displayed.
           this.controller.setUrlTrustList(this.urltrustList);
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -11518,4 +11518,3 @@ struct WebComponent {
 ```
 
 > **Example description:** The `iframe_error.html` file used in the example is the same as that in the [setErrorPageEnabled](#seterrorpageenabled) example, and must be placed in the `resources/rawfile/` directory of the app resources.
-<!--no_check-->

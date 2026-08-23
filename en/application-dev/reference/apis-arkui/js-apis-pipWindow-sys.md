@@ -1,29 +1,28 @@
 # @ohos.PiPWindow (PiP Window) (System API)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @betafringe007-->
 <!--Designer: @taoweihua-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=75ebd2e725f59c620a708b014749d381526b576a translatedAt=2026-08-20T02:05:16.776Z pushedAt=2026-08-20T07:12:46.178Z -->
 
-The module provides basic APIs for manipulating Picture in Picture (PiP). For example, you can use the APIs to check whether the PiP feature is supported and create a PiP controller to start or stop a PiP window. In this way, users can continue watching videos in a small window while performing other operations, improving multitasking efficiency. This module is mainly used to display content in PiP mode in video playback, video calls, video meetings, or in-vehicle video.
+This module provides basic APIs for manipulating Picture in Picture (PiP). For example, you can use the APIs to check whether the PiP feature is supported and create a PiP controller to start or stop a PiP window. In this way, users can continue watching videos in a small window while performing other operations, improving multitasking efficiency. This module is mainly used to display content in small window (PiP) mode in video playback, video calls, video meetings, in-vehicle video, or in-vehicle navigation.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - Before <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported only on phones and tablets. Since <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported only on phones, PCs/2-in-1 devices, and tablets. Since OpenHarmony 7.0.0, the PiP feature is supported only on phones, PCs/2-in-1 devices, tablets, and cars.
+> - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the current device supports this system capability and the corresponding APIs.
 >
-> - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
->
-> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.PiPWindow (PiP Window)](js-apis-pipWindow.md).
+> - This topic describes only the system APIs provided by this module. For details about its public APIs, see [@ohos.PiPWindow (PiP Window)](js-apis-pipWindow.md).
 
 ## Modules to Import
 
 ```ts
 import { PiPWindow } from '@kit.ArkUI';
 ```
-
 
 ## PiPTemplateType
 
@@ -35,7 +34,8 @@ Enumerates the PiP template types.
 
 | Name           | Value  | Description                                  |
 |---------------|-----|--------------------------------------|
-| VIDEO_DRIVE   | 4   | In-vehicle video template, which is loaded when a PiP window is started on cars.<br>**Since:** 26.0.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br> **Device behavior differences:** This template type can be properly called on cars. If it is called on other device types, error code 801 is returned.|
+| VIDEO_DRIVE   | 4   | In-vehicle video template, which is loaded when a PiP window is started on cars.<br>**Since:** 26.0.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br> **Device behavior differences:** This template type can be properly called on cars. If it is called on other device types, error code 401 is returned.|
+| VIDEO_NAVIGATION   | 5   | In-vehicle navigation template, which is loaded when a PiP window is started on cars.<br>**Since:** 26.1.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.1.0.<br> **Device behavior differences:** This template type can be properly called on cars. If it is called on other device types, error code 401 is returned.|
 
 ## PiPController
 

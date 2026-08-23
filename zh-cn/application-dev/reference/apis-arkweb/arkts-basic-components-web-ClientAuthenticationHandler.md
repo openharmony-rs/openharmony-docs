@@ -12,7 +12,7 @@ ClientAuthenticationHandler是Web组件中处理SSL客户端证书认证请求�
 >
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 本Class首批接口从API version 9开始支持。
+> - 本Class从API version 9开始支持。
 >
 > - 示例效果请以真机运行为准。
 
@@ -45,7 +45,9 @@ confirm(authUri : string): void
 
 通知Web组件使用指定的凭据（从证书管理模块获得）。
 
-**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
+> **说明：**
+>
+> authUri参数需通过系统证书管理器获取，需配置ohos.permission.ACCESS_CERT_MANAGER权限。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -74,7 +76,9 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| strin
 
 通知Web组件使用从证书管理模块获取的指定凭据和凭据类型。
 
-**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
+> **说明：**
+>
+> identity参数需通过系统证书管理器获取，需配置ohos.permission.ACCESS_CERT_MANAGER权限。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

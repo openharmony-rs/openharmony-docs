@@ -6,12 +6,14 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=9fdfc79fd811dbd3830944fd4ada4372911e5c41 translatedAt=2026-08-07T03:33:24.788Z pushedAt=2026-08-10T10:04:11.958Z -->
 
 HarmonyOS supports the conversion between the DER and R|S formats.
 
 You can specify SM2 ciphertext parameters and convert them to DER ciphertext. You can also extract SM2 ciphertext parameters from DER ciphertext.
 
 **Converting Ciphertext Parameters to DER Ciphertext**
+
 1. Call [OH_CryptoEccSignatureSpec_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_create) to create an [OH_CryptoEccSignatureSpec](../../reference/apis-crypto-architecture-kit/capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md) object for setting SM2 ciphertext parameters.
 
 2. Call [OH_CryptoEccSignatureSpec_SetRAndS](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_setrands) to set the **R** and **S** parameters in the **OH_CryptoEccSignatureSpec** object.
@@ -69,7 +71,6 @@ OH_Crypto_ErrCode DoTestSm2RStoDER()
     return CRYPTO_SUCCESS;
 }
 ```
-
 
 **Converting DER Ciphertext to the R and S Parameters**
 

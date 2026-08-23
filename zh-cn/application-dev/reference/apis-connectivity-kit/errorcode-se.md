@@ -64,11 +64,11 @@ SecurityError, the calling application cannot be granted access to this AID or t
 
 **可能原因**
 
-1. 安全单元上没有应用所依赖的访问规则。
+安全单元上没有应用所依赖的访问控制规则。
 
 **处理步骤**
 
-1. 写入正确的访问规则到安全单元上。
+1. 写入正确的访问控制规则到安全单元上。
 2. 关闭SE服务后重新建立连接。
 
 ## 3300104 SE芯片IO异常

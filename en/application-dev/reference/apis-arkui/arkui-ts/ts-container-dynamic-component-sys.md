@@ -6,9 +6,9 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c43314d48e5bb6db0c940e002f5fb3a101c7f656 translatedAt=2026-07-30T02:39:08.533Z pushedAt=2026-08-01T06:42:55.895Z -->
+<!-- md-trans-meta sourceCommit=ef5506642718b24289c6aa216632b7a5e19e795e translatedAt=2026-08-21T02:22:42.372Z pushedAt=2026-08-21T07:27:56.358Z -->
 
-**DynamicComponent** is designed to support the embedding and display of UIs provided by independent .abc files within the current page, with the displayed content running in a worker thread.
+**DynamicComponent** is designed to support the embedding and display of UIs provided by independent Abc (Ark bytecode, .abc files) within the current page, with the displayed content running in a worker thread.
 
 It is typically used in modular development scenarios where .abc pages are dynamically loaded. The .abc UI runs in isolation in a worker thread, preventing the main thread from being blocked and improving app smoothness.
 
@@ -39,13 +39,13 @@ Creates a **DynamicComponent** component to display the .abc UI running in the w
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [DynamicOptions](#dynamicoptions) | Yes| Configuration parameters for constructing a **DynamicComponent**, which are used to configure the entry of the .abc page to be loaded, worker thread to run, and display options.|
+| options | [DynamicOptions](#dynamicoptions) | Yes | Configuration parameters for constructing a **DynamicComponent**, which are used to configure the entry of the .abc page to be loaded, worker thread to run, display options, and cross-process nesting. |
 
 ## Worker
 
 type Worker = Worker
 
-Defines the worker thread object for running the .abc file.
+Worker thread object used to run .abc. It must be created through **worker.ThreadWorker**.
 
 **Since:** 26.0.0
 
@@ -83,14 +83,13 @@ Defines the parameters to be passed during **DynamicComponent** construction.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
-
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | entryPoint | string | No | No | The .abc page entry to load. The value format is 'bundleName/moduleName/pagePath', for example, 'com.example.myapplication/entry/ets/pages/DynamicPage'. |
 | worker | [Worker](#worker) | No | No | Worker thread object used to run the .abc, which must be created through **worker.ThreadWorker**. The Worker executes the UI logic of the .abc in an independent thread and communicates with the main thread. |
 | backgroundTransparent | boolean | No | Yes | Whether to enable background transparency for the component.<br>**true**: enable background transparency; **false**: disable background transparency.<br>Default value: **false** |
 | allowCrossProcessNesting | boolean | No | Yes | Whether to allow cross-process [UIExtensionComponent](./ts-container-ui-extension-component-sys.md) nesting.<br>**true**: allow cross-process nesting; **false**: disallow cross-process nesting.<br>Default value: **false** |
+| allowOccupied | boolean | No | Yes | Whether to allow the **DynamicComponent** to avoid the keyboard internally.<br>**true**: allow avoiding the keyboard; **false**: do not allow avoiding the keyboard.<br>Default value: **false** |
 
 ## Attributes
 
@@ -161,7 +160,7 @@ struct Index {
         .height('60%')
         .onError((error: BusinessError) => {
           this.errorMessage = `code: ${error.code}, message: ${error.message}`;
-          hilog.error(0x0000, 'DynamicComponentDemo', `onError: ${this.errorMessage}`);
+          console.error(`onError: code: ${error.code}, message: ${error.message}`);
         })
         .borderWidth(10)
         .borderColor(Color.Red)

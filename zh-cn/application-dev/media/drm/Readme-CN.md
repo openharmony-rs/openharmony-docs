@@ -1,10 +1,11 @@
 # DRM Kit（数字版权保护服务）
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
 
 - [DRM Kit 简介](drm-overview.md)
 - [数字版权保护(ArkTS)](drm-arkts-dev-guide.md)

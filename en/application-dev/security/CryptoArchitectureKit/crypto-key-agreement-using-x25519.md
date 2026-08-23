@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:30:49.497Z pushedAt=2026-08-10T09:21:43.897Z -->
 
 For details about the algorithm specifications, see [X25519](crypto-key-agreement-overview.md#x25519).
 
@@ -13,7 +14,7 @@ For details about the algorithm specifications, see [X25519](crypto-key-agreemen
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator), [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1), and [AsyKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-3) to generate an X25519 asymmetric key pair (**KeyPair**).
 
-   In addition to the example in this topic, [X25519](crypto-asym-key-generation-conversion-spec.md#x25519) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md) may help you better understand how to generate an X25519 asymmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
+For guidance on generating an X25519 asymmetric key, refer to the following example, in conjunction with [Asymmetric Key Generation and Conversion Specifications: X25519](crypto-key-generation-conversion.md#x25519) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). Note that the referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [cryptoFramework.createKeyAgreement](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekeyagreement) with the string parameter **'X25519'** to create a key agreement (**KeyAgreement**) that uses the X25519 key algorithm.
 
@@ -22,7 +23,7 @@ For details about the algorithm specifications, see [X25519](crypto-key-agreemen
 - Example (using asynchronous APIs):
 
   <!-- @[use_x25519a_for_key_negotiation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/X25519/X25519Async.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
@@ -54,15 +55,14 @@ For details about the algorithm specifications, see [X25519](crypto-key-agreemen
   }
   ```
 
-
 - Example (using synchronous APIs):
 
   <!-- @[use_x25519a_for_key_negotiation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/X25519/X25519Sync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
-  function x25519Await() {
+  function x25519Sync() {
     // The public and private key pair data is transferred from an external system.
     let pubKeyArray =
       new Uint8Array([48, 42, 48, 5, 6, 3, 43, 101, 110, 3, 33, 0, 36, 98, 216, 106, 74, 99, 179, 203, 81, 145, 147, 101,
@@ -89,3 +89,5 @@ For details about the algorithm specifications, see [X25519](crypto-key-agreemen
     }
   }
   ```
+
+  <!--no_check-->

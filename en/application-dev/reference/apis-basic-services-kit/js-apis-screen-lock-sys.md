@@ -119,7 +119,7 @@ For details about error codes, see [Universal Error Codes](../errorcode-universa
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
-| 13200003  | illegal use.         |
+| 13200003  | Invalid use.        |
 
 **Example**
 
@@ -137,7 +137,7 @@ For details about error codes, see [Universal Error Codes](../errorcode-universa
 
 > **NOTE**
 >
-> The error code **13200003 illegal use** is added since API version 11.
+> The error code **13200003 Invalid use** is added since API version 11.
 
 ## screenLock.unlock<sup>9+</sup>
 
@@ -163,7 +163,7 @@ For details about error codes, see [Universal Error Codes](../errorcode-universa
 | -------- | ---------------------------------------- |
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
-| 13200003  | illegal use.         |
+| 13200003  | Invalid use.           |
 
 **Example**
 
@@ -179,7 +179,7 @@ For details about error codes, see [Universal Error Codes](../errorcode-universa
 
 > **NOTE**
 >
-> The error code **13200003 illegal use** is added since API version 11.
+> The error code **13200003 Invalid use** is added since API version 11.
 
 ## screenLock.lock<sup>9+</sup>
 

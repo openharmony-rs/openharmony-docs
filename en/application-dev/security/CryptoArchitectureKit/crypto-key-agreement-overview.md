@@ -6,8 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=78d27a16851062ae03d6a51de8b99e33aec772a0 translatedAt=2026-08-07T03:30:01.652Z pushedAt=2026-08-10T09:18:56.410Z -->
 
-Key agreement allows two or more parties to jointly establish a shared key in a non-secure environment.
+A key agreement algorithm can be used when two communicating parties need to negotiate a secure shared secret over an insecure channel without pre-sharing any secret.
 
 This topic describes the key agreement algorithms and specifications supported by the system.
 

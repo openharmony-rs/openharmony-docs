@@ -38,6 +38,7 @@
 | [custom_attributes.h](capi-native-node-node-attributes-custom-attributes-h.md) | 为NativeNode API提供自定义组件的测量、布局和绘制事件类型定义，用于注册和处理测量、布局以及内容层、前景层和浮层的绘制事件。 |
 | [grid.h](capi-grid-h.md) | 定义Grid组件的枚举和接口。 |
 | [list.h](capi-list-h.md) | 定义List组件的枚举和接口。 |
+| [list_item.h](capi-list-item-h.md) | 定义ListItem组件侧滑操作相关的枚举和接口。 |
 | [navigation_router.h](capi-navigation-router-h.md) | 定义Navigation或Router组件的枚举和接口。 |
 | [scroll.h](capi-scroll-h.md) | 定义Scroll组件相关的枚举。 |
 | [swiper.h](capi-swiper-h.md) | 定义Swiper组件的枚举和接口。 |
@@ -54,6 +55,7 @@
 | [native_node.h](capi-native-node-h.md) | 提供NativeNode接口的类型定义。 |
 | [native_node_napi.h](capi-native-node-napi-h.md) | 提供将ArkTS侧的FrameNode转换为ArkUI_NodeHandle的方式。 |
 | [native_type.h](capi-native-type-h.md) | 提供NativeModule公共的类型定义。 |
+| [native_type_visual.h](capi-native-type-visual-h.md) | 提供NativeModule视觉相关的类型定义。 |
 | [text.h](capi-text-h.md) | 定义Text相关的枚举和接口，用于配置文本样式、控制跑马灯效果、实现文本实体识别以及管理文本控制器等功能。适用于需要自定义文本显示效果、实现动态文本交互、识别文本中特殊实体（如地址、电话号码）以及精确控制文本字体粗细等场景。通过这些配置接口，开发者可以灵活控制文本组件的显示效果和交互行为，提升用户体验。 |
 | [text_common.h](capi-text-common-h.md) | 定义文本类组件通用的枚举和接口，涵盖文本对齐、装饰线样式、复制粘贴、溢出处理、断行策略、菜单定制等多种能力，适用于文本输入框、文本显示等场景，帮助开发者灵活控制文本样式与交互行为，降低开发复杂度。 |
 | [text_input.h](capi-text-input-h.md) | 定义TextInput相关的枚举。支持多种输入类型配置（包括文本、数字、密码、邮箱、电话号码等）、清除按钮样式定制、自动填充内容类型设置和输入框风格选择，适用于登录注册、表单填写、搜索输入等需要用户交互输入的场景，帮助开发者快速实现符合业务需求的单行文本输入功能。 |
@@ -68,3 +70,4 @@
 | [slider.h](capi-slider-h.md) | 为NativeNode API提供Slider节点类型定义。 |
 | [styled_string.h](capi-styled-string-h.md) | 提供ArkUI在Native侧的属性字符串能力。 |
 | [xcomponent.h](capi-xcomponent-h.md) | XComponent组件的枚举类型定义。 |
+| [error_code.h](capi-arkui-nativemodule-arkui-error-code-h.md) |  定义ArkUI Native API的错误码枚举值。 |

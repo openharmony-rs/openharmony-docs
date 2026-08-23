@@ -902,3 +902,20 @@ MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)�
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.1.0
+
+## ohos.permission.ENTERPRISE_ENCRYPT_BLOCK_DEVICE
+
+允许MDM应用挂载和卸载加密U盘加密区与交换区。
+
+<!--RP1--><!--RP1End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0

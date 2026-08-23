@@ -2,19 +2,19 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lanshouren-->
-<!--Designer: @lanshouren-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=214e29279f37b00be7bd8f1096b2e4dc3af96177 translatedAt=2026-07-31T01:12:41.011Z pushedAt=2026-07-31T12:04:26.578Z -->
+<!-- md-trans-meta sourceCommit=6fe7637a70c7b28e45b74b3b03e42cd79d892719 translatedAt=2026-08-20T09:33:19.755Z pushedAt=2026-08-21T02:05:33.534Z -->
 
 >  **NOTE**
 >
 >  - The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  - The **media** attribute uses the actual size, physical pixel, and screen resolution of the device by default.
+>  - The **media** attribute uses the actual size and physical pixel of the device by default.
 
-Media queries are widely used. You can use them to modify the application style based on the device type or specific features and device parameters (such as the screen resolution). Specifically, media queries allow you to design a layout style based on the device and application attributes.
+Media queries are widely used. You can use them to modify the app style based on the device type or specific features and device parameters (such as the screen size). Specifically, media queries allow you to design a layout style based on the device and app attributes.
 
 ## CSS Syntax Rules
 
@@ -67,6 +67,7 @@ You can use media logical operators (**and** and **or<sup>9+</sup>**) to impleme
 | aspect-ratio     | Ratio of the width to the height of the display area on the application page.<br>Example: **aspect-ratio: 1/2**|
 | min-aspect-ratio | Minimum ratio of the width to the height of the display area on the application page.                    |
 | max-aspect-ratio | Maximum ratio of the width to the height of the display area on the application page.                    |
+| device-type      | Type of the device.<br/>Available options: **liteWearable** and **smartVision** |
 | round-screen     | Screen type. The value **true** means that the screen is round, and **false** means the opposite.|
 
 ## Sample Code for the Common Media Feature

@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f8ecdb82f3ec053eb7dde21e27a6f047d194898a translatedAt=2026-07-17T09:24:26.714Z pushedAt=2026-07-17T10:55:31.522Z -->
+<!-- md-trans-meta sourceCommit=307c96700aa31ceaed2d16437f8e9e4fabcbd960 translatedAt=2026-08-19T08:23:25.661Z pushedAt=2026-08-20T02:09:00.036Z -->
 
 ```c
 typedef ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray
@@ -14,7 +14,7 @@ typedef ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray
 
 ## Overview
 
-Defines the object of a gesture recognizer handle array, which is used in scenarios where multiple gesture recognizer handles need to be represented or transferred.
+Defines a gesture recognizer handle array, which is used to represent or pass multiple gesture recognizer handles, for example, to obtain the collection of gesture recognizers in the response chain. For details about the mechanism and usage, see the gesture API description in [native_gesture.h](capi-native-gesture-h.md).
 
 **Since**: 12
 

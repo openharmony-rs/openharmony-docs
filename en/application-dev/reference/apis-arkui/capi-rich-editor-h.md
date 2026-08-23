@@ -1,14 +1,16 @@
 # rich_editor.h
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=2c5ecf1461774eee81076a9dfbe0054fd9d94ff3 translatedAt=2026-08-10T03:34:22.570Z pushedAt=2026-08-11T01:05:19.178Z -->
 
 ## Overview
 
-Defines enumerations and APIs related to **RichEditor**.
+Defines structs, enumerations, and APIs related to **RichEditor**. **RichEditor** provides rich text editing capabilities, supporting custom text selection menus, styled string controllers, paragraph and text style settings, and haptic feedback control. It is suitable for scenarios where rich text editing and custom interaction menus need to be implemented in applications.
 
 **File to include:** <arkui/node_attributes/rich_editor.h>
 
@@ -47,15 +49,15 @@ Defines enumerations and APIs related to **RichEditor**.
 
 | Name| Description|
 | -- | -- |
-| [OH_ArkUI_TextEditorPlaceholderOptions* OH_ArkUI_TextEditorPlaceholderOptions_Create()](#oh_arkui_texteditorplaceholderoptions_create) | Creates an option object for the placeholder text used when there is no input. When the object is no longer used, call [OH_ArkUI_TextEditorPlaceholderOptions_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorplaceholderoptions_destroy) to destroy it.|
+| [OH_ArkUI_TextEditorPlaceholderOptions* OH_ArkUI_TextEditorPlaceholderOptions_Create()](#oh_arkui_texteditorplaceholderoptions_create) | Creates an option object for the placeholder text used when there is no input. When the object is no longer used, call [OH_ArkUI_TextEditorPlaceholderOptions_Destroy](#oh_arkui_texteditorplaceholderoptions_destroy) to destroy it. |
 | [void OH_ArkUI_TextEditorPlaceholderOptions_Destroy(OH_ArkUI_TextEditorPlaceholderOptions* options)](#oh_arkui_texteditorplaceholderoptions_destroy) | Destroys the option object for the placeholder text used when there is no input.|
-| [OH_ArkUI_TextEditorStyledStringController* OH_ArkUI_TextEditorStyledStringController_Create()](#oh_arkui_texteditorstyledstringcontroller_create) | Creates a styled string controller object for the text editor. When the object is no longer used, call [OH_ArkUI_TextEditorStyledStringController_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorstyledstringcontroller_destroy) to destroy it.|
+| [OH_ArkUI_TextEditorStyledStringController* OH_ArkUI_TextEditorStyledStringController_Create()](#oh_arkui_texteditorstyledstringcontroller_create) | Creates a styled string controller object. When the object is no longer used, call [OH_ArkUI_TextEditorStyledStringController_Destroy](#oh_arkui_texteditorstyledstringcontroller_destroy) to destroy it. |
 | [void OH_ArkUI_TextEditorStyledStringController_Destroy(OH_ArkUI_TextEditorStyledStringController* controller)](#oh_arkui_texteditorstyledstringcontroller_destroy) | Destroys the styled string controller object.|
-| [OH_ArkUI_TextEditorParagraphStyle* OH_ArkUI_TextEditorParagraphStyle_Create()](#oh_arkui_texteditorparagraphstyle_create) | Creates a paragraph style object for the text editor. When the object is no longer used, call [OH_ArkUI_TextEditorParagraphStyle_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorparagraphstyle_destroy) to destroy it.|
+| [OH_ArkUI_TextEditorParagraphStyle* OH_ArkUI_TextEditorParagraphStyle_Create()](#oh_arkui_texteditorparagraphstyle_create) | Creates a paragraph style object. When the object is no longer used, call [OH_ArkUI_TextEditorParagraphStyle_Destroy](#oh_arkui_texteditorparagraphstyle_destroy) to destroy it. |
 | [void OH_ArkUI_TextEditorParagraphStyle_Destroy(OH_ArkUI_TextEditorParagraphStyle* style)](#oh_arkui_texteditorparagraphstyle_destroy) | Destroys the paragraph style object.|
-| [OH_ArkUI_TextEditorTextStyle* OH_ArkUI_TextEditorTextStyle_Create()](#oh_arkui_texteditortextstyle_create) | Creates a text style object. When the object is no longer used, call [OH_ArkUI_TextEditorTextStyle_Destroy](capi-rich-editor-h.md#oh_arkui_texteditortextstyle_destroy) to destroy it.|
+| [OH_ArkUI_TextEditorTextStyle* OH_ArkUI_TextEditorTextStyle_Create()](#oh_arkui_texteditortextstyle_create) | Creates a text style object. When the object is no longer used, call [OH_ArkUI_TextEditorTextStyle_Destroy](#oh_arkui_texteditortextstyle_destroy) to destroy it. |
 | [void OH_ArkUI_TextEditorTextStyle_Destroy(OH_ArkUI_TextEditorTextStyle* style)](#oh_arkui_texteditortextstyle_destroy) | Destroys the text style object.|
-| [OH_ArkUI_TextEditorSelectionMenuOptions* OH_ArkUI_TextEditorSelectionMenuOptions_Create()](#oh_arkui_texteditorselectionmenuoptions_create) | Creates a text selection menu option object of the text editor. When the object is no longer used, call [OH_ArkUI_TextEditorSelectionMenuOptions_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorselectionmenuoptions_destroy) to destroy it.|
+| [OH_ArkUI_TextEditorSelectionMenuOptions* OH_ArkUI_TextEditorSelectionMenuOptions_Create()](#oh_arkui_texteditorselectionmenuoptions_create) | Creates a text selection menu option object of the text editor. When the object is no longer used, call [OH_ArkUI_TextEditorSelectionMenuOptions_Destroy](#oh_arkui_texteditorselectionmenuoptions_destroy) to destroy it. |
 | [void OH_ArkUI_TextEditorSelectionMenuOptions_Destroy(OH_ArkUI_TextEditorSelectionMenuOptions* options)](#oh_arkui_texteditorselectionmenuoptions_destroy) | Destroys the text selection menu option object of the text editor.|
 
 ## Enum Description
@@ -68,7 +70,7 @@ enum OH_ArkUI_HapticFeedbackMode
 
 **Description**
 
-Enumerates haptic feedback modes.
+Enumerates haptic feedback modes, which are used to control the haptic feedback behavior of the text editor during user interactions (such as long press, drag, and other operations).
 
 **Since:** 24
 
@@ -86,7 +88,7 @@ enum OH_ArkUI_TextEditorSpanType
 
 **Description**
 
-Enumerates the span types of a custom text selection menu.
+Enumerates the span types of a custom text selection menu, which are used to identify the span type of the text selection menu in the text editor. Different span types correspond to different content structures, affecting the display and interaction behavior of the custom menu. For example, the **TEXT** type is used when the user selects only text content, the **MIXED** type is used when the selection contains mixed content such as text and images, and the **BUILDER** type is used when a custom menu item layout is required.
 
 **Since:** 24
 
@@ -106,7 +108,7 @@ enum OH_ArkUI_TextEditorResponseType
 
 **Description**
 
-Enumerates the response types of a custom text selection menu.
+Enumerates the response types of a custom text selection menu, which are used to identify the interaction method that triggers the menu pop-up. Different response types correspond to different user operations (such as right-click, long press, and mouse-based selection), allowing different menu content to be customized based on the response type.
 
 **Since:** 24
 
@@ -125,7 +127,7 @@ enum OH_ArkUI_TextMenuType
 
 **Description**
 
-Enumerates text menu types.
+Enumerates text menu types, which are used to distinguish different types of pop-up menus in the text editor, including the text selection menu and the preview menu. Different menu types correspond to different interaction scenarios and menu display modes. For example, the text selection menu pops up when the user selects text and is used for text operations such as copy and delete; the preview menu pops up when the user long-presses an image and is used to trigger image content drag preview as well as copy and deletion operations.
 
 **Since:** 24
 
@@ -133,7 +135,6 @@ Enumerates text menu types.
 | -- | -- |
 | OH_ARKUI_TEXT_EDITOR_SELECTION_MENU = 0 | Text selection menu.|
 | OH_ARKUI_TEXT_EDITOR_PREVIEW_MENU = 1 | Preview menu.|
-
 
 ## Function Description
 
@@ -145,7 +146,7 @@ OH_ArkUI_TextEditorPlaceholderOptions* OH_ArkUI_TextEditorPlaceholderOptions_Cre
 
 **Description**
 
-Creates an option object for the placeholder text used when there is no input. When the object is no longer used, call [OH_ArkUI_TextEditorPlaceholderOptions_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorplaceholderoptions_destroy) to destroy it.
+Creates an option object for the placeholder text used when there is no input. When the object is no longer used, call [OH_ArkUI_TextEditorPlaceholderOptions_Destroy](#oh_arkui_texteditorplaceholderoptions_destroy) to destroy it.
 
 **Since:** 24
 
@@ -181,7 +182,7 @@ OH_ArkUI_TextEditorStyledStringController* OH_ArkUI_TextEditorStyledStringContro
 
 **Description**
 
-Creates a styled string controller object for the text editor. When the object is no longer used, call [OH_ArkUI_TextEditorStyledStringController_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorstyledstringcontroller_destroy) to destroy it.
+Creates a styled string controller object, which is used to control the styled string of the text editor when rich text content needs to be managed through styled strings (such as mixed layout of text and images, dynamic setting of paragraph or character styles, and other scenarios). When the object is no longer used, call [OH_ArkUI_TextEditorStyledStringController_Destroy](#oh_arkui_texteditorstyledstringcontroller_destroy) to destroy it.
 
 **Since:** 24
 
@@ -217,7 +218,7 @@ OH_ArkUI_TextEditorParagraphStyle* OH_ArkUI_TextEditorParagraphStyle_Create()
 
 **Description**
 
-Creates a paragraph style object for the text editor. When the object is no longer used, call [OH_ArkUI_TextEditorParagraphStyle_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorparagraphstyle_destroy) to destroy it.
+Creates a paragraph style object. When the object is no longer used, call [OH_ArkUI_TextEditorParagraphStyle_Destroy](#oh_arkui_texteditorparagraphstyle_destroy) to destroy it.
 
 **Since:** 24
 
@@ -253,7 +254,7 @@ OH_ArkUI_TextEditorTextStyle* OH_ArkUI_TextEditorTextStyle_Create()
 
 **Description**
 
-Creates a text style object. When the object is no longer used, call [OH_ArkUI_TextEditorTextStyle_Destroy](capi-rich-editor-h.md#oh_arkui_texteditortextstyle_destroy) to destroy it.
+Creates a text style object. When the object is no longer used, call [OH_ArkUI_TextEditorTextStyle_Destroy](#oh_arkui_texteditortextstyle_destroy) to destroy it.
 
 **Since:** 24
 
@@ -289,7 +290,7 @@ OH_ArkUI_TextEditorSelectionMenuOptions* OH_ArkUI_TextEditorSelectionMenuOptions
 
 **Description**
 
-Creates a text selection menu option object of the text editor. When the object is no longer used, call [OH_ArkUI_TextEditorSelectionMenuOptions_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorselectionmenuoptions_destroy) to destroy it.
+Creates a text selection menu option object of the text editor. When the object is no longer used, call [OH_ArkUI_TextEditorSelectionMenuOptions_Destroy](#oh_arkui_texteditorselectionmenuoptions_destroy) to destroy it.
 
 **Since:** 24
 
