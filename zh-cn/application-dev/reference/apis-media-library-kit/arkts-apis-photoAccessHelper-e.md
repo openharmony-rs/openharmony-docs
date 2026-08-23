@@ -136,7 +136,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 枚举，相册关键信息。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称          | 值              | 说明                                                       |
 | ------------- | ------------------- | ---------------------------------------------------------- |
@@ -162,7 +162,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 枚举，图片保存类型。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -173,7 +173,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 枚举，通知事件的类型。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                      | 值   | 说明                             |
 | ------------------------- | ---- | -------------------------------- |
@@ -211,24 +211,30 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 枚举，推荐的图片类型。
 
+**使用场景：**
+- 扫码应用中推荐二维码或条码类型的图片。
+- 身份认证应用中推荐身份证或护照类型的图片。
+- 用户头像设置场景中推荐人像类型的图片。
+
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
-| QR_OR_BAR_CODE  |  1 | 二维码或条码。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| QR_CODE |  2 | 二维码。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| BAR_CODE |  3 | 条码。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| ID_CARD |  4 | 身份证。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| PROFILE_PICTURE |  5 | 头像。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| PASSPORT<sup>12+</sup> |  6 | 护照。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| BANK_CARD<sup>12+</sup> |  7 | 银行卡。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| DRIVER_LICENSE<sup>12+</sup> |  8 | 驾驶证。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| DRIVING_LICENSE<sup>12+</sup> |  9 | 行驶证。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| FEATURED_SINGLE_PORTRAIT<sup>12+</sup> |  10 | 推荐人像。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| QR_OR_BAR_CODE  |  1 | 二维码或条码。设置后系统会优先推荐二维码或条码类型的图片供用户选择。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| QR_CODE |  2 | 二维码。设置后系统会优先推荐二维码类型的图片供用户选择。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| BAR_CODE |  3 | 条码。设置后系统会优先推荐条码类型的图片供用户选择。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| ID_CARD |  4 | 身份证。设置后系统会优先推荐身份证类型的图片供用户选择。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| PROFILE_PICTURE |  5 | 头像。设置后系统会优先推荐头像类型的图片供用户选择。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| PASSPORT<sup>12+</sup> |  6 | 护照。设置后系统会优先推荐护照类型的图片供用户选择。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| BANK_CARD<sup>12+</sup> |  7 | 银行卡。设置后系统会优先推荐银行卡类型的图片供用户选择。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| DRIVER_LICENSE<sup>12+</sup> |  8 | 驾驶证。设置后系统会优先推荐驾驶证类型的图片供用户选择。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| DRIVING_LICENSE<sup>12+</sup> |  9 | 行驶证。设置后系统会优先推荐行驶证类型的图片供用户选择。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| FEATURED_SINGLE_PORTRAIT<sup>12+</sup> |  10 | 推荐人像。设置后系统会优先推荐人像类型的图片供用户选择。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
 ```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -242,8 +248,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       recommendationOptions: recommendOptions
     };
     let photoPicker = new photoAccessHelper.PhotoViewPicker();
-    photoPicker.select(options).then((PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
-      console.info('PhotoViewPicker.select successfully, PhotoSelectResult uri: ' + JSON.stringify(PhotoSelectResult));
+    photoPicker.select(options).then((photoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+      console.info('PhotoViewPicker.select successfully, photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
     }).catch((err: BusinessError) => {
       console.error(`PhotoViewPicker.select failed with err: ${err.code}, ${err.message}`);
     });
@@ -274,7 +280,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -292,7 +298,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 该模式适用于分段式拍照或分段式视频。如果当前设备不具备分段式能力，则以下三种分发模式无区别，直接返回请求的图片或视频资源。请求的结果通过[onDataPrepared](./arkts-apis-photoAccessHelper-MediaAssetDataHandler.md#ondataprepared11)回调返回。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -304,7 +310,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 配置转码模式。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  |  值 |  说明 |
 | ----- | ---- | ---- |
@@ -315,7 +321,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 配置完成按钮显示内容。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  |  值 |  说明 |
 | ----- | ---- | ---- |
@@ -327,7 +333,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 枚举，媒体资产（图片/视频）或相册变更事件的通知类型。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                      | 值   | 说明                             |
 | ------------------------- | ---- | -------------------------------- |
@@ -339,7 +345,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 枚举，图片或者视频数据的来源类型。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                | 值   | 说明                                                                                                                 |
 |-------------------|-----|--------------------------------------------------------------------------------------------------------------------|
@@ -353,7 +359,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                | 值   | 说明             |
 |------------------- |--------|----------------------|
@@ -380,11 +386,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 枚举，是否支持动态照片自动播放。
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                | 值   | 说明             |
 |------------------- |--------|----------------------|
@@ -395,7 +401,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 枚举，视频文件的log模式。
 
-**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -431,18 +437,23 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## GridLevel<sup>23+</sup>
     
-枚举类型，用于设置拉起picker后的宫格列数档位。
+枚举，用于设置拉起picker后的宫格列数档位。
+
+**使用场景：**
+- 大屏设备应用中使用紧密档位以显示更多图片。
+- 小屏设备应用中使用宽松档位以便于选择操作。
+- 根据应用界面布局动态调整picker显示效果。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
     
-**模型约束**： 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
     
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | SPACIOUS |  0 |  宽松宫格档位。该档位为标准宫格的列数减1。|
-| STANDARD |  1 |  标准宫格档位。不同设备尺寸对应的标准宫格列数各不相同，当未配置标准宫格列数时，系统将使用默认列数。|
+| STANDARD |  1 |  标准宫格档位。不同设备尺寸对应的标准宫格列数各不相同，当未配置标准宫格列数时，系统将使用默认列数。默认列数由系统根据设备尺寸自动确定，适用于开发者未主动设置宫格列数的场景。|
 | COMPACT |  2 |  紧密宫格档位。该档位为标准宫格的列数加1。 |
 
 ## GridPinchModeType<sup>23+</sup>
@@ -451,9 +462,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
     
-**模型约束**： 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
     
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -500,7 +511,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -512,18 +523,18 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## PickerColorMode
  
-枚举，Picker的颜色模式。
+表示Picker的颜色模式的枚举。
  
 **起始版本：** 26.1.0
  
 **模型约束：** 此接口仅可在Stage模型下使用。
  
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
  
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
  
 | 名称                | 值   | 说明    |
 |-------------------|-----|-------|
-| AUTO | 0   | 跟随系统。 |
+| AUTO | 0   | 颜色跟随系统。 |
 | LIGHT | 1   | 浅色模式。 |
 | DARK | 2   | 深色模式。 |

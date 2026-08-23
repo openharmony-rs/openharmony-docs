@@ -35,40 +35,40 @@ RecentPhotoComponent({ recentPhotoOptions?: RecentPhotoOptions, onRecentPhotoChe
 
 RecentPhotoComponent是最近图片组件，用于访问按创建时间排序的公共目录下最新的一个照片或视频文件。应用无需申请媒体访问权限，即可根据配置项访问。该组件不支持嵌套，且不应在其上覆盖设置overlay属性或更高层级组件，以免导致手势事件失效。
 
-**装饰器类型**：@Component
+**装饰器类型：** @Component
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
 
 | 名称                       | 类型                                                                | 必填 | 说明                       |
 |--------------------------|-------------------------------------------------------------------|------|----------------------------|
-| recentPhotoOptions       | [RecentPhotoOptions](#recentphotooptions)                         | 否  | 最近图片配置参数信息。当需要自定义最近图片组件的显示配置（如时间段、文件类型、来源等）时配置此参数；不填写时使用默认配置显示最近图片。<br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                |
-| onRecentPhotoCheckResult | [RecentPhotoCheckResultCallback](#recentphotocheckresultcallback) | 否  | 最近图片查询结果回调函数。当应用需要知道最近图片是否存在时配置此回调；不填写时不影响组件正常显示，但应用无法获取最近图片的存在状态。<br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。              |
-| onRecentPhotoClick       | [RecentPhotoClickCallback](#recentphotoclickcallback)             | 是  | 选择最近图片回调函数。<br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                |
-| onRecentPhotoCheckInfo<sup>13+</sup>   | [RecentPhotoCheckInfoCallback](#recentphotocheckinfocallback13)   | 否  | 最近图片查询结果回调函数，并且返回该照片的相关信息。当应用需要获取最近图片是否存在以及图片详细信息时配置此回调；不填写时不影响组件正常显示，但应用无法获取图片的详细信息。<br> **原子化服务API**：从API version 13开始，该接口支持在原子化服务中使用。 |
+| recentPhotoOptions       | [RecentPhotoOptions](#recentphotooptions)                         | 否  | 最近图片配置参数信息。当需要自定义最近图片组件的显示配置（如时间段、文件类型、来源等）时配置此参数；不填写时使用默认配置显示最近图片。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                |
+| onRecentPhotoCheckResult | [RecentPhotoCheckResultCallback](#recentphotocheckresultcallback) | 否  | 最近图片查询结果回调函数。当应用需要知道最近图片是否存在时配置此回调；不填写时不影响组件正常显示，但应用无法获取最近图片的存在状态。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。              |
+| onRecentPhotoClick       | [RecentPhotoClickCallback](#recentphotoclickcallback)             | 是  | 选择最近图片回调函数。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                |
+| onRecentPhotoCheckInfo<sup>13+</sup>   | [RecentPhotoCheckInfoCallback](#recentphotocheckinfocallback13)   | 否  | 最近图片查询结果回调函数，并且返回该照片的相关信息。当应用需要获取最近图片是否存在以及图片详细信息时配置此回调；不填写时不影响组件正常显示，但应用无法获取图片的详细信息。<br> **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 
 ## RecentPhotoOptions
 
 最近图片配置选项。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                    | 类型                                                                                      | 只读 | 可选  | 说明   |
 |-------------------------|-----------------------------------------------------------------------------------------|-------|-------|--------|
-| period                  | number                                                                                  | 否 | 是    | 配置显示多久时间段内按创建时间排序的最新一个照片或视频，单位为秒（s），取值范围(0, 86400]。最长可配置时长为1天（86400s）。<br>当值小于等于0、大于86400或者未配置时，默认显示1天内最近照片或视频。当配置时间段内无符合的照片或视频时，组件不显示。<br> **注意：**<br>当isAutoRefreshSupported为true时，period字段失效。<br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。|
-| MIMEType                | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | 否    | 是 | 最近图片控件显示的文件类型。可设置为IMAGE_TYPE（仅显示图片）、VIDEO_TYPE（仅显示视频）或IMAGE_VIDEO_TYPE（显示图片和视频）。默认为PhotoViewMIMETypes.IMAGE_VIDEO_TYPE。<br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                         |
-| photoSource             | [PhotoSource](#photosource)                                                             | 否    | 是 | 配置最近照片或视频显示内容的来源，比如拍照、截屏等。默认不限制来源。<br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                               |
-| isAutoRefreshSupported<sup>20+</sup>  | boolean                                                                                 | 否    | 是| 配置最近图片组件在符合要求的最近照片或视频发生变更（包括新增、删除、修改）时是否进行刷新。<br>当组件原显示的最近照片或视频被删除，而无符合要求的照片或视频时，则显示占位符，组件不自动退出。<br>默认为false，不支持自动刷新；配置为true时显示全部符合筛选条件的照片或视频（不受时间限制，仍受photoSource和MIMEType约束）；period字段失效。<br> **说明**：开启自动刷新会监听媒体库变更，建议在需要实时更新场景使用，避免频繁刷新影响性能。<br> **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。|
-| colorMode<sup>20+</sup>               | [PickerColorMode](ohos-file-PhotoPickerComponent.md#pickercolormode)                                                      | 否    | 是 | 支持应用配置占位符的颜色模式。<br>当isAutoRefreshSupported为true，且无符合要求的最近照片或视频时，显示占位符，字段生效。<br>默认为跟随系统深浅色模式。<br> **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。|
+| period                  | number                                                                                  | 否 | 是    | 配置显示多久时间段内按创建时间排序的最新一个照片或视频，单位为秒（s），取值范围(0, 86400]。最长可配置时长为1天（86400s）。<br>当值小于等于0、大于86400或者未配置时，默认显示1天内最近照片或视频。当配置时间段内无符合的照片或视频时，组件不显示。<br> **注意：**<br>当isAutoRefreshSupported为true时，period字段失效。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| MIMEType                | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | 否    | 是 | 最近图片控件显示的文件类型。可设置为IMAGE_TYPE（仅显示图片）、VIDEO_TYPE（仅显示视频）或IMAGE_VIDEO_TYPE（显示图片和视频）。默认为PhotoViewMIMETypes.IMAGE_VIDEO_TYPE。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
+| photoSource             | [PhotoSource](#photosource)                                                             | 否    | 是 | 配置最近照片或视频显示内容的来源，比如拍照、截屏等。默认不限制来源。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                               |
+| isAutoRefreshSupported<sup>20+</sup>  | boolean                                                                                 | 否    | 是| 配置最近图片组件在符合要求的最近照片或视频发生变更（包括新增、删除、修改）时是否进行刷新。<br>当组件原显示的最近照片或视频被删除，而无符合要求的照片或视频时，则显示占位符，组件不自动退出。<br>默认为false，不支持自动刷新；配置为true时显示全部符合筛选条件的照片或视频（不受时间限制，仍受photoSource和MIMEType约束）；period字段失效。<br> **说明**：开启自动刷新会监听媒体库变更，建议在需要实时更新场景使用，避免频繁刷新影响性能。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| colorMode<sup>20+</sup>               | [PickerColorMode](ohos-file-PhotoPickerComponent.md#pickercolormode)                                                      | 否    | 是 | 支持应用配置占位符的颜色模式。<br>当isAutoRefreshSupported为true，且无符合要求的最近照片或视频时，显示占位符，字段生效。<br>默认为跟随系统深浅色模式。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## RecentPhotoInfo<sup>13+</sup>
 
 最近图片相关信息。
 
-**原子化服务API**：从API version 13开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称         | 类型     | 只读 | 可选  | 说明                                                        |
 |------------|--------|-------|-------|-----------------------------------------------------------|
@@ -83,7 +83,7 @@ type RecentPhotoCheckResultCallback = (recentPhotoExists: boolean) => void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：** 
 
@@ -99,7 +99,7 @@ type RecentPhotoClickCallback = (recentPhotoInfo: BaseItemInfo) => boolean
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：** 
 
@@ -121,7 +121,7 @@ type RecentPhotoCheckInfoCallback = (recentPhotoExists: boolean, info: RecentPho
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
 
@@ -134,9 +134,9 @@ type RecentPhotoCheckInfoCallback = (recentPhotoExists: boolean, info: RecentPho
 
 枚举，图片或者视频数据的来源类型。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                | 值   | 说明                                                                                                                 |
 |-------------------|-----|--------------------------------------------------------------------------------------------------------------------|
