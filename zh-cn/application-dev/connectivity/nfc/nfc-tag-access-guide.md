@@ -399,8 +399,8 @@ want = {
     "uri": "https://xxx.com", // NFC卡片里写入的uri
     "type": "",
     "flags": 0,
-	"action": "action.system.home",
-	"parameters": {
+    "action": "action.system.home",
+    "parameters": {
         /**************************** NFC相关字段 *****************************/
         "Atqa": "4400",
         "MifareUltralightC": false,
