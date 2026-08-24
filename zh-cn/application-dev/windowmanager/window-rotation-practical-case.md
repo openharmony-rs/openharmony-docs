@@ -94,8 +94,8 @@ ArkTS-Sta示例：
 <!-- @[rotation_policy](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-import { window, display, Entry, Component, RelativeContainer, Text, TextAlign, State } from '@kit.ArkUI'
-import common from '@ohos.app.ability.common';
+import { window, display, Entry, Component, RelativeContainer, Text, TextAlign, State } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 import { Callback } from '@kit.BasicServicesKit';
 
 @Entry
