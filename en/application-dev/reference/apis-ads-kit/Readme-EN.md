@@ -17,7 +17,7 @@
   <!--DelEnd-->
   - Dependent Elements and Definitions<!--ads-api-interface-depend-->
     - advertising<!--ads-advertising-->
-      - [Advertisement](js-apis-advertisement.md)
+      - [Advertisement (Content of the Requested Ad)](js-apis-advertisement.md)
 - ArkTS Components<!--ads-comp-->
   - [@ohos.advertising.AdComponent (Ad Component)](js-apis-adcomponent.md)
   - [@ohos.advertising.AutoAdComponent (Carousel Ad Component)](js-apis-autoadcomponent.md)
