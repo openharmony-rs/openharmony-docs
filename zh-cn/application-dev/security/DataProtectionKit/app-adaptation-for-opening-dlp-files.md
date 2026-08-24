@@ -637,7 +637,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     12.1 打开DLP文件时，应用被安装为DLP沙箱分身应用（后续简称为分身），分身会收到want请求，分身可以对其中一些字段进行解析：
 
     <!-- @[dlp_PrepareOpenFuseFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
-    
+
     ``` TypeScript
     interface DLPUriObj {
       name: string
@@ -659,9 +659,9 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     
     function getParams(want: Want) {
       // 接收打开DLP文件传过来的参数
-      let dlpFuseUri: string = want.uri ? want.uri : ''; // FUSE文件的URI, 存放解密后的明文
+      let dlpFuseUri: string = want.uri ? want.uri : ''; // FUSE文件的uri, 存放解密后的明文
       let dlpFuseWriteable: boolean = (want.parameters?.linkFileWriteable as DLPWriteable).name; // 对FUSE文件是否有写权限
-      let dlpUri: string = (want.parameters?.dlpUri as DLPUriObj).name; // DLP文件的URI
+      let dlpUri: string = (want.parameters?.dlpUri as DLPUriObj).name; // DLP文件的uri
       let dlpName: string = (want.parameters?.fileAsset as DLPNameObj).displayName; // DLP文件的文件名
       let dlpFuseName: string = (want.parameters?.linkFileName as DLPLinkNameObj).name; // FUSE文件的文件名
     }
