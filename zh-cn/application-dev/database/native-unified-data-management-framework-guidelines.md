@@ -151,7 +151,7 @@ int32_t GetTypeId()
 <!-- @[udmf_sample_send_unifieddata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-int32_t SendUnifieddata()
+int32_t SendUnifiedData()
 {
     // 1. 创建超链接hyperlink数据的UDS数据结构。
     OH_UdsHyperlink* hyperlink = OH_UdsHyperlink_Create();
@@ -214,7 +214,7 @@ static void ProcessHyperlinkFromRecord(OH_UdmfRecord* record, OH_UdsHyperlink* h
     }
 }
 
-int32_t GetUnifieddata()
+int32_t GetUnifiedData()
 {
     // 1. 创建统一数据OH_UdmfData。
     OH_UdmfData* readData = OH_UdmfData_Create();
@@ -296,7 +296,6 @@ static void ProviderFinalizeCallback(void* context) { OH_LOG_INFO(LOG_APP, "OH_U
 
 <!-- @[udmf_sample_send_delay_unifieddata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
 
-<div class="same-source-code">
 ``` C++
 int32_t SendDelayUnifiedData()
 {
@@ -326,7 +325,3 @@ int32_t SendDelayUnifiedData()
     return Udmf_ErrCode::UDMF_E_OK;
 }
 ```
-
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp?same_code_link_text=udmf_sample_send_delay_unifieddata" target="_blank" rel="nofollow">napi_init.cpp</a></p>
-
-</div>
