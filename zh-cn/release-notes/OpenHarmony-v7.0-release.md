@@ -357,11 +357,11 @@ JSVM新增支持从外部内存创建ArrayBuffer对象。（[API参考](https://
 
 新增对统一SDK的支持。统一SDK是面向OpenHarmony生态提供的标准化开发工具套件，扩展了OpenHarmony SDK的能力，为开发者提供远场通信、基础语音、分享服务、基础视觉、桌面拓展、文件预览、推送服务、统一扫码服务等多维度开发能力。详见[HarmonyOS SDK for OpenHarmony](https://gitcode.com/harmonyos-sdk-for-openharmony/docs/blob/6.1-release/README.md)。
 
-## 预置应用更新说明
+## 系统应用更新说明
 
-### 新增预置应用  
+### 新增系统应用  
 
-针对展锐P7885芯片开发板，新增如下预置应用：
+针对展锐P7885芯片开发板，新增如下系统应用：
 
 #### [文件管理](https://gitcode.com/openharmony/applications_filepicker)
 
@@ -423,9 +423,9 @@ JSVM新增支持从外部内存创建ArrayBuffer对象。（[API参考](https://
 - 支持默认移动数据选择。
 - 支持默认拨号卡设置。
 
-### 更新预置应用
+### 更新系统应用
 
-针对展锐P7885芯片开发板，如下预置应用在7.0 Release版本的基础上进行了更新：
+针对展锐P7885芯片开发板，如下系统应用在7.0 Release版本的基础上进行了更新：
 
 #### [桌面](https://gitcode.com/openharmony/window_scene_board)
 
