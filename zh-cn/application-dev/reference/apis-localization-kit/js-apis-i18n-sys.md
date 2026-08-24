@@ -1125,9 +1125,9 @@ getRegionInfoArray(regions: Array&lt;string&gt;, options?: SortOptions): Array&l
 
 | 错误码ID  | 错误信息                   |
 | ------ | ---------------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 890001 | Invalid parameter. Possible causes: Parameter verification failed.<br>适用版本：12+ |
+| 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **示例：**
   ```ts
