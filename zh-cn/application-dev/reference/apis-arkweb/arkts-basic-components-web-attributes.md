@@ -5680,6 +5680,9 @@ ArkTS-Sta: enableWebAVSession(enabled: boolean | undefined)
 
 设置是否支持应用对接到播控中心。当属性没有显式设置时，默认支持应用对接到播控中心。
 
+<!--RP2-->
+<!--RP2End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 18
