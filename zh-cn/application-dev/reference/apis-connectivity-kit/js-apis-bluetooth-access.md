@@ -541,14 +541,6 @@ convertUuid(uuid: string): string
 - 若输入128bit的UUID，例如“11112222-3333-4444-5555-666677778888”，将直接输出该UUID。
 - 若输入不符合以上格式的UUID或包含非16进制范围内的字符，将返回[401](../errorcode-universal.md#401-参数检查失败)错误码。
 
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数**：
