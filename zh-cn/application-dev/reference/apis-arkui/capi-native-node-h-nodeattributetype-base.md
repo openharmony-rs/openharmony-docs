@@ -210,7 +210,7 @@ NODE_UNIQUE_ID = 95
 
 | 类型| 说明|
 | -- | -- |
-| .value[0].i32 | component ID.|
+| .value[0].i32 | 组件标识ID。|
 
 ## NODE_CLICK_DISTANCE
 
