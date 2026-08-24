@@ -91,7 +91,7 @@ fetch.fetch({
     console.info(JSON.stringify(response));
   },
   fail: (data: Object, code) => {
-    console.error('fetch failed, data: ' + JSON.stringify(data) + ', code=' + code);
+    console.error('fetch failed, data: ' + JSON.stringify(data) + ', code: =' + code);
   }
 });
 ```
