@@ -2017,9 +2017,6 @@ try {
 deviceId(deviceId:string):Query
 
 添加设备ID作为key的前缀。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3672,9 +3669,6 @@ try {
 removeDeviceData(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 删除指定设备的数据，使用callback异步回调。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3717,9 +3711,6 @@ try {
 removeDeviceData(deviceId: string): Promise&lt;void&gt;
 
 删除指定设备的数据，使用Promise异步回调。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3769,9 +3760,6 @@ try {
 sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 
 在手动同步方式下，触发数据库同步。
-> **说明：** 
->
-> 其中deviceIds为设备的networkId（设备网络标识）。
 
 **需要权限**： ohos.permission.DISTRIBUTED_DATASYNC。
 
@@ -4088,9 +4076,6 @@ try {
 get(deviceId: string, key: string, callback: AsyncCallback&lt;boolean|string|number|Uint8Array&gt;): void
 
 获取与指定设备ID和key匹配的string值，使用callback异步回调。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**   SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4126,9 +4111,6 @@ try{
 get(deviceId: string, key: string): Promise&lt;boolean|string|number|Uint8Array&gt;
 
 获取与指定设备ID和key匹配的string值，使用Promise异步回调。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4173,9 +4155,6 @@ try {
 getEntries(deviceId: string, keyPrefix: string, callback: AsyncCallback&lt;Entry[]&gt;): void
 
 获取与指定设备ID和key前缀匹配的所有键值对，使用callback异步回调。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4224,9 +4203,6 @@ try {
 getEntries(deviceId: string, keyPrefix: string): Promise&lt;Entry[]&gt;
 
 获取与指定设备ID和key前缀匹配的所有键值对，使用Promise异步回调。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4396,9 +4372,6 @@ try {
 getEntries(deviceId: string, query: Query, callback: AsyncCallback&lt;Entry[]&gt;): void
 
 获取与指定设备ID和Query对象匹配的键值对列表，使用callback异步回调。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4452,9 +4425,6 @@ try {
 getEntries(deviceId: string, query: Query): Promise&lt;Entry[]&gt;
 
 获取与指定设备ID和Query对象匹配的键值对列表，使用Promise异步回调。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4515,9 +4485,6 @@ try {
 getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback&lt;KvStoreResultSet&gt;): void
 
 获取与指定设备ID和key前缀匹配的KvStoreResultSet对象，使用callback异步回调。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4553,9 +4520,6 @@ try {
 getResultSet(deviceId: string, keyPrefix: string): Promise&lt;KvStoreResultSet&gt;
 
 获取与指定设备ID和key前缀匹配的KvStoreResultSet对象，使用Promise异步回调。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4716,9 +4680,6 @@ try {
 getResultSet(deviceId: string, query: Query, callback: AsyncCallback&lt;KvStoreResultSet&gt;): void
 
 获取与指定设备ID和Query对象匹配的KvStoreResultSet对象，使用callback异步回调。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4771,9 +4732,6 @@ try {
 getResultSet(deviceId: string, query: Query): Promise&lt;KvStoreResultSet&gt;
 
 获取与指定设备ID和Query对象匹配的KvStoreResultSet对象，使用Promise异步回调。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -5016,9 +4974,6 @@ try {
 getResultSize(deviceId: string, query: Query, callback: AsyncCallback&lt;number&gt;): void;
 
 获取与指定设备ID和Query对象匹配的结果数，使用callback异步回调。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -5066,9 +5021,6 @@ try {
 getResultSize(deviceId: string, query: Query): Promise&lt;number&gt;
 
 获取与指定设备ID和Query对象匹配的结果数，使用Promise异步回调。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
@@ -5126,9 +5078,6 @@ try {
 removeDeviceData(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 从当前数据库中删除指定设备的数据，使用callback异步回调。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
@@ -5172,9 +5121,6 @@ try {
 removeDeviceData(deviceId: string): Promise&lt;void&gt;
 
 从当前数据库中删除指定设备的数据，使用Promise异步回调。
-> **说明：** 
->
-> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -5225,9 +5171,6 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 
 在手动同步方式下，触发数据库同步。
 
-> **说明：**
->
-> 其中deviceIds是设备networkId（设备网络标识）。
 
 **需要权限**： ohos.permission.DISTRIBUTED_DATASYNC。
 
