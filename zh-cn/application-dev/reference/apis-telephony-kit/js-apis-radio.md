@@ -504,18 +504,6 @@ getISOCountryCodeForNetworkSync\(slotId: number\): string
 | ----------------- | ------------------------------------------------------------ |
 | string | 返回注册网络所在国家的ISO国家码，例如CN(中国)。如果设备没有注册任何网络，接口返回空字符串。|
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
-
-| 错误码ID |                 错误信息                     |
-| -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Service connection failed.                   |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
-
 **示例：**
 
 ```ts
@@ -716,18 +704,6 @@ getSignalInformationSync\(slotId: number\): Array\<SignalInformation\>
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
 | Array\<[SignalInformation](#signalinformation)\>| 返回网络信号强度[SignalInformation](#signalinformation)子类对象的数组。|
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
-
-| 错误码ID |                 错误信息                     |
-| -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Service connection failed.                   |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
-
 **示例：**
 
 ```ts
@@ -756,7 +732,7 @@ isNrSupported\(\): boolean
 
 | 类型    | 说明                             |
 | ------- | -------------------------------- |
-| boolean | - true：支持。<br>- false：不支持。 |
+| boolean | 当前设备是否支持NR。- true：支持。<br>- false：不支持。 |
 
 **示例：**
 
@@ -787,7 +763,7 @@ isNrSupported\(slotId: number\): boolean
 
 | 类型               | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| boolean | - true：支持。<br>- false：不支持。 |
+| boolean | 当前设备是否支持NR。- true：支持。<br>- false：不支持。 |
 
 **示例：**
 
@@ -812,7 +788,7 @@ isNRSupported\(\): boolean
 
 | 类型    | 说明                             |
 | ------- | -------------------------------- |
-| boolean | - true：支持。<br>- false：不支持。 |
+| boolean | 当前设备是否支持NR。- true：支持。<br>- false：不支持。 |
 
 **示例：**
 
@@ -840,7 +816,7 @@ isNRSupported\(slotId: number\): boolean
 
 | 类型               | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| boolean | - true：支持。<br>- false：不支持。 |
+| boolean | 当前设备是否支持NR。- true：支持。<br>- false：不支持。 |
 
 **示例：**
 
@@ -1082,7 +1058,7 @@ radio.getOperatorName(slotId).then((data: string) => {
 
 getOperatorNameSync\(slotId: number\): string
 
-获取运营商名称，为getOperatorName的同步版本，直接返回结果。与异步方法getOperatorName功能相同，适用于需要立即获取结果且能接受阻塞调用的场景；若需要非阻塞调用，请使用getOperatorName。
+获取运营商名称，为getOperatorName[getOperatorName](#radiogetOperatorName7)的同步版本，直接返回结果。与异步方法getOperatorName[getOperatorName](#radiogetOperatorName7)功能相同，适用于需要立即获取结果且能接受阻塞调用的场景；若需要非阻塞调用，请使用[getOperatorName](#radiogetOperatorName7)。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
@@ -1097,18 +1073,6 @@ getOperatorNameSync\(slotId: number\): string
 | 类型              | 说明                                                         |
 | ----------------- | ------------------------------------------------------------ |
 | string | 返回运营商名称。例如：中国移动。                |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
-
-| 错误码ID |                 错误信息                     |
-| -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Service connection failed.                   |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
 
 **示例：**
 
