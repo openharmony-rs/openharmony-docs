@@ -6,7 +6,7 @@
 <!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
 
-应用可以在布局中嵌入最近图片组件，通过此组件，应用无需申请权限，即可指定配置访问公共目录中最近的一个照片或视频文件。授予的权限仅包含只读权限。该组件适用于需要快速展示或选择最近图片或视频的场景，如聊天应用发送照片、社交应用快速分享等。
+应用可以在布局中嵌入最近图片组件，通过此组件，应用无需申请权限，即可指定配置访问公共目录中最近的一个照片或视频文件。授予的权限仅包含只读权限。该组件适用于需要快速展示或选择最近照片或视频的场景，如聊天应用发送照片、社交应用快速分享等。
 
 RecentPhotoComponent不支持嵌套，且不应在其上覆盖设置overlay属性或更高层级组件，以免导致手势事件失效。
 
@@ -33,7 +33,7 @@ import {
 
 RecentPhotoComponent({ recentPhotoOptions?: RecentPhotoOptions, onRecentPhotoCheckResult?: RecentPhotoCheckResultCallback, onRecentPhotoClick: RecentPhotoClickCallback, onRecentPhotoCheckInfo?: RecentPhotoCheckInfoCallback, })
 
-RecentPhotoComponent是最近图片组件，用于访问按创建时间排序的公共目录下最新的一个照片或视频文件。应用无需申请媒体访问权限，即可根据配置项访问。该组件不支持嵌套，且不应在其上覆盖设置overlay属性或更高层级组件，以免导致手势事件失效。
+RecentPhotoComponent是最近图片组件，用于访问按创建时间排序的公共目录下最新的一个照片或视频文件。应用无需申请媒体访问权限，即可根据配置项访问。
 
 **装饰器类型：** @Component
 

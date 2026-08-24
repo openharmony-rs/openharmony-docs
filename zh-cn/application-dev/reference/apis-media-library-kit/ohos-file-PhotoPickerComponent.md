@@ -1549,7 +1549,7 @@ struct Drawer {
               await this.pickerController.updatePickerOptions({
                 isSlidingSupported: true
               })
-              this.drawerState = DrawerState.SLIDING
+              this.drawerState = DrawerState.SLIDING;
             }
             let newOffset = this.currentOffset + deltaY;
             if (newOffset < 0) {
