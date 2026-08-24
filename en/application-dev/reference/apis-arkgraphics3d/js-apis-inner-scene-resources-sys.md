@@ -1,4 +1,4 @@
-# SceneResource (System API)
+# SceneResources (System API)
 
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
