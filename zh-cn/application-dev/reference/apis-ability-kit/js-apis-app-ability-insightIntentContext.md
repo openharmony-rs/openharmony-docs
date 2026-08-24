@@ -358,8 +358,8 @@ setReturnModeForUIExtensionAbility(returnMode: insightIntent.ReturnMode): void
         storage.setOrCreate('session', pageLoader);
         pageLoader.loadContent('pages/UIExtensionPage', storage);
       } catch (err) {
-        const err: BusinessError = err as BusinessError;
-        console.error(`Failed to loadContent. Code: ${err.code}, message: ${err.message}`);
+        const error: BusinessError = err as BusinessError;
+        console.error(`Failed to loadContent. Code: ${error.code}, message: ${error.message}`);
       }
       return result;
     }
