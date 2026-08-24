@@ -81,16 +81,16 @@ Input param failed.
 
 **可能原因**
 
-1. 如果参数是workInfo，bundleName和应用的uid不匹配。
+1. 当参数是workInfo时，bundleName和应用的uid不匹配。
 2. 取消或查询延迟任务时，延迟任务不存在。
-3. 如果参数是taskInfo，abilityName不是launcher ability或taskId校验失败
+3. 当参数是taskInfo时，abilityName不是launcher ability或taskId校验失败。
 
 **处理步骤**
 
 1. 请检查workInfo中的bundleName是否与应用uid匹配。
 2. 如取消或查询延迟任务时出现此错误，请确认该延迟任务已正确创建。
-3. 请检查taskInfo中abilityName是否为launcher ability
-4. 如果要完成、查询或取消注册后台刷新任务，请检查taskId是否正确
+3. 请检查taskInfo中abilityName是否为launcher ability。
+4. 如果要完成、查询或取消注册后台刷新任务，请检查taskId是否正确。
 
 ## 9700005 StartWork失败
 
