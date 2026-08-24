@@ -192,7 +192,7 @@ struct AddLog {
 
 ## 限制条件
 
-- \@Track使用在[\@ComponentV2](./arkts-static-componentv2.md)的UI中，不会引起运行时报错，但依旧不会刷新。
+- API版本26.0.0之前，\@Track装饰的变量在[\@ComponentV2](./arkts-static-componentv2.md)中使用不会引起运行时报错，但修改该变量时UI不会刷新；从API版本26.0.0开始，\@Track装饰的变量在\@ComponentV2中使用时，修改该变量的值会触发UI刷新。
 
 - 建议开发者不要混用包含\@Track的class对象和不包含\@Track的class对象，如联合类型中、类继承等。
 
