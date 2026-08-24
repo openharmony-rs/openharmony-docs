@@ -1,4 +1,4 @@
-# @ohos.bluetooth.hid (蓝牙HID模块)
+# @ohos.bluetooth.hid (蓝牙hid模块)
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
@@ -172,7 +172,7 @@ let descriptors: Uint8Array = new Uint8Array([
     0x05, 0x01,        // 指定设备类别为通用桌面控制
     0x09, 0x06,        // 具体设备为键盘
     0xA1, 0x01,        // 应用集合开始
-    
+
     // 按键字段定义
     0x05, 0x07,        // 切换到键盘/键区
     0x19, 0x00,        // 定义最小按键码为0（无按键）
@@ -182,7 +182,7 @@ let descriptors: Uint8Array = new Uint8Array([
     0x75, 0x08,        // 每个字段八位
     0x95, 0x01,        // 只有一个字段
     0x81, 0x00,        // 定义输入字段：数据字段，值为按键数组
-    
+
     // 结束设备定义
     0xC0               // 应用集合结束
 ]);

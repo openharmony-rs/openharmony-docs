@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供基于增强音频分发协议（Advanced Audio Distribution Profile，[A2DP](../../connectivity/terminology.md#a2dp)）的蓝牙媒体音频能力，支持获取媒体播放状态和连接状态等方法，适用于蓝牙无线音频播放、音乐串流等需要通过蓝牙设备传输媒体音频的场景。
+本模块提供基于增强音频分发协议（Advanced Audio Distribution Profile，[A2DP](../../connectivity/bluetooth/terminology.md#a2dp)）的蓝牙媒体音频能力，支持获取媒体播放状态和连接状态等方法。
 
 > **说明：**
 >
@@ -53,6 +53,7 @@ createA2dpSrcProfile(): A2dpSourceProfile
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                         |
 |801 | Capability not supported.                |
 
 
@@ -141,7 +142,7 @@ try {
 
 ## CodecInfo<sup>11+</sup>
 
-蓝牙媒体音频使用的编解码器。不同编解码器支持的位深、声道模式、采样率、码率和帧长与音频接收器设备端能力有关。
+蓝牙媒体音频使用的编解码器。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -163,11 +164,11 @@ try {
 | 名称        | 类型                    | 只读   | 可选   | 说明                                     |
 | ------------------- | ----------------------- | ---- | ---- | -------------------------------------- |
 | codecType           | [CodecType](#codectype11)      | 否    | 否    | 编解码器类型。 |
-| codecBitsPerSampleArray  | [CodecBitsPerSample](#codecbitspersample11)[] | 否    | 否    | 编解码器支持的位深能力集合，具体支持值与音频接收器设备端能力有关。 |
-| codecChannelModeArray    | [CodecChannelMode](#codecchannelmode11)[] | 否    | 否    | 编解码器支持的声道模式能力集合，具体支持值与音频接收器设备端能力有关。 |
-| codecSampleRateArray     | [CodecSampleRate](#codecsamplerate11)[] | 否    | 否    | 编解码器支持的采样率能力集合，具体支持值与音频接收器设备端能力有关。 |
-| codecBitRateArray     | [CodecBitRate](#codecbitrate19)[] | 否    | 否    | 编解码器支持的码率能力集合，具体支持值与音频接收器设备端能力有关。 |
-| codecFrameLengthArray     | [CodecFrameLength](#codecframelength19)[] | 否    | 否    | 编解码器支持的帧长能力集合，具体支持值与音频接收器设备端能力有关。 |
+| codecBitsPerSampleArray  | [CodecBitsPerSample](#codecbitspersample11)[] | 否    | 否    | 编解码器支持的位深能力集合。 |
+| codecChannelModeArray    | [CodecChannelMode](#codecchannelmode11)[] | 否    | 否    | 编解码器支持的声道模式能力集合。 |
+| codecSampleRateArray     | [CodecSampleRate](#codecsamplerate11)[] | 否    | 否    | 编解码器支持的采样率能力集合。 |
+| codecBitRateArray     | [CodecBitRate](#codecbitrate19)[] | 否    | 否    | 编解码器支持的码率能力集合。 |
+| codecFrameLengthArray     | [CodecFrameLength](#codecframelength19)[] | 否    | 否    | 编解码器支持的帧长能力集合。 |
 
 ## CodecType<sup>11+</sup>
 

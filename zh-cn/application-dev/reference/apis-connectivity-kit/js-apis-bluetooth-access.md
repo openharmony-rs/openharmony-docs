@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供了打开和关闭蓝牙、获取蓝牙开关状态、订阅与取消订阅蓝牙开关状态变化事件、持久化管理蓝牙设备虚拟MAC地址、UUID格式转换以及查询本机蓝牙能力支持情况等功能。
+本模块提供了打开和关闭蓝牙、获取蓝牙开关状态以及其他相关方法。
 
 > **说明：**
 >
@@ -200,9 +200,7 @@ try {
 
 getState(): BluetoothState
 
-获取蓝牙开关状态。从API version 13开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
-
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH（适用版本：10-12）
+获取蓝牙开关状态。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -241,7 +239,7 @@ try {
 
 on(type: 'stateChange', callback: Callback&lt;BluetoothState&gt;): void
 
-订阅本端蓝牙开关状态变化事件。使用Callback异步回调。从API version 18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
+订阅本端蓝牙开关状态变化事件。使用Callback异步回调。从API18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -284,7 +282,7 @@ try {
 
 off(type: 'stateChange', callback?: Callback&lt;BluetoothState&gt;): void
 
-取消订阅本端蓝牙开关状态变化事件。从API version 18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
+取消订阅本端蓝牙开关状态变化事件。从API18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -329,9 +327,9 @@ try {
 addPersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 
 持久化存储蓝牙设备的虚拟MAC地址。使用Promise异步回调。
-- 应用通过蓝牙相关接口，如扫描等途径获取到的设备地址（虚拟MAC地址）和实际的设备MAC地址不同。蓝牙子系统会保存一个虚拟MAC地址和实际设备MAC地址的映射关系。若应用想长期对此蓝牙设备进行操作使用，建议用此接口持久化存储该设备的虚拟MAC地址。持久化存储后，后续可直接使用该虚拟MAC地址，且该地址映射关系不会再改变。
+- 应用通过蓝牙相关接口，如扫描等途径获取到的设备地址（虚拟MAC地址）和实际的设备MAC地址不同。蓝牙子系统会保存一个虚拟MAC地址和实际设备MAC地址的映射关系。若应用想长期对该蓝牙设备进行操作使用，建议用此接口持久化存储该设备的虚拟MAC地址，后续可直接使用，该地址映射关系不会再改变。
 - 指定持久化存储的虚拟MAC地址需是有效的（可使用[access.isValidRandomDeviceId](#accessisvalidrandomdeviceid16)判断）。
-- 使用该接口时，开发者应确保该虚拟MAC地址对应的对端蓝牙设备实际地址保持不变。若对端设备实际地址发生变化，持久化存储的地址信息将失效，无法继续使用。
+- 使用该接口时，开发者应确保该虚拟MAC地址对应的对端蓝牙设备实际地址是保持不变的，若对端设备实际地址发生变化，持久化存储的地址信息将失效，无法继续使用。
 - 可调用[access.deletePersistentDeviceId](#accessdeletepersistentdeviceid16)删除已持久化存储的虚拟MAC地址。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
@@ -344,7 +342,7 @@ addPersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| deviceId     | string                                   | 是    | 对端设备的虚拟MAC地址，需是有效的虚拟MAC地址（可使用[access.isValidRandomDeviceId](#accessisvalidrandomdeviceid16)判断）。例如："XX:XX:XX:XX:XX:XX"。<br>该地址一般来源于蓝牙扫描结果，如：可通过调用[startScan](js-apis-bluetooth-ble.md#startscan15)或[connection.startBluetoothDiscovery](js-apis-bluetooth-connection.md#connectionstartbluetoothdiscovery)扫描得到。  |
+| deviceId     | string                                   | 是    | 对端设备的虚拟MAC地址，例如："XX:XX:XX:XX:XX:XX"。<br>该地址一般来源于蓝牙扫描结果，如：可通过调用[startScan](js-apis-bluetooth-ble.md#startscan15)或[connection.startBluetoothDiscovery](js-apis-bluetooth-connection.md#connectionstartbluetoothdiscovery)扫描得到。  |
 
 **返回值**：
 
@@ -372,13 +370,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let deviceId = '11:22:33:44:55:66'  // 该地址可通过BLE扫描获取
 try {
-    access.addPersistentDeviceId(deviceId).then(() => {
-        console.info('addPersistentDeviceId success');
-    }, (error: BusinessError) => {
-        console.error('errCode: ' + error.code + ', errMessage: ' + error.message);
-    });
+    access.addPersistentDeviceId(deviceId);
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
 }
 ```
 
@@ -426,13 +420,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let deviceId = '11:22:33:44:55:66'  // 该地址可通过BLE扫描获取
 try {
-    access.deletePersistentDeviceId(deviceId).then(() => {
-        console.info('deletePersistentDeviceId success');
-    }, (error: BusinessError) => {
-        console.error('errCode: ' + error.code + ', errMessage: ' + error.message);
-    });
+    access.deletePersistentDeviceId(deviceId);
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
 }
 ```
 
@@ -440,7 +430,7 @@ try {
 
 getPersistentDeviceIds(): string[];
 
-获取应用持久化存储过的蓝牙虚拟MAC地址。注意：若对端设备实际地址发生变化，已持久化存储的地址信息将失效，使用返回的地址前建议通过[access.isValidRandomDeviceId](#accessisvalidrandomdeviceid16)确认其有效性。
+获取应用持久化存储过的蓝牙虚拟MAC地址。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
 
@@ -481,7 +471,7 @@ try {
 
 isValidRandomDeviceId(deviceId: string): boolean;
 
-判断对端蓝牙设备的虚拟MAC地址是否有效。该接口可用于在调用[access.addPersistentDeviceId](#accessaddpersistentdeviceid16)持久化存储设备地址前，校验虚拟MAC地址的有效性。
+判断对端蓝牙设备的虚拟MAC地址是否有效。
 - 有效的虚拟MAC地址一般来源于蓝牙扫描结果，如：通过调用[startScan](js-apis-bluetooth-ble.md#startscan15)或[connection.startBluetoothDiscovery](js-apis-bluetooth-connection.md#connectionstartbluetoothdiscovery)扫描得到。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -494,7 +484,7 @@ isValidRandomDeviceId(deviceId: string): boolean;
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| deviceId     | string                                   | 是    | 对端设备的虚拟MAC地址，例如："XX:XX:XX:XX:XX:XX"。<br>该地址一般来源于蓝牙扫描结果，如：可通过调用[startScan](js-apis-bluetooth-ble.md#startscan15)或[connection.startBluetoothDiscovery](js-apis-bluetooth-connection.md#connectionstartbluetoothdiscovery)扫描得到。           |
+| deviceId     | string                                   | 是    | 对端设备的虚拟MAC地址，例如："XX:XX:XX:XX:XX:XX"。           |
 
 **返回值**：
 
@@ -532,7 +522,7 @@ try {
 
 convertUuid(uuid: string): string
 
-将指定格式的UUID转换为128bit的UUID。
+将指定格式的的UUID转换为128bit的UUID。
 
 常用的UUID格式主要包括16bit、32bit和128bit三种格式。蓝牙协议定义的128bit格式的基准UUID为：00000000-0000-1000-8000-00805f9b34fb。若输入16bit或者32bit的UUID，将基于蓝牙基准UUID进行转换。若输入128bit的UUID，将不做转换直接输出该UUID。
 
@@ -541,21 +531,13 @@ convertUuid(uuid: string): string
 - 若输入128bit的UUID，例如“11112222-3333-4444-5555-666677778888”，将直接输出该UUID。
 - 若输入不符合以上格式的UUID或包含非16进制范围内的字符，将返回[401](../errorcode-universal.md#401-参数检查失败)错误码。
 
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| uuid     | string                                   | 是    | 16bit、32bit、128bit的UUID。<br>取值原则：16bit格式为4位16进制字符（如"1801"），32bit格式为8位16进制字符（如"12341801"），128bit格式为标准UUID格式（如"11112222-3333-4444-5555-666677778888"）。           |
+| uuid     | string                                   | 是    | 16bit、32bit、128bit的UUID。           |
 
 **返回值**：
 

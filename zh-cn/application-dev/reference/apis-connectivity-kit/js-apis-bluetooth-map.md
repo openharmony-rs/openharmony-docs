@@ -1,4 +1,4 @@
-# @ohos.bluetooth.map (蓝牙MAP模块)
+# @ohos.bluetooth.map (蓝牙map模块)
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
@@ -51,12 +51,12 @@ createMapMseProfile(): MapMseProfile
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例：**
 
 ```js
-import { map } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {

@@ -111,16 +111,7 @@ getL2capPsm(serverSocket: number): number
 
 | 类型                                       | 说明                         |
 | ---------------------------------------- | -------------------------- |
-| number | 返回L2CAP链路类型套接字的psm值。<br>- [SppType](#spptype)设置为SPP_L2CAP_BLE时，返回值的有效值范围为[0x01, 0xFF]。<br>- [SppType](#spptype)设置为SPP_L2CAP时，返回值的有效值范围为[0x0000, 0xFFFF]。<br>- 服务端通道建立异常或[SppType](#spptype)非L2CAP链路类型时，返回-1。|          
-
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------- |
-|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-|801 | Capability not supported. |
+| number | 返回L2CAP链路类型套接字的psm值。<br>- [SppType](#spptype)设置为SPP_L2CAP_BLE时，返回值的有效值范围为[0x01, 0xFF]。<br>- [SppType](#spptype)设置为SPP_L2CAP时，返回值的有效值范围为[0x0000, 0xFFFF]。<br>- 服务端通道建立异常或[SppType](#spptype)非L2CAP链路类型时，返回-1。|
 
 **示例：**
 
@@ -397,15 +388,6 @@ sppWrite(clientSocket: number, data: ArrayBuffer): void
 - 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
 - 若开发者需感知传输过程中异常断连等错误，建议使用[socket.sppWriteAsync](#socketsppwriteasync18)。
 - 按照蓝牙协议规范，数据通道在空闲状态需进入休眠模式以降低功耗。蓝牙子系统实现上，通道在5-7s内没有数据交互时会进入休眠模式，将导致下次调用此接口发送数据前，会耗费500ms左右退出休眠模式才开始发送数据。
-
-数据通道状态转换示意如下：
-```mermaid
-stateDiagram-v2
-    [*] --> 活跃
-    活跃 --> 休眠: 空闲5-7s无数据交互
-    休眠 --> 活跃: 发送数据(唤醒约500ms)
-    活跃 --> 活跃: 每3s发送心跳保活
-```
 - 若想减少每次发送数据前退出休眠模式的耗时，建议每3s左右可往数据通道上发送一次任意大小的心跳数据，对数据通道进行保活，可防止进入休眠模式，但同时也会提高设备功耗。
 <!--RP1--><!--RP1End-->
 
@@ -573,7 +555,6 @@ sppWriteAsync(clientSocket: number, data: ArrayBuffer): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 |801 | Capability not supported.          |
 |2901054 | IO error. |
 |2900099 | Operation failed. |
@@ -629,7 +610,6 @@ sppReadAsync(clientSocket: number): Promise&lt;ArrayBuffer&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 |801 | Capability not supported.          |
 |2901054 | IO error. |
 |2900099 | Operation failed. |
@@ -683,22 +663,13 @@ getMaxReceiveDataSize(clientSocket: number): number
 | ----------------------------- | ---------- |
 | number | 返回最大接收数据的大小，单位：Byte。 |
 
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------- |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-|801 | Capability not supported. |
-
 **示例：**
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 入参clientNumber由sppAccept或sppConnect接口获取。
-let clientSocket = 1; 
+let clientSocket = 1;
 try {
     let result: number = socket.getMaxReceiveDataSize(clientSocket);
 } catch (err) {
@@ -730,22 +701,13 @@ getMaxTransmitDataSize(clientSocket: number): number
 | ----------------------------- | ---------- |
 | number | 返回最大发送数据的大小，单位：Byte。 |
 
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------- |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-|801 | Capability not supported. |
-
 **示例：**
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 入参clientNumber由sppAccept或sppConnect接口获取。
-let clientSocket = 1; 
+let clientSocket = 1;
 try {
     let result: number = socket.getMaxTransmitDataSize(clientSocket);
 } catch (err) {
@@ -757,7 +719,7 @@ try {
 
 isConnected(clientSocket: number): boolean
 
-客户端和服务端均可使用，检查当前链路是否已连接。需在调用[socket.sppConnect](#socketsppconnect)或[socket.sppAccept](#socketsppaccept)接口获取到有效的客户端套接字ID后使用。
+客户端和服务端均可使用，检查当前链路是否已连接。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -773,22 +735,13 @@ isConnected(clientSocket: number): boolean
 | ----------------------------- | ---------- |
 | boolean | 套接字链路是否已连接，true表示已连接，false表示未连接。 |
 
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------- |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-|801 | Capability not supported. |
-
 **示例：**
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 入参clientNumber由sppAccept或sppConnect接口获取。
-let clientSocket = 1; 
+let clientSocket = 1;
 try {
     let result: boolean = socket.isConnected(clientSocket);
 } catch (err) {
@@ -813,7 +766,7 @@ try {
 
 
 
-## SppType 
+## SppType
 
 枚举，蓝牙套接字链路类型。
 

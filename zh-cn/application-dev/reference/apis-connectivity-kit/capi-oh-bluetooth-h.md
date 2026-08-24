@@ -75,7 +75,7 @@ enum Bluetooth_ResultCode
 | 枚举项 | 描述 |
 | -- | -- |
 | BLUETOOTH_SUCCESS = 0 | 操作成功。 |
-| BLUETOOTH_INVALID_PARAM = 401 | 参数错误。可能原因：1. 输入参数为空指针；2. 参数数值超出定义范围。处理建议：请检查输入参数是否为有效非空指针，且参数值在有效定义范围内。 |
+| BLUETOOTH_INVALID_PARAM = 401 | 参数错误。请检查输入参数是否为有效非空指针。 |
 
 
 ## 函数说明

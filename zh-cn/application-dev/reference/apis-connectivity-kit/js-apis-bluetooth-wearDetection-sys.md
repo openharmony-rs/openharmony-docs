@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-佩戴检测模块提供了管理蓝牙音频设备（如蓝牙耳机）佩戴检测能力的方法，包括使能佩戴检测(enableWearDetection)、禁用佩戴检测(disableWearDetection)、判断设备是否支持佩戴检测(isWearDetectionSupported)以及判断佩戴检测是否开启(isWearDetectionEnabled)。开发者可先通过isWearDetectionSupported判断设备是否支持佩戴检测，若支持再通过enableWearDetection使能佩戴检测，并通过isWearDetectionEnabled查询佩戴检测的开启状态。
+佩戴检测模块提供了获取蓝牙音频设备(如蓝牙耳机)是否支持佩戴检测、是否开启佩戴检测的方法。
 
 > **说明：**
 >

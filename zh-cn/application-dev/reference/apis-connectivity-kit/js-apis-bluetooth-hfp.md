@@ -1,4 +1,4 @@
-# @ohos.bluetooth.hfp (蓝牙HFP模块)
+# @ohos.bluetooth.hfp (蓝牙hfp模块)
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
@@ -39,8 +39,6 @@ createHfpAgProfile(): HandsFreeAudioGatewayProfile
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
 **返回值**：
 
 | 类型                            | 说明         |
@@ -53,6 +51,7 @@ createHfpAgProfile(): HandsFreeAudioGatewayProfile
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例**：
@@ -115,8 +114,6 @@ try {
 - 和该实例角色相对应的是[HF](../../connectivity/bluetooth/terminology.md#hf)角色。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
-
-**模型约束**：此接口仅可在Stage模型下使用。
 
 
 ## HandsFreeHfProfile

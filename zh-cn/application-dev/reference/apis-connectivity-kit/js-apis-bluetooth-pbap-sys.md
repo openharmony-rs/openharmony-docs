@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-pbap模块提供了蓝牙电话簿访问（PBAP）相关的功能，支持作为PBAP服务端向远端蓝牙设备共享电话簿信息，包括设置电话簿共享类型、管理电话簿访问权限以及断开Pbap服务等，适用于车载、智能穿戴等需要在蓝牙连接场景下共享和控制电话簿访问的应用。
+pbap模块提供了访问电话簿相关功能的方法。
 
 > **说明：**
 >
@@ -37,17 +37,11 @@ disconnect(deviceId: string): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**设备行为差异**：
-
-| 设备类型 | 说明 |
-| -------- | -------- |
-| 智慧屏 | 不支持该能力。 |
-
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，格式为MAC地址（由6组两位十六进制字符以冒号分隔），例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
 **错误码**：
 
@@ -67,13 +61,10 @@ disconnect(deviceId: string): void
 **示例：**
 
 ```js
-import { pbap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    // deviceId通过蓝牙设备扫描获取，例如通过bluetooth.getPairedDevices()等接口
-    let deviceId = 'XX:XX:XX:XX:XX:XX';
-    pbapServerProfile.disconnect(deviceId);
+    pbapServerProfile.disconnect('XX:XX:XX:XX:XX:XX');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -83,7 +74,7 @@ try {
 
 setShareType(deviceId: string, type: ShareType, callback: AsyncCallback&lt;void&gt;): void
 
-设置电话簿信息的共享类型，可根据应用场景选择仅共享姓名和电话号码、共享全部信息或不共享。使用Callback异步回调。
+设置电话簿信息的共享类型。使用Callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -95,7 +86,7 @@ setShareType(deviceId: string, type: ShareType, callback: AsyncCallback&lt;void&
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，格式为MAC地址（由6组两位十六进制字符以冒号分隔），例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | type | [ShareType](#sharetype) | 是    | 表示共享类型的枚举值。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功，err为undefined，否则为错误对象。   |
 
@@ -133,7 +124,7 @@ try {
 
 setShareType(deviceId: string, type: ShareType): Promise&lt;void&gt;
 
-设置电话簿信息的共享类型，可根据应用场景选择仅共享姓名和电话号码、共享全部信息或不共享。使用Promise异步回调。
+设置电话簿信息的共享类型。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -145,14 +136,14 @@ setShareType(deviceId: string, type: ShareType): Promise&lt;void&gt;
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，格式为MAC地址（由6组两位十六进制字符以冒号分隔），例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | type | [ShareType](#sharetype) | 是    | 表示共享类型的枚举值。 |
 
 **返回值：**
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | 以Promise的形式返回设置结果。如果成功，结果为undefined；如果失败，则抛出错误对象。 |
+| Promise&lt;void&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -175,8 +166,8 @@ setShareType(deviceId: string, type: ShareType): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    pbapServerProfile.getPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX', (err, authorization) => {
-        console.info('authorization ' + authorization);
+    pbapServerProfile.setShareType('XX:XX:XX:XX:XX:XX', 0).then(() => {
+        console.info('setShareType');
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -199,8 +190,8 @@ getShareType(deviceId: string, callback: AsyncCallback&lt;ShareType&gt;): void
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，格式为MAC地址（由6组两位十六进制字符以冒号分隔），例如："XX:XX:XX:XX:XX:XX"。 |
-| callback | AsyncCallback&lt;[ShareType](#sharetype)&gt; | 是    | 回调函数。当获取成功，err为undefined，data为获取到的共享类型；否则为错误对象。   |
+| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| callback | AsyncCallback&lt;[ShareType](#sharetype)&gt; | 是    | 回调函数。当获取成功，err为undefined，否则为错误对象。   |
 
 **错误码**：
 
@@ -220,17 +211,10 @@ getShareType(deviceId: string, callback: AsyncCallback&lt;ShareType&gt;): void
 **示例：**
 
 ```js
-import { pbap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    // deviceId通过蓝牙设备扫描获取，例如通过bluetooth.getPairedDevices()等接口
-    let deviceId = 'XX:XX:XX:XX:XX:XX';
-    pbapServerProfile.getShareType(deviceId, (err: BusinessError, type: pbap.ShareType) => {
-        if (err) {
-            console.error('getShareType failed, errCode: ' + err.code + ', errMessage: ' + err.message);
-            return;
-        }
+    pbapServerProfile.getShareType('XX:XX:XX:XX:XX:XX', (err, type) => {
         console.info('getShareType ' + type);
     });
 } catch (err) {
@@ -254,13 +238,13 @@ getShareType(deviceId: string): Promise&lt;ShareType&gt;
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，格式为MAC地址（由6组两位十六进制字符以冒号分隔），例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
 **返回值：**
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;[ShareType](#sharetype)&gt; | 以Promise的形式返回获取的共享类型。如果成功，返回ShareType枚举值；如果失败，Promise会被reject并返回错误对象。 |
+| Promise&lt;[ShareType](#sharetype)&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -280,13 +264,10 @@ getShareType(deviceId: string): Promise&lt;ShareType&gt;
 **示例：**
 
 ```js
-import { pbap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    // deviceId通过蓝牙设备扫描获取，例如通过bluetooth.getPairedDevices()等接口
-    let deviceId = 'XX:XX:XX:XX:XX:XX';
-    pbapServerProfile.getShareType(deviceId).then((type) => {
+    pbapServerProfile.getShareType('XX:XX:XX:XX:XX:XX').then((type) => {
         console.info('getShareType ' + type);
     });
 } catch (err) {
@@ -298,7 +279,7 @@ try {
 
 setPhoneBookAccessAuthorization(deviceId: string, authorization: AccessAuthorization, callback: AsyncCallback&lt;void&gt;): void
 
-设置远端设备对电话簿信息的访问权限，可在设备连接时或需要调整权限时使用。使用Callback异步回调。
+设置电话簿信息的访问权限。使用Callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -310,7 +291,7 @@ setPhoneBookAccessAuthorization(deviceId: string, authorization: AccessAuthoriza
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，格式为MAC地址（由6组两位十六进制字符以冒号分隔），例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | authorization | [AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11) | 是    | 表示访问权限枚举值。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功，err为undefined，否则为错误对象。   |
 
@@ -348,7 +329,7 @@ try {
 
 setPhoneBookAccessAuthorization(deviceId: string, authorization: AccessAuthorization): Promise&lt;void&gt;
 
-设置远端设备对电话簿信息的访问权限，可在设备连接时或需要调整权限时使用。使用Promise异步回调。
+设置电话簿信息的访问权限。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -360,14 +341,14 @@ setPhoneBookAccessAuthorization(deviceId: string, authorization: AccessAuthoriza
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，格式为MAC地址（由6组两位十六进制字符以冒号分隔），例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | authorization | [AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11) | 是    | 表示访问权限枚举值。 |
 
 **返回值：**
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | 以Promise的形式返回设置结果。如果成功，结果为undefined；如果失败，则抛出错误对象。 |
+| Promise&lt;void&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -414,8 +395,8 @@ getPhoneBookAccessAuthorization(deviceId: string, callback: AsyncCallback&lt;Acc
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，格式为MAC地址（由6组两位十六进制字符以冒号分隔），例如："XX:XX:XX:XX:XX:XX"。 |
-| callback | AsyncCallback&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | 是    | 回调函数。当获取成功，err为undefined，data为获取到的访问权限值；否则为错误对象。   |
+| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| callback | AsyncCallback&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | 是    | 回调函数。当获取成功，err为undefined，否则为错误对象。   |
 
 **错误码**：
 
@@ -435,17 +416,10 @@ getPhoneBookAccessAuthorization(deviceId: string, callback: AsyncCallback&lt;Acc
 **示例：**
 
 ```js
-import { pbap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    // deviceId通过蓝牙设备扫描获取，例如通过bluetooth.getPairedDevices()等接口
-    let deviceId = 'XX:XX:XX:XX:XX:XX';
-    pbapServerProfile.getPhoneBookAccessAuthorization(deviceId, (err: BusinessError, authorization: constant.AccessAuthorization) => {
-        if (err) {
-            console.error('getPhoneBookAccessAuthorization failed, errCode: ' + err.code + ', errMessage: ' + err.message);
-            return;
-        }
+    pbapServerProfile.getPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX', (err, authorization) => {
         console.info('authorization ' + authorization);
     });
 } catch (err) {
@@ -469,13 +443,13 @@ getPhoneBookAccessAuthorization(deviceId: string): Promise&lt;AccessAuthorizatio
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，格式为MAC地址（由6组两位十六进制字符以冒号分隔），例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
 **返回值：**
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | 以Promise的形式返回获取的访问权限。如果成功，返回AccessAuthorization枚举值；如果失败，Promise会被reject并返回错误对象。 |
+| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -516,6 +490,6 @@ try {
 
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
-| SHARE_NAME_AND_PHONE_NUMBER | 0    | 共享名字和号码信息。<br>此接口为系统接口。 |
-| SHARE_ALL | 1    | 共享所有信息。<br>此接口为系统接口。  |
-| SHARE_NOTHING  | 2    | 不共享。<br>此接口为系统接口。   |
+| SHARE_NAME_AND_PHONE_NUMBER | 0    | 共享名字和号码信息。<br/>此接口为系统接口。 |
+| SHARE_ALL | 1    | 共享所有信息。<br/>此接口为系统接口。  |
+| SHARE_NOTHING  | 2    | 不共享。<br/>此接口为系统接口。   |

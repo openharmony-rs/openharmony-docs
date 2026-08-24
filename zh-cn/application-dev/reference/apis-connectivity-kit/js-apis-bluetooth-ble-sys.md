@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供了基于低功耗蓝牙（Bluetooth Low Energy，[BLE](../../connectivity/terminology.md#ble)）技术的蓝牙能力，首批接口包括基于通用属性协议（Generic Attribute Profile，[GATT](../../connectivity/terminology.md#gatt)）的写特征值方法。适用于需要与低功耗蓝牙设备进行GATT数据写入交互的场景，帮助应用在完成特征值写入后获取server端响应信息，提升数据传输的可靠性与可追溯性。
+本模块提供了基于低功耗蓝牙（Bluetooth Low Energy，[BLE](../../connectivity/bluetooth/terminology.md#ble)）技术的蓝牙能力，首批接口包括基于通用属性协议（Generic Attribute Profile，[GATT](../../connectivity/bluetooth/terminology.md#gatt)）的写特征值方法。适用于需要与低功耗蓝牙设备进行GATT数据写入交互的场景，帮助应用在完成特征值写入后获取server端响应信息，提升数据传输的可靠性与可追溯性。
 
 > **说明：**
 >
@@ -57,7 +57,7 @@ client端向指定的server端特征值写入数据，适用于需要获取serve
 
 | 类型                                       | 说明                         |
 | ---------------------------------------- | -------------------------- |
-| Promise&lt;[GattRspContext](#gattrspcontext)&gt; | Promise对象，返回GattRspContext对象，包含本端接收到server端回复消息的时间戳等信息。 |
+| Promise&lt;[GattRspContext](#gattrspcontext)&gt; | Promise对象，返回GattRspContext对象。 |
 
 **错误码**：
 
@@ -65,7 +65,6 @@ client端向指定的server端特征值写入数据，适用于需要获取serve
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs.                 |
 |801 | Capability not supported.          |
@@ -126,4 +125,4 @@ client端调用[writeCharacteristicValueWithContext](#writecharacteristicvaluewi
 
 | 名称                                     | 类型    | 只读 | 可选  | 说明                                                         |
 | ------------------------------------------ | -------- | ---- | ---- | ------------------------------------------------------------ |
-| irk<sup>23+</sup> | Uint8Array | 否 | 是 | 通过蓝牙设备地址解析密钥（Identity Resolving Key, IRK）过滤携带[可解析私有地址](./js-apis-bluetooth-common.md#bluetoothrawaddresstype23)的BLE广播报文。默认值为空，表示不按IRK过滤广播报文。<br>蓝牙设备的可解析私有地址会随时间变化，若已知该设备的IRK和Public类型地址或者Static Random类型的地址，即可过滤同一个蓝牙设备在不同时间发出的BLE广播报文。<br>IRK解析可解析私有地址的原理如下图所示：<br>```mermaid<br>graph LR<br>    A[同一蓝牙设备] -->|随时间变化| B[可解析私有地址1]<br>    A -->|随时间变化| C[可解析私有地址2]<br>    A -->|随时间变化| D[可解析私有地址3]<br>    B --> E[已知IRK+Public/Static Random地址]<br>    C --> E<br>    D --> E<br>    E -->|解析匹配| F[识别为同一设备]<br>```<br>使用本参数时，必须同时通过[ScanFilter](js-apis-bluetooth-ble.md#scanfilter)中的address参数指定地址和地址类型等信息。其中，地址必须为有效的Public类型地址或Static Random类型地址，[addressType](js-apis-bluetooth-common.md#bluetoothaddresstype)必须设置为REAL，[rawAddressType](js-apis-bluetooth-common.md#bluetoothrawaddresstype23)必须根据address的实际情况进行设置，否则将无法正确过滤携带可解析私有地址的BLE广播报文。<br>**系统接口**：此接口为系统接口。|
+| irk<sup>23+</sup> | Uint8Array | 否 | 是 | 通过蓝牙设备地址解析密钥（Identity Resolving Key, IRK）过滤携带[可解析私有地址](./js-apis-bluetooth-common.md#bluetoothrawaddresstype23)的BLE广播报文。默认值为空，表示不按IRK过滤广播报文。<br>蓝牙设备的可解析私有地址会随时间变化，若已知该设备的IRK和Public类型地址或者Static Random类型的地址，即可过滤同一个蓝牙设备在不同时间发出的BLE广播报文。<br>使用本参数时，必须同时通过[ScanFilter](js-apis-bluetooth-ble.md#scanfilter)中的address参数指定地址和地址类型等信息。其中，地址必须为有效的Public类型地址或Static Random类型地址，[addressType](js-apis-bluetooth-common.md#bluetoothaddresstype)必须设置为REAL，[rawAddressType](js-apis-bluetooth-common.md#bluetoothrawaddresstype23)必须根据address的实际情况进行设置，否则将无法正确过滤携带可解析私有地址的BLE广播报文。<br>**系统接口**：此接口为系统接口。|

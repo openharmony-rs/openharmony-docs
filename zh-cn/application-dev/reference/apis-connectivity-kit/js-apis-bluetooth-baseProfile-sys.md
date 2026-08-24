@@ -54,7 +54,7 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy, callback: 
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示配对的远端设备地址，格式为XX:XX:XX:XX:XX:XX，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | strategy | [ConnectionStrategy](#connectionstrategy)   | 是    |Profile的连接策略。 |
 | callback | AsyncCallback&lt;void&gt;  | 是    | 回调函数。当设置成功，err为undefined，否则为错误对象。 |
 
@@ -104,7 +104,7 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy): Promise&l
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示配对的远端设备地址，格式为XX:XX:XX:XX:XX:XX，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | strategy | [ConnectionStrategy](#connectionstrategy)   | 是    |Profile的连接策略。 |
 
 **返回值：**
@@ -161,7 +161,7 @@ getConnectionStrategy(deviceId: string, callback: AsyncCallback&lt;ConnectionStr
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示配对的远端设备地址，格式为XX:XX:XX:XX:XX:XX，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | callback | AsyncCallback&lt;[ConnectionStrategy](#connectionstrategy)&gt; | 是    | 回调函数。当获取策略成功，err为undefined，data为获取到的连接策略，否则为错误对象。 |
 
 **错误码**：
@@ -210,7 +210,7 @@ getConnectionStrategy(deviceId: string): Promise&lt;ConnectionStrategy&gt;
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示配对的远端设备地址，格式为XX:XX:XX:XX:XX:XX，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
 **返回值：**
 
