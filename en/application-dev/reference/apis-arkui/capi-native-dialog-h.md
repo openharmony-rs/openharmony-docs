@@ -6,7 +6,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f9ee958314ea662124f5aa4c8b3902f47eb53485 translatedAt=2026-08-21T12:11:06.379Z pushedAt=2026-08-24T07:05:59.681Z -->
+<!-- md-trans-meta sourceCommit=f9ee958314ea662124f5aa4c8b3902f47eb53485 translatedAt=2026-08-21T12:11:06.379Z pushedAt=2026-08-24T09:08:35.543Z -->
 
 ## Overview
 
@@ -939,7 +939,7 @@ Sets whether to display the dialog box in a subwindow.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Pointer to the dialog box Configuration.|
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Pointer to the dialog box configuration.|
 | bool showInSubwindow | Whether to display the dialog box in a subwindow. The value **true** means the dialog box can be displayed outside the main window and in an independent subwindow. The value **false** means the dialog box is displayed within the application, not in an independent subwindow.<br/>Default value: **false**.|
 
 **Returns**
@@ -1024,7 +1024,7 @@ Sets the display mode of the dialog box in the subwindow.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Pointer to the dialog box Configuration.|
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Pointer to the dialog box configuration.|
 | [OH_ArkUI_DialogDisplayModeInSubWindow](#oh_arkui_dialogdisplaymodeinsubwindow) displayModeInSubWindow | Display mode of the dialog box in the subwindow. The type is [OH_ArkUI_DialogDisplayModeInSubWindow](#oh_arkui_dialogdisplaymodeinsubwindow).<br/>Default value: **OH_ARKUI_DIALOG_DISPLAY_MODE_SCREEN_BASED**. |
 
 **Returns**

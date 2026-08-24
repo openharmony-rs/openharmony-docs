@@ -6,7 +6,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8dd2d5cdf88acdc31ee17ec2006247a008c91d7c translatedAt=2026-08-21T12:17:28.918Z pushedAt=2026-08-24T03:20:32.589Z -->
+<!-- md-trans-meta sourceCommit=8dd2d5cdf88acdc31ee17ec2006247a008c91d7c translatedAt=2026-08-21T12:17:28.918Z pushedAt=2026-08-24T09:05:01.994Z -->
 
 ## Overview
 
@@ -1895,7 +1895,7 @@ Creates a cubic Bezier curve.
 | Name| Description|
 | -- | -- |
 | float x1 | X-coordinate of the first point on the Bezier curve. Value range: [0, 1]. A value less than 0 is treated as **0**. A value greater than 1 is treated as **1**.|
-| float y1 | Y-coordinate of the first point of the Bezier curve. Value range: (-∞, +∞). |
+| float y1 | Y-coordinate of the first point on the Bezier curve. Value range: (-∞, +∞). |
 | float x2 | X-coordinate of the second point on the Bezier curve. Value range: [0, 1]. A value less than 0 is treated as **0**. A value greater than 1 is treated as **1**.|
 | float y2 | Y-coordinate of the second point on the Bezier curve.|
 
@@ -2130,7 +2130,7 @@ Creates a scaling effect object for component transitions.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ScaleOptions](capi-arkui-nativemodule-arkui-scaleoptions.md)* scale | Scale parameter object for the component transition. NULL is returned if scale is NULL. |
+| [ArkUI_ScaleOptions](capi-arkui-nativemodule-arkui-scaleoptions.md)* scale | Scale parameter object for the component transition. **NULL** is returned if **scale** is **NULL**. |
 
 **Return value**
 
