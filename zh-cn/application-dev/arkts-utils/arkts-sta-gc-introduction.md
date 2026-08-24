@@ -28,8 +28,8 @@ ArkTS-Sta选择基于对象追踪（Tracing GC）算法，主要原因：
 
 | GC类型 | 启动参数 | 特点 | 适用场景 |
 | -------- | -------- | -------- | -------- |
-| Epsilon GC | --gc-type=epsilon | 仅分配不回收 | 调试、性能测试 |
-| Epsilon G1 GC | --gc-type=epsilon-g1 | G1布局但不回收 | 调试G1布局 |
+| Epsilon GC | --gc-type=epsilon | 无分代空实现GC，仅分配内存不执行任何回收，堆耗尽即OOM | 调试、性能基线测试 |
+| Epsilon G1 GC | --gc-type=epsilon-g1 | 采用G1的Region分代堆布局与写屏障，但不执行任何回收 | 调试G1分配器与写屏障开销 |
 | STW GC | --gc-type=stw | 全停顿收集器，简单但暂停时间长 | 极端兼容场景 |
 | **G1 GC** | --gc-type=g1-gc | **默认GC**，分代+并发+Region化 | 生产环境 |
 | CMC GC | --gc-type=cmc | 并发标记压缩，实验性质 | 实验场景 |
@@ -247,7 +247,7 @@ Survivor Region是可选空间，仅在高端设备上启用。当优先吞吐�
 
 | 参数名 | 默认值 | 说明 |
 | -------- | -------- | -------- |
-| pause-target | - | STW暂停时间目标（毫秒）。 |
+| pause-target | 10ms | STW暂停时间目标（毫秒），对应g1-pause-time-goal的max-gc-pause子参数。 |
 | hot-card-threshold | 3 | CardTable热度阈值。 |
 
 **解释器栈大小**
@@ -269,7 +269,7 @@ G1 GC提供多种触发策略，包括空间阈值、分配失败、外部请求
 ### 分配失败触发GC
 
 - 对象分配时TLAB耗尽、Region分配失败时触发GC。
-- HeapManager在分配失败时最多尝试4次GC + 重新分配，每次增大回收力度（Young → Mixed → Full）。
+- HeapManager在分配失败时最多尝试4次GC + 重新分配，逐步增大回收力度。
 
 ### 外部触发GC
 
@@ -434,26 +434,26 @@ ArkTS-Sta运行时通过`std.core.GC`命名空间提供GC调试接口，相比Ar
 
 ### GC触发接口
 
-| 接口 | 说明 |
-| -------- | -------- |
-| `GC.startGC(cause, inPlaceMode)` | 主动触发指定类型的GC。cause可为YOUNG（年轻代GC）、THRESHOLD（阈值触发GC）、FULL（全堆GC）。inPlaceMode为true时原地执行GC（同步），为false时异步执行。返回GC任务ID。 |
-| `GC.waitForFinishGC(gcId)` | 等待指定GC完成。gcId由startGC返回，0或-1时立即返回。 |
-| `GC.scheduleGcAfterNthAlloc(n, cause)` | 在第n次对象分配后触发指定类型GC，用于精确调试。 |
+| 接口 | 参数 | 返回值 | 说明 |
+| -------- | -------- | -------- | -------- |
+| `GC.startGC(cause: Cause, inPlaceMode: boolean): long` | cause：GC类型，取值为`GC.Cause.YOUNG`（年轻代GC）、`GC.Cause.THRESHOLD`（阈值触发GC）、`GC.Cause.FULL`（全堆GC）；inPlaceMode：是否同步执行，默认`false`（异步），`true`时在当前线程同步执行 | `long`：GC任务ID，正值表示任务已提交可传给`waitForFinishGC`等待完成；`0`表示已原地同步执行完成；`-1`表示任务被取消或拒绝 | 主动触发指定类型的GC。另有重载版本`GC.startGC(cause: Cause, callback: () => void, inPlaceMode: boolean): long`，callback为并发阶段回调（仅G1 GC支持，CMC GC传入非空callback会抛出`UnsupportedOperationError`）。传入不支持的cause时抛出`IllegalArgumentError` |
+| `GC.waitForFinishGC(gcId: long): void` | gcId：由`startGC`返回的GC任务ID，为`0`或负值时立即返回 | `void` | 阻塞当前线程直到指定GC任务完成 |
+| `GC.scheduleGcAfterNthAlloc(n: int, cause: Cause): void` | n：分配次数，须≥0；cause：GC类型，取值同`startGC` | `void` | 在第n次对象分配后触发指定类型GC，用于精确调试。多次调用时后一次覆盖前一次的设置。n为负数时抛出`IllegalArgumentError`，当前GC触发器不支持时抛出`UnsupportedOperationError` |
 
 ### GC抑制接口
 
-| 接口 | 说明 |
-| -------- | -------- |
-| `GC.postponeGCStart()` | 开始推迟GC，禁止阈值触发的GC。Young GC仍可执行，但存活对象直接晋升。 |
-| `GC.postponeGCEnd()` | 结束推迟GC，恢复正常触发策略。 |
+| 接口 | 参数 | 返回值 | 说明 |
+| -------- | -------- | -------- | -------- |
+| `GC.postponeGCStart(): void` | 无 | `void` | 开始推迟GC，禁止阈值触发的GC。期间Young GC仍可执行，但会将所有存活对象直接晋升到老年代。须与`postponeGCEnd`配对使用，重复调用抛出`IllegalStateError`，当前GC不支持时抛出`UnsupportedOperationError` |
+| `GC.postponeGCEnd(): void` | 无 | `void` | 结束推迟GC，恢复正常触发策略。须在`postponeGCStart`之后调用，否则抛出`IllegalStateError`，当前GC不支持时抛出`UnsupportedOperationError` |
 
 ### 对象Pinning接口
 
-| 接口 | 说明 |
-| -------- | -------- |
-| `GC.pinObject(obj)` | 锁定对象，GC不会移动被锁定的对象。适用于需要稳定内存地址的场景（如Native代码访问）。 |
-| `GC.unpinObject(obj)` | 解锁对象，GC可再次移动该对象。 |
-| `GC.allocatePinned*Array(length)` | 分配并锁定指定类型的原始类型数组（支持boolean/byte/char/short/int/long/float/double）。 |
+| 接口 | 参数 | 返回值 | 说明 |
+| -------- | -------- | -------- | -------- |
+| `GC.pinObject(obj: Object): void` | obj：要锁定的对象 | `void` | 锁定对象，GC不会移动被锁定的对象。适用于需要稳定内存地址的场景（如Native代码访问）。当前GC不支持Pinning时抛出`UnsupportedOperationError` |
+| `GC.unpinObject(obj: Object): void` | obj：要解锁的对象 | `void` | 解锁对象，GC可再次移动该对象。须在`pinObject`之后调用，对未锁定对象调用行为未定义 |
+| `GC.allocatePinned*Array(length: long): ValueArray<T>` | length：数组长度，须≥0 | `ValueArray<T>`：已锁定的原始类型数组 | 分配并锁定指定类型的原始类型数组，GC期间不会被移动。支持`allocatePinnedBooleanArray`、`allocatePinnedByteArray`、`allocatePinnedCharArray`、`allocatePinnedShortArray`、`allocatePinnedIntArray`、`allocatePinnedLongArray`、`allocatePinnedFloatArray`、`allocatePinnedDoubleArray`八种。length为负数抛出`NegativeArraySizeError`，内存不足抛出`OutOfMemoryError`，当前GC不支持Pinning抛出`UnsupportedOperationError` |
 
 > **说明：**
 >
