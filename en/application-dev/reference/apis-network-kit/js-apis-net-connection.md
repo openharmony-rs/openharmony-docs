@@ -2551,7 +2551,7 @@ For details about the error codes, see [Network Connection Management Error Code
 ```typescript
 import { connection } from '@kit.NetworkKit';
 
-let result = connection.getDnsAscii("www.example.com," connection.ConversionProcess.NO_CONFIGURATION);
+let result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info(result);  // Expected result: www.xn--fsq092h.com
 let result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info(result);  // Expected result: www.example.com
