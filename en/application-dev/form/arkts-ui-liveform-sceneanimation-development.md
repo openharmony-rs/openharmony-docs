@@ -6,9 +6,9 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=8a286fbea0ee5d2c6d221cb5d7465a62e5dae282 translatedAt=2026-08-15T01:50:01.438Z pushedAt=2026-08-15T07:54:18.479Z -->
+<!-- md-trans-meta sourceCommit=f4bb484b1d8ec0f6bcf2535184c19569a539d4ab translatedAt=2026-08-22T01:25:35.772Z pushedAt=2026-08-22T03:02:39.941Z -->
 
-Starting from API version 20, scene animation interaction type interactive cards support triggering card-specific effects in specific scenarios. For example, you can choose to extend the animation rendering area beyond the card's own rendering area to create an "overflow" effect. This document provides development guidance for scene animation interaction type interactive cards, including the concepts of scene animation interaction type interactive cards, constraints and limitations, development of the card inactive state and active state UI, and development of the card configuration file.
+Starting from API version 20, scene animation interaction type interactive widgets support triggering widget-specific effects in specific scenarios. For example, you can choose to extend the animation rendering area beyond the widget's own rendering area to create an "overflow" effect. This document provides development guidance for scene animation interaction type interactive widgets, including the concepts of scene animation interaction type interactive widgets, constraints and limitations, development of the widget inactive state and active state UI, and development of the widget configuration file.
 
 ## Basic Concepts
 
@@ -16,7 +16,7 @@ A scene-based widget can be in either active state or inactive state. The widget
 
 **Inactive state**: In this state, the widget behaves the same as a common widget and follows the existing widget development specifications. The widget UI is rendered based on the content in **widgetCard.ets** provided by the widget provider.
 
-**Active state**: indicates the rendering state of interactive card animation. In this state, the card UI is rendered by the page corresponding to the [LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md) developed by the card provider.
+**Active state**: indicates the rendering state of interactive widget animation. In this state, the widget UI is rendered by the page corresponding to the [LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md) developed by the widget provider.
 
 **Figure 1** Switching interactive widget states
 
@@ -56,9 +56,9 @@ You can call the [formProvider.requestOverflow](../reference/apis-form-kit/js-ap
 
 2. A single widget's animation triggered by interval-based and time-specific updates can occur up to 50 times a day.
 
-3. As illustrated, rectangle ABCD denotes the widget's rendering area, whereas rectangle IJKL indicates the maximum animation area the widget can request. The centers of the two rectangles are aligned. The dimensions meet the requirements described in the following table.
+3. As illustrated, rectangle ABCD denotes the widget's rendering area, whereas rectangle IJKL indicates the maximum animation rendering area the widget can request. The centers of the two rectangles are aligned. The dimensions meet the requirements described in the following table.
 
-| Card Style | Length of JK | Length of IJ |
+| Widget Style | Length of JK | Length of IJ |
 |-------|---------------|---------------|
 | 1 * 2 | No more than 150% of the length of AD. | No more than 200% of the length of AB. |
 | 2 * 2 | No more than 150% of the length of AD. | No more than 150% of the length of AB. |
@@ -78,7 +78,7 @@ Example: On a device, a 2×2 widget measures 158vp × 158vp. Referring to the fi
 
 Thus, with A as the origin (X-axis positive to the right, Y-axis positive downward), the valid coordinates for point E in Figure 5 can be (-20, -20). The valid lengths for sides EF and EH can both be 200vp.
 
-The interactive widget can call the [formProvider.getFormRect](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20) API to obtain its dimensions and relative coordinate position in the window. The widget provider uses this information to calculate the animation request range. When calculating coordinates, use point A in the figure above as the origin (0, 0) and compute the corresponding parameters for rectangle EFGH, in vp.
+The interactive widget can call the [formProvider.getFormRect](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20) API to obtain its dimensions and relative coordinate position in the window. The widget provider uses this information to calculate the animation request range. When calculating coordinates, use point A in the figure above as the origin (0, 0) and calculate the corresponding parameters for rectangle EFGH, in vp.
 
 When [formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20) is called, the animation rendering area (rectangle EFGH) described in [overflowInfo](../reference/apis-form-kit/js-apis-app-form-formInfo.md#overflowinfo20) must meet the following requirements:
 
@@ -98,7 +98,7 @@ When [formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-
 
 2. When a user actively triggers an animation effect for an interactive widget (for example, via a tap), this request takes priority. At this point, the current widget switches to the active state and runs the animation, while other widgets switch to the inactive state.
 
-3. Other triggering modes, for example, triggering an animation via the widget interval-based or time-specific data update mechanism, follow the first-come, first-served principle. The system processes only the first valid animation request. Other requests return a failure and are not cached.
+3. Other triggering modes, for example, triggering an animation via the widget interval-based and time-specific data update mechanism, follow the first-come, first-served principle. The system processes only the first valid animation request. Other requests return a failure and are not cached.
 
 4. Other valid operations (such as tapping an application or widget, swiping pages, pulling down to access full search, dual-center, dragging a widget, and long pressing a widget) on the home screen will interrupt the current animation, and the widget will become inactive again.<!--Del-->System applications can suspend some operations on the home screen by configuring the suspend gesture. For details, see [Developing a Scene-based Widget (for System Applications)](arkts-ui-liveform-sceneanimation-development-sys.md).<!--DelEnd-->
 
@@ -311,7 +311,7 @@ The following table lists the key APIs for a scene-based widget.
 
     Configure LiveFormExtensionAbility in [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities) of the **module.json5** file.
 
-    <!-- @[liveform_moudlejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/module.json5) --> 
+    <!-- @[liveform_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/module.json5) -->
 
     ``` JSON5
     // entry/src/main/module.json5

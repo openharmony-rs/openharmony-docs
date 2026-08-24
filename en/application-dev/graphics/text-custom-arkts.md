@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=8e9d3b746529fedba672cd46a96d4746984bcb6c translatedAt=2026-08-15T01:51:55.356Z pushedAt=2026-08-15T08:34:49.516Z -->
+<!-- md-trans-meta sourceCommit=0876b7ba2fa1777332890da7f5059310feded633 translatedAt=2026-08-22T01:35:32.465Z pushedAt=2026-08-22T03:31:35.019Z -->
 
 In complex text layout scenarios, when the standard text components provided by the system cannot meet specific visual or interaction requirements, you can use the underlying text drawing capability provided by ArkGraphics 2D to directly control the canvas and text style to implement refined control over the text appearance and layout. This capability applies to scenarios that require highly customized text rendering effects, such as artistic fonts, complex rich text orchestration, or special dynamic text effects.
 
@@ -90,7 +90,7 @@ Starting from API version 18, text shaping results can be obtained. API version 
    let runs: text.Run[] = textLine.getGlyphRuns();
    ```
 
-5. This step is the custom drawing phase in the text shaping process. Call the **getGlyphs()** method to obtain the glyph sequence number of each character in the text, and then call the **getFont()** method to obtain the font object. Together, these uniquely identify the specific graphic information of each glyph. Starting from API version 20, the newly added **getAdvances()** method can return an array containing the recommended advance and height for each glyph during drawing. Based on these accurate measurement data, you can freely calculate and define the drawing position of each glyph, enabling complex text layout effects such as custom character spacing, vertical offset, or special typesetting.
+5. This step is the custom drawing phase in the text shaping process. Call the **getGlyphs()** method to obtain the glyph sequence number of each character in the text, and then call the **getFont()** method to obtain the font object. Together, these uniquely identify the specific graphic information of each glyph. Starting from API version 20, the newly added **getAdvances()** method can return an array containing the glyph width of each glyph in the range. Based on these accurate measurement data, you can calculate and define the drawing position of each glyph, enabling complex text layout effects such as custom character spacing, vertical offset, or special typesetting.
 
    <!-- @[arkts_independent_shaping_text_drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
 

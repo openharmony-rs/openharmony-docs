@@ -6,7 +6,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=a56d795a51f9068e61c2cc2726ea675f5d93d82a translatedAt=2026-08-13T03:10:43.818Z pushedAt=2026-08-13T07:29:19.150Z -->
+<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:16:10.665Z pushedAt=2026-08-22T07:03:02.463Z -->
 
 The system provides APIs for setting the notification badge, which is displayed in the upper right corner of the application icon on the home screen to notify the user of the count of unread notifications.
 
@@ -16,7 +16,7 @@ After a notification is read, the count on the badge is decremented by 1. If the
 
 ## Available APIs
 
-If **badgeNumber** is set to a value less than or equal to **0**, badges are cleared; if the value is greater than **99**, **99+** is displayed on the badge.
+When the badge count is set to a value less than or equal to 0, the badge is cleared. When the value is greater than 99, the [notification badge](notification-glossary.md#notification-badge) displays 99+.
 
 - You can use either of the following methods to increase the count on the badge:
 

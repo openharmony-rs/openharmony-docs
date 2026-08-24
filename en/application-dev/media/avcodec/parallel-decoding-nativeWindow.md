@@ -2,11 +2,11 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=29548c4a54d9db8aceda74f3d7e3ee119937ffb5 translatedAt=2026-08-06T13:43:53.122Z pushedAt=2026-08-07T07:25:34.326Z -->
+<!-- md-trans-meta sourceCommit=b9c98a219f801ec4122d94457486779ae7ed9ac3 translatedAt=2026-08-22T01:59:18.900Z pushedAt=2026-08-22T03:36:32.050Z -->
 
 ## When to Use
 

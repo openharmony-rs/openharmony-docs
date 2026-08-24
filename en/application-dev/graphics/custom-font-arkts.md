@@ -2,11 +2,11 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0e0cd691ac1d5f7a6d2136e199b2bf5082d665f6 translatedAt=2026-08-03T11:17:27.914Z pushedAt=2026-08-04T10:30:46.668Z -->
+<!-- md-trans-meta sourceCommit=0876b7ba2fa1777332890da7f5059310feded633 translatedAt=2026-08-22T01:33:14.859Z pushedAt=2026-08-22T03:29:42.082Z -->
 
 ## When to Use
 
@@ -102,7 +102,7 @@ The following table lists the commonly used APIs for custom font registration an
    let paragraph = paragraphBuilder.build();
    ```
 
-6. If you need to release a custom font, call the `unloadFontSync` API.
+6. To unregister a custom font, call the `unloadFontSync` API.
 
    <!-- @[arkts_custom_font_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
 

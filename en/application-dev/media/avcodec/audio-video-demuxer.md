@@ -2,11 +2,11 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @yangjunhui10; @hanzhengshi-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=0b0b919feb897ec43ac7fdad1144cd1226ef164c translatedAt=2026-08-06T13:42:13.761Z pushedAt=2026-08-07T03:10:16.153Z -->
+<!-- md-trans-meta sourceCommit=b9c98a219f801ec4122d94457486779ae7ed9ac3 translatedAt=2026-08-22T01:56:52.820Z pushedAt=2026-08-22T03:36:23.366Z -->
 
 You can call native APIs to demultiplex media data. The demultiplexing involves extracting media samples such as audio, video, and subtitles from bit stream data, and obtaining information related to Digital Rights Management (DRM).
 
