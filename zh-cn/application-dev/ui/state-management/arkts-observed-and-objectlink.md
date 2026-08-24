@@ -2227,7 +2227,7 @@ struct MyComponent {
 @Reusable
 @Component
 struct ChildComponent {
-  // 使用@ObjectLink接受@Observed类数据
+  // 使用@ObjectLink接收@Observed类数据
   @ObjectLink data: StringData;
 
   aboutToAppear(): void {
