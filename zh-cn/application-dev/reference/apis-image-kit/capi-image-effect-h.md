@@ -775,7 +775,7 @@ ImageEffect_ErrorCode OH_ImageEffect_Stop(OH_ImageEffect *imageEffect)
 
 **描述**
 
-停止效果器件。
+停止效果器。
 
 **系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
