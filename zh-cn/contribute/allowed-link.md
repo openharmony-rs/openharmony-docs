@@ -26,3 +26,5 @@
 | docs/zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-trace-h.md             | [void OH_HiTrace_Tracepoint(HiTrace_Communication_Mode mode, HiTrace_Tracepoint_Type type, const HiTraceId *id, const char *fmt, ...)](#oh_hitrace_tracepoint) | Performance Analysis Kit | HiviewDFX | 是 | 2026-07-08 |
 | docs/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-env-property.md            | [CustomEnvKey\<T\>](#customenvkeys) | ArkUI Kit | ArkUI | 是 | 2026-07-15 |
 | docs/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management.md            | [SubscribedAbstractProperty&lt;S&gt;](#subscribedabstractpropertyt9) | ArkUI Kit | ArkUI | 是 | 2026-08-14 |
+| docs/zh-cn/application-dev/reference/apis-connectivity-kit/js-apis-nfcController.md | [canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap__ndk_8h.md#caniuse) | Connectivity Kit | Nfc | 是 | 2026-08-20 |
+| docs/zh-cn/application-dev/reference/apis-connectivity-kit/js-apis-nfcTag.md.md | [canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap__ndk_8h.md#caniuse) | Connectivity Kit | Nfc | 是 | 2026-08-20 |

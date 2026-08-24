@@ -99,7 +99,7 @@ function secureElementDemo() {
 
 ## omapi.createService<sup>12+</sup>
 
-createService(): Promise\<SEService>;
+createService(): Promise\<SEService>
 
 建立一个可用于连接到系统中所有可用SE的新连接（服务）。连接过程较为耗时，所以此方法仅提供异步方式。使用Promise异步回调。
 
@@ -146,7 +146,7 @@ function secureElementDemo() {
 
 ## omapi.on('stateChanged')<sup>18+</sup>
 
-on(type: 'stateChanged', callback: Callback\<ServiceState>): void;
+on(type: 'stateChanged', callback: Callback\<ServiceState>): void
 
 注册监听服务状态变化事件。
 
@@ -175,7 +175,7 @@ on(type: 'stateChanged', callback: Callback\<ServiceState>): void;
 
 ## omapi.off('stateChanged')<sup>18+</sup>
 
-off(type: 'stateChanged', callback?: Callback\<ServiceState>): void;
+off(type: 'stateChanged', callback?: Callback\<ServiceState>): void
 
 取消订阅服务状态更改事件。
 
@@ -1403,7 +1403,7 @@ isBasicChannel(): boolean
 
 | **类型** | **说明**                                                     |
 | -------- | ------------------------------------------------------------ |
-| boolean  | true: 该Channel是基础Channel, false：该Channel逻辑Channel 。 |
+| boolean  | 检查该Channel是否为基础Channel。true：该Channel是基础Channel，false：该Channel是逻辑Channel 。 |
 
 **错误码：**
 
