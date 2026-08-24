@@ -83,7 +83,7 @@ Input param failed.
 
 1. 如果参数是workInfo，bundleName和应用的uid不匹配。
 2. 取消或查询延迟任务时，延迟任务不存在。
-3. 如果参数是taskInfo，abilityName不谁主ability或taskId校验失败
+3. 如果参数是taskInfo，abilityName不是launcher ability或taskId校验失败
 
 **处理步骤**
 
