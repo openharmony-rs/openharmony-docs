@@ -289,7 +289,7 @@ writeNdefTag(data: string): Promise&lt;void&gt;
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| data | string | 是 | 有源标签内容, 最大长度为1024个字节。 |
+| data | string | 是 | 有源标签内容，最大长度为1024个字节。 |
 
 **返回值：**
 
@@ -376,7 +376,7 @@ writeNdefTag(data: string, callback: AsyncCallback&lt;void&gt;): void
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| data | string | 是 | 有源标签内容, 最大长度为1024个字节。 |
+| data | string | 是 | 有源标签内容，最大长度为1024个字节。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当写入标签成功，err为undefined，否则为错误对象。 |
 
 **示例：**
