@@ -62,9 +62,9 @@ type ProfileConnectionState = constant.ProfileConnectionState
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
 | USER_DISCONNECT            | 0    | 用户主动断开连接。|
-| CONNECT_FROM_KEYBOARD      | 1    | 因连接请求未从键盘侧发起导致断开连接。|
-| CONNECT_FROM_MOUSE         | 2    | 因连接请求未从鼠标侧发起导致断开连接。|
-| CONNECT_FROM_CAR           | 3    | 因连接请求未从车机侧发起导致断开连接。|
+| CONNECT_FROM_KEYBOARD      | 1    | 连接请求需从键盘侧发起。|
+| CONNECT_FROM_MOUSE         | 2    | 连接请求需从鼠标侧发起。|
+| CONNECT_FROM_CAR           | 3    | 连接请求需从车机侧发起。|
 | TOO_MANY_CONNECTED_DEVICES | 4    | 当前连接数量超过上限。|
 | CONNECT_FAIL_INTERNAL      | 5    | 内部错误。|
 

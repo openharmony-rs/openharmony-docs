@@ -50,12 +50,6 @@ connect(deviceId: string): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**返回值：**
-
-| 类型   | 说明                 |
-| ------ | -------------------- |
-| void   | 无返回值，用于异步操作。 |
-
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
@@ -70,7 +64,6 @@ connect(deviceId: string): void
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -106,12 +99,6 @@ disconnect(deviceId: string): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**返回值：**
-
-| 类型   | 说明                 |
-| ------ | -------------------- |
-| void   | 无返回值，用于异步操作。 |
-
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
@@ -126,7 +113,6 @@ disconnect(deviceId: string): void
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -177,12 +163,6 @@ connect(deviceId: string): void
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **模型约束**：此接口仅可在Stage模型下使用。
-
-**返回值：**
-
-| 类型   | 说明                 |
-| ------ | -------------------- |
-| void   | 无返回值，用于异步操作。 |
 
 **参数**：
 
