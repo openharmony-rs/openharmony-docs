@@ -840,9 +840,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets",
 				"functions":[
 					{
-						"end_line":520,
+						"end_line":579,
 						"name":"input_case_input_KeyboardControllersetSubtype",
-						"start_line":510
+						"start_line":569
 					}
 				]
 			}
@@ -897,19 +897,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets",
 				"functions":[
 					{
-						"end_line":552,
+						"end_line":549,
 						"name":"input_case_input_KeyboardController358",
-						"start_line":389
+						"start_line":387
 					},
 					{
-						"end_line":639,
+						"end_line":636,
 						"name":"input_case_input_KeyboardController507",
-						"start_line":554
+						"start_line":551
 					},
 					{
-						"end_line":783,
+						"end_line":785,
 						"name":"input_case_input_KeyboardController587",
-						"start_line":641
+						"start_line":638
 					}
 				]
 			},
@@ -2543,7 +2543,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/Submenu.ets",
 				"functions":[
 					{
-						"end_line":90,
+						"end_line":92,
 						"name":"input_case_input_switchInputMethodgetInputMethods",
 						"start_line":80
 					},
@@ -2558,9 +2558,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets",
 				"functions":[
 					{
-						"end_line":520,
+						"end_line":579,
 						"name":"input_case_input_KeyboardControllersetSubtype",
-						"start_line":510
+						"start_line":569
 					}
 				]
 			}
