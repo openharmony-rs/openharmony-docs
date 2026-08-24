@@ -49,7 +49,7 @@ type ProfileConnectionState = constant.ProfileConnectionState
 | deviceId | string                        | 否   | 否   | 对端设备地址，例如："XX:XX:XX:XX:XX:XX"。   |
 | state    | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate)        | 否   | 否   | Profile连接状态。 |
 | cause<sup>12+</sup>| [DisconnectCause](#disconnectcause12) | 否 | 否 | Profile断开连接的原因。|
-| role| [PanRole](#panrole) | 否 | 是 | 当前对端设备对应的[PAN](../../connectivity/bluetooth/terminology.md#pan)角色。仅PAN Profile连接时返回该字段，非PAN场景下该字段不存在。<br> **起始版本**：26.0.0|
+| role| [PanRole](#panrole) | 否 | 是 | 当前对端设备对应的[PAN](../../connectivity/bluetooth/terminology.md#pan)角色。仅PAN Profile连接状态发生变化时返回该字段，非PAN场景下该字段不存在。<br> **起始版本**：26.0.0|
 
 ## DisconnectCause<sup>12+</sup>
 
@@ -115,7 +115,7 @@ getConnectedDevices(): Array&lt;string&gt;
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900004 | Profile not supported.                |
-|2900099 | Operation failed. Possible causes: 1. Internal service error. Please check the Bluetooth service status and retry. |
+|2900099 | Operation failed.                        |
 
 **示例**：
 
@@ -169,7 +169,7 @@ getConnectionState(deviceId: string): ProfileConnectionState
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900004 | Profile not supported.                |
-|2900099 | Operation failed. Possible causes: 1. Internal service error. Please check the Bluetooth service status and retry. |
+|2900099 | Operation failed.                        |
 
 **示例**：
 
@@ -213,7 +213,7 @@ on(type: 'connectionStateChange', callback: Callback&lt;StateChangeParam&gt;): v
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：10-24                 |
 |801 | Capability not supported.          |
 
 **示例**：
@@ -259,7 +259,7 @@ off(type: 'connectionStateChange', callback?: Callback&lt;[StateChangeParam](#st
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：10-24                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例**：
