@@ -231,7 +231,7 @@ struct Index {
     let window: window.Window | undefined = this.storage?.get('window');
     try {
       window?.setImmersiveModeEnabledState(true);
-    } catch (err: BusinessError) {
+    } catch (err) {
       console.error(`setImmersiveModeEnabledState failed, code: ${err.code}, message: ${err.message}`);
     }
   }
@@ -246,6 +246,7 @@ struct Index {
     });
   }
 }
+
 ```
 
 ![](figures/FullScreenLaunchComponentDemo1.png)
