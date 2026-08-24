@@ -213,11 +213,11 @@ internal error.
 
 4.回调函数异常，如回调未正确实现或抛出未捕获异常，通过日志关键词过滤replyCustomEapData进行定位分析。
 
-5.通信失败，如socket通信异常、连接断开。此原因常见于[startEthEap](js-apis-net-eap.md#eapstartetheap)和[logOffEthEap](js-apis-net-eap.md#eaplogoffetheap)接口，通过日志关键词过滤startEap或stopEap检查命令是否正常下发。
+5.通信失败，如socket通信异常、连接断开。此原因常见于startEthEap和logOffEthEap接口，通过日志关键词过滤startEap或stopEap检查命令是否正常下发。
 
 **处理步骤**
 
-1.查看系统日志定位具体异常原因，通过日志关键词过滤supplicant定位EAP报文处理异常，通过日志关键词过滤replyCustomEapData定位回调函数异常；对于[startEthEap](js-apis-net-eap.md#eapstartetheap)和[logOffEthEap](js-apis-net-eap.md#eaplogoffetheap)接口触发的通信异常，可通过日志关键词过滤startEap或stopEap进行定位。
+1.查看系统日志定位具体异常原因，通过日志关键词过滤supplicant定位EAP报文处理异常，通过日志关键词过滤replyCustomEapData定位回调函数异常；对于startEthEap和logOffEthEap接口触发的通信异常，可通过日志关键词过滤startEap或stopEap进行定位。
 
 2.确认EAP认证流程调用顺序正确，避免在未完成上一步操作时进行下一步操作。
 

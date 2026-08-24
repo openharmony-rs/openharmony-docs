@@ -25,7 +25,7 @@ AbilityComponent不支持处理输入事件，事件不经过当前Ability，直
 
 AbilityComponent需设置且只能设置width、height，且width、height不支持动态更新。
 
-被拉起的Ability必须继承[WindowExtension](../js-apis-application-windowExtensionAbility-sys.md)。
+被拉起的Ability必须继承WindowExtension。
 
 ## 子组件
 
@@ -44,7 +44,7 @@ AbilityComponent(value: {want: Want})
 
 | 参数名 | 类型                                                   | 必填 | 说明                |
 | ------ | ---------------------------------------------------------- | ---- | ----------------------- |
-| want   | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 默认加载的Ability描述。 |
+| want   | Want | 是   | 默认加载的Ability描述。 |
 
 
 ## 事件

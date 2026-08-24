@@ -18,7 +18,7 @@ type Resource = import('../api/global/resource').Resource
 
 | 类型                    | 说明                        |
 | --------------------- | ------------------------- |
-| import('../api/global/resource').[Resource](../../apis-localization-kit/js-apis-resource.md#resource-1)             | 资源引用类型。                    |
+| import('../api/global/resource').Resource             | 资源引用类型。                    |
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -80,7 +80,7 @@ type LengthMetricsUnit = import('../api/arkui/Graphics').LengthMetricsUnit
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-|import('../api/arkui/Graphics').[LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12)   | 长度属性单位。 |
+|import('../api/arkui/Graphics').LengthMetricsUnit   | 长度属性单位。 |
 
 ## LengthMetrics<sup>12+</sup>
 
@@ -96,7 +96,7 @@ type LengthMetrics = import('../api/arkui/Graphics').LengthMetrics
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-|import('../api/arkui/Graphics').[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 长度属性。 |
+|import('../api/arkui/Graphics').LengthMetrics   | 长度属性。 |
 
 ## ColorMetrics<sup>12+</sup>
 
@@ -112,7 +112,7 @@ declare type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-|import('../api/arkui/Graphics').[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)   | 混合颜色。 |
+|import('../api/arkui/Graphics').ColorMetrics   | 混合颜色。 |
 
 ## ResourceStr
 
@@ -166,10 +166,10 @@ type Padding = { top: Length; right: Length; bottom: Length; left: Length; }
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| top    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否 | 是    | 上内边距，组件内元素距组件顶部的尺寸。  |
-| end    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否 | 是    | 右内边距，组件内元素距组件右边界的尺寸。<br />从右至左显示语言模式下为<br />左内边距，组件内元素距组件左边界的尺寸。 |
-| bottom | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否 | 是    | 下内边距，组件内元素距组件底部的尺寸。  |
-| start  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否 | 是    | 左内边距，组件内元素距组件左边界的尺寸。<br />从右至左显示语言模式下为<br />右内边距，组件内元素距组件右边界的尺寸。 |
+| top    | LengthMetrics<sup>12+</sup> | 否 | 是    | 上内边距，组件内元素距组件顶部的尺寸。  |
+| end    | LengthMetrics<sup>12+</sup> | 否 | 是    | 右内边距，组件内元素距组件右边界的尺寸。<br />从右至左显示语言模式下为<br />左内边距，组件内元素距组件左边界的尺寸。 |
+| bottom | LengthMetrics<sup>12+</sup> | 否 | 是    | 下内边距，组件内元素距组件底部的尺寸。  |
+| start  | LengthMetrics<sup>12+</sup> | 否 | 是    | 左内边距，组件内元素距组件左边界的尺寸。<br />从右至左显示语言模式下为<br />右内边距，组件内元素距组件右边界的尺寸。 |
 
 ## Margin
 
@@ -264,10 +264,10 @@ type EdgeWidth = EdgeWidths
 
 | 名称   | 类型 |只读|可选| 说明             |
 | ------ | ---- |------|------| ---------------- |
-| top    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否 |是   | 组件上边框宽度。 |
-| end    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否 |是   | 组件右边框宽度。<br />从右至左显示语言模式下为组件左边框宽度。 |
-| bottom | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否 |是   | 组件下边框宽度。 |
-| start  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否 |是   | 组件左边框宽度。<br />从右至左显示语言模式下为组件右边框宽度。 |
+| top    | LengthMetrics<sup>12+</sup> | 否 |是   | 组件上边框宽度。 |
+| end    | LengthMetrics<sup>12+</sup> | 否 |是   | 组件右边框宽度。<br />从右至左显示语言模式下为组件左边框宽度。 |
+| bottom | LengthMetrics<sup>12+</sup> | 否 |是   | 组件下边框宽度。 |
+| start  | LengthMetrics<sup>12+</sup> | 否 |是   | 组件左边框宽度。<br />从右至左显示语言模式下为组件右边框宽度。 |
 
 ## BorderRadiuses<sup>9+</sup>
 
@@ -306,10 +306,10 @@ type BorderRadiuses = { topLeft: Length; topRight: Length; bottomLeft: Length; b
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| topStart    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否|是    | 组件左上角圆角半径。<br />从右至左显示语言模式下为组件右上角圆角半径。 |
-| topEnd      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否|是    | 组件右上角圆角半径。<br />从右至左显示语言模式下为组件左上角圆角半径。 |
-| bottomStart | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否|是    | 组件左下角圆角半径。<br />从右至左显示语言模式下为组件右下角圆角半径。 |
-| bottomEnd   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否|是    | 组件右下角圆角半径。<br />从右至左显示语言模式下为组件左下角圆角半径。 |
+| topStart    | LengthMetrics<sup>12+</sup> | 否|是    | 组件左上角圆角半径。<br />从右至左显示语言模式下为组件右上角圆角半径。 |
+| topEnd      | LengthMetrics<sup>12+</sup> | 否|是    | 组件右上角圆角半径。<br />从右至左显示语言模式下为组件左上角圆角半径。 |
+| bottomStart | LengthMetrics<sup>12+</sup> | 否|是    | 组件左下角圆角半径。<br />从右至左显示语言模式下为组件右下角圆角半径。 |
+| bottomEnd   | LengthMetrics<sup>12+</sup> | 否|是    | 组件右下角圆角半径。<br />从右至左显示语言模式下为组件左下角圆角半径。 |
 
 ## EdgeColors<sup>9+</sup>
 
@@ -432,7 +432,7 @@ type LengthConstrain = { minLength: Length; maxLength: Length; }
 
 > **说明：**
 >
-> 可以使用[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)注册自定义字体。
+> 可以使用loadFontSync注册自定义字体。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -489,8 +489,8 @@ type LengthConstrain = { minLength: Length; maxLength: Length; }
 
 | 名称   | 类型                | 只读  |  可选   | 说明                          |
 | ---- | ----------------- | ---- | -------- | --------------------------- |
-| start  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  |  是  | LTR模式时x轴相对左边坐标，RTL模式x轴相对右边坐标。  |
-| top    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   |  是 | y轴坐标。 |
+| start  | LengthMetrics | 否  |  是  | LTR模式时x轴相对左边坐标，RTL模式x轴相对右边坐标。  |
+| top    | LengthMetrics | 否   |  是 | y轴坐标。 |
 
 ## Edges<sup>12+</sup>
 
@@ -523,10 +523,10 @@ type LengthConstrain = { minLength: Length; maxLength: Length; }
 
 | 名称   | 类型     | 只读  |  可选   | 说明                          |
 | ---- | ------ | ---- | -------- | --------------------------- |
-| top    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  |  是  | 相对顶边的偏移量。 |
-| bottom    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是 | 相对底边的偏移量。 |
-| start    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是 | LTR模式时相对左边的偏移量，RTL模式时相对右边的偏移量。|
-| end    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  |  是  | LTR模式时相对右边的偏移量，RTL模式时相对左边的偏移量。 |
+| top    | LengthMetrics | 否  |  是  | 相对顶边的偏移量。 |
+| bottom    | LengthMetrics | 否   | 是 | 相对底边的偏移量。 |
+| start    | LengthMetrics | 否   | 是 | LTR模式时相对左边的偏移量，RTL模式时相对右边的偏移量。|
+| end    | LengthMetrics | 否  |  是  | LTR模式时相对右边的偏移量，RTL模式时相对左边的偏移量。 |
 
 ## ConstraintSizeOptions
 
@@ -577,8 +577,8 @@ type LengthConstrain = { minLength: Length; maxLength: Length; }
 | color  | [EdgeColors](./ts-types.md#edgecolors9)<sup>9+</sup>&nbsp;\|&nbsp;[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | 否|是   | 设置边框颜色。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。     |
 | radius | [BorderRadiuses](#borderradiuses9)<sup>9+</sup>&nbsp;\|&nbsp;[Length](ts-types.md#length)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](#localizedborderradiuses12)<sup>12+</sup> | 否|是   | 设置边框圆角半径。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
 | style  | [EdgeStyles](#edgestyles9)<sup>9+</sup>&nbsp;\|&nbsp;[BorderStyle](ts-appendix-enums.md#borderstyle) | 否|是   | 设置边框样式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。    |
-| dashGap<sup>12+</sup>  | [EdgeWidths](#edgewidths9)&nbsp;\|&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12) | 否|是  | 设置虚线的线段间距，仅在边框样式为虚线时生效。<br/>不支持设置百分比。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**卡片能力：** 该接口不支持在ArkTS卡片中使用。|
-| dashWidth<sup>12+</sup>  | [EdgeWidths](#edgewidths9)&nbsp;\|&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12) | 否|是   | 设置虚线的线段长度，仅在边框样式为虚线时生效。<br/>不支持设置百分比。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**卡片能力：** 该接口不支持在ArkTS卡片中使用。     |
+| dashGap<sup>12+</sup>  | [EdgeWidths](#edgewidths9)&nbsp;\|&nbsp;LengthMetrics&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12) | 否|是  | 设置虚线的线段间距，仅在边框样式为虚线时生效。<br/>不支持设置百分比。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**卡片能力：** 该接口不支持在ArkTS卡片中使用。|
+| dashWidth<sup>12+</sup>  | [EdgeWidths](#edgewidths9)&nbsp;\|&nbsp;LengthMetrics&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12) | 否|是   | 设置虚线的线段长度，仅在边框样式为虚线时生效。<br/>不支持设置百分比。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**卡片能力：** 该接口不支持在ArkTS卡片中使用。     |
 
 ## ColorFilter<sup>9+</sup>
 
@@ -915,10 +915,10 @@ type Callback<T, V = void> = (data: T) => V;
 
 | 名称     | 类型                                      | 只读 | 可选 | 说明              |
 | ------ | --------------------------------------- |---| -------- |-----------------|
-| strokeWidth  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否 | 是 | 分割线的线宽。         |
+| strokeWidth  | LengthMetrics  | 否 | 是 | 分割线的线宽。         |
 | color  | [ResourceColor](#resourcecolor) | 否  | 是 | 分割线的颜色。         |
-| startMargin | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 分割线与菜单侧边起始端的距离。 |
-| endMargin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)| 否  | 是 | 分割线与菜单侧边结束端的距离。 |
+| startMargin | LengthMetrics | 否  | 是 | 分割线与菜单侧边起始端的距离。 |
+| endMargin  | LengthMetrics| 否  | 是 | 分割线与菜单侧边结束端的距离。 |
 | mode<sup>19+</sup>  | [DividerMode](ts-appendix-enums.md#dividermode19枚举说明)| 否  | 是 | 设置分割线模式。 |
 
 ## ChainWeightOptions<sup>14+</sup>对象说明
@@ -977,8 +977,8 @@ type Callback<T, V = void> = (data: T) => V;
 
 | 名称  | 类型                                                         | 只读 | 可选 | 说明                                   |
 | ----- | ------------------------------------------------------------ | ---- | -- | -------------------------------------- |
-| start | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是 | 滚动条起始边距。<br/>默认值：0，单位：vp |
-| end   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是 | 滚动条末尾边距。<br/>默认值：0，单位：vp |
+| start | LengthMetrics | 否   | 是 | 滚动条起始边距。<br/>默认值：0，单位：vp |
+| end   | LengthMetrics | 否   | 是 | 滚动条末尾边距。<br/>默认值：0，单位：vp |
 
 ## ResponsiveFillType<sup>22+</sup>
 

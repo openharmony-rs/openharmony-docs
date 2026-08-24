@@ -14,7 +14,7 @@ ContainerReader是容器断点组件，用于在动态场景下根据容器尺�
 > - 容器断点基于组件自身的实际尺寸和断点阈值数组确定高度和宽度断点值，组件尺寸和断点信息仅作用于当前组件及其子组件，同一页面中的多个容器可拥有各自独立的断点状态。
 > - ContainerReader组件的尺寸需要由父容器和自身布局确定，不受子组件影响。在不同父容器下的布局规格：父容器为[Flex](ts-container-flex.md)、[Column](ts-container-column.md)、[Row](ts-container-row.md)时撑满容器剩余空间；父容器为其他类型时撑满父容器。
 > - ContainerReader接口的参数必须使用状态变量结合双向绑定形式([!!语法](../../../ui/state-management/arkts-new-binding.md))，以便在后端计算尺寸变化时及时通知前端刷新UI。
-> - 更多关于容器断点的开发指导和完整示例，可参考[容器断点 (ContainerReader)](../../../ui/arkts-layout-development-container-reader.md)。
+> - 更多关于容器断点的开发指导和完整示例，可参考容器断点 (ContainerReader)。
 
 **起始版本：** 26.0.0
 
@@ -62,7 +62,7 @@ ContainerReader(value: ContainerReaderInfo)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| size | [Size](../js-apis-arkui-graphics.md#size) | 否 | 否 | 获取到的当前ContainerReader组件的尺寸，用于布局分析和断点计算。<br/>**说明：** <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。绑定后组件尺寸值变化时，size绑定的变量值会自动更新。 |
+| size | Size | 否 | 否 | 获取到的当前ContainerReader组件的尺寸，用于布局分析和断点计算。<br/>**说明：** <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。绑定后组件尺寸值变化时，size绑定的变量值会自动更新。 |
 | widthBreakpoint | [WidthBreakpoint](./ts-appendix-enums.md#widthbreakpoint13) | 否 | 是 | 容器的宽度断点，为获取到的当前ContainerReader组件的宽度断点枚举值。<br/>**说明：** <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。绑定后组件宽度断点值变化时，widthBreakpoint绑定的变量值会自动更新。 |
 | heightBreakpoint | [HeightBreakpoint](./ts-appendix-enums.md#heightbreakpoint13) | 否 | 是 | 容器的高度断点，为获取到的当前ContainerReader组件在不同高宽比阈值下对应的高度断点枚举值。<br/>**说明：** <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。绑定后组件高度断点值变化时，heightBreakpoint绑定的变量值会自动更新。 |
 

@@ -18,7 +18,7 @@
 
 shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizerParallelWithCallback): T
 
-提供系统内置手势与响应链上其他组件的手势设置并行关系的回调事件。此接口对应的C API接口为[setInnerGestureParallelTo](../capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setinnergestureparallelto)。
+提供系统内置手势与响应链上其他组件的手势设置并行关系的回调事件。此接口对应的C API接口为setInnerGestureParallelTo。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -237,7 +237,7 @@ type GestureCollectInterceptCallback = (recognizers: Array\<GestureRecognizer\>,
 
 shouldRecognizerParallelWith(callback: ShouldRecognizerParallelWithCallback): T
 
-提供非内置手势与响应链上其他组件的手势设置并行关系的回调事件，使用callback异步回调。此接口对应的C API接口为[setGestureParallelTo](../capi-arkui-nativemodule-arkui-nativegestureapi-3.md#setgestureparallelto)。
+提供非内置手势与响应链上其他组件的手势设置并行关系的回调事件，使用callback异步回调。此接口对应的C API接口为setGestureParallelTo。
 
 **起始版本：** 26.0.0
 

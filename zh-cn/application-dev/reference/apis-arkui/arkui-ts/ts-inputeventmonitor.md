@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-监听基础输入事件，在[UIContext](../arkts-apis-uicontext-uicontext.md)进行事件分发前统一拦截和过滤输入事件，适用于全局快捷键处理、输入安全过滤、特定页面统一屏蔽鼠标、触摸或按键输入等需要在事件到达组件前进行统一管控的场景，使用示例请参考[addLocalInputEventMonitor](../arkts-apis-uicontext-uicontext.md#addlocalinputeventmonitor)。
+监听基础输入事件，在UIContext进行事件分发前统一拦截和过滤输入事件，适用于全局快捷键处理、输入安全过滤、特定页面统一屏蔽鼠标、触摸或按键输入等需要在事件到达组件前进行统一管控的场景，使用示例请参考addLocalInputEventMonitor。
 
 **起始版本：** 26.0.0
 
@@ -19,7 +19,7 @@
 > **说明：**
 >
 > - 对象为空对象，不包含任何可访问的成员。
-> - 开发者无法主动构造此对象，只能通过[addLocalInputEventMonitor](../arkts-apis-uicontext-uicontext.md#addlocalinputeventmonitor)接口注册获取。
+> - 开发者无法主动构造此对象，只能通过addLocalInputEventMonitor接口注册获取。
 > - 用于后续解除注册时验证身份。
 
 **起始版本：** 26.0.0

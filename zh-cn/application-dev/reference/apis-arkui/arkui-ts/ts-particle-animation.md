@@ -331,7 +331,7 @@ interface ParticlePropertyAnimation<T> {
 | to | T | 否 | 否 | 属性目标值。非法输入取对应属性的默认值。|
 |startMillis|number | 否 | 否 | 动画开始时间。<br/>单位：毫秒。<br/>取值范围：[0, +∞)。|
 |endMillis|number | 否 | 否 | 动画结束时间。<br/>单位：毫秒。<br/>取值范围：[0, +∞)。|
-|curve|[Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)| 否 | 是 | 设置动画曲线。<br>默认值：Curve.Linear|
+|curve|[Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;ICurve| 否 | 是 | 设置动画曲线。<br>默认值：Curve.Linear|
 
 
 ## ParticleType
@@ -654,9 +654,9 @@ interface ParticleColorUpdaterOptions<UPDATER extends ParticleUpdater> {
 
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | ------ | ------ | -- | -- | ---- |
-| center      | [PositionT](#positiontt12)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 否 | 是  | 圆环的圆心坐标，组件的左上角为坐标原点。默认值：{x:LengthMetrics.percent(0.5),y:LengthMetrics.percent(0.5)}   |
-| outerRadius      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 否   | 圆环的外圆半径。   |
-| innerRadius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 否  | 圆环的内圆半径。   |
+| center      | [PositionT](#positiontt12)&lt;LengthMetrics&gt; | 否 | 是  | 圆环的圆心坐标，组件的左上角为坐标原点。默认值：{x:LengthMetrics.percent(0.5),y:LengthMetrics.percent(0.5)}   |
+| outerRadius      | LengthMetrics | 否 | 否   | 圆环的外圆半径。   |
+| innerRadius  | LengthMetrics | 否 | 否  | 圆环的内圆半径。   |
 | startAngle | number | 否 | 是   | 圆环的起始角度。<br>单位：度<br>默认值：0  |
 | endAngle | number | 否 | 是   | 圆环的结束角度。<br>单位：度<br>默认值：360  |
 
@@ -672,7 +672,7 @@ type Vector2T\<T> = import('../api/arkui/Graphics').Vector2T\<T>
 
 | 类型                         | 说明                                |
 | ---------------------------- | ----------------------------------- |
-| import('../api/arkui/Graphics').[Vector2T\<T>](../js-apis-arkui-graphics.md#vector2tt12) | 用于表示T类型的包含x和y两个值的向量。x表示向量x轴方向的值。y表示向量y轴方向的值。<br/>单位：vp |
+| import('../api/arkui/Graphics').Vector2T\<T> | 用于表示T类型的包含x和y两个值的向量。x表示向量x轴方向的值。y表示向量y轴方向的值。<br/>单位：vp |
 
 ## PositionT\<T><sup>12+</sup>
 
@@ -686,7 +686,7 @@ type PositionT\<T> = import('../api/arkui/Graphics').Position\<T>
 
 | 类型                         | 说明                                |
 | ---------------------------- | ----------------------------------- |
-| import('../api/arkui/Graphics').[PositionT\<T>](../js-apis-arkui-graphics.md#positiontt12) | 包含x和y两个值的向量。<br/>单位：vp |
+| import('../api/arkui/Graphics').PositionT\<T> | 包含x和y两个值的向量。<br/>单位：vp |
 
 ## SizeT\<T><sup>12+</sup>
 
@@ -700,7 +700,7 @@ type SizeT\<T> = import('../api/arkui/Graphics').SizeT\<T>
 
 | 类型                         | 说明                                |
 | ---------------------------- | ----------------------------------- |
-| import('../api/arkui/Graphics').[SizeT\<T>](../js-apis-arkui-graphics.md#sizett12) | Size类型，包含了宽和高。<br/>单位：vp |
+| import('../api/arkui/Graphics').SizeT\<T> | Size类型，包含了宽和高。<br/>单位：vp |
 
 ## FieldRegion<sup>22+</sup>
 

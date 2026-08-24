@@ -71,7 +71,7 @@ type Scene = import('../api/@ohos.graphics.scene').Scene
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| import('../api/@ohos.graphics.scene').[Scene](../../apis-arkgraphics3d/js-apis-inner-scene.md#scene-1) | 用于设置场景。 |
+| import('../api/@ohos.graphics.scene').Scene | 用于设置场景。 |
 
 ## 属性
 

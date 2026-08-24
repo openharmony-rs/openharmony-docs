@@ -12,7 +12,7 @@ Line组件用于在应用界面中绘制直线，支持自定义直线的起点�
 >
 > 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
+> 该组件从API version 20开始支持使用AttributeUpdater类的updateConstructorParams接口更新构造参数。
 >
 > - Line组件无法形成闭合区域，fill和fillOpacity属性设置无效。
 > - Line组件不支持拐角，strokeLineJoin和strokeMiterLimit属性设置无效。

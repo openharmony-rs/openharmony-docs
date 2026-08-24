@@ -13,7 +13,7 @@
 >
 > 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 如果需要在该组件中实现一个可嵌入式运行的原子化服务时，必须继承自[EmbeddableUIAbility](../../apis-ability-kit/js-apis-app-ability-embeddableUIAbility.md)。若不继承自EmbeddableUIAbility，系统无法保证原子化服务功能正常。
+> 如果需要在该组件中实现一个可嵌入式运行的原子化服务时，必须继承自EmbeddableUIAbility。若不继承自EmbeddableUIAbility，系统无法保证原子化服务功能正常。
 
 
 ## 导入模块
@@ -46,9 +46,9 @@ InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchCon
 | -------- | -------- | -------- | -------- | -------- |
 | content | Callback\<void> | 是 | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 组件显示内容。 |
 | controller | [LaunchController](#launchcontroller) | 是 | - | 拉起原子化服务控制器。 |
-| onReceive<sup>20+</sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>> | 否 | - | 被拉起的嵌入式运行原子化服务通过[@ohos.window (窗口)](../arkts-apis-window.md)调用API时，触发本回调。 |
-| onError<sup>23+</sup> | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否 | - | 被拉起的嵌入式运行原子化服务在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理。 |
-| onTerminated<sup>23+</sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | 否 | - | 被拉起的嵌入式运行原子化服务通过点击原子化服务退出按钮、手势侧滑、调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或者[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时，触发本回调函数。|
+| onReceive<sup>20+</sup> | Callback\<Record<string, Object>> | 否 | - | 被拉起的嵌入式运行原子化服务通过@ohos.window (窗口)调用API时，触发本回调。 |
+| onError<sup>23+</sup> | ErrorCallback | 否 | - | 被拉起的嵌入式运行原子化服务在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理。 |
+| onTerminated<sup>23+</sup> | Callback\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | 否 | - | 被拉起的嵌入式运行原子化服务通过点击原子化服务退出按钮、手势侧滑、调用terminateSelfWithResult或者terminateSelf正常退出时，触发本回调函数。|
   
 > **说明：**
 >
@@ -79,7 +79,7 @@ type LaunchAtomicServiceCallback = (appId: string, options?: AtomicServiceOption
 | 参数名 | 类型 | 必填 | 说明 |
 | --------------- | ------ |------ |------ |
 |appId | string |是| 原子化服务的appId。 |
-| options | [AtomicServiceOptions](../../apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md) | 否 | 拉起原子化服务参数。 |
+| options | AtomicServiceOptions | 否 | 拉起原子化服务参数。 |
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)

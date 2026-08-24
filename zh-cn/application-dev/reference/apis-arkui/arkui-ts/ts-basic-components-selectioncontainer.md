@@ -13,7 +13,7 @@ SelectionContainer组件用于为多个文本节点提供跨节点文本选中�
 > - 本组件中选中文本相关回调返回的文本内容，按照[Text](ts-basic-components-text.md)组件的从上到下显示顺序进行拼接。
 > - 本模块接口仅可在Stage模型下使用。
 > - 本组件默认布局走[Stack](ts-container-stack.md)，如有其他容器布局需求请在SelectionContainer内放置一个容器组件。
-> - SelectionContainer内跨节点选中文本时不显示放大镜，也不支持[getMagnifier](../../apis-arkui/arkts-apis-uicontext-uicontext.md#getmagnifier22)主动设置放大镜。
+> - SelectionContainer内跨节点选中文本时不显示放大镜，也不支持getMagnifier主动设置放大镜。
 > - 仅Text组件中的文本内容参与跨节点选中与文本拼接。
 
 **起始版本：** 26.0.0

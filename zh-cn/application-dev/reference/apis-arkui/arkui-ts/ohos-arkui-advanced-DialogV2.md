@@ -43,10 +43,10 @@ TipsDialogV2({imageRes: ResourceStr | PixelMap, imageSize?: SizeOptions, imageBo
 
 | 名称               | 类型                                                                                                    | 必填 | 装饰器类型                | 说明                                                              |
 |------------------|-------------------------------------------------------------------------------------------------------|----|----------------------|-----------------------------------------------------------------|
-| imageRes         | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是  | @Param<br/>@Require | 展示的图片。                                                          |
+| imageRes         | [ResourceStr](ts-types.md#resourcestr) \| PixelMap | 是  | @Param<br/>@Require | 展示的图片。                                                          |
 | imageSize        | [SizeOptions](ts-types.md#sizeoptions)                                                                | 否  | @Param               | 自定义图片尺寸。<br/>默认值：64\*64vp                                     |
-| imageBorderColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                                              | 否  | @Param               | 图片描边颜色。<br/>默认值：Color.Black                                    |
-| imageBorderWidth | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)                                                            | 否  | @Param               | 图片描边宽度。<br/>默认无描边效果。                                            |
+| imageBorderColor | ColorMetrics                                                              | 否  | @Param               | 图片描边颜色。<br/>默认值：Color.Black                                    |
+| imageBorderWidth | LengthMetrics                                                            | 否  | @Param               | 图片描边宽度。<br/>默认无描边效果。                                            |
 | title            | [ResourceStr](ts-types.md#resourcestr)                                                                | 否  | @Param               | 提示弹出框标题。<br/>默认不显示。<br/>**说明：** 标题超过两行会显示“...”。               |
 | content          | [ResourceStr](ts-types.md#resourcestr)                                                                | 否  | @Param               | 提示弹出框内容。<br/>默认不显示。                                            |
 | checkTips        | [ResourceStr](ts-types.md#resourcestr)                                                                | 否  | @Param               | checkbox的提示内容。<br/>默认不显示。                                           |
@@ -240,8 +240,8 @@ type AdvancedDialogV2ButtonAction = () => void
 |:-------------|:-----------------------------------------------------------------------|:---|:---|:----------------------------------------------------------------------------|
 | content      | [ResourceStr](ts-types.md#resourcestr)                                 | 否  | 否  | 按钮的内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>装饰器类型：@Trace       |
 | action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | 否  | 是  | 按钮的点击事件。<br/>默认无事件。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>装饰器类型：@Trace      |
-| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | 是  | 按钮的背景。当buttonStyle和role为默认值时生效。<br/>默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>装饰器类型：@Trace    |
-| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | 是  | 按钮的字体颜色。当buttonStyle和role为默认值时生效。<br/>默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>装饰器类型：@Trace     |
+| background   | ColorMetrics                                | 否  | 是  | 按钮的背景。当buttonStyle和role为默认值时生效。<br/>默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>装饰器类型：@Trace    |
+| fontColor    | ColorMetrics                                | 否  | 是  | 按钮的字体颜色。当buttonStyle和role为默认值时生效。<br/>默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>装饰器类型：@Trace     |
 | buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明) | 否  | 是  | 按钮的样式。<br/>默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>装饰器类型：@Trace |
 | role         | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明)           | 否  | 是  | 按钮的角色。<br/>默认值：ButtonRole.NORMAL<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>装饰器类型：@Trace |
 | defaultFocus | boolean                                                                | 否  | 是  | 是否为默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br/>默认值：false<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>装饰器类型：@Trace |
@@ -280,8 +280,8 @@ AdvancedDialogV2Button的构造函数。
 |:-------------|:-----------------------------------------------------------------------|:---|:---|:----------------------------------------------------------------------------|
 | content      | [ResourceStr](ts-types.md#resourcestr)                                 | 否  | 否  | 按钮的内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。      |
 | action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | 否  | 是  | 按钮的点击事件。<br/>默认无事件。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。    |
-| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | 否  | 是  | 按钮的背景。当buttonStyle和role为默认值时生效。<br/> 默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。   |
-| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | 否  | 是  | 按钮的字体颜色。当buttonStyle和role为默认值时生效。<br/>默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。  |
+| background   | ColorMetrics                              | 否  | 是  | 按钮的背景。当buttonStyle和role为默认值时生效。<br/> 默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。   |
+| fontColor    | ColorMetrics                              | 否  | 是  | 按钮的字体颜色。当buttonStyle和role为默认值时生效。<br/>默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。  |
 | buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明) | 否  | 是  | 按钮的样式。<br/>默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | role         | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明)           | 否  | 是  | 按钮的角色。<br/>默认值：ButtonRole.NORMAL<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。   |
 | defaultFocus | boolean                                                                | 否  | 是  | 是否为默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br/>默认值：false<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。  |

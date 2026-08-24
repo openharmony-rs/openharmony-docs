@@ -28,7 +28,7 @@ Select(options: Array\<SelectOption>)
 
 | 参数名  | 类型                                           | 必填 | 说明           |
 | ------- | ---------------------------------------------- | ---- | -------------- |
-| options | [Array](../../apis-arkts/arkts-apis-arkts-collections-Array.md)\<[SelectOption](#selectoption对象说明)\> | 是   | 设置下拉选项。 |
+| options | Array\<[SelectOption](#selectoption对象说明)\> | 是   | 设置下拉选项。 |
 
 ## SelectOption对象说明
 
@@ -1009,7 +1009,7 @@ minKeyboardAvoidDistance(distance:Optional\<LengthMetrics>)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| distance | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是 | 设置下拉菜单避让软键盘的最小距离。设置为负数、undefined时，按照8vp处理。 |
+| distance | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<LengthMetrics> | 是 | 设置下拉菜单避让软键盘的最小距离。设置为负数、undefined时，按照8vp处理。 |
 
 ### menuBackgroundBlurStyleOptions
 

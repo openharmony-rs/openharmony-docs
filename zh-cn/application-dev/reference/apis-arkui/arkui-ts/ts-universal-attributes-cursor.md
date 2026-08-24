@@ -55,11 +55,11 @@ type PointerStyle = import('../api/@ohos.multimodalInput.pointer').default.Point
 
 |类型|说明|
 | -- | -- |
-|import('../api/@ohos.multimodalInput.pointer').default.[PointerStyle](../../apis-input-kit/js-apis-pointer.md#pointerstyle) |光标样式。|
+|import('../api/@ohos.multimodalInput.pointer').default.PointerStyle |光标样式。|
 
 > **说明：**
 >
-> 直接使用cursorControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getCursorController](../arkts-apis-uicontext-uicontext.md#getcursorcontroller12)获取绑定实例的cursorControl。
+> 直接使用cursorControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取UIContext实例，并使用getCursorController获取绑定实例的cursorControl。
 
 ## 示例
 

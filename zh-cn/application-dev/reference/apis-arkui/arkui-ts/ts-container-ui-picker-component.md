@@ -164,7 +164,7 @@ itemHeight(height: Optional\<LengthMetrics>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| height | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是 | 选项高度。<br>单位：与[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)一致。<br>取值范围：[40vp, 64vp]<br>设置小于40vp或大于64vp时，使用默认值40vp。<br>当height的值为undefined时，使用默认值40vp。<br>不支持“百分比”类型。 |
+| height | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<LengthMetrics> | 是 | 选项高度。<br>单位：与LengthMetrics一致。<br>取值范围：[40vp, 64vp]<br>设置小于40vp或大于64vp时，使用默认值40vp。<br>当height的值为undefined时，使用默认值40vp。<br>不支持“百分比”类型。 |
 
 ### displayedItemCount
 
@@ -254,12 +254,12 @@ onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
 | 名称  | 类型   | 只读 | 可选 | 说明                                       |
 | ----- | ------ | ---- | ---- | ------------------------------------------ |
 | type  | [PickerIndicatorType](#pickerindicatortype枚举说明) | 否   | 否   | 选中项指示器的类型。<br>默认值：PickerIndicatorType.BACKGROUND<br>当type的值为小数时，使用向下取整后的整数；当type的值不在PickerIndicatorType枚举范围内时，使用默认值。 |
-| strokeWidth |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)      | 否   | 是   | 分割线的线宽。<br>默认值：{ value: 2.0, unit: LengthUnit.px }<br>单位：与LengthMetrics一致。<br>取值范围：[0, 选中项高度的一半]。strokeWidth小于0或大于选中项高度的一半时使用默认值。注：选中项高度可通过itemHeight属性设置，默认为40vp，此时取值范围上限为20vp；当itemHeight设置为其他值时，上限相应变化。不支持“百分比”类型。<br>**说明：**<br>1. 当type为PickerIndicatorType.DIVIDER时生效。<br>2. 通过LengthMetrics.resource方式设置时，使用非长度属性的值会按照0vp处理。  |
+| strokeWidth |  LengthMetrics      | 否   | 是   | 分割线的线宽。<br>默认值：{ value: 2.0, unit: LengthUnit.px }<br>单位：与LengthMetrics一致。<br>取值范围：[0, 选中项高度的一半]。strokeWidth小于0或大于选中项高度的一半时使用默认值。注：选中项高度可通过itemHeight属性设置，默认为40vp，此时取值范围上限为20vp；当itemHeight设置为其他值时，上限相应变化。不支持“百分比”类型。<br>**说明：**<br>1. 当type为PickerIndicatorType.DIVIDER时生效。<br>2. 通过LengthMetrics.resource方式设置时，使用非长度属性的值会按照0vp处理。  |
 | dividerColor       | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 分割线的颜色。<br>默认值：'sys.color.comp_divider'<br>**说明：**<br>当type为PickerIndicatorType.DIVIDER时生效。 |
-| startMargin |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)       | 否   | 是   | 分割线与UIPickerComponent容器侧边起始端的距离。<br>默认值：0<br>单位：与LengthMetrics一致。<br>取值范围：startMargin与endMargin之和不得超过UIPickerComponent容器的宽度。设置小于0或startMargin与endMargin之和超过UIPickerComponent容器的宽度时，使用默认值。不支持“百分比”类型。<br>**说明：**<br>当type为PickerIndicatorType.DIVIDER时生效。 |
-| endMargin   |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | 否   | 是   | 分割线与UIPickerComponent容器侧边结束端的距离。<br>默认值：0<br>单位：与LengthMetrics一致。<br>取值范围：startMargin与endMargin之和不得超过UIPickerComponent容器的宽度。设置小于0或startMargin与endMargin之和超过UIPickerComponent容器的宽度时，使用默认值。不支持“百分比”类型。<br>**说明：**<br>当type为PickerIndicatorType.DIVIDER时生效。 |
+| startMargin |  LengthMetrics       | 否   | 是   | 分割线与UIPickerComponent容器侧边起始端的距离。<br>默认值：0<br>单位：与LengthMetrics一致。<br>取值范围：startMargin与endMargin之和不得超过UIPickerComponent容器的宽度。设置小于0或startMargin与endMargin之和超过UIPickerComponent容器的宽度时，使用默认值。不支持“百分比”类型。<br>**说明：**<br>当type为PickerIndicatorType.DIVIDER时生效。 |
+| endMargin   |  LengthMetrics        | 否   | 是   | 分割线与UIPickerComponent容器侧边结束端的距离。<br>默认值：0<br>单位：与LengthMetrics一致。<br>取值范围：startMargin与endMargin之和不得超过UIPickerComponent容器的宽度。设置小于0或startMargin与endMargin之和超过UIPickerComponent容器的宽度时，使用默认值。不支持“百分比”类型。<br>**说明：**<br>当type为PickerIndicatorType.DIVIDER时生效。 |
 | backgroundColor  | [ResourceColor](ts-types.md#resourcecolor) | 否  | 是  | 选中项背景的颜色。<br>默认值：'sys.color.comp_background_tertiary'<br>**说明：**<br>当type为PickerIndicatorType.BACKGROUND时生效。   |
-| borderRadius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) &nbsp;\|&nbsp; [BorderRadiuses](ts-types.md#borderradiuses9) &nbsp;\|&nbsp; [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | 否  | 是  | 选中项背景的边框圆角半径。<br>默认值：{ value:12, unit:LengthUnit.vp }，即四个圆角半径均为12vp。<br>取值范围：取选中项的宽和高之中较小的边长为x，最大不超过x的一半。当取值小于0时，使用默认值；当取值大于最大值时，使用最大值。<br>**说明：**<br>1. 当type为PickerIndicatorType.BACKGROUND时生效。<br>2. [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)：统一设置四个圆角半径的大小和单位。<br>3. [BorderRadiuses](ts-types.md#borderradiuses9)：单独设置四个圆角半径的大小（单位为vp）。<br>4. [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12)：单独设置四个圆角半径的大小和单位。 |
+| borderRadius  | LengthMetrics &nbsp;\|&nbsp; [BorderRadiuses](ts-types.md#borderradiuses9) &nbsp;\|&nbsp; [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | 否  | 是  | 选中项背景的边框圆角半径。<br>默认值：{ value:12, unit:LengthUnit.vp }，即四个圆角半径均为12vp。<br>取值范围：取选中项的宽和高之中较小的边长为x，最大不超过x的一半。当取值小于0时，使用默认值；当取值大于最大值时，使用最大值。<br>**说明：**<br>1. 当type为PickerIndicatorType.BACKGROUND时生效。<br>2. LengthMetrics：统一设置四个圆角半径的大小和单位。<br>3. [BorderRadiuses](ts-types.md#borderradiuses9)：单独设置四个圆角半径的大小（单位为vp）。<br>4. [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12)：单独设置四个圆角半径的大小和单位。 |
 
 ## PickerIndicatorType枚举说明
 

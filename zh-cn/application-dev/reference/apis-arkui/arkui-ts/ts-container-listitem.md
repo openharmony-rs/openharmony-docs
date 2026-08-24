@@ -232,7 +232,7 @@ SwipeActionItem用于配置[SwipeActionOptions](#swipeactionoptions9对象说明
 | onEnterActionArea | () => void | 否 | 是 | 在滑动条目进入删除区域时调用，只触发一次，当再次进入时仍触发。<br/>**说明：**<br/>actionAreaDistance的最终取值大于0，且小于ListItem在划动方向上的尺寸减去划出组件在划动方向上的尺寸时，进入该区域才会触发回调；未设置actionAreaDistance时，按默认值56vp计算。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | onExitActionArea | () => void | 否 | 是 |当滑动条目退出删除区域时调用，只触发一次，当再次退出时仍触发。<br/>**说明：**<br/>actionAreaDistance的最终取值大于0，且小于ListItem在划动方向上的尺寸减去划出组件在划动方向上的尺寸时，退出该区域才会触发回调；未设置actionAreaDistance时，按默认值56vp计算。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | builder |  [CustomBuilder](ts-types.md#custombuilder8) | 否 | 是 |当列表项向左或向右滑动（当列表方向为“垂直”时），向上或向下滑动（当列表方向为“水平”时）时显示的操作项。<br/>默认值：无（不设置时无操作项显示） <br/>**说明：** <br/>同时设置builderComponent时，builderComponent的优先级高于该参数。即同时设置builder和builderComponent时，以builderComponent设置的值为准。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| builderComponent<sup>18+</sup> |  [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否 | 是 |当列表项向左或向右滑动（当列表方向为“垂直”时），向上或向下滑动（当列表方向为“水平”时）时显示的操作项。<br/>默认值：无（不设置时无操作项显示） <br/>**说明：** <br/>该参数的优先级高于参数builder。即同时设置builder和builderComponent时，以builderComponent设置的值为准。<br/> 同一个builderComponent不推荐同时给不同的start/end使用，否则会导致显示问题。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| builderComponent<sup>18+</sup> |  ComponentContent | 否 | 是 |当列表项向左或向右滑动（当列表方向为“垂直”时），向上或向下滑动（当列表方向为“水平”时）时显示的操作项。<br/>默认值：无（不设置时无操作项显示） <br/>**说明：** <br/>该参数的优先级高于参数builder。即同时设置builder和builderComponent时，以builderComponent设置的值为准。<br/> 同一个builderComponent不推荐同时给不同的start/end使用，否则会导致显示问题。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | onStateChange<sup>11+</sup> | (state:[SwipeActionState](#swipeactionstate11枚举说明)) => void | 否 | 是 |当列表项滑动状态变化时候触发。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 ## ListItemOptions<sup>10+</sup>对象说明
 
@@ -325,7 +325,7 @@ expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 
 | 参数名     | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
-| node | [FrameNode](../js-apis-arkui-frameNode.md) | 是   | ListItem节点对象。 |
+| node | FrameNode | 是   | ListItem节点对象。 |
 | direction | [ListItemSwipeActionDirection](#listitemswipeactiondirection21枚举说明) | 是   | ListItem划出菜单的展开方向。 |
 
 **错误码：**
@@ -352,7 +352,7 @@ collapse(node: FrameNode): void
 
 | 参数名     | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
-| node | [FrameNode](../js-apis-arkui-frameNode.md) | 是   | ListItem节点对象。 |
+| node | FrameNode | 是   | ListItem节点对象。 |
 
 **错误码：**
 
@@ -557,7 +557,7 @@ struct ListItemExample3 {
 
 ### 示例4（通过ComponentContent设置划出组件）
 
-该示例通过[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)设置ListItem中的划出组件操作时显示的操作项。
+该示例通过ComponentContent设置ListItem中的划出组件操作时显示的操作项。
 
 ```ts
 // xxx.ets

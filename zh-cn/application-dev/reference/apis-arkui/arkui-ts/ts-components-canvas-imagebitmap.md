@@ -58,7 +58,7 @@ constructor(data: PixelMap)
 
 | 参数名  | 类型   | 必填  | 说明                                    |
 | ---- | ------ | ---- | ---------------------------------------- |
-| data  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 图片数据源，通过PixelMap对象设置。适用于需要对图片进行解码、处理后再绘制的场景，可提高图片加载性能。 |
+| data  | PixelMap | 是    | 图片数据源，通过PixelMap对象设置。适用于需要对图片进行解码、处理后再绘制的场景，可提高图片加载性能。 |
 
 ### constructor<sup>12+</sup>
 
@@ -83,7 +83,7 @@ constructor(src: string, unit: LengthMetricsUnit)
 | 参数名  | 类型   | 必填  | 说明                                    |
 | ---- | ------ | ---- | ---------------------------------------- |
 | src  | string | 是  | 图片数据源，支持本地图片。<br>1、string格式用于加载本地图片，例如`ImageBitmap("common/images/example.jpg")`，type为"entry"和"feature"类型的Module，其图片加载路径的起点为当前Module的ets文件夹，type为"har"和"shared"类型的Module，其图片加载路径的起点为当前构建的"entry"或"feature"类型Module的ets文件夹。<br>type为"har"和"shared"类型的Module中推荐使用[ImageSource](../../../media/image/image-decoding.md)图片解码方式将资源图片解码为统一的PixelMap加载使用。<br>2、支持本地图片类型：bmp、jpg、png、svg和webp类型。<br>**说明：**<br>- ArkTS卡片上不支持`http://`等网络相关路径前缀、`datashare://`路径前缀以及`file://data/storage`路径前缀的字符串。 |
-| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 是 | 用于配置ImageBitmap对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>默认值：LengthMetricsUnit.DEFAULT。<br>异常值undefined、NaN和Infinity按默认值处理。 |
+| unit  | LengthMetricsUnit | 是 | 用于配置ImageBitmap对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>默认值：LengthMetricsUnit.DEFAULT。<br>异常值undefined、NaN和Infinity按默认值处理。 |
 
 ### constructor<sup>12+</sup>
 
@@ -105,8 +105,8 @@ constructor(data: PixelMap, unit: LengthMetricsUnit)
 
 | 参数名  | 类型   | 必填  | 说明                                    |
 | ---- | ------ | ---- | ---------------------------------------- |
-| data  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 图片数据源，通过PixelMap对象设置。适用于需要对图片进行解码、处理后再绘制的场景，可提高图片加载性能。 |
-| unit   | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 是 | 用于配置ImageBitmap对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>默认值：LengthMetricsUnit.DEFAULT。<br>异常值undefined、NaN和Infinity按默认值处理。 |
+| data  | PixelMap | 是    | 图片数据源，通过PixelMap对象设置。适用于需要对图片进行解码、处理后再绘制的场景，可提高图片加载性能。 |
+| unit   | LengthMetricsUnit | 是 | 用于配置ImageBitmap对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>默认值：LengthMetricsUnit.DEFAULT。<br>异常值undefined、NaN和Infinity按默认值处理。 |
 
 ### constructor
 
@@ -131,7 +131,7 @@ constructor(data: Resource, unit?: LengthMetricsUnit)
 | 参数名  | 类型   | 必填  | 说明                                    |
 | ---- | ------ | ---- | ---------------------------------------- |
 | data  | [Resource](ts-types.md#resource) | 是    | 图片数据源，通过Resource资源引用方式设置。适用于引用应用资源目录下的图片资源，如$r('app.media.example')，可避免硬编码路径。<br>支持图片类型：bmp、jpg、png、svg和webp类型。 |
-| unit   | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否 | 用来配置ImageBitmap对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>默认值：LengthMetricsUnit.DEFAULT。<br>异常值undefined、NaN和Infinity按默认值处理。 |
+| unit   | LengthMetricsUnit | 否 | 用来配置ImageBitmap对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>默认值：LengthMetricsUnit.DEFAULT。<br>异常值undefined、NaN和Infinity按默认值处理。 |
 
 ## close
 

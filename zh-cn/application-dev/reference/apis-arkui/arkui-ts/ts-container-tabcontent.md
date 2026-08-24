@@ -106,7 +106,7 @@ tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string |
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| content | [ComponentContent](../js-apis-arkui-ComponentContent.md)&nbsp;\|<br/>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9)&nbsp;\|<br/>string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br/>[CustomBuilder](ts-types.md#custombuilder8)\|&nbsp;<br/>[TabBarOptions](#tabbaroptions18对象说明) | 是   | TabBar上显示内容。<br/>ComponentContent： 组件内容的实体封装，可以设置自定义内容。<br/>**说明：**<br/>1.自定义内容不支持labelStyle属性。<br/>2.自定义内容超出页签范围，则不显示超出部分。<br/>3.自定义内容小于页签范围，则会居中对齐。<br/>4.自定义内容异常或无可用显示组件，则显示空白。<br/>SubTabBarStyle：&nbsp;子页签样式。<br/>BottomTabBarStyle：&nbsp;底部页签和侧边页签样式，底部样式没有下划线效果。<br/>string： 字符串类型。<br/>Resource： 资源引用类型，引入系统资源或者应用资源中的字符串。<br/>CustomBuilder： 构造器，内部可以传入组件。<br/>TabBarOptions： 设置页签内的图片和文字内容。 |
+| content | ComponentContent&nbsp;\|<br/>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9)&nbsp;\|<br/>string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br/>[CustomBuilder](ts-types.md#custombuilder8)\|&nbsp;<br/>[TabBarOptions](#tabbaroptions18对象说明) | 是   | TabBar上显示内容。<br/>ComponentContent： 组件内容的实体封装，可以设置自定义内容。<br/>**说明：**<br/>1.自定义内容不支持labelStyle属性。<br/>2.自定义内容超出页签范围，则不显示超出部分。<br/>3.自定义内容小于页签范围，则会居中对齐。<br/>4.自定义内容异常或无可用显示组件，则显示空白。<br/>SubTabBarStyle：&nbsp;子页签样式。<br/>BottomTabBarStyle：&nbsp;底部页签和侧边页签样式，底部样式没有下划线效果。<br/>string： 字符串类型。<br/>Resource： 资源引用类型，引入系统资源或者应用资源中的字符串。<br/>CustomBuilder： 构造器，内部可以传入组件。<br/>TabBarOptions： 设置页签内的图片和文字内容。 |
 
 >  **说明：**
 >
@@ -173,7 +173,7 @@ SubTabBarStyle的构造函数。支持ComponentContent设置自定义内容。
 
 | 参数名 | 类型         | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| content | [ResourceStr](ts-types.md#resourcestr) \| [ComponentContent](../js-apis-arkui-ComponentContent.md) | 是 | 页签内的内容。<br />**说明：**<br />1.自定义内容不支持labelStyle属性。<br />2.自定义内容超出页签范围，则不显示超出部分。<br />3.自定义内容小于页签范围，则会居中对齐。<br />4.自定义内容异常或无可用显示组件，则显示空白。 |
+| content | [ResourceStr](ts-types.md#resourcestr) \| ComponentContent | 是 | 页签内的内容。<br />**说明：**<br />1.自定义内容不支持labelStyle属性。<br />2.自定义内容超出页签范围，则不显示超出部分。<br />3.自定义内容小于页签范围，则会居中对齐。<br />4.自定义内容异常或无可用显示组件，则显示空白。 |
 
 ### of<sup>10+</sup>
 
@@ -215,7 +215,7 @@ SubTabBarStyle的静态构造函数。支持ComponentContent设置自定义内�
 
 | 参数名  | 类型                                   | 必填 | 说明           |
 | ------- | ------------------------------------------ | ---- | ------------------ |
-| content | [ResourceStr](ts-types.md#resourcestr) \| [ComponentContent](../js-apis-arkui-ComponentContent.md) | 是   | 页签内的内容。支持ComponentContent设置自定义内容。<br />**说明：**<br />1.自定义内容不支持labelStyle属性。<br />2.自定义内容超出页签范围，则不显示超出部分。<br />3.自定义内容小于页签范围，则会居中对齐。<br />4.自定义内容异常或无可用显示组件，则显示空白。 |
+| content | [ResourceStr](ts-types.md#resourcestr) \| ComponentContent | 是   | 页签内的内容。支持ComponentContent设置自定义内容。<br />**说明：**<br />1.自定义内容不支持labelStyle属性。<br />2.自定义内容超出页签范围，则不显示超出部分。<br />3.自定义内容小于页签范围，则会居中对齐。<br />4.自定义内容异常或无可用显示组件，则显示空白。 |
 
 **返回值：**
 
@@ -449,7 +449,7 @@ id(value: string): SubTabBarStyle
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | --------- | ----------------------- |
-| drawable | [DrawableDescriptor](#drawabledescriptor22) | 否 | 是 | 下划线的图源。<br />支持[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)、[PixelMapDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#pixelmapdrawabledescriptor12)、[LayeredDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#layereddrawabledescriptor)和[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)类型。当传入无效图源时将显示默认的实线型下划线。 |
+| drawable | [DrawableDescriptor](#drawabledescriptor22) | 否 | 是 | 下划线的图源。<br />支持DrawableDescriptor、PixelMapDrawableDescriptor、LayeredDrawableDescriptor和AnimatedDrawableDescriptor类型。当传入无效图源时将显示默认的实线型下划线。 |
 | height | [Length](ts-types.md#length) | 否 | 是 | 下划线的高度（不支持百分比设置）。<br/>默认值：2.0<br/>单位：vp<br/>取值范围：[0, +∞)。异常值时取默认值。 |
 | width | [Length](ts-types.md#length) | 否 | 是 | 下划线的宽度（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。异常值时取默认值。<br />宽度设置为0时，按页签文本宽度显示。|
 | borderRadius | [Length](ts-types.md#length) | 否 | 是 | 下划线的圆角半径（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。异常值时取默认值。 |
@@ -469,7 +469,7 @@ type DrawableDescriptor = DrawableDescriptor
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)  | 返回一个DrawableDescriptor对象。 |
+| DrawableDescriptor  | 返回一个DrawableDescriptor对象。 |
 
 ## SelectedMode<sup>10+</sup>枚举说明
 
@@ -1872,7 +1872,7 @@ struct Index {
 
 ### 示例9（通过ComponentContent设置TabBar）
 
-该示例实现了通过[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)封装组件内容，设置[TabBar](#tabbar18)。通过ComponentContent的[update](../js-apis-arkui-ComponentContent.md#update)函数更新TabBar。
+该示例实现了通过ComponentContent封装组件内容，设置[TabBar](#tabbar18)。通过ComponentContent的update函数更新TabBar。
 
 ```ts
 // xxx.ets

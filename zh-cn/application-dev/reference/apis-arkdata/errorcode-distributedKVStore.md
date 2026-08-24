@@ -43,13 +43,13 @@ Over max limits.
 
 **可能原因**
 
-1. 在调用订阅数据库变化接口[on('dataChange')](js-apis-distributedKVStore.md#ondatachange)时，对数据库的订阅数目已超过最大限制数目8。
-2. 调用获取数据库结果集接口[getResultSet](js-apis-distributedKVStore.md#getresultset)时，数据库当前打开的结果集数目超过最大限制数目8。
+1. 在调用订阅数据库变化接口on('dataChange')时，对数据库的订阅数目已超过最大限制数目8。
+2. 调用获取数据库结果集接口getResultSet时，数据库当前打开的结果集数目超过最大限制数目8。
 
 **处理步骤**
 
-1. 如果在调用订阅数据库变化接口[on('dataChange')](js-apis-distributedKVStore.md#ondatachange)时，对数据库的订阅数量已超过最大限制，调用[off('dataChange')](js-apis-distributedKVStore.md#offdatachange)接口取消对数据库的部分订阅后，再次尝试订阅。
-2. 如果在调用获取数据库结果集接口[getResultSet](js-apis-distributedKVStore.md#getresultset)时数据库当前打开的结果集数目超过最大限制，调用[closeResultSet](js-apis-distributedKVStore.md#closeresultset)接口关闭部分打开的结果集后重试。
+1. 如果在调用订阅数据库变化接口on('dataChange')时，对数据库的订阅数量已超过最大限制，调用off('dataChange')接口取消对数据库的部分订阅后，再次尝试订阅。
+2. 如果在调用获取数据库结果集接口getResultSet时数据库当前打开的结果集数目超过最大限制，调用closeResultSet接口关闭部分打开的结果集后重试。
 
 ## 15100002 打开已有数据库时参数配置发生变化
 
@@ -59,7 +59,7 @@ Open existed database with changed options.
 
 **错误描述**
 
-调用[getKVStore](js-apis-distributedKVStore.md#getkvstore)接口打开已创建的数据库时，传入的options配置参数与创建该数据库时使用的options配置参数不一致。
+调用getKVStore接口打开已创建的数据库时，传入的options配置参数与创建该数据库时使用的options配置参数不一致。
 
 **可能原因**
 
@@ -80,7 +80,7 @@ Database corrupted.
 
 **错误描述**
 
-该错误码表示在调用[put](js-apis-distributedKVStore.md#put)、[delete](js-apis-distributedKVStore.md#delete)、[get](js-apis-distributedKVStore.md#get)、[sync](js-apis-distributedKVStore.md#sync)等接口时，数据库已损坏。
+该错误码表示在调用put、delete、get、sync等接口时，数据库已损坏。
 
 **可能原因**
 
@@ -99,7 +99,7 @@ Not found.
 
 **错误描述**
 
-该错误码表示在调用[deleteKVStore](js-apis-distributedKVStore.md#deletekvstore)、[sync](js-apis-distributedKVStore.md#sync)、[get](js-apis-distributedKVStore.md#get)等接口时，未找到相关数据。
+该错误码表示在调用deleteKVStore、sync、get等接口时，未找到相关数据。
 
 **可能原因**
 
@@ -141,14 +141,14 @@ Failed to update the key.
 
 **错误描述**
 
-在调用[rekey](js-apis-distributedKVStore.md#rekey)接口更新数据库加密密钥时失败。
+在调用rekey接口更新数据库加密密钥时失败。
 
 **可能原因**
 
-1. 在调用[getKVStore](js-apis-distributedKVStore.md#getkvstore)接口创建数据库时，未使用加密方式（即encrypt为false）。
+1. 在调用getKVStore接口创建数据库时，未使用加密方式（即encrypt为false）。
 2. 密钥更新过程中发生内部错误。
 
 **处理步骤**
 
-1. 在使用[rekey](js-apis-distributedKVStore.md#rekey)接口更新加密数据库密钥前，请确保当前数据库为加密数据库（即调用[getKVStore](js-apis-distributedKVStore.md#getkvstore)接口创建数据库时配置encrypt为true）。
+1. 在使用rekey接口更新加密数据库密钥前，请确保当前数据库为加密数据库（即调用getKVStore接口创建数据库时配置encrypt为true）。
 2. 重新尝试更新密钥。

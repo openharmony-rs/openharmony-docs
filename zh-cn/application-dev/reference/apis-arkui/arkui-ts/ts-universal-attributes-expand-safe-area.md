@@ -11,7 +11,7 @@
 - 通过设置[setKeyboardAvoidMode](#setkeyboardavoidmode11)来配置虚拟键盘弹出时页面的避让模式。
 - 通过[ignoreLayoutSafeArea](#ignorelayoutsafearea20)属性扩展组件布局时的安全区域，组件布局位置及大小可能改变。
 
-页面中有标题栏等文字不希望和避让区重叠时，建议对组件设置expandSafeArea属性实现沉浸式效果，也可直接通过窗口接口[setWindowLayoutFullScreen](../arkts-apis-window-Window.md#setwindowlayoutfullscreen9)实现全屏沉浸式效果。
+页面中有标题栏等文字不希望和避让区重叠时，建议对组件设置expandSafeArea属性实现沉浸式效果，也可直接通过窗口接口setWindowLayoutFullScreen实现全屏沉浸式效果。
 
 > **说明：**
 >
@@ -68,7 +68,7 @@ expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&
 
 | 参数名 | 类型                                               | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| types  | Array <[SafeAreaType](#safeareatype)> | 否   | 配置扩展安全区域的类型。默认值包含SafeAreaType.CUTOUT，但未添加[Metadata](../../apis-ability-kit/js-apis-bundleManager-metadata.md)配置项时，页面不避让挖孔，CUTOUT类型不生效。<br>默认值：[SafeAreaType.SYSTEM, SafeAreaType.CUTOUT, SafeAreaType.KEYBOARD] <br>非法值：按默认值处理。|
+| types  | Array <[SafeAreaType](#safeareatype)> | 否   | 配置扩展安全区域的类型。默认值包含SafeAreaType.CUTOUT，但未添加Metadata配置项时，页面不避让挖孔，CUTOUT类型不生效。<br>默认值：[SafeAreaType.SYSTEM, SafeAreaType.CUTOUT, SafeAreaType.KEYBOARD] <br>非法值：按默认值处理。|
 | edges  | Array<[SafeAreaEdge](#safeareaedge)> | 否   | 配置扩展安全区域的边缘，默认扩展至所有避让区域。<br>默认值：[SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM, SafeAreaEdge.START, SafeAreaEdge.END]。<br>非法值：按默认值处理。 |
 
 **返回值：**
@@ -120,7 +120,7 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | 是   | 虚拟键盘抬起时页面的避让模式。可选值：OFFSET（上抬）、RESIZE（压缩）、NONE（不避让）。<br>默认值：KeyboardAvoidMode.OFFSET，键盘抬起时默认避让模式为上抬。<br>setKeyboardAvoidMode传入异常值时，该属性设置不生效。 |
+| value  | KeyboardAvoidMode | 是   | 虚拟键盘抬起时页面的避让模式。可选值：OFFSET（上抬）、RESIZE（压缩）、NONE（不避让）。<br>默认值：KeyboardAvoidMode.OFFSET，键盘抬起时默认避让模式为上抬。<br>setKeyboardAvoidMode传入异常值时，该属性设置不生效。 |
 
 >  **说明：**
 >
@@ -144,7 +144,7 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 | 类型                                                 | 说明                               |
 | ---------------------------------------------------- | ---------------------------------- |
-| [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | 虚拟键盘抬起时的页面避让模式。 |
+| KeyboardAvoidMode | 虚拟键盘抬起时的页面避让模式。 |
 
 ## ignoreLayoutSafeArea<sup>20+</sup>
 

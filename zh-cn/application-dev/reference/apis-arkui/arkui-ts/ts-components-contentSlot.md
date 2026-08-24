@@ -44,7 +44,7 @@ type Content = import('../api/@ohos.arkui.node').Content
 
 | 类型 | 说明                                                     |
 | ---- | ------------------------------------------------------------ |
-| import('../api/@ohos.arkui.node').[Content](../js-apis-arkui-Content.md)   | 定义ComponentContent和NodeContent的基类。 |
+| import('../api/@ohos.arkui.node').Content   | 定义ComponentContent和NodeContent的基类。 |
 
 ## 示例
 

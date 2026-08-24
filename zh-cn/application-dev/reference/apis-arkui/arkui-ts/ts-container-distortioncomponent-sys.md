@@ -12,7 +12,7 @@ DistortionComponent（空间形变组件）是一种容器型视效组件，可�
 >
 > - 本模块为系统接口。
 > 
-> - 空间扭曲感的形变视效支持动画，如在[animateTo](../../apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)动画接口闭包中改变该视效参数，可以产生空间扭曲感的形变动画。
+> - 空间扭曲感的形变视效支持动画，如在animateTo动画接口闭包中改变该视效参数，可以产生空间扭曲感的形变动画。
 
 **起始版本：** 26.0.0
 
@@ -99,7 +99,7 @@ type Vector2 = Vector2
 
 | 类型   | 说明     |
 | ------ | -------- |
-| [Vector2](../../apis-arkui/js-apis-arkui-graphics.md#vector2)   | 包含x和y两个值的向量。<br/>x和y表示坐标值。<br/>取值范围：(-∞, +∞) |
+| Vector2   | 包含x和y两个值的向量。<br/>x和y表示坐标值。<br/>取值范围：(-∞, +∞) |
 
 
 ## Vector4
@@ -118,7 +118,7 @@ type Vector4 = Vector4
 
 | 类型   | 说明     |
 | ------ | -------- |
-| [Vector4](../../apis-arkui/js-apis-arkui-graphics.md#vector4)   | 包含x、y、z、w四个值的向量。<br/>x、y、z、w的值分别表示组件左边、右边、上边、下边的桶形形变程度。<br/>取值范围：(-∞, +∞) |
+| Vector4   | 包含x、y、z、w四个值的向量。<br/>x、y、z、w的值分别表示组件左边、右边、上边、下边的桶形形变程度。<br/>取值范围：(-∞, +∞) |
 
 
 ## 属性

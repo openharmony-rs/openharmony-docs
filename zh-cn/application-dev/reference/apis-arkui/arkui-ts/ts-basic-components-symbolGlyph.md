@@ -68,7 +68,7 @@ fontColor(value: Array&lt;ResourceColor&gt;)
 
 fontColor(value: Array&lt;ResourceColor | ColorMetrics&gt; | undefined)
 
-设置SymbolGlyph组件的字体颜色，相比[fontColor](#fontcolor)接口，本接口支持传入[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型参数。
+设置SymbolGlyph组件的字体颜色，相比[fontColor](#fontcolor)接口，本接口支持传入ColorMetrics类型参数。
 
 > **说明：**
 >
@@ -86,7 +86,7 @@ fontColor(value: Array&lt;ResourceColor | ColorMetrics&gt; | undefined)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\>&nbsp;\|&nbsp;undefined | 是   | SymbolGlyph组件字体颜色。支持传入`ResourceColor`或`ColorMetrics`类型的数组。<br> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。 |
+| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;ColorMetrics\>&nbsp;\|&nbsp;undefined | 是   | SymbolGlyph组件字体颜色。支持传入`ResourceColor`或`ColorMetrics`类型的数组。<br> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。 |
 
 ### fontSize
 
@@ -997,7 +997,7 @@ struct Index {
 
 ### 示例4（设置SymbolGlyph颜色）
 
-该示例通过[fontColor](#fontcolor-1)属性传入[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型参数，设置SymbolGlyph组件的颜色。
+该示例通过[fontColor](#fontcolor-1)属性传入ColorMetrics类型参数，设置SymbolGlyph组件的颜色。
 
 从API版本26.0.0开始，新增支持[fontColor](#fontcolor-1)。
 

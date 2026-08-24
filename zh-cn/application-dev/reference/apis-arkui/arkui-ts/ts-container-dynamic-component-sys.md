@@ -53,7 +53,7 @@ type Worker = Worker
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [Worker](../../apis-arkts/js-apis-worker.md) | 用于在独立线程中运行Abc。 |
+| Worker | 用于在独立线程中运行Abc。 |
 
 ## ErrorCallback
 
@@ -69,7 +69,7 @@ type ErrorCallback = ErrorCallback
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 用于接收运行过程中的异常信息。 |
+| ErrorCallback | 用于接收运行过程中的异常信息。 |
 
 ## DynamicOptions
 
@@ -114,7 +114,7 @@ DynamicComponent运行过程中发生异常时触发该回调。使用callback�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是 | 回调函数，入参用于接收异常信息。 |
+| callback | ErrorCallback | 是 | 回调函数，入参用于接收异常信息。 |
 
 ## 示例
 

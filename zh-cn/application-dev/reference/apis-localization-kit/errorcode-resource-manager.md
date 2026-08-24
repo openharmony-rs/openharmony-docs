@@ -28,7 +28,7 @@ Invalid resource ID.
 
 **处理步骤**
 
-1. 排查是否为以下场景：HAR模块开启[混淆配置](../../quick-start/har-package.md#混淆配置)、中间码HAR、字节码HAR、跨HAP/HSP包。这四种场景下通过`$r('app.xxx.xxx').id`获取的资源ID为`-1`，推荐使用[getStringByName()](js-apis-resource-manager.md#getstringbyname9)等方法通过名称获取资源。
+1. 排查是否为以下场景：HAR模块开启[混淆配置](../../quick-start/har-package.md#混淆配置)、中间码HAR、字节码HAR、跨HAP/HSP包。这四种场景下通过`$r('app.xxx.xxx').id`获取的资源ID为`-1`，推荐使用getStringByName()等方法通过名称获取资源。
 2. 检查传入的资源ID在HAP/HSP包中是否存在。可以参考[restool工具](../../tools/restool.md)的dump命令，先输出HAP/HSP的资源信息，然后在输出结果中搜索是否存在传入的资源ID。
 
 ## 9001002 根据当前资源ID未找到匹配的资源

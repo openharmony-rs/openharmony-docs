@@ -45,7 +45,7 @@ LazyDynamicLayout(algorithm: LazyLayoutAlgorithm)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| algorithm | [LazyLayoutAlgorithm](../js-apis-arkui-lazyLayoutAlgorithm.md#lazylayoutalgorithm-1) | 是 | 指定懒加载动态布局组件的布局算法。需传入LazyLayoutAlgorithm类型的实例，可通过继承[LazyCustomLayoutAlgorithm](../js-apis-arkui-lazyLayoutAlgorithm.md#lazycustomlayoutalgorithm)自定义测量和布局逻辑。自定义算法中获取子组件或子组件总数时，需分别使用[ExpandMode.LAZY_NOT_EXPAND](../js-apis-arkui-frameNode.md#expandmode15)和[ChildrenCountMode.ALL_NOT_EXPAND](../js-apis-arkui-frameNode.md#childrencountmode)，避免全量加载导致懒加载失效。|
+| algorithm | LazyLayoutAlgorithm | 是 | 指定懒加载动态布局组件的布局算法。需传入LazyLayoutAlgorithm类型的实例，可通过继承LazyCustomLayoutAlgorithm自定义测量和布局逻辑。自定义算法中获取子组件或子组件总数时，需分别使用ExpandMode.LAZY_NOT_EXPAND和ChildrenCountMode.ALL_NOT_EXPAND，避免全量加载导致懒加载失效。|
 
 ## 属性
 
@@ -53,7 +53,7 @@ LazyDynamicLayout(algorithm: LazyLayoutAlgorithm)
 
 > **说明：**
 >
-> 当布局算法为[LazyCustomLayoutAlgorithm](../js-apis-arkui-lazyLayoutAlgorithm.md#lazycustomlayoutalgorithm)时，LazyDynamicLayout组件[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[setMeasuredSize](../js-apis-arkui-frameNode.md#setmeasuredsize12)方法优先级高于[尺寸设置](ts-universal-attributes-size.md)和[边框设置](ts-universal-attributes-border.md)属性，子组件[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[measure](../js-apis-arkui-frameNode.md#measure12)和[layout](../js-apis-arkui-frameNode.md#layout12)方法优先级高于[ignoreLayoutSafeArea](ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20)属性。自定义算法完成测量或布局后，框架不再执行默认测量或布局流程，而是采用自定义算法设置的尺寸和位置。
+> 当布局算法为LazyCustomLayoutAlgorithm时，LazyDynamicLayout组件FrameNode的setMeasuredSize方法优先级高于[尺寸设置](ts-universal-attributes-size.md)和[边框设置](ts-universal-attributes-border.md)属性，子组件FrameNode的measure和layout方法优先级高于[ignoreLayoutSafeArea](ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20)属性。自定义算法完成测量或布局后，框架不再执行默认测量或布局流程，而是采用自定义算法设置的尺寸和位置。
 
 
 ## 事件
@@ -86,7 +86,7 @@ onVisibleIndexesChange(callback: [Callback](ts-types.md#callback12)&lt;number[]&
 
 通过[List](ts-container-list.md)和LazyDynamicLayout组件实现自定义的懒加载列表布局，并通过[onVisibleIndexesChange](#onvisibleindexeschange)在可视区域发生变化时回调索引。
 
-LazyListLayout实现了一个自定义懒加载列表布局算法，布局算法中通过[setAdjustedOffset](../js-apis-arkui-lazyLayoutAlgorithm.md#setadjustedoffset)接口，确保子组件布局间隔变化时可视区域内第一个子组件的位置不变。
+LazyListLayout实现了一个自定义懒加载列表布局算法，布局算法中通过setAdjustedOffset接口，确保子组件布局间隔变化时可视区域内第一个子组件的位置不变。
 
 MyDataSource实现了[LazyForEach](ts-rendering-control-lazyforeach.md)数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给LazyDynamicLayout提供子组件。
 

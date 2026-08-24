@@ -38,7 +38,7 @@ smartGestureShortcut(options?: SmartGestureShortcutOptions): T
 
 **示例：**
 
-参考智慧手势控制器[示例1（启用智慧手势并自定义动作处理）](../arkts-apis-uicontext-smartgesturecontroller.md#示例1启用智慧手势并自定义动作处理)。
+参考智慧手势控制器示例1（启用智慧手势并自定义动作处理）。
 
 ## SmartGestureShortcutOptions
 

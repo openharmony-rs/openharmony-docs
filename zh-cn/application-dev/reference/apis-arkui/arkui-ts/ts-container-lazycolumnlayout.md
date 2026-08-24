@@ -68,7 +68,7 @@ space(space: LengthMetrics | undefined)
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| space  |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 子组件在垂直方向上的间距。<br/>取值范围：[0, +∞)<br/>设置为小于0的值时，按0vp显示。<br/>方法入参为undefined时，恢复为0vp。 |
+| space  |  LengthMetrics \| undefined | 是   | 子组件在垂直方向上的间距。<br/>取值范围：[0, +∞)<br/>设置为小于0的值时，按0vp显示。<br/>方法入参为undefined时，恢复为0vp。 |
 
 ### alignItems
 

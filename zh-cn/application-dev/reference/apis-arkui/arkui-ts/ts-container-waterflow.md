@@ -18,7 +18,7 @@
 >
 > 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](ts-gesture-blocking-enhancement.md)进行处理。
 >
-> 更多WaterFlow开发说明请参考[创建瀑布流（WaterFlow）](../../../ui/arkts-layout-development-create-waterflow.md)，NDK开发请参考[使用瀑布流](../../../ui/ndk-waterflow.md)，C API接口请参考[ArkUI_NodeAttributeType（滚动容器类组件相关属性）](../capi-native-node-h-nodeattributetype-scrollablecontainer.md)和[ArkUI_WaterFlowSectionOption](../capi-arkui-nativemodule-arkui-waterflowsectionoption.md)。
+> 更多WaterFlow开发说明请参考[创建瀑布流（WaterFlow）](../../../ui/arkts-layout-development-create-waterflow.md)，NDK开发请参考[使用瀑布流](../../../ui/ndk-waterflow.md)，C API接口请参考ArkUI_NodeAttributeType（滚动容器类组件相关属性）和ArkUI_WaterFlowSectionOption。
 ## 子组件
 
 
@@ -68,7 +68,7 @@ WaterFlow(options?: WaterFlowOptions)
 | 名称     | 类型                                        | 只读 | 可选 | 说明                                     |
 | ---------- | ----------------------------------------------- | ------ | -- | -------------------------------------------- |
 | footer |  [CustomBuilder](ts-types.md#custombuilder8) | 否   | 是 | 设置WaterFlow尾部组件，用于在瀑布流末尾显示自定义内容（如加载提示、底部标识等）。不设置时不显示尾部组件。<br/>**说明：** <br/>1. 使用方法参见[示例1](#示例1使用基本瀑布流)。<br/>2. 同时设置footer和footerContent时，以footerContent设置的组件为准。<br/>3. 使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| footerContent<sup>18+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否 | 是 | 设置WaterFlow尾部组件。<br/>该参数的优先级高于参数footer，即同时设置footer和footerContent时，以footerContent设置的组件为准；未设置footerContent时，footer参数仍可设置尾部组件。使用分组混合布局时不支持单独设置尾部组件，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| footerContent<sup>18+</sup> | ComponentContent | 否 | 是 | 设置WaterFlow尾部组件。<br/>该参数的优先级高于参数footer，即同时设置footer和footerContent时，以footerContent设置的组件为准；未设置footerContent时，footer参数仍可设置尾部组件。使用分组混合布局时不支持单独设置尾部组件，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | scroller | [Scroller](ts-container-scroll.md#scroller) | 否   | 是 | 可滚动组件的控制器，与可滚动组件绑定。不设置时不绑定外部控制器，组件自行管理滚动行为。<br/>**说明：** <br/>1. 不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。<br/>2. 使用[SLIDING_WINDOW](#waterflowlayoutmode12枚举说明)布局模式时，scroller的[currentOffset](ts-container-scroll.md#currentoffset)或[offset](ts-container-scroll.md#offset23)接口返回的总偏移量在触发跳转或数据更新后不准确，回滑到顶部时会重新校准。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | 否   | 是 | 设置FlowItem分组，实现同一个瀑布流组件内部各分组使用不同列数混合布局。适用于需要在不同区域使用不同列数布局的场景。不设置时使用统一列数布局。<br/>**说明：** <br/>1. 使用分组混合布局时会忽略[columnsTemplate](#columnstemplate)和[rowsTemplate](#rowstemplate)属性。<br/>2. 使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。  |
 | layoutMode<sup>12+</sup> |[WaterFlowLayoutMode](#waterflowlayoutmode12枚举说明) | 否 | 是 | 设置WaterFlow的布局模式，根据使用场景选择更切合的模式。ALWAYS_TOP_DOWN适用于固定列数场景；SLIDING_WINDOW适用于动态列数、大数据量、屏幕旋转等场景。<br/>**说明：** <br/>默认值：[ALWAYS_TOP_DOWN](#waterflowlayoutmode12枚举说明)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
@@ -675,7 +675,7 @@ onScrollIndex(event: (first: number, last: number) => void)
 
 
 ## UIWaterFlowEvent<sup>19+</sup>
-frameNode中[getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19)方法的返回值，可用于给WaterFlow节点设置滚动事件。
+frameNode中getEvent('WaterFlow')方法的返回值，可用于给WaterFlow节点设置滚动事件。
 
 UIWaterFlowEvent继承于[UIScrollableCommonEvent](ts-container-scrollable-common.md#uiscrollablecommonevent19)。
 
@@ -1740,7 +1740,7 @@ struct WaterFlowDemo {
 
 ### 示例7（WaterFlow组件设置和改变尾部组件）
 
-从API version 18开始，该示例通过[WaterFlowOptions对象说明](#waterflowoptions对象说明)的footerContent接口，实现了WaterFlow组件设置尾部组件。通过[ComponentContent](../js-apis-arkui-ComponentContent.md)的update函数更新尾部组件。
+从API version 18开始，该示例通过[WaterFlowOptions对象说明](#waterflowoptions对象说明)的footerContent接口，实现了WaterFlow组件设置尾部组件。通过ComponentContent的update函数更新尾部组件。
 
 WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
 
@@ -2131,7 +2131,7 @@ struct WaterFlowContentSizeDemo {
 
 ### 示例11（设置滚动事件）
 
-该示例通过FrameNode中的[getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19)获取[UIWaterFlowEvent](#uiwaterflowevent19)，并为WaterFlow设置滚动事件回调，用于事件监听方因无法直接修改页面代码而无法使用声明式接口设置回调的场景。
+该示例通过FrameNode中的getEvent('WaterFlow')获取[UIWaterFlowEvent](#uiwaterflowevent19)，并为WaterFlow设置滚动事件回调，用于事件监听方因无法直接修改页面代码而无法使用声明式接口设置回调的场景。
 
 从API version 19开始，新增UIWaterFlowEvent接口。
 

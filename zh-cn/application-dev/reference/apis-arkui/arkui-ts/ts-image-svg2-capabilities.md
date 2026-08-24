@@ -42,7 +42,7 @@ SVG图源颜色默认解析格式从#ARGB变更为符合SVG标准规范的#RGBA�
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置[objectFit](../../apis-media-library-kit/ohos-multimedia-movingphotoview.md#objectfit)参数。
+>SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
 
 SVG图源属性设置8位十六进制格式的颜色时，示例图源和效果如下：
 

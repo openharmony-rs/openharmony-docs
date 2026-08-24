@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-FoldSplitContainer分栏布局，实现折叠屏二分栏、三分栏在展开态（设备完全展开状态）、悬停态（设备半折叠状态）以及折叠态（设备完全折叠状态）的区域控制。适用于折叠屏应用的响应式布局适配场景，可帮助开发者实现多屏状态下的智能分栏布局，提升用户体验。折叠状态详情可参考[display.FoldStatus](../js-apis-display.md#foldstatus10)。
+FoldSplitContainer分栏布局，实现折叠屏二分栏、三分栏在展开态（设备完全展开状态）、悬停态（设备半折叠状态）以及折叠态（设备完全折叠状态）的区域控制。适用于折叠屏应用的响应式布局适配场景，可帮助开发者实现多屏状态下的智能分栏布局，提升用户体验。折叠状态详情可参考display.FoldStatus。
 
 
 > **说明：**
@@ -123,10 +123,10 @@ type OnHoverStatusChangeHandler = (status: HoverModeStatus) => void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| foldStatus | [display.FoldStatus](../js-apis-display.md#foldstatus10) | 否 | 否 | 设备的折叠状态，包括展开、半折叠、完全折叠等状态。 |
+| foldStatus | display.FoldStatus | 否 | 否 | 设备的折叠状态，包括展开、半折叠、完全折叠等状态。 |
 | isHoverMode | boolean | 否 | 否 | 应用当前是否处于悬停态。值为true时表示当前为悬停态，值为false时表示当前为非悬停态。 |
 | appRotation | number | 否 | 否 | 应用旋转角度，单位为度（degree）。 |
-| windowStatusType | [window.WindowStatusType](../arkts-apis-window-e.md#windowstatustype11) | 否 | 否 | 窗口模式，包括全屏、分屏、自由窗口等模式。 |
+| windowStatusType | window.WindowStatusType | 否 | 否 | 窗口模式，包括全屏、分屏、自由窗口等模式。 |
 
 ## ExtraRegionPosition
 

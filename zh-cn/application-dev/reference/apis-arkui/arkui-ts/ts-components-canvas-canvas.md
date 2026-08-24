@@ -97,7 +97,7 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否 | 是 | 用于描述Canvas绘制时所采用的单位模式，不同单位模式会影响绘制时的坐标和尺寸计算方式，具体说明见[LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12)。<br>仅可在创建Canvas时设置，后续不可修改。<br>默认值：LengthMetricsUnit.DEFAULT |
+| unit | LengthMetricsUnit | 否 | 是 | 用于描述Canvas绘制时所采用的单位模式，不同单位模式会影响绘制时的坐标和尺寸计算方式，具体说明见LengthMetricsUnit。<br>仅可在创建Canvas时设置，后续不可修改。<br>默认值：LengthMetricsUnit.DEFAULT |
 | imageAIOptions | [ImageAIOptions](ts-image-common.md#imageaioptions12) | 否 | 是 | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。<br>异常值null和undefined按不开启AI分析功能处理。<br>默认值：不开启AI分析功能。 |
 
 ## 属性

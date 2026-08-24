@@ -39,7 +39,7 @@ This window state is abnormal.
 
 ### 窗口销毁时调用getLastWindow崩溃
 **可能原因**<br>
-开发者在窗口销毁过程中（如onWindowStageDestroy、页面销毁等）调用[getLastWindow()](arkts-apis-window-f.md#windowgetlastwindow9-1)接口，导致应用崩溃。
+开发者在窗口销毁过程中（如onWindowStageDestroy、页面销毁等）调用getLastWindow()接口，导致应用崩溃。
 
 **典型日志信息**<br>
 故障日志格式：
@@ -59,7 +59,7 @@ Stack trace:
 - 文件名和行号：定位具体代码位置
 
 **处理步骤**<br>
-根据日志堆栈定位getLastWindow()调用位置，检查是否在销毁流程中（onWindowStageDestroy、aboutToDisappear等）。常见场景：窗口创建时未调用[loadContent()](arkts-apis-window-WindowStage.md#loadcontent9)加载页面，销毁流程中错误调用getLastWindow导致崩溃。
+根据日志堆栈定位getLastWindow()调用位置，检查是否在销毁流程中（onWindowStageDestroy、aboutToDisappear等）。常见场景：窗口创建时未调用loadContent()加载页面，销毁流程中错误调用getLastWindow导致崩溃。
 
 解决要点：
 - getLastWindow()调用位置不在onWindowStageDestroy、aboutToDisappear、onDestroy等销毁回调中
@@ -99,7 +99,7 @@ onWindowStageDestroy() {
 
 ### 子窗口调用setResizeByDragEnabled接口失败
 **可能原因**<br>
-开发者在子窗口上调用[setResizeByDragEnabled()](arkts-apis-window-Window.md#setresizebydragenabled14)接口设置窗口可拖拽缩放时，返回错误码1300002，无法实现拖拽缩放功能。
+开发者在子窗口上调用setResizeByDragEnabled()接口设置窗口可拖拽缩放时，返回错误码1300002，无法实现拖拽缩放功能。
 
 **典型日志信息**<br>
 通过DevEco Studio或hdc查看错误日志：
@@ -155,7 +155,7 @@ windowStage.createSubWindowWithOptions('mySubWindow', options).then((windowClass
 
 ### 窗口名不存在，调用findWindow查找崩溃
 **可能原因**<br>
-开发者在调用[findWindow()](arkts-apis-window-f.md#windowfindwindow9)查找不存在的窗口时，导致应用崩溃。
+开发者在调用findWindow()查找不存在的窗口时，导致应用崩溃。
 
 **典型日志信息**<br>
 故障日志格式：
@@ -211,7 +211,7 @@ if (currWindow) {
 
 ### 销毁未完成导致createSubWindow创建同名子窗口失败
 **可能原因**<br>
-开发者在[createSubWindow()](arkts-apis-window-WindowStage.md#createsubwindow9)创建窗口对象后，使用[destroyWindow()](arkts-apis-window-Window.md#destroywindow9)，在窗口还未销毁的情况下，再次调用[createSubWindow()](arkts-apis-window-WindowStage.md#createsubwindow9)，且使用相同名称，导致窗口创建失败，报错1300002。
+开发者在createSubWindow()创建窗口对象后，使用destroyWindow()，在窗口还未销毁的情况下，再次调用createSubWindow()，且使用相同名称，导致窗口创建失败，报错1300002。
 
 **典型日志信息**<br>
 故障日志格式：
@@ -279,7 +279,7 @@ let windowClass = await windowStage.createSubWindow(windowName);
 
 ### 窗口销毁时调用off('avoidAreaChange')崩溃
 **可能原因**<br>
-开发者在窗口销毁过程中（如[onWindowStageDestroy](../apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagedestroy)、[onDestroy](../apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)或页面销毁等）调用[off('avoidAreaChange')](arkts-apis-window-Window.md#offavoidareachange9)接口，导致应用崩溃。
+开发者在窗口销毁过程中（如onWindowStageDestroy、onDestroy或页面销毁等）调用off('avoidAreaChange')接口，导致应用崩溃。
 
 **典型日志信息**<br>
 ```text
@@ -353,7 +353,7 @@ Unauthorized operation.
 
 ### 子窗口调用restore失败
 **可能原因**<br>
-开发者对子窗口调用[restore()](arkts-apis-window-Window.md#restore14)接口，导致操作失败，报错1300004。
+开发者对子窗口调用restore()接口，导致操作失败，报错1300004。
 
 **典型日志信息**<br>
 故障日志：
@@ -373,11 +373,11 @@ BusinessError 1300004: Unauthorized operation. Possible cause: Invalid window Ty
 
 2. 在输出中查找目标窗口，根据Type字段判断：
    - 若Type为1，则对应为主窗口（MainWindow），可以调用restore()。
-   - Type不为1的窗口，均不能调用restore()。例如，通过[createSubWindow()](arkts-apis-window-WindowStage.md#createsubwindow9)接口创建的窗口为子窗口，可在创建时指定子窗口名称。
+   - Type不为1的窗口，均不能调用restore()。例如，通过createSubWindow()接口创建的窗口为子窗口，可在创建时指定子窗口名称。
 
 ### 子窗口调用getWindowSystemBarProperties崩溃
 **可能原因**<br>
-开发者在应用子窗口、全局悬浮窗等非应用主窗口上调用[getWindowSystemBarProperties()](arkts-apis-window-Window.md#getwindowsystembarproperties12)接口，报错1300004。
+开发者在应用子窗口、全局悬浮窗等非应用主窗口上调用getWindowSystemBarProperties()接口，报错1300004。
 
 **典型日志信息**<br>
 ```text
@@ -560,7 +560,7 @@ The PiP window state is abnormal.
 
 ### 画中画窗口销毁后访问导致崩溃
 **可能原因**<br>
-开发者在画中画窗口销毁后（如用户退出画中画、窗口生命周期结束等）调用画中画窗口[stopPiP()](js-apis-pipWindow.md#stoppip)接口，触发错误码1300012。
+开发者在画中画窗口销毁后（如用户退出画中画、窗口生命周期结束等）调用画中画窗口stopPiP()接口，触发错误码1300012。
 
 **典型日志信息**<br>
 ```text
@@ -606,7 +606,7 @@ async stopPiPSafely(pipController: PiPController) {
 
 ### 画中画窗口重复启动导致崩溃
 **可能原因**<br>
-开发者在画中画窗口处于已经启动或正在启动中的状态时，调用画中画窗口[startPiP()](js-apis-pipWindow.md#startpip)接口，触发错误码1300012。
+开发者在画中画窗口处于已经启动或正在启动中的状态时，调用画中画窗口startPiP()接口，触发错误码1300012。
 
 **典型日志信息**<br>
 ```text
@@ -771,7 +771,7 @@ Wrong parameters for operating the floating ball.
 
 4.检查是否有未传入的必传参数。
 
-闪控球相关参数具体可见[FloatingBallParams](js-apis-floatingBall.md#floatingballparams)。
+闪控球相关参数具体可见FloatingBallParams。
 
 ## 1300020 创建闪控球窗口失败
 
@@ -995,9 +995,9 @@ Repeated operations on the float view.
 
 **处理步骤**
 
-1. 建议通过[onStateChange](js-apis-floatView.md#onstatechange)获取当前状态变化。启动闪控窗前，检查闪控窗是否处于已启动的状态。
+1. 建议通过onStateChange获取当前状态变化。启动闪控窗前，检查闪控窗是否处于已启动的状态。
 
-2. 建议通过[onStateChange](js-apis-floatView.md#onstatechange)获取当前状态变化。停止闪控窗前，检查闪控窗是否处于已停止的状态。
+2. 建议通过onStateChange获取当前状态变化。停止闪控窗前，检查闪控窗是否处于已停止的状态。
 
 3. 注册闪控窗回调前，确保回调未注册。
 
@@ -1118,7 +1118,7 @@ This window type is invalid.
 窗口类型无效。
 
 **可能原因**<br>
-使用了无效的窗口类型，有效的窗口类型见[WindowType](arkts-apis-window-e.md#windowtype7)。
+使用了无效的窗口类型，有效的窗口类型见WindowType。
 
 **处理步骤**<br>
 请使用WindowType支持的窗口类型，再进行相关操作。

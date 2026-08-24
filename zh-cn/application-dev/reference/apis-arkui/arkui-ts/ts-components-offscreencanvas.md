@@ -14,7 +14,7 @@ OffscreenCanvas组件用于绘制自定义图形。
 >
 > 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> OffscreenCanvas无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用[绘制模块](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md)进行离屏绘制。
+> OffscreenCanvas无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用绘制模块进行离屏绘制。
 
 ## 子组件
 
@@ -61,7 +61,7 @@ constructor(width: number, height: number, unit: LengthMetricsUnit)
 | ------ | -------- | ---- | ------------------------------------- |
 | width  | number   | 是  | OffscreenCanvas组件的宽度。<br>异常值NaN和Infinity按无效值处理，负数按0处理。<br>单位由unit参数决定，默认单位：vp。 |
 | height | number   | 是  | OffscreenCanvas组件的高度。<br>异常值NaN和Infinity按无效值处理，负数按0处理。<br>单位由unit参数决定，默认单位：vp。 |
-| unit   | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 是   |  配置OffscreenCanvas对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。可选值：DEFAULT（默认单位模式，使用vp作为单位，会根据屏幕密度自动适配）、PX（px像素单位，适合需要精确像素控制的场景，宽高值按物理像素计算）。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT。|
+| unit   | LengthMetricsUnit | 是   |  配置OffscreenCanvas对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。可选值：DEFAULT（默认单位模式，使用vp作为单位，会根据屏幕密度自动适配）、PX（px像素单位，适合需要精确像素控制的场景，宽高值按物理像素计算）。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT。|
 
 ## 属性
 

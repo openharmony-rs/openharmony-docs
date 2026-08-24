@@ -882,7 +882,7 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## HeightBreakpoint<sup>13+</sup>
 
-表示窗口不同高宽比阈值下对应的高度断点枚举值。通过[getWindowHeightBreakpoint](../arkts-apis-uicontext-uicontext.md#getwindowheightbreakpoint13)返回。
+表示窗口不同高宽比阈值下对应的高度断点枚举值。通过getWindowHeightBreakpoint返回。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -1724,7 +1724,7 @@ type Nullable\<T> = T \| undefined
 
 ## WidthBreakpoint<sup>13+</sup>
 
-表示窗口不同宽度阈值下对应的宽度断点枚举值。通过[getWindowWidthBreakpoint](../arkts-apis-uicontext-uicontext.md#getwindowwidthbreakpoint13)返回。
+表示窗口不同宽度阈值下对应的宽度断点枚举值。通过getWindowWidthBreakpoint返回。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 

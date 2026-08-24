@@ -266,7 +266,7 @@ type WindowStatusType = import('../api/@ohos.window').default.WindowStatusType
 
 | 类型        | 说明                 |
 | ---------- | ---------------------|
-| import('../api/@ohos.window').default.[WindowStatusType](../arkts-apis-window-e.md#windowstatustype11)  | 窗口模式枚举。 |
+| import('../api/@ohos.window').default.WindowStatusType  | 窗口模式枚举。 |
 
 ## 示例
 

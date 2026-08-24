@@ -1489,7 +1489,7 @@ start和end的index同时返回0，代表List内只有一个子组件。
 | IN_FOOTER_AREA |  3  | ListItemGroup内部footer区域。 |
 
 ## UIListEvent<sup>19+</sup>
-frameNode中[getEvent('List')](../js-apis-arkui-frameNode.md#geteventlist19)方法的返回值，可用于给List节点设置滚动事件。
+frameNode中getEvent('List')方法的返回值，可用于给List节点设置滚动事件。
 
 UIListEvent继承于[UIScrollableCommonEvent](./ts-container-scrollable-common.md#uiscrollablecommonevent19)。
 

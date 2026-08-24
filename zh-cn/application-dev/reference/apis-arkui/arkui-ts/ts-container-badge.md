@@ -143,7 +143,7 @@ Badge的样式。包括文本颜色、大小、字重、标记颜色和标记大
 | borderColor<sup>10+</sup> | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | 底板描边颜色。<br>默认值：Color.Red<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。     |
 | borderWidth<sup>10+</sup> | [Length](ts-types.md#length)                                 | 否   | 是   | 底板描边粗细。<br>默认值：1<br>单位：vp<br>**说明：** <br>不支持设置百分比，当设置为百分比时，按照默认值处理。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | outerBorderColor<sup>22+</sup> | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | 底板外描边颜色。<br>默认值：Color.White<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。   |
-| outerBorderWidth<sup>22+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)                   | 否   | 是   | 底板外描边粗细。<br>默认值：0<br>单位：vp<br>不支持设置百分比，当设置为百分比时，按照默认值处理。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| outerBorderWidth<sup>22+</sup> | LengthMetrics                   | 否   | 是   | 底板外描边粗细。<br>默认值：0<br>单位：vp<br>不支持设置百分比，当设置为百分比时，按照默认值处理。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | enableAutoAvoidance<sup>22+</sup> | boolean                                 | 否   | 是   | 角标文本延伸显示时是否避让。<br>true表示避让，false表示不避让。<br>默认值：false<br> **说明：** <br>1. 避让效果为角标文本向组件内部延伸显示。<br>2. 当外描边的宽度大于0时，角标的延伸起点为外描边的内侧。<br>3. 当position设置为具体坐标值时，角标不进行避让处理。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 > **说明：**

@@ -196,7 +196,7 @@ The desktop lyrics feature of this application is not enabled.
 
 **处理步骤**
 
-调用[enableDesktopLyric](./arkts-apis-avsession-AVSession.md#enabledesktoplyric23)接口启用桌面歌词功能。
+调用enableDesktopLyric接口启用桌面歌词功能。
 
 ## 6600111 当前设备不支持桌面歌词功能
 
@@ -214,7 +214,7 @@ The desktop lyrics feature is not supported.
 
 **处理步骤**
 
-建议使用[isDesktopLyricSupported](./arkts-apis-avsession-f.md#avsessionisdesktoplyricsupported23)接口查询当前设备是否支持桌面歌词功能。
+建议使用isDesktopLyricSupported接口查询当前设备是否支持桌面歌词功能。
 
 ## 6611000 投播控制器出现未知错误
 

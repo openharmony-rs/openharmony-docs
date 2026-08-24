@@ -159,7 +159,7 @@ Failed to start progress.
 
 **错误描述**
 
-当进度条指示选项为系统默认进度时，如果创建进度显示失败，系统会报此错误码。当未自定义进度显示时，系统会自动使用默认进度条。自定义进度条显示请参考[ProgressIndicator](./js-apis-pasteboard.md#progressindicator15)。
+当进度条指示选项为系统默认进度时，如果创建进度显示失败，系统会报此错误码。当未自定义进度显示时，系统会自动使用默认进度条。自定义进度条显示请参考ProgressIndicator。
 
 **可能原因**
 

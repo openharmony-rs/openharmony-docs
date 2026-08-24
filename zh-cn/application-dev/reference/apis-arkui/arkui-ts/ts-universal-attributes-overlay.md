@@ -16,7 +16,7 @@
 
 overlay(value: string \| CustomBuilder \| ComponentContent, options?: OverlayOptions): T
 
-在当前组件上，增加遮罩文本、叠加自定义组件或将[ComponentContent](#componentcontent12)作为该组件的浮层。浮层的定位同样基于当前组件进行计算。浮层不通过组件树进行渲染，[getRectangleById](../arkts-apis-uicontext-componentutils.md#getrectanglebyid)等获取组件信息的接口不支持获取浮层中的组件。
+在当前组件上，增加遮罩文本、叠加自定义组件或将[ComponentContent](#componentcontent12)作为该组件的浮层。浮层的定位同样基于当前组件进行计算。浮层不通过组件树进行渲染，getRectangleById等获取组件信息的接口不支持获取浮层中的组件。
 
 >**说明：**
 >
@@ -103,7 +103,7 @@ type ComponentContent\<T \= Object\> = import('../api/arkui/ComponentContent').C
 
 | 类型|说明 |
 | ----- | ----------------- |
-| import('../api/arkui/ComponentContent').[ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | 组件内容的实体封装。|
+| import('../api/arkui/ComponentContent').ComponentContent\<T\> | 组件内容的实体封装。|
 
 ## 示例
 

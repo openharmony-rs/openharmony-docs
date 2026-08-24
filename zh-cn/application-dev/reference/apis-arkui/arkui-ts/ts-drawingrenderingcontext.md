@@ -30,7 +30,7 @@ constructor(unit?: LengthMetricsUnit)
 
 | 参数名      | 类型 | 必填   | 说明 |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否    | 用来配置DrawingRenderingContext对象的单位模式，配置后无法更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>可选值：DEFAULT（默认vp单位）、PX（px像素单位）。<br>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT |
+| unit  | LengthMetricsUnit | 否    | 用来配置DrawingRenderingContext对象的单位模式，配置后无法更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>可选值：DEFAULT（默认vp单位）、PX（px像素单位）。<br>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT |
 
 ## size
 
@@ -94,7 +94,7 @@ type DrawingCanvas = import('../api/@ohos.graphics.drawing').default.Canvas
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| import('../api/@ohos.graphics.drawing').default.[Canvas](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md) | 返回一个Canvas对象，可用于在DrawingRenderingContext绑定的Canvas组件上绘制形状、文本、图片等内容。 |
+| import('../api/@ohos.graphics.drawing').default.Canvas | 返回一个Canvas对象，可用于在DrawingRenderingContext绑定的Canvas组件上绘制形状、文本、图片等内容。 |
 
 ## Size
 
@@ -177,7 +177,7 @@ struct CanvasExample {
 
 ### 示例2（绘制文本）
 
-该示例实现了通过[makeFromRawFile](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Typeface.md#makefromrawfile18)（从API version 18开始）加载自定义字体。并使用[drawTextBlob](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#drawtextblob)绘制文本，drawing接口绘制自定义文字时，不需要调用this.uiContext.getFont().[registerFont](../arkts-apis-uicontext-font.md#registerfont)或者fontCollection.[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)提前注册字体，而是通过drawing.Typeface.[makeFromRawFile](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Typeface.md#makefromrawfile18)（从API version 18开始）传入rawfile目录下的自定义字体文件。
+该示例实现了通过makeFromRawFile（从API version 18开始）加载自定义字体。并使用drawTextBlob绘制文本，drawing接口绘制自定义文字时，不需要调用this.uiContext.getFont().registerFont或者fontCollection.loadFontSync提前注册字体，而是通过drawing.Typeface.makeFromRawFile（从API version 18开始）传入rawfile目录下的自定义字体文件。
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';

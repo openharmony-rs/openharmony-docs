@@ -65,7 +65,7 @@ type Optional\<T> = T | undefined
 
 ### 示例1（系统组件设置自定义属性）
 
-在[Column](ts-container-column.md)组件上设置自定义属性，并在其对应的[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)上获取所设置的自定义属性。
+在[Column](ts-container-column.md)组件上设置自定义属性，并在其对应的FrameNode上获取所设置的自定义属性。
 
 ```ts
 // xxx.ets

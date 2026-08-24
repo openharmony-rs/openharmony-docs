@@ -91,7 +91,7 @@ getInspectorByKey(id: string): string
 
 | 类型        | 说明             |
 | -------| -------------- |
-| string | 组件属性列表的JSON字符串。<br>**说明**：<br>字符串信息包含组件的tag、id、位置信息（相对于窗口左上角的坐标）以及组件所包含的属性信息（用于测试检查）。组件中每个字段的含义请参考[getInspectorInfo](../js-apis-arkui-frameNode.md#getinspectorinfo12)的返回值说明。 |
+| string | 组件属性列表的JSON字符串。<br>**说明**：<br>字符串信息包含组件的tag、id、位置信息（相对于窗口左上角的坐标）以及组件所包含的属性信息（用于测试检查）。组件中每个字段的含义请参考getInspectorInfo的返回值说明。 |
 
 **示例：**
 ```ts
@@ -133,7 +133,7 @@ getInspectorTree(): Object
 
 | 类型     | 说明                            |
 | ------ | --------------------------- |
-| Object | 组件树及组件属性列表的JSON对象。组件中每个字段的含义请参考[getInspectorInfo](../js-apis-arkui-frameNode.md#getinspectorinfo12)的返回值说明。 |
+| Object | 组件树及组件属性列表的JSON对象。组件中每个字段的含义请参考getInspectorInfo的返回值说明。 |
 
 **示例：**
 ```ts

@@ -15,12 +15,5 @@
   - [SE(secureElement)错误码](errorcode-se.md)
   - [融合短距服务子系统错误码](errorcode-fusionConnectivity.md)
 - 已停止维护的接口<!--connectivity-arkts-dep-->
-  - [@ohos.bluetooth (蓝牙)](js-apis-bluetooth.md)
-  - [@ohos.bluetoothManager (蓝牙)](js-apis-bluetoothManager.md)
-  - [@ohos.wifi (WLAN)](js-apis-wifi.md)
-  - [@ohos.wifiext (WLAN扩展接口)](js-apis-wifiext.md)
-  - [@system.bluetooth (蓝牙)](js-apis-system-bluetooth.md)
   <!--Del-->
-  - [@ohos.bluetooth (蓝牙)（系统接口）](js-apis-bluetooth-sys.md)
-  - [@ohos.wifi (WLAN)（系统接口）](js-apis-wifi-sys.md)
   <!--DelEnd-->

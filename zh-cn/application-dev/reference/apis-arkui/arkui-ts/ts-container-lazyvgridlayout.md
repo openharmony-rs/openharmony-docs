@@ -95,7 +95,7 @@ columnsGap(value: LengthMetrics): T
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 列与列的间距。<br/>取值范围：[0, +∞) |
+| value  |  LengthMetrics | 是   | 列与列的间距。<br/>取值范围：[0, +∞) |
 
 **返回值：**
 
@@ -119,7 +119,7 @@ rowsGap(value: LengthMetrics): T
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 行与行的间距。<br/>取值范围：[0, +∞) |
+| value  | LengthMetrics | 是   | 行与行的间距。<br/>取值范围：[0, +∞) |
 
 **返回值：**
 

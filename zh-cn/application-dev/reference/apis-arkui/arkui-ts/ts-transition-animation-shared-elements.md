@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-共享元素转场（sharedTransition）用于在页面跳转时实现共享元素的平滑过渡动画，使同一元素在不同页面间保持视觉连续性，提升用户体验和转场流畅度。可以通过设置组件的sharedTransition属性将该元素标记为共享元素并设置对应的共享元素转场动效。sharedTransition仅发生在[@ohos.router (页面路由)](../js-apis-router.md)跳转时。
+共享元素转场（sharedTransition）用于在页面跳转时实现共享元素的平滑过渡动画，使同一元素在不同页面间保持视觉连续性，提升用户体验和转场流畅度。可以通过设置组件的sharedTransition属性将该元素标记为共享元素并设置对应的共享元素转场动效。sharedTransition仅发生在@ohos.router (页面路由)跳转时。
 
 > **说明：**
 >
@@ -52,7 +52,7 @@ sharedTransition(id: string, options?: sharedTransitionOptions): T
 | 名称              | 类型      | 只读 |  可选     | 说明                                                     |
 | ----------------- | -------------|------- | ------- | --------------------------------------------------------------|
 | duration          |     number   |  否  |    是          | 描述共享元素转场动效播放时长。<br>默认值：1000 <br>单位：毫秒<br/>取值范围：[0, +∞) |
-| curve             |      [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)  | 否 | 是 | 动画曲线。<br/>推荐以Curve或ICurve形式指定。<br/>当类型为string时，为动画插值曲线，取值参考[AnimateParam](./ts-explicit-animation.md#animateparam对象说明)的curve参数。<br/>默认值：Curve.Linear |
+| curve             |      [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;ICurve  | 否 | 是 | 动画曲线。<br/>推荐以Curve或ICurve形式指定。<br/>当类型为string时，为动画插值曲线，取值参考[AnimateParam](./ts-explicit-animation.md#animateparam对象说明)的curve参数。<br/>默认值：Curve.Linear |
 | delay          |     number   |  否  |  是         | 延迟播放时间。<br/>取值范围：[0, +∞)<br>默认值：0 <br>单位：毫秒 |
 | motionPath          | [MotionPathOptions](./ts-motion-path-animation.md#motionpathoptions)  |  否   |  是        | 运动路径信息。 |
 | zIndex          |     number   |  否   |   是           | 设置共享元素在转场动画期间的Z轴堆叠顺序。<br/>取值范围：(-∞, +∞)<br/>默认值：0<br/>数值越大，该共享元素在转场过程中越靠前（显示在上层），越不容易被其他共享元素遮挡。此zIndex仅在共享元素转场动画期间生效，控制共享元素相对于其他同时参与转场的共享元素在Z轴上的堆叠顺序，不参与页面内普通组件的静态布局层级控制（页面内组件的静态布局层级由组件通用属性[zIndex](ts-universal-attributes-z-order.md#zindex)控制）。 |

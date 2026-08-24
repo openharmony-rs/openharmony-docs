@@ -24,7 +24,7 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| screenId<sup>17+</sup> | number | 否 | 是 | 给组件设置关联屏幕ID，通过此项可在组件上显示关联屏幕画面。屏幕ID可通过[@ohos.screen](../js-apis-screen-sys.md#screengetallscreens)模块的getAllScreens接口获取。默认值：0，表示主屏幕。 **系统接口：** 此接口为系统接口。|
+| screenId<sup>17+</sup> | number | 否 | 是 | 给组件设置关联屏幕ID，通过此项可在组件上显示关联屏幕画面。屏幕ID可通过@ohos.screen模块的getAllScreens接口获取。默认值：0，表示主屏幕。 **系统接口：** 此接口为系统接口。|
 
   > **说明：**
   >

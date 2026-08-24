@@ -24,7 +24,7 @@ IsolatedComponent用于支持在本页面内嵌入显示独立Abc（方舟字节
 
 1、本组件不支持预览。
 
-2、Abc需要[verifyAbc](../../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerverifyabc11)校验通过之后才可以使用于当前组件，且需在module.json5中配置ohos.permission.RUN_DYN_CODE权限。
+2、Abc需要verifyAbc校验通过之后才可以使用于当前组件，且需在module.json5中配置ohos.permission.RUN_DYN_CODE权限。
 
 3、不支持构造参数更新，仅首次传入有效。
 
@@ -56,7 +56,7 @@ IsolatedComponent(options: IsolatedOptions)
 
 > **说明：**
 >
-> 不支持构造参数更新，仅首次传入有效。使用前需确保Abc已通过[verifyAbc](../../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerverifyabc11)校验，且已在module.json5中配置ohos.permission.RUN_DYN_CODE权限。
+> 不支持构造参数更新，仅首次传入有效。使用前需确保Abc已通过verifyAbc校验，且已在module.json5中配置ohos.permission.RUN_DYN_CODE权限。
 
 **系统接口：** 此接口为系统接口。
 
@@ -78,8 +78,8 @@ IsolatedComponent(options: IsolatedOptions)
 
 | 名称  | 类型       | 只读 | 可选 | 说明 |
 | ---- | ------------ | ---- | ---- | --------------- |
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 否 | 要加载的Abc信息。Want对象的parameters中需包含以下字段：resourcePath（资源路径，需为.hap文件路径）、abcPath（经[verifyAbc](../../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerverifyabc11)校验后的Abc文件路径，需以'/abcs'开头）、entryPoint（Abc入口，格式为'bundleName/页面路径'）。 |
-| worker | [RestrictedWorker](../../apis-arkts/js-apis-worker-sys.md#restrictedworker11) | 否 | 否 | 运行Abc的受限worker。 |
+| want | Want | 否 | 否 | 要加载的Abc信息。Want对象的parameters中需包含以下字段：resourcePath（资源路径，需为.hap文件路径）、abcPath（经verifyAbc校验后的Abc文件路径，需以'/abcs'开头）、entryPoint（Abc入口，格式为'bundleName/页面路径'）。 |
+| worker | RestrictedWorker | 否 | 否 | 运行Abc的受限worker。 |
 
 ## 属性
 仅支持[width](ts-universal-attributes-size.md#width)、[height](ts-universal-attributes-size.md#height)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)通用属性。
@@ -106,7 +106,7 @@ IsolatedComponent加载的Abc（以Ability扩展形式运行）在运行过程�
 
 | 参数名                | 类型                                                   | 必填 | 说明           |
 | --------------------- | ---------------------------------------------------------- | ---- | ------------------ |
-| callback | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)                | 是   | 异常发生时的错误回调，可通过回调参数获取code、name和message错误信息。 |
+| callback | ErrorCallback                | 是   | 异常发生时的错误回调，可通过回调参数获取code、name和message错误信息。 |
 
 ## 示例（加载IsolatedComponent）
 

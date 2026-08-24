@@ -269,7 +269,7 @@ onDotConnect(callback: import('../api/@ohos.base').Callback\<number\>)
 
 | 参数名 | 类型            | 必填 | 说明                                                         |
 | ------ | --------------- | ---- | ------------------------------------------------------------ |
-| callback  | import('../api/@ohos.base').[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 是   | 密码输入选中宫格圆点时触发该回调。回调参数为选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点从左往右依次为3、4、5，第三行圆点从左往右依次为6、7、8）。 |
+| callback  | import('../api/@ohos.base').Callback\<number\> | 是   | 密码输入选中宫格圆点时触发该回调。回调参数为选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点从左往右依次为3、4、5，第三行圆点从左往右依次为6、7、8）。 |
 
 ## CircleStyleOptions<sup>12+</sup>对象说明
 
@@ -283,7 +283,7 @@ onDotConnect(callback: import('../api/@ohos.base').Callback\<number\>)
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
 | color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 背景圆环颜色。 <br>默认值：'#33182431'（深灰色，20%不透明度）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| radius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 背景圆环的半径。<br>默认值：[circleRadius](#circleradius)的约1.833倍（即11/6）。<br>取值范围：大于0。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| radius  | LengthMetrics | 否 | 是 | 背景圆环的半径。<br>默认值：[circleRadius](#circleradius)的约1.833倍（即11/6）。<br>取值范围：大于0。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 | enableWaveEffect | boolean | 否 | 是 | 选中宫格圆点后的波浪效果开关。<br>true：显示波浪效果；false：不显示波浪效果。<br>默认值：true。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 | enableForeground<sup>15+</sup> | boolean | 否 | 是 | 背景圆环是否显示在宫格圆点上层。<br>true：背景圆环显示在宫格圆点上层，遮盖宫格圆点；false：背景圆环显示在宫格圆点下层，不遮盖宫格圆点。<br>默认值：false。 <br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 

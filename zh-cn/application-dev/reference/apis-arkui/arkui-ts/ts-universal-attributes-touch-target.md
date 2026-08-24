@@ -137,10 +137,10 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
 | 名称        | 类型                        | 只读    |  可选   |  说明                             |
 | ------ | ----------------------------- | -----| -----|-------------------------------- |
 | tool   | [ResponseRegionSupportedTool](./ts-appendix-enums.md#responseregionsupportedtool22)  | 否   | 是   |触摸热区适用的输入工具类型。<br>默认值：ResponseRegionSupportedTool.ALL |
-| x      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否   | 是   |触摸点相对于组件左上角的x轴坐标。<br>默认值：LengthMetrics.vp(0) |
-| y      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否   | 是   |触摸点相对于组件左上角的y轴坐标。<br>默认值：LengthMetrics.vp(0) |
-| width  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| string | 否   | 是   |触摸热区的宽度。<br>默认值：LengthMetrics.percent(1) |
-| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| string | 否   | 是   |触摸热区的高度。<br>默认值：LengthMetrics.percent(1) |
+| x      | LengthMetrics  | 否   | 是   |触摸点相对于组件左上角的x轴坐标。<br>默认值：LengthMetrics.vp(0) |
+| y      | LengthMetrics  | 否   | 是   |触摸点相对于组件左上角的y轴坐标。<br>默认值：LengthMetrics.vp(0) |
+| width  | LengthMetrics \| string | 否   | 是   |触摸热区的宽度。<br>默认值：LengthMetrics.percent(1) |
+| height | LengthMetrics \| string | 否   | 是   |触摸热区的高度。<br>默认值：LengthMetrics.percent(1) |
 
 ## 示例
 

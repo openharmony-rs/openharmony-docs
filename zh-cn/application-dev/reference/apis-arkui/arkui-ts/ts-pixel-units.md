@@ -12,7 +12,7 @@ ArkUI为开发者提供4种像素单位，采用vp为基准数据单位。
 >
 > - 本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 直接使用vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx可能存在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，以下接口从API version 18开始废弃，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，再使用UIContext下的[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)/[px2vp](../arkts-apis-uicontext-uicontext.md#px2vp12)/[fp2px](../arkts-apis-uicontext-uicontext.md#fp2px12)/[px2fp](../arkts-apis-uicontext-uicontext.md#px2fp12)/[lpx2px](../arkts-apis-uicontext-uicontext.md#lpx2px12)/[px2lpx](../arkts-apis-uicontext-uicontext.md#px2lpx12)调用绑定实例的接口。
+> - 直接使用vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx可能存在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，以下接口从API version 18开始废弃，建议使用getUIContext()获取UIContext实例，再使用UIContext下的vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx调用绑定实例的接口。
 >
 > - 在UI实例未创建时，vp2px/px2vp使用默认屏幕的虚拟像素比进行转换。在该场景下，使用UIContext接口替换时，开发者可参考[像素单位转换接口替换为UIContext接口](../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
@@ -35,7 +35,7 @@ vp2px(value: number): number
 >
 > 默认使用当前UI实例所在屏幕的虚拟像素比进行转换，UI实例不明确时，使用默认屏幕的虚拟像素比进行转换，可能导致转换后结果与预期不一致的情况。
 >
-> 从API version 7开始支持，从API version 18开始废弃，建议使用[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)替代。
+> 从API version 7开始支持，从API version 18开始废弃，建议使用vp2px替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -65,7 +65,7 @@ px2vp(value: number): number
 >
 > 默认使用当前UI实例所在屏幕的虚拟像素比进行转换，UI实例不明确时，使用默认屏幕的虚拟像素比进行转换，可能导致转换后结果与预期不一致的情况。
 >
-> 从API version 7开始支持，从API version 18开始废弃，建议使用[px2vp](../arkts-apis-uicontext-uicontext.md#px2vp12)替代。
+> 从API version 7开始支持，从API version 18开始废弃，建议使用px2vp替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -93,7 +93,7 @@ fp2px(value: number): number
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 18开始废弃，建议使用[fp2px](../arkts-apis-uicontext-uicontext.md#fp2px12)替代。
+> 从API version 7开始支持，从API version 18开始废弃，建议使用fp2px替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -121,7 +121,7 @@ px2fp(value: number): number
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 18开始废弃，建议使用[px2fp](../arkts-apis-uicontext-uicontext.md#px2fp12)替代。
+> 从API version 7开始支持，从API version 18开始废弃，建议使用px2fp替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -149,7 +149,7 @@ lpx2px(value: number): number
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 18开始废弃，建议使用[lpx2px](../arkts-apis-uicontext-uicontext.md#lpx2px12)替代。
+> 从API version 7开始支持，从API version 18开始废弃，建议使用lpx2px替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -177,7 +177,7 @@ px2lpx(value: number): number
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 18开始废弃，建议使用[px2lpx](../arkts-apis-uicontext-uicontext.md#px2lpx12)替代。
+> 从API version 7开始支持，从API version 18开始废弃，建议使用px2lpx替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

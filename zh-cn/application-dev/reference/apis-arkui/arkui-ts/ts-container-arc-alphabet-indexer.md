@@ -75,7 +75,7 @@ color(color: Optional&lt;ColorMetrics&gt;)
 
 | 参数名 | 类型                                       | 必填 | 说明                                |
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;ColorMetrics&gt; | 是   | 文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
 
 ### selectedColor
 
@@ -91,7 +91,7 @@ selectedColor(color: Optional&lt;ColorMetrics&gt;)
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 选中项文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;ColorMetrics&gt; | 是   | 选中项文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
 
 ### popupColor
 
@@ -107,7 +107,7 @@ popupColor(color: Optional&lt;ColorMetrics&gt;)
 
 | 参数名 | 类型                                       | 必填 | 说明                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 提示弹窗文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;ColorMetrics&gt; | 是   | 提示弹窗文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
 
 ### selectedBackgroundColor
 
@@ -123,7 +123,7 @@ selectedBackgroundColor(color: Optional&lt;ColorMetrics&gt;)
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 选中项背景颜色。<br/>默认值：0x1F71FF，显示为深蓝色。 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;ColorMetrics&gt; | 是   | 选中项背景颜色。<br/>默认值：0x1F71FF，显示为深蓝色。 |
 
 ### popupBackground
 
@@ -139,7 +139,7 @@ popupBackground(color: Optional&lt;ColorMetrics&gt;)
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 提示弹窗背景色。<br/>默认值：0xD8404040，显示为微透明的深灰色。 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;ColorMetrics&gt; | 是   | 提示弹窗背景色。<br/>默认值：0xD8404040，显示为微透明的深灰色。 |
 
 >  **说明：**
 >
@@ -223,7 +223,7 @@ itemSize(size: Optional&lt;LengthMetrics&gt;)
 
 | 参数名 | 类型                       | 必填 | 说明                                                         |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| size  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | 弧形索引条索引项区域大小（圆形区域的直径）。不支持设置为百分比。<br/>默认值：24.0 <br/>单位：vp |
+| size  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;LengthMetrics&gt; | 是   | 弧形索引条索引项区域大小（圆形区域的直径）。不支持设置为百分比。<br/>默认值：24.0 <br/>单位：vp |
 
 ### selected
 

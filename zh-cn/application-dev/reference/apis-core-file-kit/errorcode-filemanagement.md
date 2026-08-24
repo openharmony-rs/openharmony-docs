@@ -928,9 +928,9 @@ mmap缓冲区读写越界。
 
 **处理步骤**
 
-1.调用[remaining](js-apis-file-fs.md#remaining)确认映射区的剩余可用空间。
+1.调用remaining确认映射区的剩余可用空间。
 
-2.如需操作更大范围，可先调用[setLimit](js-apis-file-fs.md#setlimit)调整限制值。
+2.如需操作更大范围，可先调用setLimit调整限制值。
 
 ### 13900052 mmap缓冲区已释放
 
@@ -944,15 +944,15 @@ mmap缓冲区已释放。
 
 **可能原因**
 
-1.对已调用[unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync)释放的缓冲区进行操作。
+1.对已调用unmap/unmapSync释放的缓冲区进行操作。
 
 2.FileMapping对象的内部状态无效。
 
 **处理步骤**
 
-1.确认mmap缓冲区是否已调用[unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync)释放。
+1.确认mmap缓冲区是否已调用unmap/unmapSync释放。
 
-2.代码如果已经调用过[unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync)接口，则需重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)接口建立新的映射。
+2.代码如果已经调用过unmap/unmapSync接口，则需重新调用mmap/mmapSync接口建立新的映射。
 
 ### 13900053 mmap缓冲区只读
 
@@ -970,7 +970,7 @@ mmap缓冲区只读。
 
 **处理步骤**
 
-重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)，将映射模式设置为读写模式或私有模式。
+重新调用mmap/mmapSync，将映射模式设置为读写模式或私有模式。
 
 ### 13900054 mmap缓冲区不可访问
 
@@ -988,7 +988,7 @@ mmap缓冲区不可访问。
 
 **处理步骤**
 
-重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)映射文件。
+重新调用mmap/mmapSync映射文件。
 
 ### 13900055 mmap映射类型不支持该操作
 
@@ -1002,11 +1002,11 @@ mmap映射类型不支持该操作。
 
 **可能原因**
 
-[msync](js-apis-file-fs.md#msync)写入磁盘时，映射区为只读模式或私有模式。
+msync写入磁盘时，映射区为只读模式或私有模式。
 
 **处理步骤**
 
-重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)，将映射模式设置为读写模式。
+重新调用mmap/mmapSync，将映射模式设置为读写模式。
 
 ### 13900056 mmap不支持映射此文件
 
@@ -1024,7 +1024,7 @@ mmap不支持映射此文件。
 
 **处理步骤**
 
-请使用[read](js-apis-file-fs.md#fileioread)、[write](js-apis-file-fs.md#fileiowrite)或[Stream](js-apis-file-fs.md#stream)等文件访问接口替代mmap。
+请使用read、write或Stream等文件访问接口替代mmap。
 
 ## 用户数据管理错误码
 
@@ -1171,7 +1171,7 @@ Operation Not Support
 
 3. 完成提交后再修改。
 
-   - 在调用createImageAssetRequest/createVideoAssetRequest/getWriteCacheHandler/addResource后，需调用[applyChanges](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)提交生效。
+   - 在调用createImageAssetRequest/createVideoAssetRequest/getWriteCacheHandler/addResource后，需调用applyChanges提交生效。
    - 提交生效后才能对创建的资产发起新的修改请求。
 
 4. 确认相册类型。

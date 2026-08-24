@@ -245,7 +245,7 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 | 参数名        | 类型                                      | 必填 | 说明                                           |
 | :------------ | ----------------------------------------- | ---- | ---------------------------------------------- |
 | callback          | Callback\<[SpringLoadingContext](#springloadingcontext20)\> \| null    | 是   | 悬停检测回调函数，当值为null时禁用悬停检测。 |
-| configuration | [DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20) | 否   | 悬停检测配置信息。当需要自定义悬停检测的触发时长、更新间隔或通知次数等行为时传入；不传入或为undefined时取[DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20)默认值。  |
+| configuration | DragSpringLoadingConfiguration | 否   | 悬停检测配置信息。当需要自定义悬停检测的触发时长、更新间隔或通知次数等行为时传入；不传入或为undefined时取DragSpringLoadingConfiguration默认值。  |
 
 **返回值：**
 
@@ -263,7 +263,7 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 
 | 名称      | 类型                  | 只读| 可选   | 说明                               |
 | --------- | ---------------------------------------- | ---- | ---- | --------------------------------- |
-| pixelMap  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 否    |  是   |设置拖拽过程中显示的图片。未设置时不使用图片作为拖拽预览。 |
+| pixelMap  | PixelMap | 否    |  是   |设置拖拽过程中显示的图片。未设置时不使用图片作为拖拽预览。 |
 | builder   | [CustomBuilder](ts-types.md#custombuilder8) | 否    |  是   |拖拽过程中显示自定义组件，未设置时不使用自定义组件作为拖拽预览。如果设置了pixelMap，则忽略此值。<br> **说明：** <br>不支持全局builder。如果builder中使用了[Image](ts-basic-components-image.md)组件，建议配置Image的[syncLoad](ts-basic-components-image.md#syncload8)为true以开启同步加载。该builder只用于生成当次拖拽中显示的图片，builder的修改不会同步到当前正在拖拽的图片，对builder的修改需要在下一次拖拽时生效。<br>builder传参时，建议传参格式为builder: ()=>{this.customBuilder()}，用以保证this指向的正确性。具体请参考[将@Builder装饰的函数当作CustomBuilder类型使用](../../../ui/state-management/arkts-builder.md#将builder装饰的函数当作custombuilder类型使用)。|
 | extraInfo | string                                   | 否    |  是   |拖拽项的附加信息，用于描述拖拽项。未设置时无附加信息。                    |
 
@@ -306,7 +306,7 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 | 名称     | 类型  | 只读 | 可选 | 说明             |
 | ------ | ------ | ----- | ---- | ------- |
 | useCustomDropAnimation<sup>10+</sup> | boolean | 否 | 否 |当拖拽结束时，是否禁用系统默认落位动效。<br>应用可将该值设定为true来禁用系统默认落位动效，并实现自定义落位动效。<br>当不配置或设置为false时，系统默认落位动效生效，当[setResult](#setresult10)设置为DRAG_SUCCESSFUL时，落位为缩小消失动效，不为DRAG_SUCCESSFUL时，则为放大消失动效。<br>当未禁用系统默认落位动效时，应用不应再实现自定义动效，以避免动效上的冲突。<br>默认值：false<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| autoHideComponentUniqueIds | number \| number[] | 否 | 是 |设置拖拽过程中需要自动隐藏的组件uniqueId，支持传入单个uniqueId或数组。<br>仅在[onDragStart](#ondragstart)回调中设置生效。拖拽成功发起后，系统会在显示拖拽预览窗口前隐藏目标组件。<br>若拖拽源本身也需要隐藏，需要同时传入拖拽源组件的uniqueId。<br>组件的uniqueId可通过[UIContext.getFrameNodeById()](../arkts-apis-uicontext-uicontext.md#getframenodebyid12)配合[FrameNode.getUniqueId()](../js-apis-arkui-frameNode.md#getuniqueid12)获取。<br>开发者应在[onDragEnd](#ondragend10)或[onDrop](#ondrop)中恢复组件显示状态。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| autoHideComponentUniqueIds | number \| number[] | 否 | 是 |设置拖拽过程中需要自动隐藏的组件uniqueId，支持传入单个uniqueId或数组。<br>仅在[onDragStart](#ondragstart)回调中设置生效。拖拽成功发起后，系统会在显示拖拽预览窗口前隐藏目标组件。<br>若拖拽源本身也需要隐藏，需要同时传入拖拽源组件的uniqueId。<br>组件的uniqueId可通过UIContext.getFrameNodeById()配合FrameNode.getUniqueId()获取。<br>开发者应在[onDragEnd](#ondragend10)或[onDrop](#ondrop)中恢复组件显示状态。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 |dragBehavior<sup>10+</sup> | [DragBehavior](#dragbehavior10) | 否 | 否 |切换复制和剪切模式的角标显示状态。<br>默认值：DragBehavior.COPY。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ### setData<sup>10+</sup>
@@ -343,7 +343,7 @@ getData(): UnifiedData
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [UnifiedData](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | 从DragEvent中获取拖拽相关数据。数据获取结果请参考错误码说明。 |
+| UnifiedData | 从DragEvent中获取拖拽相关数据。数据获取结果请参考错误码说明。 |
 
 **错误码：**
 
@@ -600,7 +600,7 @@ startDataLoading(options: DataSyncOptions): string
 
 | 参数名  | 类型                                  | 必填 | 说明                                                         |
 | ------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [DataSyncOptions](#datasyncoptions15) | 是 | 获取拖拽数据时的参数，包含目标路径、文件冲突选项、进度条类型等。数据传输过程中可使用[cancelDataLoading](../arkts-apis-uicontext-dragcontroller.md#canceldataloading15)接口取消数据加载。 |
+| options | [DataSyncOptions](#datasyncoptions15) | 是 | 获取拖拽数据时的参数，包含目标路径、文件冲突选项、进度条类型等。数据传输过程中可使用cancelDataLoading接口取消数据加载。 |
 
 **错误码：**
 
@@ -633,7 +633,7 @@ executeDropAnimation(customDropAnimation: Callback\<void\>): void
 
 | 参数名    | 类型  | 必填 | 说明      |
 | ------ | ------ | --- | --------- |
-| customDropAnimation | [Callback\<void\>](../../../reference/apis-basic-services-kit/js-apis-base.md#callback)  | 是 |在此回调函数中实现自定义落位动效。<br> **说明：** <br>1. 该接口仅在onDrop回调中使用有效。<br> 2. 使用前需设置useCustomDropAnimation为true，否则该接口不生效。<br> 3. 不要在动画callback中实现与动效无关的逻辑，避免影响执行效率。|
+| customDropAnimation | Callback\<void\>  | 是 |在此回调函数中实现自定义落位动效。<br> **说明：** <br>1. 该接口仅在onDrop回调中使用有效。<br> 2. 使用前需设置useCustomDropAnimation为true，否则该接口不生效。<br> 3. 不要在动画callback中实现与动效无关的逻辑，避免影响执行效率。|
 
 ### getDisplayId<sup>20+</sup>
 
@@ -844,7 +844,7 @@ type UnifiedData = import('../api/@ohos.data.unifiedDataChannel').default.Unifie
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| import('../api/@ohos.data.unifiedDataChannel').default.[UnifiedData](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) |  拖拽相关的数据。|
+| import('../api/@ohos.data.unifiedDataChannel').default.UnifiedData |  拖拽相关的数据。|
 
 ## Summary<sup>10+</sup>
 
@@ -860,7 +860,7 @@ type Summary = import('../api/@ohos.data.unifiedDataChannel').default.Summary
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| import('../api/@ohos.data.unifiedDataChannel').default.[Summary](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#summary) | 拖拽相关数据的简介。|
+| import('../api/@ohos.data.unifiedDataChannel').default.Summary | 拖拽相关数据的简介。|
 
 ## DataLoadParams<sup>20+</sup>
 
@@ -876,7 +876,7 @@ type DataLoadParams = import('../api/@ohos.data.unifiedDataChannel').default.Dat
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| import('../api/@ohos.data.unifiedDataChannel').default.[DataLoadParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#dataloadparams20) | 落入操作时使用的数据加载参数。|
+| import('../api/@ohos.data.unifiedDataChannel').default.DataLoadParams | 落入操作时使用的数据加载参数。|
 
 ## DataSyncOptions<sup>15+</sup>
 
@@ -892,7 +892,7 @@ type DataSyncOptions = import('../api/@ohos.data.unifiedDataChannel').default.Ge
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| import('../api/@ohos.data.unifiedDataChannel').default.[GetDataParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#getdataparams15) | 表示从[UDMF](../../apis-arkdata/capi-udmf.md)获取数据时的参数，包含目标路径、文件冲突选项、进度条类型等。|
+| import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams | 表示从UDMF获取数据时的参数，包含目标路径、文件冲突选项、进度条类型等。|
 
 ## OnDragEventCallback<sup>15+</sup>
 
@@ -941,7 +941,7 @@ type DragSpringLoadingConfiguration = import('../api/@ohos.arkui.dragController'
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| import('../api/@ohos.arkui.dragController').default.[DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20) | 定义拖拽的悬停检测配置参数的接口。|
+| import('../api/@ohos.arkui.dragController').default.DragSpringLoadingConfiguration | 定义拖拽的悬停检测配置参数的接口。|
 
 ## SpringLoadingContext<sup>20+</sup>
 
@@ -957,7 +957,7 @@ type SpringLoadingContext = import('../api/@ohos.arkui.dragController').default.
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| import('../api/@ohos.arkui.dragController').default.[SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20) | 定义回调上下文信息的类，用于在悬停检测回调中传递给应用，以便应用能访问拖拽状态。|
+| import('../api/@ohos.arkui.dragController').default.SpringLoadingContext | 定义回调上下文信息的类，用于在悬停检测回调中传递给应用，以便应用能访问拖拽状态。|
 
 ## 示例
 

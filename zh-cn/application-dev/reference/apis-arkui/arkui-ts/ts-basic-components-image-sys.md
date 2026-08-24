@@ -78,7 +78,7 @@ enhancedImageQuality(imageQuality: ResolutionQuality)
 
 设置增强的图像解码分辨率选项。画质等级越高，解码耗时与内存占用越大，请按显示需求选择：Low 解码速度快、内存占用低，适合列表缩略图等低内存场景；Medium 平衡画质与性能；High 画质最佳但解码耗时与内存占用更高，适合全屏高清展示。
 
-该属性不支持 SVG、[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)和[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor) 等非解码图片类型。
+该属性不支持 SVG、PixelMap和DrawableDescriptor 等非解码图片类型。
 
 **系统接口：** 此接口为系统接口。
 
@@ -106,4 +106,4 @@ type ResolutionQuality = import('../api/@ohos.multimedia.image').default.Resolut
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| import('../api/@ohos.multimedia.image').default.[ResolutionQuality](../../apis-image-kit/js-apis-image-sys.md#resolutionquality12) | 分辨率质量等级类型。 |
+| import('../api/@ohos.multimedia.image').default.ResolutionQuality | 分辨率质量等级类型。 |

@@ -36,7 +36,7 @@ DynamicLayout(algorithm: LayoutAlgorithm)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| algorithm | [LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) | 是 | 指定动态布局容器的布局算法。支持使用[RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)（水平线性布局，适用于水平排列场景）、[ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)（垂直线性布局，适用于垂直排列场景）、[StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)（堆叠布局，适用于层叠覆盖场景）、[GridLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm)（网格布局，适用于规整网格场景）和[CustomLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm)（自定义布局，适用于复杂特殊布局场景）等布局算法实例，详见[LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1)。取非法值（如null、undefined或无效的布局算法对象）时，按照[StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)布局子组件，子组件堆叠排列。|
+| algorithm | LayoutAlgorithm | 是 | 指定动态布局容器的布局算法。支持使用RowLayoutAlgorithm（水平线性布局，适用于水平排列场景）、ColumnLayoutAlgorithm（垂直线性布局，适用于垂直排列场景）、StackLayoutAlgorithm（堆叠布局，适用于层叠覆盖场景）、GridLayoutAlgorithm（网格布局，适用于规整网格场景）和CustomLayoutAlgorithm（自定义布局，适用于复杂特殊布局场景）等布局算法实例，详见LayoutAlgorithm。取非法值（如null、undefined或无效的布局算法对象）时，按照StackLayoutAlgorithm布局子组件，子组件堆叠排列。|
 
 
 ## 属性
@@ -45,13 +45,13 @@ DynamicLayout(algorithm: LayoutAlgorithm)
 
 > **说明：**
 >
-> - 当布局算法为[RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)或[ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)时，子组件设置[Flex布局](ts-universal-attributes-flex-layout.md)属性生效，设置[layoutGravity](ts-universal-attributes-location.md#layoutgravity20)属性不生效。
+> - 当布局算法为RowLayoutAlgorithm或ColumnLayoutAlgorithm时，子组件设置[Flex布局](ts-universal-attributes-flex-layout.md)属性生效，设置[layoutGravity](ts-universal-attributes-location.md#layoutgravity20)属性不生效。
 >
-> - 当布局算法为[StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)时，子组件设置[layoutGravity](ts-universal-attributes-location.md#layoutgravity20)属性生效，设置[Flex布局](ts-universal-attributes-flex-layout.md)属性不生效。
+> - 当布局算法为StackLayoutAlgorithm时，子组件设置[layoutGravity](ts-universal-attributes-location.md#layoutgravity20)属性生效，设置[Flex布局](ts-universal-attributes-flex-layout.md)属性不生效。
 >
-> - 当布局算法为[CustomLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm)时，DynamicLayout组件[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[setMeasuredSize](../js-apis-arkui-frameNode.md#setmeasuredsize12)方法优先级高于[尺寸设置](ts-universal-attributes-size.md)和[边框](ts-universal-attributes-border.md)属性，子组件[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[measure](../js-apis-arkui-frameNode.md#measure12)和[layout](../js-apis-arkui-frameNode.md#layout12)方法优先级高于[ignoreLayoutSafeArea](ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20)属性。
+> - 当布局算法为CustomLayoutAlgorithm时，DynamicLayout组件FrameNode的setMeasuredSize方法优先级高于[尺寸设置](ts-universal-attributes-size.md)和[边框](ts-universal-attributes-border.md)属性，子组件FrameNode的measure和layout方法优先级高于[ignoreLayoutSafeArea](ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20)属性。
 >
-> - 当布局算法为[GridLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm)时，子组件设置[Flex布局](ts-universal-attributes-flex-layout.md)属性不生效，设置[layoutGravity](ts-universal-attributes-location.md#layoutgravity20)属性不生效，子组件通过GridLayoutAlgorithm参数控制位置。
+> - 当布局算法为GridLayoutAlgorithm时，子组件设置[Flex布局](ts-universal-attributes-flex-layout.md)属性不生效，设置[layoutGravity](ts-universal-attributes-location.md#layoutgravity20)属性不生效，子组件通过GridLayoutAlgorithm参数控制位置。
 
 ## 事件
 
@@ -61,7 +61,7 @@ DynamicLayout(algorithm: LayoutAlgorithm)
 
 ### 示例1（自定义布局算法实现瀑布流布局）
 
-该示例展示如何重写[onMeasure](../js-apis-arkui-layoutAlgorithm.md#onmeasure)、[onLayout](../js-apis-arkui-layoutAlgorithm.md#onlayout)函数，实现瀑布流布局展示商品列表的功能。瀑布流布局通过测量阶段计算子组件高度并记录每列累计高度，在布局阶段将子组件分配到当前高度最小的列，实现自动填充效果。
+该示例展示如何重写onMeasure、onLayout函数，实现瀑布流布局展示商品列表的功能。瀑布流布局通过测量阶段计算子组件高度并记录每列累计高度，在布局阶段将子组件分配到当前高度最小的列，实现自动填充效果。
 
 从API version 24开始，新增onMeasure、onLayout。
 
@@ -234,7 +234,7 @@ interface Product {
 
 ### 示例2（切换布局算法）
 
-该示例通过改变[@Local](../../../ui/state-management/arkts-new-local.md)装饰的[LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1)类型变量，实现动态切换DynamicLayout组件布局算法的功能。示例展示如何切换布局算法为[RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)（水平线性布局）、[ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)（垂直线性布局）、[StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)（堆叠布局）和[GridLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm)（网格布局）。
+该示例通过改变[@Local](../../../ui/state-management/arkts-new-local.md)装饰的LayoutAlgorithm类型变量，实现动态切换DynamicLayout组件布局算法的功能。示例展示如何切换布局算法为RowLayoutAlgorithm（水平线性布局）、ColumnLayoutAlgorithm（垂直线性布局）、StackLayoutAlgorithm（堆叠布局）和GridLayoutAlgorithm（网格布局）。
 
 > **说明：**
 >
@@ -354,7 +354,7 @@ struct LayoutSwitchExample {
 
 ### 示例3（修改布局算法属性）
 
-该示例通过修改[RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)的space和justifyContent属性，实现DynamicLayout组件布局效果刷新的功能。
+该示例通过修改RowLayoutAlgorithm的space和justifyContent属性，实现DynamicLayout组件布局效果刷新的功能。
 
 从API version 24开始，新增space、justifyContent属性。
 

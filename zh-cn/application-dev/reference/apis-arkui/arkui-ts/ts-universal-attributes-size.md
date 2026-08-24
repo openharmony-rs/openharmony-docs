@@ -236,7 +236,7 @@ safeAreaPadding(paddingValue: Padding | LengthMetrics | LocalizedPadding): T
 
 | 参数名   | 类型                                       | 必填   | 说明                                       |
 | ----- | ---------------------------------------- | ---- | ---------------------------------------- |
-| paddingValue | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[LocalizedPadding](ts-types.md#localizedpadding12)| 是    | 设置组件的安全区边距，用于在组件内部创建组件级安全区域供子组件延伸使用。<br>默认值：0 <br>单位：vp<br>paddingValue设置百分比时，上下左右内边距均以父容器的width作为基础值。 |
+| paddingValue | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;LengthMetrics&nbsp;\|&nbsp;[LocalizedPadding](ts-types.md#localizedpadding12)| 是    | 设置组件的安全区边距，用于在组件内部创建组件级安全区域供子组件延伸使用。<br>默认值：0 <br>单位：vp<br>paddingValue设置百分比时，上下左右内边距均以父容器的width作为基础值。 |
 
 **返回值：**
 
