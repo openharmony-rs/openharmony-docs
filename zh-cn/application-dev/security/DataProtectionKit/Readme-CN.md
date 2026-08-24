@@ -7,7 +7,7 @@
 <!--Adviser: @zengyawen-->
 
 - [Data Protection Kit简介](dlp-overview.md)
-- [数据防泄露（DLP）](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/dlp)
+- [数据防泄露（DLP）](<!--dlp-->)
   - [数据防泄露（DLP）简介](dlp-guidelines.md)
   - [开发准备（DLP）](development-preparation.md)
   - [查询DLP文件权限策略](query-dlp-file-permission-policy.md)
