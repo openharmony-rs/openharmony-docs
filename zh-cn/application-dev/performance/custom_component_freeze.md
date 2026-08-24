@@ -17,7 +17,7 @@
 - @Component({ freezeWhenInactive: true })中freezeWhenInactive的值后端只支持常量，不支持变量形式。
 
 ## 适用场景
-目前自定义组件冻结功能支持以下四种场景。更多自定义组件冻结的信息，请参考[自定义组件冻结功能](../ui/state-management/arkts-custom-components-freeze.md)。
+目前自定义组件冻结功能支持以下四种场景。更多自定义组件冻结的信息，请参考[自定义组件冻结](../ui/state-management/arkts-custom-components-freeze.md)。
 
 **页面路由**：当页面A调用router.pushUrl接口跳转到页面B时，页面A为隐藏不可见状态，此时如果更新页面A中的状态变量，不会触发页面A刷新。
 
