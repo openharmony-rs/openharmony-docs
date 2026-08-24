@@ -38,7 +38,7 @@ disconnect(deviceId: string): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，格式为XX:XX:XX:XX:XX:XX，其中X为十六进制字符（0-9，A-F），例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
 **错误码**：
 
@@ -83,14 +83,14 @@ setMessageAccessAuthorization(deviceId: string, authorization: AccessAuthorizati
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，格式为XX:XX:XX:XX:XX:XX，其中X为十六进制字符（0-9，A-F），例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | authorization | [AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11) | 是    | 表示对信息访问的授权状态，例如允许访问（ACCESS_ALLOWED）、拒绝访问（ACCESS_DENIED）等。具体枚举值及含义详见[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)。 |
 
 **返回值：**
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | 以Promise的形式返回结果，无返回值。 |
+| Promise&lt;void&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -137,13 +137,13 @@ getMessageAccessAuthorization(deviceId: string): Promise&lt;AccessAuthorization&
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，格式为XX:XX:XX:XX:XX:XX，其中X为十六进制字符（0-9，A-F），例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
 **返回值：**
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | 以Promise的形式返回获取到的访问权限枚举值。AccessAuthorization的枚举值及对应关系请参见[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)。 |
+| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 

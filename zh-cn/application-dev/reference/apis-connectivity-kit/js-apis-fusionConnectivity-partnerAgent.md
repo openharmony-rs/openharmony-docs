@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块基于蓝牙通信技术，为应用提供设备发现与设备下线的通知功能，适用于需要自动感知已配对蓝牙外设并接管其媒体、通话等控制类业务的场景，可帮助应用免去常驻监听带来的功耗与资源开销，主要功能特性包括：
+本模块基于蓝牙通信技术，为应用提供设备发现与设备下线的通知功能，主要功能特性包括：
 
 - 动态监听并发现应用预先注册的蓝牙设备。
 - 采用进程启动机制，当目标设备出现时自动启动应用的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。
@@ -15,7 +15,7 @@
 - 通过[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)的接口通知应用发现已注册设备。
 
 > **说明：**
-> 
+>
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -135,7 +135,7 @@ unbindDevice(deviceAddress: PartnerDeviceAddress): Promise&lt;void&gt;
 应用解注册设备，使用Promise异步回调。使用前建议先调用[isPartnerAgentSupported](#partneragentispartneragentsupported)判断本机是否支持外设互通功能，若不支持则本接口不可用。
 
 - 调用本接口进行解注册后，应用的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程将不再接收此设备的发现和下线状态通知。
-- 应用解注册的设备需是已通过[bindDevice](#partneragentbinddevice)接口注册过的设备，建议与bindDevice接口成对使用。建议先使用[isPartnerAgentSupported](#partneragentispartneragentsupported)判断本机是否支持外设互通功能，仅支持情况下才能使用本接口。
+- 应用解注册的设备需是已通过[bindDevice](#partneragentbinddevice)接口注册过的设备，建议与bindDevice接口成对使用。
 - 建议使用前通过接口[isDeviceBound](#partneragentisdevicebound)判断设备是否已注册。若已注册，可调用该接口。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -382,7 +382,7 @@ try {
 
 | 名称                 | 类型   | 只读 | 可选   | 说明                                       |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| bluetoothAddress     | [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 否 | 否    | 该设备的蓝牙地址信息。 |
+| bluetoothAddress     | [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 否 | 是    | 该设备的蓝牙地址信息。 |
 
 ## PartnerAgentExtensionAbilityDestroyReason
 

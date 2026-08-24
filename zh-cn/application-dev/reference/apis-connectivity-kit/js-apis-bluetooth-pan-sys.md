@@ -47,13 +47,7 @@ connect(deviceId: string): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 表示远端设备MAC地址。取值格式为"XX:XX:XX:XX:XX:XX"，由6组两位十六进制数以冒号分隔组成，例如"08:00:28:01:2A:3B"。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| void | 无返回值，连接结果通过订阅on('connectionStateChange')事件感知，异常信息通过try-catch语句捕获。 |
+| deviceId | string | 是    | 表示远端设备MAC地址。例如："XX:XX:XX:XX:XX:XX"。 |
 
 **错误码**：
 
@@ -63,9 +57,7 @@ connect(deviceId: string): void
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
-|2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
@@ -100,13 +92,7 @@ disconnect(deviceId: string): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 表示远端设备MAC地址。取值格式为"XX:XX:XX:XX:XX:XX"，由6组两位十六进制数以冒号分隔组成，例如"08:00:28:01:2A:3B"。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| void | 无返回值，断开结果通过订阅on('connectionStateChange')事件感知，异常信息通过try-catch语句捕获。 |
+| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
 **错误码**：
 
@@ -156,12 +142,6 @@ setTethering(enable: boolean): void
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
 | enable | boolean | 是    | 是否启用网络共享。true表示启用网络共享，false表示不启用网络共享。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| void | 无返回值，网络共享状态设置结果通过异常信息体现，异常信息通过try-catch语句捕获。 |
 
 **错误码**：
 

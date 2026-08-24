@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块基于蓝牙通信技术，为应用提供设备发现与设备下线的通知功能，适用于应用需要在蓝牙设备上线或下线时自动感知并执行相应业务逻辑的场景，帮助应用实现设备状态的实时感知与自动化的进程生命周期管理，主要功能特性包括：
+本模块基于蓝牙通信技术，为应用提供设备发现与设备下线的通知功能，主要功能特性包括：
 
 - 动态监听并发现应用预先注册的蓝牙设备。
 - 采用进程启动机制，当目标设备出现时自动启动应用的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。
@@ -29,7 +29,7 @@ enableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise&lt;void&gt;
 
 开启外设互通功能，使用Promise异步回调。适用于应用需要为已绑定蓝牙设备提供外设互通能力的场景。
 
-- 该接口仅对应用调用[BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册过的设备生效，调用后给应用提供外设互通能力[partnerAgent](js-apis-fusionConnectivity-partnerAgent.md)。
+- 该接口仅对应用调用[BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册过的设备生效，调用后给应用提供设备互通能力[partnerAgent](js-apis-fusionConnectivity-partnerAgent.md)。
 - 可以通过[isDeviceControlEnabled](js-apis-fusionConnectivity-partnerAgent.md#partneragentisdevicecontrolenabled)判断设备的外设互通是否已开启，若已开启，重复调用不生效。
 - 可以通过[disableDeviceControl](#partneragentdisabledevicecontrol)关闭外设互通功能。
 
@@ -62,7 +62,6 @@ enableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise&lt;void&gt;
 |801 | Capability not supported.          |
 |34900001 | The device is not bound.                         |
 |34900099 | Internal error. |
-|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例**：
 
@@ -92,9 +91,9 @@ try {
 
 disableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise&lt;void&gt;
 
-关闭外设互通功能，使用Promise异步回调。适用于应用不再需要外设互通能力，或需要避免应用进程因其他应用注册的设备被发现而被拉起的场景。
+关闭外设互通功能，使用Promise异步回调。适用于应用不再需要外设互通能力的场景。
 
-- 该接口仅对应用调用[BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册过的设备生效，调用后关闭给应用提供的外设互通能力[partnerAgent](js-apis-fusionConnectivity-partnerAgent.md)。
+- 该接口仅对应用调用[BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册过的设备生效，调用后关闭给应用提供的设备互通能力[partnerAgent](js-apis-fusionConnectivity-partnerAgent.md)。
 - 可以通过[isDeviceControlEnabled](js-apis-fusionConnectivity-partnerAgent.md#partneragentisdevicecontrolenabled)判断设备的外设互通是否已开启，若已关闭，重复调用不生效。
 - 关闭后，当其他应用调用[BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册过的设备被发现时，不会启动应用注册的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。可通过调用[enableDeviceControl](#partneragentenabledevicecontrol)重新开启外设互通功能。
 
@@ -127,7 +126,6 @@ disableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise&lt;void&gt;
 |801 | Capability not supported.          |
 |34900001 | The device is not bound.                         |
 |34900099 | Internal error. |
-|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例**：
 

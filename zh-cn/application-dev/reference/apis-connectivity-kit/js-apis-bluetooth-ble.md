@@ -182,7 +182,6 @@ createGattClientDevice(deviceId: string, setting: GattSetting): GattClientDevice
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801     | Capability not supported. Failed to call the API because the short-range chip is not inserted on the 2in1 device.               |
 
 **示例**：
@@ -1943,7 +1942,6 @@ connect(deviceId: string, autoConnect?: boolean): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.               |
 |801     | Capability not supported. Failed to call the API because the short-range chip is not inserted on the 2in1 device.               |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -1994,7 +1992,6 @@ disconnect(deviceId: string): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.               |
 |801     | Capability not supported. Failed to call the API because the short-range chip is not inserted on the 2in1 device.               |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -2731,8 +2728,6 @@ server端订阅MTU（最大传输单元）大小变更事件。使用Callback异
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -2776,8 +2771,6 @@ off(type: 'BLEMtuChange', callback?: Callback&lt;number&gt;): void
 server端取消订阅MTU（最大传输单元）大小变更事件。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
-
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -2843,7 +2836,6 @@ getConnectedState(deviceId: string): ProfileConnectionState
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.               |
 |2900003 | Bluetooth disabled.            |
@@ -2896,9 +2888,7 @@ readPhy(deviceId: string): Promise&lt;PhyValue&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
-|2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.            |
 |2900099 | Operation failed.              |
 |2901003 | The connection is not established. |
@@ -2953,9 +2943,7 @@ server端设置和指定设备连接链路的物理通道类型。使用Promise�
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
-|2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.            |
 |2900099 | Operation failed.              |
 |2901003 | The connection is not established. |
@@ -3001,7 +2989,6 @@ onBlePhyUpdate(callback: Callback&lt;PhyValue&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例**：
@@ -3043,7 +3030,6 @@ offBlePhyUpdate(callback?: Callback&lt;PhyValue&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例**：
@@ -3538,8 +3524,6 @@ client端从指定的server端特征值读取数据。使用Promise异步回调�
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
 **参数**：
 
 | 参数名            | 类型                                      | 必填   | 说明       |
@@ -3615,8 +3599,6 @@ client端从指定的server端描述符读取数据。使用Callback异步回调
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明                      |
@@ -3688,8 +3670,6 @@ client端从指定的server端描述符读取数据。使用Promise异步回调�
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
-
-**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -4074,7 +4054,6 @@ client端获取GATT连接链路信号强度 (Received Signal Strength Indication
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.         |
 |801 | Capability not supported.          |
-|2900001 | Service stopped.                         |
 |2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20-21 |
 |2900099 | Operation failed.                        |
 |2901003 | The connection is not established.<br>适用版本：20+                |
@@ -4127,7 +4106,6 @@ client端获取GATT连接链路信号强度 (Received Signal Strength Indication
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.               |
 |801 | Capability not supported.          |
-|2900001 | Service stopped.                         |
 |2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20-21 |
 |2900099 | Operation failed.                        |
 |2901003 | The connection is not established.<br>适用版本：20+                |
@@ -4235,9 +4213,7 @@ client端同server端协商[MTU](../../connectivity/bluetooth/terminology.md#mtu
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
-|2900001 | Service stopped.                         |
 |2900011 | The operation is busy. The last operation is not complete.                        |
 |2900099 | Operation failed.                        |
 |2901003 | The connection is not established.                |
@@ -4859,7 +4835,6 @@ client端设备订阅server端设备服务变化的通知事件，使用Callback
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例**：
@@ -4907,7 +4882,6 @@ client端设备取消订阅server端设备服务变化的通知事件。<br>
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例**：
@@ -4953,7 +4927,6 @@ getConnectedState(): ProfileConnectionState
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.               |
 |2900003 | Bluetooth disabled.            |
@@ -5004,7 +4977,6 @@ updateConnectionParam(param: ConnectionParam): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.               |
 |2900003 | Bluetooth disabled.            |
@@ -5103,7 +5075,6 @@ client端设置连接链路的物理通道类型。使用Promise异步回调。
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900003 | Bluetooth disabled.            |
 |2900099 | Operation failed.              |
@@ -5149,7 +5120,6 @@ onBlePhyUpdate(callback: Callback&lt;PhyValue&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例**：
@@ -5191,7 +5161,6 @@ offBlePhyUpdate(callback?: Callback&lt;PhyValue&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例**：
@@ -5959,19 +5928,7 @@ BLE扫描的配置参数。
 
 ## AdvertisingState<sup>11+</sup>
 
-枚举，不同操作对应的BLE广播状态。广播状态转换关系如下图所示：
-
-```mermaid
-stateDiagram-v2
-    [*] --> STARTED: startAdvertising
-    STARTED --> ENABLED: enableAdvertising
-    ENABLED --> DISABLED: disableAdvertising
-    DISABLED --> ENABLED: enableAdvertising
-    STARTED --> STOPPED: stopAdvertising (释放资源)
-    ENABLED --> STOPPED: stopAdvertising (释放资源)
-    DISABLED --> STOPPED: stopAdvertising (释放资源)
-    STOPPED --> [*]
-```
+枚举，不同操作对应的BLE广播状态。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
