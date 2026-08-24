@@ -25,7 +25,7 @@ import { tag } from '@kit.ConnectivityKit';
 
 ## NfcATag
 
-NfcATag 提供 NFC-A(ISO 14443-3A)技术的属性和I/O操作的访问，继承自[TagSession](js-apis-tagSession.md)。
+NfcATag提供对NFC-A(ISO 14443-3A)技术的属性和I/O操作的访问，继承自[TagSession](js-apis-tagSession.md)。
 
 TagSession是所有NFC Tag技术类型的基类， 提供建立连接和发送数据等共同接口。具体请参见[TagSession](js-apis-tagSession.md)。
 
@@ -484,7 +484,7 @@ console.info("ndef ndefRecords number: " + ndefRecords.length);
 
 ## NdefTag<sup>9+</sup>
 
-提供对已格式化为NDEF的NFC标签的数据和操作的访问，继承自TagSession。
+NdefTag提供对已格式化为NDEF的NFC标签的数据和操作的访问，继承自[TagSession](js-apis-tagSession.md)。
 
 TagSession是所有NFC Tag技术类型的基类，提供建立连接和发送数据等共同接口。具体请参见[TagSession](js-apis-tagSession.md)。
 
@@ -1087,7 +1087,7 @@ function nfcTechDemo() {
 
     try {
         let sectorIndex = 1; // 将其更改为正确的 index
-        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  // 必须是6个字节，将其更改为正确的key
+        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06];  // 必须是6个字节，将其更改为正确的key
         mifareClassic.authenticateSector(sectorIndex, key, true).then(() => {
             console.info("mifareClassic authenticateSector Promise success.");
         }).catch((err : BusinessError)=> {
@@ -1149,7 +1149,7 @@ function nfcTechDemo() {
 
     try {
         let sectorIndex = 1; // 将其更改为正确的 index
-        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  // 必须是6个字节，将其更改为正确的key
+        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06];  // 必须是6个字节，将其更改为正确的key
         mifareClassic.authenticateSector(sectorIndex, key, true, (err : BusinessError)=> {
             if (err) {
                 console.error(`mifareClassic authenticateSector AsyncCallback errCode: ${err.code}, message: ${err.message}`);
@@ -2202,7 +2202,7 @@ MifareUltralightTag获取方式请参考[nfc-tag开发指南](../../connectivity
 
 readMultiplePages(pageIndex: number): Promise\<number[]>
 
-读取标签的4页数据，共16字节的数据。每个页面数据大小为4字节。使用Promise异步回调
+读取标签的4页数据，共16字节的数据。每个页面数据大小为4字节。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 

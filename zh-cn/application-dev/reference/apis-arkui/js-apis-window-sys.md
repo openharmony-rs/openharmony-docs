@@ -293,7 +293,6 @@ minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities.<br/>适用版本：12+ |
 | 1300003 | This window manager service works abnormally. |
 
@@ -354,7 +353,6 @@ minimizeAll(id: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities.<br/>适用版本：12+ |
 | 1300003 | This window manager service works abnormally. |
 
@@ -386,6 +384,8 @@ minimizeAllWithExclusion(displayId: number, excludeWindowId: number): Promise&lt
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **设备行为差异：** 该接口在Phone设备中可正常调用，在其他设备中返回801错误码。
@@ -409,7 +409,7 @@ minimizeAllWithExclusion(displayId: number, excludeWindowId: number): Promise&lt
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A nonsystem application calls a system API. |
 | 1300002 | This window state is abnormal. Possible cause: 1.Window is nullptr; 2. Failed to find specified window by id. |
 | 1300003 | This window manager service works abnormally. |
 
@@ -1338,7 +1338,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ## window.moveMainWindowToTargetDisplay
-moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;void&gt;
+moveMainWindowToTargetDisplay(displayId: number, windowId: number, userId?: number): Promise&lt;void&gt;
 
 将指定的主窗口迁移到指定的屏幕上。使用Promise异步回调。
 
@@ -1361,6 +1361,7 @@ moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;v
 | -------------- | ------ | ----- | ----------------------- |
 | displayId | number | 是    | 目标屏幕的ID，用于指定要迁移到的屏幕。该参数应为非负整数，可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.displayId获取；也可通过获取[Display](js-apis-display.md#display)对象的[id](js-apis-display.md#属性)属性获取此参数。 |
 | windowId | number | 是    | 目标主窗口的ID，用于指定要迁移的窗口。该参数应为大于0的整数，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。|
+| userId | number | 否    | 指定的用户ID，取值范围需大于等于0。此参数不填或值小于等于-1时，表示当前用户。|
 
 **返回值：**
 
@@ -1374,12 +1375,13 @@ moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;v
 
 | 错误码ID | 错误信息                                      |
 | ------- | --------------------------------------------- |
-| 202     | Permission verification failed, non-system application uses system API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not found or has been destroyed. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
-| 1300008 | The display device is abnormal.           |
+| 1300004 | Unauthorized operation. Possible cause: The window is not a main window. |
+| 1300008 | Invalid display. Possible cause: 1. DisplayId is a negative number or not exists. |
+| 1300016 | Parameter error. Possible cause: 1. The userId is not exist.           |
 
 **示例：**
 
@@ -2097,7 +2099,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, c
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -2185,7 +2187,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): 
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -2266,7 +2268,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -2342,7 +2344,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -3092,7 +3094,7 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| windowId | number                    | 是   | 目标子窗口的id，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。 |
+| windowId | number                    | 是   | 目标子窗口的ID，该参数应为大于0的整数，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
@@ -3124,7 +3126,7 @@ export default class EntryAbility extends UIAbility {
     let windowClass: window.Window;
     // 创建子窗
     try {
-      windowStage.createSubWindow("testSubWindow").then((data) => {
+      windowStage.createSubWindow('testSubWindow').then((data) => {
         if (data == null) {
           console.error("Failed to create the subWindow. Cause: The data is empty");
           return;
@@ -3169,7 +3171,7 @@ raiseAboveTarget(windowId: number): Promise&lt;void&gt;
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| windowId | number                    | 是   | 目标子窗口的id，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。 |
+| windowId | number                    | 是   | 目标子窗口的ID，该参数应为大于0的整数，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。 |
 
 **返回值：**
 
@@ -3206,7 +3208,7 @@ export default class EntryAbility extends UIAbility {
     let windowClass: window.Window;
     // 创建子窗
     try {
-      windowStage.createSubWindow("testSubWindow").then((data) => {
+      windowStage.createSubWindow('testSubWindow').then((data) => {
         if (data == null) {
           console.error("Failed to create the subWindow. Cause: The data is empty");
           return;
@@ -3239,7 +3241,7 @@ raiseMainWindowAboveTarget(windowId: number): Promise&lt;void&gt;
 
 仅支持系统应用主窗口调用。
 
-传入目标主窗口的id，调用窗口和目标窗口需满足：同应用进程、显示在同一物理屏、层级低于锁屏、非置顶主窗、非模态主窗且无模应用子窗。
+传入目标主窗口的ID，调用窗口和目标窗口需满足：同应用进程、显示在同一物理屏、层级低于锁屏、非置顶主窗、非模态主窗且无模应用子窗口。
 
 - 应用主窗口或者它的子窗口如果是焦点窗口，此主窗口调用该接口降低层级后则自动失焦，由当前层级最高的应用窗口获焦。
 
@@ -3309,9 +3311,9 @@ export default class EntryAbility extends UIAbility {
         mainWindow.raiseMainWindowAboveTarget(targetId).then(() => {
           console.info('Succeeded in raising main window above target.');
         }).catch((err: BusinessError) => {
-          console.error(`Failed to raise main window above target. Cause code: ${err.code}, message: ${err.message}.`)
+          console.error(`Failed to raise main window above target. Cause code: ${err.code}, message: ${err.message}.`);
         });
-      }, 3000)
+      }, 3000);
     });
   }
 }
@@ -3527,7 +3529,7 @@ export default class EntryAbility extends UIAbility {
           let promise = window.setMainWindowRaiseByClickEnabled(raiseEnabled);
           promise.then(() => {
             console.info('Succeeded in disabling the raise-by-click function.');
-          })
+          });
         } catch(err) {
           console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
         };
@@ -3852,7 +3854,7 @@ off(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback?: Callback&lt;bo
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
@@ -4089,7 +4091,7 @@ setRotationLocked(locked: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Phone设备、Tablet设备和2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -4113,7 +4115,7 @@ setRotationLocked(locked: boolean): Promise&lt;void&gt;
 | 801     | Capability not supported. Function setRotationLocked can not work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300029 | This window type is invalid. |
+| 1300029 | This window type is invalid. Possible cause: A non-system window calls this API. |
 
 **示例：**
 
@@ -4139,7 +4141,7 @@ getRotationLocked(): boolean
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Phone设备、Tablet设备和2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -4154,10 +4156,10 @@ getRotationLocked(): boolean
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Function setRotationLocked can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. Function getRotationLocked can not work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300029 | This window type is invalid. |
+| 1300029 | This window type is invalid. Possible cause: A non-system window calls this API. |
 
 **示例：**
 
@@ -4866,12 +4868,12 @@ try {
         context.completeTransition(true)
       }
     }, () => {
-      let obj : window.TranslateOptions = {
+      let translateOptions : window.TranslateOptions = {
         x : 100.0,
         y : 0.0,
         z : 0.0
       };
-      toWindow?.translate(obj); // 设置动画过程中的属性转换
+      toWindow?.translate(translateOptions); // 设置动画过程中的属性转换
       console.info('toWindow translate end in animation');
     });
     console.info('complete transition end');
@@ -4949,12 +4951,12 @@ try {
         context.completeTransition(true)
       }
     }, () => {
-      let obj : window.TranslateOptions = {
+      let translateOptions : window.TranslateOptions = {
         x : 100.0,
         y : 0.0,
         z : 0.0
       };
-      toWindow?.translate(obj); // 设置动画过程中的属性转换
+      toWindow?.translate(translateOptions); // 设置动画过程中的属性转换
       console.info('toWindow translate end in animation');
     });
     console.info('complete transition end');

@@ -208,6 +208,8 @@ The following examples are code snippets. For the [complete sample](https://gitc
 
    <!-- @[render_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
 
+   <!-- @[render_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+   
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    // ...
@@ -220,11 +222,7 @@ The following examples are code snippets. For the [complete sample](https://gitc
            // ...
          }
        });
-       // ` wrapper preserved.
-</analysis>
-
-<translation>
-<seg id="0">Close the sandbox file.
+       // Close the sandbox file.
        await context.resourceManager.closeRawFd('S16LE_2_48000.pcm');
    ```
 

@@ -6,7 +6,7 @@
 <!--Designer: @wangxiayang-->
 <!--Tester: @lianxuanself; @laonie666; @panny060-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=f9e7bac0a8fc53e60bf6ac70ab7a578a0e18dc62 translatedAt=2026-08-04T13:30:46.621Z pushedAt=2026-08-05T08:38:59.773Z -->
+<!-- md-trans-meta sourceCommit=27aa2665467fe729505224e92e55f0dd00edbc06 translatedAt=2026-08-22T01:40:48.152Z pushedAt=2026-08-22T03:36:05.992Z -->
 
 - [About This Kit](kernel-enhance-overview.md)
 

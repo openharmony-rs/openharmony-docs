@@ -6,7 +6,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:39:09.946Z pushedAt=2026-08-12T11:07:45.788Z -->
+<!-- md-trans-meta sourceCommit=ce54139d1685b975f701d518f7149cf8c16360b0 translatedAt=2026-08-22T02:12:11.105Z pushedAt=2026-08-22T06:49:50.918Z -->
 
 The maintenance and debugging measures mentioned in this topic rely on the Ark runtime multi-thread check. Therefore, you are advised to enable this feature before debugging. For details about how to enable Ark runtime multi-thread check, see [Analyzing CPP Crash](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-multi-thread-check).
 
@@ -244,7 +244,7 @@ napi_value TriggerDFXDelRef(napi_env, napi_callback_info info)
         napi_value obj = nullptr;
         STRICT_NAPI_CALL(napi_create_object(localEnv, &obj));
         napi_ref ref = nullptr;
-        // Call napi_delete_reference to destroy the reference to avoid memory leaks.
+        // Call napi_delete_reference after use to release the reference and avoid memory leaks.
         napi_create_reference(localEnv, obj, 1, &ref);
         if (!localEnv.RecreateSame()) {
             if (ref != nullptr) {

@@ -6,7 +6,7 @@
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=379459ed39b4b4ff1b499df9523039b8689cb0ba translatedAt=2026-08-15T01:50:30.489Z pushedAt=2026-08-15T08:20:06.044Z -->
+<!-- md-trans-meta sourceCommit=7fa9bdd4667c105b22f0d6acf550a50bf15bd338 translatedAt=2026-08-22T01:32:21.264Z pushedAt=2026-08-22T03:28:35.673Z -->
 
 ## Overview
 
@@ -40,9 +40,9 @@ The following table lists the APIs for clipping. For details, see [drawing_canva
 
 | API| Description|
 | -------- | -------- |
-| void OH_Drawing_CanvasClipRect(OH_Drawing_Canvas \*, const OH_Drawing_Rect \*, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | Clips a rectangle. |
-| void OH_Drawing_CanvasClipRoundRect(OH_Drawing_Canvas \*, const OH_Drawing_RoundRect \*, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | Clips a rounded rectangle. |
-| void OH_Drawing_CanvasClipPath(OH_Drawing_Canvas \*, const OH_Drawing_Path \*, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | Clips a custom path. |
+| void OH_Drawing_CanvasClipRect(OH_Drawing_Canvas \*canvas, const OH_Drawing_Rect \*rect, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | Clips a rectangle. |
+| void OH_Drawing_CanvasClipRoundRect(OH_Drawing_Canvas \*canvas, const OH_Drawing_RoundRect \*roundRect, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | Clips a rounded rectangle. |
+| void OH_Drawing_CanvasClipPath(OH_Drawing_Canvas \*canvas, const OH_Drawing_Path \*path, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | Clips a custom path. |
 | OH_Drawing_ErrorCode OH_Drawing_CanvasClipRegion(OH_Drawing_Canvas \*canvas, const OH_Drawing_Region \*region, OH_Drawing_CanvasClipOp clipOp) | Clips a region. |
 
 ### How to Develop
@@ -102,10 +102,10 @@ The following table lists the common APIs for matrix transformation operations. 
 
 | API| Description|
 | -------- | -------- |
-| void OH_Drawing_CanvasTranslate(OH_Drawing_Canvas \*, float dx, float dy) | Translates the canvas by a specified distance. |
-| void OH_Drawing_CanvasScale(OH_Drawing_Canvas \*, float sx, float sy) | Scales the canvas. |
-| void OH_Drawing_CanvasRotate(OH_Drawing_Canvas \*, float degrees, float px, float py) | Rotates the canvas by a specified angle. A positive value indicates clockwise rotation, and a negative value indicates counterclockwise rotation. |
-| void OH_Drawing_CanvasSkew(OH_Drawing_Canvas \*, float sx, float sy) | Applies a skew transformation to the canvas. This is equivalent to premultiplying the current canvas matrix by the skew transformation matrix and applying it to the canvas. The skew transformation matrix is: \|1 sx 0\| \|sy 1 0\| \|0 0 1\|. |
+| void OH_Drawing_CanvasTranslate(OH_Drawing_Canvas \*canvas, float dx, float dy) | Translates the canvas by a specified distance. |
+| void OH_Drawing_CanvasScale(OH_Drawing_Canvas \*canvas, float sx, float sy) | Scales the canvas. |
+| void OH_Drawing_CanvasRotate(OH_Drawing_Canvas \*canvas, float degrees, float px, float py) | Rotates the canvas by a specified angle. A positive value indicates clockwise rotation, and a negative value indicates counterclockwise rotation. |
+| void OH_Drawing_CanvasSkew(OH_Drawing_Canvas \*canvas, float sx, float sy) | Applies a skew transformation to the canvas. This is equivalent to premultiplying the current canvas matrix by the skew transformation matrix and applying it to the canvas. The skew transformation matrix is: \|1 sx 0\| \|sy 1 0\| \|0 0 1\|. |
 
 ### Translation
 
@@ -212,9 +212,9 @@ The following table lists the APIs used for saving and restoring the canvas stat
 
 | API| Description|
 | -------- | -------- |
-| void OH_Drawing_CanvasSave(OH_Drawing_Canvas \*) | Saves the current canvas state (canvas matrix) to the top of a stack. |
-| void OH_Drawing_CanvasRestore(OH_Drawing_Canvas \*) | Restores the canvas state (canvas matrix) saved at the top of the stack. |
-| void OH_Drawing_CanvasRestoreToCount(OH_Drawing_Canvas \*, uint32_t saveCount) | Restores the canvas state (canvas matrix) to a specified save count. |
+| void OH_Drawing_CanvasSave(OH_Drawing_Canvas \*canvas) | Saves the current canvas state (canvas matrix) to the top of a stack. |
+| void OH_Drawing_CanvasRestore(OH_Drawing_Canvas \*canvas) | Restores the canvas state (canvas matrix) saved at the top of the stack. |
+| void OH_Drawing_CanvasRestoreToCount(OH_Drawing_Canvas \*canvas, uint32_t saveCount) | Restores the canvas state (canvas matrix) to a specified save count. |
 
 ### How to Develop
 

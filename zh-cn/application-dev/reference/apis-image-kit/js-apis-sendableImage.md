@@ -1672,6 +1672,10 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise\
 
 根据输入的目标色彩空间对图像的像素颜色进行色彩空间转换。使用Promise异步回调。
 
+> **说明：**
+>
+> 本接口仅执行色彩空间之间的数学转换，不包含HDR到SDR的色调映射。当源图像为HDR色彩空间（传输函数为HLG或PQ，例如BT2020_HLG、BT2020_PQ、P3_HLG、P3_PQ等）且目标为SDR色彩空间（传输函数为sRGB gamma，例如SRGB、DISPLAY_P3、DCI_P3、ADOBE_RGB_1998等）时，直接调用本接口会导致图像整体偏亮、泛白、高光细节丢失。
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **参数：**

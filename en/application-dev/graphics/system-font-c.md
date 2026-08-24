@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=8e9d3b746529fedba672cd46a96d4746984bcb6c translatedAt=2026-08-15T01:51:48.027Z pushedAt=2026-08-15T08:33:42.996Z -->
+<!-- md-trans-meta sourceCommit=0876b7ba2fa1777332890da7f5059310feded633 translatedAt=2026-08-22T01:35:32.897Z pushedAt=2026-08-22T03:30:22.296Z -->
 
 ## Overview
 
@@ -140,7 +140,7 @@ If no font is specified, the default system font "HarmonyOS Sans" is used to dis
 
    > **NOTE**
    >
-   > **OH_Drawing_CreateFontCollection** and **OH_Drawing_CreateSharedFontCollection** both create an **OH_Drawing_FontCollection** object. However, **OH_Drawing_CreateFontCollection** creates font set pointers that cannot be shared across **OH_Drawing_TypographyCreate** objects. Therefore, you are advised to use **OH_Drawing_CreateSharedFontCollection** to create a sharable font set object.
+   > **OH_Drawing_CreateFontCollection** and **OH_Drawing_CreateSharedFontCollection** both create an **OH_Drawing_FontCollection** object. However, the font collection pointer object created by the former can be used by only one **OH_Drawing_TypographyCreate** object and cannot be shared across multiple **OH_Drawing_TypographyCreate** objects. To share it across multiple **OH_Drawing_TypographyCreate** objects, use the latter to create a shareable font collection object.
 
    <!-- @[custom_font_c_create_shared_font_collection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 

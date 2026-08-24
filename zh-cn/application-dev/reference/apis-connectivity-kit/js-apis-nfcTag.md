@@ -56,7 +56,7 @@ export default class EntryAbility extends UIAbility {
             if (tagInfo.technology[i] == tag.ISO_DEP) {
                 isIsoDepTag = true;
             }
-        // 检查其他技术类型: tag.NFC_B/NFC_F/NFC_V/NDEF/MIFARE_CLASSIC/MIFARE_ULTRALIGHT/NDEF_FORMATABLE
+        // 检查其他技术类型：tag.NFC_B/NFC_F/NFC_V/NDEF/MIFARE_CLASSIC/MIFARE_ULTRALIGHT/NDEF_FORMATABLE
         }
 
         // 使用 NfcA APIs 去访问发现的标签
@@ -80,7 +80,7 @@ export default class EntryAbility extends UIAbility {
             }
             // 其他代码：对发现的标签执行读取或写入
         }
-        // 使用相同的代码来处理 "NfcA/NfcB/NfcF/NfcV/Ndef/MifareClassic/MifareUL/NdefFormatable".
+        // 使用相同的代码来处理 "NfcA/NfcB/NfcF/NfcV/Ndef/MifareClassic/MifareUL/NdefFormatable"。
     }
 }
 ```
@@ -548,7 +548,7 @@ registerForegroundDispatch(elementName: [ElementName](../apis-ability-kit/js-api
 | 参数名       | 类型     | 必填 | 说明                                                    |
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | 是   | 所属应用读卡的页面信息（至少包含bundleName、abilityName这两项的赋值），不可以为空。          |
-| discTech         |  number[]   | 是   | 前台应用指定的NFC读卡技术类型，不可以为空，至少指定一种读卡技术类型。每个number值表示所支持技术类型的常量值型，根据number值设置NFC读卡轮询的Tag技术类型（仅包含[NFC_A](#常量), [NFC_B](#常量), [NFC_F](#常量), [NFC_V](#常量)中的一种或多种）。 |
+| discTech         |  number[]   | 是   | 前台应用指定的NFC读卡技术类型，不可以为空，至少指定一种读卡技术类型。每个number值表示所支持技术类型的常量值类型，根据number值设置NFC读卡轮询的Tag技术类型（仅包含[NFC_A](#常量), [NFC_B](#常量), [NFC_F](#常量), [NFC_V](#常量)中的一种或多种）。 |
 | callback | AsyncCallback&lt;[TagInfo](#taginfo)&gt; | 是   | 前台读卡监听回调函数，返回读到的Tag信息，不可以为空。 |
 
 **错误码：**
@@ -675,7 +675,7 @@ on(type: 'readerMode', elementName: [ElementName](../apis-ability-kit/js-apis-bu
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | type    | string  | 是   | 要注册的回调类型，固定填"readerMode"字符串。 |
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | 是   | 所属应用读卡的页面信息（至少包含bundleName、abilityName这两项的赋值），不可以为空。          |
-| discTech         |  number[]   | 是   | 前台应用指定的NFC读卡技术类型，不可以为空，至少指定一种读卡技术类型。每个number值表示所支持技术类型的常量值型，根据number值设置NFC读卡轮询的Tag技术类型（仅包含[NFC_A](#常量), [NFC_B](#常量), [NFC_F](#常量), [NFC_V](#常量), [SKIP_NDEF](#常量)中的一种或多种）。 |
+| discTech         |  number[]   | 是   | 前台应用指定的NFC读卡技术类型，不可以为空，至少指定一种读卡技术类型。每个number值表示所支持技术类型的常量值类型，根据number值设置NFC读卡轮询的Tag技术类型（仅包含[NFC_A](#常量), [NFC_B](#常量), [NFC_F](#常量), [NFC_V](#常量), [SKIP_NDEF](#常量)中的一种或多种）。 |
 | callback | AsyncCallback&lt;[TagInfo](#taginfo)&gt; | 是   | 读卡器模式监听回调函数，返回读到的Tag信息，不可以为空。 |
 
 **错误码：**
@@ -809,7 +809,7 @@ on(type: 'readerModeWithInterval', elementName: ElementName, discTech: number[],
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | type    | string  | 是   | 要注册的回调类型，固定填"readerModeWithInterval"字符串。 |
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | 是   | 所属应用读卡的页面信息（至少包含bundleName、abilityName这两项的赋值）。          |
-| discTech         |  number[]   | 是   | 前台应用指定的NFC读卡技术类型，至少指定一种读卡技术类型。每个number值表示所支持技术类型的常量值型，根据number值设置NFC读卡轮询的Tag技术类型（仅包含[NFC_A](#常量), [NFC_B](#常量), [NFC_F](#常量), [NFC_V](#常量), [SKIP_NDEF](#常量)中的一种或多种）。 |
+| discTech         |  number[]   | 是   | 前台应用指定的NFC读卡技术类型，至少指定一种读卡技术类型。每个number值表示所支持技术类型的常量值类型，根据number值设置NFC读卡轮询的Tag技术类型（仅包含[NFC_A](#常量), [NFC_B](#常量), [NFC_F](#常量), [NFC_V](#常量), [SKIP_NDEF](#常量)中的一种或多种）。 |
 | callback | Callback&lt;[TagInfo](#taginfo)&gt; | 是   | 读卡器模式监听回调函数，返回读到的Tag信息。 |
 | interval | number | 是 | 设置卡在位检测间隔，单位为ms。推荐范围100-2000，若传入负值则不生效，系统会使用默认卡在位间隔（150ms）。 |
 
@@ -1251,7 +1251,7 @@ createNdefMessage(data: number[]): [NdefMessage](js-apis-nfctech.md#ndefmessage9
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
-let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43];  //必须是可以被解析的NDEF记录
+let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43];  // 必须是可以被解析的NDEF记录
 try {
     let ndefMessage : tag.NdefMessage = tag.ndef.createNdefMessage(rawData);
     console.info("ndef createNdefMessage, ndefMessage: " + ndefMessage);

@@ -186,4 +186,4 @@
 
   <!--DelEnd-->
 
-- [Performance Analysis Kit Terminology](performance-analysis-kit-terminology.md)<!--RP5--><!--RP5End-->
+- [Glossary](performance-analysis-kit-terminology.md)<!--RP5--><!--RP5End-->

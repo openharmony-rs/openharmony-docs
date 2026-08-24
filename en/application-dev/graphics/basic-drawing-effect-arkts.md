@@ -6,7 +6,7 @@
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=3c9498a5af1cedc12000d743f1689bf266862723 translatedAt=2026-08-03T11:15:30.831Z pushedAt=2026-08-04T01:50:16.902Z -->
+<!-- md-trans-meta sourceCommit=7fa9bdd4667c105b22f0d6acf550a50bf15bd338 translatedAt=2026-08-22T01:30:49.157Z pushedAt=2026-08-22T03:24:18.062Z -->
 
 ## Overview
 
@@ -20,7 +20,7 @@ You can set the basic fill color using a brush and use the brush to implement mo
 
 ### Available APIs
 
-The following table lists the APIs for setting the drawing effect using a brush. For details, see [drawing.Brush](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Brush.md).
+The following table describes the commonly used APIs for setting drawing effects with a brush. For details about the usage and parameters, see [drawing.Brush](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Brush.md) and [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
 
 | API| Description|
 | -------- | -------- |
@@ -86,7 +86,7 @@ You can set the basic stroke color using a pen and use the pen to implement more
 
 ### Available APIs
 
-The following table lists the APIs for setting the drawing effect using a pen. For details, see [drawing.Pen](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Pen.md).
+The following table describes the commonly used APIs for setting drawing effects with a pen. For details about the usage and parameters, see [drawing.Pen](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Pen.md) and [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
 
 | API| Description|
 | -------- | -------- |

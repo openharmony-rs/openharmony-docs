@@ -6,7 +6,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-06T13:51:02.594Z pushedAt=2026-08-07T09:56:50.379Z -->
+<!-- md-trans-meta sourceCommit=2e1a9714179b13f97ea14fd26c7e003844505553 translatedAt=2026-08-22T02:01:03.553Z pushedAt=2026-08-22T03:37:12.903Z -->
 
 ## Basic Concepts
 
@@ -305,7 +305,7 @@ The encoder triggers the parameter callback when receiving a video frame. Since 
 
 The development procedure is as follows:
 
-1. Link dynamic libraries in **CMakeList.txt**.
+1. Link dynamic libraries in `CMakeLists.txt`.
 
    Same as step 1 in [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended).
 
@@ -427,7 +427,7 @@ In buffer mode, video frames are sent to the encoder through `OH_VideoEncoder_Pu
 
 The detailed development procedure is as follows:
 
-1. Link dynamic libraries in `CMakeList.txt`.
+1. Link dynamic libraries in `CMakeLists.txt`.
 
    Same as step 1 in [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended).
 

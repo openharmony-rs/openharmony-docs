@@ -6,7 +6,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=497188cd4064e68a7f5286f253e8d8e9ce5a37b0 translatedAt=2026-08-10T03:46:42.683Z pushedAt=2026-08-10T07:15:34.283Z -->
+<!-- md-trans-meta sourceCommit=cbc788541d3c92f56dce788e128dfa81de46aa31 translatedAt=2026-08-22T02:03:27.889Z pushedAt=2026-08-22T06:31:10.196Z -->
 
 ## A
 
@@ -52,7 +52,7 @@ Indicates whether to continue playback when the app goes to the background. It i
 
 ### DisplayTag
 
-A tag that identifies the media audio source, used to display media audio source information in the control center. Currently, the `TAG_AUDIO_VIVID` tag is supported, indicating that the media audio source is Audio Vivid.
+A tag that identifies the media audio source, used to display media audio information in the control center. Currently, the `TAG_AUDIO_VIVID` tag is supported, indicating that the audio source is Audio Vivid.
 
 ## P
 
