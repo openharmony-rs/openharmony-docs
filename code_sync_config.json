@@ -30509,6 +30509,11 @@
 						"end_line":222,
 						"name":"napi_create_delete_reference",
 						"start_line":90
+					},
+					{
+						"end_line":354,
+						"name":"napi_get_global_handle_count",
+						"start_line":338
 					}
 				]
 			},
@@ -30519,6 +30524,11 @@
 						"end_line":20,
 						"name":"napi_open_close_handle_scope_api",
 						"start_line":16
+					},
+					{
+						"end_line":52,
+						"name":"napi_get_global_handle_count",
+						"start_line":50
 					}
 				]
 			},
@@ -30539,6 +30549,11 @@
 						"end_line":111,
 						"name":"ark_napi_create_delete_reference",
 						"start_line":89
+					},
+					{
+						"end_line":162,
+						"name":"napi_get_global_handle_count",
+						"start_line":147
 					}
 				]
 			}
