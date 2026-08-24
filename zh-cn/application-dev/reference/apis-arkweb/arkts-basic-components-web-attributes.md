@@ -3367,6 +3367,9 @@ enableWebAVSession(enabled: boolean)
 
 设置是否支持应用对接到播控中心。当属性没有显式设置时，默认支持应用对接到播控中心。
 
+<!--RP2-->
+<!--RP2End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3374,9 +3377,6 @@ enableWebAVSession(enabled: boolean)
 | 参数名  | 类型 | 必填 | 说明           |
 | ------- | -------- | ---- | ------------------ |
 | enabled | boolean  | 是   | 设置是否支持应用对接到播控中心。<br>true表示支持应用对接到播控中心，false表示不支持应用对接到播控中心。<br>传入undefined或null时为true。 |
-
-<!--RP2-->
-<!--RP2End-->
 
 **示例：**
 
