@@ -235,7 +235,7 @@ int32_t OH_ImageSource_CreateIncremental(napi_env env, struct OhosImageSource* s
 
 **描述**
 
-通过给定的信息[OhosImageSource](capi-image-ohosimagesource.md)和[OhosImageSourceOps](capi-image-ohosimagesourceops.md)结构体，获取增量类型的JavaScript Native API ImageSource对象，图像数据应通过[OH_ImageSource_UpdateData](#oh_imagesource_updatedata)更新。
+通过[OhosImageSource](capi-image-ohosimagesource.md)和[OhosImageSourceOps](capi-image-ohosimagesourceops.md)结构体，获取增量类型的JavaScript Native API ImageSource对象，图像数据应通过[OH_ImageSource_UpdateData](#oh_imagesource_updatedata)更新。
 
 **起始版本：** 10
 
