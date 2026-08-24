@@ -208,7 +208,7 @@ NODE_UNIQUE_ID = 95
 
 **返回：**
 
-| Name| Description|
+| 类型| 说明|
 | -- | -- |
 | .value[0].i32 | component ID.|
 
