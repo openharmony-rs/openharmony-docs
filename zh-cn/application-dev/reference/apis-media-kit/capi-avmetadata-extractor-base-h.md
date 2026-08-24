@@ -46,7 +46,7 @@
 | static const char * OH_AVMETADATA_EXTRACTOR_DATE_TIME = "dateTime" | 获取媒体资源创建时间的关键字，对应值类型为const char*。 |
 | static const char * OH_AVMETADATA_EXTRACTOR_DATE_TIME_FORMAT = "dateTimeFormat" | 获取媒体资源创建时间的关键字，对应值类型为const char*，按YYYY-MM-DD HH:mm:ss格式输出。 |
 | static const char * OH_AVMETADATA_EXTRACTOR_COMPOSER = "composer" | 获取媒体资源作曲家的关键字，对应值类型为const char*。 |
-| static const char * OH_AVMETADATA_EXTRACTOR_DURATION = "duration" | 获取媒体资源时长的关键字，对应值类型为int64_t，单位为毫秒（ms）。8 |
+| static const char * OH_AVMETADATA_EXTRACTOR_DURATION = "duration" | 获取媒体资源时长的关键字，对应值类型为int64_t，单位为毫秒（ms）。 |
 | static const char * OH_AVMETADATA_EXTRACTOR_GENRE = "genre" | 获取媒体资源类型或体裁的关键字，对应值类型为const char*。|
 | static const char * OH_AVMETADATA_EXTRACTOR_HAS_AUDIO = "hasAudio" | 获取媒体资源是否包含音频的关键字，对应值类型为int32_t。<br>取值原则：0表示不包含音频，1表示包含音频。 |
 | static const char * OH_AVMETADATA_EXTRACTOR_HAS_VIDEO = "hasVideo" | 获取媒体资源是否包含视频的关键字，对应值类型为int32_t。<br>取值原则：0表示不包含视频，1表示包含视频。 |
