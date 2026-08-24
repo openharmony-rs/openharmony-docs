@@ -3758,12 +3758,12 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   
-  private callback = (bluetoothScanResult: geoLocationManager.BluetoothScanResult) => {
+  let callback = (bluetoothScanResult: geoLocationManager.BluetoothScanResult) => {
     if (bluetoothScanResult) {
       console.info('bluetoothScanResult: deviceId=' + bluetoothScanResult.deviceId);
         try {
            // 开发者需要考虑在合适的时机调用stopBluetoothSearch停止蓝牙扫描以节省功耗，本代码仅作为参考
-           geoLocationManager.stopBluetoothSearch(this.callback);
+           geoLocationManager.stopBluetoothSearch(callback);
         } catch (err) {
            console.error("errCode:" + err.code + ", message:" + err.message);
         }
@@ -3775,7 +3775,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
   };
    
   try {
-    geoLocationManager.startBluetoothSearch(request, this.callback);
+    geoLocationManager.startBluetoothSearch(request, callback);
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
