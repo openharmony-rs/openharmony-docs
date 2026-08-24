@@ -12,7 +12,7 @@
 
 ## 优化思路
 
-用户在使用Web组件显示网页时往往会经历四个阶段：无反馈-->白屏-->网页渲染-->完全展示，系统会在各个阶段内分别进行WebView初始化、建立网络连接、接受数据与渲染页面等操作，如图一所示是WebView的启动阶段。
+用户在使用Web组件显示网页时往往会经历四个阶段：无反馈-->白屏-->网页渲染-->完全展示，系统会在各个阶段内分别进行WebView初始化、建立网络连接、接收数据与渲染页面等操作，如图一所示是WebView的启动阶段。
 
 图一 Web组件显示页面的阶段
 
@@ -25,6 +25,7 @@
 3. 在接收资源数据阶段：当开发者预先知道用户下一页会点击什么页面的时候，可以合理使用缓存和预加载，将该页面的资源提前下载到缓存中。
 
 综上所述，开发者可以通过方法1和2来提升Web首页加载速度，在应用创建Ability的时候，在OnCreate阶段预先初始化内核。随后在onAppear阶段进行预解析DNS、预连接要加载的首页。  
+
 在网页跳转的场景，开发者也可以通过方法3，在onPageEnd阶段预加载下一个要访问的页面，提升Web网页间的跳转和显示速度，如图二所示。
 
 图二 Web组件的生命周期回调函数
@@ -38,6 +39,7 @@
 **原理介绍**
 
 当应用首次打开时，默认不会初始化浏览器内核，只有当创建WebView实例的时候，才会开始初始化浏览器内核。  
+
 为了能提前初始化WebView实例，@ohos.web.webview提供了initializeWebEngine方法。该方法实现在Web组件初始化之前，通过接口加载Web引擎的动态库文件，从而提前进行Web组件动态库的加载和Web内核主进程的初始化，最终以提高启动性能，减少白屏时间。
 
 
@@ -121,14 +123,17 @@ struct Index {
 
 
 ### 预解析DNS、预连接
-WebView在onAppear阶段进行预连接socket， 当Web内核真正发起请求的时候会直接复用预连接的socket，如果当前预解析还没完成，真正发起网络请求进行DNS解析的时候也会复用当前正在执行的DNS解析任务。同理即使预连接的socket还没有连接成功，Web内核也会复用当前正在连接中的socket，进而优化资源的加载过程。  
-@ohos.web.webview提供了prepareForPageLoad方法实现预连接url，在加载url之前调用此API，对url只进行DNS解析、socket建链操作，并不获取主资源子资源。  
+
+WebView在onAppear阶段进行预连接socket， 当Web内核真正发起请求的时候会直接复用预连接的socket，如果当前预解析还没完成，真正发起网络请求进行DNS解析的时候也会复用当前正在执行的DNS解析任务。同理即使预连接的socket还没有连接成功，Web内核也会复用当前正在连接中的socket，进而优化资源的加载过程。
+
+@ohos.web.webview提供了prepareForPageLoad方法实现预连接url，在加载url之前调用此API，对url只进行DNS解析、socket建链操作，并不获取主资源子资源。
+
 参数：
 
 | 参数名         | 类型    | 说明                                                         |
 | -------------- | ------- | ------------------------------------------------------------ |
 | url            | string  | 预连接的url。                                                |
-| preconnectable | boolean | 是否进行预连接。如果preconnectable为true，则对url进行dns解析，socket建链预连接；如果preconnectable为false，则不做任何预连接操作。 |
+| preconnectable | boolean | 是否进行预连接。如果preconnectable为true，则对url进行DNS解析，socket建链预连接；如果preconnectable为false，则不做任何预连接操作。 |
 | numSockets     | number  | 要预连接的socket数。socket数目连接需要大于0，最多允许6个连接。 |
 
 使用方法如下：
@@ -142,8 +147,11 @@ webview.WebviewController.prepareForPageLoad("https://www.example.com", true, 2)
 
 
 ### 预加载下一页
-开发者可以在onPageEnd阶段进行预加载，当真正去加载下一个页面的时候，如果预加载已经成功，则相当于直接从缓存中加载页面资源，速度更快。一般来说能够准确预测到用户下一步要访问的页面的时候，可以进行预加载将要访问的页面，比如小说下一页， 浏览器在地址栏输入过程中识别到用户将要访问的页面等。  
-@ohos.web.webview提供prefetchPage方法实现在预测到将要加载的页面之前调用，提前下载页面所需的资源，包括主资源子资源，但不会执行网页JavaScript代码或呈现网页，以加快加载速度。  
+
+开发者可以在onPageEnd阶段进行预加载，当真正去加载下一个页面的时候，如果预加载已经成功，则相当于直接从缓存中加载页面资源，速度更快。一般来说能够准确预测到用户下一步要访问的页面的时候，可以进行预加载将要访问的页面，比如小说下一页， 浏览器在地址栏输入过程中识别到用户将要访问的页面等。
+
+@ohos.web.webview提供prefetchPage方法实现在预测到将要加载的页面之前调用，提前下载页面所需的资源，包括主资源子资源，但不会执行网页JavaScript代码或呈现网页，以加快加载速度。
+
 参数：
 
 | 参数名            | 类型              | 说明                  |
@@ -167,7 +175,7 @@ struct WebComponent {
        // ...
        Web({ src: 'https://www.example.com', controller: this.controller })
          .onPageEnd((event) => {
-           //  ...
+            // ...
            // 在确定即将跳转的页面时开启预加载，url请替换真实地址。
            this.controller.prefetchPage('https://www.example.com/nextpage');
          })
@@ -189,12 +197,14 @@ struct WebComponent {
 
 **原理介绍**
 
-预渲染优化适用于Web页面启动和跳转场景，例如，进入首页后，跳转到其他子页。与预连接、预下载不同的是，预渲染需要开发者额外创建一个新的ArkWeb组件，并在后台对其进行预渲染，此时该组件并不会立刻挂载到组件树上，即不会对用户呈现(组件状态为Hidden和InActive)，开发者可以在后续使用中按需动态挂载。
+预渲染优化适用于Web页面启动和跳转场景，例如，进入首页后，跳转到其他子页。与预连接、预下载不同的是，预渲染需要开发者额外创建一个新的ArkWeb组件，并在后台对其进行预渲染，此时该组件并不会立刻挂载到组件树上，即不会对用户呈现(组件状态为Hidden和Inactive)，开发者可以在后续使用中按需动态挂载。
 
 具体原理如下图所示，首先需要定义一个自定义组件封装ArkWeb组件，该ArkWeb组件被离线创建，被包含在一个无状态的节点NodeContainer中，并与相应的NodeController绑定。该ArkWeb组件在后台完成预渲染后，在需要展示该ArkWeb组件时，再通过NodeController将其挂载到ViewTree的NodeContainer中，即通过NodeController绑定到对应的NodeContainer组件。预渲染通用实现的步骤如下：
 
 创建自定义ArkWeb组件：开发者需要根据实际场景创建封装一个自定义的ArkWeb组件，该ArkWeb组件被离线创建。
+
 创建并绑定NodeController：实现NodeController接口，用于自定义节点的创建、显示、更新等操作的管理。并将对应的NodeController对象放入到容器中，等待调用。
+
 绑定NodeContainer组件：将NodeContainer与NodeController进行绑定，实现动态组件页面显示。
 
 图三 预渲染优化原理图
@@ -234,9 +244,8 @@ struct WebComponent {
     ```typescript
     // 创建NodeController。
     // common.ets
-    import { UIContext } from '@kit.ArkUI';
     import { webview } from '@kit.ArkWeb';
-    import { NodeController, BuilderNode, Size, FrameNode }  from '@kit.ArkUI';
+    import { UIContext, NodeController, BuilderNode, Size, FrameNode }  from '@kit.ArkUI';
     // @Builder中为动态组件的具体组件内容。
     // Data为入参封装类。
     class Data{
@@ -367,7 +376,7 @@ struct WebComponent {
 2. 预取POST请求行为包括连接和资源下载，连接和资源加载耗时可能达到百毫秒（依赖POST请求的数据内容和当前网络环境），建议开发者为预下载留出足够的时间。
 3. 预取POST请求行为相比于预连接会消耗额外的流量、内存，建议针对高频页面使用。
 4. POST请求具有一定的即时性，预取POST请求需要指定恰当的有效期。
-5. 目前仅支持预取Context-Type为application/x-www-form-urlencoded的POST请求。最多可以预获取6个POST请求。如果要预获取第7个，会自动清除最早预获取的POST缓存。开发者也可以通过clearPrefetchedResource()接口主动清除后续不再使用的预获取资源缓存。
+5. 目前仅支持预取Content-Type为application/x-www-form-urlencoded的POST请求。最多可以预获取6个POST请求。如果要预获取第7个，会自动清除最早预获取的POST缓存。开发者也可以通过clearPrefetchedResource()接口主动清除后续不再使用的预获取资源缓存。
 6. 如果要使用预获取的资源缓存，开发者需要在正式发起的POST请求的请求头中增加键值“ArkWebPostCacheKey”，其内容为对应缓存的cacheKey。
 
 
@@ -576,11 +585,15 @@ struct WebComponent {
 **适用场景**
 
 应用使用ArkTS、C++语言混合开发，或本身应用架构较贴近于小程序架构，自带C++侧环境，
+
 推荐使用ArkWeb在native侧提供的ArkWeb_ControllerAPI、ArkWeb_ComponentAPI实现JSBridge功能。
+
 ![img.png](figures/web_jsbridge_ets_ndk_compare.png)
 
 上图为具有普适性的小程序一般架构，其中逻辑层需要应用自带JavaScript运行时，本身已存在C++环境，通过native接口可直接在C++环境中完成与视图层（ArkWeb作为渲染器）的通信，无需再返回ArkTS环境调用JSBridge相关接口。
+
 ![img.png](figures/web_jsbridge_ets_ndk_compare_new.png)
+
 Native JSBridge方案可以解决ArkTS环境的冗余切换，同时允许回调在非UI线程上报，避免造成UI阻塞。
 
 **案例实践**
@@ -687,7 +700,7 @@ struct Index {
 
   aboutToAppear() {
     console.info("aboutToAppear");
-    //初始化web ndk。
+    // 初始化web ndk。
     testNapi.nativeWebInit(this.webTag);
   }
 
@@ -717,7 +730,7 @@ struct Index {
 
 hello.cpp作为应用C++侧业务逻辑代码：
 ```C
-//注册对象及方法，发送脚本到H5执行后的回调，解析存储应用侧传过来的实例等代码逻辑这里不进行展示，开发者根据自身业务场景自行实现。
+// 注册对象及方法，发送脚本到H5执行后的回调，解析存储应用侧传过来的实例等代码逻辑这里不进行展示，开发者根据自身业务场景自行实现。
 
 // 发送JS脚本到H5侧执行。
 static napi_value RunJavaScript(napi_env env, napi_callback_info info) {
@@ -776,6 +789,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_mo
 ```
 
 Native侧业务代码entry/src/main/cpp/jsbridge_object.h、entry/src/main/cpp/jsbridge_object.cpp
+
 详见[应用侧与前端页面的相互调用(C/C++)](../web/arkweb-ndk-jsbridge.md)。
 
 runJS.html作为应用前端页面：
@@ -896,7 +910,8 @@ JSBridge优化方案适用于ArkWeb应用侧与前端网页通信场景，开发
 
 **原理介绍**
 
-异步JSBridge调用适用于H5侧调用原生或C++侧注册得JSBridge函数场景下，将用户指定的JSBridge接口的调用抛出后，不等待执行结果，
+异步JSBridge调用适用于H5侧调用原生或C++侧注册的JSBridge函数场景下，将用户指定的JSBridge接口的调用抛出后，不等待执行结果，
+
 以避免在ArkUI主线程负载重时JSBridge同步调用可能导致Web线程等待IPC时间过长，从而造成阻塞的问题。
 
 **实践案例**
@@ -1376,7 +1391,7 @@ struct Index {
     Column({ space: 10 }) {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Web({
-          // 需将'https://www.example.com/'替换为真是的包含自定义协议的JavaScript的Web页面地址。
+          // 需将'https://www.example.com/'替换为真实的包含自定义协议的JavaScript的Web页面地址。
           src: 'https://www.example.com/',
           controller: this.controller
         })
@@ -1448,7 +1463,7 @@ struct Index {
    ```typescript
    // xxx.ets
    Web({
-     // 需将'https://www.example.com/'替换为真是的包含自定义协议的JavaScript的Web页面地址。
+     // 需将'https://www.example.com/'替换为真实的包含自定义协议的JavaScript的Web页面地址。
      src: 'https://www.example.com/',
      controller: this.controller
    })
