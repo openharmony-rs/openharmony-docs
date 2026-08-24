@@ -18,7 +18,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
 - 方式一（系统分享）：以文件为起点，用户直接选择文件，加密分享到应用。
 
-- 方式二（三方应用分享）：以应用为起点，用户在应用内通过[文件Picker](../../reference/apis-core-file-kit/js-apis-file-picker.md)的方式，选择文件并设置加密分享。
+- 方式二（三方应用分享）：以应用为起点，用户在应用内通过文件Picker（[@ohos.file.picker (选择器)](../../reference/apis-core-file-kit/js-apis-file-picker.md)）的方式，选择文件并设置加密分享。
 
 **系统分享：**
 
