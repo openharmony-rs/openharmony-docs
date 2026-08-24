@@ -372,7 +372,6 @@ getLocalProfileUuids(callback: AsyncCallback&lt;Array&lt;ProfileUuids&gt;&gt;): 
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.             |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -847,17 +846,6 @@ pairDeviceOutOfBand(transport: BluetoothTransport, p192Data: OobData | null, p25
 
 通过带外（Out of Band, [OOB](../../connectivity/terminology.md#oob)）通信机制发起与对端蓝牙设备的配对流程。本接口所需的OobData可通过[generateLocalOobData](#connectiongeneratelocaloobdata23)生成本机OOB数据并经带外通道传输至本端后使用。使用Promise异步回调。
 
-OOB配对整体流程如下：
-```mermaid
-sequenceDiagram
-    participant A as 设备A（本机）
-    participant B as 设备B（对端）
-    A->>A: 调用generateLocalOobData生成本机OOB数据
-    A->>B: 通过非蓝牙方式（如NFC、二维码）将OOB数据传输至对端
-    B->>B: 调用pairDeviceOutOfBand使用OOB数据发起配对
-    B-->>B: 通过on('bondStateChange')回调获取配对状态
-```
-
 - 蓝牙配对状态通过[on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange)的回调结果获取。
 
 **系统接口**：此接口为系统接口。
@@ -890,7 +878,6 @@ sequenceDiagram
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
@@ -961,7 +948,6 @@ generateLocalOobData(transport: BluetoothTransport): Promise&lt;OobData&gt;
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
@@ -1010,7 +996,6 @@ setCarKeyDfxData(deviceId: string, action: CarKeyActionType): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |202 | Non-system applications are not allowed to use system APIs. |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
