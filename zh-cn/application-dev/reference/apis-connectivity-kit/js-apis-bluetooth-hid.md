@@ -892,7 +892,7 @@ try {
 
 ## HidDeviceSdp<sup>23+</sup>
 
-描述HID设备在服务发现协议（[SDP](../../connectivity/terminology.md#sdp)）中的服务注册配置。该结构定义了HID设备的身份标识、能力描述和协议特征，是HID主机发现、识别和连接HID设备的关键参数。
+描述HID设备在服务发现协议（[SDP](../../connectivity/bluetooth/terminology.md#sdp)）中的服务注册配置。该结构定义了HID设备的身份标识、能力描述和协议特征，是HID主机发现、识别和连接HID设备的关键参数。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 

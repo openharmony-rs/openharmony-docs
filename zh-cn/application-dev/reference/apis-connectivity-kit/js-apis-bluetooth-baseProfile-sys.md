@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-baseProfile模块提供了蓝牙基础Profile的通用方法，包括连接策略的设置与获取等能力，供各蓝牙Profile模块（如A2DP、HFP等）继承使用，帮助开发者管理蓝牙设备的连接策略。
+baseProfile模块提供了蓝牙基础[Profile](../../connectivity/bluetooth/terminology.md#profile)的通用方法，包括连接策略的设置与获取等能力，供各蓝牙Profile模块（如[A2DP](../../connectivity/bluetooth/terminology.md#a2dp)、[HFP](../../connectivity/bluetooth/terminology.md#hfp)等）继承使用，帮助开发者管理蓝牙设备的连接策略。
 
 > **说明：**
 >

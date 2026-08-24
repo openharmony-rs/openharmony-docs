@@ -2,7 +2,7 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @enjoy_sunshine-->
+<!--Owner: @enjoy_sunshine-->应用注册该设备后，如果外设互通子系统检测到该设备，且BusinessCapability中至少一项为true时，会激活应用的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。应用可以在新进程中执行业务操作。每当已注册设备被发现或者已断连时，该进程将被激活并保持运行3分钟（时间随着新的通知刷新）。
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
@@ -10,7 +10,7 @@
 本模块基于蓝牙通信技术，为应用提供设备发现与设备下线的通知功能，主要功能特性包括：
 
 - 动态监听并发现应用预先注册的蓝牙设备。
-- 采用进程启动机制，当目标设备出现时自动启动应用的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。
+- 采用进程拉起机制，当目标设备出现时自动拉起应用的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。
 - 采用进程销毁机制，当所有设备下线时自动销毁应用的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。
 - 通过[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)的接口通知应用发现已注册设备。
 
@@ -57,7 +57,7 @@ bindDevice(deviceAddress: PartnerDeviceAddress, deviceCapability: DeviceCapabili
 - 建议先使用[isPartnerAgentSupported](#partneragentispartneragentsupported)判断本机是否支持外设互通功能。仅支持情况下才能使用融合短距外设互通模块功能。
 - 可以通过接口[isDeviceBound](#partneragentisdevicebound)判断设备是否已注册。若已注册，无需重复调用。
 - 应用需要先实现[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)。
-- 应用注册该设备后，如果外设互通子系统检测到该设备，且BusinessCapability中至少一项为true时，会激活应用的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。应用可以在新进程中执行业务操作。每当已注册设备被发现或者已断连时，该进程将被激活并保持运行3分钟（时间随着新的通知刷新）。
+- 应用注册该设备后，如果外设互通子系统检测到该设备，会激活应用的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。应用可以在新进程中执行业务操作。每当已注册设备被发现或者已断连时，该进程将被激活并保持运行3分钟（时间随着新的通知刷新）。
 - 在应用注册前，需先调用[connection.pairDevice](js-apis-bluetooth-connection.md#connectionpairdevice)与该设备完成蓝牙配对。如果该设备已注册，且用户在注册后取消了与该设备的配对，该设备的发现和下线通知功能将自动关闭，但注册信息会保留30天。若在这30天内重新与该设备进行蓝牙配对，外设互通子系统可以恢复设备的发现和下线通知功能。否则，注册信息会被清除。
 - 可以通过接口[getBoundDevices](#partneragentgetbounddevices)获取所有已注册过的设备。
 - 应用在使用该接口前，建议提示用户并获取应用注册该设备的授权。
@@ -73,7 +73,7 @@ bindDevice(deviceAddress: PartnerDeviceAddress, deviceCapability: DeviceCapabili
 | 参数名     | 类型                                     | 必填   | 说明                                  |
 | ------- | -------------------------------------- | ---- | ----------------------------------- |
 | deviceAddress | [PartnerDeviceAddress](#partnerdeviceaddress) | 是    | 应用注册的设备地址信息。<br>应用需配置PartnerDeviceAddress类型的bluetoothAddress选项。 |
-| deviceCapability | [DeviceCapability](#devicecapability) | 是     | 注册设备支持的能力。<br> - 配置supportBR选项后，外设互通子系统将监听与该设备的[ACL](../../connectivity/bluetooth/terminology.md#acl)连接状态，一旦建立ACL连接，即视为成功发现该设备；<br> - 配置supportBleAdvertiser选项后，系统将启动该设备的[BLE](../../connectivity/bluetooth/terminology.md#ble)扫描，扫描到该设备后，同样视为成功发现该设备。<br> 注意：<br>  为了减少系统功耗，BLE扫描到该设备后，若应用在3分钟内未与该设备建立ACL连接，外设互通子系统将自动终止应用的PartnerAgentExtensionAbility进程。 |
+| deviceCapability | [DeviceCapability](#devicecapability) | 是     | 注册设备支持的能力。<br> - 配置supportBR选项后，外设互通子系统将监听与该设备的[ACL](../../connectivity/bluetooth/terminology.md#acl)连接状态，一旦建立ACL连接，即视为成功发现该设备；<br> - 配置supportBleAdvertiser选项后，系统将拉起该设备的[BLE](../../connectivity/bluetooth/terminology.md#ble)扫描，扫描到该设备后，同样视为成功发现该设备。<br> 注意：<br>  为了减少系统功耗，BLE扫描到该设备后，若应用在3分钟内未与该设备建立ACL连接，外设互通子系统将自动终止应用的PartnerAgentExtensionAbility进程。 |
 | businessCapability | [BusinessCapability](#businesscapability) | 是 | 应用注册设备的业务功能，包括媒体控制、通话控制。<br>注意：<br>supportMediaControl和supportTelephonyControl均选择false时，设备发现时不会拉起[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。 |
 | partnerAgentExtensionAbilityName | string | 是 | 该参数需与应用模块级配置文件[module.json5](../../quick-start/module-configuration-file.md) 中的[extensionabilities](../../quick-start/module-configuration-file.md#extensionabilities标签) name属性值相同。 |
 
@@ -132,7 +132,7 @@ try {
 
 unbindDevice(deviceAddress: PartnerDeviceAddress): Promise&lt;void&gt;
 
-应用解注册设备，使用Promise异步回调。使用前建议先调用[isPartnerAgentSupported](#partneragentispartneragentsupported)判断本机是否支持外设互通功能，若不支持则本接口不可用。
+应用解注册设备，使用Promise异步回调。
 
 - 调用本接口进行解注册后，应用的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程将不再接收此设备的发现和下线状态通知。
 - 应用解注册的设备需是已通过[bindDevice](#partneragentbinddevice)接口注册过的设备，建议与bindDevice接口成对使用。

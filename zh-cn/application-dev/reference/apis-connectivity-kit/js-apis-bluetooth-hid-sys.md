@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-hid模块提供了访问蓝牙HID（人机接口设备，Human Interface Device）相关功能的方法，支持对HidHost profile进行连接和断开等操作，适用于蓝牙键盘、鼠标等人机接口设备的连接管理。
+hid模块提供了访问蓝牙[HID](../../connectivity/bluetooth/terminology.md#hid)（人机接口设备，Human Interface Device）相关功能的方法，支持对HidHost profile进行连接和断开等操作，适用于蓝牙键盘、鼠标等人机接口设备的连接管理。
 
 > **说明：**
 >

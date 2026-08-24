@@ -93,7 +93,7 @@ getPlayingState(deviceId: string): PlayingState
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 对端设备地址，格式为MAC地址（6段十六进制字符以冒号分隔），例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
 **返回值：**
 
