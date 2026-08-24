@@ -2019,8 +2019,7 @@ deviceId(deviceId:string):Query
 添加设备ID作为key的前缀。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3675,8 +3674,7 @@ removeDeviceData(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 删除指定设备的数据，使用callback异步回调。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3721,8 +3719,7 @@ removeDeviceData(deviceId: string): Promise&lt;void&gt;
 删除指定设备的数据，使用Promise异步回调。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3774,7 +3771,7 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 在手动同步方式下，触发数据库同步。
 > **说明：** 
 >
-> 其中deviceIds为<!--RP2-->[DeviceInfo](../apis-distributedservice-kit/js-apis-device-manager-sys.md#deviceinfo)中的networkId, 通过调用[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP2End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
+> 其中deviceIds为设备的networkId（设备网络标识）。
 
 **需要权限**： ohos.permission.DISTRIBUTED_DATASYNC。
 
@@ -3791,23 +3788,13 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 **示例：**
 
 ```js
-import deviceManager from '@ohos.distributedHardware.deviceManager';
-
-let devManager;
 let kvStore;
 const KEY_TEST_SYNC_ELEMENT = 'key_test_sync';
 const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
 // create deviceManager
 deviceManager.createDeviceManager('bundleName', (err, value) => {
   if (!err) {
-    devManager = value;
-    let deviceIds = [];
-    if (devManager != null) {
-      var devices = devManager.getTrustedDeviceListSync();
-      for (var i = 0; i < devices.length; i++) {
-        deviceIds[i] = devices[i].networkId;
-      }
-    }
+    let deviceIds = ['localdeviceId'];
     try {
       kvStore.on('syncComplete', function (data) {
         console.log('Sync dataChange');
@@ -4103,8 +4090,7 @@ get(deviceId: string, key: string, callback: AsyncCallback&lt;boolean|string|num
 获取与指定设备ID和key匹配的string值，使用callback异步回调。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**   SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4142,8 +4128,7 @@ get(deviceId: string, key: string): Promise&lt;boolean|string|number|Uint8Array&
 获取与指定设备ID和key匹配的string值，使用Promise异步回调。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4190,8 +4175,7 @@ getEntries(deviceId: string, keyPrefix: string, callback: AsyncCallback&lt;Entry
 获取与指定设备ID和key前缀匹配的所有键值对，使用callback异步回调。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4242,8 +4226,7 @@ getEntries(deviceId: string, keyPrefix: string): Promise&lt;Entry[]&gt;
 获取与指定设备ID和key前缀匹配的所有键值对，使用Promise异步回调。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4415,8 +4398,7 @@ getEntries(deviceId: string, query: Query, callback: AsyncCallback&lt;Entry[]&gt
 获取与指定设备ID和Query对象匹配的键值对列表，使用callback异步回调。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4472,8 +4454,7 @@ getEntries(deviceId: string, query: Query): Promise&lt;Entry[]&gt;
 获取与指定设备ID和Query对象匹配的键值对列表，使用Promise异步回调。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4536,8 +4517,7 @@ getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback&lt;KvS
 获取与指定设备ID和key前缀匹配的KvStoreResultSet对象，使用callback异步回调。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4575,8 +4555,7 @@ getResultSet(deviceId: string, keyPrefix: string): Promise&lt;KvStoreResultSet&g
 获取与指定设备ID和key前缀匹配的KvStoreResultSet对象，使用Promise异步回调。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4739,8 +4718,7 @@ getResultSet(deviceId: string, query: Query, callback: AsyncCallback&lt;KvStoreR
 获取与指定设备ID和Query对象匹配的KvStoreResultSet对象，使用callback异步回调。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4795,8 +4773,7 @@ getResultSet(deviceId: string, query: Query): Promise&lt;KvStoreResultSet&gt;
 获取与指定设备ID和Query对象匹配的KvStoreResultSet对象，使用Promise异步回调。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -5041,8 +5018,7 @@ getResultSize(deviceId: string, query: Query, callback: AsyncCallback&lt;number&
 获取与指定设备ID和Query对象匹配的结果数，使用callback异步回调。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -5092,8 +5068,8 @@ getResultSize(deviceId: string, query: Query): Promise&lt;number&gt;
 获取与指定设备ID和Query对象匹配的结果数，使用Promise异步回调。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
+
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -5152,8 +5128,8 @@ removeDeviceData(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 从当前数据库中删除指定设备的数据，使用callback异步回调。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
+
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -5198,8 +5174,7 @@ removeDeviceData(deviceId: string): Promise&lt;void&gt;
 从当前数据库中删除指定设备的数据，使用Promise异步回调。
 > **说明：** 
 >
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
+> 其中deviceId是设备的networkId（设备网络标识）。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -5252,7 +5227,7 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 
 > **说明：**
 >
-> 其中deviceIds为<!--RP2-->[DeviceInfo](../apis-distributedservice-kit/js-apis-device-manager-sys.md#deviceinfo)中的networkId, 通过调用[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP2End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
+> 其中deviceIds是设备networkId（设备网络标识）。
 
 **需要权限**： ohos.permission.DISTRIBUTED_DATASYNC。
 
@@ -5269,7 +5244,6 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 **示例：**
 
 ```js
-import deviceManager from '@ohos.distributedHardware.deviceManager';
 
 let devManager;
 let kvStore;
@@ -5278,14 +5252,7 @@ const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
 // create deviceManager
 deviceManager.createDeviceManager('bundleName', (err, value) => {
   if (!err) {
-    devManager = value;
-    let deviceIds = [];
-    if (devManager != null) {
-      var devices = devManager.getTrustedDeviceListSync();
-      for (var i = 0; i < devices.length; i++) {
-        deviceIds[i] = devices[i].networkId;
-      }
-    }
+    let deviceIds = ['localdeviceId'];
     try {
       kvStore.on('syncComplete', function (data) {
         console.log('Sync dataChange');
