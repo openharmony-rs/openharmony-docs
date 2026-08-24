@@ -193,7 +193,7 @@ The image data is not supported.
 
 **错误信息**
 
-Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap.
+Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty Pixelmap.
 
 **错误描述**
 
@@ -492,7 +492,7 @@ Failed to encode the image.
 
 **错误信息**
 
-Add pixelmap out of range.
+Add Pixelmap out of range.
 
 **错误描述**
 

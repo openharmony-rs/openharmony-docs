@@ -156,7 +156,7 @@ static napi_value getSyncPixelMap(napi_env env, napi_callback_info info)
       // 创建pixelMap。
       OH_ImageSource_CreatePixelMap(imageSourceNative_c, &decodingOps, &pixelMap);
 
-      // 下列方法，为gif等动图格式提供。
+      // 下列方法为gif等动图格式提供。
       // napi_value pixelMapList;
       // OH_ImageSource_CreatePixelMapList(imageSourceNative_c, &decodingOps, &pixelMapList);
       // OhosImageSourceDelayTimeList list{};
