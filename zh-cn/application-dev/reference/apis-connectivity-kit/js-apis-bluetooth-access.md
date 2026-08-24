@@ -372,9 +372,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let deviceId = '11:22:33:44:55:66'  // 该地址可通过BLE扫描获取
 try {
-    access.addPersistentDeviceId(deviceId);
+    access.addPersistentDeviceId(deviceId).then(() => {
+        console.info('addPersistentDeviceId success');
+    }, (error: BusinessError) => {
+        console.error('errCode: ' + error.code + ', errMessage: ' + error.message);
+    });
 } catch (err) {
-    console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
 
@@ -422,9 +426,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let deviceId = '11:22:33:44:55:66'  // 该地址可通过BLE扫描获取
 try {
-    access.deletePersistentDeviceId(deviceId);
+    access.deletePersistentDeviceId(deviceId).then(() => {
+        console.info('deletePersistentDeviceId success');
+    }, (error: BusinessError) => {
+        console.error('errCode: ' + error.code + ', errMessage: ' + error.message);
+    });
 } catch (err) {
-    console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
 
@@ -432,7 +440,7 @@ try {
 
 getPersistentDeviceIds(): string[];
 
-获取应用持久化存储过的蓝牙虚拟MAC地址。
+获取应用持久化存储过的蓝牙虚拟MAC地址。注意：若对端设备实际地址发生变化，已持久化存储的地址信息将失效，使用返回的地址前建议通过[access.isValidRandomDeviceId](#accessisvalidrandomdeviceid16)确认其有效性。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
 
@@ -532,6 +540,14 @@ convertUuid(uuid: string): string
 - 若输入32bit的UUID，例如“12341801”，将输出“12341801-0000-1000-8000-00805f9b34fb”。
 - 若输入128bit的UUID，例如“11112222-3333-4444-5555-666677778888”，将直接输出该UUID。
 - 若输入不符合以上格式的UUID或包含非16进制范围内的字符，将返回[401](../errorcode-universal.md#401-参数检查失败)错误码。
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 

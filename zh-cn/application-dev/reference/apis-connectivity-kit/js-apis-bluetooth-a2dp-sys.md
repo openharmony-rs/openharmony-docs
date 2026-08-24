@@ -26,7 +26,7 @@ import { a2dp } from '@kit.ConnectivityKit';
 
 connect(deviceId: string): void
 
-发起设备的A2dp服务连接请求。
+发起设备的a2dp服务连接请求。
 
 **系统接口**：此接口为系统接口。
 
@@ -48,9 +48,10 @@ connect(deviceId: string): void
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
-|2900001 | Service stopped.                         |
-|2900003 | Bluetooth disabled.                 |
+|2900001 | Service stopped.               |
+|2900003 | Bluetooth disabled.       |
 |2900004 | Profile not supported.      |
 |2900099 | Operation failed.              |
 
@@ -574,7 +575,7 @@ try {
 
 getCurrentFullCodecInfo(deviceId: string): CodecInfoList[]
 
-获取当前设备支持的全量编码器能力集合。与[getCurrentCodecInfo](#getcurrentcodecinfo11)相比，本接口返回设备支持的全量编码器能力集合，而getCurrentCodecInfo仅返回当前正在使用的编码器信息；如需获取设备完整编码能力请使用本接口，如仅需获取当前编码器信息请使用getCurrentCodecInfo。
+获取当前设备支持的全量编码器能力集合。与[getCurrentCodecInfo](#getcurrentcodecinfo11)相比，本接口返回设备支持的全量编码器能力集合，而getCurrentCodecInfo仅返回当前正在使用的编码器信息；如需获取设备完整编码能力请使用本接口，如仅需获取当前编码器信息请使用getCurrentCodecInfo。调用此接口前，需确保当前设备为活跃设备。
 
 **系统接口**：此接口为系统接口。
 
