@@ -2632,7 +2632,7 @@ p2pCancelConnect(): void
 
 startDiscoverDevices(): void
 
-开始发现设备。开始发现设备。调用此方法后，可调用[stopDiscoverDevices](#wifimanagerstopdiscoverdevices)停止发现设备以释放资源。
+开始发现设备。调用此方法后，可调用[stopDiscoverDevices](#wifimanagerstopdiscoverdevices)停止发现设备以释放资源。
 
 **需要权限：**
 
