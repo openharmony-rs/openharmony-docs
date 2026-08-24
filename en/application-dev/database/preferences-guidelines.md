@@ -1,19 +1,24 @@
 # Persisting User Preferences (C/C++)
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @ding_dong_dong-->
-<!--Designer: @ding_dong_dong-->
+<!--Owner: @cuile44-->
+<!--Designer: @cuile44-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=46486cda4babacde48f0ca5226e7dc9df57d7cc8 translatedAt=2026-08-24T09:14:15.834Z pushedAt=2026-08-24T10:51:07.895Z -->
 
 ## When to Use
+
 Use the **Preferences** module to store small amounts of data in key-value (KV) format. The data is stored in files and memory for fast access. If a large amount of data needs to be stored, consider using a KV store or RDB store.
 
 ## Constraints
-- Versions earlier than API version 18: ArkTS APIs support only the [XML](./data-persistence-by-preferences.md#xml) storage format, and C APIs support only the [GSKV](./data-persistence-by-preferences.md#gskv) storage format. Storage formats are incompatible, so ArkTS and C APIs cannot operate the same **Preferences** instance.
-- API version 18 and later: Both ArkTS and C APIs support the XML and GSKV storage formats. ArkTS and C APIs can operate the same **Preferences** instance if they use the same format.
-- The maximum key length is 1024 bytes, and the maximum value length is 16 MB.
 
+- Versions earlier than API version 18: ArkTS APIs support only the [XML](./data-persistence-by-preferences.md#xml) storage format, and C APIs support only the [GSKV](./data-persistence-by-preferences.md#gskv) storage format. Storage formats are incompatible, so ArkTS and C APIs cannot operate the same **Preferences** instance.
+
+- API version 18 and later: Both ArkTS and C APIs support the XML and GSKV storage modes. ArkTS and C APIs can operate the same **Preferences** instance when they use the same storage mode. ArkTS and C APIs are prohibited from using different storage modes to operate the same **Preferences** instance.
+
+- The maximum key length is 1024 bytes, and the maximum value length is 16 MB.
 
 ## Available APIs
 
@@ -47,7 +52,6 @@ For details about the APIs, see [Preferences](../reference/apis-arkdata/capi-pre
 | int OH_PreferencesValue_GetBool (const OH_PreferencesValue \*object, bool \*value) | Obtains a Boolean value from an **OH_PreferencesValue** instance.|
 | int OH_PreferencesValue_GetString (const OH_PreferencesValue \*object, char \*\*value, uint32_t \*valueLen) | Obtains a string from an **OH_PreferencesValue** instance.|
 
-
 ## Adding Dynamic Link Libraries
 
 Add the following library to **CMakeLists.txt**.
@@ -59,6 +63,7 @@ libohpreferences.so
 ## Including Header Files
 
 <!--@[preferences_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+
 ``` C++
 #include <database/preferences/oh_preferences.h>
 #include <database/preferences/oh_preferences_err_code.h>
@@ -67,11 +72,15 @@ libohpreferences.so
 ```
 
 ## How to Develop
+
 The following example shows how to use **Preferences** APIs to modify and persist KV data.
+
 1. Create a **PreferencesOption** instance and set the name, application group ID, bundle name, and storage type. If the **PreferencesOption** object is no longer required, call **OH_PreferencesOption_Destroy** to destroy it.
+
 2. Call **OH_Preferences_Open** to open a **Preferences** instance. When the **Preferences** instance is not required, call **OH_Preferences_Close** to close it.
+
    <!--@[PreferencesOpen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    // 1. Create a PreferencesOption instance.
    OH_PreferencesOption *option = OH_PreferencesOption_Create();
@@ -131,9 +140,11 @@ The following example shows how to use **Preferences** APIs to modify and persis
        // Error handling.
    }
    ```
+
 3. Define **DataChangeObserverCallback**.
+
    <!--@[DataChangeObserverCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    // Callback used to return data changes.
    void DataChangeObserverCallback(void *context, const OH_PreferencesPair *pairs, uint32_t count)
@@ -170,9 +181,11 @@ The following example shows how to use **Preferences** APIs to modify and persis
        }
    }
    ```
+
    Call **OH_Preferences_RegisterDataObserver** to subscribe to data changes for three keys.
+
    <!--@[RegisterDataObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    // 3. Subscribe to data changes of key_int, key_bool, and key_string.
    const char *keys[] = {"key_int", "key_bool", "key_string"};
@@ -193,9 +206,11 @@ The following example shows how to use **Preferences** APIs to modify and persis
        // Error handling.
    }
    ```
+
 4. Set KV data in the **Preferences** instance.
+
    <!--@[PreferencesCrud](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    // 4. Set KV data in the Preferences instance.
    ret = OH_Preferences_SetInt(preference, keys[0], 0);
@@ -235,9 +250,11 @@ The following example shows how to use **Preferences** APIs to modify and persis
        // Error handling.
    }
    ```
+
 5. Obtain data in the **Preferences** instance.
+
    <!--@[PreferencesCrudGet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    // 5. Obtain KV data from the Preferences instance.
    int intValue = 0;
@@ -296,16 +313,19 @@ The following example shows how to use **Preferences** APIs to modify and persis
    ```
 
 6. Call **OH_Preferences_Close** to close the **Preferences** instance and set the instance pointer to null.
+
    <!--@[PreferencesClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    // 6. Close the Preferences instance and set the pointer to null.
    (void)OH_Preferences_Close(preference);
    preference = nullptr;
    ```
+
 7. Set and obtain **OH_PreferencesValue** data.
+
    <!--@[PreferencesValueSets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    const int arg5 = 5;
    const int arg4 = 4;
