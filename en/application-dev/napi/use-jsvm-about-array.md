@@ -337,37 +337,43 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value returnResult = nullptr;
     switch (infoType) {
         case BYTE_LENGTH:
-            JSVM_Value len = nullptr;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, returnLength, &len));
-            returnResult = len;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM CreateDataView success, returnLength: %{public}d", returnLength);
+            {
+                JSVM_Value len = nullptr;
+                JSVM_CALL(OH_JSVM_CreateInt32(env, returnLength, &len));
+                returnResult = len;
+                if (status != JSVM_OK) {
+                    OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
+                } else {
+                    OH_LOG_INFO(LOG_APP, "JSVM CreateDataView success, returnLength: %{public}d", returnLength);
+                }
+                break;
             }
-            break;
         case ARRAY_BUFFER:
-            bool isArraybuffer = false;
-            JSVM_CALL(OH_JSVM_IsArraybuffer(env, returnArrayBuffer, &isArraybuffer));
-            JSVM_Value isArray = nullptr;
-            JSVM_CALL(OH_JSVM_GetBoolean(env, isArraybuffer, &isArray));
-            returnResult = isArray;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM CreateDataView success, isArraybuffer: %{public}d", isArraybuffer);
+            {
+                bool isArraybuffer = false;
+                JSVM_CALL(OH_JSVM_IsArraybuffer(env, returnArrayBuffer, &isArraybuffer));
+                JSVM_Value isArray = nullptr;
+                JSVM_CALL(OH_JSVM_GetBoolean(env, isArraybuffer, &isArray));
+                returnResult = isArray;
+                if (status != JSVM_OK) {
+                    OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
+                } else {
+                    OH_LOG_INFO(LOG_APP, "JSVM CreateDataView success, isArraybuffer: %{public}d", isArraybuffer);
+                }
+                break;
             }
-            break;
         case BYTE_OFFSET:
-            JSVM_Value offset = nullptr;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, returnOffset, &offset));
-            returnResult = offset;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM CreateDataView success, returnOffset: %{public}d", returnOffset);
+            {
+                JSVM_Value offset = nullptr;
+                JSVM_CALL(OH_JSVM_CreateInt32(env, returnOffset, &offset));
+                returnResult = offset;
+                if (status != JSVM_OK) {
+                    OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
+                } else {
+                    OH_LOG_INFO(LOG_APP, "JSVM CreateDataView success, returnOffset: %{public}d", returnOffset);
+                }
+                break;
             }
-            break;
         default:
             break;
     }
@@ -500,52 +506,60 @@ static JSVM_Value GetTypedArrayInfo(JSVM_Env env, JSVM_CallbackInfo info)
     // Return the corresponding property value of the TypedArray based on the property name.
     switch (infoTypeParam) {
         case INFO_TYPE:
-            // If the passed parameter is int8 TypedArray data, its type is JSVM_INT8_ARRAY.
-            JSVM_Value int8_type;
-            OH_JSVM_GetBoolean(env, type == JSVM_INT8_ARRAY, &int8_type);
-            result = int8_type;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
-            } else {
-                OH_LOG_INFO(
-                    LOG_APP, "JSVM GetTypedArrayInfo success, JSVM_INT8_ARRAY: %{public}d", type == JSVM_INT8_ARRAY);
+            {
+                // If the passed parameter is int8 TypedArray data, its type is JSVM_INT8_ARRAY.
+                JSVM_Value int8_type;
+                OH_JSVM_GetBoolean(env, type == JSVM_INT8_ARRAY, &int8_type);
+                result = int8_type;
+                if (status != JSVM_OK) {
+                    OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
+                } else {
+                    OH_LOG_INFO(
+                        LOG_APP, "JSVM GetTypedArrayInfo success, JSVM_INT8_ARRAY: %{public}d", type == JSVM_INT8_ARRAY);
+                }
+                break;
             }
-            break;
         case INFO_LENGTH:
-            // Number of elements in the TypedArray.
-            JSVM_Value jsvmLength;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, length, &jsvmLength));
-            result = jsvmLength;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM GetTypedArrayInfo success, length: %{public}d", length);
+            {
+                // Number of elements in the TypedArray.
+                JSVM_Value jsvmLength;
+                JSVM_CALL(OH_JSVM_CreateInt32(env, length, &jsvmLength));
+                result = jsvmLength;
+                if (status != JSVM_OK) {
+                    OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
+                } else {
+                    OH_LOG_INFO(LOG_APP, "JSVM GetTypedArrayInfo success, length: %{public}d", length);
+                }
+                break;
             }
-            break;
         case INFO_BYTE_OFFSET:
-            // Byte offset of the first element of the TypedArray in the underlying native array.
-            JSVM_Value jsvmOffset;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, byteOffset, &jsvmOffset));
-            result = jsvmOffset;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM GetTypedArrayInfo success, byteOffset: %{public}d", byteOffset);
+            {
+                // Byte offset of the first element of the TypedArray in the underlying native array.
+                JSVM_Value jsvmOffset;
+                JSVM_CALL(OH_JSVM_CreateInt32(env, byteOffset, &jsvmOffset));
+                result = jsvmOffset;
+                if (status != JSVM_OK) {
+                    OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
+                } else {
+                    OH_LOG_INFO(LOG_APP, "JSVM GetTypedArrayInfo success, byteOffset: %{public}d", byteOffset);
+                }
+                break;
             }
-            break;
         case INFO_ARRAY_BUFFER:
-            // ArrayBuffer underlying the TypedArray.
-            bool isArrayBuffer = false;
-            JSVM_CALL(OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer));
-            JSVM_Value isArray = nullptr;
-            OH_JSVM_GetBoolean(env, isArrayBuffer, &isArray);
-            result = isArray;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM GetTypedArrayInfo success, isArrayBuffer: %{public}d", isArrayBuffer);
+            {
+                // ArrayBuffer underlying the TypedArray.
+                bool isArrayBuffer = false;
+                JSVM_CALL(OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer));
+                JSVM_Value isArray = nullptr;
+                OH_JSVM_GetBoolean(env, isArrayBuffer, &isArray);
+                result = isArray;
+                if (status != JSVM_OK) {
+                    OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
+                } else {
+                    OH_LOG_INFO(LOG_APP, "JSVM GetTypedArrayInfo success, isArrayBuffer: %{public}d", isArrayBuffer);
+                }
+                break;
             }
-            break;
         default:
             break;
     }
@@ -596,6 +610,15 @@ CPP code:
 #include "hilog/log.h"
 // ...
 
+// Print a success or failure log based on the return status of OH_JSVM_GetDataviewInfo.
+static void LogGetDataViewInfo(JSVM_Status status, const char *name, int32_t value)
+{
+    if (status != JSVM_OK) {
+        OH_LOG_ERROR(LOG_APP, "JSVM GetDataViewInfo fail");
+        return;
+    }
+    OH_LOG_INFO(LOG_APP, "JSVM GetDataViewInfo success, %{public}s: %{public}d", name, value);
+}
 
 // Sample method for OH_JSVM_GetDataviewInfo
 static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
@@ -604,11 +627,10 @@ static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
-    // Convert the second parameter to an int32 number.
     int32_t infoType = 0;
     OH_JSVM_GetValueInt32(env, args[1], &infoType);
     size_t byteLength = 0;
-    void *data;
+    void *data = nullptr;
     JSVM_Value arrayBuffer = nullptr;
     size_t byteOffset = 0;
     // Define an enumeration type whose order and meaning are consistent with the infoType enumeration type on the ArkTS side.
@@ -617,46 +639,32 @@ static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Status status = OH_JSVM_GetDataviewInfo(env, args[0], &byteLength, &data, &arrayBuffer, &byteOffset);
     JSVM_Value result = nullptr;
     switch (infoType) {
-        case BYTE_LENGTH:
+        case BYTE_LENGTH: {
             // Return the queried DataView length.
-            JSVM_Value len;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, byteLength, &len));
-            result = len;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM GetDataViewInfo fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM GetDataViewInfo success, byteLength: %{public}d", byteLength);
-            }
+            JSVM_CALL(OH_JSVM_CreateInt32(env, byteLength, &result));
+            LogGetDataViewInfo(status, "byteLength", byteLength);
             break;
-        case ARRAY_BUFFER:
-            // Check whether the arraybuffer in the DataView info is an ArrayBuffer.
+        }
+        case ARRAY_BUFFER: {
+            // Check whether data in Info of DataView is an ArrayBuffer object.
             bool isArrayBuffer = false;
             JSVM_CALL(OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer));
-            JSVM_Value isArray = nullptr;
-            OH_JSVM_GetBoolean(env, isArrayBuffer, &isArray);
-            result = isArray;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM GetDataViewInfo fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM GetDataViewInfo success, isArrayBuffer: %{public}d", isArrayBuffer);
-            }
+            OH_JSVM_GetBoolean(env, isArrayBuffer, &result);
+            LogGetDataViewInfo(status, "isArrayBuffer", isArrayBuffer);
             break;
-        case BYTE_OFFSET:
+        }
+        case BYTE_OFFSET: {
             // Return the queried DataView offset.
-            JSVM_Value offset;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, byteOffset, &offset));
-            result = offset;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM GetDataViewInfo fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM GetDataViewInfo success, byteOffset: %{public}d", byteOffset);
-            }
+            JSVM_CALL(OH_JSVM_CreateInt32(env, byteOffset, &result));
+            LogGetDataViewInfo(status, "byteOffset", byteOffset);
             break;
+        }
         default:
             break;
     }
     return result;
 }
+
 // GetDataViewInfo register callback
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetDataViewInfo},
