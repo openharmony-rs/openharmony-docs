@@ -53,6 +53,7 @@ createA2dpSrcProfile(): A2dpSourceProfile
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                         |
 |801 | Capability not supported.                |
 
 
@@ -141,7 +142,7 @@ try {
 
 ## CodecInfo<sup>11+</sup>
 
-蓝牙媒体音频使用的编解码器。不同编解码器支持的位深、声道模式、采样率、码率和帧长与音频接收器设备端能力有关。
+蓝牙媒体音频使用的编解码器。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
