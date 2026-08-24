@@ -33,12 +33,6 @@ connect(deviceId: string): void
 
 **系统接口**：此接口为系统接口。
 
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| void | 无返回值，操作异常通过错误码反馈。 |
-
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
@@ -47,7 +41,7 @@ connect(deviceId: string): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，格式为XX:XX:XX:XX:XX:XX，其中X为十六进制字符（0-9，A-F），例如："00:11:22:33:44:55"。 |
+| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
 **错误码**：
 
@@ -85,12 +79,6 @@ disconnect(deviceId: string): void
 
 **系统接口**：此接口为系统接口。
 
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| void | 无返回值，操作异常通过错误码反馈。 |
-
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
@@ -99,7 +87,7 @@ disconnect(deviceId: string): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，格式为XX:XX:XX:XX:XX:XX，其中X为十六进制字符（0-9，A-F），例如："00:11:22:33:44:55"。 |
+| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
 **错误码**：
 

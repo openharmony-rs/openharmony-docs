@@ -93,7 +93,7 @@ import { constant } from '@kit.ConnectivityKit';
 | NETWORK_1_TO_17_UTILIZED                 | 0x0320 | 表示网络负载占用率1%~17%的网络设备。   |
 | NETWORK_17_TO_33_UTILIZED                | 0x0340 | 表示网络负载占用率17%~33%的网络设备。  |
 | NETWORK_33_TO_50_UTILIZED                | 0x0360 | 表示网络负载占用率33%~50%的网络设备。  |
-| NETWORK_60_TO_67_UTILIZED                | 0x0380 | 表示网络负载占用率50%~67%的网络设备。  |
+| NETWORK_60_TO_67_UTILIZED                | 0x0380 | 表示网络负载占用率60%~67%的网络设备。  |
 | NETWORK_67_TO_83_UTILIZED                | 0x03A0 | 表示网络负载占用率67%~83%的网络设备。  |
 | NETWORK_83_TO_99_UTILIZED                | 0x03C0 | 表示网络负载占用率83%~99%的网络设备。  |
 | NETWORK_NO_SERVICE                       | 0x03E0 | 表示网络负载占用率100%的网络设备。     |

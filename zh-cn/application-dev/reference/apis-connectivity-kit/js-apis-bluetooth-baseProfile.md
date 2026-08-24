@@ -48,7 +48,7 @@ type ProfileConnectionState = constant.ProfileConnectionState
 | -------- | ----------------------------- | ---- | ---- | ------------------------------- |
 | deviceId | string                        | 否   | 否   | 对端设备地址，例如："XX:XX:XX:XX:XX:XX"。   |
 | state    | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate)        | 否   | 否   | Profile连接状态。 |
-| cause<sup>12+</sup>| [DisconnectCause](#disconnectcause12) | 否 | 是 | Profile断开连接的原因.|
+| cause<sup>12+</sup>| [DisconnectCause](#disconnectcause12) | 否 | 否 | Profile断开连接的原因。|
 | role| [PanRole](#panrole) | 否 | 是 | 当前对端设备对应的[PAN](../../connectivity/bluetooth/terminology.md#pan)角色。仅PAN Profile连接时返回该字段，非PAN场景下该字段不存在。<br> **起始版本**：26.0.0|
 
 ## DisconnectCause<sup>12+</sup>
@@ -62,9 +62,9 @@ type ProfileConnectionState = constant.ProfileConnectionState
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
 | USER_DISCONNECT            | 0    | 用户主动断开连接。|
-| CONNECT_FROM_KEYBOARD      | 1    | 因连接请求未从键盘侧发起导致断开连接。|
-| CONNECT_FROM_MOUSE         | 2    | 因连接请求未从鼠标侧发起导致断开连接。|
-| CONNECT_FROM_CAR           | 3    | 因连接请求未从车机侧发起导致断开连接。|
+| CONNECT_FROM_KEYBOARD      | 1    | 连接请求需从键盘侧发起。|
+| CONNECT_FROM_MOUSE         | 2    | 连接请求需从鼠标侧发起。|
+| CONNECT_FROM_CAR           | 3    | 连接请求需从车机侧发起。|
 | TOO_MANY_CONNECTED_DEVICES | 4    | 当前连接数量超过上限。|
 | CONNECT_FAIL_INTERNAL      | 5    | 内部错误。|
 
@@ -91,8 +91,8 @@ getConnectedDevices(): Array&lt;string&gt;
 获取和本端设备间已连接Profile的对端设备列表。例如，在蓝牙音频播放应用中，可通过该方法获取当前已连接的A2DP音频设备列表以进行设备展示或管理。
 
 **需要权限**：
-- API version 26.0.0+：ohos.permission.ACCESS_BLUETOOTH（如需获取对端设备真实MAC地址，还需同时申请ohos.permission.GET_BLUETOOTH_PEERS_MAC）
-- API version 10-24：ohos.permission.ACCESS_BLUETOOTH
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -192,8 +192,8 @@ on(type: 'connectionStateChange', callback: Callback&lt;StateChangeParam&gt;): v
 订阅Profile的连接状态变化事件。使用Callback异步回调。例如，在蓝牙音频应用中，当耳机连接或断开时实时更新播放界面状态或提示用户。
 
 **需要权限**：
-- API version 26.0.0+：ohos.permission.ACCESS_BLUETOOTH（如需获取对端设备真实MAC地址，还需同时申请ohos.permission.GET_BLUETOOTH_PEERS_MAC）
-- API version 10-24：ohos.permission.ACCESS_BLUETOOTH
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -213,7 +213,7 @@ on(type: 'connectionStateChange', callback: Callback&lt;StateChangeParam&gt;): v
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：10-24                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
 **示例**：

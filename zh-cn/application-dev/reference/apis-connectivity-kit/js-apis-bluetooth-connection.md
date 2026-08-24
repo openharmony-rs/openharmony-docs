@@ -120,27 +120,6 @@ pairDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 - 若开发者不知道目标设备的[地址类型](js-apis-bluetooth-common.md#bluetoothaddresstype)，建议调用此接口发起配对。
 - 蓝牙配对状态通过[on('bondStateChange')](#connectiononbondstatechange)的回调结果获取。
 
-蓝牙配对典型流程如下图所示：
-
-```mermaid
-sequenceDiagram
-    participant App as 应用
-    participant BT as 蓝牙子系统
-    App->>BT: 订阅 on('bondStateChange')
-    App->>BT: 订阅 on('pinRequired')
-    App->>BT: pairDevice(deviceId)
-    BT-->>App: bondStateChange(BOND_STATE_BONDING)
-    alt 需要PIN码确认
-        BT-->>App: pinRequired(deviceId, pinCode)
-        App->>BT: setDevicePinCode 或 setDevicePairingConfirmation
-    end
-    alt 配对成功
-        BT-->>App: bondStateChange(BOND_STATE_BONDED)
-    else 配对失败
-        BT-->>App: bondStateChange(BOND_STATE_INVALID, cause)
-    end
-```
-
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
@@ -173,17 +152,15 @@ sequenceDiagram
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-// promise
+// callback
 try {
-    connection.pairDevice('11:22:33:44:55:66').then(() => {
-        console.info('pairDevice');
-    }, (error: BusinessError) => {
-        console.error('pairDevice: errCode:' + error.code + ',errMessage' + error.message);
-    })
-
+    connection.pairDevice('11:22:33:44:55:66', (err: BusinessError) => {
+        console.info('pairDevice, device name err:' + JSON.stringify(err));
+    });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
+
 ```
 
 
@@ -234,10 +211,10 @@ pairDevice(deviceId: string): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
-    connection.setDevicePinCode('11:22:33:44:55:66', '12345').then(() => {
-        console.info('setDevicePinCode');
+    connection.pairDevice('11:22:33:44:55:66').then(() => {
+        console.info('pairDevice');
     }, (error: BusinessError) => {
-        console.error('setDevicePinCode: errCode:' + error.code + ',errMessage' + error.message);
+        console.error('pairDevice: errCode:' + error.code + ',errMessage' + error.message);
     })
 
 } catch (err) {
@@ -536,7 +513,7 @@ getRemoteProfileUuids(deviceId: string, callback: AsyncCallback&lt;Array&lt;Prof
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.    |
+|401 | Invalid parameter.    |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -590,7 +567,7 @@ getRemoteProfileUuids(deviceId: string): Promise&lt;Array&lt;ProfileUuids&gt;&gt
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.    |
+|401 | Invalid parameter.    |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -639,7 +616,6 @@ getLocalName(): string
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
 
 **示例**：
@@ -893,13 +869,11 @@ setDevicePinCode(deviceId: string, code: string, callback: AsyncCallback&lt;void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-// promise
+// callback
 try {
-    connection.setRemoteDeviceName('11:22:33:44:55:66', 'RemoteDeviceName').then(() => {
-        console.info('setRemoteDeviceName success');
-    }, (error: BusinessError) => {
-        console.error('setRemoteDeviceName: errCode: ' + error.code + ',errMessage' + error.message);
-    })
+    connection.setDevicePinCode('11:22:33:44:55:66', '12345', (err: BusinessError) => {
+        console.info('setDevicePinCode,device name err: ' + JSON.stringify(err));
+    });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -948,14 +922,16 @@ setDevicePinCode(deviceId: string, code: string): Promise&lt;void&gt;
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+// promise
 try {
-  connection.connectAllowedProfiles('68:13:24:79:4C:8C').then(() => {
-      console.info('connectAllowedProfiles');
-    }, (err: BusinessError) => {
-      console.error('connectAllowedProfiles:errCode' + err.code + ', errMessage: ' + err.message);
-  });
+    connection.setDevicePinCode('11:22:33:44:55:66', '12345').then(() => {
+        console.info('setDevicePinCode');
+    }, (error: BusinessError) => {
+        console.error('setDevicePinCode: errCode:' + error.code + ',errMessage' + error.message);
+    })
+
 } catch (err) {
-  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
 
@@ -1259,10 +1235,8 @@ setRemoteDeviceName(deviceId: string, name: string): Promise&lt;void&gt;
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.            |
-|801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
-|2900099 | Operation failed.                        |
 
 **示例**：
 
@@ -1270,9 +1244,11 @@ setRemoteDeviceName(deviceId: string, name: string): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
-    connection.getLastConnectionTime('11:22:33:44:55:66').then((time: number) => {
-        console.info(`connectionTime: ${time}`);
-    });
+    connection.setRemoteDeviceName('11:22:33:44:55:66', 'RemoteDeviceName').then(() => {
+        console.info('setRemoteDeviceName success');
+    }, (error: BusinessError) => {
+        console.error('setRemoteDeviceName: errCode: ' + error.code + ',errMessage' + error.message);
+    })
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -1286,8 +1262,6 @@ getRemoteDeviceBatteryInfo(deviceId: string): Promise&lt;BatteryInfo&gt;
 获取对端蓝牙设备的电量信息。使用Promise异步回调。
 - 对端蓝牙设备的电量信息变更通过[on('batteryChange')](#connectiononbatterychange12)的回调结果获取。
 - 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取电量信息。
-- 建议仅对已配对的设备调用该方法。
-- 只有支持特定电量信息AT（Attention）命令（包括：+XEVENT和IPHONEACCEV）的设备才支持上报有效的电量信息。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -1315,10 +1289,8 @@ getRemoteDeviceBatteryInfo(deviceId: string): Promise&lt;BatteryInfo&gt;
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.            |
-|801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
-|2900099 | Operation failed.                        |
 
 **示例**：
 
@@ -1339,7 +1311,7 @@ try {
 
 on(type: 'batteryChange', callback: Callback&lt;BatteryInfo&gt;): void
 
-订阅对端设备的电量信息变化事件。使用Callback异步回调。只有支持特定电量信息AT（Attention）命令（包括：+XEVENT和IPHONEACCEV）的设备才支持上报有效的电量信息。
+订阅对端设备的电量信息变化事件。使用Callback异步回调。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -1361,7 +1333,6 @@ on(type: 'batteryChange', callback: Callback&lt;BatteryInfo&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
 **示例**：
@@ -1405,7 +1376,6 @@ off(type: 'batteryChange', callback?: Callback&lt;BatteryInfo&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
 **示例**：
@@ -1482,9 +1452,7 @@ off(type: 'bluetoothDeviceFind', callback?: Callback&lt;Array&lt;string&gt;&gt;)
 
 取消订阅蓝牙设备扫描结果上报事件。
 
-**需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 （ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC）
-- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1578,9 +1546,7 @@ off(type: 'bondStateChange', callback?: Callback&lt;BondStateParam&gt;): void
 
 取消订阅蓝牙配对状态变化事件。
 
-**需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 （ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC）
-- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -1673,9 +1639,7 @@ off(type: 'pinRequired', callback?: Callback&lt;PinRequiredParam&gt;): void
 
 取消订阅配对请求事件。
 
-**需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 （ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC）
-- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -1770,9 +1734,7 @@ off(type: 'discoveryResult', callback?: Callback&lt;Array&lt;DiscoveryResult&gt;
 
 取消订阅蓝牙设备扫描结果上报事件。
 
-**需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 （ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC）
-- API版本18-24：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -2061,7 +2023,7 @@ try {
 
 disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
-断开对端设备支持的Profile（只包括A2DP和HFP）。HID协议的连接生命周期由系统单独管理，无需通过此接口断开。
+断开对端设备支持的Profile（只包括A2DP和HFP）。
 - 需要与接口[connection.connectAllowedProfiles](#connectionconnectallowedprofiles16)配合使用。
 
 **起始版本**：26.0.0
@@ -2099,15 +2061,10 @@ disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 **示例**：
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  connection.disconnectAllowedProfiles('68:13:24:79:4C:8C').then(() => {
-      console.info('disconnectAllowedProfiles success');
-    }, (err: BusinessError) => {
-      console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-  });
+  await connection.disconnectAllowedProfiles('68:13:24:79:4C:8C');
 } catch (err) {
-  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+  console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -2130,7 +2087,7 @@ getVirtualAddressByHash(algorithmType: HashAlgorithmType, hashValue: string): st
 | 参数名     | 类型    | 必填  | 说明                                 |
 | -------- | ------ | ---- | ----------------------------------- |
 | algorithmType | [HashAlgorithmType](#hashalgorithmtype24) | 是   | 哈希算法类型。|
-| hashValue | string | 是   | 哈希值，需根据[algorithmType](#hashalgorithmtype24)对应的算法，使用已配对设备的大写实际MAC地址生成。当algorithmType为HASH_ALGORITHM_SHA256时，通过SHA256算法生成十六进制64位哈希值，取后32位作为输入，哈希值字母不区分大小写。例如："c10b57deb2e1aafd255596e0d4fd6789"。|
+| hashValue | string | 是   | 哈希值，例如："c10b57deb2e1aafd255596e0d4fd6789"。|
 
 **返回值**：
 
@@ -2264,7 +2221,7 @@ try {
 | deviceId | string      | 否    | 否    | 配对中的对端设备地址。 |
 | state    | [BondState](#bondstate)   | 否    | 否    | 配对状态。 |
 | cause<sup>12+</sup>| [UnbondCause](#unbondcause12) | 否 | 否 | 配对失败的原因。|
-| causeMessage | string | 否 | 是 | 配对失败的具体原因，例如：本端业务主动删除配对时，返回：USER_REMOVED。若无具体原因信息，则该字段为空。<br> **起始版本**：26.0.0  |
+| causeMessage | string | 否 | 是 | 配对失败的具体原因，例如：本端业务主动删除配对时，返回：USER_REMOVED。<br> **起始版本**：26.0.0  |
 
 
 ## PinRequiredParam
@@ -2344,8 +2301,8 @@ try {
 | ---------------------------------------- | ---- | --------------- |
 | SCAN_MODE_NONE                           | 0    | 不可发现、不可连接模式。         |
 | SCAN_MODE_CONNECTABLE                    | 1    | 可连接模式。        |
-| SCAN_MODE_GENERAL_DISCOVERABLE           | 2    | 通用可发现模式，在duration持续时间内可被发现，超出后扫描模式重置为SCAN_MODE_CONNECTABLE。    |
-| SCAN_MODE_LIMITED_DISCOVERABLE           | 3    | 有限可发现模式，可被发现的时间受duration参数控制。    |
+| SCAN_MODE_GENERAL_DISCOVERABLE           | 2    | 通用可发现模式，可被长时间发现。    |
+| SCAN_MODE_LIMITED_DISCOVERABLE           | 3    | 有限可发现模式，持续一定时间。    |
 | SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE | 4    | 可连接及通用可发现模式。 |
 | SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE | 5    | 可连接及有限可发现模式。 |
 
@@ -2419,7 +2376,7 @@ try {
 
 枚举，表示哈希算法类型。
 
-哈希算法是一种数学函数，通过对输入数据进行复杂计算，生成一个固定长度的字符串（即哈希值）。常用于数据完整性校验、数字签名等场景。
+哈希算法是一种数学函数，通过对输入数据进行复杂计算，生成一个唯一且固定长度的字符串（即哈希值）。常用于数据完整性校验、数字签名等场景。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 

@@ -24,14 +24,12 @@ import { hfp } from '@kit.ConnectivityKit';
 
 ## HandsFreeAudioGatewayProfile
 
-该实例表示蓝牙通话音频中的[HFP AG](../../connectivity/terminology.md#hfp-ag)角色。
+该实例表示蓝牙通话音频中的[HFP AG](../../connectivity/bluetooth/terminology.md#hfp-ag)角色‌。
 - 该类继承于[BaseProfile](js-apis-bluetooth-hfp.md#baseprofile)，因此可以使用其父类中的方法。
 - 使用该类的接口前，需通过[createHfpAgProfile](js-apis-bluetooth-hfp.md#hfpcreatehfpagprofile)接口构造该类的实例。
-- 和该实例角色相对应的是[HF](../../connectivity/terminology.md#hf)角色。
+- 和该实例角色相对应的是[HF](../../connectivity/bluetooth/terminology.md#hf)角色。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
-
-**模型约束**：此接口仅可在Stage模型下使用。
 
 
 ### connect
@@ -48,19 +46,11 @@ connect(deviceId: string): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**返回值：**
-
-| 类型   | 说明                 |
-| ------ | -------------------- |
-| void   | 无返回值，用于异步操作。 |
-
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备的MAC地址。取值原则：格式为XX:XX:XX:XX:XX:XX，X为十六进制字符（0-9、A-F、a-f），例如："08:00:27:AB:CD:EF"。 |
+| deviceId | string | 是    | 远端设备的MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
 **错误码**：
 
@@ -75,7 +65,7 @@ connect(deviceId: string): void
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900004 | Profile not supported.                |
-|2900099 | Internal system error. For example, IPC error.          |
+|2900099 | Operation failed.                        |
 
 **示例**：
 
@@ -104,19 +94,11 @@ disconnect(deviceId: string): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**返回值：**
-
-| 类型   | 说明                 |
-| ------ | -------------------- |
-| void   | 无返回值，用于异步操作。 |
-
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备的MAC地址。取值原则：格式为XX:XX:XX:XX:XX:XX，X为十六进制字符（0-9、A-F、a-f），例如："08:00:27:AB:CD:EF"。 |
+| deviceId | string | 是    | 远端设备的MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
 **错误码**：
 
@@ -131,7 +113,7 @@ disconnect(deviceId: string): void
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900004 | Profile not supported.                |
-|2900099 | Internal system error. For example, IPC error.          |
+|2900099 | Operation failed.                        |
 
 **示例**：
 
@@ -148,10 +130,10 @@ try {
 
 ## HandsFreeHfProfile
 
-该实例表示蓝牙通话音频中的[HF](../../connectivity/terminology.md#hf)角色。
+该实例表示蓝牙通话音频中的[HF](../../connectivity/bluetooth/terminology.md#hf)角色‌。
 - 该类继承于[BaseProfile](js-apis-bluetooth-hfp.md#baseprofile)，因此可以使用其父类中的方法。
 - 使用该类的接口前，需通过[createHfpHfProfile](js-apis-bluetooth-hfp.md#hfpcreatehfphfprofile)接口构造该类的实例。
-- 和该实例角色相对应的是[HFP AG](../../connectivity/terminology.md#hfp-ag)角色。
+- 和该实例角色相对应的是[HFP AG](../../connectivity/bluetooth/terminology.md#hfp-ag)角色。
 
 **起始版本**： 26.0.0
 
@@ -178,17 +160,11 @@ connect(deviceId: string): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**返回值：**
-
-| 类型   | 说明                 |
-| ------ | -------------------- |
-| void   | 无返回值，用于异步操作。 |
-
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备的MAC地址。取值原则：格式为XX:XX:XX:XX:XX:XX，X为十六进制字符（0-9、A-F、a-f），例如："08:00:27:AB:CD:EF"。 |
+| deviceId | string | 是    | 远端设备的MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
 **错误码**：
 
@@ -198,12 +174,11 @@ connect(deviceId: string): void
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900004 | Profile not supported.                |
-|2900099 | Operation failed.                        |
+|2900099 | Internal system error. For example, IPC error.     |
 
 **示例**：
 
@@ -221,7 +196,7 @@ try {
 
 disconnect(deviceId: string): void
 
-断开连接设备的HFP服务。例如，在蓝牙耳机或车载设备需要主动断开与手机的免提通话连接时使用。
+断开连接设备的HFP服务。
 
 需要通过[BaseProfile.on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)接口注册回调，感知设备的HFP Profile的连接状态变化。
 
@@ -235,17 +210,11 @@ disconnect(deviceId: string): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**返回值：**
-
-| 类型   | 说明                 |
-| ------ | -------------------- |
-| void   | 无返回值，用于异步操作。 |
-
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备的MAC地址。取值原则：格式为XX:XX:XX:XX:XX:XX，X为十六进制字符（0-9、A-F、a-f），例如："08:00:27:AB:CD:EF"。 |
+| deviceId | string | 是    | 远端设备的MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
 **错误码**：
 
@@ -255,12 +224,11 @@ disconnect(deviceId: string): void
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900004 | Profile not supported.                |
-|2900099 | Operation failed.                        |
+|2900099 | Internal system error. For example, IPC error.          |
 
 **示例**：
 

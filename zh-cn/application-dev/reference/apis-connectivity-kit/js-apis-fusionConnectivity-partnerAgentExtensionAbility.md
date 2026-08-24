@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-PartnerAgentExtensionAbility是外设互通扩展能力的基础类，提供设备发现与扩展能力销毁的通知功能，需要应用继承实现。适用于需要及时感知已注册外设被发现的状态并进行业务联动的场景，帮助应用通过系统通知被动获取设备状态变化，无需主动轮询，提升跨设备协同效率。应用模块级配置文件[module.json5](../../quick-start/module-configuration-file.md) 中的[extensionabilities](../../quick-start/module-configuration-file.md#extensionabilities标签)的type属性应该配置为partnerAgent。
+PartnerAgentExtensionAbility是外设互通扩展能力的基础类，提供设备发现与设备下线的通知功能，需要应用继承实现。应用模块级配置文件[module.json5](../../quick-start/module-configuration-file.md) 中的[extensionabilities](../../quick-start/module-configuration-file.md#extensionabilities标签)的type属性应该配置为partnerAgent。
 
 > **说明：**
 >
@@ -51,7 +51,7 @@ type PartnerAgentExtensionAbilityDestroyReason = partnerAgent.PartnerAgentExtens
 | ------------------- | ------------------- |
 | [partnerAgent.PartnerAgentExtensionAbilityDestroyReason](js-apis-fusionConnectivity-partnerAgent.md#partneragentextensionabilitydestroyreason) | PartnerAgentExtensionAbility被销毁的原因。 |
 
-## PartnerAgentExtensionAbility 
+## PartnerAgentExtensionAbility
 PartnerAgentExtensionAbility提供设备发现与扩展能力销毁的通知功能，本能力继承自[ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md)，需要应用继承实现。
 
 ### 属性
