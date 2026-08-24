@@ -120,6 +120,27 @@ pairDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 - 若开发者不知道目标设备的[地址类型](js-apis-bluetooth-common.md#bluetoothaddresstype)，建议调用此接口发起配对。
 - 蓝牙配对状态通过[on('bondStateChange')](#connectiononbondstatechange)的回调结果获取。
 
+蓝牙配对典型流程如下图所示：
+
+```mermaid
+sequenceDiagram
+    participant App as 应用
+    participant BT as 蓝牙子系统
+    App->>BT: 订阅 on('bondStateChange')
+    App->>BT: 订阅 on('pinRequired')
+    App->>BT: pairDevice(deviceId)
+    BT-->>App: bondStateChange(BOND_STATE_BONDING)
+    alt 需要PIN码确认
+        BT-->>App: pinRequired(deviceId, pinCode)
+        App->>BT: setDevicePinCode 或 setDevicePairingConfirmation
+    end
+    alt 配对成功
+        BT-->>App: bondStateChange(BOND_STATE_BONDED)
+    else 配对失败
+        BT-->>App: bondStateChange(BOND_STATE_INVALID, cause)
+    end
+```
+
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
@@ -374,6 +395,7 @@ getRemoteDeviceName(deviceId: string, alias?: boolean): string
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -422,7 +444,8 @@ getRemoteDeviceClass(deviceId: string): DeviceClass
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-|201 | Permission denied.                 |
+|201 |Permission denied.<br>适用版本：10-17 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
