@@ -100,7 +100,7 @@ export class MyFenceExtensionAbility extends FenceExtensionAbility {
 ```
 ### onDestroy
 
-onDestroy(): void;
+onDestroy(): void
 
 接收FenceExtensionAbility的销毁事件并处理，会在FenceExtensionAbility销毁前回调。
 
