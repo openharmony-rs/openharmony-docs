@@ -20,7 +20,7 @@ type MemberType = number | string | boolean
 
 成员类型为下表类型的并集。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 类型 | 说明 |
 | ---- | ---- |
@@ -34,7 +34,7 @@ type PhotoAssetParams = Record\<string, MemberType\>[]
 
 文件属性名称及其值的Record类型数组。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 类型 | 说明 |
 | ---- | ---- |
@@ -50,7 +50,7 @@ type OperationValueType = number | string | boolean
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 类型                    | 说明                          |
 | ---------------------- | -------------------------------- |

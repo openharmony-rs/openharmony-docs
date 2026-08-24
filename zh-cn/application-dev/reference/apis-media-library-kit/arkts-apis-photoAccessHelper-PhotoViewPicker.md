@@ -11,7 +11,7 @@ PhotoViewPicker是图库选择器对象，用于拉起系统图库选择界面�
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 如果需要重复拉起PhotoViewPicker，需要先销毁前一个PhotoViewPicker实例，可通过NavDestination销毁或等待进程销毁。
+> - 如果需要重复拉起PhotoViewPicker，需要先销毁前一个PhotoViewPicker实例，可通过NavDestination销毁或跟随进程销毁。
 
 ## 导入模块
 

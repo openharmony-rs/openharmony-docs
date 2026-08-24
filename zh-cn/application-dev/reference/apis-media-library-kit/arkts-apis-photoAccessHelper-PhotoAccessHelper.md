@@ -1772,8 +1772,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | undefined = undefined;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     if (asset === undefined) {
       console.error('asset not exist');
@@ -1790,7 +1791,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.error(`fetch failed, error: ${err.code}, ${err.message}`);
   } finally {
     // 使用完毕后需要释放资源
-    fetchResult.close();
+    fetchResult?.close();
   }
 }
 ```
@@ -1848,8 +1849,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | undefined = undefined;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     if (asset === undefined) {
       console.error('asset not exist');
@@ -1861,7 +1863,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.error(`createDeleteRequest failed with error: ${err.code}, ${err.message}`);
   } finally {
     // 使用完毕后需要释放资源
-    fetchResult.close();
+    fetchResult?.close();
   }
 }
 ```

@@ -49,8 +49,8 @@ title参数的规格如下：
 
 | 名称                   | 类型                        | 只读 | 可选 | 说明                                         |
 | ---------------------- |----------------------------| ---- | ---- | ------------------------------------------- |
-| title           | string | 否   | 是   | 图片或者视频的标题。不传入时由系统自动生成标题。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| subtype<sup>12+</sup>           | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12) | 否   | 是   | 图片或者视频的文件子类型。不传入时默认为DEFAULT。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| title           | string | 否   | 是   | 图片或者视频的标题。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| subtype<sup>12+</sup>           | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12) | 否   | 是   | 图片或者视频的文件子类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## FetchOptions
 
@@ -71,9 +71,9 @@ title参数的规格如下：
 
 | 名称                   | 类型                        | 只读 | 可选 | 说明                                         |
 | ---------------------- |----------------------------| ---- | ---- | ------------------------------------------- |
-| deliveryMode           | [DeliveryMode](arkts-apis-photoAccessHelper-e.md#deliverymode11) | 否   | 否   | 请求资源分发模式，可以指定对于该资源的请求策略，可被配置为快速模式，高质量模式，均衡模式三种策略。 |
-| compatibleMode<sup>15+</sup>      | [CompatibleMode](arkts-apis-photoAccessHelper-e.md#compatiblemode15) | 否   | 是   | 配置HDR视频资源转码模式，可指定配置为转码和不转码两种策略。默认为原视频资源内容模式即不转码。配置为转码模式时，mediaAssetProgressHandler设置的进度回调才会生效。 |
-| mediaAssetProgressHandler<sup>15+</sup> | [MediaAssetProgressHandler](arkts-apis-photoAccessHelper-MediaAssetProgressHandler.md) | 否   | 是   | 配置HDR视频转码为SDR视频时的进度级回调。仅在compatibleMode配置为转码模式时生效。 |
+| deliveryMode           | [DeliveryMode](arkts-apis-photoAccessHelper-e.md#deliverymode11) | 否   | 否   | 请求资源分发模式，可配置为快速模式、高质量模式、均衡模式三种策略。                 |
+| compatibleMode<sup>15+</sup>      | [CompatibleMode](arkts-apis-photoAccessHelper-e.md#compatiblemode15) | 否   | 是   | 配置HDR视频资源转码模式，可指定配置为转码和不转码两种策略。默认为原视频资源内容模式即不转码。 |
+| mediaAssetProgressHandler<sup>15+</sup> | [MediaAssetProgressHandler](arkts-apis-photoAccessHelper-MediaAssetProgressHandler.md) | 否   | 是   | 配置HDR视频转码为SDR视频时的进度级回调。<br>当需要监控HDR视频转码进度时配置此参数。不填写时无法获取转码进度。 |
 
 ## ChangeData
 
@@ -141,7 +141,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称    | 类型                        | 只读 | 可选 | 说明                                                         |
 | ---- | ------- | ---- |  ---- | ----- |
-| title| string  | 否 | 是 | 图片或者视频的标题，不传入时由系统生成。参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度范围为1~255字符（资产文件名为标题+扩展名）。<br>- 不允许使用的字符，包括：. \ / : * ? " ' ` < > \| { } [ ]  |
+| title              | string  | 否 | 是 | 图片或者视频的标题。<br>不传入时由系统生成，参数规格如下：<br>- 不应包含扩展名。<br>- 不允许使用的字符，包括：. \ / : * ? " ' ` < > \| { } [ ]<br>- 由于文件名由标题 + 扩展名组成，文件名字符串长度范围为[1, 255]字符，因此标题长度不应超过255减去扩展名长度。  |
 | fileNameExtension  | string  | 否 | 否 | 文件扩展名，取值原则：IMAGE类型支持'jpg'、'png'、'gif'、'heif'等，VIDEO类型支持'mp4'、'mov'等。例如'jpg'。  |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)  | 否 | 否 | 创建的文件类型[PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)，设置为IMAGE时创建图片文件，设置为VIDEO时创建视频文件。 |
 | subtype  | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)  | 否 | 是 | 图片或者视频的文件子类型[PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)，不传入时默认为DEFAULT。  |
@@ -160,7 +160,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | ------------------ | ------- | ---- | ---- | ----- |
 | title              | string  | 否 | 是 | 图片或者视频的标题。<br>不传入时由系统生成，参数规格如下：<br>- 不应包含扩展名。<br>- 不允许使用的字符，包括：. \ / : * ? " ' ` < > \| { } [ ]<br>- 由于文件名由标题 + 扩展名组成，文件名字符串长度范围为[1, 255]字符，因此标题长度不应超过255减去扩展名长度。  |
 | fileNameExtension  | string  | 否 | 否 | 文件扩展名，取值原则：IMAGE类型支持'jpg'、'png'、'gif'、'heif'等，VIDEO类型支持'mp4'、'mov'等。例如'jpg'。 |
-| photoType          | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)  | 否 | 否 | 创建的媒体文件类型[PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)，包含IMAGE或VIDEO。  |
+| photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)  | 否 | 否 | 创建的文件类型[PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)，设置为IMAGE时创建图片文件，设置为VIDEO时创建视频文件。 |
 
 ## PhotoAssetChangeInfo<sup>20+</sup>
 

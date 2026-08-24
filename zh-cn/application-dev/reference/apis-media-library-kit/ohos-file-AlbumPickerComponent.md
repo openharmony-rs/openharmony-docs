@@ -8,7 +8,7 @@
 
 AlbumPickerComponent适用于需要在应用内展示相册列表让用户选择相册浏览图片或视频的场景，例如社交媒体应用中让用户选择相册进行照片上传。通过此组件，应用无需申请相册访问权限即可访问公共目录中的相册列表，相比传统需要申请权限的相册访问方案，简化了权限申请流程，降低了开发成本，提升了用户体验。
 
-需配合[PhotoPickerComponent](ohos-file-PhotoPickerComponent.md)一起使用。用户选择相册后，系统触发onAlbumClick回调并将AlbumInfo（包含相册uri和名称）传递给应用；应用需通过AlbumPickerController或其他方式将uri传递给PhotoPickerComponent以刷新显示对应相册的图片和视频。详细协作机制请参见PhotoPickerComponent文档。
+需配合[PhotoPickerComponent](ohos-file-PhotoPickerComponent.md)一起使用。用户选择相册后，系统触发onAlbumClick回调并将AlbumInfo（包含相册URI和名称）传递给应用；应用需通过AlbumPickerController或其他方式将uri传递给PhotoPickerComponent以刷新显示对应相册的图片和视频。详细协作机制请参见PhotoPickerComponent文档。
 **协作流程图**
 ```mermaid
 graph LR
@@ -50,7 +50,7 @@ AlbumPickerComponent({albumPickerOptions?: AlbumPickerOptions, onAlbumClick?: (a
 | 名称                 | 类型                                                  | 必填  | 说明                              |
 |--------------------|-----------------------------------------------------|-----|---------------------------------|
 | albumPickerOptions | [AlbumPickerOptions](#albumpickeroptions)           | 否   | AlbumPicker的配置信息。若不传入此参数，则使用默认配置。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。              |
-| onAlbumClick       | (albumInfo: [AlbumInfo](#albuminfo)) => boolean     | 否   | 用户选择某个相册时产生的回调事件，将相册信息（AlbumInfo，包含 uri 和 albumName），应用可通过此回调通知PhotoPickerComponent刷新。若不传入此参数，则不监听相册选择事件。返回值无实际作用，可返回true或false。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    |
+| onAlbumClick       | (albumInfo: [AlbumInfo](#albuminfo)) => boolean     | 否   | 用户选择某个相册时产生的回调事件，将相册信息（AlbumInfo，包含URI和albumName），应用可通过此回调通知PhotoPickerComponent刷新。若不传入此参数，则不监听相册选择事件。返回值无实际作用，可返回true或false。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    |
 | onEmptyAreaClick<sup>13+</sup>   | [EmptyAreaClickCallback](#emptyareaclickcallback13) | 否   | 点击相册组件空白区域时产生的回调事件，并将该次点击通知给应用。若不传入此参数，则不监听空白区域点击事件。<br> **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | albumPickerController<sup>20+</sup>   | [AlbumPickerController](#albumpickercontroller20) | 否   | 应用可通过AlbumPickerController向组件发送数据。若不传入此参数，则无法通过控制器控制组件。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 

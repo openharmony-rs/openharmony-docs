@@ -23,7 +23,7 @@ PhotoPickerComponent不支持嵌套，且不应在其上覆盖设置overlay属�
 
 > **说明：**
 >
-> - 该组件从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。。
+> - 该组件从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 该组件不支持[同层渲染](../../../application-dev/web/web-same-layer.md)。
 
 ## 导入模块
@@ -63,10 +63,10 @@ PhotoPickerComponent({ pickerOptions?: PickerOptions, onSelect?: (uri: string) =
 | 名称                      | 类型                                                                               | 必填  | 装饰器类型      | 说明                                                                                                                                                                                                                                                                                                                                                            |
 |-------------------------|----------------------------------------------------------------------------------|-----|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | pickerOptions              | [PickerOptions](#pickeroptions)                                                  | 否   | - | Picker配置参数信息。若不传入此参数，则使用PickerOptions的默认配置。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                     |
-| onSelect                | (uri: string) => void                                                            | 否   | - | 用户在Picker组件中勾选图片时产生的回调事件，将图片uri传递给应用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                            |
-| onDeselect              | (uri: string) => void                                                            | 否   | - | 用户在Picker组件中取消勾选图片时产生的回调事件，同时也会将图片uri传递给应用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                      |
+| onSelect                | (uri: string) => void                                                            | 否   | - | 用户在Picker组件中勾选图片时产生的回调事件，将图片URI传递给应用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                            |
+| onDeselect              | (uri: string) => void                                                            | 否   | - | 用户在Picker组件中取消勾选图片时产生的回调事件，同时也会将图片URI传递给应用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                      |
 | onItemClicked           | (itemInfo: [ItemInfo](#iteminfo), clickType: [ClickType](#clicktype)) => boolean | 否   | - | 用户在Picker组件中点击宫格产生的回调事件。<br>点击图片（缩略图宫格）时，返回值为true则勾选此图片，否则不响应勾选，uri不授权；点击相机宫格，返回值为true则拉起系统相机，否则不拉起相机，由应用自行处理。<br>**说明：** 此回调与onItemClickedNotify均可处理点击事件，如同时设置两者，优先触发onItemClickedNotify。<br>**注意：**<br>回调中应避免执行长耗时操作。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
-| onItemClickedNotify<sup>23+</sup> | [ItemClickedNotifyCallback](#itemclickednotifycallback23) | 否   | - | 用户在Picker组件中点击宫格产生的回调事件。<br>应用可执行自身是否选中逻辑，需要配合addData方法一同使用，通过SET_ITEM_CLICK_RESULT进行选中或不选中。若未设置选中结果，在2秒或PhotoPicker被关闭时取消授权。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**与onItemClicked的关系**：onItemClicked返回boolean直接决定是否勾选，适用于简单的勾选控制；onItemClickedNotify返回void，需配合addData方法设置选中结果，适用于需要自定义选中逻辑的场景。两者不宜同时设置。|
+| onItemClickedNotify<sup>23+</sup> | [ItemClickedNotifyCallback](#itemclickednotifycallback23) | 否   | - | 用户在Picker组件中点击宫格产生的回调事件。<br>应用可执行自身是否选中逻辑，需要配合addData方法一同使用，通过SET_ITEM_CLICK_RESULT进行选中或不选中。若未设置选中结果，在2秒或PhotoPicker被关闭时取消授权。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**与onItemClicked的关系：**onItemClicked返回boolean直接决定是否勾选，适用于简单的勾选控制；onItemClickedNotify返回void，需配合addData方法设置选中结果，适用于需要自定义选中逻辑的场景。两者不宜同时设置。|
 | onPinchGridSwitched<sup>23+</sup>           |  [PinchGridSwitchedCallback](#pinchgridswitchedcallback23)  | 否   | - | 宫格捏合时产生的回调事件。仅在[GridPinchModeType](arkts-apis-photoAccessHelper-e.md#gridpinchmodetype23)配置为FULL_FUNCTION_GRID时被触发。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。   | 
 | onEnterPhotoBrowser     | (photoBrowserInfo: [PhotoBrowserInfo](#photobrowserinfo)) => boolean             | 否   | - | 点击进入大图时产生的回调事件，将大图相关信息报给应用。返回值无实际作用，可返回true或false。<br>**说明：** 当PickerOptions.isSlidingSupported设为false时，宫格缩略图不响应点击操作，本回调不会触发。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                     |
 | onExitPhotoBrowser      | (photoBrowserInfo: [PhotoBrowserInfo](#photobrowserinfo)) => boolean             | 否   | - | 退出大图时产生的回调事件，将大图相关信息报给应用。返回值无实际作用，可返回true或false。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                       |
@@ -296,11 +296,11 @@ private isOnClickedNotify: boolean = false;
 
     // 从this.clickedUris获取这些URI，后续在调用pickerController.addData()设置宫格item选中时使用。
     getClickedUris(): ClickResult[] {
-        let uris: ClickResultEx[] = [];
-        this.clickedUris.forEach((clickResult: ClickResultEx, uri: string) => {
-          uris.push(clickResult)
-        })
-        return uris;
+      let clickResultEx: ClickResultEx[] = [];
+      this.clickedUris.forEach((clickResult: ClickResultEx, uri: string) => {
+        clickResultEx.push(clickResult)
+      })
+      return clickResultEx;
     }
 
     build() {
@@ -601,8 +601,8 @@ replacePhotoPickerPreview(originalUri: string, newUri: string, callback: AsyncCa
 
 | 参数名         | 类型                     |     必填     | 说明                |
 |-------------|----------------------------| -------------- |-------------------|
-| originalUri     | string  | 是 | 原uri，将会被替换掉的uri。 |
-| newUri  | string   | 是 | 新uri，即替换后的uri。期望在photoPicker上替换originalUri显示的、暂存在应用沙箱的图片或视频的uri。      |
+| originalUri     | string  | 是 | 原URI，将会被替换掉的URI。 |
+| newUri  | string   | 是 | 新URI，即替换后的URI。期望在photoPicker上替换originalUri显示的、暂存在应用沙箱的图片或视频的URI。      |
 | callback   | AsyncCallback&lt;void&gt;   | 是 | 调用接口完成替换后的回调。      |
 
 ### saveTrustedPhotoAssets<sup>15+</sup>
