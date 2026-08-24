@@ -26,7 +26,7 @@ import { connection } from '@kit.ConnectivityKit';
 
 pairCredibleDevice(deviceId: string, transport: BluetoothTransport, callback: AsyncCallback&lt;void&gt;): void
 
-向可信的远端设备发起蓝牙配对。通过非蓝牙扫描的方式（例如NFC等）获取到外设的地址，可以通过该接口发起配对。使用Callback异步回调。蓝牙配对状态通过on('bondStateChange')的回调结果获取。
+向可信的远端设备发起蓝牙配对。通过非蓝牙扫描的方式（例如NFC等）获取到外设的地址，可以通过该接口发起配对。使用Callback异步回调。蓝牙配对状态通过[on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange)的回调结果获取。
 
 **系统接口**：此接口为系统接口。
 
@@ -79,7 +79,7 @@ try {
 
 pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Promise&lt;void&gt;
 
-向可信的远端设备发起蓝牙配对。通过非蓝牙扫描的方式（例如NFC等）获取到外设的地址，可以通过该接口发起配对。使用Promise异步回调。蓝牙配对状态通过on('bondStateChange')的回调结果获取。
+向可信的远端设备发起蓝牙配对。通过非蓝牙扫描的方式（例如NFC等）获取到外设的地址，可以通过该接口发起配对。使用Promise异步回调。蓝牙配对状态通过[on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange)的回调结果获取。
 
 **系统接口**：此接口为系统接口。
 
@@ -391,7 +391,7 @@ getLocalProfileUuids(): Promise&lt;Array&lt;ProfileUuids&gt;&gt;
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
-|   Promise&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | Promise对象，返回本地设备的ProfileUuids数组。 |
+|   Promise&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | Promise对象，返回本端设备的ProfileUuids数组。 |
 
 **错误码**：
 
@@ -536,9 +536,10 @@ try {
 
 getRemoteProductId(deviceId: string): string
 
-获取对端蓝牙设备的Product ID。从API version 16开始不再校验ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH权限。
+获取对端蓝牙设备的Product ID。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH（从API version 16开始不再校验该权限）
+**需要权限**：
+- API版本11-15：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统接口**：此接口为系统接口。
 
@@ -638,7 +639,8 @@ getRemoteDeviceType(deviceId: string): Promise&lt;DeviceType&gt;
 
 **系统接口**：此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH（从API version 18开始不再校验该权限）
+**需要权限**：
+- API版本12-17：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 

@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-map模块提供了基于蓝牙消息访问配置（MAP，Message Access Profile）协议访问远端设备消息（如短信、邮件等）相关功能的方法，支持断开MAP服务连接、设置和获取消息访问权限等能力，适用于需要通过蓝牙与远端设备进行消息数据交互的场景。
+map模块提供了基于蓝牙消息访问配置（[MAP](../../connectivity/bluetooth/terminology.md#map)，Message Access Profile）协议访问远端设备消息（如短信、邮件等）相关功能的方法，支持断开MAP服务连接、设置和获取消息访问权限等能力，适用于需要通过蓝牙与远端设备进行消息数据交互的场景。
 
 > **说明：**
 >

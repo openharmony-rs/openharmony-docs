@@ -33,7 +33,7 @@ GATT client端类，提供了和server端进行连接和数据传输等操作方
 
 writeCharacteristicValueWithContext(characteristic: BLECharacteristic, writeType: GattWriteType): Promise&lt;GattRspContext&gt;
 
-client端向指定的server端特征值写入数据，适用于需要获取server端写入响应信息的应用场景（如设备配置指令下发、健康数据同步等）。使用Promise异步回调。<br>
+client端向指定的server端特征值写入数据。使用Promise异步回调。<br>
 - 与[writeCharacteristicValue](js-apis-bluetooth-ble.md#writecharacteristicvalue)接口不同，此接口新增了返回server端响应信息的功能。在完成特征值写入操作后，调用方可以获取本端接收到server端回复消息的时间戳等信息。
 - 为获取server端的响应信息，此接口仅支持writeType为[WRITE](js-apis-bluetooth-ble.md#gattwritetype)的写入模式。
 - 需要先调用[getServices](js-apis-bluetooth-ble.md#getservices)，获取到server端所有支持的能力，且这些能力中需包含指定的入参特征值UUID；否则会写入失败。<br>

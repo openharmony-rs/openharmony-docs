@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供不同的蓝牙技术协议的基础公共方法，为A2DP、HFP、PAN等蓝牙Profile提供连接状态查询、连接状态订阅与取消订阅等公共能力，适用于需要在应用中统一管理多种蓝牙Profile连接状态的场景。
+本模块提供不同的蓝牙技术协议的基础公共方法，为[A2DP](../../connectivity/bluetooth/terminology.md#a2dp)、[HFP](../../connectivity/bluetooth/terminology.md#hfp)、[PAN](../../connectivity/bluetooth/terminology.md#pan)等蓝牙[Profile](../../connectivity/bluetooth/terminology.md#profile)提供连接状态查询、连接状态订阅与取消订阅等公共能力，适用于需要在应用中统一管理多种蓝牙Profile连接状态的场景。
 
 > **说明：**
 >
@@ -20,7 +20,7 @@ import { baseProfile } from '@kit.ConnectivityKit';
 ```
 ## BaseProfile
 
-基础Profile接口定义，提供订阅和获取连接状态等公共能力。如：[A2dpSourceProfile](js-apis-bluetooth-a2dp.md#a2dpsourceprofile)、[HandsFreeAudioGatewayProfile](js-apis-bluetooth-hfp.md#handsfreeaudiogatewayprofile)等[Profile](../../connectivity/bluetooth/terminology.md#profile)类型都继承于该类。
+基础Profile接口定义，提供订阅和获取连接状态等公共能力。如：[A2dpSourceProfile](js-apis-bluetooth-a2dp.md#a2dpsourceprofile)、[HandsFreeAudioGatewayProfile](js-apis-bluetooth-hfp.md#handsfreeaudiogatewayprofile)等Profile类型都继承于该类。
 
 ## ProfileConnectionState
 

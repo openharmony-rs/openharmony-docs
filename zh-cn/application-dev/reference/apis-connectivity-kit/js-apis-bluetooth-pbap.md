@@ -7,7 +7,8 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供基于电话簿访问协议（Phone Book Access Profile，[PBAP](../../connectivity/bluetooth/terminology.md#pbap)）的蓝牙电话簿访问能力，支持创建PSE服务端实例、获取设备间蓝牙电话簿服务连接状态等，适用于本端设备作为PSE对外提供电话簿访问服务的场景，可帮助开发者快速实现蓝牙电话簿的共享与连接管理功能。
+本模块提供基于电话簿访问协议（Phone Book Access Profile，[PBAP](../../connectivity/bluetooth/terminology.md#pbap)）的蓝牙电话簿访问能力，支持创建[PSE](../../connectivity/bluetooth/terminology.md#pse)
+服务端实例、获取设备间蓝牙电话簿服务连接状态等，适用于本端设备作为PSE对外提供电话簿访问服务的场景，可帮助开发者快速实现蓝牙电话簿的共享与连接管理功能。
 
 > **说明：**
 >
@@ -43,7 +44,7 @@ createPbapServerProfile(): PbapServerProfile
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
-|[PbapServerProfile](#pbapserverprofile) | 返回PSE实例。<br>- 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。<br>- 和该实例角色相对应的是[PCE](../../connectivity/bluetooth/terminology.md#pce)角色。 |
+|PbapServerProfile | 返回PSE实例。<br>- 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。<br>- 和该实例角色相对应的是[PCE](../../connectivity/bluetooth/terminology.md#pce)角色。 |
 
 **错误码**：
 
