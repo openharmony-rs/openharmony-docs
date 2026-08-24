@@ -5,8 +5,8 @@
 <!--Owner: @chenkun613227-->
 <!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=967d5c9e466e5ee21347335d5ae1cf0c051f0215 translatedAt=2026-08-11T01:54:28.227Z pushedAt=2026-08-11T13:06:49.802Z -->
+<!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=9debe03e456cd9546017cca228787eecf595247b translatedAt=2026-08-22T02:10:02.740Z pushedAt=2026-08-22T06:48:51.618Z -->
 
 Screen capture is mainly used to record the main screen.
 

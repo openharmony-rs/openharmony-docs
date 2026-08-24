@@ -6,11 +6,11 @@
 <!--Designer: @milkbread123-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=8524fb94d9fdbb23f729551fe489ee4015dca550 translatedAt=2026-07-31T01:31:31.256Z pushedAt=2026-07-31T07:22:55.501Z -->
+<!-- md-trans-meta sourceCommit=bdbc00fc6ec9fe9fee59a762012ca6578bd6f053 translatedAt=2026-08-22T01:24:25.109Z pushedAt=2026-08-22T02:27:51.156Z -->
 
 hidumper is a command line tool used to export system information. It can analyze the usage of system resources such as CPU, memory, and storage, query the running status of system services, and locate resource usage exceptions and communication problems.
 
-Based on the application scenarios supported by hidumper, this topic describes the following basic capabilities: querying memory, CPU usage, system capabilities, process, storage, and system information, obtaining system fault logs, exporting inter-process communication records, and compressing and dumping exported information.
+Based on the application scenarios supported by hidumper, this topic describes the following basic capabilities: querying memory, CPU usage, system capabilities, process, storage, and system information, obtaining system fault logs, exporting inter-process communication (IPC) records, and compressing and dumping exported information.
 
 For FAQs about hidumper, see [FAQs](#faqs).
 
@@ -333,7 +333,8 @@ Statistics
 
 | Field| Description|
 | -------- | -------- |
-| Counts | Number of occurrences of the same memory segment.|
+| Name | Name of the virtual memory mapping. |
+| Counts | Number of occurrences of memory segments with the same name. |
 | Category | Memory category.|
 
 Run the **hidumper --mem-smaps pid -v** command to obtain the detailed memory usage of a specified process. This command directly prints all memory information of the process and does not perform secondary processing on the same memory information.
@@ -1477,7 +1478,7 @@ StopIpcStatistics pid:1473 success
 
 ## Compressing Exported Information
 
-HiDiumper provides the **--zip** command to export any type of exported information into a ZIP file in **/data/log/hidumper**. This command can be combined with other commands, and the file is named with the current timestamp, as shown in the following example.
+hidumper provides the **--zip** command to export any type of exported information into a ZIP file in **/data/log/hidumper**. This command can be combined with other commands, and the file is named with the current timestamp, as shown in the following example.
 
 ```shell
 $ hidumper --zip

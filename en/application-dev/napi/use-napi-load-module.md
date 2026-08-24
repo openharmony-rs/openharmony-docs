@@ -6,7 +6,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=2cc827181a31e0a77238ca42eb3b41991d5fd686 translatedAt=2026-08-12T06:42:33.552Z pushedAt=2026-08-12T11:16:22.960Z -->
+<!-- md-trans-meta sourceCommit=ce54139d1685b975f701d518f7149cf8c16360b0 translatedAt=2026-08-22T02:13:45.554Z pushedAt=2026-08-22T06:57:17.626Z -->
 
 ## **Scenario**
 

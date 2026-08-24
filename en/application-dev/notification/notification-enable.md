@@ -6,15 +6,15 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=87516eb2d53d74e50d8d0d5e2de34178ba62e0e2 translatedAt=2026-08-13T03:11:29.048Z pushedAt=2026-08-13T07:37:29.950Z -->
+<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:18:08.382Z pushedAt=2026-08-22T07:07:04.040Z -->
 
-An app must obtain user authorization before it can send notifications. Before publishing a notification, call [requestEnableNotification()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10-1) to display a dialog box for the user to choose whether to allow notifications. After the user denies authorization, the dialog box cannot be displayed again through this API. If the app needs to request notification authorization from the user again, it can use [openNotificationSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanageropennotificationsettingswithresult) to display a half-modal dialog box for notification management.
+An app must obtain user authorization before it can send notifications. Before publishing a notification, call [requestEnableNotification()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10-1) to display a dialog box for the user to choose whether to allow notifications. After the user denies authorization, the dialog box cannot be displayed again through this API. If the app needs to request [notification authorization](notification-glossary.md#notification-authorization) from the user again, it can use [openNotificationSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanageropennotificationsettingswithresult) to display a semi-modal dialog for notification management.
 
 ## Available APIs
 
 For details about the APIs, see [@ohos.notificationManager (NotificationManager)](../reference/apis-notification-kit/js-apis-notificationManager.md).
 
-**Table 1** Notification authorization APIs
+**Table 1** [Notification authorization](notification-glossary.md#notification-authorization) API description
 
 | **API** | **Description**|
 | -------- | -------- |
@@ -38,7 +38,7 @@ For details about the APIs, see [@ohos.notificationManager (NotificationManager)
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
-2. Display a dialog box to request notification authorization from the user.
+2. Display the notification dialog box to request [notification authorization](notification-glossary.md#notification-authorization) from the user.
 
    You can determine whether the user has authorized the request based on the error code of **requestEnableNotification**. If the error code **1600004** is returned, the authorization is rejected.
 

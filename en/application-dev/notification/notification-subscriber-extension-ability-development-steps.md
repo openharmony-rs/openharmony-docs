@@ -6,13 +6,13 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=661a14238183b0e458a09cda6a06543844926c5b translatedAt=2026-08-13T03:11:40.983Z pushedAt=2026-08-13T07:40:11.019Z -->
+<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:19:35.818Z pushedAt=2026-08-22T07:15:54.480Z -->
 
 ## Available APIs
 
 | API                             | Description               |
 | ---------------------------------- | --------------------|
-| [onDestroy(): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#ondestroy)                  | Callback to be invoked when the notification subscription extension is destroyed.|
+| [onDestroy(): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#ondestroy)                  | Callback invoked when the [notification subscription](notification-glossary.md#notification-subscription) extension is destroyed. |
 | [onReceiveMessage(notificationInfo: NotificationInfo): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) | Callback to be invoked when a notification is received.|
 | [onCancelMessages(hashCodes: Array\<string>): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#oncancelmessages) | Callback to be invoked when notifications are canceled.|
 
@@ -59,7 +59,7 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
 
 3. Use the [Bluetooth module](../connectivity/connectivity-kit-intro.md#bluetooth) API to pair with the wearable (with Bluetooth in pairing state) and obtain the device address. Then, subscribe to or unsubscribe from notifications through the [subscribe](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionsubscribe)/[unsubscribe](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionunsubscribe) APIs.
 
-4. After implementing [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md), call the [openSubscriptionSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettingswithresult) API at an appropriate time to open the notification subscription settings screen and guide the user to grant the permission for obtaining notifications from the device. This screen is displayed as a semi-modal dialog box, and the authorization result is returned when the dialog box is closed. It is recommended that you provide a notification authorization button on the device management screen. When the user taps the button, the [openSubscriptionSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettingswithresult) API is called.
+4. After implementing [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md), call the [openSubscriptionSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettingswithresult) API at an appropriate time to open the notification subscription settings screen and guide the user to grant the permission for obtaining notifications from the device. This screen is displayed as a semi-modal dialog box, and the authorization result is returned when the dialog box is closed. It is recommended that you provide a [notification authorization](notification-glossary.md#notification-authorization) button on the device management screen. When the user taps the button, the [openSubscriptionSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettingswithresult) API is called.
 
 5. Configure **ExtensionAbilities** in the **module.json5** file of the application.
 
