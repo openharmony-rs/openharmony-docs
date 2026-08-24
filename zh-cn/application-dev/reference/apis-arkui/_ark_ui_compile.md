@@ -194,7 +194,7 @@ Button组件同时包含了标签与子组件导致报错。
 
 ## 10905203 .stateStyles语法校验异常
 **错误信息**<br>
-\'.stateStyles\' doesn't conform standard.
+\'.stateStyles\' doesn't conform to standard.
 
 **错误描述**<br>
 stateStyles属性使用不符合语法。

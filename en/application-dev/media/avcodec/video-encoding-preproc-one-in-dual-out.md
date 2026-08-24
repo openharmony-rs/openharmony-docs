@@ -2,11 +2,11 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:19:26.909Z pushedAt=2026-07-21T12:10:53.541Z -->
+<!-- md-trans-meta sourceCommit=b9c98a219f801ec4122d94457486779ae7ed9ac3 translatedAt=2026-08-22T02:00:14.087Z pushedAt=2026-08-22T03:37:05.236Z -->
 
 Starting from API version 26.0.0, video encoding supports one input and dual outputs. This capability allows the same video input data to simultaneously drive **two independent encoders** to generate two encoded streams with different configurations.
 

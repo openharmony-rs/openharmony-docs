@@ -6,7 +6,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=a56d795a51f9068e61c2cc2726ea675f5d93d82a translatedAt=2026-08-13T03:10:14.313Z pushedAt=2026-08-13T07:27:26.301Z -->
+<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:14:18.639Z pushedAt=2026-08-22T07:02:54.543Z -->
 
 The live view notification provides real-time progress of long-duration tasks, including voice recording, screen recording, audio and video playback, timing, and phone call. Such type of notification is not stored persistently, and its lifecycle is consistent with that of the notification publisher.
 
@@ -18,7 +18,7 @@ The live view notification provides real-time progress of long-duration tasks, i
 
 ## Available APIs
 
-The following table describes the APIs for notification publishing. You can specify the notification information – content, ID, slot type, and delivery time – by setting the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) parameter in the APIs. The information can include the notification content, notification ID, notification channel type, and notification sending time.
+The following table describes the APIs for publishing notifications. The details of a notification to publish can be specified through the input parameter [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest), including the [notification content](notification-glossary.md#notification-content), notification ID, notification channel type, and notification sending time.
 
 | **API**| **Description**|
 | -------- | -------- |
@@ -41,7 +41,7 @@ The following table describes the APIs for notification publishing. You can spec
 
 2. Publish a notification.
 
-   In addition to the parameters in the normal text notification, the system live view notification provides the **typeCode**, **capsule**, **button**, **time**, and **progress** parameters. For details, see [NotificationSystemLiveViewContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md#notificationsystemliveviewcontent).
+In addition to the parameters in the normal text notification, the [system live view](notification-glossary.md#system-live-view) notification provides the **typeCode**, **capsule**, **button**, **time**, and **progress** parameters. For details, see [NotificationSystemLiveViewContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md#notificationsystemliveviewcontent).
 
       ```ts
       let imagePixelMap: image.PixelMap | undefined = undefined; // Obtain the image pixel map information.

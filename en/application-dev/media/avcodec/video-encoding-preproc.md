@@ -2,11 +2,11 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:19:20.788Z pushedAt=2026-07-21T12:11:27.919Z -->
+<!-- md-trans-meta sourceCommit=b9c98a219f801ec4122d94457486779ae7ed9ac3 translatedAt=2026-08-22T02:00:23.271Z pushedAt=2026-08-22T03:37:07.630Z -->
 
 Starting from API version 26.0.0, video encoders support preprocessing, including downsampling, cropping, and frame dropping.
 

@@ -6,7 +6,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9d0f59dbcae46303a4fbbc3dcb2ffb4bcae1691a translatedAt=2026-08-10T03:46:48.148Z pushedAt=2026-08-10T07:46:33.100Z -->
+<!-- md-trans-meta sourceCommit=cbc788541d3c92f56dce788e128dfa81de46aa31 translatedAt=2026-08-22T02:04:09.566Z pushedAt=2026-08-22T06:37:44.707Z -->
 
 ## Interaction Process
 
@@ -36,7 +36,7 @@ In the local AVSession, the provider exchanges information with the controller t
 
 ## AVSessionManager
 
-AVSessionManager provides the capability of managing sessions. It can create an AVSession object, create an AVSessionController object, send control commands, and listen for session state changes.
+AVSessionManager provides the types and functions for creating an AVSession, creating an AVSessionController, sending system control events, and listening for AVSession state changes.
 
 In fact, unlike AVSession and AVSessionController objects, AVSessionManager is not a concrete object but the module namespace of the media session. In actual programming, you can import it as follows:
 

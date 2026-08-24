@@ -1,10 +1,12 @@
 # Accessing AVSession
+
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=cbc788541d3c92f56dce788e128dfa81de46aa31 translatedAt=2026-08-22T02:02:57.532Z pushedAt=2026-08-22T06:29:02.198Z -->
 
 In addition to implementing audio and video features, audio and video applications need to access AVSession provided by AVSession Kit. This topic uses typical cases to describe display and control scenarios for accessing AVSession, providing adaptation references for developers.
 
@@ -23,10 +25,15 @@ To implement background playback, the application must also use [Background Task
 The process for implementing AVSession access is as follows:
 
 1. Determine the type of AVSession to be created for the application, and then [create one](#creating-avsession). The AVSession type determines the style of the control template displayed in the controller.
+
 2. [Create a background task](#creating-a-background-task).
+
 3. [Set necessary metadata](#setting-metadata-information) to display corresponding information in the controller. The metadata includes but is not limited to the IDs of the current media asset (**assetId**), previous media asset (**previousAssetId**), and next media asset (**nextAssetId**), title, author, album, writer, and duration.
+
 4. [Set playback state information](#setting-playback-state). The information includes but is not limited to the playback state (**state**), position (**position**), speed (**speed**), buffered time (**bufferedTime**), loop mode (**loopMode**), whether the media asset is favorited (**isFavorite**), media ID being played (**activeItemId**), and custom media data (**extras**).
+
 5. [Register control commands](#control-command-processing) as required, including but not limited to play/pause, previous/next, fast-forward/rewind, favorite, loop mode, and progress bar.
+
 6. Destroy AVSession when the application exits or stops providing service.
 
 ## Creating AVSession
@@ -85,14 +92,13 @@ To implement background playback, the application must also use [Background Task
 
 Media playback applications must request a continuous task of the [AUDIO_PLAYBACK](../../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode) background mode.
 
-
 ## Setting Metadata Information
 
 The application uses [setAVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavmetadata10) to set the metadata information of the current media session to the system. The system controller displays information based on the metadata set by the application.
 
 ### Metadata Information
 
-Metadata [AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10) includes the IDs of the current media asset (**assetId**), previous media asset (**previousAssetId**), and next media asset (**nextAssetId**), title, author, album, writer, and duration.
+Metadata information [AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10) includes the ID of the current media (`assetId`), ID of the previous media (`previousAssetId`), ID of the next media (`nextAssetId`), title (`title`), album author (`author`), artist (`artist`), album name (`album`), lyricist (`writer`), media image (`mediaImage`), and media duration (`duration`).
 
 <!-- @[setAVMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SetAVMetadata.ets) -->
 
@@ -154,9 +160,9 @@ Metadata [AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.
 
 > **NOTE**
 >
-> - The **lyric** field supports only lyrics in LRC format, that is, timestamp plus lyric text, for example, `[00:25.44]lyric text`. If lyrics in other formats are passed in, the system controller may fail to parse them and display lyrics abnormally.
+> - The `lyric` field supports only lyrics in LRC format (time tags plus lyric information, for example, `[00:25.44]lyric information`). If you pass lyrics in other formats, the system Media Controller may fail to parse them, causing abnormal lyric display.
 >
-> - The size of each lyric string cannot exceed 40960 bytes. Otherwise, lyric information fails to be set due to system transfer limits.
+> - The size of both the `lyric` field and the `singleLyricText` field must not exceed 40960 bytes. Otherwise, the lyric information fails to be set due to system transmission limits.
 
 <!-- @[settingLyrics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingLyrics.ets) -->
 
@@ -298,7 +304,9 @@ Certain special processing is required when setting the progress bar.
 3. Special contents such as ads
 
     For media assets with pre-roll or post-roll ads, you are advised to:
+
    - Set the ad duration separately.
+
    - Set a new duration for the actual content, to distinguish it from the ad.
 
 <!--RP1--><!--RP1End-->
@@ -360,7 +368,7 @@ The application uses [setAVPlaybackState](../../reference/apis-avsession-kit/ark
 
 ### Playback State Information
 
-Playback state information [AVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avplaybackstate10) includes the playback state (**state**), playback position (**position**), playback speed (**speed**), buffered time (**bufferedTime**), loop mode (**loopMode**), whether the media asset is favorited (**isFavorite**), ID of the media asset being played (**activeItemId**), and custom media data (**extras**).
+Playback state information [AVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avplaybackstate10) includes the playback state of the current media (`state`), playback position (`position`, which contains the elapsed playback time `elapsedTime` and the update timestamp `updateTime`), playback speed (`speed`), buffered time (`bufferedTime`), loop mode (`loopMode`), whether the media is marked as favorite (`isFavorite`), ID of the media being played (`activeItemId`), and custom media data (`extras`).
 
 <!-- @[settingGeneralStateInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingGeneralStateInformation.ets) -->
 
@@ -735,9 +743,11 @@ When an application correctly accesses AVSession according to the preceding proc
 ## Adapting to Bluetooth and Wired Key Events
 
 After an application correctly accesses AVSession, it can listen for Bluetooth and wired headset key events by registering control commands. AVSession provides the following two implementation methods:
+
 - Method 1 (recommended)
 
-  Register the required control commands as needed. For details, see [Control Command Processing](#control-command-processing). Currently, the following AVSession control commands can be converted:
+  You can register the required control commands as needed by referring to [Control Command Processing](#control-command-processing). The AVSession control commands that can be converted are as follows:
+
   | Control Command| Description  |
   | ------  | -------------------------|
   | play    | Plays the media.|
@@ -805,7 +815,8 @@ After an application correctly accesses AVSession, it can listen for Bluetooth a
   ```
 
 - Method 2
-  Register the [on('handleKeyEvent')](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhandlekeyevent10) command through AVSession. This callback directly forwards media key events [KeyEvent](../../reference/apis-input-kit/js-apis-keyevent.md). The application needs to identify the key event type and respond to the event to implement the corresponding function. Currently, the following key event types can be forwarded:
+
+  Register the [on('handleKeyEvent')](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhandlekeyevent10) command through AVSession. This callback directly forwards the media key event [KeyEvent](../../reference/apis-input-kit/js-apis-keyevent.md). You need to identify the type of the key event and respond to the event to implement the corresponding function. The key event types that can be forwarded are as follows:
 
   | Key Type ([KeyCode](../../reference/apis-input-kit/js-apis-keycode.md#keycode))| Description  |
   | ------  | -------------------------|

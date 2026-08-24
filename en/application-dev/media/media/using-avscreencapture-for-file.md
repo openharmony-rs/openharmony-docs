@@ -2,11 +2,11 @@
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=ce179c7049f440ce5b4d28b675776bb4597cc1b5 translatedAt=2026-08-11T01:53:45.436Z pushedAt=2026-08-12T01:27:33.465Z -->
+<!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=9debe03e456cd9546017cca228787eecf595247b translatedAt=2026-08-22T02:10:41.480Z pushedAt=2026-08-22T06:48:53.422Z -->
 
 Screen capture is mainly used to record the main screen.
 

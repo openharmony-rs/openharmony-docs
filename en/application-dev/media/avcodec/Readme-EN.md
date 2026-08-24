@@ -2,11 +2,11 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran; @mr-chencxy-->
-<!--Designer: @dpy2650--->
+<!--Owner: @rchdlee-->
+<!--Designer: @dpy2650-->
 <!--Tester: @cyakee; @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=a33e33bc9d77acacea3ab60a23c994b62787103b translatedAt=2026-08-06T13:44:26.667Z pushedAt=2026-08-07T10:49:25.398Z -->
+<!-- md-trans-meta sourceCommit=b9c98a219f801ec4122d94457486779ae7ed9ac3 translatedAt=2026-08-22T01:59:20.031Z pushedAt=2026-08-22T03:36:34.577Z -->
 
 - [About This Kit](avcodec-kit-intro.md)
 

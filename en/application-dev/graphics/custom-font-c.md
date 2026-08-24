@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=8e9d3b746529fedba672cd46a96d4746984bcb6c translatedAt=2026-08-15T01:50:50.856Z pushedAt=2026-08-15T08:21:38.639Z -->
+<!-- md-trans-meta sourceCommit=0876b7ba2fa1777332890da7f5059310feded633 translatedAt=2026-08-22T01:33:33.375Z pushedAt=2026-08-22T03:29:48.329Z -->
 
 ## Overview
 
@@ -27,7 +27,7 @@ The following table lists the APIs for registering and using custom fonts. For d
 | OH_Drawing_CreateSharedFontCollection(void) | Creates a shareable font collection object **OH_Drawing_FontCollection**. |
 | OH_Drawing_RegisterFont(OH_Drawing_FontCollection\* fontCollection, const char\* fontFamily, const char\* familySrc) | Registers a custom font in the font manager. Supported font file formats include ttf and otf. |
 | OH_Drawing_CreateTextStyle(void) | Creates a pointer to an **OH_Drawing_TextStyle** object to set the text style.|
-| OH_Drawing_SetTextStyleFontFamilies(OH_Drawing_TextStyle\* style, int, const char \*fontFamilies[]) | Sets the font families for a text style. |
+| OH_Drawing_SetTextStyleFontFamilies(OH_Drawing_TextStyle\* style, int fontFamiliesNumber, const char \*fontFamilies[]) | Sets the font families for a text style. |
 | OH_Drawing_UnregisterFont(OH_Drawing_FontCollection\* fontCollection, const char\* fontFamily) | Unregisters a custom font by its font family name. |
 
 ## How to Develop

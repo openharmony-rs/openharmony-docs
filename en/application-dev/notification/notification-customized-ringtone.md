@@ -6,13 +6,13 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=fa3fc214ef4b265f033bc3f0d0a2df54f511a497 translatedAt=2026-08-13T03:11:10.142Z pushedAt=2026-08-13T07:30:49.361Z -->
+<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:16:18.078Z pushedAt=2026-08-22T07:03:46.660Z -->
 
 Starting from API version 12, applications can use custom notification ringtones when publishing notifications. The audio resources for these ringtones must be pre-included in the application. Starting from API version 24, the system has enhanced this field, allowing applications to use non-preloaded audio resources as notification ringtones, such as audio downloaded from the internet or user-generated audio files.
 
 ## API Description
 
-A custom ringtone can be specified by carrying the sound field in [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1). If this field is not specified, the system default ringtone is used.
+[Customized ringtone](notification-glossary.md#customized-ringtone) can be specified through the sound field carried by [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1). If this field is not specified, the system ringtone is used by default.
 
 - Resource file: Preloaded audio files in the app. Resource files must be placed in the **resources/rawfile** directory. Use the direct filename when configuring.
 
@@ -108,7 +108,7 @@ Supported formats: m4a, aac, mp3, ogg, wav, flac, amr, ...
     let soundFile: string = 'uri::' + sandboxFileUri; // Must start with uri::, and the path must not contain '../' or '/..'.
     ```
 
-3. Publish a notification with a custom ringtone.
+3. Publish a notification that carries the [customized ringtone](notification-glossary.md#customized-ringtone).
 
     <!-- @[specified_customized_ringtone_publish_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) --> 
 
