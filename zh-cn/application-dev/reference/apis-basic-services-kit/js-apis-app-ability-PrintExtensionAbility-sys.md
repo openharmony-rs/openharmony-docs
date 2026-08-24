@@ -22,7 +22,7 @@ import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 ## PrintExtensionAbility
 
-### onRequestPreview<sup>24+</sup>
+### onRequestPreview
 
 onRequestPreview(jobInfo: print.PrintJob): string
 

@@ -531,7 +531,7 @@ onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttr
 | jobId | string | 是 | 表示打印任务ID。 |
 | oldAttrs | [PrintAttributes](#printattributes11) | 是 | 表示旧打印参数。 |
 | newAttrs | [PrintAttributes](#printattributes11) | 是 | 表示新打印参数，应用使用该参数更新待打印文件。 |
-| fd | number | 是 | 表示打印服务传给接口调用方的空PDF文件的文件描述符。 |
+| fd | number | 是 | 表示打印服务传给接口调用方的PDF文件的文件描述符。 |
 | writeResultCallback | (jobId: string, writeResult: [PrintFileCreationState](#printfilecreationstate11)) => void | 是 | 表示三方应用使用新的打印参数更新待打印文件完成后的回调。 |
 
 **错误码：**
@@ -971,12 +971,12 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| copyNumber | number | 否 | 是 | 表示文件打印份数。取值应为正整数，默认为1。 |
-| pageRange | [PrintPageRange](#printpagerange11) | 否 | 是 | 表示待打印文件的页面范围。 |
-| pageSize | [PrintPageSize](#printpagesize11) \| [PrintPageType](#printpagetype11) | 否 | 是 | 表示待打印文件的纸张尺寸。 |
-| directionMode | [PrintDirectionMode](#printdirectionmode11) | 否 | 是 | 表示待打印文件的方向。 |
-| colorMode | [PrintColorMode](#printcolormode11) | 否 | 是 | 表示待打印文件的色彩模式。 |
-| duplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 是 | 表示待打印文件的单双面模式。 |
+| copyNumber | number | 否 | 是 | 表示文件打印份数。取值应为正整数。不传入时默认值为0。 |
+| pageRange | [PrintPageRange](#printpagerange11) | 否 | 是 | 表示待打印文件的页面范围。不传入时默认值为空范围对象。 |
+| pageSize | [PrintPageSize](#printpagesize11) \| [PrintPageType](#printpagetype11) | 否 | 是 | 表示待打印文件的纸张尺寸。不传入时默认值为空纸张尺寸对象。 |
+| directionMode | [PrintDirectionMode](#printdirectionmode11) | 否 | 是 | 表示待打印文件的方向。不传入时默认值为0。 |
+| colorMode | [PrintColorMode](#printcolormode11) | 否 | 是 | 表示待打印文件的色彩模式。不传入时默认值为0。 |
+| duplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 是 | 表示待打印文件的单双面模式。不传入时默认值为0。 |
 
 ## PrintPageRange<sup>11+</sup>
 
@@ -1427,15 +1427,15 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 | printerId | string | 否 | 否 | 表示打印机ID。 |
 | printerName | string | 否 | 否 | 表示打印机名称。 |
 | printerStatus | [PrinterStatus](#printerstatus14) | 否 | 否 | 表示当前打印机状态。 |
-| description | string | 否 | 是 | 表示打印机说明。 |
+| description | string | 否 | 是 | 表示打印机说明。不传入时默认值为空字符串。 |
 | capability | [PrinterCapabilities](#printercapabilities14) | 否 | 是 | 表示打印机能力。 |
-| uri | string | 否 | 是 | 表示打印机URI。 |
-| printerMake | string | 否 | 是 | 表示打印机型号。 |
+| uri | string | 否 | 是 | 表示打印机URI。不传入时默认值为空字符串。 |
+| printerMake | string | 否 | 是 | 表示打印机型号。不传入时默认值为空字符串。 |
 | preferences<sup>18+</sup> | [PrinterPreferences](#printerpreferences18) | 否 | 是 | 表示打印机首选项。 |
-| alias<sup>18+</sup> | string | 否 | 是 | 表示打印机别名。 |
+| alias<sup>18+</sup> | string | 否 | 是 | 表示打印机别名。不传入时默认值为空字符串。 |
 | selectedDriver<sup>24+</sup> | [PpdInfo](#ppdinfo24) | 否 | 是 | 表示添加打印机时选择的驱动的信息。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
-| selectedProtocol<sup>24+</sup> | string | 否 | 是 | 表示添加打印机时选择的协议。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
-| options | string | 否 | 是 | 表示打印机详细信息。 |
+| selectedProtocol<sup>24+</sup> | string | 否 | 是 | 表示添加打印机时选择的协议。不传入时默认值为空字符串。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
+| options | string | 否 | 是 | 表示打印机详细信息。不传入时默认值为空字符串。 |
 
 ## PrinterCapabilities<sup>14+</sup>
 
@@ -1450,12 +1450,12 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 | supportedPageSizes | Array&lt;[PrintPageSize](#printpagesize11)&gt; | 否 | 否 | 表示打印机支持的纸张尺寸列表。 |
 | supportedColorModes | Array&lt;[PrintColorMode](#printcolormode11)&gt; | 否 | 否 | 表示打印机支持的色彩模式列表。 |
 | supportedDuplexModes | Array&lt;[PrintDuplexMode](#printduplexmode11)&gt; | 否 | 否 | 表示打印机支持的单双面模式列表。 |
-| supportedMediaTypes | Array&lt;string&gt; | 否 | 是 | 表示打印机支持的纸张类型列表。 |
-| supportedQualities | Array&lt;[PrintQuality](#printquality14)&gt; | 否 | 是 | 表示打印机支持的打印质量列表。 |
-| supportedOrientations | Array&lt;[PrintOrientationMode](#printorientationmode14)&gt; | 否 | 是 | 表示打印机支持的打印方向列表。 |
-| options | string | 否 | 是 | 表示打印机能力详细信息。 |
-| vendorPrinterPrefAbility | string | 否 | 是 | 表示由打印机驱动厂商提供的打印机首选项设置界面。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0<br> |
-| vendorJobAttrAbility | string | 否 | 是 | 表示由打印机驱动厂商提供的打印任务属性设置界面。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0<br> |
+| supportedMediaTypes | Array&lt;string&gt; | 否 | 是 | 表示打印机支持的纸张类型列表。不传入时默认值为空列表。 |
+| supportedQualities | Array&lt;[PrintQuality](#printquality14)&gt; | 否 | 是 | 表示打印机支持的打印质量列表。不传入时默认值为空列表。 |
+| supportedOrientations | Array&lt;[PrintOrientationMode](#printorientationmode14)&gt; | 否 | 是 | 表示打印机支持的打印方向列表。不传入时默认值为空列表。 |
+| options | string | 否 | 是 | 表示打印机能力详细信息。不传入时默认值为空字符串。 |
+| vendorPrinterPrefAbility | string | 否 | 是 | 表示由打印机驱动厂商提供的打印机首选项设置界面。不传入时默认值为空字符串。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0<br> |
+| vendorJobAttrAbility | string | 否 | 是 | 表示由打印机驱动厂商提供的打印任务属性设置界面。不传入时默认值为空字符串。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0<br> |
 
 ## PrintQuality<sup>14+</sup>
 

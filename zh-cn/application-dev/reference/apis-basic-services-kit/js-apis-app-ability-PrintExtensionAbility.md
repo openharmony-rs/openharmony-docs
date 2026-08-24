@@ -235,7 +235,7 @@ onRequestPrinterCapability(printerId: number): print.PrinterCapability
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| printerId | number | 是 | 表示打印机ID，应为已连接的打印机，取值于打印机发现流程上报的有效打印机标识。 |
+| printerId | number | 是 | 表示打印机ID，取值于打印机发现流程上报的有效打印机标识。 |
 
 **返回值：**
 | **类型** | **说明** |
