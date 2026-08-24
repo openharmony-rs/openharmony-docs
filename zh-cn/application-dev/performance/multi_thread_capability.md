@@ -46,7 +46,7 @@ CSP与Actor之间的主要区别：
 
 ### 基本概念和运作原理
 
-当前系统中的Worker是一个独立的线程，基本概念可参见[TaskPool和Worker的对比](../arkts-utils/taskpool-vs-worker.md)。Worker拥有独立的运行环境，每个Worker线程和主线程一样拥有自己的内存空间、消息队列（MessageQueue）、事件轮询机制（EventLoop）、调用栈（CallStack）等。线程之间通过消息（Massage）进行交互，如下图所示：  
+当前系统中的Worker是一个独立的线程，基本概念可参见[TaskPool和Worker的对比](../arkts-utils/taskpool-vs-worker.md)。Worker拥有独立的运行环境，每个Worker线程和主线程一样拥有自己的内存空间、消息队列（MessageQueue）、事件轮询机制（EventLoop）、调用栈（CallStack）等。线程之间通过消息（Message）进行交互，如下图所示：  
 
 **图2**  线程交互示意图
 
@@ -213,7 +213,7 @@ TaskPool的适用场景主要分为如下三类：
 
 使用步骤如下：
 
-1. 首先import引入TaskPool模块，TaskPool的API介绍可参见[@ohos.taskpool（启动TaskPool）](../reference/apis-arkts/js-apis-taskpool.md)。
+1. 首先import引入TaskPool模块，TaskPool的API介绍可参见[@ohos.taskpool (启动任务池)](../reference/apis-arkts/js-apis-taskpool.md)。
    
    ```typescript
    import { taskpool } from '@kit.ArkTS';
@@ -584,45 +584,45 @@ workerPort.onmessage = (e: MessageEvents): void => {
   import { Contact } from '../constant/Contact';
   
   /**
-     * 批量插入数据库
-     */
-    public async batchInsertData(context: common.Context, array: Array<Contact>): Promise<void> {
-      Logger.info(TAG, 'batch insert begin');
-      if (!context) {
-        Logger.info(TAG, 'context is null or undefined');
-      }
-  
-      if (predicates === null || predicates === undefined) {
-        Logger.info(TAG, 'predicates is null or undefined');
-      }
-  
-      if (!this.rdbStore) {
-        await this.initRdbStore(context);
-      }
-  
-      let valueBuckets: Array<ValuesBucket> = [];
-      for (let index = 0; index < array.length; index++) {
-        let Contact = array[index] as Contact;
-        let value1 = Contact.name;
-        let value2 = Contact.gender;
-        let value3 = Contact.phone;
-        let value4 = Contact.remark;
-        let value5 = Contact.age;
-  
-        const valueBucket: ValuesBucket = {
-          'name': value1,
-          'gender': value2,
-          'phone': value3,
-          'remark': value4,
-          'age': value5,
-        };
-        valueBuckets.push(valueBucket);
-      }
-  
-      if (this.rdbStore != undefined) {
-        let ret = await this.rdbStore.batchInsert(TABLE_NAME, valueBuckets);
-        Logger.info(TAG, `batch insert done:${ret}`);
-      }
+   * 批量插入数据库
+   */
+  public async batchInsertData(context: common.Context, array: Array<Contact>): Promise<void> {
+    Logger.info(TAG, 'batch insert begin');
+    if (!context) {
+      Logger.info(TAG, 'context is null or undefined');
+    }
+
+    if (predicates === null || predicates === undefined) {
+      Logger.info(TAG, 'predicates is null or undefined');
+    }
+
+    if (!this.rdbStore) {
+      await this.initRdbStore(context);
+    }
+
+    let valueBuckets: Array<ValuesBucket> = [];
+    for (let index = 0; index < array.length; index++) {
+      let Contact = array[index] as Contact;
+      let value1 = Contact.name;
+      let value2 = Contact.gender;
+      let value3 = Contact.phone;
+      let value4 = Contact.remark;
+      let value5 = Contact.age;
+
+      const valueBucket: ValuesBucket = {
+        'name': value1,
+        'gender': value2,
+        'phone': value3,
+        'remark': value4,
+        'age': value5,
+      };
+      valueBuckets.push(valueBucket);
+    }
+
+    if (this.rdbStore != undefined) {
+      let ret = await this.rdbStore.batchInsert(TABLE_NAME, valueBuckets);
+      Logger.info(TAG, `batch insert done:${ret}`);
+    }
     }
   ```
   
