@@ -21,7 +21,7 @@ import { constant } from '@kit.ConnectivityKit';
 
 ## ProfileId
 
-枚举，表示蓝牙[Profile](../../connectivity/bluetooth/terminology.md#profile)协议的标识。
+枚举，表示蓝牙Profile协议的标识。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -155,7 +155,7 @@ import { constant } from '@kit.ConnectivityKit';
 | HEALTH_DATA_DISPLAY                      | 0x091C | 表示数据显示健康设备。     |
 | HEALTH_STEP_COUNTER                      | 0x0920 | 表示计步器健康设备。    |
 | HEALTH_BODY_COMPOSITION_ANALYZER         | 0x0924 | 表示身体成分分析仪健康设备。  |
-| HEALTH_PEAK_FLOW_MONITOR                  | 0x0928 | 表示峰值流量计健康设备。      |
+| HEALTH_PEAK_FLOW_MONITOR                  | 0x0928 | 表示峰值流量监控仪健康设备。      |
 | HEALTH_MEDICATION_MONITOR                | 0x092C | 表示药物监视仪健康设备。    |
 | HEALTH_KNEE_PROSTHESIS                   | 0x0930 | 表示膝盖假肢健康设备。     |
 | HEALTH_ANKLE_PROSTHESIS                  | 0x0934 | 表示脚踝假肢健康设备。     |

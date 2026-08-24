@@ -10,7 +10,7 @@
 本模块基于蓝牙通信技术，为应用提供设备发现与设备下线的通知功能，主要功能特性包括：
 
 - 动态监听并发现应用预先注册的蓝牙设备。
-- 采用进程启动机制，当目标设备出现时自动启动应用的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。
+- 采用进程拉起机制，当目标设备出现时自动拉起应用的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。
 - 采用进程销毁机制，当所有设备下线时自动销毁应用的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。
 - 通过[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)的接口通知应用发现已注册设备。
 
@@ -95,7 +95,7 @@ disableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise&lt;void&gt;
 
 - 该接口仅对应用调用[BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册过的设备生效，调用后关闭给应用提供的设备互通能力[partnerAgent](js-apis-fusionConnectivity-partnerAgent.md)。
 - 可以通过[isDeviceControlEnabled](js-apis-fusionConnectivity-partnerAgent.md#partneragentisdevicecontrolenabled)判断设备的外设互通是否已开启，若已关闭，重复调用不生效。
-- 关闭后，当其他应用调用[BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册过的设备被发现时，不会启动应用注册的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。可通过调用[enableDeviceControl](#partneragentenabledevicecontrol)重新开启外设互通功能。
+- 关闭后，当其他应用调用[BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册过的设备被发现时，不会拉起应用注册的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。可通过调用[enableDeviceControl](#partneragentenabledevicecontrol)重新开启外设互通功能。
 
 **系统接口**：此接口为系统接口。
 

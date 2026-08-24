@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-pan模块提供了访问蓝牙个人区域网（PAN）相关功能的方法，支持PANU（个人区域网用户）和NAP（网络接入点）两种角色，PANU设备可向NAP设备发起连接以实现网络共享。
+pan模块提供了访问蓝牙个人区域网（[PAN](../../connectivity/bluetooth/terminology.md#pan)）相关功能的方法，支持[PANU](../../connectivity/bluetooth/terminology.md#panu)（个人区域网用户）和[NAP](../../connectivity/bluetooth/terminology.md#nap)（网络接入点）两种角色，PANU设备可向NAP设备发起连接以实现网络共享。
 
 > **说明：**
 >

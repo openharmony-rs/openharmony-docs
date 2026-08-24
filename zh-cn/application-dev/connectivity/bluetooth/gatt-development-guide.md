@@ -279,7 +279,7 @@ try {
   gattClient.disconnect();
 
   // 如果应用不再使用此gattClient，则需要close，gattClient实例将不能再使用
-  gattClient.close()
+  gattClient.close();
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }

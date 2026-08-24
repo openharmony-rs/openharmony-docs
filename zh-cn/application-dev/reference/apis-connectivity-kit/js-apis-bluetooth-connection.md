@@ -999,7 +999,7 @@ setBluetoothScanMode(mode: ScanMode, duration: number): void
 | 参数名      | 类型                    | 必填   | 说明                           |
 | -------- | --------------------- | ---- | ---------------------------- |
 | mode     | [ScanMode](#scanmode) | 是    | 蓝牙扫描模式。当扫描模式为SCAN_MODE_GENERAL_DISCOVERABLE时，超出duration持续时间（不为0），扫描模式会重新设置为SCAN_MODE_CONNECTABLE。               |
-| duration | number                | 是    | 设备可被发现的持续时间，取值范围：[0, +∞)，单位：ms。设置为0则表示持续可发现。 |
+| duration | number                | 是    | 设备可被发现的持续时间，单位：ms。设置为0则表示持续可发现。 |
 
 **错误码**：
 
@@ -2264,7 +2264,7 @@ try {
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| batteryLevel  | number | 否    | 否    | 表示设备的电量值，单位：%。取值范围：0-100，表示电量百分比；如果该值为-1，表示没有电量信息。   |
+| batteryLevel  | number | 否    | 否    | 表示设备的电量值，有效取值范围[0, 100]，单位：%，表示电量百分比；如果该值为-1，表示没有电量信息。   |
 | leftEarBatteryLevel  | number | 否    | 否    | 若是蓝牙耳机设备类型，表示左侧耳机的电量值，单位：%。取值范围：0-100，表示电量百分比；如果该值为-1，表示没有电量信息。   |
 | leftEarChargeState  | [DeviceChargeState](#devicechargestate12) | 否    | 否    | 若是蓝牙耳机设备类型，表示左侧耳机的充电状态。   |
 | rightEarBatteryLevel  | number | 否    | 否    | 若是蓝牙耳机设备类型，表示右侧耳机的电量值，单位：%。取值范围：0-100，表示电量百分比；如果该值为-1，表示没有电量信息。   |

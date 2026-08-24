@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-蓝牙模块提供了基础的传统蓝牙能力以及BLE的扫描、广播等功能。
+蓝牙模块提供了基础的传统蓝牙能力以及[BLE](../../connectivity/bluetooth/terminology.md#ble)的扫描、广播等功能。
 
 > **说明：**
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -3846,7 +3846,7 @@ gattClient.getRssiValue().then((data : number) => {
 | HEALTH_DATA_DISPLAY                      | 0x091C | 表示数据显示健康设备。     |
 | HEALTH_STEP_COUNTER                      | 0x0920 | 表示计步器健康设备。    |
 | HEALTH_BODY_COMPOSITION_ANALYZER         | 0x0924 | 表示身体成分分析仪健康设备。  |
-| HEALTH_PEAK_FLOW_MOITOR                  | 0x0928 | 表示峰值流量计健康设备。      |
+| HEALTH_PEAK_FLOW_MOITOR                  | 0x0928 | 表示峰值流量监控仪健康设备。      |
 | HEALTH_MEDICATION_MONITOR                | 0x092C | 表示药物监视仪健康设备。    |
 | HEALTH_KNEE_PROSTHESIS                   | 0x0930 | 表示膝盖假肢健康设备。     |
 | HEALTH_ANKLE_PROSTHESIS                  | 0x0934 | 表示脚踝假肢健康设备。     |

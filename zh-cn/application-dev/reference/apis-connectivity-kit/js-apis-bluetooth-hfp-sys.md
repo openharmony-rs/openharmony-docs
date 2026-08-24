@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-hfp模块提供了访问蓝牙呼叫接口的方法，支持蓝牙免提通话（HFP）的连接和断开等操作，适用于需要在设备间建立蓝牙通话音频连接的场景。
+hfp模块提供了访问蓝牙呼叫接口的方法，支持蓝牙免提通话（[HFP](../../connectivity/bluetooth/terminology.md#hfp)）的连接和断开等操作，适用于需要在设备间建立蓝牙通话音频连接的场景。
 
 > **说明：**
 >

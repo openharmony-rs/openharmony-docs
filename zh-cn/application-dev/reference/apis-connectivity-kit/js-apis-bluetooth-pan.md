@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供基于蓝牙个人局域网协议（Personal Area Networking，[PAN](../../connectivity/bluetooth/terminology.md#pan)）的蓝牙共享网络能力，支持本端作为NAP设备和PANU设备查询PAN支持状态、网络共享状态及获取连接状态等，适用于需要通过蓝牙实现个人局域网共享网络的场景。
+本模块提供基于蓝牙个人局域网协议（Personal Area Networking，[PAN](../../connectivity/bluetooth/terminology.md#pan)）的蓝牙共享网络能力，支持本端作为[NAP](../../connectivity/bluetooth/terminology.md#nap)设备和[PANU](../../connectivity/bluetooth/terminology.md#panu)设备查询PAN支持状态、网络共享状态及获取连接状态等，适用于需要通过蓝牙实现个人局域网共享网络的场景。
 
 > **说明：**
 >

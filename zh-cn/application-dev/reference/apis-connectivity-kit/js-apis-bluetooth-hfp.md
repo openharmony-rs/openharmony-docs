@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供基于免提协议（Hands-Free Profile， [HFP](../../connectivity/bluetooth/terminology.md#hfp)）的蓝牙通话音频能力，支持创建HFP AG和HF实例、获取连接状态等。适用于需要在应用中实现蓝牙通话音频连接管理、监听通话音频连接状态等场景。
+本模块提供基于免提协议（Hands-Free Profile， [HFP](../../connectivity/bluetooth/terminology.md#hfp)）的蓝牙通话音频能力，支持创建[HFP AG](../../connectivity/bluetooth/terminology.md#hfp-ag)和[HF](../../connectivity/bluetooth/terminology.md#hf)实例、获取连接状态等。适用于需要在应用中实现蓝牙通话音频连接管理、监听通话音频连接状态等场景。
 
 > **说明：**
 >
@@ -35,7 +35,7 @@ type BaseProfile = baseProfile.BaseProfile
 
 createHfpAgProfile(): HandsFreeAudioGatewayProfile
 
-创建蓝牙通话音频中的[HFP AG](../../connectivity/bluetooth/terminology.md#hfp-ag)实例。通过该实例可使用本端作为HFP AG设备的接口，如：获取和其他设备间的蓝牙通话音频连接状态。典型应用场景包括车载信息娱乐系统的蓝牙通话功能、平板电脑蓝牙通话等，本端设备作为音频网关（AG）角色管理通话音频路由。
+创建蓝牙通话音频中的[HFP AG](../../connectivity/bluetooth/terminology.md#hfp-ag)实例。通过该实例可使用本端作为HFP AG设备的接口，如：获取和其他设备间的蓝牙通话音频连接状态。典型应用场景包括车载信息娱乐系统的蓝牙通话功能等，本端设备作为音频网关（AG）角色管理通话音频路由。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
