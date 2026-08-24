@@ -6,7 +6,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e2e8608c64e606248f00eb66f3b2d4805fae44da translatedAt=2026-08-04T11:06:42.868Z pushedAt=2026-08-06T02:28:27.383Z -->
+<!-- md-trans-meta sourceCommit=420f11b70e0bbee097f4c7f6c9277b6d6f72479a translatedAt=2026-08-21T12:10:11.540Z pushedAt=2026-08-24T08:25:57.436Z -->
 
 ## Overview
 
@@ -42,7 +42,7 @@ Declares the APIs for accessing Native XComponent features. Native XComponent pr
 | [OH_NativeXComponent_ExtraMouseEventInfo](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-extramouseeventinfo.md) | OH_NativeXComponent_ExtraMouseEventInfo | Provides an encapsulated instance of extended mouse event information.|
 | [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) | OH_ArkUI_SurfaceHolder | Provides an encapsulated **OH_ArkUI_SurfaceHolder** instance.|
 | [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md) | OH_ArkUI_SurfaceCallback | Defines surface lifecycle callback functions.|
-| [NativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md) | OHNativeWindow | Provides an encapsulated **NativeWindow** instance.|
+| [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md) | OHNativeWindow | Provides an encapsulated **NativeWindow** instance. |
 | [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md) | ArkUI_XComponentSurfaceConfig | Defines the surface configuration for the **XComponent**, which specifies whether the **XComponent**'s surface should be treated as opaque during rendering.|
 
 ### Enums
@@ -129,7 +129,7 @@ Declares the APIs for accessing Native XComponent features. Native XComponent pr
 | [OHNativeWindow* OH_ArkUI_XComponent_GetNativeWindow(OH_ArkUI_SurfaceHolder* surfaceHolder)](#oh_arkui_xcomponent_getnativewindow) | Obtains the **NativeWindow** instance associated with an [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) instance.|
 | [int32_t OH_ArkUI_XComponent_SetAutoInitialize(ArkUI_NodeHandle node, bool autoInitialize)](#oh_arkui_xcomponent_setautoinitialize) | Sets whether the **XComponent** needs to automatically initialize the surface.<br>**API relationship (configuration dependency):** This API controls the initialization mode of the surface and affects how **OH_ArkUI_XComponent_Initialize** and **OH_ArkUI_XComponent_Finalize** are used. When **autoInitialize** is set to **true** (default), the surface is automatically initialized/finalized when the component is attached to/detached from the tree, and there is no need to manually call **Initialize**/**Finalize**. When **autoInitialize** is set to **false**, you must manually call **Initialize** to initialize the surface and call **Finalize** to finalize the surface at the appropriate time. |
 | [int32_t OH_ArkUI_XComponent_Initialize(ArkUI_NodeHandle node)](#oh_arkui_xcomponent_initialize) | Initializes the surface held by the **XComponent**. Before calling this API, set **autoInitialize** to **false** through **OH_ArkUI_XComponent_SetAutoInitialize()** to prevent the surface from being automatically initialized when the component is attached to the tree.<br>**API relationship (prerequisites):** This API needs to be called to manually initialize the surface only when **autoInitialize** is set to **false** through **OH_ArkUI_XComponent_SetAutoInitialize**. When **autoInitialize** is set to **true** (default), the surface is automatically initialized when the component is attached to the tree, and this API does not need to be called. **Call in pair:** After calling this API to initialize the surface, **OH_ArkUI_XComponent_Finalize** must be called to finalize the surface when it is no longer needed. **Status query:** The current initialization status can be queried through **OH_ArkUI_XComponent_IsInitialized**. **Status requirement:** This API can be called only when the surface is in the uninitialized state. Repeated initialization will return **ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID**. |
-| [int32_t OH_ArkUI_XComponent_Finalize(ArkUI_NodeHandle node)](#oh_arkui_xcomponent_finalize) | Finalizes the surface held by the **XComponent**.<br>**Call in pair:** This API is the paired API of **OH_ArkUI_XComponent_Initialize**. It is called only after the surface has been initialized through **Initialize**, to finalize the surface and release the resources. **Status requirement:** This API can be called only when the surface is in the initialized state. Repeated this API on an already finalized surface will return **ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID**. |
+| [int32_t OH_ArkUI_XComponent_Finalize(ArkUI_NodeHandle node)](#oh_arkui_xcomponent_finalize) | Finalizes the surface held by the **XComponent**.<br>**Call in pair:** This API is the paired API of **OH_ArkUI_XComponent_Initialize**. It is called only after the surface has been initialized through **Initialize**, to finalize the surface and release the resources. **Status requirement:** This API can be called only when the surface is in the initialized state. Repeatedly calling this API on an already finalized surface will return **ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID**. |
 | [int32_t OH_ArkUI_XComponent_IsInitialized(ArkUI_NodeHandle node, bool* isInitialized)](#oh_arkui_xcomponent_isinitialized) | Checks whether the surface held by the **XComponent** component is initialized.|
 | [int32_t OH_ArkUI_XComponent_SetExpectedFrameRateRange(ArkUI_NodeHandle node, OH_NativeXComponent_ExpectedRateRange range)](#oh_arkui_xcomponent_setexpectedframeraterange) | Sets an expected frame rate range for this **XComponent** instance.|
 | [int32_t OH_ArkUI_XComponent_RegisterOnFrameCallback(ArkUI_NodeHandle node,void (\*callback)(ArkUI_NodeHandle node, uint64_t timestamp, uint64_t targetTimestamp))](#oh_arkui_xcomponent_registeronframecallback) | Registers a frame callback for this **XComponent** instance and enables the callback to be invoked on each frame. |
@@ -251,10 +251,10 @@ Enumerates the touch event source types.
 | Value| Description|
 | -- | -- |
 | OH_NATIVEXCOMPONENT_SOURCE_TYPE_UNKNOWN = 0 | Unknown source type.|
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE = 1 | Source that generates a mouse multi-click event.|
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE = 1 | Source that generates a mouse event. |
 | OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHSCREEN = 2 | Source that generates a touchscreen multitouch event.|
 | OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHPAD = 3 | Source that generates a touchpad multitouch event.|
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK = 4 | Source that generates a joystick multitouch event.|
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK = 4 | Source that generates a joystick event. |
 | OH_NATIVEXCOMPONENT_SOURCE_TYPE_KEYBOARD = 5 | Source that generates a key event.<br>**Since**: 10|
 
 ### OH_NativeXComponent_MouseEventAction
@@ -369,8 +369,8 @@ Obtains the size of the surface held by the ArkUI XComponent.
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | Pointer to an [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance.|
 | const void* window | Handle to the **NativeWindow** instance.|
-| uint64_t* width | Pointer to the width of the current surface. Unit: vp.|
-| uint64_t* height | Pointer to the height of the current surface. Unit: vp.|
+| uint64_t* width | Pointer to the width of the current surface. Unit: px. |
+| uint64_t* height | Pointer to the height of the current surface. Unit: px. |
 
 **Returns**
 
@@ -1765,7 +1765,7 @@ Obtains the **NativeWindow** instance associated with an [OH_ArkUI_SurfaceHolder
 
 | Type                 | Description|
 |---------------------| -- |
-| [NativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)* | **NativeWindow** instance associated with the [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) instance.|
+| [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)* | Pointer to **OHNativeWindow** associated with the [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) instance. |
 
 ### OH_ArkUI_XComponent_SetAutoInitialize()
 
@@ -1779,7 +1779,7 @@ Sets whether the **XComponent** component needs to automatically initialize the 
 
 **Configuration dependency:**
 
-- When **autoInitialize** is set to **true** (default), the surface is automatically initialized or finalized when the component is attached to or detached from the component tree, without the need to manually call **Initialize** or **Finalize**.
+- When **autoInitialize** is set to **true** (default), the surface is automatically initialized or finalized when the component is attached to or detached from the component tree, without the need to manually call [OH_ArkUI_XComponent_Initialize](#oh_arkui_xcomponent_initialize) and [OH_ArkUI_XComponent_Finalize](#oh_arkui_xcomponent_finalize).
 
 - When **autoInitialize** is set to **false**, you must manually call [OH_ArkUI_XComponent_Initialize](#oh_arkui_xcomponent_initialize) to initialize the surface, and call [OH_ArkUI_XComponent_Finalize](#oh_arkui_xcomponent_finalize) to finalize the surface when it is no longer needed.
 
