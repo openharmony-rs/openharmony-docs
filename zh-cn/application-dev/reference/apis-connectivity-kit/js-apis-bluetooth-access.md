@@ -372,13 +372,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let deviceId = '11:22:33:44:55:66'  // 该地址可通过BLE扫描获取
 try {
-    access.addPersistentDeviceId(deviceId).then(() => {
-        console.info('addPersistentDeviceId success');
-    }, (error: BusinessError) => {
-        console.error('errCode: ' + error.code + ', errMessage: ' + error.message);
-    });
+    access.addPersistentDeviceId(deviceId);
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
 }
 ```
 
@@ -426,13 +422,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let deviceId = '11:22:33:44:55:66'  // 该地址可通过BLE扫描获取
 try {
-    access.deletePersistentDeviceId(deviceId).then(() => {
-        console.info('deletePersistentDeviceId success');
-    }, (error: BusinessError) => {
-        console.error('errCode: ' + error.code + ', errMessage: ' + error.message);
-    });
+    access.deletePersistentDeviceId(deviceId);
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
 }
 ```
 
@@ -440,7 +432,7 @@ try {
 
 getPersistentDeviceIds(): string[];
 
-获取应用持久化存储过的蓝牙虚拟MAC地址。注意：若对端设备实际地址发生变化，已持久化存储的地址信息将失效，使用返回的地址前建议通过[access.isValidRandomDeviceId](#accessisvalidrandomdeviceid16)确认其有效性。
+获取应用持久化存储过的蓝牙虚拟MAC地址。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
 
