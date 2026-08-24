@@ -400,10 +400,10 @@ JSVM新增支持从外部内存创建ArrayBuffer对象。（[API参考](https://
 - 支持选择网络：WLAN 配置。
 - 支持增强服务：云应用、增强服务与用户体验改进。
 
-#### [玩机技巧](https://gitcode.com/openharmony/applications_tips)
+#### [Tips](https://gitcode.com/openharmony/applications_tips)
 
 - 支持快速上手。
-- 支持玩机技巧卡片。
+- 支持Tips卡片。
 
 #### [录音机](https://gitcode.com/openharmony/applications_sound_recorder)
 
