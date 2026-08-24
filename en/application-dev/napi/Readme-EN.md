@@ -122,7 +122,7 @@
 
     - Node-API FAQs<!--napi-questions-->
 
-      - [Node-API FAQs](use-napi-faqs.md)
+      - [FAQs](use-napi-faqs.md)
 
       - [FAQs About Stability](napi-faq-about-stability.md)
 
