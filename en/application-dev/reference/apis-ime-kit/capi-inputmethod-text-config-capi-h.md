@@ -324,7 +324,7 @@ InputMethod_ErrorCode OH_TextConfig_SetConsumeKeyEvents(InputMethod_TextConfig *
 
 **Description**
 
-Sets whether the edit box has full capability to process keys events like letters, characters, and function keys in the text configuration information. When the value is **true**, the edit box fully handles key events, and the input method framework skips processing these keys. When the value is **false**, the edit box lacks this capability, and the input method framework processes the key events instead.
+Sets whether the edit box has full capability to process key events like letters, characters, and function keys in the text configuration information. When the value is **true**, the edit box fully handles key events, and the input method framework skips processing these keys. When the value is **false**, the edit box lacks this capability, and the input method framework processes the key events instead.
 
 Usage scenarios: Set whether the edit box can handle key events in the **GetTextConfigFunc** callback. When the edit box has implemented complete key processing logic (for example, processing letter keys, character keys, and function keys by itself), set the value to **true**; otherwise, set it to **false**.
 
