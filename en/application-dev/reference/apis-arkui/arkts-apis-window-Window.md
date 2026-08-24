@@ -1706,7 +1706,7 @@ In versions earlier than OpenHarmony 5.0.2, this API is supported on all devices
 
 In versions from OpenHarmony 5.0.2 to OpenHarmony 5.1.1 (excluded), this API neither takes effect nor reports an error on a device that supports the [freeform window](../../windowmanager/window-terminology.md#freeform-window) state and is in that state. On a device that supports the freeform window state but is not in the freeform window state, or on a device that does not support the freeform window state, this API can be properly called.
 
-Since OpenHarmony 5.1.1, this API neither takes effect nor reports an error on PCs/2-in-1 devices or other devices in [PC mode](../../windowmanager/window-terminology.md#pc-mode). On other device types and other modes, this API can be properly called.
+Since OpenHarmony 5.1.1, this API neither takes effect nor reports an error on PCs/2-in-1 devices or other devices in [desktop mode](../../windowmanager/window-terminology.md#desktop-mode). On other device types and other modes, this API can be properly called.
 
 **Parameters**
 
@@ -1782,7 +1782,7 @@ In versions earlier than OpenHarmony 5.0.2, this API is supported on all devices
 
 In versions from OpenHarmony 5.0.2 to OpenHarmony 5.1.1 (excluded), this API neither takes effect nor reports an error on a device that supports the [freeform window](../../windowmanager/window-terminology.md#freeform-window) state and is in that state. On a device that supports the freeform window state but is not in the freeform window state, or on a device that does not support the freeform window state, this API can be properly called.
 
-Since OpenHarmony 5.1.1, this API neither takes effect nor reports an error on PCs/2-in-1 devices or other devices in [PC mode](../../windowmanager/window-terminology.md#pc-mode). On other device types and other modes, this API can be properly called.
+Since OpenHarmony 5.1.1, this API neither takes effect nor reports an error on PCs/2-in-1 devices or other devices in [desktop mode](../../windowmanager/window-terminology.md#desktop-mode). On other device types and other modes, this API can be properly called.
 
 **Parameters**
 
@@ -2510,7 +2510,7 @@ export default class EntryAbility extends UIAbility {
 
 getWindowStateSnapshot(): Promise&lt;string&gt;
 
-Obtains the device form information of the current window, for example, whether it is in the [PC mode](../../windowmanager/window-terminology.md#pc-mode) and whether it supports the freeform window. This API uses a promise to return the result and is intended for testing purposes only.
+Obtains the device form information of the current window, for example, whether it is in the [desktop mode](../../windowmanager/window-terminology.md#desktop-mode) and whether it supports the freeform window. This API uses a promise to return the result and is intended for testing purposes only.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2522,7 +2522,7 @@ Obtains the device form information of the current window, for example, whether 
 
 | Type| Description|
 | ------------------------------------- | ------------- |
-| Promise&lt;string&gt; | Device form information of the current window, which is a serialized JSON object. Deserialize it into a JSON object before using it. Example: `{"isPcMode":false,"isSupportFreeWindowMode":true,"systemUiVisible":"1100"}`<br>The meanings of the fields in the return value are as follows:<br>- **isPcMode**: Whether the current device is in [PC mode](../../windowmanager/window-terminology.md#pc-mode). The value **true** indicates yes, and the value **false** indicates no. Currently, **true** is returned on PCs/2-in-1 devices.<br>- **isSupportFreeWindowMode**: Whether the current device supports the [freeform window](../../windowmanager/window-terminology.md#freeform-window). The value **true** indicates yes, and the value **false** indicates no.<br>- **systemUiVisible**: Visibility state of the system UI. The value is a string of four characters consisting of 0 and 1, where **0** indicates hidden and **1** indicates visible. From left to right, the first character indicates the visibility state of the status bar, the second indicates the visibility state of the navigation bar, <!--RP17-->the third is not supported on OpenHarmony devices and defaults to 0, and the fourth indicates the visibility state of the three-button navigation bar.<!--RP17End-->|
+| Promise&lt;string&gt; | Device form information of the current window, which is a serialized JSON object. Deserialize it into a JSON object before using it. Example: `{"isPcMode":false,"isSupportFreeWindowMode":true,"systemUiVisible":"1100"}`<br>The meanings of the fields in the return value are as follows:<br>- **isPcMode**: Whether the current device is in [desktop mode](../../windowmanager/window-terminology.md#desktop-mode). The value **true** indicates yes, and the value **false** indicates no. Currently, **true** is returned on PCs/2-in-1 devices.<br>- **isSupportFreeWindowMode**: Whether the current device supports the [freeform window](../../windowmanager/window-terminology.md#freeform-window). The value **true** indicates yes, and the value **false** indicates no.<br>- **systemUiVisible**: Visibility state of the system UI. The value is a string of four characters consisting of 0 and 1, where **0** indicates hidden and **1** indicates visible. From left to right, the first character indicates the visibility state of the status bar, the second indicates the visibility state of the navigation bar, <!--RP17-->the third is not supported on OpenHarmony devices and defaults to 0, and the fourth indicates the visibility state of the three-button navigation bar.<!--RP17End-->|
 
 **Error codes**
 
@@ -6214,7 +6214,7 @@ Sets whether the main window displays a shadow. This API uses a promise to retur
 
 **Device behavior differences**:
 - Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on PCs/2-in-1 devices but returns error code 801 on other devices.
-- Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on PCs/2-in-1 devices, and on tablets when the [free window](../../windowmanager/window-terminology.md#free-windows) mode or [PC mode](../../windowmanager/window-terminology.md#pc-mode) is enabled. In other scenarios, this API returns error code 801.
+- Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on PCs/2-in-1 devices, and on tablets when the [free window](../../windowmanager/window-terminology.md#free-windows) mode or [desktop mode](../../windowmanager/window-terminology.md#desktop-mode) is enabled. In other scenarios, this API returns error code 801.
 
 **Required permission**: ohos.permission.SET_WINDOW_TRANSPARENT
 
@@ -7909,7 +7909,7 @@ Restores the main window from minimization to the foreground, returning it to it
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences:** This API is supported on PCs/2-in-1 devices and tablets in [PC mode](../../windowmanager/window-terminology.md#pc-mode) but returns error code 801 on other devices or in other modes.
+**Device behavior differences:** This API is supported on PCs/2-in-1 devices and tablets in [desktop mode](../../windowmanager/window-terminology.md#desktop-mode) but returns error code 801 on other devices or in other modes.
 
 **Return value**
 
@@ -8515,7 +8515,7 @@ By default, the entire window area is touchable. Touch events outside the toucha
 
 **Device behavior differences**:
 
-On PCs/2-in-1 devices and tablets in [PC mode]](../../windowmanager/window-terminology.md#pc-mode), the touchable area set via this API is not reset when the window size or position changes. On other devices and in other modes, the touchable area set via this API is reset when the window size or position changes, and you need to call this API again to reconfigure it.
+On PCs/2-in-1 devices and tablets in [desktop mode](../../windowmanager/window-terminology.md#desktop-mode), the touchable area set via this API is not reset when the window size or position changes. On other devices and in other modes, the touchable area set via this API is reset when the window size or position changes, and you need to call this API again to reconfigure it.
 
 **Parameters**
 
@@ -9837,7 +9837,7 @@ enableLandscapeMultiWindow(): Promise&lt;void&gt;
 
 Enables the landscape multi-window. When part of the application interface supports landscape layout, call this API when entering that interface to enable the landscape [multi-window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro) mode. You are not advised to call this API for the UI page that adopts the vertical layout.
 
-This API takes effect only for the application main window, and [preferMultiWindowOrientation](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-support) must be set to **landscape_auto** in the [abilities](../../quick-start/module-configuration-file.md#abilities) section of the **module.json5** file.
+This API takes effect only for the application main window, and [preferMultiWindowOrientation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-support) must be set to **landscape_auto** in the [abilities](../../quick-start/module-configuration-file.md#abilities) section of the **module.json5** file.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -9895,7 +9895,7 @@ disableLandscapeMultiWindow(): Promise&lt;void&gt;
 
 Disables the landscape multi-window. When part of the application interface supports landscape layout, call this API when exiting that interface to disable the landscape [multi-window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro) mode.
 
-This API takes effect only for the application main window, and [preferMultiWindowOrientation](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-support) must be set to **landscape_auto** in the [abilities](../../quick-start/module-configuration-file.md#abilities) section of the **module.json5** file.
+This API takes effect only for the application main window, and [preferMultiWindowOrientation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-support) must be set to **landscape_auto** in the [abilities](../../quick-start/module-configuration-file.md#abilities) section of the **module.json5** file.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -10341,7 +10341,7 @@ After this function is disabled, the gesture hot zone of the current application
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences:** This API returns error code 801 when called on PCs/2-in-1 devices and tablets in [PC mode](../../windowmanager/window-terminology.md#pc-mode). On other device types, this API can be properly called.
+**Device behavior differences:** This API returns error code 801 when called on PCs/2-in-1 devices and tablets in [desktop mode](../../windowmanager/window-terminology.md#desktop-mode). On other device types, this API can be properly called.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
@@ -10415,7 +10415,7 @@ Obtains whether the back gesture function is enabled for the current window. Thi
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences:** This API returns error code 801 when called on PCs/2-in-1 devices and tablets in [PC mode](../../windowmanager/window-terminology.md#pc-mode). On other device types, this API can be properly called.
+**Device behavior differences:** This API returns error code 801 when called on PCs/2-in-1 devices and tablets in [desktop mode](../../windowmanager/window-terminology.md#desktop-mode). On other device types, this API can be properly called.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
@@ -11550,7 +11550,7 @@ Checks whether the window is in the specified window posture mode.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| mode | [WindowPostureMode](arkts-apis-window-e.md#windowposturemode) | Yes| Window posture mode.|
+| mode | WindowPostureMode | Yes| Window posture mode.|
 
 **Return value**
 
@@ -11595,7 +11595,7 @@ Enables listening for changes in the specified window posture mode.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| mode | [WindowPostureMode](arkts-apis-window-e.md#windowposturemode) | Yes| Window posture mode to monitor.|
+| mode | WindowPostureMode | Yes| Window posture mode to monitor.|
 | callback | Callback&lt;boolean&gt; | Yes| Callback triggered when the specified window posture mode changes, returning whether the current window is in the specified posture mode. The value **true** indicates yes and the value **false** indicates no|
 
 **Error codes**
@@ -11636,7 +11636,7 @@ Unregisters the listener for changes in the specified window posture mode.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| mode | [WindowPostureMode](arkts-apis-window-e.md#windowposturemode) | Yes| Window posture mode to monitor.|
+| mode | WindowPostureMode | Yes| Window posture mode to monitor.|
 | callback | Callback&lt;boolean&gt; | No| Callback used to return whether the window is in the specified window posture mode. If a value is passed in, the corresponding listener is deregistered. If no value is passed in, all registered listeners for window posture mode changes are deregistered.|
 
 **Error codes**
@@ -11904,7 +11904,7 @@ In versions earlier than OpenHarmony 5.0.2, this API is supported on all devices
 
 In versions from OpenHarmony 5.0.2 to OpenHarmony 5.1.1 (excluded), this API neither takes effect nor reports an error on a device that supports the [freeform window](../../windowmanager/window-terminology.md#freeform-window) state and is in that state. On a device that supports the freeform window state but is not in the freeform window state, or on a device that does not support the freeform window state, this API can be properly called.
 
-Since OpenHarmony 5.1.1, this API neither takes effect nor reports an error on PCs/2-in-1 devices or other devices in [PC mode](../../windowmanager/window-terminology.md#pc-mode). On other device types and other modes, this API can be properly called.
+Since OpenHarmony 5.1.1, this API neither takes effect nor reports an error on PCs/2-in-1 devices or other devices in [desktop mode](../../windowmanager/window-terminology.md#desktop-mode). On other device types and other modes, this API can be properly called.
 
 **Parameters**
 
