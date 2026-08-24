@@ -136,8 +136,8 @@ import { scan } from '@kit.BasicServicesKit';
 | optionType | [OptionValueType](#optionvaluetype) | 否 | 否 | 选项值类型。 |
 | optionUnit | [PhysicalUnit](#physicalunit) | 否 | 否 | 选项物理单位。 |
 | optionConstraintType | [ConstraintType](#constrainttype) | 否 | 否 | 选项约束类型，决定有效的约束字段。当类型为SCAN_CONSTRAINT_NONE时无约束。 |
-| optionConstraintString | string[] | 否 | 是 | 选项字符串约束，仅在optionConstraintType为SCAN_CONSTRAINT_STRING_LIST时有效。 |
-| optionConstraintInt | number[] | 否 | 是 | 选项整数约束，仅在optionConstraintType为SCAN_CONSTRAINT_WORD_LIST时有效。 |
+| optionConstraintString | string[] | 否 | 是 | 选项字符串约束，仅在optionConstraintType为SCAN_CONSTRAINT_STRING_LIST时有效。默认为空数组。 |
+| optionConstraintInt | number[] | 否 | 是 | 选项整数约束，仅在optionConstraintType为SCAN_CONSTRAINT_WORD_LIST时有效。默认为空数组。 |
 | optionConstraintRange | [Range](#range) | 否 | 是 | 选项范围约束，仅在optionConstraintType为SCAN_CONSTRAINT_RANGE时有效。 |
 
 ## ScannerOptionValue
