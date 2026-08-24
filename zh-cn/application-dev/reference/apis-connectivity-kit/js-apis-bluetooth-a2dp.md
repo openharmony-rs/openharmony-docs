@@ -157,18 +157,18 @@ try {
 
 ## CodecInfoList<sup>19+</sup>
 
-蓝牙媒体音频编解码器支持的能力集合。不同编解码器支持的位深、声道模式、采样率、码率和帧长类型与音频接收器设备端能力有关。
+蓝牙媒体音频编解码器支持的能力集合。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 | 名称        | 类型                    | 只读   | 可选   | 说明                                     |
 | ------------------- | ----------------------- | ---- | ---- | -------------------------------------- |
 | codecType           | [CodecType](#codectype11)      | 否    | 否    | 编解码器类型。 |
-| codecBitsPerSampleArray  | [CodecBitsPerSample](#codecbitspersample11)[] | 否    | 否    | 编解码器支持的位深能力集合，具体支持值与音频接收器设备端能力有关。 |
-| codecChannelModeArray    | [CodecChannelMode](#codecchannelmode11)[] | 否    | 否    | 编解码器支持的声道模式能力集合，具体支持值与音频接收器设备端能力有关。 |
-| codecSampleRateArray     | [CodecSampleRate](#codecsamplerate11)[] | 否    | 否    | 编解码器支持的采样率能力集合，具体支持值与音频接收器设备端能力有关。 |
-| codecBitRateArray     | [CodecBitRate](#codecbitrate19)[] | 否    | 否    | 编解码器支持的码率能力集合，具体支持值与音频接收器设备端能力有关。 |
-| codecFrameLengthArray     | [CodecFrameLength](#codecframelength19)[] | 否    | 否    | 编解码器支持的帧长能力集合，具体支持值与音频接收器设备端能力有关。 |
+| codecBitsPerSampleArray  | [CodecBitsPerSample](#codecbitspersample11)[] | 否    | 否    | 编解码器支持的位深能力集合。 |
+| codecChannelModeArray    | [CodecChannelMode](#codecchannelmode11)[] | 否    | 否    | 编解码器支持的声道模式能力集合。 |
+| codecSampleRateArray     | [CodecSampleRate](#codecsamplerate11)[] | 否    | 否    | 编解码器支持的采样率能力集合。 |
+| codecBitRateArray     | [CodecBitRate](#codecbitrate19)[] | 否    | 否    | 编解码器支持的码率能力集合。 |
+| codecFrameLengthArray     | [CodecFrameLength](#codecframelength19)[] | 否    | 否    | 编解码器支持的帧长能力集合。 |
 
 ## CodecType<sup>11+</sup>
 
