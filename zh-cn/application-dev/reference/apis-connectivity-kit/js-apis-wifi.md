@@ -11,7 +11,7 @@
 > **说明：**
 >
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 从API version 9开始，该接口不再维护，推荐使用[@ohos.wifiManager (Wi-Fi)](js-apis-wifiManager.md)等相关接口。
+> 从API version 9开始，该接口不再维护，推荐使用[@ohos.wifiManager (WLAN)](js-apis-wifiManager.md)等相关接口。
 
 
 ## 导入模块
@@ -397,7 +397,7 @@ removeUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boole
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | 是 | Wi-Fi配置信息。 |
-  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当操作成功时，异步错误对象error为0，data表示操作结果，true: 成功， false: 失败。如果error 为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当操作成功时，异步错误对象error为0，data表示操作结果，true: 成功， false: 失败。如果error为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
