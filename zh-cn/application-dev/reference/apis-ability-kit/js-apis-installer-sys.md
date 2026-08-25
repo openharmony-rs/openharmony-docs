@@ -110,7 +110,7 @@ try {
 
 getBundleInstallerSync(): BundleInstaller
 
-获取并返回BundleInstaller对象。
+获取并返回BundleInstaller对象。接口调用失败时可能返回null，需校验返回值后使用。
 
 **系统接口：** 此接口为系统接口。
 
