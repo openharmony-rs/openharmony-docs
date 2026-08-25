@@ -16,7 +16,7 @@
 
 ## 组件复用时避免在aboutToReuse中执行耗时操作
 
-这里以[Grid懒加载组件复用场景](./grid_optimization.md#场景示例)为例,在aboutToReuse中加入测试日志，观察在滑动Grid时aboutToReuse的调用情况。
+这里以[Grid懒加载组件复用场景](./grid_optimization.md#场景示例)为例，在aboutToReuse中加入测试日志，观察在滑动Grid时aboutToReuse的调用情况。
 ```ts
 aboutToReuse(params: Record<string, number>) {
   this.item = params.item;
@@ -479,7 +479,7 @@ struct Index {
 
 如图8所示，从日志中可以看出，每次点击按钮改变Row组件宽度时，Row的高度也会同时刷新。由此可见，在组件单一属性刷新时，组件的其他属性也会同时进行刷新。因此，在高频刷新组件属性的场景中，将会频繁调用组件所有属性的刷新。
 
-下面通过在组件属性中使用耗时的函数入参调用作为反例，使用[任务池taskpool](../reference/apis-arkts/js-apis-taskpool.md)处理耗时操作后返回结果给Row的高度rowHeight作为正例，来对比组件属性刷新时的性能差异。
+下面通过在组件属性中使用耗时的函数入参调用作为反例，使用[@ohos.taskpool (启动任务池)](../reference/apis-arkts/js-apis-taskpool.md)处理耗时操作后返回结果给Row的高度rowHeight作为正例，来对比组件属性刷新时的性能差异。
 
 **反例：**
 
