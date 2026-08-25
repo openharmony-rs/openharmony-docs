@@ -44314,5 +44314,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/native-unified-data-management-framework-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":29,
+						"name":"udmf_sample_head_file",
+						"start_line":16
+					},
+					{
+						"end_line":59,
+						"name":"udmf_sample_get_typeId",
+						"start_line":31
+					},
+					{
+						"end_line":96,
+						"name":"udmf_sample_send_unifieddata",
+						"start_line":61
+					},
+					{
+						"end_line":150,
+						"name":"udmf_sample_get_unifieddata",
+						"start_line":98
+					},
+					{
+						"end_line":169,
+						"name":"udmf_sample_get_data_callback",
+						"start_line":152
+					},
+					{
+						"end_line":199,
+						"name":"udmf_sample_send_delay_unifieddata",
+						"start_line":171
+					}
+				]
+			}
+		]
 	}
 ]
