@@ -402,3 +402,98 @@ C/C++示例：
 - **音频流级：** 通过[OH_AudioDeviceEnhanceManager_SelectOutputDeviceForAudioRenderer](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectoutputdeviceforaudiorenderer)为指定音频播放流选择输出设备。
 
   <!-- @[select_OutputDeviceForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+
+  <div class="same-source-code">
+  ``` C++
+  // 获取音频设备增强管理器。
+  static OH_AudioDeviceEnhanceManager *GetEnhanceManager(std::string &errorMsg)
+  {
+      OH_AudioDeviceEnhanceManager *manager = nullptr;
+      OH_AudioCommon_Result result = OH_AudioManager_GetAudioDeviceEnhanceManager(&manager);
+      if (result != AUDIOCOMMON_RESULT_SUCCESS || manager == nullptr) {
+          errorMsg = "获取AudioDeviceEnhanceManager失败";
+          return nullptr;
+      }
+      bool isSupported = false;
+      OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported(manager, &isSupported);
+      if (!isSupported) {
+          errorMsg = "Enhanced routing不支持，该功能不会生效";
+          return nullptr;
+      }
+      return manager;
+  }
+  
+  struct DeviceSearchResult {
+      OH_AudioRoutingManager *routingManager;
+      OH_AudioDeviceDescriptorArray *deviceArray;
+      OH_AudioDeviceDescriptor *targetDescriptor;
+  };
+  
+  // 获取音频可选设备。
+  static DeviceSearchResult FindDescriptorById(int32_t deviceId, OH_AudioDevice_Usage usage)
+  {
+      DeviceSearchResult search = {nullptr, nullptr, nullptr};
+      OH_AudioManager_GetAudioRoutingManager(&search.routingManager);
+      OH_AudioRoutingManager_GetAvailableDevices(search.routingManager, usage, &search.deviceArray);
+      if (search.deviceArray == nullptr) {
+          return search;
+      }
+      for (uint32_t i = 0; i < search.deviceArray->size; i++) {
+          uint32_t id = 0;
+          OH_AudioDeviceDescriptor_GetDeviceId(search.deviceArray->descriptors[i], &id);
+          if (id == static_cast<uint32_t>(deviceId)) {
+              search.targetDescriptor = search.deviceArray->descriptors[i];
+              break;
+          }
+      }
+      return search;
+  }
+  
+  static void ReleaseDeviceSearch(DeviceSearchResult &search)
+  {
+      if (search.routingManager != nullptr && search.deviceArray != nullptr) {
+          OH_AudioRoutingManager_ReleaseDevices(search.routingManager, search.deviceArray);
+      }
+  }
+  // 创建音频渲染器。
+  static OH_AudioRenderer *CreateAudioRenderer()
+  {
+      OH_AudioStreamBuilder *builder = nullptr;
+      if (OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_RENDERER) != AUDIOSTREAM_SUCCESS) {
+          return nullptr;
+      }
+      OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLE_RATE_48K);
+      OH_AudioStreamBuilder_SetChannelCount(builder, CHANNEL_COUNT_STEREO);
+      OH_AudioStreamBuilder_SetSampleFormat(builder, AUDIOSTREAM_SAMPLE_S16LE);
+      OH_AudioStreamBuilder_SetEncodingType(builder, AUDIOSTREAM_ENCODING_TYPE_RAW);
+      OH_AudioStreamBuilder_SetRendererInfo(builder, AUDIOSTREAM_USAGE_VOICE_COMMUNICATION);
+      OH_AudioRenderer *renderer = nullptr;
+      OH_AudioStreamBuilder_GenerateRenderer(builder, &renderer);
+      OH_AudioStreamBuilder_Destroy(builder);
+      return renderer;
+  }
+  
+  // ...
+  // 为指定音频播放流设置首选输出设备。
+  napi_value SelectOutputDeviceForAudioRenderer(napi_env env, napi_callback_info info)
+  {
+      int32_t deviceId = 0;
+      ParseInt32Arg(env, info, deviceId);
+      std::string errorMsg;
+      OH_AudioDeviceEnhanceManager *enhanceManager = GetEnhanceManager(errorMsg);
+      // ...
+      OH_AudioRenderer *renderer = CreateAudioRenderer();
+      // ...
+  
+      DeviceSearchResult search = FindDescriptorById(deviceId, AUDIO_DEVICE_USAGE_MEDIA_OUTPUT);
+      OH_AudioCommon_Result result = OH_AudioDeviceEnhanceManager_SelectOutputDeviceForAudioRenderer(
+          enhanceManager, renderer, search.targetDescriptor);
+      ReleaseDeviceSearch(search);
+      // ...
+  }
+  ```
+
+  <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp?same_code_link_text=select_OutputDeviceForAudioRenderer" target="_blank" rel="nofollow">EnhancedDeviceRouting.cpp</a></p>
+
+  </div>
+
