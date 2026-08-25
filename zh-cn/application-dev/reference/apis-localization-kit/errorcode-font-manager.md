@@ -228,7 +228,7 @@ The scope font is not found.
  
 **处理步骤**
 
-请检查URL是否正确，并先调用installScopeFont安装字体。
+请检查URL是否正确，并先调用[installScopeFont](js-apis-font-manager.md#installscopefont)安装字体。
 
 ## 31100113 字体观察者已注册
 
@@ -242,11 +242,11 @@ Font observer already registered.
 
 **可能原因**
 
-同一应用重复调用onFontObserver注册观察者。
+同一应用重复调用[onFontObserver](js-apis-font-manager.md#onfontobserver)注册观察者。
 
 **处理步骤**
 
-无需重复注册，如需更新观察者，请先调用offFontObserver注销后再重新注册。
+无需重复注册，如需更新观察者，请先调用[offFontObserver](js-apis-font-manager.md#offfontobserver)注销后再重新注册。
 
 ## 31100114 超过字体观察者最大数量
 
@@ -278,8 +278,8 @@ Font observer not registered.
 
 **可能原因**
 
-应用未先调用onFontObserver注册观察者，或已注销。
+应用未先调用[onFontObserver](js-apis-font-manager.md#onfontobserver)注册观察者，或已注销。
 
 **处理步骤**
 
-请先调用onFontObserver注册观察者后再执行安装应用级字体或注销操作。
+请先调用[onFontObserver](js-apis-font-manager.md#onfontobserver)注册观察者后再执行安装应用级字体或注销操作。

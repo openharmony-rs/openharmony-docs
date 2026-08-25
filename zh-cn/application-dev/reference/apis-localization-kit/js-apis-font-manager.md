@@ -8,16 +8,18 @@
 <!--Adviser: @ningningW-->
 
 本模块为应用提供第三方字体的安装、卸载、查询以及字体服务死亡监听能力。具体为：
-- 安装应用级或会话级字体文件（支持.ttf、.ttc格式）。
+- 安装应用级或会话级字体文件，支持`.ttf`、`.ttc`格式。
 - 根据字体路径卸载已安装的字体。
 - 查询已安装字体的作用范围。
 - 注册字体服务死亡监听器，当字体服务异常退出时通知应用。
 
 >  **说明：**
 >
->  - 本模块首批接口从API version 26.1.0开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>  - 本模块首批接口从API version 26.1.0开始支持。
 >
->  - 应用级字体在应用退出、字体服务退出、账号退出或设备重启时自动清理；会话级字体在账号退出或设备重启时清理。
+>  - 应用级字体在应用退出、字体服务退出、账号退出或设备重启时自动清理。会话级字体在账号退出或设备重启时清理。
+
+**起始版本：** 26.1.0
 
 ## 导入模块
 
@@ -27,24 +29,20 @@ import { fontManager } from '@kit.LocalizationKit';
 
 ## FontScope
 
-枚举字体作用范围。
+表示字体作用范围的枚举。
 
 **起始版本：** 26.1.0
-
-**系统能力：** SystemCapability.Global.FontManager
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| app | 0 | 应用级字体。应用退出、字体服务退出、账号退出或设备重启时清理。 |
-| session | 1 | 会话级字体。账号退出或设备重启时清理。 |
+| app | 0 | 应用级字体。随应用注册生命周期管理，应用退出、字体服务退出、账号退出或设备重启时自动清理。适用于应用私有字体，需先调用[onFontObserver](#onfontobserver)注册监听后才能安装。 |
+| session | 1 | 会话级字体。不随应用退出而清理，仅在账号退出或设备重启时清理。适用于需要跨应用共享的会话内字体，生命周期独立于安装应用。 |
 
 ## FontClientObserver
 
-字体服务死亡事件观察者，用于接收字体服务异常退出通知。
+字体服务状态监听器，用于接收字体服务异常退出通知。
 
 **起始版本：** 26.1.0
-
-**系统能力：** SystemCapability.Global.FontManager
 
 ### onServiceDied
 
@@ -103,13 +101,12 @@ installScopeFont(url: string, scope: FontScope): Promise&lt;number&gt;
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 31100101 | The font does not exist. |
 | 31100102 | The font is not supported. |
 | 31100103 | Failed to copy the font file. |
 | 31100104 | The font file is installed. |
 | 31100105 | Exceeded the maximum number of installed files. |
-| 31100106 | The system ability works abnormally. |
-| 31100503 | Font observer not registered. |
+| 31100110 | Call failed due to system error. |
+| 31100115 | Font observer not registered. |
 
 **示例：**
 
@@ -158,9 +155,9 @@ uninstallScopeFont(url: string): Promise&lt;number&gt;
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 31100107 | The font file does not exist. |
 | 31100108 | Failed to delete the font file. |
-| 31100109 | The system ability works abnormally. |
+| 31100110 | Call failed due to system error. |
+| 31100112 | The scope font is not found. |
 
 **示例：**
 
@@ -209,8 +206,7 @@ getFontScope(url: string): Promise&lt;FontScope&gt;
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 31100107 | The font file does not exist. |
-| 31100110 | Call failed due to system error. |
+| 31100112 | The scope font is not found. |
 
 **示例：**
 
@@ -220,11 +216,7 @@ import { fontManager } from '@kit.LocalizationKit';
 async function getFontScope() {
   try {
     let scope = await fontManager.getFontScope('fontPath');
-    if (scope == null) {
-      console.info('font not installed');
-    } else {
-      console.info('font scope is ' + scope);
-    }
+    console.info('font scope is ' + scope);
   } catch (error) {
     console.error('getFontScope err.' + error.code);
   }
@@ -235,7 +227,7 @@ async function getFontScope() {
 
 onFontObserver(observer: FontClientObserver): void
 
-注册字体服务死亡监听器。当字体服务异常退出时，通过监听器回调通知应用。
+注册字体服务死亡监听器。当字体服务异常退出时，通过监听器回调通知应用。注销监听器请使用[offFontObserver](#offfontobserver)。
 
 每个应用最多可注册一个监听器，重复注册将返回错误。同一设备上最多支持5个不同应用同时注册监听器。
 
@@ -259,8 +251,8 @@ onFontObserver(observer: FontClientObserver): void
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 31100501 | Font observer already registered. |
-| 31100502 | Exceeded maximum number of font observers. |
+| 31100113 | Font observer already registered. |
+| 31100114 | Exceeded maximum number of font observers. |
 
 **示例：**
 
@@ -285,7 +277,7 @@ try {
 
 offFontObserver(observer: FontClientObserver): void
 
-注销字体服务死亡监听器。
+注销字体服务死亡监听器。如需重新注册，请先注销再调用[onFontObserver](#onfontobserver)。
 
 **起始版本：** 26.1.0
 
@@ -307,7 +299,7 @@ offFontObserver(observer: FontClientObserver): void
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 31100503 | Font observer not registered. |
+| 31100115 | Font observer not registered. |
 
 **示例：**
 
