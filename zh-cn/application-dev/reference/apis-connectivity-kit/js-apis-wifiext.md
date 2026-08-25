@@ -6,13 +6,13 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-该模块主要提供WLAN扩展接口，供非通用类型产品使用。
+该模块主要提供Wi-Fi扩展接口，供非通用类型产品使用。
 
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 该文档中的接口只供非通用类型产品使用，如路由器等，对于常规类型产品，不应该使用这些接口。
-> 从API Version 9开始，该接口不再维护，推荐使用[`@ohos.wifiManagerExt（WLAN扩展接口）`](js-apis-wifiManagerExt.md)等相关接口。
+> 从API Version 9开始，该接口不再维护，推荐使用[@ohos.wifiManagerExt (WLAN扩展接口)](js-apis-wifiManagerExt.md)等相关接口。
 
 ## 导入模块
 
@@ -24,7 +24,7 @@ import wifiext from '@ohos.wifiext';
 
 enableHotspot(): boolean;
 
-使能WLAN热点。
+启用Wi-Fi热点。
 
 > **说明：**
 >
@@ -45,7 +45,7 @@ enableHotspot(): boolean;
 
 disableHotspot(): boolean;
 
-去使能WLAN热点。
+禁用Wi-Fi热点。
 
 > **说明：**
 >

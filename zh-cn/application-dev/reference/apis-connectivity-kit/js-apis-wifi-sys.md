@@ -6,7 +6,8 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-该模块主要提供WLAN基础功能、P2P（peer-to-peer）功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
+
+该模块主要提供Wi-Fi基础功能（如启用或禁用Wi-Fi、网络配置管理、热点管理）、P2P（peer-to-peer）功能（如设备发现、连接管理、永久组管理）和Wi-Fi消息通知（如连接状态变更、热点设备接入或离开等事件通知）等服务，适用于设备通过Wi-Fi进行网络连接、热点共享、点对点数据传输及互联互通等场景。
 
 > **说明：**
 >
@@ -25,7 +26,7 @@ import wifi from '@ohos.wifi';
 
 enableWifi(): boolean
 
-使能WLAN。
+启动Wi-Fi。
 
 **系统接口：** 此接口为系统接口。
 
@@ -55,7 +56,7 @@ try {
 
 disableWifi(): boolean
 
-去使能WLAN。
+禁用Wi-Fi。
 
 **系统接口：** 此接口为系统接口。
 
@@ -99,7 +100,7 @@ addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。 |
+  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。 |
 
 **返回值：**
 
@@ -142,7 +143,7 @@ try {
 
 ## WifiDeviceConfig
 
-WLAN配置信息。
+Wi-Fi配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -155,7 +156,7 @@ WLAN配置信息。
 | randomMacType | number | 是 | 否 | 随机MAC类型。 <br /> **系统接口：** 此接口为系统接口。 |
 | randomMacAddr | string | 是 | 否 | 随机MAC地址。 <br /> **系统接口：** 此接口为系统接口。 |
 | ipType | [IpType](#iptype7) | 是 | 否 | IP地址类型。 <br /> **系统接口：** 此接口为系统接口。 |
-| family<sup>20+</sup> | number | 否 | 是 | ip协议版本。 <br /> **系统接口：** 此接口为系统接口。 |
+| family<sup>20+</sup> | number | 否 | 是 | IP协议版本。 <br /> **系统接口：** 此接口为系统接口。 |
 | staticIp | [IpConfig](#ipconfig7) | 否 | 是 | 静态IPv4配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
 | staticIpv6<sup>20+</sup> | [Ipv6Config](#ipv6config20) | 否 | 是 | 静态IPv6配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
 
@@ -210,7 +211,6 @@ IPv6配置信息。
 | domains | Array\<string> | 否 | 否 | 域信息。 |
 
 
-
 ## wifi.addDeviceConfig
 
 addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
@@ -227,8 +227,8 @@ addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;)
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。 |
-  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当操作成功时，err为0，data为添加的网络配置ID，如果data值为-1，表示添加失败。当error为非0，表示处理出现错误。 |
+  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。 |
+  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当操作成功时，error为0，data为添加的网络配置ID，如果data值为-1，表示添加失败。当error为非0，表示处理出现错误。 |
 
 **示例：**
 
@@ -318,7 +318,7 @@ connectToDevice(config: WifiDeviceConfig): boolean
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。 |
+  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。 |
 
 **返回值：**
 
@@ -390,7 +390,7 @@ try {
 
 ## WifiLinkedInfo
 
-提供WLAN连接的相关信息。
+提供Wi-Fi连接的相关信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -454,13 +454,11 @@ getSupportedFeatures(): number
 | 0x0004 | GAS/ANQP特性。 |
 | 0x0008 | Wifi-Direct特性。 |
 | 0x0010 | Soft&nbsp;AP特性。 |
-| 0x0040 | Wi-Fi&nbsp;AWare组网特性。 |
+| 0x0040 | Wi-Fi&nbsp;Aware组网特性。 |
 | 0x8000 | AP&nbsp;STA共存特性。 |
 | 0x8000000 | WPA3-Personal&nbsp;SAE特性。 |
 | 0x10000000 | WPA3-Enterprise&nbsp;Suite-B |
 | 0x20000000 | 增强开放特性。 |
-
-
 
 
 ## wifi.getDeviceMacAddress<sup>7+</sup>
@@ -599,7 +597,7 @@ updateNetwork(config: WifiDeviceConfig): number
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。 |
+  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。 |
 
 **返回值：**
 
@@ -642,7 +640,7 @@ try {
 
 disableNetwork(netId: number): boolean
 
-去使能网络配置。
+关闭网络配置。
 
 **系统接口：** 此接口为系统接口。
 
@@ -660,7 +658,7 @@ disableNetwork(netId: number): boolean
 
   | **类型** | **说明** |
   | -------- | -------- |
-  | boolean | true:操作成功，&nbsp;false:操作失败。 |
+  | boolean | 关闭网络配置是否成功。true:操作成功，&nbsp;false:操作失败。 |
 
 **示例：**
 ```ts
@@ -725,7 +723,7 @@ removeDevice(id: number): boolean
 
   | **类型** | **说明** |
   | -------- | -------- |
-  | boolean | true:操作成功，&nbsp;false:操作失败。 |
+  | boolean | 移除指定的网络配置操作是否成功。true:操作成功，&nbsp;false:操作失败。 |
 
 **示例：**
 ```ts
@@ -743,7 +741,7 @@ try {
 
 enableHotspot(): boolean
 
-使能热点。
+开启热点。
 
 **系统接口：** 此接口为系统接口。
 
@@ -755,7 +753,7 @@ enableHotspot(): boolean
 
   | **类型** | **说明** |
   | -------- | -------- |
-  | boolean | true:操作成功，&nbsp;false:操作失败。|
+  | boolean | 开启热点是否成功。true:操作成功，&nbsp;false:操作失败。|
 
 **示例：**
 ```ts
@@ -772,7 +770,7 @@ try {
 
 disableHotspot(): boolean
 
-去使能热点。
+关闭热点。
 
 **系统接口：** 此接口为系统接口。
 
@@ -831,7 +829,7 @@ try {
 
 isHotspotActive(): boolean
 
-热点是否已使能。
+热点是否已激活。
 
 **系统接口：** 此接口为系统接口。
 
@@ -843,7 +841,7 @@ isHotspotActive(): boolean
 
   | **类型** | **说明** |
   | -------- | -------- |
-  | boolean | true:已使能，&nbsp;false:未使能。|
+  | boolean | 热点是否已激活。true:已使能，&nbsp;false:未使能。|
 
 **示例：**
 ```ts
@@ -1052,7 +1050,7 @@ setDeviceName(devName: string): boolean
 
   | **类型** | **说明** |
   | -------- | -------- |
-  | boolean | true:操作成功，&nbsp;false:操作失败。 |
+  | boolean | 设置设备名称操作是否成功。true:操作成功，&nbsp;false:操作失败。 |
 
 **示例：**
 ```ts
