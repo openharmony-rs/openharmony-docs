@@ -271,7 +271,7 @@ getConnectedBLEDevices(profile: BleProfile): Array&lt;string&gt;
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Array&lt;string&gt; | 返回和本机设备已建立GATT连接的BLE设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 取消配对该设备或蓝牙关闭后，若重新获取，该虚拟地址会变更。蓝牙子系统会根据该地址的实际使用情况决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法 |
+| Array&lt;string&gt; | 返回和本机设备已建立GATT连接的BLE设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 取消配对该设备或蓝牙关闭后，若重新获取，该虚拟地址会变更。蓝牙子系统会根据该地址的实际使用情况决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 |
 
 **错误码**：
 
@@ -3182,7 +3182,7 @@ getDeviceName(callback: AsyncCallback&lt;string&gt;): void
 
 client获取server端设备名称。使用Callback异步回调。
 
-- 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
+需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3241,7 +3241,7 @@ getDeviceName(): Promise&lt;string&gt;
 
 client获取server端设备名称。使用Promise异步回调。
 
-- 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
+需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3376,7 +3376,7 @@ getServices(): Promise&lt;Array&lt;GattService&gt;&gt;
 
 client端获取server端支持的所有服务能力，即服务发现流程。使用Promise异步回调。
 
-- 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
+需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
