@@ -727,6 +727,8 @@ sendResponse(responseApdu: number[]): void
 > **说明：**
 > 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[transmit](#transmit9)替代。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation
