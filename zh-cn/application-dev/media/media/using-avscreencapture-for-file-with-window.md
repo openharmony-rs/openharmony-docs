@@ -122,7 +122,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
    // 设置为false，代表录屏启动后不弹出系统Picker，弹出隐私提示弹窗。
    OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
    OH_AVScreenCapture_StrategyForPickerPopUp(strategy, false);
-   OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
+   OH_AVScreenCapture_SetCaptureStrategy(g_avCapture, strategy);
    ```
 
    方式二（推荐）：通过弹出屏幕捕获Picker列表方式，选择已打开的应用窗口进行窗口级录屏。
