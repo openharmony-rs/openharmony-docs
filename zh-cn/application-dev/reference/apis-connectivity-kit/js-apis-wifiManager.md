@@ -453,7 +453,7 @@ Wi-Fi热点信息。
 | capabilities | string | 否 | 否 | 热点能力。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 23|
 | securityType | [WifiSecurityType](#wifisecuritytype) | 否 | 否 | Wi-Fi加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | rssi | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 否 | 热点的信号强度(dBm)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
-| band | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | Wi-Fi接入点的频段，1表示2.4GHZ；2表示5GHZ。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
+| band | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | Wi-Fi接入点的频段，1表示2.4GHz；2表示5GHz。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | frequency | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | Wi-Fi接入点的频率。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | channelWidth | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | Wi-Fi接入点的带宽，具体定义参见[WifiChannelWidth](#wifichannelwidth)。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | centerFrequency0 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 热点的中心频率。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
@@ -1514,7 +1514,7 @@ ArkTS-Sta: getSignalLevel(rssi: int, band: int): int
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | rssi | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 热点的信号强度(dBm)。|
-  | band | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | Wi-Fi接入点的频段，1表示2.4GHZ；2表示5GHZ。|
+  | band | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | Wi-Fi接入点的频段，1表示2.4GHz；2表示5GHz。|
 
 **返回值：**
 

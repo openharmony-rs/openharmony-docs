@@ -168,7 +168,7 @@ Wi-Fi热点信息。
 | capabilities | string | 否 | 否 | 热点能力。 |
 | securityType | [WifiSecurityType](#wifisecuritytypedeprecated) | 否 | 否 | Wi-Fi加密类型。 |
 | rssi | number | 否 | 否 | 热点的信号强度(dBm)。 |
-| band | number | 否 | 否 | Wi-Fi接入点的频段。1表示2.4GHZ；2表示5GHZ。|
+| band | number | 否 | 否 | Wi-Fi接入点的频段。1表示2.4GHz；2表示5GHz。|
 | frequency | number | 否 | 否 | Wi-Fi接入点的频率。 |
 | channelWidth | number | 否 | 否 | Wi-Fi接入点的带宽。 |
 | timestamp | number | 否 | 否 | 时间戳。 |
@@ -555,7 +555,7 @@ wifi.getLinkedInfo().then(data => {
 | ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。 |
 | bssid | string | 否 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。 |
 | rssi | number | 否 | 否 | 热点的信号强度(dBm)。 |
-| band | number | 否 | 否 | Wi-Fi接入点的频段。1表示2.4GHZ；2表示5GHZ。|
+| band | number | 否 | 否 | Wi-Fi接入点的频段。1表示2.4GHz；2表示5GHz。|
 | linkSpeed | number | 否 | 否 | Wi-Fi接入点的速度，单位Mbps。 |
 | frequency | number | 否 | 否 | Wi-Fi接入点的频率。 |
 | isHidden | boolean | 否 | 否 | Wi-Fi接入点是否是隐藏网络。true:是隐藏网络，false:不是隐藏网络。 |
