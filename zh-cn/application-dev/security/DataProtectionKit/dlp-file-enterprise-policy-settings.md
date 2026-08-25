@@ -32,7 +32,7 @@ Data Protection Kit为应用提供了设置动态防护策略的能力，在用�
     2.3 调用[dlpPermission.setEnterprisePolicy](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionsetenterprisepolicy21)完成防护策略设置。
 
     <!-- @[dlp_setEnterprisePolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     setEnterprisePolicy() {
       try {
