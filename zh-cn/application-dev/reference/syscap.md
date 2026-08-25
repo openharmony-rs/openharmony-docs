@@ -69,6 +69,8 @@ SysCap与SDK、Kit形成结构化、层级化结构，如下图所示：
 
 ![Syscap-DT](figures/Syscap-DT.png) 
 
+<!--RP2--><!--RP2End-->
+
 开发者在DevEco Studio创建工程时，需要选择应用的设备类型Device type：
 
 ![Syscap-DEVDT](figures/Syscap-DEVDT.png) 
