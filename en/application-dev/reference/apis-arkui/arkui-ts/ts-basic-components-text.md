@@ -4026,3 +4026,5 @@ The display effect may vary depending on the device sizes and is for reference o
 
 <!--Del-->![textUtf16GlyphHighlight] (figures/textUtf16GlyphHighlight.gif)
 <!--DelEnd-->
+
+<!--no_check-->
