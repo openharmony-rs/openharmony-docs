@@ -62,7 +62,7 @@ graph TD
 ```mermaid
 graph TD
     A[系统验证权限：
-    （验证当前调用方是否具备执行恢复操作的权限）] --> B{应用开发者选择恢复出厂方式}
+    （验证当前调用方是否具备执行恢复操作的权限）] --> B{应用开发者选择恢复出厂方式} 
     B -->|factoryReset| C1[普通恢复出厂: 仅清除用户数据分区]
     B -->|forceFactoryReset| C2[强制恢复出厂: 清除数据并同步清除文件密钥]
     B -->|deepFactoryReset| C3[深度恢复出厂: 可配置范围，多次覆盖写入彻底销毁]
@@ -3906,7 +3906,7 @@ try {
 | DATA | 1    | 用户数据。|
 | DATA_AND_OS | 2    | 用户数据和操作系统。|
 
-## UpgradeTaskCallback<sup>23+</sup>
+## UpgradeTaskCallback
 
 type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
