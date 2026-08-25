@@ -54,7 +54,7 @@ Enumerates the input types of single-line text.
 | ARKUI_TEXTINPUT_TYPE_NORMAL = 0 | Normal input type with no special restrictions. |
 | ARKUI_TEXTINPUT_TYPE_NUMBER = 2 | Numeric input type. |
 | ARKUI_TEXTINPUT_TYPE_PHONE_NUMBER = 3 | Phone number input type.<br>It supports input of digits, spaces, +, -, *, #, (, ), with no length limit. |
-| ARKUI_TEXTINPUT_TYPE_EMAIL = 5 | Email address input type.<br>It supports digits, letters, underscores, decimal points, !, #, $, %, &, ', *, +, -, /, =, ?, ^, `, {, |, }, ~, and @ (only one @ character allowed). The email address format must follow the basic specification: the part before the @ character is the username, and the part after the @ character is the domain name. |
+| ARKUI_TEXTINPUT_TYPE_EMAIL = 5 | Email address input type.<br>It supports digits, letters, underscores, decimal points, !, #, $, %, &, ', *, +, -, /, =, ?, ^, `, \{, \|, \}, ~, and @ (only one @ character allowed). The email address format must follow the basic specification: the part before the @ character is the username, and the part after the @ character is the domain name. |
 | ARKUI_TEXTINPUT_TYPE_PASSWORD = 7 | Password input type.<br>By default, the input text is briefly displayed and then changed to dots. Since API version 12, on PCs/2-in-1 devices, the input text is directly displayed as dots.<br>On TV devices, the eye icon is hidden by default at the end of the input box. On other devices, the eye icon is shown by default at the end of the input box. |
 | ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD = 8 | Numeric password input type.<br>By default, the input text is briefly displayed and then changed to dots. Since API version 12, on PCs/2-in-1 devices, the input text is directly displayed as dots.<br>On TV devices, the eye icon is hidden by default at the end of the input box. On other devices, the eye icon is shown by default at the end of the input box. |
 | ARKUI_TEXTINPUT_TYPE_SCREEN_LOCK_PASSWORD = 9 | Lock screen password input type.<br>It supports input of digits, letters, underscores, spaces, and special characters. The eye icon is shown at the end of the input box and the input text changes to dots by default. Since API version 12, on wearables, the input text is directly displayed as dots. The password input type does not support the underline style. |
@@ -131,7 +131,7 @@ Enumerates autofill types.
 | ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_FILE_NUMBER = 29 | Driver's license file number. Currently not supported for automatic saving and auto-filling.<br>**Since:** 18|
 | ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_PLATE = 30 | License plate number. The scenario-based autofill feature, when enabled, can automatically save and fill in license plate numbers.<br>**Since:** 18|
 | ARKUI_TEXTINPUT_CONTENT_TYPE_ENGINE_NUMBER = 31 | Vehicle registration engine number. Currently not supported for automatic saving and auto-filling.<br>**Since:** 18|
-| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_CHASSIS_NUMBER = 32 | **Chassis number.** Auto-save and auto-fill are not yet supported.<br>**Since:** 18 |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_CHASSIS_NUMBER = 32 | Chassis number. Auto-save and auto-fill are not yet supported.<br>**Since:** 18 |
 
 ### ArkUI_TextInputStyle
 

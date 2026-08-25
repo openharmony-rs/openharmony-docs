@@ -549,7 +549,7 @@ onExportCertificate(resourceId: string, params?: Array\<huksExternalCrypto.HuksE
 
 ```ts
 import { huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionResult,
-  HuksCryptoExtensionCertInfo } from '@kit.UniversalKeystoreKit';
+  HuksCryptoExtensionCertInfo, HuksCryptoExtensionParam } from '@kit.UniversalKeystoreKit';
 
 export default class CryptoExtension extends CryptoExtensionAbility {
   onExportCertificate(resourceId: string, params?: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
@@ -939,7 +939,7 @@ CryptoExtensionAbility不支持以下模块的引用。
 | Connectivity Kit | [@ohos.wifiManager (WLAN)](../../reference/apis-connectivity-kit/js-apis-wifiManager.md) |
 | Connectivity Kit | [@ohos.wifiManagerExt (WLAN扩展接口)](../../reference/apis-connectivity-kit/js-apis-wifiManagerExt.md) |
 | Contacts Kit | [@ohos.contact (联系人)](../../reference/apis-contacts-kit/js-apis-contact.md) |
-| Data Protection Kit | [@ohos.dlpPermission (数据防泄漏)](../../reference/apis-data-protection-kit/js-apis-dlppermission.md) |
+| Data Protection Kit | [@ohos.dlpPermission (数据防泄露)](../../reference/apis-data-protection-kit/js-apis-dlppermission.md) |
 | Distributed Service Kit | [@ohos.distributedDeviceManager (设备管理)](../../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md) |
 | Distributed Service Kit | [@ohos.distributedHardware.deviceManager (设备管理)(系统接口)](../../reference/apis-distributedservice-kit/js-apis-device-manager-sys.md) |
 | Distributed Service Kit | [@ohos.distributedHardware.hardwareManager (分布式硬件管理)(系统接口)](../../reference/apis-distributedservice-kit/js-apis-distributedHardwareManager-sys.md) |
@@ -1002,7 +1002,7 @@ CryptoExtensionAbility不支持以下模块的引用。
 | Telephony Kit | [@ohos.telephony.call (拨打电话)](../../reference/apis-telephony-kit/js-apis-call.md) |
 | Telephony Kit | [@ohos.telephony.data (蜂窝数据)](../../reference/apis-telephony-kit/js-apis-telephony-data.md) |
 | Telephony Kit | [@ohos.telephony.esim (eSIM卡管理)](../../reference/apis-telephony-kit/js-apis-esim.md) |
-| Telephony Kit | [@ohos.telephony.observer (observer)](../../reference/apis-telephony-kit/js-apis-observer.md) |
+| Telephony Kit | [@ohos.telephony.observer (电话服务状态监听)](../../reference/apis-telephony-kit/js-apis-observer.md) |
 | Telephony Kit | [@ohos.telephony.radio (网络搜索)](../../reference/apis-telephony-kit/js-apis-radio.md) |
 | Telephony Kit | [@ohos.telephony.sim (SIM卡管理)](../../reference/apis-telephony-kit/js-apis-sim.md) |
 | Telephony Kit | [@ohos.telephony.sms (短信服务)](../../reference/apis-telephony-kit/js-apis-sms.md) |

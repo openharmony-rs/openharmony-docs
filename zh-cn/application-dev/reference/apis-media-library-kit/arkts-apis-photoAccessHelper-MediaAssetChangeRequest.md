@@ -200,7 +200,7 @@ static createAssetRequest(context: Context, photoType: PhotoType, extension: str
 | ------- | ------- | ---- | -------------------------- |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 传入Ability实例的上下文。 |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | 是   | 待创建的文件类型，IMAGE或者VIDEO类型。              |
-| extension  | string        | 是   | 文件扩展名，例如：'jpg'。              |
+| extension  | string        | 是   | 文件扩展名。必须为合法的图片或视频扩展名，如jpg、png、gif、mp4、mov等。 |
 | options  | [CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions)        | 否   | 创建选项，例如：{title: 'testPhoto'}。<br>文件名中不允许出现非法英文字符，包括： . .. \ / : * ? " ' ` < > \| { } [ ]|
 
 **返回值：**
@@ -378,7 +378,7 @@ getAsset(): PhotoAsset
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md) | 返回当前资产变更请求中的资产。 |
+| [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md) | 返回当前资产变更请求中的资产。对于创建资产的变更请求，在调用接口applyChanges的提交生效之前，该接口会返回null。 |
 
 **错误码：**
 
@@ -511,6 +511,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
     let extension: string = 'mp4';
     let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(context, photoType, extension);
+    // 获取临时文件写句柄，用于写入数据。
     let fd: number = await assetChangeRequest.getWriteCacheHandler();
     console.info('getWriteCacheHandler successfully');
     // write data into fd..
@@ -703,7 +704,6 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
-import { image } from '@kit.ImageKit';
 
 async function example(context: Context, asset: photoAccessHelper.PhotoAsset) {
   console.info('saveCameraPhotoDemo');
@@ -723,7 +723,7 @@ async function example(context: Context, asset: photoAccessHelper.PhotoAsset) {
 
 discardCameraPhoto(): void
 
-删除相机拍摄的照片。
+删除相机拍摄的照片，照片将被移入回收站。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -771,7 +771,7 @@ setOrientation(orientation: number): void
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| orientation | number | 是   | 待修改的图片旋转角度，且只能为0、90、180、270。 |
+| orientation | number | 是   | 待修改的图片旋转角度，单位：度（°），且只能为0°、90°、180°、270°。 |
 
 **错误码：**
 
@@ -800,6 +800,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
   let asset = await fetchResult.getFirstObject();
   let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+  // 修改图片的旋转角度为90°（参数只能为0°、90°、180°、270°）。
   assetChangeRequest.setOrientation(90);
   phAccessHelper.applyChanges(assetChangeRequest).then(() => {
     console.info('apply setOrientation successfully');
@@ -823,7 +824,7 @@ setFavorite(favoriteState: boolean): void
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| favoriteState | boolean | 是    | 是否设置为收藏文件，true表示设置为收藏文件；false表示取消收藏。 |
+| favoriteState | boolean | 是    | 是否设置为收藏文件，true表示收藏；false表示取消收藏。      |
 
 **错误码：**
 
@@ -851,6 +852,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
   let asset = await fetchResult.getFirstObject();
   let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+  // 将文件设置为收藏文件（入参为true表示收藏，false表示取消收藏）。
   assetChangeRequest.setFavorite(true);
   phAccessHelper.applyChanges(assetChangeRequest).then(() => {
     console.info('apply setFavorite successfully');

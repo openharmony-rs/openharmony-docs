@@ -1,4 +1,4 @@
-# \@LocalBuilder装饰器： 维持组件关系
+# \@LocalBuilder装饰器：维持组件关系
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->

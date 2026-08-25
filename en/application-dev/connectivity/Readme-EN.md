@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=fe94af415ef5defe8f4e5287d31952687cad711e translatedAt=2026-07-28T06:44:12.312Z pushedAt=2026-07-28T07:13:09.610Z -->
+<!-- md-trans-meta sourceCommit=7f5d2f05be1123a9d338acf8c19123a759105e39 translatedAt=2026-08-19T07:06:27.071Z pushedAt=2026-08-19T08:12:39.948Z -->
 
 - [About This Kit](connectivity-kit-intro.md)
 
@@ -14,7 +14,7 @@
 
   - [Bluetooth Overview](bluetooth/bluetooth-overview.md)
 
-  - [Bluetooth Setting Development](bluetooth/br-development-guide.md)
+  - [Bluetooth Settings](bluetooth/br-development-guide.md)
 
   - Bluetooth Classic<!--bluetooth-br-->
 
@@ -33,6 +33,10 @@
   - Bluetooth FAQs<!--bluetooth-faq-->
 
     - [2900099 Bluetooth API Call Error](bluetooth/bluetooth-faq-2900099-errorcode.md)<!--RP1--><!--RP1End-->
+
+    - [401 Invalid Parameter Reported When an Optional Property Is Explicitly Set to undefined](bluetooth/bluetooth-faq-401-invalid-parameter.md)
+
+  - [Bluetooth Glossary](bluetooth/terminology.md)
 
 - NFC<!--nfc-->
 
@@ -62,4 +66,4 @@
 
   - [Interconnection Between Partner Devices and OpenHarmony Devices](fusion-connectivity/partneragent-life-application-guide.md)
 
-- [Terminology](terminology.md)
+  - [Converged Short-Range Glossary](fusion-connectivity/fusion-connectivity-terminology.md)

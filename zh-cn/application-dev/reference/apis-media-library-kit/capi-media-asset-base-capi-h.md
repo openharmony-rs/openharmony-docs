@@ -28,11 +28,11 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) | MediaLibrary_RequestId | 定义请求Id。<br>当请求媒体库资源时，会返回此类型。<br>请求Id可用于取消请求。 |
-| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md) | OH_MediaAssetManager | 定义媒体资产管理器。<br>此结构提供了请求媒体库资源的能力。<br>如果创建失败，则返回空指针。 |
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md) | OH_MediaAssetManager | 定义媒体资产管理器。<br>此结构体提供了请求媒体库资源的能力。<br>如果创建失败，则返回空指针。 |
 | [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) | OH_MediaAssetChangeRequest | 定义媒体资产更改请求。<br>此结构体提供了处理媒体资产更改请求的能力。 |
 | [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) | OH_MovingPhoto | 定义动态照片。<br>此结构体提供了获取关于动态照片的信息的能力。 |
 | [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) | OH_MediaAsset | 定义媒体资产。<br>此结构体提供了封装文件资源属性的能力。 |
-| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) | MediaLibrary_RequestOptions | 请求策略模式配置项。<br>此结构体为媒体资源请求策略模式配置项。 |
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) | MediaLibrary_RequestOptions | 请求策略模式配置项，用于定义媒体资源请求策略。           |
 
 ### 枚举
 
@@ -44,7 +44,7 @@
 | [MediaLibrary_MediaSubType](#medialibrary_mediasubtype) | MediaLibrary_MediaSubType | 媒体资源子类型的枚举。 |
 | [MediaLibrary_ResourceType](#medialibrary_resourcetype) | MediaLibrary_ResourceType | 资源类型的枚举。 |
 | [MediaLibrary_ImageFileType](#medialibrary_imagefiletype) | MediaLibrary_ImageFileType | 图像文件类型的枚举。 |
-| [MediaLibrary_MediaQuality](#medialibrary_mediaquality) | MediaLibrary_MediaQuality | 媒体资源质量枚举。此枚举与请求媒体资源时定义的分发模式有关。 |
+| [MediaLibrary_MediaQuality](#medialibrary_mediaquality) | MediaLibrary_MediaQuality | 媒体资源质量枚举。此枚举与请求媒体资源时定义的分发模式有关。分发模式的详细说明请参考[MediaLibrary_DeliveryMode](#medialibrary_deliverymode)。 |
 | [MediaLibrary_MediaContentType](#medialibrary_mediacontenttype) | MediaLibrary_MediaContentType | 媒体内容类型的枚举。 |
 
 ### 函数
@@ -54,6 +54,7 @@
 | [typedef void (\*OH_MediaLibrary_OnDataPrepared)(int32_t result, MediaLibrary_RequestId requestId)](#oh_medialibrary_ondataprepared) | OH_MediaLibrary_OnDataPrepared | 当所请求的媒体资源准备完成时会触发回调。 |
 | [typedef void (\*OH_MediaLibrary_OnImageDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type,OH_ImageSourceNative* imageSourceNative)](#oh_medialibrary_onimagedataprepared) | OH_MediaLibrary_OnImageDataPrepared | 当请求的图像源准备就绪时会触发回调。 |
 | [typedef void (\*OH_MediaLibrary_OnMovingPhotoDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_MovingPhoto* movingPhoto)](#oh_medialibrary_onmovingphotodataprepared) | OH_MediaLibrary_OnMovingPhotoDataPrepared | 当请求的动态照片准备就绪时会触发回调。 |
+| [typedef void (\*OH_MediaLibrary_OnQuickImageDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_ImageSourceNative* imageSourceNative, OH_PictureNative* pictureNative)](#oh_medialibrary_onquickimagedataprepared) | OH_MediaLibrary_OnQuickImageDataPrepared | 当请求的图像源准备就绪时调用此函数。如果系统中存在图像缓冲区，则会返回一个图片对象，从而减少编码时间。 |
 
 ### 变量
 
@@ -191,13 +192,7 @@ enum MediaLibrary_MediaQuality
 
 媒体资源质量枚举。
 
-此枚举与请求媒体资源时定义的分发模式有关。
-
-快速分发：不考虑资源质量，直接基于现有资源返回。
-
-高质量分发：返回高质量资源，若没有，则触发生成高质量资源，成功后才返回。
-
-均衡分发：若存在高质量资源，则直接返回高质量资源。否则，先返回低质量资源，并触发生成高质量资源，成功后再返回一次高质量资源。
+此枚举与请求媒体资源时定义的分发模式有关。分发模式的详细说明请参考[MediaLibrary_DeliveryMode](#medialibrary_deliverymode)。
 
 **起始版本：** 12
 
@@ -312,6 +307,6 @@ typedef void (*OH_MediaLibrary_OnQuickImageDataPrepared)(MediaLibrary_ErrorCode 
 | [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | 请求资源的MediaLibrary_RequestId。 |
 | [MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality) mediaQuality | 请求资源的MediaLibrary_MediaQuality。 |
 | [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype) type | 请求来源的MediaLibrary_MediaContentType。 |
-| [OH_ImageSourceNative](../apis-image-kit/capi-image-nativemodule-oh-imagesourcenative.md)\* imageSourceNative | 用于在准备图像文件时获取OH_ImageSourceNative信息，否则imageSourceNative为null。 |
-| [OH_PictureNative](../apis-image-kit/capi-image-nativemodule-oh-picturenative.md)\* pictureNative | 用于在准备图像源时获取OH_PictureNative信息，否则pictureNative为null。 |
+| [OH_ImageSourceNative](../apis-image-kit/capi-image-nativemodule-oh-imagesourcenative.md)\* imageSourceNative | 用于在准备图像文件时获取OH_ImageSourceNative信息，否则imageSourceNative为null。             |
+| [OH_PictureNative](../apis-image-kit/capi-image-nativemodule-oh-picturenative.md)\* pictureNative | 用于在准备图像源时获取OH_PictureNative信息，否则pictureNative为null。            |
 

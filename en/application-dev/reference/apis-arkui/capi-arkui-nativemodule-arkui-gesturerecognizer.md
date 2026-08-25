@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f8ecdb82f3ec053eb7dde21e27a6f047d194898a translatedAt=2026-07-17T09:24:22.601Z pushedAt=2026-07-17T10:49:48.241Z -->
+<!-- md-trans-meta sourceCommit=307c96700aa31ceaed2d16437f8e9e4fabcbd960 translatedAt=2026-08-19T08:23:29.586Z pushedAt=2026-08-19T09:13:51.916Z -->
 
 ```c
 typedef struct ArkUI_GestureRecognizer ArkUI_GestureRecognizer
@@ -14,7 +14,7 @@ typedef struct ArkUI_GestureRecognizer ArkUI_GestureRecognizer
 
 ## Overview
 
-Defines a gesture recognizer in ArkUI gesture recognition APIs, helping you understand and use the component gesture recognition capability.
+Defines a gesture component object, which is used to represent a gesture recognizer object in the ArkUI gesture recognition APIs. After a gesture recognizer is bound to a UI component, it listens for touch events and notifies you through a callback when the recognition conditions of the corresponding gesture type are met. Different types of recognizers can be used for gestures such as tap, long press, pan, pinch, rotation, and swipe. For details about the mechanism and usage, see the gesture API description in [native_gesture.h](capi-native-gesture-h.md).
 
 **Since**: 12
 
