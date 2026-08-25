@@ -665,7 +665,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.DEFAULT_SMS_SUBSCRIPTION_CHANGED"
+**取值：** "usual.event.SIM.DEFAULT_SMS_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED<sup>10+</sup>
@@ -680,7 +680,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.DEFAULT_DATA_SUBSCRIPTION_CHANGED"
+**取值：** "usual.event.SIM.DEFAULT_DATA_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED<sup>10+</sup>
@@ -740,7 +740,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.DEFAULT_VOICE_SUBSCRIPTION_CHANGED"
+**取值：** "usual.event.SIM.DEFAULT_VOICE_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED<sup>10+</sup>
@@ -800,7 +800,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.DIALER_SPECIAL_CODE"
+**取值：** "common.event.SPECIAL_CODE"
 
 
 ### COMMON_EVENT_AUDIO_QUALITY_CHANGE<sup>10+</sup>
