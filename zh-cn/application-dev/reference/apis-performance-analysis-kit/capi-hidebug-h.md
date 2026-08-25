@@ -817,7 +817,7 @@ OH_HiDebug_ProfilerOptions* OH_HiDebug_CreateProfilerOptions(void)
 
 **描述**
 
-创建资源Profiler配置对象。
+创建资源Profiler配置对象。对应的释放函数为：[OH_HiDebug_DestroyProfilerOptions](#oh_hidebug_destroyprofileroptions)。
 
 **起始版本：** 26.1.0
 
