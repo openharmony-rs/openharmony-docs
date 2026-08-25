@@ -761,7 +761,7 @@ try {
 | uuid   | string              | 否    | 否    | RFCOMM套接字链路类型的服务UUID，例如"00001101-0000-1000-8000-00805F9B34FB"。<br>- 建议开发者使用自定义的服务UUID（可通过工具函数[util.generateRandomUUID](../apis-arkts/js-apis-util.md#utilgeneraterandomuuid9)生成），也可以使用标准协议定义的Serial Port UUID服务(00001101-0000-1000-8000-00805F9B34FB)。<br>- SppType设置为SPP_RFCOMM时该参数必选。<br>- SppType设置为SPP_L2CAP或SPP_L2CAP_BLE时设置为空字符串。|
 | secure | boolean             | 否    | 否    | 是否是安全通道。true表示是安全通道，false表示非安全通道。    |
 | type   | [SppType](#spptype)            | 否    | 否    | 蓝牙套接字链路类型。    |
-| psm<sup>20+</sup>   | number              | 否    | 是    |协议/服务多路复用器值，用于标识特定的服务数据传输通道。不填写该参数时默认值为-1。<br>对于客户端：<br>- SppType设置为SPP_RFCOMM时，该参数不填。<br>- SppType设置为SPP_L2CAP_BLE或SPP_L2CAP时，需和服务端的psm值保持一致。<br>对于服务端：<br>- SppType设置为SPP_RFCOMM时，该参数不填。<br>- SppType设置为SPP_L2CAP_BLE时，psm值必须由系统自动分配，有效值范围为[0x01, 0xFF]。<br>- SppType设置为SPP_L2CAP时，psm值可以主动设置或蓝牙子系统分配，若为主动设置，其有效范围为[0x01, 0xFFFF]，并且需要满足低位字节最低位必须为1，高位字节最低位必须为0；若为蓝牙子系统分配，该参数不填，可以通过[socket.getL2capPsm](#socketgetl2cappsm20)接口获取psm值。|
+| psm<sup>20+</sup>   | number              | 否    | 是    |协议/服务多路复用器值，用于标识特定的服务数据传输通道。不填写该参数时默认值为-1。<br>对于客户端：<br>- SppType设置为SPP_RFCOMM时，该参数不填。<br>- SppType设置为SPP_L2CAP_BLE或SPP_L2CAP时，需和服务端的psm值保持一致。<br>对于服务端：<br>- SppType设置为SPP_RFCOMM时，该参数不填。<br>- SppType设置为SPP_L2CAP_BLE时，psm值必须由系统自动分配，有效值范围为[0x01, 0xFF]。<br>- SppType设置为SPP_L2CAP时，psm值可以主动设置或蓝牙子系统分配，若为主动设置，其有效范围为[0x01, 0xFEFF]，并且需要满足低位字节最低位必须为1，高位字节最低位必须为0；若为蓝牙子系统分配，该参数不填，可以通过[socket.getL2capPsm](#socketgetl2cappsm20)接口获取psm值。|
 
 
 
