@@ -3906,7 +3906,7 @@ try {
 | DATA | 1    | 用户数据。|
 | DATA_AND_OS | 2    | 用户数据和操作系统。|
 
-## UpgradeTaskCallback
+## UpgradeTaskCallback<sup>23+</sup>
 
 type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
