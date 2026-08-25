@@ -29,7 +29,8 @@ NFC标签支持一种或多种通信技术，具体技术如下：
   手机NFC支持读取卡片信息并跳转到生态应用，有使用NDEF通用协议和应用接入[AirTouch服务](https://developer.huawei.com/consumer/cn/airtouch/)两种方式：
      1. NDEF通用协议跳转应用：在标签内写入应用的信息，电子设备触碰发现NFC标签后，根据NFC标签的NDEF信息，分发给对应的应用。
      2. 接入AirTouch服务：更高阶的应用拉起方案，通过碰一碰服务直达，满足用户碎片化需求，如：NFC碰一碰点单、支付、活动推广等，详细应用开发接入指导及标签制作参考[AirTouch服务](https://developer.huawei.com/consumer/cn/airtouch/)。<br>
-  更多NDEF标签格式规范请关注[NFC论坛](https://nfc-forum.org/)。
+
+   更多NDEF标签格式规范请关注[NFC论坛](https://nfc-forum.org/)。
 - 标签读写约束条件<br>
 不管是前台读写，还是后台读写，电子设备能够发现NFC标签的前提条件是设备必须是亮屏和解锁状态。
 
