@@ -3172,7 +3172,7 @@ onWifiStateChange(callback: Callback&lt;int&gt;): void
 
 offWifiStateChange(callback?: Callback&lt;int&gt;): void
 
-注册取消Wi-Fi状态改变事件。使用callback异步回调。
+取消注册Wi-Fi状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
