@@ -1,10 +1,12 @@
 # canvas
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=36e7207cad20c4ef453cb5bda48f835acde97674 translatedAt=2026-08-20T09:33:04.990Z pushedAt=2026-08-21T02:05:37.111Z -->
 
 The **\<canvas>** component is used for customizing drawings.
 
@@ -12,11 +14,9 @@ The **\<canvas>** component is used for customizing drawings.
 >
 > This component is supported since API version 5. Updates will be marked with a superscript to indicate their earliest API version.
 
-
 ## Child Components
 
 Not supported.
-
 
 ## Attributes
 
@@ -27,7 +27,6 @@ Not supported.
 | class | string | - | No| Style class of the component, which is used to refer to a style table.|
 | ref | string | - | No| Reference information of child elements, which is registered with the parent component on **$refs**.|
 
-
 ## Events
 
 | Name| Parameter| Description|
@@ -36,7 +35,6 @@ Not supported.
 | longpress | - | Triggered when the component is long pressed.|
 | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | Triggered when a user quickly swipes on the component.|
 
-
 ## Styles
 
 | Name| Type| Default Value| Mandatory| Description|
@@ -44,7 +42,7 @@ Not supported.
 | width | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | - | No| Component width.<br>If this attribute is not set, the default value **0** is used.|
 | height | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | - | No| Component height.<br>If this attribute is not set, the default value **0** is used.|
 | padding | &lt;length&gt; | 0 | No| Shorthand attribute to set the padding for all sides.<br>The attribute can have one to four values:<br>- If you set only one value, it specifies the padding for all the four sides.<br>- If you set two values, the first value specifies the top and bottom padding, and the second value specifies the left and right padding.<br>- If you set three values, the first value specifies the top padding, the second value specifies the left and right padding, and the third value specifies the bottom padding.<br>- If you set four values, they respectively specify the padding for top, right, bottom, and left sides (in clockwise order).|
-| margin | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | No| Shorthand attribute to set the margin for all sides. The attribute can have one to four values:<br>- If you set only one value, it specifies the margin for all the four sides.<br>- If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br>- If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br>- If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order).|
+| margin | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | No | Shorthand attribute to set the margin for all sides. The attribute can have one to four values:<br/>-&nbsp;If you set only one value, it specifies the margin for all the four sides.<br/>-&nbsp;If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br/>-&nbsp;If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br/>-&nbsp;If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order). |
 | margin-[left\|top\|right\|bottom] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | No| Left, top, right, and bottom margins.|
 | border-width | &lt;length&gt; | 0 | No| Shorthand attribute to set the border width for all sides.|
 | border-color | &lt;color&gt; | black | No| Shorthand attribute to set the color for all borders.|
@@ -52,7 +50,6 @@ Not supported.
 | background-color | &lt;color&gt; | - | No| Background color.|
 | display | string | flex | No| Whether to display a box containing the element and the layout for its child elements. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
 | [left\|top] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>6+</sup> | - | No| Edge of the element.<br>- The **left** attribute specifies the left edge position of the element. This attribute defines the offset between the left edge of the margin area of a positioned element and left edge of its containing block.<br>- The **top** attribute specifies the top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element.|
-
 
 ## Methods
 

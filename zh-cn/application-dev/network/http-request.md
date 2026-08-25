@@ -660,7 +660,7 @@ struct Index {
 
  **配置参考**
  
-1. 配置应用信任证书（具体配置方法可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)）。
+1. 配置应用信任证书（具体配置方法可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/network-connection-security-configuration#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE-1)）。
 2. 配置请求级CA证书：
    - 通过[httprequestoptions](../reference/apis-network-kit/js-apis-http.md#httprequestoptions)的caPath和caData字段配置HTTPS请求CA证书。
    - 通过[websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)的caPath字段配置WebSocket请求CA证书。
@@ -720,7 +720,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 **JSON配置文件示例**
 
-预置应用级证书的配置例子如下（具体配置路径可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)）：
+预置应用级证书的配置例子如下（具体配置路径可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/network-connection-security-configuration#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE-1)）：
 
 ```json
 {
@@ -828,7 +828,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 ### 配置不信任用户安装的CA证书
 
-系统默认信任系统预置的CA证书和用户安装的CA证书，可配置不信任用户安装的CA证书提升安全性。配置不信任用户安装的CA证书可以在src/main/resources/base/profile/network_config.json进行配置，更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)。
+系统默认信任系统预置的CA证书和用户安装的CA证书，可配置不信任用户安装的CA证书提升安全性。配置不信任用户安装的CA证书可以在src/main/resources/base/profile/network_config.json进行配置，更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/network-connection-security-configuration#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE-1)。
 
 ```json5
 {
@@ -841,7 +841,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 ```
 ### 明文HTTP访问权限配置说明
 
-该配置用于控制HTTP请求是否允许以明文形式传输。以下为明文HTTP访问权限的配置示例（含应用、组件及域名级配置），以及各字段的详细含义说明。更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)。
+该配置用于控制HTTP请求是否允许以明文形式传输。以下为明文HTTP访问权限的配置示例（含应用、组件及域名级配置），以及各字段的详细含义说明。更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/network-connection-security-configuration#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE-1)。
 > **说明：**
 >
 > 配置优先级规则：组件配置（component-config）> 域名配置（domain-config）> 基础配置（base-config），优先级高的配置会覆盖优先级低的规则。
