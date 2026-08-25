@@ -26,7 +26,7 @@ SCSI响应参数结构体，包含状态、错误诊断数据、传输结果等�
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t senseData[[SCSIPERIPHERAL_MAX_SENSE_DATA_LEN](capi-scsi-peripheral-types-h.md#scsiperipheral_max_sense_data_len)] | Sense Data，SCSI设备返回给主机的状态、错误及诊断信息。 |
+| uint8_t senseData[[SCSIPERIPHERAL_MAX_SENSE_DATA_LEN](capi-scsi-peripheral-types-h.md#宏定义)] | Sense Data，SCSI设备返回给主机的状态、错误及诊断信息。 |
 | [ScsiPeripheral_Status](capi-scsi-peripheral-types-h.md#scsiperipheral_status) status | 调用完成时的状态。可能的值包括：SCSIPERIPHERAL_STATUS_GOOD（正常状态）、SCSIPERIPHERAL_STATUS_BUSY（占用中）等。 |
 | uint8_t maskedStatus | 在SCSI通用驱动中，该字段用于存储经掩码处理后的SCSI状态。 |
 | uint8_t msgStatus | 消息状态，表示SCSI命令执行完成后的消息结果。 |
