@@ -1,4 +1,4 @@
-# @ohos.graphics.uiEffect (Effect Cascading)
+# @ohos.graphics.uiEffect (Cascading Effect)
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
@@ -6,7 +6,7 @@
 <!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=840854f9fe10a258a0038fd37739f3e768710f28 translatedAt=2026-08-24T09:26:33.131Z pushedAt=2026-08-25T07:28:23.190Z -->
+<!-- md-trans-meta sourceCommit=840854f9fe10a258a0038fd37739f3e768710f28 translatedAt=2026-08-24T09:26:33.131Z pushedAt=2026-08-25T08:44:40.260Z -->
 
 This module provides basic capabilities for component effects, including blur, brightening, and more. Effects are categorized into the Filter and VisualEffect classes, and effects of the same class can be cascaded under an instance of that effect class. Using this module, you can quickly implement complex visual effects without needing to master underlying image processing algorithms, reducing development complexity and improving user experience. In actual development, blur can be used for background blurring, and brightening can be used for bright screen display, etc.
 
