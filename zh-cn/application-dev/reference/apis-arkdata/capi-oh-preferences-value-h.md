@@ -151,7 +151,7 @@ const OH_PreferencesValue *OH_PreferencesPair_GetPreferencesValue(const OH_Prefe
 
 | 类型                                                     | 说明                                                         |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
-| const [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) | 如果操作成功，返回获取到的值对象的指针。操作失败或传参不合法返回空指针。 |
+| const [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)* | 如果操作成功，返回获取到的值对象的指针。操作失败或传参不合法返回空指针。 |
 
 
 ### OH_PreferencesValue_GetValueType()
@@ -293,7 +293,7 @@ OH_PreferencesValue* OH_PreferencesValue_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_PreferencesValue*](capi-preferences-oh-preferencesvalue.md) | 如果操作成功，返回指向[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)值对象的指针，否则返回nullptr。 |
+| [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)* | 如果操作成功，返回指向[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)值对象的指针，否则返回nullptr。 |
 
 ### OH_PreferencesValue_Destroy()
 
@@ -765,8 +765,8 @@ int OH_PreferencesValue_SetBlob(const OH_PreferencesValue *object, const uint8_t
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
-| const uint8_t *value | 需要设置的二进制值。 |
-| uint32_t count | 指向需要设置的二进制数据大小。 |
+| const uint8_t *value | 指向需要设置的二进制值的指针。 |
+| uint32_t count | 需要设置的二进制数据大小。 |
 
 **返回：**
 
