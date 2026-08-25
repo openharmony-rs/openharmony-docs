@@ -1193,7 +1193,7 @@ Current ability is not in foreground.
 
 **错误信息**
 
-A maximum of four UIAbility instances can be started simultaneously.The current parameter exceeds the maximum number or is less than 1.
+A maximum of four UIAbility instances can be started simultaneously. The current parameter exceeds the maximum number or is less than 1.
 
 **错误描述**
 
@@ -1338,7 +1338,7 @@ The UIAbility does not belong to the caller.
 
 **错误信息**
 
-The UIAbility is already exist, can not start again.
+The UIAbility is already exists, can not start again.
 
 **错误描述**
 
