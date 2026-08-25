@@ -305,7 +305,7 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 | ------------- | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | strokeWidth   | [Length](ts-types.md#length) | 否  | 是  | 设置进度条宽度。<br>默认值：4.0vp<br>取值范围：大于0的数值，不支持百分比设置。<br>超出取值范围或设置非法值时按默认值处理。<br>当宽度大于等于半径时，宽度默认修改为半径值的二分之一。|
 | shadow        | boolean                      | 否  | 是  | 进度条阴影开关。<br>true：表示打开进度条阴影；false：表示关闭进度条阴影。<br>默认值：false                                                             |
-| status        | [ProgressStatus<sup>10+</sup>](#progressstatus10枚举说明) | 否 | 是 | 设置进度条状态。当设置为ProgressStatus.LOADING时会开启检查更新动效，此时设置进度值不生效。当从ProgressStatus.LOADING设置为ProgressStatus.PROGRESSING时，检查更新动效会执行到终点再停止。<br>默认值：ProgressStatus.PROGRESSING |
+| status        | [ProgressStatus<sup>10+</sup>](#progressstatus10枚举说明) | 否 | 是 | 设置进度条状态。当设置为ProgressStatus.LOADING时会开启检查更新动效。当从ProgressStatus.LOADING设置为ProgressStatus.PROGRESSING时，检查更新动效会执行到终点再停止。<br>默认值：ProgressStatus.PROGRESSING<br>**说明：** 当设置为ProgressStatus.LOADING时，进度值设置不生效，具体参见[value属性说明](#value)。 |
 
 ## LinearStyleOptions<sup>10+</sup>
 

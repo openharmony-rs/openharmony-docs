@@ -76,8 +76,7 @@ struct HyperlinkExample {
       }
 
       Column() {
-        Hyperlink('https://example.com/', 'Go to the developer website') {
-        }
+        Hyperlink('https://example.com/', 'Go to the developer website')
         .color(Color.Blue)
       }
     }.width('100%').height('100%').justifyContent(FlexAlign.Center)

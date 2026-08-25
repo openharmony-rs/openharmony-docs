@@ -197,7 +197,7 @@ DataPanelShadowOptions继承自[MultiShadowOptions](ts-information-display-commo
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
-| colors | Array<[ResourceColor](ts-types.md#resourcecolor) \| [LinearGradient](#lineargradient10)> | 否 | 是 | 各数据段投影的颜色。 <br>默认值：与valueColors值相同 <br>**说明：** <br>若设置的投影颜色的个数少于数据段个数时，则显示的投影颜色的个数和设置的投影颜色个数一致。<br>若设置的投影颜色的个数多于数据段个数时，则显示的投影颜色的个数和数据段个数一致。|
+| colors | Array<[ResourceColor](ts-types.md#resourcecolor) \| [LinearGradient](#lineargradient10)> | 否 | 是 | 各数据段投影的颜色。 <br>默认值：与valueColors值相同 <br>**说明：** <br>若设置的投影颜色的个数少于数据段个数时，则显示的投影颜色个数等于设置的投影颜色个数。<br>若设置的投影颜色的个数多于数据段个数时，则显示的投影颜色个数等于数据段个数。|
 
 ## LinearGradient<sup>10+</sup>
 

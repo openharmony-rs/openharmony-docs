@@ -63,7 +63,7 @@ static marshalling(styledString: StyledString, callback: StyledStringMarshallCal
 
 | 类型              |说明       |
 | ------- | --------------------------------- | 
-| ArrayBuffer | 序列化后的buffer信息。<br>**说明：** <br>目前支持文本和图片。 |
+| ArrayBuffer | 序列化后的buffer信息。<br>**说明：** <br>支持文本、图片及自定义UserDataSpan的序列化。|
 
 ### unmarshalling
 

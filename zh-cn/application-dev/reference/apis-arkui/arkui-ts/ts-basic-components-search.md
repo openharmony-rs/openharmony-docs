@@ -1277,7 +1277,7 @@ onWillCut(callback: Callback\<string, boolean>)
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| callback  | Callback\<string, boolean> | 是   | 剪切操作前的回调。回调参数类型为string时，表示将要被剪切的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被剪切，true：允许文本被剪切；false：不允许文本被剪切。 |
+| callback  | Callback\<string, boolean> | 是   | 剪切操作前的回调。回调返回值为string时，表示将要被剪切的文本内容。回调返回值为boolean时，表示当前选中文本是否允许被剪切，true：允许文本被剪切；false：不允许文本被剪切。 |
 
 ### onPaste
 
@@ -2011,13 +2011,13 @@ class ChangeState {
     this.changeContent = info.content;
     this.changePreviewOffset = info.previewText?.offset;
     this.changePreviewValue = info.previewText?.value;
-    this.changeTextChangeRangeBeforeX = info.options?.rangeBefore.start;
-    this.changeTextChangeRangeBeforeY = info.options?.rangeBefore.end;
-    this.changeTextChangeRangeAfterX = info.options?.rangeAfter.start;
-    this.changeTextChangeRangeAfterY = info.options?.rangeAfter.end;
+    this.changeTextChangeRangeBeforeX = info.options?.rangeBefore?.start;
+    this.changeTextChangeRangeBeforeY = info.options?.rangeBefore?.end;
+    this.changeTextChangeRangeAfterX = info.options?.rangeAfter?.start;
+    this.changeTextChangeRangeAfterY = info.options?.rangeAfter?.end;
     this.changeTextChangeOldContent = info.options?.oldContent;
-    this.changeTextChangeOldPreviewOffset = info.options?.oldPreviewText.offset;
-    this.changeTextChangeOldPreviewValue = info.options?.oldPreviewText.value;
+    this.changeTextChangeOldPreviewOffset = info.options?.oldPreviewText?.offset;
+    this.changeTextChangeOldPreviewValue = info.options?.oldPreviewText?.value;
   }
 }
 

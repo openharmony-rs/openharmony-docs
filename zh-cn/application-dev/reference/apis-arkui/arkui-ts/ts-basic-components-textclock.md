@@ -338,7 +338,7 @@ TextClock容器组件的控制器，可以将该控制器绑定到TextClock组�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### 导入对象
+### 创建控制器对象
 
 ```ts
 controller: TextClockController = new TextClockController();
@@ -410,7 +410,7 @@ stop()
 @Component
 struct Second {
   @State accumulateTime: number = 0;
-  // 导入对象
+  // 创建控制器对象
   controller: TextClockController = new TextClockController();
 
   build() {
