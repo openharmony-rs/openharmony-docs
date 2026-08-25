@@ -314,6 +314,28 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 <!-- @[select_OutputDeviceForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
 
+<div class="same-source-code">
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+  let audioManager = audio.getAudioManager();
+  let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+  // 为指定音频播放流设置首选输出设备，此处renderer和outputDevice可通过ArkTS完整示例查看获取方式。
+  audioDeviceEnhanceManager.selectOutputDeviceForAudioRenderer(renderer, outputDevice).then(() => {
+    console.info('Succeeded in selecting output device for audio renderer.');
+    // ...
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to select output device for audio renderer. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets?same_code_link_text=select_OutputDeviceForAudioRenderer" target="_blank" rel="nofollow">EnhancedDeviceRouting.ets</a></p>
+
+</div>
+
+
 C/C++示例：
 
 **应用级：** 通过[OH_AudioDeviceEnhanceManager_SelectOutputDevice](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectoutputdevice)选择指定的输出设备。
