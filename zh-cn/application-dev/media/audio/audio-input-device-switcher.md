@@ -257,6 +257,27 @@ ArkTS-Sta示例：
 
 <!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioEnhanceDeviceSample-Sta/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
 
+<div class="same-source-code">
+``` TypeScript
+import audio from '@ohos.multimedia.audio';
+import common from '@ohos.app.ability.common';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+// ...
+
+let audioManager = audio.getAudioManager();
+let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+
+// ...
+  let isSupported: boolean = audioDeviceEnhanceManager.isEnhancedRoutingSupported();
+  console.info(`Succeeded in querying whether enhanced routing is supported. Result: ${isSupported}.`);
+  // ...
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioEnhanceDeviceSample-Sta/entry/src/main/ets/pages/EnhancedDeviceRouting.ets?same_code_link_text=isEnhancedRoutingSupported" target="_blank" rel="nofollow">EnhancedDeviceRouting.ets</a></p>
+
+</div>
+
+
 C/C++示例：
 
 使用前需添加头文件：
