@@ -284,7 +284,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
 5. 应用根据DLP文件的权限对界面进行适配。
 
-    DLP沙箱分身中可以调用[getDLPPermissionInfo](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongetdlppermissioninfo)方法查询当前系统登陆的域账号用户对本DLP文件的用户权限和操作权限，不同用户权限可以对应不同的对文档的操作权限。沙箱限制可见[数据防泄露（DLP）简介](dlp-guidelines.md)。
+    DLP沙箱分身中可以调用[getDLPPermissionInfo](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongetdlppermissioninfo)方法查询当前系统登录的域账号用户对本DLP文件的用户权限和操作权限，不同用户权限可以对应不同的对文档的操作权限。沙箱限制可见[数据防泄露（DLP）简介](dlp-guidelines.md)。
    
      使用该接口的前置条件：由demo应用打开DLP文件。
 
