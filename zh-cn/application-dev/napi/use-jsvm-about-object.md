@@ -117,7 +117,7 @@ static JSVM_Value CreateObject(JSVM_Env env, JSVM_CallbackInfo info)
     // 设置属性名为 "name"
     OH_JSVM_CreateStringUtf8(env, "name", JSVM_AUTO_LENGTH, &name);
     JSVM_Value value = nullptr;
-    // 设置属性值为 "Hello from N-API!"
+    // 设置属性值为 "Hello OH_JSVM_CreateObject!"
     OH_JSVM_CreateStringUtf8(env, "Hello OH_JSVM_CreateObject!", JSVM_AUTO_LENGTH, &value);
     // 将属性设置到对象上
     OH_JSVM_SetProperty(env, object, name, value);

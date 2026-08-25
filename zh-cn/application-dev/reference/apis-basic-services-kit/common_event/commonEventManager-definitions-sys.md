@@ -614,7 +614,7 @@
 
 ## Media Kit
 
-### COMMON_EVENT_SCREEN_SHARE
+### COMMON_EVENT_SCREEN_SHARE<sup>20+</sup>
 
 表示系统中发生了屏幕共享事件。
 
