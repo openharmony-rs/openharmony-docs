@@ -144,7 +144,6 @@ ArkTS示例：
 
 <!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
 
-<div class="same-source-code">
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -156,18 +155,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
   console.info(`Succeeded in querying whether enhanced routing is supported. Result: ${isSupported}.`);
 ```
 
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets?same_code_link_text=isEnhancedRoutingSupported" target="_blank" rel="nofollow">EnhancedDeviceRouting.ets</a></p>
-
-</div>
-
-
 C/C++示例：
 
 使用前需添加头文件：
 
 <!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
 
-<div class="same-source-code">
 ``` C++
 #include <ohaudio/native_audio_device_enhance_manager.h>
 #include <ohaudio/native_audio_routing_manager.h>
@@ -177,14 +170,8 @@ C/C++示例：
 #include <ohaudio/native_audiostreambuilder.h>
 ```
 
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp?same_code_link_text=header_file" target="_blank" rel="nofollow">EnhancedDeviceRouting.cpp</a></p>
-
-</div>
-
-
 <!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
 
-<div class="same-source-code">
 ``` C++
 napi_value IsEnhancedRoutingSupported(napi_env env, napi_callback_info info)
 {
@@ -196,11 +183,6 @@ napi_value IsEnhancedRoutingSupported(napi_env env, napi_callback_info info)
     // ...
 }
 ```
-
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp?same_code_link_text=isEnhancedRoutingSupported" target="_blank" rel="nofollow">EnhancedDeviceRouting.cpp</a></p>
-
-</div>
-
 
 ### 切换输入设备
 
@@ -216,7 +198,6 @@ ArkTS示例：
 
 <!-- @[select_InputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
 
-<div class="same-source-code">
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -233,16 +214,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
   });
 ```
 
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets?same_code_link_text=select_InputDevice" target="_blank" rel="nofollow">EnhancedDeviceRouting.ets</a></p>
-
-</div>
-
-
 **音频流级：** 通过[selectInputDeviceForAudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md#selectinputdeviceforaudiocapturer)为指定音频录制流选择输入设备，设置成功后仅对该录制流生效。
 
 <!-- @[select_InputDeviceForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
 
-<div class="same-source-code">
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -259,18 +234,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
   });
 ```
 
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets?same_code_link_text=select_InputDeviceForAudioCapturer" target="_blank" rel="nofollow">EnhancedDeviceRouting.ets</a></p>
-
-</div>
-
-
 C/C++示例：
 
 **应用级：** 通过[OH_AudioDeviceEnhanceManager_SelectInputDevice](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectinputdevice)选择指定的输入设备。
 
 <!-- @[select_InputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
 
-<div class="same-source-code">
 ``` C++
 // 获取音频设备增强管理器。
 static OH_AudioDeviceEnhanceManager *GetEnhanceManager(std::string &errorMsg)
@@ -340,16 +309,10 @@ napi_value SelectInputDevice(napi_env env, napi_callback_info info)
 }
 ```
 
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp?same_code_link_text=select_InputDevice" target="_blank" rel="nofollow">EnhancedDeviceRouting.cpp</a></p>
-
-</div>
-
-
 **音频流级：** 通过[OH_AudioDeviceEnhanceManager_SelectInputDeviceForAudioCapturer](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectinputdeviceforaudiocapturer)为指定音频录制流选择输入设备。
 
 <!-- @[select_InputDeviceForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
 
-<div class="same-source-code">
 ``` C++
 // 获取音频设备增强管理器。
 static OH_AudioDeviceEnhanceManager *GetEnhanceManager(std::string &errorMsg)
@@ -439,7 +402,3 @@ napi_value SelectInputDeviceForAudioCapturer(napi_env env, napi_callback_info in
     // ...
 }
 ```
-
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp?same_code_link_text=select_InputDeviceForAudioCapturer" target="_blank" rel="nofollow">EnhancedDeviceRouting.cpp</a></p>
-
-</div>
