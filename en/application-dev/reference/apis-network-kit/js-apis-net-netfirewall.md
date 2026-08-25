@@ -269,6 +269,15 @@ let domainRule: netFirewall.NetFirewallRule = {
     },{
       isWildcard: true,
       domain: "*.example.cn"
+    },{
+      isWildcard: true,
+      domain: "*w.example.cn"  // Supported since API version 26.0.0
+    },{
+      isWildcard: true,
+      domain: "www.example.*"  // Supported since API version 26.0.0
+    },{
+      isWildcard: true,
+      domain: "www.example.c*"  // Supported since API version 26.0.0
     }],
   userId: 100
 };
@@ -691,7 +700,14 @@ Defines domain name parameters of a firewall rule. Currently, Chinese domain nam
 | Name        | Type   | Read-Only| Optional|Description                                     |
 | ------------ | --------|------|-----|------------------------------------- |
 | isWildcard   | boolean | No | No|Whether to contain wildcards. The value **true** means to contain wildcards; and the value **false** means the opposite.                         |
-| domain       | string  | No |No|If **isWildcard** is set to **false**, the complete domain name, for example, "www.example.cn", needs to be specified.|
+| domain       | string  | No |No|If **isWildcard** is set to **false**, the complete domain name, for example, "www.example.cn", needs to be specified. If **isWildcard** is set to **true**, wildcard rules are supported. For details, see the description below.|
+
+If **isWildcard** is set to **true**, the wildcard "*" can be used in **domain**. It can appear at the beginning, the end, or both ends of a domain name, and matches any characters of any length (including zero). The following wildcard formats are supported:
+
+- `"*.xxx.xxx"`: prefix wildcard, which matches xxx.xxx and all its subdomains. For example, "*.example.com" matches "example.com", "www.example.com", and "a.b.example.com". (Start version: API version 21)
+- `"*xx.xxx.xxx"`: prefix wildcard, which matches domain names ending with "xx.xxx.xxx". For example, "*a.example.com" matches "a.example.com" and "www.a.example.com". (Start version: API version 26.0.0)
+- `"xxx.xxx.xxx.*"`: suffix wildcard, which matches domain names starting with "xxx.xxx.xxx.". For example, "www.example.*" matches "www.example.com" and "www.example.cn". (Start version: API version 26.0.0)
+- `"xxx.xxx.xxx.xx*"`: suffix wildcard, which matches domain names starting with "xxx.xxx.xxx.xx". For example, "www.example.co*" matches "www.example.com" and "www.example.com.cn". (Start version: API version 26.0.0)
 
 ## NetFirewallDnsParams
 
