@@ -1653,3 +1653,17 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **支持设备**：Car
 
 **起始版本**：26.1.0
+
+## ohos.permission.LOCAL_DEBUG_OTHER_APPS
+
+允许应用在开发者模式下且本地调试时使用aa工具以调试应用。
+
+<!--RP107--><!--RP107End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.1.0
