@@ -41,7 +41,7 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   表示事件回调类型，支持的事件类型为'collaborateEvent'，当协同状态发生变化时触发该事件。   |
 | sessionId | number  | 是    | 表示创建的协同会话ID，需先创建协同会话后获取。    |
-| callback | Callback&lt;[CollaborateEventInfo](../js-apis-distributed-abilityConnectionManager.md)&gt; | 是    | 回调函数，返回协同事件的信息。    |
+| callback | Callback&lt;[CollaborateEventInfo](./js-apis-distributed-abilityConnectionManager.md)&gt; | 是    | 回调函数，返回协同事件的信息。    |
 
 **错误码：**
 
@@ -131,7 +131,7 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   表示事件回调类型，支持的事件类型为'collaborateEvent'。    |
 | sessionId | number  | 是    | 表示创建的协同会话ID，需先创建协同会话后获取。    |
-| callback | Callback&lt;[CollaborateEventInfo](../js-apis-distributed-abilityConnectionManager.md)&gt; | 否    | 表示注册的回调函数。如果传入该参数，则取消该callback的监听。如果未传入该参数，则取消所有'collaborateEvent'事件监听。    |
+| callback | Callback&lt;[CollaborateEventInfo](./js-apis-distributed-abilityConnectionManager.md)&gt; | 否    | 表示注册的回调函数。如果传入该参数，则取消该callback的监听。如果未传入该参数，则取消所有'collaborateEvent'事件监听。    |
 
 **错误码：**
 
