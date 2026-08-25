@@ -2265,11 +2265,11 @@ try {
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | batteryLevel  | number | 否    | 否    | 表示设备的电量值，有效取值范围[0, 100]，单位：%，表示电量百分比；如果该值为-1，表示没有电量信息。   |
-| leftEarBatteryLevel  | number | 否    | 否    | 若是蓝牙耳机设备类型，表示左侧耳机的电量值，单位：%。取值范围：0-100，表示电量百分比；如果该值为-1，表示没有电量信息。   |
+| leftEarBatteryLevel  | number | 否    | 否    | 若是蓝牙耳机设备类型，表示左侧耳机的电量值，有效取值范围[0, 100]，单位：%，表示电量百分比；如果该值为-1，表示没有电量信息。   |
 | leftEarChargeState  | [DeviceChargeState](#devicechargestate12) | 否    | 否    | 若是蓝牙耳机设备类型，表示左侧耳机的充电状态。   |
-| rightEarBatteryLevel  | number | 否    | 否    | 若是蓝牙耳机设备类型，表示右侧耳机的电量值，单位：%。取值范围：0-100，表示电量百分比；如果该值为-1，表示没有电量信息。   |
+| rightEarBatteryLevel  | number | 否    | 否    | 若是蓝牙耳机设备类型，表示右侧耳机的电量值，有效取值范围[0, 100]，单位：%，表示电量百分比；如果该值为-1，表示没有电量信息。   |
 | rightEarChargeState  | [DeviceChargeState](#devicechargestate12) | 否    | 否    | 若是蓝牙耳机设备类型，表示右侧耳机的充电状态。   |
-| boxBatteryLevel  | number | 否    | 否    | 若是蓝牙耳机设备类型，表示耳机仓的电量值，单位：%。取值范围：0-100，表示电量百分比；如果该值为-1，表示没有电量信息。   |
+| boxBatteryLevel  | number | 否    | 否    | 若是蓝牙耳机设备类型，表示耳机仓的电量值，有效取值范围[0, 100]，单位：%，表示电量百分比；如果该值为-1，表示没有电量信息。   |
 | boxChargeState  | [DeviceChargeState](#devicechargestate12) | 否    | 否    | 若是蓝牙耳机设备类型，表示耳机仓的充电状态。   |
 
 
