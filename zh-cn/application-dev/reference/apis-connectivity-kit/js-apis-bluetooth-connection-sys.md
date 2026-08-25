@@ -828,7 +828,7 @@ try {
 
 pairDeviceOutOfBand(transport: BluetoothTransport, p192Data: OobData | null, p256Data: OobData | null): Promise&lt;void&gt;
 
-通过带外（Out of Band, [OOB](../../connectivity/terminology.md#oob)）通信机制发起与对端蓝牙设备的配对流程。本接口所需的OobData可通过[generateLocalOobData](#connectiongeneratelocaloobdata23)生成本机OOB数据并经带外通道传输至本端后使用。使用Promise异步回调。
+通过带外（Out of Band, [OOB](../../connectivity/bluetooth/terminology.md#oob)）通信机制发起与对端蓝牙设备的配对流程。本接口所需的OobData可通过[generateLocalOobData](#connectiongeneratelocaloobdata23)生成本机OOB数据并经带外通道传输至本端后使用。使用Promise异步回调。
 
 - 蓝牙配对状态通过[on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange)的回调结果获取。
 
@@ -902,7 +902,7 @@ try {
 
 generateLocalOobData(transport: BluetoothTransport): Promise&lt;OobData&gt;
 
-获取本机的带外（Out of Band, [OOB](../../connectivity/terminology.md#oob)）通信数据。生成的OOB数据经带外通道传输至对端设备后，对端设备可通过[pairDeviceOutOfBand](#connectionpairdeviceoutofband23)使用该数据发起配对流程。使用Promise异步回调。
+获取本机的带外（Out of Band, [OOB](../../connectivity/bluetooth/terminology.md#oob)）通信数据。生成的OOB数据经带外通道传输至对端设备后，对端设备可通过[pairDeviceOutOfBand](#connectionpairdeviceoutofband23)使用该数据发起配对流程。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
