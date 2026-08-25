@@ -41,7 +41,7 @@
 | Resolvable Private Address      | 可解析私有地址，该类型地址通过一组地址解析密钥（Identity Resolving Key, IRK）生成，会定期（蓝牙协议建议15分钟更新一次）发生变化。若一个蓝牙设备A拥有另一个蓝牙设备B的IRK，即可通过解析设备B的可解析私有地址来识别设备B。|
 | Non-resolvable Private Address       | 不可解析私有地址，该类型地址是完全随机的临时地址，会定期（蓝牙协议建议15分钟更新一次）发生变化，难以追踪。|
 
-- 蓝牙设备地址，格式为XX:XX:XX:XX:XX:XX，X为十六进制字符（0-9、A-F、a-f），例如："08:00:27:AB:CD:EF"。
+- 蓝牙子系统API中，蓝牙MAC地址采用六段冒号分隔格式：XX:XX:XX:XX:XX:XX，其中 X 为十六进制字符（0-9、A-F、a-f），例如："08:00:27:AB:CD:EF"。
 
 ## 设备角色
 
