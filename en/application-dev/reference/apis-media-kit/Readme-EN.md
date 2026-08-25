@@ -6,7 +6,7 @@
 <!--Designer: @HmQQQ; @stupig001-->
 <!--Tester: @xchaosioda; @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4111ece30c283db4d5b58c1b58c074fe94c527ea translatedAt=2026-08-17T10:24:04.593Z pushedAt=2026-08-19T06:51:56.936Z -->
+<!-- md-trans-meta sourceCommit=4a21aa93482ada31493cb85677baeecf6ae7cd09 translatedAt=2026-08-24T03:13:27.664Z pushedAt=2026-08-25T10:11:47.091Z -->
 
 - ArkTS APIs<!--media-arkts-->
 
@@ -47,6 +47,8 @@
     - [Deprecated Interface (AudioRecorder, deprecated)](arkts-apis-media-AudioRecorder.md)
 
     - [Deprecated Interface (VideoPlayer, deprecated)](arkts-apis-media-VideoPlayer.md)
+
+  - [@ohos.multimedia.videoProcessing (Video Processing)](arkts-apis-media-videoProcessing.md)
 
   <!--Del-->
 
