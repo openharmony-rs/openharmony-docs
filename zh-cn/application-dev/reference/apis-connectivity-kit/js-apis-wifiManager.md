@@ -1691,7 +1691,7 @@ getLinkedInfoSync(): WifiLinkedInfo
 | ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | bssid | string | 否 | 否 | 热点的BSSID。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | rssi | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 热点的信号强度(dBm)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
-| band | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | Wi-Fi接入点的频段，1表示2.4GHZ；2表示5GHZ。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
+| band | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | Wi-Fi接入点的频段，1表示2.4GHz；2表示5GHz。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | linkSpeed | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | Wi-Fi接入点的上行速度，单位Mbps。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | rxLinkSpeed<sup>10+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | Wi-Fi接入点的下行速度，单位Mbps。 <br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
 | maxSupportedTxLinkSpeed<sup>10+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 当前支持的最大上行速率，单位Mbps。 **ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
