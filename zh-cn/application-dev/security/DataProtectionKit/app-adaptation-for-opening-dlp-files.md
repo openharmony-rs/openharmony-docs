@@ -637,7 +637,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     12.1 打开DLP文件时，应用被安装为DLP沙箱分身应用（后续简称为分身），分身会收到want请求，分身可以对其中一些字段进行解析：
 
     <!-- @[dlp_PrepareOpenFuseFile](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     interface DLPUriObj {
       name: string
