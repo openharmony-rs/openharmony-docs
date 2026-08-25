@@ -6,7 +6,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=3bb4c97ba607c5353ac0e05f41ee04555a22e644 translatedAt=2026-08-10T03:45:51.173Z pushedAt=2026-08-10T07:34:04.697Z -->
+<!-- md-trans-meta sourceCommit=cbc788541d3c92f56dce788e128dfa81de46aa31 translatedAt=2026-08-22T02:03:43.804Z pushedAt=2026-08-22T06:37:20.409Z -->
 
 Audio and Video Session (AVSession) Kit provides the audio and video management service, which manages the playback behavior of all audio and video applications in the system in a unified manner. You can use the kit to quickly build unified audio and video display and control capabilities.
 
@@ -26,7 +26,7 @@ Audio and Video Session (AVSession) Kit provides the audio and video management 
 
 - Standardize background playback management
 
-  Through the controller, the background playback of applications is visible and controllable.
+Through the Media Controller, the background playback of applications is visible and controllable, and audio and video applications can be controlled in a unified manner.
 
   The system enforces strict control over background playback. For applications that have not integrated with AVSession or for applications that have integrated with AVSession but do not have a valid AVSession instance when they move to the background, their audio playback is forcibly paused. This addresses the issue of applications playing audio maliciously in the background, making it difficult for users to locate and close the offending application.
 
@@ -36,19 +36,19 @@ Be familiar with the following basic concepts before development:
 
 - AVSession
 
-  For AVSession, one end is the audio and video applications under control, and the other end is a controller (for example, Media Controller or AI Voice). AVSession provides a channel for information exchange between the application and controller. 
+For AVSession, one end is the audio and video applications under control, and the other end is a controller (for example, Media Controller or AI Voice). AVSession provides a channel for information exchange between the applications and their controllers.
 
 - Provider
 
-  An audio or video application that has accessed the media session. After accessing the media session, the audio or video application must provide playback media information to the media session, such as the song name being played and the playback state. Meanwhile, the audio or video application must receive control commands from the controller through the media session and respond correctly.
+A provider is an audio and video application that has accessed AVSession. After accessing AVSession, the audio and video application must provide playback media information to AVSession, such as the song name being played and the playback state. Meanwhile, the audio and video application must receive control commands from the controller through AVSession and respond correctly.
 
 - Controller
 
-  An application that has accessed the media session and has the capability to globally manage audio and video playback behaviors, such as the System Media Controller and AI Voice. For ease of understanding, the system Media Controller is used as an example of a Media Session Controller in the following sections. After accessing the media session, system applications such as the Media Controller can obtain the latest media information by listening to the media session, and can also send control commands to audio and video applications through the media session.
+A controller is an application that has accessed AVSession and has the capability to globally manage audio and video playback behaviors, such as the system Media Controller and AI Voice. For ease of understanding, the system Media Controller is used as an example of a controller in the following sections. After accessing AVSession, system applications such as the Media Controller can obtain the latest media information by listening to AVSession, and can also send control commands to audio and video applications through AVSession.
 
 - AVSessionController
 
-  An object that controls the playback behavior of the provider. It obtains the playback information of the audio and video application and listens for the application playback changes to synchronize the AVSession information between the application and controller. The controller is the holder of an AVSessionController object.
+The holder of an AVSessionController object, generally the controller, can control the playback behavior of the provider, obtain the playback information of the audio and video application, and listen for changes in the playback state of the audio and video application, so as to synchronize the AVSession information between the audio and video application and the Media Controller.
 
 - AVSessionManager
 
@@ -62,15 +62,15 @@ AVSessions are classified into local AVSessions and distributed AVSessions.
 
 - Local AVSession
 
-  Local AVSession establishes a connection between the provider and controller in the local device, so as to implement unified playback control and media information display for audio and video applications in the system.
+Local AVSession establishes a connection between the provider and controller in the local device, so as to implement unified playback control and media information display for audio and video applications in the system.
 
 - Distributed AVSession
 
-  Distributed AVSession establishes a connection between the provider and controller in the cross-device scenario, so as to implement cross-device playback control and media information display for audio and video applications in the system. For example, you can project the content played on device A to device B and perform playback control on device B.
+Distributed AVSession establishes a connection between the provider and controller in the cross-device scenario, so as to implement cross-device playback control and media information display for audio and video applications. For example, you can project the content played on device A to device B and perform playback control on device B.
 
 ## Constraints
 
-All audio and video applications that need to be played in the background must be connected to AVSession and background task management. Otherwise, audio playback is forcibly paused when such an application switches to the background.
+All audio and video applications that need to play in the background must be connected to AVSession and background task management. Otherwise, the system forcibly pauses audio playback when such an application switches to the background.
 
 ## Relationship with Related Kits
 

@@ -6,7 +6,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:41:12.594Z pushedAt=2026-08-12T11:14:51.606Z -->
+<!-- md-trans-meta sourceCommit=ce54139d1685b975f701d518f7149cf8c16360b0 translatedAt=2026-08-22T02:12:46.799Z pushedAt=2026-08-22T06:50:10.037Z -->
 
 ## Introduction
 
@@ -186,7 +186,7 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    // The first parameter passed in is the object to check, and the second is the property to check. Obtain the corresponding value by calling the napi_get_property API.
+    // The first parameter passed in is the object to check, and the second parameter is the property to check. Obtain the corresponding value by calling the napi_get_property API.
     napi_value result;
     napi_status status = napi_get_property(env, args[0], args[1], &result);
     if (status != napi_ok) {

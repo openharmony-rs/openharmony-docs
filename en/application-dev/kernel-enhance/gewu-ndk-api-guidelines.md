@@ -6,7 +6,7 @@
 <!--Designer: @tanyihua-->
 <!--Tester: @panny060-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=84e5c687623c619df721fa927b62d6782396d98d translatedAt=2026-08-04T13:30:05.315Z pushedAt=2026-08-05T08:04:01.830Z -->
+<!-- md-trans-meta sourceCommit=27aa2665467fe729505224e92e55f0dd00edbc06 translatedAt=2026-08-22T01:39:47.242Z pushedAt=2026-08-22T03:35:36.184Z -->
 
 ## When to Use
 
@@ -225,7 +225,7 @@ The example is as follows:
 
 using json = nlohmann::json;
 
-/* Used to save chat state */
+/* Used to save the chat state. */
 struct ChatContext {
 public:
     ChatContext()
@@ -246,7 +246,7 @@ public:
     bool earlyAbort = false;
 };
 
-/* Callback function when an inference result is received */
+/* Callback function invoked when an inference result is received. */
 void OnChatResponse(void *context, const char *response)
 {
     ChatContext *chatContext = static_cast<ChatContext *>(context);
@@ -284,12 +284,12 @@ int Demo(void)
 {
     DEMO_LOGI("Demo starts");
     json attrJson = {
-        /* Modify model file location according to the actual situation */
+        /* Model file location. Modify it based on the actual situation. */
         {"model", "/data/storage/el2/base/files/qwen2-awq"},
     };
     std::string attrStr = attrJson.dump(4);
 
-    /* Create a session */
+    /* Create a session. */
     OH_QoS_GewuCreateSessionResult createResult = OH_QoS_GewuCreateSession(attrStr.c_str());
     if (createResult.error != OH_QOS_GEWU_OK) {
         DEMO_LOGE("failed to create session, error=%d", (int)createResult.error);
@@ -297,7 +297,7 @@ int Demo(void)
     }
     OH_QoS_GewuSession session = createResult.session;
 
-    /* Create and submit a request */
+    /* Create and submit a request. */
     ChatContext context;
     json requestJson = {
         {"messages", json::array({
@@ -317,7 +317,7 @@ int Demo(void)
     OH_QoS_GewuRequest request = submitResult.request;
     context.Join();
 
-    /* Abort the request early */
+    /* Abort the request in advance. */
     if (context.earlyAbort) {
         OH_QoS_GewuErrorCode error = OH_QoS_GewuAbortRequest(session, request);
         if (error != OH_QOS_GEWU_OK) {
@@ -327,10 +327,10 @@ int Demo(void)
         }
     }
 
-    /* Print the result */
+    /* Print the result. */
     DEMO_LOGI("response: %s", context.responseContent.c_str());
 
-    /* Destroy the session */
+    /* Destroy the session. */
     OH_QoS_GewuErrorCode error = OH_QoS_GewuDestroySession(session);
     if (error != OH_QOS_GEWU_OK) {
         DEMO_LOGE("failed to destroy session, error=%d", (int)error);

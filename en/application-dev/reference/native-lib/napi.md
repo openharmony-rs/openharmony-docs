@@ -37,7 +37,7 @@ The Node-API component of OpenHarmony reimplements the Node-API interfaces and c
 The usage and behavior of the APIs exported from the Node-API native library are based on [Node.js](https://nodejs.org/docs/latest-v18.x/api/n-api.html). Some APIs differ. For details, see [Differences Between the Exported Symbols and the Symbols in the Native Library](#differences-between-the-exported-symbols-and-the-symbols-in-the-native-library).
 
 > **NOTE**
-> When using NAPI APIs, ensure that the environment, objects, and values are valid and comply with the specifications. Invalid use or use across lifecycles may cause failures, crashes, or undefined behavior. For common issues during development, see [Node-API FAQ](../../napi/use-napi-faqs.md#node-api-faqs).
+> When using NAPI APIs, ensure that the environment, objects, and values are valid and comply with the specifications. Invalid use or use across lifecycles may cause failures, crashes, or undefined behavior. For common issues during development, see [Node-API FAQ](../../napi/use-napi-faqs.md).
 
 |Symbol Type|Symbol|Description|Start API Version|
 | --- | --- | --- | --- |

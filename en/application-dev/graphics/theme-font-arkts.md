@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=983fa161ee12961fd07ba0428e932a03e0d706d9 translatedAt=2026-08-03T11:24:14.093Z pushedAt=2026-08-04T07:55:34.388Z -->
+<!-- md-trans-meta sourceCommit=0876b7ba2fa1777332890da7f5059310feded633 translatedAt=2026-08-22T01:38:08.571Z pushedAt=2026-08-22T03:33:26.778Z -->
 
 ## Overview
 
@@ -49,7 +49,7 @@ The following table lists the APIs for registering and using theme fonts. For de
    let fontCollection = text.FontCollection.getGlobalInstance();
    ```
 
-4. Create a paragraph style and use the font manager instance to construct a **ParagraphBuilder** instance for generating paragraphs.
+4. Create a paragraph style and use the font collection instance to construct a **ParagraphBuilder** instance for generating paragraphs.
 
    > **NOTE**
    >

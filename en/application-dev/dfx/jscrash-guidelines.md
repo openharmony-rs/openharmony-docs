@@ -6,7 +6,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=949476dcd3d8ed42b1b2d346673060a5d59aa582 translatedAt=2026-08-15T01:48:07.938Z pushedAt=2026-08-15T07:21:58.511Z -->
+<!-- md-trans-meta sourceCommit=946ced8610d4a456a6fd95b0b91c3eb5f8a70593 translatedAt=2026-08-22T01:24:15.713Z pushedAt=2026-08-22T02:28:36.683Z -->
 
 ## Overview
 
@@ -26,7 +26,7 @@ ArkCompiler runtime captures process exceptions. The fault log generation proces
 
 ## Constraints
 
-Throwing an exception in an asynchronous function modified by **async** does not cause a JS crash that leads to an app crash. You can observe the exception through [errorManager.on('error')](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror). For sample code, see [Exception Handling in Async Functions](../arkts-utils/arkts-runtime-faq.md#exception-handling-in-async-functions). Starting from **API version 26.0.0**, when the app has registered ErrorManager to observe exceptions, exceptions other than non-catchable types (currently only OutOfMemoryError) will not generate HiAppEvent events for reporting.
+Actively throwing an exception in an async function does not cause a JS crash. You can observe the exception through [errorManager.on('error')](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror). For sample code, see [Exception Handling in Async Functions](../arkts-utils/arkts-runtime-faq.md#exception-handling-in-async-functions).
 
 ## Obtaining Logs
 

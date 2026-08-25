@@ -152,7 +152,7 @@ Obtains the pressed state of modifier keys. It is suitable for scenarios such as
 
 | Name| Type                         | Mandatory| Description              |
 | ------ | ----------------------------- | ---- | ------------------ |
-| keys | Array&lt;string&gt; | Yes | List of modifier keys. Supported modifier keys: 'Ctrl' | 'Alt' | 'Shift'.<br>**NOTE**<br>This API cannot be used in stylus scenarios. |
+| keys | Array&lt;string&gt; | Yes | List of modifier keys. Supported modifier keys: 'Ctrl' \| 'Alt' \| 'Shift'.<br>**NOTE**<br>This API cannot be used in stylus scenarios. |
 
 **Return value**
 

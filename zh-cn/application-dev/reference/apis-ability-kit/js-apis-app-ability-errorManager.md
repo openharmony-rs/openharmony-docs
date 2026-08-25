@@ -1008,7 +1008,7 @@ type GlobalObserver = (reason: GlobalError) => void
 
 ## GlobalError<sup>18+</sup>
 
-有关异常事件名字、消息、错误堆栈信息、异常线程名称和类型的对象。
+有关异常事件名字、消息、错误堆栈信息、异常线程名称和类型的对象。继承自Error。
 
 **原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 

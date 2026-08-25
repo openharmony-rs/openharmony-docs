@@ -5,8 +5,8 @@
 <!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
 <!--Tester: @fei_0805-->
-<!--Adviser: @luwy2025-->
-<!-- md-trans-meta sourceCommit=e5bc67b4e035fae4d3debdff78f31873a4466939 translatedAt=2026-08-03T10:58:37.053Z pushedAt=2026-08-03T11:08:40.089Z -->
+<!--Adviser: @yuwenliang0514-->
+<!-- md-trans-meta sourceCommit=233eb431f8ea7c656c5b56931386bbeb010828c6 translatedAt=2026-08-22T01:30:20.712Z pushedAt=2026-08-22T03:23:16.666Z -->
 
 > **NOTE**<br>
 > You need to develop [device online/offline status monitoring](game-controller-monitor-device.md) before registering listeners for gamepad axis and button events.

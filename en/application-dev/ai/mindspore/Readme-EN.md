@@ -17,3 +17,4 @@
 - [Using MindSpore Lite for Speech Recognition (C/C++)](mindspore-asr-based-native.md)
 - Appendix<!--mindspore-lite-appendix-->
   - [MindSpore Lite Kit Operator List](mindspore-lite-supported-operators.md)
+  - [MindSpore Lite Kit Glossary](mindspore-lite-term.md)
