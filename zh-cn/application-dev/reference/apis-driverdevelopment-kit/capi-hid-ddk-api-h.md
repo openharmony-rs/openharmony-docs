@@ -248,7 +248,7 @@ int32_t OH_Hid_Write(Hid_DeviceHandle *dev, uint8_t *data, uint32_t length, uint
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | uint8_t *data | 待写入的数据。 |
-| uint32_t length | 写入数据的字节长度，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t length | 写入数据的字节长度，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)，否则无法通过参数校验。 |
 | uint32_t *bytesWritten | 实际写入的数据字节数。 |
 
 **返回：**
