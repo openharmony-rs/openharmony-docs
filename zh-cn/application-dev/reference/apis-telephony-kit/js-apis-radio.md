@@ -1058,7 +1058,7 @@ radio.getOperatorName(slotId).then((data: string) => {
 
 getOperatorNameSync\(slotId: number\): string
 
-获取运营商名称，为[getOperatorName](#radiogetoperatorname7)的同步版本，直接返回结果。与异步方法getOperatorName功能相同，适用于需要立即获取结果且能接受阻塞调用的场景；若需要非阻塞调用，请使用。
+获取运营商名称，为[getOperatorName](#radiogetoperatorname7)的同步版本，直接返回结果。与异步方法getOperatorName功能相同，适用于需要立即获取结果且能接受阻塞调用的场景；若需要非阻塞调用，请使用getOperatorName。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
