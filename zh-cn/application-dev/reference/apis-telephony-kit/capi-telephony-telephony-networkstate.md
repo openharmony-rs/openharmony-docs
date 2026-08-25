@@ -33,7 +33,7 @@ typedef struct {...} Telephony_NetworkState
 | Telephony_RegState regState_ | 设备的网络注册状态。 |
 | Telephony_RadioTechnology cfgTech_ | 设备的无线接入技术。 |
 | Telephony_NsaState nsaState_ | 设备的NSA网络注册状态。 |
-| bool isCaActive_ | CA(Carrier Aggregation，载波聚合)是否处于激活状态。true表示CA已激活，false表示CA未激活。 |
+| bool isCaActive_ | CA（Carrier Aggregation，载波聚合）是否处于激活状态。true表示CA已激活，false表示CA未激活。 |
 | bool isEmergency_ | 此设备是否只允许拨打紧急呼叫。true表示只允许拨打紧急呼叫，false表示不限于紧急呼叫。 |
 
 

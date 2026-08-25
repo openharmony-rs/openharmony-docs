@@ -120,7 +120,7 @@ radio.getRadioTech(slotId).then((data: radio.NetworkRadioTech) => {
 
 getRadioTechSync\(slotId: number\): [NetworkRadioTech](#networkradiotech11)
 
-获取当前接入的CS域和PS域无线接入技术，为getRadioTech的同步版本，直接返回结果。与异步方法getRadioTech功能相同，适用于需要立即获取结果且能接受阻塞调用的场景；若需要非阻塞调用，请使用getRadioTech。CS域为电路交换域，PS为分组交换域。
+获取当前接入的CS域和PS域无线接入技术，为[getRadioTech](#radiogetradiotech)的同步版本，直接返回结果。与异步方法getRadioTech功能相同，适用于需要立即获取结果且能接受阻塞调用的场景；若需要非阻塞调用，请使用getRadioTech。CS域为电路交换域，PS为分组交换域。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -931,7 +931,7 @@ isRadioOn\(slotId?: number\): Promise\<boolean\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 否   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。<br>如果不指定slotId，默认判断主卡Radio是否打开 |
+| slotId | number | 否   | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。<br>如果不指定slotId，默认判断主卡Radio是否打开。 |
 
 **返回值：**
 
@@ -1166,7 +1166,7 @@ try {
 | regState             | [RegState](#regstate)               |  否  |  否  | 设备的网络注册状态。                                         |
 | cfgTech<sup>8+</sup> | [RadioTechnology](#radiotechnology) |  否  |  否  | 设备的无线接入技术。                                         |
 | nsaState             | [NsaState](#nsastate)               |  否  |  否  | 设备的NSA网络注册状态。                                      |
-| isCaActive           | boolean                             |  否  |  否  | CA(Carrier Aggregation，载波聚合)的状态。<br>- true：CA已激活。<br>- false：CA未激活。                                                   |
+| isCaActive           | boolean                             |  否  |  否  | CA（Carrier Aggregation，载波聚合）的状态。<br>- true：CA已激活。<br>- false：CA未激活。                                                   |
 | isEmergency          | boolean                             |  否  |  否  | 此设备是否只允许拨打紧急呼叫。                               |
 
 
@@ -1197,7 +1197,7 @@ try {
 | NSA_STATE_CONNECTED_DETECT | 3    | 设备在LTE小区下连接到LTE网络支持NSA和NR覆盖检测。          |
 | NSA_STATE_IDLE_DETECT      | 4    | 支持NSA和NR覆盖检测的LTE小区下设备处于空闲状态。           |
 | NSA_STATE_DUAL_CONNECTED   | 5    | 设备在支持NSA的LTE小区下连接到LTE + NR网络。               |
-| NSA_STATE_SA_ATTACHED      | 6    | 设备在5GC(5G核心网)附着时在NG-RAN(下一代无线接入网)小区下空闲或连接到NG-RAN小区。      |
+| NSA_STATE_SA_ATTACHED      | 6    | 设备在5GC（5G核心网）附着时在NG-RAN（下一代无线接入网）小区下空闲或连接到NG-RAN小区。      |
 
 
 ## NetworkSelectionMode
