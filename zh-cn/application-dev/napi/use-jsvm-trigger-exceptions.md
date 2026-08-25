@@ -95,9 +95,9 @@ static JSVM_PropertyDescriptor descriptor[] = {
 ```cpp
 const char *srcCallNative = R"JS(triggerOOMError();)JS";
 ```
-**执行结果**
+**执行结果：**
 
-在LOG中输出：　
+在LOG中输出：
 ```cpp
 JSVM Trigger OOM Error: success
 ```
@@ -164,7 +164,7 @@ const char* srcCallNative = R"JS(triggerFatalError())JS";
 ```
 **执行结果：**
 
-在LOG中输出：　
+在LOG中输出：
 ```cpp
 JSVM Trigger Fatal Error: success
 ```
@@ -240,7 +240,7 @@ const char* srcCallNative = R"JS(triggerPromiseReject())JS";
 ```
 **执行结果：**
 
-在LOG中输出：　
+在LOG中输出：
 ```cpp
 JSVM Trigger Promise Reject: success
 ```

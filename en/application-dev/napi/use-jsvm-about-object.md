@@ -115,7 +115,7 @@ static JSVM_Value CreateObject(JSVM_Env env, JSVM_CallbackInfo info)
     // Set the property name to "name".
     OH_JSVM_CreateStringUtf8(env, "name", JSVM_AUTO_LENGTH, &name);
     JSVM_Value value = nullptr;
-    // Set the property value to "Hello from N-API!"
+    // Set the property value to "Hello OH_JSVM_CreateObject!"
     OH_JSVM_CreateStringUtf8(env, "Hello OH_JSVM_CreateObject!", JSVM_AUTO_LENGTH, &value);
     // Set the property on the object.
     OH_JSVM_SetProperty(env, object, name, value);
