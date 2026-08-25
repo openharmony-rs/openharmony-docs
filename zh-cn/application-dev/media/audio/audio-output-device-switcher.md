@@ -216,6 +216,23 @@ ArkTS示例：
 
 <!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
 
+<div class="same-source-code">
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+  let audioManager = audio.getAudioManager();
+  let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+  // 查询系统是否支持当前管理器提供的增强路由能力。
+  let isSupported: boolean = audioDeviceEnhanceManager.isEnhancedRoutingSupported();
+  console.info(`Succeeded in querying whether enhanced routing is supported. Result: ${isSupported}.`);
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets?same_code_link_text=isEnhancedRoutingSupported" target="_blank" rel="nofollow">EnhancedDeviceRouting.ets</a></p>
+
+</div>
+
+
 C/C++示例：
 
 使用前需添加头文件：
