@@ -732,32 +732,6 @@ Surface配置参数。
 | -------- | ------ | ---- | ---- | ----------- |
 | image  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   |   表示接收的图片。不传入该参数时表示未接收到图片或图片信息不可用。 |
 
-## CollaborateEventInfo
-
-协同事件信息。
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.DistributedSched.AppCollaboration
-
-| 名称       | 类型   | 只读   | 可选   | 说明      |
-| -------- | ------ | ---- | ---- | ------- |
-| eventType | [CollaborateEventType](#collaborateeventtype) | 否   | 否 | 表示协同事件的类型。 |
-| eventMsg | string | 否   | 是   | 表示协同事件的消息内容。 |
-
-## CollaborateEventType
-
-协同事件类型的枚举。
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.DistributedSched.AppCollaboration
-
-| 名称|  值 | 说明 |
-|-------|-------|-------|
-| SEND_FAILURE | 0 |表示任务发送失败。|
-| COLOR_SPACE_CONVERSION_FAILURE | 1 |表示色彩空间转换失败。|
-
 ## StartOptionParams
 
 启动选项参数的枚举。
