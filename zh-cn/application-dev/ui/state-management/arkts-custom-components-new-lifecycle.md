@@ -753,7 +753,7 @@ Child myBuilt
 
 - 点击Button按钮，更改showChild为false，删除Child组件，执行Child myDisappear函数。
 
-- 如果点击Button按钮，更改show为false,或者直接退出应用，则会触发以下生命周期：Parent myDisappear --&gt; Child myDisappear，此处体现了自定义组件删除顺序也是从父到子。日志输出信息如下：
+- 如果点击Button按钮，更改show为false，或者直接退出应用，则会触发以下生命周期：Parent myDisappear --&gt; Child myDisappear，此处体现了自定义组件删除顺序也是从父到子。日志输出信息如下：
 
 ```text
 Parent myDisappear

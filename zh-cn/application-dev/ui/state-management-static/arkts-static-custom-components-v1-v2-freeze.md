@@ -17,7 +17,7 @@
 
 状态管理V1与V2皆支持自定义组件冻结机制，但支持场景略有不同，参考以下冻结场景文档。
 
-[V1自定义组件组件冻结场景](arkts-static-freeze.md)
+[自定义组件冻结（V1）](arkts-static-freeze.md)
 
-[V2自定义组件组件冻结场景](arkts-static-custom-components-freezeV2.md)
+[自定义组件冻结（V2）](arkts-static-custom-components-freezeV2.md)
 
