@@ -920,11 +920,11 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 
 > **说明：**
 >
-> 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
+> - 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
 >
-> 与showAssetsCreationDialogEx的区别：本接口使用PhotoCreationConfig配置；showAssetsCreationDialogEx使用CreationSetting配置。请开发者根据需要选择使用。
+> - 与showAssetsCreationDialogEx的区别：本接口使用PhotoCreationConfig配置；showAssetsCreationDialogEx使用CreationSetting配置。
 >
-> 与showSingleAssetCreationDialogEx的区别：本接口支持批量保存（最多100张），后者仅支持单个资产保存。批量保存时使用本接口，单个资产保存时如需控制图片显示方式可使用showSingleAssetCreationDialogEx。
+> - 与showSingleAssetCreationDialogEx的区别：本接口支持批量保存图片（最多100张），后者仅支持单个资产保存。批量保存时使用本接口，单个资产保存时如需控制图片显示方式可使用showSingleAssetCreationDialogEx。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -957,8 +957,6 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('ShowAssetsCreationDialogDemo.');
 
@@ -991,6 +989,7 @@ showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: A
 
 > **说明：**
 >
+> - 与showAssetsCreationDialog的区别：本接口使用CreationSetting配置，前者使用PhotoCreationConfig配置。请开发者根据需要选择使用。
 > - 用户同意后，返回已创建并授予保存权限的URI列表，该列表永久有效，支持写入图片/视频。用户拒绝时，返回空列表。
 > - 弹框需显示应用名称，开发者需在[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)的`abilities`标签中配置`label`和`icon`项。
 > - 当传入URI为沙箱路径时，可正常保存图片或视频，但无界面预览。
@@ -1027,8 +1026,6 @@ showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: A
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts 
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) { 
   console.info('ShowAssetsCreationDialogExDemo.'); 
 
@@ -1060,22 +1057,10 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 
 > **说明：**
 >
+> - 与showAssetsCreationDialog的区别：本接口仅支持保存单个资产，前者支持批量保存图片（最多100张）。如需保存单个资产且控制图片显示方式，可使用本接口。
 > - 如果用户同意保存，将返回一个已创建并授予保存权限的URI（此URI永久生效），应用可使用这个URI写入图片或视频。如果用户拒绝保存，将返回一个空字符串。
 > - 弹框需显示应用名称，但无法直接获取。因此，调用此接口时，开发者需确保[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
 > - 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
-
-**交互流程示意：**
-```mermaid
-flowchart TD
-    A[调用接口] --> B[显示保存确认弹窗]
-    B --> C{用户选择}
-    C -->|同意| D[返回已授权URI]
-    D --> E[应用写入图片/视频]
-    C -->|拒绝| F[返回空字符串]
-    G[URI类型判断] --> H{路径类型}
-    H -->|普通URI| I[正常保存+界面预览]
-    H -->|沙箱路径| J[正常保存+无界面预览]
-```
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1110,8 +1095,6 @@ flowchart TD
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('ShowSingleAssetCreationDialogExDemo.');
 
@@ -1142,7 +1125,7 @@ createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Pr
 
 > **说明：**
 >
-> 与createAssetWithShortTermPermissionEx的区别：本接口使用PhotoCreationConfig配置；createAssetWithShortTermPermissionEx使用CreationSetting配置。请开发者根据需要选择使用。
+> 与createAssetWithShortTermPermissionEx的区别：本接口使用PhotoCreationConfig配置；createAssetWithShortTermPermissionEx使用CreationSetting配置。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1158,7 +1141,7 @@ createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Pr
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件uri。uri已对应用授权，支持应用写入数据。如果生成uri异常，则返回批量创建错误码。<br>返回-3006表示不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。 |
+| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件URI。URI已对应用授权，支持应用写入数据。如果生成uri异常，则返回批量创建错误码。<br>返回-3006表示不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。 |
 
 **错误码：**
 
@@ -1220,26 +1203,9 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&
 
 > **说明：**
 >
+> - 与createAssetWithShortTermPermission的区别：本接口使用CreationSetting配置，前者使用PhotoCreationConfig配置。请开发者根据需要选择使用。
 > - 用户同意保存后，接口将返回已创建并授予保存权限的URI，应用可使用该URI写入图片/视频。
 > - 在用户同意后的5分钟内，若同一应用再次调用此接口，系统将无需弹框确认，直接返回已授权的URI，供应用保存图片/视频。退出应用会结束授权，再次进入需要重新弹出弹框进行确认授权。
-
-**授权流程示意：**
-```mermaid
-sequenceDiagram
-    participant App as 应用
-    participant System as 系统
-    participant User as 用户
-    App->>System: 首次调用接口
-    System->>User: 拉起保存确认弹框
-    User->>System: 同意保存
-    System->>App: 返回已授权URI
-    Note over App,System: 5分钟内
-    App->>System: 再次调用接口
-    System->>App: 直接返回已授权URI（无需弹框）
-    Note over App: 退出应用
-    App->>System: 再次进入后调用接口
-    System->>User: 重新拉起保存确认弹框
-```
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1276,7 +1242,7 @@ requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Arr
 
 > **说明：**
 >
-> 与requestPhotoUrisReadPermissionEx的区别：本接口仅返回已授权的URI列表；requestPhotoUrisReadPermissionEx返回RequestReadPermissionResult，包含已授权URI列表和无效URI列表，便于开发者识别哪些URI无效。建议API version 23+优先使用requestPhotoUrisReadPermissionEx以获得更完整的授权结果。
+> 与requestPhotoUrisReadPermissionEx的区别：本接口仅返回已授权的URI列表；requestPhotoUrisReadPermissionEx返回RequestReadPermissionResult，包含已授权URI列表和无效URI列表，便于开发者识别哪些URI无效。建议API版本23优先使用requestPhotoUrisReadPermissionEx以获得更完整的授权结果。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -1308,8 +1274,6 @@ requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Arr
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   console.info('requestPhotoUrisReadPermissionDemo.');
 
@@ -1344,7 +1308,7 @@ requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;R
 
 | 参数名   | 类型                                                                   | 必填 | 说明                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| srcFileUris | Array&lt;string&gt; | 是 | 需进行授权的图片/视频文件对应的[媒体库uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>仅支持处理图片、视频uri，且最大数量限制为100个。|
+| srcFileUris | Array&lt;string&gt; | 是 | 需进行授权的图片/视频文件对应的[媒体库URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>仅支持处理图片、视频uri，且最大数量限制为100个。|
 
 **返回值：**
 
@@ -1365,7 +1329,6 @@ requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;R
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
@@ -1790,7 +1753,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   } catch (err) {
     console.error(`fetch failed, error: ${err.code}, ${err.message}`);
   } finally {
-    // 使用完毕后需要释放资源
+    // 使用完毕后需要释放资源。
     fetchResult?.close();
   }
 }
@@ -1862,7 +1825,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   } catch (err) {
     console.error(`createDeleteRequest failed with error: ${err.code}, ${err.message}`);
   } finally {
-    // 使用完毕后需要释放资源
+    // 使用完毕后需要释放资源。
     fetchResult?.close();
   }
 }

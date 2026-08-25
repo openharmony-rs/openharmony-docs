@@ -6,12 +6,12 @@
 <!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
 
-PhotoViewPicker是图库选择器对象，用于拉起系统图库选择界面，支持选择一个或多个图片、视频等媒体文件。用户可以自定义选择媒体类型和数量限制，适用于需要从图库中选择图片或视频的应用场景。使用前需先创建PhotoViewPicker实例。
+PhotoViewPicker是PhotoPicker对象，用于拉起系统图库选择界面，支持选择一个或多个图片、视频等媒体文件。用户可以自定义选择媒体类型和数量限制，适用于社交应用上传头像、电商平台上传商品图片、内容创作应用选择媒体素材等需要从图库中选择图片或视频的应用场景。使用前需先创建PhotoViewPicker实例。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 如果需要重复拉起PhotoViewPicker，需要先销毁前一个PhotoViewPicker实例，可通过NavDestination销毁或跟随进程销毁。
+> - 如果需要重复拉起PhotoViewPicker，需要先通过NavDestination或跟随进程销毁前一个photoViewPicker。
 
 ## 导入模块
 
@@ -23,7 +23,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 select(option?: PhotoSelectOptions) : Promise&lt;PhotoSelectResult&gt;
 
-通过选择模式拉起图库选择器界面，用户可以选择一个或多个图片/视频。使用Promise异步回调。传入可选参数PhotoSelectOptions对象，返回PhotoSelectResult对象。
+通过选择模式拉起PhotoPicker界面，用户可以选择一个或多个图片/视频。使用Promise异步回调。使用前需先创建PhotoViewPicker实例。传入可选参数PhotoSelectOptions对象，返回PhotoSelectResult对象。
 
 > **注意：**
 >
@@ -37,13 +37,13 @@ select(option?: PhotoSelectOptions) : Promise&lt;PhotoSelectResult&gt;
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| option | [photoAccessHelper.PhotoSelectOptions](arkts-apis-photoAccessHelper-class.md#photoselectoptions) | 否   | photoPicker选择选项，若无此参数，则默认选择媒体文件类型为图片和视频类型，默认选择媒体文件数量的最大值为50。 |
+| option | [PhotoSelectOptions](arkts-apis-photoAccessHelper-class.md#photoselectoptions) | 否   | photoPicker选择选项，若无此参数，则默认选择媒体文件类型为图片和视频类型，默认选择媒体文件数量的最大值为50。 |
 
 **返回值：**
 
 | 类型                            | 说明    |
 | ----------------------------- | :---- |
-| Promise&lt;[photoAccessHelper.PhotoSelectResult](arkts-apis-photoAccessHelper-class.md#photoselectresult)&gt; | Promise对象。返回PhotoSelectResult对象，包含photoUris（选择的图片/视频URI数组）和isOriginal（是否原图）等字段。 |
+| Promise&lt;[PhotoSelectResult](arkts-apis-photoAccessHelper-class.md#photoselectresult)&gt; | Promise对象。返回PhotoSelectResult对象，包含photoUris（选择的图片/视频URI数组）和isOriginal（是否原图）等字段。 |
 
 **错误码：**
 
@@ -58,6 +58,7 @@ select(option?: PhotoSelectOptions) : Promise&lt;PhotoSelectResult&gt;
 **示例：**
 
 ```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function openBindSheet01() {
@@ -82,7 +83,7 @@ async function openBindSheet01() {
 
 select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&gt;) : void
 
-通过选择模式拉起图库选择器界面，用户可以选择一个或多个图片/视频。接口采用callback异步返回形式，必须传入参数PhotoSelectOptions对象，返回PhotoSelectResult对象。
+通过选择模式拉起PhotoPicker界面，用户可以选择一个或多个图片/视频。接口采用callback异步返回形式，必须传入参数PhotoSelectOptions对象，通过callback参数返回PhotoSelectResult对象。
 
 > **注意：**
 >
@@ -96,8 +97,8 @@ select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| option | [photoAccessHelper.PhotoSelectOptions](arkts-apis-photoAccessHelper-class.md#photoselectoptions) | 是   | photoPicker选择选项，若无此参数，则默认选择媒体文件类型为图片和视频类型，默认选择媒体文件数量的最大值为50。 |
-| callback | AsyncCallback&lt;[photoAccessHelper.PhotoSelectResult](arkts-apis-photoAccessHelper-class.md#photoselectresult)&gt;      | 是   | callback 返回PhotoPicker选择后的结果集，包含photoUris（选择的图片/视频URI数组）和isOriginal（是否原图）等字段。 |
+| option | [PhotoSelectOptions](arkts-apis-photoAccessHelper-class.md#photoselectoptions) | 是   | photoPicker选择选项。 |
+| callback | AsyncCallback&lt;[PhotoSelectResult](arkts-apis-photoAccessHelper-class.md#photoselectresult)&gt;      | 是   | callback 返回PhotoPicker选择后的结果集，包含photoUris（选择的图片/视频URI数组）和isOriginal（是否原图）等字段。 |
 
 **错误码：**
 
@@ -112,6 +113,7 @@ select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&
 **示例：**
 
 ```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function openBindSheet02() {
@@ -138,7 +140,7 @@ async function openBindSheet02() {
 
 select(callback: AsyncCallback&lt;PhotoSelectResult&gt;) : void
 
-通过选择模式拉起图库选择器界面，用户可以选择一个或多个图片/视频。接口采用callback异步返回形式，返回PhotoSelectResult对象。默认选择媒体文件类型为图片和视频类型，默认选择媒体文件数量的最大值为50。
+通过选择模式拉起PhotoPicker界面，用户可以选择一个或多个图片/视频。接口采用callback异步返回形式，返回PhotoSelectResult对象。默认选择媒体文件类型为图片和视频类型，默认选择媒体文件数量的最大值为50。
 
 > **注意：**
 >
@@ -152,7 +154,7 @@ select(callback: AsyncCallback&lt;PhotoSelectResult&gt;) : void
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;[photoAccessHelper.PhotoSelectResult](arkts-apis-photoAccessHelper-class.md#photoselectresult)&gt;      | 是   | callback 返回PhotoPicker选择后的结果集，包含photoUris（选择的图片/视频URI数组）和isOriginal（是否原图）等字段。 |
+| callback | AsyncCallback&lt;[PhotoSelectResult](arkts-apis-photoAccessHelper-class.md#photoselectresult)&gt;      | 是   | callback 返回PhotoPicker选择后的结果集，包含photoUris（选择的图片/视频URI数组）和isOriginal（是否原图）等字段。 |
 
 **错误码：**
 
@@ -166,6 +168,7 @@ select(callback: AsyncCallback&lt;PhotoSelectResult&gt;) : void
 **示例：**
 
 ```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function openBindSheet03() {

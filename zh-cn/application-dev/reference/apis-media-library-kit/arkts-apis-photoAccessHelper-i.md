@@ -97,7 +97,7 @@ title参数的规格如下：
 
 | 名称    | 类型                        | 只读 | 可选 | 说明                                                         |
 | ---- | ------- | ---- |  ---- | ----- |
-| text  | string  | 否 | 是 | 如果需要根据文本（支持250字以内的简体中文）推荐相应的图片，则配置此参数。text默认是空字符串。  |
+| text  | string  | 否 | 是 | 如果需要根据文本（支持250字以内的简体中文）推荐与文本内容相关的图片，则配置此参数。text默认是空字符串。  |
 
 **示例：**
 
@@ -105,7 +105,7 @@ title参数的规格如下：
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+async function example() {
   try {
     let textInfo: photoAccessHelper.TextContextInfo = {
       text: '上海野生动物园的大熊猫'
@@ -142,13 +142,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | 名称    | 类型                        | 只读 | 可选 | 说明                                                         |
 | ---- | ------- | ---- |  ---- | ----- |
 | title              | string  | 否 | 是 | 图片或者视频的标题。<br>不传入时由系统生成，参数规格如下：<br>- 不应包含扩展名。<br>- 不允许使用的字符，包括：. \ / : * ? " ' ` < > \| { } [ ]<br>- 由于文件名由标题 + 扩展名组成，文件名字符串长度范围为[1, 255]字符，因此标题长度不应超过255减去扩展名长度。  |
-| fileNameExtension  | string  | 否 | 否 | 文件扩展名，取值原则：IMAGE类型支持'jpg'、'png'、'gif'、'heif'等，VIDEO类型支持'mp4'、'mov'等。例如'jpg'。  |
+| fileNameExtension  | string  | 否 | 否 | 文件扩展名，不包含点号。取值原则：IMAGE类型支持'jpg'、'png'、'gif'等，VIDEO类型支持'mp4'、'mov'等。例如'jpg'。**注意：** 扩展名长度会影响title参数的最大可用长度。   |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)  | 否 | 否 | 创建的文件类型[PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)，设置为IMAGE时创建图片文件，设置为VIDEO时创建视频文件。 |
 | subtype  | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)  | 否 | 是 | 图片或者视频的文件子类型[PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)，不传入时默认为DEFAULT。  |
 
 ## CreationSetting<sup>23+</sup>
 
-保存图片或视频到媒体库时的配置项，包括保存的文件名、文件类型和其他相关参数。
+保存图片或视频到媒体库时的配置项，包括保存的文件名、文件类型。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -159,7 +159,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | 名称               | 类型    | 只读 | 可选 | 说明                                                         |
 | ------------------ | ------- | ---- | ---- | ----- |
 | title              | string  | 否 | 是 | 图片或者视频的标题。<br>不传入时由系统生成，参数规格如下：<br>- 不应包含扩展名。<br>- 不允许使用的字符，包括：. \ / : * ? " ' ` < > \| { } [ ]<br>- 由于文件名由标题 + 扩展名组成，文件名字符串长度范围为[1, 255]字符，因此标题长度不应超过255减去扩展名长度。  |
-| fileNameExtension  | string  | 否 | 否 | 文件扩展名，取值原则：IMAGE类型支持'jpg'、'png'、'gif'、'heif'等，VIDEO类型支持'mp4'、'mov'等。例如'jpg'。 |
+| fileNameExtension  | string  | 否 | 否 | 文件扩展名，不包含点号。取值原则：IMAGE类型支持'jpg'、'png'、'gif'等，VIDEO类型支持'mp4'、'mov'等。例如'jpg'。**注意：** 扩展名长度会影响title参数的最大可用长度。  |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)  | 否 | 否 | 创建的文件类型[PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)，设置为IMAGE时创建图片文件，设置为VIDEO时创建视频文件。 |
 
 ## PhotoAssetChangeInfo<sup>20+</sup>
@@ -266,7 +266,7 @@ picker内宫格的捏合模式。配置后支持通过捏合手势调整宫格�
 | 名称                   | 类型                | 只读 | 可选 | 说明           |
 | ---- | ---- | ---- | ---- | ---- |
 | supportedHighResolution | boolean  | 否 | 否 | 表示应用是否支持获取高分辨率的媒体资源。true表示支持高分辨率资源请求，false表示仅支持标准分辨率资源。<br>**原子化服务API:** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| supportedMimeType | Array&lt;string&gt;  | 否 | 是 | 支持的MIME类型。<br>- 配置image/heic表示应用支持heif格式。<br>- 配置image/jpeg表示应用仅支持jpeg格式不支持heif格式。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。       |
+| supportedMimeType | Array&lt;string&gt;  | 否 | 是 | 支持的MIME类型，格式为'type/subtype'的标准MIME类型字符串，如'image/jpeg'、'image/png'、'image/heic'等。<br>- 配置image/heic表示应用支持heif格式。<br>- 配置image/jpeg表示应用仅支持jpeg格式不支持heif格式。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。       |
 
 ## MediaLibraryAvailability
 

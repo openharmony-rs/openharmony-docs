@@ -7,15 +7,6 @@
 <!--Adviser: @w_Machine_cc-->
 
 应用可以在布局中嵌入PhotoPicker组件，通过此组件，应用无需申请权限，即可实现媒体文件选择功能。PhotoPicker组件支持宫格浏览和大图预览两种视图模式，提供单选和多选两种选择模式，支持相机入口让用户拍摄新照片，并支持动态照片的预览和选择。在用户选择媒体文件后，应用即可访问用户选中的图片或视频文件。仅包含读权限。
-**权限授权流程**
-```mermaid
-graph TD
-    A[应用打开包含PhotoPicker的页面] --> B[PhotoPicker展示媒体文件]
-    B --> C[用户选择媒体文件]
-    C --> D[系统临时授权应用访问选中的文件]
-    D --> E[应用通过回调获取URI]
-    E --> F[应用使用URI访问文件]
-```
 
 PhotoPickerComponent不支持嵌套，且不应在其上覆盖设置overlay属性或更高层级组件，以免导致手势事件失效。
 
@@ -29,7 +20,7 @@ PhotoPickerComponent不支持嵌套，且不应在其上覆盖设置overlay属�
 ## 导入模块
 
 ```ts
-// 在API version 23之前的版本中，需要使用 'import { api1, api2, ... } from '@ohos.file.PhotoPickerComponent''的导入方式。
+// 在API version 23之前的版本中，需要使用 'import { api1, api2, ... } from "@ohos.file.PhotoPickerComponent"'的导入方式。
 import {
   PhotoPickerComponent, PickerController, PickerOptions,
   DataType, BaseItemInfo, ItemInfo, PhotoBrowserInfo, ItemType, ClickType,
@@ -100,8 +91,8 @@ Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-p
 | maxSelectedReminderMode         | [ReminderMode](#remindermode)           | 否  | 是 | 选择数量达到最大时的提示方式。包括弹toast提示、不提示以及蒙层提示。当不设置该参数时，默认为弹toast提示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
 | orientation                     | [PickerOrientation](#pickerorientation) | 否  | 是 | 宫格页面滑动预览方向，包括水平和竖直两个方向。当不设置该参数时，默认为竖直方向。当需要横向滑动浏览媒体文件时应设置为HORIZONTAL（水平方向）；当需要纵向滑动浏览时使用VERTICAL（竖直方向）或不填写此参数。（该能力从API version 20开始支持，API version 20之前系统默认为竖直方向）                                |
 | selectMode                      | [SelectMode](#selectmode)               | 否  | 是  | 选择模式，包括多选和单选。当不设置该参数时，默认为多选。当仅需要用户选择单个文件时应设置为SINGLE_SELECT（单选模式）；当需要用户选择多个文件时使用MULTI_SELECT（多选模式）或不填写此参数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                      |
-| maxPhotoSelectNumber            | number                                  | 否  | 是 | 图片最大的选择数量。最大值为500，受到最大选择总数的限制。当不设置该参数时，默认为500。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
-| maxVideoSelectNumber            | number                                  | 否  | 是 | 视频最大的选择数量。最大值为500，受到系统中所有媒体文件最大选择总数的限制。当不设置该参数时，默认为500。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
+| maxPhotoSelectNumber            | number                                  | 否  | 是 | 图片最大的选择数量。取值范围[0, 500]，受到最大选择总数的限制。当不设置该参数时，默认为500。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
+| maxVideoSelectNumber            | number                                  | 否  | 是 | 视频最大的选择数量。取值范围[0, 500]，受到系统中所有媒体文件最大选择总数的限制。当不设置该参数时，默认为500。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
 | isSlidingSelectionSupported<sup>13+</sup>     | boolean                                 | 否  | 是 | 是否支持滑动多选，true表示支持，false表示不支持。当不设置该参数时，默认值为false。重复选择场景不支持滑动多选。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。                                            |
 | photoBrowserCheckboxPosition<sup>13+</sup>    | [number, number]                        | 否  | 是 | 设置大图页checkbox的位置。第一个参数为X方向偏移量，第二个参数为Y方向偏移量。传参范围[0, 1]，代表距离组件左上角0%-100%的偏移量。当不设置该参数时，默认值为[0, 0]。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | gridMargin<sup>14+</sup>        | [Margin](../../reference/apis-arkui/arkui-ts/ts-types.md#margin)                        | 否  | 是 | 设置组件宫格页margin。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
@@ -295,7 +286,7 @@ private isOnClickedNotify: boolean = false;
     }
 
     // 从this.clickedUris获取这些URI，后续在调用pickerController.addData()设置宫格item选中时使用。
-    getClickedUris(): ClickResult[] {
+    getClickedUris(): ClickResultEx[] {
       let clickResultEx: ClickResultEx[] = [];
       this.clickedUris.forEach((clickResult: ClickResultEx, uri: string) => {
         clickResultEx.push(clickResult)
@@ -610,14 +601,6 @@ replacePhotoPickerPreview(originalUri: string, newUri: string, callback: AsyncCa
 saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;, configs?: Array&lt;photoAccessHelper.PhotoCreationConfig&gt;, saveMode?: SaveMode): void
 
 应用可通过该接口，保存对应uri列表的文件。使用时，一般结合[replacePhotoPickerPreview](#replacephotopickerpreview15)接口使用，将替换显示成功后的应用沙箱图片/视频newUris保存到图库。
-**图片替换保存流程**
-```mermaid
-graph LR
-    A[用户选择图片] --> B[应用编辑图片]
-    B --> C[调用replacePhotoPickerPreview替换显示]
-    C --> D[调用saveTrustedPhotoAssets保存到图库]
-    D --> E[获取新的图库URI]
-```
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -1296,7 +1279,7 @@ struct PickerDemo {
         // 这里模拟应用侧底部的选择栏。
         if (this.isBrowserShow) {
           Row() {
-            ForEach(this.assets, async (asset: photoAccessHelper.PhotoAsset, index) => {
+            ForEach(this.assets, (asset: photoAccessHelper.PhotoAsset, index) => {
               if (asset.uri === this.currentUri) {
                 Image(this.thumbnail[index])
                   .height('10%')

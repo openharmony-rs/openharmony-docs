@@ -78,6 +78,8 @@
    try {
      const file = fileIo.openSync(uri, fileIo.OpenMode.READ_ONLY);
      console.info('file fd: ' + file.fd);
+     // 使用完毕后需要关闭文件描述符
+     fileIo.closeSync(file.fd);
      return { fd: file.fd, file: file };
    } catch (error) {
      console.error('openSync failed with err: ' + error);
@@ -92,8 +94,10 @@
    ``` TypeScript
    try {
      const buffer = new ArrayBuffer(bufferSize);
-     const readLen = fileIo.readSync(fileObj.fd, buffer);
+     const readLen = fileIo.readSync(file.fd, buffer);
      console.info('readSync data to file succeed and buffer size is:' + readLen);
+     // 读取完成后关闭文件描述符
+     fileIo.closeSync(file.fd);
      return { data: buffer, length: readLen };
    } catch (error) {
      console.error('readSync failed with err: ' + error);
