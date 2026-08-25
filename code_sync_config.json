@@ -55565,7 +55565,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":104,
+						"end_line":105,
 						"name":"create_subWindow",
 						"start_line":30
 					},
@@ -55580,7 +55580,7 @@
 						"start_line":152
 					},
 					{
-						"end_line":193,
+						"end_line":195,
 						"name":"independent_subWindow_uiContent",
 						"start_line":173
 					},
