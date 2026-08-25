@@ -406,6 +406,7 @@ want = {
     "flags": 0,
     "action": "action.system.home",
     "parameters": {
+
         /**************************** NFC相关字段 *****************************/
         "Atqa": "4400",
         "MifareUltralightC": false,
@@ -417,6 +418,7 @@ want = {
         "tagRfDiscId": 2,
         "technology": [1, 9, 6], // 读取到的卡片支持的协议类型，NfcA，NfcB，NfcF，NfcV，Ndef，IsoDep等
         "uid": "xxxxxxxx", // 读取到的卡片的uid
+
         /**********************************************************************/
         "component.startup.newRules": true,
         "isCallBySCB": false,
