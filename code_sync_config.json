@@ -28741,29 +28741,29 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp",
 				"functions":[
 					{
-						"end_line":1152,
+						"end_line":1164,
 						"name":"ndk_graphics_draw_base_text",
-						"start_line":1136
+						"start_line":1148
 					},
 					{
-						"end_line":1184,
+						"end_line":1196,
 						"name":"ndk_graphics_draw_stroke_text",
-						"start_line":1157
+						"start_line":1169
 					},
 					{
-						"end_line":1227,
+						"end_line":1241,
 						"name":"ndk_graphics_draw_chinese_stroke_text",
-						"start_line":1189
+						"start_line":1201
 					},
 					{
-						"end_line":1266,
+						"end_line":1283,
 						"name":"ndk_graphics_draw_gradient_text",
-						"start_line":1232
+						"start_line":1246
 					},
 					{
-						"end_line":1289,
+						"end_line":1306,
 						"name":"ndk_graphics_draw_theme_text",
-						"start_line":1271
+						"start_line":1288
 					},
 					{
 						"end_line":1313,
@@ -28916,14 +28916,14 @@
 						"start_line":556
 					},
 					{
-						"end_line":563,
+						"end_line":571,
 						"name":"ndk_graphics_draw_pen_set_cap_style",
-						"start_line":560
+						"start_line":568
 					},
 					{
-						"end_line":567,
+						"end_line":575,
 						"name":"ndk_graphics_draw_pen_set_join_style",
-						"start_line":564
+						"start_line":572
 					},
 					{
 						"end_line":593,
@@ -28976,9 +28976,9 @@
 						"start_line":16
 					},
 					{
-						"end_line":1112,
+						"end_line":1119,
 						"name":"ndk_graphics_draw_image_pixel_map",
-						"start_line":1080
+						"start_line":1087
 					},
 					{
 						"end_line":1115,
@@ -28986,14 +28986,14 @@
 						"start_line":1113
 					},
 					{
-						"end_line":1126,
+						"end_line":1133,
 						"name":"ndk_graphics_draw_image_to_canvas",
-						"start_line":1116
+						"start_line":1123
 					},
 					{
-						"end_line":1130,
+						"end_line":1142,
 						"name":"ndk_graphics_draw_release_pixelmap",
-						"start_line":1127
+						"start_line":1134
 					}
 				]
 			}
@@ -29051,9 +29051,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp",
 				"functions":[
 					{
-						"end_line":901,
+						"end_line":908,
 						"name":"ndk_graphics_draw_point",
-						"start_line":876
+						"start_line":884
 					},
 					{
 						"end_line":924,
@@ -29071,9 +29071,9 @@
 						"start_line":952
 					},
 					{
-						"end_line":1030,
+						"end_line":1037,
 						"name":"ndk_graphics_draw_region",
-						"start_line":1004
+						"start_line":1011
 					},
 					{
 						"end_line":1050,
@@ -29131,24 +29131,24 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp",
 				"functions":[
 					{
-						"end_line":404,
+						"end_line":408,
 						"name":"ndk_graphics_draw_canvas_clip",
-						"start_line":387
+						"start_line":389
 					},
 					{
-						"end_line":427,
+						"end_line":432,
 						"name":"ndk_graphics_draw_canvas_translation",
-						"start_line":409
+						"start_line":413
 					},
 					{
-						"end_line":450,
+						"end_line":456,
 						"name":"ndk_graphics_draw_canvas_rotation",
-						"start_line":432
+						"start_line":437
 					},
 					{
-						"end_line":472,
+						"end_line":480,
 						"name":"ndk_graphics_draw_canvas_scale",
-						"start_line":455
+						"start_line":461
 					},
 					{
 						"end_line":504,
@@ -29221,9 +29221,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp",
 				"functions":[
 					{
-						"end_line":631,
+						"end_line":639,
 						"name":"ndk_graphics_draw_mixed_mode",
-						"start_line":604
+						"start_line":612
 					},
 					{
 						"end_line":660,
@@ -29231,34 +29231,34 @@
 						"start_line":636
 					},
 					{
-						"end_line":694,
+						"end_line":702,
 						"name":"ndk_graphics_draw_linear_gradient",
-						"start_line":665
+						"start_line":673
 					},
 					{
-						"end_line":727,
+						"end_line":735,
 						"name":"ndk_graphics_draw_path_gradient",
-						"start_line":699
+						"start_line":707
 					},
 					{
-						"end_line":758,
+						"end_line":766,
 						"name":"ndk_graphics_draw_sector_gradient",
-						"start_line":732
+						"start_line":740
 					},
 					{
-						"end_line":799,
+						"end_line":807,
 						"name":"ndk_graphics_draw_color_filter",
-						"start_line":763
+						"start_line":771
 					},
 					{
-						"end_line":835,
+						"end_line":843,
 						"name":"ndk_graphics_draw_image_filter",
-						"start_line":804
+						"start_line":812
 					},
 					{
-						"end_line":870,
+						"end_line":878,
 						"name":"ndk_graphics_draw_mask_filter",
-						"start_line":840
+						"start_line":848
 					}
 				]
 			}
@@ -29579,7 +29579,7 @@
 						"start_line":23
 					},
 					{
-						"end_line":51,
+						"end_line":52,
 						"name":"arkts_graphics_draw_direct_canvas_api",
 						"start_line":28
 					},
@@ -29589,7 +29589,7 @@
 						"start_line":53
 					},
 					{
-						"end_line":49,
+						"end_line":50,
 						"name":"arkts_graphics_draw_direct_canvas_api_rewrite",
 						"start_line":31
 					},
@@ -29604,9 +29604,9 @@
 						"start_line":17
 					},
 					{
-						"end_line":145,
+						"end_line":147,
 						"name":"arkts_graphics_draw_indirect_canvas_api",
-						"start_line":78
+						"start_line":79
 					}
 				]
 			}
@@ -29694,14 +29694,14 @@
 						"start_line":26
 					},
 					{
-						"end_line":1131,
+						"end_line":1143,
 						"name":"ndk_graphics_draw_image",
-						"start_line":1079
+						"start_line":1086
 					},
 					{
-						"end_line":1126,
+						"end_line":1133,
 						"name":"ndk_graphics_draw_image_to_canvas",
-						"start_line":1116
+						"start_line":1123
 					},
 					{
 						"end_line":36,
