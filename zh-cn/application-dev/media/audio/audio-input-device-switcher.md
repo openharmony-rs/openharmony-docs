@@ -184,6 +184,24 @@ C/C++示例：
 
 <!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
 
+<div class="same-source-code">
+``` C++
+napi_value IsEnhancedRoutingSupported(napi_env env, napi_callback_info info)
+{
+    OH_AudioDeviceEnhanceManager *enhanceManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioDeviceEnhanceManager(&enhanceManager);
+    bool isSupported = false;
+    // 查询系统是否支持当前管理器提供的增强路由能力。
+    result = OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported(enhanceManager, &isSupported);
+    // ...
+}
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp?same_code_link_text=isEnhancedRoutingSupported" target="_blank" rel="nofollow">EnhancedDeviceRouting.cpp</a></p>
+
+</div>
+
+
 ### 切换输入设备
 
 输入设备切换支持应用级和音频流级两种粒度，应用级对应用下所有录制流生效，音频流级仅对指定录制流生效，且音频流级的优先级高于应用级。
