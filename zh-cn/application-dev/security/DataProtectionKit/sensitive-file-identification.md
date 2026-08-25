@@ -25,7 +25,7 @@ Data Protection Kit为应用提供了识别文件中是否存在敏感内容的�
 
     2.1 申请权限：ohos.permission.ENTERPRISE_DATA_IDENTIFY_FILE。
 
-    2.2 设置待识别的文件路径filePath和用于用于识别敏感内容的策略数组identifyPolicies。
+    2.2 设置待识别的文件路径filePath和用于识别敏感内容的策略数组identifyPolicies。
 
     2.3 调用[identifySensitiveContent.scanFile](../../reference/apis-data-protection-kit/js-apis-identifySensitiveContent.md#identifysensitivecontentscanfile)，根据设置的策略，识别指定文件中的敏感内容，返回识别的结果数组，包含匹配的敏感标签、匹配内容及匹配数量。
 
