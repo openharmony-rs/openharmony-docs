@@ -145,7 +145,7 @@ enum HiDebug_ErrorCode
 | HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429 | 存储可用空间紧张，可用空间少于 15%。<br>**起始版本：** 24 |
 | HIDEBUG_RES_PROF_FAILURE = 11400430 | 资源采集启动/停止失败。<br>**起始版本：** 24 |
 | HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431 | 资源采集异步嵌套深度参数无效。<br>**起始版本：** 26.1.0 |
-| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432 | 资源采集异步任务栈深度参数无效。<br>**起始版本：** 26.1.0 |
+| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432 | 资源采集异步任务回栈深度参数无效。<br>**起始版本：** 26.1.0 |
 
 ### HiDebug_TraceFlag
 
@@ -223,7 +223,7 @@ enum OH_HiDebug_ResourceType
 | OH_RES_TYPE_GLOBAL_HANDLE | 全局句柄<br>**起始版本：** 24 |
 | OH_RES_TYPE_DMA | DMA内存<br>**起始版本：** 26.1.0 |
 | OH_RES_TYPE_ASHMEM | 匿名共享内存<br>**起始版本：** 26.1.0 |
-| OH_RES_TYPE_COMPOSITE_HEAP | 复合堆<br>**起始版本：** 26.1.0 |
+| OH_RES_TYPE_COMPOSITE_HEAP | 组合堆<br>**起始版本：** 26.1.0 |
 
 ### OH_HiDebug_MemListenerType
 
