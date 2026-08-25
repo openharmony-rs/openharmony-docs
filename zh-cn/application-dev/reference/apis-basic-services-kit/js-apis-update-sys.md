@@ -3912,8 +3912,6 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 事件回调。
 
-**版本说明**： 从API version 23开始支持。
-
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
