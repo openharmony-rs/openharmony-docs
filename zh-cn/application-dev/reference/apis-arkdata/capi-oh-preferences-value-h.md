@@ -151,7 +151,7 @@ const OH_PreferencesValue *OH_PreferencesPair_GetPreferencesValue(const OH_Prefe
 
 | 类型                                                     | 说明                                                         |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
-| const [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) | 如果操作成功，返回获取到的值对象的指针。操作失败或传参不合法返回空指针。 |
+| const [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) * | 如果操作成功，返回获取到的值对象的指针。操作失败或传参不合法返回空指针。 |
 
 
 ### OH_PreferencesValue_GetValueType()
@@ -293,7 +293,7 @@ OH_PreferencesValue* OH_PreferencesValue_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_PreferencesValue*](capi-preferences-oh-preferencesvalue.md) | 如果操作成功，返回指向[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)值对象的指针，否则返回nullptr。 |
+| [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)* | 如果操作成功，返回指向[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)值对象的指针，否则返回nullptr。 |
 
 ### OH_PreferencesValue_Destroy()
 
@@ -380,7 +380,7 @@ int OH_PreferencesValue_SetString(const OH_PreferencesValue *object, const char 
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
-| const char *value | 需要设置的字符串值。 |
+| const char *value | 指向需要设置的字符串值的指针。 |
 
 **返回：**
 
@@ -505,7 +505,7 @@ int OH_PreferencesValue_SetIntArray(const OH_PreferencesValue *object, const int
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
-| const int *value | 需要设置的整型数组值。 |
+| const int *value | 指向需要设置的整型数组值的指针。 |
 | uint32_t count | 需要设置的数组大小。 |
 
 **返回：**
@@ -557,7 +557,7 @@ int OH_PreferencesValue_SetBoolArray(const OH_PreferencesValue *object, const bo
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
-| const bool *value | 需要设置的布尔数组值。 |
+| const bool *value | 指向需要设置的布尔数组值的指针。 |
 | uint32_t count | 需要设置的数组大小。 |
 
 **返回：**
@@ -609,7 +609,7 @@ int OH_PreferencesValue_SetStringArray(const OH_PreferencesValue *object, const 
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
-| const char **value | 需要设置的字符串数组值。 |
+| const char **value | 指向需要设置的字符串数组值的二级指针。 |
 | uint32_t count | 需要设置的数组大小。 |
 
 **返回：**
@@ -661,7 +661,7 @@ int OH_PreferencesValue_SetInt64Array(const OH_PreferencesValue *object, const i
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
-| const int64_t *value | 需要设置的int64数组值。 |
+| const int64_t *value | 指向需要设置的int64数组值的指针。 |
 | uint32_t count | 需要设置的数组大小。 |
 
 **返回：**
@@ -713,7 +713,7 @@ int OH_PreferencesValue_SetDoubleArray(const OH_PreferencesValue *object, const 
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
-| const double *value | 需要设置的double数组值。 |
+| const double *value | 指向需要设置的double数组值的指针。 |
 | uint32_t count | 需要设置的数组大小。 |
 
 **返回：**
@@ -765,8 +765,8 @@ int OH_PreferencesValue_SetBlob(const OH_PreferencesValue *object, const uint8_t
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
-| const uint8_t *value | 需要设置的二进制值。 |
-| uint32_t count | 指向需要设置的二进制数据大小。 |
+| const uint8_t *value | 指向需要设置的二进制值的指针。 |
+| uint32_t count | 需要设置的二进制数据大小。 |
 
 **返回：**
 
