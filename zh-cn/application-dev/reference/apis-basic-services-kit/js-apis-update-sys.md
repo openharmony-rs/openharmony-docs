@@ -3620,7 +3620,7 @@ try {
 | innerVersion    | string                              | 否 | 否 | 版本号。      |
 | size            | int                              | 否 | 否 | 升级包大小，单位为B，取值范围[0, +∞]。超出范围时抛出异常。 |
 | effectiveMode   | [EffectiveMode](#effectivemode)     | 否 | 否 | 生效模式，取值原则：COLD为冷升级，需重启设备生效；LIVE为热升级，无需重启即可生效；LIVE_AND_COLD为融合升级，结合两者特性。|
-| otaMode | [OtaMode](#otamode)                 | 否 | 否 | 升级模式。当需要指定特定的升级模式时传入此参数，适用于存储空间受限、快速升级或A/B分区设备等特殊场景。取值原则：REGULAR_OTA为正常升级，适用于大多数常规升级场景；STREAM_OTA为流式升级，适用于存储空间受限或需要快速升级的场景；AB_REGULAR_OTA为AB正常升级，适用于A/B分区设备；AB_STREAM_OTA为AB流式升级，适用于A/B分区设备。不传入时默认为REGULAR_OTA，使用正常升级模式。|
+| otaMode | [OtaMode](#otamode)                 | 否 | 是 | 升级模式。当需要指定特定的升级模式时传入此参数，适用于存储空间受限、快速升级或A/B分区设备等特殊场景。取值原则：REGULAR_OTA为正常升级，适用于大多数常规升级场景；STREAM_OTA为流式升级，适用于存储空间受限或需要快速升级的场景；AB_REGULAR_OTA为AB正常升级，适用于A/B分区设备；AB_STREAM_OTA为AB流式升级，适用于A/B分区设备。不传入时默认为REGULAR_OTA，使用正常升级模式。|
 
 ## DescriptionOptions
 
@@ -3916,8 +3916,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称        | 类型                             | 只读 | 可选 | 说明    |
-| ---------- | -------------------------------- | ---- | ---- | ------ |
+| 名称        | 类型                    | 必填   | 说明   |
+| --------- | ----------------------- | ---- | ---- |
 | eventInfo | [EventInfo](#eventinfo) | 是    | 事件信息，包含eventId（事件ID）和taskBody（任务数据）字段。 |
 
 ## BusinessVendor
