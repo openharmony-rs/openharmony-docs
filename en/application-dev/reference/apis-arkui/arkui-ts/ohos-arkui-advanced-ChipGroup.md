@@ -6,7 +6,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=01dc4473a2125cb3cffb14db8cbdd99e1bdf296a translatedAt=2026-07-29T03:00:32.546Z pushedAt=2026-08-04T02:46:44.101Z -->
+<!-- md-trans-meta sourceCommit=cb07c88a12c08531483c587b9f716e1ef72fa986 translatedAt=2026-08-24T06:51:52.238Z pushedAt=2026-08-25T07:34:32.961Z -->
 
 The **ChipGroup** component provides chip group capabilities, supporting single-selection or multi-selection modes, customizable styles, icons, and spacing, as well as selected state management and event callbacks. It is suitable for various scenarios such as file categorization, resource filtering, tag selection, and content grouping, helping developers quickly implement selection functionality while delivering a consistent visual and interactive experience.
 
@@ -50,15 +50,15 @@ ChipGroup({ <br>
 | Name           | Type                                           | Mandatory| Decorator| Description                                                                                    |
 | --------------- | ----------------------------------------------- | ---- | ------------------------------------------------------------                             | ------------------------------------------------------------                             |
 | items           | [ChipGroupItemOptions[]](#chipgroupitemoptions) | Yes   | @Require &nbsp;@Prop | Specific properties of each chip. For details, see [ChipGroupItemOptions[]](#chipgroupitemoptions).<br>If **undefined**, ChipGroup is empty by default.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| itemStyle       | [ChipItemStyle](#chipitemstyle)                 | No   | @Prop | Style properties of the chip, such as color and size. For details, see [ChipItemStyle](#chipitemstyle).<br>Default value:<br>**{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }**<br>If **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| selectedIndexes | Array&lt;number&gt;                             | No   | @Prop | Indexes of the selected chips.<br>Value range: The index value is a non-negative integer and cannot exceed the length of the items array minus 1.<br>If a negative number, an index value beyond the array range, or a non-integer is passed, the index value does not take effect.<br>Default value: **[0]**<br>If **multiple** is **false** and **selectedIndexes** is an empty array, the first chip is selected by default. If **selectedIndexes** contains multiple elements, only the first index takes effect.<br>If **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12.  |
-| multiple        | boolean                                         | No   | @Prop | Whether to select multiple chips.<br>**true**: Multiple chips can be selected. **false**: Only a single chip can be selected.<br>Default value: **false**<br>If **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | No   | @Prop | Left and right padding and spacing between chips. For details, see [ChipGroupSpaceOptions](#chipgroupspaceoptions).<br>Default value: **{ itemSpace: 8, startSpace: 16, endSpace: 16 }**<br>Unit: vp<br>If **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| chipGroupPadding  | [ChipGroupPaddingOptions](#chipgrouppaddingoptions) | No   | @Prop | Top and bottom padding of the **ChipGroup**, used to control the overall height. The type is [ChipGroupPaddingOptions](#chipgrouppaddingoptions).<br>Default value: **{ top: 14, bottom: 14 }**<br>Unit: vp<br>If **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| itemStyle       | [ChipItemStyle](#chipitemstyle)                 | No   | @Prop | Style of the chip, such as color and size. For details, see [ChipItemStyle](#chipitemstyle). Pass this parameter when you need to customize the appearance of the chip, such as changing the background color, font color, and size.<br>Default value:<br>**{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }**<br>If **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| selectedIndexes | Array&lt;number&gt;                             | No   | @Prop | Indexes of the selected chips, counted from 0.<br>Value range: The index value is a non-negative integer and cannot exceed the length of the **items** array minus 1.<br>If a negative number, an index value beyond the array range, or a non-integer is passed, the index value does not take effect.<br>Default value: **[0]**<br>If **multiple** is **false** and **selectedIndexes** is an empty array, the first chip is selected by default. If **selectedIndexes** contains multiple elements, only the first index takes effect.<br>If **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12.  |
+| multiple        | boolean                                         | No   | @Prop | Whether to select multiple chips.<br>**true**: Multiple chips can be selected, which applies to scenarios where multiple options need to be selected at the same time, such as multi-tag selection and multi-condition filtering. **false**: Only a single chip can be selected, which applies to single-selection scenarios, such as single-item selection.<br>Default value: **false**<br>If **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | No   | @Prop | Left and right padding and spacing between chips. For details, see [ChipGroupSpaceOptions](#chipgroupspaceoptions). Pass this parameter when the default spacing cannot meet the layout requirements or when the spacing between chips needs to be adjusted according to the UI design.<br>Default value: **{ itemSpace: 8, startSpace: 16, endSpace: 16 }**<br>Unit: vp<br>If **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| chipGroupPadding  | [ChipGroupPaddingOptions](#chipgrouppaddingoptions) | No   | @Prop | Top and bottom padding of the **ChipGroup**, used to control the overall height. The type is [ChipGroupPaddingOptions](#chipgrouppaddingoptions). Pass this parameter when you need to adjust the vertical space occupied by the **ChipGroup** component or match specific UI design requirements.<br>Default value: **{ top: 14, bottom: 14 }**<br>Unit: vp<br>If **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | No | @Prop | System material style of the component. Different materials have different effects and can affect the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [border](ts-universal-attributes-border.md#border), and [shadow](ts-universal-attributes-image-effect.md#shadow) visual properties of the component. When a system material with auto-invert is set, if **fontColor** uses a system-predefined invertible color resource (such as `$r('sys.color.font_primary')`), the color automatically adapts to the inverted color of the material background color. When **backgroundSystemMaterial** is set, **backgroundColor** should be set to **Color.Transparent**, otherwise it will conflict with the system material.<br>Default value: **undefined**<br>If **undefined**, no material style is applied.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
 | selectedBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | No | @Prop | System material style for the selected state of the component. Different materials have different effects and can affect the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [border](ts-universal-attributes-border.md#border), and [shadow](ts-universal-attributes-image-effect.md#shadow) visual properties of the component when selected. When a system material with auto-invert is set, if **selectedFontColor** uses a system-predefined invertible color resource (such as `$r('sys.color.font_primary')`), the color automatically adapts to the inverted color of the material background color. When **selectedBackgroundSystemMaterial** is set, **selectedBackgroundColor** should be set to **Color.Transparent**, otherwise it will conflict with the system material.<br>Default value: **undefined**<br>If **undefined**, no material style is applied to the selected state.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
-| onChange        | Callback\<Array\<number>>  | No   | -  | Callback invoked when the chip state changes, used to listen for changes in the chip selected state. This callback is triggered after the **selectedIndexes** attribute is updated. Developers can obtain the latest selected state in the callback and perform corresponding operations, such as updating the UI, saving selected data, and triggering business logic. Pass this parameter when you need to respond to chip selected state changes. If not passed, state changes are not listened to.<br>If **undefined**, this callback is not triggered.<br>**Atomic service API:** This API can be used in atomic services since API version 12.                                                              |
-| suffix          | Callback\<void\>                                        | No   | @BuilderParam | Used to customize a builder. To display custom content on the rightmost side of the component, configure the **suffix** attribute. When using the **suffix** attribute, reference the [IconGroupSuffix](#icongroupsuffix) API.<br>When not passed by default, there is no suffix.<br>If **undefined**, there is no suffix.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| onChange        | [Callback](ts-types.md#callback12)\<Array\<number>>  | No   | -  | Callback invoked when the chip state changes, used to listen for changes in the chip selected state. This callback is triggered after the **selectedIndexes** attribute is updated. Developers can obtain the latest selected state in the callback and perform corresponding operations, such as updating the UI, saving selected data, and triggering business logic. Pass this parameter when you need to listen for the user's chip selection operation and execute the corresponding business logic. If not passed, notifications of chip state changes cannot be received.<br>If **undefined**, this callback is not triggered.<br>**Atomic service API:** This API can be used in atomic services since API version 12.                                                              |
+| suffix          | [Callback](ts-types.md#callback12)\<void\>                                        | No   | @BuilderParam | Used to customize a builder. To display custom content on the rightmost side of the component, configure the **suffix** attribute. When using the **suffix** attribute, reference the [IconGroupSuffix](#icongroupsuffix) API.<br>When not passed by default, there is no suffix.<br>If **undefined**, there is no suffix.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 
 > **NOTE**
 >
@@ -108,7 +108,7 @@ Defines the common attributes of chips.
 
 | Name                   | Type                                                        | Read-Only| Optional| Description                                                        |
 | ----------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| size                    | [ChipSize](ohos-arkui-advanced-Chip.md#chipsize) \| [SizeOptions](ts-types.md#sizeoptions) | No   | Yes   | Chip size. The **ChipSize** type must be imported from the **Chip** component.<br>Default value: **ChipSize.NORMAL** or { **height**: 0, **width**: 0 }<br>When the value is **undefined**, the default value is used. |
+| size                    | [ChipSize](ohos-arkui-advanced-Chip.md#chipsize) \| [SizeOptions](ts-types.md#sizeoptions) | No   | Yes   | Chip size. To use it, import the **ChipSize** type from the **Chip** component. **ChipSize.NORMAL** applies to most standard scenarios; **ChipSize.SMALL** applies to compact layouts or space-constrained scenarios; **SizeOptions** applies to special scenarios where a custom precise size is required.<br>Default value: **ChipSize.NORMAL** or **{ height: 0, width: 0 }**<br>When the value is **undefined**, the default value is used. |
 | backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | No   | Yes   | Chip background color.<br>Default value: **$r('sys.color.ohos_id_color_button_normal')**<br>**Note:** Since API version 26.0.0, when **backgroundSystemMaterial** is set, **backgroundColor** must be set to **Color.Transparent**; otherwise, it conflicts with the system material. When **backgroundSystemMaterial** is undefined, the **backgroundColor** attribute takes effect.<br>When the value is **undefined**, the default value of **backgroundColor** is used. |
 | fontColor               | [ResourceColor](ts-types.md#resourcecolor)                   | No   | Yes   | Chip text color.<br>Default value: **$r('sys.color.ohos_id_color_text_primary')**<br>**Note:** Since API version 26.0.0, when **backgroundSystemMaterial** is set to a system material with auto-invert, **fontColor** uses a system-predefined invertible color resource, and the text color automatically adapts to the inverted color of the material background color.<br>When the value is **undefined**, the default value of **fontColor** is used. |
 | selectedFontColor       | [ResourceColor](ts-types.md#resourcecolor)                   | No   | Yes   | Chip text color when selected.<br>Default value: **$r('sys.color.ohos_id_color_text_primary_contrary')**<br>**Note:** Since API version 26.0.0, when **selectedBackgroundSystemMaterial** is set to a system material with auto-invert, **selectedFontColor** uses a system-predefined invertible color resource (for example, `$r('sys.color.font_primary')`), and the color automatically adapts to the inverted color of the material background color.<br>When the value is **undefined**, the default value of **selectedFontColor** is used. |
@@ -185,7 +185,7 @@ Defines the suffix icon option type for **ChipGroup**.
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | --- | ---- | ---- |
 | symbol | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | No | **SymbolGlyphModifier** configuration object for the trailing icon, used to set the icon's display style, rendering mode, etc.|
-| action | [VoidCallback](ts-types.md#voidcallback12) | No | No | Callback for the trailing icon tap event. This callback is triggered when the user taps the trailing icon. Set this parameter when you need to add custom interaction to the trailing icon, such as performing a specific operation or opening a page.|
+| action | [VoidCallback](ts-types.md#voidcallback12) | No | No | Response event of the trailing icon. The callback is triggered when the user taps the tail icon. Set this parameter when you need to add custom interaction to the tail icon, such as performing a specific operation or opening an interface.<br>If the value is **undefined**, there is no tail icon response event.|
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text attribute of the trailing icon. This attribute is used to further explain the trailing icon to users. You can set a relatively detailed description for this attribute of the trailing icon to help users understand the operation to be performed, especially the possible consequences that cannot be inferred from the trailing icon's own attributes and accessibility text. When the trailing icon has both a text attribute and an accessibility description attribute, the system first reads the text attribute of the trailing icon, followed by the content of the accessibility description attribute.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.|
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the trailing icon. This description is used to explain the trailing icon to users in detail. You should provide a thorough text description for this attribute to help users understand the operation to be performed and its possible results, especially when such results cannot be directly inferred from the trailing icon's attributes and accessibility text. When a trailing icon that is selected has both a text attribute and an accessibility description attribute, the system first reads the text attribute, followed by the content of the accessibility description attribute.<br>Default value: empty string.<br>If the value is **undefined**, the default value is used.|
 | accessibilityLevel | string | No | Yes | Accessibility level of the trailing icon. Used to control whether the trailing icon can be recognized by accessibility services. Set this parameter when you need to provide access support for users of accessibility services, or when you need to exclude decorative icons from the accessibility tree.<br>Supported values:<br>**"auto"**: The trailing icon is converted to **"yes"**, applicable to most scenarios.<br>**"yes"**: The trailing icon can be recognized by accessibility services, applicable to scenarios where accessibility access needs to be explicitly enabled.<br>**"no"**: The trailing icon cannot be recognized by accessibility services, applicable to purely decorative icon scenarios.<br>**"no-hide-descendants"**: The trailing icon and all its child components cannot be recognized by accessibility services, applicable to scenarios where the entire area needs to be hidden.<br>Default value: **"auto"**.<br>If the value is **undefined**, the default value is used. |
@@ -207,7 +207,7 @@ IconGroupSuffix({
 
 | Name    | Type                   | Mandatory| Decorator| Description                                                             |
 | -------- | ---------------------- | ---- | ----------------------------------------------| ----------------------------------------------|
-| items | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [ SymbolItemOptions](#symbolitemoptions14)> | Yes | @Require &nbsp;@Prop | Array of custom items displayed in the trailing area. The array supports **IconItemOptions** (image icon), **SymbolGlyphModifier** (symbol icon), or **SymbolItemOptions** (symbol icon configuration) types.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| items                       | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [SymbolItemOptions](#symbolitemoptions14)> | Yes   | @Require &nbsp;@Prop | Array of custom items displayed in the trailing area. The array supports **IconItemOptions** (image icon), **SymbolGlyphModifier** (symbol icon), or **SymbolItemOptions** (symbol icon configuration) types.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
 | iconBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | No | @Prop | System material style of the component. Different materials have different effects and can affect the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [border](ts-universal-attributes-border.md#border), and [shadow](ts-universal-attributes-image-effect.md#shadow) visual properties of the component. When a system material with auto-invert is set, if **fontColor** uses a system-predefined invertible color resource (such as `$r('sys.color.font_primary')`), the color automatically adapts to the inverted color of the material background color.<br>Default value: **undefined**<br>When the **value** is **undefined**, no material style is applied.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
 
 > **NOTE**
@@ -226,8 +226,8 @@ Defines the trailing builder API, which is used to configure the display propert
 | Name    | Type                           | Read-Only| Optional| Description                                   |
 | -------- | --------------                 | ---- | ------------------------------           | ------------------------------           |
 | icon     | [IconOptions](#iconoptions)    | No  | No  | Custom Builder icon.<br>When the chip size is **ChipSize.SMALL**, the default icon size is **{width: '16vp', height: '16vp'}**.<br>When the chip size is **ChipSize.NORMAL**, the default icon size is **{width: '24vp', height: '24vp'}**.<br>To dynamically change the size, the [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) type must be used when [IconGroupSuffix](#icongroupsuffix) is introduced.<br>When the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| action   | Callback\<void>        | No  | No  | Callback for the tap event on the trailing icon. It is triggered when the user taps the trailing icon. Set this parameter to add custom interaction to the trailing icon, such as performing a specific operation or opening a page.<br>When undefined, this callback is not triggered.<br>**Atomic service API:** This API can be used in atomic services since API version 12.            |
-| accessibilityText<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text of the trailing symbol item. If a trailing symbol item does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which item is selected. To solve this problem, you can set accessibility text for trailing symbol items without text information. When such a trailing symbol item is selected, the screen reader announces the specified accessibility text, informing the user which item is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| action   | [Callback](ts-types.md#callback12)\<void>        | No  | No  | Callback for the tap event on the trailing icon. It is triggered when the user taps the trailing icon. Set this parameter to add custom interaction to the trailing icon, such as performing a specific operation or opening a page.<br>When it is **undefined**, this callback is not triggered.<br>**Atomic service API:** This API can be used in atomic services since API version 12.            |
+| accessibilityText<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text attribute of the trailing icon. It is used to further explain the trailing icon to users. Developers can set a relatively detailed explanatory text for this attribute of the trailing icon to help users understand the operation to be performed. For example, help users understand the possible consequences of the operation to be performed, especially when these consequences cannot be learned from the trailing icon's own attributes and accessibility text. If the trailing icon has both a text attribute and an accessibility description attribute, when the trailing icon is selected, the text attribute of the trailing icon is announced first, followed by the content of the accessibility description attribute.<br>Default value: empty string.<br>When the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 14.|
 | accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the trailing icon. This description is used to explain the trailing icon to users in detail. Developers should provide a relatively detailed text description for this attribute of the trailing icon to help users understand the operation to be performed and its possible consequences, especially when these consequences cannot be directly learned from the trailing icon's attributes and accessibility text alone. If the trailing icon has both a text attribute and an accessibility description attribute, when the trailing icon is selected, the system will first announce the text attribute of the trailing icon, and then announce the content of the accessibility description attribute.<br>Default value: empty string<br>When the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 14. |
 | accessibilityLevel<sup>14+</sup> | string | No | Yes | Accessibility level of the trailing icon. Used to control whether the trailing icon can be recognized by accessibility services. Set this parameter when you need to provide access support for accessibility service users, or when you need to exclude decorative icons from the accessibility tree.<br>Supported values:<br>**"auto"**: The trailing icon is converted to **"yes"**, applicable to most scenarios.<br>**"yes"**: The trailing icon can be recognized by accessibility services, applicable to functional icons.<br>**"no"**: The trailing icon cannot be recognized by accessibility services, applicable to purely decorative icons.<br>**"no-hide-descendants"**: The trailing icon and all its child components cannot be recognized by accessibility services, applicable to scenarios where the entire area needs to be hidden.<br>Default value: **"auto"**<br>When the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 14. |
 
@@ -942,3 +942,87 @@ struct ChipGroupMaterialExample {
 ```
 
 ![](figures/chip_group_material.png)
+
+### Example 7: Setting the System Material Style for the Selected State of a Component
+
+This example configures **selectedBackgroundSystemMaterial** to implement the system material style for the selected state of the component, and enables auto invert color so that the text color adapts to the background color.
+
+Since API version 26.0.0, [ChipGroup](#chipgroup-1) adds the **selectedBackgroundSystemMaterial** attribute.
+
+```typescript
+import { ChipGroup, IconGroupSuffix, SymbolGlyphModifier, uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ChipGroupMaterialExample {
+  @State selectedIndexes: Array<number> = [0];
+
+  @LocalBuilder
+  suffixBuilder() {
+    IconGroupSuffix({
+      items: [new SymbolGlyphModifier($r('sys.symbol.magnifyingglass'))
+      // Set the fontColor to a special system resource value to enable auto invert color.
+        .fontColor([$r('sys.color.font_primary')])],
+      // Set the system material style of the suffix icon to ULTRA_THIN and enable auto invert color.
+      iconBackgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+        style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+        colorInvert: true
+      })
+    })
+  }
+
+  build() {
+    Column({ space: 10 }) {
+      ChipGroup({
+        items: [
+          { label: { text: 'Option 1' } },
+          { label: { text: 'Option 2' } },
+          { label: { text: 'Option 3' } },
+          { label: { text: 'Option 4' } },
+          { label: { text: 'Option 5' } },
+          { label: { text: 'Option 6' } },
+        ],
+        selectedIndexes: this.selectedIndexes,
+        itemStyle: {
+          // Set a transparent background color; otherwise, it conflicts with the system material.
+          backgroundColor: Color.Transparent,
+          // Set the fontColor to a special system resource value to enable auto invert color.
+          fontColor: $r('sys.color.ohos_id_color_text_primary'),
+          selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary')
+        },
+        // Set the system material style of the selected item in ChipGroup to ULTRA_THIN and enable auto invert color.
+        selectedBackgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+          materialColor: $r('sys.color.ohos_id_color_emphasize'),
+          colorInvert: true
+        }),
+        // Set the system material style of ChipGroup to ULTRA_THIN and enable auto invert color.
+        backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+          colorInvert: true
+        }),
+        onChange: (activatedChipsIndex: Array<number>) => {
+          this.selectedIndexes = activatedChipsIndex;
+        },
+        suffix: () => {
+          this.suffixBuilder()
+        }
+      })
+    }
+    .linearGradient({
+      angle: 90, // Gradient angle. 90 degrees means from left to right.
+      colors: [
+        ['#FF9A9E', 0.0], // Start color and position (0.0 indicates the start point).
+        ['#FECFEF', 0.5], // Middle color and position.
+        ['#3B324C', 1.0] // End color and position (1.0 indicates the end point).
+      ]
+    })
+    .padding(12)
+    .width('100%')
+    .height('100%')
+  }
+}
+
+```
+
+<!--Del--> <!--DelEnd-->
