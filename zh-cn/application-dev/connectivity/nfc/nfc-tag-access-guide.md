@@ -29,7 +29,7 @@ NFC标签支持一种或多种通信技术，具体技术如下：
   手机NFC支持读取卡片信息并跳转到生态应用，有使用NDEF通用协议和应用接入[AirTouch服务](https://developer.huawei.com/consumer/cn/airtouch/)两种方式：
      1. NDEF通用协议跳转应用：在标签内写入应用的信息，电子设备触碰发现NFC标签后，根据NFC标签的NDEF信息，分发给对应的应用。
      2. 接入AirTouch服务：更高阶的应用拉起方案，通过碰一碰服务直达，满足用户碎片化需求，如：NFC碰一碰点单、支付、活动推广等，详细应用开发接入指导及标签制作参考[AirTouch服务](https://developer.huawei.com/consumer/cn/airtouch/)。
-     3. 更多NDEF标签格式规范请关注[NFC论坛](https://nfc-forum.org/)。
+     更多NDEF标签格式规范请关注[NFC论坛](https://nfc-forum.org/)。
 - 标签读写约束条件<br>
 不管是前台读写，还是后台读写，电子设备能够发现NFC标签的前提条件是设备必须是亮屏和解锁状态。
 
@@ -384,8 +384,8 @@ export default class EntryAbility extends UIAbility {
 ```
 ### NDEF格式Tag定制
 - NFC标签定制<br>
-1. NDEF标签可能存在1或多个Record。通过包名拉起OpenHarmony应用需要特定的Record记录：其中type为“ohos.com:pkg”，payload为“应用实际包名”。
-2. 根据应用业务逻辑的需要，标签内的第一个Record可以放入一个URI类型的数据（可选）。如果存在URI类型的Record，NFC拉起应用时会以want.uri格式传递给应用，此时应用可以通过识别URI来跳转到指定页面。
+  1. NDEF标签可能存在1或多个Record。通过包名拉起OpenHarmony应用需要特定的Record记录：其中type为“ohos.com:pkg”，payload为“应用实际包名”。
+  2. 根据应用业务逻辑的需要，标签内的第一个Record可以放入一个URI类型的数据（可选）。如果存在URI类型的Record，NFC拉起应用时会以want.uri格式传递给应用，此时应用可以通过识别URI来跳转到指定页面。
 
 > **说明：**
 >
