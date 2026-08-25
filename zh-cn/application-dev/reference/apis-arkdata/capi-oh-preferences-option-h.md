@@ -82,7 +82,7 @@ OH_PreferencesOption *OH_PreferencesOption_Create(void)
 
 | 类型                                                 | 说明                                                         |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) | 如果操作成功，返回指向Preferences配置选项[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例对象的指针。失败返回空指针。 |
+| [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) * | 如果操作成功，返回指向Preferences配置选项[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例对象的指针。失败返回空指针。 |
 
 ### OH_PreferencesOption_SetFileName()
 
