@@ -187,12 +187,9 @@ apiAvailable接口参数格式不符合规范，包括：参数包含非法字�
 1. 核对apiAvailable接口的参数格式要求，确认当前参数类型（整数版本号、M.S.F版本号或版本范围表达式）。
 
 2. 根据参数类型修正版本号：
-
- - 整数格式：取值范围为1~25，例如：`apiAvailable(12)`。
-
- - M.S.F格式：M>=26且M<=99，S和F为0~99的整数，例如：`apiAvailable("26.0.1")`。
-
- - 版本范围表达式：仅允许使用数字、点和括号，例如：`apiAvailable("26.0.0")`。
+   - 整数格式：取值范围为1~25，例如：`apiAvailable(12)`。
+   - M.S.F格式：M>=26且M<=99，S和F为0~99的整数，例如：`apiAvailable("26.0.1")`。
+   - 版本范围表达式：仅允许使用数字、点和括号，例如：`apiAvailable("26.0.0")`。
 
 3. 确保参数不为null或undefined。
 
@@ -211,10 +208,8 @@ Invalid {osName} version.
 **可能原因**
 
 1. 格式不符合规范：版本号需满足以下格式之一：
-
- - M.S.F带括号格式：如：6.0.0(20)
-
- - M.S.F格式，如：26.0.0
+   - M.S.F带括号格式：如：6.0.0(20)
+   - M.S.F格式，如：26.0.0
 
 2. 版本号不在允许列表中：格式正确但未在sdkApiVersionMap.json中匹配到对应条目。
 
@@ -249,10 +244,8 @@ The runtime OS for the current project is {runtimeOS}. The OS version number {ve
 1. 根据错误信息中的{runtimeOS}确认当前项目的运行时类型，根据{versionNumber}定位@Available装饰器中不合规的版本号。
 
 2. 按照运行时的版本号规范修正版本号：
-
- - 整数格式：取值范围1~999，例如：`@Available({minApiVersion: "12"})`、`@Available({minApiVersion: "26"})`、`@Available({minApiVersion: "100"})`。
-
- - M.S.F格式：M为1~99的整数，S和F为0~99的整数，例如：`@Available({minApiVersion: "26.0.0"})`。
+   - 整数格式：取值范围1~999，例如：`@Available({minApiVersion: "12"})`、`@Available({minApiVersion: "26"})`、`@Available({minApiVersion: "100"})`。
+   - M.S.F格式：M为1~99的整数，S和F为0~99的整数，例如：`@Available({minApiVersion: "26.0.0"})`。
 
 3. 确保版本号不含非法字符，且格式完整（M.S.F必须为三段式）。
 
