@@ -919,7 +919,7 @@ try {
 | serviceType  |  [ServiceType](#servicetype23)   | 否 | 是 | 服务类型，默认为SERVICE_BEST_EFFORT。    |
 | tokenRate  | number | 否 | 是 | 单位时间内允许传输的平均数据量，单位为Byte/s，默认为0，表示没有平均数据量限制。  |
 | tokenBucketSize  | number | 否 | 是 | 允许短时间内超过tokenRate的最大数据量，单位为Byte，默认为0，表示没有最大数据量限制。  |
-| peakBandwidth  | number | 否 | 是 | 最大传输速率限制，取值范围[0, +∞)，单位为Byte/s，默认为0，表示没有传输速率限制。  |
+| peakBandwidth  | number | 否 | 是 | 最大传输速率限制，单位为Byte/s。默认为0，表示没有传输速率限制。  |
 | latency  | number | 否 | 是 | 最大允许延迟时间，单位为μs，默认为-1，表示没有延迟限制。  |
 | delayVariation  | number | 否 | 是 | 允许的延迟波动范围，单位为μs，默认为-1，表示没有延迟波动范围限制。  |
 
