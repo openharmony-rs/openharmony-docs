@@ -167,6 +167,21 @@ C/C++示例：
 
 <!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
 
+<div class="same-source-code">
+``` C++
+#include <ohaudio/native_audio_device_enhance_manager.h>
+#include <ohaudio/native_audio_routing_manager.h>
+#include <ohaudio/native_audio_device_base.h>
+#include <ohaudio/native_audiocapturer.h>
+#include <ohaudio/native_audiorenderer.h>
+#include <ohaudio/native_audiostreambuilder.h>
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp?same_code_link_text=header_file" target="_blank" rel="nofollow">EnhancedDeviceRouting.cpp</a></p>
+
+</div>
+
+
 <!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
 
 ### 切换输入设备
