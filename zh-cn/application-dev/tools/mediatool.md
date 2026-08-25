@@ -360,4 +360,3 @@ rm: /mnt/data/100/media_fuse/Photo/相机: Is a directory
 $ hdc shell rm /mnt/data/100/media_fuse/Photo/相机/文件A # 无返回信息，删除成功
 ```
 
-<!--no_check-->

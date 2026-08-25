@@ -24,7 +24,7 @@
 - [param工具](param-tool.md)
 - [power-shell工具](power-shell.md)
 <!--Del-->
-- [OpenHarmony SDK升级助手](openharmony_sdk_upgrade_assistant.md)
+- [OpenHarmony SDK 升级助手](openharmony_sdk_upgrade_assistant.md)
 <!--DelEnd-->
 - [atm工具](atm-tool.md)
 - [network-cfg工具](network-cfg.md)
@@ -41,7 +41,7 @@
 - [acm工具](acm-tool.md)
 <!--DelEnd-->
 - 命令行工具<!--command-line-utilities-->
-  - [toybox工具](toybox.md)
+  - [toybox](toybox.md)
   - [媒体库资源访问工具](mediatool.md)
   - [devicedebug工具](devicedebug-tool.md)
   - [rawheap-translator工具](rawheap-translator.md)
