@@ -457,7 +457,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| FULL_FUNCTION_GRID | 0 | 宫格支持捏合，捏合后支持选中、点击进大图操纵。|
+| FULL_FUNCTION_GRID | 0 | 宫格支持捏合，捏合后支持选中、点击进大图操作。|
 
 
 ## AvailabilityStatus

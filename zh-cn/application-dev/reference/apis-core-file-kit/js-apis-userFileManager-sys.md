@@ -1861,11 +1861,11 @@ async function example(mgr: userFileManager.UserFileManager) {
     console.info('fileAsset.displayName : ' + fileAsset.displayName);
   }
   let onCallback1 = (changeData: userFileManager.ChangeData) => {
-      console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+      console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
     // 图像文件已更改，请执行操作。
   }
   let onCallback2 = (changeData: userFileManager.ChangeData) => {
-      console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+      console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
     // 图像文件已更改，请执行操作。
   }
   // 注册onCallback1监听。
@@ -2894,8 +2894,8 @@ Exif标签的详细信息请参考[image.PropertyKey](../apis-image-kit/arkts-ap
 | ImageWidth | 图像宽度。 |
 | GPSLatitude | GPS纬度。 |
 | GPSLongitude | GPS经度。 |
-| GPSLatitudeRef | 经度引用，例如W或E。 |
-| GPSLongitudeRef | 纬度引用，例如N或S。 |
+| GPSLatitudeRef | 纬度引用，例如N或S。 |
+| GPSLongitudeRef | 经度引用，例如W或E。 |
 | DateTimeOriginal | 拍摄时间。 |
 | ExposureTime | 曝光时间。 |
 | SceneType | 场景类型。 |
@@ -3000,8 +3000,8 @@ Exif标签的详细信息请参考[image.PropertyKey](../apis-image-kit/arkts-ap
 | ImageWidth | 图像宽度。 |
 | GPSLatitude | GPS纬度。 |
 | GPSLongitude | GPS经度。 |
-| GPSLatitudeRef | 经度引用，例如W或E。 |
-| GPSLongitudeRef | 纬度引用，例如N或S。 |
+| GPSLatitudeRef | 纬度引用，例如N或S。 |
+| GPSLongitudeRef | 经度引用，例如W或E。 |
 | DateTimeOriginal | 拍摄时间。 |
 | ExposureTime | 曝光时间。 |
 | SceneType | 场景类型。 |
