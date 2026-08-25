@@ -288,6 +288,28 @@ ArkTS示例：
 
 <!-- @[select_OutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
 
+<div class="same-source-code">
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+  let audioManager = audio.getAudioManager();
+  let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+  // 为应用选择输出设备，此处device可通过ArkTS完整示例查看获取方式。
+  audioDeviceEnhanceManager.selectOutputDevice(device).then(() => {
+    console.info('Succeeded in selecting output device.');
+    // ...
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to select output device. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets?same_code_link_text=select_OutputDevice" target="_blank" rel="nofollow">EnhancedDeviceRouting.ets</a></p>
+
+</div>
+
+
 **音频流级：** 通过[selectOutputDeviceForAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md#selectoutputdeviceforaudiorenderer)为指定音频播放流选择输出设备，设置成功后仅对该播放流生效。
 
 <!-- @[select_OutputDeviceForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
