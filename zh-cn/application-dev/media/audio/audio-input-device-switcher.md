@@ -343,6 +343,35 @@ ArkTS示例：
 
   <!-- @[select_InputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioEnhanceDeviceSample-Sta/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
 
+  <div class="same-source-code">
+  ``` TypeScript
+  import audio from '@ohos.multimedia.audio';
+  import common from '@ohos.app.ability.common';
+  import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+  // ...
+  
+  let audioManager = audio.getAudioManager();
+  let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+  
+  let audioSessionManager = audioManager.getSessionManager();
+  
+  // ...
+    try {
+      await audioDeviceEnhanceManager.selectInputDevice(device);
+      console.info('Succeeded in selecting input device.');
+      // ...
+    } catch (err) {
+      let error = err as BusinessError;
+      console.error(`Failed to select input device. Code: ${error.code}, message: ${error.message}`);
+      // ...
+    }
+  ```
+
+  <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioEnhanceDeviceSample-Sta/entry/src/main/ets/pages/EnhancedDeviceRouting.ets?same_code_link_text=select_InputDevice" target="_blank" rel="nofollow">EnhancedDeviceRouting.ets</a></p>
+
+  </div>
+
+
 
 - **音频流级：** 通过[selectInputDeviceForAudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md#selectinputdeviceforaudiocapturer)为指定音频录制流选择输入设备，设置成功后仅对该录制流生效。
 
