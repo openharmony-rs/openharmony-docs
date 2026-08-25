@@ -3182,7 +3182,7 @@ getDeviceName(callback: AsyncCallback&lt;string&gt;): void
 
 client获取server端设备名称。使用Callback异步回调。
 
-- 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
+需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3241,7 +3241,7 @@ getDeviceName(): Promise&lt;string&gt;
 
 client获取server端设备名称。使用Promise异步回调。
 
-- 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
+需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3376,7 +3376,7 @@ getServices(): Promise&lt;Array&lt;GattService&gt;&gt;
 
 client端获取server端支持的所有服务能力，即服务发现流程。使用Promise异步回调。
 
-- 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
+需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
