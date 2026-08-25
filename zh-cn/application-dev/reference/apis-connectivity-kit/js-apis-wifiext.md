@@ -96,11 +96,15 @@ getSupportedPowerModel(): Promise&lt;Array&lt;PowerModel&gt;&gt;
 | THROUGH_WALL | 2 | 穿墙模式。 |
 
 
-## wifiext.getSupportedPowerModel
+## wifiext.getSupportedPowerModel<sup>(deprecated)</sup>
 
 getSupportedPowerModel(callback: AsyncCallback&lt;Array&lt;PowerModel&gt;&gt;): void
 
 获取支持的功率模式。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManagerExt.getSupportedPowerMode](js-apis-wifiManagerExt.md#wifimanagerextgetsupportedpowermode)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -155,11 +159,15 @@ getPowerModel(callback: AsyncCallback&lt;PowerModel&gt;): void
   | callback | AsyncCallback&lt;[PowerModel](#powermodel)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示功率模式。如果err为非0，表示处理出现错误。 |
 
 
-## wifiext.setPowerModel
+## wifiext.setPowerModel<sup>(deprecated)</sup>
 
 setPowerModel(model: PowerModel) : boolean;
 
- 设置功率模式。
+设置功率模式。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManagerExt.setPowerMode](js-apis-wifiManagerExt.md#wifimanagerextsetpowermodedeprecated)替代。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
 

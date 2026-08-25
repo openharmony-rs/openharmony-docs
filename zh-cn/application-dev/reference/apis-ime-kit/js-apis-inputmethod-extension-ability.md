@@ -35,7 +35,7 @@
 **基础模式介绍：**
 基础模式下，输入法扩展（InputMethodExtensionAbility）进程无法拉起其他UIAbility或ExtensionAbility。
 
-基础模式下，输入法扩展会受到系统管控，不能使用涉及访问或泄露用户个人数据的各种接口，同时无法将数据传递出进程。管控功能包括但不限于：网络、短信、电话、麦克风、定位、相机、蓝牙、壁纸、支付、日历、游戏、扬声器、Wi-Fi、剪切板、多媒体、联系人、公共事件、系统账号、健康数据、地图服务、推送服务、融合搜索、共享内存、分布式特性、广告设备标识、振动等。
+基础模式下，输入法扩展会受到系统管控，不能使用涉及访问或泄露用户个人数据的各种接口，同时无法将数据传递出进程。管控功能包括但不限于：网络、短信、电话、麦克风、定位、相机、蓝牙、壁纸、支付、日历、游戏、扬声器、Wi-Fi、剪贴板、多媒体、联系人、公共事件、系统账号、健康数据、地图服务、推送服务、融合搜索、共享内存、分布式特性、广告设备标识、振动等。
 
 基础模式下，输入法扩展可以使用基础输入功能必要的系统能力，例如，IME Kit、ArkUI、窗口、图形、屏幕管理等。
 
@@ -135,7 +135,7 @@ want参数使用建议：
 **示例：**
 
 ```ts
-import { InputMethodExtensionAbility, InputMethodAbility, KeyboardDelegate, PanelInfo, PanelType, PanelFlag, inputMethodEngine } from '@kit.IMEKit';
+import { InputMethodExtensionAbility, inputMethodEngine } from '@kit.IMEKit';
 import { Want } from '@kit.AbilityKit';
 
 class InputMethodExt extends InputMethodExtensionAbility {
@@ -143,15 +143,15 @@ class InputMethodExt extends InputMethodExtensionAbility {
     console.info(`onCreate, want: ${want.abilityName}`);
 
     // 获取输入法能力对象
-    let ability: InputMethodAbility = inputMethodEngine.getInputMethodAbility();
+    let ability: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 
     // 获取键盘代理对象
-    let keyboardDelegate: KeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
+    let keyboardDelegate: inputMethodEngine.KeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
 
     // 创建面板
-    let panelInfo: PanelInfo = {
-      type: PanelType.SOFT_KEYBOARD,
-      flag: PanelFlag.FLG_FIXED
+    let panelInfo: inputMethodEngine.PanelInfo = {
+      type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
+      flag: inputMethodEngine.PanelFlag.FLG_FIXED
     };
     ability.createPanel(this.context, panelInfo, (err, panel) => {
       if (err) {

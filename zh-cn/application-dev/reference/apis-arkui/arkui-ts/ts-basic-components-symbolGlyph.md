@@ -428,7 +428,7 @@ ArkTS-Dyn: symbolShadow(shadow: Optional\<ShadowOptions\>)
 
 ArkTS-Sta: symbolShadow(shadow: ShadowOptions | undefined)
 
-设置SymbolGlyph组件的阴影效果。未通过该接口设置时，默认阴影效果为{radius：0,color：Color.Black,offsetX：0,offsetY：0}。
+设置SymbolGlyph组件的阴影效果。未通过该接口设置时，默认阴影效果为{radius: 0,color: Color.Black,offsetX: 0,offsetY: 0}。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 

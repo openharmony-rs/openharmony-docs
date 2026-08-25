@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 本模块主要提供NFC卡模拟业务，包括判断支持哪种卡模拟类型，HCE卡模拟的业务实现等。<br>
-HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安全单元芯片，应用程序模拟NFC卡片，可以通过NFC服务和NFC读卡器通信。
+HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安全单元芯片，应用程序模拟NFC卡片，可以通过NFC服务和NFC读卡设备通信。
 
 > **说明：**
 >
@@ -405,7 +405,7 @@ export default  {
         var hceService = new cardEmulation.HceService();
         hceService.startHCE([
             "F0010203040506", "A0000000041010"
-        ])
+        ]);
     }
 }
 ```
@@ -599,7 +599,7 @@ export default class EntryAbility extends UIAbility {
       bundleName: want.bundleName ?? '',
       abilityName: want.abilityName ?? '',
       moduleName: want.moduleName
-    }
+    };
     const apduCallback: AsyncCallback<number[]> = (err, data) => {
       // 处理数据和异常
       console.info("got apdu data");
@@ -637,14 +637,14 @@ export default {
     cardEmulation.hasHceCapability();
     cardEmulation.isDefaultService(appName, cardEmulation.CardType.PAYMENT);
     cardEmulation.isDefaultService(appName, cardEmulation.CardType.OTHER);
-    let HceService = new cardEmulation.HceService();
+    let hceService = new cardEmulation.HceService();
 
-    HceService.start(appName, this.paymentAid);
-    HceService.on("hceCmd", (data) => {
+    hceService.start(appName, this.paymentAid);
+    hceService.on("hceCmd", (data) => {
       console.info('data:' + data);
       // 应用程序实际想要发送的数据， 此处仅作为示例
       let responseData = [0x1, 0x2];
-      HceService.transmit(responseData, () => {
+      hceService.transmit(responseData, () => {
         console.info('sendResponse start');
       });
       console.info('sendResponse end');
@@ -706,7 +706,7 @@ export default class EntryAbility extends UIAbility {
       bundleName: want.bundleName ?? '',
       abilityName: want.abilityName ?? '',
       moduleName: want.moduleName
-    }
+    };
     hceService.on('hceCmd', apduCallback);
   }
   onDestroy() {
@@ -726,6 +726,8 @@ sendResponse(responseApdu: number[]): void
 
 > **说明：**
 > 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[transmit](#transmit9)替代。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
@@ -803,7 +805,7 @@ export default  {
             } else {
                 console.info('callback => Operation hceCmd failed. Cause: ${JSON.stringify(err.data)}');
             }
-        })
+        });
     }
 }
 ```
@@ -881,7 +883,7 @@ console.info("transmit Promise end.");
 
 transmit(response: number[], callback: AsyncCallback\<void>): void
 
-发送APDU数据到对端读卡设备，应用程序必须在[on](#on8)收到读卡设备发送的APDU数据后，才调用该接口响应数据。使用Callback异步回调。
+发送APDU数据到对端读卡设备，应用程序必须在[on](#on8)收到读卡设备发送的APDU数据后，才调用该接口响应数据。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 

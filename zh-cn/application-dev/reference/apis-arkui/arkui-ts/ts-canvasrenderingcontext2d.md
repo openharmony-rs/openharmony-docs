@@ -4450,7 +4450,7 @@ on(type: 'onAttach', callback: Callback\<void>): void
 > 当CanvasRenderingContext2D对象和Canvas组件发生绑定时，会触发'onAttach'回调，表示可以获取到[canvas](#canvas13)。</br>
 > 避免在'onAttach'中执行绘制方法，应保证Canvas组件已经'[onReady](ts-components-canvas-canvas.md#onready)'再进行绘制。</br>
 > 触发'onAttach'回调的一般场景：</br>
-> 1、Canvas组件创建时绑定CanvasRenderingContext2D对象;</br>
+> 1、Canvas组件创建时绑定CanvasRenderingContext2D对象；</br>
 > 2、CanvasRenderingContext2D对象新绑定一个Canvas组件时。</br>
   
 
@@ -4485,7 +4485,7 @@ on(type: 'onDetach', callback: Callback\<void>): void
 >
 > 当CanvasRenderingContext2D对象和Canvas组件解除绑定时，会触发'onDetach'回调，表示应停止绘制行为。</br>
 > 触发'onDetach'回调的一般场景：</br>
-> 1、Canvas组件销毁时解除绑定CanvasRenderingContext2D对象;</br>
+> 1、Canvas组件销毁时解除绑定CanvasRenderingContext2D对象；</br>
 > 2、CanvasRenderingContext2D对象新绑定一个Canvas组件，会先解除已有的绑定。</br>
 
 ### off('onAttach')<sup>13+</sup>

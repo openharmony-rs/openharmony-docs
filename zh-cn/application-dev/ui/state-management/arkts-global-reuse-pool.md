@@ -367,7 +367,7 @@ struct ReusableComponent { // 复用组件
 
 - `reusePool`和`poolAccepts`配置仅在@Component和@ComponentV2上支持。在[@CustomDialog](../arkts-common-components-custom-dialog.md)上不受支持。
 
-- 动态ArkTS中，@Component和@ComponentV2在配置`reusePool`和`poolAccepts`启用全局复用的同时，需要额外配置`freezeWhenInactive`参数，`freezeWhenInactive`参数的取值请参考[自定义组件冻结功能（V1）](./arkts-custom-components-freeze.md)或[自定义组件冻结功能（V2）](./arkts-custom-components-freezeV2.md)；静态ArkTS中，自定义组件默认支持冻结，@Component和@ComponentV2无需配置`freezeWhenInactive`参数。
+- 动态ArkTS中，@Component和@ComponentV2在配置`reusePool`和`poolAccepts`启用全局复用的同时，需要额外配置`freezeWhenInactive`参数，`freezeWhenInactive`参数的取值请参考[自定义组件冻结（V1）](./arkts-custom-components-freeze.md)或[自定义组件冻结（V2）](./arkts-custom-components-freezeV2.md)；静态ArkTS中，自定义组件默认支持冻结，@Component和@ComponentV2无需配置`freezeWhenInactive`参数。
 
 - `getReusableInfo`和`preRender`仅在全局复用池实例上可用。它们不能在默认复用池的自定义组件上使用。
 

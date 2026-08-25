@@ -1,4 +1,4 @@
-# \@Component装饰器: 自定义组件
+# \@Component装饰器：自定义组件（ArkTS-Sta）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xin11112-->
@@ -18,7 +18,7 @@
 
 >**说明：**
 >
->从API版本26.0.0开始，自定义组件支持跨[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md)迁移。因为自定义组件提供的是UI能力，所以这里的Ability也特指[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)。具体示例参考[自定义组件支持跨Ability迁移](#自定义组件支持跨ability迁移)。\@ComponentV2装饰的自定义组件同样支持该能力，详见[\@ComponentV2装饰器：自定义组件](./arkts-static-componentv2.md#自定义组件支持跨ability迁移)。
+>从API版本26.0.0开始，自定义组件支持跨[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md)迁移。因为自定义组件提供的是UI能力，所以这里的Ability也特指[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)。具体示例参考[自定义组件支持跨Ability迁移](#自定义组件支持跨ability迁移)。\@ComponentV2装饰的自定义组件同样支持该能力，详见[自定义组件支持跨ability迁移](./arkts-static-componentv2.md#自定义组件支持跨ability迁移)。
 
 ## 自定义组件的基本用法
 

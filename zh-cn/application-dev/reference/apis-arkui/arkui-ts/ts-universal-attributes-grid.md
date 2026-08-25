@@ -6,17 +6,17 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-栅格设置可以为布局提供规律性的结构，解决多尺寸多设备的动态布局问题，保证不同设备上各个模块的布局一致性。
+栅格设置可以为布局提供规律性的结构，解决多尺寸多设备的动态布局问题，保证不同设备上各个模块的布局一致性，适用于响应式布局开发、多设备UI适配、跨设备布局统一等场景。
 
 >  **说明：**
 >
->  - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。 
+>  - 从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。 
 >
->  - 从API version 9开始，该模块不再维护，推荐使用新组件[GridCol](ts-container-gridcol.md)、[GridRow](ts-container-gridrow.md)替代。
+>  - 从API version 9开始，该模块不再维护，推荐使用新组件[GridCol](ts-container-gridcol.md)、[GridRow](ts-container-gridrow.md)替代。其中useSizeType从API version 9开始废弃，gridSpan和gridOffset从API version 14开始废弃。
 >
->  - 栅格布局的列宽、列间距由距离最近的GridContainer父组件决定。使用栅格属性的组件树上至少需要有1个GridContainer容器组件。
+>  - 栅格布局的列宽、列间距由距离最近的[GridContainer](ts-container-gridcontainer.md)父组件决定。GridContainer用于定义栅格系统的总列数、列间距、尺寸断点等参数。使用栅格属性的组件树上至少需要有1个GridContainer容器组件。
 >
->  - gridSpan、gridOffset属性调用时其父组件或祖先组件必须是GridContainer。
+>  - useSizeType、gridSpan、gridOffset属性调用时其父组件或祖先组件必须是GridContainer。
 
 ## 属性
 
@@ -30,7 +30,11 @@
 
 ## 示例
 
-设置不同设备类型的宽度，以及单独设置组件的span和offset，在sm尺寸大小的设备上使用useSizeType中sm的数据实现一样的效果。
+设置不同设备类型下的栅格配置。gridSpan和gridOffset用于设置默认占用列数和偏移列数，仅在useSizeType未配置对应尺寸时生效。示例中useSizeType配置了sm尺寸的值（span: 2, offset: 1），若要在其他未配置的尺寸下实现相同的栅格效果，可通过gridSpan和gridOffset设置默认值。
+
+> **说明：**
+>
+> 本示例展示的是已废弃接口的用法。建议使用新组件[GridCol](ts-container-gridcol.md)、[GridRow](ts-container-gridrow.md)来实现栅格布局。
 
 <!--code_no_check-->
 
