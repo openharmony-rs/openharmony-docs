@@ -224,6 +224,28 @@ ArkTS示例：
 
   <!-- @[select_InputDeviceForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
 
+  <div class="same-source-code">
+  ``` TypeScript
+  import { audio } from '@kit.AudioKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  // ...
+    let audioManager = audio.getAudioManager();
+    let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+    // 为指定音频录制流设置首选输入设备，此处capturer和inputDevice可通过ArkTS完整示例查看获取方式。
+    audioDeviceEnhanceManager.selectInputDeviceForAudioCapturer(capturer, inputDevice).then(() => {
+      console.info('Succeeded in selecting input device for audio capturer.');
+      // ...
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to select input device for audio capturer. Code: ${err.code}, message: ${err.message}`);
+      // ...
+    });
+  ```
+
+  <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets?same_code_link_text=select_InputDeviceForAudioCapturer" target="_blank" rel="nofollow">EnhancedDeviceRouting.ets</a></p>
+
+  </div>
+
+
 C/C++示例：
 
 - **应用级：** 通过[OH_AudioDeviceEnhanceManager_SelectInputDevice](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectinputdevice)选择指定的输入设备。
