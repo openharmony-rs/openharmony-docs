@@ -28,6 +28,8 @@
 - 管理网络<!--network-kit-network-management-->
     - [统计网络流量消耗](net-statistics.md)
     - [使用网络防火墙](net-netfirewall.md)
+    - [使用网络流量重定向 (C/C++)](net-trafficfilter-redirect.md)
+    - [使用网络报文过滤 (C/C++)](net-trafficfilter-packet.md)
     - [扩展认证](net-eap.md)
   
     <!--Del-->
