@@ -16,8 +16,6 @@ mediatool是一个轻量级的命令行工具集合，为系统自带工具，�
 ### 前置条件
 
 - 正常连接设备。
-- 系统设置中开启开发者模式。
-- 使用hdc shell进入命令行执行模式。
 
 <!--DelEnd-->
 
@@ -269,7 +267,7 @@ uri是媒体库资产的唯一标识符。mediatool使用uri来判断需要操�
 
 uri样例：`file://media/Photo/1/IMG_1743078145_000/MyImage.jpg`。
 
-在mediatool操作中，需要使用以上uri时，无论使用`file://media/Photo/1/IMG_1743078145_000/MyImage.jpg`还是`file://media/Photo/1`都能够正确的定位到目标资产。
+在mediatool操作中，需要使用以上uri时，无论使用`file://media/Photo/1/IMG_1743078145_000/MyImage.jpg`还是`file://media/Photo/1`都能够正确地定位到目标资产。
 
 ## hdc命令
 
