@@ -453,6 +453,37 @@ ArkTS示例：
 
   <!-- @[select_OutputDeviceForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioEnhanceDeviceSample-Sta/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
 
+  <div class="same-source-code">
+  ``` TypeScript
+  import audio from '@ohos.multimedia.audio';
+  import common from '@ohos.app.ability.common';
+  import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+  // ...
+  
+  let audioManager = audio.getAudioManager();
+  let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+  
+  let audioSessionManager = audioManager.getSessionManager();
+  
+  // ...
+  let audioRenderer: audio.AudioRenderer | undefined = undefined;
+  // ...
+    try {
+      await audioDeviceEnhanceManager.selectOutputDeviceForAudioRenderer(renderer, outputDevice);
+      console.info('Succeeded in selecting output device for audio renderer.');
+      // ...
+    } catch (err) {
+      let error = err as BusinessError;
+      console.error(`Failed to select output device for audio renderer. Code: ${error.code}, message: ${error.message}`);
+      // ...
+    }
+  ```
+
+  <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioEnhanceDeviceSample-Sta/entry/src/main/ets/pages/EnhancedDeviceRouting.ets?same_code_link_text=select_OutputDeviceForAudioRenderer" target="_blank" rel="nofollow">EnhancedDeviceRouting.ets</a></p>
+
+  </div>
+
+
 C/C++示例：
 
 - **应用级：** 通过[OH_AudioDeviceEnhanceManager_SelectOutputDevice](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectoutputdevice)选择指定的输出设备。
