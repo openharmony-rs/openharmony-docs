@@ -3,9 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @xiaojianfeng_jeffery-->
-<!--Designer: @dizuo1-->
+<!--Designer: @njuptkid-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=9a673d444fec536578066af1baf013d52353a6c3 translatedAt=2026-08-24T09:24:35.648Z pushedAt=2026-08-25T07:26:21.833Z -->
 
 This module provides APIs for creating and managing sendable color space objects and obtaining basic attributes of sendable color spaces. It is applicable to scenarios where color space information needs to be transferred between multiple threads. It solves the problem that color management objects cannot be shared across threads, improving the efficiency and consistency of color processing.
 
@@ -20,6 +21,7 @@ import { sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 ```
 
 ## ISendable
+
 type ISendable = lang.ISendable
 
 The ISendable type alias is defined to align with the API specifications of the current module.
