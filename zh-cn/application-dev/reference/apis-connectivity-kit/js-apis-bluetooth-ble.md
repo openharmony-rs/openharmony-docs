@@ -5785,7 +5785,7 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 <!--Table: 19%; 13%; 8%; 8%; 52%-->
 | 名称                                     | 类型    | 只读 | 可选  | 说明                                                         |
 | ------------------------------------------ | -------- | ---- | ---- | ------------------------------------------------------------ |
-| deviceId                                 | string      | 否 | 是    | 过滤该BLE设备地址的广播报文。例如："XX:XX:XX:XX:XX:XX"。若同时设置了[address](#address23)参数，则以address参数为准，deviceId不生效。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。  |
+| deviceId                                 | string      | 否 | 是    | 过滤该BLE设备地址的广播报文。例如："XX:XX:XX:XX:XX:XX"。若同时设置了address参数，则以address参数为准，deviceId不生效。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。  |
 | address<sup>23+</sup> | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 否 | 是 | 过滤该BLE设备地址和地址类型的广播报文。<br>与deviceId相比，本参数支持同时指定BLE设备地址和地址类型来对BLE广播报文进行过滤。<br>若deviceId与本参数同时指定，本参数生效，deviceId不生效。|
 | name                                     | string      | 否 | 是    | 过滤该BLE设备名称的广播报文。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。    |
 | serviceUuid                              | string      | 否 | 是    | 过滤包含该服务UUID的广播报文，serviceUuid通常在外围设备的广播报文中携带，表示外围设备支持的服务UUID。例如：00001888-0000-1000-8000-00805f9b34fb。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
