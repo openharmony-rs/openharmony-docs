@@ -16,7 +16,7 @@ This component is implemented based on [state management V2](../../../ui/state-m
 >
 > - This component can only be used in the stage model.
 >
-> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **EditableTitleBarV2**, the compilation toolchain will generate an additional node __Common__ and mount the universal attributes or universal events on __Common__, rather than directly applying them to **EditableTitleBarV2** itself. This may cause the set universal attributes or universal events to not take effect or behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events on **EditableTitleBarV2**.
+> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **EditableTitleBarV2**, the compilation toolchain will generate an additional node \_\_Common\_\_ and mount the universal attributes or universal events on \_\_Common\_\_, rather than directly applying them to **EditableTitleBarV2** itself. This may cause the set universal attributes or universal events to not take effect or behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events on **EditableTitleBarV2**.
 
 **Since:** 26.0.0
 
