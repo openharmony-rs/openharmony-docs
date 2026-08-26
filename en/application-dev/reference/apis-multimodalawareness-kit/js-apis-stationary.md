@@ -12,7 +12,7 @@ The **stationary** module provides APIs to report the device status, including a
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This module cannot run on the x86 platform.
+> This module does not support x86 emulators.
 
 ## Modules to Import
 
@@ -80,7 +80,7 @@ Subscribes to the device status.
 | -------------------- | -------------------------------------------------- | ---- | ---------------------------- |
 | activity  | [ActivityType](#activitytype)  | Yes  | Device status type.             |
 | event  | [ActivityEvent](#activityevent)  | Yes  | Event type.             |
-| reportLatencyNs  | number  | Yes  | Report latency, in nanoseconds. The value range is [1000000000, 3000000000].             |
+| reportLatencyNs  | number  | Yes  | Report latency, in ns. The value range is [1000000000, 3000000000].             |
 | callback             | Callback<[ActivityResponse](#activityresponse)\>  | Yes  | Callback used to receive reported data.   |
 
 **Example**
