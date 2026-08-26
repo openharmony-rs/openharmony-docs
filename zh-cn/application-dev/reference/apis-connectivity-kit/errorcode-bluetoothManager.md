@@ -288,7 +288,7 @@ Operation failed.
 
 **处理步骤**
 
-检查接口调用的前置依赖条件，具体处理步骤可参考[蓝牙接口调用报错2900099](../../connectivity/bluetooth/bluetooth-faq-2900099-errorcode.md)。
+检查接口调用的前置依赖条件。
 
 ### 无效参数
 **错误信息**
@@ -671,8 +671,6 @@ Operation failed. Bas request busy.
 
 调用[setCharacteristicChangeNotification](js-apis-bluetooth-ble.md#setcharacteristicchangenotification)返回错误码`2900099`时，根据以下场景进行排查。
 
-**判断依据**
-
 server端未创建[on('descriptorWrite')](js-apis-bluetooth-ble.md#ondescriptorwrite)监听，client端setCharacteristicChangeNotification接口处于持续请求的阻塞状态。
 
 **可能原因**
@@ -685,11 +683,9 @@ server端创建[on('descriptorWrite')](js-apis-bluetooth-ble.md#ondescriptorwrit
 
 ### 调用setCharacteristicChangeNotification失败-server端未及时应答
 
-**判断依据**
-
 server端接收到client端发来的描述符请求后，未及时调用[sendResponse](js-apis-bluetooth-ble.md#sendresponse)接口应答（检查日志是否返回OnSetNotifyCharacteristic关键字），client端setCharacteristicChangeNotification接口处于持续请求的阻塞状态。
 
-参考错误日志如下：
+**典型日志信息**
 
 ```text
 bta gattc enqueue: already has a pending command
@@ -704,8 +700,6 @@ server端在接收到client端发来的描述符请求后，没有及时调用se
 server端在接收到client端发来的描述符请求后，及时调用[sendResponse](js-apis-bluetooth-ble.md#sendresponse)接口向client返回数据。
 
 ### 调用setCharacteristicChangeNotification失败-前序异步接口调用未完成
-
-**判断依据**
 
 调用setCharacteristicChangeNotification接口时，有其它异步接口调用未完成，导致setCharacteristicChangeNotification接口调用被阻塞。排查方式如下：
 
@@ -729,8 +723,6 @@ server端在接收到client端发来的描述符请求后，及时调用[sendRes
 
 ### 调用writeCharacteristicValue失败-前序接口调用未完成
 
-**判断依据**
-
 当上一个非监听类BLE蓝牙接口（setBLEMtuSize、getServices和setCharacteristicChangeNotification）回调还未返回时写入数据，出现2900099报错提示，导致写入数据失败。
 
 **可能原因**
@@ -742,8 +734,6 @@ server端在接收到client端发来的描述符请求后，及时调用[sendRes
 保证在其它非监听类BLE接口回调触发完成后，再调用[writeCharacteristicValue](js-apis-bluetooth-ble.md#writecharacteristicvalue)接口写入数据。
 
 ### GATT设备重连后接口调用失败-gattClient对象未及时销毁
-
-**判断依据**
 
 每次重连GATT设备时都会重新创建新的gattClient对象，建立一路新的GATT连接。每次连接关闭后未及时调用[close](js-apis-bluetooth-ble.md#close)接口销毁gattClient对象实例。
 
