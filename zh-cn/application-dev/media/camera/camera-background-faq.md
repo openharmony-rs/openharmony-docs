@@ -18,14 +18,14 @@
 
 2. 第三方应用切后台后，系统相机等其他具有更高权限的应用抢占镜头资源，导致当前应用的镜头不可用。系统会通过CameraInput的[on('error')](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#onerror)（ArkTS）或者[OH_CameraInput_OnError](../../reference/apis-camera-kit/capi-camera-input-h.md#oh_camerainput_onerror)（C/C++）回调通知应用，错误码为[7400109 相机设备被抢占](../../reference/apis-camera-kit/errorcode-camera.md#7400109-相机设备被抢占)（ArkTS）或者[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)里的枚举项CAMERA_DEVICE_PREEMPTED（C/C++）。
 
-3. 第三方应用未注册CameraInput的[on('error')](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#onerror)（ArkTS）或者[OH_CameraInput_RegisterCallback](../../reference/apis-camera-kit/capi-camera-input-h.md#oh_camerainput_registercallback)（C/C++）监听，无法感知镜头被抢占事件。
+3. 第三方应用未注册CameraInput的[on('error')](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#onerror)或者[OH_CameraInput_RegisterCallback](../../reference/apis-camera-kit/capi-camera-input-h.md#oh_camerainput_registercallback)监听，无法感知镜头被抢占事件。
 
 ## 解决措施
 
 1. 第三方应用应监听前后台切换事件（如Ability的onBackground/onForeground），在onBackground中停止会话并释放session、output、input等相关资源，切回前台时在onForeground中重新建立完整流程：创建CameraInput→创建Output→创建Session→beginConfig→addInput→addOutput→commitConfig→start。
 
-2. 注册CameraInput的[on('error')](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#onerror)（ArkTS）或者[OH_CameraInput_RegisterCallback](../../reference/apis-camera-kit/capi-camera-input-h.md#oh_camerainput_registercallback)（C/C++）监听，感知镜头被抢占事件。
+2. 注册CameraInput的[on('error')](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#onerror)或者[OH_CameraInput_RegisterCallback](../../reference/apis-camera-kit/capi-camera-input-h.md#oh_camerainput_registercallback)监听，感知镜头被抢占事件。
 
-3. 收到错误码[7400109 相机设备被抢占](../../reference/apis-camera-kit/errorcode-camera.md#7400109-相机设备被抢占)（ArkTS）或者[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)里的枚举项CAMERA_DEVICE_PREEMPTED（C/C++）时，释放当前会话和CameraInput资源，在切回前台后重新打开镜头。
+3. 收到错误码[7400109 相机设备被抢占](../../reference/apis-camera-kit/errorcode-camera.md#7400109-相机设备被抢占)或者[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)里的枚举项CAMERA_DEVICE_PREEMPTED时，释放当前会话和CameraInput资源，在切回前台后重新打开镜头。
 
 具体代码可参考[拍照实践(ArkTS)](camera-shooting-case.md)。

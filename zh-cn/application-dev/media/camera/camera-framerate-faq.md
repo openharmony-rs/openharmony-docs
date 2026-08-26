@@ -16,9 +16,9 @@
 
 1. [setFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#setframerate12)（ArkTS）或者[OH_PreviewOutput_SetFrameRate](../../reference/apis-camera-kit/capi-preview-output-h.md#oh_previewoutput_setframerate)（C/C++）仅支持在NORMAL_PHOTO或NORMAL_VIDEO模式下调用，在其他模式下调用会返回错误码[7400101 无效入参](../../reference/apis-camera-kit/errorcode-camera.md#7400101-无效入参)（ArkTS）或者[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)里的枚举项CAMERA_INVALID_ARGUMENT（C/C++）。
 
-2. [setFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#setframerate12)（ArkTS）或者[OH_PreviewOutput_SetFrameRate](../../reference/apis-camera-kit/capi-preview-output-h.md#oh_previewoutput_setframerate)（C/C++）在Session尚未完成[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)（ArkTS）或者[OH_CaptureSession_CommitConfig](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)（C/C++）配流时调用。
+2. [setFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#setframerate12)或者[OH_PreviewOutput_SetFrameRate](../../reference/apis-camera-kit/capi-preview-output-h.md#oh_previewoutput_setframerate)在Session尚未完成[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)（ArkTS）或者[OH_CaptureSession_CommitConfig](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)（C/C++）配流时调用。
 
-3. 设置非固定帧率后，再次调用[setFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#setframerate12)（ArkTS）或者[OH_PreviewOutput_SetFrameRate](../../reference/apis-camera-kit/capi-preview-output-h.md#oh_previewoutput_setframerate)（C/C++）重新设置，该操作不被支持。
+3. 设置非固定帧率后，再次调用[setFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#setframerate12)或者[OH_PreviewOutput_SetFrameRate](../../reference/apis-camera-kit/capi-preview-output-h.md#oh_previewoutput_setframerate)重新设置，该操作不被支持。
 
 4. 设置固定帧率后重新设置时，新帧率与已设置帧率之间不满足整除关系，会返回错误码[7400110 与当前配置存在冲突](../../reference/apis-camera-kit/errorcode-camera.md#7400110-与当前配置存在冲突)（ArkTS）或者[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)里的枚举项CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS（C/C++）。
 
@@ -30,9 +30,9 @@
 
 1. 通过[createSession](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createsession11)（ArkTS）或者[OH_CameraManager_CreateCaptureSession](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createcapturesession)（C/C++）创建Session时指定模式为NORMAL_PHOTO或NORMAL_VIDEO。
 
-2. 在Session完成[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)（ArkTS）或者[OH_CaptureSession_CommitConfig](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)（C/C++）之后调用[setFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#setframerate12)（ArkTS）或者[OH_PreviewOutput_SetFrameRate](../../reference/apis-camera-kit/capi-preview-output-h.md#oh_previewoutput_setframerate)（C/C++）设置帧率。
+2. 在Session完成[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)或者[OH_CaptureSession_CommitConfig](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)之后调用[setFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#setframerate12)或者[OH_PreviewOutput_SetFrameRate](../../reference/apis-camera-kit/capi-preview-output-h.md#oh_previewoutput_setframerate)设置帧率。
 
-3. 非固定帧率不支持重复调用[setFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#setframerate12)（ArkTS）或者[OH_PreviewOutput_SetFrameRate](../../reference/apis-camera-kit/capi-preview-output-h.md#oh_previewoutput_setframerate)（C/C++）；对固定帧率重新设置时，新帧率需与已设置帧率满足整除关系，不满足时会返回错误码[7400110 与当前配置存在冲突](../../reference/apis-camera-kit/errorcode-camera.md#7400110-与当前配置存在冲突)（ArkTS）或者[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)里的枚举项CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS（C/C++）。
+3. 非固定帧率不支持重复调用[setFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#setframerate12)或者[OH_PreviewOutput_SetFrameRate](../../reference/apis-camera-kit/capi-preview-output-h.md#oh_previewoutput_setframerate)；对固定帧率重新设置时，新帧率需与已设置帧率满足整除关系，不满足时会返回错误码[7400110 与当前配置存在冲突](../../reference/apis-camera-kit/errorcode-camera.md#7400110-与当前配置存在冲突)或者[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)里的枚举项CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS。
 
 4. 预览流帧率需与录像流帧率保持约束一致。
    - 当录像流为范围帧率时，预览流设置相同范围帧率。
