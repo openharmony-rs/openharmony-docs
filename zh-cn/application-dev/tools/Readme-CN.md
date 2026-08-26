@@ -24,7 +24,7 @@
 - [param工具](param-tool.md)
 - [power-shell工具](power-shell.md)
 <!--Del-->
-- [OpenHarmony SDK 升级助手](openharmony_sdk_upgrade_assistant.md)
+- [OpenHarmony SDK升级助手](openharmony_sdk_upgrade_assistant.md)
 <!--DelEnd-->
 - [atm工具](atm-tool.md)
 - [network-cfg工具](network-cfg.md)
