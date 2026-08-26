@@ -1027,12 +1027,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 let volumeId: string = "";
 let want: Want = {
-  diskName: "MyDisc",
-  burnPath: "/data/storage/el2/base/files/burn_data",
-  isIsoImage: false,
-  burnSpeed: 0,
-  fsType: "ISO9660",
-  isIncBurnSupport: true
+  parameters: {
+    diskName: "MyDisc",
+    burnPath: "/data/storage/el2/base/files/burn_data",
+    isIsoImage: false,
+    burnSpeed: 0,
+    fsType: "ISO9660"
+  }
 };
 volumeManager.burn(volumeId, want).then(() => {
   console.info("burn successfully.");
