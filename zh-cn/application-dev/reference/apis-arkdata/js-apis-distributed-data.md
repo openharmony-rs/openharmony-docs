@@ -3779,28 +3779,23 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 let kvStore;
 const KEY_TEST_SYNC_ELEMENT = 'key_test_sync';
 const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
-// create deviceManager
-deviceManager.createDeviceManager('bundleName', (err, value) => {
-  if (!err) {
-    let deviceIds = ['localdeviceId'];
-    try {
-      kvStore.on('syncComplete', function (data) {
-        console.log('Sync dataChange');
-      });
-      kvStore.put(KEY_TEST_SYNC_ELEMENT + 'testSync101', VALUE_TEST_SYNC_ELEMENT, function (err, data) {
-        if (err != undefined) {
-          console.log("put err: " + JSON.stringify(err));
-          return;
-        }
-        console.log('Succeeded in putting data');
-        const mode = distributedData.SyncMode.PULL_ONLY;
-        kvStore.sync(deviceIds, mode, 1000);
-      });
-    } catch (e) {
-      console.log('Sync e' + e);
+const deviceIds = ['networkId1', 'networkId2'];
+try {
+  kvStore.on('syncComplete', function (data) {
+    console.log('Sync dataChange');
+  });
+  kvStore.put(KEY_TEST_SYNC_ELEMENT + 'testSync101', VALUE_TEST_SYNC_ELEMENT, function (err, data) {
+    if (err != undefined) {
+      console.log("put err: " + JSON.stringify(err));
+      return;
     }
-  }
-});
+    console.log('Succeeded in putting data');
+    const mode = distributedData.SyncMode.PULL_ONLY;
+    kvStore.sync(deviceIds, mode, 1000);
+  });
+} catch (e) {
+  console.log('Sync e' + e);
+}
 ```
 
 ### on('dataChange')<sup>8+</sup>
@@ -5022,7 +5017,6 @@ getResultSize(deviceId: string, query: Query): Promise&lt;number&gt;
 
 获取与指定设备ID和Query对象匹配的结果数，使用Promise异步回调。
 
-
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **参数：**
@@ -5078,7 +5072,6 @@ try {
 removeDeviceData(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 从当前数据库中删除指定设备的数据，使用callback异步回调。
-
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
