@@ -16,4 +16,5 @@
   - [应用适配打开DLP文件(ArkTS)](app-adaptation-for-opening-dlp-files.md)
   - [应用适配打开DLP文件(C/C++)](app-adaptation-for-opening-dlp-files-ndk.md)
   - [企业接入DLP文件适配](enterprise-dlp-file-integration.md)
+  - [识别敏感内容](sensitive-file-identification.md)
 - [Data Protection Kit术语](dlp-glossary.md)
