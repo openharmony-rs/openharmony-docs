@@ -32,7 +32,7 @@
     - [HiCollie](capi-hicollie.md)
     - [HiDebug](capi-hidebug.md)
     - [HiLog](capi-hilog.md)
-    - [Hitrace](capi-hitrace.md)
+    - [HiTrace](capi-hitrace.md)
   - 头文件<!--performance-analysis-headerfile-->
     - [hiappevent.h](capi-hiappevent-h.md)
     - [hiappevent_cfg.h](capi-hiappevent-cfg-h.md)
@@ -68,7 +68,7 @@
     - [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md)
     - [HiTraceId](capi-hitrace-hitraceid.md)
 - 错误码<!--performance-analysis-errcode-->
-  - [Faultlogger错误码](errorcode-faultlogger.md)
+  - [Faultlogger 错误码](errorcode-faultlogger.md)
   - [应用事件打点错误码](errorcode-hiappevent.md)
   - [HiDebug错误码](errorcode-hiviewdfx-hidebug.md)
   - [HiDebug CpuUsage错误码](errorcode-hiviewdfx-hidebug-cpuusage.md)
