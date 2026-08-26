@@ -814,20 +814,6 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **起始版本**: 20
 
-<!--Del-->
-## ohos.permission.atomicService.MANAGE_STORAGE
-
-允许原子化服务申请差异化的存储空间大小。
-
-**权限级别**：system_basic
-
-**授权方式**: 系统授权（system_grant）
-
-**支持设备**: Phone | PC/2in1 | Tablet
-
-**起始版本**: 20
-<!--DelEnd-->
-
 ## ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM
 
 允许应用申请特殊类型长时任务，如在手机上申请计算任务类型的长时任务。
@@ -1421,7 +1407,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **起始版本**：26.0.0
 
 ## ohos.permission.MANAGE_SKILL
-    
+
 允许应用使用skill的能力。
 
 获取该权限后，应用可以：
@@ -1627,43 +1613,43 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **起始版本**：26.1.0
 
 ## ohos.permission.vehicle.MMA_ENERGYREFILL
- 
+
 允许车上应用获取当前车辆的补能状态。
- 
+
 <!--RP104--><!--RP104End-->
- 
+
 **权限级别**：system_basic
- 
+
 **授权方式**：系统授权（system_grant）
- 
+
 **支持设备**：Car
- 
+
 **起始版本**：26.1.0
- 
+
 ## ohos.permission.vehicle.MMA_WEATHER
- 
+
 允许车上应用获取车辆所处环境的实时天气。
- 
+
 <!--RP105--><!--RP105End-->
- 
+
 **权限级别**：system_basic
- 
+
 **授权方式**：系统授权（system_grant）
- 
+
 **支持设备**：Car
- 
+
 **起始版本**：26.1.0
- 
+
 ## ohos.permission.vehicle.MMA_SPATIALACTION
- 
+
 允许车内后排屏上应用调用空间手势接口，完成乘客与屏幕隔空交互。
- 
+
 <!--RP106--><!--RP106End-->
- 
+
 **权限级别**：system_basic
- 
+
 **授权方式**：系统授权（system_grant）
- 
+
 **支持设备**：Car
- 
+
 **起始版本**：26.1.0
