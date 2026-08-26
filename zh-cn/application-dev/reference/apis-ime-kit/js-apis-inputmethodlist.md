@@ -76,6 +76,8 @@ import { InputMethodListDialog } from '@kit.IMEKit';
 
 ## InputMethodListDialog
 
+InputMethodListDialog({controller: CustomDialogController, patternOptions?: PatternOptions})
+
 输入法切换列表弹窗控件。以弹窗形式展示当前系统中已安装的输入法应用列表，支持用户在输入法之间进行切换；对于默认输入法，还提供键盘模式（如单手模式、全屏模式等）的切换入口。
 
 使用场景：当系统应用或输入法应用需要为用户提供可视化的输入法选择和切换功能时使用此控件。例如，在系统设置应用中允许用户选择不同输入法，或在输入法应用中允许用户切换到其他输入法或切换当前输入法的键盘模式。
@@ -89,9 +91,6 @@ import { InputMethodListDialog } from '@kit.IMEKit';
 注意事项：
 - 前提条件：需先创建[CustomDialogController](../apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)实例并关联InputMethodListDialog，再通过controller的open()方法打开弹窗。
 - 本组件不支持通用属性和通用事件。
-
-### 接口
-InputMethodListDialog({controller: CustomDialogController, patternOptions?: PatternOptions})
 
 **装饰器类型：**@CustomDialog
 
