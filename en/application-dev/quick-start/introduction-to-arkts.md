@@ -3,9 +3,10 @@
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao; @cy917474985-->
+<!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=9389b4377843102b8f7fb1d104bdafe9f6f56511 translatedAt=2026-08-26T03:00:32.452Z pushedAt=2026-08-26T04:01:23.705Z -->
 
 Welcome to the tutorial for ArkTS, a TypeScript-based programming language designed specifically to build high-performance mobile applications! ArkTS is optimized to provide better performance and efficiency, while still maintaining the familiar syntax of TypeScript.
 
@@ -13,9 +14,9 @@ Many current programming languages were not designed with mobile devices in mind
 
 ArkTS is based on the popular programming language TypeScript that extends JavaScript by adding type definitions. TypeScript is well-loved by many developers as it provides a more structured approach to coding in JavaScript. ArkTS aims to keep the look and feel of TypeScript to enable a seamless transition for the existing TypeScript developers, and to let mobile developers learn ArkTS quickly.
 
-One of the key features of ArkTS is its focus on low runtime overhead. ArkTS imposes stricter limitations on the TypeScript's dynamically typed features, reducing runtime overhead and allowing faster execution. By eliminating the dynamically typed features from the language, ArkTS code can be compiled ahead-of-time more efficiently, resulting in faster application startup and lower power consumption.
+One of the key features of ArkTS is its focus on low runtime overhead. ArkTS imposes stricter limitations on TypeScript's dynamically typed features, reducing runtime overhead and allowing faster execution. By eliminating the dynamically typed features from the language, ArkTS code can be compiled ahead-of-time more efficiently, resulting in faster application startup and lower power consumption.
 
-Interoperability with TypeScript and JavaScript was a critical consideration in the ArkTS language design. Many mobile application developers already have TypeScript and JavaScript code and libraries they would want to reuse. ArkTS has been designed for seamless JavaScript interoperability, making it easy for the developers to integrate the JavaScript code into their applications and vice versa. This will allow the developers to use their existing codebases and libraries to leverage the power of our new language.
+Interoperability with TypeScript and JavaScript was a critical consideration in the ArkTS language design. Many mobile application developers already have TypeScript and JavaScript code and libraries they would want to reuse. ArkTS has been designed for seamless TypeScript and JavaScript interoperability, making it easy for developers to integrate TypeScript and JavaScript code into their applications. This will allow the developers to use their existing codebases and libraries to leverage the power of our new language.
 
 This tutorial will guide you through the core features, syntax, and best practices of ArkTS. After reading this tutorial through the end, you will be able to build performant and efficient mobile applications in ArkTS.
 
@@ -114,7 +115,7 @@ function factorial(n: number): number {
   factorial(n4) // 9900
 ```
 
-The number type tends to lose precision when it represents very large integers (ranging from -9007199254740991 to 9007199254740991). You can use **bigint** to ensure the precision as required.
+The `number` type loses precision when representing large integers (that is, values beyond the range from `Number.MIN_SAFE_INTEGER` (-9007199254740991) to `Number.MAX_SAFE_INTEGER` (9007199254740991)). During development, you can use the `bigint` type as needed to ensure precision:
 
 <!-- @[big_int_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->  
 
@@ -160,7 +161,7 @@ let s3 = `The result is ${a}`;
 
 The void type is used to specify that a function does not return a value.
 
-This type has the only one value which is also void. As void is a reference type, it can be used as type argument for generic types.
+This type has only one value, which is also `void`. `void` can be used as a generic type parameter.
 
 <!-- @[generic_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
@@ -185,7 +186,7 @@ let o2: Object = ['a', 'b'];
 let o3: Object = 1;
 let o4: object = [1, 2, 3];
 ```
- 
+
 **Array type**
 
 An array is an object comprised of elements of data types assignable to the element type specified in the array declaration.
@@ -254,7 +255,7 @@ animal = 'dog';
 animal = undefined;
 // One may assign the variable of the union type with any valid value.
 ```
- 
+
 There are different mechanisms to get a value of a particular type from a union.
 
 Example:
@@ -329,8 +330,8 @@ Compound assignment operators are as follows: **+=**, **-=**, ***=**, **/=**, **
 | -------- | ------------------------------------------------------------ |
 | `===`    | Returns **true** if both operands are strict equal. (Operands of different types are considered unequal.)|
 | `!==`    | Returns **true** if both operands are not strict equal. (Operands of different types are considered unequal.)|
-| `==`     | Returns **true** if both operands are equal.|
-| `!=`     | Returns **true** if both operands are not equal.   |
+| `==`     | Returns `true` if the two operands are equal. It is recommended that you use `===` instead. |
+| `!=`     | Returns `true` if the two operands are not equal. It is recommended that you use `!==` instead.    |
 | `>`      | Returns **true** if the left operand is greater than the right.|
 | `>=`     | Returns **true** if the left operand is greater than or equal to the right.|
 | `<`      | Returns **true** if the left operand is less than the right.   |
@@ -441,12 +442,12 @@ All conditional expressions must be of any type. For types other than Boolean, i
 ``` TypeScript
 let s1 = 'Hello';
 if (s1) {
-  console.info(s1); // Print "Hello"
+  console.info(s1); // Print "Hello".
 }
 
 let s2 = 'World';
 if (s2.length != 0) {
-  console.info(s2); // Print "World"
+  console.info(s2); // Print "World".
 }
 ```
 
@@ -460,13 +461,13 @@ A **switch** statement is as follows.
 
 ``` TypeScript
 switch (expression) {
-  case label1: // Execute if label1 is matched.
+  case label1: // Execute if label1 matches.
     // ...
     // Statement 1
     // ...
     break; // Can be omitted.
   case label2:
-  case label3: // Execute if label2 or label3 is matched.
+  case label3: // Execute if label2 or label3 matches.
     // ...
     // Statement 23
     // ...
@@ -671,7 +672,7 @@ for (let x = 0; x < 100; x++) {
   sum += x;
 }
 ```
- 
+
 **throw and try statements**
 
 A **throw** statement is used to throw an exception or an error:
@@ -688,6 +689,7 @@ A **try** statement is used to catch and handle an exception or an error:
 
 ``` TypeScript
 try {
+  // Statement block where an exception may occur
   // ...
 } catch (e) {
   // Handle the exception.
@@ -1075,8 +1077,8 @@ class Person {
   }
   
   getName(): string {
-    // Return type "string" hides the fact that name can be "undefined".
-    // A more appropriate approach is to annotate the return type as "string | undefined" to inform users of all possible return values of this API.
+    // The developer uses "string" as the return type, which hides the fact that name may be "undefined".
+    // A better approach is to annotate the return type as "string | undefined" to tell developers all possible return values of this API.
     return this.name;
   }
 }
@@ -1107,7 +1109,7 @@ class Person3 {
 
 let jack = new Person3();
 // Assume that no value is assigned to name, that is, "jack.setName('Jack')" is not called.
-jack.getName().length; // 0, no runtime error.
+jack.getName().length; // 0, no runtime exception occurs
 ```
 
 The following shows how our code behaves if the field **name** can be **undefined**:
@@ -1169,7 +1171,7 @@ A class can define a **getter** or a **setter**.
 
 ### Method
 
-A method is a function that belongs to a class. A class can define instance methods, static methods or both. A static method belongs to the class itself, and can have access to static fields only. A **while** instance method has access to both static (class) fields and instance fields including private ones of its class.
+A method is a function that belongs to a class. A class can define instance methods, static methods or both. A static method belongs to the class itself, and can have access to static fields only. An instance method has access to both static (class) fields and instance fields including private ones of its class.
 
 **Instance method**
 
@@ -1204,7 +1206,7 @@ square.calculateArea(); // Output: 100
 
 **Static method**
 
-The keyword **static** is used to declare a method as static. A static method belongs to the class itself and have access to static fields only.
+The keyword **static** is used to declare a method as static. A static method belongs to the class itself and has access to static fields only.
 
 A static method defines a common behavior of the class as a whole.
 
@@ -1232,7 +1234,7 @@ class [extends BaseClassName] [implements listOfInterfaces] {
 }
 ```
 
-An inheritance class extends the fields and methods of the base class, but does not extend the constructor. An inheritance class allows you to define new fields and methods or override the methods defined by the base class.
+An derived class inherits the fields and methods of the base class, but does not inherit the constructor. An inheritance class can define new fields and methods or override the methods defined by the base class.
 
 The class that is being extended by another class is called 'base class', 'parent class', or 'superclass'. The class that extends another class is called 'extended class', 'derived class', or 'child class'.
 
@@ -1583,7 +1585,7 @@ Only abstract classes can have abstract methods. A compile-time error occurs if 
 
 ```typescript
 class Y {
-  abstract method(p: string)  // Compile-time error: Abstract methods can only appear within an abstract class.
+  abstract method(p: string)  // Compile-time error: abstract methods can only be within abstract classes.
 }
 ```
 
@@ -1684,7 +1686,7 @@ class StyledRectangle implements Style {
   set color(x: string) { this._color = x; }
 }
 ```
- 
+
 ### Interface Inheritance
 
 An interface may extend other interfaces, as shown in the example below:
@@ -1824,10 +1826,10 @@ function last(x: number[]): number {
 
 If the same function needs to be defined for any array, then define it as a generic with a type parameter:
 
-<!-- @[generic_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->   
+<!-- @[generic_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericArray.ets) -->   
 
 ``` TypeScript
-function last1<T>(x: T[]): T {
+function last<T>(x: T[]): T {
   return x[x.length - 1];
 }
 ```
@@ -2038,7 +2040,7 @@ An import binding of the form *** as A** binds the name **A**, and all entities 
 <!-- @[module_import_as](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
 
 ``` TypeScript
-import * as Utils from './utils';
+import * as Utils from './Utils';
 // ...
 Utils.X // Denote X from Utils.
 Utils.Y // Denote Y from Utils.
@@ -2049,16 +2051,16 @@ An import binding of the form **{ ident1, ..., identN }** binds an exported enti
 <!-- @[module_import_ident](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
 
 ``` TypeScript
-import { X, Y } from './utils';
+import { X, Y } from './Utils';
 // ...
-X // Denote X from utils.
-Y // Denote Y from utils.
+X // Indicates X from Utils.
+Y // Indicates Y from Utils.
 ```
 
 If a list of identifiers contains an alias in the form **ident as alias**, the entity **ident** is bound under the name **alias**:
 
 ```typescript
-import { X as Z, Y } from './utils';
+import { X as Z, Y } from './Utils';
 Z // Denote X from Utils.
 Y // Denote Y from Utils.
 X // Compile-time error: 'X' is invisible.
@@ -2115,7 +2117,7 @@ Then dynamic import can be like this:
 
 ``` TypeScript
 async function test() {
-  let ns = await import('./say');
+  let ns = await import('./Say');
   let hi = ns.hi;
   let bye = ns.bye;
   hi();
@@ -2189,7 +2191,7 @@ The declaration and usage of annotations are as follows.
 ``` TypeScript
 // Declaration of an annotation:
 @interface ClassAuthor {
-  authorName: string
+  authorName: string;
 }
 
 // Usage of an annotation:
@@ -2204,10 +2206,9 @@ class MyClass {
 - The annotation must be placed before the declaration.
 - The annotation can contain the parameters shown in the preceding example.
 
-The name of the annotation to be used must be prefixed with the **@** symbol (for example, **@MyAnno**). No space or line separator is allowed between the **@** symbol and the name.
+To use an annotation, its name must be prefixed with the symbol `@` (for example, @MyAnno).
 ```typescript
 ClassAuthor({authorName: "Bob"}) // Compile-time error: The annotation must be prefixed with the @ symbol.
-@ ClassAuthor({authorName: "Bob"}) // Compile-time error: No space or line separator is allowed between the @ symbol and the name.
 ```
 If the annotation name cannot be accessed, a compile-time error occurs.
 
@@ -2559,7 +2560,7 @@ When a compiler automatically generates .d.ets files based on ETS code, the foll
 1. When the annotation definition is exported, the annotation definition in the source code is retained in the .d.ets file.
 
    <!-- @[annotation_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->   
-   
+
    ``` TypeScript
    // MyAnno.ets
    export @interface ClassAuthor5 {}
@@ -2568,9 +2569,9 @@ When a compiler automatically generates .d.ets files based on ETS code, the foll
      data: number;
    }
    ```
-   
+
    <!-- @[annotation_export_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) --> 
-   
+
    ``` TypeScript
    // NameAnno.d.ets
    export declare @interface ClassAuthor3 {}
@@ -2581,7 +2582,7 @@ When a compiler automatically generates .d.ets files based on ETS code, the foll
   2.2 If the entity is a class, the class is exported.<br>
   2.3 If the entity is a method, the class is exported, and the method is not private.
    <!-- @[annotation_export_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) --> 
-   
+
    ``` TypeScript
    // MyAnno.ets
    import { ClassAuthor4 } from './Author';
@@ -2602,7 +2603,7 @@ When a compiler automatically generates .d.ets files based on ETS code, the foll
 
 
   <!-- @[annotation_export_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->  
-  
+
   ``` TypeScript
   // Declaration file generated by the NameAnno.d.ets compiler
   import { ClassAuthor4 } from './Author';
@@ -2619,7 +2620,7 @@ When a compiler automatically generates .d.ets files based on ETS code, the foll
     bar; // Annotations are not retained for private methods.
   }
   ```
-  
+
 
 **.d.ets file generated by the developer**<br>
 The annotation information in the .d.ets file generated by you is not automatically applied to the implemented source code.<br>
@@ -2656,7 +2657,7 @@ In the final build product, **class C** does not have annotations.
 The same annotation cannot be used repeatedly for the same entity. Otherwise, a compile-time error occurs.
 ```typescript
 @MyAnno({name: "123", value: 456})
-@MyAnno({name: "321", value: 654}) // Compile-time error: Duplicate annotations are not allowed.
+@MyAnno({name: "321", value: 654}) // Compilation error: duplicate annotations are not allowed.
 class C {
   // ...
 }
@@ -2678,7 +2679,7 @@ Starting from API version 24, custom source-level annotations are supported.
 
 A source-level annotation is a special type of annotation whose lifecycle exists only during compilation and does not affect compilation artifacts.
 
-You can use the [Retention API](../reference/apis-arkts/js-apis-arkts-lang.md#retention24) provided by ArkTS to define custom source-level annotations. Source-level annotations support a wider range of usage scenarios and can be applied to the following declarations:
+You can use the [Retention](../reference/apis-arkts/js-apis-arkts-lang.md#retention24) API provided by ArkTS to construct a custom source-state annotation. A source-state annotation has a broader scope of use and can be applied to the following declarations:
 - Class
 - Class member (excluding constructors)
 - Variable declaration
@@ -2748,5 +2749,3 @@ This section demonstrates the mechanism provided by ArkTS for creating GUIs. Ark
 [MVVM sample code](../ui/state-management/arkts-mvvm.md#sample-code) provides a complete ArkUI-based application to demonstrate its GUI programming features.
 
 For more details about ArkUI features, see [Basic Syntax Overview](../ui/state-management/arkts-basic-syntax-overview.md).
-
-<!--no_check-->

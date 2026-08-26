@@ -1,12 +1,11 @@
 # Creating and Obtaining Values Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:34:56.056Z pushedAt=2026-08-12T11:01:45.750Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-08-26T02:58:08.022Z pushedAt=2026-08-26T03:41:18.454Z -->
 
 ## Introduction
 
@@ -17,9 +16,7 @@ In JavaScript (JS), the integer type represents a number without a decimal point
 Before using JSVM-API to create and obtain numbers, you need to understand the following concepts:
 
 - Number type<br>When using JSVM-API, you may need to convert values of number types between C and JS. When converting the data, pay attention to the data range, signedness (signed or unsigned), and precision (single or double precision).
-
 - Error handling<br>You also need to use JSVM-API to capture and handle errors that may occur during the conversion. For example, when an integer is created, you may need to capture and handle memory allocation failures or other runtime errors.
-
 - Interaction between JS and JSVM-API<br>During the development, you need to consider the interaction between JS and JSVM-API, including how to pass the data of the number type and return the correct value.
 
 ## Available APIs
@@ -41,7 +38,7 @@ If you are just starting out with JSVM-API, see [JSVM-API Development Process](u
 
 ### OH_JSVM_GetValueUint32
 
-Use **OH_JSVM_GetValueInt32** to obtain a C uint32 value from a JS value.
+Use **OH_JSVM_GetValueUint32** to obtain a C uint32 value from a JS value.
 
 CPP code:
 
@@ -109,15 +106,15 @@ CPP code:
 // ...
 
 
-// Sample method for OH_JSVM_GetValueInt32
+// Sample method for OH_JSVM_GetValueInt32.
 static JSVM_Value GetValueInt32(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     int32_t result32 = 0;
-    // Parse the passed parameter.
+    // Parse the passed parameters.
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
-    // Convert the parameter passed from the frontend to the int32 type in the JSVM module.
+    // Convert the parameter passed from the frontend to the int32 type of the JSVM module.
     JSVM_Status status = OH_JSVM_GetValueInt32(env, args[0], &result32);
     if (status != JSVM_OK) {
         OH_LOG_ERROR(LOG_APP, "JSVM GetValueInt32 fail");
@@ -128,17 +125,17 @@ static JSVM_Value GetValueInt32(JSVM_Env env, JSVM_CallbackInfo info)
     return args[0];
 }
 
-// GetValueInt32 registration callback
+// Register the GetValueInt32 callback.
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetValueInt32},
 };
 static JSVM_CallbackStruct *method = param;
-// GetValueInt32 method alias for JS invocation
+// Alias of the GetValueInt32 method, for JS to call.
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getValueInt32", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
-// Sample test JS
+// Sample test JS.
 const char* SRC_CALL_NATIVE = R"JS(getValueInt32(-123))JS";
 ```
 
