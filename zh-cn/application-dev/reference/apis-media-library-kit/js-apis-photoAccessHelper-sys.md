@@ -10449,7 +10449,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 constructor(album: Album)
 
-构造函数。
+构造函数，创建时刻相册对象。
 
 **系统接口**：此接口为系统接口。
 
@@ -10820,7 +10820,7 @@ async function example(context: Context) {
 
 constructor(album: Album)
 
-构造函数。
+构造函数，创建智慧相册变更请求对象。
 
 **系统接口**：此接口为系统接口。
 
@@ -10834,7 +10834,7 @@ constructor(album: Album)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -11184,7 +11184,7 @@ async function example(context: Context) {
 
 constructor(album: Album)
 
-构造函数。
+构造函数，创建时刻相册变更请求对象。
 
 **系统接口**：此接口为系统接口。
 
@@ -11305,7 +11305,7 @@ async function example(context: Context) {
 
 constructor(album: Album)
 
-构造函数。
+构造函数，创建智慧相册对象。
 
 **系统接口**：此接口为系统接口。
 
@@ -11319,7 +11319,7 @@ constructor(album: Album)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
