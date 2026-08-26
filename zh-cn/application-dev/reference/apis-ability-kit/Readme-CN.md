@@ -180,6 +180,7 @@
       - [AutoFillType](js-apis-inner-application-autoFillType.md)
       - [AutoFillTriggerType](js-apis-inner-application-autoFillTriggerType.md)
       - [BaseContext](js-apis-inner-application-baseContext.md)
+      - [ChildProcessInformation](js-apis-inner-application-childProcessRunningInfo.md)
       - [Context (Stage模型的上下文基类)](js-apis-inner-application-context.md)
       - [EmbeddableUIAbilityContext](js-apis-inner-application-EmbeddableUIAbilityContext.md)
       - [ErrorObserver](js-apis-inner-application-errorObserver.md)
