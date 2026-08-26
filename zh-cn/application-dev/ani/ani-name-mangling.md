@@ -76,9 +76,10 @@ Object_CallMethodByName_Int(obj, "toInt", "C{std.core.String}:i", &result);
 | `bigint`                     | `C{std.core.BigInt}`         | std.core标准库类型          |
 | `Array`                      | `C{std.core.Array}`          | std.core标准库类型          |
 | `Partial<T>`                 | `P{RuntimeName}`             | Partial类型                 |
-| `FixedArray<double>`         | `A{d}`                       | 定长数组，元素用类型编码表示 |
-| `()=>void`                   | `C{std.core.Function0}`      | 函数对象，数字为必需参数个数 |
-| `(...args: double[])=>void`  | `C{std.core.FunctionR0}`     | 带剩余参数的函数对象         |
+| `ValueArray<double>`         | `A{d}`                       | 基本类型元素定长数组，元素用类型编码表示 |
+| `FixedArray<double>`         | `A{C{std.core.Double}}`      | 引用类型元素定长数组，元素装箱为对应类类型 |
+| `() => void`                 | `C{std.core.Function0}`      | 函数对象，数字为必需参数个数 |
+| `(...args: double[]) => void`| `C{std.core.FunctionR0}`     | 带剩余参数的函数对象         |
 
 ### 数组类型
 
@@ -92,8 +93,8 @@ function foo(a: string[], b: Array<Int>): void  // "C{std.core.Array}C{std.core.
 
 | ArkTS数组 | Mangling |
 |-------------------------------|-------------------------|
-| `FixedArray<int>`             | `A{i}`                  |
-| `FixedArray<FixedArray<int>>` | `A{A{i}}`               |
+| `ValueArray<int>`             | `A{i}`                  |
+| `FixedArray<ValueArray<int>>` | `A{A{i}}`               |
 | `FixedArray<String>`          | `A{C{std.core.String}}` |
 
 ---
@@ -146,7 +147,7 @@ const char *T3 = "X{A{X{C{app.I1}C{app.I2}}}C{std.core.Array}C{app.I1}C{app.I2}}
     - 如果没有参数，参数部分可以省略。
 
 3. **对象格式**
-    - 格式：`C{<模块>.<类>}`
+    - 格式：`C{<模块>.<命名空间>.<类>}`
     - 如果没有显式声明模块名，默认模块名是文件名。
 
 4. **定长数组格式**

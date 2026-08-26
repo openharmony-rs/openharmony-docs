@@ -8,7 +8,7 @@
 
 - [ANI入门与开发调试](ani-introduction.md)
 - ETS与native绑定<!--ets-native-binding-->
-    - [loadLibrary的使用](load-library.md)
+    - [使用loadLibrary加载native库](load-library.md)
     - [名称修饰符（Mangling）规则](ani-name-mangling.md)
 - 类型处理<!--type-handling-->
     - [类型定义](ani-type-definition.md)
@@ -20,7 +20,7 @@
     - [对象创建](ani-object-creation.md)
     - [接口和类](ani-interface-and-class.md)
     - [可变长度数组：Array\<T\>和T\[\]](ani-array.md)
-    - [定长数组](ani-fixed-array.md)
+    - [定长数组：FixedArray\<T\>和ValueArray\<T\>](ani-value-array-and-fixed-array.md)
     - [ArrayBuffer](ani-arraybuffer.md)
     - [枚举](ani-enum.md)
     - [其余容器类的使用](ani-container-class.md)
@@ -30,6 +30,6 @@
     - [生命周期管理](ani-lifecycle-management.md)
     - [多线程](ani-multithreading.md)
 - 诊断优化<!--diagnostics-optimization-->
-    - [Native调用优化注解](ani-native-call-optimization.md)
+    - [Native调用性能优化注解](ani-native-call-optimization.md)
     - [错误码分析](ani-error-code-analysis.md)
     - [常见问题解答（FAQ）](ani-faq.md)
