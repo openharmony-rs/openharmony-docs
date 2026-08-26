@@ -4318,7 +4318,7 @@ try {
 
 getRecoverableApplicationInfo(): Promise\<Array\<RecoverableApplicationInfo\>\>
 
-获取所有可恢复的预置应用信息。使用Promise异步回调。
+获取所有可恢复的预置应用信息。使用Promise异步回调。接口调用失败时可能返回空数组，需校验返回值后使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4414,7 +4414,7 @@ try {
 
 getAllPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationInfo\>\>
 
-获取所有预置应用信息。使用Promise异步回调。
+获取所有预置应用信息。使用Promise异步回调。接口调用失败时可能返回空数组，需校验返回值后使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4641,7 +4641,7 @@ try {
 
 getDeveloperIds(appDistributionType?: number): Array\<string>
 
-根据给定的应用[appDistributionType](#appdistributiontype12)获取当前用户下的所有开发者ID列表。
+根据给定的应用[appDistributionType](#appdistributiontype12)获取当前用户下的所有开发者ID列表。接口调用失败时可能返回空数组，需校验返回值后使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4739,7 +4739,7 @@ try {
 
 getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Array\<PluginBundleInfo>>
 
-根据给定的hostBundleName和userId获取所有的PluginBundleInfo。使用Promise异步回调。
+根据给定的hostBundleName和userId获取所有的PluginBundleInfo。使用Promise异步回调。接口调用失败时可能返回空数组，需校验返回值后使用。
 
 **系统接口：** 此接口为系统接口。
 
