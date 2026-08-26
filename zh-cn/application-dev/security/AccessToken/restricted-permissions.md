@@ -814,20 +814,6 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **起始版本**: 20
 
-<!--Del-->
-## ohos.permission.atomicService.MANAGE_STORAGE
-
-允许原子化服务申请差异化的存储空间大小。
-
-**权限级别**：system_basic
-
-**授权方式**: 系统授权（system_grant）
-
-**支持设备**: Phone | PC/2in1 | Tablet
-
-**起始版本**: 20
-<!--DelEnd-->
-
 ## ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM
 
 允许应用申请特殊类型长时任务，如在手机上申请计算任务类型的长时任务。
@@ -1311,7 +1297,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **起始版本**：26.0.0
 
 ## ohos.permission.MANAGE_SKILL
-    
+
 允许应用使用skill的能力。
 
 获取该权限后，应用可以：
