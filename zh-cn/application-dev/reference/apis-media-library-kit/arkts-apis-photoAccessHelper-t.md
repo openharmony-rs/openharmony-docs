@@ -6,7 +6,6 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Types模块定义了照片资产管理中使用的核心数据类型，包括成员类型（MemberType）、文件属性参数类型（PhotoAssetParams）和操作值类型（OperationValueType）。这些类型为开发者提供了灵活的类型定义，支持对照片资产进行属性读取、查询条件构建等操作，适用于需要在应用中处理照片资产元数据的场景。
 
 > **说明：**
 >
@@ -38,7 +37,7 @@ type PhotoAssetParams = Record\<string, MemberType\>[]
 
 | 类型 | 说明 |
 | ---- | ---- |
-| Record\<string, [MemberType](#membertype10)\>[] | 文件属性名称及其值的Record类型数组。 |
+| Record\<string, [MemberType](#membertype)\>[] | 文件属性名称及其值的Record类型数组。 |
 
 ## OperationValueType<sup>22+</sup>
 

@@ -140,7 +140,7 @@ async function openBindSheet02() {
 
 select(callback: AsyncCallback&lt;PhotoSelectResult&gt;) : void
 
-通过选择模式拉起PhotoPicker界面，用户可以选择一个或多个图片/视频。接口采用callback异步返回形式，返回PhotoSelectResult对象。默认选择媒体文件类型为图片和视频类型，默认选择媒体文件数量的最大值为50。
+通过选择模式拉起PhotoPicker界面，用户可以选择一个或多个图片/视频。接口采用callback异步返回形式，返回PhotoSelectResult对象。
 
 > **注意：**
 >

@@ -1125,7 +1125,7 @@ createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Pr
 
 > **说明：**
 >
-> 与createAssetWithShortTermPermissionEx的区别：本接口使用PhotoCreationConfig配置；createAssetWithShortTermPermissionEx使用CreationSetting配置。
+> - 与createAssetWithShortTermPermissionEx的区别：本接口使用PhotoCreationConfig配置；createAssetWithShortTermPermissionEx使用CreationSetting配置。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1203,7 +1203,7 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&
 
 > **说明：**
 >
-> - 与createAssetWithShortTermPermission的区别：本接口使用CreationSetting配置，前者使用PhotoCreationConfig配置。请开发者根据需要选择使用。
+> - 与createAssetWithShortTermPermission的区别：本接口使用CreationSetting配置，前者使用PhotoCreationConfig配置。
 > - 用户同意保存后，接口将返回已创建并授予保存权限的URI，应用可使用该URI写入图片/视频。
 > - 在用户同意后的5分钟内，若同一应用再次调用此接口，系统将无需弹框确认，直接返回已授权的URI，供应用保存图片/视频。退出应用会结束授权，再次进入需要重新弹出弹框进行确认授权。
 
@@ -1242,7 +1242,7 @@ requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Arr
 
 > **说明：**
 >
-> 与requestPhotoUrisReadPermissionEx的区别：本接口仅返回已授权的URI列表；requestPhotoUrisReadPermissionEx返回RequestReadPermissionResult，包含已授权URI列表和无效URI列表，便于开发者识别哪些URI无效。建议API版本23优先使用requestPhotoUrisReadPermissionEx以获得更完整的授权结果。
+> - 与requestPhotoUrisReadPermissionEx的区别：本接口仅返回已授权的URI列表；requestPhotoUrisReadPermissionEx返回RequestReadPermissionResult，包含已授权URI列表和无效URI列表，便于开发者识别哪些URI无效。建议API版本23优先使用requestPhotoUrisReadPermissionEx以获得更完整的授权结果。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
