@@ -3734,7 +3734,7 @@ struct StyledStringAppend {
 
   aboutToAppear() {
     // Append the initial paragraph content and set the paragraph indentation and line height.
-    let str1: string = '\nFirst paragraph:'
+    let str1: string = '\nFirst paragraph: '
     let str2: string = 'The styled string supports paragraph style caching. Click the button below to append a new paragraph and verify the paragraph caching effect.'
     let paragraph1: StyledString =
       new StyledString(str1 + str2, [{
@@ -3788,8 +3788,8 @@ struct StyledStringAppend {
         .onClick(() => {
           this.index++;
           // Append a new paragraph. Each paragraph has a paragraph indentation style, triggering the backend paragraph cache.
-          let str1: string = '\nParagraph' + this.index + ' : '
-          let str2: string ='is the appended text content, which is used to verify the paragraph cache mechanism.'
+          let str1: string = '\nParagraph ' + this.index + ': '
+          let str2: string ='This is the appended text content, which is used to verify the paragraph cache mechanism.'
           let newParagraph: StyledString = new StyledString(
             str1 + str2,
             [{
@@ -4020,3 +4020,4 @@ struct Utf16GlyphHighlightPage {
 The display effect may vary depending on the device sizes and is for reference only.
 
 ![textUtf16GlyphHighlight](figures/textUtf16GlyphHighlight.gif)
+
