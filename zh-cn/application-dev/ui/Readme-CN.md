@@ -197,7 +197,7 @@
     - [沉浸光感简介](arkts-immersive-light-sense-overview.md)
     - [沉浸光感开发指导](arkts-immersive-light-sense-development.md)
       - [开启沉浸光感](arkts-immersive-light-sense-enable.md)
-      - [定制沉浸式系统材质效果](arkts-immersive-light-sense-common-capability.md)
+      - [沉浸式系统材质视效](arkts-immersive-light-sense-common-capability.md)
     - [沉浸光感功耗优化](arkts-immersive-light-sense-constraints.md)
     - [沉浸光感兼容性适配](arkts-immersive-light-sense-compatibility.md)
   - 几何图形绘制<!--arkts-draw-graphics-->

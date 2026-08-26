@@ -145,7 +145,7 @@ new uiMaterial.ImmersiveMaterial({
 
 **可能原因**
 
-当沉浸式系统材质的[applyShadow](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数为true（默认值）时，沉浸式系统材质中的阴影效果固定生效，优先于[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性，此时自定义的shadow设置不会生效；当该参数为false时，[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性生效，沉浸式系统材质的阴影效果不生效。
+当沉浸式系统材质的[applyShadow](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数为true（默认值）时，材质中的阴影效果固定生效，优先于[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性，此时自定义的shadow设置不会生效；当该参数为false时，[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性生效，材质的阴影效果不生效。
 
 **解决措施**
 
