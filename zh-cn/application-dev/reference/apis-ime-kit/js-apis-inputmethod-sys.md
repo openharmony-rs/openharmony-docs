@@ -1383,32 +1383,6 @@ try {
 }
 ```
 
-## ImeChangeWithUserIdCallback
-
-ArkTS-Dyn: type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: number) => void
-
-ArkTS-Sta: type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: int) => void
-
-输入法变更事件回调，携带发生输入法变更的用户ID。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名                    | 类型                                                         | 必填 | 说明             |
-| ------------------------- | ------------------------------------------------------------ | ---- | ---------------- |
-| inputMethodProperty | [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 是   | 当前输入法的属性。 |
-| inputMethodSubtype | [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | 是   | 当前输入法的子类型。 |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 输入法发生变化的用户ID。 |
-
 ### onImeChangeWithUserId
 
 onImeChangeWithUserId(callback: ImeChangeWithUserIdCallback): void
@@ -1504,6 +1478,32 @@ offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 ```ts
 inputMethod.getSetting().offImeChangeWithUserId();
 ```
+
+## ImeChangeWithUserIdCallback
+
+ArkTS-Dyn: type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: number) => void
+
+ArkTS-Sta: type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: int) => void
+
+输入法变更事件回调，携带发生输入法变更的用户ID。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名                    | 类型                                                         | 必填 | 说明             |
+| ------------------------- | ------------------------------------------------------------ | ---- | ---------------- |
+| inputMethodProperty | [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 是   | 当前输入法的属性。 |
+| inputMethodSubtype | [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | 是   | 当前输入法的子类型。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 输入法发生变化的用户ID。 |
 
 ## InputWindowInfo
 
