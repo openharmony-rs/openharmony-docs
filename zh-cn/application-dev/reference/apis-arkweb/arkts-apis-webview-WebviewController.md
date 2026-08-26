@@ -4836,7 +4836,7 @@ prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>, prefetchOptions
 | ------------------| --------------------------------| ---- | ------------- |
 | url               | string                          | 是    | 预加载的URL。|
 | additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否    | URL的附加HTTP请求头。<br>默认值： [] |
-| prefetchOptions | [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md) | 否    | 用来自定义预取行为的相关选项。 <br>两次预取间的最小时间间隔为500ms，默认不忽略响应头中的Cache-Control: no-store。|
+| prefetchOptions | [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md) | 否    | 用来自定义预取行为的相关选项。 <br>两次预取间默认的最小时间间隔为500ms，默认不忽略响应头中的Cache-Control: no-store。|
 
 **错误码：**
 

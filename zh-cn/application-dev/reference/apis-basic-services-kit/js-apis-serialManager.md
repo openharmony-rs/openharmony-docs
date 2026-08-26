@@ -10,15 +10,7 @@
 本模块主要用于管理串口设备的访问和通信，提供打开和关闭设备、读写数据、配置参数、权限管理等功能，解决了应用与串口设备通信时的权限申请、设备配置、数据传输等问题，使用该模块可以简化串口设备访问流程，提高开发效率。
 
 **典型使用流程：**
-```mermaid
-graph LR
-    A[调用getPortList获取串口列表] --> B[调用requestSerialRight请求权限]
-    B --> C[调用open打开串口]
-    C --> D[调用getAttribute/setAttribute配置串口参数（可选）]
-    D --> E[调用read/write或readSync/writeSync进行数据读写]
-    E --> F[调用close关闭串口]
-    F --> G[如需移除权限，调用cancelSerialRight]
-```
+![SerialManager](../figures/SerialManager.png)
 
 **使用场景**：
 - **嵌入式设备通信**：与各类嵌入式设备进行数据交互，如传感器数据采集、设备状态监控等
@@ -119,7 +111,7 @@ import { serialManager } from '@kit.BasicServicesKit';
 // 获取串口列表
 function hasSerialRightExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
-  console.info('portList: '+ JSON.stringify(portList));
+  console.info('portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('portList is empty');
     return;
@@ -307,6 +299,7 @@ getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
 
+
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
 **参数：**
@@ -409,6 +402,7 @@ setAttribute(portId: number, attribute: SerialAttribute): void
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
+
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -950,6 +944,7 @@ close(portId: number): void
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
 
+
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
 **参数：**
@@ -1095,7 +1090,7 @@ async function cancelSerialRightExample() {
   // 取消已经授予的权限
   try {
     serialManager.cancelSerialRight(portId);
-    console.info('cancelSerialRight success, portId: '+ portId);
+    console.info('cancelSerialRight success, portId: ' + portId);
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to cancel serial right. Code: ${err.code}, message: ${err.message}`);

@@ -3663,6 +3663,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let inputMethodProperty: inputMethod.InputMethodProperty = {
   name: 'com.example.keyboard',
   id: 'propertyId',
+  packageName: 'com.example.keyboard',
+  methodId: 'propertyId'
 }
 let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
 
@@ -3715,6 +3717,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let inputMethodProperty: inputMethod.InputMethodProperty = {
   name: 'com.example.keyboard',
   id: 'propertyId',
+  packageName: 'com.example.keyboard',
+  methodId: 'propertyId'
 }
 let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
 

@@ -126,7 +126,7 @@ hdc -t connect-key shell echo "Hello world"
 | [-s](#远程连接场景) | 可选参数，指定客户端连接服务器时，服务进程的网络监听参数，格式为IP:port。 |
 | [-p](#快速执行命令) | 可选参数，绕过对服务进程的查询步骤，用于快速执行客户端命令。 |
 | [-m](#前台启动服务) | 可选参数，使用前台启动模式启动服务进程。 |
-| [-e](#创建正向端口转发任务) | 可选参数，指定在TCP端口转发时，本地监听的IP地址，默认是127.0.0.1。该参数必须和-m一起使用。<br/>使用-e参数指定监听地址时，如果监听地址不是本地回环地址（如127.0.0.1），需注意访问安全问题。<br/>**说明**：从API version 20开始，支持该接口。|
+| [-e](#创建正向端口转发任务) | 可选参数，指定在TCP端口转发时，本地监听的IP地址，默认是127.0.0.1。该参数必须和-m一起使用。<br/>使用-e参数指定监听地址时，如果监听地址不是本地回环地址（如127.0.0.1），需注意访问安全问题。<br/>**说明**：从API版本20开始，支持该接口。|
 
 ### 命令列表
 
@@ -134,7 +134,7 @@ hdc -t connect-key shell echo "Hello world"
 | -------- | -------- |
 | [list targets](#查询设备列表) | 查询已连接的所有目标设备。 |
 | [wait](#等待设备正常连接) | 等待设备正常连接。 |
-| [tmode usb](#usb调试和无线调试切换) | 3.1.0e版本起已废弃，不会操作设备连接通道，需在设备设置界面通过USB调试开关设置。 |
+| [tmode usb](#usb调试和无线调试切换) | API版本15起已废弃，不会操作设备连接通道，需在设备设置界面通过USB调试开关设置。 |
 | [tmode port](#打开设备网络连接通道) | 打开设备网络连接通道。 |
 | [tmode port close](#关闭网络连接通道) | 关闭设备网络连接通道。 |
 | [tconn](#tcp连接设备) | 指定连接设备：通过“IP:port”来指定连接的设备。 |
@@ -322,7 +322,7 @@ hdc -t [connect-key] wait # 等待指定的设备正常连接，connect-key需�
 
 | 参数名 | 说明 |
 | -------- | -------- |
-| -t connect-key | 3.1.0a版本新增参数：<br/>连接单台设备时，为可选参数。<br/>连接多台设备时，为必填参数。 |
+| -t connect-key | API版本12新增参数：<br/>连接单台设备时，为可选参数。<br/>连接多台设备时，为必填参数。 |
 
 **返回信息**：
 
@@ -597,14 +597,14 @@ hdc shell [-b bundlename] [command]
 
 | 参数 | 说明 |
 | -------- | -------- |
-| -b bundlename | 3.1.0e版本新增参数。指定可调试应用包名。<br/>- 指定command参数时：在该可调试应用数据目录内以非交互式模式执行命令。[命令行方式访问应用沙箱](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)。<br/>自3.2.0e版本起，参数新增以下特性：<br>- 缺省command参数时，支持进入可调试应用数据目录的交互式shell会话，默认工作目录即为可调试应用数据目录根路径。<br/>- 缺省[-b bundlename]参数时，默认执行路径为系统根目录。 |
+| -b bundlename | API版本15新增参数。指定可调试应用包名。<br/>- 指定command参数时：在该可调试应用数据目录内以非交互式模式执行命令。[命令行方式访问应用沙箱](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)。<br/>自API版本26.0.0起，参数新增以下特性：<br>- 缺省command参数时，支持进入可调试应用数据目录的交互式shell会话，默认工作目录即为可调试应用数据目录根路径。<br/>- 缺省[-b bundlename]参数时，默认执行路径为系统根目录。 |
 | command | 需要在设备上执行的单次命令，不同类型或版本的系统支持的command命令有所差异，可以通过hdc shell ls /system/bin查阅支持的命令列表。当前大多数命令都是由[toybox](../tools/toybox.md)提供，可通过 hdc shell toybox --help 获取命令帮助。<br/>缺省该参数，hdc将会启动一个交互式的shell会话，开发者可以在命令提示符下输入命令，比如 ls、cd、pwd 等。 |
 
 > **说明：**
 >
 > 使用参数[-b bundlename]指定包名，该包名对应的已安装应用必须满足以下条件：使用调试证书签名，并且已在设备上启动。有关如何申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
 >
-> 当设备系统版本和hdc版本均低于3.2.0e时，缺省command参数进入的交互式shell会话默认工作目录仍为系统根目录。建议升级设备系统版本并参考[hdc版本配套表](#hdc版本配套表)确认版本兼容性，可通过hdc shell hdcd -v命令查询设备系统版本号。
+> 当设备系统版本和hdc版本均低于API版本26.0.0时，缺省command参数进入的交互式shell会话默认工作目录仍为系统根目录。建议升级设备系统版本并参考[hdc版本配套表](#hdc版本配套表)确认版本兼容性，可通过hdc shell hdcd -v命令查询设备系统版本号。
 
 **返回信息**：
 
@@ -665,14 +665,14 @@ hdc install [-cwd path|-r|-s|-w waitingTime|-u userId|-p|-g|-h] src
 
 | 参数名 | 说明 |
 | -------- | -------- |
-| src | 应用安装包的文件路径。支持安装[HAP](../quick-start/hap-package.md)、应用内[HSP](../quick-start/in-app-hsp.md)。从API version 22开始，支持安装[APP应用包](../quick-start/application-package-glossary.md#app应用包)。 |
+| src | 应用安装包的文件路径。支持安装[HAP](../quick-start/hap-package.md)、应用内[HSP](../quick-start/in-app-hsp.md)。从API版本22开始，支持安装[APP应用包](../quick-start/application-package-glossary.md#app应用包)。 |
 | -cwd | 修改工作目录。<br>用于在应用安装时，切换src到指定path。例如，初始安装应用为test.hap，所在目录为C:\\，实际安装应用文件路径为C:\\test.hap；如果使用-cwd "D:\\"，实际安装应用文件路径为D:\\test.hap。 |
 | -r | 可选参数，覆盖安装一个HAP/HSP。默认缺省，缺省时表示覆盖安装。 |
 | -s | 安装应用HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。指定目录的时候，每个路径目录下只能存在一个HSP。 |
 | -w | 可选参数，安装HAP时指定bm工具等待时间，最短的等待时长为180s，最长的等待时长为600s，默认缺省为180s。 |
 | -u | 可选参数，指定[用户](../tools/bm-tool.md#userid)，默认在当前活跃用户下安装应用。 |
-| -p | 可选参数，指定待安装的HAP/HSP路径，多HAP/HSP应用可指定多HAP/HSP所在文件夹路径。从API version 22开始，支持指定待安装的APP路径，也可指定只存在一个APP的文件夹路径。 |
-| -g | 可选参数，安装调试包时支持[用户授权](../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)和[手动设置授权](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)。<br>仅对[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)生效，debug应用更新为release应用时取消授予的用户授权和手动设置授权。<br>**说明**：从API version 24开始，支持该参数。 |
+| -p | 可选参数，指定待安装的HAP/HSP路径，多HAP/HSP应用可指定多HAP/HSP所在文件夹路径。从API版本22开始，支持指定待安装的APP路径，也可指定只存在一个APP的文件夹路径。 |
+| -g | 可选参数，安装调试包时支持[用户授权](../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)和[手动设置授权](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)。<br>仅对[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)生效，debug应用更新为release应用时取消授予的用户授权和手动设置授权。<br>**说明**：从API版本24开始，支持该参数。 |
 | -h | 可选参数，显示bm模块[安装命令（install）](../tools/bm-tool.md#安装命令install)帮助信息。 |
 
 **返回信息**：
@@ -799,13 +799,13 @@ hdc file send [-a|-sync|-z|-m|-cwd path|-b bundlename] SOURCE DEST
 | 参数名 | 说明 |
 | -------- | -------- |
 | SOURCE | 本地待传输的文件路径。 |
-| DEST | 远程目标文件路径。<br>从API version 21开始，媒体库文件支持通过hdc进行部分操作（低版本使用会提示[Fail]Error opening file: ...）。<br>媒体库文件路径：/mnt/data/\<uid\>/media_fuse/Photo/目录及其子目录，\<uid\>为当前用户的id。<br>通过hdc对媒体库操作指导参见[mediatool](../tools/mediatool.md#hdc命令)。|
+| DEST | 远程目标文件路径。<br>从API版本21开始，媒体库文件支持通过hdc进行部分操作（低版本使用会提示[Fail]Error opening file: ...）。<br>媒体库文件路径：/mnt/data/\<uid\>/media_fuse/Photo/目录及其子目录，\<uid\>为当前用户的id。<br>通过hdc对媒体库操作指导参见[mediatool](../tools/mediatool.md#hdc命令)。|
 | -a | 保留文件修改时间戳。 |
 | -sync | 只传输文件mtime有更新的文件。<br/>mtime（modified timestamp）：修改后的时间戳。 |
 | -z | 通过LZ4格式压缩传输，此功能未开放，请勿使用。 |
 | -m | 文件传输时同步文件DAC权限，uid，gid，MAC权限。<br/>DAC（Discretionary Access Control）：自主访问控制，<br/>uid（User identifier）：用户标识符（或用户ID），<br/>gid（Group identifier）：组标识符（或组ID），<br/>MAC（Mandatory Access Control）：强制访问控制（或非自主访问控制）。 |
 | -cwd | 修改工作目录。<br>用于在文件传输时，切换SOURCE到指定path。例如，初始发送文件为test，所在目录为/data，实际发送文件路径为/data/test；如果使用-cwd "/user/"，实际发送文件路径为/user/test。 |
-| -b | 3.1.0e版本新增参数（低版本使用会提示[Fail]Unknown file option: -b），用于指定可调试应用包名。<br/>使用方法可参考[通过命令往应用沙箱目录中发送文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)。 |
+| -b | API版本15新增参数（低版本使用会提示[Fail]Unknown file option: -b），用于指定可调试应用包名。<br/>使用方法可参考[通过命令往应用沙箱目录中发送文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)。 |
 | bundlename | 指定可调试应用包名。 |
 
 **返回信息**：
@@ -844,13 +844,13 @@ hdc file recv [-a|-sync|-z|-m|-cwd path|-b bundlename] DEST SOURCE
 | 参数名 | 说明 |
 | -------- | -------- |
 | SOURCE | 本地待接收的文件路径。 |
-| DEST | 远程待传输的文件路径。 <br>从API version 21开始，媒体库文件支持通过hdc进行部分操作（低版本使用会提示[Fail]Error opening file: ...）。<br>媒体库文件路径：/mnt/data/\<uid\>/media_fuse/Photo/目录及其子目录，\<uid\>为当前用户的id。<br>媒体库操作更多信息参见[mediatool](../tools/mediatool.md#hdc命令)。|
+| DEST | 远程待传输的文件路径。 <br>从API版本21开始，媒体库文件支持通过hdc进行部分操作（低版本使用会提示[Fail]Error opening file: ...）。<br>媒体库文件路径：/mnt/data/\<uid\>/media_fuse/Photo/目录及其子目录，\<uid\>为当前用户的id。<br>媒体库操作更多信息参见[mediatool](../tools/mediatool.md#hdc命令)。|
 | -a | 保留文件修改时间戳。 |
 | -sync | 只传输文件mtime有更新的文件。<br/>mtime（modified timestamp）：修改后的时间戳。 |
 | -z | 通过LZ4格式压缩传输，此功能未开放，请勿使用。 |
 | -m | 文件传输时同步文件DAC权限，uid，gid，MAC权限。<br/>DAC（Discretionary Access Control）：自主访问控制，<br/>uid（User identifier）：用户标识符（或用户ID），<br/>gid（Group identifier）：组标识符（或组ID），<br/>MAC（Mandatory Access Control）：强制访问控制（或非自主访问控制）。 |
 | -cwd | 修改工作目录。<br>用于在文件传输时，切换SOURCE到指定path。例如，初始接收文件目录为/data/，如果使用-cwd "/user/"，实际接收文件目录为/user/。 |
-| -b | 3.1.0e版本新增参数，用于传输指定的可调试应用进程应用数据目录下的文件。<br/>使用方法可参考[从沙箱目录中下载文件到本地计算机](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)。 |
+| -b | API版本15新增参数，用于传输指定的可调试应用进程应用数据目录下的文件。<br/>使用方法可参考[从沙箱目录中下载文件到本地计算机](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)。 |
 | bundlename | 可调试应用进程的包名。 |
 
 **返回信息**：
@@ -880,7 +880,7 @@ FileTransfer finish, Size:xxx, File...
 >
 > 使用参数[-b bundlename]指定包名，应满足条件：指定包名的已安装应用为“使用调试证书签名的应用”且在设备上已启动，如何申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
 >
-> **版本更新说明**：从3.1.0a版本开始，支持使用中文字符作为文件传输命令参数，便于多语言环境下使用。
+> **版本更新说明**：从API版本12开始，支持使用中文字符作为文件传输命令参数，便于多语言环境下使用。
 
 ## 端口转发
 
@@ -1334,7 +1334,7 @@ $ hdc keygen key
 
 ### 查询hdc客户端进程版本
 
-查询hdc客户端进程的版本信息，命令格式如下：
+查询hdc客户端进程的版本信息，详细说明参考[hdc版本配套表](#hdc版本配套表)，命令格式如下：
 
 ```shell
 hdc -v
@@ -1355,7 +1355,7 @@ Ver: 3.1.0e
 
 ### 查询hdc服务进程版本
 
-查询hdc服务进程的版本信息，命令格式如下：
+查询hdc服务进程的版本信息，详细说明参考[hdc版本配套表](#hdc版本配套表)，命令格式如下：
 
 ```shell
 hdc version
@@ -1635,7 +1635,7 @@ Kill subservers finish
 
 设置为"1"表示开启命令录制功能；不设置或者设置为其它数字表示关闭命令录制功能。
 
-从API version 20开始，支持该参数。
+从API版本20开始，支持该参数。
 
 录制日志的存放路径如下：
 
@@ -1653,7 +1653,7 @@ Kill subservers finish
 
 设置为"1"表示开启TCP连接的通道加密功能；不设置或者设置为其它数字表示关闭通道加密功能。
 
-从API version 20开始，支持该参数。
+从API版本20开始，支持该参数。
 
 > **说明：**
 >
@@ -1913,9 +1913,9 @@ hdc文件传输命令执行出现乱码，如使用file recv从设备端发送�
 
 **可能原因&amp;解决方法**
 
-3.1.0a版本开始，文件传输命令支持参数路径中包含中文，版本过低需要更新至最新版本。
+API版本12开始，文件传输命令支持参数路径中包含中文，版本过低需要更新至最新版本。
 
-执行hdc checkserver命令检查当前版本。如果低于3.1.0a版本，需将SDK升级到API12或更高版本。
+执行hdc checkserver命令检查当前版本。如果低于3.1.0a版本，需将SDK升级到API版本12或更高版本。
 
 ### 执行hdc list targets显示"Unauthorized"
 
@@ -2036,7 +2036,7 @@ hdc版本太低，需更新至最新版本。
 
 **可能原因**
 
-客户端版本低于3.0.0b时，不支持授权，无法接入系统。
+hdc版本低于3.0.0b时，不支持授权，无法接入系统。
 
 **处理步骤**
 

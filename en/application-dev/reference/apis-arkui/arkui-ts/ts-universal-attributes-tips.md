@@ -26,7 +26,7 @@ Binds a tooltip to the component.
 
 > **NOTE**
 >
-> When the [enabled](ts-universal-attributes-enable.md#enabled) universal attribute of the component bound with **bindTips** is set to **false**, the floating bubble can still be displayed.
+> When the [enabled](ts-universal-attributes-enable.md#enabled) universal attribute of the component bound with **bindTips** is set to **false**, the tooltip can still be displayed.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -36,7 +36,7 @@ Binds a tooltip to the component.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| message|  [TipsMessageType](#tipsmessagetype)                                                     | Mandatory   | Content of the floating bubble. |
+| message|  [TipsMessageType](#tipsmessagetype)                                                     | Mandatory   | Content of the tooltip. |
 | options  | [TipsOptions](#tipsoptions) | No  | Parameters of the tooltip.<br>Default value:<br>{<br>appearingTime: 700,<br>disappearingTime: 300,<br>appearingTimeWithContinuousOperation: 300,<br>disappearingTimeWithContinuousOperation: 0, enableArrow: true,<br>arrowPointPosition: ArrowPointPosition.CENTER,<br>arrowWidth: 16,arrowHeight: 8,<br>showAtAnchor: TipsAnchorType.TARGET<br>} |
 
 **Return value**
@@ -166,7 +166,7 @@ struct TipsExample {
   build() {
     Flex({ direction: FlexDirection.Column }) {
       Button('Hover Tips')
-        .bindTips("Floating Bubble Test", {
+        .bindTips("Tooltip Test", {
           // Control whether to set the system material.
           systemMaterial: new uiMaterial.ImmersiveMaterial({
             style: uiMaterial.ImmersiveStyle.THIN
