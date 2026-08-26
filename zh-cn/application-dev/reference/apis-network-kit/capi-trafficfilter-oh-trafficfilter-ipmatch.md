@@ -27,8 +27,8 @@ IP匹配条件。
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_TrafficFilter_IPMatchType](capi-net-trafficfilter-type-h.md#oh_trafficfilter_ipmatchtype) type | 匹配类型。<br>**起始版本：** 26.0.0 |
-| bool invert | 是否反转匹配结果。<br>**起始版本：** 26.0.0 |
-| union | 匹配规则。<br>**起始版本：** 26.0.0 |
+| [OH_TrafficFilter_IPMatchType](capi-net-trafficfilter-type-h.md#oh_trafficfilter_ipmatchtype) type | 匹配类型。|
+| bool invert | 是否反转匹配结果。 |
+| union value| 匹配规则。 （[OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) single、[OH_TrafficFilter_IPCidr](capi-trafficfilter-oh-trafficfilter-ipcidr.md) cidr、[OH_TrafficFilter_IPRange](capi-trafficfilter-oh-trafficfilter-iprange.md) range、[OH_TrafficFilter_IPMulti](capi-trafficfilter-oh-trafficfilter-ipmulti.md) multi）|
 
 
