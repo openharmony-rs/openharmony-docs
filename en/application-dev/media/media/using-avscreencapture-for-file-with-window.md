@@ -6,7 +6,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=444d4b7458e1317b3c2f1a471488b9c4b8344c2e translatedAt=2026-06-03T07:17:04.459Z pushedAt=2026-06-03T10:16:59.262Z -->
+<!-- md-trans-meta sourceCommit=f45dbd66002990545583a396e82a873872f68879 translatedAt=2026-08-25T11:07:27.002Z pushedAt=2026-08-25T11:13:32.317Z -->
 
 Starting from API version 10, developers can use the C API of the AVScreenCapture module to implement window/screen recording, capturing audio and video source data from the microphone and device.
 
@@ -14,7 +14,7 @@ This development guide takes recording a specified window as an example to intro
 
 - Method 1: Record a specified window by setting the specified window ID. In this scenario, after starting screen recording, a share content selection dialog box will pop up. For detailed API declarations, refer to the OH_CAPTURE_SPECIFIED_WINDOW mode in [OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode).
 
-- Method 2 (Recommended): Use the system Picker list popup to select the desired window for recording. Use [OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup) to set whether to pop up the screen capture Picker. Starting from API version 20, it supports popping up the screen capture Picker on PC/2in1 devices; starting from API version 23, it supports popping up the screen capture Picker on Phone/Tablet devices.
+- Method 2 (Recommended): Use the system Picker list popup to select the desired window for recording. Use [OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup) to set whether to pop up the screen capture Picker. Starting from API version 20, it supports popping up the screen capture Picker on PCs/2-in-1 devices; starting from API version 23, it supports popping up the screen capture Picker on Phone/Tablet devices.
 
 ## Applying for Permissions
 
@@ -120,15 +120,15 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
 
    ``` C++
    // If you want to record a single window, pass a single window ID; if you want to record multiple windows simultaneously, pass a list of the desired window IDs.
-   std::vector<int32_t> missionIds = {88}; // Specifies the window ID for recording.e window ID for recording.
+   std::vector<int32_t> missionIds = {88}; // Specifies the window ID for recording.
    config.videoInfo.videoCapInfo.missionIDs = missionIds.data();
    config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.size());
-   config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW; // Set the screen recording mode to record a specified window. recording mode to record a specified window.
+   config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW; // Set the screen recording mode to record a specified window.
 
    // Set to false, meaning the system Picker will not pop up after screen recording starts; instead, a privacy prompt dialog will appear.
    OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
    OH_AVScreenCapture_StrategyForPickerPopUp(strategy, false);
-   OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
+   OH_AVScreenCapture_SetCaptureStrategy(g_avCapture, strategy);
    ```
 
    Method 2 (Recommended): Perform window-level screen recording by popping up the screen capture Picker list and selecting an open application window.
