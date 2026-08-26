@@ -45,8 +45,8 @@
 
 * ArkTS侧
 
-  ArkTS-Dyn示例：
   <!-- @[customize_a_webtag_and_send_it_to_the_native_side_of_the_application](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets) -->    
+  ArkTS-Dyn示例：
   
   ``` TypeScript
   // 自定义webTag，在WebviewController创建时作为入参传入，建立controller与webTag的映射关系
