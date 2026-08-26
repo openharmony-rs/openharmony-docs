@@ -60,7 +60,6 @@
 
    <!-- @[background_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioVoIPCallSampleC/entry/src/main/ets/pages/AudioPlayer.ets) -->
 
-   <div class="same-source-code">
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    import { backgroundTaskManager } from '@kit.BackgroundTasksKit'
@@ -107,11 +106,6 @@
        }
      }
    ```
-
-   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioVoIPCallSampleC/entry/src/main/ets/pages/AudioPlayer.ets?same_code_link_text=background_task" target="_blank" rel="nofollow">AudioPlayer.ets</a></p>
-
-   </div>
-
 
    长时任务启动失败时，应用需避免继续以后台录音方式运行，应停止录音或引导用户回到前台处理。长时任务的完整申请和取消流程请参考[长时任务(ArkTS)](../../task-management/continuous-task.md)。
 
