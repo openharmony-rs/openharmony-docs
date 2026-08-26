@@ -6,7 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=5bd79eab01cf38af26bab98453bcb9f96f6c3f3c translatedAt=2026-08-24T02:58:49.911Z pushedAt=2026-08-25T06:46:58.075Z -->
+<!-- md-trans-meta sourceCommit=5bd79eab01cf38af26bab98453bcb9f96f6c3f3c translatedAt=2026-08-24T02:58:49.911Z pushedAt=2026-08-26T02:13:13.930Z -->
 
 ## Overview
 
@@ -241,7 +241,7 @@ int32_t OH_Usb_SelectInterfaceSetting(uint64_t interfaceHandle, uint8_t settingI
 
 **Description**
 
-Activates the alternate setting of a USB interface. Call this methodwhen the interface working mode needs to be changed.
+Activates the alternate setting of a USB interface. Call this method when the interface working mode needs to be changed.
 
 **Required permissions**: ohos.permission.ACCESS_DDK_USB
 
