@@ -392,7 +392,7 @@ int32_t OH_ScsiPeripheral_CreateDeviceMemMap(ScsiPeripheral_Device *dev, size_t 
 | 参数项 | 描述 |
 |------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
 | [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md) *dev  | 设备句柄，详情参见[ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md)。   |
-| size_t size | 缓冲区的大小，单位：字节。|
+| size_t size | 缓冲区的大小，单位：Byte。|
 | [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md) **devMmap | 创建的缓冲区通过该参数返回给调用者，详情参见[ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md)。 |
 
 **返回：**
@@ -444,7 +444,7 @@ int32_t OH_ScsiPeripheral_ParseBasicSenseInfo(uint8_t *senseData, uint8_t senseD
 | 参数项 | 描述 |
 | -- | -- |
 | uint8_t *senseData | 待解析的Sense Data。 |
-| uint8_t senseDataLen | Sense Data长度，即senseData参数指向的数据长度，单位：字节。 |
+| uint8_t senseDataLen | Sense Data长度，即senseData参数指向的数据长度，单位：Byte。 |
 | [ScsiPeripheral_BasicSenseInfo](capi-scsiperipheralddk-scsiperipheral-basicsenseinfo.md) *senseInfo | 用于保存解析后的基本信息，详情参见[ScsiPeripheral_BasicSenseInfo](capi-scsiperipheralddk-scsiperipheral-basicsenseinfo.md)。 |
 
 **返回：**
