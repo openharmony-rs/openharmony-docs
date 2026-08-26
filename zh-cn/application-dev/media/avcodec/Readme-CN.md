@@ -2,7 +2,7 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran; @mr-chencxy-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee; @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
@@ -37,3 +37,4 @@
 - AVCodec Kit常见问题<!--file-avcodec-kit-faq-->
   - [创建视频解码器和NativeWindow初始化并行](parallel-decoding-nativeWindow.md)
   - [视频编解码宽高、跨距与裁剪信息说明](video-dimension-guide.md)
+- [AVCodec Kit术语](glossary.md)

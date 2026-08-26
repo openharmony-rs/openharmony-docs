@@ -1,12 +1,14 @@
 # Class (WebDownloadItem)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:46:45.261Z pushedAt=2026-08-07T08:11:35.469Z -->
 
- Implements a **WebDownloadItem** object. You can use this object to perform operations on the corresponding download task.
+WebDownloadItem is a class in the ArkWeb framework used to represent and manage a single download task. Through the callback parameters of [WebDownloadDelegate](./arkts-apis-webview-WebDownloadDelegate.md), an app can obtain a WebDownloadItem instance and then query and control the download task, including starting the download to a specified path, querying the download progress and status, pausing/resuming/canceling the task, and serializing failed tasks for later recovery.
 
 > **NOTE**
 >
@@ -16,9 +18,9 @@
 >
 > - The sample effect is subject to the actual device.
 >
-> - During the download, the download progress is notified to the user through **WebDownloadDelegate**. The user can operate the download task through the **WebDownloadItem** parameter.
+> - During the download process, the download progress is notified to the user through WebDownloadDelegate, and the user can operate the download task through the WebDownloadItem parameter.
 >
-> - Currently, the maximum length of the download file name supported by **WebDownloadItem** is 255 bytes <!--RP1--><!--RP1End-->.
+> - The maximum length of the download file path (including the file name) supported by WebDownloadItem is 255 bytes<!--RP1--><!--RP1End-->.
 
 ## Modules to Import
 
@@ -103,7 +105,7 @@ Obtains the download speed, in bytes per second.
 
 | Type  | Description                     |
 | ------ | ------------------------- |
-| number | Download speed, in bytes per second.|
+| number | Download speed, in bytes per second. |
 
 **Example**
 
@@ -233,7 +235,7 @@ Obtains the total length of the file to be downloaded.
 
 | Type  | Description                     |
 | ------ | ------------------------- |
-| number | Total length of the file to download. If the value is **-1**, the total size is unknown.|
+| number | Total length of the file to be downloaded. The value -1 indicates that the total size is unknown. Unit: byte. |
 
 **Example**
 
@@ -363,7 +365,7 @@ Obtains the download error code.
 
 | Type  | Description                     |
 | ------ | ------------------------- |
-| [WebDownloadErrorCode](./arkts-apis-webview-e.md#webdownloaderrorcode11) | Error code returned when the download error occurs.|
+| [WebDownloadErrorCode](./arkts-apis-webview-e.md#webdownloaderrorcode11) | Error code when the download fails. |
 
 **Example**
 
@@ -809,6 +811,140 @@ struct WebComponent {
 }
 ```
 
+## getOriginalUrl<sup>24+</sup>
+
+getOriginalUrl(): string
+
+Obtains the original URL address of the download file.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type  | Description                     |
+| ------ | ------------------------- |
+| string | Original URL address of the download file. |
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+
+  build() {
+    Column() {
+      Button('setDownloadDelegate')
+        .onClick(() => {
+          try {
+            this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("will start a download, original URL: " + webDownloadItem.getOriginalUrl());
+              // Pass in a download path and start the download.
+              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+            })
+            this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+            })
+            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
+              console.error("download failed guid: " + webDownloadItem.getGuid());
+            })
+            this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download finish guid: " + webDownloadItem.getGuid());
+            })
+            this.controller.setDownloadDelegate(this.delegate);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('startDownload')
+        .onClick(() => {
+          try {
+            this.controller.startDownload('https://www.example.com');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## getReferrerUrl<sup>24+</sup>
+
+getReferrerUrl(): string
+
+Obtains the referrer address of the download file.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type  | Description                     |
+| ------ | ------------------------- |
+| string | Referrer address of the download file. |
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+
+  build() {
+    Column() {
+      Button('setDownloadDelegate')
+        .onClick(() => {
+          try {
+            this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("will start a download, referrer URL: " + webDownloadItem.getReferrerUrl());
+              // Pass in a download path and start the download.
+              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+            })
+            this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+            })
+            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
+              console.error("download failed guid: " + webDownloadItem.getGuid());
+            })
+            this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download finish guid: " + webDownloadItem.getGuid());
+            })
+            this.controller.setDownloadDelegate(this.delegate);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('startDownload')
+        .onClick(() => {
+          try {
+            this.controller.startDownload('https://www.example.com');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## serialize<sup>11+</sup>
 
 serialize(): Uint8Array
@@ -889,7 +1025,7 @@ Deserializes the serialized byte array into a **WebDownloadItem** object.
 
 | Name             | Type   | Mandatory  |  Description|
 | ------------------ | ------- | ---- | ------------- |
-| serializedData | Uint8Array | Yes  | Byte array into which the download is serialized.|
+| serializedData | Uint8Array | Yes | Serialized byte array. |
 
 **Return value**
 
@@ -971,7 +1107,7 @@ struct WebComponent {
 
 start(downloadPath: string): void
 
-Starts a download to a specified directory.
+Starts downloading to the specified directory. The parameter specifies the disk storage path (including the file name) of the download file.
 
 > **NOTE**
 >
@@ -983,7 +1119,7 @@ Starts a download to a specified directory.
 
 | Name| Type                  | Mandatory| Description                            |
 | ------ | ---------------------- | ---- | ------------------------------|
-| downloadPath   | string     | Yes | Path (including the file name) for downloading the file. The path length is the same as that in file management and can contain a maximum of 255 characters.|
+| downloadPath   | string     | Yes  | Path of the download file (including the file name). The path length is the same as that in the file manager, with a maximum of 255 bytes. |
 
 **Error codes**
 
@@ -1059,7 +1195,7 @@ struct WebComponent {
 
 cancel(): void
 
-Cancels a download task.
+Cancels the download task.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1139,7 +1275,7 @@ struct WebComponent {
 
 pause(): void
 
-Pauses a download task.
+Pauses the download task.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

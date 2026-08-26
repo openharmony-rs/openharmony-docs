@@ -1452,7 +1452,7 @@ Allows an application to install the PCIe driver.
 ## ohos.permission.ACCESS_GAME_BUDDY_SERVICE
 
 Allows an application to access the game buddy service. 
-With this permission, the application can utilize the APIs provided by the game buddy service, such as capturing screenshots of running games and capturing user voice data via the microphone.
+With this permission, the application can utilize the APIs provided by the game buddy service, such as capturing screenshots of running games and obtaining the foreground and background states of games.
 
 <!--RP93--><!--RP93End-->
 
@@ -1618,4 +1618,46 @@ Allows an application to be set as the user's default browser.
 
 **Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
 
+**Since**: 26.1.0
+ 
+## ohos.permission.vehicle.MMA_ENERGYREFILL
+ 
+Allows an in-vehicle application to obtain the current vehicle's energy replenishment status.
+ 
+<!--RP104--><!--RP104End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Since**: 26.1.0
+ 
+## ohos.permission.vehicle.MMA_WEATHER
+ 
+Allows an in-vehicle application to obtain real-time weather information of the vehicle's surroundings.
+ 
+<!--RP105--><!--RP105End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Since**: 26.1.0
+ 
+## ohos.permission.vehicle.MMA_SPATIALACTION
+ 
+Allows an application on the rear display to call spatial gesture APIs to enable contactless interaction for passengers.
+ 
+<!--RP106--><!--RP106End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
 **Since**: 26.1.0

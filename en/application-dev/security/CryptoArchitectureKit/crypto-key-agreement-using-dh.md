@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:30:13.700Z pushedAt=2026-08-10T09:20:03.808Z -->
 
 For details about the algorithm specifications, see [DH](crypto-key-agreement-overview.md#dh).
 
@@ -13,7 +14,7 @@ For details about the algorithm specifications, see [DH](crypto-key-agreement-ov
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to generate an asymmetric key pair (**KeyPair**) that uses the DH key algorithm and the well-known security prime group modp1536.
 
-   In addition to the example in this topic, [DH](crypto-asym-key-generation-conversion-spec.md#dh) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md) may help you better understand how to generate a DH asymmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
+   To learn how to generate a DH asymmetric key, refer to the following example and also see [Asymmetric Key Generation and Conversion Specifications: DH](crypto-key-generation-conversion.md#dh) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). Note that the referenced documents may differ from the current example in input parameters.
 
 2. Call [cryptoFramework.createKeyAgreement](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekeyagreement) with the string parameter **'DH_modp1536'** to create a key agreement (**KeyAgreement**) that uses the DH key algorithm and the well-known security prime group modp1536.
 
@@ -22,7 +23,7 @@ For details about the algorithm specifications, see [DH](crypto-key-agreement-ov
 - Example (using asynchronous APIs):
 
   <!-- @[use_dh_for_key_negotiation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/DH/DHAsync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
@@ -47,15 +48,14 @@ For details about the algorithm specifications, see [DH](crypto-key-agreement-ov
   }
   ```
 
-
 - Example (using synchronous APIs):
 
   <!-- @[use_dh_for_key_negotiation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/DH/DHSync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
-  function dhAwait() {
+  function dhSync() {
     let keyGen = cryptoFramework.createAsyKeyGenerator('DH_modp1536');
     // Randomly generate public-private key pair A.
     let keyPairA = keyGen.generateKeyPairSync();
@@ -75,3 +75,5 @@ For details about the algorithm specifications, see [DH](crypto-key-agreement-ov
     }
   }
   ```
+
+  <!--no_check-->

@@ -1,12 +1,14 @@
 # Class (ConsoleMessage)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:50:41.977Z pushedAt=2026-08-07T08:11:56.982Z -->
 
-Implements the **ConsoleMessage** object. For details about the sample code, see [onConsole](./arkts-basic-components-web-events.md#onconsole).
+ConsoleMessage is an object that encapsulates JavaScript console output information in the **Web** component. When a web page outputs logs through methods such as `console.log()`, `console.warn()`, and `console.error()`, this object is provided to the app through the `onConsole` event callback for monitoring and inspecting web page debug output. For sample code, see [onConsole event](./arkts-basic-components-web-events.md#onconsole).
 
 > **NOTE**
 >
@@ -49,7 +51,7 @@ Constructs a **ConsoleMessage** object.
 
 getLineNumber(): number
 
-Obtains the number of rows in this console message.
+Obtains the line number of the console output in the web source file.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -57,13 +59,13 @@ Obtains the number of rows in this console message.
 
 | Type    | Description                  |
 | ------ | -------------------- |
-| number | Number of rows in the console message.|
+| number | Line number of the console output in the web source file. |
 
 ## getMessage
 
 getMessage(): string
 
-Obtains the log information of this console message.
+Obtains the log message of the console output.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -71,7 +73,7 @@ Obtains the log information of this console message.
 
 | Type    | Description                    |
 | ------ | ---------------------- |
-| string | Log information of the console message.|
+| string | Log information output to the console. |
 
 ## getMessageLevel
 
@@ -91,7 +93,7 @@ Obtains the level of this console message.
 
 getSourceId(): string
 
-Obtains the path and name of the web page source file.
+Obtains the path and file name of the web source file.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -99,7 +101,7 @@ Obtains the path and name of the web page source file.
 
 | Type    | Description           |
 | ------ | ------------- |
-| string | Path and name of the web page source file.|
+| string | Path and file name of the web source file. |
 
 ## getSource<sup>23+</sup>
 

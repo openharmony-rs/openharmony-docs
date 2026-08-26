@@ -40,7 +40,7 @@
 | [OH_NativeXComponent_ExtraMouseEventInfo](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-extramouseeventinfo.md) | OH_NativeXComponent_ExtraMouseEventInfo | 提供封装的扩展的鼠标事件信息实例。 |
 | [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) | OH_ArkUI_SurfaceHolder | 提供封装的OH_ArkUI_SurfaceHolder实例。 |
 | [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md) | OH_ArkUI_SurfaceCallback | 定义Surface生命周期回调函数。 |
-| [NativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md) | OHNativeWindow | 提供封装的NativeWindow实例。 |
+| [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md) | OHNativeWindow | 提供封装的NativeWindow实例。 |
 | [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md) | ArkUI_XComponentSurfaceConfig | 定义XComponent组件持有的Surface选项，用于设置XComponent组件持有的Surface在渲染时是否被视为不透明。 |
 
 ### 枚举
@@ -254,10 +254,10 @@ enum OH_NativeXComponent_EventSourceType
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_NATIVEXCOMPONENT_SOURCE_TYPE_UNKNOWN = 0 | 未知的输入源类型。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE = 1 | 表示输入源生成鼠标多点触摸事件。 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE = 1 | 表示输入源生成鼠标事件。 |
 | OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHSCREEN = 2 | 表示输入源生成一个触摸屏多点触摸事件。 |
 | OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHPAD = 3 | 表示输入源生成一个触摸板多点触摸事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK = 4 | 表示输入源生成一个操纵杆多点触摸事件。 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK = 4 | 表示输入源生成一个操纵杆事件。 |
 | OH_NATIVEXCOMPONENT_SOURCE_TYPE_KEYBOARD = 5 | 表示输入源生成一个键盘事件。<br>**起始版本：** 10 |
 
 ### OH_NativeXComponent_MouseEventAction
@@ -380,8 +380,8 @@ int32_t OH_NativeXComponent_GetXComponentSize(OH_NativeXComponent* component, co
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
 | const void* window | 表示NativeWindow句柄。 |
-| uint64_t* width | 表示指向当前Surface宽度的指针。单位：vp。 |
-| uint64_t* height | 表示指向当前Surface高度的指针。单位：vp。 |
+| uint64_t* width | 表示指向当前Surface宽度的指针。单位：px。 |
+| uint64_t* height | 表示指向当前Surface高度的指针。单位：px。 |
 
 **返回：**
 
@@ -1882,7 +1882,7 @@ OHNativeWindow* OH_ArkUI_XComponent_GetNativeWindow(OH_ArkUI_SurfaceHolder* surf
 
 | 类型                  | 说明 |
 |---------------------| -- |
-| [NativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)* | 返回[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例关联的NativeWindow。 |
+| [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)* | 返回[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例关联的OHNativeWindow。 |
 
 ### OH_ArkUI_XComponent_SetAutoInitialize()
 
@@ -1895,8 +1895,8 @@ int32_t OH_ArkUI_XComponent_SetAutoInitialize(ArkUI_NodeHandle node, bool autoIn
 
 设置XComponent组件是否需要自动初始化Surface的标志位。
 
-**配置依赖：**
-- 当autoInitialize为true（默认值）时，Surface会在组件挂树/下树时自动初始化和销毁，无需手动调用Initialize/Finalize。
+配置依赖：
+- 当autoInitialize为true（默认值）时，Surface会在组件挂树/下树时自动初始化和销毁，无需手动调用[OH_ArkUI_XComponent_Initialize](#oh_arkui_xcomponent_initialize)和[OH_ArkUI_XComponent_Finalize](#oh_arkui_xcomponent_finalize)。
 - 当autoInitialize设置为false时，开发者必须手动调用[OH_ArkUI_XComponent_Initialize](#oh_arkui_xcomponent_initialize)初始化Surface，并在不再使用时调用[OH_ArkUI_XComponent_Finalize](#oh_arkui_xcomponent_finalize)销毁Surface。
 
 **起始版本：** 19
@@ -1926,7 +1926,7 @@ int32_t OH_ArkUI_XComponent_Initialize(ArkUI_NodeHandle node)
 
 初始化XComponent组件持有的Surface。
 
-**配对调用：**
+配对调用：
 - 调用此接口初始化Surface后，必须在Surface不再使用时调用[OH_ArkUI_XComponent_Finalize](#oh_arkui_xcomponent_finalize)销毁Surface。
 - 若Surface已经处于初始化状态，再次调用将返回ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID。
 - 可通过[OH_ArkUI_XComponent_IsInitialized](#oh_arkui_xcomponent_isinitialized)查询当前初始化状态。
@@ -1957,7 +1957,7 @@ int32_t OH_ArkUI_XComponent_Finalize(ArkUI_NodeHandle node)
 
 销毁XComponent组件持有的Surface。
 
-**配对调用：**
+配对调用：
 - 此接口用于销毁由[OH_ArkUI_XComponent_Initialize](#oh_arkui_xcomponent_initialize)初始化的Surface，必须在Initialize之后调用。
 - 若Surface尚未初始化或已被销毁，调用将返回ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID。
 
@@ -2175,7 +2175,7 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent(OH_ArkUI_SurfaceCallback* call
 | 参数项                                    | 描述 |
 |----------------------------------------| -- |
 | [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)* callback | 表示指向[OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)实例的指针。 |
-| void (*onSurfaceShow)(OH_ArkUI_SurfaceHolder* surfaceHolder) | 表示Surface显示回调函数指针。- surfaceHolder: 表示指向[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例的指针。 |
+| void (\*onSurfaceShow)(OH_ArkUI_SurfaceHolder* surfaceHolder) | 表示Surface显示回调函数指针。- surfaceHolder: 表示指向[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例的指针。 |
 
 ### OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent()
 
@@ -2196,7 +2196,7 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent(OH_ArkUI_SurfaceCallback* call
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)* callback | 表示指向[OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)实例的指针。 |
-| void (*onSurfaceHide)(OH_ArkUI_SurfaceHolder* surfaceHolder) | 表示Surface隐藏回调函数指针。- surfaceHolder: 表示指向[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例的指针。 |
+| void (\*onSurfaceHide)(OH_ArkUI_SurfaceHolder* surfaceHolder) | 表示Surface隐藏回调函数指针。- surfaceHolder: 表示指向[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例的指针。 |
 
 ### OH_ArkUI_XComponentSurfaceConfig_Create()
 

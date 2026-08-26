@@ -1,12 +1,16 @@
 # Class (WebSchemeHandler)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:50:46.415Z pushedAt=2026-08-07T08:11:44.831Z -->
 
-Represents a **WebSchemeHandler** object used to intercept requests for a specific scheme.
+WebSchemeHandler is an interceptor class used to intercept network requests for a specified scheme (protocol), supporting scenarios such as custom protocol handling, local resource substitution, and specific request interception. Developers implement the onRequestStart callback to decide whether to intercept a request, and intercepted requests can have custom response content returned through WebResourceHandler. The WebSchemeHandler instance is registered to a specified scheme through the [setWebSchemeHandler](./arkts-apis-webview-WebviewController.md#setwebschemehandler12) method of WebviewController, thereby intercepting and processing all requests for that scheme.
+
+WebSchemeHandler works in conjunction with [WebSchemeHandlerRequest](./arkts-apis-webview-WebSchemeHandlerRequest.md), [WebResourceHandler](./arkts-apis-webview-WebResourceHandler.md), and [WebSchemeHandlerResponse](./arkts-apis-webview-WebSchemeHandlerResponse.md): the onRequestStart callback receives a WebSchemeHandlerRequest (information about the intercepted request) and a WebResourceHandler (the handler used to return a custom response), and returns a boolean value indicating whether to intercept. onRequestStop is triggered when the request ends (only for intercepted requests) and is used for resource cleanup.
 
 > **NOTE**
 >
@@ -28,13 +32,17 @@ onRequestStart(callback: (request: WebSchemeHandlerRequest, handler: WebResource
 
 Called when a request starts. In this callback, you can determine whether to intercept the request. If **false** is returned, the request is not intercepted and the handler is invalid. If **true** is returned, the request is intercepted.
 
+> **NOTE**
+>
+> - Redirected URLs cannot be intercepted individually. To intercept a redirected URL, you must also intercept the original request URL.
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Parameters**
 
 | Name  | Type                | Mandatory| Description      |
 | -------- | -------------------- | ---- | ---------- |
-| callback   | (request: [WebSchemeHandlerRequest](./arkts-apis-webview-WebSchemeHandlerRequest.md), handler: [WebResourceHandler](./arkts-apis-webview-WebResourceHandler.md)) => boolean | Yes| Callback invoked when a request for the specified scheme starts. **request** represents a request. **handler** provides the custom response header and response body for the **Web** component. The return value indicates whether the request is intercepted.|
+| callback   | (request: [WebSchemeHandlerRequest](./arkts-apis-webview-WebSchemeHandlerRequest.md), handler: [WebResourceHandler](./arkts-apis-webview-WebResourceHandler.md)) => boolean | Yes | Callback invoked when interception of the corresponding scheme request starts. `request` is the request, and `handler` is used to provide custom response headers and response body to the Web component. The return value **true** indicates that the request is intercepted, and **false** indicates that the request is not intercepted and the handler becomes invalid. |
 
 **Error codes**
 
@@ -105,7 +113,7 @@ struct WebComponent {
                 console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
 
-              // Before calling didFinish or didFail, call didReceiveResponse to send a response header to this request.
+              // Call didReceiveResponse to pass the constructed response header to the intercepted request before calling didFinish/didFail.
               let buf = buffer.from(this.htmlData)
               try {
                 if (buf.length == 0) {
@@ -140,15 +148,16 @@ struct WebComponent {
   }
 }
 ```
+
 ## onRequestStop<sup>12+</sup>
 
 onRequestStop(callback: Callback\<WebSchemeHandlerRequest\>): void
 
 Called when the request is complete. This callback is triggered only when the [onRequestStart](#onrequeststart12) callback intercepts the request. Specifically, this callback is invoked in the following cases:
 
-1. The **WebResourceHandler** object calls **didFail** or **didFinish**.
+1. WebResourceHandler calls didFail or didFinish.
 
-2. The request is interrupted due to other reasons.
+2. The request is interrupted due to other reasons (such as network errors or system exceptions).
 
 **System capability**: SystemCapability.Web.Webview.Core
 

@@ -1,14 +1,16 @@
 # custom_attributes.h
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=66d449f865d808c2ab2228de4384c97bf7b4883d translatedAt=2026-08-10T03:33:21.746Z pushedAt=2026-08-10T07:32:49.532Z -->
 
 ## Overview
 
-Declares the custom node events for **NativeNode** APIs.
+Provides event type definitions for measurement, layout, and drawing of custom components for **NativeNode** API, used to register and handle measurement, layout, and drawing events of the content layer, foreground layer, and overlay layer.
 
 **File to include:** <arkui/node_attributes/custom_attributes.h>
 
@@ -39,7 +41,6 @@ enum ArkUI_NodeCustomEventType
 ```
 
 **Description**
-
 
 Enumerates custom component event types.
 

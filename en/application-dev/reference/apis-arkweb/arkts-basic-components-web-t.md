@@ -1,10 +1,14 @@
 # Types
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-07T04:38:06.134Z pushedAt=2026-08-07T08:12:34.499Z -->
+
+This document provides the type definitions used in the ArkWeb component, including the Web controller and various event callback function types. The WebviewController is used to control the behavior of the Web component, and the callback function types provide developers with the ability to listen for and handle various event scenarios during the running of the Web component.
 
 > **NOTE**
 >
@@ -22,7 +26,7 @@ Defines methods for the web controller.
 
 | Type    | Description      |
 | ------ | ---------- |
-| [import('../api/@ohos.web.webview').default.WebviewController](./arkts-apis-webview-WebviewController.md)  | Used to control the behavior of the **Web** component. A **WebviewController** object can control only one **Web** component. Methods (except static methods) on the **WebviewController** can be called only after the **Web** component is bound to the **WebviewController**.|
+| [import('../api/@ohos.web.webview').default.WebviewController](./arkts-apis-webview-WebviewController.md) | Controls various behaviors of the Web component through WebviewController. A WebviewController object can control only one Web component, and methods on WebviewController (except static methods) can be called only after the Web component and WebviewController are bound. |
 
 ## OnAdsBlockedCallback<sup>12+</sup>
 
@@ -42,7 +46,7 @@ Defines a callback invoked when ads are blocked on the web page.
 
 type OnSslErrorEventCallback = (sslErrorEvent: SslErrorEvent) => void
 
-Defines a callback invoked when an SSL error occurs during resource loading.
+Callback invoked when an SSL error occurs during resource loading. Returns detailed information about the SSL error.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -50,7 +54,7 @@ Defines a callback invoked when an SSL error occurs during resource loading.
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| sslErrorEvent | [SslErrorEvent](./arkts-basic-components-web-i.md#sslerrorevent12)  | Yes| Details about the callback invoked when an SSL error occurs during resource loading.|
+| sslErrorEvent | [SslErrorEvent](./arkts-basic-components-web-i.md#sslerrorevent12)  | Yes | Detailed information passed when an SSL error occurs during resource loading. |
 
 ## OnVerifyPinCallback<sup>22+</sup>
 
@@ -122,7 +126,7 @@ Defines a callback invoked when the visibility of a same-layer tag changes.
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| nativeEmbedVisibilityInfo | [NativeEmbedVisibilityInfo](./arkts-basic-components-web-i.md#nativeembedvisibilityinfo12)  | Yes| Visibility information about the same-layer tag.|
+| nativeEmbedVisibilityInfo | [NativeEmbedVisibilityInfo](./arkts-basic-components-web-i.md#nativeembedvisibilityinfo12) | Yes | Provides information about visibility changes of same-layer tags.|
 
 ## OnFullScreenEnterCallback<sup>12+</sup>
 
@@ -142,7 +146,7 @@ Defines a callback invoked when the **Web** component enters full screen mode.
 
 type OnFirstMeaningfulPaintCallback = (firstMeaningfulPaint: [FirstMeaningfulPaint](./arkts-basic-components-web-i.md#firstmeaningfulpaint12)) => void
 
-Defines a callback invoked when the first meaningful paint occurs on the page.
+Callback for measuring the first meaningful paint of the main content on the page. This callback is triggered when the page finishes loading the main content. Compared with OnLargestContentfulPaintCallback, which focuses on the paint time of the largest content element, and OnFirstScreenPaintCallback, which focuses on the rendering completion of the first screen's visible content, this callback focuses more on whether the main content has finished loading, making it suitable for evaluating the loading experience of user-visible content.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -156,7 +160,7 @@ Defines a callback invoked when the first meaningful paint occurs on the page.
 
 type OnLargestContentfulPaintCallback = (largestContentfulPaint: [LargestContentfulPaint](./arkts-basic-components-web-i.md#largestcontentfulpaint12)) => void
 
-Defines a callback invoked when the largest content paint occurs on the web page.
+Callback triggered when the largest content area is painted on the web page. Used to obtain performance measurement information for the largest content paint. Applicable to scenarios such as monitoring web page loading performance and optimizing page rendering speed. Compared with OnFirstMeaningfulPaintCallback, which focuses on the completion of main content loading, and OnFirstScreenPaintCallback, which focuses on the rendering completion of the first screen's visible content, this callback focuses on the paint time of the largest content element, making it suitable for evaluating page rendering completeness and performance bottlenecks.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -212,7 +216,7 @@ Defines a callback invoked when the tracker cookie is intercepted.
 
 type OnOverrideUrlLoadingCallback = (webResourceRequest: WebResourceRequest) => boolean
 
-Defines a callback for **onOverrideUrlLoading**.
+Callback used to intercept URL loading requests. It can block the loading of specific URLs or perform custom processing. Applicable to scenarios such as intercepting ads and blocking redirects to malicious websites.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -268,11 +272,11 @@ Defines a callback of **onOverrideErrorPage**. This callback is triggered when a
 | ------- | ------------------------ |
 | string | Base64-encoded HTML text content.|
 
-## MouseInfoCallback<sup>20+<sup>
+## MouseInfoCallback<sup>20+</sup>
 
 type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void
 
-Defines a callback triggered when a same-layer tag is clicked using the mouse or touchpad.
+This callback is triggered when a same-layer tag is clicked using the mouse or touchpad.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -280,13 +284,13 @@ Defines a callback triggered when a same-layer tag is clicked using the mouse or
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-| event | [NativeEmbedMouseInfo](./arkts-basic-components-web-i.md#nativeembedmouseinfo20) | Yes| Detailed information about clicking or touching and holding a same-layer tag using the mouse or touchpad.|
+| event | [NativeEmbedMouseInfo](./arkts-basic-components-web-i.md#nativeembedmouseinfo20) | Yes | Detailed information about the mouse or touchpad click or long press on the same-layer tag. |
 
 **Example**
 
 For details about the sample code, see [onNativeEmbedMouseEvent](./arkts-basic-components-web-events.md#onnativeembedmouseevent20).
 
-## OnNativeEmbedObjectParamChangeCallback<sup>21+<sup>
+## OnNativeEmbedObjectParamChangeCallback<sup>21+</sup>
 
 type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) => void
 
@@ -304,7 +308,7 @@ Defines a callback triggered when the **param** element embedded in the same-lay
 
 For details about the sample code, see [onNativeEmbedObjectParamChange](./arkts-basic-components-web-events.md#onnativeembedobjectparamchange21).
 
-## OnDetectBlankScreenCallback<sup>22+<sup>
+## OnDetectBlankScreenCallback<sup>22+</sup>
 
 type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => void
 
@@ -324,9 +328,9 @@ For details about the sample code, see [onDetectedBlankScreen](./arkts-basic-com
 
 ## OnCameraCaptureStateChangeCallback<sup>23+</sup>
 
-type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) => void;
+type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) => void
 
-Defines a callback triggered when the camera state of the page changes.
+This callback is triggered when the camera device state of the page changes.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -338,7 +342,7 @@ Defines a callback triggered when the camera state of the page changes.
 
 ## OnMicrophoneCaptureStateChangeCallback<sup>23+</sup>
 
-type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChangeInfo) => void;
+type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChangeInfo) => void
 
 Defines a callback triggered when the microphone state of the page changes.
 
@@ -354,7 +358,7 @@ Defines a callback triggered when the microphone state of the page changes.
 
 type TextSelectionChangeCallback = (selectionText: string) => void
 
-Defines a callback triggered when the text selection changes.
+Callback for onTextSelectionChange. Triggered when the text selection content changes.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -368,11 +372,11 @@ Defines a callback triggered when the text selection changes.
 
 For details about the complete sample code, see [onTextSelectionChange](./arkts-basic-components-web-events.md#ontextselectionchange23).
 
-## OnFirstScreenPaintCallback<sup>23+<sup>
+## OnFirstScreenPaintCallback<sup>23+</sup>
 
 type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 
-Defines a callback triggered when the first screen paint is complete.
+This callback is triggered when the first screen rendering is detected to be complete. Compared with OnFirstMeaningfulPaintCallback, which focuses on the completion of main content loading, and OnLargestContentfulPaintCallback, which focuses on the paint time of the largest content element, this callback focuses more on the rendering completion time of the first screen's visible content, making it suitable for evaluating the user's first visual experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -385,3 +389,103 @@ Defines a callback triggered when the first screen paint is complete.
 **Example**
 
 For details about the complete sample code, see [onFirstScreenPaint](./arkts-basic-components-web-events.md#onfirstscreenpaint23).
+
+## OnCreateAISession
+
+type OnCreateAISession = (id: string, params: string, result: OnAISessionCallback) => boolean
+
+AI session creation callback function type. Allows custom model initialization and result processing.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name    | Type                                            | Mandatory | Description                 |
+| ------ | --------------------------------------------- | -- | ------------------ |
+| id     | string                                        | Yes  | Session task ID.            |
+| params | string                                        | Yes  | Context data passed during session creation, in JSON string format.|
+| result | [OnAISessionCallback](#onaisessioncallback) | Yes  | Callback used to notify the system of the session creation result. |
+
+**Return value**
+
+| Type      | Description                                            |
+| ------- | --------------------------------------------- |
+| boolean | The value **true** indicates that custom logic is used, skipping the system default behavior; **false** indicates that the system default logic continues to be executed. |
+
+## OnExecuteAIAction
+
+type OnExecuteAIAction = (id: string, params: string, result: OnAISessionCallback) => void
+
+AI session execution operation callback function type. Used to implement custom AI model execution.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name    | Type                                            | Mandatory | Description                 |
+| ------ | --------------------------------------------- | -- | ------------------ |
+| id     | string                                        | Yes  | Session task ID.            |
+| params | string                                        | Yes  | Context data passed during operation execution, in JSON string format.|
+| result | [OnAISessionCallback](#onaisessioncallback) | Yes  | Callback used to notify the system of the operation execution result. |
+
+## OnDestroyAISession
+
+type OnDestroyAISession = (id: string) => void
+
+AI session destruction callback function type. Used to clean up resources associated with the custom AI model.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type     | Mandatory | Description      |
+| --- | ------ | -- | ------- |
+| id  | string | Yes  | Session task ID. |
+
+## OnAISessionCallback
+
+type OnAISessionCallback = (state: AISessionResultType, content: string) => void
+
+AI session operation result callback function type. Used to report the result of session creation or execution.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name     | Type                                                                             | Mandatory | Description              |
+| ------- | ------------------------------------------------------------------------------ | -- | --------------- |
+| state   | [AISessionResultType](./arkts-basic-components-web-e.md#aisessionresulttype) | Yes  | Status result of AI session creation or execution. |
+| content | string                                                                         | Yes  | Response content of the AI session, in text or JSON format, containing the reply content generated by the AI model.|
+
+## OnInputmethodAttachedCallback
+
+type OnInputmethodAttachedCallback = () => void;
+
+This callback is triggered when the input method is detected to be successfully attached.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Example**
+
+For the complete example, see [onInputmethodAttached](./arkts-basic-components-web-events.md#oninputmethodattached).
+<!--no_check-->

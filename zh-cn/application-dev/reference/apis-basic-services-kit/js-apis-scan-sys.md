@@ -22,7 +22,7 @@ import { scan } from '@kit.BasicServicesKit';
 
 addScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt;void&gt;
 
-添加扫描仪（系统接口）。根据指定的发现模式发现并添加扫描仪设备，添加成功后将触发scanDeviceAdd事件通知。使用Promise异步回调。
+添加扫描仪（系统接口）。根据指定的发现模式发现并添加扫描仪设备，添加成功后将触发scanDeviceAdd事件通知，可通过on('scanDeviceAdd')监听设备添加事件。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -34,8 +34,8 @@ addScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt;vo
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| uniqueId | string | 是 | 扫描仪的唯一ID，可通过getAddedScanners()获取或从scan.on('scanDeviceAdd')事件回调中获得。 |
-| discoveryMode | [ScannerDiscoveryMode](./js-apis-scan.md#scannerdiscoverymode) | 是 | 扫描仪的发现模式，不同模式适用于不同的扫描仪发现场景。 |
+| uniqueId | string | 是 | 扫描仪的唯一ID，由调用方指定，用于标识待添加的扫描仪设备。 |
+| discoveryMode | [ScannerDiscoveryMode](./js-apis-scan.md#scannerdiscoverymode) | 是 | 扫描仪的发现模式。 |
 
 **返回值：**
 

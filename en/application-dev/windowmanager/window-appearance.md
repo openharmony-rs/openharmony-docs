@@ -6,7 +6,7 @@
 <!--Designer: @shinmy; @qinliwen0417-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=58ff40ad92758153f7b55166a9e6e0a0e9be5d28 translatedAt=2026-07-13T09:33:33.311Z pushedAt=2026-07-13T11:30:17.981Z -->
+<!-- md-trans-meta sourceCommit=6d870a1e492d5f49bffa121fefd841c2889e1f2e translatedAt=2026-08-11T10:11:37.125Z pushedAt=2026-08-11T11:30:37.910Z -->
 
 ## When to Use
 
@@ -289,7 +289,7 @@ You can choose to set the background color of the app content area or the window
 
 > **NOTE**
 >
-> - When the [setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20) or [setWindowContainerModalColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainermodalcolor) API is not called to set the window content area background color, the content area background color defaults to following the system color mode: '#FFF0F0F0' in light mode and '#FF1A1A1A' in dark mode.
+> - When the [setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20) or [setWindowContainerModalColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainermodalcolor) API is not called to set the window container area background color, the container area background color defaults to following the system color mode: '#FFF0F0F0' in light mode and '#FF1A1A1A' in dark mode.
 >
 > - The background color can only be set after [loadContent()](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9-1) or [setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9-1) takes effect.
 

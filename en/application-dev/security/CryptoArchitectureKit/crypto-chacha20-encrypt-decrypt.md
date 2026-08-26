@@ -1,4 +1,4 @@
-# Encryption and Decryption with a ChaCha20 Symmetric Key Pair (ArkTS)
+# Encryption and Decryption with a ChaCha20 Symmetric Key (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,18 +6,19 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=9fdfc79fd811dbd3830944fd4ada4372911e5c41 translatedAt=2026-08-07T03:25:59.461Z pushedAt=2026-08-10T10:15:48.399Z -->
 
 The Crypto framework supports this algorithm since API version 22.
 
-For details about the algorithm specifications, see [ChaCha20](crypto-sym-encrypt-decrypt-spec.md#chacha20).
+For details about the algorithm specifications, see [ChaCha20](crypto-encryption-decryption.md#chacha20).
 
-## How to Develop
+## ChaCha20 Symmetric Key Encryption/Decryption
 
 **Creating an Object**
 
 Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a symmetric key (**SymKey**) using ChaCha20.
-   
-   For details about how to generate a ChaCha20 symmetric key, see the following example. To learn more, see [Symmetric Key Generation and Conversion Specifications: ChaCha20](crypto-sym-key-generation-conversion-spec.md#chacha20) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). There may be differences between the input parameters in the reference documents and those in the following example.
+
+   For details about how to generate a ChaCha20 symmetric key, refer to the example below, together with [ChaCha20](crypto-key-generation-conversion.md#chacha20) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). Note that the reference documents and the example may differ in input parameters. Pay attention to the differences.
 
 **Encryption**
 
@@ -29,11 +30,11 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
 
 4. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the encrypted data.
 
-    > **NOTE**
-    >
-    > If data has been passed in by **Cipher.update**, pass in **null** in the **data** parameter of **Cipher.doFinal**.
-    >
-    > The output of **Cipher.doFinal** may be **null**. To avoid exceptions, always check whether the result is **null** before accessing specific data.
+   > **NOTE**
+   >
+   > Since data has been passed in through **update()**, pass **null** for **data** here.
+   >
+   > The output of **doFinal()** may be null. Before accessing the specific data, check whether the result is null to avoid exceptions.
 
 **Decryption**
 
@@ -48,7 +49,7 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
 - Example (using asynchronous APIs):
 
   <!-- @[encrypt_decrypt_chacha20_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20EncryptionDecryptionAsync.ets) -->
-  
+
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -115,11 +116,10 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
   }
   ```
 
-
 - Example (using synchronous APIs):
 
   <!-- @[encrypt_decrypt_chacha20_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20EncryptionDecryptionSync.ets) -->
-  
+
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -154,7 +154,7 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('ChaCha20');
     decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, ivSpec);
-    let decryptData = decoder.updateSync(cipherText);
+    let decryptData = decoder.doFinalSync(cipherText);
     return decryptData;
   }
   
@@ -186,3 +186,217 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
     }
   }
   ```
+
+## ChaCha20 Symmetric Key Encryption/Decryption (Poly1305 Mode)
+
+**Creating an Object**
+
+Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a symmetric key (**SymKey**) with the ChaCha20 algorithm.
+
+   For details about how to generate a ChaCha20 symmetric key, refer to the example below, together with [ChaCha20](crypto-key-generation-conversion.md#chacha20) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). Note that the reference documents and the example may differ in input parameters. Pay attention to the differences.
+
+**Encryption**
+
+1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'ChaCha20|Poly1305'** to create a **Cipher** instance with the ChaCha20 symmetric key type and Poly1305 mode, used to complete the encryption operation.
+
+2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to set the mode to encryption (**cryptoFramework.CryptoMode.ENCRYPT_MODE**), specify the encryption key (**SymKey**) and the encryption parameters (**Poly1305ParamsSpec**) for Poly1305 mode, and initialize the **Cipher** instance for encryption.
+
+3. Call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) to update the data (plaintext).
+
+4. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the encrypted data.
+
+   > **NOTE**
+   >
+   > Since data has been passed in through **update()**, pass **null** for **data** here.
+   >
+   > The output of **doFinal()** may be null. Before accessing the specific data, check whether the result is null to avoid exceptions.
+
+5. Read [Poly1305ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#poly1305paramsspec22).authTag as the authentication information for decryption.
+
+   In Poly1305 mode, extract the last 16 bytes from the encrypted data as the authentication information for decryption initialization.
+
+**Decryption**
+
+1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'ChaCha20|Poly1305'** to create a **Cipher** instance with the ChaCha20 symmetric key type and Poly1305 mode, used to complete the decryption operation.
+
+2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to set the mode to decryption (**cryptoFramework.CryptoMode.DECRYPT_MODE**), specify the decryption key (**SymKey**) and the decryption parameters (**Poly1305ParamsSpec**) for Poly1305 mode, and initialize the **Cipher** instance for decryption.
+
+3. Call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) to update the data (ciphertext).
+
+4. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the decrypted data.
+
+If ChaCha20 (Poly1305 mode) decryption fails with error code 17630001, see [doFinal Call Failure During ChaCha20-Poly1305 Decryption](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#failed-to-call-dofinal-during-decryption-using-chacha20-poly1305).
+
+- Asynchronous method example:
+
+  <!-- @[encrypt_decrypt_chacha20_poly1305_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20Poly1305EncryptionDecryptionAsync.ets) -->
+
+  ``` TypeScript
+  
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
+  
+  function generateRandom(len: number) {
+    let rand = cryptoFramework.createRandom();
+    let generateRandSync = rand.generateRandomSync(len);
+    return generateRandSync;
+  }
+  
+  function genPoly1305ParamsSpec() {
+    let ivBlob = generateRandom(12); // 12 bytes
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
+    let dataAad = new Uint8Array(arr);
+    let aadBlob: cryptoFramework.DataBlob = { data: dataAad };
+    arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // 16 bytes
+    let dataTag = new Uint8Array(arr);
+    let tagBlob: cryptoFramework.DataBlob = {
+      data: dataTag
+    };
+    // The Poly1305 authTag is obtained from the doFinal result during encryption, and passed into the params parameter of the init function during decryption.
+    let poly1305ParamsSpec: cryptoFramework.Poly1305ParamsSpec = {
+      iv: ivBlob,
+      aad: aadBlob,
+      authTag: tagBlob,
+      algName: 'Poly1305ParamsSpec'
+    };
+    return poly1305ParamsSpec;
+  }
+  
+  let poly1305Params = genPoly1305ParamsSpec();
+  
+  // Encrypt the message.
+  async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
+    let cipher = cryptoFramework.createCipher('ChaCha20|Poly1305');
+    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, poly1305Params);
+    let encryptUpdate = await cipher.update(plainText);
+    // In Poly1305 mode encryption, pass null to doFinal to obtain the tag data and update it to the poly1305Params object.
+    poly1305Params.authTag = await cipher.doFinal(null);
+    return encryptUpdate;
+  }
+  // Decrypt the message.
+  async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
+    let decoder = cryptoFramework.createCipher('ChaCha20|Poly1305');
+    await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, poly1305Params);
+    let decryptUpdate = await decoder.update(cipherText);
+    // In Poly1305 mode decryption, pass null to doFinal to verify the tag data passed in during init. An exception is thrown if verification fails.
+    let decryptData = await decoder.doFinal(null);
+    if (decryptData === null) {
+      console.info('poly1305 decrypt result: success, decryptData is null.');
+    }
+    return decryptUpdate;
+  }
+  async function genSymKeyByData(symKeyData: Uint8Array) {
+    let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
+    let chacha20Generator = cryptoFramework.createSymKeyGenerator('ChaCha20');
+    let symKey = await chacha20Generator.convertKey(symKeyBlob);
+    console.info('convertKey result: success.');
+    return symKey;
+  }
+  async function main() {
+    try {
+      let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159,
+        83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
+      let symKey = await genSymKeyByData(keyData);
+      let message = 'This is a test';
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = await encryptMessagePromise(symKey, plainText);
+      let decryptText = await decryptMessagePromise(symKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok.');
+        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+      } else {
+        console.error('decrypt failed.');
+      }
+    } catch (error) {
+      console.error(`decrypt failed: errCode: ${error.code}, message: ${error.message}`);
+    }
+  }
+  ```
+
+- Synchronous method example:
+
+  <!-- @[encrypt_decrypt_chacha20_poly1305_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20Poly1305EncryptionDecryptionSync.ets) -->
+
+  ``` TypeScript
+  
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
+  
+  function generateRandom(len: number) {
+    let rand = cryptoFramework.createRandom();
+    let generateRandSync = rand.generateRandomSync(len);
+    return generateRandSync;
+  }
+  
+  function genPoly1305ParamsSpec() {
+    let ivBlob = generateRandom(12); // 12 bytes
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
+    let dataAad = new Uint8Array(arr);
+    let aadBlob: cryptoFramework.DataBlob = { data: dataAad };
+    arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // 16 bytes
+    let dataTag = new Uint8Array(arr);
+    let tagBlob: cryptoFramework.DataBlob = {
+      data: dataTag
+    };
+    // The authTag of Poly1305 is obtained from the doFinal result during encryption and passed in the params parameter of the init function during decryption.
+    let poly1305ParamsSpec: cryptoFramework.Poly1305ParamsSpec = {
+      iv: ivBlob,
+      aad: aadBlob,
+      authTag: tagBlob,
+      algName: 'Poly1305ParamsSpec'
+    };
+    return poly1305ParamsSpec;
+  }
+  
+  let poly1305Params = genPoly1305ParamsSpec();
+  
+  // Encrypt the message.
+  function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
+    let cipher = cryptoFramework.createCipher('ChaCha20|Poly1305');
+    cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, poly1305Params);
+    let encryptUpdate = cipher.updateSync(plainText);
+    // In poly1305 mode encryption, pass empty to doFinal to obtain the tag data and update it to the poly1305Params object.
+    poly1305Params.authTag = cipher.doFinalSync(null);
+    return encryptUpdate;
+  }
+  // Decrypt the message.
+  function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
+    let decoder = cryptoFramework.createCipher('ChaCha20|Poly1305');
+    decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, poly1305Params);
+    let decryptUpdate = decoder.updateSync(cipherText);
+    // In poly1305 mode decryption, pass empty to doFinal to verify the tag data passed during init. If verification fails, an exception is thrown.
+    let decryptData = decoder.doFinalSync(null);
+    if (decryptData === null) {
+      console.info('poly1305 decrypt result: success, decryptData is null.');
+    }
+    return decryptUpdate;
+  }
+  function genSymKeyByData(symKeyData: Uint8Array) {
+    let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
+    let chacha20Generator = cryptoFramework.createSymKeyGenerator('ChaCha20');
+    let symKey = chacha20Generator.convertKeySync(symKeyBlob);
+    console.info('convertKeySync result: success.');
+    return symKey;
+  }
+  function main() {
+    try {
+      let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159,
+        83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
+      let symKey = genSymKeyByData(keyData);
+      let message = 'This is a test';
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = encryptMessage(symKey, plainText);
+      let decryptText = decryptMessage(symKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok.');
+        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+      } else {
+        console.error('decrypt failed.');
+      }
+    } catch (error) {
+      console.error(`decrypt failed: errCode: ${error.code}, message: ${error.message}`);
+    }
+  }
+  ```
+
+  <!--no_check-->

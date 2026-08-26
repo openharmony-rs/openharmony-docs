@@ -1,12 +1,16 @@
 # Class (WebResourceHandler)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:48:06.185Z pushedAt=2026-08-07T08:11:43.257Z -->
 
-Implements a **WebResourceHandler** object, which can return custom response headers and response bodies to the **Web** component.
+WebResourceHandler is a handler used to return the result of an intercepted request to the **Web** component in custom scheme interception scenarios. After **WebSchemeHandler** decides to intercept a request, the developer uses **WebResourceHandler** to provide a custom response header (**didReceiveResponse**) and response body data (**didReceiveResponseBody**) to the **Web** component, and notifies the request of completion (**didFinish**) or failure (**didFail**). **didFail** supports an overloaded method (API version 20+) to simplify the error handling process. This API enables the app layer to fully customize the response to network requests.
+
+**WebResourceHandler** works with [WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md) and [WebSchemeHandlerResponse](./arkts-apis-webview-WebSchemeHandlerResponse.md): the **onRequestStart** callback of **WebSchemeHandler** receives a **WebResourceHandler** instance, the developer constructs a **WebSchemeHandlerResponse** object, passes the response header and response body data through **didReceiveResponse** and **didReceiveResponseBody** of **WebResourceHandler**, and finally calls **didFinish** or **didFail** to end the request.
 
 > **NOTE**
 >
@@ -26,7 +30,7 @@ import { webview } from '@kit.ArkWeb';
 
 didReceiveResponse(response: WebSchemeHandlerResponse): void
 
-Sends a response header to the intercepted request.
+Passes the constructed response header to the intercepted request. This API must be called before **didFinish** or **didFail**.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -34,7 +38,7 @@ Sends a response header to the intercepted request.
 
 | Name         | Type   |  Mandatory | Description                                           |
 | ---------------| ------- | ---- | ------------- |
-| response      | [WebSchemeHandlerResponse](./arkts-apis-webview-WebSchemeHandlerResponse.md)  | Yes  | Response to send.|
+| response      | [WebSchemeHandlerResponse](./arkts-apis-webview-WebSchemeHandlerResponse.md)  | Yes   | Response to the intercepted request, which is used to pass custom response header information, including the status code and response header fields, to the Web component. The developer must construct this object first and then pass it to the intercepted request through the didReceiveResponse method. |
 
 **Error codes**
 
@@ -53,7 +57,7 @@ For details about the example, see [OnRequestStart](./arkts-apis-webview-WebSche
 
 didReceiveResponseBody(data: ArrayBuffer): void
 
-Sends a response body to the intercepted request.
+Passes the constructed response body to the intercepted request. This API must be called before **didFinish** or **didFail**.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -61,7 +65,7 @@ Sends a response body to the intercepted request.
 
 | Name         | Type   |  Mandatory | Description                                           |
 | ---------------| ------- | ---- | ------------- |
-| data      | ArrayBuffer  | Yes  | Response body.|
+| data      | ArrayBuffer  | Yes   | Binary data of the ArrayBuffer type, used to pass HTTP response body content. Developers need to construct binary data in the corresponding format based on the response content type (such as text, images, JSON, etc.). |
 
 **Error codes**
 
@@ -80,7 +84,7 @@ For details about the example, see [OnRequestStart](./arkts-apis-webview-WebSche
 
 didFinish(): void
 
-Notifies the **Web** component that this request is completed and that no more data is available. Before calling this API, you need to call [didReceiveResponse](#didreceiveresponse12) to send a response header for this request.
+Notifies the **Web** component that the intercepted request is complete and no more data is available. Before calling this API, call [didReceiveResponse](#didreceiveresponse12) to pass in the response header.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -100,7 +104,7 @@ For details about the example, see [OnRequestStart](./arkts-apis-webview-WebSche
 
 didFail(code: WebNetErrorList): void
 
-Notifies the ArkWeb kernel that this request fails. Before calling this API, call [didReceiveResponse](#didreceiveresponse12) to send a response header to this request.
+Notifies the ArkWeb kernel that the intercepted request will fail and ends the network request. Before calling this API, call [didReceiveResponse](#didreceiveresponse12) to pass in the response header.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -108,7 +112,7 @@ Notifies the ArkWeb kernel that this request fails. Before calling this API, cal
 
 | Name  | Type   |  Mandatory | Description                      |
 | --------| ------- | ---- | ---------------------------|
-|  code | [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | Yes  | Network error code.|
+| code | [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | Yes | Network error code, used to identify the cause of the request failure. |
 
 **Error codes**
 
@@ -119,7 +123,6 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 17100021 | The resource handler is invalid. |
 
-
 **Example**
 
 For details about the example, see [OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart12).
@@ -128,7 +131,7 @@ For details about the example, see [OnRequestStart](./arkts-apis-webview-WebSche
 
 didFail(code: WebNetErrorList, completeIfNoResponse: boolean): void
 
-Notifies the ArkWeb engine that the intercepted request should fail. If **completeIfNoResponse** is set to **false**, call [didReceiveResponse](#didreceiveresponse12) first to transfer the constructed response header to the intercepted request. If **completeIfNoResponse** is set to **true** and [didReceiveResponse](#didreceiveresponse12) is not called before this method is called, a response header containing the network error code -104 is automatically generated. For details, see [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist).
+Notifies the ArkWeb kernel that the intercepted request will fail. If **completeIfNoResponse** is set to **false**, call [didReceiveResponse](#didreceiveresponse12) first to pass in the response header. If **completeIfNoResponse** is set to **true** and [didReceiveResponse](#didreceiveresponse12) is not called beforehand, a response header is automatically generated with the network error code -104. For details, see [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -136,8 +139,8 @@ Notifies the ArkWeb engine that the intercepted request should fail. If **comple
 
 | Name  | Type   |  Mandatory | Description                      |
 | --------| ------- | ---- | ---------------------------|
-|  code | [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | Yes  | Network error code.|
-|  completeIfNoResponse | boolean | Yes  | Whether to complete the network request if [didReceiveResponse](#didreceiveresponse12) has not been called before this API is called. The value **true** indicates that when [didReceiveResponse](#didreceiveresponse12) has not been called, a response header containing the network error code -104 is automatically generated to complete the network request. The value **false** indicates that the application will wait for [didReceiveResponse](#didreceiveresponse12) to be called and the response to be passed, and will not complete the network request directly.|
+| code | [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | Yes | Network error code that identifies the cause of the request failure. |
+| completeIfNoResponse | boolean | Yes | Whether to automatically complete this network request when [didReceiveResponse](#didreceiveresponse12) is not called. The value **true** means to automatically generate a response header (with network error code -104) and complete the request, and **false** means to wait for the app to call [didReceiveResponse](#didreceiveresponse12). |
 
 **Error codes**
 
@@ -167,36 +170,36 @@ struct WebComponent {
         .onControllerAttached(() => {
           try {
             this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
-              console.info("[schemeHandler] onRequestStart");
+              console.info('[schemeHandler] onRequestStart');
               try {
-                console.info("[schemeHandler] onRequestStart url:" + request.getRequestUrl());
-                console.info("[schemeHandler] onRequestStart method:" + request.getRequestMethod());
-                console.info("[schemeHandler] onRequestStart referrer:" + request.getReferrer());
-                console.info("[schemeHandler] onRequestStart isMainFrame:" + request.isMainFrame());
-                console.info("[schemeHandler] onRequestStart hasGesture:" + request.hasGesture());
-                console.info("[schemeHandler] onRequestStart header size:" + request.getHeader().length);
-                console.info("[schemeHandler] onRequestStart resource type:" + request.getRequestResourceType());
-                console.info("[schemeHandler] onRequestStart frame url:" + request.getFrameUrl());
+                console.info('[schemeHandler] onRequestStart url:' + request.getRequestUrl());
+                console.info('[schemeHandler] onRequestStart method:' + request.getRequestMethod());
+                console.info('[schemeHandler] onRequestStart referrer:' + request.getReferrer());
+                console.info('[schemeHandler] onRequestStart isMainFrame:' + request.isMainFrame());
+                console.info('[schemeHandler] onRequestStart hasGesture:' + request.hasGesture());
+                console.info('[schemeHandler] onRequestStart header size:' + request.getHeader().length);
+                console.info('[schemeHandler] onRequestStart resource type:' + request.getRequestResourceType());
+                console.info('[schemeHandler] onRequestStart frame url:' + request.getFrameUrl());
                 let header = request.getHeader();
                 for (let i = 0; i < header.length; i++) {
-                  console.info("[schemeHandler] onRequestStart header:" + header[i].headerKey + " " + header[i].headerValue);
+                  console.info('[schemeHandler] onRequestStart header:' + header[i].headerKey + ' ' + header[i].headerValue);
                 }
                 let stream = request.getHttpBodyStream();
                 if (stream) {
-                  console.info("[schemeHandler] onRequestStart has http body stream");
+                  console.info('[schemeHandler] onRequestStart has http body stream');
                 } else {
-                  console.info("[schemeHandler] onRequestStart has no http body stream");
+                  console.info('[schemeHandler] onRequestStart has no http body stream');
                 }
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
 
-              if (request.getRequestUrl().endsWith("example.com")) {
+              if (request.getRequestUrl().endsWith('example.com')) {
                 return false;
               }
 
               try {
-                // Call didFail(WebNetErrorList.ERR_FAILED, true) to automatically construct a network request error ERR_CONNECTION_FAILED.
+                // Directly calls didFail(WebNetErrorList.ERR_FAILED, true). If didReceiveResponse was not called before this, the system automatically generates a response header, and the network error code is -104 (corresponding to ERR_CONNECTION_FAILED).
                 resourceHandler.didFail(WebNetErrorList.ERR_FAILED, true);
               } catch (error) {
                 // When error.code is 17100101(The errorCode is either ARKWEB_NET_OK or outside the range of error codes in WebNetErrorList)
@@ -207,7 +210,7 @@ struct WebComponent {
             })
 
             this.schemeHandler.onRequestStop((request: webview.WebSchemeHandlerRequest) => {
-              console.info("[schemeHandler] onRequestStop");
+              console.info('[schemeHandler] onRequestStop');
             });
 
             this.controller.setWebSchemeHandler('https', this.schemeHandler);

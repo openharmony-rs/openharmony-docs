@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e98b791a1f57fab5012a75ce7d9ff0a0466dd410 translatedAt=2026-07-17T02:52:17.387Z pushedAt=2026-07-17T06:34:34.848Z -->
+<!-- md-trans-meta sourceCommit=307c96700aa31ceaed2d16437f8e9e4fabcbd960 translatedAt=2026-08-19T04:17:40.865Z pushedAt=2026-08-19T07:22:47.608Z -->
 
 ```c
 typedef struct ArkUI_DragEvent ArkUI_DragEvent
@@ -14,7 +14,7 @@ typedef struct ArkUI_DragEvent ArkUI_DragEvent
 
 ## Overview
 
-Defines a drag event, used to represent event information during the drag process of an ArkUI component. You can obtain the drag status and event data through related drag event APIs.
+Defines a drag event, used to represent event information during the drag process of an ArkUI component. You can obtain the drag status and event data through related drag event APIs in the following header file. For details about the drag event binding process, see [Binding Drag Events](../../ui/ndk-drag-event.md).
 
 **Since**: 12
 
