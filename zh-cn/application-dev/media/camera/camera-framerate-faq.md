@@ -14,7 +14,7 @@
 
 帧率设置接口存在调用时机、模式限制以及与录像流的帧率约束关系，未遵循这些规则会导致设置不生效。具体原因如下：
 
-1. [setFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#setframerate12)（ArkTS）或者[OH_PreviewOutput_SetFrameRate](../../reference/apis-camera-kit/capi-preview-output-h.md#oh_previewoutput_setframerate)（C/C++）仅支持在NORMAL_PHOTO或NORMAL_VIDEO模式下调用，在其他模式下调用会返回错误码[7400101 无效入参](../../reference/apis-camera-kit/errorcode-camera.md#7400101-无效入参)（ArkTS）或者[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)里的枚举项CAMERA_INVALID_ARGUMENT（C/C++）。
+1. [setFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#setframerate12)（ArkTS）或者[OH_PreviewOutput_SetFrameRate](../../reference/apis-camera-kit/capi-preview-output-h.md#oh_previewoutput_setframerate)（C/C++）仅支持在NORMAL_PHOTO或NORMAL_VIDEO模式下调用，在其他模式下调用会返回错误码[7400101 无效入参](../../reference/apis-camera-kit/errorcode-camera.md#7400101-无效入参)（ArkTS）或者[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)（C/C++）里的枚举项CAMERA_INVALID_ARGUMENT。
 
 2. [setFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#setframerate12)或者[OH_PreviewOutput_SetFrameRate](../../reference/apis-camera-kit/capi-preview-output-h.md#oh_previewoutput_setframerate)在Session尚未完成[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)（ArkTS）或者[OH_CaptureSession_CommitConfig](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)（C/C++）配流时调用。
 
