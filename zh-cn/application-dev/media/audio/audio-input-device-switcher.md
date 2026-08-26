@@ -197,7 +197,7 @@ ArkTS示例：
 - **应用级：** 通过[selectInputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md#selectinputdevice)选择指定的输入设备，设置成功后对应用下创建的所有录制流生效。
 
   <!-- @[select_InputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
-
+  
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -217,7 +217,7 @@ ArkTS示例：
 - **音频流级：** 通过[selectInputDeviceForAudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md#selectinputdeviceforaudiocapturer)为指定音频录制流选择输入设备，设置成功后仅对该录制流生效。
 
   <!-- @[select_InputDeviceForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
-
+  
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -239,7 +239,7 @@ C/C++示例：
 - **应用级：** 通过[OH_AudioDeviceEnhanceManager_SelectInputDevice](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectinputdevice)选择指定的输入设备。
 
   <!-- @[select_InputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
-
+  
   ``` C++
   // 获取音频设备增强管理器。
   static OH_AudioDeviceEnhanceManager *GetEnhanceManager(std::string &errorMsg)
@@ -312,7 +312,7 @@ C/C++示例：
 - **音频流级：** 通过[OH_AudioDeviceEnhanceManager_SelectInputDeviceForAudioCapturer](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectinputdeviceforaudiocapturer)为指定音频录制流选择输入设备。
 
   <!-- @[select_InputDeviceForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
-
+  
   ``` C++
   // 获取音频设备增强管理器。
   static OH_AudioDeviceEnhanceManager *GetEnhanceManager(std::string &errorMsg)
