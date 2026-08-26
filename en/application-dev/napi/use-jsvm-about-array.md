@@ -1,12 +1,11 @@
 # Working with Arrays Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=2b8002975a0c421d94edbe70b3817da05adefb9a translatedAt=2026-08-12T06:31:13.295Z pushedAt=2026-08-12T10:52:21.336Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-08-26T02:55:21.657Z pushedAt=2026-08-26T03:31:53.917Z -->
 
 ## Introduction
 
@@ -17,14 +16,11 @@ JSVM-API provides APIs for directly managing JavaScript (JS) arrays.
 JSVM-API can be used to create, access, modify, and traverse arrays. Before using JSVM-API to work with arrays, it is helpful if you understand the following concepts:
 
 - **Array creation**: If you need to create a new JavaScript array in a JSVM module, you can use the `OH_JSVM_CreateArray` API to create the array and pass it to the JavaScript layer.
-
 - Array-related operations: You can use the APIs provided by the JSVM module to obtain the length of a JS array, retrieve the element at the specified index, and set the element value of the specified index.
-
 - **TypedArray**: A **TypedArray** object in JS is an array-like view of an underlying binary data buffer. It can be regarded as an array-like data view of the specified type. There is no constructor for **TypedArray** objects, but they can be constructed by their child class constructors. The child classes of **TypedArray** include **Int8Array**, **Uint8Array**, **Uint8ClampedArray**, **Int16Array**, and **Int32Array**.
-
 - **ArrayBuffer**: **ArrayBuffer** is a data struct used to represent a binary data buffer of fixed length.
-
 - **DataView**: **DataView** is a JS view that allows a variety of number types to be read and written in an **ArrayBuffer** object.
+
 
 ## Available APIs
 
@@ -84,7 +80,7 @@ static JSVM_Value CreateArray(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return array;
 }
-// CreateArray register callback
+// Register callback for CreateArray
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateArray},
 };
@@ -93,7 +89,7 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"createArray", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS
+//  Sample JS for testing
 const char *SRC_CALL_NATIVE = R"JS(
   function testCreateArray() {
     return createArray();
@@ -103,11 +99,9 @@ const char *SRC_CALL_NATIVE = R"JS(
 ```
 
 Expected result:
-
 ```txt
 JSVM CreateArray success
 ```
-
 ### OH_JSVM_CreateArrayWithLength
 
 Use **OH_JSVM_CreateArrayWithLength** to create a JS array object of the specified length.
@@ -149,7 +143,7 @@ static JSVM_Value CreateArrayWithLength(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return result;
 }
-// CreateArrayWithLength register callback
+// Register callback for CreateArrayWithLength 
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateArrayWithLength},
 };
@@ -158,7 +152,7 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"createArrayWithLength", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS
+// Sample JS for testing
 const char *SRC_CALL_NATIVE = R"JS(
 let num = 7;
 function testCreateArrayWithLength(num) {
@@ -169,11 +163,9 @@ testCreateArrayWithLength(num);
 ```
 
 Expected result:
-
 ```txt
 JSVM CreateArrayWithLength success
 ```
-
 ### OH_JSVM_CreateTypedarray
 
 Creates a JavaScript TypedArray object on an existing ArrayBuffer. The TypedArray object provides an array-like view over the underlying data buffer, where each element has the same underlying binary scalar data type.
@@ -248,7 +240,7 @@ static JSVM_Value CreateTypedArray(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return typedArray;
 }
-// CreateTypedArray register callback
+// Register callback for CreateTypedArray
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateTypedArray},
 };
@@ -257,7 +249,7 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"createTypedArray", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS
+//  Sample JS for testing
 const char *SRC_CALL_NATIVE = R"JS(
 const type = {
     INT8_ARRAY: 0,
@@ -278,12 +270,10 @@ createTypedArray(type.INT32_ARRAY);
 ```
 
 Expected result:
-
 ```txt
 JSVM CreateTypedArray success
 JSVM CreateTypedArray success
 ```
-
 ### OH_JSVM_CreateDataview
 
 Use **OH_JSVM_CreateDataview** to create a JS **DataView** object based on an **ArrayBuffer**. The **DataView** object provides an array-like view over an underlying data buffer.
@@ -309,20 +299,20 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value args[2] = {nullptr};
     JSVM_Value arrayBuffer = nullptr;
     JSVM_Value result = nullptr;
-    // Byte length of the DataView.
+    // Byte length of the DataView
     size_t byteLength = g_diffValueFour;
-    // Byte offset.
+    // Byte offset
     size_t byteOffset = g_diffValueTwelve;
     // Obtain the parameter information of the callback function.
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
-    // Convert the parameter to the object type.
+    // Convert the parameter to an object type.
     OH_JSVM_CoerceToObject(env, args[0], &arrayBuffer);
-    // Create a DataView object with the specified byte length and byte offset.
+    // Create a DataView object and specify the byte length and byte offset.
     JSVM_Status status = OH_JSVM_CreateDataview(env, byteLength, arrayBuffer, byteOffset, &result);
     // Obtain the pointer and length information of the DataView.
     uint8_t *data = nullptr;
     size_t length = 0;
-    // Assign values to the DataView.
+    // Assign a value to the DataView.
     for (size_t i = 0; i < length; i++) {
         data[i] = static_cast<uint8_t>(i + 1);
     }
@@ -332,7 +322,7 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value returnArrayBuffer = nullptr;
     size_t returnOffset = 0;
     enum InfoType { BYTE_LENGTH, ARRAY_BUFFER, BYTE_OFFSET };
-    // Obtain DataView information.
+    // Obtain the DataView information.
     OH_JSVM_GetDataviewInfo(env, result, &returnLength, (void **)&data, &returnArrayBuffer, &returnOffset);
     JSVM_Value returnResult = nullptr;
     switch (infoType) {
@@ -379,16 +369,16 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return returnResult;
 }
-// CreateDataView register callback
+// Register the CreateDataView callback.
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateDataView},
 };
 static JSVM_CallbackStruct *method = param;
-// CreateDataView method alias for JS calls
+// Alias of the CreateDataView method, for JS to call.
 static JSVM_PropertyDescriptor descriptor[] = {
     {"createDataView", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS
+//  Sample JS for testing
 const char *SRC_CALL_NATIVE = R"JS(
  let BYTE_LENGTH = 0;
  createDataView(new ArrayBuffer(16), BYTE_LENGTH);
@@ -400,13 +390,11 @@ const char *SRC_CALL_NATIVE = R"JS(
 ```
 
 Expected result:
-
 ```txt
 JSVM CreateDataView success, returnLength: 12
 JSVM CreateDataView success, isArraybuffer: 1
 JSVM CreateDataView success, returnOffset: 4
 ```
-
 ### OH_JSVM_GetArrayLength
 
 Use **OH_JSVM_GetArrayLength** to obtain the length of an array.
@@ -454,7 +442,7 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getArrayLength", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS
+//  Sample JS for testing
 const char *SRC_CALL_NATIVE = R"JS(
 let data = [0, 1, 2, 3, 4, 5];
 getArrayLength(data);
@@ -462,11 +450,9 @@ getArrayLength(data);
 ```
 
 Expected result:
-
 ```txt
 JSVM length: 6
 ```
-
 ### OH_JSVM_GetTypedarrayInfo
 
 Use **OH_JSVM_GetTypedarrayInfo** to obtain information about a **TypedArray** object.
@@ -485,25 +471,25 @@ CPP code:
 // Sample method for OH_JSVM_GetTypedarrayInfo
 static JSVM_Value GetTypedArrayInfo(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // Obtain and parse the parameters. The first parameter is the TypedArray data whose information is to be obtained, and the second parameter is the enumeration value of the information type to be obtained.
+    // Obtain and parse the parameters. The first parameter is the TypedArray data whose information is to be obtained, and the second parameter is the enum value of the information type to be obtained.
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
 
-    // Convert the second parameter to the int32 type for comparison.
+    // Convert the second parameter to int32 for comparison.
     int32_t infoTypeParam = 0;
     OH_JSVM_GetValueInt32(env, args[1], &infoTypeParam);
-    // Define an enumeration type whose order and meaning are consistent with the infoType enumeration type on the ArkTS side.
+    // Define an enum type whose order and meaning are consistent with the infoType enum on the ArkTS side.
     enum InfoType { INFO_TYPE, INFO_LENGTH, INFO_ARRAY_BUFFER, INFO_BYTE_OFFSET };
     void *data;
     JSVM_TypedarrayType type;
     size_t byteOffset = 0;
     size_t length = 0;
     JSVM_Value arrayBuffer = nullptr;
-    // Call OH_JSVM_GetTypedarrayInfo to obtain information about the TypedArray data.
+    // Call the API OH_JSVM_GetTypedarrayInfo to obtain the information of the TypedArray data.
     JSVM_Status status = OH_JSVM_GetTypedarrayInfo(env, args[0], &type, &length, &data, &arrayBuffer, &byteOffset);
     JSVM_Value result = nullptr;
-    // Return the corresponding property value of the TypedArray based on the property name.
+    // Return the property value corresponding to the TypedArray based on the property name.
     switch (infoTypeParam) {
         case INFO_TYPE:
             {
@@ -521,7 +507,7 @@ static JSVM_Value GetTypedArrayInfo(JSVM_Env env, JSVM_CallbackInfo info)
             }
         case INFO_LENGTH:
             {
-                // Number of elements in the TypedArray.
+                // Number of elements in the TypedArray
                 JSVM_Value jsvmLength;
                 JSVM_CALL(OH_JSVM_CreateInt32(env, length, &jsvmLength));
                 result = jsvmLength;
@@ -534,7 +520,7 @@ static JSVM_Value GetTypedArrayInfo(JSVM_Env env, JSVM_CallbackInfo info)
             }
         case INFO_BYTE_OFFSET:
             {
-                // Byte offset of the first element of the TypedArray in the underlying native array.
+                // Byte offset of the first element of the TypedArray in the underlying native array
                 JSVM_Value jsvmOffset;
                 JSVM_CALL(OH_JSVM_CreateInt32(env, byteOffset, &jsvmOffset));
                 result = jsvmOffset;
@@ -547,7 +533,7 @@ static JSVM_Value GetTypedArrayInfo(JSVM_Env env, JSVM_CallbackInfo info)
             }
         case INFO_ARRAY_BUFFER:
             {
-                // ArrayBuffer underlying the TypedArray.
+                // ArrayBuffer under the TypedArray
                 bool isArrayBuffer = false;
                 JSVM_CALL(OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer));
                 JSVM_Value isArray = nullptr;
@@ -565,16 +551,16 @@ static JSVM_Value GetTypedArrayInfo(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return result;
 }
-// GetTypedArrayInfo register callback
+// Register the GetTypedArrayInfo callback.
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetTypedArrayInfo},
 };
 static JSVM_CallbackStruct *method = param;
-// GetTypedArrayInfo method alias for JS calls
+// Alias of the GetTypedArrayInfo method, for JS to call.
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getTypedArrayInfo", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS
+//  Sample JS for testing
 const char *SRC_CALL_NATIVE = R"JS(
 // is JSVM_INT8_ARRAY
 getTypedArrayInfo(new Int8Array(3), 0);
@@ -588,14 +574,12 @@ getTypedArrayInfo(new Int8Array(1), 3);
 ```
 
 Expected result:
-
 ```txt
 JSVM GetTypedArrayInfo success, JSVM_INT8_ARRAY: 1
 JSVM GetTypedArrayInfo success, length: 5
 JSVM GetTypedArrayInfo success, isArrayBuffer: 1
 JSVM GetTypedArrayInfo success, byteOffset: 0
 ```
-
 ### OH_JSVM_GetDataviewInfo
 
 Obtains information about a DataView object.
@@ -623,7 +607,7 @@ static void LogGetDataViewInfo(JSVM_Status status, const char *name, int32_t val
 // Sample method for OH_JSVM_GetDataviewInfo
 static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // Obtain and parse the parameters. The first parameter is the DataView data whose information is to be obtained, and the second parameter is the enumeration value of the information type to be obtained.
+    // Obtain and parse the parameters. The first parameter is the DataView data whose information is to be obtained, and the second parameter is the enum value of the information type to be obtained.
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -633,20 +617,18 @@ static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
     void *data = nullptr;
     JSVM_Value arrayBuffer = nullptr;
     size_t byteOffset = 0;
-    // Define an enumeration type whose order and meaning are consistent with the infoType enumeration type on the ArkTS side.
     enum InfoTypeEnum { BYTE_LENGTH, ARRAY_BUFFER, BYTE_OFFSET };
-    // Obtain DataView information.
     JSVM_Status status = OH_JSVM_GetDataviewInfo(env, args[0], &byteLength, &data, &arrayBuffer, &byteOffset);
     JSVM_Value result = nullptr;
     switch (infoType) {
         case BYTE_LENGTH: {
-            // Return the queried DataView length.
+            // Return the length of the queried DataView.
             JSVM_CALL(OH_JSVM_CreateInt32(env, byteLength, &result));
             LogGetDataViewInfo(status, "byteLength", byteLength);
             break;
         }
         case ARRAY_BUFFER: {
-            // Check whether data in Info of DataView is an ArrayBuffer object.
+            // Determine whether the arraybuffer in the DataView info is an arraybuffer.
             bool isArrayBuffer = false;
             JSVM_CALL(OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer));
             OH_JSVM_GetBoolean(env, isArrayBuffer, &result);
@@ -654,7 +636,7 @@ static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
             break;
         }
         case BYTE_OFFSET: {
-            // Return the queried DataView offset.
+            // Return the offset of the queried DataView.
             JSVM_CALL(OH_JSVM_CreateInt32(env, byteOffset, &result));
             LogGetDataViewInfo(status, "byteOffset", byteOffset);
             break;
@@ -665,16 +647,16 @@ static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
     return result;
 }
 
-// GetDataViewInfo register callback
+// Register the GetDataViewInfo callback.
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetDataViewInfo},
 };
 static JSVM_CallbackStruct *method = param;
-// GetDataViewInfo method alias for JS calls
+// Alias of the GetDataViewInfo method, for JS to call.
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getDataViewInfo", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS
+//  Sample JS for testing
 const char *SRC_CALL_NATIVE = R"JS(
 // bytelength
 getDataViewInfo(new DataView(new Int8Array([2, 5]).buffer), 0);
@@ -694,14 +676,12 @@ getDataViewInfo(data, isarraybuffer);
 ```
 
 Expected result:
-
 ```txt
 JSVM GetDataViewInfo success, byteLength: 2
 JSVM GetDataViewInfo fail
 JSVM GetDataViewInfo success, isArrayBuffer: 1
 JSVM GetDataViewInfo success, byteOffset: 0
 ```
-
 ### OH_JSVM_IsArray
 
 Use **OH_JSVM_IsArray** to check whether a JS object is an array.
@@ -734,7 +714,7 @@ static JSVM_Value IsArray(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return returnValue;
 }
-// IsArray register callback
+// Register callback for IsArray
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = IsArray},
 };
@@ -743,7 +723,7 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"isArray", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS
+//  Sample JS for testing
 const char *srcCallNative = R"JS(
 let data = [1, 2, 3, 4, 5];
 isArray(data);
@@ -751,11 +731,9 @@ isArray(data);
 ```
 
 Expected result:
-
 ```txt
 JSVM IsArray success, IsArray: 1
 ```
-
 ### OH_JSVM_SetElement
 
 Use **OH_JSVM_SetElement** to set an element at the specified index for a JS object.
@@ -797,18 +775,16 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"setElement", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS
+//  Sample JS for testing
 const char *SRC_CALL_NATIVE = R"JS(
 setElement(3);
 )JS";
 ```
 
 Expected result:
-
 ```txt
 JSVM SetElement success
 ```
-
 ### OH_JSVM_GetElement
 
 Use **OH_JSVM_GetElement** to obtain the element at the specified index of a JS object.
@@ -844,7 +820,7 @@ static JSVM_Value GetElement(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return result;
 }
-// GetElement register callback
+// Register callback for GetElement
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetElement},
 };
@@ -853,7 +829,7 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getElement", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS
+//  Sample JS for testing
 const char *SRC_CALL_NATIVE = R"JS(
 let arr = [10, 'hello', null, true];
 getElement(arr, 3);
@@ -861,11 +837,9 @@ getElement(arr, 3);
 ```
 
 Expected result:
-
 ```txt
 JSVM GetElement success
 ```
-
 ### OH_JSVM_HasElement
 
 Use **OH_JSVM_HasElement** to check whether a JS object has an element at the specified index.
@@ -912,7 +886,7 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"hasElement", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS
+//  Sample JS for testing
 const char *srcCallNative = R"JS(
 let arr = [10, 'hello', null, true];
 hasElement(arr, 0);
@@ -921,12 +895,10 @@ hasElement(arr, 4);
 ```
 
 Expected result:
-
 ```txt
 JSVM hasElement: 1
 JSVM hasElement: 0
 ```
-
 ### OH_JSVM_DeleteElement
 
 Use **OH_JSVM_DeleteElement** to delete the element at the specified index from a JS object.
@@ -965,7 +937,7 @@ static JSVM_Value DeleteElement(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return result;
 }
-// DeleteElement register callback
+// Register callback for DeleteElement 
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = DeleteElement},
 };
@@ -974,7 +946,7 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"deleteElement", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS
+//  Sample JS for testing
 const char *SRC_CALL_NATIVE = R"JS(
 let arr = [10, 'hello', null, true];
 deleteElement(arr, 0);
@@ -982,11 +954,9 @@ deleteElement(arr, 0);
 ```
 
 Expected result:
-
 ```txt
 JSVM DeleteElement: 1
 ```
-
 ### OH_JSVM_IsDataview
 
 Determines whether a JavaScript object is a DataView object.
@@ -1020,7 +990,7 @@ static JSVM_Value IsDataView(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return isDataView;
 }
-// IsDataView register callback
+// Register callback for IsDataView
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = IsDataView},
 };
@@ -1029,7 +999,7 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"isDataView", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS
+//  Sample JS for testing
 const char *srcCallNative = R"JS(
 let buffer = new ArrayBuffer(16);
 let dataView = new DataView(buffer);
@@ -1038,11 +1008,9 @@ isDataView(dataView);
 ```
 
 Expected result:
-
 ```txt
 JSVM IsDataView: 1
 ```
-
 ### OH_JSVM_IsTypedarray
 
 Use **OH_JSVM_IsTypedarray** to check whether a JS object is a **TypedArray** object.
@@ -1075,7 +1043,7 @@ static JSVM_Value IsTypedarray(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return isTypedArray;
 }
-// IsTypedarray register callback
+// Register callback for IsTypedarray
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = IsTypedarray},
 };
@@ -1084,14 +1052,13 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"isTypedarray", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS
+//  Sample JS for testing
 const char *srcCallNative = R"JS(
 isTypedarray(new Uint16Array([1, 2, 3, 4]));
 )JS";
 ```
 
 Expected result:
-
 ```txt
 JSVM IsTypedarray: 1
 ```
