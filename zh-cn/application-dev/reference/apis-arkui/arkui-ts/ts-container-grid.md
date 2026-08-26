@@ -1367,8 +1367,8 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-l
 
 | 名称         | 类型         | 只读 | 可选 |   说明         |
 | ----------- | ------------ | ---- | ---- | ---------- |
-| totalOffset | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 否 | 否 |  Grid内容相对显示区域的总偏移，单位px。    |
-| totalLength   | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 否 | 否 |  Grid内容总长度，单位px。    |
+| totalOffset | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 否 | 否 |  Grid内容相对显示区域的总偏移，单位vp。    |
+| totalLength   | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 否 | 否 |  Grid内容总长度，单位vp。    |
 
 ## UIGridEvent<sup>19+</sup>
 [typeNode](../js-apis-arkui-typeNode.md)中[getEvent('Grid')](../js-apis-arkui-typeNode.md#geteventgrid19)方法的返回值，可用于给Grid节点设置滚动事件。
