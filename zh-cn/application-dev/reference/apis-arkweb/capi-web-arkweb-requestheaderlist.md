@@ -18,5 +18,7 @@ ArkWeb_RequestHeaderList是HTTP请求头列表结构体，用于在ArkWeb NDK中
 
 **相关模块：** [Web](capi-web.md)
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **所在头文件：** [arkweb_scheme_handler.h](capi-arkweb-scheme-handler-h.md)
 
