@@ -5188,32 +5188,26 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 
 ```js
 
-let devManager;
 let kvStore;
 const KEY_TEST_SYNC_ELEMENT = 'key_test_sync';
 const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
-// create deviceManager
-deviceManager.createDeviceManager('bundleName', (err, value) => {
-  if (!err) {
-    let deviceIds = ['localdeviceId'];
-    try {
-      kvStore.on('syncComplete', function (data) {
-        console.log('Sync dataChange');
-      });
-      kvStore.put(KEY_TEST_SYNC_ELEMENT + 'testSync101', VALUE_TEST_SYNC_ELEMENT, function (err, data) {
-        if (err != undefined) {
-          console.log("put err: " + JSON.stringify(err));
-          return;
-        }
-        console.log('Succeeded in putting data');
-        const mode = distributedData.SyncMode.PULL_ONLY;
-        kvStore.sync(deviceIds, mode, 1000);
-      });
-    } catch (e) {
-      console.log('Sync e' + e);
+let deviceIds = ['localdeviceId'];
+try {
+  kvStore.on('syncComplete', function (data) {
+    console.log('Sync dataChange');
+  });
+  kvStore.put(KEY_TEST_SYNC_ELEMENT + 'testSync101', VALUE_TEST_SYNC_ELEMENT, function (err, data) {
+    if (err != undefined) {
+      console.log("put err: " + JSON.stringify(err));
+      return;
     }
-  }
-});
+    console.log('Succeeded in putting data');
+    const mode = distributedData.SyncMode.PULL_ONLY;
+    kvStore.sync(deviceIds, mode, 1000);
+  });
+} catch (e) {
+  console.log('Sync e' + e);
+}
 ```
 
 ### on('dataChange')<sup>8+</sup>
