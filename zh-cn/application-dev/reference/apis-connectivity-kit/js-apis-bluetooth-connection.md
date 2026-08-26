@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-connection模块提供了蓝牙设备的配对、连接及状态查询等能力。
+connection模块提供了蓝牙设备的配对、连接、状态查询、设备扫描发现、扫描模式设置、电量信息获取及事件订阅等能力，适用于需要在应用中实现蓝牙设备发现、配对、连接和信息查询的场景。
 
 > **说明：**
 >
@@ -637,7 +637,7 @@ getPairedDevices(): Array&lt;string&gt;
 获取已配对蓝牙设备的地址集合。
 
 **需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 （ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC）
 - API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
@@ -884,7 +884,7 @@ try {
 
 setDevicePinCode(deviceId: string, code: string): Promise&lt;void&gt;
 
-蓝牙配对时，弹框提示用户输入PIN码，调用此接口请求用户输入PIN码，完成蓝牙配对。使用Promise异步回调。
+蓝牙配对时，弹框提示用户输入PIN码，调用此接口设置PIN码，完成蓝牙配对。使用Promise异步回调。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -998,7 +998,7 @@ setBluetoothScanMode(mode: ScanMode, duration: number): void
 
 | 参数名      | 类型                    | 必填   | 说明                           |
 | -------- | --------------------- | ---- | ---------------------------- |
-| mode     | [ScanMode](#scanmode) | 是    | 蓝牙扫描模式。当扫描模式为SCAN_MODE_GENERAL_DISCOVERABLE时，超出duration持续时间(不为0)，扫描模式会重新设置为SCAN_MODE_CONNECTABLE。               |
+| mode     | [ScanMode](#scanmode) | 是    | 蓝牙扫描模式。当扫描模式为SCAN_MODE_GENERAL_DISCOVERABLE时，超出duration持续时间（不为0），扫描模式会重新设置为SCAN_MODE_CONNECTABLE。               |
 | duration | number                | 是    | 设备可被发现的持续时间，单位：ms。设置为0则表示持续可发现。 |
 
 **错误码**：
@@ -1404,7 +1404,7 @@ on(type: 'bluetoothDeviceFind', callback: Callback&lt;Array&lt;string&gt;&gt;): 
 - 推荐使用API version 18开始支持的[connection.on('discoveryResult')](#connectionondiscoveryresult18)扫描上报方式，可获取到更多设备信息，包括设备地址、设备信号强度、设备名称和设备类型。
 
 **需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 （ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC）
 - API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
@@ -1500,7 +1500,7 @@ on(type: 'bondStateChange', callback: Callback&lt;BondStateParam&gt;): void
 订阅蓝牙配对状态变化事件。使用Callback异步回调。
 
 **需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 （ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC）
 - API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
@@ -1593,7 +1593,7 @@ on(type: 'pinRequired', callback: Callback&lt;PinRequiredParam&gt;): void
 订阅配对请求事件。使用Callback异步回调。
 
 **需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 （ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC）
 - API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
@@ -1604,7 +1604,7 @@ on(type: 'pinRequired', callback: Callback&lt;PinRequiredParam&gt;): void
 
 | 参数名      | 类型                                       | 必填   | 说明                               |
 | -------- | ---------------------------------------- | ---- | -------------------------------- |
-| type     | string                                   | 是    | 事件回调类型，支持的事件为'pinRequired'，表示配对请求事件。<br>当调用[connection.pairDevice](#connectionpairdevice)发起主动配对，或者本机设备收到其他设备的配对请求时，触发该事件。     |
+| type     | string                                   | 是    | 事件回调类型，支持的事件为'pinRequired'，表示配对请求事件。当调用[connection.pairDevice](#connectionpairdevice)发起主动配对，或者本机设备收到其他设备的配对请求时，触发该事件。收到配对请求后，可调用[connection.setDevicePairingConfirmation](#connectionsetdevicepairingconfirmation)确认或拒绝配对请求。     |
 | callback | Callback&lt;[PinRequiredParam](#pinrequiredparam)&gt; | 是    | 指定订阅的回调函数，会携带配对请求。 |
 
 **错误码**：
@@ -1688,7 +1688,7 @@ on(type: 'discoveryResult', callback: Callback&lt;Array&lt;DiscoveryResult&gt;&g
 - 该上报方式支持获取设备地址、设备信号强度、设备名称和设备类型。
 
 **需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 （ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC）
 - API版本18-24：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
@@ -1732,7 +1732,7 @@ try {
 
 off(type: 'discoveryResult', callback?: Callback&lt;Array&lt;DiscoveryResult&gt;&gt;): void
 
-取消订阅蓝牙设备发现上报事件。
+取消订阅蓝牙设备扫描结果上报事件。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -1873,7 +1873,7 @@ getLastConnectionTime(deviceId: string): Promise&lt;number&gt;
 
 | 参数名    | 类型      | 必填   | 说明                               |
 | ------ | ------- | ---- | -------------------------------- |
-| deviceId | string  | 是    | 表示远端设备MAC地址。例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string  | 是    | 表示对端设备MAC地址。例如："XX:XX:XX:XX:XX:XX"。 |
 
 **返回值**：
 
@@ -1911,16 +1911,16 @@ try {
 
 connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
-连接对端设备支持的profile（只包括A2DP、HFP和HID）。使用Callback异步回调。
+连接对端设备支持的Profile（只包括A2DP、HFP和HID）。使用Callback异步回调。
 - API版本26.0.0之前，需先调用[connection.pairDevice](#connectionpairdevice)发起配对，且仅允许在每次发起配对后30秒内调用此接口一次。
-- 从API版本26.0.0开始，针对A2DP和HFP，调用接口无时间限制，可以在调用[connection.pairDevice](#connectionpairdevice)发起配对后任意时间内进行调用。
-- 当配对成功后，建议先调用[getRemoteProfileUuids](#connectiongetremoteprofileuuids12)主动查询目标设备支持的profile能力。若存在应用需要的能力，才调用此接口。
+- 从API版本26.0.0开始，针对A2DP和HFP，调用接口无时间限制，可以在调用[connection.pairDevice](#connectionpairdevice)发起配对后任意时间内进行调用。针对HID，仍需在每次发起配对后30秒内调用此接口。
+- 当配对成功后，建议先调用[getRemoteProfileUuids](#connectiongetremoteprofileuuids12)主动查询目标设备支持的Profile能力。若存在应用需要的能力，才调用此接口。
 - 需要与接口[connection.disconnectAllowedProfiles](#connectiondisconnectallowedprofiles)配合使用。
-- 从API version 21开始，此接口支持使用对端设备的实际MAC地址进行profile连接。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址进行Profile连接。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**: SystemCapability.Communication.Bluetooth.Core
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1966,12 +1966,12 @@ try {
 
 connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
-连接对端设备支持的profile（只包括A2DP、HFP和HID）。使用Promise异步回调。
+连接对端设备支持的Profile（只包括A2DP、HFP和HID）。使用Promise异步回调。
 - API版本26.0.0之前，需先调用[connection.pairDevice](#connectionpairdevice)发起配对，且仅允许在每次发起配对后30秒内调用此接口一次。
-- 从API版本26.0.0开始，针对A2DP和HFP，调用接口无时间限制，可以在调用[connection.pairDevice](#connectionpairdevice)发起配对后任意时间内进行调用。
-- 当配对成功后，建议先调用[getRemoteProfileUuids](#connectiongetremoteprofileuuids12)主动查询目标设备支持的profile能力。若存在应用需要的能力，才调用此接口。
+- 从API版本26.0.0开始，针对A2DP和HFP，调用接口无时间限制，可以在调用[connection.pairDevice](#connectionpairdevice)发起配对后任意时间内进行调用。针对HID，仍需在每次发起配对后30秒内调用此接口。
+- 当配对成功后，建议先调用[getRemoteProfileUuids](#connectiongetremoteprofileuuids12)主动查询目标设备支持的Profile能力。若存在应用需要的能力，才调用此接口。
 - 需要与接口[connection.disconnectAllowedProfiles](#connectiondisconnectallowedprofiles)配合使用。
-- 从API version 21开始，此接口支持使用对端设备的实际MAC地址进行profile连接。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址进行Profile连接。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -2023,14 +2023,14 @@ try {
 
 disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
-断开对端设备支持的profile（只包括A2DP和HFP）。
+断开对端设备支持的Profile（只包括A2DP和HFP）。
 - 需要与接口[connection.connectAllowedProfiles](#connectionconnectallowedprofiles16)配合使用。
 
 **起始版本**：26.0.0
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：: SystemCapability.Communication.Bluetooth.Core
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2126,11 +2126,11 @@ try {
 
 onAclStateChange(callback: Callback&lt;AclStateResult&gt;): void
 
-订阅蓝牙ACL链路连接状态变化事件。当触发蓝牙ACL链路连接与断开连接时，如订阅此事件，则会收到携带对应设备的地址与连接状态的回调函数。
+订阅蓝牙ACL链路连接状态变化事件。当触发蓝牙ACL链路连接或断开时，如订阅此事件，则会收到携带对应设备的地址与连接状态的回调函数。
 
 **起始版本**：26.0.0
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH 或 （ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC）
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -2140,7 +2140,7 @@ onAclStateChange(callback: Callback&lt;AclStateResult&gt;): void
 
 | 参数名      | 类型                                       | 必填   | 说明                               |
 | -------- | ---------------------------------------- | ---- | -------------------------------- |
-| callback | Callback&lt;[AclStateResult](#aclstateresult)&gt; | 是    | 回调函数，返回蓝牙外设连接状态 |
+| callback | Callback&lt;[AclStateResult](#aclstateresult)&gt; | 是    | 回调函数，返回蓝牙ACL链路连接状态 |
 
 **错误码**：
 
@@ -2173,7 +2173,7 @@ offAclStateChange(callback?: Callback&lt;AclStateResult&gt;): void
 
 **起始版本**：26.0.0
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH 或 （ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC）
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -2250,13 +2250,13 @@ try {
 | 名称              | 类型                                | 只读   | 可选   | 说明               |
 | --------------- | ----------------------------------- | ---- | ---- | ---------------- |
 | majorClass      | [MajorClass](js-apis-bluetooth-constant.md#majorclass)           | 否    | 否    | 主要类型。是蓝牙标准协议中定义的类型字段。   |
-| majorMinorClass | [MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass) | 否    | 否    | 子类型，是在主要类型上基础上进一步细分的类型。是蓝牙标准协议中定义的类型字段。 |
+| majorMinorClass | [MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass) | 否    | 否    | 子类型，是在主要类型基础上进一步细分的类型。是蓝牙标准协议中定义的类型字段。 |
 | classOfDevice   | number                              | 否    | 否    | 设备类型。是蓝牙标准协议中定义的类型字段，包含了[MajorClass](js-apis-bluetooth-constant.md#majorclass)、[MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass)和支持的主要服务这三种设备信息。          |
 
 
 ## BatteryInfo<sup>12+</sup>
 
-描述设备的电量信息。<br>只有支持蓝牙标准协议定义的电量信息AT（Attention）命令（包括：+XEVENT和IPHONEACCEV）的设备才支持上报有效的电量信息。
+描述设备的电量信息。<br>只有支持特定电量信息AT（Attention）命令（包括：+XEVENT和IPHONEACCEV）的设备才支持上报有效的电量信息。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -2264,12 +2264,12 @@ try {
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| batteryLevel  | number | 否    | 否    | 表示设备的电量值。<br>如果该值为-1，表示没有电量信息。   |
-| leftEarBatteryLevel  | number | 否    | 否    | 若是蓝牙耳机设备类型，表示左侧耳机的电量值。<br>如果该值为-1，表示没有电量信息。   |
+| batteryLevel  | number | 否    | 否    | 表示设备的电量值，有效取值范围[0, 100]，单位：%，表示电量百分比；如果该值为-1，表示没有电量信息。   |
+| leftEarBatteryLevel  | number | 否    | 否    | 若是蓝牙耳机设备类型，表示左侧耳机的电量值，有效取值范围[0, 100]，单位：%，表示电量百分比；如果该值为-1，表示没有电量信息。   |
 | leftEarChargeState  | [DeviceChargeState](#devicechargestate12) | 否    | 否    | 若是蓝牙耳机设备类型，表示左侧耳机的充电状态。   |
-| rightEarBatteryLevel  | number | 否    | 否    | 若是蓝牙耳机设备类型，表示右侧耳机的电量值。<br>如果该值为-1，表示没有电量信息。   |
+| rightEarBatteryLevel  | number | 否    | 否    | 若是蓝牙耳机设备类型，表示右侧耳机的电量值，有效取值范围[0, 100]，单位：%，表示电量百分比；如果该值为-1，表示没有电量信息。   |
 | rightEarChargeState  | [DeviceChargeState](#devicechargestate12) | 否    | 否    | 若是蓝牙耳机设备类型，表示右侧耳机的充电状态。   |
-| boxBatteryLevel  | number | 否    | 否    | 若是蓝牙耳机设备类型，表示耳机仓的电量值。<br>如果值该为-1，表示没有电量信息。   |
+| boxBatteryLevel  | number | 否    | 否    | 若是蓝牙耳机设备类型，表示耳机仓的电量值，有效取值范围[0, 100]，单位：%，表示电量百分比；如果该值为-1，表示没有电量信息。   |
 | boxChargeState  | [DeviceChargeState](#devicechargestate12) | 否    | 否    | 若是蓝牙耳机设备类型，表示耳机仓的充电状态。   |
 
 
