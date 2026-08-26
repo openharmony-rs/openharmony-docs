@@ -65,7 +65,13 @@
   <!-- @[customize_a_webtag_and_send_it_to_the_native_side_of_the_application](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets) -->
 
   ``` TypeScript
-  import { Web, Column, Row, Button, Entry, Component, State } from '@kit.ArkUI';
+  import { $rawfile, Button, Column, Component, Entry, Row, State, Web } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import * as testNapi from 'libentry4.so';
+
+  @Entry
+  @Component
+  struct Index {
     // 自定义webTag，在WebviewController创建时作为入参传入，建立controller与webTag的映射关系
     webTag: string = 'ArkWeb1';
     controller: webview.WebviewController = new webview.WebviewController(this.webTag);
@@ -78,6 +84,7 @@
       //初始化web Native Development Kit
       testNapi.nativeWebInit(this.webTag);
     }
+  }
   ```
 
 * C++侧
