@@ -70,6 +70,10 @@ import { InputMethodListDialog } from '@kit.IMEKit';
 ## 属性
 不支持[通用属性](../apis-arkui/arkui-ts/ts-component-general-attributes.md)
 
+##  事件
+
+不支持[通用事件](../apis-arkui/arkui-ts/ts-component-general-events.md)
+
 ## InputMethodListDialog
 
 输入法切换列表弹窗控件。以弹窗形式展示当前系统中已安装的输入法应用列表，支持用户在输入法之间进行切换；对于默认输入法，还提供键盘模式（如单手模式、全屏模式等）的切换入口。
@@ -86,10 +90,7 @@ import { InputMethodListDialog } from '@kit.IMEKit';
 - 前提条件：需先创建[CustomDialogController](../apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)实例并关联InputMethodListDialog，再通过controller的open()方法打开弹窗。
 - 本组件不支持通用属性和通用事件。
 
-## 子组件
-无
-
-## 接口
+### 接口
 InputMethodListDialog({controller: CustomDialogController, patternOptions?: PatternOptions})
 
 **装饰器类型：**@CustomDialog
@@ -125,10 +126,6 @@ InputMethodListDialog({controller: CustomDialogController, patternOptions?: Patt
 | -------- | -------- | -------- | -------- | -------- |
 | icon | [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 否 | 否 | 输入法模式选项的默认（未选中）状态图标资源。<br>使用场景：用于标识每个键盘模式在未选中时的视觉表现形式，用户在弹窗中可据此识别不同的模式选项。<br>使用后效果：设置后，弹窗中该模式选项在未选中状态时显示此图标。<br>说明：需使用Resource类型资源引用（如$r('app.media.xxx')），确保工程resource目录中已添加对应的图标资源文件。不支持string和PixelMap类型的图片资源。 |
 | selectedIcon | [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 否 | 否 | 输入法模式选项的选中状态图标资源。<br>使用场景：用于标识每个键盘模式在选中时的视觉表现形式，与icon形成选中/未选中的视觉区分，帮助用户识别当前选中的模式。<br>使用后效果：设置后，弹窗中该模式选项在选中状态时显示此图标。<br>相关参数间的配合/制约关系：selectedIcon应与icon在视觉风格上保持一致，仅在选中状态标识上有所区别（如增加高亮、边框等），以便用户识别当前选中的模式。每个Pattern中的icon和selectedIcon必须同时设置，缺一不可。 |
-
-##  事件
-
-不支持[通用事件](../apis-arkui/arkui-ts/ts-component-general-events.md)
 
 ##  示例
 
