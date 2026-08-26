@@ -569,7 +569,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：13
 
-**变更信息**：API 13，该权限仅面向MDM应用开放；从API 14开始，开放范围从MDM应用变为更为企业普通应用；从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放。
+**变更信息**：API 13，该权限仅面向MDM应用开放；从API 14开始，开放范围从MDM应用变更为企业普通应用；从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放。
 
 ## ohos.permission.kernel.DISABLE_GOTPLT_RO_PROTECTION
 
@@ -1218,7 +1218,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.SET_WINDOW_ALPHA
 
-允许应用设置主窗容器透明。
+允许应用设置主窗口容器透明。
 
 获取该权限后，应用可以设置主窗口容器背景色。
 
@@ -1234,7 +1234,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.MANAGE_CALL_FOR_DEVICES
 
-允许应用管理通话状态。如获取来电号码、接听、拒接、挂断等.
+允许应用管理通话状态。如获取来电号码、接听、拒接、挂断等。
 
 <!--RP64--><!--RP64End-->
 
