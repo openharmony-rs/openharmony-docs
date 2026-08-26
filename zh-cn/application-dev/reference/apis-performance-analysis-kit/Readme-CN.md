@@ -17,7 +17,7 @@
   - [@ohos.hiviewdfx.FaultLogExtensionContext (故障延迟通知上下文)](js-apis-hiviewdfx-FaultLogExtensionContext.md)
   - [@ohos.hiviewdfx.hiAppEvent (应用事件打点)](js-apis-hiviewdfx-hiappevent.md)
   - [@ohos.hiviewdfx.hiRetrieval (应用灰度)](js-apis-hiretrieval.md)
-  - [@ohos.hiviewdfx.jsLeakWatcher (js泄露检测)](js-apis-jsleakwatcher.md)
+  - [@ohos.hiviewdfx.jsLeakWatcher (ArkTS泄漏检测)](js-apis-jsleakwatcher.md)
   <!--Del-->
   - [@ohos.hiSysEvent (系统事件打点)(系统接口)](js-apis-hisysevent-sys.md)
   - [@ohos.logLibrary (维测日志获取)(系统接口)](js-apis-loglibrary-sys.md)
