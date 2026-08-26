@@ -16,7 +16,10 @@
 
 1. 第三方应用切后台后，系统因隐私保护策略会关闭相机会话，导致切回前台时预览无法恢复。
 
-2. 第三方应用切后台后，系统相机等其他具有更高权限的应用抢占镜头资源，导致当前应用的镜头不可用。系统会通过CameraInput的[on('error')](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#onerror)（ArkTS）或者[OH_CameraInput_OnError](../../reference/apis-camera-kit/capi-camera-input-h.md#oh_camerainput_onerror)（C/C++）回调通知应用，错误码为[7400109 相机设备被抢占](../../reference/apis-camera-kit/errorcode-camera.md#7400109-相机设备被抢占)（ArkTS）或者[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)里的枚举项CAMERA_DEVICE_PREEMPTED（C/C++）。
+2. 第三方应用切后台后，系统相机等其他具有更高权限的应用抢占镜头资源，导致当前应用的镜头不可用。
+
+   - ArkTS：系统会通过CameraInput的[on('error')](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#onerror)回调通知应用，错误码为[7400109 相机设备被抢占](../../reference/apis-camera-kit/errorcode-camera.md#7400109-相机设备被抢占)。
+   - C/C++：系统会通过[OH_CameraInput_OnError](../../reference/apis-camera-kit/capi-camera-input-h.md#oh_camerainput_onerror)回调通知应用，错误码为[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)里的枚举项CAMERA_DEVICE_PREEMPTED。
 
 3. 第三方应用未注册CameraInput的[on('error')](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#onerror)或者[OH_CameraInput_RegisterCallback](../../reference/apis-camera-kit/capi-camera-input-h.md#oh_camerainput_registercallback)监听，无法感知镜头被抢占事件。
 
