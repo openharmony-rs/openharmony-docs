@@ -2774,7 +2774,7 @@ readStringArray(): string[]
 从MessageSequence实例中读取字符串数组。
 
 - 返回新创建的数组，无需预先创建。
-- 数组单个元素的长度范围0-40959字节。
+- 数组单个元素的长度范围[0, 40960)。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
