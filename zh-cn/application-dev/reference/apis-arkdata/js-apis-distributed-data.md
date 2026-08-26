@@ -5191,7 +5191,7 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 let kvStore;
 const KEY_TEST_SYNC_ELEMENT = 'key_test_sync';
 const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
-let deviceIds = ['localdeviceId'];
+const deviceIds = ['networkId1', 'networkId2'];
 try {
   kvStore.on('syncComplete', function (data) {
     console.log('Sync dataChange');
