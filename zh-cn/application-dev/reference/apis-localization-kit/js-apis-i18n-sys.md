@@ -1284,12 +1284,8 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
   try {
     let timeZoneCityItemArray: Array<i18n.TimeZoneCityItem> = i18n.SystemLocaleManager.getTimeZoneCityItemArray();
     for (let i = 0; i < timeZoneCityItemArray.length; i++) {
-        console.info("时区ID：" + timeZoneCityItemArray[i].zoneId);
-        console.info("城市ID：" + timeZoneCityItemArray[i].cityId);
-        console.info("城市名称：" + timeZoneCityItemArray[i].cityDisplayName);
-        console.info("时区偏移量：" + timeZoneCityItemArray[i].offset);
-        console.info("时区名称：" + timeZoneCityItemArray[i].zoneDisplayName);
-        console.info("城市坐标(纬度，经度)：" + timeZoneCityItemArray[i].latitude + "，" + timeZoneCityItemArray[i].longitude);
+        console.info(timeZoneCityItemArray[i].zoneId + ", " + timeZoneCityItemArray[i].cityId + ", " + timeZoneCityItemArray[i].cityDisplayName +
+            ", " + timeZoneCityItemArray[i].offset + "\r\n");
     }
   } catch(error) {
     let err: BusinessError = error as BusinessError;
