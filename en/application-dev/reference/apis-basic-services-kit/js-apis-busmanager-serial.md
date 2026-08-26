@@ -500,7 +500,7 @@ Obtains the status of the Clear to Send (CTS) signal. This API uses a promise to
 - You must call **open()** to open the serial port before calling **getCts()** to obtain the CTS signal.
 - If **getCts()** is called before **open()**, error code 35700005 (Port not open) will be thrown.
 
-The differences between **getCts()** and **getCts()** are as follows:
+The differences between **getCts()** and **getDsr()** are as follows:
 - **getCts()** queries the CTS signal, and the RTS/CTS signal is used to implement hardware-based flow control and determine whether data can be sent. **getDsr()** queries the DSR signal, and the DTR/DSR signal is used to determine whether the communication device is ready.
 
 **Since:** 26.0.0

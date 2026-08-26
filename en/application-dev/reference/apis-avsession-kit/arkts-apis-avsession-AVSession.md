@@ -6,7 +6,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9a22caf3c3d4b139508456d919bc60c8694c4d70 translatedAt=2026-08-24T03:04:37.149Z pushedAt=2026-08-24T11:13:16.211Z -->
+<!-- md-trans-meta sourceCommit=9a22caf3c3d4b139508456d919bc60c8694c4d70 translatedAt=2026-08-24T03:04:37.149Z pushedAt=2026-08-26T01:31:36.716Z -->
 
 After a session is created by calling [avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10), the application can obtain the session instance, and use the instance to obtain the session ID, set metadata, and set the playback state.
 
@@ -3677,7 +3677,7 @@ Unsubscribes from key events. If a callback is specified, the corresponding list
 
 | Name  | Type |   Mandatory| Description    |
 | -------- | --------- | ---- | --------- |
-| type     | string    | Yes   | TType of the event to be unsubscribed from. Currently, only the **'handleKeyEvent'** event is supported.             |
+| type     | string    | Yes   | Type of the event to be unsubscribed from. Currently, only the **'handleKeyEvent'** event is supported.             |
 | callback | (event: [KeyEvent](../apis-input-kit/js-apis-keyevent.md)) => void | No   | Callback used to return the result. The **event** parameter in the callback indicates the key event. This parameter is optional. If it is not specified, all listeners for the related session events are canceled. |
 
 **Error codes**
