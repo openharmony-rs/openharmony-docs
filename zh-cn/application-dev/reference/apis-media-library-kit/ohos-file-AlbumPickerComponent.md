@@ -8,7 +8,7 @@
 
 AlbumPickerComponent适用于需要在应用内展示相册列表让用户选择相册浏览图片或视频的场景，例如社交媒体应用中让用户选择相册进行照片上传。通过此组件，应用无需申请相册访问权限即可访问公共目录中的相册列表，相比传统需要申请权限的相册访问方案，简化了权限申请流程，降低了开发成本，提升了用户体验。
 
-需配合[PhotoPickerComponent](ohos-file-PhotoPickerComponent.md)一起使用。用户选择相册后，系统触发onAlbumClick回调并将AlbumInfo（包含相册URI和名称）传递给应用；应用需通过AlbumPickerController或其他方式将uri传递给PhotoPickerComponent以刷新显示对应相册的图片和视频。详细协作机制请参见PhotoPickerComponent文档。
+需配合[PhotoPickerComponent](ohos-file-PhotoPickerComponent.md)一起使用。用户选择相册后，系统触发onAlbumClick回调并将AlbumInfo（包含相册URI和名称）传递给应用；应用需通过PickerController将uri传递给PhotoPickerComponent以刷新显示对应相册的图片和视频。详细协作机制请参见PhotoPickerComponent文档。
 
 AlbumPickerComponent不支持嵌套，且不应在其上覆盖设置overlay属性或更高层级组件，以免导致手势事件失效。
 
@@ -140,7 +140,7 @@ struct PickerDemo {
     Stack() {
       AlbumPickerComponent({
         albumPickerOptions: this.albumPickerOptions,
-        onAlbumClick:(albumInfo: AlbumInfo): boolean => this.onAlbumClick(albumInfo),
+        onAlbumClick: (albumInfo: AlbumInfo): boolean => this.onAlbumClick(albumInfo),
         onEmptyAreaClick: this.emptyAreaClickCallback,
       }).height('100%').width('100%')
     }

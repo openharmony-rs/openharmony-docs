@@ -20,7 +20,7 @@ PhotoPickerComponent不支持嵌套，且不应在其上覆盖设置overlay属�
 ## 导入模块
 
 ```ts
-// 在API version 23之前的版本中，需要使用 'import { api1, api2, ... } from "@ohos.file.PhotoPickerComponent"'的导入方式。
+// 在API version 23之前的版本中，需要使用 "import { api1, api2, ... } from '@ohos.file.PhotoPickerComponent'"的导入方式。
 import {
   PhotoPickerComponent, PickerController, PickerOptions,
   DataType, BaseItemInfo, ItemInfo, PhotoBrowserInfo, ItemType, ClickType,
@@ -230,136 +230,137 @@ import {
 import { ClickResult, ItemClickedNotifyCallback } from '@ohos.file.PhotoPickerComponent';
 
 interface Checks {
-    isOnClicked: boolean;
-    isOnClickedNotify: boolean;
+  isOnClicked: boolean;
+  isOnClickedNotify: boolean;
 }
 
 export interface ClickResultEx {
-    uri: string,
-    isSelected: boolean,
+  uri: string,
+  isSelected: boolean,
 }
 
 @Entry
 @Component
 struct PickerPage {
-@State pickerController: PickerController = new PickerController();
-private pickerOptions: PickerOptions = new PickerOptions();
-@State currentUri: string = '';
-@State currentState: number = 0;
-@State clickedUris: Map<string, ClickResultEx> = new Map();
-private isOnClicked: boolean = false;
-private isOnClickedNotify: boolean = false;
-
-    onClicked: (itemInfo: ItemInfo, clickType: ClickType) => boolean = (itemInfo: ItemInfo, clickType: ClickType) => {
-        return true;
-    };
-    // 当一个宫格被点击时，代码会验证该宫格对应URI是否有效，如无效，则忽略。
-    // 然后，会检查 clickedUris 中是否已存在该URI的记录。如没有，则创建一条记录并将 isSelected 属性设置为 true。
-    // 如果记录存在，则将该记录的 isSelected 属性更新为 true。
-    // 数据保存完成后点击“setClickResult”按钮，会调用addData(SET_ITEM_CLICK_RESULT)将对应宫格设置为选中状态。
-    onClickedNotify: ItemClickedNotifyCallback = (itemInfo: ItemInfo, clickType: ClickType) => {
-        if (!itemInfo.uri) {
-            return;
-        }
-
-        let clickResult = this.clickedUris.get(itemInfo.uri);
-        if (!clickResult) {
-            clickResult = {
-                uri: itemInfo.uri,
-                isSelected: true,
-            };
-        } else {
-            clickResult.isSelected = true;
-        }
-        this.clickedUris.set(itemInfo.uri, clickResult);
-    };
-
-    aboutToAppear(): void {
-        let params = this.getUIContext().getRouter().getParams() as Checks;
-
-        this.pickerOptions.isSlidingSelectionSupported = true;
-        this.pickerOptions.isSearchSupported = false;
-        this.isOnClicked = params.isOnClicked;
-        // 从index.ets页面获取参数。
-        this.isOnClickedNotify = params.isOnClickedNotify;
-        this.pickerOptions.maxPhotoSelectNumber = 500;
+  @State pickerController: PickerController = new PickerController();
+  private pickerOptions: PickerOptions = new PickerOptions();
+  @State currentUri: string = '';
+  @State currentState: number = 0;
+  @State clickedUris: Map<string, ClickResultEx> = new Map();
+  private isOnClicked: boolean = false;
+  private isOnClickedNotify: boolean = false;
+  onClicked: (itemInfo: ItemInfo, clickType: ClickType) => boolean = (itemInfo: ItemInfo, clickType: ClickType) => {
+    return true;
+  };
+  // 当一个宫格被点击时，代码会验证该宫格对应URI是否有效，如无效，则忽略。
+  // 然后，会检查 clickedUris 中是否已存在该URI的记录。如没有，则创建一条记录并将 isSelected 属性设置为 true。
+  // 如果记录存在，则将该记录的 isSelected 属性更新为 true。
+  // 数据保存完成后点击“setClickResult”按钮，会调用addData(SET_ITEM_CLICK_RESULT)将对应宫格设置为选中状态。
+  onClickedNotify: ItemClickedNotifyCallback = (itemInfo: ItemInfo, clickType: ClickType) => {
+    if (!itemInfo.uri) {
+      return;
     }
 
-    // 从this.clickedUris获取这些URI，后续在调用pickerController.addData()设置宫格item选中时使用。
-    getClickedUris(): ClickResultEx[] {
-      let clickResultEx: ClickResultEx[] = [];
-      this.clickedUris.forEach((clickResult: ClickResultEx, uri: string) => {
-        clickResultEx.push(clickResult)
-      })
-      return clickResultEx;
+    let clickResult = this.clickedUris.get(itemInfo.uri);
+    if (!clickResult) {
+      clickResult = {
+        uri: itemInfo.uri,
+        isSelected: true,
+      };
+    } else {
+      clickResult.isSelected = true;
     }
+    this.clickedUris.set(itemInfo.uri, clickResult);
+  };
 
-    build() {
+  aboutToAppear(): void {
+    let params = this.getUIContext().getRouter().getParams() as Checks;
+
+    this.pickerOptions.isSlidingSelectionSupported = true;
+    this.pickerOptions.isSearchSupported = false;
+    this.isOnClicked = params.isOnClicked;
+    // 从index.ets页面获取参数。
+    this.isOnClickedNotify = params.isOnClickedNotify;
+    this.pickerOptions.maxPhotoSelectNumber = 500;
+  }
+
+  // 从this.clickedUris获取这些URI，后续在调用pickerController.addData()设置宫格item选中时使用。
+  getClickedUris(): ClickResultEx[] {
+    let clickResultEx: ClickResultEx[] = [];
+    this.clickedUris.forEach((clickResult: ClickResultEx, uri: string) => {
+      clickResultEx.push(clickResult)
+    })
+    return clickResultEx;
+  }
+
+  build() {
+    Column() {
+      Row() {
+        // 照片选择器组件调用。
+        PhotoPickerComponent({
+          pickerOptions: this.pickerOptions,
+          pickerController: this.pickerController,
+          onItemClicked: this.isOnClicked ? this.onClicked : undefined,
+          onItemClickedNotify: this.isOnClickedNotify ? this.onClickedNotify : undefined,
+          onSelect: (uri: string) => {
+          },
+          onDeselect: (uri: string) => {
+          }
+        })
+      }.height('50%')
+
+      Row() {
         Column() {
+          Text('Selected assets')
+          ForEach(this.getClickedUris(), (res: ClickResultEx) => {
             Row() {
-                // 照片选择器组件调用。
-                PhotoPickerComponent({
-                    pickerOptions: this.pickerOptions,
-                    pickerController: this.pickerController,
-                    onItemClicked: this.isOnClicked ? this.onClicked : undefined,
-                    onItemClickedNotify: this.isOnClickedNotify ? this.onClickedNotify : undefined,
-                    onSelect: (uri: string) => {},
-                    onDeselect: (uri: string) => {}
-                })
-            }.height('50%')
-
-            Row() {
-                Column() {
-                    Text('Selected assets')
-                    ForEach(this.getClickedUris(), (res: ClickResult) => {
-                        Row() {
-                            // 能够移除选择或添加选择。
-                            Checkbox({ name: "OnClick" })
-                                .select(res.isSelected)
-                                .onChange((checked: boolean) => {
-                                    let clickResult = this.clickedUris.get(res.uri);
-                                    if (!clickResult) {
-                                        clickResult = {
-                                            uri: res.uri,
-                                            isSelected: checked
-                                        };
-                                    } else {
-                                        clickResult.isSelected = checked;
-                                    }
-                                    if (res.uri !== 'abnormal') {
-                                        this.clickedUris.set(res.uri, clickResult);
-                                    }
-                                }).margin({ right: 5 })
-                            Text(res.uri.slice(-30)).margin({right: 5}).width(150)
-                            // 从 this.clickeduris 中移除选择项。
-                            Button('Delete').onClick(() => {
-                                this.clickedUris.delete(res.uri);
-                            })
-                            // 此处代码为异常场景样例，当传入异常URI时，picker宫格选中不生效。
-                            Button('Abnormal').onClick(() => {
-                                let clickResult = this.clickedUris.get(res.uri);
-                                if (clickResult) {
-                                    let oldClickUri = clickResult.uri;
-                                    clickResult.uri = 'abnormal'
-                                    this.clickedUris.set(oldClickUri, clickResult)
-                                }
-                            })
-                        }.width('100%')
-                    })
+              // 能够移除选择或添加选择。
+              Checkbox({ name: "OnClick" })
+                .select(res.isSelected)
+                .onChange((checked: boolean) => {
+                  let clickResult = this.clickedUris.get(res.uri);
+                  if (!clickResult) {
+                    clickResult = {
+                      uri: res.uri,
+                      isSelected: checked
+                    };
+                  } else {
+                    clickResult.isSelected = checked;
+                  }
+                  if (res.uri !== 'abnormal') {
+                    this.clickedUris.set(res.uri, clickResult);
+                  }
+                }).margin({ right: 5 })
+              Text(res.uri.slice(-30)).margin({ right: 5 }).width(150)
+              // 从 this.clickeduris 中移除选择项。
+              Button('Delete').onClick(() => {
+                this.clickedUris.delete(res.uri);
+              })
+              // 此处代码为异常场景样例，当传入异常URI时，picker宫格选中不生效。
+              Button('Abnormal').onClick(() => {
+                let clickResult = this.clickedUris.get(res.uri);
+                if (clickResult) {
+                  let oldClickUri = clickResult.uri;
+                  clickResult.uri = 'abnormal'
+                  this.clickedUris.set(oldClickUri, clickResult)
                 }
-            }.height('20%')
-
-            Row() {
-                // 发送URI(SET_ITEM_CLICK_RESULT)。
-                Button('Set ClickResult')
-                    .onClick(() => {
-                        this.pickerController.addData(DataType.SET_ITEM_CLICK_RESULT, this.getClickedUris())
-                    })
-            }.height('10%')
+              })
+            }.width('100%')
+          })
         }
-    .height('100%')
-            .width('100%')
+      }.height('20%')
+
+      Row() {
+        // 发送URI(SET_ITEM_CLICK_RESULT)。
+        Button('Set ClickResult')
+          .onClick(() => {
+            this.pickerController.addData(DataType.SET_ITEM_CLICK_RESULT, this.getClickedUris())
+          })
+      }.height('10%')
     }
+    .height('100%')
+    .width('100%')
+  }
 }
 ```
 
@@ -1243,6 +1244,7 @@ struct PickerDemo {
   private videoPlayStateChanged(state: VideoPlayerState): void {
     // 当视频播放状态变化时回调。
   }
+
   build() {
     Flex({
       direction: FlexDirection.Column,
@@ -1334,6 +1336,7 @@ struct PickerDemo {
 // xxx.ets
 import { display } from '@kit.ArkUI';
 import { PhotoPickerComponent, PickerController, PickerOptions } from '@kit.MediaLibraryKit';
+
 const enum DrawerState {
   // 展开状态。
   EXPANDING,
@@ -1389,8 +1392,8 @@ struct Drawer {
     // 状态变更为展开状态，同时设置宫格不能滑动。
     this.drawerState = DrawerState.EXPANDING;
     await this.pickerController.updatePickerOptions({
-    isSlidingSupported: false
-  })
+      isSlidingSupported: false
+    })
   }
 
   private toggleDrawer() {
@@ -1514,7 +1517,7 @@ struct Drawer {
       .translate({ y: this.offsetY })
       .gesture(
         PanGesture({ direction: PanDirection.Vertical })
-          // 记录抽屉开始拖拽的位置。
+        // 记录抽屉开始拖拽的位置。
           .onActionStart((event: GestureEvent) => {
             this.startY = event.fingerList[0].globalY || 0;
             this.currentOffset = this.offsetY;
@@ -1540,7 +1543,7 @@ struct Drawer {
             }
             this.offsetY = newOffset;
           })
-          .onActionEnd(()=>{
+          .onActionEnd(() => {
             // 手势结束，根据位置自动展开或收起。
             if (this.offsetY > this.drawerHeight / 2) {
               // 滑动超过抽屉高度一半，抽屉状态置为收缩状态。
