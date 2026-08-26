@@ -2412,7 +2412,7 @@ struct Index {
             });
           }
           catch (e) {
-            hilog.error(DOMAIN, TAG, `exception occured, errCode ${JSON.stringify(e.code)}`);
+            hilog.error(DOMAIN, TAG, `exception occurred, errCode ${JSON.stringify(e.code)}`);
           }
         })
     }
