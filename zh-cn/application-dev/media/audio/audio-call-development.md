@@ -47,6 +47,7 @@ ArkTS-Dyn示例：
 
 <!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
 
+<div class="same-source-code">
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
 import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
@@ -231,6 +232,11 @@ async function release() {
   }
 }
 ```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets?same_code_link_text=all_VoIPDemoForAudioRenderer" target="_blank" rel="nofollow">VoIpDemoForAudioRenderer.ets</a></p>
+
+</div>
+
 
 ArkTS-Sta示例：
 
