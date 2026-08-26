@@ -20,7 +20,7 @@
 
 3. 设置非固定帧率后，再次调用[setFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#setframerate12)或者[OH_PreviewOutput_SetFrameRate](../../reference/apis-camera-kit/capi-preview-output-h.md#oh_previewoutput_setframerate)重新设置，该操作不被支持。
 
-4. 设置固定帧率后重新设置时，新帧率与已设置帧率之间不满足整除关系，会返回错误码[7400110 与当前配置存在冲突](../../reference/apis-camera-kit/errorcode-camera.md#7400110-与当前配置存在冲突)（ArkTS）或者[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)里的枚举项CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS（C/C++）。
+4. 设置固定帧率后重新设置时，新帧率与已设置帧率之间不满足整除关系，会返回错误码[7400110 与当前配置存在冲突](../../reference/apis-camera-kit/errorcode-camera.md#7400110-与当前配置存在冲突)（ArkTS）或者[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)里的枚举项CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS。
 
 5. 预览流帧率与录像流帧率约束不匹配。
    - 当录像流已设置范围帧率时，预览流未设置相同的范围帧率。
