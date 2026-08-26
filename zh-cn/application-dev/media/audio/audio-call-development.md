@@ -45,7 +45,6 @@
 
 <!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
 
-<div class="same-source-code">
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
 import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
@@ -231,11 +230,6 @@ async function release() {
 }
 ```
 
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets?same_code_link_text=all_VoIPDemoForAudioRenderer" target="_blank" rel="nofollow">VoIpDemoForAudioRenderer.ets</a></p>
-
-</div>
-
-
 ### 使用AudioCapturer录制本端的通话声音
 
 该过程与[使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)过程相似，关键区别在于audioCapturerInfo参数和音频数据流向。audioCapturerInfo参数中音源类型source需设置为语音通话：SOURCE_TYPE_VOICE_COMMUNICATION。
@@ -244,7 +238,6 @@ async function release() {
 
 <!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->
 
-<div class="same-source-code">
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
 import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
@@ -387,8 +380,3 @@ async function release() {
   }
 }
 ```
-
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets?same_code_link_text=all_VoIPDemoForAudioCapturer" target="_blank" rel="nofollow">VoIpDemoForAudioCapturer.ets</a></p>
-
-</div>
-
