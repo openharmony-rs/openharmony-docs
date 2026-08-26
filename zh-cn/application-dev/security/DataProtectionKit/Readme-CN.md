@@ -9,7 +9,7 @@
 - [Data Protection Kit简介](dlp-overview.md)
 - 数据防泄露（DLP）<!--dlp-->
   - [数据防泄露（DLP）简介](dlp-guidelines.md)
-  - [开发准备（DLP）](development-preparation.md)
+  - [开发准备（DLP）](dlp-development-preparation.md)
   - [查询DLP文件权限策略](query-dlp-file-permission-policy.md)
   - [设置DLP文件防护策略](dlp-file-enterprise-policy-settings.md)
   - [生成、还原DLP加密文件](dlp-file-generate-and-decrypt.md)
