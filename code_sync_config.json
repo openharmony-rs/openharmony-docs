@@ -37067,6 +37067,51 @@
 						"start_line":17
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets",
+				"functions":[
+					{
+						"end_line":75,
+						"name":"isEnhancedRoutingSupported",
+						"start_line":17
+					},
+					{
+						"end_line":146,
+						"name":"select_InputDevice",
+						"start_line":19
+					},
+					{
+						"end_line":206,
+						"name":"select_InputDeviceForAudioCapturer",
+						"start_line":21
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"header_file",
+						"start_line":17
+					},
+					{
+						"end_line":162,
+						"name":"isEnhancedRoutingSupported",
+						"start_line":143
+					},
+					{
+						"end_line":228,
+						"name":"select_InputDevice",
+						"start_line":32
+					},
+					{
+						"end_line":308,
+						"name":"select_InputDeviceForAudioCapturer",
+						"start_line":34
+					}
+				]
 			}
 		]
 	},
@@ -37209,6 +37254,51 @@
 						"end_line":322,
 						"name":"audioSessionManager_setMediaOutputDevice",
 						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets",
+				"functions":[
+					{
+						"end_line":75,
+						"name":"isEnhancedRoutingSupported",
+						"start_line":17
+					},
+					{
+						"end_line":117,
+						"name":"select_OutputDevice",
+						"start_line":18
+					},
+					{
+						"end_line":176,
+						"name":"select_OutputDeviceForAudioRenderer",
+						"start_line":20
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"header_file",
+						"start_line":17
+					},
+					{
+						"end_line":162,
+						"name":"isEnhancedRoutingSupported",
+						"start_line":143
+					},
+					{
+						"end_line":195,
+						"name":"select_OutputDevice",
+						"start_line":31
+					},
+					{
+						"end_line":268,
+						"name":"select_OutputDeviceForAudioRenderer",
+						"start_line":33
 					}
 				]
 			}
