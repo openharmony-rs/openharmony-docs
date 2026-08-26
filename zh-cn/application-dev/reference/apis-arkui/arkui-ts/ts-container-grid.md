@@ -1049,8 +1049,8 @@ onEditModeChange(callback: Callback\<boolean\> | undefined)
 
 | 名称         | 类型         | 只读 | 可选 |   说明         |
 | ----------- | ------------ | ---- | ---- | ---------- |
-| totalOffset | number | 否 | 否 |  Grid内容相对显示区域的总偏移，单位px。    |
-| totalLength   | number | 否 | 否 |  Grid内容总长度，单位px。    |
+| totalOffset | number | 否 | 否 |  Grid内容相对显示区域的总偏移，单位vp。    |
+| totalLength   | number | 否 | 否 |  Grid内容总长度，单位vp。    |
 
 ## UIGridEvent<sup>19+</sup>
 frameNode中[getEvent('Grid')](../js-apis-arkui-frameNode.md#geteventgrid19)方法的返回值，可用于给Grid节点设置滚动事件。
