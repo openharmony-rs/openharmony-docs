@@ -333,10 +333,11 @@ ImageSource的初始化选项。
 
 | 名称              | 类型                               | 只读 | 可选 | 说明               |
 | ----------------- | ---------------------------------- | ---- | ---- | ------------------ |
-| svgResourceLimitLevel | [SVGResourceLimitLevel](#svgresourcelimitlevel)   | 否   | 是   | SVG(Scalable Vector Graphics)图像解析和绘制时使用的资源限制，该限制于SVG元数据解析前生效，因此也应用于图像信息获取。该限制对非SVG图像无效。默认值：默认值为NONE，它使用系统定义的默认资源限制，不会禁用SVG资源保护。<br>**起始版本：** 26.1.0 |
+| svgResourceLimitLevel | [SVGResourceLimitLevel](#svgresourcelimitlevel)   | 否   | 是   | SVG（Scalable Vector Graphics）图像解析和绘制时使用的资源限制。该限制对非SVG图像无效，于SVG元数据解析前生效，因此也应用于图像信息获取。<br>默认值为NONE，它使用系统定义的默认资源限制，不会禁用SVG资源保护。<br>**起始版本：** 26.1.0 |
 
 ## SVGResourceLimitLevel
-SVG资源限制等级枚举。
+表示SVG资源限制等级的枚举。
+
 更高等级允许解析和绘制SVG图像时使用更少的资源，无论指定哪种等级，系统资源限制都会实施。
 
 **起始版本：** 26.1.0
