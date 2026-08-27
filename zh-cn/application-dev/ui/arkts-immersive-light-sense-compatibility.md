@@ -53,23 +53,23 @@ struct ComponentLevelCompatibility {
 
 应用级ENABLE模式下，Select呈现沉浸式系统材质样式：
 
-<div align=center><img src="figures/select-material-on.jpg" width="35%"/></div>
+![selectMaterialOn](figures/select-material-on.jpg)
 
 应用级在非ENABLE模式下，Select按钮背景为白色，呈现默认样式：
 
-<div align=center><img src="figures/select-material-off.jpg" width="35%"/></div>
+![selectMaterialOff](figures/select-material-off.jpg)
 
 ## 组件级开启的兼容性适配方案
 
-组件级接入通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性为单个组件设置沉浸式系统材质，该属性及[ImmersiveMaterial](../reference/apis-arkui/arkts-apis-uimaterial.md#immersivematerial)类均从API版本26.0.0开始支持，在低版本上不可用。
+组件级开启通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性为单个组件设置沉浸式系统材质，该属性及[ImmersiveMaterial](../reference/apis-arkui/arkts-apis-uimaterial.md#immersivematerial)类均从API版本26.0.0开始支持，在低版本上不可用。
 
 **兼容性适配方案：**
 
-通过[@ohos.deviceInfo (设备信息)](../reference/apis-basic-services-kit/js-apis-device-info.md)提供的deviceInfo.sdkApiVersion判断系统软件API版本是否不低于26.0.0。不低于26.0.0时，通过systemMaterial为组件设置ImmersiveMaterial材质；低于26.0.0时，将systemMaterial设置为[uiMaterial.Material.empty](../reference/apis-arkui/arkts-apis-uimaterial.md#empty)，显式清空材质效果，使组件保持原有的背景色等样式设置，保证低版本上的显示效果。
+通过[@ohos.deviceInfo (设备信息)](../reference/apis-basic-services-kit/js-apis-device-info.md)提供的deviceInfo.sdkApiVersion判断系统软件API版本是否不低于API版本26.0.0。不低于26.0.0时，通过systemMaterial为组件设置ImmersiveMaterial材质；低于26.0.0时，将systemMaterial设置为[uiMaterial.Material.empty](../reference/apis-arkui/arkts-apis-uimaterial.md#empty)，显式清空材质效果，使组件保持原有的背景色等样式设置，保证低版本上的显示效果。
 
 **示例：**
 
-以下示例以Select组件为例，通过deviceInfo.sdkApiVersion判断系统软件API版本：不低于26.0.0时，为组件设置材质样式为THIN的ImmersiveMaterial；低于26.0.0时，将systemMaterial设置为uiMaterial.Material.empty清空材质效果，组件保持原有样式。
+以下以Select组件为例，通过deviceInfo.sdkApiVersion判断系统软件API版本：不低于26.0.0时，为组件设置材质样式为THIN的ImmersiveMaterial；低于26.0.0时，将systemMaterial设置为uiMaterial.Material.empty清空材质效果，组件保持原有样式。
 
 ```ts
 import { uiMaterial } from '@kit.ArkUI';
@@ -103,8 +103,8 @@ struct ComponentLevelCompatibility {
 
 系统软件API版本低于26.0.0时，组件保持原有样式：
 
-<div align=center><img src="figures/component-level-23.jpg" width="35%"/></div>
+![componentLevel23](figures/component-level-23.jpg)
 
 系统软件API版本26.0.0及以上时，组件呈现沉浸式系统材质效果：
 
-<div align=center><img src="figures/select-material-on.jpg" width="35%"/></div>
+![selectMaterialOn](figures/select-material-on.jpg)

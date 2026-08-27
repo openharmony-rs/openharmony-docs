@@ -6,24 +6,25 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
- 沉浸光感提供默认开启、应用级开启和组件级开启三种方式，可按需选择。沉浸式系统材质由材质滤镜、折射、高光、阴影等多层效果叠加而成，需要大量GPU资源，具体的使用指导请参考[沉浸光感功耗优化](arkts-immersive-light-sense-constraints.md)，其余开启后的常见问题请参考[沉浸光感常见问题](arkts-immersive-light-sense-faq.md)。
+沉浸光感提供默认开启、应用级开启和组件级开启三种方式，可按需选择。沉浸光感开启后，效果由材质滤镜、折射、高光、阴影等多层叠加而成，需要大量GPU资源，具体的使用指导请参考[沉浸光感功耗优化](arkts-immersive-light-sense-constraints.md)，其余开启后的常见问题请参考[沉浸光感常见问题](arkts-immersive-light-sense-faq.md)。
 
-## 三种开启方式
+## 沉浸光感开启方式对比
 > **说明：**
 >
-> 1. 开启后，不同组件的效果详见组件适配沉浸光感。
-> 2. 开启沉浸光感，要确保应用的[targetAPIVersion](../quick-start/app-configuration-file.md)不低于26.0.0。如果低版本适配，适配指导请参考[沉浸光感兼容性适配](arkts-immersive-light-sense-compatibility.md)。
- 不同开启方式支持的组件范围如下：
+> - 开启后，不同组件的效果详见组件适配沉浸光感。
+> - 开启沉浸光感，要确保应用的[targetAPIVersion](../quick-start/app-configuration-file.md)不低于26.0.0。如果低版本适配，适配指导请参考[沉浸光感兼容性适配](arkts-immersive-light-sense-compatibility.md)。
+
+不同开启方式对比如下：
 
 | 开启方式 | 支持的组件 | 说明 |
 | --- | --- | --- |
 | 默认开启 | [弹出框（Dialog）](arkts-base-dialog-overview.md)、[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)、[SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)、[即时反馈（Toast）](arkts-create-toast.md) | 应用从API版本26.0.0之前升级至API版本26.0.0及以上，在未主动设置沉浸光感的情况下，组件默认开启沉浸光感，无需任何配置。|
 | 应用级开启 | 组件清单详见[MaterialState](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)。 | 通过[module.json5](../quick-start/module-configuration-file.md)统一配置，为支持沉浸光感的组件，批量开启或全局禁用沉浸光感，具体开启方法请参考[应用级开启](#应用级开启)。|
-| 组件级开启 | 支持设置沉浸式系统材质的组件 | 支持通过如下三种方式开启：<br/> 1. 通过通用属性[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)设置。<br/>2. 弹窗类组件通过options参数中的systemMaterial字段设置。<br/>3. 组件专属接口设置，当前支持设置的组件包括：Select下拉菜单的[menuSystemMaterial](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menusystemmaterial)、Navigation标题栏的[systemMaterial](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationtitleoptions11)字段。 |
+| 组件级开启 | 支持设置沉浸式系统材质的组件 | 支持通过如下三种方式开启：<br/> 1. 通过通用属性[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)设置。<br/>2. 弹窗类组件通过options参数中的systemMaterial字段设置。<br/>3. 组件专属接口设置，当前支持设置的组件包括：Select下拉菜单的[menuSystemMaterial](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menusystemmaterial)、Navigation标题栏的[systemMaterial](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationtitleoptions11)。 |
 
 ### 应用级开启
 
-在module.json5中，配置metadata参数的name字段配置为"ohos.arkui.UIMaterial.state"，value字段可以为default、enable和disable。该配置仅在entry类型的module中生效。
+应用级开启通过配置文件统一设置应用的沉浸光感开关。在[module.json5](../quick-start/module-configuration-file.md)中，配置[metadata](../quick-start/module-configuration-file.md#metadata标签)参数的name字段配置为"ohos.arkui.UIMaterial.state"，value字段可以为default、enable和disable。该配置仅在entry类型的module中生效。
 
 以下示例展示如何在[module.json5](../quick-start/module-configuration-file.md)中配置enable模式：
 
@@ -53,7 +54,7 @@
 
 ## 关闭沉浸光感
 
-关闭沉浸光感效果有以下几种方式：
+关闭沉浸光感有以下几种方式：
 
 1. 组件级关闭：组件级设置[uiMaterial.Material.empty](../reference/apis-arkui/arkts-apis-uimaterial.md#empty)。默认开启、应用级接入和组件级接入三种接入方式均可通过该操作关闭。
 

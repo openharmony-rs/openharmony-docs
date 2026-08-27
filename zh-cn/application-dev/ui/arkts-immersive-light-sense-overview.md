@@ -18,7 +18,7 @@
 
 组件沉浸光感会根据设备算力和用户在系统中设置的沉浸光感效果，自适应地调整沉浸式系统材质和沉浸式空间动效的表现程度，各算力档位的效果由设备定义且固定；沉浸式系统材质还会随系统深浅色模式自动切换效果，确保应用在不同使用环境下都能呈现最佳效果。
 
-<div align=center><img src="figures/materialPage.gif"/></div>
+![materialPage](figures/materialPage.gif)
 
 ## 关键技术
 
