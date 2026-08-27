@@ -8,7 +8,7 @@
 
 应用可以在布局中嵌入PhotoPicker组件，通过此组件，应用无需申请权限，即可实现媒体文件选择功能。PhotoPicker组件支持宫格浏览和大图预览两种视图模式，提供单选和多选两种选择模式，支持相机入口让用户拍摄新照片，并支持动态照片的预览和选择。在用户选择媒体文件后，应用即可访问用户选中的图片或视频文件。仅包含读权限。
 
-PhotoPickerComponent不支持嵌套，且不应在其上覆盖设置overlay属性或更高层级组件，以免导致手势事件失效。
+PhotoPickerComponent不支持嵌套，且不应在该组件上覆盖设置overlay属性或更高层级组件，以免导致手势事件失效。
 
 应用嵌入组件后，用户可直接在PhotoPicker组件中选择图片或视频文件。
 
@@ -56,15 +56,15 @@ PhotoPickerComponent({ pickerOptions?: PickerOptions, onSelect?: (uri: string) =
 | pickerOptions              | [PickerOptions](#pickeroptions)                                                  | 否   | - | PhotoPicker配置参数信息。若不传入此参数，则使用PickerOptions的默认配置。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                     |
 | onSelect                | (uri: string) => void                                                            | 否   | - | 用户在Picker组件中勾选图片时产生的回调事件，将图片URI传递给应用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                            |
 | onDeselect              | (uri: string) => void                                                            | 否   | - | 用户在Picker组件中取消勾选图片时产生的回调事件，同时也会将图片URI传递给应用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                      |
-| onItemClicked           | (itemInfo: [ItemInfo](#iteminfo), clickType: [ClickType](#clicktype)) => boolean | 否   | - | 用户在PhotoPicker组件中点击宫格产生的回调事件。<br>点击图片（缩略图宫格）时，返回值为true则勾选此图片，否则不响应勾选，URI不授权；点击相机宫格，返回值为true则拉起系统相机，否则不拉起相机，由应用自行处理。<br>**说明：** 此回调与onItemClickedNotify均可处理点击事件，如同时设置两者，优先触发onItemClickedNotify。<br>**注意：**<br>回调中应避免执行长耗时操作。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
-| onItemClickedNotify<sup>23+</sup> | [ItemClickedNotifyCallback](#itemclickednotifycallback23) | 否   | - | 用户在PhotoPicker组件中点击宫格产生的回调事件。<br>应用可执行自身是否选中逻辑，需要配合addData方法一同使用，通过SET_ITEM_CLICK_RESULT进行选中或不选中。若未设置选中结果，在2秒或PhotoPicker被关闭时取消授权。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**与onItemClicked的关系：**onItemClicked返回boolean直接决定是否勾选，适用于简单的勾选控制；onItemClickedNotify返回void，需配合addData方法设置选中结果，适用于需要自定义选中逻辑的场景。两者不宜同时设置。|
+| onItemClicked           | (itemInfo: [ItemInfo](#iteminfo), clickType: [ClickType](#clicktype)) => boolean | 否   | - | 用户在PhotoPicker组件中点击宫格产生的回调事件。<br>- 点击图片（缩略图宫格）时，返回值为true则勾选此图片，否则不响应勾选，且URI不授权。<br>- 点击相机宫格，返回值为true则拉起系统相机，否则不拉起相机，由应用自行处理。<br>**说明：** 此回调与onItemClickedNotify均可处理点击事件，如两者同时设置，优先触发onItemClickedNotify。<br>**注意：**<br>回调中应避免执行长耗时操作。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
+| onItemClickedNotify<sup>23+</sup> | [ItemClickedNotifyCallback](#itemclickednotifycallback23) | 否   | - | 用户在PhotoPicker组件中点击宫格产生的回调事件。<br>应用可执行自身是否选中逻辑，需要配合addData方法一同使用，通过SET_ITEM_CLICK_RESULT进行选中或不选中。若未设置选中结果，在2秒或PhotoPicker被关闭时取消授权。<br>**onItemClicked与onItemClickedNotify的关系：** <br>- onItemClicked返回boolean直接决定是否勾选，适用于简单的勾选控制。<br>- onItemClickedNotify返回void，需配合addData方法设置选中结果，适用于需要自定义选中逻辑的场景。<br>两者不宜同时设置。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | onPinchGridSwitched<sup>23+</sup>           |  [PinchGridSwitchedCallback](#pinchgridswitchedcallback23)  | 否   | - | 宫格捏合时产生的回调事件。仅在[GridPinchModeType](arkts-apis-photoAccessHelper-e.md#gridpinchmodetype23)配置为FULL_FUNCTION_GRID时被触发。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。   | 
-| onEnterPhotoBrowser     | (photoBrowserInfo: [PhotoBrowserInfo](#photobrowserinfo)) => boolean             | 否   | - | 点击进入大图时产生的回调事件，将大图相关信息报给应用。返回值无实际作用，可返回true或false。<br>**说明：** 当PickerOptions.isSlidingSupported设为false时，宫格缩略图不响应点击操作，本回调不会触发。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                     |
+| onEnterPhotoBrowser     | (photoBrowserInfo: [PhotoBrowserInfo](#photobrowserinfo)) => boolean             | 否   | - | 点击进入大图时产生的回调事件，将大图相关信息报给应用。返回值无实际作用，可返回true或false。<br>**说明：** 当[PickerOptions](#pickeroptions).isSlidingSupported设为false时，宫格缩略图不响应点击操作，本回调不会触发。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                     |
 | onExitPhotoBrowser      | (photoBrowserInfo: [PhotoBrowserInfo](#photobrowserinfo)) => boolean             | 否   | - | 退出大图时产生的回调事件，将大图相关信息报给应用。返回值无实际作用，可返回true或false。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                       |
-| onPickerControllerReady | () => void                                                                       | 否   | - | 当pickerController可用时产生的回调事件。<br>调用PickerController相关接口应在该回调触发后才能生效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                               |
+| onPickerControllerReady | () => void                                                                       | 否   | - | 当pickerController可用时产生的回调事件。<br>调用PickerController相关接口应在该回调触发后生效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                               |
 | onPhotoBrowserChanged   | (browserItemInfo: [BaseItemInfo](#baseiteminfo)) => boolean                      | 否   | - | 大图左右滑动时产生的回调事件，将大图相关信息报给应用。仅在多选模式下生效。返回值无实际作用，可返回true或false。<br>**注意：**<br>返回信息只包含[BaseItemInfo](#baseiteminfo)中的uri、photoSubType和mimeType。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                     |
 | onSelectedItemsDeleted<sup>13+</sup>  | [ItemsDeletedCallback](#itemsdeletedcallback13)                                  | 否   | - | 已勾选的图片被删除时产生的回调，并将被删除图片的相关信息回调给应用。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                              |
-| onExceedMaxSelected<sup>13+</sup>     | [ExceedMaxSelectedCallback](#exceedmaxselectedcallback13)                          | 否   | - | 选择达到最大选择数量（最大图片选择数量或者是最大视频选择数量亦或是总的最大选择数量）之后再次点击勾选时产生的回调。<br>- 若选择的数量达到了最大图片选择数量且未达到总的最大选择数量则回调的参数exceedMaxCountType为[MaxCountType](#maxcounttype).PHOTO_MAX_COUNT。<br>- 若选择的数量达到了最大视频选择数量且未达到总的最大选择数量则回调的参数exceedMaxCountType为[MaxCountType](#maxcounttype).VIDEO_MAX_COUNT。<br>- 只要选择的数量达到了总的最大选择数量则回调的参数exceedMaxCountType为[MaxCountType](#maxcounttype).TOTAL_MAX_COUNT。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| onExceedMaxSelected<sup>13+</sup>     | [ExceedMaxSelectedCallback](#exceedmaxselectedcallback13)                          | 否   | - | 选择达到最大选择数量（最大图片选择数量、最大视频选择数量、总的最大选择数量）之后再次点击勾选时产生的回调。<br>- 若选择的数量达到了最大图片选择数量且未达到总的最大选择数量时，回调的参数exceedMaxCountType为[MaxCountType](#maxcounttype).PHOTO_MAX_COUNT。<br>- 若选择的数量达到了最大视频选择数量且未达到总的最大选择数量时，回调的参数exceedMaxCountType为[MaxCountType](#maxcounttype).VIDEO_MAX_COUNT。<br>- 当选择的数量达到总的最大选择数量时，回调的参数exceedMaxCountType为[MaxCountType](#maxcounttype).TOTAL_MAX_COUNT。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | onCurrentAlbumDeleted<sup>13+</sup>   | [CurrentAlbumDeletedCallback](#currentalbumdeletedcallback13)                    | 否   | - | 当前相册被删除时产生的回调。<br>当前相册是指通过pickerController.[setData](#setdata)([DataType](#datatype).SET_ALBUM_URI, currentAlbumUri)接口设置给宫格组件的相册，即“currentAlbumUri”。<br>当前相册被删除后若使用方刷新自己的相册标题栏，使用方可以设置自己的标题栏名称为默认的相册名例如“图片和视频”、“图片”或“视频”，然后通过pickerController.[setData](#setdata)([DataType](#datatype).SET_ALBUM_URI, '')接口传空串去刷新宫格页为默认相册。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。                                  |
 | onVideoPlayStateChanged<sup>14+</sup>   | [videoPlayStateChangedCallback](#videoplaystatechangedcallback14)                    | 否   | - | 大图页视频播放状态改变时回调。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                  |
 | pickerController        | [PickerController](#pickercontroller)                                            | 是   | @ObjectLink | 应用可通过PickerController向Picker组件发送数据。调用PickerController相关接口需在onPickerControllerReady回调后才能生效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -83,16 +83,16 @@ Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-p
 
 | 名称                              | 类型                                      | 只读 | 可选  | 说明                                                                       |
 |---------------------------------|-----------------------------------------|-----|-----|--------------------------------------------------------------------------|
-| checkBoxColor                   | string                                  | 否  | 是 | 勾选框的背景色。<br>格式为8位十六进制颜色代码（#AARRGGBB）。前2位表示透明度，后6位表示RGB颜色值。注意：此格式与CSS标准的#RRGGBBAA格式（alpha在最后两位）不同。<br>示例：'#FFFFFFFF'表示白色不透明背景；'#80FF0000'表示半透明红色背景。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                   |
-| backgroundColor                 | string                                  | 否  | 是 | picker宫格页面背景色。<br>格式为8位十六进制颜色代码（#AARRGGBB）。前2位表示透明度，后6位表示RGB颜色值。注意：此格式与CSS标准的#RRGGBBAA格式（alpha在最后两位）不同。<br>示例：'#FFFFFFFF'表示白色不透明背景；'#80FF0000'表示半透明红色背景。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                             |
+| checkBoxColor                   | string                                  | 否  | 是 | 勾选框的背景色。<br>格式为8位十六进制颜色代码（#AARRGGBB）。前2位表示透明度，后6位表示RGB颜色值。<br>**注意：** 此格式与CSS标准的#RRGGBBAA格式不同，CSS标准中alpha在最后两位。<br>示例：'#FFFFFFFF'表示白色不透明背景；'#80FF0000'表示半透明红色背景。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                   |
+| backgroundColor                 | string                                  | 否  | 是 | picker宫格页面背景色。<br>格式为8位十六进制颜色代码（#AARRGGBB）。前2位表示透明度，后6位表示RGB颜色值。<br>**注意：** 此格式与CSS标准的#RRGGBBAA格式不同，CSS标准中alpha在最后两位。<br>示例：'#FFFFFFFF'表示白色不透明背景；'#80FF0000'表示半透明红色背景。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                             |
 | isRepeatSelectSupported         | boolean                                 | 否  | 是 | 是否支持单张图片重复选择。true表示支持，false表示不支持。默认值为false。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                   |
-| checkboxTextColor               | string                                  | 否  | 是 | 勾选框内文本颜色。br>格式为8位十六进制颜色代码（#AARRGGBB）。前2位表示透明度，后6位表示RGB颜色值。注意：此格式与CSS标准的#RRGGBBAA格式（alpha在最后两位）不同。<br>示例：'#FFFFFFFF'表示白色不透明背景；'#80FF0000'表示半透明红色背景。（该能力从API version 19开始支持，API version 19之前系统默认为白色）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                        |
+| checkboxTextColor               | string                                  | 否  | 是 | 勾选框内文本颜色。br>格式为8位十六进制颜色代码（#AARRGGBB）。前2位表示透明度，后6位表示RGB颜色值。<br>**注意：** 此格式与CSS标准的#RRGGBBAA格式不同，CSS标准中alpha在最后两位。<br>示例：'#FFFFFFFF'表示白色不透明背景；'#80FF0000'表示半透明红色背景。（该能力从API version 19开始支持，API version 19之前系统默认为白色）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                        |
 | photoBrowserBackgroundColorMode | [PickerColorMode](#pickercolormode)     | 否  | 是 | 大图背景颜色。包括跟随系统、浅色模式以及深色模式。当不设置该参数时，默认为跟随系统。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                        |
 | maxSelectedReminderMode         | [ReminderMode](#remindermode)           | 否  | 是 | 选择数量达到最大时的提示方式。包括弹toast提示、不提示以及蒙层提示。当不设置该参数时，默认为弹toast提示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
-| orientation                     | [PickerOrientation](#pickerorientation) | 否  | 是 | 宫格页面滑动预览方向，包括水平和竖直两个方向。当不设置该参数时，默认为竖直方向。当需要横向滑动浏览媒体文件时应设置为HORIZONTAL（水平方向）；当需要纵向滑动浏览时使用VERTICAL（竖直方向）或不填写此参数。（该能力从API version 20开始支持，API version 20之前系统默认为竖直方向）                                |
-| selectMode                      | [SelectMode](#selectmode)               | 否  | 是  | 选择模式，包括多选和单选。当不设置该参数时，默认为多选。当仅需要用户选择单个文件时应设置为SINGLE_SELECT（单选模式）；当需要用户选择多个文件时使用MULTI_SELECT（多选模式）或不填写此参数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                      |
-| maxPhotoSelectNumber            | number                                  | 否  | 是 | 图片最大的选择数量。取值范围[0, 500]，受到最大选择总数的限制。当不设置该参数时，默认为500。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
-| maxVideoSelectNumber            | number                                  | 否  | 是 | 视频最大的选择数量。取值范围[0, 500]，受到系统中所有媒体文件最大选择总数的限制。当不设置该参数时，默认为500。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
+| orientation                     | [PickerOrientation](#pickerorientation) | 否  | 是 | 宫格页面滑动预览方向，包括水平和竖直两个方向。<br>当不设置该参数时，默认为竖直方向。<br>当需要横向滑动浏览媒体文件时应设置为HORIZONTAL（水平方向）。<br>当需要纵向滑动浏览时使用VERTICAL（竖直方向）或不填写此参数。<br>该能力从API version 20开始支持，API version 20之前系统默认为竖直方向。  
+| selectMode                      | [SelectMode](#selectmode)               | 否  | 是  | 选择模式，包括多选和单选。<br>当不设置该参数时，默认为多选。<br>当仅需要用户选择单个文件时应设置为SINGLE_SELECT（单选模式）。<br>当需要用户选择多个文件时使用MULTI_SELECT（多选模式）或不填写此参数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    
+| maxPhotoSelectNumber            | number                                  | 否  | 是 | 图片最大的选择数量。取值范围[1, 500]，默认为500。单位：个。<br>受到最大选择总数[BaseSelectOptions](#baseselectoptions).maxSelectNumber的限制。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
+| maxVideoSelectNumber            | number                                  | 否  | 是 | 视频最大的选择数量。取值范围[1, 500]，默认为500。单位：个。<br>受到最大选择总数[BaseSelectOptions](#baseselectoptions).maxSelectNumber的限制。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
 | isSlidingSelectionSupported<sup>13+</sup>     | boolean                                 | 否  | 是 | 是否支持滑动多选，true表示支持，false表示不支持。当不设置该参数时，默认值为false。重复选择场景不支持滑动多选。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。                                            |
 | photoBrowserCheckboxPosition<sup>13+</sup>    | [number, number]                        | 否  | 是 | 设置大图页checkbox的位置。第一个参数为X方向偏移量，第二个参数为Y方向偏移量。传参范围[0, 1]，代表距离组件左上角0%-100%的偏移量。当不设置该参数时，默认值为[0, 0]。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | gridMargin<sup>14+</sup>        | [Margin](../../reference/apis-arkui/arkui-ts/ts-types.md#margin)                        | 否  | 是 | 设置组件宫格页margin。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
@@ -101,12 +101,12 @@ Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-p
 | uiComponentColorMode<sup>20+</sup>             | [PickerColorMode](#pickercolormode)                                                | 否  | 是 | Picker的颜色模式。Picker宫格界面除背景色之外其他组件的深浅色风格，包括搜索框、相机入口、安全使用图库提示组件、推荐气泡等组件，一般与backgroundColor配合使用。当不设置该参数时，默认为PickerColorMode.AUTO，跟随系统深浅色切换。<br>该属性一般设置PickerColorMode.LIGHT时不与深颜色的backgroundColor搭配；设置PickerColorMode.DARK时不与浅颜色的backgroundColor搭配，否则会出现组件背景或文字无法看清楚的问题。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
 | gridStartOffset<sup>20+</sup>    | number                              | 否  | 是  | 组件宫格缩略图第一行与组件顶部的预留空间。当不设置该参数时，默认值0，单位vp。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | gridEndOffset<sup>20+</sup>    | number                              | 否  | 是 | 组件宫格缩略图最后一行与组件底部的预留空间。默认值0，单位vp。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| pickerIndex<sup>21+</sup>    | number                              | 否  | 是  | 通过设置唯一序号来区分不同的pickerComponent。默认值为-1，-1时不做区分。当应用中同时使用多个PhotoPickerComponent组件且需要区分不同组件时应设置不同的唯一序号。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| pickerIndex<sup>21+</sup>    | number                              | 否  | 是  | 通过设置唯一序号来区分不同的pickerComponent。默认值为-1，不做区分。当应用中同时使用多个PhotoPickerComponent组件且需要区分不同组件时应设置不同的唯一序号。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | preselectedInfos<sup>21+</sup>    | Array&lt;[PreselectedInfo](#preselectedinfo21)&gt;                              | 否   | 是 | 支持在指定pickerIndex的PhotoPickerComponent中回显用户已选择的数据。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | badgeConfig<sup>21+</sup>    | [BadgeConfig](#badgeconfig21)                              | 否   | 是 | 支持配置特殊角标显示。Picker目前仅支持一种类型的角标，详见[BadgeType](#badgetype21)。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | isSlidingSupported<sup>23+</sup>         | boolean                         | 否   | 是 | 是否屏蔽PhotoPickerComponent的滚动。true表示不屏蔽滚动事件，响应用户滚动。false表示屏蔽滚动事件，不响应用户滚动。<br>默认为true。<br>**注意：**<br>当isSlidingSupported设为false时，宫格缩略图将不响应用户点击查看大图的操作。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | 否   | 是 | Picker宫格页滑动到边缘处的滑动效果。<br>默认为[EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
-| appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | 否   | 是 | 仅显示与指定bundle name对应的相册内容。传入完整的bundle name字符串数组，如['com.example.app']，需精确匹配应用包名。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | 否   | 是 | 仅显示与指定bundle name对应的相册内容。传入完整的bundle name字符串数组，需精确匹配应用包名。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | backgroundOpacity<sup>24+</sup>         | number                        | 否   | 是 | 支持配置PhotoPicker背景透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。|
 | contextRecoveryInfo        | [photoAccessHelper.ContextRecoveryInfo](arkts-apis-photoAccessHelper-class.md#contextrecoveryinfo21)                        | 否   | 是 | 用于恢复上次退出时PhotoPicker现场的信息。默认为空，即不恢复上次现场。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0 |
 
@@ -253,8 +253,8 @@ struct PickerPage {
     return true;
   };
   // 当一个宫格被点击时，代码会验证该宫格对应URI是否有效，如无效，则忽略。
-  // 然后，会检查 clickedUris 中是否已存在该URI的记录。如没有，则创建一条记录并将 isSelected 属性设置为 true。
-  // 如果记录存在，则将该记录的 isSelected 属性更新为 true。
+  // 然后，会检查clickedUris中是否已存在该URI的记录。如没有，则创建一条记录并将isSelected属性设置为 true。
+  // 如果记录存在，则将该记录的isSelected属性更新为true。
   // 数据保存完成后点击“setClickResult”按钮，会调用addData(SET_ITEM_CLICK_RESULT)将对应宫格设置为选中状态。
   onClickedNotify: ItemClickedNotifyCallback = (itemInfo: ItemInfo, clickType: ClickType) => {
     if (!itemInfo.uri) {
@@ -332,7 +332,7 @@ struct PickerPage {
                   }
                 }).margin({ right: 5 })
               Text(res.uri.slice(-30)).margin({ right: 5 }).width(150)
-              // 从 this.clickeduris 中移除选择项。
+              // 从this.clickeduris中移除选择项。
               Button('Delete').onClick(() => {
                 this.clickedUris.delete(res.uri);
               })
@@ -436,13 +436,13 @@ type PhotoBrowserZoomCallback = (scale: number) => void
 
 PhotoPickerComponent进入大图后，大图放大缩小时的回调。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**模型约束：** 此接口仅可在Stage模型下使用。
+**起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**起始版本：** 26.0.0
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
 
@@ -454,7 +454,9 @@ PhotoPickerComponent进入大图后，大图放大缩小时的回调。
 
 应用可通过PickerController向picker组件发送数据。
 
-**说明：** 调用本接口前需确保onPickerControllerReady回调已触发，否则接口调用不生效。
+> **说明：**
+>
+> 调用本接口前需确保onPickerControllerReady回调已触发，否则接口调用不生效。
 
 **装饰器类型**：@Observed
 
@@ -533,9 +535,10 @@ setMaxSelected(maxSelected: MaxSelected): void
 
 setPhotoBrowserItem(uri: string, photoBrowserRange?: PhotoBrowserRange): void
 
-应用可通过该接口,切换PhotoPicker组件至大图浏览模式浏览图片；当已处于大图浏览模式时，切换浏览的图片。
+应用可通过该接口,切换图片选择器组件至大图浏览模式浏览图片；当已处于大图浏览模式时，切换浏览的图片。
 
-**说明：** 当PickerOptions.singleLineConfig配置为单行模式时，本接口调用将无效。
+> **说明：**
+> 当PickerOptions.singleLineConfig配置为单行模式时，本接口调用将无效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -554,7 +557,8 @@ exitPhotoBrowser(): void
 
 应用可通过该接口，向picker发送退出大图的通知。
 
-**说明：** 当PickerOptions.singleLineConfig配置为单行模式时，本接口调用将无效。
+> **说明：**
+> 当PickerOptions.singleLineConfig配置为单行模式时，本接口调用将无效。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -566,7 +570,8 @@ setPhotoBrowserUIElementVisibility(elements: Array&lt;PhotoBrowserUIElement&gt;,
 
 应用可通过该接口，设置大图页除预览组件外的其他UI元素是否可见。不设置则默认可见。
 
-**说明：** 当PickerOptions.singleLineConfig配置为单行模式时，本接口调用将无效。
+> **说明：**
+> 当PickerOptions.singleLineConfig配置为单行模式时，本接口调用将无效。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -583,7 +588,7 @@ setPhotoBrowserUIElementVisibility(elements: Array&lt;PhotoBrowserUIElement&gt;,
 
 replacePhotoPickerPreview(originalUri: string, newUri: string, callback: AsyncCallback&lt;void&gt;): void
 
-应用可通过该接口，将PhotoPicker中用户勾选的图片替换为应用后期编辑修改后的图片。
+应用可通过该接口，将图片选择器中用户勾选的图片替换为应用后期编辑修改后的图片。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -594,7 +599,7 @@ replacePhotoPickerPreview(originalUri: string, newUri: string, callback: AsyncCa
 | 参数名         | 类型                     |     必填     | 说明                |
 |-------------|----------------------------| -------------- |-------------------|
 | originalUri     | string  | 是 | 原URI，将会被替换掉的URI。 |
-| newUri  | string   | 是 | 新URI，即替换后的URI。期望在PhotoPicker上替换originalUri显示的、暂存在应用沙箱的图片或视频的URI。      |
+| newUri  | string   | 是 | 新URI，即替换后的URI。期望在图片选择器上替换originalUri显示的、暂存在应用沙箱的图片或视频的URI。      |
 | callback   | AsyncCallback&lt;void&gt;   | 是 | 调用接口完成替换后的回调。      |
 
 ### saveTrustedPhotoAssets<sup>15+</sup>
@@ -733,10 +738,10 @@ completed(): Promise\<CompletedResult>
 |----------|--------|-----|-----|---------------------------------------------------|
 | uri      | string                | 否 | 是   | 图片、视频的URI。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**注意：**<br>当资源为连拍照片类型时，仅返回该连拍组的封面资源。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 | mimeType | string                | 否 | 是   | 图片、视频的mimeType。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>开发者可以通过mimeType的字符串前缀判断媒体类型：以'image/'开头表示图片，以'video/'开头表示视频。具体判断方式请参考[使用mimeType字段来判断资源类型](../../media/medialibrary/medialibrary-faqs/medialibrary-asset-judgment-faq.md#使用mimetype字段来判断资源类型)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
-| width    | number                | 否 | 是   | 图片、视频的宽（单位：像素）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
-| height   | number                | 否 | 是   | 图片、视频的高（单位：像素）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
-| size     | number                | 否 | 是   | 图片、视频的大小（单位：字节）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
-| duration   | number                | 否 | 是   | 视频的持续时间（单位：毫秒）。在API version 23之前，动态照片的duration将返回0；在API version 23及之后，返回动态照片附带视频片段的时长，异常场景返回-1。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| width    | number                | 否 | 是   | 图片、视频的宽，单位为像素（px）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
+| height   | number                | 否 | 是   | 图片、视频的高，单位为像素（px）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
+| size     | number                | 否 | 是   | 图片、视频的大小，单位为字节（Byte）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| duration   | number                | 否 | 是   | 视频的持续时间，单位为毫秒（mm）。在API version 23之前，动态照片的duration将返回0；在API version 23及之后，返回动态照片附带视频片段的时长，异常场景返回-1。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | photoSubType<sup>21+</sup>   | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | 否 | 是   | 图片类型，包括DEFAULT、MOVING_PHOTO和BURST。<br>非特殊类型图片默认为DEFAULT（0）。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否 | 是   | 媒体文件动态范围模型，包括HDR和SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
 | orientation<sup>21+</sup>   | number             | 否 | 是   | 图片/视频方向信息。<br>1.“TOP-left”，图像未旋转。<br>2.“TOP-right”，镜像水平翻转。<br>3.“Bottom-right”，图像旋转180°。<br>4.“Bottom-left”，镜像垂直翻转。<br>5.“Left-top”，先镜像水平翻转，再顺时针旋转270°。<br>6.“Right-top”，顺时针旋转90°。<br>7.“Right-bottom”，先镜像水平翻转，再顺时针旋转90°。<br>8.“Left-bottom”，顺时针旋转270°。<br>携带镜像信息的图片无论旋转与否其宽高属性都与原图保持一致，无镜像信息的图片其宽高属性会更新为旋转后的结果。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
@@ -920,9 +925,9 @@ Picker上次退出时现场的信息。
  
 | 名称                | 值   | 说明                                                                                                                 |
 |-------------------|-----|--------------------------------------------------------------------------------------------------------------------|
-| SET_SELECTED_URIS | 1   | 发送已选择的数据列表，通知PhotoPicker组件勾选状态刷新，需要传入string数组类型。<br>例如：应用在自己的页面中删除某张图片后，需要把剩下的已选择的数据列表通过setData接口通知到PhotoPicker组件，从而触发PhotoPicker组件勾选框状态刷新正确。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| SET_ALBUM_URI | 2   | 发送已选择相册，通知PhotoPicker组件刷新相册，需要传入string类型。<br>例如：应用在自己的页面中选择相册后，需要把已选择的相册URI通过setData接口通知到PhotoPicker组件，从而触发PhotoPicker组件刷新相册数据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| SET_SELECTED_INFO<sup>21+</sup> | 3   | 发送已选择的文件URi以及选中的PhotoPicker序号。当PhotoPicker序号与参数中的PhotoPicker序号匹配时，已选择文件支持在当前PhotoPicker里自动选中。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| SET_SELECTED_URIS | 1   | 发送已选择的数据列表，通知图片选择器组件勾选状态刷新，需要传入string数组类型。<br>例如：应用在自己的页面中删除某张图片后，需要把剩下的已选择的数据列表通过setData接口通知到图片选择器组件，从而触发图片选择器组件勾选框状态刷新正确。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| SET_ALBUM_URI | 2   | 发送已选择相册，通知图片选择器组件刷新相册，需要传入string类型。<br>例如：应用在自己的页面中选择相册后，需要把已选择的相册URI通过setData接口通知到图片选择器组件，从而触发图片选择器组件刷新相册数据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| SET_SELECTED_INFO<sup>21+</sup> | 3   | 发送已选择的文件URI以及选中的图片选择器序号。当图片选择器序号与参数中的图片选择器序号匹配时，已选择文件支持在当前图片选择器里自动选中。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | SET_BADGE_CONFIGS<sup>21+</sup> | 4   | 发送需要显示角标的配置，类型为[BadgeConfig](#badgeconfig21)，包含角标的类型和对应文件URI的数据列表。配置后，对应文件会显示配置类型的角标。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | SET_ITEM_CLICK_RESULT<sup>23+</sup> | 5   | 发送点击后的结果，类型为[ClickResult](#clickresult23)。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
@@ -956,7 +961,7 @@ Picker上次退出时现场的信息。
 
 Picker宫格页面滑动预览的方向。
 
-从API version 20开始，该能力支持配置；在API version 12-19，该能力设置不生效，默认为竖直方向。
+从API版本20开始，该能力支持配置；在API版本12-19，该能力设置不生效，默认为竖直方向。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1005,7 +1010,7 @@ Picker的颜色模式。
 | 名称                | 值   | 说明        |
 |-------------------|-----|-----------|
 | NONE | 0   | 不提示。      |
-| TOAST | 1   | 弹toast提示。选择达到最大数量后弹出toast提示，告知用户已达最大选择数。 |
+| TOAST | 1   | 弹出toast提示。选择达到最大数量后弹出toast提示，告知用户已达最大选择数。 |
 | MASK | 2   | 蒙灰提示。     |
 
 ## MaxCountType

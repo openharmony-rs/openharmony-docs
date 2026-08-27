@@ -31,7 +31,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 ## PhotoSubtype<sup>12+</sup>
 
-枚举，照片资产子类型。PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类型的枚举。
+PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类型的枚举。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -212,6 +212,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 枚举，推荐的图片类型。
 
 > **说明：**
+>
 > - 扫码应用中推荐二维码或条码类型的图片。
 > - 身份认证应用中推荐身份证或护照类型的图片。
 > - 用户头像设置场景中推荐人像类型的图片。
@@ -440,6 +441,7 @@ async function example() {
 表示设置拉起picker后的宫格列数档位的枚举。
 
 > **说明：**
+>
 > - 大屏设备应用中使用紧密档位以显示更多图片。
 > - 小屏设备应用中使用宽松档位以便于选择操作。
 > - 根据应用界面布局动态调整PhotoPicker显示效果。
@@ -467,6 +469,7 @@ async function example() {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 > **说明：**
+>
 > - 在图片选择器中，用户可通过双指捏合手势调整宫格显示密度。
 > - 捏合缩小后宫格显示更多图片，便于快速浏览和选择。
 > - 捏合放大后宫格显示更少但更大的图片，便于精确查看。

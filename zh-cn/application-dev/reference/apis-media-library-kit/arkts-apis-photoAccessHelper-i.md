@@ -97,7 +97,7 @@ title参数的规格如下：
 
 | 名称    | 类型                        | 只读 | 可选 | 说明                                                         |
 | ---- | ------- | ---- |  ---- | ----- |
-| text  | string  | 否 | 是 | 如果需要根据文本（支持250字以内的简体中文）推荐与文本内容相关的图片，则配置此参数。text默认是空字符串。  |
+| text  | string  | 否 | 是 | 如果需要根据文本（支持250字数以内的简体中文）推荐与文本内容相关的图片，则配置此参数。text默认是空字符串。  |
 
 **示例：**
 
@@ -141,8 +141,8 @@ async function example() {
 
 | 名称    | 类型                        | 只读 | 可选 | 说明                                                         |
 | ---- | ------- | ---- |  ---- | ----- |
-| title              | string  | 否 | 是 | 图片或者视频的标题。<br>不传入时由系统生成，参数规格如下：<br>- 不应包含扩展名。<br>- 不允许使用的字符，包括：. \ / : * ? " ' ` < > \| { } [ ]<br>- 由于文件名由标题 + 扩展名组成，文件名字符串长度范围为[1, 255]字符。  |
-| fileNameExtension  | string  | 否 | 否 | 文件扩展名。取值原则：IMAGE类型支持'jpg'、'png'、'gif'等，VIDEO类型支持'mp4'、'mov'等。**注意：** 扩展名长度会影响title参数的最大可用长度。   |
+| title              | string  | 否 | 是 | 图片或者视频的标题。<br>不传入时由系统生成，参数规格如下：<br>- 不应包含扩展名。<br>- 不允许使用的字符包括：. \ / : * ? " ' ` < > \| { } [ ]<br>- 文件名由标题 + 扩展名组成，文件名字符串长度范围为[1, 255]字符。  |
+| fileNameExtension  | string  | 否 | 否 | 文件扩展名。<br>取值原则：<br>- IMAGE类型支持'jpg'、'png'、'gif'等。<br>- VIDEO类型支持'mp4'、'mov'等。<br>**注意：** 扩展名长度会影响title参数的最大可用长度。   |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)  | 否 | 否 | 创建的文件类型[PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)，设置为IMAGE时创建图片文件，设置为VIDEO时创建视频文件。 |
 | subtype  | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)  | 否 | 是 | 图片或者视频的文件子类型[PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)，不传入时默认为DEFAULT。  |
 
@@ -158,8 +158,8 @@ async function example() {
 
 | 名称               | 类型    | 只读 | 可选 | 说明                                                         |
 | ------------------ | ------- | ---- | ---- | ----- |
-| title              | string  | 否 | 是 | 图片或者视频的标题。<br>不传入时由系统生成，参数规格如下：<br>- 不应包含扩展名。<br>- 不允许使用的字符，包括：. \ / : * ? " ' ` < > \| { } [ ]<br>- 由于文件名由标题 + 扩展名组成，文件名字符串长度范围为[1, 255]字符。  |
-| fileNameExtension  | string  | 否 | 否 | 文件扩展名。取值原则：IMAGE类型支持'jpg'、'png'、'gif'等，VIDEO类型支持'mp4'、'mov'等。**注意：** 扩展名长度会影响title参数的最大可用长度。  |
+| title              | string  | 否 | 是 | 图片或者视频的标题。<br>不传入时由系统生成，参数规格如下：<br>- 不应包含扩展名。<br>- 不允许使用的字符包括：. \ / : * ? " ' ` < > \| { } [ ]<br>- 文件名由标题 + 扩展名组成，文件名字符串长度范围为[1, 255]字符。  |
+| fileNameExtension  | string  | 否 | 否 | 文件扩展名。<br>取值原则：<br>- IMAGE类型支持'jpg'、'png'、'gif'等。<br>- VIDEO类型支持'mp4'、'mov'等。<br>**注意：** 扩展名长度会影响title参数的最大可用长度。   |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)  | 否 | 否 | 创建的文件类型[PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)，设置为IMAGE时创建图片文件，设置为VIDEO时创建视频文件。 |
 
 ## PhotoAssetChangeInfo<sup>20+</sup>
@@ -257,7 +257,11 @@ picker内宫格的捏合模式。配置后支持通过捏合手势调整宫格�
 
 ## AssetCompatibleCapability<sup>24+</sup>
 
-资产兼容能力。用于配置应用支持的媒体资产格式和能力，如支持高分辨率资产或特定MIME类型。适用于需要处理不同格式图片（如HEIF）或需要控制资产质量以适配不同设备显示能力的场景。
+资产兼容能力。
+
+用于配置应用支持的媒体资产格式和能力，如支持高分辨率资产或特定MIME类型。
+
+适用于需要处理不同格式图片（如HEIF）或需要控制资产质量以适配不同设备显示能力的场景。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

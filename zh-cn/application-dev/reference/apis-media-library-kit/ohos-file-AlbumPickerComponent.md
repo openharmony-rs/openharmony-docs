@@ -6,11 +6,11 @@
 <!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
 
-AlbumPickerComponent适用于需要在应用内展示相册列表让用户选择相册浏览图片或视频的场景，例如社交媒体应用中让用户选择相册进行照片上传。通过此组件，应用无需申请相册访问权限即可访问公共目录中的相册列表，相比传统需要申请权限的相册访问方案，简化了权限申请流程，降低了开发成本，提升了用户体验。
+AlbumPickerComponent适用于需要在应用内展示相册列表让用户选择相册浏览图片或视频的场景，例如社交媒体应用中让用户选择相册进行照片上传。通过此组件，应用无需申请相册访问权限即可访问公共目录中的相册列表，做到了简化权限申请流程、降低开发成本，从而提升了用户体验。
 
-需配合[PhotoPickerComponent](ohos-file-PhotoPickerComponent.md)一起使用。用户选择相册后，系统触发onAlbumClick回调并将AlbumInfo（包含相册URI和名称）传递给应用；应用需通过PickerController将uri传递给PhotoPickerComponent以刷新显示对应相册的图片和视频。详细协作机制请参见PhotoPickerComponent文档。
+AlbumPickerComponent需配合PhotoPickerComponent一起使用。当用户选择相册后，系统触发onAlbumClick回调并将AlbumInfo（包含相册URI和名称）传递给应用。应用需通过PickerController将URI传递给PhotoPickerComponent以刷新显示对应相册的图片和视频。详细协作机制请参见文档[@ohos.file.PhotoPickerComponent (PhotoPicker组件)](ohos-file-PhotoPickerComponent.md)。。
 
-AlbumPickerComponent不支持嵌套，且不应在其上覆盖设置overlay属性或更高层级组件，以免导致手势事件失效。
+AlbumPickerComponent不支持嵌套，且不应在该组件上覆盖设置overlay属性或更高层级组件，以免导致手势事件失效。
 
 > **说明：**
 >
@@ -56,7 +56,7 @@ Album Picker配置选项。
 |----------------|-------|-----|-----|-------------------------------------------------------------|
 | themeColorMode | [PickerColorMode](ohos-file-PhotoPickerComponent.md#pickercolormode) | 否 | 是   | 相册列表主题颜色，包括跟随系统、浅色模式以及深色模式，默认为跟随系统。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
 | filterType<sup>13+</sup>     | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | 否 | 是   | 相册组件过滤参数，可筛选只显示图片、视频或者图片和视频。若未配置此参数，则相册组件显示图片和视频类型的所有资源。<br> **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| fontSize<sup>20+</sup> | number \| string | 否 | 是 | 字体大小，取值范围参考[fontSize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize)。若未设置此参数，则使用系统默认字体大小。也可通过AlbumPickerController.setFontSize动态设置字体大小。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
+| fontSize<sup>20+</sup> | number \| string | 否 | 是 | 字体大小，取值范围参考[fontSize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize)。若未设置此参数，则使用系统默认字体大小。也可通过[AlbumPickerController](#albumpickercontroller20).setFontSize动态设置字体大小。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
 
 ## EmptyAreaClickCallback<sup>13+</sup>
 
