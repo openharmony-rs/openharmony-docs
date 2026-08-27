@@ -7,11 +7,15 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-以下权限仅对MDM（Mobile Device Management）设备管理应用开放。MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)。
+以下权限仅对MDM（Mobile Device Management）设备管理应用开放。
+
+<!--RP2-->
+MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)。
 
 > **注意：**
 > 
 > 以下权限不支持自动签名，因此在调试和发布阶段，均需参照[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)的步骤，完成手动签名。
+<!--RP2End-->
 
 ## ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
@@ -498,6 +502,8 @@
 <!--Del-->
 **是否支持证书授权**：true<!--DelEnd-->
 
+**支持设备**：Phone | PC/2in1 | Tablet
+
 **起始版本**：12
 
 ## ohos.permission.ENTERPRISE_RECOVERY_KEY
@@ -527,6 +533,8 @@
 
 <!--Del-->
 **是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：14
 
@@ -809,3 +817,107 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：23
+
+## ohos.permission.ENTERPRISE_ACTIVATE_DEVICE_ADMIN
+
+允许企业设备管理应用自行完成激活操作。
+
+<!--RP1--><!--RP1End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：24
+
+## ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
+
+允许企业设备管理应用管理本地账号。
+
+<!--RP1--><!--RP1End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.ENTERPRISE_INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+允许企业设备管理应用进行多用户操作。
+
+<!--RP1--><!--RP1End-->
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.ENTERPRISE_VPN
+
+允许设备管理应用默认拥有VPN接入权限。
+
+获取此权限后，应用无需经过用户确认，默认可接入VPN。
+
+<!--RP1--><!--RP1End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.ENTERPRISE_REQUEST_PUBLISH_FORM
+
+允许设备管理应用在桌面添加卡片。
+
+<!--RP1--><!--RP1End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.ENTERPRISE_ENCRYPT_BLOCK_DEVICE
+
+允许MDM应用挂载和卸载加密U盘加密区与交换区。
+
+<!--RP1--><!--RP1End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0

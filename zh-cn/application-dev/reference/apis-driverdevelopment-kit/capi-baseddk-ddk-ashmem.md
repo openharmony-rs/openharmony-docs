@@ -31,6 +31,6 @@ typedef struct DDK_Ashmem {...} DDK_Ashmem
 | const uint32_t size | 缓冲区大小。 |
 | uint32_t offset | 已使用缓冲区的偏移量。默认值为0，表示没有偏移，缓冲区从address指定地址开始。offset与bufferLength之和不超过size，否则会导致越界访问。 |
 | uint32_t bufferLength | 使用的缓冲区长度。该值在默认情况下等于size（表示使用整个缓冲区），且offset与bufferLength之和不能大于size，否则会导致越界访问。 |
-| uint32_t transferredLength | 已传输数据的长度。单位：字节。在数据传输完成后由接口更新。 |
+| uint32_t transferredLength | 已传输数据的长度。单位：Byte。在数据传输完成后由接口更新。 |
 
 

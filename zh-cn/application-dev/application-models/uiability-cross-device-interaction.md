@@ -41,9 +41,9 @@ Call调用示意图如下所示。
 
 ![call](figures/call.png)
 
-- CallerAbility调用[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口获取[Caller](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller)，并使用Caller对象的[call](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#call)方法向CalleeAbility发送数据。
+- CallerAbility调用[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口获取[Caller](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller)，并使用Caller对象的[call()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#call)方法向CalleeAbility发送数据。
 
-- CalleeAbility持有一个[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)对象，通过Callee的[on](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#on)方法注册回调函数，当接收到Caller发送的数据时将会调用对应的回调函数。
+- CalleeAbility持有一个[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)对象，通过Callee的[on()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#on)方法注册回调函数，当接收到Caller发送的数据时将会调用对应的回调函数。
 
 ## 接口说明
 
@@ -53,7 +53,7 @@ Call功能主要接口如下表所示。具体的API详见[Caller](../reference/
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| startAbilityByCall(want:&nbsp;Want):&nbsp;Promise&lt;Caller&gt; | 启动指定UIAbility并获取其Caller通信接口，默认为后台启动，通过配置want可实现前台启动，详见[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口说明。AbilityContext与ServiceExtensionContext均支持该接口。 |
+| startAbilityByCall(want:&nbsp;Want):&nbsp;Promise&lt;Caller&gt; | 启动指定UIAbility并获取其Caller通信接口，默认为后台启动，通过配置want可实现前台启动，详见[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口说明。AbilityContext与ServiceExtensionContext均支持该接口。 |
 | on(method:&nbsp;string,&nbsp;callback:&nbsp;CalleeCallBack):&nbsp;void | 通用组件Callee注册method对应的callback方法。 |
 | off(method:&nbsp;string):&nbsp;void | 通用组件Callee解注册method的callback方法。 |
 | call(method:&nbsp;string,&nbsp;data:&nbsp;rpc.Parcelable):&nbsp;Promise&lt;void&gt; | 向通用组件Callee发送约定序列化数据。 |
@@ -65,7 +65,7 @@ Call功能主要接口如下表所示。具体的API详见[Caller](../reference/
 
 ### 创建Callee被调用端
 
-在[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)被调用端，需要实现指定方法的数据接收回调函数、数据的序列化及反序列化方法。在需要接收数据期间，通过[on](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#on)接口注册监听，无需接收数据时通过[off](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#off)接口解除监听。
+在[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)被调用端，需要实现指定方法的数据接收回调函数、数据的序列化及反序列化方法。在需要接收数据期间，通过[on()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#on)接口注册监听，无需接收数据时通过[off()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#off)接口解除监听。
 
 1. 需要申请`ohos.permission.DISTRIBUTED_DATASYNC`权限，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。
 
@@ -113,7 +113,7 @@ Call功能主要接口如下表所示。具体的API详见[Caller](../reference/
 
 5. 实现[Callee.on](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#on)监听及[Callee.off](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#off)解除监听。
 
-   被调用端[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)的监听函数注册时机，取决于应用开发者。注册监听之前的数据不会被处理，取消监听之后的数据不会被处理。如下示例在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)注册'MSG_SEND_METHOD'监听，在[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)取消监听，收到序列化数据后作相应处理并返回，应用开发者根据实际需要做相应处理。具体示例代码如下：
+   被调用端[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)的监听函数注册时机，取决于应用开发者。注册监听之前的数据不会被处理，取消监听之后的数据不会被处理。如下示例在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)注册'MSG_SEND_METHOD'监听，在[onDestroy()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)取消监听，收到序列化数据后作相应处理并返回，应用开发者根据实际需要做相应处理。具体示例代码如下：
 
     ```ts
     import { AbilityConstant, UIAbility, Want, Caller } from '@kit.AbilityKit';
@@ -212,7 +212,7 @@ Call功能主要接口如下表所示。具体的API详见[Caller](../reference/
 
 2. 获取Caller通信接口。
 
-    Ability的context属性实现了[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)方法，用于获取指定通用组[Caller](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller)通信接口。如下示例通过this.context获取Ability实例的context属性，使用startAbilityByCall拉起[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)被调用端并获取Caller通信接口，注册Caller的[onRelease](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onrelease)和[onRemoteStateChange](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onremotestatechange10)监听。应用开发者根据实际业务需要做相应处理。
+    Ability的context属性实现了[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)方法，用于获取指定通用组件[Caller](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller)通信接口。如下示例通过this.context获取Ability实例的context属性，使用startAbilityByCall拉起[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)被调用端并获取Caller通信接口，注册Caller的[onRelease()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onrelease)和[onRemoteStateChange()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onremotestatechange10)监听。应用开发者根据实际业务需要做相应处理。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -358,7 +358,7 @@ Call功能主要接口如下表所示。具体的API详见[Caller](../reference/
     }
     ```
 
-2. 如下示例调用[callWithResult](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callwithresult)接口，向Callee被调用端发送待处理的数据originMsg，并将CallSendMsg方法处理完毕的数据赋值给backMsg。
+2. 如下示例调用[callWithResult()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callwithresult)接口，向Callee被调用端发送待处理的数据originMsg，并将CallSendMsg方法处理完毕的数据赋值给backMsg。
 
     ```ts
     import { UIAbility, Caller } from '@kit.AbilityKit';
@@ -424,7 +424,7 @@ Call功能主要接口如下表所示。具体的API详见[Caller](../reference/
 
 ### 释放Caller通信接口
 
-[Caller](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller)不再使用后，应用开发者可以通过[release](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#release)接口释放Caller。
+[Caller](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller)不再使用后，应用开发者可以通过[release()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#release)接口释放Caller。
 
 ```ts
 import { UIAbility, Caller } from '@kit.AbilityKit';

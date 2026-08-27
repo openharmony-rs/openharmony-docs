@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供基于电话簿访问协议（Phone Book Access Profile，[PBAP](../../connectivity/bluetooth/terminology.md#pbap)）的蓝牙电话簿访问能力，支持获取连接状态等方法。
+本模块提供基于电话簿访问协议（Phone Book Access Profile，[PBAP](../../connectivity/bluetooth/terminology.md#pbap)）的蓝牙电话簿访问能力，支持创建[PSE](../../connectivity/bluetooth/terminology.md#pse)服务端实例、获取设备间蓝牙电话簿服务连接状态等，适用于本端设备作为PSE对外提供电话簿访问服务的场景，可帮助开发者快速实现蓝牙电话簿的共享与连接管理功能。
 
 > **说明：**
 >
@@ -35,7 +35,7 @@ type BaseProfile = baseProfile.BaseProfile
 
 createPbapServerProfile(): PbapServerProfile
 
-创建蓝牙电话簿访问协议中的[PSE](../../connectivity/bluetooth/terminology.md#pse)实例。通过该实例可使用本端作为PSE设备的接口，如：获取和其他设备间的蓝牙电话簿服务连接状态。
+创建蓝牙电话簿访问协议中的[PSE](../../connectivity/bluetooth/terminology.md#pse)实例。通过该实例可使用本端作为PSE设备的接口，如：获取本端和其他设备间的蓝牙电话簿服务连接状态。典型使用场景包括：车载蓝牙系统访问手机电话簿、跨设备联系人同步等需要本端作为电话簿服务端的场景。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
