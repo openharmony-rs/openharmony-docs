@@ -128,7 +128,7 @@ type PromptActionCommonState = import('../api/@ohos.promptAction').promptAction.
 | autoCancel                    | boolean                                  | 否    | 是   | 是否允许点击遮罩层退出，true表示关闭弹窗。false表示不关闭弹窗。<br>默认值：true<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | alignment                     | [DialogAlignment](ts-methods-alert-dialog-box.md#dialogalignment枚举说明) | 否    | 是   | 弹窗在竖直方向上的对齐方式。<br>默认值：DialogAlignment.Default<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | offset                        | [Offset](ts-types.md#offset)             | 否    | 是   | 弹窗相对alignment所在位置的偏移量。<br/>默认值：{ dx: 0, dy: 0 }<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| customStyle                   | boolean                                  | 否    | 是   | 弹窗容器样式是否自定义。值为true表示弹窗容器样式能自定义，值为false表示弹窗容器样式不能自定义。<br/>默认值：false<br/>设置为false时：<br/>1. 默认圆角为32vp。<br/>2. 未设置弹窗宽度高度：弹窗容器的宽度根据栅格系统自适应。高度自适应自定义的内容节点。<br/>3. 设置弹窗宽度高度：弹窗容器的宽度不超过默认样式下的最大宽度（自定义节点设置100%的宽度），弹窗容器的高度不超过默认样式下的最大高度（自定义节点设置100%的高度）。<br/>4. 受安全区域的影响，弹窗显示区域将排除安全区域。例如在PC/2in1设备上避让屏幕边缘以及窗口标题栏。<br/>设置为true时：<br/>1. 圆角为0，弹窗背景色为透明色，并且弹窗的系统材质不生效。<br/>2. 不支持设置弹窗宽度、高度、边框宽度、边框样式、边框颜色以及阴影宽度。<br/>3. 弹窗显示区域为屏幕。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| customStyle                   | boolean                                  | 否    | 是   | 弹窗容器样式是否自定义。值为true表示弹窗容器样式能自定义，值为false表示弹窗容器样式不能自定义。<br/>默认值：false<br/>设置为false时：<br/>1. 默认圆角为32vp。<br/>2. 未设置弹窗宽度高度：弹窗容器的宽度根据栅格系统自适应。高度自适应自定义的内容节点。<br/>3. 设置弹窗宽度高度：弹窗容器的宽度不超过默认样式下的最大宽度（自定义节点设置100%的宽度），弹窗容器的高度不超过默认样式下的最大高度（自定义节点设置100%的高度）。<br/>4. 受安全区域的影响，弹窗显示区域将排除安全区域。例如在PC/2in1设备上避让屏幕边缘以及窗口标题栏。<br/>设置为true时：<br/>1. 圆角为0，弹窗背景色为透明色，并且弹窗的沉浸光感效果不生效。<br/>2. 不支持设置弹窗宽度、高度、边框宽度、边框样式、边框颜色以及阴影宽度。<br/>3. 弹窗显示区域为屏幕。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | gridCount<sup>8+</sup>        | number                                   | 否    | 是   | 弹窗宽度占[栅格宽度](../../../ui/arkts-layout-development-grid-layout.md)的个数。<br>默认为按照窗口大小自适应，异常值按默认值处理，最大栅格数为系统最大栅格数。<br/>取值范围：大于等于0的整数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | maskColor<sup>10+</sup>       | [ResourceColor](ts-types.md#resourcecolor) | 否    | 是   | 自定义遮罩层颜色。<br>默认值：0x33000000<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。              |
 | maskRect<sup>10+</sup>        | [Rectangle](ts-methods-alert-dialog-box.md#rectangle8类型说明) | 否     | 是    | 弹窗遮罩层区域，在遮罩层区域内的事件不透传，在遮罩层区域外的事件透传。<br/>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } <br/>**说明：**<br/>showInSubWindow为true时，maskRect不生效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
@@ -162,7 +162,7 @@ type PromptActionCommonState = import('../api/@ohos.promptAction').promptAction.
 | immersiveMode<sup>15+</sup>       | [ImmersiveMode](../js-apis-promptAction.md#immersivemode15) | 否   | 是  | 设置页面内弹窗蒙层效果。<br />**说明：**<br />- 默认值：ImmersiveMode.DEFAULT <br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 | levelOrder<sup>18+</sup>       | [LevelOrder](../js-apis-promptAction.md#levelorder18) | 否   | 是  | 设置弹窗显示的顺序。<br />**说明：**<br />- 默认值：LevelOrder.clamp(0) <br />- 不支持动态刷新顺序。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | focusable<sup>19+</sup>       | boolean | 否   | 是  | 设置弹窗是否获取焦点。值为true表示获取焦点，值为false表示不获取焦点。<br />默认值：true <br />**说明：**<br />只有弹出覆盖在当前窗口之上的弹窗才可以获取焦点。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
-| systemMaterial  | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置弹窗的系统材质。<br/>**说明：**<br/>- 默认值：[ImmersiveOptions](../arkts-apis-uimaterial.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持一致。<br/>- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)、背景效果[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，当设置系统材质时，上述接口不生效。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| systemMaterial  | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置弹窗沉浸光感效果。<br/>**说明：**<br/>- 默认值：[ImmersiveOptions](../arkts-apis-uimaterial.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持一致。<br/>- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)、背景效果[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，当设置沉浸光感效果时，上述接口不生效。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 > **说明：**
 >
@@ -1401,9 +1401,11 @@ struct CustomDialogUser {
 
 ![zh-cn_image_custom_dynamicRefreshwidth](figures/image-dynamicRefreshwidth.gif)
 
-### 示例14（设置弹窗的系统材质）
+### 示例14（设置弹窗的沉浸光感效果）
 
-该示例通过配置[systemMaterial](#customdialogcontrolleroptions对象说明)，实现系统材质效果。
+该示例通过配置[systemMaterial](#customdialogcontrolleroptions对象说明)，实现沉浸光感效果。
+
+组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
 从API版本26.0.0开始，在[CustomDialogControllerOptions](#customdialogcontrolleroptions对象说明)中新增了systemMaterial属性。
 
@@ -1451,10 +1453,17 @@ struct CustomDialogUser {
       }
       .height('100%')
       .width('100%')
-      .backgroundColor(Color.Gray)
+      // 请开发者替换为实际资源文件
+      .backgroundImage($r("app.media.img"))
+      .backgroundImageSize({width: '100%', height: '100%'})
     }
   }
 }
 ```
+未设置沉浸光感时：
 
-![zh-cn_image_custom_systemMaterial](figures/zh-cn_image_custom-systemMaterial.png)
+![未设置沉浸光感时](figures/customdialogwithoutmaterial.gif)
+
+设置沉浸光感后：
+
+![设置沉浸光感后](figures/customdialogwithmaterial.gif)

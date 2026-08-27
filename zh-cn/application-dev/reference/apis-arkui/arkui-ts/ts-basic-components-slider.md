@@ -1848,9 +1848,11 @@ struct SliderExample {
 
 ![slider_9](figures/slider_9.png)
 
-### 示例10（设置滑动条的系统材质）
+### 示例10（设置滑动条的沉浸光感效果）
 
-该示例通过通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)为滑动条设置沉浸式材质。
+该示例通过通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)为滑动条设置沉浸光感。
+
+组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
 从API版本26.0.0开始，新增systemMaterial接口。
 
@@ -1876,9 +1878,15 @@ struct SliderSystemMaterial {
     }
     .height('100%')
     .width('100%')
-    .backgroundColor(Color.Grey)
+    // 请开发者替换为实际资源文件
+    .backgroundImage($r("app.media.img"))
   }
 }
 ```
+未设置沉浸光感时：
 
-![slider_10](figures/slider_10.png)
+![未设置沉浸光感时](figures/slider_10_without_new_material.gif)
+
+设置沉浸光感后：
+
+![设置沉浸光感后](figures/slider_10_new_material.gif)

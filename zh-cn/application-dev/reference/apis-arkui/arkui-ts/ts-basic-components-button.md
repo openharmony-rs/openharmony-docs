@@ -821,3 +821,43 @@ struct Index {
 }
 ```
 ![buttontextalign](figures/buttontextalign.jpeg)
+
+### 示例9（设置按钮的沉浸光感效果）
+
+该示例使用通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)接口来实现沉浸光感效果。
+
+组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
+
+从API版本26.0.0开始，新增systemMaterial属性。
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('helloWorld')
+        .width(200)
+        .systemMaterial(new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.THIN
+        }))
+    }
+    .padding({ top: 50 })
+    .width('100%')
+    .height('100%')
+    // 请开发者替换为实际资源文件
+    .backgroundImage($r("app.media.img"))
+    .backgroundImageSize({ height: '100%' })
+  }
+}
+```
+
+未设置沉浸光感时：
+
+![未设置沉浸光感时](figures/buttonWithoutNewMaterial.png)
+
+设置沉浸光感后：
+
+![设置沉浸光感后](figures/buttonNewMaterial.png)
