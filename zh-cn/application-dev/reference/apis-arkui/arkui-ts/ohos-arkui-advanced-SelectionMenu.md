@@ -121,7 +121,7 @@ SelectionMenuOptions定义SelectionMenu的可选菜单类型项及其配置参�
 不支持[通用事件](ts-component-general-events.md)。
 
 ## 示例
-### 示例1（绑定不同触发方式的自定义文本选择菜单）
+### 示例1（RichEditor绑定不同触发方式的自定义文本选择菜单）
 
 该示例展示了文本绑定不同触发方式的自定义文本选择菜单的效果。
 

@@ -156,7 +156,7 @@ struct LoadingProgressExample {
 
 ### 示例2（设置定制内容区）
 
-该示例通过[contentModifier](#contentmodifier12)接口，实现了定制内容区的功能，并通过[enableLoading](#enableloading10)接口实现了通过按钮切换是否显示LoadingProgress的效果。
+该示例通过[contentModifier](#contentmodifier12)接口，实现了定制内容区的功能，并展示了如何基于[LoadingProgressConfiguration](#loadingprogressconfiguration12对象说明)的[enableLoading](#enableloading10)属性切换自定义内容的显示效果。
 
 ```ts
 // xxx.ets

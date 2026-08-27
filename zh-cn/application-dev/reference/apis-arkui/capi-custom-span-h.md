@@ -215,7 +215,7 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, fl
 
 | 类型 | 说明 |
 | -- | -- |
-int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 参数验证失败。<br>         可能原因：参数不能为空。<br>         处理步骤：请确保传入的metrics参数不为空指针。|
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 参数验证失败。<br>         可能原因：参数不能为空。<br>         处理步骤：请确保传入的metrics参数不为空指针。|
 
 ### OH_ArkUI_CustomSpanMetrics_SetHeight()
 
@@ -246,7 +246,7 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, f
 
 | 类型 | 说明 |
 | -- | -- |
-int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 参数验证失败。<br>         可能原因：参数不能为空。<br>         处理步骤：请确保传入的metrics参数不为空指针。|
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 参数验证失败。<br>         可能原因：参数不能为空。<br>         处理步骤：请确保传入的metrics参数不为空指针。|
 
 ### OH_ArkUI_CustomSpanDrawInfo_Create()
 

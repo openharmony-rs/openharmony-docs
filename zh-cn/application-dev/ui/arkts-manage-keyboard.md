@@ -16,7 +16,7 @@
 
 1. 人机交互获得焦点，例如：单击、双击、长按输入框。
 
-2. 通过代码设置焦点，例如：使用[requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)方法或[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)属性，将焦点转移到输入框。
+2. 通过代码设置焦点，例如：使用[requestFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#requestfocus12)方法或[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)属性，将焦点转移到输入框。
 
 3. 使用外接键盘的按键走焦，例如：Tab键、Shift+Tab键、方向键，按下后可以转移焦点。外接键盘时输入框获焦，不会弹出系统软键盘，会显示物理键盘悬浮栏。
 

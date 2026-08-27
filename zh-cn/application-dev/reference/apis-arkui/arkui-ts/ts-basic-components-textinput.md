@@ -79,7 +79,7 @@ type(value: InputType)
 
 | 参数名 | 类型                            | 必填 | 说明                                      |
 | ------ | ------------------------------- | ---- | ----------------------------------------- |
-| value  | [InputType](#inputtype枚举说明) | 是   | 输入框类型。未通过该接口设置时，默认为 InputType.Normal。 |
+| value  | [InputType](#inputtype枚举说明) | 是   | 输入框类型。 |
 
 >  **说明：**    
 >  密码填充服务需要密码相关的[输入框类型](#inputtype枚举说明)(如InputType.Password、InputType.NUMBER_PASSWORD、InputType.NEW_PASSWORD、InputType.USER_NAME)。<!--RP2--><!--RP2End-->
@@ -169,7 +169,7 @@ maxLength(value: number)
 
 **参数：** 
 
-| value  | number | 是   | 文本的最大输入字符数。<br>取值范围：[0, 2^31-1]<br>默认值：无限制（不设置该属性时，默认可以无限输入）。设置异常值时取默认值；设置小数时取整数部分；超过取值范围上限时可能导致异常。 |
+| 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | number | 是   | 文本的最大输入字符数。<br>取值范围：[0, 2^31-1]<br>**说明：** <br>当不设置该属性或设置异常值时，取默认值。设置小数时，取整数部分。设置值超过取值范围上限时，可能导致组件显示或功能异常，请勿超过上限值。 |
 
@@ -1213,7 +1213,7 @@ strokeWidth(width: Optional\<LengthMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。 |
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。 |
 
 ### strokeColor<sup>20+</sup>
 

@@ -526,7 +526,7 @@ NODE_TEXT_INPUT_PASSWORD_RULES = 7019
 NODE_TEXT_INPUT_SELECT_ALL = 7020
 ```
 
-设置当初始状态，是否全选文本。不支持内联模式。<br>
+设置初始状态时是否全选文本。不支持内联模式。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12

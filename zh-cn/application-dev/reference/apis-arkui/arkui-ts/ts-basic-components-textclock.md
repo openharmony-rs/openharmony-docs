@@ -338,7 +338,7 @@ TextClock容器组件的控制器，可以将该控制器绑定到TextClock组�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### 创建控制器对象
+### 导入对象
 
 ```ts
 controller: TextClockController = new TextClockController();

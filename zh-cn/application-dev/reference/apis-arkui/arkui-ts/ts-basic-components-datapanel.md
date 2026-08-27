@@ -51,7 +51,7 @@ DataPanel(options: DataPanelOptions)
 | 名称            | 类型   | 只读 | 可选 | 说明 |
 | ----------------- | -------- | ----- | -------- | -------- |
 | values            | number[]   | 否   | 否  | 数据值列表，数组长度范围[0, 9]，大于9个数据则取前9个数据。若数据值小于0则置为0。 |
-| max               | number     | 否   | 是   |   - max大于0时，表示数据的最大值。<br>- max小于等于0时，max等于values数据值列表各项的和，按比例显示。<br>不传入时默认值：100。|
+| max               | number     | 否   | 是   |   - max大于0时，表示数据的最大值。<br>- max小于等于0时，max等于values数据值列表各项的和，按比例显示。<br>默认值：100。|
 | type<sup>8+</sup> | [DataPanelType](#datapaneltype8枚举说明) | 否 | 是 | 数据面板的类型（不支持动态修改）。<br>可选值：DataPanelType.Line（线性数据面板，适合在有限空间内展示多段数据对比）、DataPanelType.Circle（环形数据面板，适合直观展示数据占比关系）。<br>不传入时默认值为DataPanelType.Circle。|
 
 
@@ -385,9 +385,6 @@ struct LinearGradientDataPanelExample {
   @State color4: string = '#20FF0000';
   @State colorArray: Array<LinearGradient | ResourceColor> = [this.color1, this.color2, this.color3, this.color4];
   @State bgColor: string = '#08182431';
-  @State offsetX: number = 15;
-  @State offsetY: number = 15;
-  @State radius: number = 5;
 
   build() {
     Column({ space: 5 }) {

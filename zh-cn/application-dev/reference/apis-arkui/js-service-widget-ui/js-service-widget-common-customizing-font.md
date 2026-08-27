@@ -40,7 +40,7 @@
 - 不支持设置多个src。
 
 
-## 使用font-face
+## 使用@font-face
 
 可以在style中定义@font-face，然后在font-family样式中指定该@font-face的名称，从而应用@font-face定义的字体。示例如下：
 

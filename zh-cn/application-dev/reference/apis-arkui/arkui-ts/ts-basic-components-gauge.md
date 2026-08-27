@@ -679,7 +679,7 @@ struct Gauge7 {
 
 ```ts
 // xxx.ets
-// 该示例实现了Gauge组件使用Builder定制内容区，使用了环形图表组件，按钮和文本框。点击增加按钮，环形图表指针位置会向右偏移，反之点减少按钮环形图表指针位置会向左偏移。
+// 该示例实现了Gauge组件使用Builder定制内容区，使用了环形图表组件，按钮和文本组件。点击增加按钮，环形图表指针位置会向右偏移，反之点减少按钮环形图表指针位置会向左偏移。
 @Builder
 function buildGauge(config: GaugeConfiguration) {
   Column({ space: 30 }) {
