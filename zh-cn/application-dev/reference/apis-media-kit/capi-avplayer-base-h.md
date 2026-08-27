@@ -324,7 +324,7 @@ typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, 
 ### OH_AVPlayerOnInfoCallback()
 
 ```c
-typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer \*player, AVPlayerOnInfoType type, OH_AVFormat\* infoBody, void \*userData)
+typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoType type, OH_AVFormat* infoBody, void *userData)
 ```
 
 **描述**

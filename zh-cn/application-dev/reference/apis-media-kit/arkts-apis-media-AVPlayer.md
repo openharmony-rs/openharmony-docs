@@ -3893,7 +3893,7 @@ onTimedMetaData(callback: Callback\<AVTimedMetaData>): void
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.onTimedMetaData((data: media.AVTimedMetaData) => {
-    // do something
+    // 实际业务代码。
   });
 }
 ```
