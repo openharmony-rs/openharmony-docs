@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=76caeef80126e754bb89b8cf8b2b7380f3d3d3a7 translatedAt=2026-08-20T12:30:23.193Z pushedAt=2026-08-23T10:33:09.368Z -->
+<!-- md-trans-meta sourceCommit=76caeef80126e754bb89b8cf8b2b7380f3d3d3a7 translatedAt=2026-08-20T12:30:23.193Z pushedAt=2026-08-27T01:22:34.655Z -->
 
 ## Overview
 
@@ -202,7 +202,7 @@ Note: The created resource must be destroyed by calling [OH_CryptoAsymKeyGenerat
 
 | Name| Description|
 | -- | -- |
-| const char *algoName | Input parameter, indicating the name of the asymmetric key algorithm, which cannot be null. The options are as follows:<br>- RSA algorithms supported since API version 12: **RSA512**, **RSA768**, **RSA1024**, **RSA2048**, **RSA3072**, **RSA4096**, and **RSA8192**. Multi-prime RSA algorithms are supported, for example, **RSA1024\|PRIMES_3**, **RSA4096\|PRIMES_4**, and **RSA8192\|PRIMES_5**.<br>- ECC algorithms supported since API version 12: **ECC224**, **ECC256**, **ECC384**, and **ECC521**.<br>- ECC BrainPool algorithms supported since API version 12: **ECC_BrainPoolP160r1**, **ECC_BrainPoolP160t1**, **ECC_BrainPoolP192r1**, **ECC_BrainPoolP192t1**, **ECC_BrainPoolP224r1**, **ECC_BrainPoolP224t1**, **ECC_BrainPoolP256r1**, **ECC_BrainPoolP256t1**, **ECC_BrainPoolP320r1**, **ECC_BrainPoolP320t1**, **ECC_BrainPoolP384r1**, **ECC_BrainPoolP384t1**, **ECC_BrainPoolP512r1**, and **ECC_BrainPoolP512t1**.<br>- **SM2_256**, **Ed25519**, and **X25519** are supported since API version 12.<br>- DSA series algorithms supported since API version 12: **DSA1024**, **DSA2048**, and **DSA3072**.<br>- DH algorithms supported since API version 12: **DH_modp1536**, **DH_modp2048", "DH_modp3072**, **DH_modp4096**, **DH_modp6144**, **DH_modp8192**, **DH_ffdhe2048**, **DH_ffdhe3072**, **DH_ffdhe4096**, **DH_ffdhe6144**, and **DH_ffdhe8192**.<br>- **ECC_Secp256k1** supported since API version 14.<br>- **ECC192** supported since API version 26.0.0. |
+| const char *algoName | Input parameter, indicating the name of the asymmetric key algorithm, which cannot be null. The options are as follows:<br>- RSA algorithms supported since API version 12: **RSA512**, **RSA768**, **RSA1024**, **RSA2048**, **RSA3072**, **RSA4096**, and **RSA8192**. Multi-prime RSA algorithms are supported, for example, **RSA1024\|PRIMES_3**, **RSA4096\|PRIMES_4**, and **RSA8192\|PRIMES_5**.<br>- ECC algorithms supported since API version 12: **ECC224**, **ECC256**, **ECC384**, and **ECC521**.<br>- ECC BrainPool algorithms supported since API version 12: **ECC_BrainPoolP160r1**, **ECC_BrainPoolP160t1**, **ECC_BrainPoolP192r1**, **ECC_BrainPoolP192t1**, **ECC_BrainPoolP224r1**, **ECC_BrainPoolP224t1**, **ECC_BrainPoolP256r1**, **ECC_BrainPoolP256t1**, **ECC_BrainPoolP320r1**, **ECC_BrainPoolP320t1**, **ECC_BrainPoolP384r1**, **ECC_BrainPoolP384t1**, **ECC_BrainPoolP512r1**, and **ECC_BrainPoolP512t1**.<br>- **SM2_256**, **Ed25519**, and **X25519** are supported since API version 12.<br>- DSA series algorithms supported since API version 12: **DSA1024**, **DSA2048**, and **DSA3072**.<br>- DH algorithms supported since API version 12: **DH_modp1536**, **DH_modp2048**, **DH_modp3072**, **DH_modp4096**, **DH_modp6144**, **DH_modp8192**, **DH_ffdhe2048**, **DH_ffdhe3072**, **DH_ffdhe4096**, **DH_ffdhe6144**, and **DH_ffdhe8192**.<br>- **ECC_Secp256k1** supported since API version 14.<br>- **ECC192** supported since API version 26.0.0. |
 | [OH_CryptoAsymKeyGenerator](capi-cryptoasymkeyapi-oh-cryptoasymkeygenerator.md) **ctx | Output parameter, indicating a pointer to the asymmetric key generator instance. The value of **ctx** cannot be null, but the value of ***ctx** must be null. |
 
 **Returns**
@@ -672,7 +672,7 @@ Note: The created resource must be destroyed by calling [OH_CryptoAsymKeySpec_De
 | -- | -- |
 | const char *algoName | Input parameter, indicating the name of the asymmetric key specification algorithm, which cannot be null. The options are as follows:<br>- Since API version 20, **RSA**, **ECC**, **DSA**, **SM2**, **Ed25519**, **X25519**, and **DH** are supported. |
 | [CryptoAsymKeySpec_Type](capi-crypto-asym-key-h.md#cryptoasymkeyspec_type) type | Input parameter, indicating the specification type of an asymmetric key. |
-| [OH_CryptoAsymKeySpec](capi-crypto-asymkeyapi-oh-cryptoasymkeyspec.md) **spec | Output parameter, indicating a pointer to the asymmetric key specification. The value of **spec** cannot be null, but the value of ***spec** must be null. |
+| [OH_CryptoAsymKeySpec](capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md) **spec | Output parameter, indicating a pointer to the asymmetric key specification. The value of **spec** cannot be null, but the value of ***spec** must be null. |
 
 **Returns**
 
