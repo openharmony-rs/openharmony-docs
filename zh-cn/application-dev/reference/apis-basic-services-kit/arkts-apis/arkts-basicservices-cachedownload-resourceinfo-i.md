@@ -2,9 +2,7 @@
 
 预下载的资源信息。
 
-**起始版本：** 23
-
-<!--Device-cacheDownload-interface ResourceInfo--><!--Device-cacheDownload-interface ResourceInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -17,16 +15,13 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 ## size
 
 ```TypeScript
-readonly size: long
+readonly size: number
 ```
 
 预下载资源解压后的大小，单位为字节（B）。当值为正整数时表示资源下载成功，-1表示下载失败。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ResourceInfo-readonly size: long--><!--Device-ResourceInfo-readonly size: long-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
-

@@ -5,11 +5,9 @@ type AVCastControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPr
   'seek' | 'setVolume' | 'setSpeed' | 'setLoopMode' | 'toggleFavorite' | 'toggleMute'
 ```
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-avSession-type AVCastControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' |  'seek' | 'setVolume' | 'setSpeed' | 'setLoopMode' | 'toggleFavorite' | 'toggleMute'--><!--Device-avSession-type AVCastControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' |  'seek' | 'setVolume' | 'setSpeed' | 'setLoopMode' | 'toggleFavorite' | 'toggleMute'-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -28,4 +26,3 @@ type AVCastControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPr
 | 'setLoopMode' | Set the loop mode for the media. [since 10] |
 | 'toggleFavorite' | Toggle the favorite status of the current media. [since 10] |
 | 'toggleMute' | Toggle the mute status of the media. [since 10] |
-

@@ -2,9 +2,7 @@
 
 认证器基类。
 
-**起始版本：** 23
-
-<!--Device-appAccount-class Authenticator--><!--Device-appAccount-class Authenticator-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -25,15 +23,17 @@ addAccountImplicitly(
     ): void
 ```
 
-根据指定的鉴权类型和可选项，隐式地添加应用账号。使用callback异步回调。 > **说明：** > > 从API version 8开始支持, 从API version 9开始废弃。建议使用[createAccountImplicitly](#createaccountimplicitly)替代。
+根据指定的鉴权类型和可选项，隐式地添加应用账号。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 8开始支持, 从API version 9开始废弃。建议使用[createAccountImplicitly](#createaccountimplicitly)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [createAccountImplicitly](#createaccountimplicitly)(options: CreateAccountImplicitlyOptions, callback: AuthCallback)
-
-<!--Device-Authenticator-addAccountImplicitly(      authType: string,      callerBundleName: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-Authenticator-addAccountImplicitly(      authType: string,      callerBundleName: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -46,6 +46,47 @@ addAccountImplicitly(
 | options | { [key: string]: any } | 是 | 鉴权所需要的可选项。 |
 | callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want, common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+
+  onResultCallback(code: number, result: Record<string, Object>): void {
+    console.info('resultCode: ' + code);
+    console.info('result: ' + JSON.stringify(result));
+  }
+
+  onRequestRedirectedCallback(request: Want): void {
+    let wantInfo: Want = {
+      deviceId: '',
+      bundleName: 'com.example.accountjsdemo',
+      action: 'ohos.want.action.viewData',
+      entities: ['entity.system.default'],
+    }
+    this.context.startAbility(wantInfo).then(() => {
+      console.info('startAbility successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
+    })
+  }
+
+  aboutToAppear(): void {
+    appAccountManager.addAccountImplicitly('com.example.accountjsdemo', 'getSocialData', {}, {
+      onResult: this.onResultCallback,
+      onRequestRedirected: this.onRequestRedirectedCallback
+    });
+  }
+
+  build() {}
+}
+```
+
 ## auth
 
 ```TypeScript
@@ -56,8 +97,6 @@ auth(name: string, authType: string, options: Record<string, Object>, callback: 
 
 **起始版本：** 9
 
-<!--Device-Authenticator-auth(name: string, authType: string, options: Record<string, Object>, callback: AuthCallback): void--><!--Device-Authenticator-auth(name: string, authType: string, options: Record<string, Object>, callback: AuthCallback): void-End-->
-
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -66,31 +105,101 @@ auth(name: string, authType: string, options: Record<string, Object>, callback: 
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | authType | string | 是 | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。 |
-| options | Record&lt;string, Object&gt; | 是 | 鉴权所需要的可选项。 |
-| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
+| options | Record & lt;string, Object & gt; | 是 | 鉴权所需要的可选项。 |
+| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 回调对象，用于返回鉴权结果。 |
 
-## auth
+**示例**
 
 ```TypeScript
-auth(name: string, authType: string, options: Record<string, RecordData>, callback: AuthCallback): void
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want, common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+
+  onResultCallback(code: number, authResult?: appAccount.AuthResult): void {
+    console.info('resultCode: ' + code);
+    console.info('authResult: ' + JSON.stringify(authResult));
+  }
+
+  onRequestRedirectedCallback(request: Want): void {
+    let wantInfo: Want = {
+      deviceId: '',
+      bundleName: 'com.example.accountjsdemo',
+      action: 'ohos.want.action.viewData',
+      entities: ['entity.system.default'],
+    }
+    this.context.startAbility(wantInfo).then(() => {
+      console.info('startAbility successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
+    })
+  }
+
+  aboutToAppear(): void {
+    try {
+      appAccountManager.auth('LiSi', 'com.example.accountjsdemo', 'getSocialData', {
+        onResult: this.onResultCallback,
+        onRequestRedirected: this.onRequestRedirectedCallback
+      });
+    } catch (e) {
+      const err = e as BusinessError;
+      console.error(`auth exception: code is ${err.code}, message is ${err.message}`);
+    }
+  }
+
+  build() {}
+}
 ```
 
-对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want, common } from '@kit.AbilityKit';
 
-**起始版本：** 23
+@Entry
+@Component
+struct Index {
+  context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
 
-<!--Device-Authenticator-auth(name: string, authType: string, options: Record<string, RecordData>, callback: AuthCallback): void--><!--Device-Authenticator-auth(name: string, authType: string, options: Record<string, RecordData>, callback: AuthCallback): void-End-->
+  onResultCallback(code: number, authResult?: appAccount.AuthResult): void {
+    console.info('resultCode: ' + code);
+    console.info('authResult: ' + JSON.stringify(authResult));
+  }
 
-**系统能力：** SystemCapability.Account.AppAccount
+  onRequestRedirectedCallback(request: Want): void {
+    let wantInfo: Want = {
+      deviceId: '',
+      bundleName: 'com.example.accountjsdemo',
+      action: 'ohos.want.action.viewData',
+      entities: ['entity.system.default'],
+    }
+    this.context.startAbility(wantInfo).then(() => {
+      console.info('startAbility successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
+    })
+  }
 
-**参数：**
+  aboutToAppear(): void {
+    let options: Record<string, Object> = {
+      'password': 'xxxx',
+    };
+    try {
+      appAccountManager.auth('LiSi', 'com.example.accountjsdemo', 'getSocialData', options, {
+        onResult: this.onResultCallback,
+        onRequestRedirected: this.onRequestRedirectedCallback
+      });
+    } catch (e) {
+      const err = e as BusinessError;
+      console.error(`auth exception: code is ${err.code}, message is ${err.message}`);
+    }
+  }
 
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
-| authType | string | 是 | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。 |
-| options | Record&lt;string, [RecordData](arkts-basicservices-recorddata-t.md)&gt; | 是 | 鉴权所需要的可选项。 |
-| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
+  build() {}
+}
+```
 
 ## authenticate
 
@@ -104,15 +213,17 @@ authenticate(
     ): void
 ```
 
-对应用账号进行鉴权，获取OAuth令牌。使用callback异步回调。 > **说明：** > > 从API version 8开始支持, 从API version 9开始废弃。建议使用[auth](#auth)替代。
+对应用账号进行鉴权，获取OAuth令牌。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 8开始支持, 从API version 9开始废弃。建议使用[auth](#auth)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [auth](#auth)(name: string, authType: string, options: Record&lt;string, Object&gt;, callback: AuthCallback)
-
-<!--Device-Authenticator-authenticate(      name: string,      authType: string,      callerBundleName: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-Authenticator-authenticate(      name: string,      authType: string,      callerBundleName: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -126,6 +237,47 @@ authenticate(
 | options | { [key: string]: any } | 是 | 鉴权所需要的可选项。 |
 | callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want, common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+
+  onResultCallback(code: number, result: Record<string, Object>): void {
+    console.info('resultCode: ' + code);
+    console.info('result: ' + JSON.stringify(result));
+  }
+
+  onRequestRedirectedCallback(request: Want): void {
+    let wantInfo: Want = {
+      deviceId: '',
+      bundleName: 'com.example.accountjsdemo',
+      action: 'ohos.want.action.viewData',
+      entities: ['entity.system.default'],
+    }
+    this.context.startAbility(wantInfo).then(() => {
+      console.info('startAbility successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
+    })
+  }
+
+  aboutToAppear(): void {
+    appAccountManager.authenticate('LiSi', 'com.example.accountjsdemo', 'getSocialData', {}, {
+      onResult: this.onResultCallback,
+      onRequestRedirected: this.onRequestRedirectedCallback
+    });
+  }
+
+  build() {}
+}
+```
+
 ## checkAccountLabels
 
 ```TypeScript
@@ -134,9 +286,7 @@ checkAccountLabels(name: string, labels: Array<string>, callback: AuthCallback):
 
 检查账号标签。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-Authenticator-checkAccountLabels(name: string, labels: Array<string>, callback: AuthCallback): void--><!--Device-Authenticator-checkAccountLabels(name: string, labels: Array<string>, callback: AuthCallback): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -145,8 +295,8 @@ checkAccountLabels(name: string, labels: Array<string>, callback: AuthCallback):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
-| labels | Array&lt;string&gt; | 是 | 标签数组。 |
-| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
+| labels | Array & lt;string & gt; | 是 | 标签数组。 |
+| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调，用于返回检查结果。 |
 
 **示例**
 
@@ -160,9 +310,7 @@ checkAccountRemovable(name: string, callback: AuthCallback): void
 
 判断账号是否可以删除。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-Authenticator-checkAccountRemovable(name: string, callback: AuthCallback): void--><!--Device-Authenticator-checkAccountRemovable(name: string, callback: AuthCallback): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -171,7 +319,7 @@ checkAccountRemovable(name: string, callback: AuthCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
-| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
+| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调，用于返回判断结果。 |
 
 **示例**
 
@@ -185,9 +333,7 @@ createAccountImplicitly(options: CreateAccountImplicitlyOptions, callback: AuthC
 
 根据指定的账号所有者隐式地创建应用账号。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-Authenticator-createAccountImplicitly(options: CreateAccountImplicitlyOptions, callback: AuthCallback): void--><!--Device-Authenticator-createAccountImplicitly(options: CreateAccountImplicitlyOptions, callback: AuthCallback): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -198,6 +344,98 @@ createAccountImplicitly(options: CreateAccountImplicitlyOptions, callback: AuthC
 | options | [CreateAccountImplicitlyOptions](arkts-basicservices-appaccount-createaccountimplicitlyoptions-i.md) | 是 | 隐式创建账号的选项。 |
 | callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调对象，用于返回创建结果。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want, common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+
+  onResultCallback(code: number, result?: appAccount.AuthResult): void {
+    console.info('resultCode: ' + code);
+    console.info('result: ' + JSON.stringify(result));
+  }
+
+  onRequestRedirectedCallback(request: Want): void {
+    let wantInfo: Want = {
+      deviceId: '',
+      bundleName: 'com.example.accountjsdemo',
+      action: 'ohos.want.action.viewData',
+      entities: ['entity.system.default'],
+    }
+    this.context.startAbility(wantInfo).then(() => {
+      console.info('startAbility successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
+    })
+  }
+
+  aboutToAppear(): void {
+    try {
+      appAccountManager.createAccountImplicitly('com.example.accountjsdemo', {
+        onResult: this.onResultCallback,
+        onRequestRedirected: this.onRequestRedirectedCallback
+      });
+    } catch (e) {
+      const err = e as BusinessError;
+      console.error(`createAccountImplicitly exception: code is ${err.code}, message is ${err.message}`);
+    }
+  }
+  build() {}
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want, common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+
+  onResultCallback(code: number, result?: appAccount.AuthResult): void {
+    console.info('resultCode: ' + code);
+    console.info('result: ' + JSON.stringify(result));
+  }
+
+  onRequestRedirectedCallback(request: Want): void {
+    let wantInfo: Want = {
+      deviceId: '',
+      bundleName: 'com.example.accountjsdemo',
+      action: 'ohos.want.action.viewData',
+      entities: ['entity.system.default'],
+    }
+    this.context.startAbility(wantInfo).then(() => {
+      console.info('startAbility successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
+    })
+  }
+
+  aboutToAppear(): void {
+    let options: appAccount.CreateAccountImplicitlyOptions = {
+      authType: 'getSocialData',
+      requiredLabels: ['student']
+    };
+    try {
+      appAccountManager.createAccountImplicitly('com.example.accountjsdemo', options, {
+        onResult: this.onResultCallback,
+        onRequestRedirected: this.onRequestRedirectedCallback
+      });
+    } catch (e) {
+      const err = e as BusinessError;
+      console.error(`createAccountImplicitly exception: code is ${err.code}, message is ${err.message}`);
+    }
+  }
+  build() {}
+}
+```
+
 ## getRemoteObject
 
 ```TypeScript
@@ -206,9 +444,7 @@ getRemoteObject(): rpc.RemoteObject
 
 获取认证器的远程对象，不可以重载实现。
 
-**起始版本：** 23
-
-<!--Device-Authenticator-getRemoteObject(): rpc.RemoteObject--><!--Device-Authenticator-getRemoteObject(): rpc.RemoteObject-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -220,8 +456,6 @@ getRemoteObject(): rpc.RemoteObject
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
 import { Want } from '@kit.AbilityKit';
@@ -229,14 +463,14 @@ import { Want } from '@kit.AbilityKit';
 class MyAuthenticator extends appAccount.Authenticator {
   verifyCredential(name: string,
     options: appAccount.VerifyCredentialOptions, callback: appAccount.AuthCallback) {
-    let want: Want = {
-      bundleName: 'com.example.accountjsdemo',
-      abilityName: 'com.example.accountjsdemo.VerifyAbility',
-      parameters: {
-        name: name
-      }
-    };
-    callback.onRequestRedirected(want);
+      let want: Want = {
+        bundleName: 'com.example.accountjsdemo',
+        abilityName: 'com.example.accountjsdemo.VerifyAbility',
+        parameters: {
+          name: name
+        }
+      };
+      callback.onRequestRedirected(want);
   }
 
   setProperties(options: appAccount.SetPropertiesOptions, callback: appAccount.AuthCallback) {
@@ -267,120 +501,6 @@ export default {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { Want } from '@kit.AbilityKit';
-import { RecordData } from '@ohos.base';
-
-import appAccount from '@ohos.account.appAccount';
-
-@Entry
-@Component
-struct ListDemo5 {
-  build(){
-  }
-}
-
-class MyAuthenticator extends appAccount.Authenticator {
-  verifyCredential(name: string,
-    options: appAccount.VerifyCredentialOptions, callback: appAccount.AuthCallback) {
-    let dataName: Record<String, RecordData> = {"name": name };
-    let want: Want = {
-      bundleName: 'com.example.accountjsdemo',
-      abilityName: 'com.example.accountjsdemo.VerifyAbility',
-      parameters: dataName
-    };
-    callback.onResult(0);
-  }
-
-  setProperties(options: appAccount.SetPropertiesOptions, callback: appAccount.AuthCallback) {
-    let dataOptions: Record<String, RecordData> = {"options": options }
-    let want: Want = {
-      bundleName: 'com.example.accountjsdemo',
-      abilityName: 'com.example.accountjsdemo.SetPropertiesAbility',
-      parameters: dataOptions
-    };
-    callback.onResult(0);
-  }
-
-  checkAccountLabels(name: string, labels: string[], callback: appAccount.AuthCallback) {
-
-    let accountLabels: Record<string, Array<string>> = {
-      'zhangsan': ['male', '30-40', 'level4'],
-      'lisi': ['female']
-    };
-    let authResult: appAccount.AuthResult = {
-      account: {
-        name: name,
-        owner: 'com.acts.accountauthenticator.static'
-      },
-      tokenInfo: undefined
-    }
-    if (name === 'notExistAccount') {
-      callback.onResult(12300003);
-      return;
-    }
-    if (labels.length == 0) {
-      callback.onResult(0, authResult)
-      return
-    }
-    let allLabels: Array<string> | undefined;
-    try {
-      allLabels = accountLabels[name];
-    } catch (err) {
-      console.info('[Authenticator] no labels');
-      allLabels == undefined
-    }
-    if (allLabels == undefined || allLabels.length == 0) {
-      callback.onResult(0, undefined);
-      return;
-    }
-    for (let i = 0; i < labels.length; ++i) {
-      if (allLabels.indexOf(labels[i]) == -1) {
-        callback.onResult(0, undefined);
-        return;
-      }
-    }
-    callback.onResult(0, authResult)
-  }
-
-  checkAccountRemovable(name: string, callback: appAccount.AuthCallback) {
-    let accountRemovability: Record<string, boolean> = {
-      'zhangsan': false,
-      'lisi': true
-    };
-    console.info('[Authenticator] name: ' + name);
-    let isRemovable: Boolean | undefined = false;
-    try {
-      isRemovable = accountRemovability[name];
-    } catch (err) {
-      console.info('[Authenticator] error: ' + JSON.stringify(err));
-    }
-    let authResult: appAccount.AuthResult = {
-      account: {
-        name: name,
-        owner: 'com.acts.accountauthenticator.static'
-      },
-      tokenInfo: undefined
-    }
-    if (isRemovable) {
-      callback.onResult(0, authResult);
-      return;
-    }
-    callback.onResult(0, undefined);
-  }
-}
-
-export default class ServiceExtAbilitty {
-  onConnect(want: Want) {
-    let authenticator = new MyAuthenticator();
-    return authenticator.getRemoteObject();
-  }
-}
-```
-
 ## setProperties
 
 ```TypeScript
@@ -389,9 +509,7 @@ setProperties(options: SetPropertiesOptions, callback: AuthCallback): void
 
 设置认证器属性。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-Authenticator-setProperties(options: SetPropertiesOptions, callback: AuthCallback): void--><!--Device-Authenticator-setProperties(options: SetPropertiesOptions, callback: AuthCallback): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -400,7 +518,7 @@ setProperties(options: SetPropertiesOptions, callback: AuthCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [SetPropertiesOptions](arkts-basicservices-appaccount-setpropertiesoptions-i.md) | 是 | 设置属性的可选项。 |
-| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
+| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调，用于返回设置结果。 |
 
 **示例**
 
@@ -414,9 +532,7 @@ verifyCredential(name: string, options: VerifyCredentialOptions, callback: AuthC
 
 验证应用账号的凭据。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-Authenticator-verifyCredential(name: string, options: VerifyCredentialOptions, callback: AuthCallback): void--><!--Device-Authenticator-verifyCredential(name: string, options: VerifyCredentialOptions, callback: AuthCallback): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -426,9 +542,8 @@ verifyCredential(name: string, options: VerifyCredentialOptions, callback: AuthC
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | options | [VerifyCredentialOptions](arkts-basicservices-appaccount-verifycredentialoptions-i.md) | 是 | 验证凭据的可选项。 |
-| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
+| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调，用于返回验证结果。 |
 
 **示例**
 
 接口需组合使用，请查看[getRemoteObject](#getremoteobject)中的示例。
-

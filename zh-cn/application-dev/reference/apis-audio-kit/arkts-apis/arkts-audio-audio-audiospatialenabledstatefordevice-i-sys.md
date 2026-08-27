@@ -1,10 +1,8 @@
 # AudioSpatialEnabledStateForDevice（系统接口）
 
-This interface is used to notify the listener of any device Spatialization or Head Tracking enable or Adaptive Spatial Rendering state change.
+监听设备空间音频开关状态。@interface AudioSpatialEnabledStateForDevice
 
-**起始版本：** 23
-
-<!--Device-audio-interface AudioSpatialEnabledStateForDevice--><!--Device-audio-interface AudioSpatialEnabledStateForDevice-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -14,7 +12,6 @@ This interface is used to notify the listener of any device Spatialization or He
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## deviceDescriptor
@@ -23,13 +20,11 @@ import { audioHaptic } from '@kit.AudioKit';
 deviceDescriptor: AudioDeviceDescriptor
 ```
 
-Audio device description.
+音频设备描述。
 
 **类型：** [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md)
 
-**起始版本：** 23
-
-<!--Device-AudioSpatialEnabledStateForDevice-deviceDescriptor: AudioDeviceDescriptor--><!--Device-AudioSpatialEnabledStateForDevice-deviceDescriptor: AudioDeviceDescriptor-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -41,15 +36,12 @@ Audio device description.
 enabled: boolean
 ```
 
-Spatialization or Head Tracking or Adaptive Spatial Rendering enable state.
+空间化或头部追踪或自适应空间渲染启用状态。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AudioSpatialEnabledStateForDevice-enabled: boolean--><!--Device-AudioSpatialEnabledStateForDevice-enabled: boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
 **系统接口：** 此接口为系统接口。
-

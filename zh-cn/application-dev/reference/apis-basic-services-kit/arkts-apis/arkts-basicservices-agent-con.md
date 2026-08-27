@@ -3,32 +3,23 @@
 ## VISIBILITY_COMPLETION
 
 ```TypeScript
-const VISIBILITY_COMPLETION: int = 1
+const VISIBILITY_COMPLETION: 1
 ```
 
-Indicates to show completion notification.
+[通知栏](arkts-basicservices-agent-notification-i.md) 展示类型：显示完成通知
 
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-agent-const VISIBILITY_COMPLETION: int = 1--><!--Device-agent-const VISIBILITY_COMPLETION: int = 1-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 ## VISIBILITY_PROGRESS
 
 ```TypeScript
-const VISIBILITY_PROGRESS: int = 2
+const VISIBILITY_PROGRESS: 2
 ```
 
-Indicates to show progress notification.
+[通知栏](arkts-basicservices-agent-notification-i.md) 展示类型：显示进度通知
 
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-agent-const VISIBILITY_PROGRESS: int = 2--><!--Device-agent-const VISIBILITY_PROGRESS: int = 2-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
-

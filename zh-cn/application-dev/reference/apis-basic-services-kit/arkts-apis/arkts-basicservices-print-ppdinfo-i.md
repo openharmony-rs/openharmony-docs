@@ -4,8 +4,6 @@
 
 **起始版本：** 24
 
-<!--Device-print-interface PpdInfo--><!--Device-print-interface PpdInfo-End-->
-
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## 导入模块
@@ -28,8 +26,6 @@ manufacturer: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PpdInfo-manufacturer: string--><!--Device-PpdInfo-manufacturer: string-End-->
-
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## nickName
@@ -45,8 +41,6 @@ nickName: string
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PpdInfo-nickName: string--><!--Device-PpdInfo-nickName: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -64,7 +58,4 @@ ppdName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PpdInfo-ppdName: string--><!--Device-PpdInfo-ppdName: string-End-->
-
 **系统能力：** SystemCapability.Print.PrintFramework
-

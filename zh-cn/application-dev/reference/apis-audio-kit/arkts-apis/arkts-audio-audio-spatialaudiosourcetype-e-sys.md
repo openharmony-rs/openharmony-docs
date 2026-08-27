@@ -4,8 +4,6 @@
 
 **起始版本：** 24
 
-<!--Device-audio-enum SpatialAudioSourceType--><!--Device-audio-enum SpatialAudioSourceType-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
 **系统接口：** 此接口为系统接口。
@@ -22,8 +20,6 @@ SPATIAL_AUDIO_SOURCE_TYPE_STEREO = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SpatialAudioSourceType-SPATIAL_AUDIO_SOURCE_TYPE_STEREO = 0--><!--Device-SpatialAudioSourceType-SPATIAL_AUDIO_SOURCE_TYPE_STEREO = 0-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
 **系统接口：** 此接口为系统接口。
@@ -34,13 +30,11 @@ SPATIAL_AUDIO_SOURCE_TYPE_STEREO = 0
 SPATIAL_AUDIO_SOURCE_TYPE_AUDIO_VIVID = 1
 ```
 
-音频源类型。
+音频生动源类型。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SpatialAudioSourceType-SPATIAL_AUDIO_SOURCE_TYPE_AUDIO_VIVID = 1--><!--Device-SpatialAudioSourceType-SPATIAL_AUDIO_SOURCE_TYPE_AUDIO_VIVID = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -58,9 +52,6 @@ SPATIAL_AUDIO_SOURCE_TYPE_MULTI_CHANNEL = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SpatialAudioSourceType-SPATIAL_AUDIO_SOURCE_TYPE_MULTI_CHANNEL = 2--><!--Device-SpatialAudioSourceType-SPATIAL_AUDIO_SOURCE_TYPE_MULTI_CHANNEL = 2-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
 **系统接口：** 此接口为系统接口。
-

@@ -1,10 +1,8 @@
 # ToneType（系统接口）
 
-Enumerates tone types for player.
+枚举，播放器的音调类型。
 
-**起始版本：** 23
-
-<!--Device-audio-enum ToneType--><!--Device-audio-enum ToneType-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -16,11 +14,9 @@ Enumerates tone types for player.
 TONE_TYPE_DIAL_0 = 0
 ```
 
-Dial tone for key 0.
+键0的DTMF音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_DIAL_0 = 0--><!--Device-ToneType-TONE_TYPE_DIAL_0 = 0-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -32,11 +28,9 @@ Dial tone for key 0.
 TONE_TYPE_DIAL_1 = 1
 ```
 
-Dial tone for key 1.
+键1的DTMF音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_DIAL_1 = 1--><!--Device-ToneType-TONE_TYPE_DIAL_1 = 1-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -48,11 +42,9 @@ Dial tone for key 1.
 TONE_TYPE_DIAL_2 = 2
 ```
 
-Dial tone for key 2.
+键2的DTMF音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_DIAL_2 = 2--><!--Device-ToneType-TONE_TYPE_DIAL_2 = 2-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -64,11 +56,9 @@ Dial tone for key 2.
 TONE_TYPE_DIAL_3 = 3
 ```
 
-Dial tone for key 3.
+键3的DTMF音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_DIAL_3 = 3--><!--Device-ToneType-TONE_TYPE_DIAL_3 = 3-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -80,11 +70,9 @@ Dial tone for key 3.
 TONE_TYPE_DIAL_4 = 4
 ```
 
-Dial tone for key 4.
+键4的DTMF音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_DIAL_4 = 4--><!--Device-ToneType-TONE_TYPE_DIAL_4 = 4-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -96,11 +84,9 @@ Dial tone for key 4.
 TONE_TYPE_DIAL_5 = 5
 ```
 
-Dial tone for key 5.
+键5的DTMF音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_DIAL_5 = 5--><!--Device-ToneType-TONE_TYPE_DIAL_5 = 5-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -112,11 +98,9 @@ Dial tone for key 5.
 TONE_TYPE_DIAL_6 = 6
 ```
 
-Dial tone for key 6.
+键6的DTMF音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_DIAL_6 = 6--><!--Device-ToneType-TONE_TYPE_DIAL_6 = 6-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -128,11 +112,9 @@ Dial tone for key 6.
 TONE_TYPE_DIAL_7 = 7
 ```
 
-Dial tone for key 7.
+键7的DTMF音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_DIAL_7 = 7--><!--Device-ToneType-TONE_TYPE_DIAL_7 = 7-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -144,11 +126,9 @@ Dial tone for key 7.
 TONE_TYPE_DIAL_8 = 8
 ```
 
-Dial tone for key 8.
+键8的DTMF音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_DIAL_8 = 8--><!--Device-ToneType-TONE_TYPE_DIAL_8 = 8-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -160,11 +140,9 @@ Dial tone for key 8.
 TONE_TYPE_DIAL_9 = 9
 ```
 
-Dial tone for key 9.
+键9的DTMF音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_DIAL_9 = 9--><!--Device-ToneType-TONE_TYPE_DIAL_9 = 9-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -176,11 +154,9 @@ Dial tone for key 9.
 TONE_TYPE_DIAL_S = 10
 ```
 
-Dial tone for key *.
+键*的DTMF音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_DIAL_S = 10--><!--Device-ToneType-TONE_TYPE_DIAL_S = 10-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -192,11 +168,9 @@ Dial tone for key *.
 TONE_TYPE_DIAL_P = 11
 ```
 
-Dial tone for key #.
+键#的DTMF音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_DIAL_P = 11--><!--Device-ToneType-TONE_TYPE_DIAL_P = 11-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -208,11 +182,9 @@ Dial tone for key #.
 TONE_TYPE_DIAL_A = 12
 ```
 
-Dial tone for key A.
+键A的DTMF音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_DIAL_A = 12--><!--Device-ToneType-TONE_TYPE_DIAL_A = 12-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -224,11 +196,9 @@ Dial tone for key A.
 TONE_TYPE_DIAL_B = 13
 ```
 
-Dial tone for key B.
+键B的DTMF音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_DIAL_B = 13--><!--Device-ToneType-TONE_TYPE_DIAL_B = 13-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -240,11 +210,9 @@ Dial tone for key B.
 TONE_TYPE_DIAL_C = 14
 ```
 
-Dial tone for key C.
+键C的DTMF音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_DIAL_C = 14--><!--Device-ToneType-TONE_TYPE_DIAL_C = 14-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -256,11 +224,9 @@ Dial tone for key C.
 TONE_TYPE_DIAL_D = 15
 ```
 
-Dial tone for key D.
+键D的DTMF音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_DIAL_D = 15--><!--Device-ToneType-TONE_TYPE_DIAL_D = 15-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -272,11 +238,9 @@ Dial tone for key D.
 TONE_TYPE_COMMON_SUPERVISORY_DIAL = 100
 ```
 
-Supervisory tone for dial.
+呼叫监管音调，拨号音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_DIAL = 100--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_DIAL = 100-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -288,11 +252,9 @@ Supervisory tone for dial.
 TONE_TYPE_COMMON_SUPERVISORY_BUSY = 101
 ```
 
-Supervisory tone for busy.
+呼叫监管音调，忙。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_BUSY = 101--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_BUSY = 101-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -304,11 +266,9 @@ Supervisory tone for busy.
 TONE_TYPE_COMMON_SUPERVISORY_CONGESTION = 102
 ```
 
-Supervisory tone for dial.
+呼叫监管音调，拨号音。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CONGESTION = 102--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CONGESTION = 102-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -320,11 +280,9 @@ Supervisory tone for dial.
 TONE_TYPE_COMMON_SUPERVISORY_RADIO_ACK = 103
 ```
 
-Supervisory tone for radio path acknowledgment.
+呼叫监管音调，无线电 ACK。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RADIO_ACK = 103--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RADIO_ACK = 103-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -336,11 +294,9 @@ Supervisory tone for radio path acknowledgment.
 TONE_TYPE_COMMON_SUPERVISORY_RADIO_NOT_AVAILABLE = 104
 ```
 
-Supervisory tone for radio path not available.
+呼叫监管音调，无线电不可用。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RADIO_NOT_AVAILABLE = 104--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RADIO_NOT_AVAILABLE = 104-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -352,11 +308,9 @@ Supervisory tone for radio path not available.
 TONE_TYPE_COMMON_SUPERVISORY_CALL_WAITING = 106
 ```
 
-Supervisory tone for call waiting.
+呼叫监管音调，呼叫等待。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CALL_WAITING = 106--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CALL_WAITING = 106-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -368,11 +322,9 @@ Supervisory tone for call waiting.
 TONE_TYPE_COMMON_SUPERVISORY_RINGTONE = 107
 ```
 
-Supervisory tone for ringtone.
+呼叫监管音调，铃声。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RINGTONE = 107--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RINGTONE = 107-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -384,11 +336,9 @@ Supervisory tone for ringtone.
 TONE_TYPE_COMMON_SUPERVISORY_CALL_HOLDING = 108
 ```
 
-Supervisory tone for call holding.
+呼叫保持音调。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CALL_HOLDING = 108--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CALL_HOLDING = 108-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -400,11 +350,9 @@ Supervisory tone for call holding.
 TONE_TYPE_COMMON_PROPRIETARY_BEEP = 200
 ```
 
-Proprietary tone for beep.
+专有声调，一般蜂鸣声。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_BEEP = 200--><!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_BEEP = 200-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -416,11 +364,9 @@ Proprietary tone for beep.
 TONE_TYPE_COMMON_PROPRIETARY_ACK = 201
 ```
 
-Proprietary tone for positive acknowledgment.
+专有声调，ACK。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_ACK = 201--><!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_ACK = 201-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -432,11 +378,9 @@ Proprietary tone for positive acknowledgment.
 TONE_TYPE_COMMON_PROPRIETARY_PROMPT = 203
 ```
 
-Proprietary tone for prompt.
+专有声调，PROMPT。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_PROMPT = 203--><!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_PROMPT = 203-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -448,13 +392,10 @@ Proprietary tone for prompt.
 TONE_TYPE_COMMON_PROPRIETARY_DOUBLE_BEEP = 204
 ```
 
-Proprietary tone for double beep.
+专有声调，双重蜂鸣声。
 
-**起始版本：** 23
-
-<!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_DOUBLE_BEEP = 204--><!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_DOUBLE_BEEP = 204-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
 **系统接口：** 此接口为系统接口。
-

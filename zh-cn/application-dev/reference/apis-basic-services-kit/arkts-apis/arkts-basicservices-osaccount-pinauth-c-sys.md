@@ -2,9 +2,7 @@
 
 PIN码认证基类。
 
-**起始版本：** 23
-
-<!--Device-osAccount-class PINAuth--><!--Device-osAccount-class PINAuth-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -24,9 +22,7 @@ constructor()
 
 创建PIN码认证的实例。
 
-**起始版本：** 23
-
-<!--Device-PINAuth-constructor()--><!--Device-PINAuth-constructor()-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -41,7 +37,15 @@ constructor()
 **示例**
 
 ```TypeScript
+let userAuth = new osAccount.UserAuth();
+```
+
+```TypeScript
 let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
+```
+
+```TypeScript
+let userIDM = new osAccount.UserIdentityManager();
 ```
 
 ## registerInputer
@@ -52,11 +56,9 @@ registerInputer(inputer: IInputer): void
 
 注册PIN码输入器。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **需要权限：** ohos.permission.ACCESS_PIN_AUTH
-
-<!--Device-PINAuth-registerInputer(inputer: IInputer): void--><!--Device-PINAuth-registerInputer(inputer: IInputer): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -72,11 +74,11 @@ registerInputer(inputer: IInputer): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid inputer. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid inputer. |
 | [12300103](../errorcode-account.md#12300103-凭据输入器已注册) | The credential inputer already exists. |
 
 **示例**
@@ -107,11 +109,9 @@ unregisterInputer(): void
 
 解注册PIN码输入器。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **需要权限：** ohos.permission.ACCESS_PIN_AUTH
-
-<!--Device-PINAuth-unregisterInputer(): void--><!--Device-PINAuth-unregisterInputer(): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -130,4 +130,3 @@ unregisterInputer(): void
 let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
 pinAuth.unregisterInputer();
 ```
-

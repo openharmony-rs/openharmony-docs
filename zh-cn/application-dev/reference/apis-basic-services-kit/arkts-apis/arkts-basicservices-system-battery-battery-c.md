@@ -6,8 +6,6 @@
 
 **废弃版本：** 6
 
-<!--Device-unnamed-export default class Battery--><!--Device-unnamed-export default class Battery-End-->
-
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
 
 ## 导入模块
@@ -27,8 +25,6 @@ static getStatus(options?: GetStatusOptions): void
 **起始版本：** 3
 
 **废弃版本：** 6
-
-<!--Device-Battery-static getStatus(options?: GetStatusOptions): void--><!--Device-Battery-static getStatus(options?: GetStatusOptions): void-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
 
@@ -108,4 +104,3 @@ export default {
     },
 }
 ```
-

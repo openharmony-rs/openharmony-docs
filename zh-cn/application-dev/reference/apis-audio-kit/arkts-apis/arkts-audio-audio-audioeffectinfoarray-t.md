@@ -4,13 +4,10 @@
 type AudioEffectInfoArray = Array<Readonly<AudioEffectMode>>
 ```
 
-待查询ContentType和StreamUsage组合场景下的音效模式数组类型，[AudioEffectMode](arkts-audio-audio-audioeffectmode-e.md)数组，只读。
+待查询ContentType和StreamUsage组合场景下的音效模式数组类型，[AudioEffectMode](arkts-audio-audio-audioeffectmode-e.md)数组，只读 。
 
-**起始版本：** 23
-
-<!--Device-audio-type AudioEffectInfoArray = Array<Readonly<AudioEffectMode>>--><!--Device-audio-type AudioEffectInfoArray = Array<Readonly<AudioEffectMode>>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
-**属性类型：** Array<Readonly<AudioEffectMode>>
-
+**属性类型：** Array&lt;Readonly&lt;[AudioEffectMode](arkts-audio-audio-audioeffectmode-e.md)&gt;&gt;

@@ -2,13 +2,15 @@
 
 待录制的播放音频流的筛选信息。
 
+> **说明：**
+> 
+> 从API version 10开始支持，从API version 12开始废弃，建议使用录屏接口AVScreenCapture替代。
+
 **起始版本：** 10
 
 **废弃版本：** 12
 
-**替代接口：** OH_AVScreenCapture in native interface.
-
-<!--Device-audio-interface CaptureFilterOptions--><!--Device-audio-interface CaptureFilterOptions-End-->
+**替代接口：** OH_AVScreenCapture
 
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
 
@@ -16,7 +18,6 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## usages
@@ -33,9 +34,6 @@ Filter by stream usages. But not allow to capture voice streams.
 
 **废弃版本：** 12
 
-**替代接口：** OH_AVScreenCapture in native interface.
-
-<!--Device-CaptureFilterOptions-usages: Array<StreamUsage>--><!--Device-CaptureFilterOptions-usages: Array<StreamUsage>-End-->
+**替代接口：** OH_AVScreenCapture
 
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
-

@@ -1,6 +1,10 @@
 # AudioInterrupt
 
-音频监听事件传入的参数。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃，无替代接口。
+音频监听事件传入的参数。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
 
 **起始版本：** 7
 
@@ -8,15 +12,12 @@
 
 **替代接口：** [AudioRendererOptions](arkts-audio-audio-audiorendereroptions-i.md)
 
-<!--Device-audio-interface AudioInterrupt--><!--Device-audio-interface AudioInterrupt-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 ## 导入模块
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## contentType
@@ -34,8 +35,6 @@ contentType: ContentType
 **废弃版本：** 9
 
 **替代接口：** rendererInfo
-
-<!--Device-AudioInterrupt-contentType: ContentType--><!--Device-AudioInterrupt-contentType: ContentType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -55,8 +54,6 @@ pauseWhenDucked: boolean
 
 **替代接口：** [hintType](arkts-audio-audio-interruptevent-i.md#hinttype)
 
-<!--Device-AudioInterrupt-pauseWhenDucked: boolean--><!--Device-AudioInterrupt-pauseWhenDucked: boolean-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 ## streamUsage
@@ -75,7 +72,4 @@ streamUsage: StreamUsage
 
 **替代接口：** rendererInfo
 
-<!--Device-AudioInterrupt-streamUsage: StreamUsage--><!--Device-AudioInterrupt-streamUsage: StreamUsage-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
-

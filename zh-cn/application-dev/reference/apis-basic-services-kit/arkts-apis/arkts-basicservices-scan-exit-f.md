@@ -14,11 +14,9 @@ function exit(): Promise<void>
 
 退出扫描服务。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.PRINT
-
-<!--Device-scan-function exit(): Promise<void>--><!--Device-scan-function exit(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -26,7 +24,7 @@ function exit(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -43,7 +41,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 scan.exit().then(() => {
     console.info('scan exit success');
 }).catch((error: BusinessError) => {
-    console.error('scan exit failed: ' + JSON.stringify(error));
-})
+    console.error(`Failed to exit scan. Code: ${error.code}, message: ${error.message}`);
+});
 ```
-

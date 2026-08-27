@@ -13,7 +13,7 @@
 <!--RP1--><!--RP1End-->
 
 ## Seccomp机制影响的musl接口 <!--Del-->
-   Seccomp机制可参考[Seccomp策略使能开发指导](../../../device-dev/subsystems/subsys-boot-init-seccomp.md)。<!--DelEnd-->
+   Seccomp机制可参考Seccomp策略使能开发指导。<!--DelEnd-->
 
 ### 确定进程因为Seccomp机制终止的方法
 
@@ -110,7 +110,7 @@
 | unistd.h       | acct           |
 
 ## SELinux机制影响的musl接口 <!--Del-->
-   SELinux的说明可参考[OpenHarmony SELinux概述](../../../device-dev/subsystems/subsys-security-selinux-overview.md)。<!--DelEnd-->
+   SELinux的说明可参考OpenHarmony SELinux概述。<!--DelEnd-->
 
 ### 确定接口因为SELinux机制报错的方法
 - 引入errno.h头文件，检查errno错误状态码，如果错误状态码是EACCES，则接口报错可能是由SELinux机制引起的。
@@ -205,12 +205,12 @@
 | utmp.h         | login_tty      |
 | wordexp.h      | wordexp        |
 
-参考：[third_party_musl 中与 SELinux 强相关的接口](#third_party_musl-中与-selinux-强相关的接口按实现路径归类)
+参考：third_party_musl 中与 SELinux 强相关的接口
 
 
 ## 沙箱机制影响的musl接口
 
-沙箱机制可参考 [应用沙箱目录](../../file-management/app-sandbox-directory.md)。
+沙箱机制可参考 应用沙箱目录。
 
 引入errno.h头文件，检查errno错误状态码，如果错误状态码是ENOENT，则接口报错可能是由沙箱机制引起的。
 

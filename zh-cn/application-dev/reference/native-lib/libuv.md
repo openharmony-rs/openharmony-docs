@@ -43,7 +43,7 @@ libuv.so
 
 开发者应尽可能避免在`napi_get_uv_event_loop`接口获取的应用主loop上使用libuv的ndk进行操作，因为这可能会带来各种问题，并给未来的兼容性变更带来大量的工作量。
 
-如果开发者希望跟主线程事件循环交互，比如插入任务等，应当使用[Node-API提供的接口](../../napi/napi-data-types-interfaces.md)。
+如果开发者希望跟主线程事件循环交互，比如插入任务等，应当使用Node-API提供的接口。
 
 OpenHarmony还将长期通过Node-API来为开发者提供和主线程交互及扩展JS接口的能力，但会屏蔽实现层使用的事件循环。Node-API的主要功能接口将会长期维护，并保证与Node.js的原生行为一致，来保证熟悉Node.js的扩展机制的开发者方便地将自己的已有代码接入到OpenHarmony中来。
 
@@ -499,7 +499,7 @@ libhilog_ndk.z.so
 
 当开发者需要执行一个比较耗时的操作但又不希望阻塞主线程执行时，libuv提供了底层接口`uv_queue_work`帮助开发者在异步线程中执行耗时操作，然后将结果回调到主线程上进行处理。
 
-在Node-API中，通常可以通过[napi_async_work](../../napi/use-napi-asynchronous-task.md)相关函数来实现异步开发的功能。
+在Node-API中，通常可以通过napi_async_work相关函数来实现异步开发的功能。
 
 相关函数为：
 
@@ -549,7 +549,7 @@ napi_status napi_delete_async_work(napi_env env, napi_async_work work);
 - uv_async_init()
 - uv_async_send()
 
-Node-API与之对应的接口为[napi_threadsafe_function](../../napi/use-napi-thread-safety.md)相关函数。
+Node-API与之对应的接口为napi_threadsafe_function相关函数。
 
 相关函数：
 
@@ -614,24 +614,24 @@ napi_status napi_release_threadsafe_function(napi_threadsafe_function function,
 
 |  接口类型    |  接口汇总    |
 | ---- | ---- |
-|   [loop概念及相关接口](#libuv中的事件循环)   |  uv_loop_init    |
-|   [loop概念及相关接口](#libuv中的事件循环)   |   uv_loop_close   |
-|   [loop概念及相关接口](#libuv中的事件循环)   |  uv_default_loop    |
-|   [loop概念及相关接口](#libuv中的事件循环)   |   uv_run   |
-|   [loop概念及相关接口](#libuv中的事件循环)   |    uv_loop_alive  |
-|   [loop概念及相关接口](#libuv中的事件循环)   |  uv_stop    |
-|   [Handle概念及相关接口](#libuv中的handles和requests)   |  uv_poll\_\* |
-|   [Handle概念及相关接口](#libuv中的handles和requests)   |  uv_timer\_\* |
-|   [Handle概念及相关接口](#libuv中的handles和requests)   |  uv_async\_\* |
-|   [Handle概念及相关接口](#libuv中的handles和requests)   |   uv_signal\_\*   |
-|   [Handle概念及相关接口](#libuv中的handles和requests)   |   uv_fs\_\*  |
-|   [Request概念及相关接口](#libuv中的handles和requests)   |  uv_random    |
-|   [Request概念及相关接口](#libuv中的handles和requests)   |  uv_getaddrinfo    |
-|   [Request概念及相关接口](#libuv中的handles和requests)   |  uv_getnameinfo    |
-|   [Request概念及相关接口](#libuv中的handles和requests)   |  uv_queue_work    |
-|   [线程间通信原理及相关接口](#线程间通信)   |  uv_async_init    |
-|   [线程间通信原理及相关接口](#线程间通信)   |  uv_async_send    |
-|   [线程池概念及相关接口](#线程池)   |  uv_queue_work    |
+|   loop概念及相关接口   |  uv_loop_init    |
+|   loop概念及相关接口   |   uv_loop_close   |
+|   loop概念及相关接口   |  uv_default_loop    |
+|   loop概念及相关接口   |   uv_run   |
+|   loop概念及相关接口   |    uv_loop_alive  |
+|   loop概念及相关接口   |  uv_stop    |
+|   Handle概念及相关接口   |  uv_poll\_\* |
+|   Handle概念及相关接口   |  uv_timer\_\* |
+|   Handle概念及相关接口   |  uv_async\_\* |
+|   Handle概念及相关接口   |   uv_signal\_\*   |
+|   Handle概念及相关接口   |   uv_fs\_\*  |
+|   Request概念及相关接口   |  uv_random    |
+|   Request概念及相关接口   |  uv_getaddrinfo    |
+|   Request概念及相关接口   |  uv_getnameinfo    |
+|   Request概念及相关接口   |  uv_queue_work    |
+|   线程间通信原理及相关接口   |  uv_async_init    |
+|   线程间通信原理及相关接口   |  uv_async_send    |
+|   线程池概念及相关接口   |  uv_queue_work    |
 
 ### libuv单线程约束
 
@@ -825,7 +825,7 @@ export const testTimerAsyncSend:() => number;
 
 开发者使用`napi_get_uv_event_loop`接口从env获取到的loop一般是系统创建的JS主线程的事件循环，因此应当避免在子线程中调用非线程安全函数。
 
-如因业务需要，必须在非loop线程上调用非线程安全函数，请使用线程安全函数`uv_async_send`将任务提交到loop线程。即定义一个uv_async_t*类型的句柄，初始化该句柄的时候，将需要在子线程调用的非线程安全函数在对应的async_cb中调用，然后在非loop线程上调用`uv_async_send`函数，并回到loop线程上执行async_cb。请参考[libuv中的handles和requests](#libuv中的handles和requests)章节关于**正确使用timer示例**的场景二内容。
+如因业务需要，必须在非loop线程上调用非线程安全函数，请使用线程安全函数`uv_async_send`将任务提交到loop线程。即定义一个uv_async_t*类型的句柄，初始化该句柄的时候，将需要在子线程调用的非线程安全函数在对应的async_cb中调用，然后在非loop线程上调用`uv_async_send`函数，并回到loop线程上执行async_cb。请参考libuv中的handles和requests章节关于**正确使用timer示例**的场景二内容。
 
 ### 线程安全函数
 
@@ -1341,7 +1341,7 @@ after_work_cb：loop所在线程要执行的回调函数。
 
 特别强调，开发者需要明确，`uv_queue_work`函数仅用于抛异步任务，**异步任务的execute回调被提交到线程池后会经过调度执行，因此并不保证多次提交的任务及其回调按照时序关系执行**。
 
-另外，`uv_queue_work`仅限于在loop线程中调用，这样不会有多线程安全问题。**请不要把uv_queue_work作为线程间通信的手段，即A线程获取到B线程的loop，并通过`uv_queue_work`抛异步任务的方式，把execute置为空任务，而把complete回调放在B线程中执行。** 这种方式不仅低效，而且还增加了发生故障时定位问题的难度。为了避免低效的任务提交，请使用[napi_threadsafe_function相关函数](../../napi/use-napi-thread-safety.md)。
+另外，`uv_queue_work`仅限于在loop线程中调用，这样不会有多线程安全问题。**请不要把uv_queue_work作为线程间通信的手段，即A线程获取到B线程的loop，并通过`uv_queue_work`抛异步任务的方式，把execute置为空任务，而把complete回调放在B线程中执行。** 这种方式不仅低效，而且还增加了发生故障时定位问题的难度。为了避免低效的任务提交，请使用napi_threadsafe_function相关函数。
 
 ### libuv的使用现状
 

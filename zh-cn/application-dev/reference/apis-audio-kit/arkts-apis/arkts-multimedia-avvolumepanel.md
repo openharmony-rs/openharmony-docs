@@ -19,4 +19,3 @@ import { AVVolumePanel, AVVolumePanelParameter } from '@kit.AudioKit';
 | 名称 | 说明 |
 | --- | --- |
 | [AVVolumePanel(音量面板)](arkts-audio-multimedia-avvolumepanel-avvolumepanel-s.md) | 音量面板，可用于在当前应用内展示音量调节面板。 |
-

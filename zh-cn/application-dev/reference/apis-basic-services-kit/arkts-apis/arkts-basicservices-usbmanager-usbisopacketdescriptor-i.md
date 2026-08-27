@@ -2,9 +2,7 @@
 
 实时传输模式回调返回的分包信息。
 
-**起始版本：** 23
-
-<!--Device-usbManager-interface UsbIsoPacketDescriptor--><!--Device-usbManager-interface UsbIsoPacketDescriptor-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -12,38 +10,33 @@
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## actualLength
 
 ```TypeScript
-actualLength: int
+actualLength: number
 ```
 
 读写操作的实际长度值，（单位：字节）。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-UsbIsoPacketDescriptor-actualLength: int--><!--Device-UsbIsoPacketDescriptor-actualLength: int-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.USB.USBManager
 
 ## length
 
 ```TypeScript
-length: int
+length: number
 ```
 
 读写操作的期望长度值，（单位：字节）。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-UsbIsoPacketDescriptor-length: int--><!--Device-UsbIsoPacketDescriptor-length: int-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -57,9 +50,6 @@ status: UsbTransferStatus
 
 **类型：** [UsbTransferStatus](arkts-basicservices-usbmanager-usbtransferstatus-e.md)
 
-**起始版本：** 23
-
-<!--Device-UsbIsoPacketDescriptor-status: UsbTransferStatus--><!--Device-UsbIsoPacketDescriptor-status: UsbTransferStatus-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.USB.USBManager
-

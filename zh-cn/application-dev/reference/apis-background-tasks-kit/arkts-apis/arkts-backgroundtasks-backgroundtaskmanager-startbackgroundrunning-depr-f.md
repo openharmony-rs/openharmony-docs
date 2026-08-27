@@ -21,18 +21,16 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-<!--Device-backgroundTaskManager-function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback<void>): void--><!--Device-backgroundTaskManager-function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | 应用运行的上下文。<br>FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见 [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
+| context | Context | 是 | 应用运行的上下文。FA模型的应用Context定义见Context。Stage模型的应用Context定义见 [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
 | bgMode | BackgroundMode | 是 | 向系统申请的后台模式。 |
 | wantAgent | [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-depr-t.md) | 是 | 通知参数，用于指定长时任务通知点击后跳转的界面。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，申请长时任务成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，申请长时任务成功时，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -127,15 +125,13 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-<!--Device-backgroundTaskManager-function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise<void>--><!--Device-backgroundTaskManager-function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise<void>-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | 应用运行的上下文。<br>FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见 [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
+| context | Context | 是 | 应用运行的上下文。   FA模型的应用Context定义见[Context]{@link./app/context}。Stage模型的应用Context定义见 [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
 | bgMode | BackgroundMode | 是 | 向系统申请的后台模式。 |
 | wantAgent | [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-depr-t.md) | 是 | 通知参数，用于指定长时任务通知点击跳转的界面。 |
 
@@ -143,7 +139,7 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -214,4 +210,3 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
-

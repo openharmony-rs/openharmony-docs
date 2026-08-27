@@ -2,9 +2,7 @@
 
 系统账号管理类。
 
-**起始版本：** 23
-
-<!--Device-osAccount-interface AccountManager--><!--Device-osAccount-interface AccountManager-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -22,9 +20,7 @@ checkMultiOsAccountEnabled(callback: AsyncCallback<boolean>): void
 
 判断是否支持多系统账号。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-checkMultiOsAccountEnabled(callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-checkMultiOsAccountEnabled(callback: AsyncCallback<boolean>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -32,21 +28,18 @@ checkMultiOsAccountEnabled(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示支持多系统账号；返回false表示不支持。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示支持多系统账号；返回false表示不支持。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -55,31 +48,10 @@ try {
     if (err) {
       console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
     } else {
-    console.info('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.checkMultiOsAccountEnabled((err: BusinessError | null, isEnabled: boolean | undefined) => {
-    if (err) {
-      console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
-    } else {
       console.info('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
     }
   });
-} catch (e: Error) {
+} catch (e) {
   const err = e as BusinessError;
   console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
 }
@@ -93,9 +65,7 @@ checkMultiOsAccountEnabled(): Promise<boolean>
 
 判断是否支持多系统账号。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-checkMultiOsAccountEnabled(): Promise<boolean>--><!--Device-AccountManager-checkMultiOsAccountEnabled(): Promise<boolean>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -103,7 +73,7 @@ checkMultiOsAccountEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示支持多系统账号；返回false表示不支持。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示支持多系统账号；返回false表示不支持。 |
 
 **错误码：**
 
@@ -113,10 +83,7 @@ checkMultiOsAccountEnabled(): Promise<boolean>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
@@ -132,41 +99,23 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-  accountManager.checkMultiOsAccountEnabled().then((isEnabled: boolean) => {
-    console.info('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## checkOsAccountActivated
 
 ```TypeScript
 checkOsAccountActivated(localId: number, callback: AsyncCallback<boolean>): void
 ```
 
-判断指定系统账号是否处于激活状态。使用callback异步回调。 > **说明：** > > 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+判断指定系统账号是否处于激活状态。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-checkOsAccountActivated(localId: number, callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-checkOsAccountActivated(localId: number, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -175,17 +124,17 @@ checkOsAccountActivated(localId: number, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示账号已激活；返回false表示账号未激活。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示账号已激活；返回false表示账号未激活。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例**
 
@@ -217,15 +166,17 @@ try {
 checkOsAccountActivated(localId: number): Promise<boolean>
 ```
 
-判断指定系统账号是否处于激活状态。使用Promise异步回调。 > **说明：** > > 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+判断指定系统账号是否处于激活状态。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-checkOsAccountActivated(localId: number): Promise<boolean>--><!--Device-AccountManager-checkOsAccountActivated(localId: number): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -239,17 +190,17 @@ checkOsAccountActivated(localId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示账号已激活；返回false表示账号未激活。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示账号已激活；返回false表示账号未激活。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例**
 
@@ -279,15 +230,17 @@ try {
 checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: AsyncCallback<boolean>): void
 ```
 
-判断指定系统账号是否具有指定约束。使用callback异步回调。 > **说明：** > > 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+判断指定系统账号是否具有指定约束。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -296,27 +249,28 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: A
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| constraint | string | 是 | 指定的约束名称。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
+| constraint | string | 是 | 指定的[约束](../../../reference/apis-basic-services-kit/appendix-osAccount-constraints.md) 名称。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId or constraint. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId or constraint. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例**
 
-判断当前系统账号是否有禁止使用Wi-Fi的约束。
+判断ID为100的系统账号是否有禁止使用Wi-Fi的约束。
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+// localId为系统账号ID，请通过getOsAccountLocalId接口获取
 let localId: number = 100;
 let constraint: string = 'constraint.wifi';
 try {
@@ -339,15 +293,17 @@ try {
 checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise<boolean>
 ```
 
-判断指定系统账号是否具有指定约束。使用Promise异步回调。 > **说明：** > > 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+判断指定系统账号是否具有指定约束。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise<boolean>--><!--Device-AccountManager-checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -356,23 +312,23 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise<bo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| constraint | string | 是 | 指定的约束名称。 |
+| constraint | string | 是 | 指定的[约束](../../../reference/apis-basic-services-kit/appendix-osAccount-constraints.md) 名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId or constraint. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId or constraint. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例**
 
@@ -405,9 +361,7 @@ checkOsAccountTestable(callback: AsyncCallback<boolean>): void
 
 检查当前系统账号是否为测试账号。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-checkOsAccountTestable(callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-checkOsAccountTestable(callback: AsyncCallback<boolean>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -415,21 +369,18 @@ checkOsAccountTestable(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示当前账号为测试账号；返回false表示当前账号非测试账号；默认为false。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示当前账号为测试账号；返回false表示当前账号非测试账号。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -447,27 +398,6 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { osAccount } from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.checkOsAccountTestable((err: BusinessError | null, isTestable: boolean | undefined) => {
-    if (err) {
-      console.error(`checkOsAccountTestable failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('checkOsAccountTestable successfully, isTestable: ' + isTestable);
-    }
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`checkOsAccountTestable code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## checkOsAccountTestable
 
 ```TypeScript
@@ -476,9 +406,7 @@ checkOsAccountTestable(): Promise<boolean>
 
 检查当前系统账号是否为测试账号。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-checkOsAccountTestable(): Promise<boolean>--><!--Device-AccountManager-checkOsAccountTestable(): Promise<boolean>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -486,7 +414,7 @@ checkOsAccountTestable(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号为测试账号；返回false表示当前账号非测试账号；默认为false。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示当前账号为测试账号；返回false表示当前账号非测试账号。 |
 
 **错误码：**
 
@@ -496,10 +424,7 @@ checkOsAccountTestable(): Promise<boolean>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -515,33 +440,18 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { osAccount } from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.checkOsAccountTestable().then((isTestable: boolean) => {
-    console.info('checkOsAccountTestable successfully, isTestable: ' + isTestable);
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`checkOsAccountTestable failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`checkOsAccountTestable exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## checkOsAccountVerified
 
 ```TypeScript
 checkOsAccountVerified(callback: AsyncCallback<boolean>): void
 ```
 
-检查当前系统账号是否已认证解锁。使用callback异步回调。 > **说明：** > > 从API version 9开始支持，从API version 11开始废弃。建议使用 > [isOsAccountUnlocked](#isosaccountunlocked)替代。
+检查当前系统账号是否已认证解锁。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 11开始废弃。建议使用
+> [isOsAccountUnlocked](#isosaccountunlocked)替代。
 
 **起始版本：** 9
 
@@ -549,15 +459,13 @@ checkOsAccountVerified(callback: AsyncCallback<boolean>): void
 
 **替代接口：** [isOsAccountUnlocked](#isosaccountunlocked)()
 
-<!--Device-AccountManager-checkOsAccountVerified(callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-checkOsAccountVerified(callback: AsyncCallback<boolean>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
 
 **错误码：**
 
@@ -591,7 +499,12 @@ try {
 checkOsAccountVerified(): Promise<boolean>
 ```
 
-检查当前系统账号是否已认证解锁。使用Promise异步回调。 > **说明：** > > 从API version 9开始支持，从API version 11开始废弃。建议使用 > [isOsAccountUnlocked](#isosaccountunlocked)替代。
+检查当前系统账号是否已认证解锁。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 11开始废弃。建议使用
+> [isOsAccountUnlocked](#isosaccountunlocked)替代。
 
 **起始版本：** 9
 
@@ -599,15 +512,13 @@ checkOsAccountVerified(): Promise<boolean>
 
 **替代接口：** [isOsAccountUnlocked](#isosaccountunlocked)()
 
-<!--Device-AccountManager-checkOsAccountVerified(): Promise<boolean>--><!--Device-AccountManager-checkOsAccountVerified(): Promise<boolean>-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
 
 **错误码：**
 
@@ -639,15 +550,17 @@ try {
 checkOsAccountVerified(localId: number, callback: AsyncCallback<boolean>): void
 ```
 
-检查指定系统账号是否已验证。使用callback异步回调。 > **说明：** > > 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+检查指定系统账号是否已验证。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-checkOsAccountVerified(localId: number, callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-checkOsAccountVerified(localId: number, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -656,17 +569,17 @@ checkOsAccountVerified(localId: number, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示指定账号已认证解锁；返回false表示指定账号未认证解锁。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例**
 
@@ -696,15 +609,17 @@ try {
 checkOsAccountVerified(localId: number): Promise<boolean>
 ```
 
-检查指定系统账号是否已验证。使用Promise异步回调。 > **说明：** > > 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+检查指定系统账号是否已验证。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-checkOsAccountVerified(localId: number): Promise<boolean>--><!--Device-AccountManager-checkOsAccountVerified(localId: number): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -718,17 +633,17 @@ checkOsAccountVerified(localId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例**
 
@@ -753,14 +668,12 @@ try {
 ## getActivatedOsAccountLocalIds
 
 ```TypeScript
-getActivatedOsAccountLocalIds(callback: AsyncCallback<Array<int>>): void
+getActivatedOsAccountLocalIds(callback: AsyncCallback<Array<number>>): void
 ```
 
 查询当前处于激活状态的系统账号的ID列表。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-getActivatedOsAccountLocalIds(callback: AsyncCallback<Array<int>>): void--><!--Device-AccountManager-getActivatedOsAccountLocalIds(callback: AsyncCallback<Array<int>>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -768,21 +681,18 @@ getActivatedOsAccountLocalIds(callback: AsyncCallback<Array<int>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;Array&lt;int&gt;&gt; | 是 | 回调函数。如果查询成功，err为null，data为当前处于激活状态的系统账号的ID列表；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 回调函数。如果查询成功，err为null，data为当前处于激活状态的系统账号的ID列表；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -803,41 +713,15 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.getActivatedOsAccountLocalIds((err: BusinessError | null, idArray: int[] | undefined)=>{
-    if (err) {
-      console.error(`getActivatedOsAccountLocalIds code is ${err.code}, message is ${err.message}`);
-    } else if (idArray) {
-      console.info('getActivatedOsAccountLocalIds idArray length:' + idArray.length);
-      for(let i=0;i<idArray.length;i++) {
-        console.info('activated os account id: ' + idArray[i]);
-      }
-    }
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getActivatedOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getActivatedOsAccountLocalIds
 
 ```TypeScript
-getActivatedOsAccountLocalIds(): Promise<Array<int>>
+getActivatedOsAccountLocalIds(): Promise<Array<number>>
 ```
 
 查询当前处于激活状态的系统账号的ID列表。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-getActivatedOsAccountLocalIds(): Promise<Array<int>>--><!--Device-AccountManager-getActivatedOsAccountLocalIds(): Promise<Array<int>>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -845,7 +729,7 @@ getActivatedOsAccountLocalIds(): Promise<Array<int>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;int&gt;&gt; | Promise对象，返回当前处于激活状态的系统账号的ID列表。 |
+| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，返回当前处于激活状态的系统账号的ID列表。 |
 
 **错误码：**
 
@@ -855,10 +739,7 @@ getActivatedOsAccountLocalIds(): Promise<Array<int>>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -874,33 +755,18 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.getActivatedOsAccountLocalIds().then((idArray: int[]) => {
-    console.info('getActivatedOsAccountLocalIds, idArray: ' + idArray);
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`getActivatedOsAccountLocalIds err: code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getActivatedOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getCreatedOsAccountsCount
 
 ```TypeScript
 getCreatedOsAccountsCount(callback: AsyncCallback<number>): void
 ```
 
-获取已创建的系统账号数量。使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用 > [getOsAccountCount](#getosaccountcount)替代。
+获取已创建的系统账号数量。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。建议使用
+> [getOsAccountCount](#getosaccountcount)替代。
 
 **起始版本：** 7
 
@@ -910,15 +776,13 @@ getCreatedOsAccountsCount(callback: AsyncCallback<number>): void
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
-<!--Device-AccountManager-getCreatedOsAccountsCount(callback: AsyncCallback<number>): void--><!--Device-AccountManager-getCreatedOsAccountsCount(callback: AsyncCallback<number>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。如果获取成功，err为null，data为已创建的系统账号的数量；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。如果获取成功，err为null，data为已创建的系统账号的数量；否则为错误对象。 |
 
 **示例**
 
@@ -941,7 +805,12 @@ accountManager.getCreatedOsAccountsCount((err: BusinessError, count: number)=>{
 getCreatedOsAccountsCount(): Promise<number>
 ```
 
-获取已创建的系统账号数量。使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用 > [getOsAccountCount](#getosaccountcount)替代。
+获取已创建的系统账号数量。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。建议使用
+> [getOsAccountCount](#getosaccountcount)替代。
 
 **起始版本：** 7
 
@@ -951,15 +820,13 @@ getCreatedOsAccountsCount(): Promise<number>
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
-<!--Device-AccountManager-getCreatedOsAccountsCount(): Promise<number>--><!--Device-AccountManager-getCreatedOsAccountsCount(): Promise<number>-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回已创建的系统账号的数量。 |
+| Promise & lt;number & gt; | Promise对象，返回已创建的系统账号的数量。 |
 
 **示例**
 
@@ -980,7 +847,11 @@ accountManager.getCreatedOsAccountsCount().then((count: number) => {
 getCurrentOsAccount(callback: AsyncCallback<OsAccountInfo>): void
 ```
 
-查询当前进程所属的系统账号的信息。使用callback异步回调。 > **说明：** > > 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+查询当前进程所属的系统账号的信息。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 9
 
@@ -990,15 +861,13 @@ getCurrentOsAccount(callback: AsyncCallback<OsAccountInfo>): void
 - API版本10+：ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.GET_LOCAL_ACCOUNTS
 - API版本9：ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
-<!--Device-AccountManager-getCurrentOsAccount(callback: AsyncCallback<OsAccountInfo>): void--><!--Device-AccountManager-getCurrentOsAccount(callback: AsyncCallback<OsAccountInfo>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;[OsAccountInfo](arkts-basicservices-osaccount-osaccountinfo-i.md)&gt; | 是 | 回调函数。如果查询成功，err为null，data为当前进程所属的系统账号信息；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[OsAccountInfo](arkts-basicservices-osaccount-osaccountinfo-i.md)&gt; | 是 | 回调函数。如果查询成功，err为null，data为当前进程所属的系统账号信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -1033,7 +902,11 @@ try {
 getCurrentOsAccount(): Promise<OsAccountInfo>
 ```
 
-查询当前进程所属的系统账号的信息。使用Promise异步回调。 > **说明：** > > 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+查询当前进程所属的系统账号的信息。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 9
 
@@ -1042,8 +915,6 @@ getCurrentOsAccount(): Promise<OsAccountInfo>
 **需要权限：** 
 - API版本10+：ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.GET_LOCAL_ACCOUNTS
 - API版本9：ohos.permission.MANAGE_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-getCurrentOsAccount(): Promise<OsAccountInfo>--><!--Device-AccountManager-getCurrentOsAccount(): Promise<OsAccountInfo>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1084,7 +955,13 @@ try {
 getDistributedVirtualDeviceId(callback: AsyncCallback<string>): void
 ```
 
-获取分布式虚拟设备ID。使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用 > [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid) > 替代。
+获取分布式虚拟设备ID。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。建议使用
+> [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid)
+> 替代。
 
 **起始版本：** 7
 
@@ -1094,15 +971,13 @@ getDistributedVirtualDeviceId(callback: AsyncCallback<string>): void
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC or ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
-<!--Device-AccountManager-getDistributedVirtualDeviceId(callback: AsyncCallback<string>): void--><!--Device-AccountManager-getDistributedVirtualDeviceId(callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。如果获取成功，err为null，data为分布式虚拟设备ID；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。如果获取成功，err为null，data为分布式虚拟设备ID；否则为错误对象。 |
 
 **示例**
 
@@ -1125,7 +1000,12 @@ accountManager.getDistributedVirtualDeviceId((err: BusinessError, virtualID: str
 getDistributedVirtualDeviceId(): Promise<string>
 ```
 
-获取分布式虚拟设备ID。使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用 > [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid)替代。
+获取分布式虚拟设备ID。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。建议使用
+> [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid)替代。
 
 **起始版本：** 7
 
@@ -1135,15 +1015,13 @@ getDistributedVirtualDeviceId(): Promise<string>
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC or ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
-<!--Device-AccountManager-getDistributedVirtualDeviceId(): Promise<string>--><!--Device-AccountManager-getDistributedVirtualDeviceId(): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回分布式虚拟设备ID。 |
+| Promise & lt;string & gt; | Promise对象，返回分布式虚拟设备ID。 |
 
 **示例**
 
@@ -1161,14 +1039,12 @@ accountManager.getDistributedVirtualDeviceId().then((virtualID: string) => {
 ## getForegroundOsAccountLocalId
 
 ```TypeScript
-getForegroundOsAccountLocalId(): Promise<int>
+getForegroundOsAccountLocalId(): Promise<number>
 ```
 
 获取前台系统账号的ID。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-getForegroundOsAccountLocalId(): Promise<int>--><!--Device-AccountManager-getForegroundOsAccountLocalId(): Promise<int>-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1176,7 +1052,7 @@ getForegroundOsAccountLocalId(): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象。返回前台系统账号的ID。 |
+| Promise & lt;number & gt; | Promise对象，返回前台系统账号的ID。 |
 
 **错误码：**
 
@@ -1186,10 +1062,7 @@ getForegroundOsAccountLocalId(): Promise<int>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1205,43 +1078,23 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.getForegroundOsAccountLocalId().then((localId: int) => {
-    console.info('getForegroundOsAccountLocalId, localId: ' + localId);
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`getForegroundOsAccountLocalId err: code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getForegroundOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getOsAccountAllConstraints
 
 ```TypeScript
 getOsAccountAllConstraints(localId: number, callback: AsyncCallback<Array<string>>): void
 ```
 
-获取指定系统账号的全部约束。使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+获取指定系统账号的全部约束。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getOsAccountConstraints](#getosaccountconstraints)(localId: number, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-getOsAccountAllConstraints(localId: number, callback: AsyncCallback<Array<string>>): void--><!--Device-AccountManager-getOsAccountAllConstraints(localId: number, callback: AsyncCallback<Array<string>>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1250,7 +1103,7 @@ getOsAccountAllConstraints(localId: number, callback: AsyncCallback<Array<string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数。如果获取成功，err为null，data为指定系统账号的全部 约束；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数。如果获取成功，err为null，data为指定系统账号的全部 [约束](../../../reference/apis-basic-services-kit/appendix-osAccount-constraints.md)；否则为错误对象。 |
 
 **示例**
 
@@ -1277,17 +1130,17 @@ accountManager.getOsAccountAllConstraints(localId, (err: BusinessError, constrai
 getOsAccountAllConstraints(localId: number): Promise<Array<string>>
 ```
 
-获取指定系统账号的全部约束。使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+获取指定系统账号的全部约束。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getOsAccountConstraints](#getosaccountconstraints)(localId: number)
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-getOsAccountAllConstraints(localId: number): Promise<Array<string>>--><!--Device-AccountManager-getOsAccountAllConstraints(localId: number): Promise<Array<string>>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1301,7 +1154,7 @@ getOsAccountAllConstraints(localId: number): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定系统账号的全部 约束。 |
+| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回指定系统账号的全部 [约束](../../../reference/apis-basic-services-kit/appendix-osAccount-constraints.md)。 |
 
 **示例**
 
@@ -1326,15 +1179,17 @@ accountManager.getOsAccountAllConstraints(localId).then((constraints: string[]) 
 getOsAccountConstraints(localId: number, callback: AsyncCallback<Array<string>>): void
 ```
 
-获取指定系统账号的全部约束。使用callback异步回调。 > **说明：** > > 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+获取指定系统账号的全部约束。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-getOsAccountConstraints(localId: number, callback: AsyncCallback<Array<string>>): void--><!--Device-AccountManager-getOsAccountConstraints(localId: number, callback: AsyncCallback<Array<string>>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1343,17 +1198,17 @@ getOsAccountConstraints(localId: number, callback: AsyncCallback<Array<string>>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，如果获取成功，err为null，data为该系统账号的全部 约束；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，如果获取成功，err为null，data为该系统账号的全部 [约束](../../../reference/apis-basic-services-kit/appendix-osAccount-constraints.md)；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例**
 
@@ -1385,15 +1240,17 @@ try {
 getOsAccountConstraints(localId: number): Promise<Array<string>>
 ```
 
-获取指定系统账号的全部约束。使用Promise异步回调。 > **说明：** > > 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+获取指定系统账号的全部约束。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-getOsAccountConstraints(localId: number): Promise<Array<string>>--><!--Device-AccountManager-getOsAccountConstraints(localId: number): Promise<Array<string>>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1407,17 +1264,17 @@ getOsAccountConstraints(localId: number): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定系统账号的全部 约束。 |
+| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回指定系统账号的全部 [约束](../../../reference/apis-basic-services-kit/appendix-osAccount-constraints.md)。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例**
 
@@ -1444,16 +1301,14 @@ try {
 ## getOsAccountCount
 
 ```TypeScript
-getOsAccountCount(callback: AsyncCallback<int>): void
+getOsAccountCount(callback: AsyncCallback<number>): void
 ```
 
 获取已创建的系统账号数量。使用callback异步回调。 该接口仅限系统应用调用。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-getOsAccountCount(callback: AsyncCallback<int>): void--><!--Device-AccountManager-getOsAccountCount(callback: AsyncCallback<int>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1461,22 +1316,19 @@ getOsAccountCount(callback: AsyncCallback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 回调函数。如果获取成功，err为null，data为已创建的系统账号的数量；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。如果获取成功，err为null，data为已创建的系统账号的数量；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1494,40 +1346,17 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.getOsAccountCount((err: BusinessError | null, count: int | undefined) => {
-    if (err) {
-      console.error(`getOsAccountCount failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('getOsAccountCount successfully, count: ' + count);
-    }
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountCount exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getOsAccountCount
 
 ```TypeScript
-getOsAccountCount(): Promise<int>
+getOsAccountCount(): Promise<number>
 ```
 
 获取已创建的系统账号数量。使用Promise异步回调。 该接口仅限系统应用调用。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-getOsAccountCount(): Promise<int>--><!--Device-AccountManager-getOsAccountCount(): Promise<int>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1535,7 +1364,7 @@ getOsAccountCount(): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回已创建的系统账号的数量。 |
+| Promise & lt;number & gt; | Promise对象，返回已创建的系统账号的数量。 |
 
 **错误码：**
 
@@ -1546,10 +1375,7 @@ getOsAccountCount(): Promise<int>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1559,26 +1385,7 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`getOsAccountCount failed, code is ${err.code}, message is ${err.message}`);
   });
-} catch(err) {
-  console.error(`getOsAccountCount exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.getOsAccountCount().then((count: int) => {
-    console.info('getOsAccountCount successfully, count: ' + count);
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`getOsAccountCount failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch(e: Error) {
+} catch (e) {
   const err = e as BusinessError;
   console.error(`getOsAccountCount exception: code is ${err.code}, message is ${err.message}`);
 }
@@ -1596,8 +1403,6 @@ getOsAccountDomainInfo(localId: number): Promise<DomainAccountInfo>
 
 **需要权限：** ohos.permission.GET_DOMAIN_ACCOUNTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-<!--Device-AccountManager-getOsAccountDomainInfo(localId: number): Promise<DomainAccountInfo>--><!--Device-AccountManager-getOsAccountDomainInfo(localId: number): Promise<DomainAccountInfo>-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
@@ -1610,21 +1415,20 @@ getOsAccountDomainInfo(localId: number): Promise<DomainAccountInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md)&gt; | Promise对象。返回与指定系统账号关联的域账号信息。 |
+| Promise&lt;[DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md)&gt; | Promise对象，返回与指定系统账号关联的域账号信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | OS account not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | OS account not found. |
 
 **示例**
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1642,74 +1446,15 @@ accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccoun
 })
 ```
 
-## getOsAccountDomainInfo
-
-```TypeScript
-getOsAccountDomainInfo(localId: int): Promise<DomainAccountInfo | null>
-```
-
-获取指定系统账号关联的域账号信息。使用Promise异步回调。
-
-**起始版本：** 23
-
-**需要权限：** ohos.permission.GET_DOMAIN_ACCOUNTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-getOsAccountDomainInfo(localId: int): Promise<DomainAccountInfo | null>--><!--Device-AccountManager-getOsAccountDomainInfo(localId: int): Promise<DomainAccountInfo | null>-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| localId | int | 是 | 系统账号ID。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) \| null&gt; | Promise对象。返回与指定系统账号关联的域账号信息。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | OS account not found. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
-
-**示例**
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-let localId: int = 100;
-accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccount.DomainAccountInfo) => {
-  if (domainAccountInfo === null) {
-    console.info('The target OS account is not a domain account.')
-  } else {
-    console.info('getOsAccountDomainInfo domain: ' + domainAccountInfo.domain);
-    console.info('getOsAccountDomainInfo accountName: ' + domainAccountInfo.accountName);
-  }
-}).catch((e: Error) => {
-  const err = e as BusinessError;
-  console.error(`getOsAccountDomainInfo err: code is ${err.code}, message is ${err.message}`);
-})
-```
-
 ## getOsAccountLocalId
 
 ```TypeScript
-getOsAccountLocalId(callback: AsyncCallback<int>): void
+getOsAccountLocalId(callback: AsyncCallback<number>): void
 ```
 
 获取当前进程所属的系统账号ID。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-getOsAccountLocalId(callback: AsyncCallback<int>): void--><!--Device-AccountManager-getOsAccountLocalId(callback: AsyncCallback<int>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1717,21 +1462,18 @@ getOsAccountLocalId(callback: AsyncCallback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 回调函数。如果获取成功，err为null，data为当前进程所属的系统账号ID；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。如果获取成功，err为null，data为当前进程所属的系统账号ID；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1749,38 +1491,15 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.getOsAccountLocalId((err: BusinessError | null, localId: int | undefined) => {
-    if (err) {
-      console.error(`getOsAccountLocalId failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('getOsAccountLocalId successfully, localId: ' + localId);
-    }
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getOsAccountLocalId
 
 ```TypeScript
-getOsAccountLocalId(): Promise<int>
+getOsAccountLocalId(): Promise<number>
 ```
 
 获取当前进程所属的系统账号ID。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-getOsAccountLocalId(): Promise<int>--><!--Device-AccountManager-getOsAccountLocalId(): Promise<int>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1788,7 +1507,7 @@ getOsAccountLocalId(): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回当前进程所属的系统账号ID。 |
+| Promise & lt;number & gt; | Promise对象，返回当前进程所属的系统账号ID。 |
 
 **错误码：**
 
@@ -1798,10 +1517,7 @@ getOsAccountLocalId(): Promise<int>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1817,41 +1533,25 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.getOsAccountLocalId().then((localId: int) => {
-    console.info('getOsAccountLocalId successfully, localId: ' + localId);
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`getOsAccountLocalId failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getOsAccountLocalIdBySerialNumber
 
 ```TypeScript
 getOsAccountLocalIdBySerialNumber(serialNumber: number, callback: AsyncCallback<number>): void
 ```
 
-通过SN码查询与其关联的系统账号的账号ID。使用callback异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用 > [getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber) > 替代。
+通过SN码查询与其关联的系统账号的账号ID。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 9开始废弃。建议使用
+> [getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber)
+> 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber)(serialNumber: long, callback: AsyncCallback&lt;int&gt;)
-
-<!--Device-AccountManager-getOsAccountLocalIdBySerialNumber(serialNumber: number, callback: AsyncCallback<number>): void--><!--Device-AccountManager-getOsAccountLocalIdBySerialNumber(serialNumber: number, callback: AsyncCallback<number>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1860,7 +1560,7 @@ getOsAccountLocalIdBySerialNumber(serialNumber: number, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | serialNumber | number | 是 | 账号SN码。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。如果查询成功，err为null，data为与SN码关联的系统账号的账号ID；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。如果查询成功，err为null，data为与SN码关联的系统账号的账号ID；否则为错误对象。 |
 
 **示例**
 
@@ -1886,15 +1586,19 @@ accountManager.getOsAccountLocalIdBySerialNumber(serialNumber, (err: BusinessErr
 getOsAccountLocalIdBySerialNumber(serialNumber: number): Promise<number>
 ```
 
-通过SN码查询与其关联的系统账号的账号ID。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用 > [getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber) > 替代。
+通过SN码查询与其关联的系统账号的账号ID。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 9开始废弃。建议使用
+> [getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber)
+> 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber)(serialNumber: long)
-
-<!--Device-AccountManager-getOsAccountLocalIdBySerialNumber(serialNumber: number): Promise<number>--><!--Device-AccountManager-getOsAccountLocalIdBySerialNumber(serialNumber: number): Promise<number>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1908,7 +1612,7 @@ getOsAccountLocalIdBySerialNumber(serialNumber: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回与SN码关联的系统账号的账号ID。 |
+| Promise & lt;number & gt; | Promise对象，返回与SN码关联的系统账号的账号ID。 |
 
 **示例**
 
@@ -1929,16 +1633,14 @@ accountManager.getOsAccountLocalIdBySerialNumber(serialNumber).then((localId: nu
 ## getOsAccountLocalIdForDomain
 
 ```TypeScript
-getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallback<int>): void
+getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallback<number>): void
 ```
 
 根据域账号信息，获取与其关联的系统账号ID。使用callback异步回调。 该接口仅限系统应用调用。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallback<int>): void--><!--Device-AccountManager-getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallback<int>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1947,23 +1649,21 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | domainInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | 是 | 域账号信息。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 回调函数。如果查询成功，err为null，data为域账号关联的系统账号ID；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。如果查询成功，err为null，data为域账号关联的系统账号ID；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid domainInfo. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid domainInfo. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Domain account not found. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
@@ -1982,41 +1682,17 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.getOsAccountLocalIdForDomain(domainInfo, (err: BusinessError | null, localId: int | undefined) => {
-    if (err) {
-      console.error(`getOsAccountLocalIdForDomain failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('getOsAccountLocalIdForDomain successfully, localId: ' + localId);
-    }
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getOsAccountLocalIdForDomain
 
 ```TypeScript
-getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise<int>
+getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise<number>
 ```
 
 根据域账号信息，获取与其关联的系统账号的账号ID。使用Promise异步回调。 该接口仅限系统应用调用。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise<int>--><!--Device-AccountManager-getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise<int>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -2030,23 +1706,21 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回域账号关联的系统账号ID。 |
+| Promise & lt;number & gt; | Promise对象，返回域账号关联的系统账号ID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid domainInfo. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid domainInfo. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Domain account not found. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -2063,38 +1737,15 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
-try {
-  accountManager.getOsAccountLocalIdForDomain(domainInfo).then((localId: int) => {
-    console.info('getOsAccountLocalIdForDomain successfully, localId: ' + localId);
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`getOsAccountLocalIdForDomain failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getOsAccountLocalIdForSerialNumber
 
 ```TypeScript
-getOsAccountLocalIdForSerialNumber(serialNumber: long, callback: AsyncCallback<int>): void
+getOsAccountLocalIdForSerialNumber(serialNumber: number, callback: AsyncCallback<number>): void
 ```
 
 通过SN码查询与其关联的系统账号的账号ID。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-getOsAccountLocalIdForSerialNumber(serialNumber: long, callback: AsyncCallback<int>): void--><!--Device-AccountManager-getOsAccountLocalIdForSerialNumber(serialNumber: long, callback: AsyncCallback<int>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -2102,24 +1753,23 @@ getOsAccountLocalIdForSerialNumber(serialNumber: long, callback: AsyncCallback<i
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| serialNumber | long | 是 | 账号SN码。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 回调函数。如果成功，err为null，data为与SN码关联的系统账号的账号ID；否则为错误对象。 |
+| serialNumber | number | 是 | 账号SN码。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。如果成功，err为null，data为与SN码关联的系统账号的账号ID；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | The account indicated by serialNumber does not exist. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid serialNumber. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid serialNumber. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | The account indicated by serialNumber does not exist. |
 
 **示例**
 
-ArkTS-Dyn示例：
+查询与SN码12345关联的系统账号的ID。
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -2139,39 +1789,15 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-let serialNumber: int = 12345;
-try {
-  accountManager.getOsAccountLocalIdForSerialNumber(serialNumber, (err: BusinessError | null, localId: int | undefined)=>{
-    if (err) {
-      console.error(`get localId code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('get localId:' + localId + ' by serialNumber: ' + serialNumber);
-    }
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`get localId exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getOsAccountLocalIdForSerialNumber
 
 ```TypeScript
-getOsAccountLocalIdForSerialNumber(serialNumber: long): Promise<int>
+getOsAccountLocalIdForSerialNumber(serialNumber: number): Promise<number>
 ```
 
 通过SN码查询与其关联的系统账号的账号ID。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-getOsAccountLocalIdForSerialNumber(serialNumber: long): Promise<int>--><!--Device-AccountManager-getOsAccountLocalIdForSerialNumber(serialNumber: long): Promise<int>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -2179,29 +1805,28 @@ getOsAccountLocalIdForSerialNumber(serialNumber: long): Promise<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| serialNumber | long | 是 | 账号SN码。 |
+| serialNumber | number | 是 | 账号SN码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回与SN码关联的系统账号的账号ID。 |
+| Promise & lt;number & gt; | Promise对象，返回与SN码关联的系统账号的账号ID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | The account indicated by serialNumber does not exist. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid serialNumber. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid serialNumber. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | The account indicated by serialNumber does not exist. |
 
 **示例**
 
-ArkTS-Dyn示例：
+查询与SN码12345关联的系统账号的ID。
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -2219,38 +1844,15 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-let serialNumber: int = 12345;
-try {
-  accountManager.getOsAccountLocalIdForSerialNumber(serialNumber).then((localId: int) => {
-    console.info('getOsAccountLocalIdForSerialNumber localId: ' + localId);
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`getOsAccountLocalIdForSerialNumber err: code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountLocalIdForSerialNumber exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getOsAccountLocalIdForUid
 
 ```TypeScript
-getOsAccountLocalIdForUid(uid: int, callback: AsyncCallback<int>): void
+getOsAccountLocalIdForUid(uid: number, callback: AsyncCallback<number>): void
 ```
 
 根据uid查询对应的系统账号ID。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-getOsAccountLocalIdForUid(uid: int, callback: AsyncCallback<int>): void--><!--Device-AccountManager-getOsAccountLocalIdForUid(uid: int, callback: AsyncCallback<int>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -2258,23 +1860,22 @@ getOsAccountLocalIdForUid(uid: int, callback: AsyncCallback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uid | int | 是 | 进程uid。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 回调函数。如果查询成功，err为null，data为对应的系统账号ID；否则为错误对象。 |
+| uid | number | 是 | 进程uid。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。如果查询成功，err为null，data为对应的系统账号ID；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid uid. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid uid. |
 
 **示例**
 
-ArkTS-Dyn示例：
+查询值为12345678的uid所属的系统账号的账号ID。
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -2294,38 +1895,15 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-let uid: int = 12345678;
-try {
-  accountManager.getOsAccountLocalIdForUid(uid, (err: BusinessError | null, localId: int | undefined) => {
-    if (err) {
-      console.error(`getOsAccountLocalIdForUid failed, code is ${err.code}, message is ${err.message}`);
-    }
-    console.info('getOsAccountLocalIdForUid successfully, localId: ' + localId);
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountLocalIdForUid exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getOsAccountLocalIdForUid
 
 ```TypeScript
-getOsAccountLocalIdForUid(uid: int): Promise<int>
+getOsAccountLocalIdForUid(uid: number): Promise<number>
 ```
 
 根据uid查询对应的系统账号ID。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-getOsAccountLocalIdForUid(uid: int): Promise<int>--><!--Device-AccountManager-getOsAccountLocalIdForUid(uid: int): Promise<int>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -2333,28 +1911,27 @@ getOsAccountLocalIdForUid(uid: int): Promise<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uid | int | 是 | 进程uid。 |
+| uid | number | 是 | 进程uid。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回指定uid对应的系统账号ID。 |
+| Promise & lt;number & gt; | Promise对象，返回指定uid对应的系统账号ID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid uid. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid uid. |
 
 **示例**
 
-ArkTS-Dyn示例：
+查询值为12345678的uid所属的系统账号ID。
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -2372,38 +1949,15 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-let uid: int = 12345678;
-try {
-  accountManager.getOsAccountLocalIdForUid(uid).then((localId: int) => {
-    console.info('getOsAccountLocalIdForUid successfully, localId: ' + localId);
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`getOsAccountLocalIdForUid failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountLocalIdForUid exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getOsAccountLocalIdForUidSync
 
 ```TypeScript
-getOsAccountLocalIdForUidSync(uid: int): int
+getOsAccountLocalIdForUidSync(uid: number): number
 ```
 
 根据uid查询对应的系统账号ID。使用同步方式返回结果。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-getOsAccountLocalIdForUidSync(uid: int): int--><!--Device-AccountManager-getOsAccountLocalIdForUidSync(uid: int): int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -2411,24 +1965,24 @@ getOsAccountLocalIdForUidSync(uid: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uid | int | 是 | 进程uid。 |
+| uid | number | 是 | 进程uid。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 返回指定uid对应的系统账号ID。 |
+| number | 返回指定uid对应的系统账号ID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid uid. |
 
 **示例**
 
-ArkTS-Dyn示例：
+查询值为12345678的uid所属的系统账号ID。
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2445,27 +1999,19 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-let uid: int = 12345678;
-try {
-  let localId : int = accountManager.getOsAccountLocalIdForUidSync(uid);
-  console.info('getOsAccountLocalIdForUidSync successfully, localId: ' + localId);
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountLocalIdForUidSync exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getOsAccountLocalIdFromDomain
 
 ```TypeScript
 getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo, callback: AsyncCallback<number>): void
 ```
 
-根据域账号信息，获取与其关联的系统账号的账号ID。使用callback异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用 > [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain) > 替代。
+根据域账号信息，获取与其关联的系统账号的账号ID。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 9开始废弃。建议使用
+> [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain)
+> 替代。
 
 **起始版本：** 8
 
@@ -2475,8 +2021,6 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo, callback: AsyncCall
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
-<!--Device-AccountManager-getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo, callback: AsyncCallback<number>): void--><!--Device-AccountManager-getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo, callback: AsyncCallback<number>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
@@ -2484,7 +2028,7 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo, callback: AsyncCall
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | domainInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | 是 | 域账号信息。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数，如果获取成功，err为null，data为域账号关联的系统账号ID；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，如果获取成功，err为null，data为域账号关联的系统账号ID；否则为错误对象。 |
 
 **示例**
 
@@ -2508,7 +2052,13 @@ accountManager.getOsAccountLocalIdFromDomain(domainInfo, (err: BusinessError, lo
 getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo): Promise<number>
 ```
 
-根据域账号信息，获取与其关联的系统账号的账号ID。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用 > [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain) > 替代。
+根据域账号信息，获取与其关联的系统账号的账号ID。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 9开始废弃。建议使用
+> [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain)
+> 替代。
 
 **起始版本：** 8
 
@@ -2517,8 +2067,6 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo): Promise<number>
 **替代接口：** [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain)(domainInfo: DomainAccountInfo)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo): Promise<number>--><!--Device-AccountManager-getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo): Promise<number>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -2532,7 +2080,7 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回域账号关联的系统账号ID。 |
+| Promise & lt;number & gt; | Promise对象，返回域账号关联的系统账号ID。 |
 
 **示例**
 
@@ -2554,7 +2102,12 @@ accountManager.getOsAccountLocalIdFromDomain(domainInfo).then((localId: number) 
 getOsAccountLocalIdFromProcess(callback: AsyncCallback<number>): void
 ```
 
-获取当前进程所属的系统账号ID。使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用 > [getOsAccountLocalId](#getosaccountlocalid)替代。
+获取当前进程所属的系统账号ID。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。建议使用
+> [getOsAccountLocalId](#getosaccountlocalid)替代。
 
 **起始版本：** 7
 
@@ -2562,15 +2115,13 @@ getOsAccountLocalIdFromProcess(callback: AsyncCallback<number>): void
 
 **替代接口：** [getOsAccountLocalId](#getosaccountlocalid)(callback: AsyncCallback&lt;int&gt;)
 
-<!--Device-AccountManager-getOsAccountLocalIdFromProcess(callback: AsyncCallback<number>): void--><!--Device-AccountManager-getOsAccountLocalIdFromProcess(callback: AsyncCallback<number>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。如果获取成功，err为null，data为当前进程所属的系统账号ID；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。如果获取成功，err为null，data为当前进程所属的系统账号ID；否则为错误对象。 |
 
 **示例**
 
@@ -2593,7 +2144,12 @@ accountManager.getOsAccountLocalIdFromProcess((err: BusinessError, localId: numb
 getOsAccountLocalIdFromProcess(): Promise<number>
 ```
 
-获取当前进程所属的系统账号ID。使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用 > [getOsAccountLocalId](#getosaccountlocalid)替代。
+获取当前进程所属的系统账号ID。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。建议使用
+> [getOsAccountLocalId](#getosaccountlocalid)替代。
 
 **起始版本：** 7
 
@@ -2601,15 +2157,13 @@ getOsAccountLocalIdFromProcess(): Promise<number>
 
 **替代接口：** [getOsAccountLocalId](#getosaccountlocalid)()
 
-<!--Device-AccountManager-getOsAccountLocalIdFromProcess(): Promise<number>--><!--Device-AccountManager-getOsAccountLocalIdFromProcess(): Promise<number>-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回当前进程所属的系统账号ID。 |
+| Promise & lt;number & gt; | Promise对象，返回当前进程所属的系统账号ID。 |
 
 **示例**
 
@@ -2630,15 +2184,19 @@ accountManager.getOsAccountLocalIdFromProcess().then((localId: number) => {
 getOsAccountLocalIdFromUid(uid: number, callback: AsyncCallback<number>): void
 ```
 
-根据uid查询对应的系统账号ID。使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用 > [getOsAccountLocalIdForUid](#getosaccountlocalidforuid) > 替代。
+根据uid查询对应的系统账号ID。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。建议使用
+> [getOsAccountLocalIdForUid](#getosaccountlocalidforuid)
+> 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** [getOsAccountLocalIdForUid](#getosaccountlocalidforuid)(uid: int, callback: AsyncCallback&lt;int&gt;)
-
-<!--Device-AccountManager-getOsAccountLocalIdFromUid(uid: number, callback: AsyncCallback<number>): void--><!--Device-AccountManager-getOsAccountLocalIdFromUid(uid: number, callback: AsyncCallback<number>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -2647,7 +2205,7 @@ getOsAccountLocalIdFromUid(uid: number, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uid | number | 是 | 进程uid。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。如果查询成功，err为null，data为对应的系统账号ID；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。如果查询成功，err为null，data为对应的系统账号ID；否则为错误对象。 |
 
 **示例**
 
@@ -2673,15 +2231,18 @@ accountManager.getOsAccountLocalIdFromUid(uid, (err: BusinessError, localId: num
 getOsAccountLocalIdFromUid(uid: number): Promise<number>
 ```
 
-根据uid查询对应的系统账号ID。使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用 > [getOsAccountLocalIdForUid](#getosaccountlocalidforuid)替代。
+根据uid查询对应的系统账号ID。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。建议使用
+> [getOsAccountLocalIdForUid](#getosaccountlocalidforuid)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** [getOsAccountLocalIdForUid](#getosaccountlocalidforuid)(uid: int)
-
-<!--Device-AccountManager-getOsAccountLocalIdFromUid(uid: number): Promise<number>--><!--Device-AccountManager-getOsAccountLocalIdFromUid(uid: number): Promise<number>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -2695,7 +2256,7 @@ getOsAccountLocalIdFromUid(uid: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回uid对应的系统账号ID。 |
+| Promise & lt;number & gt; | Promise对象，返回uid对应的系统账号ID。 |
 
 **示例**
 
@@ -2716,7 +2277,7 @@ accountManager.getOsAccountLocalIdFromUid(uid).then((localId: number) => {
 ## getOsAccountLocalIds
 
 ```TypeScript
-getOsAccountLocalIds(): Promise<int[]>
+getOsAccountLocalIds(): Promise<number[]>
 ```
 
 获取所有非系统级的操作系统账号的本地ID。非系统级的操作系统账号对用户可见，通常用于登录等操作。使用Promise异步回调。
@@ -2727,15 +2288,13 @@ getOsAccountLocalIds(): Promise<int[]>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AccountManager-getOsAccountLocalIds(): Promise<int[]>--><!--Device-AccountManager-getOsAccountLocalIds(): Promise<int[]>-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int[]&gt; | Promise对象，返回所有非系统级的操作系统账号的本地ID。 |
+| Promise & lt;number[] & gt; | Promise对象，返回所有非系统级的操作系统账号的本地ID。 |
 
 **错误码：**
 
@@ -2746,38 +2305,17 @@ getOsAccountLocalIds(): Promise<int[]>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { BusinessError, osAccount } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
 try {
   accountManager.getOsAccountLocalIds().then((localIds: number[]) => {
-    console.info('getOsAccountLocalIds successfully, localIds: ' + JSON.stringify(localIds));
+    console.info('getOsAccountLocalIds localIds: ' + localIds);
   }).catch((err: BusinessError) => {
     console.error(`getOsAccountLocalIds failed, code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError, osAccount } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.getOsAccountLocalIds().then((localIds: int[]) => {
-    console.info('getOsAccountLocalIds successfully, localIds: ' + JSON.stringify(localIds));
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`getOsAccountLocalIds failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e: Error) {
   const err = e as BusinessError;
   console.error(`getOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
 }
@@ -2791,9 +2329,7 @@ getOsAccountName(): Promise<string>
 
 查询调用方所属系统账号的名称。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-getOsAccountName(): Promise<string>--><!--Device-AccountManager-getOsAccountName(): Promise<string>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -2801,7 +2337,7 @@ getOsAccountName(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回调用方所属系统账号的名称。 |
+| Promise & lt;string & gt; | Promise对象，返回调用方所属系统账号的名称。 |
 
 **错误码：**
 
@@ -2811,10 +2347,7 @@ getOsAccountName(): Promise<string>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -2830,30 +2363,10 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.getOsAccountName().then((name: string) => {
-    console.info('getOsAccountName, name: ' + name);
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error('getOsAccountName err: ' + err);
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountName exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getOsAccountNameByLocalId
 
 ```TypeScript
-getOsAccountNameByLocalId(localId: int): Promise<string>
+getOsAccountNameByLocalId(localId: number): Promise<string>
 ```
 
 根据系统账号的本地ID获取系统账号的名称。使用Promise异步回调。
@@ -2864,30 +2377,28 @@ getOsAccountNameByLocalId(localId: int): Promise<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AccountManager-getOsAccountNameByLocalId(localId: int): Promise<string>--><!--Device-AccountManager-getOsAccountNameByLocalId(localId: int): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| localId | int | 是 | 目标系统账号的本地ID。 |
+| localId | number | 是 | 目标系统账号的本地ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回目标系统账号的名称。 |
+| Promise & lt;string & gt; | Promise对象，返回目标系统账号的名称。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted Account. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted Account. |
 
 **示例**
 
@@ -2915,9 +2426,7 @@ getOsAccountType(callback: AsyncCallback<OsAccountType>): void
 
 查询当前进程所属的系统账号的账号类型。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-getOsAccountType(callback: AsyncCallback<OsAccountType>): void--><!--Device-AccountManager-getOsAccountType(callback: AsyncCallback<OsAccountType>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -2925,21 +2434,18 @@ getOsAccountType(callback: AsyncCallback<OsAccountType>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;[OsAccountType](arkts-basicservices-osaccount-osaccounttype-e.md)&gt; | 是 | 回调函数。如果查询成功，err为null，data为当前进程所属的系统账号的账号类型；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[OsAccountType](arkts-basicservices-osaccount-osaccounttype-e.md)&gt; | 是 | 回调函数。如果查询成功，err为null，data为当前进程所属的系统账号的账号类型；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -2957,27 +2463,6 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.getOsAccountType((err: BusinessError | null, accountType: osAccount.OsAccountType | undefined) => {
-    if (err) {
-      console.error(`getOsAccountType err: code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('getOsAccountType accountType: ' + accountType);
-    }
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountType exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getOsAccountType
 
 ```TypeScript
@@ -2986,9 +2471,7 @@ getOsAccountType(): Promise<OsAccountType>
 
 查询当前进程所属的系统账号的账号类型。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-getOsAccountType(): Promise<OsAccountType>--><!--Device-AccountManager-getOsAccountType(): Promise<OsAccountType>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -3006,10 +2489,7 @@ getOsAccountType(): Promise<OsAccountType>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -3025,33 +2505,18 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.getOsAccountType().then((accountType: osAccount.OsAccountType) => {
-    console.info('getOsAccountType, accountType: ' + accountType);
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`getOsAccountType err: code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountType exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getOsAccountTypeFromProcess
 
 ```TypeScript
 getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void
 ```
 
-查询当前进程所属的系统账号的账号类型。使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用 > [getOsAccountType](#getosaccounttype)替代。
+查询当前进程所属的系统账号的账号类型。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。建议使用
+> [getOsAccountType](#getosaccounttype)替代。
 
 **起始版本：** 7
 
@@ -3059,15 +2524,13 @@ getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void
 
 **替代接口：** [getOsAccountType](#getosaccounttype)(callback: AsyncCallback&lt;OsAccountType&gt;)
 
-<!--Device-AccountManager-getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void--><!--Device-AccountManager-getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;[OsAccountType](arkts-basicservices-osaccount-osaccounttype-e.md)&gt; | 是 | 回调函数。如果查询成功，err为null，data为当前进程所属的系统账号的账号类型；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[OsAccountType](arkts-basicservices-osaccount-osaccounttype-e.md)&gt; | 是 | 回调函数。如果查询成功，err为null，data为当前进程所属的系统账号的账号类型；否则为错误对象。 |
 
 **示例**
 
@@ -3090,15 +2553,18 @@ accountManager.getOsAccountTypeFromProcess((err: BusinessError, accountType: osA
 getOsAccountTypeFromProcess(): Promise<OsAccountType>
 ```
 
-查询当前进程所属的系统账号的账号类型。使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountType](#getosaccounttype) > 替代。
+查询当前进程所属的系统账号的账号类型。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountType](#getosaccounttype)
+> 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** [getOsAccountType](#getosaccounttype)()
-
-<!--Device-AccountManager-getOsAccountTypeFromProcess(): Promise<OsAccountType>--><!--Device-AccountManager-getOsAccountTypeFromProcess(): Promise<OsAccountType>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -3127,15 +2593,19 @@ accountManager.getOsAccountTypeFromProcess().then((accountType: osAccount.OsAcco
 getSerialNumberByOsAccountLocalId(localId: number, callback: AsyncCallback<number>): void
 ```
 
-通过系统账号ID获取与该系统账号关联的SN码。使用callback异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用 > [getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid) > 替代。
+通过系统账号ID获取与该系统账号关联的SN码。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 9开始废弃。建议使用
+> [getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid)
+> 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid)(localId: int, callback: AsyncCallback&lt;long&gt;)
-
-<!--Device-AccountManager-getSerialNumberByOsAccountLocalId(localId: number, callback: AsyncCallback<number>): void--><!--Device-AccountManager-getSerialNumberByOsAccountLocalId(localId: number, callback: AsyncCallback<number>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -3144,7 +2614,7 @@ getSerialNumberByOsAccountLocalId(localId: number, callback: AsyncCallback<numbe
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。如果获取成功，err为null，data为与该系统账号关联的SN码；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。如果获取成功，err为null，data为与该系统账号关联的SN码；否则为错误对象。 |
 
 **示例**
 
@@ -3171,15 +2641,19 @@ accountManager.getSerialNumberByOsAccountLocalId(localId, (err: BusinessError, s
 getSerialNumberByOsAccountLocalId(localId: number): Promise<number>
 ```
 
-通过系统账号ID获取与该系统账号关联的SN码。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用 > [getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid) > 替代。
+通过系统账号ID获取与该系统账号关联的SN码。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 9开始废弃。建议使用
+> [getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid)
+> 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid)(localId: int)
-
-<!--Device-AccountManager-getSerialNumberByOsAccountLocalId(localId: number): Promise<number>--><!--Device-AccountManager-getSerialNumberByOsAccountLocalId(localId: number): Promise<number>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -3193,7 +2667,7 @@ getSerialNumberByOsAccountLocalId(localId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回与该系统账号关联的SN码。 |
+| Promise & lt;number & gt; | Promise对象，返回与该系统账号关联的SN码。 |
 
 **示例**
 
@@ -3215,14 +2689,12 @@ accountManager.getSerialNumberByOsAccountLocalId(localId).then((serialNumber: nu
 ## getSerialNumberForOsAccountLocalId
 
 ```TypeScript
-getSerialNumberForOsAccountLocalId(localId: int, callback: AsyncCallback<long>): void
+getSerialNumberForOsAccountLocalId(localId: number, callback: AsyncCallback<number>): void
 ```
 
 通过系统账号ID获取与该系统账号关联的SN码。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-getSerialNumberForOsAccountLocalId(localId: int, callback: AsyncCallback<long>): void--><!--Device-AccountManager-getSerialNumberForOsAccountLocalId(localId: int, callback: AsyncCallback<long>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -3230,24 +2702,23 @@ getSerialNumberForOsAccountLocalId(localId: int, callback: AsyncCallback<long>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| localId | int | 是 | 系统账号ID。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数。如果获取成功，err为null，data为与该系统账号关联的SN码；否则为错误对象。 |
+| localId | number | 是 | 系统账号ID。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。如果获取成功，err为null，data为与该系统账号关联的SN码；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例**
 
-ArkTS-Dyn示例：
+获取ID为100的系统账号关联的SN码。
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -3267,39 +2738,15 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-let localId: int = 100;
-try {
-  accountManager.getSerialNumberForOsAccountLocalId(localId, (err: BusinessError | null, serialNumber: long | undefined)=>{
-    if (err) {
-      console.error(`get serialNumber code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('get serialNumber:' + serialNumber + ' by localId: ' + localId);
-    }
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`get serialNumber exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getSerialNumberForOsAccountLocalId
 
 ```TypeScript
-getSerialNumberForOsAccountLocalId(localId: int): Promise<long>
+getSerialNumberForOsAccountLocalId(localId: number): Promise<number>
 ```
 
 通过系统账号ID获取与该系统账号关联的SN码。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-getSerialNumberForOsAccountLocalId(localId: int): Promise<long>--><!--Device-AccountManager-getSerialNumberForOsAccountLocalId(localId: int): Promise<long>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -3307,29 +2754,28 @@ getSerialNumberForOsAccountLocalId(localId: int): Promise<long>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| localId | int | 是 | 系统账号ID。 |
+| localId | number | 是 | 系统账号ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;long&gt; | Promise对象，返回与该系统账号关联的SN码。 |
+| Promise & lt;number & gt; | Promise对象，返回与该系统账号关联的SN码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例**
 
-ArkTS-Dyn示例：
+获取ID为100的系统账号关联的SN码。
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -3347,34 +2793,19 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-let localId: int = 100;
-try {
-  accountManager.getSerialNumberForOsAccountLocalId(localId).then((serialNumber: long) => {
-    console.info('getSerialNumberForOsAccountLocalId serialNumber: ' + serialNumber);
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`getSerialNumberForOsAccountLocalId err: code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getSerialNumberForOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## isMultiOsAccountEnable
 
 ```TypeScript
 isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void
 ```
 
-判断是否支持多系统账号。使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用 > [checkMultiOsAccountEnabled](#checkmultiosaccountenabled) > 替代。
+判断是否支持多系统账号。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。建议使用
+> [checkMultiOsAccountEnabled](#checkmultiosaccountenabled)
+> 替代。
 
 **起始版本：** 7
 
@@ -3382,15 +2813,13 @@ isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void
 
 **替代接口：** [checkMultiOsAccountEnabled](#checkmultiosaccountenabled)(callback: AsyncCallback&lt;boolean&gt;)
 
-<!--Device-AccountManager-isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示支持多系统账号；返回false表示不支持。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示支持多系统账号；返回false表示不支持。 |
 
 **示例**
 
@@ -3402,7 +2831,7 @@ accountManager.isMultiOsAccountEnable((err: BusinessError, isEnabled: boolean) =
   if (err) {
     console.error(`isMultiOsAccountEnable failed, code is ${err.code}, message is ${err.message}`);
   } else {
-  console.info('isMultiOsAccountEnable successfully, isEnabled: ' + isEnabled);
+    console.info('isMultiOsAccountEnable successfully, isEnabled: ' + isEnabled);
   }
 });
 ```
@@ -3413,7 +2842,12 @@ accountManager.isMultiOsAccountEnable((err: BusinessError, isEnabled: boolean) =
 isMultiOsAccountEnable(): Promise<boolean>
 ```
 
-判断是否支持多系统账号。使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用 > [checkMultiOsAccountEnabled](#checkmultiosaccountenabled)替代。
+判断是否支持多系统账号。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。建议使用
+> [checkMultiOsAccountEnabled](#checkmultiosaccountenabled)替代。
 
 **起始版本：** 7
 
@@ -3421,15 +2855,13 @@ isMultiOsAccountEnable(): Promise<boolean>
 
 **替代接口：** [checkMultiOsAccountEnabled](#checkmultiosaccountenabled)()
 
-<!--Device-AccountManager-isMultiOsAccountEnable(): Promise<boolean>--><!--Device-AccountManager-isMultiOsAccountEnable(): Promise<boolean>-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示支持多系统账号；返回false表示不支持。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示支持多系统账号；返回false表示不支持。 |
 
 **示例**
 
@@ -3450,17 +2882,17 @@ accountManager.isMultiOsAccountEnable().then((isEnabled: boolean) => {
 isOsAccountActived(localId: number, callback: AsyncCallback<boolean>): void
 ```
 
-判断指定系统账号是否处于激活状态。使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+判断指定系统账号是否处于激活状态。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkOsAccountActivated](#checkosaccountactivated)(localId: number, callback: AsyncCallback&lt;boolean&gt;)
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-isOsAccountActived(localId: number, callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-isOsAccountActived(localId: number, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -3469,7 +2901,7 @@ isOsAccountActived(localId: number, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示账号已激活；返回false表示账号未激活。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示账号已激活；返回false表示账号未激活。 |
 
 **示例**
 
@@ -3496,17 +2928,17 @@ accountManager.isOsAccountActived(localId, (err: BusinessError, isActived: boole
 isOsAccountActived(localId: number): Promise<boolean>
 ```
 
-判断指定系统账号是否处于激活状态。使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+判断指定系统账号是否处于激活状态。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkOsAccountActivated](#checkosaccountactivated)(localId: number)
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-isOsAccountActived(localId: number): Promise<boolean>--><!--Device-AccountManager-isOsAccountActived(localId: number): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -3520,7 +2952,7 @@ isOsAccountActived(localId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示账号已激活；返回false表示账号未激活。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示账号已激活；返回false表示账号未激活。 |
 
 **示例**
 
@@ -3545,17 +2977,17 @@ accountManager.isOsAccountActived(localId).then((isActived: boolean) => {
 isOsAccountConstraintEnable(localId: number, constraint: string, callback: AsyncCallback<boolean>): void
 ```
 
-判断指定系统账号是否具有指定约束。使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+判断指定系统账号是否具有指定约束。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkOsAccountConstraintEnabled](#checkosaccountconstraintenabled)(localId: number, constraint: string, callback: AsyncCallback&lt;boolean&gt;)
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-isOsAccountConstraintEnable(localId: number, constraint: string, callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-isOsAccountConstraintEnable(localId: number, constraint: string, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -3564,8 +2996,8 @@ isOsAccountConstraintEnable(localId: number, constraint: string, callback: Async
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| constraint | string | 是 | 指定的约束名称。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
+| constraint | string | 是 | 指定的[约束](../../../reference/apis-basic-services-kit/appendix-osAccount-constraints.md) 名称。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
 
 **示例**
 
@@ -3593,17 +3025,17 @@ accountManager.isOsAccountConstraintEnable(localId, constraint, (err: BusinessEr
 isOsAccountConstraintEnable(localId: number, constraint: string): Promise<boolean>
 ```
 
-判断指定系统账号是否具有指定约束。使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+判断指定系统账号是否具有指定约束。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkOsAccountConstraintEnabled](#checkosaccountconstraintenabled)(localId: number, constraint: string)
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-isOsAccountConstraintEnable(localId: number, constraint: string): Promise<boolean>--><!--Device-AccountManager-isOsAccountConstraintEnable(localId: number, constraint: string): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -3612,13 +3044,13 @@ isOsAccountConstraintEnable(localId: number, constraint: string): Promise<boolea
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| constraint | string | 是 | 指定的约束名称。 |
+| constraint | string | 是 | 指定的[约束](../../../reference/apis-basic-services-kit/appendix-osAccount-constraints.md) 名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
 
 **示例**
 
@@ -3646,9 +3078,7 @@ isOsAccountConstraintEnabled(constraint: string): Promise<boolean>
 
 判断当前系统账号是否使能指定约束。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-isOsAccountConstraintEnabled(constraint: string): Promise<boolean>--><!--Device-AccountManager-isOsAccountConstraintEnabled(constraint: string): Promise<boolean>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -3656,27 +3086,26 @@ isOsAccountConstraintEnabled(constraint: string): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| constraint | string | 是 | 指定的约束名称。 |
+| constraint | string | 是 | 指定的[约束](../../../reference/apis-basic-services-kit/appendix-osAccount-constraints.md) 名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
 
-ArkTS-Dyn示例：
+判断当前系统账号是否有禁止使用Wi-Fi的约束。
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -3688,27 +3117,6 @@ try {
     console.error(`isOsAccountConstraintEnabled failed, code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
-  const err = e as BusinessError;
-  console.error(`isOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-let constraint: string = 'constraint.wifi';
-try {
-  accountManager.isOsAccountConstraintEnabled(constraint).then((isEnabled: boolean) => {
-    console.info('isOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`isOsAccountConstraintEnabled failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e: Error) {
   const err = e as BusinessError;
   console.error(`isOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
 }
@@ -3720,11 +3128,9 @@ try {
 isOsAccountUnlocked(): Promise<boolean>
 ```
 
-检查当前系统账号是否已认证解锁。使用Promise异步回调。
+检查当前系统账号是否已解锁。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccountManager-isOsAccountUnlocked(): Promise<boolean>--><!--Device-AccountManager-isOsAccountUnlocked(): Promise<boolean>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -3732,7 +3138,7 @@ isOsAccountUnlocked(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示当前账号已解锁；返回false表示当前账号未解锁。 |
 
 **错误码：**
 
@@ -3742,10 +3148,7 @@ isOsAccountUnlocked(): Promise<boolean>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -3761,33 +3164,19 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.isOsAccountUnlocked().then((isVerified: boolean) => {
-    console.info('isOsAccountUnlocked successfully, isVerified: ' + isVerified);
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`isOsAccountUnlocked failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`isOsAccountUnlocked exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## isOsAccountVerified
 
 ```TypeScript
 isOsAccountVerified(callback: AsyncCallback<boolean>): void
 ```
 
-检查当前系统账号是否已验证。使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用 > [checkOsAccountVerified](#checkosaccountverified) > 替代。
+检查当前系统账号是否已验证。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。建议使用
+> [checkOsAccountVerified](#checkosaccountverified)
+> 替代。
 
 **起始版本：** 7
 
@@ -3797,15 +3186,13 @@ isOsAccountVerified(callback: AsyncCallback<boolean>): void
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-<!--Device-AccountManager-isOsAccountVerified(callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-isOsAccountVerified(callback: AsyncCallback<boolean>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示指定账号已验证；返回false表示指定账号未验证。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示当前账号已验证；返回false表示当前账号未验证。 |
 
 **示例**
 
@@ -3828,17 +3215,17 @@ accountManager.isOsAccountVerified((err: BusinessError, isVerified: boolean) => 
 isOsAccountVerified(localId: number, callback: AsyncCallback<boolean>): void
 ```
 
-检查指定系统账号是否已验证。使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+检查指定系统账号是否已验证。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkOsAccountVerified](#checkosaccountverified)(localId: number, callback: AsyncCallback&lt;boolean&gt;)
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-isOsAccountVerified(localId: number, callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-isOsAccountVerified(localId: number, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -3847,7 +3234,7 @@ isOsAccountVerified(localId: number, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 系统账号ID。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示指定账号已验证；返回false表示指定账号未验证。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示指定账号已验证；返回false表示指定账号未验证。 |
 
 **示例**
 
@@ -3872,17 +3259,17 @@ accountManager.isOsAccountVerified(localId, (err: BusinessError, isVerified: boo
 isOsAccountVerified(localId?: number): Promise<boolean>
 ```
 
-检查指定系统账号是否已验证。使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+检查指定系统账号是否已验证。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkOsAccountVerified](#checkosaccountverified)(localId: number)
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-isOsAccountVerified(localId?: number): Promise<boolean>--><!--Device-AccountManager-isOsAccountVerified(localId?: number): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -3896,7 +3283,7 @@ isOsAccountVerified(localId?: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示指定账号已验证；返回false表示指定账号未验证。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示指定账号已验证；返回false表示指定账号未验证。 |
 
 **示例**
 
@@ -3917,7 +3304,13 @@ accountManager.isOsAccountVerified().then((isVerified: boolean) => {
 isTestOsAccount(callback: AsyncCallback<boolean>): void
 ```
 
-检查当前系统账号是否为测试账号。使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用 > [checkOsAccountTestable](#checkosaccounttestable) > 替代。
+检查当前系统账号是否为测试账号。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。建议使用
+> [checkOsAccountTestable](#checkosaccounttestable)
+> 替代。
 
 **起始版本：** 7
 
@@ -3925,15 +3318,13 @@ isTestOsAccount(callback: AsyncCallback<boolean>): void
 
 **替代接口：** [checkOsAccountTestable](#checkosaccounttestable)(callback: AsyncCallback&lt;boolean&gt;)
 
-<!--Device-AccountManager-isTestOsAccount(callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-isTestOsAccount(callback: AsyncCallback<boolean>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示当前账号为测试账号；返回false表示当前账号非测试账号。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示当前账号为测试账号；返回false表示当前账号非测试账号。 |
 
 **示例**
 
@@ -3956,7 +3347,12 @@ accountManager.isTestOsAccount((err: BusinessError, isTestable: boolean) => {
 isTestOsAccount(): Promise<boolean>
 ```
 
-检查当前系统账号是否为测试账号。使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用 > [checkOsAccountTestable](#checkosaccounttestable)替代。
+检查当前系统账号是否为测试账号。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。建议使用
+> [checkOsAccountTestable](#checkosaccounttestable)替代。
 
 **起始版本：** 7
 
@@ -3964,15 +3360,13 @@ isTestOsAccount(): Promise<boolean>
 
 **替代接口：** [checkOsAccountTestable](#checkosaccounttestable)()
 
-<!--Device-AccountManager-isTestOsAccount(): Promise<boolean>--><!--Device-AccountManager-isTestOsAccount(): Promise<boolean>-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号为测试账号；返回false表示当前账号非测试账号。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示当前账号为测试账号；返回false表示当前账号非测试账号。 |
 
 **示例**
 
@@ -3993,7 +3387,13 @@ let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
 queryActivatedOsAccountIds(callback: AsyncCallback<Array<number>>): void
 ```
 
-查询当前处于激活状态的系统账号的ID列表。使用callback异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用 > [getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids) > 替代。
+查询当前处于激活状态的系统账号的ID列表。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 9开始废弃。建议使用
+> [getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids)
+> 替代。
 
 **起始版本：** 8
 
@@ -4001,15 +3401,13 @@ queryActivatedOsAccountIds(callback: AsyncCallback<Array<number>>): void
 
 **替代接口：** [getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids)(callback: AsyncCallback&lt;Array&lt;int&gt;&gt;)
 
-<!--Device-AccountManager-queryActivatedOsAccountIds(callback: AsyncCallback<Array<number>>): void--><!--Device-AccountManager-queryActivatedOsAccountIds(callback: AsyncCallback<Array<number>>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;Array&lt;number&gt;&gt; | 是 | 回调函数。如果查询成功，err为null，data为当前处于激活状态的系统账号的ID列表；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 回调函数。如果查询成功，err为null，data为当前处于激活状态的系统账号的ID列表；否则为错误对象。 |
 
 **示例**
 
@@ -4017,12 +3415,12 @@ queryActivatedOsAccountIds(callback: AsyncCallback<Array<number>>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-accountManager.queryActivatedOsAccountIds((err: BusinessError, idArray: number[])=>{
+accountManager.queryActivatedOsAccountIds((err: BusinessError, idArray: number[]) => {
   if (err) {
     console.error(`queryActivatedOsAccountIds code is ${err.code}, message is ${err.message}`);
   } else {
     console.info('queryActivatedOsAccountIds idArray length:' + idArray.length);
-    for(let i=0;i<idArray.length;i++) {
+    for (let i = 0; i < idArray.length; i++) {
       console.info('activated os account id: ' + idArray[i]);
     }
   }
@@ -4035,7 +3433,12 @@ accountManager.queryActivatedOsAccountIds((err: BusinessError, idArray: number[]
 queryActivatedOsAccountIds(): Promise<Array<number>>
 ```
 
-查询当前处于激活状态的系统账号的ID列表。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用 > [getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids)替代。
+查询当前处于激活状态的系统账号的ID列表。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 9开始废弃。建议使用
+> [getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids)替代。
 
 **起始版本：** 8
 
@@ -4043,15 +3446,13 @@ queryActivatedOsAccountIds(): Promise<Array<number>>
 
 **替代接口：** [getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids)()
 
-<!--Device-AccountManager-queryActivatedOsAccountIds(): Promise<Array<number>>--><!--Device-AccountManager-queryActivatedOsAccountIds(): Promise<Array<number>>-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回当前处于激活状态的系统账号的ID列表。 |
+| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，返回当前处于激活状态的系统账号的ID列表。 |
 
 **示例**
 
@@ -4072,17 +3473,17 @@ accountManager.queryActivatedOsAccountIds().then((idArray: number[]) => {
 queryCurrentOsAccount(callback: AsyncCallback<OsAccountInfo>): void
 ```
 
-查询当前进程所属的系统账号的信息。使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+查询当前进程所属的系统账号的信息。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCurrentOsAccount](#getcurrentosaccount)(callback: AsyncCallback&lt;OsAccountInfo&gt;)
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-queryCurrentOsAccount(callback: AsyncCallback<OsAccountInfo>): void--><!--Device-AccountManager-queryCurrentOsAccount(callback: AsyncCallback<OsAccountInfo>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -4090,7 +3491,7 @@ queryCurrentOsAccount(callback: AsyncCallback<OsAccountInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;[OsAccountInfo](arkts-basicservices-osaccount-osaccountinfo-i.md)&gt; | 是 | 回调函数。如果查询成功，err为null，data为当前进程所属的系统账号信息；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[OsAccountInfo](arkts-basicservices-osaccount-osaccountinfo-i.md)&gt; | 是 | 回调函数。如果查询成功，err为null，data为当前进程所属的系统账号信息；否则为错误对象。 |
 
 **示例**
 
@@ -4113,17 +3514,17 @@ accountManager.queryCurrentOsAccount((err: BusinessError, curAccountInfo: osAcco
 queryCurrentOsAccount(): Promise<OsAccountInfo>
 ```
 
-查询当前进程所属的系统账号的信息。使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+查询当前进程所属的系统账号的信息。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCurrentOsAccount](#getcurrentosaccount)()
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-queryCurrentOsAccount(): Promise<OsAccountInfo>--><!--Device-AccountManager-queryCurrentOsAccount(): Promise<OsAccountInfo>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -4154,11 +3555,9 @@ queryDistributedVirtualDeviceId(callback: AsyncCallback<string>): void
 
 获取分布式虚拟设备ID。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC or ohos.permission.MANAGE_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-queryDistributedVirtualDeviceId(callback: AsyncCallback<string>): void--><!--Device-AccountManager-queryDistributedVirtualDeviceId(callback: AsyncCallback<string>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -4166,22 +3565,19 @@ queryDistributedVirtualDeviceId(callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。如果获取成功，err为null，data为分布式虚拟设备ID；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。如果获取成功，err为null，data为分布式虚拟设备ID；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -4199,27 +3595,6 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.queryDistributedVirtualDeviceId((err: BusinessError | null, virtualID: string | undefined) => {
-    if (err) {
-      console.error(`queryDistributedVirtualDeviceId err: code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('queryDistributedVirtualDeviceId virtualID: ' + virtualID);
-    }
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`queryDistributedVirtualDeviceId exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## queryDistributedVirtualDeviceId
 
 ```TypeScript
@@ -4228,11 +3603,9 @@ queryDistributedVirtualDeviceId(): Promise<string>
 
 获取分布式虚拟设备ID。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC or ohos.permission.MANAGE_LOCAL_ACCOUNTS
-
-<!--Device-AccountManager-queryDistributedVirtualDeviceId(): Promise<string>--><!--Device-AccountManager-queryDistributedVirtualDeviceId(): Promise<string>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -4240,7 +3613,7 @@ queryDistributedVirtualDeviceId(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回分布式虚拟设备ID。 |
+| Promise & lt;string & gt; | Promise对象，返回分布式虚拟设备ID。 |
 
 **错误码：**
 
@@ -4251,10 +3624,7 @@ queryDistributedVirtualDeviceId(): Promise<string>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -4269,24 +3639,3 @@ try {
   console.error(`queryDistributedVirtualDeviceId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.queryDistributedVirtualDeviceId().then((virtualID: string) => {
-    console.info('queryDistributedVirtualDeviceId, virtualID: ' + virtualID);
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`queryDistributedVirtualDeviceId err: code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`queryDistributedVirtualDeviceId exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-

@@ -204,7 +204,7 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OutputDeviceChange)(OH_A
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)\* session | the OH_AVSession instance pointer. |
 | [AVSession_ConnectionState](capi-native-avsession-base-h.md#avsession_connectionstate) state | the [AVSession_ConnectionState](capi-native-avsession-base-h.md#avsession_connectionstate) of output device. |
-| [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md)\* outputDeviceInfo | the [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md) pointer variable which will be setcurrent output device info. Do not release the outputDeviceInfo pointer separately,instead call [OH_AVSession_ReleaseOutputDevice](capi-native-avsession-h.md#oh_avsession_releaseoutputdevice) to release the outputDeviceInfo when it is not used anymore. |
+| AVSession_OutputDeviceInfo\* outputDeviceInfo | the [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md) pointer variable which will be setcurrent output device info. Do not release the outputDeviceInfo pointer separately,instead call [OH_AVSession_ReleaseOutputDevice](capi-native-avsession-h.md#oh_avsession_releaseoutputdevice) to release the outputDeviceInfo when it is not used anymore. |
 
 ### OH_AVSession_Create()
 
@@ -373,7 +373,7 @@ AVSession_ErrCode OH_AVSession_SetAVMetadata(OH_AVSession* avsession, OH_AVMetad
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | 媒体会话对象。 |
-| OH_AVMetadata* avmetadata | 设置媒体元数据信息。 |
+| [OH_AVMetadata](capi-ohavsession-oh-avmetadatastruct.md)* avmetadata | 设置媒体元数据信息。 |
 
 **返回：**
 
@@ -957,7 +957,7 @@ AVSession_ErrCode OH_AVSession_AcquireOutputDevice(OH_AVSession* avsession, AVSe
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | 媒体会话对象。 |
-| [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md)** outputDeviceInfo | 指向用于接收输出设备信息AVSession_OutputDeviceInfo的变量的指针。不可以单独释放outputDeviceInfo指针。当不再使用outputDeviceInfo时，调用[OH_AVSession_ReleaseOutputDevice](capi-native-avsession-h.md#oh_avsession_releaseoutputdevice)进行释放。 |
+| AVSession_OutputDeviceInfo** outputDeviceInfo | 指向用于接收输出设备信息AVSession_OutputDeviceInfo的变量的指针。不可以单独释放outputDeviceInfo指针。当不再使用outputDeviceInfo时，调用[OH_AVSession_ReleaseOutputDevice](capi-native-avsession-h.md#oh_avsession_releaseoutputdevice)进行释放。 |
 
 **返回：**
 
@@ -982,7 +982,7 @@ AVSession_ErrCode OH_AVSession_ReleaseOutputDevice(OH_AVSession* avsession, AVSe
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | 媒体会话对象。 |
-| [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md) *outputDeviceInfo | 应当释放的输出设备。 |
+| AVSession_OutputDeviceInfo *outputDeviceInfo | 应当释放的输出设备。 |
 
 **返回：**
 

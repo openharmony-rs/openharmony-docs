@@ -2,9 +2,7 @@
 
 默认打印类型的枚举。
 
-**起始版本：** 23
-
-<!--Device-print-enum DefaultPrinterType--><!--Device-print-enum DefaultPrinterType-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -16,9 +14,7 @@ DEFAULT_PRINTER_TYPE_SET_BY_USER = 0
 
 表示将用户手动设置的默认打印机作为当前默认打印机。
 
-**起始版本：** 23
-
-<!--Device-DefaultPrinterType-DEFAULT_PRINTER_TYPE_SET_BY_USER = 0--><!--Device-DefaultPrinterType-DEFAULT_PRINTER_TYPE_SET_BY_USER = 0-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -30,9 +26,6 @@ DEFAULT_PRINTER_TYPE_LAST_USED_PRINTER = 1
 
 表示自动将上次使用的打印机作为当前默认打印机。
 
-**起始版本：** 23
-
-<!--Device-DefaultPrinterType-DEFAULT_PRINTER_TYPE_LAST_USED_PRINTER = 1--><!--Device-DefaultPrinterType-DEFAULT_PRINTER_TYPE_LAST_USED_PRINTER = 1-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Print.PrintFramework
-

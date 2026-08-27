@@ -2,9 +2,7 @@
 
 压缩和解压缩的返回值信息。
 
-**起始版本：** 23
-
-<!--Device-zlib-interface ZipOutputInfo--><!--Device-zlib-interface ZipOutputInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -17,18 +15,16 @@ import { zlib } from '@kit.BasicServicesKit';
 ## destLen
 
 ```TypeScript
-destLen: long
+destLen: number
 ```
 
 目标缓冲区的总长度。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ZipOutputInfo-destLen: long--><!--Device-ZipOutputInfo-destLen: long-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -42,11 +38,8 @@ status: ReturnStatus
 
 **类型：** [ReturnStatus](arkts-basicservices-zlib-returnstatus-e.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ZipOutputInfo-status: ReturnStatus--><!--Device-ZipOutputInfo-status: ReturnStatus-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
-

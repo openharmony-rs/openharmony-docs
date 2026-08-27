@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-cacheDownload-enum ErrorCode--><!--Device-cacheDownload-enum ErrorCode-End-->
-
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 ## OTHERS
@@ -17,8 +15,6 @@ OTHERS = 0xFF
 表示未分类的其他类型错误。
 
 **起始版本：** 23
-
-<!--Device-ErrorCode-OTHERS = 0xFF--><!--Device-ErrorCode-OTHERS = 0xFF-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -32,8 +28,6 @@ DNS = 0x00
 
 **起始版本：** 23
 
-<!--Device-ErrorCode-DNS = 0x00--><!--Device-ErrorCode-DNS = 0x00-End-->
-
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 ## TCP
@@ -45,8 +39,6 @@ TCP = 0x10
 表示TCP相关错误。
 
 **起始版本：** 23
-
-<!--Device-ErrorCode-TCP = 0x10--><!--Device-ErrorCode-TCP = 0x10-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -60,8 +52,6 @@ SSL = 0x20
 
 **起始版本：** 23
 
-<!--Device-ErrorCode-SSL = 0x20--><!--Device-ErrorCode-SSL = 0x20-End-->
-
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 ## HTTP
@@ -74,7 +64,4 @@ HTTP = 0x30
 
 **起始版本：** 23
 
-<!--Device-ErrorCode-HTTP = 0x30--><!--Device-ErrorCode-HTTP = 0x30-End-->
-
 **系统能力：** SystemCapability.Request.FileTransferAgent
-

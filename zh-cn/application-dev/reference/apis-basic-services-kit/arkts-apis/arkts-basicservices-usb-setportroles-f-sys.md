@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { usb } from '@kit.BasicServicesKit';
-import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## setPortRoles
@@ -21,8 +19,6 @@ function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRo
 **废弃版本：** 9
 
 **替代接口：** [setPortRoles](arkts-basicservices-usbmanager-setportroles-f-sys.md)
-
-<!--Device-usb-function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise<boolean>--><!--Device-usb-function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -40,7 +36,7 @@ function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回设置成功与否的结果。true表示设置成功，false表示设置失败。 |
+| Promise & lt;boolean & gt; | Promise对象，返回设置成功与否的结果。true表示设置成功，false表示设置失败。 |
 
 **示例**
 
@@ -52,4 +48,3 @@ usb.setPortRoles(portId, usb.PowerRoleType.SOURCE, usb.DataRoleType.HOST).then((
     console.error('usb setPortRoles failed: ' + err.code + ' message: ' + err.message);
 });
 ```
-

@@ -19,9 +19,9 @@ typedef struct VkPhysicalDevicePresentationPropertiesOHOS {...} VkPhysicalDevice
 
 **废弃版本：** 23 
 
-**相关模块：** [Vulkan](capi-vulkan.md)
+**相关模块：** Vulkan
 
-**所在头文件：** [vulkan_ohos.h](capi-vulkan-ohos-h.md)
+**所在头文件：** vulkan_ohos.h
 
 ## 汇总
 

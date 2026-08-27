@@ -1,10 +1,8 @@
 # SearchPlayMusicInfo
 
-搜播的音频信息的定义。
+搜播的音频信息的定义。@interface SearchPlayMusicInfo
 
 **起始版本：** 23
-
-<!--Device-avMusicTemplate-interface SearchPlayMusicInfo--><!--Device-avMusicTemplate-interface SearchPlayMusicInfo-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -28,8 +26,6 @@ description?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SearchPlayMusicInfo-description?: string--><!--Device-SearchPlayMusicInfo-description?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## displayName
@@ -45,8 +41,6 @@ displayName?: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SearchPlayMusicInfo-displayName?: string--><!--Device-SearchPlayMusicInfo-displayName?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -64,8 +58,6 @@ items: SearchPlayMusicItem[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SearchPlayMusicInfo-items: SearchPlayMusicItem[]--><!--Device-SearchPlayMusicInfo-items: SearchPlayMusicItem[]-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## playMode
@@ -81,8 +73,6 @@ playMode?: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SearchPlayMusicInfo-playMode?: string--><!--Device-SearchPlayMusicInfo-playMode?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -100,7 +90,4 @@ playMusicOnly?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SearchPlayMusicInfo-playMusicOnly?: boolean--><!--Device-SearchPlayMusicInfo-playMusicOnly?: boolean-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-

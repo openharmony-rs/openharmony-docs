@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 16500050 进程间通信失败
 
@@ -230,7 +230,7 @@ The form can not support this operation.
 
 **处理步骤**
 
-检查当前卡片对应互动卡片配置项[sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)是否正确。
+检查当前卡片对应互动卡片配置项sceneAnimationParams是否正确。
 
 ## 16501012 卡片尺寸错误
 
@@ -248,7 +248,7 @@ The form host uses an incorrect dimension.
 
 **处理步骤**
 
-检查入参卡片尺寸是否在FormDimension和[supportDimensions](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)配置列表。
+检查入参卡片尺寸是否在FormDimension和supportDimensions配置列表。
 
 ## 16501013 系统不支持当前操作
 
@@ -378,7 +378,7 @@ Invalid params received on operating form.
 3. 参数数量错误。
 4. 空参数错误，比如传入空字符串（''）。
 5. 参数格式错误。
-6. 参数值错误。输入参数需要与[app.json5](../../quick-start/app-configuration-file.md)和[配置ArkTS卡片的配置文件](../../form/arkts-ui-widget-configuration.md)中对应的配置保持一致。
+6. 参数值错误。输入参数需要与app.json5和配置ArkTS卡片的配置文件中对应的配置保持一致。
 
 **处理步骤**
 

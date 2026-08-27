@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-avSession-enum ExtraKey--><!--Device-avSession-enum ExtraKey-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 ## LIVE_VIEW_HIDDEN_WHEN_KEYGUARD
@@ -22,9 +20,6 @@ LIVE_VIEW_HIDDEN_WHEN_KEYGUARD = 'hw_live_view_hidden_when_keyguard'
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ExtraKey-LIVE_VIEW_HIDDEN_WHEN_KEYGUARD = 'hw_live_view_hidden_when_keyguard'--><!--Device-ExtraKey-LIVE_VIEW_HIDDEN_WHEN_KEYGUARD = 'hw_live_view_hidden_when_keyguard'-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **系统接口：** 此接口为系统接口。
-

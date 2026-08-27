@@ -1,12 +1,8 @@
 # CommonEventBatteryChangedKey
 
-表示COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键。 开发者需先订阅[COMMON_EVENT_BATTERY_CHANGED公共事件](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_battery_changed)， 在事件回调中通过这些查询键从事件附加数据中提取对应的电池状态信息。 详细使用方法请参见[@ohos.commonEventManager (公共事件模块)](arkts-commoneventmanager.md)。
+表示COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键。 开发者需先订阅[COMMON_EVENT_BATTERY_CHANGED公共事件](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_battery_changed)， 在事件回调中通过这些查询键从事件附加数据中提取对应的电池状态信息。 详细使用方法请参见[@ohos.commonEventManager (公共事件模块)](../../../reference/api-basic-services/js-apis-commonEventManager.md)。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-batteryInfo-export enum CommonEventBatteryChangedKey--><!--Device-batteryInfo-export enum CommonEventBatteryChangedKey-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -18,11 +14,7 @@ EXTRA_SOC = 'soc'
 
 表示剩余电池电量百分比的查询键。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-CommonEventBatteryChangedKey-EXTRA_SOC = 'soc'--><!--Device-CommonEventBatteryChangedKey-EXTRA_SOC = 'soc'-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -34,11 +26,7 @@ EXTRA_CHARGE_STATE = 'chargeState'
 
 表示当前设备电池充电状态的查询键。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-CommonEventBatteryChangedKey-EXTRA_CHARGE_STATE = 'chargeState'--><!--Device-CommonEventBatteryChangedKey-EXTRA_CHARGE_STATE = 'chargeState'-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -50,11 +38,7 @@ EXTRA_HEALTH_STATE = 'healthState'
 
 表示当前设备电池健康状态的查询键。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-CommonEventBatteryChangedKey-EXTRA_HEALTH_STATE = 'healthState'--><!--Device-CommonEventBatteryChangedKey-EXTRA_HEALTH_STATE = 'healthState'-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -66,11 +50,7 @@ EXTRA_PLUGGED_TYPE = 'pluggedType'
 
 表示当前设备连接的充电器类型的查询键。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-CommonEventBatteryChangedKey-EXTRA_PLUGGED_TYPE = 'pluggedType'--><!--Device-CommonEventBatteryChangedKey-EXTRA_PLUGGED_TYPE = 'pluggedType'-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -82,11 +62,7 @@ EXTRA_VOLTAGE = 'voltage'
 
 表示当前设备电池电压的查询键。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-CommonEventBatteryChangedKey-EXTRA_VOLTAGE = 'voltage'--><!--Device-CommonEventBatteryChangedKey-EXTRA_VOLTAGE = 'voltage'-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -98,11 +74,7 @@ EXTRA_TECHNOLOGY = 'technology'
 
 表示当前设备电池技术型号的查询键。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-CommonEventBatteryChangedKey-EXTRA_TECHNOLOGY = 'technology'--><!--Device-CommonEventBatteryChangedKey-EXTRA_TECHNOLOGY = 'technology'-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -114,11 +86,7 @@ EXTRA_TEMPERATURE = 'temperature'
 
 表示当前设备电池温度的查询键。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-CommonEventBatteryChangedKey-EXTRA_TEMPERATURE = 'temperature'--><!--Device-CommonEventBatteryChangedKey-EXTRA_TEMPERATURE = 'temperature'-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -130,11 +98,7 @@ EXTRA_PRESENT = 'present'
 
 表示当前设备是否支持电池或者电池是否在位的查询键。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-CommonEventBatteryChangedKey-EXTRA_PRESENT = 'present'--><!--Device-CommonEventBatteryChangedKey-EXTRA_PRESENT = 'present'-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -146,11 +110,6 @@ EXTRA_CAPACITY_LEVEL = 'capacityLevel'
 
 表示当前设备电池电量等级的查询键。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-CommonEventBatteryChangedKey-EXTRA_CAPACITY_LEVEL = 'capacityLevel'--><!--Device-CommonEventBatteryChangedKey-EXTRA_CAPACITY_LEVEL = 'capacityLevel'-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-

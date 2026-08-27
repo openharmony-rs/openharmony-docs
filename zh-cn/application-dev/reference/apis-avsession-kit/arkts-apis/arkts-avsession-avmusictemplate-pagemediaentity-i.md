@@ -1,12 +1,10 @@
 # PageMediaEntity
 
-标签页媒体的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。
+标签页媒体的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。@extends OperResult @interface Compilation
 
 **继承/实现关系：** PageMediaEntity extends [OperResult](arkts-avsession-avmusictemplate-operresult-i.md)
 
 **起始版本：** 23
-
-<!--Device-avMusicTemplate-interface PageMediaEntity--><!--Device-avMusicTemplate-interface PageMediaEntity-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -30,8 +28,6 @@ elements: MediaEntity[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PageMediaEntity-elements: MediaEntity[]--><!--Device-PageMediaEntity-elements: MediaEntity[]-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## episodeRange
@@ -47,8 +43,6 @@ episodeRange?: EpisodeRange
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PageMediaEntity-episodeRange?: EpisodeRange--><!--Device-PageMediaEntity-episodeRange?: EpisodeRange-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -66,8 +60,6 @@ hasMoreData: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PageMediaEntity-hasMoreData: boolean--><!--Device-PageMediaEntity-hasMoreData: boolean-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## memberMediaType
@@ -84,43 +76,37 @@ memberMediaType: EntityType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PageMediaEntity-memberMediaType: EntityType--><!--Device-PageMediaEntity-memberMediaType: EntityType-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## pageIndex
 
 ```TypeScript
-pageIndex: int
+pageIndex: number
 ```
 
 分页查询页码。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PageMediaEntity-pageIndex: int--><!--Device-PageMediaEntity-pageIndex: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## pageSize
 
 ```TypeScript
-pageSize: int
+pageSize: number
 ```
 
 页面的大小。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PageMediaEntity-pageSize: int--><!--Device-PageMediaEntity-pageSize: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -138,25 +124,20 @@ sort?: Sort
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PageMediaEntity-sort?: Sort--><!--Device-PageMediaEntity-sort?: Sort-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## totalSize
 
 ```TypeScript
-totalSize: int
+totalSize: number
 ```
 
 数据总大小。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PageMediaEntity-totalSize: int--><!--Device-PageMediaEntity-totalSize: int-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-

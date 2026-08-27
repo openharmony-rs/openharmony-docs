@@ -14,9 +14,7 @@ function createCustomizedToneAttrs(): ToneAttrs
 
 创建自定义铃声属性。
 
-**起始版本：** 23
-
-<!--Device-systemSoundManager-function createCustomizedToneAttrs(): ToneAttrs--><!--Device-systemSoundManager-function createCustomizedToneAttrs(): ToneAttrs-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -39,4 +37,3 @@ function createCustomizedToneAttrs(): ToneAttrs
 ```TypeScript
 let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomizedToneAttrs();
 ```
-

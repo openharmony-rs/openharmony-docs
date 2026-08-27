@@ -19,4 +19,4 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [vulkan_ohos.h](capi-vulkan-ohos-h.md) | 定义了OpenHarmony平台扩展的Vulkan接口。 |
+| vulkan_ohos.h | 定义了OpenHarmony平台扩展的Vulkan接口。 |

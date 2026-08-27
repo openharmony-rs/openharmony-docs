@@ -14,9 +14,7 @@ function getAccountManager(): AccountManager
 
 获取系统账号管理对象。
 
-**起始版本：** 23
-
-<!--Device-osAccount-function getAccountManager(): AccountManager--><!--Device-osAccount-function getAccountManager(): AccountManager-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -31,4 +29,3 @@ function getAccountManager(): AccountManager
 ```TypeScript
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
 ```
-

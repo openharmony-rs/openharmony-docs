@@ -156,7 +156,7 @@ export default {
 ## 自定义组件数据
 
 
-自定义组件的js文件中可以通过声明data、props、computed等字段完成数据的定义、传递与处理，其中props与computed的具体使用请参考[数据传递与处理](js-components-custom-props.md)章节。
+自定义组件的js文件中可以通过声明data、props、computed等字段完成数据的定义、传递与处理，其中props与computed的具体使用请参考数据传递与处理章节。
 
 **表1** 自定义组件数据
 

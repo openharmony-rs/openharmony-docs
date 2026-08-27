@@ -2,9 +2,7 @@
 
 定义打印机首选项的接口。
 
-**起始版本：** 23
-
-<!--Device-print-interface PrinterPreferences--><!--Device-print-interface PrinterPreferences-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -24,9 +22,7 @@ borderless?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-PrinterPreferences-borderless?: boolean--><!--Device-PrinterPreferences-borderless?: boolean-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -36,15 +32,14 @@ borderless?: boolean
 defaultCollate?: boolean
 ```
 
-表示默认出纸顺序。true表示逐份打印，false表示逐页打印。默认值为逐份。 **模型约束：** 此接口仅可在Stage模型下使用。
+表示默认出纸顺序。true表示逐份打印，false表示逐页打印。默认值为逐份。  
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **类型：** boolean
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PrinterPreferences-defaultCollate?: boolean--><!--Device-PrinterPreferences-defaultCollate?: boolean-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -54,15 +49,14 @@ defaultCollate?: boolean
 defaultColorMode?: PrintColorMode
 ```
 
-表示默认色彩模式。默认值为黑白。 **模型约束：** 此接口仅可在Stage模型下使用。
+表示默认色彩模式。默认值为黑白。  
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **类型：** [PrintColorMode](arkts-basicservices-print-printcolormode-e.md)
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PrinterPreferences-defaultColorMode?: PrintColorMode--><!--Device-PrinterPreferences-defaultColorMode?: PrintColorMode-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -76,9 +70,7 @@ defaultDuplexMode?: PrintDuplexMode
 
 **类型：** [PrintDuplexMode](arkts-basicservices-print-printduplexmode-e.md)
 
-**起始版本：** 23
-
-<!--Device-PrinterPreferences-defaultDuplexMode?: PrintDuplexMode--><!--Device-PrinterPreferences-defaultDuplexMode?: PrintDuplexMode-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -92,9 +84,7 @@ defaultMediaType?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PrinterPreferences-defaultMediaType?: string--><!--Device-PrinterPreferences-defaultMediaType?: string-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -108,9 +98,7 @@ defaultOrientation?: PrintOrientationMode
 
 **类型：** [PrintOrientationMode](arkts-basicservices-print-printorientationmode-e.md)
 
-**起始版本：** 23
-
-<!--Device-PrinterPreferences-defaultOrientation?: PrintOrientationMode--><!--Device-PrinterPreferences-defaultOrientation?: PrintOrientationMode-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -124,9 +112,7 @@ defaultPageSizeId?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PrinterPreferences-defaultPageSizeId?: string--><!--Device-PrinterPreferences-defaultPageSizeId?: string-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -140,9 +126,7 @@ defaultPrintQuality?: PrintQuality
 
 **类型：** [PrintQuality](arkts-basicservices-print-printquality-e.md)
 
-**起始版本：** 23
-
-<!--Device-PrinterPreferences-defaultPrintQuality?: PrintQuality--><!--Device-PrinterPreferences-defaultPrintQuality?: PrintQuality-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -152,15 +136,14 @@ defaultPrintQuality?: PrintQuality
 defaultReverse?: boolean
 ```
 
-表示默认打印顺序。true表示逆序打印，false表示正序打印。默认值为正序打印。 **模型约束：** 此接口仅可在Stage模型下使用。
+表示默认打印顺序。true表示逆序打印，false表示正序打印。默认值为正序打印。  
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **类型：** boolean
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PrinterPreferences-defaultReverse?: boolean--><!--Device-PrinterPreferences-defaultReverse?: boolean-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -174,9 +157,6 @@ options?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PrinterPreferences-options?: string--><!--Device-PrinterPreferences-options?: string-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Print.PrintFramework
-

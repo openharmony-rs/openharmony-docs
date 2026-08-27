@@ -14,11 +14,9 @@ function deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): P
 
 删除扫描仪（系统API）。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
-
-<!--Device-scan-function deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise<void>--><!--Device-scan-function deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -35,7 +33,7 @@ function deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): P
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -50,12 +48,12 @@ function deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): P
 import { scan } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// uniqueId可通过getAddedScanners()获取已添加扫描仪的唯一ID，或从scan.on('scanDeviceAdd')事件回调中获得
 let uniqueId: string = 'unique_scanner_001';
 let discoveryMode: scan.ScannerDiscoveryMode = scan.ScannerDiscoveryMode.TCP_STR;
 scan.deleteScanner(uniqueId, discoveryMode).then(() => {
     console.info('delete scanner success');
 }).catch((error: BusinessError) => {
-    console.error('delete scanner failed: ' + JSON.stringify(error));
-})
+    console.error(`Failed to delete scanner. Code: ${error.code}, message: ${error.message}`);
+});
 ```
-

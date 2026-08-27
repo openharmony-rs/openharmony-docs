@@ -2,9 +2,7 @@
 
 表示已注册凭据的信息。
 
-**起始版本：** 23
-
-<!--Device-osAccount-interface EnrolledCredInfo--><!--Device-osAccount-interface EnrolledCredInfo-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -26,9 +24,7 @@ authSubType: AuthSubType
 
 **类型：** [AuthSubType](arkts-basicservices-osaccount-authsubtype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-EnrolledCredInfo-authSubType: AuthSubType--><!--Device-EnrolledCredInfo-authSubType: AuthSubType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -44,9 +40,7 @@ authType: AuthType
 
 **类型：** AuthType
 
-**起始版本：** 23
-
-<!--Device-EnrolledCredInfo-authType: AuthType--><!--Device-EnrolledCredInfo-authType: AuthType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -58,13 +52,11 @@ authType: AuthType
 credentialId: Uint8Array
 ```
 
-指示凭据索引，默认为空。
+指示凭据索引。
 
 **类型：** Uint8Array
 
-**起始版本：** 23
-
-<!--Device-EnrolledCredInfo-credentialId: Uint8Array--><!--Device-EnrolledCredInfo-credentialId: Uint8Array-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -80,9 +72,7 @@ isAbandoned?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-EnrolledCredInfo-isAbandoned?: boolean--><!--Device-EnrolledCredInfo-isAbandoned?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -98,9 +88,7 @@ templateId: Uint8Array
 
 **类型：** Uint8Array
 
-**起始版本：** 23
-
-<!--Device-EnrolledCredInfo-templateId: Uint8Array--><!--Device-EnrolledCredInfo-templateId: Uint8Array-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -109,18 +97,15 @@ templateId: Uint8Array
 ## validityPeriod
 
 ```TypeScript
-validityPeriod?: long
+validityPeriod?: number
 ```
 
 指示凭据有效期，单位为ms。默认为undefined，表示有效期未定义。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-EnrolledCredInfo-validityPeriod?: long--><!--Device-EnrolledCredInfo-validityPeriod?: long-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
-

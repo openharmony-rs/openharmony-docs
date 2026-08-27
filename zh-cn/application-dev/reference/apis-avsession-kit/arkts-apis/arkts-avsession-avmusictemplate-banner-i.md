@@ -1,12 +1,10 @@
 # Banner
 
-海报的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。
+海报的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。@extends MediaEntity @interface Banner
 
 **继承/实现关系：** Banner extends [MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)
 
 **起始版本：** 23
-
-<!--Device-avMusicTemplate-interface Banner--><!--Device-avMusicTemplate-interface Banner-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -30,7 +28,4 @@ isSupportOnePlay: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Banner-isSupportOnePlay: boolean--><!--Device-Banner-isSupportOnePlay: boolean-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-

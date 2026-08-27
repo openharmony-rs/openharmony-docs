@@ -20,8 +20,6 @@ function registerTask(taskInfo: TaskInfo): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-backgroundLoader-function registerTask(taskInfo: TaskInfo): void--><!--Device-backgroundLoader-function registerTask(taskInfo: TaskInfo): void-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 **参数：**
@@ -34,7 +32,6 @@ function registerTask(taskInfo: TaskInfo): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9700004](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700004-workinfo校验失败) | Check on taskInfo failed. |
-| [9700003](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-
+| [9700003](../errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
+| [9700004](../errorcode-workScheduler.md#9700004-参数校验失败) | Check on taskInfo failed. |

@@ -14,9 +14,7 @@ function getLevel(): ThermalLevel
 
 获取当前热档位信息。系统根据设备温度实时判定当前所处的热档位层级并返回对应等级，开发者可据此执行相应的业务降级策略。
 
-**起始版本：** 23
-
-<!--Device-thermal-function getLevel(): ThermalLevel--><!--Device-thermal-function getLevel(): ThermalLevel-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -32,4 +30,3 @@ function getLevel(): ThermalLevel
 let level = thermal.getLevel();
 console.info('thermal level is: ' + level);
 ```
-

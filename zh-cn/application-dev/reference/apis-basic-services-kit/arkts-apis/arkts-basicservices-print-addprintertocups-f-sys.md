@@ -20,8 +20,6 @@ function addPrinterToCups(printerUri: string, printerName: string, printerMake: 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-print-function addPrinterToCups(printerUri: string, printerName: string, printerMake: string): Promise<boolean>--><!--Device-print-function addPrinterToCups(printerUri: string, printerName: string, printerMake: string): Promise<boolean>-End-->
-
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -38,30 +36,29 @@ function addPrinterToCups(printerUri: string, printerName: string, printerMake: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回true表示添加打印机到cups成功；返回false表示添加打印机到cups失败。 |
+| Promise & lt;boolean & gt; | Promise对象，返回true表示添加打印机到cups成功；返回false表示添加打印机到cups失败。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13100003](../errorcode-print.md#13100003-打印服务异常) | Add a printer to cups failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
+| [13100003](../errorcode-print.md#13100003-打印服务异常) | Add a printer to cups failed. |
 
 **示例**
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let printerUri : string = "testPrinterUri";
-let printerName : string = "testPrinterName";
-let printerMake : string = "testPrinterMake";
+let printerUri : string = 'testPrinterUri';
+let printerName : string = 'testPrinterName';
+let printerMake : string = 'testPrinterMake';
 
 print.addPrinterToCups(printerUri, printerName, printerMake).then((result: boolean) => {
     console.info('addPrinterToCups success' + JSON.stringify(result));
 }).catch((error: BusinessError) => {
-    console.error('addPrinterToCups error : ' + JSON.stringify(error));
-})
+    console.error(`Failed to add printer to cups. Code: ${error.code}, message: ${error.message}`);
+});
 ```
-

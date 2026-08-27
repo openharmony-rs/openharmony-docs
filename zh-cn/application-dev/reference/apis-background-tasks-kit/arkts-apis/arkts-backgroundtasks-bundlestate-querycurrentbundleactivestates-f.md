@@ -22,17 +22,15 @@ Queries state data of the current bundle within a specified period.
 
 **废弃版本：** 9
 
-<!--Device-bundleState-function queryCurrentBundleActiveStates(    begin: number,    end: number,    callback: AsyncCallback<Array<BundleActiveState>>  ): void--><!--Device-bundleState-function queryCurrentBundleActiveStates(    begin: number,    end: number,    callback: AsyncCallback<Array<BundleActiveState>>  ): void-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| begin | number | 是 | Indicates the start time of the query period, in milliseconds. <br> Unit:ms |
-| end | number | 是 | Indicates the end time of the query period, in milliseconds. <br> Unit:ms |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[BundleActiveState](arkts-backgroundtasks-bundlestate-bundleactivestate-i.md)&gt;&gt; | 是 | the state data of the current bundle. |
+| begin | number | 是 | Indicates the start time of the query period, in milliseconds. |
+| end | number | 是 | Indicates the end time of the query period, in milliseconds. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[BundleActiveState](arkts-backgroundtasks-bundlestate-bundleactivestate-i.md)&gt;&gt; | 是 | the state data of the current bundle. |
 
 **示例**
 
@@ -66,16 +64,14 @@ Queries state data of the current bundle within a specified period.
 
 **废弃版本：** 9
 
-<!--Device-bundleState-function queryCurrentBundleActiveStates(begin: number, end: number): Promise<Array<BundleActiveState>>--><!--Device-bundleState-function queryCurrentBundleActiveStates(begin: number, end: number): Promise<Array<BundleActiveState>>-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| begin | number | 是 | Indicates the start time of the query period, in milliseconds. <br> Unit:ms |
-| end | number | 是 | Indicates the end time of the query period, in milliseconds. <br> Unit:ms |
+| begin | number | 是 | Indicates the start time of the query period, in milliseconds. |
+| end | number | 是 | Indicates the end time of the query period, in milliseconds. |
 
 **返回值：**
 
@@ -99,4 +95,3 @@ bundleState.queryCurrentBundleActiveStates(0, 20000000000000).then((res: Array<b
   console.error('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise failed, because: ' + err.code);
 });
 ```
-

@@ -1,8 +1,8 @@
 # TonePlayer（系统接口）
 
-**起始版本：** 23
+提供播放和管理DTMF（Dual Tone Multi Frequency，双音多频）音调的方法，包括各种系统监听音调、专有音调，如拨号音、通话回铃音等。 在调用TonePlayer的接口前，需要先通过 [createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md)创建 实例。
 
-<!--Device-audio-interface TonePlayer--><!--Device-audio-interface TonePlayer-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -12,7 +12,6 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## load
@@ -21,11 +20,9 @@ import { audioHaptic } from '@kit.AudioKit';
 load(type: ToneType, callback: AsyncCallback<void>): void
 ```
 
-Loads tone. This method uses an asynchronous callback to return the result.
+加载DTMF音调配置。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-TonePlayer-load(type: ToneType, callback: AsyncCallback<void>): void--><!--Device-TonePlayer-load(type: ToneType, callback: AsyncCallback<void>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -35,8 +32,8 @@ Loads tone. This method uses an asynchronous callback to return the result.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [ToneType](arkts-audio-audio-tonetype-e-sys.md) | 是 | Tone type to play. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the result. |
+| type | [ToneType](arkts-audio-audio-tonetype-e-sys.md) | 是 | 配置的音调类型。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当加载DTMF音调配置成功，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -59,11 +56,9 @@ tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_5, (err: BusinessError) => {
 load(type: ToneType): Promise<void>
 ```
 
-Loads tone. This method uses a promise to return the result.
+加载DTMF音调配置。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-TonePlayer-load(type: ToneType): Promise<void>--><!--Device-TonePlayer-load(type: ToneType): Promise<void>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -73,13 +68,13 @@ Loads tone. This method uses a promise to return the result.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [ToneType](arkts-audio-audio-tonetype-e-sys.md) | 是 | Tone type to play. |
+| type | [ToneType](arkts-audio-audio-tonetype-e-sys.md) | 是 | 配置的音调类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -97,11 +92,9 @@ tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_1).then(() => {
 release(callback: AsyncCallback<void>): void
 ```
 
-Releases the player. This method uses an asynchronous callback to return the result.
+释放与此TonePlayer对象关联的资源。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-TonePlayer-release(callback: AsyncCallback<void>): void--><!--Device-TonePlayer-release(callback: AsyncCallback<void>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -111,7 +104,7 @@ Releases the player. This method uses an asynchronous callback to return the res
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当释放与此TonePlayer对象关联的资源成功，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -128,17 +121,39 @@ tonePlayer.release((err: BusinessError) => {
 });
 ```
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.release((err: BusinessError) => {
+  if (err) {
+    console.error('capturer release failed');
+  } else {
+    console.info('capturer released.');
+  }
+});
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.release((err: BusinessError) => {
+  if (err) {
+    console.error('Renderer release failed');
+  } else {
+    console.info('Renderer released.');
+  }
+});
+```
+
 ## release
 
 ```TypeScript
 release(): Promise<void>
 ```
 
-Releases the player. This method uses a promise to return the result.
+释放与此TonePlayer对象关联的资源。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-TonePlayer-release(): Promise<void>--><!--Device-TonePlayer-release(): Promise<void>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -148,7 +163,7 @@ Releases the player. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -160,17 +175,37 @@ tonePlayer.release().then(() => {
 });
 ```
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.release().then(() => {
+  console.info('AudioFrameworkRecLog: ---------RELEASE RECORD---------');
+  console.info('AudioFrameworkRecLog: Capturer release : SUCCESS');
+  console.info(`AudioFrameworkRecLog: AudioCapturer : STATE : ${audioCapturer.state}`);
+}).catch((err: BusinessError) => {
+  console.error(`AudioFrameworkRecLog: Capturer stop: ERROR: ${err}`);
+});
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.release().then(() => {
+  console.info('Renderer released successfully');
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
 ## start
 
 ```TypeScript
 start(callback: AsyncCallback<void>): void
 ```
 
-Starts player. This method uses an asynchronous callback to return the result.
+启动DTMF音调播放。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-TonePlayer-start(callback: AsyncCallback<void>): void--><!--Device-TonePlayer-start(callback: AsyncCallback<void>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -180,7 +215,7 @@ Starts player. This method uses an asynchronous callback to return the result.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当启动DTMF音调播放成功，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -197,17 +232,39 @@ tonePlayer.start((err: BusinessError) => {
 });
 ```
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.start((err: BusinessError) => {
+  if (err) {
+    console.error('Capturer start failed.');
+  } else {
+    console.info('Capturer start success.');
+  }
+});
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.start((err: BusinessError) => {
+  if (err) {
+    console.error('Renderer start failed.');
+  } else {
+    console.info('Renderer start success.');
+  }
+});
+```
+
 ## start
 
 ```TypeScript
 start(): Promise<void>
 ```
 
-Starts player. This method uses a promise to return the result.
+启动DTMF音调播放。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-TonePlayer-start(): Promise<void>--><!--Device-TonePlayer-start(): Promise<void>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -217,7 +274,7 @@ Starts player. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -229,17 +286,38 @@ tonePlayer.start().then(() => {
 });
 ```
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.start().then(() => {
+  console.info('Succeeded in doing start.');
+  if (audioCapturer.state == audio.AudioState.STATE_RUNNING) {
+    console.info('AudioFrameworkRecLog: AudioCapturer is in Running State');
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to start. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.start().then(() => {
+  console.info('Renderer started');
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
 ## stop
 
 ```TypeScript
 stop(callback: AsyncCallback<void>): void
 ```
 
-Stops player. This method uses an asynchronous callback to return the result.
+停止当前正在播放的音调。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-TonePlayer-stop(callback: AsyncCallback<void>): void--><!--Device-TonePlayer-stop(callback: AsyncCallback<void>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -249,7 +327,7 @@ Stops player. This method uses an asynchronous callback to return the result.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当停止当前正在播放的音调成功，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -266,17 +344,39 @@ tonePlayer.stop((err: BusinessError) => {
 });
 ```
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.stop((err: BusinessError) => {
+  if (err) {
+    console.error('Capturer stop failed');
+  } else {
+    console.info('Capturer stopped.');
+  }
+});
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.stop((err: BusinessError) => {
+  if (err) {
+    console.error('Renderer stop failed');
+  } else {
+    console.info('Renderer stopped.');
+  }
+});
+```
+
 ## stop
 
 ```TypeScript
 stop(): Promise<void>
 ```
 
-Stops player. This method uses a promise to return the result.
+停止当前正在播放的音调。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-TonePlayer-stop(): Promise<void>--><!--Device-TonePlayer-stop(): Promise<void>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -286,7 +386,7 @@ Stops player. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -298,3 +398,25 @@ tonePlayer.stop().then(() => {
 });
 ```
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.stop().then(() => {
+  console.info('Succeeded in doing stop.');
+  if (audioCapturer.state == audio.AudioState.STATE_STOPPED){
+    console.info('AudioFrameworkRecLog: State is Stopped:');
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to stop. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.stop().then(() => {
+  console.info('Renderer stopped successfully');
+}).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```

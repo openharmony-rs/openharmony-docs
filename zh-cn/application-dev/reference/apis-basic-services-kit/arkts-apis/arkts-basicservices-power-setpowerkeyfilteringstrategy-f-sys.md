@@ -12,13 +12,11 @@ import { power } from '@kit.BasicServicesKit';
 function setPowerKeyFilteringStrategy(strategy: PowerKeyFilteringStrategy): void
 ```
 
-设置电源键过滤策略，在电源服务订阅电源键事件后，用于配置电源键事件的处理方式。 电源键过滤策略见[power.PowerKeyFilteringStrategy](arkts-basicservices-power-powerkeyfilteringstrategy-e.md)接口。
+设置电源键过滤策略，在电源服务订阅电源键事件后，用于配置电源键事件的处理方式。电源键过滤策略见[power.PowerKeyFilteringStrategy](arkts-basicservices-power-powerkeyfilteringstrategy-e.md)接口。
 
-**起始版本：** 23
+**起始版本：** 21
 
 **需要权限：** ohos.permission.POWER_MANAGER
-
-<!--Device-power-function setPowerKeyFilteringStrategy(strategy: PowerKeyFilteringStrategy): void--><!--Device-power-function setPowerKeyFilteringStrategy(strategy: PowerKeyFilteringStrategy): void-End-->
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -43,8 +41,7 @@ function setPowerKeyFilteringStrategy(strategy: PowerKeyFilteringStrategy): void
 ```TypeScript
 try {
     power.setPowerKeyFilteringStrategy(power.PowerKeyFilteringStrategy.LONG_PRESS_FILTERING_ONCE);
-} catch(err) {
-    console.error('setPowerKeyFilteringStrategy failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to set power key filtering strategy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

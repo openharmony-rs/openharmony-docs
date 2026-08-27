@@ -2,9 +2,7 @@
 
 串口参数。
 
-**起始版本：** 23
-
-<!--Device-serialManager-interface SerialPort--><!--Device-serialManager-interface SerialPort-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
@@ -24,25 +22,20 @@ deviceName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SerialPort-deviceName: string--><!--Device-SerialPort-deviceName: string-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
 ## portId
 
 ```TypeScript
-portId: int
+portId: number
 ```
 
 串口端口号，用于唯一标识串口设备。该值来自getPortList返回的SerialPort对象，用于指定要操作的串口设备。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SerialPort-portId: int--><!--Device-SerialPort-portId: int-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
-

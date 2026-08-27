@@ -14,11 +14,9 @@ function updatePrinters(printers: Array<PrinterInfo>, callback: AsyncCallback<vo
 
 更新特定打印机的信息，使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
-
-<!--Device-print-function updatePrinters(printers: Array<PrinterInfo>, callback: AsyncCallback<void>): void--><!--Device-print-function updatePrinters(printers: Array<PrinterInfo>, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -28,22 +26,22 @@ function updatePrinters(printers: Array<PrinterInfo>, callback: AsyncCallback<vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printers | Array&lt;[PrinterInfo](arkts-basicservices-print-printerinfo-i-sys.md)&gt; | 是 | 表示待更新的打印机列表。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步更新打印机信息之后的回调。 |
+| printers | Array&lt;[PrinterInfo](arkts-basicservices-print-printerinfo-i.md)&gt; | 是 | 表示待更新的打印机列表。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步更新打印机信息之后的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -54,13 +52,13 @@ let printerInfo : print.PrinterInfo = {
     capability : undefined,
     options : 'opt'
 };
-print.updatePrinters([printerInfo], (err: BusinessError) => {
-    if (err) {
-        console.error('updataPrinters failed, because : ' + JSON.stringify(err));
+print.updatePrinters([printerInfo], (error: BusinessError) => {
+    if (error) {
+        console.error(`Failed to update printers. Code: ${error.code}, message: ${error.message}`);
     } else {
-        console.info('updataPrinters success');
+        console.info('updatePrinters success');
     }
-})
+});
 ```
 
 
@@ -72,11 +70,9 @@ function updatePrinters(printers: Array<PrinterInfo>): Promise<void>
 
 更新特定打印机的信息，使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
-
-<!--Device-print-function updatePrinters(printers: Array<PrinterInfo>): Promise<void>--><!--Device-print-function updatePrinters(printers: Array<PrinterInfo>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -86,27 +82,27 @@ function updatePrinters(printers: Array<PrinterInfo>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printers | Array&lt;[PrinterInfo](arkts-basicservices-print-printerinfo-i-sys.md)&gt; | 是 | 表示待更新的打印机列表。 |
+| printers | Array&lt;[PrinterInfo](arkts-basicservices-print-printerinfo-i.md)&gt; | 是 | 表示待更新的打印机列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -120,7 +116,6 @@ let printerInfo : print.PrinterInfo = {
 print.updatePrinters([printerInfo]).then(() => {
     console.info('update printers success');
 }).catch((error: BusinessError) => {
-    console.error('update printers error : ' + JSON.stringify(error));
-})
+    console.error(`Failed to update printers. Code: ${error.code}, message: ${error.message}`);
+});
 ```
-

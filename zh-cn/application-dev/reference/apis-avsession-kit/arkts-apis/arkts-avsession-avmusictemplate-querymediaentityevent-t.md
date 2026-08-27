@@ -10,8 +10,6 @@ type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise<PageMedi
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avMusicTemplate-type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise<PageMediaEntity>--><!--Device-avMusicTemplate-type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise<PageMediaEntity>-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
@@ -25,4 +23,3 @@ type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise<PageMedi
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[PageMediaEntity](arkts-avsession-avmusictemplate-pagemediaentity-i.md)&gt; | Promise对象，返回查询的媒体实体分页对象。 |
-

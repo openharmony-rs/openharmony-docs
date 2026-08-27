@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { usb } from '@kit.BasicServicesKit';
-import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## getDevices
@@ -22,15 +20,13 @@ function getDevices(): Array<Readonly<USBDevice>>
 
 **替代接口：** [getDevices](arkts-basicservices-usbmanager-getdevices-f.md)
 
-<!--Device-usb-function getDevices(): Array<Readonly<USBDevice>>--><!--Device-usb-function getDevices(): Array<Readonly<USBDevice>>-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;Readonly&lt;USBDevice&gt;&gt; | 设备信息列表。 |
+| Array & lt;Readonly & lt;USBDevice & gt; & gt; | 设备信息列表。 |
 
 **示例**
 
@@ -90,4 +86,3 @@ console.info(`devicesList = ${devicesList}`);
   ]
  */
 ```
-

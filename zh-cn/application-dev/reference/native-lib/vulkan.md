@@ -292,4 +292,4 @@
 |FUNC|vkAcquireImageOHOS|
 |FUNC|vkQueueSignalReleaseImageOHOS|
 
-新增接口的详细介绍请见[Vulkan模块](capi-vulkan.md)。
+新增接口的详细介绍请见Vulkan模块。

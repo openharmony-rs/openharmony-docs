@@ -1,12 +1,10 @@
 # Compilation
 
-合集的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。
+合集的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。@extends OperResult @interface Compilation
 
 **继承/实现关系：** Compilation extends [OperResult](arkts-avsession-avmusictemplate-operresult-i.md)
 
 **起始版本：** 23
-
-<!--Device-avMusicTemplate-interface Compilation--><!--Device-avMusicTemplate-interface Compilation-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -30,8 +28,6 @@ hasMoreData: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Compilation-hasMoreData: boolean--><!--Device-Compilation-hasMoreData: boolean-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## id
@@ -47,8 +43,6 @@ id: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Compilation-id: string--><!--Device-Compilation-id: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -66,8 +60,6 @@ memberMediaType: EntityType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Compilation-memberMediaType: EntityType--><!--Device-Compilation-memberMediaType: EntityType-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## title
@@ -83,8 +75,6 @@ title: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Compilation-title: string--><!--Device-Compilation-title: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -102,25 +92,20 @@ topElements: MediaEntity[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Compilation-topElements: MediaEntity[]--><!--Device-Compilation-topElements: MediaEntity[]-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## totalSize
 
 ```TypeScript
-totalSize: int
+totalSize: number
 ```
 
 合集的总个数。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Compilation-totalSize: int--><!--Device-Compilation-totalSize: int-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-

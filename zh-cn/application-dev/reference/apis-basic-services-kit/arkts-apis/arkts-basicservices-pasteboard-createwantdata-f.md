@@ -20,8 +20,6 @@ function createWantData(want: Want): PasteData
 
 **替代接口：** [createData](arkts-basicservices-pasteboard-createdata-f.md)(mimeType: string, value: ValueType)
 
-<!--Device-pasteboard-function createWantData(want: Want): PasteData--><!--Device-pasteboard-function createWantData(want: Want): PasteData-End-->
-
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
 **参数：**
@@ -47,4 +45,3 @@ let object: Want = {
 };
 let pasteData: pasteboard.PasteData = pasteboard.createWantData(object);
 ```
-

@@ -2,9 +2,7 @@
 
 版本摘要。
 
-**起始版本：** 23
-
-<!--Device-update-export interface VersionDigestInfo--><!--Device-update-export interface VersionDigestInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -26,11 +24,8 @@ versionDigest: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-VersionDigestInfo-versionDigest: string--><!--Device-VersionDigestInfo-versionDigest: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Update.UpdateService
 
 **系统接口：** 此接口为系统接口。
-

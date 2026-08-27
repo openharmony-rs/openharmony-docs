@@ -2,9 +2,7 @@
 
 USB异步传输回调。
 
-**起始版本：** 23
-
-<!--Device-usbManager-interface SubmitTransferCallback--><!--Device-usbManager-interface SubmitTransferCallback-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -12,22 +10,19 @@ USB异步传输回调。
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## actualLength
 
 ```TypeScript
-actualLength: int
+actualLength: number
 ```
 
 读写操作的实际长度值，（单位：字节）。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SubmitTransferCallback-actualLength: int--><!--Device-SubmitTransferCallback-actualLength: int-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -41,9 +36,7 @@ isoPacketDescs: Array<Readonly<UsbIsoPacketDescriptor>>
 
 **类型：** Array&lt;Readonly&lt;[UsbIsoPacketDescriptor](arkts-basicservices-usbmanager-usbisopacketdescriptor-i.md)&gt;&gt;
 
-**起始版本：** 23
-
-<!--Device-SubmitTransferCallback-isoPacketDescs: Array<Readonly<UsbIsoPacketDescriptor>>--><!--Device-SubmitTransferCallback-isoPacketDescs: Array<Readonly<UsbIsoPacketDescriptor>>-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -57,9 +50,6 @@ status: UsbTransferStatus
 
 **类型：** [UsbTransferStatus](arkts-basicservices-usbmanager-usbtransferstatus-e.md)
 
-**起始版本：** 23
-
-<!--Device-SubmitTransferCallback-status: UsbTransferStatus--><!--Device-SubmitTransferCallback-status: UsbTransferStatus-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.USB.USBManager
-

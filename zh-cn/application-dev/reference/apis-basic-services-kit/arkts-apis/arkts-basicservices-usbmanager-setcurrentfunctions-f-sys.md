@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## setCurrentFunctions
@@ -21,8 +20,6 @@ function setCurrentFunctions(funcs: FunctionType): Promise<void>
 
 **替代接口：** [setDeviceFunctions](arkts-basicservices-usbmanager-setdevicefunctions-f-sys.md)(funcs: FunctionType)
 
-<!--Device-usbManager-function setCurrentFunctions(funcs: FunctionType): Promise<void>--><!--Device-usbManager-function setCurrentFunctions(funcs: FunctionType): Promise<void>-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 **系统接口：** 此接口为系统接口。
@@ -37,12 +34,25 @@ function setCurrentFunctions(funcs: FunctionType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。调用成功时无返回值，调用失败时抛出异常。 |
+| Promise & lt;void & gt; | Promise对象。调用成功时无返回值，调用失败时抛出异常。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  <br>1.Mandatory parameters are left unspecified.  <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1.Mandatory parameters are left unspecified.  2.Incorrect parameter types. |
 | [14400002](../errorcode-usb.md#14400002-hdc功能被禁用) | Permission denied. The HDC is disabled by the system. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// 设置USB功能类型为HDC
+let funcs: usbManager.FunctionType = usbManager.FunctionType.HDC;
+// 异步设置当前USB功能
+usbManager.setCurrentFunctions(funcs).then(() => {
+  console.info('usb setCurrentFunctions successfully.');
+}).catch((err: BusinessError) => {
+  console.error(`usb setCurrentFunctions failed. Code: ${err.code}, message: ${err.message}`);
+});
+```

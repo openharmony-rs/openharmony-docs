@@ -2,9 +2,7 @@
 
 本模块提供压缩解压缩文件的能力。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace zlib--><!--Device-unnamed-declare namespace zlib-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -44,13 +42,13 @@ import { zlib } from '@kit.BasicServicesKit';
 | [DecompressionOutputInfo](arkts-basicservices-zlib-decompressionoutputinfo-i.md) | 解压缩返回信息。 |
 | [DeflatePendingOutputInfo](arkts-basicservices-zlib-deflatependingoutputinfo-i.md) | 压缩等待返回信息。 |
 | [DictionaryOutputInfo](arkts-basicservices-zlib-dictionaryoutputinfo-i.md) | InflateGetDictionary和deflateGetDictionary这两个函数会返回值的相关信息。 |
-| [GZip](arkts-basicservices-zlib-gzip-i.md) | Gzip相关接口。 |
 | [GzErrorOutputInfo](arkts-basicservices-zlib-gzerroroutputinfo-i.md) | GzError返回信息。 |
 | [GzHeader](arkts-basicservices-zlib-gzheader-i.md) | 传递从zlib例程中获取的Gzip头部信息。 |
+| [GZip](arkts-basicservices-zlib-gzip-i.md) | Gzip相关接口。 |
 | [Options](arkts-basicservices-zlib-options-i.md) | Options用于指定在压缩或解压Zip文件时的选项。 |
-| [ZStream](arkts-basicservices-zlib-zstream-i.md) | 处理所有用于压缩和解压缩所需的信息。 |
 | [Zip](arkts-basicservices-zlib-zip-i.md) | 压缩解压缩对象实例，支持以zlib、deflate、gzip格式对数据进行压缩与解压。 |
 | [ZipOutputInfo](arkts-basicservices-zlib-zipoutputinfo-i.md) | 压缩和解压缩的返回值信息。 |
+| [ZStream](arkts-basicservices-zlib-zstream-i.md) | 处理所有用于压缩和解压缩所需的信息。 |
 
 ### 枚举
 
@@ -73,4 +71,3 @@ import { zlib } from '@kit.BasicServicesKit';
 | --- | --- |
 | [InflateBackInputCallback](arkts-basicservices-zlib-inflatebackinputcallback-t.md) | 一个用于读取用户提供的输入数据的回调函数。当解压缩过程需要更多输入数据时，zlib 将调用此函数。此函数应从数据源读取数据并将其写入缓冲区中。 |
 | [InflateBackOutputCallback](arkts-basicservices-zlib-inflatebackoutputcallback-t.md) | 用户提供的输出数据会被写入回调函数中。每当解压后的数据准备好进行输出时，zlib 就会调用此函数将缓冲区中的数据写入目标位置。 |
-

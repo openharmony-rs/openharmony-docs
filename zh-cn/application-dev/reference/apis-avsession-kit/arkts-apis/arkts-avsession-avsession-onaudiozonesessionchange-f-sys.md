@@ -9,7 +9,7 @@ import { avSession } from '@kit.AVSessionKit';
 ## onAudioZoneSessionChange
 
 ```TypeScript
-function onAudioZoneSessionChange(userId: int, callback: Callback<AVSessionDescriptor>): void
+function onAudioZoneSessionChange(userId: number, callback: Callback<AVSessionDescriptor>): void
 ```
 
 注册音区会话变化回调
@@ -17,8 +17,6 @@ function onAudioZoneSessionChange(userId: int, callback: Callback<AVSessionDescr
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-avSession-function onAudioZoneSessionChange(userId: int, callback: Callback<AVSessionDescriptor>): void--><!--Device-avSession-function onAudioZoneSessionChange(userId: int, callback: Callback<AVSessionDescriptor>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -28,13 +26,12 @@ function onAudioZoneSessionChange(userId: int, callback: Callback<AVSessionDescr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | int | 是 | 当前userId最终归属的音区 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AVSessionDescriptor](arkts-avsession-avsession-avsessiondescriptor-i-sys.md)&gt; | 是 | 返回的会话列表 |
+| userId | number | 是 | 当前userId最终归属的音区 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AVSessionDescriptor](arkts-avsession-avsession-avsessiondescriptor-i.md)&gt; | 是 | 返回的会话列表 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |

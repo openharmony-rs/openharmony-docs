@@ -2,9 +2,7 @@
 
 描述音频采集器更改信息。
 
-**起始版本：** 23
-
-<!--Device-audio-interface AudioCapturerChangeInfo--><!--Device-audio-interface AudioCapturerChangeInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## capturerInfo
@@ -25,9 +22,7 @@ readonly capturerInfo: AudioCapturerInfo
 
 **类型：** [AudioCapturerInfo](arkts-audio-audio-audiocapturerinfo-i.md)
 
-**起始版本：** 23
-
-<!--Device-AudioCapturerChangeInfo-readonly capturerInfo: AudioCapturerInfo--><!--Device-AudioCapturerChangeInfo-readonly capturerInfo: AudioCapturerInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -41,9 +36,7 @@ readonly deviceDescriptors: AudioDeviceDescriptors
 
 **类型：** [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md)
 
-**起始版本：** 23
-
-<!--Device-AudioCapturerChangeInfo-readonly deviceDescriptors: AudioDeviceDescriptors--><!--Device-AudioCapturerChangeInfo-readonly deviceDescriptors: AudioDeviceDescriptors-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -57,25 +50,20 @@ readonly muted?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AudioCapturerChangeInfo-readonly muted?: boolean--><!--Device-AudioCapturerChangeInfo-readonly muted?: boolean-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 ## streamId
 
 ```TypeScript
-readonly streamId: int
+readonly streamId: number
 ```
 
 音频流唯一id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AudioCapturerChangeInfo-readonly streamId: int--><!--Device-AudioCapturerChangeInfo-readonly streamId: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
-

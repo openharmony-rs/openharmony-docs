@@ -2,9 +2,7 @@
 
 管理系统声音。在调用SystemSoundManager的接口前，需要先 通过[getSystemSoundManager](arkts-audio-systemsoundmanager-getsystemsoundmanager-f-sys.md)创建实例。
 
-**起始版本：** 23
-
-<!--Device-systemSoundManager-interface SystemSoundManager--><!--Device-systemSoundManager-interface SystemSoundManager-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -24,11 +22,9 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 
 通过铃音uri将自定义铃音添加到铃音库。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **需要权限：** ohos.permission.WRITE_RINGTONE
-
-<!--Device-SystemSoundManager-addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string): Promise<string>--><!--Device-SystemSoundManager-addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string): Promise<string>-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -46,20 +42,20 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回铃音在铃音库中的uri。 |
+| Promise & lt;string & gt; | Promise对象，返回铃音在铃音库中的uri。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation is not allowed, e.g. ringtone to add is not customized. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. System sound manager service error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [20700006](../errorcode-audio-ringtone-sys.md#20700006-rom空间不足) | Insufficient ROM space.<br>**适用版本：** 20+ |
-| [20700005](../errorcode-audio-ringtone-sys.md#20700005-文件个数超过限制) | The number of files exceeds the limit.<br>**适用版本：** 20+ |
 | [20700004](../errorcode-audio-ringtone-sys.md#20700004-数据大小超过限制) | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.<br>**适用版本：** 20+ |
+| [20700005](../errorcode-audio-ringtone-sys.md#20700005-文件个数超过限制) | The number of files exceeds the limit.<br>**适用版本：** 20+ |
+| [20700006](../errorcode-audio-ringtone-sys.md#20700006-rom空间不足) | Insufficient ROM space.<br>**适用版本：** 20+ |
 
 **示例**
 
@@ -91,17 +87,15 @@ systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, path).then((val
 ## addCustomizedTone
 
 ```TypeScript
-addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: int, offset?: long, length?: long)
+addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?: number, length?: number)
       : Promise<string>
 ```
 
 通过文件描述符fd将自定义铃音添加到铃音库。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **需要权限：** ohos.permission.WRITE_RINGTONE
-
-<!--Device-SystemSoundManager-addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: int, offset?: long, length?: long)      : Promise<string>--><!--Device-SystemSoundManager-addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: int, offset?: long, length?: long)      : Promise<string>-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -113,28 +107,28 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: int, offset?: l
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | 当前应用的上下文。 |
 | toneAttr | [ToneAttrs](arkts-audio-systemsoundmanager-toneattrs-i-sys.md) | 是 | 铃音属性。 |
-| fd | int | 是 | 文件描述符，可通过[fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md)获取。 |
-| offset | long | 否 | 读取数据的偏移量（以字节为单位）。默认情况下为0。 |
-| length | long | 否 | 读取的数据的长度（以字节为单位）。默认情况下，长度为偏移后的剩余全部字节数。 |
+| fd | number | 是 | 文件描述符，可通过[fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md)获取。 |
+| offset | number | 否 | 读取数据的偏移量（以字节为单位）。默认情况下为0。 |
+| length | number | 否 | 读取的数据的长度（以字节为单位）。默认情况下，长度为偏移后的剩余全部字节数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回铃音在铃音库中的uri。 |
+| Promise & lt;string & gt; | Promise对象，返回铃音在铃音库中的uri。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation is not allowed, e.g. ringtone to add is not customized. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. Ringtone library error. 4. System sound manager service error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [20700006](../errorcode-audio-ringtone-sys.md#20700006-rom空间不足) | Insufficient ROM space.<br>**适用版本：** 20+ |
-| [20700005](../errorcode-audio-ringtone-sys.md#20700005-文件个数超过限制) | The number of files exceeds the limit.<br>**适用版本：** 20+ |
 | [20700004](../errorcode-audio-ringtone-sys.md#20700004-数据大小超过限制) | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.<br>**适用版本：** 20+ |
+| [20700005](../errorcode-audio-ringtone-sys.md#20700005-文件个数超过限制) | The number of files exceeds the limit.<br>**适用版本：** 20+ |
+| [20700006](../errorcode-audio-ringtone-sys.md#20700006-rom空间不足) | Insufficient ROM space.<br>**适用版本：** 20+ |
 
 **示例**
 
@@ -168,14 +162,12 @@ systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, fd, offset, len
 ## close
 
 ```TypeScript
-close(fd: int): Promise<void>
+close(fd: number): Promise<void>
 ```
 
 关闭闹铃文件。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-close(fd: int): Promise<void>--><!--Device-SystemSoundManager-close(fd: int): Promise<void>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -185,21 +177,21 @@ close(fd: int): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fd | int | 是 | 文件描述符，通过[openAlarmTone](#openalarmtone)获取。 |
+| fd | number | 是 | 文件描述符，通过[openAlarmTone](#openalarmtone)获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -227,9 +219,7 @@ getAlarmToneAttrList(context: BaseContext): Promise<ToneAttrsArray>
 
 获取全部闹铃属性列表。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-getAlarmToneAttrList(context: BaseContext): Promise<ToneAttrsArray>--><!--Device-SystemSoundManager-getAlarmToneAttrList(context: BaseContext): Promise<ToneAttrsArray>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -251,9 +241,9 @@ getAlarmToneAttrList(context: BaseContext): Promise<ToneAttrsArray>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -280,9 +270,7 @@ getAlarmToneUri(context: BaseContext): Promise<string>
 
 获取系统当前闹铃uri。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-getAlarmToneUri(context: BaseContext): Promise<string>--><!--Device-SystemSoundManager-getAlarmToneUri(context: BaseContext): Promise<string>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -298,15 +286,15 @@ getAlarmToneUri(context: BaseContext): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回系统当前闹铃uri。 |
+| Promise & lt;string & gt; | Promise对象，返回系统当前闹铃uri。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -333,9 +321,7 @@ getCurrentRingtoneAttribute(type: RingtoneType): Promise<ToneAttrs>
 
 获取正在使用的铃声属性。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-getCurrentRingtoneAttribute(type: RingtoneType): Promise<ToneAttrs>--><!--Device-SystemSoundManager-getCurrentRingtoneAttribute(type: RingtoneType): Promise<ToneAttrs>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -357,8 +343,8 @@ getCurrentRingtoneAttribute(type: RingtoneType): Promise<ToneAttrs>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
 
 **示例**
 
@@ -383,9 +369,7 @@ getDefaultAlarmToneAttrs(context: BaseContext): Promise<ToneAttrs>
 
 获取系统闹铃的属性。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-getDefaultAlarmToneAttrs(context: BaseContext): Promise<ToneAttrs>--><!--Device-SystemSoundManager-getDefaultAlarmToneAttrs(context: BaseContext): Promise<ToneAttrs>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -407,9 +391,9 @@ getDefaultAlarmToneAttrs(context: BaseContext): Promise<ToneAttrs>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -436,9 +420,7 @@ getDefaultRingtoneAttrs(context: BaseContext, type: RingtoneType): Promise<ToneA
 
 获取系统铃声的属性。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-getDefaultRingtoneAttrs(context: BaseContext, type: RingtoneType): Promise<ToneAttrs>--><!--Device-SystemSoundManager-getDefaultRingtoneAttrs(context: BaseContext, type: RingtoneType): Promise<ToneAttrs>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -461,9 +443,9 @@ getDefaultRingtoneAttrs(context: BaseContext, type: RingtoneType): Promise<ToneA
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -491,9 +473,7 @@ getDefaultSystemToneAttrs(context: BaseContext, type: SystemToneType): Promise<T
 
 获取系统提示音的属性。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-getDefaultSystemToneAttrs(context: BaseContext, type: SystemToneType): Promise<ToneAttrs>--><!--Device-SystemSoundManager-getDefaultSystemToneAttrs(context: BaseContext, type: SystemToneType): Promise<ToneAttrs>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -516,9 +496,9 @@ getDefaultSystemToneAttrs(context: BaseContext, type: SystemToneType): Promise<T
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -546,9 +526,7 @@ getHapticsAttrsSyncedWithTone(context: BaseContext, toneUri: string): Promise<To
 
 获取与指定铃音同步的振动属性。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-getHapticsAttrsSyncedWithTone(context: BaseContext, toneUri: string): Promise<ToneHapticsAttrs>--><!--Device-SystemSoundManager-getHapticsAttrsSyncedWithTone(context: BaseContext, toneUri: string): Promise<ToneHapticsAttrs>-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -571,11 +549,11 @@ getHapticsAttrsSyncedWithTone(context: BaseContext, toneUri: string): Promise<To
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. For example, the input URI is not used for tones. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
 | [20700003](../errorcode-audio-ringtone-sys.md#20700003-操作不支持) | Unsupported operation. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -602,13 +580,18 @@ getMockHapticRingtonePlayer(
       context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise<RingtonePlayer | null>
 ```
 
-获取模拟触觉铃声播放器，根据指定的铃声类型和铃音文件URI，播放该铃音文件对应的振动文件及其模拟触觉声音文件。使用Promise异步回调。 > **说明：** > > - 调用该接口前，请确保传入的ringtoneUri在系统中存在，否则会出现异常和错误。例如无法播放匹配的触觉声音文件。 > > - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的 > [release](arkts-audio-ringtoneplayer-ringtoneplayer-i-sys.md#release)方法释放播放器资源。
+获取模拟触觉铃声播放器，根据指定的铃声类型和铃音文件URI，播放该铃音文件对应的振动文件及其模拟触觉声音文件。使用Promise异步回调。
+
+> **说明：**
+> 
+> - 调用该接口前，请确保传入的ringtoneUri在系统中存在，否则会出现异常和错误。例如无法播放匹配的触觉声音文件。
+> 
+> - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的
+> [release](arkts-audio-ringtoneplayer-ringtoneplayer-i-sys.md#release)方法释放播放器资源。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SystemSoundManager-getMockHapticRingtonePlayer(      context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise<RingtonePlayer | null>--><!--Device-SystemSoundManager-getMockHapticRingtonePlayer(      context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise<RingtonePlayer | null>-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -620,21 +603,21 @@ getMockHapticRingtonePlayer(
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | 当前应用的上下文。 |
 | type | RingtoneType | 是 | 待获取播放器的铃声类型。 |
-| ringtoneUri | string | 是 | 铃音文件的URI，需确保在系统文件中真实存在。 <br>如果为自定义铃声需使用 [addCustomizedTone](#addcustomizedtone) 接口返回的ringtoneUri，确保铃音文件URI在铃音库中存在。 |
+| ringtoneUri | string | 是 | 铃音文件的URI，需确保在系统文件中真实存在。 如果为自定义铃声需使用 [addCustomizedTone](#addcustomizedtone) 接口返回的ringtoneUri，确保铃音文件URI在铃音库中存在。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;RingtonePlayer \| null&gt; | Promise对象，成功返回模拟触觉铃声播放器实例，发生错误时返回null。 |
+| Promise & lt;RingtonePlayer \ | null & gt; | Promise对象，成功返回模拟触觉铃声播放器实例，发生错误时返回null。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. The ringtone database access timed out or encountered an error. It is recommended to restart your phone. |
-| [20700002](../errorcode-audio-ringtone-sys.md#20700002-参数检查失败) | Parameter verification failed. Possible causes: 1.The type exceeds the valid range, please use the RingtoneType enum for input. 2.The ringtoneUri does not exist or is incorrectly formatted, please use the ringtoneUri returned by the [addCustomizedTone](#addcustomizedtone). |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [20700002](../errorcode-audio-ringtone-sys.md#20700002-参数检查失败) | Parameter verification failed. Possible causes: 1.The type exceeds the valid range, please use the RingtoneType enum for input. 2.The ringtoneUri does not exist or is incorrectly formatted, please use the ringtoneUri returned by the [addCustomizedTone](#addcustomizedtone). |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. The ringtone database access timed out or encountered an error. It is recommended to restart your phone. |
 
 **示例**
 
@@ -665,13 +648,18 @@ systemSoundManagerInstance.getMockHapticRingtonePlayer(context, type, ringtoneUr
 getMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise<RingtonePlayer | null>
 ```
 
-获取模拟触觉铃声播放器，根据指定的触觉文件URI播放振动文件及其对应的模拟触觉声音文件。使用Promise异步回调。 > **说明：** > > - 调用该接口前，请确保传入的hapticUri在系统中存在，否则会出现异常和错误。例如无法播放匹配的触觉声音文件。 > > - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的 > [release](arkts-audio-ringtoneplayer-ringtoneplayer-i-sys.md#release)方法释放播放器资源。
+获取模拟触觉铃声播放器，根据指定的触觉文件URI播放振动文件及其对应的模拟触觉声音文件。使用Promise异步回调。
+
+> **说明：**
+> 
+> - 调用该接口前，请确保传入的hapticUri在系统中存在，否则会出现异常和错误。例如无法播放匹配的触觉声音文件。
+> 
+> - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的
+> [release](arkts-audio-ringtoneplayer-ringtoneplayer-i-sys.md#release)方法释放播放器资源。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SystemSoundManager-getMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise<RingtonePlayer | null>--><!--Device-SystemSoundManager-getMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise<RingtonePlayer | null>-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -688,15 +676,15 @@ getMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise<Ri
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;RingtonePlayer \| null&gt; | Promise对象，成功返回模拟触觉铃声播放器实例，发生错误时返回null。 |
+| Promise & lt;RingtonePlayer \ | null & gt; | Promise对象，成功返回模拟触觉铃声播放器实例，发生错误时返回null。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. The ringtone database access timed out or encountered an error. It is recommended to restart your phone. |
-| [20700002](../errorcode-audio-ringtone-sys.md#20700002-参数检查失败) | Parameter verification failed. The hapticUri does not exist or is incorrectly formatted. Ensure it is a JSON file and that it exists in the system's file system. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [20700002](../errorcode-audio-ringtone-sys.md#20700002-参数检查失败) | Parameter verification failed. The hapticUri does not exist or is incorrectly formatted. Ensure it is a JSON file and that it exists in the system's file system. |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. The ringtone database access timed out or encountered an error. It is recommended to restart your phone. |
 
 **示例**
 
@@ -728,9 +716,7 @@ getRingtoneAttrList(context: BaseContext, type: RingtoneType): Promise<ToneAttrs
 
 获取系统铃声的属性列表。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-getRingtoneAttrList(context: BaseContext, type: RingtoneType): Promise<ToneAttrsArray>--><!--Device-SystemSoundManager-getRingtoneAttrList(context: BaseContext, type: RingtoneType): Promise<ToneAttrsArray>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -753,9 +739,9 @@ getRingtoneAttrList(context: BaseContext, type: RingtoneType): Promise<ToneAttrs
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -785,8 +771,6 @@ getRingtonePlayer(context: BaseContext, type: RingtoneType): Promise<RingtonePla
 
 **起始版本：** 11
 
-<!--Device-SystemSoundManager-getRingtonePlayer(context: BaseContext, type: RingtoneType): Promise<RingtonePlayer>--><!--Device-SystemSoundManager-getRingtonePlayer(context: BaseContext, type: RingtoneType): Promise<RingtonePlayer>-End-->
-
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 **系统接口：** 此接口为系统接口。
@@ -802,69 +786,14 @@ getRingtonePlayer(context: BaseContext, type: RingtoneType): Promise<RingtonePla
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;RingtonePlayer&gt; | Promise对象，返回获取的系统铃声播放器。 |
+| Promise & lt;RingtonePlayer & gt; | Promise对象，返回获取的系统铃声播放器。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
-let systemRingtonePlayer: systemSoundManager.RingtonePlayer | undefined = undefined;
-
-let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-systemSoundManagerInstance.getRingtonePlayer(context, type).then((value: systemSoundManager.RingtonePlayer) => {
-  console.info('Succeeded in doing getRingtonePlayer.');
-  systemRingtonePlayer = value;
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## getRingtonePlayer
-
-```TypeScript
-getRingtonePlayer(context: BaseContext, type: RingtoneType): Promise<RingtonePlayer | null>
-```
-
-Gets the ringtone player.
-
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-getRingtonePlayer(context: BaseContext, type: RingtoneType): Promise<RingtonePlayer | null>--><!--Device-SystemSoundManager-getRingtonePlayer(context: BaseContext, type: RingtoneType): Promise<RingtonePlayer | null>-End-->
-
-**系统能力：** SystemCapability.Multimedia.SystemSound.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | Current application context. |
-| type | RingtoneType | 是 | Ringtone type to get. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;RingtonePlayer \| null&gt; | Promise used to return a ringtone player instance, or null when an error happens. |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -894,9 +823,7 @@ getRingtoneUri(context: BaseContext, type: RingtoneType): Promise<string>
 
 获取系统铃声uri。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-getRingtoneUri(context: BaseContext, type: RingtoneType): Promise<string>--><!--Device-SystemSoundManager-getRingtoneUri(context: BaseContext, type: RingtoneType): Promise<string>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -913,15 +840,15 @@ getRingtoneUri(context: BaseContext, type: RingtoneType): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回获取的系统铃声uri。 |
+| Promise & lt;string & gt; | Promise对象，返回获取的系统铃声uri。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -955,8 +882,6 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType, callback: AsyncCal
 
 **替代接口：** [getRingtonePlayer](#getringtoneplayer)
 
-<!--Device-SystemSoundManager-getSystemRingtonePlayer(context: Context, type: RingtoneType, callback: AsyncCallback<RingtonePlayer>): void--><!--Device-SystemSoundManager-getSystemRingtonePlayer(context: Context, type: RingtoneType, callback: AsyncCallback<RingtonePlayer>): void-End-->
-
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 **系统接口：** 此接口为系统接口。
@@ -967,7 +892,7 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType, callback: AsyncCal
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 当前应用的上下文。 |
 | type | RingtoneType | 是 | 待获取播放器的系统铃声的类型。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;RingtonePlayer&gt; | 是 | 回调函数。当获取系统铃声播放器成功，err为undefined data为获取到的系统铃声播放器；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;RingtonePlayer&gt; | 是 | 回调函数。当获取系统铃声播放器成功，err为undefined data为获取到的系统铃声播放器；否则为错误对象。 |
 
 **示例**
 
@@ -1005,8 +930,6 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType): Promise<RingtoneP
 
 **替代接口：** [getRingtonePlayer](#getringtoneplayer)
 
-<!--Device-SystemSoundManager-getSystemRingtonePlayer(context: Context, type: RingtoneType): Promise<RingtonePlayer>--><!--Device-SystemSoundManager-getSystemRingtonePlayer(context: Context, type: RingtoneType): Promise<RingtonePlayer>-End-->
-
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 **系统接口：** 此接口为系统接口。
@@ -1022,7 +945,7 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType): Promise<RingtoneP
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;RingtonePlayer&gt; | Promise对象，返回获取的系统铃声播放器。 |
+| Promise & lt;RingtonePlayer & gt; | Promise对象，返回获取的系统铃声播放器。 |
 
 **示例**
 
@@ -1058,8 +981,6 @@ getSystemRingtoneUri(context: Context, type: RingtoneType, callback: AsyncCallba
 
 **替代接口：** [getRingtoneUri](#getringtoneuri)
 
-<!--Device-SystemSoundManager-getSystemRingtoneUri(context: Context, type: RingtoneType, callback: AsyncCallback<string>): void--><!--Device-SystemSoundManager-getSystemRingtoneUri(context: Context, type: RingtoneType, callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 **系统接口：** 此接口为系统接口。
@@ -1070,7 +991,7 @@ getSystemRingtoneUri(context: Context, type: RingtoneType, callback: AsyncCallba
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 当前应用的上下文。 |
 | type | RingtoneType | 是 | 待获取的系统铃声的类型。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。当获取系统铃声uri成功，err为undefined， data为获取到的系统铃声uri；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当获取系统铃声uri成功，err为undefined， data为获取到的系统铃声uri；否则为错误对象。 |
 
 **示例**
 
@@ -1106,8 +1027,6 @@ getSystemRingtoneUri(context: Context, type: RingtoneType): Promise<string>
 
 **替代接口：** [getRingtoneUri](#getringtoneuri)
 
-<!--Device-SystemSoundManager-getSystemRingtoneUri(context: Context, type: RingtoneType): Promise<string>--><!--Device-SystemSoundManager-getSystemRingtoneUri(context: Context, type: RingtoneType): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 **系统接口：** 此接口为系统接口。
@@ -1123,7 +1042,7 @@ getSystemRingtoneUri(context: Context, type: RingtoneType): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回获取的系统铃声uri。 |
+| Promise & lt;string & gt; | Promise对象，返回获取的系统铃声uri。 |
 
 **示例**
 
@@ -1151,9 +1070,7 @@ getSystemToneAttrList(context: BaseContext, type: SystemToneType): Promise<ToneA
 
 获取系统提示音的属性列表。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-getSystemToneAttrList(context: BaseContext, type: SystemToneType): Promise<ToneAttrsArray>--><!--Device-SystemSoundManager-getSystemToneAttrList(context: BaseContext, type: SystemToneType): Promise<ToneAttrsArray>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -1176,9 +1093,9 @@ getSystemToneAttrList(context: BaseContext, type: SystemToneType): Promise<ToneA
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -1208,8 +1125,6 @@ getSystemTonePlayer(context: BaseContext, type: SystemToneType): Promise<SystemT
 
 **起始版本：** 11
 
-<!--Device-SystemSoundManager-getSystemTonePlayer(context: BaseContext, type: SystemToneType): Promise<SystemTonePlayer>--><!--Device-SystemSoundManager-getSystemTonePlayer(context: BaseContext, type: SystemToneType): Promise<SystemTonePlayer>-End-->
-
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 **系统接口：** 此接口为系统接口。
@@ -1225,69 +1140,14 @@ getSystemTonePlayer(context: BaseContext, type: SystemToneType): Promise<SystemT
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;SystemTonePlayer&gt; | Promise对象，返回获取的系统提示音播放器。 |
+| Promise & lt;SystemTonePlayer & gt; | Promise对象，返回获取的系统提示音播放器。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.SYSTEM_TONE_TYPE_SIM_CARD_0;
-let systemTonePlayer: systemSoundManager.SystemTonePlayer | undefined = undefined;
-
-let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-systemSoundManagerInstance.getSystemTonePlayer(context, type).then((value: systemSoundManager.SystemTonePlayer) => {
-  console.info('Succeeded in doing getSystemTonePlayer.');
-    systemTonePlayer = value;
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getSystemTonePlayer. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## getSystemTonePlayer
-
-```TypeScript
-getSystemTonePlayer(context: BaseContext, type: SystemToneType): Promise<SystemTonePlayer | null>
-```
-
-Gets the system tone player.
-
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-getSystemTonePlayer(context: BaseContext, type: SystemToneType): Promise<SystemTonePlayer | null>--><!--Device-SystemSoundManager-getSystemTonePlayer(context: BaseContext, type: SystemToneType): Promise<SystemTonePlayer | null>-End-->
-
-**系统能力：** SystemCapability.Multimedia.SystemSound.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | Current application context. |
-| type | [SystemToneType](arkts-audio-systemsoundmanager-systemtonetype-e-sys.md) | 是 | System tone type to get. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;SystemTonePlayer \| null&gt; | Promise used to return the SystemTonePlayer, or null when an error happens. |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -1317,9 +1177,7 @@ getSystemToneUri(context: BaseContext, type: SystemToneType): Promise<string>
 
 获取系统提示音uri。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-getSystemToneUri(context: BaseContext, type: SystemToneType): Promise<string>--><!--Device-SystemSoundManager-getSystemToneUri(context: BaseContext, type: SystemToneType): Promise<string>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -1336,15 +1194,15 @@ getSystemToneUri(context: BaseContext, type: SystemToneType): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回获取的系统提示音uri。 |
+| Promise & lt;string & gt; | Promise对象，返回获取的系统提示音uri。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -1372,9 +1230,7 @@ getToneHapticsList(context: BaseContext, isSynced: boolean): Promise<ToneHaptics
 
 获取同步或者非同步的系统铃音的振动属性列表。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-getToneHapticsList(context: BaseContext, isSynced: boolean): Promise<ToneHapticsAttrsArray>--><!--Device-SystemSoundManager-getToneHapticsList(context: BaseContext, isSynced: boolean): Promise<ToneHapticsAttrsArray>-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -1397,10 +1253,10 @@ getToneHapticsList(context: BaseContext, isSynced: boolean): Promise<ToneHaptics
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
 | [20700003](../errorcode-audio-ringtone-sys.md#20700003-操作不支持) | Unsupported operation. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -1427,9 +1283,7 @@ getToneHapticsSettings(context: BaseContext, type: ToneHapticsType): Promise<Ton
 
 获取系统铃音的振动设置。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-getToneHapticsSettings(context: BaseContext, type: ToneHapticsType): Promise<ToneHapticsSettings>--><!--Device-SystemSoundManager-getToneHapticsSettings(context: BaseContext, type: ToneHapticsType): Promise<ToneHapticsSettings>-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -1452,10 +1306,10 @@ getToneHapticsSettings(context: BaseContext, type: ToneHapticsType): Promise<Ton
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
 | [20700003](../errorcode-audio-ringtone-sys.md#20700003-操作不支持) | Unsupported operation. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -1478,14 +1332,12 @@ systemSoundManagerInstance.getToneHapticsSettings(context, type).then((value: sy
 ## openAlarmTone
 
 ```TypeScript
-openAlarmTone(context: BaseContext, uri: string): Promise<int>
+openAlarmTone(context: BaseContext, uri: string): Promise<number>
 ```
 
 打开闹铃文件。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-openAlarmTone(context: BaseContext, uri: string): Promise<int>--><!--Device-SystemSoundManager-openAlarmTone(context: BaseContext, uri: string): Promise<int>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -1502,15 +1354,15 @@ openAlarmTone(context: BaseContext, uri: string): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回fd。 |
+| Promise & lt;number & gt; | Promise对象，返回fd。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | 20700001 | Tone type mismatch, e.g. tone of uri is notification instead of alarm. |
 
 **示例**
@@ -1524,7 +1376,7 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let uri = 'file://data/test.wav'; // 需更改为目标铃声文件的uri。
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-systemSoundManagerInstance.openAlarmTone(context, uri).then((value) => {
+systemSoundManagerInstance.openAlarmTone(context, uri).then((value: number) => {
   console.info('Succeeded in doing openAlarmTone.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to openAlarmTone. Code: ${err.code}, message: ${err.message}`);
@@ -1534,14 +1386,12 @@ systemSoundManagerInstance.openAlarmTone(context, uri).then((value) => {
 ## openToneHaptics
 
 ```TypeScript
-openToneHaptics(context: BaseContext, hapticsUri: string): Promise<int>
+openToneHaptics(context: BaseContext, hapticsUri: string): Promise<number>
 ```
 
 打开系统铃音的振动。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-openToneHaptics(context: BaseContext, hapticsUri: string): Promise<int>--><!--Device-SystemSoundManager-openToneHaptics(context: BaseContext, hapticsUri: string): Promise<int>-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -1558,17 +1408,17 @@ openToneHaptics(context: BaseContext, hapticsUri: string): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回fd。 |
+| Promise & lt;number & gt; | Promise对象，返回fd。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. For example, the input URI is not one for haptics. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
 | [20700003](../errorcode-audio-ringtone-sys.md#20700003-操作不支持) | Unsupported operation. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -1581,7 +1431,7 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let hapticsUri = '/data/storage/el2/base/haptics/synchronized/alarms/test.json'; // 需更改为目标系统铃音的振动的uri。
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-systemSoundManagerInstance.openToneHaptics(context, hapticsUri).then((value) => {
+systemSoundManagerInstance.openToneHaptics(context, hapticsUri).then((value: number) => {
   console.info('Succeeded in doing openToneHaptics.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to openToneHaptics. Code: ${err.code}, message: ${err.message}`);
@@ -1591,14 +1441,12 @@ systemSoundManagerInstance.openToneHaptics(context, hapticsUri).then((value) => 
 ## openToneList
 
 ```TypeScript
-openToneList(uriList: Array<string>): Promise<Array<[string, long, SystemSoundError]>>
+openToneList(uriList: Array<string>): Promise<Array<[string, number, SystemSoundError]>>
 ```
 
 获取系统铃声的属性列表。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-openToneList(uriList: Array<string>): Promise<Array<[string, long, SystemSoundError]>>--><!--Device-SystemSoundManager-openToneList(uriList: Array<string>): Promise<Array<[string, long, SystemSoundError]>>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -1608,20 +1456,20 @@ openToneList(uriList: Array<string>): Promise<Array<[string, long, SystemSoundEr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uriList | Array&lt;string&gt; | 是 | 要打开的uri列表，不能超过1024个。 |
+| uriList | Array & lt;string & gt; | 是 | 要打开的uri列表，不能超过1024个。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[string, long, SystemSoundError]&gt;&gt; | Promise对象，Promise用于返回此操作的结果，返回Array内第一个参数uri，第二个参数 fd，第三个参数为此uri打开的结果。 |
+| Promise & lt;Array & lt;[string, number, SystemSoundError] & gt; & gt; | Promise对象，Promise用于返回此操作的结果，返回Array内第一个参数uri，第二个参数 fd，第三个参数为此uri打开的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [20700007](../errorcode-audio-ringtone-sys.md#20700007-参数无效) | Parameter is invalid, e.g. the length of uriList is too long. |
+| [20700007](../errorcode-audio-ringtone-sys.md#20700007-参数无效) | Parameter is invalid, e.g. the length of uriList is too number. |
 
 **示例**
 
@@ -1651,11 +1499,9 @@ removeCustomizedTone(context: BaseContext, uri:string): Promise<void>
 
 从铃音库中删除自定义铃音。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **需要权限：** ohos.permission.WRITE_RINGTONE
-
-<!--Device-SystemSoundManager-removeCustomizedTone(context: BaseContext, uri:string): Promise<void>--><!--Device-SystemSoundManager-removeCustomizedTone(context: BaseContext, uri:string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -1672,17 +1518,17 @@ removeCustomizedTone(context: BaseContext, uri:string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation is not allowed, e.g. ringtone of this uri is not customized. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -1710,11 +1556,9 @@ removeCustomizedToneList(uriList: Array<string>): Promise<Array<[string, SystemS
 
 批量删除自定义铃音列表。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.WRITE_RINGTONE
-
-<!--Device-SystemSoundManager-removeCustomizedToneList(uriList: Array<string>): Promise<Array<[string, SystemSoundError]>>--><!--Device-SystemSoundManager-removeCustomizedToneList(uriList: Array<string>): Promise<Array<[string, SystemSoundError]>>-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -1724,13 +1568,13 @@ removeCustomizedToneList(uriList: Array<string>): Promise<Array<[string, SystemS
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uriList | Array&lt;string&gt; | 是 | 要删除的uri列表，不能超过1024个。 |
+| uriList | Array & lt;string & gt; | 是 | 要删除的uri列表，不能超过1024个。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[string, SystemSoundError]&gt;&gt; | Promise对象，Promise用于返回此操作的结果，返回Array内第一个参数uri，第二个参数为此uri删除 结果。 |
+| Promise & lt;Array & lt;[string, SystemSoundError] & gt; & gt; | Promise对象，Promise用于返回此操作的结果，返回Array内第一个参数uri，第二个参数为此uri删除 结果。 |
 
 **错误码：**
 
@@ -1738,7 +1582,7 @@ removeCustomizedToneList(uriList: Array<string>): Promise<Array<[string, SystemS
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [20700007](../errorcode-audio-ringtone-sys.md#20700007-参数无效) | Parameter is invalid, e.g. the length of uriList is too long. |
+| [20700007](../errorcode-audio-ringtone-sys.md#20700007-参数无效) | Parameter is invalid, e.g. the length of uriList is too number. |
 
 **示例**
 
@@ -1768,9 +1612,7 @@ setAlarmToneUri(context: BaseContext, uri: string): Promise<void>
 
 设置系统闹铃uri。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-setAlarmToneUri(context: BaseContext, uri: string): Promise<void>--><!--Device-SystemSoundManager-setAlarmToneUri(context: BaseContext, uri: string): Promise<void>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -1787,15 +1629,15 @@ setAlarmToneUri(context: BaseContext, uri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | 20700001 | Tone type mismatch, e.g. tone of input uri is not an alarm tone. |
 
 **示例**
@@ -1824,9 +1666,7 @@ setRingtoneUri(context: BaseContext, uri: string, type: RingtoneType): Promise<v
 
 设置系统铃声uri。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-setRingtoneUri(context: BaseContext, uri: string, type: RingtoneType): Promise<void>--><!--Device-SystemSoundManager-setRingtoneUri(context: BaseContext, uri: string, type: RingtoneType): Promise<void>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -1844,15 +1684,15 @@ setRingtoneUri(context: BaseContext, uri: string, type: RingtoneType): Promise<v
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -1887,8 +1727,6 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType, callback
 
 **替代接口：** [setRingtoneUri](#setringtoneuri)
 
-<!--Device-SystemSoundManager-setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType, callback: AsyncCallback<void>): void--><!--Device-SystemSoundManager-setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 **系统接口：** 此接口为系统接口。
@@ -1900,7 +1738,7 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType, callback
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 当前应用的上下文。 |
 | uri | string | 是 | 被设置的系统铃声的uri，资源支持 可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)。 |
 | type | RingtoneType | 是 | 被设置的系统铃声的类型。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置系统铃声uri成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置系统铃声uri成功，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -1937,8 +1775,6 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise
 
 **替代接口：** [setRingtoneUri](#setringtoneuri)
 
-<!--Device-SystemSoundManager-setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise<void>--><!--Device-SystemSoundManager-setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 **系统接口：** 此接口为系统接口。
@@ -1955,7 +1791,7 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -1984,9 +1820,7 @@ setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promi
 
 设置系统提示音uri。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promise<void>--><!--Device-SystemSoundManager-setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promise<void>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -2004,15 +1838,15 @@ setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -2041,9 +1875,7 @@ setToneHapticsSettings(context: BaseContext, type: ToneHapticsType, settings: To
 
 设置系统铃音的振动。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-SystemSoundManager-setToneHapticsSettings(context: BaseContext, type: ToneHapticsType, settings: ToneHapticsSettings): Promise<void>--><!--Device-SystemSoundManager-setToneHapticsSettings(context: BaseContext, type: ToneHapticsType, settings: ToneHapticsSettings): Promise<void>-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -2061,17 +1893,17 @@ setToneHapticsSettings(context: BaseContext, type: ToneHapticsType, settings: To
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. For example, the input URI is not valid. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
 | [20700003](../errorcode-audio-ringtone-sys.md#20700003-操作不支持) | Unsupported operation. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
 **示例**
 
@@ -2094,4 +1926,3 @@ systemSoundManagerInstance.setToneHapticsSettings(context, type, toneHapticsSett
   console.error(`Failed to setToneHapticsSettings. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-

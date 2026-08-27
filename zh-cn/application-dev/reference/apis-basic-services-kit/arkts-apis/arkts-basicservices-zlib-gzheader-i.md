@@ -2,9 +2,7 @@
 
 传递从zlib例程中获取的Gzip头部信息。
 
-**起始版本：** 23
-
-<!--Device-zlib-interface GzHeader--><!--Device-zlib-interface GzHeader-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -24,11 +22,9 @@ comment?: ArrayBuffer
 
 **类型：** ArrayBuffer
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GzHeader-comment?: ArrayBuffer--><!--Device-GzHeader-comment?: ArrayBuffer-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -42,11 +38,9 @@ done?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GzHeader-done?: boolean--><!--Device-GzHeader-done?: boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -60,29 +54,25 @@ extra?: ArrayBuffer
 
 **类型：** ArrayBuffer
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GzHeader-extra?: ArrayBuffer--><!--Device-GzHeader-extra?: ArrayBuffer-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
 ## extraLen
 
 ```TypeScript
-extraLen?: int
+extraLen?: number
 ```
 
 额外字段的长度。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GzHeader-extraLen?: int--><!--Device-GzHeader-extraLen?: int-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -96,11 +86,9 @@ hcrc?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GzHeader-hcrc?: boolean--><!--Device-GzHeader-hcrc?: boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -114,11 +102,9 @@ isText?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GzHeader-isText?: boolean--><!--Device-GzHeader-isText?: boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -132,65 +118,56 @@ name?: ArrayBuffer
 
 **类型：** ArrayBuffer
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GzHeader-name?: ArrayBuffer--><!--Device-GzHeader-name?: ArrayBuffer-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
 ## os
 
 ```TypeScript
-os?: int
+os?: number
 ```
 
 操作系统。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GzHeader-os?: int--><!--Device-GzHeader-os?: int-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
 ## time
 
 ```TypeScript
-time?: long
+time?: number
 ```
 
 修改时间。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GzHeader-time?: long--><!--Device-GzHeader-time?: long-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
 ## xflags
 
 ```TypeScript
-xflags?: int
+xflags?: number
 ```
 
 额外标志。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GzHeader-xflags?: int--><!--Device-GzHeader-xflags?: int-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
-

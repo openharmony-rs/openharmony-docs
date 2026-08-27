@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## controlTransfer
@@ -21,8 +20,6 @@ function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, ti
 
 **替代接口：** [usbControlTransfer](arkts-basicservices-usbmanager-usbcontroltransfer-f.md)(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout?: int)
 
-<!--Device-usbManager-function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout?: number): Promise<number>--><!--Device-usbManager-function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout?: number): Promise<number>-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 **参数：**
@@ -37,17 +34,18 @@ function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, ti
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下： <br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。 |
+| Promise & lt;number & gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下： |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  <br>1.Mandatory parameters are left unspecified.  <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1.Mandatory parameters are left unspecified.  2.Incorrect parameter types. |
 
 **示例**
 
 ```TypeScript
+import {BusinessError} from '@kit.BasicServicesKit';
 let param: usbManager.USBControlParams = {
   request: 0x06,
   reqType: 0x80,
@@ -64,23 +62,22 @@ async function controlTransfer() {
     return;
   }
 
-  let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
+  let rightResult = await usbManager.requestRight(devicesList[0].name);
   if (!rightResult) {
     console.error(`request right failed`);
     return;
   }
-  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
   if (devicePipe == undefined) {
     console.error(`connect device failed`);
     return;
   }
   usbManager.controlTransfer(devicePipe, param).then((ret: number) => {
     console.info(`controlTransfer = ${ret}`);
-  }).catch((error) => {
+  }).catch((error: BusinessError) => {
     console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
   }).finally(() => {
     usbManager.closePipe(devicePipe);
   });
 }
 ```
-

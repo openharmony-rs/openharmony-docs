@@ -10,8 +10,6 @@ type PrinterInfoQueryCallback = (printerInfo: PrinterInformation, ppdInfo: PpdIn
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-print-type PrinterInfoQueryCallback = (printerInfo: PrinterInformation, ppdInfo: PpdInfo[]) => void--><!--Device-print-type PrinterInfoQueryCallback = (printerInfo: PrinterInformation, ppdInfo: PpdInfo[]) => void-End-->
-
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -20,6 +18,5 @@ type PrinterInfoQueryCallback = (printerInfo: PrinterInformation, ppdInfo: PpdIn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerInfo | [PrinterInformation](arkts-basicservices-print-printerinformation-i.md) | 是 | 打印机信息 <br>打印机信息。 |
-| ppdInfo | [PpdInfo](arkts-basicservices-print-ppdinfo-i.md)[] | 是 | 所有打印机ppd信息 <br>所有打印机ppd信息。 |
-
+| printerInfo | [PrinterInformation](arkts-basicservices-print-printerinformation-i.md) | 是 | 打印机信息  打印机信息。 |
+| ppdInfo | [PpdInfo](arkts-basicservices-print-ppdinfo-i.md)[] | 是 | 所有打印机ppd信息  所有打印机ppd信息。 |

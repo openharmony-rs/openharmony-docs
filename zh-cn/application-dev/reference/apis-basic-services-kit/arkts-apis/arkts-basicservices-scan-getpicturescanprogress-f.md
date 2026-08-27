@@ -14,11 +14,9 @@ function getPictureScanProgress(scannerId: string): Promise<PictureScanProgress>
 
 获取图片扫描进度。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.PRINT
-
-<!--Device-scan-function getPictureScanProgress(scannerId: string): Promise<PictureScanProgress>--><!--Device-scan-function getPictureScanProgress(scannerId: string): Promise<PictureScanProgress>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -50,7 +48,6 @@ let scannerId: string = 'scanner_001';
 scan.getPictureScanProgress(scannerId).then((progress: scan.PictureScanProgress) => {
     console.info('get picture scan progress success: ' + JSON.stringify(progress));
 }).catch((error: BusinessError) => {
-    console.error('get picture scan progress failed: ' + JSON.stringify(error));
-})
+    console.error(`Failed to get picture scan progress. Code: ${error.code}, message: ${error.message}`);
+});
 ```
-

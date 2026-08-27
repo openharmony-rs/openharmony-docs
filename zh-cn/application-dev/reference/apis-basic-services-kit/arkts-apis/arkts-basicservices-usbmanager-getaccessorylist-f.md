@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## getAccessoryList
@@ -15,9 +14,7 @@ function getAccessoryList(): Array<Readonly<USBAccessory>>
 
 获取当前已接入主机的USB配件列表。
 
-**起始版本：** 23
-
-<!--Device-usbManager-function getAccessoryList(): Array<Readonly<USBAccessory>>--><!--Device-usbManager-function getAccessoryList(): Array<Readonly<USBAccessory>>-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -32,7 +29,7 @@ function getAccessoryList(): Array<Readonly<USBAccessory>>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
-| [14400004](../errorcode-usb.md#14400004-服务异常) | Service exception. Possible causes:  <br>1. No accessory is plugged in. |
+| [14400004](../errorcode-usb.md#14400004-服务异常) | Service exception. Possible causes:  1. No accessory is plugged in. |
 
 **示例**
 
@@ -44,4 +41,3 @@ try {
   console.error(`getAccessoryList error ${error.code}, message is ${error.message}`);
 }
 ```
-

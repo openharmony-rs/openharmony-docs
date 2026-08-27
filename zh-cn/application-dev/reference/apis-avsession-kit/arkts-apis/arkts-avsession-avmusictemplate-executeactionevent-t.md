@@ -10,8 +10,6 @@ type ExecuteActionEvent = (actionType: string, params: string) => Promise<string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avMusicTemplate-type ExecuteActionEvent = (actionType: string, params: string) => Promise<string>--><!--Device-avMusicTemplate-type ExecuteActionEvent = (actionType: string, params: string) => Promise<string>-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
@@ -25,5 +23,4 @@ type ExecuteActionEvent = (actionType: string, params: string) => Promise<string
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回执行操作的结果字符串。 |
-
+| Promise & lt;string & gt; | Promise对象，返回执行操作的结果字符串。 |

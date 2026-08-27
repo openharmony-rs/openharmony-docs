@@ -1,10 +1,8 @@
 # AudioManager
 
-音频音量和设备管理。 在使用AudioManager的接口之前，需先通过[getAudioManager](arkts-audio-audio-getaudiomanager-f.md)获取AudioManager实例。
+管理音频音量和音频设备。在调用AudioManager的接口前，需要先通过[getAudioManager](arkts-audio-audio-getaudiomanager-f.md)创建实例。
 
-**起始版本：** 23
-
-<!--Device-audio-interface AudioManager--><!--Device-audio-interface AudioManager-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## disableSafeMediaVolume
@@ -21,13 +18,11 @@ import { audioHaptic } from '@kit.AudioKit';
 disableSafeMediaVolume(): Promise<void>
 ```
 
-user disable the safe media volume state.
+设置安全音量为非激活状态。使用Promise异步回调。 设置为非激活状态后，当设备长时间高音量播放时，不再自动提醒用户降低到安全音量。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **需要权限：** ohos.permission.MODIFY_AUDIO_SETTINGS
-
-<!--Device-AudioManager-disableSafeMediaVolume(): Promise<void>--><!--Device-AudioManager-disableSafeMediaVolume(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -37,7 +32,7 @@ user disable the safe media volume state.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -64,11 +59,9 @@ audioManager.disableSafeMediaVolume().then(() => {
 getCollaborativeManager(): AudioCollaborativeManager
 ```
 
-获取协同播放管理实例
+获取移动全景声管理器。
 
-**起始版本：** 23
-
-<!--Device-AudioManager-getCollaborativeManager(): AudioCollaborativeManager--><!--Device-AudioManager-getCollaborativeManager(): AudioCollaborativeManager-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -78,7 +71,7 @@ getCollaborativeManager(): AudioCollaborativeManager
 
 | 类型 | 说明 |
 | --- | --- |
-| [AudioCollaborativeManager](arkts-audio-audio-audiocollaborativemanager-i-sys.md) | 协同播放管理实例 |
+| [AudioCollaborativeManager](arkts-audio-audio-audiocollaborativemanager-i-sys.md) | 返回一个AudioCollaborativeManager实例。 |
 
 **错误码：**
 
@@ -86,17 +79,24 @@ getCollaborativeManager(): AudioCollaborativeManager
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+let audioManager: audio.AudioManager = audio.getAudioManager();
+let audioCollaborativeManager: audio.AudioCollaborativeManager = audioManager.getCollaborativeManager();
+```
+
 ## getEffectManager
 
 ```TypeScript
 getEffectManager(): AudioEffectManager
 ```
 
-Obtains an [AudioEffectManager](arkts-audio-audio-audioeffectmanager-i-sys.md) instance.
+获取音效会话管理器。
 
-**起始版本：** 23
-
-<!--Device-AudioManager-getEffectManager(): AudioEffectManager--><!--Device-AudioManager-getEffectManager(): AudioEffectManager-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -106,7 +106,7 @@ Obtains an [AudioEffectManager](arkts-audio-audio-audioeffectmanager-i-sys.md) i
 
 | 类型 | 说明 |
 | --- | --- |
-| [AudioEffectManager](arkts-audio-audio-audioeffectmanager-i-sys.md) | AudioEffectManager instance. |
+| [AudioEffectManager](arkts-audio-audio-audioeffectmanager-i-sys.md) | AudioEffectManager实例。 |
 
 **错误码：**
 
@@ -128,11 +128,9 @@ let audioEffectManager: audio.AudioEffectManager = audioManager.getEffectManager
 getExtraParameters(mainKey: string, subKeys?: Array<string>): Promise<Record<string, string>>
 ```
 
-Obtains the values of a certain key. This method uses a promise to return the query result.
+获取指定音频参数值。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AudioManager-getExtraParameters(mainKey: string, subKeys?: Array<string>): Promise<Record<string, string>>--><!--Device-AudioManager-getExtraParameters(mainKey: string, subKeys?: Array<string>): Promise<Record<string, string>>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -143,21 +141,21 @@ Obtains the values of a certain key. This method uses a promise to return the qu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mainKey | string | 是 | Main key of the audio parameters to get. |
-| subKeys | Array&lt;string&gt; | 否 | Sub keys of the audio parameters to get. |
+| subKeys | Array & lt;string & gt; | 否 | Sub keys of the audio parameters to get. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Record&lt;string, string&gt;&gt; | Promise used to return the key-value pairs. |
+| Promise & lt;Record & lt;string, string & gt; & gt; | Promise对象，返回获取的音频参数的值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 
 **示例**
 
@@ -178,13 +176,11 @@ audioManager.getExtraParameters('key_example', subKeys).then((value: Record<stri
 getRecordingManager(): AudioRecordingManager
 ```
 
-获取录音管理器实例。
+获取录音策略管理器。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AudioManager-getRecordingManager(): AudioRecordingManager--><!--Device-AudioManager-getRecordingManager(): AudioRecordingManager-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -194,7 +190,7 @@ getRecordingManager(): AudioRecordingManager
 
 | 类型 | 说明 |
 | --- | --- |
-| [AudioRecordingManager](arkts-audio-audio-audiorecordingmanager-i.md) | 返回音频记录管理器的实例。 |
+| [AudioRecordingManager](arkts-audio-audio-audiorecordingmanager-i.md) | AudioRecordingManager实例。 |
 
 **错误码：**
 
@@ -202,39 +198,10 @@ getRecordingManager(): AudioRecordingManager
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
-## on('ringerModeChange')
-
-```TypeScript
-on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void
-```
-
-Listens for ringer mode change events. This method uses a callback to get ringer mode changes.
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** ringerModeChange
-
-<!--Device-AudioManager-on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void--><!--Device-AudioManager-on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Communication
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'ringerModeChange' | 是 | Type of the event to listen for. Only the ringerModeChange event is supported. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | 是 | Callback used to get the updated ringer mode. |
-
 **示例**
 
 ```TypeScript
-audioManager.on('ringerModeChange', (ringerMode: audio.AudioRingMode) => {
-  console.info(`Updated ringermode: ${ringerMode}`);
-});
+let audioRecordingManager: audio.AudioRecordingManager = audioManager.getRecordingManager();
 ```
 
 ## on('volumeChange')
@@ -243,15 +210,19 @@ audioManager.on('ringerModeChange', (ringerMode: audio.AudioRingMode) => {
 on(type: 'volumeChange', callback: Callback<VolumeEvent>): void
 ```
 
-Listens for system volume change events. This method uses a callback to get volume change events.
+
+> **说明：**
+> 
+> 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用AudioVolumeManager中的
+> [on('volumeChange')](arkts-audio-audio-audiovolumemanager-i.md#onvolumechange)替代。
+> 监听系统音量变化事件（当系统音量发生变化时触发）。使用callback异步回调。
+> 目前此订阅接口在单进程多AudioManager实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例没有进行订阅），因此推荐使用单一AudioManager实例进行开发。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** volumeChange
-
-<!--Device-AudioManager-on(type: 'volumeChange', callback: Callback<VolumeEvent>): void--><!--Device-AudioManager-on(type: 'volumeChange', callback: Callback<VolumeEvent>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -261,8 +232,8 @@ Listens for system volume change events. This method uses a callback to get volu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'volumeChange' | 是 | Type of the event to listen for. Only the volumeChange event is supported. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 是 | Callback used to get the system volume change event. |
+| type | 'volumeChange' | 是 | 事件回调类型，支持的事件为'volumeChange'，当系统音量发生变化时，触发该事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 是 | 回调函数，返回变化后的音量信息。 |
 
 **示例**
 
@@ -274,17 +245,24 @@ audioManager.on('volumeChange', (volumeEvent: audio.VolumeEvent) => {
 });
 ```
 
-## setAudioScene
+## on('ringerModeChange')
 
 ```TypeScript
-setAudioScene(scene: AudioScene, callback: AsyncCallback<void> ): void
+on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void
 ```
 
-Sets the audio scene mode to change audio strategies. This method uses an asynchronous callback to return the result.
+监听铃声模式变化事件（当[铃声模式](arkts-audio-audio-audioringmode-e.md)发生改变时触发）。使用callback异步回调。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用AudioVolumeGroupManager中的
+> [on('ringerModeChange')](arkts-audio-audio-audiovolumegroupmanager-i.md#onringermodechange)替代。
 
-<!--Device-AudioManager-setAudioScene(scene: AudioScene, callback: AsyncCallback<void> ): void--><!--Device-AudioManager-setAudioScene(scene: AudioScene, callback: AsyncCallback<void> ): void-End-->
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** ringerModeChange
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
@@ -294,8 +272,76 @@ Sets the audio scene mode to change audio strategies. This method uses an asynch
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scene | [AudioScene](arkts-audio-audio-audioscene-e.md) | 是 | Audio scene mode. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the result. |
+| type | 'ringerModeChange' | 是 | 事件回调类型，支持的事件为'ringerModeChange'，当铃声模式发生改变时，触发该事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | 是 | 回调函数，返回变化后的铃音模式。 |
+
+**示例**
+
+```TypeScript
+audioManager.on('ringerModeChange', (ringerMode: audio.AudioRingMode) => {
+  console.info(`Updated ringermode: ${ringerMode}`);
+});
+```
+
+## reportPlaybackCaptureUserAllowed
+
+```TypeScript
+reportPlaybackCaptureUserAllowed(streamId: number, allowed: boolean): Promise<void>
+```
+
+报告用户允许的结果，以响应来自特定系统应用的播放捕获请求给音频系统。 系统将根据该结果继续启动播放捕获或返回失败。 该 API 使用 Promise 来返回结果。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| streamId | number | 是 | Stream id of the capturer. |
+| allowed | boolean | 是 | User allowed result, true means user allows to start playback capture, otherwise false. |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise & lt;void & gt; | Promise that returns no value. |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permisson denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed, streamId does not exist. |
+
+## setAudioScene
+
+```TypeScript
+setAudioScene(scene: AudioScene, callback: AsyncCallback<void> ): void
+```
+
+设置音频场景模式。使用callback异步回调。
+
+**起始版本：** 8
+
+**系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| scene | [AudioScene](arkts-audio-audio-audioscene-e.md) | 是 | 音频场景模式。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置音频场景模式成功，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -317,11 +363,9 @@ audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL, (err: Busine
 setAudioScene(scene: AudioScene): Promise<void>
 ```
 
-Sets the audio scene mode to change audio strategies. This method uses a promise to return the result.
+设置音频场景模式。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AudioManager-setAudioScene(scene: AudioScene): Promise<void>--><!--Device-AudioManager-setAudioScene(scene: AudioScene): Promise<void>-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
@@ -331,13 +375,13 @@ Sets the audio scene mode to change audio strategies. This method uses a promise
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scene | [AudioScene](arkts-audio-audio-audioscene-e.md) | 是 | Audio scene mode. |
+| scene | [AudioScene](arkts-audio-audio-audioscene-e.md) | 是 | 音频场景模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -357,13 +401,11 @@ audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL).then(() => {
 setExtraParameters(mainKey: string, kvpairs: Record<string, string>): Promise<void>
 ```
 
-Sets extra audio parameters. This method uses a promise to return the result.
+音频扩展参数设置。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **需要权限：** ohos.permission.MODIFY_AUDIO_SETTINGS
-
-<!--Device-AudioManager-setExtraParameters(mainKey: string, kvpairs: Record<string, string>): Promise<void>--><!--Device-AudioManager-setExtraParameters(mainKey: string, kvpairs: Record<string, string>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -373,23 +415,23 @@ Sets extra audio parameters. This method uses a promise to return the result.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mainKey | string | 是 | Main key of the audio parameters to set. |
-| kvpairs | Record&lt;string, string&gt; | 是 | Key-value pairs with subkeys and values to set. |
+| mainKey | string | 是 | 被设置的音频参数的主键。 |
+| kvpairs | Record & lt;string, string & gt; | 是 | 被设置的音频参数的子键值对。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
 
@@ -407,4 +449,3 @@ audioManager.setExtraParameters('key_example', kvpairs).then(() => {
   console.error(`Failed to set the audio extra parameters ${err}`);
 });
 ```
-

@@ -1,12 +1,10 @@
 # Single
 
-单曲的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。
+单曲的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。@extends MediaEntity @interface Single
 
 **继承/实现关系：** Single extends [MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)
 
 **起始版本：** 23
-
-<!--Device-avMusicTemplate-interface Single--><!--Device-avMusicTemplate-interface Single-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -19,18 +17,16 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 ## downloadProgress
 
 ```TypeScript
-downloadProgress?: int
+downloadProgress?: number
 ```
 
 歌曲下载进度。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Single-downloadProgress?: int--><!--Device-Single-downloadProgress?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -48,8 +44,6 @@ downloadStatus?: DownloadStatus
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Single-downloadStatus?: DownloadStatus--><!--Device-Single-downloadStatus?: DownloadStatus-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## favSubscribeData
@@ -65,8 +59,6 @@ favSubscribeData: FavoriteData
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Single-favSubscribeData: FavoriteData--><!--Device-Single-favSubscribeData: FavoriteData-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -84,8 +76,6 @@ isVip: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Single-isVip: boolean--><!--Device-Single-isVip: boolean-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## playInfo
@@ -101,8 +91,6 @@ playInfo: PlayInfo
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Single-playInfo: PlayInfo--><!--Device-Single-playInfo: PlayInfo-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -120,8 +108,6 @@ settings?: SettingItem[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Single-settings?: SettingItem[]--><!--Device-Single-settings?: SettingItem[]-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## singer
@@ -137,8 +123,6 @@ singer: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Single-singer: string--><!--Device-Single-singer: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -156,7 +140,4 @@ tags?: string[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Single-tags?: string[]--><!--Device-Single-tags?: string[]-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-

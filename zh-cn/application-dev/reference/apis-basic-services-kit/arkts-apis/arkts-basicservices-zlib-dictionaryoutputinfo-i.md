@@ -2,9 +2,7 @@
 
 InflateGetDictionary和deflateGetDictionary这两个函数会返回值的相关信息。
 
-**起始版本：** 23
-
-<!--Device-zlib-interface DictionaryOutputInfo--><!--Device-zlib-interface DictionaryOutputInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -17,18 +15,16 @@ import { zlib } from '@kit.BasicServicesKit';
 ## dictionaryLength
 
 ```TypeScript
-dictionaryLength: int
+dictionaryLength: number
 ```
 
 字典的长度。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DictionaryOutputInfo-dictionaryLength: int--><!--Device-DictionaryOutputInfo-dictionaryLength: int-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -42,11 +38,8 @@ status: ReturnStatus
 
 **类型：** [ReturnStatus](arkts-basicservices-zlib-returnstatus-e.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DictionaryOutputInfo-status: ReturnStatus--><!--Device-DictionaryOutputInfo-status: ReturnStatus-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
-

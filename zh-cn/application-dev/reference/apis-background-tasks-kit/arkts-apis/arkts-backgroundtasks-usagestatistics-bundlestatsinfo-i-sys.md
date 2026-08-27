@@ -2,9 +2,7 @@
 
 FA模型的使用信息属性集合。
 
-**起始版本：** 23
-
-<!--Device-usageStatistics-interface BundleStatsInfo--><!--Device-usageStatistics-interface BundleStatsInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -19,16 +17,14 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 ## abilityInFgTotalTime
 
 ```TypeScript
-abilityInFgTotalTime?: long
+abilityInFgTotalTime?: number
 ```
 
 应用在前台可见的总时间，单位：ms。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleStatsInfo-abilityInFgTotalTime?: long--><!--Device-BundleStatsInfo-abilityInFgTotalTime?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -37,16 +33,14 @@ abilityInFgTotalTime?: long
 ## abilityPrevAccessTime
 
 ```TypeScript
-abilityPrevAccessTime?: long
+abilityPrevAccessTime?: number
 ```
 
 应用最后一次使用的时间，单位：ms。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleStatsInfo-abilityPrevAccessTime?: long--><!--Device-BundleStatsInfo-abilityPrevAccessTime?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -55,16 +49,14 @@ abilityPrevAccessTime?: long
 ## abilityPrevSeenTime
 
 ```TypeScript
-abilityPrevSeenTime?: long
+abilityPrevSeenTime?: number
 ```
 
 应用最后一次在前台可见的时间，单位：ms。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleStatsInfo-abilityPrevSeenTime?: long--><!--Device-BundleStatsInfo-abilityPrevSeenTime?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -73,16 +65,14 @@ abilityPrevSeenTime?: long
 ## abilitySeenTotalTime
 
 ```TypeScript
-abilitySeenTotalTime?: long
+abilitySeenTotalTime?: number
 ```
 
 应用在前台可见的总时间，单位：ms。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleStatsInfo-abilitySeenTotalTime?: long--><!--Device-BundleStatsInfo-abilitySeenTotalTime?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -91,16 +81,14 @@ abilitySeenTotalTime?: long
 ## appIndex
 
 ```TypeScript
-appIndex?: int
+appIndex?: number
 ```
 
 应用程序的索引。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleStatsInfo-appIndex?: int--><!--Device-BundleStatsInfo-appIndex?: int-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -116,9 +104,7 @@ bundleName?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BundleStatsInfo-bundleName?: string--><!--Device-BundleStatsInfo-bundleName?: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -127,16 +113,14 @@ bundleName?: string
 ## fgAbilityAccessTotalTime
 
 ```TypeScript
-fgAbilityAccessTotalTime?: long
+fgAbilityAccessTotalTime?: number
 ```
 
 应用在前台可见的总时间，单位：ms。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleStatsInfo-fgAbilityAccessTotalTime?: long--><!--Device-BundleStatsInfo-fgAbilityAccessTotalTime?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -145,16 +129,14 @@ fgAbilityAccessTotalTime?: long
 ## fgAbilityPrevAccessTime
 
 ```TypeScript
-fgAbilityPrevAccessTime?: long
+fgAbilityPrevAccessTime?: number
 ```
 
 应用最后一次访问前台的时间，单位：ms。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleStatsInfo-fgAbilityPrevAccessTime?: long--><!--Device-BundleStatsInfo-fgAbilityPrevAccessTime?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -163,16 +145,14 @@ fgAbilityPrevAccessTime?: long
 ## id
 
 ```TypeScript
-id: int
+id: number
 ```
 
 用户id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleStatsInfo-id: int--><!--Device-BundleStatsInfo-id: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -181,16 +161,14 @@ id: int
 ## infosBeginTime
 
 ```TypeScript
-infosBeginTime?: long
+infosBeginTime?: number
 ```
 
 BundleActiveInfo对象中第一条应用使用统计的记录时间，单位：ms。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleStatsInfo-infosBeginTime?: long--><!--Device-BundleStatsInfo-infosBeginTime?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -199,18 +177,15 @@ BundleActiveInfo对象中第一条应用使用统计的记录时间，单位：m
 ## infosEndTime
 
 ```TypeScript
-infosEndTime?: long
+infosEndTime?: number
 ```
 
 BundleActiveInfo对象中最后一条应用使用统计的记录时间，单位：ms。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleStatsInfo-infosEndTime?: long--><!--Device-BundleStatsInfo-infosEndTime?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **系统接口：** 此接口为系统接口。
-

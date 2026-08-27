@@ -23,7 +23,7 @@
 
 ## 子组件
 
-[tspan](js-components-svg-tspan.md)。
+tspan。
 
 
 ## 属性

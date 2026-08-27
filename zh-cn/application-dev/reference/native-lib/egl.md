@@ -143,5 +143,5 @@ OpenHarmony目前支持EGL部分接口，支持的接口会随着版本演进，
 
 目前支持的接口如下：
 
-[native api中导出的EGL符号列表](egl-symbol.md)
+native api中导出的EGL符号列表
 

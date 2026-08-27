@@ -1,12 +1,10 @@
 # CustomElement
 
-“我的主页”自定义元素的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。
+“我的主页”自定义元素的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。@extends OperResult @interface CustomElement
 
 **继承/实现关系：** CustomElement extends [OperResult](arkts-avsession-avmusictemplate-operresult-i.md)
 
 **起始版本：** 23
-
-<!--Device-avMusicTemplate-interface CustomElement--><!--Device-avMusicTemplate-interface CustomElement-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -30,8 +28,6 @@ customCompilations?: Compilation[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CustomElement-customCompilations?: Compilation[]--><!--Device-CustomElement-customCompilations?: Compilation[]-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## settings
@@ -47,8 +43,6 @@ settings?: SettingItem[]
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CustomElement-settings?: SettingItem[]--><!--Device-CustomElement-settings?: SettingItem[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -66,8 +60,6 @@ tabs?: MediaTab[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CustomElement-tabs?: MediaTab[]--><!--Device-CustomElement-tabs?: MediaTab[]-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## userInfo
@@ -84,7 +76,4 @@ userInfo?: UserInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CustomElement-userInfo?: UserInfo--><!--Device-CustomElement-userInfo?: UserInfo-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-

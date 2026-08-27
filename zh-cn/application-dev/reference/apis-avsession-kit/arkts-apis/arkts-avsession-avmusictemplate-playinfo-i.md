@@ -1,10 +1,8 @@
 # PlayInfo
 
-播放信息的定义。
+播放信息的定义。@interface MediaElement
 
 **起始版本：** 23
-
-<!--Device-avMusicTemplate-interface PlayInfo--><!--Device-avMusicTemplate-interface PlayInfo-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -17,18 +15,16 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 ## currentPlayDuration
 
 ```TypeScript
-currentPlayDuration: int
+currentPlayDuration: number
 ```
 
 当前播放的时长，单位为毫秒（ms）。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PlayInfo-currentPlayDuration: int--><!--Device-PlayInfo-currentPlayDuration: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -46,8 +42,6 @@ currentPlayRate: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PlayInfo-currentPlayRate: string--><!--Device-PlayInfo-currentPlayRate: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## isSupportNext
@@ -63,8 +57,6 @@ isSupportNext: boolean
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PlayInfo-isSupportNext: boolean--><!--Device-PlayInfo-isSupportNext: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -82,8 +74,6 @@ isSupportPlayMode: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PlayInfo-isSupportPlayMode: boolean--><!--Device-PlayInfo-isSupportPlayMode: boolean-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## isSupportPlayRate
@@ -99,8 +89,6 @@ isSupportPlayRate: boolean
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PlayInfo-isSupportPlayRate: boolean--><!--Device-PlayInfo-isSupportPlayRate: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -118,8 +106,6 @@ isSupportPrev: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PlayInfo-isSupportPrev: boolean--><!--Device-PlayInfo-isSupportPrev: boolean-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## isSupportProgress
@@ -135,8 +121,6 @@ isSupportProgress: boolean
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PlayInfo-isSupportProgress: boolean--><!--Device-PlayInfo-isSupportProgress: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -154,8 +138,6 @@ isSupportQuickBackward: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PlayInfo-isSupportQuickBackward: boolean--><!--Device-PlayInfo-isSupportQuickBackward: boolean-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## isSupportQuickForward
@@ -171,8 +153,6 @@ isSupportQuickForward: boolean
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PlayInfo-isSupportQuickForward: boolean--><!--Device-PlayInfo-isSupportQuickForward: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -190,8 +170,6 @@ isSupportSkipHead: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PlayInfo-isSupportSkipHead: boolean--><!--Device-PlayInfo-isSupportSkipHead: boolean-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## isSupportSkipTail
@@ -207,8 +185,6 @@ isSupportSkipTail: boolean
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PlayInfo-isSupportSkipTail: boolean--><!--Device-PlayInfo-isSupportSkipTail: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -226,8 +202,6 @@ isSupportSoundEffect: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PlayInfo-isSupportSoundEffect: boolean--><!--Device-PlayInfo-isSupportSoundEffect: boolean-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## isSupportSoundQuality
@@ -243,8 +217,6 @@ isSupportSoundQuality: boolean
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PlayInfo-isSupportSoundQuality: boolean--><!--Device-PlayInfo-isSupportSoundQuality: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -262,43 +234,37 @@ playCounts: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PlayInfo-playCounts: string--><!--Device-PlayInfo-playCounts: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## quickBackwardStep
 
 ```TypeScript
-quickBackwardStep: int
+quickBackwardStep: number
 ```
 
 快退的步长，单位为毫秒（ms）。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PlayInfo-quickBackwardStep: int--><!--Device-PlayInfo-quickBackwardStep: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## quickForwardStep
 
 ```TypeScript
-quickForwardStep: int
+quickForwardStep: number
 ```
 
 快进的步长，单位为毫秒（ms）。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PlayInfo-quickForwardStep: int--><!--Device-PlayInfo-quickForwardStep: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -316,25 +282,20 @@ supportedPlayRate: string[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PlayInfo-supportedPlayRate: string[]--><!--Device-PlayInfo-supportedPlayRate: string[]-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## totalDuration
 
 ```TypeScript
-totalDuration: int
+totalDuration: number
 ```
 
 播放总时长，单位为毫秒（ms）。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PlayInfo-totalDuration: int--><!--Device-PlayInfo-totalDuration: int-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-

@@ -10,8 +10,6 @@ type LoginEvent = (controlType: LoginType, id?: string) => Promise<QrCodeInfo[]>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avMusicTemplate-type LoginEvent = (controlType: LoginType, id?: string) => Promise<QrCodeInfo[]>--><!--Device-avMusicTemplate-type LoginEvent = (controlType: LoginType, id?: string) => Promise<QrCodeInfo[]>-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
@@ -26,4 +24,3 @@ type LoginEvent = (controlType: LoginType, id?: string) => Promise<QrCodeInfo[]>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[QrCodeInfo](arkts-avsession-avmusictemplate-qrcodeinfo-i.md)[]&gt; | Promise对象，返回二维码信息的数组。 |
-

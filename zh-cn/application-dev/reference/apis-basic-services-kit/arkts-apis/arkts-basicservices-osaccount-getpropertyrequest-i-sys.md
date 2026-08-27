@@ -2,9 +2,7 @@
 
 提供获取属性请求的信息。
 
-**起始版本：** 23
-
-<!--Device-osAccount-interface GetPropertyRequest--><!--Device-osAccount-interface GetPropertyRequest-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -19,16 +17,14 @@ import { osAccount } from '@kit.BasicServicesKit';
 ## accountId
 
 ```TypeScript
-accountId?: int
+accountId?: number
 ```
 
 系统账号标识，默认为undefined。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-GetPropertyRequest-accountId?: int--><!--Device-GetPropertyRequest-accountId?: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -44,9 +40,7 @@ authType: AuthType
 
 **类型：** AuthType
 
-**起始版本：** 23
-
-<!--Device-GetPropertyRequest-authType: AuthType--><!--Device-GetPropertyRequest-authType: AuthType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -62,11 +56,8 @@ keys: Array<GetPropertyType>
 
 **类型：** Array&lt;[GetPropertyType](arkts-basicservices-osaccount-getpropertytype-e-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-GetPropertyRequest-keys: Array<GetPropertyType>--><!--Device-GetPropertyRequest-keys: Array<GetPropertyType>-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
-

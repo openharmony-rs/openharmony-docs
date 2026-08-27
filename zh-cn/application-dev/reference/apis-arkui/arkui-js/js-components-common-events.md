@@ -13,7 +13,7 @@
 
 - 事件绑定在组件上，当组件达到事件触发条件时，会执行JS中对应的事件回调函数，实现页面UI视图和页面JS逻辑层的交互。
 
-- 事件回调函数中通过参数可以携带额外的信息，如组件上的数据对象[dataSet](#target对象6)、事件特有的回调参数。
+- 事件回调函数中通过参数可以携带额外的信息，如组件上的数据对象dataSet、事件特有的回调参数。
 
 
 相对于私有事件，大部分组件都可以绑定如下事件。
@@ -45,7 +45,7 @@
 
 
 >  **说明：**
->  除上述事件外，其他事件均为非冒泡事件，如[input的change事件](js-components-basic-input.md#事件)，详见各个组件。
+>  除上述事件外，其他事件均为非冒泡事件，如input的change事件，详见各个组件。
 
 **表1** BaseEvent对象属性列表
 
@@ -54,7 +54,7 @@
 | type                  | string                 | 当前事件的类型，比如click、longpress等。 |
 | timestamp             | number                 | 该事件触发时的时间戳。                   |
 | deviceId<sup>8+</sup> | number                 | 触发该事件的设备ID信息。                 |
-| target<sup>12+</sup>   | [Target](#target对象6) | 触发该事件的目标对象。                   |
+| target<sup>12+</sup>   | Target | 触发该事件的目标对象。                   |
 
 **表2** TouchEvent对象属性列表(继承BaseEvent)
 
@@ -97,7 +97,7 @@
 | globalX                   | number                           | 距离屏幕左上角坐标原点横向距离。 |
 | globalY                   | number                           | 距离屏幕左上角坐标原点纵向距离。 |
 | timestamp                 | number                           | 时间戳。             |
-| dataTransfer<sup>9+</sup> | [DataTransfer](#datatransfer对象9) | 用于传输数据。          |
+| dataTransfer<sup>9+</sup> | DataTransfer | 用于传输数据。          |
 
 ## Target对象<sup>6+</sup>
 
@@ -107,7 +107,7 @@
 
 | 名称                   | 类型     | 说明                                       |
 | -------------------- | ------ | ---------------------------------------- |
-| dataSet<sup>6+</sup> | Object | 组件上通过通用属性设置的[data-*](js-components-common-attributes.md#常规属性)的自定义属性组成的集合。 |
+| dataSet<sup>6+</sup> | Object | 组件上通过通用属性设置的data-*的自定义属性组成的集合。 |
 
 **示例：**
 

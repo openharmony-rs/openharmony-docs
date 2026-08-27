@@ -2,9 +2,7 @@
 
 系统铃音的振动设置。
 
-**起始版本：** 23
-
-<!--Device-systemSoundManager-interface ToneHapticsSettings--><!--Device-systemSoundManager-interface ToneHapticsSettings-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -26,9 +24,7 @@ hapticsUri?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ToneHapticsSettings-hapticsUri?: string--><!--Device-ToneHapticsSettings-hapticsUri?: string-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -44,11 +40,8 @@ mode: ToneHapticsMode
 
 **类型：** [ToneHapticsMode](arkts-audio-systemsoundmanager-tonehapticsmode-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-ToneHapticsSettings-mode: ToneHapticsMode--><!--Device-ToneHapticsSettings-mode: ToneHapticsMode-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 **系统接口：** 此接口为系统接口。
-

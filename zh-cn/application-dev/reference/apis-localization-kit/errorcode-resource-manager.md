@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 9001001 无效的资源ID
 
@@ -28,8 +28,8 @@ Invalid resource ID.
 
 **处理步骤**
 
-1. 排查是否为以下场景：HAR模块开启[混淆配置](../../quick-start/har-package.md#混淆配置)、中间码HAR、字节码HAR、跨HAP/HSP包。这四种场景下通过`$r('app.xxx.xxx').id`获取的资源ID为`-1`，推荐使用getStringByName()等方法通过名称获取资源。
-2. 检查传入的资源ID在HAP/HSP包中是否存在。可以参考[restool工具](../../tools/restool.md)的dump命令，先输出HAP/HSP的资源信息，然后在输出结果中搜索是否存在传入的资源ID。
+1. 排查是否为以下场景：HAR模块开启混淆配置、中间码HAR、字节码HAR、跨HAP/HSP包。这四种场景下通过`$r('app.xxx.xxx').id`获取的资源ID为`-1`，推荐使用getStringByName()等方法通过名称获取资源。
+2. 检查传入的资源ID在HAP/HSP包中是否存在。可以参考restool工具的dump命令，先输出HAP/HSP的资源信息，然后在输出结果中搜索是否存在传入的资源ID。
 
 ## 9001002 根据当前资源ID未找到匹配的资源
 
@@ -69,7 +69,7 @@ Invalid resource name.
 
 **处理步骤**
 
-检查传入的资源名称在HAP/HSP包中是否存在。可以参考[restool工具](../../tools/restool.md)的dump命令，先输出HAP/HSP的资源信息，然后在输出结果中搜索是否存在传入的资源名称。
+检查传入的资源名称在HAP/HSP包中是否存在。可以参考restool工具的dump命令，先输出HAP/HSP的资源信息，然后在输出结果中搜索是否存在传入的资源名称。
 
 ## 9001004 根据当前资源名称未找到匹配的资源
 
@@ -189,7 +189,7 @@ Failed to access the system resource.
 
 **处理步骤**
 
-检查应用进程的[应用沙箱目录](../../../application-dev/file-management/app-sandbox-directory.md)下是否包含系统资源。
+检查应用进程的应用沙箱目录下是否包含系统资源。
 
 ## 9001010 无效的overlay路径
 
@@ -209,4 +209,4 @@ Invalid overlay path.
 **处理步骤**
 
 1. 检查overlay路径是否正确。
-2. 检查应用进程的[应用沙箱目录](../../../application-dev/file-management/app-sandbox-directory.md)下是否包含传入的overlay路径。
+2. 检查应用进程的应用沙箱目录下是否包含传入的overlay路径。

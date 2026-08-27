@@ -14,9 +14,7 @@ function isStandby(): boolean
 
 检测当前设备是否进入待机低功耗续航模式。待机模式下系统会采取降低功耗的策略，开发者应据此调整应用的后台任务和资源使用策略，避免在待机时执行高耗能操作。
 
-**起始版本：** 23
-
-<!--Device-power-function isStandby(): boolean--><!--Device-power-function isStandby(): boolean-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -38,8 +36,7 @@ function isStandby(): boolean
 try {
     let isStandby = power.isStandby();
     console.info('device is in standby: ' + isStandby);
-} catch(err) {
-    console.error('check isStandby failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to check isStandby. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

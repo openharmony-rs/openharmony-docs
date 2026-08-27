@@ -22,9 +22,9 @@ typedef struct {...} JSVM_CallbackStruct
 
 **起始版本：** 11
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**相关模块：** JSVM
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
+**所在头文件：** jsvm_types.h
 
 ## 汇总
 
@@ -39,7 +39,7 @@ typedef struct {...} JSVM_CallbackStruct
 
 | 名称 | 描述 |
 | -- | -- |
-| [JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env, JSVM_CallbackInfo info)](#callback) | 用户提供的Native回调函数的指针。 |
+| JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env, JSVM_CallbackInfo info) | 用户提供的Native回调函数的指针。 |
 
 ## 成员函数说明
 

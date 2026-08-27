@@ -2,9 +2,7 @@
 
 设备软硬件的耗电信息。
 
-**起始版本：** 23
-
-<!--Device-batteryStats-interface BatteryStatsInfo--><!--Device-batteryStats-interface BatteryStatsInfo-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.PowerManager.BatteryStatistics
 
@@ -19,16 +17,14 @@ import { batteryStats } from '@kit.BasicServicesKit';
 ## power
 
 ```TypeScript
-power: double
+power: number
 ```
 
 耗电的值，单位毫安时。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BatteryStatsInfo-power: double--><!--Device-BatteryStatsInfo-power: double-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.PowerManager.BatteryStatistics
 
@@ -44,9 +40,7 @@ type: ConsumptionType
 
 **类型：** [ConsumptionType](arkts-basicservices-batterystats-consumptiontype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-BatteryStatsInfo-type: ConsumptionType--><!--Device-BatteryStatsInfo-type: ConsumptionType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.PowerManager.BatteryStatistics
 
@@ -55,18 +49,15 @@ type: ConsumptionType
 ## uid
 
 ```TypeScript
-uid: int
+uid: number
 ```
 
 耗电信息对应的应用UID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BatteryStatsInfo-uid: int--><!--Device-BatteryStatsInfo-uid: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.PowerManager.BatteryStatistics
 
 **系统接口：** 此接口为系统接口。
-

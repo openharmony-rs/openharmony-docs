@@ -20,8 +20,6 @@ function addPrinter(printerName: string, uri: string, ppdName?: string, options?
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-print-function addPrinter(printerName: string, uri: string, ppdName?: string, options?: string): Promise<boolean>--><!--Device-print-function addPrinter(printerName: string, uri: string, ppdName?: string, options?: string): Promise<boolean>-End-->
-
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
@@ -37,20 +35,20 @@ function addPrinter(printerName: string, uri: string, ppdName?: string, options?
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回添加打印机成功与否的结果。 |
+| Promise & lt;boolean & gt; | Promise对象，返回添加打印机成功与否的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13100003](../errorcode-print.md#13100003-打印服务异常) | Add the printer to system failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
+| [13100003](../errorcode-print.md#13100003-打印服务异常) | Add the printer to system failed. |
 
 **示例**
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerName : string = 'printerName';
 let uri : string = 'uri';
@@ -58,7 +56,6 @@ let ppdName : string = 'ppdName';
 print.addPrinter(printerName, uri, ppdName).then(() => {
     console.info('add printer success');
 }).catch((error: BusinessError) => {
-    console.error('add printer error : ' + JSON.stringify(error));
+    console.error(`Failed to addPrinter. Code: ${error.code}, message: ${error.message}`);
 })
 ```
-

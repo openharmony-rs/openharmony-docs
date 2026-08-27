@@ -2,9 +2,7 @@
 
 RunningLock锁的类型。
 
-**起始版本：** 23
-
-<!--Device-runningLock-export enum RunningLockType--><!--Device-runningLock-export enum RunningLockType-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -14,13 +12,12 @@ RunningLock锁的类型。
 BACKGROUND = 1
 ```
 
-阻止系统睡眠的锁。 **说明：** 从API version 7开始支持，从API version 10开始废弃。
+阻止系统睡眠的锁。  
+**说明：** 从API version 7开始支持，从API version 10开始废弃。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **废弃版本：** 10
-
-<!--Device-RunningLockType-BACKGROUND = 1--><!--Device-RunningLockType-BACKGROUND = 1-End-->
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -32,9 +29,7 @@ PROXIMITY_SCREEN_CONTROL = 2
 
 接近光锁，使能接近光传感器，并根据传感器与障碍物的距离远近发起亮灭屏流程。
 
-**起始版本：** 23
-
-<!--Device-RunningLockType-PROXIMITY_SCREEN_CONTROL = 2--><!--Device-RunningLockType-PROXIMITY_SCREEN_CONTROL = 2-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -48,7 +43,4 @@ BACKGROUND_USER_IDLE = 129
 
 **起始版本：** 23
 
-<!--Device-RunningLockType-BACKGROUND_USER_IDLE = 129--><!--Device-RunningLockType-BACKGROUND_USER_IDLE = 129-End-->
-
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
-

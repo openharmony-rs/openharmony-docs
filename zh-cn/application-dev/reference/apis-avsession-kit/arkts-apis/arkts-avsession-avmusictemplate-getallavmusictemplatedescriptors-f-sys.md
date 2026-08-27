@@ -9,7 +9,7 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 ## getAllAVMusicTemplateDescriptors
 
 ```TypeScript
-function getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescriptor[]
+function getAllAVMusicTemplateDescriptors(userId?: number): AVMusicTemplateDescriptor[]
 ```
 
 获取所有的音频模板描述，返回音频模板描述的集合。
@@ -20,8 +20,6 @@ function getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescript
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avMusicTemplate-function getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescriptor[]--><!--Device-avMusicTemplate-function getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescriptor[]-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **系统接口：** 此接口为系统接口。
@@ -30,7 +28,7 @@ function getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescript
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | int | 否 | 用户ID。以用户传递为准，可为空。 |
+| userId | number | 否 | 用户ID。以用户传递为准，可为空。 |
 
 **返回值：**
 
@@ -42,7 +40,6 @@ function getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescript
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.function getAllAVMusicTemplateDescriptors can not work correctly due to limited device capabilities. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verify failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.function getAllAVMusicTemplateDescriptors can not work correctly due to limited device capabilities. |

@@ -1,10 +1,8 @@
 # EffectFlag（系统接口）
 
-Enumerates audio effect flags.
+枚举，音效分类。@enum { number }
 
-**起始版本：** 23
-
-<!--Device-audio-enum EffectFlag--><!--Device-audio-enum EffectFlag-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -16,11 +14,9 @@ Enumerates audio effect flags.
 RENDER_EFFECT_FLAG = 0
 ```
 
-Audio render effect.
+下行音效类型。
 
-**起始版本：** 23
-
-<!--Device-EffectFlag-RENDER_EFFECT_FLAG = 0--><!--Device-EffectFlag-RENDER_EFFECT_FLAG = 0-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -32,13 +28,10 @@ Audio render effect.
 CAPTURE_EFFECT_FLAG = 1
 ```
 
-Audio capture effect.
+上行音效类型。
 
-**起始版本：** 23
-
-<!--Device-EffectFlag-CAPTURE_EFFECT_FLAG = 1--><!--Device-EffectFlag-CAPTURE_EFFECT_FLAG = 1-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **系统接口：** 此接口为系统接口。
-

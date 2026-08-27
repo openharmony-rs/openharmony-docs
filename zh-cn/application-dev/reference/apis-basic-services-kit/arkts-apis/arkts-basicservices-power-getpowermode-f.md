@@ -14,9 +14,7 @@ function getPowerMode(): DevicePowerMode
 
 获取当前设备的电源模式。不同电源模式对应不同的设备行为策略，开发者可根据返回的模式值调整应用行为以适配当前模式。各模式定义及说明请参见DevicePowerMode。
 
-**起始版本：** 23
-
-<!--Device-power-function getPowerMode(): DevicePowerMode--><!--Device-power-function getPowerMode(): DevicePowerMode-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -32,4 +30,3 @@ function getPowerMode(): DevicePowerMode
 let mode = power.getPowerMode();
 console.info('power mode: ' + mode);
 ```
-

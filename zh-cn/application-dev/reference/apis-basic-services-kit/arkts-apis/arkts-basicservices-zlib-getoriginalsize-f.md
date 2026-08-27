@@ -9,16 +9,14 @@ import { zlib } from '@kit.BasicServicesKit';
 ## getOriginalSize
 
 ```TypeScript
-function getOriginalSize(compressedFile: string): Promise<long>
+function getOriginalSize(compressedFile: string): Promise<number>
 ```
 
 获取压缩文件的原始大小。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-zlib-function getOriginalSize(compressedFile: string): Promise<long>--><!--Device-zlib-function getOriginalSize(compressedFile: string): Promise<long>-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -32,7 +30,7 @@ function getOriginalSize(compressedFile: string): Promise<long>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;long&gt; | Promise对象，返回压缩文件的原始大小，单位字节。 |
+| Promise & lt;number & gt; | Promise对象，返回压缩文件的原始大小，单位字节。 |
 
 **错误码：**
 
@@ -62,4 +60,3 @@ try {
   console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
-

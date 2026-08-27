@@ -2,9 +2,7 @@
 
 处理所有用于压缩和解压缩所需的信息。
 
-**起始版本：** 23
-
-<!--Device-zlib-interface ZStream--><!--Device-zlib-interface ZStream-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -17,72 +15,64 @@ import { zlib } from '@kit.BasicServicesKit';
 ## adler
 
 ```TypeScript
-adler?: long
+adler?: number
 ```
 
 未压缩数据的Adler-32或CRC-32值。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ZStream-adler?: long--><!--Device-ZStream-adler?: long-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
 ## availableIn
 
 ```TypeScript
-availableIn?: int
+availableIn?: number
 ```
 
 nextIn可用的字节数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ZStream-availableIn?: int--><!--Device-ZStream-availableIn?: int-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
 ## availableOut
 
 ```TypeScript
-availableOut?: int
+availableOut?: number
 ```
 
 nextOut的剩余可用字节数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ZStream-availableOut?: int--><!--Device-ZStream-availableOut?: int-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
 ## dataType
 
 ```TypeScript
-dataType?: int
+dataType?: number
 ```
 
 关于数据类型的最佳猜测：deflate的二进制或文本，或inflate的解码状态。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ZStream-dataType?: int--><!--Device-ZStream-dataType?: int-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -96,11 +86,9 @@ nextIn?: ArrayBuffer
 
 **类型：** ArrayBuffer
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ZStream-nextIn?: ArrayBuffer--><!--Device-ZStream-nextIn?: ArrayBuffer-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -114,47 +102,40 @@ nextOut?: ArrayBuffer
 
 **类型：** ArrayBuffer
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ZStream-nextOut?: ArrayBuffer--><!--Device-ZStream-nextOut?: ArrayBuffer-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
 ## totalIn
 
 ```TypeScript
-totalIn?: long
+totalIn?: number
 ```
 
 到目前为止读取的输入字节总数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ZStream-totalIn?: long--><!--Device-ZStream-totalIn?: long-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
 ## totalOut
 
 ```TypeScript
-totalOut?: long
+totalOut?: number
 ```
 
 到目前为止输出字节总数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ZStream-totalOut?: long--><!--Device-ZStream-totalOut?: long-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
-

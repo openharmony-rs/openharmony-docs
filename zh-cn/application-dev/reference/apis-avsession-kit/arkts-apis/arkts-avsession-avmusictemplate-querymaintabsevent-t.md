@@ -10,7 +10,4 @@ type QueryMainTabsEvent = () => Promise<MediaTab[]>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avMusicTemplate-type QueryMainTabsEvent = () => Promise<MediaTab[]>--><!--Device-avMusicTemplate-type QueryMainTabsEvent = () => Promise<MediaTab[]>-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-

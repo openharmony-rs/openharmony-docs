@@ -4,20 +4,21 @@
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## releaseInterface
 
 ```TypeScript
-function releaseInterface(pipe: USBDevicePipe, iface: USBInterface): int
+function releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 ```
 
-释放claim过的通信接口。 > **说明：** > > 在调用该接口前需要通过[usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md) claim通信接口。
+释放claim过的通信接口。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 在调用该接口前需要通过[usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md) claim通信接口。
 
-<!--Device-usbManager-function releaseInterface(pipe: USBDevicePipe, iface: USBInterface): int--><!--Device-usbManager-function releaseInterface(pipe: USBDevicePipe, iface: USBInterface): int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -32,13 +33,13 @@ function releaseInterface(pipe: USBDevicePipe, iface: USBInterface): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 释放接口成功返回0；释放接口失败返回其他错误码如下： <br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。 <br>- 88080486：服务初始化中，请稍后重试。 <br>- 88080488：无设备访问权限，请先调用[requestRight]{ |
+| number | 释放接口成功返回0；释放接口失败返回其他错误码如下： |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  <br>1.Mandatory parameters are left unspecified.  <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1.Mandatory parameters are left unspecified.  2.Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
 **示例**
@@ -63,9 +64,10 @@ async function releaseInterface() {
     return;
   }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
-  let ret: int = usbManager.claimInterface(devicePipe, interfaces);
+  let ret: number = usbManager.claimInterface(devicePipe, interfaces);
   if (ret !== 0) {
     console.error(`claim interface failed`);
+    usbManager.closePipe(devicePipe);
     return;
   }
   ret = usbManager.releaseInterface(devicePipe, interfaces);
@@ -73,4 +75,3 @@ async function releaseInterface() {
   usbManager.closePipe(devicePipe);
 }
 ```
-

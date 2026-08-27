@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { usb } from '@kit.BasicServicesKit';
-import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## claimInterface
@@ -14,15 +12,13 @@ import { serialManager } from '@kit.BasicServicesKit';
 function claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolean): number
 ```
 
-注册通信接口。 需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md)获取设备信息以及interfaces；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md)获取设备请求权限；调 用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md)接口得到devicepipe作为参数。
+注册通信接口。需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md)获取设备信息以及interfaces；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md)获取设备请求权限；调 用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md)接口得到devicepipe作为参数。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md)
-
-<!--Device-usb-function claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolean): number--><!--Device-usb-function claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolean): number-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -46,4 +42,3 @@ function claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolea
 let ret = usb.claimInterface(devicepipe, interfaces);
 console.info(`claimInterface = ${ret}`);
 ```
-

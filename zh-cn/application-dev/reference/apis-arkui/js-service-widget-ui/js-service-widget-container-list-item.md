@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-&lt;[list](js-service-widget-container-list.md)&gt;的子组件，用来展示列表具体item。
+&lt;list&gt;的子组件，用来展示列表具体item。
 
 
 >  **说明：**
@@ -25,7 +25,7 @@
 
 ## 属性
 
-除支持[通用属性](js-service-widget-common-attributes.md)外，还支持如下属性：
+除支持通用属性外，还支持如下属性：
 
 | 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -37,7 +37,7 @@
 
 ## 样式
 
-除支持[通用样式](js-service-widget-common-styles.md)外，还支持如下样式：
+除支持通用样式外，还支持如下样式：
 
 | 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -47,9 +47,9 @@
 
 ## 事件
 
-支持[通用事件](js-service-widget-common-events.md)。
+支持通用事件。
 
 
 ## 示例
 
-详见[list示例](js-service-widget-container-list.md#示例)。
+详见list示例。

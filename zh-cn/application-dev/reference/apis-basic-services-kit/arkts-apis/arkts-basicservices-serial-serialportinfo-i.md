@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-serial-interface SerialPortInfo--><!--Device-serial-interface SerialPortInfo-End-->
-
 **系统能力：** SystemCapability.BusManager.Serial
 
 ## 导入模块
@@ -28,8 +26,6 @@ USB虚拟串口设备的制造商名称。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SerialPortInfo-manufacturer?: string--><!--Device-SerialPortInfo-manufacturer?: string-End-->
-
 **系统能力：** SystemCapability.BusManager.Serial
 
 ## portName
@@ -46,43 +42,36 @@ portName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SerialPortInfo-portName: string--><!--Device-SerialPortInfo-portName: string-End-->
-
 **系统能力：** SystemCapability.BusManager.Serial
 
 ## productId
 
 ```TypeScript
-productId?: int
+productId?: number
 ```
 
 USB虚拟串口设备的产品ID。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SerialPortInfo-productId?: int--><!--Device-SerialPortInfo-productId?: int-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
 ## vendorId
 
 ```TypeScript
-vendorId?: int
+vendorId?: number
 ```
 
 USB虚拟串口的厂商ID。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SerialPortInfo-vendorId?: int--><!--Device-SerialPortInfo-vendorId?: int-End-->
-
 **系统能力：** SystemCapability.BusManager.Serial
-

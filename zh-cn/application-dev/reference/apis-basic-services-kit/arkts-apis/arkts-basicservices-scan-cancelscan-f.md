@@ -14,11 +14,9 @@ function cancelScan(scannerId: string): Promise<void>
 
 取消扫描。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.PRINT
-
-<!--Device-scan-function cancelScan(scannerId: string): Promise<void>--><!--Device-scan-function cancelScan(scannerId: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -32,7 +30,7 @@ function cancelScan(scannerId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -50,7 +48,6 @@ let scannerId: string = 'scanner_001';
 scan.cancelScan(scannerId).then(() => {
     console.info('cancel scan success');
 }).catch((error: BusinessError) => {
-    console.error('cancel scan failed: ' + JSON.stringify(error));
-})
+    console.error(`Failed to cancel scan. Code: ${error.code}, message: ${error.message}`);
+});
 ```
-

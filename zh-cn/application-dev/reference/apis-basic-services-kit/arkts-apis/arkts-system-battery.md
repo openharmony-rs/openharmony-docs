@@ -20,4 +20,3 @@ import { Battery, BatteryResponse, GetStatusOptions } from '@kit.BasicServicesKi
 | --- | --- |
 | [BatteryResponse](arkts-basicservices-system-battery-batteryresponse-i.md) | 包含充电状态及剩余电量的对象。 |
 | [GetStatusOptions](arkts-basicservices-system-battery-getstatusoptions-i.md) | 包含接口调用选项的对象，包括成功、失败和完成回调函数。 |
-

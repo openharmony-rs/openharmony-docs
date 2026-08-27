@@ -170,7 +170,7 @@ OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：操作成功。\n          AV_ERR_INVALID_VAL：\n                           1. source指针无效，空指针。\n                           2. 非OH_AVSource实例。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。\n          AV_ERR_INVALID_VAL：\n                           1. source指针无效，空指针。\n                           2. 非OH_AVSource实例。 |
 
 ### OH_AVSource_GetSourceFormat()
 
@@ -196,7 +196,7 @@ OH_AVFormat *OH_AVSource_GetSourceFormat(OH_AVSource *source)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVFormat * | 执行成功返回文件的基础信息，否则返回NULL。\n  可能的故障原因：\n  1. source指针无效。\n  2. 空指针或非OH_AVSource实例。\n  3. source没有初始化。 |
+| [OH_AVFormat *](capi-core-oh-avformat.md) | 执行成功返回文件的基础信息，否则返回NULL。\n  可能的故障原因：\n  1. source指针无效。\n  2. 空指针或非OH_AVSource实例。\n  3. source没有初始化。 |
 
 ### OH_AVSource_GetTrackFormat()
 
@@ -223,7 +223,7 @@ OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVFormat * | 执行成功返回轨道的基础信息，否则返回NULL。\n  可能的故障原因：\n  1. source指针无效，空指针或非OH_AVSource实例。\n  2. 轨道的索引超出范围。\n  3. source没有初始化。 |
+| [OH_AVFormat *](capi-core-oh-avformat.md) | 执行成功返回轨道的基础信息，否则返回NULL。\n  可能的故障原因：\n  1. source指针无效，空指针或非OH_AVSource实例。\n  2. 轨道的索引超出范围。\n  3. source没有初始化。 |
 
 ### OH_AVSource_GetCustomMetadataFormat()
 
@@ -249,6 +249,6 @@ OH_AVFormat *OH_AVSource_GetCustomMetadataFormat(OH_AVSource *source)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVFormat * | 执行成功返回元数据的基础信息，否则返回NULL。\n  可能的故障原因：\n  1. source指针无效。\n  2. 空指针或非OH_AVSource实例。\n  3. source没有初始化。 |
+| [OH_AVFormat *](capi-core-oh-avformat.md) | 执行成功返回元数据的基础信息，否则返回NULL。\n  可能的故障原因：\n  1. source指针无效。\n  2. 空指针或非OH_AVSource实例。\n  3. source没有初始化。 |
 
 

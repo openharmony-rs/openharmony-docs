@@ -18,13 +18,13 @@ setMonitorForCrownEvents(handler: Function): void
 
 为当前页面设置旋转表冠事件监听器，当旋转表冠事件触发时，监听器会触发回调。
 
-该监听器在发生页面路由时将自动移除，使用[clearMonitorForCrownEvents()](#clearmonitorforcrownevents)接口可手动移除。
+该监听器在发生页面路由时将自动移除，使用clearMonitorForCrownEvents()接口可手动移除。
 
 > **说明：**
 >
-> - 当发生页面路由时，监听器将自动移除，因此建议在页面的onShow[生命周期](./js-lite-framework-lifecycle.md)回调中调用此接口。
+> - 当发生页面路由时，监听器将自动移除，因此建议在页面的onShow生命周期回调中调用此接口。
 > - 每个页面仅支持设置一个监听器，新注册的监听器会覆盖之前的监听器，系统将使用最后一次调用此接口时传入的监听器。
-> - 请勿在[app.js](../../../ui/js-framework-js-file.md)中使用此函数，其行为未定义。
+> - 请勿在app.js中使用此函数，其行为未定义。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -61,9 +61,9 @@ clearMonitorForCrownEvents(): void
 
 ### 示例1（设置旋转表冠事件监听器）
 
-该示例介绍如何通过[setMonitorForCrownEvents](#setmonitorforcrownevents)为页面设置旋转表冠事件监听器，并通过监听器的回调返回值控制Slider组件是否响应旋转表冠事件。
+该示例介绍如何通过setMonitorForCrownEvents为页面设置旋转表冠事件监听器，并通过监听器的回调返回值控制Slider组件是否响应旋转表冠事件。
 
-从API version 24开始，新增[setMonitorForCrownEvents](#setmonitorforcrownevents)接口和[clearMonitorForCrownEvents](#clearmonitorforcrownevents)接口。
+从API version 24开始，新增setMonitorForCrownEvents接口和clearMonitorForCrownEvents接口。
 ```css
 /* xxx.css */
 .container {

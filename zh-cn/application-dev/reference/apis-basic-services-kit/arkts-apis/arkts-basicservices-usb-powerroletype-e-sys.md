@@ -1,4 +1,4 @@
-# PowerRoleType(USB Manager)（系统接口）
+# PowerRoleType（系统接口）
 
 电源角色类型。
 
@@ -7,8 +7,6 @@
 **废弃版本：** 9
 
 **替代接口：** [PowerRoleType](arkts-basicservices-usbmanager-powerroletype-e-sys.md)
-
-<!--Device-usb-export enum PowerRoleType--><!--Device-usb-export enum PowerRoleType-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -28,8 +26,6 @@ NONE = 0
 
 **替代接口：** [NONE](arkts-basicservices-usbmanager-powerroletype-e-sys.md#none)
 
-<!--Device-PowerRoleType-NONE = 0--><!--Device-PowerRoleType-NONE = 0-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 **系统接口：** 此接口为系统接口。
@@ -47,8 +43,6 @@ SOURCE = 1
 **废弃版本：** 9
 
 **替代接口：** [SOURCE](arkts-basicservices-usbmanager-powerroletype-e-sys.md#source)
-
-<!--Device-PowerRoleType-SOURCE = 1--><!--Device-PowerRoleType-SOURCE = 1-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -68,9 +62,6 @@ SINK = 2
 
 **替代接口：** [SINK](arkts-basicservices-usbmanager-powerroletype-e-sys.md#sink)
 
-<!--Device-PowerRoleType-SINK = 2--><!--Device-PowerRoleType-SINK = 2-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 **系统接口：** 此接口为系统接口。
-

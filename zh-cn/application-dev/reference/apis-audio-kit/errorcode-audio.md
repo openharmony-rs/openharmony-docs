@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 6800101 无效入参
 
@@ -202,7 +202,7 @@ System error.
 
 **判断依据**
 
-使用Mic音频源（即SourceType为`SOURCE_TYPE_MIC`、`SOURCE_TYPE_VOICE_RECOGNITION`、`SOURCE_TYPE_VOICE_COMMUNICATION`、`SOURCE_TYPE_VOICE_MESSAGE`或`SOURCE_TYPE_LIVE`）创建AudioCapturer失败，系统日志提示麦克风未授权。各音频源的权限要求请参考[使用AudioCapturer开发音频录制功能](../../media/audio/using-audiocapturer-for-recording.md)。
+使用Mic音频源（即SourceType为`SOURCE_TYPE_MIC`、`SOURCE_TYPE_VOICE_RECOGNITION`、`SOURCE_TYPE_VOICE_COMMUNICATION`、`SOURCE_TYPE_VOICE_MESSAGE`或`SOURCE_TYPE_LIVE`）创建AudioCapturer失败，系统日志提示麦克风未授权。各音频源的权限要求请参考使用AudioCapturer开发音频录制功能。
 
 系统音频服务进程可能出现以下一条或多条日志：
 
@@ -221,8 +221,8 @@ audio_server: [CreateAudioProcessInner]Create audio process failed, no permissio
 
 **处理步骤**
 
-1. 确认应用已在`module.json5`中声明[ohos.permission.MICROPHONE](../../security/AccessToken/permissions-for-all-user.md#ohospermissionmicrophone)权限。
-2. 创建AudioCapturer前，检查应用是否已获得麦克风授权。未授权时，按照[向用户申请授权](../../security/AccessToken/request-user-authorization.md)完成授权申请。
+1. 确认应用已在`module.json5`中声明ohos.permission.MICROPHONE权限。
+2. 创建AudioCapturer前，检查应用是否已获得麦克风授权。未授权时，按照向用户申请授权完成授权申请。
 3. 用户拒绝授权时，不再创建使用Mic音频源的AudioCapturer，并在应用界面提示用户授权或停止录音操作。
 
 ### 调用start启动AudioCapturer失败-AudioCapturer状态异常
@@ -252,7 +252,7 @@ AudioCapturer创建成功，但调用start返回错误码`6800301`时，根据�
 
 1. 调用`start()`前检查AudioState。只有AudioCapturer处于`STATE_PREPARED`、`STATE_PAUSED`或`STATE_STOPPED`状态时才启动采集。
 2. 通过on('stateChange')监听状态变化，避免重复启动，避免在实例释放后继续操作。
-3. 按照“创建实例 -> 注册回调 -> 启动录制 -> 停止录制 -> 释放资源”的顺序调用。完整状态检查请参考使用AudioCapturer开发音频录制功能中的[完整示例](../../media/audio/using-audiocapturer-for-recording.md#完整示例)。
+3. 按照“创建实例 -> 注册回调 -> 启动录制 -> 停止录制 -> 释放资源”的顺序调用。完整状态检查请参考使用AudioCapturer开发音频录制功能中的完整示例。
 
 ### 调用start启动AudioCapturer失败-激活音频焦点失败
 
@@ -274,7 +274,7 @@ AudioCapturer创建成功，但调用start返回错误码`6800301`时，根据�
 
 **处理步骤**
 
-参考[录音并发策略说明](../../media/audio/audio-recording-concurrency.md)，确认当前录音场景是否允许与其他音频业务并发，并根据并发策略调整业务启动时机或录音流类型。
+参考录音并发策略说明，确认当前录音场景是否允许与其他音频业务并发，并根据并发策略调整业务启动时机或录音流类型。
 
 ### 调用start启动AudioCapturer失败-底层录音流启动异常
 

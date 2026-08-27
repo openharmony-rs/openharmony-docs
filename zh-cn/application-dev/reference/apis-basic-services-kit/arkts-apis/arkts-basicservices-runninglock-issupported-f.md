@@ -14,9 +14,7 @@ function isSupported(type: RunningLockType): boolean
 
 查询系统是否支持该类型的锁。
 
-**起始版本：** 23
-
-<!--Device-runningLock-function isSupported(type: RunningLockType): boolean--><!--Device-runningLock-function isSupported(type: RunningLockType): boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -43,9 +41,8 @@ function isSupported(type: RunningLockType): boolean
 ```TypeScript
 try {
     let isSupported = runningLock.isSupported(runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL);
-    console.info('BACKGROUND type supported: ' + isSupported);
-} catch(err) {
-    console.error('check supported failed, err: ' + err);
+    console.info('PROXIMITY_SCREEN_CONTROL type supported: ' + isSupported);
+} catch (err) {
+    console.error(`Failed to check supported. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

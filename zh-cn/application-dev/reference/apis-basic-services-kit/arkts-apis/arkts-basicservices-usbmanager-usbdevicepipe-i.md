@@ -2,9 +2,7 @@
 
 USB设备连接通道，用于确定总线地址和设备地址。
 
-**起始版本：** 23
-
-<!--Device-usbManager-interface USBDevicePipe--><!--Device-usbManager-interface USBDevicePipe-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -12,38 +10,32 @@ USB设备连接通道，用于确定总线地址和设备地址。
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## busNum
 
 ```TypeScript
-busNum: int
+busNum: number
 ```
 
 总线地址。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBDevicePipe-busNum: int--><!--Device-USBDevicePipe-busNum: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
 ## devAddress
 
 ```TypeScript
-devAddress: int
+devAddress: number
 ```
 
 设备地址。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBDevicePipe-devAddress: int--><!--Device-USBDevicePipe-devAddress: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
-

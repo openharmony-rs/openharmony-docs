@@ -2,9 +2,7 @@
 
 本模块接口为应用提供定制配置的获取能力，如渠道号等。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace customConfig--><!--Device-unnamed-declare namespace customConfig-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Customization.CustomConfig
 
@@ -21,4 +19,3 @@ import { customConfig } from '@kit.BasicServicesKit';
 | 名称 | 说明 |
 | --- | --- |
 | [getChannelId](arkts-basicservices-customconfig-getchannelid-f.md) | 获取应用的预装渠道号。 |
-

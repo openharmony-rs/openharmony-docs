@@ -6,7 +6,10 @@
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
 
+- [ArkTS API](arkts-apis/Readme-CN.md)<!--arkts-basicserviceskit-->
 - [C API](c-apis/Readme-CN.md)<!--c-basic-services-kit-->
+- 附录<!--basic-services-appendix-->
+  - [系统账号约束列表](appendix-osAccount-constraints.md)
 - 错误码<!--basic-services-arkts-errcode-->
   - [USB服务错误码](errorcode-usb.md)
   - [串口管理错误码](errorcode-busmanager-serial.md)
@@ -23,7 +26,7 @@
   - [热管理错误码](errorcode-thermal.md)
   - [上传下载错误码](errorcode-request.md)
   - [时间时区服务错误码](errorcode-time.md)
-  - [事件错误码](errorcode-CommonEventService.md)
+  - [公共事件错误码](errorcode-CommonEventService.md)
   <!--Del-->
   - [系统参数错误码](errorcode-system-parameterV9.md)
   <!--DelEnd-->

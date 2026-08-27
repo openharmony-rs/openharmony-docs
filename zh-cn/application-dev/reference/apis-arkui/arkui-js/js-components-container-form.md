@@ -24,17 +24,17 @@
 
 ## 属性
 
-支持[通用属性](js-components-common-attributes.md)。
+支持通用属性。
 
 
 ## 样式
 
-支持[组件通用样式](js-components-common-styles.md)。
+支持组件通用样式。
 
 
 ## 事件
 
-除支持[通用事件](js-components-common-events.md)外，还支持如下事件：
+除支持通用事件外，还支持如下事件：
 
 | 名称 | 参数 | 描述 |
 | -------- | -------- | -------- |
@@ -50,7 +50,7 @@
 
 ## 方法
 
-支持[通用方法](js-components-common-methods.md)。
+支持通用方法。
 
 
 ## 示例

@@ -9,16 +9,14 @@ import { scan } from '@kit.BasicServicesKit';
 ## getScannerCurrentSetting
 
 ```TypeScript
-function getScannerCurrentSetting(scannerId: string, optionIndex: int): Promise<ScannerOptionValue>
+function getScannerCurrentSetting(scannerId: string, optionIndex: number): Promise<ScannerOptionValue>
 ```
 
 获取当前扫描仪设置。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.PRINT
-
-<!--Device-scan-function getScannerCurrentSetting(scannerId: string, optionIndex: int): Promise<ScannerOptionValue>--><!--Device-scan-function getScannerCurrentSetting(scannerId: string, optionIndex: int): Promise<ScannerOptionValue>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -27,7 +25,7 @@ function getScannerCurrentSetting(scannerId: string, optionIndex: int): Promise<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | scannerId | string | 是 | 扫描仪的ID。 |
-| optionIndex | int | 是 | 要获取的选项的索引。 |
+| optionIndex | number | 是 | 要获取的选项的索引。 |
 
 **返回值：**
 
@@ -52,7 +50,6 @@ let optionIndex: number = 1;
 scan.getScannerCurrentSetting(scannerId, optionIndex).then((value: scan.ScannerOptionValue) => {
     console.info('get scanner current setting success: ' + JSON.stringify(value));
 }).catch((error: BusinessError) => {
-    console.error('get scanner current setting failed: ' + JSON.stringify(error));
-})
+    console.error(`Failed to get scanner current setting. Code: ${error.code}, message: ${error.message}`);
+});
 ```
-

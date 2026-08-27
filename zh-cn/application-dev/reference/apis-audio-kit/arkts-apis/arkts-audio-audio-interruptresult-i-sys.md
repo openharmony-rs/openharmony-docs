@@ -1,8 +1,8 @@
 # InterruptResult（系统接口）
 
-**起始版本：** 23
+音频中断结果。
 
-<!--Device-audio-interface InterruptResult--><!--Device-audio-interface InterruptResult-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 
@@ -12,22 +12,19 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## interruptNode
 
 ```TypeScript
-interruptNode: int
+interruptNode: number
 ```
 
-Interrupt node as a unit to receive interrupt change event.
+音频请求中断的节点。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-InterruptResult-interruptNode: int--><!--Device-InterruptResult-interruptNode: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 
@@ -39,13 +36,12 @@ Interrupt node as a unit to receive interrupt change event.
 requestResult: InterruptRequestResultType
 ```
 
+表示音频请求中断类型。
+
 **类型：** [InterruptRequestResultType](arkts-audio-audio-interruptrequestresulttype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-InterruptResult-requestResult: InterruptRequestResultType--><!--Device-InterruptResult-requestResult: InterruptRequestResultType-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 
 **系统接口：** 此接口为系统接口。
-

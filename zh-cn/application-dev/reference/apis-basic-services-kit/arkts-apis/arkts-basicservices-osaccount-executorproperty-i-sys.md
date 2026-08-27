@@ -2,9 +2,7 @@
 
 提供执行器的属性。
 
-**起始版本：** 23
-
-<!--Device-osAccount-interface ExecutorProperty--><!--Device-osAccount-interface ExecutorProperty-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -26,9 +24,7 @@ authSubType: AuthSubType
 
 **类型：** [AuthSubType](arkts-basicservices-osaccount-authsubtype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-ExecutorProperty-authSubType: AuthSubType--><!--Device-ExecutorProperty-authSubType: AuthSubType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -37,16 +33,14 @@ authSubType: AuthSubType
 ## credentialLength
 
 ```TypeScript
-credentialLength?: int
+credentialLength?: number
 ```
 
 指示凭据长度，默认为undefined。查询生物信息等无定长属性的凭据时返回undefined。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ExecutorProperty-credentialLength?: int--><!--Device-ExecutorProperty-credentialLength?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -62,9 +56,7 @@ enrollmentProgress?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ExecutorProperty-enrollmentProgress?: string--><!--Device-ExecutorProperty-enrollmentProgress?: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -73,16 +65,14 @@ enrollmentProgress?: string
 ## freezingTime
 
 ```TypeScript
-freezingTime?: int
+freezingTime?: number
 ```
 
 指示冻结时间，单位为ms，默认为-1。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ExecutorProperty-freezingTime?: int--><!--Device-ExecutorProperty-freezingTime?: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -91,16 +81,14 @@ freezingTime?: int
 ## nextPhaseFreezingTime
 
 ```TypeScript
-nextPhaseFreezingTime?: int
+nextPhaseFreezingTime?: number
 ```
 
 指示下次冻结时间，单位为ms，默认为undefined。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ExecutorProperty-nextPhaseFreezingTime?: int--><!--Device-ExecutorProperty-nextPhaseFreezingTime?: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -109,16 +97,14 @@ nextPhaseFreezingTime?: int
 ## remainTimes
 
 ```TypeScript
-remainTimes?: int
+remainTimes?: number
 ```
 
 指示剩余次数，默认为-1。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ExecutorProperty-remainTimes?: int--><!--Device-ExecutorProperty-remainTimes?: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -127,16 +113,14 @@ remainTimes?: int
 ## result
 
 ```TypeScript
-result: int
+result: number
 ```
 
 指示结果。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ExecutorProperty-result: int--><!--Device-ExecutorProperty-result: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -152,11 +136,8 @@ sensorInfo?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ExecutorProperty-sensorInfo?: string--><!--Device-ExecutorProperty-sensorInfo?: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
-

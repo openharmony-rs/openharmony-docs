@@ -2,9 +2,7 @@
 
 USB设备信息。
 
-**起始版本：** 23
-
-<!--Device-usbManager-interface USBDevice--><!--Device-usbManager-interface USBDevice-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -12,38 +10,33 @@ USB设备信息。
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## busNum
 
 ```TypeScript
-busNum: int
+busNum: number
 ```
 
 总线地址。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBDevice-busNum: int--><!--Device-USBDevice-busNum: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
 ## clazz
 
 ```TypeScript
-clazz: int
+clazz: number
 ```
 
 设备类型代码。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBDevice-clazz: int--><!--Device-USBDevice-clazz: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -57,25 +50,21 @@ configs: Array<USBConfiguration>
 
 **类型：** Array&lt;[USBConfiguration](arkts-basicservices-usbmanager-usbconfiguration-i.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-USBDevice-configs: Array<USBConfiguration>--><!--Device-USBDevice-configs: Array<USBConfiguration>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
 ## devAddress
 
 ```TypeScript
-devAddress: int
+devAddress: number
 ```
 
 设备地址。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBDevice-devAddress: int--><!--Device-USBDevice-devAddress: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -89,9 +78,7 @@ manufacturerName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-USBDevice-manufacturerName: string--><!--Device-USBDevice-manufacturerName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -105,25 +92,21 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-USBDevice-name: string--><!--Device-USBDevice-name: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
 ## productId
 
 ```TypeScript
-productId: int
+productId: number
 ```
 
 产品ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBDevice-productId: int--><!--Device-USBDevice-productId: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -137,25 +120,21 @@ productName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-USBDevice-productName: string--><!--Device-USBDevice-productName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
 ## protocol
 
 ```TypeScript
-protocol: int
+protocol: number
 ```
 
 设备协议代码。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBDevice-protocol: int--><!--Device-USBDevice-protocol: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -169,41 +148,35 @@ serial: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-USBDevice-serial: string--><!--Device-USBDevice-serial: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
 ## subClass
 
 ```TypeScript
-subClass: int
+subClass: number
 ```
 
 设备子类型代码。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBDevice-subClass: int--><!--Device-USBDevice-subClass: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
 ## vendorId
 
 ```TypeScript
-vendorId: int
+vendorId: number
 ```
 
 厂商ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBDevice-vendorId: int--><!--Device-USBDevice-vendorId: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -217,9 +190,6 @@ version: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-USBDevice-version: string--><!--Device-USBDevice-version: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
-

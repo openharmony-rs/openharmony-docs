@@ -2,9 +2,7 @@
 
 配置策略提供按系统预定义的定制配置层级获取对应目录和文件路径的能力。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace configPolicy--><!--Device-unnamed-declare namespace configPolicy-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Customization.ConfigPolicy
 
@@ -47,4 +45,3 @@ import { configPolicy } from '@kit.BasicServicesKit';
 | --- | --- |
 | [FollowXMode](arkts-basicservices-configpolicy-followxmode-e-sys.md) |  |
 <!--DelEnd-->
-

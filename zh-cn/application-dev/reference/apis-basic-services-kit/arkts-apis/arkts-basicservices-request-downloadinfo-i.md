@@ -2,9 +2,7 @@
 
 下载任务信息，[getTaskInfo](arkts-basicservices-request-downloadtask-i.md#gettaskinfo)接口的回调参数。
 
-**起始版本：** 23
-
-<!--Device-request-interface DownloadInfo--><!--Device-request-interface DownloadInfo-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
-import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
 ## description
@@ -25,25 +22,35 @@ description: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 7
 
-<!--Device-DownloadInfo-description: string--><!--Device-DownloadInfo-description: string-End-->
+**系统能力：** SystemCapability.MiscServices.Download
+
+## downloadedBytes
+
+```TypeScript
+downloadedBytes: number
+```
+
+实时下载大小，单位为字节（B）。
+
+**类型：** number
+
+**起始版本：** 7
 
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## downloadId
 
 ```TypeScript
-downloadId: long
+downloadId: number
 ```
 
 下载任务id。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DownloadInfo-downloadId: long--><!--Device-DownloadInfo-downloadId: long-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -57,57 +64,35 @@ downloadTitle: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DownloadInfo-downloadTitle: string--><!--Device-DownloadInfo-downloadTitle: string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## downloadTotalBytes
 
 ```TypeScript
-downloadTotalBytes: long
+downloadTotalBytes: number
 ```
 
 下载的文件的总大小，单位为字节（B）。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DownloadInfo-downloadTotalBytes: long--><!--Device-DownloadInfo-downloadTotalBytes: long-End-->
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-## downloadedBytes
-
-```TypeScript
-downloadedBytes: long
-```
-
-实时下载大小，单位为字节（B）。
-
-**类型：** long
-
-**起始版本：** 23
-
-<!--Device-DownloadInfo-downloadedBytes: long--><!--Device-DownloadInfo-downloadedBytes: long-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## failedReason
 
 ```TypeScript
-failedReason: int
+failedReason: number
 ```
 
-下载失败原因，可以是任何 下载任务的错误码常量。
+下载失败原因，可以是任何 [下载任务的错误码](../../../reference/apis-basic-services-kit/js-apis-request.md#constants)常量。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DownloadInfo-failedReason: int--><!--Device-DownloadInfo-failedReason: int-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -121,9 +106,7 @@ fileName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DownloadInfo-fileName: string--><!--Device-DownloadInfo-fileName: string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -137,41 +120,35 @@ filePath: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DownloadInfo-filePath: string--><!--Device-DownloadInfo-filePath: string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## pausedReason
 
 ```TypeScript
-pausedReason: int
+pausedReason: number
 ```
 
-会话暂停的原因，可以是任何 下载任务暂停原因常量。
+会话暂停的原因，可以是任何 [下载任务暂停原因](../../../reference/apis-basic-services-kit/js-apis-request.md#constants)常量。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DownloadInfo-pausedReason: int--><!--Device-DownloadInfo-pausedReason: int-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## status
 
 ```TypeScript
-status: int
+status: number
 ```
 
-下载状态码，可以是任何 下载任务状态码常量。
+下载状态码，可以是任何 [下载任务状态码](../../../reference/apis-basic-services-kit/js-apis-request.md#constants)常量。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DownloadInfo-status: int--><!--Device-DownloadInfo-status: int-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -185,9 +162,6 @@ targetURI: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DownloadInfo-targetURI: string--><!--Device-DownloadInfo-targetURI: string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.MiscServices.Download
-

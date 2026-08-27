@@ -1,10 +1,8 @@
 # PlaybackCaptureStartState
 
-表示调用[requestPlaybackCaptureStart](arkts-audio-audio-audiocapturer-i.md#requestplaybackcapturestart)后异步返回的内录启动状态的枚举。
+表示调用[requestPlaybackCaptureStart](arkts-audio-audio-audiocapturer-i.md#requestplaybackcapturestart)后异步返 回的内录启动状态的枚举。
 
 **起始版本：** 26.0.0
-
-<!--Device-audio-enum PlaybackCaptureStartState--><!--Device-audio-enum PlaybackCaptureStartState-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
 
@@ -20,8 +18,6 @@ STATE_SUCCESS = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PlaybackCaptureStartState-STATE_SUCCESS = 0--><!--Device-PlaybackCaptureStartState-STATE_SUCCESS = 0-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
 
 ## STATE_FAILED
@@ -35,8 +31,6 @@ STATE_FAILED = 1
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PlaybackCaptureStartState-STATE_FAILED = 1--><!--Device-PlaybackCaptureStartState-STATE_FAILED = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
 
@@ -52,7 +46,4 @@ STATE_NOT_AUTHORIZED = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PlaybackCaptureStartState-STATE_NOT_AUTHORIZED = 2--><!--Device-PlaybackCaptureStartState-STATE_NOT_AUTHORIZED = 2-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
-

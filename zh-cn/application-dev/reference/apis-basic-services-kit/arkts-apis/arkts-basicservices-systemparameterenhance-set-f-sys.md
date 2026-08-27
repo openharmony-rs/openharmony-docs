@@ -14,9 +14,7 @@ function set(key: string, value: string, callback: AsyncCallback<void>): void
 
 设置系统参数key对应的值，使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-systemParameterEnhance-function set(key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-systemParameterEnhance-function set(key: string, value: string, callback: AsyncCallback<void>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -28,7 +26,7 @@ function set(key: string, value: string, callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | key | string | 是 | 待设置的系统参数key。最大长度128字节，只允许字母数字加"."，"-"，"@"，":"或"_"，不允许".."。 |
 | value | string | 是 | 待设置的系统参数值。最大长度96字节（包括结束符）。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，异步设置系统参数。成功时err为undefined；失败时err为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，异步设置系统参数。成功时err为undefined；失败时err为错误对象。 |
 
 **错误码：**
 
@@ -66,9 +64,7 @@ function set(key: string, value: string): Promise<void>
 
 设置系统参数key对应的值，使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-systemParameterEnhance-function set(key: string, value: string): Promise<void>--><!--Device-systemParameterEnhance-function set(key: string, value: string): Promise<void>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -85,7 +81,7 @@ function set(key: string, value: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise实例，用于异步获取结果。 |
+| Promise & lt;void & gt; | Promise实例，用于异步获取结果。 |
 
 **错误码：**
 
@@ -112,4 +108,3 @@ try {
   console.error('set unexpected error: ' + e);
 }
 ```
-

@@ -23,12 +23,12 @@ grid-row是栅格布局容器grid-container的子容器组件，使用flex横向
 
 ## 属性
 
-支持[通用属性](js-components-common-attributes.md)。
+支持通用属性。
 
 
 ## 样式
 
-除支持[通用样式](js-components-common-styles.md)外，还支持如下样式：
+除支持通用样式外，还支持如下样式：
 
 | 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -43,14 +43,14 @@ grid-row是栅格布局容器grid-container的子容器组件，使用flex横向
 
 ## 事件
 
-支持[通用事件](js-components-common-events.md)。
+支持通用事件。
 
 
 ## 方法
 
-支持[通用方法](js-components-common-methods.md)。
+支持通用方法。
 
 
 ## 示例
 
-详见[grid-col示例](js-components-grid-col.md#示例)。
+详见grid-col示例。

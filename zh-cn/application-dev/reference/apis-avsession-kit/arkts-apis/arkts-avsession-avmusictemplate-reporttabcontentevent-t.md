@@ -10,8 +10,6 @@ type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => voi
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avMusicTemplate-type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => void--><!--Device-avMusicTemplate-type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => void-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
@@ -20,4 +18,3 @@ type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => voi
 | --- | --- | --- | --- |
 | tabId | string | 是 | 标签页的ID。 |
 | tabContent | [MediaTabContent](arkts-avsession-avmusictemplate-mediatabcontent-i.md) | 是 | 标签页的内容。 |
-

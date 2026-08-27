@@ -1,4 +1,4 @@
-# FunctionType(USB Manager)（系统接口）
+# FunctionType（系统接口）
 
 USB设备侧功能。
 
@@ -7,8 +7,6 @@ USB设备侧功能。
 **废弃版本：** 9
 
 **替代接口：** [FunctionType](arkts-basicservices-usbmanager-functiontype-e-sys.md)
-
-<!--Device-usb-export enum FunctionType--><!--Device-usb-export enum FunctionType-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -28,8 +26,6 @@ NONE = 0
 
 **替代接口：** [NONE](arkts-basicservices-usbmanager-functiontype-e-sys.md#none)
 
-<!--Device-FunctionType-NONE = 0--><!--Device-FunctionType-NONE = 0-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 **系统接口：** 此接口为系统接口。
@@ -47,8 +43,6 @@ acm功能。
 **废弃版本：** 9
 
 **替代接口：** [ACM](arkts-basicservices-usbmanager-functiontype-e-sys.md#acm)
-
-<!--Device-FunctionType-ACM = 1--><!--Device-FunctionType-ACM = 1-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -68,8 +62,6 @@ ecm功能。
 
 **替代接口：** [ECM](arkts-basicservices-usbmanager-functiontype-e-sys.md#ecm)
 
-<!--Device-FunctionType-ECM = 2--><!--Device-FunctionType-ECM = 2-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 **系统接口：** 此接口为系统接口。
@@ -87,8 +79,6 @@ hdc功能。
 **废弃版本：** 9
 
 **替代接口：** [HDC](arkts-basicservices-usbmanager-functiontype-e-sys.md#hdc)
-
-<!--Device-FunctionType-HDC = 4--><!--Device-FunctionType-HDC = 4-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -108,8 +98,6 @@ MTP = 8
 
 **替代接口：** [MTP](arkts-basicservices-usbmanager-functiontype-e-sys.md#mtp)
 
-<!--Device-FunctionType-MTP = 8--><!--Device-FunctionType-MTP = 8-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 **系统接口：** 此接口为系统接口。
@@ -127,8 +115,6 @@ PTP = 16
 **废弃版本：** 9
 
 **替代接口：** [PTP](arkts-basicservices-usbmanager-functiontype-e-sys.md#ptp)
-
-<!--Device-FunctionType-PTP = 16--><!--Device-FunctionType-PTP = 16-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -148,8 +134,6 @@ RNDIS = 32
 
 **替代接口：** [RNDIS](arkts-basicservices-usbmanager-functiontype-e-sys.md#rndis)
 
-<!--Device-FunctionType-RNDIS = 32--><!--Device-FunctionType-RNDIS = 32-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 **系统接口：** 此接口为系统接口。
@@ -167,8 +151,6 @@ midi功能。
 **废弃版本：** 9
 
 **替代接口：** [MIDI](arkts-basicservices-usbmanager-functiontype-e-sys.md#midi)
-
-<!--Device-FunctionType-MIDI = 64--><!--Device-FunctionType-MIDI = 64-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -188,8 +170,6 @@ AUDIO_SOURCE = 128
 
 **替代接口：** [AUDIO_SOURCE](arkts-basicservices-usbmanager-functiontype-e-sys.md#audio_source)
 
-<!--Device-FunctionType-AUDIO_SOURCE = 128--><!--Device-FunctionType-AUDIO_SOURCE = 128-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 **系统接口：** 此接口为系统接口。
@@ -208,9 +188,6 @@ ncm传输。
 
 **替代接口：** [NCM](arkts-basicservices-usbmanager-functiontype-e-sys.md#ncm)
 
-<!--Device-FunctionType-NCM = 256--><!--Device-FunctionType-NCM = 256-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 **系统接口：** 此接口为系统接口。
-

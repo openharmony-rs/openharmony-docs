@@ -10,7 +10,7 @@
 >
 >  从API version 4开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-使用CanvasRenderingContext2D在[canvas组件](./js-components-canvas-canvas.md)上进行绘制，绘制对象可以是矩形、文本、图片等。
+使用CanvasRenderingContext2D在canvas组件上进行绘制，绘制对象可以是矩形、文本、图片等。
 
 
 **示例：** 
@@ -55,23 +55,23 @@
 ## 属性
 | 名称                                       | 类型                                       | 描述                                       |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| [fillStyle](#fillstyle)                  | &lt;color&gt;&nbsp;\|&nbsp;[CanvasGradient](js-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](../../apis-arkui/arkui-ts/ts-components-canvas-canvaspattern.md) | 指定绘制的填充色。<br/>-&nbsp;类型为&lt;color&gt;时，表示设置填充区域的颜色。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用&nbsp;createLinearGradient()方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用&nbsp;createPattern()方法创建。<br/>超出取值范围填充为黑色。 |
-| [lineWidth](#linewidth)                  | number                                   | 设置绘制线条的宽度。                               |
-| [strokeStyle](#strokestyle)              | &lt;color&gt;&nbsp;\|&nbsp;[CanvasGradient](js-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](../../apis-arkui/arkui-ts/ts-components-canvas-canvaspattern.md) | 设置描边的颜色。<br/>-&nbsp;类型为&lt;color&gt;时，表示设置描边使用的颜色。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用&nbsp;createLinearGradient()方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用&nbsp;createPattern()方法创建。 |
-| [lineCap](#linecap)                      | string                                   | 指定线端点的样式，可选值为：<br/>-&nbsp;butt：线端点以方形结束。<br/>-&nbsp;round：线端点以圆形结束。<br/>-&nbsp;square：线端点以方形结束，该样式下会增加一个长度和线段厚度相同，宽度是线段厚度一半的矩形。<br>默认值：butt |
-| [lineJoin](#linejoin)                    | string                                   | 指定线段间相交的交点样式，可选值为：<br/>-&nbsp;round：在线段相连处绘制一个扇形，扇形的圆角半径是线段的宽度。<br/>-&nbsp;bevel：在线段相连处使用三角形为底填充，&nbsp;每个部分矩形拐角独立。<br/>-&nbsp;miter：在相连部分的外边缘处进行延伸，使其相交于一点，形成一个菱形区域，该属性可以通过设置miterLimit属性展现效果。<br>默认值：miter |
-| [miterLimit](#miterlimit)                | number                                   | 设置斜接面限制值，该值指定了线条相交处内角和外角的距离。<br>默认值：10   |
-| [font](#font)                            | string                                   | 设置文本绘制中的字体样式。<br/>语法：ctx.font="font-style&nbsp;font-weight&nbsp;font-size&nbsp;font-family"<sup>5+</sup><br/>-&nbsp;font-style(可选)，用于指定字体样式，支持如下几种样式：normal,&nbsp;italic。<br/>-&nbsp;font-weight(可选)，用于指定字体的粗细，支持如下几种类型：normal,&nbsp;bold,&nbsp;bolder,&nbsp;lighter,&nbsp;100,&nbsp;200,&nbsp;300,&nbsp;400,&nbsp;500,&nbsp;600,&nbsp;700,&nbsp;800,&nbsp;900。<br/>-&nbsp;font-size(可选)，指定字号和行高，单位只支持px。<br/>-&nbsp;font-family(可选)，指定字体系列，支持如下几种类型：sans-serif,&nbsp;serif,&nbsp;monospace。<br>默认值："normal&nbsp;normal&nbsp;14px&nbsp;sans-serif" |
-| [textAlign](#textalign)                  | string                                   | 设置文本绘制中的文本对齐方式，可选值为：<br/>-&nbsp;left：文本左对齐。<br/>-&nbsp;right：文本右对齐。<br/>-&nbsp;center：文本居中对齐。<br/>-&nbsp;start：文本对齐界线开始的地方。<br/>-&nbsp;end：文本对齐界线结束的地方。<br/>ltr布局模式下start和left一致，rtl布局模式下start和right一致。<br>默认值：left |
-| [textBaseline](#textbaseline)            | string                                   | 设置文本绘制中的基线对齐方式，可选值为：<br/>-&nbsp;alphabetic：文本基线是标准的字母基线。<br/>-&nbsp;top：文本基线在文本块的顶部。<br/>-&nbsp;hanging：文本基线是悬挂基线。<br/>-&nbsp;middle：文本基线在文本块的中间。<br/>-&nbsp;ideographic：文字基线是表意字基线；如果字符本身超出了alphabetic&nbsp;基线，那么ideographic基线位置在字符本身的底部。<br/>-&nbsp;bottom：文本基线在文本块的底部。&nbsp;与&nbsp;ideographic&nbsp;基线的区别在于&nbsp;ideographic&nbsp;基线不需要考虑下行字母。<br>默认值： alphabetic |
-| [globalAlpha](#globalalpha)              | number                                   | 设置透明度。<br>范围为[0.0, 1.0]，0.0为完全透明，1.0为完全不透明。若给定值小于0.0，则取值0.0；若给定值大于1.0，则取值1.0。   |
-| [lineDashOffset](#linedashoffset)        | number                                   | 设置画布的虚线偏移量，精度为float。<br>默认值：0.0          |
-| [globalCompositeOperation](#globalcompositeoperation) | string                                   | 设置合成操作的方式。类型字段可选值有source-over，source-atop，source-in，source-out，destination-over，destination-atop，destination-in，destination-out，lighter，copy，xor。具体请参考[类型字段说明](#globalcompositeoperation)。<br>默认值：source-over |
-| [shadowBlur](#shadowblur)                | number                                   | 设置绘制阴影时的模糊级别，值越大越模糊，精度为float。<br>默认值：0.0 |
-| [shadowColor](#shadowcolor)              | &lt;color&gt;                            | 设置绘制阴影时的阴影颜色。                            |
-| [shadowOffsetX](#shadowoffsetx)          | number                                   | 设置绘制阴影时和原有对象的水平偏移值。                      |
-| [shadowOffsetY](#shadowoffsety)          | number                                   | 设置绘制阴影时和原有对象的垂直偏移值。                      |
-| [imageSmoothingEnabled](#imagesmoothingenabled) | boolean                                  | 用于设置绘制图片时是否进行图像平滑度调整，true为启用，false为不启用。<br>默认值：true |
+| fillStyle                  | &lt;color&gt;&nbsp;\|&nbsp;CanvasGradient&nbsp;\|&nbsp;CanvasPattern | 指定绘制的填充色。<br/>-&nbsp;类型为&lt;color&gt;时，表示设置填充区域的颜色。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用&nbsp;createLinearGradient()方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用&nbsp;createPattern()方法创建。<br/>超出取值范围填充为黑色。 |
+| lineWidth                  | number                                   | 设置绘制线条的宽度。                               |
+| strokeStyle              | &lt;color&gt;&nbsp;\|&nbsp;CanvasGradient&nbsp;\|&nbsp;CanvasPattern | 设置描边的颜色。<br/>-&nbsp;类型为&lt;color&gt;时，表示设置描边使用的颜色。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用&nbsp;createLinearGradient()方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用&nbsp;createPattern()方法创建。 |
+| lineCap                      | string                                   | 指定线端点的样式，可选值为：<br/>-&nbsp;butt：线端点以方形结束。<br/>-&nbsp;round：线端点以圆形结束。<br/>-&nbsp;square：线端点以方形结束，该样式下会增加一个长度和线段厚度相同，宽度是线段厚度一半的矩形。<br>默认值：butt |
+| lineJoin                    | string                                   | 指定线段间相交的交点样式，可选值为：<br/>-&nbsp;round：在线段相连处绘制一个扇形，扇形的圆角半径是线段的宽度。<br/>-&nbsp;bevel：在线段相连处使用三角形为底填充，&nbsp;每个部分矩形拐角独立。<br/>-&nbsp;miter：在相连部分的外边缘处进行延伸，使其相交于一点，形成一个菱形区域，该属性可以通过设置miterLimit属性展现效果。<br>默认值：miter |
+| miterLimit                | number                                   | 设置斜接面限制值，该值指定了线条相交处内角和外角的距离。<br>默认值：10   |
+| font                            | string                                   | 设置文本绘制中的字体样式。<br/>语法：ctx.font="font-style&nbsp;font-weight&nbsp;font-size&nbsp;font-family"<sup>5+</sup><br/>-&nbsp;font-style(可选)，用于指定字体样式，支持如下几种样式：normal,&nbsp;italic。<br/>-&nbsp;font-weight(可选)，用于指定字体的粗细，支持如下几种类型：normal,&nbsp;bold,&nbsp;bolder,&nbsp;lighter,&nbsp;100,&nbsp;200,&nbsp;300,&nbsp;400,&nbsp;500,&nbsp;600,&nbsp;700,&nbsp;800,&nbsp;900。<br/>-&nbsp;font-size(可选)，指定字号和行高，单位只支持px。<br/>-&nbsp;font-family(可选)，指定字体系列，支持如下几种类型：sans-serif,&nbsp;serif,&nbsp;monospace。<br>默认值："normal&nbsp;normal&nbsp;14px&nbsp;sans-serif" |
+| textAlign                  | string                                   | 设置文本绘制中的文本对齐方式，可选值为：<br/>-&nbsp;left：文本左对齐。<br/>-&nbsp;right：文本右对齐。<br/>-&nbsp;center：文本居中对齐。<br/>-&nbsp;start：文本对齐界线开始的地方。<br/>-&nbsp;end：文本对齐界线结束的地方。<br/>ltr布局模式下start和left一致，rtl布局模式下start和right一致。<br>默认值：left |
+| textBaseline            | string                                   | 设置文本绘制中的基线对齐方式，可选值为：<br/>-&nbsp;alphabetic：文本基线是标准的字母基线。<br/>-&nbsp;top：文本基线在文本块的顶部。<br/>-&nbsp;hanging：文本基线是悬挂基线。<br/>-&nbsp;middle：文本基线在文本块的中间。<br/>-&nbsp;ideographic：文字基线是表意字基线；如果字符本身超出了alphabetic&nbsp;基线，那么ideographic基线位置在字符本身的底部。<br/>-&nbsp;bottom：文本基线在文本块的底部。&nbsp;与&nbsp;ideographic&nbsp;基线的区别在于&nbsp;ideographic&nbsp;基线不需要考虑下行字母。<br>默认值： alphabetic |
+| globalAlpha              | number                                   | 设置透明度。<br>范围为[0.0, 1.0]，0.0为完全透明，1.0为完全不透明。若给定值小于0.0，则取值0.0；若给定值大于1.0，则取值1.0。   |
+| lineDashOffset        | number                                   | 设置画布的虚线偏移量，精度为float。<br>默认值：0.0          |
+| globalCompositeOperation | string                                   | 设置合成操作的方式。类型字段可选值有source-over，source-atop，source-in，source-out，destination-over，destination-atop，destination-in，destination-out，lighter，copy，xor。具体请参考类型字段说明。<br>默认值：source-over |
+| shadowBlur                | number                                   | 设置绘制阴影时的模糊级别，值越大越模糊，精度为float。<br>默认值：0.0 |
+| shadowColor              | &lt;color&gt;                            | 设置绘制阴影时的阴影颜色。                            |
+| shadowOffsetX          | number                                   | 设置绘制阴影时和原有对象的水平偏移值。                      |
+| shadowOffsetY          | number                                   | 设置绘制阴影时和原有对象的垂直偏移值。                      |
+| imageSmoothingEnabled | boolean                                  | 用于设置绘制图片时是否进行图像平滑度调整，true为启用，false为不启用。<br>默认值：true |
 
 
 ### fillStyle
@@ -1000,7 +1000,7 @@ createPattern(image: Image, repetition: string): Object
 
 | 参数名 | 类型    | 必填 | 说明                         |
 | ------ | ------- | ---- | ---------------------------- |
-| image      | Image  | 是 | 图源对象，具体参考[Image对象](js-components-canvas-image.md)。 |
+| image      | Image  | 是 | 图源对象，具体参考Image对象。 |
 | repetition | string | 是 | 设置图像重复的方式，取值为：'repeat'、'repeat-x'、&nbsp;'repeat-y'、'no-repeat'。 |
 
 **返回值：** 
@@ -1576,7 +1576,7 @@ createPath2D(path: Path2D, cmds: string): Path2D
 
 **返回值：**
 
-  [Path2D对象](js-components-canvas-path2d.md)
+  Path2D对象
 
 **示例：** 
   ```html
@@ -1620,7 +1620,7 @@ drawImage(image: Image | PixelMap, sx: number, sy: number, sWidth: number, sHeig
 
 | 参数名 | 类型    | 必填 | 说明                         |
 | ------ | ------- | ---- | ---------------------------- |
-| image   | Image \| PixelMap<sup>9+</sup> | 是 | 图片资源，请参考[Image对象](js-components-canvas-image.md) 或PixelMap对象。 |
+| image   | Image \| PixelMap<sup>9+</sup> | 是 | 图片资源，请参考Image对象 或PixelMap对象。 |
 | sx      | number                         | 是 | 裁切源图像时距离源图像左上角的x坐标值。<br>单位：vp                     |
 | sy      | number                         | 是 | 裁切源图像时距离源图像左上角的y坐标值。 <br>单位：vp                    |
 | sWidth  | number                         | 是 | 裁切源图像时需要裁切的宽度。 <br>单位：vp                     |
@@ -1712,7 +1712,7 @@ save(): void
 
 createLinearGradient(x0: number, y0: number, x1: number, y1: number): Object
 
-创建一个线性渐变色，返回CanvasGradient对象，请参考[CanvasGradient对象](js-components-canvas-canvasgradient.md)。
+创建一个线性渐变色，返回CanvasGradient对象，请参考CanvasGradient对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1820,7 +1820,7 @@ createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number,
 
 createImageData(width: number, height: number): ImageData
 
-创建新的、空白的、指定大小的ImageData对象，请参考[ImageData对象](js-components-canvas-imagedata.md)。
+创建新的、空白的、指定大小的ImageData对象，请参考ImageData对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1835,7 +1835,7 @@ createImageData(width: number, height: number): ImageData
 
 | 类型     | 说明                |
 | ------ | ----------------- |
-| [ImageData](js-components-canvas-imagedata.md) | 返回创建的ImageData对象。 |
+| ImageData | 返回创建的ImageData对象。 |
 
 **示例：**
   ```html
@@ -1860,7 +1860,7 @@ createImageData(width: number, height: number): ImageData
 
 createImageData(imageData: ImageData): ImageData
 
-根据一个现有的ImageData对象，重新创建一个宽、高相同但不会复制图像数据的ImageData对象，请参考[ImageData对象](js-components-canvas-imagedata.md)。
+根据一个现有的ImageData对象，重新创建一个宽、高相同但不会复制图像数据的ImageData对象，请参考ImageData对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1868,13 +1868,13 @@ createImageData(imageData: ImageData): ImageData
 
 | 参数名        | 类型     | 必填     | 说明                |
 | --------- | ------ | ------ |----------------- |
-| imageData | [ImageData](js-components-canvas-imagedata.md) | 是 |复制现有的ImageData对象。 |
+| imageData | ImageData | 是 |复制现有的ImageData对象。 |
 
 **返回值：**
 
 | 类型     | 说明                |
 | ------ | ----------------- |
-| [ImageData](js-components-canvas-imagedata.md) | 返回创建的ImageData对象。 |
+| ImageData | 返回创建的ImageData对象。 |
 
 **示例：** 
   ```html
@@ -1900,7 +1900,7 @@ createImageData(imageData: ImageData): ImageData
 
 getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
 
-以当前canvas指定区域内的像素创建[ImageData对象](js-components-canvas-imagedata.md)。
+以当前canvas指定区域内的像素创建ImageData对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1917,7 +1917,7 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
 
 | 类型     | 说明                      |
 | ------ | ----------------------- |
-| [ImageData](js-components-canvas-imagedata.md) | 返回包含指定区域像素的ImageData对象。 |
+| ImageData | 返回包含指定区域像素的ImageData对象。 |
 
 **示例：** 
   ```html
@@ -1950,7 +1950,7 @@ putImageData(imageData: ImageData, dx: number, dy: number, dirtyX: number, dirty
 
 | 参数名 | 类型    | 必填 | 说明                         |
 | ------ | ------- | ---- | ---------------------------- |
-| imageData   | [ImageData](js-components-canvas-imagedata.md) | 是 | 包含像素值的ImageData对象。            |
+| imageData   | ImageData | 是 | 包含像素值的ImageData对象。            |
 | dx          | number | 是 | 填充区域在x轴方向的偏移量。<br>单位：vp                |
 | dy          | number | 是 | 填充区域在y轴方向的偏移量。<br>单位：vp                |
 | dirtyX      | number | 是 | 源图像数据矩形裁切范围左上角距离源图像左上角的x轴偏移量。<br>单位：vp |
@@ -1997,7 +1997,7 @@ putImageData(imageData: ImageData, dx: number, dy: number): void
 
 | 参数名 | 类型    | 必填 | 说明                         |
 | ------ | ------- | ---- | ---------------------------- |
-| imageData   | [ImageData](js-components-canvas-imagedata.md) | 是 | 包含像素值的ImageData对象。            |
+| imageData   | ImageData | 是 | 包含像素值的ImageData对象。            |
 | dx          | number | 是 | 填充区域在x轴方向的偏移量。<br>单位：vp                |
 | dy          | number | 是 | 填充区域在y轴方向的偏移量。<br>单位：vp                |
 
@@ -2146,7 +2146,7 @@ getLineDash(): Array
 
 transferFromImageBitmap(bitmap: ImageBitmap): void
 
-显示给定的[ImageBitmap对象](js-components-canvas-imagebitmap.md)。
+显示给定的ImageBitmap对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2154,7 +2154,7 @@ transferFromImageBitmap(bitmap: ImageBitmap): void
 
 | 参数名 | 类型    | 必填 | 说明                         |
 | ------ | ------- | ---- | ---------------------------- |
-| bitmap | [ImageBitmap](js-components-canvas-imagebitmap.md) | 是 | 待显示的ImageBitmap对象。 |
+| bitmap | ImageBitmap | 是 | 待显示的ImageBitmap对象。 |
 
 **示例：** 
   ```html

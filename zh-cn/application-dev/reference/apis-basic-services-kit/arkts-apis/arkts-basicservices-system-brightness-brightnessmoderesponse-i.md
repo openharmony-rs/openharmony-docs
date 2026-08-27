@@ -6,8 +6,6 @@
 
 **废弃版本：** 7
 
-<!--Device-unnamed-export interface BrightnessModeResponse--><!--Device-unnamed-export interface BrightnessModeResponse-End-->
-
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 ## 导入模块
@@ -30,7 +28,4 @@ mode: number
 
 **废弃版本：** 7
 
-<!--Device-BrightnessModeResponse-mode: number--><!--Device-BrightnessModeResponse-mode: number-End-->
-
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
-

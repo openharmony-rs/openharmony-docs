@@ -23,22 +23,22 @@
 
 ## 属性
 
-支持[通用属性](js-components-common-attributes.md)。
+支持通用属性。
 
 
 ## 样式
 
-支持[通用样式](js-components-common-styles.md)。
+支持通用样式。
 
 
 ## 事件
 
-支持[通用事件](js-components-common-events.md)。
+支持通用事件。
 
 
 ## 方法
 
-除支持[通用方法](js-components-common-methods.md)外，还支持如下方法：
+除支持通用方法外，还支持如下方法：
 
 
 ### getContext
@@ -58,7 +58,7 @@ getContext(type: '2d', options?:  ContextAttrOptions): CanvasRenderingContext2D
 
 | 类型                                       | 说明                   |
 | ---------------------------------------- | -------------------- |
-| [CanvasRenderingContext2D](js-components-canvas-canvasrenderingcontext2d.md) | 用于在画布组件上绘制矩形、文本、图片等。 |
+| CanvasRenderingContext2D | 用于在画布组件上绘制矩形、文本、图片等。 |
 
 ### toDataURL<sup>6+</sup>
 

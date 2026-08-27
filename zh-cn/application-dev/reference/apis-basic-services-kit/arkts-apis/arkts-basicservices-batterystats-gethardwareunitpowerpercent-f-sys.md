@@ -9,14 +9,12 @@ import { batteryStats } from '@kit.BasicServicesKit';
 ## getHardwareUnitPowerPercent
 
 ```TypeScript
-function getHardwareUnitPowerPercent(type: ConsumptionType): double
+function getHardwareUnitPowerPercent(type: ConsumptionType): number
 ```
 
 根据耗电类型获取硬件单元的耗电百分比，该百分比表示指定硬件单元耗电量占总耗电量的比例。
 
-**起始版本：** 23
-
-<!--Device-batteryStats-function getHardwareUnitPowerPercent(type: ConsumptionType): double--><!--Device-batteryStats-function getHardwareUnitPowerPercent(type: ConsumptionType): double-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.PowerManager.BatteryStatistics
 
@@ -32,15 +30,15 @@ function getHardwareUnitPowerPercent(type: ConsumptionType): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 电量消耗类型对应硬件的耗电百分比，取值范围是[0.00，1.00]。 |
+| number | 电量消耗类型对应硬件的耗电百分比，取值范围是[0.00，1.00]。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [4600101](../errorcode-batteryStatistics.md#4600101-连接服务失败) | Failed to connect to the service. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 **示例**
 
@@ -48,8 +46,7 @@ function getHardwareUnitPowerPercent(type: ConsumptionType): double
 try {
     let percent = batteryStats.getHardwareUnitPowerPercent(batteryStats.ConsumptionType.CONSUMPTION_TYPE_SCREEN);
     console.info('battery statistics percent of hardware is: ' + percent);
-} catch(err) {
-    console.error('get battery statistics percent of hardware failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to get battery statistics percent of hardware. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

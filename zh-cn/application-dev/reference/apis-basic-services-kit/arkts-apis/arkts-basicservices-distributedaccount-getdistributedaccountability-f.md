@@ -12,11 +12,9 @@ import { distributedAccount } from '@kit.BasicServicesKit';
 function getDistributedAccountAbility(): DistributedAccountAbility
 ```
 
-获取分布式账号单实例对象。
+获取分布式账号的单实例对象。
 
-**起始版本：** 23
-
-<!--Device-distributedAccount-function getDistributedAccountAbility(): DistributedAccountAbility--><!--Device-distributedAccount-function getDistributedAccountAbility(): DistributedAccountAbility-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -32,4 +30,3 @@ function getDistributedAccountAbility(): DistributedAccountAbility
 // 获取分布式账号的单实例对象
 const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
 ```
-

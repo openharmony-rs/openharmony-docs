@@ -2,9 +2,7 @@
 
 定义图片扫描进度的接口。
 
-**起始版本：** 23
-
-<!--Device-scan-interface PictureScanProgress--><!--Device-scan-interface PictureScanProgress-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -24,41 +22,34 @@ isFinal: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-PictureScanProgress-isFinal: boolean--><!--Device-PictureScanProgress-isFinal: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## pictureFd
 
 ```TypeScript
-pictureFd: int
+pictureFd: number
 ```
 
 扫描图片的文件描述符。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PictureScanProgress-pictureFd: int--><!--Device-PictureScanProgress-pictureFd: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## progress
 
 ```TypeScript
-progress: int
+progress: number
 ```
 
 当前进度百分比，范围从0~100。单位：百分比。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PictureScanProgress-progress: int--><!--Device-PictureScanProgress-progress: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
-

@@ -1,10 +1,8 @@
-# PowerSaveMode(后台子进程管控)
+# PowerSaveMode
 
 能效模式。
 
-**起始版本：** 23
-
-<!--Device-backgroundProcessManager-export enum PowerSaveMode--><!--Device-backgroundProcessManager-export enum PowerSaveMode-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
 
@@ -16,9 +14,7 @@ EFFICIENCY_MODE = 1
 
 效率模式，不会跟随系统进入能效模式，进入能效模式后获取到的CPU资源更少。
 
-**起始版本：** 23
-
-<!--Device-PowerSaveMode-EFFICIENCY_MODE = 1--><!--Device-PowerSaveMode-EFFICIENCY_MODE = 1-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
 
@@ -30,9 +26,6 @@ DEFAULT_MODE = 2
 
 跟随系统，可能会进入能效模式。
 
-**起始版本：** 23
-
-<!--Device-PowerSaveMode-DEFAULT_MODE = 2--><!--Device-PowerSaveMode-DEFAULT_MODE = 2-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
-

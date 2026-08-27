@@ -2,9 +2,7 @@
 
 弹出的提醒中按钮的类型和标题。
 
-**起始版本：** 23
-
-<!--Device-reminderAgentManager-interface ActionButton--><!--Device-reminderAgentManager-interface ActionButton-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -24,9 +22,7 @@ title: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ActionButton-title: string--><!--Device-ActionButton-title: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -40,9 +36,7 @@ titleResource?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ActionButton-titleResource?: string--><!--Device-ActionButton-titleResource?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -56,9 +50,6 @@ type: ActionButtonType
 
 **类型：** ActionButtonType
 
-**起始版本：** 23
-
-<!--Device-ActionButton-type: ActionButtonType--><!--Device-ActionButton-type: ActionButtonType-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
-

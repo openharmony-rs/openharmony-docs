@@ -2,9 +2,7 @@
 
 表示系统账号信息。
 
-**起始版本：** 23
-
-<!--Device-osAccount-interface OsAccountInfo--><!--Device-osAccount-interface OsAccountInfo-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -20,29 +18,25 @@ import { osAccount } from '@kit.BasicServicesKit';
 constraints: Array<string>
 ```
 
-系统账号约束，默认为空。
+系统账号[约束](../../../reference/apis-basic-services-kit/appendix-osAccount-constraints.md)，默认为空。
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
-
-<!--Device-OsAccountInfo-constraints: Array<string>--><!--Device-OsAccountInfo-constraints: Array<string>-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 ## createTime
 
 ```TypeScript
-createTime: long
+createTime: number
 ```
 
 系统账号创建时间，以Unix时间戳格式表示，单位为s。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-OsAccountInfo-createTime: long--><!--Device-OsAccountInfo-createTime: long-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -56,9 +50,7 @@ distributedInfo: distributedAccount.DistributedInfo
 
 **类型：** distributedAccount.DistributedInfo
 
-**起始版本：** 23
-
-<!--Device-OsAccountInfo-distributedInfo: distributedAccount.DistributedInfo--><!--Device-OsAccountInfo-distributedInfo: distributedAccount.DistributedInfo-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -72,9 +64,7 @@ domainInfo: DomainAccountInfo
 
 **类型：** [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md)
 
-**起始版本：** 23
-
-<!--Device-OsAccountInfo-domainInfo: DomainAccountInfo--><!--Device-OsAccountInfo-domainInfo: DomainAccountInfo-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -88,9 +78,7 @@ isActivated: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-OsAccountInfo-isActivated: boolean--><!--Device-OsAccountInfo-isActivated: boolean-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -100,7 +88,8 @@ isActivated: boolean
 isActived: boolean
 ```
 
-系统账号激活状态。true表示指定账号处于激活状态；false表示指定账号处于未激活状态。 **说明：**从API version 7开始支持，从API version 11开始废弃，建议使用isActivated。
+系统账号激活状态。true表示指定账号处于激活状态；false表示指定账号处于未激活状态。  
+**说明：**从API version 7开始支持，从API version 11开始废弃，建议使用isActivated。
 
 **类型：** boolean
 
@@ -109,8 +98,6 @@ isActived: boolean
 **废弃版本：** 11
 
 **替代接口：** [isActivated](#isactivated)
-
-<!--Device-OsAccountInfo-isActived: boolean--><!--Device-OsAccountInfo-isActived: boolean-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -124,9 +111,7 @@ isCreateCompleted: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-OsAccountInfo-isCreateCompleted: boolean--><!--Device-OsAccountInfo-isCreateCompleted: boolean-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -140,9 +125,7 @@ isUnlocked: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-OsAccountInfo-isUnlocked: boolean--><!--Device-OsAccountInfo-isUnlocked: boolean-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -152,7 +135,8 @@ isUnlocked: boolean
 isVerified: boolean
 ```
 
-账号是否验证。true表示指定账号已验证；false表示指定账号未验证。 **说明：**从API version 7开始支持，从API version 11开始废弃，建议使用isUnlocked。
+账号是否验证。true表示指定账号已验证；false表示指定账号未验证。  
+**说明：**从API version 7开始支持，从API version 11开始废弃，建议使用isUnlocked。
 
 **类型：** boolean
 
@@ -162,39 +146,33 @@ isVerified: boolean
 
 **替代接口：** [isUnlocked](#isunlocked)
 
-<!--Device-OsAccountInfo-isVerified: boolean--><!--Device-OsAccountInfo-isVerified: boolean-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 ## lastLoginTime
 
 ```TypeScript
-lastLoginTime: long
+lastLoginTime: number
 ```
 
 系统账号最后一次登录时间，以Unix时间戳格式表示，单位为s。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-OsAccountInfo-lastLoginTime: long--><!--Device-OsAccountInfo-lastLoginTime: long-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 ## localId
 
 ```TypeScript
-localId: int
+localId: number
 ```
 
 系统账号ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-OsAccountInfo-localId: int--><!--Device-OsAccountInfo-localId: int-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -208,9 +186,7 @@ localName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-OsAccountInfo-localName: string--><!--Device-OsAccountInfo-localName: string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -224,25 +200,21 @@ photo: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-OsAccountInfo-photo: string--><!--Device-OsAccountInfo-photo: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 ## serialNumber
 
 ```TypeScript
-serialNumber: long
+serialNumber: number
 ```
 
 系统账号SN码。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-OsAccountInfo-serialNumber: long--><!--Device-OsAccountInfo-serialNumber: long-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -256,9 +228,6 @@ type: OsAccountType
 
 **类型：** [OsAccountType](arkts-basicservices-osaccount-osaccounttype-e.md)
 
-**起始版本：** 23
-
-<!--Device-OsAccountInfo-type: OsAccountType--><!--Device-OsAccountInfo-type: OsAccountType-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
-

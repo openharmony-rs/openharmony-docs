@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
-import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
 ## download
@@ -25,8 +24,6 @@ function download(config: DownloadConfig, callback: AsyncCallback<DownloadTask>)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-request-function download(config: DownloadConfig, callback: AsyncCallback<DownloadTask>): void--><!--Device-request-function download(config: DownloadConfig, callback: AsyncCallback<DownloadTask>): void-End-->
-
 **系统能力：** SystemCapability.MiscServices.Download
 
 **参数：**
@@ -34,7 +31,7 @@ function download(config: DownloadConfig, callback: AsyncCallback<DownloadTask>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | config | [DownloadConfig](arkts-basicservices-request-downloadconfig-i.md) | 是 | 下载的配置信息。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;[DownloadTask](arkts-basicservices-request-downloadtask-i.md)&gt; | 是 | 回调函数。当下载任务成功，err为undefined，data为获取到的DownloadTask对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[DownloadTask](arkts-basicservices-request-downloadtask-i.md)&gt; | 是 | 回调函数。当下载任务成功，err为undefined，data为获取到的DownloadTask对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -76,8 +73,6 @@ function download(config: DownloadConfig): Promise<DownloadTask>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-request-function download(config: DownloadConfig): Promise<DownloadTask>--><!--Device-request-function download(config: DownloadConfig): Promise<DownloadTask>-End-->
-
 **系统能力：** SystemCapability.MiscServices.Download
 
 **参数：**
@@ -109,4 +104,3 @@ request.download({ url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadT
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 })
 ```
-

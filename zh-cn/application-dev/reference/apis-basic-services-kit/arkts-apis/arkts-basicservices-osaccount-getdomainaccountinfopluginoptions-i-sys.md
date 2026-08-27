@@ -4,9 +4,7 @@
 
 **继承/实现关系：** GetDomainAccountInfoPluginOptions extends [GetDomainAccountInfoOptions](arkts-basicservices-osaccount-getdomainaccountinfooptions-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-osAccount-interface GetDomainAccountInfoPluginOptions--><!--Device-osAccount-interface GetDomainAccountInfoPluginOptions-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -21,18 +19,15 @@ import { osAccount } from '@kit.BasicServicesKit';
 ## callerUid
 
 ```TypeScript
-callerUid: int
+callerUid: number
 ```
 
 调用方唯一标识符。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-GetDomainAccountInfoPluginOptions-callerUid: int--><!--Device-GetDomainAccountInfoPluginOptions-callerUid: int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
-

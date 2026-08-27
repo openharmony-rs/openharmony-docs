@@ -9,14 +9,12 @@ import { brightness } from '@kit.BasicServicesKit';
 ## setValue
 
 ```TypeScript
-function setValue(value: int): void
+function setValue(value: number): void
 ```
 
 设置系统的屏幕亮度。适用于需要固定屏幕亮度的场景，例如阅读应用、视频播放应用、夜间模式等。若需要连续调节亮度，建议使用setValue(value: number, continuous: boolean)接口。
 
-**起始版本：** 23
-
-<!--Device-brightness-function setValue(value: int): void--><!--Device-brightness-function setValue(value: int): void-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager
 
@@ -26,23 +24,23 @@ function setValue(value: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | int | 是 | 亮度的值。范围：0~255；该参数必须为数字类型。 |
+| value | number | 是 | 亮度的值。范围：0~255；该参数必须为数字类型。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; |
 | [4700101](../errorcode-brightness.md#4700101-连接服务失败) | Failed to connect to the service. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 **示例**
 
 ```TypeScript
 try {
     brightness.setValue(128);
-} catch(err) {
-    console.error('set brightness failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to set brightness. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -50,14 +48,12 @@ try {
 ## setValue
 
 ```TypeScript
-function setValue(value: int, continuous: boolean): void
+function setValue(value: number, continuous: boolean): void
 ```
 
 设置系统的屏幕亮度。用于连续调节亮度的场景，在连续调节亮度过程中，设置continuous为true，结束时设置continuous为false，会有更好的性能。
 
-**起始版本：** 23
-
-<!--Device-brightness-function setValue(value: int, continuous: boolean): void--><!--Device-brightness-function setValue(value: int, continuous: boolean): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager
 
@@ -67,24 +63,23 @@ function setValue(value: int, continuous: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | int | 是 | 亮度的值。范围：0~255。 |
+| value | number | 是 | 亮度的值。范围：0~255。 |
 | continuous | boolean | 是 | 亮度调节是否连续。true表示亮度调节连续，false表示亮度调节不连续。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; |
 | [4700101](../errorcode-brightness.md#4700101-连接服务失败) | Failed to connect to the service. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 **示例**
 
 ```TypeScript
 try {
     brightness.setValue(128, true);
-} catch(err) {
-    console.error('set brightness failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to set brightness. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

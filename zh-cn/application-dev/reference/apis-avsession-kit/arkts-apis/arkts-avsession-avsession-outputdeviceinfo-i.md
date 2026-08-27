@@ -2,9 +2,7 @@
 
 播放设备的相关信息。
 
-**起始版本：** 23
-
-<!--Device-avSession-interface OutputDeviceInfo--><!--Device-avSession-interface OutputDeviceInfo-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -24,11 +22,8 @@ devices: Array<DeviceInfo>
 
 **类型：** Array&lt;DeviceInfo&gt;
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OutputDeviceInfo-devices: Array<DeviceInfo>--><!--Device-OutputDeviceInfo-devices: Array<DeviceInfo>-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
-

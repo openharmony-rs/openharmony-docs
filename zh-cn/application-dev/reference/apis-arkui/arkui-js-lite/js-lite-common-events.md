@@ -14,7 +14,7 @@
 | -------- | -------- | -------- |
 | click | - | 点击动作触发该事件。 |
 | longpress | - | 长按动作触发该事件。 |
-| swipe<sup>5+</sup> | [SwipeEvent](#swipeevent) | 组件上快速滑动后触发。 |
+| swipe<sup>5+</sup> | SwipeEvent | 组件上快速滑动后触发。 |
 
 ## BaseEvent
 
@@ -25,11 +25,11 @@ BaseEvent是基础事件类型，用于描述事件类型、触发时间、设�
 | type                  | string                 | 当前事件的类型，比如click、longpress等。 |
 | timestamp             | number                 | 该事件触发时的时间戳。<br>单位：ms                   |
 | deviceId<sup>8+</sup> | number                 | 触发该事件的设备ID信息。                 |
-| target<sup>12+</sup>   | [Target](../arkui-js/js-components-common-events.md#target对象6) | 触发该事件的目标对象。                   |
+| target<sup>12+</sup>   | Target | 触发该事件的目标对象。                   |
 
 ## SwipeEvent
 
-SwipeEvent继承自[BaseEvent](#baseevent)，用于描述组件上快速滑动触发的事件信息，包含滑动方向属性，适用于处理组件滑动交互场景。
+SwipeEvent继承自BaseEvent，用于描述组件上快速滑动触发的事件信息，包含滑动方向属性，适用于处理组件滑动交互场景。
 
 | 属性 | 类型 | 说明 |
 | -------- | -------- | -------- |

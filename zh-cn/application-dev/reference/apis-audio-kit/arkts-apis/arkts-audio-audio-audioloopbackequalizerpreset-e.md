@@ -1,10 +1,8 @@
 # AudioLoopbackEqualizerPreset
 
-表示返听均衡器类型的枚举。
+表示返听均衡器类型的枚举。@enum { number }
 
-**起始版本：** 24
-
-<!--Device-audio-enum AudioLoopbackEqualizerPreset--><!--Device-audio-enum AudioLoopbackEqualizerPreset-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -16,9 +14,7 @@ FLAT = 1
 
 保持原始声音，不进行均衡调节。
 
-**起始版本：** 24
-
-<!--Device-AudioLoopbackEqualizerPreset-FLAT = 1--><!--Device-AudioLoopbackEqualizerPreset-FLAT = 1-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -30,9 +26,7 @@ FULL = 2
 
 使人声更饱满（默认的均衡器类型）。
 
-**起始版本：** 24
-
-<!--Device-AudioLoopbackEqualizerPreset-FULL = 2--><!--Device-AudioLoopbackEqualizerPreset-FULL = 2-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -44,9 +38,6 @@ BRIGHT = 3
 
 使人声更明亮。
 
-**起始版本：** 24
-
-<!--Device-AudioLoopbackEqualizerPreset-BRIGHT = 3--><!--Device-AudioLoopbackEqualizerPreset-BRIGHT = 3-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
-

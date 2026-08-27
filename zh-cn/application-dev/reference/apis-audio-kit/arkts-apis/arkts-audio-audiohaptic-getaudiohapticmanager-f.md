@@ -14,9 +14,7 @@ function getAudioHapticManager(): AudioHapticManager
 
 获取音振管理器。
 
-**起始版本：** 23
-
-<!--Device-audioHaptic-function getAudioHapticManager(): AudioHapticManager--><!--Device-audioHaptic-function getAudioHapticManager(): AudioHapticManager-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -31,4 +29,3 @@ function getAudioHapticManager(): AudioHapticManager
 ```TypeScript
 let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.getAudioHapticManager();
 ```
-

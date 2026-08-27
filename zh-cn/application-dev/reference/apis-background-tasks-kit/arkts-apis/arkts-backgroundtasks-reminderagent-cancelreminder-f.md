@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { reminderAgent } from '@kit.BackgroundTasksKit';
-import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
 ## cancelReminder
@@ -21,8 +20,6 @@ function cancelReminder(reminderId: number, callback: AsyncCallback<void>): void
 
 **替代接口：** cancelReminder
 
-<!--Device-reminderAgent-function cancelReminder(reminderId: number, callback: AsyncCallback<void>): void--><!--Device-reminderAgent-function cancelReminder(reminderId: number, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 **参数：**
@@ -30,7 +27,7 @@ function cancelReminder(reminderId: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | reminderId | number | 是 | 目标reminder的id号。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步回调。 |
 
 **示例**
 
@@ -58,8 +55,6 @@ function cancelReminder(reminderId: number): Promise<void>
 
 **替代接口：** cancelReminder
 
-<!--Device-reminderAgent-function cancelReminder(reminderId: number): Promise<void>--><!--Device-reminderAgent-function cancelReminder(reminderId: number): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 **参数：**
@@ -72,7 +67,7 @@ function cancelReminder(reminderId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise类型异步回调。 |
+| Promise & lt;void & gt; | Promise类型异步回调。 |
 
 **示例**
 
@@ -83,4 +78,3 @@ reminderAgent.cancelReminder(1).then(() => {
     console.info("cancelReminder promise");
 });
 ```
-

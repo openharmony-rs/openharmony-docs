@@ -2,9 +2,7 @@
 
 查询结果的任务信息数据结构，提供普通查询和系统查询，两种字段的可见范围不同。
 
-**起始版本：** 23
-
-<!--Device-agent-interface TaskInfo--><!--Device-agent-interface TaskInfo-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
-import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
 ## action
@@ -21,29 +18,27 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 readonly action: Action
 ```
 
-任务操作选项。 - UPLOAD表示上传任务。 - DOWNLOAD表示下载任务。
+任务操作选项。  
+- UPLOAD表示上传任务。  
+- DOWNLOAD表示下载任务。
 
 **类型：** Action
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly action: Action--><!--Device-TaskInfo-readonly action: Action-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 ## ctime
 
 ```TypeScript
-readonly ctime: long
+readonly ctime: number
 ```
 
-创建任务的Unix时间戳（毫秒），由当前设备的系统生成。 说明：使用 [request.agent.search](arkts-basicservices-agent-search-f.md)进行 查询时，该值需处于[after,before]区间内才可正常查询到任务id，before和after信息详见 [Filter](arkts-basicservices-agent-filter-i.md)。
+创建任务的Unix时间戳（毫秒），由当前设备的系统生成。说明：使用 [request.agent.search](arkts-basicservices-agent-search-f.md)进行 查询时，该值需处于[after,before]区间内才可正常查询到任务id，before和after信息详见 [Filter](arkts-basicservices-agent-filter-i.md)。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly ctime: long--><!--Device-TaskInfo-readonly ctime: long-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -53,13 +48,13 @@ readonly ctime: long
 readonly data?: string | Array<FormItem>
 ```
 
-任务值。 - 通过[request.agent.show](arkts-basicservices-agent-show-f.md)、 [request.agent.touch](arkts-basicservices-agent-touch-f.md)进行查询 。
+任务值。  
+- 通过[request.agent.show](arkts-basicservices-agent-show-f.md)、  
+[request.agent.touch](arkts-basicservices-agent-touch-f.md)进行查询 。
 
 **类型：** string \| Array&lt;[FormItem](arkts-basicservices-agent-formitem-i.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly data?: string | Array<FormItem>--><!--Device-TaskInfo-readonly data?: string | Array<FormItem>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -73,25 +68,21 @@ readonly description: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly description: string--><!--Device-TaskInfo-readonly description: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 ## extras
 
 ```TypeScript
-readonly extras?: Record<string, string>
+readonly extras?: object
 ```
 
-The extras of a task. For frontend, nothing now.
+任务的额外部分。
 
-**类型：** Record&lt;string, string&gt;
+**类型：** object
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly extras?: Record<string, string>--><!--Device-TaskInfo-readonly extras?: Record<string, string>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -105,9 +96,7 @@ readonly faults: Faults
 
 **类型：** [Faults](arkts-basicservices-agent-faults-e.md)
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly faults: Faults--><!--Device-TaskInfo-readonly faults: Faults-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -117,13 +106,13 @@ readonly faults: Faults
 readonly gauge: boolean
 ```
 
-后台任务的进度通知策略。 - false：代表仅完成或失败的通知。 - true，发出每个进度已完成或失败的通知。
+后台任务的进度通知策略。  
+- false：代表仅完成或失败的通知。  
+- true，发出每个进度已完成或失败的通知。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly gauge: boolean--><!--Device-TaskInfo-readonly gauge: boolean-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -137,9 +126,7 @@ readonly mimeType: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly mimeType: string--><!--Device-TaskInfo-readonly mimeType: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -149,45 +136,41 @@ readonly mimeType: string
 readonly mode: Mode
 ```
 
-任务模式。 - FOREGROUND表示前台任务。 - BACKGROUND表示后台任务。
+任务模式。  
+- FOREGROUND表示前台任务。  
+- BACKGROUND表示后台任务。
 
 **类型：** [Mode](arkts-basicservices-agent-mode-e.md)
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly mode: Mode--><!--Device-TaskInfo-readonly mode: Mode-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 ## mtime
 
 ```TypeScript
-readonly mtime: long
+readonly mtime: number
 ```
 
 任务状态改变时的Unix时间戳（毫秒），由当前设备的系统生成。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly mtime: long--><!--Device-TaskInfo-readonly mtime: long-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 ## priority
 
 ```TypeScript
-readonly priority: int
+readonly priority: number
 ```
 
 任务的优先级。前台任务的优先级比后台任务高。任务模式相同的情况下，该配置项的数字越小优先级越高，默认值为0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly priority: int--><!--Device-TaskInfo-readonly priority: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -201,9 +184,7 @@ readonly progress: Progress
 
 **类型：** Progress
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly progress: Progress--><!--Device-TaskInfo-readonly progress: Progress-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -217,9 +198,7 @@ readonly reason: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly reason: string--><!--Device-TaskInfo-readonly reason: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -229,13 +208,13 @@ readonly reason: string
 readonly retry: boolean
 ```
 
-任务的重试开关，仅应用于后台任务。 - true：是 - false：否
+任务的重试开关，仅应用于后台任务。  
+- true：是  
+- false：否
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly retry: boolean--><!--Device-TaskInfo-readonly retry: boolean-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -249,9 +228,7 @@ readonly saveas?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly saveas?: string--><!--Device-TaskInfo-readonly saveas?: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -265,9 +242,7 @@ readonly tid: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly tid: string--><!--Device-TaskInfo-readonly tid: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -281,25 +256,21 @@ readonly title: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly title: string--><!--Device-TaskInfo-readonly title: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 ## tries
 
 ```TypeScript
-readonly tries: int
+readonly tries: number
 ```
 
 任务的尝试次数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly tries: int--><!--Device-TaskInfo-readonly tries: int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -309,13 +280,12 @@ readonly tries: int
 readonly url?: string
 ```
 
-任务的url。 - 通过[request.agent.show](arkts-basicservices-agent-show-f.md)、 [request.agent.touch](arkts-basicservices-agent-touch-f.md)进行查询 。
+任务的url。  
+- 通过[request.agent.show](arkts-basicservices-agent-show-f.md)、  
+[request.agent.touch](arkts-basicservices-agent-touch-f.md)进行查询 。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-TaskInfo-readonly url?: string--><!--Device-TaskInfo-readonly url?: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
-

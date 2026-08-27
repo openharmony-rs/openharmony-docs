@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 1600001 内部错误
 
@@ -389,7 +389,7 @@ The application is not allowed to send notifications due to permission settings.
 
 **处理步骤**
 
-该应用受到[企业设备管理](../../mdm/mdm-kit-intro.md)的权限管控，应用无法主动退出权限管控名单。
+该应用受到企业设备管理的权限管控，应用无法主动退出权限管控名单。
 
 <!--Del-->
 ## 1600021 跨设备通信超时
@@ -447,7 +447,7 @@ The application does not implement the NotificationSubscriberExtensionAbility.
 
 **处理步骤**
 
-应用需创建NotificationSubscriberExtensionAbility，具体配置方法参考[ExtensionAbility组件](../../application-models/extensionability-overview.md)中的NotificationSubscriberExtensionAbility。
+应用需创建NotificationSubscriberExtensionAbility，具体配置方法参考ExtensionAbility组件中的NotificationSubscriberExtensionAbility。
 
 <!--Del-->
 ## 1600024 未配置自定义铃声

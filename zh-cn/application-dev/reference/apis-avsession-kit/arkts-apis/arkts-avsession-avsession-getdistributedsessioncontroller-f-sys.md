@@ -14,11 +14,9 @@ function getDistributedSessionController(distributedSessionType: DistributedSess
 
 根据远端会话类型，获取远端分布式会话控制器。结果通过Promise异步回调方式返回。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
-
-<!--Device-avSession-function getDistributedSessionController(distributedSessionType: DistributedSessionType): Promise<Array<AVSessionController>>--><!--Device-avSession-function getDistributedSessionController(distributedSessionType: DistributedSessionType): Promise<Array<AVSessionController>>-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -40,16 +38,17 @@ function getDistributedSessionController(distributedSessionType: DistributedSess
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established. |
 
 **示例**
 
 ```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+
 avSession.getDistributedSessionController(avSession.DistributedSessionType.TYPE_SESSION_REMOTE).then((sessionControllers: Array<avSession.AVSessionController>) => {
   console.info(`Succeeded in getting distributed session controller, length: ${sessionControllers.length}`);
 });
 ```
-

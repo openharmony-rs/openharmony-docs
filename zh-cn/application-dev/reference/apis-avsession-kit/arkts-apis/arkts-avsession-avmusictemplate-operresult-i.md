@@ -1,10 +1,8 @@
 # OperResult
 
-操作结果的定义。
+操作结果的定义。@interface OperResult
 
 **起始版本：** 23
-
-<!--Device-avMusicTemplate-interface OperResult--><!--Device-avMusicTemplate-interface OperResult-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -17,18 +15,16 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 ## errorCode
 
 ```TypeScript
-errorCode: int
+errorCode: number
 ```
 
 错误码。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-OperResult-errorCode: int--><!--Device-OperResult-errorCode: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -46,7 +42,4 @@ errorMsg?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-OperResult-errorMsg?: string--><!--Device-OperResult-errorMsg?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-

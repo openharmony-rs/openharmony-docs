@@ -2,9 +2,7 @@
 
 音频渲染器信息。
 
-**起始版本：** 23
-
-<!--Device-audio-interface AudioRendererInfo--><!--Device-audio-interface AudioRendererInfo-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## content
@@ -21,7 +18,7 @@ import { audioHaptic } from '@kit.AudioKit';
 content?: ContentType
 ```
 
-音频内容类型。 API version 8、9为必填参数，从API version 10开始为可选参数，默认值为CONTENT_TYPE_UNKNOWN。 从API version 8开始支持，从API version 10开始废弃，建议使用usage替代。
+音频内容类型。SystemCapability.Multimedia.Audio.Core API version 8、9为必填参数，从API version 10开始为可选参数，默认值为CONTENT_TYPE_UNKNOWN。从API version 8开始支持，从API version 10开始废弃，建议使用usage替代。
 
 **类型：** ContentType
 
@@ -31,25 +28,21 @@ content?: ContentType
 
 **替代接口：** usage
 
-<!--Device-AudioRendererInfo-content?: ContentType--><!--Device-AudioRendererInfo-content?: ContentType-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 ## rendererFlags
 
 ```TypeScript
-rendererFlags: int
+rendererFlags: number
 ```
 
-播放流行为标志。 设置为0即可。
+播放流行为标志。设置为0即可。SystemCapability.Multimedia.Audio.Core从API version 12开始，该接口支持在原子化服务中使用。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AudioRendererInfo-rendererFlags: int--><!--Device-AudioRendererInfo-rendererFlags: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -59,15 +52,13 @@ rendererFlags: int
 usage: StreamUsage
 ```
 
-音频流使用类型。
+音频流使用类型。SystemCapability.Multimedia.Audio.Core从API version 12开始，该接口支持在原子化服务中使用。
 
 **类型：** [StreamUsage](arkts-audio-audio-streamusage-e.md)
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AudioRendererInfo-usage: StreamUsage--><!--Device-AudioRendererInfo-usage: StreamUsage-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -77,13 +68,10 @@ usage: StreamUsage
 volumeMode?: AudioVolumeMode
 ```
 
-音频的音量模式。默认值为SYSTEM_GLOBAL。
+音频的音量模式。默认值为SYSTEM_GLOBAL。SystemCapability.Multimedia.Audio.Volume
 
 **类型：** [AudioVolumeMode](arkts-audio-audio-audiovolumemode-e.md)
 
-**起始版本：** 23
-
-<!--Device-AudioRendererInfo-volumeMode?: AudioVolumeMode--><!--Device-AudioRendererInfo-volumeMode?: AudioVolumeMode-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
-

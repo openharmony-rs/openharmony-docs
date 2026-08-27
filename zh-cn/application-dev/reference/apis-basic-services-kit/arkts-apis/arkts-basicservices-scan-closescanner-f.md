@@ -14,11 +14,9 @@ function closeScanner(scannerId: string): Promise<void>
 
 关闭扫描仪。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.PRINT
-
-<!--Device-scan-function closeScanner(scannerId: string): Promise<void>--><!--Device-scan-function closeScanner(scannerId: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -32,7 +30,7 @@ function closeScanner(scannerId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -50,7 +48,6 @@ let scannerId: string = 'scanner_001';
 scan.closeScanner(scannerId).then(() => {
     console.info('close scanner success');
 }).catch((error: BusinessError) => {
-    console.error('close scanner failed: ' + JSON.stringify(error));
-})
+    console.error(`Failed to close scanner. Code: ${error.code}, message: ${error.message}`);
+});
 ```
-

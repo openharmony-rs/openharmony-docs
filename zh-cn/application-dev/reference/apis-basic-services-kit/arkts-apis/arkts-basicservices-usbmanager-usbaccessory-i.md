@@ -2,9 +2,7 @@
 
 USB配件信息。
 
-**起始版本：** 23
-
-<!--Device-usbManager-interface USBAccessory--><!--Device-usbManager-interface USBAccessory-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -12,7 +10,6 @@ USB配件信息。
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## description
@@ -25,9 +22,7 @@ description: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-USBAccessory-description: string--><!--Device-USBAccessory-description: string-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -41,9 +36,7 @@ manufacturer: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-USBAccessory-manufacturer: string--><!--Device-USBAccessory-manufacturer: string-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -57,9 +50,7 @@ product: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-USBAccessory-product: string--><!--Device-USBAccessory-product: string-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -73,9 +64,7 @@ serialNumber: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-USBAccessory-serialNumber: string--><!--Device-USBAccessory-serialNumber: string-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -89,9 +78,6 @@ version: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-USBAccessory-version: string--><!--Device-USBAccessory-version: string-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.USB.USBManager
-

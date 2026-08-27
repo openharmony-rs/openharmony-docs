@@ -99,6 +99,8 @@
   <!--Del-->
   - [AudioVolumeManager(系统接口)](arkts-audio-audio-audiovolumemanager-i-sys.md)<!--DelEnd-->
   - [CaptureFilterOptions](arkts-audio-audio-capturefilteroptions-i.md)
+  <!--Del-->
+  - [CollaborativeRecordingConfiguration(系统接口)](arkts-audio-audio-collaborativerecordingconfiguration-i-sys.md)<!--DelEnd-->
   - [CurrentInputDeviceChangedEvent](arkts-audio-audio-currentinputdevicechangedevent-i.md)
   - [CurrentOutputDeviceChangedEvent](arkts-audio-audio-currentoutputdevicechangedevent-i.md)
   - [DeviceBlockStatusInfo](arkts-audio-audio-deviceblockstatusinfo-i.md)
@@ -108,6 +110,10 @@
   <!--Del-->
   - [InterruptResult(系统接口)](arkts-audio-audio-interruptresult-i-sys.md)<!--DelEnd-->
   - [MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md)
+  <!--Del-->
+  - [NoiseReductionCapability(系统接口)](arkts-audio-audio-noisereductioncapability-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [NoiseReductionConfigAction(系统接口)](arkts-audio-audio-noisereductionconfigaction-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [SoundCardInfo(系统接口)](arkts-audio-audio-soundcardinfo-i-sys.md)<!--DelEnd-->
   - [StreamVolumeEvent](arkts-audio-audio-streamvolumeevent-i.md)
@@ -123,6 +129,8 @@
   - [VolumeEvent(系统接口)](arkts-audio-audio-volumeevent-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [VolumeGroupInfo(系统接口)](arkts-audio-audio-volumegroupinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [VolumeLimitExceededEvent(系统接口)](arkts-audio-audio-volumelimitexceededevent-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [ActiveStreamsVolumeInfoArray(系统接口)](arkts-audio-audio-activestreamsvolumeinfoarray-t-sys.md)<!--DelEnd-->
   - [AudioCapturerChangeInfoArray](arkts-audio-audio-audiocapturerchangeinfoarray-t.md)
@@ -294,14 +302,14 @@
   <!--Del-->
   - [常量(系统接口)](arkts-audio-systemsoundmanager-con-sys.md)<!--DelEnd-->
 - multimedia<!--arkts-audiokit-multimedia-->
-  - [SystemSoundPlayer](arkts-systemsoundplayer.md)
-    - [SystemSoundPlayer](arkts-audio-systemsoundplayer-i.md)
   <!--Del-->
   - [ringtonePlayer](arkts-ringtoneplayer.md)<!--DelEnd-->
     <!--Del-->
     - [RingtoneOptions(系统接口)](arkts-audio-ringtoneplayer-ringtoneoptions-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [RingtonePlayer(系统接口)](arkts-audio-ringtoneplayer-ringtoneplayer-i-sys.md)<!--DelEnd-->
+  - [SystemSoundPlayer](arkts-systemsoundplayer.md)
+    - [SystemSoundPlayer](arkts-audio-systemsoundplayer-i.md)
   <!--Del-->
   - [systemTonePlayer](arkts-systemtoneplayer.md)<!--DelEnd-->
     <!--Del-->

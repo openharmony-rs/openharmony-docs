@@ -8,15 +8,12 @@
 
 **替代接口：** [MaxScreenWantAgent](arkts-backgroundtasks-reminderagentmanager-maxscreenwantagent-i.md)
 
-<!--Device-reminderAgent-interface MaxScreenWantAgent--><!--Device-reminderAgent-interface MaxScreenWantAgent-End-->
-
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 ## 导入模块
 
 ```TypeScript
 import { reminderAgent } from '@kit.BackgroundTasksKit';
-import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
 ## abilityName
@@ -34,8 +31,6 @@ abilityName: string
 **废弃版本：** 9
 
 **替代接口：** abilityName
-
-<!--Device-MaxScreenWantAgent-abilityName: string--><!--Device-MaxScreenWantAgent-abilityName: string-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -55,7 +50,4 @@ pkgName: string
 
 **替代接口：** pkgName
 
-<!--Device-MaxScreenWantAgent-pkgName: string--><!--Device-MaxScreenWantAgent-pkgName: string-End-->
-
 **系统能力：** SystemCapability.Notification.ReminderAgent
-

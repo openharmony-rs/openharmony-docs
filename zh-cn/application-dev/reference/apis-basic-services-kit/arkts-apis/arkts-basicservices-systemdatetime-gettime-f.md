@@ -9,14 +9,12 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 ## getTime
 
 ```TypeScript
-function getTime(isNanoseconds?: boolean): long
+function getTime(isNanoseconds?: boolean): number
 ```
 
 使用同步方式获取自Unix纪元以来到当前系统时间所经过的时间。
 
-**起始版本：** 23
-
-<!--Device-systemDateTime-function getTime(isNanoseconds?: boolean): long--><!--Device-systemDateTime-function getTime(isNanoseconds?: boolean): long-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -30,11 +28,9 @@ function getTime(isNanoseconds?: boolean): long
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 自Unix纪元以来到当前系统时间所经过的时间。 |
+| number | 自Unix纪元以来到当前系统时间所经过的时间。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -46,17 +42,3 @@ try {
   console.error(`Failed to get time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let time: long = systemDateTime.getTime(true)
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get time. message: ${error.message}, code: ${error.code}`);
-}
-```
-

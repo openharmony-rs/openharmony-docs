@@ -1,12 +1,10 @@
-# OnDownloadCompleteResponse(上传下载)
+# OnDownloadCompleteResponse
 
 **起始版本：** 3
 
 **废弃版本：** 9
 
 **替代接口：** on
-
-<!--Device-unnamed-export interface OnDownloadCompleteResponse--><!--Device-unnamed-export interface OnDownloadCompleteResponse-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -32,7 +30,4 @@ uri: string
 
 **替代接口：** saveas
 
-<!--Device-OnDownloadCompleteResponse-uri: string--><!--Device-OnDownloadCompleteResponse-uri: string-End-->
-
 **系统能力：** SystemCapability.MiscServices.Download
-

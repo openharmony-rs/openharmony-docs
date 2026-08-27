@@ -8,15 +8,12 @@
 
 **替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
 
-<!--Device-usbManager-interface USBControlParams--><!--Device-usbManager-interface USBControlParams-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 ## 导入模块
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## data
@@ -34,8 +31,6 @@ data: Uint8Array
 **废弃版本：** 18
 
 **替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
-
-<!--Device-USBControlParams-data: Uint8Array--><!--Device-USBControlParams-data: Uint8Array-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -55,8 +50,6 @@ index: number
 
 **替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
 
-<!--Device-USBControlParams-index: number--><!--Device-USBControlParams-index: number-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 ## reqType
@@ -74,8 +67,6 @@ reqType: USBControlRequestType
 **废弃版本：** 18
 
 **替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
-
-<!--Device-USBControlParams-reqType: USBControlRequestType--><!--Device-USBControlParams-reqType: USBControlRequestType-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -95,8 +86,6 @@ request: number
 
 **替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
 
-<!--Device-USBControlParams-request: number--><!--Device-USBControlParams-request: number-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 ## target
@@ -114,8 +103,6 @@ target: USBRequestTargetType
 **废弃版本：** 18
 
 **替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
-
-<!--Device-USBControlParams-target: USBRequestTargetType--><!--Device-USBControlParams-target: USBRequestTargetType-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -135,7 +122,4 @@ value: number
 
 **替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
 
-<!--Device-USBControlParams-value: number--><!--Device-USBControlParams-value: number-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
-

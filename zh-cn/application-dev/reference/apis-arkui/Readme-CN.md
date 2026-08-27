@@ -15,7 +15,6 @@
     - [弹窗错误码](errorcode-promptAction.md)
     - [页面路由错误码](errorcode-router.md)
     - [拖拽事件错误码](errorcode-drag-event.md)
-    - [图像AI分析错误码](arkui-ts/errorcode-image-analyzer.md)
     - [焦点错误码](errorcode-focus.md)
     - [系统资源错误码](errorcode-system-resource.md)
     - [附属节点错误码](errorcode-adopt.md)

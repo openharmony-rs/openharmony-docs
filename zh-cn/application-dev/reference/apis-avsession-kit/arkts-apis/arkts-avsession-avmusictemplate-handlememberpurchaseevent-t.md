@@ -10,8 +10,6 @@ type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise<DialogInf
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avMusicTemplate-type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise<DialogInfo>--><!--Device-avMusicTemplate-type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise<DialogInfo>-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
@@ -25,4 +23,3 @@ type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise<DialogInf
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[DialogInfo](arkts-avsession-avmusictemplate-dialoginfo-i.md)&gt; | Promise对象，返回对话框信息。 |
-

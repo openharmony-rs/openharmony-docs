@@ -14,11 +14,9 @@ function setTimezone(timezone: string, callback: AsyncCallback<void>): void
 
 设置系统时区，使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.SET_TIME_ZONE
-
-<!--Device-systemDateTime-function setTimezone(timezone: string, callback: AsyncCallback<void>): void--><!--Device-systemDateTime-function setTimezone(timezone: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -28,21 +26,19 @@ function setTimezone(timezone: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timezone | string | 是 | 系统时区。 具体可见 支持的系统时区 。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
+| timezone | string | 是 | 系统时区。 具体可见 [支持的系统时区](../../../reference/apis-basic-services-kit/js-apis-system-date-time-sys.md#支持的系统时区) 。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:   1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [204](../../errorcode-universal.md#204-用户访问控制策略拒绝此访问) | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted.<br>**适用版本：** 24+ |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -61,24 +57,6 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@ohos.base';
-
-try {
-  systemDateTime.setTimezone('Asia/Jakarta', (error: BusinessError | null) => {
-    if (error) {
-      console.error(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
-      return;
-    }
-    console.error(`Succeeded in setting timezone.`);
-  });
-} catch(error: BusinessError) {
-  console.error(`setTimezone error: ${error.message}, code: ${error.code}`);
-}
-```
-
 
 ## setTimezone
 
@@ -88,11 +66,9 @@ function setTimezone(timezone: string): Promise<void>
 
 设置系统时区，使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.SET_TIME_ZONE
-
-<!--Device-systemDateTime-function setTimezone(timezone: string): Promise<void>--><!--Device-systemDateTime-function setTimezone(timezone: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -102,26 +78,24 @@ function setTimezone(timezone: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timezone | string | 是 | 系统时区。具体可见 支持的系统时区 。 |
+| timezone | string | 是 | 系统时区。具体可见 [支持的系统时区](../../../reference/apis-basic-services-kit/js-apis-system-date-time-sys.md#支持的系统时区) 。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:   1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [204](../../errorcode-universal.md#204-用户访问控制策略拒绝此访问) | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted.<br>**适用版本：** 24+ |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -137,23 +111,3 @@ try {
   console.error(`Failed to set timezone. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@ohos.base';
-
-try {
-  await systemDateTime.setTimezone('Europe/Moscow');
-  systemDateTime.getTimezone((error: BusinessError | null, data: string | undefined) => {
-    if (error) {
-      console.error(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
-      return;
-    }
-    console.error(`Succeeded in getting timezone : ${data}`);
-  });
-} catch(error: BusinessError) {
-  console.error(`setTimezone error: ${error.message}, code: ${error.code}`);
-}
-```
-

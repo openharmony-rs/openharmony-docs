@@ -18,15 +18,13 @@ function isDomainAccountSupported(): Promise<boolean>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-osAccount-function isDomainAccountSupported(): Promise<boolean>--><!--Device-osAccount-function isDomainAccountSupported(): Promise<boolean>-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示支持域账号；返回false表示不支持。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示支持域账号；返回false表示不支持。 |
 
 **错误码：**
 
@@ -36,38 +34,17 @@ function isDomainAccountSupported(): Promise<boolean>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { BusinessError, osAccount } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   osAccount.isDomainAccountSupported().then((isSupported: boolean) => {
     console.info('isDomainAccountSupported successfully, isSupported: ' + isSupported);
   }).catch((err: BusinessError) => {
-    console.error(`isDomainAccountSupported failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`isDomainAccountSupported failed, code is ${err.code}, message is: ${err.message}`);
   });
 } catch (e) {
   const err = e as BusinessError;
   console.error(`isDomainAccountSupported exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError, osAccount } from '@kit.BasicServicesKit';
-
-try {
-  osAccount.isDomainAccountSupported().then((isSupported: boolean) => {
-    console.info('isDomainAccountSupported successfully, isSupported: ' + isSupported);
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`isDomainAccountSupported failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`isDomainAccountSupported exception: code is ${err.code}, message is ${err.message}`);
-}
-```
-

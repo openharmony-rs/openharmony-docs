@@ -2,9 +2,7 @@
 
 表示用于选择账号的选项。
 
-**起始版本：** 23
-
-<!--Device-appAccount-interface SelectAccountsOptions--><!--Device-appAccount-interface SelectAccountsOptions-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -24,9 +22,7 @@ allowedAccounts?: Array<AppAccountInfo>
 
 **类型：** Array&lt;[AppAccountInfo](arkts-basicservices-appaccount-appaccountinfo-i.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-SelectAccountsOptions-allowedAccounts?: Array<AppAccountInfo>--><!--Device-SelectAccountsOptions-allowedAccounts?: Array<AppAccountInfo>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -40,9 +36,7 @@ allowedOwners?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
-
-<!--Device-SelectAccountsOptions-allowedOwners?: Array<string>--><!--Device-SelectAccountsOptions-allowedOwners?: Array<string>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -56,9 +50,6 @@ requiredLabels?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
-
-<!--Device-SelectAccountsOptions-requiredLabels?: Array<string>--><!--Device-SelectAccountsOptions-requiredLabels?: Array<string>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.AppAccount
-

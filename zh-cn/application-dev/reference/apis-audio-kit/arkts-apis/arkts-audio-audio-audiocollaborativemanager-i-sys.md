@@ -1,10 +1,8 @@
 # AudioCollaborativeManager（系统接口）
 
-Implements audio collaborative management.
+移动全景声管理器。 在使用AudioCollaborativeManager的接口前，需要先使用[getCollaborativeManager](arkts-audio-audio-audiomanager-i-sys.md#getcollaborativemanager)获取 AudioCollaborativeManager实例。
 
-**起始版本：** 23
-
-<!--Device-audio-interface AudioCollaborativeManager--><!--Device-audio-interface AudioCollaborativeManager-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -14,7 +12,6 @@ Implements audio collaborative management.
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## isCollaborativePlaybackEnabledForDevice
@@ -23,11 +20,9 @@ import { audioHaptic } from '@kit.AudioKit';
 isCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor): boolean
 ```
 
-检查指定设备的协同播放状态
+查询指定设备移动全景声状态，同步返回结果。
 
-**起始版本：** 23
-
-<!--Device-AudioCollaborativeManager-isCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor): boolean--><!--Device-AudioCollaborativeManager-isCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor): boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -37,20 +32,20 @@ isCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | Audio device descriptor. |
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 指定设备的描述。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 是否已经使能与指定的设备协同播放 |
+| boolean | 返回指定设备移动全景声是否开启/关闭，true表示开启，false表示关闭。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
 
@@ -88,11 +83,9 @@ try {
 isCollaborativePlaybackSupported(): boolean
 ```
 
-Checks whether the collaborative playback is supported by system.
+查询系统移动全景声支持能力，同步返回结果。
 
-**起始版本：** 23
-
-<!--Device-AudioCollaborativeManager-isCollaborativePlaybackSupported(): boolean--><!--Device-AudioCollaborativeManager-isCollaborativePlaybackSupported(): boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -102,7 +95,7 @@ Checks whether the collaborative playback is supported by system.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Whether the collaborative playback is supported by system. |
+| boolean | 表示系统是否支持移动全景声能力，true表示支持，false表示不支持。 |
 
 **错误码：**
 
@@ -137,8 +130,6 @@ isCollaborativePlaybackSupportedForDevice(deviceDescriptor: AudioDeviceDescripto
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AudioCollaborativeManager-isCollaborativePlaybackSupportedForDevice(deviceDescriptor: AudioDeviceDescriptor): boolean--><!--Device-AudioCollaborativeManager-isCollaborativePlaybackSupportedForDevice(deviceDescriptor: AudioDeviceDescriptor): boolean-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
 **系统接口：** 此接口为系统接口。
@@ -147,13 +138,13 @@ isCollaborativePlaybackSupportedForDevice(deviceDescriptor: AudioDeviceDescripto
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 用于查询的音频设备描述符。 |
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 待检查的音频设备描述符。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Whether the collaborative playback is supported for the specified device. |
+| boolean | 指定设备是否支持协同播放。 |
 
 **错误码：**
 
@@ -167,11 +158,9 @@ isCollaborativePlaybackSupportedForDevice(deviceDescriptor: AudioDeviceDescripto
 setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise<void>
 ```
 
-设置使能或者关闭与指定设备协同播放。当前仅A2DP音频设备支持协同播放。如果系统当前正在使用指定的设备发声，调用此接口后，声音将从本地speaker和指定的设备上协同播放出来。
+根据输入指令，开启或关闭指定设备移动全景声。使用Promise异步回调。 当前只有蓝牙A2DP（Advanced Audio Distribution Profile）设备支持移动全景声。当开启移动全景声后，指定蓝牙A2DP设备和本地扬声器将同时播放音频。
 
-**起始版本：** 23
-
-<!--Device-AudioCollaborativeManager-setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise<void>--><!--Device-AudioCollaborativeManager-setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise<void>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -181,22 +170,22 @@ setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | Audio device descriptor. |
-| enabled | boolean | 是 | Whether to enable or disable collaborative playback. The value true means to enable it, and false means to disable it. |
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 指定设备的描述。 |
+| enabled | boolean | 是 | 表示开启或关闭移动全景声。true表示开启，false表示关闭。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 设置结果 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Possible causes: 1. The specified device is not an A2DP device. 2. The specified device is not connected. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
 **示例**
 
@@ -226,4 +215,3 @@ audioCollaborativeManager.setCollaborativePlaybackEnabledForDevice(deviceDescrip
   console.error(`Result ERROR: ${err}`);
 });
 ```
-

@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
-import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
 ## upload
@@ -25,8 +24,6 @@ function upload(config: UploadConfig, callback: AsyncCallback<UploadTask>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-request-function upload(config: UploadConfig, callback: AsyncCallback<UploadTask>): void--><!--Device-request-function upload(config: UploadConfig, callback: AsyncCallback<UploadTask>): void-End-->
-
 **系统能力：** SystemCapability.MiscServices.Upload
 
 **参数：**
@@ -34,7 +31,7 @@ function upload(config: UploadConfig, callback: AsyncCallback<UploadTask>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | config | [UploadConfig](arkts-basicservices-request-uploadconfig-i.md) | 是 | 上传的配置信息。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;[UploadTask](arkts-basicservices-request-uploadtask-i.md)&gt; | 是 | 回调函数，异步返回UploadTask对象。当上传成功，err为undefined，data为获取到的UploadTask对象；否则为 错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[UploadTask](arkts-basicservices-request-uploadtask-i.md)&gt; | 是 | 回调函数，异步返回UploadTask对象。当上传成功，err为undefined，data为获取到的UploadTask对象；否则为 错误对象。 |
 
 **错误码：**
 
@@ -81,8 +78,6 @@ function upload(config: UploadConfig): Promise<UploadTask>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-request-function upload(config: UploadConfig): Promise<UploadTask>--><!--Device-request-function upload(config: UploadConfig): Promise<UploadTask>-End-->
-
 **系统能力：** SystemCapability.MiscServices.Upload
 
 **参数：**
@@ -120,4 +115,3 @@ request.upload(uploadConfig).then((data: request.UploadTask) => {
   console.error(`Failed to request the upload. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-

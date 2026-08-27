@@ -2,9 +2,7 @@
 
 应用在使用剪贴板提供的文件拷贝能力的情况下需要的参数，包含目标路径、文件冲突选项、进度条类型等。调用本接口前，需确保无其他拷贝或粘贴操作正在进行。
 
-**起始版本：** 23
-
-<!--Device-pasteboard-interface GetDataParams--><!--Device-pasteboard-interface GetDataParams-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -13,6 +11,20 @@
 ```TypeScript
 import { pasteboard } from '@kit.BasicServicesKit';
 ```
+
+## progressListener
+
+```TypeScript
+progressListener?: ProgressListener
+```
+
+定义进度数据变化的订阅函数，用于获取粘贴过程的进度。仅当progressIndicator设置为NONE时此参数才生效，可设置该项自行处理进度显示； 当progressIndicator设置为DEFAULT时此参数无效。默认为空（不监听进度）。
+
+**起始版本：** 15
+
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
 
 ## destUri
 
@@ -26,11 +38,9 @@ destUri?: string
 
 **默认值：** -
 
-**起始版本：** 23
+**起始版本：** 15
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GetDataParams-destUri?: string--><!--Device-GetDataParams-destUri?: string-End-->
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -46,11 +56,9 @@ fileConflictOptions?: FileConflictOptions
 
 **默认值：** FileConflictOptions.OVERWRITE
 
-**起始版本：** 23
+**起始版本：** 15
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GetDataParams-fileConflictOptions?: FileConflictOptions--><!--Device-GetDataParams-fileConflictOptions?: FileConflictOptions-End-->
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -64,31 +72,9 @@ progressIndicator: ProgressIndicator
 
 **类型：** ProgressIndicator
 
-**起始版本：** 23
+**起始版本：** 15
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GetDataParams-progressIndicator: ProgressIndicator--><!--Device-GetDataParams-progressIndicator: ProgressIndicator-End-->
-
-**系统能力：** SystemCapability.MiscServices.Pasteboard
-
-## progressListener
-
-```TypeScript
-progressListener?: ProgressListener
-```
-
-定义进度数据变化的订阅函数，用于获取粘贴过程的进度。仅当progressIndicator设置为NONE时此参数才生效，可设置该项自行处理进度显示； 当progressIndicator设置为DEFAULT时此参数无效。默认为空（不监听进度）。
-
-**类型：** ProgressListener
-
-**默认值：** -
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GetDataParams-progressListener?: ProgressListener--><!--Device-GetDataParams-progressListener?: ProgressListener-End-->
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -104,11 +90,8 @@ progressSignal?: ProgressSignal
 
 **默认值：** -
 
-**起始版本：** 23
+**起始版本：** 15
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GetDataParams-progressSignal?: ProgressSignal--><!--Device-GetDataParams-progressSignal?: ProgressSignal-End-->
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
-

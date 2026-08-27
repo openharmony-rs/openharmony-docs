@@ -56,13 +56,13 @@ static napi_value QueryGL(napi_env env, napi_callback_info info)
 
 ## 标准库中导出的符号列表
 
-[native api中导出的OpenGL符号列表](opengl-symbol.md)
+native api中导出的OpenGL符号列表
 
 ## OpenGL扩展接口及示例
 
-OpenGL扩展接口及使用，可参考[OpenGL ES扩展接口](opengles.md#opengl-es扩展接口)。
+OpenGL扩展接口及使用，可参考OpenGL ES扩展接口。
 
-相关接口使用示例，可参考[OpenGL ES简单示例](opengles.md#简单示例)。
+相关接口使用示例，可参考OpenGL ES简单示例。
 
 ## 引入OpenGL能力
 
@@ -105,9 +105,9 @@ libEGL.so
 
 针对OpenGL的使用和相关开发，需要同步了解NDK的开发过程，以及XComponent组件等的使用。具体可参考:
 
-- [NDK开发参考](../../napi/ndk-development-overview.md)
+- NDK开发参考
 
-- [Node-API参考](./napi.md)
+- Node-API参考
 
 - XComponentNode参考
 

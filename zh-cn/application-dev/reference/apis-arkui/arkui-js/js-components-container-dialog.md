@@ -23,7 +23,7 @@
 
 ## 属性
 
-除支持[通用属性](js-components-common-attributes.md)外，支持如下属性：
+除支持通用属性外，支持如下属性：
 
 | 名称                    | 类型      | 默认值   | 必填   | 描述           |
 | --------------------- | ------- | ----- | ---- | ------------ |
@@ -36,12 +36,12 @@
 
 ## 样式
 
-仅支持[通用样式](js-components-common-styles.md)中的width、height、margin、margin-[left | top | right | bottom]、margin-[start | end]样式。
+仅支持通用样式中的width、height、margin、margin-[left | top | right | bottom]、margin-[start | end]样式。
 
 
 ## 事件
 
-不支持[通用事件](js-components-common-events.md)，仅支持如下事件：
+不支持通用事件，仅支持如下事件：
 
 | 名称                 | 参数   | 描述                         |
 | ------------------ | ---- | -------------------------- |
@@ -52,7 +52,7 @@
 
 ## 方法
 
-不支持[通用方法](js-components-common-methods.md)，仅支持如下方法。
+不支持通用方法，仅支持如下方法。
 
 | 名称    | 参数   | 描述     |
 | ----- | ---- | ------ |

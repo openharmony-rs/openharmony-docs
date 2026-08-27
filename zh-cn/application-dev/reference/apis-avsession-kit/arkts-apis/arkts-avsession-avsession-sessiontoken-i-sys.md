@@ -2,9 +2,7 @@
 
 会话令牌的信息。
 
-**起始版本：** 23
-
-<!--Device-avSession-interface SessionToken--><!--Device-avSession-interface SessionToken-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -19,18 +17,16 @@ import { avSession } from '@kit.AVSessionKit';
 ## pid
 
 ```TypeScript
-pid?: long
+pid?: number
 ```
 
 会话的进程ID。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
-
-<!--Device-SessionToken-pid?: long--><!--Device-SessionToken-pid?: long-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -46,11 +42,9 @@ sessionId: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
-
-<!--Device-SessionToken-sessionId: string--><!--Device-SessionToken-sessionId: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -59,20 +53,17 @@ sessionId: string
 ## uid
 
 ```TypeScript
-uid?: long
+uid?: number
 ```
 
 用户ID。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
-
-<!--Device-SessionToken-uid?: long--><!--Device-SessionToken-uid?: long-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 此接口为系统接口。
-

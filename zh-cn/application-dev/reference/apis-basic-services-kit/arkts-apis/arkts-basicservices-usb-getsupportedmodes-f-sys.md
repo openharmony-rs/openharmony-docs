@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { usb } from '@kit.BasicServicesKit';
-import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## getSupportedModes
@@ -21,8 +19,6 @@ function getSupportedModes(portId: number): PortModeType
 **废弃版本：** 9
 
 **替代接口：** [getSupportedModes](arkts-basicservices-usbmanager-getsupportedmodes-f-sys.md)
-
-<!--Device-usb-function getSupportedModes(portId: number): PortModeType--><!--Device-usb-function getSupportedModes(portId: number): PortModeType-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -45,4 +41,3 @@ function getSupportedModes(portId: number): PortModeType
 ```TypeScript
 let ret = usb.getSupportedModes(0);
 ```
-

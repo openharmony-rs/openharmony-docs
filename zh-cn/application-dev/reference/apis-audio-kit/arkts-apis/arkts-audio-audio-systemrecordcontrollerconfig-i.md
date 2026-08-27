@@ -1,10 +1,8 @@
 # SystemRecordControllerConfig
 
-定义系统录像控制器面板配置。
+系统录音控制面板的配置信息。
 
 **起始版本：** 26.0.0
-
-<!--Device-audio-interface SystemRecordControllerConfig--><!--Device-audio-interface SystemRecordControllerConfig-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## sourceType
@@ -21,7 +18,7 @@ import { audioHaptic } from '@kit.AudioKit';
 sourceType: SourceType
 ```
 
-系统使用它来确定应用程序的录制场景，根据 应用程序期望用于流式传输的源类型，并为用户提供 选择匹配降噪模式的能力。支持的源类型包括 Source_TYPE_MIC,Source_TYPE_CAMCORDER，以及 Source_TYPE_LIVE。
+应用期望使用的音频源类型。系统会根据该参数确定应用的录音场景，并为用户提供匹配的降噪模式选择能力。支持的音频源类型包括SOURCE_TYPE_MIC、SOURCE_TYPE_CAMCORDER和SOURCE_TYPE_LIVE 。
 
 **类型：** SourceType
 
@@ -29,7 +26,4 @@ sourceType: SourceType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SystemRecordControllerConfig-sourceType: SourceType--><!--Device-SystemRecordControllerConfig-sourceType: SourceType-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
-

@@ -2,9 +2,7 @@
 
 表示凭证信息。
 
-**起始版本：** 23
-
-<!--Device-osAccount-interface CredentialInfo--><!--Device-osAccount-interface CredentialInfo-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -19,16 +17,14 @@ import { osAccount } from '@kit.BasicServicesKit';
 ## accountId
 
 ```TypeScript
-accountId?: int
+accountId?: number
 ```
 
 系统账号标识，默认为undefined。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CredentialInfo-accountId?: int--><!--Device-CredentialInfo-accountId?: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -46,8 +42,6 @@ additionalInfo?: string
 
 **起始版本：** 23
 
-<!--Device-CredentialInfo-additionalInfo?: string--><!--Device-CredentialInfo-additionalInfo?: string-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -58,13 +52,11 @@ additionalInfo?: string
 credSubType: AuthSubType
 ```
 
-指示凭据子类型。
+指示认证凭据子类型。
 
 **类型：** [AuthSubType](arkts-basicservices-osaccount-authsubtype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CredentialInfo-credSubType: AuthSubType--><!--Device-CredentialInfo-credSubType: AuthSubType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -76,13 +68,11 @@ credSubType: AuthSubType
 credType: AuthType
 ```
 
-指示凭据类型。
+身份验证凭据类型。
 
 **类型：** AuthType
 
-**起始版本：** 23
-
-<!--Device-CredentialInfo-credType: AuthType--><!--Device-CredentialInfo-credType: AuthType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -94,15 +84,12 @@ credType: AuthType
 token: Uint8Array
 ```
 
-指示认证令牌，默认为空。
+指示认证令牌。
 
 **类型：** Uint8Array
 
-**起始版本：** 23
-
-<!--Device-CredentialInfo-token: Uint8Array--><!--Device-CredentialInfo-token: Uint8Array-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
-

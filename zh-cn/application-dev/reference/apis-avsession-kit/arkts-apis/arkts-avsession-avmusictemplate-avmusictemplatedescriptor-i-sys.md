@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-avMusicTemplate-interface AVMusicTemplateDescriptor--><!--Device-avMusicTemplate-interface AVMusicTemplateDescriptor-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **系统接口：** 此接口为系统接口。
@@ -30,8 +28,6 @@ bundleName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AVMusicTemplateDescriptor-bundleName: string--><!--Device-AVMusicTemplateDescriptor-bundleName: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **系统接口：** 此接口为系统接口。
@@ -50,8 +46,6 @@ sessionId: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AVMusicTemplateDescriptor-sessionId: string--><!--Device-AVMusicTemplateDescriptor-sessionId: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **系统接口：** 此接口为系统接口。
@@ -59,20 +53,17 @@ sessionId: string
 ## userId
 
 ```TypeScript
-userId: int
+userId: number
 ```
 
 用户ID。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AVMusicTemplateDescriptor-userId: int--><!--Device-AVMusicTemplateDescriptor-userId: int-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **系统接口：** 此接口为系统接口。
-

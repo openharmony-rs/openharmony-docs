@@ -2,9 +2,7 @@
 
 打印纸张方向的枚举。
 
-**起始版本：** 23
-
-<!--Device-print-enum PrintDirectionMode--><!--Device-print-enum PrintDirectionMode-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -16,9 +14,7 @@ DIRECTION_MODE_AUTO = 0
 
 表示自动选择纸张方向。
 
-**起始版本：** 23
-
-<!--Device-PrintDirectionMode-DIRECTION_MODE_AUTO = 0--><!--Device-PrintDirectionMode-DIRECTION_MODE_AUTO = 0-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -30,9 +26,7 @@ DIRECTION_MODE_PORTRAIT = 1
 
 表示纵向打印。
 
-**起始版本：** 23
-
-<!--Device-PrintDirectionMode-DIRECTION_MODE_PORTRAIT = 1--><!--Device-PrintDirectionMode-DIRECTION_MODE_PORTRAIT = 1-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -44,9 +38,6 @@ DIRECTION_MODE_LANDSCAPE = 2
 
 表示横向打印。
 
-**起始版本：** 23
-
-<!--Device-PrintDirectionMode-DIRECTION_MODE_LANDSCAPE = 2--><!--Device-PrintDirectionMode-DIRECTION_MODE_LANDSCAPE = 2-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
-

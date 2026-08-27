@@ -19,7 +19,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [Vulkan](capi-vulkan.md)
+**相关模块：** Vulkan
 
 ## 汇总
 
@@ -27,25 +27,25 @@
 
 | 名称                                                                                      | typedef关键字                         | 描述                               |
 |-----------------------------------------------------------------------------------------|------------------------------------|----------------------------------|
-| [VkSurfaceCreateInfoOHOS](capi-vulkan-vksurfacecreateinfoohos.md)                       | VkSurfaceCreateInfoOHOS            | 包含创建Vulkan Surface时必要的参数。        |
-| [VkNativeBufferOHOS](capi-vulkan-vknativebufferohos.md) | VkNativeBufferOHOS | 包含本地显存的参数。 |
-| [VkSwapchainImageCreateInfoOHOS](capi-vulkan-vkswapchainimagecreateinfoohos.md) | VkSwapchainImageCreateInfoOHOS | 包含创建Image时必要的参数。 |
-| [VkPhysicalDevicePresentationPropertiesOHOS](capi-vulkan-vkphysicaldevicepresentationpropertiesohos.md) | VkPhysicalDevicePresentationPropertiesOHOS | 包含设备的显示属性的参数。 |
-| [VkNativeBufferUsageOHOS](capi-vulkan-vknativebufferusageohos.md)                       | VkNativeBufferUsageOHOS            | 提供OpenHarmony NativeBuffer用途的说明。 |
-| [VkNativeBufferPropertiesOHOS](capi-vulkan-vknativebufferpropertiesohos.md)             | VkNativeBufferPropertiesOHOS       | 包含了NativeBuffer的属性。              |
-| [VkNativeBufferFormatPropertiesOHOS](capi-vulkan-vknativebufferformatpropertiesohos.md) | VkNativeBufferFormatPropertiesOHOS | 包含了NativeBuffer的一些格式属性。          |
-| [VkImportNativeBufferInfoOHOS](capi-vulkan-vkimportnativebufferinfoohos.md)             | VkImportNativeBufferInfoOHOS       | 包含了OH_NativeBuffer结构体的指针。        |
-| [VkMemoryGetNativeBufferInfoOHOS](capi-vulkan-vkmemorygetnativebufferinfoohos.md)       | VkMemoryGetNativeBufferInfoOHOS    | 用于从Vulkan内存中获取OH_NativeBuffer。   |
-| [VkExternalFormatOHOS](capi-vulkan-vkexternalformatohos.md)                             | VkExternalFormatOHOS               | 表示外部定义的格式标识符。                    |
-| [NativeWindow](capi-vulkan-nativewindow.md)                                             | OHNativeWindow                     | 本地窗口。                            |
-| [OHBufferHandle](capi-vulkan-ohbufferhandle.md) | - | 缓冲区句柄，用于对缓冲区的信息传递和获取。 |
-| [OH_NativeBuffer](capi-vulkan-oh-nativebuffer.md)                                   | -                                  | OH_NativeBuffer结构体声明。                                 |
+| VkSurfaceCreateInfoOHOS                       | VkSurfaceCreateInfoOHOS            | 包含创建Vulkan Surface时必要的参数。        |
+| VkNativeBufferOHOS | VkNativeBufferOHOS | 包含本地显存的参数。 |
+| VkSwapchainImageCreateInfoOHOS | VkSwapchainImageCreateInfoOHOS | 包含创建Image时必要的参数。 |
+| VkPhysicalDevicePresentationPropertiesOHOS | VkPhysicalDevicePresentationPropertiesOHOS | 包含设备的显示属性的参数。 |
+| VkNativeBufferUsageOHOS                       | VkNativeBufferUsageOHOS            | 提供OpenHarmony NativeBuffer用途的说明。 |
+| VkNativeBufferPropertiesOHOS             | VkNativeBufferPropertiesOHOS       | 包含了NativeBuffer的属性。              |
+| VkNativeBufferFormatPropertiesOHOS | VkNativeBufferFormatPropertiesOHOS | 包含了NativeBuffer的一些格式属性。          |
+| VkImportNativeBufferInfoOHOS             | VkImportNativeBufferInfoOHOS       | 包含了OH_NativeBuffer结构体的指针。        |
+| VkMemoryGetNativeBufferInfoOHOS       | VkMemoryGetNativeBufferInfoOHOS    | 用于从Vulkan内存中获取OH_NativeBuffer。   |
+| VkExternalFormatOHOS                             | VkExternalFormatOHOS               | 表示外部定义的格式标识符。                    |
+| NativeWindow                                             | OHNativeWindow                     | 本地窗口。                            |
+| OHBufferHandle | - | 缓冲区句柄，用于对缓冲区的信息传递和获取。 |
+| OH_NativeBuffer                                   | -                                  | OH_NativeBuffer结构体声明。                                 |
 
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [VkSwapchainImageUsageFlagBitsOHOS](#vkswapchainimageusageflagbitsohos) | VkSwapchainImageUsageFlagBitsOHOS | 图像使用标志位。 |
+| VkSwapchainImageUsageFlagBitsOHOS | VkSwapchainImageUsageFlagBitsOHOS | 图像使用标志位。 |
 
 ### 变量
 
@@ -72,22 +72,22 @@
 
 | 名称                                                                                                                                                                                                                     | typedef关键字              | 描述                          |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------|-----------------------------|
-| [VkResult (VKAPI_PTR *PFN_vkCreateSurfaceOHOS)(VkInstance instance, const VkSurfaceCreateInfoOHOS* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)](#pfn_vkcreatesurfaceohos)            | PFN_vkCreateSurfaceOHOS | 创建Vulkan Surface的函数指针定义。    |
-| [VKAPI_ATTR VkResult VKAPI_CALL vkCreateSurfaceOHOS(VkInstance instance, const VkSurfaceCreateInfoOHOS* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)](#vkcreatesurfaceohos)           | -                       | 创建Vulkan Surface。           |
-| [VkResult (VKAPI_PTR *PFN_vkGetNativeBufferPropertiesOHOS)(VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties)](#pfn_vkgetnativebufferpropertiesohos)                    | PFN_vkGetNativeBufferPropertiesOHOS    |  获取OH_NativeBuffer属性的函数指针定义。 |
-| [VkResult (VKAPI_PTR *PFN_vkGetMemoryNativeBufferOHOS)(VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer)](#pfn_vkgetmemorynativebufferohos)                             | PFN_vkGetMemoryNativeBufferOHOS             |  获取OH_NativeBuffer的函数指针定义。 |
-| [VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeBufferPropertiesOHOS(VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties)](#vkgetnativebufferpropertiesohos)                   | -                       | 获取OH_NativeBuffer属性。 |
-| [VKAPI_ATTR VkResult VKAPI_CALL vkGetMemoryNativeBufferOHOS(VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer)](#vkgetmemorynativebufferohos)                            | -                       | 获取OH_NativeBuffer。 |
-| [VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)](#vkgetswapchaingrallocusageohos)                               | -                       | 根据给定的Vulkan设备、图像格式和图像使用标志，返回适当的Gralloc(内存分配器)使用标志。 |
-| [VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vkacquireimageohos)                                                  | -                       | 用于获取交换链图像的所有权，并将外部信号的Fence导入到VkSemaphore对象和VkFence对象中。 |
-| [VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkqueuesignalreleaseimageohos) | -                       | 当前图像使用完毕后，通过该函数向系统硬件缓冲区发出释放信号，以便其他组件可以访问该图像。 |
-| [VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vkapi_ptr-pfn_vksetnativefencefdopenharmony) | VKAPI_PTR \*PFN_vkSetNativeFenceFdOpenHarmony | 该接口已废弃。|
-| [typedef VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkapi_ptr-pfn_vkgetnativefencefdopenharmony) | VKAPI_PTR \*PFN_vkGetNativeFenceFdOpenHarmony | 该接口已废弃。|
-| [VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)](#vkapi_ptr-pfn_vkgetswapchaingrallocusageohos) | VKAPI_PTR \*PFN_vkGetSwapchainGrallocUsageOHOS | 根据给定的Vulkan设备、图像格式和图像使用标志，返回适当的Gralloc(内存分配器)使用标志。应用开发者无需使用该接口。 |
-| [VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vkapi_ptr-pfn_vkacquireimageohos) | VKAPI_PTR \*PFN_vkAcquireImageOHOS | 用于获取交换链图像的所有权，并将外部信号的Fence导入到VkSemaphore对象和VkFence对象中。应用开发者无需使用该接口。|
-| [typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkapi_ptr-pfn_vkqueuesignalreleaseimageohos) | VKAPI_PTR \*PFN_vkQueueSignalReleaseImageOHOS | 当前图像使用完毕后，通过该函数向系统硬件缓冲区发出释放信号，以便其他组件可以访问该图像。应用开发者无需使用该接口。 |
-| [VKAPI_ATTR VkResult VKAPI_CALL vkSetNativeFenceFdOpenHarmony(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vksetnativefencefdopenharmony) | - | 该接口已废弃。|
-| [VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeFenceFdOpenHarmony(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkgetnativefencefdopenharmony) | - | 该接口已废弃。 |
+| VkResult (VKAPI_PTR *PFN_vkCreateSurfaceOHOS)(VkInstance instance, const VkSurfaceCreateInfoOHOS* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)            | PFN_vkCreateSurfaceOHOS | 创建Vulkan Surface的函数指针定义。    |
+| VKAPI_ATTR VkResult VKAPI_CALL vkCreateSurfaceOHOS(VkInstance instance, const VkSurfaceCreateInfoOHOS* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)           | -                       | 创建Vulkan Surface。           |
+| VkResult (VKAPI_PTR *PFN_vkGetNativeBufferPropertiesOHOS)(VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties)                    | PFN_vkGetNativeBufferPropertiesOHOS    |  获取OH_NativeBuffer属性的函数指针定义。 |
+| VkResult (VKAPI_PTR *PFN_vkGetMemoryNativeBufferOHOS)(VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer)                             | PFN_vkGetMemoryNativeBufferOHOS             |  获取OH_NativeBuffer的函数指针定义。 |
+| VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeBufferPropertiesOHOS(VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties)                   | -                       | 获取OH_NativeBuffer属性。 |
+| VKAPI_ATTR VkResult VKAPI_CALL vkGetMemoryNativeBufferOHOS(VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer)                            | -                       | 获取OH_NativeBuffer。 |
+| VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)                               | -                       | 根据给定的Vulkan设备、图像格式和图像使用标志，返回适当的Gralloc(内存分配器)使用标志。 |
+| VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)                                                  | -                       | 用于获取交换链图像的所有权，并将外部信号的Fence导入到VkSemaphore对象和VkFence对象中。 |
+| VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd) | -                       | 当前图像使用完毕后，通过该函数向系统硬件缓冲区发出释放信号，以便其他组件可以访问该图像。 |
+| VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence) | VKAPI_PTR \*PFN_vkSetNativeFenceFdOpenHarmony | 该接口已废弃。|
+| typedef VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd) | VKAPI_PTR \*PFN_vkGetNativeFenceFdOpenHarmony | 该接口已废弃。|
+| VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage) | VKAPI_PTR \*PFN_vkGetSwapchainGrallocUsageOHOS | 根据给定的Vulkan设备、图像格式和图像使用标志，返回适当的Gralloc(内存分配器)使用标志。应用开发者无需使用该接口。 |
+| VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence) | VKAPI_PTR \*PFN_vkAcquireImageOHOS | 用于获取交换链图像的所有权，并将外部信号的Fence导入到VkSemaphore对象和VkFence对象中。应用开发者无需使用该接口。|
+| typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd) | VKAPI_PTR \*PFN_vkQueueSignalReleaseImageOHOS | 当前图像使用完毕后，通过该函数向系统硬件缓冲区发出释放信号，以便其他组件可以访问该图像。应用开发者无需使用该接口。 |
+| VKAPI_ATTR VkResult VKAPI_CALL vkSetNativeFenceFdOpenHarmony(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence) | - | 该接口已废弃。|
+| VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeFenceFdOpenHarmony(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd) | - | 该接口已废弃。 |
 
 
 ## 枚举类型说明
@@ -131,7 +131,7 @@ typedef VkResult (VKAPI_PTR *PFN_vkCreateSurfaceOHOS)(VkInstance instance, const
 | 参数项 | 描述 |
 | -- | -- |
 | VkInstance instance | Vulkan实例。 |
-| [const VkSurfaceCreateInfoOHOS](capi-vulkan-vksurfacecreateinfoohos.md)* pCreateInfo | 一个VkSurfaceCreateInfoOHOS结构体的指针，包含创建Vulkan Surface时必要的参数。 |
+| const VkSurfaceCreateInfoOHOS* pCreateInfo | 一个VkSurfaceCreateInfoOHOS结构体的指针，包含创建Vulkan Surface时必要的参数。 |
 | const VkAllocationCallbacks*   pAllocator | 用户自定义内存分配的回调函数，如果不需要可以传入NULL，接口会使用默认的内存分配函数。 |
 | VkSurfaceKHR* pSurface | 出参，用于接收创建的Vulkan Surface，类型为VkSurfaceKHR。 |
 
@@ -161,7 +161,7 @@ VKAPI_ATTR VkResult VKAPI_CALL vkCreateSurfaceOHOS(VkInstance instance, const Vk
 | 参数项 | 描述 |
 | -- | -- |
 | VkInstance instance | Vulkan实例。 |
-| [const VkSurfaceCreateInfoOHOS](capi-vulkan-vksurfacecreateinfoohos.md)* pCreateInfo | 一个VkSurfaceCreateInfoOHOS结构体的指针，包含创建Vulkan Surface时必要的参数。 |
+| const VkSurfaceCreateInfoOHOS* pCreateInfo | 一个VkSurfaceCreateInfoOHOS结构体的指针，包含创建Vulkan Surface时必要的参数。 |
 | const VkAllocationCallbacks* pAllocator | 用户自定义内存分配的回调函数，如果不需要可以传入NULL，接口会使用默认的内存分配函数。 |
 | VkSurfaceKHR* pSurface | 出参，用于接收创建的Vulkan Surface，类型为VkSurfaceKHR。 |
 
@@ -191,8 +191,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkGetNativeBufferPropertiesOHOS)(VkDevice devic
 | 参数项                                                                    | 描述 |
 |------------------------------------------------------------------------| -- |
 | VkDevice device                                                        | VkDevice对象。 |
-| const [struct OH_NativeBuffer](capi-vulkan-oh-nativebuffer.md)* buffer | OH_NativeBuffer结构体指针。 |
-| [VkNativeBufferPropertiesOHOS](capi-vulkan-vknativebufferpropertiesohos.md)* pProperties                          | 用于接收OH_NativeBuffer属性的结构体。 |
+| const struct OH_NativeBuffer* buffer | OH_NativeBuffer结构体指针。 |
+| VkNativeBufferPropertiesOHOS* pProperties                          | 用于接收OH_NativeBuffer属性的结构体。 |
 
 **返回：**
 
@@ -220,8 +220,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkGetMemoryNativeBufferOHOS)(VkDevice device, c
 | 参数项 | 描述 |
 | -- | -- |
 | VkDevice device | VkDevice对象。 |
-| [const VkMemoryGetNativeBufferInfoOHOS](capi-vulkan-vkmemorygetnativebufferinfoohos.md)* pInfo | VkMemoryGetNativeBufferInfoOHOS结构体对象。 |
-| [struct OH_NativeBuffer](capi-vulkan-oh-nativebuffer.md)** pBuffer | 用于接收获取到的OH_NativeBuffer。 |
+| const VkMemoryGetNativeBufferInfoOHOS* pInfo | VkMemoryGetNativeBufferInfoOHOS结构体对象。 |
+| struct OH_NativeBuffer** pBuffer | 用于接收获取到的OH_NativeBuffer。 |
 
 **返回：**
 
@@ -249,8 +249,8 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeBufferPropertiesOHOS(VkDevice device, 
 | 参数项 | 描述 |
 | -- | -- |
 | VkDevice device | VkDevice对象。 |
-| const [struct OH_NativeBuffer](capi-vulkan-oh-nativebuffer.md)* buffer | OH_NativeBuffer结构体指针。 |
-| [VkNativeBufferPropertiesOHOS](capi-vulkan-vknativebufferpropertiesohos.md)* pProperties | 用于接收OH_NativeBuffer属性的结构体。 |
+| const struct OH_NativeBuffer* buffer | OH_NativeBuffer结构体指针。 |
+| VkNativeBufferPropertiesOHOS* pProperties | 用于接收OH_NativeBuffer属性的结构体。 |
 
 **返回：**
 
@@ -278,8 +278,8 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetMemoryNativeBufferOHOS(VkDevice device, cons
 | 参数项 | 描述 |
 | -- | -- |
 | VkDevice device | VkDevice对象。 |
-| [const VkMemoryGetNativeBufferInfoOHOS](capi-vulkan-vkmemorygetnativebufferinfoohos.md)* pInfo | VkMemoryGetNativeBufferInfoOHOS结构体对象。 |
-| [struct OH_NativeBuffer](capi-vulkan-oh-nativebuffer.md)** pBuffer | 用于接收获取到的OH_NativeBuffer。 |
+| const VkMemoryGetNativeBufferInfoOHOS* pInfo | VkMemoryGetNativeBufferInfoOHOS结构体对象。 |
+| struct OH_NativeBuffer** pBuffer | 用于接收获取到的OH_NativeBuffer。 |
 
 **返回：**
 
@@ -495,7 +495,7 @@ typedef VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device,
 
 **废弃版本：** 10
 
-**替代接口：** [PFN_vkAcquireImageOHOS](#vkapi_ptr-pfn_vkacquireimageohos)
+**替代接口：** PFN_vkAcquireImageOHOS
 
 ### VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony()
 
@@ -511,7 +511,7 @@ typedef VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, u
 
 **废弃版本：** 10
 
-**替代接口：** [PFN_vkQueueSignalReleaseImageOHOS](#vkapi_ptr-pfn_vkqueuesignalreleaseimageohos)
+**替代接口：** PFN_vkQueueSignalReleaseImageOHOS
 
 ### vkSetNativeFenceFdOpenHarmony()
 
@@ -527,7 +527,7 @@ VKAPI_ATTR VkResult VKAPI_CALL vkSetNativeFenceFdOpenHarmony(VkDevice device, in
 
 **废弃版本：** 10
 
-**替代接口：** [vkAcquireImageOHOS](capi-vulkan-ohos-h.md#vkacquireimageohos)
+**替代接口：** vkAcquireImageOHOS
 
 ### vkGetNativeFenceFdOpenHarmony()
 
@@ -543,4 +543,4 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeFenceFdOpenHarmony(VkQueue queue, uint
 
 **废弃版本：** 10
 
-**替代接口：** [vkQueueSignalReleaseImageOHOS](capi-vulkan-ohos-h.md#vkqueuesignalreleaseimageohos)
+**替代接口：** vkQueueSignalReleaseImageOHOS

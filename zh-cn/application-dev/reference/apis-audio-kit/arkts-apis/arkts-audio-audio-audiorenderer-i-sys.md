@@ -1,10 +1,8 @@
 # AudioRenderer
 
-提供音频渲染的相关接口。 在使用AudioRenderer的接口之前，需先通过[createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md)获取AudioRenderer实例。 > **说明：** > > - 本Interface首批接口从API version 8开始支持。
+音频渲染。在使用AudioRenderer的接口之前，需先通过 [audio.createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md) 获取AudioRenderer实例。
 
-**起始版本：** 23
-
-<!--Device-audio-interface AudioRenderer--><!--Device-audio-interface AudioRenderer-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## getTarget
@@ -21,11 +18,16 @@ import { audioHaptic } from '@kit.AudioKit';
 getTarget(): RenderTarget
 ```
 
-Gets the currently render target of this audio renderer. If the render target has not been changed, the default value [PLAYBACK](arkts-audio-audio-rendertarget-e-sys.md#playback) will be returned. Ensure that the [setTarget](#settarget) promise is resolved successfully before calling this interface, otherwise, the obtained value may be inaccurate.
+获取当前音频渲染器的渲染目标。
 
-**起始版本：** 23
+> **说明：**
+> 
+> - 若未更改过渲染目标，将返回默认值[PLAYBACK](arkts-audio-audio-rendertarget-e-sys.md)。
+> 
+> - 若调用此接口前，已经调用过[SetTarget](#settarget)，请确保
+> [SetTarget](#settarget)的Promise对象已成功解析，否则获取到的数值可能不准确。
 
-<!--Device-AudioRenderer-getTarget(): RenderTarget--><!--Device-AudioRenderer-getTarget(): RenderTarget-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -35,7 +37,7 @@ Gets the currently render target of this audio renderer. If the render target ha
 
 | 类型 | 说明 |
 | --- | --- |
-| [RenderTarget](arkts-audio-audio-rendertarget-e-sys.md) | Render target of this audio renderer. |
+| [RenderTarget](arkts-audio-audio-rendertarget-e-sys.md) | 返回音频渲染器的渲染目标。 |
 
 **错误码：**
 
@@ -63,13 +65,34 @@ async function getTarget(){
 setTarget(target: RenderTarget): Promise<void>
 ```
 
-Sets the render target of this audio renderer. This function can only be called when the audio renderer is not in the running or released state. Otherwise, it will return an error. The caller must have the ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE permission when target is not [PLAYBACK](arkts-audio-audio-rendertarget-e-sys.md#playback). This method can only be called when the audio renderer is ​​not​​ in the RUNNING or RELEASED state. Otherwise, an error will be returned. After changing render target to non-PLAYBACK： 1. The audio route and interruption strategy of this renderer will not be affected by [AudioSessionManager](arkts-audio-audio-audiosessionmanager-i.md). 2. The device type of this renderer will be [SYSTEM_PRIVATE](arkts-audio-audio-devicetype-e.md#system_private). 3. Calling start when the audio scene is not [AUDIO_SCENE_VOICE_CHAT](arkts-audio-audio-audioscene-e.md#audio_scene_voice_chat) will return error code 6800103. 4. Calling getAudioTime or getAudioTimeSync will return error code 6800103. 5. Calling getAudioTimestampInfo or getAudioTimestampInfoSync will return error code 6800103. 6. Calling setDefaultOutputDevice will return error code 6800103.
+设置音频渲染器的渲染目标。使用Promise异步回调。
 
-**起始版本：** 23
+> **说明：**
+> 
+> - 此方法仅可在音频渲染器未处于运行或释放状态时调用，否则将返回错误。
+> 
+> - 将渲染目标更改为非[PLAYBACK](arkts-audio-audio-rendertarget-e-sys.md)的模式后：
+> 
+> - 该音频渲染器的音频路由与中断策略将无法使用[AudioSessionManager](arkts-multimedia-audio.md)相关接口。
+> 
+> - 该音频渲染器的device type为[SYSTEM_PRIVATE](arkts-audio-audio-devicetype-e.md)。
+> 
+> - 调用[Start](arkts-audio-audio-audiorenderer-i.md#start)且audio
+> scene不为[AUDIO_SCENE_VOICE_CHAT](arkts-audio-audio-audioscene-e.md)时，将返回错误码6800301。
+> 
+> - 调用
+> [getAudioTime](arkts-audio-audio-audiorenderer-i.md#getaudiotime)或
+> [getAudioTimeSync](arkts-audio-audio-audiorenderer-i.md#getaudiotimesync)时，将返回错误码6800301。
+> 
+> - 调用[getAudioTimestampInfo](arkts-audio-audio-audiorenderer-i.md#getaudiotimestampinfo)或
+> [getAudioTimestampInfoSync](arkts-audio-audio-audiorenderer-i.md#getaudiotimestampinfosync)时，将返回错误码6800301。
+> 
+> - 调用[setDefaultOutputDevice](arkts-audio-audio-audiorenderer-i.md#setdefaultoutputdevice)时，将返回错
+> 误码6800301。
+
+**起始版本：** 22
 
 **需要权限：** ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE
-
-<!--Device-AudioRenderer-setTarget(target: RenderTarget): Promise<void>--><!--Device-AudioRenderer-setTarget(target: RenderTarget): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -79,24 +102,24 @@ Sets the render target of this audio renderer. This function can only be called 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | [RenderTarget](arkts-audio-audio-rendertarget-e-sys.md) | 是 | Render target. |
+| target | [RenderTarget](arkts-audio-audio-rendertarget-e-sys.md) | 是 | 设置音频渲染目标。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permit at running and release state. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+| [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permit at running and release state. |
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Current renderer is not supported to set target. |
+| [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
 **示例**
 
@@ -109,4 +132,3 @@ audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE
   console.error(`Failed to set target. code: ${err.code}, message: ${err.message}`);
 });
 ```
-

@@ -2,9 +2,7 @@
 
 表示获取域访问令牌的选项。
 
-**起始版本：** 23
-
-<!--Device-osAccount-interface GetDomainAccessTokenOptions--><!--Device-osAccount-interface GetDomainAccessTokenOptions-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -19,16 +17,14 @@ import { osAccount } from '@kit.BasicServicesKit';
 ## businessParams
 
 ```TypeScript
-businessParams: Record<string, RecordData>
+businessParams: Record<string, Object>
 ```
 
 业务参数，由业务方根据请求协议自定义。
 
-**类型：** Record&lt;string, [RecordData](arkts-basicservices-recorddata-t.md)&gt;
+**类型：** Record&lt;string, Object&gt;
 
-**起始版本：** 23
-
-<!--Device-GetDomainAccessTokenOptions-businessParams: Record<string, RecordData>--><!--Device-GetDomainAccessTokenOptions-businessParams: Record<string, RecordData>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -37,16 +33,14 @@ businessParams: Record<string, RecordData>
 ## callerUid
 
 ```TypeScript
-callerUid: int
+callerUid: number
 ```
 
 调用方唯一标识符。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-GetDomainAccessTokenOptions-callerUid: int--><!--Device-GetDomainAccessTokenOptions-callerUid: int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -62,9 +56,7 @@ domainAccountInfo: DomainAccountInfo
 
 **类型：** [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md)
 
-**起始版本：** 23
-
-<!--Device-GetDomainAccessTokenOptions-domainAccountInfo: DomainAccountInfo--><!--Device-GetDomainAccessTokenOptions-domainAccountInfo: DomainAccountInfo-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -80,11 +72,8 @@ domainAccountToken: Uint8Array
 
 **类型：** Uint8Array
 
-**起始版本：** 23
-
-<!--Device-GetDomainAccessTokenOptions-domainAccountToken: Uint8Array--><!--Device-GetDomainAccessTokenOptions-domainAccountToken: Uint8Array-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
-

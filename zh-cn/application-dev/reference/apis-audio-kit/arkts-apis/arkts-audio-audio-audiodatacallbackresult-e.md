@@ -1,10 +1,8 @@
 # AudioDataCallbackResult
 
-表示音频数据回调结果的枚举。
+表示音频数据回调结果的枚举。@enum { number }
 
-**起始版本：** 23
-
-<!--Device-audio-enum AudioDataCallbackResult--><!--Device-audio-enum AudioDataCallbackResult-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -16,9 +14,7 @@ INVALID = -1
 
 表示该回调数据无效。
 
-**起始版本：** 23
-
-<!--Device-AudioDataCallbackResult-INVALID = -1--><!--Device-AudioDataCallbackResult-INVALID = -1-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -30,9 +26,6 @@ VALID = 0
 
 表示该回调数据有效。
 
-**起始版本：** 23
-
-<!--Device-AudioDataCallbackResult-VALID = 0--><!--Device-AudioDataCallbackResult-VALID = 0-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
-

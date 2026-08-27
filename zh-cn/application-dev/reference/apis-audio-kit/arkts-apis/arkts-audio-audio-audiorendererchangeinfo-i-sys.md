@@ -2,9 +2,7 @@
 
 描述音频渲染器更改信息。
 
-**起始版本：** 23
-
-<!--Device-audio-interface AudioRendererChangeInfo--><!--Device-audio-interface AudioRendererChangeInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -12,22 +10,19 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## clientUid
 
 ```TypeScript
-readonly clientUid: int
+readonly clientUid: number
 ```
 
-Uid for audio renderer client application.
+音频渲染器客户端应用程序的Uid。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AudioRendererChangeInfo-readonly clientUid: int--><!--Device-AudioRendererChangeInfo-readonly clientUid: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -39,13 +34,12 @@ Uid for audio renderer client application.
 readonly rendererState: AudioState
 ```
 
+音频状态。
+
 **类型：** AudioState
 
-**起始版本：** 23
-
-<!--Device-AudioRendererChangeInfo-readonly rendererState: AudioState--><!--Device-AudioRendererChangeInfo-readonly rendererState: AudioState-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 **系统接口：** 此接口为系统接口。
-

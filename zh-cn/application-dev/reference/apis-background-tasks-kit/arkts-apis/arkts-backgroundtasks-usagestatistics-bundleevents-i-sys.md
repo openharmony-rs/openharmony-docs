@@ -2,9 +2,7 @@
 
 FA模型的使用信息属性集合。
 
-**起始版本：** 23
-
-<!--Device-usageStatistics-interface BundleEvents--><!--Device-usageStatistics-interface BundleEvents-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -19,16 +17,14 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 ## appGroup
 
 ```TypeScript
-appGroup?: int
+appGroup?: number
 ```
 
 应用程序的使用优先级组。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleEvents-appGroup?: int--><!--Device-BundleEvents-appGroup?: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -44,9 +40,7 @@ bundleName?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BundleEvents-bundleName?: string--><!--Device-BundleEvents-bundleName?: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -55,16 +49,14 @@ bundleName?: string
 ## eventId
 
 ```TypeScript
-eventId?: int
+eventId?: number
 ```
 
 应用事件类型。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleEvents-eventId?: int--><!--Device-BundleEvents-eventId?: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -73,16 +65,14 @@ eventId?: int
 ## eventOccurredTime
 
 ```TypeScript
-eventOccurredTime?: long
+eventOccurredTime?: number
 ```
 
 应用事件发生的时间戳，单位：ms。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleEvents-eventOccurredTime?: long--><!--Device-BundleEvents-eventOccurredTime?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -98,9 +88,7 @@ indexOfLink?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BundleEvents-indexOfLink?: string--><!--Device-BundleEvents-indexOfLink?: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -116,11 +104,8 @@ nameOfClass?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BundleEvents-nameOfClass?: string--><!--Device-BundleEvents-nameOfClass?: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **系统接口：** 此接口为系统接口。
-

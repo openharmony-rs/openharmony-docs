@@ -18,8 +18,6 @@ function isIdleState(bundleName: string, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-<!--Device-bundleState-function isIdleState(bundleName: string, callback: AsyncCallback<boolean>): void--><!--Device-bundleState-function isIdleState(bundleName: string, callback: AsyncCallback<boolean>): void-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
 **参数：**
@@ -27,7 +25,7 @@ function isIdleState(bundleName: string, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用的bundleName。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 指定的callback回调方法。如果指定的bundleName有效，则返回指定bundleName的应用当前是否是空闲状态；否则返回null。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 指定的callback回调方法。如果指定的bundleName有效，则返回指定bundleName的应用当前是否是空闲状态；否则返回null。 |
 
 **示例**
 
@@ -57,8 +55,6 @@ function isIdleState(bundleName: string): Promise<boolean>
 
 **废弃版本：** 9
 
-<!--Device-bundleState-function isIdleState(bundleName: string): Promise<boolean>--><!--Device-bundleState-function isIdleState(bundleName: string): Promise<boolean>-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
 **参数：**
@@ -71,7 +67,7 @@ function isIdleState(bundleName: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | 指定的Promise回调方法。如果指定的bundleName有效，则返回指定bundleName的应用当前是否是空闲状态；否则返回null。 |
+| Promise & lt;boolean & gt; | 指定的Promise回调方法。如果指定的bundleName有效，则返回指定bundleName的应用当前是否是空闲状态；否则返回null。 |
 
 **示例**
 
@@ -85,4 +81,3 @@ bundleState.isIdleState("com.ohos.camera").then((res: boolean) => {
   console.error('BUNDLE_ACTIVE isIdleState promise failed, because: ' + err.code);
 });
 ```
-

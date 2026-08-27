@@ -20,8 +20,6 @@ function connectPrinterByIpAndPpd(printerIp: string, protocol: string, ppdName: 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-print-function connectPrinterByIpAndPpd(printerIp: string, protocol: string, ppdName: string): Promise<void>--><!--Device-print-function connectPrinterByIpAndPpd(printerIp: string, protocol: string, ppdName: string): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -38,13 +36,12 @@ function connectPrinterByIpAndPpd(printerIp: string, protocol: string, ppdName: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | the promise returned by the function. |
+| Promise & lt;void & gt; | the promise returned by the function. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13100005](../errorcode-print.md#13100005-无效的打印机) | Invalid printer IP. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-
+| [13100005](../errorcode-print.md#13100005-无效的打印机) | Invalid printer IP. |

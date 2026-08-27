@@ -9,14 +9,14 @@ import { serialManager } from '@kit.BasicServicesKit';
 ## hasSerialRight
 
 ```TypeScript
-function hasSerialRight(portId: int): boolean
+function hasSerialRight(portId: number): boolean
 ```
 
-检查应用是否具有访问串口设备的权限。应用退出后再拉起时，需要重新申请授权。通常在打开串口设备、执行串口操作前调用此接口检查权限状态。 **前置条件：** - 需要先调用[getPortList](arkts-basicservices-serialmanager-getportlist-f.md)获取端口号
+检查应用是否具有访问串口设备的权限。应用退出后再拉起时，需要重新申请授权。通常在打开串口设备、执行串口操作前调用此接口检查权限状态。  
+**前置条件：**  
+- 需要先调用[getPortList](arkts-basicservices-serialmanager-getportlist-f.md)获取端口号
 
-**起始版本：** 23
-
-<!--Device-serialManager-function hasSerialRight(portId: int): boolean--><!--Device-serialManager-function hasSerialRight(portId: int): boolean-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
@@ -24,7 +24,7 @@ function hasSerialRight(portId: int): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| portId | int | 是 | 端口号，来自[getPortList](arkts-basicservices-serialmanager-getportlist-f.md)返回的 [SerialPort](arkts-basicservices-serialmanager-serialport-i.md)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
+| portId | number | 是 | 端口号，来自[getPortList](arkts-basicservices-serialmanager-getportlist-f.md)返回的 [SerialPort](arkts-basicservices-serialmanager-serialport-i.md)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 
 **返回值：**
 
@@ -37,9 +37,9 @@ function hasSerialRight(portId: int): boolean
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) |  |
-| [31400003](../errorcode-usb.md#31400003-端口号不存在) |  |
 | [14400005](../errorcode-usb.md#14400005-数据库操作异常) |  |
 | [31400001](../errorcode-usb.md#31400001-串口服务异常) |  |
+| [31400003](../errorcode-usb.md#31400003-端口号不存在) |  |
 
 **示例**
 
@@ -47,17 +47,17 @@ function hasSerialRight(portId: int): boolean
 
 ```TypeScript
 import { JSON } from '@kit.ArkTS';
-import serialManager from '@ohos.usbManager.serial';
+import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 function hasSerialRightExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
-  console.info('portList: '+ JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
+  console.info('portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
     console.error('portList is empty');
     return;
   }
-  let portId: int = portList[0].portId;
+  let portId: number = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (serialManager.hasSerialRight(portId)) {
@@ -67,4 +67,3 @@ function hasSerialRightExample() {
   }
 }
 ```
-

@@ -1,14 +1,11 @@
 # @ohos.multimedia.systemSoundManager
 
-系统声音管理提供管理系统声音的基础能力，包括对系统音效类型的定义、获取系统音效播放器等。
+系统声音管理
+
 
 **起始版本：** 23
 
-<!--Device-unnamed-declare namespace systemSoundManager--><!--Device-unnamed-declare namespace systemSoundManager-End-->
-
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
-
-**系统接口：** 此接口为系统接口。
 
 ## 导入模块
 
@@ -48,7 +45,7 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [SystemSoundType](arkts-audio-systemsoundmanager-systemsoundtype-e.md) | 枚举，表示系统音效类型。 |
+| [SystemSoundType](arkts-audio-systemsoundmanager-systemsoundtype-e.md) | 枚举，表示系统音效类型。@enum { number } |
 
 <!--Del-->
 ### 枚举（系统接口）
@@ -58,11 +55,11 @@ import { systemSoundManager } from '@kit.AudioKit';
 | [MediaType](arkts-audio-systemsoundmanager-mediatype-e-sys.md) | 枚举，媒体类型。 |
 | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | 枚举，铃声类型。 |
 | [SystemSoundError](arkts-audio-systemsoundmanager-systemsounderror-e-sys.md) | 枚举，系统声音错误类型。 |
-| [SystemToneType](arkts-audio-systemsoundmanager-systemtonetype-e-sys.md) | 枚举，系统铃声类型。 |
+| [SystemToneType](arkts-audio-systemsoundmanager-systemtonetype-e-sys.md) | 枚举，系统铃声类型。@enum { number } |
 | [ToneCustomizedType](arkts-audio-systemsoundmanager-tonecustomizedtype-e-sys.md) | 枚举，铃声自定义类型。 |
-| [ToneHapticsFeature](arkts-audio-systemsoundmanager-tonehapticsfeature-e-sys.md) | 枚举，系统振动风格定义。 \| 名称 \| 值 \| 说明 \| \| ----------------------------- \| -- \| -------------------- \| \| STANDARD\| 0 \| 标准振动风格。 \| \| GENTLE \| 1 \| 轻柔振动风格。 \| |
-| [ToneHapticsMode](arkts-audio-systemsoundmanager-tonehapticsmode-e-sys.md) | 枚举，系统铃音场景的振动模式。 \| 名称 \| 值 \| 说明 \| \| ----------------------------- \| -- \| -------------------- \| \| NONE \| 0 \| 无振动模式。 \| \| SYNC \| 1 \| 与铃音同步模式。 \| \| NON_SYNC \| 2 \| 非同步模式。 \| |
-| [ToneHapticsType](arkts-audio-systemsoundmanager-tonehapticstype-e-sys.md) | 枚举，系统铃音的振动类型。 |
+| [ToneHapticsFeature](arkts-audio-systemsoundmanager-tonehapticsfeature-e-sys.md) | 枚举，系统振动风格定义。  \| 名称 \| 值 \| 说明 \| \| ----------------------------- \| -- \| -------------------- \| \| STANDARD\| 0 \| 标准振动风格。 \| \| GENTLE \| 1 \| 轻柔振动风格。 \|@enum { number } |
+| [ToneHapticsMode](arkts-audio-systemsoundmanager-tonehapticsmode-e-sys.md) | 枚举，系统铃音场景的振动模式。  \| 名称 \| 值 \| 说明 \| \| ----------------------------- \| -- \| -------------------- \| \| NONE \| 0 \| 无振动模式。 \| \| SYNC \| 1 \| 与铃音同步模式。 \| \| NON_SYNC \| 2 \| 非同步模式。 \|@enum {number} |
+| [ToneHapticsType](arkts-audio-systemsoundmanager-tonehapticstype-e-sys.md) | 枚举，系统铃音的振动类型。@enum { number } |
 <!--DelEnd-->
 
 ### 类型
@@ -90,10 +87,9 @@ import { systemSoundManager } from '@kit.AudioKit';
 | 名称 | 说明 |
 | --- | --- |
 | [TONE_CATEGORY_ALARM](arkts-audio-systemsoundmanager-con-sys.md#tone_category_alarm) | 闹钟铃声类别。 |
-| [TONE_CATEGORY_CONTACTS](arkts-audio-systemsoundmanager-con-sys.md#tone_category_contacts) | Define the contact tone category. 取值限定为整数。 |
+| [TONE_CATEGORY_CONTACTS](arkts-audio-systemsoundmanager-con-sys.md#tone_category_contacts) | 联系人铃声类别。 |
 | [TONE_CATEGORY_NOTIFICATION](arkts-audio-systemsoundmanager-con-sys.md#tone_category_notification) | 通知铃声类别。 |
 | [TONE_CATEGORY_NOTIFICATION_APP](arkts-audio-systemsoundmanager-con-sys.md#tone_category_notification_app) | 应用级通知铃声类别。 |
 | [TONE_CATEGORY_RINGTONE](arkts-audio-systemsoundmanager-con-sys.md#tone_category_ringtone) | 铃声类别。 |
 | [TONE_CATEGORY_TEXT_MESSAGE](arkts-audio-systemsoundmanager-con-sys.md#tone_category_text_message) | 短信铃声类别。 |
 <!--DelEnd-->
-

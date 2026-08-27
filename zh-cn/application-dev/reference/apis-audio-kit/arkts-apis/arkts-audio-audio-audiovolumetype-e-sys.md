@@ -1,10 +1,8 @@
 # AudioVolumeType
 
-表示音频音量类型的枚举。
+枚举，音频流类型。
 
-**起始版本：** 23
-
-<!--Device-audio-enum AudioVolumeType--><!--Device-audio-enum AudioVolumeType-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -14,11 +12,9 @@
 SYSTEM = 6
 ```
 
-Audio volume for system sound.
+系统音。
 
-**起始版本：** 23
-
-<!--Device-AudioVolumeType-SYSTEM = 6--><!--Device-AudioVolumeType-SYSTEM = 6-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -30,11 +26,9 @@ Audio volume for system sound.
 ULTRASONIC = 10
 ```
 
-Audio volume for ultrasonic.
+超声波。
 
-**起始版本：** 23
-
-<!--Device-AudioVolumeType-ULTRASONIC = 10--><!--Device-AudioVolumeType-ULTRASONIC = 10-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -46,11 +40,9 @@ Audio volume for ultrasonic.
 NOTIFICATION = 11
 ```
 
-Audio volume type for notification.
+通知音。
 
-**起始版本：** 23
-
-<!--Device-AudioVolumeType-NOTIFICATION = 11--><!--Device-AudioVolumeType-NOTIFICATION = 11-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -62,11 +54,9 @@ Audio volume type for notification.
 NAVIGATION = 12
 ```
 
-Audio volume type for navigation.
+导航。
 
-**起始版本：** 23
-
-<!--Device-AudioVolumeType-NAVIGATION = 12--><!--Device-AudioVolumeType-NAVIGATION = 12-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -78,13 +68,10 @@ Audio volume type for navigation.
 ALL = 100
 ```
 
-Audio stream for all common.
+所有公共音频流。
 
-**起始版本：** 23
-
-<!--Device-AudioVolumeType-ALL = 100--><!--Device-AudioVolumeType-ALL = 100-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **系统接口：** 此接口为系统接口。
-

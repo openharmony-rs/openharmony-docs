@@ -1,8 +1,8 @@
 # AudioRendererFilter（系统接口）
 
-**起始版本：** 23
+音频渲染器过滤条件。
 
-<!--Device-audio-interface AudioRendererFilter--><!--Device-audio-interface AudioRendererFilter-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -12,22 +12,19 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## rendererId
 
 ```TypeScript
-rendererId?: int
+rendererId?: number
 ```
 
-AudioRenderer id.
+音频流唯一id。SystemCapability.Multimedia.Audio.Renderer
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AudioRendererFilter-rendererId?: int--><!--Device-AudioRendererFilter-rendererId?: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -39,11 +36,11 @@ AudioRenderer id.
 rendererInfo?: AudioRendererInfo
 ```
 
+表示渲染器信息。SystemCapability.Multimedia.Audio.Renderer
+
 **类型：** [AudioRendererInfo](arkts-audio-audio-audiorendererinfo-i.md)
 
-**起始版本：** 23
-
-<!--Device-AudioRendererFilter-rendererInfo?: AudioRendererInfo--><!--Device-AudioRendererFilter-rendererInfo?: AudioRendererInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -52,18 +49,30 @@ rendererInfo?: AudioRendererInfo
 ## uid
 
 ```TypeScript
-uid?: int
+uid?: number
 ```
 
-Application uid.
+表示应用ID。SystemCapability.Multimedia.Audio.Core
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AudioRendererFilter-uid?: int--><!--Device-AudioRendererFilter-uid?: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **系统接口：** 此接口为系统接口。
 
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+```

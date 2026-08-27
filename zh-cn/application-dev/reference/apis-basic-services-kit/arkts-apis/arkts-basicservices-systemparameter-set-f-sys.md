@@ -20,8 +20,6 @@ function set(key: string, value: string, callback: AsyncCallback<void>): void
 
 **替代接口：** set
 
-<!--Device-systemParameter-function set(key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-systemParameter-function set(key: string, value: string, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **系统接口：** 此接口为系统接口。
@@ -32,7 +30,7 @@ function set(key: string, value: string, callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | key | string | 是 | 待设置的系统参数key。 |
 | value | string | 是 | 待设置的系统参数值。长度限制请参考[系统参数](../../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，用于异步返回设置结果。当设置成功时，err为undefined；当设置失败时，err为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，用于异步返回设置结果。当设置成功时，err为undefined；当设置失败时，err为错误对象。 |
 
 **错误码：**
 
@@ -76,8 +74,6 @@ function set(key: string, value: string): Promise<void>
 
 **替代接口：** set
 
-<!--Device-systemParameter-function set(key: string, value: string): Promise<void>--><!--Device-systemParameter-function set(key: string, value: string): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **系统接口：** 此接口为系统接口。
@@ -93,7 +89,7 @@ function set(key: string, value: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise实例，用于异步获取结果。 |
+| Promise & lt;void & gt; | Promise实例，用于异步获取结果。 |
 
 **错误码：**
 
@@ -120,4 +116,3 @@ try {
   console.error('set unexpected error: ' + e);
 }
 ```
-

@@ -4,20 +4,24 @@
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## claimInterface
 
 ```TypeScript
-function claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolean): int
+function claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolean): number
 ```
 
-声明对USB设备某个接口的控制权。调用成功后应用获得该接口的独占控制权可以进行数据传输等操作，其他程序无法访问该接口。使用完后需调用 [releaseInterface](arkts-basicservices-usbmanager-releaseinterface-f.md)释放该接口的控制权。 **使用场景**：在需要进行USB数据传输时，需要先声明接口控制权以独占访问该接口。例如，在USB存储设备读写、USB摄像头数据采集、USB串口通信等场景中，都需要先声明接口控制权。 > **说明：** > > 在USB编程中，claim interface是一个常见操作，指的是应用请求操作系统将某个USB接口从内核驱动中释放并交由用户空间程序控制。 > 下面用到的claim通信接口都表示claim interface操作。
+声明对USB设备某个接口的控制权。调用成功后应用获得该接口的独占控制权可以进行数据传输等操作，其他程序无法访问该接口。使用完后需调用 [releaseInterface](arkts-basicservices-usbmanager-releaseinterface-f.md)释放该接口的控制权。  
+**使用场景**：在需要进行USB数据传输时，需要先声明接口控制权以独占访问该接口。例如，在USB存储设备读写、USB摄像头数据采集、USB串口通信等场景中，都需要先声明接口控制权。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 在USB编程中，claim interface是一个常见操作，指的是应用请求操作系统将某个USB接口从内核驱动中释放并交由用户空间程序控制。
 
-<!--Device-usbManager-function claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolean): int--><!--Device-usbManager-function claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolean): int-End-->
+> 下面用到的claim通信接口都表示claim interface操作。
+
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -33,13 +37,13 @@ function claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolea
 
 | 类型 | 说明 |
 | --- | --- |
-| int | claim通信接口成功返回0；claim通信接口失败返回其他错误码如下： <br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。 <br>- 88080486：服务初始化中，请稍后重试。 <br>- 88080488：无设备访问权限，请先调用[requestRight]{ |
+| number | claim通信接口成功返回0；claim通信接口失败返回其他错误码如下： |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  <br>1.Mandatory parameters are left unspecified.  <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1.Mandatory parameters are left unspecified.  2.Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
 **示例**
@@ -64,9 +68,10 @@ async function claimInterface() {
     return;
   }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
-  let ret: int = usbManager.claimInterface(devicePipe, interfaces);
+  let ret: number = usbManager.claimInterface(devicePipe, interfaces);
   if (ret !== 0) {
     console.error(`claim interface failed`);
+    usbManager.closePipe(devicePipe);
     return;
   }
   console.info(`claimInterface = ${ret}`);
@@ -75,4 +80,3 @@ async function claimInterface() {
   usbManager.closePipe(devicePipe);
 }
 ```
-

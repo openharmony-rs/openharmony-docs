@@ -10,8 +10,6 @@ type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) =>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avMusicTemplate-type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) => Promise<OperResult>--><!--Device-avMusicTemplate-type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) => Promise<OperResult>-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
@@ -26,4 +24,3 @@ type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) =>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)&gt; | Promise对象，返回搜播的操作结果对象。 |
-

@@ -1,10 +1,12 @@
-# CommonEventSubscribeInfo(The CommonEventSubscribeInfo module provides APIs for providing subscriber information.)
+# CommonEventSubscribeInfo
 
-用于表示公共事件订阅者的信息，支持配置订阅的公共事件类型、发布者权限、 发布者设备ID、用户ID、订阅优先级等参数，适用于应用需要订阅系统公共事件 或自定义公共事件并精细化控制事件来源的场景。 > **说明：** > > 订阅自定义公共事件后，任意应用都可以向订阅者发送潜在的恶意公共事件。通过本模块的publisherPermission和publisherBundleName参数，可以限制公共事件发布者的范围。
+用于表示公共事件订阅者的信息，支持配置订阅的公共事件类型、发布者权限、 发布者设备ID、用户ID、订阅优先级等参数，适用于应用需要订阅系统公共事件 或自定义公共事件并精细化控制事件来源的场景。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 订阅自定义公共事件后，任意应用都可以向订阅者发送潜在的恶意公共事件。通过本模块的publisherPermission和publisherBundleName参数，可以限制公共事件发布者的范围。
 
-<!--Device-unnamed-export interface CommonEventSubscribeInfo--><!--Device-unnamed-export interface CommonEventSubscribeInfo-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -18,29 +20,25 @@ events: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CommonEventSubscribeInfo-events: Array<string>--><!--Device-CommonEventSubscribeInfo-events: Array<string>-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 ## priority
 
 ```TypeScript
-priority?: int
+priority?: number
 ```
 
 表示订阅者的优先级，数值越大，订阅者优先级越高，越优先接收到有序公共事件。 取值范围是-100到1000，超过上下限的优先级将被设置为对应的上下限值，默认优先级为0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CommonEventSubscribeInfo-priority?: int--><!--Device-CommonEventSubscribeInfo-priority?: int-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -54,11 +52,9 @@ publisherBundleName?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 11
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CommonEventSubscribeInfo-publisherBundleName?: string--><!--Device-CommonEventSubscribeInfo-publisherBundleName?: string-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -72,11 +68,9 @@ publisherDeviceId?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CommonEventSubscribeInfo-publisherDeviceId?: string--><!--Device-CommonEventSubscribeInfo-publisherDeviceId?: string-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -90,29 +84,24 @@ publisherPermission?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CommonEventSubscribeInfo-publisherPermission?: string--><!--Device-CommonEventSubscribeInfo-publisherPermission?: string-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 ## userId
 
 ```TypeScript
-userId?: int
+userId?: number
 ```
 
 表示用户ID，用于限制订阅者只接收指定用户ID相关的公共事件。此参数是可选的， 默认值为当前用户的ID。如果指定了此参数，则该值必须是系统中现有的用户ID。通过 [getOsAccountLocalId](arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取系统用户ID，作为发布者的用户ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CommonEventSubscribeInfo-userId?: int--><!--Device-CommonEventSubscribeInfo-userId?: int-End-->
-
 **系统能力：** SystemCapability.Notification.CommonEvent
-

@@ -2,9 +2,7 @@
 
 表示Auth令牌信息。
 
-**起始版本：** 23
-
-<!--Device-appAccount-interface AuthTokenInfo--><!--Device-appAccount-interface AuthTokenInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -24,9 +22,7 @@ account?: AppAccountInfo
 
 **类型：** [AppAccountInfo](arkts-basicservices-appaccount-appaccountinfo-i.md)
 
-**起始版本：** 23
-
-<!--Device-AuthTokenInfo-account?: AppAccountInfo--><!--Device-AuthTokenInfo-account?: AppAccountInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -40,9 +36,7 @@ authType: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AuthTokenInfo-authType: string--><!--Device-AuthTokenInfo-authType: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -56,9 +50,6 @@ token: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AuthTokenInfo-token: string--><!--Device-AuthTokenInfo-token: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.AppAccount
-

@@ -2,9 +2,7 @@
 
 描述音频采集器更改信息。
 
-**起始版本：** 23
-
-<!--Device-audio-interface AudioCapturerChangeInfo--><!--Device-audio-interface AudioCapturerChangeInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## capturerState
@@ -21,11 +18,11 @@ import { audioHaptic } from '@kit.AudioKit';
 readonly capturerState: AudioState
 ```
 
+音频状态。
+
 **类型：** AudioState
 
-**起始版本：** 23
-
-<!--Device-AudioCapturerChangeInfo-readonly capturerState: AudioState--><!--Device-AudioCapturerChangeInfo-readonly capturerState: AudioState-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -34,18 +31,15 @@ readonly capturerState: AudioState
 ## clientUid
 
 ```TypeScript
-readonly clientUid: int
+readonly clientUid: number
 ```
 
-Uid for audio capturer client application.
+音频采集器客户端应用程序的Uid。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AudioCapturerChangeInfo-readonly clientUid: int--><!--Device-AudioCapturerChangeInfo-readonly clientUid: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **系统接口：** 此接口为系统接口。
-

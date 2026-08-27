@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## usbFunctionsToString
@@ -20,8 +19,6 @@ function usbFunctionsToString(funcs: FunctionType): string
 **废弃版本：** 12
 
 **替代接口：** [getStringFromFunctions](arkts-basicservices-usbmanager-getstringfromfunctions-f-sys.md)(funcs: FunctionType)
-
-<!--Device-usbManager-function usbFunctionsToString(funcs: FunctionType): string--><!--Device-usbManager-function usbFunctionsToString(funcs: FunctionType): string-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -43,5 +40,13 @@ function usbFunctionsToString(funcs: FunctionType): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  <br>1.Mandatory parameters are left unspecified.  <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1.Mandatory parameters are left unspecified.  2.Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+// 定义USB功能类型组合
+let funcs: usbManager.FunctionType = usbManager.FunctionType.ACM | usbManager.FunctionType.ECM;
+// 将数字掩码转化为字符串
+let ret: string = usbManager.usbFunctionsToString(funcs);
+```

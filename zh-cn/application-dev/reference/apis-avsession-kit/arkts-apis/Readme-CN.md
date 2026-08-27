@@ -109,13 +109,11 @@
 - [@ohos.multimedia.avsession](arkts-multimedia-avsession.md)
   <!--Del-->
   - [castAudio(系统接口)](arkts-avsession-avsession-castaudio-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [castAudioSession(系统接口)](arkts-avsession-avsession-castaudiosession-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [castAudioSessionAll(系统接口)](arkts-avsession-avsession-castaudiosessionall-f-sys.md)<!--DelEnd-->
   - [createAVSession](arkts-avsession-avsession-createavsession-f.md)
+  - [createController](arkts-avsession-avsession-createcontroller-f.md)
   <!--Del-->
   - [createController(系统接口)](arkts-avsession-avsession-createcontroller-f-sys.md)<!--DelEnd-->
+  - [getAllSessionDescriptors](arkts-avsession-avsession-getallsessiondescriptors-f.md)
   <!--Del-->
   - [getAllSessionDescriptors(系统接口)](arkts-avsession-avsession-getallsessiondescriptors-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -133,80 +131,24 @@
   - [getSessionDescriptorsForAudioZone(系统接口)](arkts-avsession-avsession-getsessiondescriptorsforaudiozone-f-sys.md)<!--DelEnd-->
   - [isDesktopLyricSupported](arkts-avsession-avsession-isdesktoplyricsupported-f.md)
   <!--Del-->
-  - [off_deviceAvailable(系统接口)](arkts-avsession-avsession-offdeviceavailable-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [off_deviceLogEvent(系统接口)](arkts-avsession-avsession-offdevicelogevent-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [off_deviceOffline(系统接口)](arkts-avsession-avsession-offdeviceoffline-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [off_deviceStateChanged(系统接口)](arkts-avsession-avsession-offdevicestatechanged-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [off_distributedSessionChange(系统接口)](arkts-avsession-avsession-offdistributedsessionchange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [off_sessionCreate(系统接口)](arkts-avsession-avsession-offsessioncreate-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [off_sessionDestroy(系统接口)](arkts-avsession-avsession-offsessiondestroy-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [off_sessionServiceDie(系统接口)](arkts-avsession-avsession-offsessionservicedie-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [off_topSessionChange(系统接口)](arkts-avsession-avsession-offtopsessionchange-f-sys.md)<!--DelEnd-->
+  - [off(系统接口)](arkts-avsession-avsession-off-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [offActiveSessionChanged(系统接口)](arkts-avsession-avsession-offactivesessionchanged-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [offAudioZoneSessionChange(系统接口)](arkts-avsession-avsession-offaudiozonesessionchange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [offDeviceAvailable(系统接口)](arkts-avsession-avsession-offdeviceavailable-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [offDeviceLogEvent(系统接口)](arkts-avsession-avsession-offdevicelogevent-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [offDeviceOffline(系统接口)](arkts-avsession-avsession-offdeviceoffline-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [offDeviceStateChanged(系统接口)](arkts-avsession-avsession-offdevicestatechanged-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [offDistributedSessionChange(系统接口)](arkts-avsession-avsession-offdistributedsessionchange-f-sys.md)<!--DelEnd-->
   - [offSessionCreate](arkts-avsession-avsession-offsessioncreate-f.md)
   - [offSessionDestroy](arkts-avsession-avsession-offsessiondestroy-f.md)
-  <!--Del-->
-  - [offSessionServiceDie(系统接口)](arkts-avsession-avsession-offsessionservicedie-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [offSystemCommonEvent(系统接口)](arkts-avsession-avsession-offsystemcommonevent-f-sys.md)<!--DelEnd-->
   - [offTopSessionChange](arkts-avsession-avsession-offtopsessionchange-f.md)
   <!--Del-->
-  - [on_deviceAvailable(系统接口)](arkts-avsession-avsession-ondeviceavailable-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_deviceLogEvent(系统接口)](arkts-avsession-avsession-ondevicelogevent-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_deviceOffline(系统接口)](arkts-avsession-avsession-ondeviceoffline-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_deviceStateChanged(系统接口)](arkts-avsession-avsession-ondevicestatechanged-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_distributedSessionChange(系统接口)](arkts-avsession-avsession-ondistributedsessionchange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_sessionCreate(系统接口)](arkts-avsession-avsession-onsessioncreate-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_sessionDestroy(系统接口)](arkts-avsession-avsession-onsessiondestroy-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_sessionServiceDie(系统接口)](arkts-avsession-avsession-onsessionservicedie-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_topSessionChange(系统接口)](arkts-avsession-avsession-ontopsessionchange-f-sys.md)<!--DelEnd-->
+  - [on(系统接口)](arkts-avsession-avsession-on-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [onActiveSessionChanged(系统接口)](arkts-avsession-avsession-onactivesessionchanged-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [onAudioZoneSessionChange(系统接口)](arkts-avsession-avsession-onaudiozonesessionchange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [onDeviceAvailable(系统接口)](arkts-avsession-avsession-ondeviceavailable-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [onDeviceLogEvent(系统接口)](arkts-avsession-avsession-ondevicelogevent-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [onDeviceOffline(系统接口)](arkts-avsession-avsession-ondeviceoffline-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [onDeviceStateChanged(系统接口)](arkts-avsession-avsession-ondevicestatechanged-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [onDistributedSessionChange(系统接口)](arkts-avsession-avsession-ondistributedsessionchange-f-sys.md)<!--DelEnd-->
   - [onSessionCreate](arkts-avsession-avsession-onsessioncreate-f.md)
   - [onSessionDestroy](arkts-avsession-avsession-onsessiondestroy-f.md)
-  <!--Del-->
-  - [onSessionServiceDie(系统接口)](arkts-avsession-avsession-onsessionservicedie-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [onSystemCommonEvent(系统接口)](arkts-avsession-avsession-onsystemcommonevent-f-sys.md)<!--DelEnd-->
   - [onTopSessionChange](arkts-avsession-avsession-ontopsessionchange-f.md)
@@ -249,6 +191,7 @@
   - [AVQueueItem](arkts-avsession-avsession-avqueueitem-i.md)
   - [AVSession](arkts-avsession-avsession-avsession-i.md)
   - [AVSessionController](arkts-avsession-avsession-avsessioncontroller-i.md)
+  - [AVSessionDescriptor](arkts-avsession-avsession-avsessiondescriptor-i.md)
   <!--Del-->
   - [AVSessionDescriptor(系统接口)](arkts-avsession-avsession-avsessiondescriptor-i-sys.md)<!--DelEnd-->
   - [CallMetadata](arkts-avsession-avsession-callmetadata-i.md)
@@ -271,13 +214,10 @@
   - [AVControlCommandType](arkts-avsession-avsession-avcontrolcommandtype-t.md)
   - [AVMediaCenterControlType](arkts-avsession-avsession-avmediacentercontroltype-t.md)
   - [AVSessionType](arkts-avsession-avsession-avsessiontype-t.md)
-  - [ConnectionEvent](arkts-avsession-avsession-connectionevent-t.md)
-  - [EventProcess](arkts-avsession-avsession-eventprocess-t.md)
   - [ExtraInfo](arkts-avsession-avsession-extrainfo-t.md)
   - [KeyRequestCallback](arkts-avsession-avsession-keyrequestcallback-t.md)
   - [NoParamCallback](arkts-avsession-avsession-noparamcallback-t.md)
   - [TwoParamCallback](arkts-avsession-avsession-twoparamcallback-t.md)
-  - [VideoSizeEvent](arkts-avsession-avsession-videosizeevent-t.md)
   - [AVCastCategory](arkts-avsession-avsession-avcastcategory-e.md)
   - [AVSessionErrorCode](arkts-avsession-avsession-avsessionerrorcode-e.md)
   - [BackgroundPlayMode](arkts-avsession-avsession-backgroundplaymode-e.md)

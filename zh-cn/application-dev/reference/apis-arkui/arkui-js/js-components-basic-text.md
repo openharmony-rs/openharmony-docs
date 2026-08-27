@@ -21,23 +21,23 @@
 
 ## 子组件
 
-支持&lt;[span](js-components-basic-span.md)&gt;。
+支持&lt;span&gt;。
 
 
 ## 属性
 
-支持[通用属性](js-components-common-attributes.md)。
+支持通用属性。
 
 
 ## 样式
 
-除支持[通用样式](js-components-common-styles.md)外，还支持如下样式：
+除支持通用样式外，还支持如下样式：
 
 | 名称                               | 类型                                                         | 默认值                                    | 必填 | 描述                                                         |
 | ---------------------------------- | ------------------------------------------------------------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
 | color                              | &lt;color&gt;                                                | #e5000000                                 | 否   | 设置文本的颜色。                                             |
 | font-size                          | &lt;length&gt;                                               | 30px                                      | 否   | 设置文本的尺寸。                                             |
-| allow-scale                        | boolean                                                      | true                                      | 否   | 文本尺寸是否跟随系统设置字体缩放尺寸进行放大缩小。<br/>如果需要支持动态生效，请参看config[配置文件的内部结构](../../../quick-start/application-configuration-file-overview-fa.md#配置文件的内部结构)中config-changes标签。 |
+| allow-scale                        | boolean                                                      | true                                      | 否   | 文本尺寸是否跟随系统设置字体缩放尺寸进行放大缩小。<br/>如果需要支持动态生效，请参看config配置文件的内部结构中config-changes标签。 |
 | letter-spacing                     | &lt;length&gt;                                               | 0px                                       | 否   | 设置文本的字符间距。                                         |
 | word-spacing<sup>7+</sup>          | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;&nbsp;\|&nbsp;string | normal                                    | 否   | 设置文本的词间距，string可选值为：<br/>normal：默认的词间距。 |
 | font-style                         | string                                                       | normal                                    | 否   | 设置文本的字体样式，可选值为：<br/>-&nbsp;normal：标准的字体样式。<br/>-&nbsp;italic：斜体的字体样式。 |
@@ -47,7 +47,7 @@
 | text-align                         | string                                                       | start<br/>                                | 否   | 设置文本的对齐方式，可选值为：<br/>-&nbsp;left：文本左对齐。<br/>-&nbsp;center：文本居中对齐。<br/>-&nbsp;right：文本右对齐。<br/>-&nbsp;start：根据文字书写相同的方向对齐。<br/>-&nbsp;end：根据文字书写相反的方向对齐。<br/>如果文本宽度未指定大小，文本的宽度和父容器的宽度大小相等的情况下，对齐效果可能会不明显。 |
 | line-height                        | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>7+</sup>&nbsp;\|&nbsp;string<sup>7+</sup> | 0px<sup>1-6</sup><br/>normal<sup>7+</sup> | 否   | 设置文本的行高，设置为0px时，不限制文本行高，自适应字体大小。string可选值为：<br/>normal<sup>7+</sup>：默认的行高。 |
 | text-overflow                      | string                                                       | clip                                      | 否   | 在设置了最大行数的情况下生效，可选值为：<br/>-&nbsp;clip：将文本根据父容器大小进行裁剪显示；<br/>-&nbsp;ellipsis：根据父容器大小显示，显示不下的文本用省略号代替。需配合max-lines使用。 |
-| font-family                        | string                                                       | sans-serif                                | 否   | 设置文本的字体列表，用逗号分隔，每个字体用字体名或者字体族名设置。列表中第一个系统中存在的或者通过[自定义字体](js-components-common-customizing-font.md)指定的字体，会被选中作为文本的字体。 |
+| font-family                        | string                                                       | sans-serif                                | 否   | 设置文本的字体列表，用逗号分隔，每个字体用字体名或者字体族名设置。列表中第一个系统中存在的或者通过自定义字体指定的字体，会被选中作为文本的字体。 |
 | max-lines                          | number&nbsp;\|&nbsp;string<sup>7+</sup>                      | -                                         | 否   | 设置文本的最大行数，string类型可选值为：<br/>-&nbsp;auto<sup>7+</sup>：文本行数自适应容器高度。 |
 | min-font-size                      | &lt;length&gt;                                               | -                                         | 否   | 文本最小字号，需要和文本最大字号同时设置，支持文本字号动态变化。设置最大最小字体样式后，font-size不生效。 |
 | max-font-size                      | &lt;length&gt;                                               | -                                         | 否   | 文本最大字号，需要和文本最小字号同时设置，支持文本字号动态变化。设置最大最小字体样式后，font-size不生效。 |
@@ -74,11 +74,11 @@
 
 ## 事件
 
-支持[通用事件](js-components-common-events.md)。
+支持通用事件。
 
 ## 方法
 
-支持[通用方法](js-components-common-methods.md)。
+支持通用方法。
 
 
 ## 示例

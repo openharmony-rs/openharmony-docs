@@ -17,9 +17,9 @@ typedef struct VkImportNativeBufferInfoOHOS {...} VkImportNativeBufferInfoOHOS
 
 **起始版本：** 10
 
-**相关模块：** [Vulkan](capi-vulkan.md)
+**相关模块：** Vulkan
 
-**所在头文件：** [vulkan_ohos.h](capi-vulkan-ohos-h.md)
+**所在头文件：** vulkan_ohos.h
 
 ## 汇总
 
@@ -29,6 +29,6 @@ typedef struct VkImportNativeBufferInfoOHOS {...} VkImportNativeBufferInfoOHOS
 |------------------------------------| -- |
 | VkStructureType sType              | 结构体类型。 |
 | const void* pNext                  | 下一级结构体指针。 |
-| struct [OH_NativeBuffer](capi-vulkan-oh-nativebuffer.md)* buffer | OH_NativeBuffer结构体的指针。 |
+| struct OH_NativeBuffer* buffer | OH_NativeBuffer结构体的指针。 |
 
 

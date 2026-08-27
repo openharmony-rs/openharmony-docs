@@ -1,10 +1,8 @@
 # AsrWhisperDetectionMode（系统接口）
 
-ASR whisper detection mode.
+枚举，自动语音识别（ASR）的耳语检测模式。
 
-**起始版本：** 23
-
-<!--Device-audio-enum AsrWhisperDetectionMode--><!--Device-audio-enum AsrWhisperDetectionMode-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -16,11 +14,9 @@ ASR whisper detection mode.
 BYPASS = 0
 ```
 
-No operation.
+不启用检测模型。
 
-**起始版本：** 23
-
-<!--Device-AsrWhisperDetectionMode-BYPASS = 0--><!--Device-AsrWhisperDetectionMode-BYPASS = 0-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -32,13 +28,10 @@ No operation.
 STANDARD = 1
 ```
 
-Use standard whisper detection model.
+耳语检测模型。
 
-**起始版本：** 23
-
-<!--Device-AsrWhisperDetectionMode-STANDARD = 1--><!--Device-AsrWhisperDetectionMode-STANDARD = 1-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **系统接口：** 此接口为系统接口。
-

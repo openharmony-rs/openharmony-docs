@@ -2,9 +2,7 @@
 
 订阅或发送的事件，订阅事件时`EventPriority`不生效。
 
-**起始版本：** 23
-
-<!--Device-emitter-export interface InnerEvent--><!--Device-emitter-export interface InnerEvent-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -17,18 +15,16 @@ import { emitter } from '@kit.BasicServicesKit';
 ## eventId
 
 ```TypeScript
-eventId: long
+eventId: number
 ```
 
 事件ID，由开发者定义，用于辨别事件。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-InnerEvent-eventId: long--><!--Device-InnerEvent-eventId: long-End-->
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -42,11 +38,8 @@ priority?: EventPriority
 
 **类型：** [EventPriority](arkts-basicservices-emitter-eventpriority-e.md)
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-InnerEvent-priority?: EventPriority--><!--Device-InnerEvent-priority?: EventPriority-End-->
-
 **系统能力：** SystemCapability.Notification.Emitter
-

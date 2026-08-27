@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { usb } from '@kit.BasicServicesKit';
-import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## setCurrentFunctions
@@ -22,8 +20,6 @@ function setCurrentFunctions(funcs: FunctionType): Promise<boolean>
 
 **替代接口：** [setCurrentFunctions](arkts-basicservices-usbmanager-setcurrentfunctions-f-sys.md)
 
-<!--Device-usb-function setCurrentFunctions(funcs: FunctionType): Promise<boolean>--><!--Device-usb-function setCurrentFunctions(funcs: FunctionType): Promise<boolean>-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 **系统接口：** 此接口为系统接口。
@@ -38,7 +34,7 @@ function setCurrentFunctions(funcs: FunctionType): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回设置成功与否的结果。true表示设置成功，false表示设置失败。 |
+| Promise & lt;boolean & gt; | Promise对象，返回设置成功与否的结果。true表示设置成功，false表示设置失败。 |
 
 **示例**
 
@@ -50,4 +46,3 @@ usb.setCurrentFunctions(funcs).then(() => {
     console.error('usb setCurrentFunctions failed: ' + err.code + ' message: ' + err.message);
 });
 ```
-

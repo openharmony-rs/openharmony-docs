@@ -1,10 +1,8 @@
 # SearchPlayVideoInfo
 
-搜播的视频信息的定义。
+搜播的视频信息的定义。@interface SearchPlayVideoInfo
 
 **起始版本：** 23
-
-<!--Device-avMusicTemplate-interface SearchPlayVideoInfo--><!--Device-avMusicTemplate-interface SearchPlayVideoInfo-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -28,8 +26,6 @@ entityId: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SearchPlayVideoInfo-entityId: string--><!--Device-SearchPlayVideoInfo-entityId: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## episodeId
@@ -46,25 +42,21 @@ episodeId?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SearchPlayVideoInfo-episodeId?: string--><!--Device-SearchPlayVideoInfo-episodeId?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## episodeNumber
 
 ```TypeScript
-episodeNumber?: int
+episodeNumber?: number
 ```
 
 视频的剧集序号。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SearchPlayVideoInfo-episodeNumber?: int--><!--Device-SearchPlayVideoInfo-episodeNumber?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -82,7 +74,4 @@ extras?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SearchPlayVideoInfo-extras?: string--><!--Device-SearchPlayVideoInfo-extras?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
