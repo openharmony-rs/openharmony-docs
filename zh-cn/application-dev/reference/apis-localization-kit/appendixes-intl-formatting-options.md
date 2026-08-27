@@ -9,7 +9,7 @@
 
 ## 时间日期格式化选项
 
-下方表格以时间：2021年9月17日 13:04:00、2021年9月17日 00:25:00和区域ID: zh-CN、en为例，说明[DateTimeOptions](js-apis-intl.md#datetimeoptionsdeprecated)的取值和显示结果。
+下方表格以时间：2021年9月17日 13:04:00、2021年9月17日 00:25:00和区域ID: zh-CN、en为例，说明DateTimeOptions的取值和显示结果。
 
 **表1** 日期显示格式 (dateStyle)
 
@@ -106,7 +106,7 @@
 
 ## 数字格式化选项
 
-通过数字格式化选项可以设置最小整数位数、最小小数位数、最大小数位数、最小有效位数、最大有效位数、是否分组显示、数字的表示方法、紧凑显示格式、舍入模式、舍入优先级、舍入增量以及数字的显示格式和数字系统。其中，数字的显示格式包括decimal(十进制)、percent(百分数)、currency(货币)和unit(单位)。下方表格说明[NumberOptions](js-apis-intl.md#numberoptions)部分参数的取值和显示结果。
+通过数字格式化选项可以设置最小整数位数、最小小数位数、最大小数位数、最小有效位数、最大有效位数、是否分组显示、数字的表示方法、紧凑显示格式、舍入模式、舍入优先级、舍入增量以及数字的显示格式和数字系统。其中，数字的显示格式包括decimal(十进制)、percent(百分数)、currency(货币)和unit(单位)。下方表格说明NumberOptions部分参数的取值和显示结果。
 
 以123000.123为例，各选项取值和显示效果如下表所示：
 
@@ -170,7 +170,7 @@
 
 ## 货币格式化选项
 
-以货币单位USD，数字大小-12300为例，说明[NumberOptions](js-apis-intl.md#numberoptions)部分参数的取值和显示结果。
+以货币单位USD，数字大小-12300为例，说明NumberOptions部分参数的取值和显示结果。
 
 **表19** 货币单位的符号 (currencySign)
 
@@ -190,7 +190,7 @@
 
 ## 单位格式化选项
 
-以单位hectare，数字大小-12300为例，说明[NumberOptions](js-apis-intl.md#numberoptions)部分参数的取值和显示结果。
+以单位hectare，数字大小-12300为例，说明NumberOptions部分参数的取值和显示结果。
 
 **表21** 单位的显示格式 (unitDisplay)
 
@@ -210,7 +210,7 @@
 
 ## 相对时间格式化选项
 
-以相对时间：一天前，区域ID: fr-FR和en-GB为例，说明[RelativeTimeFormatInputOptions](js-apis-intl.md#relativetimeformatinputoptionsdeprecated)的取值和显示结果。
+以相对时间：一天前，区域ID: fr-FR和en-GB为例，说明RelativeTimeFormatInputOptions的取值和显示结果。
 
 **表23** 数值表示 (numeric)
 

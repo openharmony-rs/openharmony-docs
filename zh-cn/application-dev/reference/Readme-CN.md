@@ -52,7 +52,6 @@
 - [MDM Kit API参考](apis-mdm-kit/Readme-CN.md)
 - [Media Kit API参考](apis-media-kit/Readme-CN.md)
 - [Media Library Kit API参考](apis-media-library-kit/Readme-CN.md)
-- [MindSpore Lite Kit API参考](apis-mindspore-lite-kit/Readme-CN.md)
 - [Network Kit API参考](apis-network-kit/Readme-CN.md)
 - [Neural Network Runtime Kit API参考](apis-neural-network-runtime-kit/Readme-CN.md)
 - [Notification Kit API参考](apis-notification-kit/Readme-CN.md)
