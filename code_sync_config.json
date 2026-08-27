@@ -38613,6 +38613,11 @@
 						"end_line":67,
 						"name":"napi_create_typed_array_api",
 						"start_line":51
+					},
+					{
+						"end_line":84,
+						"name":"napi_is_data_view_api",
+						"start_line":82
 					}
 				]
 			}
