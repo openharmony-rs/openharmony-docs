@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本文按组件分类介绍各组件适配沉浸光感的要点，包括开启沉浸光感的效果、设置沉浸光感效果和适配要点。
+本文按组件分类介绍各组件如何适配沉浸光感，包括开启沉浸光感的效果、设置沉浸光感效果和适配要点。
 
 ## 导航类组件
 
@@ -112,7 +112,7 @@ Toast支持通过[ShowToastOptions](../reference/apis-arkui/js-apis-promptAction
 
 下拉按钮支持通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性设置沉浸光感效果；下拉菜单通过独立的[menuSystemMaterial](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menusystemmaterial)接口设置沉浸光感效果。
 
-- 下拉按钮与下拉菜单的沉浸光感相互独立，可分别开启或关闭；如需单独关闭默认开启的材质，应设置[uiMaterial.Material.empty](../reference/apis-arkui/arkts-apis-uimaterial.md#empty)，而非将systemMaterial设置为undefined。
+- 下拉按钮与下拉菜单的沉浸光感相互独立，可分别开启或关闭；如需单独关闭沉浸光感，应设置[uiMaterial.Material.empty](../reference/apis-arkui/arkts-apis-uimaterial.md#empty)，而非将systemMaterial设置为undefined。
 - 当下拉按钮的沉浸光感启用了光感交互反馈效果（[lightEffect](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)）时，下拉按钮默认的按压态和悬浮态视觉反馈不再展示，由材质的光感交互反馈效果替代。
 
 组件开启沉浸光感的效果请参见[示例11（设置Select和下拉菜单沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#示例11设置select和下拉菜单沉浸光感效果)。
@@ -124,7 +124,7 @@ Toast支持通过[ShowToastOptions](../reference/apis-arkui/js-apis-promptAction
 开关支持通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性设置沉浸光感效果，不涉及材质样式。
 
 - 不同[ToggleType](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#toggletype枚举说明)下沉浸光感效果存在差异：
-  - ToggleType.Checkbox：当前未适配沉浸光感效果，设置后无材质相关的动效和视觉效果。
+  - ToggleType.Checkbox：当前未适配沉浸光感效果，设置后无沉浸光感效果。
   - ToggleType.Switch：传入的材质参数仅作为开启沉浸光感的开关标记，不影响实际视觉效果，实际使用组件内部预设的视觉参数，主要影响滑块大小、滑块样式、阴影等；材质效果随设备算力档位变化。
   - ToggleType.Button：效果与[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)组件设置沉浸光感相同，主要影响背景颜色、边框、阴影等视觉属性。
 

@@ -420,18 +420,18 @@ import { uiMaterial } from '@kit.ArkUI';
 struct ToggleMaterialTest {
   build() {
     Column({ space: 10 }) {
-      // 不设置沉浸光感接口，无沉浸光感效果
+      // 不设置系统材质接口，无沉浸光感效果
       Toggle({ type: ToggleType.Switch, isOn: true })
 
       // systemMaterial设置undefined，恢复为无沉浸光感的效果
       Toggle({ type: ToggleType.Switch, isOn: true })
         .systemMaterial(undefined)
 
-      // 开启系统材质效果（systemMaterial参数任意仅作为系统材质开关，最终使用组件侧固定参数），默认白色点光源（颜色为switchPointColor默认值）
+      // 开启沉浸光感效果（systemMaterial参数任意仅作为系统材质开关，最终使用组件侧固定参数），默认白色点光源（颜色为switchPointColor默认值）
       Toggle({ type: ToggleType.Switch, isOn: true })
         .systemMaterial(new uiMaterial.Material())
 
-      // 开启系统材质效果（systemMaterial参数任意仅作为系统材质开关，最终使用组件侧固定参数），点光源颜色跟随switchPointColor设置
+      // 开启沉浸光感效果（systemMaterial参数任意仅作为系统材质开关，最终使用组件侧固定参数），点光源颜色跟随switchPointColor设置
       Toggle({ type: ToggleType.Switch, isOn: true })
         .systemMaterial(new uiMaterial.Material())
         .switchPointColor(Color.Red)

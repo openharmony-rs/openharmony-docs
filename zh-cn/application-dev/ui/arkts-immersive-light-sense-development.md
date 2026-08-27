@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本文通过以下两方面介绍沉浸光感的开发指导：
+本文通过以下三方面介绍沉浸光感的开发指导：
 
 - [开启沉浸光感](arkts-immersive-light-sense-enable.md)：介绍应用级和组件级两种开启方式、以及如何关闭沉浸光感。
 - [组件适配沉浸光感](arkts-immersive-light-sense-component-adaptation.md)：介绍各组件适配沉浸光感的要点。
