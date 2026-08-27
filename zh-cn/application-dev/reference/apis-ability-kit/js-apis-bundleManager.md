@@ -1134,7 +1134,7 @@ ArkTS-Sta: getBundleInfo(bundleName: string, bundleFlags: int, userId: int, call
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
 | bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](#bundleflag)。|
 | userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的bundleInfo；否则为错误对象。 |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleInfo；否则为错误对象。 |
 
 **错误码：**
 

@@ -10,7 +10,7 @@ ArkTS参数进入native函数后，C++侧需要按ANI类型接收，并根据声
 
 ## 基本类型参数
 
-- 从语言层面来看，ArkTS 1.2仅包含基本类型的装箱版本。
+- 从语言层面来看，ArkTS-Sta仅包含基本类型的装箱版本。
 - 从运行时角度来看，当基本类型被指定为非泛型参数、返回值或字段类型时，会使用基本类型进行优化。
 
 ### 装箱类型
@@ -55,16 +55,10 @@ ArkTS参数进入native函数后，C++侧需要按ANI类型接收，并根据声
 代码示例：
 
 ```cpp
-ani_object createDouble(ani_env *env)
-{
-    ani_object doubleObj {};
-    if (env->Primitive_Box_Double(static_cast<ani_double>(2.0), &doubleObj) != ANI_OK) {
-        std::cerr << "Failed to allocate Double!" << std::endl;
-        ani_ref undefinedRef;
-        env->GetUndefined(&undefinedRef);
-        return static_cast<ani_object>(undefinedRef);
-    }
-    return doubleObj;
+ani_object doubleObj {};
+ani_status status = env->Primitive_Box_Double(static_cast<ani_double>(2.0), &doubleObj);
+if (status != ANI_OK) {
+    // handle error and return
 }
 ```
 
@@ -75,22 +69,22 @@ ani_object createDouble(ani_env *env)
 代码示例：
 
 ```cpp
-ani_object createDouble(ani_env *env)
-{
-    // 注意：在生产代码中，通过`GlobalReference_Create`将FindClass找到的类缓存会大大提高效率
-    static constexpr const char *className = "std.core.Double";
-    ani_class doubleCls {};
-    env->FindClass(className, &doubleCls);
-    ani_method ctor {};
-    env->Class_FindMethod(doubleCls, "<ctor>", "d:", &ctor);
-    ani_object doubleObj {};
-    if (env->Object_New(doubleCls, ctor, &doubleObj, static_cast<ani_double>(2.0)) != ANI_OK) {
-        std::cerr << "Failed to allocate Double!" << std::endl;
-        ani_ref undefinedRef;
-        env->GetUndefined(&undefinedRef);
-        return static_cast<ani_object>(undefinedRef);
-    }
-    return doubleObj;
+// 注意：在生产代码中，通过`GlobalReference_Create`将FindClass找到的类缓存会大大提高效率
+static constexpr const char *className = "std.core.Double";
+ani_class doubleCls {};
+ani_status status = env->FindClass(className, &doubleCls);
+if (status != ANI_OK) {
+    // handle error and return
+}
+ani_method ctor {};
+status = env->Class_FindMethod(doubleCls, "<ctor>", "d:", &ctor);
+if (status != ANI_OK) {
+    // handle error and return
+}
+ani_object doubleObj {};
+status = env->Object_New(doubleCls, ctor, &doubleObj, static_cast<ani_double>(2.0));
+if (status != ANI_OK) {
+    // handle error and return
 }
 ```
 
@@ -110,37 +104,40 @@ ani_object createDouble(ani_env *env)
 
 ```cpp
 ani_double doubleVal {};
-env->Primitive_Unbox_Double(doubleObj, &doubleVal);
+ani_status status = env->Primitive_Unbox_Double(doubleObj, &doubleVal);
+if (status != ANI_OK) {
+    // handle error and return
+}
 ```
 开发者需要保证传入的装箱对象类型与调用的拆箱接口类型一致，如传入`Double`类型装箱对象则调用`Primitive_Unbox_Double`接口。
 
 **传统拆箱方式：**
 
-使用`to<Type>`方法来提取基本类型的值，其中`<Type>`为对应的数据类型：
-
-```cpp
-Object_CallMethodByName_Double(boxed_double_obj, "toDouble", ":d", &unboxed_value)
-```
-
-`Double`由装箱对象的返回类型决定。Mangling `:d`表示返回一个`double`类型的值。
+使用`std.core.<Type>`的`to<Type>`方法来提取基本类型的值，其中`<Type>`为对应的数据类型。
 
 代码示例：
-```ts
-function handleData(param: Double): void
-```
 
 ```cpp
-void HandleDataImpl(ani_env *env, ani_object param)
-{
-    ani_double value = 0;
-    env->Object_CallMethodByName_Double(param, "toDouble", ":d", &value);
-    std::cout << "value: " << value << std::endl;
+ani_class doubleCls {};
+ani_status status = env->FindClass("std.core.Double", &doubleCls);
+if (status != ANI_OK) {
+    // handle error and return
+}
+ani_method toDoubleMtd {};
+status = env->Class_FindMethod(doubleCls, "toDouble", ":d", &toDoubleMtd);
+if (status != ANI_OK) {
+    // handle error and return
+}
+ani_double doubleVal {};
+status = env->Object_CallMethod_Double(boxed_double_obj, toDoubleMtd, &doubleVal);
+if (status != ANI_OK) {
+    // handle error and return
 }
 ```
 
 ## 泛型参数
 
-- 除了`FixedArray`外，所有泛型类型在运行时都会被擦除。
+- 除了`FixedArray`和`ValueArray`外，所有泛型类型在运行时都会被擦除。
 - 在字节码中，类型参数会被编译为其类型约束。
 - 默认的类型约束是`Object | null | undefined`。
 - 基本类型作为类型参数使用时总是会被装箱。
@@ -149,7 +146,8 @@ void HandleDataImpl(ani_env *env, ani_object param)
 | -------------------- | ----------------- | --------------------------------------- | -------------------- | ------------------------ |
 | `(a: T, b: R): void` | `f(1, "str")`     | `C{std.core.Object}C{std.core.Object}:` | `ani_object`         | -                        |
 | `Array<T>`           | `Array<int>`      | `C{std.core.Array}`                     | `ani_object`         | -                        |
-| `FixedArray<T>`      | `FixedArray<int>` | `A{i}`                                  | `ani_fixedarray_int` | Reified（非擦除）类型参数 |
+| `ValueArray<T>`      | `ValueArray<int>` | `A{i}`                                  | `ani_valuearray_int` | Reified（非擦除）类型参数 |
+| `FixedArray<T>`      | `FixedArray<string>` | `A{C{std.core.String}}`              | `ani_fixedarray`     | Reified（非擦除）类型参数 |
 
 ## 联合类型
 
@@ -211,36 +209,55 @@ class C {
 
 ```cpp
 ani_method method {};
-env->Class_FindMethod(cls, "checkOptionalString", "C{std.core.String}:i", &method);
+ani_status status = env->Class_FindMethod(cls, "checkOptionalString", "C{std.core.String}:i", &method); // cls为class C对应的ani_class
+if (status != ANI_OK) {
+    // handle error and return
+}
 
 // 1. 显式传undefined，等价于托管代码中“省略该可选参数”
 ani_ref undef {};
-env->GetUndefined(&undef);
+status = env->GetUndefined(&undef);
+if (status != ANI_OK) {
+    // handle error and return
+}
 
 ani_int result {};
-env->Object_CallMethod_Int(obj, method, &result, undef); // obj是C的实例对象
+status = env->Object_CallMethod_Int(obj, method, &result, undef); // obj为class C的实例对象
+if (status != ANI_OK) {
+    // handle error and return
+}
 
 // 2. 显式传实际值
 ani_string str {};
-env->String_NewUTF8("hello", 5, &str);
-env->Object_CallMethod_Int(obj, method, &result, str);
+status = env->String_NewUTF8("hello", 5, &str);
+if (status != ANI_OK) {
+    // handle error and return
+}
+status = env->Object_CallMethod_Int(obj, method, &result, str); // obj为class C的实例对象
+if (status != ANI_OK) {
+    // handle error and return
+}
 ```
 
 如果参数是包含`undefined`类型的联合类型，在原生（native）代码中访问该参数之前，必须使用`Reference_IsUndefined`接口检查它是否为`undefined`：
 
-
 ```cpp
-static void CallMeWithOptionalDouble(ani_env *env, ani_object doubleObject)
-{
-    ani_boolean isUndefined;
-    env->Reference_IsUndefined(doubleObject, &isUndefined);
-    if (isUndefined) {
-        std::cout << "CallMeWithOptionalDouble NOT passed value " << std::endl;
-    } else {
-        ani_double result;
-        env->Object_CallMethodByName_Double(doubleObject, "toDouble", ":d", &result);
-        std::cout << "CallMeWithOptionalDouble passed value: " <<  result << std::endl;
+ani_boolean isUndefined;
+ani_status status = env->Reference_IsUndefined(doubleObject, &isUndefined);
+if (status != ANI_OK) {
+    // handle error and return
+}
+if (isUndefined) {
+    // 参数为undefined
+    std::cout << "NOT passed value" << std::endl;
+} else {
+    // 参数有实际值，可拆箱后使用
+    ani_double result;
+    status = env->Object_CallMethodByName_Double(doubleObject, "toDouble", ":d", &result);
+    if (status != ANI_OK) {
+        // handle error and return
     }
+    std::cout << "passed value: " << result << std::endl;
 }
 ```
 
@@ -263,4 +280,3 @@ function foo(a: boolean, b: boolean = false): void {}
 // mangling: "iC{std.core.Array}:"
 function foo(a: int, ...b: int[]): void
 ```
-

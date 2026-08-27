@@ -923,7 +923,7 @@ ArkTS-Sta: getDistanceMap(): Map\<SourceTool, double\>
 
 ## GestureEvent对象说明
 
-定义手势的事件信息。继承自[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
+定义手势的事件信息。继承自[BaseEvent](ts-universal-events-click.md#baseevent8)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1113,7 +1113,7 @@ type GestureType = Gesture | GestureGroup
 
 ## BaseGestureEvent<sup>11+</sup>对象说明
 
-基础手势事件类型。继承自[BaseEvent](./ts-gesture-customize-judge.md#baseevent8)。
+基础手势事件类型。继承自[BaseEvent](./ts-universal-events-click.md#baseevent8)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -24,6 +24,8 @@ ArkUI为组件提供了通用的属性动画和转场动画能力的同时，还
 
 示例代码和效果如下。
 
+ArkTS-Dyn示例：
+
 <!-- @[component_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/component/template1/Index.ets) -->
 
 ``` TypeScript
@@ -44,6 +46,36 @@ struct ComponentDemo {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[component_demo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AnimationStatic/entry/src/main/ets/pages/component/template1/Index.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Row,
+  Checkbox,
+  CheckBoxShape,
+  FlexAlign
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ComponentDemo {
+  build(): void {
+    Row() {
+      Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
+        .select(true)
+        .shape(CheckBoxShape.CIRCLE)
+        .size({ width: 50, height: 50 })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
 
 ![animation-default](figures/animation-default.gif)
 
@@ -59,6 +91,8 @@ struct ComponentDemo {
 - 在滑动回调[onScrollStop](../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#onscrollstop11)或手势结束回调中对滑动的最终位置进行微调。
 
 定制Scroll组件滑动动效示例代码和效果如下。
+
+ArkTS-Dyn示例：
 
 <!-- @[Component_Scroll](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/component/template2/Index.ets) -->
 
@@ -362,9 +396,339 @@ export struct TaskSwitchMainPage {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[Component_Scroll](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AnimationStatic/entry/src/main/ets/pages/component/template2/Index.ets) -->
+
+``` TypeScript
+import curves from '@ohos.curves';
+import window from '@ohos.window';
+import display from '@ohos.display';
+import mediaquery from '@ohos.mediaquery';
+import {
+  Entry,
+  Component,
+  Builder,
+  Column,
+  Row,
+  Stack,
+  Scroll,
+  Scroller,
+  ForEach,
+  Button,
+  Color,
+  BorderStyle,
+  Alignment,
+  ScrollDirection,
+  BarState,
+  GestureGroup,
+  GestureMode,
+  PanGesture,
+  PanDirection,
+  GestureEvent,
+  GestureMask,
+  ScaleOptions,
+  TranslateOptions,
+  Resource,
+  RowOptions,
+  UIContext,
+  State,
+  AppStorage
+} from '@kit.ArkUI';
+import UIAbility from '@ohos.app.ability.UIAbility';
+
+export default class GlobalContext {
+  static mainWin: window.Window | undefined = undefined;
+  static mainWindowSize: window.Size | undefined = undefined;
+}
+
+/**
+ * 窗口、屏幕相关信息管理类
+ */
+export class WindowManager {
+  private static instance: WindowManager | null = null;
+  private displayInfo: display.Display | null = null;
+  private uiContext: UIContext;
+  private orientationListener: mediaquery.MediaQueryListener;
+
+  constructor(uiContext: UIContext) {
+    this.uiContext = uiContext;
+    this.orientationListener = this.uiContext.getMediaQuery().matchMediaSync('(orientation: landscape)');
+    this.orientationListener.onChange((mediaQueryResult: mediaquery.MediaQueryResult): void => {
+      this.onPortrait(mediaQueryResult);
+    });
+    this.loadDisplayInfo();
+  }
+
+  /**
+   * 设置主window窗口
+   * @param win 当前app窗口
+   */
+  setMainWin(win: window.Window): void {
+    if (win == null) {
+      return;
+    }
+    GlobalContext.mainWin = win;
+    win.onWindowSizeChange((data: window.Size): void => {
+      if (GlobalContext.mainWindowSize == undefined || GlobalContext.mainWindowSize == null) {
+        GlobalContext.mainWindowSize = data;
+      } else {
+        if (GlobalContext.mainWindowSize!.width == data.width && GlobalContext.mainWindowSize!.height == data.height) {
+          return;
+        }
+        GlobalContext.mainWindowSize = data;
+      }
+
+      let winWidth: double = this.getMainWindowWidth();
+      AppStorage.setOrCreate<double>('mainWinWidth', winWidth);
+      let winHeight: double = this.getMainWindowHeight();
+      AppStorage.setOrCreate<double>('mainWinHeight', winHeight);
+      let context: UIAbility = new UIAbility();
+      context.context.eventHub.emit('windowSizeChange', winWidth, winHeight);
+    });
+  }
+
+  static getInstance(uiContext: UIContext): WindowManager {
+    if (WindowManager.instance == null) {
+      WindowManager.instance = new WindowManager(uiContext);
+    }
+    return WindowManager.instance!;
+  }
+
+  private onPortrait(mediaQueryResult: mediaquery.MediaQueryResult): void {
+    if (mediaQueryResult.matches == AppStorage.get<boolean>('isLandscape')) {
+      return;
+    }
+    AppStorage.setOrCreate<boolean>('isLandscape', mediaQueryResult.matches);
+    this.loadDisplayInfo();
+  }
+
+  /**
+   * 切换屏幕方向
+   * @param ori 常量枚举值：window.Orientation
+   */
+  changeOrientation(ori: window.Orientation): void {
+    if (GlobalContext.mainWin != null) {
+      GlobalContext.mainWin!.setPreferredOrientation(ori);
+    }
+  }
+
+  private loadDisplayInfo(): void {
+    this.displayInfo = display.getDefaultDisplaySync();
+    AppStorage.setOrCreate<double>('displayWidth', this.getDisplayWidth());
+    AppStorage.setOrCreate<double>('displayHeight', this.getDisplayHeight());
+  }
+
+  /**
+   * 获取main窗口宽度，单位vp
+   */
+  getMainWindowWidth(): double {
+    return GlobalContext.mainWindowSize != null ? this.uiContext.px2vp(GlobalContext.mainWindowSize!.width) : 0;
+  }
+
+  /**
+   * 获取main窗口高度，单位vp
+   */
+  getMainWindowHeight(): double {
+    return GlobalContext.mainWindowSize != null ? this.uiContext.px2vp(GlobalContext.mainWindowSize!.height) : 0;
+  }
+
+  /**
+   * 获取屏幕宽度，单位vp
+   */
+  getDisplayWidth(): double {
+    return this.displayInfo != null ? this.uiContext.px2vp(this.displayInfo!.width) : 0;
+  }
+
+  /**
+   * 获取屏幕高度，单位vp
+   */
+  getDisplayHeight(): double {
+    return this.displayInfo != null ? this.uiContext.px2vp(this.displayInfo!.height) : 0;
+  }
+
+  /**
+   * 释放资源
+   */
+  release(): void {
+    if (this.orientationListener) {
+      this.orientationListener.offChange((mediaQueryResult: mediaquery.MediaQueryResult): void => {
+        this.onPortrait(mediaQueryResult);
+      });
+    }
+    if (GlobalContext.mainWin != null) {
+      GlobalContext.mainWin!.offWindowSizeChange();
+    }
+    WindowManager.instance = null;
+  }
+}
+
+/**
+ * 封装任务卡片信息数据类
+ */
+export class TaskData {
+  bgColor: Color | string | Resource = Color.White;
+  index: int = 0;
+  taskInfo: string = 'music';
+
+  constructor(bgColor: Color | string | Resource, index: int, taskInfo: string) {
+    this.bgColor = bgColor;
+    this.index = index;
+    this.taskInfo = taskInfo;
+  }
+}
+
+export const taskDataArr: Array<TaskData> =
+  [
+    new TaskData('#317AF7', 0, 'music'),
+    new TaskData('#D94838', 1, 'mall'),
+    new TaskData('#DB6B42', 2, 'photos'),
+    new TaskData('#5BA854', 3, 'setting'),
+    new TaskData('#317AF7', 4, 'call'),
+    new TaskData('#D94838', 5, 'music'),
+    new TaskData('#DB6B42', 6, 'mall'),
+    new TaskData('#5BA854', 7, 'photos'),
+    new TaskData('#D94838', 8, 'setting'),
+    new TaskData('#DB6B42', 9, 'call'),
+    new TaskData('#5BA854', 10, 'music')
+
+  ];
+
+@Entry
+@Component
+export struct TaskSwitchMainPage {
+  displayWidth: double = WindowManager.getInstance(this.getUIContext()).getDisplayWidth();
+  scroller: Scroller = new Scroller();
+  cardSpace: double = 0;
+  cardWidth: double = this.displayWidth / 2 - this.cardSpace / 2;
+  cardHeight: double = 400;
+  cardPosition: Array<double> = [];
+  clickIndex: boolean = false;
+  @State taskViewOffsetX: double = 0;
+  @State cardOffset: double = this.displayWidth / 4;
+  lastCardOffset: double = this.cardOffset;
+  startTime: long | undefined = undefined;
+
+  aboutToAppear(): void {
+    for (let i: int = 0; i < taskDataArr.length; i++) {
+      this.cardPosition.push(i * (this.cardWidth + this.cardSpace));
+    }
+  }
+
+  // 每个卡片位置
+  getProgress(index: int): double {
+    let progress: double = (this.cardOffset + this.cardPosition[index] - this.taskViewOffsetX +
+      this.cardWidth / 2) / this.displayWidth;
+    return progress;
+  }
+
+  build(): void {
+    Stack({ alignContent: Alignment.Bottom }) {
+      // 背景
+      Column()
+        .width('100%')
+        .height('100%')
+        .backgroundColor(0xF0F0F0)
+
+      // 滑动组件
+      Scroll(this.scroller) {
+        Row({ space: this.cardSpace } as RowOptions) {
+          ForEach(taskDataArr, (item: TaskData, index: int) => {
+            Column()
+              .width(this.cardWidth)
+              .height(this.cardHeight)
+              .backgroundColor(item.bgColor)
+              .borderStyle(BorderStyle.Solid)
+              .borderWidth(1)
+              .borderColor(0xAFEEEE)
+              .borderRadius(15)
+              // 计算子组件的仿射属性
+              .scale((this.getProgress(index) >= 0.4 && this.getProgress(index) <= 0.6) ?
+                {
+                  x: 1.1 - Math.abs(0.5 - this.getProgress(index)),
+                  y: 1.1 - Math.abs(0.5 - this.getProgress(index))
+                } as ScaleOptions :
+                { x: 1, y: 1 } as ScaleOptions)
+              .animation({ curve: curves.Curve.Smooth })
+              // 滑动动画
+              .translate({ x: this.cardOffset } as TranslateOptions)
+              .animation({ curve: curves.springMotion() })
+              .zIndex((this.getProgress(index) >= 0.4 && this.getProgress(index) <= 0.6) ? 2 : 1)
+          })
+        }
+        .width((this.cardWidth + this.cardSpace) * (taskDataArr.length + 1))
+        .height('100%')
+      }
+      .gesture(
+        GestureGroup(GestureMode.Parallel,
+          PanGesture({ direction: PanDirection.Horizontal, distance: 5 })
+            .onActionStart((event: GestureEvent): void => {
+              this.startTime = event.timestamp;
+            })
+            .onActionUpdate((event: GestureEvent): void => {
+              this.cardOffset = this.lastCardOffset + event.offsetX;
+            })
+            .onActionEnd((event: GestureEvent): void => {
+              let time: long = 0;
+              if (this.startTime) {
+                time = event.timestamp - this.startTime!;
+              }
+              let speed: double = event.offsetX / (time / 1000000000);
+              let moveX: double = Math.pow(speed, 2) / 7000 * (speed > 0 ? 1 : -1);
+
+              this.cardOffset += moveX;
+              let cardOffsetMax: double = -(taskDataArr.length - 1) * (this.displayWidth / 2);
+              if (this.cardOffset < cardOffsetMax) {
+                this.cardOffset = cardOffsetMax;
+              }
+              if (this.cardOffset > this.displayWidth / 4) {
+                this.cardOffset = this.displayWidth / 4;
+              }
+
+              // 左右滑动距离不满足/满足切换关系时，补位/退回
+              let remainMargin: double = this.cardOffset % (this.displayWidth / 2);
+              if (remainMargin < 0) {
+                remainMargin = this.cardOffset % (this.displayWidth / 2) + this.displayWidth / 2;
+              }
+              if (remainMargin <= this.displayWidth / 4) {
+                this.cardOffset += this.displayWidth / 4 - remainMargin;
+              } else {
+                this.cardOffset -= this.displayWidth / 4 - (this.displayWidth / 2 - remainMargin);
+              }
+
+              // 记录本次滑动偏移量
+              this.lastCardOffset = this.cardOffset;
+            })
+        ), GestureMask.IgnoreInternal)
+      .scrollable(ScrollDirection.Horizontal)
+      .scrollBar(BarState.Off)
+
+      // 滑动到首尾位置
+      Button('Move to first/last')
+        .backgroundColor(0x888888)
+        .margin({ bottom: 30 })
+        .onClick(() => {
+          this.clickIndex = !this.clickIndex;
+
+          if (this.clickIndex) {
+            this.cardOffset = this.displayWidth / 4;
+          } else {
+            this.cardOffset = this.displayWidth / 4 - (taskDataArr.length - 1) * this.displayWidth / 2;
+          }
+          this.lastCardOffset = this.cardOffset;
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ![animation-custom](figures/animation-custom.gif)
 
 通过animateTo可以实现将List中指定的Item替换到首位，List中其余Item依次向下排列。定制List组件动态替换动效的示例代码和效果如下。
+
+ArkTS-Dyn示例：
 
 <!-- @[Component_List](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/component/template3/Index.ets) -->
 
@@ -540,6 +904,212 @@ struct ListAutoSortExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[Component_List](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AnimationStatic/entry/src/main/ets/pages/component/template3/Index.ets) -->
+
+``` TypeScript
+import { AnimatorResult } from '@ohos.animator';
+import curves from '@ohos.curves';
+import {
+  Entry,
+  Component,
+  Column,
+  Row,
+  List,
+  ListOptions,
+  ListItem,
+  ListItemGroup,
+  Text,
+  Button,
+  ForEach,
+  Builder,
+  FlexAlign,
+  TextAlign,
+  AttributeModifier,
+  ListItemAttribute,
+  UIContext,
+  ListScroller,
+  Observed,
+  State
+} from '@kit.ArkUI';
+
+// 该接口控制列表项视觉属性
+class ListItemModify implements AttributeModifier<ListItemAttribute> {
+  public offsetY: number = 0; // Y轴偏移量
+
+  applyNormalAttribute(instance: ListItemAttribute): void {
+    instance.translate({ y: this.offsetY }); // Y轴位移
+  }
+}
+
+@Observed
+class DragSortCtrl<T> {
+  private arr: Array<T>; // 数据数组
+  private modify: Array<ListItemModify>; // 属性修改器数组
+  private uiContext: UIContext; // 新增UIContext成员
+  private dragRefOffset: int = 0; // 拖拽参考偏移量
+  offsetY: number = 0; // 当前Y轴偏移量
+  private ITEM_INTV: int = 0; // 列表项间隔
+
+  constructor(arr: Array<T>, intv: int, uiContext: UIContext) {
+    this.arr = arr;
+    this.uiContext = uiContext;
+    this.modify = [];
+    this.ITEM_INTV = intv;
+    arr.forEach(() => {
+      this.modify.push(new ListItemModify());
+    });
+  }
+
+  itemMove(index: int, newIndex: int): void {
+    let tmp = this.arr.splice(index, 1); // 移除当前传入的index
+    this.arr.splice(newIndex, 0, tmp[0]); // 将当前移除的index插入到数组前一个位置
+    let tmp2 = this.modify.splice(index, 1);
+    this.modify.splice(newIndex, 0, tmp2[0]);
+  }
+
+  setDragRef(item: T): void {
+    this.dragRefOffset = 0;
+  }
+
+  onMove(item: T, offset: number): void {
+    this.offsetY = offset - this.dragRefOffset; // 逐帧计算传入的offset，每满足一个item高度时，进入下方if逻辑，更新dragRefOffset的值
+    let index: int = this.arr.indexOf(item) as int; // 在数组中查找传入的item
+    this.modify[index].offsetY = this.offsetY;
+    if (this.offsetY < -this.ITEM_INTV / 2) { // 通过判断使指定的item逐一移动到首位
+      // 使用interpolatingSpring曲线生成弹簧动画
+      this.uiContext.animateTo({ curve: curves.interpolatingSpring(0, 1, 400, 38) }, () => { // 400: 弹簧刚度，38: 弹簧阻尼
+        this.offsetY += this.ITEM_INTV; // 调整偏移量实现平滑移动
+        this.dragRefOffset -= this.ITEM_INTV; // 移动的总偏移量
+        console.info(`item offsetY ${this.offsetY} dragRefOffset ${this.dragRefOffset}`);
+        this.itemMove(index, index - 1); // 执行列表项位置交换
+      });
+    }
+  }
+
+  getModify(item: T): ListItemModify {
+    let index: int = this.arr.indexOf(item) as int;
+    return this.modify[index];
+  }
+}
+
+@Entry
+@Component
+struct ListAutoSortExample {
+  @State private arr: int[] = [0, 1, 2, 3, 4, 5]; // 列表数据数组
+  @State dragSortCtrl: DragSortCtrl<int> =
+    new DragSortCtrl<int>(this.arr, 120, this.getUIContext()); // 120: 列表项高度间隔
+  @State firstListItemGroupCount: int = 3; // 第一个列表项组包含的项目数量
+  private listScroll: ListScroller = new ListScroller(); // 列表滚动控制器
+  private backAnimator: AnimatorResult | undefined = undefined; // 动画控制器
+
+  @Builder
+  itemEnd(item: int, index: int): void {
+    Row() {
+      Button('To TOP').margin('4vp').onClick(() => { // 4vp: 按钮边距
+        console.info(`item number item ${item} index ${index}`);
+        this.listScroll.closeAllSwipeActions({
+          onFinish: () => {
+            this.dragSortCtrl.setDragRef(item);
+            let length: int = 120 * (this.arr.indexOf(item) as int); // 120: 列表项高度间隔
+            this.backAnimator = this.getUIContext().createAnimator({
+              // 创建弹簧动画
+              duration: 1000, // 动画持续时间，单位毫秒
+              easing: 'interpolating-spring(0, 1, 150, 24)', // 150: 弹簧刚度，24: 弹簧阻尼
+              delay: 0, // 动画延迟时间
+              fill: 'none',
+              direction: 'normal',
+              iterations: 1, // 动画迭代次数
+              begin: 0, // 动画起始值
+              end: -length
+            });
+            this.backAnimator!.onFrame = (value: number) => { // 逐帧回调更新位置
+              this.dragSortCtrl.onMove(item, value); // 处理list的移动替换动效
+            };
+            this.backAnimator!.onFinish = () => {
+            };
+            this.backAnimator!.play(); // 启动动画
+          }
+        });
+      })
+    }
+    .padding('4vp').justifyContent(FlexAlign.SpaceEvenly) // 4vp: 内边距
+  }
+
+  @Builder
+  header(title: string): void {
+    Row() {
+      Text(title)
+    }
+  }
+
+  build(): void {
+    Row() {
+      Column() {
+        List({ space: 20, scroller: this.listScroll } as ListOptions) { // 20: 列表项间距
+          ListItemGroup({ header: () => { this.header('first ListItemGroup') }, space: 20 }) { // 20: 列表项组内间距
+            ForEach(this.arr, (item: int, index: int) => {
+              if (index < this.firstListItemGroupCount) {
+                ListItem() {
+                  Text('' + item)
+                    .width('100%')
+                    .height(100) // 100: 列表项高度
+                    .fontSize(16) // 16: 字体大小
+                    .borderRadius(10) // 10: 边框圆角半径
+                    .textAlign(TextAlign.Center)
+                    .backgroundColor(0xFFFFFF) // 0xFFFFFF: 白色背景
+                }
+                .swipeAction({
+                  end: {
+                    builder: (): void => {
+                      this.itemEnd(item, index)
+                    }
+                  }
+                })
+                .clip(true)
+                .attributeModifier(this.dragSortCtrl.getModify(item)) // 动态设置属性修改
+                .borderRadius(10) // 10: 边框圆角半径
+                .margin({ left: 20, right: 20 }) // 20: 左右外边距
+              }
+            })
+          }
+
+          ListItemGroup({ header: () => { this.header('second ListItemGroup') }, space: 20 }) { // 20: 列表项组内间距
+            ForEach(this.arr, (item: int, index: int) => {
+              if (index > this.firstListItemGroupCount - 1) { // 1: 索引偏移量
+                ListItem() {
+                  Text('' + item)
+                    .width('100%')
+                    .height(100) // 100: 列表项高度
+                    .fontSize(16) // 16: 字体大小
+                    .borderRadius(10) // 10: 边框圆角半径
+                    .textAlign(TextAlign.Center)
+                    .backgroundColor(0xFFFFFF) // 0xFFFFFF: 白色背景
+                }
+                .swipeAction({
+                  end: {
+                    builder: (): void => {
+                      this.itemEnd(item, index)
+                    }
+                  }
+                })
+                .clip(true)
+                .attributeModifier(this.dragSortCtrl.getModify(item))
+                .borderRadius(10) // 10: 边框圆角半径
+                .margin({ left: 20, right: 20 }) // 20: 左右外边距
+              }
+            })
+          }
+        }
+        .padding({ top: 20 }) // 20: 顶部内边距
+        .height('100%')
+      }
+    }
+    .backgroundColor(0xDCDCDC) // 0xDCDCDC: 浅灰色背景
+  }
+}
+```
 
 ![listAnimateDemo](figures/listAnimateDemo.gif)
 <!--RP1--><!--RP1End-->

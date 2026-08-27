@@ -1,4 +1,4 @@
-#  @ohos.app.ability.application (应用工具类)
+# @ohos.app.ability.application (应用工具类)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -401,7 +401,7 @@ exitMasterProcessRole(): Promise\<void>
 
 退出当前进程的[主控进程](../../application-models/ability-terminology.md#masterprocess主控进程)身份。使用Promise异步回调。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异：** 该接口仅在PC/2in1、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
@@ -488,7 +488,7 @@ export default class MyAbilityStage extends AbilityStage{
 
 ## application.createModuleContextSync
 
-createModuleContextSync(context: Context, moduleName: string): \<Context>
+createModuleContextSync(context: Context, moduleName: string): Context
 
 创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包资源](../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。该接口为同步接口。
 
@@ -515,7 +515,7 @@ createModuleContextSync(context: Context, moduleName: string): \<Context>
 
 | 类型               | 说明                |
 | ------------------ | ------------------- |
-| \<[Context](../../reference/apis-ability-kit/js-apis-inner-application-context.md)> | 返回创建的Context。 |
+| [Context](../../reference/apis-ability-kit/js-apis-inner-application-context.md) | 返回创建的Context。 |
 
 **错误码：**
 

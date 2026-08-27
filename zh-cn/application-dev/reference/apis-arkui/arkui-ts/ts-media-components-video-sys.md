@@ -6,7 +6,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用于播放视频文件并控制其播放状态的组件。 
+Video组件用于播放视频文件并控制其播放状态，支持播放、暂停、进度控制、倍速播放、全屏切换等功能。
 
 > **说明：**
 >
@@ -24,7 +24,7 @@ ArkTS-Dyn: surfaceBackgroundColor(color: ColorMetrics)
 
 ArkTS-Sta: surfaceBackgroundColor(color: ColorMetrics | undefined)
 
-设置Video组件中surfaceNode的背景色。
+设置Video组件中surfaceNode（负责渲染视频画面的节点）的背景色。
 
 **系统接口：** 此接口为系统接口
 
@@ -38,6 +38,6 @@ ArkTS-Sta: surfaceBackgroundColor(color: ColorMetrics | undefined)
 
 **参数：** 
 
-| 参数名 |       类型    | 必填 |           说明                |
-| ------ | ------------ | ---- | ---------------------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
 | color  | ArkTS-Dyn: [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)<br/>ArkTS-Sta: [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) \| undefined | 是   | 设置Video组件中surfaceNode的背景色，仅支持黑色和透明色两种。其他颜色设置将默认为黑色。<br/>默认值：Color.Black<br/>取值为undefined时，按默认值处理。 |

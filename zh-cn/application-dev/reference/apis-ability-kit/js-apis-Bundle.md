@@ -764,7 +764,7 @@ bundle.getAbilityInfo(bundleName, abilityName, (err, data) => {
 })
 ```
 
-## bundle.getAbilityLabel<sup>8+</sup> <sup>deprecated<sup>
+## bundle.getAbilityLabel<sup>deprecated<sup>
 
 getAbilityLabel(bundleName: string, abilityName: string): Promise\<string>
 
@@ -814,7 +814,7 @@ bundle.getAbilityLabel(bundleName, abilityName)
   })
 ```
 
-## bundle.getAbilityLabel<sup>8+</sup> <sup>deprecated<sup>
+## bundle.getAbilityLabel<sup>deprecated<sup>
 
 
 getAbilityLabel(bundleName: string, abilityName: string, callback: AsyncCallback\<string>): void
@@ -860,7 +860,7 @@ bundle.getAbilityLabel(bundleName, abilityName, (err, data) => {
 })
 ```
 
-## bundle.isAbilityEnabled<sup>8+</sup> <sup>deprecated<sup>
+## bundle.isAbilityEnabled<sup>deprecated<sup>
 
 isAbilityEnabled(info: AbilityInfo): Promise\<boolean>
 
@@ -904,7 +904,7 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
 })
 ```
 
-## bundle.isAbilityEnabled<sup>8+</sup> <sup>deprecated<sup>
+## bundle.isAbilityEnabled<sup>deprecated<sup>
 
 isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback\<boolean>): void
 
@@ -944,7 +944,7 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
 })
 ```
 
-## bundle.isApplicationEnabled<sup>8+</sup> <sup>deprecated<sup>
+## bundle.isApplicationEnabled<sup>deprecated<sup>
 
 isApplicationEnabled(bundleName: string): Promise\<boolean>
 
@@ -986,7 +986,7 @@ bundle.isApplicationEnabled(bundleName)
   })
 ```
 
-## bundle.isApplicationEnabled<sup>8+</sup> <sup>deprecated<sup>
+## bundle.isApplicationEnabled<sup>deprecated<sup>
 
 isApplicationEnabled(bundleName: string, callback: AsyncCallback\<boolean>): void
 
@@ -1270,7 +1270,7 @@ bundle.getLaunchWantForBundle(bundleName, (err, data) => {
 ```
 
 
-## bundle.getNameForUid<sup>8+</sup> <sup>deprecated<sup>
+## bundle.getNameForUid<sup>deprecated<sup>
 
 getNameForUid(uid: number): Promise\<string>
 
@@ -1311,7 +1311,7 @@ bundle.getNameForUid(uid)
   })
 ```
 
-## bundle.getNameForUid<sup>8+</sup> <sup>deprecated<sup>
+## bundle.getNameForUid<sup>deprecated<sup>
 
 getNameForUid(uid: number, callback: AsyncCallback\<string>): void
 
@@ -1349,7 +1349,7 @@ bundle.getNameForUid(uid, (err, data) => {
 ```
 
 
-## bundle.getAbilityIcon<sup>8+</sup> <sup>deprecated<sup>
+## bundle.getAbilityIcon<sup>deprecated<sup>
 
 getAbilityIcon(bundleName: string, abilityName: string): Promise\<image.PixelMap>
 
@@ -1398,7 +1398,7 @@ bundle.getAbilityIcon(bundleName, abilityName)
   })
 ```
 
-## bundle.getAbilityIcon<sup>8+</sup> <sup>deprecated<sup>
+## bundle.getAbilityIcon <sup>deprecated<sup>
 
 getAbilityIcon(bundleName: string, abilityName: string, callback: AsyncCallback\<image.PixelMap>): void
 

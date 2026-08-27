@@ -1,8 +1,8 @@
 # ProgressButtonV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangrunsen-->
-<!--Designer: @YanSanzo-->
+<!--Owner: @zhangwentao96-->
+<!--Designer: @song-song-song-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -41,6 +41,8 @@ ArkTS-Sta: ProgressButtonV2({progress: double, content: ResourceStr, progressBut
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -60,6 +62,7 @@ ArkTS-Sta: ProgressButtonV2({progress: double, content: ResourceStr, progressBut
 | progressButtonRadius | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | \@Param                | 下载按钮的圆角（不支持百分比设置）。<br/>取值范围：[0, height/2]<br/>默认值：height/2<br/>设置非法数值时，按照默认值处理。 |
 
 ## 属性
+
 不支持[通用属性](ts-component-general-attributes.md)。
 
 ## ClickCallback
@@ -69,6 +72,8 @@ type ClickCallback = () => void
 下载按钮的点击回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,6 +91,8 @@ type ClickCallback = () => void
 ### 属性
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,6 +116,8 @@ constructor(options: ProgressButtonV2ColorOptions);
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -128,6 +137,8 @@ constructor(options: ProgressButtonV2ColorOptions);
 下载按钮色彩信息选项。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

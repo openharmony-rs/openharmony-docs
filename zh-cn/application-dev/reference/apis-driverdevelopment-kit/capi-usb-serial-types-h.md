@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供USB Serial DDK中的枚举类型、结构体与宏的定义，用于USB串口驱动开发，简化串口设备参数配置、返回码处理和流量控制等操作，提升驱动开发效率。
+提供USB Serial DDK中的枚举类型与结构体的定义，用于USB串口驱动开发，简化串口设备参数配置、返回码处理和流量控制等操作，提升驱动开发效率。
 
 **引用文件：** <usb_serial/usb_serial_types.h>
 
@@ -34,8 +34,8 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [UsbSerial_DdkRetCode](#usbserial_ddkretcode) | UsbSerial_DdkRetCode | 定义USB Serial DDK使用的返回码。 |
-| [UsbSerial_FlowControl](#usbserial_flowcontrol) | UsbSerial_FlowControl | 定义USB Serial DDK中的流量控制。 |
-| [UsbSerial_Parity](#usbserial_parity) | UsbSerial_Parity | 定义USB Serial DDK使用的校验参数枚举。 |
+| [UsbSerial_FlowControl](#usbserial_flowcontrol) | UsbSerial_FlowControl | 定义USB Serial DDK中的流量控制。在使用USB串口进行数据传输时，需要根据通信场景选择合适的流量控制方式。例如，在高速大数据量传输场景下，建议使用硬件流控以避免数据丢失；在低速或对实时性要求不高的场景下，可使用软件流控；在短距离、可靠的点对点通信场景下，可选择无流控。 |
+| [UsbSerial_Parity](#usbserial_parity) | UsbSerial_Parity | 定义USB Serial DDK使用的校验参数枚举。在配置USB串口通信参数时，需要根据数据传输的可靠性要求选择合适的校验方式。例如，在对数据完整性要求较高的工业控制场景下，建议使用奇校验或偶校验来检测传输错误；在高噪声干扰环境下，校验可以帮助识别错误数据；在短距离、可靠的通信场景下，为提高传输效率，可选择无校验。 |
 
 ## 枚举类型说明
 

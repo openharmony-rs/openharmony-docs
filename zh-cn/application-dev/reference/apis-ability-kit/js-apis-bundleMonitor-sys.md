@@ -30,9 +30,9 @@ import { bundleMonitor } from '@kit.AbilityKit';
 
 | 名称       | 类型   | 只读 | 可选 | 说明                       |
 | ---------- | ------ | ---- | ---- | -------------------------- |
-| bundleName | string | 是   | 否   | 应用状态发生变化的应用Bundle名称。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 应用状态发生变化的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| appIndex<sup>12+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   |  应用状态发生变化的应用分身索引。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| bundleName | string | 是   | 否   | 应用发生变更的应用Bundle名称。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 应用发生变更的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| appIndex<sup>12+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   |  应用发生变更的应用分身索引。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 ## BundleChangedEvent
 

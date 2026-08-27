@@ -1,5 +1,4 @@
-# 音频编码
-
+# 异步模式音频编码
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @mr-chencxy-->
@@ -84,7 +83,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    const char *name = OH_AVCapability_GetName(capability);
    OH_AVCodec *audioEnc_ = OH_AudioCodec_CreateByName(name);
    ```
-   添加头文件和命名空间:
+   添加头文件和命名空间：
    ```cpp
    #include <mutex>
    #include <queue>

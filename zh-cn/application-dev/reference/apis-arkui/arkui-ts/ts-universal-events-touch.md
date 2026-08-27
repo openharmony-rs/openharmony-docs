@@ -48,7 +48,7 @@ ArkTS-Sta: onTouch(event: ((event: TouchEvent) => void) | undefined): this
 
 ## TouchEvent对象说明
 
-继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。在非事件注入场景下，changedTouches是按屏幕刷新率重采样的点，而touches是按器件刷新率上报的点，因此changedTouches与touches的数据可能不同。
+继承于[BaseEvent](ts-universal-events-click.md#baseevent8)。在非事件注入场景下，changedTouches是按屏幕刷新率重采样的点，而touches是按器件刷新率上报的点，因此changedTouches与touches的数据可能不同。
 
 ### 属性
 

@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-对应的算法规格请查看[对称密钥加解密算法规格：AES](crypto-sym-encrypt-decrypt-spec.md#aes)。
+对应的算法规格请查看[对称密钥加解密算法规格：AES](crypto-encryption-decryption.md#aes)。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -20,7 +20,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 1. 调用[OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create)和[OH_CryptoSymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate)，生成密钥算法为AES、密钥长度为128位的对称密钥（OH_CryptoSymKey）。
    
-   生成AES对称密钥，参考以下示例，并结合[对称密钥生成和转换规格：AES](crypto-sym-key-generation-conversion-spec.md#aes)和[随机生成对称密钥](crypto-generate-sym-key-randomly-ndk.md)理解。注意，参考文档与示例可能有入参差异。
+   生成AES对称密钥，参考以下示例，并结合[对称密钥生成和转换规格：AES](crypto-key-generation-conversion.md#aes)和[随机生成对称密钥](crypto-generate-sym-key-randomly-ndk.md)理解。注意，参考文档与示例可能有入参差异。
 
 2. 调用[OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create)，指定字符串参数'AES128|GCM|PKCS7'，创建对称密钥类型为AES128、分组模式为GCM、填充模式为PKCS7的Cipher实例，用于完成加密操作。
 

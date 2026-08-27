@@ -847,7 +847,7 @@ ArkTS-Dyn: getRemoteBundleVersionCode(deviceId: string, bundleName: string): Pro
 
 ArkTS-Sta: getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promise\<long>
 
-获取指定远程设备上指定包名的应用版本信息。使用Promise异步回调。
+获取指定远程设备上指定包名的应用版本号。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -872,7 +872,7 @@ ArkTS-Sta: getRemoteBundleVersionCode(deviceId: string, bundleName: string): Pro
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | Promise对象，调用成功返回版本信息；调用失败返回错误对象。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | Promise对象，调用成功返回版本号；调用失败返回错误对象。 |
 
 **错误码：**
 

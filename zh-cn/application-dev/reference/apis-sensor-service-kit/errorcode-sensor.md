@@ -3,14 +3,14 @@
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
 <!--Designer: @andeszhang-->
-<!--Tester: @liuhaonan2-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 14500101 传感器服务异常<sup>9+</sup>
+## 14500101 传感器服务异常
 
 **错误信息**
 
@@ -37,7 +37,7 @@ The sensor is not supported by the device.
 
 **错误描述**
 
-当调用GetSingleSensor接口时，若设备不支持该传感器，会报此错误码。
+当调用[getSingleSensor](js-apis-sensor.md#sensorgetsinglesensor9)接口时，若设备不支持该传感器，会报此错误码，导致无法获取该传感器信息。此错误码表示请求的传感器类型在当前设备上不存在或未被支持。
 
 **可能原因**
 
@@ -45,4 +45,4 @@ The sensor is not supported by the device.
 
 **处理步骤**
 
-使用GetSingleSensor接口，返回14500102则表示设备不支持该传感器。
+返回14500102表示设备不支持该传感器。请检查设备是否支持该传感器类型，或使用[getSensorList](js-apis-sensor.md#sensorgetsensorlist9)接口获取设备支持的传感器列表，选择设备支持的传感器类型。

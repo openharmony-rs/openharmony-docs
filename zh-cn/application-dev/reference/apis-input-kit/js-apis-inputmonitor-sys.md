@@ -769,8 +769,6 @@ type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 
 触屏输入事件的回调函数。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
-
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **ArkTS-Dyn起始版本：** 7
@@ -788,68 +786,6 @@ type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 | 类型      | 说明                                       |
 | ------- | ---------------------------------------- |
 | boolean | 若返回true，本次触屏后续产生的事件不再分发到窗口；若返回false，本次触屏后续产生的事件还会分发到窗口。 |
-
-**示例：**
-
-ArkTS-Dyn示例：
-
-```js
-import { inputMonitor } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 订阅触摸事件
-            inputMonitor.on('touch', touchEvent => {
-              if (touchEvent.touches.length === 3) { // 当前有三个手指按下
-                return true;
-              }
-              return false;
-            });
-          } catch (error) {
-            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 订阅触摸事件
-            inputMonitor.onTouch((touchEvent: TouchEvent): Boolean => {
-              console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
-              return false;
-            } );
-          } catch (error) {
-            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
 
 ## inputMonitor.on('pinch')<sup>10+</sup>
 
@@ -2750,7 +2686,7 @@ onTouchscreenSwipe(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -2911,7 +2847,7 @@ offTouchscreenSwipe(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -3044,7 +2980,7 @@ onTouchscreenPinch(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -3205,7 +3141,7 @@ offTouchscreenPinch(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component

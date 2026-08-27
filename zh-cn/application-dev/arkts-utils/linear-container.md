@@ -2,7 +2,7 @@
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Designer: @wang_zhaoyong-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
@@ -63,7 +63,7 @@ List和[LinkedList](../reference/apis-arkts/js-apis-linkedlist.md)相比，Linke
 | 访问元素 | getLast() | 获取最后一个元素。 |
 | 访问元素 | getIndexOf(element: T) | 获取第一个匹配指定元素的位置。 |
 | 访问元素 | getLastIndexOf(element: T) | 获取最后一个匹配指定元素的位置。 |
-| 访问元素 | ArkTS-Dyn: forEach(callbackfn: (value:T, index?: number, list?: List&lt;T&gt;)=&gt; void,thisArg?: Object) <br/> ArkTS-Sta: forEach(callbackfn: (value:T, index?: int, list?: List&lt;T&gt;)=&gt; void,thisArg?: Object) | 遍历访问整个List容器中的每个元素，并执行指定的回调函数。 |
+| 访问元素 | ArkTS-Dyn: forEach(callbackFn: (value:T, index?: number, list?: List&lt;T&gt;)=&gt; void,thisArg?: Object) <br/> ArkTS-Sta: forEach(callbackFn: (value:T, index?: int, list?: List&lt;T&gt;)=&gt; void,thisArg?: Object) | 遍历访问整个List容器中的每个元素，并执行指定的回调函数。 |
 | 访问元素 | ArkTS-Dyn: \[Symbol.iterator]():IterableIterator&lt;T&gt; <br/> ArkTS-Sta: $_iterator(): IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | ArkTS-Dyn: set(index:number, element: T) <br/> ArkTS-Sta: set(index:int, element: T) | 修改指定index位置的元素值为element。 |
 | 修改元素 | list[index] = element | 修改指定index位置的元素值为element时，不会对链表中的实际节点进行任何更改，仅会在对象上添加一个属性，可能导致程序状态与链表内部数据不符，引发难以预测的行为。 |
@@ -200,7 +200,7 @@ Vector支持增、删、改、查操作，常用API如下：
 | 修改元素 | setLength(newSize:number) | 设置Vector的长度大小。 |
 | 删除元素 | remove(element: T) | 删除第一个匹配到的元素。 |
 | 删除元素 | removeByIndex(index:number) | 删除index位置对应的元素。 |
-| 删除元素 | removeByRange(fromIndex:number,toIndex:number) | 删除指定范围内的元素。 |
+| 删除元素 | removeByRange(fromIndex:number, toIndex:number) | 删除指定范围内的元素。 |
 
 ## 线性容器的使用
 

@@ -1,4 +1,4 @@
-# V1自定义组件冻结场景
+# 自定义组件冻结（V1）（ArkTS-Sta）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zany_pink-->

@@ -3,14 +3,14 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
 ## 简介
 本指南主要提供了基于通用属性协议（Generic Attribute Profile，GATT）实现BLE设备间连接和传输数据的开发指导。当两个设备间进行GATT通信交互时，依据设备功能的不同，可区分为GATT客户端和GATT服务端，本指南将分别介绍客户端与服务端的实现方法。
 
-GATT是低功耗蓝牙（BLE）的核心协议，定义了基于服务（Service）、特征值（Characteristic）和描述符（Descriptor）进行蓝牙通信和传输数据的机制。相关术语介绍请参考[Connectivity Kit术语](../terminology.md)。
+GATT是低功耗蓝牙（BLE）的核心协议，定义了基于服务（Service）、特征值（Characteristic）和描述符（Descriptor）进行蓝牙通信和传输数据的机制。相关术语介绍请参考[蓝牙术语](terminology.md)。
 
 ## 实现原理
 客户端获取到服务端的设备地址后，即可向服务端发起连接。服务端设备地址可以通过BLE扫描流程获取。待两端连接成功后，即可向服务端发起服务查询、读写特征值和接收通知等操作，从而实现向服务端发送数据或者接收服务端数据的功能。
@@ -279,7 +279,7 @@ try {
   gattClient.disconnect();
 
   // 如果应用不再使用此gattClient，则需要close，gattClient实例将不能再使用
-  gattClient.close() 
+  gattClient.close();
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -334,7 +334,7 @@ let gattService: ble.GattService = {
 };
 
 try {
-  let gattServer: ble.GattServer = ble.createGattServer(); 
+  let gattServer: ble.GattServer = ble.createGattServer();
   gattServer.addService(gattService);
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -351,7 +351,7 @@ function ServerConnectStateChanged(state: ble.BLEConnectionChangeState) {
 }
 
 try {
-  let gattServer: ble.GattServer = ble.createGattServer(); 
+  let gattServer: ble.GattServer = ble.createGattServer();
   gattServer.on('connectionStateChange', ServerConnectStateChanged);
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -834,7 +834,7 @@ export class GattClientManager {
     this.logCharacteristic(this.myCharacteristic);
   }
 
-  // 9. 使能或禁用接收服务端端特征值内容变更通知的能力时调用，一般通知或者指示，二选一
+  // 9. 使能或禁用接收服务端特征值内容变更通知的能力时调用，一般通知或者指示，二选一
   public Notify(enable: boolean) {
     if (!this.gattClient || this.connectState != constant.ProfileConnectionState.STATE_CONNECTED) {
       console.error(TAG, 'gattClient does not exist or state not connected');
@@ -863,7 +863,7 @@ export class GattClientManager {
     }
   }
 
-  // 10. 使能或禁用接收服务端端特征值内容变更指示的能力时调用，一般通知或者指示，二选一
+  // 10. 使能或禁用接收服务端特征值内容变更指示的能力时调用，一般通知或者指示，二选一
   public Indicate(enable: boolean) {
     if (!this.gattClient || this.connectState != constant.ProfileConnectionState.STATE_CONNECTED) {
       console.error(TAG, 'gattClient does not exist or state not connected');

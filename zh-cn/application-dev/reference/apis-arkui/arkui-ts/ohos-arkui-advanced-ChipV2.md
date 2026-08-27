@@ -6,7 +6,7 @@
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
-ChipV2用于搜索框历史记录、邮件发送列表等场景。
+ChipV2是提供丰富样式和交互能力的操作块组件，支持前缀图标、后缀图标、激活状态、关闭按钮等特性，支持Symbol和Image两种图标类型，并提供完善的无障碍访问能力。该组件适用于搜索历史记录、邮件发送列表、标签选择、过滤器、联系人展示等场景。
 
 该组件基于[状态管理（V2）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以更灵活地控制组件的数据和状态，实现更高效的用户界面刷新。
 
@@ -54,13 +54,13 @@ ChipV2({ chipV2Options: ChipV2Options })
 
 | 名称    | 类型                        | 必填 | 装饰器类型 | 说明                 |
 | ------- | --------------------------- | ---- | ---- | -------------------- |
-| chipV2Options | [ChipV2Options](#chipv2options) | 是   | @Require<br>@Param | 定义ChipV2组件的参数。 |
+| chipV2Options | [ChipV2Options](#chipv2options) | 是   | @Require<br>@Param | 定义ChipV2组件的参数，用于自定义ChipV2组件的外观和行为，包含label、prefixIcon、suffixIcon、allowClose、activated、backgroundColor、size等配置项。 |
 
 ### build
 
 build(): void
 
-build函数用于构造ChipV2高级组件。
+build函数用于构造ChipV2高级组件的UI结构。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -76,7 +76,7 @@ build函数用于构造ChipV2高级组件。
 
 ## ChipV2Options
 
-ChipV2Options定义ChipV2的样式及具体式样参数。
+ChipV2Options定义ChipV2的样式及具体样式参数。
 
 ### 属性
 
@@ -97,28 +97,28 @@ ChipV2Options定义ChipV2的样式及具体式样参数。
 | 名称            | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | label            | [ChipV2Label](#chipv2label) | 否   | 否  | ChipV2文本属性。<br>**装饰器类型：** @Trace |
-| prefixIcon      | [ChipV2Icon](#chipv2icon)                      | 否  | 是  | ChipV2前缀图标。<br>默认值：不显示前缀图标。<br>值为undefined时，按默认值处理。<br>图标为Symbol类型时，fontColor默认值为：normalFontColor：`[$r('sys.color.chip_usually_icon_color')]`、activatedFontColor：`[$r('sys.color.chip_active_icon_color')]`。fontSize默认值为16。<br>图标为Image类型时，fillColor默认值为：`$r('sys.color.chip_usually_icon_color')`，activatedFillColor默认值为：`$r('sys.color.chip_active_icon_color')`，fillColor和activatedFillColor对颜色的解析与Image组件保持一致。<br>**装饰器类型：** @Trace |
-| suffixIcon      | [ChipV2Icon](#chipv2icon)                      | 否  | 是  | ChipV2后缀图标。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。<br>图标为Symbol类型时，fontColor默认值为：normalFontColor：`[$r('sys.color.chip_usually_icon_color')]`、activatedFontColor：`[$r('sys.color.chip_active_icon_color')]`。fontSize默认值为16。<br>图标为Image类型时，fillColor默认值为：`$r('sys.color.chip_usually_icon_color')`，activatedFillColor默认值为：`$r('sys.color.chip_active_icon_color')`，fillColor和activatedFillColor对颜色的解析与Image组件保持一致。<br>**装饰器类型：** @Trace |
-| allowClose      | boolean                                                      | 否  | 是  | 关闭图标是否显示。<br>当`suffixIcon`有传入参数时，`allowClose`不生效；`suffixIcon`没有传入参数时，`allowClose`决定是否显示删除图标。<br/>默认值：true<br>true：删除图标显示；false：删除图标不显示。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| closeIcon | [ChipV2CloseIcon](#chipv2closeicon) | 否 | 是 | 关闭图标的配置，包括无障碍属性配置。<br>默认值：<br>- 尺寸默认值：size为ChipV2Size.SMALL时，默认值为`$r('sys.float.chip_small_font_size')`；其他情况默认值为`$r('sys.float.chip_normal_font_size')`。<br>- 无障碍默认值：无无障碍描述。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| enabled         | boolean                                                      | 否  | 是  | ChipV2是否可用。<br>默认值：true<br>true：操作块可用；false：操作块不可用。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| activated    | boolean                                        | 否  | 是  | ChipV2是否为激活态。<br>默认值：false<br>true：操作块为激活态；false：操作块为非激活态。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| prefixIcon      | [ChipV2Icon](#chipv2icon)                      | 否  | 是  | ChipV2前缀图标。<br>默认值：不显示前缀图标。<br>值为undefined时，按默认值处理。<br>图标为Symbol类型时，fontColor默认值为：normalFontColor：`[$r('sys.color.chip_usually_icon_color')]`、activatedFontColor：`[$r('sys.color.chip_active_icon_color')]`。fontSize默认值为16。<br>图标为Image类型时，fillColor默认值为：`$r('sys.color.chip_usually_icon_color')`，activatedFillColor默认值为：`$r('sys.color.chip_active_icon_color')`，fillColor和activatedFillColor对颜色的解析与Image组件保持一致。仅在图片格式为SVG时，fillColor与activatedFillColor属性才生效；非SVG图片不应用默认值。<br>**装饰器类型：** @Trace |
+| suffixIcon      | [ChipV2Icon](#chipv2icon)                      | 否  | 是  | ChipV2后缀图标。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。<br>说明：当suffixIcon有传入参数时，allowClose属性不生效。<br>图标为Symbol类型时，fontColor默认值为：normalFontColor：`[$r('sys.color.chip_usually_icon_color')]`、activatedFontColor：`[$r('sys.color.chip_active_icon_color')]`。fontSize默认值为16。<br>图标为Image类型时，fillColor默认值为：`$r('sys.color.chip_usually_icon_color')`，activatedFillColor默认值为：`$r('sys.color.chip_active_icon_color')`。fillColor和activatedFillColor对颜色的解析与Image组件保持一致。仅在图片格式为SVG时，fillColor与activatedFillColor属性才生效；非SVG图片不应用默认值。<br>**装饰器类型：** @Trace |
+| allowClose      | boolean                                                      | 否  | 是  | 关闭图标是否显示。<br>当`suffixIcon`有传入参数时，`allowClose`不生效；`suffixIcon`没有传入参数时，`allowClose`决定是否显示关闭图标。<br/>默认值：true<br>true：关闭图标显示；false：关闭图标不显示。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| closeIcon | [ChipV2CloseIcon](#chipv2closeicon) | 否 | 是 | 关闭图标的配置，包括无障碍属性配置。当需要自定义关闭图标的大小或无障碍属性时设置此属性。<br>默认值：<br>- 尺寸默认值：size为ChipV2Size.SMALL时，默认值为`$r('sys.float.chip_small_font_size')`；其他情况默认值为`$r('sys.float.chip_normal_font_size')`。<br>- 无障碍默认值：无无障碍描述。<br>fontSize不支持百分比设置，异常值按默认值处理。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| enabled         | boolean                                                      | 否  | 是  | ChipV2是否可用。<br>默认值：true<br>true：ChipV2可用；false：ChipV2不可用。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| activated    | boolean                                        | 否  | 是  | ChipV2是否为激活态。<br>默认值：false<br>true：ChipV2为激活态；false：ChipV2为非激活态。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | backgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                   | 否  | 是  | ChipV2背景颜色。<br/>默认值：$r('sys.color.chip_background_color')<br>值为undefined时，按默认值处理。<br>值为非法值时，背景颜色透明。<br>**装饰器类型：** @Trace |
 | activatedBackgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)          | 否  | 是  | ChipV2激活时的背景颜色。<br/>默认值：$r('sys.color.chip_container_activated_color')<br>值为undefined时，按默认值处理。<br>值为非法值时，背景颜色透明。<br>**装饰器类型：** @Trace |
-| borderRadius    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)                         | 否  | 是  | ChipV2背景圆角半径大小，不支持百分比。<br/>默认值：<br/>size为ChipV2Size.NORMAL时，borderRadius默认值为：`$r('sys.float.chip_border_radius_normal')`。<br/>size为ChipV2Size.SMALL时，borderRadius默认值为：`$r('sys.float.chip_border_radius_small')`。<br/>值为undefined时，按默认值处理。<br/>**装饰器类型：** @Trace |
+| borderRadius    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)                         | 否  | 是  | ChipV2背景圆角半径大小，不支持百分比。传入百分比时按默认值处理。<br>默认值：<br>size为ChipV2Size.NORMAL时，borderRadius默认值为：`$r('sys.float.chip_border_radius_normal')`。<br>size为ChipV2Size.SMALL时，borderRadius默认值为：`$r('sys.float.chip_border_radius_small')`<br>单位：vp<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | size            | [ChipV2Size](#chipv2size) \| [SizeT](../js-apis-arkui-graphics.md#sizett12)<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 否  | 是  | ChipV2尺寸。<br/>默认值：ChipV2Size.NORMAL<br/>SizeT\<LengthMetrics\>类型参数不支持百分比设置，异常值按默认值处理。<br>**说明**：[适老化](../../../ui/arkui-support-for-aging-adaptation.md)在size指定具体宽高时不生效，size设置为{ height: 0, width: 0 }除外。<br>**装饰器类型：** @Trace |
 | direction | [Direction](ts-appendix-enums.md#direction) | 否 | 是 | 布局方向。<br/>默认值：Direction.Auto<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | ChipV2组件的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的结果。特别是当这些结果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | ChipV2组件的无障碍描述。此描述用于向用户详细解释当前组件，开发者应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的结果。特别是当这些结果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | accessibilityLevel | string | 否 | 是 | ChipV2组件无障碍重要性。用于控制组件是否可被无障碍辅助服务所识别。<br>支持的值为：<br>"auto"：当前组件会转化为"yes"。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| accessibilitySelectedType | [ChipV2AccessibilitySelectedType](#chipv2accessibilityselectedtype) | 否 | 是 | ChipV2组件选中态类型。<br>默认值：当设置了activated属性但未指定accessibilitySelectedType时，默认使用CHECKED类型。当未设置activated属性时，默认使用CLICKED类型。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| maxFontScale | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<br>ArkTS-Sta: double \| [Resource](ts-types.md#resource) | 否 | 是 | ChipV2组件文本与图标的最大的字体缩放倍数。<br>取值范围：[1, +∞)<br>设置的值小于1时，按值为1处理。异常值默认不生效。<br>**装饰器类型：** @Trace |
-| minFontScale | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<br>ArkTS-Sta: double \| [Resource](ts-types.md#resource) | 否 | 是 | ChipV2组件文本与图标的最小的字体缩放倍数。<br>取值范围：[0, 1]<br>设置的值小于0时，按值为0处理。设置的值大于1时，按值为1处理。异常值默认不生效。<br>**装饰器类型：** @Trace |
+| accessibilitySelectedType | [ChipV2AccessibilitySelectedType](#chipv2accessibilityselectedtype) | 否 | 是 | ChipV2组件选中态类型。<br>默认值：当activated属性为true但未指定accessibilitySelectedType时，默认使用CHECKED类型。当activated属性为false或未设置时，默认使用CLICKED类型。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| maxFontScale | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<br>ArkTS-Sta: double \| [Resource](ts-types.md#resource) | 否 | 是 | ChipV2组件文本与图标的最大字体缩放倍数。<br>取值范围：[1, +∞)<br>设置的值小于1时，按值为1处理。异常值默认不生效。<br>默认值：1。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| minFontScale | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<br>ArkTS-Sta: double \| [Resource](ts-types.md#resource) | 否 | 是 | ChipV2组件文本与图标的最小字体缩放倍数。<br>取值范围：[0, 1]<br>设置的值小于0时，按值为0处理。设置的值大于1时，按值为1处理。异常值默认不生效。<br>默认值：1。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | padding | [LocalizedPadding](ts-types.md#localizedpadding12) | 否 | 是 | ChipV2组件的内边距。<br>默认值：<br>- size为ChipV2Size.SMALL并且activated为true时，默认值：`{  start: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'),   end: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'),  top: LengthMetrics.vp(4),  bottom: LengthMetrics.vp(4)}`。 <br>- size为ChipV2Size.SMALL并且activated为false时，默认值：`{  start: LengthMetrics.resource('sys.float.chip_small_text_padding'),  end: LengthMetrics.resource('sys.float.chip_small_text_padding'),  top: LengthMetrics.vp(4),  bottom: LengthMetrics.vp(4)}`。 <br>- size不为ChipV2Size.SMALL并且activated为true时，默认值：`{  start: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'),  end: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'),  top: LengthMetrics.vp(4),  bottom: LengthMetrics.vp(4)}`。 <br>- size不为ChipV2Size.SMALL并且activated为false时，默认值：`{  start: LengthMetrics.resource('sys.float.chip_normal_text_padding'),  end: LengthMetrics.resource('sys.float.chip_normal_text_padding'),  top: LengthMetrics.vp(4),  bottom: LengthMetrics.vp(4)}`。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 统一设置ChipV2组件的文本与图标的字体大小，不支持百分比。<br>该fontSize的优先级低于prefixSymbolIcon、label、suffixSymbolIcon和closeIcon中的fontSize属性。<br>默认值：<br>- size为ChipV2Size.SMALL时，文本默认值：`$r('sys.float.chip_small_font_size')`；图标默认值：`$r('sys.float.chip_small_icon_size')`。 <br>- 其他情况下，文本默认值：`$r('sys.float.chip_normal_font_size')`；图标默认值：`$r('sys.float.chip_normal_icon_size')`。 <br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| backgroundSystemMaterial | uiMaterial.Material | 否 | 是 | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)效果、材质层滤镜效果[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)。<br>默认值：undefined，不应用材质样式。<br>**装饰器类型：** @Trace |
-| activatedBackgroundSystemMaterial | uiMaterial.Material | 否 | 是 | 设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)效果、材质层滤镜效果[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)。<br>默认值：undefined，不应用材质样式。<br>**装饰器类型：** @Trace |
-| onClose         | [VoidCallback](ts-types.md#voidcallback12)  | 否  | 是  | 默认关闭图标点击事件。<br>默认值：undefined，不触发点击事件。 |
-| onClicked     | [Callback](ts-types.md#callback12)\<void> | 否  | 是  | ChipV2点击事件。<br>默认值：undefined，不触发点击事件。 |
+| fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 统一设置ChipV2组件的文本与图标的字体大小，不支持百分比。传入百分比时按默认值处理。<br>该fontSize的优先级低于prefixIcon、label、suffixIcon和closeIcon中的fontSize属性。<br>默认值：<br>- size为ChipV2Size.SMALL时，文本默认值：`$r('sys.float.chip_small_font_size')`；图标默认值：`$r('sys.float.chip_small_icon_size')`。<br>- 其他情况下，文本默认值：`$r('sys.float.chip_normal_font_size')`；图标默认值：`$r('sys.float.chip_normal_icon_size')`<br>单位：fp<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| backgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | 否 | 是 | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)效果、材质层滤镜效果[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)。<br>默认值：undefined，不应用材质样式。<br>**装饰器类型：** @Trace |
+| activatedBackgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | 否 | 是 | 设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)效果、材质层滤镜效果[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)。<br>默认值：undefined，不应用材质样式。<br>**装饰器类型：** @Trace |
+| onClose         | [VoidCallback](ts-types.md#voidcallback12)  | 否  | 是  | 默认关闭图标点击事件回调函数。<br>当`allowClose`为true且`suffixIcon`没有传入参数时，点击关闭图标执行此回调函数。<br>默认值：不执行该回调函数。 <br>值为undefined时，按默认值处理。 |
+| onClicked     | [Callback](ts-types.md#callback12)\<void> | 否  | 是  | ChipV2点击事件回调函数。<br>当`enabled`为true时，点击ChipV2触发点击事件；当`enabled`为false时，不触发点击事件。<br>默认值：不执行该回调函数。 <br>值为undefined时，按默认值处理。 |
 
 ### constructor
 
@@ -142,7 +142,7 @@ ChipV2Options的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| config | [IChipV2OptionsConfig](#ichipv2optionsconfig) | 是 | ChipV2样式配置。 |
+| config | [IChipV2OptionsConfig](#ichipv2optionsconfig) | 是 | ChipV2样式配置，用于自定义ChipV2组件的外观和行为，包含label、prefixIcon、suffixIcon、allowClose、activated、backgroundColor等配置项。 |
 
 ## IChipV2OptionsConfig
 
@@ -164,27 +164,27 @@ IChipV2OptionsConfig定义ChipV2选项的配置接口。
 | ---- | ---- | --- | ---- | ---- |
 | label | [ChipV2Label](#chipv2label) | 否 | 否 | ChipV2文本属性。 |
 | prefixIcon | [ChipV2Icon](#chipv2icon) | 否 | 是 | ChipV2前缀图标。<br>默认值：不显示前缀图标。<br>值为undefined时，按默认值处理。 |
-| suffixIcon | [ChipV2Icon](#chipv2icon) | 否 | 是 | ChipV2后缀图标。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。 |
-| allowClose | boolean | 否 | 是 | 是否显示关闭图标。<br/>默认值：true<br>true：删除图标显示；false：删除图标不显示。<br>值为undefined时，按默认值处理。 |
-| closeIcon | [ChipV2CloseIcon](#chipv2closeicon) | 否 | 是 | 关闭图标的配置，包括无障碍属性配置。<br>默认值：<br>- 尺寸默认值：size为ChipV2Size.SMALL时，默认值为`$r('sys.float.chip_small_font_size')`；其他情况默认值为`$r('sys.float.chip_normal_font_size')`。<br>- 无障碍默认值：无无障碍描述。<br>值为undefined时，按默认值处理。 |
-| enabled | boolean | 否 | 是 | ChipV2是否可用。<br>默认值：true<br>true：操作块可用；false：操作块不可用。<br>值为undefined时，按默认值处理。 |
-| activated | boolean | 否 | 是 | ChipV2是否为激活态。<br>默认值：false<br>true：操作块为激活态；false：操作块为非激活态。<br>值为undefined时，按默认值处理。 |
-| backgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | ChipV2背景颜色。<br/>默认值：$r('sys.color.chip_background_color')<br>值为undefined时，按默认值处理。 |
-| activatedBackgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | ChipV2激活时的背景颜色。<br/>默认值：$r('sys.color.chip_container_activated_color')<br>值为undefined时，按默认值处理。 |
-| borderRadius | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | ChipV2背景圆角半径大小，不支持百分比。<br/>默认值：<br/>size为ChipV2Size.NORMAL时，borderRadius默认值为：`$r('sys.float.chip_border_radius_normal')`。<br/>size为ChipV2Size.SMALL时，borderRadius默认值为：`$r('sys.float.chip_border_radius_small')`。<br/>值为undefined时，按默认值处理。 |
+| suffixIcon | [ChipV2Icon](#chipv2icon) | 否 | 是 | ChipV2后缀图标。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。<br>说明：当suffixIcon有传入参数时，allowClose属性不生效。 |
+| allowClose | boolean | 否 | 是 | 是否显示关闭图标。<br>当`suffixIcon`有传入参数时，`allowClose`不生效；`suffixIcon`没有传入参数时，`allowClose`决定是否显示关闭图标。<br>默认值：true<br>true：关闭图标显示；false：关闭图标不显示。<br>值为undefined时，按默认值处理。 |
+| closeIcon | [ChipV2CloseIcon](#chipv2closeicon) | 否 | 是 | 关闭图标的配置，包括无障碍属性配置。当需要自定义关闭图标的大小或无障碍属性时设置此属性。<br>默认值：<br>- 尺寸默认值：size为ChipV2Size.SMALL时，默认值为`$r('sys.float.chip_small_font_size')`；其他情况默认值为`$r('sys.float.chip_normal_font_size')`。<br>- 无障碍默认值：无无障碍描述。<br>值为undefined时，按默认值处理。 |
+| enabled | boolean | 否 | 是 | ChipV2是否可用。<br>默认值：true<br>true：ChipV2可用；false：ChipV2不可用。<br>值为undefined时，按默认值处理。 |
+| activated | boolean | 否 | 是 | ChipV2是否为激活态。<br>默认值：false<br>true：ChipV2为激活态；false：ChipV2为非激活态。<br>值为undefined时，按默认值处理。 |
+| backgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | ChipV2背景颜色。<br>默认值：$r('sys.color.chip_background_color')<br>值为undefined时，按默认值处理。<br>值为非法值时，背景颜色透明。 |
+| activatedBackgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | ChipV2激活时的背景颜色。<br>默认值：$r('sys.color.chip_container_activated_color')<br>值为undefined时，按默认值处理。<br>值为非法值时，背景颜色透明。 |
+| borderRadius | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | ChipV2背景圆角半径大小，不支持百分比。传入百分比时按默认值处理。<br>默认值：<br>size为ChipV2Size.NORMAL时，borderRadius默认值为：`$r('sys.float.chip_border_radius_normal')`。<br>size为ChipV2Size.SMALL时，borderRadius默认值为：`$r('sys.float.chip_border_radius_small')`<br>单位：vp<br>值为undefined时，按默认值处理。 |
 | size | [ChipV2Size](#chipv2size) \| [SizeT](../js-apis-arkui-graphics.md#sizett12)<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 否 | 是 | ChipV2尺寸。<br/>默认值：ChipV2Size.NORMAL<br/>SizeT\<LengthMetrics\>类型参数不支持百分比设置，异常值按默认值处理。<br>**说明**：[适老化](../../../ui/arkui-support-for-aging-adaptation.md)在size指定具体宽高时不生效，size设置为{ height: 0, width: 0 }除外。 |
 | direction | [Direction](ts-appendix-enums.md#direction) | 否 | 是 | 布局方向。<br/>默认值：Direction.Auto<br>值为undefined时，按默认值处理。 |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | ChipV2的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的结果。特别是当这些结果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | ChipV2的无障碍描述。此描述用于向用户详细解释当前组件，开发者应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的结果。特别是当这些结果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
 | accessibilityLevel | string | 否 | 是 | ChipV2的无障碍重要性。用于控制组件是否可被无障碍辅助服务所识别。<br>支持的值为：<br>"auto"：当前组件会转化为"yes"。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"<br>值为undefined时，按默认值处理。 |
-| accessibilitySelectedType | [ChipV2AccessibilitySelectedType](#chipv2accessibilityselectedtype) | 否 | 是 | ChipV2组件选中态类型。<br>默认值：当设置了activated属性但未指定accessibilitySelectedType时，默认使用CHECKED类型。当未设置activated属性时，默认使用CLICKED类型。<br>值为undefined时，按默认值处理。 |
-| maxFontScale | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<br>ArkTS-Sta: double \| [Resource](ts-types.md#resource) | 否 | 是 | ChipV2的最大字体缩放倍数。<br>取值范围：[1, +∞)<br>设置的值小于1时，按值为1处理。异常值默认不生效。 |
-| minFontScale | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<br>ArkTS-Sta: double \| [Resource](ts-types.md#resource) | 否 | 是 | ChipV2的最小字体缩放倍数。<br>取值范围：[0, 1]<br>设置的值小于0时，按值为0处理。设置的值大于1时，按值为1处理。异常值默认不生效。 |
+| accessibilitySelectedType | [ChipV2AccessibilitySelectedType](#chipv2accessibilityselectedtype) | 否 | 是 | ChipV2组件选中态类型。<br>默认值：当activated属性为true但未指定accessibilitySelectedType时，默认使用CHECKED类型。当activated属性为false或未设置时，默认使用CLICKED类型。<br>值为undefined时，按默认值处理。 |
+| maxFontScale | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<br>ArkTS-Sta: double \| [Resource](ts-types.md#resource) | 否 | 是 | ChipV2组件文本与图标的最大字体缩放倍数。<br>取值范围：[1, +∞)<br>设置的值小于1时，按值为1处理。异常值默认不生效。<br>默认值：1。<br>值为undefined时，按默认值处理。 |
+| minFontScale | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<br>ArkTS-Sta: double \| [Resource](ts-types.md#resource) | 否 | 是 | ChipV2组件文本与图标的最小字体缩放倍数。<br>取值范围：[0, 1]<br>设置的值小于0时，按值为0处理。设置的值大于1时，按值为1处理。异常值默认不生效。<br>默认值：1。<br>值为undefined时，按默认值处理。 |
 | padding | [LocalizedPadding](ts-types.md#localizedpadding12) | 否 | 是 | ChipV2的内边距。<br>默认值：<br>- size为ChipV2Size.SMALL并且activated为true时，默认值：`{  start: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'),   end: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'),  top: LengthMetrics.vp(4),  bottom: LengthMetrics.vp(4)}`。 <br>- size为ChipV2Size.SMALL并且activated为false时，默认值：`{  start: LengthMetrics.resource('sys.float.chip_small_text_padding'),  end: LengthMetrics.resource('sys.float.chip_small_text_padding'),  top: LengthMetrics.vp(4),  bottom: LengthMetrics.vp(4)}`。 <br>- size不为ChipV2Size.SMALL并且activated为true时，默认值：`{  start: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'),  end: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'),  top: LengthMetrics.vp(4),  bottom: LengthMetrics.vp(4)}`。 <br>- size不为ChipV2Size.SMALL并且activated为false时，默认值：`{  start: LengthMetrics.resource('sys.float.chip_normal_text_padding'),  end: LengthMetrics.resource('sys.float.chip_normal_text_padding'),  top: LengthMetrics.vp(4),  bottom: LengthMetrics.vp(4)}`。<br>值为undefined时，按默认值处理。 |
-| fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 统一设置ChipV2的文本与图标的字体大小，不支持百分比。<br> 该fontSize的优先级低于prefixSymbolIcon、label、suffixSymbolIcon和closeIcon中的fontSize属性。<br>默认值：<br>- size为ChipV2Size.SMALL时，文本默认值：`$r('sys.float.chip_small_font_size')`；图标默认值：`$r('sys.float.chip_small_icon_size')`。 <br>- 其他情况下，文本默认值：`$r('sys.float.chip_normal_font_size')`；图标默认值：`$r('sys.float.chip_normal_icon_size')`。 <br>值为undefined时，按默认值处理。 |
-| backgroundSystemMaterial | uiMaterial.Material | 否 | 是 | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)效果、材质层滤镜效果[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)。<br>默认值：undefined，不应用材质样式。 |
-| activatedBackgroundSystemMaterial | uiMaterial.Material| 否 | 是 | 设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)效果、材质层滤镜效果[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)。<br>默认值：undefined，不应用材质样式。 |
-| onClose | [VoidCallback](ts-types.md#voidcallback12) | 否 | 是 | 关闭图标点击事件。<br>值为undefined时，不触发点击事件。 |
-| onClicked | [Callback](ts-types.md#callback12)\<void> | 否 | 是 | ChipV2点击事件。<br>值为undefined时，ChipV2不能被点击。 |
+| fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 统一设置ChipV2组件的文本与图标的字体大小，不支持百分比。传入百分比时按默认值处理。<br>该fontSize的优先级低于prefixIcon、label、suffixIcon和closeIcon中的fontSize属性。<br>默认值：<br>- size为ChipV2Size.SMALL时，文本默认值：`$r('sys.float.chip_small_font_size')`；图标默认值：`$r('sys.float.chip_small_icon_size')`。<br>- 其他情况下，文本默认值：`$r('sys.float.chip_normal_font_size')`；图标默认值：`$r('sys.float.chip_normal_icon_size')`<br>单位：fp<br>值为undefined时，按默认值处理。 |
+| backgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | 否 | 是 | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)效果、材质层滤镜效果[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)。<br>默认值：undefined，不应用材质样式。 |
+| activatedBackgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | 否 | 是 | 设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)效果、材质层滤镜效果[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)。<br>默认值：undefined，不应用材质样式。 |
+| onClose | [VoidCallback](ts-types.md#voidcallback12) | 否 | 是 | 默认关闭图标点击事件回调函数。<br>当allowClose为true且suffixIcon没有传入参数时，点击关闭图标执行此回调函数。<br>默认值：不执行该回调函数。 <br>值为undefined时，按默认值处理。 |
+| onClicked | [Callback](ts-types.md#callback12)\<void> | 否 | 是 | ChipV2点击事件回调函数。<br>当enabled为true时，点击ChipV2触发点击事件；当enabled为false时，不触发点击事件。<br>默认值：不执行该回调函数。 <br>值为undefined时，按默认值处理。 |
 
 ## ChipV2Label
 
@@ -209,13 +209,13 @@ ChipV2Label定义文本属性类。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | text | string | 否 | 否 | 文本文字内容。<br>**装饰器类型：** @Trace |
-| fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 文字字号，不支持百分比。<br/>默认值：<br>size为ChipV2Size.SMALL时，默认值：$r('sys.float.chip_small_font_size')。<br>其他情况下，默认值：$r('sys.float.chip_normal_font_size')。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| fontColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 文字颜色。<br/>默认值：$r('sys.color.chip_font_color')<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| activatedFontColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 操作块激活时的文字颜色。<br/>默认值：$r('sys.color.chip_activated_fontcolor')<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 文字字号，不支持百分比。传入百分比时按默认值处理。<br>默认值：<br>size为ChipV2Size.SMALL时，默认值：$r('sys.float.chip_small_font_size')。<br>其他情况下，默认值：$r('sys.float.chip_normal_font_size')<br>单位：fp<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| fontColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 文字颜色。<br>默认值：$r('sys.color.chip_font_color')<br>值为undefined时，按默认值处理。<br>值为非法值时，按默认值处理。<br>**装饰器类型：** @Trace |
+| activatedFontColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | ChipV2激活时的文字颜色。<br>默认值：$r('sys.color.chip_activated_fontcolor')<br>值为undefined时，按默认值处理。<br>值为非法值时，按默认值处理。<br>**装饰器类型：** @Trace |
 | fontFamily | string | 否 | 是 | 文字字体。<br/>默认值："HarmonyOS Sans"<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | labelMargin | [ChipV2LabelMarginConfig](#chipv2labelmarginconfig) | 否 | 是 | 文本与左右侧图标之间间距。<br>默认值：<br>size为ChipV2Size.SMALL时，默认值：{ left: 4, right: 4 }。<br>size为ChipV2Size.NORMAL时，默认值：{ left: 6, right: 6 }。<br>单位：vp<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | localizedLabelMargin | [ChipV2LocalizedLabelMarginConfig](#chipv2localizedlabelmarginconfig) | 否 | 是 | 本地化文本与左右侧图标之间间距。<br/>默认值：<br>size为ChipV2Size.SMALL时，默认值：<br>`{  start: LengthMetrics.resource($r('sys.float.chip_small_text_margin')),  end: LengthMetrics.resource($r('sys.float.chip_small_text_margin')) }`。<br>size为ChipV2Size.NORMAL时，默认值：<br>`{  start: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')),  end: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')) }`。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| modifier | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | 是 | 文本修饰器，用于设置文本的通用属性。<br>默认值：undefined，不应用修饰器。<br>**装饰器类型：** @Trace |
+| modifier | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | 是 | 文本修饰器，用于设置文本的通用属性。当需要通过modifier动态修改文本属性（如fontWeight、fontStyle等）时传入此参数。不传入或传入undefined时，不应用修饰器，文本使用默认属性设置。<br>默认值：undefined，不应用修饰器。<br>**装饰器类型：** @Trace |
 
 ### constructor
 
@@ -239,7 +239,7 @@ ChipV2Label的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| config | [ChipV2LabelConfig](#chipv2labelconfig) | 是 | 文本属性配置。 |
+| config | [ChipV2LabelConfig](#chipv2labelconfig) | 是 | 文本属性配置，用于设置ChipV2的文本显示属性，包含text、fontSize、fontColor、activatedFontColor、fontFamily等配置项。 |
 
 ## ChipV2LabelConfig
 
@@ -260,13 +260,13 @@ ChipV2LabelConfig定义文本属性配置。
 | 名称        | 类型                                       | 只读 | 可选 | 说明                                                         |
 | ----------- | ------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | text        | string                                     | 否  | 否  | 文本文字内容。 |
-| fontSize    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)       | 否  | 是  | 文字字号，不支持百分比。<br/>默认值：$r('sys.float.chip_normal_font_size')<br>值为undefined时，按默认值处理。 |
-| fontColor   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 文字颜色。<br/>默认值：$r('sys.color.chip_font_color')<br>值为undefined时，按默认值处理。 |
-| activatedFontColor   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 操作块激活时的文字颜色。<br/>默认值：$r('sys.color.chip_activated_fontcolor')<br>值为undefined时，按默认值处理。 |
+| fontSize    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)       | 否  | 是  | 文字字号，不支持百分比。传入百分比时按默认值处理。<br>默认值：<br>size为ChipV2Size.SMALL时，默认值：$r('sys.float.chip_small_font_size')。<br>其他情况下，默认值：$r('sys.float.chip_normal_font_size')<br>单位：fp<br>值为undefined时，按默认值处理。 |
+| fontColor   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 文字颜色。<br>默认值：$r('sys.color.chip_font_color')<br>值为undefined时，按默认值处理。<br>值为非法值时，按默认值处理。 |
+| activatedFontColor   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | ChipV2激活时的文字颜色。<br>默认值：$r('sys.color.chip_activated_fontcolor')<br>值为undefined时，按默认值处理。<br>值为非法值时，按默认值处理。 |
 | fontFamily  | string                                     | 否  | 是  | 文字字体。<br/>默认值："HarmonyOS Sans"<br>值为undefined时，按默认值处理。 |
 | labelMargin | [ChipV2LabelMarginConfig](#chipv2labelmarginconfig)  | 否  | 是  | 文本与左右侧图标之间间距。<br>默认值：<br>size为ChipV2Size.SMALL时，默认值：{ left: 4, right: 4 }。<br>size为ChipV2Size.NORMAL时，默认值：{ left: 6, right: 6 }。<br>单位：vp<br>值为undefined时，按默认值处理。 |
 | localizedLabelMargin | [ChipV2LocalizedLabelMarginConfig](#chipv2localizedlabelmarginconfig) | 否 | 是 | 本地化文本与左右侧图标之间间距。<br/>默认值：<br>size为ChipV2Size.SMALL时，默认值：<br>`{  start: LengthMetrics.resource($r('sys.float.chip_small_text_margin')),  end: LengthMetrics.resource($r('sys.float.chip_small_text_margin')) }`。<br>size为ChipV2Size.NORMAL时，默认值：<br>`{  start: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')),  end: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')) }`。<br>值为undefined时，按默认值处理。 |
-| modifier | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | 是 | 文本修饰器，用于设置文本的通用属性。<br>默认值：undefined，不应用修饰器。 |
+| modifier | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | 是 | 文本修饰器，用于设置文本的通用属性。当需要通过modifier动态修改文本属性（如fontWeight、fontStyle等）时传入此参数。不传入或传入undefined时，不应用修饰器，文本使用默认属性设置。<br>默认值：undefined，不应用修饰器。 |
 
 ## ChipV2LabelMarginConfig
 
@@ -286,8 +286,8 @@ ChipV2LabelMarginConfig用于定义文本与左右侧图标之间间距配置。
 
 | 名称  | 类型                                 | 只读 | 可选 | 说明                                                         |
 | ----- | ------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| left  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 文本与左侧图标之间间距，不支持百分比。<br>默认值：<br>无左侧图标时，left默认值：0。<br>有左侧图标且size为ChipV2Size.SMALL时，left默认值：4。<br>有左侧图标且size为ChipV2Size.NORMAL时，left默认值：6。<br>单位：vp<br>超出取值范围按默认值处理。<br>取值范围：[0, +∞) |
-| right | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 文本与右侧图标之间间距，不支持百分比。<br>默认值：<br>无右侧图标时，right默认值：0。<br>有右侧图标且size为ChipV2Size.SMALL时，right默认值：4。<br>有右侧图标且size为ChipV2Size.NORMAL时，right默认值：6。<br>单位：vp<br>超出取值范围按默认值处理。<br>取值范围：[0, +∞) |
+| left  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 文本与左侧图标之间间距，不支持百分比。传入百分比时按默认值处理。<br>默认值：<br>无左侧图标时，left默认值：0。<br>有左侧图标且size为ChipV2Size.SMALL时，left默认值：4。<br>有左侧图标且size为ChipV2Size.NORMAL时，left默认值：6。<br>单位：vp<br>超出取值范围按默认值处理。<br>取值范围：[0, +∞) |
+| right | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 文本与右侧图标之间间距，不支持百分比。传入百分比时按默认值处理。<br>默认值：<br>无右侧图标时，right默认值：0。<br>有右侧图标且size为ChipV2Size.SMALL时，right默认值：4。<br>有右侧图标且size为ChipV2Size.NORMAL时，right默认值：6。<br>单位：vp<br>超出取值范围按默认值处理。<br>取值范围：[0, +∞) |
 
 ## ChipV2LocalizedLabelMarginConfig
 
@@ -307,8 +307,8 @@ ChipV2LocalizedLabelMarginConfig用于定义本地化文本与左右侧图标之
 
 | 名称  | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| start | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 文本与左侧图标之间间距，不支持百分比。<br>默认值：<br>size为ChipV2Size.SMALL时，start默认值：<br>`LengthMetrics.resource($r('sys.float.chip_small_text_margin'))`。<br>size为ChipV2Size.NORMAL时，start默认值：<br>`LengthMetrics.resource($r('sys.float.chip_normal_text_margin'))`。<br>值为undefined时，按默认值处理。 |
-| end   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 文本与右侧图标之间间距，不支持百分比。<br>默认值：<br>size为ChipV2Size.SMALL时，end默认值：<br>`LengthMetrics.resource($r('sys.float.chip_small_text_margin'))`。<br>size为ChipV2Size.NORMAL时，end默认值：<br>`LengthMetrics.resource($r('sys.float.chip_normal_text_margin'))`。<br>值为undefined时，按默认值处理。 |
+| start | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 文本与起始侧图标之间间距，不支持百分比。传入百分比时按默认值处理。<br>默认值：<br>size为ChipV2Size.SMALL时，start默认值：<br>`LengthMetrics.resource($r('sys.float.chip_small_text_margin'))`。<br>size为ChipV2Size.NORMAL时，start默认值：<br>`LengthMetrics.resource($r('sys.float.chip_normal_text_margin'))`。<br>单位：vp<br>取值范围：[0, +∞)<br>超出取值范围按默认值处理。<br>值为undefined时，按默认值处理。 |
+| end   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 文本与结束侧图标之间间距，不支持百分比。传入百分比时按默认值处理。<br>默认值：<br>size为ChipV2Size.SMALL时，end默认值：<br>`LengthMetrics.resource($r('sys.float.chip_small_text_margin'))`。<br>size为ChipV2Size.NORMAL时，end默认值：<br>`LengthMetrics.resource($r('sys.float.chip_normal_text_margin'))`。<br>单位：vp<br>取值范围：[0, +∞)<br>超出取值范围按默认值处理。<br>值为undefined时，按默认值处理。 |
 
 ## ChipV2Icon
 
@@ -370,8 +370,8 @@ ChipV2SymbolIcon定义Symbol图标类。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 非激活时图标设定。<br>默认值：undefined，不显示前缀图标或后缀图标。<br>不支持使用[SymbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12对象说明)修改动效类型及[effectStrategy](./ts-basic-components-symbolGlyph.md#effectstrategy)设置动效。<br>**装饰器类型：** @Trace |
-| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 激活时图标设定。<br>默认值：undefined，不显示前缀图标或后缀图标。<br>不支持使用[SymbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12对象说明)修改动效类型及[effectStrategy](./ts-basic-components-symbolGlyph.md#effectstrategy)设置动效。<br>**装饰器类型：** @Trace |
+| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 非激活时图标设定。<br>默认值：undefined，不显示前缀图标或后缀图标。值为undefined时，按默认值处理。<br>不支持使用[SymbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12对象说明)修改动效类型及[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)设置动效。<br>**装饰器类型：** @Trace |
+| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 激活时图标设定。<br>默认值：undefined，不显示前缀图标或后缀图标。值为undefined时，按默认值处理。<br>不支持使用[SymbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12对象说明)修改动效类型及[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)设置动效。<br>**装饰器类型：** @Trace |
 
 ### constructor
 
@@ -395,7 +395,7 @@ ChipV2SymbolIcon的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| config | [ChipV2SymbolIconConfig](#chipv2symboliconconfig) | 是 | Symbol图标属性配置。 |
+| config | [ChipV2SymbolIconConfig](#chipv2symboliconconfig) | 是 | Symbol图标属性配置，用于设置Symbol类型图标在不同状态下的显示属性，包含normal、activated等配置项。 |
 
 ## ChipV2SymbolIconConfig
 
@@ -415,8 +415,8 @@ ChipV2SymbolIconConfig定义Symbol图标的属性配置。
 
 | 名称   | 类型       | 只读 | 可选 | 说明               |
 | ------ | ---------- | ---- | ------------------ | ------------------ |
-| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否  | 是  | 非激活时图标设定。<br>默认值：不显示前缀图标或后缀图标。<br>值为undefined时，按默认值处理。 |
-| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否  | 是  | 激活时图标设定。<br>默认值：不显示前缀图标或后缀图标。<br>值为undefined时，按默认值处理。 |
+| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否  | 是  | 非激活时图标设定。<br>默认值：不显示前缀图标或后缀图标。<br>值为undefined时，按默认值处理。<br>不支持使用[SymbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12对象说明)修改动效类型及[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)设置动效。 |
+| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否  | 是  | 激活时图标设定。<br>默认值：不显示前缀图标或后缀图标。<br>值为undefined时，按默认值处理。<br>不支持使用[SymbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12对象说明)修改动效类型及[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)设置动效。 |
 
 ## ChipV2PrefixSymbolIcon
 
@@ -460,7 +460,7 @@ ChipV2PrefixSymbolIcon的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| config | [ChipV2PrefixSymbolIconConfig](#chipv2prefixsymboliconconfig) | 是 | 前缀Symbol图标属性配置。 |
+| config | [ChipV2PrefixSymbolIconConfig](#chipv2prefixsymboliconconfig) | 是 | 前缀Symbol图标属性配置，用于设置前缀Symbol图标的显示属性，继承自ChipV2SymbolIconConfig，包含normal、activated等配置项。 |
 
 ## ChipV2PrefixSymbolIconConfig
 
@@ -506,7 +506,7 @@ ChipV2SuffixSymbolIcon定义后缀Symbol图标类。
 | ---- | ---- | ---- | ---- | ---- |
 | normalAccessibility | [ChipV2Accessibility](#chipv2accessibility) | 否 | 是 | 非激活态无障碍朗读功能属性。<br>默认值：undefined，无朗读内容。<br>**装饰器类型：** @Trace |
 | activatedAccessibility | [ChipV2Accessibility](#chipv2accessibility) | 否 | 是 | 激活态无障碍朗读功能属性。<br>默认值：undefined，无朗读内容。<br>**装饰器类型：** @Trace |
-| action | [VoidCallback](ts-types.md#voidcallback12) | 否 | 是 | 后缀图标设定事件。<br>默认值：undefined，无事件。<br>**装饰器类型：** @Trace |
+| action | [VoidCallback](ts-types.md#voidcallback12) | 否 | 是 | 后缀图标点击事件回调函数。点击后缀图标时调用此回调函数。<br>默认值：不设定后缀图标事件。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 
 ### constructor
 
@@ -530,7 +530,7 @@ ChipV2SuffixSymbolIcon的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| config | [ChipV2SuffixSymbolIconConfig](#chipv2suffixsymboliconconfig) | 是 | 后缀Symbol图标属性配置。 |
+| config | [ChipV2SuffixSymbolIconConfig](#chipv2suffixsymboliconconfig) | 是 | 后缀Symbol图标属性配置，用于设置后缀Symbol图标的显示属性和无障碍功能，继承自ChipV2SymbolIconConfig，包含normal、activated、normalAccessibility、activatedAccessibility、action等配置项。 |
 
 ## ChipV2SuffixSymbolIconConfig
 
@@ -554,7 +554,7 @@ ChipV2SuffixSymbolIconConfig定义后缀Symbol图标的属性配置。
 | ---- | ---- | --- | ---- | ---- |
 | normalAccessibility | [ChipV2AccessibilityConfig](#chipv2accessibilityconfig) | 否 | 是 | 非激活态无障碍朗读功能属性。<br>默认值：undefined，无朗读内容。 |
 | activatedAccessibility | [ChipV2AccessibilityConfig](#chipv2accessibilityconfig) | 否 | 是 | 激活态无障碍朗读功能属性。<br>默认值：undefined，无朗读内容。 |
-| action | [VoidCallback](ts-types.md#voidcallback12) | 否 | 是 | 后缀图标设定事件。<br>默认值：undefined，无事件。 |
+| action | [VoidCallback](ts-types.md#voidcallback12) | 否 | 是 | 后缀图标点击事件回调函数。点击后缀图标时调用此回调函数。<br>默认值：不设定后缀图标事件。<br>值为undefined时，按默认值处理。 |
 
 ## ChipV2ImageIcon
 
@@ -581,10 +581,10 @@ ChipV2ImageIcon定义图标图片的基类。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | src | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 图标图片或图片地址引用。<br>**装饰器类型：** @Trace |
-| size | [SizeT](../js-apis-arkui-graphics.md#sizett12)<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 否 | 是 | 图标大小，不支持百分比。<br/>默认值：<br/>- 当ChipV2Options.size为ChipV2Size.SMALL时，默认值为：{width: $r('sys.float.chip_small_icon_size'), height: $r('sys.float.chip_small_icon_size')}。<br>- 当ChipV2Options.size为ChipV2Size.NORMAL时，默认值为：{width: $r('sys.float.chip_normal_icon_size'), height: $r('sys.float.chip_normal_icon_size')}。<br>单位：vp<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| fillColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 图标填充颜色。<br>默认值：$r('sys.color.chip_usually_icon_color')<br>值为undefined时，按默认值处理。<br>仅在图片格式为SVG时，fillColor属性才生效。<br>**装饰器类型：** @Trace |
-| activatedFillColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 操作块激活时图标填充颜色。<br>默认值：$r('sys.color.chip_active_icon_color')<br>值为undefined时，按默认值处理。<br>仅在图片格式为SVG时，activatedFillColor属性才生效。<br>**装饰器类型：** @Trace |
-| modifier | [ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | 是 | 图标修饰器，用于设置图标的通用属性。<br>默认值：undefined，不应用修饰器。<br>**装饰器类型：** @Trace |
+| size | [SizeT](../js-apis-arkui-graphics.md#sizett12)<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 否 | 是 | 图标大小，不支持百分比。异常值按默认值处理。<br>默认值：<br>- 当ChipV2Options.size为ChipV2Size.SMALL时，默认值为：{width: $r('sys.float.chip_small_icon_size'), height: $r('sys.float.chip_small_icon_size')}。<br>- 当ChipV2Options.size为ChipV2Size.NORMAL时，默认值为：{width: $r('sys.float.chip_normal_icon_size'), height: $r('sys.float.chip_normal_icon_size')}。<br>单位：vp<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| fillColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 图标填充颜色。<br>默认值：$r('sys.color.chip_usually_icon_color')，非SVG图片不应用默认值。<br>值为undefined时，按默认值处理。<br>仅在图片格式为SVG时，fillColor属性才生效。<br>**装饰器类型：** @Trace |
+| activatedFillColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | ChipV2激活时图标填充颜色。<br>默认值：$r('sys.color.chip_active_icon_color')，非SVG图片不应用默认值。<br>值为undefined时，按默认值处理。<br>仅在图片格式为SVG时，activatedFillColor属性才生效。<br>**装饰器类型：** @Trace |
+| modifier | [ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | 是 | 图标修饰器，用于设置图标的通用属性。当需要通过modifier动态修改图标属性（如opacity、objectFit等）时传入此参数。不传入或传入undefined时，不应用修饰器，图标使用默认属性设置。<br>默认值：undefined，不应用修饰器。<br>**装饰器类型：** @Trace |
 
 ### constructor
 
@@ -608,7 +608,7 @@ ChipV2ImageIcon的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| config | [ChipV2ImageIconConfig](#chipv2imageiconconfig) | 是 | 图标共通属性配置。 |
+| config | [ChipV2ImageIconConfig](#chipv2imageiconconfig) | 是 | 图标共通属性配置，用于设置Image类型图标的基本显示属性，包含src、size、fillColor、activatedFillColor等配置项。 |
 
 ## ChipV2ImageIconConfig
 
@@ -629,10 +629,10 @@ ChipV2ImageIconConfig定义图标的共通属性配置。
 | 名称      | 类型                                       | 只读 | 可选 | 说明                                                         |
 | --------- | ------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | src       | [ResourceStr](ts-types.md#resourcestr)     | 否  | 否  | 图标图片或图片地址引用。 |
-| size      | [SizeT](../js-apis-arkui-graphics.md#sizett12)<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)>     | 否  | 是  | 图标大小，不支持百分比。<br/>默认值：<br/>- 当ChipV2Options.size为ChipV2Size.SMALL时，默认值为：{width: $r('sys.float.chip_small_icon_size'), height: $r('sys.float.chip_small_icon_size')}。<br>- 当ChipV2Options.size为ChipV2Size.NORMAL时，默认值为：{width: $r('sys.float.chip_normal_icon_size'), height: $r('sys.float.chip_normal_icon_size')}。<br>单位：vp<br>值为undefined时，按默认值处理。 |
-| fillColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 图标填充颜色。<br>默认值：$r('sys.color.chip_usually_icon_color')<br>值为undefined时，按默认值处理。 |
-| activatedFillColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 操作块激活时图标填充颜色。<br>默认值：$r('sys.color.chip_active_icon_color')<br>值为undefined时，按默认值处理。 |
-| modifier | [ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | 是 | 图标修饰器，用于设置图标的通用属性。<br>默认值：undefined，不应用修饰器。 |
+| size      | [SizeT](../js-apis-arkui-graphics.md#sizett12)<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)>     | 否  | 是  | 图标大小，不支持百分比。传入百分比时按默认值处理。<br>默认值：<br>- 当ChipV2Options.size为ChipV2Size.SMALL时，默认值为：{width: $r('sys.float.chip_small_icon_size'), height: $r('sys.float.chip_small_icon_size')}。<br>- 当ChipV2Options.size为ChipV2Size.NORMAL时，默认值为：{width: $r('sys.float.chip_normal_icon_size'), height: $r('sys.float.chip_normal_icon_size')}。<br>单位：vp<br>值为undefined时，按默认值处理。 |
+| fillColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 图标填充颜色。<br>默认值：$r('sys.color.chip_usually_icon_color')，非SVG图片不应用默认值。<br>值为undefined时，按默认值处理。<br>仅在图片格式为SVG时，fillColor属性才生效。 |
+| activatedFillColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | ChipV2激活时图标填充颜色。<br>默认值：$r('sys.color.chip_active_icon_color')，非SVG图片不应用默认值。<br>值为undefined时，按默认值处理。<br>仅在图片格式为SVG时，activatedFillColor属性才生效。 |
+| modifier | [ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | 是 | 图标修饰器，用于设置图标的通用属性。当需要通过modifier动态修改图标属性（如opacity、objectFit等）时传入此参数。不传入或传入undefined时，不应用修饰器，图标使用默认属性设置。<br>默认值：undefined，不应用修饰器。 |
 
 ## ChipV2PrefixImageIcon
 
@@ -676,7 +676,7 @@ ChipV2PrefixImageIcon的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| config | [ChipV2PrefixImageIconConfig](#chipv2prefiximageiconconfig) | 是 | 前缀图标属性配置。 |
+| config | [ChipV2PrefixImageIconConfig](#chipv2prefiximageiconconfig) | 是 | 前缀图标属性配置，用于设置前缀Image图标的显示属性，继承自ChipV2ImageIconConfig，包含src、size、fillColor等配置项。 |
 
 ## ChipV2PrefixImageIconConfig
 
@@ -721,9 +721,9 @@ ChipV2SuffixImageIcon定义后缀图标类。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | accessibilityLevel | string | 否 | 是 | 无障碍重要性。用于控制后缀图标是否可被无障碍辅助服务所识别。<br>支持的值为：<br>"auto"：当前组件会转化为"yes"。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍文本属性。当组件无文本属性时，屏幕朗读选中此组件不会播报，导致使用者无法清楚了解当前选中的组件。开发人员可为此类组件设置无障碍文本，屏幕朗读时将播报该文本，帮助使用者明确选中了什么组件。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍描述。此描述用于向用户详细解释当前组件，开发人员应提供详尽的文本说明，以协助用户理解即将执行的操作及其后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| action | [VoidCallback](ts-types.md#voidcallback12) | 否 | 是 | 后缀图标设定事件。<br>值为undefined时，不设定后缀图标事件。<br>**装饰器类型：** @Trace |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍文本属性。当组件无文本属性时，屏幕朗读选中此组件不会播报，导致使用者无法清楚了解当前选中的组件。开发者可为此类组件设置无障碍文本，屏幕朗读时将播报该文本，帮助使用者明确选中了什么组件。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍描述。此描述用于向用户详细解释当前组件，开发者应提供详尽的文本说明，以协助用户理解即将执行的操作及其后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| action | [VoidCallback](ts-types.md#voidcallback12) | 否 | 是 | 后缀图标点击事件回调函数。点击后缀图标时调用此回调函数。<br>默认值：不设定后缀图标事件。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 
 ### constructor
 
@@ -747,7 +747,7 @@ ChipV2SuffixImageIcon的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| config | [ChipV2SuffixImageIconConfig](#chipv2suffiximageiconconfig) | 是 | 后缀图标属性配置。 |
+| config | [ChipV2SuffixImageIconConfig](#chipv2suffiximageiconconfig) | 是 | 后缀图标属性配置，用于设置后缀Image图标的显示属性、无障碍功能和点击事件，继承自ChipV2ImageIconConfig和ChipV2AccessibilityConfig，包含src、size、accessibilityLevel、action等配置项。 |
 
 ## ChipV2SuffixImageIconConfig
 
@@ -769,7 +769,7 @@ ChipV2SuffixImageIconConfig定义后缀图标的属性配置。
 
 | 名称   | 类型       | 只读 | 可选 | 说明               |
 | ------ | ---------- | ---- | ------------------ | ------------------ |
-| action | [VoidCallback](ts-types.md#voidcallback12) | 否  | 是  | 后缀图标设定事件。<br>值为undefined时，不设定后缀图标事件。 |
+| action | [VoidCallback](ts-types.md#voidcallback12) | 否  | 是  | 后缀图标点击事件回调函数。当需要为后缀图标绑定点击事件并执行自定义操作时传入此回调函数（如触发特定功能、打开弹窗等）。点击后缀图标时调用此回调函数。<br>默认值：undefined，不设定后缀图标事件。不传入或传入undefined时，点击后缀图标无自定义响应。 |
 
 ## ChipV2CloseIcon
 
@@ -795,7 +795,7 @@ ChipV2CloseIcon用于定义ChipV2组件关闭图标的功能属性类，包括�
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置ChipV2组件默认关闭图标的大小，不支持百分比。<br>默认值：<br> size为ChipV2Size.SMALL时，默认值：`$r('sys.float.chip_small_font_size')`。 <br> 其他情况默认值：`$r('sys.float.chip_normal_font_size')`。 <br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置ChipV2组件默认关闭图标的大小，不支持百分比。传入百分比时按默认值处理。<br>默认值：<br> size为ChipV2Size.SMALL时，默认值：`$r('sys.float.chip_small_font_size')`。<br> size不为ChipV2Size.SMALL时，默认值：`$r('sys.float.chip_normal_font_size')`<br>单位：fp<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 
 ### constructor
 
@@ -819,7 +819,7 @@ ChipV2CloseIcon的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| config | [ChipV2CloseConfig](#chipv2closeconfig) | 是 | 关闭图标配置。 |
+| config | [ChipV2CloseConfig](#chipv2closeconfig) | 是 | 关闭图标配置，用于自定义关闭图标的大小和无障碍属性，继承自ChipV2AccessibilityConfig，包含fontSize、accessibilityText、accessibilityDescription等配置项。 |
 
 ## ChipV2CloseConfig
 
@@ -841,7 +841,7 @@ ChipV2CloseConfig用于定义ChipV2组件关闭图标的功能属性配置，包
 
 | 名称  | 类型                                 | 只读 | 可选 | 说明                                                         |
 | ----- | ------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-|fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置ChipV2组件默认关闭图标的大小，不支持百分比。<br>默认值：<br> size为ChipV2Size.SMALL时，默认值：`$r('sys.float.chip_small_font_size')`。 <br> 其他情况默认值：`$r('sys.float.chip_normal_font_size')`。 <br>值为undefined时，按默认值处理。 |
+|fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置ChipV2组件默认关闭图标的大小，不支持百分比。传入百分比时按默认值处理。<br>默认值：<br> size为ChipV2Size.SMALL时，默认值：`$r('sys.float.chip_small_font_size')`。<br> size不为ChipV2Size.SMALL时，默认值：`$r('sys.float.chip_normal_font_size')`<br>单位：fp<br>值为undefined时，按默认值处理。 |
 
 ## ChipV2Accessibility
 
@@ -866,8 +866,8 @@ ChipV2Accessibility定义无障碍属性类。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | accessibilityLevel | string | 否 | 是 | 无障碍重要性。用于控制组件是否可被无障碍辅助服务识别。<br>支持的值为：<br>"auto"：当前组件会转换为"yes"。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍文本属性。当组件无文本属性时，屏幕朗读选中此组件不会播报，导致使用者无法清楚了解当前选中的组件。开发人员可为此类组件设置无障碍文本，屏幕朗读时将播报该文本，帮助使用者明确选中了什么组件。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍描述。此描述用于向用户详细解释当前组件，开发人员应提供详尽的文本说明，以协助用户理解即将执行的操作及其后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍文本属性。当组件无文本属性时，屏幕朗读选中此组件不会播报，导致使用者无法清楚了解当前选中的组件。开发者可为此类组件设置无障碍文本，屏幕朗读时将播报该文本，帮助使用者明确选中了什么组件。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍描述。此描述用于向用户详细解释当前组件，开发者应提供详尽的文本说明，以协助用户理解即将执行的操作及其后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 
 ### constructor
 
@@ -891,7 +891,7 @@ ChipV2Accessibility的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| config | [ChipV2AccessibilityConfig](#chipv2accessibilityconfig) | 是 | 无障碍属性配置。 |
+| config | [ChipV2AccessibilityConfig](#chipv2accessibilityconfig) | 是 | 无障碍属性配置，用于设置组件的无障碍功能属性，包含accessibilityText、accessibilityDescription、accessibilityLevel等配置项。 |
 
 ## ChipV2AccessibilityConfig
 
@@ -911,8 +911,8 @@ ChipV2AccessibilityConfig定义无障碍属性配置。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | ---- | ------------------ | ------------------ |
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍文本属性。当组件无文本属性时，屏幕朗读选中此组件不会播报，导致使用者无法清楚了解当前选中的组件。开发人员可为此类组件设置无障碍文本，屏幕朗读时将播报该文本，帮助使用者明确选中了什么组件。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍描述。此描述用于向用户详细解释当前组件，开发人员应提供详尽的文本说明，以协助用户理解即将执行的操作及其后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍文本属性。当组件无文本属性时，屏幕朗读选中此组件不会播报，导致使用者无法清楚了解当前选中的组件。开发者可为此类组件设置无障碍文本，屏幕朗读时将播报该文本，帮助使用者明确选中了什么组件。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍描述。此描述用于向用户详细解释当前组件，开发者应提供详尽的文本说明，以协助用户理解即将执行的操作及其后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
 | accessibilityLevel | string | 否 | 是 | 无障碍重要性。用于控制组件是否可被无障碍辅助服务识别。<br>支持的值为：<br>"auto"：当前组件会转换为"yes"。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"<br>值为undefined时，按默认值处理。 |
 
 ## ChipV2Size
@@ -933,8 +933,8 @@ ChipV2Size是ChipV2可指定的尺寸类型，如普通型ChipV2。
 
 | 名称   | 值       | 说明               |
 | ------ | -------- | ------------------ |
-| NORMAL | 'NORMAL' | 普通尺寸操作块。 |
-| SMALL  | 'SMALL'  | 小尺寸操作块。  |
+| NORMAL | 'NORMAL' | 普通尺寸ChipV2。 |
+| SMALL  | 'SMALL'  | 小尺寸ChipV2。 |
 
 ## ChipV2AccessibilitySelectedType
 
@@ -954,9 +954,9 @@ ChipV2AccessibilitySelectedType是ChipV2可指定的选中态类型，用于控�
 
 | 名称 | 值 | 说明 |
 | ---- | -- | ---- |
-| CLICKED | 0 | 单击型。组件不向无障碍服务报告任何选中状态，仅作为可单击组件使用。适用于执行某个操作但不保持状态的场景，如普通按钮。 |
-| CHECKED | 1 | 复选型。组件通过[accessibilityChecked](ts-universal-attributes-accessibility.md#accessibilitychecked13)属性向无障碍服务报告选中状态。适用于多选场景，如标签筛选、属性选择等。|
-| SELECTED | 2 | 单选型。组件通过[accessibilitySelected](ts-universal-attributes-accessibility.md#accessibilityselected13)属性向无障碍服务报告选中状态。适用于表示当前选中项的场景，如导航栏标签、单选列表项等。|
+| CLICKED | 0 | 单击型。组件不向无障碍辅助服务报告任何选中状态，仅作为可单击组件使用。适用于执行某个操作但不保持状态的场景，如普通按钮。 |
+| CHECKED | 1 | 复选型。组件通过[accessibilityChecked](ts-universal-attributes-accessibility.md#accessibilitychecked13)属性向无障碍辅助服务报告选中状态。适用于多选场景，如标签筛选、属性选择等。 |
+| SELECTED | 2 | 单选型。组件通过[accessibilitySelected](ts-universal-attributes-accessibility.md#accessibilityselected13)属性向无障碍辅助服务报告选中状态。适用于表示当前选中项的场景，如导航栏标签、单选列表项等。 |
 
 ## 示例
 

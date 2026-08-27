@@ -563,7 +563,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 用于<!--RP1-->[UIAbility](js-apis-app-ability-uiAbility.md#uiability)<!--RP1End-->拉起弹窗请求[用户授权](../../security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用callback异步回调。
 
-适用于应用首次访问受保护资源前主动向用户申请 [user_grant](../../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权) 权限的场景。
+适用于应用首次访问受保护资源前主动向用户申请[user_grant](../../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)权限的场景。
 
 如果用户拒绝授权，将无法通过此接口再次拉起授权弹窗。开发者可引导用户前往系统设置界面手动授权，或调用[requestPermissionOnSetting](#requestpermissiononsetting12)拉起权限设置弹窗，引导用户完成授权。
 
@@ -633,7 +633,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 用于<!--RP1-->[UIAbility](js-apis-app-ability-uiAbility.md#uiability)<!--RP1End-->拉起弹窗请求[用户授权](../../security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用Promise异步回调。
 
-适用于应用首次访问受保护资源前主动向用户申请user_grant权限的场景。
+适用于应用首次访问受保护资源前主动向用户申请[user_grant](../../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)权限的场景。
 
 如果用户拒绝授权，将无法通过此接口再次拉起授权弹窗。开发者可引导用户前往系统设置界面手动授权，或调用[requestPermissionOnSetting](#requestpermissiononsetting12)拉起权限设置弹窗，引导用户完成授权。
 
@@ -668,7 +668,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | (Deprecated in 12) Invalid parameter. The context is invalid when it does not belong to the application itself. |
-| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining the user operation result. [since 11] |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining the user operation result. <br>适用版本：11+ |
 
 **示例：**
 
@@ -741,10 +741,10 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 | -------- | -------- |
 | 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission list contains the permission that is not declared in the module.json file;<br>3. The permission list is invalid because the permissions in it do not belong to the same permission group;<br>4. The permission list contains one or more system_grant permissions. |
 | 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining the user operation result. |
-| 12100010 | The request already exists. [since 12 - 20]. |
+| 12100010 | The request already exists. <br>适用版本：12-20 |
 | 12100011 | All permissions in the permission list have been granted. |
 | 12100012 | The permission list contains the permission that has not been revoked by the user. |
-| 12100014 | Unexpected permission. You cannot request this type of permission from users via a pop-up window. [since 21]. |
+| 12100014 | Unexpected permission. You cannot request this type of permission from users via a pop-up window. <br>适用版本：21+ |
 
 **示例：**
 

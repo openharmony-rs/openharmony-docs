@@ -14,6 +14,8 @@
 
 切换屏幕方向即可实现布局切换的旋转屏动画效果。
 
+ArkTS-Dyn示例：
+
 <!-- @[rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/rotation/template1/Index.ets) -->
 
 ``` TypeScript
@@ -34,6 +36,37 @@ struct rotation {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[rotation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AnimationStatic/entry/src/main/ets/pages/rotation/template1/Index.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Stack,
+  Color,
+  Image,
+  $r,
+  Position
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct rotation {
+  build() {
+    Stack() {
+      // 请将$r('app.media.tree')替换为实际资源文件
+      Image($r('app.media.tree'))
+        .position({ x: 0, y: 0 } as Position)
+        .size({ width: 100, height: 100 })
+        .id('image1')
+    }
+    .backgroundColor(Color.White)
+    .size({ width: '100%', height: '100%' })
+  }
+}
+```
 
 需要在项目的module.json5文件中的abilities列表里添加"orientation"，指定为"auto_rotation"。
 ```json
@@ -49,6 +82,8 @@ struct rotation {
 ## 透明度变化的旋转屏动画
 
 透明度变化的旋转屏动画在屏幕显示方向变化时启用，当窗口进行旋转动画时，为旋转过程中新增或删除的组件添加默认透明度转场，以实现组件的优雅出现和消失。此功能通过监听窗口旋转事件，在事件中切换组件的视图效果，如果消失视图的根节点和新出现视图的根节点未设置转场效果，会为其自动添加默认透明度转场（即[TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明).OPACITY），展现出透明度的渐隐和渐显效果。
+
+ArkTS-Dyn示例：
 
 <!-- @[rotation_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/rotation/template2/Index.ets) -->  
 
@@ -91,7 +126,54 @@ struct rotation {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[rotation_page](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AnimationStatic/entry/src/main/ets/pages/rotation/template2/Index.ets) -->  
+
+``` TypeScript
+import { Entry, Component, Stack, Color, Image, $r, Position, StorageLink } from '@kit.ArkUI';
+import display from '@ohos.display';
+
+@Entry
+@Component
+struct rotation {
+
+  // 获取通过监听窗口的windowsSizeChange事件得到的屏幕显示方向
+  @StorageLink('orientation') myOrientation: display.Orientation = display.Orientation.PORTRAIT;
+
+  build() {
+    Stack() {
+
+      // 当屏幕显示方向变化时，切换组件的视图效果
+      if (this.myOrientation == display.Orientation.PORTRAIT || this.myOrientation == display.Orientation.PORTRAIT_INVERTED) {
+        // 请将$r('app.media.sky')替换为实际资源文件
+        Image($r('app.media.sky'))
+          .size({ width: 100, height: 100 })
+          .id('image1')
+
+        // 开发者也可以通过自行设置transition的TransitionEffect.OPACITY转场效果来实现旋转屏动画的透明度变化
+        // .transition(TransitionEffect.OPACITY)
+      } else {
+        // 请将$r('app.media.tree')替换为实际资源文件
+        Image($r('app.media.tree'))
+          .position({ x: 0, y: 0 } as Position)
+          .size({ width: 200, height: 200 })
+          .id('image2')
+
+        // 开发者也可以通过自行设置transition的TransitionEffect.OPACITY来实现旋转屏动画的透明度变化
+        // .transition(TransitionEffect.OPACITY)
+      }
+    }
+    .backgroundColor(Color.White)
+    .size({ width: '100%', height: '100%' })
+  }
+}
+```
+
 监听窗口旋转的同步事件windowSizeChange来实现视图的切换。例如可在EntryAbility.ets文件的[onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)方法中添加处理逻辑以获取屏幕的显示方向。
+
+ArkTS-Dyn示例：
+
 <!-- @[window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
@@ -130,6 +212,58 @@ const TAG: string = 'EntryAbility';
 
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
+        hilog.error(DOMAIN, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      hilog.info(DOMAIN, TAG, 'Succeeded in loading the content.');
+    });
+  }
+
+  // ...
+```
+
+ArkTS-Sta示例：
+
+<!-- @[window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AnimationStatic/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+
+``` TypeScript
+import window from '@ohos.window';
+import display from '@ohos.display';
+import hilog from '@ohos.hilog';
+import { AppStorage } from '@kit.ArkUI';
+
+const DOMAIN: int = 0x0000;
+const TAG: string = 'EntryAbility';
+// ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // ...
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
+    let mainWindow: window.Window;
+    try {
+      mainWindow = windowStage.getMainWindowSync();
+      let displayClass: display.Display = display.getDefaultDisplaySync();
+      AppStorage.setOrCreate('orientation', displayClass.orientation);
+      // 监听窗口的windowSizeChange事件，旋转屏时会触发该事件
+      mainWindow.onWindowSizeChange((data: window.Size): void => {
+        hilog.info(DOMAIN, TAG, 'Succeeded in enabling the listener for window size changes. Data: ' + data);
+        let displayClass: display.Display | null = null;
+        try {
+          displayClass = display.getDefaultDisplaySync();
+          hilog.info(DOMAIN, TAG, 'display orientation is ' + displayClass.orientation);
+          // 获取屏幕的显示方向
+          AppStorage.set('orientation', displayClass.orientation);
+        } catch(e) {
+          return;
+        }
+      });
+    } catch(e) {
+      hilog.error(DOMAIN, TAG, '%{public}s', 'error');
+      return;
+    }
+    // ...
+
+    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null, data: void | undefined): void => {
+      if (err && err.code) {
         hilog.error(DOMAIN, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
       }

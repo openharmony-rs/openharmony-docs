@@ -42,7 +42,7 @@ FFRT并发队列提供了设置任务优先级（Priority）和队列并发度�
 
 ``` C++
 
-const int SLEEP_TIME = 100 * 1000;
+const int SLEEP_TIME = 100 * 1000; // 100ms
 const int BANK_CONCURRENCY = 2;
 
 ffrt_queue_t CreateBankSystem(const char *name, int concurrency)
@@ -88,7 +88,9 @@ ffrt_task_handle_t CommitRequest(ffrt_queue_t bank, void (*func)(void *), const 
     ffrt_task_attr_set_queue_priority(&task_attr, level);
     ffrt_task_attr_set_delay(&task_attr, delay);
 
-    return ffrt_queue_submit_h_f(bank, func, (void*)name, &task_attr);
+    ffrt_task_handle_t handle = ffrt_queue_submit_h_f(bank, func, (void*)name, &task_attr);
+    ffrt_task_attr_destroy(&task_attr);
+    return handle;
 }
 
 // 封装取消队列任务函数
@@ -141,19 +143,19 @@ int ConcurrentQueueCExec()
 
 ## 接口说明
 
-上述样例中涉及到主要的FFRT的接口包括：
+上述样例中涉及到主要的FFRT的接口如下，详情请参考[Function Flow Runtime C API](ffrt-api-guideline-c.md)里的方法：
 
 | 名称                                                                             | 描述                                                                  |
 | -------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [ffrt_queue_create](ffrt-api-guideline-c.md#ffrt_queue_t)                        | 创建队列。                                                            |
-| [ffrt_queue_destroy](ffrt-api-guideline-c.md#ffrt_queue_t)                       | 销毁队列。                                                            |
-| [ffrt_task_attr_set_queue_priority](ffrt-api-guideline-c.md#ffrt_task_attr_t)    | 设置队列任务优先级。                                                  |
-| [ffrt_queue_attr_set_max_concurrency](ffrt-api-guideline-c.md#ffrt_queue_attr_t) | 设置并发队列的并发度。                                                |
-| [ffrt_queue_submit_h_f](ffrt-api-guideline-c.md#ffrt_queue_t)                    | 向队列提交一个任务。<br/>**说明**：从API version 20开始，支持该接口。 |
+| ffrt_queue_create                        | 创建队列。                                                            |
+| ffrt_queue_destroy                       | 销毁队列。                                                            |
+| ffrt_task_attr_set_queue_priority        | 设置队列任务优先级。                                                   |
+| ffrt_queue_attr_set_max_concurrency      | 设置并发队列的并发度。                                                 |
+| ffrt_queue_submit_h_f                    | 向队列提交一个任务。<br/>**说明**：从API version 20开始，支持该接口。    |
 
 > **说明：**
 >
-> - 如何使用FFRT C++ API详见：[FFRT C++接口三方库使用指导](ffrt-development-guideline.md#using-ffrt-c-api-1)。
+> - 如何使用FFRT C++ API详见：[FFRT C++接口三方库使用指导](ffrt-development-guideline.md#使用ffrt-c-api-1)。
 > - 使用FFRT C接口或C++接口时，都可以通过FFRT C++接口三方库简化头文件包含，即使用`#include "ffrt/ffrt.h"`头文件包含语句。
 
 ## 约束限制

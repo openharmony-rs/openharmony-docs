@@ -2,7 +2,7 @@
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -26,7 +26,7 @@
 | KeyboardDelegate | 键盘代理对象，提供物理键盘按键事件监听、光标位置变化监听、文本选择变化监听、文本内容变化监听、编辑框属性变化监听等能力。通过`getKeyboardDelegate()`获取实例。 |
 | InputClient | 输入客户端对象，提供对编辑框的文本操作能力，包括插入文本、删除文本（前删/后删）、获取光标前后文本、移动光标、选中文本、发送功能键和扩展编辑动作、设置预览文本、发送私有数据、自定义消息通信等。通过订阅`inputStart`事件在回调中获取实例。 |
 | KeyboardController | 键盘控制器对象，提供隐藏键盘、退出当前输入类型等能力。通过订阅`inputStart`事件在回调中获取实例。 |
-| Panel | 输入法面板对象，提供面板页面内容加载、大小调整、位置移动、显示/隐[destroyPanel]藏、面板状态切换、隐私模式设置、沉浸模式与效果设置、面板矩形区域预设置、热区更新等能力。通过`createPanel()`获取实例。 |
+| Panel | 输入法面板对象，提供面板页面内容加载、大小调整、位置移动、显示/隐藏、面板状态切换、隐私模式设置、沉浸模式与效果设置、面板矩形区域预设置、热区更新等能力。通过`createPanel()`获取实例。 |
 | MessageHandler | 自定义通信对象，用于接收编辑框应用发送的自定义通信数据，并提供终止通知回调。通过`InputClient.recvMessage()`注册。 |
 
 输入法应用的典型使用流程涉及多个API的组合调用，核心流程为：获取InputMethodAbility实例 -> 订阅inputStart事件 -> 在回调中获取KeyboardController和InputClient -> 创建Panel -> 加载面板页面内容 -> 通过InputClient操作编辑框文本 -> 通过KeyboardController控制键盘显隐。
@@ -39,9 +39,15 @@ let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 
 // 2. 获取键盘代理对象，监听物理键盘和编辑框变化事件
 let keyboardDelegate = inputMethodEngine.getKeyboardDelegate();
-keyboardDelegate.on('keyDown', (event) => { return true; });
-keyboardDelegate.on('cursorContextChange', (x, y, height) => {});
-keyboardDelegate.on('selectionChange', (oldBegin, oldEnd, newBegin, newEnd) => {});
+keyboardDelegate.on('keyDown', (event) => {
+  return true;
+});
+keyboardDelegate.on('cursorContextChange', (x, y, height) => {
+  // do something
+});
+keyboardDelegate.on('selectionChange', (oldBegin, oldEnd, newBegin, newEnd) => {
+  // do something
+});
 
 // 3. 订阅输入法绑定事件，获取KeyboardController和InputClient
 inputMethodAbility.on('inputStart', (kbController, inputClient) => {
@@ -141,7 +147,7 @@ ArkTS-Dyn: getInputMethodAbility(): InputMethodAbility
 
 ArkTS-Sta: getInputMethodAbility(): InputMethodAbility | null
 
-获取输入法应用客户端实例[InputMethodAbility](#inputmethodability)（输入法能力对象），仅支持输入法应用调用。<br/>输入法应用获取该实例后，可订阅软键盘显示/隐藏请求事件、创建/销毁输入法面板等。
+获取输入法能力对象实例[InputMethodAbility](#inputmethodability)，仅支持输入法应用调用。<br/>输入法应用获取该实例后，可订阅软键盘显示/隐藏请求事件、创建/销毁输入法面板等。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -153,13 +159,13 @@ ArkTS-Sta: getInputMethodAbility(): InputMethodAbility | null
 
 | 类型                                      | 说明               |
 | ----------------------------------------- | ------------------ |
-| ArkTS-Dyn: [InputMethodAbility](#inputmethodability)<br/>ArkTS-Sta: [InputMethodAbility](#inputmethodability) \| null | 输入法应用客户端。 |
+| ArkTS-Dyn: [InputMethodAbility](#inputmethodability)<br/>ArkTS-Sta: [InputMethodAbility](#inputmethodability) \| null | 输入法能力对象。 |
 
 **示例：**
 
 ```ts
 // 获取输入法应用客户端实例
-let InputMethodAbility: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
+let inputMethodAbility: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 ```
 
 ## inputMethodEngine.getKeyboardDelegate<sup>9+</sup>
@@ -186,7 +192,7 @@ ArkTS-Sta: getKeyboardDelegate(): KeyboardDelegate | null
 
 ```ts
 // 获取客户端编辑事件监听代理实例
-let KeyboardDelegate: inputMethodEngine.KeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
+let keyboardDelegate: inputMethodEngine.KeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
 ```
 
 ## inputMethodEngine.getInputMethodEngine<sup>(deprecated)</sup>
@@ -564,6 +570,8 @@ InputMethodAbility是输入法应用的核心能力对象，提供输入法生�
 
 下列API均需使用[getInputMethodAbility](#inputmethodenginegetinputmethodability9)获取到InputMethodAbility实例后，通过实例调用。
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 ### on('inputStart')<sup>9+</sup>
 
 on(type: 'inputStart', callback: (kbController: KeyboardController, inputClient: InputClient) => void): void
@@ -674,7 +682,7 @@ off(type: 'inputStop', callback: () => void): void
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | type     | string | 是   | 设置监听类型，固定取值为'inputStop'。 |
-| callback | () => void   | 是   | 取消订阅的回调函数，用于取消特定的键盘显示/隐藏事件订阅。传入callback时取消指定回调的订阅，不传入时取消type对应的所有回调事件。|
+| callback | () => void   | 是   | 取消订阅的回调函数。|
 
 **示例：**
 
@@ -1187,7 +1195,7 @@ getSecurityMode(): SecurityMode
 
 ```ts
 let security: inputMethodEngine.SecurityMode = inputMethodEngine.getInputMethodAbility().getSecurityMode();
-console.error(`getSecurityMode, securityMode is : ${security}`);
+console.info(`getSecurityMode, securityMode is : ${security}`);
 ```
 
 ### createPanel<sup>10+</sup>
@@ -1218,7 +1226,7 @@ createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback&lt;Panel&
 | ------- | ----------- | ---- | ------------------------ |
 | ctx     | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前输入法应用上下文信息。 |
 | info    | [PanelInfo](#panelinfo10)   | 是   | 输入法面板信息。 |
-| callback | AsyncCallback&lt;[Panel](#panel10)&gt; | 是   | 回调函数。当输入法面板创建成功，返回当前创建的输入法面板对象。  |
+| callback | AsyncCallback&lt;[Panel](#panel10)&gt; | 是   | 回调函数。当输入法面板创建成功，err为undefined，data为获取到的Panel对象；否则为错误对象。  |
 
 **错误码：**
 
@@ -1288,7 +1296,7 @@ createPanel(ctx: BaseContext, info: PanelInfo): Promise&lt;Panel&gt;
 **返回值：**
 | 类型   | 说明                                                                 |
 | ------- | ------------------------------------------------------------------ |
-| Promise&lt;[Panel](#panel10)&gt; | 回调函数。当输入法面板创建成功，返回当前创建的输入法面板对象。  |
+| Promise&lt;[Panel](#panel10)&gt; | Promise对象，返回Panel对象。  |
 
 **错误码：**
 
@@ -1370,29 +1378,26 @@ let panelInfo: inputMethodEngine.PanelInfo = {
   flag: inputMethodEngine.PanelFlag.FLG_FIXED
 }
 
+// 在InputMethodExtensionAbility类中使用
 let inputPanel: inputMethodEngine.Panel | undefined = undefined;
-// context为InputMethodExtensionAbility类提供的上下文对象，无需额外获取
-if (this.context) {
-  inputMethodEngine.getInputMethodAbility()
-    .createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
+inputMethodEngine.getInputMethodAbility().createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
+  if (err) {
+    console.error(`Failed to create panel. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  inputPanel = panel;
+  console.info('Succeed in creating panel.');
+  // 创建成功后再销毁
+  if (inputPanel) {
+    inputMethodEngine.getInputMethodAbility().destroyPanel(inputPanel, (err: BusinessError) => {
       if (err) {
-        console.error(`Failed to create panel. Code is ${err.code}, message is ${err.message}`);
+        console.error(`Failed to destroy panel. Code is ${err.code}, message is ${err.message}`);
         return;
       }
-      inputPanel = panel;
-      console.info('Succeed in creating panel.');
-    })
-}
-
-if (inputPanel) {
-  inputMethodEngine.getInputMethodAbility().destroyPanel(inputPanel, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to destroy panel. Code is ${err.code}, message is ${err.message}`);
-      return;
-    }
-    console.info('Succeed in destroying panel.');
-  })
-}
+      console.info('Succeed in destroying panel.');
+    });
+  }
+});
 ```
 
 ### onInputStart<sup>23+</sup>
@@ -2144,6 +2149,8 @@ KeyboardDelegate是键盘事件监听代理对象，用于输入法应用监听�
 - 需要根据编辑框实时状态（光标、选区、文本、属性）调整输入法行为时，订阅对应的on事件。
 
 下列API均需使用[getKeyboardDelegate](#inputmethodenginegetkeyboarddelegate9)获取到KeyboardDelegate实例后，通过实例调用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ### on('keyDown'|'keyUp')
 
@@ -3036,6 +3043,8 @@ Panel是输入法面板对象，提供面板页面加载、显示/隐藏、尺�
 
 下列API均需使用[createPanel](#createpanel10)获取到Panel实例后，通过实例调用。
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 ### setUiContent<sup>10+</sup>
 
 setUiContent(path: string, callback: AsyncCallback&lt;void&gt; ): void
@@ -3140,7 +3149,7 @@ setUiContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;voi
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
 | path | string | 是   | LocalStorage相关联的具体页面的路径。路径长度建议不超过1024字符。 |
-| storage | [LocalStorage](../apis-arkui/arkui-ts/ts-state-management.md#localstorage9) | 是   | 存储单元，为应用程序范围内的可变和不可变状态属性提供存储。|
+| storage | [LocalStorage](../apis-arkui/arkui-ts/ts-state-management.md#localstorage9) | 是   | 存储单元，为应用程序范围内的可变状态属性和不可变状态属性提供存储。|
 | callback | AsyncCallback&lt;void&gt;  | 是   | 回调函数。当面板页面内容加载成功，err为undefined，否则err为错误对象。 |
 
 **错误码：**
@@ -3432,7 +3441,7 @@ startMoving(): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 801 | capability not supported. [since 18]<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/>|
+| 801 | capability not supported. 适用版本：18+<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/>|
 | 801 | capability not supported.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。<br/>|
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013 | window manager service error. |
@@ -4464,6 +4473,8 @@ setImmersiveEffect(effect: ImmersiveEffect): void
 
 **ArkTS-Sta起始版本：** 23
 
+**设备行为差异**：该接口仅在phone和tablet设备中可正常调用，在其他设备中返回错误码801。
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明     |
@@ -4590,15 +4601,19 @@ let panelConfig: inputMethodEngine.PanelInfo = {
   flag: inputMethodEngine.PanelFlag.FLG_FIXED
 }
 // 以下逻辑需要在输入法InputMethodExtensionAbility中执行，this.context是InputMethodExtensionAbility的上下文
-inputMethodAbility.createPanel(this.context, panelConfig).then( (panel: inputMethodEngine.Panel) =>{
+inputMethodAbility.createPanel(this.context, panelConfig).then((panel: inputMethodEngine.Panel) => {
   panel.getDisplayId().then((displayId: number) => {
     panel.getSystemPanelCurrentInsets(displayId).then((insets: inputMethodEngine.SystemPanelInsets) => {
       console.info(`getSystemPanelCurrentInsets success, insets is { left: ${insets.left}, right: ${insets.right}, bottom: ${insets.bottom} }`);
     }).catch((error: BusinessError) => {
       console.error(`getSystemPanelCurrentInsets failed, code: ${error.code}, message: ${error.message}`);
-    })
+    });
+  }).catch((error: BusinessError) => {
+    console.error(`getDisplayId failed, code: ${error.code}, message: ${error.message}`);
   });
-})
+}).catch((error: BusinessError) => {
+  console.error(`createPanel failed, code: ${error.code}, message: ${error.message}`);
+});
 ```
 
 ArkTS-Sta示例：
@@ -4613,7 +4628,7 @@ let panelConfig: inputMethodEngine.PanelInfo = {
   flag: inputMethodEngine.PanelFlag.FLG_FIXED
 }
 // 以下逻辑需要在输入法InputMethodExtensionAbility中执行，this.context是InputMethodExtensionAbility的上下文
-inputMethodAbility.createPanel(this.context, panelConfig).then( (panel: inputMethodEngine.Panel) =>{
+inputMethodAbility.createPanel(this.context, panelConfig).then((panel: inputMethodEngine.Panel) => {
   panel.getDisplayId().then((displayId: long) => {
     panel.getSystemPanelCurrentInsets(displayId).then((insets: inputMethodEngine.SystemPanelInsets | null) => {
       if (insets) {
@@ -4621,9 +4636,13 @@ inputMethodAbility.createPanel(this.context, panelConfig).then( (panel: inputMet
       }
     }).catch((error: BusinessError) => {
       console.error(`getSystemPanelCurrentInsets failed, code: ${error.code}, message: ${error.message}`);
-    })
+    });
+  }).catch((error: BusinessError) => {
+    console.error(`getDisplayId failed, code: ${error.code}, message: ${error.message}`);
   });
-})
+}).catch((error: BusinessError) => {
+  console.error(`createPanel failed, code: ${error.code}, message: ${error.message}`);
+});
 ```
 
 ### setSystemPanelButtonColor<sup>22+</sup>
@@ -4845,6 +4864,8 @@ panel.offSizeChange((windowSize: window.Size) => {
 ## KeyboardController
 
 下列API均需使用[on('inputStart')](#oninputstart9)获取到KeyboardController实例后，通过实例调用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ### hide<sup>9+</sup>
 
@@ -5156,6 +5177,8 @@ keyboardController.exitCurrentInputType().then(() => {
 
 自定义通信对象。
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 > **说明：**
 >
 > 开发者可通过注册此对象来接收已绑定当前输入法应用的编辑框应用所发送的自定义通信数据，接收到自定义通信数据时会触发此对象中[onMessage](#onmessage15)回调函数。
@@ -5275,6 +5298,8 @@ InputClient是输入法客户端对象，代表当前绑定到输入法应用的
 
 下列API均需使用[on('inputStart')](#oninputstart9)获取到InputClient实例后，通过实例调用。
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 ### sendKeyFunction<sup>9+</sup>
 
 ArkTS-Dyn: sendKeyFunction(action: number, callback: AsyncCallback&lt;boolean&gt;): void
@@ -5289,7 +5314,7 @@ ArkTS-Sta: sendKeyFunction(action: int, callback: AsyncCallback&lt;boolean&gt;):
 
 **ArkTS-Sta起始版本：** 23
 
-  **参数：**
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
@@ -7004,6 +7029,8 @@ sendExtendAction(action: ExtendAction, callback: AsyncCallback&lt;void&gt;): voi
 
 发送扩展编辑操作。使用callback异步回调。
 
+使用场景：输入法应用需要触发编辑框的扩展编辑功能。例如：用户点击键盘上的剪切按钮时发送CUT操作；用户点击复制按钮时发送COPY操作；用户点击粘贴按钮时发送PASTE操作；用户点击全选按钮时发送SELECT_ALL操作；自定义工具栏中集成编辑快捷操作。
+
 > **说明**
 >
 > 输入法应用调用该接口向编辑框发送扩展编辑操作，编辑框监听相应事件[on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10)，从而进一步做出处理。
@@ -7148,10 +7175,11 @@ inputMethodEngine.getInputMethodAbility().on('inputStart', (kbController, textIn
   let record: Record<string, inputMethodEngine.CommandDataType> = {
     "valueString1": "abcdefg",
     "valueString2": true,
-    "valueString3": 500,
+    "valueString3": 500
   }
-  textInputClient.sendPrivateCommand(record).then(() => {
-  }).catch((err: BusinessError) => {
+textInputClient.sendPrivateCommand(record).then(() => {
+  // do something
+}).catch((err: BusinessError) => {
     if (err) {
       console.error(`sendPrivateCommand catch error: ${err.code}, message: ${err.message}`);
     }
@@ -7436,7 +7464,7 @@ inputClient.sendMessage(msgId, msgParam).then(() => {
 
 recvMessage(msgHandler?: MessageHandler): void;
 
-注册或取消注册Messagehandler。
+注册或取消注册MessageHandler。
 
 > **说明：**
 >
@@ -7510,7 +7538,7 @@ ArkTS-Sta: getAttachOptions(): AttachOptions | null
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 801 | Capability not supported. [since 19 - 19].<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/> |
+| 801 | Capability not supported.<br>适用版本：19-19。<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/> |
 
 > **注意：**
 >
@@ -7550,7 +7578,7 @@ on(type: 'attachOptionsDidChange', callback: Callback&lt;AttachOptions&gt;): voi
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 801 | Capability not supported. [since 19 - 19]. |
+| 801 | Capability not supported. 适用版本：19-19。 |
 
 > **注意：**
 >
@@ -7958,6 +7986,8 @@ inputMethodEngine.getInputMethodAbility()
 >
 > 从 API version 8开始支持，从API version 9开始废弃。建议使用[InputClient](#inputclient9)替代。
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 ### getForward<sup>(deprecated)</sup>
 
 getForward(length:number, callback: AsyncCallback&lt;string&gt;): void
@@ -8114,7 +8144,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let length: number = 1;
 textInputClient.getBackward(length).then((text: string) => {
-  console.info(`'Succeeded in getting backward: ${text}`);
+  console.info(`Succeeded in getting backward: ${text}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to getBackward. Code is ${err.code}, message is ${err.message}`);
 });

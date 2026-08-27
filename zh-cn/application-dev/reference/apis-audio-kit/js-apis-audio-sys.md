@@ -3406,6 +3406,86 @@ audioEffectManager.setAudioSeparationEffectVolume(audio.AudioSeparationVolumeTyp
 });
 ```
 
+## AudioDeviceEnhanceManager
+
+音频设备增强管理。
+
+在使用AudioDeviceEnhanceManager的接口前，需要先通过[getDeviceEnhanceManager](arkts-apis-audio-AudioManager.md#getdeviceenhancemanager)创建实例。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### getSoundCardInfo()
+
+getSoundCardInfo(): Promise\<SoundCardInfo\>
+
+获取当前音频设备的内置声卡信息，包括声卡名称、声卡厂商，声卡型号等。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------------------- | ------------------------------ |
+| Promise\<[SoundCardInfo](#soundcardinfo)\> | Promise对象，返回内置声卡信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202 | Not system App. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let audioManager = audio.getAudioManager();
+let deviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+
+deviceEnhanceManager.getSoundCardInfo().then((soundCardInfo: audio.SoundCardInfo) => {
+  console.info(`Successfully obtained sound card info: ${JSON.stringify(soundCardInfo, null, 2)}`);
+})
+.catch((err: BusinessError) => {
+  console.error(`Failed to get sound card info. Code: ${err.code}, Message: ${err.message}`);
+});
+```
+
+## SoundCardInfo
+
+描述声卡信息。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| :--- | :--- | :--- | :--- | :--- |
+| name | string | 是 | 否 | 声卡名称。 |
+| vendor | string | 是 | 否 | 声卡厂商。 |
+| model | string | 是 | 否 | 声卡型号。 |
+| busAddress | string | 是 | 否 | 声卡总线地址。 |
+| driver | string | 是 | 否 | 声卡驱动信息。 |
+
 ## AudioRoutingManager<sup>9+</sup>
 
 音频路由管理。在使用AudioRoutingManager的接口前，需要使用[getRoutingManager](arkts-apis-audio-AudioManager.md#getroutingmanager9)获取AudioRoutingManager实例。
@@ -3968,6 +4048,8 @@ offPreferredInputDeviceChangeByFilter(callback?: Callback\<AudioDeviceDescriptor
 
 **ArkTS-Sta起始版本：** 26.0.0
 
+**参数：**
+
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | 否 | 回调函数，返回优先级最高的输入设备信息。 |
@@ -4175,6 +4257,8 @@ off(type: 'preferredOutputDeviceChangeByFilter', callback?: Callback\<AudioDevic
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
 **ArkTS-Dyn起始版本：** 21
+
+**参数：**
 
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -4668,7 +4752,7 @@ getActiveOutputDeviceDescriptors(): Promise&lt;AudioDeviceDescriptors&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 202 | Not system application. |
+| 202 | Not a system application. |
 
 **示例：**
 
@@ -5845,7 +5929,7 @@ setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean
 | 参数名                 | 类型                                                         | 必填 | 说明                      |
 | ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
 | deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)         | 是   | 设备描述符。 |
-| enable                | boolean                                                      | 是   | 表示开启/关闭头动跟踪。true为开启，false为关闭。  |
+| enabled                | boolean                                                      | 是   | 表示开启/关闭头动跟踪。true为开启，false为关闭。  |
 
 **返回值：**
 
@@ -6910,9 +6994,9 @@ isCollaborativePlaybackSupported(): boolean
 
 **返回值：**
 
-| 类型    | 必填 | 说明                                                    |
-| ------- |------|------------------------------------------------------- |
-| boolean |  是  | 表示系统是否支持移动全景声能力，true表示支持，false表示不支持。 |
+| 类型    | 说明                                                    |
+| ------- |------------------------------------------------------- |
+| boolean | 表示系统是否支持移动全景声能力，true表示支持，false表示不支持。 |
 
 **错误码：**
 
@@ -6972,7 +7056,7 @@ setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 201     | Not system application.                     |
+| 202    | Not system application.                     |
 | 6800101 | Parameter verification failed. Possible causes:1. The specified device is not an A2DP device.2. The specified device is not connected.|
 | 801     | Capability not supported.                   |
 
@@ -7027,9 +7111,9 @@ isCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor)
 
 **返回值：**
 
-| 类型    | 必填 | 说明                                                    |
-| ------- |------|------------------------------------------------------- |
-| boolean |  是  | 返回指定设备移动全景声是否开启/关闭，true表示开启，false表示关闭。   |
+| 类型    | 说明                                                    |
+| ------- |------------------------------------------------------- |
+| boolean | 返回指定设备移动全景声是否开启/关闭，true表示开启，false表示关闭。   |
 
 **错误码：**
 

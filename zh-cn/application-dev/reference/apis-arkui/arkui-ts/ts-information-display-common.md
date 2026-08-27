@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用于修饰组件，为[Gauge](ts-basic-components-gauge.md)和[DataPanel](ts-basic-components-datapanel.md)组件提供信息展示能力的公共接口。
+用于修饰组件，为Gauge和DataPanel组件提供投影等视觉信息展示能力的公共接口，支持统一配置投影模糊半径、偏移量等参数，简化多组件投影样式的统一管理，适用于需要为仪表盘、数据面板等组件添加一致投影效果的场景。
 
 >**说明：**
 >
@@ -27,6 +27,6 @@
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | -- | -- | -------- |
-| radius | number \| [Resource](ts-types.md#resource) | 否 | 是 | 投影模糊半径。 <br/>API version 10及以前，默认值：5<br/>API version 11及以后，默认值：20<br/>单位：vp <br/>number类型取值范围大于0。<br/>**说明：** <br/>设置小于等于0的值时，按默认值显示。|
-| offsetX | number \| [Resource](ts-types.md#resource) | 否 | 是 | X轴偏移量。 <br/>number类型取值范围不做限制。<br/>默认值：5<br/>单位：vp |
-| offsetY | number \| [Resource](ts-types.md#resource) | 否 | 是 | Y轴偏移量。 <br/>number类型取值范围不做限制。<br/>默认值：5<br/>单位：vp |
+| radius | number \| [Resource](ts-types.md#resource) | 否 | 是 | 投影模糊半径。 <br>API version 10及以前，默认值：5<br>API version 11及以后，默认值：20<br>单位：vp <br>取值范围：(0, +∞)。<br>**说明：** <br>设置小于等于0的值时，按默认值显示。|
+| offsetX | number \| [Resource](ts-types.md#resource) | 否 | 是 | X轴偏移量。 <br>number类型取值范围不做限制。<br>默认值：5<br>单位：vp |
+| offsetY | number \| [Resource](ts-types.md#resource) | 否 | 是 | Y轴偏移量。 <br>number类型取值范围不做限制。<br>默认值：5<br>单位：vp |

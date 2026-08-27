@@ -6,11 +6,11 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-作为[Text](ts-basic-components-text.md)、[ContainerSpan](ts-basic-components-containerspan.md)组件的子组件，用于显示行内文本的组件。
+作为[Text](ts-basic-components-text.md)、[ContainerSpan](ts-basic-components-containerspan.md)组件的子组件，用于显示行内文本，支持对文本的字体、颜色、大小等样式进行细粒度设置。适用于在同一行文本中混合显示不同样式的场景，如不同字体颜色的文本、添加装饰线或阴影效果等。
 
 >  **说明：**
 >
-> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 该组件从API version 10开始支持继承父组件Text的属性，即如果子组件未设置属性且父组件设置属性，则继承父组件设置的属性。支持继承的属性仅包括：fontColor、fontSize、fontStyle、fontWeight、decoration、letterSpacing、textCase、fontFamily、textShadow。
 >
@@ -59,7 +59,7 @@ ArkTS-Dyn: decoration(value: DecorationStyleInterface)
 
 ArkTS-Sta: decoration(value: DecorationStyleInterface | undefined)
 
-设置文本装饰线样式及其颜色。
+设置文本装饰线样式及其颜色。未通过该接口设置时，默认装饰线类型为TextDecorationType.None（无装饰线），颜色为Color.Black（黑色），样式为TextDecorationStyle.SOLID（实线）。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -75,7 +75,7 @@ ArkTS-Sta: decoration(value: DecorationStyleInterface | undefined)
 
 | 参数名 | 类型      | 必填 | 说明     |
 | ------ | -------- | ---- | -------------- |
-| value  | ArkTS-Dyn: [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface)<br/>ArkTS-Sta: [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) \| undefined | 是   | 文本装饰线样式对象。<br/>默认值：<br/>{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>}<br/>**说明：** <br/>style参数不支持卡片能力。<br/>取值undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface)<br>ArkTS-Sta: [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) \| undefined | 是   | 文本装饰线样式对象。<br>**说明：** <br>style参数不支持卡片能力。<br>取值undefined时，按默认值处理。 |
 
 >  **说明：**
 >
@@ -89,7 +89,7 @@ ArkTS-Dyn: letterSpacing(value: number | ResourceStr)
 
 ArkTS-Sta: letterSpacing(value: double | string | undefined)
 
-设置文本字符间距。取值小于0，字符聚集重叠，取值大于0且随着数值变大，字符间距越来越大，稀疏分布。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
+设置文本字符间距。取值小于0，字符聚集重叠，取值大于0且随着数值变大，字符间距越来越大，稀疏分布。适用于标题排版、标签文字等需要调整字符紧凑度或稀疏度的场景。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -105,7 +105,7 @@ ArkTS-Sta: letterSpacing(value: double | string | undefined)
 
 | 参数名 | 类型     | 必填 |  说明   |
 | ------ | ------- | ---- | -------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: double \| string \| undefined | 是   | 文本字符间距。<br/>默认值：0<br/>单位：[fp](ts-pixel-units.md#基本像素单位) <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。<br/>取值为undefined时，按默认值处理。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br>ArkTS-Sta: double \| string \| undefined | 是   | 文本字符间距。<br>单位：[fp](ts-pixel-units.md#基本像素单位) <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。<br>取值为undefined时，按默认值处理。|
 
 ### textCase
 
@@ -113,7 +113,7 @@ ArkTS-Dyn: textCase(value: TextCase)
 
 ArkTS-Sta: textCase(value: TextCase | undefined)
 
-设置文本大小写。
+设置文本大小写。未通过该接口设置时，默认文本大小写为TextCase.Normal（正常大小写）。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -129,7 +129,7 @@ ArkTS-Sta: textCase(value: TextCase | undefined)
 
 | 参数名 | 类型   | 必填 | 说明   |
 | ------ | ------- | ---- | ------- |
-| value  | ArkTS-Dyn: [TextCase](ts-appendix-enums.md#textcase)<br/>ArkTS-Sta: [TextCase](ts-appendix-enums.md#textcase) \| undefined | 是   | 文本大小写。<br/>默认值：TextCase.Normal<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [TextCase](ts-appendix-enums.md#textcase)<br>ArkTS-Sta: [TextCase](ts-appendix-enums.md#textcase) \| undefined | 是   | 文本大小写。<br>取值为undefined时，按默认值处理。 |
 
 ### fontColor
 
@@ -137,7 +137,7 @@ ArkTS-Dyn: fontColor(value: ResourceColor)
 
 ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
-设置字体颜色。
+设置字体颜色。未通过该接口设置时，默认字体颜色为'#FF182431'（深灰色），Wearable设备上默认为'#C5FFFFFF'（白色，不透明度约为77%）。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -153,7 +153,7 @@ ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 字体颜色。<br/>默认值：'#e6182431'<br/>Wearable设备上默认值为：'#c5ffffff' <br/>取值为undefined时，按默认值处理。|
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 字体颜色。<br>取值为undefined时，按默认值处理。|
 
 ### fontSize
 
@@ -161,7 +161,7 @@ ArkTS-Dyn: fontSize(value: number | string | Resource)
 
 ArkTS-Sta: fontSize(value: double | string | Resource | undefined)
 
-设置字体大小。
+设置字体大小。未通过该接口设置时，默认字体大小为16fp，Wearable设备上默认为15fp。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -177,7 +177,7 @@ ArkTS-Sta: fontSize(value: double | string | Resource | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"，不支持设置百分比字符串。<br/>Wearable设备上默认值为：15fp <br/>取值为undefined时，按默认值处理。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 字体大小。fontSize为number类型时，使用fp单位。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"，不支持设置百分比字符串。<br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。<br>取值为undefined时，按默认值处理。|
 
 ### fontStyle
 
@@ -185,7 +185,7 @@ ArkTS-Dyn: fontStyle(value: FontStyle)
 
 ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
-设置字体样式。
+设置字体样式。未通过该接口设置时，默认字体样式为FontStyle.Normal（正常样式）。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -201,13 +201,17 @@ ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 | 参数名 | 类型                                        | 必填 | 说明                                    |
 | ------ | ------------------------------------------- | ---- | --------------------------------------- |
-| value  | ArkTS-Dyn: [FontStyle](ts-appendix-enums.md#fontstyle)<br/>ArkTS-Sta: [FontStyle](ts-appendix-enums.md#fontstyle) \| undefined | 是   | 字体样式。<br/>默认值：FontStyle.Normal<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [FontStyle](ts-appendix-enums.md#fontstyle)<br>ArkTS-Sta: [FontStyle](ts-appendix-enums.md#fontstyle) \| undefined | 是   | 字体样式。<br>取值为undefined时，按默认值处理。 |
 
 ### fontWeight
 
 fontWeight(value: number | FontWeight | ResourceStr)
 
-设置文本的字体粗细，设置过大可能会在不同字体下有截断。
+设置文本的字体粗细，设置过大可能会在不同字体下有截断。未通过该接口设置时，默认字体粗细为FontWeight.Normal（正常粗细，对应数值400）。
+
+> **说明：**
+>
+> 当同时设置[fontVariations属性](#fontvariations)时，fontVariations属性的优先级更高。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -227,13 +231,17 @@ fontWeight(value: number | FontWeight | ResourceStr)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br>值为undefined时，保持FontWeight.Normal效果。 <br/>默认值：FontWeight.Normal <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细。<br>number类型取值[100,&nbsp;900]，取值间隔为100，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。传入超出取值范围或不符合间隔要求的值时取默认值。<br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。<br>值为undefined时，保持FontWeight.Normal效果。|
 
 ### fontWeight<sup>24+</sup>
 
 fontWeight(weight: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs)
 
-设置文本的字体粗细。
+设置文本的字体粗细。未通过该接口设置时，默认字体粗细为FontWeight.Normal（正常粗细，对应数值400）。
+
+> **说明：**
+>
+> 当同时设置fontVariations属性时，fontVariations属性的优先级更高。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
@@ -253,14 +261,18 @@ fontWeight(weight: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWe
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| weight  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br/>默认值：FontWeight.Normal <br/>取值undefined时，按默认值处理。|
-| fontWeightConfigs  | [FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明) | 否   | 字体粗细配置。默认值继承[FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明)。 |
+| weight  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细。<br>number类型取值[100,&nbsp;900]，取值间隔为100，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br>传入超出取值范围的值时取默认值。传入不符合间隔要求的值时，若设置fontWeightConfigs的enableVariableFontWeight为true，使用传入值；若设置为false，使用默认值。<br>取值undefined时，按默认值处理。|
+| fontWeightConfigs  | [FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明) | 否   | 字体粗细配置对象，用于配置可变字体字重等选项。默认值继承[FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明)。 |
 
 ### fontWeight<sup>23+</sup>
 
 fontWeight(weight: int | FontWeight | ResourceStr | undefined, fontWeightConfigs?: FontWeightConfigs)
 
-设置文本的字体粗细。
+设置文本的字体粗细。未通过该接口设置时，默认字体粗细为FontWeight.Normal（正常粗细，对应数值400）。
+
+> **说明：**
+>
+> 当同时设置fontVariations属性时，fontVariations属性的优先级更高。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -276,8 +288,8 @@ fontWeight(weight: int | FontWeight | ResourceStr | undefined, fontWeightConfigs
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| weight  | int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) \| undefined| 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br/>默认值：FontWeight.Normal <br/>取值undefined时，按默认值处理。|
-| fontWeightConfigs  | [FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明) | 否   | 字体粗细配置。默认值继承[FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明)。 |
+| weight  | int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) \| undefined| 是   | 文本的字体粗细。<br>number类型取值[100,&nbsp;900]，取值间隔为100，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br>传入超出取值范围的值时取默认值。传入不符合间隔要求的值时，若设置fontWeightConfigs的enableVariableFontWeight为true，使用传入值；若设置为false，使用默认值。<br>默认值：FontWeight.Normal <br>取值undefined时，按默认值处理。|
+| fontWeightConfigs  | [FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明) | 否   | 字体粗细配置对象，用于配置可变字体字重等选项。默认值继承[FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明)。 |
 
 ### fontFamily
 
@@ -285,7 +297,7 @@ ArkTS-Dyn: fontFamily(value: string | Resource)
 
 ArkTS-Sta: fontFamily(value: string | Resource | undefined)
 
-设置字体列表。
+设置字体列表。未通过该接口设置时，默认字体为'HarmonyOS Sans'。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -301,7 +313,7 @@ ArkTS-Sta: fontFamily(value: string | Resource | undefined)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 字体列表。<br>默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。<br/>取值为undefined时，按默认值处理。|
+| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br>ArkTS-Sta: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 字体列表。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。<br>取值为undefined时，按默认值处理。|
 
 > **说明：**
 >
@@ -313,9 +325,7 @@ ArkTS-Dyn: lineHeight(value: Length)
 
 ArkTS-Sta: lineHeight(value: Length | undefined)
 
-设置文本行高。
-
-设置值不大于0时，不限制文本行高，自适应字体大小。
+设置文本行高。未通过该接口设置时，默认由系统根据字体大小自动计算行高。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -331,13 +341,17 @@ ArkTS-Sta: lineHeight(value: Length | undefined)
 
 | 参数名 | 类型    | 必填 | 说明  |
 | ------ | ------ | ---- | ---- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 文本行高。 <br/> number类型时单位为[fp](ts-pixel-units.md#基本像素单位)。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。<br/>取值为undefined时，使用默认行高高度。|
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 文本行高。 <br> number类型时单位为fp。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"，不支持设置百分比字符串。<br>取值为undefined时，使用默认行高高度。|
 
 ### font<sup>10+</sup>
 
 font(value: Font)
 
 设置文本样式。包括字体大小、字体粗细、字体族和字体风格。
+
+> **说明：**
+>
+> fontWeight设置过大可能会在不同字体下有截断。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -355,7 +369,7 @@ font(value: Font)
 
 | 参数名 | 类型                     | 必填 | 说明       |
 | ------ | ------------------------ | ---- | ---------- |
-| value  | [Font](ts-types.md#font) | 是   | 文本样式。 <br/>默认值继承[Font](ts-types.md#font)|
+| value  | [Font](ts-types.md#font) | 是   | 文本样式，包括字体大小、字体粗细、字体族和字体风格。 <br>默认值继承[Font](ts-types.md#font)|
 
 ### font<sup>24+</sup>
 
@@ -379,8 +393,8 @@ font(value: Font, fontConfigs?: FontConfigs)
 
 | 参数名 | 类型                     | 必填 | 说明       |
 | ------ | ------------------------ | ---- | ---------- |
-| value  |[Font](ts-types.md#font) | 是   | 文本样式，包括字体大小、字体粗细、字体族和字体风格。<br/>默认值：[Font](ts-types.md#font) |
-| fontConfigs  | [FontConfigs](ts-text-common.md#fontconfigs24对象说明) | 否   | 字体配置。默认值继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)。 |
+| value  |[Font](ts-types.md#font) | 是   | 文本样式，包括字体大小、字体粗细、字体族和字体风格。<br>默认值：[Font](ts-types.md#font) |
+| fontConfigs  | [FontConfigs](ts-text-common.md#fontconfigs24对象说明) | 否   | 字体配置，用于自定义字体渲染行为（如配置可变字体属性）。当需要对字体进行高级配置时传入此参数，不传入时继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)的默认配置。 |
 
 ### font<sup>23+</sup>
 
@@ -402,8 +416,8 @@ font(value: Font | undefined, fontConfigs?: FontConfigs)
 
 | 参数名 | 类型                     | 必填 | 说明       |
 | ------ | ------------------------ | ---- | ---------- |
-| value  |[Font](ts-types.md#font) \| undefined | 是   | 文本样式，包括字体大小、字体粗细、字体族和字体风格。<br/>默认值：[Font](ts-types.md#font) <br/>取值undefined时，按默认值处理。 |
-| fontConfigs  | [FontConfigs](ts-text-common.md#fontconfigs24对象说明) | 否   | 字体配置。默认值继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)。 |
+| value  |[Font](ts-types.md#font) \| undefined | 是   | 文本样式，包括字体大小、字体粗细、字体族和字体风格。<br>默认值：[Font](ts-types.md#font) <br>取值undefined时，按默认值处理。 |
+| fontConfigs  | [FontConfigs](ts-text-common.md#fontconfigs24对象说明) | 否   | 字体配置，用于自定义字体渲染行为（如配置可变字体属性）。当需要对字体进行高级配置时传入此参数，不传入时继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)的默认配置。 |
 
 ### textShadow<sup>11+</sup>
 
@@ -411,7 +425,7 @@ ArkTS-Dyn: textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 ArkTS-Sta: textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt; | undefined)
 
-设置文字阴影效果。该接口支持以数组形式入参，实现多重文字阴影。不支持fill字段, 不支持智能取色模式。
+设置文字阴影效果。该接口支持以数组形式入参，实现多重文字阴影。不支持fill字段，不支持智能取色模式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -427,7 +441,7 @@ ArkTS-Sta: textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt; | undefi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ----- | ---- | --- |
-| value  | ArkTS-Dyn: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)><br/>ArkTS-Sta: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> \| undefined | 是   | 文字阴影效果。<br/>默认值继承[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明) <br/>取值为undefined时，按默认值处理。|
+| value  | ArkTS-Dyn: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)><br>ArkTS-Sta: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> \| undefined | 是   | 文字阴影效果。可设置阴影的模糊半径(radius)、颜色(color)、偏移距离(offsetX/offsetY)等参数，支持数组形式实现多重阴影。<br>默认值继承[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明) <br>取值为undefined时，按默认值处理。|
 
 ### fontVariations
 
@@ -435,7 +449,7 @@ ArkTS-Dyn: fontVariations(fontVariations: Array&lt;FontVariation&gt;)
 
 ArkTS-Sta: fontVariations(fontVariations: Array&lt;FontVariation&gt; | undefined)
 
-设置可变字体的属性。
+设置可变字体的属性，适用于需要动态调整字体粗细、宽度等可变维度参数的场景。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -451,7 +465,7 @@ ArkTS-Sta: fontVariations(fontVariations: Array&lt;FontVariation&gt; | undefined
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| fontVariations | ArkTS-Dyn: Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; <br/>ArkTS-Sta: Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; \| undefined | 是 | 可变字体的属性数组，数组成员为可变字体的各种属性。<br/>设置为undefined时的效果等同于未设置fontVariations属性时的效果。<br/>fontVariations属性的优先级高于[fontWeight](#fontweight24)。 |
+| fontVariations | ArkTS-Dyn: Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; <br>ArkTS-Sta: Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; \| undefined | 是 | 可变字体的属性数组，每个数组元素包含axis（属性轴名称）和value（属性值）两个字段。fontVariations属性的优先级高于[fontWeight](#fontweight24)。<br>设置为undefined时的效果等同于未设置fontVariations属性时的效果。 |
 
 ### attributeModifier<sup>23+</sup>
 
@@ -471,7 +485,7 @@ attributeModifier(modifier: AttributeModifier\<SpanAttribute> | undefined)
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SpanAttribute> \| undefined | 是   | 动态设置Span组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SpanAttribute> \| undefined | 是   | 动态设置Span组件的属性。<br>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ### id<sup>23+</sup>
 
@@ -489,7 +503,7 @@ id(value: string | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | string \| undefined | 是 | 组件的唯一标识，唯一性由使用者保证。<br/>默认值：''<br/>取值为undefined时，按默认值处理。 |
+| value | string \| undefined | 是 | 组件的唯一标识，唯一性由使用者保证。<br>默认值：''<br>取值为undefined时，按默认值处理。 |
 
 ### key<sup>23+</sup>
 
@@ -507,7 +521,7 @@ key(value: string | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | string \| undefined | 是 | 组件的键值。<br/>默认值：''<br/>取值为undefined时，按默认值处理。 |
+| value | string \| undefined | 是 | 组件的键值。<br>默认值：''<br>取值为undefined时，按默认值处理。 |
 
 ### debugLine
 
@@ -556,7 +570,7 @@ onClick(event: Callback\<ClickEvent> | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| event | [Callback](ts-types.md#callback12)\<[ClickEvent](ts-universal-events-click.md#clickevent)> \| undefined | 是 | 点击事件回调。<br/>取值为undefined时，不使用回调函数。 |
+| event | [Callback](ts-types.md#callback12)\<[ClickEvent](ts-universal-events-click.md#clickevent)> \| undefined | 是 | 点击事件回调。<br>取值为undefined时，不使用回调函数。 |
 
 ### onClick<sup>23+</sup>
 
@@ -578,8 +592,8 @@ onClick(event: Callback\<ClickEvent> | undefined, distanceThreshold: double | un
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| event | [Callback](ts-types.md#callback12)\<[ClickEvent](ts-universal-events-click.md#clickevent)> \| undefined | 是 | 点击事件回调。<br/>取值为undefined时，不使用回调函数。 |
-| distanceThreshold | double \| undefined | 是 | 点击事件移动阈值。手指按下后移动超过该阈值时，点击事件不能触发。<br/>取值为undefined时，按默认值处理。 |
+| event | [Callback](ts-types.md#callback12)\<[ClickEvent](ts-universal-events-click.md#clickevent)> \| undefined | 是 | 点击事件回调。<br>取值为undefined时，不使用回调函数。 |
+| distanceThreshold | double \| undefined | 是 | 点击事件移动阈值。手指按下后移动超过该阈值时，点击事件不能触发。<br>取值为undefined时，按默认值处理。 |
 
 
 ### onHover<sup>23+</sup>
@@ -598,7 +612,7 @@ onHover(event: HoverCallback | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| event | [HoverCallback](ts-uicommonevent.md#hovercallback) \| undefined | 是 | 悬浮事件回调。<br/>取值为undefined时，不使用回调函数。 |
+| event | [HoverCallback](ts-uicommonevent.md#hovercallback) \| undefined | 是 | 悬浮事件回调。<br>取值为undefined时，不使用回调函数。 |
 
 ## BaseSpan
 
@@ -618,7 +632,7 @@ ArkTS-Dyn: textBackgroundStyle(style: TextBackgroundStyle): T
 
 ArkTS-Sta: textBackgroundStyle(style: TextBackgroundStyle | undefined): this
 
-设置文本背景样式。作为[ContainerSpan](ts-basic-components-containerspan.md)的子组件时可以继承它的此属性值，优先使用其自身的此属性。
+设置文本背景样式。作为[ContainerSpan](ts-basic-components-containerspan.md)的子组件时可继承该属性值，优先使用自身的设置。未通过该接口设置时，默认背景颜色为Color.Transparent（透明），圆角弧度为0。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -634,13 +648,13 @@ ArkTS-Sta: textBackgroundStyle(style: TextBackgroundStyle | undefined): this
 
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---- | ---- | ---- |
-| style  | ArkTS-Dyn: [TextBackgroundStyle](#textbackgroundstyle11对象说明) <br/>ArkTS-Sta: [TextBackgroundStyle](#textbackgroundstyle11对象说明) \| undefined | 是   | 文本背景样式。<br />默认值：<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} <br/>取值undefined时，按默认值处理。 |
+| style  | ArkTS-Dyn: [TextBackgroundStyle](#textbackgroundstyle11对象说明) <br>ArkTS-Sta: [TextBackgroundStyle](#textbackgroundstyle11对象说明) \| undefined | 是   | 文本背景样式。<br>取值undefined时，按默认值处理。 |
 
 **返回值：**
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前Span的属性。 |
+| ArkTS-Dyn: T<br>ArkTS-Sta: this | 返回当前Span的属性对象。 |
 
 ### baselineOffset<sup>12+</sup>
 
@@ -648,7 +662,7 @@ ArkTS-Dyn: baselineOffset(value: LengthMetrics): T
 
 ArkTS-Sta: baselineOffset(value: LengthMetrics | undefined): this
 
-设置Span基线的偏移量。此属性与父组件的baselineOffset是共存的。
+设置Span基线的偏移量，适用于上下标排版、混合字号文本对齐微调等场景。此属性与父组件的baselineOffset是共存的。未通过该接口设置时，默认偏移量为0。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -664,13 +678,13 @@ ArkTS-Sta: baselineOffset(value: LengthMetrics | undefined): this
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ----- | ---- | ---- | ---- |
-| value  | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 设置Span基线的偏移量，设置该值为百分比时，按默认值显示。<br/>正数内容向上偏移，负数向下偏移。<br/>默认值：0<br/>在ImageSpan中，设置为非0时，[verticalAlign](ts-basic-components-imagespan.md#verticalalign)将固定为ImageSpanAlignment.BASELINE对齐；设置为0时，要使基线对齐策略生效，需同时设置[verticalAlign](ts-basic-components-imagespan.md#verticalalign)为ImageSpanAlignment.BASELINE。<br/>取值undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 设置Span基线的偏移量，设置该值为百分比时，按默认值显示。<br>正数内容向上偏移，负数向下偏移。<br>在ImageSpan中，设置为非0时，[verticalAlign](ts-basic-components-imagespan.md#verticalalign)将固定为ImageSpanAlignment.BASELINE对齐；设置为0时，要使基线对齐策略生效，需同时设置[verticalAlign](ts-basic-components-imagespan.md#verticalalign)为ImageSpanAlignment.BASELINE。<br>取值undefined时，按默认值处理。 |
 
 **返回值：**
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前Span的属性。 |
+| ArkTS-Dyn: T<br>ArkTS-Sta: this | 返回当前Span的属性对象，用于链式调用。 |
 
 ## TextBackgroundStyle<sup>11+</sup>对象说明
 
@@ -686,13 +700,13 @@ ArkTS-Sta: baselineOffset(value: LengthMetrics | undefined): this
 
 | 名称   | 类型     | 只读 | 可选 | 说明         |
 | ------ | ------- | ---- | ---- | ------------ |
-| color  | [ResourceColor](ts-types.md#resourcecolor)                                  | 否   | 是 | 文本背景色。 |
-| radius | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](./ts-types.md#borderradiuses9) | 否   | 是 | 文本背景圆角。 |
+| color  | [ResourceColor](ts-types.md#resourcecolor)                                  | 否   | 是 | 文本背景色。默认为透明，无背景色。 |
+| radius | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](./ts-types.md#borderradiuses9) | 否   | 是 | 文本背景圆角。默认无圆角。 |
 
 ## 示例
 ### 示例1（设置文本样式）
 
-该示例展示了设置不同样式的文本效果以及span配置点击事件。
+该示例展示了设置不同样式的文本效果以及Span配置点击事件。
 
 ```ts
 // xxx.ets
@@ -930,7 +944,7 @@ struct SpanExample {
       Text() {
         Span('   Hello World !   ')
           .fontSize('20fp')
-          .textBackgroundStyle({ color: "#7F007DFF", radius: "5vp" })
+          .textBackgroundStyle({ color: '#7F007DFF', radius: '5vp' })
           .fontColor(Color.White)
       }
     }.width('100%').margin({ bottom: '5vp' }).alignItems(HorizontalAlign.Center)

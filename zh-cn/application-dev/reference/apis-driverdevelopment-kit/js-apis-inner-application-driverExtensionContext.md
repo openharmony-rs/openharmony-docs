@@ -40,6 +40,8 @@ updateDriverState(): void
 
 驱动状态上报。预留接口，暂不提供具体功能。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Driver.ExternalDevice
 
 **示例：**

@@ -1,8 +1,8 @@
 # 延迟加载 (lazy import)
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @DaiHuina1997-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @shilei123-->
+<!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
@@ -312,7 +312,7 @@ ReferenceError: module environment is undefined
     hdc shell param set persist.ark.importDuration 1000
     ```
 
-3. 清除应用后台进程后，重新启动应用进程，等待抓取时间结束，会在应用沙箱下（data/app/el2/100/base/${bundlename}/files/）生成主/子线程对应文件。
+3. 清除应用后台进程后，重新启动应用进程，等待抓取时间结束，会在应用沙箱下（data/app/el2/100/base/${bundleName}/files/）生成主/子线程对应的文件。
 
     > **注意：**
     >
@@ -403,7 +403,7 @@ export function func() {
 <----Summary----> Total file number: 13, total time: 2ms, including used file:12, cost time: 1ms, and unused file: 1, cost time: 1ms
 ```
 
-上述信息表示应用当前线程在冷启动抓取时间段内加载了13个文件，共耗时2ms。其中，12个文件导出内容被其他文件加载使用，执行这12个文件共耗时1ms；1个文件执行完成，但是其导出内容没有被其他文件在冷启阶段用到，耗时1ms。
+上述信息表示应用当前线程在冷启动抓取时间段内加载了13个文件，共耗时2ms。其中，12个文件导出内容被其他文件加载使用，执行这12个文件共耗时1ms；1个文件执行完成，但是其导出内容没有被其他文件在冷启动阶段用到，耗时1ms。
 
 ### 被使用文件
 

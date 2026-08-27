@@ -222,14 +222,12 @@ import { formInfo } from '@kit.FormKit';
 
 卡片创建原因枚举。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Ability.Form
 
 | 名称        |  值   | 说明         |
 | ----------- | ---- | ------------ |
-| FORM_DEFAULT | 1   | 表示卡片创建原因为默认创建。 <br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23|
-| FORM_SHARE   | 2   | 表示卡片创建原因为共享创建。 <br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23|
+| FORM_DEFAULT | 1   | 表示卡片创建原因为默认创建。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23|
+| FORM_SHARE   | 2   | 表示卡片创建原因为共享创建。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23|
 | FORM_SIZE_CHANGE<sup>20+</sup>    | 3   | 表示卡片创建原因为尺寸变化。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## FormUpdateReason<sup>24+</sup> 
@@ -292,8 +290,6 @@ import { formInfo } from '@kit.FormKit';
 
 卡片当前位置枚举。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Ability.Form
 
 **ArkTS-Dyn起始版本：** 20
@@ -302,9 +298,9 @@ import { formInfo } from '@kit.FormKit';
 
 | 名称                         | 值   | 说明                             |
 | ---------------------------- | ---- | -------------------------------- |
-| DESKTOP                      | 0    | 表示卡片位于桌面。               |
-| FORM_CENTER                  | 1    | 表示卡片位于桌面的卡片中心。     |
-| FORM_MANAGER                 | 2    | 表示卡片位于桌面的卡片管理器。   |
+| DESKTOP                      | 0    | 表示卡片位于桌面。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。               |
+| FORM_CENTER                  | 1    | 表示卡片位于桌面的卡片中心。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。     |
+| FORM_MANAGER                 | 2    | 表示卡片位于桌面的卡片管理器。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。   |
 <!--RP1--><!--RP1End-->
 
 ## RunningFormInfo<sup>20+</sup>

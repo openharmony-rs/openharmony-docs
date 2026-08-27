@@ -236,6 +236,11 @@ void OnChatResponse(void *context, const char *response)
     }
     try {
         json responseJson = json::parse(response);
+        std::string role = responseJson.at("message").at("role").get<std::string>();
+        if (role != "assistant") {
+            DEMO_LOGW("Discarding invalid response due to incorrect role");
+            return;
+        }
         chatContext->responseContent += responseJson.at("message").at("content").get<std::string>();
         json finishReasonJson = responseJson.at("finish_reason");
         if (!finishReasonJson.is_null()) {
@@ -313,7 +318,7 @@ int Demo(void)
 }
 ```
 > **NOTE**
-> 
+>
 > In the demo code, the third-party library nlohmann/json is used to simplify the parsing and construction of JSON data. nlohmann/json is a modern C++ JSON library that provides an intuitive and concise way to handle JSON data.
 > Its design concept is to make JSON operations as natural as using STL containers.
 > You can download the **json.hpp** file and save it to the **include** directory of the project. No additional library file is required.
