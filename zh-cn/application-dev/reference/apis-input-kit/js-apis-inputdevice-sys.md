@@ -891,26 +891,30 @@ struct Index {
 }
 ```
 
-## inputDevice.bindToDisplay
+## inputDevice.bindToDisplay<sup>26+</sup>
 
-bindToDisplay(inputDeviceId: number, displayId: number): Promise&lt;void&gt;
+ArkTS-Dyn: bindToDisplay(inputDeviceId: number, displayId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: bindToDisplay(inputDeviceId: int, displayId: int): Promise&lt;void&gt;
 
 将输入设备绑定到显示器组。仅支持外接USB和蓝牙的鼠标、触摸板、键盘和游戏手柄。绑定后，输入设备将固定在指定显示器所在的显示器组上操作。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**需要权限**：ohos.permission.INPUT_DEVICE_CONTROLLER
 
-**需要权限：** ohos.permission.INPUT_DEVICE_CONTROLLER
+**系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
+**系统API**：此接口为系统接口。
 
-**系统接口：**此接口为系统接口。
+**ArkTS-Dyn起始版本**：26
+
+**ArkTS-Sta起始版本**：26
 
 **参数**：
 
 | 参数名        | 类型   | 必填 | 说明                                   |
 | ------------ | ------ | ---- | -------------------------------------- |
-| inputDeviceId | number | 是   | 输入设备的ID。如果输入服务重启或输入设备重连，此ID可能会发生变化。取值应为≥0的整数。|
-| displayId     | number | 是   | 目标显示器的ID。取值应为≥0的整数。                      |
+| inputDeviceId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 输入设备的ID。如果输入服务重启或输入设备重连，此ID可能会发生变化。取值应为≥0的整数。|
+| displayId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 目标显示器的ID。取值应为≥0的整数。                      |
 
 **返回值**：
 
@@ -933,6 +937,8 @@ bindToDisplay(inputDeviceId: number, displayId: number): Promise&lt;void&gt;
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```js
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -949,6 +955,36 @@ struct Index {
             inputDevice.bindToDisplay(1, 0).then(() => {
               console.info(`Succeeded in binding input device to display.`);
             }).catch((error: BusinessError) => {
+              console.error(`Failed to bind input device to display, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to bind input device to display, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 将输入设备ID为1的设备绑定到显示器ID为0的显示器上
+            inputDevice.bindToDisplay(1, 0).then(() => {
+              console.info(`Succeeded in binding input device to display.`);
+            }).catch((error) => {
               console.error(`Failed to bind input device to display, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
