@@ -553,7 +553,7 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 | -------- | -------- | -------- | -------- | -------- |
 | operationInfo | [OperationInfo](#operationinfo)[] | 否 | 否 | 操作信息列表，指定待查询的CLI命令或API接口。 |
 | needTicket | boolean | 否 | 是 | 是否需要生成ticket用于本地或远程授权。true表示需要生成ticket，false表示不需要。当设置为true时，仅在本次查询结果通过的情况下才会返回ticket信息。<br>默认值：false |
-| ticketExpireTimeMs | number | 否 | 是 | ticket过期时间，单位为毫秒。取值范围：1~86400000（24小时），超过最大值将返回错误码24010000。需配合needTicket参数使用，仅当needTicket为true时本参数生效。默认值10000适用于常规授权场景，长时间远程授权场景可适当延长。<br>默认值：10000 |
+| ticketExpireTimeMs | number | 否 | 是 | ticket过期时间，单位为毫秒。需配合needTicket参数使用，仅当needTicket为true时本参数生效。常规授权场景取值范围：1~60000（60秒），长时间远程授权场景取值范围：1~86400000（24小时），超过最大值将返回错误码24010000。<br>默认值：10000 |
 | remoteInfo | [RemoteInfo](#remoteinfo) | 否 | 是 | 远端设备信息。用于远程授权场景，包含设备角色、设备ID、华为账号ID等远程设备相关信息。<br>**起始版本：** 26.1.0 |
 | callerTokenId | number | 否 | 是 | 调用方进程的tokenId。当需要为其他进程查询或授权时，可指定目标进程的tokenId。<br>如果未传入该参数，默认获取调用方进程的tokenId。|
 | domainId | string | 否 | 是 | 域标识。<br>如果未传入该参数，则默认获取调用方当前的域标识。|
