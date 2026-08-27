@@ -891,7 +891,7 @@ struct Index {
 }
 ```
 
-## inputDevice.bindToDisplay<sup>26.1.0+</sup>
+## inputDevice.bindToDisplay
 
 ArkTS-Dyn: bindToDisplay(inputDeviceId: number, displayId: number): Promise&lt;void&gt;
 
