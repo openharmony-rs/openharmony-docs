@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export declare class TreeControllerV2--><!--Device-unnamed-export declare class TreeControllerV2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,21 +26,19 @@ addNode(nodeParam?: NodeParamV2): TreeControllerV2
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TreeControllerV2-addNode(nodeParam?: NodeParamV2): TreeControllerV2--><!--Device-TreeControllerV2-addNode(nodeParam?: NodeParamV2): TreeControllerV2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| nodeParam | [NodeParamV2](../../apis-na/arkts-apis/arkts-na-arkui-advanced-treeviewv2-nodeparamv2-i.md) | 否 | 节点信息，用于指定新增节点的属性。如果不传该参数，在当前选中的节点下添加一个标题为"新建文件夹"的节点。 |
+| nodeParam | [NodeParamV2](arkts-arkui-arkui-advanced-treeviewv2-nodeparamv2-i.md) | 否 | 节点信息，用于指定新增节点的属性。如果不传该参数，在当前选中的节点下添加一个标题为"新建文件夹"的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [TreeControllerV2](../../apis-na/arkts-apis/arkts-na-arkui-advanced-treeviewv2-treecontrollerv2-c.md) | 树视图组件的控制器。 |
+| [TreeControllerV2](arkts-arkui-arkui-advanced-treeviewv2-treecontrollerv2-c.md) | 树视图组件的控制器。 |
 
 ## buildDone
 
@@ -57,8 +53,6 @@ buildDone(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TreeControllerV2-buildDone(): void--><!--Device-TreeControllerV2-buildDone(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,8 +70,6 @@ modifyNode(): void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TreeControllerV2-modifyNode(): void--><!--Device-TreeControllerV2-modifyNode(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## refreshNode
@@ -94,17 +86,15 @@ refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: Reso
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TreeControllerV2-refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void--><!--Device-TreeControllerV2-refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parentId | number | 是 | 父节点Id。&lt;br /&gt;取值范围：大于等于-1。 |
-| parentSubTitle | [ResourceStr](../../apis-na/arkts-apis/arkts-na-resourcestr-t.md) | 是 | 父节点副标题。 |
-| currentSubtitle | [ResourceStr](../../apis-na/arkts-apis/arkts-na-resourcestr-t.md) | 是 | 当前节点副标题。 |
+| parentId | number | 是 | 父节点Id。取值范围：大于等于-1。 |
+| parentSubTitle | [ResourceStr](arkts-arkui-resourcestr-t.md) | 是 | 父节点副标题。 |
+| currentSubtitle | [ResourceStr](arkts-arkui-resourcestr-t.md) | 是 | 当前节点副标题。 |
 
 ## removeNode
 
@@ -120,7 +110,4 @@ removeNode(): void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TreeControllerV2-removeNode(): void--><!--Device-TreeControllerV2-removeNode(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

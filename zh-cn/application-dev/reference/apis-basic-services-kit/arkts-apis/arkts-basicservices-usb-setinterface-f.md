@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { usb } from '@kit.BasicServicesKit';
-import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## setInterface
@@ -14,15 +12,13 @@ import { serialManager } from '@kit.BasicServicesKit';
 function setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 ```
 
-设置设备接口。 需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md)获取设备列表以及interfaces；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md)获取设备请求权限；调 用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md)得到devicepipe作为参数；调用[usb.claimInterface](arkts-basicservices-usb-claiminterface-f.md)注册通信接 口。
+设置设备接口。需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md)获取设备列表以及interfaces；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md)获取设备请求权限；调 用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md)得到devicepipe作为参数；调用[usb.claimInterface](arkts-basicservices-usb-claiminterface-f.md)注册通信接 口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [setInterface](arkts-basicservices-usbmanager-setinterface-f.md)
-
-<!--Device-usb-function setInterface(pipe: USBDevicePipe, iface: USBInterface): number--><!--Device-usb-function setInterface(pipe: USBDevicePipe, iface: USBInterface): number-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -45,4 +41,3 @@ function setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 let ret = usb.setInterface(devicepipe, interfaces);
 console.info(`setInterface = ${ret}`);
 ```
-

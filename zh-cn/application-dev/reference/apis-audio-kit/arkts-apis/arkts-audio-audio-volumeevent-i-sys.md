@@ -1,10 +1,8 @@
 # VolumeEvent
 
-音量改变时，应用接收到的事件。
+音量改变时，应用接收的事件。
 
-**起始版本：** 23
-
-<!--Device-audio-interface VolumeEvent--><!--Device-audio-interface VolumeEvent-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## networkId
@@ -21,13 +18,11 @@ import { audioHaptic } from '@kit.AudioKit';
 networkId: string
 ```
 
-Device network id
+网络id。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-VolumeEvent-networkId: string--><!--Device-VolumeEvent-networkId: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -36,16 +31,14 @@ Device network id
 ## percentage
 
 ```TypeScript
-percentage?: int
+percentage?: number
 ```
 
-Volume percentage, which is an integer ranging from [0, 100].
+音量百分比，取值范围为[0, 100]。 取值限定为整数。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
-
-<!--Device-VolumeEvent-percentage?: int--><!--Device-VolumeEvent-percentage?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -54,18 +47,15 @@ Volume percentage, which is an integer ranging from [0, 100].
 ## volumeGroupId
 
 ```TypeScript
-volumeGroupId: int
+volumeGroupId: number
 ```
 
-volumeGroup id
+音量组id，可用于getGroupManager入参。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-VolumeEvent-volumeGroupId: int--><!--Device-VolumeEvent-volumeGroupId: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **系统接口：** 此接口为系统接口。
-

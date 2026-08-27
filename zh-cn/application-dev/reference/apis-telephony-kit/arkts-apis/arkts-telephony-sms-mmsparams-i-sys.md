@@ -2,9 +2,7 @@
 
 发送彩信的参数。
 
-**起始版本：** 23
-
-<!--Device-sms-export interface MmsParams--><!--Device-sms-export interface MmsParams-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -13,7 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { sms } from '@kit.TelephonyKit';
 ```
 
 ## data
@@ -26,27 +23,7 @@ data: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MmsParams-data: string--><!--Device-MmsParams-data: string-End-->
-
-**系统能力：** SystemCapability.Telephony.SmsMms
-
-**系统接口：** 此接口为系统接口。
-
-## mmsConfig
-
-```TypeScript
-mmsConfig?: MmsConfig
-```
-
-彩信配置文件，参考[MmsConfig](arkts-telephony-sms-mmsconfig-i-sys.md)。
-
-**类型：** [MmsConfig](arkts-telephony-sms-mmsconfig-i-sys.md)
-
-**起始版本：** 23
-
-<!--Device-MmsParams-mmsConfig?: MmsConfig--><!--Device-MmsParams-mmsConfig?: MmsConfig-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -62,9 +39,23 @@ mmsc: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 11
 
-<!--Device-MmsParams-mmsc: string--><!--Device-MmsParams-mmsc: string-End-->
+**系统能力：** SystemCapability.Telephony.SmsMms
+
+**系统接口：** 此接口为系统接口。
+
+## mmsConfig
+
+```TypeScript
+mmsConfig?: MmsConfig
+```
+
+彩信配置文件，参考[MmsConfig](arkts-telephony-sms-mmsconfig-i-sys.md)。
+
+**类型：** [MmsConfig](arkts-telephony-sms-mmsconfig-i-sys.md)
+
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -73,18 +64,17 @@ mmsc: string
 ## slotId
 
 ```TypeScript
-slotId: int
+slotId: number
 ```
 
-用于发送短信的SIM卡槽ID： - 0：卡槽1 - 1：卡槽2
+用于发送短信的SIM卡槽ID：  
+- 0：卡槽1  
+- 1：卡槽2
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MmsParams-slotId: int--><!--Device-MmsParams-slotId: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
 **系统接口：** 此接口为系统接口。
-

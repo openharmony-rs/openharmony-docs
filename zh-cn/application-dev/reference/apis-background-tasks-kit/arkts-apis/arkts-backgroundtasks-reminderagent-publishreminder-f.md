@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { reminderAgent } from '@kit.BackgroundTasksKit';
-import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
 ## publishReminder
@@ -23,8 +22,6 @@ function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<n
 
 **需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
 
-<!--Device-reminderAgent-function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<number>): void--><!--Device-reminderAgent-function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<number>): void-End-->
-
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 **参数：**
@@ -32,7 +29,7 @@ function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<n
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | reminderReq | ReminderRequest | 是 | 需要发布的提醒实例。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 异步回调，返回当前发布的提醒的id。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 异步回调，返回当前发布的提醒的id。 |
 
 **示例**
 
@@ -67,8 +64,6 @@ function publishReminder(reminderReq: ReminderRequest): Promise<number>
 
 **需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
 
-<!--Device-reminderAgent-function publishReminder(reminderReq: ReminderRequest): Promise<number>--><!--Device-reminderAgent-function publishReminder(reminderReq: ReminderRequest): Promise<number>-End-->
-
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 **参数：**
@@ -81,7 +76,7 @@ function publishReminder(reminderReq: ReminderRequest): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | reminder id. |
+| Promise & lt;number & gt; | reminder id. |
 
 **示例**
 
@@ -97,4 +92,3 @@ reminderAgent.publishReminder(timer).then((reminderId: number) => {
   console.info("promise, reminderId = " + reminderId);
 });
 ```
-

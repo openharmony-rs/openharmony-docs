@@ -14,11 +14,9 @@ function openSubscriptionSettings(context: UIAbilityContext): Promise<void>
 
 打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。 使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **需要权限：** ohos.permission.SUBSCRIBE_NOTIFICATION
-
-<!--Device-notificationExtensionSubscription-function openSubscriptionSettings(context: UIAbilityContext): Promise<void>--><!--Device-notificationExtensionSubscription-function openSubscriptionSettings(context: UIAbilityContext): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -32,7 +30,7 @@ function openSubscriptionSettings(context: UIAbilityContext): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -44,8 +42,6 @@ function openSubscriptionSettings(context: UIAbilityContext): Promise<void>
 | [1600023](../errorcode-notification.md#1600023-应用未实现notificationsubscriberextensionability) | The application does not implement the NotificationSubscriberExtensionAbility. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';
@@ -63,24 +59,3 @@ try {
   console.error(`failed to call openSubscriptionSettings, code is ${error.code}, message is ${error.message}`)
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { common } from '@kit.AbilityKit';
-
-try {
-  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
-  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
-    console.info(`openSubscriptionSettings success`);
-  }).catch((e: Error) => {
-    let error = e as BusinessError
-    console.error(`failed to call openSubscriptionSettings, code is ${error.code}, message is ${error.message}`)
-  });
-} catch (error) {
-  let err = error as BusinessError
-  console.error(`failed to call openSubscriptionSettings, code is ${err.code}, message is ${err.message}`)
-}
-```
-

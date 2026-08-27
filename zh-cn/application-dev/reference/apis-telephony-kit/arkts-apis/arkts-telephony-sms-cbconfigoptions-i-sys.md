@@ -2,9 +2,7 @@
 
 小区广播配置选项。
 
-**起始版本：** 23
-
-<!--Device-sms-export interface CBConfigOptions--><!--Device-sms-export interface CBConfigOptions-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -13,7 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { sms } from '@kit.TelephonyKit';
 ```
 
 ## enable
@@ -26,9 +23,7 @@ enable: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-CBConfigOptions-enable: boolean--><!--Device-CBConfigOptions-enable: boolean-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -37,16 +32,14 @@ enable: boolean
 ## endMessageId
 
 ```TypeScript
-endMessageId: int
+endMessageId: number
 ```
 
 消息结束ID
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CBConfigOptions-endMessageId: int--><!--Device-CBConfigOptions-endMessageId: int-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -62,9 +55,7 @@ ranType: RanType
 
 **类型：** [RanType](arkts-telephony-sms-rantype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CBConfigOptions-ranType: RanType--><!--Device-CBConfigOptions-ranType: RanType-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -73,16 +64,14 @@ ranType: RanType
 ## slotId
 
 ```TypeScript
-slotId: int
+slotId: number
 ```
 
 卡槽ID
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CBConfigOptions-slotId: int--><!--Device-CBConfigOptions-slotId: int-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -91,18 +80,15 @@ slotId: int
 ## startMessageId
 
 ```TypeScript
-startMessageId: int
+startMessageId: number
 ```
 
 消息起始ID
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CBConfigOptions-startMessageId: int--><!--Device-CBConfigOptions-startMessageId: int-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
 **系统接口：** 此接口为系统接口。
-

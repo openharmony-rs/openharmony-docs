@@ -1,10 +1,8 @@
 # AppForegroundStateObserver（系统接口）
 
-定义应用启动和退出的状态监听，可以作为 [appManager.on('appForegroundState')](arkts-ability-appmanager-onapplicationstate-f.md#onapplicationstate) 的入参监听所有应用的启动和退出的变化。
+定义应用启动和退出的状态监听，可以作为 [appManager.on('appForegroundState')](arkts-ability-appmanager-on-f-sys.md#onappforegroundstate) 的入参监听所有应用的启动和退出的变化。
 
 **起始版本：** 11
-
-<!--Device-unnamed-export default class AppForegroundStateObserver--><!--Device-unnamed-export default class AppForegroundStateObserver-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -20,8 +18,6 @@ onAppStateChanged(appStateData: AppStateData): void
 
 **起始版本：** 11
 
-<!--Device-AppForegroundStateObserver-onAppStateChanged(appStateData: AppStateData): void--><!--Device-AppForegroundStateObserver-onAppStateChanged(appStateData: AppStateData): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -34,8 +30,6 @@ onAppStateChanged(appStateData: AppStateData): void
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { appManager } from '@kit.AbilityKit';
 
@@ -46,20 +40,3 @@ let observer: appManager.AppForegroundStateObserver = {
 };
 appManager.on('appForegroundState', observer);
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { appManager } from '@kit.AbilityKit';
-
-class MyObserver implements appManager.AppForegroundStateObserver {
-  onAppStateChanged(appStateData: appManager.AppStateData) {
-    console.info(`onAppStateChanged appStateData: ${JSON.stringify(appStateData)}`);
-  }
-}
-
-let observer = new MyObserver();
-appManager.onAppForegroundStateChange(observer);
-```
-

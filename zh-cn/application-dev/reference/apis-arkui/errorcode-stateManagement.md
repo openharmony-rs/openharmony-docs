@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码。
 
 ## 130000 addMonitor/clearMonitor非法目标对象
 
@@ -23,12 +23,12 @@ addMonitor/clearMonitor的目标对象参数不合法。
 **可能原因**
 
 目标对象不满足以下情况：
-- [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)装饰的类（至少有一个[\@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)装饰的变量）。
-- [\@ComponentV2](../../ui/state-management/arkts-create-custom-components.md#componentv2)装饰的自定义组件的实例。
+- \@ObservedV2装饰的类（至少有一个\@Trace装饰的变量）。
+- \@ComponentV2装饰的自定义组件的实例。
 
 **处理步骤**
 
-确保addMonitor/clearMonitor的目标对象合法，详情请参见[addMonitor/clearMonitor开发指南](../../ui/state-management/arkts-new-addMonitor-clearMonitor.md#限制条件)。
+确保addMonitor/clearMonitor的目标对象合法，详情请参见addMonitor/clearMonitor开发指南。
 
 ## 130001 addMonitor/clearMonitor非法路径
 
@@ -46,7 +46,7 @@ addMonitor/clearMonitor的路径参数不合法。
 
 **处理步骤**
 
-确保addMonitor/clearMonitor的路径合法，详情请参见[addMonitor/clearMonitor开发指南](../../ui/state-management/arkts-new-addMonitor-clearMonitor.md#限制条件)。
+确保addMonitor/clearMonitor的路径合法，详情请参见addMonitor/clearMonitor开发指南。
 
 ## 130002 addMonitor/clearMonitor非法回调方法
 
@@ -64,7 +64,7 @@ addMonitor/clearMonitor的回调方法参数不合法。
 
 **处理步骤**
 
-确保addMonitor/clearMonitor的回调方法合法，详情请参见[addMonitor/clearMonitor开发指南](../../ui/state-management/arkts-new-addMonitor-clearMonitor.md#限制条件)。
+确保addMonitor/clearMonitor的回调方法合法，详情请参见addMonitor/clearMonitor开发指南。
 
 ## 140001 applySync/flushUpdates/flushUIUpdates非法调用
 
@@ -74,11 +74,11 @@ The function is not allowed to be called in @Computed.
 
 **错误描述**
 
-applySync/flushUpdates/flushUIUpdates接口在[\@Computed](../../ui/state-management/arkts-new-computed.md)装饰的getter方法内调用是不合法的。
+applySync/flushUpdates/flushUIUpdates接口在\@Computed装饰的getter方法内调用是不合法的。
 
 **可能原因**
 
-applySync/flushUpdates/flushUIUpdates接口在@Computed装饰的getter方法内被调用。@Computed装饰的getter方法用于派生值的计算，在其中调用这些接口会触发额外的状态刷新，破坏计算属性的求值逻辑，具体限制请参见[applySync/flushUpdates/flushUIUpdates接口限制条件](../../ui/state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md#限制条件)。
+applySync/flushUpdates/flushUIUpdates接口在@Computed装饰的getter方法内被调用。@Computed装饰的getter方法用于派生值的计算，在其中调用这些接口会触发额外的状态刷新，破坏计算属性的求值逻辑，具体限制请参见applySync/flushUpdates/flushUIUpdates接口限制条件。
 
 **处理步骤**
 
@@ -92,11 +92,11 @@ The function is not allowed to be called in @Monitor.
 
 **错误描述**
 
-flushUpdates/flushUIUpdates接口在[\@Monitor](../../ui/state-management/arkts-new-monitor.md)回调方法内调用是不合法的。
+flushUpdates/flushUIUpdates接口在\@Monitor回调方法内调用是不合法的。
 
 **可能原因**
 
-flushUpdates/flushUIUpdates接口在@Monitor回调方法内被调用。@Monitor的回调方法在状态变化时被触发，在其中调用这些接口会导致重复的状态刷新，可能引发循环更新，具体限制请参见[applySync/flushUpdates/flushUIUpdates接口限制条件](../../ui/state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md#限制条件)。
+flushUpdates/flushUIUpdates接口在@Monitor回调方法内被调用。@Monitor的回调方法在状态变化时被触发，在其中调用这些接口会导致重复的状态刷新，可能引发循环更新，具体限制请参见applySync/flushUpdates/flushUIUpdates接口限制条件。
 
 **处理步骤**
 
@@ -118,7 +118,7 @@ Not supported type! The type should have function constructor signature.
 
 **处理步骤**
 
-确保connect/globalConnect传入的type为TypeConstructorWithArgs\<T\>类型，具体支持类型见[PersistenceV2使用限制](../../ui/state-management/arkts-new-persistencev2.md#使用限制)和[AppStorageV2使用限制](../../ui/state-management/arkts-new-appstoragev2.md#使用限制)。
+确保connect/globalConnect传入的type为TypeConstructorWithArgs\<T\>类型，具体支持类型见PersistenceV2使用限制和AppStorageV2使用限制。
 
 ## 140104 AppStorageV2和PersistenceV2使用非法的默认值创建函数
 
@@ -154,7 +154,7 @@ connect和globalConnect使用了相同的key。
 
 **处理步骤**
 
-不建议混用connect和globalConnect；如确需混用，请确保这两个接口不使用相同的key。详情请参见[PersistenceV2使用限制](../../ui/state-management/arkts-new-persistencev2.md#使用限制)。
+不建议混用connect和globalConnect；如确需混用，请确保这两个接口不使用相同的key。详情请参见PersistenceV2使用限制。
 
 ## 140106 使用PersistenceV2存储数据到不支持的加密级别
 
@@ -172,7 +172,7 @@ AreaMode Value Error! value range can only in EL1-EL5
 
 **处理步骤**
 
-设置加密级别范围为EL1-EL5，示例请参考[使用globalConnect存储数据](../../ui/state-management/arkts-new-persistencev2.md#使用globalconnect存储数据)。
+设置加密级别范围为EL1-EL5，示例请参考使用globalConnect存储数据。
 
 ## 140107 AppStorageV2和PersistenceV2数据类型不匹配
 
@@ -202,7 +202,7 @@ Miss @Type.
 
 **错误描述**
 
-PersistenceV2的globalConnect时，缺少[\@Type](../../ui/state-management/arkts-new-type.md)装饰器。
+PersistenceV2的globalConnect时，缺少\@Type装饰器。
 
 **可能原因**
 
@@ -220,15 +220,15 @@ PersistenceV2的globalConnect时，缺少[\@Type](../../ui/state-management/arkt
 
 **错误描述**
 
-在[\@Builder](../../ui/state-management/arkts-builder.md)装饰的函数内部修改入参属性。
+在\@Builder装饰的函数内部修改入参属性。
 
 **可能原因**
 
-在\@Builder装饰的函数内部修改入参属性，详情见[\@Builder限制条件](../../ui/state-management/arkts-builder.md#限制条件)。
+在\@Builder装饰的函数内部修改入参属性，详情见\@Builder限制条件。
 
 **处理步骤**
 
-不在\@Builder装饰的函数内部修改入参属性，可使用MutableBinding代替，示例请参考[在@Builder装饰的函数内部修改入参内容](../../ui/state-management/arkts-builder.md#在builder装饰的函数内部修改入参内容)。
+不在\@Builder装饰的函数内部修改入参属性，可使用MutableBinding代替，示例请参考在@Builder装饰的函数内部修改入参内容。
 
 ## 140110 在UI中使用非@Track装饰的属性发生运行时报错
 
@@ -238,15 +238,15 @@ Illegal usage of not @Track'ed property on UI!
 
 **错误描述**
 
-如果类中有一个[\@Track](../../ui/state-management/arkts-track.md)装饰的属性，则禁止在UI中使用该类中未被@Track装饰的属性。
+如果类中有一个\@Track装饰的属性，则禁止在UI中使用该类中未被@Track装饰的属性。
 
 **可能原因**
 
-将有\@Track装饰类中的未被\@Track装饰的属性绑定在UI上，详情见[\@Track限制条件](../../ui/state-management/arkts-track.md#限制条件)。
+将有\@Track装饰类中的未被\@Track装饰的属性绑定在UI上，详情见\@Track限制条件。
 
 **处理步骤**
 
-为报错信息中提示的属性添加\@Track装饰，示例请参考[在UI中使用非@Track装饰的属性发生运行时报错](../../ui/state-management/arkts-track.md#在ui中使用非track装饰的属性发生运行时报错)。
+为报错信息中提示的属性添加\@Track装饰，示例请参考在UI中使用非@Track装饰的属性发生运行时报错。
 
 ## 140112 @Consume缺失对应的@Provide
 
@@ -256,7 +256,7 @@ Illegal usage of not @Track'ed property on UI!
 
 **错误描述**
 
-[\@Consume](../../ui/state-management/arkts-provide-and-consume.md)初始化失败，\@Consume没有找到匹配的[\@Provide](../../ui/state-management/arkts-provide-and-consume.md)数据源，且开发者没有提供\@Consume默认值。
+\@Consume初始化失败，\@Consume没有找到匹配的\@Provide数据源，且开发者没有提供\@Consume默认值。
 
 **可能原因**
 
@@ -266,8 +266,8 @@ Illegal usage of not @Track'ed property on UI!
 
 **处理步骤**
 
-1. 确保初始化\@Consume时，其父组件上存在相同key的\@Provide变量，或设置默认值，示例见[\@Consume限制条件](../../ui/state-management/arkts-provide-and-consume.md#限制条件)。
-2. 确保创建\@Consume所在组件时，父组件及其祖先节点生命周期未结束，即[aboutToDisappear](./arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)未调用。
+1. 确保初始化\@Consume时，其父组件上存在相同key的\@Provide变量，或设置默认值，示例见\@Consume限制条件。
+2. 确保创建\@Consume所在组件时，父组件及其祖先节点生命周期未结束，即aboutToDisappear未调用。
 
 ## 140113 复用\@ComponentV2自定义组件但工具链版本过低
 
@@ -277,7 +277,7 @@ Old toolchain detected. Please upgrade to the latest.
 
 **错误描述**
 
-从API version 18开始，支持[\@Reusable](../../ui/state-management/arkts-reusable.md)（父组件）中创建[\@ComponentV2](../../ui/state-management/arkts-create-custom-components.md#componentv2)（子组件），但需要开发者使用API version 18及以上SDK，否则会有运行时报错。从API version 23开始，将返回此错误码，详情见[\@ReusableV2使用限制](../../ui/state-management/arkts-new-reusableV2.md#使用限制)。
+从API version 18开始，支持\@Reusable（父组件）中创建\@ComponentV2（子组件），但需要开发者使用API version 18及以上SDK，否则会有运行时报错。从API version 23开始，将返回此错误码，详情见\@ReusableV2使用限制。
 
 **可能原因**
 
@@ -295,7 +295,7 @@ duplicate @Provide property. Property with this name is provided by one of the a
 
 **错误描述**
 
-在同一个组件、父组件或其祖先节点中，存在声明了相同的key的\@Provide，详情见[\@Provide限制条件](../../ui/state-management/arkts-provide-and-consume.md#限制条件)。
+在同一个组件、父组件或其祖先节点中，存在声明了相同的key的\@Provide，详情见\@Provide限制条件。
 
 **可能原因**
 
@@ -303,7 +303,7 @@ duplicate @Provide property. Property with this name is provided by one of the a
 
 **处理步骤**
 
-保证在同一个组件，包括其父组件和其祖先节点中，\@Provide的key不同。或将相同key设置为可重写，即设置[ProvideOptions](./arkui-ts/ts-state-management-provide.md#provideoptions11)中的allowOverride参数，示例见[\@Provide支持allowOverride参数](../../ui/state-management/arkts-provide-and-consume.md#provide支持allowoverride参数)。
+保证在同一个组件，包括其父组件和其祖先节点中，\@Provide的key不同。或将相同key设置为可重写，即设置ProvideOptions中的allowOverride参数，示例见\@Provide支持allowOverride参数。
 
 ## 140115 状态管理V1状态变量使用了非法的类型
 
@@ -321,7 +321,7 @@ Illegal variable value error with decorated variable
 
 **处理步骤**
 
-使用状态管理V1的状态变量支持的类型，以\@State为例，详情见[\@State装饰器使用规则说明](../../ui/state-management/arkts-state.md#装饰器使用规则说明)。
+使用状态管理V1的状态变量支持的类型，以\@State为例，详情见\@State装饰器使用规则说明。
 
 ## 140116 AppStorageV2或PersistenceV2使用非法的key
 
@@ -357,4 +357,4 @@ The data source of the @Link-decorated variable 'xxx' in custom component 'yyy' 
 
 **处理步骤**
 
-父组件初始化子组件@Link变量时，应该直接传入父组件的状态变量，参考@Link[变量的传递/访问规则说明](../../ui/state-management/arkts-link.md#变量的传递访问规则说明)。
+父组件初始化子组件@Link变量时，应该直接传入父组件的状态变量，参考@Link变量的传递/访问规则说明。

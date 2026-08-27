@@ -4,8 +4,6 @@
 
 **起始版本：** 15
 
-<!--Device-unnamed-interface EditableTextChangeValue--><!--Device-unnamed-interface EditableTextChangeValue-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ content: string
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EditableTextChangeValue-content: string--><!--Device-EditableTextChangeValue-content: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## options
@@ -39,7 +35,7 @@ content: string
 options?: TextChangeOptions
 ```
 
-变化的文本内容信息。 默认值：undefined。
+变化的文本内容信息。默认值：undefined。
 
 **类型：** [TextChangeOptions](arkts-arkui-textchangeoptions-i.md)
 
@@ -49,8 +45,6 @@ options?: TextChangeOptions
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EditableTextChangeValue-options?: TextChangeOptions--><!--Device-EditableTextChangeValue-options?: TextChangeOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## previewText
@@ -59,7 +53,7 @@ options?: TextChangeOptions
 previewText?: PreviewText
 ```
 
-预上屏的内容信息。 默认值：undefined，表示无预上屏内容。
+预上屏的内容信息。默认值：undefined，表示无预上屏内容。
 
 **类型：** [PreviewText](arkts-arkui-previewtext-i.md)
 
@@ -69,7 +63,4 @@ previewText?: PreviewText
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EditableTextChangeValue-previewText?: PreviewText--><!--Device-EditableTextChangeValue-previewText?: PreviewText-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

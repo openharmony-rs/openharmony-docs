@@ -1,10 +1,8 @@
-# NumberFormat(国际化-Intl)
+# NumberFormat
 
 提供标准的数字格式化的能力。
 
 **起始版本：** 6
-
-<!--Device-intl-export class NumberFormat--><!--Device-intl-export class NumberFormat-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -26,8 +24,6 @@ constructor()
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NumberFormat-constructor()--><!--Device-NumberFormat-constructor()-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **示例**
@@ -35,8 +31,45 @@ constructor()
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
 
+// 默认构造函数使用系统当前区域ID创建
+let locale = new intl.Locale();
+// 返回系统当前区域ID
+let localeID = locale.toString();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统当前区域ID创建DateTimeFormat对象
+let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
 // 使用系统当前区域ID创建NumberFormat对象
 let formatter: intl.NumberFormat = new intl.NumberFormat();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统区域创建Collator对象
+let collator = new intl.Collator();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统区域创建PluralRules对象
+let pluralRules = new intl.PluralRules();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统区域创建RelativeTimeFormat对象
+let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat();
 ```
 
 ## constructor
@@ -51,16 +84,14 @@ constructor(locale: string | Array<string>, options?: NumberOptions)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NumberFormat-constructor(locale: string | Array<string>, options?: NumberOptions)--><!--Device-NumberFormat-constructor(locale: string | Array<string>, options?: NumberOptions)-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string \| Array&lt;string&gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
-| options | [NumberOptions](arkts-localization-intl-numberoptions-i.md) | 否 | 创建数字格式化对象时可设置的配置项。 <br>默认值：所有属性都取默认值时的配置项。 |
+| locale | string \| Array & lt;string & gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
+| options | [NumberOptions](arkts-localization-intl-numberoptions-i.md) | 否 | 创建数字格式化对象时可设置的配置项。 默认值：所有属性都取默认值时的配置项。 |
 
 **示例**
 
@@ -74,7 +105,7 @@ let formatter: intl.NumberFormat = new intl.NumberFormat('en-GB', { style: 'deci
 ## format
 
 ```TypeScript
-format(num: double): string
+format(num: number): string
 ```
 
 对数字进行格式化，返回格式化后的数字字符串。
@@ -83,15 +114,13 @@ format(num: double): string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NumberFormat-format(num: double): string--><!--Device-NumberFormat-format(num: double): string-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| num | double | 是 | 数字对象。<br>**起始版本：** 12 |
+| num | number | 是 | 数字对象。<br>**起始版本：** 12 |
 
 **返回值：**
 
@@ -119,7 +148,7 @@ let result: string = formatter.format(1.23456); // result = 1.23
 ## formatRange
 
 ```TypeScript
-formatRange(startRange: double, endRange: double): string
+formatRange(startRange: number, endRange: number): string
 ```
 
 对数字范围进行格式化，返回格式化后的数字范围字符串。
@@ -128,16 +157,14 @@ formatRange(startRange: double, endRange: double): string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NumberFormat-formatRange(startRange: double, endRange: double): string--><!--Device-NumberFormat-formatRange(startRange: double, endRange: double): string-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| startRange | double | 是 | 数字范围的起始值。 |
-| endRange | double | 是 | 数字范围的终止值。 |
+| startRange | number | 是 | 数字范围的起始值。 |
+| endRange | number | 是 | 数字范围的终止值。 |
 
 **返回值：**
 
@@ -166,8 +193,6 @@ resolvedOptions(): NumberOptions
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NumberFormat-resolvedOptions(): NumberOptions--><!--Device-NumberFormat-resolvedOptions(): NumberOptions-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **返回值：**
@@ -187,4 +212,3 @@ let options: intl.NumberOptions = formatter.resolvedOptions();
 let style: string | undefined = options.style; // style = 'decimal'
 let notation: string | undefined = options.notation; // notation = 'scientific'
 ```
-

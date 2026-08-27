@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { usb } from '@kit.BasicServicesKit';
-import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## hasRight
@@ -21,8 +19,6 @@ function hasRight(deviceName: string): boolean
 **废弃版本：** 9
 
 **替代接口：** [hasRight](arkts-basicservices-usbmanager-hasright-f.md)
-
-<!--Device-usb-function hasRight(deviceName: string): boolean--><!--Device-usb-function hasRight(deviceName: string): boolean-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -45,4 +41,3 @@ let devicesName= "1-1";
 let bool = usb.hasRight(devicesName);
 console.info(`hasRight = ${bool}`);
 ```
-

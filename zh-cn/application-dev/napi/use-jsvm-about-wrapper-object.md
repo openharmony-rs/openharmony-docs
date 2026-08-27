@@ -1,14 +1,14 @@
 # 使用JSVM-API接口进行Wrapper object相关开发
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
-JSVM-API中，装箱类型(Wrapper object)判断相关接口支持通过不同API快速判断object的装箱类型。
+JSVM-API中，装箱类型（Wrapper object）判断相关接口支持通过不同API快速判断object的装箱类型。
 
 ## 基本概念
 
@@ -26,7 +26,7 @@ JSVM-API中，装箱类型(Wrapper object)判断相关接口支持通过不同AP
 
 ## 使用示例
 
-JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅展示接口对应的C++代码。
+JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程，本文仅展示接口对应的C++代码。
 
 ### 使用接口判断是否是Number Object
 

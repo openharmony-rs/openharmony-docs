@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## addUntrustedConfig
@@ -15,7 +12,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 function addUntrustedConfig(config: WifiDeviceConfig): Promise<boolean>
 ```
 
-添加不可信网络配置，使用Promise异步回调。 &lt;p&gt;该方法一次添加一个配置。添加该配置后，设备将决定是否连接到热点。
+添加不可信网络配置，使用Promise异步回调。<p>该方法一次添加一个配置。添加该配置后，设备将决定是否连接到热点。
 
 **起始版本：** 7
 
@@ -24,8 +21,6 @@ function addUntrustedConfig(config: WifiDeviceConfig): Promise<boolean>
 **替代接口：** [addCandidateConfig](arkts-connectivity-wifimanager-addcandidateconfig-f.md)
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
-
-<!--Device-wifi-function addUntrustedConfig(config: WifiDeviceConfig): Promise<boolean>--><!--Device-wifi-function addUntrustedConfig(config: WifiDeviceConfig): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -39,7 +34,7 @@ function addUntrustedConfig(config: WifiDeviceConfig): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | 表示操作结果，{ |
+| Promise & lt;boolean & gt; | 表示操作结果，{ |
 
 **示例**
 
@@ -81,7 +76,7 @@ try {
 function addUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback<boolean>): void
 ```
 
-添加不可信网络配置，使用callback异步回调。 &lt;p&gt;该方法一次添加一个配置。添加该配置后，设备将决定是否连接到热点。
+添加不可信网络配置，使用callback异步回调。<p>该方法一次添加一个配置。添加该配置后，设备将决定是否连接到热点。
 
 **起始版本：** 7
 
@@ -91,8 +86,6 @@ function addUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback<bo
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
-<!--Device-wifi-function addUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback<boolean>): void--><!--Device-wifi-function addUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback<boolean>): void-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **参数：**
@@ -100,7 +93,7 @@ function addUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback<bo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | config | WifiDeviceConfig | 是 | WLAN配置信息。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 |  |
 
 **示例**
 
@@ -127,11 +120,10 @@ try {
       domains: []
     }
   }
-  wifi.addUntrustedConfig(config,(error,result) => {
+  wifi.addUntrustedConfig(config, (error, result) => {
     console.info("result:" + JSON.stringify(result));
   });  
 }catch(error){
   console.error("failed:" + JSON.stringify(error));
 }
 ```
-

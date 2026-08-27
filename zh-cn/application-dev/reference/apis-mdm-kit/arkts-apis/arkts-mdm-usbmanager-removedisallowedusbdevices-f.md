@@ -12,15 +12,17 @@ import { usbManager } from '@kit.MDMKit';
 function removeDisallowedUsbDevices(admin: Want, usbDevices: Array<UsbDeviceType>): void
 ```
 
-移除禁止使用的USB设备类型。 **使用场景**： - 企业安全管理场景，需要解除对某些USB设备类型的禁用 - 设备管理员需要动态调整禁止使用的USB设备类型列表 - 当某些USB设备类型不再存在安全风险时，从禁用名单中移除
+移除禁止使用的USB设备类型。  
+**使用场景**：  
+- 企业安全管理场景，需要解除对某些USB设备类型的禁用  
+- 设备管理员需要动态调整禁止使用的USB设备类型列表  
+- 当某些USB设备类型不再存在安全风险时，从禁用名单中移除
 
 **起始版本：** 14
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-usbManager-function removeDisallowedUsbDevices(admin: Want, usbDevices: Array<UsbDeviceType>): void--><!--Device-usbManager-function removeDisallowedUsbDevices(admin: Want, usbDevices: Array<UsbDeviceType>): void-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -35,10 +37,10 @@ function removeDisallowedUsbDevices(admin: Want, usbDevices: Array<UsbDeviceType
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -64,4 +66,3 @@ try {
   console.error(`Failed to remove disallowed USB devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

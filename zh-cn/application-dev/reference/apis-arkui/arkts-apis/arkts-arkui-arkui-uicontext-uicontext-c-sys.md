@@ -1,10 +1,18 @@
 # UIContext
 
-UIContext实例对象。 > **说明：** > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。 > > - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的 > [getUIContext()](../../../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定 > 义组件内置方法[getUIContext()](../../../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext > 实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getcallingscopeuicontext)获取UIContext实例。本文中 > UIContext对象以uiContext表示。
+UIContext实例对象。
+
+> **说明：**
+
+> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> 
+> - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的
+> getUIContext()方法获取UIContext实例，第二种是通过自定
+> 义组件内置方法getUIContext()获取UIContext
+> 实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](arkts-arkui-arkui-uicontext-uicontext-c.md#getcallingscopeuicontext)获取UIContext实例。本文中
+> UIContext对象以uiContext表示。
 
 **起始版本：** 10
-
-<!--Device-unnamed-export class UIContext--><!--Device-unnamed-export class UIContext-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,33 +24,6 @@ import { GestureListenerType, GestureActionPhase, GestureTriggerInfo, GestureObs
 import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
 import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
 ```
-
-## animateToImmediately
-
-```TypeScript
-animateToImmediately(param: AnimateParam, processor: Callback<void>): void
-```
-
-通过UIContext对象指定明确的动画主实例上下文，并触发显式动画立即下发。避免由于找不到实例或实例不对，导致的动画不执行或动画结束回调不执行问题。使用callback异步回调。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIContext-animateToImmediately(param: AnimateParam, processor: Callback<void>): void--><!--Device-UIContext-animateToImmediately(param: AnimateParam, processor: Callback<void>): void-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| param | [AnimateParam](../../apis-na/arkts-apis/arkts-na-common-animateparam-i.md) | 是 | 设置动画效果相关参数。 |
-| processor | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | 回调函数。指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
 
 ## clearResourceCache
 
@@ -57,8 +38,6 @@ clearResourceCache(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12 - 12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIContext-clearResourceCache(): void--><!--Device-UIContext-clearResourceCache(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,8 +79,6 @@ freezeUINode(id: string, isFrozen: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UIContext-freezeUINode(id: string, isFrozen: boolean): void--><!--Device-UIContext-freezeUINode(id: string, isFrozen: boolean): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -111,7 +88,7 @@ freezeUINode(id: string, isFrozen: boolean): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | string | 是 | 组件的id。 |
-| isFrozen | boolean | 是 | 是否设置冻结。<br/>true表示设置冻结，false表示设置不冻结。<br/>默认值为false。 |
+| isFrozen | boolean | 是 | 是否设置冻结。true表示设置冻结，false表示设置不冻结。默认值为false。 |
 
 **错误码：**
 
@@ -131,8 +108,6 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UIContext-freezeUINode(uniqueId: number, isFrozen: boolean): void--><!--Device-UIContext-freezeUINode(uniqueId: number, isFrozen: boolean): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -142,7 +117,7 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uniqueId | number | 是 | 组件的uniqueId。 |
-| isFrozen | boolean | 是 | 是否设置冻结。<br/>true表示设置冻结，false表示设置不冻结。<br/>默认值为false。 |
+| isFrozen | boolean | 是 | 是否设置冻结。true表示设置冻结，false表示设置不冻结。默认值为false。 |
 
 **错误码：**
 
@@ -156,13 +131,11 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
 ```
 
-获取[LuminanceSampler](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)取色对象，通过该对象设置背景亮度取色参数、注册亮度变化监听回调、取消注册监听回调。
+获取[LuminanceSampler](arkts-arkui-arkui-uicontext-uicontext-c.md)取色对象，通过该对象设置背景亮度取色参数、注册亮度变化监听回调、取消注册监听回调。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UIContext-getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined--><!--Device-UIContext-getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -172,13 +145,13 @@ getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | [TargetInfo](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-targetinfo-i.md) | 是 | 目标组件的标识。 |
+| target | [TargetInfo](arkts-arkui-arkui-uicontext-targetinfo-i.md) | 是 | 目标组件的标识。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [LuminanceSampler](arkts-arkui-arkui-uicontext-luminancesampler-c-sys.md) | the luminance sampler or undefined. |
+| [LuminanceSampler](arkts-arkui-arkui-uicontext-luminancesampler-c-sys.md) \| undefined | the luminance sampler or undefined. |
 
 **示例**
 
@@ -196,8 +169,6 @@ recycleInvisibleImageMemory(enabled: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UIContext-recycleInvisibleImageMemory(enabled: boolean): void--><!--Device-UIContext-recycleInvisibleImageMemory(enabled: boolean): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -206,7 +177,7 @@ recycleInvisibleImageMemory(enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | 使能开关项：true开启，false关闭； 默认不开启，由系统应用按需开启。 <br>默认值：false <br>默认值：false <br>默认值：false <br>默认值：false <br>配置为异常undefined时，恢复为默认值false |
+| enabled | boolean | 是 | 使能开关项：true开启，false关闭； 默认不开启，由系统应用按需开启。 默认值：false 默认值：false 默认值：false 默认值：false 配置为异常undefined时，恢复为默认值false |
 
 **示例**
 
@@ -238,13 +209,15 @@ struct ImageRecycleSample {
 setDynamicDimming(id: string, value: number): void
 ```
 
-通过该方法设置组件的压暗程度。 > **说明：** > > 设置该属性后设置其他效果类属性会导致效果冲突。
+通过该方法设置组件的压暗程度。
+
+> **说明：**
+> 
+> 设置该属性后设置其他效果类属性会导致效果冲突。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UIContext-setDynamicDimming(id: string, value: number): void--><!--Device-UIContext-setDynamicDimming(id: string, value: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -291,8 +264,6 @@ setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig):
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UIContext-setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig): void--><!--Device-UIContext-setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -302,11 +273,10 @@ setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uniqueId | number | 是 | The unique id of the input component. |
-| config | [KeyboardAppearanceConfig](arkts-arkui-textcommon-keyboardappearanceconfig-i-sys.md) | 是 | The config of keyboard. |
+| config | [KeyboardAppearanceConfig](arkts-arkui-keyboardappearanceconfig-i-sys.md) | 是 | The config of keyboard. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-

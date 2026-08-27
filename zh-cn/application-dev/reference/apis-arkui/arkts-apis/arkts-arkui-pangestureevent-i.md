@@ -1,12 +1,10 @@
 # PanGestureEvent
 
-继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md)。可将该对象作为onGestureJudgeBegin的 event参数来传递。
+继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md)。可将该对象作为[onGestureJudgeBegin](../arkts-components/arkts-arkui-commonmethod-c.md#ongesturejudgebegin)的 event参数来传递。
 
 **继承/实现关系：** PanGestureEvent extends [BaseGestureEvent](arkts-arkui-basegestureevent-i.md)
 
 **起始版本：** 11
-
-<!--Device-unnamed-interface PanGestureEvent--><!--Device-unnamed-interface PanGestureEvent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,8 +29,6 @@ offsetX: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PanGestureEvent-offsetX: number--><!--Device-PanGestureEvent-offsetX: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## offsetY
@@ -50,8 +46,6 @@ offsetY: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PanGestureEvent-offsetY: number--><!--Device-PanGestureEvent-offsetY: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,8 +65,6 @@ velocity: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PanGestureEvent-velocity: number--><!--Device-PanGestureEvent-velocity: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## velocityX
@@ -90,8 +82,6 @@ velocityX: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PanGestureEvent-velocityX: number--><!--Device-PanGestureEvent-velocityX: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -111,7 +101,4 @@ velocityY: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PanGestureEvent-velocityY: number--><!--Device-PanGestureEvent-velocityY: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -2,11 +2,7 @@
 
 组件大小、位置、平移缩放旋转及仿射矩阵属性信息。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-componentUtils-export interface ComponentInfo--><!--Device-componentUtils-export interface ComponentInfo-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,13 +22,11 @@ localOffset: Offset
 
 **类型：** Offset
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ComponentInfo-localOffset: Offset--><!--Device-ComponentInfo-localOffset: Offset-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,13 +40,11 @@ rotate: RotateResult
 
 **类型：** [RotateResult](arkts-arkui-componentutils-rotateresult-i.md)
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ComponentInfo-rotate: RotateResult--><!--Device-ComponentInfo-rotate: RotateResult-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,13 +58,11 @@ scale: ScaleResult
 
 **类型：** [ScaleResult](arkts-arkui-componentutils-scaleresult-i.md)
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ComponentInfo-scale: ScaleResult--><!--Device-ComponentInfo-scale: ScaleResult-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,13 +76,11 @@ screenOffset: Offset
 
 **类型：** Offset
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ComponentInfo-screenOffset: Offset--><!--Device-ComponentInfo-screenOffset: Offset-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,13 +94,11 @@ size: Size
 
 **类型：** Size
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ComponentInfo-size: Size--><!--Device-ComponentInfo-size: Size-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,13 +112,11 @@ transform: Matrix4Result
 
 **类型：** [Matrix4Result](arkts-arkui-componentutils-matrix4result-t.md)
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ComponentInfo-transform: Matrix4Result--><!--Device-ComponentInfo-transform: Matrix4Result-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,13 +130,11 @@ translate: TranslateResult
 
 **类型：** [TranslateResult](arkts-arkui-componentutils-translateresult-i.md)
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ComponentInfo-translate: TranslateResult--><!--Device-ComponentInfo-translate: TranslateResult-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,13 +148,10 @@ windowOffset: Offset
 
 **类型：** Offset
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ComponentInfo-windowOffset: Offset--><!--Device-ComponentInfo-windowOffset: Offset-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

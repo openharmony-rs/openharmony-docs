@@ -1,10 +1,8 @@
 # MediaTab
 
-媒体标签页的定义。
+媒体标签页的定义。@interface MediaTab
 
 **起始版本：** 23
-
-<!--Device-avMusicTemplate-interface MediaTab--><!--Device-avMusicTemplate-interface MediaTab-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -28,8 +26,6 @@ extraDataJson?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MediaTab-extraDataJson?: string--><!--Device-MediaTab-extraDataJson?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## tabIcon
@@ -45,8 +41,6 @@ tabIcon?: image.PixelMap
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-MediaTab-tabIcon?: image.PixelMap--><!--Device-MediaTab-tabIcon?: image.PixelMap-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -64,8 +58,6 @@ tabId: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MediaTab-tabId: string--><!--Device-MediaTab-tabId: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## tabName
@@ -82,7 +74,4 @@ tabName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MediaTab-tabName: string--><!--Device-MediaTab-tabName: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-

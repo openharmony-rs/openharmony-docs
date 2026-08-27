@@ -2,9 +2,7 @@
 
 通知内容。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface NotificationContent--><!--Device-unnamed-export interface NotificationContent-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -18,11 +16,8 @@ liveView?: NotificationLiveViewContent
 
 **类型：** [NotificationLiveViewContent](arkts-notification-notificationcontent-notificationliveviewcontent-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-NotificationContent-liveView?: NotificationLiveViewContent--><!--Device-NotificationContent-liveView?: NotificationLiveViewContent-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
-

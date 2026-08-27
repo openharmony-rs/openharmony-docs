@@ -9,15 +9,15 @@
 
 ## 场景介绍
 
-在多对多跨应用数据共享的场景下，需要提供一条数据通路能够写入多个不同应用的数据并共享给其他应用进行读取。
+在多对多跨应用数据共享的场景下，需要提供一条数据通路能够写入多个不同应用的数据并共享给其他应用进行查询。
 
-UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化的数据通路，提供了标准化的数据写入与读取接口。
+UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化的数据通路，提供了标准化的数据写入与查询接口。
 
 ## 标准化数据通路的定义和实现
 
-标准化数据通路是为各种业务场景提供的跨应用的数据写入与读取通路，它可以暂存应用需要共享的符合标准化数据定义的统一数据对象，并提供给其他应用进行访问，同时按照一定的策略对暂存数据的修改、删除权限和生命周期进行管理。
+标准化数据通路是为各种业务场景提供的跨应用的数据写入与查询通路，它可以暂存应用需要共享的符合标准化数据定义的统一数据对象，并提供给其他应用进行访问，同时按照一定的策略对暂存数据的修改、删除权限和生命周期进行管理。
 
-标准化数据通路通过UDMF提供的系统服务实现，应用（数据提供方）需要共享公共数据时可以通过UDMF提供的插入接口将数据写入到UDMF的数据通路中，并且可以通过UDMF提供的更新和删除接口对本应用已经存入数据进行更新和删除操作。目标应用（数据访问方）可以通过UDMF提供的读取接口进行数据的访问。
+标准化数据通路通过UDMF提供的系统服务实现，应用（数据提供方）需要共享公共数据时可以通过UDMF提供的插入接口将数据写入到UDMF的数据通路中，并且可以通过UDMF提供的更新和删除接口对本应用已经存入数据进行更新和删除操作。目标应用（数据访问方）可以通过UDMF提供的查询接口进行数据的访问。
 
 标准化数据通路相关接口不推荐多线程调用。
 
@@ -33,11 +33,11 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 当前UDMF中的跨应用数据共享通路有：**公共数据通路**
 
-**公共数据通路**：应用共享的公用数据共享通路，所有应用均可向通路中写入数据，写入方可以根据写入数据时生成的数据唯一标识符进行数据的更新、删除、指定数据标识符进行查询、全量查询；数据读取方能通过唯一标识符读取指定的数据，也可以设置Intention枚举类型为DATA_HUB来读取当前数据通路中的全量数据。公共数据通路通常仅用于传输应用间的过程数据，无法用于传输沙箱目录下文件等有权限管控的数据。UDMF会统一对数据的生命周期进行管理，每小时定期清理存入时长超过一小时的数据。
+**公共数据通路**：应用共享的公用数据共享通路，所有应用均可向通路中写入数据，写入方可以根据写入数据时生成的数据唯一标识符进行数据的更新、删除、指定数据标识符进行查询、全量查询；数据查询方能通过唯一标识符查询指定的数据，也可以设置Intention枚举类型为DATA_HUB来查询当前数据通路中的全量数据。公共数据通路通常仅用于传输应用间的过程数据，无法用于传输沙箱目录下文件等有权限管控的数据。UDMF会统一对数据的生命周期进行管理，每小时定期清理存入时长超过一小时的数据。
 
 ## 接口说明
 
-以下是UDMF标准化数据通路的相关接口，更多接口及使用方式请见[标准化数据通路/apis-arkdata/js-apis-data-unifiedDataChannel.md)和[标准化数据定义与描述/apis-arkdata/js-apis-data-uniformTypeDescriptor.md)。
+以下是UDMF标准化数据通路的相关接口，更多接口及使用方式请见标准化数据通路和标准化数据定义与描述。
 
 | 接口名称                                                                                    | 描述                                          | 
 |-----------------------------------------------------------------------------------------|---------------------------------------------|
@@ -49,7 +49,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 ## 开发步骤
 
-以[PlainText/apis-arkdata/js-apis-data-uniformDataStruct.md#plaintext)、[HTML/apis-arkdata/js-apis-data-uniformDataStruct.md#html)、[PixelMap/apis-arkdata/js-apis-data-uniformDataStruct.md#pixelmap15)三种数据进行多对多数据共享的过程为例说明开发步骤，数据提供方可以通过UDMF提供的insertData接口将数据写入公共数据通路，获取到的返回值（生成的数据的唯一标识符），可用于对其插入的数据进行更新和删除操作。数据访问方则可以通过UDMF提供的查询接口获取当前公共数据通路的全量数据。
+以PlainText、HTML、PixelMap三种数据进行多对多数据共享的过程为例说明开发步骤，数据提供方可以通过UDMF提供的insertData接口将数据写入公共数据通路，获取到的返回值（生成的数据的唯一标识符），可用于对其插入的数据进行更新和删除操作。数据访问方则可以通过UDMF提供的查询接口获取当前公共数据通路的全量数据。
 
 ### 数据提供方
 
@@ -75,7 +75,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
    2. 创建并插入数据。
 
       <!-- @[unified_data_channels_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+      
       ``` TypeScript
       // 准备PlainText文本数据内容
       let plainTextObj: uniformDataStruct.PlainText = {
@@ -94,7 +94,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
       // 为该记录增加一种样式，两种样式存储的是同一个数据，为不同表达形式
       record.addEntry(uniformTypeDescriptor.UniformDataType.HTML, htmlObj);
       let unifiedData = new unifiedDataChannel.UnifiedData(record);
-
+      
       // 准备pixelMap数据内容
       let arrayBuffer = new ArrayBuffer(4 * 3 * 3);
       let opt: image.InitializationOptions = {
@@ -118,20 +118,20 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
           if (err === undefined) {
             hilog.info(0xFF00, '[Sample_Udmf]', `Succeeded in inserting data. key = ${key}`);
           } else {
-            hilog.error(0xFF00, '[Sample_Udmf]', `Succeeded in inserting data. key = ${key})`);
+            hilog.error(0xFF00, '[Sample_Udmf]', `Failed to insert data. code is ${err.code}, message is ${err.message}`);
           }
         });
       } catch (e) {
         let error: BusinessError = e as BusinessError;
         hilog.error(0xFF00, '[Sample_Udmf]',
-          `Insert data throws an exception. code is ${error.code},message is ${error.message}`);
+          `Insert data throws an exception. code is ${error.code}, message is ${error.message}`);
       }
       ```
 
 3. 更新上一步插入的统一数据对象。
 
     <!-- @[unified_data_channels_update_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+    
     ``` TypeScript
     let plainTextUpdate: uniformDataStruct.PlainText = {
       uniformDataType: 'general.plain-text',
@@ -147,38 +147,38 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
     }
     recordUpdate.addEntry(uniformTypeDescriptor.UniformDataType.HTML, htmlUpdate);
     let unifiedDataUpdate = new unifiedDataChannel.UnifiedData(recordUpdate);
-
+    
     // 指定要更新的统一数据对象的URI
     let optionsUpdate: unifiedDataChannel.Options = {
       // 此处的key值仅为示例，不可直接使用，其值与insertData接口回调函数中key保持一致
       key: 'udmf://DataHub/com.ohos.test/0123456789'
     };
-
+    
     try {
       unifiedDataChannel.updateData(optionsUpdate, unifiedDataUpdate, (err) => {
         if (err === undefined) {
           hilog.info(0xFF00, '[Sample_Udmf]', `Succeeded in updating data.`);
         } else {
-          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to update data. code is ${err.code},message is ${err.message}`);
+          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to update data. code is ${err.code}, message is ${err.message}`);
         }
       });
     } catch (e) {
       let error: BusinessError = e as BusinessError;
       hilog.error(0xFF00, '[Sample_Udmf]',
-        `Update data throws an exception. code is ${error.code},message is ${error.message}`);
+        `Update data throws an exception. code is ${error.code}, message is ${error.message}`);
     }
     ```
 
 4. 删除存储在UDMF公共数据通路中的统一数据对象。
 
     <!-- @[unified_data_channels_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+    
     ``` TypeScript
     // 指定要删除数据的数据通路枚举类型
     let optionsDelete: unifiedDataChannel.Options = {
       intention: unifiedDataChannel.Intention.DATA_HUB
     };
-
+    
     try {
       unifiedDataChannel.deleteData(optionsDelete, (err, data) => {
         if (err === undefined) {
@@ -201,13 +201,13 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
             }
           }
         } else {
-          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to delete data. code is ${err.code},message is ${err.message}`);
+          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to delete data. code is ${err.code}, message is ${err.message}`);
         }
       });
     } catch (e) {
       let error: BusinessError = e as BusinessError;
       hilog.error(0xFF00, '[Sample_Udmf]',
-        `Delete data throws an exception. code is ${error.code},message is ${error.message}`);
+        `Delete data throws an exception. code is ${error.code}, message is ${error.message}`);
     }
     ```
 
@@ -225,13 +225,13 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 2. 查询存储在UDMF公共数据通路中的全量统一数据对象。
 
     <!-- @[unified_data_channels_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+    
     ``` TypeScript
     // 指定要查询数据的数据通路枚举类型
     let options: unifiedDataChannel.Options = {
       intention: unifiedDataChannel.Intention.DATA_HUB
     };
-
+    
     try {
       unifiedDataChannel.queryData(options, (err, data) => {
         if (err === undefined) {
@@ -254,12 +254,12 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
             }
           }
         } else {
-          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to query data. code is ${err.code},message is ${err.message}`);
+          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to query data. code is ${err.code}, message is ${err.message}`);
         }
       });
     } catch (e) {
       let error: BusinessError = e as BusinessError;
       hilog.error(0xFF00, '[Sample_Udmf]',
-        `Query data throws an exception. code is ${error.code},message is ${error.message}`);
+        `Query data throws an exception. code is ${error.code}, message is ${error.message}`);
     }
     ```

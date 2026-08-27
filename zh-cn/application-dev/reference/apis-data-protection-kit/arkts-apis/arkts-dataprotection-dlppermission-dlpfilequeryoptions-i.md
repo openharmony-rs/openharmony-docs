@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-dlpPermission-export interface DlpFileQueryOptions--><!--Device-dlpPermission-export interface DlpFileQueryOptions-End-->
-
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 ## 导入模块
@@ -28,7 +26,4 @@ classificationLabel?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DlpFileQueryOptions-classificationLabel?: string--><!--Device-DlpFileQueryOptions-classificationLabel?: string-End-->
-
 **系统能力：** SystemCapability.Security.DataLossPrevention
-

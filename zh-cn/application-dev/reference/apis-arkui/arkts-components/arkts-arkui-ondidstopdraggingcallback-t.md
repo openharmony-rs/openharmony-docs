@@ -14,8 +14,6 @@ declare type OnDidStopDraggingCallback = (willFling: boolean) => void
 
 **卡片能力：** 从API版本21开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare type OnDidStopDraggingCallback = (willFling: boolean) => void--><!--Device-unnamed-declare type OnDidStopDraggingCallback = (willFling: boolean) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -23,4 +21,3 @@ declare type OnDidStopDraggingCallback = (willFling: boolean) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | willFling | boolean | 是 | 结束拖拽后是否会有惯性动效。返回true代表拖拽结束后有惯性动效，返回false代表没有惯性动效。 |
-

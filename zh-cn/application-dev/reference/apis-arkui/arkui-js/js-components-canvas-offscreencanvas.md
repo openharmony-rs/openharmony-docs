@@ -35,13 +35,13 @@ getContext(contextId: string, options?: CanvasRenderingContext2DSettings): Offsc
 | 参数名       | 参数类型                                     | 必填   | 描述                     |
 | --------- | ---------------------------------------- | ---- | ---------------------- |
 | contextId | string                                   | 是    | 仅支持&nbsp;'2d'。         |
-| options   | [CanvasRenderingContext2DSettings](#canvasrenderingcontext2dsettings) | 否    | 当前仅支持配置是否开启抗锯齿功能，默认为关闭。 |
+| options   | CanvasRenderingContext2DSettings | 否    | 当前仅支持配置是否开启抗锯齿功能，默认为关闭。 |
 
 **返回值：**  
 
 | 类型                                       | 说明                          |
 | ---------------------------------------- | --------------------------- |
-| [OffscreenCanvasRenderingContext2D](js-offscreencanvasrenderingcontext2d.md) | 2D绘制对象，用于在画布组件上绘制矩形、文本、图片等。 |
+| OffscreenCanvasRenderingContext2D | 2D绘制对象，用于在画布组件上绘制矩形、文本、图片等。 |
 
 ### CanvasRenderingContext2DSettings
 
@@ -83,7 +83,7 @@ transferToImageBitmap(): ImageBitmap
 
 | 类型                                       | 说明              |
 | ---------------------------------------- | --------------- |
-| [ImageBitmap](js-components-canvas-imagebitmap.md) | 存储离屏画布上渲染的像素数据。 |
+| ImageBitmap | 存储离屏画布上渲染的像素数据。 |
 
 
 ## 示例

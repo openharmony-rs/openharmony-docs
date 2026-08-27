@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-unnamed-declare enum IndexerAlign--><!--Device-unnamed-declare enum IndexerAlign-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Left
@@ -20,8 +18,6 @@ Left
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-IndexerAlign-Left--><!--Device-IndexerAlign-Left-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Right
@@ -35,8 +31,6 @@ Right
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-IndexerAlign-Right--><!--Device-IndexerAlign-Right-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,8 +48,6 @@ START
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-IndexerAlign-START--><!--Device-IndexerAlign-START-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## END
@@ -72,7 +64,4 @@ END
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-IndexerAlign-END--><!--Device-IndexerAlign-END-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

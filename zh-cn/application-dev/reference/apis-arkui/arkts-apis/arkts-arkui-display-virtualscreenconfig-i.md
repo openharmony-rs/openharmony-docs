@@ -2,9 +2,7 @@
 
 创建虚拟屏幕的参数。
 
-**起始版本：** 23
-
-<!--Device-display-interface VirtualScreenConfig--><!--Device-display-interface VirtualScreenConfig-End-->
+**起始版本：** 16
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -17,32 +15,28 @@ import { display } from '@kit.ArkUI';
 ## density
 
 ```TypeScript
-density: double
+density: number
 ```
 
 指定虚拟屏幕的密度，单位为px，该参数为浮点数。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-VirtualScreenConfig-density: double--><!--Device-VirtualScreenConfig-density: double-End-->
+**起始版本：** 16
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## height
 
 ```TypeScript
-height: long
+height: number
 ```
 
 指定虚拟屏幕的高度，单位为px，该参数应为正整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-VirtualScreenConfig-height: long--><!--Device-VirtualScreenConfig-height: long-End-->
+**起始版本：** 16
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -56,9 +50,7 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-VirtualScreenConfig-name: string--><!--Device-VirtualScreenConfig-name: string-End-->
+**起始版本：** 16
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -72,9 +64,7 @@ supportsFocus?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-VirtualScreenConfig-supportsFocus?: boolean--><!--Device-VirtualScreenConfig-supportsFocus?: boolean-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -88,25 +78,20 @@ surfaceId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-VirtualScreenConfig-surfaceId: string--><!--Device-VirtualScreenConfig-surfaceId: string-End-->
+**起始版本：** 16
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## width
 
 ```TypeScript
-width: long
+width: number
 ```
 
 指定虚拟屏幕的宽度，单位为px，该参数应为正整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-VirtualScreenConfig-width: long--><!--Device-VirtualScreenConfig-width: long-End-->
+**起始版本：** 16
 
 **系统能力：** SystemCapability.Window.SessionManager
-

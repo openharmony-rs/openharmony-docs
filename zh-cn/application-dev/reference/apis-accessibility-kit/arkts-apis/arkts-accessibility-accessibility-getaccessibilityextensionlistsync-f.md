@@ -3,11 +3,8 @@
 ## 导入模块
 
 ```TypeScript
-import { config } from '@kit.AccessibilityKit';
 import { accessibility } from '@kit.AccessibilityKit';
 import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType } from '@kit.AccessibilityKit';
-import { GesturePath } from '@kit.AccessibilityKit';
-import { GesturePoint } from '@kit.AccessibilityKit';
 ```
 
 ## getAccessibilityExtensionListSync
@@ -19,15 +16,13 @@ function getAccessibilityExtensionListSync(
   ): Array<AccessibilityAbilityInfo>
 ```
 
-查询当前系统内辅助应用列表，支持按条件查询。 本接口为同步版本，与[accessibility.getAccessibilityExtensionList](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md)（异步版本）功能相 同，如需立即获取结果可使用本接口，如需在非阻塞场景下查询建议使用异步版本。
+查询当前系统内辅助应用列表，支持按条件查询。本接口为同步版本，与[accessibility.getAccessibilityExtensionList](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md)（异步版本）功能相 同，如需立即获取结果可使用本接口，如需在非阻塞场景下查询建议使用异步版本。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-accessibility-function getAccessibilityExtensionListSync(    abilityType: AbilityType,    stateType: AbilityState  ): Array<AccessibilityAbilityInfo>--><!--Device-accessibility-function getAccessibilityExtensionListSync(    abilityType: AbilityType,    stateType: AbilityState  ): Array<AccessibilityAbilityInfo>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -93,4 +88,3 @@ try {
   console.error(`Failed to get accessibility extension list. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

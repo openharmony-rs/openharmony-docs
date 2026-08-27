@@ -12,9 +12,6 @@ Defines the margin property.
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare type Margin = Padding--><!--Device-unnamed-declare type Margin = Padding-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **属性类型：** Padding
-

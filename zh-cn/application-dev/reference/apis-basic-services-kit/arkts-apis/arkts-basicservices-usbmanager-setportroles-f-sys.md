@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## setPortRoles
@@ -20,8 +19,6 @@ function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRo
 **废弃版本：** 12
 
 **替代接口：** [setPortRoleTypes](arkts-basicservices-usbmanager-setportroletypes-f-sys.md)(portId: int, powerRole: PowerRoleType, dataRole: DataRoleType)
-
-<!--Device-usbManager-function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise<void>--><!--Device-usbManager-function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise<void>-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -39,11 +36,24 @@ function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。调用成功时无返回值，调用失败时抛出异常。 |
+| Promise & lt;void & gt; | Promise对象。调用成功时无返回值，调用失败时抛出异常。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  <br>1.Mandatory parameters are left unspecified.  <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1.Mandatory parameters are left unspecified.  2.Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import {BusinessError} from '@kit.BasicServicesKit';
+// 定义端口号
+let portId: number = 1;
+// 设置端口角色：电源角色为SOURCE，数据角色为HOST
+usbManager.setPortRoles(portId, usbManager.PowerRoleType.SOURCE, usbManager.DataRoleType.HOST).then(() => {
+    console.info('usb setPortRoles successfully.');
+}).catch((err: BusinessError) => {
+    console.error(`usb setPortRoles failed. Code: ${err.code}, message: ${err.message}`);
+});
+```

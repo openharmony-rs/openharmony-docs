@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-contact-interface ContactSelectionOptions--><!--Device-contact-interface ContactSelectionOptions-End-->
-
 **系统能力：** SystemCapability.Applications.Contacts
 
 ## 导入模块
@@ -28,8 +26,6 @@ filter?: ContactSelectionFilter
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ContactSelectionOptions-filter?: ContactSelectionFilter--><!--Device-ContactSelectionOptions-filter?: ContactSelectionFilter-End-->
-
 **系统能力：** SystemCapability.Applications.Contacts
 
 ## isAutoDismissOnNavigation
@@ -48,8 +44,6 @@ isAutoDismissOnNavigation?: boolean
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ContactSelectionOptions-isAutoDismissOnNavigation?: boolean--><!--Device-ContactSelectionOptions-isAutoDismissOnNavigation?: boolean-End-->
-
 **系统能力：** SystemCapability.Applications.Contacts
 
 ## isDisplayedByName
@@ -65,8 +59,6 @@ isDisplayedByName?: boolean
 **起始版本：** 15
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ContactSelectionOptions-isDisplayedByName?: boolean--><!--Device-ContactSelectionOptions-isDisplayedByName?: boolean-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts
 
@@ -84,8 +76,6 @@ isMultiSelect?: boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ContactSelectionOptions-isMultiSelect?: boolean--><!--Device-ContactSelectionOptions-isMultiSelect?: boolean-End-->
-
 **系统能力：** SystemCapability.Applications.Contacts
 
 ## maxSelectable
@@ -102,7 +92,4 @@ maxSelectable?: number
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ContactSelectionOptions-maxSelectable?: number--><!--Device-ContactSelectionOptions-maxSelectable?: number-End-->
-
 **系统能力：** SystemCapability.Applications.Contacts
-

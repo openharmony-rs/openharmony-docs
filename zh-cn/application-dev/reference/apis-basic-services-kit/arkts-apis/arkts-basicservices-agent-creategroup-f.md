@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
-import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
 ## createGroup
@@ -15,9 +14,7 @@ function createGroup(config: GroupConfig): Promise<string>
 
 根据[GroupConfig](arkts-basicservices-agent-groupconfig-i.md)分组条件创建分组 ，并返回分组id。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-agent-function createGroup(config: GroupConfig): Promise<string>--><!--Device-agent-function createGroup(config: GroupConfig): Promise<string>-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -31,31 +28,11 @@ function createGroup(config: GroupConfig): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象。返回创建完成的分组id。 |
+| Promise & lt;string & gt; | Promise对象。返回创建完成的分组id。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:   1. Missing mandatory parameters.   2. Incorrect parameter type.   3. Parameter verification failed. |
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
-
-**示例**
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 准备分组配置选项 GroupConfig 对象。
-let config: request.agent.GroupConfig = {
-    notification: {},
-};
-// 调用 createGroup 接口创建分组。
-request.agent.createGroup(config).then((gid: string) => {
-  console.info(`Succeeded in creating a download task group. `);
-}).catch((err: Error) => {
-  console.error(`Failed to create a download group, Code: ${err.code}, message: ${err.message}`);
-});
-```
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface RadioStyle--><!--Device-unnamed-declare interface RadioStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,9 +17,9 @@
 checkedBackgroundColor?: ResourceColor
 ```
 
-开启状态底板颜色。 默认值：`\$r('sys.color.ohos_id_color_text_primary_activated')`
+开启状态底板颜色。默认值：`\$r('sys.color.ohos_id_color_text_primary_activated')`
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **默认值：** #007DFF
 
@@ -31,8 +29,6 @@ checkedBackgroundColor?: ResourceColor
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RadioStyle-checkedBackgroundColor?: ResourceColor--><!--Device-RadioStyle-checkedBackgroundColor?: ResourceColor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## indicatorColor
@@ -41,9 +37,9 @@ checkedBackgroundColor?: ResourceColor
 indicatorColor?: ResourceColor
 ```
 
-开启状态内部圆饼颜色。从API version 12开始，indicatorType设置为RadioIndicatorType.TICK和RadioIndicatorType.DOT时，支持修改内部颜色。indicatorType 设置为RadioIndicatorType.CUSTOM时，不支持修改内部颜色。 默认值：`\$r('sys.color.ohos_id_color_foreground_contrary')`
+开启状态内部圆饼颜色。从API version 12开始，indicatorType设置为RadioIndicatorType.TICK和RadioIndicatorType.DOT时，支持修改内部颜色。indicatorType 设置为RadioIndicatorType.CUSTOM时，不支持修改内部颜色。默认值：`\$r('sys.color.ohos_id_color_foreground_contrary')`
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **默认值：** #FFFFFF
 
@@ -53,8 +49,6 @@ indicatorColor?: ResourceColor
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RadioStyle-indicatorColor?: ResourceColor--><!--Device-RadioStyle-indicatorColor?: ResourceColor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## uncheckedBorderColor
@@ -63,9 +57,9 @@ indicatorColor?: ResourceColor
 uncheckedBorderColor?: ResourceColor
 ```
 
-关闭状态描边颜色。 默认值：`\$r('sys.color.ohos_id_color_switch_outline_off')`
+关闭状态描边颜色。默认值：`\$r('sys.color.ohos_id_color_switch_outline_off')`
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **默认值：** #182431
 
@@ -75,7 +69,4 @@ uncheckedBorderColor?: ResourceColor
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RadioStyle-uncheckedBorderColor?: ResourceColor--><!--Device-RadioStyle-uncheckedBorderColor?: ResourceColor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -9,9 +9,9 @@
 
 ## 场景介绍
 
-[OH_ContentEmbed/apis-content-embed-kit/capi-contentembed.md)内容嵌入模块提供对象编辑框架与技术，支持应用间文档嵌入与协同编辑。
+OH_ContentEmbed内容嵌入模块提供对象编辑框架与技术，支持应用间文档嵌入与协同编辑。
 
-OE客户端应用指嵌入其它文档的应用，通过调用[OE框架层接口/apis-content-embed-kit/capi-content-embed-proxy-h.md)实现嵌入外部文档、展示文档快照，以及按需启动OE服务端应用编辑文档的功能。
+OE客户端应用指嵌入其他文档的应用，通过调用OE框架层content_embed_proxy.h提供的接口实现嵌入外部文档、展示文档快照，以及按需启动OE服务端应用编辑文档的功能。
 
 典型应用场景包括：
 - 在CAD文档中嵌入Excel表格，通过点击嵌入对象启动Excel应用进行编辑。
@@ -19,25 +19,25 @@ OE客户端应用指嵌入其它文档的应用，通过调用[OE框架层接口
 - 在笔记应用中嵌入其他应用的文档，实现跨应用协作。
 
 ## 约束限制
-在使用接口前，需先确认设备具备SystemCapability.ContentEmbed.ObjectEditor系统能力，判断方式请参阅[查询指定的系统能力是否被支持/common/init.md#caniuse)。并申请ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION权限，配置方式请参阅[声明权限](../security/AccessToken/declare-permissions.md)。
+在使用接口前，需先确认设备具备SystemCapability.ContentEmbed.ObjectEditor系统能力，判断方式请参阅canIUse()接口查询指定的系统能力是否被支持。并申请ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION权限，配置方式请参阅声明权限。
 
 ## 接口说明
 
-常用接口如下表所示。更多API说明请参考[OH_ContentEmbed/apis-content-embed-kit/capi-contentembed.md)。
+常用接口如下表所示。更多API说明请参考OH_ContentEmbed。
 
 **表1** 客户端主要接口
 
 | 接口名称 | 功能描述 |
 | ------- | ---- |
-| OH_ContentEmbed_CreateDocumentByFile | 通过被嵌入文档路径创建[OE文档](content-embed-kit-terminology.md#oe文档)。|
-| OH_ContentEmbed_CreateDocumentByOEId | 通过[OEID](content-embed-kit-terminology.md#oeid)创建OE文档。|
-| OH_ContentEmbed_LoadDocumentFromFile | 通过已存在的[OE格式文件](content-embed-kit-terminology.md#oe格式文件)加载OE文档。|
-| OH_ContentEmbed_CreateExtensionProxy | 创建[客户端OE对象](content-embed-kit-terminology.md#客户端oe对象)。|
+| OH_ContentEmbed_CreateDocumentByFile | 通过被嵌入文档路径创建OE文档。|
+| OH_ContentEmbed_CreateDocumentByOEId | 通过OEID创建OE文档。|
+| OH_ContentEmbed_LoadDocumentFromFile | 通过已存在的OE格式文件加载OE文档。|
+| OH_ContentEmbed_CreateExtensionProxy | 创建客户端OE对象。|
 | OH_ContentEmbed_DestroyExtensionProxy | 销毁客户端OE对象，释放相关资源。|
 | OH_ContentEmbed_Proxy_RegisterOnUpdateFunc | 向客户端OE对象注册OE文档更新时的回调函数。|
 | OH_ContentEmbed_Proxy_RegisterOnErrorFunc | 向客户端OE对象注册OE文档触发错误时的回调函数。|
 | OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc | 向客户端OE对象注册OE文档编辑完成时的回调函数。|
-| OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc | 向客户端OE对象注册[OE Extension](content-embed-kit-terminology.md#oe-extension)停止时的回调函数。|
+| OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc | 向客户端OE对象注册OE Extension停止时的回调函数。|
 | OH_ContentEmbed_Proxy_StartWork | 客户端通过客户端OE对象与Object Editor服务跨进程通信，启动OE Extension组件，并创建服务端OE对象。|
 | OH_ContentEmbed_Proxy_StopWork | 客户端通过客户端OE对象与Object Editor服务跨进程通信，销毁服务端OE对象，释放资源。|
 | OH_ContentEmbed_Proxy_GetSnapshot | 从客户端OE对象获取当前OE文档的快照图像，用于预览或缩略图显示。|
@@ -166,6 +166,7 @@ void QueryFormatByOEid(const std::string &oeid, const std::string &locale)
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale failed, errCode: %{public}d.", errCode);
         // 查询失败销毁ContentEmbed_Format对象
         OH_ContentEmbed_DestroyContentEmbedFormat(ceFormat);
+        return;
     }
     char name[MAX_NAME_LENGTH];
     char description[MAX_DESCRIPTION_LENGTH];
@@ -218,7 +219,7 @@ void QueryFormatByOEid(const std::string &oeid, const std::string &locale)
    }
    ```
 
-3. 基于[OE格式文件](content-embed-kit-terminology.md#oe格式文件)加载OE文档，当OE格式文件为数据流存储时需先落盘至本地再使用此接口。
+3. 基于OE格式文件加载OE文档，当OE格式文件为数据流存储时需先落盘至本地再使用此接口。
 
    ```cpp
    void LoadDocumentFromFile(std::string oeFormatFilePath)

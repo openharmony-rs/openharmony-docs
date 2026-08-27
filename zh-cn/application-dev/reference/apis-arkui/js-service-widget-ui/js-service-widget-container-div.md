@@ -20,12 +20,12 @@
 
 ## 属性
 
-支持[通用属性](js-service-widget-common-attributes.md)。
+支持通用属性。
 
 
 ## 样式
 
-除支持[通用样式](js-service-widget-common-styles.md)外，还支持如下样式：
+除支持通用样式外，还支持如下样式：
 
 | 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -45,7 +45,7 @@
 
 ## 事件
 
-支持[通用事件](js-service-widget-common-events.md)。
+支持通用事件。
 
 
 ## 示例

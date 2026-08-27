@@ -2,9 +2,7 @@
 
 媒体播放状态的相关属性。
 
-**起始版本：** 23
-
-<!--Device-avSession-interface AVPlaybackState--><!--Device-avSession-interface AVPlaybackState-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -17,70 +15,62 @@ import { avSession } from '@kit.AVSessionKit';
 ## activeItemId
 
 ```TypeScript
-activeItemId?: int
+activeItemId?: number
 ```
 
 正在播放的媒体ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AVPlaybackState-activeItemId?: int--><!--Device-AVPlaybackState-activeItemId?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 ## bufferedTime
 
 ```TypeScript
-bufferedTime?: long
+bufferedTime?: number
 ```
 
 缓冲时间。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AVPlaybackState-bufferedTime?: long--><!--Device-AVPlaybackState-bufferedTime?: long-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 ## duration
 
 ```TypeScript
-duration?: int
+duration?: number
 ```
 
 当前媒体资源的时长，单位为毫秒（ms）。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AVPlaybackState-duration?: int--><!--Device-AVPlaybackState-duration?: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 ## extras
 
 ```TypeScript
-extras?: Record<string, Object>
+extras?: {[key: string]: Object}
 ```
 
-Current custom media packets
+自定义媒体数据。
 
-**类型：** Record&lt;string, Object&gt;
+**类型：** {[key: string]: Object}
 
-**起始版本：** 23
+**起始版本：** 10
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AVPlaybackState-extras?: Record<string, Object>--><!--Device-AVPlaybackState-extras?: Record<string, Object>-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -94,11 +84,9 @@ isFavorite?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AVPlaybackState-isFavorite?: boolean--><!--Device-AVPlaybackState-isFavorite?: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -112,29 +100,25 @@ loopMode?: LoopMode
 
 **类型：** [LoopMode](arkts-avsession-avsession-loopmode-e.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AVPlaybackState-loopMode?: LoopMode--><!--Device-AVPlaybackState-loopMode?: LoopMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 ## maxVolume
 
 ```TypeScript
-maxVolume?: int
+maxVolume?: number
 ```
 
 最大音量。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AVPlaybackState-maxVolume?: int--><!--Device-AVPlaybackState-maxVolume?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -148,11 +132,9 @@ muted?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AVPlaybackState-muted?: boolean--><!--Device-AVPlaybackState-muted?: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -166,29 +148,25 @@ position?: PlaybackPosition
 
 **类型：** [PlaybackPosition](arkts-avsession-avsession-playbackposition-i.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AVPlaybackState-position?: PlaybackPosition--><!--Device-AVPlaybackState-position?: PlaybackPosition-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 ## speed
 
 ```TypeScript
-speed?: double
+speed?: number
 ```
 
 播放倍速。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AVPlaybackState-speed?: double--><!--Device-AVPlaybackState-speed?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -202,65 +180,56 @@ state?: PlaybackState
 
 **类型：** PlaybackState
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AVPlaybackState-state?: PlaybackState--><!--Device-AVPlaybackState-state?: PlaybackState-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 ## videoHeight
 
 ```TypeScript
-videoHeight?: int
+videoHeight?: number
 ```
 
 媒体资源的视频高度，单位为像素（px）。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AVPlaybackState-videoHeight?: int--><!--Device-AVPlaybackState-videoHeight?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 ## videoWidth
 
 ```TypeScript
-videoWidth?: int
+videoWidth?: number
 ```
 
 媒体资源的视频宽度，单位为像素（px）。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AVPlaybackState-videoWidth?: int--><!--Device-AVPlaybackState-videoWidth?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 ## volume
 
 ```TypeScript
-volume?: int
+volume?: number
 ```
 
 正在播放的媒体音量。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AVPlaybackState-volume?: int--><!--Device-AVPlaybackState-volume?: int-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
-

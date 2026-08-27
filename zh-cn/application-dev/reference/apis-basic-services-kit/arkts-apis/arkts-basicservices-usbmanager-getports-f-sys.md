@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## getPorts
@@ -21,8 +20,6 @@ function getPorts(): Array<USBPort>
 
 **替代接口：** [getPortList](arkts-basicservices-usbmanager-getportlist-f-sys.md)()
 
-<!--Device-usbManager-function getPorts(): Array<USBPort>--><!--Device-usbManager-function getPorts(): Array<USBPort>-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 **系统接口：** 此接口为系统接口。
@@ -31,5 +28,11 @@ function getPorts(): Array<USBPort>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;USBPort&gt; | USB端口描述信息列表。 |
+| Array & lt;USBPort & gt; | USB端口描述信息列表。 |
 
+**示例**
+
+```TypeScript
+// 获取所有USB端口描述信息
+let ret: Array<usbManager.USBPort> = usbManager.getPorts();
+```

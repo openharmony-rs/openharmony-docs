@@ -1,12 +1,15 @@
 # AgentExtensionAbility
 
-AgentExtensionAbility继承自[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)，提供智能体扩展能力，包括智能体 服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。 本文将AgentExtensionAbility组件提供方称为服务端，将AgentExtensionAbility组件使用方称为客户端。 > **说明：** > > 本模块接口不支持在[har](../../../quick-start/har-package.md)包中使用。
+AgentExtensionAbility继承自[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)，提供智能体扩展能力，包括智能体 服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。本文将AgentExtensionAbility组件提供方称为服务端，将AgentExtensionAbility组件使用方称为客户端。
+
+> **说明：**
+> 
+> 本模块接口不支持在[har](../../../quick-start/har-package.md)包中使用。
+@extends ExtensionAbility
 
 **继承/实现关系：** AgentExtensionAbility extends ExtensionAbility
 
 **起始版本：** 24
-
-<!--Device-unnamed-declare class AgentExtensionAbility--><!--Device-unnamed-declare class AgentExtensionAbility-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -29,8 +32,6 @@ onAuth(proxy: AgentHostProxy, handshakeData: string): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AgentExtensionAbility-onAuth(proxy: AgentHostProxy, handshakeData: string): void--><!--Device-AgentExtensionAbility-onAuth(proxy: AgentHostProxy, handshakeData: string): void-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -55,8 +56,6 @@ onConnect(want: Want, proxy: AgentHostProxy): void
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AgentExtensionAbility-onConnect(want: Want, proxy: AgentHostProxy): void--><!--Device-AgentExtensionAbility-onConnect(want: Want, proxy: AgentHostProxy): void-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **参数：**
@@ -80,8 +79,6 @@ onCreate(want: Want): void
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AgentExtensionAbility-onCreate(want: Want): void--><!--Device-AgentExtensionAbility-onCreate(want: Want): void-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **参数：**
@@ -103,8 +100,6 @@ onData(proxy: AgentHostProxy, data: string): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AgentExtensionAbility-onData(proxy: AgentHostProxy, data: string): void--><!--Device-AgentExtensionAbility-onData(proxy: AgentHostProxy, data: string): void-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -129,8 +124,6 @@ onDestroy(): void
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AgentExtensionAbility-onDestroy(): void--><!--Device-AgentExtensionAbility-onDestroy(): void-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 ## onDisconnect
@@ -146,8 +139,6 @@ onDisconnect(want: Want, proxy: AgentHostProxy): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AgentExtensionAbility-onDisconnect(want: Want, proxy: AgentHostProxy): void--><!--Device-AgentExtensionAbility-onDisconnect(want: Want, proxy: AgentHostProxy): void-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -174,7 +165,4 @@ AgentExtensionAbility的上下文环境，继承自[ExtensionContext](arkts-abil
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AgentExtensionAbility-context: AgentExtensionContext--><!--Device-AgentExtensionAbility-context: AgentExtensionContext-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
-

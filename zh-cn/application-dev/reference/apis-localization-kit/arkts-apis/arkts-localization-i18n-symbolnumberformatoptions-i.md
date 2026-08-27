@@ -6,8 +6,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-i18n-export interface SymbolNumberFormatOptions--><!--Device-i18n-export interface SymbolNumberFormatOptions-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 ## 导入模块
@@ -32,8 +30,6 @@ groupingSeparator?: string | undefined
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SymbolNumberFormatOptions-groupingSeparator?: string | undefined--><!--Device-SymbolNumberFormatOptions-groupingSeparator?: string | undefined-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 ## infinity
@@ -51,8 +47,6 @@ infinity?: string | undefined
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SymbolNumberFormatOptions-infinity?: string | undefined--><!--Device-SymbolNumberFormatOptions-infinity?: string | undefined-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -72,8 +66,6 @@ minusSign?: string | undefined
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SymbolNumberFormatOptions-minusSign?: string | undefined--><!--Device-SymbolNumberFormatOptions-minusSign?: string | undefined-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 ## nan
@@ -91,8 +83,6 @@ NaN符号。默认值：区域默认的符号。例如："null"。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SymbolNumberFormatOptions-nan?: string | undefined--><!--Device-SymbolNumberFormatOptions-nan?: string | undefined-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -112,8 +102,6 @@ plusSign?: string | undefined
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SymbolNumberFormatOptions-plusSign?: string | undefined--><!--Device-SymbolNumberFormatOptions-plusSign?: string | undefined-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 ## zero
@@ -132,7 +120,4 @@ zero?: string | undefined
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SymbolNumberFormatOptions-zero?: string | undefined--><!--Device-SymbolNumberFormatOptions-zero?: string | undefined-End-->
-
 **系统能力：** SystemCapability.Global.I18n
-

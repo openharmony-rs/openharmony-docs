@@ -1,10 +1,8 @@
 # AudioPersonalizedSpatialEnabledChangeForAnyDevice（系统接口）
 
-通知监听器开启个性化空间 任何设备的状态变化。
+此接口用于通知监听器任何设备个性化空间化启用状态的变化。
 
 **起始版本：** 26.0.0
-
-<!--Device-audio-interface AudioPersonalizedSpatialEnabledChangeForAnyDevice--><!--Device-audio-interface AudioPersonalizedSpatialEnabledChangeForAnyDevice-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -14,7 +12,6 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## deviceDescriptor
@@ -31,8 +28,6 @@ deviceDescriptor: AudioDeviceDescriptor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AudioPersonalizedSpatialEnabledChangeForAnyDevice-deviceDescriptor: AudioDeviceDescriptor--><!--Device-AudioPersonalizedSpatialEnabledChangeForAnyDevice-deviceDescriptor: AudioDeviceDescriptor-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
 **系统接口：** 此接口为系统接口。
@@ -43,7 +38,7 @@ deviceDescriptor: AudioDeviceDescriptor
 enabled: boolean
 ```
 
-个性化空间化使能状态。
+个性化空间化已启用状态。
 
 **类型：** boolean
 
@@ -51,9 +46,6 @@ enabled: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AudioPersonalizedSpatialEnabledChangeForAnyDevice-enabled: boolean--><!--Device-AudioPersonalizedSpatialEnabledChangeForAnyDevice-enabled: boolean-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
 **系统接口：** 此接口为系统接口。
-

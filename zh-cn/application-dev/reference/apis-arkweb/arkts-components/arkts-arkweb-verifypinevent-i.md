@@ -4,18 +4,11 @@
 
 **起始版本：** 22
 
-<!--Device-unnamed-declare interface VerifyPinEvent--><!--Device-unnamed-declare interface VerifyPinEvent-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## handler
@@ -29,8 +22,6 @@ handler: VerifyPinHandler
 **类型：** [VerifyPinHandler](arkts-arkweb-verifypinhandler-c.md)
 
 **起始版本：** 22
-
-<!--Device-VerifyPinEvent-handler: VerifyPinHandler--><!--Device-VerifyPinEvent-handler: VerifyPinHandler-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -46,7 +37,4 @@ identity: string
 
 **起始版本：** 22
 
-<!--Device-VerifyPinEvent-identity: string--><!--Device-VerifyPinEvent-identity: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';
-import { UserAuthIcon } from '@kit.UserAuthenticationKit';
 ```
 
 ## sendNotice
@@ -15,11 +14,9 @@ function sendNotice(noticeType: NoticeType, eventData: string): void
 
 发送来自身份认证组件的通知。在使用统一身份认证控件进行用户身份认证时，该接口用于接收来自统一身份认证组件的通知，并将通知发送给用户认证框架。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.SUPPORT_USER_AUTH
-
-<!--Device-userAuth-function sendNotice(noticeType: NoticeType, eventData: string): void--><!--Device-userAuth-function sendNotice(noticeType: NoticeType, eventData: string): void-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -36,9 +33,9 @@ function sendNotice(noticeType: NoticeType, eventData: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Called by non-system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified.  2. Incorrect parameter types.  3. Parameter verification failed. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
 **示例**
@@ -57,7 +54,7 @@ interface Payload {
   type: string[];
 }
 try {
-  const eventData : EventData = {
+  const eventData: EventData = {
     widgetContextId: 123456,
     event: 'EVENT_AUTH_TYPE_READY',
     version: '1',
@@ -71,7 +68,6 @@ try {
   console.info('sendNotice successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`sendNotice failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to send notice. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
-

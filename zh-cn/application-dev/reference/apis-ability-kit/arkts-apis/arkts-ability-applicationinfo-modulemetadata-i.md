@@ -2,9 +2,7 @@
 
 描述模块的元数据信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface ModuleMetadata--><!--Device-unnamed-export interface ModuleMetadata-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,11 +16,9 @@ readonly metadata: Array<Metadata>
 
 **类型：** Array&lt;[Metadata](arkts-ability-metadata-i.md)&gt;
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ModuleMetadata-readonly metadata: Array<Metadata>--><!--Device-ModuleMetadata-readonly metadata: Array<Metadata>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -36,11 +32,8 @@ readonly moduleName: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ModuleMetadata-readonly moduleName: string--><!--Device-ModuleMetadata-readonly moduleName: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-

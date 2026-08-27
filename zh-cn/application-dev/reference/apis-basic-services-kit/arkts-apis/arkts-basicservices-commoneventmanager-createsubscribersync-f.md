@@ -14,11 +14,9 @@ function createSubscriberSync(subscribeInfo: CommonEventSubscribeInfo): CommonEv
 
 同步创建订阅者的接口。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-commonEventManager-function createSubscriberSync(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber--><!--Device-commonEventManager-function createSubscriberSync(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -59,4 +57,3 @@ try {
   console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
 }
 ```
-

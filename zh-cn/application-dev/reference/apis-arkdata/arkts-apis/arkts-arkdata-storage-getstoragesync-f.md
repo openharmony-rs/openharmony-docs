@@ -19,8 +19,6 @@ function getStorageSync(path: string): Storage
 
 **替代接口：** getPreferences
 
-<!--Device-storage-function getStorageSync(path: string): Storage--><!--Device-storage-function getStorageSync(path: string): Storage-End-->
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -33,3 +31,19 @@ function getStorageSync(path: string): Storage
 | --- | --- |
 | Storage | 获取到要操作的Storage实例，用于进行数据存储操作。 |
 
+**示例**
+
+```TypeScript
+import featureAbility from '@ohos.ability.featureAbility';
+
+let path;
+let context = featureAbility.getContext();
+context.getFilesDir().then((filePath) => {
+  path = filePath;
+  console.info("======================>getFilesDirPromise====================>");
+
+  let storage = data_storage.getStorageSync(path + '/mystore');
+  storage.putSync('startup', 'auto');
+  storage.flushSync();
+});
+```

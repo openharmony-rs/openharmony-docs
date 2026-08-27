@@ -2,9 +2,7 @@
 
 显示设备的状态枚举。
 
-**起始版本：** 23
-
-<!--Device-display-enum DisplayState--><!--Device-display-enum DisplayState-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -16,11 +14,9 @@ STATE_UNKNOWN = 0
 
 表示显示设备状态未知。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DisplayState-STATE_UNKNOWN = 0--><!--Device-DisplayState-STATE_UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -32,11 +28,9 @@ STATE_OFF = 1
 
 表示显示设备状态为关闭。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DisplayState-STATE_OFF = 1--><!--Device-DisplayState-STATE_OFF = 1-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -48,11 +42,9 @@ STATE_ON = 2
 
 表示显示设备状态为开启。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DisplayState-STATE_ON = 2--><!--Device-DisplayState-STATE_ON = 2-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -64,11 +56,9 @@ STATE_DOZE = 3
 
 表示显示设备为低电耗模式。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DisplayState-STATE_DOZE = 3--><!--Device-DisplayState-STATE_DOZE = 3-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -80,11 +70,9 @@ STATE_DOZE_SUSPEND = 4
 
 表示显示设备为睡眠模式，CPU为挂起状态。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DisplayState-STATE_DOZE_SUSPEND = 4--><!--Device-DisplayState-STATE_DOZE_SUSPEND = 4-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -96,11 +84,9 @@ STATE_VR = 5
 
 表示显示设备为VR模式。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DisplayState-STATE_VR = 5--><!--Device-DisplayState-STATE_VR = 5-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -112,11 +98,8 @@ STATE_ON_SUSPEND = 6
 
 表示显示设备为开启状态，CPU为挂起状态。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DisplayState-STATE_ON_SUSPEND = 6--><!--Device-DisplayState-STATE_ON_SUSPEND = 6-End-->
-
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
-

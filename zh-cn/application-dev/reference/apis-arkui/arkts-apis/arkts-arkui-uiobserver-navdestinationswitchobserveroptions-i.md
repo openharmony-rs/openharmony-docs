@@ -4,8 +4,6 @@ Navigation组件页面切换事件的监听选项。
 
 **起始版本：** 12
 
-<!--Device-uiObserver-export interface NavDestinationSwitchObserverOptions--><!--Device-uiObserver-export interface NavDestinationSwitchObserverOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -22,7 +20,7 @@ navigationId: ResourceStr
 
 指定需要监听的Navigation的ID。
 
-**类型：** [ResourceStr](../../apis-na/arkts-apis/arkts-na-resourcestr-t.md)
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 12
 
@@ -30,7 +28,4 @@ navigationId: ResourceStr
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NavDestinationSwitchObserverOptions-navigationId: ResourceStr--><!--Device-NavDestinationSwitchObserverOptions-navigationId: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

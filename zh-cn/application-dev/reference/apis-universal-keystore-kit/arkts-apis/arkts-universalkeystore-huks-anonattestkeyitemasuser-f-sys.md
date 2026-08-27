@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
-import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
 ## anonAttestKeyItemAsUser
@@ -13,13 +12,11 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 function anonAttestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions): Promise<HuksReturnResult>
 ```
 
-指定用户身份获取匿名化密钥证书，使用Promise方式异步返回结果。 该操作需要联网进行，且耗时较长。
+指定用户身份获取匿名化密钥证书，使用Promise方式异步返回结果。该操作需要联网进行，且耗时较长。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-<!--Device-huks-function anonAttestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions): Promise<HuksReturnResult>--><!--Device-huks-function anonAttestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions): Promise<HuksReturnResult>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -43,19 +40,19 @@ function anonAttestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application permission is not sufficient, which may be caused by lack of <br>cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | the application permission is not sufficient, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | non-system applications are not allowed to use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
-| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
-| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
-| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
-| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
-| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
+| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
 
 **示例**
 
@@ -113,9 +110,9 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功生成了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -149,9 +146,9 @@ async function LetKeyAnonAttest(keyAlias: string, keyOptions: Array<huks.HuksPar
     for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
       console.info(`证书${i}是${data.certChains[i]}`)
     }
-    console.info("匿名 attest 成功")
+    console.info('匿名 attest 成功')
   }).catch((err: BusinessError) => {
-    console.error("匿名 attest 失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`匿名 attest 失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -166,4 +163,3 @@ export default function HuksAsUserTest() {
   TestHuksAnonAttest()
 }
 ```
-

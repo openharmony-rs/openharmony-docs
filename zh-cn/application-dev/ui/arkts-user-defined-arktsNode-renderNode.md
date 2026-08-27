@@ -8,13 +8,13 @@
 
 ## 概述
 
-对于不具备自己的渲染环境的三方框架，尽管已实现前端解析、布局及事件处理等功能，但仍需依赖系统的基础渲染和动画能力。[FrameNode](./arkts-user-defined-arktsNode-frameNode.md)上的通用属性与通用事件对这类框架而言是冗余的，会导致多次不必要的操作，涵盖布局、事件处理等逻辑。
+对于不具备自己的渲染环境的三方框架，尽管已实现前端解析、布局及事件处理等功能，但仍需依赖系统的基础渲染和动画能力。FrameNode上的通用属性与通用事件对这类框架而言是冗余的，会导致多次不必要的操作，涵盖布局、事件处理等逻辑。
 
-自定义渲染节点 ([RenderNode/apis-arkui/js-apis-arkui-renderNode.md))是更加轻量的渲染节点，仅具备与渲染相关的功能。它提供了设置基础渲染属性的能力，以及节点的动态添加、删除和自定义绘制的能力。RenderNode能够为第三方框架提供基础的渲染和动画支持。
+自定义渲染节点 (RenderNode)是更加轻量的渲染节点，仅具备与渲染相关的功能。它提供了设置基础渲染属性的能力，以及节点的动态添加、删除和自定义绘制的能力。RenderNode能够为第三方框架提供基础的渲染和动画支持。
 
 ## 创建和删除节点
 
-RenderNode提供了节点创建和删除的能力。可以通过RenderNode的构造函数创建自定义的RenderNode节点。通过构造函数创建的节点对应一个实体的节点。同时，可以通过RenderNode中的[dispose/apis-arkui/js-apis-arkui-renderNode.md#dispose12)接口来实现与实体节点的绑定关系的解除。
+RenderNode提供了节点创建和删除的能力。可以通过RenderNode的构造函数创建自定义的RenderNode节点。通过构造函数创建的节点对应一个实体的节点。同时，可以通过RenderNode中的dispose接口来实现与实体节点的绑定关系的解除。
 
 ## 操作节点树
 
@@ -22,11 +22,11 @@ RenderNode提供了节点的增、删、查、改的能力，能够修改节点�
 
 > **说明：**
 >
-> - RenderNode中获取的子树结构由开发通过RenderNode的[appendChild/apis-arkui/js-apis-arkui-renderNode.md#appendchild)接口传入的参数构建。
+> - RenderNode中获取的子树结构由开发者通过RenderNode的appendChild接口传入的参数构建。
 >
 > - RenderNode如果要与系统直接结合显示，需通过FrameNode中获取的RenderNode进行挂载上树。
 
-<!-- @[operation_node_tree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/OperationNodeTree.ets) -->
+<!-- @[operation_node_tree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/OperationNodeTree.ets) --> 
 
 ``` TypeScript
 import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
@@ -42,7 +42,7 @@ renderNode.frame = {
   width: 200,
   height: 350
 };
-renderNode.backgroundColor = 0xffff0000;
+renderNode.backgroundColor = 0xfff5f5f5;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
   // 设置node节点的Frame大小
@@ -53,7 +53,7 @@ for (let i = 0; i < 5; i++) {
     height: 50
   };
   // 设置node节点的背景颜色
-  node.backgroundColor = 0xff00ff00;
+  node.backgroundColor = 0xff00bfff;
   // 将新增节点挂载在renderNode上
   renderNode.appendChild(node);
 }
@@ -88,16 +88,21 @@ export struct OperationNodeTree {
         Button('getNextSibling')
           .onClick(() => {
             const child = renderNode.getChild(1);
-            const nextSibling = child!.getNextSibling()
-            if (child === null || nextSibling === null) {
-              hilog.info(DOMAIN, TEST_TAG, ' the child or nextChild is null');
-              this.myLog = 'the child or nextChild is null';
-            } else {
-              // 获取子节点的位置信息
-              hilog.info(DOMAIN, TEST_TAG, `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
-                `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
-              this.myLog = `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
-                `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`;
+            if (child === null) {
+              hilog.info(DOMAIN, TEST_TAG, ' the child is null');
+              this.myLog = 'the child is null';
+            } else{
+              const nextSibling = child!.getNextSibling()
+              if (nextSibling === null) {
+                hilog.info(DOMAIN, TEST_TAG, ' the nextSibling is null');
+                this.myLog = 'the nextSibling is null';
+              } else {
+                // 获取子节点的位置信息
+                hilog.info(DOMAIN, TEST_TAG, `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
+                  `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
+                this.myLog = `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
+                  `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`;
+              }
             }
           });
       }.width(300).margin({ left: 20 });
@@ -110,7 +115,7 @@ export struct OperationNodeTree {
 
 ## 设置和获取渲染相关属性
 
-RenderNode中可以设置渲染相关的属性，包括：[backgroundColor/apis-arkui/js-apis-arkui-renderNode.md#backgroundcolor)，[clipToFrame/apis-arkui/js-apis-arkui-renderNode.md#cliptoframe)，[opacity/apis-arkui/js-apis-arkui-renderNode.md#opacity)，[size/apis-arkui/js-apis-arkui-renderNode.md#size)，[position/apis-arkui/js-apis-arkui-renderNode.md#position)，[frame/apis-arkui/js-apis-arkui-renderNode.md#frame)，[pivot/apis-arkui/js-apis-arkui-renderNode.md#pivot)，[scale/apis-arkui/js-apis-arkui-renderNode.md#scale)，[translation/apis-arkui/js-apis-arkui-renderNode.md#translation)，[rotation/apis-arkui/js-apis-arkui-renderNode.md#rotation)，[transform/apis-arkui/js-apis-arkui-renderNode.md#transform)，[shadowColor/apis-arkui/js-apis-arkui-renderNode.md#shadowcolor)，[shadowOffset/apis-arkui/js-apis-arkui-renderNode.md#shadowoffset)，[shadowAlpha/apis-arkui/js-apis-arkui-renderNode.md#shadowalpha)，[shadowElevation/apis-arkui/js-apis-arkui-renderNode.md#shadowelevation)，[shadowRadius/apis-arkui/js-apis-arkui-renderNode.md#shadowradius)，[borderStyle/apis-arkui/js-apis-arkui-renderNode.md#borderstyle12)，[borderWidth/apis-arkui/js-apis-arkui-renderNode.md#borderwidth12)，[borderColor/apis-arkui/js-apis-arkui-renderNode.md#bordercolor12)，[borderRadius/apis-arkui/js-apis-arkui-renderNode.md#borderradius12)，[shapeMask/apis-arkui/js-apis-arkui-renderNode.md#shapemask12)，[shapeClip/apis-arkui/js-apis-arkui-renderNode.md#shapeclip12)，[markNodeGroup/apis-arkui/js-apis-arkui-renderNode.md#marknodegroup12)等。具体属性支持范围参考[RenderNode/apis-arkui/js-apis-arkui-renderNode.md)接口说明。
+RenderNode中可以设置渲染相关的属性，包括：backgroundColor，clipToFrame，opacity，size，position，frame，pivot，scale，translation，rotation，transform，shadowColor，shadowOffset，shadowAlpha，shadowElevation，shadowRadius，borderStyle，borderWidth，borderColor，borderRadius，shapeMask，shapeClip，markNodeGroup等。具体属性支持范围参考RenderNode接口说明。
 
 > **说明：**
 > 
@@ -118,7 +123,7 @@ RenderNode中可以设置渲染相关的属性，包括：[backgroundColor/apis-
 > 
 > - 若未传入参数或者传入参数为非法值则查询获得的为默认值。
 >
-> - 不建议对[BuilderNode](./arkts-user-defined-arktsNode-builderNode.md)中的RenderNode进行修改操作。BuilderNode中具体属性设置是由状态管理实现的，属性更新的时序开发者不可控，BuilderNode和FrameNode中同时设置RenderNode属性可能会导致RenderNode属性设置与预期不相符。
+> - 不建议对BuilderNode中的RenderNode进行修改操作。BuilderNode中具体属性设置是由状态管理实现的，属性更新的时序开发者不可控，BuilderNode和FrameNode中同时设置RenderNode属性可能会导致RenderNode属性设置与预期不相符。
 
 <!-- @[rendering_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/RenderingProperties.ets) -->
 
@@ -330,7 +335,7 @@ export struct RenderingProperties {
 
 ## 自定义绘制
 
-通过重写RenderNode中的[draw/apis-arkui/js-apis-arkui-renderNode.md#draw)方法，可以自定义RenderNode的绘制内容，通过[invalidate/apis-arkui/js-apis-arkui-renderNode.md#invalidate)接口可以主动触发节点的重新绘制。
+通过重写RenderNode中的draw方法，可以自定义RenderNode的绘制内容，通过invalidate接口可以主动触发节点的重新绘制。
 
 > **说明：**
 > 
@@ -365,7 +370,7 @@ class MyRenderNode extends RenderNode {
       blue: 180
     });
     canvas.attachBrush(brush);
-    // 绘制矩阵
+    // 绘制矩形
     canvas.drawRect({
       left: 0,
       right: this.width,
@@ -435,15 +440,15 @@ export struct CustomDraw {
 
 ## 调整自定义绘制Canvas的变换矩阵
 
-从API version 12开始，通过重写RenderNode中的[draw/apis-arkui/js-apis-arkui-renderNode.md#draw)方法，可以自定义RenderNode的绘制内容。
+从API version 12开始，通过重写RenderNode中的draw方法，可以自定义RenderNode的绘制内容。
 
-通过[concatMatrixapis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12)可以调整自定义绘制Canvas的变换矩阵。
+通过concatMatrix可以调整自定义绘制Canvas的变换矩阵。
 
 > **说明：**
 > 
-> - [getTotalMatrixapis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#gettotalmatrix12)获取的是用来记录绘制指令的临时canvas的变换矩阵。
+> - getTotalMatrix获取的是用来记录绘制指令的临时canvas的变换矩阵。
 > 
-> - 如果开发者希望对画布进行预期的变换，应使用[concatMatrixapis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12)而不是[setMatrixapis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#setmatrix12)，因为setMatrix会覆盖原本真实canvas上存在的变换矩阵。
+> - 如果开发者希望对画布进行预期的变换，应使用concatMatrix而不是setMatrix，因为setMatrix会覆盖原本真实canvas上存在的变换矩阵。
 
 **ArkTS接口调用示例：**
 
@@ -593,7 +598,7 @@ export struct CustomDrawCanvas {
 
 **Node-API调用示例：**
 
-C++侧可通过Node-API来获取[Canvas/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)，并进行后续的自定义绘制操作。
+C++侧可通过Node-API来获取Canvas，并进行后续的自定义绘制操作。
 
 <!-- @[native_bridge](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/cpp/NativeBridge.cpp) -->
 
@@ -653,6 +658,9 @@ static napi_value OnDraw(napi_env env, napi_callback_info info)
     OH_Drawing_CanvasAttachPen(canvas, pen);
 
     OH_Drawing_CanvasDrawPath(canvas, path);
+    OH_Drawing_CanvasDetachPen(canvas);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_PathDestroy(path);
 
     return nullptr;
 }
@@ -711,7 +719,7 @@ export const nativeOnDraw: (id: number, context: DrawContext, width: number, hei
 
 ArkTS侧代码：
 
-<!-- @[custom_draw_canvas_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CustomDrawCanvasNative.ets) -->
+<!-- @[custom_draw_canvas_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CustomDrawCanvasNative.ets) --> 
 
 ``` TypeScript
 import bridge from 'libentry.so'; // 该 so 由 Node-API 编写并生成
@@ -727,8 +735,8 @@ class MyRenderNode extends RenderNode {
 
   draw(context: DrawContext) {
     // 需要将 context 中的宽度和高度从vp转换为px
-    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.height),
-      this.uiContext.vp2px(context.size.width));
+    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.width),
+      this.uiContext.vp2px(context.size.height));
   }
 }
 
@@ -764,9 +772,11 @@ export struct CustomDrawCanvasNative {
 }
 ```
 
+![RenderNode-NodeAPI](./figures/renderNode-NodeAPI.png)
+
 ## 设置标签
 
-开发者可利用[label/apis-arkui/js-apis-arkui-renderNode.md#label12)接口向RenderNode设置标签信息，有助于在使用inspector[检查页面布局](./arkts-inspector-overview.md)时更清晰区分各节点。
+开发者可利用label接口向RenderNode设置标签信息，有助于在使用inspector检查页面布局时更清晰区分各节点。
 
 <!-- @[set_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/SetLabel.ets) -->
 
@@ -824,7 +834,7 @@ export struct SetLabel {
 
 前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除绑定后，再次调用接口可能会出现crash、返回默认值的情况。在ArkUI框架中，前端节点是在ArkTS代码层面创建的节点，负责与开发者交互；后端节点是在ArkUI框架底层维护的实体节点，负责具体逻辑的处理。
 
-从API version 20开始，使用[isDisposed/apis-arkui/js-apis-arkui-renderNode.md#isdisposed20)接口查询当前RenderNode对象是否已解除与后端实体节点的引用关系，从而可以在操作节点前检查其有效性，避免潜在风险。
+从API version 20开始，使用isDisposed接口查询当前RenderNode对象是否已解除与后端实体节点的引用关系，从而可以在操作节点前检查其有效性，避免潜在风险。
 
 <!-- @[check_render_node_disposed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CheckRenderNodeDisposed.ets) -->
 

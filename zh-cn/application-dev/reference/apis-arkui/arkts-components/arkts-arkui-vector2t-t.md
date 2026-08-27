@@ -12,9 +12,6 @@ declare type Vector2T<T> = import('../api/arkui/Graphics').Vector2T<T>
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type Vector2T<T> = import('../api/arkui/Graphics').Vector2T<T>--><!--Device-unnamed-declare type Vector2T<T> = import('../api/arkui/Graphics').Vector2T<T>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** import('../api/arkui/Graphics').Vector2T<T>
-
+**属性类型：** import('../api/arkui/Graphics').Vector2T&lt;T&gt;

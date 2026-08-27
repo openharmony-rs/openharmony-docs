@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare interface TouchPoint--><!--Device-unnamed-declare interface TouchPoint-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ x: Dimension
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TouchPoint-x: Dimension--><!--Device-TouchPoint-x: Dimension-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -49,7 +45,4 @@ y: Dimension
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TouchPoint-y: Dimension--><!--Device-TouchPoint-y: Dimension-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

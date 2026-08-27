@@ -19,8 +19,6 @@ function cancelSuspendDelay(requestId: number): void
 
 **替代接口：** [cancelSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-cancelsuspenddelay-f.md)
 
-<!--Device-backgroundTaskManager-function cancelSuspendDelay(requestId: number): void--><!--Device-backgroundTaskManager-function cancelSuspendDelay(requestId: number): void-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 **参数：**
@@ -37,4 +35,3 @@ import backgroundTaskManager from '@ohos.backgroundTaskManager';
 let delayInfo = backgroundTaskManager.requestSuspendDelay('test', () => {});
 backgroundTaskManager.cancelSuspendDelay(delayInfo.requestId);
 ```
-

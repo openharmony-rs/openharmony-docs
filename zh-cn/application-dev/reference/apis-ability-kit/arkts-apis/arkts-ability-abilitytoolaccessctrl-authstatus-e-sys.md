@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-abilityToolAccessCtrl-enum AuthStatus--><!--Device-abilityToolAccessCtrl-enum AuthStatus-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -19,8 +17,6 @@ REQUIRE_AUTH = 0
 需要授权。
 
 **起始版本：** 26.0.0
-
-<!--Device-AuthStatus-REQUIRE_AUTH = 0--><!--Device-AuthStatus-REQUIRE_AUTH = 0-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -36,8 +32,6 @@ FORBIDDEN = 1
 
 **起始版本：** 26.0.0
 
-<!--Device-AuthStatus-FORBIDDEN = 1--><!--Device-AuthStatus-FORBIDDEN = 1-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -51,8 +45,6 @@ AUTHORIZED = 2
 已授权。
 
 **起始版本：** 26.0.0
-
-<!--Device-AuthStatus-AUTHORIZED = 2--><!--Device-AuthStatus-AUTHORIZED = 2-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -68,8 +60,6 @@ RESTRICTED = 3
 
 **起始版本：** 26.0.0
 
-<!--Device-AuthStatus-RESTRICTED = 3--><!--Device-AuthStatus-RESTRICTED = 3-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -84,9 +74,6 @@ REMOTE_RESTRICTED = 4
 
 **起始版本：** 26.0.0
 
-<!--Device-AuthStatus-REMOTE_RESTRICTED = 4--><!--Device-AuthStatus-REMOTE_RESTRICTED = 4-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
-

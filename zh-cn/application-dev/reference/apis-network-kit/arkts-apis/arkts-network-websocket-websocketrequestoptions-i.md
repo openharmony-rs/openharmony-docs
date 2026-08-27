@@ -2,16 +2,13 @@
 
 建立WebSocket连接时，可选参数的类型和说明。
 
-**起始版本：** 23
-
-<!--Device-webSocket-export interface WebSocketRequestOptions--><!--Device-webSocket-export interface WebSocketRequestOptions-End-->
+**起始版本：** 6
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## 导入模块
 
 ```TypeScript
-import { webSocket } from '@kit.NetworkKit';
 ```
 
 ## caPath
@@ -24,9 +21,7 @@ caPath?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WebSocketRequestOptions-caPath?: string--><!--Device-WebSocketRequestOptions-caPath?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -40,27 +35,23 @@ clientCert?: ClientCert
 
 **类型：** ClientCert
 
-**起始版本：** 23
-
-<!--Device-WebSocketRequestOptions-clientCert?: ClientCert--><!--Device-WebSocketRequestOptions-clientCert?: ClientCert-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## header
 
 ```TypeScript
-header?: Record<string, string>
+header?: Object
 ```
 
-HTTP request header.
+建立WebSocket连接可选参数，代表建立连接时携带的HTTP头信息。参数内容自定义，也可以不指定。
 
-**类型：** Record&lt;string, string&gt;
+**类型：** Object
 
-**起始版本：** 23
+**起始版本：** 6
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WebSocketRequestOptions-header?: Record<string, string>--><!--Device-WebSocketRequestOptions-header?: Record<string, string>-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -78,39 +69,33 @@ minSupportTlsProtocol?: TlsProtocol
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WebSocketRequestOptions-minSupportTlsProtocol?: TlsProtocol--><!--Device-WebSocketRequestOptions-minSupportTlsProtocol?: TlsProtocol-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## pingInterval
 
 ```TypeScript
-pingInterval?: int
+pingInterval?: number
 ```
 
 自定义[心跳检测](../../../network/websocket-connection.md#场景介绍)时间，默认为30s。每pingInterval周期会发起心跳检测，设置为0则表示关闭心跳检测。最大值：30000 s，最小值：0s。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 26.0.0
-
-<!--Device-WebSocketRequestOptions-pingInterval?: int--><!--Device-WebSocketRequestOptions-pingInterval?: int-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## pongTimeout
 
 ```TypeScript
-pongTimeout?: int
+pongTimeout?: number
 ```
 
 自定义发起心跳检测后，超时断开时间，默认为30s。发起心跳检测后若pongTimeout时间未响应则断开连接。最大值：30000s，最小值：0s。pongTimeout须小于等于pingInterval。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 26.0.0
-
-<!--Device-WebSocketRequestOptions-pongTimeout?: int--><!--Device-WebSocketRequestOptions-pongTimeout?: int-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -124,9 +109,7 @@ protocol?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WebSocketRequestOptions-protocol?: string--><!--Device-WebSocketRequestOptions-protocol?: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -140,9 +123,7 @@ proxy?: ProxyConfiguration
 
 **类型：** [ProxyConfiguration](arkts-network-websocket-proxyconfiguration-t.md)
 
-**起始版本：** 23
-
-<!--Device-WebSocketRequestOptions-proxy?: ProxyConfiguration--><!--Device-WebSocketRequestOptions-proxy?: ProxyConfiguration-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -156,9 +137,7 @@ skipServerCertVerification?: boolean
 
 **类型：** boolean
 
-**起始版本：** 26.0.0
-
-<!--Device-WebSocketRequestOptions-skipServerCertVerification?: boolean--><!--Device-WebSocketRequestOptions-skipServerCertVerification?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -176,7 +155,4 @@ supportOriginPort?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WebSocketRequestOptions-supportOriginPort?: boolean--><!--Device-WebSocketRequestOptions-supportOriginPort?: boolean-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
-

@@ -1,17 +1,18 @@
 # ConnectionProperties
 
-网络连接信息。 > **注意：** > > linkAddresses、routes和dnses可能为空，需要做好空值保护，建议使用前先判断对象是否存在。
+网络连接信息。
 
-**起始版本：** 23
+> **注意：**
+> 
+> linkAddresses、routes和dnses可能为空，需要做好空值保护，建议使用前先判断对象是否存在。
 
-<!--Device-connection-export interface ConnectionProperties--><!--Device-connection-export interface ConnectionProperties-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 ## 导入模块
 
 ```TypeScript
-import { connection } from '@kit.NetworkKit';
 ```
 
 ## dnses
@@ -24,9 +25,7 @@ dnses: Array<NetAddress>
 
 **类型：** Array&lt;NetAddress&gt;
 
-**起始版本：** 23
-
-<!--Device-ConnectionProperties-dnses: Array<NetAddress>--><!--Device-ConnectionProperties-dnses: Array<NetAddress>-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -40,9 +39,7 @@ domains: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ConnectionProperties-domains: string--><!--Device-ConnectionProperties-domains: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -56,9 +53,7 @@ interfaceName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ConnectionProperties-interfaceName: string--><!--Device-ConnectionProperties-interfaceName: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -76,8 +71,6 @@ isIPv4LinkValid?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ConnectionProperties-isIPv4LinkValid?: boolean--><!--Device-ConnectionProperties-isIPv4LinkValid?: boolean-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 ## isIPv6LinkValid
@@ -94,8 +87,6 @@ isIPv6LinkValid?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ConnectionProperties-isIPv6LinkValid?: boolean--><!--Device-ConnectionProperties-isIPv6LinkValid?: boolean-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 ## linkAddresses
@@ -108,25 +99,21 @@ linkAddresses: Array<LinkAddress>
 
 **类型：** Array&lt;LinkAddress&gt;
 
-**起始版本：** 23
-
-<!--Device-ConnectionProperties-linkAddresses: Array<LinkAddress>--><!--Device-ConnectionProperties-linkAddresses: Array<LinkAddress>-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 ## mtu
 
 ```TypeScript
-mtu: int
+mtu: number
 ```
 
 最大传输单元。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ConnectionProperties-mtu: int--><!--Device-ConnectionProperties-mtu: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -140,9 +127,6 @@ routes: Array<RouteInfo>
 
 **类型：** Array&lt;RouteInfo&gt;
 
-**起始版本：** 23
-
-<!--Device-ConnectionProperties-routes: Array<RouteInfo>--><!--Device-ConnectionProperties-routes: Array<RouteInfo>-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
-

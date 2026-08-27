@@ -19,11 +19,11 @@
 
 ### 解决思路
 
-既然转场时一次性加载大量的数据会导致卡顿情况，那么将数据拆分成多份并分批次进行加载就是一种解决思路。ArkTS中提供了[DisplaySync（可变帧率）/apis-arkgraphics2d/js-apis-graphics-displaySync.md)，可以设置帧回调监听，让开发者在不同的帧中进行一些操作，这样就可以将本来在一帧中加载的数据分到多帧中加载，减少动画首帧的响应时间，降低完成时延。
+既然转场时一次性加载大量的数据会导致卡顿情况，那么将数据拆分成多份并分批次进行加载就是一种解决思路。ArkTS中提供了@ohos.graphics.displaySync (可变帧率)，可以设置帧回调监听，让开发者在不同的帧中进行一些操作，这样就可以将本来在一帧中加载的数据分到多帧中加载，减少动画首帧的响应时间，降低完成时延。
 
 ### 常规代码
 
-在自定义列表组件中一次性加载全部数据，可参考[组件堆叠场景](https://gitcode.com/harmonyos-cases/cases/tree/master/CommonAppDevelopment/feature/componentstack)中的具体实现。
+在自定义列表组件中一次性加载全部数据，可参考[组件堆叠场景](https://gitcode.com/HarmonyOS-Cases/cases/tree/master/CommonAppDevelopment/feature/componentstack)中的具体实现。
 
 ```typescript
 // CommonAppDevelopment/feature/componentstack/src/main/ets/view/ProductList.ets
@@ -127,13 +127,13 @@ export struct ProductList {
 
 ## 滑动场景
 
-在日历应用中，需要在一个List里面加载每个月的全部天数，包括公历和农历日期，这样在一个Item中就会有最少58条数据加载，也就相当于需要58个组件。当列表滑动的时候，通过[组件复用](component-recycle.md)的aboutToReuse()接口设置新的数据，就会导致可能有58个组件一起刷新，可能会引起掉帧卡顿现象。
+在日历应用中，需要在一个List里面加载每个月的全部天数，包括公历和农历日期，这样在一个Item中就会有最少58条数据加载，也就相当于需要58个组件。当列表滑动的时候，通过组件复用的aboutToReuse()接口设置新的数据，就会导致可能有58个组件一起刷新，可能会引起掉帧卡顿现象。
 
 ![image-20240507183126622](figures/highly_loaded_component_render_0.gif)
 
 ### 解决思路
 
-由于一次性加载大量数据、刷新大量组件会导致卡顿丢帧，那么减少一次性加载的数据量就是一种解决方法。但是由于业务需求，需要加载的数据总量和绘制的组件数量是不能减少的，那么只能想办法将数据进行拆分，将和数据相关的组件分成多次进行绘制。ArkTS中提供了[DisplaySync（可变帧率）/apis-arkgraphics2d/js-apis-graphics-displaySync.md)，支持开发者设置回调监听，可以在回调里做一些数据的处理，在每一帧中加载少量的数据，减少卡顿或者滑动动画的掉帧现象。
+由于一次性加载大量数据、刷新大量组件会导致卡顿丢帧，那么减少一次性加载的数据量就是一种解决方法。但是由于业务需求，需要加载的数据总量和绘制的组件数量是不能减少的，那么只能想办法将数据进行拆分，将和数据相关的组件分成多次进行绘制。ArkTS中提供了@ohos.graphics.displaySync (可变帧率)，支持开发者设置回调监听，可以在回调里做一些数据的处理，在每一帧中加载少量的数据，减少卡顿或者滑动动画的掉帧现象。
 
 ### 优化示例
 
@@ -152,7 +152,7 @@ struct Direct {
   }
 
   aboutToAppear() {
-	// ...
+    // ...
     this.initCalenderData();
   }
 
@@ -196,13 +196,13 @@ struct ItemView {
 }
 ```
 
-在上面的代码中，通过组件复用，在ItemView的aboutToReuse()接口中，将一个月的数据直接设置到状态变量monthItem中，这样下面的Flex就会收到状态变量变更的消息通知，从而刷新组件中的数据。编译运行后，进入日历页面，通过[SmartPerf Host工具](performance-optimization-using-smartperf-host.md)，开始抓取Trace，然后滑动列表到最底端，结束Trace的抓取，通过SmartPerf Host对抓取的Trace文件进行分析，选中标签和相关数据区域，可以得到图3。图中三个Actual Timeline标签分别代表应用和RenderService每帧的总耗时、应用每帧的绘制时间和RenderService层每帧的绘制时间，render_service标签表示RenderService层每帧中的绘制操作，example.display标签是应用的bundlename，表示应用在每一帧中的操作，包括创建组件、加载数据等。
+在上面的代码中，通过组件复用，在ItemView的aboutToReuse()接口中，将一个月的数据直接设置到状态变量monthItem中，这样下面的Flex就会收到状态变量变更的消息通知，从而刷新组件中的数据。编译运行后，进入日历页面，通过SmartPerf Host工具，开始抓取Trace，然后滑动列表到最底端，结束Trace的抓取，通过SmartPerf Host对抓取的Trace文件进行分析，选中标签和相关数据区域，可以得到图3。图中三个Actual Timeline标签分别代表应用和RenderService每帧的总耗时、应用每帧的绘制时间和RenderService层每帧的绘制时间，render_service标签表示RenderService层每帧中的绘制操作，example.display标签是应用的bundlename，表示应用在每一帧中的操作，包括创建组件、加载数据等。
 
 图3 组件复用帧率
 
 ![image-20240507183017893](figures/highly_loaded_component_render_1.png)
 
-通过图中信息可以看到，滑动期间的帧率是113帧，按照手机120帧来计算，滑动期间掉帧率约为5.8%。放大图3后可以看到，应用每次加载新数据时（图4中橙色部分）RenderService层都会有一帧出现异常情况（图4中黄色部分）。此处对于图中颜色区域的解释，可参考[SmartPerf Host工具](performance-optimization-using-smartperf-host.md)。
+通过图中信息可以看到，滑动期间的帧率是113帧，按照手机120帧来计算，滑动期间掉帧率约为5.8%。放大图3后可以看到，应用每次加载新数据时（图4中橙色部分）RenderService层都会有一帧出现异常情况（图4中黄色部分）。此处对于图中颜色区域的解释，可参考SmartPerf Host工具。
 
 图4 绘制耗时
 
@@ -358,11 +358,11 @@ sync.setExpectedFrameRateRange({
 
 ## 参考链接
 
-[使用SmartPerf-Host分析应用性能](performance-optimization-using-smartperf-host.md)
+使用SmartPerf-Host分析应用性能
 
-[DisplaySync 文档/apis-arkgraphics2d/js-apis-graphics-displaySync.md)
+@ohos.graphics.displaySync (可变帧率)
 
-[示例代码](https://gitcode.com/harmonyos-cases/cases/tree/master/CommonAppDevelopment/feature/perfermance/highlyloadedcomponentrender)
+[示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/HighlyLoadedComponentRender)
 
 ## FAQ
 

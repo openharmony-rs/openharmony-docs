@@ -14,11 +14,9 @@ function getPasswordPolicy(): PasswordPolicy
 
 获取设备锁屏口令策略。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-securityManager-function getPasswordPolicy(): PasswordPolicy--><!--Device-securityManager-function getPasswordPolicy(): PasswordPolicy-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -48,4 +46,3 @@ try {
   console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

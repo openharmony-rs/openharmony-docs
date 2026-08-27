@@ -10,7 +10,7 @@
 
 | 按钮与选择组件名称 | 应用场景 |
 | -------- | -------- |
-| [按钮(Button)](arkts-common-components-button.md) | 通常用于响应用户的点击操作。 |
-| [弧形按钮(ArcButton)](arkts-advanced-components-arcbutton.md) | 用于圆形屏幕。为Wearable用户提供强调、普通、警告等样式按钮。 |
-| [单选框(Radio)](arkts-common-components-radio-button.md) | 单选框组件，通常用于提供相应的用户交互选择项。 |
-| [切换按钮(Toggle)](arkts-common-components-switch.md) | 一般用于两种状态之间的切换， 如勾选框和开关。 |
+| 按钮(Button) | 通常用于响应用户的点击操作。 |
+| 弧形按钮(ArcButton) | 用于圆形屏幕。为Wearable用户提供强调、普通、警告等样式按钮。 |
+| 单选框(Radio) | 单选框组件，通常用于提供相应的用户交互选择项。 |
+| 切换按钮(Toggle) | 一般用于两种状态之间的切换， 如勾选框和开关。 |

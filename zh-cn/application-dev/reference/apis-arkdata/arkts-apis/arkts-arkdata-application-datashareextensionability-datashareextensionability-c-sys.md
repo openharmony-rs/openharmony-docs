@@ -2,9 +2,7 @@
 
 本模块提供数据共享和扩展功能。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare class DataShareExtensionAbility--><!--Device-unnamed-declare class DataShareExtensionAbility-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
@@ -28,8 +26,6 @@ batchInsert?(uri: string, valueBuckets: Array<ValuesBucket>, callback: AsyncCall
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataShareExtensionAbility-batchInsert?(uri: string, valueBuckets: Array<ValuesBucket>, callback: AsyncCallback<number>): void--><!--Device-DataShareExtensionAbility-batchInsert?(uri: string, valueBuckets: Array<ValuesBucket>, callback: AsyncCallback<number>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
 **系统接口：** 此接口为系统接口。
@@ -40,7 +36,7 @@ batchInsert?(uri: string, valueBuckets: Array<ValuesBucket>, callback: AsyncCall
 | --- | --- | --- | --- |
 | uri | string | 是 | 指示要批量插入的数据的路径。 |
 | valueBuckets | Array&lt;[ValuesBucket](arkts-arkdata-valuesbucket-t.md)&gt; | 是 | 指示要批量插入的数据。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回插入的数据记录数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。返回插入的数据记录数。 |
 
 **示例**
 
@@ -53,7 +49,7 @@ let rdbStore: relationalStore.RdbStore;
 export default class DataShareExtAbility extends DataShareExtensionAbility {
   batchInsert(uri: string, valueBuckets: Array<ValuesBucket>, callback: Function) {
     if (valueBuckets === null || valueBuckets.length <= 0) {
-      console.info('invalid valueBuckets');
+      console.info('invalid valueBucket');
       return;
     }
     rdbStore.batchInsert(TBL_NAME, valueBuckets, (err, ret) => {
@@ -80,8 +76,6 @@ batchUpdate?(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataShareExtensionAbility-batchUpdate?(    operations: Record<string, Array<UpdateOperation>>,    callback: AsyncCallback<Record<string, Array<number>>>  ): void--><!--Device-DataShareExtensionAbility-batchUpdate?(    operations: Record<string, Array<UpdateOperation>>,    callback: AsyncCallback<Record<string, Array<number>>>  ): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
 **系统接口：** 此接口为系统接口。
@@ -91,7 +85,7 @@ batchUpdate?(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | operations | Record&lt;string, Array&lt;[UpdateOperation](arkts-arkdata-updateoperation-t-sys.md)&gt;&gt; | 是 | 要更新数据的路径、筛选条件和数据集合。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt; | 是 | 回调函数。返回更新的数据记录数集合，更新失败的UpdateOperation的数据记录数为-1。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt; | 是 | 回调函数。返回更新的数据记录数集合，更新失败的UpdateOperation的数据记录数为-1。 |
 
 **示例**
 
@@ -106,10 +100,10 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
   batchUpdate(operations: Record<string, Array<dataShare.UpdateOperation>>, callback: Function) {
     let recordOps : Record<string, Array<dataShare.UpdateOperation>> = operations;
     let results : Record<string, Array<number>> = {};
-    let a = Object.entries(recordOps);
-    for (let i = 0; i < a.length; i++) {
-      let key = a[i][0];
-      let values = a[i][1];
+    let entries = Object.entries(recordOps);
+    for (let i = 0; i < entries.length; i++) {
+      let key = entries[i][0];
+      let values = entries[i][1];
       let result : number[] = [];
       for (const value of values) {
         rdbStore.update(TBL_NAME, value.values, value.predicates).then(async (rows) => {
@@ -118,7 +112,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
         }).catch((err:BusinessError) => {
           console.error(`Failed to Update. Code: ${err.code}, message: ${err.message}`);
           result.push(-1)
-        })
+        });
       }
       results[key] = result;
     }
@@ -139,8 +133,6 @@ delete?(uri: string, predicates: dataSharePredicates.DataSharePredicates, callba
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataShareExtensionAbility-delete?(uri: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<number>): void--><!--Device-DataShareExtensionAbility-delete?(uri: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<number>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
 **系统接口：** 此接口为系统接口。
@@ -151,7 +143,7 @@ delete?(uri: string, predicates: dataSharePredicates.DataSharePredicates, callba
 | --- | --- | --- | --- |
 | uri | string | 是 | 指示要删除的数据的路径。 |
 | predicates | dataSharePredicates.DataSharePredicates | 是 | 指示筛选条件。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回已删除的数据记录数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。返回已删除的数据记录数。 |
 
 **示例**
 
@@ -187,8 +179,6 @@ denormalizeUri?(uri: string, callback: AsyncCallback<string>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataShareExtensionAbility-denormalizeUri?(uri: string, callback: AsyncCallback<string>): void--><!--Device-DataShareExtensionAbility-denormalizeUri?(uri: string, callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
 **系统接口：** 此接口为系统接口。
@@ -198,7 +188,7 @@ denormalizeUri?(uri: string, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 指示服务端使用的[URI](../../apis-arkts/arkts-apis/arkts-arkts-uri-uri-c.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。如果反规范化成功，则返回反规范化的URI；如果无需进行反规范化，则返回原始URI；若不支持则返回空。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。如果反规范化成功，则返回反规范化的URI；如果无需进行反规范化，则返回原始URI；若不支持则返回空。 |
 
 **示例**
 
@@ -233,8 +223,6 @@ insert?(uri: string, valueBucket: ValuesBucket, callback: AsyncCallback<number>)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataShareExtensionAbility-insert?(uri: string, valueBucket: ValuesBucket, callback: AsyncCallback<number>): void--><!--Device-DataShareExtensionAbility-insert?(uri: string, valueBucket: ValuesBucket, callback: AsyncCallback<number>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
 **系统接口：** 此接口为系统接口。
@@ -245,7 +233,7 @@ insert?(uri: string, valueBucket: ValuesBucket, callback: AsyncCallback<number>)
 | --- | --- | --- | --- |
 | uri | string | 是 | 指示要插入的数据的路径。 |
 | valueBucket | [ValuesBucket](arkts-arkdata-valuesbucket-t.md) | 是 | 指示要插入的数据。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回插入数据记录的索引。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。返回插入数据记录的索引。 |
 
 **示例**
 
@@ -258,7 +246,7 @@ let rdbStore: relationalStore.RdbStore;
 export default class DataShareExtAbility extends DataShareExtensionAbility {
   insert(uri: string, valueBucket: ValuesBucket, callback: Function) {
     if (valueBucket === null) {
-      console.info('invalid valueBuckets');
+      console.info('invalid valueBucket');
       return;
     }
     rdbStore.insert(TBL_NAME, valueBucket, (err, ret) => {
@@ -283,8 +271,6 @@ normalizeUri?(uri: string, callback: AsyncCallback<string>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataShareExtensionAbility-normalizeUri?(uri: string, callback: AsyncCallback<string>): void--><!--Device-DataShareExtensionAbility-normalizeUri?(uri: string, callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
 **系统接口：** 此接口为系统接口。
@@ -294,7 +280,7 @@ normalizeUri?(uri: string, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 指示用户传入的[URI](../../apis-arkts/arkts-apis/arkts-arkts-uri-uri-c.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。如果支持URI规范化，则返回规范化URI，否则返回空。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。如果支持URI规范化，则返回规范化URI，否则返回空。 |
 
 **示例**
 
@@ -329,8 +315,6 @@ DataShare客户端连接DataShareExtensionAbility服务端时，服务端回调�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataShareExtensionAbility-onCreate?(want: Want, callback: AsyncCallback<void>): void--><!--Device-DataShareExtensionAbility-onCreate?(want: Want, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
 **系统接口：** 此接口为系统接口。
@@ -340,7 +324,7 @@ DataShare客户端连接DataShareExtensionAbility服务端时，服务端回调�
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | Want类型信息，包括Ability名称、Bundle名称等。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。无返回值。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。无返回值。 |
 
 **示例**
 
@@ -391,8 +375,6 @@ query?(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataShareExtensionAbility-query?(    uri: string,    predicates: dataSharePredicates.DataSharePredicates,    columns: Array<string>,    callback: AsyncCallback<Object>  ): void--><!--Device-DataShareExtensionAbility-query?(    uri: string,    predicates: dataSharePredicates.DataSharePredicates,    columns: Array<string>,    callback: AsyncCallback<Object>  ): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
 **系统接口：** 此接口为系统接口。
@@ -403,8 +385,8 @@ query?(
 | --- | --- | --- | --- |
 | uri | string | 是 | 指示要查询的数据的路径。 |
 | predicates | dataSharePredicates.DataSharePredicates | 是 | 指示筛选条件。 |
-| columns | Array&lt;string&gt; | 是 | 指示要查询的列。如果此参数为空，则查询所有列。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Object&gt; | 是 | 回调函数。返回查询到的结果集。 |
+| columns | Array & lt;string & gt; | 是 | 指示要查询的列。如果此参数为空，则查询所有列。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Object&gt; | 是 | 回调函数。返回查询到的结果集。 |
 
 **示例**
 
@@ -448,8 +430,6 @@ update?(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataShareExtensionAbility-update?(    uri: string,    predicates: dataSharePredicates.DataSharePredicates,    valueBucket: ValuesBucket,    callback: AsyncCallback<number>  ): void--><!--Device-DataShareExtensionAbility-update?(    uri: string,    predicates: dataSharePredicates.DataSharePredicates,    valueBucket: ValuesBucket,    callback: AsyncCallback<number>  ): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
 **系统接口：** 此接口为系统接口。
@@ -461,7 +441,7 @@ update?(
 | uri | string | 是 | 指示要更新的数据的路径。 |
 | predicates | dataSharePredicates.DataSharePredicates | 是 | 指示筛选条件。 |
 | valueBucket | [ValuesBucket](arkts-arkdata-valuesbucket-t.md) | 是 | 指示要更新的数据。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回更新的数据记录数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。返回更新的数据记录数。 |
 
 **示例**
 
@@ -485,46 +465,6 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## batchInsert
-
-```TypeScript
-batchInsert?: BatchInsertFn
-```
-
-插入多个数据到数据库中。该方法可被datashare数据提供方重写
-
-**类型：** [BatchInsertFn](arkts-arkdata-batchinsertfn-t-sys.md)
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataShareExtensionAbility-batchInsert?: BatchInsertFn--><!--Device-DataShareExtensionAbility-batchInsert?: BatchInsertFn-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
-
-**系统接口：** 此接口为系统接口。
-
-## batchUpdate
-
-```TypeScript
-batchUpdate?: BatchUpdateFn
-```
-
-更新数据库中多个数据。该方法可被datashare数据提供方重写。
-
-**类型：** [BatchUpdateFn](arkts-arkdata-batchupdatefn-t-sys.md)
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataShareExtensionAbility-batchUpdate?: BatchUpdateFn--><!--Device-DataShareExtensionAbility-batchUpdate?: BatchUpdateFn-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
-
-**系统接口：** 此接口为系统接口。
-
 ## context
 
 ```TypeScript
@@ -535,153 +475,10 @@ context: ExtensionContext
 
 **类型：** [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataShareExtensionAbility-context: ExtensionContext--><!--Device-DataShareExtensionAbility-context: ExtensionContext-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
 **系统接口：** 此接口为系统接口。
-
-## delete
-
-```TypeScript
-delete?: DeleteFn
-```
-
-删除数据库中一个或多个数据，该方法可被datashare数据提供方重写
-
-**类型：** [DeleteFn](arkts-arkdata-deletefn-t-sys.md)
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataShareExtensionAbility-delete?: DeleteFn--><!--Device-DataShareExtensionAbility-delete?: DeleteFn-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
-
-**系统接口：** 此接口为系统接口。
-
-## denormalizeUri
-
-```TypeScript
-denormalizeUri?: DenormalizeUriFn
-```
-
-将通过 normalizeUri(uri) 生成的给定标准化uri转换为非标准化uri。此方法的默认实现返回传递给它的原始 uri。
-
-**类型：** [DenormalizeUriFn](arkts-arkdata-denormalizeurifn-t-sys.md)
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataShareExtensionAbility-denormalizeUri?: DenormalizeUriFn--><!--Device-DataShareExtensionAbility-denormalizeUri?: DenormalizeUriFn-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
-
-**系统接口：** 此接口为系统接口。
-
-## insert
-
-```TypeScript
-insert?: InsertFn
-```
-
-插入数据到数据库中，该方法可被datashare数据提供方重写
-
-**类型：** [InsertFn](arkts-arkdata-insertfn-t-sys.md)
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataShareExtensionAbility-insert?: InsertFn--><!--Device-DataShareExtensionAbility-insert?: InsertFn-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
-
-**系统接口：** 此接口为系统接口。
-
-## normalizeUri
-
-```TypeScript
-normalizeUri?: NormalizeUriFn
-```
-
-将给定的引用数据共享的 URI 转换为标准 URI。标准 URI 可以在设备之间使用，可以持久化、备份和恢复。即使上下文发生变化，它也可以引用数据共享中的同一项。
-
-**类型：** [NormalizeUriFn](arkts-arkdata-normalizeurifn-t-sys.md)
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataShareExtensionAbility-normalizeUri?: NormalizeUriFn--><!--Device-DataShareExtensionAbility-normalizeUri?: NormalizeUriFn-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
-
-**系统接口：** 此接口为系统接口。
-
-## onCreate
-
-```TypeScript
-onCreate?: OnCreateFn
-```
-
-当datashare extension ability启动初始化时会被调用
-
-**类型：** [OnCreateFn](arkts-arkdata-oncreatefn-t-sys.md)
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataShareExtensionAbility-onCreate?: OnCreateFn--><!--Device-DataShareExtensionAbility-onCreate?: OnCreateFn-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
-
-**系统接口：** 此接口为系统接口。
-
-## query
-
-```TypeScript
-query?: QueryFn
-```
-
-查询数据库中一个或多个数据记录。该方法可被datashare数据提供方重写。只支持RDB和分布式KVDB的结果集。当前版本不支持自定义结果集。
-
-**类型：** [QueryFn](arkts-arkdata-queryfn-t-sys.md)
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataShareExtensionAbility-query?: QueryFn--><!--Device-DataShareExtensionAbility-query?: QueryFn-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
-
-**系统接口：** 此接口为系统接口。
-
-## update
-
-```TypeScript
-update?: UpdateFn
-```
-
-更新数据库中一个或多个数据，该方法可被datashare数据提供方重写
-
-**类型：** [UpdateFn](arkts-arkdata-updatefn-t-sys.md)
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataShareExtensionAbility-update?: UpdateFn--><!--Device-DataShareExtensionAbility-update?: UpdateFn-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
-
-**系统接口：** 此接口为系统接口。
-

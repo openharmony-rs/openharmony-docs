@@ -19,8 +19,6 @@ function write(eventName: string, eventType: EventType, keyValues: object): Prom
 
 **替代接口：** [write](arkts-performanceanalysis-hiappevent-write-f.md)
 
-<!--Device-hiAppEvent-function write(eventName: string, eventType: EventType, keyValues: object): Promise<void>--><!--Device-hiAppEvent-function write(eventName: string, eventType: EventType, keyValues: object): Promise<void>-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 **参数：**
@@ -35,7 +33,7 @@ function write(eventName: string, eventType: EventType, keyValues: object): Prom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，可以在其then()、catch()方法中分别对事件写入成功、写入异常的情况进行异步处理。 |
+| Promise & lt;void & gt; | Promise对象，可以在其then()、catch()方法中分别对事件写入成功、写入异常的情况进行异步处理。 |
 
 **示例**
 
@@ -71,8 +69,6 @@ function write(eventName: string, eventType: EventType, keyValues: object, callb
 
 **替代接口：** [write](arkts-performanceanalysis-hiappevent-write-f.md)
 
-<!--Device-hiAppEvent-function write(eventName: string, eventType: EventType, keyValues: object, callback: AsyncCallback<void>): void--><!--Device-hiAppEvent-function write(eventName: string, eventType: EventType, keyValues: object, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 **参数：**
@@ -82,7 +78,7 @@ function write(eventName: string, eventType: EventType, keyValues: object, callb
 | eventName | string | 是 | 事件名称。 |
 | eventType | EventType | 是 | 事件类型。 |
 | keyValues | object | 是 | 事件参数。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 事件回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 事件回调函数。 |
 
 **示例**
 
@@ -104,4 +100,3 @@ hiAppEvent.write("test_event", hiAppEvent.EventType.FAULT, eventParams, (err: Bu
   hilog.info(0x0000, 'hiAppEvent', `success to write event`);
 });
 ```
-

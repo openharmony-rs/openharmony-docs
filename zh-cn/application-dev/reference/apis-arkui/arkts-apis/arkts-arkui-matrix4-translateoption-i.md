@@ -2,11 +2,7 @@
 
 平移参数。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-matrix4-export interface TranslateOption--><!--Device-matrix4-export interface TranslateOption-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -19,60 +15,47 @@ import { matrix4 } from '@kit.ArkUI';
 ## x
 
 ```TypeScript
-x?: double
+x?: number
 ```
 
-x轴的平移距离。 单位：px 默认值：0 取值范围 (-∞, +∞)
+x轴的平移距离。单位：px默认值：0取值范围 (-∞, +∞)
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 7
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TranslateOption-x?: double--><!--Device-TranslateOption-x?: double-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
 
 ```TypeScript
-y?: double
+y?: number
 ```
 
-y轴的平移距离。 单位：px 默认值：0 取值范围 (-∞, +∞)
+y轴的平移距离。单位：px默认值：0取值范围 (-∞, +∞)
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 7
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TranslateOption-y?: double--><!--Device-TranslateOption-y?: double-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## z
 
 ```TypeScript
-z?: double
+z?: number
 ```
 
-z轴的平移距离。 单位：px 默认值：0 取值范围 (-∞, +∞)
+z轴的平移距离。单位：px默认值：0取值范围 (-∞, +∞)
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 7
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TranslateOption-z?: double--><!--Device-TranslateOption-z?: double-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

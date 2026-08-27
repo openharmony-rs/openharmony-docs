@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-bluetoothManager-export enum TransferPolicy--><!--Device-bluetoothManager-export enum TransferPolicy-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## SEND_ONLY
@@ -19,8 +17,6 @@ SEND_ONLY = 0
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TransferPolicy-SEND_ONLY = 0--><!--Device-TransferPolicy-SEND_ONLY = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,8 +32,6 @@ RECEIVE_ONLY = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TransferPolicy-RECEIVE_ONLY = 1--><!--Device-TransferPolicy-RECEIVE_ONLY = 1-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## RECEIVE_SEND
@@ -52,7 +46,4 @@ RECEIVE_SEND = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TransferPolicy-RECEIVE_SEND = 2--><!--Device-TransferPolicy-RECEIVE_SEND = 2-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

@@ -2,9 +2,7 @@
 
 音频渲染器选项信息。
 
-**起始版本：** 23
-
-<!--Device-audio-interface AudioRendererOptions--><!--Device-audio-interface AudioRendererOptions-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## privacyType
@@ -25,9 +22,7 @@ privacyType?: AudioPrivacyType
 
 **类型：** [AudioPrivacyType](arkts-audio-audio-audioprivacytype-e.md)
 
-**起始版本：** 23
-
-<!--Device-AudioRendererOptions-privacyType?: AudioPrivacyType--><!--Device-AudioRendererOptions-privacyType?: AudioPrivacyType-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
 
@@ -37,13 +32,11 @@ privacyType?: AudioPrivacyType
 rendererInfo: AudioRendererInfo
 ```
 
-音频渲染器信息。
+音频渲染器信息。SystemCapability.Multimedia.Audio.Renderer
 
 **类型：** [AudioRendererInfo](arkts-audio-audio-audiorendererinfo-i.md)
 
-**起始版本：** 23
-
-<!--Device-AudioRendererOptions-rendererInfo: AudioRendererInfo--><!--Device-AudioRendererOptions-rendererInfo: AudioRendererInfo-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -53,13 +46,10 @@ rendererInfo: AudioRendererInfo
 streamInfo: AudioStreamInfo
 ```
 
-音频流信息。
+音频流信息。SystemCapability.Multimedia.Audio.Renderer
 
 **类型：** [AudioStreamInfo](arkts-audio-audio-audiostreaminfo-i.md)
 
-**起始版本：** 23
-
-<!--Device-AudioRendererOptions-streamInfo: AudioStreamInfo--><!--Device-AudioRendererOptions-streamInfo: AudioStreamInfo-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
-

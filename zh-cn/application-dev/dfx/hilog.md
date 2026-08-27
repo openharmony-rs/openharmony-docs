@@ -2,9 +2,9 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @liuyifeifei;@buzhenwang-->
-<!--Designer: @shenchenkai-->
-<!--Tester: @liyang2235-->
+<!--Owner: @suxunquan-->
+<!--Designer: @milkbread123-->
+<!--Tester: @yufeifei-->
 <!--Adviser: @jinqiuheng-->
 
 HiLog日志系统，提供给系统框架、服务、以及应用，用于打印日志，记录用户操作、系统运行状态等。开发者可以通过hilog命令行查询相关日志信息。
@@ -12,7 +12,7 @@ HiLog日志系统，提供给系统框架、服务、以及应用，用于打印
 
 ## 环境要求
 
-- 根据hdc命令行工具指导，完成[环境准备](hdc.md#环境准备)。
+- 根据hdc命令行工具指导，完成环境准备。
 
 - 确保设备已正常连接，并执行hdc shell。
 
@@ -33,7 +33,7 @@ HiLog日志系统，提供给系统框架、服务、以及应用，用于打印
 
   hilog日志默认不落盘，需要手动开启落盘任务，才会落盘到设备data/log/hilog目录下，可以使用hdc file recv data/log/hilog命令导出日志后在本地进行查看。
 
-  开启/关闭落盘任务，参考[查看和设置落盘任务](#查看和设置落盘任务)。
+  开启/关闭落盘任务，参考查看和设置落盘任务。
 
 ### hilog日志格式说明
 
@@ -48,7 +48,7 @@ HiLog日志系统，提供给系统框架、服务、以及应用，用于打印
 
 > **说明：**
 >
-> 日志级别：I表示Info级别，其余级别参考[日志等级/apis-performance-analysis-kit/capi-log-h.md#loglevel)首字母。
+> 日志级别：I表示Info级别，其余级别参考LogLevel首字母。
 >
 > domainID：A03200中A表示应用日志（LOG_APP），3200表示domainID为0x3200。
 >
@@ -443,7 +443,7 @@ $ param get hilog.loggable.global
 I
 ```
 <!--RP17-->
-全局日志级别默认为INFO;
+全局日志级别默认为INFO；
 <!--RP17End-->
 
 <!--RP16-->
@@ -661,7 +661,7 @@ Set flow control by domain to disabled successfully
 
 本条日志表示进程com.example.myapplication存在日志打印超限，在17:02:34.219时间点前，有3091行日志由于超限管控丢弃，未打印出来。
 
-**处理方式**：可参考[进程超限开关](#进程超限开关)，关闭对应管控机制。
+**处理方式**：可参考进程超限开关，关闭对应管控机制。
 
 
 ### 系统日志
@@ -676,7 +676,7 @@ domainID维度管控，打印到LOG_CORE buffer里面的系统日志适配了dom
 
 本条日志表示domainID为02C02的日志存在日志打印超限，在17:02:34.219时间点前，有108行日志由于超限管控丢弃，未打印出来。
 
-**处理方式**：可参考[domain超限开关](#domain超限开关)，关闭对应管控机制。
+**处理方式**：可参考domain超限开关，关闭对应管控机制。
 
 
 ## 日志丢失处理方法
@@ -704,7 +704,7 @@ LOGLIMIT是进程或domainID超限管控的丢失；Slow reader missed是全局�
 ```
 <!--RP13End-->
 
-**处理方式**：可参考[hilog超限机制介绍](#hilog超限机制介绍)，关闭对应管控机制。
+**处理方式**：可参考hilog超限机制介绍，关闭对应管控机制。
 
 
 ### Slow reader missed

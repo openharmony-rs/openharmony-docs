@@ -6,15 +6,15 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-从API version 14开始，支持使用Web组件的[createPdf/apis-arkweb/arkts-apis-webview-WebviewController.md#createpdf14)方法，为应用提供了保存前端页面为PDF的功能。
+从API version 14开始，支持使用Web组件的createPdf方法，为应用提供了保存前端页面为PDF的功能。
 
-使用[createPdf/apis-arkweb/arkts-apis-webview-WebviewController.md#createpdf14)生成实例后，调用`pdfArrayBuffer`方法获取二进制数据流，再使用[fileIo/apis-core-file-kit/js-apis-file-fs.md)方法将二进制数据流保存为PDF文件。用户可以将前端页面内容保存为PDF以便分享或保存。例如，生成报告、发票等，方便用户保存和传输。
+使用createPdf生成实例后，调用`pdfArrayBuffer`方法获取二进制数据流，再使用基础文件IO接口（ohos.file.fs）将二进制数据流保存为PDF文件。用户可以将前端页面内容保存为PDF以便分享或保存。例如，生成报告、发票等，方便用户保存和传输。
 > **说明**
 >
-> 通过[pdfConfiguration/apis-arkweb/arkts-apis-webview-i.md#pdfconfiguration14)的配置，可调整PDF每页大小、前端页面缩放比例等；推荐使用前端页面适配策略，通过CSS媒体查询（@media print）优化PDF排版。
+> 通过pdfConfiguration的配置，可调整PDF每页大小、前端页面缩放比例等；推荐使用前端页面适配策略，通过CSS媒体查询（@media print）优化PDF排版。
 
 ## 需要权限
-若涉及网络文档获取，需在module.json5中配置网络访问权限。具体添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
+若涉及网络文档获取，需在module.json5中配置网络访问权限。具体添加方法请参考在配置文件中声明权限。
 
 <!-- @[web_createpdf_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/module.json5) -->
 
@@ -75,7 +75,7 @@ struct Index {
                 });
               } catch (resError) {
                 console.error(
-                  `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  `ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
               }
             });
         })

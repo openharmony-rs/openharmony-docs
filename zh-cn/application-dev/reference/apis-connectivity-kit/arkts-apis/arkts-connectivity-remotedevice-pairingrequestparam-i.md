@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-remoteDevice-interface PairingRequestParam--><!--Device-remoteDevice-interface PairingRequestParam-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 ## 导入模块
@@ -28,8 +26,6 @@ address: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PairingRequestParam-address: string--><!--Device-PairingRequestParam-address: string-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 ## pairingType
@@ -45,8 +41,6 @@ pairingType: PairingType
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PairingRequestParam-pairingType: PairingType--><!--Device-PairingRequestParam-pairingType: PairingType-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -64,7 +58,4 @@ passkey: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PairingRequestParam-passkey: string--><!--Device-PairingRequestParam-passkey: string-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## getCameraTrackingEnabled
@@ -14,9 +13,7 @@ function getCameraTrackingEnabled(): boolean
 
 获取相机跟踪状态
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-function getCameraTrackingEnabled(): boolean--><!--Device-mechanicManager-function getCameraTrackingEnabled(): boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -41,4 +38,3 @@ console.info('Get tracking status');
 let enabled = mechanicManager.getCameraTrackingEnabled();
 console.info(`'current tracking status:' ${enabled}`);
 ```
-

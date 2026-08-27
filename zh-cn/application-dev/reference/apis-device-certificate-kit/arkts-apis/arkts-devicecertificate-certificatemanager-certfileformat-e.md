@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-certificateManager-export enum CertFileFormat--><!--Device-certificateManager-export enum CertFileFormat-End-->
-
 **系统能力：** SystemCapability.Security.CertificateManager
 
 ## PEM_DER
@@ -19,8 +17,6 @@ PEM_DER = 0
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CertFileFormat-PEM_DER = 0--><!--Device-CertFileFormat-PEM_DER = 0-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -36,7 +32,4 @@ P7B = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CertFileFormat-P7B = 1--><!--Device-CertFileFormat-P7B = 1-End-->
-
 **系统能力：** SystemCapability.Security.CertificateManager
-

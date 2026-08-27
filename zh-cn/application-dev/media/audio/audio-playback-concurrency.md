@@ -6,125 +6,111 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+## 音频焦点概述
+
 在应用播放或录制声音时，常出现与其他音频流的并发或中断情况，这对用户体验构成显著影响。例如，当应用启动视频播放时，若后台正在播放音乐，用户会期望音乐能自动暂停，以确保视频音频优先播放，这正是音频焦点功能的体现。对于涉及音频服务的应用而言，妥善地管理音频焦点非常重要，它可以显著提升用户的音频体验。
 
-本文档将介绍系统的音频焦点策略，以及应对焦点变化的方法。同时，系统提供了[音频会话管理](audio-session-management.md)机制，允许应用自定义其音频流的焦点策略。
+本文档将介绍系统的音频焦点策略，以及应对焦点变化的方法。同时，系统提供了音频会话管理机制，允许应用自定义其音频流的焦点策略。
 
-## 音频焦点
+## 跨应用音频焦点管理
 
-系统预设了默认的[音频焦点策略](#音频焦点策略)，根据音频流的类型及启动的先后顺序，对所有播放和录制音频流进行统一管理。
+系统预设了默认的音频焦点策略，根据音频流的类型及启动的先后顺序，对所有播放和录制音频流进行统一管理。
 
-在启动播放或录制功能前，应用需要先[申请音频焦点](#申请音频焦点)；而在播放或录制结束后，应适时[释放音频焦点](#释放音频焦点)。在播放或录制的过程中，可能会因其他音频流的介入而失去焦点，此时，应用需依据焦点变化采取相应措施[处理音频焦点变化](#处理音频焦点变化)。
+在启动播放或录制功能时，系统会自动为相应的音频流申请音频焦点；而在播放或录制结束后，系统也会自动释放音频焦点。在播放或录制的过程中，可能会因其他音频流的介入而失去焦点，此时，应用需依据焦点变化采取相应措施处理音频焦点变化。
 
 对于应用而言，为了确保为用户提供优质的音频焦点体验，应当注意以下几点：
 
-- 在启动播放或录制操作前，应根据音频的具体用途，选择并[使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)，即准确设置[StreamUsage/apis-audio-kit/arkts-apis-audio-e.md#streamusage)或[SourceType/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)。
+- 在启动播放操作前，应根据音频的具体用途选择合适的播放流类型，即准确设置StreamUsage。
 
-- 在播放或录制的过程中，需通过监听音频焦点来[处理音频焦点变化](#处理音频焦点变化)事件，并在接收到音频焦点中断事件（[InterruptEvent/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）时，采取相应的处理措施。
+- 在播放或录制的过程中，需通过监听音频焦点来处理音频焦点变化事件，并在接收到音频焦点中断事件（InterruptEvent）时，采取相应的处理措施。
 
-- 如果应用程序有意主动管理音频焦点，可使用[音频会话管理](audio-session-management.md)相关的接口进行操作。
+- 如果应用程序有意主动管理音频焦点，可使用音频会话管理相关的接口进行操作。
 
 ### 申请音频焦点
 
 **当应用开始播放或录制音频时，系统将自动为相应的音频流申请音频焦点。**
 
-例如，应用[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)，当调用AudioRenderer的[start/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8)时，系统会自动为应用请求音频焦点。
+例如，应用使用AudioRenderer开发音频播放功能(ArkTS)，当调用AudioRenderer的start时，系统会自动为应用请求音频焦点。
 
 若音频焦点请求成功，音频流将正常启动；反之，若音频焦点请求被拒绝，音频流将无法开始播放或录制。
 
-建议应用主动通过监听音频焦点来[处理音频焦点变化](#处理音频焦点变化)事件，一旦音频焦点请求被拒绝，应用将接收到音频焦点事件（[InterruptEvent/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）。
+建议应用主动通过监听音频焦点来处理音频焦点变化事件，一旦音频焦点请求被拒绝，应用将接收到音频焦点事件（InterruptEvent）。
 
-如果应用希望只申请一次焦点，连续播放多条音频流不被中断，可使用[音频会话管理](audio-session-management.md)相关的接口进行操作。
+如果应用希望只申请一次焦点，连续播放多条音频流不被中断，可使用音频会话管理相关的接口进行操作。
 
 **特殊场景：**
 
-1. **短音播放**：若应用[使用SoundPool播放短音频(ArkTS)](../media/using-soundpool-for-playback.md)，且[StreamUsage/apis-audio-kit/arkts-apis-audio-e.md#streamusage)指定为Music、Movie、AudioBook等类型，播放短音，则其申请焦点时默认为并发模式，不会影响其他音频。
+1. **短音播放**：若应用使用SoundPool播放短音频(ArkTS)，且StreamUsage指定为Music、Movie、AudioBook等类型播放短音时，则申请焦点时默认为并发模式，不会影响其他音频。
 
 2. **静音播放**：若应用以静音状态开始播放音频（或视频），并且希望静音阶段不影响其他音频，当后续解除静音的时候，再以正常策略申请音频焦点，则可以调用静音并发播放模式的相关接口。具体可参考：
 
-   - [使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，可以调用[setMediaMuted/apis-media-kit/arkts-apis-media-AVPlayer.md#setmediamuted12)函数。
+   - 使用AVPlayer播放音频(ArkTS)，可以调用setMediaMuted函数。
 
-   - [使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)，可调用[setSilentModeAndMixWithOthers/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setsilentmodeandmixwithothers12)函数。
+   - 使用AudioRenderer开发音频播放功能(ArkTS)，可调用setSilentModeAndMixWithOthers函数。
 
-   - [使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)，可调用[OH_AudioRenderer_SetSilentModeAndMixWithOthers/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setsilentmodeandmixwithothers)函数。
+   - 使用OHAudio开发音频播放功能(C/C++)，可调用OH_AudioRenderer_SetSilentModeAndMixWithOthers函数。
+
+   当应用A先播放媒体流，应用B再启动媒体静音流但不设置上述并发模式时，应用B会打断应用A的媒体音频播放，影响用户体验。针对此场景，从API版本26.0.0开始有以下优化：
+
+   当应用A和应用B播放StreamUsage为Music、Movie、AudioBook类型的媒体流时，应用B不会立刻打断应用A，是否打断根据以下情况判断：
+   - 情况1：当应用B全程静音时，不会打断应用A播放。
+   - 情况2：当应用B媒体流改变成非静音数据且音量大于0时，才会打断应用A播放。
 
 ### 释放音频焦点
 
 **当应用结束播放或录制音频时，系统会自动为相应的音频流释放音频焦点。**
 
-例如，应用[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)，当调用AudioRenderer的[pause/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#pause8)、[stop/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#stop8)、[release/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#release8)等时，系统会为其释放音频焦点。
+例如，应用使用AudioRenderer开发音频播放功能(ArkTS)，当调用AudioRenderer的pause、stop、release等时，系统会为其释放音频焦点。
 
 当音频流释放音频焦点时，若存在受其影响的其他音频流（如音量被调低或被暂停的流），将触发恢复操作。
 
-如果应用不希望在音频流停止时立即释放音频焦点，可使用[音频会话管理](audio-session-management.md)的相关接口，实现音频焦点释放的延迟效果。
+如果应用不希望在音频流停止时立即释放音频焦点，可使用音频会话管理的相关接口，实现音频焦点释放的延迟效果。
 
-如果应用通过激活[音频会话管理](audio-session-management.md)申请过焦点，需要结束AudioSession以释放焦点。
+如果应用通过激活音频会话管理申请过焦点，需要结束AudioSession以释放焦点。
 
 ### 音频焦点策略
 
 当音频流申请或释放音频焦点时，系统依据音频焦点策略，对所有音频流（包括播放和录制）实施焦点管理，决定哪些音频流可正常运行，哪些需被打断或执行其他操作。
 
-系统预设的默认音频焦点策略，主要依据音频流类型（即播放流的[StreamUsage/apis-audio-kit/arkts-apis-audio-e.md#streamusage)和录制流的[SourceType/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)）及音频流启动的顺序进行决策。
+系统预设的默认音频焦点策略，主要依据音频流类型（即播放流的StreamUsage和录制流的SourceType）及音频流启动的顺序进行决策。
 
-为防止焦点变化不符合预期，应用在启动播放或录制前，应根据音频流的用途，准确设置StreamUsage或SourceType。关于各类型的详细说明，请参考[使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)。
+为防止焦点变化不符合预期，应用在启动播放前，应根据音频流的用途准确设置StreamUsage。关于各类型的详细说明，请参考选择合适的播放流类型。
 
 常见的音频焦点场景示例如下：
 
 - 开始播放Movie音频流时，将导致正在播放的Music音频流暂停，但Movie播放停止后，Music不会收到恢复播放的通知。
 - 开始Navigation音频流时，会自动降低正在播放的Music音频流音量，Navigation停止后，Music音量将恢复至原样。
 - Music音频流与Game音频流可并发混音播放，相互之间不会影响音量或播放状态。
-- VoiceCommunication开始播放时，将暂停正在播放的Music音频流，VoiceCommunication停止后，Music将收到恢复播放的通知。
-- 开始录制VoiceMessage时，Music音频流会被暂停，VoiceMessage录制停止后，Music将收到恢复播放的通知。
+- 开始播放VoiceCommunication音频流时，将暂停正在播放的Music音频流，VoiceCommunication停止后，Music将收到恢复播放的通知。
+- 开始录制VoiceMessage音频流时，Music音频流会被暂停，VoiceMessage录制停止后，Music将收到恢复播放的通知。
 
-若默认的音频焦点策略无法满足特定场景的需求，应用程序可利用[音频会话管理](audio-session-management.md)，调整本应用音频流所采用的音频焦点策略。
-
-### 焦点模式
-
-针对同一应用创建的多个音频流，应用可通过设置焦点模式（[InterruptMode/apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)），选择由应用自主管控，或由系统统一管理。
-
-系统预设了两种焦点模式：
-
-- 共享焦点模式（SHARE_MODE）：同一应用创建的多个音频流共享一个音频焦点。这些音频流之间的并发规则由应用自行决定，音频焦点策略不会介入。仅当其他应用创建的音频流与该应用的音频流同时播放时，才会触发音频焦点策略的管理。
-
-- 独立焦点模式（INDEPENDENT_MODE）：应用创建的每个音频流均独立拥有一个音频焦点，多个音频流同时播放时，将触发音频焦点策略的管理。
-
-应用可根据需求选择合适的焦点模式。在创建音频流时，系统默认采用共享焦点模式（SHARE_MODE），应用可主动设置所需模式。
-
-设置焦点模式的方法：
-
-- 若[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，则可以通过修改AVPlayer的[audioInterruptMode/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)属性进行设置。
-
-- 若[使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)，则可以调用[OH_AVPlayer_SetAudioInterruptMode/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiointerruptmode)函数进行设置。
-
-- 若[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)，则可以调用[setInterruptMode/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setinterruptmode9)函数进行设置。
-
-- 若[使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)，则可以调用[OH_AudioStreamBuilder_SetRendererInterruptMode/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererinterruptmode)函数进行设置。
+若默认的音频焦点策略无法满足特定场景的需求，应用程序可利用音频会话管理，调整本应用音频流所采用的音频焦点策略。
 
 ### 处理音频焦点变化
 
-在应用播放或录制音频的过程中，若有其他音频流申请焦点，系统会根据[音频焦点策略](#音频焦点策略)进行焦点处理。若判定本音频流的焦点有变化，需要执行暂停、继续、降低音量、恢复音量等操作，则系统会自动执行一些必要的操作，并通过音频焦点事件（[InterruptEvent/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）通知应用。
+在应用播放或录制音频的过程中，若有其他音频流申请焦点，系统会根据音频焦点策略进行焦点处理。若判定本音频流的焦点有变化，需要执行暂停、继续、降低音量、恢复音量等操作，则系统会自动执行一些必要的操作，并通过音频焦点事件（InterruptEvent）通知应用。
 
-因此，为了维持应用和系统的状态一致性，保证良好的用户体验，推荐应用监听音频焦点事件，并在焦点发生变化时，根据[InterruptEvent/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)做出必要的响应。
+因此，为了维持应用和系统的状态一致性，保证良好的用户体验，推荐应用监听音频焦点事件，并在焦点发生变化时，根据InterruptEvent做出必要的响应。
 
 **使用不同方式开发时，如何监听音频焦点事件：**
 
-- 若[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，可以调用[on('audioInterrupt')/apis-media-kit/arkts-apis-media-AVPlayer.md#onaudiointerrupt9)接口，监听音频焦点事件[InterruptEvent/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)。
+- 若使用AVPlayer播放音频(ArkTS)，可以调用on('audioInterrupt')接口，监听音频焦点事件InterruptEvent。
 
-- 若[使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)，可以调用[OH_AVPlayer_SetOnInfoCallback()/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)接口，监听音频焦点事件[OH_AVPlayerOnInfoCallback/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfocallback)。
+- 若使用AVPlayer播放音频(C/C++)，可以调用OH_AVPlayer_SetOnInfoCallback()接口，监听音频焦点事件OH_AVPlayerOnInfoCallback。
 
-- 若[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)，可以调用[on('audioInterrupt')/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9)接口，监听音频焦点事件[InterruptEvent/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)。
+- 若使用AudioRenderer开发音频播放功能(ArkTS)，可以调用on('audioInterrupt')接口，监听音频焦点事件InterruptEvent。
 
-- 若[使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)，可以调用[OH_AudioStreamBuilder_SetRendererCallback/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrenderercallback)接口，监听音频焦点事件[OH_AudioRenderer_OnInterruptEvent/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md#oh_audiorenderer_oninterruptevent)。
+- 若使用OHAudio开发音频播放功能(C/C++)，可以调用OH_AudioStreamBuilder_SetRendererCallback接口，监听音频焦点事件OH_AudioRenderer_OnInterruptEvent。
 
-- 若[使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)，可以调用[on('audioInterrupt')/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onaudiointerrupt10)接口，监听音频焦点事件[InterruptEvent/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)。
+- 若使用AudioCapturer开发音频录制功能(ArkTS)，可以调用on('audioInterrupt')接口，监听音频焦点事件InterruptEvent。
 
-- 若[使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)，可以调用[OH_AudioStreamBuilder_SetCapturerCallback/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturercallback)接口，监听音频焦点事件[OH_AudioCapturer_OnInterruptEvent/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md#oh_audiocapturer_oninterruptevent)。
+- 若使用OHAudio开发音频录制功能(C/C++)，可以调用OH_AudioStreamBuilder_SetCapturerCallback接口，监听音频焦点事件OH_AudioCapturer_OnInterruptEvent。
 
-应用在收到音频焦点事件（[InterruptEvent/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）时，需要根据其中信息，做出相应的处理，以保持应用与系统状态一致，带给用户良好的音频体验。
+应用在收到音频焦点事件（InterruptEvent）时，需要根据其中信息，做出相应的处理，以保持应用与系统状态一致，带给用户良好的音频体验。
 
 在音频焦点事件中，应用应重点关注两个信息：打断类型（InterruptForceType）和打断提示（InterruptHint）。
 
-- 打断类型（[InterruptForceType/apis-audio-kit/arkts-apis-audio-e.md#interruptforcetype9)）：
+- 打断类型（InterruptForceType）：
 
   InterruptForceType参数提示应用该焦点变化是否已由系统强制操作：
 
@@ -138,11 +124,11 @@
   >
   > 对于一些系统无法强制执行的操作（例如INTERRUPT_HINT_RESUME），会采用共享打断类型（INTERRUPT_SHARE）。
 
-- 打断提示（[InterruptHint/apis-audio-kit/arkts-apis-audio-e.md#interrupthint)）：
+- 打断提示（InterruptHint）：
 
   InterruptHint参数用于提示应用音频流的状态：
 
-  - 继续（INTERRUPT_HINT_RESUME）：音频流可恢复播放或录制，仅会接收到PAUSE（暂停提示）之后收到。
+  - 继续（INTERRUPT_HINT_RESUME）：音频流可恢复播放或录制，仅在接收到PAUSE（暂停提示）事件后才会收到。
 
     此操作无法由系统强制执行，其对应的InterruptForceType一定为INTERRUPT_SHARE类型。
 
@@ -163,20 +149,20 @@
 | 音乐         | STREAM_USAGE_MUSIC | 来电铃声     | STREAM_USAGE_RINGTONE | 开始响铃，音乐暂停播放。<br>不接通或者接通再挂断后，音乐恢复播放。 | 音乐应用注册焦点事件监听。接收到`INTERRUPT_HINT_PAUSE`事件时，直接暂停音乐播放，并更新UI界面。<br>当电话结束后，音频应用接收到`INTERRUPT_HINT_RESUME`事件，重新启动播放。 |
 | 音乐         | STREAM_USAGE_MUSIC | VoIP通话     | STREAM_USAGE_VOICE_COMMUNICATION | 通话接通时，音乐暂停播放。<br>通话挂断后，音乐恢复播放。 | 音乐应用注册焦点事件监听。<br>接收到`INTERRUPT_HINT_PAUSE`事件时，直接暂停音乐播放，并更新UI界面。<br>当通话结束后，音乐应用接收到`INTERRUPT_HINT_RESUME`事件，重新启动播放。 |
 
-**处理音频焦点示例:**
+**处理音频焦点示例：**
 
-为了带给用户更好的音频体验，针对不同的音频焦点事件内容，应用需要做出相应的处理操作。此处以[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)为例，展示推荐应用采取的处理方法，提供伪代码供开发者参考。
+为了带给用户更好的音频体验，针对不同的音频焦点事件内容，应用需要做出相应的处理操作。此处以使用AudioRenderer开发音频播放功能(ArkTS)为例，展示推荐应用采取的处理方法，提供伪代码供开发者参考。
 
-在监听音频播放焦点变化事件之前，需要先获取[AudioRenderer/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)实例。若使用其他接口开发音频播放或音频录制功能，处理方法类似，具体的代码实现，开发者可结合实际情况编写，处理方法也可自行调整。
+在监听音频播放焦点变化事件之前，需要先获取AudioRenderer实例。若使用其他接口开发音频播放或音频录制功能，处理方法类似，具体的代码实现，开发者可结合实际情况编写，处理方法也可自行调整。
 
-<!-- @[renderer_interrupt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[renderer_interrupt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
 
-let isPlay: boolean; // 是否正在播放，实际开发中，对应与音频播放状态相关的模块。
+let isPlaying: boolean; // 是否正在播放，实际开发中，对应与音频播放状态相关的模块。
 let isDucked: boolean; // 是否降低音量，实际开发中，对应与音频音量相关的模块。
 let started: boolean; // 标识符，记录“开始播放（start）”操作是否成功。
 
@@ -197,12 +183,12 @@ async function onAudioInterrupt(): Promise<void> {
         case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
           // 此分支表示系统已将音频流暂停（临时失去焦点），为保持状态一致，应用需切换至音频暂停状态。
           // 临时失去焦点：待其他音频流释放音频焦点后，本音频流会收到resume对应的音频焦点事件，到时可自行继续播放。
-          isPlay = false; // 此句为简化处理，代表应用切换至音频暂停状态的若干操作。
+          isPlaying = false; // 此句为简化处理，代表应用切换至音频暂停状态的若干操作。
           break;
         case audio.InterruptHint.INTERRUPT_HINT_STOP:
           // 此分支表示系统已将音频流停止（永久失去焦点），为保持状态一致，应用需切换至音频暂停状态。
           // 永久失去焦点：后续不会再收到任何音频焦点事件，若想恢复播放，需要用户主动触发。
-          isPlay = false; // 此句为简化处理，代表应用切换至音频暂停状态的若干操作。
+          isPlaying = false; // 此句为简化处理，代表应用切换至音频暂停状态的若干操作。
           break;
         case audio.InterruptHint.INTERRUPT_HINT_DUCK:
           // 此分支表示系统已将音频音量降低（默认降到正常音量的20%）。
@@ -225,14 +211,17 @@ async function onAudioInterrupt(): Promise<void> {
           if (audioRenderer == undefined) {
             return;
           }
-          await audioRenderer.start().then(() => {
-            started = true; // start()执行成功。
-          }).catch((err: BusinessError) => {
-            started = false; // start()执行失败。
-          });
+          try {
+            await audioRenderer.start();
+            started = true;
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`Failed to start audio renderer. Code: ${error.code}, message: ${error.message}`);
+            started = false;
+          }
           // 若start()执行成功，则切换至音频播放状态。
           if (started) {
-            isPlay = true; // 此句为简化处理，代表应用切换至音频播放状态的若干操作。
+            isPlaying = true; // 此句为简化处理，代表应用切换至音频播放状态的若干操作。
           } else {
             // 音频继续播放的操作执行失败。
           }
@@ -244,3 +233,69 @@ async function onAudioInterrupt(): Promise<void> {
   });
 }
 ```
+
+
+## 同应用内焦点管理
+
+针对同一应用创建的多个音频流，应用可通过设置焦点模式（InterruptMode）来选择自主管控，或由系统统一管控。
+
+系统预设的焦点模式如下：
+
+| 焦点模式 | 说明 | 规格 |
+|---------|----------|-------------------|
+| SHARE_MODE（默认，推荐） | **共享焦点模式**，不由系统进行焦点决策，应用自行决定各流的播放、暂停、压低等操作。  | 与同应用内其他SHARE_MODE流之间不进行焦点决策，由应用自行管控；<br>同应用内INDEPENDENT_MODE流之间由系统进行焦点决策。 |
+| INDEPENDENT_MODE | **独立焦点模式**，由系统进行焦点决策，按应用间焦点策略管理。 | 与同应用内所有流（无论SHARE_MODE或INDEPENDENT_MODE）一起由系统进行焦点决策。 |
+
+**规格图例：**
+
+![INTERRUPT_MODE](figures/audio-focus-interrupt-mode.png)
+
+推荐使用共享焦点模式（SHARE_MODE）。应用可按需自行管控各流的播放、暂停、恢复等操作，避免系统默认策略（如STOP）导致音频流无法恢复。
+
+设置焦点模式的方法：
+
+- 如果使用AVPlayer播放音频(ArkTS)，则可以通过修改AVPlayer的属性audioInterruptMode进行设置。
+
+- 如果使用AVPlayer播放音频(C/C++)，则可以调用OH_AVPlayer_SetAudioInterruptMode函数进行设置。
+
+- 如果使用AudioRenderer开发音频播放功能(ArkTS)，则可以调用setInterruptMode函数进行设置。
+
+- 如果使用OHAudio开发音频播放功能(C/C++)，则可以调用OH_AudioStreamBuilder_SetRendererInterruptMode函数进行设置。
+
+同应用内常见焦点管理实践如下，其他场景均可参考该实践自行完成各流的管控。
+
+**实践：同应用内音乐与音乐互相打断**
+
+流A正在播放音乐（STREAM_USAGE_MUSIC），流B也将开始播放音乐（STREAM_USAGE_MUSIC）。此时同一应用内出现了两条媒体类音频流并发，需要处理两者之间的焦点冲突。
+
+推荐做法：采用默认焦点模式（SHARE_MODE），应用自行管控各流的播放与恢复。当流B开始播放时，应用主动暂停流A；当流B停止播放时，应用主动恢复流A。优于独立焦点模式（INDEPENDENT_MODE）下系统停止后不恢复的策略。
+
+<!-- @[toggle_stream_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioIntraAppFocusSample/entry/src/main/ets/pages/MusicVsMusicPage.ets) -->
+
+``` TypeScript
+async toggleStreamB() { // 切换流B的播放状态。
+  await this.initStreams(); // 惰性初始化两条音频流，首次播放时才创建Renderer。
+  if (this.streamBPlaying) { // 流B正在播放，用户要停止流B。
+    // ...
+    if (this.streamAPausedByApp) { // 流A是被应用自行管控暂停的，停止流B后应自动恢复流A。
+      this.streamAPausedByApp = false; // 清除标记，流A即将恢复，不再是被管控暂停状态。
+      await this.streamA.startPlay(); // 恢复流A的音频输出，完成暂停→恢复。
+      this.promptAction.showToast({
+        message: $r('app.string.app_control_stream_a_auto_resume'),
+        duration: TOAST_DURATION
+      });
+    }
+  } else { // 流B未播放，用户要开始播放流B。
+    if (this.appControl && this.currentMode === InterruptMode.SHARE_MODE && 
+    this.streamAPlaying) { // 流A正在播放，暂停流A。
+      await this.streamA.pausePlay(); // 主动暂停流A，后续可恢复，而非让系统停止流A导致不可恢复。
+      this.streamAPausedByApp = true; // 标记流A是被应用管控暂停的，流B停止后需要自动恢复流A。
+      this.promptAction.showToast({ message: $r('app.string.app_control_stream_a_pause'),
+       duration: TOAST_DURATION });
+    }
+    await this.streamB.startPlay(); // 开始流B的音频输出。
+  }
+}
+```
+
+独立焦点模式（INDEPENDENT_MODE）下，音乐与音乐之间为停止策略——后播的流会停止前播的流，且前播的流不会收到恢复事件，无法自动恢复。

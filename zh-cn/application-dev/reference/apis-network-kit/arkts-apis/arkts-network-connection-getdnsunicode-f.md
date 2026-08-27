@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { connection } from '@kit.NetworkKit';
 ```
 
 ## getDnsUnicode
@@ -15,8 +14,6 @@ function getDnsUnicode(host: string, flag?: ConversionProcess): string
 使用Punycode编码方式，将ASCII编码形式的主机名转换为Unicode编码形式，并通过可选的conversionProcess参数控制转换行为。
 
 **起始版本：** 23
-
-<!--Device-connection-function getDnsUnicode(host: string, flag?: ConversionProcess): string--><!--Device-connection-function getDnsUnicode(host: string, flag?: ConversionProcess): string-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -51,4 +48,3 @@ console.info("Succeeded to getDnsUnicode: " + result);  // 预期结果：www.�
 let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info("Succeeded to getDnsUnicode: " + result);  // 预期结果：www.example.com
 ```
-

@@ -1,26 +1,22 @@
-# GrantedBundleInfo(Some common definitions)
+# GrantedBundleInfo
 
 描述已授权的包信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface GrantedBundleInfo--><!--Device-unnamed-export interface GrantedBundleInfo-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Notification.Notification
 
 ## appIndex
 
 ```TypeScript
-readonly appIndex: int
+readonly appIndex: number
 ```
 
 应用的分身索引标识，仅在分身应用中生效。 从ApplicationInfo中appIndex获取。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-GrantedBundleInfo-readonly appIndex: int--><!--Device-GrantedBundleInfo-readonly appIndex: int-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -34,9 +30,7 @@ readonly appName?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-GrantedBundleInfo-readonly appName?: string--><!--Device-GrantedBundleInfo-readonly appName?: string-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -50,9 +44,6 @@ bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-GrantedBundleInfo-bundleName: string--><!--Device-GrantedBundleInfo-bundleName: string-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Notification.Notification
-

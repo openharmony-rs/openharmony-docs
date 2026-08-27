@@ -1,12 +1,10 @@
 # WriteStream
 
-文件可写流，需要先通过 fileIo.createWriteStream方法来构建一 个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md)。
+文件可写流，需要先通过 [fileIo.createWriteStream](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatewritestream12)方法来构建一 个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md)。
 
 **继承/实现关系：** WriteStream extends [stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md)
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare class WriteStream--><!--Device-unnamed-declare class WriteStream-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -14,8 +12,6 @@
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## close
@@ -27,8 +23,6 @@ close(): void
 关闭可写流。
 
 **起始版本：** 12
-
-<!--Device-WriteStream-close(): void--><!--Device-WriteStream-close(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -46,6 +40,18 @@ close(): void
 **示例**
 
 ```TypeScript
+let filePath = pathDir + "/test.txt";
+let randomAccessFile = fileIo.createRandomAccessFileSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+randomAccessFile.close();
+```
+
+```TypeScript
+const filePath = pathDir + "/test.txt";
+const rs = fileIo.createReadStream(filePath);
+rs.close();
+```
+
+```TypeScript
 const filePath = pathDir + "/test.txt";
 const ws = fileIo.createWriteStream(filePath);
 ws.close();
@@ -61,8 +67,6 @@ constructor()
 
 **起始版本：** 12
 
-<!--Device-WriteStream-constructor()--><!--Device-WriteStream-constructor()-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## seek
@@ -74,8 +78,6 @@ seek(offset: number, whence?: WhenceType): number
 调整可写流的偏移指针位置。
 
 **起始版本：** 12
-
-<!--Device-WriteStream-seek(offset: number, whence?: WhenceType): number--><!--Device-WriteStream-seek(offset: number, whence?: WhenceType): number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -96,12 +98,20 @@ seek(offset: number, whence?: WhenceType): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
+| 13900020 | Invalid argument |
 | 13900026 | Illegal seek |
 | 13900042 | Unknown error |
 
 **示例**
+
+```TypeScript
+const filePath = pathDir + "/test.txt";
+const rs = fileIo.createReadStream(filePath);
+const curOff = rs.seek(5, fileIo.WhenceType.SEEK_SET);
+console.info(`Succeeded in seeking, current offset is ${curOff}`);
+rs.close();
+```
 
 ```TypeScript
 const filePath = pathDir + "/test.txt";
@@ -123,8 +133,6 @@ readonly bytesWritten: number
 
 **起始版本：** 12
 
-<!--Device-WriteStream-readonly bytesWritten: number--><!--Device-WriteStream-readonly bytesWritten: number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## path
@@ -139,7 +147,4 @@ readonly path: string
 
 **起始版本：** 12
 
-<!--Device-WriteStream-readonly path: string--><!--Device-WriteStream-readonly path: string-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
-

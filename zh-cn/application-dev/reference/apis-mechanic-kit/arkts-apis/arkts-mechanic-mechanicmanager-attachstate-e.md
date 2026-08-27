@@ -1,10 +1,8 @@
 # AttachState
 
-Device attach states.
+Device attach states.@enum { number }
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-export enum AttachState--><!--Device-mechanicManager-export enum AttachState-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -16,9 +14,7 @@ ATTACHED = 0
 
 设备挂载
 
-**起始版本：** 23
-
-<!--Device-AttachState-ATTACHED = 0--><!--Device-AttachState-ATTACHED = 0-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -30,9 +26,6 @@ DETACHED = 1
 
 设备卸载
 
-**起始版本：** 23
-
-<!--Device-AttachState-DETACHED = 1--><!--Device-AttachState-DETACHED = 1-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
-

@@ -9,16 +9,14 @@ import { scan } from '@kit.BasicServicesKit';
 ## setScannerParameter
 
 ```TypeScript
-function setScannerParameter(scannerId: string, optionIndex: int, value: ScannerOptionValue): Promise<void>
+function setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOptionValue): Promise<void>
 ```
 
 设置扫描仪参数。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.PRINT
-
-<!--Device-scan-function setScannerParameter(scannerId: string, optionIndex: int, value: ScannerOptionValue): Promise<void>--><!--Device-scan-function setScannerParameter(scannerId: string, optionIndex: int, value: ScannerOptionValue): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -27,14 +25,14 @@ function setScannerParameter(scannerId: string, optionIndex: int, value: Scanner
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | scannerId | string | 是 | 扫描仪的ID。 |
-| optionIndex | int | 是 | 要设置的选项的索引。 |
+| optionIndex | number | 是 | 要设置的选项的索引。 |
 | value | [ScannerOptionValue](arkts-basicservices-scan-scanneroptionvalue-i.md) | 是 | 要设置的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -57,7 +55,6 @@ let value: scan.ScannerOptionValue = {
 scan.setScannerParameter(scannerId, optionIndex, value).then(() => {
     console.info('set scanner parameter success');
 }).catch((error: BusinessError) => {
-    console.error('set scanner parameter failed: ' + JSON.stringify(error));
-})
+    console.error(`Failed to set scanner parameter. Code: ${error.code}, message: ${error.message}`);
+});
 ```
-

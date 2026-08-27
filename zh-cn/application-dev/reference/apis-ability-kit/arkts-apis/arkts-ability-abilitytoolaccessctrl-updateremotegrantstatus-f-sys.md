@@ -17,8 +17,6 @@ export function updateRemoteGrantStatus(remoteGrantStatus: RemoteGrantStatus): P
 
 **需要权限：** ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
 
-<!--Device-abilityToolAccessCtrl-export function updateRemoteGrantStatus(remoteGrantStatus: RemoteGrantStatus): Promise<void>--><!--Device-abilityToolAccessCtrl-export function updateRemoteGrantStatus(remoteGrantStatus: RemoteGrantStatus): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -33,7 +31,7 @@ export function updateRemoteGrantStatus(remoteGrantStatus: RemoteGrantStatus): P
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 不会返回任何值的Promise。 |
+| Promise & lt;void & gt; | 不会返回任何值的Promise。 |
 
 **错误码：**
 
@@ -41,9 +39,9 @@ export function updateRemoteGrantStatus(remoteGrantStatus: RemoteGrantStatus): P
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denial. The interface caller does not have permission "ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS". |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| [24010002](../errorcode-abilityToolAccessCtrl-sys.md#24010002-服务内部错误) | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
 | [24010000](../errorcode-abilityToolAccessCtrl-sys.md#24010000-入参错误) | Invalid parameter. RemoteGrantStatus is invalid. |
 | [24010001](../errorcode-abilityToolAccessCtrl-sys.md#24010001-系统服务工作异常) | Service is abnormal. Possible cause: IPC failed. |
+| [24010002](../errorcode-abilityToolAccessCtrl-sys.md#24010002-服务内部错误) | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
 
 **示例**
 
@@ -57,4 +55,3 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
   console.error(`updateRemoteGrantStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
-

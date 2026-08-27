@@ -14,7 +14,7 @@ ArkTS是OpenHarmony应用的默认开发语言，在[TypeScript](https://www.typ
 深入学习请看[ArkTS学习路线](https://developer.huawei.com/consumer/cn/arkts/)和[ArkTS视频课程](https://developer.huawei.com/consumer/cn/training/course/slightMooc/C101717496870909384?pathId=101667550095504391)。
 
 
-自API version 10起，ArkTS进一步通过规范强化静态检查和分析，其主要特性及标准TS的差异包括[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md)：
+自API version 10起，ArkTS进一步通过规范强化静态检查和分析，其主要特性及标准TS的差异包括从TypeScript到ArkTS的适配规则：
 
 
 - 强制使用静态类型：静态类型是ArkTS最重要的特性之一。如果使用静态类型，那么程序中变量的类型就是确定的。同时，由于所有类型在程序实际运行前都是已知的，编译器可以验证代码的正确性，从而减少运行时的类型检查，有助于性能提升。
@@ -25,8 +25,8 @@ ArkTS是OpenHarmony应用的默认开发语言，在[TypeScript](https://www.typ
 
 - 不支持Structural typing：对Structural typing的支持需要在语言、编译器和运行时进行大量的考虑和仔细的实现，当前ArkTS不支持该特性。根据实际场景的需求和反馈，后续会重新考虑是否支持Structural typing。
 
-ArkTS兼容TS/JavaScript（简称JS）生态，开发者可以使用TS/JS进行开发或复用已有代码。OpenHarmony系统对TS/JS支持的详细情况见[兼容TS/JS的约束](arkts-migration-background.md#方舟运行时兼容tsjs)。
+ArkTS兼容TS/JavaScript（简称JS）生态，开发者可以使用TS/JS进行开发或复用已有代码。OpenHarmony系统对TS/JS支持的详细情况见兼容TS/JS的约束。
 
 未来，ArkTS会结合应用开发/运行的需求持续演进，逐步增强并行和并发能力、扩展系统类型，以及引入分布式开发范式等更多特性。
 
-如需深入了解ArkTS语言，可参考[ArkTS具体指南](../arkts-utils/arkts-overview.md)。
+如需深入了解ArkTS语言，可参考ArkTS具体指南。

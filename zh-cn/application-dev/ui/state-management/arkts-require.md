@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @VictorS67-->
-<!--Designer: @lixingchi1-->
+<!--Designer: @VictorS67-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -20,7 +20,7 @@
 
 ## 概述
 
-当\@Require装饰器和[\@Prop](./arkts-prop.md)、[\@State](./arkts-state.md)、[\@Provide](./arkts-provide-and-consume.md)、[\@Param](./arkts-new-param.md)、[\@BuilderParam](./arkts-builderparam.md)、普通变量（无状态装饰器修饰的变量）结合使用时，在构造该自定义组件时，\@Prop、\@State、\@Provide、\@Param、\@BuilderParam和普通变量（无状态装饰器修饰的变量）必须在构造时传参。
+当\@Require装饰器和\@Prop、\@State、\@Provide、\@Param、\@BuilderParam、普通变量（无状态装饰器修饰的变量）结合使用时，在构造该自定义组件时，\@Prop、\@State、\@Provide、\@Param、\@BuilderParam和普通变量（无状态装饰器修饰的变量）必须在构造时传参。
 
 ## 限制条件
 
@@ -90,7 +90,7 @@ struct Child {
 ```
 
 
-使用[\@ComponentV2](./arkts-create-custom-components.md#componentv2)修饰的自定义组件ChildPage通过父组件ParentPage进行初始化，因为有\@Require装饰\@Param，所以父组件必须进行构造赋值。
+使用\@ComponentV2修饰的自定义组件ChildPage通过父组件ParentPage进行初始化，因为有\@Require装饰\@Param，所以父组件必须进行构造赋值。
 
 <!-- @[parent_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/ParentPage.ets) -->
 
@@ -114,7 +114,7 @@ struct ChildPage {
       Text(`ChildPage childInfo age :${this.childInfo.age}`)
         .fontSize(15)
         .height(30)
-      Text(`ChildPage stateValue age :${this.stateValue}`)
+      Text(`ChildPage stateValue :${this.stateValue}`)
         .fontSize(15)
         .height(30)
     }

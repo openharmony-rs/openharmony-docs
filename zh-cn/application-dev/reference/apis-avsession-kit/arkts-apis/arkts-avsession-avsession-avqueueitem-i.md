@@ -2,9 +2,7 @@
 
 播放列表中单项的相关属性。
 
-**起始版本：** 23
-
-<!--Device-avSession-interface AVQueueItem--><!--Device-avSession-interface AVQueueItem-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -24,29 +22,24 @@ description?: AVMediaDescription
 
 **类型：** [AVMediaDescription](arkts-avsession-avsession-avmediadescription-i.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AVQueueItem-description?: AVMediaDescription--><!--Device-AVQueueItem-description?: AVMediaDescription-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 ## itemId
 
 ```TypeScript
-itemId: int
+itemId: number
 ```
 
 播放列表中单项的ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AVQueueItem-itemId: int--><!--Device-AVQueueItem-itemId: int-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
-

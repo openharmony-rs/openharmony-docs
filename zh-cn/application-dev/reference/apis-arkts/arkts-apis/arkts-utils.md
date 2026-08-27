@@ -1,4 +1,4 @@
-# @arkts.utils
+# @arkts.utils(Defines the utils for ArkTS)
 
 ## 导入模块
 
@@ -12,5 +12,4 @@ import { ArkTSUtils } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
-| [utils](arkts-arkts-utils-n.md) |  |
-
+| [utils(Defines the utils for ArkTS)](arkts-arkts-utils-n.md) |  |

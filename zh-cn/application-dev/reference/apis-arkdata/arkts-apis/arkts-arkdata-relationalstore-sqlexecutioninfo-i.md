@@ -2,9 +2,7 @@
 
 描述数据库执行的SQL语句的统计信息。
 
-**起始版本：** 23
-
-<!--Device-relationalStore-interface SqlExecutionInfo--><!--Device-relationalStore-interface SqlExecutionInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -17,32 +15,28 @@ import { relationalStore } from '@kit.ArkData';
 ## executeTime
 
 ```TypeScript
-executeTime: long
+executeTime: number
 ```
 
 表示执行SQL语句的时间，单位为μs。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SqlExecutionInfo-executeTime: long--><!--Device-SqlExecutionInfo-executeTime: long-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## prepareTime
 
 ```TypeScript
-prepareTime: long
+prepareTime: number
 ```
 
 表示准备SQL和绑定参数的时间，单位为μs。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SqlExecutionInfo-prepareTime: long--><!--Device-SqlExecutionInfo-prepareTime: long-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -56,41 +50,34 @@ sql: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
-
-<!--Device-SqlExecutionInfo-sql: Array<string>--><!--Device-SqlExecutionInfo-sql: Array<string>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## totalTime
 
 ```TypeScript
-totalTime: long
+totalTime: number
 ```
 
 表示执行SQL语句的总时间，单位为μs。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SqlExecutionInfo-totalTime: long--><!--Device-SqlExecutionInfo-totalTime: long-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## waitTime
 
 ```TypeScript
-waitTime: long
+waitTime: number
 ```
 
 表示获取句柄的时间，单位为μs。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SqlExecutionInfo-waitTime: long--><!--Device-SqlExecutionInfo-waitTime: long-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-

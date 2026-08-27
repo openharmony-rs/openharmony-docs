@@ -1,10 +1,10 @@
 # 稳定性相关问题汇总
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 应用运行过程中出现高概率闪退怎么进行定位解决
 
@@ -36,7 +36,7 @@ Tid:15894, Name:e.myapplication
 
    DevEco Studio开关：   
 
-   ![DevEco Studio多线程开关](figures/zh_cn_image_20-25-06-40-15-09.png)   
+   ![multi-thread-check](figures/multi-thread-check.png)   
 2. 使用Node-API接口时入参非法导致。   
 - 这种情况一般是崩溃栈上的so会很浅，so调用了某个具体的Node-API接口，比如调用了napi_call_function之类的接口，然后Node-API又调到了libark_jsruntime的so，然后直接崩溃在libark_jsruntime里面。  
 
@@ -73,7 +73,7 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
 
 对于问题二：
 
-上面提到，C++线程都是抛任务到ArkTS线程，进而执行ArkTS方法。关于线程安全，可参考[使用Node-API接口进行线程安全开发](use-napi-thread-safety.md)。  
+上面提到，C++线程都是抛任务到ArkTS线程，进而执行ArkTS方法。关于线程安全，可参考使用Node-API接口进行线程安全开发。  
 
 另外，开发过程中也可以打开[方舟多线程检测](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section75786272088)开关，这个开关可以拦截多线程安全问题。  
 
@@ -126,7 +126,7 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
 
 - 可参考文档：  
 
-  [napi_create_reference、napi_delete_reference](use-napi-life-cycle.md)  
+  napi_create_reference、napi_delete_reference  
 
   [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615) 
 
@@ -151,9 +151,9 @@ void AddEnvCleanupHook(napi_env env)
 
 static napi_value Test(napi_env env, napi_callback_info info)
 {
-    //第一次注册
+    // 第一次注册
     AddEnvCleanupHook(env);
-    //第二次重复注册
+    // 第二次重复注册
     AddEnvCleanupHook(env);
     return nullptr;
 }
@@ -166,7 +166,7 @@ static napi_value Test(napi_env env, napi_callback_info info)
 
 相关参考资料链接：
 
-[使用Node-API接口注册和使用环境清理钩子](use-napi-about-cleanuphook.md)
+使用Node-API接口注册和使用环境清理钩子
 
 [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)
 
@@ -274,4 +274,5 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 3. 在native方法中创建的所有scope必须在该方法返回之前被关闭。  
 
 相关参考资料链接：
-[使用Node-API接口进行生命周期相关开发](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-life-cycle#napi_open_handle_scopenapi_close_handle_scope)。
+
+[使用Node-API接口进行生命周期相关开发](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-life-cycle#napi_open_handle_scopenapi_close_handle_scope)

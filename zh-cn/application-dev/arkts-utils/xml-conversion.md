@@ -4,13 +4,13 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 将XML文本转换为JavaScript对象，便于处理和操作数据，适用于JavaScript应用程序。
 
 
-语言基础类库提供ConvertXML类，将XML文本转换为JavaScript对象，输入为待转换的XML字符串及转换选项，输出为转换后的JavaScript对象。具体转换选项可见[API参考@ohos.convertxml/apis-arkts/js-apis-convertxml.md)。
+语言基础类库提供ConvertXML类，将XML文本转换为JavaScript对象，输入为待转换的XML字符串及转换选项，输出为转换后的JavaScript对象。具体转换选项可见API参考@ohos.convertxml。
 
 
 ## 注意事项
@@ -30,7 +30,7 @@ XML解析及转换需要确保传入的XML数据符合XML标准格式。
    import { convertxml } from '@kit.ArkTS';
    ```
 
-2. 输入待转换的XML，设置转换选项。支持的转换选项及含义，请参见[ConvertOptions/apis-arkts/js-apis-convertxml.md#convertoptions)。
+2. 输入待转换的XML，设置转换选项。支持的转换选项及含义，请参见ConvertOptions。
 
    > **说明：**
    >
@@ -73,8 +73,6 @@ XML解析及转换需要确保传入的XML数据符合XML标准格式。
      elementsKey: '_elements'
    }
    ```
-
-   <!-- @[xmlChange_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->  
 
 3. 调用fastConvertToJSObject函数并打印结果。
 

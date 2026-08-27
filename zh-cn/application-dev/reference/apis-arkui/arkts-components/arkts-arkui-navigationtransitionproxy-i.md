@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare interface NavigationTransitionProxy--><!--Device-unnamed-declare interface NavigationTransitionProxy-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,8 +25,6 @@ cancelTransition?(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NavigationTransitionProxy-cancelTransition?(): void--><!--Device-NavigationTransitionProxy-cancelTransition?(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## finishTransition
@@ -45,8 +41,6 @@ finishTransition(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NavigationTransitionProxy-finishTransition(): void--><!--Device-NavigationTransitionProxy-finishTransition(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## updateTransition
@@ -62,8 +56,6 @@ updateTransition?(progress: number): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NavigationTransitionProxy-updateTransition?(progress: number): void--><!--Device-NavigationTransitionProxy-updateTransition?(progress: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,8 +81,6 @@ from: NavContentInfo
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NavigationTransitionProxy-from: NavContentInfo--><!--Device-NavigationTransitionProxy-from: NavContentInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isInteractive
@@ -99,7 +89,7 @@ from: NavContentInfo
 isInteractive?: boolean
 ```
 
-本次转场动画是否为可交互转场。 true：本次转场动画是可交互转场；false：本次转场动画不是可交互转场。 默认值：false
+本次转场动画是否为可交互转场。true：本次转场动画是可交互转场；false：本次转场动画不是可交互转场。默认值：false
 
 **类型：** boolean
 
@@ -110,8 +100,6 @@ isInteractive?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NavigationTransitionProxy-isInteractive?: boolean--><!--Device-NavigationTransitionProxy-isInteractive?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,7 +119,4 @@ to: NavContentInfo
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NavigationTransitionProxy-to: NavContentInfo--><!--Device-NavigationTransitionProxy-to: NavContentInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

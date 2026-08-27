@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare enum ModalTransition--><!--Device-unnamed-declare enum ModalTransition-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DEFAULT
@@ -21,8 +19,6 @@ DEFAULT = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ModalTransition-DEFAULT = 0--><!--Device-ModalTransition-DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ NONE = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ModalTransition-NONE = 1--><!--Device-ModalTransition-NONE = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ALPHA
@@ -58,7 +52,4 @@ ALPHA = 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ModalTransition-ALPHA = 2--><!--Device-ModalTransition-ALPHA = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

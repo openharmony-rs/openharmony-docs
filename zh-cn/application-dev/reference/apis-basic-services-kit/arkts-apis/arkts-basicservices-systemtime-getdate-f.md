@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { systemTime } from '@kit.BasicServicesKit';
-import { systemTimer } from '@kit.BasicServicesKit';
 ```
 
 ## getDate
@@ -21,15 +20,13 @@ function getDate(callback: AsyncCallback<Date>): void
 
 **替代接口：** [getDate](arkts-basicservices-systemdatetime-getdate-f.md)
 
-<!--Device-systemTime-function getDate(callback: AsyncCallback<Date>): void--><!--Device-systemTime-function getDate(callback: AsyncCallback<Date>): void-End-->
-
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;Date&gt; | 是 | 回调函数，返回当前系统日期。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Date&gt; | 是 | 回调函数，返回当前系统日期。 |
 
 **错误码：**
 
@@ -71,15 +68,13 @@ function getDate(): Promise<Date>
 
 **替代接口：** [getDate](arkts-basicservices-systemdatetime-getdate-f.md)
 
-<!--Device-systemTime-function getDate(): Promise<Date>--><!--Device-systemTime-function getDate(): Promise<Date>-End-->
-
 **系统能力：** SystemCapability.MiscServices.Time
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Date&gt; | Promise对象，返回当前系统日期。 |
+| Promise & lt;Date & gt; | Promise对象，返回当前系统日期。 |
 
 **错误码：**
 
@@ -103,4 +98,3 @@ try {
   console.info(`Failed to get date. message: ${error.message}, code: ${error.code}`);
 }
 ```
-

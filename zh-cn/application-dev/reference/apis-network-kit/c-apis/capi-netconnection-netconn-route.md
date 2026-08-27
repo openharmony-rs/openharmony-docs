@@ -1,7 +1,7 @@
 # NetConn_Route
 
 ```c
-typedef struct NetConn_Route {...} NetConn_Route
+struct NetConn_Route {...}
 ```
 
 ## 概述

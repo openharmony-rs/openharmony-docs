@@ -1,4 +1,4 @@
-# 分布式音频播放(仅对系统应用开放)
+# 分布式音频播放（仅对系统应用开放）
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -6,13 +6,13 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-通过分布式音频播放的能力，用户可以将音频投播远端设备播放，实现音频在组网中不同设备之间流转。
+通过分布式音频播放的能力，用户可以将音频投播到远端设备，实现音频在组网中不同设备之间流转。
 
-开发者可以通过分布式音频播放，将当前设备播放的所有音频投放到指定的远端设备播放，或将设备播放的某个音频流投放到指定的远端设备播放。
+开发者可以通过分布式音频播放，将当前设备播放的所有音频投放到指定的远端设备，或将当前设备播放的某个音频流投放到指定的远端设备。
 
 ## 开发步骤及示例
 
-在将音频投播到组网内其他设备前，需要先获取组网内的设备列表，并监听设备连接状态的变化，具体开发步骤请参考[查询和监听音频输出设备](audio-output-device-management.md)。
+在将音频投播到组网内其他设备前，需要先获取组网内的设备列表，并监听设备连接状态的变化，具体开发步骤请参考查询和监听音频输出设备。
 
 在获取组网内的设备列表时，可以通过指定DeviceFlag，筛选出需要的设备。
 
@@ -26,15 +26,15 @@
 | DISTRIBUTED_INPUT_DEVICES_FLAG<sup>9+</sup> | 分布式输入设备。&nbsp;此接口为系统接口。 | 
 | ALL_DISTRIBUTED_DEVICES_FLAG<sup>9+</sup> | 分布式输入输出设备。&nbsp;此接口为系统接口。 | 
 
-具体接口说明请参考API文档：[AudioRoutingManager/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md)。
+具体接口说明请参考API文档：AudioRoutingManager。
 
 ### 投播所有音频
 
-1. [获取输出设备信息](audio-output-device-management.md#获取输出设备信息)。
+1. 获取输出设备信息。
 
 2. 创建AudioDeviceDescriptor对象，用于指定音频输出设备。
 
-3. 调用selectOutputDevice，将当前设备播放的所有音频投放到指定的远端设备播放。
+3. 调用selectOutputDevice，将当前设备播放的所有音频投放到指定的远端设备。
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -51,13 +51,13 @@ let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
   sampleRates: [44100],
   channelCounts: [2],
   channelMasks: [0],
-  networkId: audio.LOCAL_NETWORK_ID,
+  networkId: "",  // 此处应填写远端设备的networkId。
   interruptGroupId: 1,
   volumeGroupId: 1,
   displayName: ""
 }];
 
-async function selectOutputDevice(): Promise<void> {
+async function exampleSelectOutputDevice(): Promise<void> {
   audioRoutingManager.selectOutputDevice(outputAudioDeviceDescriptor, (err: BusinessError) => {
     if (err) {
       console.error(`Invoke selectOutputDevice failed, code is ${err.code}, message is ${err.message}`);
@@ -70,13 +70,13 @@ async function selectOutputDevice(): Promise<void> {
 
 ### 投播指定音频流
 
-1. [获取输出设备信息](audio-output-device-management.md#获取输出设备信息)。
+1. 获取输出设备信息。
 
 2. 创建AudioRendererFilter对象，通过uid指定应用，通过rendererId指定音频流。
 
 3. 创建AudioDeviceDescriptor对象，用于指定音频输出设备。
 
-4. 调用selectOutputDeviceByFilter，将当前设备播放的指定音频流投放到指定的远端设备播放。
+4. 调用selectOutputDeviceByFilter，将当前设备播放的指定音频流投放到指定的远端设备。
  
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -90,7 +90,7 @@ let outputAudioRendererFilter: audio.AudioRendererFilter  = {
     usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
     rendererFlags: 0 // 音频渲染器标志。
   } as audio.AudioRendererInfo,
-  rendererId: 0
+  rendererId: 0 // 此值为示例，使用时需替换为实际ID值。
 };
 
 let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
@@ -102,13 +102,13 @@ let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
   sampleRates: [44100],
   channelCounts: [2],
   channelMasks: [0],
-  networkId: audio.LOCAL_NETWORK_ID,
+  networkId: "",  // 此处应填写远端设备的networkId。
   interruptGroupId: 1,
   volumeGroupId: 1,
   displayName: ""
 }];
 
-async function selectOutputDeviceByFilter(): Promise<void> {
+async function exampleSelectOutputDeviceByFilter(): Promise<void> {
   audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, outputAudioDeviceDescriptor, (err: BusinessError) => {
     if (err) {
       console.error(`Invoke selectOutputDeviceByFilter failed, code is ${err.code}, message is ${err.message}`);

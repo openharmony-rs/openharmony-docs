@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { usb } from '@kit.BasicServicesKit';
-import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## getCurrentFunctions
@@ -22,8 +20,6 @@ function getCurrentFunctions(): FunctionType
 
 **替代接口：** [getCurrentFunctions](arkts-basicservices-usbmanager-getcurrentfunctions-f-sys.md)
 
-<!--Device-usb-function getCurrentFunctions(): FunctionType--><!--Device-usb-function getCurrentFunctions(): FunctionType-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 **系统接口：** 此接口为系统接口。
@@ -39,4 +35,3 @@ function getCurrentFunctions(): FunctionType
 ```TypeScript
 let ret = usb.getCurrentFunctions();
 ```
-

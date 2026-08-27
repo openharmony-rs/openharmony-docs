@@ -33,11 +33,11 @@
 - 组件间存在变量传递时，V2的变量传递给V1的自定义组件，有以下限制：
   - V2普通变量（未使用状态变量装饰器）传递给V1自定义组件：
 
-     如果V1使用状态变量接收该数据，只能使用[@State](./arkts-state.md)、[@Prop](./arkts-prop.md)、[@Provide](./arkts-provide-and-consume.md)这三种V1的状态变量装饰器。
+     如果V1使用状态变量接收该数据，只能使用@State、@Prop、@Provide这三种V1的状态变量装饰器。
   - V2状态变量（使用状态变量装饰器）传递给V1自定义组件：
 
-     如果V1使用状态变量装饰器（同样仅限\@State、\@Prop、\@Provide支持）装饰接收的数据，不支持内置类型数据：Array、Set、Map、Date。需要注意V2状态变量支持Function类型，但是V1的状态变量装饰器均不支持Function类型，传递Function类型会导致运行时校验报错。以\@State为例，详情见[@State限制条件](./arkts-state.md#限制条件)。
-  - V1中[@Link](./arkts-link.md)遵循其原本初始化规则，只能被V1状态变量初始化，详情见[@Link初始化规则示意图](./arkts-link.md#变量的传递访问规则说明)。
+     如果V1使用状态变量装饰器（同样仅限\@State、\@Prop、\@Provide支持）装饰接收的数据，不支持内置类型数据：Array、Set、Map、Date。需要注意V2状态变量支持Function类型，但是V1的状态变量装饰器均不支持Function类型，传递Function类型会导致运行时校验报错。以\@State为例，详情见@State限制条件。
+  - V1中@Link遵循其原本初始化规则，只能被V1状态变量初始化，详情见@Link初始化规则示意图。
 
 
 ## 限制条件
@@ -46,9 +46,9 @@
 
   V1的组件内装饰器不支持在V2的自定义组件中使用，V2的组件内装饰器也不支持在V1的自定义组件中使用，编译会报错。
 
-- V1装饰器不能和[@ObservedV2](./arkts-new-observedV2-and-trace.md)一起使用，否则编译报错。
+- V1装饰器不能和@ObservedV2一起使用，否则编译报错。
 
-- V2装饰器不能和[@Observed](./arkts-observed-and-objectlink.md)一起使用，否则编译报错。
+- V2装饰器不能和@Observed一起使用，否则编译报错。
 
 - V1-&gt;V2传递状态变量只支持简单类型，不允许传复杂类型的状态变量。比如传递\@Observed装饰的class、装饰器修饰的built-in类型（Array、Map、Set、Date），编译报错。
 
@@ -56,7 +56,7 @@
 
 - V1中\@ObjectLink只接受\@Observed装饰的class初始化。
 
-- V1中[@Link](./arkts-link.md)遵循其原本初始化规则，只能被V1状态变量初始化，详情见[@Link初始化规则示意图](./arkts-link.md#变量的传递访问规则说明)。
+- V1中@Link遵循其原本初始化规则，只能被V1状态变量初始化，详情见@Link初始化规则示意图。
 
 - 多个装饰器不允许装饰同一个变量（\@Watch、\@Once、\@Require除外）。
 
@@ -112,7 +112,7 @@ struct IndexSix {
         })
       Divider()
         .color(Color.Blue)
-      // 可以只是使用无参数的V2组件
+      // 可以直接使用无参数的V2组件
       ChildSix()
     }
     .height('100%')
@@ -124,7 +124,7 @@ struct IndexSix {
 
 ### 传递未被装饰的变量
 
-当变量未被装饰器装饰时，不具备被观测的能力。将该变量传递给V2时，需注意V2组件对数据输入有严格的管理，必须通过[@Param](./arkts-new-param.md)装饰器接收。V2中接收数据的观测能力为\@Param能力，对于接收的Class，需要通过\@ObservedV2和\@Trace才能观察变化。
+当变量未被装饰器装饰时，不具备被观测的能力。将该变量传递给V2时，需注意V2组件对数据输入有严格的管理，必须通过@Param装饰器接收。V2中接收数据的观测能力为\@Param能力，对于接收的Class，需要通过\@ObservedV2和\@Trace才能观察变化。
 
 以下代码示例中，定义了ChildTwo为V2组件，组件接受message、undefinedVal、info等参数。ChildTwo中用\@Param接收的简单类型message和undefinedVal，能观测到变化；Class类型变量info未被\@ObservedV2和\@Trace修饰，无法观测到类属性变化。
 
@@ -144,8 +144,8 @@ class InfoTwo {
 @ComponentV2
 struct ChildTwo {
   // V2对数据输入有严格的管理，从父组件传入数据时，必须使用@Param装饰器进行数据接收
-  @Param @Once message: string = 'hello'; // 可以观测到变化，同步回父组件依赖@Event，使用了@Once可以修改@Param装饰的变量
-  @Param @Once undefinedVal: string | undefined = undefined; // 使用了@Once可以修改@Param装饰的变量
+  @Param @Once message: string = 'hello'; // 使用了@Once可以修改@Param装饰的变量
+  @Param @Once undefinedVal: string | undefined = undefined;
   @Param info: InfoTwo = new InfoTwo(); // 观测不到类属性变化
   @Require @Param set: Set<number>;
 
@@ -221,7 +221,7 @@ struct IndexTwo {
 
 ### 传递简单类型状态变量
 
-在V1中使用V2组件时，V1组件中的装饰器仅支持修饰简单类型数据，包括：boolean、number、string、null、undefined。V2组件使用\@Param接收参数。
+在V1中使用V2组件时，V1组件中的装饰器仅支持修饰简单类型数据，包括：boolean、number、enum、string、null、undefined。V2组件使用\@Param接收参数。
 
 若在V1中使用V2组件时，传递了使用\@State装饰的Class类型或内置类型（Array、Map、Set、Date），会造成编译报错。以下示例代码中，info和set变量需删除\@State装饰器。\@Prop、\@Link、\@ObjectLink、\@Provide、\@Consume、\@StorageProp、\@StorageLink、\@LocalStorageProp、\@LocalStorageLink的行为和\@State保持一致。
 
@@ -323,7 +323,7 @@ struct IndexFour {
 
 V2装饰器不能和\@Observed一起使用，V1传递\@Observed装饰的class类给V2自定义组件时，不直接用\@Param接收数据，如下图所示先定义V1BridgeComponent组件作为桥接层。在桥接层监听V1组件的数据，同步到V2定义的单例数据。V1组件直接使用V1BridgeComponent，在V1BridgeComponent中引入V2自定义组件。
 
-![mixsuage-example-observed-class](./figures/mixsuage-example-observed-class.png)
+![mixusage-example-observed-class](./figures/mixusage-example-observed-class.png)
 
 具体实现可参考以下示例代码：
 
@@ -494,7 +494,7 @@ V1装饰器的观测能力是对数据本身做代理，因此当数据存在嵌
 
 **\@Observed装饰的class嵌套\@ObservedV2装饰的class**
 
-\@ObservedV2和\@Observed嵌套使用时，类对象能否被V1的装饰器装饰取决于最外层class使用的装饰器。如果最外层是\@Observed修饰的类，可以和V2装饰器一起使用，比如\@State。\@State仅能观察第一层的变化，如果要深度观察，需要传递给\@ObjectLink。
+\@ObservedV2和\@Observed嵌套使用时，类对象能否被V1的装饰器装饰取决于最外层class使用的装饰器。如果最外层是\@Observed修饰的类，可以和V1装饰器一起使用，比如\@State。\@State仅能观察第一层的变化，如果要深度观察，需要传递给\@ObjectLink。
 
 以下示例代码中：
 
@@ -798,9 +798,9 @@ struct IndexFive {
 
 
 
-**定义\@ObserveV2修饰的class**
+**定义\@ObservedV2修饰的class**
 
-V1装饰器不能和\@ObservedV2一起使用。在以下示例代码中，InfoNine类被\@observedV2装饰，V1组件接收变量时，info变量不能被V1装饰器修饰，但通过修改可以刷新UI，依赖的是\@ObservedV2+\@Trace的观测能力。
+V1装饰器不能和\@ObservedV2一起使用。在以下示例代码中，InfoNine类被\@ObservedV2装饰，V1组件接收变量时，info变量不能被V1装饰器修饰，但通过修改可以刷新UI，依赖的是\@ObservedV2+\@Trace的观测能力。
 
 <!-- @[v2_to_v1_observedV2_trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2ToV1_ObservedV2AndTrace.ets) -->
 

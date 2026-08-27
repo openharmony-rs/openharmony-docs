@@ -10,11 +10,11 @@
 
 IPC让运行在不同进程间的Proxy和Stub实现互相通信。IPC CAPI是IPC Kit提供的C语言接口。
 
-IPC CAPI接口不直接提供获取通信代理对象的能力，该功能由[Ability Kit](../application-models/abilitykit-overview.md)提供。
+IPC CAPI接口不直接提供获取通信代理对象的能力，该功能由Ability Kit提供。
 
 ![图](./figures/_i_p_c_architecture_diagram.png)
 
-进程间IPC通道的建立，请参考[Native子进程开发指导（C/C++）](../application-models/capi-nativechildprocess-development-guideline.md)。本文重点介绍IPC CAPI的使用。
+进程间IPC通道的建立，请参考子进程开发指导（C/C++）。本文重点介绍IPC CAPI的使用。
 
 ## 接口说明
 
@@ -29,11 +29,13 @@ IPC CAPI接口不直接提供获取通信代理对象的能力，该功能由[Ab
 |OHIPCDeathRecipient\* OH_IPCDeathRecipient_Create<br>(OH_OnDeathRecipientCallback deathRecipientCallback,<br> OH_OnDeathRecipientDestroyCallback destroyCallback,<br>void \*userData);|创建用于监听远端OHIPCRemoteStub对象死亡的通知对象（OHIPCDeathRecipient对象）。|
 |int OH_IPCRemoteProxy_AddDeathRecipient(OHIPCRemoteProxy \*proxy,<br>OHIPCDeathRecipient \*recipient);|向OHIPCRemoteProxy对象注册死亡监听，用于接收远端OHIPCRemoteStub对象死亡时的回调通知。|
 
-详细的接口说明请参考[IPCKit/apis-ipc-kit/capi-ipckit.md)。
+详细的接口说明请参考IPCKit。
 
 ## 开发步骤
 
 先创建服务端Stub对象，通过元能力获取其客户端代理Proxy对象，然后用Proxy对象与服务端Stub对象进行IPC通信，同时再注册远端对象的死亡通知回调，用于Proxy侧感知服务端Stub对象所在进程的死亡状态。
+
+阅读以下示例时，可按照“子进程创建Stub对象、主进程启动子进程并获取Proxy对象、Proxy端发送请求、Stub端处理请求并返回结果”的顺序理解。Proxy端和Stub端需要使用相同的`code`定义和接口描述符。
 
 **动态库文件**
 
@@ -56,6 +58,8 @@ libchild_process.so
 ```
 
 **子进程实现**
+
+子进程创建Stub对象，并通过`NativeChildProcess_OnConnect`返回该对象，用于接收主进程发送的IPC请求。以下代码中的`OnRemoteRequest`仅展示回调函数的基本形式，具体的请求处理过程参见后文“Stub侧实现”。
 
 <!-- @[child_process_must_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/ChildProcessSample.cpp) -->
 
@@ -107,7 +111,7 @@ OHIPCRemoteStub *NativeChildProcess_OnConnect()
     return g_ipcStubObj.GetRemoteStub();
 }
 
-void NativeChildProcessMainProc()
+void NativeChildProcess_MainProc()
 {
     // 相当于子进程的Main函数，实现子进程的业务逻辑
     // ...
@@ -119,11 +123,15 @@ void NativeChildProcessMainProc()
 
 **主进程实现**
 
+主进程调用`OH_Ability_CreateNativeChildProcess`启动子进程。子进程启动成功后，通过`OnNativeChildProcessStarted`回调获取与子进程Stub对象对应的`remoteProxy`，后续可基于该对象向子进程发送IPC请求。
+
 <!-- @[main_processIpc_launch_native_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/MainProcessSample.cpp) -->
 
 ``` C++
 #include <IPCKit/ipc_kit.h>
 #include <AbilityKit/native_child_process.h>
+// ...
+int32_t g_result = -1;
 // ...
 static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remoteProxy)
 {
@@ -152,6 +160,8 @@ void CreateNativeChildProcess()
 ```
 
 **Proxy侧实现**
+
+Proxy端用于向远端Stub发送IPC请求。以下示例展示了创建`OHIPCParcel`对象、写入接口描述符和请求数据、调用`OH_IPCRemoteProxy_SendRequest`发送请求，以及从回应数据对象中读取处理结果的过程。不同操作通过不同的`code`值进行区分。
 
 <!-- @[proxy_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/IpcProxy.cpp) -->
 
@@ -271,6 +281,8 @@ bool IpcProxy::WriteInterfaceToken(OHIPCParcel* data)
 ```
 
 **Stub侧实现**
+
+Stub端通过`OnRemoteRequest`接收Proxy端发送的请求。该回调先读取并校验接口描述符，再根据`code`调用对应的处理方法。处理方法从请求数据对象`data`中读取数据，并将处理结果写入回应数据对象`reply`，返回给Proxy端。
 
 <!-- @[stub_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/IpcStub.cpp) -->
 

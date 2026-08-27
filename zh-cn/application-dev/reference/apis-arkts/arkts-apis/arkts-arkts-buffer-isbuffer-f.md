@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { buffer } from '@kit.ArkTS';
 ```
 
 ## isBuffer
@@ -14,11 +13,9 @@ function isBuffer(obj: Object): boolean
 
 判断`obj`是否为Buffer。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-buffer-function isBuffer(obj: Object): boolean--><!--Device-buffer-function isBuffer(obj: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -55,4 +52,3 @@ let result4 = buffer.isBuffer(new Uint8Array(1024));
 console.info("result4 = " + result4);
 // 输出结果：result4 = false
 ```
-

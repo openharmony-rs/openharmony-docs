@@ -2,36 +2,30 @@
 
 拍摄照片的设置。
 
-**起始版本：** 23
-
-<!--Device-camera-interface PhotoCaptureSetting--><!--Device-camera-interface PhotoCaptureSetting-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## compressionQuality
 
 ```TypeScript
-compressionQuality?: int
+compressionQuality?: number
 ```
 
-图片压缩质量值，取值范围为(1, 100)。 当compressionQuality未下发时，默认按quality生效；若quality与compressionQuality同时下发则按compressionQuality下发生效；若quality与 compressionQuality均未下发则图片质量默认是高等。
+图片压缩质量值，取值范围为(1, 100)。当compressionQuality未下发时，默认按quality生效；若quality与compressionQuality同时下发则按compressionQuality下发生效；若quality与 compressionQuality均未下发则图片质量默认是高等。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoCaptureSetting-compressionQuality?: int--><!--Device-PhotoCaptureSetting-compressionQuality?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -45,11 +39,9 @@ location?: Location
 
 **类型：** Location
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoCaptureSetting-location?: Location--><!--Device-PhotoCaptureSetting-location?: Location-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -63,11 +55,9 @@ mirror?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoCaptureSetting-mirror?: boolean--><!--Device-PhotoCaptureSetting-mirror?: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -77,15 +67,13 @@ mirror?: boolean
 quality?: QualityLevel
 ```
 
-图片质量。 当quality未下发时，默认按compressionQuality下发生效；若quality与compressionQuality同时下发则按compressionQuality下发生效；若quality与 compressionQuality均未下发则图片质量默认是高等。
+图片质量。当quality未下发时，默认按compressionQuality下发生效；若quality与compressionQuality同时下发则按compressionQuality下发生效；若quality与 compressionQuality均未下发则图片质量默认是高等。
 
-**类型：** [QualityLevel](arkts-camera-camera-qualitylevel-e.md)
+**类型：** QualityLevel
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoCaptureSetting-quality?: QualityLevel--><!--Device-PhotoCaptureSetting-quality?: QualityLevel-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -99,11 +87,8 @@ rotation?: ImageRotation
 
 **类型：** [ImageRotation](arkts-camera-camera-imagerotation-e.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PhotoCaptureSetting-rotation?: ImageRotation--><!--Device-PhotoCaptureSetting-rotation?: ImageRotation-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-

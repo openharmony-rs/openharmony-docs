@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-webview-enum WebDownloadErrorCode--><!--Device-webview-enum WebDownloadErrorCode-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERROR_UNKNOWN
@@ -19,8 +17,6 @@ ERROR_UNKNOWN = 0
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebDownloadErrorCode-ERROR_UNKNOWN = 0--><!--Device-WebDownloadErrorCode-ERROR_UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,8 +32,6 @@ FILE_FAILED = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebDownloadErrorCode-FILE_FAILED = 1--><!--Device-WebDownloadErrorCode-FILE_FAILED = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## FILE_ACCESS_DENIED
@@ -51,8 +45,6 @@ FILE_ACCESS_DENIED = 2
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebDownloadErrorCode-FILE_ACCESS_DENIED = 2--><!--Device-WebDownloadErrorCode-FILE_ACCESS_DENIED = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -68,8 +60,6 @@ FILE_NO_SPACE = 3
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebDownloadErrorCode-FILE_NO_SPACE = 3--><!--Device-WebDownloadErrorCode-FILE_NO_SPACE = 3-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## FILE_NAME_TOO_LONG
@@ -83,8 +73,6 @@ FILE_NAME_TOO_LONG = 5
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebDownloadErrorCode-FILE_NAME_TOO_LONG = 5--><!--Device-WebDownloadErrorCode-FILE_NAME_TOO_LONG = 5-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -100,8 +88,6 @@ FILE_TOO_LARGE = 6
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebDownloadErrorCode-FILE_TOO_LARGE = 6--><!--Device-WebDownloadErrorCode-FILE_TOO_LARGE = 6-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## FILE_TRANSIENT_ERROR
@@ -115,8 +101,6 @@ FILE_TRANSIENT_ERROR = 10
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebDownloadErrorCode-FILE_TRANSIENT_ERROR = 10--><!--Device-WebDownloadErrorCode-FILE_TRANSIENT_ERROR = 10-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -132,8 +116,6 @@ FILE_BLOCKED = 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebDownloadErrorCode-FILE_BLOCKED = 11--><!--Device-WebDownloadErrorCode-FILE_BLOCKED = 11-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## FILE_TOO_SHORT
@@ -147,8 +129,6 @@ FILE_TOO_SHORT = 13
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebDownloadErrorCode-FILE_TOO_SHORT = 13--><!--Device-WebDownloadErrorCode-FILE_TOO_SHORT = 13-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -164,8 +144,6 @@ FILE_HASH_MISMATCH = 14
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebDownloadErrorCode-FILE_HASH_MISMATCH = 14--><!--Device-WebDownloadErrorCode-FILE_HASH_MISMATCH = 14-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## FILE_SAME_AS_SOURCE
@@ -179,8 +157,6 @@ FILE_SAME_AS_SOURCE = 15
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebDownloadErrorCode-FILE_SAME_AS_SOURCE = 15--><!--Device-WebDownloadErrorCode-FILE_SAME_AS_SOURCE = 15-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -196,8 +172,6 @@ NETWORK_FAILED = 20
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebDownloadErrorCode-NETWORK_FAILED = 20--><!--Device-WebDownloadErrorCode-NETWORK_FAILED = 20-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## NETWORK_TIMEOUT
@@ -211,8 +185,6 @@ NETWORK_TIMEOUT = 21
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebDownloadErrorCode-NETWORK_TIMEOUT = 21--><!--Device-WebDownloadErrorCode-NETWORK_TIMEOUT = 21-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -228,8 +200,6 @@ NETWORK_DISCONNECTED = 22
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebDownloadErrorCode-NETWORK_DISCONNECTED = 22--><!--Device-WebDownloadErrorCode-NETWORK_DISCONNECTED = 22-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## NETWORK_SERVER_DOWN
@@ -243,8 +213,6 @@ NETWORK_SERVER_DOWN = 23
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebDownloadErrorCode-NETWORK_SERVER_DOWN = 23--><!--Device-WebDownloadErrorCode-NETWORK_SERVER_DOWN = 23-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -260,8 +228,6 @@ NETWORK_INVALID_REQUEST = 24
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebDownloadErrorCode-NETWORK_INVALID_REQUEST = 24--><!--Device-WebDownloadErrorCode-NETWORK_INVALID_REQUEST = 24-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## SERVER_FAILED
@@ -275,8 +241,6 @@ SERVER_FAILED = 30
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebDownloadErrorCode-SERVER_FAILED = 30--><!--Device-WebDownloadErrorCode-SERVER_FAILED = 30-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -292,8 +256,6 @@ SERVER_NO_RANGE = 31
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebDownloadErrorCode-SERVER_NO_RANGE = 31--><!--Device-WebDownloadErrorCode-SERVER_NO_RANGE = 31-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## SERVER_BAD_CONTENT
@@ -307,8 +269,6 @@ SERVER_BAD_CONTENT = 33
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebDownloadErrorCode-SERVER_BAD_CONTENT = 33--><!--Device-WebDownloadErrorCode-SERVER_BAD_CONTENT = 33-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -324,8 +284,6 @@ SERVER_UNAUTHORIZED = 34
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebDownloadErrorCode-SERVER_UNAUTHORIZED = 34--><!--Device-WebDownloadErrorCode-SERVER_UNAUTHORIZED = 34-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## SERVER_CERT_PROBLEM
@@ -339,8 +297,6 @@ SERVER_CERT_PROBLEM = 35
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebDownloadErrorCode-SERVER_CERT_PROBLEM = 35--><!--Device-WebDownloadErrorCode-SERVER_CERT_PROBLEM = 35-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -356,8 +312,6 @@ SERVER_FORBIDDEN = 36
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebDownloadErrorCode-SERVER_FORBIDDEN = 36--><!--Device-WebDownloadErrorCode-SERVER_FORBIDDEN = 36-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## SERVER_UNREACHABLE
@@ -371,8 +325,6 @@ SERVER_UNREACHABLE = 37
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebDownloadErrorCode-SERVER_UNREACHABLE = 37--><!--Device-WebDownloadErrorCode-SERVER_UNREACHABLE = 37-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -388,8 +340,6 @@ SERVER_CONTENT_LENGTH_MISMATCH = 38
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebDownloadErrorCode-SERVER_CONTENT_LENGTH_MISMATCH = 38--><!--Device-WebDownloadErrorCode-SERVER_CONTENT_LENGTH_MISMATCH = 38-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## SERVER_CROSS_ORIGIN_REDIRECT
@@ -403,8 +353,6 @@ SERVER_CROSS_ORIGIN_REDIRECT = 39
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebDownloadErrorCode-SERVER_CROSS_ORIGIN_REDIRECT = 39--><!--Device-WebDownloadErrorCode-SERVER_CROSS_ORIGIN_REDIRECT = 39-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -420,8 +368,6 @@ USER_CANCELED = 40
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebDownloadErrorCode-USER_CANCELED = 40--><!--Device-WebDownloadErrorCode-USER_CANCELED = 40-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## USER_SHUTDOWN
@@ -435,8 +381,6 @@ USER_SHUTDOWN = 41
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebDownloadErrorCode-USER_SHUTDOWN = 41--><!--Device-WebDownloadErrorCode-USER_SHUTDOWN = 41-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -452,7 +396,4 @@ CRASH = 50
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebDownloadErrorCode-CRASH = 50--><!--Device-WebDownloadErrorCode-CRASH = 50-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

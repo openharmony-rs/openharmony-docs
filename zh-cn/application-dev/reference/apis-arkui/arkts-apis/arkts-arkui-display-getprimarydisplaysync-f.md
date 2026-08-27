@@ -14,11 +14,9 @@ function getPrimaryDisplaySync(): Display
 
 获取主屏信息。除2in1之外的设备获取的是设备自带屏幕的Display对象；2in1设备外接屏幕时获取的是当前主屏幕的Display对象；2in1设备没有外接屏幕时获取的是自带屏幕的Display对象。
 
-**起始版本：** 23
+**起始版本：** 14
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-display-function getPrimaryDisplaySync(): Display--><!--Device-display-function getPrimaryDisplaySync(): Display-End-->
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -41,4 +39,3 @@ let displayClass: display.Display | null = null;
 
 displayClass = display.getPrimaryDisplaySync();
 ```
-

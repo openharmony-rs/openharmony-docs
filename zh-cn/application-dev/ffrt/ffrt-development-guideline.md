@@ -32,8 +32,8 @@ FFRT提供开发者队列级和任务级超时维测机制，用来监控用户�
 
 | C++接口                                                                                                                                   | C接口                                                                                | 描述                   |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ---------------------- |
-| [queue_attr::timeout](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#set-queue-timeout)   | [ffrt_queue_attr_set_timeout](ffrt-api-guideline-c.md#ffrt_queue_attr_t)   | 设置队列超时时间。     |
-| [queue_attr::callback](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#set-queue-callback) | [ffrt_queue_attr_set_callback](ffrt-api-guideline-c.md#ffrt_queue_attr_t) | 设置队列超时回调函数。 |
+| [queue_attr::timeout](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#set-queue-timeout)   | ffrt_queue_attr_set_timeout   | 设置队列超时时间。     |
+| [queue_attr::callback](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#set-queue-callback) | ffrt_queue_attr_set_callback | 设置队列超时回调函数。 |
 
 ### 长耗时任务监测
 
@@ -531,7 +531,7 @@ FFRT任务中使用标准库的递归互斥锁可能发生死锁，需要更换�
             ffrt::create_function_wrapper(std::function<void()>([](){ printf("Test task running...\n"); })),
             NULL, NULL, NULL);
         // ...
-        // 内存泄露
+        // 内存泄漏
     }
     ```
 
@@ -589,9 +589,9 @@ FFRT任务中使用标准库的递归互斥锁可能发生死锁，需要更换�
     }
     ```
 
-## Using FFRT in DevEco Studio
+## 在DevEco Studio中使用FFRT
 
-### Using FFRT C API
+### 使用FFRT C API
 
 NDK（Native Development Kit）是系统提供的Native API的集合，方便开发者使用C或C++语言实现应用的关键功能。
 
@@ -609,7 +609,7 @@ FFRT C API已集成在NDK中，在DevEco Studio中可以直接使用对应的接
 #include "ffrt/type_def.h"
 ```
 
-### Using FFRT C++ API
+### 使用FFRT C++ API
 
 FFRT的部署依赖FFRT动态库`libffrt.so`和一组头文件，其中动态库仅导出C接口，C++接口调用C接口，并基于头文件的方式将API中的C++元素编译到用户的动态库中，从而保证了ABI兼容性。
 

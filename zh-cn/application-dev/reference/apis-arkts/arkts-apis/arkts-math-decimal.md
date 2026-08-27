@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { Decimal } from '@kit.ArkTS';
 ```
 
 ## 汇总
@@ -27,4 +26,3 @@ import { Decimal } from '@kit.ArkTS';
 | [Modulo(定义ArkTS的Decimal类型。Decimal支持任意精度的十进制运算。)](arkts-arkts-modulo-t.md) | 表示可设置的取模方法舍入类型。 |
 | [Rounding(定义ArkTS的Decimal类型。Decimal支持任意精度的十进制运算。)](arkts-arkts-rounding-t.md) | 表示可设置的舍入类型。 |
 | [Value(定义ArkTS的Decimal类型。Decimal支持任意精度的十进制运算。)](arkts-arkts-value-t.md) | 表示用于构建Decimal的参数类型。 |
-

@@ -18,8 +18,6 @@ function getResourceId(providerName: string, params: HuksExternalCryptoParam[]):
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-huksExternalCrypto-function getResourceId(providerName: string, params: HuksExternalCryptoParam[]): Promise<string>--><!--Device-huksExternalCrypto-function getResourceId(providerName: string, params: HuksExternalCryptoParam[]): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **参数：**
@@ -33,20 +31,20 @@ function getResourceId(providerName: string, params: HuksExternalCryptoParam[]):
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回资源ID。 |
+| Promise & lt;string & gt; | Promise对象，返回资源ID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | API is not supported. |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed. |
-| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | The provider operation failed. This means an error occurred in the crypto extension before calling the UKey driver interface. |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | The ability name, bundle name parameter or resource information is missing. |
-| [12000018](../errorcode-huks.md#12000018-输入参数非法) | Input parameters are invalid. Possible causes: 1. The providerName length is invalid. 2. The parameters contain invalid tags or invalid value types. |
-| [12000014](../errorcode-huks.md#12000014-内存不足) | The memory is insufficient. |
-| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameters are abnormal. This error may occur if the process function is not found, or due to other issues. |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed. |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | The provider is not found. |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameters are abnormal. This error may occur if the process function is not found, or due to other issues. |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | The memory is insufficient. |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | Input parameters are invalid. Possible causes: 1. The providerName length is invalid. 2. The parameters contain invalid tags or invalid value types. |
+| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | The provider operation failed. This means an error occurred in the crypto extension before calling the UKey driver interface. |
 | [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | The provider or UKey is busy. |
 
 **示例**
@@ -62,11 +60,11 @@ function stringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
-const providerName = "testProviderName";
-const abilityName = "CryptoExtension";
-const bundleName = "com.example.cryptoapplication";
+const providerName = 'testProviderName';
+const abilityName = 'CryptoExtension';
+const bundleName = 'com.example.cryptoapplication';
 // 资源信息，格式和内容由厂商自定义
-const resourceInfo = "vendor_defined_resource_info";
+const resourceInfo = 'vendor_defined_resource_info';
 
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   {
@@ -88,4 +86,3 @@ huksExternalCrypto.getResourceId(providerName, extProperties)
       console.info(`promise: getResourceId success, resourceId: ${resourceId}`);
     });
 ```
-

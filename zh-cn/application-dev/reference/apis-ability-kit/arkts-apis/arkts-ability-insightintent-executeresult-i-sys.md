@@ -2,9 +2,7 @@
 
 意图执行的返回结果。
 
-**起始版本：** 23
-
-<!--Device-insightIntent-interface ExecuteResult--><!--Device-insightIntent-interface ExecuteResult-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -12,8 +10,6 @@
 
 ```TypeScript
 import { insightIntent } from '@kit.AbilityKit';
-import { insightIntentDriver } from '@kit.AbilityKit';
-import { insightIntentProvider } from '@kit.AbilityKit';
 ```
 
 ## interactionInfo
@@ -30,9 +26,6 @@ interactionInfo?: InteractionInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExecuteResult-interactionInfo?: InteractionInfo--><!--Device-ExecuteResult-interactionInfo?: InteractionInfo-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-

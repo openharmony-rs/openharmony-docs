@@ -1,10 +1,8 @@
 # SimType
 
-Indicates the SIM card type.
+SIM卡类型的枚举。
 
-**起始版本：** 23
-
-<!--Device-sim-export enum SimType--><!--Device-sim-export enum SimType-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -14,11 +12,9 @@ Indicates the SIM card type.
 PSIM = 0
 ```
 
-Indicates psim type.
+实体SIM卡。
 
-**起始版本：** 23
-
-<!--Device-SimType-PSIM = 0--><!--Device-SimType-PSIM = 0-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -28,11 +24,8 @@ Indicates psim type.
 ESIM = 1
 ```
 
-Indicates esim type.
+电子SIM卡。
 
-**起始版本：** 23
-
-<!--Device-SimType-ESIM = 1--><!--Device-SimType-ESIM = 1-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Telephony.CoreService
-

@@ -4,16 +4,11 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-cert-interface CertValidationResult--><!--Device-cert-interface CertValidationResult-End-->
-
 **系统能力：** SystemCapability.Security.Cert
 
 ## 导入模块
 
 ```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## certChain
@@ -32,7 +27,4 @@ readonly certChain: Array<X509Cert>
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CertValidationResult-readonly certChain: Array<X509Cert>--><!--Device-CertValidationResult-readonly certChain: Array<X509Cert>-End-->
-
 **系统能力：** SystemCapability.Security.Cert
-

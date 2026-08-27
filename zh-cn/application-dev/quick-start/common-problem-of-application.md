@@ -3,14 +3,14 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 ## 如何获取签名信息中的指纹信息
 
 * 通过调用接口获取。
 
-可以调用[bundleManager.getBundleInfoForSelf/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含指纹信息，使用哈希算法SHA-256生成。
+可以调用bundleManager.getBundleInfoForSelf获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含指纹信息，使用哈希算法SHA-256生成。
 
 <!-- @[get_fingerprint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetFingerprint.ets) -->
 
@@ -33,7 +33,7 @@ try {
 ```
 
 
-* 通过[bm工具](../tools/bm-tool.md)获取指纹信息，使用哈希算法SHA-256生成。
+* 通过bm工具获取指纹信息，使用哈希算法SHA-256生成。
 
 ```shell
 hdc shell
@@ -49,16 +49,16 @@ bm dump -n com.example.myapplication | grep fingerprint
 
 ## 什么是appIdentifier
 
-appIdentifier是<!--RP1-->[Profile签名文件](../security/app-provision-structure.md)<!--RP1End-->中的一个字段，为应用的唯一标识，在应用签名时生成，其中：
+appIdentifier是<!--RP1-->Profile签名文件<!--RP1End-->中的一个字段，为应用的唯一标识，在应用签名时生成，其中：
 
 1. 通过DevEco Studio工具[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)生成，此时的appIdentifier字段是随机生成的，在不同的设备上签名、或者重新签名均会导致appIdentifier字段不一致。
-2. <!--RP2-->手动配置签名，详情参考[应用包签名工具指导](../security/hapsigntool-guidelines.md)，此时appIdentifier字段取值为[HarmonyAppProvision配置文件](../security/app-provision-structure.md)中app-identifier字段。 <!--RP2End-->
+2. <!--RP2-->手动配置签名，详情参考应用包签名工具指导，此时appIdentifier字段取值为HarmonyAppProvision配置文件中app-identifier字段。 <!--RP2End-->
 
 因此，在跨设备调试、跨应用交互调试、或者多用户共同开发且需要共享密钥等要求appIdentifier不变的场景下，推荐使用手动签名，具体场景请参考[使用场景说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section54361623194519)。
 
 ## 如何获取应用信息中的appIdentifier
 
-* 可以调用[bundleManager.getBundleInfoForSelf/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含appIdentifier信息。
+* 可以调用bundleManager.getBundleInfoForSelf获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含appIdentifier信息。
 
 <!-- @[get_app_identifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetAppIdentifier.ets) -->
 
@@ -81,7 +81,7 @@ try {
 ```
 
 
-* 通过[bm工具](../tools/bm-tool.md)获取。
+* 通过bm工具获取。
 
 ```shell
 hdc shell
@@ -94,11 +94,11 @@ bm dump -n com.example.myapplication | grep appIdentifier
 
 ## 什么是appId
 
-appId是应用的唯一标识，由包名、下划线和证书公钥的Base64编码组成。由于appId和签名信息相关，如果签名证书的公钥更换，appId也会跟随变化，所以应用的唯一标识推荐使用[appIdentifier](#什么是appidentifier)。
+appId是应用的唯一标识，由包名、下划线和证书公钥的Base64编码组成。由于appId和签名信息相关，如果签名证书的公钥更换，appId也会跟随变化，所以应用的唯一标识推荐使用appIdentifier。
 
 ## 如何获取应用信息中的appId
 
-* 可以调用[bundleManager.getBundleInfoForSelf/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含appId信息。
+* 可以调用bundleManager.getBundleInfoForSelf获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含appId信息。
 
 <!-- @[get_app_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetAppId.ets) -->
 
@@ -121,7 +121,7 @@ try {
 ```
 
 
-* 通过[bm工具](../tools/bm-tool.md)获取。
+* 通过bm工具获取。
 
 ```shell
 hdc shell
@@ -132,13 +132,13 @@ bm dump -n ohos.app.hap.myapplication |grep '"appId":'
 
 ## 应用的uid
 
-uid是系统中用于[应用沙箱](../security/AccessToken/access-token-overview.md#应用沙箱)隔离的唯一标识符，它分配给每个应用进程，确保应用在运行时相互隔离（如文件系统，内存空间等）。
+uid是系统中用于应用沙箱隔离的唯一标识符，它分配给每个应用进程，确保应用在运行时相互隔离（如文件系统，内存空间等）。
 
-uid的生成算法为：uid = userId * 200000 + (bundleId % 200000)。其中%表示取模运算，计算bundleId除以200000的余数。userId表示应用需要安装的用户编号，可以通过[getOsAccountLocalId接口/apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。bundleId表示应用的唯一编号，取值范围为10000到65535的整数，仅系统内部使用，可以通过uid和userId反算获取<!--Del-->，也可以通过[getBundleIdForUid/apis-basic-services-kit/js-apis-osAccount-sys.md#getbundleidforuid9)获取<!--DelEnd-->。
+uid的生成算法为：uid = userId * 200000 + (bundleId % 200000)。其中%表示取模运算，计算bundleId除以200000的余数。userId表示应用需要安装的用户编号，可以通过getOsAccountLocalId接口获取。bundleId表示应用的唯一编号，取值范围为10000到65535的整数，仅系统内部使用，可以通过uid和userId反算获取<!--Del-->，也可以通过getBundleIdForUid获取<!--DelEnd-->。
 
 ## 如何获取应用的uid
 
-* 通过[bm工具](../tools/bm-tool.md)获取。
+* 通过bm工具获取。
 
 ```shell
 hdc shell
@@ -147,4 +147,4 @@ bm dump -n ohos.app.hap.myapplication |grep uid
 ```
 ![alt text](figures/get_uid.png)
 
-* 可以调用[bundleManager.getBundleInfoForSelf/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取自身的BundleInfo应用包信息，示例代码可以参考[如何获取应用信息中的appId](#如何获取应用信息中的appid)，取值方式为bundleInfo.appInfo.uid。
+* 可以调用bundleManager.getBundleInfoForSelf获取自身的BundleInfo应用包信息，示例代码可以参考如何获取应用信息中的appId，取值方式为bundleInfo.appInfo.uid。<!--RP3--><!--RP3End-->

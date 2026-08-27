@@ -18,19 +18,15 @@ function isNativeChildProcessSupported(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-childProcessManager-function isNativeChildProcessSupported(): boolean--><!--Device-childProcessManager-function isNativeChildProcessSupported(): boolean-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 是否允许调用者创建Native子进程。<br>true：允许创建Native子进程。<br>false：不允许创建Native子进程。<br>默认值：false。 |
+| boolean | 是否允许调用者创建Native子进程。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { childProcessManager } from '@kit.AbilityKit';
@@ -60,36 +56,3 @@ struct Index {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { childProcessManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build(): void {
-    Row() {
-      Column() {
-        Text('Click')
-          .fontSize(30)
-          .fontWeight(FontWeight.Bold)
-          .onClick((): void => {
-            try {
-              const isSupport: boolean = childProcessManager.isNativeChildProcessSupported();
-              console.info(`isNativeChildProcessSupported: ${isSupport}`);
-            } catch (err: BusinessError) {
-              console.error(`isNativeChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
-            }
-          });
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-

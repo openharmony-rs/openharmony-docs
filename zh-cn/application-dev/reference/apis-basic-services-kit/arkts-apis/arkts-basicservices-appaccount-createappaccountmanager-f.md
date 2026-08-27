@@ -14,9 +14,7 @@ function createAppAccountManager(): AppAccountManager
 
 创建应用账号管理器对象。
 
-**起始版本：** 23
-
-<!--Device-appAccount-function createAppAccountManager(): AppAccountManager--><!--Device-appAccount-function createAppAccountManager(): AppAccountManager-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -31,4 +29,3 @@ function createAppAccountManager(): AppAccountManager
 ```TypeScript
 let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
 ```
-

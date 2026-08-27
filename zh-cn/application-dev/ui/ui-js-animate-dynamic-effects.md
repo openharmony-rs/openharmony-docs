@@ -78,7 +78,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001174756776](figures/zh-cn_image_0000001174756776.gif)
+![animation2](figures/animation2.gif)
 
 > **说明：**
 > - 使用createAnimator创建动画对象时必须传入options参数。
@@ -92,7 +92,7 @@ export default {
 
 ## 添加动画事件和调用接口
 
-animator支持事件和接口，可以通过添加frame、cancel、repeat、finish事件和调用update、play、pause、cancel、reverse、finish接口自定义动画效果。animator支持的事件和接口具体见动画中的[createAnimator/apis-arkui/arkts-apis-uicontext-uicontext.md#createanimator)。
+animator支持事件和接口，可以通过添加frame、cancel、repeat、finish事件和调用update、play、pause、cancel、reverse、finish接口自定义动画效果。animator支持的事件和接口具体见动画中的createAnimator。
 
 ```html
 <!-- xxx.hml -->
@@ -194,10 +194,10 @@ export default {
     var _this= this;
     // 添加动画逐帧插值回调事件
     this.animation.onframe = function(value) {
-      _this.scaleVal= value/150,
-      _this.DivWidth = value,
-      _this.DivHeight = value,
-      _this.translateVal = value-180
+      _this.scaleVal = value/150;
+      _this.DivWidth = value;
+      _this.DivHeight = value;
+      _this.translateVal = value-180;
     };
     this.animation.play();
   },
@@ -233,8 +233,8 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001220635059](figures/zh-cn_image_0000001220635059.gif)
+![reverseAnimation](figures/reverseAnimation.gif)
 
 > **说明：** 
 >
-> 在调用[reset/apis-arkui/js-apis-animator.md#reset9)接口的过程中可以使用这个接口更新动画参数，入参与[createAnimator/apis-arkui/arkts-apis-uicontext-uicontext.md#createanimator)一致。
+> 在调用reset接口的过程中可以使用这个接口更新动画参数，入参与createAnimator一致。

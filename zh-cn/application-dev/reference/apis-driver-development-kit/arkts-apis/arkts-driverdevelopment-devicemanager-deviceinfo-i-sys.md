@@ -2,9 +2,7 @@
 
 设备详细信息。
 
-**起始版本：** 23
-
-<!--Device-deviceManager-interface DeviceInfo--><!--Device-deviceManager-interface DeviceInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -19,16 +17,14 @@ import { deviceManager } from '@kit.DriverDevelopmentKit';
 ## deviceId
 
 ```TypeScript
-deviceId: long
+deviceId: number
 ```
 
 设备ID。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DeviceInfo-deviceId: long--><!--Device-DeviceInfo-deviceId: long-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -44,9 +40,7 @@ driverUid?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DeviceInfo-driverUid?: string--><!--Device-DeviceInfo-driverUid?: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -62,11 +56,8 @@ isDriverMatched: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-DeviceInfo-isDriverMatched: boolean--><!--Device-DeviceInfo-isDriverMatched: boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
 **系统接口：** 此接口为系统接口。
-

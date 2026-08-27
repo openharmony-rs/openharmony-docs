@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface CommonConfiguration--><!--Device-unnamed-declare interface CommonConfiguration-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ contentModifier: ContentModifier<T>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CommonConfiguration-contentModifier: ContentModifier<T>--><!--Device-CommonConfiguration-contentModifier: ContentModifier<T>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## enabled
@@ -49,7 +45,4 @@ enabled: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CommonConfiguration-enabled: boolean--><!--Device-CommonConfiguration-enabled: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

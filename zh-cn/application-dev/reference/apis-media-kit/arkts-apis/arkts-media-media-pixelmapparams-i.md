@@ -1,10 +1,8 @@
 # PixelMapParams
 
-Defines the format parameters of the video thumbnail to be obtained.
+获取视频缩略图时，输出缩略图的格式参数。
 
-**起始版本：** 23
-
-<!--Device-media-interface PixelMapParams--><!--Device-media-interface PixelMapParams-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
@@ -17,32 +15,27 @@ import { media } from '@kit.MediaKit';
 ## height
 
 ```TypeScript
-height?: int
+height?: number
 ```
 
-Height of the thumbnail. Unit: px. The value must be greater than 0 and less than or equal to the height of the original video. Otherwise, the returned thumbnail will not be scaled.
+输出的缩略图高度，单位为像素（px）。 应保证大于0且不大于原始视频高度。否则返回的缩略图不会进行缩放。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PixelMapParams-height?: int--><!--Device-PixelMapParams-height?: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
 ## width
 
 ```TypeScript
-width?: int
+width?: number
 ```
 
-Width of the thumbnail. Unit: px. The value must be greater than 0 and less than or equal to the width of the original video. Otherwise, the returned thumbnail will not be scaled.
+输出的缩略图宽度，单位为像素（px）。 应保证大于0且不大于原始视频宽度。否则返回的缩略图不会进行缩放。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PixelMapParams-width?: int--><!--Device-PixelMapParams-width?: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
-

@@ -6,11 +6,11 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件支持前端页面选择文件上传功能，应用开发者可以使用[onShowFileSelector()/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口来处理前端页面文件上传的请求，如果应用开发者不做任何处理，ArkWeb会提供默认行为来处理前端页面文件上传的请求。应用开发者也可以通过获取到的前端数据，自定义拉起Picker。
+Web组件支持前端页面选择文件上传功能，应用开发者可以使用onShowFileSelector()接口来处理前端页面文件上传的请求，如果应用开发者不做任何处理，ArkWeb会提供默认行为来处理前端页面文件上传的请求。应用开发者也可以通过获取到的前端数据，自定义拉起Picker。
 
 ## 使用onShowFileSelector拉起文件管理器
 
-下面的示例中，当用户在前端页面点击文件上传按钮，应用侧在[onShowFileSelector()/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口中收到文件上传请求，在此接口中开发者将上传的本地文件路径设置给前端页面。
+下面的示例中，当用户在前端页面点击文件上传按钮，应用侧在onShowFileSelector()接口中收到文件上传请求，在此接口中开发者将上传的本地文件路径设置给前端页面。
 
 
 - 应用侧代码。
@@ -72,7 +72,7 @@ struct WebComponent {
 
 ## 使用onShowFileSelector拉起图库
 
-下面的示例中，当用户在前端页面点击文件上传按钮，应用侧在[onShowFileSelector()/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口中收到文件上传请求，在此接口中开发者将上传的本地图片路径设置给前端页面。
+下面的示例中，当用户在前端页面点击文件上传按钮，应用侧在onShowFileSelector()接口中收到文件上传请求，在此接口中开发者将上传的本地图片路径设置给前端页面。
 
 
 - 应用侧代码。
@@ -135,9 +135,9 @@ struct WebComponent {
 
 ## 使用onShowFileSelector拉起相机
 
-Web组件支持前端页面上传图片文件时调用相机即时拍照，应用开发者可以使用[onShowFileSelector()/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口来处理前端页面文件上传的请求并自行拉起相机，如果应用开发者不做任何处理，Web会提供默认行为来处理前端页面调用相机的请求。
+Web组件支持前端页面上传图片文件时调用相机即时拍照，应用开发者可以使用onShowFileSelector()接口来处理前端页面文件上传的请求并自行拉起相机，如果应用开发者不做任何处理，ArkWeb会提供默认行为来处理前端页面调用相机的请求。
 
-此示例中，应用侧通过监听[onShowFileSelector/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)事件并返回`true`拦截ArkWeb默认弹窗，并调用系统CameraPicker拉起相机。应用可以通过获取AcceptType对不同类型的目标文件做更精细的筛选。
+此示例中，应用侧通过监听onShowFileSelector事件并返回`true`拦截ArkWeb默认弹窗，并调用系统CameraPicker拉起相机。应用可以通过获取AcceptType对不同类型的目标文件做更精细的筛选。
 
 ```ts
 // xxx.ets
@@ -258,7 +258,7 @@ HTML页面代码
 
 >  **说明：** 
 >
-> ArkWeb默认仅拉起相机后置摄像头，值`'user'`不会被处理成拉起前置摄像头。如有需要，请在应用侧通过[onShowFileSelector()/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口另行处理。
+> ArkWeb默认仅拉起相机后置摄像头，值`'user'`不会被处理成拉起前置摄像头。如有需要，请在应用侧通过onShowFileSelector()接口另行处理。
 
 HTML页面代码
 ```html
@@ -324,19 +324,19 @@ struct Index {
 
 从API version 23开始，在OnShowFileSelectorEvent的FileSelectorParam中新增接口getSuggestedName()、getDefaultPath()、getDescriptions()、isAcceptAllOptionExcluded()。
 
-新增接口对上传保存文件能力进行了增强，以对标W3C能力，用于支持用户获取到HTML前端通过`showSaveFilePicker`、`showOpenFilePicker`、`showDirectoryPicker`等方法传递的option参数(参考下方加载的html文件)里的数据。
+新增接口对上传保存文件能力进行了增强，以对标W3C能力，用于支持用户获取到HTML前端通过`showSaveFilePicker`、`showOpenFilePicker`、`showDirectoryPicker`等方法传递的option参数（参考下方加载的html文件）里的数据。
 
 API version 23 新增支持如下option中的成员：
 
-`suggestedName`对应接口[getSuggestedName/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getsuggestedname23)。
+`suggestedName`对应接口getSuggestedName。
 
-`description`对应接口[getDescriptions/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getdescriptions23)。
+`description`对应接口getDescriptions。
 
-`excludeAcceptAllOption`对应接口[isAcceptAllOptionExcluded/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#isacceptalloptionexcluded23)。
+`excludeAcceptAllOption`对应接口isAcceptAllOptionExcluded。
 
-`startIn`对应接口[getDefaultPath/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getdefaultpath23)。
+`startIn`对应接口getDefaultPath。
 
-`types`对应接口[getAcceptableFileTypes/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getacceptablefiletypes23)。
+`types`对应接口getAcceptableFileTypes。
 
 index.html代码。
 ```html
@@ -474,7 +474,7 @@ struct WebComponent {
 需注意：
 
 1. HTML中的`showOpenFilePicker`、`showDirectoryPicker`方法的入参option与`showSaveFilePicker`的入参option的成员存在差异。
-2. ETS中如调用[`documentViewPicker.select()`/apis-core-file-kit/js-apis-file-picker.md#select)方法需配合[`picker.DocumentSelectOptions`/apis-core-file-kit/js-apis-file-picker.md#documentselectoptions)对象为Picker传参，而非[`picker.DocumentSaveOptions`/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)对象，请参见[@ohos.file.picker (选择器)/apis-core-file-kit/js-apis-file-picker.md)。
+2. ETS中如调用`documentViewPicker.select()`方法需配合`picker.DocumentSelectOptions`对象为Picker传参，而非`picker.DocumentSaveOptions`对象，请参见@ohos.file.picker (选择器)。
 
 ## 常见问题
 
@@ -496,4 +496,4 @@ getAcceptType返回的是`accept`属性值全量转换为文件扩展名所组�
 
 该函数将选择的文件路径提交给ArkWeb，入参主要有两种类型：
 1. file协议路径，目前只支持前缀为`file://media/`、`file://docs/`的公共路径和`file://<packageName>/`的应用包名路径，其他file协议路径无权限。
-2. 沙箱目录，具体参考[应用沙箱目录](../file-management/app-sandbox-directory.md)。
+2. 沙箱目录，具体参考应用沙箱目录。

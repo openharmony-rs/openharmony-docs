@@ -8,8 +8,6 @@ type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 
 **起始版本：** 23
 
-<!--Device-unnamed-type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void--><!--Device-unnamed-type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -18,3 +16,6 @@ type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 | --- | --- | --- | --- |
 | firstScreenPaint | [FirstScreenPaint](arkts-arkweb-firstscreenpaint-i.md) | 是 | 检测到首屏渲染时的详细信息。 |
 
+**示例**
+
+完整示例代码参考[onFirstScreenPaint](./arkts-basic-components-web-events.md#onfirstscreenpaint)。

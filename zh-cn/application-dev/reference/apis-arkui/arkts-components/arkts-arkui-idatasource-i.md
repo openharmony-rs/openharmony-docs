@@ -4,8 +4,6 @@ LazyForEach的数据源，开发者需要实现该接口以提供数据访问和
 
 **起始版本：** 7
 
-<!--Device-unnamed-declare interface IDataSource--><!--Device-unnamed-declare interface IDataSource-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -24,8 +22,6 @@ getData(index: number): any
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-IDataSource-getData(index: number): any--><!--Device-IDataSource-getData(index: number): any-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,8 +49,6 @@ registerDataChangeListener(listener: DataChangeListener): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-IDataSource-registerDataChangeListener(listener: DataChangeListener): void--><!--Device-IDataSource-registerDataChangeListener(listener: DataChangeListener): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -74,8 +68,6 @@ totalCount(): number
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-IDataSource-totalCount(): number--><!--Device-IDataSource-totalCount(): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,8 +89,6 @@ unregisterDataChangeListener(listener: DataChangeListener): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-IDataSource-unregisterDataChangeListener(listener: DataChangeListener): void--><!--Device-IDataSource-unregisterDataChangeListener(listener: DataChangeListener): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -106,4 +96,3 @@ unregisterDataChangeListener(listener: DataChangeListener): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | listener | [DataChangeListener](arkts-arkui-datachangelistener-i.md) | 是 | 数据变化监听器，用于在数据源发生变化时通知组件刷新。 |
-

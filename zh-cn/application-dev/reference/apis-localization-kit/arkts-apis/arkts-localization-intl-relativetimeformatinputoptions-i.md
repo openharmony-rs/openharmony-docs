@@ -1,14 +1,12 @@
-# RelativeTimeFormatInputOptions(国际化-Intl)
+# RelativeTimeFormatInputOptions
 
-创建相对时间格式化对象时可设置的配置项。 从API version 9开始，RelativeTimeFormatInputOptions中的属性改为可选。
+创建相对时间格式化对象时可设置的配置项。从API version 9开始，RelativeTimeFormatInputOptions中的属性改为可选。
 
 **起始版本：** 8
 
 **废弃版本：** 20
 
 **替代接口：** [Intl.RelativeTimeFormatOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat#options)
-
-<!--Device-intl-export interface RelativeTimeFormatInputOptions--><!--Device-intl-export interface RelativeTimeFormatInputOptions-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -24,7 +22,7 @@ import { intl } from '@kit.LocalizationKit';
 localeMatcher?: string
 ```
 
-区域匹配算法，取值包括："best fit", "lookup"。 默认值：best fit。
+区域匹配算法，取值包括："best fit", "lookup"。默认值：best fit。
 
 **类型：** string
 
@@ -36,8 +34,6 @@ localeMatcher?: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RelativeTimeFormatInputOptions-localeMatcher?: string--><!--Device-RelativeTimeFormatInputOptions-localeMatcher?: string-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 ## numeric
@@ -46,7 +42,7 @@ localeMatcher?: string
 numeric?: string
 ```
 
-输出消息的格式，表示格式化结果中是否使用数字表示相对日期或时间。取值包括："always", "auto"。 默认值：always。 不同取值的显示效果请参考附录表23。
+输出消息的格式，表示格式化结果中是否使用数字表示相对日期或时间。取值包括："always", "auto"。默认值：always。不同取值的显示效果请参考[附录表23](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -58,8 +54,6 @@ numeric?: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RelativeTimeFormatInputOptions-numeric?: string--><!--Device-RelativeTimeFormatInputOptions-numeric?: string-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 ## style
@@ -68,7 +62,7 @@ numeric?: string
 style?: string
 ```
 
-国际化消息的长度，取值包括："long", "short", "narrow"。 默认值：long。 不同取值的显示效果请参考附录表24。
+国际化消息的长度，取值包括："number", "short", "narrow"。默认值：number。不同取值的显示效果请参考[附录表24](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -80,7 +74,4 @@ style?: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RelativeTimeFormatInputOptions-style?: string--><!--Device-RelativeTimeFormatInputOptions-style?: string-End-->
-
 **系统能力：** SystemCapability.Global.I18n
-

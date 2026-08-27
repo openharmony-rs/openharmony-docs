@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## participate
@@ -18,8 +17,6 @@ function participate(config: HiRetrievalConfig): void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-hiRetrieval-function participate(config: HiRetrievalConfig): void--><!--Device-hiRetrieval-function participate(config: HiRetrievalConfig): void-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
 **参数：**
@@ -33,4 +30,3 @@ function participate(config: HiRetrievalConfig): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 36000001 | Initialization error. Possibly caused by invoking this function before invoking init function. |
-

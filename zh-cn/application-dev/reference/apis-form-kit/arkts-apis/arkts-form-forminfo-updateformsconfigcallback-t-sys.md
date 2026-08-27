@@ -10,8 +10,6 @@ type UpdateFormsConfigCallback = (configInfo: Array<FormCustomConfig>) => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-formInfo-type UpdateFormsConfigCallback = (configInfo: Array<FormCustomConfig>) => void--><!--Device-formInfo-type UpdateFormsConfigCallback = (configInfo: Array<FormCustomConfig>) => void-End-->
-
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
@@ -22,3 +20,13 @@ type UpdateFormsConfigCallback = (configInfo: Array<FormCustomConfig>) => void
 | --- | --- | --- | --- |
 | configInfo | Array&lt;[FormCustomConfig](arkts-form-forminfo-formcustomconfig-i-sys.md)&gt; | 是 | 卡片配置信息列表。 |
 
+**示例**
+
+```TypeScript
+import { formInfo } from '@kit.FormKit';
+
+let updateFormsConfigCallback: formInfo.UpdateFormsConfigCallback =
+  (configInfo: Array<formInfo.FormCustomConfig>): void => {
+    console.info('update forms config callback, config count: ' + configInfo.length);
+  };
+```

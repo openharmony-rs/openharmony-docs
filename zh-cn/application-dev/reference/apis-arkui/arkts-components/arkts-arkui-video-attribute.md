@@ -1,12 +1,10 @@
 # Video属性/事件
 
-除支持通用属性外，还支持以下属性： 除支持通用事件外，还支持以下事件：
+除支持通用属性外，还支持以下属性：除支持通用事件外，还支持以下事件：
 
 **继承/实现关系：** VideoAttribute extends CommonMethod<VideoAttribute>
 
 **起始版本：** 7
-
-<!--Device-unnamed-declare class VideoAttribute--><!--Device-unnamed-declare class VideoAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -21,7 +19,11 @@
 analyzerConfig(config: ImageAnalyzerConfig)
 ```
 
-设置AI分析识别类型，包括主体识别、文字识别和对象查找等功能，支持attributeModifier动态设置属性方法。 > **说明：** > > 从API version 20开始，该接口支持在attributeModifier中调用。
+设置AI分析识别类型，包括主体识别、文字识别和对象查找等功能，支持attributeModifier动态设置属性方法。
+
+> **说明：**
+> 
+> 从API version 20开始，该接口支持在attributeModifier中调用。
 
 **起始版本：** 12
 
@@ -29,15 +31,13 @@ analyzerConfig(config: ImageAnalyzerConfig)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VideoAttribute-analyzerConfig(config: ImageAnalyzerConfig): VideoAttribute--><!--Device-VideoAttribute-analyzerConfig(config: ImageAnalyzerConfig): VideoAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | ImageAnalyzerConfig | 是 | 设置AI分析识别类型。 |
+| config | [ImageAnalyzerConfig](../arkts-apis/arkts-arkui-imageanalyzerconfig-i.md) | 是 | 设置AI分析识别类型。 |
 
 ## autoPlay
 
@@ -51,15 +51,13 @@ autoPlay(value: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VideoAttribute-autoPlay(value: boolean): VideoAttribute--><!--Device-VideoAttribute-autoPlay(value: boolean): VideoAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 是否自动播放。 <br>true：开启自动播放；false：关闭自动播放。 <br>默认值：false |
+| value | boolean | 是 | 是否自动播放。 true：开启自动播放；false：关闭自动播放。 默认值：false |
 
 ## controls
 
@@ -73,15 +71,13 @@ controls(value: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VideoAttribute-controls(value: boolean): VideoAttribute--><!--Device-VideoAttribute-controls(value: boolean): VideoAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 控制视频播放的控制栏是否显示。 <br>true：控制栏显示；false：控制栏不显示。 <br>默认值：true <br>**说明：** <br>如需使用[enableAnalyzer](#enableanalyzer)功能进行AI分析，需设置为false使用自定义控制栏。 |
+| value | boolean | 是 | 控制视频播放的控制栏是否显示。 true：控制栏显示；false：控制栏不显示。 默认值：true    **说明：** 如需使用[enableAnalyzer](#enableanalyzer)功能进行AI分析，需设置为false使用自定义控制栏。 |
 
 ## enableAnalyzer
 
@@ -89,7 +85,11 @@ controls(value: boolean)
 enableAnalyzer(enable: boolean)
 ```
 
-设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能，支持attributeModifier动态设置属性方法。 启用后，视频播放暂停时自动进入分析状态，开始分析当前画面帧，视频继续播放后自动退出分析状态。 不支持与overlay属性同时使用，两者同时设置时overlay中 [CustomBuilder](../../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)属性会失效。 > **说明：** > > 从API version 20开始，该接口支持在attributeModifier中调用。
+设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能，支持attributeModifier动态设置属性方法。启用后，视频播放暂停时自动进入分析状态，开始分析当前画面帧，视频继续播放后自动退出分析状态。不支持与overlay属性同时使用，两者同时设置时overlay中 [CustomBuilder](arkts-arkui-custombuilder-t.md)属性会失效。
+
+> **说明：**
+> 
+> 从API version 20开始，该接口支持在attributeModifier中调用。
 
 **起始版本：** 12
 
@@ -97,15 +97,13 @@ enableAnalyzer(enable: boolean)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VideoAttribute-enableAnalyzer(enable: boolean): VideoAttribute--><!--Device-VideoAttribute-enableAnalyzer(enable: boolean): VideoAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | 是否启用AI分析功能。 <br>true：开启AI分析功能；false：关闭AI分析功能。 <br>默认值：false <br>**说明：** <br>不支持与overlay属性同时使用，两者同时设置时overlay中 [CustomBuilder](../../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)属性会失效。 |
+| enable | boolean | 是 | 是否启用AI分析功能。 true：开启AI分析功能；false：关闭AI分析功能。 默认值：false    **说明：** 不支持与overlay属性同时使用，两者同时设置时overlay中 [CustomBuilder](arkts-arkui-custombuilder-t.md)属性会失效。 |
 
 ## enableShortcutKey
 
@@ -113,7 +111,7 @@ enableAnalyzer(enable: boolean)
 enableShortcutKey(enabled: boolean)
 ```
 
-设置组件支持快捷键响应，支持attributeModifier动态设置属性方法。 目前支持在组件获焦后响应空格键播放/暂停、上下方向键调整视频音量、左右方向键快进/快退。
+设置组件支持快捷键响应，支持attributeModifier动态设置属性方法。目前支持在组件获焦后响应空格键播放/暂停、上下方向键调整视频音量、左右方向键快进/快退。
 
 **起始版本：** 15
 
@@ -121,15 +119,13 @@ enableShortcutKey(enabled: boolean)
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VideoAttribute-enableShortcutKey(enabled: boolean): VideoAttribute--><!--Device-VideoAttribute-enableShortcutKey(enabled: boolean): VideoAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | 是否启用快捷键响应。 <br>true：开启快捷键响应；false：关闭快捷键响应。 <br>默认值：false <br>**说明：** <br>enabled设置为false且controls属性设置为true时，仍然可以通过左右方向键控制进度条快进或快退。 |
+| enabled | boolean | 是 | 是否启用快捷键响应。 true：开启快捷键响应；false：关闭快捷键响应。 默认值：false    **说明：** enabled设置为false且controls属性设置为true时，仍然可以通过左右方向键控制进度条快进或快退。 |
 
 ## loop
 
@@ -143,15 +139,13 @@ loop(value: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VideoAttribute-loop(value: boolean): VideoAttribute--><!--Device-VideoAttribute-loop(value: boolean): VideoAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 是否单个视频循环播放。 <br>true：开启循环播放；false：关闭循环播放。 <br>默认值：false |
+| value | boolean | 是 | 是否单个视频循环播放。 true：开启循环播放；false：关闭循环播放。 默认值：false |
 
 ## muted
 
@@ -165,15 +159,13 @@ muted(value: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VideoAttribute-muted(value: boolean): VideoAttribute--><!--Device-VideoAttribute-muted(value: boolean): VideoAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 视频是否静音。 <br>true：开启静音；false：关闭静音。 <br>默认值：false |
+| value | boolean | 是 | 视频是否静音。 true：开启静音；false：关闭静音。 默认值：false |
 
 ## objectFit
 
@@ -187,15 +179,13 @@ objectFit(value: ImageFit)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VideoAttribute-objectFit(value: ImageFit): VideoAttribute--><!--Device-VideoAttribute-objectFit(value: ImageFit): VideoAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ImageFit | 是 | 视频填充模式。 <br>默认值：ImageFit.Cover <br>约束：不支持ImageFit类型中的枚举值MATRIX，若设置，则作用效果与ImageFit.Cover一致。 <br>异常值：若设置异常值undefined、null，或不在ImageFit枚举范围内的值，作用效果均与ImageFit.Cover一致。 |
+| value | [ImageFit](../arkts-apis/arkts-arkui-imagefit-e.md) | 是 | 视频填充模式。 默认值：ImageFit.Cover 约束：不支持ImageFit类型中的枚举值MATRIX，若设置，则作用效果与ImageFit.Cover一致。 异常值：若设置异常值undefined、null，或不在[ImageFit](../arkts-apis/arkts-arkui-imagefit-e.md)枚举范围内的值，作用效果均与ImageFit.Cover一致。 |
 
 ## onError
 
@@ -203,13 +193,15 @@ objectFit(value: ImageFit)
 onError(event: VoidCallback | import('../api/@ohos.base').ErrorCallback)
 ```
 
-播放失败时触发该事件，支持attributeModifier动态设置属性方法。 > **说明：** > > 从API version 20开始，该接口支持在attributeModifier中调用。
+播放失败时触发该事件，支持attributeModifier动态设置属性方法。
+
+> **说明：**
+> 
+> 从API version 20开始，该接口支持在attributeModifier中调用。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-VideoAttribute-onError(event: VoidCallback | import('../api/@ohos.base').ErrorCallback): VideoAttribute--><!--Device-VideoAttribute-onError(event: VoidCallback | import('../api/@ohos.base').ErrorCallback): VideoAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -217,7 +209,7 @@ onError(event: VoidCallback | import('../api/@ohos.base').ErrorCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | VoidCallback \| import('../api/@ohos.base').ErrorCallback | 是 | 视频播放失败时的回调函数。其中 [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-errorcallback-t.md)类型入参的回调函数用于接收异常信息，回调返回的错误码详细介绍请参见 [Video组件错误码](../errorcode-video.md)和 [Media错误码](../../apis-media-kit/errorcode-media.md)。<br>**起始版本：** 20 |
+| event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) \| import('../api/@ohos.base').ErrorCallback | 是 | 视频播放失败时的回调函数。其中 [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md)类型入参的回调函数用于接收异常信息，回调返回的错误码详细介绍请参见 [Video组件错误码](../errorcode-video.md)和 [Media错误码](../../apis-media-kit/errorcode-media.md)。<br>**起始版本：** 20 |
 
 ## onFinish
 
@@ -231,15 +223,13 @@ onFinish(event: VoidCallback)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VideoAttribute-onFinish(event: VoidCallback): VideoAttribute--><!--Device-VideoAttribute-onFinish(event: VoidCallback): VideoAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | VoidCallback | 是 | 视频播放结束的回调函数。<br>**起始版本：** 18 |
+| event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | 视频播放结束的回调函数。<br>**起始版本：** 18 |
 
 ## onFullscreenChange
 
@@ -252,8 +242,6 @@ onFullscreenChange(callback: Callback<FullscreenInfo>)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-VideoAttribute-onFullscreenChange(callback: Callback<FullscreenInfo>): VideoAttribute--><!--Device-VideoAttribute-onFullscreenChange(callback: Callback<FullscreenInfo>): VideoAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -275,15 +263,13 @@ onPause(event: VoidCallback)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VideoAttribute-onPause(event: VoidCallback): VideoAttribute--><!--Device-VideoAttribute-onPause(event: VoidCallback): VideoAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | VoidCallback | 是 | 视频暂停的回调函数。<br>**起始版本：** 18 |
+| event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | 视频暂停的回调函数。<br>**起始版本：** 18 |
 
 ## onPrepared
 
@@ -296,8 +282,6 @@ onPrepared(callback: Callback<PreparedInfo>)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-VideoAttribute-onPrepared(callback: Callback<PreparedInfo>): VideoAttribute--><!--Device-VideoAttribute-onPrepared(callback: Callback<PreparedInfo>): VideoAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -319,8 +303,6 @@ onSeeked(callback: Callback<PlaybackInfo>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VideoAttribute-onSeeked(callback: Callback<PlaybackInfo>): VideoAttribute--><!--Device-VideoAttribute-onSeeked(callback: Callback<PlaybackInfo>): VideoAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -340,8 +322,6 @@ onSeeking(callback: Callback<PlaybackInfo>)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-VideoAttribute-onSeeking(callback: Callback<PlaybackInfo>): VideoAttribute--><!--Device-VideoAttribute-onSeeking(callback: Callback<PlaybackInfo>): VideoAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -363,15 +343,13 @@ onStart(event: VoidCallback)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VideoAttribute-onStart(event: VoidCallback): VideoAttribute--><!--Device-VideoAttribute-onStart(event: VoidCallback): VideoAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | VoidCallback | 是 | 视频开始播放的回调函数。<br>**起始版本：** 18 |
+| event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | 视频开始播放的回调函数。<br>**起始版本：** 18 |
 
 ## onStop
 
@@ -387,15 +365,13 @@ onStop(event: Callback<void>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VideoAttribute-onStop(event: Callback<void>): VideoAttribute--><!--Device-VideoAttribute-onStop(event: Callback<void>): VideoAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback&lt;void&gt; | 是 | 视频播放停止时的回调函数。 |
+| event | Callback & lt;void & gt; | 是 | 视频播放停止时的回调函数。 |
 
 ## onUpdate
 
@@ -409,8 +385,6 @@ onUpdate(callback: Callback<PlaybackInfo>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VideoAttribute-onUpdate(callback: Callback<PlaybackInfo>): VideoAttribute--><!--Device-VideoAttribute-onUpdate(callback: Callback<PlaybackInfo>): VideoAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -418,4 +392,3 @@ onUpdate(callback: Callback<PlaybackInfo>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | Callback&lt;[PlaybackInfo](arkts-arkui-playbackinfo-i.md)&gt; | 是 | 播放进度变化时的回调函数。<br>**起始版本：** 18 |
-

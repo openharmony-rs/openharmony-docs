@@ -32,7 +32,7 @@ NFC标签支持一种或多种通信技术，具体技术如下：
 
 ## 接口说明
 
-NFC标签读写完整的JS API说明以及实例代码请参考：[NFC标签接口/apis-connectivity-kit/js-apis-nfcTag.md)。
+NFC标签读写完整的JS API说明以及实例代码请参考：@ohos.nfc.tag (标准NFC-Tag)。
 
 获取不同技术类型标签对象的接口说明如下表，根据不同技术的标签对象来执行NFC标签的读写。
 
@@ -52,17 +52,17 @@ NFC标签读写完整的JS API说明以及实例代码请参考：[NFC标签接�
 ### NFC标签前台读写或后台读写的选择
 NFC标签读写应用开发者根据业务需要，可以选择实现前台读卡或者后台读卡。两种不同的读卡方式，代码实现上会存在一些差异。
 - NFC标签前台读写<br>
-1. 在配置文件module.json5中，不需要静态声明过滤读取NFC标签的技术类型，而是通过[tag.registerForegroundDispatch/apis-connectivity-kit/js-apis-nfcTag.md#tagregisterforegrounddispatch10)或者[tag.on/apis-connectivity-kit/js-apis-nfcTag.md#tagon11)来完成动态注册。
+1. 在配置文件module.json5中，不需要静态声明过滤读取NFC标签的技术类型，而是通过tag.registerForegroundDispatch或者tag.on来完成动态注册。
 2. 通过tag.registerForegroundDispatch或tag.on来动态注册前台读写标签时，入参中必须指定需要读取NFC标签的技术类型。
 3. 如果选择tag.registerForegroundDispatch注册，当应用运行在前台并进入该页面，NFC的卡模拟功能在打开时，可以同时完成刷卡。如果选择tag.on注册，当应用运行在前台并进入该页面时，NFC的卡模拟是关闭的，无法同时进行刷卡功能。
-4. 当应用页面切换到后台时，需要显式调用[tag.unregisterForegroundDispatch/apis-connectivity-kit/js-apis-nfcTag.md#tagunregisterforegrounddispatch10)或者[tag.off/apis-connectivity-kit/js-apis-nfcTag.md#tagoff11)来取消注册，退出前台读卡优先功能。
+4. 当应用页面切换到后台时，需要显式调用tag.unregisterForegroundDispatch或者tag.off来取消注册，退出前台读卡优先功能。
 - NFC标签后台读写<br>
 1. 在配置文件module.json5中，需要静态声明过滤读取NFC标签的技术类型。根据业务需要至少定义一种读标签的技术类型，‘tag-tech/’是前缀，后面跟着技术类型描述。
 2. 技术类型的描述字符，必须完整匹配并区分大小写，需要严格匹配。
 
 > **注意：**
-> - 从API version 9之后的应用开发新增支持[Stage模型](../../application-models/ability-terminology.md#stage模型)，作为目前主推并长期演进的模型。
-> - NFC标签读写示例代码的提供，全部按照[Stage模型](../../application-models/ability-terminology.md#stage模型)来说明。
+> - 从API version 9之后的应用开发新增支持Stage模型，作为目前主推并长期演进的模型。
+> - NFC标签读写示例代码的提供，全部按照Stage模型来说明。
 
 ## 开发步骤
 
@@ -111,7 +111,7 @@ NFC标签读写应用开发者根据业务需要，可以选择实现前台读�
 ```
 
 ```ts
-import { tag } from '@kit.ConnectivityKit';
+import { tag, nfcController } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit';
@@ -190,7 +190,11 @@ export default class EntryAbility extends UIAbility {
 
     // 判断设备是否支持NFC能力
     if (!canIUse("SystemCapability.Communication.NFC.Core")) {
-      hilog.error(0x0000, 'testTag', 'nfc unavailable.');
+      hilog.error(0x0000, 'testTag', 'NFC System Capability not supported.');
+      return;
+    }
+    if (!nfcController.isNfcSupported()) {
+      hilog.error(0x0000, 'testTag', 'NFC not supported on this device.');
       return;
     }
 

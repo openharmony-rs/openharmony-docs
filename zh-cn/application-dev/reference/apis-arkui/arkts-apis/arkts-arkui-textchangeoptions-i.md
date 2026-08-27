@@ -4,8 +4,6 @@
 
 **起始版本：** 15
 
-<!--Device-unnamed-declare interface TextChangeOptions--><!--Device-unnamed-declare interface TextChangeOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ oldContent: string
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextChangeOptions-oldContent: string--><!--Device-TextChangeOptions-oldContent: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## oldPreviewText
@@ -48,8 +44,6 @@ oldPreviewText: PreviewText
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextChangeOptions-oldPreviewText: PreviewText--><!--Device-TextChangeOptions-oldPreviewText: PreviewText-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,8 +63,6 @@ rangeAfter: TextRange
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextChangeOptions-rangeAfter: TextRange--><!--Device-TextChangeOptions-rangeAfter: TextRange-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## rangeBefore
@@ -89,7 +81,4 @@ rangeBefore: TextRange
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextChangeOptions-rangeBefore: TextRange--><!--Device-TextChangeOptions-rangeBefore: TextRange-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

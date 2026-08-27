@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## getAppThreadCpuUsage
@@ -12,11 +11,13 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 function getAppThreadCpuUsage(): ThreadCpuUsage[]
 ```
 
-获取应用线程CPU使用情况。 > **注意** > > 由于该接口涉及跨进程通信，耗时较长，为了避免引入性能问题，建议不要在主线程中直接调用该接口。
+获取应用线程CPU使用情况。
 
-**起始版本：** 23
+> **注意**：
+> 
+> 由于该接口涉及跨进程通信，耗时较长，为了避免引入性能问题，建议不要在主线程中直接调用该接口。
 
-<!--Device-hidebug-function getAppThreadCpuUsage(): ThreadCpuUsage[]--><!--Device-hidebug-function getAppThreadCpuUsage(): ThreadCpuUsage[]-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -36,4 +37,3 @@ for (let i = 0; i < appThreadCpuUsage.length; i++) {
   console.info(`threadId=${appThreadCpuUsage[i].threadId}, cpuUsage=${appThreadCpuUsage[i].cpuUsage}`);
 }
 ```
-

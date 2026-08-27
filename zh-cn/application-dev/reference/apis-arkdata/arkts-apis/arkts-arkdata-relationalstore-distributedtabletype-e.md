@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-relationalStore-enum DistributedTableType--><!--Device-relationalStore-enum DistributedTableType-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## DEVICE_COLLABORATION
@@ -19,8 +17,6 @@ DEVICE_COLLABORATION = 0
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DistributedTableType-DEVICE_COLLABORATION = 0--><!--Device-DistributedTableType-DEVICE_COLLABORATION = 0-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -36,7 +32,4 @@ SINGLE_VERSION = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DistributedTableType-SINGLE_VERSION = 1--><!--Device-DistributedTableType-SINGLE_VERSION = 1-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-

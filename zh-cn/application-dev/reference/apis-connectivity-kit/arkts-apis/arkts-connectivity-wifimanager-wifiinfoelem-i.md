@@ -2,9 +2,7 @@
 
 WLAN信息元素。
 
-**起始版本：** 23
-
-<!--Device-wifiManager-interface WifiInfoElem--><!--Device-wifiManager-interface WifiInfoElem-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -12,7 +10,6 @@ WLAN信息元素。
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## content
@@ -25,25 +22,20 @@ content: Uint8Array
 
 **类型：** Uint8Array
 
-**起始版本：** 23
-
-<!--Device-WifiInfoElem-content: Uint8Array--><!--Device-WifiInfoElem-content: Uint8Array-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 ## eid
 
 ```TypeScript
-eid: int
+eid: number
 ```
 
 元素ID
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-WifiInfoElem-eid: int--><!--Device-WifiInfoElem-eid: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
-

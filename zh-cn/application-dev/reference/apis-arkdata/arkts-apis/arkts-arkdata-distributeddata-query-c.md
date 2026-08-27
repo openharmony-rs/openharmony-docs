@@ -8,14 +8,11 @@
 
 **替代接口：** Query
 
-<!--Device-distributedData-class Query--><!--Device-distributedData-class Query-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## 导入模块
 
 ```TypeScript
-import { distributedDataObject } from '@kit.ArkData';
 ```
 
 ## and
@@ -31,8 +28,6 @@ and(): Query
 **废弃版本：** 9
 
 **替代接口：** and
-
-<!--Device-Query-and(): Query--><!--Device-Query-and(): Query-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -71,8 +66,6 @@ beginGroup(): Query
 
 **替代接口：** beginGroup
 
-<!--Device-Query-beginGroup(): Query--><!--Device-Query-beginGroup(): Query-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **返回值：**
@@ -110,8 +103,6 @@ constructor()
 
 **替代接口：** constructor
 
-<!--Device-Query-constructor()--><!--Device-Query-constructor()-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## deviceId
@@ -120,15 +111,22 @@ constructor()
 deviceId(deviceId: string): Query
 ```
 
-添加设备ID作为key的前缀。 > **说明：** > > 其中deviceId通过调用<!--RP1--> > [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync) > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。 > > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
+添加设备ID作为key的前缀。
+
+> **说明：**
+> 
+> 其中deviceId通过调用<!--RP1--
+> 
+> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
+> 
+> deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** deviceId
-
-<!--Device-Query-deviceId(deviceId: string): Query--><!--Device-Query-deviceId(deviceId: string): Query-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -170,8 +168,6 @@ endGroup(): Query
 
 **替代接口：** endGroup
 
-<!--Device-Query-endGroup(): Query--><!--Device-Query-endGroup(): Query-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **返回值：**
@@ -208,8 +204,6 @@ equalTo(field: string, value: number | string | boolean): Query
 **废弃版本：** 9
 
 **替代接口：** equalTo
-
-<!--Device-Query-equalTo(field: string, value: number | string | boolean): Query--><!--Device-Query-equalTo(field: string, value: number | string | boolean): Query-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -253,8 +247,6 @@ getSqlLike(): string
 
 **替代接口：** getSqlLike
 
-<!--Device-Query-getSqlLike(): string--><!--Device-Query-getSqlLike(): string-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **返回值：**
@@ -288,8 +280,6 @@ greaterThan(field: string, value: number | string | boolean): Query
 **废弃版本：** 9
 
 **替代接口：** greaterThan
-
-<!--Device-Query-greaterThan(field: string, value: number | string | boolean): Query--><!--Device-Query-greaterThan(field: string, value: number | string | boolean): Query-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -333,8 +323,6 @@ greaterThanOrEqualTo(field: string, value: number | string): Query
 
 **替代接口：** greaterThanOrEqualTo
 
-<!--Device-Query-greaterThanOrEqualTo(field: string, value: number | string): Query--><!--Device-Query-greaterThanOrEqualTo(field: string, value: number | string): Query-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -376,8 +364,6 @@ inNumber(field: string, valueList: number[]): Query
 **废弃版本：** 9
 
 **替代接口：** inNumber
-
-<!--Device-Query-inNumber(field: string, valueList: number[]): Query--><!--Device-Query-inNumber(field: string, valueList: number[]): Query-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -421,8 +407,6 @@ inString(field: string, valueList: string[]): Query
 
 **替代接口：** inString
 
-<!--Device-Query-inString(field: string, valueList: string[]): Query--><!--Device-Query-inString(field: string, valueList: string[]): Query-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -465,8 +449,6 @@ isNotNull(field: string): Query
 
 **替代接口：** isNotNull
 
-<!--Device-Query-isNotNull(field: string): Query--><!--Device-Query-isNotNull(field: string): Query-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -508,8 +490,6 @@ isNull(field: string): Query
 
 **替代接口：** isNull
 
-<!--Device-Query-isNull(field: string): Query--><!--Device-Query-isNull(field: string): Query-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -550,8 +530,6 @@ lessThan(field: string, value: number | string): Query
 **废弃版本：** 9
 
 **替代接口：** lessThan
-
-<!--Device-Query-lessThan(field: string, value: number | string): Query--><!--Device-Query-lessThan(field: string, value: number | string): Query-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -595,8 +573,6 @@ lessThanOrEqualTo(field: string, value: number | string): Query
 
 **替代接口：** lessThanOrEqualTo
 
-<!--Device-Query-lessThanOrEqualTo(field: string, value: number | string): Query--><!--Device-Query-lessThanOrEqualTo(field: string, value: number | string): Query-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -639,8 +615,6 @@ like(field: string, value: string): Query
 
 **替代接口：** like
 
-<!--Device-Query-like(field: string, value: string): Query--><!--Device-Query-like(field: string, value: string): Query-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -682,8 +656,6 @@ limit(total: number, offset: number): Query
 **废弃版本：** 9
 
 **替代接口：** limit
-
-<!--Device-Query-limit(total: number, offset: number): Query--><!--Device-Query-limit(total: number, offset: number): Query-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -730,8 +702,6 @@ notEqualTo(field: string, value: number | string | boolean): Query
 
 **替代接口：** notEqualTo
 
-<!--Device-Query-notEqualTo(field: string, value: number | string | boolean): Query--><!--Device-Query-notEqualTo(field: string, value: number | string | boolean): Query-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -773,8 +743,6 @@ notInNumber(field: string, valueList: number[]): Query
 **废弃版本：** 9
 
 **替代接口：** notInNumber
-
-<!--Device-Query-notInNumber(field: string, valueList: number[]): Query--><!--Device-Query-notInNumber(field: string, valueList: number[]): Query-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -818,8 +786,6 @@ notInString(field: string, valueList: string[]): Query
 
 **替代接口：** notInString
 
-<!--Device-Query-notInString(field: string, valueList: string[]): Query--><!--Device-Query-notInString(field: string, valueList: string[]): Query-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -862,8 +828,6 @@ or(): Query
 
 **替代接口：** or
 
-<!--Device-Query-or(): Query--><!--Device-Query-or(): Query-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **返回值：**
@@ -900,8 +864,6 @@ orderByAsc(field: string): Query
 **废弃版本：** 9
 
 **替代接口：** orderByAsc
-
-<!--Device-Query-orderByAsc(field: string): Query--><!--Device-Query-orderByAsc(field: string): Query-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -945,8 +907,6 @@ orderByDesc(field: string): Query
 
 **替代接口：** orderByDesc
 
-<!--Device-Query-orderByDesc(field: string): Query--><!--Device-Query-orderByDesc(field: string): Query-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -988,8 +948,6 @@ prefixKey(prefix: string): Query
 **废弃版本：** 9
 
 **替代接口：** prefixKey
-
-<!--Device-Query-prefixKey(prefix: string): Query--><!--Device-Query-prefixKey(prefix: string): Query-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1033,8 +991,6 @@ reset(): Query
 
 **替代接口：** reset
 
-<!--Device-Query-reset(): Query--><!--Device-Query-reset(): Query-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **返回值：**
@@ -1071,8 +1027,6 @@ setSuggestIndex(index: string): Query
 **废弃版本：** 9
 
 **替代接口：** setSuggestIndex
-
-<!--Device-Query-setSuggestIndex(index: string): Query--><!--Device-Query-setSuggestIndex(index: string): Query-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1116,8 +1070,6 @@ unlike(field: string, value: string): Query
 
 **替代接口：** unlike
 
-<!--Device-Query-unlike(field: string, value: string): Query--><!--Device-Query-unlike(field: string, value: string): Query-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -1145,4 +1097,3 @@ try {
     console.log("duplicated calls should be ok :" + e);
 }
 ```
-

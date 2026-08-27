@@ -2,9 +2,7 @@
 
 通知订阅者共享配置变更的数据结构。包括数据变更类型、变化的URI、变更的数据内容。
 
-**起始版本：** 23
-
-<!--Device-dataShare-interface DataProxyChangeInfo--><!--Device-dataShare-interface DataProxyChangeInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { dataShare } from '@kit.ArkData';
-import { dataSharePredicates } from '@kit.ArkData';
 ```
 
 ## type
@@ -25,11 +22,9 @@ type: ChangeType
 
 **类型：** ChangeType
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataProxyChangeInfo-type: ChangeType--><!--Device-DataProxyChangeInfo-type: ChangeType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -43,11 +38,9 @@ uri: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataProxyChangeInfo-uri: string--><!--Device-DataProxyChangeInfo-uri: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -61,11 +54,9 @@ value: ValueType
 
 **类型：** [ValueType](arkts-arkdata-valuetype-t.md)
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataProxyChangeInfo-value: ValueType--><!--Device-DataProxyChangeInfo-value: ValueType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -83,7 +74,4 @@ values?: ValueType[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataProxyChangeInfo-values?: ValueType[]--><!--Device-DataProxyChangeInfo-values?: ValueType[]-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
-

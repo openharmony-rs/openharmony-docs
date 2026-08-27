@@ -4,8 +4,6 @@ MDNS错误信息。
 
 **起始版本：** 10
 
-<!--Device-mdns-export enum MdnsError--><!--Device-mdns-export enum MdnsError-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 ## INTERNAL_ERROR
@@ -19,8 +17,6 @@ INTERNAL_ERROR = 0
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MdnsError-INTERNAL_ERROR = 0--><!--Device-MdnsError-INTERNAL_ERROR = 0-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
@@ -36,8 +32,6 @@ ALREADY_ACTIVE = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MdnsError-ALREADY_ACTIVE = 1--><!--Device-MdnsError-ALREADY_ACTIVE = 1-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 ## MAX_LIMIT
@@ -52,7 +46,4 @@ MAX_LIMIT = 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MdnsError-MAX_LIMIT = 2--><!--Device-MdnsError-MAX_LIMIT = 2-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
-

@@ -4,14 +4,11 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-declare namespace hiRetrieval--><!--Device-unnamed-declare namespace hiRetrieval-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
 ## 导入模块
 
 ```TypeScript
-import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## 汇总
@@ -33,4 +30,3 @@ import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 | 名称 | 说明 |
 | --- | --- |
 | [HiRetrievalConfig](arkts-performanceanalysis-hiretrieval-hiretrievalconfig-i.md) | 应用灰度活动配置。 |
-

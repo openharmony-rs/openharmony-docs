@@ -12,8 +12,6 @@ declare type ImageSmoothingQuality = "high" | "low" | "medium"
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare type ImageSmoothingQuality = "high" | "low" | "medium"--><!--Device-unnamed-declare type ImageSmoothingQuality = "high" | "low" | "medium"-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
@@ -21,4 +19,3 @@ declare type ImageSmoothingQuality = "high" | "low" | "medium"
 | "high" | 高画质 |
 | "low" | 低画质 |
 | "medium" | 中画质 |
-

@@ -20,8 +20,6 @@ function isOtaUpdateNonceEnable(admin: Want): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-systemManager-function isOtaUpdateNonceEnable(admin: Want): boolean--><!--Device-systemManager-function isOtaUpdateNonceEnable(admin: Want): boolean-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
@@ -41,9 +39,9 @@ function isOtaUpdateNonceEnable(admin: Want): boolean
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
 
 **示例**
 
@@ -63,4 +61,3 @@ try {
   console.error(`Failed to query OTA update Nonce enable. Code is ${err.code}, message is ${err.message}`);
 }
 ```
-

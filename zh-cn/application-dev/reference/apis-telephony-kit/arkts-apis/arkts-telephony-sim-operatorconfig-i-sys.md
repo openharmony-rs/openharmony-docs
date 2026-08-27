@@ -1,10 +1,6 @@
 # OperatorConfig（系统接口）
 
-Defines the carrier configuration.
-
-**起始版本：** 23
-
-<!--Device-sim-export interface OperatorConfig--><!--Device-sim-export interface OperatorConfig-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -13,7 +9,6 @@ Defines the carrier configuration.
 ## 导入模块
 
 ```TypeScript
-import { sim } from '@kit.TelephonyKit';
 ```
 
 ## field
@@ -22,13 +17,9 @@ import { sim } from '@kit.TelephonyKit';
 field: string
 ```
 
-Indicates the field.
-
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-OperatorConfig-field: string--><!--Device-OperatorConfig-field: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -40,15 +31,10 @@ Indicates the field.
 value: string
 ```
 
-Indicates the value.
-
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-OperatorConfig-value: string--><!--Device-OperatorConfig-value: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
 **系统接口：** 此接口为系统接口。
-

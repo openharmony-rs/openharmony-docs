@@ -1,18 +1,20 @@
 # AvoidArea
 
-窗口内容的避让区域。 窗口内容做[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)适配时，需要按照 [AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)对应的AvoidArea做窗口内容避让。 在避让区域内，应用窗口内容被遮挡且无法响应用户点击事件。 > **说明：** > > 示意图展示了leftRect、topRect、rightRect、bottomRect的含义。 > > 
+窗口内容的避让区域。窗口内容做[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)适配时，需要按照 [AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)对应的AvoidArea做窗口内容避让。在避让区域内，应用窗口内容被遮挡且无法响应用户点击事件。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 示意图展示了leftRect、topRect、rightRect、bottomRect的含义。
+> 
+> 
 
-<!--Device-window-interface AvoidArea--><!--Device-window-interface AvoidArea-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -26,11 +28,9 @@ bottomRect: Rect
 
 **类型：** Rect
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AvoidArea-bottomRect: Rect--><!--Device-AvoidArea-bottomRect: Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -44,11 +44,9 @@ leftRect: Rect
 
 **类型：** Rect
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AvoidArea-leftRect: Rect--><!--Device-AvoidArea-leftRect: Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -62,11 +60,9 @@ rightRect: Rect
 
 **类型：** Rect
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AvoidArea-rightRect: Rect--><!--Device-AvoidArea-rightRect: Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -80,11 +76,9 @@ topRect: Rect
 
 **类型：** Rect
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AvoidArea-topRect: Rect--><!--Device-AvoidArea-topRect: Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -98,11 +92,8 @@ visible: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AvoidArea-visible: boolean--><!--Device-AvoidArea-visible: boolean-End-->
-
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
-

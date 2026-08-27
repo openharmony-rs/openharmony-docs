@@ -4,8 +4,6 @@ MenuItem分组的标题和尾部信息。
 
 **起始版本：** 9
 
-<!--Device-unnamed-declare interface MenuItemGroupOptions--><!--Device-unnamed-declare interface MenuItemGroupOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,15 +17,13 @@ MenuItem分组的标题和尾部信息。
 footer?: ResourceStr | CustomBuilder
 ```
 
-设置分组的菜单页脚，显示在分组中所有菜单项的底部。 未设置时，不显示菜单页脚。
+设置分组的菜单页脚，显示在分组中所有菜单项的底部。未设置时，不显示菜单页脚。
 
-**类型：** ResourceStr \| CustomBuilder
+**类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) \| [CustomBuilder](arkts-arkui-custombuilder-t.md)
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MenuItemGroupOptions-footer?: ResourceStr | CustomBuilder--><!--Device-MenuItemGroupOptions-footer?: ResourceStr | CustomBuilder-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,15 +33,12 @@ footer?: ResourceStr | CustomBuilder
 header?: ResourceStr | CustomBuilder
 ```
 
-设置分组的标题，显示在分组中所有菜单项的顶部。 未设置时，不显示标题。
+设置分组的标题，显示在分组中所有菜单项的顶部。未设置时，不显示标题。
 
-**类型：** ResourceStr \| CustomBuilder
+**类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) \| [CustomBuilder](arkts-arkui-custombuilder-t.md)
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MenuItemGroupOptions-header?: ResourceStr | CustomBuilder--><!--Device-MenuItemGroupOptions-header?: ResourceStr | CustomBuilder-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

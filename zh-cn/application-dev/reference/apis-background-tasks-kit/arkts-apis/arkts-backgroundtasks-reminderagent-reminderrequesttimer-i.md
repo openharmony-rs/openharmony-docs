@@ -10,15 +10,12 @@
 
 **替代接口：** [ReminderRequestTimer](arkts-backgroundtasks-reminderagentmanager-reminderrequesttimer-i.md)
 
-<!--Device-reminderAgent-interface ReminderRequestTimer--><!--Device-reminderAgent-interface ReminderRequestTimer-End-->
-
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 ## 导入模块
 
 ```TypeScript
 import { reminderAgent } from '@kit.BackgroundTasksKit';
-import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
 ## triggerTimeInSeconds
@@ -37,7 +34,4 @@ triggerTimeInSeconds: number
 
 **替代接口：** triggerTimeInSeconds
 
-<!--Device-ReminderRequestTimer-triggerTimeInSeconds: number--><!--Device-ReminderRequestTimer-triggerTimeInSeconds: number-End-->
-
 **系统能力：** SystemCapability.Notification.ReminderAgent
-

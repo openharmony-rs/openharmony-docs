@@ -23,7 +23,7 @@
 
 混合模式可以用于画笔或画刷，它定义了如何将源像素（要绘制的内容）与目标像素（已存在于画布上的内容）进行组合。
 
-可以使用OH_Drawing_BrushSetBlendMode()接口将混合模式应用于画刷中，使用OH_Drawing_PenSetBlendMode()接口将混合模式应用于画笔中。这两个接口都需要接受一个参数OH_Drawing_BlendMode，即混合模式的类型，具体可参考[OH_Drawing_BlendMode/apis-arkgraphics2d/capi-drawing-types-h.md#oh_drawing_blendmode)。
+可以使用OH_Drawing_BrushSetBlendMode()接口将混合模式应用于画刷中，使用OH_Drawing_PenSetBlendMode()接口将混合模式应用于画笔中。这两个接口都需要接受一个参数OH_Drawing_BlendMode，即混合模式的类型，具体可参考OH_Drawing_BlendMode。
 
 此处以使用画刷设置叠加混合模式为例（为了防止混合模式的效果被背景色干扰，示例中的canvas并未设置背景色，使用的是默认的黑色背景），关键示例和效果示意图如下所示：
 
@@ -58,7 +58,7 @@ OH_Drawing_BrushDestroy(brush);
 OH_Drawing_PointDestroy(point);
 ```
 
-![zh-cn_image_0000002158744138](figures/zh-cn_image_0000002158744138.png)
+![Blend-Mode](figures/Blend-Mode.png)
 
 
 ## 路径效果
@@ -105,14 +105,14 @@ OH_Drawing_PathEffectDestroy(pathEffect);
 
 | 不设置虚线路径效果的示意图 | 设置虚线效果的示意图 |
 | -------- | -------- |
-| ![zh-cn_image_0000002158584342](figures/zh-cn_image_0000002158584342.png) | ![zh-cn_image_0000002194110865](figures/zh-cn_image_0000002194110865.png) |
+| ![Path-Without-Dashed-Lines](figures/Path-Without-Dashed-Lines.png) | ![Path-With-Dashed-Lines](figures/Path-With-Dashed-Lines.png) |
 
 
 ## 着色器效果
 
 着色器效果基于画刷或画笔实现，可使用OH_Drawing_BrushSetShaderEffect()接口设置画刷的着色器效果，或者使用 OH_Drawing_PenSetShaderEffect()接口设置画笔的着色器效果。当前支持不同的着色器效果，如线性渐变着色器效果、径向渐变着色器效果、扇形渐变着色器效果。
 
-着色器相关接口和具体参数的说明请见[drawing_shader_effect/apis-arkgraphics2d/capi-drawing-shader-effect-h.md)。
+着色器相关接口和具体参数的说明请见drawing_shader_effect。
 
 
 ### 线性渐变着色器效果
@@ -168,7 +168,7 @@ OH_Drawing_PointDestroy(endPt);
 
 此例绘制的具有线性渐变着色器效果的矩形如下所示：
 
-![zh-cn_image_0000002194110873](figures/zh-cn_image_0000002194110873.png)
+![Linear-Gradient-Shader-Effect](figures/Linear-Gradient-Shader-Effect.png)
 
 
 ### 径向渐变着色器效果
@@ -213,7 +213,7 @@ OH_Drawing_PointDestroy(centerPt);
 
 此例绘制的具有径向渐变着色器效果的矩形如下所示：
 
-![zh-cn_image_0000002158744130](figures/zh-cn_image_0000002158744130.png)
+![Radial-Gradient-Shader-Effect](figures/Radial-Gradient-Shader-Effect.png)
 
 
 ### 扇形渐变着色器效果
@@ -256,19 +256,19 @@ OH_Drawing_PointDestroy(centerPt);
 
 此例绘制的具有扇形渐变着色器效果的矩形如下所示：
 
-![zh-cn_image_0000002158584354](figures/zh-cn_image_0000002158584354.png)
+![sector-gradient-shader-effect](figures/sector-gradient-shader-effect.png)
 
 
 ## 滤波器效果
 
 滤波器效果可基于画刷或画笔实现。可使用OH_Drawing_PenSetFilter()接口设置画笔的滤波器效果，或者使用OH_Drawing_BrushSetFilter()接口设置画刷的滤波器效果。当前支持不同的滤波器效果，比如图像滤波器、颜色滤波器、蒙版滤波器。
 
-滤波器相关接口和具体参数的说明请见[drawing_filter.h/apis-arkgraphics2d/capi-drawing-filter-h.md)。
+滤波器相关接口和具体参数的说明请见drawing_filter.h。
 
 
 ### 颜色滤波器效果
 
-颜色滤波器可基于画笔或画刷实现，颜色滤波器的相关接口和具体参数的说明请见[drawing_color_filter.h/apis-arkgraphics2d/capi-drawing-color-filter-h.md)。
+颜色滤波器可基于画笔或画刷实现，颜色滤波器的相关接口和具体参数的说明请见drawing_color_filter.h。
 
 目前可实现多种颜色滤波器，包括如下：
 
@@ -350,12 +350,12 @@ OH_Drawing_FilterDestroy(filter);
 
 | 不设置颜色滤波器效果的示意图 | 设置5x4颜色矩阵的颜色滤波器效果的示意图 |
 | -------- | -------- |
-| ![zh-cn_image_0000002194110869](figures/zh-cn_image_0000002194110869.png) | ![zh-cn_image_0000002194025241](figures/zh-cn_image_0000002194025241.png) |
+| ![Original-Image6](figures/Original-Image6.png) | ![Image-with-a-Color](figures/Image-with-a-Color.png) |
 
 
 ### 图像滤波器效果
 
-图像滤波器可基于画笔或画刷来实现，图像滤波器的相关接口和具体参数的说明请见[drawing_image_filter.h/apis-arkgraphics2d/capi-drawing-image-filter-h.md)。
+图像滤波器可基于画笔或画刷来实现，图像滤波器的相关接口和具体参数的说明请见drawing_image_filter.h。
 
 目前只支持两种图像滤波器：
 
@@ -408,18 +408,18 @@ OH_Drawing_FilterDestroy(filter);
 
 | 不设置图像滤波器效果的示意图 | 设置图像滤波器效果的示意图 |
 | -------- | -------- |
-| ![zh-cn_image_0000002194025225](figures/zh-cn_image_0000002194025225.png) | ![zh-cn_image_0000002194025245](figures/zh-cn_image_0000002194025245.png) |
+| ![Original-Image5](figures/Original-Image5.png) | ![Image-with-the-Filter](figures/Image-with-the-Filter.png) |
 
 
 ### 蒙版滤波器效果
 
 蒙版滤波器的模糊效果仅对透明度和形状边缘进行模糊处理，相对于图像滤波器的模糊效果来说计算成本更低。
 
-蒙版滤波器可基于画笔或画刷实现，蒙版滤波器的相关接口和具体参数的说明请见[drawing_mask_filter.h/apis-arkgraphics2d/capi-drawing-mask-filter-h.md)。
+蒙版滤波器可基于画笔或画刷实现，蒙版滤波器的相关接口和具体参数的说明请见drawing_mask_filter.h。
 
 可使用OH_Drawing_MaskFilterCreateBlur()接口创建想要设置具有模糊效果的蒙版滤波器。接口接受3个参数，分别为：
 
-- blurType：用于指定要应用的模糊类型，详细分类请参考[OH_Drawing_BlurType/apis-arkgraphics2d/capi-drawing-mask-filter-h.md#oh_drawing_blurtype)。
+- blurType：用于指定要应用的模糊类型，详细分类请参考OH_Drawing_BlurType。
 
 - sigma：用于指定要应用的高斯模糊的标准差，标准差必须大于0。
 
@@ -463,7 +463,7 @@ OH_Drawing_FilterDestroy(filter);
 
 | 不设置蒙版滤波器效果的示意图 | 设置蒙版滤波器效果的示意图 |
 | -------- | -------- |
-| ![zh-cn_image_0000002194110877](figures/zh-cn_image_0000002194110877.png) | ![zh-cn_image_0000002158744126](figures/zh-cn_image_0000002158744126.png) |
+| ![Original-Image4](figures/Original-Image4.png) | ![Image-with-the-Mask-Effect](figures/Image-with-the-Mask-Effect.png) |
 
 <!--RP1-->
 ## 相关实例

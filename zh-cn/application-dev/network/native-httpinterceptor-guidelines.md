@@ -12,7 +12,7 @@
 
 ## 接口说明
 
-HTTP全局拦截器常用接口如下表所示，详细的接口说明请参考[http_interceptor.h/apis-network-kit/capi-net-http-interceptor-h.md)。
+HTTP全局拦截器常用接口如下表所示，详细的接口说明请参考http_interceptor.h。
 
 
 | 接口名 | 描述 |
@@ -801,7 +801,7 @@ libhttp_interceptor.so
                };
                httpRequest.request(HTTP_URL_BAIDU, options, (err: BusinessError, res: http.HttpResponse) => {
                  if (err) {
-                   hilog.info(0x0000, LOG_TAG, `request fail, error code: ${err.code}, msg: ${err.message}`);
+                   hilog.error(0x0000, LOG_TAG, `request fail, error code: ${err.code}, msg: ${err.message}`);
                    httpRequest.destroy();
                  } else {
                    hilog.info(0x0000, LOG_TAG, `res:${JSON.stringify(res)}`);

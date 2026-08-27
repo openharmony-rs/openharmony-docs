@@ -2,9 +2,7 @@
 
 定义打印机能力的接口。
 
-**起始版本：** 23
-
-<!--Device-print-interface PrinterCapabilities--><!--Device-print-interface PrinterCapabilities-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -24,9 +22,7 @@ options?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PrinterCapabilities-options?: string--><!--Device-PrinterCapabilities-options?: string-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -40,9 +36,7 @@ supportedColorModes: Array<PrintColorMode>
 
 **类型：** Array&lt;[PrintColorMode](arkts-basicservices-print-printcolormode-e.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-PrinterCapabilities-supportedColorModes: Array<PrintColorMode>--><!--Device-PrinterCapabilities-supportedColorModes: Array<PrintColorMode>-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -56,9 +50,7 @@ supportedDuplexModes: Array<PrintDuplexMode>
 
 **类型：** Array&lt;[PrintDuplexMode](arkts-basicservices-print-printduplexmode-e.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-PrinterCapabilities-supportedDuplexModes: Array<PrintDuplexMode>--><!--Device-PrinterCapabilities-supportedDuplexModes: Array<PrintDuplexMode>-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -72,9 +64,7 @@ supportedMediaTypes?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
-
-<!--Device-PrinterCapabilities-supportedMediaTypes?: Array<string>--><!--Device-PrinterCapabilities-supportedMediaTypes?: Array<string>-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -88,9 +78,7 @@ supportedOrientations?: Array<PrintOrientationMode>
 
 **类型：** Array&lt;[PrintOrientationMode](arkts-basicservices-print-printorientationmode-e.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-PrinterCapabilities-supportedOrientations?: Array<PrintOrientationMode>--><!--Device-PrinterCapabilities-supportedOrientations?: Array<PrintOrientationMode>-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -104,9 +92,7 @@ supportedPageSizes: Array<PrintPageSize>
 
 **类型：** Array&lt;[PrintPageSize](arkts-basicservices-print-printpagesize-i.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-PrinterCapabilities-supportedPageSizes: Array<PrintPageSize>--><!--Device-PrinterCapabilities-supportedPageSizes: Array<PrintPageSize>-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -120,9 +106,6 @@ supportedQualities?: Array<PrintQuality>
 
 **类型：** Array&lt;[PrintQuality](arkts-basicservices-print-printquality-e.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-PrinterCapabilities-supportedQualities?: Array<PrintQuality>--><!--Device-PrinterCapabilities-supportedQualities?: Array<PrintQuality>-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Print.PrintFramework
-

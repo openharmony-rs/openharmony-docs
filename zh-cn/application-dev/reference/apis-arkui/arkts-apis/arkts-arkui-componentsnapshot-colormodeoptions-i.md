@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-componentSnapshot-export interface ColorModeOptions--><!--Device-componentSnapshot-export interface ColorModeOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -22,17 +18,15 @@ import { componentSnapshot } from '@kit.ArkUI';
 colorSpace?: colorSpaceManager.ColorSpace
 ```
 
-指定截图使用的色彩空间。 如果知道被截图组件使用的色彩空间，可以通过`colorSpace`字段指定，并将`isAuto`设置为false，以达到预期的截图效果。 取值范围：[colorSpaceManager.ColorSpace](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-colorspace-e.md)中 DISPLAY_P3、SRGB、DISPLAY_BT2020_SRGB。 默认值：SRGB 如果值为undefined、null或未设置，则使用默认值截图；其他异常值会导致截图失败，返回错误码160003。
+指定截图使用的色彩空间。如果知道被截图组件使用的色彩空间，可以通过`colorSpace`字段指定，并将`isAuto`设置为false，以达到预期的截图效果。取值范围：[colorSpaceManager.ColorSpace](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-colorspace-e.md)中 DISPLAY_P3、SRGB、DISPLAY_BT2020_SRGB。默认值：SRGB如果值为undefined、null或未设置，则使用默认值截图；其他异常值会导致截图失败，返回错误码160003。
 
 **类型：** colorSpaceManager.ColorSpace
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ColorModeOptions-colorSpace?: colorSpaceManager.ColorSpace--><!--Device-ColorModeOptions-colorSpace?: colorSpaceManager.ColorSpace-End-->
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,17 +36,61 @@ colorSpace?: colorSpaceManager.ColorSpace
 isAuto?: boolean
 ```
 
-是否由系统自动决定所使用的色彩空间。 支持取值为：true表示系统自动决定所使用的色彩空间；false表示使用通过`colorSpace`字段设置的色彩空间类型进行截图。取非法值时，按默认值false处理。 默认值：false 离屏截图仅支持设置为false，否则会返回错误码160004。 当`isAuto`设置为true时，建议将[SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md)中的`waitUntilRenderFinished`字段也设置 为true，以便确保系统可以正常检测到所用的模式。 在不确定组件使用的色彩空间时，建议将`isAuto`设置为true，让系统根据实际情况自动决定使用的色彩空间。 当`isAuto`为true时，`colorSpace`字段设置的值会被忽略。此时，如果被截图组件同时包含不同色彩空间的子组件时，截图的色彩空间为优先级最高的色彩空间类型，优先级排序为DISPLAY_BT2020_SRGB > DISPLAY_P3 > SRGB。
+是否由系统自动决定所使用的色彩空间。支持取值为：true表示系统自动决定所使用的色彩空间；false表示使用通过`colorSpace`字段设置的色彩空间类型进行截图。取非法值时，按默认值false处理。默认值：false离屏截图仅支持设置为false，否则会返回错误码160004。当`isAuto`设置为true时，建议将[SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md)中的`waitUntilRenderFinished`字段也设置为 true，以便确保系统可以正常检测到所用的模式。在不确定组件使用的色彩空间时，建议将`isAuto`设置为true，让系统根据实际情况自动决定使用的色彩空间。当`isAuto`为true时，`colorSpace`字段设置的值会被忽略。此时，如果被截图组件同时包含不同色彩空间的子组件时，截图的色彩空间为优先级最高的色彩空间类型，优先级排序为DISPLAY_BT2020_SRGB &gt; DISPLAY_P3 &gt; SRGB。
 
 **类型：** boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ColorModeOptions-isAuto?: boolean--><!--Device-ColorModeOptions-isAuto?: boolean-End-->
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**示例**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct SnapshotColorModeExample {
+  @State pixmap: image.PixelMap | undefined = undefined;
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id('root')
+      }
+
+      Button('click to generate UI snapshot')
+        .onClick(() => {
+          this.getUIContext().getComponentSnapshot().get('root', (error: Error, pixmap: image.PixelMap) => {
+            if (error) {
+              console.error(`error:${JSON.stringify(error)}`);
+              return;
+            }
+            this.pixmap = pixmap;
+          }, {
+            scale: 2,
+            waitUntilRenderFinished: true,
+            // 设置色彩空间为：DISPLAY_P3
+            colorMode: { colorSpace: colorSpaceManager.ColorSpace.DISPLAY_P3, isAuto: false }
+          })
+        }).margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```

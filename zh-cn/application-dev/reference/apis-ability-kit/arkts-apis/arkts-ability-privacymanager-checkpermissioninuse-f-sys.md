@@ -20,8 +20,6 @@ function checkPermissionInUse(permissionName: Permissions): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-privacyManager-function checkPermissionInUse(permissionName: Permissions): boolean--><!--Device-privacyManager-function checkPermissionInUse(permissionName: Permissions): boolean-End-->
-
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -42,9 +40,9 @@ function checkPermissionInUse(permissionName: Permissions): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
-| [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The permissionName is empty or exceeds 256 characters. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_USED_STATS". |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system app. Interface caller is not a system application. |
+| [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The permissionName is empty or exceeds 256 characters. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist or is not a user_grant permission. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
@@ -63,4 +61,3 @@ try {
   console.error(`checkPermissionInUse fail, code: ${error.code}, message: ${error.message}`);
 }
 ```
-

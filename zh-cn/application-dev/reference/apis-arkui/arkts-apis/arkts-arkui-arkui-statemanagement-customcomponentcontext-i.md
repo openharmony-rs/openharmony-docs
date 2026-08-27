@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export declare interface CustomComponentContext--><!--Device-unnamed-export declare interface CustomComponentContext-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,15 +26,13 @@ getReusePool(): IReusePool | undefined
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CustomComponentContext-getReusePool(): IReusePool | undefined--><!--Device-CustomComponentContext-getReusePool(): IReusePool | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [IReusePool](arkts-arkui-arkui-statemanagement-ireusepool-i.md) | 当前组件配置全局复用池时，返回复用池信息，否则返回`undefined`。 |
+| [IReusePool](arkts-arkui-arkui-statemanagement-ireusepool-i.md) \| undefined | 当前组件配置全局复用池时，返回复用池信息，否则返回`undefined`。 |
 
 **示例**
 
@@ -74,4 +70,3 @@ struct PoolOwner {
   }
 }
 ```
-

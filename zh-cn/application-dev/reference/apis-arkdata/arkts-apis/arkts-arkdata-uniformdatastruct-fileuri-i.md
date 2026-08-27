@@ -2,9 +2,7 @@
 
 文件地址类型数据，用于描述文件的URI地址信息。创建FileUri对象后，可用于文件拖拽、文件共享等场景，支持通过uriAuthorizationPolicies控制文件访问权限，实现跨应用的文件数据传递和权限管理。
 
-**起始版本：** 23
-
-<!--Device-uniformDataStruct-interface FileUri--><!--Device-uniformDataStruct-interface FileUri-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -17,18 +15,16 @@ import { uniformDataStruct } from '@kit.ArkData';
 ## details
 
 ```TypeScript
-details?: Record<string, int | long | double | string | Uint8Array>
+details?: Record<string, number | number | number | string | Uint8Array>
 ```
 
 字典类型对象，key为string类型，value可包含number（数值类型）、string（字符串类型）或Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。
 
-**类型：** Record&lt;string, int \| long \| double \| string \| Uint8Array&gt;
+**类型：** Record&lt;string, number \| number \| number \| string \| Uint8Array&gt;
 
-**起始版本：** 23
+**起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FileUri-details?: Record<string, int | long | double | string | Uint8Array>--><!--Device-FileUri-details?: Record<string, int | long | double | string | Uint8Array>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -42,11 +38,9 @@ fileType: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FileUri-fileType: string--><!--Device-FileUri-fileType: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -60,11 +54,9 @@ oriUri: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FileUri-oriUri: string--><!--Device-FileUri-oriUri: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -78,29 +70,50 @@ readonly uniformDataType: 'general.file-uri'
 
 **类型：** 'general.file-uri'
 
-**起始版本：** 23
+**起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FileUri-readonly uniformDataType: 'general.file-uri'--><!--Device-FileUri-readonly uniformDataType: 'general.file-uri'-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## uriAuthorizationPolicies
 
 ```TypeScript
-uriAuthorizationPolicies?: Array<int>
+uriAuthorizationPolicies?: Array<number>
 ```
 
 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST（读+写+持久化授权）。只针对单个record使用，优先级最高，具体策略见 [UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md)。
 
-**类型：** Array&lt;int&gt;
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileUri-uriAuthorizationPolicies?: Array<int>--><!--Device-FileUri-uriAuthorizationPolicies?: Array<int>-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
+**示例**
+
+```TypeScript
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+
+let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+let fileUriDetails: Record<string, number | string | Uint8Array> = {
+  'fileUriKey1': 123,
+  'fileUriKey2': 'fileUriValue',
+  'fileUriKey3': u8Array
+};
+let fileUri: uniformDataStruct.FileUri = {
+  uniformDataType: 'general.file-uri',
+  oriUri: 'www.xx.com',
+  fileType: 'general.image',
+  details: fileUriDetails,
+  // 从API 26.0.0版本开始，支持uri授权策略
+  uriAuthorizationPolicies: [
+    unifiedDataChannel.UriPermission.WRITE
+  ]
+};
+console.info('fileUri.uniformDataType: ' + fileUri.uniformDataType);
+// 当使用FileUri类型的标准化数据结构构造record时，推荐入参中的type值设为uniformTypeDescriptor.UniformDataType.FILE_URI
+let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.FILE_URI, fileUri);
+```

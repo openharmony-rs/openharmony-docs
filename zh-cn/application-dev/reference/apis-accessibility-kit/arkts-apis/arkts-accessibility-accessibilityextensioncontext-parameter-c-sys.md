@@ -2,9 +2,7 @@
 
 无障碍节点元素执行特定操作时，为操作提供具体设置的参数值。不同操作类型需设置不同的参数字段，各操作类型与参数字段的对应关系，详见 [AccessibilityAction](arkts-accessibility-accessibility-accessibilityaction-e-sys.md)（无障碍节点元素可执行的操作）。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export declare class Parameter--><!--Device-unnamed-export declare class Parameter-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -24,8 +22,6 @@ accessibilityFocusScene?: AccessibilityFocusScene
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Parameter-accessibilityFocusScene?: AccessibilityFocusScene--><!--Device-Parameter-accessibilityFocusScene?: AccessibilityFocusScene-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -43,8 +39,6 @@ customAction?: string
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Parameter-customAction?: string--><!--Device-Parameter-customAction?: string-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -64,8 +58,6 @@ injectActionType?: InjectActionType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Parameter-injectActionType?: InjectActionType--><!--Device-Parameter-injectActionType?: InjectActionType-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -80,9 +72,7 @@ offset?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Parameter-offset?: string--><!--Device-Parameter-offset?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -94,13 +84,11 @@ offset?: string
 scrollType?: string
 ```
 
-执行[AccessibilityAction](arkts-accessibility-accessibility-accessibilityaction-e-sys.md).SCROLL_FORWARD或SCROLL_BACKWARD时配置，组件滚动类型。' fullScreen'表示全屏滚动；'halfScreen'表示半屏滚动。
+执行[AccessibilityAction](arkts-accessibility-accessibility-accessibilityaction-e-sys.md).SCROLL_FORWARD或SCROLL_BACKWARD时配置，组件滚动类型。'fullScreen'表示全屏滚动；'halfScreen'表示半屏滚动。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Parameter-scrollType?: string--><!--Device-Parameter-scrollType?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -116,9 +104,7 @@ selectTextBegin?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Parameter-selectTextBegin?: string--><!--Device-Parameter-selectTextBegin?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -134,9 +120,7 @@ selectTextEnd?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Parameter-selectTextEnd?: string--><!--Device-Parameter-selectTextEnd?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -152,9 +136,7 @@ selectTextInForWard?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Parameter-selectTextInForWard?: boolean--><!--Device-Parameter-selectTextInForWard?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -170,9 +152,7 @@ setText?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Parameter-setText?: string--><!--Device-Parameter-setText?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -188,11 +168,18 @@ spanId?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Parameter-spanId?: string--><!--Device-Parameter-spanId?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
 
+**示例**
+
+选中文本输入框中index从0到7的字符时，executeAction(AccessibilityAction.SET_SELECTION, parameter)方法设置的参数如下：
+
+```TypeScript
+import { Parameter } from '@kit.AccessibilityKit';
+
+let parameter : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForWard: true };
+```

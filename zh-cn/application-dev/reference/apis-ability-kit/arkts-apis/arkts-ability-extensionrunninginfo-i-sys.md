@@ -2,9 +2,7 @@
 
 ExtensionRunningInfo模块封装了Extension运行的相关信息，可以通过 [getExtensionRunningInfos接口](arkts-ability-abilitymanager-getextensionrunninginfos-f-sys.md) 获取。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface ExtensionRunningInfo--><!--Device-unnamed-export interface ExtensionRunningInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -22,9 +20,7 @@ clientPackage: Array<String>
 
 **默认值：** All package names under the current process
 
-**起始版本：** 23
-
-<!--Device-ExtensionRunningInfo-clientPackage: Array<String>--><!--Device-ExtensionRunningInfo-clientPackage: Array<String>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -42,9 +38,7 @@ Extension信息。
 
 **默认值：** Indicates the extension of the extension info
 
-**起始版本：** 23
-
-<!--Device-ExtensionRunningInfo-extension: ElementName--><!--Device-ExtensionRunningInfo-extension: ElementName-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -53,18 +47,16 @@ Extension信息。
 ## pid
 
 ```TypeScript
-pid: int
+pid: number
 ```
 
 进程ID。
 
-**类型：** int
+**类型：** number
 
 **默认值：** process id
 
-**起始版本：** 23
-
-<!--Device-ExtensionRunningInfo-pid: int--><!--Device-ExtensionRunningInfo-pid: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -82,9 +74,7 @@ processName: string
 
 **默认值：** the name of the process
 
-**起始版本：** 23
-
-<!--Device-ExtensionRunningInfo-processName: string--><!--Device-ExtensionRunningInfo-processName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -93,18 +83,16 @@ processName: string
 ## startTime
 
 ```TypeScript
-startTime: long
+startTime: number
 ```
 
 Extension被启动时的时间戳。
 
-**类型：** long
+**类型：** number
 
 **默认值：** ability start time
 
-**起始版本：** 23
-
-<!--Device-ExtensionRunningInfo-startTime: long--><!--Device-ExtensionRunningInfo-startTime: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -122,9 +110,7 @@ Extension类型。
 
 **默认值：** Enumerates types of the extension info
 
-**起始版本：** 23
-
-<!--Device-ExtensionRunningInfo-type: bundle.ExtensionAbilityType--><!--Device-ExtensionRunningInfo-type: bundle.ExtensionAbilityType-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -133,20 +119,17 @@ Extension类型。
 ## uid
 
 ```TypeScript
-uid: int
+uid: number
 ```
 
 应用程序的uid。
 
-**类型：** int
+**类型：** number
 
 **默认值：** user id
 
-**起始版本：** 23
-
-<!--Device-ExtensionRunningInfo-uid: int--><!--Device-ExtensionRunningInfo-uid: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-

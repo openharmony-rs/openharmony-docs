@@ -2,11 +2,11 @@
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
-[InputMethodExtensionAbility/apis-ime-kit/js-apis-inputmethod-extension-ability.md)提供了onCreate()和onDestroy()生命周期回调，根据需要重写对应的回调方法。InputMethodExtensionAbility的生命周期如下：
+InputMethodExtensionAbility提供了onCreate()和onDestroy()生命周期回调，根据需要重写对应的回调方法。InputMethodExtensionAbility的生命周期如下：
 
 - **onCreate()**
 
@@ -74,15 +74,21 @@
    ```
 
 
-2. KeyboardController.ets文件。KeyboardController中除创建输入法窗口，设置输入法事件监听，实现文本插入、删除之外，还可以获取[输入法键盘与系统面板的偏移区域/apis-ime-kit/js-apis-inputmethodengine.md#getsystempanelcurrentinsets21)，输入法系统面板在不同设备上存在差异，当设备有系统面板时，输入法软键盘相对系统面板的偏移区域如图所示：
+2. KeyboardController.ets文件。KeyboardController中除创建输入法窗口，设置输入法事件监听，实现文本插入、删除之外，还可以使用Panel对象的getSystemPanelCurrentInsets获取输入法键盘与系统面板的偏移区域，输入法系统面板在不同设备上存在差异，当设备有系统面板时，输入法软键盘相对系统面板的偏移区域如图所示：
 
    ![偏移区域示意图](./figures/系统面板与软键盘偏移区域示意图.png)
 
    <!-- @[input_case_input_KeyboardController358](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
    
    ``` TypeScript
+   
+   // 定义输入法的两个子类型
+   export enum CustomInputMethodSubtype {
+     english = 0,
+     chinese = 1
+   };
+   
    class KeyboardController {
-     private barPosition: number = 0;
      private keyCodes: Array<number> = [];
      private mContext: InputMethodExtensionContext | undefined;
      private panel: inputMethodEngine.Panel | undefined;
@@ -129,7 +135,6 @@
        this.inputHandle.addLog("initWindow-oncall display");
        let dWidth = dis.width;
        let dHeight = dis.height;
-       let navigationBar_height = NAVIGATIONBAR_HEIGHT_DEFAULT;
        let keyHeightRate = KEYBOARD_HEIGHT_RATE_DEFAULT;
        AppStorage.setOrCreate('windowWidth', dis.width);
        AppStorage.setOrCreate('windowHeight', dis.height);
@@ -142,24 +147,18 @@
          AppStorage.setOrCreate('isLandscape', false);
        }
        if (dWidth === DEVICE_PHONE.width && dHeight === DEVICE_PHONE.height) {
-         navigationBar_height = 0;
          keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE;
        } else if (dWidth === DEVICE_PHONE.height && dHeight === DEVICE_PHONE.width) {
-         navigationBar_height = 0;
          keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE_LAND;
        } else if (dWidth === DEVICE_RK.width && dHeight === DEVICE_RK.height) {
-         navigationBar_height = KEYBOARD_HEIGHT_RATE_DEFAULT;
          AppStorage.setOrCreate('isRkDevice', true);
          isRkDevice = true;
        } else if (dWidth === DEVICE_BIG.width && dHeight === DEVICE_BIG.height) {
-         navigationBar_height = 0;
          keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG_LAND;
        } else if (dWidth === DEVICE_BIG.height && dHeight === DEVICE_BIG.width) {
-         navigationBar_height = 0;
          keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG;
        }
        let keyHeight = dHeight * keyHeightRate;
-       this.barPosition = dHeight - keyHeight - navigationBar_height;
        this.inputHandle.addLog(`initWindow-dWidth = ${dWidth};dHeight = ${dHeight};keyboard height = ${keyHeight};;navibar height = navigationBar_height`);
        this.inputHandle.addLog(`initWindow-deviceType = ${deviceInfo.deviceType}`);
        let panelInfo: inputMethodEngine.PanelInfo = {
@@ -178,7 +177,7 @@
            Log.showError(TAG, `Failed to setUiContent: ${err.code} ${err.message}`);
          });
        }).catch((err: BusinessError) => {
-         Log.showError(TAG, `Failed to resize: ${err.code} ${err.message}`);
+         Log.showError(TAG, `Failed to createPanel: ${err.code} ${err.message}`);
        });
      }
    
@@ -268,10 +267,10 @@
      // 设置监听子类型事件，改变输入法应用界面
      inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
        if (inputMethodSubtype.id === 'InputMethodExtAbility') {
-         AppStorage.setOrCreate('subtypeChange', 0);
+         AppStorage.setOrCreate('subtypeChange', CustomInputMethodSubtype.english);
        }
        if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
-         AppStorage.setOrCreate('subtypeChange', 1);
+         AppStorage.setOrCreate('subtypeChange', CustomInputMethodSubtype.chinese);
        }
      });
    
@@ -458,7 +457,12 @@
    
      private unRegisterListener(): void {
        this.inputHandle.addLog('unRegisterListener');
-   
+       try {
+         display.off('change');
+       } catch (err) {
+         let error = err as BusinessError;
+         Log.showError(TAG, `display off change catch error: ${error.code} ${error.message}`);
+       }
        inputMethodAbility.off('inputStop', () => {
          this.inputHandle.addLog('inputStop off');
        });
@@ -841,7 +845,7 @@
    import { deviceInfo } from '@kit.BasicServicesKit';
    import Log from '../../model/Log';
    import { EditView } from '../../components/EditView';
-   import { InputHandler } from '../model/KeyboardController';
+   import { InputHandler, CustomInputMethodSubtype } from '../model/KeyboardController';
    import {
      MenuType,
      SubMenuType,
@@ -868,14 +872,14 @@
      @StorageLink('isRkDevice') isRkDevice: boolean = true;
      @StorageLink('inputStyle') inputStyle: KeyStyle = StyleConfiguration.getInputStyle(this.isLandscape, this.isRkDevice, DEVICE_TYPE);
      private panel: inputMethodEngine.Panel | undefined;
-     @StorageLink('subtypeChange') subtypeChange: number = 0;
+     @StorageLink('subtypeChange') subtypeChange: number = CustomInputMethodSubtype.english;
    
    
      aboutToAppear(): void {
        // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
        inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
          console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
-         if (attr.immersiveMode == 1) {
+         if (attr.immersiveMode == inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE) {
            this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
            console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
          }
@@ -916,7 +920,7 @@
                }
              } else {
                if (this.menuType === MenuType.NORMAL) {
-                 if (this.subtypeChange == 0) {
+                 if (this.subtypeChange == CustomInputMethodSubtype.english) {
                    KeyMenu()
                  } else {
                    NumberMenu()
@@ -951,7 +955,7 @@
    }
    ```
 
-6. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册InputMethodExtensionAbility，type标签需要设置为“inputMethod”，srcEntry标签表示当前InputMethodExtensionAbility组件所对应的代码路径。
+6. 在工程Module对应的module.json5配置文件中注册InputMethodExtensionAbility，type标签需要设置为“inputMethod”，srcEntry标签表示当前InputMethodExtensionAbility组件所对应的代码路径。
 
 
    <!-- @[input_case_entry_module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/module.json5) -->

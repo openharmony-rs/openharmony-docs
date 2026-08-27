@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## setxattrSync
@@ -17,8 +15,6 @@ declare function setxattrSync(path: string, key: string, value: string): void
 设置文件或目录的扩展属性。
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare function setxattrSync(path: string, key: string, value: string): void--><!--Device-unnamed-declare function setxattrSync(path: string, key: string, value: string): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -34,14 +30,30 @@ declare function setxattrSync(path: string, key: string, value: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
-| 13900038 | Value too large for defined data type |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;  2.Incorrect parameter types. |
 | 13900002 | No such file or directory |
+| 13900011 | Out of memory |
 | 13900012 | Permission denied |
-| 13900031 | Function not implemented |
+| 13900020 | Invalid argument |
 | 13900025 | No space left on device |
+| 13900031 | Function not implemented |
+| 13900038 | Value too large for defined data type |
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
-| 13900011 | Out of memory |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let attrKey = "user.comment";
+let attrValue = "Test file.";
+
+try {
+  fileIo.setxattrSync(filePath, attrKey, attrValue);
+  console.info(`Succeeded in setting extended attribute.`);
+} catch (err) {
+  console.error(`Failed to set extended attribute. Code: ${err.code}, message: ${err.message}`);
+}
+```

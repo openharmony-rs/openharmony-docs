@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## p2pCancelConnect
@@ -24,8 +21,6 @@ function p2pCancelConnect(): boolean
 **替代接口：** [p2pCancelConnect](arkts-connectivity-wifimanager-p2pcancelconnect-f.md)
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
-
-<!--Device-wifi-function p2pCancelConnect(): boolean--><!--Device-wifi-function p2pCancelConnect(): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -46,4 +41,3 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
-

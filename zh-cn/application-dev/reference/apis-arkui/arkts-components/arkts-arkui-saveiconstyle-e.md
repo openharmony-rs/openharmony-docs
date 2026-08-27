@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare enum SaveIconStyle--><!--Device-unnamed-declare enum SaveIconStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FULL_FILLED
@@ -21,8 +19,6 @@ FULL_FILLED = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SaveIconStyle-FULL_FILLED = 0--><!--Device-SaveIconStyle-FULL_FILLED = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +36,4 @@ LINES = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SaveIconStyle-LINES = 1--><!--Device-SaveIconStyle-LINES = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

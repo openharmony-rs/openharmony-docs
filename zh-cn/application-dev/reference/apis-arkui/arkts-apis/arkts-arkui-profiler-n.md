@@ -1,10 +1,8 @@
 # Profiler
 
-inspector的性能分析（Profiler）工具。
+inspector的性能分析（Profiler）工具。@namespace Profiler
 
 **起始版本：** 8
-
-<!--Device-unnamed-declare namespace Profiler--><!--Device-unnamed-declare namespace Profiler-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -13,7 +11,6 @@ inspector的性能分析（Profiler）工具。
 ## 导入模块
 
 ```TypeScript
-import { inspector } from '@kit.ArkUI';
 ```
 
 ## 汇总
@@ -26,4 +23,3 @@ import { inspector } from '@kit.ArkUI';
 | [registerVsyncCallback](arkts-arkui-profiler-registervsynccallback-f-sys.md) | 为profiler注册vsync回调。 |
 | [unregisterVsyncCallback](arkts-arkui-profiler-unregistervsynccallback-f-sys.md) | 注销vsync回调。 |
 <!--DelEnd-->
-

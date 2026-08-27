@@ -1,12 +1,11 @@
 # @ohos.multimedia.avMusicTemplate
 
-> **说明：** > > - 本模块仅适用于API version 23及以上版本的Car设备。
+AVMusicTemplate
+
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-unnamed-declare namespace avMusicTemplate--><!--Device-unnamed-declare namespace avMusicTemplate-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -48,34 +47,34 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [Album](arkts-avsession-avmusictemplate-album-i.md) | 专辑的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。 |
-| [Banner](arkts-avsession-avmusictemplate-banner-i.md) | 海报的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。 |
-| [Compilation](arkts-avsession-avmusictemplate-compilation-i.md) | 合集的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。 |
-| [CustomElement](arkts-avsession-avmusictemplate-customelement-i.md) | “我的主页”自定义元素的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。 |
-| [DialogActionInfo](arkts-avsession-avmusictemplate-dialogactioninfo-i.md) | 对话框动作信息的定义。 |
-| [DialogButtonInfo](arkts-avsession-avmusictemplate-dialogbuttoninfo-i.md) | 对话框按钮信息的定义。 |
-| [DialogInfo](arkts-avsession-avmusictemplate-dialoginfo-i.md) | 对话框信息的定义。 |
-| [EpisodeRange](arkts-avsession-avmusictemplate-episoderange-i.md) | 剧集的范围的定义。 |
-| [FavoriteData](arkts-avsession-avmusictemplate-favoritedata-i.md) | 收藏/订阅的定义。 |
-| [MediaElement](arkts-avsession-avmusictemplate-mediaelement-i.md) | 媒体元素Singer/Radio/Banner结构体定义 |
-| [MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md) | 媒体实例的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。 |
-| [MediaTab](arkts-avsession-avmusictemplate-mediatab-i.md) | 媒体标签页的定义。 |
-| [MediaTabContent](arkts-avsession-avmusictemplate-mediatabcontent-i.md) | 媒体标签页内容的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。 |
-| [MemberPurchaseInfo](arkts-avsession-avmusictemplate-memberpurchaseinfo-i.md) | 会员购买信息的定义。 |
-| [OperResult](arkts-avsession-avmusictemplate-operresult-i.md) | 操作结果的定义。 |
-| [PageMediaEntity](arkts-avsession-avmusictemplate-pagemediaentity-i.md) | 标签页媒体的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。 |
-| [PlayInfo](arkts-avsession-avmusictemplate-playinfo-i.md) | 播放信息的定义。 |
-| [QrCodeInfo](arkts-avsession-avmusictemplate-qrcodeinfo-i.md) | 二维码信息的定义。 |
-| [QueryMediaEntityParam](arkts-avsession-avmusictemplate-querymediaentityparam-i.md) | 查询媒体实例参数的定义。 |
-| [Ranking](arkts-avsession-avmusictemplate-ranking-i.md) | 排行榜的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。 |
-| [SearchPlayInfo](arkts-avsession-avmusictemplate-searchplayinfo-i.md) | 搜播信息的定义。 |
-| [SearchPlayMusicInfo](arkts-avsession-avmusictemplate-searchplaymusicinfo-i.md) | 搜播的音频信息的定义。 |
-| [SearchPlayMusicItem](arkts-avsession-avmusictemplate-searchplaymusicitem-i.md) | 搜播的音频项目的定义。 |
-| [SearchPlayVideoInfo](arkts-avsession-avmusictemplate-searchplayvideoinfo-i.md) | 搜播的视频信息的定义。 |
-| [SettingContent](arkts-avsession-avmusictemplate-settingcontent-i.md) | 设置内容的定义（音频模板里有定义设置页面，设置内容用于设置页的填充）。 |
-| [SettingItem](arkts-avsession-avmusictemplate-settingitem-i.md) | 设置项的定义。 |
-| [Single](arkts-avsession-avmusictemplate-single-i.md) | 单曲的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。 |
-| [UserInfo](arkts-avsession-avmusictemplate-userinfo-i.md) | 用户信息的定义。 |
+| [Album](arkts-avsession-avmusictemplate-album-i.md) | 专辑的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。@extends MediaEntity @interface Album |
+| [Banner](arkts-avsession-avmusictemplate-banner-i.md) | 海报的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。@extends MediaEntity @interface Banner |
+| [Compilation](arkts-avsession-avmusictemplate-compilation-i.md) | 合集的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。@extends OperResult @interface Compilation |
+| [CustomElement](arkts-avsession-avmusictemplate-customelement-i.md) | “我的主页”自定义元素的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。@extends OperResult @interface CustomElement |
+| [DialogActionInfo](arkts-avsession-avmusictemplate-dialogactioninfo-i.md) | 对话框动作信息的定义。@interface DialogActionInfo |
+| [DialogButtonInfo](arkts-avsession-avmusictemplate-dialogbuttoninfo-i.md) | 对话框按钮信息的定义。@interface DialogButtonInfo |
+| [DialogInfo](arkts-avsession-avmusictemplate-dialoginfo-i.md) | 对话框信息的定义。@interface DialogInfo |
+| [EpisodeRange](arkts-avsession-avmusictemplate-episoderange-i.md) | 剧集的范围的定义。@interface EpisodeRange |
+| [FavoriteData](arkts-avsession-avmusictemplate-favoritedata-i.md) | 收藏/订阅的定义。@interface FavoriteData |
+| [MediaElement](arkts-avsession-avmusictemplate-mediaelement-i.md) | 媒体元素Singer/Radio/Banner结构体定义@extends MediaEntity @interface MediaElement |
+| [MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md) | 媒体实例的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。@interface MediaEntity |
+| [MediaTab](arkts-avsession-avmusictemplate-mediatab-i.md) | 媒体标签页的定义。@interface MediaTab |
+| [MediaTabContent](arkts-avsession-avmusictemplate-mediatabcontent-i.md) | 媒体标签页内容的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。@extends OperResult @interface MediaTabContent |
+| [MemberPurchaseInfo](arkts-avsession-avmusictemplate-memberpurchaseinfo-i.md) | 会员购买信息的定义。@interface MediaElement |
+| [OperResult](arkts-avsession-avmusictemplate-operresult-i.md) | 操作结果的定义。@interface OperResult |
+| [PageMediaEntity](arkts-avsession-avmusictemplate-pagemediaentity-i.md) | 标签页媒体的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。@extends OperResult @interface Compilation |
+| [PlayInfo](arkts-avsession-avmusictemplate-playinfo-i.md) | 播放信息的定义。@interface MediaElement |
+| [QrCodeInfo](arkts-avsession-avmusictemplate-qrcodeinfo-i.md) | 二维码信息的定义。@interface QrCodeInfo |
+| [QueryMediaEntityParam](arkts-avsession-avmusictemplate-querymediaentityparam-i.md) | 查询媒体实例参数的定义。@interface QueryMediaEntityParam |
+| [Ranking](arkts-avsession-avmusictemplate-ranking-i.md) | 排行榜的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。@extends MediaEntity @interface Ranking |
+| [SearchPlayInfo](arkts-avsession-avmusictemplate-searchplayinfo-i.md) | 搜播信息的定义。@interface SearchPlayInfo |
+| [SearchPlayMusicInfo](arkts-avsession-avmusictemplate-searchplaymusicinfo-i.md) | 搜播的音频信息的定义。@interface SearchPlayMusicInfo |
+| [SearchPlayMusicItem](arkts-avsession-avmusictemplate-searchplaymusicitem-i.md) | 搜播的音频项目的定义。@interface SearchPlayMusicItem |
+| [SearchPlayVideoInfo](arkts-avsession-avmusictemplate-searchplayvideoinfo-i.md) | 搜播的视频信息的定义。@interface SearchPlayVideoInfo |
+| [SettingContent](arkts-avsession-avmusictemplate-settingcontent-i.md) | 设置内容的定义（音频模板里有定义设置页面，设置内容用于设置页的填充）。@interface SettingContent |
+| [SettingItem](arkts-avsession-avmusictemplate-settingitem-i.md) | 设置项的定义。@interface SettingItem |
+| [Single](arkts-avsession-avmusictemplate-single-i.md) | 单曲的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。@extends MediaEntity @interface Single |
+| [UserInfo](arkts-avsession-avmusictemplate-userinfo-i.md) | 用户信息的定义。@interface MediaElement |
 
 <!--Del-->
 ### 接口（系统接口）
@@ -89,17 +88,17 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [AVMusicTemplateErrorCode](arkts-avsession-avmusictemplate-avmusictemplateerrorcode-e.md) | 表示错误码类型的枚举。 |
-| [AVMusicTemplateType](arkts-avsession-avmusictemplate-avmusictemplatetype-e.md) | 表示音频模板类型的枚举。 |
-| [ButtonType](arkts-avsession-avmusictemplate-buttontype-e.md) | 表示按钮类型的枚举。 |
-| [DialogType](arkts-avsession-avmusictemplate-dialogtype-e.md) | 表示对话框类型的枚举。 |
-| [DownloadStatus](arkts-avsession-avmusictemplate-downloadstatus-e.md) | 表示下载状态类型的枚举。 |
-| [EntityType](arkts-avsession-avmusictemplate-entitytype-e.md) | 表示媒体资源类型的枚举。 |
-| [MemberPurchaseType](arkts-avsession-avmusictemplate-memberpurchasetype-e.md) | 表示会员购买类型的枚举。 |
-| [PlaybackState](arkts-avsession-avmusictemplate-playbackstate-e.md) | 表示媒体资源的播放状态的枚举。 |
-| [SearchPlayInfoType](arkts-avsession-avmusictemplate-searchplayinfotype-e.md) | 表示搜播信息类型的枚举。 |
-| [SettingType](arkts-avsession-avmusictemplate-settingtype-e.md) | 表示设置类型的枚举。 |
-| [Sort](arkts-avsession-avmusictemplate-sort-e.md) | 表示查询到的列表数据排序类型的枚举。 |
+| [AVMusicTemplateErrorCode](arkts-avsession-avmusictemplate-avmusictemplateerrorcode-e.md) | 表示错误码类型的枚举。@enum { number } |
+| [AVMusicTemplateType](arkts-avsession-avmusictemplate-avmusictemplatetype-e.md) | 表示音频模板类型的枚举。@enum { string } |
+| [ButtonType](arkts-avsession-avmusictemplate-buttontype-e.md) | 表示按钮类型的枚举。@enum { number } |
+| [DialogType](arkts-avsession-avmusictemplate-dialogtype-e.md) | 表示对话框类型的枚举。@enum { number } |
+| [DownloadStatus](arkts-avsession-avmusictemplate-downloadstatus-e.md) | 表示下载状态类型的枚举。@enum { number } |
+| [EntityType](arkts-avsession-avmusictemplate-entitytype-e.md) | 表示媒体资源类型的枚举。@enum { number } |
+| [MemberPurchaseType](arkts-avsession-avmusictemplate-memberpurchasetype-e.md) | 表示会员购买类型的枚举。@enum { string } |
+| [PlaybackState](arkts-avsession-avmusictemplate-playbackstate-e.md) | 表示媒体资源的播放状态的枚举。@enum { number } |
+| [SearchPlayInfoType](arkts-avsession-avmusictemplate-searchplayinfotype-e.md) | 表示搜播信息类型的枚举。@enum { string } |
+| [SettingType](arkts-avsession-avmusictemplate-settingtype-e.md) | 表示设置类型的枚举。@enum { number } |
+| [Sort](arkts-avsession-avmusictemplate-sort-e.md) | 表示查询到的列表数据排序类型的枚举。@enum { number } |
 
 ### 类型
 
@@ -136,10 +135,9 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 | [QueryRecommendMediaEntityListEvent](arkts-avsession-avmusictemplate-queryrecommendmediaentitylistevent-t.md) | 推荐媒体实体列表查询事件。使用Promise异步回调。 |
 | [QuerySearchHistoryEvent](arkts-avsession-avmusictemplate-querysearchhistoryevent-t.md) | 搜索历史查询事件。使用Promise异步回调。 |
 | [ReportCustomElementsChangeEvent](arkts-avsession-avmusictemplate-reportcustomelementschangeevent-t.md) | 上报自定义元素变更信息的回调事件 |
-| [ReportDialogCommandEvent](arkts-avsession-avmusictemplate-reportdialogcommandevent-t.md) | 对话框命令上报事件。 |
+| [ReportDialogCommandEvent](arkts-avsession-avmusictemplate-reportdialogcommandevent-t.md) | 对话框命令上报事件。@对话框控制类型。def { function } ReportDialogCommandEvent |
 | [ReportExecuteAbilityEvent](arkts-avsession-avmusictemplate-reportexecuteabilityevent-t.md) | 通知音频模板控制方拉起指定媒体应用界面事件。 |
 | [ReportExecuteActionEvent](arkts-avsession-avmusictemplate-reportexecuteactionevent-t.md) | 执行动作上报事件。 |
 | [ReportTabContentEvent](arkts-avsession-avmusictemplate-reporttabcontentevent-t.md) | 标签页内容上报事件。 |
 | [RequestDialogInfoEvent](arkts-avsession-avmusictemplate-requestdialoginfoevent-t.md) | 对话框信息请求事件。使用Promise异步回调。 |
 | [SettingsChangeEvent](arkts-avsession-avmusictemplate-settingschangeevent-t.md) | 设置变更事件类型。使用Promise异步回调。 |
-

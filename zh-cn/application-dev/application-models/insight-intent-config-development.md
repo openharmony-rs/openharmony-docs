@@ -10,21 +10,21 @@
 ## 简介
 从API version 11及以上版本，支持通过配置文件开发意图。主要包含两个环节：
 
-1. 通过[insight_intent.json配置文件](#insight_intentjson配置文件说明)定义意图，声明意图执行器的代码路径、绑定的Ability组件等意图信息。
+1. 通过insight_intent.json配置文件定义意图，声明意图执行器的代码路径、绑定的Ability组件等意图信息。
 
-2. 通过[InsightIntentExecutor/apis-ability-kit/js-apis-app-ability-insightIntentExecutor.md#insightintentexecutor)实现意图执行逻辑。
+2. 通过InsightIntentExecutor实现意图执行逻辑。
 
 不同Ability组件类型需要配置的字段与需要实现的意图执行器，如下所示：
 
 | 组件类型 | 意图配置 | 意图执行器 |
 | --- | --- | --- |
-| UIAbility | 需要在`insight_intent.json`文件中配置"uiAbility"字段。 | 当"executeMode"字段为"foreground"时，实现`onExecuteInUIAbilityForegroundMode`，通过startAbility启动意图绑定的UIAbility组件。<br>当"executeMode"字段为"background"时，实现`onExecuteInUIAbilityBackgroundMode`，通过[Call调用/apis-ability-kit/js-apis-app-ability-uiAbility.md#后台通信能力)启动意图绑定的UIAbility组件。 |
+| UIAbility | 需要在`insight_intent.json`文件中配置"uiAbility"字段。 | 当"executeMode"字段为"foreground"时，实现`onExecuteInUIAbilityForegroundMode`，通过startAbility启动意图绑定的UIAbility组件。<br>当"executeMode"字段为"background"时，实现`onExecuteInUIAbilityBackgroundMode`，通过Call调用启动意图绑定的UIAbility组件。 |
 | UIExtensionAbility | 需要在`insight_intent.json`文件中配置"uiExtension"字段。 | 实现`onExecuteInUIExtensionAbility`。 |
 |<!--DelRow--> ServiceExtensionAbility | 需要在`insight_intent.json`文件中配置"serviceExtension"字段。 | 实现 `onExecuteInServiceExtensionAbility`。 |
 | 卡片(FormExtensionAbility) | 需要在`insight_intent.json`文件中配置"form"字段。 | 无需单独执行器。 |
 
 ## 接口说明
-意图执行器实现需要继承[InsightIntentExecutor/apis-ability-kit/js-apis-app-ability-insightIntentExecutor.md#insightintentexecutor)，实现[onExecuteInUIAbilityForegroundMode/apis-ability-kit/js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiabilityforegroundmode)等方法。开发者响应意图执行通过onExecuteInUIAbilityForegroundMode等接口实现，在不同的意图执行模式下，接口的触发时机也不同。针对不同意图执行模式的意图回调执行时机见各个回调的API说明。
+意图执行器实现需要继承InsightIntentExecutor，实现onExecuteInUIAbilityForegroundMode等方法。开发者响应意图执行通过onExecuteInUIAbilityForegroundMode等接口实现，在不同的意图执行模式下，接口的触发时机也不同。针对不同意图执行模式的意图回调执行时机见各个回调的API说明。
 
 ## 开发步骤
 ### 意图绑定UIAbility组件
@@ -102,7 +102,7 @@
 
 ### 意图绑定UIExtensionAbility组件
 
-参考[意图绑定UIAbility组件](#意图绑定uiability组件)完成工程创建。
+参考意图绑定UIAbility组件完成工程创建。
 
 意图配置示例：
 
@@ -146,7 +146,7 @@ export default class ExtensionExecutor extends InsightIntentExecutor {
 <!--Del-->
 ### 意图绑定ServiceExtensionAbility组件
 
-参考[意图绑定UIAbility组件](#意图绑定uiability组件)完成工程创建。
+参考意图绑定UIAbility组件完成工程创建。
 
 意图配置示例：
 
@@ -185,12 +185,12 @@ export default class DownloadExecutor extends InsightIntentExecutor {
 }
 ```
 
-系统入口通过[startServiceExtensionAbility/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md#serviceextensioncontextstartserviceextensionability)方式执行该意图。
+系统入口通过startServiceExtensionAbility方式执行该意图。
 <!--DelEnd-->
 
 ### 意图绑定卡片
 
-参考[意图绑定UIAbility组件](#意图绑定uiability组件)完成工程创建。
+参考意图绑定UIAbility组件完成工程创建。
 
 意图配置示例：
 
@@ -222,10 +222,10 @@ export default class DownloadExecutor extends InsightIntentExecutor {
 | domain | 表示意图垂域名称，用于将意图按具体领域分类（例如：视频、音乐、游戏）。<!--RP1--><!--RP1End--> | 字符串 | 否 |
 | intentVersion | 表示意图版本号。当意图能力演进时，可通过版本号进行区分和管理。支持用点分隔开的三段数据序列，例如"1.0.1"。 | 字符串 | 否 |
 | srcEntry | 表示意图执行文件相对路径。取值为长度不超过127字节的字符串。 | 字符串 | 否 |
-| uiAbility | 表示意图绑定的UIAbility组件信息。包含"ability"字段和"executeMode"字段。<br>- ability：必选字段，表示UIAbility组件名称，取值与module.json5配置文件[abilities标签](../quick-start/module-configuration-file.md#abilities标签)的"name"字段保持一致。<br>-  executeMode：必选字段，表示执行模式，取值范围是"foreground"和"background"。<br> &nbsp; &nbsp; - 取值为"foreground"，表示支持在UIAbility组件前台启动时执行意图逻辑。<br>&nbsp; &nbsp; -  取值为"background"，表示支持在UIAbility组件后台启动时执行意图逻辑。  | 对象 | 是 |
-| <!--DelRow--> serviceExtension | 表示意图绑定的ServiceExtensionAbility组件信息。仅包含"ability"必选字段，表示ServiceExtensionAbility组件名称，取值与module.json5配置文件[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)的"name"字段保持一致。 | 对象 | 是 |
-| uiExtension | 表示意图绑定的UIExtensionAbility组件信息。仅包含"ability"必选字段，表示UIExtensionAbility组件名称，取值与module.json5配置文件[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)的"name"字段保持一致。 | 对象 | 是 |
-| form | 表示意图绑定的卡片信息。包含"ability"字段和"formName"字段。<br>- ability：必选字段，表示FormExtensionAbility组件名称，取值与module.json5配置文件[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签) 的"name"字段保持一致。<br>- formName：必选字段，表示卡片名称，取值与[卡片配置](../form/arkts-ui-widget-configuration.md#卡片配置)的"name"字段保持一致。 | 对象 | 是 |
+| uiAbility | 表示意图绑定的UIAbility组件信息。包含"ability"字段和"executeMode"字段。<br>- ability：必选字段，表示UIAbility组件名称，取值与module.json5配置文件abilities标签的"name"字段保持一致。<br>-  executeMode：必选字段，表示执行模式，取值范围是"foreground"和"background"。<br> &nbsp; &nbsp; - 取值为"foreground"，表示支持在UIAbility组件前台启动时执行意图逻辑。<br>&nbsp; &nbsp; -  取值为"background"，表示支持在UIAbility组件后台启动时执行意图逻辑。  | 对象 | 是 |
+| <!--DelRow--> serviceExtension | 表示意图绑定的ServiceExtensionAbility组件信息。仅包含"ability"必选字段，表示ServiceExtensionAbility组件名称，取值与module.json5配置文件extensionAbilities标签的"name"字段保持一致。 | 对象 | 是 |
+| uiExtension | 表示意图绑定的UIExtensionAbility组件信息。仅包含"ability"必选字段，表示UIExtensionAbility组件名称，取值与module.json5配置文件extensionAbilities标签的"name"字段保持一致。 | 对象 | 是 |
+| form | 表示意图绑定的卡片信息。包含"ability"字段和"formName"字段。<br>- ability：必选字段，表示FormExtensionAbility组件名称，取值与module.json5配置文件extensionAbilities标签 的"name"字段保持一致。<br>- formName：必选字段，表示卡片名称，取值与卡片配置的"name"字段保持一致。 | 对象 | 是 |
 | displayName | 表示意图显示名称。 | 字符串 | 是 |
 | displayDescription | 表示意图显示描述。 | 字符串 | 是 |
 | icon | 表示意图图标。支持网络资源和本地资源。 | 字符串 | 是 |

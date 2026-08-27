@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-interface ParticleConfigs--><!--Device-unnamed-interface ParticleConfigs-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ParticleConfigs-[ParticleType.IMAGE]: ImageParticleParameters--><!--Device-ParticleConfigs-[ParticleType.IMAGE]: ImageParticleParameters-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## [ParticleType.POINT]
@@ -49,7 +45,4 @@
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ParticleConfigs-[ParticleType.POINT]: PointParticleParameters--><!--Device-ParticleConfigs-[ParticleType.POINT]: PointParticleParameters-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

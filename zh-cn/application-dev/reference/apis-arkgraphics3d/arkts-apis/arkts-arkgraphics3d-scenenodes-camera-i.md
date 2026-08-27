@@ -1,12 +1,10 @@
 # Camera
 
-相机类型，Camera继承自Node。
+相机类型，Camera继承自Node。@extends Node @interface Camera
 
 **继承/实现关系：** Camera extends [Node](arkts-arkgraphics3d-scenenodes-node-i.md)
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface Camera--><!--Device-unnamed-export interface Camera-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -19,8 +17,6 @@ getProjectionMatrix(): Mat4x4
 获取相机的投影矩阵。
 
 **起始版本：** 23
-
-<!--Device-Camera-getProjectionMatrix(): Mat4x4--><!--Device-Camera-getProjectionMatrix(): Mat4x4-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -63,8 +59,6 @@ getViewMatrix(): Mat4x4
 
 **起始版本：** 23
 
-<!--Device-Camera-getViewMatrix(): Mat4x4--><!--Device-Camera-getViewMatrix(): Mat4x4-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **返回值：**
@@ -104,9 +98,7 @@ raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
 
 从屏幕指定位置发射射线，检测并返回所有命中的3D物体信息。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-Camera-raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>--><!--Device-Camera-raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -247,9 +239,7 @@ clearColor: Color | null
 
 **类型：** [Color](arkts-arkgraphics3d-scenetypes-color-i.md) \| null
 
-**起始版本：** 23
-
-<!--Device-Camera-clearColor: Color | null--><!--Device-Camera-clearColor: Color | null-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -263,9 +253,7 @@ readonly effects: Container<Effect>
 
 **类型：** [Container](arkts-arkgraphics3d-scenenodes-container-i.md)&lt;[Effect](arkts-arkgraphics3d-sceneresources-effect-i.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-Camera-readonly effects: Container<Effect>--><!--Device-Camera-readonly effects: Container<Effect>-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -279,41 +267,35 @@ enabled: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Camera-enabled: boolean--><!--Device-Camera-enabled: boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## farPlane
 
 ```TypeScript
-farPlane: double
+farPlane: number
 ```
 
 远平面，单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于nearPlane。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Camera-farPlane: double--><!--Device-Camera-farPlane: double-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## fov
 
 ```TypeScript
-fov: double
+fov: number
 ```
 
 视场，单位为弧度（rad），取值范围为(0, π)。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Camera-fov: double--><!--Device-Camera-fov: double-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -329,25 +311,21 @@ msaa?: boolean
 
 **默认值：** false
 
-**起始版本：** 23
-
-<!--Device-Camera-msaa?: boolean--><!--Device-Camera-msaa?: boolean-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## nearPlane
 
 ```TypeScript
-nearPlane: double
+nearPlane: number
 ```
 
 近平面，单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Camera-nearPlane: double--><!--Device-Camera-nearPlane: double-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -361,9 +339,7 @@ postProcess: PostProcessSettings | null
 
 **类型：** [PostProcessSettings](arkts-arkgraphics3d-scenepostprocesssettings-postprocesssettings-i.md) \| null
 
-**起始版本：** 23
-
-<!--Device-Camera-postProcess: PostProcessSettings | null--><!--Device-Camera-postProcess: PostProcessSettings | null-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -379,9 +355,6 @@ renderingPipeline?: RenderingPipelineType
 
 **默认值：** RenderingPipelineType.FORWARD_LIGHTWEIGHT
 
-**起始版本：** 23
-
-<!--Device-Camera-renderingPipeline?: RenderingPipelineType--><!--Device-Camera-renderingPipeline?: RenderingPipelineType-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

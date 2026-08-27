@@ -18,15 +18,13 @@ function getAlternateIcons(): Promise<Array<AlternateIconInfo>>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-bundleManager-function getAlternateIcons(): Promise<Array<AlternateIconInfo>>--><!--Device-bundleManager-function getAlternateIcons(): Promise<Array<AlternateIconInfo>>-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;AlternateIconInfo&gt;&gt; | Promise对象，返回当前应用的备用图标信息。 |
+| Promise & lt;Array & lt;AlternateIconInfo & gt; & gt; | Promise对象，返回当前应用的备用图标信息。 |
 
 **错误码：**
 
@@ -52,4 +50,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getAlternateIcons failed. Cause: %{public}s', message);
 }
 ```
-

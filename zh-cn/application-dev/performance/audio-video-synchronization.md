@@ -9,7 +9,7 @@
 
 ## 概述
 
-精确的音视频同步是媒体播放的关键性能指标之一。通常来说，录音设备上同时录制的音频和视频在播放设备（例如手机，电视，媒体播放器）上播放的时候也需要做到同步，播放时的音视频不同步现象会严重影响用户体验。本文旨在指导第三方视频播放应用正确获取并使用音频相关信息来保证播放时的音视频同步。    
+精确的音视频同步是媒体播放的关键性能指标之一。通常来说，录音设备上同时录制的音频和视频在播放设备（例如手机、电视、媒体播放器）上播放的时候也需要做到同步，播放时的音视频不同步现象会严重影响用户体验。本文旨在指导第三方视频播放应用正确获取并使用音频相关信息来保证播放时的音视频同步。    
 > **说明：**
 >- 如果开发者使用自研播放器引擎而非AVPlayer，也可以参考该解决方案思路实现优化。    
 
@@ -53,15 +53,19 @@
 | 方案名称     | 优点                              | 缺点                      |
 | ------------ | :----------------------------- | ---------------------------- |
 | 连续播放音频帧 | 1. 用户肉眼的敏感度较弱，不易察觉视频微小的调整。 <br>      2. 视频刷新时间的调整相对便捷。                                               | 如果视频帧率不稳定或渲染延迟大，可能导致视频卡顿或跳帧。 |
-| 使用系统时间作为参考 | 可以最大限度的保证音频和视频都不发生跳帧行为。                                                   | 1. 需要额外依赖系统时钟，增加了系统复杂性和维护成本。<br>2. 系统时钟的准确性对同步效果影响较大，如果系统时钟不准确，可能导致同步效果大打折扣。                      |
+| 使用系统时间作为参考 | 可以最大限度地保证音频和视频都不发生跳帧行为。                                                   | 1. 需要额外依赖系统时钟，增加了系统复杂性和维护成本。<br>2. 系统时钟的准确性对同步效果影响较大，如果系统时钟不准确，可能导致同步效果大打折扣。                      |
 | 使用视频播放作为参考 | 音频可根据视频帧进行调整，减少音频跳帧的情况。                                                   | 1. 音频播放可能会出现等待或加速的情况，相较于视频会对用户的影响更为严重和明显。<br>2. 如果视频帧率不稳定，可能导致音频同步困难。                      |
 
 第一个方案是唯一一个具有连续音频数据流的选项，其没有对音频帧的显示时间、播放速度或持续时间进行任何调整。这些参数的任何调整都很容易被人耳注意到，并导致音频干扰故障。处理这些故障需要对音频重新采样，然而重新采样会导致音调的改变。    
+
 因此，一般的多媒体应用多使用音频播放位置作为主时间参考。以下章节主要以此解决方案进行说明（其他两个选项不在本文档的范围内）。  
 
-### 连续播放音帧方案示意图    
+### 连续播放音频帧方案示意图    
+
 <img src="./figures/audio-video.png"></img>  
-音频和视频的管道必须同时以相同的时间戳呈现每帧数据。音频播放位置用作主时间参考，而视频管道只输出与最新渲染音频帧匹配的视频帧。对于所有可能的实现，精确计算最后一次呈现的音频时间戳是至关重要的。[OH_AudioRenderer_GetTimestamp()/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_gettimestamp)视频管道，使视频帧与音频帧匹配。   
+
+音频和视频的管道必须同时以相同的时间戳呈现每帧数据。音频播放位置用作主时间参考，而视频管道只输出与最新渲染音频帧匹配的视频帧。对于所有可能的实现，精确计算最后一次呈现的音频时间戳是至关重要的。OH_AudioRenderer_GetTimestamp()视频管道，使视频帧与音频帧匹配。
+
 基于以上示意图，具体来说，在监听到视频帧的时候，首先去获取当前音频渲染位置，在获取成功的情况下计算该视频帧PTS与当前音频渲染位置的延迟时间，对延迟时间进行如下判断确定送显策略。  
 - 视频帧相较于音频渲染位置过早时，视频帧则等待一段时间再送显。
 - 延迟时间在可接受的延迟范围内该视频帧立即送显。
@@ -72,6 +76,7 @@
 
 ### 场景描述
 综合上述三种方案的优缺点对比，此处采用主流的连续播放音频帧方案。使用音频播放位置作为主时间参考，并将视频播放位置与其匹配，使音画同步指标达到用户无法察觉的[-80ms,25ms]范围。    
+
 该解决方案使用：    
 - 视频同步到音频（主流方案）。
 - 获取音频渲染进度，动态调整视频渲染进度。      
@@ -80,7 +85,7 @@
 
 ### 开发步骤
 
-1. 收到视频帧的时候，通过调用[OH_AudioRenderer_GetTimestamp()/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_gettimestamp)接口获取音频渲染位置等信息。
+1. 收到视频帧的时候，通过调用OH_AudioRenderer_GetTimestamp()接口获取音频渲染位置等信息。
 
     ```c++
     // 获取音频渲染位置
@@ -92,18 +97,18 @@
     ```
 
     > **说明：**
-    >- [OH_AudioRenderer_Start()/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_start)接口执行后到真正写入硬件有一定延迟，因此该接口在调用[OH_AudioRenderer_Start()/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_start)接口之后过一会才会拿到有效值，期间音频未发声时建议画面帧先按照正常速度播放，后续再逐步追赶音频位置从而提升用户看到画面的起播时延。 
-    >- 当framePosition和timestamp以稳定的速度前进后，建议调用[OH_AudioRenderer_GetTimestamp()/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_gettimestamp)接口的频率不要太频繁。推荐200ms一次，可以每分钟一次，最好不要低于200ms一次。频繁调用可能会带来功耗问题，因此在能保证音画同步效果的情况下，不需要频繁的查询时间戳。 
-    >- [OH_AudioRenderer_Flush()/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_flush)接口执行后，framePosition返回值会重新（从0）开始计算。  
-    >- [OH_AudioRenderer_GetFramesWritten()/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getframeswritten) 接口在Flush时候不会清空，该接口和[OH_AudioRenderer_GetTimestamp()/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_gettimestamp)接口并不建议配合使用。 
-    >- 音频设备切换过程中[OH_AudioRenderer_GetTimestamp()/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_gettimestamp)接口返回的framePosition和timestamp保证不会倒退，但由于新设备写入有时延，会出现短暂时间内音频进度无增长，建议画面帧保持流畅播放不要产生卡顿。  
-    >- [OH_AudioRenderer_GetTimestamp()/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_gettimestamp)接口获取的是实际写到硬件的采样帧数，不受倍速影响。对AudioRender设置了倍速的场景下，播放进度计算需要特殊处理，系统保证应用设置完倍速接口后，新写入AudioRender的采样点才会做倍速处理。
+    >- OH_AudioRenderer_Start()接口执行后到真正写入硬件有一定延迟，因此该接口在调用OH_AudioRenderer_Start()接口之后过一会才会拿到有效值，期间音频未发声时建议画面帧先按照正常速度播放，后续再逐步追赶音频位置从而提升用户看到画面的起播时延。 
+    >- 当framePosition和timestamp以稳定的速度前进后，建议调用OH_AudioRenderer_GetTimestamp()接口的频率不要太频繁。推荐200ms一次，可以每分钟一次，最好不要低于200ms一次。频繁调用可能会带来功耗问题，因此在能保证音画同步效果的情况下，不需要频繁的查询时间戳。 
+    >- OH_AudioRenderer_Flush()接口执行后，framePosition返回值会重新（从0）开始计算。  
+    >- OH_AudioRenderer_GetFramesWritten() 接口在Flush时候不会清空，该接口和OH_AudioRenderer_GetTimestamp()接口并不建议配合使用。 
+    >- 音频设备切换过程中OH_AudioRenderer_GetTimestamp()接口返回的framePosition和timestamp保证不会倒退，但由于新设备写入有时延，会出现短暂时间内音频进度无增长，建议画面帧保持流畅播放不要产生卡顿。  
+    >- OH_AudioRenderer_GetTimestamp()接口获取的是实际写到硬件的采样帧数，不受倍速影响。对AudioRender设置了倍速的场景下，播放进度计算需要特殊处理，系统保证应用设置完倍速接口后，新写入AudioRender的采样点才会做倍速处理。
 
 2. 音频启动前的送显策略。  
 
    音频未启动前，timestamp和framePosition返回结果为0。
    - API version 23前：暂不同步，视频帧直接送显，避免出现卡顿等问题。
-   - API version 23及以后：起播前可通过[OH_AudioRenderer_GetLatency()/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getlatency)预估首帧时延，在拿到有效timestamp和framePosition前可按该时延节奏送显。
+   - API version 23及以后：起播前可通过OH_AudioRenderer_GetLatency()预估首帧时延，在拿到有效timestamp和framePosition前可按该时延节奏送显。
    ```c++
    // API version 23前：如果getTimeStamp方法报错或尚未返回有效值，直接按帧间隔送显。
    if (ret != AUDIOSTREAM_SUCCESS || (timestamp == 0) || (framePosition == 0)) {

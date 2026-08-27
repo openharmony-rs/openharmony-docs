@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-unnamed-declare namespace process--><!--Device-unnamed-declare namespace process-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
@@ -21,7 +19,7 @@ import { process } from '@kit.ArkTS';
 | 名称 | 说明 |
 | --- | --- |
 | [abort](arkts-arkts-process-abort-f.md) | 该方法会导致进程立即退出并生成一个核心文件，谨慎使用。 |
-| [exit](arkts-arkts-process-exit-f.md) | 终止程序。 请谨慎使用此接口。调用此接口后应用将退出。如果输入参数非0，可能会导致数据丢失或出现未定义的运行异常。 |
+| [exit](arkts-arkts-process-exit-f.md) | 终止程序。请谨慎使用此接口。调用此接口后应用将退出。如果输入参数非0，可能会导致数据丢失或出现未定义的运行异常。 |
 | [getEnvironmentVar](arkts-arkts-process-getenvironmentvar-f.md) | 获取环境变量名对应的值。如果环境变量不存在，返回undefined。 |
 | [getPastCpuTime](arkts-arkts-process-getpastcputime-f.md) | 获取进程启动到当前时间的 CPU 时间（以毫秒为单位）。 |
 | [getStartRealtime](arkts-arkts-process-getstartrealtime-f.md) | 获取系统启动到进程启动的实时时间（以毫秒为单位，不包含系统休眠时间）。 |
@@ -41,8 +39,8 @@ import { process } from '@kit.ArkTS';
 | --- | --- |
 | [chdir](arkts-arkts-process-chdir-f-sys.md) | 修改当前目录。 |
 | [cwd](arkts-arkts-process-cwd-f-sys.md) | 返回当前工作目录。 |
-| [off_string](arkts-arkts-process-offstring-f-sys.md#off_string) | 移除已注册的事件。 |
-| [on_string](arkts-arkts-process-onstring-f-sys.md#on_string) | 注册事件。 |
+| [off](arkts-arkts-process-off-f-sys.md) | 移除已注册的事件。 |
+| [on](arkts-arkts-process-on-f-sys.md) | 注册事件。 |
 | [runCmd](arkts-arkts-process-runcmd-f-sys.md) | 返回一个子进程对象，并 spawn 一个新的 ChildProcess 来运行命令。 |
 <!--DelEnd-->
 
@@ -50,7 +48,7 @@ import { process } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
-| [ProcessManager](arkts-arkts-process-processmanager-c.md) | 提供进程管理相关接口，包括进程 UID 判断、用户信息查询、线程优先级获取、环境变量获取、进程退出和信号发送等功能。 通过 `new process.ProcessManager()` 构造 ProcessManager 对象。 |
+| [ProcessManager](arkts-arkts-process-processmanager-c.md) | 提供进程管理相关接口，包括进程 UID 判断、用户信息查询、线程优先级获取、环境变量获取、进程退出和信号发送等功能。通过 `new process.ProcessManager()` 构造 ProcessManager 对象。 |
 
 <!--Del-->
 ### 接口（系统接口）
@@ -86,4 +84,3 @@ import { process } from '@kit.ArkTS';
 | [groups](arkts-arkts-process-con-sys.md#groups) | 返回包含补充组 ID 的数组。 |
 | [ppid](arkts-arkts-process-con-sys.md#ppid) | 返回 ppid 表示当前子进程的 pid。 |
 <!--DelEnd-->
-

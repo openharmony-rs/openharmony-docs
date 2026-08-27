@@ -12,9 +12,6 @@ LoadingProgress类型的FrameNode节点类型。不允许添加子组件。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-type LoadingProgress = TypedFrameNode<LoadingProgressInterface, LoadingProgressAttribute>--><!--Device-typeNode-type LoadingProgress = TypedFrameNode<LoadingProgressInterface, LoadingProgressAttribute>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** TypedFrameNode<LoadingProgressInterface, LoadingProgressAttribute>
-
+**属性类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;LoadingProgressInterface, [LoadingProgressAttribute](../arkts-components/arkts-arkui-loadingprogress-attribute.md)&gt;

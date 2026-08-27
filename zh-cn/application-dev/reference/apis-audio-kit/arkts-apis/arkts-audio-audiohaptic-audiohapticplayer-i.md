@@ -2,9 +2,7 @@
 
 音振播放器，提供音振协同播放功能。在调用AudioHapticPlayer的接口前，需要先通过 [createPlayer](arkts-audio-audiohaptic-audiohapticmanager-i.md#createplayer)创建 实例。
 
-**起始版本：** 23
-
-<!--Device-audioHaptic-interface AudioHapticPlayer--><!--Device-audioHaptic-interface AudioHapticPlayer-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -22,9 +20,7 @@ isMuted(type: AudioHapticType): boolean
 
 查询该音振类型是否被静音。
 
-**起始版本：** 23
-
-<!--Device-AudioHapticPlayer-isMuted(type: AudioHapticType): boolean--><!--Device-AudioHapticPlayer-isMuted(type: AudioHapticType): boolean-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -54,17 +50,15 @@ let audioHapticType: audioHaptic.AudioHapticType = audioHaptic.AudioHapticType.A
 let result: boolean = audioHapticPlayerInstance.isMuted(audioHapticType);
 ```
 
-## offAudioInterrupt
+## off('endOfStream')
 
 ```TypeScript
-offAudioInterrupt(callback?: Callback<audio.InterruptEvent>): void
+off(type: 'endOfStream', callback?: Callback<void>): void
 ```
 
-Unsubscribes audio interrupt event.
+取消监听流结束事件。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-AudioHapticPlayer-offAudioInterrupt(callback?: Callback<audio.InterruptEvent>): void--><!--Device-AudioHapticPlayer-offAudioInterrupt(callback?: Callback<audio.InterruptEvent>): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -72,104 +66,23 @@ Unsubscribes audio interrupt event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;audio.InterruptEvent&gt; | 否 | Callback used to listen for audio interrupt info. |
-
-**示例**
-
-```TypeScript
-import { audio } from '@kit.AudioKit';
-
-// 取消该事件的所有监听。
-audioHapticPlayerInstance.offAudioInterrupt();
-
-// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
-let isPlaying: boolean; // 标识符，表示是否正在渲染。
-let isDucked: boolean; // 标识符，表示是否被降低音量。
-let audioInterruptCallback = (interruptEvent: audio.InterruptEvent) => {
-  // 在发生音频打断事件时，audioHapticPlayerInstance收到interruptEvent回调，此处根据其内容做相应处理。
-  // 1. 可选：读取interruptEvent.forceType的类型，判断系统是否已强制执行相应操作。
-  // 注意：默认焦点策略下，INTERRUPT_HINT_RESUME为INTERRUPT_SHARE类型，其余hintType均为INTERRUPT_FORCE类型。因此对forceType可不做判断。
-  // 2. 必选：读取interruptEvent.hintType的类型，做出相应的处理。
-  if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
-    // 音频焦点事件已由系统强制执行，应用需更新自身状态及显示内容等。
-    switch (interruptEvent.hintType) {
-      case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
-        // 音频流已被暂停，临时失去焦点，待可重获焦点时会收到resume对应的interruptEvent。
-        console.info('Force paused. Update playing status and stop writing.');
-        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
-        break;
-      case audio.InterruptHint.INTERRUPT_HINT_STOP:
-        // 音频流已被停止，永久失去焦点，若想恢复渲染，需用户主动触发。
-        console.info('Force stopped. Update playing status and stop writing.');
-        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
-        break;
-      case audio.InterruptHint.INTERRUPT_HINT_DUCK:
-        // 音频流已被降低音量渲染。
-        console.info('Force ducked. Update volume status.');
-        isDucked = true; // 简化处理，代表应用更新音量状态的若干操作。
-        break;
-      case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
-        // 音频流已被恢复正常音量渲染。
-        console.info('Force unducked. Update volume status.');
-        isDucked = false; // 简化处理，代表应用更新音量状态的若干操作。
-        break;
-      default:
-        break;
-    }
-  } else if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_SHARE) {
-    // 音频焦点事件需由应用进行操作，应用可以自主选择如何处理该事件，建议应用遵从InterruptHint提示处理。
-    switch (interruptEvent.hintType) {
-      case audio.InterruptHint.INTERRUPT_HINT_RESUME:
-        // 建议应用继续渲染（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复渲染）。
-        // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
-        console.info('Resume force paused renderer or ignore.');
-        // 若选择继续渲染，需在此处主动执行开始渲染的若干操作。
-        break;
-      default:
-        break;
-    }
-  }
-};
-
-audioHapticPlayerInstance.onAudioInterrupt(audioInterruptCallback);
-
-audioHapticPlayerInstance.offAudioInterrupt(audioInterruptCallback);
-```
-
-## offEndOfStream
-
-```TypeScript
-offEndOfStream(callback?: Callback<void>): void
-```
-
-Unsubscribes end of stream event.
-
-**起始版本：** 23
-
-<!--Device-AudioHapticPlayer-offEndOfStream(callback?: Callback<void>): void--><!--Device-AudioHapticPlayer-offEndOfStream(callback?: Callback<void>): void-End-->
-
-**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | Callback used to listen for the playback end of stream. |
+| type | 'endOfStream' | 是 | 事件回调类型，支持的事件为'endOfStream'，当取消监听流结束事件时，触发该事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数，无返回结果。 |
 
 **示例**
 
 ```TypeScript
 // 取消该事件的所有监听。
-audioHapticPlayerInstance.offEndOfStream();
+audioHapticPlayerInstance.off('endOfStream');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let endOfStreamCallback = () => {
   console.info('End of stream reached.');
 };
 
-audioHapticPlayerInstance.onEndOfStream(endOfStreamCallback);
+audioHapticPlayerInstance.on('endOfStream', endOfStreamCallback);
 
-audioHapticPlayerInstance.offEndOfStream(endOfStreamCallback);
+audioHapticPlayerInstance.off('endOfStream', endOfStreamCallback);
 ```
 
 ## off('audioInterrupt')
@@ -182,8 +95,6 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 
 **起始版本：** 11
 
-<!--Device-AudioHapticPlayer-off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void--><!--Device-AudioHapticPlayer-off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void-End-->
-
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
 **参数：**
@@ -191,7 +102,7 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioInterrupt' | 是 | 事件回调类型，支持的事件为'audioInterrupt'，当取消监听音频中断事件时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;audio.InterruptEvent&gt; | 否 | 回调函数，返回中断事件信息。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;audio.InterruptEvent&gt; | 否 | 回调函数，返回中断事件信息。 |
 
 **示例**
 
@@ -256,142 +167,29 @@ audioHapticPlayerInstance.on('audioInterrupt', audioInterruptCallback);
 audioHapticPlayerInstance.off('audioInterrupt', audioInterruptCallback);
 ```
 
-## off('endOfStream')
+## on('endOfStream')
 
 ```TypeScript
-off(type: 'endOfStream', callback?: Callback<void>): void
+on(type: 'endOfStream', callback: Callback<void>): void
 ```
 
-取消监听流结束事件。使用callback异步回调。
+监听流结束事件（音频流播放结束时触发）。使用callback异步回调。
 
 **起始版本：** 11
 
-<!--Device-AudioHapticPlayer-off(type: 'endOfStream', callback?: Callback<void>): void--><!--Device-AudioHapticPlayer-off(type: 'endOfStream', callback?: Callback<void>): void-End-->
-
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'endOfStream' | 是 | 事件回调类型，支持的事件为'endOfStream'，当取消监听流结束事件时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | 回调函数，无返回结果。 |
+| type | 'endOfStream' | 是 | 事件回调类型，支持的事件为'endOfStream'，当音频流播放结束时，触发该事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数，无返回结果。 |
 
 **示例**
 
 ```TypeScript
-// 取消该事件的所有监听。
-audioHapticPlayerInstance.off('endOfStream');
-
-// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
-let endOfStreamCallback = () => {
-  console.info('End of stream reached.');
-};
-
-audioHapticPlayerInstance.on('endOfStream', endOfStreamCallback);
-
-audioHapticPlayerInstance.off('endOfStream', endOfStreamCallback);
-```
-
-## onAudioInterrupt
-
-```TypeScript
-onAudioInterrupt(callback: Callback<audio.InterruptEvent>): void
-```
-
-Subscribes audio interrupt event.
-
-**起始版本：** 23
-
-<!--Device-AudioHapticPlayer-onAudioInterrupt(callback: Callback<audio.InterruptEvent>): void--><!--Device-AudioHapticPlayer-onAudioInterrupt(callback: Callback<audio.InterruptEvent>): void-End-->
-
-**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;audio.InterruptEvent&gt; | 是 | Callback used to listen for audio interrupt info. |
-
-**示例**
-
-```TypeScript
-import { audio } from '@kit.AudioKit';
-
-let isPlaying: boolean; // 标识符，表示是否正在渲染。
-let isDucked: boolean; // 标识符，表示是否被降低音量。
-
-audioHapticPlayerInstance.onAudioInterrupt((interruptEvent: audio.InterruptEvent) => {
-  // 在发生音频打断事件时，audioHapticPlayerInstance收到interruptEvent回调，此处根据其内容做相应处理。
-  // 1. 可选：读取interruptEvent.forceType的类型，判断系统是否已强制执行相应操作。
-  // 注意：默认焦点策略下，INTERRUPT_HINT_RESUME为INTERRUPT_SHARE类型，其余hintType均为INTERRUPT_FORCE类型。因此对forceType可不做判断。
-  // 2. 必选：读取interruptEvent.hintType的类型，做出相应的处理。
-  if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
-    // 音频焦点事件已由系统强制执行，应用需更新自身状态及显示内容等。
-    switch (interruptEvent.hintType) {
-      case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
-        // 音频流已被暂停，临时失去焦点，待可重获焦点时会收到resume对应的interruptEvent。
-        console.info('Force paused. Update playing status and stop writing.');
-        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
-        break;
-      case audio.InterruptHint.INTERRUPT_HINT_STOP:
-        // 音频流已被停止，永久失去焦点，若想恢复渲染，需用户主动触发。
-        console.info('Force stopped. Update playing status and stop writing.');
-        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
-        break;
-      case audio.InterruptHint.INTERRUPT_HINT_DUCK:
-        // 音频流已被降低音量渲染。
-        console.info('Force ducked. Update volume status.');
-        isDucked = true; // 简化处理，代表应用更新音量状态的若干操作。
-        break;
-      case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
-        // 音频流已被恢复正常音量渲染。
-        console.info('Force unducked. Update volume status.');
-        isDucked = false; // 简化处理，代表应用更新音量状态的若干操作。
-        break;
-      default:
-        break;
-    }
-  } else if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_SHARE) {
-    // 音频焦点事件需由应用进行操作，应用可以自主选择如何处理该事件，建议应用遵从InterruptHint提示处理。
-    switch (interruptEvent.hintType) {
-      case audio.InterruptHint.INTERRUPT_HINT_RESUME:
-        // 建议应用继续渲染（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复渲染）。
-        // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
-        console.info('Resume force paused renderer or ignore.');
-        // 若选择继续渲染，需在此处主动执行开始渲染的若干操作。
-        break;
-      default:
-        break;
-    }
-  }
-});
-```
-
-## onEndOfStream
-
-```TypeScript
-onEndOfStream(callback: Callback<void>): void
-```
-
-Subscribes end of stream event.
-
-**起始版本：** 23
-
-<!--Device-AudioHapticPlayer-onEndOfStream(callback: Callback<void>): void--><!--Device-AudioHapticPlayer-onEndOfStream(callback: Callback<void>): void-End-->
-
-**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | Callback used to listen for the playback end of stream. |
-
-**示例**
-
-```TypeScript
-audioHapticPlayerInstance.onEndOfStream(() => {
+audioHapticPlayerInstance.on('endOfStream', () => {
   console.info('End of stream reached.');
 });
 ```
@@ -406,8 +204,6 @@ on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void
 
 **起始版本：** 11
 
-<!--Device-AudioHapticPlayer-on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void--><!--Device-AudioHapticPlayer-on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void-End-->
-
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
 **参数：**
@@ -415,7 +211,7 @@ on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioInterrupt' | 是 | 事件回调类型，支持的事件为'audioInterrupt'，当音频焦点状态发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;audio.InterruptEvent&gt; | 是 | 回调函数，返回中断事件信息。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;audio.InterruptEvent&gt; | 是 | 回调函数，返回中断事件信息。 |
 
 **示例**
 
@@ -473,35 +269,6 @@ audioHapticPlayerInstance.on('audioInterrupt', (interruptEvent: audio.InterruptE
 });
 ```
 
-## on('endOfStream')
-
-```TypeScript
-on(type: 'endOfStream', callback: Callback<void>): void
-```
-
-监听流结束事件（音频流播放结束时触发）。使用callback异步回调。
-
-**起始版本：** 11
-
-<!--Device-AudioHapticPlayer-on(type: 'endOfStream', callback: Callback<void>): void--><!--Device-AudioHapticPlayer-on(type: 'endOfStream', callback: Callback<void>): void-End-->
-
-**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'endOfStream' | 是 | 事件回调类型，支持的事件为'endOfStream'，当音频流播放结束时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | 回调函数，无返回结果。 |
-
-**示例**
-
-```TypeScript
-audioHapticPlayerInstance.on('endOfStream', () => {
-  console.info('End of stream reached.');
-});
-```
-
 ## release
 
 ```TypeScript
@@ -510,9 +277,7 @@ release(): Promise<void>
 
 释放音振播放器。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AudioHapticPlayer-release(): Promise<void>--><!--Device-AudioHapticPlayer-release(): Promise<void>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -520,7 +285,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -546,11 +311,13 @@ audioHapticPlayerInstance.release().then(() => {
 setLoop(loop: boolean): Promise<void>
 ```
 
-设置音振播放器循环播放。使用Promise异步回调。 > **注意：** > > 该方法需在音振播放器销毁前调用。
+设置音振播放器循环播放。使用Promise异步回调。
 
-**起始版本：** 23
+> **注意：**
+> 
+> 该方法需在音振播放器销毁前调用。
 
-<!--Device-AudioHapticPlayer-setLoop(loop: boolean): Promise<void>--><!--Device-AudioHapticPlayer-setLoop(loop: boolean): Promise<void>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -564,7 +331,7 @@ setLoop(loop: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -587,14 +354,16 @@ audioHapticPlayerInstance.setLoop(true).then(() => {
 ## setVolume
 
 ```TypeScript
-setVolume(volume: double): Promise<void>
+setVolume(volume: number): Promise<void>
 ```
 
-设置音振播放器的音量。使用Promise异步回调。 > **注意：** > > 该方法需在音振播放器释放前调用。
+设置音振播放器的音量。使用Promise异步回调。
 
-**起始版本：** 23
+> **注意：**
+> 
+> 该方法需在音振播放器释放前调用。
 
-<!--Device-AudioHapticPlayer-setVolume(volume: double): Promise<void>--><!--Device-AudioHapticPlayer-setVolume(volume: double): Promise<void>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -602,13 +371,13 @@ setVolume(volume: double): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volume | double | 是 | 取值范围为[0.00, 1.00]，其中1.00表示最大音量（100%）。 |
+| volume | number | 是 | 取值范围为[0.00, 1.00]，其中1.00表示最大音量（100%）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -638,9 +407,7 @@ start(): Promise<void>
 
 开始播放。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AudioHapticPlayer-start(): Promise<void>--><!--Device-AudioHapticPlayer-start(): Promise<void>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -648,7 +415,7 @@ start(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -678,9 +445,7 @@ stop(): Promise<void>
 
 停止播放。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AudioHapticPlayer-stop(): Promise<void>--><!--Device-AudioHapticPlayer-stop(): Promise<void>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -688,7 +453,7 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -708,4 +473,3 @@ audioHapticPlayerInstance.stop().then(() => {
   console.error(`Failed to stop. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-

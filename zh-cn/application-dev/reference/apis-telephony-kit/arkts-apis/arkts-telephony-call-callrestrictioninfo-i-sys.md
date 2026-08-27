@@ -2,9 +2,7 @@
 
 呼叫限制信息。
 
-**起始版本：** 23
-
-<!--Device-call-export interface CallRestrictionInfo--><!--Device-call-export interface CallRestrictionInfo-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -13,7 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { call } from '@kit.TelephonyKit';
 ```
 
 ## mode
@@ -26,9 +23,7 @@ mode: CallRestrictionMode
 
 **类型：** [CallRestrictionMode](arkts-telephony-call-callrestrictionmode-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CallRestrictionInfo-mode: CallRestrictionMode--><!--Device-CallRestrictionInfo-mode: CallRestrictionMode-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -44,9 +39,7 @@ password: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-CallRestrictionInfo-password: string--><!--Device-CallRestrictionInfo-password: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -62,11 +55,8 @@ type: CallRestrictionType
 
 **类型：** [CallRestrictionType](arkts-telephony-call-callrestrictiontype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CallRestrictionInfo-type: CallRestrictionType--><!--Device-CallRestrictionInfo-type: CallRestrictionType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
 **系统接口：** 此接口为系统接口。
-

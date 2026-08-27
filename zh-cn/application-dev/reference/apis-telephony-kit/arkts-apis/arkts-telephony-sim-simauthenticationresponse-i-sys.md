@@ -1,10 +1,6 @@
 # SimAuthenticationResponse（系统接口）
 
-Defines the SIM card authentication response.
-
-**起始版本：** 23
-
-<!--Device-sim-export interface SimAuthenticationResponse--><!--Device-sim-export interface SimAuthenticationResponse-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -13,7 +9,6 @@ Defines the SIM card authentication response.
 ## 导入模块
 
 ```TypeScript
-import { sim } from '@kit.TelephonyKit';
 ```
 
 ## response
@@ -22,13 +17,9 @@ import { sim } from '@kit.TelephonyKit';
 response: string
 ```
 
-Indicates the response of authentication.
-
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SimAuthenticationResponse-response: string--><!--Device-SimAuthenticationResponse-response: string-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -37,16 +28,14 @@ Indicates the response of authentication.
 ## simStatusWord1
 
 ```TypeScript
-simStatusWord1: int
+simStatusWord1: number
 ```
 
 Status word 1 of the SIM card, which is returned by the SIM card after command execution.
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SimAuthenticationResponse-simStatusWord1: int--><!--Device-SimAuthenticationResponse-simStatusWord1: int-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -55,18 +44,15 @@ Status word 1 of the SIM card, which is returned by the SIM card after command e
 ## simStatusWord2
 
 ```TypeScript
-simStatusWord2: int
+simStatusWord2: number
 ```
 
 Status word 2 of the SIM card, which is returned by the SIM card after command execution.
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SimAuthenticationResponse-simStatusWord2: int--><!--Device-SimAuthenticationResponse-simStatusWord2: int-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
 **系统接口：** 此接口为系统接口。
-

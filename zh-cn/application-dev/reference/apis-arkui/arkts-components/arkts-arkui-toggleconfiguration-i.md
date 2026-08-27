@@ -1,12 +1,10 @@
 # ToggleConfiguration
 
-开发者需要自定义class实现ContentModifier接口。继承自CommonConfiguration。
+开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](arkts-arkui-commonconfiguration-i.md)。
 
 **继承/实现关系：** ToggleConfiguration extends CommonConfiguration<ToggleConfiguration>
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare interface ToggleConfiguration--><!--Device-unnamed-declare interface ToggleConfiguration-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -21,7 +19,7 @@
 enabled: boolean
 ```
 
-是否可以切换状态。 true：可以切换状态；false：不可以切换状态。 默认值：true
+是否可以切换状态。true：可以切换状态；false：不可以切换状态。默认值：true
 
 **类型：** boolean
 
@@ -30,8 +28,6 @@ enabled: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ToggleConfiguration-enabled: boolean--><!--Device-ToggleConfiguration-enabled: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,7 +37,7 @@ enabled: boolean
 isOn: boolean
 ```
 
-开关是否打开。 true：开关打开；false：开关关闭。 默认值：false
+开关是否打开。true：开关打开；false：开关关闭。默认值：false
 
 **类型：** boolean
 
@@ -50,8 +46,6 @@ isOn: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ToggleConfiguration-isOn: boolean--><!--Device-ToggleConfiguration-isOn: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,7 +65,4 @@ triggerChange: Callback<boolean>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ToggleConfiguration-triggerChange: Callback<boolean>--><!--Device-ToggleConfiguration-triggerChange: Callback<boolean>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

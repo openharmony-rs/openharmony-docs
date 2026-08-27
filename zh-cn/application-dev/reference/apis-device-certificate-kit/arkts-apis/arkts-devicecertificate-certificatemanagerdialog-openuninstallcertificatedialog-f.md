@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## openUninstallCertificateDialog
@@ -14,13 +13,11 @@ function openUninstallCertificateDialog(context: common.Context, certType: Certi
 
 打开证书管理卸载证书向导，显示相应的页面。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-certificateManagerDialog-function openUninstallCertificateDialog(context: common.Context, certType: CertificateType, certUri: string): Promise<void>--><!--Device-certificateManagerDialog-function openUninstallCertificateDialog(context: common.Context, certType: CertificateType, certUri: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
@@ -29,26 +26,26 @@ function openUninstallCertificateDialog(context: common.Context, certType: Certi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | common.Context | 是 | 表示应用的上下文信息。 |
-| certType | [CertificateType](arkts-devicecertificate-certificatemanagerdialog-certificatetype-e.md) | 是 | 表示待卸载证书类型，目前仅支持CA_CERT。 <br>目前仅支持CA_CERT类型。 |
+| certType | [CertificateType](arkts-devicecertificate-certificatemanagerdialog-certificatetype-e.md) | 是 | 表示待卸载证书类型，目前仅支持CA_CERT。 目前仅支持CA_CERT类型。 |
 | certUri | string | 是 | 表示待卸载证书的唯一标识符，可通过安装CA证书接口或查询CA证书列表接口获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [29700005](../errorcode-certManagerDialog.md#29700005-操作不符合设备安全策略) | The operation does not comply with the device security policy, such as the device does not allow users to manage the CA certificate of the global user. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [29700004](../errorcode-certManagerDialog.md#29700004-设备类型不支持) | For security purposes, the current device does not support this API. You can use the [supportsCACertDialog](arkts-devicecertificate-certificatemanagerdialog-supportscacertdialog-f.md) to determine whether the device can open the dialog box for deleting a CA certificate with certType set to CA. |
-| [29700001](../errorcode-certManagerDialog.md#29700001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
-| [29700003](../errorcode-certManagerDialog.md#29700003-证书安装失败错误) | The user uninstall certificate failed in the certificate manager dialog, such as the certificate uri is not exist. |
-| [29700002](../errorcode-certManagerDialog.md#29700002-操作取消) | The user cancels the uninstallation operation. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types; 3. Parameter verification failed. |
+| [29700001](../errorcode-certManagerDialog.md#29700001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;  2. Memory operation error; 3. File operation error. Please try again. |
+| [29700002](../errorcode-certManagerDialog.md#29700002-操作取消) | The user cancels the uninstallation operation. |
+| [29700003](../errorcode-certManagerDialog.md#29700003-证书安装失败错误) | The user uninstall certificate failed in the certificate manager dialog, such as the certificate uri is not exist. |
+| [29700004](../errorcode-certManagerDialog.md#29700004-设备类型不支持) | For security purposes, the current device does not support this API. You can use the [supportsCACertDialog](arkts-devicecertificate-certificatemanagerdialog-supportscacertdialog-f.md) to determine whether the device can open the dialog box for deleting a CA certificate with certType set to CA. |
+| [29700005](../errorcode-certManagerDialog.md#29700005-操作不符合设备安全策略) | The operation does not comply with the device security policy, such as the device does not allow users to manage the CA certificate of the global user. |
 
 **示例**
 
@@ -75,4 +72,3 @@ try {
   console.error(`Failed to open uninstall certificate dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-

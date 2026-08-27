@@ -2,17 +2,13 @@
 
 表示签名、验签操作使用的参数集合，包括密钥使用目的、填充方式和摘要算法。
 
-**起始版本：** 23
-
-<!--Device-certificateManager-export interface CMSignatureSpec--><!--Device-certificateManager-export interface CMSignatureSpec-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 ## 导入模块
 
 ```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## digest
@@ -25,9 +21,7 @@ digest?: CmKeyDigest
 
 **类型：** [CmKeyDigest](arkts-devicecertificate-certificatemanager-cmkeydigest-e.md)
 
-**起始版本：** 23
-
-<!--Device-CMSignatureSpec-digest?: CmKeyDigest--><!--Device-CMSignatureSpec-digest?: CmKeyDigest-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -41,9 +35,7 @@ padding?: CmKeyPadding
 
 **类型：** [CmKeyPadding](arkts-devicecertificate-certificatemanager-cmkeypadding-e.md)
 
-**起始版本：** 23
-
-<!--Device-CMSignatureSpec-padding?: CmKeyPadding--><!--Device-CMSignatureSpec-padding?: CmKeyPadding-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -57,9 +49,6 @@ purpose: CmKeyPurpose
 
 **类型：** [CmKeyPurpose](arkts-devicecertificate-certificatemanager-cmkeypurpose-e.md)
 
-**起始版本：** 23
-
-<!--Device-CMSignatureSpec-purpose: CmKeyPurpose--><!--Device-CMSignatureSpec-purpose: CmKeyPurpose-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
-

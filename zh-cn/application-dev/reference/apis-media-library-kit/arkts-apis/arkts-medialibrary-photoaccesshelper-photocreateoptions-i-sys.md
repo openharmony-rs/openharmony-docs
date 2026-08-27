@@ -2,9 +2,7 @@
 
 图片或视频的创建选项。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-interface PhotoCreateOptions--><!--Device-photoAccessHelper-interface PhotoCreateOptions-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -26,9 +24,7 @@ cameraShotKey?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PhotoCreateOptions-cameraShotKey?: string--><!--Device-PhotoCreateOptions-cameraShotKey?: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -44,9 +40,7 @@ subtype?: PhotoSubtype
 
 **类型：** PhotoSubtype
 
-**起始版本：** 23
-
-<!--Device-PhotoCreateOptions-subtype?: PhotoSubtype--><!--Device-PhotoCreateOptions-subtype?: PhotoSubtype-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -55,18 +49,15 @@ subtype?: PhotoSubtype
 ## userId
 
 ```TypeScript
-userId?: int
+userId?: number
 ```
 
 用户id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PhotoCreateOptions-userId?: int--><!--Device-PhotoCreateOptions-userId?: int-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

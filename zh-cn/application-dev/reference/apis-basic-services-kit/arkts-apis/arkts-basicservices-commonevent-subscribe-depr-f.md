@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { commonEventManager } from '@kit.BasicServicesKit';
 ```
 
 ## subscribe
@@ -20,8 +19,6 @@ function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<Co
 
 **替代接口：** [subscribe](arkts-basicservices-commoneventmanager-subscribe-f.md)
 
-<!--Device-commonEvent-function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void--><!--Device-commonEvent-function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void-End-->
-
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
@@ -29,7 +26,7 @@ function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<Co
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | subscriber | [CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md) | 是 | 表示订阅者对象。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;[CommonEventData](arkts-basicservices-commoneventdata-commoneventdata-i.md)&gt; | 是 | 表示接收公共事件数据的回调方法。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[CommonEventData](arkts-basicservices-commoneventdata-commoneventdata-i.md)&gt; | 是 | 表示接收公共事件数据的回调方法。 |
 
 **示例**
 
@@ -37,7 +34,7 @@ function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<Co
 import Base from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
 
-let subscriber:CommonEventManager.CommonEventSubscriber;// 用于保存创建成功的订阅者对象，后续使用其完成订阅及取消订阅的动作
+let subscriber:CommonEventManager.CommonEventSubscriber; // 用于保存创建成功的订阅者对象，后续使用其完成订阅及取消订阅的动作
 
 // 订阅者信息
 let subscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
@@ -45,27 +42,26 @@ let subscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
 };
 
 // 订阅公共事件回调
-function subscribeCB(err:Base.BusinessError, data:CommonEventManager.CommonEventData) {
+let subscribeCallBack = (err:Base.BusinessError, data:CommonEventManager.CommonEventData) => {
     if (err.code) {
-        console.error(`subscribe failed, code is ${err.code}`);
+        console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
     } else {
         console.info("subscribe " + JSON.stringify(data));
     }
 }
 
 // 创建订阅者回调
-function createCB(err:Base.BusinessError, commonEventSubscriber:CommonEventManager.CommonEventSubscriber) {
+let createCallBack = (err:Base.BusinessError, commonEventSubscriber:CommonEventManager.CommonEventSubscriber) => {
     if (err.code) {
-        console.error(`createSubscriber failed, code is ${err.code}`);
+        console.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
     } else {
         console.info("createSubscriber");
         subscriber = commonEventSubscriber;
-        // Subscribe to a common event.
-        commonEvent.subscribe(subscriber, subscribeCB);
+         // 订阅公共事件
+        commonEvent.subscribe(subscriber, subscribeCallBack);
     }
 }
 
 // 创建订阅者
-commonEvent.createSubscriber(subscribeInfo, createCB);
+commonEvent.createSubscriber(subscribeInfo, createCallBack);
 ```
-

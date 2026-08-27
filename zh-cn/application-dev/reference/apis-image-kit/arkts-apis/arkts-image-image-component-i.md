@@ -2,9 +2,7 @@
 
 描述图像颜色分量。
 
-**起始版本：** 23
-
-<!--Device-image-interface Component--><!--Device-image-interface Component-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -24,9 +22,7 @@ readonly byteBuffer: ArrayBuffer
 
 **类型：** ArrayBuffer
 
-**起始版本：** 23
-
-<!--Device-Component-readonly byteBuffer: ArrayBuffer--><!--Device-Component-readonly byteBuffer: ArrayBuffer-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -40,41 +36,34 @@ readonly componentType: ComponentType
 
 **类型：** ComponentType
 
-**起始版本：** 23
-
-<!--Device-Component-readonly componentType: ComponentType--><!--Device-Component-readonly componentType: ComponentType-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## pixelStride
 
 ```TypeScript
-readonly pixelStride: int
+readonly pixelStride: number
 ```
 
 像素间距。单位：字节（Byte）。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Component-readonly pixelStride: int--><!--Device-Component-readonly pixelStride: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## rowStride
 
 ```TypeScript
-readonly rowStride: int
+readonly rowStride: number
 ```
 
 行距。单位：字节（Byte）。读取相机预览流数据时，需要按stride进行读取，使用详情请参考 [相机预览花屏解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-deal-stride-solution)。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Component-readonly rowStride: int--><!--Device-Component-readonly rowStride: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
-

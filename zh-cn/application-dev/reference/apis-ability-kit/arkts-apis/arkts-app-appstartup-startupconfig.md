@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { StartupConfig } from '@kit.AbilityKit';
-import { StartupConfigEntry } from '@kit.AbilityKit';
 ```
 
 ## 汇总
@@ -14,4 +13,3 @@ import { StartupConfigEntry } from '@kit.AbilityKit';
 | 名称 | 说明 |
 | --- | --- |
 | [StartupConfig](arkts-ability-app-appstartup-startupconfig-startupconfig-i.md) | 本模块提供[应用启动框架](../../../application-models/app-startup.md)配置信息的定义。 |
-

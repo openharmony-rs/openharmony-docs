@@ -1,10 +1,12 @@
 # RemoteAbilityInfo（系统接口）
 
-包含远程的ability信息，通过接口 [distributedBundle.getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md) 获取。 > **说明：** > > 本模块为系统接口。
+包含远程的ability信息，通过接口 [distributedBundle.getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md) 获取。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 本模块为系统接口。
 
-<!--Device-unnamed-export interface RemoteAbilityInfo--><!--Device-unnamed-export interface RemoteAbilityInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -20,9 +22,7 @@ readonly elementName: ElementName
 
 **类型：** [ElementName](arkts-ability-elementname-i.md)
 
-**起始版本：** 23
-
-<!--Device-RemoteAbilityInfo-readonly elementName: ElementName--><!--Device-RemoteAbilityInfo-readonly elementName: ElementName-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -38,9 +38,7 @@ readonly icon: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-RemoteAbilityInfo-readonly icon: string--><!--Device-RemoteAbilityInfo-readonly icon: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -56,11 +54,8 @@ readonly label: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-RemoteAbilityInfo-readonly label: string--><!--Device-RemoteAbilityInfo-readonly label: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
 **系统接口：** 此接口为系统接口。
-

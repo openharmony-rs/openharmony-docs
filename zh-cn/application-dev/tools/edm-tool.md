@@ -10,14 +10,14 @@ Enterprise Device Manager（企业设备管理工具，简称为edm），为设�
 
 ## 环境要求
 
-在使用本工具前，开发者需要先获取<!--Del-->[<!--DelEnd-->hdc工具<!--Del-->](../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)<!--DelEnd-->，执行hdc shell。
+在使用本工具前，开发者需要先获取<!--Del--><!--DelEnd-->hdc工具<!--Del--><!--DelEnd-->，执行hdc shell。
 
 ## edm工具命令列表
 
 | 命令          | 描述                                                         |
 | ------------- | ------------------------------------------------------------ |
 | help          | 帮助命令，用于查询edm支持的命令信息。                        |
-| enable-admin  | 激活命令，用于激活企业设备管理拓展能力，目标组件必须为[enterpriseAdmin类型的ExtensionAbility](../mdm/mdm-kit-admin.md)。 |
+| enable-admin  | 激活命令，用于激活企业设备管理拓展能力，目标组件必须为enterpriseAdmin类型的ExtensionAbility。 |
 | disable-admin | 解除激活命令，用于解除激活企业设备管理拓展能力。             |
 
 ## 帮助命令（help）

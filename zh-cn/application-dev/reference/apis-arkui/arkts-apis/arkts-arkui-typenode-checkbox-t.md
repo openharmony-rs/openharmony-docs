@@ -12,9 +12,6 @@ Checkbox类型的FrameNode节点类型。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-type Checkbox = TypedFrameNode<CheckboxInterface, CheckboxAttribute>--><!--Device-typeNode-type Checkbox = TypedFrameNode<CheckboxInterface, CheckboxAttribute>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** TypedFrameNode<CheckboxInterface, CheckboxAttribute>
-
+**属性类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;CheckboxInterface, [CheckboxAttribute](../arkts-components/arkts-arkui-checkbox-attribute.md)&gt;

@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class EventTargetInfo--><!--Device-unnamed-declare class EventTargetInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -26,8 +24,6 @@ getId(): string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EventTargetInfo-getId(): string--><!--Device-EventTargetInfo-getId(): string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,8 +47,6 @@ Returns the component's unique id.
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EventTargetInfo-getUniqueId(): number--><!--Device-EventTargetInfo-getUniqueId(): number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -64,7 +58,7 @@ Returns the component's unique id.
 ## getUniqueId
 
 ```TypeScript
-getUniqueId(): int
+getUniqueId(): number
 ```
 
 返回当前组件的唯一id。
@@ -75,13 +69,10 @@ getUniqueId(): int
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EventTargetInfo-getUniqueId(): int--><!--Device-EventTargetInfo-getUniqueId(): int-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 当前组件的唯一id。 |
-
+| number | 当前组件的唯一id。 |

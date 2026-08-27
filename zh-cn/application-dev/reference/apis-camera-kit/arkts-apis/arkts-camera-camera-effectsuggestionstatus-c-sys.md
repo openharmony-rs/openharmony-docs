@@ -2,9 +2,7 @@
 
 Effect suggestion status
 
-**起始版本：** 23
-
-<!--Device-camera-class EffectSuggestionStatus--><!--Device-camera-class EffectSuggestionStatus-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13,8 +11,6 @@ Effect suggestion status
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## status
@@ -27,9 +23,7 @@ Effect Suggestion type status.
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-EffectSuggestionStatus-status: boolean--><!--Device-EffectSuggestionStatus-status: boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -45,11 +39,8 @@ Effect Suggestion type.
 
 **类型：** [EffectSuggestionType](arkts-camera-camera-effectsuggestiontype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-EffectSuggestionStatus-type: EffectSuggestionType--><!--Device-EffectSuggestionStatus-type: EffectSuggestionType-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
-

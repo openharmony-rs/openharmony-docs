@@ -1,17 +1,18 @@
 # AppEventFilter
 
-提供设置[Watcher](arkts-performanceanalysis-hiappevent-watcher-i.md)的订阅过滤条件的参数选项。用于在事件观察者中设置事件过滤条件，确保只有满足过滤条件的事件才会被监听处理。 > **说明：** > > 不同类型应用上，系统事件的订阅规格不同，具体规格可参见[HiAppEvent约束与限制](../../../dfx/hiappevent-intro.md#约束与限制)。
+提供设置[Watcher](arkts-performanceanalysis-hiappevent-watcher-i.md)的订阅过滤条件的参数选项。用于在事件观察者中设置事件过滤条件，确保只有满足过滤条件的事件才会被监听处理。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 不同类型应用上，系统事件的订阅规格不同，具体规格可参见[HiAppEvent约束与限制](../../../dfx/hiappevent-intro.md#约束与限制)。
 
-<!--Device-hiAppEvent-interface AppEventFilter--><!--Device-hiAppEvent-interface AppEventFilter-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 ## 导入模块
 
 ```TypeScript
-import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## domain
@@ -24,11 +25,9 @@ domain: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AppEventFilter-domain: string--><!--Device-AppEventFilter-domain: string-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -42,11 +41,9 @@ eventTypes?: EventType[]
 
 **类型：** EventType[]
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AppEventFilter-eventTypes?: EventType[]--><!--Device-AppEventFilter-eventTypes?: EventType[]-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -60,11 +57,8 @@ names?: string[]
 
 **类型：** string[]
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AppEventFilter-names?: string[]--><!--Device-AppEventFilter-names?: string[]-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
-

@@ -2,9 +2,7 @@
 
 该模块向云盘管理应用提供端云同步管理能力：包括全量下载的状态和停止原因，以及应用本地和云端文件数量信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace cloudSyncManager--><!--Device-unnamed-declare namespace cloudSyncManager-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -30,7 +28,7 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 | [enableCloud](arkts-corefile-cloudsyncmanager-enablecloud-f-sys.md) | 异步方法使能端云协同能力。使用Promise异步回调。 |
 | [enableCloud](arkts-corefile-cloudsyncmanager-enablecloud-f-sys.md) | 异步方法使能端云协同能力。使用callback异步回调。 |
 | [getBundlesLocalFilePresentStatus](arkts-corefile-cloudsyncmanager-getbundleslocalfilepresentstatus-f-sys.md) | 对接入云盘的应用，检测其在云盘存储空间内是否存在未上云文件，支持同时查询多个应用。使用Promise异步回调。 |
-| [getDowngradeDownloadTaskState](arkts-corefile-cloudsyncmanager-getdowngradedownloadtaskstate-f-sys.md) | 查询接入云盘的应用的全量下载任务状态。使用Promise异步回调。 由于返回的DownloadProgress对象中不包含包名信息，因此在批量查询多个应用时，调用方需自行记录应用包名。 |
+| [getDowngradeDownloadTaskState](arkts-corefile-cloudsyncmanager-getdowngradedownloadtaskstate-f-sys.md) | 查询接入云盘的应用的全量下载任务状态。使用Promise异步回调。由于返回的DownloadProgress对象中不包含包名信息，因此在批量查询多个应用时，调用方需自行记录应用包名。 |
 | [notifyDataChange](arkts-corefile-cloudsyncmanager-notifydatachange-f-sys.md) | 通知端云服务指定账号下的特定应用云数据已发生变更。使用Promise异步回调。 |
 | [notifyDataChange](arkts-corefile-cloudsyncmanager-notifydatachange-f-sys.md) | 通知端云服务指定账号下的特定应用云数据已发生变更。使用callback异步回调。 |
 | [notifyDataChange](arkts-corefile-cloudsyncmanager-notifydatachange-f-sys.md) | 通知端云服务应用指定用户的云数据变更信息。使用Promise异步回调。 |
@@ -48,7 +46,7 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [DowngradeDownload](arkts-corefile-cloudsyncmanager-downgradedownload-c-sys.md) | 全量下载：为云盘管理应用提供集中下载云端数据的能力。 云盘全量下载对象，用于支撑云盘管理应用完成云盘文件的全量下载流程。 |
+| [DowngradeDownload](arkts-corefile-cloudsyncmanager-downgradedownload-c-sys.md) | 全量下载：为云盘管理应用提供集中下载云端数据的能力。云盘全量下载对象，用于支撑云盘管理应用完成云盘文件的全量下载流程。 |
 <!--DelEnd-->
 
 ### 接口
@@ -84,4 +82,3 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 | [TransferState](arkts-corefile-cloudsyncmanager-transferstate-e-sys.md) | 搬迁任务状态的枚举。 |
 | [TransferStopReason](arkts-corefile-cloudsyncmanager-transferstopreason-e-sys.md) | 搬迁停止原因的枚举。 |
 <!--DelEnd-->
-

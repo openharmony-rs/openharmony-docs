@@ -1,16 +1,17 @@
-# TaskPool和Worker的对比 (TaskPool和Worker)
+# TaskPool和Worker的对比
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
+<!--RP1-->
 TaskPool和Worker的作用是为应用程序提供多线程运行环境，用于处理耗时计算任务或其他密集型任务，避免任务阻塞宿主线程，提高系统性能和资源利用率。
 
 
-本文将从[实现特点](#实现特点对比)和[适用场景](#适用场景对比)两个方面比较TaskPool与Worker。
+本文将从实现特点和适用场景两个方面比较TaskPool与Worker。
 
 
 ## 实现特点对比
@@ -54,13 +55,13 @@ Worker适用于需要长时间占据线程，并由开发者主动管理线程�
 
   例如后台进行1小时的预测算法训练等CPU密集型任务，适合使用Worker。
 
-  场景示例可参考[常驻任务开发指导](resident-task-guide.md)。
+  场景示例可参考常驻任务开发指导。
 
 - **有强关联的一系列同步任务**
 
   例如在需要创建并使用句柄的场景中，每次创建的句柄都不同，且必须持续保存该句柄，以确保后续操作正确执行，此类场景适合使用Worker。
 
-  场景示例可参考[使用Worker处理关联的同步任务](sync-task-development.md#使用worker处理关联的同步任务)。
+  场景示例可参考使用Worker处理关联的同步任务。
 
 ### 建议使用TaskPool的场景
 
@@ -72,7 +73,7 @@ Worker适用于需要长时间占据线程，并由开发者主动管理线程�
 
   从API version 18开始，Worker支持设置调度优先级，开发者可以根据使用场景和任务特性选择使用TaskPool或Worker。
 
-  例如[图像直方图绘制场景](cpu-intensive-task-development.md#使用taskpool进行图像直方图处理)，后台计算的直方图数据会用于前台界面的显示，影响用户体验，且任务相对独立，推荐使用TaskPool。
+  例如图像直方图绘制场景，后台计算的直方图数据会用于前台界面的显示，影响用户体验，且任务相对独立，推荐使用TaskPool。
 
 - **需要频繁取消的任务**
 
@@ -82,4 +83,5 @@ Worker适用于需要长时间占据线程，并由开发者主动管理线程�
 
   例如大型应用中的多个模块包含多个耗时任务，不建议使用Worker进行负载管理，推荐使用TaskPool。
 
-  场景示例可参考[批量数据写数据库场景](batch-database-operations-guide.md)。
+  场景示例可参考批量数据写数据库场景。
+<!--RP1End-->

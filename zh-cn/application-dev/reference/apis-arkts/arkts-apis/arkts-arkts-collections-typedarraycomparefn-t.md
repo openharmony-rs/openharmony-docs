@@ -10,8 +10,6 @@ ArkTS TypedArray排序函数类型。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-collections-type TypedArrayCompareFn<ElementType> = (first: ElementType, second: ElementType) => number--><!--Device-collections-type TypedArrayCompareFn<ElementType> = (first: ElementType, second: ElementType) => number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -26,4 +24,3 @@ ArkTS TypedArray排序函数类型。
 | 类型 | 说明 |
 | --- | --- |
 | number | 元素比较的结果。如果`first`小于`second`，返回值为负数；如果`first`大于`second`，返回值为正数；如果两个值相等，返回值为0。 |
-

@@ -9,10 +9,10 @@ import { advertising } from '@kit.ConnectivityKit';
 ## stopAdvertising
 
 ```TypeScript
-function stopAdvertising(advertisingId: int): Promise<void>
+function stopAdvertising(advertisingId: number): Promise<void>
 ```
 
-停止广播ID对应的广播。
+停止发送星闪广播。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -20,29 +20,26 @@ function stopAdvertising(advertisingId: int): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-advertising-function stopAdvertising(advertisingId: int): Promise<void>--><!--Device-advertising-function stopAdvertising(advertisingId: int): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| advertisingId | int | 是 | 表示广播ID <br>取值应为≥0的整数，取值为当前广播的广播ID。 |
+| advertisingId | number | 是 | 广播ID，开启广播时获取。取值范围[0, 255]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 返回promise对象。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the chip does not support it. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [36100040](../errorcode-nearlink-service.md#36100040-整数超出范围) | Invalid advertising ID. |
-
+| [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |

@@ -2,9 +2,7 @@
 
 文本阴影。
 
-**起始版本：** 23
-
-<!--Device-text-interface TextShadow--><!--Device-text-interface TextShadow-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -17,18 +15,16 @@ import { text } from '@kit.ArkGraphics2D';
 ## blurRadius
 
 ```TypeScript
-blurRadius?: double
+blurRadius?: number
 ```
 
 模糊半径，浮点数，单位为物理像素px，默认为0.0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextShadow-blurRadius?: double--><!--Device-TextShadow-blurRadius?: double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -42,11 +38,9 @@ color?: common2D.Color
 
 **类型：** common2D.Color
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextShadow-color?: common2D.Color--><!--Device-TextShadow-color?: common2D.Color-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -60,11 +54,8 @@ point?: common2D.Point
 
 **类型：** common2D.Point
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextShadow-point?: common2D.Point--><!--Device-TextShadow-point?: common2D.Point-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
-

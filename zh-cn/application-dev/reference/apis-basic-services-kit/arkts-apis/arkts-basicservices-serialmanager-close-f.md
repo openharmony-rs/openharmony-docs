@@ -9,14 +9,19 @@ import { serialManager } from '@kit.BasicServicesKit';
 ## close
 
 ```TypeScript
-function close(portId: int): void
+function close(portId: number): void
 ```
 
-关闭串口。需要先调用[requestSerialRight](arkts-basicservices-serialmanager-requestserialright-f.md)申请权限，再调用[open](arkts-basicservices-serialmanager-open-f.md)打开串口。 通常在应用退出时、设备断开连接时、需要释放串口资源时调用此接口。关闭串口不会移除访问权限，如需移除权限请调用cancelSerialRight。 **配对调用：** - 与[open](arkts-basicservices-serialmanager-open-f.md)方法成对使用 - 打开串口后，使用完毕必须调用本方法关闭串口释放资源 **前置条件：** - 需要先调用[getPortList](arkts-basicservices-serialmanager-getportlist-f.md)获取端口号 - 需要先调用[requestSerialRight](arkts-basicservices-serialmanager-requestserialright-f.md)申请访问权限 - 需要先调用[open](arkts-basicservices-serialmanager-open-f.md)打开串口
+关闭串口。需要先调用[requestSerialRight](arkts-basicservices-serialmanager-requestserialright-f.md)申请权限，再调用[open](arkts-basicservices-serialmanager-open-f.md)打开串口。 通常在应用退出时、设备断开连接时、需要释放串口资源时调用此接口。关闭串口不会移除访问权限，如需移除权限请调用cancelSerialRight。  
+**配对调用：**  
+- 与[open](arkts-basicservices-serialmanager-open-f.md)方法成对使用  
+- 打开串口后，使用完毕必须调用本方法关闭串口释放资源  
+**前置条件：**  
+- 需要先调用[getPortList](arkts-basicservices-serialmanager-getportlist-f.md)获取端口号  
+- 需要先调用[requestSerialRight](arkts-basicservices-serialmanager-requestserialright-f.md)申请访问权限  
+- 需要先调用[open](arkts-basicservices-serialmanager-open-f.md)打开串口
 
-**起始版本：** 23
-
-<!--Device-serialManager-function close(portId: int): void--><!--Device-serialManager-function close(portId: int): void-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
@@ -24,16 +29,16 @@ function close(portId: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| portId | int | 是 | 端口号，来自[getPortList](arkts-basicservices-serialmanager-getportlist-f.md)返回的 [SerialPort](arkts-basicservices-serialmanager-serialport-i.md)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
+| portId | number | 是 | 端口号，来自[getPortList](arkts-basicservices-serialmanager-getportlist-f.md)返回的 [SerialPort](arkts-basicservices-serialmanager-serialport-i.md)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) |  |
-| [31400005](../errorcode-usb.md#31400005-设备未打开) |  |
-| [31400003](../errorcode-usb.md#31400003-端口号不存在) |  |
 | [31400001](../errorcode-usb.md#31400001-串口服务异常) |  |
+| [31400003](../errorcode-usb.md#31400003-端口号不存在) |  |
+| [31400005](../errorcode-usb.md#31400005-设备未打开) |  |
 
 **示例**
 
@@ -41,18 +46,18 @@ function close(portId: int): void
 
 ```TypeScript
 import { JSON } from '@kit.ArkTS';
-import serialManager from '@ohos.usbManager.serial';
-import { BusinessError } from '@ohos.base';
+import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function closeExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
+  if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: int = portList[0].portId;
+  let portId: number = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
@@ -60,6 +65,7 @@ async function closeExample() {
     if (!result) {
       // 没有访问设备的权限且用户不授权则退出
       console.error('user is not granted the operation permission');
+      return;
     } else {
       console.info('grant permission successfully');
     }
@@ -74,6 +80,7 @@ async function closeExample() {
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 
+
   // 关闭串口
   try {
     serialManager.close(portId);
@@ -84,4 +91,3 @@ async function closeExample() {
   }
 }
 ```
-

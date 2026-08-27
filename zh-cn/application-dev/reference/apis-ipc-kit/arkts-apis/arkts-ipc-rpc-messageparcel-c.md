@@ -8,8 +8,6 @@
 
 **替代接口：** [MessageSequence](arkts-ipc-rpc-messagesequence-c.md)
 
-<!--Device-rpc-class MessageParcel--><!--Device-rpc-class MessageParcel-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 ## 导入模块
@@ -32,8 +30,6 @@ static closeFileDescriptor(fd: number): void
 
 **替代接口：** [closeFileDescriptor](arkts-ipc-rpc-messagesequence-c.md#closefiledescriptor)(fd: int)
 
-<!--Device-MessageParcel-static closeFileDescriptor(fd: number): void--><!--Device-MessageParcel-static closeFileDescriptor(fd: number): void-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -43,6 +39,23 @@ static closeFileDescriptor(fd: number): void
 | fd | number | 是 | 要关闭的文件描述符。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let filePath = "path/to/file"; 
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+  rpc.MessageSequence.closeFileDescriptor(file.fd);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -72,8 +85,6 @@ containFileDescriptors(): boolean
 
 **替代接口：** [containFileDescriptors](arkts-ipc-rpc-messagesequence-c.md#containfiledescriptors)()
 
-<!--Device-MessageParcel-containFileDescriptors(): boolean--><!--Device-MessageParcel-containFileDescriptors(): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -83,6 +94,25 @@ containFileDescriptors(): boolean
 | boolean | true：包含文件描述符，false：未包含文件描述符。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let sequence = rpc.MessageSequence.create();
+  let filePath = "path/to/file";
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+  let containFD = sequence.containFileDescriptors();
+  hilog.info(0x0000, 'testTag', 'sequence after write fd containFd result is ' + containFD);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -115,8 +145,6 @@ static create(): MessageParcel
 **废弃版本：** 9
 
 **替代接口：** [create](arkts-ipc-rpc-messagesequence-c.md#create)()
-
-<!--Device-MessageParcel-static create(): MessageParcel--><!--Device-MessageParcel-static create(): MessageParcel-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -157,8 +185,6 @@ static dupFileDescriptor(fd: number): number
 
 **替代接口：** [dupFileDescriptor](arkts-ipc-rpc-messagesequence-c.md#dupfiledescriptor)(fd: int)
 
-<!--Device-MessageParcel-static dupFileDescriptor(fd: number): number--><!--Device-MessageParcel-static dupFileDescriptor(fd: number): number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -174,6 +200,23 @@ static dupFileDescriptor(fd: number): number
 | number | 返回新的文件描述符。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let filePath = "path/to/file"; 
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+  rpc.MessageSequence.dupFileDescriptor(file.fd);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -203,8 +246,6 @@ getCapacity(): number
 
 **替代接口：** [getCapacity](arkts-ipc-rpc-messagesequence-c.md#getcapacity)()
 
-<!--Device-MessageParcel-getCapacity(): number--><!--Device-MessageParcel-getCapacity(): number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -214,6 +255,22 @@ getCapacity(): number
 | number | 获取的MessageParcel的容量大小。以字节为单位。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  let result = data.getCapacity();
+  hilog.info(0x0000, 'testTag', 'capacity is ' + result);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -242,8 +299,6 @@ getRawDataCapacity(): number
 
 **替代接口：** [getRawDataCapacity](arkts-ipc-rpc-messagesequence-c.md#getrawdatacapacity)()
 
-<!--Device-MessageParcel-getRawDataCapacity(): number--><!--Device-MessageParcel-getRawDataCapacity(): number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -257,50 +312,27 @@ getRawDataCapacity(): number
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let parcel = new rpc.MessageParcel();
-  let result = parcel.getRawDataCapacity();
-  hilog.info(0x0000, 'testTag', 'parcel get RawDataCapacity result is ' + result);
+  let sequence = rpc.MessageSequence.create();
+  let result = sequence.getRawDataCapacity();
+  hilog.info(0x0000, 'testTag', 'sequence get RawDataCapacity result is ' + result);
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'error ' + error);
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
-
-## getReadPosition
-
-```TypeScript
-getReadPosition(): number
-```
-
-获取MessageParcel的读位置。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [getReadPosition](arkts-ipc-rpc-messagesequence-c.md#getreadposition)()
-
-<!--Device-MessageParcel-getReadPosition(): number--><!--Device-MessageParcel-getReadPosition(): number-End-->
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| number | 返回MessageParcel实例中的当前读取位置。 |
-
-**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let data = rpc.MessageParcel.create();
-  let readPos = data.getReadPosition();
-  hilog.info(0x0000, 'testTag', 'readPos is ' + readPos);
+  let parcel = new rpc.MessageParcel();
+  let result = parcel.getRawDataCapacity();
+  hilog.info(0x0000, 'testTag', 'parcel get RawDataCapacity result is ' + result);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
@@ -320,8 +352,6 @@ getReadableBytes(): number
 
 **替代接口：** [getReadableBytes](arkts-ipc-rpc-messagesequence-c.md#getreadablebytes)()
 
-<!--Device-MessageParcel-getReadableBytes(): number--><!--Device-MessageParcel-getReadableBytes(): number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -335,12 +365,83 @@ getReadableBytes(): number
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeString("hello world");
+  let result = data.getReadableBytes();
+  hilog.info(0x0000, 'testTag', 'RpcServer: getReadableBytes is ' + result);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
   data.writeInt(1);
   let result = data.getReadableBytes();
   hilog.info(0x0000, 'testTag', 'RpcServer: getReadableBytes is ' + result);
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'error ' + error);
+}
+```
+
+## getReadPosition
+
+```TypeScript
+getReadPosition(): number
+```
+
+获取MessageParcel的读位置。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [getReadPosition](arkts-ipc-rpc-messagesequence-c.md#getreadposition)()
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 返回MessageParcel实例中的当前读取位置。 |
+
+**示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeString("hello world");
+  let readPos = data.getReadPosition();
+  hilog.info(0x0000, 'testTag', 'readPos is ' + readPos);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  let data = rpc.MessageParcel.create();
+  let readPos = data.getReadPosition();
+  hilog.info(0x0000, 'testTag', 'readPos is ' + readPos);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
@@ -360,8 +461,6 @@ getSize(): number
 
 **替代接口：** [getSize](arkts-ipc-rpc-messagesequence-c.md#getsize)()
 
-<!--Device-MessageParcel-getSize(): number--><!--Device-MessageParcel-getSize(): number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -371,6 +470,22 @@ getSize(): number
 | number | 获取的MessageParcel的数据大小。以字节为单位。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  let size = data.getSize();
+  hilog.info(0x0000, 'testTag', 'size is ' + size);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -400,8 +515,6 @@ getWritableBytes(): number
 
 **替代接口：** [getWritableBytes](arkts-ipc-rpc-messagesequence-c.md#getwritablebytes)()
 
-<!--Device-MessageParcel-getWritableBytes(): number--><!--Device-MessageParcel-getWritableBytes(): number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -411,6 +524,23 @@ getWritableBytes(): number
 | number | 获取到的MessageParcel的可写字节空间。以字节为单位。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.setCapacity(100);
+  let getWritableBytes = data.getWritableBytes();
+  hilog.info(0x0000, 'testTag', 'RpcServer: getWritableBytes is ' + getWritableBytes);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -440,8 +570,6 @@ getWritePosition(): number
 
 **替代接口：** [getWritePosition](arkts-ipc-rpc-messagesequence-c.md#getwriteposition)()
 
-<!--Device-MessageParcel-getWritePosition(): number--><!--Device-MessageParcel-getWritePosition(): number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -451,6 +579,23 @@ getWritePosition(): number
 | number | 返回MessageParcel实例中的当前写入位置。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeInt(10);
+  let bwPos = data.getWritePosition();
+  hilog.info(0x0000, 'testTag', 'bwPos is ' + bwPos);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -480,8 +625,6 @@ readAshmem(): Ashmem
 
 **替代接口：** [readAshmem](arkts-ipc-rpc-messagesequence-c.md#readashmem)()
 
-<!--Device-MessageParcel-readAshmem(): Ashmem--><!--Device-MessageParcel-readAshmem(): Ashmem-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -491,6 +634,44 @@ readAshmem(): Ashmem
 | [Ashmem](arkts-ipc-rpc-ashmem-c.md) | 返回匿名共享对象。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let sequence = rpc.MessageSequence.create();
+  let ashmem = rpc.Ashmem.create("ashmem", 1024);
+  // ashmem里写入数据
+  let buffer = new ArrayBuffer(1024);
+  let int32View = new Int32Array(buffer);
+  for (let i = 0; i < int32View.length; i++) {
+    int32View[i] = i * 2 + 1;
+  }
+  let size = buffer.byteLength;
+  ashmem.mapReadWriteAshmem();
+  ashmem.writeDataToAshmem(buffer, size, 0);
+  // 将传递的数据大小写入messageSequence对象中
+  sequence.writeInt(size);
+  // 将ashmem对象写入messageSequence对象中
+  sequence.writeAshmem(ashmem);
+
+  // 读取传递的数据大小
+  let dataSize = sequence.readInt();
+  // 从messageSequence对象中读取ashmem对象
+  let ashmem1 = sequence.readAshmem();
+  // 从ashmem对象中读取数据
+  ashmem1.mapReadWriteAshmem();
+  let readResult = ashmem1.readDataFromAshmem(dataSize, 0);
+  let readInt32View = new Int32Array(readResult);
+  hilog.info(0x0000, 'testTag', 'read from Ashmem result is ' + readInt32View);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -522,8 +703,6 @@ readBoolean(): boolean
 
 **替代接口：** [readBoolean](arkts-ipc-rpc-messagesequence-c.md#readboolean)()
 
-<!--Device-MessageParcel-readBoolean(): boolean--><!--Device-MessageParcel-readBoolean(): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -533,6 +712,23 @@ readBoolean(): boolean
 | boolean | 返回读取到的布尔值。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeBoolean(false);
+  let ret = data.readBoolean();
+  hilog.info(0x0000, 'testTag', 'readBoolean is ' + ret);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -563,8 +759,6 @@ readBooleanArray(dataIn: boolean[]): void
 
 **替代接口：** [readBooleanArray](arkts-ipc-rpc-messagesequence-c.md#readbooleanarray)(dataIn: boolean[])
 
-<!--Device-MessageParcel-readBooleanArray(dataIn: boolean[]): void--><!--Device-MessageParcel-readBooleanArray(dataIn: boolean[]): void-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -574,6 +768,24 @@ readBooleanArray(dataIn: boolean[]): void
 | dataIn | boolean[] | 是 | 要读取的布尔数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeBooleanArray([false, true, false]);
+  let array: Array<boolean> = new Array(3);
+  data.readBooleanArray(array);
+  hilog.info(0x0000, 'testTag', 'readBooleanArray is ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -605,8 +817,6 @@ readBooleanArray(): boolean[]
 
 **替代接口：** [readBooleanArray](arkts-ipc-rpc-messagesequence-c.md#readbooleanarray)()
 
-<!--Device-MessageParcel-readBooleanArray(): boolean[]--><!--Device-MessageParcel-readBooleanArray(): boolean[]-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -616,6 +826,23 @@ readBooleanArray(): boolean[]
 | boolean[] | 返回布尔数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeBooleanArray([false, true, false]);
+  let array = data.readBooleanArray();
+  hilog.info(0x0000, 'testTag', 'readBooleanArray is ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -646,8 +873,6 @@ readByte(): number
 
 **替代接口：** [readByte](arkts-ipc-rpc-messagesequence-c.md#readbyte)()
 
-<!--Device-MessageParcel-readByte(): number--><!--Device-MessageParcel-readByte(): number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -657,6 +882,23 @@ readByte(): number
 | number | 返回字节值。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeByte(2);
+  let ret = data.readByte();
+  hilog.info(0x0000, 'testTag', 'readByte is: ' +  ret);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -687,8 +929,6 @@ readByteArray(dataIn: number[]): void
 
 **替代接口：** [readByteArray](arkts-ipc-rpc-messagesequence-c.md#readbytearray)(dataIn: int[])
 
-<!--Device-MessageParcel-readByteArray(dataIn: number[]): void--><!--Device-MessageParcel-readByteArray(dataIn: number[]): void-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -698,6 +938,26 @@ readByteArray(dataIn: number[]): void
 | dataIn | number[] | 是 | 要读取的字节数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  let ByteArrayVar = [1, 2, 3, 4, 5];
+  // 将字节数组写入MessageSequence对象
+  data.writeByteArray(ByteArrayVar);
+  let array: Array<number> = new Array(5);
+  data.readByteArray(array);
+  hilog.info(0x0000, 'testTag', 'readByteArray is  ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -729,8 +989,6 @@ readByteArray(): number[]
 
 **替代接口：** [readByteArray](arkts-ipc-rpc-messagesequence-c.md#readbytearray)()
 
-<!--Device-MessageParcel-readByteArray(): number[]--><!--Device-MessageParcel-readByteArray(): number[]-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -740,6 +998,25 @@ readByteArray(): number[]
 | number[] | 返回字节数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  let ByteArrayVar = [1, 2, 3, 4, 5];
+  // 将字节数组写入MessageSequence对象
+  data.writeByteArray(ByteArrayVar);
+  let array = data.readByteArray();
+  hilog.info(0x0000, 'testTag', 'readByteArray is  ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -771,8 +1048,6 @@ readChar(): number
 
 **替代接口：** [readChar](arkts-ipc-rpc-messagesequence-c.md#readchar)()
 
-<!--Device-MessageParcel-readChar(): number--><!--Device-MessageParcel-readChar(): number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -782,6 +1057,23 @@ readChar(): number
 | number | 返回单个字符值。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeChar(97);
+  let ret = data.readChar();
+  hilog.info(0x0000, 'testTag', 'readChar is ' + ret);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -812,8 +1104,6 @@ readCharArray(dataIn: number[]): void
 
 **替代接口：** [readCharArray](arkts-ipc-rpc-messagesequence-c.md#readchararray)(dataIn: int[])
 
-<!--Device-MessageParcel-readCharArray(dataIn: number[]): void--><!--Device-MessageParcel-readCharArray(dataIn: number[]): void-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -823,6 +1113,24 @@ readCharArray(dataIn: number[]): void
 | dataIn | number[] | 是 | 要读取的单个字符数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeCharArray([97, 98, 88]);
+  let array: Array<number> = new Array(3);
+  data.readCharArray(array);
+  hilog.info(0x0000, 'testTag', 'readCharArray is ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -854,8 +1162,6 @@ readCharArray(): number[]
 
 **替代接口：** [readCharArray](arkts-ipc-rpc-messagesequence-c.md#readchararray)()
 
-<!--Device-MessageParcel-readCharArray(): number[]--><!--Device-MessageParcel-readCharArray(): number[]-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -865,6 +1171,23 @@ readCharArray(): number[]
 | number[] | 返回单个字符数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeCharArray([97, 98, 88]);
+  let array = data.readCharArray();
+  hilog.info(0x0000, 'testTag', 'readCharArray is ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -895,8 +1218,6 @@ readDouble(): number
 
 **替代接口：** [readDouble](arkts-ipc-rpc-messagesequence-c.md#readdouble)()
 
-<!--Device-MessageParcel-readDouble(): number--><!--Device-MessageParcel-readDouble(): number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -906,6 +1227,23 @@ readDouble(): number
 | number | 返回双精度浮点值。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeDouble(10.2);
+  let ret = data.readDouble();
+  hilog.info(0x0000, 'testTag', 'readDouble is ' +  ret);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -936,8 +1274,6 @@ readDoubleArray(dataIn: number[]): void
 
 **替代接口：** [readDoubleArray](arkts-ipc-rpc-messagesequence-c.md#readdoublearray)(dataIn: double[])
 
-<!--Device-MessageParcel-readDoubleArray(dataIn: number[]): void--><!--Device-MessageParcel-readDoubleArray(dataIn: number[]): void-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -947,6 +1283,24 @@ readDoubleArray(dataIn: number[]): void
 | dataIn | number[] | 是 | 要读取的双精度浮点数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeDoubleArray([11.1, 12.2, 13.3]);
+  let array: Array<number> = new Array(3);
+  data.readDoubleArray(array);
+  hilog.info(0x0000, 'testTag', 'readDoubleArray is ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -978,8 +1332,6 @@ readDoubleArray(): number[]
 
 **替代接口：** [readDoubleArray](arkts-ipc-rpc-messagesequence-c.md#readdoublearray)()
 
-<!--Device-MessageParcel-readDoubleArray(): number[]--><!--Device-MessageParcel-readDoubleArray(): number[]-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -989,6 +1341,23 @@ readDoubleArray(): number[]
 | number[] | 返回双精度浮点数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeDoubleArray([11.1, 12.2, 13.3]);
+  let array = data.readDoubleArray();
+  hilog.info(0x0000, 'testTag', 'readDoubleArray is ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1018,8 +1387,6 @@ readException(): void
 **废弃版本：** 9
 
 **替代接口：** [readException](arkts-ipc-rpc-messagesequence-c.md#readexception)()
-
-<!--Device-MessageParcel-readException(): void--><!--Device-MessageParcel-readException(): void-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -1062,13 +1429,52 @@ let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // 
 let connectionId = context.connectServiceExtensionAbility(want, connect);
 ```
 
+上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的sendMessageRequest接口方法发送消息
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+try {
+  let option = new rpc.MessageOption();
+  let data = rpc.MessageSequence.create();
+  let reply = rpc.MessageSequence.create();
+  data.writeNoException();
+  data.writeInt(6);
+  if (proxy != undefined) {
+    proxy.sendMessageRequest(1, data, reply, option)
+      .then((result: rpc.RequestResult) => {
+        if (result.errCode === 0) {
+          hilog.info(0x0000, 'testTag', 'sendMessageRequest got result');
+          result.reply.readException();
+          let num = result.reply.readInt();
+          hilog.info(0x0000, 'testTag', 'reply num: ' + num);
+        } else {
+          hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, errCode: ' + result.errCode);
+        }
+      }).catch((e: Error) => {
+        hilog.error(0x0000, 'testTag', 'sendMessageRequest got exception: ' + JSON.stringify(e));
+      }).finally(() => {
+        hilog.info(0x0000, 'testTag', 'sendMessageRequest ends, reclaim parcel');
+        data.reclaim();
+        reply.reclaim();
+      });
+  }
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
+
 上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的sendRequest接口方法发送消息
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try {
+try { 
   let option = new rpc.MessageOption();
   let data = rpc.MessageParcel.create();
   let reply = rpc.MessageParcel.create();
@@ -1094,7 +1500,7 @@ try {
       reply.reclaim();
     });
   }
-} catch (error) {
+} catch (error) { 
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
@@ -1113,8 +1519,6 @@ readFileDescriptor(): number
 
 **替代接口：** [readFileDescriptor](arkts-ipc-rpc-messagesequence-c.md#readfiledescriptor)()
 
-<!--Device-MessageParcel-readFileDescriptor(): number--><!--Device-MessageParcel-readFileDescriptor(): number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -1124,6 +1528,26 @@ readFileDescriptor(): number
 | number | 返回文件描述符。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let sequence = rpc.MessageSequence.create();
+  let filePath = "path/to/file";
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+  sequence.writeFileDescriptor(file.fd);
+  let readFD = sequence.readFileDescriptor();
+  hilog.info(0x0000, 'testTag', 'readFileDescriptor is ' + readFD);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1156,8 +1580,6 @@ readFloat(): number
 
 **替代接口：** [readFloat](arkts-ipc-rpc-messagesequence-c.md#readfloat)()
 
-<!--Device-MessageParcel-readFloat(): number--><!--Device-MessageParcel-readFloat(): number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -1167,6 +1589,23 @@ readFloat(): number
 | number | 返回双精度浮点值。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeFloat(1.2);
+  let ret = data.readFloat();
+  hilog.info(0x0000, 'testTag', 'readFloat is ' + ret);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1197,8 +1636,6 @@ readFloatArray(dataIn: number[]): void
 
 **替代接口：** [readFloatArray](arkts-ipc-rpc-messagesequence-c.md#readfloatarray)(dataIn: double[])
 
-<!--Device-MessageParcel-readFloatArray(dataIn: number[]): void--><!--Device-MessageParcel-readFloatArray(dataIn: number[]): void-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -1208,6 +1645,24 @@ readFloatArray(dataIn: number[]): void
 | dataIn | number[] | 是 | 要读取的双精度浮点数组。由于系统内部对float类型的数据是按照double处理的，使用时对于数组所占的总字节数应按照double类型来计算。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeFloatArray([1.2, 1.3, 1.4]);
+  let array: Array<number> = new Array(3);
+  data.readFloatArray(array);
+  hilog.info(0x0000, 'testTag', 'readFloatArray is ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1239,8 +1694,6 @@ readFloatArray(): number[]
 
 **替代接口：** [readFloatArray](arkts-ipc-rpc-messagesequence-c.md#readfloatarray)()
 
-<!--Device-MessageParcel-readFloatArray(): number[]--><!--Device-MessageParcel-readFloatArray(): number[]-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -1250,6 +1703,23 @@ readFloatArray(): number[]
 | number[] | 返回双精度浮点数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeFloatArray([1.2, 1.3, 1.4]);
+  let array = data.readFloatArray();
+  hilog.info(0x0000, 'testTag', 'readFloatArray is ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1280,8 +1750,6 @@ readInt(): number
 
 **替代接口：** [readInt](arkts-ipc-rpc-messagesequence-c.md#readint)()
 
-<!--Device-MessageParcel-readInt(): number--><!--Device-MessageParcel-readInt(): number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -1291,6 +1759,24 @@ readInt(): number
 | number | 返回整数值。 |
 
 **示例**
+
+```TypeScript
+// 在原子化服务中，本示例仅用于说明readInt()接口的使用方法，示例中rpc.MessageSequence.create()暂不支持在原子化服务中调用。
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeInt(10);
+  let ret = data.readInt();
+  hilog.info(0x0000, 'testTag', 'readInt is ' + ret);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1321,8 +1807,6 @@ readIntArray(dataIn: number[]): void
 
 **替代接口：** [readIntArray](arkts-ipc-rpc-messagesequence-c.md#readintarray)(dataIn: int[])
 
-<!--Device-MessageParcel-readIntArray(dataIn: number[]): void--><!--Device-MessageParcel-readIntArray(dataIn: number[]): void-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -1332,6 +1816,24 @@ readIntArray(dataIn: number[]): void
 | dataIn | number[] | 是 | 要读取的整数数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeIntArray([100, 111, 112]);
+  let array: Array<number> = new Array(3);
+  data.readIntArray(array);
+  hilog.info(0x0000, 'testTag', 'readIntArray is  ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1363,8 +1865,6 @@ readIntArray(): number[]
 
 **替代接口：** [readIntArray](arkts-ipc-rpc-messagesequence-c.md#readintarray)()
 
-<!--Device-MessageParcel-readIntArray(): number[]--><!--Device-MessageParcel-readIntArray(): number[]-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -1374,6 +1874,23 @@ readIntArray(): number[]
 | number[] | 返回整数数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeIntArray([100, 111, 112]);
+  let array = data.readIntArray();
+  hilog.info(0x0000, 'testTag', 'readIntArray is ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1404,8 +1921,6 @@ readInterfaceToken(): string
 
 **替代接口：** [readInterfaceToken](arkts-ipc-rpc-messagesequence-c.md#readinterfacetoken)()
 
-<!--Device-MessageParcel-readInterfaceToken(): string--><!--Device-MessageParcel-readInterfaceToken(): string-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -1415,6 +1930,23 @@ readInterfaceToken(): string
 | string | 返回读取到的接口描述符。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeInterfaceToken("aaa");
+  let interfaceToken = data.readInterfaceToken();
+  hilog.info(0x0000, 'testTag', 'RpcServer: interfaceToken is ' + interfaceToken);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1444,8 +1976,6 @@ readLong(): number
 
 **替代接口：** [readLong](arkts-ipc-rpc-messagesequence-c.md#readlong)()
 
-<!--Device-MessageParcel-readLong(): number--><!--Device-MessageParcel-readLong(): number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -1455,6 +1985,23 @@ readLong(): number
 | number | 返回长整数值。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeLong(10000);
+  let ret = data.readLong();
+  hilog.info(0x0000, 'testTag', 'readLong is ' + ret);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1485,8 +2032,6 @@ readLongArray(dataIn: number[]): void
 
 **替代接口：** [readLongArray](arkts-ipc-rpc-messagesequence-c.md#readlongarray)(dataIn: long[])
 
-<!--Device-MessageParcel-readLongArray(dataIn: number[]): void--><!--Device-MessageParcel-readLongArray(dataIn: number[]): void-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -1496,6 +2041,24 @@ readLongArray(dataIn: number[]): void
 | dataIn | number[] | 是 | 要读取的长整数数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeLongArray([1111, 1112, 1113]);
+  let array: Array<number> = new Array(3);
+  data.readLongArray(array);
+  hilog.info(0x0000, 'testTag', 'readLongArray is ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1527,8 +2090,6 @@ readLongArray(): number[]
 
 **替代接口：** [readLongArray](arkts-ipc-rpc-messagesequence-c.md#readlongarray)()
 
-<!--Device-MessageParcel-readLongArray(): number[]--><!--Device-MessageParcel-readLongArray(): number[]-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -1538,6 +2099,23 @@ readLongArray(): number[]
 | number[] | 返回长整数数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeLongArray([1111, 1112, 1113]);
+  let array = data.readLongArray();
+  hilog.info(0x0000, 'testTag', 'readLongArray is ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1568,8 +2146,6 @@ readRawData(size: number): number[]
 
 **替代接口：** [readRawDataBuffer](arkts-ipc-rpc-messagesequence-c.md#readrawdatabuffer)(size: int)
 
-<!--Device-MessageParcel-readRawData(size: number): number[]--><!--Device-MessageParcel-readRawData(size: number): number[]-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -1585,6 +2161,25 @@ readRawData(size: number): number[]
 | number[] | 返回原始数据（以字节为单位）。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let sequence = rpc.MessageSequence.create();
+  let arr = [1, 2, 3, 4, 5];
+  sequence.writeRawData(arr, arr.length);
+  let size = arr.length;
+  let result = sequence.readRawData(size);
+  hilog.info(0x0000, 'testTag', 'sequence read raw data result is ' + result);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1616,8 +2211,6 @@ readRemoteObject(): IRemoteObject
 
 **替代接口：** [readRemoteObject](arkts-ipc-rpc-messagesequence-c.md#readremoteobject)()
 
-<!--Device-MessageParcel-readRemoteObject(): IRemoteObject--><!--Device-MessageParcel-readRemoteObject(): IRemoteObject-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -1627,6 +2220,35 @@ readRemoteObject(): IRemoteObject
 | [IRemoteObject](arkts-ipc-rpc-iremoteobject-c.md) | 读取到的远程对象，用于IPC/RPC通信。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+  }
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption): boolean | Promise<boolean> {
+    // 根据业务实际逻辑，进行相应处理
+    return true;
+  }
+}
+
+try {
+  let data = rpc.MessageSequence.create();
+  let testRemoteObject = new TestRemoteObject("testObject");
+  data.writeRemoteObject(testRemoteObject);
+  let proxy = data.readRemoteObject();
+  hilog.info(0x0000, 'testTag', 'readRemoteObject is ' + proxy);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1668,8 +2290,6 @@ readRemoteObjectArray(objects: IRemoteObject[]): void
 
 **替代接口：** [readRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#readremoteobjectarray)(objects: IRemoteObject[])
 
-<!--Device-MessageParcel-readRemoteObjectArray(objects: IRemoteObject[]): void--><!--Device-MessageParcel-readRemoteObjectArray(objects: IRemoteObject[]): void-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -1679,6 +2299,36 @@ readRemoteObjectArray(objects: IRemoteObject[]): void
 | objects | [IRemoteObject](arkts-ipc-rpc-iremoteobject-c.md)[] | 是 | 从MessageParcel读取的IRemoteObject对象数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+  }
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption): boolean | Promise<boolean> {
+    // 根据业务实际逻辑，进行相应处理
+    return true;
+  }
+}
+
+try {
+  let a = [new TestRemoteObject("testObject1"), new TestRemoteObject("testObject2"), new TestRemoteObject("testObject3")];
+  let data = rpc.MessageSequence.create();
+  data.writeRemoteObjectArray(a);
+  let b: Array<rpc.IRemoteObject> = new Array(3);
+  data.readRemoteObjectArray(b);
+  hilog.info(0x0000, 'testTag', 'readRemoteObjectArray is ' + b);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1722,8 +2372,6 @@ readRemoteObjectArray(): IRemoteObject[]
 
 **替代接口：** [readRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#readremoteobjectarray)(objects: IRemoteObject[])
 
-<!--Device-MessageParcel-readRemoteObjectArray(): IRemoteObject[]--><!--Device-MessageParcel-readRemoteObjectArray(): IRemoteObject[]-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -1733,6 +2381,34 @@ readRemoteObjectArray(): IRemoteObject[]
 | [IRemoteObject](arkts-ipc-rpc-iremoteobject-c.md)[] | 返回IRemoteObject对象数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+  }
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption): boolean | Promise<boolean> {
+    // 根据业务实际逻辑，进行相应处理
+    return true;
+  }
+}
+
+try {
+  let a = [new TestRemoteObject("testObject1"), new TestRemoteObject("testObject2"), new TestRemoteObject("testObject3")];
+  let data = rpc.MessageSequence.create();
+  let b = data.readRemoteObjectArray();
+  hilog.info(0x0000, 'testTag', 'readRemoteObjectArray is ' + b);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1775,8 +2451,6 @@ readSequenceable(dataIn: Sequenceable): boolean
 **废弃版本：** 9
 
 **替代接口：** [readParcelable](arkts-ipc-rpc-messagesequence-c.md#readparcelable)(dataIn: Parcelable)
-
-<!--Device-MessageParcel-readSequenceable(dataIn: Sequenceable): boolean--><!--Device-MessageParcel-readSequenceable(dataIn: Sequenceable): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -1844,8 +2518,6 @@ readSequenceableArray(sequenceableArray: Sequenceable[]): void
 
 **替代接口：** [readParcelableArray](arkts-ipc-rpc-messagesequence-c.md#readparcelablearray)(parcelableArray: Parcelable[])
 
-<!--Device-MessageParcel-readSequenceableArray(sequenceableArray: Sequenceable[]): void--><!--Device-MessageParcel-readSequenceableArray(sequenceableArray: Sequenceable[]): void-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -1908,8 +2580,6 @@ readShort(): number
 
 **替代接口：** [readShort](arkts-ipc-rpc-messagesequence-c.md#readshort)()
 
-<!--Device-MessageParcel-readShort(): number--><!--Device-MessageParcel-readShort(): number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -1919,6 +2589,23 @@ readShort(): number
 | number | 返回短整数值。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeShort(8);
+  let ret = data.readShort();
+  hilog.info(0x0000, 'testTag', 'readShort is ' + ret);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1949,8 +2636,6 @@ readShortArray(dataIn: number[]): void
 
 **替代接口：** [readShortArray](arkts-ipc-rpc-messagesequence-c.md#readshortarray)(dataIn: int[])
 
-<!--Device-MessageParcel-readShortArray(dataIn: number[]): void--><!--Device-MessageParcel-readShortArray(dataIn: number[]): void-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -1960,6 +2645,24 @@ readShortArray(dataIn: number[]): void
 | dataIn | number[] | 是 | 要读取的短整数数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeShortArray([11, 12, 13]);
+  let array: Array<number> = new Array(3);
+  data.readShortArray(array);
+  hilog.info(0x0000, 'testTag', 'readShortArray is  ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1991,8 +2694,6 @@ readShortArray(): number[]
 
 **替代接口：** [readShortArray](arkts-ipc-rpc-messagesequence-c.md#readshortarray)()
 
-<!--Device-MessageParcel-readShortArray(): number[]--><!--Device-MessageParcel-readShortArray(): number[]-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -2002,6 +2703,23 @@ readShortArray(): number[]
 | number[] | 返回短整数数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeShortArray([11, 12, 13]);
+  let array = data.readShortArray();
+  hilog.info(0x0000, 'testTag', 'readShortArray is ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2032,8 +2750,6 @@ readString(): string
 
 **替代接口：** [readString](arkts-ipc-rpc-messagesequence-c.md#readstring)()
 
-<!--Device-MessageParcel-readString(): string--><!--Device-MessageParcel-readString(): string-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -2043,6 +2759,24 @@ readString(): string
 | string | 返回字符串值。 |
 
 **示例**
+
+```TypeScript
+// 在原子化服务中，本示例仅用于说明readString()接口的使用方法，示例中rpc.MessageSequence.create()暂不支持在原子化服务中调用。
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeString('abc');
+  let ret = data.readString();
+  hilog.info(0x0000, 'testTag', 'readString is ' + ret);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2073,8 +2807,6 @@ readStringArray(dataIn: string[]): void
 
 **替代接口：** [readStringArray](arkts-ipc-rpc-messagesequence-c.md#readstringarray)(dataIn: string[])
 
-<!--Device-MessageParcel-readStringArray(dataIn: string[]): void--><!--Device-MessageParcel-readStringArray(dataIn: string[]): void-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -2084,6 +2816,24 @@ readStringArray(dataIn: string[]): void
 | dataIn | string[] | 是 | 要读取的字符串数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeStringArray(["abc", "def"]);
+  let array: Array<string> = new Array(2);
+  data.readStringArray(array);
+  hilog.info(0x0000, 'testTag', 'readStringArray is ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2115,8 +2865,6 @@ readStringArray(): string[]
 
 **替代接口：** [readStringArray](arkts-ipc-rpc-messagesequence-c.md#readstringarray)()
 
-<!--Device-MessageParcel-readStringArray(): string[]--><!--Device-MessageParcel-readStringArray(): string[]-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -2126,6 +2874,23 @@ readStringArray(): string[]
 | string[] | 返回字符串数组。 |
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = rpc.MessageSequence.create();
+  data.writeStringArray(["abc", "def"]);
+  let array = data.readStringArray();
+  hilog.info(0x0000, 'testTag', 'readStringArray is ' + array);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2156,11 +2921,24 @@ reclaim(): void
 
 **替代接口：** [reclaim](arkts-ipc-rpc-messagesequence-c.md#reclaim)()
 
-<!--Device-MessageParcel-reclaim(): void--><!--Device-MessageParcel-reclaim(): void-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let reply = rpc.MessageSequence.create();
+  reply.reclaim();
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2187,8 +2965,6 @@ rewindRead(pos: number): boolean
 **废弃版本：** 9
 
 **替代接口：** [rewindRead](arkts-ipc-rpc-messagesequence-c.md#rewindread)(pos: int)
-
-<!--Device-MessageParcel-rewindRead(pos: number): boolean--><!--Device-MessageParcel-rewindRead(pos: number): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -2238,8 +3014,6 @@ rewindWrite(pos: number): boolean
 
 **替代接口：** [rewindWrite](arkts-ipc-rpc-messagesequence-c.md#rewindwrite)(pos: int)
 
-<!--Device-MessageParcel-rewindWrite(pos: number): boolean--><!--Device-MessageParcel-rewindWrite(pos: number): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -2286,8 +3060,6 @@ setCapacity(size: number): boolean
 
 **替代接口：** [setCapacity](arkts-ipc-rpc-messagesequence-c.md#setcapacity)(size: int)
 
-<!--Device-MessageParcel-setCapacity(size: number): boolean--><!--Device-MessageParcel-setCapacity(size: number): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -2331,8 +3103,6 @@ setSize(size: number): boolean
 
 **替代接口：** [setSize](arkts-ipc-rpc-messagesequence-c.md#setsize)(size: int)
 
-<!--Device-MessageParcel-setSize(size: number): boolean--><!--Device-MessageParcel-setSize(size: number): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -2375,8 +3145,6 @@ writeAshmem(ashmem: Ashmem): boolean
 **废弃版本：** 9
 
 **替代接口：** [writeAshmem](arkts-ipc-rpc-messagesequence-c.md#writeashmem)(ashmem: Ashmem)
-
-<!--Device-MessageParcel-writeAshmem(ashmem: Ashmem): boolean--><!--Device-MessageParcel-writeAshmem(ashmem: Ashmem): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -2422,8 +3190,6 @@ writeBoolean(val: boolean): boolean
 
 **替代接口：** [writeBoolean](arkts-ipc-rpc-messagesequence-c.md#writeboolean)(val: boolean)
 
-<!--Device-MessageParcel-writeBoolean(val: boolean): boolean--><!--Device-MessageParcel-writeBoolean(val: boolean): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -2466,8 +3232,6 @@ writeBooleanArray(booleanArray: boolean[]): boolean
 **废弃版本：** 9
 
 **替代接口：** [writeBooleanArray](arkts-ipc-rpc-messagesequence-c.md#writebooleanarray)(booleanArray: boolean[])
-
-<!--Device-MessageParcel-writeBooleanArray(booleanArray: boolean[]): boolean--><!--Device-MessageParcel-writeBooleanArray(booleanArray: boolean[]): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -2512,8 +3276,6 @@ writeByte(val: number): boolean
 
 **替代接口：** [writeByte](arkts-ipc-rpc-messagesequence-c.md#writebyte)(val: int)
 
-<!--Device-MessageParcel-writeByte(val: number): boolean--><!--Device-MessageParcel-writeByte(val: number): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -2556,8 +3318,6 @@ writeByteArray(byteArray: number[]): boolean
 **废弃版本：** 9
 
 **替代接口：** [writeByteArray](arkts-ipc-rpc-messagesequence-c.md#writebytearray)(byteArray: int[])
-
-<!--Device-MessageParcel-writeByteArray(byteArray: number[]): boolean--><!--Device-MessageParcel-writeByteArray(byteArray: number[]): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -2603,8 +3363,6 @@ writeChar(val: number): boolean
 
 **替代接口：** [writeChar](arkts-ipc-rpc-messagesequence-c.md#writechar)(val: int)
 
-<!--Device-MessageParcel-writeChar(val: number): boolean--><!--Device-MessageParcel-writeChar(val: number): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -2647,8 +3405,6 @@ writeCharArray(charArray: number[]): boolean
 **废弃版本：** 9
 
 **替代接口：** [writeCharArray](arkts-ipc-rpc-messagesequence-c.md#writechararray)(charArray: int[])
-
-<!--Device-MessageParcel-writeCharArray(charArray: number[]): boolean--><!--Device-MessageParcel-writeCharArray(charArray: number[]): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -2693,8 +3449,6 @@ writeDouble(val: number): boolean
 
 **替代接口：** [writeDouble](arkts-ipc-rpc-messagesequence-c.md#writedouble)(val: double)
 
-<!--Device-MessageParcel-writeDouble(val: number): boolean--><!--Device-MessageParcel-writeDouble(val: number): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -2738,8 +3492,6 @@ writeDoubleArray(doubleArray: number[]): boolean
 
 **替代接口：** [writeDoubleArray](arkts-ipc-rpc-messagesequence-c.md#writedoublearray)(doubleArray: double[])
 
-<!--Device-MessageParcel-writeDoubleArray(doubleArray: number[]): boolean--><!--Device-MessageParcel-writeDoubleArray(doubleArray: number[]): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -2782,8 +3534,6 @@ writeFileDescriptor(fd: number): boolean
 **废弃版本：** 9
 
 **替代接口：** [writeFileDescriptor](arkts-ipc-rpc-messagesequence-c.md#writefiledescriptor)(fd: int)
-
-<!--Device-MessageParcel-writeFileDescriptor(fd: number): boolean--><!--Device-MessageParcel-writeFileDescriptor(fd: number): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -2831,8 +3581,6 @@ writeFloat(val: number): boolean
 
 **替代接口：** [writeFloat](arkts-ipc-rpc-messagesequence-c.md#writefloat)(val: double)
 
-<!--Device-MessageParcel-writeFloat(val: number): boolean--><!--Device-MessageParcel-writeFloat(val: number): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -2875,8 +3623,6 @@ writeFloatArray(floatArray: number[]): boolean
 **废弃版本：** 9
 
 **替代接口：** [writeFloatArray](arkts-ipc-rpc-messagesequence-c.md#writefloatarray)(floatArray: double[])
-
-<!--Device-MessageParcel-writeFloatArray(floatArray: number[]): boolean--><!--Device-MessageParcel-writeFloatArray(floatArray: number[]): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -2921,8 +3667,6 @@ writeInt(val: number): boolean
 
 **替代接口：** [writeInt](arkts-ipc-rpc-messagesequence-c.md#writeint)(val: int)
 
-<!--Device-MessageParcel-writeInt(val: number): boolean--><!--Device-MessageParcel-writeInt(val: number): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -2965,8 +3709,6 @@ writeIntArray(intArray: number[]): boolean
 **废弃版本：** 9
 
 **替代接口：** [writeIntArray](arkts-ipc-rpc-messagesequence-c.md#writeintarray)(intArray: int[])
-
-<!--Device-MessageParcel-writeIntArray(intArray: number[]): boolean--><!--Device-MessageParcel-writeIntArray(intArray: number[]): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -3011,8 +3753,6 @@ writeInterfaceToken(token: string): boolean
 
 **替代接口：** [writeInterfaceToken](arkts-ipc-rpc-messagesequence-c.md#writeinterfacetoken)(token: string)
 
-<!--Device-MessageParcel-writeInterfaceToken(token: string): boolean--><!--Device-MessageParcel-writeInterfaceToken(token: string): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -3055,8 +3795,6 @@ writeLong(val: number): boolean
 **废弃版本：** 9
 
 **替代接口：** [writeLong](arkts-ipc-rpc-messagesequence-c.md#writelong)(val: long)
-
-<!--Device-MessageParcel-writeLong(val: number): boolean--><!--Device-MessageParcel-writeLong(val: number): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -3101,8 +3839,6 @@ writeLongArray(longArray: number[]): boolean
 
 **替代接口：** [writeLongArray](arkts-ipc-rpc-messagesequence-c.md#writelongarray)(longArray: long[])
 
-<!--Device-MessageParcel-writeLongArray(longArray: number[]): boolean--><!--Device-MessageParcel-writeLongArray(longArray: number[]): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -3146,11 +3882,38 @@ writeNoException(): void
 
 **替代接口：** [writeNoException](arkts-ipc-rpc-messagesequence-c.md#writenoexception)()
 
-<!--Device-MessageParcel-writeNoException(): void--><!--Device-MessageParcel-writeNoException(): void-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class TestRemoteObject extends rpc.RemoteObject {
+  constructor(descriptor: string) {
+    super(descriptor);
+  }
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption): boolean | Promise<boolean> {
+    if (code === 1) {
+      hilog.info(0x0000, 'testTag', 'RpcServer: onRemoteMessageRequest called');
+      try {
+        reply.writeNoException();
+      } catch (error) {
+        let e: BusinessError = error as BusinessError;
+        hilog.error(0x0000, 'testTag', 'rpc write no exception fail, errorCode ' + e.code);
+        hilog.error(0x0000, 'testTag', 'rpc write no exception fail, errorMessage ' + e.message);
+      }
+      return true;
+    } else {
+      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+      return false;
+    }
+  }
+}
+```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -3166,7 +3929,7 @@ class TestRemoteObject extends rpc.RemoteObject {
     super(descriptor);
   }
 
-  onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: onRemoteRequest called');
       reply.writeNoException();
@@ -3192,8 +3955,6 @@ writeRawData(rawData: number[], size: number): boolean
 **废弃版本：** 9
 
 **替代接口：** [writeRawDataBuffer](arkts-ipc-rpc-messagesequence-c.md#writerawdatabuffer)(rawData: ArrayBuffer, size: int)
-
-<!--Device-MessageParcel-writeRawData(rawData: number[], size: number): boolean--><!--Device-MessageParcel-writeRawData(rawData: number[], size: number): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -3239,8 +4000,6 @@ writeRemoteObject(object: IRemoteObject): boolean
 **废弃版本：** 9
 
 **替代接口：** [writeRemoteObject](arkts-ipc-rpc-messagesequence-c.md#writeremoteobject)(obj: IRemoteObject)
-
-<!--Device-MessageParcel-writeRemoteObject(object: IRemoteObject): boolean--><!--Device-MessageParcel-writeRemoteObject(object: IRemoteObject): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -3294,8 +4053,6 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): boolean
 **废弃版本：** 9
 
 **替代接口：** [writeRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#writeremoteobjectarray)(objectArray: IRemoteObject[])
-
-<!--Device-MessageParcel-writeRemoteObjectArray(objectArray: IRemoteObject[]): boolean--><!--Device-MessageParcel-writeRemoteObjectArray(objectArray: IRemoteObject[]): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -3351,8 +4108,6 @@ writeSequenceable(val: Sequenceable): boolean
 **废弃版本：** 9
 
 **替代接口：** [writeParcelable](arkts-ipc-rpc-messagesequence-c.md#writeparcelable)(val: Parcelable)
-
-<!--Device-MessageParcel-writeSequenceable(val: Sequenceable): boolean--><!--Device-MessageParcel-writeSequenceable(val: Sequenceable): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -3416,8 +4171,6 @@ writeSequenceableArray(sequenceableArray: Sequenceable[]): boolean
 **废弃版本：** 9
 
 **替代接口：** [writeParcelableArray](arkts-ipc-rpc-messagesequence-c.md#writeparcelablearray)(parcelableArray: Parcelable[])
-
-<!--Device-MessageParcel-writeSequenceableArray(sequenceableArray: Sequenceable[]): boolean--><!--Device-MessageParcel-writeSequenceableArray(sequenceableArray: Sequenceable[]): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -3485,8 +4238,6 @@ writeShort(val: number): boolean
 
 **替代接口：** [writeShort](arkts-ipc-rpc-messagesequence-c.md#writeshort)(val: int)
 
-<!--Device-MessageParcel-writeShort(val: number): boolean--><!--Device-MessageParcel-writeShort(val: number): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -3529,8 +4280,6 @@ writeShortArray(shortArray: number[]): boolean
 **废弃版本：** 9
 
 **替代接口：** [writeShortArray](arkts-ipc-rpc-messagesequence-c.md#writeshortarray)(shortArray: int[])
-
-<!--Device-MessageParcel-writeShortArray(shortArray: number[]): boolean--><!--Device-MessageParcel-writeShortArray(shortArray: number[]): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -3575,8 +4324,6 @@ writeString(val: string): boolean
 
 **替代接口：** [writeString](arkts-ipc-rpc-messagesequence-c.md#writestring)(val: string)
 
-<!--Device-MessageParcel-writeString(val: string): boolean--><!--Device-MessageParcel-writeString(val: string): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -3620,8 +4367,6 @@ writeStringArray(stringArray: string[]): boolean
 
 **替代接口：** [writeStringArray](arkts-ipc-rpc-messagesequence-c.md#writestringarray)(stringArray: string[])
 
-<!--Device-MessageParcel-writeStringArray(stringArray: string[]): boolean--><!--Device-MessageParcel-writeStringArray(stringArray: string[]): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -3650,4 +4395,3 @@ try {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
-

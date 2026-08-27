@@ -30,27 +30,27 @@
 
 ## 接口说明
 
-几何形状绘制的常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
+几何形状绘制的常用接口如下表所示，详细的使用和参数说明请见drawing_canvas.h、drawing_point.h、drawing_rect.h、drawing_path.h、drawing_region.h和drawing_round_rect.h。
 
 | 接口 | 描述 |
 | -------- | -------- |
-| OH_Drawing_Point\* OH_Drawing_PointCreate (float x, float y) | 用于创建一个坐标点对象。 |
-| OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPoint (OH_Drawing_Canvas \*canvas, const OH_Drawing_Point2D \*point) | 用于画一个点。 |
-| OH_Drawing_Rect\* OH_Drawing_RectCreate (float left, float top, float right, float bottom) | 用于创建一个矩形对象。 |
-| void OH_Drawing_CanvasDrawArc (OH_Drawing_Canvas\*, const OH_Drawing_Rect\*, float startAngle, float sweepAngle) | 用于画一个弧。 |
-| void OH_Drawing_CanvasDrawCircle (OH_Drawing_Canvas\*, const OH_Drawing_Point\*, float radius) | 用于画一个圆形。 |
-| OH_Drawing_Path\* OH_Drawing_PathCreate (void) | 用于创建一个路径对象。 |
-| void OH_Drawing_CanvasDrawPath (OH_Drawing_Canvas\*, const OH_Drawing_Path\*) | 用于画一个自定义路径。 |
-| OH_Drawing_Region\* OH_Drawing_RegionCreate (void) | 用于创建一个区域对象。 |
-| void OH_Drawing_CanvasDrawRegion (OH_Drawing_Canvas\*, const OH_Drawing_Region\*) | 用于画一块区域。 |
-| void OH_Drawing_CanvasDrawRect (OH_Drawing_Canvas\*, const OH_Drawing_Rect\*) | 用于画一个矩形。 |
-| OH_Drawing_RoundRect\* OH_Drawing_RoundRectCreate (const OH_Drawing_Rect\*, float xRad, float yRad) | 用于创建一个圆角矩形对象。 |
-| void OH_Drawing_CanvasDrawRoundRect (OH_Drawing_Canvas\*, const OH_Drawing_RoundRect\*) | 用于画一个圆角矩形。 |
+| OH_Drawing_Point\* OH_Drawing_PointCreate(float x, float y) | 用于创建一个坐标点对象。 |
+| OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPoint(OH_Drawing_Canvas \*canvas, const OH_Drawing_Point2D \*point) | 用于画一个点。 |
+| OH_Drawing_Rect\* OH_Drawing_RectCreate(float left, float top, float right, float bottom) | 用于创建一个矩形对象。 |
+| void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas \*canvas, const OH_Drawing_Rect \*rect, float startAngle, float sweepAngle) | 用于画一个弧。 |
+| void OH_Drawing_CanvasDrawCircle(OH_Drawing_Canvas \*canvas, const OH_Drawing_Point \*point, float radius) | 用于画一个圆形。 |
+| OH_Drawing_Path\* OH_Drawing_PathCreate(void) | 用于创建一个路径对象。 |
+| void OH_Drawing_CanvasDrawPath(OH_Drawing_Canvas \*canvas, const OH_Drawing_Path \*path) | 用于画一个自定义路径。 |
+| OH_Drawing_Region\* OH_Drawing_RegionCreate(void) | 用于创建一个区域对象。 |
+| void OH_Drawing_CanvasDrawRegion(OH_Drawing_Canvas \*canvas, const OH_Drawing_Region \*region) | 用于画一块区域。 |
+| void OH_Drawing_CanvasDrawRect(OH_Drawing_Canvas \*canvas, const OH_Drawing_Rect \*rect) | 用于画一个矩形。 |
+| OH_Drawing_RoundRect\* OH_Drawing_RoundRectCreate(const OH_Drawing_Rect \*rect, float xRad, float yRad) | 用于创建一个圆角矩形对象。 |
+| void OH_Drawing_CanvasDrawRoundRect(OH_Drawing_Canvas \*canvas, const OH_Drawing_RoundRect \*roundRect) | 用于画一个圆角矩形。 |
 
 
 ## 绘制点
 
-点只能基于画笔在画布上进行绘制，通过使用OH_Drawing_CanvasDrawPoint()接口绘制点。接口接受两个参数，一个是画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)；另一个是要绘制的点的指针。
+点只能基于画笔在画布上进行绘制，通过使用OH_Drawing_CanvasDrawPoint()接口绘制点。接口接受两个参数，一个是画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见画布的获取与绘制结果的显示（C/C++）；另一个是要绘制的点的指针。
 
 简单示例如下：
 
@@ -87,14 +87,14 @@ OH_Drawing_PenDestroy(pen);
 效果如下：
 
 
-![zh-cn_image_0000002194110913](figures/zh-cn_image_0000002194110913.png)
+![Drawing-Points](figures/Drawing-Points.png)
 
 
 ## 绘制圆弧
 
 可以使用画笔或画刷在画布上进行圆弧的绘制，通过使用OH_Drawing_CanvasDrawArc()接口绘制圆弧。使用接口需要传入4个参数，分别如下：
 
-- 需要画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)。
+- 需要画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见画布的获取与绘制结果的显示（C/C++）。
 
 - 绘制圆弧还需要一个矩形，会以矩形的边为轮廓进行绘制。
 
@@ -117,7 +117,7 @@ OH_Drawing_PenSetWidth(pen, 20);
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 创建矩形对象，左上坐标为（100，200）右下坐标为（500，300）
 OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 200, 500, 300);
-// 基于矩形对象绘制圆弧，其实角度10°，扫描角度200°
+// 基于矩形对象绘制圆弧，起始角度10°，扫描角度200°
 OH_Drawing_CanvasDrawArc(canvas, rect, 10, 200);
 // 去除掉画布中的画笔
 OH_Drawing_CanvasDetachPen(canvas);
@@ -128,14 +128,14 @@ OH_Drawing_RectDestroy(rect);
 
 效果如下：
 
-![zh-cn_image_0000002158744174](figures/zh-cn_image_0000002158744174.png)
+![Drawing-Arc](figures/Drawing-Arc.png)
 
 
 ## 绘制圆
 
 可以使用画笔或画刷在画布上进行圆的绘制，通过使用OH_Drawing_CanvasDrawCircle()接口绘制圆。使用接口需要传入3个参数，分别如下：
 
-- 需要画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)。
+- 需要画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见画布的获取与绘制结果的显示（C/C++）。
 
 - 绘制圆还需要一个指向圆心点对象的指针，会以此点为圆心进行绘制。
 
@@ -167,14 +167,14 @@ OH_Drawing_PointDestroy(point);
 
 效果如下：
 
-![zh-cn_image_0000002158584390](figures/zh-cn_image_0000002158584390.png)
+![Drawing-a-Circle](figures/Drawing-a-Circle.png)
 
 
 ## 绘制路径
 
 可以使用画笔或画刷在画布上进行路径的绘制，路径具体可以用于绘制直线、弧线、贝塞尔曲线等，也可以通过路径组合的方式组成其他复杂的形状。
 
-绘制路径的相关接口和实现如下，详细的使用和参数说明请见[drawing_path/apis-arkgraphics2d/capi-drawing-path-h.md)。常用的接口如下：
+绘制路径的相关接口和实现如下，详细的使用和参数说明请见drawing_path。常用的接口如下：
 
 1. 使用OH_Drawing_PathCreate()接口可以创建一个路径对象。
 
@@ -237,12 +237,12 @@ OH_Drawing_PathDestroy(path);
 
 效果如下：
 
-![zh-cn_image_0000002194025277](figures/zh-cn_image_0000002194025277.png)
+![Drawing-a-Path](figures/Drawing-a-Path.png)
 
 
 ## 绘制区域
 
-区域不是一个特定的形状，可以设置为指定的矩形或路径，也可以对两个区域进行组合操作。可以使用画笔或画刷在画布上进行区域的绘制。详细的API说明请参考[drawing_region.h/apis-arkgraphics2d/capi-drawing-region-h.md)。
+区域不是一个特定的形状，可以设置为指定的矩形或路径，也可以对两个区域进行组合操作。可以使用画笔或画刷在画布上进行区域的绘制。详细的API说明请参考drawing_region.h。
 
 目前支持设置矩形区域和路径区域，分别通过OH_Drawing_RegionSetRect()接口和OH_Drawing_RegionSetPath()接口来设置。
 
@@ -310,7 +310,7 @@ OH_Drawing_RectDestroy(rect);
 
 效果如下：
 
-![zh-cn_image_draw_rect](figures/zh-cn_image_draw_rect.png)
+![draw-rect](figures/draw-rect.png)
 
 
 ## 绘制圆角矩形
@@ -352,7 +352,7 @@ OH_Drawing_RoundRectDestroy(roundRect);
 效果如下：
 
 
-![zh-cn_image_0000002158744170](figures/zh-cn_image_0000002158744170.png)
+![Drawing-Rounded-Rectangle](figures/Drawing-Rounded-Rectangle.png)
 
 <!--RP1-->
 ## 相关实例

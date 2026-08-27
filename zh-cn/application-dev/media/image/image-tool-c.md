@@ -12,7 +12,7 @@ Exif（Exchangeable image file format）是专门为数码相机的照片设定�
 
 在图库、相机、图片编辑等应用中，开发者可以读取图片的拍摄时间、方向、焦距、地理位置等Exif信息，也可以在需要时修改部分Exif信息。例如，当摄像机的手动镜头参数无法自动写入Exif信息，或者因相机断电导致拍摄时间错误时，可手动修正对应的Exif数据。
 
-系统目前仅支持读取和修改部分Exif信息，具体支持范围请参见[变量/apis-image-kit/capi-image-common-h.md#变量)里的OHOS_IMAGE_PROPERTY_XXX类型。不同图片格式对Exif信息的读写支持情况如下。
+系统目前仅支持读取和修改部分Exif信息，具体支持范围请参见变量里的OHOS_IMAGE_PROPERTY_XXX类型。不同图片格式对Exif信息的读写支持情况如下。
 
 | 图片格式 | 读取Exif信息 | 修改Exif信息 |
 | -------- | -------- | -------- |
@@ -24,12 +24,12 @@ Exif（Exchangeable image file format）是专门为数码相机的照片设定�
 
 ## 接口说明
 
-Exif信息的读取与编辑相关C API如下，详细介绍请参考[image_source_native.h/apis-image-kit/capi-image-source-native-h.md)。
+Exif信息的读取与编辑相关C API如下，详细介绍请参考image_source_native.h。
 
 | 接口 | 说明 |
 | -------- | -------- |
-| [OH_ImageSourceNative_GetImageProperty()/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimageproperty) | 获取指定属性键的Exif信息。 |
-| [OH_ImageSourceNative_ModifyImageProperty()/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_modifyimageproperty) | 修改指定属性键的Exif信息。 |
+| OH_ImageSourceNative_GetImageProperty() | 获取指定属性键的Exif信息。 |
+| OH_ImageSourceNative_ModifyImageProperty() | 修改指定属性键的Exif信息。 |
 
 ## 注意事项
 
@@ -125,7 +125,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 
    > **说明：**
    >
-   > 创建ImageSource对象可参考[图片解码](../image/image-source-c.md)。
+   > 创建ImageSource对象可参考图片解码。
 
    <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
    
@@ -141,9 +141,13 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
            return GetJsResult(env, IMAGE_BAD_PARAMETER);
        }
        // 修改指定属性键的值。
-       char key[MAX_STRING_LENGTH];
-       size_t keySize = MAX_STRING_LENGTH;
-       napi_get_value_string_utf8(env, argValue[0], (char *)key, sizeof(key), &keySize);
+       char key[MAX_STRING_LENGTH] = {0};
+       size_t keySize = 0;
+       if (napi_get_value_string_utf8(env, argValue[0], key, sizeof(key), &keySize) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "GetImageProperty napi_get_value_string_utf8 failed!");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       key[MAX_STRING_LENGTH - 1] = '\0';
        Image_String getKey;
        getKey.data = key;
        getKey.size = keySize;
@@ -179,18 +183,26 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
        }
    
        // 获取要修改的key值。
-       char key[MAX_STRING_LENGTH];
-       size_t keySize = MAX_STRING_LENGTH;
-       napi_get_value_string_utf8(env, argValue[0], (char *)key, sizeof(key), &keySize);
+       char key[MAX_STRING_LENGTH] = {0};
+       size_t keySize = 0;
+       if (napi_get_value_string_utf8(env, argValue[0], key, sizeof(key), &keySize) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "ModifyImageProperty key napi_get_value_string_utf8 failed!");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       key[MAX_STRING_LENGTH - 1] = '\0';
        Image_String setKey;
        setKey.data = key;
        setKey.size = keySize;
        OH_LOG_INFO(LOG_APP, "ModifyImageProperty key: %{public}s.", setKey.data);
        
        // 获取要修改的value值。
-       char value[MAX_STRING_LENGTH];
-       size_t valueSize;
-       napi_get_value_string_utf8(env, argValue[1], (char *)value, MAX_STRING_LENGTH, &valueSize);
+       char value[MAX_STRING_LENGTH] = {0};
+       size_t valueSize = 0;
+       if (napi_get_value_string_utf8(env, argValue[1], value, sizeof(value), &valueSize) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "ModifyImageProperty value napi_get_value_string_utf8 failed!");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       value[MAX_STRING_LENGTH - 1] = '\0';
        Image_String setValue;
        setValue.data = value;
        setValue.size = valueSize;

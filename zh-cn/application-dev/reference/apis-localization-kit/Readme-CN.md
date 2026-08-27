@@ -15,3 +15,5 @@
   <!--Del-->
   - [字体管理错误码](errorcode-font-manager.md)
   <!--DelEnd-->
+- 附录<!--localization-appendixe-->
+  - [Intl格式化选项效果示例](appendixes-intl-formatting-options.md)

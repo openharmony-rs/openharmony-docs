@@ -1,17 +1,14 @@
 # IccAccountInfo
 
-Defines the ICC account information.
+Icc账户信息。
 
-**起始版本：** 23
-
-<!--Device-sim-export interface IccAccountInfo--><!--Device-sim-export interface IccAccountInfo-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
 ## 导入模块
 
 ```TypeScript
-import { sim } from '@kit.TelephonyKit';
 ```
 
 ## iccId
@@ -20,13 +17,11 @@ import { sim } from '@kit.TelephonyKit';
 iccId: string
 ```
 
-Indicates the iccId for card.
+ICCID号码。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-IccAccountInfo-iccId: string--><!--Device-IccAccountInfo-iccId: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -36,13 +31,13 @@ Indicates the iccId for card.
 isActive: boolean
 ```
 
-Indicates the active status for card.
+卡是否被激活。  
+- true:激活。  
+- false：未激活。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-IccAccountInfo-isActive: boolean--><!--Device-IccAccountInfo-isActive: boolean-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -52,13 +47,13 @@ Indicates the active status for card.
 isEsim: boolean
 ```
 
-Indicates the mark card is eSim or not.
+标记卡是否是eSim。  
+- true:是eSim。  
+- false：不是eSim。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-IccAccountInfo-isEsim: boolean--><!--Device-IccAccountInfo-isEsim: boolean-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -68,13 +63,11 @@ Indicates the mark card is eSim or not.
 showName: string
 ```
 
-Indicates the display name for card.
+SIM卡显示名称。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-IccAccountInfo-showName: string--><!--Device-IccAccountInfo-showName: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -84,45 +77,38 @@ Indicates the display name for card.
 showNumber: string
 ```
 
-Indicates the display number for card.
+SIM卡显示号码。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-IccAccountInfo-showNumber: string--><!--Device-IccAccountInfo-showNumber: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
 ## simId
 
 ```TypeScript
-simId: int
+simId: number
 ```
 
-Indicates the sim Id for card.
+SIM卡ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-IccAccountInfo-simId: int--><!--Device-IccAccountInfo-simId: int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
 ## slotIndex
 
 ```TypeScript
-slotIndex: int
+slotIndex: number
 ```
 
-Indicates the card slot index number, ranging from 0 to the maximum card slot index number supported by the device.
+卡槽ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-IccAccountInfo-slotIndex: int--><!--Device-IccAccountInfo-slotIndex: int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Telephony.CoreService
-

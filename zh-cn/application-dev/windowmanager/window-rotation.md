@@ -15,7 +15,9 @@
 
 设备有四个显示方向：当用户正向握持设备时，若屏幕的宽度大于高度时，称为横屏（LANDSCAPE），与之倒置的方向则称为反向横屏（LANDSCAPE_INVERTED）；若屏幕高度大于宽度时，称为竖屏（PORTRAIT），与之倒置的方向称为反向竖屏（PORTRAIT_INVERTED）。
 
-系统会根据应用设置的旋转策略、设备当前握持方向（重力传感器Sensor角度）、系统旋转锁定开关状态（可下拉控制中心查看/设置）、应用所处的场景（比如分屏、智慧多窗悬浮窗、应用后台等），综合判断并决定应用的显示方向。系统设置旋转策略均针对主窗口生效，对非主窗口设置旋转策略不会影响显示方向。
+系统会根据应用设置的旋转策略、设备当前握持方向（重力传感器Sensor角度）、系统旋转锁定开关状态（可下拉控制中心查看/设置）、应用所处的场景（比如分屏、智慧多窗悬浮窗、应用后台等），综合判断并决定应用的显示方向。针对搭载OpenHarmony 7.0.0及以上版本的设备，系统还会结合系统智感旋转开关状态（支持智感传感器的设备，可通过**设置>系统>智感旋转**开启智感旋转开关）决定应用的显示方向。
+
+仅主窗口支持设置旋转策略，对非主窗口设置旋转策略不生效不报错，不影响显示方向。
 
 “应用所处的场景”影响显示方向的大致原则为：
 
@@ -23,19 +25,19 @@
 
 - 若应用主窗口没有全屏显示，改变旋转策略后不会立刻生效，当应用主窗口进入全屏显示后方向变化才会生效。
 
-不同旋转策略之间的差异及设备相关差异性可见[旋转策略及设备差异性](#旋转策略及设备差异性)。不同应用场景的旋转策略呈现与限制可见[旋转接口的行为限制](#旋转接口的行为限制)。
+不同旋转策略之间的差异及设备相关差异性可见旋转策略及设备差异性。不同应用场景的旋转策略呈现与限制可见旋转接口的行为限制。
 
 ## 窗口旋转与屏幕方向的关系
 
-通常说的窗口旋转是指应用调用[setPreferredOrientation()/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置旋转策略，来改变应用在屏幕上的显示方向。更准确的说法是，应用通过旋转策略改变了屏幕的显示方向，系统通过屏幕显示方向变化，来改变屏幕上应用和系统组件（桌面、状态栏、下拉控制中心、下拉通知中心等）的显示方向和布局。这里的关键点是应用设置旋转策略后，影响的不仅是应用自身，还会影响屏幕上所有可见元素，也包括后台不可见的元素。这些元素最终通过一个旋转动画，从一个方向过渡到另外一个方向。
+通常说的窗口旋转是指应用调用setPreferredOrientation()接口设置旋转策略，来改变应用在屏幕上的显示方向。更准确的说法是，应用通过旋转策略改变了屏幕的显示方向，系统通过屏幕显示方向变化，来改变屏幕上应用和系统组件（桌面、状态栏、下拉控制中心、下拉通知中心等）的显示方向和布局。这里的关键点是应用设置旋转策略后，影响的不仅是应用自身，还会影响屏幕上所有可见元素，也包括后台不可见的元素。这些元素最终通过一个旋转动画，从一个方向过渡到另外一个方向。
 
-系统提供了屏幕属性[@ohos.display/apis-arkui/js-apis-display.md)来获取屏幕的基本信息，其中[Orientation/apis-arkui/js-apis-display.md#orientation10)即表示当前设备屏幕的显示方向。窗口旋转后屏幕属性对应的Orientation也会相应改变。需要注意，旋转策略的[Orientation/apis-arkui/arkts-apis-window-e.md#orientation9)与屏幕属性的[Orientation/apis-arkui/js-apis-display.md#orientation10)是不同的概念，尤其是四个方向代表的名称都一样，代表的含义是有所区别的。区别差异请参考[窗口方向](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction)。
+系统提供了屏幕属性@ohos.display来获取屏幕的基本信息，其中Orientation即表示当前设备屏幕的显示方向。窗口旋转后屏幕属性对应的Orientation也会相应改变。需要注意，旋转策略的Orientation与屏幕属性的Orientation是不同的概念，尤其是四个方向代表的名称都一样，代表的含义是有所区别的。区别差异请参考[窗口方向](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction)。
 
 应用窗口的宽高比与屏幕属性的Orientation没有直接关系，不建议根据屏幕属性的Orientation来做窗口布局适配。屏幕属性的Orientation仅用于辅助sensor和相机的方向修正。
 
 ## 旋转接口的行为限制
 
-应用在前台时，调用[setPreferredOrientation()/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置旋转策略，系统会立刻判断当前屏幕的显示方向是否满足应用设置的旋转策略。
+应用在前台时，调用setPreferredOrientation()接口设置旋转策略，系统会立刻判断当前屏幕的显示方向是否满足应用设置的旋转策略。
 
 - 如果不满足，一般情况下系统会立刻触发一次旋转动效，调整应用的方向以满足旋转策略要求。例如：
 
@@ -49,12 +51,12 @@
 
   场景2：在自由多窗模式下，应用都会被强制成小窗显示。此时，若应用修改旋转策略，均不会触发旋转。
 
-此外，应用的显示方向跟sensor强相关，在无sensor的设备上，设置旋转策略同样不会生效。比如：TV等设备没有sensor，可正常调用[setPreferredOrientation()/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口，但实际应用方向不会变化。
+此外，应用的显示方向跟sensor强相关，在无sensor的设备上，设置旋转策略同样不会生效。比如：TV等设备没有sensor，可正常调用setPreferredOrientation()接口，但实际应用方向不会变化。
 
 
 ## 旋转策略及设备差异性
 
-应用可以通过在[module.json5配置文件](../quick-start/module-configuration-file.md)中配置"orientation"字段或者在运行时调用[setPreferredOrientation()/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置"orientation"字段，设置应用的显示方向。无论是哪种方式设置的[orientation/apis-arkui/arkts-apis-window-e.md#orientation9)字段含义都一样，即旋转显示方向类型枚举（也叫旋转策略）。详情可参考[设置窗口的旋转策略](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section58861731201715)。
+应用可以通过在module.json5配置文件中配置"orientation"字段或者在运行时调用setPreferredOrientation()接口设置"orientation"字段，设置应用的显示方向。无论是哪种方式设置的orientation字段含义都一样，即旋转显示方向类型枚举（也叫旋转策略）。详情可参考[设置窗口的旋转策略](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section58861731201715)。
 
 系统提供了18种的方向类型枚举，以应对不同场景的需要。根据使用场景的不同，这些方向类型可分为：固定方向类型、自动旋转方向类型、临时方向类型和其他方向类型。
 
@@ -71,7 +73,7 @@
 
 > **说明：**
 > 
-> 旋转策略的[Orientation/apis-arkui/arkts-apis-window-e.md#orientation9)与屏幕属性的[Orientation/apis-arkui/js-apis-display.md#orientation10)是不同的概念，尤其是四个方向代表的名称都一样，代表的含义是有所区别的。区别差异请参考[窗口方向](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction)。
+> 旋转策略的Orientation与屏幕属性的Orientation是不同的概念，尤其是四个方向代表的名称都一样，代表的含义是有所区别的。区别差异请参考[窗口方向](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction)。
 
 ### 自动旋转方向类型
 
@@ -85,11 +87,11 @@
 | AUTO_ROTATION_LANDSCAPE_RESTRICTED | 10 | 跟随传感器自动横向旋转，可以旋转到横屏、反向横屏，无法旋转到竖屏、反向竖屏，且受控制中心的旋转开关控制。 |
 | AUTO_ROTATION_UNSPECIFIED | 12 | 跟随传感器自动旋转，受控制中心的旋转开关控制，且可旋转方向受系统判定（如在某种设备，可以旋转到竖屏、横屏、反向横屏三个方向，无法旋转到反向竖屏）。 |
 
-这7种显示方向类型，通常用于设置应用可以跟随重力传感器调整应用方向，以使得用户握持设备时应用始终保持正向显示页面。
+这7种显示方向类型，通常用于设置应用可以跟随重力传感器调整应用方向，以使得用户握持设备时应用始终保持正向显示页面。针对搭载OpenHarmony 7.0.0及以上版本的设备，新增支持设置应用跟随智感传感器调整应用方向，最终应用方向由重力传感器和智感传感器共同作用决定。
 
 这7种方向类型根据不同的使用场景，也存在一些差异。比如：
 
-- 带有“RESTRICTED”字样的类型“AUTO_ROTATION_RESTRICTED”、“AUTO_ROTATION_PORTRAIT_RESTRICTED”和“AUTO_ROTATION_LANDSCAPE_RESTRICTED”受控制中心的旋转开关控制。当旋转锁定打开时，设置了该类型的应用会固定在锁定的方向，不再跟随重力传感器调整页面。
+- 带有“RESTRICTED”字样的类型“AUTO_ROTATION_RESTRICTED”、“AUTO_ROTATION_PORTRAIT_RESTRICTED”和“AUTO_ROTATION_LANDSCAPE_RESTRICTED”受控制中心的旋转开关控制。当旋转锁定打开时，设置了该类型的应用会固定在锁定的方向，不再跟随重力传感器调整页面。针对搭载OpenHarmony 7.0.0及以上版本的设备，当旋转锁定打开时，设置了该类型的应用会固定在锁定的方向，除了不再跟随重力传感器调整页面外，也不再跟随智感传感器调整页面。
 
 - 带有“PORTRAIT”或“LANDSCAPE”的类型，将应用限制在“竖屏/反向竖屏”，“横屏/反向横屏”两个方向旋转。
 
@@ -116,7 +118,7 @@
 | USER_ROTATION_PORTRAIT_INVERTED | 15 | 调用时临时旋转到反向竖屏，之后跟随传感器自动旋转，受控制中心的旋转开关控制，且可旋转方向受系统判定。 |
 | USER_ROTATION_LANDSCAPE_INVERTED | 16 | 调用时临时旋转到反向横屏，之后跟随传感器自动旋转，受控制中心的旋转开关控制，且可旋转方向受系统判定。 |
 
-这4种方向类型支持根据重力传感器实现自动旋转，同时又受控制中心旋转锁定控制。它们与“AUTO_ROTATION_RESTRICTED”的区别在于，这4种方向类型在应用设置时，会立即临时将应用旋转到指定方向。例如，用户竖屏握持手机且应用竖屏显示，当应用设置旋转策略为调整“USER_ROTATION_LANDSCAPE”时，应用会立刻旋转到横屏显示。这4种类型通常用于视频类应用在小窗播放进入全屏播放时使用。
+这4种方向类型受控制中心旋转锁定控制，同时支持根据重力传感器实现自动旋转。针对搭载OpenHarmony 7.0.0及以上版本的设备，新增支持根据智感传感器实现自动旋转（支持智感传感器的设备，可通过**设置>系统>智感旋转**开启智感旋转开关）。它们与“AUTO_ROTATION_RESTRICTED”的区别在于，这4种方向类型在应用设置时，会立即临时将应用旋转到指定方向。例如，用户竖屏握持手机且应用竖屏显示，当应用设置旋转策略为调整“USER_ROTATION_LANDSCAPE”时，应用会立刻旋转到横屏显示。这4种类型通常用于视频类应用在小窗播放进入全屏播放时使用。
 
 > **说明：**
 > 

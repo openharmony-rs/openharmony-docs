@@ -4,18 +4,11 @@ WebKeyboardController是ArkWeb提供的用于控制Web组件自定义键盘行�
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class WebKeyboardController--><!--Device-unnamed-declare class WebKeyboardController-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## close
@@ -27,8 +20,6 @@ close(): void
 关闭自定义键盘。
 
 **起始版本：** 12
-
-<!--Device-WebKeyboardController-close(): void--><!--Device-WebKeyboardController-close(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -44,8 +35,6 @@ WebKeyboardController的构造函数。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebKeyboardController-constructor()--><!--Device-WebKeyboardController-constructor()-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## deleteBackward
@@ -58,15 +47,13 @@ deleteBackward(length: number): void
 
 **起始版本：** 12
 
-<!--Device-WebKeyboardController-deleteBackward(length: number): void--><!--Device-WebKeyboardController-deleteBackward(length: number): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| length | number | 是 | 删除光标后面的指定长度字符。 <br>取值范围：[-2147483648 , 2147483647]，当参数值大于字符长度时，默认删除光标后面所有字符；参数值为负数时，不执行删除操作。 |
+| length | number | 是 | 删除光标后面的指定长度字符。 取值范围：[-2147483648 , 2147483647]，当参数值大于字符长度时，默认删除光标后面所有字符；参数值为负数时，不执行删除操作。 |
 
 ## deleteForward
 
@@ -78,15 +65,13 @@ deleteForward(length: number): void
 
 **起始版本：** 12
 
-<!--Device-WebKeyboardController-deleteForward(length: number): void--><!--Device-WebKeyboardController-deleteForward(length: number): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| length | number | 是 | 删除光标前面的指定长度字符。 <br>取值范围：[-2147483648 , 2147483647]，当参数值大于字符长度时，默认删除光标前面所有字符；参数值为负数时，不执行删除操作。 |
+| length | number | 是 | 删除光标前面的指定长度字符。 取值范围：[-2147483648 , 2147483647]，当参数值大于字符长度时，默认删除光标前面所有字符；参数值为负数时，不执行删除操作。 |
 
 ## insertText
 
@@ -97,8 +82,6 @@ insertText(text: string): void
 Web输入框中插入字符。
 
 **起始版本：** 12
-
-<!--Device-WebKeyboardController-insertText(text: string): void--><!--Device-WebKeyboardController-insertText(text: string): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -118,8 +101,6 @@ sendFunctionKey(key: number): void
 
 **起始版本：** 12
 
-<!--Device-WebKeyboardController-sendFunctionKey(key: number): void--><!--Device-WebKeyboardController-sendFunctionKey(key: number): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -127,4 +108,3 @@ sendFunctionKey(key: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | number | 是 | 功能键类型，仅支持Enter键。 |
-

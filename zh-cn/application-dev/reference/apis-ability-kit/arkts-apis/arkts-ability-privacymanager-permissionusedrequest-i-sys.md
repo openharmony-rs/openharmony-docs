@@ -2,9 +2,7 @@
 
 表示使用记录的查询请求。
 
-**起始版本：** 23
-
-<!--Device-privacyManager-interface PermissionUsedRequest--><!--Device-privacyManager-interface PermissionUsedRequest-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -19,18 +17,16 @@ import { privacyManager } from '@kit.AbilityKit';
 ## beginTime
 
 ```TypeScript
-beginTime?: long
+beginTime?: number
 ```
 
 查询的起始时间。 单位为：毫秒。默认值：0，表示不限制起始时间。
 
-**类型：** long
+**类型：** number
 
 **默认值：** 0
 
-**起始版本：** 23
-
-<!--Device-PermissionUsedRequest-beginTime?: long--><!--Device-PermissionUsedRequest-beginTime?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -42,13 +38,11 @@ beginTime?: long
 bundleName?: string
 ```
 
-目标应用的包名。 默认值：查询所有应用。
+目标应用的包名。默认值：查询所有应用。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PermissionUsedRequest-bundleName?: string--><!--Device-PermissionUsedRequest-bundleName?: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -60,13 +54,11 @@ bundleName?: string
 deviceId?: string
 ```
 
-目标应用所在设备的ID。 默认值：本端设备ID。
+目标应用所在设备的ID。默认值：本端设备ID。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PermissionUsedRequest-deviceId?: string--><!--Device-PermissionUsedRequest-deviceId?: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -75,18 +67,16 @@ deviceId?: string
 ## endTime
 
 ```TypeScript
-endTime?: long
+endTime?: number
 ```
 
 查询的终止时间，不早于beginTime，否则返回错误码12100001。 单位为：毫秒。默认值：0，表示不限制终止时间。
 
-**类型：** long
+**类型：** number
 
 **默认值：** 0
 
-**起始版本：** 23
-
-<!--Device-PermissionUsedRequest-endTime?: long--><!--Device-PermissionUsedRequest-endTime?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -102,9 +92,7 @@ flag: PermissionUsageFlag
 
 **类型：** [PermissionUsageFlag](arkts-ability-privacymanager-permissionusageflag-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-PermissionUsedRequest-flag: PermissionUsageFlag--><!--Device-PermissionUsedRequest-flag: PermissionUsageFlag-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -116,15 +104,13 @@ flag: PermissionUsageFlag
 isRemote?: boolean
 ```
 
-指定是否查询远端设备。false表示查询本端设备的权限使用记录，true表示查询远端设备记录。 默认值：false。
+指定是否查询远端设备。false表示查询本端设备的权限使用记录，true表示查询远端设备记录。默认值：false。
 
 **类型：** boolean
 
 **默认值：** false
 
-**起始版本：** 23
-
-<!--Device-PermissionUsedRequest-isRemote?: boolean--><!--Device-PermissionUsedRequest-isRemote?: boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -140,9 +126,7 @@ permissionNames?: Array<Permissions>
 
 **类型：** Array&lt;Permissions&gt;
 
-**起始版本：** 23
-
-<!--Device-PermissionUsedRequest-permissionNames?: Array<Permissions>--><!--Device-PermissionUsedRequest-permissionNames?: Array<Permissions>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -151,18 +135,15 @@ permissionNames?: Array<Permissions>
 ## tokenId
 
 ```TypeScript
-tokenId?: int
+tokenId?: number
 ```
 
-目标应用的身份标识。目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的 [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。 该参数必须为大于0的整数，传入0时返回错误码12100001。 <br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md)。 默认值：0，查询所有应用。
+目标应用的身份标识。目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的 [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。 该参数必须为大于0的整数，传入0时返回错误码12100001。 BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md)。默认值：0，查询所有应用。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PermissionUsedRequest-tokenId?: int--><!--Device-PermissionUsedRequest-tokenId?: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
-

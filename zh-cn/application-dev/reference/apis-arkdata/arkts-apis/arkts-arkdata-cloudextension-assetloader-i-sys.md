@@ -2,9 +2,7 @@
 
 提供资产上传下载接口的类。
 
-**起始版本：** 23
-
-<!--Device-cloudExtension-export interface AssetLoader--><!--Device-cloudExtension-export interface AssetLoader-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -24,9 +22,7 @@ download(table: string, gid: string, prefix: string, assets: Array<CloudAsset>):
 
 通过该接口实现资产的下载。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AssetLoader-download(table: string, gid: string, prefix: string, assets: Array<CloudAsset>): Promise<Array<Result<CloudAsset>>>--><!--Device-AssetLoader-download(table: string, gid: string, prefix: string, assets: Array<CloudAsset>): Promise<Array<Result<CloudAsset>>>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -49,8 +45,6 @@ download(table: string, gid: string, prefix: string, assets: Array<CloudAsset>):
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 class MyAssetLoader implements cloudExtension.AssetLoader {
   async download(table: string, gid: string, prefix: string, assets: Array<cloudExtension.CloudAsset>): Promise<Array<cloudExtension.Result<cloudExtension.CloudAsset>>> {
@@ -58,23 +52,6 @@ class MyAssetLoader implements cloudExtension.AssetLoader {
     let downloadRes = Array<cloudExtension.Result<cloudExtension.CloudAsset>>();
     // ...
     return downloadRes;
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import cloudExtension from '@ohos.data.cloudExtension';
-export default class MyAssetLoader implements cloudExtension.AssetLoader {
-  async download(table: string, gid: string, prefix: string, assets: Array<cloudExtension.CloudAsset>): Promise<Array<cloudExtension.Result<cloudExtension.CloudAsset>>> {
-    console.info(`download asset loader, table: ${table}, gid: ${gid}, prefix: ${prefix}`);
-    let downloadRes = Array<cloudExtension.Result<cloudExtension.CloudAsset>>();
-    // ...
-    return downloadRes;
-  }
-  async upload(table: string, gid: string, assets: cloudExtension.CloudAsset[]): Promise<cloudExtension.Result<cloudExtension.CloudAsset>[]> {
-    return [] as cloudExtension.Result<cloudExtension.CloudAsset>[];
   }
 }
 ```
@@ -87,9 +64,7 @@ upload(table: string, gid: string, assets: Array<CloudAsset>): Promise<Array<Res
 
 通过该接口实现资产的上传。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AssetLoader-upload(table: string, gid: string, assets: Array<CloudAsset>): Promise<Array<Result<CloudAsset>>>--><!--Device-AssetLoader-upload(table: string, gid: string, assets: Array<CloudAsset>): Promise<Array<Result<CloudAsset>>>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -111,8 +86,6 @@ upload(table: string, gid: string, assets: Array<CloudAsset>): Promise<Array<Res
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 class MyAssetLoader implements cloudExtension.AssetLoader {
   async upload(table: string, gid: string, assets: Array<cloudExtension.CloudAsset>): Promise<Array<cloudExtension.Result<cloudExtension.CloudAsset>>> {
@@ -124,23 +97,3 @@ class MyAssetLoader implements cloudExtension.AssetLoader {
     // ...
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import rpc from '@ohos.rpc';
-import cloudExtension from '@ohos.data.cloudExtension';
-export default class MyAssetLoader implements cloudExtension.AssetLoader {
-  async upload(table: string, gid: string, assets: Array<cloudExtension.CloudAsset>): Promise<Array<cloudExtension.Result<cloudExtension.CloudAsset>>> {
-    console.info(`upload asset loader, table: ${table}, gid: ${gid}`);
-    let uploadRes = Array<cloudExtension.Result<cloudExtension.CloudAsset>>();
-    // ...
-    return uploadRes;
-  }
-  // ...
-  async download(table: string, gid: string, prefix: string, assets: cloudExtension.CloudAsset[]): Promise<cloudExtension.Result<cloudExtension.CloudAsset>[]> {
-    return [] as cloudExtension.Result<cloudExtension.CloudAsset>[];
-  }
-}
-```
-

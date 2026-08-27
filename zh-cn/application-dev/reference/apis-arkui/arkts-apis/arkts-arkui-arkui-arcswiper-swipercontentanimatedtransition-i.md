@@ -4,8 +4,6 @@ ArcSwiper自定义切换动画相关信息。
 
 **起始版本：** 18
 
-<!--Device-unnamed-declare interface SwiperContentAnimatedTransition--><!--Device-unnamed-declare interface SwiperContentAnimatedTransition-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -30,8 +28,6 @@ ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SwiperContentAnimatedTransition-timeout?: number--><!--Device-SwiperContentAnimatedTransition-timeout?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## transition
@@ -48,7 +44,4 @@ transition: Callback<SwiperContentTransitionProxy>
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SwiperContentAnimatedTransition-transition: Callback<SwiperContentTransitionProxy>--><!--Device-SwiperContentAnimatedTransition-transition: Callback<SwiperContentTransitionProxy>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
-

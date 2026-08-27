@@ -2,9 +2,7 @@
 
 表示辅助图的图像信息。
 
-**起始版本：** 23
-
-<!--Device-image-interface AuxiliaryPictureInfo--><!--Device-image-interface AuxiliaryPictureInfo-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -24,9 +22,7 @@ auxiliaryPictureType: AuxiliaryPictureType
 
 **类型：** [AuxiliaryPictureType](arkts-image-image-auxiliarypicturetype-e.md)
 
-**起始版本：** 23
-
-<!--Device-AuxiliaryPictureInfo-auxiliaryPictureType: AuxiliaryPictureType--><!--Device-AuxiliaryPictureInfo-auxiliaryPictureType: AuxiliaryPictureType-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -40,9 +36,7 @@ colorSpace: colorSpaceManager.ColorSpaceManager
 
 **类型：** colorSpaceManager.ColorSpaceManager
 
-**起始版本：** 23
-
-<!--Device-AuxiliaryPictureInfo-colorSpace: colorSpaceManager.ColorSpaceManager--><!--Device-AuxiliaryPictureInfo-colorSpace: colorSpaceManager.ColorSpaceManager-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -56,25 +50,21 @@ pixelFormat: PixelMapFormat
 
 **类型：** [PixelMapFormat](arkts-image-image-pixelmapformat-e.md)
 
-**起始版本：** 23
-
-<!--Device-AuxiliaryPictureInfo-pixelFormat: PixelMapFormat--><!--Device-AuxiliaryPictureInfo-pixelFormat: PixelMapFormat-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## rowStride
 
 ```TypeScript
-rowStride: int
+rowStride: number
 ```
 
 行跨距。单位：字节（Byte）。应大于或等于图像每行像素数据所占的字节数，不满足时数据读取异常。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AuxiliaryPictureInfo-rowStride: int--><!--Device-AuxiliaryPictureInfo-rowStride: int-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -88,9 +78,6 @@ size: Size
 
 **类型：** Size
 
-**起始版本：** 23
-
-<!--Device-AuxiliaryPictureInfo-size: Size--><!--Device-AuxiliaryPictureInfo-size: Size-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
-

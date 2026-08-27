@@ -1,20 +1,16 @@
 # Stabilization
 
-Stabilization继承自[StabilizationQuery](arkts-camera-camera-stabilizationquery-i.md)。 提供设备在录像模式下设置视频防抖的操作。 需要会话中有录像流（[VideoOutput](arkts-camera-camera-videooutput-i.md)）的前提下，才可以对视频进行防抖设置。
+Stabilization继承自[StabilizationQuery](arkts-camera-camera-stabilizationquery-i.md)。提供设备在录像模式下设置视频防抖的操作。需要会话中有录像流（[VideoOutput](arkts-camera-camera-videooutput-i.md)）的前提下，才可以对视频进行防抖设置。
 
 **继承/实现关系：** Stabilization extends [StabilizationQuery](arkts-camera-camera-stabilizationquery-i.md)
 
-**起始版本：** 23
-
-<!--Device-camera-interface Stabilization--><!--Device-camera-interface Stabilization-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## getActiveVideoStabilizationMode
@@ -25,11 +21,9 @@ getActiveVideoStabilizationMode(): VideoStabilizationMode
 
 查询当前正在使用的视频防抖模式。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Stabilization-getActiveVideoStabilizationMode(): VideoStabilizationMode--><!--Device-Stabilization-getActiveVideoStabilizationMode(): VideoStabilizationMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -45,6 +39,40 @@ getActiveVideoStabilizationMode(): VideoStabilizationMode
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getActiveVideoStabilizationMode(captureSession: camera.CaptureSession): camera.VideoStabilizationMode | undefined {
+  let vsMode: camera.VideoStabilizationMode | undefined = undefined;
+  try {
+    vsMode = captureSession.getActiveVideoStabilizationMode();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The getActiveVideoStabilizationMode call failed. error code: ${err.code}`);
+  }
+  return vsMode;
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getActiveVideoStabilizationMode(videoSession: camera.VideoSession): camera.VideoStabilizationMode | undefined {
+  let vsMode: camera.VideoStabilizationMode | undefined = undefined;
+  try {
+    vsMode = videoSession.getActiveVideoStabilizationMode();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The getActiveVideoStabilizationMode call failed. error code: ${err.code}`);
+  }
+  return vsMode;
+}
+```
+
 ## setVideoStabilizationMode
 
 ```TypeScript
@@ -53,11 +81,9 @@ setVideoStabilizationMode(mode: VideoStabilizationMode): void
 
 设置视频防抖模式。需要先检查设备是否支持对应的防抖模式，可以通过 [isVideoStabilizationModeSupported](arkts-camera-camera-stabilizationquery-i.md#isvideostabilizationmodesupported)方法判断所设置的模式是 否支持。建议在[commitConfig](arkts-camera-camera-session-i.md#commitconfig)与[Start](arkts-camera-camera-session-i.md#start)之间设置视频防抖。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Stabilization-setVideoStabilizationMode(mode: VideoStabilizationMode): void--><!--Device-Stabilization-setVideoStabilizationMode(mode: VideoStabilizationMode): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -73,3 +99,32 @@ setVideoStabilizationMode(mode: VideoStabilizationMode): void
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setVideoStabilizationMode(captureSession: camera.CaptureSession): void {
+  try {
+    captureSession.setVideoStabilizationMode(camera.VideoStabilizationMode.OFF);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The setVideoStabilizationMode call failed. error code: ${err.code}`);
+  }
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setVideoStabilizationMode(videoSession: camera.VideoSession): void {
+  try {
+    videoSession.setVideoStabilizationMode(camera.VideoStabilizationMode.OFF);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The setVideoStabilizationMode call failed. error code: ${err.code}`);
+  }
+}
+```

@@ -14,12 +14,9 @@ declare type Optional<T> = T | undefined
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare type Optional<T> = T | undefined--><!--Device-unnamed-declare type Optional<T> = T | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | --- | --- |
 | T | 表示泛型T所指定的类型。 |
 | undefined | 表示该类型声明的对象是undefined。 |
-

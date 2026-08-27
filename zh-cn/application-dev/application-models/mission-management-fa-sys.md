@@ -7,4 +7,4 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-请参见[Stage模型](ability-terminology.md#stage模型)的"[任务管理](mission-management-overview-sys.md)"。
+请参见Stage模型的"任务管理"。

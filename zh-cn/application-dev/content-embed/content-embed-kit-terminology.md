@@ -37,7 +37,7 @@ OE文档是一种采用结构化存储的复合文件，结构化存储定义了
 
 ## OE Extension
 
-Content Embed Kit提供的[ExtensionAbility组件](../application-models/extensionability-overview.md)，用于三方应用实现特定格式文档嵌入与编辑能力。
+Content Embed Kit提供的ExtensionAbility组件，用于三方应用实现特定格式文档嵌入与编辑能力。
 
 ## OE SA
 

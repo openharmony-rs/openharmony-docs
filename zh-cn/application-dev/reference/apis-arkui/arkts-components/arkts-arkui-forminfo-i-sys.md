@@ -1,10 +1,8 @@
-# FormInfo(系统接口)（系统接口）
+# FormInfo（系统接口）
 
 卡片信息。
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare interface FormInfo--><!--Device-unnamed-declare interface FormInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,8 +25,6 @@ ability: string
 
 **起始版本：** 12
 
-<!--Device-FormInfo-ability: string--><!--Device-FormInfo-ability: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -45,8 +41,6 @@ bundle: string
 
 **起始版本：** 12
 
-<!--Device-FormInfo-bundle: string--><!--Device-FormInfo-bundle: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -57,13 +51,11 @@ bundle: string
 dimension?: FormDimension
 ```
 
-卡片尺寸，支持2 * 2，4 * 4，2 * 4等类型卡片。 默认值：Dimension_2_2。
+卡片尺寸，支持2 * 2，4 * 4，2 * 4等类型卡片。默认值：Dimension_2_2。
 
 **类型：** [FormDimension](arkts-arkui-formdimension-e-sys.md)
 
 **起始版本：** 12
-
-<!--Device-FormInfo-dimension?: FormDimension--><!--Device-FormInfo-dimension?: FormDimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,13 +67,11 @@ dimension?: FormDimension
 exemptAppLock?: boolean
 ```
 
-卡片是否豁免应用锁，true表示卡片所属应用添加应用锁时，不受应用锁管控，不显示应用锁蒙层；false表示卡片所属应用添加应用锁时，受应用锁管控，正常展示应用锁蒙层。 默认值：false。
+卡片是否豁免应用锁，true表示卡片所属应用添加应用锁时，不受应用锁管控，不显示应用锁蒙层；false表示卡片所属应用添加应用锁时，受应用锁管控，正常展示应用锁蒙层。默认值：false。
 
 **类型：** boolean
 
 **起始版本：** 20
-
-<!--Device-FormInfo-exemptAppLock?: boolean--><!--Device-FormInfo-exemptAppLock?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,13 +83,12 @@ exemptAppLock?: boolean
 id: number | string
 ```
 
-卡片标识（新建卡片填0）。 **说明：** 不同使用方不可使用相同id。 同一使用方使用相同id时，显示后添加的卡片。 id大于等于0小于2^32。
+卡片标识（新建卡片填0）。  
+**说明：**不同使用方不可使用相同id。同一使用方使用相同id时，显示后添加的卡片。id大于等于0小于2^32。
 
 **类型：** number \| string
 
 **起始版本：** 12
-
-<!--Device-FormInfo-id: number | string--><!--Device-FormInfo-id: number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -117,8 +106,6 @@ module: string
 
 **起始版本：** 12
 
-<!--Device-FormInfo-module: string--><!--Device-FormInfo-module: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -135,8 +122,6 @@ name: string
 
 **起始版本：** 12
 
-<!--Device-FormInfo-name: string--><!--Device-FormInfo-name: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -147,13 +132,14 @@ name: string
 renderingMode?: FormRenderingMode
 ```
 
-卡片渲染模式。取值如下，默认值为 FULL_COLOR。 - FULL_COLOR：代表全色模式，卡片框架不会对卡片效果做出修改，保持和卡片开发者设置的效果不变。 - SINGLE_COLOR：代表单色模式，卡片框架会把卡片背景设为透明，开发者需按最佳实践设置卡片风格。 **说明：** 如果系统不支持统一渲染模式，卡片框架在单色模式下也不会把卡片背景设为透明。
+卡片渲染模式。取值如下，默认值为 FULL_COLOR。  
+- FULL_COLOR：代表全色模式，卡片框架不会对卡片效果做出修改，保持和卡片开发者设置的效果不变。  
+- SINGLE_COLOR：代表单色模式，卡片框架会把卡片背景设为透明，开发者需按最佳实践设置卡片风格。  
+**说明：**如果系统不支持统一渲染模式，卡片框架在单色模式下也不会把卡片背景设为透明。
 
 **类型：** [FormRenderingMode](arkts-arkui-formrenderingmode-e-sys.md)
 
 **起始版本：** 12
-
-<!--Device-FormInfo-renderingMode?: FormRenderingMode--><!--Device-FormInfo-renderingMode?: FormRenderingMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,8 +157,6 @@ shape?: FormShape
 
 **起始版本：** 12
 
-<!--Device-FormInfo-shape?: FormShape--><!--Device-FormInfo-shape?: FormShape-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -183,13 +167,11 @@ shape?: FormShape
 temporary?: boolean
 ```
 
-卡片是否为临时卡片，true表示是临时卡片，false表示不是临时卡片。 默认值：false。
+卡片是否为临时卡片，true表示是临时卡片，false表示不是临时卡片。默认值：false。
 
 **类型：** boolean
 
 **起始版本：** 12
-
-<!--Device-FormInfo-temporary?: boolean--><!--Device-FormInfo-temporary?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -207,9 +189,6 @@ want?: import('../api/@ohos.app.ability.Want').default
 
 **起始版本：** 12
 
-<!--Device-FormInfo-want?: import('../api/@ohos.app.ability.Want').default--><!--Device-FormInfo-want?: import('../api/@ohos.app.ability.Want').default-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

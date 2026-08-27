@@ -1,10 +1,8 @@
-# ClipboardPolicy(安全管理)
+# ClipboardPolicy
 
 设备剪贴板策略。
 
 **起始版本：** 12
-
-<!--Device-securityManager-export enum ClipboardPolicy--><!--Device-securityManager-export enum ClipboardPolicy-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -20,8 +18,6 @@ DEFAULT = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ClipboardPolicy-DEFAULT = 0--><!--Device-ClipboardPolicy-DEFAULT = 0-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## IN_APP
@@ -35,8 +31,6 @@ IN_APP = 1
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ClipboardPolicy-IN_APP = 1--><!--Device-ClipboardPolicy-IN_APP = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -52,8 +46,6 @@ LOCAL_DEVICE = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ClipboardPolicy-LOCAL_DEVICE = 2--><!--Device-ClipboardPolicy-LOCAL_DEVICE = 2-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## CROSS_DEVICE
@@ -68,7 +60,4 @@ CROSS_DEVICE = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ClipboardPolicy-CROSS_DEVICE = 3--><!--Device-ClipboardPolicy-CROSS_DEVICE = 3-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

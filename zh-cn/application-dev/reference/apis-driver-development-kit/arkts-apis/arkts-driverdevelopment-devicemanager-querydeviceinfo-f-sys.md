@@ -9,16 +9,14 @@ import { deviceManager } from '@kit.DriverDevelopmentKit';
 ## queryDeviceInfo
 
 ```TypeScript
-function queryDeviceInfo(deviceId?: long): Array<Readonly<DeviceInfo>>
+function queryDeviceInfo(deviceId?: number): Array<Readonly<DeviceInfo>>
 ```
 
 查询扩展外设详细信息列表。如果没有设备接入，那么将会返回一个空的列表。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **需要权限：** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
-
-<!--Device-deviceManager-function queryDeviceInfo(deviceId?: long): Array<Readonly<DeviceInfo>>--><!--Device-deviceManager-function queryDeviceInfo(deviceId?: long): Array<Readonly<DeviceInfo>>-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -28,22 +26,22 @@ function queryDeviceInfo(deviceId?: long): Array<Readonly<DeviceInfo>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceId | long | 否 | 设备ID，通过[queryDevices](arkts-driverdevelopment-devicemanager-querydevices-f.md)获得。如果不传入设备ID，则默认获取所有设备信息。如果没有设备接 入，返回空列表。 |
+| deviceId | number | 否 | 设备ID，通过[queryDevices](arkts-driverdevelopment-devicemanager-querydevices-f.md)获得。如果不传入设备ID，则默认获取所有设备信息。如果没有设备接 入，返回空列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;Readonly&lt;DeviceInfo&gt;&gt; | 扩展外设详细信息列表。 |
+| Array & lt;Readonly & lt;DeviceInfo & gt; & gt; | 扩展外设详细信息列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [26300001](../../apis-driverdevelopment-kit/errorcode-deviceManager.md#26300001-扩展外设驱动服务异常) | ExternalDeviceManager service exception. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permission check failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. A non-system application cannot call a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types. |
+| [26300001](../errorcode-deviceManager.md#26300001-扩展外设驱动服务异常) | ExternalDeviceManager service exception. |
 
 **示例**
 
@@ -62,4 +60,3 @@ try {
   console.error(`Failed to query device info. Code is ${err.code}, message is ${err.message}`);
 }
 ```
-

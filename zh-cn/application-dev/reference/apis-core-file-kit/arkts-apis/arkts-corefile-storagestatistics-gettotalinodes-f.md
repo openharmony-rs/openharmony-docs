@@ -9,7 +9,7 @@ import { storageStatistics } from '@kit.CoreFileKit';
 ## getTotalInodes
 
 ```TypeScript
-function getTotalInodes(): Promise<long>
+function getTotalInodes(): Promise<number>
 ```
 
 获取文件系统的inode资源总量，仅支持查询系统数据分区。使用Promise异步回调。
@@ -18,15 +18,13 @@ function getTotalInodes(): Promise<long>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-storageStatistics-function getTotalInodes(): Promise<long>--><!--Device-storageStatistics-function getTotalInodes(): Promise<long>-End-->
-
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;long&gt; | Promise对象，返回文件系统inode资源总量。 |
+| Promise & lt;number & gt; | Promise对象，返回文件系统inode资源总量。 |
 
 **错误码：**
 
@@ -37,8 +35,6 @@ function getTotalInodes(): Promise<long>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -48,16 +44,3 @@ storageStatistics.getTotalInodes().then((totalInodes: number) => {
   console.error(`getTotalInodes failed. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-storageStatistics.getTotalInodes().then((totalInodes: long) => {
-  console.info('getTotalInodes successfully:' + totalInodes);
-}).catch((err: BusinessError): void => {
-  console.error(`getTotalInodes failed. Code: ${err.code}, message: ${err.message}`);
-});
-```
-

@@ -1,24 +1,20 @@
 # LayerMask
 
-用于定义节点的图层掩码。
+用于定义节点的图层掩码。@interface LayerMask
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface LayerMask--><!--Device-unnamed-export interface LayerMask-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## getEnabled
 
 ```TypeScript
-getEnabled(index: int): boolean
+getEnabled(index: number): boolean
 ```
 
 获取指定图层下标图层掩码的使能状态。
 
-**起始版本：** 23
-
-<!--Device-LayerMask-getEnabled(index: int): boolean--><!--Device-LayerMask-getEnabled(index: int): boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -26,7 +22,7 @@ getEnabled(index: int): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int | 是 | 要使能图层的下标，值域为大于等于0的整数。 |
+| index | number | 是 | 要使能图层的下标，值域为大于等于0的整数。 |
 
 **返回值：**
 
@@ -59,14 +55,12 @@ function layerMask(): void {
 ## setEnabled
 
 ```TypeScript
-setEnabled(index: int, enabled: boolean): void
+setEnabled(index: number, enabled: boolean): void
 ```
 
 将特定下标的图层掩码使能。
 
-**起始版本：** 23
-
-<!--Device-LayerMask-setEnabled(index: int, enabled: boolean): void--><!--Device-LayerMask-setEnabled(index: int, enabled: boolean): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -74,7 +68,7 @@ setEnabled(index: int, enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int | 是 | 要使能图层的下标，值域为大于等于0的整数。 |
+| index | number | 是 | 要使能图层的下标，值域为大于等于0的整数。 |
 | enabled | boolean | 是 | 要设置的使能状态。true表示使用图层掩码，false表示不使用。 |
 
 **示例**
@@ -98,4 +92,3 @@ function layerMask(): void {
   });
 }
 ```
-

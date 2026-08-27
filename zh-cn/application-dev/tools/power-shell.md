@@ -5,7 +5,7 @@ power-shell是实现设备电源状态转换等功能的工具，为开发者提
 
 ## 环境要求
 <!--RP1-->
-在使用本工具前，开发者需要先获取[hdc工具](../dfx/hdc.md)，执行hdc shell。
+在使用本工具前，开发者需要先获取hdc工具，执行hdc shell。
 <!--RP1End-->
 
 ## power-shell命令工具列表

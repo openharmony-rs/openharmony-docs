@@ -29,7 +29,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 ### Native接口调用
 
-具体接口说明请参考[Image_NativeModule/apis-image-kit/capi-image-nativemodule.md)。
+具体接口说明请参考Image_NativeModule。
 
 在DevEco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
 
@@ -101,7 +101,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 6. 常量定义。
 
-   <!-- @[define_maxStringLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->
+   <!-- @[animatedDecoding_maxStringLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAnimatedImageSource.cpp) -->   
    
    ``` C++
    const int ANIMATED_MAX_STRING_LENGTH = 1024;

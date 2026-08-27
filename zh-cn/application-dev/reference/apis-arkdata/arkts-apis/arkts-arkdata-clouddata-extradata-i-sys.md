@@ -2,9 +2,7 @@
 
 透传数据，携带通知数据变更所需要的信息。
 
-**起始版本：** 23
-
-<!--Device-cloudData-interface ExtraData--><!--Device-cloudData-interface ExtraData-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -26,9 +24,7 @@ eventId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ExtraData-eventId: string--><!--Device-ExtraData-eventId: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -44,11 +40,23 @@ extraData: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ExtraData-extraData: string--><!--Device-ExtraData-extraData: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **系统接口：** 此接口为系统接口。
 
+**示例**
+
+```TypeScript
+// accountId: 用户打开的云账号ID
+// bundleName: 应用包名
+// containerName: 云上数据库名称
+// databaseScopes: 云上数据库类型
+// recordTypes: 云上数据库表名
+
+let extraData: cloudData.ExtraData = {
+  eventId: "cloud_data_change",
+  extraData: '{"data": "{"accountId": "aaa", "bundleName": "com.bbb.xxx", "containerName": "alias", "databaseScopes": ["private", "shared"], "recordTypes": ["xxx", "yyy", "zzz"]}"}',
+};
+```

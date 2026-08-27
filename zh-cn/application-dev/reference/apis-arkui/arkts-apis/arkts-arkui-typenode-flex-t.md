@@ -12,9 +12,6 @@ Flex类型的FrameNode节点类型。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-type Flex = TypedFrameNode<FlexInterface, FlexAttribute>--><!--Device-typeNode-type Flex = TypedFrameNode<FlexInterface, FlexAttribute>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** TypedFrameNode<FlexInterface, FlexAttribute>
-
+**属性类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;FlexInterface, [FlexAttribute](../arkts-components/arkts-arkui-flex-attribute.md)&gt;

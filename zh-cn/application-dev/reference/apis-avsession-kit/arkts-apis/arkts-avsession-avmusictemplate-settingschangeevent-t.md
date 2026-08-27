@@ -10,8 +10,6 @@ type SettingsChangeEvent = (settingItem: SettingItem) => Promise<SettingItem>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avMusicTemplate-type SettingsChangeEvent = (settingItem: SettingItem) => Promise<SettingItem>--><!--Device-avMusicTemplate-type SettingsChangeEvent = (settingItem: SettingItem) => Promise<SettingItem>-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
@@ -25,4 +23,3 @@ type SettingsChangeEvent = (settingItem: SettingItem) => Promise<SettingItem>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[SettingItem](arkts-avsession-avmusictemplate-settingitem-i.md)&gt; | Promise对象，返回变更过的设置项。 |
-

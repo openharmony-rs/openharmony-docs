@@ -11,7 +11,7 @@ OEM厂商可以采用插件方式定制化域账号管理能力，系统提供�
 
 ## 开发准备
 
-1. 申请权限，申请流程请参考：[申请应用权限](../../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
+1. 申请权限，申请流程请参考：申请应用权限。
    - ohos.permission.MANAGE_LOCAL_ACCOUNTS
    - ohos.permission.GET_DOMAIN_ACCOUNTS
 
@@ -29,7 +29,7 @@ OEM厂商可以采用插件方式定制化域账号管理能力，系统提供�
 
 ## 注册插件
 
-域插件原型为[DomainPlugin/apis-basic-services-kit/js-apis-osAccount-sys.md#domainplugin9)，域插件开发者需要继承并实现插件原型中定义的接口。开发者可以使用[registerPlugin/apis-basic-services-kit/js-apis-osAccount-sys.md#registerplugin9)接口完成插件注册操作。
+域插件原型为DomainPlugin，域插件开发者需要继承并实现插件原型中定义的接口。开发者可以使用registerPlugin接口完成插件注册操作。
 
 具体开发实例如下：
 
@@ -156,7 +156,7 @@ OEM厂商可以采用插件方式定制化域账号管理能力，系统提供�
    }
    ```
 
-2. 调用[registerPlugin/apis-basic-services-kit/js-apis-osAccount-sys.md#registerplugin9)注册插件。
+2. 调用registerPlugin注册插件。
 
    ```ts
     try {
@@ -173,7 +173,7 @@ OEM厂商可以采用插件方式定制化域账号管理能力，系统提供�
 
 ## 注销插件
 
-当插件不再使用时，开发者可以使用[unregisterPlugin/apis-basic-services-kit/js-apis-osAccount-sys.md#unregisterplugin9)接口注销插件。
+当插件不再使用时，开发者可以使用unregisterPlugin接口注销插件。
 
 具体开发实例如下：
 

@@ -1,17 +1,14 @@
-# @ohos.multimedia.cameraPicker
+# @ohos.multimedia.cameraPicker(相机选择器)
 
 本模块提供相机拍照与录制的能力。应用可选择媒体类型实现拍照和录制的功能。调用此类接口时，应用必须在界面UIAbility中调用，否则无法启动cameraPicker应用。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace cameraPicker--><!--Device-unnamed-declare namespace cameraPicker-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## 导入模块
 
 ```TypeScript
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## 汇总
@@ -20,18 +17,17 @@ import { cameraPicker } from '@kit.CameraKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [pick](arkts-camera-camerapicker-pick-f.md) | 拉起相机选择器，根据媒体类型进入相应的模式。使用Promise异步回调。 |
+| [pick(相机选择器)](arkts-camera-camerapicker-pick-f.md) | 拉起相机选择器，根据媒体类型进入相应的模式。使用Promise异步回调。 |
 
 ### 类
 
 | 名称 | 说明 |
 | --- | --- |
-| [PickerProfile](arkts-camera-camerapicker-pickerprofile-c.md) | 相机选择器的配置信息。 |
-| [PickerResult](arkts-camera-camerapicker-pickerresult-c.md) | 相机选择器的处理结果。 |
+| [PickerProfile(相机选择器)](arkts-camera-camerapicker-pickerprofile-c.md) | 相机选择器的配置信息。 |
+| [PickerResult(相机选择器)](arkts-camera-camerapicker-pickerresult-c.md) | 相机选择器的处理结果。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [PickerMediaType](arkts-camera-camerapicker-pickermediatype-e.md) | 枚举，相机选择器的媒体类型。 |
-
+| [PickerMediaType(相机选择器)](arkts-camera-camerapicker-pickermediatype-e.md) | 枚举，相机选择器的媒体类型。 |

@@ -6,8 +6,6 @@
 
 **废弃版本：** 6
 
-<!--Device-unnamed-export interface DeviceResponse--><!--Device-unnamed-export interface DeviceResponse-End-->
-
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
 
 ## 导入模块
@@ -30,8 +28,6 @@ apiVersion: number
 
 **废弃版本：** 6
 
-<!--Device-DeviceResponse-apiVersion: number--><!--Device-DeviceResponse-apiVersion: number-End-->
-
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
 
 ## brand
@@ -47,8 +43,6 @@ brand: string
 **起始版本：** 3
 
 **废弃版本：** 6
-
-<!--Device-DeviceResponse-brand: string--><!--Device-DeviceResponse-brand: string-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
 
@@ -66,8 +60,6 @@ deviceType: string
 
 **废弃版本：** 6
 
-<!--Device-DeviceResponse-deviceType: string--><!--Device-DeviceResponse-deviceType: string-End-->
-
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
 
 ## language
@@ -83,8 +75,6 @@ language: string
 **起始版本：** 4
 
 **废弃版本：** 6
-
-<!--Device-DeviceResponse-language: string--><!--Device-DeviceResponse-language: string-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
 
@@ -102,8 +92,6 @@ manufacturer: string
 
 **废弃版本：** 6
 
-<!--Device-DeviceResponse-manufacturer: string--><!--Device-DeviceResponse-manufacturer: string-End-->
-
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
 
 ## model
@@ -119,8 +107,6 @@ model: string
 **起始版本：** 3
 
 **废弃版本：** 6
-
-<!--Device-DeviceResponse-model: string--><!--Device-DeviceResponse-model: string-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
 
@@ -138,8 +124,6 @@ product: string
 
 **废弃版本：** 6
 
-<!--Device-DeviceResponse-product: string--><!--Device-DeviceResponse-product: string-End-->
-
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
 
 ## region
@@ -155,8 +139,6 @@ region: string
 **起始版本：** 4
 
 **废弃版本：** 6
-
-<!--Device-DeviceResponse-region: string--><!--Device-DeviceResponse-region: string-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
 
@@ -174,8 +156,6 @@ screenDensity: number
 
 **废弃版本：** 6
 
-<!--Device-DeviceResponse-screenDensity: number--><!--Device-DeviceResponse-screenDensity: number-End-->
-
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
 
 ## screenShape
@@ -184,15 +164,15 @@ screenDensity: number
 screenShape: 'rect' | 'circle'
 ```
 
-屏幕形状。可取值： - rect：方形屏； - circle：圆形屏。
+屏幕形状。可取值：  
+- rect：方形屏；  
+- circle：圆形屏。
 
 **类型：** 'rect' \| 'circle'
 
 **起始版本：** 4
 
 **废弃版本：** 6
-
-<!--Device-DeviceResponse-screenShape: 'rect' | 'circle'--><!--Device-DeviceResponse-screenShape: 'rect' | 'circle'-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
 
@@ -212,8 +192,6 @@ sdkMinorApiVersion?: number
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-DeviceResponse-sdkMinorApiVersion?: number--><!--Device-DeviceResponse-sdkMinorApiVersion?: number-End-->
-
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
 
 ## sdkPatchApiVersion
@@ -232,8 +210,6 @@ sdkPatchApiVersion?: number
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-DeviceResponse-sdkPatchApiVersion?: number--><!--Device-DeviceResponse-sdkPatchApiVersion?: number-End-->
-
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
 
 ## windowHeight
@@ -249,8 +225,6 @@ windowHeight: number
 **起始版本：** 3
 
 **废弃版本：** 6
-
-<!--Device-DeviceResponse-windowHeight: number--><!--Device-DeviceResponse-windowHeight: number-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
 
@@ -268,7 +242,4 @@ windowWidth: number
 
 **废弃版本：** 6
 
-<!--Device-DeviceResponse-windowWidth: number--><!--Device-DeviceResponse-windowWidth: number-End-->
-
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
-

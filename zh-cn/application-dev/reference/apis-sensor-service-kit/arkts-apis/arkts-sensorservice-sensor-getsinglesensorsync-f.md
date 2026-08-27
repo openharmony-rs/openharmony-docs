@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
 ```
 
 ## getSingleSensorSync
@@ -14,9 +13,7 @@ function getSingleSensorSync(type: SensorId): Sensor
 
 获取指定类型的传感器信息，使用同步方式返回结果。
 
-**起始版本：** 23
-
-<!--Device-sensor-function getSingleSensorSync(type: SensorId): Sensor--><!--Device-sensor-function getSingleSensorSync(type: SensorId): Sensor-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -36,8 +33,8 @@ function getSingleSensorSync(type: SensorId): Sensor
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;   2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;   2. Sensor service ipc exception;3. Sensor data channel exception. |
 | [14500102](../errorcode-sensor.md#14500102-设备不支持该传感器) | The sensor is not supported by the device. |
 
 **示例**
@@ -55,4 +52,3 @@ try {
   console.error(`Failed to get singleSensor . Code: ${e.code}, message: ${e.message}`);
 }
 ```
-

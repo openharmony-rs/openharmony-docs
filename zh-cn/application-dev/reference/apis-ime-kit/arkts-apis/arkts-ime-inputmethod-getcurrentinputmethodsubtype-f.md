@@ -4,11 +4,6 @@
 
 ```TypeScript
 import { inputMethod } from '@kit.IMEKit';
-import { inputMethodEngine } from '@kit.IMEKit';
-import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
-import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
-import { InputMethodExtraConfig } from '@kit.IMEKit';
-import { inputMethodSystemPanelManager } from '@kit.IMEKit';
 ```
 
 ## getCurrentInputMethodSubtype
@@ -19,9 +14,7 @@ function getCurrentInputMethodSubtype(): InputMethodSubtype
 
 获取当前输入法的子类型。
 
-**起始版本：** 23
-
-<!--Device-inputMethod-function getCurrentInputMethodSubtype(): InputMethodSubtype--><!--Device-inputMethod-function getCurrentInputMethodSubtype(): InputMethodSubtype-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -38,4 +31,3 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 
 let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
 ```
-

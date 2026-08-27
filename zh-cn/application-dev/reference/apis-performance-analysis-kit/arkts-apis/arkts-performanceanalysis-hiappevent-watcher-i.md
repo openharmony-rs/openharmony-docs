@@ -1,18 +1,62 @@
 # Watcher
 
-提供事件观察者的参数选项。用于配置和管理事件的观察者，实现对特定事件的监听和处理。 > **说明：** > > 不建议在回调函数中执行[removeWatcher](arkts-performanceanalysis-hiappevent-removewatcher-f.md)的操作，watcher一旦被移除，则其原有的订阅回调功能也会随之失效，可能会造成某些事件发生后无订阅回调情况。
+提供事件观察者的参数选项。用于配置和管理事件的观察者，实现对特定事件的监听和处理。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 不建议在回调函数中执行[removeWatcher](arkts-performanceanalysis-hiappevent-removewatcher-f.md)的操作，watcher一旦被移除，则其原有的订阅回调功能也会随之失效，可能会造成某些事件发生后无订阅回调情况。
 
-<!--Device-hiAppEvent-interface Watcher--><!--Device-hiAppEvent-interface Watcher-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 ## 导入模块
 
 ```TypeScript
-import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
+
+## onReceive
+
+```TypeScript
+onReceive?: (domain: string, appEventGroups: Array<AppEventGroup>) => void
+```
+
+订阅实时回调函数，与回调函数onTrigger同时存在时，只触发此回调，函数入参说明如下：domain：回调事件的领域名称；appEventGroups：回调事件集合。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| domain | string | 是 |  |
+| appEventGroups | Array&lt;[AppEventGroup](arkts-performanceanalysis-hiappevent-appeventgroup-i.md)&gt; | 是 |  |
+
+## onTrigger
+
+```TypeScript
+onTrigger?: (curRow: number, curSize: number, holder: AppEventPackageHolder) => void
+```
+
+订阅回调函数，需要与回调触发条件triggerCondition一同传入才会生效，函数入参说明如下：curRow：在本次回调触发时的订阅事件总数量；curSize：在本次回调触发时的订阅事件总大小，单位为byte；holder：订阅数据持有者对象，可以通过其对订阅事件进行处理。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| curRow | number | 是 |  |
+| curSize | number | 是 |  |
+| holder | [AppEventPackageHolder](arkts-performanceanalysis-hiappevent-appeventpackageholder-c.md) | 是 |  |
 
 ## appEventFilters
 
@@ -24,11 +68,9 @@ appEventFilters?: AppEventFilter[]
 
 **类型：** [AppEventFilter](arkts-performanceanalysis-hiappevent-appeventfilter-i.md)[]
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Watcher-appEventFilters?: AppEventFilter[]--><!--Device-Watcher-appEventFilters?: AppEventFilter[]-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -42,47 +84,9 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Watcher-name: string--><!--Device-Watcher-name: string-End-->
-
-**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
-
-## onReceive
-
-```TypeScript
-onReceive?: (domain: string, appEventGroups: Array<AppEventGroup>) => void
-```
-
-订阅实时回调函数，与回调函数onTrigger同时存在时，只触发此回调，函数入参说明如下： domain：回调事件的领域名称； appEventGroups：回调事件集合。
-
-**类型：** (domain: string, appEventGroups: Array&lt;[AppEventGroup](arkts-performanceanalysis-hiappevent-appeventgroup-i.md)&gt;) =&gt; void
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Watcher-onReceive?: (domain: string, appEventGroups: Array<AppEventGroup>) => void--><!--Device-Watcher-onReceive?: (domain: string, appEventGroups: Array<AppEventGroup>) => void-End-->
-
-**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
-
-## onTrigger
-
-```TypeScript
-onTrigger?: (curRow: int, curSize: int, holder: AppEventPackageHolder) => void
-```
-
-订阅回调函数，需要与回调触发条件triggerCondition一同传入才会生效，函数入参说明如下： curRow：在本次回调触发时的订阅事件总数量； curSize：在本次回调触发时的订阅事件总大小，单位为byte； holder：订阅数据持有者对象，可以通过其对订阅事件进行处理。
-
-**类型：** (curRow: int, curSize: int, holder: AppEventPackageHolder) =&gt; void
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Watcher-onTrigger?: (curRow: int, curSize: int, holder: AppEventPackageHolder) => void--><!--Device-Watcher-onTrigger?: (curRow: int, curSize: int, holder: AppEventPackageHolder) => void-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -96,11 +100,8 @@ triggerCondition?: TriggerCondition
 
 **类型：** [TriggerCondition](arkts-performanceanalysis-hiappevent-triggercondition-i.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Watcher-triggerCondition?: TriggerCondition--><!--Device-Watcher-triggerCondition?: TriggerCondition-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
-

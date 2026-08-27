@@ -12,11 +12,9 @@ import { image } from '@kit.ImageKit';
 function createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureType): AuxiliaryPicture
 ```
 
-通过ArrayBuffer图片数据、辅助图尺寸、辅助图类型创建AuxiliaryPicture实例。该接口仅支持传入BGRA的连续像素数据，会创建出RGBA的辅助图。 由于图片占用内存较大，所以当AuxiliaryPicture实例使用完成后，应主动调用[release](arkts-image-image-auxiliarypicture-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法 均执行完成，且后续不再使用该实例。
+通过ArrayBuffer图片数据、辅助图尺寸、辅助图类型创建AuxiliaryPicture实例。该接口仅支持传入BGRA的连续像素数据，会创建出RGBA的辅助图。由于图片占用内存较大，所以当AuxiliaryPicture实例使用完成后，应主动调用[release](arkts-image-image-auxiliarypicture-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法 均执行完成，且后续不再使用该实例。
 
-**起始版本：** 23
-
-<!--Device-image-function createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureType): AuxiliaryPicture--><!--Device-image-function createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureType): AuxiliaryPicture-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -42,8 +40,6 @@ function createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: Auxiliary
 
 **示例**
 
-ArkTS-Dyn示例:
-
 ```TypeScript
 async function CreateAuxiliaryPicture(context: Context) {
   let funcName = "CreateAuxiliaryPicture";
@@ -64,33 +60,3 @@ async function CreateAuxiliaryPicture(context: Context) {
   }
 }
 ```
-
-ArkTS-Sta示例:
-
-```TypeScript
-import { common } from '@kit.AbilityKit';
-import { resourceManager } from '@kit.LocalizationKit';
-
-function CreateAuxiliaryPictureFunc(context: common.UIAbilityContext): image.AuxiliaryPicture | undefined {
-  const resourceMgr = context.resourceManager;
-  // 此处'hdr_image.jpg'仅作示例，请开发者自行替换支持hdr的图片，否则auxiliaryPicture会创建失败导致后续无法正常执行。
-  const rawFile = await resourceMgr.getRawFileContent("hdr_image.jpg");
-  let auxBuffer: ArrayBuffer = rawFile.buffer as ArrayBuffer;
-  let auxSize: image.Size = {
-    height: 180,
-    width: 240
-  };
-  let auxType: image.AuxiliaryPictureType = image.AuxiliaryPictureType.GAINMAP;
-  try {
-    let auxPicture: image.AuxiliaryPicture = image.createAuxiliaryPicture(auxBuffer, auxSize, auxType);
-    if (auxPicture != undefined) {
-      console.info(0x00000, 'CreateAuxiliaryPictureFunc', 'createAuxiliaryPicture success!');
-    }
-    return auxPicture;
-  } catch (err) {
-    console.error(0x00000, 'CreateAuxiliaryPictureFunc', 'CreateAuxiliaryPictureFunc failed: ' + err);
-    return undefined;
-  }
-}
-```
-

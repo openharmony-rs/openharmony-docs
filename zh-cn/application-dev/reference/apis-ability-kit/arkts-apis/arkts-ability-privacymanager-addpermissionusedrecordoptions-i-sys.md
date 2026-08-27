@@ -2,9 +2,7 @@
 
 添加权限使用记录可选参数集。
 
-**起始版本：** 23
-
-<!--Device-privacyManager-interface AddPermissionUsedRecordOptions--><!--Device-privacyManager-interface AddPermissionUsedRecordOptions-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -30,8 +28,6 @@ enhancedIdentity?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AddPermissionUsedRecordOptions-enhancedIdentity?: string--><!--Device-AddPermissionUsedRecordOptions-enhancedIdentity?: string-End-->
-
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -42,15 +38,12 @@ enhancedIdentity?: string
 usedType?: PermissionUsedType
 ```
 
-敏感权限使用类型。 默认值：NORMAL_TYPE。
+敏感权限使用类型。默认值：NORMAL_TYPE。
 
 **类型：** [PermissionUsedType](arkts-ability-privacymanager-permissionusedtype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-AddPermissionUsedRecordOptions-usedType?: PermissionUsedType--><!--Device-AddPermissionUsedRecordOptions-usedType?: PermissionUsedType-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
-

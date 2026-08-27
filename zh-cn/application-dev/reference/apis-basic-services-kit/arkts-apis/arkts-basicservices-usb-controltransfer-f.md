@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { usb } from '@kit.BasicServicesKit';
-import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## controlTransfer
@@ -14,15 +12,13 @@ import { serialManager } from '@kit.BasicServicesKit';
 function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout?: number): Promise<number>
 ```
 
-控制传输。 需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md)获取设备列表；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md)获取设备请求权限；调用 [usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md)接口得到devicepipe作为参数。
+控制传输。需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md)获取设备列表；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md)获取设备请求权限；调用 [usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md)接口得到devicepipe作为参数。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [controlTransfer](arkts-basicservices-usbmanager-controltransfer-f.md)
-
-<!--Device-usb-function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout?: number): Promise<number>--><!--Device-usb-function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout?: number): Promise<number>-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -38,7 +34,7 @@ function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, ti
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回-1。 |
+| Promise & lt;number & gt; | Promise对象，获取传输或接收到的数据块大小。失败返回-1。 |
 
 **示例**
 
@@ -55,4 +51,3 @@ usb.controlTransfer(devicepipe, param).then((ret) => {
  console.info(`controlTransfer = ${ret}`);
 })
 ```
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 14
 
-<!--Device-unnamed-declare enum ImageRotateOrientation--><!--Device-unnamed-declare enum ImageRotateOrientation-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## AUTO
@@ -14,7 +12,8 @@
 AUTO = 0
 ```
 
-读取图片携带的EXIF元数据作为显示方向，支持旋转和镜像。 [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)和[DrawableDescriptor](arkts-arkui-drawabledescriptor-t.md)类型的图片不包含头信息，调 用该接口时图片显示效果不变化。 
+读取图片携带的EXIF元数据作为显示方向，支持旋转和镜像。  
+[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)和[DrawableDescriptor](arkts-arkui-drawabledescriptor-t.md)类型的图片不包含头信息，调 用该接口时图片显示效果不变化。
 
 **起始版本：** 14
 
@@ -23,8 +22,6 @@ AUTO = 0
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-ImageRotateOrientation-AUTO = 0--><!--Device-ImageRotateOrientation-AUTO = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,8 +41,6 @@ UP = 1
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ImageRotateOrientation-UP = 1--><!--Device-ImageRotateOrientation-UP = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## RIGHT
@@ -54,7 +49,7 @@ UP = 1
 RIGHT = 2
 ```
 
-将当前图片顺时针旋转90度后显示。 
+将当前图片顺时针旋转90度后显示。
 
 **起始版本：** 14
 
@@ -63,8 +58,6 @@ RIGHT = 2
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-ImageRotateOrientation-RIGHT = 2--><!--Device-ImageRotateOrientation-RIGHT = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,7 +67,7 @@ RIGHT = 2
 DOWN = 3
 ```
 
-将当前图片顺时针旋转180度后显示。 
+将当前图片顺时针旋转180度后显示。
 
 **起始版本：** 14
 
@@ -83,8 +76,6 @@ DOWN = 3
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-ImageRotateOrientation-DOWN = 3--><!--Device-ImageRotateOrientation-DOWN = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,7 +85,7 @@ DOWN = 3
 LEFT = 4
 ```
 
-将当前图片顺时针旋转270度后显示。 
+将当前图片顺时针旋转270度后显示。
 
 **起始版本：** 14
 
@@ -104,8 +95,6 @@ LEFT = 4
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ImageRotateOrientation-LEFT = 4--><!--Device-ImageRotateOrientation-LEFT = 4-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## UP_MIRRORED
@@ -114,7 +103,7 @@ LEFT = 4
 UP_MIRRORED = 5
 ```
 
-将当前图片水平翻转后显示。 
+将当前图片水平翻转后显示。
 
 **起始版本：** 20
 
@@ -123,8 +112,6 @@ UP_MIRRORED = 5
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-ImageRotateOrientation-UP_MIRRORED = 5--><!--Device-ImageRotateOrientation-UP_MIRRORED = 5-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,7 +121,7 @@ UP_MIRRORED = 5
 RIGHT_MIRRORED = 6
 ```
 
-将当前图片水平翻转再顺时针旋转90度后显示。 
+将当前图片水平翻转再顺时针旋转90度后显示。
 
 **起始版本：** 20
 
@@ -143,8 +130,6 @@ RIGHT_MIRRORED = 6
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-ImageRotateOrientation-RIGHT_MIRRORED = 6--><!--Device-ImageRotateOrientation-RIGHT_MIRRORED = 6-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -154,7 +139,7 @@ RIGHT_MIRRORED = 6
 DOWN_MIRRORED = 7
 ```
 
-将当前图片垂直翻转后显示。 
+将当前图片垂直翻转后显示。
 
 **起始版本：** 20
 
@@ -163,8 +148,6 @@ DOWN_MIRRORED = 7
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-ImageRotateOrientation-DOWN_MIRRORED = 7--><!--Device-ImageRotateOrientation-DOWN_MIRRORED = 7-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -174,7 +157,7 @@ DOWN_MIRRORED = 7
 LEFT_MIRRORED = 8
 ```
 
-将当前图片水平翻转再顺时针旋转270度后显示。 
+将当前图片水平翻转再顺时针旋转270度后显示。
 
 **起始版本：** 20
 
@@ -184,7 +167,4 @@ LEFT_MIRRORED = 8
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ImageRotateOrientation-LEFT_MIRRORED = 8--><!--Device-ImageRotateOrientation-LEFT_MIRRORED = 8-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

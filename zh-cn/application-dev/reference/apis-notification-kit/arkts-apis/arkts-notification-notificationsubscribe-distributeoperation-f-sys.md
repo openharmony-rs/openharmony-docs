@@ -14,11 +14,9 @@ function distributeOperation(hashcode: string, operationInfo?: OperationInfo): P
 
 触发指定通知的跨设备协同操作（例如通知跨设备点击跳转、通知跨设备快捷回复等）。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
-
-<!--Device-notificationSubscribe-function distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise<void>--><!--Device-notificationSubscribe-function distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -35,21 +33,19 @@ function distributeOperation(hashcode: string, operationInfo?: OperationInfo): P
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [1600010](../errorcode-notification.md#1600010-分布式操作失败) | Distributed operation failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1600010](../errorcode-notification.md#1600010-分布式操作失败) | Distributed operation failed. |
 | [1600021](../errorcode-notification.md#1600021-跨设备通信超时) | Distributed operation timed out. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -67,20 +63,3 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
   console.error(`distributeOperation fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let hashcode: string = 'hashcode';
-let operationInfo: notificationSubscribe.OperationInfo = {
-  actionName: 'actionName',
-  userInput: 'userInput',
-};
-notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
-  console.info('distributeOperation success');
-}).catch((err: Error): void => {
-  let error: BusinessError = err as BusinessError;
-  console.error(`distributeOperation fail, code is ${error.code}, message is ${error.message}`);
-});
-```
-

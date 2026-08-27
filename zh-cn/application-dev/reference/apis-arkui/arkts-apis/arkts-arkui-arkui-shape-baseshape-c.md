@@ -2,13 +2,9 @@
 
 继承自[CommonShapeMethod](arkts-arkui-arkui-shape-commonshapemethod-c.md)。
 
-**继承/实现关系：** BaseShape extends [CommonShapeMethod](arkts-arkui-arkui-shape-commonshapemethod-c.md)
+**继承/实现关系：** BaseShape extends CommonShapeMethod<T>
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-unnamed-export declare class BaseShape--><!--Device-unnamed-export declare class BaseShape-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -21,18 +17,18 @@ import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 ## height
 
 ```TypeScript
-height(height: Length): this
+height(height: Length): T
 ```
 
 设置形状的高度。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BaseShape-height(height: Length): this--><!--Device-BaseShape-height(height: Length): this-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,29 +36,29 @@ height(height: Length): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| height | [Length](../../apis-na/arkts-apis/arkts-na-length-t.md) | 是 | 形状的高度。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
+| height | [Length](arkts-arkui-length-t.md) | 是 | 形状的高度。单位：vp取值为异常值时按照0vp处理。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| this | 返回当前对象。 |
+| T | 返回当前对象。 |
 
 ## size
 
 ```TypeScript
-size(size: SizeOptions): this
+size(size: SizeOptions): T
 ```
 
 设置形状的大小。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BaseShape-size(size: SizeOptions): this--><!--Device-BaseShape-size(size: SizeOptions): this-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,29 +66,29 @@ size(size: SizeOptions): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | [SizeOptions](../../apis-na/arkts-apis/arkts-na-units-sizeoptions-i.md) | 是 | 形状的大小。 |
+| size | [SizeOptions](arkts-arkui-sizeoptions-i.md) | 是 | 形状的大小。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| this | 返回当前对象。 |
+| T | 返回当前对象。 |
 
 ## width
 
 ```TypeScript
-width(width: Length): this
+width(width: Length): T
 ```
 
 设置形状的宽度。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BaseShape-width(width: Length): this--><!--Device-BaseShape-width(width: Length): this-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,11 +96,10 @@ width(width: Length): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| width | [Length](../../apis-na/arkts-apis/arkts-na-length-t.md) | 是 | 形状的宽度。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
+| width | [Length](arkts-arkui-length-t.md) | 是 | 形状的宽度。单位：vp取值为异常值时按照0vp处理。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| this | 返回当前对象。 |
-
+| T | 返回当前对象。 |

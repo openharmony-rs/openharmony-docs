@@ -14,9 +14,7 @@ function getBatteryStats(): Promise<Array<BatteryStatsInfo>>
 
 获取耗电信息列表，用于电池监控应用查看各应用及硬件的耗电情况。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-batteryStats-function getBatteryStats(): Promise<Array<BatteryStatsInfo>>--><!--Device-batteryStats-function getBatteryStats(): Promise<Array<BatteryStatsInfo>>-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.PowerManager.BatteryStatistics
 
@@ -32,8 +30,8 @@ function getBatteryStats(): Promise<Array<BatteryStatsInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [4600101](../errorcode-batteryStatistics.md#4600101-连接服务失败) | Failed to connect to the service. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [4600101](../errorcode-batteryStatistics.md#4600101-连接服务失败) | Failed to connect to the service. |
 
 **示例**
 
@@ -42,8 +40,8 @@ batteryStats.getBatteryStats()
 .then((data: batteryStats.BatteryStatsInfo[]) => {
     console.info('battery statistics info: ' + data);
 })
-.catch((err: Error) => {
-    console.error('get battery statistics failed, err: ' + err);
+.catch((err: BusinessError) => {
+    console.error(`Failed to get battery statistics. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -56,9 +54,7 @@ function getBatteryStats(callback: AsyncCallback<Array<BatteryStatsInfo>>): void
 
 获取耗电信息列表，用于电池监控应用查看各应用及硬件的耗电情况。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-batteryStats-function getBatteryStats(callback: AsyncCallback<Array<BatteryStatsInfo>>): void--><!--Device-batteryStats-function getBatteryStats(callback: AsyncCallback<Array<BatteryStatsInfo>>): void-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.PowerManager.BatteryStatistics
 
@@ -68,39 +64,24 @@ function getBatteryStats(callback: AsyncCallback<Array<BatteryStatsInfo>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[BatteryStatsInfo](arkts-basicservices-batterystats-batterystatsinfo-i-sys.md)&gt;&gt; | 是 | 回调函数。当获取耗电信息列表成功，err为undefined，data为获取到的Array&lt; [BatteryStatsInfo](arkts-basicservices-batterystats-batterystatsinfo-i-sys.md)&gt;>；否则为错误对象；AsyncCallback封装了一个BatteryStatsInfo类型的接口。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[BatteryStatsInfo](arkts-basicservices-batterystats-batterystatsinfo-i-sys.md)&gt;&gt; | 是 | 回调函数。当获取耗电信息列表成功，err为undefined，data为获取到的Array&lt;[BatteryStatsInfo](arkts-basicservices-batterystats-batterystatsinfo-i-sys.md)&gt;&gt;；否则为错误对象；AsyncCallback封装了一个BatteryStatsInfo类型的接口。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [4600101](../errorcode-batteryStatistics.md#4600101-连接服务失败) | Failed to connect to the service. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-batteryStats.getBatteryStats((err: Error, data : batteryStats.BatteryStatsInfo[]) => {
-    if (typeof err === 'undefined') {
-        console.info('battery statistics info: ' + data);
+batteryStats.getBatteryStats((err: BusinessError, data: batteryStats.BatteryStatsInfo[]) => {
+    if (err) {
+        console.error(`Failed to get battery statistics. Code: ${err.code}, message: ${err.message}`);
     } else {
-        console.error('get battery statistics failed, err: ' + err);
+        console.info('battery statistics info: ' + data);
     }
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-batteryStats.getBatteryStats((err: Error | null, data : batteryStats.BatteryStatsInfo[] | undefined) => {
-    if (!err) {
-        console.info('battery statistics info: ' + data);
-    } else {
-        console.error('get battery statistics failed, err: ' + err);
-    }
-});
-```
-

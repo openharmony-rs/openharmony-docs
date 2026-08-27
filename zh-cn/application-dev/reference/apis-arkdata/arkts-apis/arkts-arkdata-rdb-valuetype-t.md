@@ -12,8 +12,6 @@ type ValueType = number | string | boolean
 
 **替代接口：** [ValueType](arkts-arkdata-relationalstore-valuetype-t.md)
 
-<!--Device-rdb-type ValueType = number | string | boolean--><!--Device-rdb-type ValueType = number | string | boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 | 类型 | 说明 |
@@ -21,4 +19,3 @@ type ValueType = number | string | boolean
 | number | 表示值类型为数字。 |
 | string | 表示值类型为字符串。 |
 | boolean | 表示值类型为布尔值。 |
-

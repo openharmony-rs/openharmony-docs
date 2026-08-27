@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 XML（可扩展标记语言）是一种用于描述数据的标记语言，提供通用的数据传输和存储方式。XML不预定义标记，因此更加灵活，适用于广泛的应用领域。
@@ -26,9 +26,9 @@ XML使用XML Schema或DTD（文档类型定义）定义文档结构，开发人�
 XML支持命名空间、实体引用、注释和处理指令，灵活适应各种数据需求。
 
 
-语言基础类库提供了XML相关的基础能力，包括：[XML的生成](xml-generation.md)、[XML的解析](xml-parsing.md)和[XML的转换](xml-conversion.md)。
+语言基础类库提供了XML相关的基础能力，包括：XML的生成、XML的解析和XML的转换。
 
-以下是一个简单的XML样例及对应说明，更多XML的接口和具体使用，请见[@ohos.xml/apis-arkts/js-apis-xml.md)。
+以下是一个简单的XML样例及对应说明，更多XML的接口和具体使用，请见@ohos.xml。
 
 ```XML
 <!-- 声明 -->

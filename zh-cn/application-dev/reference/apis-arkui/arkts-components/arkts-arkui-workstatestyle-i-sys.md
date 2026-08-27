@@ -6,8 +6,6 @@ Work state style.
 
 **废弃版本：** 20
 
-<!--Device-unnamed-interface WorkStateStyle--><!--Device-unnamed-interface WorkStateStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -25,15 +23,13 @@ offDayMarkColor?: ResourceColor
 
 Style of day color.
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 7
 
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-WorkStateStyle-offDayMarkColor?: ResourceColor--><!--Device-WorkStateStyle-offDayMarkColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,8 +51,6 @@ Style of day size.
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-WorkStateStyle-offDayMarkSize?: number--><!--Device-WorkStateStyle-offDayMarkSize?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -69,15 +63,13 @@ workDayMarkColor?: ResourceColor
 
 Style of day color.
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 7
 
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-WorkStateStyle-workDayMarkColor?: ResourceColor--><!--Device-WorkStateStyle-workDayMarkColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,8 +91,6 @@ Style of day size.
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-WorkStateStyle-workDayMarkSize?: number--><!--Device-WorkStateStyle-workDayMarkSize?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -120,8 +110,6 @@ Style of distance.
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-WorkStateStyle-workStateHorizontalMovingDistance?: number--><!--Device-WorkStateStyle-workStateHorizontalMovingDistance?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,8 +131,6 @@ Style of distance.
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-WorkStateStyle-workStateVerticalMovingDistance?: number--><!--Device-WorkStateStyle-workStateVerticalMovingDistance?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -165,9 +151,6 @@ Style of width.
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-WorkStateStyle-workStateWidth?: number--><!--Device-WorkStateStyle-workStateWidth?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

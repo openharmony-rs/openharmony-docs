@@ -20,7 +20,7 @@ typedef struct UsbInterfaceDescriptor {...} __attribute__((packed)) UsbInterface
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t bLength | 该描述符的大小，单位：字节。 |
+| uint8_t bLength | 该描述符的大小，单位：Byte。 |
 | uint8_t bDescriptorType | 描述符类型。 |
 | uint8_t bInterfaceNumber | 接口编号。 |
 | uint8_t bAlternateSetting | 用来选择该接口的备用设置的值。 |

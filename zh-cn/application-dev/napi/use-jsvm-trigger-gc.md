@@ -1,10 +1,10 @@
 # 使用JSVM-API感知JSVM引擎生命周期管理
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -25,7 +25,7 @@ JSVM-API提供了OH_JSVM_AddHandlerForGC接口，可以在VM中注册回调函�
 
 ## 使用示例
 
-JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅对接口对应C++相关代码进行展示。
+JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程，本文仅对接口对应C++相关代码进行展示。
 
 ### OH_JSVM_AddHandlerForGC & OH_JSVM_RemoveHandlerForGC
 
@@ -100,9 +100,9 @@ static JSVM_Value TriggerGC(JSVM_Env env, JSVM_CallbackInfo info)
     if (OH_JSVM_AddHandlerForGC(vm, JSVM_CB_TRIGGER_AFTER_GC, OnAfterGC2, JSVM_GC_TYPE_ALL, NULL) == JSVM_INVALID_ARG) {
         add_repeated = true;
     }
-    // 移除OnAfter2回调函数
+    // 移除OnAfterGC2回调函数
     JSVM_CALL(OH_JSVM_RemoveHandlerForGC(vm, JSVM_CB_TRIGGER_AFTER_GC, OnAfterGC2, NULL));
-    // 重复移除OnAfter2属于无效用法
+    // 重复移除OnAfterGC2属于无效用法
     if (OH_JSVM_RemoveHandlerForGC(vm, JSVM_CB_TRIGGER_AFTER_GC, OnAfterGC2, NULL) == JSVM_INVALID_ARG) {
         remove_repeated = true;
     }

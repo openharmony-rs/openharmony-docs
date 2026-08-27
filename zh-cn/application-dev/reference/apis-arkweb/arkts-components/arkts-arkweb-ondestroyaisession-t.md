@@ -10,8 +10,6 @@ AI会话销毁回调函数类型。用于清理与自定义AI模型关联的资�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-type OnDestroyAISession = (id: string) => void--><!--Device-unnamed-type OnDestroyAISession = (id: string) => void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -19,4 +17,3 @@ AI会话销毁回调函数类型。用于清理与自定义AI模型关联的资�
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | string | 是 | The session task ID. |
-

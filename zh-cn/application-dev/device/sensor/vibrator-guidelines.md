@@ -3,14 +3,14 @@
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
 <!--Designer: @andeszhang-->
-<!--Tester: @liuhaonan2-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## 场景介绍
 
 当设备需要设置不同的振动效果时，可以调用Vibrator模块，例如：设备的按键可以设置不同强度和不同时长的振动，闹钟和来电可以设置不同强度和时长的单次或周期振动。
 
-详细的接口介绍请参考[@ohos.vibrator (振动)/apis-sensor-service-kit/js-apis-vibrator.md)。
+详细的接口介绍请参考@ohos.vibrator (振动)。
 
 
 ## 接口说明
@@ -39,9 +39,9 @@
 
 | 名称         | 说明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| 固定时长振动 | 传入一个固定时长，马达按照默认强度和频率触发振动，振动效果描述请参考[VibrateTime/apis-sensor-service-kit/js-apis-vibrator.md#vibratetime9)。 |
-| 预置振动     | 系统中的[EffectId/apis-sensor-service-kit/js-apis-vibrator.md#effectid)，这些效果适用于某些固定场景，比如效果"haptic.clock.timer"通常用于用户调整计时器时的振感反馈，振动效果描述请参考[VibratePreset/apis-sensor-service-kit/js-apis-vibrator.md#vibratepreset9)。 |
-| 自定义振动   | 自定义振动提供给用户设计自己所需振动效果的能力，用户可通过自定义振动配置文件，并遵循相应规则编排所需振动形式，使能更加开放的振感交互体验，效果描述请参考[VibrateFromFile/apis-sensor-service-kit/js-apis-vibrator.md#vibratefromfile10)。 |
+| 固定时长振动 | 传入一个固定时长，马达按照默认强度和频率触发振动，振动效果描述请参考VibrateTime。 |
+| 预置振动     | 系统中的EffectId，这些效果适用于某些固定场景，比如效果"haptic.clock.timer"通常用于用户调整计时器时的振感反馈，振动效果描述请参考VibratePreset。 |
+| 自定义振动   | 自定义振动提供给用户设计自己所需振动效果的能力，用户可通过自定义振动配置文件，并遵循相应规则编排所需振动形式，使能更加开放的振感交互体验，效果描述请参考VibrateFromFile。 |
 
 自定义振动配置文件为Json格式，在形式上如下所示：
 
@@ -164,7 +164,7 @@ JSON文件共包含3个属性。
 
    ![输入图片说明](figures/008.png)
 
-2. 配置权限，具体配置方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
+2. 配置权限，具体配置方式请参考声明权限。
 
    <!-- @[vibrator_js_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/module.json5) -->
    
@@ -594,6 +594,6 @@ JSON文件共包含3个属性。
 
 针对振动开发，有以下相关实例可供参考：
 
-- [振动（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceManagement/Vibrator/BasicVibration)
+- [振动（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Vibrator/BasicVibration)
 
-- [自定义振动（ArkTS）(Full SDK)（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceManagement/Vibrator/CustomHaptic)
+- [自定义振动（ArkTS）(Full SDK)（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Vibrator/CustomHaptic)

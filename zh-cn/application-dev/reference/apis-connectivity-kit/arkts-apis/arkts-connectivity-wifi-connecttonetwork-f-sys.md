@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## connectToNetwork
@@ -24,8 +21,6 @@ function connectToNetwork(networkId: number): boolean
 **替代接口：** [connectToNetwork](arkts-connectivity-wifimanager-connecttonetwork-f.md)
 
 **需要权限：** ohos.permission.MANAGE_WIFI_CONNECTION
-
-<!--Device-wifi-function connectToNetwork(networkId: number): boolean--><!--Device-wifi-function connectToNetwork(networkId: number): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -55,4 +50,3 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
-

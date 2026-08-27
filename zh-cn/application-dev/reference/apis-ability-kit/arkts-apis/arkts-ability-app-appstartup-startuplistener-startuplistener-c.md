@@ -2,9 +2,7 @@
 
 本模块提供[应用启动框架](../../../application-models/app-startup.md)任务监听器的定义。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare class StartupListener--><!--Device-unnamed-declare class StartupListener-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Ability.AppStartup
 
@@ -26,15 +24,13 @@ onCompleted?(error: BusinessError<void>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-StartupListener-onCompleted?(error: BusinessError<void>): void--><!--Device-StartupListener-onCompleted?(error: BusinessError<void>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AppStartup
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| error | [BusinessError](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-businesserror-c.md)&lt;void&gt; | 是 | 错误信息。 |
+| error | [BusinessError](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-businesserror-i.md)&lt;void&gt; | 是 | 错误信息。 |
 
 **示例**
 
@@ -66,22 +62,3 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
   }
 }
 ```
-
-## onCompleted
-
-```TypeScript
-onCompleted?: OnCompletedFn
-```
-
-所有启动任务完成时的回调函数。
-
-**类型：** [OnCompletedFn](arkts-ability-oncompletedfn-t.md)
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-StartupListener-onCompleted?: OnCompletedFn--><!--Device-StartupListener-onCompleted?: OnCompletedFn-End-->
-
-**系统能力：** SystemCapability.Ability.AppStartup
-

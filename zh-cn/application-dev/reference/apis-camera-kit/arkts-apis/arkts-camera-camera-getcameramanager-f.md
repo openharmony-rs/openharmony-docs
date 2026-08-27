@@ -3,8 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## getCameraManager
@@ -15,11 +13,9 @@ function getCameraManager(context: Context): CameraManager
 
 获取相机管理器实例，同步返回结果。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-camera-function getCameraManager(context: Context): CameraManager--><!--Device-camera-function getCameraManager(context: Context): CameraManager-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -59,4 +55,3 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
   return cameraManager;
 }
 ```
-

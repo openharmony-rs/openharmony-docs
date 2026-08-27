@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-interface EmitterOptions--><!--Device-unnamed-interface EmitterOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,8 +29,6 @@ annulusRegion?: ParticleAnnulusRegion
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EmitterOptions-annulusRegion?: ParticleAnnulusRegion--><!--Device-EmitterOptions-annulusRegion?: ParticleAnnulusRegion-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## emitRate
@@ -53,8 +49,6 @@ emitRate?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EmitterOptions-emitRate?: number--><!--Device-EmitterOptions-emitRate?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## particle
@@ -63,7 +57,15 @@ emitRate?: number
 particle: EmitterParticleOptions<PARTICLE>
 ```
 
-粒子配置。 -type表示粒子类型，可以选择图片或者是点。 -config表示对应类型的配置。 -config类型和type值有关联： 1. 如果type为ParticleType.POINT，则config类型为[PointParticleParameters](arkts-arkui-pointparticleparameters-i.md) 。 2. 如果type为ParticleType.IMAGE，则config类型为[ImageParticleParameters](arkts-arkui-imageparticleparameters-i.md) 。 -count表示发射的粒子总数，count取值>=-1，当count为-1表示粒子总数无限大。 -lifetime表示单个粒子的生命周期，默认值1000（即1000ms，1s），lifetime>=-1，当lifetime为-1表示粒子生命周期无限大。当lifetime&lt;-1，取默认值。 **说明：**如果不需要动画一直播放，建议不要将生命周期设置为-1，可能对性能造成较大影响。 lifetimeRange表示粒子生命周期取值范围，设置lifetimeRange后粒子的生命周期为[lifetime-lifetimeRange, lifetime+lifetimeRange]中间的一个随机整数。 lifetimeRange默认值为0，取值范围为[0, +∞）。设置为负值时取默认值。
+粒子配置。  
+-type表示粒子类型，可以选择图片或者是点。  
+-config表示对应类型的配置。  
+-config类型和type值有关联：  
+1. 如果type为ParticleType.POINT，则config类型为[PointParticleParameters](arkts-arkui-pointparticleparameters-i.md) 。
+2. 如果type为ParticleType.IMAGE，则config类型为[ImageParticleParameters](arkts-arkui-imageparticleparameters-i.md) 。  
+-count表示发射的粒子总数，count取值&gt;=-1，当count为-1表示粒子总数无限大。  
+-lifetime表示单个粒子的生命周期，默认值1000（即1000ms，1s），lifetime&gt;=-1，当lifetime为-1表示粒子生命周期无限大。当lifetime&lt;-1，取默认值。  
+**说明：**如果不需要动画一直播放，建议不要将生命周期设置为-1，可能对性能造成较大影响。lifetimeRange表示粒子生命周期取值范围，设置lifetimeRange后粒子的生命周期为[lifetime-lifetimeRange, lifetime+lifetimeRange]中间的一个随机整数。 lifetimeRange默认值为0，取值范围为[0, +∞）。设置为负值时取默认值。
 
 **类型：** [EmitterParticleOptions](arkts-arkui-emitterparticleoptions-i.md)&lt;PARTICLE&gt;
 
@@ -73,8 +75,6 @@ particle: EmitterParticleOptions<PARTICLE>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EmitterOptions-particle: EmitterParticleOptions<PARTICLE>--><!--Device-EmitterOptions-particle: EmitterParticleOptions<PARTICLE>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## position
@@ -83,9 +83,9 @@ particle: EmitterParticleOptions<PARTICLE>
 position?: ParticleTuple<Dimension, Dimension>
 ```
 
-发射器位置（距离组件左上角的位置。第一个参数为x方向上的相对偏移，第二个参数为y轴方向相对偏移。） 默认值：`[0.0, 0.0]`
+发射器位置（距离组件左上角的位置。第一个参数为x方向上的相对偏移，第二个参数为y轴方向相对偏移。）默认值：`[0.0, 0.0]`
 
-**类型：** [ParticleTuple](arkts-arkui-particletuple-t.md)&lt;Dimension, Dimension&gt;
+**类型：** [ParticleTuple](arkts-arkui-particletuple-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md), [Dimension](../arkts-apis/arkts-arkui-dimension-t.md)&gt;
 
 **默认值：** [0,0]
 
@@ -95,8 +95,6 @@ position?: ParticleTuple<Dimension, Dimension>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EmitterOptions-position?: ParticleTuple<Dimension, Dimension>--><!--Device-EmitterOptions-position?: ParticleTuple<Dimension, Dimension>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## shape
@@ -105,7 +103,7 @@ position?: ParticleTuple<Dimension, Dimension>
 shape?: ParticleEmitterShape
 ```
 
-发射器形状。 默认值：ParticleEmitterShape.RECTANGLE
+发射器形状。默认值：ParticleEmitterShape.RECTANGLE
 
 **类型：** [ParticleEmitterShape](arkts-arkui-particleemittershape-e.md)
 
@@ -117,8 +115,6 @@ shape?: ParticleEmitterShape
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EmitterOptions-shape?: ParticleEmitterShape--><!--Device-EmitterOptions-shape?: ParticleEmitterShape-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -127,9 +123,9 @@ shape?: ParticleEmitterShape
 size?: ParticleTuple<Dimension, Dimension>
 ```
 
-发射窗口的大小。第一个参数为发射器宽，第二个参数为发射器高。 默认值：`['100%','100%']`(即发射窗口占满Particle组件)
+发射窗口的大小。第一个参数为发射器宽，第二个参数为发射器高。默认值：`['100%','100%']`(即发射窗口占满Particle组件)
 
-**类型：** [ParticleTuple](arkts-arkui-particletuple-t.md)&lt;Dimension, Dimension&gt;
+**类型：** [ParticleTuple](arkts-arkui-particletuple-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md), [Dimension](../arkts-apis/arkts-arkui-dimension-t.md)&gt;
 
 **默认值：** ['100%','100%']
 
@@ -139,7 +135,4 @@ size?: ParticleTuple<Dimension, Dimension>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EmitterOptions-size?: ParticleTuple<Dimension, Dimension>--><!--Device-EmitterOptions-size?: ParticleTuple<Dimension, Dimension>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

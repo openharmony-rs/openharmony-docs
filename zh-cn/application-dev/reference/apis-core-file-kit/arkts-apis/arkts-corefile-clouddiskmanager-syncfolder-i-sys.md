@@ -2,9 +2,7 @@
 
 表示同步根信息。
 
-**起始版本：** 23
-
-<!--Device-cloudDiskManager-interface SyncFolder--><!--Device-cloudDiskManager-interface SyncFolder-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
@@ -26,9 +24,7 @@ bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SyncFolder-bundleName: string--><!--Device-SyncFolder-bundleName: string-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
@@ -44,9 +40,7 @@ customAlias?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SyncFolder-customAlias?: string--><!--Device-SyncFolder-customAlias?: string-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
@@ -55,16 +49,14 @@ customAlias?: string
 ## displayNameResId
 
 ```TypeScript
-displayNameResId?: int
+displayNameResId?: number
 ```
 
 资源ID，可以映射到文管列表显示的别名。默认值为undefined。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SyncFolder-displayNameResId?: int--><!--Device-SyncFolder-displayNameResId?: int-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
@@ -80,9 +72,7 @@ path: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SyncFolder-path: string--><!--Device-SyncFolder-path: string-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
@@ -98,11 +88,8 @@ state: SyncFolderState
 
 **类型：** [SyncFolderState](arkts-corefile-clouddiskmanager-syncfolderstate-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-SyncFolder-state: SyncFolderState--><!--Device-SyncFolder-state: SyncFolderState-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **系统接口：** 此接口为系统接口。
-

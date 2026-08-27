@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-process-interface ConditionType--><!--Device-process-interface ConditionType-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
@@ -28,8 +26,6 @@ killSignal?: number | string
 
 **起始版本：** 10
 
-<!--Device-ConditionType-killSignal?: number | string--><!--Device-ConditionType-killSignal?: number | string-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
@@ -45,8 +41,6 @@ maxBuffer?: number
 **类型：** number
 
 **起始版本：** 10
-
-<!--Device-ConditionType-maxBuffer?: number--><!--Device-ConditionType-maxBuffer?: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -64,9 +58,6 @@ timeout?: number
 
 **起始版本：** 10
 
-<!--Device-ConditionType-timeout?: number--><!--Device-ConditionType-timeout?: number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
-

@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 100021 FrameNode节点不可修改
 
@@ -167,7 +167,7 @@ Reuse/Recycle not implemented for ViewV2, yet.
 
 **错误描述**
 
-BuilderNode中，[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)暂不支持reuse。
+BuilderNode中，状态管理V2暂不支持reuse。
 
 **可能原因**
 
@@ -233,4 +233,4 @@ Operations on the provided node are not supported on non-UI threads.
 
 1. 调整函数调用时机，确保接口在UI线程调用。
 2. 确认节点是由多线程createNode接口创建的。
-3. 参考[多线程NDK接口调用规范](../../ui/ndk-build-on-multi-thread.md#多线程ndk接口调用规范)，将组件所在组件树中所有不可转换的Attached组件移除。
+3. 参考多线程NDK接口调用规范，将组件所在组件树中所有不可转换的Attached组件移除。

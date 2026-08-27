@@ -2,9 +2,7 @@
 
 Enumerates the focus range types.
 
-**起始版本：** 23
-
-<!--Device-camera-enum FocusRangeType--><!--Device-camera-enum FocusRangeType-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -18,9 +16,7 @@ AUTO = 0
 
 Auto focus.
 
-**起始版本：** 23
-
-<!--Device-FocusRangeType-AUTO = 0--><!--Device-FocusRangeType-AUTO = 0-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -34,11 +30,8 @@ NEAR = 1
 
 Focus on near objects.
 
-**起始版本：** 23
-
-<!--Device-FocusRangeType-NEAR = 1--><!--Device-FocusRangeType-NEAR = 1-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
-

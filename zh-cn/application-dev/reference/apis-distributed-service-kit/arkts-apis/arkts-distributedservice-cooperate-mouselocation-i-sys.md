@@ -2,9 +2,7 @@
 
 键鼠穿越的位置。
 
-**起始版本：** 23
-
-<!--Device-cooperate-interface MouseLocation--><!--Device-cooperate-interface MouseLocation-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -19,16 +17,14 @@ import { cooperate } from '@kit.DistributedServiceKit';
 ## displayHeight
 
 ```TypeScript
-displayHeight: int
+displayHeight: number
 ```
 
 屏幕高度，单位：px。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MouseLocation-displayHeight: int--><!--Device-MouseLocation-displayHeight: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -37,16 +33,14 @@ displayHeight: int
 ## displayWidth
 
 ```TypeScript
-displayWidth: int
+displayWidth: number
 ```
 
 屏幕宽度，单位：px。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MouseLocation-displayWidth: int--><!--Device-MouseLocation-displayWidth: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -55,16 +49,14 @@ displayWidth: int
 ## displayX
 
 ```TypeScript
-displayX: int
+displayX: number
 ```
 
 鼠标指针位于屏幕的X坐标上的位置。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MouseLocation-displayX: int--><!--Device-MouseLocation-displayX: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -73,18 +65,15 @@ displayX: int
 ## displayY
 
 ```TypeScript
-displayY: int
+displayY: number
 ```
 
 鼠标指针位于屏幕的Y坐标上的位置。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MouseLocation-displayY: int--><!--Device-MouseLocation-displayY: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **系统接口：** 此接口为系统接口。
-

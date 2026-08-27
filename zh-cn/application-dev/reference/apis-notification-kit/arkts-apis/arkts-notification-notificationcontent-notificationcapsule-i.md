@@ -1,10 +1,12 @@
 # NotificationCapsule
 
-描述通知胶囊，用于在实况窗中展示胶囊形态。 > **说明：** > > 实际显示效果依赖于设备能力和通知中心UI样式。
+描述通知胶囊，用于在实况窗中展示胶囊形态。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 实际显示效果依赖于设备能力和通知中心UI样式。
 
-<!--Device-unnamed-export interface NotificationCapsule--><!--Device-unnamed-export interface NotificationCapsule-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -18,9 +20,7 @@ backgroundColor?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-NotificationCapsule-backgroundColor?: string--><!--Device-NotificationCapsule-backgroundColor?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -34,9 +34,7 @@ icon?: image.PixelMap
 
 **类型：** image.PixelMap
 
-**起始版本：** 23
-
-<!--Device-NotificationCapsule-icon?: image.PixelMap--><!--Device-NotificationCapsule-icon?: image.PixelMap-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -50,9 +48,6 @@ title?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-NotificationCapsule-title?: string--><!--Device-NotificationCapsule-title?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Notification.Notification
-

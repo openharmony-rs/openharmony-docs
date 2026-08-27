@@ -1,32 +1,27 @@
 # SimLabel
 
-定义SIM卡标签信息。
+SIM卡标签。
 
-**起始版本：** 23
-
-<!--Device-sim-export interface SimLabel--><!--Device-sim-export interface SimLabel-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
 ## 导入模块
 
 ```TypeScript
-import { sim } from '@kit.TelephonyKit';
 ```
 
 ## index
 
 ```TypeScript
-index: int
+index: number
 ```
 
-表示卡片索引。
+SIM卡的唯一标识索引值。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SimLabel-index: int--><!--Device-SimLabel-index: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -36,13 +31,10 @@ index: int
 simType: SimType
 ```
 
-表示SIM卡类型。
+表示SIM卡类型的枚举。
 
 **类型：** [SimType](arkts-telephony-sim-simtype-e.md)
 
-**起始版本：** 23
-
-<!--Device-SimLabel-simType: SimType--><!--Device-SimLabel-simType: SimType-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Telephony.CoreService
-

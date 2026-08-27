@@ -19,8 +19,6 @@ declare function ftruncate(fd: number, len?: number): Promise<void>
 
 **替代接口：** [truncate](arkts-corefile-file-fs-truncate-f.md)
 
-<!--Device-unnamed-declare function ftruncate(fd: number, len?: number): Promise<void>--><!--Device-unnamed-declare function ftruncate(fd: number, len?: number): Promise<void>-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -34,7 +32,20 @@ declare function ftruncate(fd: number, len?: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise & lt;void & gt; | Promise对象。无返回值。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let filePath = pathDir + "/test.txt";
+let fd = fileio.openSync(filePath);
+fileio.ftruncate(fd, 5).then(() => {
+  console.info("truncate file succeed");
+}).catch((err: BusinessError) => {
+  console.error("truncate file failed with error:" + err);
+});
+```
 
 
 ## ftruncate
@@ -51,8 +62,6 @@ declare function ftruncate(fd: number, callback: AsyncCallback<void>): void
 
 **替代接口：** [truncate](arkts-corefile-file-fs-truncate-f.md)
 
-<!--Device-unnamed-declare function ftruncate(fd: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function ftruncate(fd: number, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -60,7 +69,30 @@ declare function ftruncate(fd: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fd | number | 是 | 待截断文件的文件描述符。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，本调用无返回值。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，本调用无返回值。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let filePath = pathDir + "/test.txt";
+let fd = fileio.openSync(filePath);
+fileio.ftruncate(fd, 5).then(() => {
+  console.info("truncate file succeed");
+}).catch((err: BusinessError) => {
+  console.error("truncate file failed with error:" + err);
+});
+```
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let filePath = pathDir + "/test.txt";
+let fd = fileio.openSync(filePath);
+let len = 5;
+fileio.ftruncate(fd, 5, (err: BusinessError) => {
+  // do something
+});
+```
 
 
 ## ftruncate
@@ -77,8 +109,6 @@ declare function ftruncate(fd: number, len: number, callback: AsyncCallback<void
 
 **替代接口：** [truncate](arkts-corefile-file-fs-truncate-f.md)
 
-<!--Device-unnamed-declare function ftruncate(fd: number, len: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function ftruncate(fd: number, len: number, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -87,5 +117,8 @@ declare function ftruncate(fd: number, len: number, callback: AsyncCallback<void
 | --- | --- | --- | --- |
 | fd | number | 是 | 待截断文件的文件描述符。 |
 | len | number | 是 | 文件截断后的长度，单位为Byte。默认为0。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，本调用无返回值。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，本调用无返回值。 |
 
+**示例**
+
+参见 [ftruncate](#ftruncate)

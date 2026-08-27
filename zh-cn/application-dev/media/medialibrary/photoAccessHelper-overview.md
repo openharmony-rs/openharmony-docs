@@ -15,11 +15,11 @@ Media Library Kit（媒体文件管理服务）提供了管理相册和媒体文
 面向**所有应用**开放如下能力：
 
 - 选择/保存媒体库资源
-  - [使用Picker选择媒体库资源](photoAccessHelper-photoviewpicker.md)
-  - [保存媒体库资源](photoAccessHelper-savebutton.md)
+  - 使用Picker选择媒体库资源
+  - 保存媒体库资源
 - 管理动态照片
-  - [访问和管理动态照片资源](photoAccessHelper-movingphoto.md)
-  - [使用MovingPhotoView播放动态照片](movingphotoview-guidelines.md)
+  - 访问和管理动态照片资源
+  - 使用MovingPhotoView播放动态照片
 
 <!--RP2--><!--RP2End-->
 
@@ -27,22 +27,22 @@ Media Library Kit（媒体文件管理服务）提供了管理相册和媒体文
 
 > **注意：**
 > 
-> 受限开放的能力需要[申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)。<!--RP1-->这部分权限受限开放。<!--RP1End-->
+> 受限开放的能力需要申请相册管理模块功能相关权限。<!--RP1-->这部分权限受限开放。<!--RP1End-->
 
-- [媒体资源使用指导](photoAccessHelper-resource-guidelines.md)，包括：
+- 媒体资源使用指导，包括：
   - 获取指定媒体资源。
   - 获取图片和视频缩略图。
   - 重命名媒体资源。
-- [用户相册资源使用指导](photoAccessHelper-userAlbum-guidelines.md)，包括：
+- 用户相册资源使用指导，包括：
   - 获取用户相册。
   - 重命名用户相册。
   - 添加图片和视频到用户相册中。
   - 获取用户相册中的图片和视频。
   - 从用户相册中移除图片和视频。
-- [系统相册资源使用指导](photoAccessHelper-systemAlbum-guidelines.md)，包括：
+- 系统相册资源使用指导，包括：
   - 收藏夹。
   - 视频相册。
-- [媒体资源变更通知相关指导](photoAccessHelper-notify-guidelines.md)，包括：
+- 媒体资源变更通知相关指导，包括：
   - 注册对指定URI的监听。
   - 取消指定URI的监听。
 

@@ -17,15 +17,15 @@
 
 ## 接口说明
 
-以下是系统字体相关的常用接口和结构体，详细接口说明请参考[Drawing/apis-arkgraphics2d/capi-drawing.md)。
+以下是系统字体相关的常用接口和结构体，详细接口说明请参考Drawing。
 
 | 接口名 | 描述 | 
 | -------- | -------- |
-| OH_Drawing_FontConfigInfo\* OH_Drawing_GetSystemFontConfigInfo(OH_Drawing_FontConfigInfoErrorCode\*) | 获取系统字体配置信息，返回系统字体配置信息结构体OH_Drawing_FontConfigInfo。 | 
-| void OH_Drawing_DestroySystemFontConfigInfo(OH_Drawing_FontConfigInfo\*) | 释放系统字体配置信息占用的内存。 | 
+| OH_Drawing_FontConfigInfo\* OH_Drawing_GetSystemFontConfigInfo(OH_Drawing_FontConfigInfoErrorCode\* errorCode) | 获取系统字体配置信息，返回系统字体配置信息结构体OH_Drawing_FontConfigInfo。 | 
+| void OH_Drawing_DestroySystemFontConfigInfo(OH_Drawing_FontConfigInfo\* drawFontCfgInfo) | 释放系统字体配置信息占用的内存。 | 
 | OH_Drawing_FontCollection\* OH_Drawing_CreateSharedFontCollection(void) | 创建可共享的字体集对象OH_Drawing_FontCollection。 | 
 | OH_Drawing_TextStyle\* OH_Drawing_CreateTextStyle(void) | 创建指向OH_Drawing_TextStyle对象的指针，用于设置文本样式。 | 
-| OH_Drawing_SetTextStyleFontFamilies (OH_Drawing_TextStyle \*, int, const char \*fontFamilies[]) | 设置指定文本样式的字体家族类型。 | 
+| OH_Drawing_SetTextStyleFontFamilies(OH_Drawing_TextStyle\* style, int fontFamiliesNumber, const char \*fontFamilies[]) | 设置指定文本样式的字体家族类型。 |
 | void OH_Drawing_DisableFontCollectionSystemFont(OH_Drawing_FontCollection\* fontCollection) | 禁用系统字体。 | 
 
 | 结构体名 | 描述 | 
@@ -51,7 +51,7 @@
    #include <hilog/log.h>
    ```
 
-3. 获取系统字体的配置信息，可以通过返回的状态码确定获取信息是否成功，状态码的包含的具体情况和对应含义可见[OH_Drawing_FontConfigInfoErrorCode/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_fontconfiginfoerrorcode)。
+3. 获取系统字体的配置信息，可以通过返回的状态码确定获取信息是否成功，状态码包含的具体情况和对应含义可见OH_Drawing_FontConfigInfoErrorCode。
 
    <!-- @[custom_font_c_print_system_font_metrics_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
@@ -63,7 +63,7 @@
    }
    ```
 
-4. 系统字体的配置信息[OH_Drawing_FontConfigInfo/apis-arkgraphics2d/capi-drawing-oh-drawing-fontconfiginfo.md)包含以下几类信息：
+4. 系统字体的配置信息OH_Drawing_FontConfigInfo包含以下几类信息：
 
    - 系统字体文件路径数量。
 
@@ -73,9 +73,9 @@
 
    - 系统字体文件路径列表。
 
-   - 通用字体集列表，具体信息可见[OH_Drawing_FontGenericInfo/apis-arkgraphics2d/capi-drawing-oh-drawing-fontgenericinfo.md)结构体。
+   - 通用字体集列表，具体信息可见OH_Drawing_FontGenericInfo结构体。
 
-   - 备用字体集列表，具体信息可见[OH_Drawing_FontFallbackGroup/apis-arkgraphics2d/capi-drawing-oh-drawing-fontfallbackgroup.md)结构体。
+   - 备用字体集列表，具体信息可见OH_Drawing_FontFallbackGroup结构体。
 
    以下示例展示系统字体的一些具体配置信息的获取：
 
@@ -106,7 +106,7 @@
 
    以下打印的示例为应用设备系统对应的部分系统字体配置信息情况，不同设备系统配置信息可能不同，此处仅示意。
 
-   ![zh-cn_image_0000002211603636](figures/zh-cn_image_0000002211603636.png)
+   ![System-Font-Information](figures/System-Font-Information.png)
 
 5. 如若后续不再需要系统字体的系统配置信息时，则释放其占用的内存。
 
@@ -135,11 +135,11 @@
    #include <hilog/log.h>
    ```
 
-3. 创建字体管理器，建议优先使用OH_Drawing_CreateSharedFontCollection创建可共享的字体集对象。
+3. 创建字体集对象，建议优先使用OH_Drawing_CreateSharedFontCollection创建可共享的字体集对象。
 
    > **说明：**
    >
-   > 使用OH_Drawing_CreateFontCollection和OH_Drawing_CreateSharedFontCollection均可创建字体管理器OH_Drawing_FontCollection对象，但前者创建的字体集指针对象只能被一个段落生成器OH_Drawing_TypographyCreate对象使用，无法被多个段落生成器OH_Drawing_TypographyCreate对象共享使用。如需在多个段落生成器OH_Drawing_TypographyCreate对象间共享使用，请使用后者创建可共享的字体集对象。
+   > 使用OH_Drawing_CreateFontCollection和OH_Drawing_CreateSharedFontCollection均可创建字体集OH_Drawing_FontCollection对象，但前者创建的字体集指针对象只能被一个段落生成器OH_Drawing_TypographyCreate对象使用，无法被多个段落生成器OH_Drawing_TypographyCreate对象共享使用。如需在多个段落生成器OH_Drawing_TypographyCreate对象间共享使用，请使用后者创建可共享的字体集对象。
 
    <!-- @[custom_font_c_create_shared_font_collection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
@@ -155,7 +155,7 @@
    OH_Drawing_TextStyle *textStyle = OH_Drawing_CreateTextStyle();
    ```
 
-5. [获取系统字体信息](#获取系统字体信息)，获取系统字体的字体家族名，并在文本样式中设置为该系统字体。
+5. 获取系统字体信息，获取系统字体的字体家族名，并在文本样式中设置为该系统字体。
    <!-- @[custom_font_c_print_system_font_metrics_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
@@ -206,7 +206,7 @@
 >
 > 禁用系统字体后，请确保注册使用自定义字体，否则文本将无法正常显示。
 
-1. 确保已成功注册自定义字体，用于保证禁用系统字体后文本的正常显示，具体可见[自定义字体的注册和使用](custom-font-c.md)。
+1. 确保已成功注册自定义字体，用于保证禁用系统字体后文本的正常显示，具体可见自定义字体的注册和使用。
 
 2. 在工程的`src/main/cpp/CMakeLists.txt`文件中添加以下lib。
    ```c++
@@ -222,7 +222,7 @@
    #include <hilog/log.h>
    ```
 
-4. 创建字体管理器，建议优先使用OH_Drawing_CreateSharedFontCollection创建可共享的字体集对象。
+4. 创建字体集对象，建议优先使用OH_Drawing_CreateSharedFontCollection创建可共享的字体集对象。
 
    <!-- @[custom_font_c_disable_system_font_text_step_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
@@ -252,6 +252,7 @@
    // 情况一：如果此时设置使用了自定义字体，文本会正常显示
    // 该路径是待注册的自定义字体文件在应用设备下的路径，确保该自定义字体文件已正确放置在该路径下
    // 后续使用自定义字体时，需使用到该字体家族名
+   // 情况二：如果此时不调用OH_Drawing_SetTextStyleFontFamilies或传入空参，文本会默认使用系统默认字体，而此时系统字体已被禁用，因此文本将无法显示
    const char* fontFamily = "HarmonyOS_Sans"; 
    const char* fontPath = "/system/fonts/HarmonyOS_Sans.ttf"; 
    // 返回0为成功，1为文件不存在，2为打开文件失败，3为读取文件失败，4为寻找文件失败，5为获取大小失败，9文件损坏
@@ -259,14 +260,6 @@
    DRAWING_LOGI("errorCode = %{public}d", errorCode);
    const char *myFontFamilies[] = {"HarmonyOS_Sans"}; // 确保已成功注册自定义字体，填入自定义字体的字体家族名
    OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
-   
-   // 情况二：如果此时使用了系统字体，文本将无法显示
-   // const char *myFontFamilies[] = {"HarmonyOS_Sans"};
-   // OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
-   
-   // 情况三：如果此时不设置使用字体，文本会默认使用系统默认字体，而此时系统字体已被禁用，因此文本将无法显示
-   // const char *myFontFamilies[] = {"HarmonyOS_Sans"};
-   // OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
    ```
 
 7. 生成最终的段落文本，以便实现最终的文本绘制和显示。

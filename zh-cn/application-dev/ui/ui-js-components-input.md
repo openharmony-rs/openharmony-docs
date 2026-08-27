@@ -1,12 +1,12 @@
 # input开发指导
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-input是交互式组件，用于接收用户数据。其类型可设置为日期、多选框和按钮等。具体用法请参考[input API/apis-arkui/arkui-js/js-components-basic-input.md)。
+input是交互式组件，用于接收用户数据。其类型可设置为日期、多选框和按钮等。具体用法请参考input API。
 
 
 ## 创建input组件
@@ -34,7 +34,7 @@ input是交互式组件，用于接收用户数据。其类型可设置为日期
 }
 ```
 
-![zh-cn_image_0000001165344988](figures/zh-cn_image_0000001165344988.png)
+![input-Component](figures/input-Component.png)
 
 
 ## 设置input类型
@@ -105,7 +105,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001163375178](figures/zh-cn_image_0000001163375178.gif)
+![Input-Type](figures/Input-Type.gif)
 
 
 > **说明：**
@@ -230,7 +230,7 @@ import promptAction from '@ohos.promptAction'
  }
 ```
 
-![zh-cn_image_0000001189248178](figures/zh-cn_image_0000001189248178.gif)
+![Input-Error-Message](figures/Input-Error-Message.gif)
 
 > **说明：** 
 >
@@ -318,4 +318,4 @@ export default {
 ```
 
 
-![zh-cn_image_0000001188771358](figures/zh-cn_image_0000001188771358.gif)
+![Example-Scenario](figures/Example-Scenario.gif)

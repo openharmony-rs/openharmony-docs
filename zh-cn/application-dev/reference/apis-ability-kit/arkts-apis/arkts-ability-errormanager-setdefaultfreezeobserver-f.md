@@ -12,15 +12,21 @@ import { errorManager } from '@kit.AbilityKit';
 function setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObserver
 ```
 
-发生APP_FREEZE时，支持链式回调，返回上一次注册的处理器，仅限主线程调用。 如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。 > **说明：** > > 该接口请勿与 > [on('freeze')](arkts-ability-errormanager-onerror-f.md#onerror) > 或 > [off('freeze')](arkts-ability-errormanager-offerror-f.md#offerror) > 接口混用。
+发生APP_FREEZE时，支持链式回调，返回上一次注册的处理器，仅限主线程调用。 如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。
+
+> **说明：**
+> 
+> 该接口请勿与
+> [on('freeze')](arkts-ability-errormanager-on-f.md#onfreeze)
+> 或
+> [off('freeze')](arkts-ability-errormanager-off-f.md#offfreeze)
+> 接口混用。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-errorManager-function setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObserver--><!--Device-errorManager-function setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObserver-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -44,8 +50,6 @@ function setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObse
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -62,7 +66,7 @@ const freezeHandler: errorManager.FreezeObserver = () => {
   }
 };
 
-export const setFreezeHandler = () => {
+export function setFreezeHandler() {
   try {
     oldHandler = errorManager.setDefaultFreezeObserver(freezeHandler);
   } catch (paramError) {
@@ -71,33 +75,5 @@ export const setFreezeHandler = () => {
     console.error(`Failed to set freeze handler. Code: ${code}, message: ${message}`);
   }
   console.info('Registered freeze Handler.');
-};
+}
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { errorManager } from '@kit.AbilityKit';
-
-let oldHandler: errorManager.FreezeObserver = () => {};
-const freezeHandler: errorManager.FreezeObserver = () => {
-    // 自定义的FreezeHandler实现逻辑
-    console.info('[freezeHandler] freeze handler invoked.');
-    if (oldHandler) {
-        oldHandler();
-    } else {
-        console.info('[freezeHandler] freeze handler end.');
-    }
-};
-
-export const setFreezeHandler = () => {
-  try {
-    oldHandler = errorManager.setDefaultFreezeObserver(freezeHandler);
-    console.info('Registered freeze Handler.');
-  } catch (paramError) {
-    console.error('setFreezeHandler error: ', paramError);
-  }
-};
-```
-

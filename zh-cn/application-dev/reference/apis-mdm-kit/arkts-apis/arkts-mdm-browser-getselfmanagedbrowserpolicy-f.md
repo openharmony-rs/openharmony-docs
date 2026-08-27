@@ -18,8 +18,6 @@ function getSelfManagedBrowserPolicy(): ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-browser-function getSelfManagedBrowserPolicy(): ArrayBuffer--><!--Device-browser-function getSelfManagedBrowserPolicy(): ArrayBuffer-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **返回值：**
@@ -44,4 +42,3 @@ try {
   console.error(`Failed to get self managed browser policy. Code is ${err.code}, message is ${err.message}`);
 }
 ```
-

@@ -1,10 +1,8 @@
-# DynamicOptions(System API)（系统接口）
+# DynamicOptions（系统接口）
 
 用于在DynamicComponent构造时传递参数。
 
 **起始版本：** 26.0.0
-
-<!--Device-unnamed-declare interface DynamicOptions--><!--Device-unnamed-declare interface DynamicOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -21,15 +19,13 @@
 allowCrossProcessNesting?: boolean
 ```
 
-是否允许跨进程UIExtensionComponent嵌套。<br/>true：允许跨进程嵌套；false：不允许跨进程嵌套。<br/>默认值：false
+是否允许跨进程UIExtensionComponent嵌套。true：允许跨进程嵌套；false：不允许跨进程嵌套。默认值：false
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DynamicOptions-allowCrossProcessNesting?: boolean--><!--Device-DynamicOptions-allowCrossProcessNesting?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,8 +45,6 @@ allowOccupied?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DynamicOptions-allowOccupied?: boolean--><!--Device-DynamicOptions-allowOccupied?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -61,15 +55,13 @@ allowOccupied?: boolean
 backgroundTransparent?: boolean
 ```
 
-是否启用组件背景透明。<br/>true：启用背景透明；false：不启用背景透明。<br/>默认值：false
+是否启用组件背景透明。true：启用背景透明；false：不启用背景透明。默认值：false
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DynamicOptions-backgroundTransparent?: boolean--><!--Device-DynamicOptions-backgroundTransparent?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -81,15 +73,13 @@ backgroundTransparent?: boolean
 entryPoint: string
 ```
 
-要加载的Abc页面入口。<br/>取值格式：'bundleName/moduleName/pagePath'，例如'com.example.myapplication/entry/ets/pages/DynamicPage'。
+要加载的Abc页面入口。取值格式：'bundleName/moduleName/pagePath'，例如'com.example.myapplication/entry/ets/pages/DynamicPage'。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DynamicOptions-entryPoint: string--><!--Device-DynamicOptions-entryPoint: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,9 +99,6 @@ worker: Worker
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DynamicOptions-worker: Worker--><!--Device-DynamicOptions-worker: Worker-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

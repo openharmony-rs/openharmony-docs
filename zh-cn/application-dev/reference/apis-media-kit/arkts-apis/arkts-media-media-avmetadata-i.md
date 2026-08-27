@@ -1,10 +1,8 @@
 # AVMetadata
 
-Defines the audio and video metadata. Parameters that are not declared as read-only in [AVRecorderConfig](arkts-media-multimedia-media-avrecorderconfig-i.md) can be used as input parameters for recording of [AVRecorder](arkts-media-multimedia-media-avrecorder-i.md).
+音视频元数据，包含各个元数据字段。
 
-**起始版本：** 23
-
-<!--Device-media-interface AVMetadata--><!--Device-media-interface AVMetadata-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -20,13 +18,11 @@ import { media } from '@kit.MediaKit';
 album?: string
 ```
 
-Title of the album. This parameter is not supported in AVRecorder settings.
+专辑的标题。不支持AVRecorder设置该属性。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-album?: string--><!--Device-AVMetadata-album?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -36,13 +32,11 @@ Title of the album. This parameter is not supported in AVRecorder settings.
 albumArtist?: string
 ```
 
-Artist of the album. This parameter is not supported in AVRecorder settings.
+专辑的艺术家。不支持AVRecorder设置该属性。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-albumArtist?: string--><!--Device-AVMetadata-albumArtist?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -52,13 +46,11 @@ Artist of the album. This parameter is not supported in AVRecorder settings.
 artist?: string
 ```
 
-Artist of the media asset. This parameter is not supported in AVRecorder settings.
+媒体资源的艺术家。不支持AVRecorder设置该属性。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-artist?: string--><!--Device-AVMetadata-artist?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -68,13 +60,11 @@ Artist of the media asset. This parameter is not supported in AVRecorder setting
 author?: string
 ```
 
-Author of the media asset. This parameter is not supported in AVRecorder settings.
+媒体资源的作者。不支持AVRecorder设置该属性。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-author?: string--><!--Device-AVMetadata-author?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -84,13 +74,11 @@ Author of the media asset. This parameter is not supported in AVRecorder setting
 composer?: string
 ```
 
-Composer of the media asset. This parameter is not supported in AVRecorder settings.
+媒体资源的作曲家。不支持AVRecorder设置该属性。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-composer?: string--><!--Device-AVMetadata-composer?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -100,13 +88,11 @@ Composer of the media asset. This parameter is not supported in AVRecorder setti
 customInfo?: Record<string, string>
 ```
 
-Custom key-value mappings obtained from **moov.meta.list**.
+从moov.meta.list 获取的自定义参数键值映射。
 
 **类型：** Record&lt;string, string&gt;
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-customInfo?: Record<string, string>--><!--Device-AVMetadata-customInfo?: Record<string, string>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -116,13 +102,11 @@ Custom key-value mappings obtained from **moov.meta.list**.
 dateTime?: string
 ```
 
-Time when the media asset is created. This parameter is not supported in AVRecorder settings.
+媒体资源的创建时间。不支持AVRecorder设置该属性。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-dateTime?: string--><!--Device-AVMetadata-dateTime?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -132,13 +116,11 @@ Time when the media asset is created. This parameter is not supported in AVRecor
 dateTimeFormat?: string
 ```
 
-Time when the media asset is created. The value is in the YYYY-MM-DD HH:mm:ss format. This parameter is not supported in AVRecorder settings.
+媒体资源的创建时间，按YYYY-MM-DD HH:mm:ss格式输出。不支持AVRecorder设置该属性。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-dateTimeFormat?: string--><!--Device-AVMetadata-dateTimeFormat?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -148,13 +130,11 @@ Time when the media asset is created. The value is in the YYYY-MM-DD HH:mm:ss fo
 description?: string
 ```
 
-Description of the media asset. This parameter is not supported in AVRecorder settings.
+媒体资源的描述信息。当前版本为只读参数。不支持AVRecorder设置该属性。
 
 **类型：** string
 
 **起始版本：** 23
-
-<!--Device-AVMetadata-description?: string--><!--Device-AVMetadata-description?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -164,13 +144,11 @@ Description of the media asset. This parameter is not supported in AVRecorder se
 duration?: string
 ```
 
-Duration of the media asset. This parameter is not supported in AVRecorder settings.
+媒体资源的时长。不支持AVRecorder设置该属性。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-duration?: string--><!--Device-AVMetadata-duration?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -180,15 +158,13 @@ Duration of the media asset. This parameter is not supported in AVRecorder setti
 encoder?: string
 ```
 
-The identifier that represents the software or hardware and settings used for encoding. This parameter is not supported in AVRecorder settings.
+用于编码的软件、硬件及其设置的标识符。不支持AVRecorder设置该属性。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AVMetadata-encoder?: string--><!--Device-AVMetadata-encoder?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -198,13 +174,11 @@ The identifier that represents the software or hardware and settings used for en
 genre?: string
 ```
 
-Type or genre of the media asset.
+媒体资源的类型或体裁。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-genre?: string--><!--Device-AVMetadata-genre?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -214,13 +188,11 @@ Type or genre of the media asset.
 hasAudio?: string
 ```
 
-Whether the media asset contains audio. This parameter is not supported in AVRecorder settings.
+媒体资源是否包含音频。不支持AVRecorder设置该属性。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-hasAudio?: string--><!--Device-AVMetadata-hasAudio?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -230,13 +202,11 @@ Whether the media asset contains audio. This parameter is not supported in AVRec
 hasVideo?: string
 ```
 
-Whether the media asset contains a video. This parameter is not supported in AVRecorder settings.
+媒体资源是否包含视频。不支持AVRecorder设置该属性。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-hasVideo?: string--><!--Device-AVMetadata-hasVideo?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -246,13 +216,11 @@ Whether the media asset contains a video. This parameter is not supported in AVR
 hdrType?: HdrType
 ```
 
-HDR type of the media asset. This parameter is not supported in AVRecorder settings.
+媒体资源的HDR类型。不支持AVRecorder设置该属性。
 
 **类型：** HdrType
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-hdrType?: HdrType--><!--Device-AVMetadata-hdrType?: HdrType-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -262,13 +230,11 @@ HDR type of the media asset. This parameter is not supported in AVRecorder setti
 location?: Location
 ```
 
-Geographical location of the media asset.
+视频的地理位置信息。
 
-**类型：** [Location](arkts-media-multimedia-media-location-i.md)
+**类型：** Location
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-location?: Location--><!--Device-AVMetadata-location?: Location-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -278,13 +244,11 @@ Geographical location of the media asset.
 mimeType?: string
 ```
 
-MIME type of the media asset. This parameter is not supported in AVRecorder settings. Some example mime types include: "video/mp4", "audio/mp4", "audio/amr-wb".
+媒体资源的mime类型。不支持AVRecorder设置该属性。 一些示例的mimeType类型包括: "video/mp4", "audio/mp4", "audio/amr-wb"
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-mimeType?: string--><!--Device-AVMetadata-mimeType?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -294,13 +258,11 @@ MIME type of the media asset. This parameter is not supported in AVRecorder sett
 sampleRate?: string
 ```
 
-Audio sampling rate, in Hz. This parameter is not supported in AVRecorder settings.
+音频的采样率，单位为赫兹（Hz）。不支持AVRecorder设置该属性。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-sampleRate?: string--><!--Device-AVMetadata-sampleRate?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -310,13 +272,11 @@ Audio sampling rate, in Hz. This parameter is not supported in AVRecorder settin
 title?: string
 ```
 
-Title of the media asset. This parameter is not supported in AVRecorder settings. This parameter is read-only in the current version.
+媒体资源的标题。当前版本为只读参数。不支持AVRecorder设置该属性。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-title?: string--><!--Device-AVMetadata-title?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -326,13 +286,11 @@ Title of the media asset. This parameter is not supported in AVRecorder settings
 trackCount?: string
 ```
 
-Number of tracks of the media asset. This parameter is not supported in AVRecorder settings.
+媒体资源的轨道数量。不支持AVRecorder设置该属性。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-trackCount?: string--><!--Device-AVMetadata-trackCount?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -342,13 +300,11 @@ Number of tracks of the media asset. This parameter is not supported in AVRecord
 tracks?: Array<MediaDescription>
 ```
 
-Tracks info of the media asset. This parameter is not supported in AVRecorder settings.
+媒体资源的轨道信息。不支持AVRecorder设置该属性。
 
-**类型：** Array&lt;[MediaDescription](arkts-media-multimedia-media-mediadescription-i.md)&gt;
+**类型：** Array&lt;[MediaDescription](arkts-media-media-mediadescription-i.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-tracks?: Array<MediaDescription>--><!--Device-AVMetadata-tracks?: Array<MediaDescription>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -358,13 +314,11 @@ Tracks info of the media asset. This parameter is not supported in AVRecorder se
 videoHeight?: string
 ```
 
-Video height, in px. This parameter is not supported in AVRecorder settings.
+视频的高度，单位为像素（px）。不支持AVRecorder设置该属性。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-videoHeight?: string--><!--Device-AVMetadata-videoHeight?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -374,13 +328,11 @@ Video height, in px. This parameter is not supported in AVRecorder settings.
 videoOrientation?: string
 ```
 
-Video rotation direction, in degrees.
+视频的旋转方向，单位为度（°）。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-videoOrientation?: string--><!--Device-AVMetadata-videoOrientation?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -390,13 +342,10 @@ Video rotation direction, in degrees.
 videoWidth?: string
 ```
 
-Video width, in px. This parameter is not supported in AVRecorder settings.
+视频的宽度，单位为像素（px）。不支持AVRecorder设置该属性。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AVMetadata-videoWidth?: string--><!--Device-AVMetadata-videoWidth?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
-

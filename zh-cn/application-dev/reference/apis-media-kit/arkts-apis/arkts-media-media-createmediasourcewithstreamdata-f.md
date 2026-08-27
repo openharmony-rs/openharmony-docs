@@ -18,21 +18,19 @@ function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSour
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-media-function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSource--><!--Device-media-function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSource-End-->
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| streams | Array&lt;[MediaStream](arkts-media-multimedia-media-mediastream-i.md)&gt; | 是 | 可设置MediaStream数组，支持的流媒体格式：HTTP-FLV。 |
+| streams | Array&lt;[MediaStream](arkts-media-media-mediastream-i.md)&gt; | 是 | 可设置MediaStream数组，支持的流媒体格式：HTTP-FLV。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [MediaSource](arkts-media-multimedia-media-mediasource-i.md) | 返回MediaSource，用于媒体资源设置。 |
+| [MediaSource](arkts-media-media-mediasource-i.md) | 返回MediaSource，用于媒体资源设置。 |
 
 **示例**
 
@@ -43,31 +41,3 @@ streams.push({url: "http://xxx/720p.flv", width: 1280, height: 720, bitrate: 200
 streams.push({url: "http://xxx/1080p.flv", width: 1920, height: 1080, bitrate: 2000000});
 let mediaSource : media.MediaSource = media.createMediaSourceWithStreamData(streams);
 ```
-
-
-## createMediaSourceWithStreamData
-
-```TypeScript
-function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSource | undefined
-```
-
-Creates a multi-bitrate media source for streaming media. Currently, only the HTTP-FLV multi-bitrate media source is supported.
-
-**起始版本：** 23
-
-<!--Device-media-function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSource | undefined--><!--Device-media-function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSource | undefined-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| streams | Array&lt;[MediaStream](arkts-media-multimedia-media-mediastream-i.md)&gt; | 是 | Array of MediaStream objects. The supported streaming media format is HTTP-FLV. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [MediaSource](arkts-media-multimedia-media-mediasource-i.md) | MediaSource instance if the operation is successful; returns null otherwise. |
-

@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 9800001 内存操作失败
 
@@ -132,10 +132,10 @@ Continuous task verification failed.
 10. 请检查合并通知时，长时任务通知是否存在。
 11. 请检查合并通知时，当前长时任务或者被合并的长时任务是否支持合并。
 12. 请检查合并通知时，长时任务类型是否一致。
-13. 请检查申请TASK_KEEPING长时任务时，是否申请了[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的ACL授权。
+13. 请检查申请TASK_KEEPING长时任务时，是否申请了ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM的ACL授权。
 14. 请检查更新长时任务时，原类型或者新增类型是否包含了数据传输类型。
 15. 请检查除了播音和已经在前台申请过的长时任务类型，是否在后台申请了其他长时任务类型。
-16. 请检查申请MODE_SPECIAL_SCENARIO_PROCESSING类型的长时任务时，是否申请了[ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_special_scenario)或者[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的ACL授权。
+16. 请检查申请MODE_SPECIAL_SCENARIO_PROCESSING类型的长时任务时，是否申请了ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO或者ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM的ACL授权。
 
 ## 9800006 长时任务通知信息校验失败
 
@@ -151,11 +151,15 @@ Notification verification failed for a continuous task.
 
 1. 缓存在资源子系统的长时任务通知信息资源加载失败。
 2. 通知子系统服务异常。
+3. 更新长时任务通知时，长时任务Id、通知进度信息不正确。
+4. 更新长时任务通知时，长时任务未包含数据传输类型。
 
 **处理步骤**
 
 1. 请检查系统长时任务资源"ohos.backgroundtaskmgr.resources"是否存在。
 2. 系统服务内部工作异常，请稍候重试，或者重启设备尝试。
+3. 请检查更新长时任务通知时，长时任务Id、通知进度信息是否正确，重新传入正确的参数。
+4. 请检查更新长时任务通知时，长时任务是否包含“数据传输”类型。若未包含，请重新申请或者更新长时任务。
 
 ## 9800007 长时任务信息存储失败
 

@@ -7,6 +7,12 @@
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [RepeatAttribute(Defines Repeat component.)](arkts-arkui-repeatattribute-c.md) | 除支持拖拽排序属性外，还支持以下属性。 |
+
 ### 接口
 
 | 名称 | 说明 |
@@ -27,5 +33,11 @@
 | --- | --- |
 | [RepeatArray(Defines Repeat component.)](arkts-arkui-repeatarray-t.md) | Repeat数据源参数联合类型。 |
 | [RepeatInterface(Defines Repeat component.)](arkts-arkui-repeatinterface-t.md) | Indicates the type of Repeat. |
+| [RepeatItemBuilder(Defines Repeat component.)](arkts-arkui-repeatitembuilder-t.md) |  |
 | [TemplateTypedFunc(Defines Repeat component.)](arkts-arkui-templatetypedfunc-t.md) |  |
 
+### 常量
+
+| 名称 | 说明 |
+| --- | --- |
+| [Repeat(Defines Repeat component.)](arkts-arkui-repeat-con.md) | Repeat基于数组类型数据来进行循环渲染，一般与滚动容器组件配合使用。本文档仅为API参数说明。组件描述和使用说明见[Repeat开发者指南](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)。 |

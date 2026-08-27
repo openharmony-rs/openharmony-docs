@@ -16,8 +16,6 @@ function toSendableValues(values: NonSendableValues): collections.Array<ValueTyp
 
 **起始版本：** 20
 
-<!--Device-sendableRelationalStore-function toSendableValues(values: NonSendableValues): collections.Array<ValueType>--><!--Device-sendableRelationalStore-function toSendableValues(values: NonSendableValues): collections.Array<ValueType>-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -30,7 +28,7 @@ function toSendableValues(values: NonSendableValues): collections.Array<ValueTyp
 
 | 类型 | 说明 |
 | --- | --- |
-| collections.Array&lt;ValueType&gt; | 可跨线程传递的数组数据。 |
+| collections.Array & lt;ValueType & gt; | 可跨线程传递的数组数据。 |
 
 **错误码：**
 
@@ -48,4 +46,3 @@ array.push(2);
 array.push("aaaaaa")
 const values = sendableRelationalStore.toSendableValues(array);
 ```
-

@@ -2,9 +2,7 @@
 
 包的module配置信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface ModuleConfigInfo--><!--Device-unnamed-export interface ModuleConfigInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -20,9 +18,7 @@ module包含的ability组件信息。
 
 **类型：** Array&lt;[ModuleAbilityInfo](arkts-ability-bundlepackinfo-moduleabilityinfo-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-ModuleConfigInfo-readonly abilities: Array<ModuleAbilityInfo>--><!--Device-ModuleConfigInfo-readonly abilities: Array<ModuleAbilityInfo>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -38,9 +34,7 @@ module的api版本。
 
 **类型：** [ApiVersion](arkts-ability-bundlepackinfo-apiversion-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-ModuleConfigInfo-readonly apiVersion: ApiVersion--><!--Device-ModuleConfigInfo-readonly apiVersion: ApiVersion-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -56,9 +50,7 @@ module的设备类型。
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
-
-<!--Device-ModuleConfigInfo-readonly deviceTypes: Array<string>--><!--Device-ModuleConfigInfo-readonly deviceTypes: Array<string>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -74,9 +66,7 @@ module发行版信息。
 
 **类型：** [ModuleDistroInfo](arkts-ability-bundlepackinfo-moduledistroinfo-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-ModuleConfigInfo-readonly distro: ModuleDistroInfo--><!--Device-ModuleConfigInfo-readonly distro: ModuleDistroInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -92,9 +82,7 @@ readonly extensionAbilities: Array<ExtensionAbility>
 
 **类型：** Array&lt;[ExtensionAbility](arkts-ability-bundlepackinfo-extensionability-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-ModuleConfigInfo-readonly extensionAbilities: Array<ExtensionAbility>--><!--Device-ModuleConfigInfo-readonly extensionAbilities: Array<ExtensionAbility>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -110,11 +98,8 @@ readonly mainAbility: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ModuleConfigInfo-readonly mainAbility: string--><!--Device-ModuleConfigInfo-readonly mainAbility: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **系统接口：** 此接口为系统接口。
-

@@ -1,4 +1,4 @@
-# OnContentWillChangeCallback(Provides an advanced struct of tabs for atomic services)
+# OnContentWillChangeCallback
 
 ```TypeScript
 export type OnContentWillChangeCallback = (currentIndex: number, comingIndex: number) => boolean
@@ -9,8 +9,6 @@ export type OnContentWillChangeCallback = (currentIndex: number, comingIndex: nu
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-unnamed-export type OnContentWillChangeCallback = (currentIndex: number, comingIndex: number) => boolean--><!--Device-unnamed-export type OnContentWillChangeCallback = (currentIndex: number, comingIndex: number) => boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,4 +24,3 @@ export type OnContentWillChangeCallback = (currentIndex: number, comingIndex: nu
 | 类型 | 说明 |
 | --- | --- |
 | boolean | - |
-

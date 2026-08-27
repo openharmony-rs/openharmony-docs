@@ -2,9 +2,7 @@
 
 时区城市的组合信息。
 
-**起始版本：** 23
-
-<!--Device-i18n-export interface TimeZoneCityItem--><!--Device-i18n-export interface TimeZoneCityItem-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -26,9 +24,7 @@ cityDisplayName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-TimeZoneCityItem-cityDisplayName: string--><!--Device-TimeZoneCityItem-cityDisplayName: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -44,9 +40,7 @@ cityId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-TimeZoneCityItem-cityId: string--><!--Device-TimeZoneCityItem-cityId: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -55,18 +49,16 @@ cityId: string
 ## latitude
 
 ```TypeScript
-latitude: double
+latitude: number
 ```
 
 以十进制度数表示的时区城市纬度信息(°)。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TimeZoneCityItem-latitude: double--><!--Device-TimeZoneCityItem-latitude: double-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -75,18 +67,16 @@ latitude: double
 ## longitude
 
 ```TypeScript
-longitude: double
+longitude: number
 ```
 
 时区城市的经度信息，十进制度数(°)。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TimeZoneCityItem-longitude: double--><!--Device-TimeZoneCityItem-longitude: double-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -95,16 +85,14 @@ longitude: double
 ## offset
 
 ```TypeScript
-offset: int
+offset: number
 ```
 
 时区ID的偏移量，单位为毫秒（ms）。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-TimeZoneCityItem-offset: int--><!--Device-TimeZoneCityItem-offset: int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -113,16 +101,14 @@ offset: int
 ## rawOffset
 
 ```TypeScript
-rawOffset?: int
+rawOffset?: number
 ```
 
 时区ID的固定偏移量，单位为毫秒（ms）。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-TimeZoneCityItem-rawOffset?: int--><!--Device-TimeZoneCityItem-rawOffset?: int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -138,9 +124,7 @@ zoneDisplayName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-TimeZoneCityItem-zoneDisplayName: string--><!--Device-TimeZoneCityItem-zoneDisplayName: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -156,11 +140,8 @@ zoneId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-TimeZoneCityItem-zoneId: string--><!--Device-TimeZoneCityItem-zoneId: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Global.I18n
 
 **系统接口：** 此接口为系统接口。
-

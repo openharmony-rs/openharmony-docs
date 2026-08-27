@@ -4,8 +4,6 @@
 
 **起始版本：** 18
 
-<!--Device-unnamed-export declare struct LoadingDialogV2--><!--Device-unnamed-export declare struct LoadingDialogV2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -17,13 +15,13 @@ import { AlertDialogV2, AdvancedDialogV2Button, AdvancedDialogV2ButtonOptions, A
 ## content
 
 ```TypeScript
-@Param
-  content?: ResourceStr
+content?: ResourceStr
 ```
 
-加载弹出框内容。 默认为空。 **说明：** 内容超过十行会显示“...”。
+加载弹出框内容。默认为空。  
+**说明：** 内容超过十行会显示“...”。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 18
 
@@ -31,7 +29,4 @@ import { AlertDialogV2, AdvancedDialogV2Button, AdvancedDialogV2ButtonOptions, A
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LoadingDialogV2-@Param  content?: ResourceStr--><!--Device-LoadingDialogV2-@Param  content?: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

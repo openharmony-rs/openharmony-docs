@@ -8,8 +8,6 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-fileExtensionInfo-namespace DocumentFlag--><!--Device-fileExtensionInfo-namespace DocumentFlag-End-->
-
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
@@ -32,4 +30,3 @@ import { fileExtensionInfo } from '@kit.CoreFileKit';
 | [SUPPORTS_READ](arkts-corefile-documentflag-con-sys.md#supports_read) | 此设备支持读。 |
 | [SUPPORTS_WRITE](arkts-corefile-documentflag-con-sys.md#supports_write) | 此设备支持写。 |
 <!--DelEnd-->
-

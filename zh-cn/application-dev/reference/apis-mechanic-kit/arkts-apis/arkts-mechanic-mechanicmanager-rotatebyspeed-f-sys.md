@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## rotateBySpeed
 
 ```TypeScript
-function rotateBySpeed(mechId: int, speed: RotationSpeed, duration: int): Promise<Result>
+function rotateBySpeed(mechId: number, speed: RotationSpeed, duration: number): Promise<Result>
 ```
 
 以指定的速度旋转机械设备
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-function rotateBySpeed(mechId: int, speed: RotationSpeed, duration: int): Promise<Result>--><!--Device-mechanicManager-function rotateBySpeed(mechId: int, speed: RotationSpeed, duration: int): Promise<Result>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -26,15 +23,15 @@ function rotateBySpeed(mechId: int, speed: RotationSpeed, duration: int): Promis
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | int | 是 | 机械设备ID |
+| mechId | number | 是 | 机械设备ID |
 | speed | [RotationSpeed](arkts-mechanic-mechanicmanager-rotationspeed-i-sys.md) | 是 | 旋转速度 |
-| duration | int | 是 | 执行时间 |
+| duration | number | 是 | 执行时间 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Result&gt; | 返回执行结果 |
+| Promise & lt;Result & gt; | 返回执行结果 |
 
 **错误码：**
 
@@ -59,4 +56,3 @@ mechanicManager.rotateBySpeed(0, degree, 500)
   });
 console.info('Rotate finish');
 ```
-

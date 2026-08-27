@@ -1,10 +1,8 @@
 # HeightBreakpoint
 
-Type of window height breakpoint.
+Type of window height breakpoint.@enum { number }
 
 **起始版本：** 22
-
-<!--Device-unnamed-declare enum HeightBreakpoint--><!--Device-unnamed-declare enum HeightBreakpoint-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,8 +20,6 @@ Window aspectRatio &lt; 0.8 type.
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HeightBreakpoint-HEIGHT_SM = 0--><!--Device-HeightBreakpoint-HEIGHT_SM = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## HEIGHT_MD
@@ -32,15 +28,13 @@ Window aspectRatio &lt; 0.8 type.
 HEIGHT_MD = 1
 ```
 
-Window aspectRatio >= 0.8 and &lt; 1.2 type.
+Window aspectRatio &gt;= 0.8 and &lt; 1.2 type.
 
 **起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HeightBreakpoint-HEIGHT_MD = 1--><!--Device-HeightBreakpoint-HEIGHT_MD = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,7 +44,7 @@ Window aspectRatio >= 0.8 and &lt; 1.2 type.
 HEIGHT_LG = 2
 ```
 
-Window aspectRatio >= 1.2 type.
+Window aspectRatio &gt;= 1.2 type.
 
 **起始版本：** 22
 
@@ -58,7 +52,4 @@ Window aspectRatio >= 1.2 type.
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HeightBreakpoint-HEIGHT_LG = 2--><!--Device-HeightBreakpoint-HEIGHT_LG = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

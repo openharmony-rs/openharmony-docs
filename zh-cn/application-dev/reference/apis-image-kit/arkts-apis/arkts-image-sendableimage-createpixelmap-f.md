@@ -16,8 +16,6 @@ Create PixelMap by data buffer.
 
 **起始版本：** 12
 
-<!--Device-sendableImage-function createPixelMap(colors: ArrayBuffer, options: image.InitializationOptions): Promise<PixelMap>--><!--Device-sendableImage-function createPixelMap(colors: ArrayBuffer, options: image.InitializationOptions): Promise<PixelMap>-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **参数：**
@@ -31,7 +29,7 @@ Create PixelMap by data buffer.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;PixelMap&gt; | A Promise instance used to return the PixelMap object. |
+| Promise & lt;PixelMap & gt; | A Promise instance used to return the PixelMap object. |
 
 **示例**
 
@@ -54,4 +52,3 @@ function createPixelMap() {
   });
 }
 ```
-

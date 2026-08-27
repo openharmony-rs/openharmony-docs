@@ -2,9 +2,7 @@
 
 呼叫事件的可选参数。
 
-**起始版本：** 23
-
-<!--Device-call-export interface CallEventOptions--><!--Device-call-export interface CallEventOptions-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -13,7 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { call } from '@kit.TelephonyKit';
 ```
 
 ## eventId
@@ -26,11 +23,8 @@ eventId: CallAbilityEventId
 
 **类型：** [CallAbilityEventId](arkts-telephony-call-callabilityeventid-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CallEventOptions-eventId: CallAbilityEventId--><!--Device-CallEventOptions-eventId: CallAbilityEventId-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
 **系统接口：** 此接口为系统接口。
-

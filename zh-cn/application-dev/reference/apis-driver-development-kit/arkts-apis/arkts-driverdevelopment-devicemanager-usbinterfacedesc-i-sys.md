@@ -2,9 +2,7 @@
 
 USB设备接口描述符。
 
-**起始版本：** 23
-
-<!--Device-deviceManager-interface USBInterfaceDesc--><!--Device-deviceManager-interface USBInterfaceDesc-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -19,16 +17,14 @@ import { deviceManager } from '@kit.DriverDevelopmentKit';
 ## bClass
 
 ```TypeScript
-bClass: int
+bClass: number
 ```
 
 类型代码。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBInterfaceDesc-bClass: int--><!--Device-USBInterfaceDesc-bClass: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -37,16 +33,14 @@ bClass: int
 ## bInterfaceNumber
 
 ```TypeScript
-bInterfaceNumber: int
+bInterfaceNumber: number
 ```
 
 接口编号。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBInterfaceDesc-bInterfaceNumber: int--><!--Device-USBInterfaceDesc-bInterfaceNumber: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -55,16 +49,14 @@ bInterfaceNumber: int
 ## bProtocol
 
 ```TypeScript
-bProtocol: int
+bProtocol: number
 ```
 
 协议代码。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBInterfaceDesc-bProtocol: int--><!--Device-USBInterfaceDesc-bProtocol: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -73,18 +65,15 @@ bProtocol: int
 ## bSubClass
 
 ```TypeScript
-bSubClass: int
+bSubClass: number
 ```
 
 子类型代码。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBInterfaceDesc-bSubClass: int--><!--Device-USBInterfaceDesc-bSubClass: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
 **系统接口：** 此接口为系统接口。
-

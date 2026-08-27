@@ -1,17 +1,14 @@
 # @ohos.distributedHardware.mechanicManager
 
-提供与本设备连接的机械设备的控制和交互能力。 包括连接管理、控制和监控功能
+提供与本设备连接的机械设备的控制和交互能力。 包括连接管理、控制和监控功能@namespace mechanicManager
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace mechanicManager--><!--Device-unnamed-declare namespace mechanicManager-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## 汇总
@@ -24,14 +21,10 @@ import { mechanicManager } from '@kit.MechanicKit';
 | [getCameraTrackingEnabled](arkts-mechanic-mechanicmanager-getcameratrackingenabled-f.md) | 获取相机跟踪状态 |
 | [getCameraTrackingLayout](arkts-mechanic-mechanicmanager-getcameratrackinglayout-f.md) | 获取当前摄像头跟踪布局 |
 | [isControlSupported](arkts-mechanic-mechanicmanager-iscontrolsupported-f.md) | 判断当前设备是否支持某类设备的具身控制 |
-| [offAttachStateChange](arkts-mechanic-mechanicmanager-offattachstatechange-f.md) | Unsubscribes from device attachment state change events. |
-| [offTrackingStateChange](arkts-mechanic-mechanicmanager-offtrackingstatechange-f.md) | 设置相机跟踪布局 |
-| [off_attachStateChange](arkts-mechanic-mechanicmanager-offattachstatechange-f.md) | Unsubscribes from device attachment state change events. |
-| [off_trackingStateChange](arkts-mechanic-mechanicmanager-offtrackingstatechange-f.md) | 设置相机跟踪布局 |
-| [onAttachStateChange](arkts-mechanic-mechanicmanager-onattachstatechange-f.md) | Subscribes to device attachment state change events. |
-| [onTrackingStateChange](arkts-mechanic-mechanicmanager-ontrackingstatechange-f.md) | Subscribes to tracking events. |
-| [on_attachStateChange](arkts-mechanic-mechanicmanager-onattachstatechange-f.md) | Subscribes to device attachment state change events. |
-| [on_trackingStateChange](arkts-mechanic-mechanicmanager-ontrackingstatechange-f.md) | Subscribes to tracking events. |
+| [off](arkts-mechanic-mechanicmanager-off-f.md#offattachstatechange) | Unsubscribes from device attachment state change events. |
+| [off](arkts-mechanic-mechanicmanager-off-f.md#offtrackingstatechange) | 设置相机跟踪布局 |
+| [on](arkts-mechanic-mechanicmanager-on-f.md#onattachstatechange) | Subscribes to device attachment state change events. |
+| [on](arkts-mechanic-mechanicmanager-on-f.md#ontrackingstatechange) | Subscribes to tracking events. |
 | [setCameraTrackingEnabled](arkts-mechanic-mechanicmanager-setcameratrackingenabled-f.md) | 启用或禁用摄像机跟踪 |
 
 <!--Del-->
@@ -50,10 +43,8 @@ import { mechanicManager } from '@kit.MechanicKit';
 | [isSupportAction](arkts-mechanic-mechanicmanager-issupportaction-f-sys.md) | 判断是否支持某个动作 |
 | [move](arkts-mechanic-mechanicmanager-move-f-sys.md) | 以特定参数移动一个具身设备 |
 | [moveBySpeed](arkts-mechanic-mechanicmanager-movebyspeed-f-sys.md) | 以特定速度移动一个具身设备 |
-| [offRotationAxesStatusChange](arkts-mechanic-mechanicmanager-offrotationaxesstatuschange-f-sys.md) | Unregister a listener for axis state changes. |
-| [off_rotationAxesStatusChange](arkts-mechanic-mechanicmanager-offrotationaxesstatuschange-f-sys.md) | Unregister a listener for axis state changes. |
-| [onRotationAxesStatusChange](arkts-mechanic-mechanicmanager-onrotationaxesstatuschange-f-sys.md) | Register a listener for axis state changes. The status of the rotation axis changes dynamically, which needs to be monitored. |
-| [on_rotationAxesStatusChange](arkts-mechanic-mechanicmanager-onrotationaxesstatuschange-f-sys.md) | Register a listener for axis state changes. The status of the rotation axis changes dynamically, which needs to be monitored. |
+| off | Unregister a listener for axis state changes. |
+| on | Register a listener for axis state changes. The status of the rotation axis changes dynamically, which needs to be monitored. |
 | [rotate](arkts-mechanic-mechanicmanager-rotate-f-sys.md) | 将机械设备旋转到相对角度 |
 | [rotateBySpeed](arkts-mechanic-mechanicmanager-rotatebyspeed-f-sys.md) | 以指定的速度旋转机械设备 |
 | [rotateToEulerAngles](arkts-mechanic-mechanicmanager-rotatetoeulerangles-f-sys.md) | 将机械设备旋转到绝对角度 |
@@ -99,10 +90,10 @@ import { mechanicManager } from '@kit.MechanicKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [AttachState](arkts-mechanic-mechanicmanager-attachstate-e.md) | Device attach states. |
-| [CameraTrackingLayout](arkts-mechanic-mechanicmanager-cameratrackinglayout-e.md) | 相机跟踪布局 |
-| [MechDeviceType](arkts-mechanic-mechanicmanager-mechdevicetype-e.md) | Enumerates the mechanical device types. |
-| [TrackingEvent](arkts-mechanic-mechanicmanager-trackingevent-e.md) | 跟踪事件 |
+| [AttachState](arkts-mechanic-mechanicmanager-attachstate-e.md) | Device attach states.@enum { number } |
+| [CameraTrackingLayout](arkts-mechanic-mechanicmanager-cameratrackinglayout-e.md) | 相机跟踪布局@enum { number } |
+| [MechDeviceType](arkts-mechanic-mechanicmanager-mechdevicetype-e.md) | Enumerates the mechanical device types. @enum { number } |
+| [TrackingEvent](arkts-mechanic-mechanicmanager-trackingevent-e.md) | 跟踪事件@enum { number } |
 
 <!--Del-->
 ### 枚举（系统接口）
@@ -112,13 +103,12 @@ import { mechanicManager } from '@kit.MechanicKit';
 | [ActionType](arkts-mechanic-mechanicmanager-actiontype-e-sys.md) | 动作序列类型 |
 | [AddressType](arkts-mechanic-mechanicmanager-addresstype-e-sys.md) | 具身设备地址类型 |
 | [MarchingMode](arkts-mechanic-mechanicmanager-marchingmode-e-sys.md) | 行进模式定义 |
-| [MechDeviceType](arkts-mechanic-mechanicmanager-mechdevicetype-e-sys.md) | Enumerates the mechanical device types. |
+| [MechDeviceType](arkts-mechanic-mechanicmanager-mechdevicetype-e-sys.md) | Enumerates the mechanical device types. @enum { number } |
 | [MechEventType](arkts-mechanic-mechanicmanager-mecheventtype-e-sys.md) | 具身设备事件定义 |
-| [Operation](arkts-mechanic-mechanicmanager-operation-e-sys.md) | 用户操作 |
-| [Result](arkts-mechanic-mechanicmanager-result-e-sys.md) | Rotation execution results. |
-| [RotationAxisLimited](arkts-mechanic-mechanicmanager-rotationaxislimited-e-sys.md) | 旋转轴限位状态 |
-| [SearchDirection](arkts-mechanic-mechanicmanager-searchdirection-e-sys.md) | Search direction. |
+| [Operation](arkts-mechanic-mechanicmanager-operation-e-sys.md) | 用户操作@enum { number } |
+| [Result](arkts-mechanic-mechanicmanager-result-e-sys.md) | Rotation execution results.@enum { number } |
+| [RotationAxisLimited](arkts-mechanic-mechanicmanager-rotationaxislimited-e-sys.md) | 旋转轴限位状态@enum { number } |
+| [SearchDirection](arkts-mechanic-mechanicmanager-searchdirection-e-sys.md) | Search direction.@enum { number } |
 | [SpeedGear](arkts-mechanic-mechanicmanager-speedgear-e-sys.md) | 速度档位定义 |
-| [TargetType](arkts-mechanic-mechanicmanager-targettype-e-sys.md) | Target type. |
+| [TargetType](arkts-mechanic-mechanicmanager-targettype-e-sys.md) | Target type.@enum { number } |
 <!--DelEnd-->
-

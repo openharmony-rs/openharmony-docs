@@ -1,16 +1,15 @@
 # ReqPermissionDetail
 
 ```TypeScript
-export type ReqPermissionDetail = _ReqPermissionDetail
+export type ReqPermissionDetail = _BundleInfo.ReqPermissionDetail
 ```
 
 应用运行时需向系统申请的权限集合的详细信息。
 
-**起始版本：** 23
+**起始版本：** 9
 
-<!--Device-bundleManager-export type ReqPermissionDetail = _ReqPermissionDetail--><!--Device-bundleManager-export type ReqPermissionDetail = _ReqPermissionDetail-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**属性类型：** _ReqPermissionDetail
-
+**属性类型：** _BundleInfo.ReqPermissionDetail

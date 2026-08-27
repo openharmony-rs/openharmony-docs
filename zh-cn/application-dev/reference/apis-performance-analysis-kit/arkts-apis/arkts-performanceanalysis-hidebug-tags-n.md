@@ -1,17 +1,12 @@
 # tags
 
-支持trace使用场景的标签，用户可通过hitrace抓取指定标签的trace内容。 > **注意** > > 以下标签实际值由系统定义，可能随版本升级而发生改变，为避免升级后出现兼容性问题，在生产中应直接使用标签名称而非标签数值。
-
-**起始版本：** 23
-
-<!--Device-hidebug-namespace tags--><!--Device-hidebug-namespace tags-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## 导入模块
 
 ```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## 汇总
@@ -52,4 +47,3 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 | [CAMERA](arkts-performanceanalysis-tags-con.md#camera) | 相机模块标签，hitrace命令行工具对应tagName:zcamera。 |
 | [IMAGE](arkts-performanceanalysis-tags-con.md#image) | 图片模块标签，hitrace命令行工具对应tagName:zimage。 |
 | [MEDIA](arkts-performanceanalysis-tags-con.md#media) | 媒体模块标签，hitrace命令行工具对应tagName:zmedia。 |
-

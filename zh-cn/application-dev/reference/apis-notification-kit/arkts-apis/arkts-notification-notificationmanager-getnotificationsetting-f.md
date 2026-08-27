@@ -14,9 +14,7 @@ function getNotificationSetting(): Promise<NotificationSetting>
 
 获取应用的通知设置，包括锁屏通知、横幅通知、桌面角标、振动、铃声等 开关状态。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-notificationManager-function getNotificationSetting(): Promise<NotificationSetting>--><!--Device-notificationManager-function getNotificationSetting(): Promise<NotificationSetting>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -42,8 +40,6 @@ isNotificationEnabled 获取指定应用的通知使能状态。
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -53,17 +49,3 @@ notificationManager.getNotificationSetting().then((data: notificationManager.Not
     console.error(`getNotificationSetting failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-notificationManager.getNotificationSetting().then((data: notificationManager.NotificationSetting) => {
-    console.info(`getNotificationSetting success, data: ${JSON.stringify(data)}`);
-}).catch((err: Error): void => {
-    let error: BusinessError = err as BusinessError;
-    console.error(`getNotificationSetting failed, code is ${error.code}, message is ${error.message}`);
-});
-```
-

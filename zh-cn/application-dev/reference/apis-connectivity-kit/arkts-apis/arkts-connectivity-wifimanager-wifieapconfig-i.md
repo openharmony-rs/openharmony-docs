@@ -2,9 +2,7 @@
 
 WLAN EAP配置。
 
-**起始版本：** 23
-
-<!--Device-wifiManager-interface WifiEapConfig--><!--Device-wifiManager-interface WifiEapConfig-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -12,7 +10,6 @@ WLAN EAP配置。
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## altSubjectMatch
@@ -25,9 +22,7 @@ altSubjectMatch: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiEapConfig-altSubjectMatch: string--><!--Device-WifiEapConfig-altSubjectMatch: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -41,9 +36,7 @@ anonymousIdentity: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiEapConfig-anonymousIdentity: string--><!--Device-WifiEapConfig-anonymousIdentity: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -57,9 +50,7 @@ CA证书别名
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiEapConfig-caCertAlias: string--><!--Device-WifiEapConfig-caCertAlias: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -73,9 +64,7 @@ CA证书路径
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiEapConfig-caPath: string--><!--Device-WifiEapConfig-caPath: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -89,9 +78,7 @@ certEntry: Uint8Array
 
 **类型：** Uint8Array
 
-**起始版本：** 23
-
-<!--Device-WifiEapConfig-certEntry: Uint8Array--><!--Device-WifiEapConfig-certEntry: Uint8Array-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -105,9 +92,7 @@ certPassword: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiEapConfig-certPassword: string--><!--Device-WifiEapConfig-certPassword: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -121,9 +106,7 @@ clientCertAlias: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiEapConfig-clientCertAlias: string--><!--Device-WifiEapConfig-clientCertAlias: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -137,9 +120,7 @@ domainSuffixMatch: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiEapConfig-domainSuffixMatch: string--><!--Device-WifiEapConfig-domainSuffixMatch: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -153,25 +134,21 @@ EAP认证方式
 
 **类型：** EapMethod
 
-**起始版本：** 23
-
-<!--Device-WifiEapConfig-eapMethod: EapMethod--><!--Device-WifiEapConfig-eapMethod: EapMethod-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 ## eapSubId
 
 ```TypeScript
-eapSubId: int
+eapSubId: number
 ```
 
 SIM卡的子ID
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-WifiEapConfig-eapSubId: int--><!--Device-WifiEapConfig-eapSubId: int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -185,9 +162,7 @@ identity: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiEapConfig-identity: string--><!--Device-WifiEapConfig-identity: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -201,9 +176,7 @@ password: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiEapConfig-password: string--><!--Device-WifiEapConfig-password: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -217,9 +190,7 @@ Phase 2认证方式
 
 **类型：** Phase2Method
 
-**起始版本：** 23
-
-<!--Device-WifiEapConfig-phase2Method: Phase2Method--><!--Device-WifiEapConfig-phase2Method: Phase2Method-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -233,9 +204,7 @@ Passpoint凭据提供者的公共陆地移动网络（PLMN）
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiEapConfig-plmn: string--><!--Device-WifiEapConfig-plmn: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -249,9 +218,6 @@ Passpoint凭据的Realm
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiEapConfig-realm: string--><!--Device-WifiEapConfig-realm: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
-

@@ -2,9 +2,7 @@
 
 属性转换控制器。使用其子接口之前得先创建系统窗口，参照示例代码。
 
-**起始版本：** 23
-
-<!--Device-window-interface TransitionController--><!--Device-window-interface TransitionController-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -13,8 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -27,8 +23,6 @@ animationForHidden(context: TransitionContext): void
 窗口隐藏时的自定义动画配置。
 
 **起始版本：** 9
-
-<!--Device-TransitionController-animationForHidden(context: TransitionContext): void--><!--Device-TransitionController-animationForHidden(context: TransitionContext): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -44,8 +38,8 @@ animationForHidden(context: TransitionContext): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例**
 
@@ -90,12 +84,12 @@ try {
         context.completeTransition(true)
       }
     }, () => {
-      let obj : window.TranslateOptions = {
+      let translateOptions : window.TranslateOptions = {
         x : 100.0,
         y : 0.0,
         z : 0.0
       };
-      toWindow?.translate(obj); // 设置动画过程中的属性转换
+      toWindow?.translate(translateOptions); // 设置动画过程中的属性转换
       console.info('toWindow translate end in animation');
     });
     console.info('complete transition end');
@@ -115,8 +109,6 @@ animationForShown(context: TransitionContext): void
 
 **起始版本：** 9
 
-<!--Device-TransitionController-animationForShown(context: TransitionContext): void--><!--Device-TransitionController-animationForShown(context: TransitionContext): void-End-->
-
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -131,8 +123,8 @@ animationForShown(context: TransitionContext): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例**
 
@@ -177,12 +169,12 @@ try {
         context.completeTransition(true)
       }
     }, () => {
-      let obj : window.TranslateOptions = {
+      let translateOptions : window.TranslateOptions = {
         x : 100.0,
         y : 0.0,
         z : 0.0
       };
-      toWindow?.translate(obj); // 设置动画过程中的属性转换
+      toWindow?.translate(translateOptions); // 设置动画过程中的属性转换
       console.info('toWindow translate end in animation');
     });
     console.info('complete transition end');
@@ -192,43 +184,22 @@ try {
 }
 ```
 
-## animationForHidden
+**示例**
 
 ```TypeScript
-animationForHidden?: TransitionControllerCallback
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let windowClass: window.Window | undefined = undefined;
+let config: window.Configuration = {
+  name: "systemTypeWindow",
+  windowType: window.WindowType.TYPE_PANEL, // 根据需要自选系统窗口类型
+  ctx: this.context
+};
+let promise = window.createWindow(config);
+promise.then((data) => {
+  windowClass = data;
+  console.info('Succeeded in creating the window. Data:' + JSON.stringify(data));
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create the Window. Cause code: ${err.code}, message: ${err.message}`);
+});
 ```
-
-窗口隐藏时的自定义动画配置。
-
-**类型：** [TransitionControllerCallback](arkts-arkui-transitioncontrollercallback-t-sys.md)
-
-**默认值：** undefined
-
-**起始版本：** 23
-
-<!--Device-TransitionController-animationForHidden?: TransitionControllerCallback--><!--Device-TransitionController-animationForHidden?: TransitionControllerCallback-End-->
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**系统接口：** 此接口为系统接口。
-
-## animationForShown
-
-```TypeScript
-animationForShown?: TransitionControllerCallback
-```
-
-窗口显示时的自定义动画配置。
-
-**类型：** [TransitionControllerCallback](arkts-arkui-transitioncontrollercallback-t-sys.md)
-
-**默认值：** undefined
-
-**起始版本：** 23
-
-<!--Device-TransitionController-animationForShown?: TransitionControllerCallback--><!--Device-TransitionController-animationForShown?: TransitionControllerCallback-End-->
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**系统接口：** 此接口为系统接口。
-

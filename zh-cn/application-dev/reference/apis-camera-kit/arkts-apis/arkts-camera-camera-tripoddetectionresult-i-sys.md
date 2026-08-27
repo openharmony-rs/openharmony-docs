@@ -4,9 +4,7 @@ TripodDetectionResult extends [SceneFeatureDetectionResult](arkts-camera-camera-
 
 **继承/实现关系：** TripodDetectionResult extends [SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-camera-interface TripodDetectionResult--><!--Device-camera-interface TripodDetectionResult-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -15,8 +13,6 @@ TripodDetectionResult extends [SceneFeatureDetectionResult](arkts-camera-camera-
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## tripodStatus
@@ -29,11 +25,8 @@ Tripod status.
 
 **类型：** [TripodStatus](arkts-camera-camera-tripodstatus-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-TripodDetectionResult-readonly tripodStatus: TripodStatus--><!--Device-TripodDetectionResult-readonly tripodStatus: TripodStatus-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
-

@@ -8,22 +8,22 @@
 
 ## 开发工具及配置
 
-DevEco Studio作为驱动开发工具，是进行驱动开发的必备条件之一，我们可以使用该工具进行开发、调试、打包等操作。请下载安装该工具，并参考工具概述中的创建一个新的工程进行基本的操作验证，保证DevEco Studio可正常运行。
+DevEco Studio作为驱动开发工具，是进行驱动开发的必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请下载安装该工具，并参考工具概述中的创建一个新的工程进行基本的操作验证，保证DevEco Studio可正常运行。
 
 请使用[华为账号-登录](https://developer.huawei.com/consumer/cn/download/)下载安装该工具，并参考[工具概述](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)中的[创建一个新的工程](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-create-new-project)进行基本的操作验证，保证DevEco Studio可正常运行。
 
 ## SDK版本配置
 
-扩展外设管理模块提供的ArkTS接口，所需SDK版本为API10及以上版本才可使用<!--Del-->，更新SDK的具体操作可参见[更新指南](../../tools/openharmony_sdk_upgrade_assistant.md)<!--DelEnd-->。
+扩展外设管理模块提供的ArkTS接口，所需SDK版本为API10及以上版本才可使用<!--Del-->，更新SDK的具体操作可参见更新指南<!--DelEnd-->。
 
 基于DDK能力开发专业专用扩展外设驱动或扩展外设增强驱动时，对SDK版本的要求如下：
 
 | NDK接口          | SDK版本    |
 |----------------|----------|
-| [UsbDdk/apis-driverdevelopment-kit/capi-usbddk.md)  | API10及以上 |
-| [HidDdk/apis-driverdevelopment-kit/capi-hidddk.md)        | API11及以上 |
-| [USBSerialDDK/apis-driverdevelopment-kit/capi-serialddk.md) | API18及以上 |
-| [ScsiPeripheralDDK/apis-driverdevelopment-kit/capi-scsiperipheralddk.md)  | API18及以上 |
+| UsbDdk  | API10及以上 |
+| HidDdk        | API11及以上 |
+| USBSerialDDK | API18及以上 |
+| ScsiPeripheralDDK  | API18及以上 |
 
 ## 检验环境是否搭建成功
 
@@ -41,6 +41,6 @@ HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命
 
 ## 开发设备
 <!--RP1-->
-- 当前开发调试及验证，以RK3568作为开发设备进行说明。关于RK3568的编译、烧录操作等方法，可参考[快速入门](../../../device-dev/quick-start/quickstart-pkg-3568-burn.md)。<!--RP1End-->
+- 当前开发调试及验证，以RK3568作为开发设备进行说明。关于RK3568的编译、烧录操作等方法，可参考快速入门。<!--RP1End-->
 - 开发扩展外设驱动客户端和扩展外设驱动时，需要一个外接USB设备进行调试，**当前仅支持通过USB总线连接的外接设备**。
 - 需要知道外接USB设备的ProductId和VendorId，用于定义驱动以及IPC通信。

@@ -4,8 +4,6 @@
 
 **起始版本：** 21
 
-<!--Device-dlpPermission-export interface EnterprisePolicy--><!--Device-dlpPermission-export interface EnterprisePolicy-End-->
-
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 ## 导入模块
@@ -26,7 +24,4 @@ policyString: string
 
 **起始版本：** 21
 
-<!--Device-EnterprisePolicy-policyString: string--><!--Device-EnterprisePolicy-policyString: string-End-->
-
 **系统能力：** SystemCapability.Security.DataLossPrevention
-

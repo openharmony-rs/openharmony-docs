@@ -16,8 +16,6 @@ function createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPre
 
 **起始版本：** 7
 
-<!--Device-dataAbility-function createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPredicates): rdb.RdbPredicates--><!--Device-dataAbility-function createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPredicates): rdb.RdbPredicates-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
@@ -36,9 +34,8 @@ function createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPre
 **示例**
 
 ```TypeScript
-let dataAbilityPredicates = new dataAbility.DataAbilityPredicates()
-dataAbilityPredicates.equalTo("NAME", "Rose")
+let dataAbilityPredicates = new dataAbility.DataAbilityPredicates();
+dataAbilityPredicates.equalTo("NAME", "Rose");
 // EMPLOYEE是使用关系型数据库创建的表。
-let predicates = dataAbility.createRdbPredicates("EMPLOYEE", dataAbilityPredicates)
+let predicates = dataAbility.createRdbPredicates("EMPLOYEE", dataAbilityPredicates);
 ```
-

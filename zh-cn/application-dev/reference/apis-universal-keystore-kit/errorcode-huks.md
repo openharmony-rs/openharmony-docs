@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 12000001 该子功能不支持（特性）
 
@@ -29,7 +29,7 @@ The feature or capability is not supported.
 **处理步骤**
 
 1. 查看errorMessage确认不支持的子特性，请避免在当前设备环境中调用该特性；如确属业务必要，请前往官方开发者社区提交反馈。
-2. 参考[HUKS开发指南](../../security/UniversalKeystoreKit/huks-overview.md)中各能力介绍及算法规格的具体章节，确认调用接口规格，调整API参数，使用支持的算法参数。
+2. 参考HUKS开发指南中各能力介绍及算法规格的具体章节，确认调用接口规格，调整API参数，使用支持的算法参数。
 
 ## 12000002 缺少密钥算法参数
 
@@ -48,7 +48,7 @@ The algorithm param is missing.
 **处理步骤**
 
 1. 查看errorMessage确认缺失的密钥参数。
-2. 参考[HUKS开发指南](../../security/UniversalKeystoreKit/huks-overview.md)中各能力介绍及算法规格的具体章节，确认调用接口规格，调整API参数，添加对应的密钥参数。
+2. 参考HUKS开发指南中各能力介绍及算法规格的具体章节，确认调用接口规格，调整API参数，添加对应的密钥参数。
 
 ## 12000003 无效的密钥算法参数
 
@@ -67,7 +67,7 @@ The algorithm argument is invalid.
 **处理步骤**
 
 1. 查看errorMessage确认无效的密钥参数名。
-2. 参考[HUKS开发指南](../../security/UniversalKeystoreKit/huks-overview.md)中各能力介绍及算法规格的具体章节，确认调用接口规格，调整API参数，修改对应的密钥参数为合法值。
+2. 参考HUKS开发指南中各能力介绍及算法规格的具体章节，确认调用接口规格，调整API参数，修改对应的密钥参数为合法值。
 
 ## 12000004 文件错误
 
@@ -88,7 +88,7 @@ The file operation failed.
 **处理步骤**
 
 1. 若磁盘空间已经写满，请先清理磁盘。
-2. 确认对应文件的操作权限，请查看[文件目录说明](../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。
+2. 确认对应文件的操作权限，请查看文件目录说明。
 3. 若文件系统存在其他异常，请前往官方开发者社区提交反馈。
 
 ## 12000005 进程通信错误
@@ -132,7 +132,7 @@ Crypto engine error or UKey driver error.
 1. 排查密文数据是否正确。
 2. 排查加解密参数是否正确。
 
-## 12000007 密钥访问失败 - 密钥已失效
+## 12000007 密钥访问失败-密钥已失效
 
 **错误信息**
 
@@ -154,7 +154,7 @@ This credential is invalidated permanently.
 1. 确认日志中记录的认证失败方式。
 2. 如果使用了正确参数，但是失效控制导致认证不通过，则该密钥已经无法使用。
 
-## 12000008 密钥访问失败 - 密钥认证失败
+## 12000008 密钥访问失败-密钥认证失败
 
 **错误信息**
 
@@ -173,7 +173,7 @@ The authentication token verification failed.
 1. 检查userIAM认证的challenge参数组装是否正确。
 2. 如果是challenge参数不正确导致，则修改正确的组装方式，使用huks生成challenge组装，并传入userIAM重新认证。
 
-## 12000009 密钥访问失败 - 密钥访问超时
+## 12000009 密钥访问失败-密钥访问超时
 
 **错误信息**
 

@@ -14,11 +14,9 @@ function queryPrintJobList(callback: AsyncCallback<Array<PrintJob>>): void
 
 查询所有打印任务，使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
-
-<!--Device-print-function queryPrintJobList(callback: AsyncCallback<Array<PrintJob>>): void--><!--Device-print-function queryPrintJobList(callback: AsyncCallback<Array<PrintJob>>): void-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -28,7 +26,7 @@ function queryPrintJobList(callback: AsyncCallback<Array<PrintJob>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[PrintJob](arkts-basicservices-print-printjob-i-sys.md)&gt;&gt; | 是 | 异步查询所有打印任务之后的回调。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[PrintJob](arkts-basicservices-print-printjob-i.md)&gt;&gt; | 是 | 异步查询所有打印任务之后的回调。 |
 
 **错误码：**
 
@@ -41,15 +39,15 @@ function queryPrintJobList(callback: AsyncCallback<Array<PrintJob>>): void
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-print.queryPrintJobList((err: BusinessError, printJobs : print.PrintJob[]) => {
-    if (err) {
-        console.error('queryPrintJobList failed, because : ' + JSON.stringify(err));
+print.queryPrintJobList((error: BusinessError, printJobs : print.PrintJob[]) => {
+    if (error) {
+        console.error(`Failed to query print job list. Code: ${error.code}, message: ${error.message}`);
     } else {
         console.info('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
     }
-})
+});
 ```
 
 
@@ -61,11 +59,9 @@ function queryPrintJobList(): Promise<Array<PrintJob>>
 
 查询所有打印任务，使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
-
-<!--Device-print-function queryPrintJobList(): Promise<Array<PrintJob>>--><!--Device-print-function queryPrintJobList(): Promise<Array<PrintJob>>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -75,7 +71,7 @@ function queryPrintJobList(): Promise<Array<PrintJob>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[PrintJob](arkts-basicservices-print-printjob-i-sys.md)&gt;&gt; | Promise对象，返回包含所有打印任务的列表。 |
+| Promise&lt;Array&lt;[PrintJob](arkts-basicservices-print-printjob-i.md)&gt;&gt; | Promise对象，返回包含所有打印任务的列表。 |
 
 **错误码：**
 
@@ -88,12 +84,11 @@ function queryPrintJobList(): Promise<Array<PrintJob>>
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 print.queryPrintJobList().then((printJobs : print.PrintJob[]) => {
     console.info('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
 }).catch((error: BusinessError) => {
-    console.error('queryPrintJobList failed, error : ' + JSON.stringify(error));
-})
+    console.error(`Failed to query print job list. Code: ${error.code}, message: ${error.message}`);
+});
 ```
-

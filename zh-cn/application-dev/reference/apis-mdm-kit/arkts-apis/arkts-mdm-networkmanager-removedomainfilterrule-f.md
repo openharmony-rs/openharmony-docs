@@ -12,15 +12,13 @@ import { networkManager } from '@kit.MDMKit';
 function removeDomainFilterRule(admin: Want, domainFilterRule?: DomainFilterRule): void
 ```
 
-移除设备域名过滤规则。适用于企业网络安全策略调整场景，例如取消某些域名访问限制、调整域名过滤策略、清理过时或无效的规则、解决误拦截问题，帮助企业灵活调整域名访问策略，确保网络访问控制策略符合实际需求。 API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。 从API version 23开始，支持[LogType](arkts-mdm-networkmanager-logtype-e.md)。 移除规则后如果不存在[Action](arkts-mdm-networkmanager-action-e.md)为ALLOW规则后，会将 [addDomainFilterRule](arkts-mdm-networkmanager-adddomainfilterrule-f.md)添加的默认DENY规则清空。
+移除设备域名过滤规则。适用于企业网络安全策略调整场景，例如取消某些域名访问限制、调整域名过滤策略、清理过时或无效的规则、解决误拦截问题，帮助企业灵活调整域名访问策略，确保网络访问控制策略符合实际需求。API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。从API version 23开始，支持[LogType](arkts-mdm-networkmanager-logtype-e.md)。移除规则后如果不存在[Action](arkts-mdm-networkmanager-action-e.md)为ALLOW规则后，会将 [addDomainFilterRule](arkts-mdm-networkmanager-adddomainfilterrule-f.md)添加的默认DENY规则清空。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-networkManager-function removeDomainFilterRule(admin: Want, domainFilterRule?: DomainFilterRule): void--><!--Device-networkManager-function removeDomainFilterRule(admin: Want, domainFilterRule?: DomainFilterRule): void-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -35,10 +33,10 @@ function removeDomainFilterRule(admin: Want, domainFilterRule?: DomainFilterRule
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -77,4 +75,3 @@ try {
   console.error(`Failed to remove all domain filter rules. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

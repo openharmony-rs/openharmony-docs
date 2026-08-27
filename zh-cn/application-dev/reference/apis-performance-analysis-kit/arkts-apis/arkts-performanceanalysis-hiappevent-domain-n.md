@@ -1,17 +1,15 @@
-# domain
+# domain(应用事件打点)
 
-提供域名常量。 |名称|类型|只读|描述| | --- | ------ | ------ | ---------- | | OS | string |是|系统域|
+提供域名常量。  
+|名称|类型|只读|描述| | --- | ------ | ------ | ---------- | | OS | string |是|系统域|
 
-**起始版本：** 23
-
-<!--Device-hiAppEvent-namespace domain--><!--Device-hiAppEvent-namespace domain-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 ## 导入模块
 
 ```TypeScript
-import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## 汇总
@@ -20,5 +18,4 @@ import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [OS](arkts-performanceanalysis-domain-con.md#os) | 系统领域。 |
-
+| [OS(应用事件打点)](arkts-performanceanalysis-domain-con.md#os) | 系统领域。 |

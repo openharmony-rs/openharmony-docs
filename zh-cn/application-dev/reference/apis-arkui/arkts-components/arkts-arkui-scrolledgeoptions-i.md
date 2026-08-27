@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface ScrollEdgeOptions--><!--Device-unnamed-declare interface ScrollEdgeOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,7 +29,4 @@ velocity?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ScrollEdgeOptions-velocity?: number--><!--Device-ScrollEdgeOptions-velocity?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

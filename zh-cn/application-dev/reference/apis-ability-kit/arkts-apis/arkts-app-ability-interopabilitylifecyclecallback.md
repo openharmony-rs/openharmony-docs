@@ -20,4 +20,3 @@ import { InteropAbilityLifecycleCallback } from '@kit.AbilityKit';
 | --- | --- |
 | [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md) | 当仅注册监听Ability时，调用该回调函数。 |
 | [WindowStageCallbackFn](arkts-ability-windowstagecallbackfn-t.md) | 当同时注册监听Ability和WindowStage时，调用该回调函数。 |
-

@@ -9,16 +9,14 @@ import { display } from '@kit.ArkUI';
 ## getDisplayByIdSync
 
 ```TypeScript
-function getDisplayByIdSync(displayId: long): Display
+function getDisplayByIdSync(displayId: number): Display
 ```
 
 根据displayId获取对应的Display对象。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-display-function getDisplayByIdSync(displayId: long): Display--><!--Device-display-function getDisplayByIdSync(displayId: long): Display-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -26,7 +24,7 @@ function getDisplayByIdSync(displayId: long): Display
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayId | long | 是 | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。需要确保displayId准确才能成功获取到对应结果。可以通过 [WindowProperties](arkts-arkui-window-windowproperties-i.md)的displayId属性获取到准确的displayId作为入参。 |
+| displayId | number | 是 | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。需要确保displayId准确才能成功获取到对应结果。可以通过 [WindowProperties](arkts-arkui-window-windowproperties-i.md)的displayId属性获取到准确的displayId作为入参。 |
 
 **返回值：**
 
@@ -43,8 +41,6 @@ function getDisplayByIdSync(displayId: long): Display
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 let displayClass: display.Display | null = null;
 
@@ -56,21 +52,3 @@ try {
   console.error(`Failed to get display. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { display } from '@kit.ArkUI';
-
-let displayClass: display.Display | null = null;
-
-try {
-  // 可以通过WindowProperties的displayId属性获取到准确的displayId作为入参
-  let displayId = 0; 
-  let displayClass = display.getDisplayByIdSync(displayId);
-} catch (exception) {
-  let error = exception as BusinessError;
-  console.error(`Failed to get display. Code: ${error.code}, message: ${error.message}`);
-}
-```
-

@@ -19,8 +19,6 @@ function deleteId(uri: string): string
 
 **替代接口：** [deleteId](arkts-ability-datauriutils-deleteid-f.md)
 
-<!--Device-dataUriUtils-function deleteId(uri: string): string--><!--Device-dataUriUtils-function deleteId(uri: string): string-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -42,4 +40,3 @@ import dataUriUtils from '@ohos.ability.dataUriUtils';
 
 let uri = dataUriUtils.deleteId('com.example.dataUriUtils/1221');
 ```
-

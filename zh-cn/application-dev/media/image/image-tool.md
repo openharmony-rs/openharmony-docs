@@ -12,7 +12,7 @@ Exif（Exchangeable image file format）是专门为数码相机的照片设定�
 
 在图库、相机、图片编辑等应用中，开发者可以读取图片的拍摄时间、方向、焦距、地理位置等Exif信息，也可以在需要时修改部分Exif信息。例如，当摄像机的手动镜头参数无法自动写入Exif信息，或者因相机断电导致拍摄时间错误时，可手动修正对应的Exif数据。
 
-系统目前仅支持读取和修改部分Exif信息，具体支持范围请参见[PropertyKey/apis-image-kit/arkts-apis-image-e.md#propertykey7)。不同图片格式对Exif信息的读写支持情况如下。
+系统目前仅支持读取和修改部分Exif信息，具体支持范围请参见PropertyKey。不同图片格式对Exif信息的读写支持情况如下。
 
 | 图片格式 | 读取Exif信息 | 修改Exif信息 |
 | -------- | -------- | -------- |
@@ -24,16 +24,16 @@ Exif（Exchangeable image file format）是专门为数码相机的照片设定�
 
 ## 接口说明
 
-Exif信息的读取与编辑相关的API如下，详细介绍请参考[ImageSource/apis-image-kit/arkts-apis-image-ImageSource.md)。
+Exif信息的读取与编辑相关的API如下，详细介绍请参考ImageSource。
 
 | 接口 | 说明 |
 | -------- | -------- |
-| [getImageProperty/apis-image-kit/arkts-apis-image-ImageSource.md#getimageproperty11) | 获取指定属性键的Exif信息。 |
-| [modifyImageProperty/apis-image-kit/arkts-apis-image-ImageSource.md#modifyimageproperty11) | 修改指定属性键的Exif信息。 |
+| getImageProperty | 获取指定属性键的Exif信息。 |
+| modifyImageProperty | 修改指定属性键的Exif信息。 |
 
 ## 注意事项
 
-- 需要先创建[ImageSource/apis-image-kit/arkts-apis-image-ImageSource.md)对象，再读取或编辑Exif信息。
+- 需要先创建ImageSource对象，再读取或编辑Exif信息。
 - 读取图片Exif信息前，需要确保应用对目标图片具有读取权限；修改图片Exif信息前，需要确保应用对目标图片具有写入权限。
 - 在部分图片来源或访问场景下，即使应用具有图片读取权限，系统也可能对GPS等隐私信息进行去隐私化处理，此时无法获取对应的Exif信息。
 - 图片文件需要包含Exif信息。对于没有Exif信息或不包含目标属性键的图片，读取结果可能为空或返回默认值。

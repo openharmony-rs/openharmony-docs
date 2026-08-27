@@ -2,9 +2,7 @@
 
 描述指定应用提醒方式信息。
 
-**起始版本：** 23
-
-<!--Device-notificationManager-export interface NotificationReminderInfo--><!--Device-notificationManager-export interface NotificationReminderInfo-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -26,9 +24,7 @@ bundle: BundleOption
 
 **类型：** BundleOption
 
-**起始版本：** 23
-
-<!--Device-NotificationReminderInfo-bundle: BundleOption--><!--Device-NotificationReminderInfo-bundle: BundleOption-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -37,16 +33,14 @@ bundle: BundleOption
 ## reminderFlags
 
 ```TypeScript
-reminderFlags: long
+reminderFlags: number
 ```
 
 表示通知提醒方式的标志位。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-NotificationReminderInfo-reminderFlags: long--><!--Device-NotificationReminderInfo-reminderFlags: long-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -62,11 +56,8 @@ silentReminderEnabled: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-NotificationReminderInfo-silentReminderEnabled: boolean--><!--Device-NotificationReminderInfo-silentReminderEnabled: boolean-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
-

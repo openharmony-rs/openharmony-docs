@@ -4,8 +4,6 @@
 
 **起始版本：** 9
 
-<!--Device-unnamed-interface RRect--><!--Device-unnamed-interface RRect-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -27,8 +25,6 @@ height: number
 
 **起始版本：** 9
 
-<!--Device-RRect-height: number--><!--Device-RRect-height: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -44,8 +40,6 @@ left: number
 **类型：** number
 
 **起始版本：** 9
-
-<!--Device-RRect-left: number--><!--Device-RRect-left: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,8 +57,6 @@ radius: number
 
 **起始版本：** 9
 
-<!--Device-RRect-radius: number--><!--Device-RRect-radius: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -80,8 +72,6 @@ top: number
 **类型：** number
 
 **起始版本：** 9
-
-<!--Device-RRect-top: number--><!--Device-RRect-top: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,9 +89,6 @@ width: number
 
 **起始版本：** 9
 
-<!--Device-RRect-width: number--><!--Device-RRect-width: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

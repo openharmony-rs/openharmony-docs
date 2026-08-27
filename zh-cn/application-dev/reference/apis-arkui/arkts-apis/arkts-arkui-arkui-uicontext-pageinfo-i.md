@@ -4,8 +4,6 @@ Defines the PageInfo type. The value of routerPageInfo indicates the information
 
 **起始版本：** 12
 
-<!--Device-unnamed-export interface PageInfo--><!--Device-unnamed-export interface PageInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -33,8 +31,6 @@ the property of navDestination information.
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PageInfo-navDestinationInfo?: observer.NavDestinationInfo--><!--Device-PageInfo-navDestinationInfo?: observer.NavDestinationInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## routerPageInfo
@@ -53,7 +49,4 @@ the property of router page information.
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PageInfo-routerPageInfo?: observer.RouterPageInfo--><!--Device-PageInfo-routerPageInfo?: observer.RouterPageInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

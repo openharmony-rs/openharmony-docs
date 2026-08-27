@@ -2,9 +2,7 @@
 
 用于设置场景。Scene采用树状层次结构组织场景节点，根节点（root）作为场景的入口。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export declare class Scene--><!--Device-unnamed-export declare class Scene-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -19,8 +17,6 @@ static load(uri: ResourceStr, param: SceneLoadParams):Promise<Scene>
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Scene-static load(uri: ResourceStr, param: SceneLoadParams):Promise<Scene>--><!--Device-Scene-static load(uri: ResourceStr, param: SceneLoadParams):Promise<Scene>-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -50,4 +46,3 @@ function loadModelWithParams(): Promise<Scene> {
   return scene;
 }
 ```
-

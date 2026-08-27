@@ -2,9 +2,7 @@
 
 WindowStage生命周期状态枚举。
 
-**起始版本：** 23
-
-<!--Device-window-enum WindowStageEventType--><!--Device-window-enum WindowStageEventType-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -16,13 +14,11 @@ SHOWN = 1
 
 前台状态，例如点击应用图标启动，无论是首次启动还是从后台启动均会触发。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowStageEventType-SHOWN = 1--><!--Device-WindowStageEventType-SHOWN = 1-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -34,13 +30,11 @@ ACTIVE = 2
 
 获焦状态，例如应用窗口处理点击事件后的状态、应用启动后的状态。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowStageEventType-ACTIVE = 2--><!--Device-WindowStageEventType-ACTIVE = 2-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -52,13 +46,11 @@ INACTIVE = 3
 
 失焦状态，例如打开新应用或点击其他窗口后，原获焦窗口的状态。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowStageEventType-INACTIVE = 3--><!--Device-WindowStageEventType-INACTIVE = 3-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -70,13 +62,11 @@ HIDDEN = 4
 
 后台状态，例如应用上滑退出、应用窗口关闭。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowStageEventType-HIDDEN = 4--><!--Device-WindowStageEventType-HIDDEN = 4-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -88,13 +78,11 @@ RESUMED = 5
 
 前台可交互状态，例如打开应用后，应用处于前台，且可以与用户交互的状态。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowStageEventType-RESUMED = 5--><!--Device-WindowStageEventType-RESUMED = 5-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -106,13 +94,10 @@ PAUSED = 6
 
 前台不可交互状态，例如应用在前台时，进入多任务界面，应用依然处于前台但不可以与用户交互的状态。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowStageEventType-PAUSED = 6--><!--Device-WindowStageEventType-PAUSED = 6-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
-

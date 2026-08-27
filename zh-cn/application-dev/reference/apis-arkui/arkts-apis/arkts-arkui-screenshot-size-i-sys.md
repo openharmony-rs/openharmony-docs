@@ -2,9 +2,7 @@
 
 表示截取图像的大小。
 
-**起始版本：** 23
-
-<!--Device-screenshot-interface Size--><!--Device-screenshot-interface Size-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -19,16 +17,14 @@ import { screenshot } from '@kit.ArkUI';
 ## height
 
 ```TypeScript
-height: long
+height: number
 ```
 
 表示截取图像的高度，单位为px，该参数应为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Size-height: long--><!--Device-Size-height: long-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -37,18 +33,15 @@ height: long
 ## width
 
 ```TypeScript
-width: long
+width: number
 ```
 
 表示截取图像的宽度，单位为px，该参数应为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Size-width: long--><!--Device-Size-width: long-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
-

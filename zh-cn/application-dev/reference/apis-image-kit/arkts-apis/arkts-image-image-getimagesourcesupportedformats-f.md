@@ -14,9 +14,7 @@ function getImageSourceSupportedFormats(): string[]
 
 获取支持解码的图片格式，图片格式以mime type表示。
 
-**起始版本：** 23
-
-<!--Device-image-function getImageSourceSupportedFormats(): string[]--><!--Device-image-function getImageSourceSupportedFormats(): string[]-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -39,4 +37,3 @@ async function IsSupportedTiffFormat() {
     return formats.includes("image/tiff");
 }
 ```
-

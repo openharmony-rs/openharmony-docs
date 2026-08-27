@@ -12,13 +12,11 @@ import { manager } from '@kit.ConnectivityKit';
 function isNearLinkSupported(): boolean
 ```
 
-检查当前设备是否支持星闪。
+查询当前设备是否支持星闪服务。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-manager-function isNearLinkSupported(): boolean--><!--Device-manager-function isNearLinkSupported(): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -26,5 +24,4 @@ function isNearLinkSupported(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回是否支持星闪。 |
-
+| boolean | 表示当前设备是否支持星闪。返回true：设备支持星闪。返回false：设备不支持星闪。 |

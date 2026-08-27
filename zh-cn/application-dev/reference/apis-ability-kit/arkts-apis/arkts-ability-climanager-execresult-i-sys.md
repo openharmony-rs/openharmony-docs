@@ -4,8 +4,6 @@ CLI工具执行的结果。包含CLI工具的退出码、标准输出、标准�
 
 **起始版本：** 26.0.0
 
-<!--Device-cliManager-interface ExecResult--><!--Device-cliManager-interface ExecResult-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -30,8 +28,6 @@ errorText?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExecResult-errorText?: string--><!--Device-ExecResult-errorText?: string-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -39,18 +35,16 @@ errorText?: string
 ## executionTime
 
 ```TypeScript
-executionTime: long
+executionTime: number
 ```
 
 工具的执行时长。单位：ms。
 
-**类型：** long
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExecResult-executionTime: long--><!--Device-ExecResult-executionTime: long-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -59,18 +53,16 @@ executionTime: long
 ## exitCode
 
 ```TypeScript
-exitCode?: int
+exitCode?: number
 ```
 
 工具的退出码。默认值：undefined。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExecResult-exitCode?: int--><!--Device-ExecResult-exitCode?: int-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -90,8 +82,6 @@ outputText?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExecResult-outputText?: string--><!--Device-ExecResult-outputText?: string-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -99,18 +89,16 @@ outputText?: string
 ## signalNumber
 
 ```TypeScript
-signalNumber?: int
+signalNumber?: number
 ```
 
 工具的终止信号。默认值：undefined。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExecResult-signalNumber?: int--><!--Device-ExecResult-signalNumber?: int-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -130,9 +118,6 @@ timeOut: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExecResult-timeOut: boolean--><!--Device-ExecResult-timeOut: boolean-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-

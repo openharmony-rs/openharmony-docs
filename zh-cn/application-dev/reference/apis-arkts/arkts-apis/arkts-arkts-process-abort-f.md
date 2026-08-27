@@ -18,8 +18,6 @@ function abort(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-process-function abort(): void--><!--Device-process-function abort(): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **示例**
@@ -27,4 +25,3 @@ function abort(): void
 ```TypeScript
 process.abort();
 ```
-

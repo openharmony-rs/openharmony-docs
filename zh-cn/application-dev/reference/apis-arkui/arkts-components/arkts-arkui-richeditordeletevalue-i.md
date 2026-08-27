@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface RichEditorDeleteValue--><!--Device-unnamed-declare interface RichEditorDeleteValue-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ direction: RichEditorDeleteDirection
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorDeleteValue-direction: RichEditorDeleteDirection--><!--Device-RichEditorDeleteValue-direction: RichEditorDeleteDirection-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## length
@@ -48,8 +44,6 @@ length: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RichEditorDeleteValue-length: number--><!--Device-RichEditorDeleteValue-length: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,8 +63,6 @@ offset: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorDeleteValue-offset: number--><!--Device-RichEditorDeleteValue-offset: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## richEditorDeleteSpans
@@ -89,7 +81,4 @@ richEditorDeleteSpans: Array<RichEditorTextSpanResult | RichEditorImageSpanResul
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorDeleteValue-richEditorDeleteSpans: Array<RichEditorTextSpanResult | RichEditorImageSpanResult>--><!--Device-RichEditorDeleteValue-richEditorDeleteSpans: Array<RichEditorTextSpanResult | RichEditorImageSpanResult>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

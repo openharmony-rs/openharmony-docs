@@ -1,12 +1,10 @@
 # Size
 
-表示图片尺寸。 继承自[lang.ISendable](../../../arkts-utils/arkts-sendable.md#isendable)。
+表示图片尺寸。继承自[lang.ISendable](../../../arkts-utils/arkts-sendable.md#isendable)。
 
 **继承/实现关系：** Size extends lang.ISendable
 
 **起始版本：** 12
-
-<!--Device-sendableImage-interface Size--><!--Device-sendableImage-interface Size-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -32,8 +30,6 @@ height: number
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Size-height: number--><!--Device-Size-height: number-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## width
@@ -52,7 +48,4 @@ width: number
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Size-width: number--><!--Device-Size-width: number-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
-

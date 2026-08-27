@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { pointer } from '@kit.InputKit';
 ```
 
 ## getPointerSpeedSync
 
 ```TypeScript
-function getPointerSpeedSync(): int
+function getPointerSpeedSync(): number
 ```
 
 使用同步方式获取当前鼠标移动速度。
 
-**起始版本：** 23
-
-<!--Device-pointer-function getPointerSpeedSync(): int--><!--Device-pointer-function getPointerSpeedSync(): int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -26,18 +23,16 @@ function getPointerSpeedSync(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 返回鼠标移动速度，范围1-20。 |
+| number | 返回鼠标移动速度，范围1-20。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { pointer } from '@kit.InputKit';
@@ -61,30 +56,3 @@ struct Index {
   }
 }
 ```
-
-ArkTS-Sta示例:
-
-```TypeScript
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
-import { pointer } from '@kit.InputKit';
-import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            let speed = pointer.getPointerSpeedSync();
-            console.info(`Succeeded in getting pointer speed, speed: ${JSON.stringify(speed)}.`);
-          } catch (error) {
-            console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-

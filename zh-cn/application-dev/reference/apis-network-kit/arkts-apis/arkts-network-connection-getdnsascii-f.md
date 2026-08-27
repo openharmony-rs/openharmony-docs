@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { connection } from '@kit.NetworkKit';
 ```
 
 ## getDnsAscii
@@ -12,11 +11,19 @@ import { connection } from '@kit.NetworkKit';
 function getDnsAscii(host: string, flag?: ConversionProcess): string
 ```
 
-将Unicode编码形式的主机名转换为ASCII编码形式，并可通过可选的转换流程参数（conversionProcess）控制转换行为。 > **说明：** > > conversionProcess设置为NO_CONFIGURATION时，只能转换已正式分配含义的Unicode字符所对应的域名。 > conversionProcess设置为ALLOW_UNASSIGNED时，可以转换包含尚未分配含义的Unicode字符的域名。 > conversionProcess设置为USE_STD3_ASCII_RULES时，会在转换过程中强制按照STD-3 ASCII规则（即RFC 1123标准）对生成的ASCII域名进行检查。 > 传入参数中的数字和英文不做转码。
+将Unicode编码形式的主机名转换为ASCII编码形式，并可通过可选的转换流程参数（conversionProcess）控制转换行为。
+
+> **说明：**
+> 
+> conversionProcess设置为NO_CONFIGURATION时，只能转换已正式分配含义的Unicode字符所对应的域名。
+
+> conversionProcess设置为ALLOW_UNASSIGNED时，可以转换包含尚未分配含义的Unicode字符的域名。
+
+> conversionProcess设置为USE_STD3_ASCII_RULES时，会在转换过程中强制按照STD-3 ASCII规则（即RFC 1123标准）对生成的ASCII域名进行检查。
+
+> 传入参数中的数字和英文不做转码。
 
 **起始版本：** 23
-
-<!--Device-connection-function getDnsAscii(host: string, flag?: ConversionProcess): string--><!--Device-connection-function getDnsAscii(host: string, flag?: ConversionProcess): string-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -51,4 +58,3 @@ console.info("Succeeded to getDnsAscii: " + result);  // 预期结果：www.xn--
 let result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info("Succeeded to getDnsAscii: " + result);  // 预期结果：www.example.com
 ```
-

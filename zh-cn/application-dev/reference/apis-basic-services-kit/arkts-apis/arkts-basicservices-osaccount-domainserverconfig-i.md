@@ -2,9 +2,7 @@
 
 域服务器配置。
 
-**起始版本：** 23
-
-<!--Device-osAccount-interface DomainServerConfig--><!--Device-osAccount-interface DomainServerConfig-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -24,9 +22,7 @@ domain: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DomainServerConfig-domain: string--><!--Device-DomainServerConfig-domain: string-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -40,25 +36,20 @@ id: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DomainServerConfig-id: string--><!--Device-DomainServerConfig-id: string-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 ## parameters
 
 ```TypeScript
-parameters: Record<string, RecordData>
+parameters: Record<string, Object>
 ```
 
 服务器配置参数。
 
-**类型：** Record&lt;string, [RecordData](arkts-basicservices-recorddata-t.md)&gt;
+**类型：** Record&lt;string, Object&gt;
 
-**起始版本：** 23
-
-<!--Device-DomainServerConfig-parameters: Record<string, RecordData>--><!--Device-DomainServerConfig-parameters: Record<string, RecordData>-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Account.OsAccount
-

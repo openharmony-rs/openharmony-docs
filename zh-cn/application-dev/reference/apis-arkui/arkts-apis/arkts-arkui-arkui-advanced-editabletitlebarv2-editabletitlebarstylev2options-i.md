@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export declare interface EditableTitleBarStyleV2Options--><!--Device-unnamed-export declare interface EditableTitleBarStyleV2Options-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -20,7 +18,7 @@ import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, Editabl
 backgroundBlurStyle?: BlurStyle
 ```
 
-标题栏背景模糊样式。 默认值：BlurStyle.NONE，表示无模糊效果。
+标题栏背景模糊样式。默认值：BlurStyle.NONE，表示无模糊效果。
 
 **类型：** BlurStyle
 
@@ -30,8 +28,6 @@ backgroundBlurStyle?: BlurStyle
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EditableTitleBarStyleV2Options-backgroundBlurStyle?: BlurStyle--><!--Device-EditableTitleBarStyleV2Options-backgroundBlurStyle?: BlurStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundColor
@@ -40,17 +36,15 @@ backgroundBlurStyle?: BlurStyle
 backgroundColor?: ResourceColor
 ```
 
-标题栏背景色。 默认值：'#00000000'，表示背景透明。
+标题栏背景色。默认值：'#00000000'，表示背景透明。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EditableTitleBarStyleV2Options-backgroundColor?: ResourceColor--><!--Device-EditableTitleBarStyleV2Options-backgroundColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,17 +54,15 @@ backgroundColor?: ResourceColor
 contentMargin?: LocalizedMargin
 ```
 
-标题栏外边距，不支持设置负数。 默认值： { start: LengthMetrics.resource(\$r('sys.float.margin_left')), end: LengthMetrics.resource(\$r('sys.float.margin_right')) }。
+标题栏外边距，不支持设置负数。默认值：{start: LengthMetrics.resource(\$r('sys.float.margin_left')),end: LengthMetrics.resource(\$r('sys.float.margin_right'))}。
 
-**类型：** LocalizedMargin
+**类型：** [LocalizedMargin](arkts-arkui-localizedmargin-t.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EditableTitleBarStyleV2Options-contentMargin?: LocalizedMargin--><!--Device-EditableTitleBarStyleV2Options-contentMargin?: LocalizedMargin-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,17 +72,15 @@ contentMargin?: LocalizedMargin
 safeAreaEdges?: Array<SafeAreaEdge>
 ```
 
-扩展安全区域的方向。 默认值：[SafeAreaEdge.TOP]。
+扩展安全区域的方向。默认值：[SafeAreaEdge.TOP]。
 
-**类型：** Array&lt;SafeAreaEdge&gt;
+**类型：** Array&lt;[SafeAreaEdge](../arkts-components/arkts-arkui-safeareaedge-e.md)&gt;
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EditableTitleBarStyleV2Options-safeAreaEdges?: Array<SafeAreaEdge>--><!--Device-EditableTitleBarStyleV2Options-safeAreaEdges?: Array<SafeAreaEdge>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,9 +90,9 @@ safeAreaEdges?: Array<SafeAreaEdge>
 safeAreaTypes?: Array<SafeAreaType>
 ```
 
-扩展安全区域的类型。 默认值：[SafeAreaType.SYSTEM]。
+扩展安全区域的类型。默认值：[SafeAreaType.SYSTEM]。
 
-**类型：** Array&lt;SafeAreaType&gt;
+**类型：** Array&lt;[SafeAreaType](../arkts-components/arkts-arkui-safeareatype-e.md)&gt;
 
 **起始版本：** 26.0.0
 
@@ -110,7 +100,4 @@ safeAreaTypes?: Array<SafeAreaType>
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EditableTitleBarStyleV2Options-safeAreaTypes?: Array<SafeAreaType>--><!--Device-EditableTitleBarStyleV2Options-safeAreaTypes?: Array<SafeAreaType>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

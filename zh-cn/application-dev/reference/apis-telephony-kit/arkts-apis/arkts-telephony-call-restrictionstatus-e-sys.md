@@ -2,9 +2,7 @@
 
 限制状态。
 
-**起始版本：** 23
-
-<!--Device-call-export enum RestrictionStatus--><!--Device-call-export enum RestrictionStatus-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -18,9 +16,7 @@ RESTRICTION_DISABLE = 0
 
 禁用限制。
 
-**起始版本：** 23
-
-<!--Device-RestrictionStatus-RESTRICTION_DISABLE = 0--><!--Device-RestrictionStatus-RESTRICTION_DISABLE = 0-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -34,11 +30,8 @@ RESTRICTION_ENABLE = 1
 
 启用限制。
 
-**起始版本：** 23
-
-<!--Device-RestrictionStatus-RESTRICTION_ENABLE = 1--><!--Device-RestrictionStatus-RESTRICTION_ENABLE = 1-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
 **系统接口：** 此接口为系统接口。
-

@@ -2,9 +2,7 @@
 
 表示 Schema 实例的节点，提供定义存储在数据库中的值的方法。
 
-**起始版本：** 23
-
-<!--Device-distributedKVStore-class FieldNode--><!--Device-distributedKVStore-class FieldNode-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -22,11 +20,9 @@ appendChild(child: FieldNode): boolean
 
 在当前 FieldNode 中添加一个子节点。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FieldNode-appendChild(child: FieldNode): boolean--><!--Device-FieldNode-appendChild(child: FieldNode): boolean-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -46,7 +42,7 @@ appendChild(child: FieldNode): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;  2.Incorrect parameters types. |
 
 **示例**
 
@@ -78,11 +74,9 @@ constructor(name: string)
 
 用于创建带有string字段FieldNode实例的构造函数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FieldNode-constructor(name: string)--><!--Device-FieldNode-constructor(name: string)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -96,7 +90,27 @@ constructor(name: string)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;  2.Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+let child1 = new distributedKVStore.FieldNode('id');
+child1.type = distributedKVStore.ValueType.INTEGER;
+child1.nullable = false;
+child1.default = '1';
+let child2 = new distributedKVStore.FieldNode('name');
+child2.type = distributedKVStore.ValueType.STRING;
+child2.nullable = false;
+child2.default = 'zhangsan';
+
+let schema = new distributedKVStore.Schema();
+schema.root.appendChild(child1);
+schema.root.appendChild(child2);
+schema.indexes = ['$.id', '$.name'];
+schema.mode = 1;
+schema.skip = 0;
+```
 
 ## default
 
@@ -110,7 +124,36 @@ default: string
 
 **起始版本：** 9
 
-<!--Device-FieldNode-default: string--><!--Device-FieldNode-default: string-End-->
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
+## nullable
+
+```TypeScript
+set nullable(isnullable: boolean)
+```
+
+设置数据库字段是否为空.
+
+**类型：** boolean
+
+**起始版本：** 9
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
+## type
+
+```TypeScript
+set type(type: number)
+```
+
+设置节点对应的数据类型。
+
+**类型：** number
+
+**起始版本：** 9
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore

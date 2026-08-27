@@ -2,9 +2,7 @@
 
 表示某次权限使用类型的详情。
 
-**起始版本：** 23
-
-<!--Device-privacyManager-interface PermissionUsedTypeInfo--><!--Device-privacyManager-interface PermissionUsedTypeInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -26,9 +24,7 @@ permissionName: Permissions
 
 **类型：** Permissions
 
-**起始版本：** 23
-
-<!--Device-PermissionUsedTypeInfo-permissionName: Permissions--><!--Device-PermissionUsedTypeInfo-permissionName: Permissions-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -37,16 +33,14 @@ permissionName: Permissions
 ## tokenId
 
 ```TypeScript
-tokenId: int
+tokenId: number
 ```
 
 访问敏感权限的应用身份标识。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PermissionUsedTypeInfo-tokenId: int--><!--Device-PermissionUsedTypeInfo-tokenId: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -62,11 +56,8 @@ usedType: PermissionUsedType
 
 **类型：** [PermissionUsedType](arkts-ability-privacymanager-permissionusedtype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-PermissionUsedTypeInfo-usedType: PermissionUsedType--><!--Device-PermissionUsedTypeInfo-usedType: PermissionUsedType-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
-

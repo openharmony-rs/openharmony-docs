@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-photoAccessHelper-enum PhotoRiskStatus--><!--Device-photoAccessHelper-enum PhotoRiskStatus-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -21,8 +19,6 @@ UNIDENTIFIED = 0
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PhotoRiskStatus-UNIDENTIFIED = 0--><!--Device-PhotoRiskStatus-UNIDENTIFIED = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -40,8 +36,6 @@ APPROVED = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PhotoRiskStatus-APPROVED = 1--><!--Device-PhotoRiskStatus-APPROVED = 1-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -57,8 +51,6 @@ SUSPICIOUS = 2
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PhotoRiskStatus-SUSPICIOUS = 2--><!--Device-PhotoRiskStatus-SUSPICIOUS = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -76,9 +68,6 @@ REJECTED = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PhotoRiskStatus-REJECTED = 3--><!--Device-PhotoRiskStatus-REJECTED = 3-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

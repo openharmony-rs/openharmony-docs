@@ -3,8 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## getCertificateStorePath
@@ -15,9 +13,7 @@ function getCertificateStorePath(property: CertStoreProperty): string
 
 表示获取证书的存储路径。
 
-**起始版本：** 23
-
-<!--Device-certificateManager-function getCertificateStorePath(property: CertStoreProperty): string--><!--Device-certificateManager-function getCertificateStorePath(property: CertStoreProperty): string-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -37,9 +33,9 @@ function getCertificateStorePath(property: CertStoreProperty): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. For example, CertStoreProperty.certType is set to CA_CERT_USER, but CertStoreProperty.certScope is not specified. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types; 3. Parameter verification failed. For example, CertStoreProperty.certType is set to CA_CERT_USER, but CertStoreProperty.certScope is not specified. |
+| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;  2. Memory operation error; 3. File operation error. Please try again. |
 | [17500009](../errorcode-certManager.md#17500009-不支持指定的证书存储路径) | The device does not support the specified certificate storage path, For example, the device outside China does not support the certificate that uses SM algorithm.<br>**适用版本：** 20+ |
-| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**
 
@@ -81,4 +77,3 @@ try {
   console.error(`Failed to get store path. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-

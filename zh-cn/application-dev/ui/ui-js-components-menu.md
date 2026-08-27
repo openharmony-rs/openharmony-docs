@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-提供菜单组件，作为临时性弹出窗口，用于展示用户可执行的操作，具体用法请参考[menu/apis-arkui/arkui-js/js-components-basic-menu.md)。
+提供菜单组件，作为临时性弹出窗口，用于展示用户可执行的操作，具体用法请参考menu。
 
 
 ## 创建menu组件
@@ -44,10 +44,10 @@
 }
 ```
 
-![zh-cn_image_0000001226815299](figures/zh-cn_image_0000001226815299.png)
+![menu-Component](figures/menu-Component.png)
 
 > **说明：**
-> - menu仅支持[option/apis-arkui/arkui-js/js-components-basic-option.md)子组件。
+> - menu仅支持option子组件。
 >
 > - menu组件不支持focusable、disabled属性。
 
@@ -101,7 +101,7 @@ option{
 }
 ```
 
-![zh-cn_image_0000001181337170](figures/zh-cn_image_0000001181337170.png)
+![Setting-Styles-1](figures/Setting-Styles-1.png)
 
 
 ## 绑定事件
@@ -156,10 +156,9 @@ option{
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
 export default {
   cancel() {
-    promptAction.showToast({
+    this.getUIContext().getPromptAction().showToast({
       message: "cancel"
     })
   },
@@ -169,4 +168,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001181495744](figures/zh-cn_image_0000001181495744.gif)
+![Binding-Events](figures/Binding-Events.gif)

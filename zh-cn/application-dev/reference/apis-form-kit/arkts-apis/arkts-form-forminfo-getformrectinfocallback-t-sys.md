@@ -6,9 +6,7 @@ type GetFormRectInfoCallback = (formId: string) => Promise<formInfo.Rect>
 
 卡片位置、尺寸查询回调。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-formInfo-type GetFormRectInfoCallback = (formId: string) => Promise<formInfo.Rect>--><!--Device-formInfo-type GetFormRectInfoCallback = (formId: string) => Promise<formInfo.Rect>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -26,3 +24,23 @@ type GetFormRectInfoCallback = (formId: string) => Promise<formInfo.Rect>
 | --- | --- |
 | Promise&lt;[formInfo.Rect](arkts-form-forminfo-rect-i.md)&gt; | Promise对象，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息。 |
 
+**示例**
+
+```TypeScript
+import { formInfo } from '@kit.FormKit';
+
+// 卡片使用方需要对查询请求进行处理，计算并返回卡片尺寸、位置信息
+let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
+  (formId: string): Promise<formInfo.Rect> => {
+    return new Promise<formInfo.Rect>((resolve: (value: formInfo.Rect) => void) => {
+      console.info(`formId is ${formId}`);
+      let formRect: formInfo.Rect = {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      };
+      resolve(formRect);
+    })
+  };
+```

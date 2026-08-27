@@ -1,10 +1,8 @@
-# NotificationUserInput(Describes a NotificationUserInput instance)
+# NotificationUserInput
 
 保存用户输入的通知消息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface NotificationUserInput--><!--Device-unnamed-export interface NotificationUserInput-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -18,9 +16,6 @@ inputKey: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-NotificationUserInput-inputKey: string--><!--Device-NotificationUserInput-inputKey: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Notification.Notification
-

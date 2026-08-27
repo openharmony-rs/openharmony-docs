@@ -1,10 +1,8 @@
-# SecurityDpiFollowStrategy(System API)（系统接口）
+# SecurityDpiFollowStrategy（系统接口）
 
 定义SecurityUIExtensionComponent内容分辨率跟随策略的枚举。
 
 **起始版本：** 26.0.0
-
-<!--Device-unnamed-declare enum SecurityDpiFollowStrategy--><!--Device-unnamed-declare enum SecurityDpiFollowStrategy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,8 +20,6 @@ FOLLOW_HOST_DPI = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SecurityDpiFollowStrategy-FOLLOW_HOST_DPI = 0--><!--Device-SecurityDpiFollowStrategy-FOLLOW_HOST_DPI = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -40,9 +36,6 @@ FOLLOW_UI_EXTENSION_ABILITY_DPI = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SecurityDpiFollowStrategy-FOLLOW_UI_EXTENSION_ABILITY_DPI = 1--><!--Device-SecurityDpiFollowStrategy-FOLLOW_UI_EXTENSION_ABILITY_DPI = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

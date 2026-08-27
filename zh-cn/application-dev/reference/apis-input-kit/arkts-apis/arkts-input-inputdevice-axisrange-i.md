@@ -2,17 +2,13 @@
 
 输入设备的轴信息。
 
-**起始版本：** 23
-
-<!--Device-inputDevice-interface AxisRange--><!--Device-inputDevice-interface AxisRange-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
 
 ## 导入模块
 
 ```TypeScript
-import { inputDevice } from '@kit.InputKit';
-import { inputDeviceCooperate } from '@kit.InputKit';
 ```
 
 ## axis
@@ -25,89 +21,77 @@ axis: AxisType
 
 **类型：** AxisType
 
-**起始版本：** 23
-
-<!--Device-AxisRange-axis: AxisType--><!--Device-AxisRange-axis: AxisType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
 
 ## flat
 
 ```TypeScript
-flat: int
+flat: number
 ```
 
 轴的基准值。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AxisRange-flat: int--><!--Device-AxisRange-flat: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
 
 ## fuzz
 
 ```TypeScript
-fuzz: int
+fuzz: number
 ```
 
 轴的模糊值。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AxisRange-fuzz: int--><!--Device-AxisRange-fuzz: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
 
 ## max
 
 ```TypeScript
-max: int
+max: number
 ```
 
 轴的最大值。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AxisRange-max: int--><!--Device-AxisRange-max: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
 
 ## min
 
 ```TypeScript
-min: int
+min: number
 ```
 
 轴的最小值。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AxisRange-min: int--><!--Device-AxisRange-min: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
 
 ## resolution
 
 ```TypeScript
-resolution: int
+resolution: number
 ```
 
 轴的分辨率。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AxisRange-resolution: int--><!--Device-AxisRange-resolution: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -121,9 +105,6 @@ source: SourceType
 
 **类型：** SourceType
 
-**起始版本：** 23
-
-<!--Device-AxisRange-source: SourceType--><!--Device-AxisRange-source: SourceType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
-

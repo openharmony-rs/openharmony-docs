@@ -14,9 +14,7 @@ function checkPersistentPermission(policies: Array<PolicyInfo>): Promise<Array<b
 
 校验所选择的多个文件或目录URI是否已持久化授权，使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-fileShare-function checkPersistentPermission(policies: Array<PolicyInfo>): Promise<Array<boolean>>--><!--Device-fileShare-function checkPersistentPermission(policies: Array<PolicyInfo>): Promise<Array<boolean>>-End-->
+**起始版本：** 17
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -30,13 +28,13 @@ function checkPersistentPermission(policies: Array<PolicyInfo>): Promise<Array<b
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;boolean&gt;&gt; | Promise对象，返回URI权限的持久化状态数组。 |
+| Promise & lt;Array & lt;boolean & gt; & gt; | Promise对象，返回URI权限的持久化状态数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;  2.Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | 13900042 | Out of memory |
 
@@ -83,4 +81,3 @@ async function checkPersistentPermissionExample() {
   }
 }
 ```
-

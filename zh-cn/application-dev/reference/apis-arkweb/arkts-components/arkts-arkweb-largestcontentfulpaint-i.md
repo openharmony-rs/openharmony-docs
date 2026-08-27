@@ -4,18 +4,11 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface LargestContentfulPaint--><!--Device-unnamed-declare interface LargestContentfulPaint-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## imageBPP
@@ -31,8 +24,6 @@ imageBPP?: number
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LargestContentfulPaint-imageBPP?: number--><!--Device-LargestContentfulPaint-imageBPP?: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -50,8 +41,6 @@ largestImageLoadEndTime?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LargestContentfulPaint-largestImageLoadEndTime?: number--><!--Device-LargestContentfulPaint-largestImageLoadEndTime?: number-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## largestImageLoadStartTime
@@ -67,8 +56,6 @@ largestImageLoadStartTime?: number
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LargestContentfulPaint-largestImageLoadStartTime?: number--><!--Device-LargestContentfulPaint-largestImageLoadStartTime?: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -86,8 +73,6 @@ largestImagePaintTime?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LargestContentfulPaint-largestImagePaintTime?: number--><!--Device-LargestContentfulPaint-largestImagePaintTime?: number-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## largestTextPaintTime
@@ -103,8 +88,6 @@ largestTextPaintTime?: number
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LargestContentfulPaint-largestTextPaintTime?: number--><!--Device-LargestContentfulPaint-largestTextPaintTime?: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -122,7 +105,4 @@ navigationStartTime?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LargestContentfulPaint-navigationStartTime?: number--><!--Device-LargestContentfulPaint-navigationStartTime?: number-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

@@ -3,7 +3,7 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -13,7 +13,7 @@
 ## 开发步骤
 
 ### 申请蓝牙权限
-需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，具体操作请参考[声明权限](../../security/AccessToken/declare-permissions.md)和[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，具体操作请参考声明权限和向用户申请授权。
 
 ### 导入所需API模块
 导入access和错误码模块。
@@ -23,7 +23,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ### 订阅蓝牙开关状态变化事件
-通过订阅开关状态变化事件，可以获取实时的蓝牙开关状态。蓝牙开启或者关闭过程中，涉及多种蓝牙状态的跃迁。其中[STATE_OFF/apis-connectivity-kit/js-apis-bluetooth-access.md#bluetoothstate)表示蓝牙已关闭，此状态下，应用不可以使用蓝牙其他功能；[STATE_ON/apis-connectivity-kit/js-apis-bluetooth-access.md#bluetoothstate)表示蓝牙已打开，此状态下，应用可以使用蓝牙其他功能。
+通过订阅开关状态变化事件，可以获取实时的蓝牙开关状态。蓝牙开启或者关闭过程中，涉及多种蓝牙状态的跃迁。其中STATE_OFF表示蓝牙已关闭，此状态下，应用不可以使用蓝牙其他功能；STATE_ON表示蓝牙已打开，此状态下，应用可以使用蓝牙其他功能。
 ```ts
 // 定义蓝牙开关状态变化函数回调
 function onReceiveEvent(data: access.BluetoothState) {

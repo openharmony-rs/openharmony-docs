@@ -18,9 +18,7 @@ export function getFirstPreferredLanguage(): string
 
 **废弃版本：** 9
 
-**替代接口：** [getFirstPreferredLanguage](../../apis-na/arkts-apis/arkts-na-i18n-system-c.md#getfirstpreferredlanguage)
-
-<!--Device-i18n-export function getFirstPreferredLanguage(): string--><!--Device-i18n-export function getFirstPreferredLanguage(): string-End-->
+**替代接口：** [getFirstPreferredLanguage](arkts-localization-i18n-system-c.md#getfirstpreferredlanguage)
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -35,6 +33,11 @@ export function getFirstPreferredLanguage(): string
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
 
-let firstPreferredLanguage: string = i18n.getFirstPreferredLanguage();
+let firstPreferredLanguage: string = i18n.System.getFirstPreferredLanguage();
 ```
 
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let firstPreferredLanguage: string = i18n.getFirstPreferredLanguage();
+```

@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-mdns-export interface DiscoveryService--><!--Device-mdns-export interface DiscoveryService-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 ## 导入模块
@@ -26,16 +24,14 @@ off(type: 'discoveryStart', callback?: Callback<DiscoveryEventInfo>): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DiscoveryService-off(type: 'discoveryStart', callback?: Callback<DiscoveryEventInfo>): void--><!--Device-DiscoveryService-off(type: 'discoveryStart', callback?: Callback<DiscoveryEventInfo>): void-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'discoveryStart' | 是 | 取消订阅的事件，固定为'discoveryStart'。 <br>discoveryStart：开始搜索局域网内的MDNS服务事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DiscoveryEventInfo](arkts-network-mdns-discoveryeventinfo-i.md)&gt; | 否 | MDNS服务的信息和事件错误信息。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订 阅。<br>**起始版本：** 11 |
+| type | 'discoveryStart' | 是 | 取消订阅的事件，固定为'discoveryStart'。 discoveryStart：开始搜索局域网内的MDNS服务事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DiscoveryEventInfo](arkts-network-mdns-discoveryeventinfo-i.md)&gt; | 否 | MDNS服务的信息和事件错误信息。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订 阅。<br>**起始版本：** 11 |
 
 **示例**
 
@@ -75,16 +71,14 @@ off(type: 'discoveryStop', callback?: Callback<DiscoveryEventInfo>): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DiscoveryService-off(type: 'discoveryStop', callback?: Callback<DiscoveryEventInfo>): void--><!--Device-DiscoveryService-off(type: 'discoveryStop', callback?: Callback<DiscoveryEventInfo>): void-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'discoveryStop' | 是 | 取消订阅的事件'discoveryStop'。 <br>discoveryStop：停止搜索局域网内的MDNS服务事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DiscoveryEventInfo](arkts-network-mdns-discoveryeventinfo-i.md)&gt; | 否 | MDNS服务的信息和事件错误信息。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订 阅。<br>**起始版本：** 11 |
+| type | 'discoveryStop' | 是 | 取消订阅的事件'discoveryStop'。 discoveryStop：停止搜索局域网内的MDNS服务事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DiscoveryEventInfo](arkts-network-mdns-discoveryeventinfo-i.md)&gt; | 否 | MDNS服务的信息和事件错误信息。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订 阅。<br>**起始版本：** 11 |
 
 ## off('serviceFound')
 
@@ -98,16 +92,14 @@ off(type: 'serviceFound', callback?: Callback<LocalServiceInfo>): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DiscoveryService-off(type: 'serviceFound', callback?: Callback<LocalServiceInfo>): void--><!--Device-DiscoveryService-off(type: 'serviceFound', callback?: Callback<LocalServiceInfo>): void-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'serviceFound' | 是 | 取消订阅的事件，固定为'serviceFound'。 <br>serviceFound：发现MDNS服务事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md)&gt; | 否 | MDNS服务的信息。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订 阅。<br>**起始版本：** 11 |
+| type | 'serviceFound' | 是 | 取消订阅的事件，固定为'serviceFound'。 serviceFound：发现MDNS服务事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md)&gt; | 否 | MDNS服务的信息。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订 阅。<br>**起始版本：** 11 |
 
 **示例**
 
@@ -150,16 +142,14 @@ off(type: 'serviceLost', callback?: Callback<LocalServiceInfo>): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DiscoveryService-off(type: 'serviceLost', callback?: Callback<LocalServiceInfo>): void--><!--Device-DiscoveryService-off(type: 'serviceLost', callback?: Callback<LocalServiceInfo>): void-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'serviceLost' | 是 | 取消订阅的事件，固定为'serviceLost'。 <br>serviceLost：移除MDNS服务事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md)&gt; | 否 | MDNS服务的信息。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订阅。 |
+| type | 'serviceLost' | 是 | 取消订阅的事件，固定为'serviceLost'。 serviceLost：移除MDNS服务事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md)&gt; | 否 | MDNS服务的信息。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订阅。 |
 
 **示例**
 
@@ -199,16 +189,14 @@ on(type: 'discoveryStart', callback: Callback<DiscoveryEventInfo>): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DiscoveryService-on(type: 'discoveryStart', callback: Callback<DiscoveryEventInfo>): void--><!--Device-DiscoveryService-on(type: 'discoveryStart', callback: Callback<DiscoveryEventInfo>): void-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'discoveryStart' | 是 | 订阅事件，固定为'discoveryStart'。 <br>discoveryStart：开始搜索局域网内的MDNS服务事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DiscoveryEventInfo](arkts-network-mdns-discoveryeventinfo-i.md)&gt; | 是 | MDNS服务的信息和事件错误信息。<br>**起始版本：** 11 |
+| type | 'discoveryStart' | 是 | 订阅事件，固定为'discoveryStart'。 discoveryStart：开始搜索局域网内的MDNS服务事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DiscoveryEventInfo](arkts-network-mdns-discoveryeventinfo-i.md)&gt; | 是 | MDNS服务的信息和事件错误信息。<br>**起始版本：** 11 |
 
 **示例**
 
@@ -244,16 +232,14 @@ on(type: 'discoveryStop', callback: Callback<DiscoveryEventInfo>): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DiscoveryService-on(type: 'discoveryStop', callback: Callback<DiscoveryEventInfo>): void--><!--Device-DiscoveryService-on(type: 'discoveryStop', callback: Callback<DiscoveryEventInfo>): void-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'discoveryStop' | 是 | 订阅事件，固定为'discoveryStop'。 <br>discoveryStop：停止搜索局域网内的MDNS服务事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DiscoveryEventInfo](arkts-network-mdns-discoveryeventinfo-i.md)&gt; | 是 | MDNS服务的信息和事件错误信息。<br>**起始版本：** 11 |
+| type | 'discoveryStop' | 是 | 订阅事件，固定为'discoveryStop'。 discoveryStop：停止搜索局域网内的MDNS服务事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DiscoveryEventInfo](arkts-network-mdns-discoveryeventinfo-i.md)&gt; | 是 | MDNS服务的信息和事件错误信息。<br>**起始版本：** 11 |
 
 **示例**
 
@@ -289,16 +275,14 @@ on(type: 'serviceFound', callback: Callback<LocalServiceInfo>): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DiscoveryService-on(type: 'serviceFound', callback: Callback<LocalServiceInfo>): void--><!--Device-DiscoveryService-on(type: 'serviceFound', callback: Callback<LocalServiceInfo>): void-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'serviceFound' | 是 | 订阅事件，固定为'serviceFound'。 <br>serviceFound：发现MDNS服务事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md)&gt; | 是 | MDNS服务的信息，需调用resolveLocalService解析这个MDNS服务信息。 |
+| type | 'serviceFound' | 是 | 订阅事件，固定为'serviceFound'。 serviceFound：发现MDNS服务事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md)&gt; | 是 | MDNS服务的信息，需调用resolveLocalService解析这个MDNS服务信息。 |
 
 **示例**
 
@@ -337,16 +321,14 @@ on(type: 'serviceLost', callback: Callback<LocalServiceInfo>): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DiscoveryService-on(type: 'serviceLost', callback: Callback<LocalServiceInfo>): void--><!--Device-DiscoveryService-on(type: 'serviceLost', callback: Callback<LocalServiceInfo>): void-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'serviceLost' | 是 | 订阅事件，固定为'serviceLost'。 <br>serviceLost：移除MDNS服务事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md)&gt; | 是 | MDNS服务的信息。 |
+| type | 'serviceLost' | 是 | 订阅事件，固定为'serviceLost'。 serviceLost：移除MDNS服务事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md)&gt; | 是 | MDNS服务的信息。 |
 
 **示例**
 
@@ -382,8 +364,6 @@ startSearchingMDNS(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DiscoveryService-startSearchingMDNS(): void--><!--Device-DiscoveryService-startSearchingMDNS(): void-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 **示例**
@@ -414,8 +394,6 @@ stopSearchingMDNS(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DiscoveryService-stopSearchingMDNS(): void--><!--Device-DiscoveryService-stopSearchingMDNS(): void-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 **示例**
@@ -433,4 +411,3 @@ let serviceType = "_print._tcp";
 let discoveryService = mdns.createDiscoveryService(context, serviceType);
 discoveryService.stopSearchingMDNS();
 ```
-

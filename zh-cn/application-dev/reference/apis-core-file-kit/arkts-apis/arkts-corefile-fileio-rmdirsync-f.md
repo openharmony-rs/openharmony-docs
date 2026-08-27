@@ -19,8 +19,6 @@ declare function rmdirSync(path: string): void
 
 **替代接口：** [rmdirSync](arkts-corefile-file-fs-rmdirsync-f.md)
 
-<!--Device-unnamed-declare function rmdirSync(path: string): void--><!--Device-unnamed-declare function rmdirSync(path: string): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -29,3 +27,9 @@ declare function rmdirSync(path: string): void
 | --- | --- | --- | --- |
 | path | string | 是 | 待删除目录的应用沙箱路径。 |
 
+**示例**
+
+```TypeScript
+let dirPath = pathDir + '/testDir';
+fileio.rmdirSync(dirPath);
+```

@@ -8,8 +8,6 @@
 
 **替代接口：** [WorkerEventTarget](arkts-arkts-worker-workereventtarget-i.md)
 
-<!--Device-unnamed-export interface EventTarget--><!--Device-unnamed-export interface EventTarget-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
@@ -31,8 +29,6 @@ addEventListener(type: string, listener: EventListener): void
 **废弃版本：** 9
 
 **替代接口：** addEventListener
-
-<!--Device-EventTarget-addEventListener(type: string, listener: EventListener): void--><!--Device-EventTarget-addEventListener(type: string, listener: EventListener): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -70,8 +66,6 @@ dispatchEvent(event: Event): boolean
 
 **替代接口：** dispatchEvent
 
-<!--Device-EventTarget-dispatchEvent(event: Event): boolean--><!--Device-EventTarget-dispatchEvent(event: Event): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -87,6 +81,36 @@ dispatchEvent(event: Event): boolean
 | boolean |  |
 
 **示例**
+
+```TypeScript
+// Index.ets
+import { worker } from '@kit.ArkTS';
+
+const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
+
+workerInstance.addEventListener("alert", () => {
+  console.info("alert listener callback");
+})
+
+let result: boolean = workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未支持
+
+console.info("dispatchEvent result is: ", result);
+```
+
+```TypeScript
+// worker.ets
+import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+
+workerPort.onmessage = (event: MessageEvents) => {
+  workerPort.addEventListener("alert", () => {
+    console.info("alert listener callback");
+  });
+
+  workerPort.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未支持
+};
+```
 
 ```TypeScript
 // worker.ets
@@ -143,11 +167,35 @@ removeAllListener(): void
 
 **替代接口：** removeAllListener
 
-<!--Device-EventTarget-removeAllListener(): void--><!--Device-EventTarget-removeAllListener(): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **示例**
+
+```TypeScript
+// Index.ets
+import { worker } from '@kit.ArkTS';
+
+const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
+workerInstance.addEventListener("alert", () => {
+    console.info("alert listener callback");
+})
+workerInstance.removeAllListener();
+```
+
+```TypeScript
+// worker.ets
+import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+
+workerPort.onmessage = (event: MessageEvents) => {
+  workerPort.addEventListener("alert", () => {
+    console.info("alert listener callback");
+  });
+
+  workerPort.removeAllListener();
+};
+```
 
 ```TypeScript
 // worker.ets
@@ -176,8 +224,6 @@ removeEventListener(type: string, callback?: EventListener): void
 
 **替代接口：** removeEventListener
 
-<!--Device-EventTarget-removeEventListener(type: string, callback?: EventListener): void--><!--Device-EventTarget-removeEventListener(type: string, callback?: EventListener): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -201,4 +247,3 @@ workerPort.addEventListener("alert", () => {
 
 workerPort.removeEventListener('alert');
 ```
-

@@ -1,12 +1,14 @@
 # LocalizedSnapshotRegion
 
-定义组件截图的矩形区域，start和end的值在布局方向为LTR时指定为left和right，在布局方向为RTL时指定为right和left。 > **说明：** > > 直接使用componentSnapshot可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取 > [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)实例，并使用[getComponentSnapshot](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getcomponentsnapshot) > 获取绑定实例的componentSnapshot。
+定义组件截图的矩形区域，start和end的值在布局方向为LTR时指定为left和right，在布局方向为RTL时指定为right和left。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 直接使用componentSnapshot可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取
+> [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，并使用[getComponentSnapshot](arkts-arkui-arkui-uicontext-uicontext-c.md#getcomponentsnapshot)
+> 获取绑定实例的componentSnapshot。
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-componentSnapshot-export interface LocalizedSnapshotRegion--><!--Device-componentSnapshot-export interface LocalizedSnapshotRegion-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -19,80 +21,132 @@ import { componentSnapshot } from '@kit.ArkUI';
 ## bottom
 
 ```TypeScript
-bottom: double
+bottom: number
 ```
 
-截图区域矩形右下角的y轴坐标。 单位：px 取值范围：[0, 组件高度]
+截图区域矩形右下角的y轴坐标。单位：px取值范围：[0, 组件高度]
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-LocalizedSnapshotRegion-bottom: double--><!--Device-LocalizedSnapshotRegion-bottom: double-End-->
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## end
 
 ```TypeScript
-end: double
+end: number
 ```
 
-布局方向为LTR时表示截图区域矩形右下角的x轴坐标，布局方向为RTL时表示截图区域矩形左下角的x轴坐标。 单位：px 取值范围：[0, 组件宽度]
+布局方向为LTR时表示截图区域矩形右下角的x轴坐标，布局方向为RTL时表示截图区域矩形左下角的x轴坐标。单位：px取值范围：[0, 组件宽度]
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-LocalizedSnapshotRegion-end: double--><!--Device-LocalizedSnapshotRegion-end: double-End-->
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
 
 ```TypeScript
-start: double
+start: number
 ```
 
-布局方向为LTR时表示截图区域矩形左上角的x轴坐标，布局方向为RTL时表示截图区域矩形右上角的x轴坐标。 单位：px 取值范围：[0, 组件宽度]
+布局方向为LTR时表示截图区域矩形左上角的x轴坐标，布局方向为RTL时表示截图区域矩形右上角的x轴坐标。单位：px取值范围：[0, 组件宽度]
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-LocalizedSnapshotRegion-start: double--><!--Device-LocalizedSnapshotRegion-start: double-End-->
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
 
 ```TypeScript
-top: double
+top: number
 ```
 
-布局方向为LTR时表示截图区域矩形左上角的y轴坐标，布局方向为RTL时表示截图区域矩形右上角的y轴坐标。 单位：px 取值范围：[0, 组件高度]
+布局方向为LTR时表示截图区域矩形左上角的y轴坐标，布局方向为RTL时表示截图区域矩形右上角的y轴坐标。单位：px取值范围：[0, 组件高度]
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-LocalizedSnapshotRegion-top: double--><!--Device-LocalizedSnapshotRegion-top: double-End-->
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**示例**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct SnapshotExample {
+  @State pixmap: image.PixelMap | undefined = undefined
+
+  build() {
+    Column() {
+      Row() {
+        Column() {
+          TextClock()
+          Button('Button ABCDE').type(ButtonType.Normal)
+          Row() {
+            Checkbox()
+            Text('√')
+            Text(' | ')
+            Checkbox()
+            Text('×')
+          }.align(Alignment.Start)
+
+          TextInput()
+        }
+        .align(Alignment.Start)
+        .id('component1')
+        .width('600px')
+        .height('600px')
+        .borderRadius(6)
+        .borderWidth(2)
+        .borderColor(Color.Green)
+
+      }
+
+      Button('get capture')
+        .onClick(() => {
+          try {
+            let pixelmap = this.getUIContext().getComponentSnapshot().getSync('component1',
+              {
+                scale: 2,
+                waitUntilRenderFinished: true,
+                region: {
+                  start: 20,
+                  top: 20,
+                  end: 200,
+                  bottom: 240
+                }
+              })
+            this.pixmap = pixelmap;
+          } catch (error) {
+            console.error(`getSync error message:${error.message}`);
+          }
+        }).margin(10)
+      Image(this.pixmap).border({ color: Color.Black, width: 2 }).width('600px')
+    }.width('100%').align(Alignment.Center)
+  }
+}
+```

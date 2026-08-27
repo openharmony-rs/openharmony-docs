@@ -4,18 +4,11 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface OnClientAuthenticationEvent--><!--Device-unnamed-declare interface OnClientAuthenticationEvent-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## handler
@@ -31,8 +24,6 @@ handler : ClientAuthenticationHandler
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OnClientAuthenticationEvent-handler : ClientAuthenticationHandler--><!--Device-OnClientAuthenticationEvent-handler : ClientAuthenticationHandler-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -50,8 +41,6 @@ host : string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnClientAuthenticationEvent-host : string--><!--Device-OnClientAuthenticationEvent-host : string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## issuers
@@ -67,8 +56,6 @@ issuers : Array<string>
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OnClientAuthenticationEvent-issuers : Array<string>--><!--Device-OnClientAuthenticationEvent-issuers : Array<string>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -86,8 +73,6 @@ keyTypes : Array<string>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnClientAuthenticationEvent-keyTypes : Array<string>--><!--Device-OnClientAuthenticationEvent-keyTypes : Array<string>-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## port
@@ -104,7 +89,4 @@ port : number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnClientAuthenticationEvent-port : number--><!--Device-OnClientAuthenticationEvent-port : number-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

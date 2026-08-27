@@ -8,8 +8,6 @@ AbilityDelegatorRegistry模块提供用于存储已注册的[AbilityDelegator](.
 
 **替代接口：** [abilityDelegatorRegistry](arkts-app-ability-abilitydelegatorregistry.md)
 
-<!--Device-unnamed-declare namespace abilityDelegatorRegistry--><!--Device-unnamed-declare namespace abilityDelegatorRegistry-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## 导入模块
@@ -31,4 +29,3 @@ AbilityDelegatorRegistry模块提供用于存储已注册的[AbilityDelegator](.
 | 名称 | 说明 |
 | --- | --- |
 | [AbilityLifecycleState](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-depr-e.md) | Ability生命周期状态。 |
-

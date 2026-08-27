@@ -19,8 +19,6 @@ function attachId(uri: string, id: number): string
 
 **替代接口：** [attachId](arkts-ability-datauriutils-attachid-f.md)
 
-<!--Device-dataUriUtils-function attachId(uri: string, id: number): string--><!--Device-dataUriUtils-function attachId(uri: string, id: number): string-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -47,4 +45,3 @@ let uri = dataUriUtils.attachId(
 	id,
 );
 ```
-

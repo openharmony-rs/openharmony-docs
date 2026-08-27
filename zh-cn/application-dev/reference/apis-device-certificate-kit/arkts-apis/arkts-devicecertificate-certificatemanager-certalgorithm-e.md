@@ -2,9 +2,7 @@
 
 表示证书的算法类型。
 
-**起始版本：** 23
-
-<!--Device-certificateManager-export enum CertAlgorithm--><!--Device-certificateManager-export enum CertAlgorithm-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -16,9 +14,7 @@ INTERNATIONAL = 1
 
 表示国际密码算法，如RSA、NIST ECC等。
 
-**起始版本：** 23
-
-<!--Device-CertAlgorithm-INTERNATIONAL = 1--><!--Device-CertAlgorithm-INTERNATIONAL = 1-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -30,9 +26,6 @@ SM = 2
 
 表示商用密码算法，如SM2、SM4等。 海外设备不支持使用该算法的证书。
 
-**起始版本：** 23
-
-<!--Device-CertAlgorithm-SM = 2--><!--Device-CertAlgorithm-SM = 2-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Security.CertificateManager
-

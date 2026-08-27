@@ -4,8 +4,6 @@
 
 **起始版本：** 22
 
-<!--Device-unnamed-declare enum ResponseRegionSupportedTool--><!--Device-unnamed-declare enum ResponseRegionSupportedTool-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ALL
@@ -21,8 +19,6 @@ ALL = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ResponseRegionSupportedTool-ALL = 0--><!--Device-ResponseRegionSupportedTool-ALL = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ FINGER = 1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ResponseRegionSupportedTool-FINGER = 1--><!--Device-ResponseRegionSupportedTool-FINGER = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PEN
@@ -57,8 +51,6 @@ PEN = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ResponseRegionSupportedTool-PEN = 2--><!--Device-ResponseRegionSupportedTool-PEN = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,7 +68,4 @@ MOUSE = 3
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ResponseRegionSupportedTool-MOUSE = 3--><!--Device-ResponseRegionSupportedTool-MOUSE = 3-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -14,11 +14,9 @@ function getAutoStartupStatusForSelf(): Promise<boolean>
 
 获取当前应用的开机自启动状态。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet和Wearable设备中可正常调用，在其他设备中返回801错误码。
 
-**起始版本：** 23
+**起始版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-autoStartupManager-function getAutoStartupStatusForSelf(): Promise<boolean>--><!--Device-autoStartupManager-function getAutoStartupStatusForSelf(): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -26,7 +24,7 @@ function getAutoStartupStatusForSelf(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前应用已被用户设置为开机自启动，false表示当前应用未被用户设置为开机自启动。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示当前应用已被用户设置为开机自启动，false表示当前应用未被用户设置为开机自启动。 |
 
 **错误码：**
 
@@ -58,4 +56,3 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-

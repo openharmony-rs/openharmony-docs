@@ -1,10 +1,8 @@
 # AudioVolumeType
 
-表示音频音量类型的枚举。
+枚举，音频流类型。
 
-**起始版本：** 23
-
-<!--Device-audio-enum AudioVolumeType--><!--Device-audio-enum AudioVolumeType-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -16,9 +14,7 @@ VOICE_CALL = 0
 
 语音电话。
 
-**起始版本：** 23
-
-<!--Device-AudioVolumeType-VOICE_CALL = 0--><!--Device-AudioVolumeType-VOICE_CALL = 0-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -30,9 +26,7 @@ RINGTONE = 2
 
 铃声。
 
-**起始版本：** 23
-
-<!--Device-AudioVolumeType-RINGTONE = 2--><!--Device-AudioVolumeType-RINGTONE = 2-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -44,9 +38,7 @@ MEDIA = 3
 
 媒体。
 
-**起始版本：** 23
-
-<!--Device-AudioVolumeType-MEDIA = 3--><!--Device-AudioVolumeType-MEDIA = 3-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -58,9 +50,7 @@ ALARM = 4
 
 闹钟。
 
-**起始版本：** 23
-
-<!--Device-AudioVolumeType-ALARM = 4--><!--Device-AudioVolumeType-ALARM = 4-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -72,9 +62,7 @@ ACCESSIBILITY = 5
 
 无障碍。
 
-**起始版本：** 23
-
-<!--Device-AudioVolumeType-ACCESSIBILITY = 5--><!--Device-AudioVolumeType-ACCESSIBILITY = 5-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -86,9 +74,6 @@ VOICE_ASSISTANT = 9
 
 语音助手。
 
-**起始版本：** 23
-
-<!--Device-AudioVolumeType-VOICE_ASSISTANT = 9--><!--Device-AudioVolumeType-VOICE_ASSISTANT = 9-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
-

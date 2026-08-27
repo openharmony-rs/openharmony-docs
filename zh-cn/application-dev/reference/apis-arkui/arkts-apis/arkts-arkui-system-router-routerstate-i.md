@@ -1,4 +1,4 @@
-# RouterState(页面路由)
+# RouterState
 
 定义路由器的状态。
 
@@ -7,8 +7,6 @@
 **废弃版本：** 8
 
 **替代接口：** RouterState
-
-<!--Device-unnamed-export interface RouterState--><!--Device-unnamed-export interface RouterState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,8 +32,6 @@ index: number
 
 **替代接口：** index
 
-<!--Device-RouterState-index: number--><!--Device-RouterState-index: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## name
@@ -53,8 +49,6 @@ name: string
 **废弃版本：** 8
 
 **替代接口：** name
-
-<!--Device-RouterState-name: string--><!--Device-RouterState-name: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,7 +68,4 @@ path: string
 
 **替代接口：** path
 
-<!--Device-RouterState-path: string--><!--Device-RouterState-path: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

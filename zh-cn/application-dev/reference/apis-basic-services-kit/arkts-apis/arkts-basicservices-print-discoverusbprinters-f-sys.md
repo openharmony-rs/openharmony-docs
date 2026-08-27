@@ -14,11 +14,9 @@ function discoverUsbPrinters(): Promise<Array<PrinterInformation>>
 
 发现usb打印机，使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
-
-<!--Device-print-function discoverUsbPrinters(): Promise<Array<PrinterInformation>>--><!--Device-print-function discoverUsbPrinters(): Promise<Array<PrinterInformation>>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -41,12 +39,11 @@ function discoverUsbPrinters(): Promise<Array<PrinterInformation>>
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 print.discoverUsbPrinters().then((printers : print.PrinterInformation[]) => {
     console.info('discoverUsbPrinters data : ' + JSON.stringify(printers));
 }).catch((error: BusinessError) => {
-    console.error('discoverUsbPrinters error : ' + JSON.stringify(error));
-})
+    console.error(`Failed to discover USB printers. Code: ${error.code}, message: ${error.message}`);
+});
 ```
-

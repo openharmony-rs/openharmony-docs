@@ -14,11 +14,9 @@ function getRingtoneInfoByBundle(bundle: BundleOption): Promise<RingtoneInfo>
 
 获取应用自定义铃声信息。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 21
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
-
-<!--Device-notificationManager-function getRingtoneInfoByBundle(bundle: BundleOption): Promise<RingtoneInfo>--><!--Device-notificationManager-function getRingtoneInfoByBundle(bundle: BundleOption): Promise<RingtoneInfo>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -40,16 +38,14 @@ function getRingtoneInfoByBundle(bundle: BundleOption): Promise<RingtoneInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1600024](../errorcode-notification.md#1600024-未配置自定义铃声) | The specified bundle has no custom ringtone information. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
+| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600022](../errorcode-notification.md#1600022-无效的包信息) | The specified bundle is invalid. |
+| [1600024](../errorcode-notification.md#1600024-未配置自定义铃声) | The specified bundle has no custom ringtone information. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -76,20 +72,3 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundle: notificationManager.BundleOption = {
-    bundle: 'bundleName',
-};
-notificationManager.getRingtoneInfoByBundle(bundle).then((ringtoneInfo: notificationManager.RingtoneInfo) => {
-    console.info(`getRingtoneInfoByBundle success: ${JSON.stringify(ringtoneInfo)}`);
-}).catch((err: Error) => {
-    let error: BusinessError = err as BusinessError;
-    console.error(`getRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
-});
-```
-

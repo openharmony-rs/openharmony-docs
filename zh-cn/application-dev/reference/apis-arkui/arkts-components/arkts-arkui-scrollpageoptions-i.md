@@ -4,8 +4,6 @@
 
 **起始版本：** 14
 
-<!--Device-unnamed-declare interface ScrollPageOptions--><!--Device-unnamed-declare interface ScrollPageOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,8 +29,6 @@ animation?: boolean
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ScrollPageOptions-animation?: boolean--><!--Device-ScrollPageOptions-animation?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## next
@@ -51,7 +47,4 @@ next: boolean
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ScrollPageOptions-next: boolean--><!--Device-ScrollPageOptions-next: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

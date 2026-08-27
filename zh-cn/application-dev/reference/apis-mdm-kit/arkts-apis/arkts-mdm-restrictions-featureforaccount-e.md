@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-restrictions-enum FeatureForAccount--><!--Device-restrictions-enum FeatureForAccount-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## MULTI_WINDOW
@@ -19,8 +17,6 @@ MULTI_WINDOW = 0
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForAccount-MULTI_WINDOW = 0--><!--Device-FeatureForAccount-MULTI_WINDOW = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,8 +32,6 @@ DISTRIBUTED_TRANSMISSION = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForAccount-DISTRIBUTED_TRANSMISSION = 1--><!--Device-FeatureForAccount-DISTRIBUTED_TRANSMISSION = 1-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## SUPER_HUB
@@ -52,8 +46,6 @@ SUPER_HUB = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForAccount-SUPER_HUB = 2--><!--Device-FeatureForAccount-SUPER_HUB = 2-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## FINGERPRINT
@@ -62,13 +54,14 @@ SUPER_HUB = 2
 FINGERPRINT = 3
 ```
 
-设备指纹认证能力，当前仅支持PC/2in1设备使用。使用时有以下规则： 1. 禁用设备指纹认证能力（[FeatureForDevice.FINGERPRINT](arkts-mdm-restrictions-featurefordevice-e.md)）后，再禁用某用户的设备指纹认证能力，会报策略冲突。 2. 禁用/启用指定用户的设备指纹认证能力后，再禁用设备指纹认证能力（[FeatureForDevice.FINGERPRINT](arkts-mdm-restrictions-featurefordevice-e.md)）时，后者会覆盖前者的策略。 此后再启用设备指纹认证能力（[FeatureForDevice.FINGERPRINT](arkts-mdm-restrictions-featurefordevice-e.md)），则所有用户都允许使用设备指纹认证能力。
+设备指纹认证能力，当前仅支持PC/2in1设备使用。使用时有以下规则：
+1. 禁用设备指纹认证能力（[FeatureForDevice.FINGERPRINT](arkts-mdm-restrictions-featurefordevice-e.md)）后，再禁用某用户的设备指纹认证能力，会报策略冲突。
+2. 禁用/启用指定用户的设备指纹认证能力后，再禁用设备指纹认证能力（[FeatureForDevice.FINGERPRINT](arkts-mdm-restrictions-featurefordevice-e.md)）时，后者会覆盖前者的策略。
+此后再启用设备指纹认证能力（[FeatureForDevice.FINGERPRINT](arkts-mdm-restrictions-featurefordevice-e.md)），则所有用户都允许使用设备指纹认证能力。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForAccount-FINGERPRINT = 3--><!--Device-FeatureForAccount-FINGERPRINT = 3-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -84,8 +77,6 @@ PRINT = 4
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForAccount-PRINT = 4--><!--Device-FeatureForAccount-PRINT = 4-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## MTP_CLIENT
@@ -100,8 +91,6 @@ MTP客户端能力（仅包含写入），当前仅支持PC/2in1设备使用。M
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForAccount-MTP_CLIENT = 5--><!--Device-FeatureForAccount-MTP_CLIENT = 5-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## USB_STORAGE_DEVICE_WRITE
@@ -110,13 +99,11 @@ MTP客户端能力（仅包含写入），当前仅支持PC/2in1设备使用。M
 USB_STORAGE_DEVICE_WRITE = 6
 ```
 
-USB存储设备写入能力，当前仅支持PC/2in1企业设备使用。 以下三种情况再禁用某用户USB存储设备写入能力，会报策略冲突。 1）已禁用设备USB能力（[FeatureForDevice.USB](arkts-mdm-restrictions-featurefordevice-e.md)）。 2）通过 [setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md)接口 设置了USB存储设备访问策略为只读/禁用。 3）通过[addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md)接口添加了存储类型的USB设 备禁用。
+USB存储设备写入能力，当前仅支持PC/2in1企业设备使用。以下三种情况再禁用某用户USB存储设备写入能力，会报策略冲突。1）已禁用设备USB能力（[FeatureForDevice.USB](arkts-mdm-restrictions-featurefordevice-e.md)）。2）通过 [setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md)接口 设置了USB存储设备访问策略为只读/禁用。3）通过[addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md)接口添加了存储类型的USB设 备禁用。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForAccount-USB_STORAGE_DEVICE_WRITE = 6--><!--Device-FeatureForAccount-USB_STORAGE_DEVICE_WRITE = 6-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -132,8 +119,6 @@ DISK_RECOVERY_KEY = 7
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForAccount-DISK_RECOVERY_KEY = 7--><!--Device-FeatureForAccount-DISK_RECOVERY_KEY = 7-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## SUDO
@@ -147,8 +132,6 @@ superuser do，表示以超级用户执行，当前仅支持PC/2in1设备使用�
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForAccount-SUDO = 8--><!--Device-FeatureForAccount-SUDO = 8-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -164,8 +147,6 @@ DISTRIBUTED_TRANSMISSION_OUTGOING = 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForAccount-DISTRIBUTED_TRANSMISSION_OUTGOING = 9--><!--Device-FeatureForAccount-DISTRIBUTED_TRANSMISSION_OUTGOING = 9-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## OPEN_FILE_BOOST
@@ -180,7 +161,4 @@ OPEN_FILE_BOOST = 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForAccount-OPEN_FILE_BOOST = 10--><!--Device-FeatureForAccount-OPEN_FILE_BOOST = 10-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

@@ -2,9 +2,7 @@
 
 启动和更新闪控球的配置参数。
 
-**起始版本：** 23
-
-<!--Device-floatingBall-interface FloatingBallParams--><!--Device-floatingBall-interface FloatingBallParams-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -24,9 +22,7 @@ backgroundColor?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-FloatingBallParams-backgroundColor?: string--><!--Device-FloatingBallParams-backgroundColor?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -40,9 +36,7 @@ content?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-FloatingBallParams-content?: string--><!--Device-FloatingBallParams-content?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -56,13 +50,14 @@ contentColor?: string
 
 **类型：** string
 
-**默认值：** Set different default values according to the 'backgroundColor'. - If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#99FFFFFF', otherwise is '#99000000' - If 'backgroundColor' is not provided, default value is $r('sys.color.font_secondary')
+**默认值：** Set different default values according to the 'backgroundColor'.
+- If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#99FFFFFF',
+otherwise is '#99000000'
+- If 'backgroundColor' is not provided, default value is $r('sys.color.font_secondary')
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FloatingBallParams-contentColor?: string--><!--Device-FloatingBallParams-contentColor?: string-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -76,9 +71,7 @@ icon?: image.PixelMap
 
 **类型：** image.PixelMap
 
-**起始版本：** 23
-
-<!--Device-FloatingBallParams-icon?: image.PixelMap--><!--Device-FloatingBallParams-icon?: image.PixelMap-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -92,9 +85,7 @@ template: FloatingBallTemplate
 
 **类型：** [FloatingBallTemplate](arkts-arkui-floatingball-floatingballtemplate-e.md)
 
-**起始版本：** 23
-
-<!--Device-FloatingBallParams-template: FloatingBallTemplate--><!--Device-FloatingBallParams-template: FloatingBallTemplate-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -114,8 +105,6 @@ textUpdateAnimationType?: FloatingBallTextUpdateAnimationType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatingBallParams-textUpdateAnimationType?: FloatingBallTextUpdateAnimationType--><!--Device-FloatingBallParams-textUpdateAnimationType?: FloatingBallTextUpdateAnimationType-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## title
@@ -128,9 +117,7 @@ title: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-FloatingBallParams-title: string--><!--Device-FloatingBallParams-title: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -144,13 +131,13 @@ titleColor?: string
 
 **类型：** string
 
-**默认值：** Set different default values according to the 'backgroundColor'. - If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#E5FFFFFF', otherwise is '#E5000000'. - If 'backgroundColor' is not provided, default value is $r('sys.color.font_primary').
+**默认值：** Set different default values according to the 'backgroundColor'.
+- If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#E5FFFFFF',
+otherwise is '#E5000000'.
+- If 'backgroundColor' is not provided, default value is $r('sys.color.font_primary').
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatingBallParams-titleColor?: string--><!--Device-FloatingBallParams-titleColor?: string-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
-

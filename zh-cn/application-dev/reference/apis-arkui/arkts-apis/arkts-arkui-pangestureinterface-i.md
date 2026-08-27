@@ -6,8 +6,6 @@
 
 **起始版本：** 7
 
-<!--Device-unnamed-interface PanGestureInterface--><!--Device-unnamed-interface PanGestureInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -15,7 +13,7 @@
 ```TypeScript
 ```
 
-## constructor
+## [[Call]]
 
 ```TypeScript
 (value?: { fingers?: number; direction?: PanDirection; distance?: number } | PanGestureOptions): PanGestureInterface
@@ -26,8 +24,6 @@
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PanGestureInterface-(value?: { fingers?: number; direction?: PanDirection; distance?: number } | PanGestureOptions): PanGestureInterface--><!--Device-PanGestureInterface-(value?: { fingers?: number; direction?: PanDirection; distance?: number } | PanGestureOptions): PanGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,7 +39,7 @@
 | --- | --- |
 | [PanGestureInterface](arkts-arkui-pangestureinterface-i.md) |  |
 
-## constructor
+## [[Call]]
 
 ```TypeScript
 (options?: PanGestureHandlerOptions): PanGestureInterface
@@ -56,8 +52,6 @@
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PanGestureInterface-(options?: PanGestureHandlerOptions): PanGestureInterface--><!--Device-PanGestureInterface-(options?: PanGestureHandlerOptions): PanGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,15 +79,13 @@ onActionCancel(event: () => void): PanGestureInterface
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PanGestureInterface-onActionCancel(event: () => void): PanGestureInterface--><!--Device-PanGestureInterface-onActionCancel(event: () => void): PanGestureInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () =&gt; void | 是 | 滑动手势取消回调。 |
+| event | () = & gt; void | 是 | 滑动手势取消回调。 |
 
 **返回值：**
 
@@ -114,8 +106,6 @@ onActionCancel(event: Callback<GestureEvent>): PanGestureInterface
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PanGestureInterface-onActionCancel(event: Callback<GestureEvent>): PanGestureInterface--><!--Device-PanGestureInterface-onActionCancel(event: Callback<GestureEvent>): PanGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,15 +133,13 @@ onActionEnd(event: (event: GestureEvent) => void): PanGestureInterface
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PanGestureInterface-onActionEnd(event: (event: GestureEvent) => void): PanGestureInterface--><!--Device-PanGestureInterface-onActionEnd(event: (event: GestureEvent) => void): PanGestureInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: GestureEvent) =&gt; void | 是 | 滑动手势结束回调。 |
+| event | (event: GestureEvent) = & gt; void | 是 | 滑动手势结束回调。 |
 
 **返回值：**
 
@@ -171,15 +159,13 @@ onActionStart(event: (event: GestureEvent) => void): PanGestureInterface
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PanGestureInterface-onActionStart(event: (event: GestureEvent) => void): PanGestureInterface--><!--Device-PanGestureInterface-onActionStart(event: (event: GestureEvent) => void): PanGestureInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: GestureEvent) =&gt; void | 是 | 滑动手势识别成功回调。 |
+| event | (event: GestureEvent) = & gt; void | 是 | 滑动手势识别成功回调。 |
 
 **返回值：**
 
@@ -199,19 +185,16 @@ onActionUpdate(event: (event: GestureEvent) => void): PanGestureInterface
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PanGestureInterface-onActionUpdate(event: (event: GestureEvent) => void): PanGestureInterface--><!--Device-PanGestureInterface-onActionUpdate(event: (event: GestureEvent) => void): PanGestureInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: GestureEvent) =&gt; void | 是 | 滑动手势更新回调。 |
+| event | (event: GestureEvent) = & gt; void | 是 | 滑动手势更新回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | [PanGestureInterface](arkts-arkui-pangestureinterface-i.md) |  |
-

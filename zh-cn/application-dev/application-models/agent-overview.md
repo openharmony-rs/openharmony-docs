@@ -9,7 +9,7 @@
 
 ## 场景介绍
 
-随着智能化的深入发展，越来越多的应用需要具备智能交互和跨应用协作的能力。传统应用之间的交互通常需要预先定义紧耦合的接口，开发成本高、扩展性差。从API version 24开始，鸿蒙端侧智能体框架（端侧A2A）为智能体（Agent）提供了一种标准化的通信与交互机制，该框架是HMAF（Harmony Agent Framework）框架在端侧能力的延伸，支持统一A2A协议规范和端云互调。
+随着智能化的深入发展，越来越多的应用需要具备智能交互和跨应用协作的能力。传统应用之间的交互通常需要预先定义紧耦合的接口，开发成本高、扩展性差。从API version 24开始，端侧智能体框架（端侧A2A）为智能体（Agent）提供了一种标准化的通信与交互机制，该框架是HMAF（Harmony Agent Framework）框架在端侧能力的延伸，支持统一A2A协议规范和端云互调。
 
 以“旅行规划”复合任务场景为例，各组件协作流程如下：
 
@@ -34,19 +34,19 @@
 
 ## 运行机制
 
-端侧智能体管理框架采用客户端-服务端架构，基于A2A协议通过Agent管理服务进行通信与协作，整体运行机制如下：
+端侧智能体框架采用客户端-服务端架构，基于A2A协议通过Agent管理服务进行通信与协作，整体运行机制如下：
 
-- **能力注册**：开发者在[agent_config.json](./agent-extension-configuration.md)中配置[AgentCard/apis-ability-kit/js-apis-inner-application-AgentCard.md)，描述智能体的名称、描述、技能列表、输入输出模式等信息。Agent管理服务负责管理这些注册信息。
+- **能力注册**：开发者在agent_config.json中配置AgentCard，描述智能体的名称、描述、技能列表、输入输出模式等信息。Agent管理服务负责管理这些注册信息。
 
-- **连接建立**：系统应用（Agent客户端）<!--Del-->通过Agent管理服务的[connectAgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)方法，<!--DelEnd-->连接目标智能体（Agent服务端）的[AgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)组件，建立通信通道。
+- **连接建立**：系统应用（Agent客户端）<!--Del-->通过Agent管理服务的connectAgentExtensionAbility()方法，<!--DelEnd-->连接目标智能体（Agent服务端）的AgentExtensionAbility组件，建立通信通道。
 
-- **A2A通信**：连接建立后，客户端和服务端通过标准化的接口进行双向数据通信。客户端<!--Del-->通过[AgentProxy/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)<!--DelEnd-->发送请求，服务端在[onData()/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md#ondata)回调中接收并处理数据，然后通过[AgentHostProxy/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)的[sendData()/apis-ability-kit/js-apis-inner-application-agentHostProxy.md#senddata)方法将数据发送给客户端。
+- **A2A通信**：连接建立后，客户端和服务端通过标准化的接口进行双向数据通信。客户端<!--Del-->通过AgentProxy<!--DelEnd-->发送请求，服务端在onData()回调中接收并处理数据，然后通过AgentHostProxy的sendData()方法将数据发送给客户端。
 
-- **安全认证**（可选）：客户端和服务端支持双向安全认证，确保通信双方身份可信。客户端<!--Del-->通过[authorize()/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md#authorize)<!--DelEnd-->发起认证，服务端在[onAuth()/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md#onauth)回调中处理认证请求，然后通过[AgentHostProxy/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)的[authorize()/apis-ability-kit/js-apis-inner-application-agentHostProxy.md#authorize)方法向客户端回复认证。
+- **安全认证**（可选）：客户端和服务端支持双向安全认证，确保通信双方身份可信。客户端<!--Del-->通过authorize()<!--DelEnd-->发起认证，服务端在onAuth()回调中处理认证请求，然后通过AgentHostProxy的authorize()方法向客户端回复认证。
 
-- **结果渲染**（可选）：服务端可以通过[AgentUIExtensionAbility/apis-ability-kit/js-apis-agent-agentUIExtensionAbility.md)在客户端应用中展示智能体的UI界面，实现富交互体验。
+- **结果渲染**（可选）：服务端可以通过AgentUIExtensionAbility在客户端应用中展示智能体的UI界面，实现富交互体验。
 
-- **断开连接**：任务完成后，客户端<!--Del-->调用[disconnectAgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerdisconnectagentextensionability)<!--DelEnd-->断开与服务端的连接。
+- **断开连接**：任务完成后，客户端<!--Del-->调用disconnectAgentExtensionAbility()<!--DelEnd-->断开与服务端的连接。
 
 **图1** 智能体架构示意图
 

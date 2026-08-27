@@ -4,11 +4,6 @@
 
 ```TypeScript
 import { inputMethod } from '@kit.IMEKit';
-import { inputMethodEngine } from '@kit.IMEKit';
-import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
-import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
-import { InputMethodExtraConfig } from '@kit.IMEKit';
-import { inputMethodSystemPanelManager } from '@kit.IMEKit';
 ```
 
 ## setSimpleKeyboardEnabled
@@ -19,9 +14,7 @@ function setSimpleKeyboardEnabled(enable: boolean): void
 
 编辑框应用设置简单键盘标志。
 
-**起始版本：** 23
-
-<!--Device-inputMethod-function setSimpleKeyboardEnabled(enable: boolean): void--><!--Device-inputMethod-function setSimpleKeyboardEnabled(enable: boolean): void-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -29,7 +22,7 @@ function setSimpleKeyboardEnabled(enable: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | 简单键盘是否使能标志，true标识简单键盘使能，false标识简单键盘去使能。<br/> 原生编辑框组件在下一次点击获焦时生效；自绘控件在下一次调用 [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) 绑定输入法时生效。 |
+| enable | boolean | 是 | 简单键盘是否使能标志，true标识简单键盘使能，false标识简单键盘去使能。原生编辑框组件在下一次点击获焦时生效；自绘控件在下一次调用 [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) 绑定输入法时生效。 |
 
 **示例**
 
@@ -37,4 +30,3 @@ function setSimpleKeyboardEnabled(enable: boolean): void
 let enable: boolean = false;
   inputMethod.setSimpleKeyboardEnabled(enable);
 ```
-

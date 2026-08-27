@@ -4,8 +4,6 @@ Socket代理信息。
 
 **起始版本：** 18
 
-<!--Device-socket-export interface ProxyOptions--><!--Device-socket-export interface ProxyOptions-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## 导入模块
@@ -26,8 +24,6 @@ address: NetAddress
 
 **起始版本：** 18
 
-<!--Device-ProxyOptions-address: NetAddress--><!--Device-ProxyOptions-address: NetAddress-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## password
@@ -41,8 +37,6 @@ password?: string
 **类型：** string
 
 **起始版本：** 18
-
-<!--Device-ProxyOptions-password?: string--><!--Device-ProxyOptions-password?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -58,8 +52,6 @@ type: ProxyTypes
 
 **起始版本：** 18
 
-<!--Device-ProxyOptions-type: ProxyTypes--><!--Device-ProxyOptions-type: ProxyTypes-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## username
@@ -74,7 +66,4 @@ username?: string
 
 **起始版本：** 18
 
-<!--Device-ProxyOptions-username?: string--><!--Device-ProxyOptions-username?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
-

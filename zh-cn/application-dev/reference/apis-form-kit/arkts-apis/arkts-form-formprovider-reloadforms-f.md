@@ -9,18 +9,16 @@ import { formProvider } from '@kit.FormKit';
 ## reloadForms
 
 ```TypeScript
-function reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, formName: string): Promise<int>
+function reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, formName: string): Promise<number>
 ```
 
 对于当前应用中moduleName、abilityName、formName相同的卡片，每次加桌会分配不同的卡片ID。卡片提供方可通过本接口批量更新这些卡片。与reloadAllForms相比，本接口可精确指定更新特定配置的卡片， 适用于仅需更新特定卡片场景；reloadAllForms更新当前应用所有已加桌卡片，适用于全局刷新场景。本接口在应用主进程中调用，通知FormExtension进程进行批量更新，仅支持在 [UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md)中使用，使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-formProvider-function reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, formName: string): Promise<int>--><!--Device-formProvider-function reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, formName: string): Promise<int>-End-->
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -37,7 +35,7 @@ function reloadForms(context: UIAbilityContext, moduleName: string, abilityName:
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象。返回请求更新卡片的数量。 |
+| Promise & lt;number & gt; | Promise对象。返回请求更新卡片的数量。 |
 
 **错误码：**
 
@@ -46,8 +44,6 @@ function reloadForms(context: UIAbilityContext, moduleName: string, abilityName:
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';
@@ -70,30 +66,3 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-
-import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { formProvider } from '@kit.FormKit';
-
-try {
-  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-  let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  // 请开发者替换为实际请求更新的卡片信息
-  let moduleName: string = 'entry';
-  let abilityName: string = 'EntryFormAbility';
-  let formName: string = 'formName';
-  formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: int) => {
-    console.info(`reloadForms success, reload number: ${reloadNum}`);
-  }).catch((error) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
-}
-```
-

@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { systemTime } from '@kit.BasicServicesKit';
-import { systemTimer } from '@kit.BasicServicesKit';
 ```
 
 ## setTime
@@ -23,8 +22,6 @@ function setTime(time: number, callback: AsyncCallback<void>): void
 
 **需要权限：** ohos.permission.SET_TIME
 
-<!--Device-systemTime-function setTime(time: number, callback: AsyncCallback<void>): void--><!--Device-systemTime-function setTime(time: number, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -32,7 +29,7 @@ function setTime(time: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | time | number | 是 | 目标时间戳（ms）。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -78,8 +75,6 @@ function setTime(time: number): Promise<void>
 
 **需要权限：** ohos.permission.SET_TIME
 
-<!--Device-systemTime-function setTime(time: number): Promise<void>--><!--Device-systemTime-function setTime(time: number): Promise<void>-End-->
-
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -92,7 +87,7 @@ function setTime(time: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -118,4 +113,3 @@ try {
   console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
 }
 ```
-

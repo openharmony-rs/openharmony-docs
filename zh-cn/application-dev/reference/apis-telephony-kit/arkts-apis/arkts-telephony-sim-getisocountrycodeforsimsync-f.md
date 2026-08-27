@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { sim } from '@kit.TelephonyKit';
 ```
 
 ## getISOCountryCodeForSimSync
 
 ```TypeScript
-function getISOCountryCodeForSimSync(slotId: int): string
+function getISOCountryCodeForSimSync(slotId: number): string
 ```
 
-Obtains the ISO country code of the SIM card in a specified slot.
+获取指定卡槽SIM卡的ISO国家码。
 
-**起始版本：** 23
-
-<!--Device-sim-function getISOCountryCodeForSimSync(slotId: int): string--><!--Device-sim-function getISOCountryCodeForSimSync(slotId: int): string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -24,13 +21,13 @@ Obtains the ISO country code of the SIM card in a specified slot.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | int | 是 | Indicates the card slot index number, ranging from 0 to the maximum card slots supported by the device. |
+| slotId | number | 是 | 卡槽ID。   - 0：卡槽1。   - 1：卡槽2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Returns the country code defined in ISO 3166-2; returns an empty string if no SIM card is inserted. |
+| string | 返回获取指定卡槽SIM卡的ISO国家码。例如：CN(中国)。 |
 
 **示例**
 
@@ -40,4 +37,3 @@ import { sim } from '@kit.TelephonyKit';
 let countryCode: string = sim.getISOCountryCodeForSimSync(0);
 console.info(`the country ISO is:` + countryCode);
 ```
-

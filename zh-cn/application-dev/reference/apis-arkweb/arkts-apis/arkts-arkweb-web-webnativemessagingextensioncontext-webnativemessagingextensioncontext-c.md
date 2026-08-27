@@ -1,19 +1,20 @@
 # WebNativeMessagingExtensionContext
 
-WebNativeMessagingExtensionContext是Web原生消息扩展（ [WebNativeMessagingExtensionAbility](arkts-arkweb-web-webnativemessagingextensionability-webnativemessagingextensionability-c.md)）的运行上下文，继承自ExtensionContext，为 扩展Ability提供生命周期管理、Ability启动以及原生消息连接控制能力。开发者可在继承WebNativeMessagingExtensionAbility的扩展中通过`this.context`获取该上下文，进而调用 [startAbility](../../apis-na/arkts-apis/arkts-na-web-webnativemessagingextensioncontext-webnativemessagingextensioncontext-c.md#startability)启动其他Ability、调用 [startAbilityForResult](../../apis-na/arkts-apis/arkts-na-web-webnativemessagingextensioncontext-webnativemessagingextensioncontext-c.md#startabilityforresult)启动UIAbility并接收返回结果、调用 [terminateSelf](../../apis-na/arkts-apis/arkts-na-web-webnativemessagingextensioncontext-webnativemessagingextensioncontext-c.md#terminateself)结束当前扩展，或调用 [stopNativeConnection](../../apis-na/arkts-apis/arkts-na-web-webnativemessagingextensioncontext-webnativemessagingextensioncontext-c.md#stopnativeconnection)停止指定的Web原生消息连接。 > **说明:** > > 本模块接口仅可在Stage模型下使用。
+WebNativeMessagingExtensionContext是Web原生消息扩展（ [WebNativeMessagingExtensionAbility](arkts-arkweb-web-webnativemessagingextensionability-webnativemessagingextensionability-c.md)）的运行上下文，继承自ExtensionContext，为 扩展Ability提供生命周期管理、Ability启动以及原生消息连接控制能力。开发者可在继承WebNativeMessagingExtensionAbility的扩展中通过`this.context`获取该上下文，进而调用 [startAbility](#startability)启动其他Ability、调用 [startAbilityForResult](#startabilityforresult)启动UIAbility并接收返回结果、调用 [terminateSelf](#terminateself)结束当前扩展，或调用 [stopNativeConnection](#stopnativeconnection)停止指定的Web原生消息连接。
+
+> **说明:**
+> 
+> 本模块接口仅可在Stage模型下使用。
 
 **继承/实现关系：** WebNativeMessagingExtensionContext extends ExtensionContext
 
 **起始版本：** 21
-
-<!--Device-unnamed-export default class WebNativeMessagingExtensionContext--><!--Device-unnamed-export default class WebNativeMessagingExtensionContext-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## startAbility
@@ -22,13 +23,11 @@ import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 startAbility(want: Want, options?: StartOptions): Promise<void>
 ```
 
-使用Promise异步回调启动Ability。如需获取启动的UIAbility退出时的返回结果，可以使用 [startAbilityForResult](../../apis-na/arkts-apis/arkts-na-web-webnativemessagingextensioncontext-webnativemessagingextensioncontext-c.md#startabilityforresult)。
+使用Promise异步回调启动Ability。如需获取启动的UIAbility退出时的返回结果，可以使用 [startAbilityForResult](#startabilityforresult)。
 
 **起始版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WebNativeMessagingExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>--><!--Device-WebNativeMessagingExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -43,38 +42,36 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [16000055](../../apis-ability-kit/errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
-| [16000080](../../apis-ability-kit/errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported. |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
-| [16000019](../../apis-ability-kit/errorcode-ability.md#16000019-隐式启动未查找到匹配ability) | No matching ability is found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
-| [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
-| [16000005](../../apis-ability-kit/errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
-| [16000071](../../apis-ability-kit/errorcode-ability.md#16000071-不支持应用分身模式) | App clone is not supported. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
+| [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
+| [16000005](../../apis-ability-kit/errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
+| [16000008](../../apis-ability-kit/errorcode-ability.md#16000008-众测应用到期) | The crowdtesting application expires. |
+| [16000009](../../apis-ability-kit/errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
+| [16000010](../../apis-ability-kit/errorcode-ability.md#16000010-不允许带迁移flag) | The call with the continuation and prepare continuation flag is forbidden. |
+| [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000012](../../apis-ability-kit/errorcode-ability.md#16000012-应用被管控) | The application is controlled. |
-| [16000076](../../apis-ability-kit/errorcode-ability.md#16000076-指定的app_instance_key不存在) | The app instance key is invalid. |
 | [16000013](../../apis-ability-kit/errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM. |
+| [16000019](../../apis-ability-kit/errorcode-ability.md#16000019-隐式启动未查找到匹配ability) | No matching ability is found. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
+| [16000055](../../apis-ability-kit/errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
+| [16000071](../../apis-ability-kit/errorcode-ability.md#16000071-不支持应用分身模式) | App clone is not supported. |
+| [16000072](../../apis-ability-kit/errorcode-ability.md#16000072-不支持应用多开) | App clone or multi-instance is not supported. |
+| [16000073](../../apis-ability-kit/errorcode-ability.md#16000073-传入的appcloneindex是一个无效值) | The app clone index is invalid. |
+| [16000076](../../apis-ability-kit/errorcode-ability.md#16000076-指定的app_instance_key不存在) | The app instance key is invalid. |
 | [16000077](../../apis-ability-kit/errorcode-ability.md#16000077-应用的实例数量已达到上限) | The number of app instances reaches the limit. |
 | [16000078](../../apis-ability-kit/errorcode-ability.md#16000078-不支持应用多实例) | The multi-instance is not supported. |
 | [16000079](../../apis-ability-kit/errorcode-ability.md#16000079-不支持指定app_instance_key) | The APP_INSTANCE_KEY cannot be specified. |
-| [16000008](../../apis-ability-kit/errorcode-ability.md#16000008-众测应用到期) | The crowdtesting application expires. |
-| [16000072](../../apis-ability-kit/errorcode-ability.md#16000072-不支持应用多开) | App clone or multi-instance is not supported. |
-| [16000009](../../apis-ability-kit/errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
-| [16000073](../../apis-ability-kit/errorcode-ability.md#16000073-传入的appcloneindex是一个无效值) | The app clone index is invalid. |
-| [16000010](../../apis-ability-kit/errorcode-ability.md#16000010-不允许带迁移flag) | The call with the continuation and prepare continuation flag is forbidden. |
-| [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000080](../../apis-ability-kit/errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
@@ -103,47 +100,21 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { ConnectionInfo } from '@ohos.web.WebNativeMessagingExtensionAbility'
-import WebNativeMessagingExtensionAbility from "@ohos.web.WebNativeMessagingExtensionAbility"
-import Want from '@ohos.app.ability.Want'
-import { BusinessError } from '@ohos.base'
-
-export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
-  onConnectNative(info: ConnectionInfo): void {
-    const abilityWant: Want = {
-    bundleName: 'com.example.mybundle',
-    abilityName: 'MainAbility'
-    };
-    try {
-        const context = this.context; // 获取 WebNativeMessagingExtensionContext 实例
-        context.startAbility(abilityWant);
-        console.info('Ability started successfully');
-    } catch (err) {
-        let code = (err as BusinessError).code;
-        let message = (err as BusinessError).message;
-        console.error(`Failed to start ability. Code: ${code}, Message: ${message}`);
-    }
-  }
-}
-```
-
 ## startAbilityForResult
 
 ```TypeScript
 startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult>
 ```
 
-启动一个UIAbility，使用Promise异步回调接收被拉起的UIAbility退出时的返回结果。 UIAbility被启动后，有如下情况: - 正常情况下可通过调用 [terminateSelfWithResult](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) 接口使之终止并且返回结果给调用方。 - 异常情况下比如销毁UIAbility会返回异常信息给调用方，异常信息中resultCode为-1。 - 只支持拉起自己应用的UIAbility。
+启动一个UIAbility，使用Promise异步回调接收被拉起的UIAbility退出时的返回结果。 UIAbility被启动后，有如下情况:  
+- 正常情况下可通过调用  
+[terminateSelfWithResult](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) 接口使之终止并且返回结果给调用方。  
+- 异常情况下比如销毁UIAbility会返回异常信息给调用方，异常信息中resultCode为-1。  
+- 只支持拉起自己应用的UIAbility。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WebNativeMessagingExtensionContext-startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult>--><!--Device-WebNativeMessagingExtensionContext-startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -164,32 +135,30 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [16000055](../../apis-ability-kit/errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
-| [16000080](../../apis-ability-kit/errorcode-ability.md#16000080-不支持创建新实例) | Instances cannot be created for other applications during inter-application startup. |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
-| [16000019](../../apis-ability-kit/errorcode-ability.md#16000019-隐式启动未查找到匹配ability) | No matching ability is found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
-| [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
-| [16000005](../../apis-ability-kit/errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
-| [16000071](../../apis-ability-kit/errorcode-ability.md#16000071-不支持应用分身模式) | The application does not support appClone mode in multiAppMode. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
+| [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
+| [16000005](../../apis-ability-kit/errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
+| [16000008](../../apis-ability-kit/errorcode-ability.md#16000008-众测应用到期) | The crowdtesting application expires. |
+| [16000009](../../apis-ability-kit/errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
+| [16000010](../../apis-ability-kit/errorcode-ability.md#16000010-不允许带迁移flag) | The call with the continuation and prepare continuation flag is forbidden. |
+| [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000012](../../apis-ability-kit/errorcode-ability.md#16000012-应用被管控) | The application is controlled by the AppGallery and cannot be started. |
-| [16000076](../../apis-ability-kit/errorcode-ability.md#16000076-指定的app_instance_key不存在) | The app instance key is invalid. |
 | [16000013](../../apis-ability-kit/errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by Enterprise Device Manager and cannot be started. |
+| [16000019](../../apis-ability-kit/errorcode-ability.md#16000019-隐式启动未查找到匹配ability) | No matching ability is found. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
+| [16000055](../../apis-ability-kit/errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
+| [16000071](../../apis-ability-kit/errorcode-ability.md#16000071-不支持应用分身模式) | The application does not support appClone mode in multiAppMode. |
+| [16000072](../../apis-ability-kit/errorcode-ability.md#16000072-不支持应用多开) | The application does not support appClone and multi-instance mode in multiAppMode. |
+| [16000073](../../apis-ability-kit/errorcode-ability.md#16000073-传入的appcloneindex是一个无效值) | The app clone index is invalid. |
+| [16000076](../../apis-ability-kit/errorcode-ability.md#16000076-指定的app_instance_key不存在) | The app instance key is invalid. |
 | [16000077](../../apis-ability-kit/errorcode-ability.md#16000077-应用的实例数量已达到上限) | The number of app instances reaches the limit. |
 | [16000078](../../apis-ability-kit/errorcode-ability.md#16000078-不支持应用多实例) | The application does not support multiple instances. |
 | [16000079](../../apis-ability-kit/errorcode-ability.md#16000079-不支持指定app_instance_key) | The APP_INSTANCE_KEY cannot be specified. |
-| [16000008](../../apis-ability-kit/errorcode-ability.md#16000008-众测应用到期) | The crowdtesting application expires. |
-| [16000072](../../apis-ability-kit/errorcode-ability.md#16000072-不支持应用多开) | The application does not support appClone and multi-instance mode in multiAppMode. |
-| [16000009](../../apis-ability-kit/errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
-| [16000073](../../apis-ability-kit/errorcode-ability.md#16000073-传入的appcloneindex是一个无效值) | The app clone index is invalid. |
-| [16000010](../../apis-ability-kit/errorcode-ability.md#16000010-不允许带迁移flag) | The call with the continuation and prepare continuation flag is forbidden. |
-| [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000080](../../apis-ability-kit/errorcode-ability.md#16000080-不支持创建新实例) | Instances cannot be created for other applications during inter-application startup. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
@@ -210,43 +179,12 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
           console.info(`Result data: ${JSON.stringify(result.want)}`);
         }
       }).catch((err: BusinessError) => {
-        console.error(`Failed to start ability. Code: ${(err as BusinessError).code},
-        Message: ${(err as BusinessError).message}`);
+        console.error(`Failed to start ability. Code: ${err.code},
+        Message:${err.message}`);
       });
     } catch (err) {
       console.error(`Failed to start ability. Code: ${(err as BusinessError).code},
       Message: ${(err as BusinessError).message}`);
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import WebNativeMessagingExtensionAbility from '@ohos.web.WebNativeMessagingExtensionAbility'
-import { ConnectionInfo } from '@ohos.web.WebNativeMessagingExtensionAbility';
-import { Want, common } from '@kit.AbilityKit';
-
-export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
-  onConnectNative(info: ConnectionInfo): void {
-    const abilityWant: Want = {
-      bundleName: 'com.example.mybundle', // 请开发者替换为实际的 bundleName
-      abilityName: 'MainAbility' // 请开发者替换为实际的 abilityName
-    };
-    try {
-      const context = this.context; // 获取 WebNativeMessagingExtensionContext 实例
-      context.startAbilityForResult(abilityWant).then((result: common.AbilityResult) => {
-        console.info(`Ability started successfully, result code: ${result.resultCode}`);
-        if (result.want) {
-          console.info(`Result data: ${JSON.stringify(result.want)}`);
-        }
-      }).catch((err: Error) => {
-        console.error(`Failed to start ability. Code: ${err.name}, Message: ${err.message}`);
-      });
-    } catch (err) {
-      console.error(`Failed to start ability. Code: ${(err as Error).name}, Message: ${(err as Error).message}`);
     }
   }
 }
@@ -264,8 +202,6 @@ stopNativeConnection(connectionId: number): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WebNativeMessagingExtensionContext-stopNativeConnection(connectionId: number): Promise<void>--><!--Device-WebNativeMessagingExtensionContext-stopNativeConnection(connectionId: number): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -278,19 +214,17 @@ stopNativeConnection(connectionId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
@@ -304,36 +238,12 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
         context.stopNativeConnection(CONNECTION_ID).then(() => {
           console.info('Native connection stopped successfully');
         }).catch((err: BusinessError) => {
-          console.error(`Failed to stop native connection. Code: ${err.code},
-          Message: ${err.message}`);
+          console.error(`Failed to stop native connection. Code: ${(err as BusinessError).code},
+          Message: ${(err as BusinessError).message}`);
         })
     } catch (err) {
         console.error(`Failed to stop native connection. Code: ${(err as BusinessError).code},
         Message: ${(err as BusinessError).message}`);
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { ConnectionInfo } from '@ohos.web.WebNativeMessagingExtensionAbility'
-import WebNativeMessagingExtensionAbility from "@ohos.web.WebNativeMessagingExtensionAbility"
-import { BusinessError } from '@ohos.base'
-
-export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
-  onConnectNative(info: ConnectionInfo): void {
-    const CONNECTION_ID = 12345; // 实际的连接 ID
-    try {
-        const context = this.context;// 获取 WebNativeMessagingExtensionContext 实例
-        context.stopNativeConnection(CONNECTION_ID);
-        console.info('Native connection stopped successfully');
-    } catch (err) {
-        let code = (err as BusinessError).code;
-        let message = (err as BusinessError).message;
-        console.error(`Failed to stop native connection. Code: ${code}, Message: ${message}`);
     }
   }
 }
@@ -351,27 +261,23 @@ terminateSelf(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WebNativeMessagingExtensionContext-terminateSelf(): Promise<void>--><!--Device-WebNativeMessagingExtensionContext-terminateSelf(): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 | [16000009](../../apis-ability-kit/errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
@@ -394,27 +300,3 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { ConnectionInfo } from '@ohos.web.WebNativeMessagingExtensionAbility'
-import WebNativeMessagingExtensionAbility from "@ohos.web.WebNativeMessagingExtensionAbility"
-import { BusinessError } from '@ohos.base'
-
-export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
-  onConnectNative(info: ConnectionInfo): void {
-    try {
-        const context = this.context; // 获取 WebNativeMessagingExtensionContext 实例
-        context.terminateSelf();
-        console.info('Extension terminated successfully');
-    } catch (err) {
-        let code = (err as BusinessError).code;
-        let message = (err as BusinessError).message;
-        console.error(`Failed to start ability. Code: ${code}, Message: ${message}`);
-    }
-  }
-}
-```
-

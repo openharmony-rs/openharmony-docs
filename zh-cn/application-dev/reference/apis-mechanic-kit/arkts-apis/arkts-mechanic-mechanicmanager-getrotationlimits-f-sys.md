@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## getRotationLimits
 
 ```TypeScript
-function getRotationLimits(mechId: int): RotationLimits
+function getRotationLimits(mechId: number): RotationLimits
 ```
 
 Obtains the maximum rotation angles relative to the reference point for the specified mechanical device.
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-function getRotationLimits(mechId: int): RotationLimits--><!--Device-mechanicManager-function getRotationLimits(mechId: int): RotationLimits-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -26,7 +23,7 @@ Obtains the maximum rotation angles relative to the reference point for the spec
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | int | 是 | 机械设备ID |
+| mechId | number | 是 | 机械设备ID |
 
 **返回值：**
 
@@ -49,4 +46,3 @@ console.info('Query rotation limit information');
 let degreeLimit: mechanicManager.RotationLimits = mechanicManager.getRotationLimits(0);
 console.info(`'Query the rotation limit information successfully, limit information:' ${degreeLimit}`);
 ```
-

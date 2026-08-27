@@ -23,21 +23,21 @@ Crypto Architecture Kit屏蔽了第三方密码学算法库实现差异的算法
 
 加解密算法库为开发者提供了以下相关功能，并提供了对应的算法规格说明和开发指导，请开发者参照开发。
 
-- [密钥生成和转换](crypto-key-generation-conversion-overview.md)
+- 密钥生成和转换
 
-- [加解密](crypto-encryption-decryption-overview.md)
+- 加解密
 
-- [签名验签](crypto-sign-sig-verify-overview.md)
+- 签名验签
 
-- [密钥协商](crypto-key-agreement-overview.md)
+- 密钥协商
 
-- [消息摘要计算](crypto-generate-message-digest-overview.md)
+- 消息摘要计算
 
-- [消息认证码计算](crypto-compute-mac-overview.md)
+- 消息认证码计算
 
-- [安全随机数生成](crypto-generate-random-number.md)
+- 安全随机数生成
 
-- [密钥派生](crypto-key-derivation-overview.md)
+- 密钥派生
 
 ## 基本概念
 
@@ -61,4 +61,4 @@ Crypto Architecture Kit屏蔽了第三方密码学算法库实现差异的算法
 
 加解密算法库框架仅提供密钥的密码学操作，不提供密钥管理功能。因此，应用需自行保管密钥，适用于临时会话密钥等仅在内存中使用的场景，或自行实现密钥安全存储的场景。
 
-如果业务需要由系统提供密钥管理功能（密钥存储等），请使用[Universal Keystore Kit（密钥管理服务）](../UniversalKeystoreKit/huks-overview.md)。
+如果业务需要由系统提供密钥管理功能（密钥存储等），请使用Universal Keystore Kit（密钥管理服务）。

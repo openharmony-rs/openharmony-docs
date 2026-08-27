@@ -13,17 +13,9 @@ MindSpore Lite是一款AI引擎，它提供了面向不同硬件设备AI模型�
 
 本文介绍使用MindSpore Lite推理引擎进行模型推理的通用开发流程。
 
-## 基本概念
-
-在进行开发前，请先了解以下概念。
-
-**张量**：它与数组和矩阵非常相似，是MindSpore Lite网络运算中的基本数据结构。
-
-**Float16推理模式**：  Float16又称半精度，它使用16比特表示一个数。Float16推理模式表示推理的时候用半精度进行推理。 
-
 ## 接口说明
 
-这里给出MindSpore Lite推理的通用开发流程中涉及的一些接口，具体请见下列表格。更多接口及详细内容，请见[MindSpore/apis-mindspore-lite-kit/capi-mindspore.md)。
+这里给出MindSpore Lite推理的通用开发流程中涉及的一些接口，具体请见下列表格。更多接口及详细内容，请见MindSpore。
 
 ### Context 相关接口
 
@@ -71,7 +63,7 @@ MindSpore Lite是一款AI引擎，它提供了面向不同硬件设备AI模型�
 #include <unistd.h>
 #include "mindspore/model.h"
 
-//生成随机的输入
+// 生成随机的输入
 int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
   for (size_t i = 0; i < inputs.handle_num; ++i) {
     float *input_data = (float *)OH_AI_TensorGetMutableData(inputs.handle_list[i]);
@@ -201,7 +193,7 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
    // 获得输入张量
    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
    if (inputs.handle_list == NULL) {
-     printf("OH_AI_ModelGetInputs failed, ret: %d.\n", ret);
+     printf("OH_AI_ModelGetInputs failed.\n");
      OH_AI_ModelDestroy(&model);
      OH_AI_ContextDestroy(&context);
      return ret;
@@ -261,7 +253,7 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
 
 7. 释放模型。
 
-   不再使用MindSpore Lite推理框架时，需要释放已经创建的模型。
+   不再使用MindSpore Lite推理框架时，需要释放对应的资源。model使用了context资源，释放时需先释放model，后释放context。
 
    ```c
    // 释放模型和上下文
@@ -301,7 +293,7 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
    ./demo mobilenetv2.ms
    ```
 
-   得到如下输出:
+   得到如下输出：
 
    ```shell
    # ./demo ./mobilenetv2.ms                                            

@@ -3,9 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
-import { notificationSubscribe } from '@kit.NotificationKit';
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
 ## getDeviceRemindType
@@ -24,8 +21,6 @@ function getDeviceRemindType(callback: AsyncCallback<DeviceRemindType>): void
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function getDeviceRemindType(callback: AsyncCallback<DeviceRemindType>): void--><!--Device-notification-function getDeviceRemindType(callback: AsyncCallback<DeviceRemindType>): void-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -34,7 +29,23 @@ function getDeviceRemindType(callback: AsyncCallback<DeviceRemindType>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;DeviceRemindType&gt; | 是 | 获取通知提醒方式的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DeviceRemindType&gt; | 是 | 获取通知提醒方式的回调函数。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let getDeviceRemindTypeCallback = (err: Base.BusinessError, data: Notification.DeviceRemindType) => {
+  if (err) {
+    console.error("getDeviceRemindType failed " + JSON.stringify(err));
+  } else {
+    console.info("getDeviceRemindType success");
+  }
+};
+
+Notification.getDeviceRemindType(getDeviceRemindTypeCallback);
+```
 
 
 ## getDeviceRemindType
@@ -53,8 +64,6 @@ function getDeviceRemindType(): Promise<DeviceRemindType>
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function getDeviceRemindType(): Promise<DeviceRemindType>--><!--Device-notification-function getDeviceRemindType(): Promise<DeviceRemindType>-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -63,5 +72,16 @@ function getDeviceRemindType(): Promise<DeviceRemindType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DeviceRemindType&gt; | Promise方式返回获取通知提醒方式的结果。 |
+| Promise & lt;DeviceRemindType & gt; | Promise方式返回获取通知提醒方式的结果。 |
 
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) => {
+  console.info("getDeviceRemindType success, data: " + JSON.stringify(data));
+}).catch((err: Base.BusinessError) => {
+  console.error(`getDeviceRemindType failed, code is ${err}`);
+});
+```

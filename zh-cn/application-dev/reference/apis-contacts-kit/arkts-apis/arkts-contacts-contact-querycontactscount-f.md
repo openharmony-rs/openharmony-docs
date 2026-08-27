@@ -9,7 +9,7 @@ import { contact } from '@kit.ContactsKit';
 ## queryContactsCount
 
 ```TypeScript
-function queryContactsCount(context: Context): Promise<int>
+function queryContactsCount(context: Context): Promise<number>
 ```
 
 查询所有联系人的数量。使用Promise异步回调。
@@ -19,8 +19,6 @@ function queryContactsCount(context: Context): Promise<int>
 **需要权限：** ohos.permission.READ_CONTACTS
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-contact-function queryContactsCount(context: Context): Promise<int>--><!--Device-contact-function queryContactsCount(context: Context): Promise<int>-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -34,7 +32,7 @@ function queryContactsCount(context: Context): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象。返回查询到的联系人数量。 |
+| Promise & lt;number & gt; | Promise对象。返回查询到的联系人数量。 |
 
 **错误码：**
 
@@ -58,4 +56,3 @@ promise.then((data) => {
   console.info(`Succeeded in querying ContactsCount. data->${JSON.stringify(data)}`);
 });
 ```
-

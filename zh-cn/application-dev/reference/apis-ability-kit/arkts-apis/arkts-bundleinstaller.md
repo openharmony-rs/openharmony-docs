@@ -1,5 +1,8 @@
 # bundleInstaller
 
+The module provides APIs for you to install, uninstall, and recover bundles on devices.
+
+
 ## 汇总
 
 <!--Del-->
@@ -11,4 +14,3 @@
 | [InstallParam](arkts-ability-bundleinstaller-installparam-depr-i-sys.md) | 安装、恢复或卸载时需要指定的参数。 |
 | [InstallStatus](arkts-ability-bundleinstaller-installstatus-depr-i-sys.md) | 应用程序安装卸载的结果。 |
 <!--DelEnd-->
-

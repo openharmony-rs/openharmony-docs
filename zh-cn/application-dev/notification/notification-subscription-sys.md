@@ -9,11 +9,11 @@
 应用需要接收通知，必须先发起订阅，通知子系统提供两种接口：订阅所有应用发布的通知和订阅某些应用发布的通知。
 
 
-系统提供[NotificationSubscriber/apis-notification-kit/js-apis-inner-notification-notificationSubscriber-sys.md)对象，用于提供订阅成功、通知接收、通知取消、订阅取消等回调接口，将变化信息回调给订阅者。
+系统提供NotificationSubscriber对象，用于提供订阅成功、通知接收、通知取消、订阅取消等回调接口，将变化信息回调给订阅者。
 
 ## 通知订阅原理
 
-通知业务流程由通知子系统、通知发送端、通知订阅端组成。一条通知从通知发送端产生，通过[IPC通信](../ipc/ipc-rpc-overview.md)发送到通知子系统，再由通知子系统分发给通知订阅端。
+通知业务流程由通知子系统、通知发送端、通知订阅端组成。一条通知从通知发送端产生，通过IPC通信发送到通知子系统，再由通知子系统分发给通知订阅端。
 
 * 通知发送端：可以是三方应用或系统应用。开发者重点关注。
 
@@ -26,7 +26,7 @@
 
 ## 接口说明
 
-通知订阅主要接口如下。详细接口介绍请参见[@ohos.notificationSubscribe (NotificationSubscribe模块)(系统接口)/apis-notification-kit/js-apis-notificationSubscribe-sys.md)。
+通知订阅主要接口如下。详细接口介绍请参见@ohos.notificationSubscribe (NotificationSubscribe模块)(系统接口)。
 
 **表1** 通知订阅接口介绍
 
@@ -37,7 +37,7 @@
 
 **表2** 通知订阅回调接口介绍
 
-详细接口介绍请参见[NotificationSubscriber/apis-notification-kit/js-apis-inner-notification-notificationSubscriber-sys.md)。
+详细接口介绍请参见NotificationSubscriber。
 
 | **接口名** | **描述** |
 | -------- | -------- |
@@ -60,7 +60,7 @@
 
 ## 开发步骤
 
-1. 申请`ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER`权限，配置方式请参见[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
+1. 申请`ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER`权限，配置方式请参见申请应用权限。
 
 2. 导入通知订阅模块。
    
@@ -84,9 +84,6 @@
      onCancel: (data:notificationSubscribe.SubscribeCallbackData) => {
        let req: notificationManager.NotificationRequest = data.request;
        hilog.info(DOMAIN_NUMBER, TAG, `onCancel callback. req.id: ${req.id}`);
-     },
-     onUpdate: (data) => {
-       hilog.info(DOMAIN_NUMBER, TAG, `onUpdate callback. req.id: ${data.sortedHashCode}`);
      },
      onConnect: () => {
        hilog.info(DOMAIN_NUMBER, TAG, `onConnect callback.`);

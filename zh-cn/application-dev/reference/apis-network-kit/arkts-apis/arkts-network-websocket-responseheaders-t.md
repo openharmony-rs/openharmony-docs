@@ -1,17 +1,17 @@
 # ResponseHeaders
 
 ```TypeScript
-export type ResponseHeaders = Record<string, string | string[] | undefined>
+export type ResponseHeaders = {
+    [k: string]: string | string[] | undefined;
+  }
 ```
 
-HTTP response headers.
+服务器发送的响应头。
 
-**起始版本：** 23
+**起始版本：** 12
 
-<!--Device-webSocket-export type ResponseHeaders = Record<string, string | string[] | undefined>--><!--Device-webSocket-export type ResponseHeaders = Record<string, string | string[] | undefined>-End-->
+**系统能力：** SystemCapability.Communication.NetStack
 
-**系统能力：** 
-- API版本23+：SystemCapability.Communication.NetStack
-
-**属性类型：** Record<string, string | string[] | undefined>
-
+**属性类型：** {
+    [k: string]: string | string[] | undefined;
+  }

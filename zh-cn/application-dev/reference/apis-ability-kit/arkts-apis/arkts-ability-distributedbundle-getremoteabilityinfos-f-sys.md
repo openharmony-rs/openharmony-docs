@@ -23,8 +23,6 @@ function getRemoteAbilityInfos(elementNames: Array<ElementName>,
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-<!--Device-distributedBundle-function getRemoteAbilityInfos(elementNames: Array<ElementName>,    callback: AsyncCallback<Array<RemoteAbilityInfo>>): void--><!--Device-distributedBundle-function getRemoteAbilityInfos(elementNames: Array<ElementName>,    callback: AsyncCallback<Array<RemoteAbilityInfo>>): void-End-->
-
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
 **系统接口：** 此接口为系统接口。
@@ -34,7 +32,7 @@ function getRemoteAbilityInfos(elementNames: Array<ElementName>,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | elementNames | Array&lt;[ElementName](arkts-ability-elementname-elementname-depr-i.md)&gt; | 是 | ElementName信息，最大数组长度为10。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-remoteabilityinfo-remoteabilityinfo-depr-i-sys.md)&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回远程基本能力信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-remoteabilityinfo-remoteabilityinfo-depr-i-sys.md)&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回远程基本能力信息。 |
 
 
 ## getRemoteAbilityInfos
@@ -53,8 +51,6 @@ function getRemoteAbilityInfos(elementNames: Array<ElementName>): Promise<Array<
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-<!--Device-distributedBundle-function getRemoteAbilityInfos(elementNames: Array<ElementName>): Promise<Array<RemoteAbilityInfo>>--><!--Device-distributedBundle-function getRemoteAbilityInfos(elementNames: Array<ElementName>): Promise<Array<RemoteAbilityInfo>>-End-->
-
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
 **系统接口：** 此接口为系统接口。
@@ -70,4 +66,3 @@ function getRemoteAbilityInfos(elementNames: Array<ElementName>): Promise<Array<
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-remoteabilityinfo-remoteabilityinfo-depr-i-sys.md)&gt;&gt; | Promise形式返回远程基本能力信息。 |
-

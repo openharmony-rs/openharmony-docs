@@ -9,7 +9,7 @@
 
 为保证数据安全性，当不需要使用该密钥时，应该删除密钥。
 
-从API 23开始支持[群组密钥](huks-group-key-overview.md)特性。
+从API 23开始支持群组密钥特性。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -20,11 +20,11 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 以删除ECC密钥为例。
 
-1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
+1. 指定密钥别名，密钥别名命名规范参考密钥生成介绍及算法规格。
 
 2. 初始化密钥属性集。用于删除时指定密钥的属性，删除单个密钥或者非群组密钥，可传空。
 
-3. 调用接口[OH_Huks_DeleteKeyItem/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_deletekeyitem)，删除密钥。
+3. 调用接口OH_Huks_DeleteKeyItem，删除密钥。
 
 <!-- @[key_deletion_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyDeletion/entry/src/main/cpp/napi_init.cpp) -->
 

@@ -2,7 +2,7 @@
 
 ## 概述
 
-提供访问统一数据管理框架数据的接口、数据结构、枚举类型。当参数类型为char*时，字符串必须以空字符（'\0'）结尾。
+提供访问统一数据管理框架数据的接口、数据结构、枚举类型。当参数类型为char*时，字符串必须以空字符（'\0'）结尾，否则可能导致未定义行为或函数返回错误。
 
 **库：** libudmf.so
 
@@ -59,7 +59,7 @@
 | [typedef void (\*UdmfData_Finalize)(void* context)](#udmfdata_finalize) | UdmfData_Finalize | 定义用于释放上下文的回调函数，统一数据提供者对象销毁时触发。 |
 | [OH_UdmfRecordProvider* OH_UdmfRecordProvider_Create()](#oh_udmfrecordprovider_create) | - | 创建一个统一数据提供者[OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdmfRecordProvider_Destroy](capi-udmf-h.md#oh_udmfrecordprovider_destroy)销毁实例对象，否则会导致内存泄漏。 |
 | [int OH_UdmfRecordProvider_Destroy(OH_UdmfRecordProvider* provider)](#oh_udmfrecordprovider_destroy) | - | 销毁统一数据提供者[OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md)指针指向的实例对象。 |
-| [typedef void* (\*OH_UdmfRecordProvider_GetData)(void* context, const char* type)](#oh_udmfrecordprovider_getdata) | OH_UdmfRecordProvider_GetData | 定义用于按类型获取数据的回调函数。当从OH_UdmfRecord中获取数据时，会触发此回调函数，得到的数据就是这个回调函数返回的数据。 |
+| [typedef void* (\*OH_UdmfRecordProvider_GetData)(void* context, const char* type)](#oh_udmfrecordprovider_getdata) | OH_UdmfRecordProvider_GetData | 定义用于按类型获取数据的回调函数。当从[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取数据时，会触发此回调函数，得到的数据就是这个回调函数返回的数据。 |
 | [int OH_UdmfRecordProvider_SetData(OH_UdmfRecordProvider* provider, void* context, const OH_UdmfRecordProvider_GetData callback, const UdmfData_Finalize finalize)](#oh_udmfrecordprovider_setdata) | - | 设置统一数据提供者的数据提供回调函数。 |
 | [OH_UdmfRecord* OH_UdmfRecord_Create()](#oh_udmfrecord_create) | - | 创建统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdmfRecord_Destroy](capi-udmf-h.md#oh_udmfrecord_destroy)销毁实例对象，否则会导致内存泄漏。 |
 | [void OH_UdmfRecord_Destroy(OH_UdmfRecord* pThis)](#oh_udmfrecord_destroy) | - | 销毁统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)指针指向的实例对象。 |
@@ -74,17 +74,17 @@
 | [int OH_UdmfRecord_AddContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)](#oh_udmfrecord_addcontentform) | - | 增加一个内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)的数据至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
 | [char** OH_UdmfRecord_GetTypes(OH_UdmfRecord* pThis, unsigned int* count)](#oh_udmfrecord_gettypes) | - | 获取统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中所有类型的结果集。 |
 | [int OH_UdmfRecord_GetGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsigned char** entry, unsigned int* count)](#oh_udmfrecord_getgeneralentry) | - | 获取统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中的特定类型的数据结果集。 |
-| [int OH_UdmfRecord_GetPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)](#oh_udmfrecord_getplaintext) | - | 从统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)数据。 |
-| [int OH_UdmfRecord_GetHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)](#oh_udmfrecord_gethyperlink) | - | 从统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)数据。 |
-| [int OH_UdmfRecord_GetHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)](#oh_udmfrecord_gethtml) | - | 从统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)数据。 |
-| [int OH_UdmfRecord_GetAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)](#oh_udmfrecord_getappitem) | - | 从统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)数据。 |
-| [int OH_UdmfRecord_GetFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)](#oh_udmfrecord_getfileuri) | - | 从统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)数据。 |
-| [int OH_UdmfRecord_GetPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)](#oh_udmfrecord_getpixelmap) | - | 从统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)数据。 |
+| [int OH_UdmfRecord_GetPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)](#oh_udmfrecord_getplaintext) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)数据。 |
+| [int OH_UdmfRecord_GetHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)](#oh_udmfrecord_gethyperlink) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)数据。 |
+| [int OH_UdmfRecord_GetHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)](#oh_udmfrecord_gethtml) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)数据。 |
+| [int OH_UdmfRecord_GetAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)](#oh_udmfrecord_getappitem) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)数据。 |
+| [int OH_UdmfRecord_GetFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)](#oh_udmfrecord_getfileuri) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)数据。 |
+| [int OH_UdmfRecord_GetPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)](#oh_udmfrecord_getpixelmap) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)数据。 |
 | [int OH_UdmfRecord_SetProvider(OH_UdmfRecord* pThis, const char* const* types, unsigned int count, OH_UdmfRecordProvider* provider)](#oh_udmfrecord_setprovider) | - | 将指定类型的统一数据提供者[OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md)设置至统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中。 |
-| [int OH_UdmfRecord_GetArrayBuffer(OH_UdmfRecord* record, const char* type, OH_UdsArrayBuffer* buffer)](#oh_udmfrecord_getarraybuffer) | - | 从统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)数据。 |
-| [int OH_UdmfRecord_GetContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)](#oh_udmfrecord_getcontentform) | - | 从统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)数据。 |
-| [int OH_UdmfData_GetPrimaryPlainText(OH_UdmfData* data, OH_UdsPlainText* plainText)](#oh_udmfdata_getprimaryplaintext) | - | 从统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中获取第一个纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)数据。 |
-| [int OH_UdmfData_GetPrimaryHtml(OH_UdmfData* data, OH_UdsHtml* html)](#oh_udmfdata_getprimaryhtml) | - | 从统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中获取第一个超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)数据。 |
+| [int OH_UdmfRecord_GetArrayBuffer(OH_UdmfRecord* record, const char* type, OH_UdsArrayBuffer* buffer)](#oh_udmfrecord_getarraybuffer) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)数据。 |
+| [int OH_UdmfRecord_GetContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)](#oh_udmfrecord_getcontentform) | - | 向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)数据。 |
+| [int OH_UdmfData_GetPrimaryPlainText(OH_UdmfData* data, OH_UdsPlainText* plainText)](#oh_udmfdata_getprimaryplaintext) | - | 向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中获取第一个纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)数据。 |
+| [int OH_UdmfData_GetPrimaryHtml(OH_UdmfData* data, OH_UdsHtml* html)](#oh_udmfdata_getprimaryhtml) | - | 向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中获取第一个超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)数据。 |
 | [int OH_UdmfData_GetRecordCount(OH_UdmfData* data)](#oh_udmfdata_getrecordcount) | - | 获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中包含的所有记录数量。 |
 | [OH_UdmfRecord* OH_UdmfData_GetRecord(OH_UdmfData* data, unsigned int index)](#oh_udmfdata_getrecord) | - | 获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中指定位置的数据记录。 |
 | [bool OH_UdmfData_IsLocal(OH_UdmfData* data)](#oh_udmfdata_islocal) | - | 检查统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)是否是来自本端设备的数据。 |
@@ -98,7 +98,7 @@
 | [int OH_UdmfProperty_SetTag(OH_UdmfProperty* pThis, const char* tag)](#oh_udmfproperty_settag) | - | 设置数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)的自定义标签值。 |
 | [int OH_UdmfProperty_SetShareOption(OH_UdmfProperty* pThis, Udmf_ShareOption option)](#oh_udmfproperty_setshareoption) | - | 设置数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)的设备内适用范围[Udmf_ShareOption](capi-udmf-h.md#udmf_shareoption)参数。 |
 | [int OH_UdmfProperty_SetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, int param)](#oh_udmfproperty_setextrasintparam) | - | 设置数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)的附加整型参数。 |
-| [int OH_UdmfProperty_SetExtrasStringParam(OH_UdmfProperty* pThis, const char* key, const char* param)](#oh_udmfproperty_setextrasstringparam) | - | 设置数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)的附加整型参数。 |
+| [int OH_UdmfProperty_SetExtrasStringParam(OH_UdmfProperty* pThis, const char* key, const char* param)](#oh_udmfproperty_setextrasstringparam) | - | 设置数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)附加字符串参数。 |
 | [int OH_UdmfProperty_SetAuthPermission(OH_UdmfProperty* pThis, uint32_t authPolicy)](#oh_udmfproperty_setauthpermission) | - | 在[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)中设置权限，对[OH_UdmfData](capi-udmf-oh-udmfdata.md)生效。 |
 | [OH_UdmfOptions* OH_UdmfOptions_Create()](#oh_udmfoptions_create) | - | 创建指向[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例的指针。当不再需要使用指针时，请使用[OH_UdmfOptions_Destroy](capi-udmf-h.md#oh_udmfoptions_destroy)销毁实例对象，否则会导致内存泄漏。 |
 | [void OH_UdmfOptions_Destroy(OH_UdmfOptions* pThis)](#oh_udmfoptions_destroy) | - | 销毁指向[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例的指针。 |
@@ -109,13 +109,13 @@
 | [int OH_UdmfOptions_Reset(OH_UdmfOptions* pThis)](#oh_udmfoptions_reset) | - | 重置数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例为空。 |
 | [Udmf_Visibility OH_UdmfOptions_GetVisibility(OH_UdmfOptions* pThis)](#oh_udmfoptions_getvisibility) | - | 从数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例中获取数据可见性等级。 |
 | [int OH_UdmfOptions_SetVisibility(OH_UdmfOptions* pThis, Udmf_Visibility visibility)](#oh_udmfoptions_setvisibility) | - | 设置数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例中的数据可见性等级。 |
-| [int OH_Udmf_GetUnifiedData(const char* key, Udmf_Intention intention, OH_UdmfData* unifiedData)](#oh_udmf_getunifieddata) | - | 从统一数据管理框架数据库中获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
+| [int OH_Udmf_GetUnifiedData(const char* key, Udmf_Intention intention, OH_UdmfData* unifiedData)](#oh_udmf_getunifieddata) | - | 向统一数据管理框架数据库中获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
 | [int OH_Udmf_GetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)](#oh_udmf_getunifieddatabyoptions) | - | 通过数据通路类型从统一数据管理框架数据库中获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
-| [int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)](#oh_udmf_setunifieddata) | - | 从统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
-| [int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)](#oh_udmf_setunifieddatabyoptions) | - | 从统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
+| [int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)](#oh_udmf_setunifieddata) | - | 向统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
+| [int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)](#oh_udmf_setunifieddatabyoptions) | - | 向统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
 | [int OH_Udmf_UpdateUnifiedData(OH_UdmfOptions* options, OH_UdmfData* unifiedData)](#oh_udmf_updateunifieddata) | - | 对统一数据管理框架数据库中的统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据进行数据更改。 |
 | [int OH_Udmf_DeleteUnifiedData(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)](#oh_udmf_deleteunifieddata) | - | 删除统一数据管理框架数据库中的统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
-| [OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int index)](#oh_udmf_getdataelementat) | - | 从统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数组中获取指定下标的统一数据对象数据。 |
+| [OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int index)](#oh_udmf_getdataelementat) | - | 向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数组中获取指定下标的统一数据对象数据。 |
 | [void OH_Udmf_DestroyDataArray(OH_UdmfData** dataArray, unsigned int dataSize)](#oh_udmf_destroydataarray) | - | 销毁数据数组内存。 |
 | [int OH_UdmfProgressInfo_GetProgress(OH_Udmf_ProgressInfo* progressInfo)](#oh_udmfprogressinfo_getprogress) | - | 从进度信息[OH_Udmf_ProgressInfo](capi-udmf-oh-udmf-progressinfo.md)中获取进度百分比数据。 |
 | [int OH_UdmfProgressInfo_GetStatus(OH_Udmf_ProgressInfo* progressInfo)](#oh_udmfprogressinfo_getstatus) | - | 从进度信息[OH_Udmf_ProgressInfo](capi-udmf-oh-udmf-progressinfo.md)中获取状态信息。 |
@@ -519,7 +519,7 @@ typedef void* (*OH_UdmfRecordProvider_GetData)(void* context, const char* type)
 
 **描述**
 
-定义用于按类型获取数据的回调函数。当从OH_UdmfRecord中获取数据时，会触发此回调函数，得到的数据就是这个回调函数返回的数据。
+定义用于按类型获取数据的回调函数。当从[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取数据时，会触发此回调函数，得到的数据就是这个回调函数返回的数据。
 
 **起始版本：** 13
 
@@ -534,7 +534,7 @@ typedef void* (*OH_UdmfRecordProvider_GetData)(void* context, const char* type)
 
 | 类型 | 说明 |
 | -- | -- |
-| void* | 需要返回一个标准化数据。 |
+| void* | 返回从上下文中获取的指定类型的数据指针。 |
 
 ### OH_UdmfRecordProvider_SetData()
 
@@ -607,7 +607,7 @@ void OH_UdmfRecord_Destroy(OH_UdmfRecord* pThis)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据对象[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
+| [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
 
 **参考：**
 
@@ -957,7 +957,7 @@ int OH_UdmfRecord_GetPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)
 
 **描述**
 
-从统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)数据。
+向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)数据。
 
 **起始版本：** 12
 
@@ -987,7 +987,7 @@ int OH_UdmfRecord_GetHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)
 
 **描述**
 
-从统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)数据。
+向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)数据。
 
 **起始版本：** 12
 
@@ -1017,7 +1017,7 @@ int OH_UdmfRecord_GetHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)
 
 **描述**
 
-从统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)数据。
+向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)数据。
 
 **起始版本：** 12
 
@@ -1047,7 +1047,7 @@ int OH_UdmfRecord_GetAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)
 
 **描述**
 
-从统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)数据。
+向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)数据。
 
 **起始版本：** 12
 
@@ -1077,7 +1077,7 @@ int OH_UdmfRecord_GetFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)
 
 **描述**
 
-从统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)数据。
+向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)数据。
 
 **起始版本：** 13
 
@@ -1107,7 +1107,7 @@ int OH_UdmfRecord_GetPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)
 
 **描述**
 
-从统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)数据。
+向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)数据。
 
 **起始版本：** 13
 
@@ -1169,7 +1169,7 @@ int OH_UdmfRecord_GetArrayBuffer(OH_UdmfRecord* record, const char* type, OH_Uds
 
 **描述**
 
-从统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)数据。
+向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)数据。
 
 **起始版本：** 13
 
@@ -1200,7 +1200,7 @@ int OH_UdmfRecord_GetContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* conten
 
 **描述**
 
-从统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)数据。
+向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)数据。
 
 **起始版本：** 14
 
@@ -1230,7 +1230,7 @@ int OH_UdmfData_GetPrimaryPlainText(OH_UdmfData* data, OH_UdsPlainText* plainTex
 
 **描述**
 
-从统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中获取第一个纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)数据。
+向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中获取第一个纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)数据。
 
 **起始版本：** 13
 
@@ -1260,7 +1260,7 @@ int OH_UdmfData_GetPrimaryHtml(OH_UdmfData* data, OH_UdsHtml* html)
 
 **描述**
 
-从统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中获取第一个超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)数据。
+向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中获取第一个超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)数据。
 
 **起始版本：** 13
 
@@ -1669,7 +1669,7 @@ int OH_UdmfProperty_SetExtrasStringParam(OH_UdmfProperty* pThis, const char* key
 
 **描述**
 
-设置数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)的附加整型参数。
+设置数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)附加字符串参数。
 
 **起始版本：** 12
 
@@ -1982,7 +1982,7 @@ int OH_Udmf_GetUnifiedData(const char* key, Udmf_Intention intention, OH_UdmfDat
 
 **描述**
 
-从统一数据管理框架数据库中获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。
+向统一数据管理框架数据库中获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。
 
 **起始版本：** 12
 
@@ -2044,7 +2044,7 @@ int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, c
 
 **描述**
 
-从统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。
+向统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。
 
 **起始版本：** 12
 
@@ -2076,7 +2076,7 @@ int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData* unifie
 
 **描述**
 
-从统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。
+向统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。
 
 **起始版本：** 20
 
@@ -2169,7 +2169,7 @@ OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int inde
 
 **描述**
 
-从统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数组中获取指定下标的统一数据对象数据。
+向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数组中获取指定下标的统一数据对象数据。
 
 **起始版本：** 22
 
@@ -2289,7 +2289,7 @@ OH_UdmfGetDataParams* OH_UdmfGetDataParams_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_UdmfGetDataParams*](capi-udmf-oh-udmfgetdataparams.md) | 执行成功则返回一个指向属性[OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)实例对象的指针，否则返回nullptr。 |
+| [OH_UdmfGetDataParams*](capi-udmf-oh-udmfgetdataparams.md) | 执行成功则返回一个指向[OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)实例对象的指针，否则返回nullptr。 |
 
 **参考：**
 

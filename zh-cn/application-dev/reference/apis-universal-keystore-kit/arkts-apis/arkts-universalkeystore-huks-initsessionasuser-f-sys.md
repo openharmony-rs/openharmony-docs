@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
-import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
 ## initSessionAsUser
@@ -18,8 +17,6 @@ function initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOp
 **起始版本：** 12
 
 **需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-<!--Device-huks-function initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions): Promise<HuksSessionHandle>--><!--Device-huks-function initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions): Promise<HuksSessionHandle>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -43,20 +40,20 @@ function initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOp
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application permission is not sufficient, which may be caused by lack of <br>cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | the application permission is not sufficient, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | non-system applications are not allowed to use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
-| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
-| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
-| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
-| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
-| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
-| [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
+| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
+| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
 | [12000010](../errorcode-huks.md#12000010-密钥操作会话数已达上限) | the number of sessions has reached limit |
+| [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
 
 **示例**
 
@@ -70,7 +67,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
-const initializationVector = '001122334455';
+const initializationVector = '0011223344556677';
 const plainText = '123456789';
 
 function stringToUint8Array(str: string) {
@@ -168,9 +165,9 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功生成了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -185,16 +182,16 @@ async function EncryptData(keyAlias: string, encryptProperties: Array<huks.HuksP
   await huks.initSessionAsUser(userId, keyAlias, options).then((data) => {
     handle = data.handle;
   }).catch((err: BusinessError) => {
-    console.error("密钥初始化失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥初始化失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
   await huks.finishSession(handle, options).then((data) => {
-    console.info("加密数据成功， 密文是： " + Uint8ArrayToString(data.outData))
+    console.info(`加密数据成功， 密文是：${Uint8ArrayToString(data.outData)}`)
     if (data.outData != undefined) {
       cipherData = data.outData
     }
-    console.info("running time result success!")
+    console.info('running time result success!')
   }).catch((err: BusinessError) => {
-    console.error("加密流程捕获了异常，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`加密流程捕获了异常，错误码是：${err.code} 错误码信息：${err.message}`)
   })
   return cipherData
 }
@@ -209,12 +206,12 @@ async function DecryptData(keyAlias: string, decryptProperties: Array<huks.HuksP
   await huks.initSessionAsUser(userId, keyAlias, options).then((data) => {
     handle = data.handle;
   }).catch((err: BusinessError) => {
-    console.error("密钥初始化失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥初始化失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
   await huks.finishSession(handle, options).then((data) => {
-    console.info("解密成功， 解密的明文是： " + Uint8ArrayToString(data.outData))
+    console.info(`解密成功， 解密的明文是：${Uint8ArrayToString(data.outData)}`)
   }).catch((err: BusinessError) => {
-    console.error("解密流程捕获了异常，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`解密流程捕获了异常，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -229,4 +226,3 @@ export default function HuksAsUserTest() {
   TestHuksInit()
 }
 ```
-

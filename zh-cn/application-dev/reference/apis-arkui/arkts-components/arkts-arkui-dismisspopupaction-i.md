@@ -1,10 +1,8 @@
 # DismissPopupAction
 
-气泡关闭的信息。
+气泡关闭的信息。@interface DismissPopupAction
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare interface DismissPopupAction--><!--Device-unnamed-declare interface DismissPopupAction-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,8 +27,6 @@ Popup关闭回调函数。开发者需要退出时调用，不需要退出时无
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DismissPopupAction-dismiss: Callback<void>--><!--Device-DismissPopupAction-dismiss: Callback<void>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## reason
@@ -49,7 +45,4 @@ reason: DismissReason
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DismissPopupAction-reason: DismissReason--><!--Device-DismissPopupAction-reason: DismissReason-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

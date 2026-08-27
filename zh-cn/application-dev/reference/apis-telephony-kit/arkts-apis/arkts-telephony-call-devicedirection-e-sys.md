@@ -2,9 +2,7 @@
 
 视频通话画面方向类型。
 
-**起始版本：** 23
-
-<!--Device-call-export enum DeviceDirection--><!--Device-call-export enum DeviceDirection-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -18,9 +16,7 @@ DEVICE_DIRECTION_0 = 0
 
 视频画面0度方向。
 
-**起始版本：** 23
-
-<!--Device-DeviceDirection-DEVICE_DIRECTION_0 = 0--><!--Device-DeviceDirection-DEVICE_DIRECTION_0 = 0-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -34,9 +30,7 @@ DEVICE_DIRECTION_90 = 90
 
 视频画面90度方向。
 
-**起始版本：** 23
-
-<!--Device-DeviceDirection-DEVICE_DIRECTION_90 = 90--><!--Device-DeviceDirection-DEVICE_DIRECTION_90 = 90-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -50,9 +44,7 @@ DEVICE_DIRECTION_180 = 180
 
 视频画面180度方向。
 
-**起始版本：** 23
-
-<!--Device-DeviceDirection-DEVICE_DIRECTION_180 = 180--><!--Device-DeviceDirection-DEVICE_DIRECTION_180 = 180-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -66,11 +58,8 @@ DEVICE_DIRECTION_270 = 270
 
 视频画面270度方向。
 
-**起始版本：** 23
-
-<!--Device-DeviceDirection-DEVICE_DIRECTION_270 = 270--><!--Device-DeviceDirection-DEVICE_DIRECTION_270 = 270-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
 **系统接口：** 此接口为系统接口。
-

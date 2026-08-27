@@ -68,4 +68,4 @@ config.json配置样例
 ]
 ```
 
-DataAbility支持的配置项及详细说明详见[module对象内部结构](../quick-start/module-structure.md)。
+DataAbility支持的配置项及详细说明详见module对象内部结构。

@@ -19,8 +19,6 @@ declare function statSync(path: string): Stat
 
 **替代接口：** [statSync](arkts-corefile-file-fs-statsync-f.md)
 
-<!--Device-unnamed-declare function statSync(path: string): Stat--><!--Device-unnamed-declare function statSync(path: string): Stat-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -35,3 +33,9 @@ declare function statSync(path: string): Stat
 | --- | --- |
 | [Stat](arkts-corefile-fileio-stat-depr-i.md) | 表示文件的具体信息。 |
 
+**示例**
+
+```TypeScript
+let stat = fileio.statSync(pathDir);
+// example code in Stat
+```

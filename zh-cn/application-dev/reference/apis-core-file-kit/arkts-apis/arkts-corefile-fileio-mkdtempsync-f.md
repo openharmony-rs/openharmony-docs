@@ -19,8 +19,6 @@ declare function mkdtempSync(prefix: string): string
 
 **替代接口：** [mkdtempSync](arkts-corefile-file-fs-mkdtempsync-f.md)
 
-<!--Device-unnamed-declare function mkdtempSync(prefix: string): string--><!--Device-unnamed-declare function mkdtempSync(prefix: string): string-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -35,3 +33,8 @@ declare function mkdtempSync(prefix: string): string
 | --- | --- |
 | string | 产生的唯一目录路径。 |
 
+**示例**
+
+```TypeScript
+let res = fileio.mkdtempSync(pathDir + "/XXXXXX");
+```

@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## writeSync
@@ -24,8 +22,6 @@ declare function writeSync(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare function writeSync(  fd: number,  buffer: ArrayBuffer | string,  options?: WriteOptions): number--><!--Device-unnamed-declare function writeSync(  fd: number,  buffer: ArrayBuffer | string,  options?: WriteOptions): number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -34,7 +30,7 @@ declare function writeSync(
 | --- | --- | --- | --- |
 | fd | number | 是 | 已打开的文件描述符fd。 |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | [WriteOptions](../../apis-na/arkts-apis/arkts-na-file-fs-writeoptions-i.md) | 否 | 支持如下选项：<br/>- offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/> - length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/> - encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。当前仅支持'utf-8'。<br>**起始版本：** 11 |
+| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | 否 | 支持如下选项：   - offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。  - length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。  - encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。当前仅支持'utf-8'。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -46,16 +42,26 @@ declare function writeSync(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900004 | Interrupted system call |
-| 13900020 | Invalid argument |
-| 13900005 | I/O error |
 | 13900001 | Operation not permitted |
-| 13900034 | Operation would block |
-| 13900013 | Bad address |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
 | 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900020 | Invalid argument |
 | 13900024 | File too large |
 | 13900025 | No space left on device |
+| 13900034 | Operation would block |
 | 13900041 | Quota exceeded |
-| 13900010 | Try again |
 | 13900042 | Unknown error |
 
+**示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let str: string = "hello, world";
+let writeLen = fileIo.writeSync(file.fd, str);
+console.info(`Succeeded in writing data to file, size is: ${writeLen}`);
+fileIo.closeSync(file);
+```

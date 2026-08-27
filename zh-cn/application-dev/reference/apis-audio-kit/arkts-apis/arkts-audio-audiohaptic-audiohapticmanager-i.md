@@ -2,9 +2,7 @@
 
 管理音振协同功能。在调用AudioHapticManager的接口前，需要先通过[getAudioHapticManager](arkts-audio-audiohaptic-getaudiohapticmanager-f.md)创建实例。
 
-**起始版本：** 23
-
-<!--Device-audioHaptic-interface AudioHapticManager--><!--Device-audioHaptic-interface AudioHapticManager-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -26,8 +24,6 @@ createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise<AudioHapti
 
 **需要权限：** ohos.permission.VIBRATE
 
-<!--Device-AudioHapticManager-createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise<AudioHapticPlayer>--><!--Device-AudioHapticManager-createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise<AudioHapticPlayer>-End-->
-
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
 **参数：**
@@ -47,11 +43,11 @@ createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise<AudioHapti
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
 | [5400106](../../apis-media-kit/errorcode-media.md#5400106-不支持的规格) | Unsupport format. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
 **示例**
 
@@ -61,7 +57,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let id = 0; // 需要通过registerSource或registerSourceFromFd方法获取。
 
 let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
-let audioHapticPlayerInstance;
+let audioHapticPlayerInstance: audioHaptic.AudioHapticPlayer | undefined = undefined;
 
 audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.AudioHapticPlayer) => {
   audioHapticPlayerInstance = value;
@@ -71,55 +67,19 @@ audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.Au
 });
 ```
 
-## createPlayer
-
-```TypeScript
-createPlayer(id: int, options?: AudioHapticPlayerOptions): Promise<AudioHapticPlayer | null>
-```
-
-Create an audio haptic player. This method uses a promise to return the result. If haptics is needed, caller should have the permission of ohos.permission.VIBRATE.
-
-**起始版本：** 23
-
-**需要权限：** ohos.permission.VIBRATE
-
-<!--Device-AudioHapticManager-createPlayer(id: int, options?: AudioHapticPlayerOptions): Promise<AudioHapticPlayer | null>--><!--Device-AudioHapticManager-createPlayer(id: int, options?: AudioHapticPlayerOptions): Promise<AudioHapticPlayer | null>-End-->
-
-**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| id | int | 是 | Source id. |
-| options | [AudioHapticPlayerOptions](arkts-audio-audiohaptic-audiohapticplayeroptions-i.md) | 否 | Options when creating audio haptic player. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[AudioHapticPlayer](arkts-audio-audiohaptic-audiohapticplayer-i.md) \| null&gt; | Promise used to return the result. |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
-| [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. |
-| [5400106](../../apis-media-kit/errorcode-media.md#5400106-不支持的规格) | Unsupport format. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-
 ## registerSource
 
 ```TypeScript
-registerSource(audioUri: string, hapticUri: string): Promise<int>
+registerSource(audioUri: string, hapticUri: string): Promise<number>
 ```
 
-通过Uri注册音频和振动资源。使用Promise异步回调。 > **注意：** > > 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
+通过Uri注册音频和振动资源。使用Promise异步回调。
 
-**起始版本：** 23
+> **注意：**
+> 
+> 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 
-<!--Device-AudioHapticManager-registerSource(audioUri: string, hapticUri: string): Promise<int>--><!--Device-AudioHapticManager-registerSource(audioUri: string, hapticUri: string): Promise<int>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -127,14 +87,14 @@ registerSource(audioUri: string, hapticUri: string): Promise<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| audioUri | string | 是 | 音频资源的Uri。 <br>- 对普通时延模式，音频资源格式和路径格式的支持可参考[AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)。 <br>- 对低时延模式，音频资源格式支持可参考[SoundPool](../../apis-media-kit/arkts-apis/arkts-media-soundpool-soundpool-i.md)，路径格式需满足 [fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md)的要求。 <br>- 对两种时延模式，均建议传入文件的绝对路径。 |
-| hapticUri | string | 是 | 振动资源的Uri。 <br>振动资源格式支持可参考[HapticFileDescriptor](../../apis-sensor-service-kit/arkts-apis/arkts-sensorservice-vibrator-hapticfiledescriptor-i.md)，路径格式需满足 [fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md)的要求。 <br>建议传入文件的绝对路径。 |
+| audioUri | string | 是 | 音频资源的Uri。    - 对普通时延模式，音频资源格式和路径格式的支持可参考[AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)。    - 对低时延模式，音频资源格式支持可参考[SoundPool](../../apis-media-kit/arkts-apis/arkts-media-soundpool-soundpool-i.md)，路径格式需满足 [fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md)的要求。    - 对两种时延模式，均建议传入文件的绝对路径。 |
+| hapticUri | string | 是 | 振动资源的Uri。 振动资源格式支持可参考[HapticFileDescriptor](../../apis-sensor-service-kit/arkts-apis/arkts-sensorservice-vibrator-hapticfiledescriptor-i.md)，路径格式需满足 [fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md)的要求。 建议传入文件的绝对路径。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回注册的资源ID。 <br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。 |
+| Promise & lt;number & gt; | Promise对象，返回注册的资源ID。 |
 
 **错误码：**
 
@@ -153,7 +113,7 @@ let audioUri = 'data/audioTest.wav'; // 需更改为目标音频资源的URI。
 let hapticUri = 'data/hapticTest.json'; // 需更改为目标振动资源的URI。
 let id = 0;
 // 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
-audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value) => {
+audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
   id = value;
   console.info(`Succeeded in registering the source, sourceId: ${value}.`);
 }).catch((err: BusinessError) => {
@@ -164,14 +124,16 @@ audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value) => {
 ## registerSourceFromFd
 
 ```TypeScript
-registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFileDescriptor): Promise<int>
+registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFileDescriptor): Promise<number>
 ```
 
-通过文件描述符注册音频和振动资源。使用Promise异步回调。 > **注意：** > > 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
+通过文件描述符注册音频和振动资源。使用Promise异步回调。
 
-**起始版本：** 23
+> **注意：**
+> 
+> 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 
-<!--Device-AudioHapticManager-registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFileDescriptor): Promise<int>--><!--Device-AudioHapticManager-registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFileDescriptor): Promise<int>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -186,7 +148,7 @@ registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回注册的资源ID。 <br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。 |
+| Promise & lt;number & gt; | Promise对象，返回注册的资源ID。 |
 
 **示例**
 
@@ -212,7 +174,7 @@ let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
 };
 let id = 0;
 // 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
-audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value) => {
+audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
   id = value;
   console.info(`Succeeded in registering the source from fd, sourceId: ${value}.`);
 }).catch((err: BusinessError) => {
@@ -223,14 +185,12 @@ audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value) 
 ## setAudioLatencyMode
 
 ```TypeScript
-setAudioLatencyMode(id:int, latencyMode: AudioLatencyMode): void
+setAudioLatencyMode(id:number, latencyMode: AudioLatencyMode): void
 ```
 
 设置音频时延模式。
 
-**起始版本：** 23
-
-<!--Device-AudioHapticManager-setAudioLatencyMode(id:int, latencyMode: AudioLatencyMode): void--><!--Device-AudioHapticManager-setAudioLatencyMode(id:int, latencyMode: AudioLatencyMode): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -238,7 +198,7 @@ setAudioLatencyMode(id:int, latencyMode: AudioLatencyMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | int | 是 | 已注册资源的source id。 |
+| id | number | 是 | 已注册资源的source id。 |
 | latencyMode | [AudioLatencyMode](arkts-audio-audiohaptic-audiolatencymode-e.md) | 是 | 音频时延模式。 |
 
 **错误码：**
@@ -263,14 +223,12 @@ audioHapticManagerInstance.setAudioLatencyMode(id, latencyMode);
 ## setStreamUsage
 
 ```TypeScript
-setStreamUsage(id: int, usage: audio.StreamUsage): void
+setStreamUsage(id: number, usage: audio.StreamUsage): void
 ```
 
 设置音频流使用类型。
 
-**起始版本：** 23
-
-<!--Device-AudioHapticManager-setStreamUsage(id: int, usage: audio.StreamUsage): void--><!--Device-AudioHapticManager-setStreamUsage(id: int, usage: audio.StreamUsage): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -278,7 +236,7 @@ setStreamUsage(id: int, usage: audio.StreamUsage): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | int | 是 | 已注册资源的source id。 |
+| id | number | 是 | 已注册资源的source id。 |
 | usage | audio.StreamUsage | 是 | 音频流使用类型。 |
 
 **错误码：**
@@ -304,14 +262,16 @@ audioHapticManagerInstance.setStreamUsage(id, usage);
 ## unregisterSource
 
 ```TypeScript
-unregisterSource(id: int): Promise<void>
+unregisterSource(id: number): Promise<void>
 ```
 
-取消注册音频和振动资源。使用Promise异步回调。 > **注意：** > > 对于不再需要使用的资源，建议应用及时取消注册，避免出现资源泄漏或资源数量超上限等问题。
+取消注册音频和振动资源。使用Promise异步回调。
 
-**起始版本：** 23
+> **注意：**
+> 
+> 对于不再需要使用的资源，建议应用及时取消注册，避免出现资源泄漏或资源数量超上限等问题。
 
-<!--Device-AudioHapticManager-unregisterSource(id: int): Promise<void>--><!--Device-AudioHapticManager-unregisterSource(id: int): Promise<void>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -319,13 +279,13 @@ unregisterSource(id: int): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | int | 是 | 已注册资源的source id。 |
+| id | number | 是 | 已注册资源的source id。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -346,4 +306,3 @@ audioHapticManagerInstance.unregisterSource(id).then(() => {
   console.error(`Failed to unregister the source. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-

@@ -8,8 +8,8 @@
 
 > **说明：**
 >
-> 当前开发指导使用的接口为[Image/apis-image-kit/capi-image.md)模块下的C API，可完成图片编解码，图片接收器，处理图像数据等功能。这部分API在API version 11之前发布，在后续的版本不再增加新功能，**不再推荐使用**。<br>
-> 开发者可使用[Image_NativeModule/apis-image-kit/capi-image-nativemodule.md)模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考[图片开发指导(C/C++)](image-source-c.md)节点下的内容。这部分API从API version 12开始支持，并将持续演进，**推荐开发者使用**。<br>
+> 当前开发指导使用的接口为Image模块下的C API，可完成图片编解码，图片接收器，处理图像数据等功能。这部分API在API version 11之前发布，在后续的版本不再增加新功能，**不再推荐使用**。<br>
+> 开发者可使用Image_NativeModule模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考图片开发指导(C/C++)节点下的内容。这部分API从API version 12开始支持，并将持续演进，**推荐开发者使用**。<br>
 > 两套C API不建议同时使用，在部分场景下存在不兼容的问题。
 
 开发者可以通过本指导了解如何使用Native Image的接口完成图像变换。
@@ -46,7 +46,7 @@ EXTERN_C_END
 
 **Native接口调用**
 
-具体接口说明请参考[Image/apis-image-kit/capi-image.md)。
+具体接口说明请参考Image。
 
 在hello.cpp文件中获取JS的资源对象，并转为Native的资源对象，即可调用Native接口，调用方式示例代码如下：
 
@@ -128,7 +128,7 @@ EXTERN_C_END
     export const testUnAccessPixels: (a: image.PixelMap) => image.PixelMap;
     ```
 
-2. 打开src\main\ets\pages\index.ets, 导入"libentry.so"(根据工程名生成)；调用Native接口，传入JS的资源对象。示例如下：
+2. 打开src\main\ets\pages\index.ets，导入"libentry.so"(根据工程名生成)；调用Native接口，传入JS的资源对象。示例如下：
 
     ```js
     import testNapi from 'libentry.so';
@@ -137,20 +137,24 @@ EXTERN_C_END
     @Entry
     @Component
     struct Index {
-    @State message: string = 'IMAGE';
-    @State _PixelMap : image.PixelMap | undefined = undefined;
+      @State message: string = 'IMAGE';
+      @State _PixelMap: image.PixelMap | undefined = undefined;
 
-    build() {
+      build() {
         Row() {
-        Column() {
+          Column() {
             Button(this.message)
-            .fontSize(50)
-            .fontWeight(FontWeight.Bold)
-            .onClick(() => {
-                const color : ArrayBuffer = new ArrayBuffer(96);
-                let opts: image.InitializationOptions = { alphaType: 0, editable: true, pixelFormat: 4, scaleMode: 1, size: { height: 4, width: 6 } };
+              .fontSize(50)
+              .fontWeight(FontWeight.Bold)
+              .onClick(() => {
+                const color: ArrayBuffer = new ArrayBuffer(96);
+                let opts: image.InitializationOptions = {
+                  editable: true,
+                  pixelFormat: image.PixelMapFormat.BGRA_8888,
+                  size: { height: 4, width: 6 }
+                };
                 image.createPixelMap(color, opts)
-                .then( (pixelmap : image.PixelMap) => {
+                  .then((pixelmap: image.PixelMap) => {
                     this._PixelMap = pixelmap;
                     testNapi.testGetImageInfo(this._PixelMap);
                     console.info("Test GetImageInfo success");
@@ -160,12 +164,14 @@ EXTERN_C_END
 
                     testNapi.testUnAccessPixels(this._PixelMap);
                     console.info("Test UnAccessPixels success");
-                })
-            })
-        }
-        .width('100%')
+                  });
+              })
+          }
+          .width('100%')
+          Image(this._PixelMap)
+            .width('100%')
         }
         .height('100%')
-    }
+      }
     }
     ```

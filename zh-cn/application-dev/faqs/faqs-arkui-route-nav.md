@@ -1,10 +1,10 @@
 # ArkUI路由/导航开发常见问题(ArkTS)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 ## router中params无法正常传递class对象(API 9)
@@ -20,7 +20,7 @@
 
 **参考链接**
 
-[页面路由/apis-arkui/js-apis-router.md)
+页面路由
 
 
 ## router通过调用push方法进堆栈的page是否会被回收(API 9)
@@ -29,4 +29,4 @@
 
 **参考链接**
 
-[router.getParams/apis-arkui/js-apis-router.md#routergetparamsdeprecated)
+router.getParams

@@ -10,7 +10,7 @@
 
 ## 实现原理
 
-应用发送通知时携带唯一标识字段[appMessageIdapis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)，分布式通知接收到多渠道发布的通知后，会根据该字段进行判断，从而实现通知去重。
+应用发送通知时携带唯一标识字段appMessageId，分布式通知接收到多渠道发布的通知后，会根据该字段进行判断，从而实现通知去重。
 
 设备只会展示第一条通知，后续收到的重复通知会被静默去重，不展示、不提醒。
 
@@ -27,7 +27,7 @@
 
 | **接口名**  | **描述** |**说明**|
 | -------- | -------- | -------- |
-| [publish/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerpublish-1)(request: NotificationRequest): Promise\<void\>       | 发布通知。  |使用方法见对象[NotificationRequest/apis-notification-kit/js-apis-inner-notification-notificationRequest.md)中**appMessageId**字段说明。|
+| publish(request: NotificationRequest): Promise\<void\>       | 发布通知。  |使用方法见对象NotificationRequest中**appMessageId**字段说明。|
 
 ## 开发步骤
 

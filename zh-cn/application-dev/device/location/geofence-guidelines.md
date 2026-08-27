@@ -16,16 +16,16 @@
 
 ## 接口说明
 
-地理围栏所使用的接口如下，详细说明参见Location Kit：[@ohos.geoLocationManager (位置服务)/apis-location-kit/js-apis-geoLocationManager.md)。
+地理围栏所使用的接口如下，详细说明参见Location Kit：@ohos.geoLocationManager (位置服务)。
 
 | 接口名 | 功能描述 | 
 | -------- | -------- |
-| [addGnssGeofence(fenceRequest: GnssGeofenceRequest): Promise&lt;number&gt;/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanageraddgnssgeofence12) | 添加一个GNSS地理围栏，并订阅地理围栏事件。使用Promise异步回调。 | 
-| [removeGnssGeofence(geofenceId: number): Promise&lt;void&gt;/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagerremovegnssgeofence12) | 删除一个GNSS地理围栏，并取消订阅该地理围栏事件。使用Promise异步回调。 | 
+| addGnssGeofence(fenceRequest: GnssGeofenceRequest): Promise&lt;number&gt; | 添加一个GNSS地理围栏，并订阅地理围栏事件。使用Promise异步回调。 | 
+| removeGnssGeofence(geofenceId: number): Promise&lt;void&gt; | 删除一个GNSS地理围栏，并取消订阅该地理围栏事件。使用Promise异步回调。 | 
 
 ## 开发步骤
 
-1. 使用地理围栏功能，需要有权限ohos.permission.APPROXIMATELY_LOCATION，位置权限申请的方法和步骤见[申请位置权限开发指导](location-permission-guidelines.md)。
+1. 使用地理围栏功能，需要有权限ohos.permission.APPROXIMATELY_LOCATION，位置权限申请的方法和步骤见申请位置权限开发指导。
 
 2. 导入geoLocationManager模块、wantAgent模块和BusinessError模块。
 

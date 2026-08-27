@@ -2,9 +2,7 @@
 
 P2P设备信息。
 
-**起始版本：** 23
-
-<!--Device-wifiManager-interface WifiP2pDevice--><!--Device-wifiManager-interface WifiP2pDevice-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -12,7 +10,6 @@ P2P设备信息。
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## deviceAddress
@@ -25,9 +22,7 @@ deviceAddress: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiP2pDevice-deviceAddress: string--><!--Device-WifiP2pDevice-deviceAddress: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -41,9 +36,7 @@ deviceAddressType?: DeviceAddressType
 
 **类型：** [DeviceAddressType](arkts-connectivity-wifimanager-deviceaddresstype-e.md)
 
-**起始版本：** 23
-
-<!--Device-WifiP2pDevice-deviceAddressType?: DeviceAddressType--><!--Device-WifiP2pDevice-deviceAddressType?: DeviceAddressType-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -57,9 +50,7 @@ deviceName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiP2pDevice-deviceName: string--><!--Device-WifiP2pDevice-deviceName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -73,25 +64,21 @@ deviceStatus: P2pDeviceStatus
 
 **类型：** P2pDeviceStatus
 
-**起始版本：** 23
-
-<!--Device-WifiP2pDevice-deviceStatus: P2pDeviceStatus--><!--Device-WifiP2pDevice-deviceStatus: P2pDeviceStatus-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
 ## groupCapabilities
 
 ```TypeScript
-groupCapabilities: int
+groupCapabilities: number
 ```
 
 设备群组能力
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-WifiP2pDevice-groupCapabilities: int--><!--Device-WifiP2pDevice-groupCapabilities: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -105,9 +92,6 @@ primaryDeviceType: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiP2pDevice-primaryDeviceType: string--><!--Device-WifiP2pDevice-primaryDeviceType: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-

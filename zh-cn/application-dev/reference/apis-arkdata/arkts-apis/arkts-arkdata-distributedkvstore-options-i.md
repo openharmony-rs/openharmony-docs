@@ -2,9 +2,7 @@
 
 用于提供创建数据库的配置信息。
 
-**起始版本：** 23
-
-<!--Device-distributedKVStore-interface Options--><!--Device-distributedKVStore-interface Options-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -24,13 +22,11 @@ autoSync?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Options-autoSync?: boolean--><!--Device-Options-autoSync?: boolean-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -44,13 +40,47 @@ backup?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Options-backup?: boolean--><!--Device-Options-backup?: boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let backupFile = 'BK001';
+try {
+  kvStore.backup(backupFile, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to backup. Code: ${err.code}, message: ${err.message} `);
+    } else {
+      console.info(`Succeeded in backupping data`);
+    }
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let backupFile = 'BK001';
+try {
+  kvStore.backup(backupFile).then(() => {
+    console.info(`Succeeded in backupping data`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to backup. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## createIfMissing
 
@@ -62,11 +92,9 @@ createIfMissing?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Options-createIfMissing?: boolean--><!--Device-Options-createIfMissing?: boolean-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -80,11 +108,9 @@ encrypt?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Options-encrypt?: boolean--><!--Device-Options-encrypt?: boolean-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -98,11 +124,9 @@ kvStoreType?: KVStoreType
 
 **类型：** KVStoreType
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Options-kvStoreType?: KVStoreType--><!--Device-Options-kvStoreType?: KVStoreType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -120,8 +144,6 @@ rootDir?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Options-rootDir?: string--><!--Device-Options-rootDir?: string-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ## schema
@@ -134,11 +156,9 @@ schema?: Schema
 
 **类型：** Schema
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Options-schema?: Schema--><!--Device-Options-schema?: Schema-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -152,11 +172,8 @@ securityLevel: SecurityLevel
 
 **类型：** SecurityLevel
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Options-securityLevel: SecurityLevel--><!--Device-Options-securityLevel: SecurityLevel-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-

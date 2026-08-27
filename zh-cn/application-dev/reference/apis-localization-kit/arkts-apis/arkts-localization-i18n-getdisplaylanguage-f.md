@@ -18,9 +18,7 @@ export function getDisplayLanguage(language: string, locale: string, sentenceCas
 
 **废弃版本：** 9
 
-**替代接口：** [getDisplayLanguage](../../apis-na/arkts-apis/arkts-na-i18n-system-c.md#getdisplaylanguage)
-
-<!--Device-i18n-export function getDisplayLanguage(language: string, locale: string, sentenceCase?: boolean): string--><!--Device-i18n-export function getDisplayLanguage(language: string, locale: string, sentenceCase?: boolean): string-End-->
+**替代接口：** [getDisplayLanguage](arkts-localization-i18n-system-c.md#getdisplaylanguage)
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -41,9 +39,21 @@ export function getDisplayLanguage(language: string, locale: string, sentenceCas
 **示例**
 
 ```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  // 获取“中文”在英文下的翻译
+  let displayLanguage: string = i18n.System.getDisplayLanguage('zh', 'en-GB'); // displayLanguage = 'Chinese'
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call System.getDisplayLanguage failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+```TypeScript
 import { i18n } from '@kit.LocalizationKit';
 
 let languageName: string = i18n.getDisplayLanguage('zh', 'en-GB', true); // languageName = 'Chinese'
 languageName = i18n.getDisplayLanguage('zh', 'en-GB'); // languageName = 'Chinese'
 ```
-

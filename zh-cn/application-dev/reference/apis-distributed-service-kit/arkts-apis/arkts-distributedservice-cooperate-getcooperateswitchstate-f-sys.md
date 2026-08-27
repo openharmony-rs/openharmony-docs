@@ -14,11 +14,9 @@ function getCooperateSwitchState(networkId: string, callback: AsyncCallback<bool
 
 获取目标设备键鼠穿越开关的状态，使用Callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **需要权限：** ohos.permission.COOPERATE_MANAGER
-
-<!--Device-cooperate-function getCooperateSwitchState(networkId: string, callback: AsyncCallback<boolean>): void--><!--Device-cooperate-function getCooperateSwitchState(networkId: string, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -29,19 +27,17 @@ function getCooperateSwitchState(networkId: string, callback: AsyncCallback<bool
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | networkId | string | 是 | 键鼠穿越目标设备描述符。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数，返回true表示目标设备键鼠穿越的开关开启， 返回false表示开关未开启。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数，返回true表示目标设备键鼠穿越的开关开启， 返回false表示开关未开启。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified.  2. Incorrect parameter types.  3. Parameter verification failed. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -49,23 +45,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let deviceDescriptor = "networkId";
 try {
   cooperate.getCooperateSwitchState(deviceDescriptor, (error: BusinessError, data: boolean) => {
-    if (error) {
-      console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-      return;
-    }
-    console.info(`Get the status success, data: ${JSON.stringify(data)}`);
-  });
-} catch (error) {
-  console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let deviceDescriptor: string = "networkId";
-try {
-  cooperate.getCooperateSwitchState(deviceDescriptor, (error: BusinessError|null, data: boolean|undefined) => {
     if (error) {
       console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
       return;
@@ -86,11 +65,9 @@ function getCooperateSwitchState(networkId: string): Promise<boolean>
 
 获取目标设备键鼠穿越开关的状态，使用Promise异步方式返回结果。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **需要权限：** ohos.permission.COOPERATE_MANAGER
-
-<!--Device-cooperate-function getCooperateSwitchState(networkId: string): Promise<boolean>--><!--Device-cooperate-function getCooperateSwitchState(networkId: string): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -106,19 +83,17 @@ function getCooperateSwitchState(networkId: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回true表示目标设备键鼠穿越的开关开启，返回false表示开关未开启。 |
+| Promise & lt;boolean & gt; | Promise对象，返回true表示目标设备键鼠穿越的开关开启，返回false表示开关未开启。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified.  2. Incorrect parameter types.  3. Parameter verification failed. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -134,19 +109,3 @@ try {
   console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let deviceDescriptor: string = "networkId";
-try {
-  cooperate.getCooperateSwitchState(deviceDescriptor).then((data: boolean): void => {
-    console.info(`Get the status success, data: ${JSON.stringify(data)}`);
-  }, (error: Error): void => {
-    console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-  });
-} catch (error) {
-  console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-}
-```
-

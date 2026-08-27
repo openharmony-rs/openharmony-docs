@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { statistics } from '@kit.NetworkKit';
 ```
 
 ## getIfaceTxBytes
 
 ```TypeScript
-function getIfaceTxBytes(nic: string, callback: AsyncCallback<long>): void
+function getIfaceTxBytes(nic: string, callback: AsyncCallback<number>): void
 ```
 
 获取指定网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-statistics-function getIfaceTxBytes(nic: string, callback: AsyncCallback<long>): void--><!--Device-statistics-function getIfaceTxBytes(nic: string, callback: AsyncCallback<long>): void-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -25,7 +22,7 @@ function getIfaceTxBytes(nic: string, callback: AsyncCallback<long>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | nic | string | 是 | 指定查询的网卡名。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数。当成功获取到流量数据时，error为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当成功获取到流量数据时，error为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -34,33 +31,22 @@ function getIfaceTxBytes(nic: string, callback: AsyncCallback<long>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
+| [2103005](../errorcode-net-statistics.md#2103005-读取系统map失败) | Failed to read the system map. |
 | [2103011](../errorcode-net-statistics.md#2103011-系统map创建失败) | Failed to create a system map. |
 | [2103012](../errorcode-net-statistics.md#2103012-获取网卡名失败) | Failed to obtain the 指定查询的网卡名。 |
-| [2103005](../errorcode-net-statistics.md#2103005-读取系统map失败) | Failed to read the system map. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getIfaceTxBytes("wlan0", (error: BusinessError, stats: number) => {
-  console.error(JSON.stringify(error));
-  console.info(JSON.stringify(stats));
-});
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { statistics } from '@kit.NetworkKit';
-
-statistics.getIfaceTxBytes("wlan0", (error: BusinessError|null, stats: long|undefined) => {
-  console.error(JSON.stringify(error));
-  console.info(JSON.stringify(stats));
+  if (error) {
+    console.error(`getIfaceTxBytes error, ${JSON.stringify(error)}`);
+    return;
+  }
+  console.info(`getIfaceTxBytes success, ${JSON.stringify(stats)}`);
 });
 ```
 
@@ -68,14 +54,12 @@ statistics.getIfaceTxBytes("wlan0", (error: BusinessError|null, stats: long|unde
 ## getIfaceTxBytes
 
 ```TypeScript
-function getIfaceTxBytes(nic: string): Promise<long>
+function getIfaceTxBytes(nic: string): Promise<number>
 ```
 
 获取指定网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-statistics-function getIfaceTxBytes(nic: string): Promise<long>--><!--Device-statistics-function getIfaceTxBytes(nic: string): Promise<long>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -89,7 +73,7 @@ function getIfaceTxBytes(nic: string): Promise<long>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;long&gt; | The promise returned by the function. |
+| Promise & lt;number & gt; | The promise returned by the function. |
 
 **错误码：**
 
@@ -98,29 +82,19 @@ function getIfaceTxBytes(nic: string): Promise<long>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
+| [2103005](../errorcode-net-statistics.md#2103005-读取系统map失败) | Failed to read the system map. |
 | [2103011](../errorcode-net-statistics.md#2103011-系统map创建失败) | Failed to create a system map. |
 | [2103012](../errorcode-net-statistics.md#2103012-获取网卡名失败) | Failed to obtain the 指定查询的网卡名。 |
-| [2103005](../errorcode-net-statistics.md#2103005-读取系统map失败) | Failed to read the system map. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { statistics } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 statistics.getIfaceTxBytes("wlan0").then((stats: number) => {
-  console.info(JSON.stringify(stats));
+  console.info(`getIfaceTxBytes success, ${JSON.stringify(stats)}`);
+}).catch((err: BusinessError) => {
+   console.error(`getIfaceTxBytes error, ${JSON.stringify(err)}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { statistics } from '@kit.NetworkKit';
-
-statistics.getIfaceTxBytes("wlan0").then((stats: long) => {
-  console.info(JSON.stringify(stats));
-});
-```
-

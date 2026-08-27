@@ -6,11 +6,9 @@ export type TlsV10SpecificCipherSuite = 'TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA' |
 
 TLS1.0及以上版本支持的加密套件。
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-http-export type TlsV10SpecificCipherSuite = 'TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA' | 'TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA' | 'TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA' | 'TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA' | 'TLS_RSA_WITH_AES_128_CBC_SHA' | 'TLS_RSA_WITH_AES_256_CBC_SHA' | 'TLS_RSA_WITH_3DES_EDE_CBC_SHA'--><!--Device-http-export type TlsV10SpecificCipherSuite = 'TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA' | 'TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA' | 'TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA' | 'TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA' | 'TLS_RSA_WITH_AES_128_CBC_SHA' | 'TLS_RSA_WITH_AES_256_CBC_SHA' | 'TLS_RSA_WITH_3DES_EDE_CBC_SHA'-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -23,4 +21,3 @@ TLS1.0及以上版本支持的加密套件。
 | 'TLS_RSA_WITH_AES_128_CBC_SHA' | 表示值的类型为字符串，可取'TLS_RSA_WITH_AES_128_CBC_SHA'。 |
 | 'TLS_RSA_WITH_AES_256_CBC_SHA' | 表示值的类型为字符串，可取'TLS_RSA_WITH_AES_256_CBC_SHA'。 |
 | 'TLS_RSA_WITH_3DES_EDE_CBC_SHA' | 表示值的类型为字符串，可取'TLS_RSA_WITH_3DES_EDE_CBC_SHA'。 |
-

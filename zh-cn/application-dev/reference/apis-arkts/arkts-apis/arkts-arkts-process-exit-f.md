@@ -12,15 +12,13 @@ import { process } from '@kit.ArkTS';
 function exit(code: number): void
 ```
 
-终止程序。 请谨慎使用此接口。调用此接口后应用将退出。如果输入参数非0，可能会导致数据丢失或出现未定义的运行异常。
+终止程序。请谨慎使用此接口。调用此接口后应用将退出。如果输入参数非0，可能会导致数据丢失或出现未定义的运行异常。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** [exit](arkts-arkts-process-processmanager-c.md#exit)
-
-<!--Device-process-function exit(code: number): void--><!--Device-process-function exit(code: number): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -36,3 +34,7 @@ function exit(code: number): void
 process.exit(0);
 ```
 
+```TypeScript
+let processManager = new process.ProcessManager();
+processManager.exit(0);
+```

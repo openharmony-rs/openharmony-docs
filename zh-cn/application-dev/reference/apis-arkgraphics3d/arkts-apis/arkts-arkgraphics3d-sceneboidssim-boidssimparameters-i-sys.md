@@ -1,10 +1,16 @@
 # BoidsSimParameters（系统接口）
 
-群组模拟参数，用于配置每个个体的行为属性。 > **说明：** > > 模拟帧是指群组模拟中按固定时间步长执行的更新周期，类似Unity中的FixedUpdate。默认时间步长为16ms（约62.5FPS），模拟通过累积真实时间并按固定步长消耗来驱动。 > 下文部分参数的默认值基于该时间步长计算： > - maxVelocityMag： 0.01 / 0.016 ≈ 0.625（m/s）。 > - maxAccelerationMag： maxVelocityMag / 0.016 ≈ 39.06（m/s²）。 > - maxTurnRate： π × 0.75 × 0.016 ≈ 0.0377（rad/模拟帧）。
+群组模拟参数，用于配置每个个体的行为属性。
+
+> **说明：**
+> 
+> 模拟帧是指群组模拟中按固定时间步长执行的更新周期，类似Unity中的FixedUpdate。默认时间步长为16ms（约62.5FPS），模拟通过累积真实时间并按固定步长消耗来驱动。
+> 下文部分参数的默认值基于该时间步长计算：
+> - maxVelocityMag： 0.01 / 0.016 ≈ 0.625（m/s）。
+> - maxAccelerationMag： maxVelocityMag / 0.016 ≈ 39.06（m/s²）。
+> - maxTurnRate： π × 0.75 × 0.016 ≈ 0.0377（rad/模拟帧）。
 
 **起始版本：** 26.0.0
-
-<!--Device-unnamed-export interface BoidsSimParameters--><!--Device-unnamed-export interface BoidsSimParameters-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -13,18 +19,16 @@
 ## alignmentDistance
 
 ```TypeScript
-alignmentDistance?: double
+alignmentDistance?: number
 ```
 
-对齐规则的感知半径，单位为m。在该距离内（含边界）的邻近个体对对齐力有贡献。取值 >= 0。默认值为0.0。
+对齐规则的感知半径，单位为m。在该距离内（含边界）的邻近个体对对齐力有贡献。取值 &gt;= 0。默认值为0.0。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimParameters-alignmentDistance?: double--><!--Device-BoidsSimParameters-alignmentDistance?: double-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -33,18 +37,16 @@ alignmentDistance?: double
 ## alignmentWeight
 
 ```TypeScript
-alignmentWeight?: double
+alignmentWeight?: number
 ```
 
-对齐规则权重。个体在alignmentDistance范围内朝向邻近个体平均航向的强度。取值 >= 0。默认值为0.0。
+对齐规则权重。个体在alignmentDistance范围内朝向邻近个体平均航向的强度。取值 &gt;= 0。默认值为0.0。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimParameters-alignmentWeight?: double--><!--Device-BoidsSimParameters-alignmentWeight?: double-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -53,18 +55,16 @@ alignmentWeight?: double
 ## boundaryDistance
 
 ```TypeScript
-boundaryDistance?: double
+boundaryDistance?: number
 ```
 
-边界约束力生效距离，单位为m。个体距边界墙面在该距离内时受到排斥力。取值 >= 0。默认值为0.0。
+边界约束力生效距离，单位为m。个体距边界墙面在该距离内时受到排斥力。取值 &gt;= 0。默认值为0.0。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimParameters-boundaryDistance?: double--><!--Device-BoidsSimParameters-boundaryDistance?: double-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -84,8 +84,6 @@ boundaryMaxPos?: Vec3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BoidsSimParameters-boundaryMaxPos?: Vec3--><!--Device-BoidsSimParameters-boundaryMaxPos?: Vec3-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **系统接口：** 此接口为系统接口。
@@ -104,8 +102,6 @@ boundaryMinPos?: Vec3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BoidsSimParameters-boundaryMinPos?: Vec3--><!--Device-BoidsSimParameters-boundaryMinPos?: Vec3-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **系统接口：** 此接口为系统接口。
@@ -113,18 +109,16 @@ boundaryMinPos?: Vec3
 ## boundaryWeight
 
 ```TypeScript
-boundaryWeight?: double
+boundaryWeight?: number
 ```
 
-边界约束力权重。个体在boundaryDistance范围内被边界墙推回的强度。取值 >= 0。默认值为0.0。
+边界约束力权重。个体在boundaryDistance范围内被边界墙推回的强度。取值 &gt;= 0。默认值为0.0。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimParameters-boundaryWeight?: double--><!--Device-BoidsSimParameters-boundaryWeight?: double-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -133,18 +127,16 @@ boundaryWeight?: double
 ## cohesionDistance
 
 ```TypeScript
-cohesionDistance?: double
+cohesionDistance?: number
 ```
 
-凝聚规则的感知半径，单位为m。在该距离内（含边界）的邻近个体对凝聚力有贡献。取值 >= 0。默认值为0.0。
+凝聚规则的感知半径，单位为m。在该距离内（含边界）的邻近个体对凝聚力有贡献。取值 &gt;= 0。默认值为0.0。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimParameters-cohesionDistance?: double--><!--Device-BoidsSimParameters-cohesionDistance?: double-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -153,18 +145,16 @@ cohesionDistance?: double
 ## cohesionWeight
 
 ```TypeScript
-cohesionWeight?: double
+cohesionWeight?: number
 ```
 
-凝聚规则权重。个体在cohesionDistance范围内朝向邻近个体平均位置吸引的强度。取值 >= 0。默认值为0.0。
+凝聚规则权重。个体在cohesionDistance范围内朝向邻近个体平均位置吸引的强度。取值 &gt;= 0。默认值为0.0。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimParameters-cohesionWeight?: double--><!--Device-BoidsSimParameters-cohesionWeight?: double-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -173,18 +163,16 @@ cohesionWeight?: double
 ## gravityWeight
 
 ```TypeScript
-gravityWeight?: double
+gravityWeight?: number
 ```
 
-引力场权重。引力场对该个体的吸引强度。取值 >= 0。默认值为0.0。
+引力场权重。引力场对该个体的吸引强度。取值 &gt;= 0。默认值为0.0。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimParameters-gravityWeight?: double--><!--Device-BoidsSimParameters-gravityWeight?: double-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -204,8 +192,6 @@ initialPosition?: Vec3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BoidsSimParameters-initialPosition?: Vec3--><!--Device-BoidsSimParameters-initialPosition?: Vec3-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **系统接口：** 此接口为系统接口。
@@ -223,8 +209,6 @@ initialRotation?: Quaternion
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimParameters-initialRotation?: Quaternion--><!--Device-BoidsSimParameters-initialRotation?: Quaternion-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -244,8 +228,6 @@ initialVelocity?: Vec3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BoidsSimParameters-initialVelocity?: Vec3--><!--Device-BoidsSimParameters-initialVelocity?: Vec3-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **系统接口：** 此接口为系统接口。
@@ -253,18 +235,16 @@ initialVelocity?: Vec3
 ## maxAccelerationMag
 
 ```TypeScript
-maxAccelerationMag?: double
+maxAccelerationMag?: number
 ```
 
-个体每模拟帧可达到的最大加速度，单位为m/s²。取值 >= 0。默认值约为39.06。
+个体每模拟帧可达到的最大加速度，单位为m/s²。取值 &gt;= 0。默认值约为39.06。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimParameters-maxAccelerationMag?: double--><!--Device-BoidsSimParameters-maxAccelerationMag?: double-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -276,15 +256,13 @@ maxAccelerationMag?: double
 maxTurnRate?: Vec3
 ```
 
-每模拟帧每轴最大转向速率，各分量单位为rad/模拟帧。每个分量取值 >= 0。默认值各分量约为0.0377。
+每模拟帧每轴最大转向速率，各分量单位为rad/模拟帧。每个分量取值 &gt;= 0。默认值各分量约为0.0377。
 
 **类型：** [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimParameters-maxTurnRate?: Vec3--><!--Device-BoidsSimParameters-maxTurnRate?: Vec3-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -293,18 +271,16 @@ maxTurnRate?: Vec3
 ## maxVelocityMag
 
 ```TypeScript
-maxVelocityMag?: double
+maxVelocityMag?: number
 ```
 
-个体每模拟帧可达到的最大速度，单位为m/s。取值 >= 0。默认值约为0.625。
+个体每模拟帧可达到的最大速度，单位为m/s。取值 &gt;= 0。默认值约为0.625。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimParameters-maxVelocityMag?: double--><!--Device-BoidsSimParameters-maxVelocityMag?: double-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -313,18 +289,16 @@ maxVelocityMag?: double
 ## repulsionWeight
 
 ```TypeScript
-repulsionWeight?: double
+repulsionWeight?: number
 ```
 
-斥力场权重。斥力场对该个体的排斥强度。取值 >= 0。默认值为0.0。
+斥力场权重。斥力场对该个体的排斥强度。取值 &gt;= 0。默认值为0.0。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimParameters-repulsionWeight?: double--><!--Device-BoidsSimParameters-repulsionWeight?: double-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -333,18 +307,16 @@ repulsionWeight?: double
 ## separationDistance
 
 ```TypeScript
-separationDistance?: double
+separationDistance?: number
 ```
 
-分离规则的感知半径，单位为m。仅严格在该距离内的邻近个体对分离力有贡献（边界处力为0）。取值 >= 0。默认值为0.0。
+分离规则的感知半径，单位为m。仅严格在该距离内的邻近个体对分离力有贡献（边界处力为0）。取值 &gt;= 0。默认值为0.0。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimParameters-separationDistance?: double--><!--Device-BoidsSimParameters-separationDistance?: double-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -353,20 +325,17 @@ separationDistance?: double
 ## separationWeight
 
 ```TypeScript
-separationWeight?: double
+separationWeight?: number
 ```
 
-分离规则权重。个体在separationDistance范围内受邻近个体排斥的强度。取值 >= 0。默认值为0.0。
+分离规则权重。个体在separationDistance范围内受邻近个体排斥的强度。取值 &gt;= 0。默认值为0.0。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BoidsSimParameters-separationWeight?: double--><!--Device-BoidsSimParameters-separationWeight?: double-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **系统接口：** 此接口为系统接口。
-

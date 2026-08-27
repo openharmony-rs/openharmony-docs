@@ -2,9 +2,7 @@
 
 本模块提供了获取各类系统维测日志的能力。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace logLibrary--><!--Device-unnamed-declare namespace logLibrary-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
@@ -13,7 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { logLibrary } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## 汇总
@@ -38,4 +35,3 @@ import { logLibrary } from '@kit.PerformanceAnalysisKit';
 | --- | --- |
 | [LogEntry](arkts-performanceanalysis-loglibrary-logentry-i-sys.md) | 日志文件对象接口。 |
 <!--DelEnd-->
-

@@ -4,8 +4,6 @@ Span位置信息。
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface RichEditorSpanPosition--><!--Device-unnamed-declare interface RichEditorSpanPosition-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ Span索引值。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorSpanPosition-spanIndex: number--><!--Device-RichEditorSpanPosition-spanIndex: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## spanRange
@@ -49,7 +45,4 @@ Span内容在RichEditor内的起始和结束位置。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorSpanPosition-spanRange: [number, number]--><!--Device-RichEditorSpanPosition-spanRange: [number, number]-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

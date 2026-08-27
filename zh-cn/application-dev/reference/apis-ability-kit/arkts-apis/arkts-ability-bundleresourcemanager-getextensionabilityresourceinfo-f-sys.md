@@ -9,16 +9,14 @@ import { bundleResourceManager } from '@kit.AbilityKit';
 ## getExtensionAbilityResourceInfo
 
 ```TypeScript
-function getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityType: bundleManager.ExtensionAbilityType, resourceFlags: int, appIndex?: int): Array<LauncherAbilityResourceInfo>
+function getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityType: bundleManager.ExtensionAbilityType, resourceFlags: number, appIndex?: number): Array<LauncherAbilityResourceInfo>
 ```
 
 根据应用包名、扩展组件类型、资源信息标志、应用分身ID获取应用的扩展组件资源。使用同步方式返回。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.GET_BUNDLE_RESOURCES
-
-<!--Device-bundleResourceManager-function getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityType: bundleManager.ExtensionAbilityType, resourceFlags: int, appIndex?: int): Array<LauncherAbilityResourceInfo>--><!--Device-bundleResourceManager-function getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityType: bundleManager.ExtensionAbilityType, resourceFlags: int, appIndex?: int): Array<LauncherAbilityResourceInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -30,23 +28,23 @@ function getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityTyp
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用包名。 |
 | extensionAbilityType | bundleManager.ExtensionAbilityType | 是 | 应用的扩展组件类型，仅支持ExtensionAbilityType.INPUT_METHOD 、ExtensionAbilityType.SHARE、ExtensionAbilityType.ACTION。 |
-| resourceFlags | int | 是 | 资源信息标志，指示需要获取的资源信息的内容。 |
-| appIndex | int | 否 | 应用分身的ID，默认值是0。取值范围0~5，取值为0表示主应用。 |
+| resourceFlags | number | 是 | 资源信息标志，指示需要获取的资源信息的内容。 |
+| appIndex | number | 否 | 应用分身的ID，默认值是0。取值范围0~5，取值为0表示主应用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;LauncherAbilityResourceInfo&gt; | 返回指定应用的扩展组件资源，包含图标和名称等信息。 |
+| Array & lt;LauncherAbilityResourceInfo & gt; | 返回指定应用的扩展组件资源，包含图标和名称等信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range or not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range or not found. |
 
 **示例**
 
@@ -69,4 +67,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getExtensionAbilityResourceInfo failed: %{public}d %{public}s', code, message);
 }
 ```
-

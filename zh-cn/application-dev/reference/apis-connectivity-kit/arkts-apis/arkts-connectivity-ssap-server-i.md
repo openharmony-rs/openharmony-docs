@@ -1,10 +1,8 @@
 # Server
 
-管理SSAP服务端。在调用SSAP服务端方法之前，必须使用[createServer](arkts-connectivity-ssap-createserver-f.md)创建SSAP服务端实例。
+SSAP服务端类，提供了和客户端进行连接和数据交互等操作方法。使用该类的方法前，需通过[ssap.createServer](arkts-connectivity-ssap-createserver-f.md)方法构造该类的实例。同一应用创建一个[Server](#server)实例即可，重复创建会增加不必要的资源开销。
 
 **起始版本：** 26.0.0
-
-<!--Device-ssap-interface Server--><!--Device-ssap-interface Server-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -20,7 +18,7 @@ import { ssap } from '@kit.ConnectivityKit';
 addService(service: Service): void
 ```
 
-添加SSAP服务。
+服务端添加服务。
 
 **起始版本：** 26.0.0
 
@@ -28,25 +26,23 @@ addService(service: Service): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Server-addService(service: Service): void--><!--Device-Server-addService(service: Service): void-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| service | [Service](arkts-connectivity-ssap-service-i.md) | 是 | 需要添加并注册ssap服务 |
+| service | [Service](arkts-connectivity-ssap-service-i.md) | 是 | 服务端提供的服务信息，支持添加多个服务，根据不同的UUID区分。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100044](../errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
+| [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100043](../errorcode-nearlink-service.md#36100043-无效uuid) | Invalid UUID. |
+| [36100044](../errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
+| [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 
 ## close
 
@@ -54,7 +50,7 @@ addService(service: Service): void
 close(): void
 ```
 
-关闭此{@code Server}对象并注销其回调。
+关闭服务端，并注销已注册的回调。
 
 **起始版本：** 26.0.0
 
@@ -62,17 +58,15 @@ close(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Server-close(): void--><!--Device-Server-close(): void-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
 ## notifyPropertyChanged
 
@@ -80,7 +74,7 @@ close(): void
 notifyPropertyChanged(address: string, property: Property): Promise<void>
 ```
 
-通知客户端此服务端的属性值发生了变化。
+通知客户端属性值更新。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -88,33 +82,31 @@ notifyPropertyChanged(address: string, property: Property): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Server-notifyPropertyChanged(address: string, property: Property): Promise<void>--><!--Device-Server-notifyPropertyChanged(address: string, property: Property): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| address | string | 是 | 设备地址。 <br>长度必须为17，由16进制数字和冒号组成，形如 "11:22:33:AA:BB:FF"。 |
-| property | [Property](arkts-connectivity-ssap-property-i.md) | 是 | 指示要通知的属性 |
+| address | string | 是 | 客户端设备地址。地址格式参考：11:22:33:AA:BB:FF。 |
+| property | [Property](arkts-connectivity-ssap-property-i.md) | 是 | 发生值变化的Property。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 返回promise对象。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100044](../errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
-| [36100043](../errorcode-nearlink-service.md#36100043-无效uuid) | Invalid UUID in property. |
+| [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100041](../errorcode-nearlink-service.md#36100041-无效地址) | Invalid address. |
+| [36100043](../errorcode-nearlink-service.md#36100043-无效uuid) | Invalid UUID in property. |
+| [36100044](../errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
+| [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 
 ## offConnectionStateChange
 
@@ -122,13 +114,11 @@ notifyPropertyChanged(address: string, property: Property): Promise<void>
 offConnectionStateChange(callback?: Callback<ConnectionChangeState>): void
 ```
 
-取消订阅服务器连接状态更改事件。
+取消订阅连接状态变化事件。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Server-offConnectionStateChange(callback?: Callback<ConnectionChangeState>): void--><!--Device-Server-offConnectionStateChange(callback?: Callback<ConnectionChangeState>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -136,21 +126,19 @@ offConnectionStateChange(callback?: Callback<ConnectionChangeState>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ConnectionChangeState](arkts-connectivity-ssap-connectionchangestate-i.md)&gt; | 否 | 用于监听连接状态改变事件的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ConnectionChangeState](arkts-connectivity-ssap-connectionchangestate-i.md)&gt; | 否 | 回调函数，返回连接状态上报参数。 填写该参数则取消当前callback订阅。不填写该参数则取消该事件对应的所有回调。 |
 
 ## offMtuChange
 
 ```TypeScript
-offMtuChange(callback?: Callback<int>): void
+offMtuChange(callback?: Callback<number>): void
 ```
 
-取消订阅MTU更改事件。
+取消订阅MTU变化事件。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Server-offMtuChange(callback?: Callback<int>): void--><!--Device-Server-offMtuChange(callback?: Callback<int>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -158,7 +146,7 @@ offMtuChange(callback?: Callback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;int&gt; | 否 | 用于监听mtu变化事件的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 回调函数，返回协商后的MTU大小。 填写该参数则取消当前callback订阅。不填写该参数则取消该事件对应的所有回调。 |
 
 ## offPropertyRead
 
@@ -166,13 +154,11 @@ offMtuChange(callback?: Callback<int>): void
 offPropertyRead(callback?: Callback<PropertyReadRequest>): void
 ```
 
-取消订阅来自客户端的属性读取事件。
+取消订阅客户端的读属性请求事件。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Server-offPropertyRead(callback?: Callback<PropertyReadRequest>): void--><!--Device-Server-offPropertyRead(callback?: Callback<PropertyReadRequest>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -180,7 +166,7 @@ offPropertyRead(callback?: Callback<PropertyReadRequest>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PropertyReadRequest](arkts-connectivity-ssap-propertyreadrequest-i.md)&gt; | 否 | 用于监听属性操作事件的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PropertyReadRequest](arkts-connectivity-ssap-propertyreadrequest-i.md)&gt; | 否 | 回调函数，返回客户端的Property读请求参数。 填写该参数则取消当前callback订阅。不填写该参数则取消该事件对应的所有回调。 |
 
 ## offPropertyWrite
 
@@ -188,13 +174,11 @@ offPropertyRead(callback?: Callback<PropertyReadRequest>): void
 offPropertyWrite(callback?: Callback<PropertyWriteRequest>): void
 ```
 
-取消订阅来自客户端的属性写入事件。
+取消订阅客户端的写属性请求事件。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Server-offPropertyWrite(callback?: Callback<PropertyWriteRequest>): void--><!--Device-Server-offPropertyWrite(callback?: Callback<PropertyWriteRequest>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -202,7 +186,7 @@ offPropertyWrite(callback?: Callback<PropertyWriteRequest>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PropertyWriteRequest](arkts-connectivity-ssap-propertywriterequest-i.md)&gt; | 否 | 用于监听属性操作事件的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PropertyWriteRequest](arkts-connectivity-ssap-propertywriterequest-i.md)&gt; | 否 | 回调函数，返回客户端的Property写请求参数。 填写该参数则取消当前callback订阅。不填写该参数则取消该事件对应的所有回调。 |
 
 ## onConnectionStateChange
 
@@ -210,13 +194,11 @@ offPropertyWrite(callback?: Callback<PropertyWriteRequest>): void
 onConnectionStateChange(callback: Callback<ConnectionChangeState>): void
 ```
 
-订阅服务器连接状态更改事件。 只有授予了ohos.permission.NEARLINK_ACCESS权限的应用程序才能访问此事件。 如果应用被赋予了ohos.permission.GET_NEARLINK_PEER_MAC权限。 回调返回真实设备地址，否则返回随机设备地址。
+订阅连接状态变化事件。使用callback异步回调。应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Server-onConnectionStateChange(callback: Callback<ConnectionChangeState>): void--><!--Device-Server-onConnectionStateChange(callback: Callback<ConnectionChangeState>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -224,21 +206,19 @@ onConnectionStateChange(callback: Callback<ConnectionChangeState>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ConnectionChangeState](arkts-connectivity-ssap-connectionchangestate-i.md)&gt; | 是 | 用于监听连接状态改变事件的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ConnectionChangeState](arkts-connectivity-ssap-connectionchangestate-i.md)&gt; | 是 | 回调函数，返回连接状态上报参数。 |
 
 ## onMtuChange
 
 ```TypeScript
-onMtuChange(callback: Callback<int>): void
+onMtuChange(callback: Callback<number>): void
 ```
 
-订阅MTU变化事件。 只有授予了ohos.permission.NEARLINK_ACCESS权限的应用程序才能访问此事件。
+订阅MTU变化事件。使用callback异步回调。应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Server-onMtuChange(callback: Callback<int>): void--><!--Device-Server-onMtuChange(callback: Callback<int>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -246,7 +226,7 @@ onMtuChange(callback: Callback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;int&gt; | 是 | 用于监听mtu变化事件的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数，返回协商后的MTU大小。 |
 
 ## onPropertyRead
 
@@ -254,13 +234,11 @@ onMtuChange(callback: Callback<int>): void
 onPropertyRead(callback: Callback<PropertyReadRequest>): void
 ```
 
-从客户端订阅属性读取事件。 只有授予了ohos.permission.NEARLINK_ACCESS权限的应用程序才能访问此事件。 如果应用被赋予了ohos.permission.GET_NEARLINK_PEER_MAC权限。 回调返回真实设备地址，否则返回随机设备地址。
+订阅客户端的读属性请求事件。使用callback异步回调。应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Server-onPropertyRead(callback: Callback<PropertyReadRequest>): void--><!--Device-Server-onPropertyRead(callback: Callback<PropertyReadRequest>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -268,7 +246,7 @@ onPropertyRead(callback: Callback<PropertyReadRequest>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PropertyReadRequest](arkts-connectivity-ssap-propertyreadrequest-i.md)&gt; | 是 | 用于监听属性操作事件的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PropertyReadRequest](arkts-connectivity-ssap-propertyreadrequest-i.md)&gt; | 是 | 回调函数，返回客户端的Property读请求参数。 |
 
 ## onPropertyWrite
 
@@ -276,13 +254,11 @@ onPropertyRead(callback: Callback<PropertyReadRequest>): void
 onPropertyWrite(callback: Callback<PropertyWriteRequest>): void
 ```
 
-从客户端订阅属性写入事件。 只有授予了ohos.permission.NEARLINK_ACCESS权限的应用程序才能访问此事件。 如果应用被赋予了ohos.permission.GET_NEARLINK_PEER_MAC权限。 回调返回真实设备地址，否则返回随机设备地址。
+订阅客户端的写属性请求事件。使用callback异步回调。应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Server-onPropertyWrite(callback: Callback<PropertyWriteRequest>): void--><!--Device-Server-onPropertyWrite(callback: Callback<PropertyWriteRequest>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -290,7 +266,7 @@ onPropertyWrite(callback: Callback<PropertyWriteRequest>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PropertyWriteRequest](arkts-connectivity-ssap-propertywriterequest-i.md)&gt; | 是 | 用于监听属性操作事件的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PropertyWriteRequest](arkts-connectivity-ssap-propertywriterequest-i.md)&gt; | 是 | 回调函数，返回客户端的Property写请求参数。 |
 
 ## removeService
 
@@ -298,7 +274,7 @@ onPropertyWrite(callback: Callback<PropertyWriteRequest>): void
 removeService(serviceUuid: string): void
 ```
 
-删除指定的SSAP服务。
+服务端删除服务。
 
 **起始版本：** 26.0.0
 
@@ -306,25 +282,23 @@ removeService(serviceUuid: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Server-removeService(serviceUuid: string): void--><!--Device-Server-removeService(serviceUuid: string): void-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| serviceUuid | string | 是 | 要删除的特定SSAP服务 <br>长度必须为36，由16进制数字字符和连字符共36个字符组成，形如“FFFFFFFF-1234-5678-ABCD-000000001234”，代表128比特标识。 <br>禁止使用星闪标准服务UUID。 |
+| serviceUuid | string | 是 | 星闪服务UUID，个字符，由32个十六进制数字和4个连字符（-）组成，例如： FFFFFFFF-1234-5678-ABCD-00000000123 4，表示一个128位标识符。 不允许使用星闪标准UUID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100044](../errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
+| [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100043](../errorcode-nearlink-service.md#36100043-无效uuid) | Invalid UUID. |
+| [36100044](../errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
+| [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 
 ## sendResponse
 
@@ -332,7 +306,7 @@ removeService(serviceUuid: string): void
 sendResponse(response: ServerResponse): void
 ```
 
-响应客户端的读或写请求。
+回复客户端读写请求。收到[ssap.onPropertyRead](#onpropertyread)或 [ssap.onPropertyWrite](#onpropertywrite)上报的请求后，调用本接口向对 应客户端回复数据。
 
 **起始版本：** 26.0.0
 
@@ -340,22 +314,19 @@ sendResponse(response: ServerResponse): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Server-sendResponse(response: ServerResponse): void--><!--Device-Server-sendResponse(response: ServerResponse): void-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| response | [ServerResponse](arkts-connectivity-ssap-serverresponse-i.md) | 是 | 表示响应。 |
+| response | [ServerResponse](arkts-connectivity-ssap-serverresponse-i.md) | 是 | 回复客户端的响应数据。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100041](../errorcode-nearlink-service.md#36100041-无效地址) | Invalid address. |
-
+| [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |

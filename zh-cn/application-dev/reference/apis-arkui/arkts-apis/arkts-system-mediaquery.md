@@ -20,4 +20,3 @@ import { SystemMediaQuery, MediaQueryEvent, MediaQueryList } from '@kit.ArkUI';
 | --- | --- |
 | [MediaQueryEvent](arkts-arkui-system-mediaquery-mediaqueryevent-i.md) | 定义MediaQuery事件。 |
 | [MediaQueryList](arkts-arkui-system-mediaquery-mediaquerylist-i.md) | 定义MediaQuery列表信息。 |
-

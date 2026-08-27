@@ -4,50 +4,42 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-declare interface KeyOptions--><!--Device-unnamed-declare interface KeyOptions-End-->
-
 **系统能力：** SystemCapability.Test.UiTest
 
 ## 导入模块
 
 ```TypeScript
-import { Component, DisplayRotation, Driver, MatchPattern, MouseButton, ON, On, PointerMatrix, ResizeDirection, UIElementInfo, UIEventObserver, UiDirection, UiWindow, WindowMode, Point, WindowFilter, Rect, TouchPadSwipeOptions, InputTextMode, WindowChangeType, ComponentEventType, WindowChangeOptions, ComponentEventOptions, TouchOptions, KeyOptions, PenKey, PenMode, PenKeyOperation, PenKeyOperationOptions } from '@kit.TestKit';
 import { UiComponent, UiDriver, BY, By } from '@kit.TestKit';
 ```
 
 ## key1
 
 ```TypeScript
-key1?: int
+key1?: number
 ```
 
 操作期间要按下的第一个键码。 如果未设置，将不会注入任何按键事件。 如果仅设置 key2 而未设置 key1，将会导致业务错误 17000007。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-KeyOptions-key1?: int--><!--Device-KeyOptions-key1?: int-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
 ## key2
 
 ```TypeScript
-key2?: int
+key2?: number
 ```
 
 操作期间要按下的第二个键码。 如果未设置，将不会注入任何按键事件。 如果仅设置 key2 而未设置 key1，将会导致业务错误 17000007。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-KeyOptions-key2?: int--><!--Device-KeyOptions-key2?: int-End-->
-
 **系统能力：** SystemCapability.Test.UiTest
-

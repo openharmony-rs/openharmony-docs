@@ -2,9 +2,7 @@
 
 获取用户身份管理类。
 
-**起始版本：** 23
-
-<!--Device-osAccount-class UserIdentityManager--><!--Device-osAccount-class UserIdentityManager-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -24,11 +22,9 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 添加凭据，添加用户凭据信息，传入凭据添加方法和凭据信息（凭据类型，子类，如果添加用户的非密码凭据，则传入密码身份验证令牌），并获取结果/获取信息。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
-
-<!--Device-UserIdentityManager-addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void--><!--Device-UserIdentityManager-addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -45,28 +41,25 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 12300091 | Cross-device communication failed.<br>**适用版本：** 23+ |
-| 12300090 | Cross-device capability not supported.<br>**适用版本：** 23+ |
-| [12300115](../errorcode-account.md#12300115-用户认证密码个数达到上限) | The number of credentials reaches the upper limit. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
-| [12300116](../errorcode-account.md#12300116-凭证复杂度验证失败) | Credential complexity verification failed.<br>**适用版本：** 12+ |
-| [12300106](../errorcode-account.md#12300106-认证类型不支持) | The authentication type is not supported. |
-| [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted account.<br>**适用版本：** 12+ |
-| [12300111](../errorcode-account.md#12300111-认证超时) | The operation timeout. |
-| [12300109](../errorcode-account.md#12300109-认证凭据录入更新等操作被取消) | The authentication, enrollment, or update operation is canceled. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid credentialInfo, i.e. authType or authSubType. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid credentialInfo, i.e. authType or authSubType. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
+| [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted account.<br>**适用版本：** 12+ |
+| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
+| 12300090 | Cross-device capability not supported.<br>**适用版本：** 23+ |
+| 12300091 | Cross-device communication failed.<br>**适用版本：** 23+ |
 | [12300101](../errorcode-account.md#12300101-凭据不正确) | The token is invalid. |
+| [12300106](../errorcode-account.md#12300106-认证类型不支持) | The authentication type is not supported. |
+| [12300109](../errorcode-account.md#12300109-认证凭据录入更新等操作被取消) | The authentication, enrollment, or update operation is canceled. |
+| [12300111](../errorcode-account.md#12300111-认证超时) | The operation timeout. |
+| [12300115](../errorcode-account.md#12300115-用户认证密码个数达到上限) | The number of credentials reaches the upper limit. |
+| [12300116](../errorcode-account.md#12300116-凭证复杂度验证失败) | Credential complexity verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let password: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0]);
@@ -98,47 +91,6 @@ userIDM.openSession((err: BusinessError, challenge: Uint8Array) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let password: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0]);
-let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
-
-try {
-  pinAuth.registerInputer({
-    onGetData: (authSubType: osAccount.AuthSubType, callback: osAccount.IInputData) => {
-      callback.onSetData(authSubType, password);
-    }
-  });
-} catch(e: Error) {
-  const err = e as BusinessError;
-  console.error(`registerInputer code is ${err.code}, message is ${err.message}`);
-}
-
-let credentialInfo: osAccount.CredentialInfo = {
-  credType: osAccount.AuthType.PIN,
-  credSubType: osAccount.AuthSubType.PIN_SIX,
-  token: new Uint8Array(0),
-};
-let userIDM = new osAccount.UserIdentityManager();
-userIDM.openSession((err: BusinessError |null, challenge: Uint8Array | undefined) => {
-  try {
-    userIDM.addCredential(credentialInfo, {
-      onResult: (result: int, extraInfo: osAccount.RequestResult) => {
-        console.info('addCredential result = ' + result);
-        console.info('addCredential extraInfo = ' + extraInfo);
-      }
-    });
-  } catch (e: Error) {
-    const err = e as BusinessError;
-    console.error(`addCredential exception = code is ${err.code}, message is ${err.message}`);
-  }
-});
-```
-
 ## cancel
 
 ```TypeScript
@@ -147,11 +99,9 @@ cancel(challenge: Uint8Array): void
 
 根据挑战值取消条目。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
-
-<!--Device-UserIdentityManager-cancel(challenge: Uint8Array): void--><!--Device-UserIdentityManager-cancel(challenge: Uint8Array): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -167,15 +117,13 @@ cancel(challenge: Uint8Array): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid challenge. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid challenge. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -184,19 +132,7 @@ let userIDM = new osAccount.UserIdentityManager();
 let challenge: Uint8Array = new Uint8Array([0]);
 try {
   userIDM.cancel(challenge);
-} catch(err) {
-  console.error(`cancel code is ${err.code}, message is ${err.message}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let userIDM = new osAccount.UserIdentityManager();
-let challenge: Uint8Array = new Uint8Array([0]);
-try {
-  userIDM.cancel(challenge);
-} catch(e: Error) {
+} catch (e) {
   const err = e as BusinessError;
   console.error(`cancel code is ${err.code}, message is ${err.message}`);
 }
@@ -205,16 +141,14 @@ try {
 ## closeSession
 
 ```TypeScript
-closeSession(accountId?: int): void
+closeSession(accountId?: number): void
 ```
 
 关闭会话，结束IDM操作。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
-
-<!--Device-UserIdentityManager-closeSession(accountId?: int): void--><!--Device-UserIdentityManager-closeSession(accountId?: int): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -224,18 +158,18 @@ closeSession(accountId?: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| accountId | int | 否 | 系统账号标识，默认为空。 |
+| accountId | number | 否 | 系统账号标识，默认为空。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types.<br>**适用版本：** 12+ |
-| [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted account.<br>**适用版本：** 12+ |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types.<br>**适用版本：** 12+ |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally.<br>**适用版本：** 12+ |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
+| [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted account.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -253,9 +187,7 @@ constructor()
 
 用户身份管理类的默认构造函数。
 
-**起始版本：** 23
-
-<!--Device-UserIdentityManager-constructor()--><!--Device-UserIdentityManager-constructor()-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -270,6 +202,14 @@ constructor()
 **示例**
 
 ```TypeScript
+let userAuth = new osAccount.UserAuth();
+```
+
+```TypeScript
+let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
+```
+
+```TypeScript
 let userIDM = new osAccount.UserIdentityManager();
 ```
 
@@ -281,11 +221,9 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 
 删除用户凭据信息。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
-
-<!--Device-UserIdentityManager-delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): void--><!--Device-UserIdentityManager-delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -303,17 +241,15 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid credentialId. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
-| [12300102](../errorcode-account.md#12300102-凭据不存在) | The credential does not exist. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid credentialId. |
 | [12300101](../errorcode-account.md#12300101-凭据不正确) | The token is invalid. |
+| [12300102](../errorcode-account.md#12300102-凭据不存在) | The credential does not exist. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -334,25 +270,6 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-let userIDM = new osAccount.UserIdentityManager();
-let credentialId: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0]);
-let token: Uint8Array = new Uint8Array([0]);
-try {
-  userIDM.delCred(credentialId, token, {
-    onResult: (result: int, extraInfo: osAccount.RequestResult) => {
-      console.info('delCred result = ' + result);
-      console.info('delCred extraInfo = ' + JSON.stringify(extraInfo));
-    }
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`delCred exception = code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## delUser
 
 ```TypeScript
@@ -361,11 +278,9 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
 
 删除具有身份验证令牌的用户。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
-
-<!--Device-UserIdentityManager-delUser(token: Uint8Array, callback: IIdmCallback): void--><!--Device-UserIdentityManager-delUser(token: Uint8Array, callback: IIdmCallback): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -382,15 +297,13 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300101](../errorcode-account.md#12300101-凭据不正确) | The token is invalid. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -410,24 +323,6 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-let userIDM = new osAccount.UserIdentityManager();
-let token: Uint8Array = new Uint8Array([0]);
-try {
-  userIDM.delUser(token, {
-    onResult: (result: int, extraInfo: osAccount.RequestResult) => {
-      console.info('delUser result = ' + result);
-      console.info('delUser extraInfo = ' + JSON.stringify(extraInfo));
-    }
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`delUser exception = code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getAuthInfo
 
 ```TypeScript
@@ -436,11 +331,9 @@ getAuthInfo(callback: AsyncCallback<Array<EnrolledCredInfo>>): void
 
 获取认证信息。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **需要权限：** ohos.permission.USE_USER_IDM
-
-<!--Device-UserIdentityManager-getAuthInfo(callback: AsyncCallback<Array<EnrolledCredInfo>>): void--><!--Device-UserIdentityManager-getAuthInfo(callback: AsyncCallback<Array<EnrolledCredInfo>>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -450,7 +343,7 @@ getAuthInfo(callback: AsyncCallback<Array<EnrolledCredInfo>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[EnrolledCredInfo](arkts-basicservices-osaccount-enrolledcredinfo-i-sys.md)&gt;&gt; | 是 | 回调函数。如果成功，err为null，data为当前用户的所有已注册凭据信息；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[EnrolledCredInfo](arkts-basicservices-osaccount-enrolledcredinfo-i-sys.md)&gt;&gt; | 是 | 回调函数。如果成功，err为null，data为当前用户的所有已注册凭据信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -463,10 +356,7 @@ getAuthInfo(callback: AsyncCallback<Array<EnrolledCredInfo>>): void
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let userIDM = new osAccount.UserIdentityManager();
@@ -484,27 +374,6 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userIDM = new osAccount.UserIdentityManager();
-try {
-  userIDM.getAuthInfo((err: BusinessError | null, result: osAccount.EnrolledCredInfo[] | undefined) => {
-    if (err) {
-      console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('getAuthInfo result = ' + JSON.stringify(result));
-    }
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getAuthInfo
 
 ```TypeScript
@@ -513,11 +382,9 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback<Array<EnrolledCredInfo>>
 
 获取指定类型的认证信息。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **需要权限：** ohos.permission.USE_USER_IDM
-
-<!--Device-UserIdentityManager-getAuthInfo(authType: AuthType, callback: AsyncCallback<Array<EnrolledCredInfo>>): void--><!--Device-UserIdentityManager-getAuthInfo(authType: AuthType, callback: AsyncCallback<Array<EnrolledCredInfo>>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -528,24 +395,21 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback<Array<EnrolledCredInfo>>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | authType | AuthType | 是 | 认证类型。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[EnrolledCredInfo](arkts-basicservices-osaccount-enrolledcredinfo-i-sys.md)&gt;&gt; | 是 | 回调函数，如果获取成功，err为null，data为当前用户指定类型的所有已注册凭据信息；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[EnrolledCredInfo](arkts-basicservices-osaccount-enrolledcredinfo-i-sys.md)&gt;&gt; | 是 | 回调函数，如果获取成功，err为null，data为当前用户指定类型的所有已注册凭据信息；否则为错误对 象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid authType. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid authType. |
 | 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let userIDM = new osAccount.UserIdentityManager();
@@ -564,28 +428,6 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userIDM = new osAccount.UserIdentityManager();
-try {
-  userIDM.getAuthInfo(osAccount.AuthType.PIN,
-    (err: BusinessError | null, result: osAccount.EnrolledCredInfo[] | undefined) => {
-      if (err) {
-        console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('getAuthInfo result = ' + JSON.stringify(result));
-      }
-    });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getAuthInfo
 
 ```TypeScript
@@ -594,11 +436,9 @@ getAuthInfo(authType: AuthType): Promise<Array<EnrolledCredInfo>>
 
 获取认证信息。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **需要权限：** ohos.permission.USE_USER_IDM
-
-<!--Device-UserIdentityManager-getAuthInfo(authType: AuthType): Promise<Array<EnrolledCredInfo>>--><!--Device-UserIdentityManager-getAuthInfo(authType: AuthType): Promise<Array<EnrolledCredInfo>>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -621,17 +461,14 @@ getAuthInfo(authType: AuthType): Promise<Array<EnrolledCredInfo>>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid authType. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid authType. |
 | 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let userIDM = new osAccount.UserIdentityManager();
@@ -647,26 +484,6 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userIDM = new osAccount.UserIdentityManager();
-try {
-  userIDM.getAuthInfo(osAccount.AuthType.PIN).then((result: osAccount.EnrolledCredInfo[]) => {
-    console.info('getAuthInfo result = ' + JSON.stringify(result))
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`getAuthInfo error = code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getAuthInfo
 
 ```TypeScript
@@ -675,11 +492,9 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise<Array<EnrolledCredInfo>>
 
 依据提供的可选参数，获取认证信息。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **需要权限：** ohos.permission.USE_USER_IDM
-
-<!--Device-UserIdentityManager-getAuthInfo(options?: GetAuthInfoOptions): Promise<Array<EnrolledCredInfo>>--><!--Device-UserIdentityManager-getAuthInfo(options?: GetAuthInfoOptions): Promise<Array<EnrolledCredInfo>>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -701,19 +516,16 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise<Array<EnrolledCredInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid options. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid options. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let userIDM = new osAccount.UserIdentityManager();
@@ -733,43 +545,17 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userIDM = new osAccount.UserIdentityManager();
-let options: osAccount.GetAuthInfoOptions = {
-  authType: osAccount.AuthType.PIN,
-  accountId: 100,
-};
-try {
-  userIDM.getAuthInfo(options).then((result: osAccount.EnrolledCredInfo[]) => {
-    console.info('getAuthInfo result = ' + JSON.stringify(result))
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
-    console.error(`getAuthInfo error = code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## getEnrolledId
 
 ```TypeScript
-getEnrolledId(authType: AuthType, accountId?: int): Promise<Uint8Array>
+getEnrolledId(authType: AuthType, accountId?: number): Promise<Uint8Array>
 ```
 
 基于凭据类型，以及可选的账号标识，获取已注册的凭据ID。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **需要权限：** ohos.permission.USE_USER_IDM
-
-<!--Device-UserIdentityManager-getEnrolledId(authType: AuthType, accountId?: int): Promise<Uint8Array>--><!--Device-UserIdentityManager-getEnrolledId(authType: AuthType, accountId?: int): Promise<Uint8Array>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -780,54 +566,30 @@ getEnrolledId(authType: AuthType, accountId?: int): Promise<Uint8Array>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | authType | AuthType | 是 | 认证凭据类型 |
-| accountId | int | 否 | 系统账号标识，默认为空。 |
+| accountId | number | 否 | 系统账号标识，默认为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | Promise对象，返回已注册的凭据ID。 |
+| Promise & lt;Uint8Array & gt; | Promise对象，返回已注册的凭据ID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12300106](../errorcode-account.md#12300106-认证类型不支持) | The authentication type is not supported. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid authType. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
-| [12300102](../errorcode-account.md#12300102-凭据不存在) | The credential does not exist. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid authType. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
+| [12300102](../errorcode-account.md#12300102-凭据不存在) | The credential does not exist. |
+| [12300106](../errorcode-account.md#12300106-认证类型不支持) | The authentication type is not supported. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userIDM = new osAccount.UserIdentityManager();
-let authType: osAccount.AuthType = osAccount.AuthType.PIN;
-let accountId = 100;
-try {
-  userIDM.getEnrolledId(authType, accountId).then((enrolledId: Uint8Array) => {
-      console.info('getEnrolledId enrolledId = ' + JSON.stringify(enrolledId));
-  }).catch((err: BusinessError) => {
-      console.error(`getEnrolledId error = code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getEnrolledId exception = code is ${err.code}, message is ${err.message}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let userIDM = new osAccount.UserIdentityManager();
@@ -836,11 +598,10 @@ let accountId = 100;
 try {
   userIDM.getEnrolledId(authType, accountId).then((enrolledId: Uint8Array) => {
     console.info('getEnrolledId enrolledId = ' + JSON.stringify(enrolledId));
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
+  }).catch((err: BusinessError) => {
     console.error(`getEnrolledId error = code is ${err.code}, message is ${err.message}`);
   });
-} catch (e: Error) {
+} catch (e) {
   const err = e as BusinessError;
   console.error(`getEnrolledId exception = code is ${err.code}, message is ${err.message}`);
 }
@@ -858,8 +619,6 @@ offCredentialChanged(callback?: Callback<CredentialChangeInfo>): void
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
-<!--Device-UserIdentityManager-offCredentialChanged(callback?: Callback<CredentialChangeInfo>): void--><!--Device-UserIdentityManager-offCredentialChanged(callback?: Callback<CredentialChangeInfo>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -868,7 +627,7 @@ offCredentialChanged(callback?: Callback<CredentialChangeInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](arkts-basicservices-callback-t.md)&lt;[CredentialChangeInfo](arkts-basicservices-osaccount-credentialchangeinfo-i-sys.md)&gt; | 否 | 表示用于接收凭据变更事件的回调函数。默认为undefined，表示清除所有订阅记录；非undefined时，表示清除与该回调函数关 联的订阅记录。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[CredentialChangeInfo](arkts-basicservices-osaccount-credentialchangeinfo-i-sys.md)&gt; | 否 | 表示用于接收凭据变更事件的回调函数。默认为undefined，表示清除所有订阅记录；非undefined时，表示清除 与该回调函数关联的订阅记录。 |
 
 **错误码：**
 
@@ -924,8 +683,6 @@ onCredentialChanged(credentialTypes: AuthType[], callback: Callback<CredentialCh
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
-<!--Device-UserIdentityManager-onCredentialChanged(credentialTypes: AuthType[], callback: Callback<CredentialChangeInfo>): void--><!--Device-UserIdentityManager-onCredentialChanged(credentialTypes: AuthType[], callback: Callback<CredentialChangeInfo>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -935,17 +692,17 @@ onCredentialChanged(credentialTypes: AuthType[], callback: Callback<CredentialCh
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | credentialTypes | AuthType[] | 是 | 表示订阅的凭据类型集合。 |
-| callback | [Callback](arkts-basicservices-callback-t.md)&lt;[CredentialChangeInfo](arkts-basicservices-osaccount-credentialchangeinfo-i-sys.md)&gt; | 是 | 表示用于接收凭据变更事件的回调函数。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[CredentialChangeInfo](arkts-basicservices-osaccount-credentialchangeinfo-i-sys.md)&gt; | 是 | 表示用于接收凭据变更事件的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12300106](../errorcode-account.md#12300106-认证类型不支持) | One or more credential types are not supported. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | One or more credential types are invalid. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | One or more credential types are invalid. |
+| [12300106](../errorcode-account.md#12300106-认证类型不支持) | One or more credential types are not supported. |
 
 **示例**
 
@@ -981,11 +738,9 @@ openSession(callback: AsyncCallback<Uint8Array>): void
 
 打开会话，获取挑战值。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
-
-<!--Device-UserIdentityManager-openSession(callback: AsyncCallback<Uint8Array>): void--><!--Device-UserIdentityManager-openSession(callback: AsyncCallback<Uint8Array>): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -995,23 +750,20 @@ openSession(callback: AsyncCallback<Uint8Array>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;Uint8Array&gt; | 是 | 回调函数。如果打开会话成功，err为null，data为挑战值；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Uint8Array&gt; | 是 | 回调函数。如果打开会话成功，err为null，data为挑战值；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let userIDM = new osAccount.UserIdentityManager();
@@ -1029,40 +781,17 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userIDM = new osAccount.UserIdentityManager();
-try {
-  userIDM.openSession((err: BusinessError | null, challenge: Uint8Array | undefined) => {
-    if (err) {
-      console.error(`openSession exception = code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('openSession challenge = ' + JSON.stringify(challenge));
-    }
-  });
-} catch (e: Error) {
-  const err = e as BusinessError;
-  console.error(`openSession exception = code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## openSession
 
 ```TypeScript
-openSession(accountId?: int): Promise<Uint8Array>
+openSession(accountId?: number): Promise<Uint8Array>
 ```
 
 打开会话，获取挑战值（用于判断后续的身份认证场景是否处于该会话下，防止重放攻击）。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
-
-<!--Device-UserIdentityManager-openSession(accountId?: int): Promise<Uint8Array>--><!--Device-UserIdentityManager-openSession(accountId?: int): Promise<Uint8Array>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1072,50 +801,27 @@ openSession(accountId?: int): Promise<Uint8Array>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| accountId | int | 否 | 系统账号标识，默认为空。 |
+| accountId | number | 否 | 系统账号标识，默认为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | Promise对象，返回挑战值。 |
+| Promise & lt;Uint8Array & gt; | Promise对象，返回挑战值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted account.<br>**适用版本：** 12+ |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
+| [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted account.<br>**适用版本：** 12+ |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userIDM = new osAccount.UserIdentityManager();
-let accountId = 100;
-try {
-  userIDM.openSession(accountId).then((challenge: Uint8Array) => {
-      console.info('openSession challenge = ' + JSON.stringify(challenge));
-  }).catch((err: BusinessError) => {
-      console.error(`openSession error = code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`openSession exception = code is ${err.code}, message is ${err.message}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let userIDM = new osAccount.UserIdentityManager();
@@ -1123,11 +829,10 @@ let accountId = 100;
 try {
   userIDM.openSession(accountId).then((challenge: Uint8Array) => {
     console.info('openSession challenge = ' + JSON.stringify(challenge));
-  }).catch((e: Error) => {
-    const err = e as BusinessError;
+  }).catch((err: BusinessError) => {
     console.error(`openSession error = code is ${err.code}, message is ${err.message}`);
   });
-} catch (e: Error) {
+} catch (e) {
   const err = e as BusinessError;
   console.error(`openSession exception = code is ${err.code}, message is ${err.message}`);
 }
@@ -1141,11 +846,9 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 更新凭据。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
-
-<!--Device-UserIdentityManager-updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void--><!--Device-UserIdentityManager-updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1162,24 +865,21 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12300106](../errorcode-account.md#12300106-认证类型不支持) | The authentication type is not supported. |
-| [12300111](../errorcode-account.md#12300111-认证超时) | The operation time out. |
-| [12300109](../errorcode-account.md#12300109-认证凭据录入更新等操作被取消) | The authentication, enrollment, or update operation is canceled. |
-| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid credentialInfo, i.e. authType or authSubType. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
-| [12300102](../errorcode-account.md#12300102-凭据不存在) | The credential does not exist. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | Invalid credentialInfo, i.e. authType or authSubType. |
+| [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
 | [12300101](../errorcode-account.md#12300101-凭据不正确) | The token is invalid. |
+| [12300102](../errorcode-account.md#12300102-凭据不存在) | The credential does not exist. |
+| [12300106](../errorcode-account.md#12300106-认证类型不支持) | The authentication type is not supported. |
+| [12300109](../errorcode-account.md#12300109-认证凭据录入更新等操作被取消) | The authentication, enrollment, or update operation is canceled. |
+| [12300111](../errorcode-account.md#12300111-认证超时) | The operation time out. |
 | [12300116](../errorcode-account.md#12300116-凭证复杂度验证失败) | Credential complexity verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let userIDM = new osAccount.UserIdentityManager();
@@ -1208,8 +908,8 @@ userIDM.openSession((err: BusinessError, challenge: Uint8Array) => {
       try {
         userIDM.updateCredential(credentialInfo, {
           onResult: (result: number, extraInfo: osAccount.RequestResult) => {
-              console.info('updateCredential result = ' + result);
-              console.info('updateCredential extraInfo = ' + extraInfo);
+            console.info('updateCredential result = ' + result);
+            console.info('updateCredential extraInfo = ' + extraInfo);
           }
         });
       } catch (e) {
@@ -1220,61 +920,3 @@ userIDM.openSession((err: BusinessError, challenge: Uint8Array) => {
   });
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import osAccount from '@ohos.account.osAccount';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userIDM = new osAccount.UserIdentityManager();
-let userAuth: osAccount.UserAuth = new osAccount.UserAuth();
-let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
-let password: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0]);
-let credentialInfo: osAccount.CredentialInfo = {
-  credType: osAccount.AuthType.PIN,
-  credSubType: osAccount.AuthSubType.PIN_SIX,
-  token: new Uint8Array(0),
-};
-
-try {
-  pinAuth.registerInputer({
-    onGetData: (authSubType: osAccount.AuthSubType, callback: osAccount.IInputData) => {
-      callback.onSetData(authSubType, password);
-    }
-  });
-} catch(e: Error) {
-  const err = e as BusinessError;
-  console.error(`registerInputer code is ${err.code}, message is ${err.message}`);
-}
-
-userIDM.openSession((err: BusinessError | null, challenge: Uint8Array | undefined) => {
-  if (err || !challenge){
-    console.error(`openSession failed: ${err?.code || 'challenge is undefined'}`);
-    return;
-  }
-  userAuth.auth(challenge, credentialInfo.credType, osAccount.AuthTrustLevel.ATL1, {
-    onResult: (result: int, extraInfo: osAccount.AuthResult) => {
-      if (result != osAccount.ResultCode.SUCCESS) {
-        return;
-      }
-      if (extraInfo.token != null && extraInfo.token !== undefined) {
-        credentialInfo.token = extraInfo.token!; // 使用!断言非空
-      }
-      //credentialInfo.token = extraInfo.token ?? new Uint8Array();
-      try {
-        userIDM.updateCredential(credentialInfo, {
-          onResult: (result: int, extraInfo: osAccount.RequestResult) => {
-            console.info('updateCredential result = ' + result);
-            console.info('updateCredential extraInfo = ' + extraInfo);
-          }
-        });
-      } catch (e: Error) {
-        const err = e as BusinessError;
-        console.error(`updateCredential exception = code is ${err.code}, message is ${err.message}`);
-      }
-    }
-  });
-});
-```
-

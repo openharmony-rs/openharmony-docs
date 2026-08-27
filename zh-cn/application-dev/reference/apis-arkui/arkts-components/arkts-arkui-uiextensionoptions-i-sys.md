@@ -1,10 +1,8 @@
-# UIExtensionOptions(System API)（系统接口）
+# UIExtensionOptions（系统接口）
 
 该接口用于在构造时设置UIExtensionComponentAttribute的选项。
 
 **起始版本：** 11
-
-<!--Device-unnamed-declare interface UIExtensionOptions--><!--Device-unnamed-declare interface UIExtensionOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,8 +27,6 @@ areaChangePlaceholder?: Record<string, ComponentContent>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UIExtensionOptions-areaChangePlaceholder?: Record<string, ComponentContent>--><!--Device-UIExtensionOptions-areaChangePlaceholder?: Record<string, ComponentContent>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -41,7 +37,7 @@ areaChangePlaceholder?: Record<string, ComponentContent>
 dpiFollowStrategy?: DpiFollowStrategy
 ```
 
-设置UIExtensionComponent内容的DPI跟随策略。 默认值：**FOLLOW_UI_EXTENSION_ABILITY_DPI**
+设置UIExtensionComponent内容的DPI跟随策略。默认值：**FOLLOW_UI_EXTENSION_ABILITY_DPI**
 
 **类型：** [DpiFollowStrategy](arkts-arkui-dpifollowstrategy-e-sys.md)
 
@@ -50,8 +46,6 @@ dpiFollowStrategy?: DpiFollowStrategy
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UIExtensionOptions-dpiFollowStrategy?: DpiFollowStrategy--><!--Device-UIExtensionOptions-dpiFollowStrategy?: DpiFollowStrategy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,7 +57,7 @@ dpiFollowStrategy?: DpiFollowStrategy
 isTransferringCaller?: boolean
 ```
 
-在使用UIExtensionComponent嵌套时，设置当前UIExtensionComponent是否转发上一级的Caller信息。true表示转发上一级的Caller信息，false表示不转发上一级的Caller信息。 默认值：**false**
+在使用UIExtensionComponent嵌套时，设置当前UIExtensionComponent是否转发上一级的Caller信息。true表示转发上一级的Caller信息，false表示不转发上一级的Caller信息。默认值：**false**
 
 **类型：** boolean
 
@@ -72,8 +66,6 @@ isTransferringCaller?: boolean
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UIExtensionOptions-isTransferringCaller?: boolean--><!--Device-UIExtensionOptions-isTransferringCaller?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,8 +85,6 @@ placeholder?: ComponentContent
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UIExtensionOptions-placeholder?: ComponentContent--><!--Device-UIExtensionOptions-placeholder?: ComponentContent-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -105,7 +95,7 @@ placeholder?: ComponentContent
 windowModeFollowStrategy?: WindowModeFollowStrategy
 ```
 
-设置UIExtensionComponent内容的窗口模式跟随策略。 默认值：**FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE**
+设置UIExtensionComponent内容的窗口模式跟随策略。默认值：**FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE**
 
 **类型：** [WindowModeFollowStrategy](arkts-arkui-windowmodefollowstrategy-e-sys.md)
 
@@ -115,9 +105,6 @@ windowModeFollowStrategy?: WindowModeFollowStrategy
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UIExtensionOptions-windowModeFollowStrategy?: WindowModeFollowStrategy--><!--Device-UIExtensionOptions-windowModeFollowStrategy?: WindowModeFollowStrategy-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

@@ -5,13 +5,11 @@ type Usage = 'unknown' | 'alarm' | 'ring' | 'notification' | 'communication' |
   'touch' | 'media' | 'physicalFeedback' | 'simulateReality'
 ```
 
-振动使用场景。不同usage值对应不同的系统振动开关管控规则，开发者需根据实际业务场景选择合适的usage值。 <!--RP1End-->
+振动使用场景。不同usage值对应不同的系统振动开关管控规则，开发者需根据实际业务场景选择合适的usage值。<!--RP1End-->
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-vibrator-type Usage = 'unknown' | 'alarm' | 'ring' | 'notification' | 'communication' |  'touch' | 'media' | 'physicalFeedback' | 'simulateReality'--><!--Device-vibrator-type Usage = 'unknown' | 'alarm' | 'ring' | 'notification' | 'communication' |  'touch' | 'media' | 'physicalFeedback' | 'simulateReality'-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
@@ -26,4 +24,3 @@ type Usage = 'unknown' | 'alarm' | 'ring' | 'notification' | 'communication' |
 | 'media' | 用于多媒体场景，值固定为'media'字符串。受多媒体振动开关管控。 |
 | 'physicalFeedback' | 用于物理反馈场景，值固定为'physicalFeedback'字符串。受物理反馈振动开关管控。 |
 | 'simulateReality' | 用于模拟现实场景，值固定为'simulateReality'字符串。受模拟现实振动开关管控。 |
-

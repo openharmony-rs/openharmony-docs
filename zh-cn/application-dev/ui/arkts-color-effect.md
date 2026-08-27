@@ -6,16 +6,13 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-
-## 色彩
-
 通过颜色渐变接口，可以设置组件的背景颜色渐变效果，实现在两个或多个指定的颜色之间进行平稳的过渡。
 
 | 接口 | 说明 |
 | -------- | -------- |
-| [linearGradient/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient) | 为当前组件添加线性渐变的颜色渐变效果。 |
-| [sweepGradient/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#sweepgradient) | 为当前组件添加角度渐变的颜色渐变效果。 |
-| [radialGradient/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#radialgradient) | 为当前组件添加径向渐变的颜色渐变效果。 |
+| linearGradient | 为当前组件添加线性渐变的颜色渐变效果。 |
+| sweepGradient | 为当前组件添加角度渐变的颜色渐变效果。 |
+| radialGradient | 为当前组件添加径向渐变的颜色渐变效果。 |
 
 
 ## 为组件添加线性渐变效果
@@ -116,7 +113,7 @@
 ## 为组件添加角度渐变效果
 
 
-  <!-- @[Direction_Gradient_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GradientEffect/entry/src/main/ets/homePage/DirectionGradientEffect.ets) -->
+  <!-- @[Direction_Gradient_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GradientEffect/entry/src/main/ets/homePage/DirectionGradientEffect.ets) -->  
   
   ``` TypeScript
   @Entry
@@ -208,7 +205,7 @@
             center: [50, 50],
             start: 0,
             end: 360,
-            repeating: false, //只在颜色断点角度覆盖范围内产生颜色渐变效果，其余范围内不重复
+            repeating: false, // 只在颜色断点角度覆盖范围内产生颜色渐变效果，其余范围内不重复
             colors: [
               [0xf56c6c, 0],
               [0xffffff, 0.125],
@@ -226,6 +223,7 @@
     }
   }
   ```
+
 ![zh-cn_image_0000001641177073](figures/zh-cn_image_0000001641177073.png)
 
 
@@ -336,4 +334,5 @@
     }
   }
   ```
+
 ![zh-cn_image_0000001592904050](figures/zh-cn_image_0000001592904050.png)

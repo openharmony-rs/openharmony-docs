@@ -3,24 +3,24 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
 ## 简介
-本指南主要提供了基于人机接口设备协议（Human Interface Device Profile，[HID](../../connectivity/terminology.md#hid)）实现将设备模拟为蓝牙键盘、鼠标、游戏手柄等输入设备的开发指导。在HID设备通信模型中，依据设备角色的不同，可区分为[HID host](../../connectivity/terminology.md#hid-host)和[HID device](../../connectivity/terminology.md#hid-device)。本指南将重点阐述如何为应用提供HID设备能力，连接其他蓝牙HID主机（如电脑、平板、手机等）并进行数据交互的实现方法。
+本指南主要提供了基于人机接口设备协议（Human Interface Device Profile，HID）实现将设备模拟为蓝牙键盘、鼠标、游戏手柄等输入设备的开发指导。在HID设备通信模型中，依据设备角色的不同，可区分为HID host和HID device。本指南将重点阐述如何为应用提供HID设备能力，连接其他蓝牙HID主机（如电脑、平板、手机等）并进行数据交互的实现方法。
 
 ## 实现原理
 HID设备作为输入能力的提供方，需要先为本机应用注册HID设备能力，并声明其功能类型（如键盘、鼠标等）及对应的HID报告描述符。
 
-HID设备在获取到HID主机的设备地址后，即可主动向已配对的HID主机发起连接。HID主机地址可以通过查找设备流程获取，详见[查找设备](br-discovery-development-guide.md)。连接成功后，HID设备即可通过建立的通道向主机主动发送HID报告（如键盘按键、鼠标移动等数据）。主机接收到报告后，会将其解析为标准输入事件。
+HID设备在获取到HID主机的设备地址后，即可主动向已配对的HID主机发起连接。HID主机地址可以通过查找设备流程获取，详见查找设备。连接成功后，HID设备即可通过建立的通道向主机主动发送HID报告（如键盘按键、鼠标移动等数据）。主机接收到报告后，会将其解析为标准输入事件。
 
 HID设备或HID主机均可主动断开连接。应用需要根据实际场景决定由哪一端执行断开操作。
 
 ## 开发步骤
 
 ### 申请蓝牙权限
-需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，请参考[声明权限](../../security/AccessToken/declare-permissions.md)和[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，请参考声明权限和向用户申请授权。
 
 ### 导入所需API模块
 导入baseProfile、hid和common模块。
@@ -108,7 +108,7 @@ try {
 **3. 传输数据**<br>
 
 **3.1 发送数据**<br>
-连接建立后，应用可与HID主机进行数据交互。[sendReport/apis-connectivity-kit/js-apis-bluetooth-hid.md#sendreport23)用于主动向主机发送输入报告（如按键事件、坐标数据），[replyReport/apis-connectivity-kit/js-apis-bluetooth-hid.md#replyreport23)用于响应主机发送的获取报告请求，返回当前设备状态或特性数据；[reportError/apis-connectivity-kit/js-apis-bluetooth-hid.md#reporterror23)用于在报告传输失败或格式错误时向主机通知异常情况。
+连接建立后，应用可与HID主机进行数据交互。sendReport用于主动向主机发送输入报告（如按键事件、坐标数据），replyReport用于响应主机发送的获取报告请求，返回当前设备状态或特性数据；reportError用于在报告传输失败或格式错误时向主机通知异常情况。
 
 ```ts
 let hidDevice: hid.HidDeviceProfile = hid.createHidDeviceProfile();

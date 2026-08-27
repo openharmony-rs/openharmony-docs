@@ -2,17 +2,13 @@
 
 表示获取证书存储位置的参数集合，包括证书的类型及证书的位置。
 
-**起始版本：** 23
-
-<!--Device-certificateManager-export interface CertStoreProperty--><!--Device-certificateManager-export interface CertStoreProperty-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 ## 导入模块
 
 ```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## certAlg
@@ -25,9 +21,7 @@ certAlg?: CertAlgorithm
 
 **类型：** [CertAlgorithm](arkts-devicecertificate-certificatemanager-certalgorithm-e.md)
 
-**起始版本：** 23
-
-<!--Device-CertStoreProperty-certAlg?: CertAlgorithm--><!--Device-CertStoreProperty-certAlg?: CertAlgorithm-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -41,9 +35,7 @@ certScope?: CertScope
 
 **类型：** [CertScope](arkts-devicecertificate-certificatemanager-certscope-e.md)
 
-**起始版本：** 23
-
-<!--Device-CertStoreProperty-certScope?: CertScope--><!--Device-CertStoreProperty-certScope?: CertScope-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -57,9 +49,6 @@ certType: CertType
 
 **类型：** CertType
 
-**起始版本：** 23
-
-<!--Device-CertStoreProperty-certType: CertType--><!--Device-CertStoreProperty-certType: CertType-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Security.CertificateManager
-

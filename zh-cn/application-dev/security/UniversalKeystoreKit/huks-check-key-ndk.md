@@ -9,7 +9,7 @@
 
 HUKS提供了接口供应用查询指定密钥是否存在。
 
-从API 23开始支持[群组密钥](huks-group-key-overview.md)特性。
+从API 23开始支持群组密钥特性。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -18,11 +18,11 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 ## 开发步骤
 
-1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
+1. 指定密钥别名，密钥别名命名规范参考密钥生成介绍及算法规格。
 
 2. 初始化密钥属性集。用于查询时指定密钥的属性，查询单个密钥或者非群组密钥，可传空。
 
-3. 调用接口[OH_Huks_IsKeyItemExist/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_iskeyitemexist)，查询密钥是否存在。
+3. 调用接口OH_Huks_IsKeyItemExist，查询密钥是否存在。
 
 <!-- @[query_whether_the_key_exists_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/CheckKeyExists/entry/src/main/cpp/napi_init.cpp) -->
 

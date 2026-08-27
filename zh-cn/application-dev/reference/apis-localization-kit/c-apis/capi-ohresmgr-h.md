@@ -548,14 +548,14 @@ ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const Nati
 
 | 参数项 | 描述 |
 | -- | -- |
-| {NativeResourceManager} | mgr Indicates the pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md)[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager). |
-| {ResourceManager_Configuration} | configuration the result write to ResourceManager_Configuration. |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
+| ResourceManager_Configuration *configuration | 输出参数。返回设备配置信息，其中screenDensity的值为设备屏幕密度（dpi）。<br>configuration中的locale字符串由此函数分配内存，使用完后需通过[OH_ResourceManager_ReleaseConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_releaseconfiguration)释放locale。若configuration指针由malloc()分配内存，使用完后须通过free()释放。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ResourceManager_ErrorCode | Result code.      <br>SUCCESS: Success.      <br>ERROR_CODE_SYSTEM_RES_MANAGER_GET_FAILED: Failed to access the system resource.      <br>ERROR_CODE_OUT_OF_MEMORY: Memory overflow occurs. |
+| ResourceManager_ErrorCode | 返回错误码。      <br>返回SUCCESS，表示成功。      <br>返回ERROR_CODE_SYSTEM_RES_MANAGER_GET_FAILED，表示访问系统资源失败。      <br>返回ERROR_CODE_OUT_OF_MEMORY，表示内存溢出。 |
 
 ### OH_ResourceManager_ReleaseConfiguration()
 

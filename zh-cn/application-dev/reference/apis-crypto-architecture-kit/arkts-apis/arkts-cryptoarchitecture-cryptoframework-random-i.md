@@ -2,9 +2,7 @@
 
 随机数接口，定义随机数生成的方法。调用前，需通过[createRandom](arkts-cryptoarchitecture-cryptoframework-createrandom-f.md)创建一个Random实例。
 
-**起始版本：** 23
-
-<!--Device-cryptoFramework-interface Random--><!--Device-cryptoFramework-interface Random-End-->
+**起始版本：** 9
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Rand
@@ -24,13 +22,11 @@ enableHardwareEntropy(): void
 
 开启硬件熵源。将从TEE中获取安全随机数作为该随机数实例的熵源。
 
-**起始版本：** 23
+**起始版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Random-enableHardwareEntropy(): void--><!--Device-Random-enableHardwareEntropy(): void-End-->
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Rand
 
@@ -39,13 +35,11 @@ enableHardwareEntropy(): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -68,51 +62,21 @@ rand.generateRandom(12, (err, randData) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from '@ohos.base';
-
-function doTestEnableHardwareEntropy()
-{
-  let rand = cryptoFramework.createRandom();
-  rand.enableHardwareEntropy();
-  rand.generateRandom(12, (err, randData) => {
-    if (err) {
-      console.error("[Callback] err: " + err.code);
-    } else {
-      if (randData != undefined) {
-        console.info('[Callback]: generate random result: ' + randData.data);
-        try {
-          rand.setSeed(randData);
-        } catch (error) {
-          let e: BusinessError = error as BusinessError;
-          console.error(`sync error, ${e.code}, ${e.message}`);
-        }
-      }
-    }
-  });
-}
-```
-
 ## generateRandom
 
 ```TypeScript
-generateRandom(len: int, callback: AsyncCallback<DataBlob>): void
+generateRandom(len: number, callback: AsyncCallback<DataBlob>): void
 ```
 
 生成指定长度的随机数。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 
 - API版本12+：此接口可在Stage模型和FA模型下使用。
 - API版本9-11：此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Random-generateRandom(len: int, callback: AsyncCallback<DataBlob>): void--><!--Device-Random-generateRandom(len: int, callback: AsyncCallback<DataBlob>): void-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Rand
@@ -122,20 +86,18 @@ generateRandom(len: int, callback: AsyncCallback<DataBlob>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| len | int | 是 | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;DataBlob&gt; | 是 | 回调函数。当生成随机数成功时，err为undefined，data为获取到的随机数；否则为 错误对象。 |
+| len | number | 是 | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当生成随机数成功时，err为undefined，data为获取到的随机数；否则为 错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -150,40 +112,19 @@ rand.generateRandom(12, (err, randData) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
-function TestCreateRandom() {
-  let rand = cryptoFramework.createRandom();
-  rand.generateRandom(12, (err, randData) => {
-    if (err) {
-      console.error("[Callback] err: " + err.code);
-    } else {
-      if (randData != undefined) {
-        console.info('[Callback]: generate random result: ' + randData.data);
-      }
-    }
-  });
-}
-```
-
 ## generateRandom
 
 ```TypeScript
-generateRandom(len: int): Promise<DataBlob>
+generateRandom(len: number): Promise<DataBlob>
 ```
 
 生成指定长度的随机数。使用promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Random-generateRandom(len: int): Promise<DataBlob>--><!--Device-Random-generateRandom(len: int): Promise<DataBlob>-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Rand
@@ -193,25 +134,25 @@ generateRandom(len: int): Promise<DataBlob>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| len | int | 是 | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
+| len | number | 是 | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DataBlob&gt; | Promise对象，返回生成的随机数。 |
+| Promise & lt;DataBlob & gt; | Promise对象，返回生成的随机数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 
 **示例**
 
-ArkTS-Dyn示例：
+ArkTS示例：
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -224,24 +165,6 @@ promiseGenerateRand.then(randData => {
 }).catch((error: BusinessError) => {
   console.error(`[Promise] failed: errCode: ${error.code}, errMsg: ${error.message}`);
 });
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from '@ohos.base';
-
-async function TestGenerateRandom() {
-  try {
-    let rand = cryptoFramework.createRandom();
-    let promiseGenerateRand = await rand.generateRandom(12);
-    console.info('[Promise]: rand result: ' + promiseGenerateRand.data);
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error(`TestGenerateRandom error, ${e.code}, ${e.message}`);
-  }
-}
 ```
 
 JS示例：
@@ -313,20 +236,20 @@ export default {
 ## generateRandomSync
 
 ```TypeScript
-generateRandomSync(len: int): DataBlob
+generateRandomSync(len: number): DataBlob
 ```
 
-同步生成指定长度的随机数。 <br><br>**说明：** <br>建议优先使用异步API，[generateRandom](#generaterandom)。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
+同步生成指定长度的随机数。
 
-**起始版本：** 23
+**说明：** 建议优先使用异步API，[generateRandom](#generaterandom)。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
+
+**起始版本：** 10
 
 **模型约束：** 
 - API版本12+：此接口可在Stage模型和FA模型下使用。
 - API版本10-11：此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Random-generateRandomSync(len: int): DataBlob--><!--Device-Random-generateRandomSync(len: int): DataBlob-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Rand
@@ -336,7 +259,7 @@ generateRandomSync(len: int): DataBlob
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| len | int | 是 | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
+| len | number | 是 | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
 
 **返回值：**
 
@@ -348,9 +271,9 @@ generateRandomSync(len: int): DataBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 
 **示例**
 
@@ -449,15 +372,13 @@ setSeed(seed: DataBlob): void
 
 设置指定的种子。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 
 - API版本12+：此接口可在Stage模型和FA模型下使用。
 - API版本9-11：此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Random-setSeed(seed: DataBlob): void--><!--Device-Random-setSeed(seed: DataBlob): void-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Rand
@@ -476,8 +397,6 @@ setSeed(seed: DataBlob): void
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -499,32 +418,6 @@ rand.generateRandom(12, (err, randData) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from '@ohos.base';
-
-function TestGenerateRandom() {
-  let rand = cryptoFramework.createRandom();
-  rand.generateRandom(12, (err, randData) => {
-    if (err) {
-      console.error("[Callback] err: " + err.code);
-    } else {
-      if (randData != undefined) {
-        console.info('[Callback]: generate random result: ' + randData.data);
-        try {
-          rand.setSeed(randData);
-        } catch (error) {
-          let e: BusinessError = error as BusinessError;
-          console.error(`setSeed error, ${e.code}, ${e.message}`);
-        }
-      }
-    }
-  });
-}
-```
-
 ## algName
 
 ```TypeScript
@@ -535,15 +428,12 @@ readonly algName: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Random-readonly algName: string--><!--Device-Random-readonly algName: string-End-->
-
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Rand
 - API版本10-11：SystemCapability.Security.CryptoFramework
-

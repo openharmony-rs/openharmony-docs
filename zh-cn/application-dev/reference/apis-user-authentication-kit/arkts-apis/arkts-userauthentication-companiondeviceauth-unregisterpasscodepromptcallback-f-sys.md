@@ -20,8 +20,6 @@ function unregisterPasscodePromptCallback(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-companionDeviceAuth-function unregisterPasscodePromptCallback(): void--><!--Device-companionDeviceAuth-function unregisterPasscodePromptCallback(): void-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
@@ -30,7 +28,6 @@ function unregisterPasscodePromptCallback(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [32600001](../errorcode-useriam.md#32600001-系统服务工作异常) | The system service is not working properly. Please try again later. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-
+| [32600001](../errorcode-useriam.md#32600001-系统服务工作异常) | The system service is not working properly. Please try again later. |

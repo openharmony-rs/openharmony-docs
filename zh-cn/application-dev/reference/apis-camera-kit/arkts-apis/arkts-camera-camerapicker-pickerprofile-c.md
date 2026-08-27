@@ -2,16 +2,13 @@
 
 相机选择器的配置信息。
 
-**起始版本：** 23
-
-<!--Device-cameraPicker-class PickerProfile--><!--Device-cameraPicker-class PickerProfile-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## 导入模块
 
 ```TypeScript
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## cameraPosition
@@ -24,11 +21,9 @@ cameraPosition: camera.CameraPosition
 
 **类型：** camera.CameraPosition
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PickerProfile-cameraPosition: camera.CameraPosition--><!--Device-PickerProfile-cameraPosition: camera.CameraPosition-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -42,29 +37,24 @@ saveUri?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PickerProfile-saveUri?: string--><!--Device-PickerProfile-saveUri?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## videoDuration
 
 ```TypeScript
-videoDuration?: int
+videoDuration?: number
 ```
 
 录制的最大时长（单位：秒）。默认为0，不设置最大录制时长。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PickerProfile-videoDuration?: int--><!--Device-PickerProfile-videoDuration?: int-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-

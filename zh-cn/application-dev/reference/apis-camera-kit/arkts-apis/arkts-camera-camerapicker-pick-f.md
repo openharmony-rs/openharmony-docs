@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## pick
@@ -12,13 +11,15 @@ import { cameraPicker } from '@kit.CameraKit';
 function pick(context: Context, mediaTypes: Array<PickerMediaType>, pickerProfile: PickerProfile): Promise<PickerResult>
 ```
 
-拉起相机选择器，根据媒体类型进入相应的模式。使用Promise异步回调。 > **说明：** > > 当应用在阔折叠设备上运行时，如果已在设备展开态下启动相机picker，将设备由展开态切换到折叠态，相机picker被自动推至后台。
+拉起相机选择器，根据媒体类型进入相应的模式。使用Promise异步回调。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 当应用在阔折叠设备上运行时，如果已在设备展开态下启动相机picker，将设备由展开态切换到折叠态，相机picker被自动推至后台。
+
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-cameraPicker-function pick(context: Context, mediaTypes: Array<PickerMediaType>, pickerProfile: PickerProfile): Promise<PickerResult>--><!--Device-cameraPicker-function pick(context: Context, mediaTypes: Array<PickerMediaType>, pickerProfile: PickerProfile): Promise<PickerResult>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -57,4 +58,3 @@ async function demo(context: Context) {
   }
 }
 ```
-

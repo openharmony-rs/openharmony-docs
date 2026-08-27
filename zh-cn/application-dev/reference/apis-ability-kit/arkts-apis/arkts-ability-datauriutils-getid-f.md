@@ -9,14 +9,12 @@ import { dataUriUtils } from '@kit.AbilityKit';
 ## getId
 
 ```TypeScript
-function getId(uri: string): double
+function getId(uri: string): number
 ```
 
 获取指定uri路径末尾的ID。
 
-**起始版本：** 23
-
-<!--Device-dataUriUtils-function getId(uri: string): double--><!--Device-dataUriUtils-function getId(uri: string): double-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -30,7 +28,7 @@ function getId(uri: string): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 返回uri路径末尾的ID。 |
+| number | 返回uri路径末尾的ID。 |
 
 **错误码：**
 
@@ -51,4 +49,3 @@ try {
   console.error(`get id err, code: ${JSON.stringify((err as BusinessError).code)}, msg: ${JSON.stringify((err as BusinessError).message)}`);
 }
 ```
-

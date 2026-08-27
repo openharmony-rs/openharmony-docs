@@ -14,9 +14,7 @@ function getQuerySqlInfo(predicates: RdbPredicates, columns?: Array<string>):Sql
 
 获取用于查询数据的SQL语句，此为同步接口。
 
-**起始版本：** 23
-
-<!--Device-relationalStore-function getQuerySqlInfo(predicates: RdbPredicates, columns?: Array<string>):SqlInfo--><!--Device-relationalStore-function getQuerySqlInfo(predicates: RdbPredicates, columns?: Array<string>):SqlInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -25,7 +23,7 @@ function getQuerySqlInfo(predicates: RdbPredicates, columns?: Array<string>):Sql
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | 与指定字段匹配的谓词。 |
-| columns | Array&lt;string&gt; | 否 | 要查询的列；如果不指定此参数，则查询所有列。 |
+| columns | Array & lt;string & gt; | 否 | 要查询的列；如果不指定此参数，则查询所有列。 |
 
 **返回值：**
 
@@ -41,21 +39,9 @@ function getQuerySqlInfo(predicates: RdbPredicates, columns?: Array<string>):Sql
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 const predicates = new relationalStore.RdbPredicates("users");
 predicates.notEqualTo("age", 18);
 predicates.equalTo("name", "zhangsan");
 const sqlInfo: relationalStore.SqlInfo = relationalStore.getQuerySqlInfo(predicates);
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-const predicates = new relationalStore.RdbPredicates("users");
-predicates.notEqualTo("age", 18 as long);
-predicates.equalTo("name", "zhangsan");
-const sqlInfo: relationalStore.SqlInfo = relationalStore.getQuerySqlInfo(predicates);
-```
-

@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了实现状态管理V2与[animateTo/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)等动效的同步刷新，开发者可以使用[applySync/apis-arkui/js-apis-stateManagement.md#applysync22)、[flushUpdates/apis-arkui/js-apis-stateManagement.md#flushupdates22)或[flushUIUpdates/apis-arkui/js-apis-stateManagement.md#flushuiupdates22)接口。
+为了实现状态管理V2与animateTo等动效的同步刷新，开发者可以使用applySync、flushUpdates或flushUIUpdates接口。
 
 > **说明：**
 >
@@ -15,7 +15,7 @@
 
 ## 概述
 
-与状态管理V1不同的是，状态管理V2修改完状态变量后不会立即[标脏](./arkts-state-management-glossary.md#mark-dirty标脏)，而是抛出一个Promise微任务（优先级低于宏任务），该微任务在当前宏任务执行完成后才会处理自定义组件标脏，具体差异可参考[V1状态变量更新和V2状态变量更新差异](./arkts-v1-v2-update-difference.md#v1状态变量更新和v2状态变量更新差异)。而animateTo动效会立刻刷新已标脏节点来决定动效首帧。如果动效中使用了V2状态变量，并且在动效前修改了该状态变量，由于调用animateTo时状态变量的变化尚未标脏，这会导致animateTo的动效首帧不符合预期。为此，引入applySync、flushUpdates和flushUIUpdates接口，实现状态管理V2的同步标脏，确保动效达到预期效果。
+与状态管理V1不同的是，状态管理V2修改完状态变量后不会立即标脏，而是抛出一个Promise微任务，该微任务在当前宏任务（如点击事件）执行完成后才会处理自定义组件标脏，具体差异可参考V1状态变量更新和V2状态变量更新差异。而animateTo动效会立刻刷新已标脏节点来决定动效首帧。如果动效中使用了V2状态变量，并且在动效前修改了该状态变量，由于调用animateTo时状态变量的变化尚未标脏，这会导致animateTo的动效首帧不符合预期。为此，引入applySync、flushUpdates和flushUIUpdates接口，实现状态管理V2的同步刷新，确保动效达到预期效果。
 
 使用applySync/flushUpdates/flushUIUpdates接口需要导入UIUtils工具。
 
@@ -25,7 +25,7 @@ import { UIUtils } from '@kit.ArkUI';
 
 ## 使用规则
 
-- applySync接口用于同步刷新指定的状态变量，该接口接收一个闭包函数，仅刷新闭包函数内的修改，包括更新[@Computed](./arkts-new-computed.md)计算、[@Monitor](./arkts-new-monitor.md)回调以及重新渲染UI节点。
+- applySync接口用于同步刷新指定的状态变量，该接口接收一个闭包函数，仅刷新闭包函数内的修改，包括更新@Computed计算、@Monitor回调以及重新渲染UI节点。
   
   <!-- @[ApplySyncUse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncUse.ets) -->
   
@@ -177,6 +177,14 @@ import { UIUtils } from '@kit.ArkUI';
   }
   ```
 
+- 三个同步刷新接口的刷新范围对比如下表所示：
+
+| 接口           | 刷新范围          | @Computed  | @Monitor   |
+| -------------- | ----------------- | ---------- | ---------- |
+| applySync      | 仅闭包内修改      | 同步执行   | 同步执行   |
+| flushUpdates   | 所有待处理修改    | 同步执行   | 同步执行   |
+| flushUIUpdates | 所有待处理修改    | 不同步执行 | 不同步执行 |
+
 ## 限制条件
 
 - 在applySync闭包函数中嵌套调用applySync，内层的applySync将会被跳过并返回undefined，同时打印出警告信息`UIUtils.applySync will be skipped when called within another UIUtils.applySync. The inner UIUtils.applySync will return undefined`。
@@ -271,7 +279,7 @@ import { UIUtils } from '@kit.ArkUI';
   }
   ```
   
-- 不支持在@Computed装饰的getter方法中调用applySync、flushUpdates和flushUIUpdates接口，否则运行时会报错。错误信息为`The function is not allowed to be called in @Computed`，错误码为[140001/apis-arkui/errorcode-stateManagement.md#140001-applysyncflushupdatesflushuiupdates非法调用)。
+- 不支持在@Computed装饰的getter方法中调用applySync、flushUpdates和flushUIUpdates接口，否则运行时会报错。错误信息为`The function is not allowed to be called in @Computed`，错误码为140001。
   
   <!-- @[CallInComputed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/CallInComputed.ets) -->
   
@@ -309,7 +317,7 @@ import { UIUtils } from '@kit.ArkUI';
   }
   ```
 
-- 不支持在@Monitor回调函数中调用flushUpdates和flushUIUpdates接口，否则运行时会报错。错误信息为`The function is not allowed to be called in @Monitor`，错误码为[140002/apis-arkui/errorcode-stateManagement.md#140002-flushupdatesflushuiupdates非法调用)。
+- 不支持在@Monitor回调函数中调用flushUpdates和flushUIUpdates接口，否则运行时会报错。错误信息为`The function is not allowed to be called in @Monitor`，错误码为140002。
   
   <!-- @[CallInMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/CallInMonitor.ets) -->
   
@@ -335,7 +343,7 @@ import { UIUtils } from '@kit.ArkUI';
         Text(`${this.count}`)
         Button('change count')
           .onClick(() => {
-          this.count++;
+            this.count++;
           })
           // ...
       }
@@ -407,7 +415,7 @@ struct Index {
 
 ### 路由场景
 
-在路由场景下设置[共享元素转场/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)，使用applySync接口可以使得转场时同步刷新name值，实现转场动效效果。在如下示例代码中，从Index页面向PageTransitionTwo页面跳转时，两个页面的id值不匹配，没有转场动效。从PageTransitionTwo页面返回Index页面时，两个页面的id值匹配，有转场动效。
+在路由场景下设置共享元素转场，使用applySync接口可以使得转场时同步刷新name值，实现转场动效效果。在如下示例代码中，从Index页面向PageTransitionTwo页面跳转时，两个页面的id值不匹配，没有转场动效。从PageTransitionTwo页面返回Index页面时，两个页面的id值匹配，有转场动效。
 
 <!-- @[PageUse_PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/PageUse.ets) -->
 

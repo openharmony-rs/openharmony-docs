@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-userStatus-export interface UserStatusData--><!--Device-userStatus-export interface UserStatusData-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
 **系统接口：** 此接口为系统接口。
@@ -19,18 +17,16 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 ## errCode
 
 ```TypeScript
-errCode: int
+errCode: number
 ```
 
 表示业务错误码。0表示成功，非0表示失败。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserStatusData-errCode: int--><!--Device-UserStatusData-errCode: int-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -50,8 +46,6 @@ feature: UserStatusFeature
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserStatusData-feature: UserStatusFeature--><!--Device-UserStatusData-feature: UserStatusFeature-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
 **系统接口：** 此接口为系统接口。
@@ -59,18 +53,16 @@ feature: UserStatusFeature
 ## result
 
 ```TypeScript
-result: int
+result: number
 ```
 
 表示用户状态检测结果。0表示成功，非0表示失败。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserStatusData-result: int--><!--Device-UserStatusData-result: int-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -90,9 +82,6 @@ status: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserStatusData-status: string--><!--Device-UserStatusData-status: string-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
 **系统接口：** 此接口为系统接口。
-

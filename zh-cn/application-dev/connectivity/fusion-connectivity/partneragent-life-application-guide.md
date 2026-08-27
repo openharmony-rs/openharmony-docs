@@ -3,7 +3,7 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @guoxiadi-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -17,8 +17,8 @@
 
 ## 关键流程
 
-1. 伙伴设备应用需要先实现[PartnerAgentExtensionAbility/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)，里面实现应用被系统唤醒后需要实现的数据传输业务操作。
-2. 伙伴设备触发和伙伴设备的[蓝牙配对](../../connectivity/bluetooth/br-pair-device-development-guide.md)操作，再调用 **bindDevice** 接口注册伙伴设备。PartnerAgent服务感知到伙伴设备注册后，才会调用蓝牙服务接口进行[BLE](../../connectivity/terminology.md#ble)扫描和监听蓝牙连接状态去发现伙伴设备，进而拉起伙伴设备[ExtensionAbility/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)。若伙伴设备未注册，PartnerAgent服务不会拉起伙伴设备Extension。
+1. 伙伴设备应用需要先实现PartnerAgentExtensionAbility，里面实现应用被系统唤醒后需要实现的数据传输业务操作。
+2. 伙伴设备触发和伙伴设备的蓝牙配对操作，再调用 **bindDevice** 接口注册伙伴设备。PartnerAgent服务感知到伙伴设备注册后，才会调用蓝牙服务接口进行BLE扫描和监听蓝牙连接状态去发现伙伴设备，进而拉起伙伴设备ExtensionAbility。若伙伴设备未注册，PartnerAgent服务不会拉起伙伴设备Extension。
 3. 该注册信息会持久化存储，OpenHarmony设备重启后依旧生效。
 4. 伙伴设备应用不需要使用该设备后，可调用 **unbindDevice** 接口解注册设备。
 
@@ -50,14 +50,14 @@
    ```
 
 ### 申请蓝牙权限
-需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，请参考[声明权限](../../security/AccessToken/declare-permissions.md)和[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，请参考声明权限和向用户申请授权。
 
 ### PartnerAgentExtensionAbility实现
 
-应用需要实现[PartnerAgentExtensionAbility/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)，本模块会在OpenHarmony设备BLE扫描到或连上**已注册**的伙伴设备时被拉起，OpenHarmony设备和已注册伙伴设备断开蓝牙连接后，本模块会延迟3分钟销毁伙伴设备Extension进程。它通过提供以下函数运行保持应用可唤醒。
+应用需要实现PartnerAgentExtensionAbility，本模块会在OpenHarmony设备BLE扫描到或连上**已注册**的伙伴设备时被拉起，OpenHarmony设备和已注册伙伴设备断开蓝牙连接后，本模块会延迟3分钟销毁伙伴设备Extension进程。它通过提供以下函数运行保持应用可唤醒。
 - **onDeviceDiscovered(deviceAddress: PartnerDeviceAddress)**
 
-  已注册设备[ACL](../../connectivity/terminology.md#acl)连接成功或BLE扫描发现时触发该回调，开发者可以在此进行一些数据传输业务操作，如蓝牙[SPP连接](../bluetooth/spp-development-guide.md)、设备发现信息打印等。
+  已注册设备ACL连接成功或BLE扫描发现时触发该回调，开发者可以在此进行一些数据传输业务操作，如蓝牙SPP连接、设备发现信息打印等。
 
 - **onDestroyWithReason(reason: PartnerAgentExtensionAbilityDestroyReason)**
  
@@ -80,13 +80,13 @@
 
 ### 注册设备流程
 
-调用[bindDevice/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)接口注册设备，注册过的设备才会触发伙伴设备Extension拉起流程。
+调用bindDevice接口注册设备，注册过的设备才会触发伙伴设备Extension拉起流程。
 
-- 注册前需要调用接口[isDeviceControlEnabled/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgent.md#partneragentisdevicecontrolenabled)判断当前设备的互通功能是否打开。
+- 注册前需要调用接口isDeviceControlEnabled判断当前设备的互通功能是否打开。
 
 - 该设备在注册前需要保证与本机蓝牙处于配对状态。
 
-- 拉起Ability的name为工程Module对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中注册PartnerAgentExtensionAbility，type标签设置为“partnerAgent”的ability的name。需与应用模块级配置文件[module.json5](../../quick-start/module-configuration-file.md) 中的[extensionabilities](../../quick-start/module-configuration-file.md#extensionabilities标签) name属性值相同。
+- 拉起Ability的name为工程Module对应的module.json5配置文件中注册PartnerAgentExtensionAbility，type标签设置为“partnerAgent”的ability的name。需与应用模块级配置文件module.json5 中的extensionabilities name属性值相同。
 
 ```ts
 // 注册的设备地址信息
@@ -127,9 +127,9 @@ if (isEnabled == false) {
 
 ### 解注册设备流程
 
-当伙伴设备应用不再需要被系统保持可唤醒状态，调用应用解注册设备接口[unbindDevice/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgent.md#partneragentunbinddevice)
+当伙伴设备应用不再需要被系统保持可唤醒状态，调用应用解注册设备接口unbindDevice
 
-- 解注册前需要调用接口建议调用[isDeviceBound/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgent.md#partneragentisdevicebound)接口判断设备注册状态，已注册设备再进行解注册。
+- 解注册前需要调用接口建议调用isDeviceBound接口判断设备注册状态，已注册设备再进行解注册。
 
 - 解注册后，应用的PartnerAgentExtensionAbility进程将不再接收此设备的发现和下线状态通知。
 
@@ -167,7 +167,7 @@ if (isBound == true) {
 }
 ```
 
-- 具体工程搭建可参考本章节[完整示例](#完整示例)。
+- 具体工程搭建可参考本章节完整示例。
 
 
 ## 完整示例
@@ -395,7 +395,7 @@ if (isBound == true) {
     }
     ```
 
- 5. 在工程Module对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中注册PartnerAgentExtensionAbility，type标签需要设置为“partnerAgent”，srcEntry标签表示当前PartnerAgentExtensionAbility组件所对应的代码路径。
+ 5. 在工程Module对应的module.json5配置文件中注册PartnerAgentExtensionAbility，type标签需要设置为“partnerAgent”，srcEntry标签表示当前PartnerAgentExtensionAbility组件所对应的代码路径。
 
     ``` JSON5
     "extensionAbilities": [

@@ -1,10 +1,8 @@
 # BackupParams（系统接口）
 
-为备份恢复提供可选配置参数。
+为备份恢复提供可选配置参数。@interface BackupParams
 
-**起始版本：** 23
-
-<!--Device-backup-interface BackupParams--><!--Device-backup-interface BackupParams-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -26,11 +24,8 @@ parameters?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BackupParams-parameters?: string--><!--Device-BackupParams-parameters?: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
 **系统接口：** 此接口为系统接口。
-

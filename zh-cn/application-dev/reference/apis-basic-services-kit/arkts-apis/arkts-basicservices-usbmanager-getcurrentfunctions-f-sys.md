@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## getCurrentFunctions
@@ -21,8 +20,6 @@ function getCurrentFunctions(): FunctionType
 
 **替代接口：** [getDeviceFunctions](arkts-basicservices-usbmanager-getdevicefunctions-f-sys.md)()
 
-<!--Device-usbManager-function getCurrentFunctions(): FunctionType--><!--Device-usbManager-function getCurrentFunctions(): FunctionType-End-->
-
 **系统能力：** SystemCapability.USB.USBManager
 
 **系统接口：** 此接口为系统接口。
@@ -33,3 +30,9 @@ function getCurrentFunctions(): FunctionType
 | --- | --- |
 | FunctionType | 当前的USB功能列表的数字组合掩码。如果开发者模式关闭且没有设备接入，则返回undefined，需要对返回值做判空处理。 |
 
+**示例**
+
+```TypeScript
+// 获取当前USB功能的数字掩码
+let ret: usbManager.FunctionType = usbManager.getCurrentFunctions();
+```

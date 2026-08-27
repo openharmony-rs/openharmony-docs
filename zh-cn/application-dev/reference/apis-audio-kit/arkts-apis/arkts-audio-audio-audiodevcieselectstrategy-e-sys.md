@@ -1,10 +1,8 @@
 # AudioDevcieSelectStrategy（系统接口）
 
-Enumerates the device select strategy.
+表示设备选择策略的枚举。
 
-**起始版本：** 24
-
-<!--Device-audio-enum AudioDevcieSelectStrategy--><!--Device-audio-enum AudioDevcieSelectStrategy-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -16,11 +14,9 @@ Enumerates the device select strategy.
 SELECT_STRATEGY_DEFAULT = 0
 ```
 
-The default follow device select strategy.
+默认设备选择策略。
 
-**起始版本：** 24
-
-<!--Device-AudioDevcieSelectStrategy-SELECT_STRATEGY_DEFAULT = 0--><!--Device-AudioDevcieSelectStrategy-SELECT_STRATEGY_DEFAULT = 0-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -32,13 +28,10 @@ The default follow device select strategy.
 SELECT_STRATEGY_INDEPENDENT = 1
 ```
 
-The independent device select strategy..
+独立设备选择策略。
 
-**起始版本：** 24
-
-<!--Device-AudioDevcieSelectStrategy-SELECT_STRATEGY_INDEPENDENT = 1--><!--Device-AudioDevcieSelectStrategy-SELECT_STRATEGY_INDEPENDENT = 1-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
 **系统接口：** 此接口为系统接口。
-

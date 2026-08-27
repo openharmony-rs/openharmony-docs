@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-declare enum DistortionMode--><!--Device-unnamed-declare enum DistortionMode-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -21,8 +19,6 @@ distortion动画自适应实现
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DistortionMode-DISTORTION_AUTO = 0--><!--Device-DistortionMode-DISTORTION_AUTO = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ distortion动画一直使能
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DistortionMode-DISTORTION_ENABLED = 1--><!--Device-DistortionMode-DISTORTION_ENABLED = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -58,9 +52,6 @@ DISTORTION_DISABLED = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DistortionMode-DISTORTION_DISABLED = 2--><!--Device-DistortionMode-DISTORTION_DISABLED = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

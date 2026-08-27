@@ -29,12 +29,12 @@
 | 名称 | 描述 |
 | -- | -- |
 | [OH_AVCodec *OH_VideoDecoder_CreateByMime(const char *mime)](#oh_videodecoder_createbymime) | 根据MIME类型创建视频解码器实例，大多数情况下建议使用。 |
-| [OH_AVCodec *OH_VideoDecoder_CreateByName(const char *name)](#oh_videodecoder_createbyname) | 根据视频解码器名称创建视频解码器实例。使用此接口的前提是知道解码器的确切名称，解码器的名称可以通过能力查询获取。<br> 详情请参见：[获取支持的编解码能力](../../media/avcodec/obtain-supported-codecs.md#创建指定名称的编解码器)。 |
+| [OH_AVCodec *OH_VideoDecoder_CreateByName(const char *name)](#oh_videodecoder_createbyname) | 根据视频解码器名称创建视频解码器实例。使用此接口的前提是知道解码器的确切名称，解码器的名称可以通过能力查询获取。<br> 详情请参见：[获取支持的编解码能力](../../../media/avcodec/obtain-supported-codecs.md#创建指定名称的编解码器)。 |
 | [OH_AVErrCode OH_VideoDecoder_Destroy(OH_AVCodec *codec)](#oh_videodecoder_destroy) | 清理解码器内部资源，销毁解码器实例。不能重复销毁。 |
 | [OH_AVErrCode OH_VideoDecoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallback callback, void *userData)](#oh_videodecoder_setcallback) | 设置异步回调函数，让应用可以响应视频解码器生成的事件。在调用OH_VideoDecoder_Prepare接口之前，必须调用此接口。(API11废弃) |
 | [OH_AVErrCode OH_VideoDecoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallback callback, void *userData)](#oh_videodecoder_registercallback) | 注册异步回调函数，让应用可以响应视频解码器生成的事件。在调用OH_VideoDecoder_Prepare接口之前，必须调用此接口。 |
 | [OH_AVErrCode OH_VideoDecoder_SetSurface(OH_AVCodec *codec, OHNativeWindow *window)](#oh_videodecoder_setsurface) | 设置输出surface以提供视频解码输出。<br> 在初始化阶段，必须在调用OH_VideoDecoder_Prepare接口之前调用此接口。在Executing状态可以直接调用该接口。 |
-| [OH_AVErrCode OH_VideoDecoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)](#oh_videodecoder_configure) | 配置视频解码器，通常需要配置解码视频的描述信息，这些信息可以从{@link OH_AVSource}中提取。在调用OH_VideoDecoder_Prepare接口之前，必须调用此接口。<br> 以下参数的配置范围可通过[能力查询](../../media/avcodec/obtain-supported-codecs.md)获取，OH_MD_KEY_ROTATION配置的参数都支持。<br> 设置OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY接口时如果当前平台不支持，不报错，走正常解码流程。<br> 参数校验规则： \| Key \| 配置正常范围的值 \| 配置超出范围的值 \| 不配置该参数 \| \| ----------\| -------- \| -------- \| ------ \| \| OH_MD_KEY_WIDTH \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \| \| OH_MD_KEY_HEIGHT \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \| \| OH_MD_KEY_PIXEL_FORMAT 请参阅{@link OH_AVPixelFormat} \| AV_ERR_OK \| AV_ERR_UNSUPPORT \| AV_ERR_OK \| \| OH_MD_KEY_FRAME_RATE \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \| \| OH_MD_KEY_ROTATION 请参阅{@link OH_MD_KEY_ROTATION} \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \|  |
+| [OH_AVErrCode OH_VideoDecoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)](#oh_videodecoder_configure) | 配置视频解码器，通常需要配置解码视频的描述信息，这些信息可以从{@link OH_AVSource}中提取。在调用OH_VideoDecoder_Prepare接口之前，必须调用此接口。<br> 以下参数的配置范围可通过[能力查询](../../../media/avcodec/obtain-supported-codecs.md)获取，OH_MD_KEY_ROTATION配置的参数都支持。<br> 设置OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY接口时如果当前平台不支持，不报错，走正常解码流程。<br> 参数校验规则： \| Key \| 配置正常范围的值 \| 配置超出范围的值 \| 不配置该参数 \| \| ----------\| -------- \| -------- \| ------ \| \| OH_MD_KEY_WIDTH \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \| \| OH_MD_KEY_HEIGHT \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \| \| OH_MD_KEY_PIXEL_FORMAT 请参阅{@link OH_AVPixelFormat} \| AV_ERR_OK \| AV_ERR_UNSUPPORT \| AV_ERR_OK \| \| OH_MD_KEY_FRAME_RATE \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \| \| OH_MD_KEY_ROTATION 请参阅{@link OH_MD_KEY_ROTATION} \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \|  |
 | [OH_AVErrCode OH_VideoDecoder_Prepare(OH_AVCodec *codec)](#oh_videodecoder_prepare) | 准备解码器的内部资源，在调用该接口之前，必须调用OH_VideoDecoder_Configure接口。 |
 | [OH_AVErrCode OH_VideoDecoder_Start(OH_AVCodec *codec)](#oh_videodecoder_start) | 调用[OH_VideoDecoder_Prepare](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_prepare)接口成功后调用此接口启动解码器。成功启动后，解码器将开始报告注册的回调事件。 |
 | [OH_AVErrCode OH_VideoDecoder_Stop(OH_AVCodec *codec)](#oh_videodecoder_stop) | 停止解码器，释放输入输出buffer。停止后，可以通过调用OH_VideoDecoder_Start接口重新进入Running状态。<br> 需要注意的是，如果编解码器特定数据以前已输入到解码器，则需要再次输入。 |
@@ -92,7 +92,7 @@ OH_AVCodec *OH_VideoDecoder_CreateByName(const char *name)
 
 **描述**
 
-根据视频解码器名称创建视频解码器实例。使用此接口的前提是知道解码器的确切名称，解码器的名称可以通过能力查询获取。<br> 详情请参见：[获取支持的编解码能力](../../media/avcodec/obtain-supported-codecs.md#创建指定名称的编解码器)。
+根据视频解码器名称创建视频解码器实例。使用此接口的前提是知道解码器的确切名称，解码器的名称可以通过能力查询获取。<br> 详情请参见：[获取支持的编解码能力](../../../media/avcodec/obtain-supported-codecs.md#创建指定名称的编解码器)。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -231,7 +231,7 @@ OH_AVErrCode OH_VideoDecoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 
 **描述**
 
-配置视频解码器，通常需要配置解码视频的描述信息，这些信息可以从{@link OH_AVSource}中提取。在调用OH_VideoDecoder_Prepare接口之前，必须调用此接口。<br> 以下参数的配置范围可通过[能力查询](../../media/avcodec/obtain-supported-codecs.md)获取，OH_MD_KEY_ROTATION配置的参数都支持。<br> 设置OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY接口时如果当前平台不支持，不报错，走正常解码流程。<br> 参数校验规则： \| Key \| 配置正常范围的值 \| 配置超出范围的值 \| 不配置该参数 \| \| ----------\| -------- \| -------- \| ------ \| \| OH_MD_KEY_WIDTH \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \| \| OH_MD_KEY_HEIGHT \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \| \| OH_MD_KEY_PIXEL_FORMAT 请参阅{@link OH_AVPixelFormat} \| AV_ERR_OK \| AV_ERR_UNSUPPORT \| AV_ERR_OK \| \| OH_MD_KEY_FRAME_RATE \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \| \| OH_MD_KEY_ROTATION 请参阅{@link OH_MD_KEY_ROTATION} \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \| 
+配置视频解码器，通常需要配置解码视频的描述信息，这些信息可以从{@link OH_AVSource}中提取。在调用OH_VideoDecoder_Prepare接口之前，必须调用此接口。<br> 以下参数的配置范围可通过[能力查询](../../../media/avcodec/obtain-supported-codecs.md)获取，OH_MD_KEY_ROTATION配置的参数都支持。<br> 设置OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY接口时如果当前平台不支持，不报错，走正常解码流程。<br> 参数校验规则： \| Key \| 配置正常范围的值 \| 配置超出范围的值 \| 不配置该参数 \| \| ----------\| -------- \| -------- \| ------ \| \| OH_MD_KEY_WIDTH \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \| \| OH_MD_KEY_HEIGHT \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \| \| OH_MD_KEY_PIXEL_FORMAT 请参阅{@link OH_AVPixelFormat} \| AV_ERR_OK \| AV_ERR_UNSUPPORT \| AV_ERR_OK \| \| OH_MD_KEY_FRAME_RATE \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \| \| OH_MD_KEY_ROTATION 请参阅{@link OH_MD_KEY_ROTATION} \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \| 
 
 参数校验规则：
 | Key    | 配置正常范围的值 | 配置超出范围的值 | 不配置该参数 |

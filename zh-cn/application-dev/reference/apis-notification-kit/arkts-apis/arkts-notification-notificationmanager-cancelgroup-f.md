@@ -12,11 +12,9 @@ import { notificationManager } from '@kit.NotificationKit';
 function cancelGroup(groupName: string, callback: AsyncCallback<void>): void
 ```
 
-取消当前应用指定组下的通知。使用callback异步回调。 通知组groupName是在发布通知时通过NotificationRequest的groupName字段指定的分组标识。 取消后，该组下所有通知将从通知中心移除。适用于需要按业务分组批量取消通知的场景。
+取消当前应用指定组下的通知。使用callback异步回调。通知组groupName是在发布通知时通过NotificationRequest的groupName字段指定的分组标识。 取消后，该组下所有通知将从通知中心移除。适用于需要按业务分组批量取消通知的场景。
 
-**起始版本：** 23
-
-<!--Device-notificationManager-function cancelGroup(groupName: string, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function cancelGroup(groupName: string, callback: AsyncCallback<void>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -25,7 +23,7 @@ function cancelGroup(groupName: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | groupName | string | 是 | 通知组名称，此名称需要在发布通知时通过 [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)对象指定。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当取消当前应用指定组下的通知成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当取消当前应用指定组下的通知成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -38,28 +36,10 @@ function cancelGroup(groupName: string, callback: AsyncCallback<void>): void
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let cancelGroupCallback = (err: BusinessError): void => {
-  if (err) {
-    console.error(`Failed to cancel group. Code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info(`Succeeded in canceling group.`);
-  }
-}
-let groupName: string = 'GroupName';
-notificationManager.cancelGroup(groupName, cancelGroupCallback);
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let cancelGroupCallback = (err: BusinessError | null): void => {
   if (err) {
     console.error(`Failed to cancel group. Code is ${err.code}, message is ${err.message}`);
   } else {
@@ -77,11 +57,9 @@ notificationManager.cancelGroup(groupName, cancelGroupCallback);
 function cancelGroup(groupName: string): Promise<void>
 ```
 
-取消当前应用指定组下的通知。使用Promise异步回调。 通知组groupName是在发布通知时通过NotificationRequest的groupName字段指定的分组标识。 取消后，该组下所有通知将从通知中心移除。适用于需要按业务分组批量取消通知的场景。
+取消当前应用指定组下的通知。使用Promise异步回调。通知组groupName是在发布通知时通过NotificationRequest的groupName字段指定的分组标识。 取消后，该组下所有通知将从通知中心移除。适用于需要按业务分组批量取消通知的场景。
 
-**起始版本：** 23
-
-<!--Device-notificationManager-function cancelGroup(groupName: string): Promise<void>--><!--Device-notificationManager-function cancelGroup(groupName: string): Promise<void>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -95,7 +73,7 @@ function cancelGroup(groupName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -108,8 +86,6 @@ function cancelGroup(groupName: string): Promise<void>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -120,18 +96,3 @@ notificationManager.cancelGroup(groupName).then(() => {
   console.error(`Failed to cancel group. Code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let groupName: string = 'GroupName';
-notificationManager.cancelGroup(groupName).then(() => {
-  console.info(`Succeeded in canceling group.`);
-}).catch((err: Error): void => {
-  let error: BusinessError = err as BusinessError;
-  console.error(`Failed to cancel group. Code is ${error.code}, message is ${error.message}`);
-});
-```
-

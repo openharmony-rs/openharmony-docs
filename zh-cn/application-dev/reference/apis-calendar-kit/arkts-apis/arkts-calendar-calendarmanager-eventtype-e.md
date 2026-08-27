@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-calendarManager-enum EventType--><!--Device-calendarManager-enum EventType-End-->
-
 **系统能力：** SystemCapability.Applications.CalendarData
 
 ## NORMAL
@@ -19,8 +17,6 @@ NORMAL = 0
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EventType-NORMAL = 0--><!--Device-EventType-NORMAL = 0-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
@@ -36,7 +32,4 @@ IMPORTANT = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EventType-IMPORTANT = 1--><!--Device-EventType-IMPORTANT = 1-End-->
-
 **系统能力：** SystemCapability.Applications.CalendarData
-

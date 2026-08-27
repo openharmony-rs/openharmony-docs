@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { vpn } from '@kit.NetworkKit';
-import { vpnExtension } from '@kit.NetworkKit';
 ```
 
 ## getConnectedVpnAppInfo
@@ -19,8 +18,6 @@ function getConnectedVpnAppInfo(): Promise<Array<string>>
 
 **需要权限：** ohos.permission.MANAGE_VPN
 
-<!--Device-vpn-function getConnectedVpnAppInfo(): Promise<Array<string>>--><!--Device-vpn-function getConnectedVpnAppInfo(): Promise<Array<string>>-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
@@ -29,7 +26,7 @@ function getConnectedVpnAppInfo(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | The promise returned by the connected VPN App Info. |
+| Promise & lt;Array & lt;string & gt; & gt; | The promise returned by the connected VPN App Info. |
 
 **错误码：**
 
@@ -37,6 +34,5 @@ function getConnectedVpnAppInfo(): Promise<Array<string>>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [19900002](../errorcode-net-vpn.md#19900002-系统内部错误) | System internal error. |
 | [19900001](../errorcode-net-vpn.md#19900001-无效参数) | Invalid parameter value. |
-
+| [19900002](../errorcode-net-vpn.md#19900002-系统内部错误) | System internal error. |

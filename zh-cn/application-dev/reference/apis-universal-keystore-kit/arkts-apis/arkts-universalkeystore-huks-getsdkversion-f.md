@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
-import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
 ## getSdkVersion
@@ -13,13 +12,15 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 function getSdkVersion(options: HuksOptions): string
 ```
 
-获取当前系统sdk版本。 > **说明：** > > 从API version 8开始支持，从API version 11开始废弃。
+获取当前系统sdk版本。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 11开始废弃。
 
 **起始版本：** 8
 
 **废弃版本：** 11
-
-<!--Device-huks-function getSdkVersion(options: HuksOptions): string--><!--Device-huks-function getSdkVersion(options: HuksOptions): string-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -46,4 +47,3 @@ let emptyOptions: huks.HuksOptions = {
 };
 let result = huks.getSdkVersion(emptyOptions);
 ```
-

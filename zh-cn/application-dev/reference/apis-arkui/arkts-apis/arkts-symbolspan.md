@@ -1,4 +1,0 @@
-# symbolSpan
-
-## 汇总
-

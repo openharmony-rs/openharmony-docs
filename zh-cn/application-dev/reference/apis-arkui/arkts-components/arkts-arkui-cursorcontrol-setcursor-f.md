@@ -19,8 +19,6 @@ function setCursor(value: PointerStyle): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-cursorControl-function setCursor(value: PointerStyle): void--><!--Device-cursorControl-function setCursor(value: PointerStyle): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -28,4 +26,3 @@ function setCursor(value: PointerStyle): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [PointerStyle](arkts-arkui-pointerstyle-t.md) | 是 | 设置的鼠标样式。 |
-

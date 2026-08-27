@@ -4,18 +4,11 @@ WebResourceRequest是Web组件中表示网络资源请求的类，提供了关�
 
 **起始版本：** 8
 
-<!--Device-unnamed-declare class WebResourceRequest--><!--Device-unnamed-declare class WebResourceRequest-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## constructor
@@ -30,8 +23,6 @@ WebResourceRequest的构造函数。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebResourceRequest-constructor()--><!--Device-WebResourceRequest-constructor()-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## getRequestHeader
@@ -45,8 +36,6 @@ getRequestHeader(): Array<Header>
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebResourceRequest-getRequestHeader(): Array<Header>--><!--Device-WebResourceRequest-getRequestHeader(): Array<Header>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -68,8 +57,6 @@ getRequestMethod(): string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebResourceRequest-getRequestMethod(): string--><!--Device-WebResourceRequest-getRequestMethod(): string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -89,8 +76,6 @@ getRequestUrl(): string
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebResourceRequest-getRequestUrl(): string--><!--Device-WebResourceRequest-getRequestUrl(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -112,15 +97,13 @@ isMainFrame(): boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebResourceRequest-isMainFrame(): boolean--><!--Device-WebResourceRequest-isMainFrame(): boolean-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回资源请求是否为主frame的判断结果。 <br>true表示资源请求为主frame，false表示资源请求不为主frame。 |
+| boolean | 返回资源请求是否为主frame的判断结果。 |
 
 ## isRedirect
 
@@ -134,15 +117,13 @@ isRedirect(): boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebResourceRequest-isRedirect(): boolean--><!--Device-WebResourceRequest-isRedirect(): boolean-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回资源请求是否被服务端重定向。 <br>true表示资源请求被服务端重定向，false表示资源请求未被服务端重定向。 |
+| boolean | 返回资源请求是否被服务端重定向。 |
 
 ## isRequestGesture
 
@@ -156,13 +137,10 @@ isRequestGesture(): boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebResourceRequest-isRequestGesture(): boolean--><!--Device-WebResourceRequest-isRequestGesture(): boolean-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回资源请求是否与手势（如点击）相关联。 <br>true表示返回资源请求与手势（如点击）相关联，false表示返回资源请求与手势（如点击）不相关联。 |
-
+| boolean | 返回资源请求是否与手势（如点击）相关联。 |

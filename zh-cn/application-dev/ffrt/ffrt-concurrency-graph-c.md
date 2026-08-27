@@ -81,7 +81,7 @@ task5(OUT A);
 
 ![image](figures/ffrt_figure1.png)
 
-借助FFRT提供了图依赖并发范式，可以描述任务依赖关系，同时并行化上述视频处理流程，代码如下所示：
+借助FFRT提供的图依赖并发范式，可以描述任务依赖关系，同时并行化上述视频处理流程，代码如下所示：
 
 <!-- @[parallel_dep_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.h) -->
 
@@ -171,7 +171,7 @@ int DependenceCExec()
 
 > **说明：**
 >
-> `ffrt_submit_h_f`和`ffrt_submit_f`接口可以接收裸函数指针任务作为参数，如果任务存在前后处理可以参见[ffrt_alloc_auto_managed_function_storage_base](ffrt-api-guideline-c.md#ffrt_alloc_auto_managed_function_storage_base)函数查看如何构造任务结构体。
+> `ffrt_submit_h_f`和`ffrt_submit_f`接口可以接收裸函数指针任务作为参数，如果任务存在前后处理可以参见ffrt_alloc_auto_managed_function_storage_base函数查看如何构造任务结构体。
 
 ## 示例：斐波那契数列
 
@@ -257,7 +257,7 @@ Fibonacci(5) is 5
 
 > **说明：**
 >
-> `ffrt_submit_f`接口可以接收裸函数指针任务作为参数，如果任务存在前后处理可以参见[ffrt_alloc_auto_managed_function_storage_base](ffrt-api-guideline-c.md#ffrt_alloc_auto_managed_function_storage_base)函数查看如何构造任务结构体。
+> `ffrt_submit_f`接口可以接收裸函数指针任务作为参数，如果任务存在前后处理可以参见ffrt_alloc_auto_managed_function_storage_base函数查看如何构造任务结构体。
 
 各个任务在FFRT内部形成了一棵调用树：
 
@@ -269,13 +269,13 @@ Fibonacci(5) is 5
 
 | 名称                                                       | 描述                                                                              |
 | ---------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| [ffrt_submit_f](ffrt-api-guideline-c.md#ffrt_submit_f)     | 提交任务调度执行。<br/>**说明**：从API version 20开始，支持该接口。               |
-| [ffrt_submit_h_f](ffrt-api-guideline-c.md#ffrt_submit_h_f) | 提交任务调度执行并返回任务句柄。<br/>**说明**：从API version 20开始，支持该接口。 |
-| [ffrt_wait_deps](ffrt-api-guideline-c.md#ffrt_wait_deps)   | 等待依赖的任务完成。                                                              |
+| ffrt_submit_f     | 提交任务调度执行。<br/>**说明**：从API version 20开始，支持该接口。               |
+| ffrt_submit_h_f | 提交任务调度执行并返回任务句柄。<br/>**说明**：从API version 20开始，支持该接口。 |
+| ffrt_wait_deps   | 等待依赖的任务完成。                                                              |
 
 > **说明：**
 >
-> - 如何使用FFRT C++ API详见：[FFRT C++接口三方库使用指导](ffrt-development-guideline.md#using-ffrt-c-api-1)。
+> - 如何使用FFRT C++ API详见：FFRT C++接口三方库使用指导。
 > - 使用FFRT C接口或C++接口时，均可通过FFRT C++接口三方库简化头文件包含，即使用`#include "ffrt/ffrt.h"`头文件包含语句。
 
 ## 约束限制

@@ -1,8 +1,8 @@
 # 网页中安全区域计算和避让适配
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @KeeGitee-->
-<!--Designer: @LongLie-->
+<!--Owner: @sinat_22543221-->
+<!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -18,7 +18,7 @@ Web组件提供利用W3C CSS进行安全区域计算和避让适配的能力，�
 
 Web组件默认布局在安全区域内。开启<!--RP1-->沉浸式效果<!--RP1End-->后，Web网页将扩展至状态栏和导航栏，从而最大化利用屏幕可视区域，增强视觉连贯性，改善用户的UI体验。开发者可通过以下方式启用Web组件的沉浸式效果。
 
-- 通过[setWindowLayoutFullScreen/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)设置应用窗口全屏。窗口全屏时，Web组件可布局至非安全区域。
+- 通过setWindowLayoutFullScreen设置应用窗口全屏。窗口全屏时，Web组件可布局至非安全区域。
 
   ```ts
   // EntryAbility.ets
@@ -54,7 +54,7 @@ Web组件默认布局在安全区域内。开启<!--RP1-->沉浸式效果<!--RP1
   }
   ```
 
-- 通过[expandSafeArea/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)设置Web组件扩展安全区域，可以自定义扩展类型和方向。下面的示例中，Web组件可扩展至状态栏和导航栏，实现沉浸式效果。
+- 通过expandSafeArea设置Web组件扩展安全区域，可以自定义扩展类型和方向。下面的示例中，Web组件可扩展至状态栏和导航栏，实现沉浸式效果。
 
 <!-- @[use_expand_safe_area_to_enable_immersive_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/CalcAdjustSafeArea.ets) -->
 

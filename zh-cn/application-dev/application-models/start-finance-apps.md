@@ -74,7 +74,7 @@ startAbilityByType接口中type字段为finance，对应的wantParam参数：
 
 ## 目标方开发步骤
 
-1. 在module.json5中配置[uris](../quick-start/module-configuration-file.md#skills标签)，步骤如下：
+1. 在module.json5中配置uris，步骤如下：
    1. 设置linkFeature属性以声明当前应用支持的特性功能，从而系统可以从设备已安装应用中找到当前支持该特性的应用，取值范围如下：
 
         | 取值           | 含义                         |
@@ -124,7 +124,7 @@ startAbilityByType接口中type字段为finance，对应的wantParam参数：
     | -------------------- | ------------------------------------------------------------ | -------- | -------- |
     | bankCardNo  | string | 否  | 银行卡卡号 |
 
-    应用可根据[linkFeature](../quick-start/module-configuration-file.md#skills标签)中定义的特性功能，比如转账汇款和信用卡还款，结合接收到的uri开发不同的样式页面。
+    应用可根据linkFeature中定义的特性功能，比如转账汇款和信用卡还款，结合接收到的uri开发不同的样式页面。
 
 **完整示例：**
 

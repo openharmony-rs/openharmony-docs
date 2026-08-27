@@ -244,7 +244,7 @@ typedef void (*OH_MediaLibrary_OnImageDataPrepared)(MediaLibrary_ErrorCode resul
 | [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | 请求的[MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)。 |
 | [MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality) mediaQuality | 请求源的[MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality)。 |
 | [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype) type | 请求源的[MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype)。 |
-| OH_ImageSourceNative\* imageSourceNative | 当请求的图像源准备就绪时获取[OH_ImageSourceNative](../ImageKit/capi-image-nativemodule-oh-imagesourcenative.md)。 |
+| [OH_ImageSourceNative](../ImageKit/capi-image-nativemodule-oh-imagesourcenative.md)\* imageSourceNative | 当请求的图像源准备就绪时获取[OH_ImageSourceNative](../ImageKit/capi-image-nativemodule-oh-imagesourcenative.md)。 |
 
 ### OH_MediaLibrary_OnMovingPhotoDataPrepared()
 
@@ -288,7 +288,7 @@ typedef void (*OH_MediaLibrary_OnQuickImageDataPrepared)(MediaLibrary_ErrorCode 
 | [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | 请求资源的MediaLibrary_RequestId。 |
 | [MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality) mediaQuality | 请求资源的MediaLibrary_MediaQuality。 |
 | [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype) type | 请求来源的MediaLibrary_MediaContentType。 |
-| OH_ImageSourceNative\* imageSourceNative | 用于在准备图像文件时获取OH_ImageSourceNative信息，否则imageSourceNative为null。 |
-| [OH_PictureNative](../ImageKit/capi-image-nativemodule-oh-picturenative.md)\* pictureNative | 用于在准备图像源时获取OH_PictureNative信息，否则pictureNative为null。 |
+| [OH_ImageSourceNative](../ImageKit/capi-image-nativemodule-oh-imagesourcenative.md)\* imageSourceNative | 用于在准备图像文件时获取OH_ImageSourceNative信息，否则imageSourceNative为null。 |
+| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md)\* pictureNative | 用于在准备图像源时获取OH_PictureNative信息，否则pictureNative为null。 |
 
 

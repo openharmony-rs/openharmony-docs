@@ -8,8 +8,6 @@
 
 **替代接口：** [Parcelable](arkts-ipc-rpc-parcelable-i.md)
 
-<!--Device-rpc-interface Sequenceable--><!--Device-rpc-interface Sequenceable-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 ## 导入模块
@@ -31,8 +29,6 @@ marshalling(dataOut: MessageParcel): boolean
 **废弃版本：** 9
 
 **替代接口：** [marshalling](arkts-ipc-rpc-parcelable-i.md#marshalling)(dataOut: MessageSequence)
-
-<!--Device-Sequenceable-marshalling(dataOut: MessageParcel): boolean--><!--Device-Sequenceable-marshalling(dataOut: MessageParcel): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -100,8 +96,6 @@ unmarshalling(dataIn: MessageParcel): boolean
 
 **替代接口：** [unmarshalling](arkts-ipc-rpc-parcelable-i.md#unmarshalling)(dataIn: MessageSequence)
 
-<!--Device-Sequenceable-unmarshalling(dataIn: MessageParcel): boolean--><!--Device-Sequenceable-unmarshalling(dataIn: MessageParcel): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -153,4 +147,3 @@ try {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
-

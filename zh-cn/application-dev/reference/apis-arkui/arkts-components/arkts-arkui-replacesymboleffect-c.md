@@ -6,8 +6,6 @@ ReplaceSymbolEffect继承自父类SymbolEffect。
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class ReplaceSymbolEffect--><!--Device-unnamed-declare class ReplaceSymbolEffect-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,15 +29,13 @@ AppearSymbolEffect的构造函数，出现动效。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ReplaceSymbolEffect-constructor(scope?: EffectScope)--><!--Device-ReplaceSymbolEffect-constructor(scope?: EffectScope)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scope | [EffectScope](arkts-arkui-effectscope-e.md) | 否 | 动效范围。具体枚举值及说明请参考EffectScope枚举说明。 <br>默认值：EffectScope.LAYER |
+| scope | [EffectScope](arkts-arkui-effectscope-e.md) | 否 | 动效范围。具体枚举值及说明请参考EffectScope枚举说明。 默认值：EffectScope.LAYER |
 
 ## constructor
 
@@ -57,16 +53,14 @@ ReplaceSymbolEffect的构造函数，替换动效。支持指定具体的替换�
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ReplaceSymbolEffect-constructor(scope?: EffectScope, replaceType?: ReplaceEffectType)--><!--Device-ReplaceSymbolEffect-constructor(scope?: EffectScope, replaceType?: ReplaceEffectType)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scope | [EffectScope](arkts-arkui-effectscope-e.md) | 否 | 动效范围。 <br>默认值：EffectScope.LAYER |
-| replaceType | [ReplaceEffectType](arkts-arkui-replaceeffecttype-e.md) | 否 | 替换动效类型。 <br>默认值：ReplaceEffectType.SEQUENTIAL |
+| scope | [EffectScope](arkts-arkui-effectscope-e.md) | 否 | 动效范围。 默认值：EffectScope.LAYER |
+| replaceType | [ReplaceEffectType](arkts-arkui-replaceeffecttype-e.md) | 否 | 替换动效类型。 默认值：ReplaceEffectType.SEQUENTIAL |
 
 ## replaceType
 
@@ -74,7 +68,7 @@ ReplaceSymbolEffect的构造函数，替换动效。支持指定具体的替换�
 replaceType?: ReplaceEffectType
 ```
 
-替换动效类型。具体枚举值及说明请参考ReplaceEffectType枚举说明。 默认值：ReplaceEffectType.SEQUENTIAL
+替换动效类型。具体枚举值及说明请参考ReplaceEffectType枚举说明。默认值：ReplaceEffectType.SEQUENTIAL
 
 **类型：** [ReplaceEffectType](arkts-arkui-replaceeffecttype-e.md)
 
@@ -86,8 +80,6 @@ replaceType?: ReplaceEffectType
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ReplaceSymbolEffect-replaceType?: ReplaceEffectType--><!--Device-ReplaceSymbolEffect-replaceType?: ReplaceEffectType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## scope
@@ -96,7 +88,7 @@ replaceType?: ReplaceEffectType
 scope?: EffectScope
 ```
 
-动效范围。具体枚举值及说明请参考EffectScope枚举说明。 默认值：EffectScope.LAYER
+动效范围。具体枚举值及说明请参考EffectScope枚举说明。默认值：EffectScope.LAYER
 
 **类型：** [EffectScope](arkts-arkui-effectscope-e.md)
 
@@ -108,7 +100,4 @@ scope?: EffectScope
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ReplaceSymbolEffect-scope?: EffectScope--><!--Device-ReplaceSymbolEffect-scope?: EffectScope-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

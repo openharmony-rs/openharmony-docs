@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { systemTime } from '@kit.BasicServicesKit';
-import { systemTimer } from '@kit.BasicServicesKit';
 ```
 
 ## getCurrentTime
@@ -21,16 +20,14 @@ function getCurrentTime(isNano: boolean, callback: AsyncCallback<number>): void
 
 **替代接口：** [getTime](arkts-basicservices-systemdatetime-gettime-f.md)
 
-<!--Device-systemTime-function getCurrentTime(isNano: boolean, callback: AsyncCallback<number>): void--><!--Device-systemTime-function getCurrentTime(isNano: boolean, callback: AsyncCallback<number>): void-End-->
-
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isNano | boolean | 是 | 返回结果是否为纳秒数。<br>- true：表示返回结果为纳秒数（ns）。 <br>- false：表示返回结果为毫秒数（ms）。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数，返回自Unix纪元以来经过的时间。 |
+| isNano | boolean | 是 | 返回结果是否为纳秒数。   - true：表示返回结果为纳秒数（ns）。    - false：表示返回结果为毫秒数（ms）。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回自Unix纪元以来经过的时间。 |
 
 **错误码：**
 
@@ -72,15 +69,13 @@ function getCurrentTime(callback: AsyncCallback<number>): void
 
 **替代接口：** [getTime](arkts-basicservices-systemdatetime-gettime-f.md)
 
-<!--Device-systemTime-function getCurrentTime(callback: AsyncCallback<number>): void--><!--Device-systemTime-function getCurrentTime(callback: AsyncCallback<number>): void-End-->
-
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数，返回自Unix纪元以来经过的时间（ms）。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回自Unix纪元以来经过的时间（ms）。 |
 
 **错误码：**
 
@@ -122,21 +117,19 @@ function getCurrentTime(isNano?: boolean): Promise<number>
 
 **替代接口：** [getTime](arkts-basicservices-systemdatetime-gettime-f.md)
 
-<!--Device-systemTime-function getCurrentTime(isNano?: boolean): Promise<number>--><!--Device-systemTime-function getCurrentTime(isNano?: boolean): Promise<number>-End-->
-
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isNano | boolean | 否 | 返回结果是否为纳秒数，默认值为false。<br/>- true：表示返回结果为纳秒数（ns）。 <br/>- false：表示返回结果为毫秒数 （ms）。 |
+| isNano | boolean | 否 | 返回结果是否为纳秒数，默认值为false。   - true：表示返回结果为纳秒数（ns）。    - false：表示返回结果为毫秒数 （ms）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回自Unix纪元以来经过的时间。 |
+| Promise & lt;number & gt; | Promise对象，返回自Unix纪元以来经过的时间。 |
 
 **错误码：**
 
@@ -160,4 +153,3 @@ try {
   console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
 }
 ```
-

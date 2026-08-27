@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-cacheDownload-enum CacheStrategy--><!--Device-cacheDownload-enum CacheStrategy-End-->
-
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 ## FORCE
@@ -17,8 +15,6 @@ FORCE = 0
 强制更新缓存，无论缓存是否已经存在。
 
 **起始版本：** 23
-
-<!--Device-CacheStrategy-FORCE = 0--><!--Device-CacheStrategy-FORCE = 0-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -32,7 +28,4 @@ LAZY = 1
 
 **起始版本：** 23
 
-<!--Device-CacheStrategy-LAZY = 1--><!--Device-CacheStrategy-LAZY = 1-End-->
-
 **系统能力：** SystemCapability.Request.FileTransferAgent
-

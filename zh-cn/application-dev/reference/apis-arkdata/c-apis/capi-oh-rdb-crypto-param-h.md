@@ -4,6 +4,8 @@
 
 提供与关系型数据库加密参数相关的函数和枚举。
 
+**引用文件：** database/rdb/oh_rdb_crypto_param.h
+
 **库：** libnative_rdb_ndk.z.so
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -164,7 +166,7 @@ int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, in
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
-| const uint8_t *key | 表示指向数组数据的指针。 |
+| const uint8_t *key | 表示指向密钥数据的指针。 |
 | int32_t length | 表示密钥数组的大小。 |
 
 **返回：**

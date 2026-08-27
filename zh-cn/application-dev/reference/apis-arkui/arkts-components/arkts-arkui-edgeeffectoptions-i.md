@@ -1,10 +1,8 @@
 # EdgeEffectOptions
 
-[edgeEffect](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#edgeeffect11)属性参数对象。
+edgeEffect属性参数对象。@interface EdgeEffectOptions
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare interface EdgeEffectOptions--><!--Device-unnamed-declare interface EdgeEffectOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,8 +27,6 @@ alwaysEnabled: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EdgeEffectOptions-alwaysEnabled: boolean--><!--Device-EdgeEffectOptions-alwaysEnabled: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## effectEdge
@@ -39,7 +35,7 @@ alwaysEnabled: boolean
 effectEdge?: number
 ```
 
-设置边缘效果生效的边缘。 如果设置[EffectEdge](arkts-arkui-effectedge-e.md).START表示只有起始边生效。如果设置[EffectEdge](arkts-arkui-effectedge-e.md).END表示只有末尾边生效。 默认值为[EffectEdge](arkts-arkui-effectedge-e.md).START | [EffectEdge](arkts-arkui-effectedge-e.md).END表示双边同时生效。当设置为其它异常值时，则默认双边同时生效。 如果需要双边都不生效，可将edgeEffect设置为EdgeEffect.None。
+设置边缘效果生效的边缘。如果设置[EffectEdge](arkts-arkui-effectedge-e.md).START表示只有起始边生效。如果设置[EffectEdge](arkts-arkui-effectedge-e.md).END表示只有末尾边生效。默认值为[EffectEdge](arkts-arkui-effectedge-e.md).START | [EffectEdge](arkts-arkui-effectedge-e.md).END表示双边同时生效。当设置为其它异常值时，则默认双边同时生效。如果需要双边都不生效，可将edgeEffect设置为EdgeEffect.None。
 
 **类型：** number
 
@@ -49,7 +45,4 @@ effectEdge?: number
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EdgeEffectOptions-effectEdge?: number--><!--Device-EdgeEffectOptions-effectEdge?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

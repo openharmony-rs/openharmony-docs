@@ -8,12 +8,13 @@
 
 ## 概述
 
-相机拍照性能依赖算法处理的速度，而处理效果依赖算法的复杂度，算法复杂度越高的情况下会导致处理时间就越长。目前系统相机开发有两种相机拍照方案，分别是[相机分段式拍照](../media/camera/camera-deferred-capture-case.md)和相机单段式拍照：
+相机拍照性能依赖算法处理的速度，而处理效果依赖算法的复杂度，算法复杂度越高的情况下会导致处理时间就越长。目前系统相机开发有两种相机拍照方案，分别是相机分段式拍照和相机单段式拍照：
 
 - 分段式拍照是系统相机开发的重要功能之一，即相机拍照可输出低质量图用作缩略图，提升用户感知拍照速度，同时使用高质量图保证最后的成图质量达到系统相机的水平，构筑相机性能竞争力。这样可以优化系统的拍照响应时延，从而提升用户的体验。
 - 单段式拍照是在拍照过程中通过多帧融合以及多个底层算法仅会返回一张高质量图片，这样导致Shot2See（Shot2See指的是从用户点击拍照控件到在缩略图显示区域显示缩略图）完成时延比较长。
 
 分段式拍照和单段式拍照返回的图片在全质量图的情况下图片质量是一致的，但是在低质量的情况下单段式拍照的图片质量要优于分段式拍照。如果开发者考虑Shot2See的完成时延以及获取全质量图，建议使用分段式拍照，否则的话，建议使用单段式拍照。
+
 本篇文章主要以相机Shot2See场景为例，来展示分段式拍照Shot2See的完成时延要低于单段式拍照。
 
 **分段式拍照流程示意图**
@@ -59,7 +60,7 @@
 
 单段式拍照使用了`on(type:'photoAvailable',callback:AsyncCallback<Photo>):void`接口注册了全质量图的监听，默认不使能分段式拍照。具体操作步骤如下所示：
 
-1. 相机媒体数据写入[XComponent组件/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)中，用来显示图像效果。具体代码如下所示：
+1. 相机媒体数据写入XComponent组件中，用来显示图像效果。具体代码如下所示：
 
    ```typescript
    XComponent({
@@ -83,9 +84,9 @@
 
 2. initCamera函数完成一个相机生命周期初始化的过程。
 
-   - 首先通过[getCameraManager/apis-camera-kit/arkts-apis-camera-f.md#cameragetcameramanager)来获取CameraManager相机管理器类。
-   - 调用[getSupportedCameras/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)和[getSupportedOutputCapability/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)方法来获取支持的camera设备以及设备能力集。
-   - 调用[createPreviewOutput/apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)和[createPhotoOutput/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法来创建预览输出和拍照输出对象。
+   - 首先通过getCameraManager来获取CameraManager相机管理器类。
+   - 调用getSupportedCameras和getSupportedOutputCapability方法来获取支持的camera设备以及设备能力集。
+   - 调用createPreviewOutput和createPhotoOutput方法来创建预览输出和拍照输出对象。
    - 使用CameraInput的open方法来打开相机输入，通过onCameraStatusChange函数来创建CameraManager注册回调。
    - 最后调用sessionFlowFn函数创建并开启Session。具体代码如下所示：
 
@@ -168,7 +169,7 @@
      }
      ```
 
-3. 确定拍照输出流。通过cameraManager.createPhotoOutput方法创建拍照输出流，参数为[CameraOutputCapability/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)类中的photoProfiles属性。
+3. 确定拍照输出流。通过cameraManager.createPhotoOutput方法创建拍照输出流，参数为CameraOutputCapability类中的photoProfiles属性。
 
    ```typescript
    createPhotoOutputFn(cameraManager: camera.CameraManager,
@@ -185,7 +186,7 @@
    }
    ```
 
-4. 触发拍照。通过photoOutput类的[capture/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture)方法，执行拍照任务。该方法有两个参数，第一个参数为拍照设置参数的setting，setting中可以设置照片的质量和旋转角度，第二参数为回调函数。具体代码如下所示：
+4. 触发拍照。通过photoOutput类的capture方法，执行拍照任务。该方法有两个参数，第一个参数为拍照设置参数的setting，setting中可以设置照片的质量和旋转角度，第二参数为回调函数。具体代码如下所示：
 
    ```typescript
    async takePicture(): Promise<void> {
@@ -200,7 +201,7 @@
    }
    ```
 
-5. 设置拍照[photoAvailable/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)的回调来获取Photo对象，点击拍照按钮，触发此回调函数，调用getComponent方法根据图像的组件类型从图像中获取组件缓存ArrayBuffer，使用createImageSource方法来创建图片源实例，最后通过createPixelMap获取PixelMap对象。注意:如果已经注册了photoAssetAvailable回调，并且在Session开始之后又注册了photoAvailable回调，会导致流被重启。不建议开发者同时注册photoAvailable和photoAssetAvailable。
+5. 设置拍照photoAvailable的回调来获取Photo对象，点击拍照按钮，触发此回调函数，调用getComponent方法根据图像的组件类型从图像中获取组件缓存ArrayBuffer，使用createImageSource方法来创建图片源实例，最后通过createPixelMap获取PixelMap对象。注意：如果已经注册了photoAssetAvailable回调，并且在Session开始之后又注册了photoAvailable回调，会导致流被重启。不建议开发者同时注册photoAvailable和photoAssetAvailable。
 
    ```typescript
    photoOutput.on('photoAvailable', (err: BusinessError, photo: camera.Photo) => {
@@ -259,9 +260,9 @@
 
 分段式拍照是应用下发拍照任务后，系统将分多阶段上报不同质量的图片。在第一阶段，系统快速上报低质量图，应用通过`on(type:'photoAssetAvailable',callback:AsyncCallback<PhotoAsset>):void`接口会收到一个PhotoAsset对象，通过该对象可调用媒体库接口，读取图片或落盘图片。在第二阶段，分段式子服务会根据系统压力以及定制化场景进行调度，将后处理好的原图回传给媒体库，替换低质量图。具体操作步骤如下所示：
 
-由于分段式拍照和单段式拍照[步骤1](#场景示例)-步骤4相同，就不再进行赘述。
+由于分段式拍照和单段式拍照步骤1-步骤4相同，就不再进行赘述。
 
-1. 设置拍照[photoAssetAvailable/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoassetavailable12)的回调来获取photoAsset，点击拍照按钮，触发此回调函数，然后执行handlePhotoAssetCb函数来完成photoAsset全局的存储并跳转到预览页面。注意:如果已经注册了photoAssetAvailable回调，并且在Session开始之后又注册了photoAvailable回调，会导致流被重启。不建议开发者同时注册photoAvailable和photoAssetAvailable。
+1. 设置拍照photoAssetAvailable的回调来获取photoAsset，点击拍照按钮，触发此回调函数，然后执行handlePhotoAssetCb函数来完成photoAsset全局的存储并跳转到预览页面。注意：如果已经注册了photoAssetAvailable回调，并且在Session开始之后又注册了photoAvailable回调，会导致流被重启。不建议开发者同时注册photoAvailable和photoAssetAvailable。
 
    ```typescript
    photoOutput.on('photoAssetAvailable', (err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset) => {
@@ -291,7 +292,8 @@
    ```
 
 2. 进入预览界面通过GlobalContext.get().getT<image.PixelMap>('imageInfo')方法获取PhotoAsset信息，执行requestImage函数中的photoAccessHelper.MediaAssetManager.requestImageData方法根据不同的策略模式，请求图片资源数据，这里的请求策略为均衡模式BALANCE_MODE，
-最后分段式子服务会根据系统压力以及定制化场景进行调度，将后处理好的原图回传给媒体库来替换低质量图。具体代码如下所示：
+
+   最后分段式子服务会根据系统压力以及定制化场景进行调度，将后处理好的原图回传给媒体库来替换低质量图。具体代码如下所示：
 
    ```typescript
    photoBufferCallback: (arrayBuffer: ArrayBuffer) => void = (arrayBuffer: ArrayBuffer) => {

@@ -59,7 +59,7 @@ priorityGesture是带优先级的手势绑定方法，可以在组件上绑定�
 
 在默认情况下，当父组件和子组件均使用gesture绑定相同类型手势时，子组件优先识别通过gesture绑定的手势。当父组件使用priorityGesture绑定与子组件同类型的手势时，父组件优先识别通过priorityGesture绑定的手势。
 
-对于绑定了长按手势的组件，可以设置触发长按的最短时间[duration/apis-arkui/arkui-ts/ts-gesturehandler.md#longpressgesturehandleroptions)。触发长按时，系统将优先响应触发长按时间最短的组件，忽略priorityGesture设置。
+对于绑定了长按手势的组件，可以设置触发长按的最短时间duration。触发长按时，系统将优先响应触发长按时间最短的组件，忽略priorityGesture设置。
 
 例如，当父组件Column和子组件Text同时绑定TapGesture手势时，父组件以带优先级手势priorityGesture的形式进行绑定时，优先响应父组件绑定的TapGesture。
 

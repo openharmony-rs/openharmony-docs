@@ -1,10 +1,8 @@
-# SecurityUIExtensionProxy(System API)（系统接口）
+# SecurityUIExtensionProxy（系统接口）
 
 用于在双方建立连接成功后，向被拉起的Ability发送数据，以及订阅和取消订阅事件回调。
 
 **起始版本：** 26.0.0
-
-<!--Device-unnamed-declare interface SecurityUIExtensionProxy--><!--Device-unnamed-declare interface SecurityUIExtensionProxy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,8 +25,6 @@ off(type: 'asyncReceiverRegister', callback?: Callback<UIExtensionProxy>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SecurityUIExtensionProxy-off(type: 'asyncReceiverRegister', callback?: Callback<UIExtensionProxy>): void--><!--Device-SecurityUIExtensionProxy-off(type: 'asyncReceiverRegister', callback?: Callback<UIExtensionProxy>): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -38,7 +34,7 @@ off(type: 'asyncReceiverRegister', callback?: Callback<UIExtensionProxy>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'asyncReceiverRegister' | 是 | 固定填'asyncReceiverRegister'，取消订阅被拉起的Ability异步注册时触发的回调。 |
-| callback | Callback&lt;UIExtensionProxy&gt; | 否 | 回调函数。为空时取消订阅所有异步注册的回调。非空时取消订阅指定的异步注册回调。 |
+| callback | Callback&lt;[UIExtensionProxy](arkts-arkui-uiextensionproxy-i-sys.md)&gt; | 否 | 回调函数。为空时取消订阅所有异步注册的回调。非空时取消订阅指定的异步注册回调。 |
 
 ## off('syncReceiverRegister')
 
@@ -52,8 +48,6 @@ off(type: 'syncReceiverRegister', callback?: Callback<UIExtensionProxy>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SecurityUIExtensionProxy-off(type: 'syncReceiverRegister', callback?: Callback<UIExtensionProxy>): void--><!--Device-SecurityUIExtensionProxy-off(type: 'syncReceiverRegister', callback?: Callback<UIExtensionProxy>): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -63,7 +57,7 @@ off(type: 'syncReceiverRegister', callback?: Callback<UIExtensionProxy>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'syncReceiverRegister' | 是 | 固定填'syncReceiverRegister'，取消订阅被拉起的Ability同步注册时触发的回调。 |
-| callback | Callback&lt;UIExtensionProxy&gt; | 否 | 回调函数。为空时取消订阅所有同步注册的回调。非空时取消订阅指定的同步注册回调。 |
+| callback | Callback&lt;[UIExtensionProxy](arkts-arkui-uiextensionproxy-i-sys.md)&gt; | 否 | 回调函数。为空时取消订阅所有同步注册的回调。非空时取消订阅指定的同步注册回调。 |
 
 ## on('asyncReceiverRegister')
 
@@ -77,8 +71,6 @@ on(type: 'asyncReceiverRegister', callback: Callback<UIExtensionProxy>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SecurityUIExtensionProxy-on(type: 'asyncReceiverRegister', callback: Callback<UIExtensionProxy>): void--><!--Device-SecurityUIExtensionProxy-on(type: 'asyncReceiverRegister', callback: Callback<UIExtensionProxy>): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -88,7 +80,7 @@ on(type: 'asyncReceiverRegister', callback: Callback<UIExtensionProxy>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'asyncReceiverRegister' | 是 | 固定填'asyncReceiverRegister'，代表订阅被拉起的Ability异步注册时触发的回调。 |
-| callback | Callback&lt;UIExtensionProxy&gt; | 是 | 回调函数。订阅被拉起的Ability注册setReceiveDataCallback后触发的回调。 |
+| callback | Callback&lt;[UIExtensionProxy](arkts-arkui-uiextensionproxy-i-sys.md)&gt; | 是 | 回调函数。订阅被拉起的Ability注册setReceiveDataCallback后触发的回调。 |
 
 ## on('syncReceiverRegister')
 
@@ -102,8 +94,6 @@ on(type: 'syncReceiverRegister', callback: Callback<UIExtensionProxy>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SecurityUIExtensionProxy-on(type: 'syncReceiverRegister', callback: Callback<UIExtensionProxy>): void--><!--Device-SecurityUIExtensionProxy-on(type: 'syncReceiverRegister', callback: Callback<UIExtensionProxy>): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -113,7 +103,7 @@ on(type: 'syncReceiverRegister', callback: Callback<UIExtensionProxy>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'syncReceiverRegister' | 是 | 固定填'syncReceiverRegister'，代表订阅被拉起的Ability同步注册时触发的回调。 |
-| callback | Callback&lt;UIExtensionProxy&gt; | 是 | 回调函数。被拉起的Ability注册setReceiveDataForResultCallback后触发的回调。 |
+| callback | Callback&lt;[UIExtensionProxy](arkts-arkui-uiextensionproxy-i-sys.md)&gt; | 是 | 回调函数。被拉起的Ability注册setReceiveDataForResultCallback后触发的回调。 |
 
 ## send
 
@@ -127,8 +117,6 @@ send(data: Record<string, Object>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SecurityUIExtensionProxy-send(data: Record<string, Object>): void--><!--Device-SecurityUIExtensionProxy-send(data: Record<string, Object>): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -137,7 +125,7 @@ send(data: Record<string, Object>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record&lt;string, Object&gt; | 是 | 异步发送给被拉起的Ability的数据。 |
+| data | Record & lt;string, Object & gt; | 是 | 异步发送给被拉起的Ability的数据。 |
 
 ## sendSync
 
@@ -151,8 +139,6 @@ sendSync(data: Record<string, Object>): Record<string, Object>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SecurityUIExtensionProxy-sendSync(data: Record<string, Object>): Record<string, Object>--><!--Device-SecurityUIExtensionProxy-sendSync(data: Record<string, Object>): Record<string, Object>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -161,13 +147,13 @@ sendSync(data: Record<string, Object>): Record<string, Object>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record&lt;string, Object&gt; | 是 | 同步发送给被拉起的Ability的数据。 |
+| data | Record & lt;string, Object & gt; | 是 | 同步发送给被拉起的Ability的数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Record&lt;string, Object&gt; | 被拉起的Ability对同步发送请求处理后返回的响应数据。 |
+| Record & lt;string, Object & gt; | 被拉起的Ability对同步发送请求处理后返回的响应数据。 |
 
 **错误码：**
 
@@ -175,4 +161,3 @@ sendSync(data: Record<string, Object>): Record<string, Object>
 | --- | --- |
 | [100011](../errorcode-uiextension.md#100011-未注册同步回调) | 没有注册响应该请求的回调。 |
 | [100012](../errorcode-uiextension.md#100012-数据发送失败) | 传输数据失败。 |
-

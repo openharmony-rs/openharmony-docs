@@ -2,9 +2,7 @@
 
 表示[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md)被拉起时的显示模式。
 
-**起始版本：** 23
-
-<!--Device-wantConstant-export enum ShowMode--><!--Device-wantConstant-export enum ShowMode-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -16,11 +14,9 @@ WINDOW = 0
 
 表示独立窗口拉起模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowMode-WINDOW = 0--><!--Device-ShowMode-WINDOW = 0-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -32,11 +28,9 @@ EMBEDDED_FULL = 1
 
 表示嵌入式全屏拉起模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowMode-EMBEDDED_FULL = 1--><!--Device-ShowMode-EMBEDDED_FULL = 1-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -54,7 +48,4 @@ EMBEDDED_HALF = 2
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ShowMode-EMBEDDED_HALF = 2--><!--Device-ShowMode-EMBEDDED_HALF = 2-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityBase
-

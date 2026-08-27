@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
-import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
 ## importWrappedKeyItemAsUser
@@ -23,8 +22,6 @@ Import Wrapped Key As User.
 
 **需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-<!--Device-huks-function importWrappedKeyItemAsUser(    userId: number, keyAlias: string,    wrappingKeyAlias: string,    huksOptions: HuksOptions  ): Promise<void>--><!--Device-huks-function importWrappedKeyItemAsUser(    userId: number, keyAlias: string,    wrappingKeyAlias: string,    huksOptions: HuksOptions  ): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Extension
 
 **系统接口：** 此接口为系统接口。
@@ -42,28 +39,28 @@ Import Wrapped Key As User.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Promise & lt;void & gt; | Promise that returns no value. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
-| [12000017](../errorcode-huks.md#12000017-同名密钥已存在) | The key with the same alias already exists<br>**适用版本：** 20+ |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application permission is not sufficient, which may be caused by lack of <br>cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | the application permission is not sufficient, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | non-system applications are not allowed to use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
-| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
-| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
-| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
-| [12000015](../errorcode-huks.md#12000015-调用其他系统服务失败) | Failed to obtain the security information via UserIAM |
-| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
-| [12000013](../errorcode-huks.md#12000013-密钥设置生物访问控制时待绑定的凭据不存在) | queried credential does not exist |
-| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
+| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000013](../errorcode-huks.md#12000013-密钥设置生物访问控制时待绑定的凭据不存在) | queried credential does not exist |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000015](../errorcode-huks.md#12000015-调用其他系统服务失败) | Failed to obtain the security information via UserIAM |
+| [12000017](../errorcode-huks.md#12000017-同名密钥已存在) | The key with the same alias already exists<br>**适用版本：** 20+ |
 
 **示例**
 
@@ -76,16 +73,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
 const initializationVector = '0000000000000000';
-const associatedData = "abababababababab";
-const nonce = "hahahahahaha";
+const associatedData = 'abababababababab';
+const nonce = 'hahahahahaha';
 const tagSize = 16;
 const unsignedInt32Bytes = 4;
-const importedAes192PlainKey = "The aes192 key to import";
-const callerAes256Kek = "This is kek to encrypt aes192 key";
-const callerKeyAlias = "test_caller_key_ecdh_aes192";
-const callerKekAliasAes256 = "test_caller_kek_ecdh_aes256";
-const callerAgreeKeyAliasAes256 = "test_caller_agree_key_ecdh_aes256";
-const importedKeyAliasAes192 = "test_import_key_ecdh_aes192";
+const importedAes192PlainKey = 'The aes192 key to import';
+const callerAes256Kek = 'This is kek to encrypt aes192 key';
+const callerKeyAlias = 'test_caller_key_ecdh_aes192';
+const callerKekAliasAes256 = 'test_caller_kek_ecdh_aes256';
+const callerAgreeKeyAliasAes256 = 'test_caller_agree_key_ecdh_aes256';
+const importedKeyAliasAes192 = 'test_import_key_ecdh_aes192';
 const mask = [0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000];
 
 
@@ -381,19 +378,18 @@ async function PublicDeleteKeyItemFunc(
 async function PublicImportWrappedKeyFunc(
   userId: number,
   keyAlias: string, wrappingKeyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`enter callback importWrappedKeyItemAsUser`);
+  console.info(`enter promise importWrappedKeyItemAsUser`);
   console.info(`publicImportWrappedKeyFunc huksOptions = ${JSON.stringify(huksOptions)}`);
   try {
     await huks.importWrappedKeyItemAsUser(userId, keyAlias, wrappingKeyAlias, huksOptions)
       .then((data) => {
-        console.info(`callback: importWrappedKeyItemAsUser success, data = ${JSON.stringify(data)}`);
-        console.info(`importWrappedKeyItemAsUser 成功 data = ${JSON.stringify(data)}`)
+        console.info(`promise: importWrappedKeyItemAsUser success, data = ${JSON.stringify(data)}`);
       })
       .catch((err: BusinessError) => {
-        console.error(`callback: importWrappedKeyItemAsUser failed, code: ${err.code}, msg: ${err.message}`);
+        console.error(`promise: importWrappedKeyItemAsUser failed, code: ${err.code}, msg: ${err.message}`);
       });
   } catch (error) {
-    console.error(`callback: importWrappedKeyItemAsUser input arg invalid, code: ${error.code}, msg: ${error.message}`);
+    console.error(`promise: importWrappedKeyItemAsUser input arg invalid, code: ${error.code}, msg: ${error.message}`);
   }
 }
 
@@ -563,10 +559,10 @@ async function GenerateAndExportPublicKey(
         console.info(`promise: generateKeyItemAsUser success, data = ${JSON.stringify(data)}`);
       })
       .catch((err: BusinessError) => {
-        console.error(`callback: generateKeyItemAsUser failed, code: ${err.code}, msg: ${err.message}`);
+        console.error(`promise: generateKeyItemAsUser failed, code: ${err.code}, msg: ${err.message}`);
       })
   } catch (err) {
-    console.error(`callback: generateKeyItemAsUser invalid, code: ${err.code}, msg: ${err.message}`);
+    console.error(`promise: generateKeyItemAsUser invalid, code: ${err.code}, msg: ${err.message}`);
   }
 
 
@@ -694,4 +690,3 @@ export default function HuksAsUserTest() {
   HuksSecurityImportTest(userId)
 }
 ```
-

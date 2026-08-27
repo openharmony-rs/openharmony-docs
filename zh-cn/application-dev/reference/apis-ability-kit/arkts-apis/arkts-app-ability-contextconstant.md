@@ -2,11 +2,9 @@
 
 ContextConstant提供Context相关的枚举，包含文件加密分区等级、UIAbility启动后的进程模式等。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-unnamed-declare namespace contextConstant--><!--Device-unnamed-declare namespace contextConstant-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -35,4 +33,3 @@ import { contextConstant } from '@kit.AbilityKit';
 | --- | --- |
 | [ContextType](arkts-ability-contextconstant-contexttype-e-sys.md) | 上下文类型 |
 <!--DelEnd-->
-

@@ -1,10 +1,12 @@
 # RecoverableApplicationInfo（系统接口）
 
-预置应用被卸载后可以恢复的预置应用信息，通过接口 [bundleManager.getRecoverableApplicationInfo](arkts-ability-bundlemanager-getrecoverableapplicationinfo-f-sys.md) 获取。 > **说明：** > > 本模块为系统接口。
+预置应用被卸载后可以恢复的预置应用信息，通过接口 [bundleManager.getRecoverableApplicationInfo](arkts-ability-bundlemanager-getrecoverableapplicationinfo-f-sys.md) 获取。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 本模块为系统接口。
 
-<!--Device-unnamed-export interface RecoverableApplicationInfo--><!--Device-unnamed-export interface RecoverableApplicationInfo-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,9 +22,7 @@ readonly bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-RecoverableApplicationInfo-readonly bundleName: string--><!--Device-RecoverableApplicationInfo-readonly bundleName: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -38,9 +38,7 @@ readonly bundleType: bundleManager.BundleType
 
 **类型：** bundleManager.BundleType
 
-**起始版本：** 23
-
-<!--Device-RecoverableApplicationInfo-readonly bundleType: bundleManager.BundleType--><!--Device-RecoverableApplicationInfo-readonly bundleType: bundleManager.BundleType-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -56,9 +54,7 @@ readonly codePaths: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
-
-<!--Device-RecoverableApplicationInfo-readonly codePaths: Array<string>--><!--Device-RecoverableApplicationInfo-readonly codePaths: Array<string>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -67,16 +63,14 @@ readonly codePaths: Array<string>
 ## iconId
 
 ```TypeScript
-readonly iconId: long
+readonly iconId: number
 ```
 
 模块图标的资源ID值。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RecoverableApplicationInfo-readonly iconId: long--><!--Device-RecoverableApplicationInfo-readonly iconId: long-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -85,16 +79,14 @@ readonly iconId: long
 ## labelId
 
 ```TypeScript
-readonly labelId: long
+readonly labelId: number
 ```
 
 模块标签的资源ID值。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RecoverableApplicationInfo-readonly labelId: long--><!--Device-RecoverableApplicationInfo-readonly labelId: long-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -110,9 +102,7 @@ readonly moduleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-RecoverableApplicationInfo-readonly moduleName: string--><!--Device-RecoverableApplicationInfo-readonly moduleName: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -128,11 +118,8 @@ readonly systemApp: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-RecoverableApplicationInfo-readonly systemApp: boolean--><!--Device-RecoverableApplicationInfo-readonly systemApp: boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
-

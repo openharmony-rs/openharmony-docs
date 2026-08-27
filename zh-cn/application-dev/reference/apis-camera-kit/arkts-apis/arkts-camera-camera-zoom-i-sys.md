@@ -1,20 +1,16 @@
 # Zoom
 
-Zoom继承自[ZoomQuery](arkts-camera-camera-zoomquery-i.md)。 变焦类，对设备变焦操作。
+Zoom继承自[ZoomQuery](arkts-camera-camera-zoomquery-i.md)。变焦类，对设备变焦操作。
 
 **继承/实现关系：** Zoom extends [ZoomQuery](arkts-camera-camera-zoomquery-i.md)
 
-**起始版本：** 23
-
-<!--Device-camera-interface Zoom--><!--Device-camera-interface Zoom-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## getZoomCenterPoint
@@ -25,9 +21,7 @@ getZoomCenterPoint(): Point
 
 Gets zoom center point.
 
-**起始版本：** 23
-
-<!--Device-Zoom-getZoomCenterPoint(): Point--><!--Device-Zoom-getZoomCenterPoint(): Point-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -43,8 +37,8 @@ Gets zoom center point.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
 ## prepareZoom
 
@@ -54,9 +48,7 @@ prepareZoom(): void
 
 Instructs the bottom layer to prepare for zooming, for example, powering on the sensor.
 
-**起始版本：** 23
-
-<!--Device-Zoom-prepareZoom(): void--><!--Device-Zoom-prepareZoom(): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -66,8 +58,8 @@ Instructs the bottom layer to prepare for zooming, for example, powering on the 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
 **示例**
 
@@ -93,9 +85,7 @@ setZoomCenterPoint(point: Point): void
 
 Sets zoom center point.
 
-**起始版本：** 23
-
-<!--Device-Zoom-setZoomCenterPoint(point: Point): void--><!--Device-Zoom-setZoomCenterPoint(point: Point): void-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -111,8 +101,8 @@ Sets zoom center point.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
 ## unprepareZoom
 
@@ -122,9 +112,7 @@ unprepareZoom(): void
 
 Instructs the bottom layer to unprepare for zooming.
 
-**起始版本：** 23
-
-<!--Device-Zoom-unprepareZoom(): void--><!--Device-Zoom-unprepareZoom(): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -134,8 +122,8 @@ Instructs the bottom layer to unprepare for zooming.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
 **示例**
 
@@ -152,4 +140,3 @@ function unprepareZoom(sessionExtendsZoom: camera.Zoom): void {
   }
 }
 ```
-

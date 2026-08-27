@@ -4,19 +4,15 @@ Defines the window callback.
 
 **起始版本：** 15
 
-<!--Device-unnamed-declare interface Callback--><!--Device-unnamed-declare interface Callback-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
-## constructor
+## [[Call]]
 
 ```TypeScript
 (data: T): V
@@ -27,8 +23,6 @@ Defines the callback info.
 **起始版本：** 15
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Callback-(data: T): V--><!--Device-Callback-(data: T): V-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -43,4 +37,3 @@ Defines the callback info.
 | 类型 | 说明 |
 | --- | --- |
 | V | Returns result of the callback. |
-

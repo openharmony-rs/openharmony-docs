@@ -1,10 +1,8 @@
-# InterceptedRecord(网络防火墙)（系统接口）
+# InterceptedRecord（系统接口）
 
 拦截记录。
 
 **起始版本：** 14
-
-<!--Device-netFirewall-interface InterceptedRecord--><!--Device-netFirewall-interface InterceptedRecord-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -19,16 +17,14 @@ import { netFirewall } from '@kit.NetworkKit';
 ## appUid
 
 ```TypeScript
-appUid?: int
+appUid?: number
 ```
 
 Application or service ID.
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 14
-
-<!--Device-InterceptedRecord-appUid?: int--><!--Device-InterceptedRecord-appUid?: int-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -44,8 +40,6 @@ domain?: string
 
 **起始版本：** 14
 
-<!--Device-InterceptedRecord-domain?: string--><!--Device-InterceptedRecord-domain?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **系统接口：** 此接口为系统接口。
@@ -60,8 +54,6 @@ localIp?: string
 
 **起始版本：** 14
 
-<!--Device-InterceptedRecord-localIp?: string--><!--Device-InterceptedRecord-localIp?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **系统接口：** 此接口为系统接口。
@@ -69,16 +61,14 @@ localIp?: string
 ## localPort
 
 ```TypeScript
-localPort?: int
+localPort?: number
 ```
 
 Local port.
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 14
-
-<!--Device-InterceptedRecord-localPort?: int--><!--Device-InterceptedRecord-localPort?: int-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -87,16 +77,14 @@ Local port.
 ## protocol
 
 ```TypeScript
-protocol?: int
+protocol?: number
 ```
 
 Transport layer protocol.
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 14
-
-<!--Device-InterceptedRecord-protocol?: int--><!--Device-InterceptedRecord-protocol?: int-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -112,8 +100,6 @@ remoteIp?: string
 
 **起始版本：** 14
 
-<!--Device-InterceptedRecord-remoteIp?: string--><!--Device-InterceptedRecord-remoteIp?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **系统接口：** 此接口为系统接口。
@@ -121,16 +107,14 @@ remoteIp?: string
 ## remotePort
 
 ```TypeScript
-remotePort?: int
+remotePort?: number
 ```
 
 Remote port.
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 14
-
-<!--Device-InterceptedRecord-remotePort?: int--><!--Device-InterceptedRecord-remotePort?: int-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -139,18 +123,15 @@ Remote port.
 ## time
 
 ```TypeScript
-time: int
+time: number
 ```
 
 Time stamp.
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 14
-
-<!--Device-InterceptedRecord-time: int--><!--Device-InterceptedRecord-time: int-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **系统接口：** 此接口为系统接口。
-

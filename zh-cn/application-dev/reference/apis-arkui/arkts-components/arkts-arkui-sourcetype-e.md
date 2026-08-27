@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-<!--Device-unnamed-declare enum SourceType--><!--Device-unnamed-declare enum SourceType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Unknown
@@ -19,8 +17,6 @@ Unknown
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SourceType-Unknown--><!--Device-SourceType-Unknown-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,8 +32,6 @@ Mouse
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SourceType-Mouse--><!--Device-SourceType-Mouse-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TouchScreen
@@ -51,8 +45,6 @@ TouchScreen
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SourceType-TouchScreen--><!--Device-SourceType-TouchScreen-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,8 +62,6 @@ KEY = 4
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SourceType-KEY = 4--><!--Device-SourceType-KEY = 4-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## JOYSTICK
@@ -88,7 +78,4 @@ JOYSTICK = 5
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SourceType-JOYSTICK = 5--><!--Device-SourceType-JOYSTICK = 5-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

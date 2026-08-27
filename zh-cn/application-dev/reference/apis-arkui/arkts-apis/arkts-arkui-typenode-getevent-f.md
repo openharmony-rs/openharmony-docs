@@ -14,8 +14,6 @@ function getEvent(node: FrameNode, nodeType: 'Scroll'): UIScrollEvent | undefine
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-function getEvent(node: FrameNode, nodeType: 'Scroll'): UIScrollEvent | undefined--><!--Device-typeNode-function getEvent(node: FrameNode, nodeType: 'Scroll'): UIScrollEvent | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -29,7 +27,11 @@ function getEvent(node: FrameNode, nodeType: 'Scroll'): UIScrollEvent | undefine
 
 | 类型 | 说明 |
 | --- | --- |
-| UIScrollEvent | Scroll节点类型的滚动事件，若获取失败，则返回undefined。 |
+| [UIScrollEvent](../arkts-components/arkts-arkui-uiscrollevent-i.md) \| undefined | Scroll节点类型的滚动事件，若获取失败，则返回undefined。 |
+
+**示例**
+
+完整示例请参考滚动事件示例。
 
 
 ## getEvent
@@ -46,8 +48,6 @@ function getEvent(node: FrameNode, nodeType: 'List'): UIListEvent | undefined
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-function getEvent(node: FrameNode, nodeType: 'List'): UIListEvent | undefined--><!--Device-typeNode-function getEvent(node: FrameNode, nodeType: 'List'): UIListEvent | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -61,7 +61,11 @@ function getEvent(node: FrameNode, nodeType: 'List'): UIListEvent | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| UIListEvent | List节点类型的滚动事件，若获取失败，则返回undefined。 |
+| [UIListEvent](../arkts-components/arkts-arkui-uilistevent-i.md) \| undefined | List节点类型的滚动事件，若获取失败，则返回undefined。 |
+
+**示例**
+
+完整示例请参考滚动事件示例。
 
 
 ## getEvent
@@ -78,8 +82,6 @@ function getEvent(node: FrameNode, nodeType: 'WaterFlow'): UIWaterFlowEvent | un
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-function getEvent(node: FrameNode, nodeType: 'WaterFlow'): UIWaterFlowEvent | undefined--><!--Device-typeNode-function getEvent(node: FrameNode, nodeType: 'WaterFlow'): UIWaterFlowEvent | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -93,7 +95,11 @@ function getEvent(node: FrameNode, nodeType: 'WaterFlow'): UIWaterFlowEvent | un
 
 | 类型 | 说明 |
 | --- | --- |
-| UIWaterFlowEvent | WaterFlow节点类型的滚动事件，若获取失败，则返回undefined。 |
+| [UIWaterFlowEvent](../arkts-components/arkts-arkui-uiwaterflowevent-i.md) \| undefined | WaterFlow节点类型的滚动事件，若获取失败，则返回undefined。 |
+
+**示例**
+
+完整示例请参考滚动事件示例。
 
 
 ## getEvent
@@ -110,8 +116,6 @@ function getEvent(node: FrameNode, nodeType: 'Grid'): UIGridEvent | undefined
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-function getEvent(node: FrameNode, nodeType: 'Grid'): UIGridEvent | undefined--><!--Device-typeNode-function getEvent(node: FrameNode, nodeType: 'Grid'): UIGridEvent | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -125,5 +129,8 @@ function getEvent(node: FrameNode, nodeType: 'Grid'): UIGridEvent | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| UIGridEvent | Grid节点类型的滚动事件，若获取失败，则返回undefined。 |
+| [UIGridEvent](../arkts-components/arkts-arkui-uigridevent-i.md) \| undefined | Grid节点类型的滚动事件，若获取失败，则返回undefined。 |
 
+**示例**
+
+完整示例请参考滚动事件示例。

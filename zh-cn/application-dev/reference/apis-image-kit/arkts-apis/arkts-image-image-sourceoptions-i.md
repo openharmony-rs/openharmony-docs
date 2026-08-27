@@ -2,9 +2,7 @@
 
 ImageSource的初始化选项。
 
-**起始版本：** 23
-
-<!--Device-image-interface SourceOptions--><!--Device-image-interface SourceOptions-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -17,20 +15,19 @@ import { image } from '@kit.ImageKit';
 ## sourceDensity
 
 ```TypeScript
-sourceDensity: int
+sourceDensity: number
 ```
 
-图片资源像素密度。单位：ppi（像素/英寸）。 在解码参数[DecodingOptions](arkts-image-image-decodingoptions-i.md)未设置desiredSize的前提下，当前参数SourceOptions.sourceDensity与 DecodingOptions.fitDensity非零时将对解码输出的pixelmap进行缩放。 缩放后宽计算公式如下(高同理)：(width * fitDensity + (sourceDensity >> 1)) / sourceDensity。
+图片资源像素密度。单位：ppi（像素/英寸）。在解码参数[DecodingOptions](arkts-image-image-decodingoptions-i.md)未设置desiredSize的前提下，当前参数SourceOptions.sourceDensity与 DecodingOptions.fitDensity非零时将对解码输出的pixelmap进行缩放。缩放后宽计算公式如下(高同理)：(width * fitDensity + (sourceDensity &gt;  
+> 1)) / sourceDensity。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-SourceOptions-sourceDensity: int--><!--Device-SourceOptions-sourceDensity: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -44,13 +41,11 @@ sourcePixelFormat?: PixelMapFormat
 
 **类型：** [PixelMapFormat](arkts-image-image-pixelmapformat-e.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-SourceOptions-sourcePixelFormat?: PixelMapFormat--><!--Device-SourceOptions-sourcePixelFormat?: PixelMapFormat-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -64,13 +59,10 @@ sourceSize?: Size
 
 **类型：** Size
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-SourceOptions-sourceSize?: Size--><!--Device-SourceOptions-sourceSize?: Size-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
-

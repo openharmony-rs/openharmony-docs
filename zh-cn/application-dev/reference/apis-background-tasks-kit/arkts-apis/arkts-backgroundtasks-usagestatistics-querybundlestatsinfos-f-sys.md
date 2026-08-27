@@ -9,16 +9,14 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 ## queryBundleStatsInfos
 
 ```TypeScript
-function queryBundleStatsInfos(begin: long, end: long, callback: AsyncCallback<BundleStatsMap>): void
+function queryBundleStatsInfos(begin: number, end: number, callback: AsyncCallback<BundleStatsMap>): void
 ```
 
 通过指定起始和结束时间，查询应用使用时长的具体信息，统计的最小颗粒度是天，使用Callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.BUNDLE_ACTIVE_INFO
-
-<!--Device-usageStatistics-function queryBundleStatsInfos(begin: long, end: long, callback: AsyncCallback<BundleStatsMap>): void--><!--Device-usageStatistics-function queryBundleStatsInfos(begin: long, end: long, callback: AsyncCallback<BundleStatsMap>): void-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -28,24 +26,24 @@ function queryBundleStatsInfos(begin: long, end: long, callback: AsyncCallback<B
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| begin | long | 是 | 起始时间，单位：ms。 |
-| end | long | 是 | 结束时间，单位：ms。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[BundleStatsMap](arkts-backgroundtasks-usagestatistics-bundlestatsmap-t-sys.md)&gt; | 是 | 回调函数。 当查询成功，err为undefined，data为指定时间段内应用使用时长的具体信息；否则为错误对象。 |
+| begin | number | 是 | 起始时间，单位：ms。 |
+| end | number | 是 | 结束时间，单位：ms。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[BundleStatsMap](arkts-backgroundtasks-usagestatistics-bundlestatsmap-t-sys.md)&gt; | 是 | 回调函数。 当查询成功，err为undefined，data为指定时间段内应用使用时长的具体信息；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [10000001](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000001-内存操作失败) | Memory operation failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [10000002](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000002-ipc-parcel-write-failed) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; <br> 2. Failed to apply for memory. |
-| [10000003](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000003-系统服务操作失败) | Failed to get system ability manager. |
-| [10000004](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000004-通信失败) | Failed to access the device usage service. |
-| [10000006](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000006-获取应用信息失败) | Failed to get the application information. |
-| [10000007](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000007-时间操作失败) | Failed to get the system time. |
+| [10000001](../errorcode-DeviceUsageStatistics.md#10000001-内存操作失败) | Memory operation failed. |
+| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc-parcel-write-failed) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;   2. Failed to apply for memory. |
+| [10000003](../errorcode-DeviceUsageStatistics.md#10000003-系统服务操作失败) | Failed to get system ability manager. |
+| [10000004](../errorcode-DeviceUsageStatistics.md#10000004-通信失败) | Failed to access the device usage service. |
+| [10000006](../errorcode-DeviceUsageStatistics.md#10000006-获取应用信息失败) | Failed to get the application information. |
+| [10000007](../errorcode-DeviceUsageStatistics.md#10000007-时间操作失败) | Failed to get the system time. |
 
 **示例**
 
@@ -67,16 +65,14 @@ usageStatistics.queryBundleStatsInfos(0, 20000000000000, (err: BusinessError, re
 ## queryBundleStatsInfos
 
 ```TypeScript
-function queryBundleStatsInfos(begin: long, end: long): Promise<BundleStatsMap>
+function queryBundleStatsInfos(begin: number, end: number): Promise<BundleStatsMap>
 ```
 
 通过指定起始和结束时间，查询应用使用时长的具体信息，统计的最小颗粒度是天，使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.BUNDLE_ACTIVE_INFO
-
-<!--Device-usageStatistics-function queryBundleStatsInfos(begin: long, end: long): Promise<BundleStatsMap>--><!--Device-usageStatistics-function queryBundleStatsInfos(begin: long, end: long): Promise<BundleStatsMap>-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -86,8 +82,8 @@ function queryBundleStatsInfos(begin: long, end: long): Promise<BundleStatsMap>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| begin | long | 是 | 起始时间，单位：ms。 |
-| end | long | 是 | 结束时间，单位：ms。 |
+| begin | number | 是 | 起始时间，单位：ms。 |
+| end | number | 是 | 结束时间，单位：ms。 |
 
 **返回值：**
 
@@ -99,16 +95,16 @@ function queryBundleStatsInfos(begin: long, end: long): Promise<BundleStatsMap>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [10000001](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000001-内存操作失败) | Memory operation failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [10000002](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000002-ipc-parcel-write-failed) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; <br> 2. Failed to apply for memory. |
-| [10000003](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000003-系统服务操作失败) | Failed to get system ability manager. |
-| [10000004](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000004-通信失败) | Failed to access the device usage service. |
-| [10000006](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000006-获取应用信息失败) | Failed to get the application information. |
-| [10000007](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000007-时间操作失败) | Failed to get the system time. |
+| [10000001](../errorcode-DeviceUsageStatistics.md#10000001-内存操作失败) | Memory operation failed. |
+| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc-parcel-write-failed) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;   2. Failed to apply for memory. |
+| [10000003](../errorcode-DeviceUsageStatistics.md#10000003-系统服务操作失败) | Failed to get system ability manager. |
+| [10000004](../errorcode-DeviceUsageStatistics.md#10000004-通信失败) | Failed to access the device usage service. |
+| [10000006](../errorcode-DeviceUsageStatistics.md#10000006-获取应用信息失败) | Failed to get the application information. |
+| [10000007](../errorcode-DeviceUsageStatistics.md#10000007-时间操作失败) | Failed to get the system time. |
 
 **示例**
 
@@ -123,4 +119,3 @@ usageStatistics.queryBundleStatsInfos(0, 20000000000000).then((res:usageStatisti
   console.error('BUNDLE_ACTIVE queryBundleStatsInfos promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
 ```
-

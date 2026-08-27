@@ -12,8 +12,6 @@ const EXECUTE_IMMEDIATE: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-workScheduler-const EXECUTE_IMMEDIATE: string--><!--Device-workScheduler-const EXECUTE_IMMEDIATE: string-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 **系统接口：** 此接口为系统接口。
@@ -30,9 +28,6 @@ const WORK_SCHEDULER_CONDITION: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-workScheduler-const WORK_SCHEDULER_CONDITION: string--><!--Device-workScheduler-const WORK_SCHEDULER_CONDITION: string-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 **系统接口：** 此接口为系统接口。
-

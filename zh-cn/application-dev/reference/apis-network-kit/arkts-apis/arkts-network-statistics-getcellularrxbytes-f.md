@@ -3,20 +3,21 @@
 ## 导入模块
 
 ```TypeScript
-import { statistics } from '@kit.NetworkKit';
 ```
 
 ## getCellularRxBytes
 
 ```TypeScript
-function getCellularRxBytes(callback: AsyncCallback<long>): void
+function getCellularRxBytes(callback: AsyncCallback<number>): void
 ```
 
-获取当前已处于连接状态的蜂窝网络对应的网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用callback异步回调。 > **说明：** > > 本接口建议在蜂窝网络处于连接状态时调用，否则会抛出2103012错误码。
+获取当前已处于连接状态的蜂窝网络对应的网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用callback异步回调。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 本接口建议在蜂窝网络处于连接状态时调用，否则会抛出2103012错误码。
 
-<!--Device-statistics-function getCellularRxBytes(callback: AsyncCallback<long>): void--><!--Device-statistics-function getCellularRxBytes(callback: AsyncCallback<long>): void-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -24,7 +25,7 @@ function getCellularRxBytes(callback: AsyncCallback<long>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数。当成功获取到流量数据时，error为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当成功获取到流量数据时，error为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -32,33 +33,22 @@ function getCellularRxBytes(callback: AsyncCallback<long>): void
 | --- | --- |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
+| [2103005](../errorcode-net-statistics.md#2103005-读取系统map失败) | Failed to read the system map. |
 | [2103011](../errorcode-net-statistics.md#2103011-系统map创建失败) | Failed to create a system map. |
 | [2103012](../errorcode-net-statistics.md#2103012-获取网卡名失败) | Failed to obtain the NIC name. |
-| [2103005](../errorcode-net-statistics.md#2103005-读取系统map失败) | Failed to read the system map. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getCellularRxBytes((error: BusinessError, stats: number) => {
-  console.error(JSON.stringify(error));
-  console.info(JSON.stringify(stats));
-});
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { statistics } from '@kit.NetworkKit';
-
-statistics.getCellularRxBytes((error: BusinessError|null, stats: long|undefined) => {
-  console.error(JSON.stringify(error));
-  console.info(JSON.stringify(stats));
+  if (error) {
+    console.error(`getCellularRxBytes error, ${JSON.stringify(error)}`);
+    return;
+  }
+  console.info(`getCellularRxBytes success, ${JSON.stringify(stats)}`);
 });
 ```
 
@@ -66,14 +56,16 @@ statistics.getCellularRxBytes((error: BusinessError|null, stats: long|undefined)
 ## getCellularRxBytes
 
 ```TypeScript
-function getCellularRxBytes(): Promise<long>
+function getCellularRxBytes(): Promise<number>
 ```
 
-获取当前已处于连接状态的蜂窝网络对应的网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用Promise异步回调。 > **说明：** > > 本接口建议在蜂窝网络处于连接状态时调用，否则会抛出2103012错误码。
+获取当前已处于连接状态的蜂窝网络对应的网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用Promise异步回调。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 本接口建议在蜂窝网络处于连接状态时调用，否则会抛出2103012错误码。
 
-<!--Device-statistics-function getCellularRxBytes(): Promise<long>--><!--Device-statistics-function getCellularRxBytes(): Promise<long>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -81,7 +73,7 @@ function getCellularRxBytes(): Promise<long>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;long&gt; | The promise returned by the function. |
+| Promise & lt;number & gt; | The promise returned by the function. |
 
 **错误码：**
 
@@ -89,29 +81,18 @@ function getCellularRxBytes(): Promise<long>
 | --- | --- |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
+| [2103005](../errorcode-net-statistics.md#2103005-读取系统map失败) | Failed to read the system map. |
 | [2103011](../errorcode-net-statistics.md#2103011-系统map创建失败) | Failed to create a system map. |
 | [2103012](../errorcode-net-statistics.md#2103012-获取网卡名失败) | Failed to obtain the NIC name. |
-| [2103005](../errorcode-net-statistics.md#2103005-读取系统map失败) | Failed to read the system map. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getCellularRxBytes().then((stats: number) => {
-  console.info(JSON.stringify(stats));
+  console.info('getCellularRxBytes success', JSON.stringify(stats));
+}).catch((error: Error) => {
+   console.error('getCellularRxBytes error', JSON.stringify(error));
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { statistics } from '@kit.NetworkKit';
-
-statistics.getCellularRxBytes().then((stats: long) => {
-  console.info(JSON.stringify(stats));
-});
-```
-

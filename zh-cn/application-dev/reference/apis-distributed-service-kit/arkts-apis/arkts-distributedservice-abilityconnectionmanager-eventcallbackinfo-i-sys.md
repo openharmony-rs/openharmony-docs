@@ -2,9 +2,7 @@
 
 回调方法的接收信息。
 
-**起始版本：** 23
-
-<!--Device-abilityConnectionManager-interface EventCallbackInfo--><!--Device-abilityConnectionManager-interface EventCallbackInfo-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -24,13 +22,10 @@ image?: image.PixelMap
 
 **类型：** image.PixelMap
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-EventCallbackInfo-image?: image.PixelMap--><!--Device-EventCallbackInfo-image?: image.PixelMap-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **系统接口：** 此接口为系统接口。
-

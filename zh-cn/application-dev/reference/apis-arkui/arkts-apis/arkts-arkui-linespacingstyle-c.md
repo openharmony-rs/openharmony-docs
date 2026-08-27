@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-declare class LineSpacingStyle--><!--Device-unnamed-declare class LineSpacingStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,16 +25,14 @@ constructor(lineSpacing: LengthMetrics, options?: LineSpacingOptions)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LineSpacingStyle-constructor(lineSpacing: LengthMetrics, options?: LineSpacingOptions)--><!--Device-LineSpacingStyle-constructor(lineSpacing: LengthMetrics, options?: LineSpacingOptions)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| lineSpacing | LengthMetrics | 是 | 文本的行间距。 <br>取值范围：[0, +∞) |
-| options | LineSpacingOptions | 否 | 行间距的配置项。 |
+| lineSpacing | LengthMetrics | 是 | 文本的行间距。 取值范围：[0, +∞) |
+| options | [LineSpacingOptions](arkts-arkui-linespacingoptions-i.md) | 否 | 行间距的配置项。 |
 
 ## lineSpacing
 
@@ -44,7 +40,7 @@ constructor(lineSpacing: LengthMetrics, options?: LineSpacingOptions)
 readonly lineSpacing: number
 ```
 
-文本行间距。 取值范围：[0, +∞) 单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
+文本行间距。取值范围：[0, +∞)单位：[vp](arkts-arkui-length-t.md)
 
 **类型：** number
 
@@ -53,8 +49,6 @@ readonly lineSpacing: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LineSpacingStyle-readonly lineSpacing: number--><!--Device-LineSpacingStyle-readonly lineSpacing: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,7 +60,7 @@ readonly options?: LineSpacingOptions
 
 行间距配置项。
 
-**类型：** LineSpacingOptions
+**类型：** [LineSpacingOptions](arkts-arkui-linespacingoptions-i.md)
 
 **起始版本：** 26.0.0
 
@@ -74,7 +68,4 @@ readonly options?: LineSpacingOptions
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LineSpacingStyle-readonly options?: LineSpacingOptions--><!--Device-LineSpacingStyle-readonly options?: LineSpacingOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

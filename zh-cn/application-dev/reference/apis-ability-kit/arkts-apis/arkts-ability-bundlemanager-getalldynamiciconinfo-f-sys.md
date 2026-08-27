@@ -9,16 +9,14 @@ import { bundleManager } from '@kit.AbilityKit';
 ## getAllDynamicIconInfo
 
 ```TypeScript
-function getAllDynamicIconInfo(userId?: int): Promise<Array<DynamicIconInfo>>
+function getAllDynamicIconInfo(userId?: number): Promise<Array<DynamicIconInfo>>
 ```
 
-查询指定用户下所有应用和所有分身的动态图标信息。使用Promise异步回调。 查询当前用户下所有应用和所有分身的动态图标信息时需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED。 查询其他用户或者所有用户下所有应用和所有分身的动态图标信息时需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+查询指定用户下所有应用和所有分身的动态图标信息。使用Promise异步回调。查询当前用户下所有应用和所有分身的动态图标信息时需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED。查询其他用户或者所有用户下所有应用和所有分身的动态图标信息时需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-<!--Device-bundleManager-function getAllDynamicIconInfo(userId?: int): Promise<Array<DynamicIconInfo>>--><!--Device-bundleManager-function getAllDynamicIconInfo(userId?: int): Promise<Array<DynamicIconInfo>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -28,13 +26,13 @@ function getAllDynamicIconInfo(userId?: int): Promise<Array<DynamicIconInfo>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | int | 否 | 标识用户ID。缺省时查询所有用户下所有应用和所有分身的动态图标信息。 |
+| userId | number | 否 | 标识用户ID。缺省时查询所有用户下所有应用和所有分身的动态图标信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;DynamicIconInfo&gt;&gt; | Promise对象，返回查询到的动态图标信息。 |
+| Promise & lt;Array & lt;DynamicIconInfo & gt; & gt; | Promise对象，返回查询到的动态图标信息。 |
 
 **错误码：**
 
@@ -46,8 +44,6 @@ function getAllDynamicIconInfo(userId?: int): Promise<Array<DynamicIconInfo>>
 | [17700306](../errorcode-bundle.md#17700306-动态图标查询失败) | Failed to obtain the dynamic icon. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -67,28 +63,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllDynamicIconInfo failed. Cause: %{public}s', message);
 }
 ```
-
-ArkTS-Sta示例:
-
-```TypeScript
-'use static'
-
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-// 代码中使用的userId需为应用实际的用户ID。
-let userId = 100;
-
-try {
-  bundleManager.getAllDynamicIconInfo(userId).then((data: Array<bundleManager.DynamicIconInfo>) => {
-    hilog.info(0x0000, 'testTag', 'getAllDynamicIconInfo successfully');
-  }).catch((err: Error) => {
-    hilog.error(0x0000, 'testTag', 'getAllDynamicIconInfo failed. Cause: %{public}s', (err as BusinessError).message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getAllDynamicIconInfo failed. Cause: %{public}s', message);
-}
-```
-

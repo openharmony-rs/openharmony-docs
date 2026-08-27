@@ -20,8 +20,6 @@ function createHtmlData(htmlText: string): PasteData
 
 **替代接口：** [createData](arkts-basicservices-pasteboard-createdata-f.md)(mimeType: string, value: ValueType)
 
-<!--Device-pasteboard-function createHtmlData(htmlText: string): PasteData--><!--Device-pasteboard-function createHtmlData(htmlText: string): PasteData-End-->
-
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
 **参数：**
@@ -42,4 +40,3 @@ function createHtmlData(htmlText: string): PasteData
 let html = "<!DOCTYPE html>\n" + "<html>\n" + "<head>\n" + "<meta charset=\"utf-8\">\n" + "<title>HTML-PASTEBOARD_HTML</title>\n" + "</head>\n" + "<body>\n" + "    <h1>HEAD</h1>\n" + "    <p></p>\n" + "</body>\n" + "</html>";
 let pasteData: pasteboard.PasteData = pasteboard.createHtmlData(html);
 ```
-

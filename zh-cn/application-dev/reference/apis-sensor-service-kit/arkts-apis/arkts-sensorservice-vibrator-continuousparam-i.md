@@ -2,63 +2,54 @@
 
 连续振动参数。用于[VibratorPatternBuilder.addContinuousEvent](arkts-sensorservice-vibrator-vibratorpatternbuilder-c.md#addcontinuousevent)的 options参数，指定长振事件的振动强度、频率、振动调节曲线和通道编号。
 
-**起始版本：** 23
-
-<!--Device-vibrator-interface ContinuousParam--><!--Device-vibrator-interface ContinuousParam-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
 ## 导入模块
 
 ```TypeScript
-import { vibrator } from '@kit.SensorServiceKit';
 ```
 
 ## frequency
 
 ```TypeScript
-frequency?: int
+frequency?: number
 ```
 
 可选参数，表示振动频率。取值范围：[0,100]区间内所有整数。默认值：50。不填写时默认使用中等频率。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ContinuousParam-frequency?: int--><!--Device-ContinuousParam-frequency?: int-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
 ## index
 
 ```TypeScript
-index?: int
+index?: number
 ```
 
 可选参数，表示马达通道编号。取值范围：[0,2]区间内所有整数。默认值：0。使用场景：不同通道对应不同的马达器件，适用于多马达设备的精细控制场景。不填写时默认使用通道0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ContinuousParam-index?: int--><!--Device-ContinuousParam-index?: int-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
 ## intensity
 
 ```TypeScript
-intensity?: int
+intensity?: number
 ```
 
 可选参数，表示振动强度。取值范围：[0,100]区间所有整数。默认值：100。不填写时默认使用最大强度。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ContinuousParam-intensity?: int--><!--Device-ContinuousParam-intensity?: int-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
@@ -72,9 +63,6 @@ points?: VibratorCurvePoint[]
 
 **类型：** [VibratorCurvePoint](arkts-sensorservice-vibrator-vibratorcurvepoint-i.md)[]
 
-**起始版本：** 23
-
-<!--Device-ContinuousParam-points?: VibratorCurvePoint[]--><!--Device-ContinuousParam-points?: VibratorCurvePoint[]-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
-

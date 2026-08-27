@@ -4,16 +4,12 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface RandomAccessFile--><!--Device-unnamed-declare interface RandomAccessFile-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## 导入模块
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## close
@@ -25,8 +21,6 @@ close(): void
 以同步方式关闭RandomAccessFile对象，关闭后不可再用于读写等操作。
 
 **起始版本：** 10
-
-<!--Device-RandomAccessFile-close(): void--><!--Device-RandomAccessFile-close(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -49,6 +43,18 @@ let randomAccessFile = fileIo.createRandomAccessFileSync(filePath, fileIo.OpenMo
 randomAccessFile.close();
 ```
 
+```TypeScript
+const filePath = pathDir + "/test.txt";
+const rs = fileIo.createReadStream(filePath);
+rs.close();
+```
+
+```TypeScript
+const filePath = pathDir + "/test.txt";
+const ws = fileIo.createWriteStream(filePath);
+ws.close();
+```
+
 ## getReadStream
 
 ```TypeScript
@@ -58,8 +64,6 @@ getReadStream(): ReadStream
 获取当前RandomAccessFile的一个ReadStream实例，用于流式读取文件数据。
 
 **起始版本：** 12
-
-<!--Device-RandomAccessFile-getReadStream(): ReadStream--><!--Device-RandomAccessFile-getReadStream(): ReadStream-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -73,12 +77,12 @@ getReadStream(): ReadStream
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
-| 13900012 | Permission denied |
 | 13900008 | Bad file descriptor |
-| 13900042 | Unknown error |
 | 13900011 | Out of memory |
+| 13900012 | Permission denied |
+| 13900020 | Invalid argument |
+| 13900042 | Unknown error |
 
 **示例**
 
@@ -100,8 +104,6 @@ getWriteStream(): WriteStream
 
 **起始版本：** 12
 
-<!--Device-RandomAccessFile-getWriteStream(): WriteStream--><!--Device-RandomAccessFile-getWriteStream(): WriteStream-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **返回值：**
@@ -114,12 +116,12 @@ getWriteStream(): WriteStream
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
-| 13900012 | Permission denied |
 | 13900008 | Bad file descriptor |
-| 13900042 | Unknown error |
 | 13900011 | Out of memory |
+| 13900012 | Permission denied |
+| 13900020 | Invalid argument |
+| 13900042 | Unknown error |
 
 **示例**
 
@@ -144,8 +146,6 @@ read(
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-read(    buffer: ArrayBuffer,    options?: ReadOptions  ): Promise<number>--><!--Device-RandomAccessFile-read(    buffer: ArrayBuffer,    options?: ReadOptions  ): Promise<number>-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -153,32 +153,51 @@ read(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
-| options | [ReadOptions](../../apis-na/arkts-apis/arkts-na-file-fs-readoptions-i.md) | 否 | 支持如下选项：<br/>- length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>- offset， number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br>**起始版本：** 11 |
+| options | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | 否 | 支持如下选项：   - length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认为缓冲区长度。   - offset， number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br>**起始版本：** 11 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象。返回读取的结果，单位为Byte。 |
+| Promise & lt;number & gt; | Promise对象。返回读取的结果，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900004 | Interrupted system call |
-| 13900020 | Invalid argument |
 | 13900005 | I/O error |
-| 13900034 | Operation would block |
-| 13900019 | Is a directory |
-| 13900044 | Network is unreachable<br>**适用版本：** 12+ |
-| 13900013 | Bad address |
 | 13900008 | Bad file descriptor |
 | 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900019 | Is a directory |
+| 13900020 | Invalid argument |
+| 13900034 | Operation would block |
 | 13900042 | Unknown error |
+| 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 **示例**
 
-ArkTS-Dyn示例：
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { buffer } from '@kit.ArkTS';
+import { ReadOptions } from '@kit.CoreFileKit';
+
+let filePath = pathDir + "/test.txt";
+let stream = fileIo.createStreamSync(filePath, "r+");
+let arrayBuffer = new ArrayBuffer(4096);
+let readOption: ReadOptions = {
+  offset: 5,
+  length: 5
+};
+stream.read(arrayBuffer, readOption).then((readLen: number) => {
+  let buf = buffer.from(arrayBuffer, 0, readLen);
+  console.info(`Succeeded in reading data, the content of file is: ${buf.toString()}`);
+  stream.close();
+}).catch((err: BusinessError) => {
+  console.error(`Failed to read data. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -203,32 +222,6 @@ randomAccessFile.read(arrayBuffer, readOption).then((readLength: number) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { ReadOptions } from '@kit.CoreFileKit';
-
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath,fileIo.OpenMode.CREATE |fileIo.OpenMode.READ_WRITE);
-let randomAccessFile = fileIo.createRandomAccessFileSync(file);
-let bufferLength: long = 4096;
-let readOption: ReadOptions = {
-  offset: 1,
-  length: 5
-};
-let arrayBuffer = new ArrayBuffer(bufferLength);
-randomAccessFile.read(arrayBuffer, readOption).then((readLength: long) => {
-  console.info(`Succeeded in reading, read length: ${readLength}`);
-}).catch((error: Error) => {
-  let err: BusinessError = error as BusinessError;
-  console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
-}).finally(() => {
-  randomAccessFile.close();
-  fileIo.closeSync(file);
-});
-```
-
 ## read
 
 ```TypeScript
@@ -239,8 +232,6 @@ read(buffer: ArrayBuffer, callback: AsyncCallback<number>): void
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-read(buffer: ArrayBuffer, callback: AsyncCallback<number>): void--><!--Device-RandomAccessFile-read(buffer: ArrayBuffer, callback: AsyncCallback<number>): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -248,25 +239,41 @@ read(buffer: ArrayBuffer, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数，返回实际读取的数据长度，单位为Byte。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900004 | Interrupted system call |
-| 13900020 | Invalid argument |
 | 13900005 | I/O error |
-| 13900034 | Operation would block |
-| 13900019 | Is a directory |
-| 13900013 | Bad address |
 | 13900008 | Bad file descriptor |
 | 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900019 | Is a directory |
+| 13900020 | Invalid argument |
+| 13900034 | Operation would block |
 | 13900042 | Unknown error |
 
 **示例**
 
-ArkTS-Dyn示例：
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { buffer } from '@kit.ArkTS';
+
+let filePath = pathDir + "/test.txt";
+let stream = fileIo.createStreamSync(filePath, "r+");
+let arrayBuffer = new ArrayBuffer(4096);
+stream.read(arrayBuffer, (err: BusinessError, readLen: number) => {
+  if (err) {
+    console.error(`Failed to read stream. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    let buf = buffer.from(arrayBuffer, 0, readLen);
+    console.info(`Succeeded in reading data, the content of file is: ${buf.toString()}`);
+    stream.close();
+  }
+});
+```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -278,30 +285,6 @@ let length: number = 20;
 
 let arrayBuffer = new ArrayBuffer(length);
 randomAccessFile.read(arrayBuffer, (err: BusinessError, readLength: number) => {
-  if (err) {
-    console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    if (readLength) {
-      console.info(`Succeeded in reading, size is: ${readLength}`);
-    }
-  }
-  randomAccessFile.close();
-  fileIo.closeSync(file);
-});
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-let randomAccessFile = fileIo.createRandomAccessFileSync(file);
-let length: long = 20;
-
-let arrayBuffer = new ArrayBuffer(length);
-randomAccessFile.read(arrayBuffer, (err: BusinessError | null, readLength: long | undefined) => {
   if (err) {
     console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
   } else {
@@ -328,8 +311,6 @@ read(
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-read(    buffer: ArrayBuffer,    options: ReadOptions,    callback: AsyncCallback<number>  ): void--><!--Device-RandomAccessFile-read(    buffer: ArrayBuffer,    options: ReadOptions,    callback: AsyncCallback<number>  ): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -337,26 +318,47 @@ read(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
-| options | [ReadOptions](../../apis-na/arkts-apis/arkts-na-file-fs-readoptions-i.md) | 是 | 支持如下选项：<br/>- length，number类型，表示读取数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>- offset，number 类型，表示读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从filePointer开始读。<br>**起始版本：** 11 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数，返回实际读取的数据长度，单位为Byte。 |
+| options | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | 是 | 支持如下选项：   - length，number类型，表示读取数据的长度，单位为Byte。可选，默认为缓冲区长度。   - offset，number 类型，表示读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从filePointer开始读。<br>**起始版本：** 11 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900004 | Interrupted system call |
-| 13900020 | Invalid argument |
 | 13900005 | I/O error |
-| 13900034 | Operation would block |
-| 13900019 | Is a directory |
-| 13900013 | Bad address |
 | 13900008 | Bad file descriptor |
 | 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900019 | Is a directory |
+| 13900020 | Invalid argument |
+| 13900034 | Operation would block |
 | 13900042 | Unknown error |
 
 **示例**
 
-ArkTS-Dyn示例：
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { buffer } from '@kit.ArkTS';
+import { ReadOptions } from '@kit.CoreFileKit';
+
+let filePath = pathDir + "/test.txt";
+let stream = fileIo.createStreamSync(filePath, "r+");
+let arrayBuffer = new ArrayBuffer(4096);
+let readOption: ReadOptions = {
+  offset: 5,
+  length: 5
+};
+stream.read(arrayBuffer, readOption, (err: BusinessError, readLen: number) => {
+  if (err) {
+    console.error(`Failed to read stream. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    let buf = buffer.from(arrayBuffer, 0, readLen);
+    console.info(`Succeeded in reading data, the content of file is: ${buf.toString()}`);
+    stream.close();
+  }
+});
+```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -384,34 +386,6 @@ randomAccessFile.read(arrayBuffer, readOption, (err: BusinessError, readLength: 
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { ReadOptions } from '@kit.CoreFileKit';
-
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath,fileIo.OpenMode.CREATE |fileIo.OpenMode.READ_WRITE);
-let randomAccessFile = fileIo.createRandomAccessFileSync(file);
-let length: long = 20;
-let readOption: ReadOptions = {
-  offset: 1,
-  length: 5
-};
-let arrayBuffer = new ArrayBuffer(length);
-randomAccessFile.read(arrayBuffer, readOption, (err: BusinessError | null, readLength: long | undefined) => {
-  if (err) {
-    console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    if (readLength) {
-      console.info(`Succeeded in reading, size is: ${readLength}`);
-    }
-  }
-  randomAccessFile.close();
-  fileIo.closeSync(file);
-});
-```
-
 ## readSync
 
 ```TypeScript
@@ -425,8 +399,6 @@ readSync(
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-readSync(    buffer: ArrayBuffer,    options?: ReadOptions  ): number--><!--Device-RandomAccessFile-readSync(    buffer: ArrayBuffer,    options?: ReadOptions  ): number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -434,7 +406,7 @@ readSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
-| options | [ReadOptions](../../apis-na/arkts-apis/arkts-na-file-fs-readoptions-i.md) | 否 | 支持如下选项：<br/>- length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- offset， number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br/><br>**起始版本：** 11 |
+| options | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | 否 | 支持如下选项：   - length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。   - offset， number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -447,38 +419,37 @@ readSync(
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900004 | Interrupted system call |
-| 13900020 | Invalid argument |
 | 13900005 | I/O error |
-| 13900034 | Operation would block |
-| 13900019 | Is a directory |
-| 13900044 | Network is unreachable<br>**适用版本：** 12+ |
-| 13900013 | Bad address |
 | 13900008 | Bad file descriptor |
 | 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900019 | Is a directory |
+| 13900020 | Invalid argument |
+| 13900034 | Operation would block |
 | 13900042 | Unknown error |
+| 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 **示例**
 
-ArkTS-Dyn示例：
+```TypeScript
+import { ReadOptions } from '@kit.CoreFileKit';
+
+let filePath = pathDir + "/test.txt";
+let stream = fileIo.createStreamSync(filePath, "r+");
+let readOption: ReadOptions = {
+  offset: 5,
+  length: 5
+};
+let buf = new ArrayBuffer(4096);
+let num = stream.readSync(buf, readOption);
+stream.close();
+```
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
 let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
 let randomAccessFile = fileIo.createRandomAccessFileSync(file);
 let length: number = 4096;
-let arrayBuffer = new ArrayBuffer(length);
-let readLength = randomAccessFile.readSync(arrayBuffer);
-randomAccessFile.close();
-fileIo.closeSync(file);
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath,fileIo.OpenMode.CREATE |fileIo.OpenMode.READ_WRITE);
-let randomAccessFile = fileIo.createRandomAccessFileSync(file);
-let length: long = 4096;
 let arrayBuffer = new ArrayBuffer(length);
 let readLength = randomAccessFile.readSync(arrayBuffer);
 randomAccessFile.close();
@@ -495,8 +466,6 @@ setFilePointer(filePointer: number): void
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-setFilePointer(filePointer: number): void--><!--Device-RandomAccessFile-setFilePointer(filePointer: number): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -510,9 +479,9 @@ setFilePointer(filePointer: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900004 | Interrupted system call |
-| 13900020 | Invalid argument |
 | 13900005 | I/O error |
 | 13900008 | Bad file descriptor |
+| 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
 **示例**
@@ -537,8 +506,6 @@ write(
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-write(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): Promise<number>--><!--Device-RandomAccessFile-write(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): Promise<number>-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -546,34 +513,51 @@ write(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | [WriteOptions](../../apis-na/arkts-apis/arkts-na-file-fs-writeoptions-i.md) | 否 | 支持如下选项：<br/>- length，number类型，表示期望写入数据的长度，单位为Byte。默认缓冲区长度。<br/>- offset，number类 型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>- encoding，string类型，当数据是string 类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。<br>**起始版本：** 11 |
+| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | 否 | 支持如下选项：   - length，number类型，表示期望写入数据的长度，单位为Byte。默认缓冲区长度。   - offset，number类 型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。   - encoding，string类型，当数据是string 类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。<br>**起始版本：** 11 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
+| Promise & lt;number & gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900004 | Interrupted system call |
-| 13900020 | Invalid argument |
-| 13900005 | I/O error |
 | 13900001 | Operation not permitted |
-| 13900034 | Operation would block |
-| 13900013 | Bad address |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
 | 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900020 | Invalid argument |
 | 13900024 | File too large |
 | 13900025 | No space left on device |
+| 13900034 | Operation would block |
 | 13900041 | Quota exceeded |
-| 13900010 | Try again |
 | 13900042 | Unknown error |
 
 **示例**
 
-ArkTS-Dyn示例：
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { WriteOptions } from '@kit.CoreFileKit';
+
+let filePath = pathDir + "/test.txt";
+let stream = fileIo.createStreamSync(filePath, "r+");
+let writeOption: WriteOptions = {
+  offset: 5,
+  length: 5,
+  encoding: 'utf-8'
+};
+stream.write("hello, world", writeOption).then((number: number) => {
+  console.info(`Succeeded in writing, size is: ${number}`);
+  stream.close();
+}).catch((err: BusinessError) => {
+  console.error(`Failed to write. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -599,33 +583,6 @@ randomAccessFile.write(arrayBuffer, writeOption).then((bytesWritten: number) => 
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { WriteOptions } from '@kit.CoreFileKit';
-
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath,fileIo.OpenMode.CREATE |fileIo.OpenMode.READ_WRITE);
-let randomAccessFile = fileIo.createRandomAccessFileSync(file);
-let bufferLength: number = 4096;
-let writeOption: WriteOptions = {
-  offset: 1,
-  length: 5,
-  encoding: 'utf-8'
-};
-let arrayBuffer = new ArrayBuffer(bufferLength);
-randomAccessFile.write(arrayBuffer, writeOption).then((bytesWritten: long) => {
-  console.info(`Succeeded in writing, bytes written: ${bytesWritten}`);
-}).catch((error: Error) => {
-  let err: BusinessError = error as BusinessError;
-  console.error(`Failed to write. Code: ${err.code}, message: ${err.message}`);
-}).finally(() => {
-  randomAccessFile.close();
-  fileIo.closeSync(file);
-});
-```
-
 ## write
 
 ```TypeScript
@@ -636,8 +593,6 @@ write(buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-write(buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void--><!--Device-RandomAccessFile-write(buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -645,28 +600,43 @@ write(buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数，返回实际写入数据长度，单位为Byte。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回实际写入数据长度，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900004 | Interrupted system call |
-| 13900020 | Invalid argument |
-| 13900005 | I/O error |
 | 13900001 | Operation not permitted |
-| 13900034 | Operation would block |
-| 13900013 | Bad address |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
 | 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900020 | Invalid argument |
 | 13900024 | File too large |
 | 13900025 | No space left on device |
+| 13900034 | Operation would block |
 | 13900041 | Quota exceeded |
-| 13900010 | Try again |
 | 13900042 | Unknown error |
 
 **示例**
 
-ArkTS-Dyn示例：
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let stream = fileIo.createStreamSync(filePath, "r+");
+stream.write("hello, world", (err: BusinessError, bytesWritten: number) => {
+  if (err) {
+    console.error(`Failed to write stream. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    if (bytesWritten) {
+      console.info(`Succeeded in writing, size is: ${bytesWritten}`);
+    }
+  }
+  stream.close();
+});
+```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -677,29 +647,6 @@ let randomAccessFile = fileIo.createRandomAccessFileSync(file);
 let bufferLength: number = 4096;
 let arrayBuffer = new ArrayBuffer(bufferLength);
 randomAccessFile.write(arrayBuffer, (err: BusinessError, bytesWritten: number) => {
-  if (err) {
-    console.error(`Failed to write. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    if (bytesWritten) {
-      console.info(`Succeeded in writing, size is: ${bytesWritten}`);
-    }
-  }
-  randomAccessFile.close();
-  fileIo.closeSync(file);
-});
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-let randomAccessFile = fileIo.createRandomAccessFileSync(file);
-let bufferLength: long = 4096;
-let arrayBuffer = new ArrayBuffer(bufferLength);
-randomAccessFile.write(arrayBuffer, (err: BusinessError | null, bytesWritten: long | undefined) => {
   if (err) {
     console.error(`Failed to write. Code: ${err.code}, message: ${err.message}`);
   } else {
@@ -726,8 +673,6 @@ write(
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-write(    buffer: ArrayBuffer | string,    options: WriteOptions,    callback: AsyncCallback<number>  ): void--><!--Device-RandomAccessFile-write(    buffer: ArrayBuffer | string,    options: WriteOptions,    callback: AsyncCallback<number>  ): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -735,29 +680,50 @@ write(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | [WriteOptions](../../apis-na/arkts-apis/arkts-na-file-fs-writeoptions-i.md) | 是 | 支持如下选项：<br/>- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>- offset， number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>- encoding，string类型，当数据 是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。<br>**起始版本：** 11 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数，返回实际写入数据长度，单位为Byte。 |
+| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | 是 | 支持如下选项：   - length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认为缓冲区长度。   - offset， number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。   - encoding，string类型，当数据 是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。<br>**起始版本：** 11 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回实际写入数据长度，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900004 | Interrupted system call |
-| 13900020 | Invalid argument |
-| 13900005 | I/O error |
 | 13900001 | Operation not permitted |
-| 13900034 | Operation would block |
-| 13900013 | Bad address |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
 | 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900020 | Invalid argument |
 | 13900024 | File too large |
 | 13900025 | No space left on device |
+| 13900034 | Operation would block |
 | 13900041 | Quota exceeded |
-| 13900010 | Try again |
 | 13900042 | Unknown error |
 
 **示例**
 
-ArkTS-Dyn示例：
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { WriteOptions } from '@kit.CoreFileKit';
+
+let filePath = pathDir + "/test.txt";
+let stream = fileIo.createStreamSync(filePath, "r+");
+let writeOption: WriteOptions = {
+  offset: 5,
+  length: 5,
+  encoding: 'utf-8'
+};
+stream.write("hello, world", writeOption, (err: BusinessError, bytesWritten: number) => {
+  if (err) {
+    console.error(`Failed to write stream. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    if (bytesWritten) {
+      console.info(`Succeeded in writing, size is: ${bytesWritten}`);
+    }
+  }
+  stream.close();
+});
+```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -786,35 +752,6 @@ randomAccessFile.write(arrayBuffer, writeOption, (err: BusinessError, bytesWritt
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { WriteOptions } from '@kit.CoreFileKit';
-
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath,fileIo.OpenMode.CREATE |fileIo.OpenMode.READ_WRITE);
-let randomAccessFile = fileIo.createRandomAccessFileSync(file);
-let bufferLength: long = 4096;
-let writeOption: WriteOptions = {
-  offset: 1,
-  length: bufferLength,
-  encoding: 'utf-8'
-};
-let arrayBuffer = new ArrayBuffer(bufferLength);
-randomAccessFile.write(arrayBuffer, writeOption, (err: BusinessError | null, bytesWritten: long | undefined) => {
-  if (err) {
-    console.error(`Failed to write. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    if (bytesWritten) {
-      console.info(`Succeeded in writing, size is: ${bytesWritten}`);
-    }
-  }
-  randomAccessFile.close();
-  fileIo.closeSync(file);
-});
-```
-
 ## writeSync
 
 ```TypeScript
@@ -828,8 +765,6 @@ writeSync(
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-writeSync(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): number--><!--Device-RandomAccessFile-writeSync(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -837,7 +772,7 @@ writeSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | [WriteOptions](../../apis-na/arkts-apis/arkts-na-file-fs-writeoptions-i.md) | 否 | 支持如下选项：<br/>- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- offset， number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>- encoding，string类型，当数据 是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。<br>**起始版本：** 11 |
+| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | 否 | 支持如下选项：   - length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。   - offset， number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。   - encoding，string类型，当数据 是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -849,20 +784,34 @@ writeSync(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900004 | Interrupted system call |
-| 13900020 | Invalid argument |
-| 13900005 | I/O error |
 | 13900001 | Operation not permitted |
-| 13900034 | Operation would block |
-| 13900013 | Bad address |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
 | 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900020 | Invalid argument |
 | 13900024 | File too large |
 | 13900025 | No space left on device |
+| 13900034 | Operation would block |
 | 13900041 | Quota exceeded |
-| 13900010 | Try again |
 | 13900042 | Unknown error |
 
 **示例**
+
+```TypeScript
+import { WriteOptions } from '@kit.CoreFileKit';
+
+let filePath = pathDir + "/test.txt";
+let stream = fileIo.createStreamSync(filePath,"r+");
+let writeOption: WriteOptions = {
+  offset: 5,
+  length: 5,
+  encoding: 'utf-8'
+};
+let num = stream.writeSync("hello, world", writeOption);
+stream.close();
+```
 
 ```TypeScript
 import { WriteOptions } from '@kit.CoreFileKit';
@@ -890,8 +839,6 @@ readonly fd: number
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-readonly fd: number--><!--Device-RandomAccessFile-readonly fd: number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## filePointer
@@ -906,7 +853,4 @@ RandomAccessFile对象的偏移指针，表示当前读写位置，单位为Byte
 
 **起始版本：** 10
 
-<!--Device-RandomAccessFile-readonly filePointer: number--><!--Device-RandomAccessFile-readonly filePointer: number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
-

@@ -4,49 +4,11 @@
 
 **起始版本：** 7
 
-<!--Device-util-class TextEncoder--><!--Device-util-class TextEncoder-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { ArrayList } from '@kit.ArkTS';
-import { ArrayListComparatorFn } from '@kit.ArkTS';
-import { ArrayListForEachCb } from '@kit.ArkTS';
-import { ArrayListReplaceCb } from '@kit.ArkTS';
-import { util } from '@kit.ArkTS';
-import { Deque } from '@kit.ArkTS';
-import { DequeForEachCb } from '@kit.ArkTS';
-import { HashMap } from '@kit.ArkTS';
-import { HashMapCbFn } from '@kit.ArkTS';
-import { HashSet } from '@kit.ArkTS';
-import { HashSetCbFn } from '@kit.ArkTS';
-import { LightWeightMap } from '@kit.ArkTS';
-import { LightWeightMapCbFn } from '@kit.ArkTS';
-import { LightWeightSet } from '@kit.ArkTS';
-import { LightWeightSetForEachCb } from '@kit.ArkTS';
-import { LinkedList } from '@kit.ArkTS';
-import { LinkedListForEachCb } from '@kit.ArkTS';
-import { List } from '@kit.ArkTS';
-import { ListComparatorFn } from '@kit.ArkTS';
-import { ListForEachCb } from '@kit.ArkTS';
-import { ListReplaceCb } from '@kit.ArkTS';
-import { PlainArray } from '@kit.ArkTS';
-import { PlainArrayForEachCb } from '@kit.ArkTS';
-import { Queue } from '@kit.ArkTS';
-import { QueueForEachCb } from '@kit.ArkTS';
-import { Stack } from '@kit.ArkTS';
-import { StackForEachCb } from '@kit.ArkTS';
-import { TreeMap } from '@kit.ArkTS';
-import { TreeMapForEachCb } from '@kit.ArkTS';
-import { TreeMapComparator } from '@kit.ArkTS';
-import { TreeSet } from '@kit.ArkTS';
-import { TreeSetForEachCb } from '@kit.ArkTS';
-import { TreeSetComparator } from '@kit.ArkTS';
-import { stream } from '@kit.ArkTS';
-import { Vector } from '@kit.ArkTS';
-import { JSON } from '@kit.ArkTS';
 ```
 
 ## constructor
@@ -61,14 +23,35 @@ constructor()
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextEncoder-constructor()--><!--Device-TextEncoder-constructor()-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **示例**
 
 ```TypeScript
+let textDecoder = new util.TextDecoder();
+let retStr = textDecoder.encoding;
+console.info('retStr = ' + retStr);
+// 输出结果：retStr = utf-8
+```
+
+```TypeScript
 let textEncoder = new util.TextEncoder();
+```
+
+```TypeScript
+let rationalNumber = new util.RationalNumber();
+```
+
+```TypeScript
+let base64 = new util.Base64Helper();
+```
+
+```TypeScript
+let type = new util.types();
+```
+
+```TypeScript
+let base64 = new  util.Base64();
 ```
 
 ## constructor
@@ -82,8 +65,6 @@ constructor(encoding?: string)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextEncoder-constructor(encoding?: string)--><!--Device-TextEncoder-constructor(encoding?: string)-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -99,6 +80,10 @@ constructor(encoding?: string)
 let textEncoder = new util.TextEncoder("utf-8");
 ```
 
+```TypeScript
+let decoder = new util.StringDecoder();
+```
+
 ## create
 
 ```TypeScript
@@ -110,8 +95,6 @@ static create(encoding?: string): TextEncoder
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextEncoder-static create(encoding?: string): TextEncoder--><!--Device-TextEncoder-static create(encoding?: string): TextEncoder-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -147,8 +130,6 @@ encode(input?: string): Uint8Array
 
 **替代接口：** [encodeInto](#encodeinto)
 
-<!--Device-TextEncoder-encode(input?: string): Uint8Array--><!--Device-TextEncoder-encode(input?: string): Uint8Array-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -183,8 +164,6 @@ encodeInto(input?: string): Uint8Array
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextEncoder-encodeInto(input?: string): Uint8Array--><!--Device-TextEncoder-encodeInto(input?: string): Uint8Array-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -223,8 +202,6 @@ encodeInto(input: string, dest: Uint8Array): { read: number; written: number }
 
 **替代接口：** [encodeIntoUint8Array](#encodeintouint8array)
 
-<!--Device-TextEncoder-encodeInto(input: string, dest: Uint8Array): { read: number; written: number }--><!--Device-TextEncoder-encodeInto(input: string, dest: Uint8Array): { read: number; written: number }-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -238,7 +215,7 @@ encodeInto(input: string, dest: Uint8Array): { read: number; written: number }
 
 | 类型 | 说明 |
 | --- | --- |
-| { read: number; written: number } | 获取到的对象。**read** 表示已编码的字符数，**written** 表示已编码字符所占用的字节数。 |
+| object | 获取到的对象。**read** 表示已编码的字符数，**written** 表示已编码字符所占用的字节数。 |
 
 **示例**
 
@@ -262,8 +239,6 @@ encodeIntoUint8Array(input: string, dest: Uint8Array): EncodeIntoUint8ArrayInfo
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextEncoder-encodeIntoUint8Array(input: string, dest: Uint8Array): EncodeIntoUint8ArrayInfo--><!--Device-TextEncoder-encodeIntoUint8Array(input: string, dest: Uint8Array): EncodeIntoUint8ArrayInfo-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -302,7 +277,9 @@ console.info("result.written = " + result.written);
 readonly encoding = 'utf-8'
 ```
 
-编码格式。<br/>-&nbsp;支持格式：utf-8、gb2312、gb18030、ibm866、iso-8859-1、iso-8859-2、iso-8859-3、iso-8859-4、iso-8859-5、 iso-8859-6、iso-8859-7、iso-8859-8、iso-8859-8-i、iso-8859-10、iso-8859-13、iso-8859-14、iso-8859-15、koi8-r、koi8-u、 macintosh、windows-874、windows-1250、windows-1251、windows-1252、windows-1253、windows-1254、windows-1255、windows-1256、 windows-1257、windows-1258、gbk、big5、euc-jp、iso-2022-jp、shift_jis、euc-kr、x-mac-cyrillic、utf-16be、utf-16le。 <br/>-&nbsp; 默认值是：'utf-8'。
+编码格式。  
+-&nbsp;支持格式：utf-8、gb2312、gb18030、ibm866、iso-8859-1、iso-8859-2、iso-8859-3、iso-8859-4、iso-8859-5、 iso-8859-6、iso-8859-7、iso-8859-8、iso-8859-8-i、iso-8859-10、iso-8859-13、iso-8859-14、iso-8859-15、koi8-r、koi8-u、 macintosh、windows-874、windows-1250、windows-1251、windows-1252、windows-1253、windows-1254、windows-1255、windows-1256、 windows-1257、windows-1258、gbk、big5、euc-jp、iso-2022-jp、shift_jis、euc-kr、x-mac-cyrillic、utf-16be、utf-16le。   
+-&nbsp; 默认值是：'utf-8'。
 
 **类型：** 'utf-8'
 
@@ -310,7 +287,4 @@ readonly encoding = 'utf-8'
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextEncoder-readonly encoding = 'utf-8'--><!--Device-TextEncoder-readonly encoding = 'utf-8'-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

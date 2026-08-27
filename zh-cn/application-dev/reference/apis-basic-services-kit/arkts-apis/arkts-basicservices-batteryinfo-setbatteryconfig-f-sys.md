@@ -9,16 +9,12 @@ import { batteryInfo } from '@kit.BasicServicesKit';
 ## setBatteryConfig
 
 ```TypeScript
-function setBatteryConfig(sceneName: string, sceneValue: string): int
+function setBatteryConfig(sceneName: string, sceneValue: string): number
 ```
 
 按场景名称设置电池配置。调用该接口后，系统将根据传入的场景名称和场景值修改对应的电池充电配置，影响设备充电行为。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-batteryInfo-function setBatteryConfig(sceneName: string, sceneValue: string): int--><!--Device-batteryInfo-function setBatteryConfig(sceneName: string, sceneValue: string): int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -35,26 +31,24 @@ function setBatteryConfig(sceneName: string, sceneValue: string): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 返回设置电池配置的结果。返回0表示设置成功，返回非0表示设置失败。 |
+| number | 返回设置电池配置的结果。返回0表示设置成功，返回非0表示设置失败。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5100101](../errorcode-battery-info.md#5100101-连接服务失败) | Failed to connect to the service. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [5100101](../errorcode-battery-info.md#5100101-连接服务失败) | Failed to connect to the service. |
 
 **示例**
 
 ```TypeScript
-try {
-  let sceneName = 'xxx';
-  let sceneValue = '0';
-  let result = batteryInfo.setBatteryConfig(sceneName, sceneValue);
+import { batteryInfo } from '@kit.BasicServicesKit';
 
-  console.info("The result is: " + result);
-} catch(err) {
-  console.error('setBatteryConfig failed, err: ' + err);
-}
+let sceneName = 'xxx';
+let sceneValue = '0';
+let result = batteryInfo.setBatteryConfig(sceneName, sceneValue);
+
+console.info('The result is: ' + result);
 ```
-

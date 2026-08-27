@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare namespace asset--><!--Device-unnamed-declare namespace asset-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 ## 导入模块
@@ -20,17 +18,17 @@ import { asset } from '@kit.AssetStoreKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [add](arkts-assetstore-asset-add-f.md) | 新增一条关键资产。使用Promise异步回调。 设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考 [声明权限](../../../security/AccessToken/declare-permissions.md)。 |
-| [addSync](arkts-assetstore-asset-addsync-f.md) | 新增一条关键资产，使用同步方式返回结果。 如果要设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md)属性，需要申请ohos.permission.STORE_PERSISTENT_DATA权限， 申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。 |
-| [batchAdd](arkts-assetstore-asset-batchadd-f.md) | 批量新增关键资产。使用Promise异步回调。 设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考 [声明权限](../../../security/AccessToken/declare-permissions.md)。 批量新增的关键资产必须具有相同的[Tag.GROUP_ID](arkts-assetstore-asset-tagtype-e.md)和[Tag.REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tagtype-e.md)属性。 批量新增的关键资产数量最大值为100。 |
-| [batchRemove](arkts-assetstore-asset-batchremove-f.md) | 批量删除符合条件的关键资产。使用Promise异步回调。 批量删除的关键资产必须具有相同的[Tag.GROUP_ID](arkts-assetstore-asset-tagtype-e.md)和[Tag.REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tagtype-e.md)属性。 批量删除的关键资产数量最大值为100。 |
-| [batchUpdate](arkts-assetstore-asset-batchupdate-f.md) | 批量更新符合条件的关键资产。使用Promise异步回调。 批量更新的关键资产必须具有相同的[Tag.GROUP_ID](arkts-assetstore-asset-tagtype-e.md)和[Tag.REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tagtype-e.md)属性。 批量更新的关键资产数量最大值为100。 |
+| [add](arkts-assetstore-asset-add-f.md) | 新增一条关键资产。使用Promise异步回调。设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考 [声明权限](../../../security/AccessToken/declare-permissions.md)。 |
+| [addSync](arkts-assetstore-asset-addsync-f.md) | 新增一条关键资产，使用同步方式返回结果。如果要设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md)属性，需要申请ohos.permission.STORE_PERSISTENT_DATA权限， 申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。 |
+| [batchAdd](arkts-assetstore-asset-batchadd-f.md) | 批量新增关键资产。使用Promise异步回调。设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考 [声明权限](../../../security/AccessToken/declare-permissions.md)。批量新增的关键资产必须具有相同的[Tag.GROUP_ID](arkts-assetstore-asset-tagtype-e.md)和[Tag.REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tagtype-e.md)属性。批量新增的关键资产数量最大值为100。 |
+| [batchRemove](arkts-assetstore-asset-batchremove-f.md) | 批量删除符合条件的关键资产。使用Promise异步回调。批量删除的关键资产必须具有相同的[Tag.GROUP_ID](arkts-assetstore-asset-tagtype-e.md)和[Tag.REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tagtype-e.md)属性。批量删除的关键资产数量最大值为100。 |
+| [batchUpdate](arkts-assetstore-asset-batchupdate-f.md) | 批量更新符合条件的关键资产。使用Promise异步回调。批量更新的关键资产必须具有相同的[Tag.GROUP_ID](arkts-assetstore-asset-tagtype-e.md)和[Tag.REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tagtype-e.md)属性。批量更新的关键资产数量最大值为100。 |
 | [postQuery](arkts-assetstore-asset-postquery-f.md) | 查询的后置处理，用于需要用户认证的关键资产（与[asset.preQuery](arkts-assetstore-asset-prequery-f.md)函数成对出现）。使用Promise异步回调。 |
 | [postQuerySync](arkts-assetstore-asset-postquerysync-f.md) | 查询的后置处理，用于需要用户认证的关键资产。需与[asset.preQuerySync](arkts-assetstore-asset-prequerysync-f.md)函数成对出现。使用同步方式返回结果。 |
 | [preQuery](arkts-assetstore-asset-prequery-f.md) | 查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.query](arkts-assetstore-asset-query-f.md)和[asset.postQuery](arkts-assetstore-asset-postquery-f.md)接口。 使用Promise异步回调。 |
 | [preQuerySync](arkts-assetstore-asset-prequerysync-f.md) | 查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.querySync](arkts-assetstore-asset-querysync-f.md)、 [asset.postQuerySync](arkts-assetstore-asset-postquerysync-f.md)。使用同步方式返回结果。 |
-| [query](arkts-assetstore-asset-query-f.md) | 查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQuery](arkts-assetstore-asset-prequery-f.md)接口，在本函数后调用 [asset.postQuery](arkts-assetstore-asset-postquery-f.md)接口，开发步骤请参考[开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。 使用Promise异步回调。 如果未查询到符合条件的关键资产，将抛出“未找到关键资产”的异常，而非返回空的查询结果列表。 |
-| [querySync](arkts-assetstore-asset-querysync-f.md) | 查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQuerySync](arkts-assetstore-asset-prequerysync-f.md)，在本函数后调用 [asset.postQuerySync](arkts-assetstore-asset-postquerysync-f.md)，开发步骤请参考 [开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。使用同步方式返回结果。 如果未查询到符合条件的关键资产，将抛出“未找到关键资产”的异常，而非返回空的查询结果列表。 |
+| [query](arkts-assetstore-asset-query-f.md) | 查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQuery](arkts-assetstore-asset-prequery-f.md)接口，在本函数后调用 [asset.postQuery](arkts-assetstore-asset-postquery-f.md)接口，开发步骤请参考[开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。 使用Promise异步回调。如果未查询到符合条件的关键资产，将抛出“未找到关键资产”的异常，而非返回空的查询结果列表。 |
+| [querySync](arkts-assetstore-asset-querysync-f.md) | 查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQuerySync](arkts-assetstore-asset-prequerysync-f.md)，在本函数后调用 [asset.postQuerySync](arkts-assetstore-asset-postquerysync-f.md)，开发步骤请参考 [开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。使用同步方式返回结果。如果未查询到符合条件的关键资产，将抛出“未找到关键资产”的异常，而非返回空的查询结果列表。 |
 | [querySyncResult](arkts-assetstore-asset-querysyncresult-f.md) | 执行同步操作后，查询同步执行结果。使用Promise异步回调。 |
 | [remove](arkts-assetstore-asset-remove-f.md) | 删除符合条件的一条或多条关键资产。使用Promise异步回调。 |
 | [removeSync](arkts-assetstore-asset-removesync-f.md) | 删除符合条件的一条或多条关键资产，使用同步方式。 |
@@ -42,7 +40,7 @@ import { asset } from '@kit.AssetStoreKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [addAsUser](arkts-assetstore-asset-addasuser-f-sys.md) | 在指定用户空间中新增一条关键资产。使用Promise异步回调。 设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md)属性，需申请ohos.permission.STORE_PERSISTENT_DATA权限， 申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。 |
+| [addAsUser](arkts-assetstore-asset-addasuser-f-sys.md) | 在指定用户空间中新增一条关键资产。使用Promise异步回调。设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md)属性，需申请ohos.permission.STORE_PERSISTENT_DATA权限， 申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。 |
 | [postQueryAsUser](arkts-assetstore-asset-postqueryasuser-f-sys.md) | 在指定用户空间中查询的后置处理，用于需要用户认证的关键资产（与[asset.preQueryAsUser](arkts-assetstore-asset-prequeryasuser-f-sys.md)函数成对出现）。使用Promise异步回调。 |
 | [preQueryAsUser](arkts-assetstore-asset-prequeryasuser-f-sys.md) | 在指定用户空间中查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.queryAsUser](arkts-assetstore-asset-queryasuser-f-sys.md)和 [asset.postQueryAsUser](arkts-assetstore-asset-postqueryasuser-f-sys.md)接口。使用Promise异步回调。 |
 | [queryAsUser](arkts-assetstore-asset-queryasuser-f-sys.md) | 在指定用户空间中查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQueryAsUser](arkts-assetstore-asset-prequeryasuser-f-sys.md)接口，在本函数后调用 [asset.postQueryAsUser](arkts-assetstore-asset-postqueryasuser-f-sys.md)接口，开发步骤请参考 [开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。使用Promise异步回调。 |
@@ -87,4 +85,3 @@ import { asset } from '@kit.AssetStoreKit';
 | --- | --- |
 | [AssetMap](arkts-assetstore-asset-assetmap-t.md) | 关键资产属性的键-值对集合。 |
 | [Value](arkts-assetstore-asset-value-t.md) | 关键资产属性的内容，用作[AssetMap](arkts-assetstore-asset-assetmap-t.md)的值。 |
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare enum BarStyle--><!--Device-unnamed-declare enum BarStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## STANDARD
@@ -21,8 +19,6 @@ STANDARD = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BarStyle-STANDARD = 0--><!--Device-BarStyle-STANDARD = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ STACK = 1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BarStyle-STACK = 1--><!--Device-BarStyle-STACK = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SAFE_AREA_PADDING
@@ -50,7 +44,7 @@ STACK = 1
 SAFE_AREA_PADDING = 2
 ```
 
-将指定该模式的标题栏或工具栏设置为组件级安全区。
+将指定该模式的标题栏或工具栏设置为[组件级安全区](arkts-arkui-commonmethod-c.md#safeareapadding)。
 
 **起始版本：** 14
 
@@ -58,7 +52,4 @@ SAFE_AREA_PADDING = 2
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BarStyle-SAFE_AREA_PADDING = 2--><!--Device-BarStyle-SAFE_AREA_PADDING = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

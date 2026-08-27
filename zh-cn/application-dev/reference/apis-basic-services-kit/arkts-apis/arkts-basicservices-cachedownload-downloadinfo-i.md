@@ -2,9 +2,7 @@
 
 预下载的下载信息。
 
-**起始版本：** 23
-
-<!--Device-cacheDownload-interface DownloadInfo--><!--Device-cacheDownload-interface DownloadInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -24,9 +22,7 @@ readonly network: NetworkInfo
 
 **类型：** NetworkInfo
 
-**起始版本：** 23
-
-<!--Device-DownloadInfo-readonly network: NetworkInfo--><!--Device-DownloadInfo-readonly network: NetworkInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -40,9 +36,7 @@ readonly performance: PerformanceInfo
 
 **类型：** [PerformanceInfo](arkts-basicservices-cachedownload-performanceinfo-i.md)
 
-**起始版本：** 23
-
-<!--Device-DownloadInfo-readonly performance: PerformanceInfo--><!--Device-DownloadInfo-readonly performance: PerformanceInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -56,9 +50,6 @@ readonly resource: ResourceInfo
 
 **类型：** [ResourceInfo](arkts-basicservices-cachedownload-resourceinfo-i.md)
 
-**起始版本：** 23
-
-<!--Device-DownloadInfo-readonly resource: ResourceInfo--><!--Device-DownloadInfo-readonly resource: ResourceInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
-

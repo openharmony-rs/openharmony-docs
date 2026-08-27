@@ -1,10 +1,8 @@
-# CloudModelInfo(智慧数据平台)
+# CloudModelInfo
 
 云侧模型的配置信息，在使用云侧文本向量模型时配置，可通过[getSupportedCloudModel](arkts-arkdata-intelligence-getsupportedcloudmodel-f.md)接口获取当前设备支持的云侧模型信息。
 
 **起始版本：** 26.0.0
-
-<!--Device-intelligence-interface CloudModelInfo--><!--Device-intelligence-interface CloudModelInfo-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -28,8 +26,6 @@ modelType: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CloudModelInfo-modelType: string--><!--Device-CloudModelInfo-modelType: string-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 ## modelVersionCode
@@ -46,7 +42,4 @@ modelVersionCode?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CloudModelInfo-modelVersionCode?: string--><!--Device-CloudModelInfo-modelVersionCode?: string-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
-

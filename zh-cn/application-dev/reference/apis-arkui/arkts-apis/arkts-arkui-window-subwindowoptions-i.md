@@ -2,17 +2,13 @@
 
 子窗口创建参数。
 
-**起始版本：** 23
-
-<!--Device-window-interface SubWindowOptions--><!--Device-window-interface SubWindowOptions-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -26,11 +22,9 @@ decorEnabled: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SubWindowOptions-decorEnabled: boolean--><!--Device-SubWindowOptions-decorEnabled: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -44,11 +38,9 @@ isModal?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SubWindowOptions-isModal?: boolean--><!--Device-SubWindowOptions-isModal?: boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -58,15 +50,13 @@ isModal?: boolean
 maximizeSupported?: boolean
 ```
 
-子窗口是否支持最大化特性。true表示子窗口支持最大化，false表示子窗口不支持最大化。不设置，则默认为false。 该参数在支持并处于[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持 [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的设备上，作为入参使用时，对应接口不生效不报错；在支持但不处于 [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的设备上，作为入参使用时，对应接口不生效不报错，切换到 [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态后生效。
+子窗口是否支持最大化特性。true表示子窗口支持最大化，false表示子窗口不支持最大化。不设置，则默认为false。该参数在支持并处于[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持 [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的设备上，作为入参使用时，对应接口不生效不报错；在支持但不处于 [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的设备上，作为入参使用时，对应接口不生效不报错，切换到 [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态后生效。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 19
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SubWindowOptions-maximizeSupported?: boolean--><!--Device-SubWindowOptions-maximizeSupported?: boolean-End-->
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -80,11 +70,9 @@ modalityType?: ModalityType
 
 **类型：** [ModalityType](arkts-arkui-window-modalitytype-e.md)
 
-**起始版本：** 23
+**起始版本：** 14
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SubWindowOptions-modalityType?: ModalityType--><!--Device-SubWindowOptions-modalityType?: ModalityType-End-->
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -94,15 +82,13 @@ modalityType?: ModalityType
 outlineEnabled?: boolean
 ```
 
-子窗口是否显示描边。true表示子窗口显示描边，false表示子窗口不显示描边。不设置，则默认为false。 该参数在2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，对应接口不生效不报错。
+子窗口是否显示描边。true表示子窗口显示描边，false表示子窗口不显示描边。不设置，则默认为false。该参数在2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，对应接口不生效不报错。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 20
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SubWindowOptions-outlineEnabled?: boolean--><!--Device-SubWindowOptions-outlineEnabled?: boolean-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -116,11 +102,9 @@ title: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SubWindowOptions-title: string--><!--Device-SubWindowOptions-title: string-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -134,29 +118,25 @@ windowRect?: Rect
 
 **类型：** Rect
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SubWindowOptions-windowRect?: Rect--><!--Device-SubWindowOptions-windowRect?: Rect-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## zLevel
 
 ```TypeScript
-zLevel?: int
+zLevel?: number
 ```
 
 子窗口层级级别，仅当子窗口未启用模态属性，即未设置isModal时生效。该参数是整数，取值范围为[-10000, 10000]，浮点数输入将向下取整。不设置，则默认为0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SubWindowOptions-zLevel?: int--><!--Device-SubWindowOptions-zLevel?: int-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -176,7 +156,4 @@ zLevelAboveParentLoosened?: boolean
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SubWindowOptions-zLevelAboveParentLoosened?: boolean--><!--Device-SubWindowOptions-zLevelAboveParentLoosened?: boolean-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
-

@@ -1,10 +1,13 @@
 # BlendMode
 
-混合模式。 > **说明：** > > blendMode枚举中，s表示源像素，d表示目标像素，sa表示源像素透明度，da表示目标像素透明度，r表示混合后像素，ra表示混合后像素透明度。
+混合模式。
+
+> **说明：**
+> 
+> blendMode枚举中，s表示源像素，d表示目标像素，sa表示源像素透明度，da表示目标像素透明度，r表示混合后像素，ra表示混合后像素透明度。
+@enum { number }
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare enum BlendMode--><!--Device-unnamed-declare enum BlendMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,8 +27,6 @@ NONE = 0
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendMode-NONE = 0--><!--Device-BlendMode-NONE = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CLEAR
@@ -43,8 +44,6 @@ CLEAR = 1
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BlendMode-CLEAR = 1--><!--Device-BlendMode-CLEAR = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,8 +63,6 @@ r = s，只显示源像素。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendMode-SRC = 2--><!--Device-BlendMode-SRC = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DST
@@ -83,8 +80,6 @@ r = d，只显示目标像素。
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BlendMode-DST = 3--><!--Device-BlendMode-DST = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,8 +99,6 @@ r = s + (1 - sa) * d，将源像素按照透明度进行混合，覆盖在目标
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendMode-SRC_OVER = 4--><!--Device-BlendMode-SRC_OVER = 4-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DST_OVER
@@ -123,8 +116,6 @@ r = d + (1 - da) * s，将目标像素按照透明度进行混合，覆盖在源
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BlendMode-DST_OVER = 5--><!--Device-BlendMode-DST_OVER = 5-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,8 +135,6 @@ r = s * da，只显示源像素中与目标像素重叠的部分。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendMode-SRC_IN = 6--><!--Device-BlendMode-SRC_IN = 6-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DST_IN
@@ -163,8 +152,6 @@ r = d * sa，只显示目标像素中与源像素重叠的部分。
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BlendMode-DST_IN = 7--><!--Device-BlendMode-DST_IN = 7-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -184,8 +171,6 @@ r = s * (1 - da)，只显示源像素中与目标像素不重叠的部分。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendMode-SRC_OUT = 8--><!--Device-BlendMode-SRC_OUT = 8-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DST_OUT
@@ -203,8 +188,6 @@ r = d * (1 - sa), retains the parts of the destination pixels that do not overla
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BlendMode-DST_OUT = 9--><!--Device-BlendMode-DST_OUT = 9-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -224,8 +207,6 @@ r = s * da + d * (1 - sa)，在源像素和目标像素重叠的地方绘制源�
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendMode-SRC_ATOP = 10--><!--Device-BlendMode-SRC_ATOP = 10-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DST_ATOP
@@ -243,8 +224,6 @@ r = d * sa + s * (1 - da): The part of the target pixels that overlap with the s
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BlendMode-DST_ATOP = 11--><!--Device-BlendMode-DST_ATOP = 11-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -264,8 +243,6 @@ r = s * (1 - da) + d * (1 - sa)，在源像素和目标像素重叠的地方不�
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendMode-XOR = 12--><!--Device-BlendMode-XOR = 12-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PLUS
@@ -283,8 +260,6 @@ r = min(s + d, 1): New pixels resulting from adding the source pixels to the tar
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BlendMode-PLUS = 13--><!--Device-BlendMode-PLUS = 13-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -304,8 +279,6 @@ r = s * d，将源像素与目标像素进行乘法运算，并将结果作为�
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendMode-MODULATE = 14--><!--Device-BlendMode-MODULATE = 14-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SCREEN
@@ -323,8 +296,6 @@ r = s + d - s * d，将两个图像的像素值相加，然后减去它们的乘
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BlendMode-SCREEN = 15--><!--Device-BlendMode-SCREEN = 15-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -344,8 +315,6 @@ OVERLAY = 16
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendMode-OVERLAY = 16--><!--Device-BlendMode-OVERLAY = 16-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DARKEN
@@ -363,8 +332,6 @@ rc = s + d - max(s * da, d * sa), ra = kSrcOver，当两个颜色重叠时，较
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BlendMode-DARKEN = 17--><!--Device-BlendMode-DARKEN = 17-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -384,8 +351,6 @@ rc = s + d - min(s * da, d * sa), ra = kSrcOver，将源图像和目标图像中
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendMode-LIGHTEN = 18--><!--Device-BlendMode-LIGHTEN = 18-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## COLOR_DODGE
@@ -403,8 +368,6 @@ COLOR_DODGE = 19
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BlendMode-COLOR_DODGE = 19--><!--Device-BlendMode-COLOR_DODGE = 19-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -424,8 +387,6 @@ COLOR_BURN = 20
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendMode-COLOR_BURN = 20--><!--Device-BlendMode-COLOR_BURN = 20-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## HARD_LIGHT
@@ -443,8 +404,6 @@ HARD_LIGHT = 21
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BlendMode-HARD_LIGHT = 21--><!--Device-BlendMode-HARD_LIGHT = 21-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -464,8 +423,6 @@ SOFT_LIGHT = 22
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendMode-SOFT_LIGHT = 22--><!--Device-BlendMode-SOFT_LIGHT = 22-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DIFFERENCE
@@ -483,8 +440,6 @@ rc = s + d - 2 * (min(s * da, d * sa)), ra = kSrcOver: The final pixel is the re
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BlendMode-DIFFERENCE = 23--><!--Device-BlendMode-DIFFERENCE = 23-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -504,8 +459,6 @@ rc = s + d - 2 * (s * d), ra = kSrcOver，对比源像素和目标像素，亮�
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendMode-EXCLUSION = 24--><!--Device-BlendMode-EXCLUSION = 24-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## MULTIPLY
@@ -523,8 +476,6 @@ r = s * (1 - da) + d * (1 - sa) + s * d，将源图像与目标图像进行乘�
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BlendMode-MULTIPLY = 25--><!--Device-BlendMode-MULTIPLY = 25-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -544,8 +495,6 @@ HUE = 26
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendMode-HUE = 26--><!--Device-BlendMode-HUE = 26-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SATURATION
@@ -563,8 +512,6 @@ SATURATION = 27
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BlendMode-SATURATION = 27--><!--Device-BlendMode-SATURATION = 27-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -584,8 +531,6 @@ COLOR = 28
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendMode-COLOR = 28--><!--Device-BlendMode-COLOR = 28-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LUMINOSITY
@@ -604,7 +549,4 @@ LUMINOSITY = 29
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendMode-LUMINOSITY = 29--><!--Device-BlendMode-LUMINOSITY = 29-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

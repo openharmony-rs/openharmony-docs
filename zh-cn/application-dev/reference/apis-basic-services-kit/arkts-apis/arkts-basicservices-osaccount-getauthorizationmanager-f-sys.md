@@ -18,8 +18,6 @@ function getAuthorizationManager(): AuthorizationManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-osAccount-function getAuthorizationManager(): AuthorizationManager--><!--Device-osAccount-function getAuthorizationManager(): AuthorizationManager-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -41,4 +39,3 @@ function getAuthorizationManager(): AuthorizationManager
 ```TypeScript
 let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthorizationManager();
 ```
-

@@ -2,16 +2,12 @@
 
 定义拉起UIExtensionAbility执行结果的回调。
 
-**起始版本：** -1
-
-<!--Device-unnamed-declare interface AbilityStartCallback--><!--Device-unnamed-declare interface AbilityStartCallback-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## onError
 
 ```TypeScript
-onError(code: int, name: string, message: string): void
+onError(code: number, name: string, message: string): void
 ```
 
 拉起UIExtensionAbility执行失败的回调。
@@ -22,15 +18,13 @@ onError(code: int, name: string, message: string): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AbilityStartCallback-onError(code: int, name: string, message: string): void--><!--Device-AbilityStartCallback-onError(code: int, name: string, message: string): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| code | int | 是 | 拉起UIExtensionAbility执行失败时返回的结果码。 |
+| code | number | 是 | 拉起UIExtensionAbility执行失败时返回的结果码。 |
 | name | string | 是 | 拉起UIExtensionAbility执行失败时返回的名称。 |
 | message | string | 是 | 拉起UIExtensionAbility执行失败时返回的错误信息。 |
 
@@ -47,8 +41,6 @@ onResult?(parameter: AbilityResult): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AbilityStartCallback-onResult?(parameter: AbilityResult): void--><!--Device-AbilityStartCallback-onResult?(parameter: AbilityResult): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -74,7 +66,4 @@ completionHandler?: CompletionHandlerForAbilityStartCallback
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AbilityStartCallback-completionHandler?: CompletionHandlerForAbilityStartCallback--><!--Device-AbilityStartCallback-completionHandler?: CompletionHandlerForAbilityStartCallback-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-

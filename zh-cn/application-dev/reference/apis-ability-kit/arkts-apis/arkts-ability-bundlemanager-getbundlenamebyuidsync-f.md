@@ -9,16 +9,14 @@ import { bundleManager } from '@kit.AbilityKit';
 ## getBundleNameByUidSync
 
 ```TypeScript
-function getBundleNameByUidSync(uid: int): string
+function getBundleNameByUidSync(uid: number): string
 ```
 
 以同步方法根据给定的uid获取对应应用的bundleName。
 
-**起始版本：** 23
+**起始版本：** 14
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
-
-<!--Device-bundleManager-function getBundleNameByUidSync(uid: int): string--><!--Device-bundleManager-function getBundleNameByUidSync(uid: int): string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -26,7 +24,7 @@ function getBundleNameByUidSync(uid: int): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uid | int | 是 | 表示应用程序的UID。 |
+| uid | number | 是 | 表示应用程序的UID。 |
 
 **返回值：**
 
@@ -38,8 +36,8 @@ function getBundleNameByUidSync(uid: int): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700021](../errorcode-bundle.md#17700021-指定的uid无效) | The uid is not found. |
 
 **示例**
@@ -58,4 +56,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getBundleNameByUidSync failed. Cause: %{public}s', message);
 }
 ```
-

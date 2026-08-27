@@ -3,24 +3,24 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @jsjzju-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 打包工具用于在程序编译完成后，对编译出的文件等进行打包，以供安装发布。开发者可以使用DevEco Studio进行打包，也可使用打包工具的JAR包进行打包，JAR包通常存放在SDK路径下的toolchains目录中。
 
 打包工具支持生成：Ability类型的模块包（HAP）、动态共享包（HSP）、应用程序包（App）、快速修复模块包（HQF）、快速修复包（APPQF）。
 
-打包指令中的文件来源于[DevEco Studio编译构建产物](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build)，文件路径查看操作如下。<br/>
-1. 在DevEco Studio工程根目录下的/hvigor/hvigor-config.json5文件中，修改"logging"下的"level"字段为"debug"。<br/>
-2. 在DevEco Studio菜单栏，依次选择"构建 -> 清理项目"。<br/>
-3. 在DevEco Studio菜单栏，依次选择"构建 -> 构建APP(s)"。<br/>
-4. 在DevEco Studio底部"构建"窗口，搜索"app_packing_tool.jar"，确认打包参数中文件的路径。<br/>
+打包指令中的文件来源于[DevEco Studio编译构建产物](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build)，文件路径查看操作如下。<br>
+1. 在DevEco Studio工程根目录下的/hvigor/hvigor-config.json5文件中，修改"logging"下的"level"字段为"debug"。<br>
+2. 在DevEco Studio菜单栏，依次选择"构建 -> 清理项目"。<br>
+3. 在DevEco Studio菜单栏，依次选择"构建 -> 构建APP(s)"。<br>
+4. 在DevEco Studio底部"构建"窗口，搜索"app_packing_tool.jar"，确认打包参数中文件的路径。<br>
 
 打包工具会对module.json文件属性进行合法性校验。module.json文件是编译构建产物，其属性值在编译构建时自动生成，与配置文件中配置项对应关系如下。
 
 **表1** module.json与配置文件属性的对照表
 
-| module.json属性          | 含义          | [module.json5](../quick-start/module-configuration-file.md#配置文件标签)配置项         | [app.json5](../quick-start/app-configuration-file.md#配置文件标签)配置项            | [工程级build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)配置项  |
+| module.json属性          | 含义          | module.json5配置项         | app.json5配置项            | [工程级build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)配置项  |
 | ------------------------ | ------------------------ | ------------------------ | -------------------------- | --------------------------       |
 | bundleName               | 应用的Bundle名称。        | -                        | bundleName                 | -                                |
 | bundleType               | 应用的Bundle类型。        | -                        | bundleType                 | -                                |
@@ -85,8 +85,8 @@
 | --ets-path       | 否         | NA            | 存放ets文件目录路径。                                        | 仅Stage模型生效。 |
 | --out-path       | 是         | NA            | 目标文件路径，文件名必须以.hap为后缀。                       | NA              |
 | --force          | 否         | boolean       | 当目标文件路径已存在时，控制是否强制执行覆盖。当--out-path目标文件打包前已存在，该参数为true时，覆盖写入；为false时，终止打包过程并报错。当--out-path目标文件打包前不存在，正常打包，该参数无效。默认值为false。 | NA              |
-| --an-path        | 否         | NA            | 存放[an文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-arkts-52-V5)的路径。| 仅stage模型生效。 |
-| --ap-path        | 否         | NA            | 存放[ap文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-arkts-52-V5)的路径。| 仅stage模型生效。 |
+| --an-path        | 否         | NA            | 存放[an文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-arkts-52-V5)的路径。| 仅Stage模型生效。 |
+| --ap-path        | 否         | NA            | 存放[ap文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-arkts-52-V5)的路径。| 仅Stage模型生效。 |
 | --dir-list       | 否         | NA            | 可指定目标文件夹列表，将其打入HAP包内。                      | NA              |
 | --compress-level | 否         | number        | lib库下文件压缩等级，默认值1。可选等级1-9。在应用配置compressNativeLibs参数为true的情况下生效，数值越大压缩率越高、压缩速度越慢。 | NA  |
 | --pkg-context-path      | 否         | NA            | 可指定语境信息表文件路径，文件名必须为pkgContextInfo.json。当app.json5配置文件中bundleType取值不是appPlugin，且module.json5配置文件中requestPermissions取值包含"ohos.permission.kernel.SUPPORT_PLUGIN"时，该参数必填。 | 仅Stage模型生效。              |
@@ -149,11 +149,11 @@ java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <
 | minCompatibleVersionCode         | 从API version 16开始，要求所有HAP的minCompatibleVersionCode字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的minCompatibleVersionCode字段值均保持一致。    |
 | targetAPIVersion                 | 从API version 16开始，要求所有HAP的targetAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的targetAPIVersion字段值均保持一致。    |
 | versionName                | 从API version 12开始，不再对versionName校验。      |
-| buildVersion                | 从API version 23，要求所有HAP或HSP的buildVersion字段值均保持一致。      |
+| buildVersion                | 从API version 23开始，要求所有HAP或HSP的buildVersion字段值均保持一致。      |
 
 > **说明：** 
 >
-> - module.json文件为DevEco Studio编译构建产物，其中的字段与配置文件的对应关系，请参考[表1 module.json与配置文件属性的对照表](packing-tool.md)。
+> - module.json文件为DevEco Studio编译构建产物，其中的字段与配置文件的对应关系，请参考表1 module.json与配置文件属性的对照表。
 
 **打包APP时的压缩规则：** 打包APP时，对release模式的HAP、HSP包会进行压缩，对debug模式的HAP、HSP包不会压缩。
 
@@ -168,7 +168,7 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 ```
 
 **表5** App打包指令参数说明
-
+<!--Table: 25%; 10%; 10%; 55%-->
 | 指令                 | 是否必选项 | 选项          | 描述                                                           |
 |--------------------|-------|-------------|--------------------------------------------------------------|
 | --mode             | 是     | app         | 多个HAP需满足HAP的合法性校验。                                           |
@@ -185,9 +185,8 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 | --atomic-service-entry-size-limit      | 否         | NA            | 设置元服务entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果entry包是release模式（module.json5文件中type字段值为entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的entry包大小（包含其依赖包的大小）。                       |
 | --atomic-service-non-entry-size-limit  | 否         | NA            | 设置元服务非entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果非entry包是release模式（module.json5文件中type字段值不是entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的非entry包大小（包含其依赖包的大小）。                     |
 | --replace-pack-info    | 否     | boolean          | 打包APP时，是否使用由--pack-info-path参数指定的pack.info文件替换HAP、HSP包中的pack.info文件。如果为true表示替换，false表示不替换，默认值为true。<br/>从API version 22开始支持该参数。 |
-| --stat-duplicate       | 否     | boolean       | 打包完成后，是否扫描重复so文件，该参数可用于识别重复so，以减小包大小。取值为true时，执行扫描，扫描完成会在--out-path参数指定的输出文件所在目录下生成`scan_report`目录，其中包含文件名为`scan_result`的[重复so文件扫描报告](#扫描重复so文件)，并在告警中打印`scan_report`目录路径。取值为false时，不执行扫描。默认值为false。<br/>从API version 23开始支持该参数。 |
-
-
+| --stat-duplicate       | 否     | boolean       | 打包完成后，是否扫描重复so文件，该参数可用于识别重复so，以减小包大小。取值为true时，执行扫描，扫描完成会在--out-path参数指定的输出文件所在目录下生成`scan_report`目录，其中包含文件名为`scan_result`的重复so文件扫描报告，并在告警中打印`scan_report`目录路径。取值为false时，不执行扫描。默认值为false。<br/>从API version 23开始支持该参数。 |
+| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告so_dedup_report.json，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
 
 ## 多工程打包指令
 
@@ -210,7 +209,7 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 
 > **说明：** 
 >
-> - module.json文件为DevEco Studio编译构建产物，其中的字段与配置文件的对应关系，请参考[表1 module.json与配置文件属性的对照表](packing-tool.md)。
+> - module.json文件为DevEco Studio编译构建产物，其中的字段与配置文件的对应关系，请参考表1 module.json与配置文件属性的对照表。
 
 示例：
 
@@ -232,9 +231,8 @@ java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <
 | --pac-json-path | 否     | NA          | <!--RP1-->pac.json<!--RP1End-->文件路径，文件名必须为pac.json。<br/>最终app产物中pac.json文件只来源于该参数，不配置的话，最终app产物不包含该文件。<br/>--app-list参数指定的app包中的pac.json不会打包进最终app。<br/>从API version 20开始支持该参数。|
 | --atomic-service-entry-size-limit      | 否         | NA            | 设置元服务entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果entry包是release模式（module.json5文件中type字段值为entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的entry包大小（包含其依赖包的大小）。                       |
 | --atomic-service-non-entry-size-limit  | 否         | NA            | 设置元服务非entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果非entry包是release模式（module.json5文件中type字段值不是entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的非entry包大小（包含其依赖包的大小）。                     |
-| --stat-duplicate       | 否     | boolean       | 打包完成后，是否扫描重复so文件，该参数可用于识别重复so，以减小包大小。取值为true时，执行扫描，扫描完成会在--out-path参数指定的输出文件所在目录下生成`scan_report`目录，其中包含文件名为`scan_result`的[重复so文件扫描报告](#扫描重复so文件)，并在告警中打印`scan_report`目录路径。取值为false时，不执行扫描。默认值为false。<br/>从API version 23开始支持该参数。 |
-
-
+| --stat-duplicate       | 否     | boolean       | 打包完成后，是否扫描重复so文件，该参数可用于识别重复so，以减小包大小。取值为true时，执行扫描，扫描完成会在--out-path参数指定的输出文件所在目录下生成`scan_report`目录，其中包含文件名为`scan_result`的重复so文件扫描报告，并在告警中打印`scan_report`目录路径。取值为false时，不执行扫描。默认值为false。<br/>从API version 23开始支持该参数。 |
+| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告so_dedup_report.json，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
 
 ## HQF打包指令
 
@@ -283,7 +281,7 @@ java -jar app_packing_tool.jar --mode appqf --hqf-list <path> --out-path <path> 
 | 指令         | 是否必选项 | 选项          | 描述                                 |
 |------------|-------|-------------|------------------------------------|
 | --mode     | 是     | appqf       | 打包类型。                              |
-| --hqf-list | 是     | NA          | [HQF文件](packing-tool.md#hqf打包指令)路径，多个HQF以英文逗号隔开。              |
+| --hqf-list | 是     | NA          | HQF文件路径，多个HQF以英文逗号隔开。              |
 | --out-path | 是     | NA          | 目标文件路径，文件名必须以.appqf为后缀。            |
 | --force    | 否     | boolean | 当目标文件路径已存在时，控制是否强制执行覆盖。当--out-path目标文件打包前已存在，该参数为true时，覆盖写入；为false时，终止打包过程并报错。当--out-path目标文件打包前不存在，正常打包，该参数无效。默认值为false。 |
 
@@ -346,19 +344,19 @@ java -jar app_packing_tool.jar --mode generalNormalize --input-list 1.hsp,2.hsp 
 | ----------------------------- | ---------- | -------------------------------------------------- | ------------------------------------------------------------ |
 | --mode                        | 是         | generalNormalize                                   | 指令类型，表示通用归一化指令。                               |
 | --input-list                  | 是         | HAP或HSP的路径                                     | 1. HAP或HSP包文件路径，文件名必须以.hap或.hsp为后缀。多个HAP或HSP包文件路径之间使用“,”分隔。<br/>2. 传入目录时，会读取目录下所有的HAP和HSP文件。 |
-| --bundle-name                 | 否         | 包名                                               | 指定的Bundle名称，传入的包的Bundle名称会被修改为该Bundle名称。指定的值不能为空，该字段的详细定义和规格请参考[app.json5](../quick-start/app-configuration-file.md#配置文件标签)中的bundleName字段。 |
-| --version-code                | 否         | 版本号                                             | 指定的版本号，传入的包的版本号会被修改为该版本号。取值范围为0~2147483647的整数，指定的值不能为空值，该字段的详细定义和规格请参考[app.json5](../quick-start/app-configuration-file.md#配置文件标签)中的versionCode字段。 |
-| --version-name                | 否         | 版本名称                                           | 指定的版本名称，传入的包的版本名称会被修改为该版本名称。指定的值不能为空，该字段的详细定义和规格请参考[app.json5](../quick-start/app-configuration-file.md#配置文件标签)中的versionName字段。 |
-| --min-compatible-version-code | 否         | 能够兼容的最低历史版本号                           | 指定的最低历史版本号，传入的包的最低历史版本号会被修改为该版本号。取值范围为0~2147483647的整数，指定的值不能为空值，该字段的详细定义和规格请参考[app.json5](../quick-start/app-configuration-file.md#配置文件标签)中的minCompatibleVersionCode字段。 |
-| --min-api-version             | 否         | SDK的API最小版本                                   | 指定的SDK的API最小版本，传入的包的SDK的API最小版本会被修改为该版本。取值范围为0~2147483647的整数，指定的值不能为空值，该字段的详细定义和规格请参考[app.json5](../quick-start/app-configuration-file.md#配置文件标签)中的minAPIVersion字段。 |
-| --target-api-version          | 否         | API目标版本                                        | 指定的API目标版本，传入的包的API目标版本会被修改为该版本。取值范围为0~2147483647的整数，指定的值不能为空值，该字段的详细定义和规格请参考[app.json5](../quick-start/app-configuration-file.md#配置文件标签)中的targetAPIVersion字段。 |
-| --api-release-type            | 否         | API目标版本的类型                                  | 指定的API目标版本的类型，传入的包的API目标版本的类型会被修改为该类型。指定的值不能为空，该字段的详细定义和规格请参考[app.json5](../quick-start/app-configuration-file.md#配置文件标签)中的apiReleaseType字段。 |
-| --bundle-type                 | 否         | Bundle类型                                         | 指定的Bundle类型，传入的包的Bundle类型会被修改为该类型。指定的值不能为空，该字段的详细定义和规格请参考[app.json5](../quick-start/app-configuration-file.md#配置文件标签)中的bundleType字段。 |
-| --installation-free           | 否         | 是否支持免安装特性                                 | 指定的免安装特性，传入的包的免安装特性会被修改为该类型。指定的值不能为空，该字段的详细定义和规格请参考Stage模型[module.json5](../quick-start/module-configuration-file.md#配置文件标签)/FA模型[config.json](../quick-start/application-configuration-file-overview-fa.md)中的installationFree字段。 |
-| --delivery-with-install       | 否         | 当前HAP是否在用户主动安装HAP所在应用的时候一起安装 | 指定的HAP是否需要一起安装，传入的包的deliveryWithInstall会被修改为该类型。指定的值不能为空，该字段的详细定义和规格参考Stage模型[module.json5](../quick-start/module-configuration-file.md#配置文件标签)/FA模型[config.json](../quick-start/application-configuration-file-overview-fa.md)中的deliveryWithInstall字段。 |
-| --device-types                | 否         | 允许Ability运行的设备类型                          | 指定的设备类型，传入的包的设备类型会被修改为该类型。指定的值不能为空，该字段的详细定义和规格请参考Stage模型[module.json5](../quick-start/module-configuration-file.md#配置文件标签)/FA模型[config.json](../quick-start/application-configuration-file-overview-fa.md)中的deviceTypes字段，传入值的形式为字符串格式，多个设备类型之间使用“,”分隔。 |
+| --bundle-name                 | 否         | 包名                                               | 指定的Bundle名称，传入的包的Bundle名称会被修改为该Bundle名称。指定的值不能为空，该字段的详细定义和规格请参考app.json5中的bundleName字段。 |
+| --version-code                | 否         | 版本号                                             | 指定的版本号，传入的包的版本号会被修改为该版本号。取值范围为0~2147483647的整数，指定的值不能为空值，该字段的详细定义和规格请参考app.json5中的versionCode字段。 |
+| --version-name                | 否         | 版本名称                                           | 指定的版本名称，传入的包的版本名称会被修改为该版本名称。指定的值不能为空，该字段的详细定义和规格请参考app.json5中的versionName字段。 |
+| --min-compatible-version-code | 否         | 能够兼容的最低历史版本号                           | 指定的最低历史版本号，传入的包的最低历史版本号会被修改为该版本号。取值范围为0~2147483647的整数，指定的值不能为空值，该字段的详细定义和规格请参考app.json5中的minCompatibleVersionCode字段。 |
+| --min-api-version             | 否         | SDK的API最小版本                                   | 指定的SDK的API最小版本，传入的包的SDK的API最小版本会被修改为该版本。取值范围为0~2147483647的整数，指定的值不能为空值，该字段的详细定义和规格请参考app.json5中的minAPIVersion字段。 |
+| --target-api-version          | 否         | API目标版本                                        | 指定的API目标版本，传入的包的API目标版本会被修改为该版本。取值范围为0~2147483647的整数，指定的值不能为空值，该字段的详细定义和规格请参考app.json5中的targetAPIVersion字段。 |
+| --api-release-type            | 否         | API目标版本的类型                                  | 指定的API目标版本的类型，传入的包的API目标版本的类型会被修改为该类型。指定的值不能为空，该字段的详细定义和规格请参考app.json5中的apiReleaseType字段。 |
+| --bundle-type                 | 否         | Bundle类型                                         | 指定的Bundle类型，传入的包的Bundle类型会被修改为该类型。指定的值不能为空，该字段的详细定义和规格请参考app.json5中的bundleType字段。 |
+| --installation-free           | 否         | 是否支持免安装特性                                 | 指定的免安装特性，传入的包的免安装特性会被修改为该类型。指定的值不能为空，该字段的详细定义和规格请参考Stage模型module.json5/FA模型config.json中的installationFree字段。 |
+| --delivery-with-install       | 否         | 当前HAP是否在用户主动安装HAP所在应用的时候一起安装 | 指定的HAP是否需要一起安装，传入的包的deliveryWithInstall会被修改为该类型。指定的值不能为空，该字段的详细定义和规格参考Stage模型module.json5/FA模型config.json中的deliveryWithInstall字段。 |
+| --device-types                | 否         | 允许Ability运行的设备类型                          | 指定的设备类型，传入的包的设备类型会被修改为该类型。指定的值不能为空，该字段的详细定义和规格请参考Stage模型module.json5/FA模型config.json中的deviceTypes字段，传入值的形式为字符串格式，多个设备类型之间使用“,”分隔。 |
 | --out-path                    | 是         | NA                                                 | 目标文件路径，需要为一个有读写权限的目录。                   |
-| --build-version                | 否         | 构建版本号                                             | 指定的构建版本号，传入的包的构建版本号会被修改为该版本号。指定的值不能为空值，该字段的详细定义和规格请参考[app.json5](../quick-start/app-configuration-file.md#配置文件标签)中的buildVersion字段。 |
+| --build-version                | 否         | 构建版本号                                             | 指定的构建版本号，传入的包的构建版本号会被修改为该版本号。指定的值不能为空值，该字段的详细定义和规格请参考app.json5中的buildVersion字段。 |
 
 ## res模式打包指令
 
@@ -400,7 +398,7 @@ java -jar app_packing_tool.jar --mode res --entrycard-path <path> --pack-info-pa
 
 > **说明：** 
 >
-> - module.json文件为DevEco Studio编译构建产物，其中的字段与配置文件的对应关系，请参考[表1 module.json与配置文件属性的对照表](packing-tool.md)。
+> - module.json文件为DevEco Studio编译构建产物，其中的字段与配置文件的对应关系，请参考表1 module.json与配置文件属性的对照表。
 
 **打包App时的压缩规则：** 打包App时，对release模式的HAP、HSP包会进行压缩，对debug模式的HAP、HSP包不会压缩。
 
@@ -431,11 +429,12 @@ java -jar app_packing_tool.jar --mode fastApp [--hap-path <path>] [--hsp-path <p
 | --pac-json-path     | 否     | NA          | <!--RP1-->pac.json<!--RP1End-->文件路径，文件名必须为pac.json。<br/>从API version 20开始支持该参数。|
 | --atomic-service-entry-size-limit      | 否         | NA            | 设置元服务entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果entry包是release模式（module.json5文件中type字段值为entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的entry包大小（包含其依赖包的大小）。                      |
 | --atomic-service-non-entry-size-limit  | 否         | NA            | 设置元服务非entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果非entry包是release模式（module.json5文件中type字段值不是entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的非entry包大小（包含其依赖包的大小）。                     |
-| --stat-duplicate       | 否     | boolean       | 打包完成后，是否扫描重复so文件，该参数可用于识别重复so，以减小包大小。取值为true时，执行扫描，扫描完成会在--out-path参数指定的输出文件所在目录下生成`scan_report`目录，其中包含文件名为`scan_result`的[重复so文件扫描报告](#扫描重复so文件)，并在告警中打印`scan_report`目录路径。取值为false时，不执行扫描。默认值为false。<br/>从API version 23开始支持该参数。 |
+| --stat-duplicate       | 否     | boolean       | 打包完成后，是否扫描重复so文件，该参数可用于识别重复so，以减小包大小。取值为true时，执行扫描，扫描完成会在--out-path参数指定的输出文件所在目录下生成`scan_report`目录，其中包含文件名为`scan_result`的重复so文件扫描报告，并在告警中打印`scan_report`目录路径。取值为false时，不执行扫描。默认值为false。<br/>从API version 23开始支持该参数。 |
+| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告so_dedup_report.json，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
 
 ## 扫描重复so文件
 
-通过[app打包指令](#app打包指令)、[fastApp打包指令](#fastapp模式打包指令)或[多工程打包指令](#多工程打包指令)打包生成App包时，设置--stat-duplicate为true开启扫描重复so文件，系统将在打包成功后生成扫描报告。识别重复so后，开发者可根据实际需求减小包大小。扫描报告将存放在打包生成的App包所在目录下的`scan_report`目录中。扫描报告的内容结构如表16所示，重复so文件的特征信息结构如表17所示。扫描报告的示例如下：
+通过app打包指令、fastApp打包指令或多工程打包指令打包生成App包时，设置--stat-duplicate为true开启扫描重复so文件，系统将在打包成功后生成扫描报告。识别重复so后，开发者可根据实际需求减小包大小。扫描报告将存放在打包生成的App包所在目录下的`scan_report`目录中。扫描报告的内容结构如表16所示，重复so文件的特征信息结构如表17所示。扫描报告的示例如下：
 
 json统计结果：
 ```json
@@ -470,6 +469,47 @@ json统计结果：
 | size  | int             | 重复so文件的大小。单位为Byte。 |
 | files | Vector\<String> | 重复so文件的路径。     |
 
+## so去重报告
+
+通过App打包指令、fastApp打包指令或多工程打包指令打包生成App包时，设置--deduplicate-so为true开启so去重功能，系统将在打包过程中对重复的so文件进行去重处理，并在打包成功后生成去重报告。去重报告将存放在打包生成的App包所在目录下的`so_dedup_report.json`文件中。去重报告记录了去重操作的时间戳、节省的总文件大小，以及每个模块中保留和移除的so文件列表。
+
+去重报告的示例如下：
+```json
+{
+    "timestamp":"2026-07-04T09:24:50Z",
+    "totalSavedSize":4120,
+    "modules":{
+        "feature":{
+            "kept":[],
+            "removed":[
+                "libs/arm64-v8a/libshared.so"
+            ]
+        },
+        "entry":{
+            "kept":[
+                "libs/arm64-v8a/libshared.so"
+            ],
+            "removed":[]
+        }
+    }
+}
+```
+
+**表18 so去重报告字段信息**
+
+| 字段           | 类型   | 描述                                                         |
+| -------------- | ------ | ------------------------------------------------------------ |
+| timestamp      | String | so去重操作的时间戳，格式为ISO 8601（例如：2026-07-04T09:24:50Z）。 |
+| totalSavedSize | int    | 通过去重操作节省的总文件大小，即去重前后所有HAP/HSP包大小差值之和（app压缩前），单位为Byte。                  |
+| modules        | Object | 各个模块的去重详情，key为模块名称，value为该模块的去重信息对象。   |
+
+**表19 模块去重信息字段信息**
+
+| 字段    | 类型            | 描述                                                         |
+| ------- | --------------- | ------------------------------------------------------------ |
+| kept    | Vector\<String> | 该模块中保留的so文件路径列表（只针对存在重复的so）。                              |
+| removed | Vector\<String> | 该模块中被移除的so文件路径列表。 |
+
 ## 打包工具错误码
 
 ### 10010001 执行打包工具失败
@@ -488,7 +528,7 @@ Execute packing tool failed.
 
 **处理步骤**
 
-1. 根据报错信息检查[app.json5](../quick-start/app-configuration-file.md)和[module.json5](../quick-start/module-configuration-file.md)中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
+1. 根据报错信息检查app.json5和module.json5中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
 2. 检查是否有程序（如压缩软件、文件管理器）占用打包文件，关闭相关进程后重试。
 
 ### 10010002 打包参数解析失败
@@ -848,7 +888,7 @@ Execute compress process failed.
 
 **处理步骤**
 
-1. 根据报错信息检查[app.json5](../quick-start/app-configuration-file.md)和[module.json5](../quick-start/module-configuration-file.md)中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
+1. 根据报错信息检查app.json5和module.json5中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
 2. 检查是否有程序（如压缩软件、文件管理器）占用打包文件，关闭相关进程后重试。
 
 ### 10012002 HAP包压缩失败
@@ -867,7 +907,7 @@ Compress Stage Hap failed.
 
 **处理步骤**
 
-1. 根据报错信息检查[app.json5](../quick-start/app-configuration-file.md)和[module.json5](../quick-start/module-configuration-file.md)中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
+1. 根据报错信息检查app.json5和module.json5中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
 2. 检查是否有程序（如压缩软件、文件管理器）占用打包文件，关闭相关进程后重试。
 
 ### 10012003 校验HAP信息失败
@@ -886,8 +926,8 @@ Verify stage hap info failed.
 
 **处理步骤**
 
-1. 参考[asanEnabled配置错误码](#10012004-检查参数asanenabled失败)、[hwasanEnabled配置错误码](#10012005-检查参数hwasanenabled失败)、[atomicService配置错误码](#10012006-检查atomicservice失败)、[continueBundleName配置错误码](#10012007-检查continuebundlename无效)，更改配置项。
-2. 如果是独立skill模块，确保[app.json5](../quick-start/app-configuration-file.md)中`bundleType`和[module.json5](../quick-start/module-configuration-file.md)中`type`均配置为`skill`。
+1. 参考asanEnabled配置错误码、hwasanEnabled配置错误码、atomicService配置错误码、continueBundleName配置错误码，更改配置项。
+2. 如果是独立skill模块，确保app.json5中`bundleType`和module.json5中`type`均配置为`skill`。
 
 ### 10012004 检查参数asanEnabled失败
 **错误信息**
@@ -904,7 +944,7 @@ Check asanEnabled failed.
 
 **处理步骤**
 
-检查[app.json5](../quick-start/app-configuration-file.md)，修改`asanEnabled`和`tsanEnabled`，确保二者不会同时为true。
+检查app.json5，修改`asanEnabled`和`tsanEnabled`，确保二者不会同时为true。
 
 ### 10012005 检查参数hwasanEnabled失败
 **错误信息**
@@ -923,7 +963,7 @@ Check hwasanEnabled failed.
 
 **处理步骤**
 
-检查[app.json5](../quick-start/app-configuration-file.md)，确保`asanEnabled`、`tsanEnabled`、`GWPAsanEnabled`三项的中任一项与`hwasanEnabled`，不会同时配置为true。
+检查app.json5，确保`asanEnabled`、`tsanEnabled`、`GWPAsanEnabled`三项的中任一项与`hwasanEnabled`，不会同时配置为true。
 
 ### 10012006 检查atomicService失败
 **错误信息**
@@ -941,8 +981,8 @@ Check atomicService failed.
 
 **处理步骤**
 
-1. 检查[module.json5](../quick-start/module-configuration-file.md)，确保`module.json5`文件中正确配置了`abilities`标签，并且至少包含一个ability，详细请参见[abilities标签](../quick-start/module-configuration-file.md#abilities标签)。
-2. 检查`module.json5`和[app.json5](../quick-start/app-configuration-file.md)，当`bundleType`为`atomicService`时，确保`installationFree`配置为true，反之，需要配置为false。
+1. 检查module.json5，确保`module.json5`文件中正确配置了`abilities`标签，并且至少包含一个ability，详细请参见abilities标签。
+2. 检查`module.json5`和app.json5，当`bundleType`为`atomicService`时，确保`installationFree`配置为true，反之，需要配置为false。
 
 ### 10012007 检查continueBundleName无效
 **错误信息**
@@ -959,7 +999,7 @@ Check continueBundleName invalid.
 
 **处理步骤**
 
-修改`continueBundleName`，确保其与[app.json5](../quick-start/app-configuration-file.md)中的`bundleName`不同。
+修改`continueBundleName`，确保其与app.json5中的`bundleName`不同。
 
 ### 10012008 检查overlay失败
 **错误信息**
@@ -984,10 +1024,10 @@ Check whether is an overlay hsp failed.
 
 **处理步骤**
 
-1. 检查[module.json5](../quick-start/module-configuration-file.md)，确保`targetModuleName`和`requestPermissions`不会同时出现。
+1. 检查module.json5，确保`targetModuleName`和`requestPermissions`不会同时出现。
 2. 检查`module.json5`，确保`targetModuleName`和`name`不同。
 3. 检查`module.json5`，确保配置`targetPriority`时，同时配置了`targetModuleName`。
-4. 检查[app.json5](../quick-start/app-configuration-file.md)和`module.json5`，确保配置`targetBundleName`时，同时配置了`targetModuleName`。
+4. 检查app.json5和`module.json5`，确保配置`targetBundleName`时，同时配置了`targetModuleName`。
 5. 检查`app.json5`，确保`targetBundleName`与`bundleName`不同。
 
 ### 10012009 执行压缩操作时异常
@@ -1006,7 +1046,7 @@ Process compress exception.
 
 **处理步骤**
 
-1. 根据报错信息检查[app.json5](../quick-start/app-configuration-file.md)和[module.json5](../quick-start/module-configuration-file.md)中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
+1. 根据报错信息检查app.json5和module.json5中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
 2. 检查是否有程序（如压缩软件、文件管理器）占用打包文件，关闭相关进程后重试。
 
 ### 10012010 校验模块generateBuildHash属性失败
@@ -1125,7 +1165,7 @@ Compress app file failed.
 
 **处理步骤**
 
-1. 根据报错信息检查[app.json5](../quick-start/app-configuration-file.md)和[module.json5](../quick-start/module-configuration-file.md)中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
+1. 根据报错信息检查app.json5和module.json5中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
 2. 检查是否有程序（如压缩软件、文件管理器）占用打包文件，关闭相关进程后重试。
 
 ### 10012016 打包指定的HAP或HSP文件无效
@@ -1154,20 +1194,20 @@ Check shared App mode invalid.
 
 **错误描述**
 
-构建[bundleType](../quick-start/app-configuration-file.md#配置文件标签)为shared的App包时，检查HSP包无效。
+构建bundleType为shared的App包时，检查HSP包无效。
 
 **可能原因**
 
-1. 存在两个以上的[HSP包](../quick-start/in-app-hsp.md)。例如下图使用DevEco Studio构建App时，工程中包含了两个HSP包library和library1，此时打包APP包失败。
+1. 存在两个以上的HSP包。例如下图使用DevEco Studio构建App时，工程中包含了两个HSP包library和library1，此时打包APP包失败。
 
-    ![alt text](figures/zh_cn_packing_tool_image_10012017_01.png)
+    ![alt text](figures/error-causes.png)
 
 2. HSP包在`module.json5`中配置了`dependencies`。
 
 **处理步骤**
 
 1. 检查打包文件，确保`bundleType`为shared的App包中，HSP包不超过一个。
-2. 检查打包文件，删除HSP包中[module.json5](../quick-start/module-configuration-file.md)配置的`dependencies`。
+2. 检查打包文件，删除HSP包中module.json5配置的`dependencies`。
 
 ### 10012018 检查应用的Bundle类型无效
 **错误信息**
@@ -1256,9 +1296,9 @@ Verify stage hsp info failed.
 
 **处理步骤**
 
-1. 参考[asanEnabled配置错误码](#10012004-检查参数asanenabled失败)、[hwasanEnabled配置错误码](#10012005-检查参数hwasanenabled失败)、[atomicService配置错误码](#10012006-检查atomicservice失败)、[continueBundleName配置错误码](#10012007-检查continuebundlename无效)，更改配置项。
-2. 参考[检查overlay失败](#10012008-检查overlay失败)，更改配置项。
-3. 检查[module.json5](../quick-start/module-configuration-file.md)，确保`type`配置为`shared`或`skill`。
+1. 参考asanEnabled配置错误码、hwasanEnabled配置错误码、atomicService配置错误码、continueBundleName配置错误码，更改配置项。
+2. 参考检查overlay失败，更改配置项。
+3. 检查module.json5，确保`type`配置为`shared`或`skill`。
 
 ### 10012023 json文件格式化失败
 **错误信息**
@@ -1288,7 +1328,7 @@ Check atomicService size failed.
 
 **可能原因**
 
-元服务包及依赖的共享库或资源文件大小超出了限制。具体限制请参考[表5 App打包指令参数说明](#app打包指令)中--atomic-service-entry-size-limit和--atomic-service-non-entry-size-limit参数描述。
+元服务包及依赖的共享库或资源文件大小超出了限制。具体限制请参考表5 App打包指令参数说明中--atomic-service-entry-size-limit和--atomic-service-non-entry-size-limit参数描述。
 
 **处理步骤**
 
@@ -1310,7 +1350,7 @@ Compress in app mode for multi project failed.
 
 **处理步骤**
 
-1. 根据报错信息检查[app.json5](../quick-start/app-configuration-file.md)和[module.json5](../quick-start/module-configuration-file.md)中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
+1. 根据报错信息检查app.json5和module.json5中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
 2. 检查是否有程序（如压缩软件、文件管理器）占用打包文件，关闭相关进程后重试。
 
 ### 10012028 打包--app-list参数失败
@@ -1595,7 +1635,7 @@ Check app plugin failed.
 2. --json-path指定的module.json文件不包含module标签。
 3. 检查--pkg-context-path参数失败。
 4. --json-path指定的module.json文件包含非embeddedUI类型的extensionAbilities。
-5. --json-path指定的module.json文件中bundleType是appPlugin时，module.json文件不包含[ohos.permission.kernel.SUPPORT_PLUGIN](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin)权限。
+5. --json-path指定的module.json文件中bundleType是appPlugin时，module.json文件不包含ohos.permission.kernel.SUPPORT_PLUGIN权限。
 
 **处理步骤**
 
@@ -1633,7 +1673,7 @@ Binary file decompression configuration verification failed.
 
 **可能原因**
 
-HSP/HAP在[module.json5](../quick-start/module-configuration-file.md)配置了应用内可执行二进制文件的路径信息[executableBinaryPaths](../quick-start/module-configuration-file.md#executablebinarypaths标签)且存在二进制文件，但配置为以不解压libs库的方式进行安装。
+HSP/HAP在module.json5配置了应用内可执行二进制文件的路径信息executableBinaryPaths且存在二进制文件，但配置为以不解压libs库的方式进行安装。
 
 **处理步骤**
 
@@ -1727,7 +1767,7 @@ Failed to parse module.json and bundleType.
 **可能原因**
 
 不符合配置要求，例如：
-1. 模块的[app.json5](../quick-start/app-configuration-file.md)配置文件中`bundleType`为app，但[module.json5](../quick-start/module-configuration-file.md)中的`installationFree`属性值为true。
+1. 模块的app.json5配置文件中`bundleType`为app，但module.json5中的`installationFree`属性值为true。
 2. 模块的app.json5配置文件中`bundleType`为atomicService，但module.json5中的`installationFree`属性值为false。
 3. 模块的app.json5配置文件中`bundleType`为shared，但module.json5中的`type`属性值不是shared。
 4. `bundleType`为skill，但module.json5中的`type`属性值不为skill；或`type`为skill但`bundleType`不为skill。独立skill模块的bundleType和moduleType必须同为skill。
@@ -1755,7 +1795,7 @@ Entry类型包中不存在ability，该错误可能是由于`module.json5`未配
 
 **处理步骤**
 
-检查[module.json5](../quick-start/module-configuration-file.md)，确保Entry类型包`abilities`正确配置了ability。
+检查module.json5，确保Entry类型包`abilities`正确配置了ability。
 
 ### 10013007 检查installationFree错误
 **错误信息**
@@ -1774,8 +1814,8 @@ Check module atomicService installationFree invalid.
 
 **处理步骤**
 
-1. 检查[app.json5](../quick-start/app-configuration-file.md)，确保`bundleType`设置为app，atomicService，shared<!--Del-->，appService<!--DelEnd-->之一。
-2. 如果`bundleType`为shared，确保[module.json5](../quick-start/module-configuration-file.md)中的`installationFree`设置为false。
+1. 检查app.json5，确保`bundleType`设置为app，atomicService，shared<!--Del-->，appService<!--DelEnd-->之一。
+2. 如果`bundleType`为shared，确保module.json5中的`installationFree`设置为false。
 3. 如果`installationFree`为true，确保`bundleType`设置为atomicService。
 
 ### 10013008 获取bundleName属性失败
@@ -2310,7 +2350,7 @@ Some app variable is different.
 1. 当前参与打包的HAP或HSP中，存在模块的bundleName与其他模块不一致。
 2. 当前参与打包的HAP或HSP中，存在模块的bundleType与其他模块不一致。
 3. 当前参与打包的HAP或HSP中，存在模块的versionCode与其他模块不一致。
-4. 当前参与打包的HAP或HSP中，存在模块的apiReleaseType（[app.json5](../quick-start/app-configuration-file.md)配置文件中的属性）与其他模块不一致。
+4. 当前参与打包的HAP或HSP中，存在模块的apiReleaseType（app.json5配置文件中的属性）与其他模块不一致。
 5. 当前参与打包的HAP或HSP中，存在模块的targetBundleName（app.json5配置文件中的属性）与其他模块不一致。
 6. 当前参与打包的HAP或HSP中，存在模块的targetPriority（app.json5配置文件中的属性）与其他模块不一致。
 7. 当前参与打包的HAP中，存在模块的multiAppMode（app.json5配置文件中的属性）与其他模块不一致。
@@ -2340,7 +2380,7 @@ Check two distroFilter policy disjoint invalid.
 
 **处理步骤**
 
-检查分发策略相关配置，确保`policy`的值为`include`或`exclude`，`value`取值参见[distributionFilter标签](../quick-start/module-configuration-file.md#distributionfilter标签)。
+检查分发策略相关配置，确保`policy`的值为`include`或`exclude`，`value`取值参见distributionFilter标签。
 
 ### 10016004 校验模块名失败
 **错误信息**
@@ -2395,7 +2435,7 @@ Verify hap info is invalid.
 
 **处理步骤**
 
-根据报错信息检查[app.json5](../quick-start/app-configuration-file.md)和[module.json5](../quick-start/module-configuration-file.md)中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
+根据报错信息检查app.json5和module.json5中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
 
 ### 10016007 检查entry模块无效
 **错误信息**
@@ -2447,7 +2487,7 @@ Check dependency list is invalid.
 
 **处理步骤**
 
-1. 检查[module.json5](../quick-start/module-configuration-file.md)中的`dependencies`，删除循环依赖，确保App中不存在循环依赖。
+1. 检查module.json5中的`dependencies`，删除循环依赖，确保App中不存在循环依赖。
 2. 检查`module.json5`中的`dependencies`的配置，删除对entry或feature类型模块的依赖。
 
 ### 10016010 检查元服务无效
@@ -2465,7 +2505,7 @@ Check atomicservice is invalid.
 
 **处理步骤**
 
-检查[module.json5](../quick-start/module-configuration-file.md)中的[preloads属性](../quick-start/module-configuration-file.md#atomicservice标签)下的`moduleName`，不能配置为自身模块`module.json5`中的`name`，且`moduleName`对应的模块必须存在。
+检查module.json5中的preloads属性下的`moduleName`，不能配置为自身模块`module.json5`中的`name`，且`moduleName`对应的模块必须存在。
 
 ### 10016011 检查元服务预加载无效
 **错误信息**
@@ -2484,7 +2524,7 @@ Atomicservice preloads is invalid.
 
 **处理步骤**
 
-检查[module.json5](../quick-start/module-configuration-file.md)中元服务[preloads属性](../quick-start/module-configuration-file.md#atomicservice标签)，确保没有配置重复的模块，配置所有的模块都存在且不能配置自身的模块名。
+检查module.json5中元服务preloads属性，确保没有配置重复的模块，配置所有的模块都存在且不能配置自身的模块名。
 
 ### 10016012 目标模块不存在
 **错误信息**
@@ -2501,7 +2541,7 @@ TargetModuleName is not exist.
 
 **处理步骤**
 
-检查`targetModuleName`配置项，确保其正确配置（详细请参见[module.json5配置文件标签](../quick-start/module-configuration-file.md#配置文件标签)及targetModuleName属性），必要时创建目标模块。
+检查`targetModuleName`配置项，确保其正确配置（详细请参见module.json5配置文件标签及targetModuleName属性），必要时创建目标模块。
 
 ### 10016013 校验compileSdkType属性不一致
 **错误信息**
@@ -2535,7 +2575,7 @@ Proxy data uri is not unique.
 
 **处理步骤**
 
-检查[module.json5](../quick-start/module-configuration-file.md)，删除`proxyData`中重复的uri，确保每个uri都是唯一的（详细请参见[proxyData标签](../quick-start/module-configuration-file.md#proxydata标签)）。
+检查module.json5，删除`proxyData`中重复的uri，确保每个uri都是唯一的（详细请参见proxyData标签）。
 
 ### 10016015 ContinueType配置无效
 **错误信息**
@@ -2553,7 +2593,7 @@ Check continueType is invalid.
 
 **处理步骤**
 
-检查[module.json5](../quick-start/module-configuration-file.md)，删除`continueType`或`deviceType`重复的配置项。
+检查module.json5，删除`continueType`或`deviceType`重复的配置项。
 
 ### 10016016 文件大小检查错误
 **错误信息**
@@ -2566,7 +2606,7 @@ Check file size failed.
 
 **可能原因**
 
-单个包大小超过限制。具体限制请参考[表5 App打包指令参数说明](#app打包指令)中--atomic-service-entry-size-limit和--atomic-service-non-entry-size-limit参数描述。
+单个包大小超过限制。具体限制请参考表5 App打包指令参数说明中--atomic-service-entry-size-limit和--atomic-service-non-entry-size-limit参数描述。
 
 **处理步骤**
 
@@ -2600,7 +2640,7 @@ Check the atomicService module size failed.
 
 **可能原因**
 
-单个包和其依赖的共享库总大小超过限制。具体限制请参考[表5 App打包指令参数说明](#app打包指令)中--atomic-service-entry-size-limit和--atomic-service-non-entry-size-limit参数描述。
+单个包和其依赖的共享库总大小超过限制。具体限制请参考表5 App打包指令参数说明中--atomic-service-entry-size-limit和--atomic-service-non-entry-size-limit参数描述。
 
 **处理步骤**
 
@@ -2621,7 +2661,7 @@ Entry类型模块分发策略配置存在错误。
 
 **处理步骤**
 
-检查Entry模块分发策略是否正确配置，例如`policy`的值应为`exclude`或`include`，详细请参考[distributionFilter标签](../quick-start/module-configuration-file.md#distributionfilter标签)。
+检查Entry模块分发策略是否正确配置，例如`policy`的值应为`exclude`或`include`，详细请参考distributionFilter标签。
 
 ### 10017001 包名归一化模式校验HSP包的bundleName和versionCode属性失败
 **错误信息**
@@ -2838,3 +2878,24 @@ Incremental pack hsp exception.
 **处理步骤**
 
 根据日志中“Error Message:”，确认异常信息。
+
+### 10021001 so去重失败
+**错误信息**
+
+so deduplication failed.
+
+**错误描述**
+
+so去重失败。
+
+**可能原因**
+
+1. so去重过程中发生I/O异常。
+2. so文件MD5计算失败。
+3. 文件系统操作失败。
+
+**处理步骤**
+
+1. 根据日志中“Error Message:”信息，确认具体的异常原因。
+2. 检查模块中libs目录和so文件是否完整。
+3. 确保有足够的磁盘空间进行so去重操作。

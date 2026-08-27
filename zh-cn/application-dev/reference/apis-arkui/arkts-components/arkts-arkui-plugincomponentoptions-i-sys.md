@@ -1,10 +1,13 @@
-# PluginComponentOptions(System API)（系统接口）
+# PluginComponentOptions（系统接口）
 
-定义用于构造插件组件的选项。 > **说明：** > > 为了规范化匿名对象定义，此处的元素定义已在API版本18中进行修订。 > 虽然为匿名对象保留了历史版本信息，但可能会出现外层元素的@since版本号高于内层元素的情况。这不影响接口的可用性。
+定义用于构造插件组件的选项。
+
+> **说明：**
+> 
+> 为了规范化匿名对象定义，此处的元素定义已在API版本18中进行修订。
+> 虽然为匿名对象保留了历史版本信息，但可能会出现外层元素的
 
 **起始版本：** 9
-
-<!--Device-unnamed-declare interface PluginComponentOptions--><!--Device-unnamed-declare interface PluginComponentOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,8 +30,6 @@ data: any
 
 **起始版本：** 9
 
-<!--Device-PluginComponentOptions-data: any--><!--Device-PluginComponentOptions-data: any-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -45,9 +46,6 @@ template: PluginComponentTemplate
 
 **起始版本：** 9
 
-<!--Device-PluginComponentOptions-template: PluginComponentTemplate--><!--Device-PluginComponentOptions-template: PluginComponentTemplate-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

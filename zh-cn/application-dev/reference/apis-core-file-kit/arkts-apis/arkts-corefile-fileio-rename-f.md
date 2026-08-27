@@ -19,8 +19,6 @@ declare function rename(oldPath: string, newPath: string): Promise<void>
 
 **替代接口：** [rename](arkts-corefile-file-fs-rename-f.md)
 
-<!--Device-unnamed-declare function rename(oldPath: string, newPath: string): Promise<void>--><!--Device-unnamed-declare function rename(oldPath: string, newPath: string): Promise<void>-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -34,7 +32,20 @@ declare function rename(oldPath: string, newPath: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise & lt;void & gt; | Promise对象。无返回值。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let srcFile = pathDir + "/test.txt";
+let dstFile = pathDir + '/new.txt';
+fileio.rename(srcFile, dstFile).then(() => {
+  console.info("rename succeed");
+}).catch((err: BusinessError) => {
+  console.error("rename failed with error:" + err);
+});
+```
 
 
 ## rename
@@ -51,8 +62,6 @@ declare function rename(oldPath: string, newPath: string, callback: AsyncCallbac
 
 **替代接口：** [rename](arkts-corefile-file-fs-rename-f.md)
 
-<!--Device-unnamed-declare function rename(oldPath: string, newPath: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function rename(oldPath: string, newPath: string, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -61,5 +70,14 @@ declare function rename(oldPath: string, newPath: string, callback: AsyncCallbac
 | --- | --- | --- | --- |
 | oldPath | string | 是 | 目标文件的当前应用沙箱路径。 |
 | newPath | string | 是 | 目标文件的新应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步重命名文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步重命名文件之后的回调。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let srcFile = pathDir + "/test.txt";
+let dstFile = pathDir + '/new.txt';
+fileio.rename(srcFile, dstFile, (err: BusinessError) => {
+});
+```

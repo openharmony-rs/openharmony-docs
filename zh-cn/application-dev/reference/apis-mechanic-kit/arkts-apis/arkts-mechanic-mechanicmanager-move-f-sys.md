@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## move
 
 ```TypeScript
-function move(mechId: int, params: MoveParams): Promise<Result>
+function move(mechId: number, params: MoveParams): Promise<Result>
 ```
 
 以特定参数移动一个具身设备
 
 **起始版本：** 26.0.0
-
-<!--Device-mechanicManager-function move(mechId: int, params: MoveParams): Promise<Result>--><!--Device-mechanicManager-function move(mechId: int, params: MoveParams): Promise<Result>-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -26,14 +23,14 @@ function move(mechId: int, params: MoveParams): Promise<Result>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | int | 是 | 具身设备ID。 <br>取值限定为整数。 |
+| mechId | number | 是 | 具身设备ID。 取值限定为整数。 |
 | params | [MoveParams](arkts-mechanic-mechanicmanager-moveparams-i-sys.md) | 是 | 移动参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Result&gt; | 202 - 非系统应用 |
+| Promise & lt;Result & gt; | 202 - 非系统应用 |
 
 **错误码：**
 
@@ -43,4 +40,3 @@ function move(mechId: int, params: MoveParams): Promise<Result>
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 | [33300003](../errorcode-mechanic.md#33300003-功能不支持) | Feature not supported. |
-

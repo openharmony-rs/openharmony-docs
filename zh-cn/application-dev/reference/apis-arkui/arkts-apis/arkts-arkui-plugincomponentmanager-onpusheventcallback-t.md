@@ -11,8 +11,6 @@ type OnPushEventCallback = (source: Want, template: PluginComponentTemplate, dat
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-pluginComponentManager-type OnPushEventCallback = (source: Want, template: PluginComponentTemplate, data: KVObject,    extraData: KVObject) => void--><!--Device-pluginComponentManager-type OnPushEventCallback = (source: Want, template: PluginComponentTemplate, data: KVObject,    extraData: KVObject) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -24,3 +22,17 @@ type OnPushEventCallback = (source: Want, template: PluginComponentTemplate, dat
 | data | [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md) | 是 | push事件中传递的数据内容，以键值对形式存储，键和值类型由业务定义。 |
 | extraData | [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md) | 是 | push事件中传递的附加数据，以键值对形式存储，键和值类型由业务定义。 |
 
+**示例**
+
+```TypeScript
+import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
+import { Want } from '@kit.AbilityKit';
+
+const onPushListener = (source: Want, template: PluginComponentTemplate, data: pluginComponentManager.KVObject, extraData: pluginComponentManager.KVObject) => {
+  console.info("onPushListener template.source=" + template.source);
+  console.info("onPushListener source=" + JSON.stringify(source));
+  console.info("onPushListener template=" + JSON.stringify(template));
+  console.info("onPushListener data=" + JSON.stringify(data));
+  console.info("onPushListener extraData=" + JSON.stringify(extraData));
+};
+```

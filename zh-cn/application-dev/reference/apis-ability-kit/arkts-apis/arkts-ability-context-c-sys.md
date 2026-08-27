@@ -4,9 +4,7 @@ Context是Stage模型的上下文基类，主要用于访问特定应用程序�
 
 **继承/实现关系：** Context extends BaseContext
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare class Context--><!--Device-unnamed-declare class Context-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -16,7 +14,12 @@ Context是Stage模型的上下文基类，主要用于访问特定应用程序�
 createBundleContext(bundleName: string): Context
 ```
 
-根据Bundle名称创建安装包的上下文。 > **说明：** > > - stage模型多module的情况下可能发生资源id冲突的情况，建议使用 > [application.createModuleContext](arkts-ability-application-createmodulecontext-f.md)替代。
+根据Bundle名称创建安装包的上下文。
+
+> **说明：**
+> 
+> - stage模型多module的情况下可能发生资源id冲突的情况，建议使用
+> [application.createModuleContext](arkts-ability-application-createmodulecontext-f.md)替代。
 
 **起始版本：** 9
 
@@ -27,8 +30,6 @@ createBundleContext(bundleName: string): Context
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Context-createBundleContext(bundleName: string): Context--><!--Device-Context-createBundleContext(bundleName: string): Context-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -50,9 +51,9 @@ createBundleContext(bundleName: string): Context
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例**
 
@@ -88,8 +89,6 @@ createModuleContext(bundleName: string, moduleName: string): Context
 **替代接口：** [createModuleContext](arkts-ability-application-createmodulecontext-f.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Context-createModuleContext(bundleName: string, moduleName: string): Context--><!--Device-Context-createModuleContext(bundleName: string, moduleName: string): Context-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -141,13 +140,11 @@ createModuleResourceManager(bundleName: string, moduleName: string): resmgr.Reso
 
 为指定Module创建资源管理对象。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Context-createModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager--><!--Device-Context-createModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -170,9 +167,9 @@ createModuleResourceManager(bundleName: string, moduleName: string): resmgr.Reso
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例**
 
@@ -202,11 +199,9 @@ createSystemHspModuleResourceManager(bundleName: string, moduleName: string): re
 
 该接口用于OEM厂商预置的[系统级HSP](../../../quick-start/application-package-glossary.md#系统级hsp)创建自己的 [ResourceManager](../../apis-localization-kit/arkts-apis/arkts-resourcemanager.md)。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Context-createSystemHspModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager--><!--Device-Context-createSystemHspModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -244,4 +239,3 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-

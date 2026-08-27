@@ -9,16 +9,19 @@ import { childProcessManager } from '@kit.AbilityKit';
 ## startNativeChildProcess
 
 ```TypeScript
-function startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, options?: ChildProcessOptions): Promise<int>
+function startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, options?: ChildProcessOptions): Promise<number>
 ```
 
-启动[Native子进程](../../../application-models/ability-terminology.md#native子进程)。使用Promise异步回调。 > **说明：** > > 调用该接口创建的子进程不会继承父进程资源，子进程创建成功会返回子进程pid，然后加载参数中指定的动态链接库文件并执行子进程的入口函数，入口函数执行完后子进程会自动销毁。调用该接口的进程销毁后，所创建的子进程也会一并销毁。 **设备行为差异**：从API version 13开始，该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。 从API version 14开始，该接口在PC/2in1、Tablet中可正常调用，在其他设备类型中返回801错误码。
+启动[Native子进程](../../../application-models/ability-terminology.md#native子进程)。使用Promise异步回调。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 调用该接口创建的子进程不会继承父进程资源，子进程创建成功会返回子进程pid，然后加载参数中指定的动态链接库文件并执行子进程的入口函数，入口函数执行完后子进程会自动销毁。调用该接口的进程销毁后，所创建的子进程也会一并销毁。
+**设备行为差异**：从API version 13开始，该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。 从API version 14开始，该接口在PC/2in1、Tablet中可正常调用，在其他设备类型中返回801错误码。
+
+**起始版本：** 13
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-childProcessManager-function startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, options?: ChildProcessOptions): Promise<int>--><!--Device-childProcessManager-function startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, options?: ChildProcessOptions): Promise<int>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -34,7 +37,7 @@ function startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, opt
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回子进程pid。 |
+| Promise & lt;number & gt; | Promise对象，返回子进程pid。 |
 
 **错误码：**
 
@@ -48,7 +51,7 @@ function startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, opt
 
 **示例**
 
-子进程部分，详见[Native子进程开发指导（C/C++）- 创建支持参数传递的Native子进程](../../../application-models/capi-nativechildprocess-development-guideline.md#创建支持参数传递的native子进程)：
+子进程部分，详见[子进程开发指导（ArkTS）- 创建支持参数传递的Native子进程](../../../application-models/arkts-child-process-development-guideline.md#创建支持参数传递的native子进程)：
 
 ```TypeScript
 #include <AbilityKit/native_child_process.h>
@@ -126,4 +129,3 @@ struct Index {
   }
 }
 ```
-

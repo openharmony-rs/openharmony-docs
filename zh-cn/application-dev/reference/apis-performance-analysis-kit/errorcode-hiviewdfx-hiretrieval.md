@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 36000001 
 
@@ -45,4 +45,4 @@ Multi-instance applications not supported error. Possibly caused by invoking thi
 
 **处理步骤**
 
-请确认当前应用是否为[多实例应用](../../quick-start/multiInstance.md)。若为多实例应用，请避免调用HiRetrieval相关接口。
+请确认当前应用是否为多实例应用。若为多实例应用，请避免调用HiRetrieval相关接口。

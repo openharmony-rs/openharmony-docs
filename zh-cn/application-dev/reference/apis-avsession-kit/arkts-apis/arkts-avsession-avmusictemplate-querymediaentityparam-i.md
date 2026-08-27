@@ -1,10 +1,8 @@
 # QueryMediaEntityParam
 
-查询媒体实例参数的定义。
+查询媒体实例参数的定义。@interface QueryMediaEntityParam
 
 **起始版本：** 23
-
-<!--Device-avMusicTemplate-interface QueryMediaEntityParam--><!--Device-avMusicTemplate-interface QueryMediaEntityParam-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -28,8 +26,6 @@ entityId: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-QueryMediaEntityParam-entityId: string--><!--Device-QueryMediaEntityParam-entityId: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## episodeRange
@@ -46,25 +42,21 @@ episodeRange?: EpisodeRange
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-QueryMediaEntityParam-episodeRange?: EpisodeRange--><!--Device-QueryMediaEntityParam-episodeRange?: EpisodeRange-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## pageIndex
 
 ```TypeScript
-pageIndex: int
+pageIndex: number
 ```
 
 分页查询页码。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-QueryMediaEntityParam-pageIndex: int--><!--Device-QueryMediaEntityParam-pageIndex: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -82,8 +74,6 @@ sort?: Sort
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-QueryMediaEntityParam-sort?: Sort--><!--Device-QueryMediaEntityParam-sort?: Sort-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## subEntityType
@@ -99,8 +89,6 @@ subEntityType?: EntityType
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-QueryMediaEntityParam-subEntityType?: EntityType--><!--Device-QueryMediaEntityParam-subEntityType?: EntityType-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -118,7 +106,4 @@ type: EntityType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-QueryMediaEntityParam-type: EntityType--><!--Device-QueryMediaEntityParam-type: EntityType-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-

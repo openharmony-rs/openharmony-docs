@@ -2,9 +2,7 @@
 
 串口的配置参数。
 
-**起始版本：** 23
-
-<!--Device-serialManager-interface SerialAttribute--><!--Device-serialManager-interface SerialAttribute-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
@@ -24,9 +22,7 @@ baudRate: BaudRates
 
 **类型：** [BaudRates](arkts-basicservices-serialmanager-baudrates-e.md)
 
-**起始版本：** 23
-
-<!--Device-SerialAttribute-baudRate: BaudRates--><!--Device-SerialAttribute-baudRate: BaudRates-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
@@ -42,9 +38,7 @@ dataBits?: DataBits
 
 **默认值：** DATABIT_8
 
-**起始版本：** 23
-
-<!--Device-SerialAttribute-dataBits?: DataBits--><!--Device-SerialAttribute-dataBits?: DataBits-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
@@ -60,9 +54,7 @@ parity?: Parity
 
 **默认值：** PARITY_NONE
 
-**起始版本：** 23
-
-<!--Device-SerialAttribute-parity?: Parity--><!--Device-SerialAttribute-parity?: Parity-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
@@ -78,9 +70,6 @@ stopBits?: StopBits
 
 **默认值：** STOPBIT_1
 
-**起始版本：** 23
-
-<!--Device-SerialAttribute-stopBits?: StopBits--><!--Device-SerialAttribute-stopBits?: StopBits-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
-

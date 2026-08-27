@@ -8,8 +8,6 @@
 
 **替代接口：** [PhotoSelectResult](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoselectresult-c.md)
 
-<!--Device-picker-class PhotoSelectResult--><!--Device-picker-class PhotoSelectResult-End-->
-
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 ## 导入模块
@@ -36,8 +34,6 @@ isOriginalPhoto: boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PhotoSelectResult-isOriginalPhoto: boolean--><!--Device-PhotoSelectResult-isOriginalPhoto: boolean-End-->
-
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 ## photoUris
@@ -58,7 +54,4 @@ photoUris: Array<string>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PhotoSelectResult-photoUris: Array<string>--><!--Device-PhotoSelectResult-photoUris: Array<string>-End-->
-
 **系统能力：** SystemCapability.FileManagement.UserFileService
-

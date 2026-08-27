@@ -2,9 +2,7 @@
 
 投播控制器接受的命令的对象描述。
 
-**起始版本：** 23
-
-<!--Device-avSession-interface AVCastControlCommand--><!--Device-avSession-interface AVCastControlCommand-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -24,29 +22,24 @@ command: AVCastControlCommandType
 
 **类型：** [AVCastControlCommandType](arkts-avsession-avsession-avcastcontrolcommandtype-t.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AVCastControlCommand-command: AVCastControlCommandType--><!--Device-AVCastControlCommand-command: AVCastControlCommandType-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 ## parameter
 
 ```TypeScript
-parameter?: media.PlaybackSpeed | double | string | LoopMode
+parameter?: media.PlaybackSpeed | number | string | LoopMode
 ```
 
 命令对应的参数。
 
-**类型：** media.PlaybackSpeed \| double \| string \| [LoopMode](arkts-avsession-avsession-loopmode-e.md)
+**类型：** media.PlaybackSpeed \| number \| string \| [LoopMode](arkts-avsession-avsession-loopmode-e.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AVCastControlCommand-parameter?: media.PlaybackSpeed | double | string | LoopMode--><!--Device-AVCastControlCommand-parameter?: media.PlaybackSpeed | double | string | LoopMode-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
-

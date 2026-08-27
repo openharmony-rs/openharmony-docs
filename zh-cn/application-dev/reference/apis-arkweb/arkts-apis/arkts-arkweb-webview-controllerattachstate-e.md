@@ -4,8 +4,6 @@ WebviewController与Web组件的绑定状态。
 
 **起始版本：** 20
 
-<!--Device-webview-enum ControllerAttachState--><!--Device-webview-enum ControllerAttachState-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## UNATTACHED
@@ -17,8 +15,6 @@ UNATTACHED = 0
 未绑定状态。
 
 **起始版本：** 20
-
-<!--Device-ControllerAttachState-UNATTACHED = 0--><!--Device-ControllerAttachState-UNATTACHED = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -32,7 +28,4 @@ ATTACHED = 1
 
 **起始版本：** 20
 
-<!--Device-ControllerAttachState-ATTACHED = 1--><!--Device-ControllerAttachState-ATTACHED = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

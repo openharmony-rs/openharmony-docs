@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## getAppVMMemoryInfo
@@ -14,9 +13,7 @@ function getAppVMMemoryInfo(): VMMemoryInfo
 
 获取VM内存相关信息。
 
-**起始版本：** 23
-
-<!--Device-hidebug-function getAppVMMemoryInfo(): VMMemoryInfo--><!--Device-hidebug-function getAppVMMemoryInfo(): VMMemoryInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -35,4 +32,3 @@ let vmMemory: hidebug.VMMemoryInfo = hidebug.getAppVMMemoryInfo();
 console.info(`totalHeap = ${vmMemory.totalHeap}, heapUsed = ${vmMemory.heapUsed},` +
   `allArraySize = ${vmMemory.allArraySize}` );
 ```
-

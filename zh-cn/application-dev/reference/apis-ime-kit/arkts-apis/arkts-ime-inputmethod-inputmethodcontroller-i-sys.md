@@ -1,10 +1,18 @@
 # InputMethodController
 
-下列API示例中都需使用[getController](arkts-ime-inputmethod-getcontroller-f.md)获取到InputMethodController实例，再通过实例调用对应方法。 InputMethodController是输入法客户端控制器，面向前台应用提供与输入法交互的核心能力。通过`inputMethod.getController()`获取实例后，可进行以下操作： - **绑定管理**：通过 [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) 建立与输入法的绑定，通过[detach](arkts-ime-inputmethod-inputmethodcontroller-i.md#detach)解除绑定。attach和 detach必须配对使用。 - **键盘控制**：通过[showTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#showtextinput)拉 起软键盘进入编辑状态，通过[hideTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#hidetextinput)隐 藏软键盘退出编辑状态。showTextInput和hideTextInput必须配对使用。 - **编辑框状态同步**：通过 [updateCursor](arkts-ime-inputmethod-inputmethodcontroller-i.md#updatecursor) 、 [changeSelection](arkts-ime-inputmethod-inputmethodcontroller-i.md#changeselection) 、 [updateAttribute](arkts-ime-inputmethod-inputmethodcontroller-i.md#updateattribute) 等接口向输入法同步光标、选区、属性等编辑框状态信息。 - **事件订阅**：通过on('insertText')、on('deleteLeft')等接口订阅输入法应用发送的文本操作事件。 典型调用序列：`getController()` → `attach()` → `showTextInput()`/`hideTextInput()` → `detach()` > **注意：** > > attach和detach必须配对使用，showTextInput和hideTextInput必须配对使用，否则可能导致资源泄漏或状态不一致。
+下列API示例中都需使用[getController](arkts-ime-inputmethod-getcontroller-f.md)获取到InputMethodController实例，再通过实例调用对应方法。 InputMethodController是输入法客户端控制器，面向前台应用提供与输入法交互的核心能力。通过`inputMethod.getController()`获取实例后，可进行以下操作：   
+- 绑定管理：通过 [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) 建立与输入法的绑定，通过[detach](arkts-ime-inputmethod-inputmethodcontroller-i.md#detach)解除绑定。attach和 detach必须配对使用。   
+- 键盘控制：通过[showTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#showtextinput)拉起软键盘 进入编辑状态，通过[hideTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#hidetextinput)隐藏软键盘 退出编辑状态。showTextInput和hideTextInput必须配对使用。   
+- 编辑框状态同步：通过 [updateCursor](arkts-ime-inputmethod-inputmethodcontroller-i.md#updatecursor) 、 [changeSelection](arkts-ime-inputmethod-inputmethodcontroller-i.md#changeselection) 、 [updateAttribute](arkts-ime-inputmethod-inputmethodcontroller-i.md#updateattribute) 等接口向输入法同步光标、选区、属性等编辑框状态信息。   
+- 事件订阅：通过on('insertText')、on('deleteLeft')等接口订阅输入法应用发送的文本操作事件。   
+ 典型调用序列：`getController()` → `attach()` → `showTextInput()`/`hideTextInput()` → `detach()`   
+> **说明：**
+   
+> 
+   
+> attach和detach必须配对使用，showTextInput和hideTextInput必须配对使用，否则可能导致资源泄漏或状态不一致。
 
-**起始版本：** 23
-
-<!--Device-inputMethod-interface InputMethodController--><!--Device-inputMethod-interface InputMethodController-End-->
+**起始版本：** 6
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -12,28 +20,26 @@
 
 ```TypeScript
 import { inputMethod } from '@kit.IMEKit';
-import { inputMethodEngine } from '@kit.IMEKit';
-import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
-import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
-import { InputMethodExtraConfig } from '@kit.IMEKit';
-import { inputMethodSystemPanelManager } from '@kit.IMEKit';
 ```
 
 ## hideSoftKeyboard
 
 ```TypeScript
-hideSoftKeyboard(displayId: long): Promise<void>
+hideSoftKeyboard(displayId: number): Promise<void>
 ```
 
-隐藏指定屏幕上的输入法软键盘。使用Promise异步回调。
+隐藏指定屏幕上的输入法软键盘。使用Promise异步回调。   
+> **说明：**
+   
+> 
+   
+> 该接口需要编辑框与输入法绑定时才能调用，即点击编辑控件后，才可调用隐藏当前输入法的软键盘。
 
 **起始版本：** 23
 
 **需要权限：** ohos.permission.CONNECT_IME_ABILITY
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-InputMethodController-hideSoftKeyboard(displayId: long): Promise<void>--><!--Device-InputMethodController-hideSoftKeyboard(displayId: long): Promise<void>-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -43,26 +49,24 @@ hideSoftKeyboard(displayId: long): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayId | long | 是 | 屏幕ID。 |
+| displayId | number | 是 | 屏幕ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | permissions check fails. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -75,34 +79,28 @@ inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
 });
 ```
 
-ArkTS-Sta示例:
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let displayId: long = 30;
-inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
-  console.info('Succeeded in hiding softKeyboard.');
-}).catch((err: BusinessError): void=> {
-  console.error(`Failed to hide softKeyboard, code: ${err.code}, message: ${err.message}`);
-});
-```
-
 ## showSoftKeyboard
 
 ```TypeScript
-showSoftKeyboard(displayId: long): Promise<void>
+showSoftKeyboard(displayId: number): Promise<void>
 ```
 
-在指定屏幕上显示输入法软键盘。使用Promise异步回调。
+在指定屏幕上显示输入法软键盘。使用Promise异步回调。 配合使用：   
+- 此方法与hideSoftKeyboard配合使用，可实现对软键盘的显示和隐藏控制   
+- 通常在调用showSoftKeyboard显示软键盘后，可在需要时调用hideSoftKeyboard隐藏软键盘   
+- 需要编辑框与输入法绑定时才能调用   
+   
+> **说明：**
+   
+> 
+   
+> 该接口需要编辑框与输入法绑定时才能调用，即点击编辑控件后，才可调用显示当前输入法的软键盘。
 
 **起始版本：** 23
 
 **需要权限：** ohos.permission.CONNECT_IME_ABILITY
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-InputMethodController-showSoftKeyboard(displayId: long): Promise<void>--><!--Device-InputMethodController-showSoftKeyboard(displayId: long): Promise<void>-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -112,26 +110,24 @@ showSoftKeyboard(displayId: long): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayId | long | 是 | 屏幕ID。 |
+| displayId | number | 是 | 屏幕ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | permissions check fails. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -143,17 +139,3 @@ inputMethod.getController().showSoftKeyboard(displayId).then(() => {
   console.error(`Failed to show softKeyboard, code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例:
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let displayId: long = 20;
-inputMethod.getController().showSoftKeyboard(displayId).then(() => {
-  console.info('Succeeded in showing softKeyboard.');
-}).catch((err: BusinessError): void=> {
-  console.error(`Failed to show softKeyboard, code: ${err.code}, message: ${err.message}`);
-});
-```
-

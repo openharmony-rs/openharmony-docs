@@ -4,18 +4,11 @@
 
 **起始版本：** 23
 
-<!--Device-unnamed-declare interface AcceptableFileType--><!--Device-unnamed-declare interface AcceptableFileType-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## acceptableType
@@ -29,8 +22,6 @@ acceptableType: Array<string>
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 23
-
-<!--Device-AcceptableFileType-acceptableType: Array<string>--><!--Device-AcceptableFileType-acceptableType: Array<string>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -46,7 +37,4 @@ mimeType: string
 
 **起始版本：** 23
 
-<!--Device-AcceptableFileType-mimeType: string--><!--Device-AcceptableFileType-mimeType: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

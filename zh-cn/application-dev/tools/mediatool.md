@@ -7,7 +7,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-开发者可通过[mediatool工具](#mediatool工具)或[hdc命令](#hdc命令)操作媒体库资源。媒体库为图库提供和管理数据，媒体库中的图片视频会在图库界面呈现。
+开发者可通过mediatool工具或hdc命令操作媒体库资源。媒体库为图库提供和管理数据，媒体库中的图片视频会在图库界面呈现。
 
 ## mediatool工具
 
@@ -31,8 +31,8 @@ mediatool recv <media-target> <dest-path>
 
 `<media-target>`可以为以下两种形式：
 
-* 系统媒体目录下的文件路径。可通过[列举命令（mediatool ls -l）](#列举命令mediatool-ls--l)获取，不支持指定文件夹路径。
-* 媒体库uri。（参考[媒体库uri介绍/获取方式](#媒体库uri介绍获取方式)）
+* 系统媒体目录下的文件路径。可通过列举命令（mediatool ls -l）获取，不支持指定文件夹路径。
+* 媒体库uri。（参考媒体库uri介绍/获取方式）
 
 如果`<media-target>`指定文件路径，只支持以下几种路径，以下几种路径存在映射关系，访问的目录相同，均访问当前用户的系统媒体目录。
 
@@ -82,7 +82,7 @@ mediatool delete <resource-uri>
 
 该命令能够删除`<resource-uri>`指定uri的媒体库资源。被删除的资源无法恢复，请谨慎执行。
 
-媒体库资源uri的获取可参考[媒体库uri介绍/获取方式](#媒体库uri介绍获取方式)。
+媒体库资源uri的获取可参考媒体库uri介绍/获取方式。
 
 将`<resource-uri>`指定为`all`则指定删除所有媒体库资源，并重置媒体库的所有数据。
 

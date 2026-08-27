@@ -13,7 +13,7 @@ OpenGL ES 3.2
 
 ## 标准库中导出的符号列表
 
-[native api中导出的OpenGL ES 3.2符号列表](openglesv3-symbol.md)
+native api中导出的OpenGL ES 3.2符号列表
 
 ## 引入OpenGL能力
 
@@ -44,9 +44,9 @@ libEGL.so
 
 针对OpenGL ES的使用和相关开发，需要同步了解NDK的开发过程，以及XComponent组件等的使用。具体可参考:
 
-- [NDK开发参考](../../napi/ndk-development-overview.md)
+- NDK开发参考
 
-- [Node-API参考](./napi.md)
+- Node-API参考
 
 - XComponentNode参考
 

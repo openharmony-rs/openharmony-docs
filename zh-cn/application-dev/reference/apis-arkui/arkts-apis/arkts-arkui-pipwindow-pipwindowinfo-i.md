@@ -2,9 +2,7 @@
 
 画中画窗口信息。
 
-**起始版本：** 26.0.0
-
-<!--Device-PiPWindow-interface PiPWindowInfo--><!--Device-PiPWindow-interface PiPWindowInfo-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -24,29 +22,24 @@ size: PiPWindowSize
 
 **类型：** [PiPWindowSize](arkts-arkui-pipwindow-pipwindowsize-i.md)
 
-**起始版本：** 26.0.0
+**起始版本：** 15
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PiPWindowInfo-size: PiPWindowSize--><!--Device-PiPWindowInfo-size: PiPWindowSize-End-->
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## windowId
 
 ```TypeScript
-windowId: int
+windowId: number
 ```
 
 画中画窗口ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 26.0.0
+**起始版本：** 15
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PiPWindowInfo-windowId: int--><!--Device-PiPWindowInfo-windowId: int-End-->
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
-

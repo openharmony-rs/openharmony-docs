@@ -15,11 +15,11 @@
 
 > **说明：**
 > 
-> 应用退至后台后，在不同类型设备上生命周期变化存在差异，详见[不同设备UIAbility生命周期的差异化行为](../windowmanager/window-lifecycle.md#不同设备uiability生命周期的差异化行为)。
+> 应用退至后台后，在不同类型设备上生命周期变化存在差异，详见不同设备UIAbility生命周期的差异化行为。
 
 ### 使用场景
 
-下表给出了当前长时任务支持的类型，包含数据传输、音视频播放、录制、定位导航、蓝牙相关业务、多设备互联、<!--Del-->WLAN相关业务、<!--DelEnd-->音视频通话和计算任务。可以参考下表中的场景举例，选择合适的长时任务类型。
+下表给出了当前长时任务支持的类型，包含数据传输、音视频播放、录制、定位导航、蓝牙相关业务、多设备互联、<!--Del-->WLAN相关业务、<!--DelEnd-->音视频通话和计算任务等类型。可以参考下表中的场景举例，选择合适的长时任务类型。
 
 **表1** 长时任务类型
 | 参数名 | 描述 | 配置项 | 场景举例 |
@@ -32,62 +32,65 @@
 | MULTI_DEVICE_CONNECTION | 多设备互联。<br> **说明：** 从API version 12开始，支持在原子化服务中使用。 | multiDeviceConnection | 分布式业务连接、投播。 |
 | <!--DelRow-->WIFI_INTERACTION | WLAN相关业务（仅对系统应用开放）。 | wifiInteraction  | 通过WLAN传输文件时退后台。 |
 | VOIP | 音视频通话。<br/>**说明：** 从API version 13开始支持。 | voip  | 某些聊天类应用（具有音视频业务）音频、视频通话时退后台。|
-| TASK_KEEPING | 计算任务。<br/>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。 | taskKeeping  | 如杀毒软件。 |
+| TASK_KEEPING | 计算任务。<br/>**说明：** 从API version 21开始，对非PC/2in1设备但申请了ACL权限为ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM的应用开放；对PC/2in1设备，应用不需要申请ACL权限。API version 20及之前版本，仅对PC/2in1设备开放。 | taskKeeping  | 如杀毒软件。 |
 | MODE_AV_PLAYBACK_AND_RECORD | 多媒体相关业务。<br/>**说明：** 从API version 22开始支持。<br>从API版本26.0.0开始，支持在原子化服务中使用。 | avPlaybackAndRecord  | 音视频播放，录制，音视频通话时退后台。在上述三种场景下，选择本类型或对应类型的长时任务均可。例如：音视频播放场景下，选择AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD任意一个即可。 |
-| MODE_SPECIAL_SCENARIO_PROCESSING | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。<br/>**说明：** 从API version 22开始支持。 | specialScenarioProcessing  | 在后台进行导出媒体文件，使用三方投播组件在后台进行投播。|
+| MODE_SPECIAL_SCENARIO_PROCESSING | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。<br/>**说明：** 从API version 22开始支持。 | specialScenarioProcessing  | 在后台进行导出媒体文件，使用三方投播组件在后台进行投播，应用在后台有室内运动场景。|
 | MODE_NEARLINK | 星闪业务。<br/>**起始版本：** 26.0.0  | nearlink | 通过星闪传输文件时退后台。 |
 
 关于DATA_TRANSFER（数据传输）说明：
 
-- 在数据传输时，若应用使用[@ohos.request (上传下载)/apis-basic-services-kit/js-apis-request.md)托管给系统，即使申请DATA_TRANSFER的后台任务，应用退后台时还是会被挂起。
+- 在数据传输时，若应用使用@ohos.request (上传下载)托管给系统，即使申请DATA_TRANSFER的后台任务，应用退后台时还是会被挂起。
 
-- 在数据传输时，应用需要更新进度，如果进度长时间（首次更新超过10分钟）未更新，数据传输的长时任务会被取消。更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning12)中的示例。
+- 在数据传输时，应用需要更新进度，如果进度长时间（首次更新超过10分钟）未更新，数据传输的长时任务会被取消。更新进度的通知类型必须为实况窗，具体实现可参考startBackgroundRunning()中的示例。
+
+- 从API版本26.1.0开始，可使用updateDataTransferProgress()接口更新包含数据传输类型的长时任务通知。可选择通知是否带进度环，以及进度环为100时是否响铃。
 
 关于AUDIO_PLAYBACK（音视频播放）说明：
 
 - 音视频投播，是指将一台设备的音视频投至另一台设备播放。投播退至后台，长时任务会检测音视频播放和投屏两个业务，只要有其一正常运行，长时任务就不会终止。
 
-- 当应用需要在后台播放媒体类型（流类型为STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE和STREAM_USAGE_AUDIOBOOK）和游戏类型（流类型为STREAM_USAGE_GAME）时，必须接入媒体会话服务（[AVSession](../media/avsession/avsession-overview.md)）并申请AUDIO_PLAYBACK类型长时任务。
+- 当应用需要在后台播放媒体类型（流类型为STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE和STREAM_USAGE_AUDIOBOOK）和游戏类型（流类型为STREAM_USAGE_GAME）时，必须接入媒体会话服务（AVSession）并申请AUDIO_PLAYBACK类型长时任务。
 
 - 除了上述播放类型，针对用户可感知的其他播放任务，如果应用需要在后台长时间运行该任务，必须申请AUDIO_PLAYBACK类型长时任务，无需接入AVSession。
 
-- 如果应用不满足上述接入规范，退至后台播放时会被系统静音并冻结，无法在后台正常播放，直到应用重新切回前台时，才会解除静音并恢复播放。
+- 如果应用不满足上述接入规范，退至后台播放时会被系统静音并挂起，无法在后台正常播放，直到应用重新切回前台时，才会解除静音并恢复播放。
 
 - 从API version 20开始，申请AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请长时任务成功后会在通知栏显示通知；接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。
 
-- 应用申请AUDIO_PLAYBACK类型长时任务，退至后台时，如果设备没有有效音频播放，应用可能被系统冻结。
+- 应用申请AUDIO_PLAYBACK类型长时任务，退至后台时，如果设备没有有效音频播放，应用可能被系统挂起。
 
-- 建议应用设置监听音频暂停事件[on('pause')/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onpause10)，如果收到音频暂停事件上报且后续不再需要继续音频播放时，推荐取消已经申请的音视频播放长时任务。
+- 建议应用设置监听音频暂停事件on('pause')，如果收到音频暂停事件上报且后续不再需要继续音频播放时，推荐取消已经申请的音视频播放长时任务。
 
 关于BLUETOOTH_INTERACTION（蓝牙相关业务）说明：
 
 如果应用仅申请了蓝牙长时任务，因设备远离等原因导致蓝牙断连，系统将取消应用的蓝牙长时任务。为确保蓝牙接续使用体验，在断连后的一段时间内（具体时长受系统负载影响，最长可达十分钟），系统允许满足如下条件的应用在恢复连接时重新保活，实现在后台长时间运行。
 
-1. 主动注册长时任务暂停监听的事件以避免蓝牙断连之后长时任务被系统直接取消，可参考[on('continuousTaskSuspend')/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20)，这样在蓝牙断连时系统不会立即取消长时任务，而是将其标记为暂停态。
-2. 为保证在蓝牙断连之后能及时恢复连接，在蓝牙连接之后通过[on('connectionStateChange')/apis-connectivity-kit/js-apis-bluetooth-ble.md#onconnectionstatechange)订阅蓝牙连接状态变化的事件，断连之后通过[startScan/apis-connectivity-kit/js-apis-bluetooth-ble.md#startscan15)主动发起BLE蓝牙扫描，订阅BLE设备扫描结果上报[on('BLEDeviceFind')/apis-connectivity-kit/js-apis-bluetooth-ble.md#onbledevicefind15)事件，检测设备是否重回连接范围。
-3. 成功扫描到设备之后，应用需要通过[connect/apis-connectivity-kit/js-apis-bluetooth-ble.md#connect)主动恢复蓝牙连接，使系统检测到蓝牙恢复连接后重新激活暂停的长时任务，实现重新保活。
+1. 主动注册长时任务暂停监听的事件以避免蓝牙断连之后长时任务被系统直接取消，可参考on('continuousTaskSuspend')，这样在蓝牙断连时系统不会立即取消长时任务，而是将其标记为暂停态。
+2. 为保证在蓝牙断连之后能及时恢复连接，在蓝牙连接之后通过on('connectionStateChange')订阅蓝牙连接状态变化的事件，断连之后通过startScan主动发起BLE蓝牙扫描，订阅BLE设备扫描结果上报on('BLEDeviceFind')事件，检测设备是否重回连接范围。
+3. 成功扫描到设备之后，应用需要通过connect主动恢复蓝牙连接，使系统检测到蓝牙恢复连接后重新激活暂停的长时任务，实现重新保活。
+4. 从API版本26.0.0开始，BR蓝牙断开连接后一定时间内（具体时长受系统负载影响，最长可达十分钟），可通过onAclStateChange接口感知ACL连接状态变化，实现重新保活。
 
 关于MODE_NEARLINK（星闪业务）说明： 
 
 如果应用仅申请了星闪长时任务，因设备远离等原因导致星闪断连，系统将取消应用的星闪长时任务。为确保星闪接续使用体验，在断连后的1-10分钟内（具体时长受系统负载影响），系统允许满足如下条件的应用在恢复连接时重新保活，实现在后台长时间运行。 
  
-1. 主动注册长时任务暂停监听的事件以避免星闪断连之后长时任务被系统直接取消，可参考[on('continuousTaskSuspend')/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20)，这样在星闪断连时系统不会立即取消长时任务，而是将其标记为暂停态。 
-2. 为保证在星闪断连之后能及时恢复连接，本端设备应用在星闪连接之后订阅星闪扫描结果，断连之后，本端设备主动发起星闪扫描，对端设备发送星闪广播。 
-3. 本端设备成功扫描到对端设备之后，需要向对端设备发起连接。如无其他业务扫描需求，本端设备可停止星闪扫描。
+1. 主动注册长时任务暂停监听的事件以避免星闪断连之后长时任务被系统直接取消，可参考on('continuousTaskSuspend')，这样在星闪断连时系统不会立即取消长时任务，而是将其标记为暂停态。 
+2. 为保证在星闪断连之后能及时恢复连接，本端设备应用在星闪连接之后通过onDeviceFound订阅星闪扫描结果，断连之后，本端设备通过startScan主动发起星闪扫描，对端设备则通过startAdvertising发送星闪广播。 
+3. 本端设备成功扫描到对端设备之后，需要通过connect向对端设备发起连接。如无其他业务扫描需求，本端设备可使用stopScan停止星闪扫描。
 
 关于长时任务通知说明：
 
-应用申请长时任务成功后，系统会在通知栏显示长时任务通知弹窗，弹窗的生命周期与长时任务的申请周期绑定，当长时任务取消后，通知也随之取消。建议应用根据自身业务需求，申请和释放长时任务，如果应用在前台时不希望存在长时任务通知，建议应用将申请长时任务推迟到[onBackground/apis-ability-kit/js-apis-app-ability-uiAbility.md#onbackground)生命周期函数中执行。
+应用申请长时任务成功后，系统会在通知栏显示长时任务通知弹窗，弹窗的生命周期与长时任务的申请周期绑定，当长时任务取消后，通知也随之取消。建议应用根据自身业务需求，申请和释放长时任务，如果应用在前台时不希望存在长时任务通知，建议应用将申请长时任务推迟到onBackground生命周期函数中执行。
 
 ### 约束与限制
 
-**申请限制**：Stage模型中，长时任务仅支持UIAbility申请；FA模型中，长时任务仅支持ServiceAbility申请。长时任务支持设备当前应用申请，也支持跨设备或跨应用申请，跨设备或跨应用仅对系统应用开放。
+**申请限制：** Stage模型中，长时任务仅支持UIAbility申请；FA模型中，长时任务仅支持ServiceAbility申请。长时任务支持设备当前应用申请，也支持跨设备或跨应用申请，跨设备或跨应用仅对系统应用开放。
 
-**数量限制**：
-- 从API version 21开始，支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个，具体实现可参考[startBackgroundRunning()/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning21)。对于API version 20及之前版本，一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。如果一个应用同时需要申请多个长时任务，需要创建多个UIAbility。
+**数量限制：**
+- 从API version 21开始，支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个，具体实现可参考startBackgroundRunning()。对于API version 20及之前版本，一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。如果一个应用同时需要申请多个长时任务，需要创建多个UIAbility。
 - 如果一个应用创建了多个UIAbility，一个UIAbility申请长时任务后，整个应用下的所有进程均不会被挂起。
 
-**运行限制**：
+**运行限制：**
 
 - 申请长时任务后，应用未执行相应的业务，系统会对应用进行管控，即应用退至后台会被挂起。如系统检测到应用申请了AUDIO_PLAYBACK（音视频播放），但实际未播放音乐。
 
@@ -103,38 +106,40 @@
 >
 > 应用按需求申请长时任务，当应用无需在后台运行（任务结束）时，要及时主动取消长时任务，否则应用退至后台会被系统挂起。例如用户主动点击音乐暂停播放时，应用需及时取消对应的长时任务；用户再次点击音乐播放时，需重新申请长时任务。
 >
-> 若音频在后台播放时被[打断](../media/audio/audio-playback-concurrency.md)，系统会自行检测和停止长时任务，音频重启播放时，需要再次申请长时任务。
+> 若音频在后台播放时被打断，系统会自行检测和停止长时任务，音频重启播放时，需要再次申请长时任务。
 >
 > 后台播放音频的应用，在停止长时任务的同时，需要暂停或停止音频流，否则应用会被系统强制终止。
+>
+> 若应用后台录音被打断，系统会自行检测和停止长时任务；若重启录音，需要再次申请长时任务。在此场景下，需要调用setWillMuteWhenInterrupted接口，设置当前录制音频流启用静音打断模式。
 
 ## 接口说明
 
 **表2** 主要接口
 
-以下是长时任务开发使用的相关接口，下表均以Promise形式为例，更多接口及使用方式请见[后台任务管理/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md)。
+以下是长时任务开发使用的相关接口，下表均以Promise形式为例，更多接口及使用方式请见后台任务管理。
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning-1) | 申请长时任务，本接口一个UIAbility同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。 |
-| [stopBackgroundRunning(context: Context): Promise&lt;void&gt;/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning-1)  | 取消长时任务。 |
-| [startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning21) | 申请多个长时任务。本接口支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个。 |
-| [stopBackgroundRunning(context: Context, continuousTaskId: number): Promise&lt;void&gt;/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning21) | 取消指定Id的长时任务。 |
+| startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt; | 申请长时任务，本接口一个UIAbility同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。 |
+| stopBackgroundRunning(context: Context): Promise&lt;void&gt;  | 取消长时任务。 |
+| startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt; | 申请多个长时任务。本接口支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个。 |
+| stopBackgroundRunning(context: Context, continuousTaskId: number): Promise&lt;void&gt; | 取消指定Id的长时任务。 |
 
 ## 开发步骤
 
-本文以申请一个录制长时任务为例，实现如下功能：
+本文以申请一个音视频播放类型长时任务为例，实现如下功能：
 
-- 点击“申请长时任务”按钮，应用申请录制长时任务成功，通知栏显示“正在运行录制任务”通知。
+- 点击“申请长时任务”按钮，应用申请音视频播放类型长时任务成功，通知栏显示相关通知。
 
 - 点击“取消长时任务”按钮，取消长时任务，通知栏撤销相关通知。
 
 ### Stage模型
 
-1. 需要申请ohos.permission.KEEP_BACKGROUND_RUNNING权限，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。
+1. 需要申请ohos.permission.KEEP_BACKGROUND_RUNNING权限，配置方式请参见声明权限。
 
 2. 声明后台模式类型。
 
-   在[module.json5配置文件](../quick-start/module-configuration-file.md)中abilities下的backgroundModes字段里，为需要使用长时任务的UIAbility声明相应的长时任务类型，配置文件中填写长时任务类型的[配置项](continuous-task.md#使用场景)。
+   在module.json5配置文件中abilities下的backgroundModes字段里，为需要使用长时任务的UIAbility声明相应的长时任务类型，配置文件中填写长时任务类型的配置项。
 
    <!-- @[continuous_task_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/module.json5) -->
    
@@ -179,9 +184,9 @@
 
    **设备当前应用**申请和取消长时任务示例代码如下：
    
-   从API version 15开始，支持通过[on('continuousTaskCancel')/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustaskcancel15)实现监听长时任务取消功能。
+   从API version 15开始，支持通过on('continuousTaskCancel')实现监听长时任务取消功能。
    
-   从API version 16开始，支持通过[BackgroundSubMode/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
+   从API version 16开始，支持通过BackgroundSubMode实现蓝牙车钥匙功能。
 
    <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/AudioPlaybackIndex.ets) -->
    
@@ -355,9 +360,9 @@
 
    **设备当前应用**申请和取消长时任务async/await写法示例代码如下：
    
-   从API version 15开始，支持通过[on('continuousTaskCancel')/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustaskcancel15)实现监听长时任务取消功能。
+   从API version 15开始，支持通过on('continuousTaskCancel')实现监听长时任务取消功能。
    
-   从API version 16开始，支持通过[BackgroundSubMode/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
+   从API version 16开始，支持通过BackgroundSubMode实现蓝牙车钥匙功能。
 
    <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/IndexAsyncAndAwait.ets) -->
    
@@ -473,7 +478,7 @@
    ```
    <!--Del-->
 
-   **跨设备或跨应用**申请长时任务示例代码如下。跨设备或跨应用在后台执行长时任务时，可以通过Call的方式在后台创建并运行UIAbility，具体使用请参考[通过跨设备Call调用实现多端协同](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)。
+   **跨设备或跨应用**申请长时任务示例代码如下。跨设备或跨应用在后台执行长时任务时，可以通过Call的方式在后台创建并运行UIAbility，具体使用请参考通过跨设备Call调用实现多端协同。
    
    <!-- @[continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
    
@@ -607,13 +612,13 @@
 
 1. 启动并连接ServiceAbility。
 
-   - 不需要与用户进行交互时，采用startAbility()方法启动ServiceAbility（具体使用请参考[ServiceAbility组件](../application-models/serviceability-overview.md)，并在ServiceAbility的onStart回调方法中，调用长时任务的申请和取消接口。
+   - 不需要与用户进行交互时，采用startAbility()方法启动ServiceAbility（具体使用请参考ServiceAbility组件，并在ServiceAbility的onStart回调方法中，调用长时任务的申请和取消接口。
 
-   - 需要与用户进行交互时（如播放音乐），采用connectAbility()方法启动并连接ServiceAbility（具体使用请参考[ServiceAbility组件](../application-models/serviceability-overview.md)，在获取到服务的代理对象后，与服务进行通信，控制长时任务的申请和取消。
+   - 需要与用户进行交互时（如播放音乐），采用connectAbility()方法启动并连接ServiceAbility（具体使用请参考ServiceAbility组件，在获取到服务的代理对象后，与服务进行通信，控制长时任务的申请和取消。
 
 2. 配置权限和声明后台模式类型。
 
-   在config.json文件中配置长时任务权限ohos.permission.KEEP_BACKGROUND_RUNNING，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。同时，为需要使用长时任务的ServiceAbility声明相应的长时任务类型。
+   在config.json文件中配置长时任务权限ohos.permission.KEEP_BACKGROUND_RUNNING，配置方式请参见声明权限。同时，为需要使用长时任务的ServiceAbility声明相应的长时任务类型。
    
    ``` json5
    "module": {
@@ -643,7 +648,7 @@
     import { wantAgent, WantAgent } from '@kit.AbilityKit';
    ```
 
-4. 申请和取消长时任务。在 ServiceAbility 中，调用 [startBackgroundRunning](#接口说明) 接口和 [stopBackgroundRunning](#接口说明) 接口实现长时任务的申请和取消，通过js代码实现。
+4. 申请和取消长时任务。在 ServiceAbility 中，调用 startBackgroundRunning 接口和 stopBackgroundRunning 接口实现长时任务的申请和取消，通过js代码实现。
   
    ```js
     function startContinuousTask() {

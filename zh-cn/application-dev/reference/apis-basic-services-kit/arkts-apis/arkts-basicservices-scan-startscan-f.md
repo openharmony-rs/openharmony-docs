@@ -14,11 +14,9 @@ function startScan(scannerId: string, batchMode: boolean): Promise<void>
 
 开始扫描。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.PRINT
-
-<!--Device-scan-function startScan(scannerId: string, batchMode: boolean): Promise<void>--><!--Device-scan-function startScan(scannerId: string, batchMode: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -33,7 +31,7 @@ function startScan(scannerId: string, batchMode: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -52,7 +50,6 @@ let batchMode: boolean = true;
 scan.startScan(scannerId, batchMode).then(() => {
     console.info('start scan success');
 }).catch((error: BusinessError) => {
-    console.error('start scan failed: ' + JSON.stringify(error));
-})
+    console.error(`Failed to start scan. Code: ${error.code}, message: ${error.message}`);
+});
 ```
-

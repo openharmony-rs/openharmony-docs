@@ -1,4 +1,4 @@
-# C API<!--arkts-media-library-kit-->
+# C API<!--c-media-library-kit-->
 
 - 头文件
     - [moving_photo_capi.h](capi-moving-photo-capi-h.md)

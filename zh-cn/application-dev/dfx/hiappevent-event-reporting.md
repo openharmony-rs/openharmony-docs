@@ -11,7 +11,7 @@ HiAppEvent提供接口用于处理上报事件。
 
 ## 接口说明
 
-API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+API接口的具体使用说明（参数使用限制、具体取值范围等）请参考@ohos.hiviewdfx.hiAppEvent。
 
 **数据处理者接口功能介绍：**
 
@@ -38,7 +38,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 以用户点击按钮的行为为例，说明实现事件打点和上报的开发步骤。
 
-1. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中添加数据处理者。analytics_demo为预置在设备里面的数据处理者lib库<!--Del-->，具体实现可以参考[《HiAppEvent数据处理者lib库概述》](../../device-dev/subsystems/subsys-dfx-hiappevent-extend-so.md)<!--DelEnd-->。完整示例代码如下：
+1. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中添加数据处理者。analytics_demo为预置在设备里面的数据处理者lib库<!--Del-->，具体实现可以参考《HiAppEvent数据处理者lib库概述》<!--DelEnd-->。完整示例代码如下：
 
    <!-- @[EventEsc_Header_And_Add_Processor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
    
@@ -172,7 +172,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
      })
    ```
 
-5. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中移除数据处理者(第二步已完成数据处理者添加)。完整示例代码如下：
+5. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中移除数据处理者（第二步已完成数据处理者添加）。完整示例代码如下：
 
    <!-- @[Button_Remove_Processor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
    
@@ -193,7 +193,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 6. 点击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中依次点击按钮“addProcessorTest”、“userIdTest”、“userPropertyTest”、“writeTest”、“removeProcessorTest”，则成功通过数据处理者进行一次事件上报。
 
-   最终，事件处理者成功接收到事件数据，并在Log窗口看到按钮点击事件打点成功的日志：
+   最终，数据处理者成功接收到事件数据，并在Log窗口看到按钮点击事件打点成功的日志：
 
    ```text
    HiAppEvent success to write event

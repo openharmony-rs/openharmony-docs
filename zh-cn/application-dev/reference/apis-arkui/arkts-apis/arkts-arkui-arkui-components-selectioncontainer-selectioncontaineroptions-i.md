@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export interface SelectionContainerOptions--><!--Device-unnamed-export interface SelectionContainerOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,7 +28,4 @@ SelectionContainer控制器。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SelectionContainerOptions-controller: SelectionContainerController--><!--Device-SelectionContainerOptions-controller: SelectionContainerController-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 20
 
-<!--Device-webview-enum WebBlanklessErrorCode--><!--Device-webview-enum WebBlanklessErrorCode-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## SUCCESS
@@ -17,8 +15,6 @@ SUCCESS = 0
 成功。
 
 **起始版本：** 20
-
-<!--Device-WebBlanklessErrorCode-SUCCESS = 0--><!--Device-WebBlanklessErrorCode-SUCCESS = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -32,8 +28,6 @@ ERR_UNKNOWN = -1
 
 **起始版本：** 20
 
-<!--Device-WebBlanklessErrorCode-ERR_UNKNOWN = -1--><!--Device-WebBlanklessErrorCode-ERR_UNKNOWN = -1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_INVALID_PARAM
@@ -45,8 +39,6 @@ ERR_INVALID_PARAM = -2
 参数不合法。
 
 **起始版本：** 20
-
-<!--Device-WebBlanklessErrorCode-ERR_INVALID_PARAM = -2--><!--Device-WebBlanklessErrorCode-ERR_INVALID_PARAM = -2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -60,8 +52,6 @@ WebViewController未绑定组件。
 
 **起始版本：** 20
 
-<!--Device-WebBlanklessErrorCode-ERR_CONTROLLER_NOT_INITED = -3--><!--Device-WebBlanklessErrorCode-ERR_CONTROLLER_NOT_INITED = -3-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_KEY_NOT_MATCH
@@ -74,8 +64,6 @@ ERR_KEY_NOT_MATCH = -4
 
 **起始版本：** 20
 
-<!--Device-WebBlanklessErrorCode-ERR_KEY_NOT_MATCH = -4--><!--Device-WebBlanklessErrorCode-ERR_KEY_NOT_MATCH = -4-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_SIGNIFICANT_CHANGE
@@ -87,8 +75,6 @@ ERR_SIGNIFICANT_CHANGE = -5
 当相似度较低时，系统会判定为跳变太大， [setBlanklessLoadingWithKey](arkts-arkweb-webview-webviewcontroller-c.md#setblanklessloadingwithkey) 接口不会成功启用插帧。
 
 **起始版本：** 20
-
-<!--Device-WebBlanklessErrorCode-ERR_SIGNIFICANT_CHANGE = -5--><!--Device-WebBlanklessErrorCode-ERR_SIGNIFICANT_CHANGE = -5-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -104,8 +90,6 @@ ERR_DURATION_OUT_OF_RANGE = -6
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WebBlanklessErrorCode-ERR_DURATION_OUT_OF_RANGE = -6--><!--Device-WebBlanklessErrorCode-ERR_DURATION_OUT_OF_RANGE = -6-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_EXPIRATION_TIME_OUT_OF_RANGE
@@ -120,7 +104,4 @@ ERR_EXPIRATION_TIME_OUT_OF_RANGE = -7
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WebBlanklessErrorCode-ERR_EXPIRATION_TIME_OUT_OF_RANGE = -7--><!--Device-WebBlanklessErrorCode-ERR_EXPIRATION_TIME_OUT_OF_RANGE = -7-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

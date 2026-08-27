@@ -9,16 +9,14 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 ## getWorkStatus
 
 ```TypeScript
-function getWorkStatus(workId: int, callback: AsyncCallback<WorkInfo>): void
+function getWorkStatus(workId: number, callback: AsyncCallback<WorkInfo>): void
 ```
 
 通过workId获取延迟任务，使用Callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-workScheduler-function getWorkStatus(workId: int, callback: AsyncCallback<WorkInfo>): void--><!--Device-workScheduler-function getWorkStatus(workId: int, callback: AsyncCallback<WorkInfo>): void-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -26,22 +24,20 @@ function getWorkStatus(workId: int, callback: AsyncCallback<WorkInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| workId | int | 是 | 延迟任务Id。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[WorkInfo](arkts-backgroundtasks-workscheduler-workinfo-i.md)&gt; | 是 | 回调函数。如果workId有效，则返回从WorkSchedulerService获取的任务，否则抛出异常。 |
+| workId | number | 是 | 延迟任务Id。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WorkInfo](arkts-backgroundtasks-workscheduler-workinfo-i.md)&gt; | 是 | 回调函数。如果workId有效，则返回从WorkSchedulerService获取的任务，否则抛出异常。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9700004](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700004-workinfo校验失败) | Check on workInfo failed. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Parameter verification failed. |
-| [9700001](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700001-内存操作失败) | Memory operation failed. |
-| [9700002](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
-| [9700003](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
+| [9700001](../errorcode-workScheduler.md#9700001-内存操作失败) | Memory operation failed. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700003](../errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
+| [9700004](../errorcode-workScheduler.md#9700004-参数校验失败) | Check on workInfo failed. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -56,35 +52,18 @@ workScheduler.getWorkStatus(50, (error: BusinessError, res: workScheduler.WorkIn
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { workScheduler } from '@kit.BackgroundTasksKit';
-
-workScheduler.getWorkStatus(50, (error: BusinessError<void> | null, res: workScheduler.WorkInfo | undefined) => {
-  if (error) {
-    console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
-  } else {
-    console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
-  }
-});
-```
-
 
 ## getWorkStatus
 
 ```TypeScript
-function getWorkStatus(workId: int): Promise<WorkInfo>
+function getWorkStatus(workId: number): Promise<WorkInfo>
 ```
 
 通过workId获取延迟任务，使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-workScheduler-function getWorkStatus(workId: int): Promise<WorkInfo>--><!--Device-workScheduler-function getWorkStatus(workId: int): Promise<WorkInfo>-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -92,7 +71,7 @@ function getWorkStatus(workId: int): Promise<WorkInfo>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| workId | int | 是 | 延迟任务Id。 |
+| workId | number | 是 | 延迟任务Id。 |
 
 **返回值：**
 
@@ -104,15 +83,13 @@ function getWorkStatus(workId: int): Promise<WorkInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9700004](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700004-workinfo校验失败) | Check on workInfo failed. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Parameter verification failed. |
-| [9700001](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700001-内存操作失败) | Memory operation failed. |
-| [9700002](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
-| [9700003](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
+| [9700001](../errorcode-workScheduler.md#9700001-内存操作失败) | Memory operation failed. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700003](../errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
+| [9700004](../errorcode-workScheduler.md#9700004-参数校验失败) | Check on workInfo failed. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -124,16 +101,3 @@ workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
   console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
 })
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { workScheduler } from '@kit.BackgroundTasksKit';
-
-workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
-  console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
-}).catch((error) => {
-  console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
-})
-```
-

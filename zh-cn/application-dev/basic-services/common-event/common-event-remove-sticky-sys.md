@@ -12,7 +12,7 @@
 
 ## 接口说明
 
-参考[接口文档/apis-basic-services-kit/js-apis-commonEventManager-sys.md#commoneventmanagerremovestickycommonevent10)。
+参考接口文档。
 
 | 接口名 | 接口描述 |
 | -------- | -------- |
@@ -21,7 +21,7 @@
 
 ## 开发步骤
 
-1. 需要申请`ohos.permission.COMMONEVENT_STICKY`权限，配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
+1. 需要申请`ohos.permission.COMMONEVENT_STICKY`权限，配置方式请参见声明权限。
 
 2. 导入模块。
 
@@ -33,11 +33,11 @@
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
-3. 调用[`removeStickyCommonEvent()`/apis-basic-services-kit/js-apis-commonEventManager-sys.md#commoneventmanagerremovestickycommonevent10)方法移除对应的粘性公共事件。
+3. 调用`removeStickyCommonEvent()`方法移除对应的粘性公共事件。
 
    > **说明：**
    >
-   > 移除的粘性公共事件，必须是本应用之前已发布的粘性公共事件，发布粘性公共事件参考[公共事件发布](common-event-publish.md)章节。
+   > 移除的粘性公共事件，必须是本应用之前已发布的粘性公共事件，发布粘性公共事件参考公共事件发布章节。
 
    ```ts
    // 移除粘性公共事件，其中的event字段需要替换为实际的事件名称。

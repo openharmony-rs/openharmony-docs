@@ -18,8 +18,6 @@ function terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallba
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-featureAbility-function terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback<void>): void--><!--Device-featureAbility-function terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **参数：**
@@ -27,7 +25,7 @@ function terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallba
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 表示停止Ability之后返回的结果。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当停止当前Ability成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当停止当前Ability成功，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -80,8 +78,6 @@ function terminateSelfWithResult(parameter: AbilityResult): Promise<void>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-featureAbility-function terminateSelfWithResult(parameter: AbilityResult): Promise<void>--><!--Device-featureAbility-function terminateSelfWithResult(parameter: AbilityResult): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **参数：**
@@ -94,7 +90,7 @@ function terminateSelfWithResult(parameter: AbilityResult): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -132,4 +128,3 @@ featureAbility.terminateSelfWithResult(
   console.info('==========================>terminateSelfWithResult=======================>');
 });
 ```
-

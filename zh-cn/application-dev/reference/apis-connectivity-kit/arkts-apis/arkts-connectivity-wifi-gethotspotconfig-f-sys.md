@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## getHotspotConfig
@@ -24,8 +21,6 @@ function getHotspotConfig(): HotspotConfig
 **替代接口：** [getHotspotConfig](arkts-connectivity-wifimanager-gethotspotconfig-f-sys.md)
 
 **需要权限：** ohos.permission.GET_WIFI_INFO and ohos.permission.GET_WIFI_CONFIG
-
-<!--Device-wifi-function getHotspotConfig(): HotspotConfig--><!--Device-wifi-function getHotspotConfig(): HotspotConfig-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
@@ -49,4 +44,3 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
-

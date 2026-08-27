@@ -2,9 +2,7 @@
 
 FA模型的使用信息属性集合。
 
-**起始版本：** 23
-
-<!--Device-usageStatistics-interface HapFormInfo--><!--Device-usageStatistics-interface HapFormInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -19,16 +17,14 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 ## count
 
 ```TypeScript
-count: int
+count: number
 ```
 
 卡片的点击次数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-HapFormInfo-count: int--><!--Device-HapFormInfo-count: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -37,16 +33,14 @@ count: int
 ## formDimension
 
 ```TypeScript
-formDimension: int
+formDimension: number
 ```
 
 卡片尺寸。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-HapFormInfo-formDimension: int--><!--Device-HapFormInfo-formDimension: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -55,16 +49,14 @@ formDimension: int
 ## formId
 
 ```TypeScript
-formId: long
+formId: number
 ```
 
 卡片Id。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-HapFormInfo-formId: long--><!--Device-HapFormInfo-formId: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -73,16 +65,14 @@ formId: long
 ## formLastUsedTime
 
 ```TypeScript
-formLastUsedTime: long
+formLastUsedTime: number
 ```
 
 卡片的上一次点击时间，单位：ms。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-HapFormInfo-formLastUsedTime: long--><!--Device-HapFormInfo-formLastUsedTime: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -98,11 +88,8 @@ formName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-HapFormInfo-formName: string--><!--Device-HapFormInfo-formName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **系统接口：** 此接口为系统接口。
-

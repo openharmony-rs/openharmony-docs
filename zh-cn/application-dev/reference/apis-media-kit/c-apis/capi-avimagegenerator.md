@@ -2,7 +2,7 @@
 
 ## 概述
 
-提供从视频资源中生成指定时间点图像的接口。
+提供用于从视频资源中获取指定时间点视频帧的API。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 

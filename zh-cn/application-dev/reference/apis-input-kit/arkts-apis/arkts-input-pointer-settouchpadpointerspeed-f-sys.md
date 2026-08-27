@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { pointer } from '@kit.InputKit';
 ```
 
 ## setTouchpadPointerSpeed
 
 ```TypeScript
-function setTouchpadPointerSpeed(speed: int, callback: AsyncCallback<void>): void
+function setTouchpadPointerSpeed(speed: number, callback: AsyncCallback<void>): void
 ```
 
 设置触控板光标移动速度，使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-pointer-function setTouchpadPointerSpeed(speed: int, callback: AsyncCallback<void>): void--><!--Device-pointer-function setTouchpadPointerSpeed(speed: int, callback: AsyncCallback<void>): void-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -26,19 +23,17 @@ function setTouchpadPointerSpeed(speed: int, callback: AsyncCallback<void>): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| speed | int | 是 | speed代表光标移动速度。speed取值范围[1,11]，默认6。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置触控板光标移动速度成功，err为undefined，否则为错误对象。 |
+| speed | number | 是 | speed代表光标移动速度。speed取值范围[1,11]，默认6。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置触控板光标移动速度成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { pointer } from '@kit.InputKit';
@@ -69,51 +64,16 @@ struct Index {
 }
 ```
 
-ArkTS-Sta示例:
-
-```TypeScript
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
-import { pointer } from '@kit.InputKit';
-import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
-
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 设置触摸板指针速度
-            pointer.setTouchpadPointerSpeed(1, (error: BusinessError<void>|null, data: undefined) => {
-              if (error) {
-                console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-                return;
-              }
-              console.info(`Succeeded in setting touchpad pointer speed.`);
-            });
-          } catch (error) {
-            console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
 
 ## setTouchpadPointerSpeed
 
 ```TypeScript
-function setTouchpadPointerSpeed(speed: int): Promise<void>
+function setTouchpadPointerSpeed(speed: number): Promise<void>
 ```
 
 设置触控板光标移动速度，使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-pointer-function setTouchpadPointerSpeed(speed: int): Promise<void>--><!--Device-pointer-function setTouchpadPointerSpeed(speed: int): Promise<void>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -123,24 +83,22 @@ function setTouchpadPointerSpeed(speed: int): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| speed | int | 是 | speed代表光标移动速度。speed取值范围[1,11]，默认6。 |
+| speed | number | 是 | speed代表光标移动速度。speed取值范围[1,11]，默认6。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { pointer } from '@kit.InputKit';
@@ -168,32 +126,3 @@ struct Index {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
-import { pointer } from '@kit.InputKit';
-import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 设置触摸板指针速度
-            pointer.setTouchpadPointerSpeed(10).then(() => {
-              console.info(`Succeeded in setting touchpad pointer speed.`);
-            });
-          } catch (error) {
-            console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-

@@ -40,4 +40,3 @@ import { MeasureText, MeasureOptions } from '@kit.ArkUI';
 | 名称 | 说明 |
 | --- | --- |
 | [MeasureOptions(Text Measurement)](arkts-arkui-measure-measureoptions-i.md) | 被计算文本属性。 |
-

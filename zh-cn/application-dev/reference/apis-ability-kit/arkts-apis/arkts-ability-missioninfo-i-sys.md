@@ -2,9 +2,7 @@
 
 表示任务的详细信息，可以通过 [getMissionInfo](arkts-ability-missionmanager-getmissioninfo-f-sys.md) 获取。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface MissionInfo--><!--Device-unnamed-export interface MissionInfo-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -13,16 +11,14 @@
 ## abilityState
 
 ```TypeScript
-abilityState: int
+abilityState: number
 ```
 
 表示此任务的能力状态。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MissionInfo-abilityState: int--><!--Device-MissionInfo-abilityState: int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -38,9 +34,7 @@ continuable: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-MissionInfo-continuable: boolean--><!--Device-MissionInfo-continuable: boolean-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -56,9 +50,7 @@ iconPath: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MissionInfo-iconPath: string--><!--Device-MissionInfo-iconPath: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -74,9 +66,7 @@ label: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MissionInfo-label: string--><!--Device-MissionInfo-label: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -92,9 +82,7 @@ lockedState: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-MissionInfo-lockedState: boolean--><!--Device-MissionInfo-lockedState: boolean-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -103,16 +91,14 @@ lockedState: boolean
 ## missionId
 
 ```TypeScript
-missionId: int
+missionId: number
 ```
 
 表示任务ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MissionInfo-missionId: int--><!--Device-MissionInfo-missionId: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -121,16 +107,14 @@ missionId: int
 ## runningState
 
 ```TypeScript
-runningState: int
+runningState: number
 ```
 
 表示运行状态。0表示启用，任务活跃有效，对应的Ability正在运行或可恢复到前台；-1表示未启用，任务已关闭、销毁或不可恢复。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MissionInfo-runningState: int--><!--Device-MissionInfo-runningState: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -146,9 +130,7 @@ timestamp: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MissionInfo-timestamp: string--><!--Device-MissionInfo-timestamp: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -164,9 +146,7 @@ unclearable: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-MissionInfo-unclearable: boolean--><!--Device-MissionInfo-unclearable: boolean-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -182,11 +162,8 @@ want: Want
 
 **类型：** [Want](arkts-ability-app-ability-want-want-c.md)
 
-**起始版本：** 23
-
-<!--Device-MissionInfo-want: Want--><!--Device-MissionInfo-want: Want-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
-

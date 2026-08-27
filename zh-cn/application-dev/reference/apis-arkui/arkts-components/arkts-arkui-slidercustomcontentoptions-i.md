@@ -4,8 +4,6 @@ Slider前后缀组件无障碍信息参数。
 
 **起始版本：** 20
 
-<!--Device-unnamed-interface SliderCustomContentOptions--><!--Device-unnamed-interface SliderCustomContentOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,17 +17,15 @@ Slider前后缀组件无障碍信息参数。
 accessibilityDescription?: ResourceStr
 ```
 
-无障碍功能详细描述，描述滑块前缀或后缀的功能或用途，供屏幕阅读器等工具使用。 默认值为“单指双击即可执行”。
+无障碍功能详细描述，描述滑块前缀或后缀的功能或用途，供屏幕阅读器等工具使用。默认值为“单指双击即可执行”。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SliderCustomContentOptions-accessibilityDescription?: ResourceStr--><!--Device-SliderCustomContentOptions-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,7 +35,7 @@ accessibilityDescription?: ResourceStr
 accessibilityGroup?: boolean
 ```
 
-标识元素是否属于无障碍组，帮助屏幕阅读器等工具分组相关元素。 true：该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容；false：不启用无障碍分组。 默认值：false
+标识元素是否属于无障碍组，帮助屏幕阅读器等工具分组相关元素。true：该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容；false：不启用无障碍分组。默认值：false
 
 **类型：** boolean
 
@@ -49,8 +45,6 @@ accessibilityGroup?: boolean
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SliderCustomContentOptions-accessibilityGroup?: boolean--><!--Device-SliderCustomContentOptions-accessibilityGroup?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityLevel
@@ -59,7 +53,7 @@ accessibilityGroup?: boolean
 accessibilityLevel?: string
 ```
 
-控制组件是否可被无障碍辅助服务识别。 支持的值为: "auto"：当前组件会转换为“yes”。 "yes"：当前组件可被无障碍辅助服务所识别。 "no"：当前组件不可被无障碍辅助服务所识别。 "no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。 默认值："auto"。
+控制组件是否可被无障碍辅助服务识别。支持的值为:"auto"：当前组件会转换为“yes”。"yes"：当前组件可被无障碍辅助服务所识别。"no"：当前组件不可被无障碍辅助服务所识别。"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。默认值："auto"。
 
 **类型：** string
 
@@ -69,8 +63,6 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SliderCustomContentOptions-accessibilityLevel?: string--><!--Device-SliderCustomContentOptions-accessibilityLevel?: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -79,9 +71,9 @@ accessibilityLevel?: string
 accessibilityText?: ResourceStr
 ```
 
-无障碍文本，供屏幕阅读器等工具读取，增强无障碍功能。 默认值：""
+无障碍文本，供屏幕阅读器等工具读取，增强无障碍功能。默认值：""
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 20
 
@@ -89,7 +81,4 @@ accessibilityText?: ResourceStr
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SliderCustomContentOptions-accessibilityText?: ResourceStr--><!--Device-SliderCustomContentOptions-accessibilityText?: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

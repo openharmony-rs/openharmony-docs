@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface RichEditorSelection--><!--Device-unnamed-declare interface RichEditorSelection-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ selection: [number, number]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorSelection-selection: [number, number]--><!--Device-RichEditorSelection-selection: [number, number]-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## spans
@@ -49,7 +45,4 @@ span信息。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorSelection-spans: Array<RichEditorTextSpanResult | RichEditorImageSpanResult>--><!--Device-RichEditorSelection-spans: Array<RichEditorTextSpanResult | RichEditorImageSpanResult>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

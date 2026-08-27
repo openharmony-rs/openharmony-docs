@@ -4,13 +4,13 @@
 <!--Owner: @yao_dashuai-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 为了解决大型或复杂应用开发过程中，部分代码编译时被多次拷贝导致包体积增大、文件依赖、代码与资源共享困难以及单例和全局变量污染等问题，ArkTS支持应用模块化编译、打包和运行，简化代码的编写与维护。
 
-模块化是将ArkTS/TS/JS模块（一个文件对应一个模块）以及so模块通过编译工具或运行时机制将这些[模块加载](#模块化运行加载流程)、解析、组合并执行的过程。
+模块化是将ArkTS/TS/JS模块（一个文件对应一个模块）以及so模块通过编译工具或运行时机制将这些模块加载、解析、组合并执行的过程。
 
-ArkTS支持的模块类型包括ets/ts/js文件、json文件、Native模块。ArkTS中支持[ECMAScript模块规范](#ecmascript模块)及[CommonJS模块规范](#commonjs模块)，此外，ArkTS也对加载方式进行了拓展，包含[动态加载](arkts-dynamic-import.md)、静态加载、[延迟加载](arkts-lazy-import.md)、[同步动态加载Native模块](js-apis-load-native-module.md)和[Node-API接口加载文件](load-module-base-nodeapi.md)。
+ArkTS支持的模块类型包括ets/ts/js文件、json文件、Native模块。ArkTS中支持ECMAScript模块规范及CommonJS模块规范，此外，ArkTS也对加载方式进行了拓展，包含动态加载、静态加载、延迟加载、同步动态加载Native模块和Node-API接口加载文件。
 
 ## 模块化运行加载流程
 
@@ -20,11 +20,11 @@ ArkTS模块化运行根据ECMAScript模块规范实现，以后序遍历的方�
 
 ![zh-cn_image_0000002043487154](figures/zh-cn_image_0000002043487154.png)
 
-A文件称为入口文件，即执行起点。一些内置的加载接口，如[windowStage.loadContent/apis-arkui/arkts-apis-window-Window.md#loadcontent9)和[路由跳转](../ui/arkts-navigation-architecture.md)等页面拉起接口（即不是通过import写法拉起的文件），入参文件都会作为入口文件执行。
+A文件称为入口文件，即执行起点。一些内置的加载接口，如windowStage.loadContent和路由跳转等页面拉起接口（即不是通过import写法拉起的文件），入参文件都会作为入口文件执行。
 
 以A文件为入口，会加载一整套文件，包括A文件及其依赖文件，以及这些文件后续依赖的文件，直到各分支的叶节点。
 
-普通模块在同一线程内只加载一次，而在不同线程中会加载多次，每个线程都会生成新的模块对象。如果需要在进程内只加载一次，请使用[共享模块](./arkts-sendable-module.md)。
+普通模块在同一线程内只加载一次，而在不同线程中会加载多次，每个线程都会生成新的模块对象。如果需要在进程内只加载一次，请使用共享模块。
 
 ## ArkTS支持的模块化规范
 
@@ -32,7 +32,7 @@ A文件称为入口文件，即执行起点。一些内置的加载接口，如[
 
 ECMAScript模块（ECMAScript Modules，后文称ES Module）是JavaScript自ECMAScript6.0之后，从标准层面（ECMAScript® 2025 Language Specification (tc39.es)）实现的模块功能。其模块功能由两个命令组成：export和import。
 
-ArkTS中export和import用法详见[ArkTS语言介绍](../quick-start/introduction-to-arkts.md#模块)。
+ArkTS中export和import用法详见模块系统。
 
 ### CommonJS模块
 
@@ -63,11 +63,11 @@ CommonJS与ES Module互相引用的规格如下表所示，导入和导出语法
 
 ### ets/ts/js
 
-加载ets/ts/js模块类型时，需遵循[ECMAScript模块规范](#ecmascript模块)及[CommonJS模块规范](#commonjs模块)。
+加载ets/ts/js模块类型时，需遵循ECMAScript模块规范及CommonJS模块规范。
 
 ### JSON文件
 
-JSON（JavaScript Object Notation）是一种轻量级的数据交互格式，采用完全独立于编程语言的文本格式来存储和表示数据。
+JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，采用完全独立于编程语言的文本格式来存储和表示数据。
 
 JSON文件只能使用default方式导入，如下所示：
 
@@ -79,7 +79,7 @@ import data from './ImportJson.json';
 
 ### Native模块
 
-Native模块（so）的导入导出与加载ets/ts/js语法规格一致。详情请参考：[静态方式加载native模块](./arkts-import-native-module.md)。
+Native模块（so）的导入导出与加载ets/ts/js语法规格一致。详情请参考：静态方式加载native模块。
 
 > **说明：**
 >
@@ -90,7 +90,7 @@ Native模块（so）的导入导出与加载ets/ts/js语法规格一致。详情
 <!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
 ``` TypeScript
-// libentry.so对应的index.d.ts
+// libentry.so对应的Index.d.ts
 export const add: (a: number, b: number) => number;
 ```
 

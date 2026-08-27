@@ -10,9 +10,6 @@ export type QueryParamObject = Record<string, QueryParamValue | QueryParamValue[
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-http-export type QueryParamObject = Record<string, QueryParamValue | QueryParamValue[]>--><!--Device-http-export type QueryParamObject = Record<string, QueryParamValue | QueryParamValue[]>-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
-**属性类型：** Record<string, QueryParamValue | QueryParamValue[]>
-
+**属性类型：** Record&lt;string, [QueryParamValue](arkts-network-http-queryparamvalue-t.md) | [QueryParamValue](arkts-network-http-queryparamvalue-t.md)[]&gt;

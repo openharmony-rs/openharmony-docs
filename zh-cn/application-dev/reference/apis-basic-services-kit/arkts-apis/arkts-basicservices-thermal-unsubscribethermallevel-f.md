@@ -20,15 +20,13 @@ function unsubscribeThermalLevel(callback?: AsyncCallback<void>): void
 
 **替代接口：** [unregisterThermalLevelCallback](arkts-basicservices-thermal-unregisterthermallevelcallback-f.md)
 
-<!--Device-thermal-function unsubscribeThermalLevel(callback?: AsyncCallback<void>): void--><!--Device-thermal-function unsubscribeThermalLevel(callback?: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 否 | 回调函数，用来执行取消热档位变化回调后的资源回收等操作，无返回值。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 否 | 回调函数，用来执行取消热档位变化回调后的资源回收等操作，无返回值。 |
 
 **示例**
 
@@ -37,4 +35,3 @@ thermal.unsubscribeThermalLevel(() => {
     console.info('unsubscribe thermal level success.');
 });
 ```
-

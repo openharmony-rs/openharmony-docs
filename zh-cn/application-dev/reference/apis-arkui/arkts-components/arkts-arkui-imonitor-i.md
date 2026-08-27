@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface IMonitor--><!--Device-unnamed-declare interface IMonitor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ value<T>(path?: string): IMonitorValue<T> | undefined
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-IMonitor-value<T>(path?: string): IMonitorValue<T> | undefined--><!--Device-IMonitor-value<T>(path?: string): IMonitorValue<T> | undefined-End-->
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -41,54 +37,7 @@ value<T>(path?: string): IMonitorValue<T> | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [IMonitorValue](arkts-arkui-imonitorvalue-i.md)&lt;T&gt; |  |
-
-**示例**
-
-```TypeScript
-@ObservedV2
-class Info {
-  @Trace name: string = 'Tom';
-  @Trace age: number = 25;
-  @Trace height: number = 175;
-
-  // 监听一个变量
-  @Monitor('name')
-  onNameChange(monitor: IMonitor) {
-    // 未指定value的入参时，默认使用dirty中的第一个路径作为入参
-    console.info(`path: ${monitor.value()?.path} change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
-  }
-
-  // 监听多个变量
-  @Monitor('age','height')
-  onRecordChange(monitor: IMonitor) {
-    // 指定value的入参时，将返回入参路径path对应的变量变化值信息
-    monitor.dirty.forEach((path: string) => {
-      console.info(`path: ${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
-    })
-  }
-}
-
-@Entry
-@ComponentV2
-struct Index {
-  @Local info: Info = new Info();
-
-  build() {
-    Column() {
-      Text(`info.name: ${this.info.name}`)
-        .onClick(() => {
-          this.info.name = 'Bob'; // 输出日志：path: name change from Tom to Bob
-        })
-      Text(`info.age: ${this.info.age}, info.height: ${this.info.height}`)
-        .onClick(() => {
-          this.info.age++; // 输出日志：path: age change from 25 to 26
-          this.info.height++; // 输出日志：path: height change from 175 to 176
-        })
-    }
-  }
-}
-```
+| [IMonitorValue](arkts-arkui-imonitorvalue-i.md)&lt;T&gt; \| undefined |  |
 
 ## dirty
 
@@ -108,7 +57,4 @@ dirty: Array<string>
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-IMonitor-dirty: Array<string>--><!--Device-IMonitor-dirty: Array<string>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -1,10 +1,8 @@
 # @ohos.fileshare
 
-提供文件分享能力。
+提供文件分享能力。@namespace fileShare
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace fileShare--><!--Device-unnamed-declare namespace fileShare-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
@@ -47,9 +45,9 @@ import { fileShare } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [PathPolicyInfo](arkts-corefile-fileshare-pathpolicyinfo-i.md) | 需要查询的文件或目录的信息。 |
-| [PolicyErrorResult](arkts-corefile-fileshare-policyerrorresult-i.md) | 授予或激活权限失败的URI策略结果。 |
-| [PolicyInfo](arkts-corefile-fileshare-policyinfo-i.md) | 需要授予或激活URI访问权限的策略信息。 |
+| [PathPolicyInfo](arkts-corefile-fileshare-pathpolicyinfo-i.md) | 需要查询的文件或目录的信息。@interface PathPolicyInfo |
+| [PolicyErrorResult](arkts-corefile-fileshare-policyerrorresult-i.md) | 授予或激活权限失败的URI策略结果。@interface { object } |
+| [PolicyInfo](arkts-corefile-fileshare-policyinfo-i.md) | 需要授予或激活URI访问权限的策略信息。@interface PolicyInfo |
 
 <!--Del-->
 ### 接口（系统接口）
@@ -63,7 +61,6 @@ import { fileShare } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [OperationMode](arkts-corefile-fileshare-operationmode-e.md) | 枚举授予或激活权限的URI访问模式。 |
-| [PolicyErrorCode](arkts-corefile-fileshare-policyerrorcode-e.md) | 枚举授予或激活权限策略失败的URI对应的错误码。 |
-| [PolicyType](arkts-corefile-fileshare-policytype-e.md) | 枚举所查询策略信息对应的授权模式。 |
-
+| [OperationMode](arkts-corefile-fileshare-operationmode-e.md) | 枚举授予或激活权限的URI访问模式。@enum { number } OperationMode |
+| [PolicyErrorCode](arkts-corefile-fileshare-policyerrorcode-e.md) | 枚举授予或激活权限策略失败的URI对应的错误码。@enum { number } PolicyErrorCode |
+| [PolicyType](arkts-corefile-fileshare-policytype-e.md) | 枚举所查询策略信息对应的授权模式。@enum { number } policyType |

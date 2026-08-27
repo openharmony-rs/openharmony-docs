@@ -23,11 +23,11 @@
 
 以RSA密钥为例，应用需要申请一个Uint8Array，按照RSA密钥对材料内存排布格式，将各个变量赋值到对应的位置。
 
-下图为RSA密钥材料内存结构为例，其他算法格式见样例下方表格。
+下图以RSA密钥材料内存结构为例，其他算法格式见样例下方表格。
 
 ![keyt](figures/keyt.png)
 
-其中，密钥算法的值取自枚举类[HuksKeyAlg/apis-universal-keystore-kit/js-apis-huks.md#hukskeyalg)。
+其中，密钥算法的值取自枚举类HuksKeyAlg。
 
 ```ts
 let rsa2048KeyPairMaterial = new Uint8Array([

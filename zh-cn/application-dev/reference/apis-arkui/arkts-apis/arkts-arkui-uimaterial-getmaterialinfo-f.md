@@ -20,8 +20,6 @@ function getMaterialInfo(): MaterialInfo
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-uiMaterial-function getMaterialInfo(): MaterialInfo--><!--Device-uiMaterial-function getMaterialInfo(): MaterialInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -29,4 +27,3 @@ function getMaterialInfo(): MaterialInfo
 | 类型 | 说明 |
 | --- | --- |
 | [MaterialInfo](arkts-arkui-uimaterial-materialinfo-i.md) | 返回当前应用的材质配置信息，包含材质使能状态和材质类型。 |
-

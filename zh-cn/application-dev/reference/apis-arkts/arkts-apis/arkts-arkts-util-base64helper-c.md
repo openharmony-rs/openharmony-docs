@@ -4,49 +4,11 @@
 
 **起始版本：** 9
 
-<!--Device-util-class Base64Helper--><!--Device-util-class Base64Helper-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { ArrayList } from '@kit.ArkTS';
-import { ArrayListComparatorFn } from '@kit.ArkTS';
-import { ArrayListForEachCb } from '@kit.ArkTS';
-import { ArrayListReplaceCb } from '@kit.ArkTS';
-import { util } from '@kit.ArkTS';
-import { Deque } from '@kit.ArkTS';
-import { DequeForEachCb } from '@kit.ArkTS';
-import { HashMap } from '@kit.ArkTS';
-import { HashMapCbFn } from '@kit.ArkTS';
-import { HashSet } from '@kit.ArkTS';
-import { HashSetCbFn } from '@kit.ArkTS';
-import { LightWeightMap } from '@kit.ArkTS';
-import { LightWeightMapCbFn } from '@kit.ArkTS';
-import { LightWeightSet } from '@kit.ArkTS';
-import { LightWeightSetForEachCb } from '@kit.ArkTS';
-import { LinkedList } from '@kit.ArkTS';
-import { LinkedListForEachCb } from '@kit.ArkTS';
-import { List } from '@kit.ArkTS';
-import { ListComparatorFn } from '@kit.ArkTS';
-import { ListForEachCb } from '@kit.ArkTS';
-import { ListReplaceCb } from '@kit.ArkTS';
-import { PlainArray } from '@kit.ArkTS';
-import { PlainArrayForEachCb } from '@kit.ArkTS';
-import { Queue } from '@kit.ArkTS';
-import { QueueForEachCb } from '@kit.ArkTS';
-import { Stack } from '@kit.ArkTS';
-import { StackForEachCb } from '@kit.ArkTS';
-import { TreeMap } from '@kit.ArkTS';
-import { TreeMapForEachCb } from '@kit.ArkTS';
-import { TreeMapComparator } from '@kit.ArkTS';
-import { TreeSet } from '@kit.ArkTS';
-import { TreeSetForEachCb } from '@kit.ArkTS';
-import { TreeSetComparator } from '@kit.ArkTS';
-import { stream } from '@kit.ArkTS';
-import { Vector } from '@kit.ArkTS';
-import { JSON } from '@kit.ArkTS';
 ```
 
 ## constructor
@@ -61,14 +23,35 @@ constructor()
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Base64Helper-constructor()--><!--Device-Base64Helper-constructor()-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **示例**
 
 ```TypeScript
+let textDecoder = new util.TextDecoder();
+let retStr = textDecoder.encoding;
+console.info('retStr = ' + retStr);
+// 输出结果：retStr = utf-8
+```
+
+```TypeScript
+let textEncoder = new util.TextEncoder();
+```
+
+```TypeScript
+let rationalNumber = new util.RationalNumber();
+```
+
+```TypeScript
 let base64 = new util.Base64Helper();
+```
+
+```TypeScript
+let type = new util.types();
+```
+
+```TypeScript
+let base64 = new  util.Base64();
 ```
 
 ## decode
@@ -83,8 +66,6 @@ decode(src: Uint8Array | string, options?: Type): Promise<Uint8Array>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Base64Helper-decode(src: Uint8Array | string, options?: Type): Promise<Uint8Array>--><!--Device-Base64Helper-decode(src: Uint8Array | string, options?: Type): Promise<Uint8Array>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -92,13 +73,13 @@ decode(src: Uint8Array | string, options?: Type): Promise<Uint8Array>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | src | Uint8Array \| string | 是 | 要解码的 Uint8Array 对象或字符串。 |
-| options | [Type](arkts-arkts-util-type-e.md) | 否 | 解码格式。<br>可取值如下：<br>- **util.Type.BASIC**（默认）：Base64 解码。<br>- **util.Type.MIME**：Base64 解码。输入参数 **src** 包含回车符和换行符。<br>- **util.Type.BASIC_URL_SAFE**： Base64URL 解码。<br>- **util.Type.MIME_URL_SAFE**：Base64URL 解码。输入参数 **src** 包含回车符和换行符。<br>**起始版本：** 10 |
+| options | [Type](arkts-arkts-util-type-e.md) | 否 | 解码格式。可取值如下：   - **util.Type.BASIC**（默认）：Base64 解码。   - **util.Type.MIME**：Base64 解码。输入参数 **src** 包含回车符和换行符。   - **util.Type.BASIC_URL_SAFE**： Base64URL 解码。   - **util.Type.MIME_URL_SAFE**：Base64URL 解码。输入参数 **src** 包含回车符和换行符。<br>**起始版本：** 10 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
+| Promise & lt;Uint8Array & gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
 
 **示例**
 
@@ -125,8 +106,6 @@ decodeSync(src: Uint8Array | string, options?: Type): Uint8Array
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Base64Helper-decodeSync(src: Uint8Array | string, options?: Type): Uint8Array--><!--Device-Base64Helper-decodeSync(src: Uint8Array | string, options?: Type): Uint8Array-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -134,7 +113,7 @@ decodeSync(src: Uint8Array | string, options?: Type): Uint8Array
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | src | Uint8Array \| string | 是 | 要解码的 Uint8Array 对象或字符串。 |
-| options | [Type](arkts-arkts-util-type-e.md) | 否 | 解码格式。<br>可取值如下：<br>- **util.Type.BASIC**（默认）：Base64 解码。<br>- **util.Type.MIME**：Base64 解码。输入参数 **src** 包含回车符和换行符。<br>- **util.Type.BASIC_URL_SAFE**： Base64URL 解码。<br>- **util.Type.MIME_URL_SAFE**：Base64URL 解码。输入参数 **src** 包含回车符和换行符。<br>**起始版本：** 10 |
+| options | [Type](arkts-arkts-util-type-e.md) | 否 | 解码格式。可取值如下：   - **util.Type.BASIC**（默认）：Base64 解码。   - **util.Type.MIME**：Base64 解码。输入参数 **src** 包含回车符和换行符。   - **util.Type.BASIC_URL_SAFE**： Base64URL 解码。   - **util.Type.MIME_URL_SAFE**：Base64URL 解码。输入参数 **src** 包含回车符和换行符。<br>**起始版本：** 10 |
 
 **返回值：**
 
@@ -166,8 +145,6 @@ encode(src: Uint8Array, options?: Type): Promise<Uint8Array>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Base64Helper-encode(src: Uint8Array, options?: Type): Promise<Uint8Array>--><!--Device-Base64Helper-encode(src: Uint8Array, options?: Type): Promise<Uint8Array>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -175,13 +152,13 @@ encode(src: Uint8Array, options?: Type): Promise<Uint8Array>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | src | Uint8Array | 是 | 要编码的 Uint8Array 对象。 |
-| options | [Type](arkts-arkts-util-type-e.md) | 否 | 编码格式。<br>可取值如下：<br>- **util.Type.BASIC**（默认）：Base64 编码。<br>- **util.Type.BASIC_URL_SAFE**：Base64URL 编码。<br>**起始版本：** 12 |
+| options | [Type](arkts-arkts-util-type-e.md) | 否 | 编码格式。可取值如下：   - **util.Type.BASIC**（默认）：Base64 编码。   - **util.Type.BASIC_URL_SAFE**：Base64URL 编码。<br>**起始版本：** 12 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
+| Promise & lt;Uint8Array & gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
 
 **示例**
 
@@ -206,8 +183,6 @@ encodeSync(src: Uint8Array, options?: Type): Uint8Array
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Base64Helper-encodeSync(src: Uint8Array, options?: Type): Uint8Array--><!--Device-Base64Helper-encodeSync(src: Uint8Array, options?: Type): Uint8Array-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -215,7 +190,7 @@ encodeSync(src: Uint8Array, options?: Type): Uint8Array
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | src | Uint8Array | 是 | 要编码的 Uint8Array 对象。 |
-| options | [Type](arkts-arkts-util-type-e.md) | 否 | 编码格式。<br>可取值如下：<br>- **util.Type.BASIC**（默认）：Base64 编码。<br>- **util.Type.BASIC_URL_SAFE**：Base64URL 编码。<br>**起始版本：** 12 |
+| options | [Type](arkts-arkts-util-type-e.md) | 否 | 编码格式。可取值如下：   - **util.Type.BASIC**（默认）：Base64 编码。   - **util.Type.BASIC_URL_SAFE**：Base64URL 编码。<br>**起始版本：** 12 |
 
 **返回值：**
 
@@ -245,8 +220,6 @@ encodeToString(src: Uint8Array, options?: Type): Promise<string>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Base64Helper-encodeToString(src: Uint8Array, options?: Type): Promise<string>--><!--Device-Base64Helper-encodeToString(src: Uint8Array, options?: Type): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -254,13 +227,13 @@ encodeToString(src: Uint8Array, options?: Type): Promise<string>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | src | Uint8Array | 是 | 要编码的 Uint8Array 对象。 |
-| options | [Type](arkts-arkts-util-type-e.md) | 否 | 编码格式。<br>可取值如下：<br>- **util.Type.BASIC**（默认）：Base64 编码。返回值不 包含回车符或换行符。<br>- **util.Type.MIME**：Base64 编码。返回值每行最多 76 个字符且以 '\r\n' 结尾。<br>- **util.Type.BASIC_URL_SAFE**：Base64URL 编码。返回值不包含回车符或换行符。<br>- **util.Type.MIME_URL_SAFE**： Base64URL 编码。返回值每行最多 76 个字符且以 '\r\n' 结尾。<br>**起始版本：** 10 |
+| options | [Type](arkts-arkts-util-type-e.md) | 否 | 编码格式。可取值如下：   - **util.Type.BASIC**（默认）：Base64 编码。返回值不 包含回车符或换行符。   - **util.Type.MIME**：Base64 编码。返回值每行最多 76 个字符且以 '\r\n' 结尾。   - **util.Type.BASIC_URL_SAFE**：Base64URL 编码。返回值不包含回车符或换行符。   - **util.Type.MIME_URL_SAFE**： Base64URL 编码。返回值每行最多 76 个字符且以 '\r\n' 结尾。<br>**起始版本：** 10 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | 用于返回获取到的字符串的 promise。 |
+| Promise & lt;string & gt; | 用于返回获取到的字符串的 promise。 |
 
 **示例**
 
@@ -290,8 +263,6 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Base64Helper-encodeToStringSync(src: Uint8Array, options?: Type): string--><!--Device-Base64Helper-encodeToStringSync(src: Uint8Array, options?: Type): string-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -299,7 +270,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | src | Uint8Array | 是 | 要编码的 Uint8Array 对象。 |
-| options | [Type](arkts-arkts-util-type-e.md) | 否 | 编码格式。<br>可取值如下：<br>- **util.Type.BASIC**（默认）：Base64 编码。返回值不包含 回车符或换行符。<br>- **util.Type.MIME**：Base64 编码。如果返回值超过 76 个字符，则每 76 个字符插入一个换行， 每行以 '\r\n' 结尾。如果返回值少于 76 个字符，则抛出异常。<br>- **util.Type.BASIC_URL_SAFE**：Base64URL 编码。 返回值不包含回车符或换行符。<br>- **util.Type.MIME_URL_SAFE**：Base64URL 编码。返回值每行最多 76 个字符且以 '\r\n' 结尾。<br>**起始版本：** 12 |
+| options | [Type](arkts-arkts-util-type-e.md) | 否 | 编码格式。可取值如下：   - **util.Type.BASIC**（默认）：Base64 编码。返回值不包含 回车符或换行符。   - **util.Type.MIME**：Base64 编码。如果返回值超过 76 个字符，则每 76 个字符插入一个换行， 每行以 '\r\n' 结尾。如果返回值少于 76 个字符，则抛出异常。   - **util.Type.BASIC_URL_SAFE**：Base64URL 编码。 返回值不包含回车符或换行符。   - **util.Type.MIME_URL_SAFE**：Base64URL 编码。返回值每行最多 76 个字符且以'\r\n' 结尾。<br>**起始版本：** 12 |
 
 **返回值：**
 
@@ -377,4 +348,3 @@ aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
 aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU
  */
 ```
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-bluetoothManager-export interface BluetoothInfo--><!--Device-bluetoothManager-export interface BluetoothInfo-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## 导入模块
@@ -28,8 +26,6 @@ connectionState: constant.ProfileConnectionState
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BluetoothInfo-connectionState: constant.ProfileConnectionState--><!--Device-BluetoothInfo-connectionState: constant.ProfileConnectionState-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## name
@@ -45,8 +41,6 @@ name: string
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BluetoothInfo-name: string--><!--Device-BluetoothInfo-name: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -64,7 +58,4 @@ state: access.BluetoothState
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BluetoothInfo-state: access.BluetoothState--><!--Device-BluetoothInfo-state: access.BluetoothState-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

@@ -14,9 +14,7 @@ function isVectorSupported(): boolean
 
 判断系统是否提供向量数据库能力。
 
-**起始版本：** 23
-
-<!--Device-relationalStore-function isVectorSupported(): boolean--><!--Device-relationalStore-function isVectorSupported(): boolean-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -36,7 +34,7 @@ import { relationalStore } from '@kit.ArkData';
 
 let store: relationalStore.RdbStore | undefined = undefined;
 export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  async onWindowStageCreate(windowStage: window.WindowStage) {
     let supported = relationalStore.isVectorSupported();
     if (supported) {
       // 支持向量数据库
@@ -48,14 +46,10 @@ export default class EntryAbility extends UIAbility {
       };
       try {
         const context = this.context.getApplicationContext().createAreaModeContext(contextConstant.AreaMode.EL3);
-        relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
-          store = rdbStore;
-          console.info('Get RdbStore successfully.');
-          // 成功获取到 rdbStore 后执行后续操作
-        }).catch((err: Error) => {
-          let businessError = err as BusinessError;
-          console.error(`Get RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
-        });
+        const rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
+        console.info('Get RdbStore successfully.');
+        store = rdbStore;
+        // 成功获取到 rdbStore 后执行后续操作
       } catch (error) {
         const err = error as BusinessError;
         console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
@@ -66,4 +60,3 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-

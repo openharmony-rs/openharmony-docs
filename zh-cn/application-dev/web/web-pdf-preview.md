@@ -6,14 +6,15 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-[Web/apis-arkweb/arkts-basic-components-web.md)组件支持在网页中预览PDF。但受限于性能表现，部分场景存在掉帧现象。若对流畅度有要求，建议使用[PdfView](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/pdf-arkts-pdfview-component)，或第三方解析库[PDF.js](https://github.com/mozilla/pdf.js)。应用通过[WebOptions/apis-arkweb/arkts-basic-components-web-i.md#weboptions)的src参数和[loadUrl()/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl)接口加载PDF文档。具体场景包括：网络PDF文档、应用沙箱内PDF文档和本地PDF文档。
+Web组件支持在网页中预览PDF。但受限于性能表现，部分场景存在掉帧现象。若对流畅度有要求，建议使用[PdfView](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/pdf-arkts-pdfview-component)，或第三方解析库[PDF.js](https://github.com/mozilla/pdf.js)。应用通过WebOptions的src参数和loadUrl()接口加载PDF文档。具体场景包括：网络PDF文档、应用沙箱内PDF文档和本地PDF文档。
 
-若涉及网络文档获取，需在module.json5中配置网络访问权限。添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
+若涉及网络文档获取，需在module.json5中配置网络访问权限。添加方法请参考在配置文件中声明权限。
 
-<!-- @[web_module_preview_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/module.json5) -->
+<!-- @[web_module_preview_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/module.json5) --> 
 
 ``` JSON5
 "requestPermissions":[
+  // ...
   {
     "name" : "ohos.permission.INTERNET"
   }
@@ -50,13 +51,13 @@ struct WebComponent {
 }
 ```
 
-PDF预览页面会根据用户操作使用`window.localStorage`记录侧导航栏的展开状态，因此需要开启文档对象模型存储[domStorageAccess/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess)权限:
+PDF预览页面会根据用户操作使用`window.localStorage`记录侧导航栏的展开状态，因此需要开启文档对象模型存储domStorageAccess权限:
 
   ```ts
   Web().domStorageAccess(true)
   ```
 
-在创建[Web/apis-arkweb/arkts-basic-components-web.md)组件时，指定默认加载的PDF文档。默认PDF文档加载完成后，若需变更Web组件显示的PDF文档，通过调用[loadUrl()/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl)接口加载指定的PDF文档。[WebOptions/apis-arkweb/arkts-basic-components-web-i.md#weboptions)的第一个参数变量src不能通过状态变量（例如：[@State](../ui/state-management/arkts-state.md)）动态更改地址，如需更改，请通过[loadUrl()/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl)重新加载。
+在创建Web组件时，指定默认加载的PDF文档。默认PDF文档加载完成后，若需变更Web组件显示的PDF文档，通过调用loadUrl()接口加载指定的PDF文档。WebOptions的第一个参数变量src不能通过状态变量（例如：@State）动态更改地址，如需更改，请通过loadUrl()重新加载。
 
 包含三种PDF文档加载预览场景：
 - 预览加载网络PDF文档。
@@ -68,7 +69,7 @@ PDF预览页面会根据用户操作使用`window.localStorage`记录侧导航�
   })
     .domStorageAccess(true)
   ```
-- 预览加载应用沙箱内PDF文档需要开启文件系统的[fileAccess/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)权限。
+- 预览加载应用沙箱内PDF文档需要开启文件系统的fileAccess权限。
 
   ```ts
   Web({ 
@@ -91,7 +92,7 @@ PDF预览页面会根据用户操作使用`window.localStorage`记录侧导航�
 
 ## 通过配置PDF文件预览参数，控制打开预览时页面状态
 
-当前支持如下参数: 
+当前支持如下参数：
 
 | 语法 | 描述 |
 | --------- | ---------- |
@@ -103,7 +104,7 @@ PDF预览页面会根据用户操作使用`window.localStorage`记录侧导航�
 | pdfbackgroundcolor=color | 从OpenHarmony 6.0系统版本开始，支持指定PDF文档背景色，color为标准的六位十六进制RGB（取值范围为000000~ffffff，例如白色为：ffffff）。 |
 
 
-URL示例:
+URL示例：
 ```txt
 https://example.com/test.pdf#nameddest=Chapter6  
 https://example.com/test.pdf#page=3  

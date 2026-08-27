@@ -12,13 +12,11 @@ import { text } from '@kit.ArkGraphics2D';
 function getFontDescriptorByFullName(fullName: string, fontType: SystemFontType): Promise<FontDescriptor>
 ```
 
-根据字体名称和类型获取字体描述符，使用Promise异步回调。 字体描述符是描述字体特征的数据结构，包含字体外观和属性的详细信息。
+根据字体名称和类型获取字体描述符，使用Promise异步回调。字体描述符是描述字体特征的数据结构，包含字体外观和属性的详细信息。
 
-**起始版本：** 23
+**起始版本：** 14
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-text-function getFontDescriptorByFullName(fullName: string, fontType: SystemFontType): Promise<FontDescriptor>--><!--Device-text-function getFontDescriptorByFullName(fullName: string, fontType: SystemFontType): Promise<FontDescriptor>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -42,8 +40,6 @@ function getFontDescriptorByFullName(fullName: string, fontType: SystemFontType)
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { text } from '@kit.ArkGraphics2D'
@@ -76,38 +72,3 @@ struct Index {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { Entry, Component, Column, Button, Row, FontWeight} from '@ohos.arkui.component'
-import { text } from "@kit.ArkGraphics2D"
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Row() {
-      Column() {
-        Button("get fontDescriptor")
-          .fontSize(30)
-          .fontWeight(FontWeight.Bold)
-          .width(300)
-          .height(80)
-          .onClick(() => {
-            let fontType:text.SystemFontType = text.SystemFontType.GENERIC
-            let promise = text.getFontDescriptorByFullName("HarmonyOS Sans", fontType)
-            promise.then((fontdecriptor: text.FontDescriptor) => {
-              console.info(`desc: ${JSON.stringify(fontdecriptor)}`)
-            }).catch((error: Error) => {
-              console.error(`Failed to get fontDescriptor by fullName, error: ${JSON.stringify(error)}`);
-            });
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-

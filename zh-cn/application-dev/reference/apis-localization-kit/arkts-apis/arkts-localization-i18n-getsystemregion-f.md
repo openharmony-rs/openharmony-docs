@@ -18,9 +18,7 @@ export function getSystemRegion(): string
 
 **废弃版本：** 9
 
-**替代接口：** [getSystemRegion](../../apis-na/arkts-apis/arkts-na-i18n-system-c.md#getsystemregion)
-
-<!--Device-i18n-export function getSystemRegion(): string--><!--Device-i18n-export function getSystemRegion(): string-End-->
+**替代接口：** [getSystemRegion](arkts-localization-i18n-system-c.md#getsystemregion)
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -35,6 +33,11 @@ export function getSystemRegion(): string
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
 
-let region: string = i18n.getSystemRegion();
+let systemRegion: string = i18n.System.getSystemRegion(); // 如果系统地区为中国，systemRegion = 'CN'
 ```
 
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let region: string = i18n.getSystemRegion();
+```

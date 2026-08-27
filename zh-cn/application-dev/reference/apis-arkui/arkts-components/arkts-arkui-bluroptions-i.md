@@ -1,10 +1,8 @@
 # BlurOptions
 
-灰阶模糊参数。
+灰阶模糊参数。@interface BlurOptions
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare interface BlurOptions--><!--Device-unnamed-declare interface BlurOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,7 +27,4 @@ grayscale: [number, number]
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BlurOptions-grayscale: [number, number]--><!--Device-BlurOptions-grayscale: [number, number]-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -4,6 +4,8 @@
 
 定义LowPowerVideoSink接口。使用LowPowerVideoSink提供的Native API进行视频通路的低功耗播放。
 
+**引用文件：** <multimedia/player_framework/lowpower_video_sink.h>
+
 **库：** liblowpower_avsink.so
 
 **系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
@@ -18,7 +20,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_LowPowerVideoSink* OH_LowPowerVideoSink_CreateByMime(const char* mime)](#oh_lowpowervideosink_createbymime) | 创建低功耗LowPowerVideoSink。 |
+| [OH_LowPowerVideoSink* OH_LowPowerVideoSink_CreateByMime(const char* mime)](#oh_lowpowervideosink_createbymime) | 创建LowPowerVideoSink。 |
 | [OH_AVErrCode OH_LowPowerVideoSink_Configure(OH_LowPowerVideoSink* sink, const OH_AVFormat* format)](#oh_lowpowervideosink_configure) | 配置LowPowerVideoSink，需要在[OH_LowPowerVideoSink_Prepare](capi-lowpower-video-sink-h.md#oh_lowpowervideosink_prepare)前完成。 |
 | [OH_AVErrCode OH_LowPowerVideoSink_SetParameter(OH_LowPowerVideoSink* sink, const OH_AVFormat* format)](#oh_lowpowervideosink_setparameter) | 为LowPowerVideoSink设置参数，支持[OH_LowPowerVideoSink_Prepare](capi-lowpower-video-sink-h.md#oh_lowpowervideosink_prepare)后动态设置。 |
 | [OH_AVErrCode OH_LowPowerVideoSink_GetParameter(OH_LowPowerVideoSink* sink, OH_AVFormat* format)](#oh_lowpowervideosink_getparameter) | 获取LowPowerVideoSink的相关参数。 |
@@ -44,7 +46,7 @@
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetErrorListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnError onError, void* userData)](#oh_lowpowervideosinkcallback_seterrorlistener) | 为LowPowerVideoSinkCallback回调设置错误监听。 |
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetRenderStartListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnRenderStarted onRenderStarted, void* userData)](#oh_lowpowervideosinkcallback_setrenderstartlistener) | 为LowPowerVideoSinkCallback回调设置开始渲染监听。 |
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetStreamChangedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnStreamChanged onStreamChanged, void* userData)](#oh_lowpowervideosinkcallback_setstreamchangedlistener) | 为LowPowerVideoSinkCallback回调设置流切换监听。 |
-| [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnFirstFrameDecoded onFirstFrameDecoded, void* userData)](#oh_lowpowervideosinkcallback_setfirstframedecodedlistener) | 为LowPowerVideoSinkCallback回调设置首帧准备完成监听。 |
+| [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnFirstFrameDecoded onFirstFrameDecoded, void* userData)](#oh_lowpowervideosinkcallback_setfirstframedecodedlistener) | 为LowPowerVideoSinkCallback回调设置首帧解码完成监听。 |
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetEosListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnEos onEos, void* userData)](#oh_lowpowervideosinkcallback_seteoslistener) | 为LowPowerVideoSinkCallback回调设置播放结束监听。 |
 | [OH_AVErrCode OH_LowPowerVideoSink_GetLatestPts(OH_LowPowerVideoSink *sink, int64_t *pts)](#oh_lowpowervideosink_getlatestpts) | 获取当前播放的视频显示时间戳（pts）。 |
 
@@ -58,7 +60,7 @@ OH_LowPowerVideoSink* OH_LowPowerVideoSink_CreateByMime(const char* mime)
 
 **描述**
 
-创建低功耗LowPowerVideoSink。
+创建LowPowerVideoSink。
 
 **起始版本：** 20
 
@@ -66,7 +68,7 @@ OH_LowPowerVideoSink* OH_LowPowerVideoSink_CreateByMime(const char* mime)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* mime | mime type description string, refer to {@link AVCODEC_MIME_TYPE} |
+| const char* mime | 视频解码器的MIME类型，取值范围请参考{@link AVCODEC_MIME_TYPE} |
 
 **返回：**
 
@@ -90,8 +92,8 @@ OH_AVErrCode OH_LowPowerVideoSink_Configure(OH_LowPowerVideoSink* sink, const OH
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
-| [const OH_AVFormat](../AVCodecKit/capi-core-oh-avformat.md)* format | A pointer to an OH_AVFormat to give the description of the video track to be decoded,key of format refer to lowpower_avsink_base.h |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
+| const OH_AVFormat* format | 指向OH_AVFormat的指针，用于配置LowPowerVideoSink的参数。 |
 
 **返回：**
 
@@ -115,8 +117,8 @@ OH_AVErrCode OH_LowPowerVideoSink_SetParameter(OH_LowPowerVideoSink* sink, const
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
-| [const OH_AVFormat](../AVCodecKit/capi-core-oh-avformat.md)* format | pointer to an OH_AVFormat instance, key of format refer to lowpower_avsink_base.h |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
+| const OH_AVFormat* format | 指向OH_AVFormat的指针，用于配置LowPowerVideoSink的参数。 |
 
 **返回：**
 
@@ -140,8 +142,8 @@ OH_AVErrCode OH_LowPowerVideoSink_GetParameter(OH_LowPowerVideoSink* sink, OH_AV
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
-| [OH_AVFormat](../AVCodecKit/capi-core-oh-avformat.md)* format | pointer to an OH_AVFormat instance, key of format refer to lowpower_avsink_base.h |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
+| OH_AVFormat* format | 指向OH_AVFormat的指针，为LowPowerVideoSink设置的参数。 |
 
 **返回：**
 
@@ -165,8 +167,8 @@ OH_AVErrCode OH_LowPowerVideoSink_SetVideoSurface(OH_LowPowerVideoSink* sink, co
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
-| const OHNativeWindow* surface | A pointer to a OHNativeWindow instance, see [OHNativeWindow](../ArkGraphics2D/capi-nativewindow-nativewindow.md) |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
+| const OHNativeWindow* surface | 指向OHNativeWindow实例的指针。请参考[OHNativeWindow](../ArkGraphics2D/capi-nativewindow-nativewindow.md) |
 
 **返回：**
 
@@ -190,7 +192,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Prepare(OH_LowPowerVideoSink* sink)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
 
 **返回：**
 
@@ -214,7 +216,7 @@ OH_AVErrCode OH_LowPowerVideoSink_StartDecoder(OH_LowPowerVideoSink* sink)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
 
 **返回：**
 
@@ -238,7 +240,7 @@ OH_AVErrCode OH_LowPowerVideoSink_RenderFirstFrame(OH_LowPowerVideoSink* sink)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
 
 **返回：**
 
@@ -262,7 +264,7 @@ OH_AVErrCode OH_LowPowerVideoSink_StartRenderer(OH_LowPowerVideoSink* sink)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
 
 **返回：**
 
@@ -286,7 +288,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Pause(OH_LowPowerVideoSink* sink)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
 
 **返回：**
 
@@ -310,7 +312,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Resume(OH_LowPowerVideoSink* sink)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSinkinstance |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
 
 **返回：**
 
@@ -334,7 +336,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Flush(OH_LowPowerVideoSink* sink)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
 
 **返回：**
 
@@ -358,7 +360,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Stop(OH_LowPowerVideoSink* sink)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
 
 **返回：**
 
@@ -382,7 +384,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Reset(OH_LowPowerVideoSink* sink)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
 
 **返回：**
 
@@ -406,7 +408,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Destroy(OH_LowPowerVideoSink* sink)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
 
 **返回：**
 
@@ -430,8 +432,8 @@ LowPowerVideoSink设置用于音画同步的OH_LowPowerAudioSink。
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* videoSink | Pointer to an OH_LowPowerVideoSink instance |
-| OH_LowPowerAudioSink* audioSink | Pointer to an OH_LowPowerAudioSink instance |
+| OH_LowPowerVideoSink* videoSink | 指向OH_LowPowerVideoSink实例的指针。 |
+| OH_LowPowerAudioSink* audioSink | 指向OH_LowPowerAudioSink实例的指针。 |
 
 **返回：**
 
@@ -455,11 +457,11 @@ OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
-| const int64_t framePts | target video frame pts, in microseconds |
-| OH_LowPowerVideoSink_OnTargetArrived onTargetArrived | OH_LowPowerVideoSink_OnTargetArrived func,will be called once, refer to [OH_LowPowerVideoSink_OnTargetArrived](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ontargetarrived) |
-| const int64_t timeoutMs | if wait first frame over timeoutMs, onTargetArrived will be called directly,in milliseconds. |
-| void* userData | User specific data |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
+| const int64_t framePts | 渲染的目标视频帧的pts。单位为微秒（μs）。 |
+| OH_LowPowerVideoSink_OnTargetArrived onTargetArrived | OH_LowPowerVideoSink_OnTargetArrived方法，当目标帧渲染时触发该方法。请参考[OH_LowPowerVideoSink_OnTargetArrived](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ontargetarrived) |
+| const int64_t timeoutMs | 等待目标帧的时间超过timeoutMs，则直接调用onTargetArrived。单位为毫秒（ms）。 |
+| void* userData | 用户数据。 |
 
 **返回：**
 
@@ -483,8 +485,8 @@ OH_AVErrCode OH_LowPowerVideoSink_SetPlaybackSpeed(OH_LowPowerVideoSink* sink, c
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
-| const float speed | Indicates the value of the playback rate.The current version is valid in the range of 0.25-4.0 |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
+| const float speed | 播放倍速的值。当前版本有效范围为[0.25, 4.0]。 |
 
 **返回：**
 
@@ -508,8 +510,8 @@ OH_AVErrCode OH_LowPowerVideoSink_ReturnSamples(OH_LowPowerVideoSink* sink, OH_A
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
-| [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)* samples | Pointer to an OH_AVSamplesBuffer instance |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
+| [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)* samples | 需要送LowPowerVideoSink消费的OH_AVSamplesBuffer，支持聚包输入。 |
 
 **返回：**
 
@@ -533,8 +535,8 @@ OH_AVErrCode OH_LowPowerVideoSink_RegisterCallback(OH_LowPowerVideoSink* sink, O
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink* sink | Pointer to an OH_LowPowerVideoSink instance |
-| OH_LowPowerVideoSinkCallback* callback | Pointer to an OH_LowPowerVideoSinkCallback instance |
+| OH_LowPowerVideoSink* sink | 指向OH_LowPowerVideoSink实例的指针。 |
+| OH_LowPowerVideoSinkCallback* callback | 指向OH_LowPowerVideoSinkCallback实例的指针。 |
 
 **返回：**
 
@@ -576,7 +578,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_Destroy(OH_LowPowerVideoSinkCallback* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSinkCallback* callback | Pointer to an OH_LowPowerVideoSinkCallback instance |
+| OH_LowPowerVideoSinkCallback* callback | 指向OH_LowPowerVideoSinkCallback实例的指针。 |
 
 **返回：**
 
@@ -600,9 +602,9 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetDataNeededListener(OH_LowPowerVideo
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSinkCallback* callback | Pointer to an OH_LowPowerVideoSinkCallback instance |
-| OH_LowPowerVideoSink_OnDataNeeded onDataNeeded | OH_LowPowerVideoSink_OnDataNeeded function,refer to [OH_LowPowerVideoSink_OnDataNeeded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ondataneeded) |
-| void* userData | User specific data |
+| OH_LowPowerVideoSinkCallback* callback | 指向OH_LowPowerVideoSinkCallback实例的指针。 |
+| OH_LowPowerVideoSink_OnDataNeeded onDataNeeded | OH_LowPowerVideoSink_OnDataNeeded方法，在DataNeeded事件触发时调用。请参考[OH_LowPowerVideoSink_OnDataNeeded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ondataneeded) |
+| void* userData | 用户执行回调所依赖的数据。 |
 
 **返回：**
 
@@ -626,9 +628,9 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetErrorListener(OH_LowPowerVideoSinkC
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSinkCallback* callback | Pointer to an OH_LowPowerVideoSinkCallback instance |
-| OH_LowPowerVideoSink_OnError onError | OH_LowPowerVideoSink_OnError function,refer to [OH_LowPowerVideoSink_OnError](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_onerror) |
-| void* userData | User specific data |
+| OH_LowPowerVideoSinkCallback* callback | 指向OH_LowPowerVideoSinkCallback实例的指针。 |
+| OH_LowPowerVideoSink_OnError onError | OH_LowPowerVideoSink_OnError方法，在Error事件触发时调用。请参考[OH_LowPowerVideoSink_OnError](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_onerror) |
+| void* userData | 用户执行回调所依赖的数据。 |
 
 **返回：**
 
@@ -652,9 +654,9 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetRenderStartListener(OH_LowPowerVide
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSinkCallback* callback | Pointer to an OH_LowPowerVideoSinkCallback instance |
-| OH_LowPowerVideoSink_OnRenderStarted onRenderStarted | OH_LowPowerVideoSink_OnRenderStarted function,refer to [OH_LowPowerVideoSink_OnRenderStarted](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_onrenderstarted) |
-| void* userData | User specific data |
+| OH_LowPowerVideoSinkCallback* callback | 指向OH_LowPowerVideoSinkCallback实例的指针。 |
+| OH_LowPowerVideoSink_OnRenderStarted onRenderStarted | OH_LowPowerVideoSink_OnRenderStarted方法，在RenderStarted事件触发时调用。请参考[OH_LowPowerVideoSink_OnRenderStarted](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_onrenderstarted) |
+| void* userData | 用户执行回调所依赖的数据。 |
 
 **返回：**
 
@@ -678,9 +680,9 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetStreamChangedListener(OH_LowPowerVi
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSinkCallback* callback | Pointer to an OH_LowPowerVideoSinkCallback instance |
-| OH_LowPowerVideoSink_OnStreamChanged onStreamChanged | OH_LowPowerVideoSink_OnStreamChanged function,refer to [OH_LowPowerVideoSink_OnStreamChanged](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_onstreamchanged) |
-| void* userData | User specific data |
+| OH_LowPowerVideoSinkCallback* callback | 指向OH_LowPowerVideoSinkCallback实例的指针。 |
+| OH_LowPowerVideoSink_OnStreamChanged onStreamChanged | OH_LowPowerVideoSink_OnStreamChanged方法，在StreamChanged事件触发时调用。请参考[OH_LowPowerVideoSink_OnStreamChanged](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_onstreamchanged) |
+| void* userData | 用户执行回调所依赖的数据。 |
 
 **返回：**
 
@@ -696,7 +698,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPow
 
 **描述**
 
-为LowPowerVideoSinkCallback回调设置首帧准备完成监听。
+为LowPowerVideoSinkCallback回调设置首帧解码完成监听。
 
 **起始版本：** 20
 
@@ -704,9 +706,9 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPow
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSinkCallback* callback | Pointer to an OH_LowPowerVideoSinkCallback instance |
-| OH_LowPowerVideoSink_OnFirstFrameDecoded onFirstFrameDecoded | OH_LowPowerVideoSink_OnFirstFrameDecodedfunction,refer to [OH_LowPowerVideoSink_OnFirstFrameDecoded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_onfirstframedecoded) |
-| void* userData | User specific data |
+| OH_LowPowerVideoSinkCallback* callback | 指向OH_LowPowerVideoSinkCallback实例的指针。 |
+| OH_LowPowerVideoSink_OnFirstFrameDecoded onFirstFrameDecoded | OH_LowPowerVideoSink_OnFirstFrameDecoded方法，在第一帧解码成功时调用。请参考[OH_LowPowerVideoSink_OnFirstFrameDecoded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_onfirstframedecoded) |
+| void* userData | 用户执行回调所依赖的数据。 |
 
 **返回：**
 
@@ -730,9 +732,9 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetEosListener(OH_LowPowerVideoSinkCal
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSinkCallback* callback | Pointer to an OH_LowPowerVideoSinkCallback instance |
-| OH_LowPowerVideoSink_OnEos onEos | OH_LowPowerVideoSink_OnEos function,refer to [OH_LowPowerVideoSink_OnEos](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_oneos) |
-| void* userData | User specific data |
+| OH_LowPowerVideoSinkCallback* callback | 指向OH_LowPowerVideoSinkCallback实例的指针。 |
+| OH_LowPowerVideoSink_OnEos onEos | OH_LowPowerVideoSink_OnEos方法，在Eos事件触发时调用。请参考[OH_LowPowerVideoSink_OnEos](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_oneos) |
+| void* userData | 用户执行回调所依赖的数据。 |
 
 **返回：**
 
@@ -756,8 +758,8 @@ OH_AVErrCode OH_LowPowerVideoSink_GetLatestPts(OH_LowPowerVideoSink *sink, int64
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_LowPowerVideoSink *sink | Pointer to an OH_LowPowerVideoSink instance. |
-| int64_t *pts | Pointer to store the latest PTS value (in microseconds). |
+| OH_LowPowerVideoSink *sink | 指向OH_LowPowerVideoSink实例的指针。 |
+| int64_t *pts | 当前播放的pts。单位为微秒（μs）。 |
 
 **返回：**
 

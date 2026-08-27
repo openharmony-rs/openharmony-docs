@@ -18,8 +18,6 @@ function unregisterShutdownCallback(callback?: Callback<void>): void
 
 **需要权限：** ohos.permission.REBOOT
 
-<!--Device-power-function unregisterShutdownCallback(callback?: Callback<void>): void--><!--Device-power-function unregisterShutdownCallback(callback?: Callback<void>): void-End-->
-
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -28,7 +26,7 @@ function unregisterShutdownCallback(callback?: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | 回调函数，无返回值。取消订阅成功后会调用该回调函数。不传入此参数时，取消订阅仍生效，但不会触发回调通知。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数，无返回值。取消订阅成功后会调用该回调函数。不传入此参数时，取消订阅仍生效，但不会触发回调通知。 |
 
 **错误码：**
 
@@ -46,8 +44,7 @@ try {
         console.info('unsubscribe shutdown success.');
     });
     console.info('unregister shutdown callback success.');
-} catch(err) {
-    console.error('unregister shutdown callback failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to unregister shutdown callback. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

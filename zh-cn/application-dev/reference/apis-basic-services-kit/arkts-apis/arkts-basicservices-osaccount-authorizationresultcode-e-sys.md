@@ -4,8 +4,6 @@
 
 **起始版本：** 24
 
-<!--Device-osAccount-enum AuthorizationResultCode--><!--Device-osAccount-enum AuthorizationResultCode-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -21,8 +19,6 @@ AUTHORIZATION_SUCCESS = 0
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AuthorizationResultCode-AUTHORIZATION_SUCCESS = 0--><!--Device-AuthorizationResultCode-AUTHORIZATION_SUCCESS = 0-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -40,8 +36,6 @@ AUTHORIZATION_CANCELED = 12300301
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AuthorizationResultCode-AUTHORIZATION_CANCELED = 12300301--><!--Device-AuthorizationResultCode-AUTHORIZATION_CANCELED = 12300301-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -52,13 +46,14 @@ AUTHORIZATION_CANCELED = 12300301
 AUTHORIZATION_INTERACTION_NOT_ALLOWED = 12300302
 ```
 
-表示服务因不允许用户交互而拒绝授权。 可能原因： 1. 调用者位于后台； 2. isInteractionAllowed选项的值为false； 3. 指定的交互上下文无效。
+表示服务因不允许用户交互而拒绝授权。可能原因：
+1. 调用者位于后台；
+2. isInteractionAllowed选项的值为false；
+3. 指定的交互上下文无效。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AuthorizationResultCode-AUTHORIZATION_INTERACTION_NOT_ALLOWED = 12300302--><!--Device-AuthorizationResultCode-AUTHORIZATION_INTERACTION_NOT_ALLOWED = 12300302-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -76,8 +71,6 @@ AUTHORIZATION_DENIED = 12300303
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AuthorizationResultCode-AUTHORIZATION_DENIED = 12300303--><!--Device-AuthorizationResultCode-AUTHORIZATION_DENIED = 12300303-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -88,15 +81,12 @@ AUTHORIZATION_DENIED = 12300303
 AUTHORIZATION_SERVICE_BUSY = 12300304
 ```
 
-表示服务忙碌。 可能原因：正在处理其他授权。
+表示服务忙碌。可能原因：正在处理其他授权。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AuthorizationResultCode-AUTHORIZATION_SERVICE_BUSY = 12300304--><!--Device-AuthorizationResultCode-AUTHORIZATION_SERVICE_BUSY = 12300304-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
-

@@ -2,31 +2,26 @@
 
 表示查询的马达信息。通过[vibrator.getVibratorInfoSync](arkts-sensorservice-vibrator-getvibratorinfosync-f.md)返回此对象，用于获取设备马达能力和选择合适的马达触发振动。
 
-**起始版本：** 23
-
-<!--Device-vibrator-interface VibratorInfo--><!--Device-vibrator-interface VibratorInfo-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
 ## 导入模块
 
 ```TypeScript
-import { vibrator } from '@kit.SensorServiceKit';
 ```
 
 ## deviceId
 
 ```TypeScript
-deviceId: int
+deviceId: number
 ```
 
 设备ID。可用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md) 和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md)等接口指定目标设备。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-VibratorInfo-deviceId: int--><!--Device-VibratorInfo-deviceId: int-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
@@ -40,9 +35,7 @@ deviceName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-VibratorInfo-deviceName: string--><!--Device-VibratorInfo-deviceName: string-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
@@ -56,11 +49,26 @@ isHdHapticSupported: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-VibratorInfo-isHdHapticSupported: boolean--><!--Device-VibratorInfo-isHdHapticSupported: boolean-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
+
+**示例**
+
+```TypeScript
+import { vibrator } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 查询是否支持高清振动
+  let ret = vibrator.isHdHapticSupported();
+  console.info(`The query result is ${ret}`);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+}
+```
 
 ## isLocalVibrator
 
@@ -72,25 +80,20 @@ isLocalVibrator: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-VibratorInfo-isLocalVibrator: boolean--><!--Device-VibratorInfo-isLocalVibrator: boolean-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
 ## vibratorId
 
 ```TypeScript
-vibratorId: int
+vibratorId: number
 ```
 
 马达ID。可用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md) 和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md)等接口指定目标马达。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-VibratorInfo-vibratorId: int--><!--Device-VibratorInfo-vibratorId: int-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
-

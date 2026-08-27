@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-declare interface GravityCenterOptions--><!--Device-unnamed-declare interface GravityCenterOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -29,8 +27,6 @@ gravityCenter?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-GravityCenterOptions-gravityCenter?: boolean--><!--Device-GravityCenterOptions-gravityCenter?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -38,20 +34,21 @@ gravityCenter?: boolean
 ## gravityIntensity
 
 ```TypeScript
-gravityIntensity?: double
+gravityIntensity?: number
 ```
 
 定义引力中心吸引力/排斥力的引力强度。 负数是排斥力，正数是吸引力。 默认值： 0。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-GravityCenterOptions-gravityIntensity?: double--><!--Device-GravityCenterOptions-gravityIntensity?: double-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
 
+**示例**
+
+示例请参考[UnionEffectContainer示例](ts-container-unioneffectcomponent-sys.md#示例)。

@@ -10,13 +10,13 @@
 
 ## 基本概念
 
-适老化提供了一种通过鼠标或手指长按的方法来放大所选区域或组件，即如果系统字体大小大于1倍，当用户使用鼠标或手指长按装配了适老化方法的组件，需要从所选区域的组件中提取数据，并放入另一个弹窗组件中展示。该方法的目的在于使组件和组件内部数据（子组件）放大，同时将整体组件在屏幕中央显示，让用户能够更好的观察该组件。
+适老化提供了一种通过鼠标或手指长按的方法来放大所选区域或组件，即如果系统字体大小大于1倍，当用户使用鼠标或手指长按装配了适老化方法的组件，需要从所选区域的组件中提取数据，并放入另一个弹窗组件中展示。该方法的目的在于使组件和组件内部数据（子组件）放大，同时将整体组件在屏幕中央显示，让用户能够更好地观察该组件。
 
 ## 使用约束
 
 * 适老化规则
 
-  由于在系统字体大于1倍时，组件并没有默认放大，需要通过配置[configuration标签](../quick-start/app-configuration-file.md#configuration标签)，实现组件放大的适老化功能。
+  由于在系统字体大于1倍时，组件并没有默认放大，需要通过配置configuration标签，实现组件放大的适老化功能。
 
 * 适老化操作
 
@@ -42,14 +42,14 @@
 
 | 触发方式             | 组件名称                                                     |
 | -------------------- | ------------------------------------------------------------ |
-| 长按组件触发         | [SideBarContainer/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md)， [底部页签（tabBar）/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar9)，[Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)，[NavDestination/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)， [Tabs/apis-arkui/arkui-ts/ts-container-tabs.md) |
-| 设置系统字体默认放大 | [PickerDialog](arkts-fixes-style-dialog.md#选择器弹窗-pickerdialog)， [Button/apis-arkui/arkui-ts/ts-basic-components-button.md)， [Menu/apis-arkui/arkui-ts/ts-basic-components-menu.md)， [Stepper/apis-arkui/arkui-ts/ts-basic-components-stepper.md)， [bindSheet/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)，[TextInput/apis-arkui/arkui-ts/ts-basic-components-textinput.md)，[TextArea/apis-arkui/arkui-ts/ts-basic-components-textarea.md)，[Search/apis-arkui/arkui-ts/ts-basic-components-search.md)，[SelectionMenu/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)，[Chip/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)，[Dialog/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)，[Slider/apis-arkui/arkui-ts/ts-basic-components-slider.md)， [Progress/apis-arkui/arkui-ts/ts-basic-components-progress.md)， [Badge/apis-arkui/arkui-ts/ts-container-badge.md) |
+| 长按组件触发         | SideBarContainer， 底部页签（tabBar），Navigation，NavDestination， Tabs |
+| 设置系统字体默认放大 | PickerDialog， Button， Menu， Stepper， bindSheet，TextInput，TextArea，Search，SelectionMenu，Chip，Dialog，Slider， Progress， Badge |
 
 ## 示例
 
 SideBarContainer组件通过长按控制按钮触发适老化弹窗。在系统字体为1倍的情况下，长按控制按钮不能弹窗。在系统字体大于1倍的情况下，长按控制按钮可以弹窗。
 
-<!-- @[trigger_aging_friendly_by_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SupportingAgingFriendly/entry/src/main/ets/pages/SideBarContainer.ets) -->
+<!-- @[trigger_aging_friendly_by_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SupportingAgingFriendly/entry/src/main/ets/pages/SideBarContainer.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -64,12 +64,10 @@ const NUMBER3 = 3;
 @Entry
 @Component
 struct SideBarContainerExample {
-  @State currentFontSizeScale: number = NUMBER1;
   normalIcon: Resource = $r('app.media.icon'); // $r('app.media.icon')需要替换为开发者所需的资源文件
   selectedIcon: Resource = $r('app.media.icon'); // $r('app.media.icon')需要替换为开发者所需的资源文件
   @State arr: number[] = [NUMBER1, NUMBER2, NUMBER3];
   @State current: number = NUMBER1;
-  @State title: string = 'Index01';
 
   build() {
     SideBarContainer(SideBarContainerType.Embed) {
@@ -84,9 +82,8 @@ struct SideBarContainerExample {
           }
           .onClick(() => {
             this.current = item;
-            this.title = 'Index0' + item;
           })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }.width('100%')
       .justifyContent(FlexAlign.SpaceEvenly)
       // $r('sys.color.mask_fifth')需要替换为开发者所需的资源文件
@@ -118,9 +115,9 @@ struct SideBarContainerExample {
 | ---------------------------------- | ------------------------------------ |
 | ![](figures/aging_01_replace.png)          | ![](figures/aging_02_replace.png)            |
 
-[TextPickerDialog/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)组件通过设置系统字体大小触发适老化弹窗。在系统字体为1倍的情况下，适老化不触发；在系统字体大于1倍的情况下，适老化触发。
+TextPickerDialog组件通过设置系统字体大小触发适老化弹窗。在系统字体为1倍的情况下，适老化不触发；在系统字体大于1倍的情况下，适老化触发。
 
-<!-- @[trigger_aging_friendly_by_set_font_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SupportingAgingFriendly/entry/src/main/ets/pages/TextPickerDialog.ets) -->
+<!-- @[trigger_aging_friendly_by_set_font_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SupportingAgingFriendly/entry/src/main/ets/pages/TextPickerDialog.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -167,7 +164,7 @@ struct TextPickerExample {
   linesNum(max: number): void {
     let items: string[] = this.triggered.split('\n').filter(item => item != '');
     if (items.length > max) {
-      this.showTriggered = items.slice(-this.maxLines).join('\n');
+      this.showTriggered = items.slice(-max).join('\n');
     } else {
       this.showTriggered = this.triggered;
     }

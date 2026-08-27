@@ -6,8 +6,6 @@
 
 **起始版本：** 12
 
-<!--Device-vpn-export interface L2tpVpnConfig--><!--Device-vpn-export interface L2tpVpnConfig-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
@@ -16,7 +14,6 @@
 
 ```TypeScript
 import { vpn } from '@kit.NetworkKit';
-import { vpnExtension } from '@kit.NetworkKit';
 ```
 
 ## ipsecCaCertConfig
@@ -28,8 +25,6 @@ ipsecCaCertConfig?: string
 **类型：** string
 
 **起始版本：** 12
-
-<!--Device-L2tpVpnConfig-ipsecCaCertConfig?: string--><!--Device-L2tpVpnConfig-ipsecCaCertConfig?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
@@ -45,8 +40,6 @@ ipsecCaCertFilePath?: string
 
 **起始版本：** 12
 
-<!--Device-L2tpVpnConfig-ipsecCaCertFilePath?: string--><!--Device-L2tpVpnConfig-ipsecCaCertFilePath?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
@@ -60,8 +53,6 @@ ipsecConfig?: string
 **类型：** string
 
 **起始版本：** 12
-
-<!--Device-L2tpVpnConfig-ipsecConfig?: string--><!--Device-L2tpVpnConfig-ipsecConfig?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
@@ -77,8 +68,6 @@ ipsecIdentifier?: string
 
 **起始版本：** 12
 
-<!--Device-L2tpVpnConfig-ipsecIdentifier?: string--><!--Device-L2tpVpnConfig-ipsecIdentifier?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
@@ -92,8 +81,6 @@ ipsecPreSharedKey?: string
 **类型：** string
 
 **起始版本：** 12
-
-<!--Device-L2tpVpnConfig-ipsecPreSharedKey?: string--><!--Device-L2tpVpnConfig-ipsecPreSharedKey?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
@@ -109,8 +96,6 @@ ipsecPrivateServerCertConfig?: string
 
 **起始版本：** 12
 
-<!--Device-L2tpVpnConfig-ipsecPrivateServerCertConfig?: string--><!--Device-L2tpVpnConfig-ipsecPrivateServerCertConfig?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
@@ -124,8 +109,6 @@ ipsecPrivateServerCertFilePath?: string
 **类型：** string
 
 **起始版本：** 12
-
-<!--Device-L2tpVpnConfig-ipsecPrivateServerCertFilePath?: string--><!--Device-L2tpVpnConfig-ipsecPrivateServerCertFilePath?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
@@ -141,8 +124,6 @@ ipsecPrivateUserCertConfig?: string
 
 **起始版本：** 12
 
-<!--Device-L2tpVpnConfig-ipsecPrivateUserCertConfig?: string--><!--Device-L2tpVpnConfig-ipsecPrivateUserCertConfig?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
@@ -156,8 +137,6 @@ ipsecPrivateUserCertFilePath?: string
 **类型：** string
 
 **起始版本：** 12
-
-<!--Device-L2tpVpnConfig-ipsecPrivateUserCertFilePath?: string--><!--Device-L2tpVpnConfig-ipsecPrivateUserCertFilePath?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
@@ -173,8 +152,6 @@ ipsecPublicServerCertConfig?: string
 
 **起始版本：** 12
 
-<!--Device-L2tpVpnConfig-ipsecPublicServerCertConfig?: string--><!--Device-L2tpVpnConfig-ipsecPublicServerCertConfig?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
@@ -188,8 +165,6 @@ ipsecPublicServerCertFilePath?: string
 **类型：** string
 
 **起始版本：** 12
-
-<!--Device-L2tpVpnConfig-ipsecPublicServerCertFilePath?: string--><!--Device-L2tpVpnConfig-ipsecPublicServerCertFilePath?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
@@ -205,8 +180,6 @@ ipsecPublicUserCertConfig?: string
 
 **起始版本：** 12
 
-<!--Device-L2tpVpnConfig-ipsecPublicUserCertConfig?: string--><!--Device-L2tpVpnConfig-ipsecPublicUserCertConfig?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
@@ -220,8 +193,6 @@ ipsecPublicUserCertFilePath?: string
 **类型：** string
 
 **起始版本：** 12
-
-<!--Device-L2tpVpnConfig-ipsecPublicUserCertFilePath?: string--><!--Device-L2tpVpnConfig-ipsecPublicUserCertFilePath?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
@@ -237,8 +208,6 @@ ipsecSecrets?: string
 
 **起始版本：** 12
 
-<!--Device-L2tpVpnConfig-ipsecSecrets?: string--><!--Device-L2tpVpnConfig-ipsecSecrets?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
@@ -252,8 +221,6 @@ l2tpSharedKey?: string
 **类型：** string
 
 **起始版本：** 12
-
-<!--Device-L2tpVpnConfig-l2tpSharedKey?: string--><!--Device-L2tpVpnConfig-l2tpSharedKey?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
@@ -269,8 +236,6 @@ optionsL2tpdClient?: string
 
 **起始版本：** 12
 
-<!--Device-L2tpVpnConfig-optionsL2tpdClient?: string--><!--Device-L2tpVpnConfig-optionsL2tpdClient?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
@@ -284,8 +249,6 @@ strongSwanConfig?: string
 **类型：** string
 
 **起始版本：** 12
-
-<!--Device-L2tpVpnConfig-strongSwanConfig?: string--><!--Device-L2tpVpnConfig-strongSwanConfig?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
@@ -301,9 +264,6 @@ xl2tpdConfig?: string
 
 **起始版本：** 12
 
-<!--Device-L2tpVpnConfig-xl2tpdConfig?: string--><!--Device-L2tpVpnConfig-xl2tpdConfig?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
-

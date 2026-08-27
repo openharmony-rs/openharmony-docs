@@ -2,9 +2,7 @@
 
 应用接收到输出设备的变更事件。
 
-**起始版本：** 23
-
-<!--Device-audio-interface CurrentOutputDeviceChangedEvent--><!--Device-audio-interface CurrentOutputDeviceChangedEvent-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## changeReason
@@ -25,9 +22,7 @@ changeReason: AudioStreamDeviceChangeReason
 
 **类型：** [AudioStreamDeviceChangeReason](arkts-audio-audio-audiostreamdevicechangereason-e.md)
 
-**起始版本：** 23
-
-<!--Device-CurrentOutputDeviceChangedEvent-changeReason: AudioStreamDeviceChangeReason--><!--Device-CurrentOutputDeviceChangedEvent-changeReason: AudioStreamDeviceChangeReason-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -41,9 +36,7 @@ devices: AudioDeviceDescriptors
 
 **类型：** [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md)
 
-**起始版本：** 23
-
-<!--Device-CurrentOutputDeviceChangedEvent-devices: AudioDeviceDescriptors--><!--Device-CurrentOutputDeviceChangedEvent-devices: AudioDeviceDescriptors-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -54,14 +47,14 @@ preDevices?: AudioDeviceDescriptors
 ```
 
 应用输出设备变更前的设备信息。
+26.0.0
+此接口仅可在Stage模型下使用。
 
 **类型：** [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CurrentOutputDeviceChangedEvent-preDevices?: AudioDeviceDescriptors--><!--Device-CurrentOutputDeviceChangedEvent-preDevices?: AudioDeviceDescriptors-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -75,9 +68,6 @@ recommendedAction: OutputDeviceChangeRecommendedAction
 
 **类型：** [OutputDeviceChangeRecommendedAction](arkts-audio-audio-outputdevicechangerecommendedaction-e.md)
 
-**起始版本：** 23
-
-<!--Device-CurrentOutputDeviceChangedEvent-recommendedAction: OutputDeviceChangeRecommendedAction--><!--Device-CurrentOutputDeviceChangedEvent-recommendedAction: OutputDeviceChangeRecommendedAction-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
-

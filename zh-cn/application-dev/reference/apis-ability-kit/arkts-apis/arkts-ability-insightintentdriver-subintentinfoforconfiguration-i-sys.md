@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-insightIntentDriver-interface SubIntentInfoForConfiguration--><!--Device-insightIntentDriver-interface SubIntentInfoForConfiguration-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -19,18 +17,16 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 ## entities
 
 ```TypeScript
-readonly entities?: Record<string, RecordData>
+readonly entities?: Record<string, Object>
 ```
 
 表示意图包含的实体信息。
 
-**类型：** Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SubIntentInfoForConfiguration-readonly entities?: Record<string, RecordData>--><!--Device-SubIntentInfoForConfiguration-readonly entities?: Record<string, RecordData>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -50,8 +46,6 @@ readonly form?: FormIntentInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SubIntentInfoForConfiguration-readonly form?: FormIntentInfo--><!--Device-SubIntentInfoForConfiguration-readonly form?: FormIntentInfo-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -59,18 +53,16 @@ readonly form?: FormIntentInfo
 ## inputParams
 
 ```TypeScript
-readonly inputParams?: Array<Record<string, RecordData>>
+readonly inputParams?: Array<Record<string, Object>>
 ```
 
 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。
 
-**类型：** Array&lt;Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;&gt;
+**类型：** Array&lt;Record&lt;string, Object&gt;&gt;
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SubIntentInfoForConfiguration-readonly inputParams?: Array<Record<string, RecordData>>--><!--Device-SubIntentInfoForConfiguration-readonly inputParams?: Array<Record<string, RecordData>>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -79,18 +71,16 @@ readonly inputParams?: Array<Record<string, RecordData>>
 ## outputParams
 
 ```TypeScript
-readonly outputParams?: Array<Record<string, RecordData>>
+readonly outputParams?: Array<Record<string, Object>>
 ```
 
 表示意图调用返回结果的数据格式声明，用于定义意图调用返回结果的数据格式。
 
-**类型：** Array&lt;Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;&gt;
+**类型：** Array&lt;Record&lt;string, Object&gt;&gt;
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SubIntentInfoForConfiguration-readonly outputParams?: Array<Record<string, RecordData>>--><!--Device-SubIntentInfoForConfiguration-readonly outputParams?: Array<Record<string, RecordData>>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -110,8 +100,6 @@ readonly serviceExtension?: ServiceExtensionIntentInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SubIntentInfoForConfiguration-readonly serviceExtension?: ServiceExtensionIntentInfo--><!--Device-SubIntentInfoForConfiguration-readonly serviceExtension?: ServiceExtensionIntentInfo-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -129,8 +117,6 @@ readonly srcEntry: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SubIntentInfoForConfiguration-readonly srcEntry: string--><!--Device-SubIntentInfoForConfiguration-readonly srcEntry: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -150,8 +136,6 @@ readonly uiAbility?: UIAbilityIntentInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SubIntentInfoForConfiguration-readonly uiAbility?: UIAbilityIntentInfo--><!--Device-SubIntentInfoForConfiguration-readonly uiAbility?: UIAbilityIntentInfo-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -170,9 +154,6 @@ readonly uiExtension?: UIExtensionIntentInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SubIntentInfoForConfiguration-readonly uiExtension?: UIExtensionIntentInfo--><!--Device-SubIntentInfoForConfiguration-readonly uiExtension?: UIExtensionIntentInfo-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-

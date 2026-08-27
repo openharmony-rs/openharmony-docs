@@ -14,9 +14,7 @@ function isApplicationEnabledSync(bundleName: string): boolean
 
 以同步方法获取指定应用的禁用或使能状态。
 
-**起始版本：** 23
-
-<!--Device-bundleManager-function isApplicationEnabledSync(bundleName: string): boolean--><!--Device-bundleManager-function isApplicationEnabledSync(bundleName: string): boolean-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -38,8 +36,8 @@ function isApplicationEnabledSync(bundleName: string): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
 **示例**
@@ -59,4 +57,3 @@ try {
   hilog.error(0x0000, 'testTag', 'isApplicationEnabledSync failed: %{public}s', message);
 }
 ```
-

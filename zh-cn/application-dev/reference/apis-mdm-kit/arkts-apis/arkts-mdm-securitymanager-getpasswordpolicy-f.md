@@ -20,8 +20,6 @@ function getPasswordPolicy(admin: Want): PasswordPolicy
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-securityManager-function getPasswordPolicy(admin: Want): PasswordPolicy--><!--Device-securityManager-function getPasswordPolicy(admin: Want): PasswordPolicy-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
@@ -40,10 +38,10 @@ function getPasswordPolicy(admin: Want): PasswordPolicy
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -80,8 +78,6 @@ function getPasswordPolicy(admin: Want | null): PasswordPolicy
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-securityManager-function getPasswordPolicy(admin: Want | null): PasswordPolicy--><!--Device-securityManager-function getPasswordPolicy(admin: Want | null): PasswordPolicy-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
@@ -100,10 +96,10 @@ function getPasswordPolicy(admin: Want | null): PasswordPolicy
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -114,8 +110,7 @@ try {
   // 参数需根据实际情况进行替换
   let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy(null);
   console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

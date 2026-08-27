@@ -3,22 +3,18 @@
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
 ## minimizeAll
 
 ```TypeScript
-function minimizeAll(id: long, callback: AsyncCallback<void>): void
+function minimizeAll(id: number, callback: AsyncCallback<void>): void
 ```
 
 最小化指定ID的屏幕中的所有主窗口。
 
-**起始版本：** 23
-
-<!--Device-window-function minimizeAll(id: long, callback: AsyncCallback<void>): void--><!--Device-window-function minimizeAll(id: long, callback: AsyncCallback<void>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -28,20 +24,18 @@ function minimizeAll(id: long, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | long | 是 | 显示设备[Display](arkts-arkui-display-displaystate-e.md)的ID号，该参数仅支持整数输入。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调信息。 |
+| id | number | 是 | 显示设备[Display](arkts-arkui-display-displaystate-e.md)的ID号，该参数仅支持整数输入。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities.<br>**适用版本：** 12+ |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities.<br>**适用版本：** 12+ |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { display } from '@kit.ArkUI';
@@ -68,45 +62,16 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { display } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let displayClass: display.Display | null = null;
-displayClass = display.getDefaultDisplaySync();
-
-try {
-  if (!displayClass) {
-    console.error('displayClass is null');
-  } else {
-    window.minimizeAll(displayClass.id, (err: Error) => {
-      const errCode: number = err?.code;
-      if (errCode) {
-        console.error(`Failed to minimize all windows. Cause code: ${err?.code}, message: ${err?.message}`);
-        return;
-      }
-      console.info('Succeeded in minimizing all windows.');
-    });
-  }
-} catch (err: Error) {
-  console.error(`Failed to minimize all windows. Cause code: ${err.code}, message: ${err.message}`);
-}
-```
-
 
 ## minimizeAll
 
 ```TypeScript
-function minimizeAll(id: long): Promise<void>
+function minimizeAll(id: number): Promise<void>
 ```
 
 最小化指定ID的屏幕中的所有主窗口，使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-window-function minimizeAll(id: long): Promise<void>--><!--Device-window-function minimizeAll(id: long): Promise<void>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -116,25 +81,23 @@ function minimizeAll(id: long): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | long | 是 | 显示设备[Display](arkts-arkui-display-displaystate-e.md)的ID号，该参数仅支持整数输入。 |
+| id | number | 是 | 显示设备[Display](arkts-arkui-display-displaystate-e.md)的ID号，该参数仅支持整数输入。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities.<br>**适用版本：** 12+ |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities.<br>**适用版本：** 12+ |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { display } from '@kit.ArkUI';
@@ -154,25 +117,3 @@ try {
   console.error(`Failed to minimize all windows. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { display } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let displayClass: display.Display | null = null;
-displayClass = display.getDefaultDisplaySync();
-
-try {
-  let promise = window.minimizeAll(displayClass.id);
-  promise.then(() => {
-    console.info('Succeeded in minimizing all windows.');
-  }).catch((err: Error) => {
-    console.error(`Failed to minimize all windows. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (err: Error) {
-  console.error(`Failed to minimize all windows. Cause code: ${err.code}, message: ${err.message}`);
-}
-```
-

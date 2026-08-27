@@ -26,4 +26,3 @@ import { CompletionHandlerForAbilityStartCallback, AbilityStartFailureCode } fro
 | --- | --- |
 | [OnRequestFailureFn](arkts-ability-onrequestfailurefn-t.md) | 拉起指定类型的Ability组件失败时的回调函数类型。 |
 | [OnRequestSuccessFn](arkts-ability-onrequestsuccessfn-t.md) | 拉起指定类型的Ability组件成功时的回调函数类型。 |
-

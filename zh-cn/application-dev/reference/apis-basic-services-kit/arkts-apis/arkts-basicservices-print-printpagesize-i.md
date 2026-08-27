@@ -2,9 +2,7 @@
 
 定义打印页面尺寸的接口。
 
-**起始版本：** 23
-
-<!--Device-print-interface PrintPageSize--><!--Device-print-interface PrintPageSize-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -17,16 +15,14 @@ import { print } from '@kit.BasicServicesKit';
 ## height
 
 ```TypeScript
-height: int
+height: number
 ```
 
 表示页面高度，单位：毫米。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PrintPageSize-height: int--><!--Device-PrintPageSize-height: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -40,9 +36,7 @@ id: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PrintPageSize-id: string--><!--Device-PrintPageSize-id: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -56,25 +50,20 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PrintPageSize-name: string--><!--Device-PrintPageSize-name: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## width
 
 ```TypeScript
-width: int
+width: number
 ```
 
 表示页面宽度，单位：毫米。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PrintPageSize-width: int--><!--Device-PrintPageSize-width: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
-

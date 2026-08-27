@@ -2,51 +2,43 @@
 
 描述应用显存数据，包括gl和graph部分。
 
-**起始版本：** 23
-
-<!--Device-hidebug-interface GraphicsMemorySummary--><!--Device-hidebug-interface GraphicsMemorySummary-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## 导入模块
 
 ```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## gl
 
 ```TypeScript
-gl: int
+gl: number
 ```
 
 gl显存大小，RenderService渲染进程加载所需资源占用的内存，例如图片、纹理等，以KB为单位。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 21
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GraphicsMemorySummary-gl: int--><!--Device-GraphicsMemorySummary-gl: int-End-->
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## graph
 
 ```TypeScript
-graph: int
+graph: number
 ```
 
 graph显存大小，进程统计的DMA内存占用，包括直接通过接口申请的DMA buffer和通过allocator_host申请的DMA buffer，以KB为单位。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 21
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GraphicsMemorySummary-graph: int--><!--Device-GraphicsMemorySummary-graph: int-End-->
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
-

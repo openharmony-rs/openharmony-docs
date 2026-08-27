@@ -11,9 +11,9 @@
 
 ## 接口说明
 
-具体参数、返回值、错误码等描述，请参考对应的[cancel/apis-user-authentication-kit/js-apis-useriam-userauth.md#cancel10)。
+具体参数、返回值、错误码等描述，请参考对应的cancel。
 
-此处仅展示了取消认证操作的接口，在取消认证前，需要先发起认证，发起认证的接口列表、详细说明可参考[发起认证](start-authentication.md)章节和API文档。
+此处仅展示了取消认证操作的接口，在取消认证前，需要先发起认证，发起认证的接口列表、详细说明可参考发起认证章节和API文档。
 
 | 接口名称 | 功能描述 | 
 | -------- | -------- |
@@ -21,11 +21,11 @@
 
 ## 开发步骤
 
-1. [申请权限](prerequisites.md#申请权限)：ohos.permission.ACCESS_BIOMETRIC。
+1. 申请权限：ohos.permission.ACCESS_BIOMETRIC。
 
-2. 指定用户认证相关参数[AuthParam/apis-user-authentication-kit/js-apis-useriam-userauth.md#authparam10)（包括挑战值、认证类型[UserAuthType/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthtype8)列表和认证等级[AuthTrustLevel/apis-user-authentication-kit/js-apis-useriam-userauth.md#authtrustlevel8)），获取认证对象[UserAuthInstance/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthinstance10)，并调用[UserAuthInstance.start/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10)发起认证。此步骤详细说明可参考[发起认证](start-authentication.md)。
+2. 指定用户认证相关参数AuthParam（包括挑战值、认证类型UserAuthType列表和认证等级AuthTrustLevel），获取认证对象UserAuthInstance，并调用UserAuthInstance.start发起认证。此步骤详细说明可参考发起认证。
 
-3. 使用已经成功发起认证的UserAuthInstance对象调用[UserAuthInstance.cancel/apis-user-authentication-kit/js-apis-useriam-userauth.md#cancel10)接口取消本次认证。
+3. 使用已经成功发起认证的UserAuthInstance对象调用UserAuthInstance.cancel接口取消本次认证。
 
 示例代码为发起认证可信等级≥ATL3的人脸+锁屏口令认证后，取消认证请求：
 
@@ -78,4 +78,4 @@ cancelingUserAuthentication() {
 
 ## 示例代码
 
-  - [认证过程中取消认证](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [认证过程中取消认证](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)

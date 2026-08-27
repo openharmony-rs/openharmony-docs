@@ -2,9 +2,7 @@
 
 音振播放器选项。
 
-**起始版本：** 23
-
-<!--Device-audioHaptic-interface AudioHapticPlayerOptions--><!--Device-audioHaptic-interface AudioHapticPlayerOptions-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -24,9 +22,7 @@ muteAudio?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AudioHapticPlayerOptions-muteAudio?: boolean--><!--Device-AudioHapticPlayerOptions-muteAudio?: boolean-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -40,9 +36,6 @@ muteHaptics?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AudioHapticPlayerOptions-muteHaptics?: boolean--><!--Device-AudioHapticPlayerOptions-muteHaptics?: boolean-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
-

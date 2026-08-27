@@ -2,9 +2,7 @@
 
 记录Ability所在进程上次退出时的关键运行信息。
 
-**起始版本：** 23
-
-<!--Device-AbilityConstant-export interface LastExitDetailInfo--><!--Device-AbilityConstant-export interface LastExitDetailInfo-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -24,33 +22,29 @@ Ability上次退出时所在进程被kill的描述信息。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LastExitDetailInfo-exitMsg: string--><!--Device-LastExitDetailInfo-exitMsg: string-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## exitSubReason
 
 ```TypeScript
-exitSubReason: int
+exitSubReason: number
 ```
 
 Ability上次退出的子原因。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LastExitDetailInfo-exitSubReason: int--><!--Device-LastExitDetailInfo-exitSubReason: int-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -70,27 +64,23 @@ Ability上次退出时的原因，取值详见[应用终止事件reason字段说
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LastExitDetailInfo-killReason?: string--><!--Device-LastExitDetailInfo-killReason?: string-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## pid
 
 ```TypeScript
-pid: int
+pid: number
 ```
 
 Ability上次退出所在进程的进程号。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LastExitDetailInfo-pid: int--><!--Device-LastExitDetailInfo-pid: int-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -104,13 +94,11 @@ Ability上次退出所在进程的名称。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LastExitDetailInfo-processName: string--><!--Device-LastExitDetailInfo-processName: string-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -124,93 +112,106 @@ Ability上次退出时的进程状态。
 
 **类型：** appManager.ProcessState
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LastExitDetailInfo-processState?: appManager.ProcessState--><!--Device-LastExitDetailInfo-processState?: appManager.ProcessState-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## pss
 
 ```TypeScript
-pss: int
+pss: number
 ```
 
 Ability上次退出时所在进程实际使用的物理内存大小，单位KB。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LastExitDetailInfo-pss: int--><!--Device-LastExitDetailInfo-pss: int-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## rss
 
 ```TypeScript
-rss: int
+rss: number
 ```
 
 Ability上次退出时所在进程实际占用内存大小，单位KB。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LastExitDetailInfo-rss: int--><!--Device-LastExitDetailInfo-rss: int-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## timestamp
 
 ```TypeScript
-timestamp: long
+timestamp: number
 ```
 
 Ability上次退出时的时间戳。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LastExitDetailInfo-timestamp: long--><!--Device-LastExitDetailInfo-timestamp: long-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## uid
 
 ```TypeScript
-uid: int
+uid: number
 ```
 
 Ability上次退出所在应用的UID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LastExitDetailInfo-uid: int--><!--Device-LastExitDetailInfo-uid: int-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
+**示例**
+
+```TypeScript
+import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
+
+export default class MyAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    if (launchParam.lastExitDetailInfo) {
+      console.info(`pid: ${launchParam.lastExitDetailInfo.pid}
+      \n processName: ${launchParam.lastExitDetailInfo.processName}
+      \n uid: ${launchParam.lastExitDetailInfo.uid}
+      \n exitSubReason: ${launchParam.lastExitDetailInfo.exitSubReason}
+      \n exitMsg: ${launchParam.lastExitDetailInfo.exitMsg}
+      \n rss: ${launchParam.lastExitDetailInfo.rss}
+      \n pss: ${launchParam.lastExitDetailInfo.pss}
+      \n timestamp: ${launchParam.lastExitDetailInfo.timestamp}
+      \n processState: ${launchParam.lastExitDetailInfo.processState}
+      \n killReason: ${launchParam.lastExitDetailInfo?.killReason}.`
+      );
+    }
+  }
+}
+```

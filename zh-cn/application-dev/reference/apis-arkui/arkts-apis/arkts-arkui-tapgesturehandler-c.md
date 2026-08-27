@@ -6,8 +6,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class TapGestureHandler--><!--Device-unnamed-declare class TapGestureHandler-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,8 +26,6 @@ constructor(options?: TapGestureHandlerOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TapGestureHandler-constructor(options?: TapGestureHandlerOptions)--><!--Device-TapGestureHandler-constructor(options?: TapGestureHandlerOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,8 +49,6 @@ onAction(event: Callback<GestureEvent>): TapGestureHandler
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TapGestureHandler-onAction(event: Callback<GestureEvent>): TapGestureHandler--><!--Device-TapGestureHandler-onAction(event: Callback<GestureEvent>): TapGestureHandler-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -68,4 +62,3 @@ onAction(event: Callback<GestureEvent>): TapGestureHandler
 | 类型 | 说明 |
 | --- | --- |
 | [TapGestureHandler](arkts-arkui-tapgesturehandler-c.md) | 返回当前点击手势处理器对象。 |
-

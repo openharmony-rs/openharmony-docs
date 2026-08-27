@@ -10,4 +10,3 @@
 - [C API](c-apis/Readme-CN.md)<!--c-camera-kit-->
 - 错误码<!--camera-arkts-errcode-->
   - [Camera错误码](errorcode-camera.md)
-

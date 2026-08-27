@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-cloudSyncManager-interface TransferProgress--><!--Device-cloudSyncManager-interface TransferProgress-End-->
-
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 **系统接口：** 此接口为系统接口。
@@ -19,18 +17,16 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 ## failedCount
 
 ```TypeScript
-failedCount: int
+failedCount: number
 ```
 
 搬迁失败的文件个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TransferProgress-failedCount: int--><!--Device-TransferProgress-failedCount: int-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -50,8 +46,6 @@ state: TransferState
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TransferProgress-state: TransferState--><!--Device-TransferProgress-state: TransferState-End-->
-
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 **系统接口：** 此接口为系统接口。
@@ -70,8 +64,6 @@ stopReason: TransferStopReason
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TransferProgress-stopReason: TransferStopReason--><!--Device-TransferProgress-stopReason: TransferStopReason-End-->
-
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 **系统接口：** 此接口为系统接口。
@@ -79,18 +71,16 @@ stopReason: TransferStopReason
 ## successfulCount
 
 ```TypeScript
-successfulCount: int
+successfulCount: number
 ```
 
 已搬迁的文件个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TransferProgress-successfulCount: int--><!--Device-TransferProgress-successfulCount: int-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -99,18 +89,16 @@ successfulCount: int
 ## totalCount
 
 ```TypeScript
-totalCount: int
+totalCount: number
 ```
 
 待搬迁文件总个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TransferProgress-totalCount: int--><!--Device-TransferProgress-totalCount: int-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -119,18 +107,16 @@ totalCount: int
 ## totalSize
 
 ```TypeScript
-totalSize: long
+totalSize: number
 ```
 
 需要搬迁的文件总大小，取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。
 
-**类型：** long
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TransferProgress-totalSize: long--><!--Device-TransferProgress-totalSize: long-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -139,20 +125,17 @@ totalSize: long
 ## transferredSize
 
 ```TypeScript
-transferredSize: long
+transferredSize: number
 ```
 
 已搬迁的数据大小，取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。
 
-**类型：** long
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TransferProgress-transferredSize: long--><!--Device-TransferProgress-transferredSize: long-End-->
-
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 **系统接口：** 此接口为系统接口。
-

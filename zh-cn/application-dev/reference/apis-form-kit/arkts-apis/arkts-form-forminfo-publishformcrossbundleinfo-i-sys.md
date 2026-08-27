@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-formInfo-interface PublishFormCrossBundleInfo--><!--Device-formInfo-interface PublishFormCrossBundleInfo-End-->
-
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
@@ -30,8 +28,6 @@ callerBundleName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PublishFormCrossBundleInfo-callerBundleName: string--><!--Device-PublishFormCrossBundleInfo-callerBundleName: string-End-->
-
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
@@ -49,8 +45,6 @@ targetBundleName: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PublishFormCrossBundleInfo-targetBundleName: string--><!--Device-PublishFormCrossBundleInfo-targetBundleName: string-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -70,9 +64,6 @@ targetTemplateFormDetailId: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PublishFormCrossBundleInfo-targetTemplateFormDetailId: string--><!--Device-PublishFormCrossBundleInfo-targetTemplateFormDetailId: string-End-->
-
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
-

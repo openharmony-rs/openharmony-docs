@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-featureAbility-export enum AbilityWindowConfiguration--><!--Device-featureAbility-export enum AbilityWindowConfiguration-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## WINDOW_MODE_UNDEFINED
@@ -19,8 +17,6 @@ WINDOW_MODE_UNDEFINED = 0
 **起始版本：** 7
 
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-AbilityWindowConfiguration-WINDOW_MODE_UNDEFINED = 0--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_UNDEFINED = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -36,8 +32,6 @@ WINDOW_MODE_FULLSCREEN = 1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-AbilityWindowConfiguration-WINDOW_MODE_FULLSCREEN = 1--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_FULLSCREEN = 1-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## WINDOW_MODE_SPLIT_PRIMARY
@@ -51,8 +45,6 @@ WINDOW_MODE_SPLIT_PRIMARY = 100
 **起始版本：** 7
 
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-AbilityWindowConfiguration-WINDOW_MODE_SPLIT_PRIMARY = 100--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_SPLIT_PRIMARY = 100-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -68,8 +60,6 @@ WINDOW_MODE_SPLIT_SECONDARY = 101
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-AbilityWindowConfiguration-WINDOW_MODE_SPLIT_SECONDARY = 101--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_SPLIT_SECONDARY = 101-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## WINDOW_MODE_FLOATING
@@ -84,7 +74,12 @@ WINDOW_MODE_FLOATING = 102
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-AbilityWindowConfiguration-WINDOW_MODE_FLOATING = 102--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_FLOATING = 102-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
+**示例**
+
+```TypeScript
+import { featureAbility } from '@kit.AbilityKit';
+
+featureAbility.AbilityWindowConfiguration.WINDOW_MODE_UNDEFINED
+```

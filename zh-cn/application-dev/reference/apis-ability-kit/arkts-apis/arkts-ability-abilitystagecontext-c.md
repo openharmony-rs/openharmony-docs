@@ -4,9 +4,7 @@ AbilityStageContext是AbilityStage的上下文环境，继承自Context。 Abili
 
 **继承/实现关系：** AbilityStageContext extends Context
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare class AbilityStageContext--><!--Device-unnamed-declare class AbilityStageContext-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -20,13 +18,11 @@ config: Configuration
 
 **类型：** [Configuration](arkts-ability-app-ability-configuration-configuration-i.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AbilityStageContext-config: Configuration--><!--Device-AbilityStageContext-config: Configuration-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -40,13 +36,11 @@ AbilityStage对应的ModuleInfo对象。
 
 **类型：** [HapModuleInfo](arkts-ability-hapmoduleinfo-i.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AbilityStageContext-currentHapModuleInfo: HapModuleInfo--><!--Device-AbilityStageContext-currentHapModuleInfo: HapModuleInfo-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -66,7 +60,4 @@ launchElement?: ElementName
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AbilityStageContext-launchElement?: ElementName--><!--Device-AbilityStageContext-launchElement?: ElementName-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-

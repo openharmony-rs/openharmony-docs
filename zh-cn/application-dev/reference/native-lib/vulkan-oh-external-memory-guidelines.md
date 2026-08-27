@@ -26,17 +26,17 @@
 
 | 名称 | 描述 |
 | -------- | -------- |
-| [VkNativeBufferPropertiesOHOS](capi-vulkan-vknativebufferpropertiesohos.md) | 包含了NativeBuffer的属性。 |
-| [VkNativeBufferFormatPropertiesOHOS](capi-vulkan-vknativebufferformatpropertiesohos.md) | 包含了NativeBuffer的一些格式属性。 |
-| [VkImportNativeBufferInfoOHOS](capi-vulkan-vkimportnativebufferinfoohos.md) | 包含了OH_NativeBuffer结构体的指针。 |
-| [VkMemoryGetNativeBufferInfoOHOS](capi-vulkan-vkmemorygetnativebufferinfoohos.md) | 用于从Vulkan内存中获取OH_NativeBuffer。 |
-| [VkExternalFormatOHOS](capi-vulkan-vkexternalformatohos.md) | 表示外部定义的格式标识符。 |
+| VkNativeBufferPropertiesOHOS | 包含了NativeBuffer的属性。 |
+| VkNativeBufferFormatPropertiesOHOS | 包含了NativeBuffer的一些格式属性。 |
+| VkImportNativeBufferInfoOHOS | 包含了OH_NativeBuffer结构体的指针。 |
+| VkMemoryGetNativeBufferInfoOHOS | 用于从Vulkan内存中获取OH_NativeBuffer。 |
+| VkExternalFormatOHOS | 表示外部定义的格式标识符。 |
 
 ### 函数
 
 | 名称 | 描述 |
 | -------- | -------- |
-| VKAPI_ATTR VkResult VKAPI_CALL [vkGetNativeBufferPropertiesOHOS](capi-vulkan-ohos-h.md#vkgetnativebufferpropertiesohos) (VkDevice device, const struct OH_NativeBuffer \*buffer, [VkNativeBufferPropertiesOHOS](capi-vulkan-vknativebufferpropertiesohos.md) \*pProperties) | 获取OH_NativeBuffer属性。  |
+| VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeBufferPropertiesOHOS (VkDevice device, const struct OH_NativeBuffer \*buffer, VkNativeBufferPropertiesOHOS \*pProperties) | 获取OH_NativeBuffer属性。  |
 
 
 ## 开发步骤

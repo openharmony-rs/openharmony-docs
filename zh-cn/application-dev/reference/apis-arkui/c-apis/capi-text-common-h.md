@@ -25,7 +25,7 @@ Defines a set of text common enum and interface.
 | [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md) | ArkUI_TextMenuItemArray | 定义文本菜单项数组结构体，用于在文本选择菜单或上下文菜单场景中承载多个文本菜单项数据。 |
 | [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md) | ArkUI_TextEditMenuOptions | 定义可编辑文本菜单扩展项结构体类型，用于扩展文本编辑菜单的功能，适用于开发者需要自定义文本编辑菜单操作的场景。 |
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md) | ArkUI_TextSelectionMenuOptions | 定义自定义文本选择菜单的选项配置，支持菜单内容、样式和行为等自定义配置，适用于需要定制文本选择菜单交互的场景。 |
-| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md) | OH_ArkUI_DecorationStyleOptions | 定义装饰线样式。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md) | OH_ArkUI_DecorationStyleOptions | 定义装饰线样式，用于为文本添加装饰线效果，可设置装饰线的类型（如下划线、删除线、上划线等）、样式（如实线、虚线、波浪线等）和颜色。典型使用场景包括：为链接文本添加下划线、为已删除内容添加删除线、为重要文本添加上划线等。 |
 
 ### 枚举
 

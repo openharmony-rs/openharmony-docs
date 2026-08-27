@@ -2,9 +2,7 @@
 
 指定[DataShareHelper](#datasharehelperoptions系统接口)的可选参数，包含是否在代理模式下，以及非静默访问的拉起等待时间。
 
-**起始版本：** 23
-
-<!--Device-dataShare-interface DataShareHelperOptions--><!--Device-dataShare-interface DataShareHelperOptions-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -14,7 +12,6 @@
 
 ```TypeScript
 import { dataShare } from '@kit.ArkData';
-import { dataSharePredicates } from '@kit.ArkData';
 ```
 
 ## isProxy
@@ -29,11 +26,9 @@ isProxy?: boolean
 
 **默认值：** false
 
-**起始版本：** 23
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataShareHelperOptions-isProxy?: boolean--><!--Device-DataShareHelperOptions-isProxy?: boolean-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -42,22 +37,19 @@ isProxy?: boolean
 ## waitTime
 
 ```TypeScript
-waitTime?: int
+waitTime?: number
 ```
 
 拉起数据提供者进程的等待时间（单位：秒），默认值为2秒。
 
-**类型：** int
+**类型：** number
 
 **默认值：** 2
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataShareHelperOptions-waitTime?: int--><!--Device-DataShareHelperOptions-waitTime?: int-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **系统接口：** 此接口为系统接口。
-

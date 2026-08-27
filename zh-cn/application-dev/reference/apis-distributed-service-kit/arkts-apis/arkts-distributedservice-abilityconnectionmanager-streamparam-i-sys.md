@@ -1,10 +1,8 @@
 # StreamParam（系统接口）
 
-Streaming configuration parameters.
+流传输配置的参数。用于配置传输流的传输方式和参数。其中role参数区分发送流（SOURCE）和接收流（SINK）， 发送流需要配置bitrate和colorSpaceConversionTarget等参数。@interface StreamParam
 
-**起始版本：** 23
-
-<!--Device-abilityConnectionManager-interface StreamParam--><!--Device-abilityConnectionManager-interface StreamParam-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -19,18 +17,16 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ## bitrate
 
 ```TypeScript
-bitrate?: int
+bitrate?: number
 ```
 
 视频码率，默认80(kbps)。仅在发送端有效。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-StreamParam-bitrate?: int--><!--Device-StreamParam-bitrate?: int-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -42,15 +38,13 @@ bitrate?: int
 colorSpaceConversionTarget?: colorSpaceManager.ColorSpace
 ```
 
-转换的目标色彩空间。目前仅支持BT709_LIMIT。 如果发送端的视频格式为HDR且需要在传输时转换为SDR，则应设置此参数。
+表示转换的目标色彩空间。设置该参数后，视频流的色彩空间将转换为目标色彩空间， 用于适配不同设备的色彩显示需求。不传此参数时不进行色彩空间转换。
 
 **类型：** colorSpaceManager.ColorSpace
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-StreamParam-colorSpaceConversionTarget?: colorSpaceManager.ColorSpace--><!--Device-StreamParam-colorSpaceConversionTarget?: colorSpaceManager.ColorSpace-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -66,11 +60,9 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-StreamParam-name: string--><!--Device-StreamParam-name: string-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -86,13 +78,10 @@ role: StreamRole
 
 **类型：** [StreamRole](arkts-distributedservice-abilityconnectionmanager-streamrole-e-sys.md)
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-StreamParam-role: StreamRole--><!--Device-StreamParam-role: StreamRole-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **系统接口：** 此接口为系统接口。
-

@@ -18,29 +18,27 @@ function setAlternateIcon(alternateIconName: string): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-bundleManager-function setAlternateIcon(alternateIconName: string): Promise<void>--><!--Device-bundleManager-function setAlternateIcon(alternateIconName: string): Promise<void>-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alternateIconName | string | 是 | 要设置的备用图标名称。备用图标名称须在app.json5中 [alternateIcons标签](../../../quick-start/app-configuration-file.md#alternateicons标签)的name字段内。<br/> alternateIconName为空时表示取消备用图标。 |
+| alternateIconName | string | 是 | 要设置的备用图标名称。备用图标名称须在app.json5中 [alternateIcons标签](../../../quick-start/app-configuration-file.md#alternateicons标签)的name字段内。alternateIconName为空时表示取消备用图标。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17700310](../errorcode-bundle.md#17700310-设置备用图标失败) | Failed to set the alternate icon. |
 | [17700308](../errorcode-bundle.md#17700308-备用图标名称没有在配置文件中配置) | The alternateIconName must match the name field under alternateIcons in the app.json5 file. |
 | [17700309](../errorcode-bundle.md#17700309-当前没有设置备用图标) | No alternate icon is enabled. |
+| [17700310](../errorcode-bundle.md#17700310-设置备用图标失败) | Failed to set the alternate icon. |
 
 **示例**
 
@@ -63,4 +61,3 @@ try {
   hilog.error(0x0000, 'testTag', 'setAlternateIcon failed. Cause: %{public}s', message);
 }
 ```
-

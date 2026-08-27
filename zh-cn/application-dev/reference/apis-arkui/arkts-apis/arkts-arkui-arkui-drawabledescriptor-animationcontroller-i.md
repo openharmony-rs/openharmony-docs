@@ -4,8 +4,6 @@
 
 **起始版本：** 21
 
-<!--Device-unnamed-export interface AnimationController--><!--Device-unnamed-export interface AnimationController-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,15 +26,13 @@ getStatus(): AnimationStatus
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AnimationController-getStatus(): AnimationStatus--><!--Device-AnimationController-getStatus(): AnimationStatus-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| AnimationStatus | 动图的播放状态。包含4种状态：初始态、播放态、暂停态、停止态。 |
+| [AnimationStatus](arkts-arkui-animationstatus-e.md) | 动图的播放状态。包含4种状态：初始态、播放态、暂停态、停止态。 |
 
 **示例**
 
@@ -95,8 +91,6 @@ pause(): void
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AnimationController-pause(): void--><!--Device-AnimationController-pause(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例**
@@ -139,8 +133,6 @@ resume(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AnimationController-resume(): void--><!--Device-AnimationController-resume(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,8 +177,6 @@ start(): void
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AnimationController-start(): void--><!--Device-AnimationController-start(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例**
@@ -230,8 +220,6 @@ stop(): void
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AnimationController-stop(): void--><!--Device-AnimationController-stop(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例**
@@ -260,4 +248,3 @@ struct Example {
   }
 }
 ```
-

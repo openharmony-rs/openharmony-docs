@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare enum DragPreviewMode--><!--Device-unnamed-declare enum DragPreviewMode-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## AUTO
@@ -21,8 +19,6 @@ AUTO = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DragPreviewMode-AUTO = 1--><!--Device-DragPreviewMode-AUTO = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ DISABLE_SCALE = 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DragPreviewMode-DISABLE_SCALE = 2--><!--Device-DragPreviewMode-DISABLE_SCALE = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ENABLE_DEFAULT_SHADOW
@@ -57,8 +51,6 @@ ENABLE_DEFAULT_SHADOW = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DragPreviewMode-ENABLE_DEFAULT_SHADOW = 3--><!--Device-DragPreviewMode-ENABLE_DEFAULT_SHADOW = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,8 +68,6 @@ ENABLE_DEFAULT_RADIUS = 4
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DragPreviewMode-ENABLE_DEFAULT_RADIUS = 4--><!--Device-DragPreviewMode-ENABLE_DEFAULT_RADIUS = 4-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ENABLE_DRAG_ITEM_GRAY_EFFECT
@@ -93,8 +83,6 @@ ENABLE_DRAG_ITEM_GRAY_EFFECT = 5
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DragPreviewMode-ENABLE_DRAG_ITEM_GRAY_EFFECT = 5--><!--Device-DragPreviewMode-ENABLE_DRAG_ITEM_GRAY_EFFECT = 5-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,8 +100,6 @@ ENABLE_MULTI_TILE_EFFECT = 6
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DragPreviewMode-ENABLE_MULTI_TILE_EFFECT = 6--><!--Device-DragPreviewMode-ENABLE_MULTI_TILE_EFFECT = 6-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW
@@ -130,7 +116,4 @@ ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW = 7
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DragPreviewMode-ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW = 7--><!--Device-DragPreviewMode-ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW = 7-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

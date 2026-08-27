@@ -19,7 +19,7 @@
 
 ## 属性
 
-除支持[通用属性](js-components-common-attributes.md)外，还支持如下属性：
+除支持通用属性外，还支持如下属性：
 
 | 名称   | 类型     | 默认值  | 必填   | 描述                                       |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -29,13 +29,13 @@
 
 ## 样式
 
-除支持[通用样式](js-components-common-styles.md)外，还支持如下属性：
+除支持通用样式外，还支持如下属性：
 
 | 名称                           | 类型      | 默认值          | 必填   | 描述                                       |
 | ---------------------------- | ------- | ------------ | ---- | ---------------------------------------- |
 | object-fit                   | string  | cover        | 否    | 设置图片的缩放类型，不支持svg格式。可选值类型说明请见object-fit类型说明。 |
 | match-text-direction         | boolean | false        | 否    | 图片是否跟随文字方向，不支持svg格式。<br/>默认值：false，表示图片不跟随文字方向。                  |
-| fit-original-size            | boolean | false        | 否    | [image](js-components-basic-image.md)组件在未设置宽高的情况下是否适应图源尺寸，该属性为true时object-fit属性不生效，svg类型图源不支持该属性。<br/>默认值：false，表示[image](js-components-basic-image.md)组件在未设置宽高的情况下不适应图源尺寸。 |
+| fit-original-size            | boolean | false        | 否    | image组件在未设置宽高的情况下是否适应图源尺寸，该属性为true时object-fit属性不生效，svg类型图源不支持该属性。<br/>默认值：false，表示image组件在未设置宽高的情况下不适应图源尺寸。 |
 | object-position<sup>7+</sup> | string  | 0px&nbsp;0px | 否    | 设置图片在组件内展示的位置。<br/>设置类型有两种：<br/>1.&nbsp;像素，单位px，示例&nbsp;15px&nbsp;15px&nbsp;分别代表X轴和Y轴移动的位置。<br/>2.&nbsp;字符，可选值：<br/>-&nbsp;left&nbsp;图片显示在组件左侧。<br/>-&nbsp;top&nbsp;图片显示在组件顶部位置。<br/>-&nbsp;right&nbsp;图片显示在组件右侧位置。<br/>-&nbsp;bottom 图片显示在组件底部位置。 |
 
 **表1** object-fit 类型说明
@@ -66,7 +66,7 @@
 
 ## 事件
 
-除支持[通用事件](js-components-common-events.md)外，还支持如下事件：
+除支持通用事件外，还支持如下事件：
 
 | 名称       | 参数                                       | 描述                        |
 | -------- | ---------------------------------------- | ------------------------- |
@@ -75,7 +75,7 @@
 
 ## 方法
 
-支持[通用方法](js-components-common-methods.md)。
+支持通用方法。
 
 
 ## 示例

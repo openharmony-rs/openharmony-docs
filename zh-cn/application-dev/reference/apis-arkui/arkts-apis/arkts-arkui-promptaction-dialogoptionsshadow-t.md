@@ -12,12 +12,9 @@ declare type DialogOptionsShadow = ShadowOptions | ShadowStyle
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-promptAction-declare type DialogOptionsShadow = ShadowOptions | ShadowStyle--><!--Device-promptAction-declare type DialogOptionsShadow = ShadowOptions | ShadowStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | --- | --- |
-| ShadowOptions |  |
-| ShadowStyle |  |
-
+| [ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md) |  |
+| [ShadowStyle](../arkts-components/arkts-arkui-shadowstyle-e.md) |  |

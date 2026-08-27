@@ -25,4 +25,3 @@ import { Brightness, BrightnessModeResponse, BrightnessResponse, GetBrightnessMo
 | [SetBrightnessModeOptions](arkts-basicservices-system-brightness-setbrightnessmodeoptions-i.md) | 设置屏幕亮度模式的参数对象。 |
 | [SetBrightnessOptions](arkts-basicservices-system-brightness-setbrightnessoptions-i.md) | 设置屏幕亮度的参数对象。 |
 | [SetKeepScreenOnOptions](arkts-basicservices-system-brightness-setkeepscreenonoptions-i.md) | 设置屏幕常亮的参数对象。 |
-

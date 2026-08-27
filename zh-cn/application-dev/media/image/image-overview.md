@@ -18,11 +18,11 @@
 ## 基础概念
 在开发前，需要了解以下基础概念：
 
-- [PixelMap/apis-image-kit/arkts-apis-image-PixelMap.md)
+- PixelMap
 
-  位图对象。可用于读取或写入像素数据，可以进行裁剪、缩放、平移、旋转、镜像等操作，并可直接传给[Image组件](../../ui/arkts-graphics-display.md)用于显示。还提供了获取图片信息、获取和设置图片色域、HDR元数据的方法。
+  位图对象。可用于读取或写入像素数据，可以进行裁剪、缩放、平移、旋转、镜像等操作，并可直接传给Image组件用于显示。还提供了获取图片信息、获取和设置图片色域、HDR元数据的方法。
 
-- [Picture/apis-image-kit/arkts-apis-image-Picture.md)
+- Picture
   
   多图对象。包含主图、辅助图和元数据。其中，主图包含了主要图像信息；辅助图用于存储与主图相关的附加信息；元数据用于存储与图片相关的其他信息。Picture提供获取主图、合成HDR图、获取辅助图、设置辅助图、获取元数据、设置元数据等方法。
 
@@ -40,13 +40,13 @@
 
 ## 使用方式
 
-Image Kit提供了丰富的图片处理能力，开发者可按需灵活使用。既可以完整调用图片解码、编辑处理、编码的全流程；也可以图片解码后不做处理，直接将解码得到的PixelMap传给[Image组件](../../ui/arkts-graphics-display.md)显示。解码、编码过程中均提供了丰富的选项参数，可以满足各种实际开发场景的需求。
+Image Kit提供了丰富的图片处理能力，开发者可按需灵活使用。既可以完整调用图片解码、编辑处理、编码的全流程；也可以图片解码后不做处理，直接将解码得到的PixelMap传给Image组件显示。解码、编码过程中均提供了丰富的选项参数，可以满足各种实际开发场景的需求。
 
-Image Kit支持对解码得到的PixelMap进行[位图操作](../image/image-pixelmap-operation.md)，对目标图片中的部分区域进行处理；实现[图像变换](../image/image-transformation.md)，可以对图片做裁剪、缩放、偏移、旋转、翻转、设置透明度等变换。
+Image Kit支持对解码得到的PixelMap进行位图操作，对目标图片中的部分区域进行处理；实现图像变换，可以对图片做裁剪、缩放、偏移、旋转、翻转、设置透明度等变换。
 
-Image Kit支持通过[ImageEffect](../image/image-effect-guidelines.md)为图片添加滤镜效果。
+Image Kit支持通过ImageEffect为图片添加滤镜效果。
 
-Image Kit还提供了读取和[编辑图片EXIF信息](../image/image-tool.md)的能力，可以获取和配置图片文件中的附加属性，如：宽、高、旋转方向等图片基本信息，光圈、焦距等图片拍照参数，经度、纬度等图片GPS信息等。
+Image Kit还提供了读取和编辑图片EXIF信息的能力，可以获取和配置图片文件中的附加属性，如：宽、高、旋转方向等图片基本信息，光圈、焦距等图片拍照参数，经度、纬度等图片GPS信息等。
 
 图片解码和图片编码的流程如图1和图2所示。图片解码得到的PixelMap可以直接用于图片显示、图片编辑和处理。
 
@@ -63,18 +63,18 @@ Image Kit还提供了读取和[编辑图片EXIF信息](../image/image-tool.md)�
 
 - **读写权限限制：**
 
-  在图片处理中，可能需要使用用户图片，应用需要向用户申请对应的读写操作权限才能保证功能的正常运行，申请方式请参考[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+  在图片处理中，可能需要使用用户图片，应用需要向用户申请对应的读写操作权限才能保证功能的正常运行，申请方式请参考向用户申请授权。
 
 - **选择合适的C API接口：**
   
-  Image Kit当前提供了两套C API接口，分别为依赖于JS对象的C API（[Image/apis-image-kit/capi-image.md)）和不依赖于JS对象的C API（[Image_NativeModule/apis-image-kit/capi-image-nativemodule.md)）。
+  Image Kit当前提供了两套C API接口，分别为依赖于JS对象的C API（Image）和不依赖于JS对象的C API（Image_NativeModule）。
   - 依赖于JS对象的C接口
   
-    这类接口可以完成图片编解码，图片接收器，处理图像数据等功能，相关示例代码可以参考[图片开发指导(依赖JS对象)(C/C++)](image-decoding-native.md)节点下的内容。开发者可查看[Image/apis-image-kit/capi-image.md)模块下的C API，确认API范围。这部分API在API version 11之前发布，在后续的版本不再增加新功能，**不再推荐使用**。
+    这类接口可以完成图片编解码，图片接收器，处理图像数据等功能，相关示例代码可以参考图片开发指导(依赖JS对象)(C/C++)节点下的内容。开发者可查看Image模块下的C API，确认API范围。这部分API在API version 11之前发布，在后续的版本不再增加新功能，**不再推荐使用**。
 
   - 不依赖于JS对象的C接口
   
-    这类接口除了提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考[图片开发指导(C/C++)](image-source-c.md)节点下的内容。开发者可查看[Image_NativeModule/apis-image-kit/capi-image-nativemodule.md)模块下的C API，确认API范围。这部分API从API version 12开始支持，并将持续演进，**推荐开发者使用**。
+    这类接口除了提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考图片开发指导(C/C++)节点下的内容。开发者可查看Image_NativeModule模块下的C API，确认API范围。这部分API从API version 12开始支持，并将持续演进，**推荐开发者使用**。
 
   > **注意：**
   >
@@ -84,7 +84,7 @@ Image Kit还提供了读取和[编辑图片EXIF信息](../image/image-tool.md)�
 
 ## 与相关Kit的关系
 
-Image Kit提供图片编解码、图片接收、图片编辑和处理等能力，为Image组件、图库以及其他有图片相关需求的应用提供支撑。图片解码得到的PixelMap可以传给[Image组件](../../ui/arkts-graphics-display.md)显示。通过[ImageReceiver/apis-image-kit/arkts-apis-image-ImageReceiver.md)（图片接收）可以实现[相机预览流二次处理](../camera/native-camera-preview-imageReceiver.md)。
+Image Kit提供图片编解码、图片接收、图片编辑和处理等能力，为Image组件、图库以及其他有图片相关需求的应用提供支撑。图片解码得到的PixelMap可以传给Image组件显示。通过ImageReceiver（图片接收）可以实现相机预览流二次处理。
 
 ## 相关实例
 

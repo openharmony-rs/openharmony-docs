@@ -10,7 +10,7 @@
 
 ## 下载full-SDK
 
-full-SDK需要手动下载。请参考[版本说明书](../../release-notes/OpenHarmony-v3.2-beta2.md)中的获取方式，从镜像站点获取所需的操作系统的full-SDK。
+full-SDK需要手动下载。请参考版本说明书中的获取方式，从镜像站点获取所需的操作系统的full-SDK。
 
 
 

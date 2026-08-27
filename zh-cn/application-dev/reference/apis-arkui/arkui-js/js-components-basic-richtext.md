@@ -16,17 +16,17 @@
 
 ## 属性
 
-仅支持[通用属性](js-components-common-attributes.md)中的id、style和class属性。
+仅支持通用属性中的id、style和class属性。
 
 
 ## 样式
 
-仅支持[通用样式](js-components-common-styles.md)中的display和visibility样式。
+仅支持通用样式中的display和visibility样式。
 
 
 ## 事件
 
-除支持[通用事件](js-components-common-events.md)外，还支持如下事件：
+除支持通用事件外，还支持如下事件：
 
 | 名称 | 参数 | 描述 |
 | -------- | -------- | -------- |

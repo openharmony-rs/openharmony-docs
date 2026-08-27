@@ -4,6 +4,8 @@
 
 提供基础DDK接口所使用的Base DDK类型、枚举值和数据结构。
 
+**引用文件：** <ddk/ddk_types.h>
+
 **库：** libddk_base.z.so
 
 **系统能力：** SystemCapability.Driver.DDK.Extension

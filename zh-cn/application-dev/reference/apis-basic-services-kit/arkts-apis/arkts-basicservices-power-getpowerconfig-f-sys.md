@@ -20,8 +20,6 @@ function getPowerConfig(sceneName: string): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-power-function getPowerConfig(sceneName: string): string--><!--Device-power-function getPowerConfig(sceneName: string): string-End-->
-
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -44,8 +42,8 @@ function getPowerConfig(sceneName: string): string
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [4900400](../errorcode-power.md#4900400-接口入参无效) | Invalid parameter. Possible causes: 1. The sceneName parameter is an empty string; 2. The length of sceneName parameter exceeds 128 bytes. |
 | [4900101](../errorcode-power.md#4900101-连接服务失败) | Failed to connect to the service. |
+| [4900400](../errorcode-power.md#4900400-接口入参无效) | Invalid parameter. Possible causes: 1. The sceneName parameter is an empty string; 2. The length of sceneName parameter exceeds 128 bytes. |
 | [4900501](../errorcode-power.md#4900501-读电源配置值失败) | Failed to read the power configuration value. |
 
 **示例**
@@ -54,8 +52,7 @@ function getPowerConfig(sceneName: string): string
 try {
     let configVal = power.getPowerConfig('scene_name_test');
     console.info('get power config success, configVal: ' + configVal);
-} catch(err) {
-    console.error('get power config failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to get power config. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

@@ -6,25 +6,25 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-使用[SoundPool](media-kit-intro.md#soundpool)（音频池）提供的接口，可以实现低时延短音播放。
+使用SoundPool（音频池）提供的接口，可以实现低时延短音播放。
 
 当应用开发时，经常需要使用一些急促简短的音效（如相机快门音效、系统通知音效等），此时建议调用SoundPool，实现一次加载，多次低时延播放。
 
 SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小超过1MB的长音频将截取前面的1MB大小数据进行播放，这相当于44.1kHz的16bit位深的立体声下约5.6秒的音频时长（在较低采样率或单声道配置下，持续时间会相应延长）。
 
-本开发指导将以SoundPool进行一次低时延播放音频的过程为例，向开发者讲解如何使用SoundPool。详细的API声明请参考[SoundPool (音频池)/apis-media-kit/js-apis-inner-multimedia-soundPool.md)。
+本开发指导将以SoundPool进行一次低时延播放音频的过程为例，向开发者讲解如何使用SoundPool。详细的API声明请参考SoundPool (音频池)。
 
-过程包括：创建SoundPool实例，加载音频资源（包括资源的解封装与解码：解码格式参考[音频解码支持](../avcodec/audio-decoding.md)），设置播放参数（循环模式/播放优先级等），播放控制（播放/停止），释放资源。
+过程包括：创建SoundPool实例，加载音频资源（包括资源的解封装与解码：解码格式参考音频解码支持），设置播放参数（循环模式/播放优先级等），播放控制（播放/停止），释放资源。
 
 在应用开发过程中，开发者应通过监听方法检查当前播放状态并按照一定顺序调用接口，执行对应操作，否则系统可能会抛出异常或生成其他未定义的行为。具体顺序可参考下列开发步骤及对应说明。
 
 > **说明：**
 >
-> 使用SoundPool播放短音频时，涉及音频焦点管控策略的问题，请参考[音频焦点指南](../audio/audio-playback-concurrency.md)。
+> 使用SoundPool播放短音频时，涉及音频焦点管控策略的问题，请参考音频焦点指南。
 
 ## 开发步骤及注意事项
 
-1. 调用[createSoundPool/apis-media-kit/arkts-apis-media-f.md#mediacreatesoundpool10-1)方法创建SoundPool实例。
+1. 调用createSoundPool方法创建SoundPool实例。
 
    ```ts
    import { media } from '@kit.MediaKit';
@@ -43,7 +43,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
    this.soundPool = await media.createSoundPool(14, audioRendererInfo); // 最大播放的流数为14。
    ```
 
-2. 调用[on('loadComplete')/apis-media-kit/js-apis-inner-multimedia-soundPool.md#onloadcomplete)方法，用于监听“资源加载完成”。
+2. 调用on('loadComplete')方法，用于监听“资源加载完成”。
 
    ```ts
    private soundId: number = 0;
@@ -81,7 +81,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 5. 调用load方法进行音频资源加载。
 
-    可以传入uri或fd加载资源，此处使用传入fd的方式为例，更多方法请参考[API文档/apis-media-kit/js-apis-inner-multimedia-soundPool.md#load)。
+    可以传入uri或fd加载资源，此处使用传入fd的方式为例，更多方法请参考API文档。
 
     当系统加载完毕音频资源文件的时候，会通过loadComplete回调，通知用户资源加载完成，请在收到回调之后，再进行后续的play操作。
 

@@ -14,11 +14,9 @@ function setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Prom
 
 设置指定应用的“允许获取本机通知”的开关状态。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
-
-<!--Device-notificationExtensionSubscription-function setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise<void>--><!--Device-notificationExtensionSubscription-function setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -35,21 +33,19 @@ function setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Prom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
+| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600022](../errorcode-notification.md#1600022-无效的包信息) | The specified bundle is invalid. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 let targetBundle: notificationExtensionSubscription.BundleOption =
@@ -63,20 +59,3 @@ notificationExtensionSubscription.setUserGrantedState(targetBundle, true).then((
   console.error(`setUserGrantedState fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let targetBundle: notificationExtensionSubscription.BundleOption =
-  {
-    // 应改为开发者需要查询的目标应用信息
-    bundle: 'com.example.testnotification',
-  };
-notificationExtensionSubscription.setUserGrantedState(targetBundle, true).then(() => {
-  console.info(`setUserGrantedState successfully.`);
-}).catch((err: Error): void => {
-  let error: BusinessError = err as BusinessError;
-  console.error(`setUserGrantedState fail, code is ${error.code}, message is ${error.message}`);
-});
-```
-

@@ -6,11 +6,11 @@
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
-不同设备本身的安全能力差异较大，一些小的嵌入式设备安全能力远弱于平板等设备类型。用户或者应用不同的文件数据有不同安全诉求，例如个人的健康信息和银行卡信息等不期望被弱设备读取。因此，OpenHarmony提供一套完整的数据分级、设备分级标准，并针对不同设备制定不同的数据流转策略，具体规则请参见[数据、设备安全分级](../database/access-control-by-device-and-data-level.md)。
+不同设备本身的安全能力差异较大，一些小的嵌入式设备安全能力远弱于平板等设备类型。用户或者应用不同的文件数据有不同安全诉求，例如个人的健康信息和银行卡信息等不期望被弱设备读取。因此，OpenHarmony提供一套完整的数据分级、设备分级标准，并针对不同设备制定不同的数据流转策略，具体规则请参见数据、设备安全分级。
 
 ## 接口说明
 
-API详细介绍请参见[ohos.file.securityLabel/apis-core-file-kit/js-apis-file-securityLabel.md)。
+API详细介绍请参见ohos.file.securityLabel。
 
 **表1** 设置文件数据等级，其中“√”表示支持。
 
@@ -27,7 +27,7 @@ API详细介绍请参见[ohos.file.securityLabel/apis-core-file-kit/js-apis-file
 
 ## 开发示例
 
-获取通用文件沙箱路径，并设置数据等级标签。示例中的context的获取方式请参见[获取UIAbility的上下文信息](../application-models/uiability-usage.md#获取uiability的上下文信息)。
+获取通用文件沙箱路径，并设置数据等级标签。示例中的context的获取方式请参见获取UIAbility的上下文信息。
 
 
 ```ts

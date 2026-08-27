@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare enum LayoutSafeAreaType--><!--Device-unnamed-declare enum LayoutSafeAreaType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SYSTEM
@@ -22,7 +20,4 @@ SYSTEM = 0
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LayoutSafeAreaType-SYSTEM = 0--><!--Device-LayoutSafeAreaType-SYSTEM = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

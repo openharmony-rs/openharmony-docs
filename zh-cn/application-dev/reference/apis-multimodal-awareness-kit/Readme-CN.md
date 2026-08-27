@@ -12,6 +12,7 @@
   - [记忆链接错误码](errorcode-metadataBinding.md)
   - [设备状态感知错误码](errorcode-deviceStatus.md)
   - [用户状态感知错误码](errorcode-userStatus.md)
+  - [车辆感知错误码](errorcode-carAwareness.md)
   <!--Del-->
   - [空间感知错误码](errorcode-spatialAwareness.md)
   - [屏上感知错误码](errorcode-onScreen.md)

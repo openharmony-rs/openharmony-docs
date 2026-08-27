@@ -26,7 +26,7 @@
 >**说明：**
 >
 > 1. 关于本文中示例，可参考：[提升应用冷启动速度示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Ability/Performance/Startup)。  
-> 2. 如何使用SmartPerf工具分析冷启动可参考：[应用冷启动分析](performance-optimization-using-smartperf-host.md#应用冷启动分析)。
+> 2. 如何使用SmartPerf工具分析冷启动可参考：应用冷启动分析。
 
 
 ## 缩短应用进程创建&初始化阶段耗时
@@ -322,7 +322,7 @@ export { SubPage } from './src/main/ets/components/mainpage/SubPage'; // 非冷�
 
 **【优化方案一】**  
 将HAR包的导出文件**Index.ets**进行拆分，**IndexAppStart.ets**文件仅导出首页相关文件，即**MainPage.ets**。**IndexOthers.ets**文件导出非首页相关文件，即**SubPage.ets。**  
-**优点**：使用此种方案优化后可以将冷启阶段（加载首页文件）与非冷启阶段（加载非首页文件）需要执行的.ets文件进行完全拆分，类比其他需优化的场景也可以使用本方案进行拆分。  
+**优点**：使用此种方案优化后可以将冷启动阶段（加载首页文件）与非冷启动阶段（加载非首页文件）需要执行的.ets文件进行完全拆分，类比其他需优化的场景也可以使用本方案进行拆分。  
 **缺点**：需保证拆分后IndexAppStart.ets中的导出文件不存在对于IndexOthers.ets中的导出文件的引用。
 
 【图一】拆分HAR导出文件  
@@ -390,8 +390,8 @@ export { SubPage } from './src/main/ets/components/mainpage/SubPage'; // 非冷�
     ```
 **【优化方案二】**  
 在首页的**Index.ets**文件中导入**MainPage.ets**时使用全路径展开。  
-**优点**：不需要新增文件来汇总导出所有冷启阶段文件。  
-**缺点**：引用时需要对所有冷启阶段文件进行路径展开，增加开发和维护成本。
+**优点**：不需要新增文件来汇总导出所有冷启动阶段文件。  
+**缺点**：引用时需要对所有冷启动阶段文件进行路径展开，增加开发和维护成本。
 
 【图二】首页导入冷启动文件时使用全路径展开  
 
@@ -422,7 +422,7 @@ struct Index {
 >**说明：**
 >
 >1. **上述两种优化方案默认MainPage中不存在对于SubPage中的import。**
->2. **当存在MainPage对于SubPage的直接import时，需要使用[动态import](../arkts-utils/arkts-dynamic-import.md)方法来进行优化。**
+>2. **当存在MainPage对于SubPage的直接import时，需要使用动态import方法来进行优化。**
 >3. 开发者可自行根据优化方案的优缺点权衡选择合适的优化方案。
 
 下面对优化前后启动性能进行对比分析。阶段起点为`UI Ability Launching`的开始点，阶段终点为应用首帧即`First Frame - App Phase`的开始点。  
@@ -451,13 +451,13 @@ struct Index {
 
 ### 使用延迟加载Lazy-Import减少冷启动冗余文件执行
 
-可以通过延迟加载 [lazy-import](../arkts-utils/arkts-lazy-import.md) 延缓对冷启动时暂不执行的冗余文件的加载，而在后续导出变量被真正使用时再同步加载执行文件，节省资源以提高应用冷启动性能。  
+可以通过延迟加载 lazy-import 延缓对冷启动时暂不执行的冗余文件的加载，而在后续导出变量被真正使用时再同步加载执行文件，节省资源以提高应用冷启动性能。  
 
-详细使用指导请参考[延迟加载lazy-import使用指导](Lazy-Import-Instructions.md)。
+详细使用指导请参考延迟加载lazy-import使用指导。
 
 ### 减少多个HSP/HAP对于相同HAR的引用
 
-在应用开发的过程中，可以使用[HSP](../quick-start/in-app-hsp.md)或[HAR](../quick-start/har-package.md)的共享包方式将同类的模块进行整合，用于实现多个模块或多个工程间共享ArkUI组件、资源等相关代码。
+在应用开发的过程中，可以使用HSP或HAR的共享包方式将同类的模块进行整合，用于实现多个模块或多个工程间共享ArkUI组件、资源等相关代码。
 
 由于共享包的动态和静态差异，在多HAP/HSP引用相同HAR包的情况下，会存在HAR包中的单例失效，从而影响到应用冷启动的性能。
 
@@ -554,7 +554,7 @@ struct Index {
 
 在应用启动流程中，系统会执行AbilityStage的生命周期回调函数。因此，不建议在这些回调函数中执行耗时过长的操作，耗时操作建议通过异步任务延迟处理或者放到其他线程执行。
 
-在这些生命周期回调里，推荐开发者只做必要的操作，详情可以参考：[AbilityStage组件管理器](../application-models/abilitystage.md)。
+在这些生命周期回调里，推荐开发者只做必要的操作，详情可以参考：AbilityStage组件管理器。
 
 以下为示例代码：
 
@@ -606,15 +606,15 @@ export default class MyAbilityStage extends AbilityStage {
 
 ### 非UI耗时操作并行化
 
-在应用启动流程中，主要聚焦在执行UI相关操作中，为了更快的能显示首页内容，不建议在主线程中执行非UI相关的耗时操作，耗时操作建议通过异步任务进行延迟处理或放到其他子线程中执行，线程并发方案可以参考：[TaskPool和Worker的对比实践](../arkts-utils/multi-thread-concurrency-overview.md)。  
+在应用启动流程中，主要聚焦在执行UI相关操作中，为了更快地能显示首页内容，不建议在主线程中执行非UI相关的耗时操作，耗时操作建议通过异步任务进行延迟处理或放到其他子线程中执行，线程并发方案可以参考：TaskPool和Worker的对比实践。  
 
-在冷启动过程中如果存在图片下载、网络请求前置数据、数据反序列化等非UI操作可以根据开发者实际情况移至子线程中进行，参考下面文章：[避免在主线程中执行耗时操作](avoid_time_consuming_operations_in_mainthread.md)。
+在冷启动过程中如果存在图片下载、网络请求前置数据、数据反序列化等非UI操作可以根据开发者实际情况移至子线程中进行，参考下面文章：避免在主线程中执行耗时操作。
 
 ### 避免在Ability生命周期回调接口进行耗时操作
 
 在应用启动流程中，系统会执行Ability的生命周期回调函数。因此，不建议在这些回调函数中执行耗时过长的操作，耗时操作建议通过异步任务延迟处理或者放到其他线程执行。
 
-在这些生命周期回调里，推荐开发者只做必要的操作，下面以UIAbility为例进行说明。关于UIAbility组件生命周期的详细说明，参见[UIAbility组件生命周期](../application-models/uiability-lifecycle.md)。
+在这些生命周期回调里，推荐开发者只做必要的操作，下面以UIAbility为例进行说明。关于UIAbility组件生命周期的详细说明，参见UIAbility组件生命周期。
 
 ```ts
 const LARGE_NUMBER = 10000000;
@@ -770,9 +770,9 @@ struct Index {
 
 ![](./figures/application_coldstart15.png)
 
-将网络请求提前至AbilityStage/UIAbility生命的onCreate()生命周期回调函数中，可以将首刷或二刷的时间提前，减少用户等待时间。此处为了体现性能收益，将网络请求放到了更早的AbilityStage的onCreate()生命周期回调中。
+将网络请求提前至AbilityStage/UIAbility的onCreate()生命周期回调函数中，可以将首刷或二刷的时间提前，减少用户等待时间。此处为了体现性能收益，将网络请求放到了更早的AbilityStage的onCreate()生命周期回调中。
 
-【优化后】网络请求提前至AbilityStage的onCreate()周期回调中。
+【优化后】网络请求提前至AbilityStage的onCreate()生命周期回调中。
 
 ![](./figures/application_coldstart16.png)
 
@@ -827,7 +827,7 @@ export function httpRequest() {
       }
     )
 }
-// 使用createPixelMap将ArrayBuffer类型的图片装换为PixelMap类型
+// 使用createPixelMap将ArrayBuffer类型的图片转换为PixelMap类型
 function transcodePixelMap(data: http.HttpResponse) {
   if (http.ResponseCode.OK === data.responseCode) {
     const imageData: ArrayBuffer = data.result as ArrayBuffer;
@@ -973,4 +973,4 @@ export let number = computeTask();
 
 ### 使用本地缓存首页数据
 
-使用本地缓存首页数据是优化应用性能的关键一环。它能有效缩短冷启动时的白屏或白块时间，显著提升用户体验。该策略通过预先存储并优先展示缓存中的首页数据，减少了对外部资源（如网络）的依赖，从而加快数据加载速度。当数据更新时，应用则智能地从网络等渠道获取最新内容，确保信息的时效性与准确性。使用本地缓存首页数据，不仅让应用响应更迅速，还显著优化了整体运行流畅度，为用户带来更加顺畅的体验。更多实现细节与性能提升分析，请参见[合理使用缓存提升性能](./reasonable_using_cache_improve_performance.md)。
+使用本地缓存首页数据是优化应用性能的关键一环。它能有效缩短冷启动时的白屏或白块时间，显著提升用户体验。该策略通过预先存储并优先展示缓存中的首页数据，减少了对外部资源（如网络）的依赖，从而加快数据加载速度。当数据更新时，应用则智能地从网络等渠道获取最新内容，确保信息的时效性与准确性。使用本地缓存首页数据，不仅让应用响应更迅速，还显著优化了整体运行流畅度，为用户带来更加顺畅的体验。更多实现细节与性能提升分析，请参见合理使用缓存提升性能。

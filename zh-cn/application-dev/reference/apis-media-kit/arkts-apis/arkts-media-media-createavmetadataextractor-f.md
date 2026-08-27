@@ -16,8 +16,6 @@ function createAVMetadataExtractor(): Promise<AVMetadataExtractor>
 
 **起始版本：** 11
 
-<!--Device-media-function createAVMetadataExtractor(): Promise<AVMetadataExtractor>--><!--Device-media-function createAVMetadataExtractor(): Promise<AVMetadataExtractor>-End-->
-
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **返回值：**
@@ -54,33 +52,6 @@ media.createAVMetadataExtractor().then((extractor: media.AVMetadataExtractor) =>
 ## createAVMetadataExtractor
 
 ```TypeScript
-function createAVMetadataExtractor(): Promise<AVMetadataExtractor | undefined>
-```
-
-Creates an **AVMetadataExtractor** instance. This API uses a promise to return the result.
-
-**起始版本：** 23
-
-<!--Device-media-function createAVMetadataExtractor(): Promise<AVMetadataExtractor | undefined>--><!--Device-media-function createAVMetadataExtractor(): Promise<AVMetadataExtractor | undefined>-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[AVMetadataExtractor](arkts-media-media-avmetadataextractor-i.md) \| undefined&gt; | A Promise instance used to return AVMetadataExtractor instance if the operation is successful; returns null otherwise. |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Returned by promise. |
-
-
-## createAVMetadataExtractor
-
-```TypeScript
 function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor>): void
 ```
 
@@ -88,15 +59,13 @@ function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor>)
 
 **起始版本：** 11
 
-<!--Device-media-function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor>): void--><!--Device-media-function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor>): void-End-->
-
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AVMetadataExtractor](arkts-media-media-avmetadataextractor-i.md)&gt; | 是 | 回调函数。当创建AVMetadataExtractor实例成功，err为undefined，data为获取到的 AVMetadataExtractor实例，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AVMetadataExtractor](arkts-media-media-avmetadataextractor-i.md)&gt; | 是 | 回调函数。当创建AVMetadataExtractor实例成功，err为undefined，data为获取到的 AVMetadataExtractor实例，否则为错误对象。 |
 
 **错误码：**
 
@@ -119,31 +88,3 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
   }
 });
 ```
-
-
-## createAVMetadataExtractor
-
-```TypeScript
-function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor | undefined>): void
-```
-
-Creates an **AVMetadataExtractor** instance. This API uses an asynchronous callback to return the result.
-
-**起始版本：** 23
-
-<!--Device-media-function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor | undefined>): void--><!--Device-media-function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor | undefined>): void-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AVMetadataExtractor](arkts-media-media-avmetadataextractor-i.md) \| undefined&gt; | 是 | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **AVMetadataExtractor** instance created; otherwise, **err** is an error object. |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Returned by callback. |
-

@@ -1,10 +1,8 @@
 # BusinessId（系统接口）
 
-业务ID枚举。业务ID是伴随设备支持的某个业务场景的唯一标识。不同的伴随设备由于认证安全性差异，支持的业务场景范围也不同，例如免解锁执行语音指令。 不同业务ID的伴随设备关系是独立的，互不干扰，可以独立添加、删除、认证。 当前伴随设备模块的业务包括锁屏解锁、解锁应用锁、语音指令在锁屏执行前的身份鉴权等业务场景。 业务的添加对于服务端设备支持的场景有要求，如多屏协同业务，要求服务端设备支持委托认证场景。
+业务ID枚举。业务ID是伴随设备支持的某个业务场景的唯一标识。不同的伴随设备由于认证安全性差异，支持的业务场景范围也不同，例如免解锁执行语音指令。不同业务ID的伴随设备关系是独立的，互不干扰，可以独立添加、删除、认证。当前伴随设备模块的业务包括锁屏解锁、解锁应用锁、语音指令在锁屏执行前的身份鉴权等业务场景。业务的添加对于服务端设备支持的场景有要求，如多屏协同业务，要求服务端设备支持委托认证场景。
 
 **起始版本：** 23
-
-<!--Device-companionDeviceAuth-enum BusinessId--><!--Device-companionDeviceAuth-enum BusinessId-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -22,8 +20,6 @@ DEFAULT = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BusinessId-DEFAULT = 0--><!--Device-BusinessId-DEFAULT = 0-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
@@ -40,9 +36,6 @@ VENDOR_BEGIN = 10000
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BusinessId-VENDOR_BEGIN = 10000--><!--Device-BusinessId-VENDOR_BEGIN = 10000-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
-

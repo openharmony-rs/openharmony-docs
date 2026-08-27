@@ -7,24 +7,24 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-以DH算法为例，生成随机密钥。具体的场景介绍及支持的算法规格，请参考[密钥生成支持的算法](huks-key-generation-overview.md#支持的算法)。
+以DH算法为例，生成随机密钥。具体的场景介绍及支持的算法规格，请参考密钥生成支持的算法。
 
 > **注意：**
 > 密钥别名中禁止包含个人数据等敏感信息。
 
 ## 开发步骤
 
-1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
+1. 指定密钥别名，密钥别名命名规范参考密钥生成介绍及算法规格。
 
 2. 初始化密钥属性集。
-   - 通过[HuksParam/apis-universal-keystore-kit/js-apis-huks.md#huksparam)封装密钥属性，搭配Array组成密钥属性集，并赋值给[HuksOptions/apis-universal-keystore-kit/js-apis-huks.md#huksoptions)中的properties字段。
-   - 密钥属性集中必须包含[HuksKeyAlg/apis-universal-keystore-kit/js-apis-huks.md#hukskeyalg)、[HuksKeySize/apis-universal-keystore-kit/js-apis-huks.md#hukskeysize)、[HuksKeyPurpose/apis-universal-keystore-kit/js-apis-huks.md#hukskeypurpose)属性，即必传TAG：HUKS_TAG_ALGORITHM、HUKS_TAG_PURPOSE、HUKS_TAG_KEY_SIZE。
+   - 通过HuksParam封装密钥属性，搭配Array组成密钥属性集，并赋值给HuksOptions中的properties字段。
+   - 密钥属性集中必须包含HuksKeyAlg、HuksKeySize、HuksKeyPurpose属性，即必传TAG：HUKS_TAG_ALGORITHM、HUKS_TAG_PURPOSE、HUKS_TAG_KEY_SIZE。
    
    > **注意：**
    >
    > 一个密钥只能有一类PURPOSE，并且生成密钥时指定的用途要与使用时的方式一致，否则会导致异常。
 
-3. 调用[generateKeyItem/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9)，传入密钥别名和密钥属性集，生成密钥。
+3. 调用generateKeyItem，传入密钥别名和密钥属性集，生成密钥。
 
 > **说明：**
 >

@@ -3,7 +3,7 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -13,7 +13,7 @@
 ## 开发步骤
 
 ### 申请蓝牙权限
-需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，具体操作请参考[声明权限](../../security/AccessToken/declare-permissions.md)和[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，具体操作请参考声明权限和向用户申请授权。
 
 ### 导入所需API模块
 导入connection、a2dp、 hfp、 hid、baseProfile、constant和错误码模块。
@@ -23,7 +23,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ### 订阅配对状态变化事件
-通过订阅配对状态变化事件，可以获取实时的配对状态。在整个配对过程中，涉及多种状态的跃迁，其中[BOND_STATE_BONDED/apis-connectivity-kit/js-apis-bluetooth-connection.md#bondstate)表示已配对。
+通过订阅配对状态变化事件，可以获取实时的配对状态。在整个配对过程中，涉及多种状态的跃迁，其中BOND_STATE_BONDED表示已配对。
 
 应用主动发起配对其他设备，或者其他设备主动配对本机设备，都可以通过此事件获取配对情况。
 ```ts
@@ -41,9 +41,9 @@ try {
 ```
 
 ### 发起配对
-若目标设备的配对状态是[BOND_STATE_INVALID/apis-connectivity-kit/js-apis-bluetooth-connection.md#bondstate)，则可以主动配对目标设备。
+若目标设备的配对状态是BOND_STATE_INVALID，则可以主动配对目标设备。
 
-- 目标设备可以通过发现设备流程获取，详情请参考：[传统蓝牙查找设备](br-discovery-development-guide.md)或者[低功耗蓝牙查找设备](ble-development-guide.md)。
+- 目标设备可以通过发现设备流程获取，详情请参考：传统蓝牙查找设备或者低功耗蓝牙查找设备。
 
 配对过程中，系统会弹出对话框。不同配对类型，对话框样式可能不一样，其中“确认配对密钥（Confirm Passkey）”模式如下图1。若用户同意授权，才能配对成功。
 
@@ -53,7 +53,7 @@ try {
 
 蓝牙设备的实际MAC地址属于用户的隐私信息，在发现设备过程中，蓝牙子系统会给每个蓝牙外设分配一个虚拟MAC地址，并保存该虚拟MAC地址与外设实际MAC地址的映射关系。
 
-若开发者不知道目标设备的[地址类型/apis-connectivity-kit/js-apis-bluetooth-common.md#bluetoothaddresstype)，推荐使用API version 20及以前的配对方式发起配对，详情请见[connection.pairDevice/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionpairdevice)。
+若开发者不知道目标设备的地址类型，推荐使用API version 20及以前的配对方式发起配对，详情请见connection.pairDevice。
 
 - 此配对方式不需要关注目标设备的MAC地址类型。
 
@@ -73,7 +73,7 @@ try {
 }
 ```
 
-若开发者已知目标设备的[地址类型/apis-connectivity-kit/js-apis-bluetooth-common.md#bluetoothaddresstype)，推荐使用API version 21开始支持的配对方式发起配对，详情请见[connection.pairDevice/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionpairdevice21)。
+若开发者已知目标设备的地址类型，推荐使用API version 21开始支持的配对方式发起配对，详情请见connection.pairDevice。
 
 - 此配对方式需要同时指定目标设备的MAC地址和地址类型。
 
@@ -96,10 +96,10 @@ try {
 ```
 
 ### 连接已配对设备的profile
-若应用配对完目标设备后，可以调用[connectAllowedProfiles/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionconnectallowedprofiles16)，发起连接该设备支持的profile能力（只包括A2DP、HFP和HID）。若应用需要使用SPP连接，请参考[连接和传输数据](spp-development-guide.md)。
+若应用配对完目标设备后，可以调用connectAllowedProfiles，发起连接该设备支持的profile能力（只包括A2DP、HFP和HID）。若应用需要使用SPP连接，请参考连接和传输数据。
 
 - 蓝牙子系统会在配对过程中查询和保存目标设备支持的所有profile能力。
-- 配对完成后，应用可以主动查询目标设备的profile能力，需调用[getRemoteProfileUuids/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectiongetremoteprofileuuids12)。若存在应用需要的能力，则可以在配对完成后30s内，发起连接目标设备的profile。
+- 配对完成后，应用可以主动查询目标设备的profile能力，需调用getRemoteProfileUuids。若存在应用需要的能力，则可以在配对完成后30s内，发起连接目标设备的profile。
 ```ts
 // 设备地址是已配对的设备
 let device = 'XX:XX:XX:XX:XX:XX';

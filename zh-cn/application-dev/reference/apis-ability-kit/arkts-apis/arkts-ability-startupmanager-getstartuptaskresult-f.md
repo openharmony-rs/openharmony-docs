@@ -18,15 +18,13 @@ function getStartupTaskResult(startupTask: string): Object
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-startupManager-function getStartupTaskResult(startupTask: string): Object--><!--Device-startupManager-function getStartupTaskResult(startupTask: string): Object-End-->
-
 **系统能力：** SystemCapability.Ability.AppStartup
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| startupTask | string | 是 | 启动任务[StartupTask](../../apis-na/arkts-apis/arkts-na-app-appstartup-startuptask-startuptask-c.md)的名称或预加载so名称。 |
+| startupTask | string | 是 | 启动任务[StartupTask](arkts-ability-app-appstartup-startuptask-startuptask-c.md)的名称或预加载so名称。 |
 
 **返回值：**
 
@@ -67,10 +65,8 @@ export default class EntryAbility extends UIAbility {
     let result = startupManager.getStartupTaskResult('StartupTask_001'); // 手动获取启动任务结果
     hilog.info(0x0000, 'testTag', 'getStartupTaskResult result = %{public}s', JSON.stringify(result));
     windowStage.loadContent('pages/Index', (err, data) => {
-      if (err) {
-        let error = err as BusinessError;
-        hilog.error(0x0000, 'testTag',
-          `Failed to load the content. Cause: error code ${error.code}, error msg ${error.message}`);
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', `Failed to load the content. Cause error code: ${err.code}, error msg: ${err.message}`);
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
@@ -78,33 +74,3 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-
-## getStartupTaskResult
-
-```TypeScript
-function getStartupTaskResult(startupTask: string): Any
-```
-
-获取指定启动任务或so预加载任务的执行结果。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-startupManager-function getStartupTaskResult(startupTask: string): Any--><!--Device-startupManager-function getStartupTaskResult(startupTask: string): Any-End-->
-
-**系统能力：** SystemCapability.Ability.AppStartup
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| startupTask | string | 是 | 启动任务[StartupTask](../../apis-na/arkts-apis/arkts-na-app-appstartup-startuptask-startuptask-c.md)的名称或预加载so名称。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Any | The result of specific startup task. |
-

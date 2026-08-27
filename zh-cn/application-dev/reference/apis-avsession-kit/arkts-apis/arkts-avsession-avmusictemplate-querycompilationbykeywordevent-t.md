@@ -10,8 +10,6 @@ type QueryCompilationByKeywordEvent = (keyword: string) => Promise<Compilation[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avMusicTemplate-type QueryCompilationByKeywordEvent = (keyword: string) => Promise<Compilation[]>--><!--Device-avMusicTemplate-type QueryCompilationByKeywordEvent = (keyword: string) => Promise<Compilation[]>-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
@@ -25,4 +23,3 @@ type QueryCompilationByKeywordEvent = (keyword: string) => Promise<Compilation[]
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[Compilation](arkts-avsession-avmusictemplate-compilation-i.md)[]&gt; | Promise对象，返回与关键字相关的合集数组。 |
-

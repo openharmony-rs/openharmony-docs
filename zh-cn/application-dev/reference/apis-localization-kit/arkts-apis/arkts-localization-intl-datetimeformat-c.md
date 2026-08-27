@@ -1,4 +1,4 @@
-# DateTimeFormat(国际化-Intl)
+# DateTimeFormat
 
 提供日期格式化的能力。
 
@@ -7,8 +7,6 @@
 **废弃版本：** 20
 
 **替代接口：** [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)
-
-<!--Device-intl-export class DateTimeFormat--><!--Device-intl-export class DateTimeFormat-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -36,8 +34,6 @@ constructor()
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-DateTimeFormat-constructor()--><!--Device-DateTimeFormat-constructor()-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **示例**
@@ -45,8 +41,45 @@ constructor()
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
 
+// 默认构造函数使用系统当前区域ID创建
+let locale = new intl.Locale();
+// 返回系统当前区域ID
+let localeID = locale.toString();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
 // 使用系统当前区域ID创建DateTimeFormat对象
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统当前区域ID创建NumberFormat对象
+let formatter: intl.NumberFormat = new intl.NumberFormat();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统区域创建Collator对象
+let collator = new intl.Collator();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统区域创建PluralRules对象
+let pluralRules = new intl.PluralRules();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统区域创建RelativeTimeFormat对象
+let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat();
 ```
 
 ## constructor
@@ -67,16 +100,14 @@ constructor(locale: string | Array<string>, options?: DateTimeOptions)
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-DateTimeFormat-constructor(locale: string | Array<string>, options?: DateTimeOptions)--><!--Device-DateTimeFormat-constructor(locale: string | Array<string>, options?: DateTimeOptions)-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string \| Array&lt;string&gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
-| options | DateTimeOptions | 否 | 创建时间日期格式化对象时可设置的配置项。 <br>若所有选项均未设置时，year、month、day三个属性的默认值为numeric。 <br>默认值：所有属性都取默认值时的配置项。 |
+| locale | string \| Array & lt;string & gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
+| options | DateTimeOptions | 否 | 创建时间日期格式化对象时可设置的配置项。 若所有选项均未设置时，year、month、day三个属性的默认值为numeric。 默认值：所有属性都取默认值时的配置项。 |
 
 **示例**
 
@@ -108,15 +139,13 @@ format(date: Date): string
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-DateTimeFormat-format(date: Date): string--><!--Device-DateTimeFormat-format(date: Date): string-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| date | Date | 是 | 时间日期。 <br>**说明：** <br>月份从0开始计数，0表示一月。 |
+| date | Date | 是 | 时间日期。    **说明：** 月份从0开始计数，0表示一月。 |
 
 **返回值：**
 
@@ -157,16 +186,14 @@ formatRange(startDate: Date, endDate: Date): string
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-DateTimeFormat-formatRange(startDate: Date, endDate: Date): string--><!--Device-DateTimeFormat-formatRange(startDate: Date, endDate: Date): string-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| startDate | Date | 是 | 时间日期的开始。 <br>**说明：** <br>月份从0开始计数，0表示一月。 |
-| endDate | Date | 是 | 时间日期的结束。 <br>**说明：** <br>月份从0开始计数，0表示一月。 |
+| startDate | Date | 是 | 时间日期的开始。    **说明：** 月份从0开始计数，0表示一月。 |
+| endDate | Date | 是 | 时间日期的结束。    **说明：** 月份从0开始计数，0表示一月。 |
 
 **返回值：**
 
@@ -204,8 +231,6 @@ resolvedOptions(): DateTimeOptions
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-DateTimeFormat-resolvedOptions(): DateTimeOptions--><!--Device-DateTimeFormat-resolvedOptions(): DateTimeOptions-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **返回值：**
@@ -225,4 +250,3 @@ let options: intl.DateTimeOptions = formatter.resolvedOptions();
 let dateStyle: string | undefined = options.dateStyle; // dateStyle = 'full'
 let timeStyle: string | undefined = options.timeStyle; // timeStyle = 'medium'
 ```
-

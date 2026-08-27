@@ -9,13 +9,18 @@
 
 ## 功能介绍
 
-应用退到后台或进程终止后，仍然有一些提醒用户的定时类通知，为满足此类功能场景，系统提供了代理提醒的能力。当应用退至后台或进程终止后，系统会代理应用做定时提醒。当前支持的提醒类型包括：倒计时、日历和闹钟。
+应用退到后台或进程终止后，仍然有一些提醒用户的定时类通知，为满足此类功能场景，系统提供了代理提醒的能力。当应用退至后台或进程终止后，系统会代理应用做定时提醒。当前支持的提醒类型包括：倒计时、日历和闹钟。<!--RP1--><!--RP1End-->
 
 ## 约束与限制
 
+<!--RP3--><!--RP3End-->
 
-- **个数限制**：一个普通应用支持最多30个有效提醒，一个系统应用支持最多10000个有效提醒。整个系统最多支持12000个有效提醒。
-
+<!--RP2-->
+- **个数限制**：
+  - API版本26.0.0及以上：单个普通应用最多支持64个提醒。
+  - API version 25及以下：单个普通应用最多支持30个提醒。
+  - 一个系统应用支持最多10000个有效提醒。整个系统最多支持12000个有效提醒。
+<!--RP2End-->
 
 > **说明：**
 >
@@ -26,7 +31,7 @@
 - **跳转限制**：点击提醒通知后跳转的应用必须是申请代理提醒的本应用。
 
 ## 与相关Kit的关系
-- 当到达设置的提醒时间点后，代理提醒使用Notification Kit发布通知，通知会显示在通知中心，通知样式请参考[Notification Kit通知样式](../notification/notification-overview.md#通知样式)中的文本类型。
+- 当到达设置的提醒时间点后，代理提醒使用Notification Kit发布通知，通知会显示在通知中心，通知样式请参考Notification Kit通知样式中的文本类型。
 
 ## 模拟器支持情况
 
@@ -34,14 +39,14 @@
 
 ## 接口说明
 
-以下是代理提醒的相关接口，下表均以Promise形式为例，更多接口及使用方式请见[后台代理提醒/apis-backgroundtasks-kit/js-apis-reminderAgentManager.md)文档。
+以下是代理提醒的相关接口，下表均以Promise形式为例，更多接口及使用方式请见后台代理提醒文档。
 
 **表1** 主要接口
 | 接口名 | 描述 |
 | -------- | -------- |
 | publishReminder(reminderReq: ReminderRequest): Promise&lt;number&gt; | 发布后台代理提醒。 |
 | cancelReminder(reminderId: number): Promise&lt;void&gt; | 取消指定id的代理提醒。 |
-| getValidReminders(): Promise&lt;Array&lt;ReminderRequest&gt;&gt; | 获取当前应用设置的所有[有效（未过期）的代理提醒](#约束与限制)。 |
+| getValidReminders(): Promise&lt;Array&lt;ReminderRequest&gt;&gt; | 获取当前应用设置的所有有效（未过期）的代理提醒。 |
 | cancelAllReminders(): Promise&lt;void&gt; | 取消当前应用设置的所有代理提醒。 |
 | addNotificationSlot(slot: NotificationSlot): Promise&lt;void&gt; | 添加通知渠道。 |
 | removeNotificationSlot(slotType: notification.SlotType): Promise&lt;void&gt; | 删除指定的通知渠道类型。 |
@@ -49,15 +54,15 @@
 
 ## 开发步骤
 
-
+<!--RP4--><!--RP4End-->
 
 ### 申请权限
 
-申请ohos.permission.PUBLISH_AGENT_REMINDER权限，配置方式请参阅[声明权限](../security/AccessToken/declare-permissions.md)。
+申请ohos.permission.PUBLISH_AGENT_REMINDER权限，配置方式请参阅声明权限。
 
 ### 请求通知授权
 
-[请求通知授权](../notification/notification-enable.md)。获得用户授权后，才能使用代理提醒功能。
+请求通知授权。获得用户授权后，才能使用代理提醒功能。
 
 ### 功能开发
 
@@ -99,7 +104,7 @@
 
    - 定义日历实例。
      
-      <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) --> 
+      <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->  
       
       ``` TypeScript
       let calendar: reminderAgentManager.ReminderRequestCalendar = {
@@ -107,7 +112,7 @@
         dateTime: {
           // 指明提醒的目标时间
           year: date.getFullYear(),
-          month: date.getUTCMonth() + 1,
+          month: date.getMonth() + 1,
           day: date.getDate(),
           hour: date.getHours(),
           minute: date.getMinutes(),

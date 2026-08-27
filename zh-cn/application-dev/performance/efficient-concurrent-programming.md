@@ -11,10 +11,10 @@
 ArkTS支持异步并发和多线程并发。
 
 - 使用异步并发能力进行开发
-    - [异步并发](../arkts-utils/async-concurrency-overview.md)
+    - 异步并发
 - 使用多线程并发能力进行开发
-    - [多线程并发概述](../arkts-utils/multi-thread-concurrency-overview.md)
-    - [TaskPool和Worker的对比](../arkts-utils/taskpool-vs-worker.md)
-    - [CPU密集型任务开发指导](../arkts-utils/cpu-intensive-task-development.md)
-    - [I/O密集型任务开发指导](../arkts-utils/io-intensive-task-development.md)
-    - [同步任务开发指导](../arkts-utils/sync-task-development.md)
+    - 多线程并发概述
+    - TaskPool和Worker的对比
+    - CPU密集型任务开发指导
+    - I/O密集型任务开发指导
+    - 同步任务开发指导

@@ -2,9 +2,7 @@
 
 图片推荐选项(基于图片数据分析结果，依赖设备适配)。
 
-**起始版本：** 26.0.0
-
-<!--Device-photoAccessHelper-class RecommendationOptions--><!--Device-photoAccessHelper-class RecommendationOptions-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -20,15 +18,13 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 defaultRecommendationType?: RecommendationType
 ```
 
-表示打开Picker直接显示的推荐标签。需要配置recommendationTypeList后，该配置才生效。 如果该标签存在，则默认显示该标签页。 如果该标签不存在，则默认显示“全部”标签页。
+表示打开Picker直接显示的推荐标签。需要配置recommendationTypeList后，该配置才生效。如果该标签存在，则默认显示该标签页。如果该标签不存在，则默认显示“全部”标签页。
 
 **类型：** [RecommendationType](arkts-medialibrary-photoaccesshelper-recommendationtype-e.md)
 
-**起始版本：** 26.0.0
+**起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-RecommendationOptions-defaultRecommendationType?: RecommendationType--><!--Device-RecommendationOptions-defaultRecommendationType?: RecommendationType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -44,13 +40,10 @@ recommendationTypeList?: Array<RecommendationType>
 
 **类型：** Array&lt;[RecommendationType](arkts-medialibrary-photoaccesshelper-recommendationtype-e.md)&gt;
 
-**起始版本：** 26.0.0
+**起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-RecommendationOptions-recommendationTypeList?: Array<RecommendationType>--><!--Device-RecommendationOptions-recommendationTypeList?: Array<RecommendationType>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

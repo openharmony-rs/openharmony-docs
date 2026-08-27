@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-remoteDevice-interface PairingStateParam--><!--Device-remoteDevice-interface PairingStateParam-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 ## 导入模块
@@ -28,8 +26,6 @@ address: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PairingStateParam-address: string--><!--Device-PairingStateParam-address: string-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 ## preState
@@ -45,8 +41,6 @@ preState: PairingState
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PairingStateParam-preState: PairingState--><!--Device-PairingStateParam-preState: PairingState-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -64,8 +58,6 @@ reason: PairingReason
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PairingStateParam-reason: PairingReason--><!--Device-PairingStateParam-reason: PairingReason-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 ## reasonMsg
@@ -81,8 +73,6 @@ reasonMsg?: string
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PairingStateParam-reasonMsg?: string--><!--Device-PairingStateParam-reasonMsg?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -100,7 +90,4 @@ state: PairingState
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PairingStateParam-state: PairingState--><!--Device-PairingStateParam-state: PairingState-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

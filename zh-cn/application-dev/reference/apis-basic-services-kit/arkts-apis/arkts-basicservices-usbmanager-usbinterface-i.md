@@ -2,9 +2,7 @@
 
 一个[USBConfiguration](arkts-basicservices-usbmanager-usbconfiguration-i.md)中可以含有多个USBInterface，每个USBInterface提供一个功能。
 
-**起始版本：** 23
-
-<!--Device-usbManager-interface USBInterface--><!--Device-usbManager-interface USBInterface-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -12,38 +10,33 @@
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## alternateSetting
 
 ```TypeScript
-alternateSetting: int
+alternateSetting: number
 ```
 
 接口的替代设置索引号，用于在同一个接口的多个可选描述符中进行切换选择。0表示默认设置，其他值表示特定的替代设置。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBInterface-alternateSetting: int--><!--Device-USBInterface-alternateSetting: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
 ## clazz
 
 ```TypeScript
-clazz: int
+clazz: number
 ```
 
 设备类型。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBInterface-clazz: int--><!--Device-USBInterface-clazz: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -57,25 +50,21 @@ endpoints: Array<USBEndpoint>
 
 **类型：** Array&lt;USBEndpoint&gt;
 
-**起始版本：** 23
-
-<!--Device-USBInterface-endpoints: Array<USBEndpoint>--><!--Device-USBInterface-endpoints: Array<USBEndpoint>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
 ## id
 
 ```TypeScript
-id: int
+id: number
 ```
 
 接口的唯一标识。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBInterface-id: int--><!--Device-USBInterface-id: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -89,41 +78,34 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-USBInterface-name: string--><!--Device-USBInterface-name: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
 ## protocol
 
 ```TypeScript
-protocol: int
+protocol: number
 ```
 
 接口的协议。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBInterface-protocol: int--><!--Device-USBInterface-protocol: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
 ## subClass
 
 ```TypeScript
-subClass: int
+subClass: number
 ```
 
 设备子类。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBInterface-subClass: int--><!--Device-USBInterface-subClass: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
-

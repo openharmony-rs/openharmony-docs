@@ -17,7 +17,7 @@ ImageEffect提供了一系列接口用于图像的编辑。开发者可以通过
 
 ## 接口说明
 
-详细的接口说明请参考[ImageEffect/apis-image-kit/capi-imageeffect.md)。
+详细的接口说明请参考ImageEffect。
 
 ## 开发步骤
 
@@ -73,7 +73,7 @@ target_link_libraries(entry PUBLIC
 
    **场景一：设置OH_PixelmapNative输入类型。**
 
-   OH_PixelmapNative的具体使用方法请参考[Pixelmap开发指导](image-pixelmap-operation-native.md)。
+   OH_PixelmapNative的具体使用方法请参考Pixelmap开发指导。
 
    ```c++
    // 设置输入的Pixelmap。
@@ -93,7 +93,7 @@ target_link_libraries(entry PUBLIC
 
    **场景二：设置OH_NativeBuffer输入类型。**
 
-   OH_NativeBuffer的具体使用方法请参考[NativeBuffer开发指导](../../graphics/native-buffer-guidelines.md)。
+   OH_NativeBuffer的具体使用方法请参考NativeBuffer开发指导。
 
    ```c++
    // 设置输入的NativeBuffer。
@@ -152,11 +152,11 @@ target_link_libraries(entry PUBLIC
 
    以相机预览场景为例来说明OHNativeWindow输入场景。XComponent组件为相机预览流提供的SurfaceId，可在native c++层将SurfaceId转换成OHNativeWindow，下面提供一份代码示例。
 
-   XComponent模块的具体使用方法请参考[XComponent组件参考/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)。
+   XComponent模块的具体使用方法请参考XComponent组件参考。
 
-   NativeWindow模块的具体使用方法请参考[OHNativeWindow/apis-arkgraphics2d/capi-nativewindow.md)。
+   NativeWindow模块的具体使用方法请参考OHNativeWindow。
 
-   Camera的具体使用方法请参考[Camera预览参考](../camera/native-camera-preview.md)。
+   Camera的具体使用方法请参考Camera预览参考。
 
    (1) 在xxx.ets中添加一个XComponent组件。
 
@@ -187,7 +187,7 @@ target_link_libraries(entry PUBLIC
    // 根据SurfaceId创建NativeWindow，注意创建出来的NativeWindow在使用结束后需要主动调用OH_NativeWindow_DestroyNativeWindow进行释放。
    uint64_t outputSurfaceId;
    std::istrstream iss(outputSurfaceIdStr);
-   issue >> outputSurfaceId;
+   iss >> outputSurfaceId;
    OHNativeWindow *outputNativeWindow = nullptr;
    int32_t res = OH_NativeWindow_CreateNativeWindowFromSurfaceId(outputSurfaceId, &outputNativeWindow);
    if (res != 0) {
@@ -401,7 +401,7 @@ target_link_libraries(entry PUBLIC
        return;
    }
 
-   // 设置自定义滤镜滤镜名。
+   // 设置自定义滤镜名。
    OH_EffectFilterInfo_SetFilterName(customFilterInfo, "CustomBrightness");
 
    // 设置自定义滤镜所支持的内存类型。
@@ -490,7 +490,7 @@ target_link_libraries(entry PUBLIC
   // 获取支持的像素类型信息。
   uint32_t supportedFormatsCnt = 0;
   ImageEffect_Format *formatArray = nullptr;
-  OH_EffectFilterInfo_GetSupportedFormats(filterInfo, supportedFormatsCnt, &formatArray);
+  OH_EffectFilterInfo_GetSupportedFormats(filterInfo, &supportedFormatsCnt, &formatArray);
 
   // 销毁OH_EffectFilterInfo实例。
   OH_EffectFilterInfo_Release(filterInfo);

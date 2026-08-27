@@ -4,8 +4,6 @@
 
 **起始版本：** 26.1.0
 
-<!--Device-carAwareness-enum Capability--><!--Device-carAwareness-enum Capability-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
 ## SPATIAL_MOTION
@@ -19,8 +17,6 @@ SPATIAL_MOTION = 'SpatialMotion'
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Capability-SPATIAL_MOTION = 'SpatialMotion'--><!--Device-Capability-SPATIAL_MOTION = 'SpatialMotion'-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
@@ -36,8 +32,6 @@ REALTIME_WEATHER = 'RealTimeWeather'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Capability-REALTIME_WEATHER = 'RealTimeWeather'--><!--Device-Capability-REALTIME_WEATHER = 'RealTimeWeather'-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
 ## REFUELING
@@ -52,7 +46,4 @@ REFUELING = 'Refueling'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Capability-REFUELING = 'Refueling'--><!--Device-Capability-REFUELING = 'Refueling'-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
-

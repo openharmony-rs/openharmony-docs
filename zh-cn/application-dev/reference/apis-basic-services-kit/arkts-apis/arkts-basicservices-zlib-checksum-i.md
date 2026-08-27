@@ -2,9 +2,7 @@
 
 校验对象。
 
-**起始版本：** 23
-
-<!--Device-zlib-interface Checksum--><!--Device-zlib-interface Checksum-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -17,16 +15,14 @@ import { zlib } from '@kit.BasicServicesKit';
 ## adler32
 
 ```TypeScript
-adler32(adler: long, buf: ArrayBuffer): Promise<long>
+adler32(adler: number, buf: ArrayBuffer): Promise<number>
 ```
 
 计算Adler-32校验和。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Checksum-adler32(adler: long, buf: ArrayBuffer): Promise<long>--><!--Device-Checksum-adler32(adler: long, buf: ArrayBuffer): Promise<long>-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -34,20 +30,20 @@ adler32(adler: long, buf: ArrayBuffer): Promise<long>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| adler | long | 是 | Adler-32校验和的初始值。 |
+| adler | number | 是 | Adler-32校验和的初始值。 |
 | buf | ArrayBuffer | 是 | 计算校验和数据缓冲区。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;long&gt; | Promise对象。返回计算后的Adler-32校验和。 |
+| Promise & lt;number & gt; | Promise对象。返回计算后的Adler-32校验和。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -72,16 +68,14 @@ checksum.adler32(0, arrayBufferIn).then(data => {
 ## adler32Combine
 
 ```TypeScript
-adler32Combine(adler1: long, adler2: long, len2: long): Promise<long>
+adler32Combine(adler1: number, adler2: number, len2: number): Promise<number>
 ```
 
 将两个Adler-32校验和合并。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Checksum-adler32Combine(adler1: long, adler2: long, len2: long): Promise<long>--><!--Device-Checksum-adler32Combine(adler1: long, adler2: long, len2: long): Promise<long>-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -89,21 +83,21 @@ adler32Combine(adler1: long, adler2: long, len2: long): Promise<long>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| adler1 | long | 是 | 第一个要合并的Adler-32校验和。 |
-| adler2 | long | 是 | 第二个要合并的Adler-32校验和。 |
-| len2 | long | 是 | 第二个Adler-32校验和的数据块的长度。 |
+| adler1 | number | 是 | 第一个要合并的Adler-32校验和。 |
+| adler2 | number | 是 | 第二个要合并的Adler-32校验和。 |
+| len2 | number | 是 | 第二个Adler-32校验和的数据块的长度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;long&gt; | Promise对象。返回合并后的Adler-32校验和。 |
+| Promise & lt;number & gt; | Promise对象。返回合并后的Adler-32校验和。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -139,16 +133,14 @@ async function demo() {
 ## crc32
 
 ```TypeScript
-crc32(crc: long, buf: ArrayBuffer): Promise<long>
+crc32(crc: number, buf: ArrayBuffer): Promise<number>
 ```
 
 更新CRC-32校验。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Checksum-crc32(crc: long, buf: ArrayBuffer): Promise<long>--><!--Device-Checksum-crc32(crc: long, buf: ArrayBuffer): Promise<long>-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -156,20 +148,20 @@ crc32(crc: long, buf: ArrayBuffer): Promise<long>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| crc | long | 是 | CRC-32校验的初始值。 |
+| crc | number | 是 | CRC-32校验的初始值。 |
 | buf | ArrayBuffer | 是 | 计算校验数据缓冲区。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;long&gt; | Promise对象。返回更新后的CRC-32校验。 |
+| Promise & lt;number & gt; | Promise对象。返回更新后的CRC-32校验。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -196,16 +188,14 @@ checksum.crc32(0, arrayBufferIn).then((data) => {
 ## crc32Combine
 
 ```TypeScript
-crc32Combine(crc1: long, crc2: long, len2: long): Promise<long>
+crc32Combine(crc1: number, crc2: number, len2: number): Promise<number>
 ```
 
 将两个CRC-32校验合并。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Checksum-crc32Combine(crc1: long, crc2: long, len2: long): Promise<long>--><!--Device-Checksum-crc32Combine(crc1: long, crc2: long, len2: long): Promise<long>-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -213,21 +203,21 @@ crc32Combine(crc1: long, crc2: long, len2: long): Promise<long>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| crc1 | long | 是 | 第一个要合并的CRC-32校验。 |
-| crc2 | long | 是 | 第二个要合并的CRC-32校验。 |
-| len2 | long | 是 | 第二个CRC-32校验的数据块的长度。 |
+| crc1 | number | 是 | 第一个要合并的CRC-32校验。 |
+| crc2 | number | 是 | 第二个要合并的CRC-32校验。 |
+| len2 | number | 是 | 第二个CRC-32校验的数据块的长度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;long&gt; | Promise对象。返回合并后的CRC-32校验。 |
+| Promise & lt;number & gt; | Promise对象。返回合并后的CRC-32校验。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -263,16 +253,14 @@ async function demo() {
 ## crc64
 
 ```TypeScript
-crc64(crc: long, buf: ArrayBuffer): Promise<long>
+crc64(crc: number, buf: ArrayBuffer): Promise<number>
 ```
 
 更新CRC-64校验。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Checksum-crc64(crc: long, buf: ArrayBuffer): Promise<long>--><!--Device-Checksum-crc64(crc: long, buf: ArrayBuffer): Promise<long>-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -280,20 +268,20 @@ crc64(crc: long, buf: ArrayBuffer): Promise<long>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| crc | long | 是 | CRC-64校验的初始值。 |
+| crc | number | 是 | CRC-64校验的初始值。 |
 | buf | ArrayBuffer | 是 | 计算校验数据缓冲区。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;long&gt; | Promise对象。返回更新后的CRC-64校验。 |
+| Promise & lt;number & gt; | Promise对象。返回更新后的CRC-64校验。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -320,16 +308,14 @@ checksum.crc64(0, arrayBufferIn).then((data) => {
 ## getCrc64Table
 
 ```TypeScript
-getCrc64Table(): Promise<Array<long>>
+getCrc64Table(): Promise<Array<number>>
 ```
 
 输出CRC-64校验表。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Checksum-getCrc64Table(): Promise<Array<long>>--><!--Device-Checksum-getCrc64Table(): Promise<Array<long>>-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -337,7 +323,7 @@ getCrc64Table(): Promise<Array<long>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;long&gt;&gt; | Promise对象。返回CRC-64校验表。 |
+| Promise & lt;Array & lt;number & gt; & gt; | Promise对象。返回CRC-64校验表。 |
 
 **示例**
 
@@ -356,16 +342,14 @@ checksum.getCrc64Table().then((data) => {
 ## getCrcTable
 
 ```TypeScript
-getCrcTable(): Promise<Array<long>>
+getCrcTable(): Promise<Array<number>>
 ```
 
 输出CRC-32校验表。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Checksum-getCrcTable(): Promise<Array<long>>--><!--Device-Checksum-getCrcTable(): Promise<Array<long>>-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -373,7 +357,7 @@ getCrcTable(): Promise<Array<long>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;long&gt;&gt; | Promise对象。返回CRC-32校验表。 |
+| Promise & lt;Array & lt;number & gt; & gt; | Promise对象。返回CRC-32校验表。 |
 
 **示例**
 
@@ -388,4 +372,3 @@ checksum.getCrcTable().then((data) => {
   console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
 })
 ```
-

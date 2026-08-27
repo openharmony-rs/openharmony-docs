@@ -4,9 +4,7 @@ HashStream类是用于创建数据的哈希摘要的实用工具。由 [createHa
 
 **继承/实现关系：** HashStream extends [stream.Transform](../../apis-arkts/arkts-apis/arkts-arkts-stream-transform-c.md)
 
-**起始版本：** 23
-
-<!--Device-hash-class HashStream--><!--Device-hash-class HashStream-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -24,9 +22,7 @@ digest(): string
 
 计算传递给哈希处理的所有数据的摘要，返回最终的哈希值。
 
-**起始版本：** 23
-
-<!--Device-HashStream-digest(): string--><!--Device-HashStream-digest(): string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -63,9 +59,7 @@ update(data: ArrayBuffer): void
 
 使用给定的数据更新哈希内容，可多次调用。每次调用的数据将被追加到已计算的哈希内容中，最终通过digest方法获取完整的哈希摘要。
 
-**起始版本：** 23
-
-<!--Device-HashStream-update(data: ArrayBuffer): void--><!--Device-HashStream-update(data: ArrayBuffer): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -93,4 +87,3 @@ const hashResult = hs.digest();
 // 88A00F46836CD629D0B79DE98532AFDE3AEAD79A5C53E4848102F433046D0106
 console.info(`Succeeded in calculating file hash. hashResult: ${hashResult}`);
 ```
-

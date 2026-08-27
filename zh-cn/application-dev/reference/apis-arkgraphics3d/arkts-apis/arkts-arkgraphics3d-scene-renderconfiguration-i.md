@@ -1,10 +1,8 @@
 # RenderConfiguration
 
-渲染配置接口。
+渲染配置接口。@interface RenderConfiguration
 
 **起始版本：** 23
-
-<!--Device-unnamed-export interface RenderConfiguration--><!--Device-unnamed-export interface RenderConfiguration-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -18,11 +16,9 @@ shadowResolution?: Vec2
 
 **类型：** [Vec2](arkts-arkgraphics3d-scenetypes-vec2-i.md)
 
-**默认值：** { 1024, 1024 }
+**默认值：** undefined
 
 **起始版本：** 23
-
-<!--Device-RenderConfiguration-shadowResolution?: Vec2--><!--Device-RenderConfiguration-shadowResolution?: Vec2-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -42,7 +38,4 @@ softShadowConfig?: SoftShadowConfig
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-RenderConfiguration-softShadowConfig?: SoftShadowConfig--><!--Device-RenderConfiguration-softShadowConfig?: SoftShadowConfig-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

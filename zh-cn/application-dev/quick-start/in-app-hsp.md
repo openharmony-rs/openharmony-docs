@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 HSP（Harmony Shared Package）是动态共享包，包含代码、C++库、资源和配置文件，通过HSP可以实现代码和资源的共享。HSP不支持独立发布上架，而是跟随宿主应用的APP包一起发布，与宿主应用同进程，具有相同的包名和生命周期。
@@ -11,7 +11,7 @@ HSP（Harmony Shared Package）是动态共享包，包含代码、C++库、资�
 > 
 > * 应用内HSP：在编译过程中与应用包名（bundleName）强耦合，只能给某个特定的应用使用。
 > 
-> * [集成态HSP](integrated-hsp.md)：构建、发布过程中，不与特定的应用包名耦合；使用时，工具链支持自动将集成态HSP的包名替换成宿主应用包名，并且会重新签名生成一个新的HSP包，作为宿主应用的安装包，这个新的HSP也属于宿主应用HAP的应用内HSP。
+> * 集成态HSP：构建、发布过程中，不与特定的应用包名耦合；使用时，工具链支持自动将集成态HSP的包名替换成宿主应用包名，并且会重新签名生成一个新的HSP包，作为宿主应用的安装包，这个新的HSP也属于宿主应用HAP的应用内HSP。
 >
 > * 指南和API参考文档中如无特殊说明，默认HSP都为应用内HSP。
 >
@@ -25,9 +25,9 @@ HSP（Harmony Shared Package）是动态共享包，包含代码、C++库、资�
 
 ## 约束限制
 
-- 可以和依赖该HSP的HAP一起安装/运行。在安装或更新时，多模块之间存在校验，详情参考[一致性校验](install-and-update-consistency-verification.md)。使用打包工具进行打包时，会进行合法性校验，详情请参考[打包工具](../../application-dev/tools/packing-tool.md)。
-- 从API version 14开始HSP支持在配置文件中[声明UIAbility](../application-models/uiability-overview.md#声明配置)组件，但不支持具有入口能力的UIAbility（即skill标签配置了entity.system.home和ohos.want.action.home）。配置UIAbility的方法参考[模块中添加UIAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18658758104318)，HSP中UIAbility的启动方式与[应用内启动UIAbility](../application-models/uiability-intra-device-interaction.md)方法相同。API version 13及之前版本，不支持在配置文件中声明[UIAbility](../application-models/uiability-overview.md#声明配置)组件。
-- 从API version 18开始HSP支持在配置文件中声明[ExtensionAbility](../application-models/extensionability-overview.md)组件，但不支持具有入口能力的ExtensionAbility（即skill标签配置了entity.system.home和ohos.want.action.home）。HSP中配置ExtensionAbility的方法参考[模块中添加ExtensionAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18891639459)。 API version 17及之前版本，不支持在配置文件中声明[ExtensionAbility](../application-models/extensionability-overview.md)组件。
+- 可以和依赖该HSP的HAP一起安装/运行。在安装或更新时，多模块之间存在校验，详情参考一致性校验。使用打包工具进行打包时，会进行合法性校验，详情请参考打包工具。
+- 从API version 14开始HSP支持在配置文件中声明UIAbility组件，但不支持具有入口能力的UIAbility（即skill标签配置了entity.system.home和ohos.want.action.home）。配置UIAbility的方法参考[模块中添加UIAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18658758104318)，HSP中UIAbility的启动方式与应用内启动UIAbility方法相同。API version 13及之前版本，不支持在配置文件中声明UIAbility组件。
+- 从API version 18开始HSP支持在配置文件中声明ExtensionAbility组件，但不支持具有入口能力的ExtensionAbility（即skill标签配置了entity.system.home和ohos.want.action.home）。HSP中配置ExtensionAbility的方法参考[模块中添加ExtensionAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18891639459)。 API version 17及之前版本，不支持在配置文件中声明ExtensionAbility组件。
 - HSP可以依赖其他HAR或HSP，也可以被HAP或者HSP依赖集成，但不支持循环依赖，也不支持依赖传递。
 
 > **说明：**
@@ -152,7 +152,7 @@ export { nativeMulti } from './src/main/ets/utils/nativeTest';
 ### 通过$r访问HSP中的资源
 在组件中，经常需要使用字符串、图片等资源。HSP中的组件需要使用资源时，一般将其所用资源放在HSP包内，而非放在HSP的使用方处，以符合高内聚低耦合的原则。
 
-在工程中，常通过`$r`/`$rawfile`的形式引用应用资源。可以用`$r`/`$rawfile`访问本模块`resources`目录下的资源，如访问`resources`目录下定义的图片`src/main/resources/base/media/example.png`时，可以用`$r("app.media.example")`。有关`$r`/`$rawfile`的使用方式，请参阅文档[资源分类与访问](./resource-categories-and-access.md)中“资源访问-应用资源”小节。
+在工程中，常通过`$r`/`$rawfile`的形式引用应用资源。可以用`$r`/`$rawfile`访问本模块`resources`目录下的资源，如访问`resources`目录下定义的图片`src/main/resources/base/media/example.png`时，可以用`$r("app.media.example")`。有关`$r`/`$rawfile`的使用方式，请参阅文档资源分类与访问中“资源访问-应用资源”小节。
 
 不推荐使用相对路径的方式，容易引用错误路径。例如：
 
@@ -491,4 +491,4 @@ export struct Library_Menu {
 ```
 
 
-页面跳转和页面返回都使用了Navigation的特性，详情参考[Navigation跳转](../ui/arkts-navigation-jump.md#路由操作)。
+页面跳转和页面返回都使用了Navigation的特性，详情参考Navigation跳转。

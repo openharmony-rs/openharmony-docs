@@ -2,9 +2,7 @@
 
 [save](arkts-arkdata-distributeddataobject-dataobject-i.md#save) 接口回调信息。
 
-**起始版本：** 23
-
-<!--Device-distributedDataObject-interface SaveSuccessResponse--><!--Device-distributedDataObject-interface SaveSuccessResponse-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -24,9 +22,7 @@ deviceId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SaveSuccessResponse-deviceId: string--><!--Device-SaveSuccessResponse-deviceId: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -40,25 +36,20 @@ sessionId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SaveSuccessResponse-sessionId: string--><!--Device-SaveSuccessResponse-sessionId: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
 ## version
 
 ```TypeScript
-version: int
+version: number
 ```
 
 已保存对象的版本，取值为非负整数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SaveSuccessResponse-version: int--><!--Device-SaveSuccessResponse-version: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
-

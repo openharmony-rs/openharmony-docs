@@ -12,11 +12,9 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 function getRetentionSandboxList(bundleName?: string): Promise<Array<RetentionSandboxInfo>>
 ```
 
-查询指定应用的保留沙箱信息列表。仅支持在非DLP沙箱应用中调用。使用Promise异步回调。 该接口用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。
+查询指定应用的保留沙箱信息列表。仅支持在非DLP沙箱应用中调用。使用Promise异步回调。该接口用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。
 
 **起始版本：** 10
-
-<!--Device-dlpPermission-function getRetentionSandboxList(bundleName?: string): Promise<Array<RetentionSandboxInfo>>--><!--Device-dlpPermission-function getRetentionSandboxList(bundleName?: string): Promise<Array<RetentionSandboxInfo>>-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -60,11 +58,9 @@ dlpPermission.getRetentionSandboxList().then((sandboxList) => { // 获取沙箱�
 function getRetentionSandboxList(bundleName: string, callback: AsyncCallback<Array<RetentionSandboxInfo>>): void
 ```
 
-查询指定应用的保留沙箱信息列表。仅支持在非DLP沙箱应用中调用。使用callback异步回调。 该接口用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。
+查询指定应用的保留沙箱信息列表。仅支持在非DLP沙箱应用中调用。使用callback异步回调。该接口用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。
 
 **起始版本：** 10
-
-<!--Device-dlpPermission-function getRetentionSandboxList(bundleName: string, callback: AsyncCallback<Array<RetentionSandboxInfo>>): void--><!--Device-dlpPermission-function getRetentionSandboxList(bundleName: string, callback: AsyncCallback<Array<RetentionSandboxInfo>>): void-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -73,7 +69,7 @@ function getRetentionSandboxList(bundleName: string, callback: AsyncCallback<Arr
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 指定应用包名，用于查询该应用的保留沙箱信息列表。长度范围[7, 128]字节，超出此范围抛出错误码401。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[RetentionSandboxInfo](arkts-dataprotection-dlppermission-retentionsandboxinfo-i.md)&gt;&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[RetentionSandboxInfo](arkts-dataprotection-dlppermission-retentionsandboxinfo-i.md)&gt;&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
 
 **错误码：**
 
@@ -105,11 +101,9 @@ dlpPermission.getRetentionSandboxList('bundleName', (err, sandboxList) => {
 function getRetentionSandboxList(callback: AsyncCallback<Array<RetentionSandboxInfo>>): void
 ```
 
-查询当前应用的保留沙箱信息列表。使用callback异步回调。 该接口用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。仅支持在非DLP沙箱应用中调用。
+查询当前应用的保留沙箱信息列表。使用callback异步回调。该接口用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。仅支持在非DLP沙箱应用中调用。
 
 **起始版本：** 10
-
-<!--Device-dlpPermission-function getRetentionSandboxList(callback: AsyncCallback<Array<RetentionSandboxInfo>>): void--><!--Device-dlpPermission-function getRetentionSandboxList(callback: AsyncCallback<Array<RetentionSandboxInfo>>): void-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -117,7 +111,7 @@ function getRetentionSandboxList(callback: AsyncCallback<Array<RetentionSandboxI
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[RetentionSandboxInfo](arkts-dataprotection-dlppermission-retentionsandboxinfo-i.md)&gt;&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[RetentionSandboxInfo](arkts-dataprotection-dlppermission-retentionsandboxinfo-i.md)&gt;&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
 
 **错误码：**
 
@@ -141,4 +135,3 @@ dlpPermission.getRetentionSandboxList((err, retentionSandboxList) => {
   }
 }); // 获取沙箱保留列表。
 ```
-

@@ -17,8 +17,6 @@ declare function lchownSync(path: string, uid: number, gid: number): void
 
 **废弃版本：** 9
 
-<!--Device-unnamed-declare function lchownSync(path: string, uid: number, gid: number): void--><!--Device-unnamed-declare function lchownSync(path: string, uid: number, gid: number): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -29,3 +27,10 @@ declare function lchownSync(path: string, uid: number, gid: number): void
 | uid | number | 是 | 新的UID。 |
 | gid | number | 是 | 新的GID。 |
 
+**示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+let stat = fileio.statSync(filePath);
+fileio.lchownSync(filePath, stat.uid, stat.gid);
+```

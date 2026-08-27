@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export interface AlternateIconInfo--><!--Device-unnamed-export interface AlternateIconInfo-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## enabled
@@ -14,7 +12,8 @@
 readonly enabled: boolean
 ```
 
-备用图标是否启用。 true：表示当前备用图标启用。 false：表示当前备用图标未启用。 **说明：** 应用最多只能启用一个备用图标。
+备用图标是否启用。true：表示当前备用图标启用。false：表示当前备用图标未启用。  
+**说明：** 应用最多只能启用一个备用图标。
 
 **类型：** boolean
 
@@ -22,25 +21,21 @@ readonly enabled: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AlternateIconInfo-readonly enabled: boolean--><!--Device-AlternateIconInfo-readonly enabled: boolean-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## iconId
 
 ```TypeScript
-readonly iconId: long
+readonly iconId: number
 ```
 
 备用图标的资源id，是编译构建时根据应用配置的icon自动生成的资源id。
 
-**类型：** long
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AlternateIconInfo-readonly iconId: long--><!--Device-AlternateIconInfo-readonly iconId: long-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -58,7 +53,4 @@ readonly iconName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AlternateIconInfo-readonly iconName: string--><!--Device-AlternateIconInfo-readonly iconName: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-

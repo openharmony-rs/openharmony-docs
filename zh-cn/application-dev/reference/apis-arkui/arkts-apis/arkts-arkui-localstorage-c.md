@@ -1,10 +1,15 @@
-# LocalStorage(System API)
+# LocalStorage
 
-LocalStorage是页面级的UI状态存储，通过[@Entry](../../../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entry)装饰器接收的参数可以在页面内 共享同一个LocalStorage实例。具体UI使用说明，详见[LocalStorage：页面级UI状态存储](../../../ui/state-management/arkts-localstorage.md)。 > **说明：** > > 从API version 12开始，LocalStorage支持[Map](../../../ui/state-management/arkts-localstorage.md#装饰map类型变量)、 > [Set](../../../ui/state-management/arkts-localstorage.md#装饰set类型变量)、 > [Date类型](../../../ui/state-management/arkts-localstorage.md#装饰date类型变量)，支持null、undefined以及 > [联合类型](../../../ui/state-management/arkts-localstorage.md#localstorage支持联合类型)。
+LocalStorage是页面级的UI状态存储，通过@Entry装饰器接收的参数可以在页面内 共享同一个LocalStorage实例。具体UI使用说明，详见[LocalStorage：页面级UI状态存储](../../../ui/state-management/arkts-localstorage.md)。
+
+> **说明：**
+> 
+> 从API version 12开始，LocalStorage支持[Map](../../../ui/state-management/arkts-localstorage.md#装饰map类型变量)、
+> [Set](../../../ui/state-management/arkts-localstorage.md#装饰set类型变量)、
+> [Date类型](../../../ui/state-management/arkts-localstorage.md#装饰date类型变量)，支持null、undefined以及
+> [联合类型](../../../ui/state-management/arkts-localstorage.md#localstorage支持联合类型)。
 
 **起始版本：** 9
-
-<!--Device-unnamed-declare class LocalStorage--><!--Device-unnamed-declare class LocalStorage-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -13,55 +18,19 @@ LocalStorage是页面级的UI状态存储，通过[@Entry](../../../reference/ap
 ```TypeScript
 ```
 
-## GetShared
-
-```TypeScript
-static GetShared(): LocalStorage
-```
-
-获取当前Stage共享的[LocalStorage](../../../ui/state-management/arkts-localstorage.md)实例。
-
-**起始版本：** 9
-
-**废弃版本：** 10
-
-**替代接口：** [getShared](#getshared)
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-LocalStorage-static GetShared(): LocalStorage--><!--Device-LocalStorage-static GetShared(): LocalStorage-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [LocalStorage](arkts-arkui-localstorage-c.md) | 返回当前Stage共享的LocalStorage实例。 |
-
-**示例**
-
-```TypeScript
-let storage: LocalStorage = LocalStorage.GetShared();
-```
-
 ## clear
 
 ```TypeScript
 clear(): boolean
 ```
 
-删除[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中所有的属性。仅当LocalStorage中的属性没有任何订阅者时可删除成功并返回true； 如果有订阅者，clear不会生效并返回false。 订阅者的含义参考[delete](#delete)。
+删除[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中所有的属性。仅当LocalStorage中的属性没有任何订阅者时可删除成功并返回true； 如果有订阅者，clear不会生效并返回false。订阅者的含义参考[delete](#delete)。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-LocalStorage-clear(): boolean--><!--Device-LocalStorage-clear(): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +41,11 @@ clear(): boolean
 | boolean | 如果LocalStorage中的属性已经没有任何订阅者，则删除成功，并返回true。否则返回false。 |
 
 **示例**
+
+```TypeScript
+AppStorage.setOrCreate('PropA', 47);
+let res: boolean = AppStorage.clear(); // true，已经没有订阅者
+```
 
 ```TypeScript
 let initialData: Record<string, number> = { 'PropA': 47 };
@@ -92,8 +66,6 @@ constructor(initializingProperties?: Object)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-LocalStorage-constructor(initializingProperties?: Object)--><!--Device-LocalStorage-constructor(initializingProperties?: Object)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,15 +88,18 @@ let storage: LocalStorage = new LocalStorage(initialData);
 delete(propName: string): boolean
 ```
 
-在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中删除propName对应的属性。仅当LocalStorage中该属性没有任何订阅者时可删除成 功并返回true；如果有订阅者，则返回false。 属性的订阅者为： 1. [@LocalStorageLink](../../../ui/state-management/arkts-localstorage.md#localstoragelink)、[@LocalStorageProp](../../../ui/state-management/arkts-localstorage.md#localstorageprop)装饰的变量。 2. 通过[link](#link)、[prop](#prop)、[setAndLink](#setandlink)、[setAndProp](#setandprop)接口返回的[SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)的实例。 如需删除这些订阅者，可通过以下方式： 1. 删除\@LocalStorageLink、\@LocalStorageProp所在的自定义组件。删除自定义组件请参考[自定义组件的删除](../../../ui/state-management/arkts-page-custom-components-lifecycle.md#自定义组件的删除)。 2. 对link、prop、setAndLink、setAndProp接口返回的SubscribedAbstractProperty的实例调用[aboutToBeDeleted](arkts-arkui-subscribedabstractproperty-c.md#abouttobedeleted)接口。
+在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中删除propName对应的属性。仅当LocalStorage中该属性没有任何订阅者时可删除成 功并返回true；如果有订阅者，则返回false。属性的订阅者为：
+1. [@LocalStorageLink](../../../ui/state-management/arkts-localstorage.md#localstoragelink)、[@LocalStorageProp](../../../ui/state-management/arkts-localstorage.md#localstorageprop)装饰的变量。
+2. 通过[link](#link)、[prop](#prop)、[setAndLink](#setandlink)、[setAndProp](#setandprop)接口返回的[SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)的实例。
+如需删除这些订阅者，可通过以下方式：
+1. 删除\@LocalStorageLink、\@LocalStorageProp所在的自定义组件。删除自定义组件请参考[自定义组件的删除](../../../ui/state-management/arkts-page-custom-components-lifecycle.md#自定义组件的删除)。
+2. 对link、prop、setAndLink、setAndProp接口返回的SubscribedAbstractProperty的实例调用[aboutToBeDeleted](arkts-arkui-subscribedabstractproperty-c.md#abouttobedeleted)接口。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-LocalStorage-delete(propName: string): boolean--><!--Device-LocalStorage-delete(propName: string): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -141,6 +116,15 @@ delete(propName: string): boolean
 | boolean | 如果LocalStorage中有对应的属性，且该属性已经没有订阅者，则删除成功，返回true。如果属性不存在，或者该属性还存在订阅者，则返回false。 |
 
 **示例**
+
+```TypeScript
+AppStorage.setOrCreate('PropA', 47);
+AppStorage.link<number>('PropA');
+let res: boolean = AppStorage.delete('PropA'); // false，PropA 还存在订阅者
+
+AppStorage.setOrCreate('PropB', 48);
+let res1: boolean = AppStorage.delete('PropB'); // true，PropB 已从AppStorage成功删除
+```
 
 ```TypeScript
 let initialData: Record<string, number> = { 'PropA': 47 };
@@ -166,8 +150,6 @@ get<T>(propName: string): T | undefined
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LocalStorage-get<T>(propName: string): T | undefined--><!--Device-LocalStorage-get<T>(propName: string): T | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -180,14 +162,51 @@ get<T>(propName: string): T | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| T | LocalStorage中propName对应的属性值，如果不存在则返回undefined。 |
+| T \| undefined | LocalStorage中propName对应的属性值，如果不存在则返回undefined。 |
 
 **示例**
+
+```TypeScript
+AppStorage.setOrCreate('PropA', 47);
+let value: number = AppStorage.get('PropA') as number; // 47
+```
 
 ```TypeScript
 let initialData: Record<string, number> = { 'PropA': 47 };
 let storage: LocalStorage = new LocalStorage(initialData);
 let value: number = storage.get('PropA') as number; // 47
+```
+
+## GetShared
+
+```TypeScript
+static GetShared(): LocalStorage
+```
+
+获取当前Stage共享的[LocalStorage](../../../ui/state-management/arkts-localstorage.md)实例。
+
+**起始版本：** 9
+
+**废弃版本：** 10
+
+**替代接口：** [getShared](#getshared)
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [LocalStorage](arkts-arkui-localstorage-c.md) | 返回当前Stage共享的LocalStorage实例。 |
+
+**示例**
+
+```TypeScript
+let storage: LocalStorage = LocalStorage.GetShared();
 ```
 
 ## getShared
@@ -196,21 +215,24 @@ let value: number = storage.get('PropA') as number; // 47
 static getShared(): LocalStorage
 ```
 
-获取当前Stage共享的[LocalStorage](../../../ui/state-management/arkts-localstorage.md)实例。 > **说明：** > > 从API version 12开始，可使用[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)中的 > [getSharedLocalStorage](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getsharedlocalstorage)明确UI执行上下文中的LocalStorage实例。
+获取当前Stage共享的[LocalStorage](../../../ui/state-management/arkts-localstorage.md)实例。
+
+> **说明：**
+> 
+> 从API version 12开始，可使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的
+> [getSharedLocalStorage](arkts-arkui-arkui-uicontext-uicontext-c.md#getsharedlocalstorage)明确UI执行上下文中的LocalStorage实例。
 
 **起始版本：** 10
 
 **废弃版本：** 18
 
-**替代接口：** [getSharedLocalStorage](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getsharedlocalstorage)
+**替代接口：** [getSharedLocalStorage](arkts-arkui-arkui-uicontext-uicontext-c.md#getsharedlocalstorage)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-LocalStorage-static getShared(): LocalStorage--><!--Device-LocalStorage-static getShared(): LocalStorage-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -234,8 +256,6 @@ has(propName: string): boolean
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LocalStorage-has(propName: string): boolean--><!--Device-LocalStorage-has(propName: string): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -251,6 +271,10 @@ has(propName: string): boolean
 | boolean | 如果propName对应的属性在LocalStorage中存在，则返回true。不存在则返回false。 |
 
 **示例**
+
+```TypeScript
+AppStorage.has('simpleProp');
+```
 
 ```TypeScript
 let initialData: Record<string, number> = { 'PropA': 47 };
@@ -272,17 +296,20 @@ keys(): IterableIterator<string>
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LocalStorage-keys(): IterableIterator<string>--><!--Device-LocalStorage-keys(): IterableIterator<string>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;string&gt; | LocalStorage中所有的属性名。 |
+| IterableIterator & lt;string & gt; | LocalStorage中所有的属性名。 |
 
 **示例**
+
+```TypeScript
+AppStorage.setOrCreate('PropB', 48);
+let keys: IterableIterator<string> = AppStorage.keys();
+```
 
 ```TypeScript
 let initialData: Record<string, number> = { 'PropA': 47 };
@@ -296,15 +323,13 @@ let keys: IterableIterator<string> = storage.keys();
 link<T>(propName: string): SubscribedAbstractProperty<T>
 ```
 
-如果给定的propName在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)实例中存在，则返回与LocalStorage中propName对应属 性的双向绑定数据。与[prop](#prop)的单向数据绑定不同，link建立双向数据绑定，修改会同步回LocalStorage，LocalStorage会将变化同步到所有绑定该propName 的数据和自定义组件中。 如果LocalStorage中不存在propName，则返回undefined。
+如果给定的propName在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)实例中存在，则返回与LocalStorage中propName对应属 性的双向绑定数据。与[prop](#prop)的单向数据绑定不同，link建立双向数据绑定，修改会同步回LocalStorage，LocalStorage会将变化同步到所有绑定该propName 的数据和自定义组件中。如果LocalStorage中不存在propName，则返回undefined。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-LocalStorage-link<T>(propName: string): SubscribedAbstractProperty<T>--><!--Device-LocalStorage-link<T>(propName: string): SubscribedAbstractProperty<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -318,9 +343,16 @@ link<T>(propName: string): SubscribedAbstractProperty<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | SubscribedAbstractProperty&lt;T&gt;的实例，与LocalStorage中propName对应属性的双向绑定的数据，如果 LocalStorage中不存在对应的propName，则返回undefined。 |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md) & lt;T & gt;的实例，与LocalStorage中propName对应属性的双向绑定的数据，如果 LocalStorage中不存在对应的propName，则返回undefined。 |
 
 **示例**
+
+```TypeScript
+AppStorage.setOrCreate('PropA', 47);
+let linkToPropA1: SubscribedAbstractProperty<number> = AppStorage.link('PropA');
+let linkToPropA2: SubscribedAbstractProperty<number> = AppStorage.link('PropA'); // linkToPropA2.get() == 47
+linkToPropA1.set(48); // 双向同步：linkToPropA1.get() == linkToPropA2.get() == 48
+```
 
 ```TypeScript
 let initialData: Record<string, number> = { 'PropA': 47 };
@@ -344,8 +376,6 @@ prop<S>(propName: string): SubscribedAbstractProperty<S>
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LocalStorage-prop<S>(propName: string): SubscribedAbstractProperty<S>--><!--Device-LocalStorage-prop<S>(propName: string): SubscribedAbstractProperty<S>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -358,7 +388,7 @@ prop<S>(propName: string): SubscribedAbstractProperty<S>
 
 | 类型 | 说明 |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | SubscribedAbstractProperty&lt;S&gt;的实例，为LocalStorage中propName对应属性的单向绑定的数据。如果 LocalStorage中不存在对应的propName，则返回undefined。 |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md) & lt;S & gt;的实例，为LocalStorage中propName对应属性的单向绑定的数据。如果 LocalStorage中不存在对应的propName，则返回undefined。 |
 
 **示例**
 
@@ -376,13 +406,11 @@ prop1.set(1); // 单向同步：prop1.get()的值为1，prop2.get()的值为47
 public ref<T>(propName: string): AbstractProperty<T> | undefined
 ```
 
-如果给定的propName在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中存在，则返回LocalStorage中propName对应属性的引 用。否则，返回undefined。 与[link](#link)的功能基本一致，区别在于不需要手动释放返回的[AbstractProperty&lt;T&gt;](arkts-arkui-abstractproperty-i.md)类型的变量。
+如果给定的propName在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中存在，则返回LocalStorage中propName对应属性的引 用。否则，返回undefined。与[link](#link)的功能基本一致，区别在于不需要手动释放返回的[AbstractProperty&lt;T&gt;](arkts-arkui-abstractproperty-i.md)类型的变量。
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LocalStorage-public ref<T>(propName: string): AbstractProperty<T> | undefined--><!--Device-LocalStorage-public ref<T>(propName: string): AbstractProperty<T> | undefined-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -396,9 +424,16 @@ public ref<T>(propName: string): AbstractProperty<T> | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [AbstractProperty](arkts-arkui-abstractproperty-i.md)&lt;T&gt; | 返回LocalStorage中propName对应属性的引用，如果LocalStorage中不存在对应的propName，则返回 undefined。 |
+| [AbstractProperty](arkts-arkui-abstractproperty-i.md)&lt;T&gt; \| undefined | 返回LocalStorage中propName对应属性的引用，如果LocalStorage中不存在对应的propName，则返回 undefined。 |
 
 **示例**
+
+```TypeScript
+AppStorage.setOrCreate('PropA', 47);
+let refToPropA1: AbstractProperty<number> | undefined = AppStorage.ref('PropA');
+let refToPropA2: AbstractProperty<number> | undefined = AppStorage.ref('PropA'); // refToPropA2.get() == 47
+refToPropA1?.set(48); // 同步修改AppStorage：refToPropA1.get() == refToPropA2.get() == 48
+```
 
 ```TypeScript
 let initialData: Record<string, number> = { 'PropA': 47 };
@@ -422,8 +457,6 @@ set<T>(propName: string, newValue: T): boolean
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LocalStorage-set<T>(propName: string, newValue: T): boolean--><!--Device-LocalStorage-set<T>(propName: string, newValue: T): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -440,6 +473,12 @@ set<T>(propName: string, newValue: T): boolean
 | boolean | 如果LocalStorage中不存在propName对应的属性，返回false。设置成功返回true。 |
 
 **示例**
+
+```TypeScript
+AppStorage.setOrCreate('PropA', 48);
+let res: boolean = AppStorage.set('PropA', 47); // true
+let res1: boolean = AppStorage.set('PropB', 47); // false
+```
 
 ```TypeScript
 let initialData: Record<string, number> = { 'PropA': 47 };
@@ -462,8 +501,6 @@ setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LocalStorage-setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>--><!--Device-LocalStorage-setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -477,9 +514,15 @@ setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | SubscribedAbstractProperty&lt;T&gt;的实例，与LocalStorage中propName对应属性的双向绑定的数据。 |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md) & lt;T & gt;的实例，与LocalStorage中propName对应属性的双向绑定的数据。 |
 
 **示例**
+
+```TypeScript
+AppStorage.setOrCreate('PropA', 47);
+let link1: SubscribedAbstractProperty<number> = AppStorage.setAndLink('PropB', 49); // 用默认值49创建PropB
+let link2: SubscribedAbstractProperty<number> = AppStorage.setAndLink('PropA', 50); // PropA已存在，值为47
+```
 
 ```TypeScript
 let initialData: Record<string, number> = { 'PropA': 47 };
@@ -502,8 +545,6 @@ setAndProp<S>(propName: string, defaultValue: S): SubscribedAbstractProperty<S>
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LocalStorage-setAndProp<S>(propName: string, defaultValue: S): SubscribedAbstractProperty<S>--><!--Device-LocalStorage-setAndProp<S>(propName: string, defaultValue: S): SubscribedAbstractProperty<S>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -517,7 +558,7 @@ setAndProp<S>(propName: string, defaultValue: S): SubscribedAbstractProperty<S>
 
 | 类型 | 说明 |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | SubscribedAbstractProperty&lt;S&gt;的实例，为LocalStorage中propName对应属性的单向绑定的数据。 |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md) & lt;S & gt;的实例，为LocalStorage中propName对应属性的单向绑定的数据。 |
 
 **示例**
 
@@ -533,13 +574,11 @@ let prop: SubscribedAbstractProperty<number> = storage.setAndProp('PropB', 49); 
 public setAndRef<T>(propName: string, defaultValue: T): AbstractProperty<T>
 ```
 
-与[ref](arkts-arkui-appstorage-c.md#ref)接口类似，如果给定的propName在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中 存在，则返回LocalStorage中propName对应属性的引用。如果不存在，则使用defaultValue在LocalStorage中创建和初始化propName对应的属性，并返回其引用。 与[setAndLink](#setandlink)的功能基本一致，区别在于不需要手动释放返回的 [AbstractProperty&lt;T&gt;](arkts-arkui-abstractproperty-i.md)类型的变量。
+与[ref](arkts-arkui-appstorage-c.md#ref)接口类似，如果给定的propName在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中 存在，则返回LocalStorage中propName对应属性的引用。如果不存在，则使用defaultValue在LocalStorage中创建和初始化propName对应的属性，并返回其引用。与[setAndLink](#setandlink)的功能基本一致，区别在于不需要手动释放返回的 [AbstractProperty&lt;T&gt;](arkts-arkui-abstractproperty-i.md)类型的变量。
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LocalStorage-public setAndRef<T>(propName: string, defaultValue: T): AbstractProperty<T>--><!--Device-LocalStorage-public setAndRef<T>(propName: string, defaultValue: T): AbstractProperty<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -554,9 +593,15 @@ public setAndRef<T>(propName: string, defaultValue: T): AbstractProperty<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| [AbstractProperty](arkts-arkui-abstractproperty-i.md)&lt;T&gt; | AbstractProperty&lt;T&gt;的实例，为LocalStorage中propName对应属性的引用。 |
+| [AbstractProperty](arkts-arkui-abstractproperty-i.md)&lt;T&gt; | [AbstractProperty](arkts-arkui-abstractproperty-i.md) & lt;T & gt;的实例，为LocalStorage中propName对应属性的引用。 |
 
 **示例**
+
+```TypeScript
+AppStorage.setOrCreate('PropA', 47);
+let ref1: AbstractProperty<number> = AppStorage.setAndRef('PropB', 49); // 用默认值49创建PropB
+let ref2: AbstractProperty<number> = AppStorage.setAndRef('PropA', 50); // PropA已存在，值为47
+```
 
 ```TypeScript
 let initialData: Record<string, number> = { 'PropA': 47 };
@@ -571,15 +616,13 @@ let ref2: AbstractProperty<number> = storage.setAndRef('PropA', 50); // PropA已
 setOrCreate<T>(propName: string, newValue: T): boolean
 ```
 
-如果propName已经在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中存在，并且newValue和propName对应属性的值不同，则设置 propName对应属性的值为newValue，否则状态变量不会通知UI刷新propName对应属性的值。 如果propName不存在，则创建propName属性，值为newValue。setOrCreate仅可创建单个LocalStorage的键值对，如需创建多个LocalStorage键值对，可多次调用此方法。
+如果propName已经在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中存在，并且newValue和propName对应属性的值不同，则设置 propName对应属性的值为newValue，否则状态变量不会通知UI刷新propName对应属性的值。如果propName不存在，则创建propName属性，值为newValue。setOrCreate仅可创建单个LocalStorage的键值对，如需创建多个LocalStorage键值对，可多次调用此方法。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-LocalStorage-setOrCreate<T>(propName: string, newValue: T): boolean--><!--Device-LocalStorage-setOrCreate<T>(propName: string, newValue: T): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -594,7 +637,7 @@ setOrCreate<T>(propName: string, newValue: T): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 如果LocalStorage中存在propName，则更新其值为newValue，返回true。 <br>如果LocalStorage中不存在propName，则创建propName，并初始化其值为newValue，返回true。 <br>API version 12之前，当newValue为null或undefined时返回false。 |
+| boolean | 如果LocalStorage中存在propName，则更新其值为newValue，返回true。 |
 
 **示例**
 
@@ -620,8 +663,6 @@ size(): number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LocalStorage-size(): number--><!--Device-LocalStorage-size(): number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -633,8 +674,12 @@ size(): number
 **示例**
 
 ```TypeScript
+AppStorage.setOrCreate('PropB', 48);
+let res: number = AppStorage.size(); // 1
+```
+
+```TypeScript
 let initialData: Record<string, number> = { 'PropA': 47 };
 let storage: LocalStorage = new LocalStorage(initialData);
 let res: number = storage.size(); // 1
 ```
-

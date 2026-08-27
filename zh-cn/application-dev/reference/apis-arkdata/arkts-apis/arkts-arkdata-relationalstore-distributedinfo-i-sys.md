@@ -4,8 +4,6 @@
 
 **起始版本：** 24
 
-<!--Device-relationalStore-interface DistributedInfo--><!--Device-relationalStore-interface DistributedInfo-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **系统接口：** 此接口为系统接口。
@@ -30,8 +28,6 @@ flag?: DistributedOrigin
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DistributedInfo-flag?: DistributedOrigin--><!--Device-DistributedInfo-flag?: DistributedOrigin-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **系统接口：** 此接口为系统接口。
@@ -50,9 +46,6 @@ oriDevice?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DistributedInfo-oriDevice?: string--><!--Device-DistributedInfo-oriDevice?: string-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **系统接口：** 此接口为系统接口。
-

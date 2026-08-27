@@ -12,8 +12,6 @@ Defines the color which can use resource.
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare type ResourceColor = Color | number | string | Resource--><!--Device-unnamed-declare type ResourceColor = Color | number | string | Resource-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
@@ -21,5 +19,4 @@ Defines the color which can use resource.
 | Color |  |
 | number |  |
 | string |  |
-| Resource |  |
-
+| [Resource](arkts-arkui-resource-t.md) |  |

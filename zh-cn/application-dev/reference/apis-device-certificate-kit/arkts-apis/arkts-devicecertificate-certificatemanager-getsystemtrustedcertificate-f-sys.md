@@ -3,8 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## getSystemTrustedCertificate
@@ -20,8 +18,6 @@ function getSystemTrustedCertificate(certUri: string): Promise<CMResult>
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-certificateManager-function getSystemTrustedCertificate(certUri: string): Promise<CMResult>--><!--Device-certificateManager-function getSystemTrustedCertificate(certUri: string): Promise<CMResult>-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -43,11 +39,11 @@ function getSystemTrustedCertificate(certUri: string): Promise<CMResult>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter verification failed. <br>Possible causes: the URI is null or the URI format is wrong. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. <br>The application does not have the permission required to call the API. |
-| [17500002](../errorcode-certManager.md#17500002-证书不存在) | The certificate does not exist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;  2. Memory operation error; 3. File operation error. Please try again. |
+| [17500002](../errorcode-certManager.md#17500002-证书不存在) | The certificate does not exist. |
 
 **示例**
 
@@ -72,4 +68,3 @@ try {
   console.error(`Failed to get system trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-

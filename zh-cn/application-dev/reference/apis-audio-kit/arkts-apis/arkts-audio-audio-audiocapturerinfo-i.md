@@ -2,9 +2,7 @@
 
 描述音频采集器信息。
 
-**起始版本：** 23
-
-<!--Device-audio-interface AudioCapturerInfo--><!--Device-audio-interface AudioCapturerInfo-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -12,22 +10,19 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## capturerFlags
 
 ```TypeScript
-capturerFlags: int
+capturerFlags: number
 ```
 
-录制流行为标志。 设置为0即可。
+录制流行为标志。设置为0即可。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AudioCapturerInfo-capturerFlags: int--><!--Device-AudioCapturerInfo-capturerFlags: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -41,9 +36,6 @@ source: SourceType
 
 **类型：** SourceType
 
-**起始版本：** 23
-
-<!--Device-AudioCapturerInfo-source: SourceType--><!--Device-AudioCapturerInfo-source: SourceType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
-

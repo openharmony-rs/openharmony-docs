@@ -18,8 +18,6 @@ function registerShutdownCallback(callback: Callback<boolean>): void
 
 **需要权限：** ohos.permission.REBOOT
 
-<!--Device-power-function registerShutdownCallback(callback: Callback<boolean>): void--><!--Device-power-function registerShutdownCallback(callback: Callback<boolean>): void-End-->
-
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -28,7 +26,7 @@ function registerShutdownCallback(callback: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](arkts-basicservices-callback-t.md)&lt;boolean&gt; | 是 | 回调函数，返回true表示重启；返回false表示关机。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 是 | 回调函数，返回true表示重启；返回false表示关机。 |
 
 **错误码：**
 
@@ -43,11 +41,10 @@ function registerShutdownCallback(callback: Callback<boolean>): void
 ```TypeScript
 try {
     power.registerShutdownCallback((isReboot: boolean) => {
-        console.info('device shutdown is: ' + isReboot);
+        console.info('device is reboot: ' + isReboot);
     });
     console.info('register shutdown callback success.');
-} catch(err) {
-    console.error('register shutdown callback failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to register shutdown callback. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

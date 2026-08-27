@@ -10,8 +10,6 @@ type DialogControlType = 'open' | 'close' | 'refresh' | 'toast'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avMusicTemplate-type DialogControlType = 'open' | 'close' | 'refresh' | 'toast'--><!--Device-avMusicTemplate-type DialogControlType = 'open' | 'close' | 'refresh' | 'toast'-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 类型 | 说明 |
@@ -20,4 +18,3 @@ type DialogControlType = 'open' | 'close' | 'refresh' | 'toast'
 | 'close' |  |
 | 'refresh' |  |
 | 'toast' |  |
-

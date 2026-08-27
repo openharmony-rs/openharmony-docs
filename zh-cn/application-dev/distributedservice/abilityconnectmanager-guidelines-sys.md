@@ -1,4 +1,4 @@
-# 跨设备连接UIAbility开发指南
+# 跨设备连接UIAbility开发指南（仅对系统应用开放）
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @hobbycao-->
@@ -32,7 +32,7 @@
 
 - **字节流**
   
-  字节流是数据类型为[ArrayBuffer](../arkts-utils/arraybuffer-object.md)类型的数据。可以被用于存储二进制数据，例如图像或音频数据。
+  字节流是数据类型为ArrayBuffer类型的数据。可以被用于存储二进制数据，例如图像或音频数据。
 
 - **传输流**
 
@@ -73,9 +73,9 @@
 ### 搭建环境
 
 1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
-2. 将public-SDK更新到API 18或以上，更新SDK的具体操作可参见[更新指南]( ../tools/openharmony_sdk_upgrade_assistant.md)。
+2. 将public-SDK更新到API 18或以上，更新SDK的具体操作可参见更新指南。
 3. 用USB线缆将两台调试设备（设备A和设备B）连接到PC。
-4. 打开设备A和设备B的Wi-Fi和蓝牙。如果登录同一个华为账号，则设备间会进行自组网；非同账号环境下，需先通过[设备发现](devicemanager-guidelines.md#设备发现开发指导)和[设备绑定](devicemanager-guidelines.md#设备绑定开发指导)建立可信关系以完成组网。
+4. 打开设备A和设备B的Wi-Fi和蓝牙。如果登录同一个华为账号，则设备间会进行自组网；非同账号环境下，需先通过设备发现和设备绑定建立可信关系以完成组网。
 
 
 ### 检验环境是否搭建成功
@@ -96,7 +96,7 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 ### 接口说明
 
-应用跨设备连接管理接口如下表所示。具体API说明详见API参考：[abilityConnectionManager/apis-distributedservice-kit/js-apis-distributed-abilityConnectionManager.md)。
+应用跨设备连接管理接口如下表所示。具体API说明详见API参考：abilityConnectionManager。
 
 **表1** abilityConnectionManager接口功能介绍
 
@@ -131,7 +131,7 @@ import {abilityConnectionManager, distributedDeviceManager } from '@kit.Distribu
 
 **发现设备**
 
-设备A上的应用，需要发现并选择设备B的[networkId/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)来作为协同接口的入参。可调用分布式设备管理模块接口，进行对端设备的发现和选择，详情可参考[设备信息查询开发指导](devicemanager-guidelines.md#设备信息查询开发指导)。
+设备A上的应用，需要发现并选择设备B的networkId来作为协同接口的入参。可调用分布式设备管理模块接口，进行对端设备的发现和选择，详情可参考设备信息查询开发指导。
 
 
 **应用间创建会话并进行连接**
@@ -273,28 +273,28 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 <!-- @[abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
-  registerSessionEvent(sessionId: number) {
-    abilityConnectionManager.on('connect',sessionId,(callbackInfo) => {
-      AppStorage.setOrCreate<boolean>('isConnected', true);
-      AppStorage.setOrCreate<string>('receiveMessage', 'connect success');
-    });
-    abilityConnectionManager.on('disconnect',sessionId,(callbackInfo) => {
-      abilityConnectionManager.destroyAbilityConnectionSession(sessionId)
-      AppStorage.setOrCreate<boolean>('isConnected', false);
-      AppStorage.setOrCreate<string>('receiveMessage', 'session disconnect');
-    })
-    abilityConnectionManager.on('receiveMessage',sessionId,(callbackInfo) => {
-      AppStorage.setOrCreate<string>('receiveMessage', callbackInfo.msg);
-      if (callbackInfo.msg == 'startStream') {
-        hilog.info(0x0000, 'testTag', 'startStream');
-      }
-    })
-    abilityConnectionManager.on('receiveData',sessionId,(callbackInfo) => {
-      let decoder = util.TextDecoder.create('utf-8');
-      let str = decoder.decodeWithStream(new Uint8Array(callbackInfo.data));
-      AppStorage.setOrCreate<string>('receiveMessage', str);
-    })
-  }
+registerSessionEvent(sessionId: number) {
+  abilityConnectionManager.on('connect',sessionId,(callbackInfo) => {
+    AppStorage.setOrCreate<boolean>('isConnected', true);
+    AppStorage.setOrCreate<string>('receiveMessage', 'connect success');
+  });
+  abilityConnectionManager.on('disconnect',sessionId,(callbackInfo) => {
+    abilityConnectionManager.destroyAbilityConnectionSession(sessionId)
+    AppStorage.setOrCreate<boolean>('isConnected', false);
+    AppStorage.setOrCreate<string>('receiveMessage', 'session disconnect');
+  })
+  abilityConnectionManager.on('receiveMessage',sessionId,(callbackInfo) => {
+    AppStorage.setOrCreate<string>('receiveMessage', callbackInfo.msg);
+    if (callbackInfo.msg == 'startStream') {
+      hilog.info(0x0000, 'testTag', 'startStream');
+    }
+  })
+  abilityConnectionManager.on('receiveData',sessionId,(callbackInfo) => {
+    let decoder = util.TextDecoder.create('utf-8');
+    let str = decoder.decodeToString(new Uint8Array(callbackInfo.data));
+    AppStorage.setOrCreate<string>('receiveMessage', str);
+  })
+}
 ```
 
 
@@ -455,4 +455,4 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 **解决措施**
 
-应用[申请长时任务](../task-management/continuous-task.md)，消除此限制。
+应用申请长时任务，消除此限制。

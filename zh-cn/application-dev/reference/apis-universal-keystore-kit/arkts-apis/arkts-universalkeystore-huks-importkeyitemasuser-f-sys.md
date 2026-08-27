@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
-import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
 ## importKeyItemAsUser
@@ -18,8 +17,6 @@ function importKeyItemAsUser(userId: number, keyAlias: string, huksOptions: Huks
 **起始版本：** 12
 
 **需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-<!--Device-huks-function importKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions): Promise<void>--><!--Device-huks-function importKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -37,28 +34,28 @@ function importKeyItemAsUser(userId: number, keyAlias: string, huksOptions: Huks
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
-| [12000017](../errorcode-huks.md#12000017-同名密钥已存在) | The key with the same alias already exists<br>**适用版本：** 20+ |
-| [201](../../errorcode-universal.md#201-权限校验失败) | the application permission is not sufficient, which may be caused by lack of <br>cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | the application permission is not sufficient, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | non-system applications are not allowed to use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
-| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
-| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
-| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
-| [12000015](../errorcode-huks.md#12000015-调用其他系统服务失败) | Failed to obtain the security information via UserIAM |
-| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
-| [12000013](../errorcode-huks.md#12000013-密钥设置生物访问控制时待绑定的凭据不存在) | queried credential does not exist |
-| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
+| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000013](../errorcode-huks.md#12000013-密钥设置生物访问控制时待绑定的凭据不存在) | queried credential does not exist |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000015](../errorcode-huks.md#12000015-调用其他系统服务失败) | Failed to obtain the security information via UserIAM |
+| [12000017](../errorcode-huks.md#12000017-同名密钥已存在) | The key with the same alias already exists<br>**适用版本：** 20+ |
 
 **示例**
 
@@ -104,9 +101,9 @@ async function ImportPlainKey(keyAlias: string, importProperties: Array<huks.Huk
     inData: plainKey
   }
   await huks.importKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功导入了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功导入了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥导入失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥导入失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -115,4 +112,3 @@ export default function HuksAsUserTest() {
   ImportPlainKey(aesKeyAlias, GetAesGenerateProperties(), plainAesKey128)
 }
 ```
-

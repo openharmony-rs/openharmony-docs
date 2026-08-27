@@ -16,12 +16,12 @@ Canvas即画布，提供绘制基本图形的能力，用于在屏幕上绘制�
 Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括基本图形的绘制、文字的绘制、图片的绘制、图形变换等）都是基于Canvas的。
 
 
-目前ArkTS有两种获取Canvas的方式：[获取可直接显示的Canvas画布](#获取可直接显示的canvas画布)、[获取离屏的Canvas](#离屏canvas画布的获取与显示)，前者在调用绘制接口之后无需进行额外的操作即可完成绘制结果的上屏显示，而后者需要依靠已有的显示手段来显示绘制结果。
+目前ArkTS有两种获取Canvas的方式：获取可直接显示的Canvas画布、获取离屏的Canvas，前者在调用绘制接口之后无需进行额外的操作即可完成绘制结果的上屏显示，而后者需要依靠已有的显示手段来显示绘制结果。
 
 
 ## 获取可直接显示的Canvas画布
 
-通过[RenderNode/apis-arkui/js-apis-arkui-renderNode.md)获取可直接上屏显示的Canvas画布。
+通过RenderNode获取可直接上屏显示的Canvas画布。
 
 1. 导入依赖的相关文件。
 
@@ -64,7 +64,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    }
    ```
 
-3. 添加自定义[NodeController/apis-arkui/js-apis-arkui-nodeController.md)。
+3. 添加自定义NodeController。
    
    <!-- @[arkts_graphics_draw_direct_canvas_api_node_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
    
@@ -93,7 +93,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    }
    ```
 
-4. 重写自定义RenderNode的[draw()//apis-arkui/js-apis-arkui-renderNode.md#draw)函数，获取Canvas进行自定义的绘制操作，即本章下文中的内容。
+4. 重写自定义RenderNode的draw()函数，获取Canvas进行自定义的绘制操作，即本章下文中的内容。
    
    <!-- @[arkts_graphics_draw_direct_canvas_api_rewrite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
    
@@ -169,11 +169,11 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 
 2. 添加自定义RenderNode。
 
-3. 添加自定义[NodeController/apis-arkui/js-apis-arkui-nodeController.md)。
+3. 添加自定义NodeController。
 
 4. 在MyNodeController的aboutToAppear()函数中创建PixelMap。
 
-5. 重写自定义RenderNode的[draw()//apis-arkui/js-apis-arkui-renderNode.md#draw)函数，在其中获取离屏Canvas进行绘制：
+5. 重写自定义RenderNode的draw()函数，在其中获取离屏Canvas进行绘制：
 
    1. 利用4中创建的PixelMap构造离屏Canvas。
    2. 对离屏Canvas进行自定义的绘制操作。
@@ -221,7 +221,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
      private rootNode: FrameNode | null = null;
      private myRenderNode = new MyRenderNodeIndirectDisplay();
    
-     // 4. 在MyNodeController的aboutToAppear中创建PixeMap
+     // 4. 在MyNodeController的aboutToAppear中创建PixelMap
      aboutToAppear(): void {
        let task = new taskpool.Task(createPixelMapAsync);
        taskpool.execute(task).then((pixel:Object)=>{

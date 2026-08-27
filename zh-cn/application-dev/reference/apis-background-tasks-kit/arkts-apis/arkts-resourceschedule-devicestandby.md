@@ -1,10 +1,12 @@
-# @ohos.resourceschedule.deviceStandby
+# @ohos.resourceschedule.deviceStandby(设备待机模块)
 
-当设备长时间未被使用，或通过按键操作时，可以使设备进入待机模式。待机模式不影响应用使用，还可以延长电池续航时间。通过本模块接口，可查询设备或应用是否为待机模式，以及为应用申请或取消待机资源管控。 > **说明：**: > > 本模块接口为系统接口。
+当设备长时间未被使用，或通过按键操作时，可以使设备进入待机模式。待机模式不影响应用使用，还可以延长电池续航时间。通过本模块接口，可查询设备或应用是否为待机模式，以及为应用申请或取消待机资源管控。
 
-**起始版本：** 23
+> **说明：**:
+> 
+> 本模块接口为系统接口。
 
-<!--Device-unnamed-declare namespace deviceStandby--><!--Device-unnamed-declare namespace deviceStandby-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.ResourceSchedule.DeviceStandby
 
@@ -21,10 +23,10 @@ import { deviceStandby } from '@kit.BackgroundTasksKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getExemptedApps](arkts-backgroundtasks-devicestandby-getexemptedapps-f-sys.md) | 获取进入待机模式的应用名单，使用Callback异步回调。 |
-| [getExemptedApps](arkts-backgroundtasks-devicestandby-getexemptedapps-f-sys.md) | 获取进入待机模式的应用名单，使用Promise异步回调。 |
-| [releaseExemptionResource](arkts-backgroundtasks-devicestandby-releaseexemptionresource-f-sys.md) | 取消应用订阅申请豁免。 |
-| [requestExemptionResource](arkts-backgroundtasks-devicestandby-requestexemptionresource-f-sys.md) | 应用订阅申请豁免，使应用临时不进入待机管控。 |
+| [getExemptedApps(设备待机模块)](arkts-backgroundtasks-devicestandby-getexemptedapps-f-sys.md) | 获取进入待机模式的应用名单，使用Callback异步回调。 |
+| [getExemptedApps(设备待机模块)](arkts-backgroundtasks-devicestandby-getexemptedapps-f-sys.md) | 获取进入待机模式的应用名单，使用Promise异步回调。 |
+| [releaseExemptionResource(设备待机模块)](arkts-backgroundtasks-devicestandby-releaseexemptionresource-f-sys.md) | 取消应用订阅申请豁免。 |
+| [requestExemptionResource(设备待机模块)](arkts-backgroundtasks-devicestandby-requestexemptionresource-f-sys.md) | 应用订阅申请豁免，使应用临时不进入待机管控。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -32,8 +34,8 @@ import { deviceStandby } from '@kit.BackgroundTasksKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [ExemptedAppInfo](arkts-backgroundtasks-devicestandby-exemptedappinfo-i-sys.md) | 豁免应用信息，未进入待机管控的应用信息。 |
-| [ResourceRequest](arkts-backgroundtasks-devicestandby-resourcerequest-i-sys.md) | 待机资源请求体。 |
+| [ExemptedAppInfo(设备待机模块)](arkts-backgroundtasks-devicestandby-exemptedappinfo-i-sys.md) | 豁免应用信息，未进入待机管控的应用信息。 |
+| [ResourceRequest(设备待机模块)](arkts-backgroundtasks-devicestandby-resourcerequest-i-sys.md) | 待机资源请求体。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -41,6 +43,5 @@ import { deviceStandby } from '@kit.BackgroundTasksKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [ResourceType](arkts-backgroundtasks-devicestandby-resourcetype-e-sys.md) | 非待机应用资源枚举。 |
+| [ResourceType(设备待机模块)](arkts-backgroundtasks-devicestandby-resourcetype-e-sys.md) | 非待机应用资源枚举。 |
 <!--DelEnd-->
-

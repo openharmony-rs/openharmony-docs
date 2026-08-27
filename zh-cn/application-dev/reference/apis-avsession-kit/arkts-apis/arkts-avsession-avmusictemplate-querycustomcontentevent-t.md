@@ -10,8 +10,6 @@ type QueryCustomContentEvent = (queryType: CustomType[]) => Promise<CustomElemen
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avMusicTemplate-type QueryCustomContentEvent = (queryType: CustomType[]) => Promise<CustomElement>--><!--Device-avMusicTemplate-type QueryCustomContentEvent = (queryType: CustomType[]) => Promise<CustomElement>-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
@@ -25,4 +23,3 @@ type QueryCustomContentEvent = (queryType: CustomType[]) => Promise<CustomElemen
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[CustomElement](arkts-avsession-avmusictemplate-customelement-i.md)&gt; | Promise对象，返回我的页面的自定义元素。 |
-

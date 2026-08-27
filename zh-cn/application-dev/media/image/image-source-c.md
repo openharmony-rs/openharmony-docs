@@ -22,7 +22,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 ### Native接口调用
 
-具体接口说明请参考[Image_NativeModule/apis-image-kit/capi-image-nativemodule.md)。
+具体接口说明请参考Image_NativeModule。
 
 在Deveco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
 
@@ -30,7 +30,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 > **说明：**
 >
-> 部分接口（如：[OH_ImageSourceNative_GetSupportedFormats/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getsupportedformats)）在API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
+> 部分接口（如：OH_ImageSourceNative_GetSupportedFormats）在API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
 
 1. 导入相关头文件。
 
@@ -253,9 +253,13 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
              return GetJsResult(env, IMAGE_BAD_PARAMETER);
          }
          // 修改指定属性键的值。
-         char key[MAX_STRING_LENGTH];
-         size_t keySize = MAX_STRING_LENGTH;
-         napi_get_value_string_utf8(env, argValue[0], (char *)key, sizeof(key), &keySize);
+         char key[MAX_STRING_LENGTH] = {0};
+         size_t keySize = 0;
+         if (napi_get_value_string_utf8(env, argValue[0], key, sizeof(key), &keySize) != napi_ok) {
+             OH_LOG_ERROR(LOG_APP, "GetImageProperty napi_get_value_string_utf8 failed!");
+             return GetJsResult(env, IMAGE_BAD_PARAMETER);
+         }
+         key[MAX_STRING_LENGTH - 1] = '\0';
          Image_String getKey;
          getKey.data = key;
          getKey.size = keySize;
@@ -291,18 +295,26 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
          }
      
          // 获取要修改的key值。
-         char key[MAX_STRING_LENGTH];
-         size_t keySize = MAX_STRING_LENGTH;
-         napi_get_value_string_utf8(env, argValue[0], (char *)key, sizeof(key), &keySize);
+         char key[MAX_STRING_LENGTH] = {0};
+         size_t keySize = 0;
+         if (napi_get_value_string_utf8(env, argValue[0], key, sizeof(key), &keySize) != napi_ok) {
+             OH_LOG_ERROR(LOG_APP, "ModifyImageProperty key napi_get_value_string_utf8 failed!");
+             return GetJsResult(env, IMAGE_BAD_PARAMETER);
+         }
+         key[MAX_STRING_LENGTH - 1] = '\0';
          Image_String setKey;
          setKey.data = key;
          setKey.size = keySize;
          OH_LOG_INFO(LOG_APP, "ModifyImageProperty key: %{public}s.", setKey.data);
          
          // 获取要修改的value值。
-         char value[MAX_STRING_LENGTH];
-         size_t valueSize;
-         napi_get_value_string_utf8(env, argValue[1], (char *)value, MAX_STRING_LENGTH, &valueSize);
+         char value[MAX_STRING_LENGTH] = {0};
+         size_t valueSize = 0;
+         if (napi_get_value_string_utf8(env, argValue[1], value, sizeof(value), &valueSize) != napi_ok) {
+             OH_LOG_ERROR(LOG_APP, "ModifyImageProperty value napi_get_value_string_utf8 failed!");
+             return GetJsResult(env, IMAGE_BAD_PARAMETER);
+         }
+         value[MAX_STRING_LENGTH - 1] = '\0';
          Image_String setValue;
          setValue.data = value;
          setValue.size = valueSize;
@@ -399,7 +411,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
    
  ## 进阶主题
 
-- **内存优化解码**：使用DMA内存和YUV像素格式降低内存占用、提升解码性能，参见[图片解码内存优化](image-allocator-type-c.md)。
-- **区域解码**：解码图片指定区域，适用于大图局部查看和裁剪预览场景，参见[图片区域解码与下采样](image-region-and-downsampling-c.md)。
-- **下采样解码**：解码时直接缩放目标尺寸，避免解码后缩放的性能开销，适用于缩略图生成场景，参见[图片区域解码与下采样](image-region-and-downsampling-c.md)。
-- **多图对象解码**：解码包含主图和辅助图的Picture对象，适用于HDR图片和HEIF专业格式处理，参见[使用Image_NativeModule完成多图对象解码](image-source-picture-c.md)。
+- **内存优化解码**：使用DMA内存和YUV像素格式降低内存占用、提升解码性能，参见图片解码内存优化。
+- **区域解码**：解码图片指定区域，适用于大图局部查看和裁剪预览场景，参见图片区域解码与下采样。
+- **下采样解码**：解码时直接缩放目标尺寸，避免解码后缩放的性能开销，适用于缩略图生成场景，参见图片区域解码与下采样。
+- **多图对象解码**：解码包含主图和辅助图的Picture对象，适用于HDR图片和HEIF专业格式处理，参见使用Image_NativeModule完成多图对象解码。

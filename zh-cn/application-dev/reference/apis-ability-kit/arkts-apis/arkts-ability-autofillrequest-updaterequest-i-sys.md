@@ -2,9 +2,7 @@
 
 自动填充更新信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface UpdateRequest--><!--Device-unnamed-export interface UpdateRequest-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -18,15 +16,12 @@ viewData: ViewData
 
 页面数据。
 
-**类型：** [ViewData](arkts-ability-viewdata-i-sys.md)
+**类型：** [ViewData](arkts-ability-viewdata-i.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UpdateRequest-viewData: ViewData--><!--Device-UpdateRequest-viewData: ViewData-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
-

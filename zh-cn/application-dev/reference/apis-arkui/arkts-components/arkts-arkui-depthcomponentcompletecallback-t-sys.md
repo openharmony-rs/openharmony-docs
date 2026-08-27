@@ -12,8 +12,6 @@ declare type DepthComponentCompleteCallback = (event: DepthComponentCompleteEven
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type DepthComponentCompleteCallback = (event: DepthComponentCompleteEvent) => void--><!--Device-unnamed-declare type DepthComponentCompleteCallback = (event: DepthComponentCompleteEvent) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -23,4 +21,3 @@ declare type DepthComponentCompleteCallback = (event: DepthComponentCompleteEven
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | [DepthComponentCompleteEvent](arkts-arkui-depthcomponentcompleteevent-i-sys.md) | 是 | 背景资源加载成功的事件信息。 |
-

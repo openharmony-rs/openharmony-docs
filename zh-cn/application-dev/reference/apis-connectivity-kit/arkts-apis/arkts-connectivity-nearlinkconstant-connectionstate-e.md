@@ -1,10 +1,8 @@
 # ConnectionState
 
-The enum of connection state.
+表示和远端设备的连接状态，为枚举值。
 
 **起始版本：** 26.0.0
-
-<!--Device-nearlinkConstant-export enum ConnectionState--><!--Device-nearlinkConstant-export enum ConnectionState-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -14,13 +12,11 @@ The enum of connection state.
 STATE_CONNECTING = 0
 ```
 
-The current profile is being connected.
+表示正在连接。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ConnectionState-STATE_CONNECTING = 0--><!--Device-ConnectionState-STATE_CONNECTING = 0-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -30,13 +26,11 @@ The current profile is being connected.
 STATE_CONNECTED = 1
 ```
 
-The current device is connected.
+表示已连接。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ConnectionState-STATE_CONNECTED = 1--><!--Device-ConnectionState-STATE_CONNECTED = 1-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -46,13 +40,11 @@ The current device is connected.
 STATE_DISCONNECTING = 2
 ```
 
-The current device is being disconnected.
+表示正在断连。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ConnectionState-STATE_DISCONNECTING = 2--><!--Device-ConnectionState-STATE_DISCONNECTING = 2-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -62,13 +54,10 @@ The current device is being disconnected.
 STATE_DISCONNECTED = 3
 ```
 
-The current device is disconnected.
+表示已断连。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ConnectionState-STATE_DISCONNECTED = 3--><!--Device-ConnectionState-STATE_DISCONNECTED = 3-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

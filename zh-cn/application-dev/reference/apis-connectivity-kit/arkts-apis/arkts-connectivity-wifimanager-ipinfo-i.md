@@ -2,9 +2,7 @@
 
 WLAN IP信息。
 
-**起始版本：** 23
-
-<!--Device-wifiManager-interface IpInfo--><!--Device-wifiManager-interface IpInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -12,118 +10,102 @@ WLAN IP信息。
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## gateway
 
 ```TypeScript
-gateway: int
+gateway: number
 ```
 
 WLAN连接的网关
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-IpInfo-gateway: int--><!--Device-IpInfo-gateway: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 ## ipAddress
 
 ```TypeScript
-ipAddress: int
+ipAddress: number
 ```
 
 WLAN连接的IP地址
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-IpInfo-ipAddress: int--><!--Device-IpInfo-ipAddress: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 ## leaseDuration
 
 ```TypeScript
-leaseDuration: int
+leaseDuration: number
 ```
 
 WLAN连接的IP地址租用时长
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-IpInfo-leaseDuration: int--><!--Device-IpInfo-leaseDuration: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 ## netmask
 
 ```TypeScript
-netmask: int
+netmask: number
 ```
 
 WLAN连接的网络掩码
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-IpInfo-netmask: int--><!--Device-IpInfo-netmask: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 ## primaryDns
 
 ```TypeScript
-primaryDns: int
+primaryDns: number
 ```
 
 WLAN连接的主DNS服务器IP地址
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-IpInfo-primaryDns: int--><!--Device-IpInfo-primaryDns: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 ## secondDns
 
 ```TypeScript
-secondDns: int
+secondDns: number
 ```
 
 WLAN连接的备DNS服务器IP地址
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-IpInfo-secondDns: int--><!--Device-IpInfo-secondDns: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 ## serverIp
 
 ```TypeScript
-serverIp: int
+serverIp: number
 ```
 
 WLAN连接的DHCP服务器IP地址
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-IpInfo-serverIp: int--><!--Device-IpInfo-serverIp: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
-

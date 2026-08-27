@@ -1,32 +1,10 @@
-# PhotoSubtype（系统接口）
+# PhotoSubtype
 
 PhotoSubtype是不同[PhotoAsset](arkts-medialibrary-photoaccesshelper-photoasset-i.md)类型的枚举。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-export enum PhotoSubtype--><!--Device-photoAccessHelper-export enum PhotoSubtype-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## DEFAULT
-
-```TypeScript
-DEFAULT = 0
-```
-
-默认照片文件类型。
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoSubtype-DEFAULT = 0--><!--Device-PhotoSubtype-DEFAULT = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
 
 ## SCREENSHOT
 
@@ -36,9 +14,7 @@ SCREENSHOT = 1
 
 截屏录屏文件类型。
 
-**起始版本：** 23
-
-<!--Device-PhotoSubtype-SCREENSHOT = 1--><!--Device-PhotoSubtype-SCREENSHOT = 1-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -54,8 +30,6 @@ CINEMATIC_VIDEO = 5
 
 **起始版本：** 26.1.0
 
-<!--Device-PhotoSubtype-CINEMATIC_VIDEO = 5--><!--Device-PhotoSubtype-CINEMATIC_VIDEO = 5-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -68,9 +42,7 @@ SLOW_MOTION_VIDEO = 6
 
 慢动作视频文件类型。
 
-**起始版本：** 23
-
-<!--Device-PhotoSubtype-SLOW_MOTION_VIDEO = 6--><!--Device-PhotoSubtype-SLOW_MOTION_VIDEO = 6-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -84,9 +56,7 @@ SPATIAL_3DGS = 7
 
 3DGS（3D高斯点渲染）视频文件类型。
 
-**起始版本：** 23
-
-<!--Device-PhotoSubtype-SPATIAL_3DGS = 7--><!--Device-PhotoSubtype-SPATIAL_3DGS = 7-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -102,9 +72,6 @@ CINEMATIC_VIDEO_V2 = 8
 
 **起始版本：** 26.1.0
 
-<!--Device-PhotoSubtype-CINEMATIC_VIDEO_V2 = 8--><!--Device-PhotoSubtype-CINEMATIC_VIDEO_V2 = 8-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

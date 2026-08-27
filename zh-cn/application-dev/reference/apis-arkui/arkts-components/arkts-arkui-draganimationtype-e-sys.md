@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-declare enum DragAnimationType--><!--Device-unnamed-declare enum DragAnimationType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -21,8 +19,6 @@ DEFAULT = 0
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DragAnimationType-DEFAULT = 0--><!--Device-DragAnimationType-DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,9 +36,6 @@ FOLLOW_HAND_MORPH = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DragAnimationType-FOLLOW_HAND_MORPH = 1--><!--Device-DragAnimationType-FOLLOW_HAND_MORPH = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

@@ -7,20 +7,20 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-以获取证书指定OID域段，并判断是否为CA证书为例，完成证书扩展信息对象的创建、解析和校验。
+以获取证书指定对象标识符（OID）域段，并判断是否为CA（证书颁发机构）证书为例，完成证书扩展信息对象的创建、解析和校验。
 
 ## 开发步骤
 
-1. 导入[证书模块/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入证书模块。
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. 解析证书扩展域段数据，调用[cert.createCertExtension/apis-device-certificate-kit/js-apis-cert.md#certcreatecertextension10)创建证书扩展域段对象。
+2. 解析证书扩展域段数据，调用cert.createCertExtension创建证书扩展域段对象。
 
-3. 调用[CertExtension.getEntry/apis-device-certificate-kit/js-apis-cert.md#getentry10)获取指定OID证书扩展域段信息。比如，证书扩展域段对象标识符列表，根据对象标识符获取具体数据等。
+3. 调用CertExtension.getEntry获取指定OID证书扩展域段信息。比如，证书扩展域段对象标识符列表，根据对象标识符获取具体数据等。
 
-4. 调用[CertExtension.checkCA/apis-device-certificate-kit/js-apis-cert.md#checkca10)判断证书是否为CA证书。
+4. 调用CertExtension.checkCA判断证书是否为CA证书。
 
 <!-- @[create_parse_validate_certificate_extension_info_objects](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateParseVerifyCertextensionObject.ets) -->
 

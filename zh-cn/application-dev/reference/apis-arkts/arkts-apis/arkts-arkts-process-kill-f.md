@@ -20,8 +20,6 @@ function kill(signal: number, pid: number): boolean
 
 **替代接口：** [kill](arkts-arkts-process-processmanager-c.md#kill)
 
-<!--Device-process-function kill(signal: number, pid: number): boolean--><!--Device-process-function kill(signal: number, pid: number): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -44,3 +42,11 @@ let pid = process.pid;
 let result = process.kill(28, pid);
 ```
 
+```TypeScript
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
+// 获取当前进程pid
+let pres = process.pid;
+// 发送信号28结束当前进程
+let result = processManager.kill(28, pres);
+```

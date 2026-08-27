@@ -18,11 +18,11 @@
 
 - ohos.permission.LOCATION_IN_BACKGROUND：用于应用切换到后台仍然需要获取定位信息的场景。
 
-Location Kit接口对权限的要求参见API参考：[@ohos.geoLocationManager (位置服务)/apis-location-kit/js-apis-geoLocationManager.md)。
+Location Kit接口对权限的要求参见API参考：@ohos.geoLocationManager (位置服务)。
 
 ## 开发步骤
 
-1. 开发者可以在应用配置文件中声明所需要的权限并向用户申请授权，具体可参考[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+1. 开发者可以在应用配置文件中声明所需要的权限并向用户申请授权，具体可参考向用户申请授权。
 
 2. 当APP运行在前台，且访问设备位置信息时，申请位置权限的方式如下：
 
@@ -35,6 +35,6 @@ Location Kit接口对权限的要求参见API参考：[@ohos.geoLocationManager 
 
 如果应用在后台运行时也需要访问设备位置，除了按照步骤2申请权限外，还需要申请LOCATION类型的长时任务。
 
-长时任务申请可参考：[长时任务介绍](../../task-management/continuous-task.md)<!--Del-->，[长时任务开发示例](../../performance/reasonable-running-backgroundTask.md#长时任务)<!--DelEnd-->。
+长时任务申请可参考：长时任务介绍<!--Del-->，长时任务开发示例<!--DelEnd-->。
 
 <!--RP1--><!--RP1End-->

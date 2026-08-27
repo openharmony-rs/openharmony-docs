@@ -4,18 +4,11 @@ HttpAuthHandler是Web组件用于处理HTTP认证请求的处理类。当服务�
 
 **起始版本：** 9
 
-<!--Device-unnamed-declare class HttpAuthHandler--><!--Device-unnamed-declare class HttpAuthHandler-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## cancel
@@ -30,9 +23,30 @@ cancel(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HttpAuthHandler-cancel(): void--><!--Device-HttpAuthHandler-cancel(): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onDataResubmitted((event) => {
+          console.info('onDataResubmitted');
+          event.handler.cancel();
+        })
+    }
+  }
+}
+```
 
 ## confirm
 
@@ -45,8 +59,6 @@ confirm(userName: string, password: string): boolean
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HttpAuthHandler-confirm(userName: string, password: string): boolean--><!--Device-HttpAuthHandler-confirm(userName: string, password: string): boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -75,8 +87,6 @@ HttpAuthHandler的构造函数。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HttpAuthHandler-constructor()--><!--Device-HttpAuthHandler-constructor()-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## isHttpAuthInfoSaved
@@ -91,8 +101,6 @@ isHttpAuthInfoSaved(): boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HttpAuthHandler-isHttpAuthInfoSaved(): boolean--><!--Device-HttpAuthHandler-isHttpAuthInfoSaved(): boolean-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -100,4 +108,3 @@ isHttpAuthInfoSaved(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 存储的凭据适用时返回true，其他返回false。 |
-

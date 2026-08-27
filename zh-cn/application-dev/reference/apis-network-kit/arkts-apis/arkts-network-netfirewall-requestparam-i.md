@@ -1,10 +1,8 @@
-# RequestParam(网络防火墙)
+# RequestParam
 
 查询输入信息结构。
 
 **起始版本：** 15
-
-<!--Device-netFirewall-interface RequestParam--><!--Device-netFirewall-interface RequestParam-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -26,8 +24,6 @@ orderField: NetFirewallOrderField
 
 **起始版本：** 15
 
-<!--Device-RequestParam-orderField: NetFirewallOrderField--><!--Device-RequestParam-orderField: NetFirewallOrderField-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## orderType
@@ -42,39 +38,32 @@ orderType: NetFirewallOrderType
 
 **起始版本：** 15
 
-<!--Device-RequestParam-orderType: NetFirewallOrderType--><!--Device-RequestParam-orderType: NetFirewallOrderType-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## page
 
 ```TypeScript
-page: int
+page: number
 ```
 
 页码，值范围：[1, 1000]。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 15
-
-<!--Device-RequestParam-page: int--><!--Device-RequestParam-page: int-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## pageSize
 
 ```TypeScript
-pageSize: int
+pageSize: number
 ```
 
 页面大小，值范围：[1, 50]。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 15
 
-<!--Device-RequestParam-pageSize: int--><!--Device-RequestParam-pageSize: int-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
-

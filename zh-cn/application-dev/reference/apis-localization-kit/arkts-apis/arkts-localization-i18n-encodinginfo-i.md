@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-i18n-export interface EncodingInfo--><!--Device-i18n-export interface EncodingInfo-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 ## 导入模块
@@ -17,20 +15,18 @@ import { i18n } from '@kit.LocalizationKit';
 ## confidence
 
 ```TypeScript
-confidence: int
+confidence: number
 ```
 
 识别结果的置信度，范围是0-100。值越大，识别结果越可靠。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EncodingInfo-confidence: int--><!--Device-EncodingInfo-confidence: int-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -50,7 +46,4 @@ encodingName: string
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EncodingInfo-encodingName: string--><!--Device-EncodingInfo-encodingName: string-End-->
-
 **系统能力：** SystemCapability.Global.I18n
-

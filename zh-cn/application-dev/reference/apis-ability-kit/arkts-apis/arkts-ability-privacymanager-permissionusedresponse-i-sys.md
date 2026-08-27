@@ -2,9 +2,7 @@
 
 表示所有应用或设备的访问记录。
 
-**起始版本：** 23
-
-<!--Device-privacyManager-interface PermissionUsedResponse--><!--Device-privacyManager-interface PermissionUsedResponse-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -19,16 +17,14 @@ import { privacyManager } from '@kit.AbilityKit';
 ## beginTime
 
 ```TypeScript
-beginTime: long
+beginTime: number
 ```
 
 查询记录的起始时间。 单位为：毫秒。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PermissionUsedResponse-beginTime: long--><!--Device-PermissionUsedResponse-beginTime: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -44,9 +40,7 @@ bundleRecords: Array<BundleUsedRecord>
 
 **类型：** Array&lt;[BundleUsedRecord](arkts-ability-privacymanager-bundleusedrecord-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-PermissionUsedResponse-bundleRecords: Array<BundleUsedRecord>--><!--Device-PermissionUsedResponse-bundleRecords: Array<BundleUsedRecord>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -55,18 +49,15 @@ bundleRecords: Array<BundleUsedRecord>
 ## endTime
 
 ```TypeScript
-endTime: long
+endTime: number
 ```
 
 查询记录的终止时间。 单位为：毫秒。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PermissionUsedResponse-endTime: long--><!--Device-PermissionUsedResponse-endTime: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
-

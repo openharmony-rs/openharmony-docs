@@ -6,8 +6,6 @@
 
 **废弃版本：** 11
 
-<!--Device-deviceManager-enum DeviceType--><!--Device-deviceManager-enum DeviceType-End-->
-
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -23,8 +21,6 @@ UNKNOWN_TYPE = 0
 **起始版本：** 7
 
 **废弃版本：** 11
-
-<!--Device-DeviceType-UNKNOWN_TYPE = 0--><!--Device-DeviceType-UNKNOWN_TYPE = 0-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -42,8 +38,6 @@ SPEAKER = 0x0A
 
 **废弃版本：** 11
 
-<!--Device-DeviceType-SPEAKER = 0x0A--><!--Device-DeviceType-SPEAKER = 0x0A-End-->
-
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -59,8 +53,6 @@ PHONE = 0x0E
 **起始版本：** 7
 
 **废弃版本：** 11
-
-<!--Device-DeviceType-PHONE = 0x0E--><!--Device-DeviceType-PHONE = 0x0E-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -78,8 +70,6 @@ TABLET = 0x11
 
 **废弃版本：** 11
 
-<!--Device-DeviceType-TABLET = 0x11--><!--Device-DeviceType-TABLET = 0x11-End-->
-
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -95,8 +85,6 @@ WEARABLE = 0x6D
 **起始版本：** 7
 
 **废弃版本：** 11
-
-<!--Device-DeviceType-WEARABLE = 0x6D--><!--Device-DeviceType-WEARABLE = 0x6D-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -114,8 +102,6 @@ CAR = 0x83
 
 **废弃版本：** 11
 
-<!--Device-DeviceType-CAR = 0x83--><!--Device-DeviceType-CAR = 0x83-End-->
-
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -132,9 +118,6 @@ TV = 0x9C
 
 **废弃版本：** 11
 
-<!--Device-DeviceType-TV = 0x9C--><!--Device-DeviceType-TV = 0x9C-End-->
-
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
-

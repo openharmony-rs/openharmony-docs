@@ -20,7 +20,7 @@
 
 **参考文档**
 
-[订阅系统环境变量的变化](../application-models/subscribe-system-environment-variable-changes.md#在uiability组件中订阅回调)
+订阅系统环境变量的变化
 
 
 ## 点击服务卡片如何跳转至指定的页面(API 9)
@@ -31,7 +31,7 @@
 
 **参考链接**
 
-[开发卡片事件](../form/arkts-ui-widget-configuration.md)
+开发卡片事件
 
 
 ## 如何在Stage模型中创建后台服务(API 9)
@@ -46,7 +46,7 @@ Stage模型可通过后台任务实现该功能。
 
 **参考链接**
 
-[后台任务](../task-management/background-task-overview.md)
+后台任务
 
 
 ## FA和Stage模型中，应用是否可以创建并指定UIAbility运行在哪个进程(API 9)
@@ -68,13 +68,13 @@ FA和Stage模型中，应用可以创建进程并指定UIAbility运行在某个�
 
 **解决措施**
 
-- Stage模型中，多个应用组件共享同一个ArkTS引擎实例，因此在Stage模型中，应用组件之间可以方便的共享对象和状态，同时减少复杂应用运行对内存的占用。
+- Stage模型中，多个应用组件共享同一个ArkTS引擎实例，因此在Stage模型中，应用组件之间可以方便地共享对象和状态，同时减少复杂应用运行对内存的占用。
 
 - FA模型中，每个应用组件独享一个ArkTS引擎实例。Stage模型作为主推的应用模型，开发者通过它能够更加便利地开发出分布式场景下的复杂应用。
 
 **参考链接**
 
-[UIAbility组件与UI的数据同步](../application-models/uiability-data-sync-with-ui.md)
+UIAbility组件与UI的数据同步
 
 
 ## 如何使用AbilityStage的生命周期函数(API 9)
@@ -85,7 +85,7 @@ FA和Stage模型中，应用可以创建进程并指定UIAbility运行在某个�
 
 **参考链接**
 
-[AbilityStage组件管理器](../application-models/abilitystage.md)
+AbilityStage组件管理器
 
 
 ## 多实例场景下当前Ability调用terminateSelf后，桌面最近任务列表如何设置不保留快照(API 9)
@@ -127,7 +127,7 @@ UIAbility配置中缺少startWindowIcon属性配置，需要在module.json5中ab
 
 **参考链接**
 
-[Stage模型配置文件](../quick-start/module-configuration-file.md)
+Stage模型配置文件
 
 
 ## Stage模型是否推荐使用globalThis获取Context(API 9)
@@ -138,7 +138,7 @@ UIAbility配置中缺少startWindowIcon属性配置，需要在module.json5中ab
 
 **参考链接**
 
-[UIAbility组件与UI的数据同步](../application-models/uiability-data-sync-with-ui.md)
+UIAbility组件与UI的数据同步
 
 
 ## 部署HAP时上报安装内容过大错误(API 9)
@@ -162,7 +162,7 @@ Failure[INSTALL_FAILED_SIZE_TOO_LARGE] error while deploying hap？
 
 **参考链接**
 
-[启动应用内的UIAbility并获取返回结果](../application-models/uiability-intra-device-interaction.md)
+启动应用内的UIAbility并获取返回结果
 
 
 ## 如何获取系统时间戳(API 9)
@@ -197,18 +197,18 @@ try {
 
 **参考链接**
 
-[cacheDir](../application-models/application-context-stage.md#获取应用文件路径)
+cacheDir
 
 
 ## 服务卡片生命周期回调函数在哪个js文件中调用(API 9)
 
 **解决措施**
 
-新建卡片时会生成一个FormAblity.ts文件，其中包含卡片对应的生命周期。
+新建卡片时会生成一个FormAbility.ts文件，其中包含卡片对应的生命周期。
 
 参考链接
 
-[FormExtensionAbility/apis-form-kit/js-apis-app-form-formExtensionAbility.md)
+FormExtensionAbility
 
 
 ## 使用ServiceExtensionAbility和DataShareExtensionAbility的相关接口后DevEco Studio无法编译(API 9)
@@ -229,7 +229,7 @@ DevEco Studio默认下载是public-sdk。
 
 **解决措施**
 
-三方应用不支持开发ServiceExtensionAbility和DataShareExtensionAbility。若开发系统应用，请[下载full-sdk](full-sdk-switch-guide.md)。
+三方应用不支持开发ServiceExtensionAbility和DataShareExtensionAbility。若开发系统应用，请下载full-sdk。
 
 
 ## 如何获取应用级别的temp路径和files路径(API 9)
@@ -240,7 +240,7 @@ DevEco Studio默认下载是public-sdk。
 
 **参考链接**
 
-[获取应用文件路径](../application-models/application-context-stage.md#获取应用文件路径)
+获取应用文件路径
 
 
 ## terminateSelf方法销毁当前应用之后并没有在后台任务列表中删除(API 9)
@@ -251,7 +251,7 @@ DevEco Studio默认下载是public-sdk。
 
 **参考链接**
 
-[module.json5配置文件](../quick-start/module-configuration-file.md)
+module.json5配置文件
 
 
 ## Stage模型下开发的应用如何拉起 FA 模型开发的应用(API 9)
@@ -335,14 +335,14 @@ console.info('onStartRemoteAbility end');
 
 **参考链接**
 
-可参考[启动本地PageAbility](../application-models/start-local-pageability.md)。
+可参考启动本地PageAbility。
 
 
 ## 如何通过卡片点击实现业务登录场景(API 9)
 
 **解决措施**
 
-可以先创建FA模型的卡片,步骤如下：
+可以先创建FA模型的卡片，步骤如下：
 
 1. 实现卡片生命周期接口
 
@@ -358,7 +358,7 @@ console.info('onStartRemoteAbility end');
 
 **参考链接**
 
-[FA卡片开发指导](../form/widget-development-fa.md)
+FA卡片开发指导
 
 
 ## 如何跳转到设置中应用详情页面(API 9)
@@ -421,7 +421,7 @@ struct AbilityContextTest {
 
 **问题现象**
 
-调用featureAbility.startAbility()接口启动ServiceAbility，在ServiceAbility中启动后台长时任务报错，错误信息：{"code":201,"message":"BussinessError 201: Permission denied."}
+调用featureAbility.startAbility()接口启动ServiceAbility，在ServiceAbility中启动后台长时任务报错，错误信息：{"code":201,"message":"BusinessError 201: Permission denied."}
 
 **解决措施**
 
@@ -447,9 +447,9 @@ struct AbilityContextTest {
 
 **参考链接**
 
-[ServiceAbility组件配置-后台模式类型](../application-models/serviceability-configuration.md)
+ServiceAbility组件配置-后台模式类型
 
-[长时任务权限](../security/AccessToken/permissions-for-all.md#ohospermissionkeep_background_running)
+长时任务权限
 
 
 ## FA卡片如何进行数据交互(API 9)
@@ -458,7 +458,7 @@ struct AbilityContextTest {
 
 **参考链接**
 
-[服务卡片开发指导](../form/widget-development-fa.md)
+服务卡片开发指导
 
 ## 系统是否支持在桌面上创建应用的快捷入口，直接打开指定页面？(API 10)
 

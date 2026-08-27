@@ -12,13 +12,11 @@ import { drm } from '@kit.DrmKit';
 function getMediaKeySystems(): MediaKeySystemDescription[]
 ```
 
-Get all media key systems supported.
+获取设备支持的插件信息列表。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
-
-<!--Device-drm-function getMediaKeySystems(): MediaKeySystemDescription[]--><!--Device-drm-function getMediaKeySystems(): MediaKeySystemDescription[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -26,14 +24,14 @@ Get all media key systems supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| [MediaKeySystemDescription](arkts-drm-drm-mediakeysystemdescription-i.md)[] | The MediaKeySystem name and uuid info list. |
+| [MediaKeySystemDescription](arkts-drm-drm-mediakeysystemdescription-i.md)[] | 设备支持的插件信息列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [24700201](../errorcode-drm.md#24700201-服务异常) | Fatal service error, for example, service died. |
 | [24700101](../errorcode-drm.md#24700101-未知错误) | All unknown errors. |
+| [24700201](../errorcode-drm.md#24700201-服务异常) | Fatal service error, for example, service died. |
 
 **示例**
 
@@ -51,4 +49,3 @@ if (description.length > 0) {
   console.info('No DRM system available');
 }
 ```
-

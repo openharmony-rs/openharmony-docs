@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 16000001 指定的Ability名称不存在
 
@@ -56,7 +56,7 @@ Incorrect ability type.
 **处理步骤**
 
 1. 检查Want中的bundleName、moduleName和abilityName是否正确。
-2. 确认被调用方（服务端）的Ability类型与调用接口是否匹配。对于ServiceExtensionAbility，应使用<!--Del-->startServiceExtensionAbility方法启动或用<!--DelEnd-->connectServiceExtensionAbility()方法连接。同时需要确保[module.json5配置文件](../../quick-start/module-configuration-file.md)中`extensionAbilities`的`type`设置为与接口匹配的`service`。
+2. 确认被调用方（服务端）的Ability类型与调用接口是否匹配。对于ServiceExtensionAbility，应使用<!--Del-->startServiceExtensionAbility方法启动或用<!--DelEnd-->connectServiceExtensionAbility()方法连接。同时需要确保module.json5配置文件中`extensionAbilities`的`type`设置为与接口匹配的`service`。
 3. 若被调用方（服务端）为appService类型，需在服务端的module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。<!--Del-->
 4. 调用connectAgentExtensionAbility时，确保入参指定的abilityName或moduleName与agentId对应AgentCard的appInfo内配置的abilityName或moduleName保持一致。<!--DelEnd-->
 
@@ -94,7 +94,7 @@ Cannot start an invisible component.
 
 **处理步骤**
 
-1. [Stage模型](../../application-models/ability-terminology.md#stage模型)下，拉起应用时抛出16000004异常，表示无法启动不可见组件，需要检查被拉应用module.json5的Ability字段的[exported](../../quick-start/module-configuration-file.md#abilities标签)配置是否为true。该配置字段为true，表示可以被其他应用调用；该配置字段为false，表示不可以被其他应用调用。
+1. Stage模型下，拉起应用时抛出16000004异常，表示无法启动不可见组件，需要检查被拉应用module.json5的Ability字段的exported配置是否为true。该配置字段为true，表示可以被其他应用调用；该配置字段为false，表示不可以被其他应用调用。
 2. 若应用需要拉起exported为false的ability，请申请ohos.permission.START_INVISIBLE_ABILITY权限（该权限仅系统应用可申请）。
 
 ## 16000005 指定的进程权限校验失败
@@ -249,7 +249,7 @@ The application is controlled by EDM.
 
 **错误描述**
 
-当应用受到企业设备管理[Enterprise Device Manager](../../mdm/mdm-kit-admin.md)管控时，方法将返回该错误码。
+当应用受到企业设备管理Enterprise Device Manager管控时，方法将返回该错误码。
 
 **可能原因**
 
@@ -312,10 +312,9 @@ No matching ability is found.
 
 **处理步骤**
 
-1. 确保隐式启动的参数配置正确，匹配规则详见[显式Want与隐式Want匹配规则](../../application-models/explicit-implicit-want-mappings.md)。
+1. 确保隐式启动的参数配置正确，匹配规则详见显式Want与隐式Want匹配规则。
 2. 确保对应的HAP包已安装。
 
-<!--Del-->
 ## 16000020 传入的Context对象不是Ability级别Context
 
 **错误信息**
@@ -333,7 +332,6 @@ The context is not ability context.
 **处理步骤**
 
 使用UIAbilityContext或ExtensionContext对象作为入参，或者使用继承了UIAbilityContext或ExtensionContext类的对象作为入参。
-<!--DelEnd-->
 
 ## 16000021 模块名不存在
 
@@ -565,7 +563,7 @@ The API can be called only when the ability is running in the foreground.
 
 在调用接口前，请确保当前Ability已处于前台运行且界面可见状态。
 
-## 16000066  wukong模式，不允许移动Ability到前台/后台
+## 16000066 wukong模式，不允许移动Ability到前台/后台
 
 **错误信息**
 
@@ -636,7 +634,7 @@ The extension cannot start the third party application.
 
 **处理步骤**
 
-1. 查看[对应Extension类型](../../application-models/extensionability-overview.md)严格模式开启条件。
+1. 查看对应Extension类型严格模式开启条件。
 2. 以非严格模式启动当前Extension。
 
 ## 16000070 严格模式下不允许该类型Extension启动指定ServiceExtensionAbility
@@ -655,7 +653,7 @@ The extension cannot start the service.
 
 **处理步骤**
 
-1. 查看[对应Extension类型](../../application-models/extensionability-overview.md)严格模式开启条件。
+1. 查看对应Extension类型严格模式开启条件。
 2. 以非严格模式启动当前Extension。
 
 ## 16000071 不支持应用分身模式
@@ -670,11 +668,11 @@ App clone is not supported.
 
 **可能原因**
 
-该应用没有在app.json5配置文件[multiAppMode](../../quick-start/app-configuration-file.md#multiappmode标签)标签中配置应用分身字段，导致该应用不支持分身模式，调用getCurrentAppCloneIndex接口时返回该错误码。
+该应用没有在app.json5配置文件multiAppMode标签中配置应用分身字段，导致该应用不支持分身模式，调用getCurrentAppCloneIndex接口时返回该错误码。
 
 **处理步骤**
 
-参考[应用多实例的配置方法](../../quick-start/multiInstance.md)，在app.json5配置文件中配置multiAppMode标签，开启应用分身功能后，再调用getCurrentAppCloneIndex接口。
+参考应用多实例的配置方法，在app.json5配置文件中配置multiAppMode标签，开启应用分身功能后，再调用getCurrentAppCloneIndex接口。
 
 ## 16000072 不支持应用多开
 
@@ -696,7 +694,7 @@ App clone or multi-instance is not supported.
 
 **处理步骤**
 
-调用startAbility、startAbilityForResult等启动Ability接口时，确保目标应用支持应用多开，并在app.json5配置文件中配置[multiAppMode](../../quick-start/app-configuration-file.md#multiappmode标签)标签开启应用分身功能。
+调用startAbility、startAbilityForResult等启动Ability接口时，确保目标应用支持应用多开，并在app.json5配置文件中配置multiAppMode标签开启应用分身功能。
 
 <!--Del-->
 调用getRunningMultiAppInfo时确保查询的应用支持应用多开。
@@ -1193,7 +1191,7 @@ Current ability is not in foreground.
 
 **错误信息**
 
-A maximum of four UIAbility instances can be started simultaneously.The current parameter exceeds the maximum number or is less than 1.
+A maximum of four UIAbility instances can be started simultaneously. The current parameter exceeds the maximum number or is less than 1.
 
 **错误描述**
 
@@ -1224,6 +1222,7 @@ startUIAbilities只支持启动UIAbility，如果目标组件为非UIAbility，�
 **处理步骤**
 
 检查Want中传入的组件类型，确保其为UIAbility组件。
+<!--DelEnd-->
 
 ## 16000122 待启动的目标组件被系统管控模块拦截
 
@@ -1279,6 +1278,7 @@ Want中的deviceId不为空且非本机的设备ID。
 
 将Want中的deviceId字段设为空，或配置为本机的deviceId。
 
+<!--Del-->
 ## 16000125 不支持启动插件UIAbility
 
 **错误信息**
@@ -1338,7 +1338,7 @@ The UIAbility does not belong to the caller.
 
 **错误信息**
 
-The UIAbility is already exist, can not start again.
+The UIAbility is already exists, can not start again.
 
 **错误描述**
 
@@ -1382,11 +1382,11 @@ The UIAbility is prohibited from launching itself via App Linking.
 
 **可能原因**
 
-在[module.json5配置文件](../../quick-start/module-configuration-file.md)的[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)中，当前UIAbility的allowSelfRedirect字段取值为“false”。
+在module.json5配置文件的abilities标签中，当前UIAbility的allowSelfRedirect字段取值为“false”。
 
 **处理步骤**
 
-- 如果允许使用App Linking拉起当前UIAbility，开发者需要在[module.json5配置文件](../../quick-start/module-configuration-file.md)将[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的allowSelfRedirect字段设置为true。
+- 如果允许使用App Linking拉起当前UIAbility，开发者需要在module.json5配置文件将abilities标签的allowSelfRedirect字段设置为true。
 - 如果不允许使用App Linking拉起当前UIAbility，开发者需要通过catch捕获该错误码并进行处理。
 
 <!--Del-->
@@ -1494,15 +1494,15 @@ The caller is not in the appIdentifierAllowList of the target application.
 
 **错误描述**
 
-调用方不在目标应用的[appIdentifierAllowList](../../quick-start/module-configuration-file.md#extensionabilities标签)中时，返回该错误码。
+调用方不在目标应用的appIdentifierAllowList中时，返回该错误码。
 
 **可能原因**
 
-startAppServiceExtensionAbility、stopAppServiceExtensionAbility接口调用方的app-identifier不在目标AppServiceExtensionAbility的[appIdentifierAllowList](../../quick-start/module-configuration-file.md#extensionabilities标签)中。
+startAppServiceExtensionAbility、stopAppServiceExtensionAbility接口调用方的app-identifier不在目标AppServiceExtensionAbility的appIdentifierAllowList中。
 
 **处理步骤**
 
-将接口调用方的app-identifier配置在目标AppServiceExtensionAbility的[appIdentifierAllowList](../../quick-start/module-configuration-file.md#extensionabilities标签)中。
+将接口调用方的app-identifier配置在目标AppServiceExtensionAbility的appIdentifierAllowList中。
 
 ## 16000201 目标服务还未启动
 
@@ -1521,7 +1521,7 @@ The target service has not been started yet.
 **处理步骤**
 
 1. 等待服务端启动后重新连接。
-2. 由当前应用拉起目标服务时，需要将接口调用方的app-identifier配置在目标AppServiceExtensionAbility的[appIdentifierAllowList](../../quick-start/module-configuration-file.md#extensionabilities标签)中。
+2. 由当前应用拉起目标服务时，需要将接口调用方的app-identifier配置在目标AppServiceExtensionAbility的appIdentifierAllowList中。
 
 ## 16200001 通用组件客户端(Caller)已回收
 
@@ -1984,7 +1984,7 @@ Running startup tasks timeout.
 
 **处理步骤**
 
-根据需要调整超时时间。超时时间的设置可参见[设置启动参数](../../application-models/app-startup.md#设置启动参数)。
+根据需要调整超时时间。超时时间的设置可参见设置启动参数。
 
 <!--Del-->
 ## 16400001 目标应用类型不是系统级HSP
@@ -1995,7 +1995,7 @@ The input bundleName is not a system HSP.
 
 **错误描述**
 
-通过createSystemHspModuleResourceManager接口创建ResourceManager时，如果传入的bundleName不属于[系统级HSP](../../quick-start/application-package-glossary.md#系统级hsp)的模块，将返回该错误码。
+通过createSystemHspModuleResourceManager接口创建ResourceManager时，如果传入的bundleName不属于系统级HSP的模块，将返回该错误码。
 
 **可能原因**
 
@@ -2150,7 +2150,7 @@ Cannot exit because there is an unfinished request.
 当前进程存在未完成的请求：
 
 1. 进程中存在未完成的onNewProcessRequest请求。
-2. 当启动模式为[specified](../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility运行在独立进程时，当前进程中存在未完成的onAcceptWant请求。
+2. 当启动模式为specified的UIAbility运行在独立进程时，当前进程中存在未完成的onAcceptWant请求。
 
 **处理步骤**
 
@@ -2568,7 +2568,7 @@ Classes decorated with @InsightIntentEntity must implement InsightIntent.IntentE
 
 **处理步骤**
 
-确保类实现InsightIntent.IntentEntity或继承至其他意图实体。
+确保类实现InsightIntent.IntentEntity或继承自其他意图实体。
 
 ## 10110022 @InsightIntentForm装饰器修饰位置错误
 

@@ -26,8 +26,6 @@ declare function readTextSync(
 
 **替代接口：** [readTextSync](arkts-corefile-file-fs-readtextsync-f.md)
 
-<!--Device-unnamed-declare function readTextSync(  filePath: string,  options?: {    position?: number;    length?: number;    encoding?: string;  }): string--><!--Device-unnamed-declare function readTextSync(  filePath: string,  options?: {    position?: number;    length?: number;    encoding?: string;  }): string-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -35,7 +33,7 @@ declare function readTextSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filePath | string | 是 | 待读取文件的应用沙箱路径。 |
-| options | {     position?: number;     length?: number;     encoding?: string;   } | 否 | 支持如下选项：<br/>-?position，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-?length，number 类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-?encoding，string类型，当数据是?string?类型时有效，表示数据的编码方式，默认?'utf-8'，仅支持?'utf- 8'。 |
+| options | {     position?: number;     length?: number;     encoding?: string;   } | 否 | 支持如下选项：   - position，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。   - length，number 类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。   - encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认 'utf-8'，仅支持 'utf- 8'。 |
 
 **返回值：**
 
@@ -43,3 +41,17 @@ declare function readTextSync(
 | --- | --- |
 | string | 返回读取文件的内容。 |
 
+**示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+class Option {
+  length: number = 4096;
+  position: number = 0;
+  encoding: string = 'utf-8';
+}
+let option = new Option();
+option.position = 1;
+option.length = 3;
+let str = fileio.readTextSync(filePath, option);
+```

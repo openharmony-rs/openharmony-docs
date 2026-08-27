@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-dataAbility-class DataAbilityPredicates--><!--Device-dataAbility-class DataAbilityPredicates-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 ## 导入模块
@@ -24,8 +22,6 @@ and(): DataAbilityPredicates
 
 **起始版本：** 7
 
-<!--Device-DataAbilityPredicates-and(): DataAbilityPredicates--><!--Device-DataAbilityPredicates-and(): DataAbilityPredicates-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **返回值：**
@@ -39,38 +35,7 @@ and(): DataAbilityPredicates
 ```TypeScript
 dataAbilityPredicates.equalTo("NAME", "Lisa")
     .and()
-    .equalTo("SALARY", 200.5)
-```
-
-## beginWrap
-
-```TypeScript
-beginWrap(): DataAbilityPredicates
-```
-
-在谓词中添加左括号。此方法类似于SQL语句的“(”，需要与[endWrap](#endwrap)一起使用。
-
-**起始版本：** 7
-
-<!--Device-DataAbilityPredicates-beginWrap(): DataAbilityPredicates--><!--Device-DataAbilityPredicates-beginWrap(): DataAbilityPredicates-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [DataAbilityPredicates](arkts-arkdata-dataability-dataabilitypredicates-c.md) | 返回带有左括号的DataAbility谓词。 |
-
-**示例**
-
-```TypeScript
-dataAbilityPredicates.equalTo("NAME", "lisi")
-    .beginWrap()
-    .equalTo("AGE", 18)
-    .or()
-    .equalTo("SALARY", 200.5)
-    .endWrap()
+    .equalTo("SALARY", 200.5);
 ```
 
 ## beginsWith
@@ -79,11 +44,9 @@ dataAbilityPredicates.equalTo("NAME", "lisi")
 beginsWith(field: string, value: string): DataAbilityPredicates
 ```
 
-配置谓词以匹配数据类型为string且值以指定字符串开头的字段。 此方法类似于SQL语句的“value%”。
+配置谓词以匹配数据类型为string且值以指定字符串开头的字段。此方法类似于SQL语句的“value%”。
 
 **起始版本：** 7
-
-<!--Device-DataAbilityPredicates-beginsWith(field: string, value: string): DataAbilityPredicates--><!--Device-DataAbilityPredicates-beginsWith(field: string, value: string): DataAbilityPredicates-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -103,7 +66,36 @@ beginsWith(field: string, value: string): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.beginsWith("NAME", "os")
+dataAbilityPredicates.beginsWith("NAME", "os");
+```
+
+## beginWrap
+
+```TypeScript
+beginWrap(): DataAbilityPredicates
+```
+
+在谓词中添加左括号。此方法类似于SQL语句的“(”，需要与[endWrap](#endwrap)一起使用。
+
+**起始版本：** 7
+
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [DataAbilityPredicates](arkts-arkdata-dataability-dataabilitypredicates-c.md) | 返回带有左括号的DataAbility谓词。 |
+
+**示例**
+
+```TypeScript
+dataAbilityPredicates.equalTo("NAME", "lisi")
+    .beginWrap()
+    .equalTo("AGE", 18)
+    .or()
+    .equalTo("SALARY", 200.5)
+    .endWrap();
 ```
 
 ## between
@@ -115,8 +107,6 @@ between(field: string, low: ValueType, high: ValueType): DataAbilityPredicates
 配置谓词以匹配数据类型为ValueType且value在指定范围内的指定字段。
 
 **起始版本：** 7
-
-<!--Device-DataAbilityPredicates-between(field: string, low: ValueType, high: ValueType): DataAbilityPredicates--><!--Device-DataAbilityPredicates-between(field: string, low: ValueType, high: ValueType): DataAbilityPredicates-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -137,7 +127,7 @@ between(field: string, low: ValueType, high: ValueType): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.between("AGE", 10, 50)
+dataAbilityPredicates.between("AGE", 10, 50);
 ```
 
 ## contains
@@ -149,8 +139,6 @@ contains(field: string, value: string): DataAbilityPredicates
 配置谓词以匹配数据类型为string且value包含指定值的字段。
 
 **起始版本：** 7
-
-<!--Device-DataAbilityPredicates-contains(field: string, value: string): DataAbilityPredicates--><!--Device-DataAbilityPredicates-contains(field: string, value: string): DataAbilityPredicates-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -170,7 +158,7 @@ contains(field: string, value: string): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.contains("NAME", "os")
+dataAbilityPredicates.contains("NAME", "os");
 ```
 
 ## distinct
@@ -183,8 +171,6 @@ distinct(): DataAbilityPredicates
 
 **起始版本：** 7
 
-<!--Device-DataAbilityPredicates-distinct(): DataAbilityPredicates--><!--Device-DataAbilityPredicates-distinct(): DataAbilityPredicates-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **返回值：**
@@ -196,7 +182,38 @@ distinct(): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.equalTo("NAME", "Rose").distinct()
+dataAbilityPredicates.equalTo("NAME", "Rose").distinct();
+```
+
+## endsWith
+
+```TypeScript
+endsWith(field: string, value: string): DataAbilityPredicates
+```
+
+配置谓词以匹配数据类型为string且值以指定字符串结尾的字段。此方法类似于SQL语句的“%value”。
+
+**起始版本：** 7
+
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
+| value | string | 是 | 指示要与谓词匹配的值。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [DataAbilityPredicates](arkts-arkdata-dataability-dataabilitypredicates-c.md) | 返回与指定字段匹配的谓词。 |
+
+**示例**
+
+```TypeScript
+dataAbilityPredicates.endsWith("NAME", "se");
 ```
 
 ## endWrap
@@ -208,8 +225,6 @@ endWrap(): DataAbilityPredicates
 在谓词中添加右括号。此方法类似于SQL语句的“)”，需要和[beginWrap](#beginwrap)一起使用。
 
 **起始版本：** 7
-
-<!--Device-DataAbilityPredicates-endWrap(): DataAbilityPredicates--><!--Device-DataAbilityPredicates-endWrap(): DataAbilityPredicates-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -227,40 +242,7 @@ dataAbilityPredicates.equalTo("NAME", "lisi")
     .equalTo("AGE", 18)
     .or()
     .equalTo("SALARY", 200.5)
-    .endWrap()
-```
-
-## endsWith
-
-```TypeScript
-endsWith(field: string, value: string): DataAbilityPredicates
-```
-
-配置谓词以匹配数据类型为string且值以指定字符串结尾的字段。 此方法类似于SQL语句的“%value”。
-
-**起始版本：** 7
-
-<!--Device-DataAbilityPredicates-endsWith(field: string, value: string): DataAbilityPredicates--><!--Device-DataAbilityPredicates-endsWith(field: string, value: string): DataAbilityPredicates-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| value | string | 是 | 指示要与谓词匹配的值。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [DataAbilityPredicates](arkts-arkdata-dataability-dataabilitypredicates-c.md) | 返回与指定字段匹配的谓词。 |
-
-**示例**
-
-```TypeScript
-dataAbilityPredicates.endsWith("NAME", "se")
+    .endWrap();
 ```
 
 ## equalTo
@@ -269,11 +251,9 @@ dataAbilityPredicates.endsWith("NAME", "se")
 equalTo(field: string, value: ValueType): DataAbilityPredicates
 ```
 
-配置谓词以匹配数据，数据的指定字段数据类型为ValueType且值等于指定值。 此方法类似于SQL语句的“=”。
+配置谓词以匹配数据，数据的指定字段数据类型为ValueType且值等于指定值。此方法类似于SQL语句的“=”。
 
 **起始版本：** 7
-
-<!--Device-DataAbilityPredicates-equalTo(field: string, value: ValueType): DataAbilityPredicates--><!--Device-DataAbilityPredicates-equalTo(field: string, value: ValueType): DataAbilityPredicates-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -293,7 +273,7 @@ equalTo(field: string, value: ValueType): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.equalTo("NAME", "lisi")
+dataAbilityPredicates.equalTo("NAME", "lisi");
 ```
 
 ## glob
@@ -306,8 +286,6 @@ glob(field: string, value: string): DataAbilityPredicates
 
 **起始版本：** 7
 
-<!--Device-DataAbilityPredicates-glob(field: string, value: string): DataAbilityPredicates--><!--Device-DataAbilityPredicates-glob(field: string, value: string): DataAbilityPredicates-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
@@ -326,13 +304,13 @@ glob(field: string, value: string): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.glob("NAME", "?h*g")
+dataAbilityPredicates.glob("NAME", "?h*g");
 
 // 仅可匹配到"NAME"字段值为"Lisa"
-dataAbilityPredicates.glob("NAME", "Lisa")
+dataAbilityPredicates.glob("NAME", "Lisa");
 
 // 仅可以匹配到"NAME"字段值为"lisa"
-dataAbilityPredicates.glob("NAME", "lisa")
+dataAbilityPredicates.glob("NAME", "lisa");
 ```
 
 ## greaterThan
@@ -345,8 +323,6 @@ greaterThan(field: string, value: ValueType): DataAbilityPredicates
 
 **起始版本：** 7
 
-<!--Device-DataAbilityPredicates-greaterThan(field: string, value: ValueType): DataAbilityPredicates--><!--Device-DataAbilityPredicates-greaterThan(field: string, value: ValueType): DataAbilityPredicates-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
@@ -365,7 +341,7 @@ greaterThan(field: string, value: ValueType): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.greaterThan("AGE", 18)
+dataAbilityPredicates.greaterThan("AGE", 18);
 ```
 
 ## greaterThanOrEqualTo
@@ -378,8 +354,6 @@ greaterThanOrEqualTo(field: string, value: ValueType): DataAbilityPredicates
 
 **起始版本：** 7
 
-<!--Device-DataAbilityPredicates-greaterThanOrEqualTo(field: string, value: ValueType): DataAbilityPredicates--><!--Device-DataAbilityPredicates-greaterThanOrEqualTo(field: string, value: ValueType): DataAbilityPredicates-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
@@ -398,7 +372,7 @@ greaterThanOrEqualTo(field: string, value: ValueType): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.greaterThanOrEqualTo("AGE", 18)
+dataAbilityPredicates.greaterThanOrEqualTo("AGE", 18);
 ```
 
 ## groupBy
@@ -411,15 +385,13 @@ groupBy(fields: Array<string>): DataAbilityPredicates
 
 **起始版本：** 7
 
-<!--Device-DataAbilityPredicates-groupBy(fields: Array<string>): DataAbilityPredicates--><!--Device-DataAbilityPredicates-groupBy(fields: Array<string>): DataAbilityPredicates-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fields | Array&lt;string&gt; | 是 | 指定分组依赖的列名。 |
+| fields | Array & lt;string & gt; | 是 | 指定分组依赖的列名。 |
 
 **返回值：**
 
@@ -430,7 +402,7 @@ groupBy(fields: Array<string>): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.groupBy(["AGE", "NAME"])
+dataAbilityPredicates.groupBy(["AGE", "NAME"]);
 ```
 
 ## in
@@ -443,8 +415,6 @@ in(field: string, value: Array<ValueType>): DataAbilityPredicates
 
 **起始版本：** 7
 
-<!--Device-DataAbilityPredicates-in(field: string, value: Array<ValueType>): DataAbilityPredicates--><!--Device-DataAbilityPredicates-in(field: string, value: Array<ValueType>): DataAbilityPredicates-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
@@ -452,7 +422,7 @@ in(field: string, value: Array<ValueType>): DataAbilityPredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| value | Array&lt;ValueType&gt; | 是 | 以ValueType类型数组形式指定的要匹配的值。 |
+| value | Array & lt;ValueType & gt; | 是 | 以ValueType类型数组形式指定的要匹配的值。 |
 
 **返回值：**
 
@@ -463,7 +433,7 @@ in(field: string, value: Array<ValueType>): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.in("AGE", [18, 20])
+dataAbilityPredicates.in("AGE", [18, 20]);
 ```
 
 ## indexedBy
@@ -475,8 +445,6 @@ indexedBy(field: string): DataAbilityPredicates
 配置谓词以指定索引列。在使用此方法之前，您需要创建一个索引列。
 
 **起始版本：** 7
-
-<!--Device-DataAbilityPredicates-indexedBy(field: string): DataAbilityPredicates--><!--Device-DataAbilityPredicates-indexedBy(field: string): DataAbilityPredicates-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -525,12 +493,12 @@ export default class EntryAbility extends UIAbility {
     }
 
     // 创建索引
-    const SQL_CREATE_INDEX = 'CREATE INDEX SALARY_INDEX ON EMPLOYEE(SALARY)'
+    const SQL_CREATE_INDEX = 'CREATE INDEX SALARY_INDEX ON EMPLOYEE(SALARY)';
     await store.executeSql(SQL_CREATE_INDEX);
     // ...
 
-    let dataAbilityPredicates = new dataAbility.DataAbilityPredicates()
-    dataAbilityPredicates.indexedBy("SALARY_INDEX")
+    let dataAbilityPredicates = new dataAbility.DataAbilityPredicates();
+    dataAbilityPredicates.indexedBy("SALARY_INDEX");
 
     // ...
   }
@@ -547,8 +515,6 @@ isNotNull(field: string): DataAbilityPredicates
 
 **起始版本：** 7
 
-<!--Device-DataAbilityPredicates-isNotNull(field: string): DataAbilityPredicates--><!--Device-DataAbilityPredicates-isNotNull(field: string): DataAbilityPredicates-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
@@ -566,7 +532,7 @@ isNotNull(field: string): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.isNotNull("NAME")
+dataAbilityPredicates.isNotNull("NAME");
 ```
 
 ## isNull
@@ -579,8 +545,6 @@ isNull(field: string): DataAbilityPredicates
 
 **起始版本：** 7
 
-<!--Device-DataAbilityPredicates-isNull(field: string): DataAbilityPredicates--><!--Device-DataAbilityPredicates-isNull(field: string): DataAbilityPredicates-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
@@ -598,7 +562,7 @@ isNull(field: string): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.isNull("NAME")
+dataAbilityPredicates.isNull("NAME");
 ```
 
 ## lessThan
@@ -611,8 +575,6 @@ lessThan(field: string, value: ValueType): DataAbilityPredicates
 
 **起始版本：** 7
 
-<!--Device-DataAbilityPredicates-lessThan(field: string, value: ValueType): DataAbilityPredicates--><!--Device-DataAbilityPredicates-lessThan(field: string, value: ValueType): DataAbilityPredicates-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
@@ -631,7 +593,7 @@ lessThan(field: string, value: ValueType): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.lessThan("AGE", 20)
+dataAbilityPredicates.lessThan("AGE", 20);
 ```
 
 ## lessThanOrEqualTo
@@ -644,8 +606,6 @@ lessThanOrEqualTo(field: string, value: ValueType): DataAbilityPredicates
 
 **起始版本：** 7
 
-<!--Device-DataAbilityPredicates-lessThanOrEqualTo(field: string, value: ValueType): DataAbilityPredicates--><!--Device-DataAbilityPredicates-lessThanOrEqualTo(field: string, value: ValueType): DataAbilityPredicates-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
@@ -664,7 +624,7 @@ lessThanOrEqualTo(field: string, value: ValueType): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.lessThanOrEqualTo("AGE", 20)
+dataAbilityPredicates.lessThanOrEqualTo("AGE", 20);
 ```
 
 ## like
@@ -673,11 +633,9 @@ dataAbilityPredicates.lessThanOrEqualTo("AGE", 20)
 like(field: string, value: string): DataAbilityPredicates
 ```
 
-配置谓词以匹配数据类型为string且值类似于指定字符串的字段。 此方法类似于SQL语句“like”。
+配置谓词以匹配数据类型为string且值类似于指定字符串的字段。此方法类似于SQL语句“like”。
 
 **起始版本：** 7
-
-<!--Device-DataAbilityPredicates-like(field: string, value: string): DataAbilityPredicates--><!--Device-DataAbilityPredicates-like(field: string, value: string): DataAbilityPredicates-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -697,7 +655,7 @@ like(field: string, value: string): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.like("NAME", "%os%")
+dataAbilityPredicates.like("NAME", "%os%");
 ```
 
 ## limitAs
@@ -709,8 +667,6 @@ limitAs(value: number): DataAbilityPredicates
 设置谓词的最大数据记录数量。
 
 **起始版本：** 7
-
-<!--Device-DataAbilityPredicates-limitAs(value: number): DataAbilityPredicates--><!--Device-DataAbilityPredicates-limitAs(value: number): DataAbilityPredicates-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -729,7 +685,7 @@ limitAs(value: number): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.equalTo("NAME", "Rose").limitAs(3)
+dataAbilityPredicates.equalTo("NAME", "Rose").limitAs(3);
 ```
 
 ## notBetween
@@ -741,8 +697,6 @@ notBetween(field: string, low: ValueType, high: ValueType): DataAbilityPredicate
 配置谓词以匹配数据类型为ValueType且value超出给定范围的指定字段。
 
 **起始版本：** 7
-
-<!--Device-DataAbilityPredicates-notBetween(field: string, low: ValueType, high: ValueType): DataAbilityPredicates--><!--Device-DataAbilityPredicates-notBetween(field: string, low: ValueType, high: ValueType): DataAbilityPredicates-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -763,7 +717,7 @@ notBetween(field: string, low: ValueType, high: ValueType): DataAbilityPredicate
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.notBetween("AGE", 10, 50)
+dataAbilityPredicates.notBetween("AGE", 10, 50);
 ```
 
 ## notEqualTo
@@ -772,11 +726,9 @@ dataAbilityPredicates.notBetween("AGE", 10, 50)
 notEqualTo(field: string, value: ValueType): DataAbilityPredicates
 ```
 
-配置谓词以匹配数据，数据的指定字段数据类型为ValueType且不等于指定值。 此方法类似于SQL语句的“!=”。
+配置谓词以匹配数据，数据的指定字段数据类型为ValueType且不等于指定值。此方法类似于SQL语句的“!=”。
 
 **起始版本：** 7
-
-<!--Device-DataAbilityPredicates-notEqualTo(field: string, value: ValueType): DataAbilityPredicates--><!--Device-DataAbilityPredicates-notEqualTo(field: string, value: ValueType): DataAbilityPredicates-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -796,7 +748,7 @@ notEqualTo(field: string, value: ValueType): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.notEqualTo("NAME", "lisi")
+dataAbilityPredicates.notEqualTo("NAME", "lisi");
 ```
 
 ## notIn
@@ -809,8 +761,6 @@ notIn(field: string, value: Array<ValueType>): DataAbilityPredicates
 
 **起始版本：** 7
 
-<!--Device-DataAbilityPredicates-notIn(field: string, value: Array<ValueType>): DataAbilityPredicates--><!--Device-DataAbilityPredicates-notIn(field: string, value: Array<ValueType>): DataAbilityPredicates-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
@@ -818,7 +768,7 @@ notIn(field: string, value: Array<ValueType>): DataAbilityPredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| value | Array&lt;ValueType&gt; | 是 | 以ValueType类型数组形式指定的要匹配的值。 |
+| value | Array & lt;ValueType & gt; | 是 | 以ValueType类型数组形式指定的要匹配的值。 |
 
 **返回值：**
 
@@ -829,7 +779,7 @@ notIn(field: string, value: Array<ValueType>): DataAbilityPredicates
 **示例**
 
 ```TypeScript
-dataAbilityPredicates.notIn("NAME", ["Lisa", "Rose"])
+dataAbilityPredicates.notIn("NAME", ["Lisa", "Rose"]);
 ```
 
 ## offsetAs
@@ -841,8 +791,6 @@ offsetAs(rowOffset: number): DataAbilityPredicates
 设置谓词查询结果的起始位置。需要同步调用[limitAs](#limitas)接口指定查询数量，否则无查询结果。查询指定偏移位置后的所有行时， [limitAs](#limitas)接口需传入参数-1。
 
 **起始版本：** 7
-
-<!--Device-DataAbilityPredicates-offsetAs(rowOffset: number): DataAbilityPredicates--><!--Device-DataAbilityPredicates-offsetAs(rowOffset: number): DataAbilityPredicates-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -862,7 +810,7 @@ offsetAs(rowOffset: number): DataAbilityPredicates
 
 ```TypeScript
 // 跳过前三条数据，显示后续三条数据
-dataAbilityPredicates.equalTo("NAME", "Rose").offsetAs(3).limitAs(3)
+dataAbilityPredicates.equalTo("NAME", "Rose").offsetAs(3).limitAs(3);
 ```
 
 ## or
@@ -871,11 +819,9 @@ dataAbilityPredicates.equalTo("NAME", "Rose").offsetAs(3).limitAs(3)
 or(): DataAbilityPredicates
 ```
 
-将或条件添加到谓词中。 此方法类似于SQL语句“or”。
+将或条件添加到谓词中。此方法类似于SQL语句“or”。
 
 **起始版本：** 7
-
-<!--Device-DataAbilityPredicates-or(): DataAbilityPredicates--><!--Device-DataAbilityPredicates-or(): DataAbilityPredicates-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -890,7 +836,7 @@ or(): DataAbilityPredicates
 ```TypeScript
 dataAbilityPredicates.equalTo("NAME", "Lisa")
     .or()
-    .equalTo("NAME", "Rose")
+    .equalTo("NAME", "Rose");
 ```
 
 ## orderByAsc
@@ -902,8 +848,6 @@ orderByAsc(field: string): DataAbilityPredicates
 配置谓词以匹配其值按升序排序的列。当有多个orderByAsc使用时，最先使用的具有最高优先级。
 
 **起始版本：** 7
-
-<!--Device-DataAbilityPredicates-orderByAsc(field: string): DataAbilityPredicates--><!--Device-DataAbilityPredicates-orderByAsc(field: string): DataAbilityPredicates-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -923,7 +867,7 @@ orderByAsc(field: string): DataAbilityPredicates
 
 ```TypeScript
 // 先按"NAME"字段排序，相同时按"AGE"字段排序，其次按"SALARY"排序
-dataAbilityPredicates.orderByAsc("NAME").orderByAsc("AGE").orderByAsc("SALARY")
+dataAbilityPredicates.orderByAsc("NAME").orderByAsc("AGE").orderByAsc("SALARY");
 ```
 
 ## orderByDesc
@@ -935,8 +879,6 @@ orderByDesc(field: string): DataAbilityPredicates
 配置谓词以匹配其值按降序排序的列。当有多个orderByDesc使用时，最先使用的具有最高优先级。
 
 **起始版本：** 7
-
-<!--Device-DataAbilityPredicates-orderByDesc(field: string): DataAbilityPredicates--><!--Device-DataAbilityPredicates-orderByDesc(field: string): DataAbilityPredicates-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -956,6 +898,5 @@ orderByDesc(field: string): DataAbilityPredicates
 
 ```TypeScript
 // 优先按"AGE"排序，相同时按"SALARY"排序
-dataAbilityPredicates.orderByDesc("AGE").orderByDesc("SALARY")
+dataAbilityPredicates.orderByDesc("AGE").orderByDesc("SALARY");
 ```
-

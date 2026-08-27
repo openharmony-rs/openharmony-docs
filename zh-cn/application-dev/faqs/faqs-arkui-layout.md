@@ -1,8 +1,8 @@
 # ArkUI布局开发常见问题(ArkTS)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fenglinbailu; @yylong; @zcdqs-->
-<!--Designer: @lanshouren; @yylong; @zcdqs-->
+<!--Owner: @fenglinbailu; @yangcan18; @guozejun-->
+<!--Designer: @fenglinbailu; @yangcan18; @guozejun-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @HelloCrease-->
 
@@ -21,7 +21,7 @@
 
 ## List组件与其他组件并列使用时，若未设置List滚动方向上的尺寸，无法拖动到底部(API 9)
 
-给List加上layoutWeight属性，设置列表自适应占满剩余高度。原理：List属于可滚动容器组件，默认高度是占满全屏幕高度，当出现其他固定高度的组件占领了屏幕的部分高度时，需要开发人员显性的指定List组件占满剩余高度，而不是全屏幕高度。
+给List加上layoutWeight属性，设置列表自适应占满剩余高度。原理：List属于可滚动容器组件，默认高度是占满全屏幕高度，当出现其他固定高度的组件占领了屏幕的部分高度时，需要开发人员显式的指定List组件占满剩余高度，而不是全屏幕高度。
 
 
 ## Tabs组件在点击Tab项时是否支持禁止切换(API 9)
@@ -35,7 +35,7 @@
 
 **参考链接**
 
-[自定义组件的生命周期-onBackPress/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onbackpress)
+自定义组件的生命周期-onBackPress
 
 
 ## List组件怎么实现分组列表的粘性标题效果(API 9)
@@ -44,7 +44,7 @@
 
 **参考链接**
 
-[创建列表-添加粘性标题](../ui/arkts-layout-development-create-list.md#添加粘性标题)
+创建列表-添加粘性标题
 
 ## 键盘弹出时如何只让指定UI组件进行上移，而不是整体布局(API 10)
 
@@ -54,7 +54,7 @@
 
 **参考链接**
 
-[安全区域/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md)
+安全区域
 
 ## 有哪些实现图文混排的方式，每种方式的优劣点是什么，推荐场景是什么(API 10)
 
@@ -66,7 +66,7 @@
 
 **参考链接**
 
-[RichEditor/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)
+RichEditor
 
 ## 如何实现协调布局的效果(API 10)
 
@@ -76,7 +76,7 @@
 
 **参考链接**
 
-[Scroll/apis-arkui/arkui-ts/ts-container-scroll.md)
+Scroll
 
 ## 如何解决sidebar侧边栏出现时，遮挡住下方的导航栏的问题(API 10)
 
@@ -86,7 +86,7 @@
 
 **参考链接**
 
-[SideBarContainer/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md)
+SideBarContainer
 
 ## 如何解决使用foreach&lazyforeach循环渲染时，会出现更改数据源时，界面不刷新的问题(API 10)
 
@@ -96,7 +96,7 @@
 
 **参考链接**
 
-[ForEach：循环渲染](../ui/rendering-control/arkts-rendering-control-foreach.md)
+ForEach：循环渲染
 
 ## CustomDialog，Popup等弹窗如何与页面解耦，最佳实践是什么样的(API 10)
 
@@ -118,9 +118,9 @@ MyGlobalBuilderFunction()
 
 **参考链接**
 
-1. [自定义弹窗 (CustomDialog)/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
-2. [Popup控制/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)
-3. [@Builder装饰器：自定义构建函数](../ui/state-management/arkts-builder.md)
+1. 自定义弹窗 (CustomDialog)
+2. Popup控制
+3. @Builder装饰器：自定义构建函数
 
 ## 为什么两个紧挨着的相同颜色的控件之间会有白线、暗线。如何解决(API 11)
 
@@ -139,4 +139,4 @@ Flex(){
 ```
 
 **参考链接**
-[布局约束/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md)
+布局约束

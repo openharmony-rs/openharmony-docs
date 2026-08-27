@@ -1,10 +1,8 @@
 # AgentProxy（系统接口）
 
-AgentExtensionAbility的代理对象，用于向AgentExtensionAbility等发送消息。
+AgentExtensionAbility的代理对象，用于向AgentExtensionAbility等发送消息。@interface AgentProxy
 
 **起始版本：** 24
-
-<!--Device-unnamed-export interface AgentProxy--><!--Device-unnamed-export interface AgentProxy-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -21,8 +19,6 @@ authorize(handshakeData: string): void
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AgentProxy-authorize(handshakeData: string): void--><!--Device-AgentProxy-authorize(handshakeData: string): void-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -52,8 +48,6 @@ sendData(data: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AgentProxy-sendData(data: string): void--><!--Device-AgentProxy-sendData(data: string): void-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -69,4 +63,3 @@ sendData(data: string): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [35600002](../errorcode-ability.md#35600002-ipc消息发送失败) | Failed to send the IPC message. |
-

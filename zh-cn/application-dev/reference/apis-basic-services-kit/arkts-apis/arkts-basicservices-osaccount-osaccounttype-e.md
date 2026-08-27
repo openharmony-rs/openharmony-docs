@@ -2,9 +2,7 @@
 
 表示系统账号类型的枚举。
 
-**起始版本：** 23
-
-<!--Device-osAccount-enum OsAccountType--><!--Device-osAccount-enum OsAccountType-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -16,9 +14,7 @@ ADMIN = 0
 
 管理员账号。
 
-**起始版本：** 23
-
-<!--Device-OsAccountType-ADMIN = 0--><!--Device-OsAccountType-ADMIN = 0-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -30,9 +26,7 @@ NORMAL = 1
 
 普通账号。
 
-**起始版本：** 23
-
-<!--Device-OsAccountType-NORMAL = 1--><!--Device-OsAccountType-NORMAL = 1-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -44,9 +38,6 @@ GUEST = 2
 
 访客账号。
 
-**起始版本：** 23
-
-<!--Device-OsAccountType-GUEST = 2--><!--Device-OsAccountType-GUEST = 2-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
-

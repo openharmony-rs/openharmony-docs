@@ -9,13 +9,11 @@ type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clea
 
 应用所支持的目标动作，需要配置参数的目标动作已在下表各动作的说明列中标明。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-accessibility-type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clearFocus' | 'clearSelection' |  'click' | 'longClick' | 'cut' | 'copy' | 'paste' | 'select' | 'setText' | 'delete' |  'scrollForward' | 'scrollBackward' | 'setSelection' | 'setCursorPosition' | 'home' |  'back' | 'recentTask' | 'notificationCenter' | 'controlCenter' | 'common' | 'injectAction' | 'executeCustomAction'--><!--Device-accessibility-type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clearFocus' | 'clearSelection' |  'click' | 'longClick' | 'cut' | 'copy' | 'paste' | 'select' | 'setText' | 'delete' |  'scrollForward' | 'scrollBackward' | 'setSelection' | 'setCursorPosition' | 'home' |  'back' | 'recentTask' | 'notificationCenter' | 'controlCenter' | 'common' | 'injectAction' | 'executeCustomAction'-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -46,4 +44,3 @@ type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clea
 | 'common' | 表示没有特定操作，用于主动聚焦、主动播报等场景。 [since 12] |
 | 'injectAction' | 表示注入动作，需配置参数injectActionType，参数值为注入动作类型。 [since 26.0.0] |
 | 'executeCustomAction' | 表示执行自定义操作，需配置参数customAction，参数值为自定义操作的名称。 [since 26.0.0] |
-

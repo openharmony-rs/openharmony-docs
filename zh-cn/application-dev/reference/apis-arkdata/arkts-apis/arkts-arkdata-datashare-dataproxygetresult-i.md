@@ -2,9 +2,7 @@
 
 配置共享批量获取操作结果的数据结构。
 
-**起始版本：** 23
-
-<!--Device-dataShare-interface DataProxyGetResult--><!--Device-dataShare-interface DataProxyGetResult-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { dataShare } from '@kit.ArkData';
-import { dataSharePredicates } from '@kit.ArkData';
 ```
 
 ## allowList
@@ -25,11 +22,9 @@ allowList: string[] | undefined
 
 **类型：** string[] \| undefined
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataProxyGetResult-allowList: string[] | undefined--><!--Device-DataProxyGetResult-allowList: string[] | undefined-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -43,11 +38,9 @@ result: DataProxyErrorCode
 
 **类型：** [DataProxyErrorCode](arkts-arkdata-datashare-dataproxyerrorcode-e.md)
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataProxyGetResult-result: DataProxyErrorCode--><!--Device-DataProxyGetResult-result: DataProxyErrorCode-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -61,11 +54,9 @@ uri: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataProxyGetResult-uri: string--><!--Device-DataProxyGetResult-uri: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -79,11 +70,8 @@ value: ValueType | undefined
 
 **类型：** [ValueType](arkts-arkdata-valuetype-t.md) \| undefined
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataProxyGetResult-value: ValueType | undefined--><!--Device-DataProxyGetResult-value: ValueType | undefined-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
-

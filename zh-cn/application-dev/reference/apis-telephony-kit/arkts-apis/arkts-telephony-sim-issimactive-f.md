@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { sim } from '@kit.TelephonyKit';
 ```
 
 ## isSimActive
 
 ```TypeScript
-function isSimActive(slotId: int, callback: AsyncCallback<boolean>): void
+function isSimActive(slotId: number, callback: AsyncCallback<boolean>): void
 ```
 
-Checks whether the SIM card in a specified slot is activated.
+获取指定卡槽SIM卡是否激活。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-sim-function isSimActive(slotId: int, callback: AsyncCallback<boolean>): void--><!--Device-sim-function isSimActive(slotId: int, callback: AsyncCallback<boolean>): void-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -24,8 +21,8 @@ Checks whether the SIM card in a specified slot is activated.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | int | 是 | Indicates the card slot index number, ranging from {@code 0} to the maximum card slot index number supported by the device. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | Indicates the callback for checking whether the SIM card in a specified slot is activated. Returns {@code true} if the SIM card is activated; returns {@code false} otherwise. |
+| slotId | number | 是 | 卡槽ID。   - 0：卡槽1。   - 1：卡槽2。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回指定卡槽是否激活。   - true:激活。   - false：未激活。 |
 
 **示例**
 
@@ -42,14 +39,12 @@ sim.isSimActive(0, (err: BusinessError, data: boolean) => {
 ## isSimActive
 
 ```TypeScript
-function isSimActive(slotId: int): Promise<boolean>
+function isSimActive(slotId: number): Promise<boolean>
 ```
 
-Checks whether the SIM card in a specified slot is activated.
+获取指定卡槽SIM卡是否激活。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-sim-function isSimActive(slotId: int): Promise<boolean>--><!--Device-sim-function isSimActive(slotId: int): Promise<boolean>-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -57,13 +52,13 @@ Checks whether the SIM card in a specified slot is activated.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | int | 是 | Indicates the card slot index number, ranging from {@code 0} to the maximum card slot index number supported by the device. |
+| slotId | number | 是 | 卡槽ID。   - 0：卡槽1。   - 1：卡槽2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Returns { |
+| Promise & lt;boolean & gt; | 以Promise形式返回指定卡槽是否激活。 |
 
 **示例**
 
@@ -77,4 +72,3 @@ sim.isSimActive(0).then((data: boolean) => {
     console.error(`isSimActive failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
-

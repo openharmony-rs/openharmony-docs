@@ -1,10 +1,18 @@
 # @ohos.util.Stack
 
+Stack基于数组的数据结构实现，特点是先进后出，只能在一端进行数据的插入和删除。
+ Stack和[Queue](arkts-arkts-util-queue-queue-c.md)相比，Queue基于循环队列实现，在尾部增加元素在头部删除元素；而Stack只在一端进行插入和删除操作。
+ **推荐使用场景：** 一般符合先进后出的场景可以使用Stack，例如撤销/重做操作的历史记录管理、函数调用栈模拟等。
+ 文档中使用了泛型，涉及以下泛型类型参数：
+ - T：Type，类型
+ > **说明**
+ >
+ > - 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
+
+
 ## 导入模块
 
 ```TypeScript
-import { Stack } from '@kit.ArkTS';
-import { StackForEachCb } from '@kit.ArkTS';
 ```
 
 ## 汇总
@@ -14,10 +22,3 @@ import { StackForEachCb } from '@kit.ArkTS';
 | 名称 | 说明 |
 | --- | --- |
 | [Stack](arkts-arkts-util-stack-stack-c.md) | Stack基于数组的数据结构实现，特点是先进后出，只能在一端进行数据的插入和删除。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [StackForEachCb](arkts-arkts-stackforeachcb-t.md) | Stack的回调函数类型。 |
-

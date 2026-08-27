@@ -2,9 +2,7 @@
 
 系统事件查询者对象接口。
 
-**起始版本：** 23
-
-<!--Device-hiSysEvent-interface Querier--><!--Device-hiSysEvent-interface Querier-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -13,26 +11,28 @@
 ## 导入模块
 
 ```TypeScript
-import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## onComplete
 
 ```TypeScript
-onComplete: (reason: int, total: int) => void
+onComplete: (reason: number, total: number) => void
 ```
 
-查询结果统计的回调方法(reason: int, total: int) => void。
+查询结果统计的回调方法(reason: number, total: number) =&gt; void。
 
-**类型：** (reason: int, total: int) =&gt; void
-
-**起始版本：** 23
-
-<!--Device-Querier-onComplete: (reason: int, total: int) => void--><!--Device-Querier-onComplete: (reason: int, total: int) => void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
 **系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| reason | number | 是 |  |
+| total | number | 是 |  |
 
 ## onQuery
 
@@ -40,15 +40,16 @@ onComplete: (reason: int, total: int) => void
 onQuery: (infos: SysEventInfo[]) => void
 ```
 
-返回查询到的系统事件的回调方法(infos: [SysEventInfo](arkts-performanceanalysis-hisysevent-syseventinfo-i-sys.md)[]) => void。
+返回查询到的系统事件的回调方法(infos: [SysEventInfo](arkts-performanceanalysis-hisysevent-syseventinfo-i-sys.md)[]) =&gt; void。
 
-**类型：** (infos: SysEventInfo[]) =&gt; void
-
-**起始版本：** 23
-
-<!--Device-Querier-onQuery: (infos: SysEventInfo[]) => void--><!--Device-Querier-onQuery: (infos: SysEventInfo[]) => void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
 **系统接口：** 此接口为系统接口。
 
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| infos | [SysEventInfo](arkts-performanceanalysis-hisysevent-syseventinfo-i-sys.md)[] | 是 |  |

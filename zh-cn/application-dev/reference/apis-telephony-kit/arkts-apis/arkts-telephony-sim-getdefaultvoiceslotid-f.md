@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { sim } from '@kit.TelephonyKit';
 ```
 
 ## getDefaultVoiceSlotId
 
 ```TypeScript
-function getDefaultVoiceSlotId(callback: AsyncCallback<int>): void
+function getDefaultVoiceSlotId(callback: AsyncCallback<number>): void
 ```
 
-Obtains the default card slot for the voice service.
+获取默认语音业务的卡槽ID。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-sim-function getDefaultVoiceSlotId(callback: AsyncCallback<int>): void--><!--Device-sim-function getDefaultVoiceSlotId(callback: AsyncCallback<int>): void-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -24,7 +21,7 @@ Obtains the default card slot for the voice service.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | Indicates the callback for getting the default card slot for the voice service. Returns {@code 0} if card 1 is used as the default card slot for the voice service; returns {@code 1} if card 2 is used as the default card slot for the voice service; returns {@code -1} if no card is available for the voice service. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。   - 0：卡槽1。   - 1：卡槽2。   - -1：未设置或服务不可用。 |
 
 **示例**
 
@@ -41,14 +38,12 @@ sim.getDefaultVoiceSlotId((err: BusinessError, data: number) => {
 ## getDefaultVoiceSlotId
 
 ```TypeScript
-function getDefaultVoiceSlotId(): Promise<int>
+function getDefaultVoiceSlotId(): Promise<number>
 ```
 
-Obtains the default card slot for the voice service.
+获取默认语音业务的卡槽ID。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-sim-function getDefaultVoiceSlotId(): Promise<int>--><!--Device-sim-function getDefaultVoiceSlotId(): Promise<int>-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -56,7 +51,7 @@ Obtains the default card slot for the voice service.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Returns { |
+| Promise & lt;number & gt; | 以Promise形式返回默认语音业务的卡槽ID。 |
 
 **示例**
 
@@ -70,4 +65,3 @@ sim.getDefaultVoiceSlotId().then((data: number) => {
     console.error(`getDefaultVoiceSlotId failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
-

@@ -11,7 +11,7 @@
 
 在OpenHarmony中，扩展`VK_OHOS_surface`相关的API创建出来的VkSurfaceKHR会对接到本机窗口（OHNativeWindow）模块，实现本机缓冲区（OHNativeBuffer）的轮转，用于屏幕显示。
 
-创建VkSurfaceKHR对象需要通过OHNativeWindow，而OHNativeWindow需要从XComponent中获取，所以此场景下需要配合XComponent模块和NativeWindow模块一起使用。XComponent模块的具体使用方法请参考[XComponent开发指导](../../ui/napi-xcomponent-guidelines.md)。
+创建VkSurfaceKHR对象需要通过OHNativeWindow，而OHNativeWindow需要从XComponent中获取，所以此场景下需要配合XComponent模块和NativeWindow模块一起使用。XComponent模块的具体使用方法请参考XComponent开发指导。
 
 ## 接口说明
 
@@ -19,7 +19,7 @@
 | ------------------------------------------------------------ | ---------------------- |
 | vkCreateSurfaceOHOS (VkInstance instance, const VkSurfaceCreateInfoOHOS\* pCreateInfo, const VkAllocationCallbacks\* pAllocator, VkSurfaceKHR\* pSurface) | 创建VkSurfaceKHR对象。 |
 
-更多的接口说明请参考[Vulkan](vulkan.md)。
+更多的接口说明请参考Vulkan。
 
 ## 开发步骤
 
@@ -86,7 +86,7 @@ libnative_buffer.so
 
 2. **获取OHNativeWindow**。
 
-   OHNativeWindow需要从XComponent组件中获取，下面提供一份从XComponent组件中获取OHNativeWindow的代码示例，XComponent模块的具体使用方法请参考[XComponent模块的介绍文档](../../ui/napi-xcomponent-guidelines.md)。
+   OHNativeWindow需要从XComponent组件中获取，下面提供一份从XComponent组件中获取OHNativeWindow的代码示例，XComponent模块的具体使用方法请参考XComponent模块的介绍文档。
 
    1. ets/pages/Index.ets中增加一个XComponent组件。
 

@@ -2,9 +2,7 @@
 
 应用连接时所需的连接选项。
 
-**起始版本：** 23
-
-<!--Device-abilityConnectionManager-interface ConnectOptions--><!--Device-abilityConnectionManager-interface ConnectOptions-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -20,15 +18,13 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 needReceiveStream?: boolean
 ```
 
-接收流数据的配置选项。需要开启WiFi。
+true表示需要接收流（当本端需要从对端接收视频流时选择）， false表示不需要接收流（当本端只发送不接收时选择）。默认值为false。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ConnectOptions-needReceiveStream?: boolean--><!--Device-ConnectOptions-needReceiveStream?: boolean-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -40,17 +36,14 @@ needReceiveStream?: boolean
 needSendStream?: boolean
 ```
 
-发送流数据的配置选项。需要开启WiFi。
+true表示需要发送流（当本端需要向对端发送视频流时选择）， false表示不需要发送流（当本端只接收不发送时选择）。默认值为false。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ConnectOptions-needSendStream?: boolean--><!--Device-ConnectOptions-needSendStream?: boolean-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **系统接口：** 此接口为系统接口。
-

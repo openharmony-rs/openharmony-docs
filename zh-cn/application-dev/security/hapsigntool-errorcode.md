@@ -44,7 +44,7 @@ Unsupported command method.
 
 **处理步骤**
 
-参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查命令行参数是否正确。
+参考签名工具使用指导，检查命令行参数是否正确。
 
 ## 11011002 参数检查错误
 
@@ -63,7 +63,7 @@ xxx param is incorrect.
 
 **处理步骤**
 
-1. 参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查命令行参数是否正确。
+1. 参考签名工具使用指导，检查命令行参数是否正确。
 2. 检查inFile参数对应文件是否可读。
 
 ## 11011003 参数数量错误
@@ -82,7 +82,7 @@ Check param num failed.
 
 **处理步骤**
 
-参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查命令行参数是否正确。
+参考签名工具使用指导，检查命令行参数是否正确。
 
 ## 11011004 空参错误
 
@@ -118,7 +118,7 @@ Param is not trusted.
 
 **处理步骤**
 
-参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查命令行参数是否正确。
+参考签名工具使用指导，检查命令行参数是否正确。
 
 ## 11011006 参数名与参数值不成对
 
@@ -136,7 +136,7 @@ Param {-key value} must in pairs.
 
 **处理步骤**
 
-参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查命令行参数是否正确。
+参考签名工具使用指导，检查命令行参数是否正确。
 
 ## 11011007 参数重复错误
 
@@ -154,7 +154,7 @@ Param xxx is duplicated.
 
 **处理步骤**
 
-参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查命令行参数是否正确。
+参考签名工具使用指导，检查命令行参数是否正确。
 
 ## 11011008 缺少必选参数
 
@@ -172,7 +172,7 @@ Check param failed.
 
 **处理步骤**
 
-参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查命令行参数是否正确。
+参考签名工具使用指导，检查命令行参数是否正确。
 
 ## 11012001 加载远程签名插件错误
 
@@ -352,7 +352,7 @@ Generate CA failed.
 
 **处理步骤**
 
-参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查命令行参数是否正确。
+参考签名工具使用指导，检查命令行参数是否正确。
 
 ## 11013004 证书链文件内证书数量错误
 
@@ -541,7 +541,7 @@ Not support algorithm.
 
 **处理步骤**
 
-1. 参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查signAlg参数值是否正确。
+1. 参考签名工具使用指导，检查signAlg参数值是否正确。
 2. 检查signAlg参数指定的算法与密钥算法是否匹配。
 
 ## 11014006 密钥库错误
@@ -672,7 +672,7 @@ profile文件内容未遵循HarmonyAppProvision配置文件的格式要求。
 
 **处理步骤**
 
-参考[HarmonyAppProvision配置文件说明](app-provision-structure.md#配置文件的内部结构)，检查profile文件内容。
+参考HarmonyAppProvision配置文件说明，检查profile文件内容。
 
 ## 11015005 Profile文件完整性校验错误
 
@@ -690,7 +690,7 @@ Profile文件完整性校验错误。
 
 **处理步骤**
 
-重新生成已签名的Profile文件，参考[Profile文件签名指导](hapsigntool-guidelines.md#场景介绍)。
+重新生成已签名的Profile文件，参考Profile文件签名指导。
 <!--DelEnd-->
 
 ## 11017001 软件包格式错误
@@ -932,7 +932,7 @@ module.json文件内容错误。
 
 1. 检查json内容结构是否符合格式规范。
 
-2. 在module.json中添加hnp文件描述，[开发指导](../quick-start/module-configuration-file.md#hnppackages标签)。
+2. 在module.json中添加hnp文件描述，开发指导。
 
 ## 11112003 ELF文件错误
 

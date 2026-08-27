@@ -2,9 +2,7 @@
 
 自动填充的填充请求。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface FillRequest--><!--Device-unnamed-export interface FillRequest-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -26,7 +24,4 @@ The trigger type of autofill service.
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FillRequest-triggerType?: AutoFillTriggerType--><!--Device-FillRequest-triggerType?: AutoFillTriggerType-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
-

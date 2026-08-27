@@ -1,10 +1,8 @@
 # ScanResults
 
-扫描结果的内容。
+表示扫描结果。
 
 **起始版本：** 26.0.0
-
-<!--Device-scan-interface ScanResults--><!--Device-scan-interface ScanResults-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -20,15 +18,13 @@ import { scan } from '@kit.ConnectivityKit';
 address: string
 ```
 
-远端设备的地址。 长度为17，由十六进制数字和冒号组成，例如：11:22:33:AA:BB:FF。
+表示扫描到设备地址。地址格式参考：11:22:33:AA:BB:FF。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ScanResults-address: string--><!--Device-ScanResults-address: string-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -38,15 +34,13 @@ address: string
 data: ArrayBuffer
 ```
 
-原始数据。
+表示广播包数据。
 
 **类型：** ArrayBuffer
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ScanResults-data: ArrayBuffer--><!--Device-ScanResults-data: ArrayBuffer-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -56,15 +50,13 @@ data: ArrayBuffer
 deviceClass?: nearlinkConstant.DeviceClass
 ```
 
-设备类型。
+表示扫描到的设备类型。设备广播未携带设备类型信息时该字段不返回。
 
 **类型：** nearlinkConstant.DeviceClass
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ScanResults-deviceClass?: nearlinkConstant.DeviceClass--><!--Device-ScanResults-deviceClass?: nearlinkConstant.DeviceClass-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -74,15 +66,13 @@ deviceClass?: nearlinkConstant.DeviceClass
 deviceName: string
 ```
 
-外围设备的设备名称。 最大长度为26。
+表示扫描到的设备名称。字符串长度范围[0, 30]。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ScanResults-deviceName: string--><!--Device-ScanResults-deviceName: string-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -92,7 +82,7 @@ deviceName: string
 isConnectable: boolean
 ```
 
-广播是否可连接。
+表示扫描到的广播是否可连接。true：可连接，false：不可连接
 
 **类型：** boolean
 
@@ -100,25 +90,20 @@ isConnectable: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ScanResults-isConnectable: boolean--><!--Device-ScanResults-isConnectable: boolean-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 ## rssi
 
 ```TypeScript
-rssi: int
+rssi: number
 ```
 
-外围设备的RSSI。 单位为： 分贝毫瓦，取值范围为全体整数，取值为127时表示无效值。
+表示扫描到的设备rssi值，取值范围[-128, 127]，单位：dBm，其中127表示无效值。 取值限定为整数。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ScanResults-rssi: int--><!--Device-ScanResults-rssi: int-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

@@ -4,14 +4,11 @@ Web组件数据库管理对象。
 
 **起始版本：** 9
 
-<!--Device-webview-class WebDataBase--><!--Device-webview-class WebDataBase-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { webview } from '@kit.ArkWeb';
 ```
 
 ## deleteHttpAuthCredentials
@@ -26,9 +23,35 @@ static deleteHttpAuthCredentials(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebDataBase-static deleteHttpAuthCredentials(): void--><!--Device-WebDataBase-static deleteHttpAuthCredentials(): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('deleteHttpAuthCredentials')
+        .onClick(() => {
+          try {
+            webview.WebDataBase.deleteHttpAuthCredentials();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
 
 ## existHttpAuthCredentials
 
@@ -42,15 +65,45 @@ static existHttpAuthCredentials(): boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebDataBase-static existHttpAuthCredentials(): boolean--><!--Device-WebDataBase-static existHttpAuthCredentials(): boolean-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 是否存在任何已保存的HTTP身份验证凭据。 <br>存在返回true，不存在返回false。 |
+| boolean | 是否存在任何已保存的HTTP身份验证凭据。 |
+
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('existHttpAuthCredentials')
+        .onClick(() => {
+          try {
+            if (webview.WebDataBase.existHttpAuthCredentials()) {
+                console.info('HTTP auth credentials exist.');
+              } else {
+                console.info('No HTTP auth credentials found.');
+              }
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
 
 ## getHttpAuthCredentials
 
@@ -63,8 +116,6 @@ static getHttpAuthCredentials(host: string, realm: string): Array<string>
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebDataBase-static getHttpAuthCredentials(host: string, realm: string): Array<string>--><!--Device-WebDataBase-static getHttpAuthCredentials(host: string, realm: string): Array<string>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -79,13 +130,45 @@ static getHttpAuthCredentials(host: string, realm: string): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | 包含用户名和密码的数组，检索失败返回空数组。 |
+| Array & lt;string & gt; | 包含用户名和密码的数组，检索失败返回空数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3.Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  host: string = 'www.spincast.org';
+  realm: string = 'protected example';
+  usernamePassword: string[] = [];
+
+  build() {
+    Column() {
+      Button('getHttpAuthCredentials')
+        .onClick(() => {
+          try {
+            this.usernamePassword = webview.WebDataBase.getHttpAuthCredentials(this.host, this.realm);
+            console.info('num: ' + this.usernamePassword.length);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
 
 ## saveHttpAuthCredentials
 
@@ -98,8 +181,6 @@ static saveHttpAuthCredentials(host: string, realm: string, username: string, pa
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebDataBase-static saveHttpAuthCredentials(host: string, realm: string, username: string, password: string): void--><!--Device-WebDataBase-static saveHttpAuthCredentials(host: string, realm: string, username: string, password: string): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -116,5 +197,34 @@ static saveHttpAuthCredentials(host: string, realm: string, username: string, pa
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3.Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  host: string = 'www.spincast.org';
+  realm: string = 'protected example';
+
+  build() {
+    Column() {
+      Button('saveHttpAuthCredentials')
+        .onClick(() => {
+          try {
+            webview.WebDataBase.saveHttpAuthCredentials(this.host, this.realm, 'Stromgol', 'Laroche');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```

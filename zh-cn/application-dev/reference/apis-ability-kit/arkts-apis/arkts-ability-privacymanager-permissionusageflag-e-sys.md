@@ -2,9 +2,7 @@
 
 表示使用记录的查询方式的枚举。
 
-**起始版本：** 23
-
-<!--Device-privacyManager-enum PermissionUsageFlag--><!--Device-privacyManager-enum PermissionUsageFlag-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -18,9 +16,7 @@ FLAG_PERMISSION_USAGE_SUMMARY = 0
 
 表示查询总览数据。
 
-**起始版本：** 23
-
-<!--Device-PermissionUsageFlag-FLAG_PERMISSION_USAGE_SUMMARY = 0--><!--Device-PermissionUsageFlag-FLAG_PERMISSION_USAGE_SUMMARY = 0-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -34,11 +30,8 @@ FLAG_PERMISSION_USAGE_DETAIL = 1
 
 表示查询详细数据。
 
-**起始版本：** 23
-
-<!--Device-PermissionUsageFlag-FLAG_PERMISSION_USAGE_DETAIL = 1--><!--Device-PermissionUsageFlag-FLAG_PERMISSION_USAGE_DETAIL = 1-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
-

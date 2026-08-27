@@ -6,8 +6,6 @@ Context模块提供了Ability或Application的上下文的基础能力，包括�
 
 **起始版本：** 6
 
-<!--Device-unnamed-export interface Context--><!--Device-unnamed-export interface Context-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## getAbilityInfo
@@ -22,15 +20,13 @@ getAbilityInfo(callback: AsyncCallback<AbilityInfo>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getAbilityInfo(callback: AsyncCallback<AbilityInfo>): void--><!--Device-Context-getAbilityInfo(callback: AsyncCallback<AbilityInfo>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt; | 是 | 回调函数，返回true表示该Ability的配置正在更改，否则返回false。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt; | 是 | 回调函数，返回true表示该Ability的配置正在更改，否则返回false。 |
 
 ## getAbilityInfo
 
@@ -44,8 +40,6 @@ getAbilityInfo(): Promise<AbilityInfo>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getAbilityInfo(): Promise<AbilityInfo>--><!--Device-Context-getAbilityInfo(): Promise<AbilityInfo>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
@@ -53,94 +47,6 @@ getAbilityInfo(): Promise<AbilityInfo>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt; | Promise对象，返回当前归属Ability详细信息。 |
-
-## getAppType
-
-```TypeScript
-getAppType(callback: AsyncCallback<string>): void
-```
-
-获取此应用的类型。使用callback异步回调。
-
-**起始版本：** 7
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-Context-getAppType(callback: AsyncCallback<string>): void--><!--Device-Context-getAppType(callback: AsyncCallback<string>): void-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回此应用程序的类型。 |
-
-## getAppType
-
-```TypeScript
-getAppType(): Promise<string>
-```
-
-获取此应用的类型。使用Promise异步回调。
-
-**起始版本：** 7
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-Context-getAppType(): Promise<string>--><!--Device-Context-getAppType(): Promise<string>-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回此应用的类型。 |
-
-## getAppVersionInfo
-
-```TypeScript
-getAppVersionInfo(callback: AsyncCallback<AppVersionInfo>): void
-```
-
-获取应用的版本信息。使用callback异步回调。
-
-**起始版本：** 7
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-Context-getAppVersionInfo(callback: AsyncCallback<AppVersionInfo>): void--><!--Device-Context-getAppVersionInfo(callback: AsyncCallback<AppVersionInfo>): void-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AppVersionInfo](arkts-ability-appversioninfo-appversioninfo-depr-i.md)&gt; | 是 | 回调函数，返回应用版本信息。 |
-
-## getAppVersionInfo
-
-```TypeScript
-getAppVersionInfo(): Promise<AppVersionInfo>
-```
-
-获取应用的版本信息。使用Promise异步回调。
-
-**起始版本：** 7
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-Context-getAppVersionInfo(): Promise<AppVersionInfo>--><!--Device-Context-getAppVersionInfo(): Promise<AppVersionInfo>-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[AppVersionInfo](arkts-ability-appversioninfo-appversioninfo-depr-i.md)&gt; | Promise对象，返回应用版本信息。 |
 
 ## getApplicationContext
 
@@ -153,8 +59,6 @@ getApplicationContext(): Context
 **起始版本：** 7
 
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-Context-getApplicationContext(): Context--><!--Device-Context-getApplicationContext(): Context-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -176,15 +80,13 @@ getApplicationInfo(callback: AsyncCallback<ApplicationInfo>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getApplicationInfo(callback: AsyncCallback<ApplicationInfo>): void--><!--Device-Context-getApplicationInfo(callback: AsyncCallback<ApplicationInfo>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)&gt; | 是 | 回调函数，返回当前应用程序的信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)&gt; | 是 | 回调函数，返回当前应用程序的信息。 |
 
 ## getApplicationInfo
 
@@ -198,8 +100,6 @@ getApplicationInfo(): Promise<ApplicationInfo>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getApplicationInfo(): Promise<ApplicationInfo>--><!--Device-Context-getApplicationInfo(): Promise<ApplicationInfo>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
@@ -207,6 +107,86 @@ getApplicationInfo(): Promise<ApplicationInfo>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)&gt; | Promise对象，返回当前应用程序的信息。 |
+
+## getAppType
+
+```TypeScript
+getAppType(callback: AsyncCallback<string>): void
+```
+
+获取此应用的类型。使用callback异步回调。
+
+**起始版本：** 7
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回此应用程序的类型。 |
+
+## getAppType
+
+```TypeScript
+getAppType(): Promise<string>
+```
+
+获取此应用的类型。使用Promise异步回调。
+
+**起始版本：** 7
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise & lt;string & gt; | Promise对象，返回此应用的类型。 |
+
+## getAppVersionInfo
+
+```TypeScript
+getAppVersionInfo(callback: AsyncCallback<AppVersionInfo>): void
+```
+
+获取应用的版本信息。使用callback异步回调。
+
+**起始版本：** 7
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AppVersionInfo](arkts-ability-appversioninfo-appversioninfo-depr-i.md)&gt; | 是 | 回调函数，返回应用版本信息。 |
+
+## getAppVersionInfo
+
+```TypeScript
+getAppVersionInfo(): Promise<AppVersionInfo>
+```
+
+获取应用的版本信息。使用Promise异步回调。
+
+**起始版本：** 7
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[AppVersionInfo](arkts-ability-appversioninfo-appversioninfo-depr-i.md)&gt; | Promise对象，返回应用版本信息。 |
 
 ## getBundleName
 
@@ -220,15 +200,13 @@ getBundleName(callback: AsyncCallback<string>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getBundleName(callback: AsyncCallback<string>): void--><!--Device-Context-getBundleName(callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回当前ability的Bundle名称。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回当前ability的Bundle名称。 |
 
 ## getBundleName
 
@@ -242,15 +220,13 @@ getBundleName(): Promise<string>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getBundleName(): Promise<string>--><!--Device-Context-getBundleName(): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回当前ability的Bundle名称。 |
+| Promise & lt;string & gt; | Promise对象，返回当前ability的Bundle名称。 |
 
 ## getCacheDir
 
@@ -264,15 +240,13 @@ getCacheDir(callback: AsyncCallback<string>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getCacheDir(callback: AsyncCallback<string>): void--><!--Device-Context-getCacheDir(callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回该应用程序的内部存储目录。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回该应用程序的内部存储目录。 |
 
 ## getCacheDir
 
@@ -286,15 +260,13 @@ getCacheDir(): Promise<string>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getCacheDir(): Promise<string>--><!--Device-Context-getCacheDir(): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回该应用程序的内部存储目录。 |
+| Promise & lt;string & gt; | Promise对象，返回该应用程序的内部存储目录。 |
 
 ## getCallingBundle
 
@@ -308,15 +280,13 @@ getCallingBundle(callback: AsyncCallback<string>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getCallingBundle(callback: AsyncCallback<string>): void--><!--Device-Context-getCallingBundle(callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回ability调用方的Bundle名称。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回ability调用方的Bundle名称。 |
 
 ## getCallingBundle
 
@@ -330,15 +300,13 @@ getCallingBundle(): Promise<string>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getCallingBundle(): Promise<string>--><!--Device-Context-getCallingBundle(): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回ability调用方的Bundle名称。 |
+| Promise & lt;string & gt; | Promise对象，返回ability调用方的Bundle名称。 |
 
 ## getDisplayOrientation
 
@@ -352,15 +320,13 @@ getDisplayOrientation(callback: AsyncCallback<bundle.DisplayOrientation>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getDisplayOrientation(callback: AsyncCallback<bundle.DisplayOrientation>): void--><!--Device-Context-getDisplayOrientation(callback: AsyncCallback<bundle.DisplayOrientation>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;bundle.DisplayOrientation&gt; | 是 | 回调函数，返回屏幕显示方向。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;bundle.DisplayOrientation&gt; | 是 | 回调函数，返回屏幕显示方向。 |
 
 ## getDisplayOrientation
 
@@ -374,15 +340,13 @@ getDisplayOrientation(): Promise<bundle.DisplayOrientation>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getDisplayOrientation(): Promise<bundle.DisplayOrientation>--><!--Device-Context-getDisplayOrientation(): Promise<bundle.DisplayOrientation>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;bundle.DisplayOrientation&gt; | Indicates the screen display direction. |
+| Promise & lt;bundle.DisplayOrientation & gt; | Indicates the screen display direction. |
 
 ## getElementName
 
@@ -396,15 +360,13 @@ getElementName(callback: AsyncCallback<ElementName>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getElementName(callback: AsyncCallback<ElementName>): void--><!--Device-Context-getElementName(callback: AsyncCallback<ElementName>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[ElementName](arkts-ability-elementname-elementname-depr-i.md)&gt; | 是 | 回调函数，返回当前ability的ohos.bundleManager.ElementName对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ElementName](arkts-ability-elementname-elementname-depr-i.md)&gt; | 是 | 回调函数，返回当前ability的ohos.bundleManager.ElementName对象。 |
 
 ## getElementName
 
@@ -417,8 +379,6 @@ getElementName(): Promise<ElementName>
 **起始版本：** 7
 
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-Context-getElementName(): Promise<ElementName>--><!--Device-Context-getElementName(): Promise<ElementName>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -442,15 +402,13 @@ getExternalCacheDir(callback: AsyncCallback<string>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getExternalCacheDir(callback: AsyncCallback<string>): void--><!--Device-Context-getExternalCacheDir(callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回应用程序的缓存目录的绝对路径。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回应用程序的缓存目录的绝对路径。 |
 
 ## getExternalCacheDir
 
@@ -466,15 +424,13 @@ getExternalCacheDir(): Promise<string>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getExternalCacheDir(): Promise<string>--><!--Device-Context-getExternalCacheDir(): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回应用程序的缓存目录的绝对路径。 |
+| Promise & lt;string & gt; | Promise对象，返回应用程序的缓存目录的绝对路径。 |
 
 ## getFilesDir
 
@@ -488,15 +444,13 @@ getFilesDir(callback: AsyncCallback<string>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getFilesDir(callback: AsyncCallback<string>): void--><!--Device-Context-getFilesDir(callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回内部存储器上此应用程序的文件目录。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回内部存储器上此应用程序的文件目录。 |
 
 ## getFilesDir
 
@@ -510,15 +464,13 @@ getFilesDir(): Promise<string>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getFilesDir(): Promise<string>--><!--Device-Context-getFilesDir(): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回内部存储器上此应用程序的文件目录。 |
+| Promise & lt;string & gt; | Promise对象，返回内部存储器上此应用程序的文件目录。 |
 
 ## getHapModuleInfo
 
@@ -532,15 +484,13 @@ getHapModuleInfo(callback: AsyncCallback<HapModuleInfo>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getHapModuleInfo(callback: AsyncCallback<HapModuleInfo>): void--><!--Device-Context-getHapModuleInfo(callback: AsyncCallback<HapModuleInfo>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)&gt; | 是 | 回调函数，返回应用的ModuleInfo对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)&gt; | 是 | 回调函数，返回应用的ModuleInfo对象。 |
 
 ## getHapModuleInfo
 
@@ -553,8 +503,6 @@ getHapModuleInfo(): Promise<HapModuleInfo>
 **起始版本：** 7
 
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-Context-getHapModuleInfo(): Promise<HapModuleInfo>--><!--Device-Context-getHapModuleInfo(): Promise<HapModuleInfo>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -576,15 +524,13 @@ getOrCreateDistributedDir(): Promise<string>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getOrCreateDistributedDir(): Promise<string>--><!--Device-Context-getOrCreateDistributedDir(): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | 回调函数，返回Ability或应用的分布式文件路径。若路径不存在，系统将创建一个路径并返回创建的路径。 |
+| Promise & lt;string & gt; | 回调函数，返回Ability或应用的分布式文件路径。若路径不存在，系统将创建一个路径并返回创建的路径。 |
 
 ## getOrCreateDistributedDir
 
@@ -598,15 +544,13 @@ getOrCreateDistributedDir(callback: AsyncCallback<string>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getOrCreateDistributedDir(callback: AsyncCallback<string>): void--><!--Device-Context-getOrCreateDistributedDir(callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | Promise对象，返回Ability或应用的分布式文件路径。若为首次调用，则将创建建目录。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | Promise对象，返回Ability或应用的分布式文件路径。若为首次调用，则将创建建目录。 |
 
 ## getOrCreateLocalDir
 
@@ -620,15 +564,13 @@ getOrCreateLocalDir(): Promise<string>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getOrCreateLocalDir(): Promise<string>--><!--Device-Context-getOrCreateLocalDir(): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回应用程序的本地根目录。 |
+| Promise & lt;string & gt; | Promise对象，返回应用程序的本地根目录。 |
 
 ## getOrCreateLocalDir
 
@@ -642,15 +584,13 @@ getOrCreateLocalDir(callback: AsyncCallback<string>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getOrCreateLocalDir(callback: AsyncCallback<string>): void--><!--Device-Context-getOrCreateLocalDir(callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回应用程序的本地根目录。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回应用程序的本地根目录。 |
 
 ## getProcessInfo
 
@@ -664,15 +604,13 @@ getProcessInfo(callback: AsyncCallback<ProcessInfo>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getProcessInfo(callback: AsyncCallback<ProcessInfo>): void--><!--Device-Context-getProcessInfo(callback: AsyncCallback<ProcessInfo>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[ProcessInfo](arkts-ability-processinfo-processinfo-depr-i.md)&gt; | 是 | 回调函数，返回当前进程的信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ProcessInfo](arkts-ability-processinfo-processinfo-depr-i.md)&gt; | 是 | 回调函数，返回当前进程的信息。 |
 
 ## getProcessInfo
 
@@ -685,8 +623,6 @@ getProcessInfo(): Promise<ProcessInfo>
 **起始版本：** 7
 
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-Context-getProcessInfo(): Promise<ProcessInfo>--><!--Device-Context-getProcessInfo(): Promise<ProcessInfo>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -708,15 +644,13 @@ getProcessName(callback: AsyncCallback<string>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getProcessName(callback: AsyncCallback<string>): void--><!--Device-Context-getProcessName(callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回当前进程的名称。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回当前进程的名称。 |
 
 ## getProcessName
 
@@ -730,15 +664,13 @@ getProcessName(): Promise<string>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-getProcessName(): Promise<string>--><!--Device-Context-getProcessName(): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回当前进程的名称。 |
+| Promise & lt;string & gt; | Promise对象，返回当前进程的名称。 |
 
 ## isUpdatingConfigurations
 
@@ -752,15 +684,13 @@ isUpdatingConfigurations(callback: AsyncCallback<boolean>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-isUpdatingConfigurations(callback: AsyncCallback<boolean>): void--><!--Device-Context-isUpdatingConfigurations(callback: AsyncCallback<boolean>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数，返回true表示该Ability的配置正在更改，否则返回false。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数，返回true表示该Ability的配置正在更改，否则返回false。 |
 
 ## isUpdatingConfigurations
 
@@ -774,15 +704,13 @@ isUpdatingConfigurations(): Promise<boolean>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-isUpdatingConfigurations(): Promise<boolean>--><!--Device-Context-isUpdatingConfigurations(): Promise<boolean>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回true表示该Ability的配置正在更改，否则返回false。 |
+| Promise & lt;boolean & gt; | Promise对象，返回true表示该Ability的配置正在更改，否则返回false。 |
 
 ## printDrawnCompleted
 
@@ -796,15 +724,13 @@ printDrawnCompleted(callback: AsyncCallback<void>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-printDrawnCompleted(callback: AsyncCallback<void>): void--><!--Device-Context-printDrawnCompleted(callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当通知系统绘制此页面功能所需的时间成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当通知系统绘制此页面功能所需的时间成功，err为undefined，否则为错误对象。 |
 
 ## printDrawnCompleted
 
@@ -818,15 +744,13 @@ printDrawnCompleted(): Promise<void>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-printDrawnCompleted(): Promise<void>--><!--Device-Context-printDrawnCompleted(): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象 |
 
 ## requestPermissionsFromUser
 
@@ -844,17 +768,15 @@ requestPermissionsFromUser(
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-requestPermissionsFromUser(    permissions: Array<string>,    requestCode: number,    resultCallback: AsyncCallback<PermissionRequestResult>  ): void--><!--Device-Context-requestPermissionsFromUser(    permissions: Array<string>,    requestCode: number,    resultCallback: AsyncCallback<PermissionRequestResult>  ): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| permissions | Array&lt;string&gt; | 是 | 指示要请求的权限列表。此参数不能为null。 |
+| permissions | Array & lt;string & gt; | 是 | 指示要请求的权限列表。此参数不能为null。 |
 | requestCode | number | 是 | 指示要传递给[PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md#permissionrequestresult)的请求代码。 |
-| resultCallback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md)&gt; | 是 | 回调函数，返回授权结果信息。 |
+| resultCallback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md)&gt; | 是 | 回调函数，返回授权结果信息。 |
 
 ## requestPermissionsFromUser
 
@@ -868,15 +790,13 @@ requestPermissionsFromUser(permissions: Array<string>, requestCode: number): Pro
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-requestPermissionsFromUser(permissions: Array<string>, requestCode: number): Promise<PermissionRequestResult>--><!--Device-Context-requestPermissionsFromUser(permissions: Array<string>, requestCode: number): Promise<PermissionRequestResult>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| permissions | Array&lt;string&gt; | 是 | 指示要请求的权限列表。此参数不能为null。 |
+| permissions | Array & lt;string & gt; | 是 | 指示要请求的权限列表。此参数不能为null。 |
 | requestCode | number | 是 | 指示要传递给[PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md#permissionrequestresult)的请求代码。 |
 
 **返回值：**
@@ -897,8 +817,6 @@ setDisplayOrientation(orientation: bundle.DisplayOrientation, callback: AsyncCal
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-setDisplayOrientation(orientation: bundle.DisplayOrientation, callback: AsyncCallback<void>): void--><!--Device-Context-setDisplayOrientation(orientation: bundle.DisplayOrientation, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -906,7 +824,7 @@ setDisplayOrientation(orientation: bundle.DisplayOrientation, callback: AsyncCal
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | orientation | bundle.DisplayOrientation | 是 | 指示当前能力的新方向。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置当前Ability的显示方向成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置当前Ability的显示方向成功，err为undefined，否则为错误对象。 |
 
 ## setDisplayOrientation
 
@@ -920,8 +838,6 @@ setDisplayOrientation(orientation: bundle.DisplayOrientation): Promise<void>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-setDisplayOrientation(orientation: bundle.DisplayOrientation): Promise<void>--><!--Device-Context-setDisplayOrientation(orientation: bundle.DisplayOrientation): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -934,7 +850,7 @@ setDisplayOrientation(orientation: bundle.DisplayOrientation): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 ## setShowOnLockScreen
 
@@ -948,11 +864,7 @@ setShowOnLockScreen(show: boolean, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [setShowOnLockScreen](../../apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i-sys.md#setshowonlockscreen)
-
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-Context-setShowOnLockScreen(show: boolean, callback: AsyncCallback<void>): void--><!--Device-Context-setShowOnLockScreen(show: boolean, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -961,7 +873,7 @@ setShowOnLockScreen(show: boolean, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | show | boolean | 是 | 指定是否在锁屏顶部显示此功能。值true表示在锁屏上显示，值false表示不显示。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置每当显示锁屏时是否在锁屏顶部显示此功能并使该功能保持激活状态的操作成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置每当显示锁屏时是否在锁屏顶部显示此功能并使该功能保持激活状态的操作成功，err为undefined，否则为错误对象。 |
 
 ## setShowOnLockScreen
 
@@ -975,11 +887,7 @@ setShowOnLockScreen(show: boolean): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [setShowOnLockScreen](../../apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i-sys.md#setshowonlockscreen)
-
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-Context-setShowOnLockScreen(show: boolean): Promise<void>--><!--Device-Context-setShowOnLockScreen(show: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -993,7 +901,7 @@ setShowOnLockScreen(show: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 ## setWakeUpScreen
 
@@ -1011,8 +919,6 @@ setWakeUpScreen(wakeUp: boolean, callback: AsyncCallback<void>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-setWakeUpScreen(wakeUp: boolean, callback: AsyncCallback<void>): void--><!--Device-Context-setWakeUpScreen(wakeUp: boolean, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -1020,7 +926,7 @@ setWakeUpScreen(wakeUp: boolean, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | wakeUp | boolean | 是 | 指定是否唤醒屏幕。值true表示唤醒它，值false表示不唤醒它。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置恢复此功能时是否唤醒屏幕成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置恢复此功能时是否唤醒屏幕成功，err为undefined，否则为错误对象。 |
 
 ## setWakeUpScreen
 
@@ -1038,8 +944,6 @@ setWakeUpScreen(wakeUp: boolean): Promise<void>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-setWakeUpScreen(wakeUp: boolean): Promise<void>--><!--Device-Context-setWakeUpScreen(wakeUp: boolean): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -1052,7 +956,7 @@ setWakeUpScreen(wakeUp: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 ## verifyPermission
 
@@ -1065,8 +969,6 @@ verifyPermission(permission: string, options?: PermissionOptions): Promise<numbe
 **起始版本：** 7
 
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-Context-verifyPermission(permission: string, options?: PermissionOptions): Promise<number>--><!--Device-Context-verifyPermission(permission: string, options?: PermissionOptions): Promise<number>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1081,7 +983,7 @@ verifyPermission(permission: string, options?: PermissionOptions): Promise<numbe
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，如果pid和uid具有权限，则使用0进行异步回调；否则使用-1回调。 |
+| Promise & lt;number & gt; | Promise对象，如果pid和uid具有权限，则使用0进行异步回调；否则使用-1回调。 |
 
 ## verifyPermission
 
@@ -1095,8 +997,6 @@ verifyPermission(permission: string, options: PermissionOptions, callback: Async
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-verifyPermission(permission: string, options: PermissionOptions, callback: AsyncCallback<number>): void--><!--Device-Context-verifyPermission(permission: string, options: PermissionOptions, callback: AsyncCallback<number>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -1105,7 +1005,7 @@ verifyPermission(permission: string, options: PermissionOptions, callback: Async
 | --- | --- | --- | --- |
 | permission | string | 是 | 指定权限的名称。 |
 | options | [PermissionOptions](arkts-ability-context-permissionoptions-depr-i.md) | 是 | 权限选项。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数，返回权限验证结果，0有权限，-1无权限。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回权限验证结果，0有权限，-1无权限。 |
 
 ## verifyPermission
 
@@ -1119,8 +1019,6 @@ verifyPermission(permission: string, callback: AsyncCallback<number>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-Context-verifyPermission(permission: string, callback: AsyncCallback<number>): void--><!--Device-Context-verifyPermission(permission: string, callback: AsyncCallback<number>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -1128,5 +1026,4 @@ verifyPermission(permission: string, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | permission | string | 是 | 指定权限的名称。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数，返回权限验证结果，0有权限，-1无权限。 |
-
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回权限验证结果，0有权限，-1无权限。 |

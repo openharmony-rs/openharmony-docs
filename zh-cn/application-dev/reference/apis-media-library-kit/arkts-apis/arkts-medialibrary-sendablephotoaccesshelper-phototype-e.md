@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-sendablePhotoAccessHelper-const enum PhotoType--><!--Device-sendablePhotoAccessHelper-const enum PhotoType-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## IMAGE
@@ -19,8 +17,6 @@ IMAGE = 1
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoType-IMAGE = 1--><!--Device-PhotoType-IMAGE = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -36,7 +32,4 @@ VIDEO = 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PhotoType-VIDEO = 2--><!--Device-PhotoType-VIDEO = 2-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-

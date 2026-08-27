@@ -12,12 +12,9 @@ declare type ColorFilterType = ColorFilter | DrawingColorFilter
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type ColorFilterType = ColorFilter | DrawingColorFilter--><!--Device-unnamed-declare type ColorFilterType = ColorFilter | DrawingColorFilter-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | --- | --- |
 | ColorFilter | ColorFilter类型图片颜色滤镜设置项。 |
-| DrawingColorFilter | DrawingColorFilter类型图片颜色滤镜设置项。 |
-
+| [DrawingColorFilter](../arkts-components/arkts-arkui-drawingcolorfilter-t.md) | DrawingColorFilter类型图片颜色滤镜设置项。 |

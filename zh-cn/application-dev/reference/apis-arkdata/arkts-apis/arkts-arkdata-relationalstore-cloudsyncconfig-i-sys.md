@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-relationalStore-interface CloudSyncConfig--><!--Device-relationalStore-interface CloudSyncConfig-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 ## 导入模块
@@ -28,9 +26,6 @@ downloadOnly?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CloudSyncConfig-downloadOnly?: boolean--><!--Device-CloudSyncConfig-downloadOnly?: boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **系统接口：** 此接口为系统接口。
-

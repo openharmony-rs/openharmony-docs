@@ -2,17 +2,13 @@
 
 表示签名、验签的初始化操作句柄。
 
-**起始版本：** 23
-
-<!--Device-certificateManager-export interface CMHandle--><!--Device-certificateManager-export interface CMHandle-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 ## 导入模块
 
 ```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## handle
@@ -25,9 +21,6 @@ handle: Uint8Array
 
 **类型：** Uint8Array
 
-**起始版本：** 23
-
-<!--Device-CMHandle-handle: Uint8Array--><!--Device-CMHandle-handle: Uint8Array-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
-

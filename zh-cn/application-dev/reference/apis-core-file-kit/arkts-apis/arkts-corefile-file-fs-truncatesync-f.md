@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## truncateSync
@@ -20,8 +18,6 @@ declare function truncateSync(file: string | number, len?: number): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare function truncateSync(file: string | number, len?: number): void--><!--Device-unnamed-declare function truncateSync(file: string | number, len?: number): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -35,20 +31,27 @@ declare function truncateSync(file: string | number, len?: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900023 | Text file busy |
-| 13900018 | Not a directory |
-| 13900019 | Is a directory |
-| 13900030 | File name too long |
-| 13900024 | File too large |
-| 13900027 | Read-only file system |
+| 13900001 | Operation not permitted |
+| 13900002 | No such file or directory |
 | 13900004 | Interrupted system call |
 | 13900005 | I/O error |
-| 13900001 | Operation not permitted |
-| 13900033 | Too many symbolic links encountered |
-| 13900002 | No such file or directory |
+| 13900008 | Bad file descriptor |
 | 13900012 | Permission denied |
 | 13900013 | Bad address |
-| 13900008 | Bad file descriptor |
+| 13900018 | Not a directory |
+| 13900019 | Is a directory |
+| 13900020 | Invalid argument |
+| 13900023 | Text file busy |
+| 13900024 | File too large |
+| 13900027 | Read-only file system |
+| 13900030 | File name too number |
+| 13900033 | Too many symbolic links encountered |
 | 13900042 | Unknown error |
 
+**示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+let len: number = 5;
+fileIo.truncateSync(filePath, len);
+```

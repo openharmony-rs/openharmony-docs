@@ -1,10 +1,8 @@
 # AccessibilityElement
 
-无障碍节点元素，提供查询父/子元素、按内容或焦点方向查找元素、执行无障碍操作等能力，适用于无障碍辅助应用需要与界面节点交互和操作的场景。 调用AccessibilityElement的方法前，先通过 [AccessibilityExtensionContext.getFocusElement()](arkts-accessibility-accessibilityextensioncontext-c.md#getfocuselement) 或 [AccessibilityExtensionContext.getWindowRootElement()](arkts-accessibility-accessibilityextensioncontext-c.md#getwindowrootelement) 获取AccessibilityElement实例。
+无障碍节点元素，提供查询父/子元素、按内容或焦点方向查找元素、执行无障碍操作等能力，适用于无障碍辅助应用需要与界面节点交互和操作的场景。调用AccessibilityElement的方法前，先通过 [AccessibilityExtensionContext.getAccessibilityFocusedElement()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getaccessibilityfocusedelement) 或[AccessibilityExtensionContext.getRootInActiveWindow()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getrootinactivewindow) 获取AccessibilityElement实例。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export declare interface AccessibilityElement--><!--Device-unnamed-export declare interface AccessibilityElement-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -16,9 +14,7 @@ enableScreenCurtain(isEnable: boolean): void
 
 开启或关闭幕帘屏。幕帘屏开启后，屏幕显示内容将被隐藏（屏幕变暗），但设备仍可正常响应操作。
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-enableScreenCurtain(isEnable: boolean): void--><!--Device-AccessibilityElement-enableScreenCurtain(isEnable: boolean): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -34,8 +30,8 @@ enableScreenCurtain(isEnable: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
 **示例**
@@ -91,11 +87,9 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise<void
 
 根据action指定的操作类型和parameters，对无障碍节点元素执行相应操作。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
-
-<!--Device-AccessibilityElement-executeAction(action: AccessibilityAction, parameters?: Parameter): Promise<void>--><!--Device-AccessibilityElement-executeAction(action: AccessibilityAction, parameters?: Parameter): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -112,15 +106,15 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9300005](../errorcode-accessibility.md#9300005-不支持该操作) | This action is not supported. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [9300005](../errorcode-accessibility.md#9300005-不支持该操作) | This action is not supported. |
 
 **示例**
 
@@ -188,8 +182,6 @@ findElement(type: 'textType', condition: string): Promise<Array<AccessibilityEle
 
 **起始版本：** 12
 
-<!--Device-AccessibilityElement-findElement(type: 'textType', condition: string): Promise<Array<AccessibilityElement>>--><!--Device-AccessibilityElement-findElement(type: 'textType', condition: string): Promise<Array<AccessibilityElement>>-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -233,14 +225,12 @@ rootElement.findElement('textType', condition).then((data: AccessibilityElement[
 ## findElement('elementId')
 
 ```TypeScript
-findElement(type: 'elementId', condition: long): Promise<AccessibilityElement>
+findElement(type: 'elementId', condition: number): Promise<AccessibilityElement>
 ```
 
-根据elementId查询当前活动窗口下的节点元素。使用Promise异步回调。 与[findElementById](#findelementbyid)均根据元素ID查找节点元素，功能等价，推荐优先使用findElementById。
+根据elementId查询当前活动窗口下的节点元素。使用Promise异步回调。与[findElementById](#findelementbyid)均根据元素ID查找节点元素，功能等价，推荐优先使用findElementById。
 
 **起始版本：** 12
-
-<!--Device-AccessibilityElement-findElement(type: 'elementId', condition: long): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-findElement(type: 'elementId', condition: long): Promise<AccessibilityElement>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -251,7 +241,7 @@ findElement(type: 'elementId', condition: long): Promise<AccessibilityElement>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'elementId' | 是 | 固定为'elementId'，表示根据elementId查询当前活动窗口下的节点元素。 |
-| condition | long | 是 | 表示要查询的节点元素的elementId。 |
+| condition | number | 是 | 表示要查询的节点元素的elementId。 |
 
 **返回值：**
 
@@ -290,11 +280,9 @@ findElementByContent(condition: string): Promise<Array<AccessibilityElement>>
 
 根据元素的内容文本查找节点元素，将返回包含指定文本的所有节点元素。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
-
-<!--Device-AccessibilityElement-findElementByContent(condition: string): Promise<Array<AccessibilityElement>>--><!--Device-AccessibilityElement-findElementByContent(condition: string): Promise<Array<AccessibilityElement>>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -349,69 +337,17 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 });
 ```
 
-## findElementByElementId
-
-```TypeScript
-findElementByElementId(condition: long): Promise<AccessibilityElement>
-```
-
-Find elements that match the condition.
-
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-findElementByElementId(condition: long): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-findElementByElementId(condition: long): Promise<AccessibilityElement>-End-->
-
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| condition | long | 是 | Indicates the specific content to be queried. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt; |  |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// elementId为10。
-let condition = 10;
-
-// rootElement是AccessibilityElement的实例。
-rootElement.findElement('elementId', condition).then((data: AccessibilityElement) => {
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
-});
-```
-
 ## findElementByFocusDirection
 
 ```TypeScript
 findElementByFocusDirection(condition: FocusDirection): Promise<AccessibilityElement>
 ```
 
-根据焦点方向查找元素。使用Promise异步回调。 与 [findElementsByCondition](#findelementsbycondition) 相比，本方法主要用于查找Web组件；findElementsByCondition主要用于查找UI组件。
+根据焦点方向查找元素。使用Promise异步回调。与 [findElementsByCondition](#findelementsbycondition) 相比，本方法主要用于查找Web组件；findElementsByCondition主要用于查找UI组件。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
-
-<!--Device-AccessibilityElement-findElementByFocusDirection(condition: FocusDirection): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-findElementByFocusDirection(condition: FocusDirection): Promise<AccessibilityElement>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -483,8 +419,6 @@ findElementByFocusDirection(condition: FocusDirection, type: FocusRuleType): Pro
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AccessibilityElement-findElementByFocusDirection(condition: FocusDirection, type: FocusRuleType): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-findElementByFocusDirection(condition: FocusDirection, type: FocusRuleType): Promise<AccessibilityElement>-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -547,7 +481,6 @@ findElementByFocusDirection(condition: FocusDirection, type: FocusRuleType): Pro
       }]
     })
   }
-// ...
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement, FocusRuleType } from '@kit.AccessibilityKit';
@@ -567,16 +500,14 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 ## findElementById
 
 ```TypeScript
-findElementById(condition: long): Promise<AccessibilityElement>
+findElementById(condition: number): Promise<AccessibilityElement>
 ```
 
-根据元素ID查找当前活动窗口下的节点元素。使用Promise异步回调。 与findElement('elementId')功能等价，推荐优先使用本 方法。
+根据元素ID查找当前活动窗口下的节点元素。使用Promise异步回调。与[findElement('elementId')](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md#findelementcontent)功能等价，推荐优先使用本 方法。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
-
-<!--Device-AccessibilityElement-findElementById(condition: long): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-findElementById(condition: long): Promise<AccessibilityElement>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -586,7 +517,7 @@ findElementById(condition: long): Promise<AccessibilityElement>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| condition | long | 是 | 表示要查询的节点元素的ID。 |
+| condition | number | 是 | 表示要查询的节点元素的ID。 |
 
 **返回值：**
 
@@ -634,56 +565,6 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 });
 ```
 
-## findElementByTextType
-
-```TypeScript
-findElementByTextType(condition: string): Promise<Array<AccessibilityElement>>
-```
-
-Find elements that match the condition.
-
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-findElementByTextType(condition: string): Promise<Array<AccessibilityElement>>--><!--Device-AccessibilityElement-findElementByTextType(condition: string): Promise<Array<AccessibilityElement>>-End-->
-
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| condition | string | 是 | Indicates the specific content to be queried. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;Array&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt;&gt; |  |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// condition的内容需要与目标组件accessibilityTextHint属性的type字段值保持一致。
-let condition = 'location'; 
-
-// rootElement是AccessibilityElement的实例。
-rootElement.findElement('textType', condition).then((data: AccessibilityElement[]) => {
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
-});
-```
-
 ## findElementsByAccessibilityHintText
 
 ```TypeScript
@@ -692,11 +573,9 @@ findElementsByAccessibilityHintText(condition: string): Promise<Array<Accessibil
 
 根据提示文本查找元素，将返回accessibilityTextHint属性匹配该文本的所有节点元素。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
-
-<!--Device-AccessibilityElement-findElementsByAccessibilityHintText(condition: string): Promise<Array<AccessibilityElement>>--><!--Device-AccessibilityElement-findElementsByAccessibilityHintText(condition: string): Promise<Array<AccessibilityElement>>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -762,13 +641,11 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise<FocusMoveResult>
 ```
 
-查询满足条件的可聚焦节点。使用Promise异步回调。 与[findElementByFocusDirection](#findelementbyfocusdirection)相 比，本方法主要用于查找UI组件；findElementByFocusDirection主要用于查找Web组件。
+查询满足条件的可聚焦节点。使用Promise异步回调。与[findElementByFocusDirection](#findelementbyfocusdirection)相 比，本方法主要用于查找UI组件；findElementByFocusDirection主要用于查找Web组件。
 
 **起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
-
-<!--Device-AccessibilityElement-findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise<FocusMoveResult>--><!--Device-AccessibilityElement-findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise<FocusMoveResult>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -825,8 +702,6 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition, type: FocusR
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AccessibilityElement-findElementsByCondition(rule: FocusRule, condition: FocusCondition, type: FocusRuleType): Promise<FocusMoveResult>--><!--Device-AccessibilityElement-findElementsByCondition(rule: FocusRule, condition: FocusCondition, type: FocusRuleType): Promise<FocusMoveResult>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -889,7 +764,6 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition, type: FocusR
       }]
     })
   }
-// ...
 
 // AccessibilityExtAbility.ets
 
@@ -915,11 +789,9 @@ getChildren(): Promise<Array<AccessibilityElement>>
 
 获取元素的子元素列表。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
-
-<!--Device-AccessibilityElement-getChildren(): Promise<Array<AccessibilityElement>>--><!--Device-AccessibilityElement-getChildren(): Promise<Array<AccessibilityElement>>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -960,14 +832,12 @@ axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) 
 ## getCursorPosition
 
 ```TypeScript
-getCursorPosition(callback: AsyncCallback<int>): void
+getCursorPosition(callback: AsyncCallback<number>): void
 ```
 
 获取文本组件中光标位置。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-getCursorPosition(callback: AsyncCallback<int>): void--><!--Device-AccessibilityElement-getCursorPosition(callback: AsyncCallback<int>): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -977,11 +847,9 @@ getCursorPosition(callback: AsyncCallback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 回调函数。当获取光标位置成功，err为undefined，data为光标在文本中的位置索引；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取光标位置成功，err为undefined，data为光标在文本中的位置索引；否则为错误对象。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -996,32 +864,15 @@ rootElement.getCursorPosition((err: BusinessError, data: number) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// rootElement是AccessibilityElement的实例
-rootElement.getCursorPosition((err: BusinessError | null, data: int | undefined) => {
-  if (err?.code) {
-    console.error(`failed to get cursor position, Code is ${err?.code}, message is ${err?.message}`);
-    return;
-  }
-  console.info(`succeeded in getting cursor position, ${data}`);
-});
-```
-
 ## getCursorPosition
 
 ```TypeScript
-getCursorPosition(): Promise<int>
+getCursorPosition(): Promise<number>
 ```
 
 获取文本组件中光标位置。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-getCursorPosition(): Promise<int>--><!--Device-AccessibilityElement-getCursorPosition(): Promise<int>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1031,11 +882,9 @@ getCursorPosition(): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回当前光标所处位置。 |
+| Promise & lt;number & gt; | Promise对象，返回当前光标所处位置。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1048,19 +897,6 @@ rootElement.getCursorPosition().then((data: number) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// rootElement是AccessibilityElement的实例
-rootElement.getCursorPosition().then((data: int) => {
-  console.info(`succeeded in getting cursor position, ${data}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to get cursor position, Code is ${err.code}, message is ${err.message}`);
-});
-```
-
 ## getParent
 
 ```TypeScript
@@ -1069,11 +905,9 @@ getParent(): Promise<AccessibilityElement>
 
 获取无障碍节点元素的父元素。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
-
-<!--Device-AccessibilityElement-getParent(): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-getParent(): Promise<AccessibilityElement>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1119,11 +953,9 @@ getRoot(): Promise<AccessibilityElement>
 
 获取活动窗口中的根元素。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
-
-<!--Device-AccessibilityElement-getRoot(): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-getRoot(): Promise<AccessibilityElement>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1166,13 +998,11 @@ for (let window of windows) {
 accessibilityFocused?: boolean
 ```
 
-表示元素是否因无障碍目的获得焦点。true表示已获得焦点，false表示未获得焦点。 默认值：false。
+表示元素是否因无障碍目的获得焦点。true表示已获得焦点，false表示未获得焦点。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-accessibilityFocused?: boolean--><!--Device-AccessibilityElement-accessibilityFocused?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1184,13 +1014,11 @@ accessibilityFocused?: boolean
 accessibilityGroup?: boolean
 ```
 
-元素是否为无障碍组。true表示元素是无障碍组，false表示元素不是无障碍组。 默认值：false。
+元素是否为无障碍组。true表示元素是无障碍组，false表示元素不是无障碍组。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-accessibilityGroup?: boolean--><!--Device-AccessibilityElement-accessibilityGroup?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1202,13 +1030,11 @@ accessibilityGroup?: boolean
 accessibilityLevel?: string
 ```
 
-组件的无障碍级别。 'auto'：当前组件由无障碍分组服务和ArkUI进行综合判断组件是否可被辅助功能识别。 'yes'：当前组件可被辅助功能识别。 'no'：当前组件不可被辅助功能识别。 'no-hide-descendants'：当前组件及其所有子组件不可被辅助功能识别。默认值：'auto'。
+组件的无障碍级别。'auto'：当前组件由无障碍分组服务和ArkUI进行综合判断组件是否可被辅助功能识别。'yes'：当前组件可被辅助功能识别。'no'：当前组件不可被辅助功能识别。'no-hide-descendants'：当前组件及其所有子组件不可被辅助功能识别。默认值：'auto'。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-accessibilityLevel?: string--><!--Device-AccessibilityElement-accessibilityLevel?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1217,16 +1043,14 @@ accessibilityLevel?: string
 ## accessibilityNextFocusId
 
 ```TypeScript
-accessibilityNextFocusId?: long
+accessibilityNextFocusId?: number
 ```
 
-下一个要获得焦点的组件的ID。 默认值：-1。
+下一个要获得焦点的组件的ID。默认值：-1。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-accessibilityNextFocusId?: long--><!--Device-AccessibilityElement-accessibilityNextFocusId?: long-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1235,16 +1059,14 @@ accessibilityNextFocusId?: long
 ## accessibilityPreviousFocusId
 
 ```TypeScript
-accessibilityPreviousFocusId?: long
+accessibilityPreviousFocusId?: number
 ```
 
-上一个要获得焦点的组件的ID。 默认值：-1。
+上一个要获得焦点的组件的ID。默认值：-1。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-accessibilityPreviousFocusId?: long--><!--Device-AccessibilityElement-accessibilityPreviousFocusId?: long-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1256,13 +1078,11 @@ accessibilityPreviousFocusId?: long
 accessibilityScrollable?: boolean
 ```
 
-元素是否因无障碍目的而可滚动。优先级高于scrollable，即当accessibilityScrollable与scrollable取值冲突时以accessibilityScrollable为准。 true表示元素可滚动，false表示元素不可滚动。 默认值：false。
+元素是否因无障碍目的而可滚动。优先级高于scrollable，即当accessibilityScrollable与scrollable取值冲突时以accessibilityScrollable为准。true表示元素可滚动，false表示元素不可滚动。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-accessibilityScrollable?: boolean--><!--Device-AccessibilityElement-accessibilityScrollable?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1282,8 +1102,6 @@ accessibilityStateDescription?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AccessibilityElement-accessibilityStateDescription?: string--><!--Device-AccessibilityElement-accessibilityStateDescription?: string-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -1298,9 +1116,7 @@ accessibilityText?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-accessibilityText?: string--><!--Device-AccessibilityElement-accessibilityText?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1316,9 +1132,7 @@ accessibilityVisible?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-accessibilityVisible?: boolean--><!--Device-AccessibilityElement-accessibilityVisible?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1327,18 +1141,16 @@ accessibilityVisible?: boolean
 ## belongTreeId
 
 ```TypeScript
-belongTreeId?: int
+belongTreeId?: number
 ```
 
 表示元素所属的组件树ID。默认值为-1。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AccessibilityElement-belongTreeId?: int--><!--Device-AccessibilityElement-belongTreeId?: int-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1354,9 +1166,7 @@ bundleName?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-bundleName?: string--><!--Device-AccessibilityElement-bundleName?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1368,13 +1178,11 @@ bundleName?: string
 checkable?: boolean
 ```
 
-元素是否可勾选。true表示可勾选，false表示不可勾选。 默认值：false。
+元素是否可勾选。true表示可勾选，false表示不可勾选。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-checkable?: boolean--><!--Device-AccessibilityElement-checkable?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1386,13 +1194,11 @@ checkable?: boolean
 checked?: boolean
 ```
 
-元素是否已勾选。true表示已勾选，false表示未勾选。 默认值：false。
+元素是否已勾选。true表示已勾选，false表示未勾选。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-checked?: boolean--><!--Device-AccessibilityElement-checked?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1401,16 +1207,14 @@ checked?: boolean
 ## childrenIds
 
 ```TypeScript
-childrenIds?: Array<long>
+childrenIds?: Array<number>
 ```
 
 组件的子元素ID列表。默认值：空数组。
 
-**类型：** Array&lt;long&gt;
+**类型：** Array&lt;number&gt;
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-childrenIds?: Array<long>--><!--Device-AccessibilityElement-childrenIds?: Array<long>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1419,18 +1223,16 @@ childrenIds?: Array<long>
 ## childrenTreeId
 
 ```TypeScript
-childrenTreeId?: int
+childrenTreeId?: number
 ```
 
 表示元素的子组件树ID。默认值为-1。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AccessibilityElement-childrenTreeId?: int--><!--Device-AccessibilityElement-childrenTreeId?: int-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1442,13 +1244,11 @@ childrenTreeId?: int
 clickable?: boolean
 ```
 
-元素是否可点击。true表示可点击，false表示不可点击。 默认值：false。
+元素是否可点击。true表示可点击，false表示不可点击。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-clickable?: boolean--><!--Device-AccessibilityElement-clickable?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1464,9 +1264,7 @@ clip?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-clip?: boolean--><!--Device-AccessibilityElement-clip?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1475,16 +1273,14 @@ clip?: boolean
 ## componentId
 
 ```TypeScript
-componentId?: long
+componentId?: number
 ```
 
-元素所属组件的ID。 默认值：-1。
+元素所属组件的ID。默认值：-1。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-componentId?: long--><!--Device-AccessibilityElement-componentId?: long-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1500,9 +1296,7 @@ componentType?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-componentType?: string--><!--Device-AccessibilityElement-componentType?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1518,9 +1312,7 @@ contents?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-contents?: Array<string>--><!--Device-AccessibilityElement-contents?: Array<string>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1529,16 +1321,14 @@ contents?: Array<string>
 ## currentIndex
 
 ```TypeScript
-currentIndex?: int
+currentIndex?: number
 ```
 
-当前项的索引。 默认值：0。
+当前项的索引。默认值：0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-currentIndex?: int--><!--Device-AccessibilityElement-currentIndex?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1554,9 +1344,7 @@ currentItem?: AccessibilityGrid
 
 **类型：** [AccessibilityGrid](arkts-accessibility-accessibilityextensioncontext-accessibilitygrid-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-currentItem?: AccessibilityGrid--><!--Device-AccessibilityElement-currentItem?: AccessibilityGrid-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1576,8 +1364,6 @@ customActions?: Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AccessibilityElement-customActions?: Array<string>--><!--Device-AccessibilityElement-customActions?: Array<string>-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -1592,9 +1378,7 @@ customComponentType?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-customComponentType?: string--><!--Device-AccessibilityElement-customComponentType?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1610,9 +1394,7 @@ description?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-description?: string--><!--Device-AccessibilityElement-description?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1624,13 +1406,11 @@ description?: string
 editable?: boolean
 ```
 
-元素是否可编辑。true表示可编辑，false表示不可编辑。 默认值：false。
+元素是否可编辑。true表示可编辑，false表示不可编辑。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-editable?: boolean--><!--Device-AccessibilityElement-editable?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1639,16 +1419,14 @@ editable?: boolean
 ## endIndex
 
 ```TypeScript
-endIndex?: int
+endIndex?: number
 ```
 
-屏幕上显示的最后一个列表项的索引。 默认值：0。
+屏幕上显示的最后一个列表项的索引。默认值：0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-endIndex?: int--><!--Device-AccessibilityElement-endIndex?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1664,9 +1442,7 @@ error?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-error?: string--><!--Device-AccessibilityElement-error?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1682,9 +1458,7 @@ extraInfo?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-extraInfo?: string--><!--Device-AccessibilityElement-extraInfo?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1696,13 +1470,11 @@ extraInfo?: string
 focusable?: boolean
 ```
 
-元素是否可获得焦点（此处指无障碍焦点，与输入焦点不同）。true表示可获得焦点，false表示不可获得焦点。 默认值：false。
+元素是否可获得焦点（此处指无障碍焦点，与输入焦点不同）。true表示可获得焦点，false表示不可获得焦点。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-focusable?: boolean--><!--Device-AccessibilityElement-focusable?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1718,9 +1490,7 @@ hintText?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-hintText?: string--><!--Device-AccessibilityElement-hintText?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1736,9 +1506,7 @@ hotArea?: Rect
 
 **类型：** [Rect](arkts-accessibility-accessibilityextensioncontext-rect-i.md)
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-hotArea?: Rect--><!--Device-AccessibilityElement-hotArea?: Rect-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1747,16 +1515,14 @@ hotArea?: Rect
 ## inputType
 
 ```TypeScript
-inputType?: int
+inputType?: number
 ```
 
-输入文本的类型，不同数值对应不同的输入模式：0表示无特定类型；1表示文本；2表示邮箱；3表示日期；4表示时间；5表示数字；6表示密码；7表示电话号码；8表示用户名；9表示新密码。 默认值：0。
+输入文本的类型，不同数值对应不同的输入模式：0表示无特定类型；1表示文本；2表示邮箱；3表示日期；4表示时间；5表示数字；6表示密码；7表示电话号码；8表示用户名；9表示新密码。默认值：0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-inputType?: int--><!--Device-AccessibilityElement-inputType?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1772,9 +1538,7 @@ inspectorKey?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-inspectorKey?: string--><!--Device-AccessibilityElement-inspectorKey?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1786,13 +1550,11 @@ inspectorKey?: string
 isActive?: boolean
 ```
 
-元素是否处于活动状态。true表示活动状态，false表示非活动状态。 默认值：true。
+元素是否处于活动状态。true表示活动状态，false表示非活动状态。默认值：true。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-isActive?: boolean--><!--Device-AccessibilityElement-isActive?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1804,13 +1566,11 @@ isActive?: boolean
 isEnable?: boolean
 ```
 
-元素是否启用。true表示启用，false表示未启用。 默认值：false。
+元素是否启用。true表示启用，false表示未启用。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-isEnable?: boolean--><!--Device-AccessibilityElement-isEnable?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1830,8 +1590,6 @@ isEssential?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AccessibilityElement-isEssential?: boolean--><!--Device-AccessibilityElement-isEssential?: boolean-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -1842,13 +1600,11 @@ isEssential?: boolean
 isFocused?: boolean
 ```
 
-表示元素是否已获得焦点（此处指无障碍焦点，与输入焦点不同）。true表示已获得焦点，false表示未获得焦点。 默认值：false。
+表示元素是否已获得焦点（此处指无障碍焦点，与输入焦点不同）。true表示已获得焦点，false表示未获得焦点。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-isFocused?: boolean--><!--Device-AccessibilityElement-isFocused?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1860,13 +1616,11 @@ isFocused?: boolean
 isHint?: boolean
 ```
 
-元素是否为提示信息。true表示元素是提示信息，false表示非提示信息。 默认值：false。
+元素是否为提示信息。true表示元素是提示信息，false表示非提示信息。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-isHint?: boolean--><!--Device-AccessibilityElement-isHint?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1878,13 +1632,11 @@ isHint?: boolean
 isPassword?: boolean
 ```
 
-元素是否为密码。true表示元素是密码，false表示不是密码。 默认值：false。
+元素是否为密码。true表示元素是密码，false表示不是密码。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-isPassword?: boolean--><!--Device-AccessibilityElement-isPassword?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1896,13 +1648,11 @@ isPassword?: boolean
 isVisible?: boolean
 ```
 
-元素是否可见。true表示元素可见，false表示元素不可见。 默认值：false。
+元素是否可见。true表示元素可见，false表示元素不可见。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-isVisible?: boolean--><!--Device-AccessibilityElement-isVisible?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1911,16 +1661,14 @@ isVisible?: boolean
 ## itemCount
 
 ```TypeScript
-itemCount?: int
+itemCount?: number
 ```
 
-项目总数。 默认值：0。
+项目总数。默认值：0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-itemCount?: int--><!--Device-AccessibilityElement-itemCount?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1936,9 +1684,7 @@ lastContent?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-lastContent?: string--><!--Device-AccessibilityElement-lastContent?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1947,16 +1693,14 @@ lastContent?: string
 ## layer
 
 ```TypeScript
-layer?: int
+layer?: number
 ```
 
 元素的显示层级。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-layer?: int--><!--Device-AccessibilityElement-layer?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1968,13 +1712,11 @@ layer?: int
 longClickable?: boolean
 ```
 
-元素是否可长按。true表示可长按，false表示不可长按。 默认值：false。
+元素是否可长按。true表示可长按，false表示不可长按。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-longClickable?: boolean--><!--Device-AccessibilityElement-longClickable?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1983,16 +1725,14 @@ longClickable?: boolean
 ## mainWindowId
 
 ```TypeScript
-mainWindowId?: int
+mainWindowId?: number
 ```
 
 组件的主窗口ID。默认值：-1。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-mainWindowId?: int--><!--Device-AccessibilityElement-mainWindowId?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2001,16 +1741,14 @@ mainWindowId?: int
 ## navDestinationId
 
 ```TypeScript
-navDestinationId?: long
+navDestinationId?: number
 ```
 
 组件的导航目标ID。默认值：-1。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-navDestinationId?: long--><!--Device-AccessibilityElement-navDestinationId?: long-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2019,16 +1757,14 @@ navDestinationId?: long
 ## offset
 
 ```TypeScript
-offset?: double
+offset?: number
 ```
 
-内容区域相对于可滚动组件（如List和Grid）顶部坐标的像素偏移量，单位为像素（px）。 默认值：0。
+内容区域相对于可滚动组件（如List和Grid）顶部坐标的像素偏移量，单位为像素（px）。默认值：0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-offset?: double--><!--Device-AccessibilityElement-offset?: double-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2037,16 +1773,14 @@ offset?: double
 ## pageId
 
 ```TypeScript
-pageId?: int
+pageId?: number
 ```
 
-页面ID。 默认值：-1。
+页面ID。默认值：-1。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-pageId?: int--><!--Device-AccessibilityElement-pageId?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2055,16 +1789,14 @@ pageId?: int
 ## parentId
 
 ```TypeScript
-parentId?: long
+parentId?: number
 ```
 
 组件的父元素ID。默认值：-1。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-parentId?: long--><!--Device-AccessibilityElement-parentId?: long-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2076,13 +1808,11 @@ parentId?: long
 pluralLineSupported?: boolean
 ```
 
-表示元素是否支持多行文本。true表示支持，false表示不支持。 默认值：false。
+表示元素是否支持多行文本。true表示支持，false表示不支持。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-pluralLineSupported?: boolean--><!--Device-AccessibilityElement-pluralLineSupported?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2098,9 +1828,7 @@ rect?: Rect
 
 **类型：** [Rect](arkts-accessibility-accessibilityextensioncontext-rect-i.md)
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-rect?: Rect--><!--Device-AccessibilityElement-rect?: Rect-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2116,9 +1844,7 @@ resourceName?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-resourceName?: string--><!--Device-AccessibilityElement-resourceName?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2134,9 +1860,7 @@ screenRect?: Rect
 
 **类型：** [Rect](arkts-accessibility-accessibilityextensioncontext-rect-i.md)
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-screenRect?: Rect--><!--Device-AccessibilityElement-screenRect?: Rect-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2148,13 +1872,11 @@ screenRect?: Rect
 scrollable?: boolean
 ```
 
-元素是否可滚动。true表示元素可滚动，false表示不可滚动。当与accessibilityScrollable取值冲突时，以accessibilityScrollable为准。 默认值：false。
+元素是否可滚动。true表示元素可滚动，false表示不可滚动。当与accessibilityScrollable取值冲突时，以accessibilityScrollable为准。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-scrollable?: boolean--><!--Device-AccessibilityElement-scrollable?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2166,13 +1888,11 @@ scrollable?: boolean
 selected?: boolean
 ```
 
-元素是否已选中。true表示已选中，false表示未选中。 默认值：false。
+元素是否已选中。true表示已选中，false表示未选中。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-selected?: boolean--><!--Device-AccessibilityElement-selected?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2192,8 +1912,6 @@ sourceType?: AccessibilitySourceType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AccessibilityElement-sourceType?: AccessibilitySourceType--><!--Device-AccessibilityElement-sourceType?: AccessibilitySourceType-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -2208,9 +1926,7 @@ spans?: AccessibilitySpan[]
 
 **类型：** [AccessibilitySpan](arkts-accessibility-accessibilityextensioncontext-accessibilityspan-i-sys.md)[]
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-spans?: AccessibilitySpan[]--><!--Device-AccessibilityElement-spans?: AccessibilitySpan[]-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2219,16 +1935,14 @@ spans?: AccessibilitySpan[]
 ## startIndex
 
 ```TypeScript
-startIndex?: int
+startIndex?: number
 ```
 
-屏幕上第一个列表项的索引。 默认值：0。
+屏幕上第一个列表项的索引。默认值：0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-startIndex?: int--><!--Device-AccessibilityElement-startIndex?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2244,9 +1958,7 @@ supportedActionNames?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-supportedActionNames?: Array<string>--><!--Device-AccessibilityElement-supportedActionNames?: Array<string>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2262,9 +1974,7 @@ text?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-text?: string--><!--Device-AccessibilityElement-text?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2273,16 +1983,14 @@ text?: string
 ## textLengthLimit
 
 ```TypeScript
-textLengthLimit?: int
+textLengthLimit?: number
 ```
 
 元素的最大文本长度。默认值：0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-textLengthLimit?: int--><!--Device-AccessibilityElement-textLengthLimit?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2294,13 +2002,11 @@ textLengthLimit?: int
 textMoveUnit?: accessibility.TextMoveUnit
 ```
 
-文本朗读时的移动单位。 默认值：char。
+文本朗读时的移动单位。默认值：char。
 
 **类型：** accessibility.TextMoveUnit
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-textMoveUnit?: accessibility.TextMoveUnit--><!--Device-AccessibilityElement-textMoveUnit?: accessibility.TextMoveUnit-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2316,9 +2022,7 @@ textType?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-textType?: string--><!--Device-AccessibilityElement-textType?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2334,9 +2038,7 @@ triggerAction?: AccessibilityAction
 
 **类型：** [AccessibilityAction](arkts-accessibility-accessibility-accessibilityaction-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-triggerAction?: AccessibilityAction--><!--Device-AccessibilityElement-triggerAction?: AccessibilityAction-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2352,9 +2054,7 @@ type?: WindowType
 
 **类型：** [WindowType](arkts-accessibility-windowtype-t.md)
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-type?: WindowType--><!--Device-AccessibilityElement-type?: WindowType-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2363,16 +2063,14 @@ type?: WindowType
 ## valueMax
 
 ```TypeScript
-valueMax?: double
+valueMax?: number
 ```
 
-最大值。 默认值：0。
+最大值。默认值：0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-valueMax?: double--><!--Device-AccessibilityElement-valueMax?: double-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2381,16 +2079,14 @@ valueMax?: double
 ## valueMin
 
 ```TypeScript
-valueMin?: double
+valueMin?: number
 ```
 
-最小值。 默认值：0。
+最小值。默认值：0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-valueMin?: double--><!--Device-AccessibilityElement-valueMin?: double-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2399,16 +2095,14 @@ valueMin?: double
 ## valueNow
 
 ```TypeScript
-valueNow?: double
+valueNow?: number
 ```
 
-当前值。 默认值：0。
+当前值。默认值：0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-valueNow?: double--><!--Device-AccessibilityElement-valueNow?: double-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2417,18 +2111,15 @@ valueNow?: double
 ## windowId
 
 ```TypeScript
-windowId?: int
+windowId?: number
 ```
 
-窗口ID。 默认值：-1。
+窗口ID。默认值：-1。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityElement-windowId?: int--><!--Device-AccessibilityElement-windowId?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
-

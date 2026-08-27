@@ -2,9 +2,7 @@
 
 表示区域信息。
 
-**起始版本：** 23
-
-<!--Device-image-interface Region--><!--Device-image-interface Region-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -24,53 +22,46 @@ size: Size
 
 **类型：** Size
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-Region-size: Size--><!--Device-Region-size: Size-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## x
 
 ```TypeScript
-x: int
+x: number
 ```
 
 区域左上角横坐标。单位：像素（px）。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-Region-x: int--><!--Device-Region-x: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## y
 
 ```TypeScript
-y: int
+y: number
 ```
 
 区域左上角纵坐标。单位：像素（px）。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Region-y: int--><!--Device-Region-y: int-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
-

@@ -12,8 +12,6 @@ Swiper滑动时触发的回调，参数可参考[SwiperContentTransitionProxy](a
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type ContentDidScrollCallback = (selectedIndex: number, index: number, position: number, mainAxisLength: number) => void--><!--Device-unnamed-declare type ContentDidScrollCallback = (selectedIndex: number, index: number, position: number, mainAxisLength: number) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -24,4 +22,3 @@ Swiper滑动时触发的回调，参数可参考[SwiperContentTransitionProxy](a
 | index | number | 是 | 视窗内页面的索引。 |
 | position | number | 是 | 视窗内页面的索引。 |
 | mainAxisLength | number | 是 | 视窗内页面的索引。 |
-

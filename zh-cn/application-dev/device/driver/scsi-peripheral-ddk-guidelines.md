@@ -1,4 +1,4 @@
-# 开发使用SCSI协议的设备驱动
+# 开发适用SCSI协议的设备驱动
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @zgene94-->
@@ -66,7 +66,7 @@ ScsiPeripheralDDK支持SPC（SCSI Primary Commands）、SBC（SCSI Block Command
 
 ## 环境搭建
 
-请参考[环境准备](environmental-preparation.md)完成开发前的准备工作。
+请参考环境准备完成开发前的准备工作。
 
 ## 开发指导
 
@@ -90,7 +90,7 @@ ScsiPeripheralDDK支持SPC（SCSI Primary Commands）、SBC（SCSI Block Command
 | int32_t OH_ScsiPeripheral_DestroyDeviceMemMap(ScsiPeripheral_DeviceMemMap *devMmap) | 销毁缓冲区。|
 | int32_t OH_ScsiPeripheral_ParseBasicSenseInfo(uint8_t *senseData, uint8_t senseDataLen, ScsiPeripheral_BasicSenseInfo *senseInfo) | 解析基本的sense data，包括Information、Command specific information、Sense key specific字段。 |
 
-详细的接口说明请参考[ScsiPeripheralDDK/apis-driverdevelopment-kit/capi-scsiperipheralddk.md)。
+详细的接口说明请参考ScsiPeripheralDDK。
 
 ### 开发步骤
 

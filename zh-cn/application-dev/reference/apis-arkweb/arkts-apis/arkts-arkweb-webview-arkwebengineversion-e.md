@@ -4,8 +4,6 @@ ArkWeb内核版本，请参考 [M114内核在OpenHarmony 6.0系统上的适配�
 
 **起始版本：** 20
 
-<!--Device-webview-enum ArkWebEngineVersion--><!--Device-webview-enum ArkWebEngineVersion-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## SYSTEM_DEFAULT
@@ -17,8 +15,6 @@ SYSTEM_DEFAULT = 0
 系统默认内核（可参考[约束与限制](../../../web/web-component-overview.md#约束与限制)），OpenHarmony 6.0版本默认为M132，OpenHarmony 7.0版本默认为M 144。
 
 **起始版本：** 20
-
-<!--Device-ArkWebEngineVersion-SYSTEM_DEFAULT = 0--><!--Device-ArkWebEngineVersion-SYSTEM_DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -32,8 +28,6 @@ OpenHarmony 6.0版本的遗留内核。开发者可选择此遗留内核，若�
 
 **起始版本：** 20
 
-<!--Device-ArkWebEngineVersion-M114 = 1--><!--Device-ArkWebEngineVersion-M114 = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## M132
@@ -45,8 +39,6 @@ M132 = 2
 OpenHarmony 6.0版本的常青内核（OpenHarmony 7.0版本的遗留内核），M132为OpenHarmony 6.0版本的默认内核。若系统版本上不存在此内核则设置无效，使用系统默认内核。
 
 **起始版本：** 20
-
-<!--Device-ArkWebEngineVersion-M132 = 2--><!--Device-ArkWebEngineVersion-M132 = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -62,8 +54,6 @@ OpenHarmony 7.0版本的常青内核，M144为OpenHarmony 7.0版本的默认内�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ArkWebEngineVersion-M144 = 3--><!--Device-ArkWebEngineVersion-M144 = 3-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ARKWEB_EVERGREEN
@@ -76,7 +66,4 @@ ARKWEB_EVERGREEN = 99999
 
 **起始版本：** 23
 
-<!--Device-ArkWebEngineVersion-ARKWEB_EVERGREEN = 99999--><!--Device-ArkWebEngineVersion-ARKWEB_EVERGREEN = 99999-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

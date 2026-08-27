@@ -2,9 +2,7 @@
 
 资产编辑数据。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-class MediaAssetEditData--><!--Device-photoAccessHelper-class MediaAssetEditData-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -24,9 +22,7 @@ constructor(compatibleFormat: string, formatVersion: string)
 
 构造函数。
 
-**起始版本：** 23
-
-<!--Device-MediaAssetEditData-constructor(compatibleFormat: string, formatVersion: string)--><!--Device-MediaAssetEditData-constructor(compatibleFormat: string, formatVersion: string)-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -43,8 +39,8 @@ constructor(compatibleFormat: string, formatVersion: string)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 14000011 | System inner fail |
 
 **示例**
@@ -63,9 +59,7 @@ compatibleFormat: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MediaAssetEditData-compatibleFormat: string--><!--Device-MediaAssetEditData-compatibleFormat: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -81,9 +75,7 @@ data: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MediaAssetEditData-data: string--><!--Device-MediaAssetEditData-data: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -99,11 +91,8 @@ formatVersion: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MediaAssetEditData-formatVersion: string--><!--Device-MediaAssetEditData-formatVersion: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

@@ -4,6 +4,8 @@
 
 提供远端对象创建、销毁、数据发送、远端对象死亡状态监听等功能的C接口，适用于IPC（Inter-Process Communication，进程间通信）和RPC（Remote Procedure Call，远程过程调用）通信场景。
 
+**引用文件：** <IPCKit/ipc_cparcel.h>
+
 **库：** libipc_capi.so
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -220,7 +222,7 @@ IPC消息发送函数，用于Proxy端向远端Stub发送IPC消息请求，支�
 | [const OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) *proxy | OHIPCRemoteProxy对象指针，不能为空。 |
 | uint32_t code | 用户定义的IPC命令字，范围：[0x01, 0x00ffffff]。超出范围时返回OH_IPC_CODE_OUT_OF_RANGE错误码。建议按业务模块分段定义code值，确保Proxy端和Stub端使用相同的命令字定义。同一服务接口的不同操作使用不同的code值区分。 |
 | [const OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) *data | 请求数据对象指针，不能为空。 |
-| [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) *reply | 回应数据对象指针。同步请求时不能为空，用于存储响应结果；异步请求时可以为空，为空时不存储响应结果。 |
+| [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) *reply | 响应数据对象指针。同步请求时不能为空，用于存储响应结果；异步请求时可以为空，为空时不存储响应结果。 |
 | [const OH_IPC_MessageOption](capi-ohipcremoteobject-oh-ipc-messageoption.md) *option | 消息选项指针，用于配置IPC消息发送模式（同步/异步）。当需要使用异步模式或自定义消息选项时传入此参数。异步请求时必须传入并设置相应的请求模式，同步请求时可以不传或传NULL。不传入或传NULL时默认使用同步模式（OH_IPC_REQUEST_MODE_SYNC）。 |
 
 **返回：**

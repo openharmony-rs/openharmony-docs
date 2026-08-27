@@ -22,6 +22,6 @@ typedef struct JSVM_DeserializeResult__* JSVM_DeserializeResult
 
 **起始版本：** 24
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**相关模块：** JSVM
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
+**所在头文件：** jsvm_types.h

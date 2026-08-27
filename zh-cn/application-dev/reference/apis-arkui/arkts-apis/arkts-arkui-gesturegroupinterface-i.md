@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-unnamed-interface GestureGroupInterface--><!--Device-unnamed-interface GestureGroupInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -13,7 +11,7 @@
 ```TypeScript
 ```
 
-## constructor
+## [[Call]]
 
 ```TypeScript
 (mode: GestureMode, ...gesture: GestureType[]): GestureGroupInterface
@@ -24,8 +22,6 @@
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GestureGroupInterface-(mode: GestureMode, ...gesture: GestureType[]): GestureGroupInterface--><!--Device-GestureGroupInterface-(mode: GestureMode, ...gesture: GestureType[]): GestureGroupInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,19 +50,16 @@ onCancel(event: () => void): GestureGroupInterface
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GestureGroupInterface-onCancel(event: () => void): GestureGroupInterface--><!--Device-GestureGroupInterface-onCancel(event: () => void): GestureGroupInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () =&gt; void | 是 | 手势事件回调函数。 |
+| event | () = & gt; void | 是 | 手势事件回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | [GestureGroupInterface](arkts-arkui-gesturegroupinterface-i.md) |  |
-

@@ -4,18 +4,11 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface OnContextMenuShowEvent--><!--Device-unnamed-declare interface OnContextMenuShowEvent-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## param
@@ -31,8 +24,6 @@ param: WebContextMenuParam
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OnContextMenuShowEvent-param: WebContextMenuParam--><!--Device-OnContextMenuShowEvent-param: WebContextMenuParam-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -50,7 +41,4 @@ result: WebContextMenuResult
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnContextMenuShowEvent-result: WebContextMenuResult--><!--Device-OnContextMenuShowEvent-result: WebContextMenuResult-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

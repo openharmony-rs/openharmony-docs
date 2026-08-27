@@ -1,10 +1,22 @@
 # FrameNode
 
-FrameNode表示组件树的实体节点，支持节点树操作、自定义绘制与布局、位置查询、动画等能力。[NodeController](../../apis-na/arkts-apis/arkts-na-nodecontroller-c.md)可通过 BuilderNode持有的FrameNode将其挂载到NodeContainer上， 也可通过FrameNode获取[RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md)，挂载到其他FrameNode上。适用于需要通过代码动态创建和管理组件节点树的场景，可实现声明式组件无法直接满足的灵活 UI组合与自定义渲染需求。<!--RP2--><!--RP2End--> > **说明：** > > - 当前不支持在预览器中使用FrameNode节点。 > > - FrameNode节点暂不支持拖拽。 > > - FrameNode对象不支持使用JSON序列化。 > > - 在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的场景中调用[FrameNode](#framenode)对象的接口时，建议使用 > [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)的[runScopedTask](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#runscopedtask)接口明确UI > 上下文，参考[执行绑定UI实例的闭包](../../../ui/arkts-global-interface.md#执行绑定ui实例的闭包)示例。 > > - FrameNode的接口中，仅Optional类型的必选参数支持传入null或undefined。
+FrameNode表示组件树的实体节点，支持节点树操作、自定义绘制与布局、位置查询、动画等能力。[NodeController](arkts-arkui-nodecontroller-c.md)可通过 BuilderNode持有的FrameNode将其挂载到NodeContainer上， 也可通过FrameNode获取[RenderNode](arkts-arkui-rendernode-c.md)，挂载到其他FrameNode上。适用于需要通过代码动态创建和管理组件节点树的场景，可实现声明式组件无法直接满足的灵活 UI组合与自定义渲染需求。<!--RP2--><!--RP2End-->
+
+> **说明：**
+> 
+> - 当前不支持在预览器中使用FrameNode节点。
+> 
+> - FrameNode节点暂不支持拖拽。
+> 
+> - FrameNode对象不支持使用JSON序列化。
+> 
+> - 在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的场景中调用[FrameNode](#framenode)对象的接口时，建议使用
+> [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)的[runScopedTask](arkts-arkui-arkui-uicontext-uicontext-c.md#runscopedtask)接口明确UI
+> 上下文，参考[执行绑定UI实例的闭包](../../../ui/arkts-global-interface.md#执行绑定ui实例的闭包)示例。
+> 
+> - FrameNode的接口中，仅[Optional](../arkts-components/arkts-arkui-optional-t.md)类型的必选参数支持传入null或undefined。
 
 **起始版本：** 11
-
-<!--Device-unnamed-export class FrameNode--><!--Device-unnamed-export class FrameNode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,8 +34,6 @@ addComponentContent<T>(content: ComponentContent<T> | ReactiveComponentContent<T
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-addComponentContent<T>(content: ComponentContent<T> | ReactiveComponentContent<T>): void--><!--Device-FrameNode-addComponentContent<T>(content: ComponentContent<T> | ReactiveComponentContent<T>): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -37,125 +47,6 @@ addComponentContent<T>(content: ComponentContent<T> | ReactiveComponentContent<T
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. |
-
-**示例**
-
-ArkTS-Dyn示例：
-
-```TypeScript
-import { NodeController, FrameNode, ComponentContent, typeNode } from '@kit.ArkUI';
-
-@Builder
-function buildText() {
-  Column() {
-    Text('hello')
-      .width(50)
-      .height(50)
-      .backgroundColor(Color.Yellow)
-  }
-}
-
-// 继承NodeController实现自定义UI控制器
-class MyNodeController extends NodeController {
-  makeNode(uiContext: UIContext): FrameNode | null {
-    let node = new FrameNode(uiContext)
-    node.commonAttribute.width(300).height(300).backgroundColor(Color.Red)
-    let col = typeNode.createNode(uiContext, 'Column')
-    col.initialize({ space: 10 })
-    node.appendChild(col)
-    let row = typeNode.createNode(uiContext, 'Row')
-    row.attribute.width(200)
-      .height(200)
-      .borderWidth(1)
-      .borderColor(Color.Black)
-      .backgroundColor(Color.Green)
-    // 创建组件内容
-    let component = new ComponentContent<Object>(uiContext, wrapBuilder(buildText))
-    if (row.isModifiable()) {
-      // 添加新创建的builderText至row中
-      row.addComponentContent(component)
-      col.appendChild(row)
-    }
-    return node
-  }
-}
-
-@Entry
-@Component
-struct FrameNodeTypeTest {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Row() {
-      NodeContainer(this.myNodeController);
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import {
-  Entry,
-  Builder,
-  Column,
-  ColumnOptions,
-  Button,
-  Component,
-  NodeContainer,
-  wrapBuilder,
-  Row,
-  Text,
-  UIContext,
-  Color
-} from '@ohos.arkui.component';
-import { NodeController,FrameNode, typeNode,ComponentContent} from '@ohos.arkui.node';
-
-
-@Builder
-function buildText() {
-  Column() {
-    Text('hello')
-      .width(50)
-      .height(50)
-      .backgroundColor(Color.Yellow)
-  }
-}
-
-class MyNodeController extends NodeController {
-  makeNode(uiContext: UIContext): FrameNode | null {
-    let node = new FrameNode(uiContext)
-    node.commonAttribute.width(300).height(300).backgroundColor(Color.Red)
-    let col = typeNode.createNode(uiContext, "Column")
-    node.appendChild(col)
-    let row4 = typeNode.createNode(uiContext, "Row")
-    row4.attribute.width(200)
-      .height(200)
-      .borderWidth(1)
-      .borderColor(Color.Black)
-      .backgroundColor(Color.Green)
-    let component = new ComponentContent(uiContext, wrapBuilder(buildText))
-    if (row4.isModifiable()) {
-      row4.addComponentContent(component)
-      col.appendChild(row4)
-    }
-    return node
-  }
-}
-
-@Entry
-@Component
-struct FrameNodeTypeTest {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Row() {
-      NodeContainer(this.myNodeController);
-    }
-  }
-}
-```
 
 ## addSupportedUIStates
 
@@ -171,17 +62,15 @@ addSupportedUIStates(uiStates: number, statesChangeHandler: UIStatesChangeHandle
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-addSupportedUIStates(uiStates: number, statesChangeHandler: UIStatesChangeHandler, excludeInner?: boolean): void--><!--Device-FrameNode-addSupportedUIStates(uiStates: number, statesChangeHandler: UIStatesChangeHandler, excludeInner?: boolean): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiStates | number | 是 | 需要处理目标节点的UI状态。 <br>可以通过位或计算同时指定多个状态，如：targetUIStates = UIState.PRESSED  \|  UIState.FOCUSED。 |
+| uiStates | number | 是 | 需要处理目标节点的UI状态。 可以通过位或计算同时指定多个状态，如：targetUIStates = UIState.PRESSED  \|  UIState.FOCUSED。 |
 | statesChangeHandler | [UIStatesChangeHandler](arkts-arkui-uistateschangehandler-t.md) | 是 | 状态变化时的回调函数。 |
-| excludeInner | boolean | 否 | 禁止内部默认状态样式处理的标志，默认值为false。内部默认状态样式处理指组件自身内置的状态样式响应（如Button按下时的默认视觉反馈）。 <br> true表示禁止内部默认状态样式处理，false不禁止内部默认状态样式处理。 |
+| excludeInner | boolean | 否 | 禁止内部默认状态样式处理的标志，默认值为false。内部默认状态样式处理指组件自身内置的状态样式响应（如Button按下时的默认视觉反馈）。 true表示禁止内部默认状态样式处理，false不禁止内部默认状态样式处理。 |
 
 **示例**
 
@@ -198,8 +87,6 @@ adoptChild(child: FrameNode): void
 **起始版本：** 22
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-adoptChild(child: FrameNode): void--><!--Device-FrameNode-adoptChild(child: FrameNode): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -227,7 +114,7 @@ adoptChild(child: FrameNode): void
 appendChild(node: FrameNode): void
 ```
 
-在FrameNode最后一个子节点后添加新的子节点。当前FrameNode如果不可修改，抛出异常信息。[typeNode](#typenode)在appendChild时会校验子组件类型或个数，不满足时抛出异常信息，限制 情况请查看[typeNode](#typenode)描述。
+在FrameNode最后一个子节点后添加新的子节点。当前FrameNode如果不可修改，抛出异常信息。[typeNode](arkts-arkui-typenode-n.md)在appendChild时会校验子组件类型或个数，不满足时抛出异常信息，限制 情况请查看[typeNode](arkts-arkui-typenode-n.md)描述。
 
 **起始版本：** 12
 
@@ -235,22 +122,20 @@ appendChild(node: FrameNode): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-appendChild(node: FrameNode): void--><!--Device-FrameNode-appendChild(node: FrameNode): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 需要添加的FrameNode。<br/> node节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅 BuilderNode通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。<br/> node节点不可以拥有父节 点，否则抛出异常信息。 |
+| node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 需要添加的FrameNode。node节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅 BuilderNode通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。node节点不可以拥有父节 点，否则抛出异常信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. |
-| [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted. "<br>**适用版本：** 22+ |
+| [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted."<br>**适用版本：** 22+ |
 
 **示例**
 
@@ -270,21 +155,19 @@ cancelAnimations(properties: AnimationPropertyType[]): boolean
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-cancelAnimations(properties: AnimationPropertyType[]): boolean--><!--Device-FrameNode-cancelAnimations(properties: AnimationPropertyType[]): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| properties | [AnimationPropertyType](../../apis-na/arkts-apis/arkts-na-enums-animationpropertytype-e.md)[] | 是 | 待取消的动画属性枚举数组。可以一次取消一个节点上的多个属性的动画。 |
+| properties | [AnimationPropertyType](arkts-arkui-animationpropertytype-e.md)[] | 是 | 待取消的动画属性枚举数组。可以一次取消一个节点上的多个属性的动画。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 表示动画是否取消成功。<br/>返回值为true：动画取消成功。<br/>返回值为false：动画取消失败。<br/>可能导致动画取消失败的原因：<br/> 1. 节点已经释放，调用过 [dispose]{ |
+| boolean | 表示动画是否取消成功。 |
 
 **示例**
 
@@ -303,8 +186,6 @@ clearChildren(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-clearChildren(): void--><!--Device-FrameNode-clearChildren(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -332,15 +213,13 @@ FrameNode的构造函数。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-constructor(uiContext: UIContext)--><!--Device-FrameNode-constructor(uiContext: UIContext)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
+| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 
 ## convertPosition
 
@@ -355,8 +234,6 @@ convertPosition(position: Position, targetNode: FrameNode): Position
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-convertPosition(position: Position, targetNode: FrameNode): Position--><!--Device-FrameNode-convertPosition(position: Position, targetNode: FrameNode): Position-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -377,8 +254,8 @@ convertPosition(position: Position, targetNode: FrameNode): Position
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'targetNode' is invalid: it cannot be disposed." |
 | [100024](../errorcode-node.md#100024-节点没有公共祖先节点) | The current FrameNode and the target FrameNode do not have a common ancestor node. |
+| [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'targetNode' is invalid: it cannot be disposed." |
 
 **示例**
 
@@ -464,8 +341,6 @@ convertPositionFromWindow(positionByWindow: Position): Position
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-convertPositionFromWindow(positionByWindow: Position): Position--><!--Device-FrameNode-convertPositionFromWindow(positionByWindow: Position): Position-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -504,8 +379,6 @@ convertPositionToWindow(positionByLocal: Position): Position
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-convertPositionToWindow(positionByLocal: Position): Position--><!--Device-FrameNode-convertPositionToWindow(positionByLocal: Position): Position-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -546,24 +419,22 @@ createAnimation(property: AnimationPropertyType, startValue: Optional<number[]>,
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-createAnimation(property: AnimationPropertyType, startValue: Optional<number[]>, endValue: number[], param: AnimateParam): boolean--><!--Device-FrameNode-createAnimation(property: AnimationPropertyType, startValue: Optional<number[]>, endValue: number[], param: AnimateParam): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| property | [AnimationPropertyType](../../apis-na/arkts-apis/arkts-na-enums-animationpropertytype-e.md) | 是 | 动画属性枚举。 |
-| startValue | Optional&lt;number[]&gt; | 是 | 动画属性的起始值。取值为undefined或数组，取值为数组时数组长度需要和属性枚举匹配。如果为undefined则表示不显式指定动画初值，节点 上一次设置的属性终值为此次动画的起点值。如果取值为数组，<br/>- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度 （°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。&lt; br/&gt;- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，取 值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]，超出范围的值会被钳位到[0, 1]，动画正常创建。<br/>当节点上从未设置过该属性时，需要显式指定startValue才能正常创建动画。当 节点上已经设置过属性（如第二次及之后创建动画），则推荐不显式指定startValue或者显式指定startValue为上一次的终值，表示使用上一次的终值作为新的动画起点，避免起始值跳变。 |
-| endValue | number[] | 是 | 动画属性的终止值。取值为数组，数组长度需要和属性枚举匹配。<br/>- 对于AnimationPropertyType.ROTATION，取值格式为 [rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，取值格式为 [translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩 放比例。<br/>- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]，超出范围的值会被钳位到[0, 1]，动画正常创建。 |
-| param | AnimateParam | 是 | 动画参数。包含时长、动画曲线、结束回调等参数。 |
+| property | [AnimationPropertyType](arkts-arkui-animationpropertytype-e.md) | 是 | 动画属性枚举。 |
+| startValue | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;number[]&gt; | 是 | 动画属性的起始值。取值为undefined或数组，取值为数组时数组长度需要和属性枚举匹配。如果为undefined则表示不显式指定动画初值，节点 上一次设置的属性终值为此次动画的起点值。如果取值为数组，   - 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度 （°），表示绕x、y、z轴的旋转角。   - 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。   - 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。   - 对于AnimationPropertyType.OPACITY，取 值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]，超出范围的值会被钳位到[0, 1]，动画正常创建。   当节点上从未设置过该属性时，需要显式指定startValue才能正常创建动画。当 节点上已经设置过属性（如第二次及之后创建动画），则推荐不显式指定startValue或者显式指定startValue为上一次的终值，表示使用上一次的终值作为新的动画起点，避免起始值跳变。 |
+| endValue | number[] | 是 | 动画属性的终止值。取值为数组，数组长度需要和属性枚举匹配。   - 对于AnimationPropertyType.ROTATION，取值格式为 [rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。   - 对于AnimationPropertyType.TRANSLATION，取值格式为 [translateX, translateY]，单位为px，表示沿x、y轴的平移量。   - 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩 放比例。   - 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]，超出范围的值会被钳位到[0, 1]，动画正常创建。 |
+| param | [AnimateParam](../arkts-components/arkts-arkui-animateparam-i.md) | 是 | 动画参数。包含时长、动画曲线、结束回调等参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 表示动画是否创建成功。<br/>返回值为true：动画创建成功，如果动画参数中设置结束回调，动画结束后会调用结束回调。<br/>返回值为false：动画创建失败，即使动画参数中设置结束回 调，结束回调也不会被调用。<br/>可能导致动画创建失败的原因：<br/> 1. 节点已经释放，调用过[dispose]{ |
+| boolean | 表示动画是否创建成功。 |
 
 **示例**
 
@@ -583,15 +454,13 @@ static createFrameNodes(uiContext: UIContext, count: number): FrameNode[]
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-static createFrameNodes(uiContext: UIContext, count: number): FrameNode[]--><!--Device-FrameNode-static createFrameNodes(uiContext: UIContext, count: number): FrameNode[]-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
+| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | count | number | 是 | 指定创建节点的数量，取值范围为大于零的整型。若给定值小于等于0或不是整数，则返回空数组。 |
 
 **返回值：**
@@ -642,15 +511,21 @@ struct Index {
 dispose(): void
 ```
 
-立即解除当前FrameNode对象对实体FrameNode节点的引用关系。 > **说明：** > > - FrameNode对象调用dispose后，由于不对应任何实体FrameNode节点，在调用部分查询接口([getMeasuredSize](#getmeasuredsize)、 > [getLayoutPosition](#getlayoutposition))的时候会导致应用出现jscrash。 > > - 通过[getUniqueId](#getuniqueid)可以判断当前FrameNode是否对应一个实体FrameNode节点。当UniqueID大于0时表示该对象对应一个实体 > FrameNode节点。
+立即解除当前FrameNode对象对实体FrameNode节点的引用关系。
+
+> **说明：**
+> 
+> - FrameNode对象调用dispose后，由于不对应任何实体FrameNode节点，在调用部分查询接口([getMeasuredSize](#getmeasuredsize)、
+> [getLayoutPosition](#getlayoutposition))的时候会导致应用出现jscrash。
+> 
+> - 通过[getUniqueId](#getuniqueid)可以判断当前FrameNode是否对应一个实体FrameNode节点。当UniqueID大于0时表示该对象对应一个实体
+> FrameNode节点。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-dispose(): void--><!--Device-FrameNode-dispose(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -755,8 +630,6 @@ disposeTree(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-disposeTree(): void--><!--Device-FrameNode-disposeTree(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -953,21 +826,19 @@ getChild(index: number): FrameNode | null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getChild(index: number): FrameNode | null--><!--Device-FrameNode-getChild(index: number): FrameNode | null-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 需要查询的子节点的序列号。<br/>index取值范围为[0, +∞)，若当前节点有n个子节点，index取值有效范围为[0, n-1]。 |
+| index | number | 是 | 需要查询的子节点的序列号。index取值范围为[0, +∞)，若当前节点有n个子节点，index取值有效范围为[0, n-1]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-arkui-framenode-c.md) | 子节点。若该FrameNode不包含所查询的子节点，则返回空对象null。 |
+| [FrameNode](arkts-arkui-framenode-c.md) \| null | 子节点。若该FrameNode不包含所查询的子节点，则返回空对象null。 |
 
 **示例**
 
@@ -987,22 +858,20 @@ getChild(index: number, expandMode?: ExpandMode): FrameNode | null
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getChild(index: number, expandMode?: ExpandMode): FrameNode | null--><!--Device-FrameNode-getChild(index: number, expandMode?: ExpandMode): FrameNode | null-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 需要查询的子节点的序列号。<br/>index取值范围为[0, +∞)，若当前节点有n个子节点，index取值有效范围为[0, n-1]。 |
-| expandMode | [ExpandMode](arkts-arkui-framenode-expandmode-e.md) | 否 | 指定子节点展开模式。<br/>默认值：ExpandMode.EXPAND |
+| index | number | 是 | 需要查询的子节点的序列号。index取值范围为[0, +∞)，若当前节点有n个子节点，index取值有效范围为[0, n-1]。 |
+| expandMode | [ExpandMode](arkts-arkui-framenode-expandmode-e.md) | 否 | 指定子节点展开模式。默认值：ExpandMode.EXPAND |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-arkui-framenode-c.md) | 子节点。若该FrameNode不包含所查询的子节点，则返回空对象null。 |
+| [FrameNode](arkts-arkui-framenode-c.md) \| null | 子节点。若该FrameNode不包含所查询的子节点，则返回空对象null。 |
 
 **示例**
 
@@ -1022,8 +891,6 @@ getChildrenCount(): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getChildrenCount(): number--><!--Device-FrameNode-getChildrenCount(): number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -1039,7 +906,7 @@ getChildrenCount(): number
 ## getChildrenCount
 
 ```TypeScript
-getChildrenCount(countMode?: ChildrenCountMode): int
+getChildrenCount(countMode?: ChildrenCountMode): number
 ```
 
 根据指定的计数模式获取当前FrameNode的子节点数量。
@@ -1049,8 +916,6 @@ getChildrenCount(countMode?: ChildrenCountMode): int
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-getChildrenCount(countMode?: ChildrenCountMode): int--><!--Device-FrameNode-getChildrenCount(countMode?: ChildrenCountMode): int-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1064,16 +929,14 @@ getChildrenCount(countMode?: ChildrenCountMode): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | Returns the number of children of the current FrameNode based on the count mode. |
+| number | Returns the number of children of the current FrameNode based on the count mode. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { NodeController, FrameNode, UIContext, BuilderNode, ChildrenCountMode, LengthUnit } from '@kit.ArkUI';
 
-const TEST_TAG: string = 'FrameNode '
+const TEST_TAG: string = 'FrameNode ';
 
 // BasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新
 class BasicDataSource implements IDataSource {
@@ -1307,8 +1170,6 @@ getCrossLanguageOptions(): CrossLanguageOptions
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getCrossLanguageOptions(): CrossLanguageOptions--><!--Device-FrameNode-getCrossLanguageOptions(): CrossLanguageOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -1335,8 +1196,6 @@ getCustomProperty(name: string): Object | undefined
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getCustomProperty(name: string): Object | undefined--><!--Device-FrameNode-getCustomProperty(name: string): Object | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1349,7 +1208,7 @@ getCustomProperty(name: string): Object | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| Object | 自定义属性的值。 |
+| Object \| undefined | 自定义属性的值。 |
 
 **示例**
 
@@ -1369,15 +1228,13 @@ getFirstChild(): FrameNode | null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getFirstChild(): FrameNode | null--><!--Device-FrameNode-getFirstChild(): FrameNode | null-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-arkui-framenode-c.md) | 首个子节点。若该FrameNode不包含子节点，则返回空对象null。 |
+| [FrameNode](arkts-arkui-framenode-c.md) \| null | 首个子节点。若该FrameNode不包含子节点，则返回空对象null。 |
 
 **示例**
 
@@ -1396,8 +1253,6 @@ getFirstChildIndexWithoutExpand(): number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-getFirstChildIndexWithoutExpand(): number--><!--Device-FrameNode-getFirstChildIndexWithoutExpand(): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1425,8 +1280,6 @@ getFrameNodeById(id: string): FrameNode | null
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getFrameNodeById(id: string): FrameNode | null--><!--Device-FrameNode-getFrameNodeById(id: string): FrameNode | null-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1439,7 +1292,7 @@ getFrameNodeById(id: string): FrameNode | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-arkui-framenode-c.md) | 以当前节点为根节点，逐层查找所有子节点，返回第一个匹配指定id的节点。若当前节点所有的子节点中都不存在匹配该id的节点，则返回空对象null。 |
+| [FrameNode](arkts-arkui-framenode-c.md) \| null | 以当前节点为根节点，逐层查找所有子节点，返回第一个匹配指定id的节点。若当前节点所有的子节点中都不存在匹配该id的节点，则返回空对象null。 |
 
 **示例**
 
@@ -1499,7 +1352,7 @@ struct Index {
 ## getFrameNodeByUniqueId
 
 ```TypeScript
-getFrameNodeByUniqueId(id: int): FrameNode | null
+getFrameNodeByUniqueId(id: number): FrameNode | null
 ```
 
 以当前节点为根节点，查找并返回指定UniqueID（系统分配的节点唯一标识，该标识可通过[getUniqueId](#getuniqueid)接口获取）的子节点。
@@ -1510,21 +1363,19 @@ getFrameNodeByUniqueId(id: int): FrameNode | null
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getFrameNodeByUniqueId(id: int): FrameNode | null--><!--Device-FrameNode-getFrameNodeByUniqueId(id: int): FrameNode | null-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | int | 是 | 查询的子节点的唯一标识UniqueID。 |
+| id | number | 是 | 查询的子节点的唯一标识UniqueID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-arkui-framenode-c.md) | 以当前节点为根节点，查找到指定UniqueID的子节点。若当前节点无法查找到该UniqueID的子节点，则返回空对象null。 |
+| [FrameNode](arkts-arkui-framenode-c.md) \| null | 以当前节点为根节点，查找到指定UniqueID的子节点。若当前节点无法查找到该UniqueID的子节点，则返回空对象null。 |
 
 **示例**
 
@@ -1596,8 +1447,6 @@ getGlobalPositionOnDisplay(): Position
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getGlobalPositionOnDisplay(): Position--><!--Device-FrameNode-getGlobalPositionOnDisplay(): Position-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -1624,8 +1473,6 @@ getId(): string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getId(): string--><!--Device-FrameNode-getId(): string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -1644,15 +1491,17 @@ getId(): string
 getInspectorInfo(): Object
 ```
 
-获取节点的结构信息，该信息和DevEco Studio内置<!--RP1-->ArkUI Inspector<!--RP1End-->工具里面的一致。 > **说明：** > > getInspectorInfo接口用于获取所有节点的信息，作为调试接口使用，频繁调用会导致性能下降。
+获取节点的结构信息，该信息和DevEco Studio内置<!--RP1-->ArkUI Inspector<!--RP1End-->工具里面的一致。
+
+> **说明：**
+> 
+> getInspectorInfo接口用于获取所有节点的信息，作为调试接口使用，频繁调用会导致性能下降。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-getInspectorInfo(): Object--><!--Device-FrameNode-getInspectorInfo(): Object-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1680,21 +1529,19 @@ getInteractionEventBindingInfo(eventType: EventQueryType): InteractionEventBindi
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getInteractionEventBindingInfo(eventType: EventQueryType): InteractionEventBindingInfo | undefined--><!--Device-FrameNode-getInteractionEventBindingInfo(eventType: EventQueryType): InteractionEventBindingInfo | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventType | [EventQueryType](../../apis-na/arkts-apis/arkts-na-enums-eventquerytype-e.md) | 是 | 要查询的交互事件类型。例如EventQueryType.ON_CLICK表示查询点击事件的绑定信息，各枚举值的具体含义请参考 EventQueryType。 |
+| eventType | [EventQueryType](arkts-arkui-eventquerytype-e.md) | 是 | 要查询的交互事件类型。例如EventQueryType.ON_CLICK表示查询点击事件的绑定信息，各枚举值的具体含义请参考 [EventQueryType](arkts-arkui-eventquerytype-e.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [InteractionEventBindingInfo](arkts-arkui-framenode-interactioneventbindinginfo-i.md) | 如果当前节点上绑定了所查询类型的交互事件，则返回一个InteractionEventBindingInfo对象，指示事件绑定 详细信息，如果没有绑定所查询类型的交互事件则返回undefined。 |
+| [InteractionEventBindingInfo](arkts-arkui-framenode-interactioneventbindinginfo-i.md) \| undefined | 如果当前节点上绑定了所查询类型的交互事件，则返回一个InteractionEventBindingInfo对象，指示事件绑定 详细信息，如果没有绑定所查询类型的交互事件则返回undefined。 |
 
 **示例**
 
@@ -1713,8 +1560,6 @@ getLastChildIndexWithoutExpand(): number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-getLastChildIndexWithoutExpand(): number--><!--Device-FrameNode-getLastChildIndexWithoutExpand(): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1742,8 +1587,6 @@ getLayoutPosition(): Position
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getLayoutPosition(): Position--><!--Device-FrameNode-getLayoutPosition(): Position-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -1770,15 +1613,13 @@ getMeasuredSize(): Size
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getMeasuredSize(): Size--><!--Device-FrameNode-getMeasuredSize(): Size-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Size](arkts-arkui-graphics-size-i.md) | 节点测量后的大小，单位为PX。 |
+| Size | 节点测量后的大小，单位为PX。 |
 
 **示例**
 
@@ -1798,15 +1639,13 @@ getNextSibling(): FrameNode | null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getNextSibling(): FrameNode | null--><!--Device-FrameNode-getNextSibling(): FrameNode | null-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-arkui-framenode-c.md) | 当前FrameNode的下一个同级节点。若该FrameNode不包含下一个同级节点，则返回空对象null。 |
+| [FrameNode](arkts-arkui-framenode-c.md) \| null | 当前FrameNode的下一个同级节点。若该FrameNode不包含下一个同级节点，则返回空对象null。 |
 
 **示例**
 
@@ -1826,21 +1665,19 @@ getNodePropertyValue(property: AnimationPropertyType): number[]
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getNodePropertyValue(property: AnimationPropertyType): number[]--><!--Device-FrameNode-getNodePropertyValue(property: AnimationPropertyType): number[]-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| property | [AnimationPropertyType](../../apis-na/arkts-apis/arkts-na-enums-animationpropertytype-e.md) | 是 | 动画属性枚举。 |
+| property | [AnimationPropertyType](arkts-arkui-animationpropertytype-e.md) | 是 | 动画属性枚举。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number[] | 表示FrameNode上的属性值，返回的数组长度与属性枚举相关，异常时返回空数组。<br/>对不同属性枚举的返回值格式：<br/>- 当节点已经释放，调用过 [dispose]{ |
+| number[] | 表示FrameNode上的属性值，返回的数组长度与属性枚举相关，异常时返回空数组。 |
 
 **示例**
 
@@ -1859,8 +1696,6 @@ getNodeType(): string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-getNodeType(): string--><!--Device-FrameNode-getNodeType(): string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1888,8 +1723,6 @@ getOpacity(): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getOpacity(): number--><!--Device-FrameNode-getOpacity(): number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -1916,15 +1749,13 @@ getParent(): FrameNode | null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getParent(): FrameNode | null--><!--Device-FrameNode-getParent(): FrameNode | null-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-arkui-framenode-c.md) | 当前FrameNode的父节点。若该FrameNode不包含父节点，则返回空对象null。 |
+| [FrameNode](arkts-arkui-framenode-c.md) \| null | 当前FrameNode的父节点。若该FrameNode不包含父节点，则返回空对象null。 |
 
 **示例**
 
@@ -1943,8 +1774,6 @@ getPositionToParent(): Position
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-getPositionToParent(): Position--><!--Device-FrameNode-getPositionToParent(): Position-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2032,8 +1861,6 @@ getPositionToParentWithTransform(): Position
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getPositionToParentWithTransform(): Position--><!--Device-FrameNode-getPositionToParentWithTransform(): Position-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -2119,8 +1946,6 @@ getPositionToScreen(): Position
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-getPositionToScreen(): Position--><!--Device-FrameNode-getPositionToScreen(): Position-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2208,8 +2033,6 @@ getPositionToScreenWithTransform(): Position
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getPositionToScreenWithTransform(): Position--><!--Device-FrameNode-getPositionToScreenWithTransform(): Position-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -2296,8 +2119,6 @@ getPositionToWindow(): Position
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getPositionToWindow(): Position--><!--Device-FrameNode-getPositionToWindow(): Position-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -2382,8 +2203,6 @@ getPositionToWindowWithTransform(): Position
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-getPositionToWindowWithTransform(): Position--><!--Device-FrameNode-getPositionToWindowWithTransform(): Position-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2470,15 +2289,13 @@ getPreviousSibling(): FrameNode | null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getPreviousSibling(): FrameNode | null--><!--Device-FrameNode-getPreviousSibling(): FrameNode | null-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-arkui-framenode-c.md) | 当前FrameNode的上一个同级节点。若该FrameNode不包含上一个同级节点，则返回空对象null。 |
+| [FrameNode](arkts-arkui-framenode-c.md) \| null | 当前FrameNode的上一个同级节点。若该FrameNode不包含上一个同级节点，则返回空对象null。 |
 
 **示例**
 
@@ -2490,7 +2307,7 @@ getPreviousSibling(): FrameNode | null
 getRenderNode(): RenderNode | null
 ```
 
-获取FrameNode中持有的[RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md)。
+获取FrameNode中持有的[RenderNode](arkts-arkui-rendernode-c.md)。
 
 **起始版本：** 11
 
@@ -2498,15 +2315,13 @@ getRenderNode(): RenderNode | null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getRenderNode(): RenderNode | null--><!--Device-FrameNode-getRenderNode(): RenderNode | null-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md) | 一个RenderNode对象。若该FrameNode不包含RenderNode，则返回空对象null。如果当前FrameNode为声明式组件创建的节点，则返回null。 |
+| [RenderNode](arkts-arkui-rendernode-c.md) \| null | 一个RenderNode对象。若该FrameNode不包含RenderNode，则返回空对象null。如果当前FrameNode为声明式组件创建的节点，则返回null。 |
 
 **示例**
 
@@ -2558,8 +2373,6 @@ getUniqueId(): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getUniqueId(): number--><!--Device-FrameNode-getUniqueId(): number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -2585,8 +2398,6 @@ getUserConfigBorderWidth(): Edges<LengthMetrics>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-getUserConfigBorderWidth(): Edges<LengthMetrics>--><!--Device-FrameNode-getUserConfigBorderWidth(): Edges<LengthMetrics>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2614,8 +2425,6 @@ getUserConfigMargin(): Edges<LengthMetrics>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getUserConfigMargin(): Edges<LengthMetrics>--><!--Device-FrameNode-getUserConfigMargin(): Edges<LengthMetrics>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -2641,8 +2450,6 @@ getUserConfigPadding(): Edges<LengthMetrics>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-getUserConfigPadding(): Edges<LengthMetrics>--><!--Device-FrameNode-getUserConfigPadding(): Edges<LengthMetrics>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2670,8 +2477,6 @@ getUserConfigSize(): SizeT<LengthMetrics>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-getUserConfigSize(): SizeT<LengthMetrics>--><!--Device-FrameNode-getUserConfigSize(): SizeT<LengthMetrics>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -2690,7 +2495,7 @@ getUserConfigSize(): SizeT<LengthMetrics>
 insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 ```
 
-在FrameNode指定子节点之后添加新的子节点。当前FrameNode如果不可修改，抛出异常信息。[typeNode](#typenode)在insertChildAfter时会校验子组件类型或个数，不满足时抛出异常信 息，限制情况请查看[typeNode](#typenode)描述。
+在FrameNode指定子节点之后添加新的子节点。当前FrameNode如果不可修改，抛出异常信息。[typeNode](arkts-arkui-typenode-n.md)在insertChildAfter时会校验子组件类型或个数，不满足时抛出异常信 息，限制情况请查看[typeNode](arkts-arkui-typenode-n.md)描述。
 
 **起始版本：** 12
 
@@ -2698,15 +2503,13 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-insertChildAfter(child: FrameNode, sibling: FrameNode | null): void--><!--Device-FrameNode-insertChildAfter(child: FrameNode, sibling: FrameNode | null): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| child | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 需要添加的子节点。<br/>child节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅 BuilderNode通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。<br/> child节点不可以拥有父 节点，否则抛出异常信息。 |
+| child | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 需要添加的子节点。child节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅 BuilderNode通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。child节点不可以拥有父 节点，否则抛出异常信息。 |
 | sibling | [FrameNode](arkts-arkui-framenode-c.md) \| null | 是 | 新节点将插入到该节点之后。若该参数设置为空，则新节点将插入到首个子节点之前。 |
 
 **错误码：**
@@ -2714,7 +2517,7 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. |
-| [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted. "<br>**适用版本：** 22+ |
+| [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted."<br>**适用版本：** 22+ |
 
 **示例**
 
@@ -2734,8 +2537,6 @@ invalidate(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-invalidate(): void--><!--Device-FrameNode-invalidate(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## invalidateAttributes
@@ -2744,15 +2545,13 @@ invalidate(): void
 invalidateAttributes(): void
 ```
 
-在当前帧触发节点属性更新。 当前节点的属性在构建阶段后被修改，这些改动不会立即生效，而是延迟到下一帧统一处理。 此功能强制当前帧内即时节点更新，确保同步应用渲染效果。
+在当前帧触发节点属性更新。当前节点的属性在构建阶段后被修改，这些改动不会立即生效，而是延迟到下一帧统一处理。此功能强制当前帧内即时节点更新，确保同步应用渲染效果。
 
 **起始版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-invalidateAttributes(): void--><!--Device-FrameNode-invalidateAttributes(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2874,15 +2673,13 @@ isAttached(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-isAttached(): boolean--><!--Device-FrameNode-isAttached(): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 节点是否被挂载到主节点树上。<br/>true表示节点被挂载到主节点树上，false表示节点不是被挂载到主节点树上。 |
+| boolean | 节点是否被挂载到主节点树上。 |
 
 **示例**
 
@@ -2902,15 +2699,13 @@ isClipToFrame(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-isClipToFrame(): boolean--><!--Device-FrameNode-isClipToFrame(): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 节点是否剪裁到组件区域。<br/>true表示节点剪裁到组件区域，false表示节点未剪裁到组件区域。 |
+| boolean | 节点是否剪裁到组件区域。 |
 
 **示例**
 
@@ -2930,8 +2725,6 @@ isDisposed(): boolean
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-isDisposed(): boolean--><!--Device-FrameNode-isDisposed(): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -2943,6 +2736,8 @@ isDisposed(): boolean
 **示例**
 
 请参考检验FrameNode是否有效示例。
+
+请参考检验NodeAdapter是否有效示例。
 
 ## isInRenderState
 
@@ -2958,15 +2753,13 @@ isInRenderState(): boolean
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-isInRenderState(): boolean--><!--Device-FrameNode-isInRenderState(): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 节点是否处于渲染状态。<br/>true：处于渲染状态；false：不处于渲染状态。 |
+| boolean | 节点是否处于渲染状态。 |
 
 **示例**
 
@@ -3049,15 +2842,13 @@ isModifiable(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-isModifiable(): boolean--><!--Device-FrameNode-isModifiable(): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 判断当前节点是否可修改。<br/>true表示当前节点可修改，false表示当前节点不可修改。<br/>当节点为 [自定义组件节点](../../../ui/arkts-user-defined-node.md#自定义组件节点-framenode)中的系统组件代理节点或节点已经 [dispose]{ |
+| boolean | 判断当前节点是否可修改。 |
 
 **示例**
 
@@ -3077,15 +2868,13 @@ isOnMainTree(): boolean
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-isOnMainTree(): boolean--><!--Device-FrameNode-isOnMainTree(): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 节点是否被挂载到主节点树上。<br/>true表示节点被挂载到主节点树上，false表示节点没有被挂载到主节点树上。 |
+| boolean | 节点是否被挂载到主节点树上。 |
 
 **错误码：**
 
@@ -3628,15 +3417,13 @@ isTransferred(): boolean
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-isTransferred(): boolean--><!--Device-FrameNode-isTransferred(): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回FrameNode是否通过transfer.transferStatic或transfer.transferDynamic方法创建。<br/>true：FrameNode通过 transfer.transferStatic或transfer.transferDynamic方法创建。<br/>false：FrameNode不通过transfer.transferStatic或 transfer.transferDynamic方法创建。 |
+| boolean | 返回FrameNode是否通过transfer.transferStatic或transfer.transferDynamic方法创建。 |
 
 ## isVisible
 
@@ -3644,7 +3431,11 @@ isTransferred(): boolean
 isVisible(): boolean
 ```
 
-获取节点是否可见。 > **说明：** > > 根据组件设置的visibility属性值判断该节点是否可见。
+获取节点是否可见。
+
+> **说明：**
+> 
+> 根据组件设置的visibility属性值判断该节点是否可见。
 
 **起始版本：** 12
 
@@ -3652,15 +3443,13 @@ isVisible(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-isVisible(): boolean--><!--Device-FrameNode-isVisible(): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 节点是否可见。<br/>true表示节点可见，false表示节点不可见。 |
+| boolean | 节点是否可见。 |
 
 **示例**
 
@@ -3679,8 +3468,6 @@ layout(position: Position): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-layout(position: Position): void--><!--Device-FrameNode-layout(position: Position): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3708,8 +3495,6 @@ measure(constraint: LayoutConstraint): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-measure(constraint: LayoutConstraint): void--><!--Device-FrameNode-measure(constraint: LayoutConstraint): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -3728,7 +3513,16 @@ measure(constraint: LayoutConstraint): void
 moveTo(targetParent: FrameNode, index?: number): void
 ```
 
-将当前FrameNode移动到目标FrameNode的指定位置。当前FrameNode如果不可修改，抛出异常信息。targetParent为[typeNode](#typenode)时会校验子组件类型或个数，不满足时抛出 异常信息，限制情况请查看[typeNode](#typenode)描述。 > **说明：** > > 当前仅支持以下类型的[TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)进行移动操作：[Stack](arkts-arkui-typenode-stack-t.md)、 > [XComponent](arkts-arkui-typenode-xcomponent-t.md)。对于其他类型的节点，移动操作不会生效。 > > 当前仅支持根节点为以下类型组件的[BuilderNode](arkts-arkui-buildernode-c.md)进行移动操作： > Stack、XComponent、 > EmbeddedComponent。对于其他类型的组件，移动操作不会生效。
+将当前FrameNode移动到目标FrameNode的指定位置。当前FrameNode如果不可修改，抛出异常信息。targetParent为[typeNode](arkts-arkui-typenode-n.md)时会校验子组件类型或个数，不满足时抛出 异常信息，限制情况请查看[typeNode](arkts-arkui-typenode-n.md)描述。
+
+> **说明：**
+> 
+> 当前仅支持以下类型的[TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)进行移动操作：[Stack](arkts-arkui-typenode-stack-t.md)、
+> [XComponent](arkts-arkui-typenode-xcomponent-t.md)。对于其他类型的节点，移动操作不会生效。
+> 
+> 当前仅支持根节点为以下类型组件的[BuilderNode](arkts-arkui-buildernode-c.md)进行移动操作：
+> Stack、XComponent、
+> EmbeddedComponent。对于其他类型的组件，移动操作不会生效。
 
 **起始版本：** 18
 
@@ -3736,16 +3530,14 @@ moveTo(targetParent: FrameNode, index?: number): void
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-moveTo(targetParent: FrameNode, index?: number): void--><!--Device-FrameNode-moveTo(targetParent: FrameNode, index?: number): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetParent | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 目标父节点。<br/>targetParent节点不可以为声明式创建的节点，即不可修改的FrameNode。若目标父节点不符合规格，则抛出异常信息。 |
-| index | number | 否 | 子节点序列号。当前FrameNode将被添加到目标FrameNode对应序列号的子节点之前，若目标FrameNode有n个节点，index取值范围为[0, n-1]。&lt;br/ &gt;若参数无效或不指定，则添加到目标FrameNode的最后。<br/>默认值：-1 |
+| targetParent | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 目标父节点。targetParent节点不可以为声明式创建的节点，即不可修改的FrameNode。若目标父节点不符合规格，则抛出异常信息。 |
+| index | number | 否 | 子节点序列号。当前FrameNode将被添加到目标FrameNode对应序列号的子节点之前，若目标FrameNode有n个节点，index取值范围为[0, n-1]。 & lt;br/ & gt;若参数无效或不指定，则添加到目标FrameNode的最后。默认值：-1 |
 
 **错误码：**
 
@@ -3764,15 +3556,13 @@ moveTo(targetParent: FrameNode, index?: number): void
 onDraw?(context: DrawContext): void
 ```
 
-FrameNode的自绘制方法，该方法会重写默认绘制方法，在FrameNode进行内容绘制时被调用。 该接口的[DrawContext](arkts-arkui-graphics-drawcontext-c.md)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见 [调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-arktsNode-frameNode.md#调整自定义绘制canvas的变换矩阵)。
+FrameNode的自绘制方法，该方法会重写默认绘制方法，在FrameNode进行内容绘制时被调用。该接口的[DrawContext](arkts-arkui-graphics-drawcontext-c.md)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见 [调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-arktsNode-frameNode.md#调整自定义绘制canvas的变换矩阵)。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-onDraw?(context: DrawContext): void--><!--Device-FrameNode-onDraw?(context: DrawContext): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3800,8 +3590,6 @@ FrameNode的自定义布局方法，该方法会重写默认布局方法，在Fr
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-onLayout(position: Position): void--><!--Device-FrameNode-onLayout(position: Position): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -3827,8 +3615,6 @@ FrameNode的自定义测量方法，该方法会重写默认测量方法，在Fr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-onMeasure(constraint: LayoutConstraint): void--><!--Device-FrameNode-onMeasure(constraint: LayoutConstraint): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3856,8 +3642,6 @@ recycle(): void
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-recycle(): void--><!--Device-FrameNode-recycle(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例**
@@ -3875,8 +3659,6 @@ removeAdoptedChild(child: FrameNode): void
 **起始版本：** 22
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-removeAdoptedChild(child: FrameNode): void--><!--Device-FrameNode-removeAdoptedChild(child: FrameNode): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3912,8 +3694,6 @@ removeChild(node: FrameNode): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-removeChild(node: FrameNode): void--><!--Device-FrameNode-removeChild(node: FrameNode): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -3946,15 +3726,13 @@ removeSupportedUIStates(uiStates: number): void
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-removeSupportedUIStates(uiStates: number): void--><!--Device-FrameNode-removeSupportedUIStates(uiStates: number): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiStates | number | 是 | 需要删除的UI状态。 <br>可以通过位或计算同时指定删除多个状态，如：removeUIStates = UIState.PRESSED  \|  UIState.FOCUSED。 |
+| uiStates | number | 是 | 需要删除的UI状态。 可以通过位或计算同时指定删除多个状态，如：removeUIStates = UIState.PRESSED  \|  UIState.FOCUSED。 |
 
 **示例**
 
@@ -3974,8 +3752,6 @@ reuse(): void
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-reuse(): void--><!--Device-FrameNode-reuse(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例**
@@ -3988,15 +3764,26 @@ reuse(): void
 setCrossLanguageOptions(options: CrossLanguageOptions): void
 ```
 
-设置当前FrameNode的跨ArkTS语言访问选项。例如ArkTS语言创建的节点，设置该节点是否可通过非ArkTS语言进行属性设置，从API版本26.0.0开始支持设置是否可通过非ArkTS语言进行组件树操作。当前 FrameNode如果不可修改或不可设置跨ArkTS语言访问选项，抛出异常信息。 > **说明：** > > 当前仅支持[Scroll](arkts-arkui-typenode-scroll-t.md)、[Swiper](arkts-arkui-typenode-swiper-t.md)、[List](arkts-arkui-typenode-list-t.md)、 > [ListItem](arkts-arkui-typenode-listitem-t.md)、[ListItemGroup](arkts-arkui-typenode-listitemgroup-t.md)、 > [WaterFlow](arkts-arkui-typenode-waterflow-t.md)、[FlowItem](arkts-arkui-typenode-flowitem-t.md)、[Grid](arkts-arkui-typenode-grid-t.md)、 > [GridItem](arkts-arkui-typenode-griditem-t.md)、[TextInput](arkts-arkui-typenode-textinput-t.md)、[TextArea](arkts-arkui-typenode-textarea-t.md)、 > [Column](arkts-arkui-typenode-column-t.md)、[Row](arkts-arkui-typenode-row-t.md)、[Stack](arkts-arkui-typenode-stack-t.md)、 > [Flex](arkts-arkui-typenode-flex-t.md)、[RelativeContainer](arkts-arkui-typenode-relativecontainer-t.md)、 > [Progress](arkts-arkui-typenode-progress-t.md)、[LoadingProgress](arkts-arkui-typenode-loadingprogress-t.md)、 > [Image](arkts-arkui-typenode-image-t.md)、[Button](arkts-arkui-typenode-button-t.md)、[Checkbox](arkts-arkui-typenode-checkbox-t.md)、 > [Radio](arkts-arkui-typenode-radio-t.md)、[Slider](arkts-arkui-typenode-slider-t.md)、[Toggle](arkts-arkui-typenode-toggle-t.md)、 > [XComponent](arkts-arkui-typenode-xcomponent-t.md)类型的[TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)设置跨ArkTS语言访问选项。
+设置当前FrameNode的跨ArkTS语言访问选项。例如ArkTS语言创建的节点，设置该节点是否可通过非ArkTS语言进行属性设置，从API版本26.0.0开始支持设置是否可通过非ArkTS语言进行组件树操作。当前 FrameNode如果不可修改或不可设置跨ArkTS语言访问选项，抛出异常信息。
+
+> **说明：**
+> 
+> 当前仅支持[Scroll](arkts-arkui-typenode-scroll-t.md)、[Swiper](arkts-arkui-typenode-swiper-t.md)、[List](arkts-arkui-typenode-list-t.md)、
+> [ListItem](arkts-arkui-typenode-listitem-t.md)、[ListItemGroup](arkts-arkui-typenode-listitemgroup-t.md)、
+> [WaterFlow](arkts-arkui-typenode-waterflow-t.md)、[FlowItem](arkts-arkui-typenode-flowitem-t.md)、[Grid](arkts-arkui-typenode-grid-t.md)、
+> [GridItem](arkts-arkui-typenode-griditem-t.md)、[TextInput](arkts-arkui-typenode-textinput-t.md)、[TextArea](arkts-arkui-typenode-textarea-t.md)、
+> [Column](arkts-arkui-typenode-column-t.md)、[Row](arkts-arkui-typenode-row-t.md)、[Stack](arkts-arkui-typenode-stack-t.md)、
+> [Flex](arkts-arkui-typenode-flex-t.md)、[RelativeContainer](arkts-arkui-typenode-relativecontainer-t.md)、
+> [Progress](arkts-arkui-typenode-progress-t.md)、[LoadingProgress](arkts-arkui-typenode-loadingprogress-t.md)、
+> [Image](arkts-arkui-typenode-image-t.md)、[Button](arkts-arkui-typenode-button-t.md)、[Checkbox](arkts-arkui-typenode-checkbox-t.md)、
+> [Radio](arkts-arkui-typenode-radio-t.md)、[Slider](arkts-arkui-typenode-slider-t.md)、[Toggle](arkts-arkui-typenode-toggle-t.md)、
+> [XComponent](arkts-arkui-typenode-xcomponent-t.md)类型的[TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)设置跨ArkTS语言访问选项。
 
 **起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FrameNode-setCrossLanguageOptions(options: CrossLanguageOptions): void--><!--Device-FrameNode-setCrossLanguageOptions(options: CrossLanguageOptions): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4030,8 +3817,6 @@ setLayoutPosition(position: Position): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-setLayoutPosition(position: Position): void--><!--Device-FrameNode-setLayoutPosition(position: Position): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -4058,15 +3843,13 @@ setMeasuredSize(size: Size): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-setMeasuredSize(size: Size): void--><!--Device-FrameNode-setMeasuredSize(size: Size): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | [Size](arkts-arkui-graphics-size-i.md) | 是 | FrameNode的测量后的尺寸，单位为PX。 |
+| size | Size | 是 | FrameNode的测量后的尺寸，单位为PX。 |
 
 **示例**
 
@@ -4086,11 +3869,81 @@ setNeedsLayout(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FrameNode-setNeedsLayout(): void--><!--Device-FrameNode-setNeedsLayout(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例**
 
 请参考节点自定义示例。
 
+## commonAttribute
+
+```TypeScript
+get commonAttribute(): CommonAttribute
+```
+
+获取FrameNode中持有的CommonAttribute接口，用于设置通用属性和 通用事件。仅可以修改自定义节点的属性。
+
+> **说明：**
+> 
+> FrameNode的效果参考对齐方式为顶部起始端的Stack容器组件。
+> 
+> FrameNode的属性支持情况参考
+> [属性或事件对attributemodifier的支持情况](../../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。
+
+**类型：** [CommonAttribute](../arkts-components/arkts-arkui-common-attribute.md)
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+请参考基础事件示例。
+
+## commonEvent
+
+```TypeScript
+get commonEvent(): UICommonEvent
+```
+
+获取FrameNode中持有的UICommonEvent对象，用于设置基础事件。设置的基础事件与声明式定义的事件平行，参与事件竞争；设置的基础事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。LazyForEach场景下，由于存在节点的销毁重建，对于重建的节点需要重新设置事件回调才能保证监听事件正常响应。
+
+**类型：** [UICommonEvent](../arkts-components/arkts-arkui-uicommonevent-i.md)
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+请参考基础事件示例和LazyForEach场景基础事件使用示例。
+
+## gestureEvent
+
+```TypeScript
+get gestureEvent(): UIGestureEvent
+```
+
+获取FrameNode中持有的UIGestureEvent对象，用于设置组件绑定的手势事件。通过gestureEvent接口设置的手势不会覆盖通过 绑定手势事件绑定的手势，两者同时设置了手势时，优先回调绑定手势事件设置的手势事件。LazyForEach场景下，由于存在节点的销毁重建，对于重建的节点需要重新设置手势事件回调才能保证监听事件正常响应。
+
+**类型：** [UIGestureEvent](../arkts-components/arkts-arkui-uigestureevent-i.md)
+
+**起始版本：** 14
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+请参考手势事件示例。

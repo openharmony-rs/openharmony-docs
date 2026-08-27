@@ -2,9 +2,7 @@
 
 云文件下载过程。
 
-**起始版本：** 23
-
-<!--Device-cloudSync-interface DownloadProgress--><!--Device-cloudSync-interface DownloadProgress-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { cloudSync } from '@kit.CoreFileKit';
-import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
 ## error
@@ -25,41 +22,35 @@ error: DownloadErrorType
 
 **类型：** [DownloadErrorType](arkts-corefile-cloudsync-downloaderrortype-e.md)
 
-**起始版本：** 23
-
-<!--Device-DownloadProgress-error: DownloadErrorType--><!--Device-DownloadProgress-error: DownloadErrorType-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## processed
 
 ```TypeScript
-processed: long
+processed: number
 ```
 
 已下载数据大小，取值范围[0，9223372036854775807]（单位：Byte）。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DownloadProgress-processed: long--><!--Device-DownloadProgress-processed: long-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## size
 
 ```TypeScript
-size: long
+size: number
 ```
 
 当前云文件大小，取值范围[0，9223372036854775807]（单位：Byte）。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DownloadProgress-size: long--><!--Device-DownloadProgress-size: long-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -73,9 +64,7 @@ state: State
 
 **类型：** State
 
-**起始版本：** 23
-
-<!--Device-DownloadProgress-state: State--><!--Device-DownloadProgress-state: State-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -89,9 +78,6 @@ uri: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DownloadProgress-uri: string--><!--Device-DownloadProgress-uri: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-

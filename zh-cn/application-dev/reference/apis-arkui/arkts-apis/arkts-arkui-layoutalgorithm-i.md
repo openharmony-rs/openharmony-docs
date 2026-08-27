@@ -1,6 +1,11 @@
 # LayoutAlgorithm
 
-动态布局容器[DynamicLayout](../../apis-na/arkts-apis/arkts-na-arkui-components-arkdynamiclayout-dynamiclayout-f.md)的布局算法基础类型。 > **说明：** > > 该类型变量可以赋值具体的布局算法类对象，如[CustomLayoutAlgorithm](arkts-arkui-layoutalgorithm-customlayoutalgorithm-c.md)类对象、 > [RowLayoutAlgorithm](arkts-arkui-layoutalgorithm-rowlayoutalgorithm-c.md)类对象等。
+动态布局容器DynamicLayout的布局算法基础类型。
+
+> **说明：**
+> 
+> 该类型变量可以赋值具体的布局算法类对象，如[CustomLayoutAlgorithm](arkts-arkui-layoutalgorithm-customlayoutalgorithm-c.md)类对象、
+> [RowLayoutAlgorithm](arkts-arkui-layoutalgorithm-rowlayoutalgorithm-c.md)类对象等。
 
 **起始版本：** 24
 
@@ -10,7 +15,4 @@
 
 **卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-export interface LayoutAlgorithm--><!--Device-unnamed-export interface LayoutAlgorithm-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

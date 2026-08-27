@@ -6,8 +6,6 @@
 
 **起始版本：** 12
 
-<!--Device-vpn-export interface OpenVpnConfig--><!--Device-vpn-export interface OpenVpnConfig-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
@@ -16,7 +14,6 @@
 
 ```TypeScript
 import { vpn } from '@kit.NetworkKit';
-import { vpnExtension } from '@kit.NetworkKit';
 ```
 
 ## askpass
@@ -29,8 +26,6 @@ askpass?: string
 
 **起始版本：** 12
 
-<!--Device-OpenVpnConfig-askpass?: string--><!--Device-OpenVpnConfig-askpass?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
@@ -38,16 +33,14 @@ askpass?: string
 ## ovpnAuthType
 
 ```TypeScript
-ovpnAuthType?: int
+ovpnAuthType?: number
 ```
 
 The auth type for the openvpn VPN network.
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 12
-
-<!--Device-OpenVpnConfig-ovpnAuthType?: int--><!--Device-OpenVpnConfig-ovpnAuthType?: int-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
@@ -63,8 +56,6 @@ ovpnCaCertFilePath?: string
 
 **起始版本：** 12
 
-<!--Device-OpenVpnConfig-ovpnCaCertFilePath?: string--><!--Device-OpenVpnConfig-ovpnCaCertFilePath?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
@@ -78,8 +69,6 @@ ovpnConfig?: string
 **类型：** string
 
 **起始版本：** 12
-
-<!--Device-OpenVpnConfig-ovpnConfig?: string--><!--Device-OpenVpnConfig-ovpnConfig?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
@@ -95,8 +84,6 @@ ovpnConfigFilePath?: string
 
 **起始版本：** 12
 
-<!--Device-OpenVpnConfig-ovpnConfigFilePath?: string--><!--Device-OpenVpnConfig-ovpnConfigFilePath?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
@@ -110,8 +97,6 @@ ovpnPort?: string
 **类型：** string
 
 **起始版本：** 12
-
-<!--Device-OpenVpnConfig-ovpnPort?: string--><!--Device-OpenVpnConfig-ovpnPort?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
@@ -127,8 +112,6 @@ ovpnPrivateKeyFilePath?: string
 
 **起始版本：** 12
 
-<!--Device-OpenVpnConfig-ovpnPrivateKeyFilePath?: string--><!--Device-OpenVpnConfig-ovpnPrivateKeyFilePath?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
@@ -136,16 +119,14 @@ ovpnPrivateKeyFilePath?: string
 ## ovpnProtocol
 
 ```TypeScript
-ovpnProtocol?: int
+ovpnProtocol?: number
 ```
 
 The protocol for the openvpn VPN network.
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 12
-
-<!--Device-OpenVpnConfig-ovpnProtocol?: int--><!--Device-OpenVpnConfig-ovpnProtocol?: int-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
@@ -161,9 +142,6 @@ ovpnUserCertFilePath?: string
 
 **起始版本：** 12
 
-<!--Device-OpenVpnConfig-ovpnUserCertFilePath?: string--><!--Device-OpenVpnConfig-ovpnUserCertFilePath?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **系统接口：** 此接口为系统接口。
-

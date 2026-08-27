@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { data } from '@kit.TelephonyKit';
 ```
 
 ## getCellularDataState
@@ -14,12 +13,10 @@ function getCellularDataState(callback: AsyncCallback<DataConnectState>): void
 
 获取蜂窝数据业务的连接状态，使用callback方式作为异步方法。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **需要权限：** 
 - API版本22+：ohos.permission.GET_NETWORK_INFO
-
-<!--Device-data-function getCellularDataState(callback: AsyncCallback<DataConnectState>): void--><!--Device-data-function getCellularDataState(callback: AsyncCallback<DataConnectState>): void-End-->
 
 **系统能力：** SystemCapability.Telephony.CellularData
 
@@ -27,7 +24,7 @@ function getCellularDataState(callback: AsyncCallback<DataConnectState>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;DataConnectState&gt; | 是 | 以callback形式异步返回结果。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataConnectState&gt; | 是 | 以callback形式异步返回结果。 |
 
 **错误码：**
 
@@ -59,12 +56,10 @@ function getCellularDataState(): Promise<DataConnectState>
 
 获取蜂窝数据业务的连接状态，使用Promise方式作为异步方法。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **需要权限：** 
 - API版本22+：ohos.permission.GET_NETWORK_INFO
-
-<!--Device-data-function getCellularDataState(): Promise<DataConnectState>--><!--Device-data-function getCellularDataState(): Promise<DataConnectState>-End-->
 
 **系统能力：** SystemCapability.Telephony.CellularData
 
@@ -72,7 +67,7 @@ function getCellularDataState(): Promise<DataConnectState>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DataConnectState&gt; | 以Promise形式返回获取PS域的连接状态。 |
+| Promise & lt;DataConnectState & gt; | 以Promise形式返回获取PS域的连接状态。 |
 
 **错误码：**
 
@@ -92,4 +87,3 @@ data.getCellularDataState().then((contextData: data.DataConnectState) => {
     console.error(`getCellularDataState fail. code: ${err.code}, message: ${err.message}`);
 });
 ```
-

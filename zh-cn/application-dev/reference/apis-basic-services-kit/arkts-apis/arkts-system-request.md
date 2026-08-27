@@ -32,4 +32,3 @@ import { Request, DownloadRequestOptions, DownloadResponse, OnDownloadCompleteOp
 | [RequestFile(上传下载)](arkts-basicservices-system-request-requestfile-i.md) |  |
 | [UploadRequestOptions(上传下载)](arkts-basicservices-system-request-uploadrequestoptions-i.md) |  |
 | [UploadResponse(上传下载)](arkts-basicservices-system-request-uploadresponse-i.md) |  |
-

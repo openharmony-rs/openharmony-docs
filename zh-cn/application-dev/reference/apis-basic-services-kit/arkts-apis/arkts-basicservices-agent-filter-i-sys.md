@@ -2,9 +2,7 @@
 
 过滤条件。
 
-**起始版本：** 23
-
-<!--Device-agent-interface Filter--><!--Device-agent-interface Filter-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
-import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
 ## bundle
@@ -25,11 +22,8 @@ Specify the package name of an application. Only for advanced search, common sea
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Filter-bundle?: string--><!--Device-Filter-bundle?: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 **系统接口：** 此接口为系统接口。
-

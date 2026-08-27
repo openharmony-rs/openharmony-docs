@@ -1,6 +1,8 @@
 # Web
 
-定义 Web 组件。 <p><strong>API Note</strong>: <strong>Performance Note</strong>: <p>For details about how to optimize the compilation, resource loading, and JSBridge performance, see Optimizing Web Page Loading <p>When the white screen duration is long due to complex web page parsing, you can enable [optimizeParserBudget](arkts-arkweb-web-attribute.md#optimizeparserbudget) to reduce the first frame rendering content.</p> </p>
+定义 Web 组件。
+<p><strong>API Note</strong>:
+<strong>Performance Note</strong>: <p>For details about how to optimize the compilation, resource loading, and JSBridge performance, see Optimizing Web Page Loading <p>When the white screen duration is long due to complex web page parsing, you can enable [optimizeParserBudget](arkts-arkweb-web-attribute.md#optimizeparserbudget) to reduce the first frame rendering content.</p> </p>
 
 ## Web
 
@@ -8,13 +10,15 @@
 Web(value: WebOptions)
 ```
 
-Sets Value. > **说明：** > > - 在HTML5侧，调用console.log或console.info对应ConsoleMessage的信息级别都为MessageLevel.Info。
+Sets Value.
+
+> **说明：**
+> 
+> - 在HTML5侧，调用console.log或console.info对应ConsoleMessage的信息级别都为MessageLevel.Info。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebInterface-(value: WebOptions): WebAttribute--><!--Device-WebInterface-(value: WebOptions): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -42,18 +46,18 @@ Sets Value. > **说明：** > > - 在HTML5侧，调用console.log或console.info
 | [FirstMeaningfulPaint](arkts-arkweb-firstmeaningfulpaint-i.md) | 提供网页绘制页面主要内容的详细信息，包括导航时间和绘制时间。适用于需要监控页面渲染性能的场景，提升性能优化的准确性和用户体验。 |
 | [FirstScreenPaint](arkts-arkweb-firstscreenpaint-i.md) | 提供首屏渲染事件的信息，包括URL和绘制时间。适用于需要监控页面首屏渲染性能的场景，提升性能优化的准确性和用户体验。 |
 | [FullScreenEnterEvent](arkts-arkweb-fullscreenenterevent-i.md) | 提供 Web 组件进入全屏的回调信息，包括视频尺寸和退出句柄。适用于需要处理全屏视频的场景，提升视频播放的沉浸式体验和可控性。 |
-| [Header](arkts-arkweb-header-i.md) | Web组件返回的请求/响应头对象。适用于需要读取或修改HTTP头的场景，提升网络请求处理的灵活性和可控性。 |
+| [Header](arkts-arkweb-header-i.md) | Web组件返回的请求/响应头对象。适用于需要读取或修改HTTP头的场景，提升网络请求处理的灵活性和可控性。@interface Header [since 8 - 11] |
 | [IntelligentTrackingPreventionDetails](arkts-arkweb-intelligenttrackingpreventiondetails-i.md) | 提供智能防跟踪拦截的详细信息，包括网站域名和追踪者域名。适用于需要监控广告拦截行为的场景，提升隐私保护的透明度和可控性。 |
 | [JavaScriptProxy](arkts-arkweb-javascriptproxy-i.md) | 定义要注入的JavaScript对象，包括对象名、方法列表和权限配置。适用于需要实现JavaScript与原生交互的场景，提升跨语言调用的灵活性和安全性。 |
 | [LargestContentfulPaint](arkts-arkweb-largestcontentfulpaint-i.md) | 提供网页绘制页面最大内容的详细信息，包括导航时间和各类绘制时间。适用于需要监控页面渲染性能的场景，提升性能优化的准确性和用户体验。 |
-| [LoadCommittedDetails](arkts-arkweb-loadcommitteddetails-i.md) | 提供已提交跳转的网页详细信息，包括是否主文档、导航类型等。适用于需要监控页面导航行为的场景，提升导航状态管理的准确性和用户体验。 |
+| [LoadCommittedDetails](arkts-arkweb-loadcommitteddetails-i.md) | 提供已提交跳转的网页详细信息，包括是否主文档、导航类型等。适用于需要监控页面导航行为的场景，提升导航状态管理的准确性和用户体验。@interface LoadCommittedDetails [since 11 - 11] |
 | [MicrophoneCaptureStateChangeInfo](arkts-arkweb-microphonecapturestatechangeinfo-i.md) | 提供麦克风触发回调时的状态变化信息，包括改变前的状态和改变后的状态。适用于需要监控麦克风状态变化的场景，提升麦克风管理的可见性和用户体验。 |
-| [NativeEmbedDataInfo](arkts-arkweb-nativeembeddatainfo-i.md) | 提供同层标签生命周期变化的详细信息，包括状态和标签信息。适用于需要监控同层元素生命周期的场景，提升渲染状态管理的准确性和用户体验。 |
-| [NativeEmbedInfo](arkts-arkweb-nativeembedinfo-i.md) | 提供同层标签的详细信息，包括ID、类型、尺寸和位置等。适用于需要获取同层元素属性的场景，提升同层渲染的定制性和用户体验。 |
+| [NativeEmbedDataInfo](arkts-arkweb-nativeembeddatainfo-i.md) | 提供同层标签生命周期变化的详细信息，包括状态和标签信息。适用于需要监控同层元素生命周期的场景，提升渲染状态管理的准确性和用户体验。@interface NativeEmbedDataInfo [since 11 - 11] |
+| [NativeEmbedInfo](arkts-arkweb-nativeembedinfo-i.md) | 提供同层标签的详细信息，包括ID、类型、尺寸和位置等。适用于需要获取同层元素属性的场景，提升同层渲染的定制性和用户体验。@interface NativeEmbedInfo [since 11 - 11] |
 | [NativeEmbedMouseInfo](arkts-arkweb-nativeembedmouseinfo-i.md) | 提供鼠标/触摸板在同层标签上点击或长按的详细信息，包括标签ID和鼠标事件。适用于需要处理同层元素鼠标交互的场景，提升鼠标体验的定制性和灵活性。 |
 | [NativeEmbedParamDataInfo](arkts-arkweb-nativeembedparamdatainfo-i.md) | 提供同层渲染object标签内嵌param元素变化时同层标签的详细信息，包括标签ID和参数项。适用于需要监控param元素变化的场景，提升同层元素管理的灵活性和准确性。 |
 | [NativeEmbedParamItem](arkts-arkweb-nativeembedparamitem-i.md) | 提供同层渲染object标签内嵌param元素的详细信息，包括状态和参数。适用于需要监控param元素变化的场景，提升同层元素管理的灵活性和准确性。 |
-| [NativeEmbedTouchInfo](arkts-arkweb-nativeembedtouchinfo-i.md) | 提供手指触摸同层标签的详细信息，包括标签ID和触摸事件。适用于需要处理同层元素触摸交互的场景，提升触摸体验的定制性和灵活性。 |
+| [NativeEmbedTouchInfo](arkts-arkweb-nativeembedtouchinfo-i.md) | 提供手指触摸同层标签的详细信息，包括标签ID和触摸事件。适用于需要处理同层元素触摸交互的场景，提升触摸体验的定制性和灵活性。@interface NativeEmbedTouchInfo [since 11 - 11] |
 | [NativeEmbedVisibilityInfo](arkts-arkweb-nativeembedvisibilityinfo-i.md) | 提供同层标签的可见性信息，包括可见状态和标签ID。适用于需要监控同层元素可见性的场景，提升渲染状态管理的准确性和用户体验。 |
 | [NativeMediaPlayerConfig](arkts-arkweb-nativemediaplayerconfig-i.md) | 用于配置应用接管网页媒体播放功能接口[enableNativeMediaPlayer](arkts-arkweb-web-attribute.md#enablenativemediaplayer)的功能，支持是否开启及是否覆盖网页内容。适用于需要自定义媒体 播放行为的场景，提升媒体播放的集成度和用户体验。 |
 | [NestedScrollOptionsExt](arkts-arkweb-nestedscrolloptionsext-i.md) | 用于设置Web组件嵌套滚动规则，支持上下左右四个方向的滚动选项。 |
@@ -101,7 +105,7 @@ Sets Value. > **说明：** > > - 在HTML5侧，调用console.log或console.info
 | [PreviewMenuOptions](arkts-arkweb-previewmenuoptions-i.md) | 用于配置预览菜单选项，支持设置菜单弹出时的振动效果。适用于需要增强菜单交互反馈的场景，提升用户体验。 |
 | [RenderProcessNotRespondingData](arkts-arkweb-renderprocessnotrespondingdata-i.md) | 提供渲染进程无响应的详细信息。适用于需要诊断渲染进程异常的场景，提升故障排查的准确性和效率。 |
 | [ScreenCaptureConfig](arkts-arkweb-screencaptureconfig-i.md) | 提供 Web 屏幕捕获的配置选项，包括捕获模式。适用于需要自定义网页录屏行为的场景，提升录屏功能的灵活性和用户体验。 |
-| [ScriptItem](arkts-arkweb-scriptitem-i.md) | 通过[javaScriptOnDocumentStart](arkts-arkweb-web-attribute.md#javascriptondocumentstart)属性注入到Web组件的ScriptItem对象。 |
+| [ScriptItem](arkts-arkweb-scriptitem-i.md) | 通过[javaScriptOnDocumentStart](arkts-arkweb-web-attribute.md#javascriptondocumentstart)属性注入到Web组件的ScriptItem对象。@interface ScriptItem [since 11 - 11] |
 | [SelectionMenuOptionsExt](arkts-arkweb-selectionmenuoptionsext-i.md) | 自定义菜单扩展项。 |
 | [SslErrorEvent](arkts-arkweb-sslerrorevent-i.md) | 用户加载资源时发生SSL错误时触发的回调详情，包括URL、错误类型和证书链。适用于需要详细分析SSL错误的场景，提升安全问题的诊断和排查效率。 |
 | [UrlRegexRule](arkts-arkweb-urlregexrule-i.md) | 定义Url正则表达式规则。 |
@@ -160,7 +164,7 @@ Sets Value. > **说明：** > > - 在HTML5侧，调用console.log或console.info
 | [CameraCaptureState](arkts-arkweb-cameracapturestate-e.md) | 定义摄像头使用状态的值，用于标识摄像头的当前工作状态，帮助开发者实时监控摄像头资源使用情况，优化资源管理和用户隐私保护。 |
 | [ConsoleMessageSource](arkts-arkweb-consolemessagesource-e.md) | ConsoleMessage的日志来源。 |
 | [ContextMenuDataMediaType](arkts-arkweb-contextmenudatamediatype-e.md) | 触发上下文菜单的网页元素类型（增强获取类型能力）。 |
-| [ContextMenuEditStateFlags](arkts-arkweb-contextmenueditstateflags-e.md) | 支持以按位或的方式使用此枚举。例如，如果需要同时支持CAN_CUT、CAN_COPY和CAN_SELECT_ALL，可使用CAN_CUT | CAN_COPY | CAN_SELECT_ALL或11。 |
+| [ContextMenuEditStateFlags](arkts-arkweb-contextmenueditstateflags-e.md) | 支持以按位或的方式使用此枚举。例如，如果需要同时支持CAN_CUT、CAN_COPY和CAN_SELECT_ALL，可使用CAN_CUT | [CAN_COPY](arkts-arkweb-contextmenueditstateflags-e.md) | CAN_SELECT_ALL或11。 |
 | [ContextMenuInputFieldType](arkts-arkweb-contextmenuinputfieldtype-e.md) | 输入框类型。 |
 | [ContextMenuMediaType](arkts-arkweb-contextmenumediatype-e.md) | 触发上下文菜单的网页元素类型。 |
 | [ContextMenuSourceType](arkts-arkweb-contextmenusourcetype-e.md) | 触发上下文菜单的事件来源。 |
@@ -180,7 +184,7 @@ Sets Value. > **说明：** > > - 在HTML5侧，调用console.log或console.info
 | [PinVerifyResult](arkts-arkweb-pinverifyresult-e.md) | PIN码认证结果，用于标识PIN码验证的执行状态。 |
 | [ProtectedResourceType](arkts-arkweb-protectedresourcetype-e.md) | ProtectedResourceType 枚举定义了 Web 组件需要访问的受保护资源类型，用于控制MIDI、相机、麦克风、传感器等敏感资源的访问权限，帮助开发者在保护用户隐私的同时提供丰富的 Web 功能。 |
 | [RenderExitReason](arkts-arkweb-renderexitreason-e.md) | onRenderExited接口返回的渲染进程退出的具体原因。 |
-| [RenderMode](arkts-arkweb-rendermode-e.md) | 定义Web组件的渲染方式，默认为异步渲染模式。 建议使用异步渲染模式，异步渲染模式有更好的性能和更低的功耗。 |
+| [RenderMode](arkts-arkweb-rendermode-e.md) | 定义Web组件的渲染方式，默认为异步渲染模式。建议使用异步渲染模式，异步渲染模式有更好的性能和更低的功耗。 |
 | [RenderProcessNotRespondingReason](arkts-arkweb-renderprocessnotrespondingreason-e.md) | 触发渲染进程无响应回调的原因。 |
 | [ScrollbarLayoutPolicy](arkts-arkweb-scrollbarlayoutpolicy-e.md) | 定义滚动条布局模式控制参数的枚举类型。 |
 | [ScrollDirectionalLockType](arkts-arkweb-scrolldirectionallocktype-e.md) | 定义滑动方向锁定的场景类型。 |
@@ -197,4 +201,3 @@ Sets Value. > **说明：** > > - 在HTML5侧，调用console.log或console.info
 | [WebNavigationType](arkts-arkweb-webnavigationtype-e.md) | 定义navigation类型。 |
 | [WebResponseType](arkts-arkweb-webresponsetype-e.md) | 菜单的响应类型。 |
 | [WebRotateEffect](arkts-arkweb-webrotateeffect-e.md) | 组件旋转时，宽高动画过程中组件内容如何填充以适应新尺寸的方式。 |
-

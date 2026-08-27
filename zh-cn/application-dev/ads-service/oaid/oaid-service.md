@@ -31,8 +31,8 @@ OAID会在下述场景中发生变化：
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| <!--Del-->[<!--DelEnd-->getOAID<!--Del-->/apis-ads-kit/js-apis-oaid.md#identifiergetoaid)<!--DelEnd-->(): Promise&lt;string&gt; | 获取OAID，通过Promise异步返回结果。 |
-| <!--Del-->[<!--DelEnd-->getOAID<!--Del-->/apis-ads-kit/js-apis-oaid.md#identifiergetoaid-1)<!--DelEnd-->(callback:&nbsp;AsyncCallback&lt;string&gt;):&nbsp; void | 获取OAID，通过Callback回调返回值。 |
+| <!--Del--><!--DelEnd-->getOAID<!--Del--><!--DelEnd-->(): Promise&lt;string&gt; | 获取OAID，通过Promise异步返回结果。 |
+| <!--Del--><!--DelEnd-->getOAID<!--Del--><!--DelEnd-->(callback:&nbsp;AsyncCallback&lt;string&gt;):&nbsp; void | 获取OAID，通过Callback回调返回值。 |
 
 > **说明：**
 > 调用getOAID接口需要申请ohos.permission.APP_TRACKING_CONSENT权限并获取用户授权，存在以下三种情况：<br/>
@@ -42,7 +42,7 @@ OAID会在下述场景中发生变化：
 
 
 ### 开发步骤
-1. 在模块的module.json5文件中，申请跨应用关联权限[ohos.permission.APP_TRACKING_CONSENT](../../security/AccessToken/permissions-for-all-user.md#ohospermissionapp_tracking_consent)，该权限为user_grant权限，当申请的权限为user_grant权限时，reason，abilities标签必填，配置方式参见[requestPermissions标签说明](../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)，示例代码如下所示：
+1. 在模块的module.json5文件中，申请跨应用关联权限ohos.permission.APP_TRACKING_CONSENT，该权限为user_grant权限，当申请的权限为user_grant权限时，reason，abilities标签必填，配置方式参见requestPermissions标签说明，示例代码如下所示：
     ```ts
     {
       "module": {
@@ -62,7 +62,7 @@ OAID会在下述场景中发生变化：
     }
     ```
 
-2. 应用在需要获取OAID信息时，应通过调用requestPermissionFromUser接口获取对应权限。其中context的获取方式参见[各类Context的获取方式](../../application-models/application-context-stage.md#context的获取方式)。示例代码如下所示：
+2. 应用在需要获取OAID信息时，应通过调用requestPermissionFromUser接口获取对应权限。其中context的获取方式参见各类Context的获取方式。示例代码如下所示：
     ```ts
     import { abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
     import { identifier } from '@kit.AdsKit';

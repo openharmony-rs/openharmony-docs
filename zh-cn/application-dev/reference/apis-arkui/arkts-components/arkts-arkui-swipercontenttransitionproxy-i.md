@@ -4,8 +4,6 @@ Swiper自定义切换动画执行过程中，返回给开发者的proxy对象。
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface SwiperContentTransitionProxy--><!--Device-unnamed-declare interface SwiperContentTransitionProxy-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ finishTransition(): void
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-SwiperContentTransitionProxy-finishTransition(): void--><!--Device-SwiperContentTransitionProxy-finishTransition(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## index
@@ -50,8 +46,6 @@ index: number
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-SwiperContentTransitionProxy-index: number--><!--Device-SwiperContentTransitionProxy-index: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,8 +67,6 @@ index对应页面在主轴方向上的长度，单位vp。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-SwiperContentTransitionProxy-mainAxisLength: number--><!--Device-SwiperContentTransitionProxy-mainAxisLength: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## position
@@ -94,8 +86,6 @@ index页面相对于Swiper主轴起始位置（selectedIndex对应页面的起�
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-SwiperContentTransitionProxy-position: number--><!--Device-SwiperContentTransitionProxy-position: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -117,7 +107,4 @@ selectedIndex: number
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-SwiperContentTransitionProxy-selectedIndex: number--><!--Device-SwiperContentTransitionProxy-selectedIndex: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

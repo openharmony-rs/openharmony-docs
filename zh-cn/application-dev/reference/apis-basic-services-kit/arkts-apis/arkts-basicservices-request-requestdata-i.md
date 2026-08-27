@@ -2,9 +2,7 @@
 
 [UploadConfig](arkts-basicservices-request-uploadconfig-i.md)中的表单数据。
 
-**起始版本：** 23
-
-<!--Device-request-interface RequestData--><!--Device-request-interface RequestData-End-->
+**起始版本：** 6
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
-import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
 ## name
@@ -25,9 +22,7 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-RequestData-name: string--><!--Device-RequestData-name: string-End-->
+**起始版本：** 6
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -41,9 +36,6 @@ value: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-RequestData-value: string--><!--Device-RequestData-value: string-End-->
+**起始版本：** 6
 
 **系统能力：** SystemCapability.MiscServices.Download
-

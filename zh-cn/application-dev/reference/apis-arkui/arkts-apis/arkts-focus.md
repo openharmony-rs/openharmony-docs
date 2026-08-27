@@ -19,4 +19,3 @@
 | --- | --- |
 | [FocusPriority(Provide some common interface for focus.)](arkts-arkui-focuspriority-e.md) | 设置组件焦点的优先级。 |
 | [KeyProcessingMode(Provide some common interface for focus.)](arkts-arkui-keyprocessingmode-e.md) | 设置按键事件处理的优先级。 |
-

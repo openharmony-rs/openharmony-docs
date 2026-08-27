@@ -4,8 +4,6 @@
 
 **起始版本：** 16
 
-<!--Device-unnamed-declare interface TextMenuOptions--><!--Device-unnamed-declare interface TextMenuOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,7 +17,7 @@
 showMode?: TextMenuShowMode
 ```
 
-菜单的显示模式。 默认值：TextMenuShowMode.DEFAULT
+菜单的显示模式。默认值：TextMenuShowMode.DEFAULT
 
 **类型：** [TextMenuShowMode](arkts-arkui-textmenushowmode-e.md)
 
@@ -29,7 +27,4 @@ showMode?: TextMenuShowMode
 
 **原子化服务API：** 从API版本16开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextMenuOptions-showMode?: TextMenuShowMode--><!--Device-TextMenuOptions-showMode?: TextMenuShowMode-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

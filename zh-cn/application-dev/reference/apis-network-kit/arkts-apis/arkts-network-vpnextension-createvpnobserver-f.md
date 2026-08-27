@@ -18,8 +18,6 @@ function createVpnObserver(): VpnObserver
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-vpnExtension-function createVpnObserver(): VpnObserver--><!--Device-vpnExtension-function createVpnObserver(): VpnObserver-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
 **返回值：**
@@ -35,4 +33,3 @@ import { vpnExtension } from '@kit.NetworkKit';
 
 let vpnObserver: vpnExtension.VpnObserver = vpnExtension.createVpnObserver();
 ```
-

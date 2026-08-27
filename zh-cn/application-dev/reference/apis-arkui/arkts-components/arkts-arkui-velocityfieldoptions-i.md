@@ -4,8 +4,6 @@
 
 **起始版本：** 22
 
-<!--Device-unnamed-declare interface VelocityFieldOptions--><!--Device-unnamed-declare interface VelocityFieldOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,8 +29,6 @@ The region influenced by the velocity field.
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VelocityFieldOptions-region?: FieldRegion--><!--Device-VelocityFieldOptions-region?: FieldRegion-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## velocity
@@ -53,7 +49,4 @@ The velocity values in each direction of the velocity field. Particles only acqu
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VelocityFieldOptions-velocity?: Vector2T<number>--><!--Device-VelocityFieldOptions-velocity?: Vector2T<number>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

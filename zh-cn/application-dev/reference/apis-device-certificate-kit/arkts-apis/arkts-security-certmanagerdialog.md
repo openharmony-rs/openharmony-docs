@@ -2,18 +2,15 @@
 
 证书管理对话框主要提供打开证书管理界面的能力，用户在打开的证书管理对话框可对证书进行查看和管理（安装，卸载、授权）。
 
-**起始版本：** 23
+**起始版本：** 13
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-unnamed-declare namespace certificateManagerDialog--><!--Device-unnamed-declare namespace certificateManagerDialog-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
 ## 导入模块
 
 ```TypeScript
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## 汇总
@@ -36,8 +33,8 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 | 名称 | 说明 |
 | --- | --- |
 | [AuthorizeRequest](arkts-devicecertificate-certificatemanagerdialog-authorizerequest-i.md) | 证书凭据授权请求信息。 |
-| [CertReference](arkts-devicecertificate-certificatemanagerdialog-certreference-i.md) | 表示证书凭据的引用信息。 |
 | [CertificateDialogProperty](arkts-devicecertificate-certificatemanagerdialog-certificatedialogproperty-i.md) | 表示证书管理对话框的属性。 |
+| [CertReference](arkts-devicecertificate-certificatemanagerdialog-certreference-i.md) | 表示证书凭据的引用信息。 |
 | [UkeyAuthRequest](arkts-devicecertificate-certificatemanagerdialog-ukeyauthrequest-i.md) | USB Key PIN码认证请求。 |
 
 ### 枚举
@@ -48,4 +45,3 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 | [CertificateDialogPageType](arkts-devicecertificate-certificatemanagerdialog-certificatedialogpagetype-e.md) | 表示证书管理对话框的页面类型。 |
 | [CertificateScope](arkts-devicecertificate-certificatemanagerdialog-certificatescope-e.md) | 表示安装证书的使用范围。 |
 | [CertificateType](arkts-devicecertificate-certificatemanagerdialog-certificatetype-e.md) | 表示安装证书的类型。 |
-

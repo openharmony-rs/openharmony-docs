@@ -1,10 +1,8 @@
 # AudioVolumeMode
 
-表示音量模式的枚举。
+表示音量模式的枚举。@enum { number }
 
-**起始版本：** 23
-
-<!--Device-audio-enum AudioVolumeMode--><!--Device-audio-enum AudioVolumeMode-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -16,9 +14,7 @@ SYSTEM_GLOBAL = 0
 
 系统级音量（默认模式）。
 
-**起始版本：** 23
-
-<!--Device-AudioVolumeMode-SYSTEM_GLOBAL = 0--><!--Device-AudioVolumeMode-SYSTEM_GLOBAL = 0-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -30,9 +26,6 @@ APP_INDIVIDUAL = 1
 
 应用级音量。
 
-**起始版本：** 23
-
-<!--Device-AudioVolumeMode-APP_INDIVIDUAL = 1--><!--Device-AudioVolumeMode-APP_INDIVIDUAL = 1-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
-

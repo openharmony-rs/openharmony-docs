@@ -14,9 +14,7 @@ function getOneCfgFileSync(relPath: string, followMode?: FollowXMode, extra?: st
 
 根据提供的跟随模式，获取指定文件名优先级最高的配置文件路径。
 
-**起始版本：** 23
-
-<!--Device-configPolicy-function getOneCfgFileSync(relPath: string, followMode?: FollowXMode, extra?: string): string--><!--Device-configPolicy-function getOneCfgFileSync(relPath: string, followMode?: FollowXMode, extra?: string): string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Customization.ConfigPolicy
 
@@ -40,5 +38,21 @@ function getOneCfgFileSync(relPath: string, followMode?: FollowXMode, extra?: st
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1.Mandatory parameters are left unspecified;  2.Incorrect parameter types;  3.Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let relpath: string = 'etc/config.xml';
+  let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
+  let result: string = configPolicy.getOneCfgFileSync(relpath, configPolicy.FollowXMode.USER_DEFINED, extra);
+  console.info('result is ' + result);
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error('error:' + code + ', ' + message);
+}
+```

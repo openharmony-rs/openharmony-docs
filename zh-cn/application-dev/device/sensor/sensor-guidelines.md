@@ -3,14 +3,14 @@
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
 <!--Designer: @andeszhang-->
-<!--Tester: @liuhaonan2-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## 场景介绍
 
 当设备需要获取传感器数据时，可以使用sensor模块，例如：通过订阅方向传感器数据感知用户设备当前的朝向，通过订阅计步传感器数据统计用户的步数等。
 
-详细的接口介绍请参考[@ohos.sensor (传感器)/apis-sensor-service-kit/js-apis-sensor.md)。
+详细的接口介绍请参考@ohos.sensor (传感器)。
 
 
 ## 接口说明
@@ -34,7 +34,7 @@
 
    ![输入图片说明](figures/007.png)
 
-2. 配置加速度传感器权限，具体配置方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
+2. 配置加速度传感器权限，具体配置方式请参考声明权限。
 
    <!-- @[sensor_js_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/module.json5) --> 
    
@@ -211,7 +211,7 @@
 
 8. 动态传感器状态的监听，在收到设备下线事件通知时，用户应主动调用off关闭该设备上的传感器。 
 
-   注册监听, SensorStatusEvent 会返回事件时间戳、传感器ID、传感器索引、上线或下线、设备id、设备名称等值。
+   注册监听，SensorStatusEvent会返回事件时间戳、传感器ID、传感器索引、上线或下线、设备id、设备名称等值。
 
    <!-- @[sensor_js_on_sensor_status_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    

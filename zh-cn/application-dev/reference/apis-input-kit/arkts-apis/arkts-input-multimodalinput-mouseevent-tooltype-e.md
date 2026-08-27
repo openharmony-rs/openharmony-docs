@@ -2,9 +2,7 @@
 
 工具类型。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export declare enum ToolType--><!--Device-unnamed-export declare enum ToolType-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -16,9 +14,7 @@ UNKNOWN = 0
 
 未知类型。
 
-**起始版本：** 23
-
-<!--Device-ToolType-UNKNOWN = 0--><!--Device-ToolType-UNKNOWN = 0-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -30,9 +26,7 @@ MOUSE = 1
 
 鼠标。
 
-**起始版本：** 23
-
-<!--Device-ToolType-MOUSE = 1--><!--Device-ToolType-MOUSE = 1-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -44,9 +38,7 @@ JOYSTICK = 2
 
 操纵杆。
 
-**起始版本：** 23
-
-<!--Device-ToolType-JOYSTICK = 2--><!--Device-ToolType-JOYSTICK = 2-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -58,9 +50,6 @@ TOUCHPAD = 3
 
 触控板。
 
-**起始版本：** 23
-
-<!--Device-ToolType-TOUCHPAD = 3--><!--Device-ToolType-TOUCHPAD = 3-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
-

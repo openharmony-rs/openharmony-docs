@@ -23,4 +23,3 @@ import { Prompt, Button, ShowActionMenuOptions, ShowDialogOptions, ShowDialogSuc
 | [ShowDialogOptions(弹窗)](arkts-arkui-system-prompt-showdialogoptions-i.md) | 定义显示对话框的选项。 |
 | [ShowDialogSuccessResponse(弹窗)](arkts-arkui-system-prompt-showdialogsuccessresponse-i.md) | 定义ShowDialog的响应。 |
 | [ShowToastOptions(弹窗)](arkts-arkui-system-prompt-showtoastoptions-i.md) | 定义ShowToast的选项。 |
-

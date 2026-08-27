@@ -4,49 +4,11 @@
 
 **起始版本：** 7
 
-<!--Device-unnamed-declare namespace util--><!--Device-unnamed-declare namespace util-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { ArrayList } from '@kit.ArkTS';
-import { ArrayListComparatorFn } from '@kit.ArkTS';
-import { ArrayListForEachCb } from '@kit.ArkTS';
-import { ArrayListReplaceCb } from '@kit.ArkTS';
-import { util } from '@kit.ArkTS';
-import { Deque } from '@kit.ArkTS';
-import { DequeForEachCb } from '@kit.ArkTS';
-import { HashMap } from '@kit.ArkTS';
-import { HashMapCbFn } from '@kit.ArkTS';
-import { HashSet } from '@kit.ArkTS';
-import { HashSetCbFn } from '@kit.ArkTS';
-import { LightWeightMap } from '@kit.ArkTS';
-import { LightWeightMapCbFn } from '@kit.ArkTS';
-import { LightWeightSet } from '@kit.ArkTS';
-import { LightWeightSetForEachCb } from '@kit.ArkTS';
-import { LinkedList } from '@kit.ArkTS';
-import { LinkedListForEachCb } from '@kit.ArkTS';
-import { List } from '@kit.ArkTS';
-import { ListComparatorFn } from '@kit.ArkTS';
-import { ListForEachCb } from '@kit.ArkTS';
-import { ListReplaceCb } from '@kit.ArkTS';
-import { PlainArray } from '@kit.ArkTS';
-import { PlainArrayForEachCb } from '@kit.ArkTS';
-import { Queue } from '@kit.ArkTS';
-import { QueueForEachCb } from '@kit.ArkTS';
-import { Stack } from '@kit.ArkTS';
-import { StackForEachCb } from '@kit.ArkTS';
-import { TreeMap } from '@kit.ArkTS';
-import { TreeMapForEachCb } from '@kit.ArkTS';
-import { TreeMapComparator } from '@kit.ArkTS';
-import { TreeSet } from '@kit.ArkTS';
-import { TreeSetForEachCb } from '@kit.ArkTS';
-import { TreeSetComparator } from '@kit.ArkTS';
-import { stream } from '@kit.ArkTS';
-import { Vector } from '@kit.ArkTS';
-import { JSON } from '@kit.ArkTS';
 ```
 
 ## 汇总
@@ -65,8 +27,8 @@ import { JSON } from '@kit.ArkTS';
 | [getMainThreadStackTrace](arkts-arkts-util-getmainthreadstacktrace-f.md) | 获取主线程的栈追踪信息，最多返回 64 层调用帧。 该接口可能对主线程性能产生影响，建议仅在必要时使用，如日志记录、错误分析或调试场景。 |
 | [parseUUID](arkts-arkts-util-parseuuid-f.md) | 将generateRandomUUID生成的string类型UUID转换为[generateRandomBinaryUUID](arkts-arkts-util-generaterandombinaryuuid-f.md)生成的UUID， 符合RFC 4122版本规范。 |
 | [printf](arkts-arkts-util-printf-f.md) | 通过式样化字符串对输入的内容按特定格式输出。 |
-| [promiseWrapper](arkts-arkts-util-promisewrapper-f.md) | 接收一个使用错误优先回调模式的函数（即最后一个参数为 `(err, value) => callback`），并通过 promise 返回结果。 |
-| [promisify](arkts-arkts-util-promisify-f.md) | 接收一个采用"错误优先"回调模式的函数，即以`(err, value) => callback`作为最后一个参数，并返回其Promise函数。 适用于将旧版回调式异步API转换为Promise风格，以便使用async/await语法进行调用，从而简化异步代码编写。 |
+| [promiseWrapper](arkts-arkts-util-promisewrapper-f.md) | 接收一个使用错误优先回调模式的函数（即最后一个参数为 `(err, value) =&gt; callback`），并通过 promise 返回结果。 |
+| [promisify](arkts-arkts-util-promisify-f.md) | 接收一个采用"错误优先"回调模式的函数，即以`(err, value) =&gt; callback`作为最后一个参数，并返回其Promise函数。 适用于将旧版回调式异步API转换为Promise风格，以便使用async/await语法进行调用，从而简化异步代码编写。 |
 
 ### 类
 
@@ -77,8 +39,8 @@ import { JSON } from '@kit.ArkTS';
 | [AutoFinalizerCleaner](arkts-arkts-util-autofinalizercleaner-c.md) | 用于通过开发者自定义回调释放由开发者管理的资源的 cleaner。 |
 | [Base64](arkts-arkts-util-base64-c.md) | 将包含 Base64 数据的字符串或 Uint8Array 解码为重新分配的 Uint8Array。 |
 | [Base64Helper](arkts-arkts-util-base64helper-c.md) | 提供 Base64 和 Base64URL 的编解码。Base64 编码表包含 64 个字符，分别为大写字母（A-Z）、小写字母（a-z）、数字（0-9） 以及特殊字符加号（+）和斜杠（/）。编码时，原始数据按三个字节一组进行划分，每组包含一个 6 位的数字。然后使用 Base64 编码表中对应的字符来表示这些数字。如果最后一组只包含一个或两个字节，则使用等号（=）进行填充。Base64URL 编码表包含 64 个字符，分别为大写字母（A-Z）、小写字母（a-z）、数字（0-9）以及特殊字符加号（+）和斜杠（/）。Base64URL 编码结果 不包含等号（=）。 |
-| [LRUCache](arkts-arkts-util-lrucache-c.md) | 提供在缓存已满时丢弃最近最少使用的数据以腾出空间给新元素的 API。此类使用最近最少使用（LRU）算法，该算法认为最近 使用的数据可能在不久的将来再次被访问，而最少访问的数据是最不具价值的数据，应从缓存中移除。 |
 | [LruBuffer](arkts-arkts-util-lrubuffer-c.md) | LruBuffer 算法在缓存空间不足时使用新数据替换最不常使用的数据。 |
+| [LRUCache](arkts-arkts-util-lrucache-c.md) | 提供在缓存已满时丢弃最近最少使用的数据以腾出空间给新元素的 API。此类使用最近最少使用（LRU）算法，该算法认为最近 使用的数据可能在不久的将来再次被访问，而最少访问的数据是最不具价值的数据，应从缓存中移除。 |
 | [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 提供比较有理数、获取分子和分母的 API。例如，可以使用 **toString()** API 将有理数转换为字符串。 |
 | [Scope](arkts-arkts-util-scope-c.md) | Scope 接口用于描述字段的有效范围。 |
 | [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 提供定义字段有效范围的 API。此类的构造函数创建具有上下限的可比较对象。 |
@@ -96,7 +58,7 @@ import { JSON } from '@kit.ArkTS';
 | [DecodeWithStreamOptions](arkts-arkts-util-decodewithstreamoptions-i.md) | 定义解码是否跟随数据块。 |
 | [EncodeIntoUint8ArrayInfo](arkts-arkts-util-encodeintouint8arrayinfo-i.md) | 编码信息，包含已读取的字符数和已写入的字节数。 |
 | [HeapMemoryInfo](arkts-arkts-util-heapmemoryinfo-i.md) | 描述 ArkTS-VM 的堆内存信息，或当前进程的共享堆内存信息。 |
-| [HeapMemoryThreshold](arkts-arkts-util-heapmemorythreshold-i.md) | 描述 GC 后触发已注册回调的堆内存预警阈值。 |
+| [HeapMemoryThreshold](arkts-arkts-util-heapmemorythreshold-i.md) | 描述 GC 后触发已注册回调的堆内存预警阈值。@interface HeapMemoryThreshold |
 | [MultithreadingDetectionOptions](arkts-arkts-util-multithreadingdetectionoptions-i.md) | 多线程安全检测功能参数配置。 |
 | [ScopeComparable](arkts-arkts-util-scopecomparable-i.md) | **ScopeComparable** 类型的值用于实现 **compareTo** 方法。因此，请确保输入参数是可比较的。 |
 | [TextDecoderOptions](arkts-arkts-util-textdecoderoptions-i.md) | 描述解码相关的选项，包含 **fatal** 和 **ignoreBOM**。 |
@@ -112,4 +74,3 @@ import { JSON } from '@kit.ArkTS';
 | 名称 | 说明 |
 | --- | --- |
 | [ScopeType](arkts-arkts-util-scopetype-t.md) | 定义 **Scope** 对象中的值类型。 |
-

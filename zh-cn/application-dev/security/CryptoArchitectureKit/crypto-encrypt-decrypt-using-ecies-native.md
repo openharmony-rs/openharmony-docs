@@ -25,41 +25,39 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 ### 加密
 
-1. 调用[OH_CryptoAsymKeyGenerator_Create/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create)和[OH_CryptoAsymKeyGenerator_Generate/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_generate)，使用ECC算法生成密钥对。
+1. 调用OH_CryptoAsymKeyGenerator_Create和OH_CryptoAsymKeyGenerator_Generate，使用ECC算法生成密钥对。
 
-2. 调用[OH_CryptoKeyAgreement_Create/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_create)和[OH_CryptoKeyAgreement_GenerateSecret/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_generatesecret)，基于本端的私钥（KeyPair.priKey）与对端的公钥（KeyPair.pubKey）进行密钥协商，返回共享密钥。
+2. 调用OH_CryptoKeyAgreement_Create和OH_CryptoKeyAgreement_GenerateSecret，基于本端的私钥（KeyPair.priKey）与对端的公钥（KeyPair.pubKey）进行密钥协商，返回共享密钥。
 
-3. X963KDF密钥派生，调用[OH_CryptoKdf_Create/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create)和[OH_CryptoKdf_Derive/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_derive)，基于协商的共享密钥（Secret）进行密钥派生，返回派生后的密钥。
+3. X963KDF密钥派生，调用OH_CryptoKdf_Create和OH_CryptoKdf_Derive，基于协商的共享密钥（Secret）进行密钥派生，返回派生后的密钥。
 
-4. 调用[OH_CryptoSymCipher_Create/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create)，指定字符串参数'AES128|GCM'，创建对称密钥类型为AES128、分组模式为GCM的Cipher实例，用于完成加密操作。
+4. 调用OH_CryptoSymCipher_Create，指定字符串参数'AES128|GCM'，创建对称密钥类型为AES128、分组模式为GCM的Cipher实例，用于完成加密操作。
 
-5. 调用[OH_CryptoSymCipher_Init/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init)，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（OH_CryptoSymKey），初始化加密Cipher实例。
+5. 调用OH_CryptoSymCipher_Init，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（OH_CryptoSymKey），初始化加密Cipher实例。
 
-6. 调用[OH_CryptoSymCipher_Update/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update)，更新数据（明文），获取加密后的数据。
+6. 调用OH_CryptoSymCipher_Update，更新数据（明文），获取加密后的数据。
 
-7. 调用[OH_CryptoSymCipher_Final/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)，获取authTag。
+7. 调用OH_CryptoSymCipher_Final，获取authTag。
 
-   > **注意：**
+   > **说明：**
    >
-   > 在GCM模式下，final会返回authTag，作为解密操作时初始化的认证信息，需要手动保存。
-   >
-   > 在GCM模式下，算法库当前只支持16字节的authTag，作为解密操作时初始化的认证信息。
+   > 在GCM模式下，一次加密流程中，将每次update和最后final的结果拼接起来，会得到“密文 + authTag”，authTag为末尾的16字节。其余部分均为密文。如果final的data参数传入null，则final的结果就是authTag。
 
 ### 解密
 
-1. 调用[OH_CryptoAsymKeyGenerator_Create/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create)和[OH_CryptoAsymKeyGenerator_Generate/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_generate)，使用ECC算法生成密钥对。
+1. 调用OH_CryptoAsymKeyGenerator_Create和OH_CryptoAsymKeyGenerator_Generate，使用ECC算法生成密钥对。
 
-2. 调用[OH_CryptoKeyAgreement_Create/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_create)和[OH_CryptoKeyAgreement_GenerateSecret/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_generatesecret)，基于本端的私钥（KeyPair.priKey）与对端的公钥（KeyPair.pubKey）进行密钥协商，返回共享密钥。
+2. 调用OH_CryptoKeyAgreement_Create和OH_CryptoKeyAgreement_GenerateSecret，基于本端的私钥（KeyPair.priKey）与对端的公钥（KeyPair.pubKey）进行密钥协商，返回共享密钥。
 
-3. X963KDF密钥派生，调用[OH_CryptoKdf_Create/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create)和[OH_CryptoKdf_Derive/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_derive)，基于协商的共享密钥（Secret）进行密钥派生，返回派生后的密钥。
+3. X963KDF密钥派生，调用OH_CryptoKdf_Create和OH_CryptoKdf_Derive，基于协商的共享密钥（Secret）进行密钥派生，返回派生后的密钥。
 
-4. 调用[OH_CryptoSymCipher_Create/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create)，指定字符串参数'AES128|GCM'，创建对称密钥类型为AES128、分组模式为GCM的Cipher实例，用于完成解密操作。
+4. 调用OH_CryptoSymCipher_Create，指定字符串参数'AES128|GCM'，创建对称密钥类型为AES128、分组模式为GCM的Cipher实例，用于完成解密操作。
 
-5. 调用[OH_CryptoSymCipher_Init/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init)，设置模式为解密（CRYPTO_DECRYPT_MODE），指定解密密钥（OH_CryptoSymKey），初始化解密Cipher实例。
+5. 调用OH_CryptoSymCipher_Init，设置模式为解密（CRYPTO_DECRYPT_MODE），指定解密密钥（OH_CryptoSymKey），初始化解密Cipher实例。
 
-6. 调用[OH_CryptoSymCipher_Update/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update)，更新数据（密文）。
+6. 调用OH_CryptoSymCipher_Update，更新数据（密文）。
 
-7. 调用[OH_CryptoSymCipher_Final/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)，获取解密数据。
+7. 调用OH_CryptoSymCipher_Final，获取解密数据。
 
 ### 示例代码
 

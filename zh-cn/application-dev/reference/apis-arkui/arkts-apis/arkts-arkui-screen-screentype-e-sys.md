@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-screen-enum ScreenType--><!--Device-screen-enum ScreenType-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -21,8 +19,6 @@ BUILT_IN = 0
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ScreenType-BUILT_IN = 0--><!--Device-ScreenType-BUILT_IN = 0-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -40,8 +36,6 @@ EXTERNAL = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ScreenType-EXTERNAL = 1--><!--Device-ScreenType-EXTERNAL = 1-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -58,9 +52,6 @@ VIRTUAL = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ScreenType-VIRTUAL = 2--><!--Device-ScreenType-VIRTUAL = 2-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
-

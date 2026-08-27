@@ -1,29 +1,29 @@
 # Navigation基础架构介绍
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-导航组件（[Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)）主要用于实现[NavDestination/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)页面间的跳转，支持在不同NavDestination间传递参数，提供灵活的跳转栈操作，从而更便捷地实现对不同页面的访问和复用。
+导航组件（Navigation）主要用于实现NavDestination页面间的跳转，支持在不同NavDestination间传递参数，提供灵活的跳转栈操作，从而更便捷地实现对不同页面的访问和复用。
 
 ## Navigation整体架构
 
 Navigation组件结构较为复杂，包含几个关键概念：
 
-- [Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)：导航根视图容器，所有的导航页面都被此容器包裹，提供分栏显示的能力，一般用作全局的根容器。
-- [NavDestination/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)：子页面容器，导航的所有页面路由操作均是针对NavDestination的操作，主要包含：
-  - [标题栏](#标题栏)：位于NavDestination顶部，包括返回按钮、标题，系统提供默认风格，同时支持自定义。
-  - [菜单栏](#菜单栏)：位于NavDestination顶部，系统提供默认风格，同时支持自定义。
+- Navigation：导航根视图容器，所有的导航页面都被此容器包裹，提供分栏显示的能力，一般用作全局的根容器。
+- NavDestination：子页面容器，导航的所有页面路由操作均是针对NavDestination的操作，主要包含：
+  - 标题栏：位于NavDestination顶部，包括返回按钮、标题，系统提供默认风格，同时支持自定义。
+  - 菜单栏：位于NavDestination顶部，系统提供默认风格，同时支持自定义。
   - 内容区：NavDestination的子组件，内容由开发者自定义。
-  - [工具栏](#工具栏)：位于NavDestination底部，系统提供默认风格，同时支持自定义。
-- [NavBar](#navbar导航栏)：导航栏，也称为主页面，主要包含：
-  - [标题栏](#标题栏)：位于NavBar顶部，包括返回按钮、标题，系统提供默认风格，同时支持自定义。
-  - [菜单栏](#菜单栏)：位于NavBar顶部，系统提供默认风格，同时支持自定义。
+  - 工具栏：位于NavDestination底部，系统提供默认风格，同时支持自定义。
+- NavBar：导航栏，也称为主页面，主要包含：
+  - 标题栏：位于NavBar顶部，包括返回按钮、标题，系统提供默认风格，同时支持自定义。
+  - 菜单栏：位于NavBar顶部，系统提供默认风格，同时支持自定义。
   - 内容区：位于NavBar中心区域，内容由开发者自定义。
-  - [工具栏](#工具栏)：位于NavBar底部，系统提供默认风格，同时支持自定义。
-- [NavPathStack/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)：导航控制器，用于管理NavDestination页面栈，其封装了各种控制页面跳转的接口，支持继承后重写，需与Navigation绑定使用。
+  - 工具栏：位于NavBar底部，系统提供默认风格，同时支持自定义。
+- NavPathStack：导航控制器，用于管理NavDestination页面栈，其封装了各种控制页面跳转的接口，支持继承后重写，需与Navigation绑定使用。
 
 **图1** Navigation总体架构图
 
@@ -57,21 +57,21 @@ Navigation是路由导航的根视图容器，通常作为页面（@Entry修饰�
 
 Navigation组件本身可不作为显示容器，只用于承载路由的相关功能，如绑定导航控制器对象、路由切换、分栏显示、自定义转场动画控制等。
 
-Navigation组件主要包含导航栏（NavBar）和子页（NavDestination），子页通过栈结构管理，存在NavPathStack中。导航栏又称Navbar，作为Navigation的子组件，直接挂载到Navigation上，可以通过[hideNavBar/apis-arkui/arkui-ts/ts-basic-components-navigation.md#hidenavbar9)属性进行隐藏（单栏应用推荐隐藏导航页），导航栏不存在页面栈中。
+Navigation组件主要包含导航栏（NavBar）和子页（NavDestination），子页通过栈结构管理，存在NavPathStack中。导航栏又称NavBar，作为Navigation的子组件，直接挂载到Navigation上，可以通过hideNavBar属性进行隐藏（单栏应用推荐隐藏导航页），导航栏不存在页面栈中。
 
-子页面是一个以NavDestination为根节点的子树，通过[@Builder](./state-management/arkts-builder.md)构造出来，再通过NavPathStack提供的栈操作方法挂载到Navigation上显示，详见[Navigation子页面](./arkts-navigation-navdestination.md)。
+子页面是一个以NavDestination为根节点的子树，通过@Builder构造出来，再通过NavPathStack提供的栈操作方法挂载到Navigation上显示，详见Navigation子页面。
 
 ## NavDestination（子页面容器）
 
 Navigation子页面的根容器，每个子页面都需要包裹在一个NavDestination中，通过NavPathStack提供的栈操作方法（push、pop等）将子页面挂载到Navigation上显示或删除。
 
-NavDestination作为页面根容器，除了支持普通组件的通用属性外，还支持页面相关的属性，如：[页面的生命周期/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#事件)，页面[工具栏/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#toolbarconfiguration13)、[标题栏/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#title)与[菜单栏/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#menus12)，[自定义页面转场动画/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#customtransition15)，页面级窗口属性控制（横竖屏、系统状态栏、系统导航条）等能力。
+NavDestination作为页面根容器，除了支持普通组件的通用属性外，还支持页面相关的属性，如：页面的生命周期事件，页面工具栏toolbarConfiguration、标题栏title与菜单栏menus，自定义页面转场动画customTransition，页面级窗口属性控制（横竖屏、系统状态栏、系统导航条）等能力。
 
 ## NavBar（导航栏）
 
-Navigation中直接加载的孩子节点称为导航栏（NavBar），单栏显示时它是整个导航的首页，分栏显示时它是固定的导航栏。分栏显示时默认显示在左边，也可以通过[navBarPosition/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarposition9)属性控制。
+Navigation中直接加载的孩子节点称为导航栏（NavBar），单栏显示时它是整个导航的首页，分栏显示时它是固定的导航栏。分栏显示时默认显示在左边，也可以通过navBarPosition属性控制。
 
-开发者可以通过[hideNavBar/apis-arkui/arkui-ts/ts-basic-components-navigation.md#hidenavbar9)控制导航栏的显隐，也可以通过[navBarWidth/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarwidth9)属性控制双栏显示下的Navbar宽度，NavBar本身不属于页面栈中的页面，不具备页面的生命周期等，不能通过NavPathStack的方法控制。 开发者可以通过[onNavBarStateChange/apis-arkui/arkui-ts/ts-basic-components-navigation.md#onnavbarstatechange9)去感知导航栏的显隐，通过[mode/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9)属性控制单双栏切换，也可以通过[onNavigationModeChange/apis-arkui/arkui-ts/ts-basic-components-navigation.md#onnavigationmodechange11)去感知单双栏的切换。
+开发者可以通过hideNavBar控制导航栏的显隐，也可以通过navBarWidth属性控制双栏显示下的NavBar宽度，NavBar本身不属于页面栈中的页面，不具备页面的生命周期等，不能通过NavPathStack的方法控制。 开发者可以通过onNavBarStateChange去感知导航栏的显隐，通过mode属性控制单双栏切换，也可以通过onNavigationModeChange去感知单双栏的切换。
 
 NavBar的内容区可以通过两种方式指定：
 
@@ -141,9 +141,9 @@ NavBar的内容区可以通过两种方式指定：
               }
               .width('100%')
               .onClick(() => {
-                // $r('app.string.detailsPageParameters')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“详情页面参数”
+                // $r('app.string.detailsPageParameters')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“详情页面参数”
                 this.navPathStack.pushPathByName(`${item}`,
-                  // 将name指定的NaviDestination页面信息入栈,传递的参数为param
+                  // 将name指定的NavDestination页面信息入栈，传递的参数为param
                   this.context!.resourceManager.getStringSync($r('app.string.detailsPageParameters').id));
               })
             }, (item: string): string => item)
@@ -156,7 +156,7 @@ NavBar的内容区可以通过两种方式指定：
         }
         .width('100%')
         .mode(NavigationMode.Auto)
-        // $r('app.string.settings')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“设置”
+        // $r('app.string.settings')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“设置”
         .title($r('app.string.settings')) // 设置标题文字
       }
       .size({ width: '100%', height: '100%' })
@@ -165,21 +165,21 @@ NavBar的内容区可以通过两种方式指定：
   }
   ```
 
- - 方式二：从API version 20开始，使用[主页类型NavDestination/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigation20)将某个NavDestination直接指定为导航栏内容，此方法需要配置路由表，配置方式请参考[路由表](./arkts-navigation-cross-package.md#路由表能力对比)。
+ - 方式二：从API version 20开始，使用Navigation将某个NavDestination直接指定为导航栏内容，此方法需要配置路由表，配置方式请参考路由表。
 
 ## NavPathStack（导航控制器）
 
-Navigation的子页面栈存在NavPathStack中，每个Navigation都需要绑定一个NavPathStack对象，NavPathStack用于控制Navigation中所有子页的切换。NavPathStack提供了很多基础的路由切换方法，如：[pushPath/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushpath10)、[pop/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop10)、[replacePath/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepath11)等，以及路由拦截、转场动画控制、路由栈信息获取等能力。
+Navigation的子页面栈存在NavPathStack中，每个Navigation都需要绑定一个NavPathStack对象，NavPathStack用于控制Navigation中所有子页的切换。NavPathStack提供了很多基础的路由切换方法，如：pushPath、pop、replacePath等，以及路由拦截、转场动画控制、路由栈信息获取等能力。
 
-NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathStack跟Navigation一一对应，在每个子页中可以通过NavDestination的[onReady/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11)回调获取，也可以全局维护一个单例的NavPathStack，在任意地方获取并执行路由操作（注意：页面切换动画和布局必须在UI线程中才可以生效，依赖Vsync信号）。
+NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathStack跟Navigation一一对应，在每个子页中可以通过NavDestination的onReady回调获取，也可以全局维护一个单例的NavPathStack，在任意地方获取并执行路由操作（注意：页面切换动画和布局必须在UI线程中才可以生效，依赖Vsync信号）。
 
 ## 标题栏
 
-标题栏在界面顶部，用于呈现界面名称和操作入口，Navigation组件通过[title/apis-arkui/arkui-ts/ts-basic-components-navigation.md#title)属性设置标题内容，通过[titleMode/apis-arkui/arkui-ts/ts-basic-components-navigation.md#titlemode)属性设置标题栏模式。NavDestination同样支持[title/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#title)属性用于设置标题内容。
+标题栏在界面顶部，用于呈现界面名称和操作入口，Navigation组件通过title属性设置标题内容，通过titleMode属性设置标题栏模式。NavDestination同样支持title属性用于设置标题内容。
 
 > **说明：**
 >
-> Navigation未设置[title/apis-arkui/arkui-ts/ts-basic-components-navigation.md#title)、[titleMode/apis-arkui/arkui-ts/ts-basic-components-navigation.md#titlemode)、[menus/apis-arkui/arkui-ts/ts-basic-components-navigation.md#menus)等与标题、菜单栏相关的属性时，即使将[hideBackButton/apis-arkui/arkui-ts/ts-basic-components-navigation.md#hidebackbutton)设置为false，返回按钮也不会展示。
+> Navigation未设置title、titleMode、menus等与标题、菜单栏相关的属性时，即使将hideBackButton设置为false，返回按钮也不会展示。
 
 - Mini模式：
 
@@ -217,7 +217,7 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
 ## 菜单栏
 
-菜单栏位于组件的顶部，开发者可以通过[menus/apis-arkui/arkui-ts/ts-basic-components-navigation.md#menus)属性设置Navigation的菜单栏。menus支持Array&lt;[NavigationMenuItem/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationmenuitem)&gt;和[CustomBuilder/apis-arkui/arkui-ts/ts-types.md#custombuilder8)两种参数类型。使用Array&lt;[NavigationMenuItem/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationmenuitem)&gt;类型时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。NavDestination同样支持[menus/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#menus12)属性用于设置菜单栏。
+菜单栏位于组件的顶部，开发者可以通过menus属性设置Navigation的菜单栏。menus支持Array&lt;NavigationMenuItem&gt;和CustomBuilder两种参数类型。使用Array&lt;NavigationMenuItem&gt;类型时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。NavDestination同样支持menus属性用于设置菜单栏。
 
 **图6** 设置了3个图标的菜单栏
 
@@ -279,7 +279,7 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
 ## 工具栏
 
-工具栏位于组件的底部，开发者可以通过[toolbarConfiguration/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbarconfiguration10)属性设置Navigation的工具栏。NavDestination同样支持[toolbarConfiguration/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#toolbarconfiguration13)属性用于设置工具栏。
+工具栏位于组件的底部，开发者可以通过toolbarConfiguration属性设置Navigation的工具栏。NavDestination同样支持toolbarConfiguration属性用于设置工具栏。
 
   **图8** 工具栏
 

@@ -1,8 +1,5 @@
 # ArkTS API<!--arkts-backgroundtaskskit-->
 
-- [@ohos.WorkSchedulerExtensionAbility](arkts-workschedulerextensionability.md)
-  - [WorkSchedulerExtensionAbility](arkts-backgroundtasks-workschedulerextensionability-c.md)
-  - [WorkSchedulerExtensionContext](arkts-backgroundtasks-workschedulerextensioncontext-t.md)
 - [@ohos.backgroundTaskManager](arkts-backgroundtaskmanager.md)
   - [cancelSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-cancelsuspenddelay-depr-f.md)
   - [getRemainingDelayTime](arkts-backgroundtasks-backgroundtaskmanager-getremainingdelaytime-depr-f.md)
@@ -114,18 +111,8 @@
   - [getTransientTaskInfo](arkts-backgroundtasks-backgroundtaskmanager-gettransienttaskinfo-f.md)
   <!--Del-->
   - [obtainAllContinuousTasks(系统接口)](arkts-backgroundtasks-backgroundtaskmanager-obtainallcontinuoustasks-f-sys.md)<!--DelEnd-->
-  - [off_continuousTaskActive](arkts-backgroundtasks-backgroundtaskmanager-offcontinuoustaskactive-f.md)
-  - [off_continuousTaskCancel](arkts-backgroundtasks-backgroundtaskmanager-offcontinuoustaskcancel-f.md)
-  - [off_continuousTaskSuspend](arkts-backgroundtasks-backgroundtaskmanager-offcontinuoustasksuspend-f.md)
-  - [offContinuousTaskActive](arkts-backgroundtasks-backgroundtaskmanager-offcontinuoustaskactive-f.md)
-  - [offContinuousTaskCancel](arkts-backgroundtasks-backgroundtaskmanager-offcontinuoustaskcancel-f.md)
-  - [offContinuousTaskSuspend](arkts-backgroundtasks-backgroundtaskmanager-offcontinuoustasksuspend-f.md)
-  - [on_continuousTaskActive](arkts-backgroundtasks-backgroundtaskmanager-oncontinuoustaskactive-f.md)
-  - [on_continuousTaskCancel](arkts-backgroundtasks-backgroundtaskmanager-oncontinuoustaskcancel-f.md)
-  - [on_continuousTaskSuspend](arkts-backgroundtasks-backgroundtaskmanager-oncontinuoustasksuspend-f.md)
-  - [onContinuousTaskActive](arkts-backgroundtasks-backgroundtaskmanager-oncontinuoustaskactive-f.md)
-  - [onContinuousTaskCancel](arkts-backgroundtasks-backgroundtaskmanager-oncontinuoustaskcancel-f.md)
-  - [onContinuousTaskSuspend](arkts-backgroundtasks-backgroundtaskmanager-oncontinuoustasksuspend-f.md)
+  - [off](arkts-backgroundtasks-backgroundtaskmanager-off-f.md)
+  - [on](arkts-backgroundtasks-backgroundtaskmanager-on-f.md)
   - [requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-f.md)
   <!--Del-->
   - [resetAllEfficiencyResources(系统接口)](arkts-backgroundtasks-backgroundtaskmanager-resetallefficiencyresources-f-sys.md)<!--DelEnd-->
@@ -261,6 +248,9 @@
   - [StorageRequest](arkts-backgroundtasks-workscheduler-storagerequest-e.md)
   <!--Del-->
   - [常量(系统接口)](arkts-backgroundtasks-workscheduler-con-sys.md)<!--DelEnd-->
+- [@ohos.WorkSchedulerExtensionAbility](arkts-workschedulerextensionability.md)
+  - [WorkSchedulerExtensionAbility](arkts-backgroundtasks-workschedulerextensionability-c.md)
+  - [WorkSchedulerExtensionContext](arkts-backgroundtasks-workschedulerextensioncontext-t.md)
 - application<!--arkts-backgroundtaskskit-application-->
   - [WorkSchedulerExtensionContext](arkts-workschedulerextensioncontext.md)
     <!--Del-->

@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## getCountryCode
@@ -15,11 +14,9 @@ function getCountryCode(): string
 
 获取设备的国家码。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
-
-<!--Device-wifiManager-function getCountryCode(): string--><!--Device-wifiManager-function getCountryCode(): string-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
@@ -33,8 +30,8 @@ function getCountryCode(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [2401000](../errorcode-wifi.md#2401000-sta内部异常) | Operation failed. |
 
 **示例**
@@ -49,4 +46,3 @@ import { wifiManager } from '@kit.ConnectivityKit';
     console.error("failed:" + JSON.stringify(error));
   }
 ```
-

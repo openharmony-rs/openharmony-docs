@@ -17,9 +17,9 @@ typedef struct VkNativeBufferPropertiesOHOS {...} VkNativeBufferPropertiesOHOS
 
 **起始版本：** 10
 
-**相关模块：** [Vulkan](capi-vulkan.md)
+**相关模块：** Vulkan
 
-**所在头文件：** [vulkan_ohos.h](capi-vulkan-ohos-h.md)
+**所在头文件：** vulkan_ohos.h
 
 ## 汇总
 

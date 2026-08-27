@@ -2,9 +2,7 @@
 
 用于设置模态弹框请求结果的callback接口。
 
-**起始版本：** 23
-
-<!--Device-dialogRequest-export interface RequestCallback--><!--Device-dialogRequest-export interface RequestCallback-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -22,11 +20,9 @@ setRequestResult(result: RequestResult): void
 
 设置请求结果
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-RequestCallback-setRequestResult(result: RequestResult): void--><!--Device-RequestCallback-setRequestResult(result: RequestResult): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -63,4 +59,3 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-declare class SystemEnvKey--><!--Device-unnamed-declare class SystemEnvKey-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,9 +25,20 @@ protected constructor()
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SystemEnvKey-protected constructor()--><!--Device-SystemEnvKey-protected constructor()-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+@Builder
+function myBuilder(value: string, size: number) {
+  Text(value)
+    .fontSize(size)
+}
+
+// 使用WrappedBuilder封装myBuilder
+let builderVar: WrappedBuilder<[string, number]> = new WrappedBuilder<[string, number]>(myBuilder);
+```
 
 ## type
 
@@ -47,7 +56,4 @@ private type?: T
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SystemEnvKey-private type?: T--><!--Device-SystemEnvKey-private type?: T-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

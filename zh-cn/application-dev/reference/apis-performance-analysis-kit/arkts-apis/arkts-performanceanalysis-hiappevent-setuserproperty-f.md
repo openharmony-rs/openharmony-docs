@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## setUserProperty
@@ -14,11 +13,9 @@ function setUserProperty(name: string, value: string): void
 
 设置用户属性值。用于在配置[Processor](arkts-performanceanalysis-hiappevent-processor-i.md)数据处理者时进行关联。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-hiAppEvent-function setUserProperty(name: string, value: string): void--><!--Device-hiAppEvent-function setUserProperty(name: string, value: string): void-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -33,11 +30,9 @@ function setUserProperty(name: string, value: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -48,17 +43,3 @@ try {
   hilog.error(0x0000, 'hiAppEvent', `failed to setUserProperty event, code=${error.code}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@ohos.base';
-
-try {
-  hiAppEvent.setUserProperty('key', 'value');
-} catch (error: BusinessError) {
-  hilog.error(0x0000, 'hiAppEvent', `failed to setUserProperty event, code=${error.code}`);
-}
-```
-

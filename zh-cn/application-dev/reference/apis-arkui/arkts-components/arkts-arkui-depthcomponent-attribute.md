@@ -6,8 +6,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-declare class DepthComponentAttribute--><!--Device-unnamed-declare class DepthComponentAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -16,4 +14,3 @@
 
 ```TypeScript
 ```
-

@@ -1,16 +1,16 @@
 # C/C++标准库机制概述
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @liyiming13-->
 <!--Designer: @liyiming13-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
-OpenHarmony NDK提供业界标准库[libc标准库/native-lib/musl.md)、[c++标准库/native-lib/cpp.md)，本文用于介绍C/C++标准库在OpenHarmony中的机制，开发者了解这些机制有助于在NDK开发过程中避免相关问题。
+OpenHarmony NDK提供业界标准库libc标准库、c++标准库，本文用于介绍C/C++标准库在OpenHarmony中的机制，开发者了解这些机制有助于在NDK开发过程中避免相关问题。
 
 ## C++兼容性
 
-在OpenHarmony系统中，系统库和应用Native库均使用C++标准库（参考[libc++版本/native-lib/cpp.md#libc版本)）。系统库依赖的C++标准库随镜像版本升级，应用Native库依赖的C++标准库随编译使用的SDK版本升级。由于两部分依赖的C++标准库会跨多个大版本，可能导致ABI兼容性问题。为解决此问题，OpenHarmony对系统库和应用Native库依赖的C++标准库进行了区分。
+在OpenHarmony系统中，系统库和应用Native库均使用C++标准库（参考libc++版本）。系统库依赖的C++标准库随镜像版本升级，应用Native库依赖的C++标准库随编译使用的SDK版本升级。由于两部分依赖的C++标准库会跨多个大版本，可能导致ABI兼容性问题。为解决此问题，OpenHarmony对系统库和应用Native库依赖的C++标准库进行了区分。
 
 - 系统库：使用libc++.so，随系统镜像发布。
 - 应用Native库：使用libc++_shared.so，随应用发布。
@@ -71,10 +71,10 @@ symbol-version是libc在**动态链接-符号重定位**阶段的符号检索机
 宏定义FD_ISSET增加了对fd有效值的检查，如果传入的fd不在区间`[0, 1024)`中会返回false。
 
 ### 全球化支持
-自API12起，newlocale及setlocale接口支持将locale设置C、C.UTF-8、en_US、en_US.UTF-8、zh_CN及zh_CN.UTF-8。新增在zh_CN及zh_CN.UTF-8的locale设置下对strtod_l、wcstod_l和localeconv的支持。注意strtod_l及wcstod_l不支持对十六进制及十六进制小数的转换。
+自API12起，newlocale及setlocale接口支持将locale设置为C、C.UTF-8、en_US、en_US.UTF-8、zh_CN及zh_CN.UTF-8。新增在zh_CN及zh_CN.UTF-8的locale设置下对strtod_l、wcstod_l和localeconv的支持。注意strtod_l及wcstod_l不支持对十六进制及十六进制小数的转换。
 
 ### fdsan功能
-[fdsan使用指导](./fdsan.md)可以帮助检测文件的重复关闭和关闭后使用问题。
+fdsan使用指导可以帮助检测文件的重复关闭和关闭后使用问题。
 
 ### 网络使用
 由于route netlink类型创建的socket通过send、sendto、sendmsg、getifaddrs、if_nameindex接口调用RTM_GETLINK（网络接口信息的核心消息类型）功能存在安全风险，因此不推荐使用。推荐使用C库ioctl接口，使用对应的cmd查询网络接口信息。
@@ -92,8 +92,8 @@ symbol-version是libc在**动态链接-符号重定位**阶段的符号检索机
 ## 信号使用
 为避免与系统保留信号冲突，开发者在使用信号时需遵循以下规则：
 - 信号编号 1～34：为系统内部保留信号，禁止使用；
-- 信号编号 35～45: 截止到目前 API 19，这些信号已被系统内部模块（如内存、DFX、运行时、系统服务等）占用，为避免与系统行为冲突并导致不可预期的问题，请勿使用该范围内的信号。
-- SIGRTMIN和__libc_current_sigrtmin的值是35, 表示可供应用程序使用的实时信号起始编号(应用实际只能使用46及以上的信号)。
+- 信号编号 35～45：截止到目前 API 19，这些信号已被系统内部模块（如内存、DFX、运行时、系统服务等）占用，为避免与系统行为冲突并导致不可预期的问题，请勿使用该范围内的信号。
+- SIGRTMIN和__libc_current_sigrtmin的值是35，表示可供应用程序使用的实时信号起始编号（应用实际只能使用46及以上的信号）。
 
 鸿蒙内部信号使用统计如下：
 

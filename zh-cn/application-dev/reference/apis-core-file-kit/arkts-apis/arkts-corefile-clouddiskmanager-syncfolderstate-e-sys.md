@@ -2,9 +2,7 @@
 
 枚举，云盘的同步根的状态。
 
-**起始版本：** 23
-
-<!--Device-cloudDiskManager-enum SyncFolderState--><!--Device-cloudDiskManager-enum SyncFolderState-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
@@ -18,9 +16,7 @@ INACTIVE = 0
 
 表示同步根处于未激活状态。
 
-**起始版本：** 23
-
-<!--Device-SyncFolderState-INACTIVE = 0--><!--Device-SyncFolderState-INACTIVE = 0-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
@@ -34,11 +30,8 @@ ACTIVE = 1
 
 表示同步根处于激活状态。
 
-**起始版本：** 23
-
-<!--Device-SyncFolderState-ACTIVE = 1--><!--Device-SyncFolderState-ACTIVE = 1-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **系统接口：** 此接口为系统接口。
-

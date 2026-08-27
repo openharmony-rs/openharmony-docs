@@ -4,8 +4,6 @@ DLP沙箱聚合策略类型的枚举。沙箱聚合表示同一权限类型的DL
 
 **起始版本：** 10
 
-<!--Device-dlpPermission-export enum GatheringPolicyType--><!--Device-dlpPermission-export enum GatheringPolicyType-End-->
-
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **系统接口：** 此接口为系统接口。
@@ -19,8 +17,6 @@ GATHERING = 1
 表示沙箱聚合。
 
 **起始版本：** 10
-
-<!--Device-GatheringPolicyType-GATHERING = 1--><!--Device-GatheringPolicyType-GATHERING = 1-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -36,9 +32,6 @@ NON_GATHERING = 2
 
 **起始版本：** 10
 
-<!--Device-GatheringPolicyType-NON_GATHERING = 2--><!--Device-GatheringPolicyType-NON_GATHERING = 2-End-->
-
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **系统接口：** 此接口为系统接口。
-

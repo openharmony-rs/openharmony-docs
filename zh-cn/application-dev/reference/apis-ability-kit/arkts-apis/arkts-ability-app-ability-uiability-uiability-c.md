@@ -4,9 +4,7 @@
 
 **继承/实现关系：** UIAbility extends [Ability](arkts-ability-app-ability-ability-ability-c.md)
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare class UIAbility--><!--Device-unnamed-declare class UIAbility-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -16,57 +14,19 @@
 import { UIAbility, Callee, CalleeCallback, Caller, OnReleaseCallback, OnRemoteStateChangeCallback } from '@kit.AbilityKit';
 ```
 
-## onBackPressed
-
-```TypeScript
-onBackPressed(): boolean
-```
-
-UIAbility生命周期回调，当UIAbility侧滑返回时触发，根据返回值决定是否销毁UIAbility。 - 当targetSdkVersion&lt;12时，默认返回值为false，会销毁UIAbility。 - 当targetSdkVersion&gt;=12时，默认返回值为true，会将UIAbility移动到后台不销毁。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onBackPressed(): boolean--><!--Device-UIAbility-onBackPressed(): boolean-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | The value &lt;code&gt;true&lt;/code&gt; means that the UIAbility instance will be moved to the background and will not be destroyed, and &lt;code&gt;false&lt;/code&gt; means that the UIAbility instance will be destroyed. |
-
-**示例**
-
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-
-export default class EntryAbility extends UIAbility {
-  onBackPressed() {
-    return true;
-  }
-}
-```
-
 ## onBackground
 
 ```TypeScript
 onBackground(): void
 ```
 
-当应用从前台转入到后台时，系统触发该回调。开发者可在该回调中实现UI不可见时的资源释放操作，如停止定位功能等。 同步接口，不支持异步回调。
+当应用从前台转入到后台时，系统触发该回调。开发者可在该回调中实现UI不可见时的资源释放操作，如停止定位功能等。同步接口，不支持异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onBackground(): void--><!--Device-UIAbility-onBackground(): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -84,19 +44,67 @@ export default class MyUIAbility extends UIAbility {
 }
 ```
 
+## onBackPressed
+
+```TypeScript
+onBackPressed(): boolean
+```
+
+UIAbility生命周期回调，当UIAbility侧滑返回时触发，根据返回值决定是否销毁UIAbility。  
+- 当targetSdkVersion&lt;12时，默认返回值为false，会销毁UIAbility。  
+- 当targetSdkVersion&gt;=12时，默认返回值为true，会将UIAbility移动到后台不销毁。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | The value & lt;code & gt;true & lt;/code & gt; means that the UIAbility instance will be moved to the background and will not be destroyed, and & lt;code & gt;false & lt;/code & gt; means that the UIAbility instance will be destroyed. |
+
+**示例**
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onBackPressed() {
+    return true;
+  }
+}
+```
+
 ## onCollaborate
 
 ```TypeScript
 onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult
 ```
 
-UIAbility生命周期回调，在多设备协同场景下，协同方应用在被拉起的过程中返回是否接受协同。 > **说明：** > > - 该生命周期回调不支持[specified启动模式](../../../application-models/uiability-launch-type.md#specified启动模式)。 > > - 通过 > [startAbility](arkts-ability-uiabilitycontext-c.md#startability) > 等方法拉起协同方应用时，需要在Want对象中设置协同标记[Flags](arkts-ability-wantconstant-flags-e.md)为 > FLAG_ABILITY_ON_COLLABORATE。 > > - [冷启动](../../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)时，该回调在 > [onForeground](#onforeground)前或[onBackground](#onbackground)后调用； > [热启动](../../../application-models/uiability-intra-device-interaction.md#目标uiability热启动)时，该回调在 > [onNewWant](#onnewwant)前调用。
+UIAbility生命周期回调，在多设备协同场景下，协同方应用在被拉起的过程中返回是否接受协同。
+
+> **说明：**
+> 
+> - 该生命周期回调不支持[specified启动模式](../../../application-models/uiability-launch-type.md#specified启动模式)。
+> 
+> - 通过
+> [startAbility](arkts-ability-uiabilitycontext-c.md#startability)
+> 等方法拉起协同方应用时，需要在Want对象中设置协同标记[Flags](arkts-ability-wantconstant-flags-e.md)为
+> FLAG_ABILITY_ON_COLLABORATE。
+> 
+> - [冷启动](../../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)时，该回调在
+> [onForeground](#onforeground)前或[onBackground](#onbackground)后调用；
+> [热启动](../../../application-models/uiability-intra-device-interaction.md#目标uiability热启动)时，该回调在
+> [onNewWant](#onnewwant)前调用。
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UIAbility-onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult--><!--Device-UIAbility-onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -104,7 +112,7 @@ UIAbility生命周期回调，在多设备协同场景下，协同方应用在�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wantParam | Record&lt;string, Object&gt; | 是 | want相关参数，仅支持key值取"ohos.extra.param.key.supportCollaborateIndex"。通过该 key值可以获取到调用方传输的数据并进行相应的处理。 |
+| wantParam | Record & lt;string, Object & gt; | 是 | want相关参数，仅支持key值取"ohos.extra.param.key.supportCollaborateIndex"。通过该 key值可以获取到调用方传输的数据并进行相应的处理。 |
 
 **返回值：**
 
@@ -124,50 +132,6 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
-## onCollaborate
-
-```TypeScript
-onCollaborate(wantParam: Record<string, RecordData>): AbilityConstant.CollaborateResult
-```
-
-UIAbility生命周期回调，在多设备协同场景下，协同方应用在被拉起的过程中返回是否接受协同。 > **说明：** > > - 该生命周期回调不支持[specified启动模式](../../../application-models/uiability-launch-type.md#specified启动模式)。 > > - 通过 > [startAbility](arkts-ability-uiabilitycontext-c.md#startability) > 等方法拉起协同方应用时，需要在Want对象中设置协同标记[Flags](arkts-ability-wantconstant-flags-e.md)为 > FLAG_ABILITY_ON_COLLABORATE。 > > - [冷启动](../../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)时，该回调在 > [onForeground](#onforeground)前或[onBackground](#onbackground)后调用； > [热启动](../../../application-models/uiability-intra-device-interaction.md#目标uiability热启动)时，该回调在 > [onNewWant](#onnewwant)前调用。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UIAbility-onCollaborate(wantParam: Record<string, RecordData>): AbilityConstant.CollaborateResult--><!--Device-UIAbility-onCollaborate(wantParam: Record<string, RecordData>): AbilityConstant.CollaborateResult-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| wantParam | Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | want相关参数，仅支持key值取"ohos.extra.param.key.supportCollaborateIndex"。通过该 key值可以获取到调用方传输的数据并进行相应的处理。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| AbilityConstant.CollaborateResult | 协同方是否接受协同的结果。 |
-
-**示例**
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
-import { RecordData } from '@kit.BasicServicesKit';
-
-export default class MyAbility extends UIAbility {
-  onCollaborate(wantParam: Record<string, RecordData>) {
-    return AbilityConstant.CollaborateResult.ACCEPT;
-  }
-}
-```
-
 ## onContinue
 
 ```TypeScript
@@ -175,15 +139,17 @@ onContinue(wantParam: Record<string, Object>):
     AbilityConstant.OnContinueResult | Promise<AbilityConstant.OnContinueResult>
 ```
 
-当UIAbility准备跨端迁移时触发，可以保存待迁移的业务数据。 > **说明：** > > 对于API version 18（不含18） 之前版本仅支持同步调用，从API version 18及后续版本可支持异步调用。
+当UIAbility准备跨端迁移时触发，可以保存待迁移的业务数据。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 对于API version 18（不含18） 之前版本仅支持同步调用，从API version 18及后续版本可支持异步调用。
+
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onContinue(wantParam: Record<string, Object>):    AbilityConstant.OnContinueResult | Promise<AbilityConstant.OnContinueResult>--><!--Device-UIAbility-onContinue(wantParam: Record<string, Object>):    AbilityConstant.OnContinueResult | Promise<AbilityConstant.OnContinueResult>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -191,14 +157,14 @@ onContinue(wantParam: Record<string, Object>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wantParam | Record&lt;string, Object&gt; | 是 | 开发者通过该参数保存待迁移的数据。<br>**起始版本：** 11 |
+| wantParam | Record & lt;string, Object & gt; | 是 | 开发者通过该参数保存待迁移的数据。<br>**起始版本：** 11 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | AbilityConstant.OnContinueResult | Return the result of onContinue.<br>**适用版本：** 9 - 11 |
-| AbilityConstant.OnContinueResult \| Promise&lt;AbilityConstant.OnContinueResult&gt; | 表示是否同意迁移的结果： <br>- AGREE：表示同意。 <br>- REJECT：表示拒绝，如应用在onContinue中异常可以返回REJECT。 <br>- MISMATCH：表示版本不匹配，接续源端应用可以在onContinue中获取到迁移对端应用的版本号，进行协商后，如果版本不匹配导致无法迁移，可以返回该结果。 <br> 该回调与onWindowStageRestore成对出现。在接续场景下，源端的UIAbility触发onContinue保存自定义数据，在目标端UIAbility触发onWindowStageRestore恢复自定义数据 。<br>**适用版本：** 12+ |
+| AbilityConstant.OnContinueResult \| Promise & lt;AbilityConstant.OnContinueResult & gt; | 表示是否同意迁移的结果： |
 
 **示例**
 
@@ -246,15 +212,13 @@ export default class MyUIAbility extends UIAbility {
 onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void
 ```
 
-当UIAbility实例创建完成时，系统会触发该回调，开发者可在该回调中执行初始化逻辑（如定义变量、加载资源等）。该回调仅会在UIAbility [冷启动](../../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)时触发。 同步接口，不支持异步回调。
+当UIAbility实例创建完成时，系统会触发该回调，开发者可在该回调中执行初始化逻辑（如定义变量、加载资源等）。该回调仅会在UIAbility [冷启动](../../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)时触发。同步接口，不支持异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void--><!--Device-UIAbility-onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -286,15 +250,19 @@ export default class MyUIAbility extends UIAbility {
 onDestroy(): void | Promise<void>
 ```
 
-当UIAbility被销毁（例如使用 [terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself) 接口停止UIAbility）时，系统触发该回调。开发者可以在该生命周期中执行资源清理、数据保存等相关操作。 使用同步回调或Promise异步回调。 > **说明：** > > - 在执行完onDestroy生命周期回调后，应用可能会退出，从而导致其中的异步函数（比如异步写入数据库）未能正确执行。在此情况下，推荐使用Promise异步回调。 > > - 该回调仅在UIAbility正常退出时触发，当UIAbility异常退出（例如低内存终止进程）时，该回调将不被触发。
+当UIAbility被销毁（例如使用 [terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself) 接口停止UIAbility）时，系统触发该回调。开发者可以在该生命周期中执行资源清理、数据保存等相关操作。使用同步回调或Promise异步回调。
+
+> **说明：**
+> 
+> - 在执行完onDestroy生命周期回调后，应用可能会退出，从而导致其中的异步函数（比如异步写入数据库）未能正确执行。在此情况下，推荐使用Promise异步回调。
+> 
+> - 该回调仅在UIAbility正常退出时触发，当UIAbility异常退出（例如低内存终止进程）时，该回调将不被触发。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onDestroy(): void | Promise<void>--><!--Device-UIAbility-onDestroy(): void | Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -328,75 +296,19 @@ export default class MyUIAbility extends UIAbility {
 }
 ```
 
-## onDestroy
-
-```TypeScript
-onDestroy(): Promise<void> | undefined
-```
-
-当UIAbility被销毁（例如使用 [terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself) 接口停止UIAbility）时，系统触发该回调。开发者可以在该生命周期中执行资源清理、数据保存等相关操作。 使用同步回调或Promise异步回调。 > **说明：** > > - 在执行完onDestroy生命周期回调后，应用可能会退出，从而导致其中的异步函数（比如异步写入数据库）未能正确执行。在此情况下，推荐使用Promise异步回调。 > > - 该回调仅在UIAbility正常退出时触发，当UIAbility异常退出（例如低内存终止进程）时，该回调将不被触发。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UIAbility-onDestroy(): Promise<void> | undefined--><!--Device-UIAbility-onDestroy(): Promise<void> | undefined-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | 无返回结果或无返回结果的Promise对象。 |
-
-**示例**
-
-同步回调示例如下：
-
-```TypeScript
-'use static'
-import { UIAbility } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-export default class MyUIAbility extends UIAbility {
-  onDestroy(): Promise<void> {
-    hilog.info(0x0000, 'testTag', `onDestroy`);
-    // 调用同步函数...
-  }
-}
-```
-
-Promise异步回调示例如下：
-
-```TypeScript
-'use static'
-import { UIAbility } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-export default class MyUIAbility extends UIAbility {
-  async onDestroy() {
-    hilog.info(0x0000, 'testTag', `onDestroy`);
-    // 调用异步函数...
-  }
-}
-```
-
 ## onDidBackground
 
 ```TypeScript
 onDidBackground(): void
 ```
 
-UIAbility生命周期回调，当应用从前台转到后台后触发，在[onBackground](#onbackground)之后被调用。可在该回调中实现应用进入后台之后的资源释放操作，如进入后台后停止音频 播放等。 同步接口，不支持异步回调。
+UIAbility生命周期回调，当应用从前台转到后台后触发，在[onBackground](#onbackground)之后被调用。可在该回调中实现应用进入后台之后的资源释放操作，如进入后台后停止音频 播放等。同步接口，不支持异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onDidBackground(): void--><!--Device-UIAbility-onDidBackground(): void-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -409,7 +321,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { audio } from '@kit.AudioKit';
 
 export default class MyUIAbility extends UIAbility {
-  static audioRenderer: audio.AudioRenderer | null = null;
+  static audioRenderer: audio.AudioRenderer;
 
   // ...
   onForeground(): void {
@@ -434,24 +346,16 @@ export default class MyUIAbility extends UIAbility {
     audio.createAudioRenderer(audioRendererOptions).then((data) => {
       MyUIAbility.audioRenderer = data;
       hilog.info(0x0000, 'testTag', `AudioRenderer Created : Success : Stream Type: SUCCESS.`);
-    }).catch((error: Error) => {
-      let err = error as BusinessError;
-      hilog.error(0x0000, 'testTag', `AudioRenderer Created : F : code: ${err.code} message: ${err.message}.`);
+    }).catch((err: BusinessError) => {
+      hilog.error(0x0000, 'testTag', `AudioRenderer Created : F : ${JSON.stringify(err)}.`);
     });
   }
 
-  onDidBackground(): void {
+  onDidBackground() {
     // 转到后台后，释放audioRenderer资源
-    const renderer = MyUIAbility.audioRenderer;
-    if (renderer === null) {
-      hilog.warn(0x0000, 'testTag', 'AudioRenderer is null, cannot release');
-      return;
-    }
-    renderer.release((error: BusinessError | null) => {
-      if (error) {
-        // let err=error as BusinessError;
-        hilog.error(0x0000, 'testTag',
-          `AudioRenderer release failed, error: code: ${error.code} message: ${error.message}.`);
+    MyUIAbility.audioRenderer.release((err: BusinessError) => {
+      if (err) {
+        hilog.error(0x0000, 'testTag', `AudioRenderer release failed, error: ${JSON.stringify(err)}.`);
       } else {
         hilog.info(0x0000, 'testTag', `AudioRenderer released.`);
       }
@@ -466,15 +370,13 @@ export default class MyUIAbility extends UIAbility {
 onDidForeground(): void
 ```
 
-UIAbility生命周期回调，应用转到前台后触发，在[onForeground](#onforeground)后被调用，可在该回调中实现应用切换到前台后的时间打点。如果与 [onWillForeground](#onwillforeground)配合使用，还可以统计出从应用开始进入前台到切换至前台状态的耗时。 同步接口，不支持异步回调。
+UIAbility生命周期回调，应用转到前台后触发，在[onForeground](#onforeground)后被调用，可在该回调中实现应用切换到前台后的时间打点。如果与 [onWillForeground](#onwillforeground)配合使用，还可以统计出从应用开始进入前台到切换至前台状态的耗时。同步接口，不支持异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onDidForeground(): void--><!--Device-UIAbility-onDidForeground(): void-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -490,13 +392,11 @@ onDump(params: Array<string>): Array<string>
 
 应用调测场景下，通过命令行dump UIAbility数据时，系统会触发该回调。开发者可以在该回调中返回UIAbility要转储的非敏感信息。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onDump(params: Array<string>): Array<string>--><!--Device-UIAbility-onDump(params: Array<string>): Array<string>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -504,13 +404,13 @@ onDump(params: Array<string>): Array<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | Array&lt;string&gt; | 是 | 表示dump命令参数。 |
+| params | Array & lt;string & gt; | 是 | 表示dump命令参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | 返回的dump信息。 |
+| Array & lt;string & gt; | 返回的dump信息。 |
 
 **示例**
 
@@ -531,15 +431,13 @@ export default class MyUIAbility extends UIAbility {
 onForeground(): void
 ```
 
-当应用首次启动到前台或者从后台转入到前台时，系统触发该回调。开发者可在该回调中实现系统所需资源的申请，如应用转到前台时申请定位服务等。 同步接口，不支持异步回调。
+当应用首次启动到前台或者从后台转入到前台时，系统触发该回调。开发者可在该回调中实现系统所需资源的申请，如应用转到前台时申请定位服务等。同步接口，不支持异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onForeground(): void--><!--Device-UIAbility-onForeground(): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -562,15 +460,13 @@ export default class MyUIAbility extends UIAbility {
 onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void
 ```
 
-当已经启动的UIAbility实例再次被拉起时，系统会触发该回调。若在特定场景下（参见 [Scenarios](arkts-ability-contextconstant-scenarios-e.md)），不需要触发该生命周期回调，可以使用 [setOnNewWantSkipScenarios](arkts-ability-uiabilitycontext-c.md#setonnewwantskipscenarios)接口设置。 同步接口，不支持异步回调。
+当已经启动的UIAbility实例再次被拉起时，系统会触发该回调。若在特定场景下（参见 [Scenarios](arkts-ability-contextconstant-scenarios-e.md)），不需要触发该生命周期回调，可以使用 [setOnNewWantSkipScenarios](arkts-ability-uiabilitycontext-c.md#setonnewwantskipscenarios)接口设置。同步接口，不支持异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void--><!--Device-UIAbility-onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -600,9 +496,21 @@ export default class MyUIAbility extends UIAbility {
 onPrepareToTerminate(): boolean
 ```
 
-在UIAbility即将关闭前（例如用户通过点击应用窗口右上角的关闭按钮、或者通过Dock栏/托盘右键退出应用时），系统会触发该回调，用于在UIAbility正式关闭前执行其他操作。开发者可以在该回调中返回true阻拦此次关闭，然 后在合适时机主动调用 [terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself) 接口关闭。例如，询问用户是否确认关闭UIAbility，再主动销毁UIAbility。 该接口仅在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。 > **说明：** > > - 从API version 15开始，当[UIAbility.onPrepareToTerminateAsync](#onpreparetoterminateasync)实现时，本回调函数将不执 > 行。当 > [AbilityStage.onPrepareTerminationAsync](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onprepareterminationasync) > 或[AbilityStage.onPrepareTermination](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onpreparetermination)实现时，在 > dock栏或系统托盘处右键点击关闭，本回调函数将不执行。 > > - 如果应用本身或者所使用的三方框架注册了 > [window.WindowStage.on('windowStageClose')](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageclose) > 监听，本回调函数将不执行。
+在UIAbility即将关闭前（例如用户通过点击应用窗口右上角的关闭按钮、或者通过Dock栏/托盘右键退出应用时），系统会触发该回调，用于在UIAbility正式关闭前执行其他操作。开发者可以在该回调中返回true阻拦此次关闭，然 后在合适时机主动调用 [terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself) 接口关闭。例如，询问用户是否确认关闭UIAbility，再主动销毁UIAbility。 该接口仅在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
 
-**起始版本：** 23
+> **说明：**
+> 
+> - 从API version 15开始，当[UIAbility.onPrepareToTerminateAsync](#onpreparetoterminateasync)实现时，本回调函数将不执
+> 行。当
+> [AbilityStage.onPrepareTerminationAsync](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onprepareterminationasync)
+> 或[AbilityStage.onPrepareTermination](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onpreparetermination)实现时，在
+> dock栏或系统托盘处右键点击关闭，本回调函数将不执行。
+> 
+> - 如果应用本身或者所使用的三方框架注册了
+> window.WindowStage.on
+> 监听，本回调函数将不执行。
+
+**起始版本：** 10
 
 **需要权限：** ohos.permission.PREPARE_APP_TERMINATE
 
@@ -610,20 +518,18 @@ onPrepareToTerminate(): boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-UIAbility-onPrepareToTerminate(): boolean--><!--Device-UIAbility-onPrepareToTerminate(): boolean-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Whether to terminate the UIAbility. <br>The value &lt;code&gt;true&lt;/code&gt; means that the termination process is canceled. <br>The value &lt;code&gt;false&lt;/code&gt; means to continue terminating the UIAbility. |
+| boolean | Whether to terminate the UIAbility. |
 
 **示例**
 
 ```TypeScript
-import { UIAbility, Want, common } from '@kit.AbilityKit';
+import { UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
@@ -636,16 +542,15 @@ export default class EntryAbility extends UIAbility {
       abilityName: 'SecondAbility'
     }
     this.context.startAbilityForResult(want)
-      .then((result: common.AbilityResult) => {
+      .then((result) => {
         // 获取ability处理结果，当返回结果的resultCode为0关闭当前UIAbility
         console.info('startAbilityForResult success, resultCode is ' + result.resultCode);
         if (result && result.resultCode === 0) {
           this.context.terminateSelf(); // 关闭当前UIAbility
         }
-      }).catch((error: Error) => {
+      }).catch((err: BusinessError) => {
       // 异常处理
-      let err = error as BusinessError;
-      console.error(`startAbilityForResult failed, err: ${err.code} , ${err.message}`);
+      console.error('startAbilityForResult failed, err:' + JSON.stringify(err));
       this.context.terminateSelf();
     });
 
@@ -660,17 +565,28 @@ export default class EntryAbility extends UIAbility {
 onPrepareToTerminateAsync(): Promise<boolean>
 ```
 
-在UIAbility关闭前（例如用户通过点击应用窗口右上角的关闭按钮、或者通过Dock栏/托盘右键退出应用时），系统会触发该回调，用于在UIAbility正式关闭前执行其他操作。 开发者可以在该回调中返回true阻拦此次关闭，然后在合适时机主动调用 [terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself) 接口关闭。例如，询问用户是否确认关闭UIAbility，再主动销毁UIAbility。 从API version 15开始，该接口仅在2in1设备中可正常执行回调，在其他设备上不执行回调。 从API version 19开始，该接口在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。 > **说明：** > > - 当 > [AbilityStage.onPrepareTerminationAsync](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onprepareterminationasync) > 或[AbilityStage.onPrepareTermination](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onpreparetermination)实现时，在 > dock栏或系统托盘处右键点击关闭，本回调函数将不执行。 > > - 如果应用本身或者所使用的三方框架注册了 > [window.WindowStage.on('windowStageClose')](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageclose) > 监听，本回调函数将不执行。 > > - 若异步回调内发生crash，按超时处理，执行等待超过10秒未响应，UIAbility将被强制关闭。
+在UIAbility关闭前（例如用户通过点击应用窗口右上角的关闭按钮、或者通过Dock栏/托盘右键退出应用时），系统会触发该回调，用于在UIAbility正式关闭前执行其他操作。开发者可以在该回调中返回true阻拦此次关闭，然后在合适时机主动调用 [terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself) 接口关闭。例如，询问用户是否确认关闭UIAbility，再主动销毁UIAbility。 从API version 15开始，该接口仅在2in1设备中可正常执行回调，在其他设备上不执行回调。 从API version 19开始，该接口在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
 
-**起始版本：** 23
+> **说明：**
+> 
+> - 当
+> [AbilityStage.onPrepareTerminationAsync](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onprepareterminationasync)
+> 或[AbilityStage.onPrepareTermination](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onpreparetermination)实现时，在
+> dock栏或系统托盘处右键点击关闭，本回调函数将不执行。
+> 
+> - 如果应用本身或者所使用的三方框架注册了
+> [window.WindowStage.on('windowStageClose')](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageclose)
+> 监听，本回调函数将不执行。
+> 
+> - 若异步回调内发生crash，按超时处理，执行等待超过10秒未响应，UIAbility将被强制关闭。
+
+**起始版本：** 15
 
 **需要权限：** ohos.permission.PREPARE_APP_TERMINATE
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onPrepareToTerminateAsync(): Promise<boolean>--><!--Device-UIAbility-onPrepareToTerminateAsync(): Promise<boolean>-End-->
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -678,7 +594,7 @@ onPrepareToTerminateAsync(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. <br>The value &lt;code&gt;true&lt;/code&gt; means that the termination process is canceled. <br>The value &lt;code&gt;false&lt;/code&gt; means to continue terminating the UIAbility. |
+| Promise & lt;boolean & gt; | Promise used to return the result. |
 
 **示例**
 
@@ -701,15 +617,19 @@ export default class EntryAbility extends UIAbility {
 onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>): AbilityConstant.OnSaveResult
 ```
 
-该接口需要与[appRecovery](arkts-app-ability-apprecovery.md)配合使用。如果应用已使能故障恢复功能（即 [enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md)接口中的saveOccasion参数设置为 SAVE_WHEN_ERROR），当应用出现故障时，系统将触发该回调来保存UIAbility的数据。 > **说明：** > > 从API version 20开始，当 > [onSaveStateAsync](#onsavestateasync) > 实现时，本回调函数将不执行。
+该接口需要与[appRecovery](arkts-app-ability-apprecovery.md)配合使用。如果应用已使能故障恢复功能（即 [enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md)接口中的saveOccasion参数设置为 SAVE_WHEN_ERROR），当应用出现故障时，系统将触发该回调来保存UIAbility的数据。
+
+> **说明：**
+> 
+> 从API version 20开始，当
+> [onSaveStateAsync](#onsavestateasync)
+> 实现时，本回调函数将不执行。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>): AbilityConstant.OnSaveResult--><!--Device-UIAbility-onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>): AbilityConstant.OnSaveResult-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -718,7 +638,7 @@ onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | reason | AbilityConstant.StateType | 是 | 触发应用保存状态的原因，当前仅支持APP_RECOVERY（即应用故障恢复场景）。 |
-| wantParam | Record&lt;string, Object&gt; | 是 | 用户自定义的应用状态数据，应用再启动时被保存在[onCreate](#oncreate)的 Want.parameters中。<br>**起始版本：** 11 |
+| wantParam | Record & lt;string, Object & gt; | 是 | 用户自定义的应用状态数据，应用再启动时被保存在[onCreate](#oncreate)的 Want.parameters中。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -740,53 +660,6 @@ export default class MyUIAbility extends UIAbility {
 }
 ```
 
-## onSaveState
-
-```TypeScript
-onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, RecordData>): AbilityConstant.OnSaveResult
-```
-
-该接口需要与[appRecovery](arkts-app-ability-apprecovery.md)配合使用。如果应用已使能故障恢复功能（即 [enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md)接口中的saveOccasion参数设置为 SAVE_WHEN_ERROR），当应用出现故障时，系统将触发该回调来保存UIAbility的数据。 > **说明：** > > 从API version 20开始，当 > [onSaveStateAsync](#onsavestateasync) > 实现时，本回调函数将不执行。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UIAbility-onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, RecordData>): AbilityConstant.OnSaveResult--><!--Device-UIAbility-onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, RecordData>): AbilityConstant.OnSaveResult-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| reason | AbilityConstant.StateType | 是 | 触发应用保存状态的原因，当前仅支持APP_RECOVERY（即应用故障恢复场景）。 |
-| wantParam | Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | 用户自定义的应用状态数据，应用再启动时被保存在onCreate中的Want.parameters中。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| AbilityConstant.OnSaveResult | 返回一个数据保存策略的对象（如全部拒绝、全部允许、只允许故障恢复场景等）。 |
-
-**示例**
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
-import { RecordData } from '@kit.BasicServicesKit';
-
-export default class MyUIAbility extends UIAbility {
-  onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, RecordData>) {
-    console.info('onSaveState');
-    wantParam['myData'] = 'my1234567';
-    return AbilityConstant.OnSaveResult.RECOVERY_AGREE;
-  }
-}
-```
-
 ## onSaveStateAsync
 
 ```TypeScript
@@ -801,8 +674,6 @@ onSaveStateAsync(stateType: AbilityConstant.StateType, wantParam: Record<string,
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-UIAbility-onSaveStateAsync(stateType: AbilityConstant.StateType, wantParam: Record<string, Object>): Promise<AbilityConstant.OnSaveResult>--><!--Device-UIAbility-onSaveStateAsync(stateType: AbilityConstant.StateType, wantParam: Record<string, Object>): Promise<AbilityConstant.OnSaveResult>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **参数：**
@@ -810,13 +681,13 @@ onSaveStateAsync(stateType: AbilityConstant.StateType, wantParam: Record<string,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | stateType | AbilityConstant.StateType | 是 | 触发应用保存状态的原因，当前仅支持`APP_RECOVERY`（即应用故障恢复场景）。 |
-| wantParam | Record&lt;string, Object&gt; | 是 | 用户自定义的应用状态数据，应用再启动时被保存在[onCreate](#oncreate)的 Want.parameters中。 |
+| wantParam | Record & lt;string, Object & gt; | 是 | 用户自定义的应用状态数据，应用再启动时被保存在[onCreate](#oncreate)的 Want.parameters中。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AbilityConstant.OnSaveResult&gt; | Promise对象。返回一个数据保存策略的对象（如全部拒绝、全部允许、只允许故障恢复场景等）。 |
+| Promise & lt;AbilityConstant.OnSaveResult & gt; | Promise对象。返回一个数据保存策略的对象（如全部拒绝、全部允许、只允许故障恢复场景等）。 |
 
 **示例**
 
@@ -826,54 +697,6 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 class MyUIAbility extends UIAbility {
   async onSaveStateAsync(stateType: AbilityConstant.StateType,
     wantParam: Record<string, Object>): Promise<AbilityConstant.OnSaveResult> {
-    await new Promise<string>((res, rej) => {
-      setTimeout(res, 1000); // 延时1秒后执行
-    });
-    return AbilityConstant.OnSaveResult.RECOVERY_AGREE;
-  }
-}
-```
-
-## onSaveStateAsync
-
-```TypeScript
-onSaveStateAsync(stateType: AbilityConstant.StateType, wantParam: Record<string, RecordData>): Promise<AbilityConstant.OnSaveResult>
-```
-
-该接口需要与[appRecovery](arkts-app-ability-apprecovery.md)配合使用。如果应用已使能故障恢复功能（即 [enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md)接口中的saveOccasion参数设置为 SAVE_WHEN_ERROR），当应用出现故障时，将触发该回调来保存UIAbility的数据。使用Promise异步回调。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UIAbility-onSaveStateAsync(stateType: AbilityConstant.StateType, wantParam: Record<string, RecordData>): Promise<AbilityConstant.OnSaveResult>--><!--Device-UIAbility-onSaveStateAsync(stateType: AbilityConstant.StateType, wantParam: Record<string, RecordData>): Promise<AbilityConstant.OnSaveResult>-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| stateType | AbilityConstant.StateType | 是 | 触发应用保存状态的原因，当前仅支持`APP_RECOVERY`（即应用故障恢复场景）。 |
-| wantParam | Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | 用户自定义的应用状态数据，应用再启动时被保存在[onCreate](#oncreate)的 Want.parameters中。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;AbilityConstant.OnSaveResult&gt; | Promise对象。返回一个数据保存策略的对象（如全部拒绝、全部允许、只允许故障恢复场景等）。 |
-
-**示例**
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
-import { RecordData } from '@kit.BasicServicesKit';
-
-class MyUIAbility extends UIAbility {
-  async onSaveStateAsync(reason: AbilityConstant.StateType, wantParam: Record<string, RecordData>) : Promise<AbilityConstant.OnSaveResult> {
     await new Promise<string>((res, rej) => {
       setTimeout(res, 1000); // 延时1秒后执行
     });
@@ -896,15 +719,13 @@ onShare(wantParam: Record<string, Object>): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-UIAbility-onShare(wantParam: Record<string, Object>): void--><!--Device-UIAbility-onShare(wantParam: Record<string, Object>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wantParam | Record&lt;string, Object&gt; | 是 | 待分享的数据。<br>**起始版本：** 11 |
+| wantParam | Record & lt;string, Object & gt; | 是 | 待分享的数据。<br>**起始版本：** 11 |
 
 **示例**
 
@@ -919,60 +740,19 @@ export default class MyUIAbility extends UIAbility {
 }
 ```
 
-## onShare
-
-```TypeScript
-onShare(wantParam: Record<string, RecordData>): void
-```
-
-当跨端分享原子化服务时，系统触发该回调。开发者可以在该回调中设置待分享原子化服务的标题、摘要和URL等数据。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UIAbility-onShare(wantParam: Record<string, RecordData>): void--><!--Device-UIAbility-onShare(wantParam: Record<string, RecordData>): void-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| wantParam | Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | 待分享的数据。 |
-
-**示例**
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { UIAbility } from '@kit.AbilityKit';
-import { RecordData } from '@kit.BasicServicesKit';
-
-export default class MyUIAbility extends UIAbility {
-  onShare(wantParams: Record<string, RecordData>) {
-    console.info('onShare');
-    wantParams['ohos.extra.param.key.shareUrl'] = 'example.com';
-  }
-}
-```
-
 ## onWillBackground
 
 ```TypeScript
 onWillBackground(): void
 ```
 
-UIAbility生命周期回调，当应用从前台转到后台前触发，在[onBackground](#onbackground)前被调用。可在该回调中实现数据打点，例如，打点应用运行过程中发生的故障信息、统计 信息、安全信息、用户行为信息等。 同步接口，不支持异步回调。
+UIAbility生命周期回调，当应用从前台转到后台前触发，在[onBackground](#onbackground)前被调用。可在该回调中实现数据打点，例如，打点应用运行过程中发生的故障信息、统计 信息、安全信息、用户行为信息等。同步接口，不支持异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onWillBackground(): void--><!--Device-UIAbility-onWillBackground(): void-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -995,9 +775,8 @@ export default class MyUIAbility extends UIAbility {
       name: "test_event",
       eventType: hiAppEvent.EventType.FAULT,
       params: eventParams,
-    }, (error) => {
-      if (error) {
-        let err = error as BusinessError;
+    }, (err: BusinessError) => {
+      if (err) {
         hilog.error(0x0000, 'testTag', `hiAppEvent code: ${err.code}, message: ${err.message}`);
         return;
       }
@@ -1013,15 +792,13 @@ export default class MyUIAbility extends UIAbility {
 onWillForeground(): void
 ```
 
-UIAbility生命周期回调，应用转到前台前触发，在[onForeground](#onforeground)前被调用。可在该回调中实现采集应用开始进入前台的时间。如果与 [onDidForeground](#ondidforeground)配合使用，还可以统计出从应用开始进入前台到切换至前台状态的耗时。 同步接口，不支持异步回调。
+UIAbility生命周期回调，应用转到前台前触发，在[onForeground](#onforeground)前被调用。可在该回调中实现采集应用开始进入前台的时间。如果与 [onDidForeground](#ondidforeground)配合使用，还可以统计出从应用开始进入前台到切换至前台状态的耗时。同步接口，不支持异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onWillForeground(): void--><!--Device-UIAbility-onWillForeground(): void-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1050,8 +827,7 @@ export default class EntryAbility extends UIAbility {
     };
     hiAppEvent.write(eventInfo).then(() => {
       hilog.info(0x0000, 'testTag', `HiAppEvent success to write event`);
-    }).catch((error: Error) => {
-      let err = error as BusinessError;
+    }).catch((err: BusinessError) => {
       hilog.error(0x0000, 'testTag', `HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
     });
   }
@@ -1073,8 +849,7 @@ export default class EntryAbility extends UIAbility {
     };
     hiAppEvent.write(eventInfo).then(() => {
       hilog.info(0x0000, 'testTag', `HiAppEvent success to write event`);
-    }).catch((error: Error) => {
-      let err = error as BusinessError;
+    }).catch((err: BusinessError) => {
       hilog.error(0x0000, 'testTag', `HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
     });
   }
@@ -1089,13 +864,11 @@ onWindowStageCreate(windowStage: window.WindowStage): void
 
 当[WindowStage](../../apis-arkui/arkts-apis/arkts-arkui-window-n.md)实例创建完成后，系统会触发该回调。开发者可以在该回调中通过WindowStage加载页面。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onWindowStageCreate(windowStage: window.WindowStage): void--><!--Device-UIAbility-onWindowStageCreate(windowStage: window.WindowStage): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1116,7 +889,7 @@ export default class MyUIAbility extends UIAbility {
   // 主窗口已创建，为该UIAbility设置主页面
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/Index', (err, data) => {
-      if (err?.code) {
+      if (err.code) {
         hilog.error(0x0000, 'testTag', `Failed to load the content. Cause: ${JSON.stringify(err)}`);
         return;
       }
@@ -1132,15 +905,13 @@ export default class MyUIAbility extends UIAbility {
 onWindowStageDestroy(): void
 ```
 
-当WindowStage销毁后，系统触发该回调。该回调用于通知开发者WindowStage对象已被销毁，不能再继续使用。 仅当UIAbility正常退出时会触发该回调，异常退出场景（例如低内存终止进程）不会触发该回调。
+当WindowStage销毁后，系统触发该回调。该回调用于通知开发者WindowStage对象已被销毁，不能再继续使用。仅当UIAbility正常退出时会触发该回调，异常退出场景（例如低内存终止进程）不会触发该回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onWindowStageDestroy(): void--><!--Device-UIAbility-onWindowStageDestroy(): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1164,15 +935,20 @@ export default class MyUIAbility extends UIAbility {
 onWindowStageRestore(windowStage: window.WindowStage): void
 ```
 
-当UIAbility跨端迁移时，目标端UIAbility恢复页面栈时回调。 > **说明：** > > 在应用迁移启动时，无论是[冷启动](../../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)还是 > [热启动](../../../application-models/uiability-intra-device-interaction.md#目标uiability热启动)，都会在执行完 > [onCreate()](#oncreate)/[onNewWant()](#onnewwant)后，触发onWindowStageRestore()生命周期函数，不 > 执行onWindowStageCreate()生命周期函数。
+当UIAbility跨端迁移时，目标端UIAbility恢复页面栈时回调。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 在应用迁移启动时，无论是[冷启动](../../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)还是
+> [热启动](../../../application-models/uiability-intra-device-interaction.md#目标uiability热启动)，都会在执行完
+> [onCreate()](#oncreate)/[onNewWant()](#onnewwant)后，触发onWindowStageRestore()生命周期函数，不
+> 执行onWindowStageCreate()生命周期函数。
+
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onWindowStageRestore(windowStage: window.WindowStage): void--><!--Device-UIAbility-onWindowStageRestore(windowStage: window.WindowStage): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1204,13 +980,11 @@ onWindowStageWillDestroy(windowStage: window.WindowStage): void
 
 当WindowStage即将销毁时，系统触发该回调。开发者可以在该生命周期中取消windowStage事件的监听。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-onWindowStageWillDestroy(windowStage: window.WindowStage): void--><!--Device-UIAbility-onWindowStageWillDestroy(windowStage: window.WindowStage): void-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1244,11 +1018,9 @@ callee: Callee
 
 **类型：** [Callee](arkts-ability-app-ability-uiability-callee-i.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UIAbility-callee: Callee--><!--Device-UIAbility-callee: Callee-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1262,13 +1034,11 @@ UIAbility的上下文。
 
 **类型：** [UIAbilityContext](arkts-ability-uiabilitycontext-c.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-context: UIAbilityContext--><!--Device-UIAbility-context: UIAbilityContext-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1278,17 +1048,17 @@ UIAbility的上下文。
 lastRequestWant: Want
 ```
 
-最近一次拉起UIAbility请求的Want参数。 - 首次拉起UIAbility时，取值为[onCreate](#oncreate)接收到的Want参数。 - 重复拉起UIAbility时，取值为[onNewWant](#onnewwant)最近一次接收到的Want参数。
+最近一次拉起UIAbility请求的Want参数。  
+- 首次拉起UIAbility时，取值为[onCreate](#oncreate)接收到的Want参数。  
+- 重复拉起UIAbility时，取值为[onNewWant](#onnewwant)最近一次接收到的Want参数。
 
 **类型：** [Want](arkts-ability-app-ability-want-want-c.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-lastRequestWant: Want--><!--Device-UIAbility-lastRequestWant: Want-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1302,13 +1072,11 @@ UIAbility[冷启动](../../../application-models/uiability-intra-device-interact
 
 **类型：** [Want](arkts-ability-app-ability-want-want-c.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIAbility-launchWant: Want--><!--Device-UIAbility-launchWant: Want-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1326,7 +1094,4 @@ specifiedId?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UIAbility-specifiedId?: string--><!--Device-UIAbility-specifiedId?: string-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
-

@@ -4,18 +4,11 @@ SslErrorHandler是Web组件中处理SSL证书验证错误的类。当加载安�
 
 **起始版本：** 9
 
-<!--Device-unnamed-declare class SslErrorHandler--><!--Device-unnamed-declare class SslErrorHandler-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## constructor
@@ -29,8 +22,6 @@ SslErrorHandler的构造函数。
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SslErrorHandler-constructor()--><!--Device-SslErrorHandler-constructor()-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -46,8 +37,6 @@ handleCancel(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SslErrorHandler-handleCancel(): void--><!--Device-SslErrorHandler-handleCancel(): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## handleCancel
@@ -60,15 +49,13 @@ handleCancel(abortLoading: boolean): void
 
 **起始版本：** 20
 
-<!--Device-SslErrorHandler-handleCancel(abortLoading: boolean): void--><!--Device-SslErrorHandler-handleCancel(abortLoading: boolean): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| abortLoading | boolean | 是 | 是否在取消请求后停止加载页面。 <br>true表示停止加载页面，false表示继续加载页面。 |
+| abortLoading | boolean | 是 | 是否在取消请求后停止加载页面。 true表示停止加载页面，false表示继续加载页面。 |
 
 ## handleConfirm
 
@@ -82,7 +69,4 @@ handleConfirm(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SslErrorHandler-handleConfirm(): void--><!--Device-SslErrorHandler-handleConfirm(): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

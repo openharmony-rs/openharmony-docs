@@ -6,8 +6,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface BackgroundBlurStyleOptions--><!--Device-unnamed-declare interface BackgroundBlurStyleOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -23,7 +21,7 @@ inactiveColor?: ResourceColor
 
 模糊不生效时使用的背景色。该参数需配合policy参数使用。当policy使模糊失效时，控件模糊效果会被移除，如果设置了inactiveColor会使用inactiveColor作为控件背景色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **默认值：** Color.Transparent
 
@@ -33,8 +31,6 @@ inactiveColor?: ResourceColor
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BackgroundBlurStyleOptions-inactiveColor?: ResourceColor--><!--Device-BackgroundBlurStyleOptions-inactiveColor?: ResourceColor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## policy
@@ -43,7 +39,7 @@ inactiveColor?: ResourceColor
 policy?: BlurStyleActivePolicy
 ```
 
-模糊激活策略。 默认值：BlurStyleActivePolicy.ALWAYS_ACTIVE
+模糊激活策略。默认值：BlurStyleActivePolicy.ALWAYS_ACTIVE
 
 **类型：** [BlurStyleActivePolicy](arkts-arkui-blurstyleactivepolicy-e.md)
 
@@ -55,7 +51,4 @@ policy?: BlurStyleActivePolicy
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BackgroundBlurStyleOptions-policy?: BlurStyleActivePolicy--><!--Device-BackgroundBlurStyleOptions-policy?: BlurStyleActivePolicy-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

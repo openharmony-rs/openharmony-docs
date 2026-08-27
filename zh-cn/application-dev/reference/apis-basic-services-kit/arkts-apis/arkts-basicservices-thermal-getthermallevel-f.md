@@ -20,8 +20,6 @@ function getThermalLevel(): ThermalLevel
 
 **替代接口：** [getLevel](arkts-basicservices-thermal-getlevel-f.md)
 
-<!--Device-thermal-function getThermalLevel(): ThermalLevel--><!--Device-thermal-function getThermalLevel(): ThermalLevel-End-->
-
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
 **返回值：**
@@ -36,4 +34,3 @@ function getThermalLevel(): ThermalLevel
 let level = thermal.getThermalLevel();
 console.info('thermal level is: ' + level);
 ```
-

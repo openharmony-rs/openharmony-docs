@@ -10,8 +10,6 @@ declare type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: number) 
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: number) => CustomBuilder--><!--Device-unnamed-declare type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: number) => CustomBuilder-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -26,4 +24,3 @@ declare type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: number) 
 | 类型 | 说明 |
 | --- | --- |
 | [CustomBuilder](arkts-arkui-custombuilder-t.md) | 返回CustomBuilder用于构建被拖拽元素的拖拽图。返回void表示不能拖拽。 |
-

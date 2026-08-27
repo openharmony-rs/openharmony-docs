@@ -16,15 +16,15 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 ## 指定二进制数据转换3DES密钥
 
-查看[对称密钥生成和转换规格：3DES](crypto-sym-key-generation-conversion-spec.md#3des)。
+查看对称密钥生成和转换规格：3DES。
 
-1. 获取3DES二进制密钥数据，封装成[Crypto_DataBlob/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md)。
+1. 获取3DES二进制密钥数据，封装成Crypto_DataBlob。
 
-2. 调用[OH_CryptoSymKeyGenerator_Create/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create)，指定字符串参数'3DES192'，创建密钥算法为3DES、密钥长度为192位的对称密钥生成器（OH_CryptoSymKeyGenerator）。
+2. 调用OH_CryptoSymKeyGenerator_Create，指定字符串参数'3DES192'，创建密钥算法为3DES、密钥长度为192位的对称密钥生成器（OH_CryptoSymKeyGenerator）。
 
-3. 调用[OH_CryptoSymKeyGenerator_Convert/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_convert)，根据指定的对称密钥二进制数据生成对称密钥对象（OH_CryptoSymKey）。
+3. 调用OH_CryptoSymKeyGenerator_Convert，根据指定的对称密钥二进制数据生成对称密钥对象（OH_CryptoSymKey）。
 
-4. 调用[OH_CryptoSymKey_GetKeyData/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkey_getkeydata)，获取密钥对象的二进制数据。
+4. 调用OH_CryptoSymKey_GetKeyData，获取密钥对象的二进制数据。
 
 以下以生成3DES密钥为例：
 
@@ -35,7 +35,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 #include "CryptoArchitectureKit/crypto_sym_key.h"
 #include "file.h"
 
-OH_Crypto_ErrCode doTestDataCovertSymKey()
+OH_Crypto_ErrCode doTestDataConvertSymKey()
 {
     const char *algName = "3DES192";
     OH_CryptoSymKeyGenerator *ctx = nullptr;
@@ -68,15 +68,15 @@ OH_Crypto_ErrCode doTestDataCovertSymKey()
 
 ## 指定二进制数据转换HMAC密钥
 
-查看[对称密钥生成和转换规格：HMAC](crypto-sym-key-generation-conversion-spec.md#hmac)。
+查看对称密钥生成和转换规格：HMAC。
 
-1. 获取HMAC二进制密钥，封装成[Crypto_DataBlob/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md)。
+1. 获取HMAC二进制密钥，封装成Crypto_DataBlob。
 
-2. 调用[OH_CryptoSymKeyGenerator_Create/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create)，指定字符串参数'HMAC'，创建密钥算法为HMAC、密钥长度为[1, 32768]位的对称密钥生成器（OH_CryptoSymKeyGenerator）。
+2. 调用OH_CryptoSymKeyGenerator_Create，指定字符串参数'HMAC'，创建密钥算法为HMAC的对称密钥生成器（OH_CryptoSymKeyGenerator），其支持生成的密钥长度为[1, 4096]字节。
 
-3. 调用[OH_CryptoSymKeyGenerator_Convert/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_convert)，根据指定的对称密钥二进制数据生成对称密钥对象（OH_CryptoSymKey）。
+3. 调用OH_CryptoSymKeyGenerator_Convert，根据指定的对称密钥二进制数据生成对称密钥对象（OH_CryptoSymKey）。
 
-4. 调用[OH_CryptoSymKey_GetKeyData/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkey_getkeydata)，获取密钥对象的二进制数据。
+4. 调用OH_CryptoSymKey_GetKeyData，获取密钥对象的二进制数据。
 
 以下以生成HMAC密钥为例：
 

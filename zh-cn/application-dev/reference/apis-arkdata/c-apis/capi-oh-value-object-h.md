@@ -4,6 +4,8 @@
 
 提供类型转换方法。
 
+**引用文件：** database/rdb/oh_value_object.h
+
 **库：** libnative_rdb_ndk.z.so
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core

@@ -4,18 +4,11 @@
 
 **起始版本：** 23
 
-<!--Device-unnamed-declare interface CameraCaptureStateChangeInfo--><!--Device-unnamed-declare interface CameraCaptureStateChangeInfo-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## newState
@@ -29,8 +22,6 @@ newState: CameraCaptureState
 **类型：** [CameraCaptureState](arkts-arkweb-cameracapturestate-e.md)
 
 **起始版本：** 23
-
-<!--Device-CameraCaptureStateChangeInfo-newState: CameraCaptureState--><!--Device-CameraCaptureStateChangeInfo-newState: CameraCaptureState-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -46,7 +37,4 @@ originalState: CameraCaptureState
 
 **起始版本：** 23
 
-<!--Device-CameraCaptureStateChangeInfo-originalState: CameraCaptureState--><!--Device-CameraCaptureStateChangeInfo-originalState: CameraCaptureState-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

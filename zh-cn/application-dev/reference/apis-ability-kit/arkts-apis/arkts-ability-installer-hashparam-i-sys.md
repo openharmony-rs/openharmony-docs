@@ -2,9 +2,7 @@
 
 应用程序安装卸载哈希参数信息。
 
-**起始版本：** 23
-
-<!--Device-installer-export interface HashParam--><!--Device-installer-export interface HashParam-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -26,9 +24,7 @@ hashValue: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-HashParam-hashValue: string--><!--Device-HashParam-hashValue: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -44,11 +40,8 @@ moduleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-HashParam-moduleName: string--><!--Device-HashParam-moduleName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
-

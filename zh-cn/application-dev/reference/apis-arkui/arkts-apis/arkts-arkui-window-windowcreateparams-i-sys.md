@@ -2,17 +2,13 @@
 
 应用启动时的窗口参数配置。
 
-**起始版本：** 23
-
-<!--Device-window-interface WindowCreateParams--><!--Device-window-interface WindowCreateParams-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -32,8 +28,6 @@ isWindowLimitsForcible?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowCreateParams-isWindowLimitsForcible?: boolean--><!--Device-WindowCreateParams-isWindowLimitsForcible?: boolean-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -44,15 +38,12 @@ isWindowLimitsForcible?: boolean
 systemAnimationParams?: StartAnimationSystemParams
 ```
 
-启动动画配置，仅对全屏应用生效。 不同应用间跳转场景不生效，仍保持系统默认动效。
+启动动画配置，仅对全屏应用生效。不同应用间跳转场景不生效，仍保持系统默认动效。
 
 **类型：** [StartAnimationSystemParams](arkts-arkui-window-startanimationsystemparams-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-WindowCreateParams-systemAnimationParams?: StartAnimationSystemParams--><!--Device-WindowCreateParams-systemAnimationParams?: StartAnimationSystemParams-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
-

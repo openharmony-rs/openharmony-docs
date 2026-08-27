@@ -18,14 +18,14 @@ ArkUI框架提供了丰富的交互功能，支持直接处理基础输入事件
 
 指向性事件是指包含事件发生位置信息的事件，此类事件以此次交互的第一个事件（Down/Begin类型）发生时所命中的组件来确定派发目标。
 
-包括：[触摸事件/apis-arkui/arkui-ts/ts-universal-events-touch.md)，[鼠标事件/apis-arkui/arkui-ts/ts-universal-mouse-key.md)，[轴事件/apis-arkui/arkui-ts/ts-universal-events-axis.md)。
+包括：触摸事件，鼠标事件，轴事件。
 
 
 ### 非指向性事件
 
 非指向性事件是指没有具体位置信息的事件，即事件的发生不依赖于特定的操作位置信息。此类事件以当前焦点组件为派发目标。
 
-包括：[按键事件/apis-arkui/arkui-ts/ts-universal-events-key.md)，[表冠事件/apis-arkui/arkui-ts/ts-universal-events-crown.md)，[焦点轴事件/apis-arkui/arkui-ts/ts-universal-events-focus_axis.md)。
+包括：按键事件，表冠事件，焦点轴事件。
 
 
 ### 其他说明
@@ -42,16 +42,16 @@ ArkUI框架提供了丰富的交互功能，支持直接处理基础输入事件
 
 如果使用ArkUI系统组件，系统会自动识别和响应这些组件上的手势，如按钮、列表，也可以在组件上绑定处理手势。一个组件上可绑定多个手势，这些手势可以由组件内置默认绑定，也可以由应用显式绑定。这些手势会在用户按下时，通过命中测试被收集上来，由系统统一管理，所有手势都会持续接收到输入事件，直到有一个手势满足条件，在这之后，就只有这一个手势可以继续接收和处理输入事件。
 
-如果希望两个手势非此即彼，则可以考虑使用互斥手势，如果希望两个手势互不影响，则可以考虑使用并行手势，请参考[GestureGroup](arkts-gesture-events-combined-gestures.md)；
+如果希望两个手势非此即彼，则可以考虑使用互斥手势，如果希望两个手势互不影响，则可以考虑使用并行手势，请参考GestureGroup；
 
-如果希望在用户按下时，才动态决定哪些手势能够参与处理，请参考[手势冲突处理](arkts-gesture-events-gesture-judge.md)。
+如果希望在用户按下时，才动态决定哪些手势能够参与处理，请参考手势冲突处理。
 
 
 ## 统一拖拽
 
-请参考[支持统一拖拽](arkts-common-events-drag-event.md)。
+请参考支持统一拖拽。
 
 ## 焦点系统
 
-请参考[支持焦点处理](arkts-common-events-focus-event.md)。
+请参考支持焦点处理。
 

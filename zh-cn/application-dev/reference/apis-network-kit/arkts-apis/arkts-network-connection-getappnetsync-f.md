@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { connection } from '@kit.NetworkKit';
 ```
 
 ## getAppNetSync
@@ -15,8 +14,6 @@ function getAppNetSync(): NetHandle
 获取App绑定的网络信息。使用同步方式返回。
 
 **起始版本：** 10
-
-<!--Device-connection-function getAppNetSync(): NetHandle--><!--Device-connection-function getAppNetSync(): NetHandle-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -38,6 +35,7 @@ function getAppNetSync(): NetHandle
 ```TypeScript
 import { connection } from '@kit.NetworkKit';
 
+// 获取App绑定的网络信息
 let netHandle = connection.getAppNetSync();
+console.info('Succeeded to getAppNetSync:' + JSON.stringify(netHandle));
 ```
-

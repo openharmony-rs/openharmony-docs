@@ -20,8 +20,6 @@ function getTrustedDevices(): DeviceNodeInfo[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-conversation-function getTrustedDevices(): DeviceNodeInfo[]--><!--Device-conversation-function getTrustedDevices(): DeviceNodeInfo[]-End-->
-
 **系统能力：** SystemCapability.Communication.SoftBus.Core
 
 **系统接口：** 此接口为系统接口。
@@ -36,10 +34,10 @@ function getTrustedDevices(): DeviceNodeInfo[]
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. The application does not have the required permission to access distributed data. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [2000001](../../apis-distributedservice-kit/errorcode-conversation.md#2000001-内部错误) | Internal error. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [2000001](../errorcode-conversation.md#2000001-内部错误) | Internal error. |
 
 **示例**
 
@@ -58,4 +56,3 @@ try {
   console.error(`getTrustedDevices errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
-

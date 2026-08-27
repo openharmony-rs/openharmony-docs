@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-export declare interface Frame--><!--Device-unnamed-export declare interface Frame-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -14,7 +12,7 @@
 height: number
 ```
 
-组件的高度。 单位：vp 取值范围：[0, +∞) 负数按默认值处理。
+组件的高度。单位：vp取值范围：[0, +∞)负数按默认值处理。
 
 **类型：** number
 
@@ -23,8 +21,6 @@ height: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Frame-height: number--><!--Device-Frame-height: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +30,7 @@ height: number
 width: number
 ```
 
-组件的宽度。 单位：vp 取值范围：[0, +∞) 负数按默认值处理。
+组件的宽度。单位：vp取值范围：[0, +∞)负数按默认值处理。
 
 **类型：** number
 
@@ -43,8 +39,6 @@ width: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Frame-width: number--><!--Device-Frame-width: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +48,7 @@ width: number
 x: number
 ```
 
-水平方向位置。 单位：vp 取值范围：(-∞, +∞)
+水平方向位置。单位：vp取值范围：(-∞, +∞)
 
 **类型：** number
 
@@ -63,8 +57,6 @@ x: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Frame-x: number--><!--Device-Frame-x: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,7 +66,7 @@ x: number
 y: number
 ```
 
-垂直方向位置。 单位：vp 取值范围：(-∞, +∞)
+垂直方向位置。单位：vp取值范围：(-∞, +∞)
 
 **类型：** number
 
@@ -84,7 +76,4 @@ y: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Frame-y: number--><!--Device-Frame-y: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

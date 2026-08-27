@@ -9,14 +9,12 @@ import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ## cancelReminder
 
 ```TypeScript
-function cancelReminder(reminderId: int, callback: AsyncCallback<void>): void
+function cancelReminder(reminderId: number, callback: AsyncCallback<void>): void
 ```
 
 取消指定id的代理提醒。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-reminderAgentManager-function cancelReminder(reminderId: int, callback: AsyncCallback<void>): void--><!--Device-reminderAgentManager-function cancelReminder(reminderId: int, callback: AsyncCallback<void>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -24,20 +22,18 @@ function cancelReminder(reminderId: int, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reminderId | int | 是 | 需要取消的代理提醒的id。 代理提醒id会在 [发布代理提醒](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md) 时作为返回值返回。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 当取消代理提醒成功，err为undefined；否则为错误对象。 |
+| reminderId | number | 是 | 需要取消的代理提醒的id。 代理提醒id会在 [发布代理提醒](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md) 时作为返回值返回。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 当取消代理提醒成功，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | If the input parameter is not valid parameter. |
-| [1700003](../../apis-backgroundtasks-kit/errorcode-reminderAgentManager.md#1700003-提醒不存在) | The reminder does not exist. |
-| [1700004](../../apis-backgroundtasks-kit/errorcode-reminderAgentManager.md#1700004-包名不存在) | The bundle name does not exist. |
+| [1700003](../errorcode-reminderAgentManager.md#1700003-提醒不存在) | The reminder does not exist. |
+| [1700004](../errorcode-reminderAgentManager.md#1700004-包名不存在) | The bundle name does not exist. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -53,36 +49,16 @@ reminderAgentManager.cancelReminder(reminderId, (err: BusinessError) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { reminderAgentManager } from '@kit.BackgroundTasksKit';
-
-let cancelCallback = (err: BusinessError | null): void => {
-  if (err) {
-    console.error(`Failed to cancel reminder. Code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info(`Succeeded in canceling reminder`);
-  }
-}
-
-let reminderId: int = 1;
-reminderAgentManager.cancelReminder(reminderId, cancelCallback);
-```
-
 
 ## cancelReminder
 
 ```TypeScript
-function cancelReminder(reminderId: int): Promise<void>
+function cancelReminder(reminderId: number): Promise<void>
 ```
 
 取消指定id的代理提醒。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-reminderAgentManager-function cancelReminder(reminderId: int): Promise<void>--><!--Device-reminderAgentManager-function cancelReminder(reminderId: int): Promise<void>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -90,25 +66,23 @@ function cancelReminder(reminderId: int): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reminderId | int | 是 | 需要取消的代理提醒的id。 代理提醒id会在 [发布代理提醒](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md) 时作为返回值返回。 |
+| reminderId | number | 是 | 需要取消的代理提醒的id。 代理提醒id会在 [发布代理提醒](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md) 时作为返回值返回。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | If the input parameter is not valid parameter. |
-| [1700003](../../apis-backgroundtasks-kit/errorcode-reminderAgentManager.md#1700003-提醒不存在) | The reminder does not exist. |
-| [1700004](../../apis-backgroundtasks-kit/errorcode-reminderAgentManager.md#1700004-包名不存在) | The bundle name does not exist. |
+| [1700003](../errorcode-reminderAgentManager.md#1700003-提醒不存在) | The reminder does not exist. |
+| [1700004](../errorcode-reminderAgentManager.md#1700004-包名不存在) | The bundle name does not exist. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -121,17 +95,3 @@ reminderAgentManager.cancelReminder(reminderId).then(() => {
   console.error("promise err code:" + err.code + " message:" + err.message);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { reminderAgentManager } from '@kit.BackgroundTasksKit';
-
-let reminderId: int = 1;
-reminderAgentManager.cancelReminder(reminderId).then(() => {
-  console.info(`Succeeded in canceling reminder`);
-}).catch((err): void => {
-  console.error(`Failed to cancel reminder. Code is ${err.code}, message is ${err.message}`);
-});
-```
-

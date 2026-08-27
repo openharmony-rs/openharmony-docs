@@ -2,16 +2,13 @@
 
 XmlSerializer接口用于生成XML文件。该接口基于预分配的ArrayBuffer缓存区域，通过顺序调用元素写入方法（如startElement、setAttributes、setText和endElement）将XML文本写入缓存。
 
-**起始版本：** 23
-
-<!--Device-xml-class XmlSerializer--><!--Device-xml-class XmlSerializer-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { xml } from '@kit.ArkTS';
 ```
 
 ## addEmptyElement
@@ -20,13 +17,15 @@ import { xml } from '@kit.ArkTS';
 addEmptyElement(name: string): void
 ```
 
-添加一个空元素。 > **说明：** > > 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如不允许添加数字开头的元素名称。
+添加一个空元素。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如不允许添加数字开头的元素名称。
+
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-XmlSerializer-addEmptyElement(name: string): void--><!--Device-XmlSerializer-addEmptyElement(name: string): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -49,19 +48,32 @@ let result = util.TextDecoder.create().decodeToString(uint8);
 console.info(result); // <d/>
 ```
 
+```TypeScript
+import { util } from '@kit.ArkTS';
+
+let serializer = new xml.XmlDynamicSerializer('utf-8');
+serializer.addEmptyElement("d");
+let arrayBuffer = serializer.getOutput();
+let uint8 = new Uint8Array(arrayBuffer);
+let result = util.TextDecoder.create().decodeToString(uint8);
+console.info(result); // <d/>
+```
+
 ## constructor
 
 ```TypeScript
 constructor(buffer: ArrayBuffer | DataView, encoding?: string)
 ```
 
-构造并返回一个XmlSerializer对象，用于将XML信息写入指定的ArrayBuffer或DataView内存中。 > **说明：** > > buffer是开发者根据需要自定义大小的缓冲区，用于临时存储生成的XML文本。在使用过程中必须确保缓冲区足以容纳生成的文本内容。
+构造并返回一个XmlSerializer对象，用于将XML信息写入指定的ArrayBuffer或DataView内存中。
 
-**起始版本：** 23
+> **说明：**
+> 
+> buffer是开发者根据需要自定义大小的缓冲区，用于临时存储生成的XML文本。在使用过程中必须确保缓冲区足以容纳生成的文本内容。
+
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-XmlSerializer-constructor(buffer: ArrayBuffer | DataView, encoding?: string)--><!--Device-XmlSerializer-constructor(buffer: ArrayBuffer | DataView, encoding?: string)-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -79,19 +91,30 @@ let arrayBuffer = new ArrayBuffer(2048);
 let xmlSerializer = new xml.XmlSerializer(arrayBuffer, "utf-8");
 ```
 
+```TypeScript
+import { util } from '@kit.ArkTS';
+
+let strXml = '<title>Happy</title>'
+let textEncoder = new util.TextEncoder();
+let uint8Array = textEncoder.encodeInto(strXml);
+let xmlParser = new xml.XmlPullParser(uint8Array.buffer as object as ArrayBuffer, 'UTF-8');
+```
+
 ## endElement
 
 ```TypeScript
 endElement(): void
 ```
 
-添加元素结束标记。 > **说明：** > > 调用该接口前必须先调用[startElement](#startelement)接口写入元素开始标记。
+添加元素结束标记。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 调用该接口前必须先调用[startElement](#startelement)接口写入元素开始标记。
+
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-XmlSerializer-endElement(): void--><!--Device-XmlSerializer-endElement(): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -111,19 +134,36 @@ console.info(result);
 // <note>Happy</note>
 ```
 
+```TypeScript
+import { util } from '@kit.ArkTS';
+
+let serializer = new xml.XmlDynamicSerializer('utf-8');
+serializer.startElement("note");
+serializer.setText("Happy");
+serializer.endElement();
+let arrayBuffer = serializer.getOutput();
+let uint8 = new Uint8Array(arrayBuffer);
+let result = util.TextDecoder.create().decodeToString(uint8);
+console.info(result); // <note>Happy</note>
+```
+
 ## setAttributes
 
 ```TypeScript
 setAttributes(name: string, value: string): void
 ```
 
-添加元素的属性和属性值。 > **说明：** > > 该接口必须在[startElement](#startelement)之后调用，用于为当前已开启的元素设置属性。在元素开始标记写入之前调用此接口将产生无效XML。 > > 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如不允许添加数字开头的属性名称以及添加多个同名的属性名称。
+添加元素的属性和属性值。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 该接口必须在[startElement](#startelement)之后调用，用于为当前已开启的元素设置属性。在元素开始标记写入之前调用此接口将产生无效XML。
+> 
+> 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如不允许添加数字开头的属性名称以及添加多个同名的属性名称。
+
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-XmlSerializer-setAttributes(name: string, value: string): void--><!--Device-XmlSerializer-setAttributes(name: string, value: string): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -149,19 +189,34 @@ let result = util.TextDecoder.create().decodeToString(uint8);
 console.info(result); // <note importance="high"/>
 ```
 
+```TypeScript
+import { util } from '@kit.ArkTS';
+
+let serializer = new xml.XmlDynamicSerializer('utf-8');
+serializer.startElement("note");
+serializer.setAttributes("importance", "high");
+serializer.endElement();
+let arrayBuffer = serializer.getOutput();
+let uint8 = new Uint8Array(arrayBuffer);
+let result = util.TextDecoder.create().decodeToString(uint8);
+console.info(result); // <note importance="high"/>
+```
+
 ## setCDATA
 
 ```TypeScript
 setCDATA(text: string): void
 ```
 
-提供在CDATA标签中添加数据的能力，适用于XML内容中包含特殊字符（如&lt;、&等）需要原样保留而不被XML解析器处理的场景。所生成的CDATA标签结构为：`<![CDATA[` + 所添加的数据 + `]]>`。 &gt; **说明：** > > 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如不允许在CDATA标签中添加包含"\]\]\>"字符串的数据。
+提供在CDATA标签中添加数据的能力，适用于XML内容中包含特殊字符（如&lt;、&等）需要原样保留而不被XML解析器处理的场景。所生成的CDATA标签结构为：`<![CDATA[` + 所添加的数据 + `]]>`。
 
-**起始版本：** 23
+&gt; **说明：**
+> 
+> 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如不允许在CDATA标签中添加包含"\]\]\&gt;"字符串的数据。
+
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-XmlSerializer-setCDATA(text: string): void--><!--Device-XmlSerializer-setCDATA(text: string): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -192,11 +247,9 @@ setComment(text: string): void
 
 添加注释内容，所生成的注释结构为：`<!--` + 注释内容 + `-->`。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-XmlSerializer-setComment(text: string): void--><!--Device-XmlSerializer-setComment(text: string): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -219,6 +272,17 @@ let result = util.TextDecoder.create().decodeToString(uint8);
 console.info(result); // <!--Hello, World!-->
 ```
 
+```TypeScript
+import { util } from '@kit.ArkTS';
+
+let serializer = new xml.XmlDynamicSerializer('utf-8');
+serializer.setComment("Hello, World!");
+let arrayBuffer = serializer.getOutput();
+let uint8 = new Uint8Array(arrayBuffer);
+let result = util.TextDecoder.create().decodeToString(uint8);
+console.info(result); // <!--Hello, World!-->
+```
+
 ## setDeclaration
 
 ```TypeScript
@@ -227,11 +291,9 @@ setDeclaration(): void
 
 设置带有编码信息的文件声明，调用后将在XML文本中生成`&lt;?xml version="1.0" encoding="utf-8"?&gt;`格式的声明。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-XmlSerializer-setDeclaration(): void--><!--Device-XmlSerializer-setDeclaration(): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -249,6 +311,17 @@ console.info(result);
 // <?xml version="1.0" encoding="utf-8"?>
 ```
 
+```TypeScript
+import { util } from '@kit.ArkTS';
+
+let serializer = new xml.XmlDynamicSerializer('utf-8');
+serializer.setDeclaration();
+let arrayBuffer = serializer.getOutput();
+let uint8 = new Uint8Array(arrayBuffer);
+let result = util.TextDecoder.create().decodeToString(uint8);
+console.info(result); // <?xml version="1.0" encoding="utf-8"?>
+```
+
 ## setDocType
 
 ```TypeScript
@@ -257,11 +330,9 @@ setDocType(text: string): void
 
 添加文档类型，调用后将在XML文本中生成`&lt;!DOCTYPE ...&gt;`格式的文档类型声明。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-XmlSerializer-setDocType(text: string): void--><!--Device-XmlSerializer-setDocType(text: string): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -284,19 +355,34 @@ let result = util.TextDecoder.create().decodeToString(uint8);
 console.info(result); // <!DOCTYPE root SYSTEM "http://www.test.org/test.dtd">
 ```
 
+```TypeScript
+import { util } from '@kit.ArkTS';
+
+let serializer = new xml.XmlDynamicSerializer('utf-8');
+serializer.setDocType('root SYSTEM "http://www.test.org/test.dtd"');
+let arrayBuffer = serializer.getOutput();
+let uint8 = new Uint8Array(arrayBuffer);
+let result = util.TextDecoder.create().decodeToString(uint8);
+console.info(result); // <!DOCTYPE root SYSTEM "http://www.test.org/test.dtd">
+```
+
 ## setNamespace
 
 ```TypeScript
 setNamespace(prefix: string, namespace: string): void
 ```
 
-添加当前元素标记的命名空间，适用于需要在同一XML文档中区分来自不同词汇表或模式的元素的场景，如混合使用多个XML标准的文档。 > **说明：** > > 该接口应在[startElement](#startelement)之前调用，为即将开启的元素设置命名空间前缀。调用顺序：先调用setNamespace设置命名空间，再调用startElement开启元素。 > > 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如禁止添加数字开头的前缀以及为同一个元素设置多个命名空间。
+添加当前元素标记的命名空间，适用于需要在同一XML文档中区分来自不同词汇表或模式的元素的场景，如混合使用多个XML标准的文档。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 该接口应在[startElement](#startelement)之前调用，为即将开启的元素设置命名空间前缀。调用顺序：先调用setNamespace设置命名空间，再调用startElement开启元素。
+> 
+> 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如禁止添加数字开头的前缀以及为同一个元素设置多个命名空间。
+
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-XmlSerializer-setNamespace(prefix: string, namespace: string): void--><!--Device-XmlSerializer-setNamespace(prefix: string, namespace: string): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -323,19 +409,34 @@ console.info(result);
 // <h:note xmlns:h="http://www.w3.org/TR/html4/"/>
 ```
 
+```TypeScript
+import { util } from '@kit.ArkTS';
+
+let serializer = new xml.XmlDynamicSerializer('utf-8');
+serializer.setNamespace("h", "http://www.w3.org/TR/html4/");
+serializer.startElement("note");
+serializer.endElement();
+let arrayBuffer = serializer.getOutput();
+let uint8 = new Uint8Array(arrayBuffer);
+let result = util.TextDecoder.create().decodeToString(uint8);
+console.info(result); // <h:note xmlns:h="http://www.w3.org/TR/html4/"/>
+```
+
 ## setText
 
 ```TypeScript
 setText(text: string): void
 ```
 
-添加标签值，标签值将作为当前元素的文本内容，写入元素的开始标记与结束标记之间。 > **说明：** > > 调用该接口前必须先调用[startElement](#startelement)接口写入元素开始标记。
+添加标签值，标签值将作为当前元素的文本内容，写入元素的开始标记与结束标记之间。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 调用该接口前必须先调用[startElement](#startelement)接口写入元素开始标记。
+
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-XmlSerializer-setText(text: string): void--><!--Device-XmlSerializer-setText(text: string): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -361,19 +462,37 @@ let result = util.TextDecoder.create().decodeToString(uint8);
 console.info(result); // <note importance="high">Happy</note>
 ```
 
+```TypeScript
+import { util } from '@kit.ArkTS';
+
+let serializer = new xml.XmlDynamicSerializer('utf-8');
+serializer.startElement("note");
+serializer.setAttributes("importance", "high");
+serializer.setText("Happy");
+serializer.endElement();
+let arrayBuffer = serializer.getOutput();
+let uint8 = new Uint8Array(arrayBuffer);
+let result = util.TextDecoder.create().decodeToString(uint8);
+console.info(result); // <note importance="high">Happy</note>
+```
+
 ## startElement
 
 ```TypeScript
 startElement(name: string): void
 ```
 
-根据给定名称添加元素开始标记。 > **说明：** > > - 调用该接口后须调用[endElement](#endelement)写入元素结束标记，以确保节点正确闭合。 > > - 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许添加数字开头的元素名称。
+根据给定名称添加元素开始标记。
 
-**起始版本：** 23
+> **说明：**
+> 
+> - 调用该接口后须调用[endElement](#endelement)写入元素结束标记，以确保节点正确闭合。
+> 
+> - 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许添加数字开头的元素名称。
+
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-XmlSerializer-startElement(name: string): void--><!--Device-XmlSerializer-startElement(name: string): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -399,3 +518,15 @@ console.info(result);
 // <note>Happy</note>
 ```
 
+```TypeScript
+import { util } from '@kit.ArkTS';
+
+let serializer = new xml.XmlDynamicSerializer('utf-8');
+serializer.startElement("note");
+serializer.setText("Happy");
+serializer.endElement();
+let arrayBuffer = serializer.getOutput();
+let uint8 = new Uint8Array(arrayBuffer);
+let result = util.TextDecoder.create().decodeToString(uint8);
+console.info(result); // <note>Happy</note>
+```

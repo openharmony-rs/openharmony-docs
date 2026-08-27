@@ -8,8 +8,6 @@ wantConstant模块提供want中操作want常数和解释Flags说明的能力。
 
 **替代接口：** [wantConstant/wantConstant](arkts-app-ability-wantconstant.md)
 
-<!--Device-unnamed-declare namespace wantConstant--><!--Device-unnamed-declare namespace wantConstant-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 ## 导入模块
@@ -34,4 +32,3 @@ wantConstant模块提供want中操作want常数和解释Flags说明的能力。
 | --- | --- |
 | [Flags](arkts-ability-wantconstant-flags-depr-e-sys.md) | Flags说明。用于表示处理Want的方式。 |
 <!--DelEnd-->
-

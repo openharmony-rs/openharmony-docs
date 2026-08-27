@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface RichEditorImageSpanStyle--><!--Device-unnamed-declare interface RichEditorImageSpanStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ layoutStyle?: RichEditorLayoutStyle
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorImageSpanStyle-layoutStyle?: RichEditorLayoutStyle--><!--Device-RichEditorImageSpanStyle-layoutStyle?: RichEditorLayoutStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## objectFit
@@ -39,9 +35,9 @@ layoutStyle?: RichEditorLayoutStyle
 objectFit?: ImageFit
 ```
 
-图片缩放类型。 默认值：ImageFit.Cover。
+图片缩放类型。默认值：ImageFit.Cover。
 
-**类型：** ImageFit
+**类型：** [ImageFit](../arkts-apis/arkts-arkui-imagefit-e.md)
 
 **起始版本：** 10
 
@@ -49,7 +45,23 @@ objectFit?: ImageFit
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorImageSpanStyle-objectFit?: ImageFit--><!--Device-RichEditorImageSpanStyle-objectFit?: ImageFit-End-->
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## resizable
+
+```TypeScript
+resizable?: ResizableOptions
+```
+
+图片拉伸选项。
+
+**类型：** [ResizableOptions](arkts-arkui-resizableoptions-i.md)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,8 +81,6 @@ size?: [Dimension, Dimension]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorImageSpanStyle-size?: [Dimension, Dimension]--><!--Device-RichEditorImageSpanStyle-size?: [Dimension, Dimension]-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## verticalAlign
@@ -79,9 +89,9 @@ size?: [Dimension, Dimension]
 verticalAlign?: ImageSpanAlignment
 ```
 
-图片垂直对齐方式。 默认值：ImageSpanAlignment.BOTTOM
+图片垂直对齐方式。默认值：ImageSpanAlignment.BOTTOM
 
-**类型：** ImageSpanAlignment
+**类型：** [ImageSpanAlignment](../arkts-apis/arkts-arkui-imagespanalignment-e.md)
 
 **起始版本：** 10
 
@@ -89,7 +99,4 @@ verticalAlign?: ImageSpanAlignment
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorImageSpanStyle-verticalAlign?: ImageSpanAlignment--><!--Device-RichEditorImageSpanStyle-verticalAlign?: ImageSpanAlignment-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

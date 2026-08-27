@@ -2,9 +2,7 @@
 
 融合资产信息。
 
-**起始版本：** 26.0.0
-
-<!--Device-photoAccessHelper-interface FusionAssetsInfo--><!--Device-photoAccessHelper-interface FusionAssetsInfo-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -19,16 +17,14 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ## assetsCount
 
 ```TypeScript
-assetsCount: int
+assetsCount: number
 ```
 
 资产数量。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 26.0.0
-
-<!--Device-FusionAssetsInfo-assetsCount: int--><!--Device-FusionAssetsInfo-assetsCount: int-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -44,9 +40,7 @@ assetsPath: string
 
 **类型：** string
 
-**起始版本：** 26.0.0
-
-<!--Device-FusionAssetsInfo-assetsPath: string--><!--Device-FusionAssetsInfo-assetsPath: string-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -62,11 +56,8 @@ assetsType: FusionAssetType
 
 **类型：** [FusionAssetType](arkts-medialibrary-photoaccesshelper-fusionassettype-e-sys.md)
 
-**起始版本：** 26.0.0
-
-<!--Device-FusionAssetsInfo-assetsType: FusionAssetType--><!--Device-FusionAssetsInfo-assetsType: FusionAssetType-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

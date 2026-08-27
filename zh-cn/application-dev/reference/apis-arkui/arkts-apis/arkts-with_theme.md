@@ -11,7 +11,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [WithThemeAttribute(Defines WithTheme component.)](arkts-arkui-withthemeattribute-c.md) | 不支持通用属性。 不支持通用事件。 |
+| [WithThemeAttribute(Defines WithTheme component.)](arkts-arkui-withthemeattribute-c.md) | 不支持通用属性。不支持通用事件。 |
 
 ### 接口
 
@@ -30,6 +30,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [WithTheme(Defines WithTheme component.)](arkts-arkui-with-theme-con.md#withtheme) | Defines WithTheme Logic Component. |
-| [WithThemeInstance(Defines WithTheme component.)](arkts-arkui-with-theme-con.md#withthemeinstance) | Defines WithTheme Logic Component Instance. |
-
+| [WithTheme(Defines WithTheme component.)](arkts-arkui-withtheme-con.md) | Defines WithTheme Logic Component. |
+| [WithThemeInstance(Defines WithTheme component.)](arkts-arkui-withtheme-con.md#withthemeinstance) | Defines WithTheme Logic Component Instance. |

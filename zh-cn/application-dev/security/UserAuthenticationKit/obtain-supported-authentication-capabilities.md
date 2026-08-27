@@ -11,7 +11,7 @@
 
 ## 接口说明
 
-具体参数、返回值、错误码等描述，请参考对应的[userAuth.getAvailableStatus/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetavailablestatus9)。
+具体参数、返回值、错误码等描述，请参考对应的userAuth.getAvailableStatus。
 
 | 接口名称 | 功能描述 | 
 | -------- | -------- |
@@ -19,11 +19,11 @@
 
 ## 开发步骤
 
-1. [申请权限](prerequisites.md#申请权限)：ohos.permission.ACCESS_BIOMETRIC。
+1. 申请权限：ohos.permission.ACCESS_BIOMETRIC。
 
-2. 指定认证类型（[UserAuthType/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthtype8)）和认证等级（[AuthTrustLevel/apis-user-authentication-kit/js-apis-useriam-userauth.md#authtrustlevel8)），调用[getAvailableStatus/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetavailablestatus9)接口查询当前的设备是否支持相应的认证能力。
+2. 指定认证类型（UserAuthType）和认证等级（AuthTrustLevel），调用getAvailableStatus接口查询当前的设备是否支持相应的认证能力。
 
-   认证可信等级的详细介绍请参见[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。
+   认证可信等级的详细介绍请参见认证可信等级划分原则。
 
 以查询设备是否支持认证可信等级≥ATL3的人脸认证功能为例：
 
@@ -47,4 +47,4 @@ obtainingSupported() {
 
 ## 示例代码
 
-  - [查询支持的认证能力](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [查询支持的认证能力](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)

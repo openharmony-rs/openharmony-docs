@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { hichecker } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## containsCheckRule
@@ -14,9 +13,7 @@ function containsCheckRule(rule: bigint) : boolean
 
 当前已添加的规则集中是否包含了某一个特定的规则。如果传入的规则级别为线程级别，则仅在当前线程中进行查询。
 
-**起始版本：** 23
-
-<!--Device-hichecker-function containsCheckRule(rule: bigint) : boolean--><!--Device-hichecker-function containsCheckRule(rule: bigint) : boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
@@ -54,4 +51,3 @@ try {
     console.error(`code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
 }
 ```
-

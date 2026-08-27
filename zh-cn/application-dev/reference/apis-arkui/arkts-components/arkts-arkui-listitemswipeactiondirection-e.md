@@ -4,8 +4,6 @@ ListItem划出菜单的展开方向。
 
 **起始版本：** 21
 
-<!--Device-unnamed-declare enum ListItemSwipeActionDirection--><!--Device-unnamed-declare enum ListItemSwipeActionDirection-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## START
@@ -21,8 +19,6 @@ START = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ListItemSwipeActionDirection-START = 0--><!--Device-ListItemSwipeActionDirection-START = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +36,4 @@ END = 1
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ListItemSwipeActionDirection-END = 1--><!--Device-ListItemSwipeActionDirection-END = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

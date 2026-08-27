@@ -3,10 +3,10 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
-本页面提供应用图标和名称的配置指导。应用图标分为单层图标和分层图标。单层图标包含一个图片，分层图标包含前景图和背景图。图标规范详见<!--RP1-->[设计原则](https://docs.openharmony.cn/pages/v6.0/zh-cn/design/ux-design/visual-icons.md#%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99)<!--RP1End-->，图标和名称配置约束详见[图标和名称配置](../application-models/application-component-configuration-stage.md#应用图标和名称配置)。
+本页面提供应用图标和名称的配置指导。应用图标分为单层图标和分层图标。单层图标包含一个图片，分层图标包含前景图和背景图。图标规范详见<!--RP1-->设计原则<!--RP1End-->，图标和名称配置约束详见图标和名称配置。
 
 ## 使用场景
 
@@ -49,7 +49,7 @@
 >
 > 例如，app.json5和module.json5中配置的分层图标的资源文件名称一致、图标不一致，AppScope目录下的资源文件会覆盖模块中的文件，最后的效果是app.json5中的配置图标生效。
 > 
-> 如果应用配置中未设置入口UIAbility，点击桌面图标将直接进入应用详情页（设置->应用和元服务下，点击任意应用即可进入该应用的应用详情页）。其他情况下，点击桌面图标将直接进入应用页面。应用未配置入口UIAbility包含2种场景：
+> 如果应用配置中未设置入口UIAbility，点击桌面图标将直接进入应用详情页（设置->应用和原子化服务下，点击任意应用即可进入该应用的应用详情页）。其他情况下，点击桌面图标将直接进入应用页面。应用未配置入口UIAbility包含2种场景：
 >
 >   1. 应用没有配置任何UIAbility。
 >   2. 所有UIAbility中skills标签下的entities未配置或配置内容不包括 "entity.system.home"，并且actions未配置或配置内容不包括 "ohos.want.action.home"。
@@ -127,7 +127,7 @@
         }
       }
       ```
-  3. 在[app.json5配置文件](app-configuration-file.md)中引用分层图标资源文件。示例如下：
+  3. 在app.json5配置文件中引用分层图标资源文件。示例如下：
 
       <!-- @[layered_image_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/AppScope/app.json5) -->
       
@@ -199,9 +199,9 @@
 
 ## 配置备用图标
 
-从API版本26.0.0开始，配置备用图标可在应用运行时动态切换，适用于用户偏好、节日主题、品牌活动等场景。开发者可以在[app.json5配置文件](app-configuration-file.md#alternateicons标签)的alternateIcons标签中预先配置多个备用图标，最多可以配置1024个，可参考下方步骤进行动态切换。
+从API版本26.0.0开始，配置备用图标可在应用运行时动态切换，适用于用户偏好、节日主题、品牌活动等场景。开发者可以在app.json5配置文件的alternateIcons标签中预先配置多个备用图标，最多可以配置1024个，可参考下方步骤进行动态切换。
 
-备用图标支持单层图标和分层图标，资源文件的准备和配置方式分别参考[配置单层图标和应用名称](#配置单层图标和应用名称)和[配置分层图标和应用名称](#配置分层图标和应用名称)。
+备用图标支持单层图标和分层图标，资源文件的准备和配置方式分别参考配置单层图标和应用名称和配置分层图标和应用名称。
 
 >
 > **说明：**
@@ -213,7 +213,7 @@
 > - 分身应用不支持设置和查询备用图标。
 >
 
-1. 在[app.json5配置文件](app-configuration-file.md)中添加[alternateIcons标签](app-configuration-file.md#alternateicons标签)，声明备用图标列表。
+1. 在app.json5配置文件中添加alternateIcons标签，声明备用图标列表。
 
     <!-- @[layered_image_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/AppScope/app.json5) -->
     
@@ -235,7 +235,7 @@
     }
     ```
 
-2. 使用[bundleManager.setAlternateIcon/apis-ability-kit/js-apis-bundleManager.md#bundlemanagersetalternateicon)接口设置备用图标，传入alternateIcons标签中配置的name字段值即可启用对应备用图标。
+2. 使用bundleManager.setAlternateIcon接口设置备用图标，传入alternateIcons标签中配置的name字段值即可启用对应备用图标。
 
     <!-- @[layered_image_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/entry/src/main/ets/pages/Index.ets)  -->
     
@@ -282,7 +282,7 @@
     }
     ```
 
-3. 调用[bundleManager.setAlternateIcon/apis-ability-kit/js-apis-bundleManager.md#bundlemanagersetalternateicon)接口传入空字符串可恢复默认图标。
+3. 调用bundleManager.setAlternateIcon接口传入空字符串可恢复默认图标。
 
     <!-- @[layered_image_007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/entry/src/main/ets/pages/Index.ets)  -->
     
@@ -327,7 +327,7 @@
     }
     ```
 
-4. 使用[bundleManager.getAlternateIcons/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetalternateicons)接口查询备用图标信息。返回的[AlternateIconInfo/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#alternateiconinfo)数组包含每个备用图标的名称（iconName）、资源ID（iconId）和启用状态（enabled）。
+4. 使用bundleManager.getAlternateIcons接口查询备用图标信息。返回的AlternateIconInfo数组包含每个备用图标的名称（iconName）、资源ID（iconId）和启用状态（enabled）。
 
     <!-- @[layered_image_008](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/entry/src/main/ets/pages/Index.ets)  -->
     
@@ -376,4 +376,4 @@
 
 系统对无图标应用实施严格管控，防止一些恶意应用故意配置无桌面应用图标，导致用户找不到软件所在的位置，无法操作卸载应用，在一定程度上保证用户终端设备的安全。因此除预置应用外，其他应用不支持隐藏桌面图标。
 
-如果预置应用确需隐藏桌面应用图标，必须配置AllowAppDesktopIconHide[应用特权](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#通用应用特权)，具体配置方式参考应用特权配置指南。申请该特权后，应用不会在桌面上显示。<!--DelEnd-->
+如果预置应用确需隐藏桌面应用图标，必须配置AllowAppDesktopIconHide应用特权，具体配置方式参考应用特权配置指南。申请该特权后，应用不会在桌面上显示。<!--DelEnd-->

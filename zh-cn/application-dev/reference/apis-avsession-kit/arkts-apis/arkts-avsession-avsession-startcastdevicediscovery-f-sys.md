@@ -14,9 +14,7 @@ function startCastDeviceDiscovery(callback: AsyncCallback<void>): void
 
 开始设备搜索发现。结果通过callback异步回调方式返回。
 
-**起始版本：** 23
-
-<!--Device-avSession-function startCastDeviceDiscovery(callback: AsyncCallback<void>): void--><!--Device-avSession-function startCastDeviceDiscovery(callback: AsyncCallback<void>): void-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -26,7 +24,7 @@ function startCastDeviceDiscovery(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功并开始搜索，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功并开始搜索，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -46,14 +44,12 @@ avSession.startCastDeviceDiscovery(() => {
 ## startCastDeviceDiscovery
 
 ```TypeScript
-function startCastDeviceDiscovery(filter: int, callback: AsyncCallback<void>): void
+function startCastDeviceDiscovery(filter: number, callback: AsyncCallback<void>): void
 ```
 
 指定过滤条件，开始设备搜索发现。结果通过callback异步回调方式返回。
 
-**起始版本：** 23
-
-<!--Device-avSession-function startCastDeviceDiscovery(filter: int, callback: AsyncCallback<void>): void--><!--Device-avSession-function startCastDeviceDiscovery(filter: int, callback: AsyncCallback<void>): void-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -63,22 +59,22 @@ function startCastDeviceDiscovery(filter: int, callback: AsyncCallback<void>): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filter | int | 是 | 进行设备发现的过滤条件，由ProtocolType组合而成。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功并开始搜索，err为undefined，否则返回错误对象。 |
+| filter | number | 是 | 进行设备发现的过滤条件，由ProtocolType组合而成。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功并开始搜索，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **示例**
 
 ```TypeScript
 let filter = 2;
-avSession.startCastDeviceDiscovery(filter, (err) => {
-  console.info('startCastDeviceDiscovery successfully');
+avSession.startCastDeviceDiscovery(filter, () => {
+    console.info('Succeeded in starting cast device discovery.');
 });
 ```
 
@@ -86,14 +82,12 @@ avSession.startCastDeviceDiscovery(filter, (err) => {
 ## startCastDeviceDiscovery
 
 ```TypeScript
-function startCastDeviceDiscovery(filter?: int, drmSchemes?: Array<string>): Promise<void>
+function startCastDeviceDiscovery(filter?: number, drmSchemes?: Array<string>): Promise<void>
 ```
 
 开始设备搜索发现。结果通过Promise异步回调方式返回。
 
-**起始版本：** 23
-
-<!--Device-avSession-function startCastDeviceDiscovery(filter?: int, drmSchemes?: Array<string>): Promise<void>--><!--Device-avSession-function startCastDeviceDiscovery(filter?: int, drmSchemes?: Array<string>): Promise<void>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -103,14 +97,14 @@ function startCastDeviceDiscovery(filter?: int, drmSchemes?: Array<string>): Pro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filter | int | 否 | 进行设备发现的过滤条件，由ProtocolType组合而成。<br>**起始版本：** 12 |
-| drmSchemes | Array&lt;string&gt; | 否 | 进行支持DRM资源播放的设备发现的过滤条件，由DRM uuid组合而成。 <br/>从API version 12开始支持该可选参 数。<br>**起始版本：** 12 |
+| filter | number | 否 | 进行设备发现的过滤条件，由ProtocolType组合而成。<br>**起始版本：** 12 |
+| drmSchemes | Array & lt;string & gt; | 否 | 进行支持DRM资源播放的设备发现的过滤条件，由DRM uuid组合而成。 从API version 12开始支持该可选参 数。<br>**起始版本：** 12 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。当命令发送成功并开始搜索，无返回结果，否则返回错误对象。 |
+| Promise & lt;void & gt; | Promise对象。当命令发送成功并开始搜索，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -125,7 +119,6 @@ function startCastDeviceDiscovery(filter?: int, drmSchemes?: Array<string>): Pro
 let filter = 2;
 let drmSchemes = ['3d5e6d35-9b9a-41e8-b843-dd3c6e72c42c'];
 avSession.startCastDeviceDiscovery(filter, drmSchemes).then(() => {
-  console.info('startCastDeviceDiscovery successfully');
+  console.info('Succeeded in starting cast device discovery.');
 });
 ```
-

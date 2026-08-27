@@ -2,9 +2,7 @@
 
 返回携带系统属性值的通知信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface SubscribeCallbackData--><!--Device-unnamed-export interface SubscribeCallbackData-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -24,8 +22,6 @@ readonly notificationClassification?: NotificationClassification
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SubscribeCallbackData-readonly notificationClassification?: NotificationClassification--><!--Device-SubscribeCallbackData-readonly notificationClassification?: NotificationClassification-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -33,16 +29,14 @@ readonly notificationClassification?: NotificationClassification
 ## reason
 
 ```TypeScript
-readonly reason?: int
+readonly reason?: number
 ```
 
 删除原因（1:点击通知后删除通知，2:用户删除通知） 。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SubscribeCallbackData-readonly reason?: int--><!--Device-SubscribeCallbackData-readonly reason?: int-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -58,9 +52,7 @@ readonly request: NotificationRequest
 
 **类型：** [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)
 
-**起始版本：** 23
-
-<!--Device-SubscribeCallbackData-readonly request: NotificationRequest--><!--Device-SubscribeCallbackData-readonly request: NotificationRequest-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -76,9 +68,7 @@ readonly sortingMap?: NotificationSortingMap
 
 **类型：** [NotificationSortingMap](arkts-notification-notificationsortingmap-notificationsortingmap-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-SubscribeCallbackData-readonly sortingMap?: NotificationSortingMap--><!--Device-SubscribeCallbackData-readonly sortingMap?: NotificationSortingMap-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -94,9 +84,7 @@ readonly sound?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SubscribeCallbackData-readonly sound?: string--><!--Device-SubscribeCallbackData-readonly sound?: string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -105,16 +93,14 @@ readonly sound?: string
 ## vibrationValues
 
 ```TypeScript
-readonly vibrationValues?: Array<long>
+readonly vibrationValues?: Array<number>
 ```
 
 通知振动。
 
-**类型：** Array&lt;long&gt;
+**类型：** Array&lt;number&gt;
 
-**起始版本：** 23
-
-<!--Device-SubscribeCallbackData-readonly vibrationValues?: Array<long>--><!--Device-SubscribeCallbackData-readonly vibrationValues?: Array<long>-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -134,9 +120,6 @@ voiceContent?: VoiceContent
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SubscribeCallbackData-voiceContent?: VoiceContent--><!--Device-SubscribeCallbackData-voiceContent?: VoiceContent-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 24
 
-<!--Device-unnamed-declare enum CompetitionStrategy--><!--Device-unnamed-declare enum CompetitionStrategy-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DEFAULT
@@ -21,8 +19,6 @@ DEFAULT = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CompetitionStrategy-DEFAULT = 0--><!--Device-CompetitionStrategy-DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +36,4 @@ COMPETITION = 1
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CompetitionStrategy-COMPETITION = 1--><!--Device-CompetitionStrategy-COMPETITION = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

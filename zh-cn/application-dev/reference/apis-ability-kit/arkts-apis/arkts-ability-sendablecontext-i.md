@@ -10,7 +10,4 @@ SendableContext符合[Sendable协议](../../../arkts-utils/arkts-sendable.md#sen
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-interface SendableContext--><!--Device-unnamed-interface SendableContext-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-

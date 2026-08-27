@@ -1,10 +1,8 @@
 # TextLine
 
-描述段落基础文本行结构的载体。 下列API示例中都需先使用[Paragraph](arkts-arkgraphics2d-text-paragraph-c.md)类的[getTextLines()](arkts-arkgraphics2d-text-paragraph-c.md#gettextlines)接口或者 [LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md)类的[createLine()](arkts-arkgraphics2d-text-linetypeset-c.md#createline)接口获取到TextLine对象实例，再通过此实例调用对 应方法。
+描述段落基础文本行结构的载体。下列API示例中都需先使用[Paragraph](arkts-arkgraphics2d-text-paragraph-c.md)类的[getTextLines()](arkts-arkgraphics2d-text-paragraph-c.md#gettextlines)接口或者 [LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md)类的[createLine()](arkts-arkgraphics2d-text-linetypeset-c.md#createline)接口获取到TextLine对象实例，再通过此实例调用对 应方法。
 
-**起始版本：** 23
-
-<!--Device-text-class TextLine--><!--Device-text-class TextLine-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -17,7 +15,7 @@ import { text } from '@kit.ArkGraphics2D';
 ## createTruncatedLine
 
 ```TypeScript
-createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string): TextLine
+createTruncatedLine(width: number, ellipsisMode: EllipsisMode, ellipsis: string): TextLine
 ```
 
 创建一个截断的文本行对象。
@@ -26,15 +24,13 @@ createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string)
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextLine-createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string): TextLine--><!--Device-TextLine-createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string): TextLine-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| width | double | 是 | 截断后的行宽度，浮点数，单位为物理像素px。 |
+| width | number | 是 | 截断后的行宽度，浮点数，单位为物理像素px。 |
 | ellipsisMode | EllipsisMode | 是 | 截断的类型，当前仅支持头部截断START和尾部截断END。 |
 | ellipsis | string | 是 | 截断的标记字符串。 |
 
@@ -45,8 +41,6 @@ createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string)
 | [TextLine](arkts-arkgraphics2d-text-textline-c.md) | 截断的文本行对象。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { drawing, text } from '@kit.ArkGraphics2D'
@@ -69,8 +63,7 @@ struct Index {
       Button().onClick(() => {
         if (this.pixelmap == undefined) {
           const color: ArrayBuffer = new ArrayBuffer(160000);
-          let opts: image.InitializationOptions =
-            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
+          let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
           this.pixelmap = image.createPixelMapSync(color, opts);
         }
         this.fun(this.pixelmap);
@@ -79,87 +72,6 @@ struct Index {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { Entry, Component, Column, Button, Image, ClickEvent} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
-import { drawing, text, common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit';
-
-function textFunc(pixelmap?: image.PixelMap) {
-  if (pixelmap) {
-    let canvas = new drawing.Canvas(pixelmap);
-    let textStyle: text.TextStyle = {
-      color: { alpha: 255, red: 255, green: 0, blue: 0 },
-      fontSize: 33,
-    };
-    let paragraphStyle: text.ParagraphStyle = {
-      textStyle: textStyle,
-      align: text.TextAlign.END,
-    };
-    let fontCollection = new text.FontCollection();
-    let paragraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
-    paragraphBuilder.addText("Hello World");
-    let paragraph = paragraphBuilder.build();
-    let lines = paragraph.getTextLines();
-    let truncatedTextLine = lines[0].createTruncatedLine(100, text.EllipsisMode.START, "...");
-    if (truncatedTextLine != undefined) {
-      truncatedTextLine.paint(canvas, 0, 100);
-    }
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State pixelmap?: image.PixelMap = undefined;
-  fun: (pixelmap?: image.PixelMap) => void = textFunc;
-  build() {
-    Column() {
-      Image(this.pixelmap).width(200).height(200);
-      Button("Click").onClick((e: ClickEvent) => {
-        if (this.pixelmap == undefined) {
-          const color: ArrayBuffer = new ArrayBuffer(160000);
-          let opts: image.InitializationOptions =
-            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
-          this.pixelmap = image.createPixelMapSync(color, opts);
-        }
-        this.fun(this.pixelmap);
-      })
-    }
-  }
-}
-```
-
-## createTruncatedLine
-
-```TypeScript
-createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string): TextLine | undefined
-```
-
-创建一个截断的文本行对象。
-
-**起始版本：** 23
-
-<!--Device-TextLine-createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string): TextLine | undefined--><!--Device-TextLine-createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string): TextLine | undefined-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| width | double | 是 | 截断后的行宽度，浮点数，单位为物理像素px。 |
-| ellipsisMode | EllipsisMode | 是 | 截断的类型，当前仅支持头部截断START和尾部截断END。 |
-| ellipsis | string | 是 | 截断的标记字符串。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [TextLine](arkts-arkgraphics2d-text-textline-c.md) | 截断的文本行对象。 |
 
 ## enumerateCaretOffsets
 
@@ -169,11 +81,9 @@ enumerateCaretOffsets(callback: CaretOffsetsCallback): void
 
 枚举文本行中每个字符的偏移量和索引值。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextLine-enumerateCaretOffsets(callback: CaretOffsetsCallback): void--><!--Device-TextLine-enumerateCaretOffsets(callback: CaretOffsetsCallback): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -185,19 +95,8 @@ enumerateCaretOffsets(callback: CaretOffsetsCallback): void
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 lines[0].enumerateCaretOffsets((offset: number, index: number, leadingEdge: boolean): boolean => {
-  console.info('textLine: offset: ' + offset + ', index: ' + index + ', leadingEdge: ' + leadingEdge);
-  return index > 50;
-});
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-lines[0].enumerateCaretOffsets((offset: double, index: int, leadingEdge: boolean): boolean => {
   console.info('textLine: offset: ' + offset + ', index: ' + index + ', leadingEdge: ' + leadingEdge);
   return index > 50;
 });
@@ -206,16 +105,14 @@ lines[0].enumerateCaretOffsets((offset: double, index: int, leadingEdge: boolean
 ## getAlignmentOffset
 
 ```TypeScript
-getAlignmentOffset(alignmentFactor: double, alignmentWidth: double): double
+getAlignmentOffset(alignmentFactor: number, alignmentWidth: number): number
 ```
 
 获取文本行根据对齐因子和对齐宽度计算的对齐所需偏移量。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextLine-getAlignmentOffset(alignmentFactor: double, alignmentWidth: double): double--><!--Device-TextLine-getAlignmentOffset(alignmentFactor: double, alignmentWidth: double): double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -223,14 +120,14 @@ getAlignmentOffset(alignmentFactor: double, alignmentWidth: double): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alignmentFactor | double | 是 | 对齐因子，即对齐的程度，浮点数。小于等于0.0表示左对齐，大于0.0小于0.5表示偏左对齐，0.5表示居中对齐，大于0.5小于1.0表示偏右对齐，大于等于 1.0表示右对齐。 |
-| alignmentWidth | double | 是 | 对齐宽度，即文本行的宽度，浮点数，单位为物理像素px。小于文本行的实际宽度时，返回0。 |
+| alignmentFactor | number | 是 | 对齐因子，即对齐的程度，浮点数。小于等于0.0表示左对齐，大于0.0小于0.5表示偏左对齐，0.5表示居中对齐，大于0.5小于1.0表示偏右对齐，大于等于 1.0表示右对齐。 |
+| alignmentWidth | number | 是 | 对齐宽度，即文本行的宽度，浮点数，单位为物理像素px。小于文本行的实际宽度时，返回0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 计算得到的对齐所需偏移量，浮点数，单位为物理像素px。 |
+| number | 计算得到的对齐所需偏移量，浮点数，单位为物理像素px。 |
 
 **示例**
 
@@ -241,16 +138,14 @@ let alignmentOffset = lines[0].getAlignmentOffset(0.5, 500);
 ## getGlyphCount
 
 ```TypeScript
-getGlyphCount(): int
+getGlyphCount(): number
 ```
 
 获取文本行中字形的数量。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextLine-getGlyphCount(): int--><!--Device-TextLine-getGlyphCount(): int-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -258,12 +153,16 @@ getGlyphCount(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 该文本行中字形数量，整数。 |
+| number | 该文本行中字形数量，整数。 |
 
 **示例**
 
 ```TypeScript
 let glyphCount = lines[0].getGlyphCount();
+```
+
+```TypeScript
+let glyphs = runs[0].getGlyphCount();
 ```
 
 ## getGlyphRuns
@@ -274,11 +173,9 @@ getGlyphRuns(): Array<Run>
 
 获取文本行的排版单元数组。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextLine-getGlyphRuns(): Array<Run>--><!--Device-TextLine-getGlyphRuns(): Array<Run>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -300,13 +197,21 @@ let runs = lines[0].getGlyphRuns();
 getImageBounds(): common2D.Rect
 ```
 
-获取文本行的图像边界。文本行图像边界与排版字体、排版字号、字符本身都有关，相当于视觉边界。例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，用户在界面上只能看到"a b"，图像边界即为不包括带行首 和末尾空格的边界。例如字符串为"j"或"E"，视觉边界不同，即与字符本身有关，"j"字符串的视觉边界宽度小于"E"字符串的视觉边界宽度，"j"字符串的视觉边界高度大于"E"字符串的视觉边界高度。 > **说明：** > > 示意图展示了字符串为" a b "的图像边界。 > >  > > 示意图展示了字符串为"j"或"E"的图像边界。 > > 
+获取文本行的图像边界。文本行图像边界与排版字体、排版字号、字符本身都有关，相当于视觉边界。例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，用户在界面上只能看到"a b"，图像边界即为不包括带行首 和末尾空格的边界。例如字符串为"j"或"E"，视觉边界不同，即与字符本身有关，"j"字符串的视觉边界宽度小于"E"字符串的视觉边界宽度，"j"字符串的视觉边界高度大于"E"字符串的视觉边界高度。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 示意图展示了字符串为" a b "的图像边界。
+> 
+> 
+> 
+> 示意图展示了字符串为"j"或"E"的图像边界。
+> 
+> 
+
+**起始版本：** 18
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextLine-getImageBounds(): common2D.Rect--><!--Device-TextLine-getImageBounds(): common2D.Rect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -322,19 +227,21 @@ getImageBounds(): common2D.Rect
 let imageBounds = lines[0].getImageBounds();
 ```
 
+```TypeScript
+let bounds = runs[0].getImageBounds();
+```
+
 ## getOffsetForStringIndex
 
 ```TypeScript
-getOffsetForStringIndex(index: int): double
+getOffsetForStringIndex(index: number): number
 ```
 
 获取文本行中给定字符串索引处的偏移量。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextLine-getOffsetForStringIndex(index: int): double--><!--Device-TextLine-getOffsetForStringIndex(index: int): double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -342,13 +249,13 @@ getOffsetForStringIndex(index: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int | 是 | 要获取偏移量的字符串索引，整数。 |
+| index | number | 是 | 要获取偏移量的字符串索引，整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 给定字符串索引处的偏移量，浮点数，单位为物理像素px。 |
+| number | 给定字符串索引处的偏移量，浮点数，单位为物理像素px。 |
 
 **示例**
 
@@ -359,16 +266,14 @@ let offset = lines[0].getOffsetForStringIndex(3);
 ## getStringIndexForPosition
 
 ```TypeScript
-getStringIndexForPosition(point: common2D.Point): int
+getStringIndexForPosition(point: common2D.Point): number
 ```
 
 获取给定位置在原始字符串中的字符索引。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextLine-getStringIndexForPosition(point: common2D.Point): int--><!--Device-TextLine-getStringIndexForPosition(point: common2D.Point): int-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -382,7 +287,7 @@ getStringIndexForPosition(point: common2D.Point): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 给定位置在文本行中对应的字符串索引，整数。 |
+| number | 给定位置在文本行中对应的字符串索引，整数。 |
 
 **示例**
 
@@ -399,11 +304,9 @@ getTextRange(): Range
 
 获取该行文本在整个段落文本中的索引区间。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextLine-getTextRange(): Range--><!--Device-TextLine-getTextRange(): Range-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -422,16 +325,14 @@ let textRange = lines[0].getTextRange();
 ## getTrailingSpaceWidth
 
 ```TypeScript
-getTrailingSpaceWidth(): double
+getTrailingSpaceWidth(): number
 ```
 
 获取文本行尾部空白字符的宽度。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextLine-getTrailingSpaceWidth(): double--><!--Device-TextLine-getTrailingSpaceWidth(): double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -439,7 +340,7 @@ getTrailingSpaceWidth(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 文本行尾部空白字符的宽度，浮点数，单位为物理像素px。 |
+| number | 文本行尾部空白字符的宽度，浮点数，单位为物理像素px。 |
 
 **示例**
 
@@ -453,13 +354,22 @@ let trailingSpaceWidth = lines[0].getTrailingSpaceWidth();
 getTypographicBounds(): TypographicBounds
 ```
 
-获取文本行的排版边界。文本行排版边界与排版字体、排版字号有关，与字符本身无关。例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，排版边界就包括行首和末尾空格的边界。例如字符串为"j"或"E"，排版 边界相同，即与字符本身无关。 > **说明：** > > 示意图展示了字符串为" a b "的排版边界。 > >  > > 示意图展示了字符串为"j"或"E"的排版边界。 > > ! > [TypographicBounds-Character.png](../../../reference/apis-arkgraphics2d/figures/TypographicBounds-Character.png)
+获取文本行的排版边界。文本行排版边界与排版字体、排版字号有关，与字符本身无关。例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，排版边界就包括行首和末尾空格的边界。例如字符串为"j"或"E"，排版 边界相同，即与字符本身无关。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 示意图展示了字符串为" a b "的排版边界。
+> 
+> 
+> 
+> 示意图展示了字符串为"j"或"E"的排版边界。
+> 
+> !
+> [TypographicBounds-Character.png](../../../reference/apis-arkgraphics2d/figures/TypographicBounds-Character.png)
+
+**起始版本：** 18
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextLine-getTypographicBounds(): TypographicBounds--><!--Device-TextLine-getTypographicBounds(): TypographicBounds-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -476,19 +386,21 @@ let bounds = lines[0].getTypographicBounds();
 console.info('textLine ascent:' + bounds.ascent + ', descent:' + bounds.descent + ', leading:' + bounds.leading + ', width:' + bounds.width);
 ```
 
+```TypeScript
+let typographicBounds = runs[0].getTypographicBounds();
+```
+
 ## paint
 
 ```TypeScript
-paint(canvas: drawing.Canvas, x: double, y: double): void
+paint(canvas: drawing.Canvas, x: number, y: number): void
 ```
 
 在画布上以坐标点(x, y)为左上角位置绘制该文本行。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextLine-paint(canvas: drawing.Canvas, x: double, y: double): void--><!--Device-TextLine-paint(canvas: drawing.Canvas, x: double, y: double): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -497,12 +409,18 @@ paint(canvas: drawing.Canvas, x: double, y: double): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | canvas | drawing.Canvas | 是 | 绘制的目标canvas。 |
-| x | double | 是 | 绘制的左上角位置的横坐标，浮点数，单位为物理像素px。 |
-| y | double | 是 | 绘制的左上角位置的纵坐标，浮点数，单位为物理像素px。 |
+| x | number | 是 | 绘制的左上角位置的横坐标，浮点数，单位为物理像素px。 |
+| y | number | 是 | 绘制的左上角位置的纵坐标，浮点数，单位为物理像素px。 |
 
 **示例**
 
-ArkTS-Dyn示例：
+```TypeScript
+const color: ArrayBuffer = new ArrayBuffer(160000);
+let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
+let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+let canvas = new drawing.Canvas(pixelMap);
+paragraph.paint(canvas, 0, 0);
+```
 
 ```TypeScript
 import { drawing } from '@kit.ArkGraphics2D'
@@ -524,8 +442,7 @@ struct Index {
       Button().onClick(() => {
         if (this.pixelmap == undefined) {
           const color: ArrayBuffer = new ArrayBuffer(160000);
-          let opts: image.InitializationOptions =
-            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
+          let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
           this.pixelmap = image.createPixelMapSync(color, opts);
         }
         this.fun(this.pixelmap);
@@ -535,48 +452,28 @@ struct Index {
 }
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-import { Entry, Component, Column, Button, Image, ClickEvent} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
 import { drawing } from '@kit.ArkGraphics2D'
-import { text } from "@kit.ArkGraphics2D"
-import { image } from '@kit.ImageKit';
+import { text } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit'
 
-function textFunc(pixelmap?: image.PixelMap) {
-  if (pixelmap) {
-    let canvas = new drawing.Canvas(pixelmap);
-    let textStyle: text.TextStyle = {
-      color: { alpha: 255, red: 255, green: 0, blue: 0 },
-      fontSize: 33,
-    };
-    let paragraphStyle: text.ParagraphStyle = {
-      textStyle: textStyle,
-      align: text.TextAlign.END,
-    };
-    let fontCollection = new text.FontCollection();
-    let paragraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
-    paragraphBuilder.addText("Hello World");
-    let paragraph = paragraphBuilder.build();
-    let lines = paragraph.getTextLines();
-    lines[0].paint(canvas, 0, 0);
-  }
+function textFunc(pixelmap: PixelMap) {
+  let canvas = new drawing.Canvas(pixelmap);
+  runs[0].paint(canvas, 0, 0);
 }
 
 @Entry
 @Component
 struct Index {
-  @State pixelmap?: image.PixelMap = undefined;
-  fun: (pixelmap?: image.PixelMap) => void = textFunc;
+  @State pixelmap?: PixelMap = undefined;
+  fun: Function = textFunc;
   build() {
     Column() {
       Image(this.pixelmap).width(200).height(200);
-      Button("Click").onClick((e: ClickEvent) => {
+      Button().onClick(() => {
         if (this.pixelmap == undefined) {
           const color: ArrayBuffer = new ArrayBuffer(160000);
-          let opts: image.InitializationOptions =
-            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
+          let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
           this.pixelmap = image.createPixelMapSync(color, opts);
         }
         this.fun(this.pixelmap);
@@ -585,4 +482,3 @@ struct Index {
   }
 }
 ```
-

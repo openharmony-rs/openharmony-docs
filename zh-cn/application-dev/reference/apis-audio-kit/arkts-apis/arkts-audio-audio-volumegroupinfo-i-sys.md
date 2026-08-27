@@ -1,10 +1,8 @@
 # VolumeGroupInfo（系统接口）
 
-Describes an audio volume group.
+音量组信息。
 
-**起始版本：** 23
-
-<!--Device-audio-interface VolumeGroupInfo--><!--Device-audio-interface VolumeGroupInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -14,22 +12,19 @@ Describes an audio volume group.
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## groupId
 
 ```TypeScript
-readonly groupId: int
+readonly groupId: number
 ```
 
-Volume group id.
+组设备组id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-VolumeGroupInfo-readonly groupId: int--><!--Device-VolumeGroupInfo-readonly groupId: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -41,13 +36,11 @@ Volume group id.
 readonly groupName: string
 ```
 
-Volume group name.
+组名。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-VolumeGroupInfo-readonly groupName: string--><!--Device-VolumeGroupInfo-readonly groupName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -56,16 +49,14 @@ Volume group name.
 ## mappingId
 
 ```TypeScript
-readonly mappingId: int
+readonly mappingId: number
 ```
 
-Volume mapping group id.
+组映射id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-VolumeGroupInfo-readonly mappingId: int--><!--Device-VolumeGroupInfo-readonly mappingId: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -77,13 +68,11 @@ Volume mapping group id.
 readonly networkId: string
 ```
 
-Device network id.
+组网络id。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-VolumeGroupInfo-readonly networkId: string--><!--Device-VolumeGroupInfo-readonly networkId: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -95,15 +84,12 @@ Device network id.
 readonly type: ConnectType
 ```
 
-Connect type of device for this group.
+连接设备类型。
 
 **类型：** [ConnectType](arkts-audio-audio-connecttype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-VolumeGroupInfo-readonly type: ConnectType--><!--Device-VolumeGroupInfo-readonly type: ConnectType-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **系统接口：** 此接口为系统接口。
-

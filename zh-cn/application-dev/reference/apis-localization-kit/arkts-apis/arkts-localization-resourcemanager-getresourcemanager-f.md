@@ -18,8 +18,6 @@ export function getResourceManager(callback: AsyncCallback<ResourceManager>): vo
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-resourceManager-export function getResourceManager(callback: AsyncCallback<ResourceManager>): void--><!--Device-resourceManager-export function getResourceManager(callback: AsyncCallback<ResourceManager>): void-End-->
-
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **参数：**
@@ -31,27 +29,27 @@ export function getResourceManager(callback: AsyncCallback<ResourceManager>): vo
 **示例**
 
 ```TypeScript
-import { resourceManager } from '@kit.LocalizationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import resourceManager from '@ohos.resourceManager';
+// FA模型请使用上述方式导入模块
 
 export default {
-  onCreate() {
-    resourceManager.getResourceManager((error, mgr) => {
-      if (error != null) {
-        console.error("error is " + error);
-        return;
-      }
-      // 'test'仅作示例，请替换为实际使用的资源名称
-      mgr.getStringByName('test', (error, value) => {
-        if (error) {
-          console.error("error is " + JSON.stringify(error));
-        } else {
-          console.info("success is " + value);
-        }
+    onCreate() {
+        resourceManager.getResourceManager((error, mgr) => {
+            if (error != null) {
+                console.error("error is " + error);
+                return;
+            }
+            // 'test'仅作示例，请替换为实际使用的资源名称
+            mgr.getStringByName('test', (error, value) => {
+                if (error) {
+                    console.error("error is " + JSON.stringify(error));
+                } else {
+                    console.info("success is " + value);
+                }
 
-      });
-    });
-  }
+            });
+        });
+    }
 };
 ```
 
@@ -67,8 +65,6 @@ export function getResourceManager(bundleName: string, callback: AsyncCallback<R
 **起始版本：** 6
 
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-resourceManager-export function getResourceManager(bundleName: string, callback: AsyncCallback<ResourceManager>): void--><!--Device-resourceManager-export function getResourceManager(bundleName: string, callback: AsyncCallback<ResourceManager>): void-End-->
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -89,22 +85,22 @@ import resourceManager from '@ohos.resourceManager';
 const BUNDLE_NAME = 'com.example.testapp';
 
 export default {
-  onCreate() {
-    resourceManager.getResourceManager(BUNDLE_NAME, (error, mgr) => {
-      if (error != null) {
-        console.error("getResourceManager error is " + error);
-        return;
-      }
-      // 'test'仅作示例，请替换为实际使用的资源名称
-      mgr.getStringByName('test', (error, value) => {
-        if (error) {
-          console.error("getResourceManager error is " + JSON.stringify(error));
-        } else {
-          console.info("getResourceManager success is " + value);
-        }
-      });
-    });
-  }
+    onCreate() {
+        resourceManager.getResourceManager(BUNDLE_NAME, (error, mgr) => {
+            if (error != null) {
+                console.error("getResourceManager error is " + error);
+                return;
+            }
+            // 'test'仅作示例，请替换为实际使用的资源名称
+            mgr.getStringByName('test', (error, value) => {
+                if (error) {
+                    console.error("getResourceManager error is " + JSON.stringify(error));
+                } else {
+                    console.info("getResourceManager success is " + value);
+                }
+            });
+        });
+    }
 };
 ```
 
@@ -121,8 +117,6 @@ export function getResourceManager(): Promise<ResourceManager>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-resourceManager-export function getResourceManager(): Promise<ResourceManager>--><!--Device-resourceManager-export function getResourceManager(): Promise<ResourceManager>-End-->
-
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **返回值：**
@@ -138,19 +132,19 @@ import resourceManager from '@ohos.resourceManager';
 // FA模型请使用上述方式导入模块
 
 export default {
-  onCreate() {
-    resourceManager.getResourceManager().then(resMgr => {
-      try {
-        // 'test'仅作示例，请替换为实际使用的资源名称
-        let testStr = resMgr.getStringByNameSync('test')
-        console.info("getResourceManager success is " + testStr);
-      } catch (error) {
-        console.error("getResourceManager error is " + JSON.stringify(error));
-      }
-    }).catch(error => {
-      console.error("getResourceManager error is " + error);
-    });
-  }
+    onCreate() {
+        resourceManager.getResourceManager().then(resMgr => {
+            try {
+                // 'test'仅作示例，请替换为实际使用的资源名称
+                let testStr = resMgr.getStringByNameSync('test')
+                console.info("getResourceManager success is " + testStr);
+            } catch (error) {
+                console.error("getResourceManager error is " + JSON.stringify(error));
+            }
+        }).catch(error => {
+            console.error("getResourceManager error is " + error);
+        });
+    }
 };
 ```
 
@@ -166,8 +160,6 @@ export function getResourceManager(bundleName: string): Promise<ResourceManager>
 **起始版本：** 6
 
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-resourceManager-export function getResourceManager(bundleName: string): Promise<ResourceManager>--><!--Device-resourceManager-export function getResourceManager(bundleName: string): Promise<ResourceManager>-End-->
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -193,19 +185,18 @@ import resourceManager from '@ohos.resourceManager';
 const BUNDLE_NAME = 'com.example.testapp';
 
 export default {
-  onCreate() {
-    resourceManager.getResourceManager(BUNDLE_NAME).then(resMgr => {
-      try {
-        // 'test'仅作示例，请替换为实际使用的资源名称
-        let testStr = resMgr.getStringByNameSync('test')
-        console.info("getResourceManager success is " + testStr);
-      } catch (error) {
-        console.error("getResourceManager error is " + JSON.stringify(error));
-      }
-    }).catch(error => {
-      console.error("getResourceManager error is " + error);
-    });
-  }
+    onCreate() {
+        resourceManager.getResourceManager(BUNDLE_NAME).then(resMgr => {
+            try {
+                // 'test'仅作示例，请替换为实际使用的资源名称
+                let testStr = resMgr.getStringByNameSync('test')
+                console.info("getResourceManager success is " + testStr);
+            } catch (error) {
+                console.error("getResourceManager error is " + JSON.stringify(error));
+            }
+        }).catch(error => {
+            console.error("getResourceManager error is " + error);
+        });
+    }
 };
 ```
-

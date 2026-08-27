@@ -20,7 +20,7 @@
 
 - 禁止使用MathML能力。
 
-- 禁止使用Web Speech API语音识别能力。
+- 禁止使用Web Speech API语音识别与语音合成能力。
 
 - 禁止使用RTCDataChannel接口。
 

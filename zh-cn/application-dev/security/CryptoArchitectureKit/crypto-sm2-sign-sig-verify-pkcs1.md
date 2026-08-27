@@ -7,31 +7,31 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-对应的算法规格请查看[签名验签算法规格：SM2](crypto-sign-sig-verify-overview.md#sm2)。
+对应的算法规格请查看签名验签算法规格：SM2。
 
 **签名**
 
-1. 调用[cryptoFramework.createAsyKeyGenerator/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)、[AsyKeyGenerator.generateKeyPair/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，生成非对称密钥算法为SM2、密钥长度为256位的密钥对（KeyPair）。
+1. 调用cryptoFramework.createAsyKeyGenerator、AsyKeyGenerator.generateKeyPair，生成非对称密钥算法为SM2、密钥长度为256位的密钥对（KeyPair）。
    
-   如何生成SM2非对称密钥，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：SM2](crypto-asym-key-generation-conversion-spec.md#sm2)和[随机生成非对称密钥对](crypto-generate-asym-key-pair-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
+   如何生成SM2非对称密钥，开发者可参考下文示例，并结合非对称密钥生成和转换规格：SM2和随机生成非对称密钥对理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 调用[cryptoFramework.createSign/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign)，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Sign实例，用于完成签名操作。
+2. 调用cryptoFramework.createSign，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Sign实例，用于完成签名操作。
 
-3. 调用[Sign.init/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-3)，使用私钥（PriKey）初始化Sign实例。
+3. 调用Sign.init，使用私钥（PriKey）初始化Sign实例。
 
-4. 调用[Sign.update/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-3)，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
+4. 调用Sign.update，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
 
-5. 调用[Sign.sign/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#sign-1)，生成数据签名。
+5. 调用Sign.sign，生成数据签名。
 
 **验签**
 
-1. 调用[cryptoFramework.createVerify/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateverify)，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Verify实例，用于完成验签操作。
+1. 调用cryptoFramework.createVerify，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Verify实例，用于完成验签操作。
 
-2. 调用[Verify.init/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-5)，使用公钥（PubKey）初始化Verify实例。
+2. 调用Verify.init，使用公钥（PubKey）初始化Verify实例。
 
-3. 调用[Verify.update/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-5)，传入待验证的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
+3. 调用Verify.update，传入待验证的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
 
-4. 调用[Verify.verify/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#verify-1)，对数据进行验签。
+4. 调用Verify.verify，对数据进行验签。
 
 - 异步方法示例：
 
@@ -91,7 +91,7 @@
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
   let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   
-  function signMessagePromise(priKey: cryptoFramework.PriKey) {
+  function signMessageSync(priKey: cryptoFramework.PriKey) {
     let signAlg = 'SM2_256|SM3';
     let signer = cryptoFramework.createSign(signAlg);
     signer.initSync(priKey);
@@ -100,7 +100,7 @@
     return signData;
   }
   
-  function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
+  function verifyMessageSync(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
     let verifyAlg = 'SM2_256|SM3';
     let verifier = cryptoFramework.createVerify(verifyAlg);
     verifier.initSync(pubKey);
@@ -114,8 +114,8 @@
     let keyGenAlg = 'SM2_256';
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
     let keyPair = generator.generateKeyPairSync();
-    let signData = signMessagePromise(keyPair.priKey);
-    let verifyResult = verifyMessagePromise(signData, keyPair.pubKey);
+    let signData = signMessageSync(keyPair.priKey);
+    let verifyResult = verifyMessageSync(signData, keyPair.pubKey);
     if (verifyResult === true) {
       console.info('verify result: success.');
     } else {

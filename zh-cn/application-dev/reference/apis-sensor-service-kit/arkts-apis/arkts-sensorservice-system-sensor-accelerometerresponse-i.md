@@ -10,8 +10,6 @@
 
 **需要权限：** ohos.permission.ACCELEROMETER
 
-<!--Device-unnamed-export interface AccelerometerResponse--><!--Device-unnamed-export interface AccelerometerResponse-End-->
-
 **系统能力：** SystemCapability.Sensors.Sensor.Lite
 
 ## 导入模块
@@ -40,8 +38,6 @@ x: number
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-AccelerometerResponse-x: number--><!--Device-AccelerometerResponse-x: number-End-->
-
 **系统能力：** SystemCapability.Sensors.Sensor.Lite
 
 ## y
@@ -63,8 +59,6 @@ y: number
 **需要权限：** ohos.permission.ACCELEROMETER
 
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-AccelerometerResponse-y: number--><!--Device-AccelerometerResponse-y: number-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor.Lite
 
@@ -88,7 +82,4 @@ z: number
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-AccelerometerResponse-z: number--><!--Device-AccelerometerResponse-z: number-End-->
-
 **系统能力：** SystemCapability.Sensors.Sensor.Lite
-

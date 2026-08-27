@@ -2,14 +2,14 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
 ## 概述
 
-在应用的开发过程中，经常需要设计复杂界面，此时涉及到多个相同或不同组件之间的嵌套。如果布局组件嵌套深度过深，或者嵌套组件数过多，会带来额外的开销。如果在布局的方式上进行优化，就可以有效的提升性能，减少时间开销。<!--Del-->请参考[优化布局时间](../performance/reduce-view-nesting-levels.md#优化布局时间)了解RelativeContainer相对于List，在布局时间上的性能提升。<!--DelEnd-->
+在应用的开发过程中，经常需要设计复杂界面，此时涉及到多个相同或不同组件之间的嵌套。如果布局组件嵌套深度过深，或者嵌套组件数过多，会带来额外的开销。如果在布局的方式上进行优化，就可以有效地提升性能，减少时间开销。<!--Del-->请参考优化布局时间了解RelativeContainer相对于List，在布局时间上的性能提升。<!--DelEnd-->
 
 RelativeContainer是一种采用相对布局的容器，支持容器内部的子元素设置相对位置关系，适用于处理界面复杂的场景，对多个子元素进行对齐和排列。子元素可以指定兄弟元素或父容器作为锚点，基于锚点进行相对位置布局。在使用锚点时，需注意子元素的相对位置关系，以避免出现错位或遮挡的情况。下图展示了一个 RelativeContainer的概念图，图中的虚线表示位置的依赖关系。
 
@@ -55,7 +55,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 锚点设置涉及子元素相对于其父元素或兄弟元素的位置依赖关系。具体而言，子元素可以将其位置锚定到相对布局容器（RelativeContainer）、辅助线（guideline）、屏障（barrier）或其他子元素上。
 
-为了准确定义锚点，RelativeContainer的子元素必须拥有唯一的组件标识（id），用于指定锚点信息。父元素RelativeContainer的标识默认为“\_\_container\_\_”，其他子元素的组件标识（id）则通过[id/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)属性设置。
+为了准确定义锚点，RelativeContainer的子元素必须拥有唯一的组件标识（id），用于指定锚点信息。父元素RelativeContainer的标识默认为“\_\_container\_\_”，其他子元素的组件标识（id）则通过id属性设置。
 
 > **说明：**
 >
@@ -76,7 +76,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
     'right': { 'anchor': '__container__', 'align': HorizontalAlign.End }
   }
   let marginLeft: Record<string, number> = { 'left': 20 }
-  let bwc: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
+  let borderWidth: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
   
   @Entry
   @Component
@@ -104,12 +104,12 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
         .id('row2')
       }.width(300).height(300)
       .margin(marginLeft)
-      .border(bwc)
+      .border(borderWidth)
     }
   }
   ```
 
-  ![zh-cn_image_0000001562820901](figures/zh-cn_image_0000001562820901.png)
+  ![relativeContainerParentComponentId](figures/relativeContainerParentComponentId.png)
 
 - 以兄弟元素为锚点。
 
@@ -125,7 +125,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
     'left': { 'anchor': 'row1', 'align': HorizontalAlign.Start }
   }
   let marginLeft001: Record<string, number> = { 'left': 20 }
-  let bwc001: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
+  let borderWidth001: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
   
   @Entry
   @Component
@@ -153,12 +153,12 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
         .id('row2')
       }.width(300).height(300)
       .margin(marginLeft001)
-      .border(bwc001)
+      .border(borderWidth001)
     }
   }
   ```
 
-  ![zh-cn_image_0000001562940613](figures/zh-cn_image_0000001562940613.png)
+  ![relativeContainerSiblingComponentId](figures/relativeContainerSiblingComponentId.png)
 
 - 子组件锚点可以任意选择，但需注意不要相互依赖。
 
@@ -183,7 +183,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
             left: { anchor: '__container__', align: HorizontalAlign.Start }
           })
           .id('row1')
-
+  
           Row() {
             Text('row2')
           }
@@ -196,7 +196,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
             bottom: { anchor: 'row1', align: VerticalAlign.Center },
           })
           .id('row2')
-
+  
           Row() {
             Text('row3')
           }
@@ -209,7 +209,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
             right: { anchor: 'row2', align: HorizontalAlign.Start }
           })
           .id('row3')
-
+  
           Row() {
             Text('row4')
           }.justifyContent(FlexAlign.Center)
@@ -235,7 +235,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 ### 设置相对于锚点的对齐位置
 
-设置了锚点之后，可以通过[alignRules/apis-arkui/arkui-ts/ts-universal-attributes-location.md#alignrules9)属性的align设置相对于锚点的对齐位置。
+设置了锚点之后，可以通过alignRules属性的align设置相对于锚点的对齐位置。
 
 在水平方向上，对齐位置可以设置为HorizontalAlign.Start、HorizontalAlign.Center、HorizontalAlign.End。
 
@@ -247,7 +247,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 ### 子组件位置偏移
 
-子组件经过相对位置对齐后，可能尚未达到目标位置。开发者可根据需要设置额外偏移（offset）。当使用offset调整位置的组件作为锚点时，对齐位置为设置offset之前的位置。从API Version 11开始，新增了[Bias/apis-arkui/arkui-ts/ts-types.md#bias对象说明)对象，建议API Version 11及以后的版本使用bias来设置额外偏移。使用bias的示例可以参考[示例4（设置偏移）/apis-arkui/arkui-ts/ts-container-relativecontainer.md#示例4设置偏移)。
+子组件经过相对位置对齐后，可能尚未达到目标位置。开发者可根据需要设置额外偏移（offset）。当使用offset调整位置的组件作为锚点时，对齐位置为设置offset之前的位置。从API Version 11开始，新增了Bias对象，建议API Version 11及以后的版本使用bias来设置额外偏移。使用bias的示例可以参考示例4（设置偏移）。
 
   <!-- @[RelativeContainerChildComponentOffset_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerChildComponentOffset.ets) -->
   
@@ -371,7 +371,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 ## 多种组件的对齐布局
 
-[Row/apis-arkui/arkui-ts/ts-container-row.md)、[Column/apis-arkui/arkui-ts/ts-container-column.md)、[Flex/apis-arkui/arkui-ts/ts-container-flex.md)、[Stack/apis-arkui/arkui-ts/ts-container-stack.md)等多种布局组件，可按照RelativeContainer组件规则进行对齐排布。
+Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组件规则进行对齐排布。
 
   <!-- @[RelativeContainerDifferentComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerDifferentComponentId.ets) -->
   
@@ -381,7 +381,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   struct RelativeContainerExample {
     build() {
       Row() {
-
+  
         RelativeContainer() {
           Row()
             .width(100)
@@ -392,7 +392,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
               left: { anchor: '__container__', align: HorizontalAlign.Start }
             })
             .id('row1')
-
+  
           Column()
             .width('50%')
             .height(30)
@@ -402,7 +402,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
               left: { anchor: '__container__', align: HorizontalAlign.Center }
             })
             .id('row2')
-
+  
           Flex({ direction: FlexDirection.Row }) {
             Text('1').width('20%').height(50).backgroundColor('#0a59f7')
             Text('2').width('20%').height(50).backgroundColor('#2ca9e0')
@@ -418,7 +418,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
             right: { anchor: 'row2', align: HorizontalAlign.Center }
           })
           .id('row3')
-
+  
           Stack({ alignContent: Alignment.Bottom }) {
             Text('First child, show in bottom')
               .width('90%')
@@ -435,7 +435,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
             right: { anchor: 'row3', align: HorizontalAlign.End }
           })
           .id('row4')
-
+  
         }
         .width(300).height(300)
         .margin({ left: 50 })
@@ -450,7 +450,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 ## 组件尺寸
 
-当同时存在前端页面设置的子组件尺寸和相对布局规则时，子组件的绘制尺寸依据约束规则确定。从API Version 11开始，此规则有所变化，子组件自身设置的尺寸优先级高于相对布局规则中的对齐锚点尺寸。因此，若要使子组件与锚点严格对齐，应仅使用alignRules，避免使用[尺寸设置/apis-arkui/arkui-ts/ts-universal-attributes-size.md)。
+当同时存在前端页面设置的子组件尺寸和相对布局规则时，子组件的绘制尺寸依据约束规则确定。从API Version 11开始，此规则有所变化，子组件自身设置的尺寸优先级高于相对布局规则中的对齐锚点尺寸。因此，若要使子组件与锚点严格对齐，应仅使用alignRules，避免使用尺寸设置。
 
 > **说明：**
 >
@@ -557,9 +557,9 @@ struct RelativeAlignRulesExample {
 
 ## 多个组件形成链
 
-链的形成依赖于组件之间的关联关系。以组件A和组件B构成的最简水平链为例，其依赖关系为：锚点1 <-- 组件A <---> 组件B --> 锚点2，即A具有left锚点，B具有right锚点，同时A的right锚点与B的[HorizontalAlign/apis-arkui/arkui-ts/ts-appendix-enums.md#horizontalalign).Start对齐，B的left锚点与A的[HorizontalAlign/apis-arkui/arkui-ts/ts-appendix-enums.md#horizontalalign).End对齐。
-* 链的方向和格式在链头组件的[chainMode/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainmode12)接口中声明；链内元素的bias属性全部失效，链头元素的bias属性作为整个链的bias生效。链头是指在满足成链规则时链的第一个组件（在水平方向上，从左边开始，镜像语言中从右边开始；在垂直方向上，从上边开始）。
-* 如果链内所有元素的size超出链的锚点约束，超出部分将被均匀分配到链的两侧。在[PACKED/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainstyle12)链中，可以通过[Bias/apis-arkui/arkui-ts/ts-types.md#bias对象说明)设置超出部分的分布。
+链的形成依赖于组件之间的关联关系。以组件A和组件B构成的最简水平链为例，其依赖关系为：锚点1 <-- 组件A <---> 组件B --> 锚点2，即A具有left锚点，B具有right锚点，同时A的right锚点与B的HorizontalAlign.Start对齐，B的left锚点与A的HorizontalAlign.End对齐。
+* 链的方向和格式在链头组件的chainMode接口中声明；链内元素的bias属性全部失效，链头元素的bias属性作为整个链的bias生效。链头是指在满足成链规则时链的第一个组件（在水平方向上，从左边开始，镜像语言中从右边开始；在垂直方向上，从上边开始）。
+* 如果链内所有元素的size超出链的锚点约束，超出部分将被均匀分配到链的两侧。在PACKED链中，可以通过Bias设置超出部分的分布。
 
 在以下示例代码中，通过alignRules和chainMode将九个在容器内的Row组件分为三组水平链式排列。组件row1、组件row2和组件row3顶部对齐，水平方向成SPREAD链，链内组件在锚点间均匀分布。组件row4、组件row5、组件row6垂直方向基于容器居中，水平方向成SPREAD_INSIDE链，链内除首尾2个组件对齐锚点外，其他组件在链中均匀分布。组件row7、组件row8、组件row9底部对齐，水平方向组成PACKED链，链内组件无间隙。
 

@@ -12,8 +12,6 @@ XComponent的Native加载完成后回调事件，用于向开发者传递XCompon
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type OnNativeLoadCallback = (event?: object) => void--><!--Device-unnamed-declare type OnNativeLoadCallback = (event?: object) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -21,4 +19,3 @@ XComponent的Native加载完成后回调事件，用于向开发者传递XCompon
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | object | 否 | 获取XComponent实例对象的context，context上挂载的方法由开发者在Native层定义。不传该参数时无法获取context。 当需要在回调中使用Native层定义的方法时传入此参数；不传入时，回调中无法获取context对象。 |
-

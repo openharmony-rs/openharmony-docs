@@ -12,11 +12,9 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 function isInSandbox(): Promise<boolean>
 ```
 
-查询当前应用是否运行在DLP沙箱环境。使用Promise异步回调。 该接口用于判断当前应用是否处于DLP沙箱环境，以便决定是否执行沙箱相关的操作或调用沙箱专用接口。
+查询当前应用是否运行在DLP沙箱环境。使用Promise异步回调。该接口用于判断当前应用是否处于DLP沙箱环境，以便决定是否执行沙箱相关的操作或调用沙箱专用接口。
 
 **起始版本：** 10
-
-<!--Device-dlpPermission-function isInSandbox(): Promise<boolean>--><!--Device-dlpPermission-function isInSandbox(): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -24,7 +22,7 @@ function isInSandbox(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前应用运行在沙箱中，返回false表示当前应用不是运行在沙箱中。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示当前应用运行在沙箱中，返回false表示当前应用不是运行在沙箱中。 |
 
 **错误码：**
 
@@ -52,11 +50,9 @@ dlpPermission.isInSandbox().then((isInSandbox) => { // 是否在沙箱内。
 function isInSandbox(callback: AsyncCallback<boolean>): void
 ```
 
-查询当前应用是否运行在DLP沙箱环境。使用callback异步回调。 该接口用于判断当前应用是否处于DLP沙箱环境，以便决定是否执行沙箱相关的操作或调用沙箱专用接口。
+查询当前应用是否运行在DLP沙箱环境。使用callback异步回调。该接口用于判断当前应用是否处于DLP沙箱环境，以便决定是否执行沙箱相关的操作或调用沙箱专用接口。
 
 **起始版本：** 10
-
-<!--Device-dlpPermission-function isInSandbox(callback: AsyncCallback<boolean>): void--><!--Device-dlpPermission-function isInSandbox(callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -64,7 +60,7 @@ function isInSandbox(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。返回true表示当前应用运行在沙箱中，返回false表示当前应用不是 运行在沙箱中。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。返回true表示当前应用运行在沙箱中，返回false表示当前应用不是 运行在沙箱中。 |
 
 **错误码：**
 
@@ -87,4 +83,3 @@ dlpPermission.isInSandbox((err, isInSandbox) => {
   }
 }); // 是否在沙箱内。
 ```
-

@@ -2,9 +2,7 @@
 
 彩信通知索引。
 
-**起始版本：** 23
-
-<!--Device-sms-export interface MmsNotificationInd--><!--Device-sms-export interface MmsNotificationInd-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -13,22 +11,19 @@
 ## 导入模块
 
 ```TypeScript
-import { sms } from '@kit.TelephonyKit';
 ```
 
 ## contentClass
 
 ```TypeScript
-contentClass?: int
+contentClass?: number
 ```
 
 内容类
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MmsNotificationInd-contentClass?: int--><!--Device-MmsNotificationInd-contentClass?: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -44,9 +39,7 @@ contentLocation: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MmsNotificationInd-contentLocation: string--><!--Device-MmsNotificationInd-contentLocation: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -55,16 +48,14 @@ contentLocation: string
 ## deliveryReport
 
 ```TypeScript
-deliveryReport?: int
+deliveryReport?: number
 ```
 
 状态报告
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MmsNotificationInd-deliveryReport?: int--><!--Device-MmsNotificationInd-deliveryReport?: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -73,16 +64,14 @@ deliveryReport?: int
 ## expiry
 
 ```TypeScript
-expiry: int
+expiry: number
 ```
 
 到期
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MmsNotificationInd-expiry: int--><!--Device-MmsNotificationInd-expiry: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -98,9 +87,7 @@ from?: MmsAddress
 
 **类型：** [MmsAddress](arkts-telephony-sms-mmsaddress-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-MmsNotificationInd-from?: MmsAddress--><!--Device-MmsNotificationInd-from?: MmsAddress-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -109,16 +96,14 @@ from?: MmsAddress
 ## messageClass
 
 ```TypeScript
-messageClass: int
+messageClass: number
 ```
 
 消息类
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MmsNotificationInd-messageClass: int--><!--Device-MmsNotificationInd-messageClass: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -127,16 +112,14 @@ messageClass: int
 ## messageSize
 
 ```TypeScript
-messageSize: long
+messageSize: number
 ```
 
 消息大小
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MmsNotificationInd-messageSize: long--><!--Device-MmsNotificationInd-messageSize: long-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -152,9 +135,7 @@ subject?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MmsNotificationInd-subject?: string--><!--Device-MmsNotificationInd-subject?: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -170,9 +151,7 @@ transactionId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MmsNotificationInd-transactionId: string--><!--Device-MmsNotificationInd-transactionId: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -188,11 +167,8 @@ version: MmsVersionType
 
 **类型：** [MmsVersionType](arkts-telephony-sms-mmsversiontype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-MmsNotificationInd-version: MmsVersionType--><!--Device-MmsNotificationInd-version: MmsVersionType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
 **系统接口：** 此接口为系统接口。
-

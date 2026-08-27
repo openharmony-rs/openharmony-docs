@@ -6,8 +6,6 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-declare namespace hyperSnapManager--><!--Device-unnamed-declare namespace hyperSnapManager-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## 导入模块
@@ -22,6 +20,5 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [requestRebuildHyperSnap(应用快启管理)](arkts-ability-hypersnapmanager-requestrebuildhypersnap-f.md) | 请求重新初始化应用快启。 此方法会销毁当前进程已经初始化的快启数据，系统将在合适的时机重新进行快启初始化。 |
+| [requestRebuildHyperSnap(应用快启管理)](arkts-ability-hypersnapmanager-requestrebuildhypersnap-f.md) | 请求重新初始化应用快启。此方法会销毁当前进程已经初始化的快启数据，系统将在合适的时机重新进行快启初始化。 |
 | [setHyperSnapEnabled(应用快启管理)](arkts-ability-hypersnapmanager-sethypersnapenabled-f.md) | 启用或禁用应用的快启功能。 |
-

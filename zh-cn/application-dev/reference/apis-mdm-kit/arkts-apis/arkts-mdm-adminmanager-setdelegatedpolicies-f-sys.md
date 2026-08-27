@@ -20,8 +20,6 @@ function setDelegatedPolicies(bundleName: string, accountId: number, policies: A
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-adminManager-function setDelegatedPolicies(bundleName: string, accountId: number, policies: Array<string>): void--><!--Device-adminManager-function setDelegatedPolicies(bundleName: string, accountId: number, policies: Array<string>): void-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -32,7 +30,7 @@ function setDelegatedPolicies(bundleName: string, accountId: number, policies: A
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 将要被委托的管理应用的包名。被委托应用的分发类型需为enterprise_normal和enterprise_mdm，可以通过 [bundleManager.getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md)接口查询应用 自身的BundleInfo，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。 |
 | accountId | number | 是 | 用户ID，指定具体用户，取值范围：大于等于0。可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) |
-| policies | Array&lt;string&gt; | 是 | [委托策略列表](../../../mdm/mdm-kit-appendix.md#可委托策略列表)。 |
+| policies | Array & lt;string & gt; | 是 | [委托策略列表](../../../mdm/mdm-kit-appendix.md#可委托策略列表)。 |
 
 **错误码：**
 
@@ -60,4 +58,3 @@ try {
   console.error(`Failed to set delegated policies. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

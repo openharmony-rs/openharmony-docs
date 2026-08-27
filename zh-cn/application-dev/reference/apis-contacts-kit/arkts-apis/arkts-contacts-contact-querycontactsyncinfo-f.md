@@ -12,7 +12,7 @@ import { contact } from '@kit.ContactsKit';
 function queryContactSyncInfo(context: Context): Promise<Array<ContactSyncInfo>>
 ```
 
-查询调用应用程序正在进行的联系人同步信息。 如果返回的联系人同步信息为空，则调用方不进行联系人同步或联系人同步已完成。
+查询调用应用程序正在进行的联系人同步信息。如果返回的联系人同步信息为空，则调用方不进行联系人同步或联系人同步已完成。
 
 **起始版本：** 26.0.0
 
@@ -21,8 +21,6 @@ function queryContactSyncInfo(context: Context): Promise<Array<ContactSyncInfo>>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-contact-function queryContactSyncInfo(context: Context): Promise<Array<ContactSyncInfo>>--><!--Device-contact-function queryContactSyncInfo(context: Context): Promise<Array<ContactSyncInfo>>-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -58,4 +56,3 @@ const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 const syncInfoList: contact.ContactSyncInfo[] = await contact.queryContactSyncInfo(context) as contact.ContactSyncInfo[];
 console.info('queryContactSyncInfo syncInfoList '  + JSON.stringify(syncInfoList));
 ```
-

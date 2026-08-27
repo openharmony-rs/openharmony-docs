@@ -6,8 +6,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class SwipeGestureHandler--><!--Device-unnamed-declare class SwipeGestureHandler-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,8 +26,6 @@ constructor(options?: SwipeGestureHandlerOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SwipeGestureHandler-constructor(options?: SwipeGestureHandlerOptions)--><!--Device-SwipeGestureHandler-constructor(options?: SwipeGestureHandlerOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,8 +49,6 @@ onAction(event: Callback<GestureEvent>): SwipeGestureHandler
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SwipeGestureHandler-onAction(event: Callback<GestureEvent>): SwipeGestureHandler--><!--Device-SwipeGestureHandler-onAction(event: Callback<GestureEvent>): SwipeGestureHandler-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -68,4 +62,3 @@ onAction(event: Callback<GestureEvent>): SwipeGestureHandler
 | 类型 | 说明 |
 | --- | --- |
 | [SwipeGestureHandler](arkts-arkui-swipegesturehandler-c.md) | 返回当前快滑手势处理器对象。 |
-

@@ -7,6 +7,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [AgentProxy](arkts-ability-agentproxy-i-sys.md) | AgentExtensionAbility的代理对象，用于向AgentExtensionAbility等发送消息。 |
+| [AgentProxy](arkts-ability-agentproxy-i-sys.md) | AgentExtensionAbility的代理对象，用于向AgentExtensionAbility等发送消息。@interface AgentProxy |
 <!--DelEnd-->
-

@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { data } from '@kit.TelephonyKit';
 ```
 
 ## showSystemApnSettings
@@ -12,13 +11,17 @@ import { data } from '@kit.TelephonyKit';
 function showSystemApnSettings(context: Context): Promise<void>
 ```
 
-打开当前默认移动数据卡对应的APN配置界面。使用Promise异步回调。 > **说明：** > > - 该接口仅支持查看和选择当前已添加的通用APN，不支持新建或修改。 > > - 若未插入SIM卡或设备不支持APN配置，将无法打开该配置界面。
+打开当前默认移动数据卡对应的APN配置界面。使用Promise异步回调。
+
+> **说明：**
+> 
+> - 该接口仅支持查看和选择当前已添加的通用APN，不支持新建或修改。
+> 
+> - 若未插入SIM卡或设备不支持APN配置，将无法打开该配置界面。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-data-function showSystemApnSettings(context: Context): Promise<void>--><!--Device-data-function showSystemApnSettings(context: Context): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Telephony.CellularData
 
@@ -32,7 +35,7 @@ function showSystemApnSettings(context: Context): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -49,4 +52,3 @@ data.showSystemApnSettings(context).then(() => {
   console.error("showSystemApnSettings failed");
 });
 ```
-

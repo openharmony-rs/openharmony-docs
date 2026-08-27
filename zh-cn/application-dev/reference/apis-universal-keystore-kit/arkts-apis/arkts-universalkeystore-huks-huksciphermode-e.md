@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-<!--Device-huks-export enum HuksCipherMode--><!--Device-huks-export enum HuksCipherMode-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_MODE_ECB
@@ -19,8 +17,6 @@ HUKS_MODE_ECB = 1
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksCipherMode-HUKS_MODE_ECB = 1--><!--Device-HuksCipherMode-HUKS_MODE_ECB = 1-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -36,8 +32,6 @@ HUKS_MODE_CBC = 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksCipherMode-HUKS_MODE_CBC = 2--><!--Device-HuksCipherMode-HUKS_MODE_CBC = 2-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_MODE_CTR
@@ -52,8 +46,6 @@ HUKS_MODE_CTR = 3
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksCipherMode-HUKS_MODE_CTR = 3--><!--Device-HuksCipherMode-HUKS_MODE_CTR = 3-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_MODE_OFB
@@ -67,8 +59,6 @@ HUKS_MODE_OFB = 4
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksCipherMode-HUKS_MODE_OFB = 4--><!--Device-HuksCipherMode-HUKS_MODE_OFB = 4-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.Huks.Core
@@ -86,8 +76,6 @@ HUKS_MODE_CFB = 5
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksCipherMode-HUKS_MODE_CFB = 5--><!--Device-HuksCipherMode-HUKS_MODE_CFB = 5-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_MODE_CCM
@@ -101,8 +89,6 @@ HUKS_MODE_CCM = 31
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksCipherMode-HUKS_MODE_CCM = 31--><!--Device-HuksCipherMode-HUKS_MODE_CCM = 31-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.Huks.Core
@@ -120,7 +106,4 @@ HUKS_MODE_GCM = 32
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksCipherMode-HUKS_MODE_GCM = 32--><!--Device-HuksCipherMode-HUKS_MODE_GCM = 32-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
-

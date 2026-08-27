@@ -276,6 +276,8 @@
   - [SettingsMenu](arkts-mdm-devicesettings-settingsmenu-e.md)
   - [SwitchKey](arkts-mdm-devicesettings-switchkey-e.md)
   - [SwitchStatus](arkts-mdm-devicesettings-switchstatus-e.md)
+- [@ohos.enterprise.EnterpriseAdminExtensionAbility](arkts-enterprise-enterpriseadminextensionability.md)
+  - [EnterpriseAdminExtensionAbility](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md)
 - [@ohos.enterprise.locationManager](arkts-enterprise-locationmanager.md)
   - [getLocationPolicy](arkts-mdm-locationmanager-getlocationpolicy-f.md)
   - [setLocationPolicy](arkts-mdm-locationmanager-setlocationpolicy-f.md)

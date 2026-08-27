@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export interface OrderOverlayOptions--><!--Device-unnamed-export interface OrderOverlayOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -25,15 +23,13 @@ levelMode?: LevelMode
 
 浮层的显示模式。
 
-**类型：** [LevelMode](../../apis-na/arkts-apis/arkts-na-promptaction-levelmode-e.md)
+**类型：** [LevelMode](arkts-arkui-promptaction-levelmode-e.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OrderOverlayOptions-levelMode?: LevelMode--><!--Device-OrderOverlayOptions-levelMode?: LevelMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,27 +41,25 @@ levelOrder?: LevelOrder
 
 浮层的显示顺序。
 
-**类型：** [LevelOrder](../../apis-na/arkts-apis/arkts-na-promptaction-levelorder-c.md)
+**类型：** [LevelOrder](arkts-arkui-promptaction-levelorder-c.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OrderOverlayOptions-levelOrder?: LevelOrder--><!--Device-OrderOverlayOptions-levelOrder?: LevelOrder-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelUniqueId
 
 ```TypeScript
-levelUniqueId?: int
+levelUniqueId?: number
 ```
 
 The uniqueId of any node in the router or navigation page.
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
@@ -73,7 +67,4 @@ The uniqueId of any node in the router or navigation page.
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OrderOverlayOptions-levelUniqueId?: int--><!--Device-OrderOverlayOptions-levelUniqueId?: int-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

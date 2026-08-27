@@ -4,8 +4,6 @@
 
 **废弃版本：** 9
 
-<!--Device-storage-interface StorageObserver--><!--Device-storage-interface StorageObserver-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 ## 导入模块
@@ -26,6 +24,3 @@ key: string
 **起始版本：** 6
 
 **废弃版本：** 9
-
-<!--Device-StorageObserver-key: string--><!--Device-StorageObserver-key: string-End-->
-

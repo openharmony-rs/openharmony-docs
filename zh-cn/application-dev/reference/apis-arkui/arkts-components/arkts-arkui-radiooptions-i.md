@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-<!--Device-unnamed-declare interface RadioOptions--><!--Device-unnamed-declare interface RadioOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ group: string
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RadioOptions-group: string--><!--Device-RadioOptions-group: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## indicatorBuilder
@@ -41,7 +37,7 @@ indicatorBuilder?: CustomBuilder
 
 配置单选框的选中样式为自定义组件。自定义组件与Radio组件以中心点对齐显示。indicatorBuilder设置为undefined时，按照RadioIndicatorType.TICK进行显示。
 
-**类型：** CustomBuilder
+**类型：** [CustomBuilder](arkts-arkui-custombuilder-t.md)
 
 **起始版本：** 12
 
@@ -50,8 +46,6 @@ indicatorBuilder?: CustomBuilder
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-RadioOptions-indicatorBuilder?: CustomBuilder--><!--Device-RadioOptions-indicatorBuilder?: CustomBuilder-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,8 +67,6 @@ indicatorType?: RadioIndicatorType
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RadioOptions-indicatorType?: RadioIndicatorType--><!--Device-RadioOptions-indicatorType?: RadioIndicatorType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -93,7 +85,4 @@ value: string
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RadioOptions-value: string--><!--Device-RadioOptions-value: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -2,9 +2,7 @@
 
 模态弹框请求结果，包含结果码ResultCode和请求结果ResultWant。
 
-**起始版本：** 23
-
-<!--Device-dialogRequest-export interface RequestResult--><!--Device-dialogRequest-export interface RequestResult-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -24,11 +22,9 @@ result: ResultCode
 
 **类型：** ResultCode
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-RequestResult-result: ResultCode--><!--Device-RequestResult-result: ResultCode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -42,11 +38,8 @@ want?: Want
 
 **类型：** [Want](arkts-ability-app-ability-want-want-c.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-RequestResult-want?: Want--><!--Device-RequestResult-want?: Want-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-

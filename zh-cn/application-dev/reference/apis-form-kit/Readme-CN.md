@@ -6,14 +6,6 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-- ArkTS API<!--form-arkts-->
-  <!--Del-->
-  <!--DelEnd-->
-  - application<!--form-arkts-application-->
-    <!--Del-->
-   <!--DelEnd-->
-- 已停止维护的接口<!--form-arkts-dep-->
-  <!--Del-->
-  <!--DelEnd-->
+- [ArkTS API](arkts-apis/Readme-CN.md)<!--arkts-formkit-->
 - 错误码<!--form-arkts-errcode-->
   - [卡片错误码](errorcode-form.md)

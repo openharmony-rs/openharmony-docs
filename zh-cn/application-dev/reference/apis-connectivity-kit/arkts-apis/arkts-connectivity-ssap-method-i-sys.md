@@ -1,10 +1,8 @@
 # Method（系统接口）
 
-SSAP方法。
+表示服务的方法。
 
 **起始版本：** 26.0.0
-
-<!--Device-ssap-interface Method--><!--Device-ssap-interface Method-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -22,15 +20,13 @@ import { ssap } from '@kit.ConnectivityKit';
 methodUuid: string
 ```
 
-方法实例的UUID 长度必须为36，由16进制数字字符和连字符共36个字符组成，形如“FFFFFFFF-1234-5678-ABCD-000000001234”，代表128比特标识。 <br>不允许使用NearLink标准UUID。
+表示方法UUID。数据格式同serviceUuid。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Method-methodUuid: string--><!--Device-Method-methodUuid: string-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -42,15 +38,13 @@ methodUuid: string
 parameter?: ArrayBuffer
 ```
 
-方法实例的参数
+表示方法的参数，数据格式由具体服务定义。若未配置则默认不携带该字段。
 
 **类型：** ArrayBuffer
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Method-parameter?: ArrayBuffer--><!--Device-Method-parameter?: ArrayBuffer-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -62,15 +56,13 @@ parameter?: ArrayBuffer
 result?: ArrayBuffer
 ```
 
-方法实例的结果
+表示方法的返回值，数据格式由具体服务定义。若未配置则默认不携带该字段。
 
 **类型：** ArrayBuffer
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Method-result?: ArrayBuffer--><!--Device-Method-result?: ArrayBuffer-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -82,7 +74,7 @@ result?: ArrayBuffer
 serviceUuid: string
 ```
 
-方法所属的[Service](arkts-connectivity-ssap-service-i.md)实例的UUID 长度必须为36，由16进制数字字符和连字符共36个字符组成，形如“FFFFFFFF-1234-5678-ABCD-000000001234”，代表128比特标识。 <br>不允许使用NearLink标准UUID。
+星闪服务UUID，个字符，由32个十六进制数字和4个连字符（-）组成，例如： FFFFFFFF-1234-5678-ABCD-000000001234，表示一个128位标识符。 不允许使用星闪标准UUID。 长度必须为36。
 
 **类型：** string
 
@@ -90,9 +82,6 @@ serviceUuid: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Method-serviceUuid: string--><!--Device-Method-serviceUuid: string-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 **系统接口：** 此接口为系统接口。
-

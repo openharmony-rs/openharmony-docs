@@ -14,11 +14,9 @@ function getSubscribeInfo(): Promise<NotificationExtensionSubscriptionInfo[]>
 
 获取当前应用的通知扩展订阅信息。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **需要权限：** ohos.permission.SUBSCRIBE_NOTIFICATION
-
-<!--Device-notificationExtensionSubscription-function getSubscribeInfo(): Promise<NotificationExtensionSubscriptionInfo[]>--><!--Device-notificationExtensionSubscription-function getSubscribeInfo(): Promise<NotificationExtensionSubscriptionInfo[]>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -30,7 +28,7 @@ subscribe 订阅通知扩展。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;NotificationExtensionSubscriptionInfo[]&gt; | Promise对象，返回一个 [NotificationExtensionSubscriptionInfo]{ |
+| Promise & lt;NotificationExtensionSubscriptionInfo[] & gt; | Promise对象，返回一个 [NotificationExtensionSubscriptionInfo]{ |
 
 **错误码：**
 
@@ -42,8 +40,6 @@ subscribe 订阅通知扩展。
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
   console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
@@ -51,15 +47,3 @@ notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExt
   console.error(`getSubscribeInfo fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
-  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
-}).catch((error: Error) => {
-  let err = error as BusinessError
-  console.error(`getSubscribeInfo fail, code is ${err.code}, message is ${err.message}`);
-});
-```
-

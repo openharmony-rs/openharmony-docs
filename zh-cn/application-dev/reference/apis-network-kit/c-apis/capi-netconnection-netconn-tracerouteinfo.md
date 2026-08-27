@@ -1,7 +1,7 @@
 # NetConn_TraceRouteInfo
 
 ```c
-typedef struct NetConn_TraceRouteInfo {...} NetConn_TraceRouteInfo
+struct NetConn_TraceRouteInfo {...}
 ```
 
 ## 概述
@@ -20,8 +20,8 @@ typedef struct NetConn_TraceRouteInfo {...} NetConn_TraceRouteInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t jumpNo | 丢包率，百分制，值100表示100%丢包；50表示50%丢包。 |
+| uint8_t jumpNo | 跳数。 |
 | char address[NETCONN_MAX_STR_LEN] | 主机名或地址。 |
-| uint32_t rtt[NETCONN_MAX_RTT_NUM] | Round-trip time in ms, including the maximum, minimum, average, and standard deviations. |
+| uint32_t rtt[NETCONN_MAX_RTT_NUM] | 往返时间RTT，单位微秒，包含最小值/平均值/最大值/标准差。 |
 
 

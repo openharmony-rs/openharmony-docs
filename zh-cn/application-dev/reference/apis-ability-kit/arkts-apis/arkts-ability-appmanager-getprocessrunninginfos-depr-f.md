@@ -11,7 +11,11 @@
 function getProcessRunningInfos(): Promise<Array<ProcessRunningInfo>>
 ```
 
-获取有关运行进程的信息。使用Promise异步回调。 > 从 API Version 9 开始废弃，建议使用 > [appManager.getRunningProcessInformation](arkts-ability-appmanager-getrunningprocessinformation-f.md) > 替代。
+获取有关运行进程的信息。使用Promise异步回调。
+
+> 从 API Version 9 开始废弃，建议使用
+> [appManager.getRunningProcessInformation](arkts-ability-appmanager-getrunningprocessinformation-f.md)
+> 替代。
 
 **起始版本：** 8
 
@@ -20,8 +24,6 @@ function getProcessRunningInfos(): Promise<Array<ProcessRunningInfo>>
 **替代接口：** [getRunningProcessInformation](arkts-ability-appmanager-getrunningprocessinformation-f.md)
 
 **需要权限：** ohos.permission.GET_RUNNING_INFO
-
-<!--Device-appManager-function getProcessRunningInfos(): Promise<Array<ProcessRunningInfo>>--><!--Device-appManager-function getProcessRunningInfos(): Promise<Array<ProcessRunningInfo>>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -51,7 +53,11 @@ appManager.getProcessRunningInfos().then((data) => {
 function getProcessRunningInfos(callback: AsyncCallback<Array<ProcessRunningInfo>>): void
 ```
 
-获取有关运行进程的信息。使用callback异步回调。 > 从 API Version 9 开始废弃，建议使用 > [appManager.getRunningProcessInformation](arkts-ability-appmanager-getrunningprocessinformation-f.md) > 替代。
+获取有关运行进程的信息。使用callback异步回调。
+
+> 从 API Version 9 开始废弃，建议使用
+> [appManager.getRunningProcessInformation](arkts-ability-appmanager-getrunningprocessinformation-f.md)
+> 替代。
 
 **起始版本：** 8
 
@@ -61,15 +67,13 @@ function getProcessRunningInfos(callback: AsyncCallback<Array<ProcessRunningInfo
 
 **需要权限：** ohos.permission.GET_RUNNING_INFO
 
-<!--Device-appManager-function getProcessRunningInfos(callback: AsyncCallback<Array<ProcessRunningInfo>>): void--><!--Device-appManager-function getProcessRunningInfos(callback: AsyncCallback<Array<ProcessRunningInfo>>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[ProcessRunningInfo](arkts-ability-processrunninginfo-i.md)&gt;&gt; | 是 | 回调函数，返回有关运行进程的信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ProcessRunningInfo](arkts-ability-processrunninginfo-i.md)&gt;&gt; | 是 | 回调函数，返回有关运行进程的信息。 |
 
 **示例**
 
@@ -84,4 +88,3 @@ appManager.getProcessRunningInfos((error, data) => {
   }
 });
 ```
-

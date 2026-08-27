@@ -23,7 +23,7 @@ Defines the visual effect types for the native module.
 | [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md) | ArkUI_RotationOptions | 定义组件转场时的旋转效果对象。 |
 | [ArkUI_PointF](capi-arkui-nativemodule-arkui-pointf.md) | ArkUI_PointF | 定义一个二维坐标点结构体，坐标以浮点类型存储。 |
 | [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md) | ArkUI_Matrix4 | 定义四阶矩阵对象。 |
-| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md) | OH_ArkUI_ShadowOptions | 定义阴影选项对象。 |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md) | OH_ArkUI_ShadowOptions | 定义阴影选项，用于设置组件的阴影效果，包括阴影颜色、偏移量、模糊半径、阴影类型、是否填充等属性。<br> 调用{@link OH_ArkUI_ShadowOptions_Create}接口创建对应的阴影选项对象。<br> 调用{@link OH_ArkUI_ShadowOptions_Destroy}接口销毁阴影选项对象。<br> 对象创建后，调用OH_ArkUI_ShadowOptions_SetXXX系列接口设置生效的具体样式。例如调用{@link OH_ArkUI_ShadowOptions_SetRadius}设置阴影模糊半径。若创建对象失败（返回空指针），调用SetXXX系列接口将不会生效。 |
 | [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md) | ArkUI_MotionPathOptions | 定义路径动画的运动路径配置项。 |
 | [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md) | ArkUI_Matrix4ScaleOptions | 定义矩阵缩放的缩放对象。 |
 | [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md) | ArkUI_Matrix4RotationOptions | 定义矩阵旋转的旋转对象。 |

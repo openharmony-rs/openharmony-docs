@@ -4,8 +4,6 @@
 
 **起始版本：** 9
 
-<!--Device-stationary-enum ActivityState--><!--Device-stationary-enum ActivityState-End-->
-
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Stationary
 
 ## ENTER
@@ -17,8 +15,6 @@ ENTER = 1
 进入状态，表示设备当前处于静止状态。
 
 **起始版本：** 9
-
-<!--Device-ActivityState-ENTER = 1--><!--Device-ActivityState-ENTER = 1-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Stationary
 
@@ -32,7 +28,4 @@ EXIT = 2
 
 **起始版本：** 9
 
-<!--Device-ActivityState-EXIT = 2--><!--Device-ActivityState-EXIT = 2-End-->
-
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Stationary
-

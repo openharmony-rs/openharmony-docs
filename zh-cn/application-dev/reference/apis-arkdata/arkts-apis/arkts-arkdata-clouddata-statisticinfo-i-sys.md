@@ -2,9 +2,7 @@
 
 端云同步的统计信息。
 
-**起始版本：** 23
-
-<!--Device-cloudData-interface StatisticInfo--><!--Device-cloudData-interface StatisticInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -19,16 +17,14 @@ import { cloudData } from '@kit.ArkData';
 ## inserted
 
 ```TypeScript
-inserted: int
+inserted: number
 ```
 
 本地新增且未同步到云端的数据条数，如返回值为2，表示本地新增2条数据且还未同步到云端。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-StatisticInfo-inserted: int--><!--Device-StatisticInfo-inserted: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -37,16 +33,14 @@ inserted: int
 ## normal
 
 ```TypeScript
-normal: int
+normal: number
 ```
 
 端云一致的数据条数。如返回值为2，表示本地与云端一致的数据为2条。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-StatisticInfo-normal: int--><!--Device-StatisticInfo-normal: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -62,9 +56,7 @@ table: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-StatisticInfo-table: string--><!--Device-StatisticInfo-table: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -73,18 +65,15 @@ table: string
 ## updated
 
 ```TypeScript
-updated: int
+updated: number
 ```
 
 云端同步之后，本地或云端修改还未同步的数据条数，如返回值为2，表示本地或云端修改还有2条数据未同步。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-StatisticInfo-updated: int--><!--Device-StatisticInfo-updated: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **系统接口：** 此接口为系统接口。
-

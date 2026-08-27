@@ -2,9 +2,7 @@
 
 本模块提供查询默认应用的能力，支持查询当前应用是否是默认应用。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace defaultAppManager--><!--Device-unnamed-declare namespace defaultAppManager-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -49,4 +47,3 @@ import { defaultAppManager } from '@kit.AbilityKit';
 | 名称 | 说明 |
 | --- | --- |
 | [ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md) | 默认应用的应用类型。 |
-

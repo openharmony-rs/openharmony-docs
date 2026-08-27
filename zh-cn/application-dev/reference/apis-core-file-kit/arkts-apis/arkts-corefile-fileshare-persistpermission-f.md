@@ -14,11 +14,9 @@ function persistPermission(policies: Array<PolicyInfo>): Promise<void>
 
 对所选择的多个文件或目录URI进行持久化授权，使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
-
-<!--Device-fileShare-function persistPermission(policies: Array<PolicyInfo>): Promise<void>--><!--Device-fileShare-function persistPermission(policies: Array<PolicyInfo>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -32,16 +30,16 @@ function persistPermission(policies: Array<PolicyInfo>): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;  2.Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | 13900001 | Operation not permitted. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 13900042 | Out of memory |
 
 **示例**
@@ -83,4 +81,3 @@ async function persistPermissionExample() {
   }
 }
 ```
-

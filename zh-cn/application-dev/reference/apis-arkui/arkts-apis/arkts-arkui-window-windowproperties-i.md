@@ -2,35 +2,29 @@
 
 窗口属性。
 
-**起始版本：** 23
-
-<!--Device-window-interface WindowProperties--><!--Device-window-interface WindowProperties-End-->
+**起始版本：** 6
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
 ## brightness
 
 ```TypeScript
-brightness: double
+brightness: number
 ```
 
 窗口亮度。通过 [setWindowBrightness()](arkts-arkui-window-window-i.md#setwindowbrightness) 设置窗口的亮度值。该参数为浮点数，可设置的亮度范围为[0.0, 1.0]或-1.0，其取值1.0时表示最大亮度，取值-1.0时，表示亮度跟随系统。如果窗口没有设置亮度值，表示亮度跟随系统，此时获取到的亮度值为-1.0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 6
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowProperties-brightness: double--><!--Device-WindowProperties-brightness: double-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -40,7 +34,8 @@ brightness: double
 dimBehindValue: number
 ```
 
-下层窗口的暗度值。该参数为浮点数，取值范围为[0.0, 1.0]，其取1.0表示最暗。 **说明：** 从API version 7开始支持，从API version 9开始废弃，当前无可替代接口。
+下层窗口的暗度值。该参数为浮点数，取值范围为[0.0, 1.0]，其取1.0表示最暗。  
+**说明：** 从API version 7开始支持，从API version 9开始废弃，当前无可替代接口。
 
 **类型：** number
 
@@ -48,25 +43,21 @@ dimBehindValue: number
 
 **废弃版本：** 9
 
-<!--Device-WindowProperties-dimBehindValue: number--><!--Device-WindowProperties-dimBehindValue: number-End-->
-
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## displayId
 
 ```TypeScript
-displayId?: long
+displayId?: number
 ```
 
 窗口所在屏幕ID，默认返回主屏幕ID，该参数为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowProperties-displayId?: long--><!--Device-WindowProperties-displayId?: long-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -80,11 +71,9 @@ drawableRect: Rect
 
 **类型：** Rect
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowProperties-drawableRect: Rect--><!--Device-WindowProperties-drawableRect: Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -98,11 +87,9 @@ focusable: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowProperties-focusable: boolean--><!--Device-WindowProperties-focusable: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -116,27 +103,23 @@ globalDisplayRect?: Rect
 
 **类型：** Rect
 
-**起始版本：** 23
-
-<!--Device-WindowProperties-globalDisplayRect?: Rect--><!--Device-WindowProperties-globalDisplayRect?: Rect-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## id
 
 ```TypeScript
-id: int
+id: number
 ```
 
 窗口ID，该参数为整数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowProperties-id: int--><!--Device-WindowProperties-id: int-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -150,11 +133,9 @@ isFullScreen: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 6
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowProperties-isFullScreen: boolean--><!--Device-WindowProperties-isFullScreen: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -168,11 +149,9 @@ isKeepScreenOn: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 6
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowProperties-isKeepScreenOn: boolean--><!--Device-WindowProperties-isKeepScreenOn: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -182,15 +161,13 @@ isKeepScreenOn: boolean
 isLayoutFullScreen: boolean
 ```
 
-对于子窗，如果设置了[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)，返回值为true。 对于主窗，如果设置了[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)且处于全屏模式，返回值为true。 其他情况下均返回false
+对于子窗，如果设置了[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)，返回值为true。对于主窗，如果设置了[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)且处于全屏模式，返回值为true。其他情况下均返回false
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowProperties-isLayoutFullScreen: boolean--><!--Device-WindowProperties-isLayoutFullScreen: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -204,11 +181,9 @@ isPrivacyMode: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowProperties-isPrivacyMode: boolean--><!--Device-WindowProperties-isPrivacyMode: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -218,15 +193,14 @@ isPrivacyMode: boolean
 isRoundCorner: boolean
 ```
 
-窗口是否为圆角。true表示窗口为圆角；false表示窗口为非圆角。 **说明：** 从API version 7开始支持，从API version 9开始废弃，当前无可替代接口。
+窗口是否为圆角。true表示窗口为圆角；false表示窗口为非圆角。  
+**说明：** 从API version 7开始支持，从API version 9开始废弃，当前无可替代接口。
 
 **类型：** boolean
 
 **起始版本：** 7
 
 **废弃版本：** 9
-
-<!--Device-WindowProperties-isRoundCorner: boolean--><!--Device-WindowProperties-isRoundCorner: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -240,11 +214,9 @@ isTransparent: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowProperties-isTransparent: boolean--><!--Device-WindowProperties-isTransparent: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -258,11 +230,9 @@ name?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowProperties-name?: string--><!--Device-WindowProperties-name?: string-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -276,11 +246,9 @@ touchable: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowProperties-touchable: boolean--><!--Device-WindowProperties-touchable: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -290,19 +258,17 @@ touchable: boolean
 type: WindowType
 ```
 
-窗口类型。 当前存在主窗使用[getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties)接口返回type不准确的问题，开发者在创建窗口时已指明窗 口类型，无需通过getWindowProperties()接口获取窗口类型。
+窗口类型。当前存在主窗使用[getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties)接口返回type不准确的问题，开发者在创建窗口时已指明窗 口类型，无需通过getWindowProperties()接口获取窗口类型。
 
 **类型：** WindowType
 
-**起始版本：** 23
+**起始版本：** 7
 
 **废弃版本：** 26.0.0
 
 **替代接口：** [windowType](#windowtype)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowProperties-type: WindowType--><!--Device-WindowProperties-type: WindowType-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -316,11 +282,9 @@ windowRect: Rect
 
 **类型：** Rect
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WindowProperties-windowRect: Rect--><!--Device-WindowProperties-windowRect: Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -340,7 +304,4 @@ windowType?: WindowType
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WindowProperties-windowType?: WindowType--><!--Device-WindowProperties-windowType?: WindowType-End-->
-
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
-

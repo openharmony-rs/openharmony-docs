@@ -14,9 +14,7 @@ function getPluginBundlePathForSelf(pluginBundleName: string): string
 
 获取指定插件在当前[应用沙箱](../../../file-management/app-sandbox-directory.md)内的安装路径。
 
-**起始版本：** 23
-
-<!--Device-bundleManager-function getPluginBundlePathForSelf(pluginBundleName: string): string--><!--Device-bundleManager-function getPluginBundlePathForSelf(pluginBundleName: string): string-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -55,4 +53,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getPluginBundlePathForSelf failed. Cause: %{public}s', message);
 }
 ```
-

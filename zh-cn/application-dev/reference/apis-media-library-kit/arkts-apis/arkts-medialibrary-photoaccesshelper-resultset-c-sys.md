@@ -1,10 +1,8 @@
 # ResultSet（系统接口）
 
-提供通过查询数据库生成的数据库结果集的访问方法。 下列API示例中，需先使用[query](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#query)方法获取ResultSet实例，再调用对应方法。
+提供通过查询数据库生成的数据库结果集的访问方法。下列API示例中，需先使用[query](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#query)方法获取ResultSet实例，再调用对应方法。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-class ResultSet--><!--Device-photoAccessHelper-class ResultSet-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -24,9 +22,7 @@ close(): void
 
 关闭结果集，若不关闭可能会引起内存泄漏。
 
-**起始版本：** 23
-
-<!--Device-ResultSet-close(): void--><!--Device-ResultSet-close(): void-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -36,8 +32,8 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
 
 **示例**
 
@@ -53,6 +49,28 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('fetchResultCloseDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    fetchResult.close();
+    console.info('close succeed.');
+  } catch (err) {
+    console.error(`close fail. error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## getRow
 
 ```TypeScript
@@ -61,9 +79,7 @@ getRow(): ValuesBucket
 
 获取指定行的所有列值。
 
-**起始版本：** 23
-
-<!--Device-ResultSet-getRow(): ValuesBucket--><!--Device-ResultSet-getRow(): ValuesBucket-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -79,8 +95,8 @@ getRow(): ValuesBucket
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
 
 **示例**
 
@@ -101,14 +117,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 ## getValue
 
 ```TypeScript
-getValue(columnIndex: int): ValueType
+getValue(columnIndex: number): ValueType
 ```
 
 获取当前行中指定列的值。
 
-**起始版本：** 23
-
-<!--Device-ResultSet-getValue(columnIndex: int): ValueType--><!--Device-ResultSet-getValue(columnIndex: int): ValueType-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -118,7 +132,7 @@ getValue(columnIndex: int): ValueType
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| columnIndex | int | 是 | 指定的列索引，从0开始。取值范围为0到结果集列数减1。 |
+| columnIndex | number | 是 | 指定的列索引，从0开始。取值范围为0到结果集列数减1。 |
 
 **返回值：**
 
@@ -130,9 +144,9 @@ getValue(columnIndex: int): ValueType
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scene parameters validate failed, possible causes: columnIndex invalid. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
 
 **示例**
 
@@ -158,9 +172,7 @@ goToFirstRow(): boolean
 
 转到结果集的第一行。
 
-**起始版本：** 23
-
-<!--Device-ResultSet-goToFirstRow(): boolean--><!--Device-ResultSet-goToFirstRow(): boolean-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -176,8 +188,8 @@ goToFirstRow(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
 
 **示例**
 
@@ -202,9 +214,7 @@ goToNextRow(): boolean
 
 转到结果集的下一行。
 
-**起始版本：** 23
-
-<!--Device-ResultSet-goToNextRow(): boolean--><!--Device-ResultSet-goToNextRow(): boolean-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -220,8 +230,8 @@ goToNextRow(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
 
 **示例**
 
@@ -241,14 +251,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 ## goToRow
 
 ```TypeScript
-goToRow(position: int): boolean
+goToRow(position: number): boolean
 ```
 
 转到结果集的指定行。
 
-**起始版本：** 23
-
-<!--Device-ResultSet-goToRow(position: int): boolean--><!--Device-ResultSet-goToRow(position: int): boolean-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -258,7 +266,7 @@ goToRow(position: int): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| position | int | 是 | 指定行的索引，从0开始。取值范围为0到结果集行数减1。 |
+| position | number | 是 | 指定行的索引，从0开始。取值范围为0到结果集行数减1。 |
 
 **返回值：**
 
@@ -270,9 +278,9 @@ goToRow(position: int): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scene parameters validate failed, possible causes: position invalid. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
 
 **示例**
 
@@ -292,16 +300,14 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 ## columnCount
 
 ```TypeScript
-columnCount: int
+columnCount: number
 ```
 
 获取结果集的列数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ResultSet-columnCount: int--><!--Device-ResultSet-columnCount: int-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -317,9 +323,7 @@ isAtLastRow: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-ResultSet-isAtLastRow: boolean--><!--Device-ResultSet-isAtLastRow: boolean-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -328,16 +332,14 @@ isAtLastRow: boolean
 ## rowCount
 
 ```TypeScript
-rowCount: int
+rowCount: number
 ```
 
 获取结果集的行数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ResultSet-rowCount: int--><!--Device-ResultSet-rowCount: int-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -346,18 +348,15 @@ rowCount: int
 ## rowIndex
 
 ```TypeScript
-rowIndex: int
+rowIndex: number
 ```
 
 获取结果集的当前行索引。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ResultSet-rowIndex: int--><!--Device-ResultSet-rowIndex: int-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

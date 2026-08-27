@@ -12,13 +12,10 @@ declare type Length = string | number | Resource
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare type Length = string | number | Resource--><!--Device-unnamed-declare type Length = string | number | Resource-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | --- | --- |
 | string |  |
 | number |  |
-| Resource |  |
-
+| [Resource](arkts-arkui-resource-t.md) |  |

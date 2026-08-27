@@ -18,31 +18,28 @@ Defines the code of the HiDebug module.
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md) | HiDebug_ThreadCpuUsage | Defines the struct for the CPU usage of all threads of an application. |
-| [HiDebug_SystemMemInfo](capi-hidebug-hidebug-systemmeminfo.md) | HiDebug_SystemMemInfo | Defines a struct for the system memory information. |
-| [HiDebug_NativeMemInfo](capi-hidebug-hidebug-nativememinfo.md) | HiDebug_NativeMemInfo | Defines the struct for the local memory information of the application process. |
-| [HiDebug_MemoryLimit](capi-hidebug-hidebug-memorylimit.md) | HiDebug_MemoryLimit | Defines the struct for the memory limit of the application process. |
-| [OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md) | OH_HiDebug_RequestTraceConfig | 定义trace请求配置。 |
-| [HiDebug_MallocDispatch](capi-hidebug-hidebug-mallocdispatch.md) | HiDebug_MallocDispatch | 应用程序进程可替换/恢复的HiDebug_MallocDispatch表结构类型定义。 |
-| [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md) | HiDebug_JsStackFrame | Defines a struct for the JS stack frame content. |
-| [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md) | HiDebug_NativeStackFrame | Defines the native stack frame content. |
-| [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md) | HiDebug_StackFrame | Defines the stack frame content. |
-| [HiDebug_GraphicsMemorySummary](capi-hidebug-hidebug-graphicsmemorysummary.md) | HiDebug_GraphicsMemorySummary | Defines a struct for the application graphics memory usage details. |
-| [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md) | HiDebug_ProcessSamplerConfig | Defines a struct for sampling configuration. |
-| [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md) | OH_HiDebug_ResProfilerConfig | 定义资源采集配置结构体类型。 |
+| [HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md) | HiDebug_ThreadCpuUsage | 当前进程所有线程的CPU使用率结构体定义。<br>使用场景：<br>应用性能监控：获取线程CPU使用率，监控应用的运行状态和性能瓶颈。<br>线程性能优化：分析各线程的CPU占用情况，优化线程调度和资源分配。<br>系统调试：在调试阶段追踪线程的CPU使用情况，定位性能问题。 |
+| [HiDebug_SystemMemInfo](capi-hidebug-hidebug-systemmeminfo.md) | HiDebug_SystemMemInfo | 系统内存信息结构类型定义。用于获取系统内存的总量、空闲量、可用量等关键信息，适用于系统性能分析、内存监控、故障诊断等场景，帮助开发者了解系统内存使用状况，优化内存管理策略。 |
+| [HiDebug_NativeMemInfo](capi-hidebug-hidebug-nativememinfo.md) | HiDebug_NativeMemInfo | 应用程序进程本机内存信息结构类型定义。 |
+| [HiDebug_MemoryLimit](capi-hidebug-hidebug-memorylimit.md) | HiDebug_MemoryLimit | 应用程序进程内存限制结构类型定义。 |
+| [OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md) | OH_HiDebug_RequestTraceConfig | 请求trace采集的配置结构类型定义。用于在应用性能分析和调试场景中配置trace采集参数，如定位应用启动慢、UI卡顿、CPU占用高等性能问题。 |
+| [HiDebug_MallocDispatch](capi-hidebug-hidebug-mallocdispatch.md) | HiDebug_MallocDispatch | 应用程序进程可替换/恢复的HiDebug_MallocDispatch表结构类型定义。通过该结构体，开发者可以自定义内存管理函数指针，实现对进程内存分配和释放的监控与定制。主要特点包括：支持动态替换和恢复内存管理函数、提供全面的内存操作接口（malloc、calloc、realloc、free、mmap、munmap）、不影响系统默认内存管理行为。使用场景包括：内存泄漏检测、内存使用性能分析、自定义内存分配策略、内存安全监控等。能够帮助开发者及时发现和解决内存问题，提升应用稳定性和性能。 |
+| [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md) | HiDebug_JsStackFrame | js栈帧内容的定义。用于在性能分析和调试场景中，记录js调用栈的帧信息，包括代码位置、函数名称、映射区域等关键信息。 |
+| [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md) | HiDebug_NativeStackFrame | native栈帧内容的定义。 |
+| [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md) | HiDebug_StackFrame | 栈帧内容的定义。该结构体用于表示调试时的栈帧信息，支持获取当前栈的类型以及对应的js栈帧或Native栈帧内容，帮助开发者进行问题定位和调试分析。 |
+| [HiDebug_GraphicsMemorySummary](capi-hidebug-hidebug-graphicsmemorysummary.md) | HiDebug_GraphicsMemorySummary | 应用图形显存占用详情的结构定义。 |
+| [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md) | HiDebug_ProcessSamplerConfig | 采样配置的结构定义。 |
 | [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md) | OH_HiDebug_ProfilingResult | 封装单次资源采集的结果。 |
-| [HiDebug_Backtrace_Object__*](capi-hidebug-hidebug-backtrace-object--8h.md) | HiDebug_Backtrace_Object | 用于栈回溯及栈解析的对象。 |
+| [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md) | OH_HiDebug_ResProfilerConfig | 定义资源采集配置结构体类型。 |
+| [HiDebug_Backtrace_Object__*](capi-hidebug-hidebug-backtrace-object--8h.md) | HiDebug_Backtrace_Object | 用于栈回溯及栈解析的对象。该对象封装了栈回溯所需的上下文信息，包括调用栈地址、线程状态等数据，通过相关接口可获取详细的栈帧信息和符号解析结果。该对象通过HiDebug相关接口创建，使用后需要调用对应的销毁接口释放资源。 |
 | [HiDebug_ThreadCpuUsage*](capi-hidebug-hidebug-threadcpuusage8h.md) | HiDebug_ThreadCpuUsagePtr | Defines pointer of HiDebug_ThreadCpuUsage. |
 
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [HiDebug_TraceFlag](#hidebug_traceflag) | HiDebug_TraceFlag | 采集trace线程的类型。 |
-| [HiDebug_StackFrameType](#hidebug_stackframetype) | HiDebug_StackFrameType | 栈帧类型的枚举值定义。 |
-| [HiDebug_CrashObjType](#hidebug_crashobjtype) | HiDebug_CrashObjType | 维测信息数据类型的枚举。 |
 | [OH_HiDebug_ResourceType](#oh_hidebug_resourcetype) | OH_HiDebug_ResourceType | 定义资源采集类型的枚举。 |
-| [OH_HiDebug_MemListenerType](#oh_hidebug_memlistenertype) | OH_HiDebug_MemListenerType | 内存监听回调的类型。开发者根据回调类型处理相关逻辑。 |
+| [OH_HiDebug_MemListenerType](#oh_hidebug_memlistenertype) | OH_HiDebug_MemListenerType | 内存监听回调的类型枚举。开发者根据回调类型处理相关逻辑。 |
 
 ### 宏定义
 
@@ -90,61 +87,6 @@ Defines the code of the HiDebug module.
 
 ## 枚举类型说明
 
-### HiDebug_TraceFlag
-
-```c
-enum HiDebug_TraceFlag
-```
-
-**描述**
-
-采集trace线程的类型。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| HIDEBUG_TRACE_FLAG_MAIN_THREAD = 1 | 只采集当前应用主线程。 |
-| HIDEBUG_TRACE_FLAG_ALL_THREADS = 2 | 采集当前应用下所有线程。 |
-
-### HiDebug_StackFrameType
-
-```c
-enum HiDebug_StackFrameType
-```
-
-**描述**
-
-栈帧类型的枚举值定义。
-
-**起始版本：** 20
-
-| 枚举项 | 描述 |
-| -- | -- |
-| HIDEBUG_STACK_FRAME_TYPE_JS = 1 | js类型栈帧。 |
-| HIDEBUG_STACK_FRAME_TYPE_NATIVE = 2 | native类型栈帧。 |
-
-### HiDebug_CrashObjType
-
-```c
-enum HiDebug_CrashObjType
-```
-
-**描述**
-
-维测信息数据类型的枚举。
-
-**起始版本：** 23
-
-| 枚举项 | 描述 |
-| -- | -- |
-| HIDEBUG_CRASHOBJ_STRING = 0 | 字符串 |
-| HIDEBUG_CRASHOBJ_MEMORY_64B = 1 | 64字节内存块 |
-| HIDEBUG_CRASHOBJ_MEMORY_256B = 2 | 256字节内存块 |
-| HIDEBUG_CRASHOBJ_MEMORY_1024B = 3 | 1024字节内存块 |
-| HIDEBUG_CRASHOBJ_MEMORY_2048B = 4 | 2048字节内存块 |
-| HIDEBUG_CRASHOBJ_MEMORY_4096B = 5 | 4096字节内存块 |
-
 ### OH_HiDebug_ResourceType
 
 ```c
@@ -164,6 +106,9 @@ enum OH_HiDebug_ResourceType
 | OH_RES_TYPE_NATIVE |  |
 | OH_RES_TYPE_GPU |  |
 | OH_RES_TYPE_GLOBAL_HANDLE |  |
+| OH_RES_TYPE_DMA | DMA内存<br>**起始版本：** 26.1.0 |
+| OH_RES_TYPE_ASHMEM | 匿名共享内存<br>**起始版本：** 26.1.0 |
+| OH_RES_TYPE_COMPOSITE_HEAP | 组合堆<br>**起始版本：** 26.1.0 |
 
 ### OH_HiDebug_MemListenerType
 
@@ -173,7 +118,7 @@ enum OH_HiDebug_MemListenerType
 
 **描述**
 
-内存监听回调的类型。开发者根据回调类型处理相关逻辑。
+内存监听回调的类型枚举。开发者根据回调类型处理相关逻辑。
 
 **起始版本：** 26.0.0
 

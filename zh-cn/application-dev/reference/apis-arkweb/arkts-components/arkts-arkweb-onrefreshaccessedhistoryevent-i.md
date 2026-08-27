@@ -4,18 +4,11 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface OnRefreshAccessedHistoryEvent--><!--Device-unnamed-declare interface OnRefreshAccessedHistoryEvent-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## isMainFrame
@@ -24,13 +17,11 @@ import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 isMainFrame?: boolean
 ```
 
-是否是主文档触发。 true表示是主文档触发，false表示不是主文档触发。
+是否是主文档触发。true表示是主文档触发，false表示不是主文档触发。
 
 **类型：** boolean
 
 **起始版本：** 22
-
-<!--Device-OnRefreshAccessedHistoryEvent-isMainFrame?: boolean--><!--Device-OnRefreshAccessedHistoryEvent-isMainFrame?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -48,8 +39,6 @@ true表示该页面是被重新加载的（调用[refresh&lt;sup&gt;9+&lt;/sup&g
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnRefreshAccessedHistoryEvent-isRefreshed: boolean--><!--Device-OnRefreshAccessedHistoryEvent-isRefreshed: boolean-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## url
@@ -66,7 +55,4 @@ url: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnRefreshAccessedHistoryEvent-url: string--><!--Device-OnRefreshAccessedHistoryEvent-url: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

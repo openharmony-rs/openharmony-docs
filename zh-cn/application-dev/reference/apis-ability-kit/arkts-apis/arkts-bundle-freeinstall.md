@@ -1,10 +1,13 @@
 # @ohos.bundle.freeInstall
 
-本模块提供免安装相关的设置和查询能力，支持BundlePackInfo、DispatchInfo等信息的查询。 > **说明：** > > 本模块为系统接口。
+The module provides APIs for setting and obtaining installation-free information and APIs for obtaining
+ BundlePackInfo and DispatchInfo.
+ > **NOTE**
+ >
+ > The APIs provided by this module are system APIs.
 
-**起始版本：** 23
 
-<!--Device-unnamed-declare namespace freeInstall--><!--Device-unnamed-declare namespace freeInstall-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -60,4 +63,3 @@ import { freeInstall } from '@kit.AbilityKit';
 | [PackageSummary](arkts-ability-freeinstall-packagesummary-t-sys.md) | pack.info中的包摘要信息。 |
 | [Version](arkts-ability-freeinstall-version-t-sys.md) | 包的版本。 |
 <!--DelEnd-->
-

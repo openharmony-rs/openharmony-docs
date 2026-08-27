@@ -1,10 +1,8 @@
 # RepeatMode
 
-用于设置被切割的图片在边框上的重复方式。
+用于设置被切割的图片在边框上的重复方式。@enum { number }
 
 **起始版本：** 11
-
-<!--Device-unnamed-declare enum RepeatMode--><!--Device-unnamed-declare enum RepeatMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,8 +20,6 @@ Repeat = 0
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RepeatMode-Repeat = 0--><!--Device-RepeatMode-Repeat = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Stretch
@@ -39,8 +35,6 @@ Stretch = 1
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-RepeatMode-Stretch = 1--><!--Device-RepeatMode-Stretch = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,8 +52,6 @@ Round = 2
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RepeatMode-Round = 2--><!--Device-RepeatMode-Round = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Space
@@ -76,7 +68,4 @@ Space = 3
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RepeatMode-Space = 3--><!--Device-RepeatMode-Space = 3-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

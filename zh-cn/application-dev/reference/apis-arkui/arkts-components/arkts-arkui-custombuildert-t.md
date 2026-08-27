@@ -14,8 +14,6 @@ declare type CustomBuilderT<T> = (t: T) => void
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare type CustomBuilderT<T> = (t: T) => void--><!--Device-unnamed-declare type CustomBuilderT<T> = (t: T) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -23,4 +21,3 @@ declare type CustomBuilderT<T> = (t: T) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | t | T | 是 | 函数参数 |
-

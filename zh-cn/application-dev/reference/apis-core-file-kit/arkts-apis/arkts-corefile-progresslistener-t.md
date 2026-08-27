@@ -8,8 +8,6 @@ type ProgressListener = (progress: Progress) => void
 
 **起始版本：** 11
 
-<!--Device-unnamed-type ProgressListener = (progress: Progress) => void--><!--Device-unnamed-type ProgressListener = (progress: Progress) => void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -18,3 +16,17 @@ type ProgressListener = (progress: Progress) => void
 | --- | --- | --- | --- |
 | progress | [Progress](arkts-corefile-file-fs-progress-i.md) | 是 | 拷贝进度监听。 |
 
+**示例**
+
+```TypeScript
+import { TaskSignal } from '@kit.CoreFileKit';
+
+let copySignal: fileIo.TaskSignal = new TaskSignal();
+let progressListener: fileIo.ProgressListener = (progress: fileIo.Progress) => {
+  console.info(`processedSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
+};
+let copyOption: fileIo.CopyOptions = {
+  "progressListener" : progressListener,
+  "copySignal" : copySignal,
+}
+```

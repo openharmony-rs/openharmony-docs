@@ -2,9 +2,7 @@
 
 定义应用是否支持多开模式。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export enum MultiAppMode--><!--Device-unnamed-export enum MultiAppMode-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -18,11 +16,9 @@ NOT_SUPPORTED = 0
 
 应用不支持多开模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-MultiAppMode-NOT_SUPPORTED = 0--><!--Device-MultiAppMode-NOT_SUPPORTED = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -34,13 +30,12 @@ NOT_SUPPORTED = 0
 MULTI_INSTANCE = 1
 ```
 
-应用支持多实例模式。 **说明：** 只支持2in1设备。
+应用支持多实例模式。  
+**说明：** 只支持2in1设备。
 
-**起始版本：** 23
+**起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-MultiAppMode-MULTI_INSTANCE = 1--><!--Device-MultiAppMode-MULTI_INSTANCE = 1-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -54,13 +49,10 @@ APP_CLONE = 2
 
 应用支持分身模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-MultiAppMode-APP_CLONE = 2--><!--Device-MultiAppMode-APP_CLONE = 2-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
-

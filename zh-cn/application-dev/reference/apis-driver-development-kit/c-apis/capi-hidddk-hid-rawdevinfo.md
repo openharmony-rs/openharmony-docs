@@ -20,8 +20,8 @@ HID原始设备信息，包含总线类型、供应商ID、产品ID等关键标�
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t busType | 总线类型，取值含义参考标准HID协议的总线类型定义。 |
-| uint16_t vendor | 厂商ID。 |
+| uint32_t busType | 总线类型，用于标识HID设备的物理连接方式。 |
+| uint16_t vendor | 供应商ID。 |
 | uint16_t product | 产品ID。 |
 
 

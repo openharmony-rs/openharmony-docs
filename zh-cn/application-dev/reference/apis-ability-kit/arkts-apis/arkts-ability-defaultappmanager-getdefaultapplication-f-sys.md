@@ -9,16 +9,14 @@ import { defaultAppManager } from '@kit.AbilityKit';
 ## getDefaultApplication
 
 ```TypeScript
-function getDefaultApplication(type: string, userId: int, callback: AsyncCallback<BundleInfo>) : void
+function getDefaultApplication(type: string, userId: number, callback: AsyncCallback<BundleInfo>) : void
 ```
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者 [UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)类型获取默认应用信息。使用 callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.GET_DEFAULT_APPLICATION
-
-<!--Device-defaultAppManager-function getDefaultApplication(type: string, userId: int, callback: AsyncCallback<BundleInfo>) : void--><!--Device-defaultAppManager-function getDefaultApplication(type: string, userId: int, callback: AsyncCallback<BundleInfo>) : void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -29,24 +27,22 @@ function getDefaultApplication(type: string, userId: int, callback: AsyncCallbac
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 要查询的应用类型，取 [ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md)中的值，或者符合媒体类型格式的文件类型，或者 [UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)类型。 |
-| userId | int | 是 | 表示用户ID，可以通过 [getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[BundleInfo](arkts-ability-bundleinfo-i.md)&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，当获取成功时，err为undefined，data为获取 到的应用信息；否则为错误对象。 |
+| userId | number | 是 | 表示用户ID，可以通过 [getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[BundleInfo](arkts-ability-bundleinfo-i.md)&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取 到的应用信息；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [17700025](../errorcode-bundle.md#17700025-输入的type无效) | The specified type is invalid. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [17700023](../errorcode-bundle.md#17700023-指定的默认应用不存在) | The specified default app does not exist. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
+| [17700023](../errorcode-bundle.md#17700023-指定的默认应用不存在) | The specified default app does not exist. |
+| [17700025](../errorcode-bundle.md#17700025-输入的type无效) | The specified type is invalid. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { defaultAppManager } from '@kit.AbilityKit';
@@ -79,42 +75,6 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 });
 ```
 
-ArkTS-Sta示例:
-
-```TypeScript
-'use static'
-
-import { defaultAppManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { uniformTypeDescriptor } from '@kit.ArkData';
-
-// 代码中使用的useId需为应用实际的用户ID。
-let userId = 100;
-defaultAppManager.getDefaultApplication(defaultAppManager.ApplicationType.BROWSER, userId, (err, data) => {
-  if (err) {
-    console.error('getDefaultApplication failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('getDefaultApplication successful. bundleInfo:' + JSON.stringify(data));
-});
-
-defaultAppManager.getDefaultApplication("image/png", userId, (err, data) => {
-  if (err) {
-    console.error('getDefaultApplication failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('getDefaultApplication successful. bundleInfo:' + JSON.stringify(data));
-});
-
-defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, userId, (err, data) => {
-  if (err) {
-    console.error('getDefaultApplication failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('getDefaultApplication successful. bundleInfo:' + JSON.stringify(data));
-});
-```
-
 
 ## getDefaultApplication
 
@@ -124,11 +84,9 @@ function getDefaultApplication(type: string, callback: AsyncCallback<BundleInfo>
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者 [UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)类型获取默认应用信息。使用 callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.GET_DEFAULT_APPLICATION
-
-<!--Device-defaultAppManager-function getDefaultApplication(type: string, callback: AsyncCallback<BundleInfo>) : void--><!--Device-defaultAppManager-function getDefaultApplication(type: string, callback: AsyncCallback<BundleInfo>) : void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -139,22 +97,20 @@ function getDefaultApplication(type: string, callback: AsyncCallback<BundleInfo>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 要查询的应用类型，取 [ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md)中的值，或者符合媒体类型格式的文件类型，或者 [UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)类型。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[BundleInfo](arkts-ability-bundleinfo-i.md)&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，当获取成功时，err为undefined，data为获取 到的应用信息；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[BundleInfo](arkts-ability-bundleinfo-i.md)&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取 到的应用信息；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [17700025](../errorcode-bundle.md#17700025-输入的type无效) | The specified type is invalid. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [17700023](../errorcode-bundle.md#17700023-指定的默认应用不存在) | The specified default app does not exist. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [17700025](../errorcode-bundle.md#17700025-输入的type无效) | The specified type is invalid. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { defaultAppManager } from '@kit.AbilityKit';
@@ -186,54 +142,18 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 });
 ```
 
-ArkTS-Sta示例:
-
-```TypeScript
-'use static'
-
-import { defaultAppManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { uniformTypeDescriptor } from '@kit.ArkData';
-
-defaultAppManager.getDefaultApplication(defaultAppManager.ApplicationType.BROWSER, (err: BusinessError | null, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
-});
-
-defaultAppManager.getDefaultApplication("image/png", (err: BusinessError | null, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
-});
-
-defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, (err: BusinessError | null, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
-});
-```
-
 
 ## getDefaultApplication
 
 ```TypeScript
-function getDefaultApplication(type: string, userId?: int) : Promise<BundleInfo>
+function getDefaultApplication(type: string, userId?: number) : Promise<BundleInfo>
 ```
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者 [UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)类型获取默认应用信息。使用Promise 异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.GET_DEFAULT_APPLICATION
-
-<!--Device-defaultAppManager-function getDefaultApplication(type: string, userId?: int) : Promise<BundleInfo>--><!--Device-defaultAppManager-function getDefaultApplication(type: string, userId?: int) : Promise<BundleInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -244,7 +164,7 @@ function getDefaultApplication(type: string, userId?: int) : Promise<BundleInfo>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 要查询的应用类型，取 [ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md)中的值，或者符合媒体类型格式的文件类型，或者 [UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)类型。 |
-| userId | int | 否 | 表示用户ID，可以通过 [getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。默认值：调用方所在用户。 |
+| userId | number | 否 | 表示用户ID，可以通过 [getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。默认值：调用方所在用户。 |
 
 **返回值：**
 
@@ -256,17 +176,15 @@ function getDefaultApplication(type: string, userId?: int) : Promise<BundleInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [17700025](../errorcode-bundle.md#17700025-输入的type无效) | The specified type is invalid. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [17700023](../errorcode-bundle.md#17700023-指定的默认应用不存在) | The specified default app does not exist. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
+| [17700023](../errorcode-bundle.md#17700023-指定的默认应用不存在) | The specified default app does not exist. |
+| [17700025](../errorcode-bundle.md#17700025-输入的type无效) | The specified type is invalid. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { defaultAppManager } from '@kit.AbilityKit';
@@ -297,38 +215,3 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
     console.error('Operation failed. Cause: ' + JSON.stringify(error));
   });
 ```
-
-ArkTS-Sta示例:
-
-```TypeScript
-'use static'
-
-import { bundleManager, defaultAppManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { uniformTypeDescriptor } from '@kit.ArkData';
-
-defaultAppManager.getDefaultApplication(defaultAppManager.ApplicationType.BROWSER)
-  .then((data: bundleManager.BundleInfo) => {
-    console.info('getDefaultApplication successful. bundleInfo: ' + JSON.stringify(data));
-  })
-  .catch((error: Error) => {
-    console.error('getDefaultApplication failed. Cause: ' + JSON.stringify(error));
-  });
-
-defaultAppManager.getDefaultApplication("image/png")
-  .then((data: bundleManager.BundleInfo) => {
-    console.info('getDefaultApplication successful. bundleInfo: ' + JSON.stringify(data));
-  })
-  .catch((error: Error) => {
-    console.error('getDefaultApplication failed. Cause: ' + JSON.stringify(error));
-  });
-
-defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI)
-  .then((data: bundleManager.BundleInfo) => {
-    console.info('getDefaultApplication successful. bundleInfo: ' + JSON.stringify(data));
-  })
-  .catch((error: Error) => {
-    console.error('getDefaultApplication failed. Cause: ' + JSON.stringify(error));
-  });
-```
-

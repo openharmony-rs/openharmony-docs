@@ -9,7 +9,7 @@
 
 <!--deprecated_code_no_check-->
 
-[FA模型](ability-terminology.md#fa模型)下只有一个Context。Context中的所有功能都是通过方法来提供的，它提供了一些featureAbility中不存在的方法，相当于featureAbility的一个扩展和补全。
+FA模型下只有一个Context。Context中的所有功能都是通过方法来提供的，它提供了一些featureAbility中不存在的方法，相当于featureAbility的一个扩展和补全。
 
 
 ## 接口说明
@@ -30,7 +30,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 let context = featureAbility.getContext();
 ```
 
-最终返回的对象为Context，其对应的接口说明请参见[接口文档/apis-ability-kit/js-apis-inner-app-context.md)。
+最终返回的对象为Context，其对应的接口说明请参见接口文档。
 
 
 ## 开发步骤

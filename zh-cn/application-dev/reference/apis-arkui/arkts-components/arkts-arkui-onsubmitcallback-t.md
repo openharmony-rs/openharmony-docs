@@ -12,8 +12,6 @@ declare type OnSubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => 
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type OnSubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => void--><!--Device-unnamed-declare type OnSubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -22,4 +20,3 @@ declare type OnSubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => 
 | --- | --- | --- | --- |
 | enterKey | [EnterKeyType](arkts-arkui-enterkeytype-e.md) | 是 | 输入法回车键类型。 |
 | event | [SubmitEvent](arkts-arkui-submitevent-i.md) | 是 | 提交事件。可以控制是否收起键盘。 |
-

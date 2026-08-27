@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-companionDeviceAuth-interface StatusMonitor--><!--Device-companionDeviceAuth-interface StatusMonitor-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
@@ -22,15 +20,13 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 getTemplateStatus(): Promise<TemplateStatus[]>
 ```
 
-获取伴随设备模板状态。用于查询当前用户下所有已注册的伴随设备认证模板的状态信息，包括模板有效性、支持的业务范围、关联设备状态等。使用Promise异步回调。 数据来源：返回系统服务（UserIAM）维护的模板状态内存快照，非实时跨设备查询。 与onTemplateChange的区别：getTemplateStatus用于一次性获取当前模板状态快照，适合主动查询；onTemplateChange用于持续订阅模板状态变化，适合实时响应。仅需获取一次状态时使用 getTemplateStatus，需要持续监听变化时使用onTemplateChange。
+获取伴随设备模板状态。用于查询当前用户下所有已注册的伴随设备认证模板的状态信息，包括模板有效性、支持的业务范围、关联设备状态等。使用Promise异步回调。数据来源：返回系统服务（UserIAM）维护的模板状态内存快照，非实时跨设备查询。与onTemplateChange的区别：getTemplateStatus用于一次性获取当前模板状态快照，适合主动查询；onTemplateChange用于持续订阅模板状态变化，适合实时响应。仅需获取一次状态时使用 getTemplateStatus，需要持续监听变化时使用onTemplateChange。
 
 **起始版本：** 23
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-StatusMonitor-getTemplateStatus(): Promise<TemplateStatus[]>--><!--Device-StatusMonitor-getTemplateStatus(): Promise<TemplateStatus[]>-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -50,8 +46,6 @@ getTemplateStatus(): Promise<TemplateStatus[]>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -63,20 +57,6 @@ statusMonitor.getTemplateStatus()
   })
   .catch((error: BusinessError) => {
     console.error(`error has been captured. Code: ${error.code}, message: ${error.message}`);
-  })
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-const localUserId = 100;
-const statusMonitor = companionDeviceAuth.getStatusMonitor(localUserId);
-statusMonitor.getTemplateStatus()
-  .then((templateStatus) => {
-    console.info(`templateStatus: ${JSON.stringify(templateStatus)}`);
-  })
-  .catch((error) => {
-    console.error(`error has been captured: message:${error.message}`);
   })
 ```
 
@@ -93,8 +73,6 @@ offAvailableDeviceChange(callback?: AvailableDeviceStatusCallback): void
 **需要权限：** ohos.permission.USE_USER_IDM
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-StatusMonitor-offAvailableDeviceChange(callback?: AvailableDeviceStatusCallback): void--><!--Device-StatusMonitor-offAvailableDeviceChange(callback?: AvailableDeviceStatusCallback): void-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -144,8 +122,6 @@ offContinuousAuthChange(callback?: ContinuousAuthStatusCallback): void
 **需要权限：** ohos.permission.USE_USER_IDM
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-StatusMonitor-offContinuousAuthChange(callback?: ContinuousAuthStatusCallback): void--><!--Device-StatusMonitor-offContinuousAuthChange(callback?: ContinuousAuthStatusCallback): void-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -205,8 +181,6 @@ offTemplateChange(callback?: TemplateStatusCallback): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-StatusMonitor-offTemplateChange(callback?: TemplateStatusCallback): void--><!--Device-StatusMonitor-offTemplateChange(callback?: TemplateStatusCallback): void-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
@@ -248,15 +222,13 @@ try {
 onAvailableDeviceChange(callback: AvailableDeviceStatusCallback): void
 ```
 
-订阅可添加的伴随设备状态变化。使用callback异步回调。 触发机制：当可添加的伴随设备列表发生变化（如新设备上线、设备离线、设备绑定关系变化等）时触发回调。订阅时立即推送一次当前列表。
+订阅可添加的伴随设备状态变化。使用callback异步回调。触发机制：当可添加的伴随设备列表发生变化（如新设备上线、设备离线、设备绑定关系变化等）时触发回调。订阅时立即推送一次当前列表。
 
 **起始版本：** 23
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-StatusMonitor-onAvailableDeviceChange(callback: AvailableDeviceStatusCallback): void--><!--Device-StatusMonitor-onAvailableDeviceChange(callback: AvailableDeviceStatusCallback): void-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -298,15 +270,13 @@ try {
 onContinuousAuthChange(param: ContinuousAuthParam, callback: ContinuousAuthStatusCallback): void
 ```
 
-订阅伴随设备的持续认证状态。使用callback异步回调。 持续认证：持续认证状态指伴随设备是否持有有效认证令牌。当令牌签发（认证通过）、令牌超时、关联设备离线或令牌被吊销时状态发生变化并触发回调。authTrustLevel为当前有效令牌中的最高认证可信等级。仅当认证可信等级变化时通 知；订阅时立即推送一次当前状态。
+订阅伴随设备的持续认证状态。使用callback异步回调。持续认证：持续认证状态指伴随设备是否持有有效认证令牌。当令牌签发（认证通过）、令牌超时、关联设备离线或令牌被吊销时状态发生变化并触发回调。authTrustLevel为当前有效令牌中的最高认证可信等级。仅当认证可信等级变化时通 知；订阅时立即推送一次当前状态。
 
 **起始版本：** 23
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-StatusMonitor-onContinuousAuthChange(param: ContinuousAuthParam, callback: ContinuousAuthStatusCallback): void--><!--Device-StatusMonitor-onContinuousAuthChange(param: ContinuousAuthParam, callback: ContinuousAuthStatusCallback): void-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -359,15 +329,13 @@ try {
 onTemplateChange(callback: TemplateStatusCallback): void
 ```
 
-订阅模板的状态变化。使用callback异步回调。 触发时机：模板状态变化时触发，包括启用业务ID变更、有效性变更、关联设备上下线/状态变更、模板加入或移除IDM等。订阅时立即推送一次当前状态快照；状态未变化时不重复通知。
+订阅模板的状态变化。使用callback异步回调。触发时机：模板状态变化时触发，包括启用业务ID变更、有效性变更、关联设备上下线/状态变更、模板加入或移除IDM等。订阅时立即推送一次当前状态快照；状态未变化时不重复通知。
 
 **起始版本：** 23
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-StatusMonitor-onTemplateChange(callback: TemplateStatusCallback): void--><!--Device-StatusMonitor-onTemplateChange(callback: TemplateStatusCallback): void-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -402,4 +370,3 @@ try {
   console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
-

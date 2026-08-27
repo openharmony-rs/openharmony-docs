@@ -4,8 +4,6 @@
 
 **起始版本：** 20
 
-<!--Device-unnamed-declare interface MenuMaskType--><!--Device-unnamed-declare interface MenuMaskType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,7 +17,7 @@
 backgroundBlurStyle?: BlurStyle
 ```
 
-设置蒙层模糊材质。 默认值：BlurStyle.BACKGROUND_THIN
+设置蒙层模糊材质。默认值：BlurStyle.BACKGROUND_THIN
 
 **类型：** [BlurStyle](arkts-arkui-blurstyle-e.md)
 
@@ -31,8 +29,6 @@ backgroundBlurStyle?: BlurStyle
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MenuMaskType-backgroundBlurStyle?: BlurStyle--><!--Device-MenuMaskType-backgroundBlurStyle?: BlurStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -41,9 +37,9 @@ backgroundBlurStyle?: BlurStyle
 color?: ResourceColor
 ```
 
-设置蒙层颜色。 默认值：\$r('sys.color.ohos_id_color_mask_thin')
+设置蒙层颜色。默认值：\$r('sys.color.ohos_id_color_mask_thin')
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 20
 
@@ -51,7 +47,4 @@ color?: ResourceColor
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MenuMaskType-color?: ResourceColor--><!--Device-MenuMaskType-color?: ResourceColor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

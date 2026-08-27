@@ -35,4 +35,3 @@ import { SystemRouter, BackRouterOptions, DisableAlertBeforeBackPageOptions, Ena
 | 名称 | 说明 |
 | --- | --- |
 | [ParamsInterface(页面路由)](arkts-arkui-paramsinterface-t.md) | 路由参数列表。 |
-

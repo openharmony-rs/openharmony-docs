@@ -11,9 +11,9 @@
 
 关系型数据库基于SQLite组件，适用于存储包含复杂关系数据的场景，比如一个班级的学生信息，需要包括姓名、学号、各科成绩等，又或者公司的雇员信息，需要包括姓名、工号、职位等，由于数据之间有较强的对应关系，复杂程度比键值型数据更高，此时需要使用关系型数据库来持久化保存数据。
 
-大数据量场景下查询数据可能会导致耗时长甚至应用卡死，如有相关操作可参考文档[批量数据写数据库场景](../arkts-utils/batch-database-operations-guide.md)，且有建议如下：
+大数据量场景下查询数据可能会导致耗时长甚至应用卡死，如有相关操作可参考文档批量数据写数据库场景，且有建议如下：
 - 单次查询数据量不超过5000条。
-- 在[TaskPool/apis-arkts/js-apis-taskpool.md)中查询。
+- 在TaskPool中查询。
 - 拼接SQL语句尽量简洁。
 - 合理地分批次查询。
 
@@ -35,7 +35,7 @@
 
 ## 约束限制
 
-- 系统默认日志方式是[WAL](data-terminology.md#wal模式)（Write Ahead Log）模式，系统默认落盘方式是[FULL模式](data-terminology.md#full模式)。
+- 系统默认日志方式是WAL（Write Ahead Log）模式，系统默认落盘方式是FULL模式。
 
 - 数据库中常驻有4个读连接和1个写连接。读连接会动态扩充，无可用读连接时，会创建新的读连接执行读操作。写连接不会动态扩充，无可用写连接时，会等待连接释放后执行写操作。
 
@@ -49,7 +49,7 @@
 
 ## 接口说明
 
-以下是关系型数据库持久化功能的相关接口，更多接口及使用方式请见[@ohos.data.relationalStore (关系型数据库)/apis-arkdata/arkts-apis-data-relationalStore.md)。
+以下是关系型数据库持久化功能的相关接口，更多接口及使用方式请见@ohos.data.relationalStore (关系型数据库)。
 
 | 接口名称 | 描述 | 
 | -------- | -------- |
@@ -67,7 +67,7 @@
 ## 开发步骤
 因Stage模型、FA模型的差异，个别示例代码提供了在两种模型下的对应示例；示例代码未区分模型或没有对应注释说明时默认在两种模型下均适用。
 
-关系型数据库操作或者存储过程中，有可能会因为各种原因发生非预期的数据库异常情况（抛出14800011），此时需要对数据库进行重建并恢复数据，以保障正常的应用开发，具体可见[关系型数据库异常重建](data-backup-and-restore.md#关系型数据库异常重建)。
+关系型数据库操作或者存储过程中，有可能会因为各种原因发生非预期的数据库异常情况（抛出14800011），此时需要对数据库进行重建并恢复数据，以保障正常的应用开发，具体可见关系型数据库异常重建。
 
 1. 使用关系型数据库实现数据持久化，需要获取一个RdbStore，其中包括建库、建表、升降级等操作。推荐使用事务接口保证数据库升级流程原子性。</br>
 
@@ -75,12 +75,14 @@
    
    Stage模型示例：
      
-   <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
+   <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->  
    
    ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // 导入模块
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { UIContext } from '@kit.ArkUI';
+   import { common } from '@kit.AbilityKit';
    const DOMAIN = 0x0000;
    
    let store: relationalStore.RdbStore | undefined = undefined;
@@ -112,6 +114,7 @@
        'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB, ADDRESS TEXT)';
      if (store === undefined) {
        try {
+         const context = new UIContext().getHostContext() as common.UIAbilityContext;
          store = await relationalStore.getRdbStore(context, STORE_CONFIG);
        } catch (e) {
          const err = e as BusinessError;
@@ -251,7 +254,7 @@
    > 
    > - 当应用首次获取数据库（调用getRdbStore）后，在应用沙箱内会产生对应的数据库文件。使用数据库的过程中，在与数据库文件相同的目录下可能会产生以-wal和-shm结尾的临时文件。此时若开发者希望移动数据库文件到其它地方使用查看，则需要同时移动这些临时文件，当应用被卸载完成后，其在设备上产生的数据库文件及临时文件也会被移除。
    > 
-   > - 错误码的详细介绍请参见[通用错误码/errorcode-universal.md)和[关系型数据库错误码/apis-arkdata/errorcode-data-rdb.md)。
+   > - 错误码的详细介绍请参见通用错误码和关系型数据库错误码。
 
 2. 获取到RdbStore，完成数据表创建后，调用insert()接口插入数据。示例代码如下所示：
    <!--@[persistence_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
@@ -370,7 +373,7 @@
    当前RDB还支持进行FTS全文检索，可以根据中文或者英文进行文本检索，针对中文分词器支持ICU分词器。
 
    以中文关键字检索为例：
-   <!--@[persistence_chinese_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@[persistence_chinese_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
    
    ``` TypeScript
    // 中文关键字检索，查找数据
@@ -382,7 +385,7 @@
        hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in creating fts table.');
      } catch (error) {
        const err = error as BusinessError;
-       hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to creating fts table. code: ${err.code}, message: ${err.message}.`);
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to create fts table. code: ${err.code}, message: ${err.message}.`);
      }
    }
    if (store !== undefined) {
@@ -406,7 +409,7 @@
    
    支持配置的事务类型有DEFERRED、IMMEDIATE和EXCLUSIVE，默认为DEFERRED。
 
-   具体信息请参见[createTransaction/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14)。
+   具体信息请参见createTransaction。
    <!--@[persistence_transaction_insert_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
    ``` TypeScript
@@ -466,7 +469,7 @@
    }
    ```
 
-6. 在同路径下备份数据库。关系型数据库支持手动备份和自动备份（仅系统应用可用）两种方式，具体可见[关系型数据库备份](data-backup-and-restore.md#关系型数据库备份)。
+6. 在同路径下备份数据库。关系型数据库支持手动备份和自动备份（仅系统应用可用）两种方式，具体可见关系型数据库备份。
 
    此处以手动备份为例：
    <!--@[persistence_backup_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
@@ -485,9 +488,9 @@
    }
    ```
 
-7. 从备份数据库中恢复数据。关系型数据库支持两种方式：恢复手动备份数据和恢复自动备份数据（仅系统应用可用），具体可见[关系型数据库数据恢复](data-backup-and-restore.md#关系型数据库数据恢复)。
+7. 从备份数据库中恢复数据。关系型数据库支持两种方式：恢复手动备份数据和恢复自动备份数据（仅系统应用可用），具体可见关系型数据库数据恢复。
 
-   此处以调用[restore/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#restore)接口恢复手动备份数据为例：
+   此处以调用restore接口恢复手动备份数据为例：
    <!--@[persistence_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
    ``` TypeScript
@@ -508,10 +511,11 @@
    调用deleteRdbStore()方法，删除数据库及数据库相关文件。示例代码如下：
 
    Stage模型示例：
-   <!--@[persistence_delete_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@[persistence_delete_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
    
    ``` TypeScript
    // 删除数据库
+   const context = new UIContext().getHostContext() as common.UIAbilityContext;
    relationalStore.deleteRdbStore(context, 'RdbTest.db', (err: BusinessError) => {
      if (err) {
        hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to delete RdbStore. Code:${err.code}, message:${err.message}`);

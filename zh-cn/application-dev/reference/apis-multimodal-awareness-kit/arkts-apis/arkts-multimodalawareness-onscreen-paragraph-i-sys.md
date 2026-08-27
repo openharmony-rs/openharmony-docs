@@ -2,9 +2,7 @@
 
 段落信息。
 
-**起始版本：** 23
-
-<!--Device-onScreen-export interface Paragraph--><!--Device-onScreen-export interface Paragraph-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -19,16 +17,14 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 ## chapterId
 
 ```TypeScript
-chapterId?: int
+chapterId?: number
 ```
 
 段落对应的chapter ID，每个子章节的标识。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Paragraph-chapterId?: int--><!--Device-Paragraph-chapterId?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -37,16 +33,14 @@ chapterId?: int
 ## hookId
 
 ```TypeScript
-hookId?: long
+hookId?: number
 ```
 
 段落对应的hook ID，每个主要段落的标识。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Paragraph-hookId?: long--><!--Device-Paragraph-hookId?: long-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -62,9 +56,7 @@ text?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Paragraph-text?: string--><!--Device-Paragraph-text?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -80,11 +72,8 @@ title?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Paragraph-title?: string--><!--Device-Paragraph-title?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **系统接口：** 此接口为系统接口。
-

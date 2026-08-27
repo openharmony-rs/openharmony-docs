@@ -1,10 +1,14 @@
 # Typeface
 
-Typeface类用于表示和管理字体对象。支持的字体操作包括：获取字体族名、从字体文件或rawfile资源构造字体、结合字体属性构造新字体，以及检查字体的加粗、斜体状态等。 > **说明：** > > - 本模块使用屏幕物理像素单位px。 > > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
+Typeface类用于表示和管理字体对象。支持的字体操作包括：获取字体族名、从字体文件或rawfile资源构造字体、结合字体属性构造新字体，以及检查字体的加粗、斜体状态等。
 
-**起始版本：** 23
+> **说明：**
+> 
+> - 本模块使用屏幕物理像素单位px。
+> 
+> - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
-<!--Device-drawing-class Typeface--><!--Device-drawing-class Typeface-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -24,8 +28,6 @@ getFamilyName(): string
 
 **起始版本：** 11
 
-<!--Device-Typeface-getFamilyName(): string--><!--Device-Typeface-getFamilyName(): string-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -34,25 +36,15 @@ getFamilyName(): string
 | --- | --- |
 | string | 返回字体的族名，表示当前Typeface对象对应的字体设计名称。 |
 
-## getFamilyName
+**示例**
 
 ```TypeScript
-getFamilyName(): string | undefined
+import { drawing } from '@kit.ArkGraphics2D';
+
+const font = new drawing.Font();
+let typeface = font.getTypeface();
+let familyName = typeface.getFamilyName();
 ```
-
-获取字体的族名，即一套字体设计的名称。
-
-**起始版本：** 23
-
-<!--Device-Typeface-getFamilyName(): string | undefined--><!--Device-Typeface-getFamilyName(): string | undefined-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| string | 返回字体的族名，表示当前Typeface对象对应的字体设计名称。创建失败时返回undefined。 |
 
 ## isBold
 
@@ -64,8 +56,6 @@ isBold(): boolean
 
 **起始版本：** 23
 
-<!--Device-Typeface-isBold(): boolean--><!--Device-Typeface-isBold(): boolean-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -73,6 +63,16 @@ isBold(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 返回当前字体是否加粗。true表示字体加粗，false表示字体未加粗。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const font = new drawing.Font();
+let typeface = font.getTypeface();
+let result = typeface.isBold();
+```
 
 ## isItalic
 
@@ -84,8 +84,6 @@ isItalic(): boolean
 
 **起始版本：** 23
 
-<!--Device-Typeface-isItalic(): boolean--><!--Device-Typeface-isItalic(): boolean-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -93,6 +91,16 @@ isItalic(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 返回当前字体是否为斜体。true表示字体为斜体，false表示字体非斜体。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const font = new drawing.Font();
+let typeface = font.getTypeface();
+let result = typeface.isItalic();
+```
 
 ## makeFromCurrent
 
@@ -104,8 +112,6 @@ makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface
 
 **起始版本：** 20
 
-<!--Device-Typeface-makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface--><!--Device-Typeface-makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -120,31 +126,26 @@ makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface
 | --- | --- |
 | [Typeface](arkts-arkgraphics2d-drawing-typeface-c.md) | 返回基于当前字体结合字体属性构造的字体对象（异常情况下会返回空指针）。 |
 
-## makeFromCurrent
+**示例**
 
 ```TypeScript
-makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface | undefined
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class TextRenderNode extends RenderNode {
+  async draw(context: DrawContext) {
+    const canvas = context.canvas;
+    let typeArguments = new drawing.TypefaceArguments();
+    typeArguments.addVariation("wght", 100);
+    const myTypeFace = drawing.Typeface.makeFromFile("/system/fonts/HarmonyOS_Sans_SC.ttf");
+    const typeFace1 = myTypeFace.makeFromCurrent(typeArguments);
+    let font = new drawing.Font();
+    font.setTypeface(typeFace1);
+    const textBlob = drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    canvas.drawTextBlob(textBlob, 60, 100);
+  }
+}
 ```
-
-基于当前字体结合字体属性构造新的字体对象。
-
-**起始版本：** 24
-
-<!--Device-Typeface-makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface | undefined--><!--Device-Typeface-makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface | undefined-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| typefaceArguments | [TypefaceArguments](arkts-arkgraphics2d-drawing-typefacearguments-c.md) | 是 | 字体属性参数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [Typeface](arkts-arkgraphics2d-drawing-typeface-c.md) | 返回基于当前字体结合字体属性构造的字体对象（异常情况下会返回空指针）。 |
 
 ## makeFromFile
 
@@ -157,8 +158,6 @@ static makeFromFile(filePath: string): Typeface
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Typeface-static makeFromFile(filePath: string): Typeface--><!--Device-Typeface-static makeFromFile(filePath: string): Typeface-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -178,39 +177,26 @@ static makeFromFile(filePath: string): Typeface
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
 
-## makeFromFile
+**示例**
 
 ```TypeScript
-static makeFromFile(filePath: string): Typeface | undefined
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class TextRenderNode extends RenderNode {
+  async draw(context: DrawContext) {
+    const canvas = context.canvas;
+    let font = new drawing.Font();
+    let str = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
+    const mytypeface = drawing.Typeface.makeFromFile(str);
+    font.setTypeface(mytypeface);
+    const textBlob = drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    canvas.drawTextBlob(textBlob, 60, 100);
+  }
+}
 ```
-
-从指定字体文件构造字体。
-
-**起始版本：** 23
-
-<!--Device-Typeface-static makeFromFile(filePath: string): Typeface | undefined--><!--Device-Typeface-static makeFromFile(filePath: string): Typeface | undefined-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| filePath | string | 是 | 表示字体资源存放的路径。应用沙箱路径和真实物理路径的对应关系请参考 [应用沙箱路径和真实物理路径的对应关系](../../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [Typeface](arkts-arkgraphics2d-drawing-typeface-c.md) | 返回从指定字体文件加载的字体对象。创建失败时返回undefined。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 
 ## makeFromFileWithArguments
 
@@ -224,8 +210,6 @@ static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceAr
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Typeface-static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface--><!--Device-Typeface-static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -241,32 +225,25 @@ static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceAr
 | --- | --- |
 | [Typeface](arkts-arkgraphics2d-drawing-typeface-c.md) | 返回从指定字体文件加载并结合字体属性构造的字体对象（异常情况下会返回空指针）。 |
 
-## makeFromFileWithArguments
+**示例**
 
 ```TypeScript
-static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface | undefined
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class TextRenderNode extends RenderNode {
+  async draw(context: DrawContext) {
+    const canvas = context.canvas;
+    let font = new drawing.Font();
+    let str = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
+    let typeFaceArgument = new drawing.TypefaceArguments();
+    const myTypeFace = drawing.Typeface.makeFromFileWithArguments(str, typeFaceArgument);
+    font.setTypeface(myTypeFace);
+    const textBlob = drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    canvas.drawTextBlob(textBlob, 60, 100);
+  }
+}
 ```
-
-根据字体文件路径和字体属性构造新的字体。
-
-**起始版本：** 24
-
-<!--Device-Typeface-static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface | undefined--><!--Device-Typeface-static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface | undefined-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| filePath | string | 是 | 表示字体资源存放的路径。应用沙箱路径和真实物理路径的对应关系请参考 [应用沙箱路径和真实物理路径的对应关系](../../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)。 |
-| typefaceArguments | [TypefaceArguments](arkts-arkgraphics2d-drawing-typefacearguments-c.md) | 是 | 字体属性参数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [Typeface](arkts-arkgraphics2d-drawing-typeface-c.md) | 返回从指定字体文件加载并结合字体属性构造的字体对象（异常情况下会返回空指针）。 |
 
 ## makeFromRawFile
 
@@ -280,15 +257,13 @@ static makeFromRawFile(rawfile: Resource): Typeface
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Typeface-static makeFromRawFile(rawfile: Resource): Typeface--><!--Device-Typeface-static makeFromRawFile(rawfile: Resource): Typeface-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rawfile | [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 是 | 指定字体文件对应的资源对象。当前只支持``\\$rawfile``格式引用的资源对象，对应格式写为``\\$rawfile('filePath')``，其中filePath为 指定字体文件相对于工程中resources/rawfile目录的相对路径。如将字体文件直接存放在resources/rawfile目录下，则引用格式应写为：``\\$rawfile(' HarmonyOS_Sans_Bold.ttf')``；也可以创建子目录，将字体文件存放在resources/rawfile/ttf下，则引用格式应写为：``\\$rawfile('ttf/ HarmonyOS_Sans_Bold.ttf')``。 |
+| rawfile | [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 是 | 指定字体文件对应的资源对象。当前只支持``\\$rawfile``格式引用的资源对象，对应格式写为``\\$rawfile('filePath')``，其中filePath为 指定字体文件相对于工程中resources/rawfile目录的相对路径。如将字体文件直接存放在resources/rawfile目录下，则引用格式应写为：``\\$rawfile('HarmonyOS_Sans_Bold.ttf')``；也可以创建子目录，将字体文件存放在resources/rawfile/ttf下，则引用格式应写为：``\\$rawfile('ttf/ HarmonyOS_Sans_Bold.ttf')``。 |
 
 **返回值：**
 
@@ -296,31 +271,23 @@ static makeFromRawFile(rawfile: Resource): Typeface
 | --- | --- |
 | [Typeface](arkts-arkgraphics2d-drawing-typeface-c.md) | 返回从rawfile资源加载的字体对象（异常情况下会返回空指针）。 |
 
-## makeFromRawFile
+**示例**
 
 ```TypeScript
-static makeFromRawFile(rawfile: Resource): Typeface | undefined
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class TextRenderNode extends RenderNode {
+  async draw(context: DrawContext) {
+    const canvas = context.canvas;
+    let font = new drawing.Font();
+    const myTypeFace = drawing.Typeface.makeFromRawFile($rawfile('HarmonyOS_Sans_Bold.ttf'));
+    font.setTypeface(myTypeFace);
+    const textBlob = drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    canvas.drawTextBlob(textBlob, 60, 100);
+  }
+}
 ```
-
-使用指定的字体文件构造字体，该字体文件需保存在应用资源文件夹的rawfile路径下。
-
-**起始版本：** 23
-
-<!--Device-Typeface-static makeFromRawFile(rawfile: Resource): Typeface | undefined--><!--Device-Typeface-static makeFromRawFile(rawfile: Resource): Typeface | undefined-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| rawfile | [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 是 | 指定字体文件对应的资源对象。当前只支持``\\$rawfile``格式引用的资源对象，对应格式写为``\\$rawfile('filePath')``，其中filePath为 指定字体文件相对于工程中resources/rawfile目录的相对路径。如将字体文件直接存放在resources/rawfile目录下，则引用格式应写为：``\\$rawfile(' HarmonyOS_Sans_Bold.ttf')``；也可以创建子目录，将字体文件存放在resources/rawfile/ttf下，则引用格式应写为：``\\$rawfile('ttf/ HarmonyOS_Sans_Bold.ttf')``。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [Typeface](arkts-arkgraphics2d-drawing-typeface-c.md) | 返回从rawfile资源加载的字体对象（异常情况下会返回空指针）。 |
 
 ## makeFromRawFileWithArguments
 
@@ -334,8 +301,6 @@ static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: Typefa
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Typeface-static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface--><!--Device-Typeface-static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -351,30 +316,21 @@ static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: Typefa
 | --- | --- |
 | [Typeface](arkts-arkgraphics2d-drawing-typeface-c.md) | 返回从rawfile资源加载并结合字体属性构造的字体对象（异常情况下会返回空指针）。 |
 
-## makeFromRawFileWithArguments
+**示例**
 
 ```TypeScript
-static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface | undefined
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class TextRenderNode extends RenderNode {
+  async draw(context: DrawContext) {
+    const canvas = context.canvas;
+    let font = new drawing.Font();
+    let typeFaceArgument = new drawing.TypefaceArguments();
+    const myTypeFace = drawing.Typeface.makeFromRawFileWithArguments($rawfile('HarmonyOS_Sans_Bold.ttf'), typeFaceArgument);
+    font.setTypeface(myTypeFace);
+    const textBlob = drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    canvas.drawTextBlob(textBlob, 60, 100);
+  }
+}
 ```
-
-使用指定的字体文件和字体属性构造新的字体，该字体文件需保存在应用资源文件夹的rawfile路径下。
-
-**起始版本：** 24
-
-<!--Device-Typeface-static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface | undefined--><!--Device-Typeface-static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface | undefined-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| rawfile | [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 是 | 指定字体文件对应的资源对象。当前只支持``\\$rawfile``格式引用的资源对象，传入非``\\$rawfile``格式的资源对象时返回空指针。对应格式写为``\\$ rawfile('filePath')``，其中filePath为指定字体文件相对于工程中resources/rawfile目录的相对路径。 |
-| typefaceArguments | [TypefaceArguments](arkts-arkgraphics2d-drawing-typefacearguments-c.md) | 是 | 字体属性参数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [Typeface](arkts-arkgraphics2d-drawing-typeface-c.md) | 返回从rawfile资源加载并结合字体属性构造的字体对象（异常情况下会返回空指针）。 |
-

@@ -9,28 +9,28 @@
 
 ## 使用场景
 
-开发者可以通过调用[startAbility/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口，由系统从已安装的应用中寻找符合要求的应用，打开特定文件。
+开发者可以通过调用startAbility接口，由系统从已安装的应用中寻找符合要求的应用，打开特定文件。
 
-例如，在浏览器应用中下载PDF文件，可以调用此接口选择文件处理应用打开此PDF文件。开发者需要在请求中设置待打开文件的URI路径（[uri](#接口关键参数说明)）、文件格式（[type](#接口关键参数说明)）等字段，以便系统能够识别，直接拉起文件打开应用或弹出一个选择框，让用户选择合适的应用来打开文件，效果示意如下图所示。
+例如，在浏览器应用中下载PDF文件，可以调用此接口选择文件处理应用打开此PDF文件。开发者需要在请求中设置待打开文件的URI路径（uri）、文件格式（type）等字段，以便系统能够识别，直接拉起文件打开应用或弹出一个选择框，让用户选择合适的应用来打开文件，效果示意如下图所示。
 
 图1 效果示意图<br>
 ![](figures/file-open.jpeg)
 
 ## 接口关键参数说明
 
-开发者通过调用[startAbility/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口即可实现由已安装的垂域应用来打开文件。
+开发者通过调用startAbility接口即可实现由已安装的垂域应用来打开文件。
 
-表1 startAbility请求中[want/apis-ability-kit/js-apis-app-ability-want.md)相关参数说明
+表1 startAbility请求中want相关参数说明
 
 | 参数名称 | 类型   | 是否必填 | 说明                                                                                                                                                                                   |
 |----------|--------|----------|----------|
 | uri      | string | 是       | 表示待打开文件的URI路径，一般配合type使用。<br />uri格式为：file:\/\/bundleName\/path<br />- file：文件URI的标志。<br />- bundleName：该文件资源的属主。<br />- path：文件资源在应用沙箱中的路径。 |
-| type     | string | 否       | 表示打开文件的类型，推荐使用[UTD类型](../database/uniform-data-type-descriptors.md)，比如：'general.plain-text'、'general.image'。目前也可以兼容使用[MIME type类型](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)，如：'text/xml' 、 'image/*'等。<br>**说明：** <br>1. type为可选字段，如果不传type，系统会尝试根据uri后缀名判断文件类型进行匹配；如果传入type，必须确保与uri的文件类型一致，否则会导致无法匹配到合适的应用。文件后缀与文件类型的映射关系参见[Uniform Type Descriptor(UTD)预置列表](../database/uniform-data-type-list.md)。<br>2. 不支持传\*/\*。|
+| type     | string | 否       | 表示打开文件的类型，推荐使用UTD类型，比如：'general.plain-text'、'general.image'。目前也可以兼容使用[MIME type类型](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)，如：'text/xml' 、 'image/*'等。<br>**说明：** <br>1. type为可选字段，如果不传type，系统会尝试根据uri后缀名判断文件类型进行匹配；如果传入type，必须确保与uri的文件类型一致，否则会导致无法匹配到合适的应用。文件后缀与文件类型的映射关系参见Uniform Type Descriptor(UTD)预置列表。<br>2. 不支持传\*/\*。|
 | parameters | Record<string, Object>       | 否         | 表示由系统定义，由开发者按需赋值的自定义参数，文件打开场景请参考表2。                                                                                                                                                                                       |
 | flags | number | 否 | 表示处理方式，文件打开场景请参考表3。                                                                                                                                                                                       |
 | action | string | 是 | 表示要执行的通用操作。文件打开场景固定值：'ohos.want.action.viewData' ，表示查看数据的操作。                                                                                                                                                                                      |
 
-**表2** [parameters/apis-ability-kit/js-apis-app-ability-wantConstant.md#params)相关参数说明
+**表2** parameters相关参数说明
 
 
 | 参数名称                              | 类型    | 说明                                                                                                                                                                |
@@ -39,7 +39,7 @@
 | ohos.ability.params.showDefaultPicker | boolean | 表示是否强制展示文件打开方式的选择弹框，缺省为false。<br>- false：表示由系统策略或默认应用设置决定直接拉起文件打开应用还是展示弹框。<br>- true：表示始终展示弹框。                                                                            |
 | showCaller                            | boolean | 表示调用方本身作为目标方应用匹配成功时，是否在打开文件的应用选择弹框中展示，缺省为false。<br>- false：不展示。<br>- true：展示。                                                                            |
 
-**表3** [flags/apis-ability-kit/js-apis-app-ability-wantConstant.md#flags)相关参数说明
+**表3** flags相关参数说明
 
 | 参数名称                       | 值         | 说明                       |
 |--------------------------------|------------|----------------------------|
@@ -60,7 +60,7 @@
     import { window } from '@kit.ArkUI';
     ```
 
-2. 获取[应用文件路径](application-context-stage.md#获取应用文件路径)。
+2. 获取应用文件路径。
 
     ```ts
     // xxx.ets
@@ -135,7 +135,7 @@
 
 1. 声明文件打开能力。
 
-    支持打开文件的应用需要在[module.json5](../quick-start/module-configuration-file.md)配置文件中声明文件打开能力。其中uris字段表示接收URI的类型，其中scheme固定为file。type字段表示支持打开的文件类型（参见[UTD类型](../database/uniform-data-type-descriptors.md)（推荐）或[MIME type类型](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)），如下举例中类型为txt文件。
+    支持打开文件的应用需要在module.json5配置文件中声明文件打开能力。其中uris字段表示接收URI的类型，其中scheme固定为file。type字段表示支持打开的文件类型（参见UTD类型（推荐）或[MIME type类型](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)），如下举例中类型为txt文件。
 
     ```json
     {
@@ -170,7 +170,7 @@
 
 2. 应用处理待打开文件。
 
-    声明了文件打开的应用在被拉起后，获取传入的[Want/apis-ability-kit/js-apis-app-ability-want.md)参数信息，从中获取待打开文件的URI，在打开文件并获取对应的file对象后，可对文件进行读写操作。
+    声明了文件打开的应用在被拉起后，获取传入的Want参数信息，从中获取待打开文件的URI，在打开文件并获取对应的file对象后，可对文件进行读写操作。
 
     ```ts
     // xxx.ets

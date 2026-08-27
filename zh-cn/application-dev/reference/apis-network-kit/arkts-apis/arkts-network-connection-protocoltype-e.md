@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-connection-export enum ProtocolType--><!--Device-connection-export enum ProtocolType-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 ## PROTO_TYPE_TCP
@@ -17,8 +15,6 @@ PROTO_TYPE_TCP = 6
 TCP网络协议。
 
 **起始版本：** 23
-
-<!--Device-ProtocolType-PROTO_TYPE_TCP = 6--><!--Device-ProtocolType-PROTO_TYPE_TCP = 6-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -32,7 +28,4 @@ UDP网络协议。
 
 **起始版本：** 23
 
-<!--Device-ProtocolType-PROTO_TYPE_UDP = 17--><!--Device-ProtocolType-PROTO_TYPE_UDP = 17-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Core
-

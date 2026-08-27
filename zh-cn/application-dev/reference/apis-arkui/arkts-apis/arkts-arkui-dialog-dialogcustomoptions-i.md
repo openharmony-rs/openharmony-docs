@@ -6,8 +6,6 @@
 
 **起始版本：** 26.1.0
 
-<!--Device-dialog-declare interface DialogCustomOptions--><!--Device-dialog-declare interface DialogCustomOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -34,7 +32,4 @@ customStyle?: boolean
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogCustomOptions-customStyle?: boolean--><!--Device-DialogCustomOptions-customStyle?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -92,7 +92,7 @@ fileIo.copyFile(file.fd, 'dstPath', 0).then(() => {
 
 可以通过以下步骤来完成：
 
-1. 使用fileIo.openSyn获取json文件的fd。
+1. 使用fileIo.openSync获取json文件的fd。
 
    ```ts
    import fs from '@ohos.file.fs';
@@ -120,7 +120,7 @@ fileIo.copyFile(file.fd, 'dstPath', 0).then(() => {
    fs.writeSync(file.fd, JSON.stringify(obj));
    ```
 
-fs的具体使用可以参考：[@ohos.file.fs/apis-core-file-kit/js-apis-file-fs.md)
+fs的具体使用可以参考：@ohos.file.fs
 
 ## 通过fileAccess模块获取的文件路径对应的实际路径是什么(API 9)
 
@@ -132,7 +132,7 @@ fs的具体使用可以参考：[@ohos.file.fs/apis-core-file-kit/js-apis-file-f
 
 **参考链接：**  
 
-[应用文件上传下载](../basic-services/request/app-file-upload-download.md)
+应用文件上传下载
 
 ## 如何监听文件或文件目录的变化(API 10)
 
@@ -142,4 +142,4 @@ fs的具体使用可以参考：[@ohos.file.fs/apis-core-file-kit/js-apis-file-f
 
 **参考链接：**  
 
-[@ohos.file.fs/apis-core-file-kit/js-apis-file-fs.md#fileiocreatewatcher10)
+fileIo.createWatcher

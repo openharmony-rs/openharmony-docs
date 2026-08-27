@@ -2,9 +2,7 @@
 
 获取所有卷。
 
-**起始版本：** 23
-
-<!--Device-volumeManager-export interface Volume--><!--Device-volumeManager-export interface Volume-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
@@ -26,9 +24,7 @@ description: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Volume-description: string--><!--Device-Volume-description: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
@@ -44,9 +40,7 @@ diskId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Volume-diskId: string--><!--Device-Volume-diskId: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
@@ -58,13 +52,12 @@ diskId: string
 fsType: string
 ```
 
-文件系统的类型，常见有ext2、vfat、NTFS等。 **说明：**从API version 24开始，支持ISO9660、UDF。
+文件系统的类型，常见有ext2、vfat、NTFS等。  
+**说明：**从API version 24开始，支持ISO9660、UDF。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Volume-fsType: string--><!--Device-Volume-fsType: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
@@ -80,9 +73,7 @@ id: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Volume-id: string--><!--Device-Volume-id: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
@@ -98,9 +89,7 @@ path: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Volume-path: string--><!--Device-Volume-path: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
@@ -116,9 +105,7 @@ removable: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Volume-removable: boolean--><!--Device-Volume-removable: boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
@@ -127,16 +114,14 @@ removable: boolean
 ## state
 
 ```TypeScript
-state: int
+state: number
 ```
 
-卷设备状态标识： 0：卸载状态 UNMOUNTED。 1：检查状态 CHECKING。 2：挂载状态 MOUNTED。 3：正在弹出状态 EJECTING。
+卷设备状态标识：0：卸载状态 UNMOUNTED。1：检查状态 CHECKING。2：挂载状态 MOUNTED。3：正在弹出状态 EJECTING。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Volume-state: int--><!--Device-Volume-state: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
@@ -152,11 +137,8 @@ uuid: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Volume-uuid: string--><!--Device-Volume-uuid: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
 **系统接口：** 此接口为系统接口。
-

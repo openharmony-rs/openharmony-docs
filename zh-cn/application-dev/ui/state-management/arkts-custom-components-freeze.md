@@ -1,4 +1,4 @@
-# 自定义组件冻结功能（V1）
+# 自定义组件冻结（V1）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
@@ -10,7 +10,7 @@
 
 组件冻结功能是一种性能优化机制，它会冻结非激活状态下的组件的刷新能力。当组件处于非激活状态时，即使其绑定的状态变量发生变化，也不会触发该组件的UI重新渲染，从而降低复杂UI场景下的刷新负载。
 
-在阅读本文档前，开发者需要了解自定义组件基本语法。建议提前阅读：[自定义组件](./arkts-create-custom-components.md)。
+在阅读本文档前，开发者需要了解自定义组件基本语法。建议提前阅读：自定义组件。
 
 > **说明：**
 >
@@ -18,13 +18,13 @@
 >
 > 从API version 18开始，支持自定义组件冻结混用场景。
 > 
-> 从API version 20开始，通过配置[BuilderNode/apis-arkui/js-apis-arkui-builderNode.md)的[inheritFreezeOptions/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)接口为true，实现BuilderNode继承冻结的能力。
+> 从API version 20开始，通过配置BuilderNode的inheritFreezeOptions接口为true，实现BuilderNode继承冻结的能力。
 
 
 ## 概述
 
 组件冻结的工作原理是：
-1. 开发者通过设置[freezeWhenInactive/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions)属性，即可激活组件冻结机制。
+1. 开发者通过设置freezeWhenInactive属性，即可激活组件冻结机制。
 2. 启用后，系统将仅对处于激活状态的自定义组件进行更新，这使得UI框架可以尽量缩小更新范围，仅限于用户可见范围内（激活状态）的自定义组件，从而提高复杂UI场景下的刷新效率。
 3. 当之前处于inactive状态的自定义组件重新变为active状态时，状态管理框架会对其执行必要的刷新操作，确保UI的正确展示。
 
@@ -32,10 +32,10 @@
 
 需要注意，组件active/inactive并不等同于其可见性。组件冻结目前仅适用于以下场景：
 
-1. [页面路由/apis-arkui/js-apis-router.md)：当前栈顶页面为active状态，非栈顶不可见页面为inactive状态。
-2. [TabContent/apis-arkui/arkui-ts/ts-container-tabcontent.md)：只有当前显示的TabContent中的自定义组件处于active状态，其余则为inactive。
-3. [LazyForEach/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)：仅当前显示的LazyForEach中的自定义组件为active状态，而缓存节点的组件则为inactive状态。
-4. [Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)：当前显示的NavDestination中的自定义组件为active状态，而其他未显示的NavDestination组件则为inactive状态。需要注意，本文档中涉及的“激活（active）/非激活（inactive）”是指组件冻结的激活/非激活状态，和[NavDestination/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)组件中的[onActive/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onactive17)和[onInactive/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#oninactive17)不同。
+1. 页面路由：当前栈顶页面为active状态，非栈顶不可见页面为inactive状态。
+2. TabContent：只有当前显示的TabContent中的自定义组件处于active状态，其余则为inactive。
+3. LazyForEach：仅当前显示的LazyForEach中的自定义组件为active状态，而缓存节点的组件则为inactive状态。
+4. Navigation：当前显示的NavDestination中的自定义组件为active状态，而其他未显示的NavDestination组件则为inactive状态。需要注意，本文档中涉及的“激活（active）/非激活（inactive）”是指组件冻结的激活/非激活状态，和NavDestination组件中的onActive和onInactive不同。
 5. 组件复用：进入复用池的组件为inactive状态，从复用池上树的节点为active状态。
 6. 混用场景：对于以上场景的组合使用，例如TabContent下面使用LazyForEach，切换Tab时，API version 17及以下，LazyForEach中的所有节点都会被设置为active状态，而从API version 18开始，只有LazyForEach的屏上节点会被设置为active状态，其余则为inactive状态。
 
@@ -45,7 +45,7 @@
 
 > **说明：**
 >
-> 本示例使用了router进行页面跳转，建议开发者使用组件导航(Navigation)代替页面路由(router)来实现页面切换。Navigation提供了更多的功能和更灵活的自定义能力。请参考[使用Navigation的组件冻结用例](#navigation)。
+> 本示例使用了router进行页面跳转，建议开发者使用组件导航(Navigation)代替页面路由(router)来实现页面切换。Navigation提供了更多的功能和更灵活的自定义能力。请参考使用Navigation的组件冻结用例。
 
 当页面1调用router.pushUrl接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。
 
@@ -128,11 +128,11 @@ struct PageTwo {
 
 在上面的示例中：
 
-1.在页面1中点击`first page storageLink + 1`，storageLink状态变量改变，[@Watch](./arkts-watch.md)注册的方法first会被调用。
+1.在页面1中点击`first page storageLink + 1`，storageLink状态变量改变，@Watch注册的方法first会被调用。
 
 2.在页面1中点击`go to next page`，跳转到页面2，页面1隐藏，状态由active变为inactive。
 
-3.在页面2中点击`this.storageLink2 += 2`，只会回调页面2中@Watch注册的方法second，因为页面1的状态变量此时已被冻结。
+3.在页面2中点击`second page storageLink + 2`，只会回调页面2中@Watch注册的方法second，因为页面1的状态变量此时已被冻结。
 
 4.在页面2中点击`back`，页面2被销毁，页面1的状态由inactive变为active，重新刷新在inactive时被冻结的状态变量，页面1中@Watch注册的方法first被再次调用。
 
@@ -215,7 +215,7 @@ struct FreezeChild {
 ### LazyForEach
 
 对LazyForEach中缓存的自定义组件进行冻结，修改状态变量不会触发缓存组件的更新。
-<!-- @[arkts_custom_components_freeze4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/LazyforEachTest.ets) -->
+<!-- @[arkts_custom_components_freeze4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/LazyforEachTest.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -256,28 +256,28 @@ class BasicDataSource implements IDataSource {
   notifyDataReload(): void {
     this.listeners.forEach(listener => {
       listener.onDataReloaded();
-    })
+    });
   }
 
   // 通知LazyForEach组件需要在index对应索引处添加子组件
   notifyDataAdd(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataAdd(index);
-    })
+    });
   }
 
   // 通知LazyForEach组件在index对应索引处数据有变化，需要重建该子组件
   notifyDataChange(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataChange(index);
-    })
+    });
   }
 
   // 通知LazyForEach组件需要在index对应索引处删除该子组件
   notifyDataDelete(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataDelete(index);
-    })
+    });
   }
 }
 
@@ -362,7 +362,7 @@ struct FreezeChild {
 
 在上面的示例中：
 
-1.点击`change message`更改message的值，当前正在显示的ListItem中的子组件@Watch注册的方法onMessageUpdated被触发。缓存节点中@Watch注册的方法不会被触发。（如果不加组件冻结，当前正在显示的ListItem和cachecount缓存节点中@Watch注册的方法onMessageUpdated都会被触发。）
+1.点击`change message`更改message的值，当前正在显示的ListItem中的子组件@Watch注册的方法onMessageUpdated被触发。缓存节点中@Watch注册的方法不会被触发。（如果不加组件冻结，当前正在显示的ListItem和cachedCount缓存节点中@Watch注册的方法onMessageUpdated都会被触发。）
 
 2.List区域外的ListItem滑动到List区域内，状态由inactive变为active，对应的@Watch注册的方法onMessageUpdated被触发。
 
@@ -593,7 +593,7 @@ struct NavigationContentMsgStack {
 
 ### 组件复用
 
-[组件复用](./arkts-reusable.md)通过重利用缓存池中已存在的节点，而非创建新节点，来优化UI性能并提升应用流畅度。复用池中的节点尽管未在UI组件树上展示，但是状态变量的更改仍会触发UI刷新。为了解决复用池中组件异常刷新问题，可以使用组件冻结避免复用池中的组件刷新。
+组件复用通过重利用缓存池中已存在的节点，而非创建新节点，来优化UI性能并提升应用流畅度。复用池中的节点尽管未在UI组件树上展示，但是状态变量的更改仍会触发UI刷新。为了解决复用池中组件异常刷新问题，可以使用组件冻结避免复用池中的组件刷新。
 
 **组件复用、if和组件冻结混用场景**
 
@@ -665,16 +665,16 @@ struct Page {
     -  被标记\@Reusable的`ChildComponent`组件在下树时，不会被销毁，而是进入复用池，触发aboutToRecycle生命周期，同时设置状态为inactive。
     - `ChildComponent`同时也开启了组件冻结，当其状态为inactive时，不会响应任何状态变量变化带来的UI刷新。
 2. 点击`change desc`，触发`Page`的成员变量`desc`的变化：
-    - `desc`是\@State装饰的，其变化会通知给其子组件`ChildComponent`[\@Link](./arkts-link.md)装饰的`desc`。
+    - `desc`是\@State装饰的，其变化会通知给其子组件`ChildComponent`\@Link装饰的`desc`。
     - 但因为`ChildComponent`是inactive状态，且开启了组件冻结，所以这次变化并不会触发`@Watch('descChange')`的回调和`ChildComponent`UI刷新。如果没有开启组件冻结，当前`@Watch('descChange')`会立即回调，且复用池内的`ChildComponent`组件也会对应刷新。
 3. 再次点击`change flag`，改变`flag`为true：
     - `ChildComponent`从复用池中重新加入到组件树上。
-    - 回调aboutToReuse生命周期，将当前最新的`count`值同步给子组件。`desc`是通过[@State](./arkts-state.md)到@Link同步的，所以无需开发者手动在aboutToReuse中赋值。
+    - 回调aboutToReuse生命周期，将当前最新的`count`值同步给子组件。`desc`是通过@State到@Link同步的，所以无需开发者手动在aboutToReuse中赋值。
     - 设置ChildComponent为active状态，并且刷新在inactive时没有刷新的组件，在当前例子中，就是`Text(ChildComponent desc: ${this.desc})`。
 
 **LazyForEach、组件复用和组件冻结混用场景**
 
-在数据很多的长列表滑动场景下，开发者会使用LazyForEach来按需创建组件，同时配合组件复用降低在滑动过程中因创建和销毁组件带来的开销。但是开发者如果根据其复用类型不同，设置了[reuseId/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid)，或者为了保证滑动性能设置了较大的cacheCount，这就可能使复用池或者LazyForEach缓存较多的节点。在这种情况下，如果开发者触发List下所有子节点的刷新，就会带来节点刷新数量过多的问题，这个时候，可以考虑搭配组件冻结使用。
+在数据很多的长列表滑动场景下，开发者会使用LazyForEach来按需创建组件，同时配合组件复用降低在滑动过程中因创建和销毁组件带来的开销。但是开发者如果根据其复用类型不同，设置了reuseId，或者为了保证滑动性能设置了较大的cachedCount，这就可能使复用池或者LazyForEach缓存较多的节点。在这种情况下，如果开发者触发List下所有子节点的刷新，就会带来节点刷新数量过多的问题，这个时候，可以考虑搭配组件冻结使用。
 <!-- @[arkts_custom_components_freeze7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse1.ets) -->
 
 ``` TypeScript
@@ -1093,7 +1093,7 @@ struct DelayComponent {
   @Prop @Watch('onChange') delayVal: number;
 
   onChange() {
-    hilog.info(DOMAIN, TAG, `Appmonitor ParamComponent: delayVal changed:${this.delayVal}`);
+    hilog.info(DOMAIN, TAG, `Appmonitor DelayComponent: delayVal changed:${this.delayVal}`);
   }
 
   build() {
@@ -1227,7 +1227,7 @@ struct PageTwoStack {
 
 ![freeze](figures/freeze_tabcontent.gif)
 
-点击`Next Page`，进入pageOne页面，页面中存在两个tab标签，默认在Update标签，开启组件冻结功能，Tabcontent的标签如果未被选中，状态变量不会刷新，如以下操作。
+点击`Next Page`，进入pageOne页面，页面中存在两个tab标签，默认在Update标签，开启组件冻结功能，TabContent的标签如果未被选中，状态变量不会刷新，如以下操作。
 
 点击`Incr state`，日志中查询Appmonitor，存在3个打印。
 
@@ -1239,19 +1239,19 @@ struct PageTwoStack {
 
 在API version 17及以下：
 
-点击`Next page`进入下一个页面并返回，标签默认在DelayUpdate，再次点击`Incr state`，日志中查询Appmonitor，存在4个打印，页面路由返回时，会解冻Tabcontent所有的标签。
+点击`Next page`进入下一个页面并返回，标签默认在DelayUpdate，再次点击`Incr state`，日志中查询Appmonitor，存在4个打印，页面路由返回时，会解冻TabContent所有的标签。
 
-![freeze](figures/freeze_tabcontent_back_api15.png)
+![freeze](figures/freeze_tabcontent_before_api18.png)
 
 在API version 18及以上：
 
 点击`Next page`进入下一个页面并返回，标签默认在DelayUpdate，再次点击`Incr state`，日志中查询Appmonitor，存在2个打印，页面路由返回时，只会解冻对应标签的节点。
 
-![freeze](figures/freeze_tabcontent_back_api16.png)
+![freeze](figures/freeze_tabcontent_after_api18.png)
 
 **页面和LazyForEach**
 
-Navigation和TabContent混用时，之所以会解锁TabContent标签的子节点，是因为回到前一个页面时会从父组件开始递归解冻子组件，与此行为类似的还有页面生命周期：OnPageShow。OnPageShow会将当前Page中的根节点设置为active状态，TabContent作为页面的子节点，也会被设置为active状态。在屏幕灭屏和屏幕亮屏时会分别触发页面的生命周期：OnPageHide和OnPageShow，因此页面中使用LazyForEach时，手动灭屏和亮屏也能实现页面路由一样的效果，如以下示例代码：
+Navigation和TabContent混用时，之所以会解冻TabContent标签的子节点，是因为回到前一个页面时会从父组件开始递归解冻子组件，与此行为类似的还有页面生命周期：OnPageShow。OnPageShow会将当前Page中的根节点设置为active状态，TabContent作为页面的子节点，也会被设置为active状态。在屏幕灭屏和屏幕亮屏时会分别触发页面的生命周期：OnPageHide和OnPageShow，因此页面中使用LazyForEach时，手动灭屏和亮屏也能实现页面路由一样的效果，如以下示例代码：
 <!-- @[arkts_custom_components_freeze10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing1.ets) --> 
 
 ``` TypeScript
@@ -1441,7 +1441,7 @@ struct Page {
 
 ### BuilderNode无法继承父组件冻结
 
-在API version 20之前，BuilderNode无法继承父组件冻结。如下面的例子所示，FreezeBuildNode中使用了自定义节点[BuilderNode/apis-arkui/js-apis-arkui-builderNode.md)。BuilderNode可以通过命令式动态挂载组件，而组件冻结又是强依赖父子关系来通知是否开启组件冻结。如果父组件使用组件冻结，且组件树的中间层级上又启用了BuilderNode，则BuilderNode的子组件将无法被冻结。
+在API version 20之前，BuilderNode无法继承父组件冻结。如下面的例子所示，FreezeBuildNode中使用了自定义节点BuilderNode。BuilderNode可以通过命令式动态挂载组件，而组件冻结又是强依赖父子关系来通知是否开启组件冻结。如果父组件使用组件冻结，且组件树的中间层级上又启用了BuilderNode，则BuilderNode的子组件将无法被冻结。
 
 在API version 20及以后，开发者可以通过配置BuilderNode的inheritFreezeOptions接口为true，实现BuilderNode继承冻结的能力。
 <!-- @[arkts_custom_components_freeze11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Constraints.ets) -->
@@ -1561,9 +1561,9 @@ struct FreezeBuildNode {
 
 ### 组件冻结与组件复用混用时解冻不会触发Watch
 
-在以下示例中，子组件`ChildComponent`开启了组件冻结且被标记了组件复用，当`if`组件绑定的状态变量`condition`修改为`false`时，子组件`ChildComponent`下树并进入复用池。由于子组件开启了组件冻结，所以进入复用池时，该组件也会被冻结。在复用池内，若修改状态变量`count`，该组件因处于`inactive`状态，即不会刷新也不会触发`Watch`回调。
+在以下示例中，子组件`ChildComponent`开启了组件冻结且被标记了组件复用，当`if`组件绑定的状态变量`flag`修改为`false`时，子组件`ChildComponent`下树并进入复用池。由于子组件开启了组件冻结，所以进入复用池时，该组件也会被冻结。在复用池内，若修改状态变量`count`，该组件因处于`inactive`状态，既不会刷新也不会触发`Watch`回调。
 
-当`if`组件绑定的状态变量`condition`修改为`true`时，子组件`ChildComponent`出复用池并被标记为`active`状态，但不会触发状态变量`count`绑定的`Watch`回调。这是因为组件复用的执行逻辑早于组件解冻的执行逻辑。子组件被复用时会将[脏节点刷新](./arkts-state-management-introduce.md#触发更新)（包括在冻结期间需要延迟刷新的[变量绑定的系统组件](./arkts-state-management-introduce.md#收集依赖)），并清空脏节点列表。在子组件被复用后，重新被标记为`active`状态，此时子组件执行解冻逻辑，由于复用时清空了脏节点列表，所以此时判断冻结期间无变量改变，不会触发`Watch`回调。
+当`if`组件绑定的状态变量`flag`修改为`true`时，子组件`ChildComponent`出复用池并被标记为`active`状态，但不会触发状态变量`count`绑定的`Watch`回调。这是因为组件复用的执行逻辑早于组件解冻的执行逻辑。子组件被复用时会将脏节点刷新（包括在冻结期间需要延迟刷新的变量绑定的系统组件），并清空脏节点列表。在子组件被复用后，重新被标记为`active`状态，此时子组件执行解冻逻辑，由于复用时清空了脏节点列表，所以此时判断冻结期间无变量改变，不会触发`Watch`回调。
 
 <!-- @[Freeze_and_Reuse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/FreezeReuse.ets) --> 
 

@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## getAppNativeMemInfoWithCache
@@ -12,11 +11,14 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 function getAppNativeMemInfoWithCache(forceRefresh?: boolean): NativeMemInfo
 ```
 
-获取应用进程内存信息。与`getAppNativeMemInfo`接口相比，该接口使用了缓存机制，以提高性能。缓存的有效期为5分钟。 > **注意** > > 由于读取 /proc/{pid}/smaps_rollup 比较耗时，建议不在主线程中使用该接口。可以通过@ohos.taskpool或@ohos.worker开启异步线程，以避免应用卡顿。
+获取应用进程内存信息。与`getAppNativeMemInfo`接口相比，该接口使用了缓存机制，以提高性能。缓存的有效期为5分钟。
 
-**起始版本：** 23
+> **注意**：
+> 
+> 由于读取 `/proc/{pid}/smaps_rollup` 比较耗时，建议不在主线程中使用该接口。可以通过[@ohos.taskpool](../../apis-arkts/arkts-apis/arkts-taskpool.md)或
+> [@ohos.worker](../../apis-arkts/arkts-apis/arkts-arkts-worker-n.md)开启异步线程，以避免应用卡顿。
 
-<!--Device-hidebug-function getAppNativeMemInfoWithCache(forceRefresh?: boolean): NativeMemInfo--><!--Device-hidebug-function getAppNativeMemInfoWithCache(forceRefresh?: boolean): NativeMemInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -24,7 +26,7 @@ function getAppNativeMemInfoWithCache(forceRefresh?: boolean): NativeMemInfo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| forceRefresh | boolean | 否 | 是否需要无视缓存有效性，强制更新缓存值。默认值：false。 true：直接获取当前内存数据并更新缓存值。 false：缓存有效时，直接返回缓存值，缓存失效时获取当前内存数据并更新缓存值。 |
+| forceRefresh | boolean | 否 | 是否需要无视缓存有效性，强制更新缓存值。默认值：false。 & lt;/br & gt;true：直接获取当前内存数据并更新缓存值。 & lt;/br & gt;false：缓存有效时，直接返回缓 存值，缓存失效时获取当前内存数据并更新缓存值。 |
 
 **返回值：**
 
@@ -40,4 +42,3 @@ console.info(`pss: ${nativeMemInfo.pss}, vss: ${nativeMemInfo.vss}, rss: ${nativ
   `sharedDirty: ${nativeMemInfo.sharedDirty}, privateDirty: ${nativeMemInfo.privateDirty}, ` +
   `sharedClean: ${nativeMemInfo.sharedClean}, privateClean: ${nativeMemInfo.privateClean}`);
 ```
-

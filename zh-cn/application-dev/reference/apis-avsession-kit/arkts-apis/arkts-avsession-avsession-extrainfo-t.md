@@ -1,16 +1,13 @@
 # ExtraInfo
 
 ```TypeScript
-type ExtraInfo = Record<string, Object>
+type ExtraInfo = {[key: string]: Object; }
 ```
 
-The extra info object.
+媒体提供方设置的自定义媒体数据包对象。
 
-**起始版本：** 23
-
-<!--Device-avSession-type ExtraInfo = Record<string, Object>--><!--Device-avSession-type ExtraInfo = Record<string, Object>-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**属性类型：** Record<string, Object>
-
+**属性类型：** {[key: string]: Object; }

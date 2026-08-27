@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
-import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
 ## abort
@@ -13,15 +12,19 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 function abort(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void
 ```
 
-abort终止密钥操作。使用callback异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [huks.abortSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-abortsession-f.md) > 替代。
+abort终止密钥操作。使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 9开始废弃，建议使用
+> [huks.abortSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-abortsession-f.md)
+> 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [abortSession](arkts-universalkeystore-huks-abortsession-f.md)(handle: number, options: HuksOptions, callback: AsyncCallback&lt;void&gt;)
-
-<!--Device-huks-function abort(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function abort(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -31,7 +34,7 @@ abort终止密钥操作。使用callback异步回调。 > **说明：** > > 从A
 | --- | --- | --- | --- |
 | handle | number | 是 | Abort操作的uint64类型的handle值。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | Abort操作的参数集合。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | 是 | 回调函数。当密钥操作abort成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | 是 | 回调函数。当密钥操作abort成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
 
 **示例**
 
@@ -44,14 +47,14 @@ import { huks } from '@kit.UniversalKeystoreKit';
  * 以下以RSA2048密钥的callback操作使用为例
  */
 
-let keyAlias = "HuksDemoRSA";
+let keyAlias = 'HuksDemoRSA';
 let properties: Array<huks.HuksParam> = [];
 let options: huks.HuksOptions = {
   properties: properties,
   inData: new Uint8Array(0)
 };
 let handle: number = 0;
-let resultMessage = "";
+let resultMessage = '';
 
 /* 生成密钥 */
 async function generateKey() {
@@ -92,25 +95,25 @@ async function huksInit() {
 }
 
 async function huksUpdate() {
-  options.inData = stringToUint8Array("huksHmacTest");
+  options.inData = stringToUint8Array('huksHmacTest');
   await huks.update(handle, options.inData, options).then((data) => {
     if (data.errorCode === 0) {
-      resultMessage += "update success!";
+      resultMessage += 'update success!';
     } else {
-      resultMessage += "update fail!";
+      resultMessage += 'update fail!';
     }
   });
   console.info(resultMessage);
 }
 
 function huksFinish() {
-  options.inData = stringToUint8Array("HuksDemoHMAC");
+  options.inData = stringToUint8Array('HuksDemoHMAC');
   huks.finish(handle, options).then((data) => {
     if (data.errorCode === 0) {
-      resultMessage = "finish success!";
+      resultMessage = 'finish success!';
       console.info(resultMessage);
     } else {
-      resultMessage = "finish fail errorCode: " + data.errorCode;
+      resultMessage = `finish fail errorCode: ${data.errorCode}`;
       console.error(resultMessage);
     }
   });
@@ -134,15 +137,18 @@ async function huksAbort() {
 function abort(handle: number, options: HuksOptions): Promise<HuksResult>
 ```
 
-abort终止密钥操作。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [huks.abortSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-abortsession-f.md)替代。
+abort终止密钥操作。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 9开始废弃，建议使用
+> [huks.abortSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-abortsession-f.md)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [abortSession](arkts-universalkeystore-huks-abortsession-f.md)(handle: number, options: HuksOptions)
-
-<!--Device-huks-function abort(handle: number, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function abort(handle: number, options: HuksOptions): Promise<HuksResult>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -169,14 +175,14 @@ import { huks } from '@kit.UniversalKeystoreKit';
  *
  * 以下以RSA2048密钥的promise操作使用为例
  */
-let keyAlias = "HuksDemoRSA";
+let keyAlias = 'HuksDemoRSA';
 let properties: Array<huks.HuksParam> = [];
 let options: huks.HuksOptions = {
   properties: properties,
   inData: new Uint8Array(0)
 };
 let handle: number = 0;
-let resultMessage = "";
+let resultMessage = '';
 
 function stringToUint8Array(str: string) {
   let arr: number[] = [];
@@ -207,9 +213,9 @@ async function generateKey() {
   }];
   huks.generateKey(keyAlias, options, (err, data) => {
     if (data.errorCode === 0) {
-      resultMessage = "generate success!";
+      resultMessage = 'generate success!';
     } else {
-      resultMessage = "generate fail errorCode: " + data.errorCode;
+      resultMessage = `generate fail errorCode: ${data.errorCode}`;
     }
   });
 }
@@ -219,24 +225,24 @@ async function huksInit() {
   return new Promise<huks.HuksHandle>((resolve, reject) => {
     huks.init(keyAlias, options, async (err, data) => {
       if (data.errorCode === 0) {
-        resultMessage = "init success!";
+        resultMessage = 'init success!';
         handle = data.handle;
       } else {
-        resultMessage = "init fail errorCode: " + data.errorCode;
+        resultMessage = `init fail errorCode: ${data.errorCode}`;
       }
     });
   });
 }
 
 async function huksUpdate() {
-  options.inData = stringToUint8Array("huksHmacTest");
+  options.inData = stringToUint8Array('huksHmacTest');
   new Promise<huks.HuksResult>((resolve, reject) => {
     huks.update(handle, options.inData, options, (err, data) => {
       if (data.errorCode === 0) {
-        resultMessage += "update success!";
+        resultMessage += 'update success!';
         console.info(resultMessage);
       } else {
-        resultMessage += "update fail!";
+        resultMessage += 'update fail!';
         console.error(resultMessage);
       }
     });
@@ -244,13 +250,13 @@ async function huksUpdate() {
 }
 
 async function huksFinish() {
-  options.inData = stringToUint8Array("0");
+  options.inData = stringToUint8Array('0');
   new Promise<huks.HuksResult>((resolve, reject) => {
     huks.finish(handle, options, (err, data) => {
       if (data.errorCode === 0) {
-        resultMessage = "finish success!";
+        resultMessage = 'finish success!';
       } else {
-        resultMessage = "finish fail errorCode: " + data.errorCode;
+        resultMessage = `finish fail errorCode: ${data.errorCode}`;
       }
     });
   });
@@ -260,11 +266,10 @@ async function huksFinish() {
 function huksAbort() {
   huks.abort(handle, options).then((data) => {
     if (data.errorCode === 0) {
-      console.info("abort success!");
+      console.info('abort success!');
     } else {
-      console.error("abort fail errorCode: " + data.errorCode);
+      console.error(`abort fail errorCode: ${data.errorCode}`);
     }
   });
 }
 ```
-

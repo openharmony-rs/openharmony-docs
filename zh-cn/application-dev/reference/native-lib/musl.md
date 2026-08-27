@@ -150,9 +150,9 @@ musl支持的字符集编码格式，以及受支持的别名。
 
 ## musl不支持接口列表。
 
-[native api中没有导出的符号列表](musl-peculiar-symbol.md)
+native api中没有导出的符号列表
 
-[NDK musl-libc接口受权限影响的说明](guidance-on-ndk-libc-interfaces-affected-by-permissions.md)
+NDK musl-libc接口受权限影响的说明
 
 [NDK musl-libc补充api文档](https://gitcode.com/openharmony/third_party_musl/tree/master/docs)
 <!--no_check-->

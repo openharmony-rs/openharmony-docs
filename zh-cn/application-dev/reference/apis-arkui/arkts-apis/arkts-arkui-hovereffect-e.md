@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-<!--Device-unnamed-declare enum HoverEffect--><!--Device-unnamed-declare enum HoverEffect-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Auto
@@ -19,8 +17,6 @@ Auto
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HoverEffect-Auto--><!--Device-HoverEffect-Auto-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,8 +32,6 @@ Scale
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HoverEffect-Scale--><!--Device-HoverEffect-Scale-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Highlight
@@ -51,8 +45,6 @@ Highlight
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HoverEffect-Highlight--><!--Device-HoverEffect-Highlight-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,7 +60,4 @@ None
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HoverEffect-None--><!--Device-HoverEffect-None-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

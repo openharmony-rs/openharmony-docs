@@ -13,16 +13,13 @@ declare type DataOperation =
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type DataOperation =  DataAddOperation | DataDeleteOperation | DataChangeOperation | DataMoveOperation | DataExchangeOperation | DataReloadOperation--><!--Device-unnamed-declare type DataOperation =  DataAddOperation | DataDeleteOperation | DataChangeOperation | DataMoveOperation | DataExchangeOperation | DataReloadOperation-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | --- | --- |
-| DataAddOperation | 添加数据操作。 |
-| DataDeleteOperation | 删除数据操作。 |
-| DataChangeOperation | 改变数据操作。 |
-| DataMoveOperation | 移动数据操作。 |
-| DataExchangeOperation | 交换数据操作。 |
-| DataReloadOperation | 重载所有数据操作。 |
-
+| [DataAddOperation](arkts-arkui-dataaddoperation-i.md) | 添加数据操作。 |
+| [DataDeleteOperation](arkts-arkui-datadeleteoperation-i.md) | 删除数据操作。 |
+| [DataChangeOperation](arkts-arkui-datachangeoperation-i.md) | 改变数据操作。 |
+| [DataMoveOperation](arkts-arkui-datamoveoperation-i.md) | 移动数据操作。 |
+| [DataExchangeOperation](arkts-arkui-dataexchangeoperation-i.md) | 交换数据操作。 |
+| [DataReloadOperation](arkts-arkui-datareloadoperation-i.md) | 重载所有数据操作。 |

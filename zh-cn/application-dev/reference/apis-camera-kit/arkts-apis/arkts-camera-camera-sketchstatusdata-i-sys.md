@@ -2,9 +2,7 @@
 
 Defines the PiP status data.
 
-**起始版本：** 23
-
-<!--Device-camera-interface SketchStatusData--><!--Device-camera-interface SketchStatusData-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13,8 +11,6 @@ Defines the PiP status data.
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## centerPointOffset
@@ -27,9 +23,7 @@ Offset of PiP.
 
 **类型：** Point
 
-**起始版本：** 23
-
-<!--Device-SketchStatusData-centerPointOffset: Point--><!--Device-SketchStatusData-centerPointOffset: Point-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -38,16 +32,14 @@ Offset of PiP.
 ## sketchRatio
 
 ```TypeScript
-sketchRatio: double
+sketchRatio: number
 ```
 
 Zoom ratio of PiP.
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SketchStatusData-sketchRatio: double--><!--Device-SketchStatusData-sketchRatio: double-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -56,18 +48,15 @@ Zoom ratio of PiP.
 ## status
 
 ```TypeScript
-status: int
+status: number
 ```
 
 Status of PiP. The options are 0 (stopped), 1 (started), 2 (stopping), and 3 (starting).
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SketchStatusData-status: int--><!--Device-SketchStatusData-status: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
-

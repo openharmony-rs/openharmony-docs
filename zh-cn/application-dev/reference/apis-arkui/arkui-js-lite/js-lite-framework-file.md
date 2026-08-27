@@ -72,7 +72,7 @@ JS FA应用的JS模块(entry/src/main/js/module)的典型开发目录结构如�
 
 ## 存储目录定义
 
-从API version 5开始，[image](js-lite-components-basic-image.md)组件支持应用私有目录内的图片资源访问。
+从API version 5开始，image组件支持应用私有目录内的图片资源访问。
 
 | 目录类型   | 路径前缀            | 访问可见性  | 说明                          |
 | ------ | --------------- | ------ | --------------------------- |

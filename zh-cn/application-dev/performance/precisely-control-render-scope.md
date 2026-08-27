@@ -11,7 +11,7 @@
 
 ## 多组件关联同一对象的不同属性
 
-在学习本示例之前，需要了解当前[状态管理的刷新机制](../ui/state-management/arkts-observed-and-objectlink.md)。
+在学习本示例之前，需要了解当前状态管理的刷新机制。
 
 ```ts
 @Observed
@@ -66,7 +66,7 @@ struct Page {
 }
 ```
 
-在上面的示例中，当点击按钮改变prop1的值时，尽管CompA中的组件并没有使用prop1，但是仍然可以观测到关联prop2的Text组件进行了刷新，这体现在Text组件的字体变大，同时控制台输出了“Text prop2 is rendered”的日志上。这说明当改变了一个由@Observed装饰的类的实例对象中的某个属性时（即上面示例中的prop1），会导致所有关联这个对象中某个属性的组件一起刷新，尽管这些组件可能并没有直接使用到该改变的属性（即上面示例中使用prop的Text组件）。这样就会导致一些隐形的“冗余刷新”，当涉及到“冗余刷新”的组件数量很多时，就会大大影响组件的刷新性能。
+在上面的示例中，当点击按钮改变prop1的值时，尽管CompA中的组件并没有使用prop1，但是仍然可以观测到关联prop2的Text组件进行了刷新，这体现在Text组件的字体变大，同时控制台输出了“Text prop2 is rendered”的日志上。这说明当改变了一个由@Observed装饰的类的实例对象中的某个属性时（即上面示例中的prop1），会导致所有关联这个对象中某个属性的组件一起刷新，尽管这些组件可能并没有直接使用到该改变的属性（即上面示例中使用prop2的Text组件）。这样就会导致一些隐形的“冗余刷新”，当涉及到“冗余刷新”的组件数量很多时，就会大大影响组件的刷新性能。
 
 上文代码运行图示如下：
 
@@ -426,7 +426,7 @@ struct Page {
 }
 ```
 
-在上面的示例中，在CompA中定义了一个新的ObjectLink装饰的变量b，并由Page创建CompA时，将a对象中的prop3传入给b，这样就能在子组件CompA中直接使用b，这使得组件实际上和b进行了关联，组件也就能观测到b中的subProp1的变化，当点击按钮“Change subProp1”的时时候，可以只触发相关联的Text的组件的刷新，而不会引起其他的组件刷新（因为其他组件关联的是a），同样的其他对于a中属性的修改也不会导致该Text组件的刷新。
+在上面的示例中，在CompA中定义了一个新的ObjectLink装饰的变量b，并由Page创建CompA时，将a对象中的prop3传入给b，这样就能在子组件CompA中直接使用b，这使得组件实际上和b进行了关联，组件也就能观测到b中的subProp1的变化，当点击按钮“Change subProp1”的时候，可以只触发相关联的Text的组件的刷新，而不会引起其他的组件刷新（因为其他组件关联的是a），同样的其他对于a中属性的修改也不会导致该Text组件的刷新。
 
 上文代码运行图示如下：
 
@@ -689,7 +689,7 @@ struct Page {
 
 - 只作用在同一个组件上的多个属性可以被拆分进同一个新类，即示例中的NeedRenderImage。适用于组件经常被不关联的属性改变而引起刷新的场景，这个时候就要考虑拆分属性，或者重新考虑ViewModel设计是否合理。
 - 经常被同时使用的属性可以被拆分进同一个新类，即示例中的NeedRenderScale、NeedRenderTranslate、NeedRenderPos、NeedRenderSize。适用于属性经常成对出现，或者被作用在同一个样式上的情况，例如.translate、.position、.scale等（这些样式通常会接收一个对象作为参数）。
-- 可能被用在多个组件上或相对较独立的属性应该被单独拆分进一个新类，即示例中的NeedRenderAlpha，NeedRenderBorderRadius、NeedRenderFontSize。适用于一个属性作用在多个组件上或者与其他属性没有联系的情况，例如.opacity、.borderRadius等（这些样式通常相对独立）。
+- 可能被用在多个组件上或相对较独立的属性应该被单独拆分进一个新类，即示例中的NeedRenderAlpha、NeedRenderBorderRadius、NeedRenderFontSize。适用于一个属性作用在多个组件上或者与其他属性没有联系的情况，例如.opacity、.borderRadius等（这些样式通常相对独立）。
 
 在对属性进行拆分后，对所有使用属性对组件进行绑定的时候，需要使用以下格式：
 
@@ -769,8 +769,8 @@ struct Page {
 多个组件依赖对象中的不同属性时，直接关联该对象会出现改变任一属性所有组件都刷新的现象，可以通过将类中的属性拆分组合成新类的方式精准控制组件刷新。
 
 在多个组件依赖同一个数据源并根据数据源变化刷新组件的情况下，直接关联数据源会导致每次数据源改变都刷新所有组件。为精准控制组件刷新，可以采取以下策略：
-  1. 使用 [@Watch](../ui/state-management/arkts-watch.md) 装饰器：在组件中使用@Watch装饰器监听数据源，当数据变化时执行业务逻辑，确保只有满足条件的组件进行刷新。
-  2. 事件驱动更新：对于复杂组件关系或跨层级情况，使用[Emitter/apis-basic-services-kit/js-apis-emitter.md)自定义事件发布订阅机制。数据源变化时触发相应事件，订阅该事件的组件接收到通知后，根据变化的具体值判断组件是否刷新。
+  1. 使用 @Watch 装饰器：在组件中使用@Watch装饰器监听数据源，当数据变化时执行业务逻辑，确保只有满足条件的组件进行刷新。
+  2. 事件驱动更新：对于复杂组件关系或跨层级情况，使用Emitter自定义事件发布订阅机制。数据源变化时触发相应事件，订阅该事件的组件接收到通知后，根据变化的具体值判断组件是否刷新。
 
 【反例】
 
@@ -835,6 +835,7 @@ struct ListItemComponent {
 上述示例中，每个ListItemComponent组件点击Text后会将当前点击的列表项下标index赋值给currentIndex，@Link装饰的状态变量currentIndex会将变化传递给父组件Index和所有ListItemComponent组件。然后，在所有ListItemComponent组件中，根据列表项下标index与currentIndex的差值的绝对值是否小于等于1来决定Text的颜色，如果满足条件，则文本显示为红色，否则显示为蓝色。
 
 下面是运行效果图。
+
 ![redundant_refresh](./figures/redundant_refresh.gif)
 
 可以看到每次点击后即使其中部分Text组件的颜色并没有发生改变，所有的Text组件也都会刷新。这是由于ListItemComponent组件中的Text组件直接关联了currentIndex，而不是根据currentIndex计算得到的颜色。
@@ -958,7 +959,7 @@ onCurrentValueUpdate() {
 Component.property(this.nestedComponentResult)
 ```
 
-当组件关系复杂或跨越层级过多时，推荐使用 [Emitter/apis-basic-services-kit/js-apis-emitter.md) 自定义事件发布订阅的方式。当数据源改变时发布事件，依赖该数据源的组件通过订阅事件来获取数据源的改变，完成业务逻辑的处理，从而实现组件的精准刷新。
+当组件关系复杂或跨越层级过多时，推荐使用 Emitter 自定义事件发布订阅的方式。当数据源改变时发布事件，依赖该数据源的组件通过订阅事件来获取数据源的改变，完成业务逻辑的处理，从而实现组件的精准刷新。
 
 下面通过部分示例代码介绍使用方式。
 

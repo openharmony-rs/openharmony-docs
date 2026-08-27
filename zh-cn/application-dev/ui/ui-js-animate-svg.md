@@ -11,7 +11,7 @@
 
 ## 属性样式动画
 
-在svg的子组件[animate/apis-arkui/arkui-js/js-components-svg-animate.md)中，通过attributeName设置需要进行动效的属性，from设置开始值，to设置结束值。
+在svg的子组件animate中，通过attributeName设置需要进行动效的属性，from设置开始值，to设置结束值。
 
 
 ```html
@@ -40,7 +40,7 @@
 </div>
 ```
 
-![zh-cn_image_0000001183871404](figures/zh-cn_image_0000001183871404.gif)
+![animate3](figures/animate3.gif)
 
 > **说明：** 
 >
@@ -49,7 +49,7 @@
 
 ## 路径动画
 
-在svg的子组件[animateMotion/apis-arkui/arkui-js/js-components-svg-animatemotion.md)中，通过path设置动画变化的路径。
+在svg的子组件animateMotion中，通过path设置动画变化的路径。
 
 
 ```html
@@ -66,12 +66,12 @@
 </div>
 ```
 
-![zh-cn_image_0000001229510983](figures/zh-cn_image_0000001229510983.gif)
+![animateMotion](figures/animateMotion.gif)
 
 
 ## animateTransform动画
 
-在svg的子组件[animateTransform/apis-arkui/arkui-js/js-components-svg-animatetransform.md)中，通过attributeName绑定transform属性，type设置动画类型，from设置开始值，to设置结束值。
+在svg的子组件animateTransform中，通过attributeName绑定transform属性，type设置动画类型，from设置开始值，to设置结束值。
 
 
 ```html
@@ -111,4 +111,4 @@
 }
 ```
 
-![zh-cn_image_0000001182832088](figures/zh-cn_image_0000001182832088.gif)
+![animateTransform](figures/animateTransform.gif)

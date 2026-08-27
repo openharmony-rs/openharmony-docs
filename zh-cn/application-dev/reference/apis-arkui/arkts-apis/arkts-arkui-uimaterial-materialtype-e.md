@@ -1,14 +1,10 @@
-# MaterialType（系统接口）
+# MaterialType
 
-系统材质类型枚举。
+系统材质类型枚举。@enum { number } [since 23 - 24]
 
-**起始版本：** 23
-
-<!--Device-uiMaterial-enum MaterialType--><!--Device-uiMaterial-enum MaterialType-End-->
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**系统接口：** 此接口为系统接口。
 
 ## IMMERSIVE
 
@@ -24,7 +20,4 @@ IMMERSIVE = 2
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MaterialType-IMMERSIVE = 2--><!--Device-MaterialType-IMMERSIVE = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

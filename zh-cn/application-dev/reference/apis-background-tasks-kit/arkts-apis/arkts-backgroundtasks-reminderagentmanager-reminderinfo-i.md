@@ -2,9 +2,7 @@
 
 代理提醒信息，包含 ReminderRequest 和 ReminderId。
 
-**起始版本：** 23
-
-<!--Device-reminderAgentManager-interface ReminderInfo--><!--Device-reminderAgentManager-interface ReminderInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -17,16 +15,14 @@ import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ## reminderId
 
 ```TypeScript
-reminderId: int
+reminderId: number
 ```
 
 发布提醒后返回的id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ReminderInfo-reminderId: int--><!--Device-ReminderInfo-reminderId: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -40,9 +36,6 @@ reminderReq: ReminderRequest
 
 **类型：** ReminderRequest
 
-**起始版本：** 23
-
-<!--Device-ReminderInfo-reminderReq: ReminderRequest--><!--Device-ReminderInfo-reminderReq: ReminderRequest-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
-

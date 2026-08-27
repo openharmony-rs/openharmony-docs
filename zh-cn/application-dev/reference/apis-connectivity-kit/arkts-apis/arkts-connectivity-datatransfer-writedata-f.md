@@ -12,7 +12,7 @@ import { dataTransfer } from '@kit.ConnectivityKit';
 function writeData(params: DataParams): Promise<void>
 ```
 
-根据地址和UUID写入数据。
+通过设备地址和UUID向远端设备发送数据。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -20,32 +20,29 @@ function writeData(params: DataParams): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-dataTransfer-function writeData(params: DataParams): Promise<void>--><!--Device-dataTransfer-function writeData(params: DataParams): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [DataParams](arkts-connectivity-datatransfer-dataparams-i.md) | 是 | 发送数据的参数 |
+| params | [DataParams](arkts-connectivity-datatransfer-dataparams-i.md) | 是 | 指明发送数据的参数，包含远端设备地址、服务UUID以及发送的数据包。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 返回promise对象。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the chip does not support it. |
-| [36100023](../errorcode-nearlink-service.md#36100023-数据传输拥塞) | Write data congestion. |
-| [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
-| [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [36100044](../errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
-| [36100043](../errorcode-nearlink-service.md#36100043-无效uuid) | Invalid UUID. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the chip does not support it. |
+| [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
+| [36100023](../errorcode-nearlink-service.md#36100023-数据传输拥塞) | Data transmission congested. |
 | [36100041](../errorcode-nearlink-service.md#36100041-无效地址) | Invalid address. |
-
+| [36100043](../errorcode-nearlink-service.md#36100043-无效uuid) | Invalid UUID. |
+| [36100044](../errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
+| [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |

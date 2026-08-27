@@ -20,8 +20,6 @@ function deletePrinterFromCups(printerName: string): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-print-function deletePrinterFromCups(printerName: string): Promise<void>--><!--Device-print-function deletePrinterFromCups(printerName: string): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -36,7 +34,7 @@ function deletePrinterFromCups(printerName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -49,14 +47,13 @@ function deletePrinterFromCups(printerName: string): Promise<void>
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let printerName : string = "testPrinterName";
+let printerName : string = 'testPrinterName';
 
 print.deletePrinterFromCups(printerName).then(() => {
     console.info('deletePrinterFromCups success');
 }).catch((error: BusinessError) => {
-    console.error('deletePrinterFromCups error : ' + JSON.stringify(error));
-})
+    console.error(`Failed to delete printer from cups. Code: ${error.code}, message: ${error.message}`);
+});
 ```
-

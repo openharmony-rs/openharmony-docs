@@ -24,7 +24,7 @@
 
 **问题现象**
 
-Hilog中出现如下日志：
+HiLog中出现如下日志：
 
 - eventInfo.params.external_log=[]
 
@@ -36,7 +36,7 @@ Hilog中出现如下日志：
 
 external_log日志文件所在目录的空间已达到上限。
 
-external_log所在的目录为[应用沙箱目录](../file-management/app-sandbox-directory.md)，目录空间受限。log_over_limit字段用于判断external_log日志文件所在目录的空间是否达到上限。如果log_over_limit的值为true，表示external_log日志文件所在目录空间已达到上限，事件包含的日志文件将无法写入。
+external_log所在的目录为应用沙箱目录，目录空间受限。log_over_limit字段用于判断external_log日志文件所在目录的空间是否达到上限。如果log_over_limit的值为true，表示external_log日志文件所在目录空间已达到上限，事件包含的日志文件将无法写入。
 
 external_log是一个字符串数组。例如：
 
@@ -44,7 +44,7 @@ external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_时间戳_xxxx.log"]�
 
 **可采取的解决措施**：
 
-参考[无法删除external_log日志文件](#无法删除external_log日志文件)中的解决措施，清理历史日志文件。
+参考无法删除external_log日志文件中的解决措施，清理历史日志文件。
 
 **情况二**：
 
@@ -52,7 +52,7 @@ external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_时间戳_xxxx.log"]�
 
 **可采取的解决措施**：
 
-查看对应的事件介绍章节，确认事件是否包含external_log：[系统事件](event-subscription-overview.md#系统事件)。
+查看对应的事件介绍章节，确认事件是否包含external_log：系统事件。
 
 **情况三**：
 
@@ -95,7 +95,7 @@ external_log日志文件所在目录的空间已达到上限，但无法删除ex
 
 - 开发者如果有权限访问设备的“/data/app/el2/100/log/应用包名”目录，可以手动删除external_log日志文件。文件目录为/data/app/el2/100/log/应用包名/hiappevent（或resourcelimit或watchdog）。
 
-- 开发者若没有权限访问设备的“/data/app/el2/100/log/应用包名”目录，可以在应用代码中删除external_log日志文件。代码示例如下。文件删除接口可以参考[fileIo.unlink/apis-core-file-kit/js-apis-file-fs.md#fileiounlink)。
+- 开发者若没有权限访问设备的“/data/app/el2/100/log/应用包名”目录，可以在应用代码中删除external_log日志文件。代码示例如下。文件删除接口可以参考fileIo.unlink。
 
 **代码示例**
 
@@ -182,4 +182,4 @@ HiAppEvent remove file:/data/storage/el2/log/hiappevent/APP_CRASH_1751081104816_
 
 **接口参考链接**
 
-[hiAppEvent.addWatcher/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)。
+hiAppEvent.addWatcher。

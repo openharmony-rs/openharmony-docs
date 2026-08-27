@@ -2,9 +2,7 @@
 
 长时任务取消信息。
 
-**起始版本：** 23
-
-<!--Device-backgroundTaskManager-interface ContinuousTaskCancelInfo--><!--Device-backgroundTaskManager-interface ContinuousTaskCancelInfo-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -28,23 +26,19 @@ detailedReason?: ContinuousTaskDetailedCancelReason
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ContinuousTaskCancelInfo-detailedReason?: ContinuousTaskDetailedCancelReason--><!--Device-ContinuousTaskCancelInfo-detailedReason?: ContinuousTaskDetailedCancelReason-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## id
 
 ```TypeScript
-id: int
+id: number
 ```
 
 被取消的长时任务 Id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ContinuousTaskCancelInfo-id: int--><!--Device-ContinuousTaskCancelInfo-id: int-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -58,9 +52,6 @@ reason: ContinuousTaskCancelReason
 
 **类型：** [ContinuousTaskCancelReason](arkts-backgroundtasks-backgroundtaskmanager-continuoustaskcancelreason-e.md)
 
-**起始版本：** 23
-
-<!--Device-ContinuousTaskCancelInfo-reason: ContinuousTaskCancelReason--><!--Device-ContinuousTaskCancelInfo-reason: ContinuousTaskCancelReason-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-

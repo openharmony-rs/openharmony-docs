@@ -1,17 +1,17 @@
 # 使用AVPlayer设置播放URL(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 本开发指导将介绍如何使用AVPlayer开发播放功能，在不同的场景下如何设置URL。
 
-当前指导仅介绍播放URL设置方法，其他场景及完整示例代码，请参考[视频播放](video-playback.md)。
+当前指导仅介绍播放URL设置方法，其他场景及完整示例代码，请参考视频播放。
 
 当前开发指导将提供以下设置播放URL的方法：
-- [流媒体播放场景下设置URL](#流媒体播放场景下设置url)
-- [本地Raw文件播放场景下设置URL](#本地raw文件播放场景下设置url)
+- 流媒体播放场景下设置URL
+- 本地Raw文件播放场景下设置URL
 
 ## 流媒体播放场景下设置URL
 **情况一：播放HTTP/HTTPS媒体资源**
@@ -52,7 +52,7 @@
 
 **情况三：设置HTTP请求头信息播放**
 
-当服务器需要校验HTTP请求头信息时，可通过[createMediaSourceWithUrl/apis-media-kit/arkts-apis-media-f.md#mediacreatemediasourcewithurl12)设置HTTP请求头信息。
+当服务器需要校验HTTP请求头信息时，可通过createMediaSourceWithUrl设置HTTP请求头信息。
 ```ts
  import { media } from '@kit.MediaKit';
  // 类成员定义avPlayer。
@@ -76,7 +76,7 @@
 
 **情况四：通过本地Raw文件中的m3u8文件播放在线流媒体资源**
 
-当应用需要通过解析本地Raw文件中的m3u8文件，播放在线流媒体资源时，可以通过[resourceManager.getRawFd/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)获取文件描述符，将其拼接成fdUrl，并通过[setMimeType/apis-media-kit/arkts-apis-media-MediaSource.md#setmimetype12)设置MIME类型为APPLICATION_M3U8。
+当应用需要通过解析本地Raw文件中的m3u8文件，播放在线流媒体资源时，可以通过resourceManager.getRawFd获取文件描述符，将其拼接成fdUrl，并通过setMimeType设置MIME类型为APPLICATION_M3U8。
 ```ts
  import { media } from '@kit.MediaKit';
  import { common } from '@kit.AbilityKit';
@@ -109,7 +109,7 @@
 
 **情况五：通过应用沙箱中的m3u8文件播放在线流媒体资源**
 
-当应用需要通过解析应用沙箱中的m3u8文件，播放在线流媒体资源时，可以通过[fileIo.openSync/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)获取文件句柄，将其拼接成fdUrl，并通过[setMimeType/apis-media-kit/arkts-apis-media-MediaSource.md#setmimetype12)设置MIME类型为APPLICATION_M3U8。
+当应用需要通过解析应用沙箱中的m3u8文件，播放在线流媒体资源时，可以通过fileIo.openSync获取文件句柄，将其拼接成fdUrl，并通过setMimeType设置MIME类型为APPLICATION_M3U8。
 ```ts
  import { media } from '@kit.MediaKit';
  import { fileIo } from '@kit.CoreFileKit';
@@ -231,7 +231,7 @@
     ```
 3. 通过注释、解注释/entry/src/main/ets/pages/Index.ets中的上文示例的各种情况，编译并运行。
 
-4. 在安装应用后，可将示例工程的/entry/src/main/resources/rawfile/test.m3u8通过以下命令加入应用沙箱，从而运行应用沙箱相关示例:（```<FILESDIR>```为物理路径，以示例工程为例，可通过console.info打印"this.context.filesDir"得到应用沙箱路径，再根据[应用沙箱指南](../../file-management/app-sandbox-directory.md)的```应用沙箱路径和真实物理路径的对应关系表```找到物理路径）。
+4. 在安装应用后，可将示例工程的/entry/src/main/resources/rawfile/test.m3u8通过以下命令加入应用沙箱，从而运行应用沙箱相关示例：（```<FILESDIR>```为物理路径，以示例工程为例，可通过console.info打印"this.context.filesDir"得到应用沙箱路径，再根据应用沙箱指南的```应用沙箱路径和真实物理路径的对应关系表```找到物理路径）。
     ```txt
     hdc file send "[目录]\test.m3u8" <FILESDIR>
     hdc file send "[目录]\test_01.mp3" <FILESDIR>

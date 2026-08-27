@@ -14,9 +14,7 @@ function create(colorSpaceName: ColorSpace): ColorSpaceManager
 
 创建标准色域对象。
 
-**起始版本：** 23
-
-<!--Device-colorSpaceManager-function create(colorSpaceName: ColorSpace): ColorSpaceManager--><!--Device-colorSpaceManager-function create(colorSpaceName: ColorSpace): ColorSpaceManager-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -24,7 +22,7 @@ function create(colorSpaceName: ColorSpace): ColorSpaceManager
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colorSpaceName | ColorSpace | 是 | 标准色域类型枚举值。 <br>UNKNOWN与CUSTOM不可用于直接创建色域对象。 |
+| colorSpaceName | ColorSpace | 是 | 标准色域类型枚举值。 UNKNOWN与CUSTOM不可用于直接创建色域对象。 |
 
 **返回值：**
 
@@ -54,14 +52,12 @@ try {
 ## create
 
 ```TypeScript
-function create(primaries: ColorSpacePrimaries, gamma: double): ColorSpaceManager
+function create(primaries: ColorSpacePrimaries, gamma: number): ColorSpaceManager
 ```
 
 创建用户自定义色域对象。
 
-**起始版本：** 23
-
-<!--Device-colorSpaceManager-function create(primaries: ColorSpacePrimaries, gamma: double): ColorSpaceManager--><!--Device-colorSpaceManager-function create(primaries: ColorSpacePrimaries, gamma: double): ColorSpaceManager-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -70,13 +66,13 @@ function create(primaries: ColorSpacePrimaries, gamma: double): ColorSpaceManage
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | primaries | [ColorSpacePrimaries](arkts-arkgraphics2d-colorspacemanager-colorspaceprimaries-i.md) | 是 | 色域标准三原色。 |
-| gamma | double | 是 | 色域gamma值，取值为大于0的浮点数。 |
+| gamma | number | 是 | 色域gamma值，取值为大于0的浮点数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ColorSpaceManager | 返回当前创建的色域对象实例。 <br>色域类型定义为[ColorSpace]{ |
+| ColorSpaceManager | 返回当前创建的色域对象实例。 |
 
 **错误码：**
 
@@ -108,4 +104,3 @@ try {
   console.error(`Failed to create colorSpace with customized primaries and gamma. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

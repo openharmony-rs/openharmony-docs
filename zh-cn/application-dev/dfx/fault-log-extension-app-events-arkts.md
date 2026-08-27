@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-从API version 21开始，可以在FaultLogExtensionAbility中使用HiAppEvent事件订阅接口，实现应用故障事件（仅包括[崩溃事件](./hiappevent-watcher-crash-events.md)和[应用冻屏事件](./hiappevent-watcher-freeze-events.md)）的延迟通知。应用因崩溃或冻屏退出后，无法启动或长时间未启动的场景下，可以不依赖应用启动实现故障事件信息的订阅回调。FaultLogExtensionAbility仅用于补充处理故障事件，不能替代[主进程](../application-models/process-model-stage.md#基本进程类型)正常启动时进行故障事件处理。
+从API version 21开始，可以在FaultLogExtensionAbility中使用HiAppEvent事件订阅接口，实现应用故障事件（仅包括崩溃事件和应用冻屏事件）的延迟通知。应用因崩溃或冻屏退出后，无法启动或长时间未启动的场景下，可以不依赖应用启动实现故障事件信息的订阅回调。FaultLogExtensionAbility仅用于补充处理故障事件，不能替代主进程正常启动时进行故障事件处理。
 
 在应用发生崩溃或者冻屏事件30分钟后，系统拉起FaultLogExtensionAbility进程，实际拉起时间可能会因为系统调度有所延迟。该30分钟是设备在非休眠状态下累积的时间。测试时需要保持测试设备屏幕常亮，防止设备休眠。灭屏状态下设备可能会休眠，导致实际接收到回调的时间延长。
 
@@ -17,38 +17,38 @@ FaultLogExtensionAbility的原理机制如下图所示：
 
 ![工作机制说明](figures/fault_log_extension_ability_1.PNG)
 
-1. 主进程启动后，在主进程中添加事件观察者A和事件观察者B，其中A包含正常实现的回调处理函数以及事件订阅过滤条件[appEventFilter/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appeventfilter)，应用发生故障后正常重启会由A的回调处理HiAppEvent事件；B的回调处理函数为空实现，仅用于生成需要保存的事件订阅过滤条件。
+1. 主进程启动后，在主进程中添加事件观察者A和事件观察者B，其中A包含正常实现的回调处理函数以及事件订阅过滤条件appEventFilter，应用发生故障后正常重启会由A的回调处理HiAppEvent事件；B的回调处理函数为空实现，仅用于生成需要保存的事件订阅过滤条件。
 2. 事件观察者A和B的事件订阅过滤条件会被保存到应用沙箱中。当应用移除事件观察者时，应用沙箱中保存的相应观察者的事件订阅过滤条件也会被删除。
 3. 应用业务运行过程中发生崩溃事件或应用冻屏事件。
 4. 系统服务感知到应用故障后，采集应用故障信息。
 5. 系统服务采集完应用故障现场信息后，应用退出。
 6. 系统侧根据应用订阅的HiAppEvent订阅事件类型，将采集到的应用故障信息保存进应用的沙箱中。若应用及时重启，HiAppEvent检测到应用沙箱中的未回调处理的故障事件，并且这些事件满足事件观察者A的过滤条件，会触发事件观察者A的回调函数处理事件，由于事件观察者B的回调为空实现不会对相同事件重复处理。
-7. 若应用未及时重启处理故障事件，故障发生后系统服务会创建一个延时30分钟后执行的任务，用于拉起应用的FaultLogExtensionAbility进程。如果任务队列中已存在当前进程的延时拉起任务，则不再创建新的延时任务，无论事件是否已被处理，FaultLogExtensionAbility进程都会在10秒后退出。
+7. 若应用在故障发生后未及时重启并处理故障事件，故障发生后系统服务会创建一个延时30分钟后执行的任务，用于拉起应用的FaultLogExtensionAbility进程。如果任务队列中已存在当前进程的延时拉起任务，则不再创建新的延时任务，无论事件是否已被处理，FaultLogExtensionAbility进程都会在10秒后退出。
 8. 在FaultLogExtensionAbility进程中添加事件观察者B，该事件观察者B需要开发者自行实现正常的回调处理函数，且与之前主进程添加的事件观察者B同名。
 9. 由于FaultLogExtensionAbility进程添加事件观察者B和主进程添加的事件观察者B同名，应用沙箱会覆盖之前保存的B的事件订阅过滤条件。
 10. HiAppEvent检测到应用沙箱中存在未回调处理的故障事件，当这些故障事件满足FaultLogExtensionAbility进程中事件观察者B的过滤条件时，会触发事件观察者B的回调处理逻辑。沙箱中存储的未回调的事件信息，会在故障事件被回调处理后删除。
 
 ## 约束与限制
 
-- FaultLogExtensionAbility被拉起后只有10s的时间用以完成故障处理。超时没有处理完成可以在[onDisconnect/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#ondisconnect)中保存状态。
+- FaultLogExtensionAbility被拉起后只有10s的时间用以完成故障处理。超时没有处理完成可以在onDisconnect中保存状态。
 
 - 从开机或上次拉起FaultLogExtensionAbility后，应用首次触发崩溃或冻屏开始计时。在拉起FaultLogExtensionAbility前反复触发崩溃或冻屏事件均不会重新计时。计时30分钟后拉起FaultLogExtensionAbility进程。
 
 - FaultLogExtensionAbility自身崩溃时，不会再次被系统服务拉起。
 
-- FaultLogExtensionAbility调用限制的API名单见[附录/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#附录)。
+- 针对FaultLogExtensionAbility接口调用限制，详情请参考API中约束限制。
 
-- FaultLogExtensionAbility进程中订阅的事件需要在主进程中使用HiAppEvent进行订阅。否则，可能会发生[FaultLogExtensionAbility进程没有接收到回调事件](#faultlogextensionability进程没有接收到回调事件)的问题。
+- FaultLogExtensionAbility进程中订阅的事件需要在主进程中使用HiAppEvent进行订阅。否则，可能会发生FaultLogExtensionAbility进程没有接收到回调事件的问题。
 
-- FaultLogExtensionAbility进程中仅订阅崩溃、应用冻屏事件，不订阅除这两类外的系统事件。否则，可能会发生[系统事件重复上报](#系统事件重复上报)的问题。
+- FaultLogExtensionAbility进程中仅订阅崩溃、应用冻屏事件，不订阅除这两类外的系统事件。否则，可能会发生系统事件重复上报的问题。
 
-- 主进程用于延迟回调处理事件观察者B和非延迟处理的事件观察者A定义名字不能重复。否则，可能会发生[部分事件丢失](#部分事件丢失)的问题。
+- 主进程用于延迟回调处理事件观察者B和非延迟处理的事件观察者A定义名字不能重复。否则，可能会发生部分事件丢失的问题。
 
 - 接入FaultLogExtensionAbility能力后，若应用故障发生后设备重启，重启后不会拉起FaultLogExtensionAbility进程。
 
 ## 接口说明
 
-API接口使用说明，包括参数使用限制和具体取值范围。请参考[@ohos.hiviewdfx.FaultLogExtensionAbility (故障延迟通知)/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md)。
+API接口使用说明，包括参数使用限制和具体取值范围。请参考@ohos.hiviewdfx.FaultLogExtensionAbility (故障延迟通知)。
 
 仅适用于Stage模型。
 
@@ -56,9 +56,9 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [onConnect(): void/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#onconnect) | 生命周期回调函数，系统连接FaultLogExtensionAbility时触发。 |
-| [onDisconnect(): void/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#ondisconnect) | 生命周期回调函数，系统断开FaultLogExtensionAbility时触发。 |
-| [onFaultReportReady(): void/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#onfaultreportready) | 生命周期回调函数，系统准备好故障信息后，回调该函数通知ability进行处理。回调函数中的业务逻辑建议不超过10s。|
+| onConnect(): void | 生命周期回调函数，系统连接FaultLogExtensionAbility时触发。 |
+| onDisconnect(): void | 生命周期回调函数，系统断开FaultLogExtensionAbility时触发。 |
+| onFaultReportReady(): void | 生命周期回调函数，系统准备好故障信息后，回调该函数通知ability进行处理。回调函数中的业务逻辑建议不超过10s。|
 
 ## 事件订阅开发指导
 

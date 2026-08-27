@@ -18,8 +18,6 @@ function getManagedBrowserPolicy(admin: Want, bundleName: string): ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-browser-function getManagedBrowserPolicy(admin: Want, bundleName: string): ArrayBuffer--><!--Device-browser-function getManagedBrowserPolicy(admin: Want, bundleName: string): ArrayBuffer-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
@@ -39,8 +37,8 @@ function getManagedBrowserPolicy(admin: Want, bundleName: string): ArrayBuffer
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -67,4 +65,3 @@ try {
   console.error(`Failed to get managed browser policy. Code is ${err.code}, message is ${err.message}`);
 }
 ```
-

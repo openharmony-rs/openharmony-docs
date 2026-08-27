@@ -4,8 +4,6 @@
 
 **起始版本：** 20
 
-<!--Device-unnamed-export interface GestureObserverConfigs--><!--Device-unnamed-export interface GestureObserverConfigs-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -25,7 +23,7 @@ actionPhases: Array<GestureActionPhase>
 
 手势事件对象。
 
-**类型：** Array&lt;[GestureActionPhase](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-gestureactionphase-e.md)&gt;
+**类型：** Array&lt;[GestureActionPhase](arkts-arkui-arkui-uicontext-gestureactionphase-e.md)&gt;
 
 **起始版本：** 20
 
@@ -33,7 +31,4 @@ actionPhases: Array<GestureActionPhase>
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GestureObserverConfigs-actionPhases: Array<GestureActionPhase>--><!--Device-GestureObserverConfigs-actionPhases: Array<GestureActionPhase>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -2,9 +2,7 @@
 
 表示安全通信协议的枚举。
 
-**起始版本：** 23
-
-<!--Device-cacheDownload-enum SslType--><!--Device-cacheDownload-enum SslType-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -16,9 +14,7 @@ TLS = 'TLS'
 
 使用TLS安全通信协议。
 
-**起始版本：** 23
-
-<!--Device-SslType-TLS = 'TLS'--><!--Device-SslType-TLS = 'TLS'-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -30,9 +26,6 @@ TLCP = 'TLCP'
 
 使用TLCP安全通信协议。
 
-**起始版本：** 23
-
-<!--Device-SslType-TLCP = 'TLCP'--><!--Device-SslType-TLCP = 'TLCP'-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
-

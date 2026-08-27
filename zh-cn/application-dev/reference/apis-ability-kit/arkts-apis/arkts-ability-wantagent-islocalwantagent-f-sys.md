@@ -14,11 +14,9 @@ function isLocalWantAgent(agent: WantAgent): boolean
 
 判断WantAgent实例是否为本地实例。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-wantAgent-function isLocalWantAgent(agent: WantAgent): boolean--><!--Device-wantAgent-function isLocalWantAgent(agent: WantAgent): boolean-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -86,4 +84,3 @@ try {
   console.error('call isLocalWantAgent failed');
 }
 ```
-

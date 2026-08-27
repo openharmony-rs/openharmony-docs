@@ -28,4 +28,3 @@ import { CryptoExtensionAbility, HuksCryptoExtensionCertInfo, HuksCryptoExtensio
 | 名称 | 说明 |
 | --- | --- |
 | [HuksCryptoExtensionResultCode](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionresultcode-e.md) | [HuksCryptoExtensionResult](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionresultcode-e.md)中的resultCode枚举值。 |
-

@@ -31,7 +31,7 @@
 
 ## 卡片组件
 
-提供卡片组件，实现卡片的显示功能。详情见[FormComponent/apis-arkui/arkui-ts/ts-basic-components-formcomponent-sys.md)。
+提供卡片组件，实现卡片的显示功能。详情见FormComponent。
 
 > **说明：**
 >
@@ -43,7 +43,7 @@
 >
 > - 本模块为系统接口。
 
-通过卡片组件成功添加卡片时，会调用到卡片提供方FormExtensionAbility中的[onAddForm/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)方法。
+通过卡片组件成功添加卡片时，会调用到卡片提供方FormExtensionAbility中的onAddForm方法。
 
 ### 临时卡片和常态卡片
 
@@ -57,10 +57,10 @@
 
 ## formHost接口
 
-formHost提供一系列的卡片使用方接口，来操作卡片的更新、删除等行为，具体的API介绍详见[@ohos.app.form.formHost (formHost)(系统接口)/apis-form-kit/js-apis-app-form-formHost-sys.md)。
+formHost提供一系列的卡片使用方接口，来操作卡片的更新、删除等行为，具体的API介绍详见@ohos.app.form.formHost (formHost)(系统接口)。
 
 ## 卡片使用方示例
-<!-- @[form_host_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormHost/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[form_host_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormHost/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { HashMap, HashSet } from '@kit.ArkTS';
@@ -239,7 +239,7 @@ struct formHostSample {
     let formHapRecordMap: HashMap<string, formInfo.FormInfo[]> = new HashMap();
     this.formInfoRecord = [];
     formHost.getAllFormsInfo().then((formList: Array<formInfo.FormInfo>) => {
-      hilog.info(DOMAIN_NUMBER, TAG, 'getALlFormsInfo size:' + formList.length);
+      hilog.info(DOMAIN_NUMBER, TAG, 'getAllFormsInfo size:' + formList.length);
       for (let formItemInfo of formList) {
         let formBundleName = formItemInfo.bundleName;
         if (formHapRecordMap.hasKey(formBundleName)) {
@@ -285,7 +285,7 @@ struct formHostSample {
             this.getAllBundleFormsInfo();
           })
 
-        // 点击按钮弹出选择界面，点击确定后，添加默认尺寸的所选卡片。
+        // 点击按钮弹出选择界面，选择卡片后通过FormComponent显示所选卡片。
         // 请将$r('app.string.selectAddForm')替换为实际资源文件，在本示例中该资源文件的value值为"选择添加卡片"
         Button($r('app.string.selectAddForm'))
           .enabled(this.showFormPicker)

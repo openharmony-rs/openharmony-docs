@@ -8,14 +8,11 @@
 
 **替代接口：** Options
 
-<!--Device-distributedData-interface Options--><!--Device-distributedData-interface Options-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## 导入模块
 
 ```TypeScript
-import { distributedDataObject } from '@kit.ArkData';
 ```
 
 ## autoSync
@@ -24,7 +21,7 @@ import { distributedDataObject } from '@kit.ArkData';
 autoSync?: boolean
 ```
 
-设置数据库文件是否自动同步。默认为false，即手动同步。 ohos.permission.DISTRIBUTED_DATASYNC
+设置数据库文件是否自动同步。默认为false，即手动同步。ohos.permission.DISTRIBUTED_DATASYNC
 
 **类型：** boolean
 
@@ -35,8 +32,6 @@ autoSync?: boolean
 **替代接口：** autoSync
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
-
-<!--Device-Options-autoSync?: boolean--><!--Device-Options-autoSync?: boolean-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -56,8 +51,6 @@ backup?: boolean
 
 **替代接口：** backup
 
-<!--Device-Options-backup?: boolean--><!--Device-Options-backup?: boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## createIfMissing
@@ -75,8 +68,6 @@ createIfMissing?: boolean
 **废弃版本：** 9
 
 **替代接口：** createIfMissing
-
-<!--Device-Options-createIfMissing?: boolean--><!--Device-Options-createIfMissing?: boolean-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -96,8 +87,6 @@ encrypt?: boolean
 
 **替代接口：** encrypt
 
-<!--Device-Options-encrypt?: boolean--><!--Device-Options-encrypt?: boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## kvStoreType
@@ -115,8 +104,6 @@ kvStoreType?: KVStoreType
 **废弃版本：** 9
 
 **替代接口：** kvStoreType
-
-<!--Device-Options-kvStoreType?: KVStoreType--><!--Device-Options-kvStoreType?: KVStoreType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -136,8 +123,6 @@ schema?: Schema
 
 **替代接口：** schema
 
-<!--Device-Options-schema?: Schema--><!--Device-Options-schema?: Schema-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ## securityLevel
@@ -156,7 +141,4 @@ securityLevel?: SecurityLevel
 
 **替代接口：** securityLevel
 
-<!--Device-Options-securityLevel?: SecurityLevel--><!--Device-Options-securityLevel?: SecurityLevel-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-

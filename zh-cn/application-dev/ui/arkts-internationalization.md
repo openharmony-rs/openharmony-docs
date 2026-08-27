@@ -2,15 +2,15 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本文介绍如何实现应用程序UI界面的国际化，包含资源配置和镜像布局，关于应用适配国际化的详细参考，请参考[Localization Kit（本地化开发服务）](../internationalization/i18n-l10n.md)。
+本文介绍如何实现应用程序UI界面的国际化，包含资源配置和镜像布局，关于应用适配国际化的详细参考，请参考Localization Kit（本地化开发服务）。
 
 ## 利用资源限定词配置国际化资源
 
-在开发阶段，通过DevEco Studio，可以为应用在对应语言和地区的资源限定词目录下配置不同的资源，来实现UI国际化。详细介绍请参考[资源分类与访问](../quick-start/resource-categories-and-access.md)。
+在开发阶段，通过DevEco Studio，可以为应用在对应语言和地区的资源限定词目录下配置不同的资源，来实现UI国际化。详细介绍请参考资源分类与访问。
 
 ## 使用镜像能力
 
@@ -38,28 +38,28 @@ ArkUI 如下能力已默认适配镜像：
 <!--Table: 20%; 80%-->
 | 类别     | 名称                                                         |
 | -------- | ------------------------------------------------------------ |
-| 基础组件 | [Swiper/apis-arkui/arkui-ts/ts-container-swiper.md)、[Tabs/apis-arkui/arkui-ts/ts-container-tabs.md)、[TabContent/apis-arkui/arkui-ts/ts-container-tabcontent.md)、[List/apis-arkui/arkui-ts/ts-container-list.md)、[Progress/apis-arkui/arkui-ts/ts-basic-components-progress.md)、[CalendarPicker/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md)、[CalendarPickerDialog/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)、[TextPicker/apis-arkui/arkui-ts/ts-basic-components-textpicker.md)、[TextPickerDialog/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)、[DatePicker/apis-arkui/arkui-ts/ts-basic-components-datepicker.md)、[DatePickerDialog/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md)、[Grid/apis-arkui/arkui-ts/ts-container-grid.md)、[WaterFlow/apis-arkui/arkui-ts/ts-container-waterflow.md)、[Scroll/apis-arkui/arkui-ts/ts-container-scroll.md)、[ScrollBar/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md)、[AlphabetIndexer/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)、[Stepper/apis-arkui/arkui-ts/ts-basic-components-stepper.md)、[SideBarContainer/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md)、[Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)、[NavDestination/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)、[Rating/apis-arkui/arkui-ts/ts-basic-components-rating.md)、[Slider/apis-arkui/arkui-ts/ts-basic-components-slider.md)、[Toggle/apis-arkui/arkui-ts/ts-basic-components-toggle.md)、[Badge/apis-arkui/arkui-ts/ts-container-badge.md)、[Counter/apis-arkui/arkui-ts/ts-container-counter.md)、[Chip/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)、[SegmentButton/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md)、[bindMenu/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu)、[bindContextMenu/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8)、[TextInput/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea/apis-arkui/arkui-ts/ts-basic-components-textarea.md)、[Search/apis-arkui/arkui-ts/ts-basic-components-search.md)、[Stack/apis-arkui/arkui-ts/ts-container-stack.md)、[GridRow/apis-arkui/arkui-ts/ts-container-gridrow.md)、[Text/apis-arkui/arkui-ts/ts-basic-components-text.md)、[Select/apis-arkui/arkui-ts/ts-basic-components-select.md)、[Marquee/apis-arkui/arkui-ts/ts-basic-components-marquee.md)、[Row/apis-arkui/arkui-ts/ts-container-row.md)、[Column/apis-arkui/arkui-ts/ts-container-column.md)、[Flex/apis-arkui/arkui-ts/ts-container-flex.md)、[RelativeContainer/apis-arkui/arkui-ts/ts-container-relativecontainer.md)、[ListItemGroup/apis-arkui/arkui-ts/ts-container-listitemgroup.md) |
-| 高级组件 | [SelectionMenu/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md) 、[TreeView/apis-arkui/arkui-ts/ohos-arkui-advanced-TreeView.md) 、[Filter/apis-arkui/arkui-ts/ohos-arkui-advanced-Filter.md)、[SplitLayout/apis-arkui/arkui-ts/ohos-arkui-advanced-SplitLayout.md)、[ToolBar/apis-arkui/arkui-ts/ohos-arkui-advanced-ToolBar.md)、[ComposeListItem/apis-arkui/arkui-ts/ohos-arkui-advanced-ComposeListItem.md)、[EditableTitleBar/apis-arkui/arkui-ts/ohos-arkui-advanced-EditableTitleBar.md)、[ProgressButton/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButton.md)、[SubHeader/apis-arkui/arkui-ts/ohos-arkui-advanced-SubHeader.md) 、[Popup/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md)、[Dialog/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)、[SwipeRefresher/apis-arkui/arkui-ts/ohos-arkui-advanced-SwipeRefresher.md) |
-| 通用属性 | [position/apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)、[markAnchor/apis-arkui/arkui-ts/ts-universal-attributes-location.md#markanchor)、[offset/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)、[alignRules/apis-arkui/arkui-ts/ts-universal-attributes-location.md#alignrules12)、[borderWidth/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、[borderColor/apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、[borderRadius/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)、[padding/apis-arkui/arkui-ts/ts-universal-attributes-size.md#padding)、[margin/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin) |
-| 接口     | [AlertDialog/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)、[ActionSheet/apis-arkui/arkui-ts/ts-methods-action-sheet.md)、[promptAction.showDialog/apis-arkui/js-apis-promptAction.md#promptactionshowdialogdeprecated)、[promptAction.showToast/apis-arkui/js-apis-promptAction.md#promptactionshowtoastdeprecated) |
+| 基础组件 | Swiper、Tabs、TabContent、List、Progress、CalendarPicker、CalendarPickerDialog、TextPicker、TextPickerDialog、DatePicker、DatePickerDialog、Grid、WaterFlow、Scroll、ScrollBar、AlphabetIndexer、Stepper、SideBarContainer、Navigation、NavDestination、Rating、Slider、Toggle、Badge、Counter、Chip、SegmentButton、bindMenu、bindContextMenu、TextInput、TextArea、Search、Stack、GridRow、Text、Select、Marquee、Row、Column、Flex、RelativeContainer、ListItemGroup |
+| 高级组件 | SelectionMenu 、TreeView 、Filter、SplitLayout、ToolBar、ComposeListItem、EditableTitleBar、ProgressButton、SubHeader 、Popup、Dialog、SwipeRefresher |
+| 通用属性 | position、markAnchor、offset、alignRules、borderWidth、borderColor、borderRadius、padding、margin |
+| 接口     | AlertDialog、ActionSheet、promptAction.showDialog、promptAction.showToast |
 
 但如下三种场景还需要进行适配：
 
 1. 界面布局、边框设置：关于方向类的通用属性，如果需要支持镜像能力，使用泛化的方向指示词 start/end入参类型替换 left/right、x/y等绝对方向指示词的入参类型，来表示自适应镜像能力。
 
-2. [Canvas/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)组件只有限支持文本绘制的镜像能力。
+2. Canvas组件只有限支持文本绘制的镜像能力。
 
-3. [XComponent/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件不支持组件镜像能力。
+3. XComponent组件不支持组件镜像能力。
 
 ### 界面布局和边框设置
 
 目前，以下三类通用属性需要使用新入参类型适配：
 
-位置设置：[position/apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)、[markAnchor/apis-arkui/arkui-ts/ts-universal-attributes-location.md#markanchor)、[offset/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)、[alignRules/apis-arkui/arkui-ts/ts-universal-attributes-location.md#alignrules12)
+位置设置：position、markAnchor、offset、alignRules
 
-边框设置：[borderWidth/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、[borderColor/apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、[borderRadius/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)
+边框设置：borderWidth、borderColor、borderRadius
 
-尺寸设置：[padding/apis-arkui/arkui-ts/ts-universal-attributes-size.md#padding)、[margin/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)
+尺寸设置：padding、margin
 
 以position为例，需要把绝对方向x、y描述改为新入参类型start、end的描述，其他属性类似。
 
@@ -95,7 +95,7 @@ ArkUI 如下能力已默认适配镜像：
 
 Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canvas组件上的内容并不会跟随系统语言的切换自动做镜像效果。
 
-[CanvasRenderingContext2D/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)的文本绘制支持镜像能力，在使用时需要与Canvas组件的通用属性direction（组件显示方向）和CanvasRenderingContext2D的属性direction（文本绘制方向）协同使用。具体规格如下：
+CanvasRenderingContext2D的文本绘制支持镜像能力，在使用时需要与Canvas组件的通用属性direction（组件显示方向）和CanvasRenderingContext2D的属性direction（文本绘制方向）协同使用。具体规格如下：
 
 1. 优先级：CanvasRenderingContext2D的direction属性 > Canvas组件通用属性direction > 系统语言决定的水平显示方向。
 2. Canvas组件本身不会自动跟随系统语言切换镜像效果，需要应用监听到系统语言切换后自行重新绘制。
@@ -136,13 +136,13 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
               this.drawText();
             })
           } else {
-            console.error(`MayTest Need create subscriber`);
+            console.error(`Need create subscriber`);
           }
         })
     }
   
     drawText(): void {
-      console.error('MayTest drawText')
+      console.error('drawText')
       this.context.reset()
       this.context.direction = 'inherit'
       this.context.font = '30px sans-serif'
@@ -171,9 +171,9 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
 |![](figures/mirroring_2-0.jpg)|![](figures/mirroring_2-1.jpg)|
 
 ### 镜像状态字符对齐
-[Direction/apis-arkui/arkui-ts/ts-appendix-enums.md#direction)是指文字的方向，即文本在屏幕上呈现时字符的顺序。在从左到右（LTR）文本中，显示顺序是从左向右；在从右到左（RTL）文本中，显示顺序是从右到左。
+Direction是指文字的方向，即文本在屏幕上呈现时字符的顺序。在从左到右（LTR）文本中，显示顺序是从左向右；在从右到左（RTL）文本中，显示顺序是从右到左。
 
-[TextAlign/apis-arkui/arkui-ts/ts-appendix-enums.md#textalign)是将文本作为一个整体，在布局上的影响，具体位置会受Direction影响，以TextAlign为start为例，当Direction为LTR时，布局位置靠左；当Direction为RTL时，布局位置靠右。
+TextAlign是将文本作为一个整体，在布局上的影响，具体位置会受Direction影响，以TextAlign为start为例，当Direction为LTR时，布局位置靠左；当Direction为RTL时，布局位置靠右。
 
 在LTR与RTL文本混排时，如一个英文句子中包含阿拉伯语的单词或短语，显示顺序将变得复杂。下图为数字和维吾尔语混合时对应的字符逻辑顺序。
 

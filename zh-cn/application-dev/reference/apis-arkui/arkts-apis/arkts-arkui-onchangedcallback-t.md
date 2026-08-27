@@ -12,13 +12,10 @@ declare type OnChangedCallback = (callbackParam: CallbackParamV2) => void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type OnChangedCallback = (callbackParam: CallbackParamV2) => void--><!--Device-unnamed-declare type OnChangedCallback = (callbackParam: CallbackParamV2) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackParam | [CallbackParamV2](../../apis-na/arkts-apis/arkts-na-arkui-advanced-treeviewv2-callbackparamv2-i.md) | 是 | The result of event. |
-
+| callbackParam | [CallbackParamV2](arkts-arkui-arkui-advanced-treeviewv2-callbackparamv2-i.md) | 是 | The result of event. |

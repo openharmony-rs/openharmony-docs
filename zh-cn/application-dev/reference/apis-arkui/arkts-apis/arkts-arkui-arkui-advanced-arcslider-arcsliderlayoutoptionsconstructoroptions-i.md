@@ -4,8 +4,6 @@ ArcSliderLayoutOptions的构造信息。
 
 **起始版本：** 18
 
-<!--Device-unnamed-interface ArcSliderLayoutOptionsConstructorOptions--><!--Device-unnamed-interface ArcSliderLayoutOptionsConstructorOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -20,7 +18,7 @@ import { ArcSlider, ArcSliderPosition, ArcSliderOptions, ArcSliderOptionsConstru
 position?: ArcSliderPosition
 ```
 
-弧形Slider的屏幕显示位置。 默认值：ArcSliderPosition.RIGHT
+弧形Slider的屏幕显示位置。默认值：ArcSliderPosition.RIGHT@Trace
 
 **类型：** [ArcSliderPosition](arkts-arkui-arkui-advanced-arcslider-arcsliderposition-e.md)
 
@@ -30,8 +28,6 @@ position?: ArcSliderPosition
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSliderLayoutOptionsConstructorOptions-position?: ArcSliderPosition--><!--Device-ArcSliderLayoutOptionsConstructorOptions-position?: ArcSliderPosition-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## reverse
@@ -40,7 +36,7 @@ position?: ArcSliderPosition
 reverse?: boolean
 ```
 
-设置弧形Slider的滑动方向。值为false时表示从上往下滑。 默认值：true，表示从下往上滑动。
+设置弧形Slider的滑动方向。值为false时表示从上往下滑。默认值：true，表示从下往上滑动。@Trace
 
 **类型：** boolean
 
@@ -50,7 +46,4 @@ reverse?: boolean
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSliderLayoutOptionsConstructorOptions-reverse?: boolean--><!--Device-ArcSliderLayoutOptionsConstructorOptions-reverse?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
-

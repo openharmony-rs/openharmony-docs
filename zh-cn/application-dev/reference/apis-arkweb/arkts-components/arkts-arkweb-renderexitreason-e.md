@@ -4,8 +4,6 @@ onRenderExited接口返回的渲染进程退出的具体原因。
 
 **起始版本：** 9
 
-<!--Device-unnamed-declare enum RenderExitReason--><!--Device-unnamed-declare enum RenderExitReason-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ProcessAbnormalTermination
@@ -19,8 +17,6 @@ ProcessAbnormalTermination = 0
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RenderExitReason-ProcessAbnormalTermination = 0--><!--Device-RenderExitReason-ProcessAbnormalTermination = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,8 +32,6 @@ ProcessWasKilled = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RenderExitReason-ProcessWasKilled = 1--><!--Device-RenderExitReason-ProcessWasKilled = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ProcessCrashed
@@ -51,8 +45,6 @@ ProcessCrashed = 2
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RenderExitReason-ProcessCrashed = 2--><!--Device-RenderExitReason-ProcessCrashed = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -68,8 +60,6 @@ ProcessOom = 3
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RenderExitReason-ProcessOom = 3--><!--Device-RenderExitReason-ProcessOom = 3-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ProcessExitUnknown
@@ -84,7 +74,4 @@ ProcessExitUnknown = 4
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RenderExitReason-ProcessExitUnknown = 4--><!--Device-RenderExitReason-ProcessExitUnknown = 4-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

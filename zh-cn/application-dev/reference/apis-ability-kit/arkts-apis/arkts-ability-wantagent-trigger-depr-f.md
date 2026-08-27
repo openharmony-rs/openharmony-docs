@@ -21,8 +21,6 @@ function trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: Callback
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-wantAgent-function trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: Callback<CompleteData>): void--><!--Device-wantAgent-function trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: Callback<CompleteData>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -31,7 +29,7 @@ function trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: Callback
 | --- | --- | --- | --- |
 | agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | 是 | WantAgent对象。 |
 | triggerInfo | [TriggerInfo](arkts-ability-triggerinfo-triggerinfo-i.md) | 是 | TriggerInfo对象。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;CompleteData&gt; | 否 | 主动激发WantAgent实例的回调方法。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;CompleteData&gt; | 否 | 主动激发WantAgent实例的回调方法。 |
 
 **示例**
 
@@ -87,4 +85,3 @@ wantAgent.getWantAgent({
     wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 }, getWantAgentCallback);
 ```
-

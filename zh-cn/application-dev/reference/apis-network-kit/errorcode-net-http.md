@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 2300001 不支持的协议
 
@@ -484,7 +484,7 @@ Invalid SSL peer certificate or SSH remote key.
 
 **处理步骤**
 
-1. 建议参考[tls客户端证书验证流程](../../network/http-request.md#tls客户端证书验证流程)自排查问题原因。
+1. 建议参考tls客户端证书验证流程自排查问题原因。
 
 2. 若配置了certificatePinning，请检查公钥哈希值是否正确。
 

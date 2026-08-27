@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-<!--Device-unnamed-declare interface TextPickerResult--><!--Device-unnamed-declare interface TextPickerResult-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,8 +25,6 @@ index: number | number[]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextPickerResult-index: number | number[]--><!--Device-TextPickerResult-index: number | number[]-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -37,7 +33,13 @@ index: number | number[]
 value: string | string[]
 ```
 
-选中项的文本内容。 > **说明：**当显示文本或图片加文本列表时，value值为选中项中的文本值。（文本选择器显示多列时，value为数组类型。） > > 当显示图片列表时，value值为空。 > > value值必须在range参数定义的选项范围内，不支持包含转义字符''。
+选中项的文本内容。
+
+> **说明：**当显示文本或图片加文本列表时，value值为选中项中的文本值。（文本选择器显示多列时，value为数组类型。）
+> 
+> 当显示图片列表时，value值为空。
+> 
+> value值必须在range参数定义的选项范围内，不支持包含转义字符''。
 
 **类型：** string \| string[]
 
@@ -45,7 +47,4 @@ value: string | string[]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextPickerResult-value: string | string[]--><!--Device-TextPickerResult-value: string | string[]-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -1,16 +1,14 @@
-# Value(定义ArkTS的Decimal类型。Decimal支持任意精度的十进制运算。)
+# Value
 
 ```TypeScript
-type Value = string | double | Decimal
+type Value = string | number | Decimal
 ```
 
 表示用于构建Decimal的参数类型。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-unnamed-type Value = string | double | Decimal--><!--Device-unnamed-type Value = string | double | Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -18,5 +16,4 @@ type Value = string | double | Decimal
 | --- | --- |
 | string |  |
 | double |  |
-| Decimal |  |
-
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) |  |

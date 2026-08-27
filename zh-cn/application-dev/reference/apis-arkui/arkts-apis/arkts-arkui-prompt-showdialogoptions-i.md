@@ -6,9 +6,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [ShowDialogOptions](../../apis-na/arkts-apis/arkts-na-promptaction-showdialogoptions-i.md)
-
-<!--Device-prompt-interface ShowDialogOptions--><!--Device-prompt-interface ShowDialogOptions-End-->
+**替代接口：** [ShowDialogOptions](arkts-arkui-promptaction-showdialogoptions-i.md)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,7 +14,6 @@
 
 ```TypeScript
 import { prompt } from '@kit.ArkUI';
-import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 ```
 
 ## buttons
@@ -33,9 +30,7 @@ buttons?: [Button, Button?, Button?]
 
 **废弃版本：** 9
 
-**替代接口：** [buttons](../../apis-na/arkts-apis/arkts-na-promptaction-showdialogoptions-i.md#buttons)
-
-<!--Device-ShowDialogOptions-buttons?: [Button, Button?, Button?]--><!--Device-ShowDialogOptions-buttons?: [Button, Button?, Button?]-End-->
+**替代接口：** [buttons](arkts-arkui-promptaction-showdialogoptions-i.md#buttons)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,9 +48,7 @@ message?: string
 
 **废弃版本：** 9
 
-**替代接口：** [message](../../apis-na/arkts-apis/arkts-na-promptaction-showdialogoptions-i.md#message)
-
-<!--Device-ShowDialogOptions-message?: string--><!--Device-ShowDialogOptions-message?: string-End-->
+**替代接口：** [message](arkts-arkui-promptaction-showdialogoptions-i.md#message)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,9 +66,6 @@ title?: string
 
 **废弃版本：** 9
 
-**替代接口：** [title](../../apis-na/arkts-apis/arkts-na-promptaction-showdialogoptions-i.md#title)
-
-<!--Device-ShowDialogOptions-title?: string--><!--Device-ShowDialogOptions-title?: string-End-->
+**替代接口：** [title](arkts-arkui-promptaction-showdialogoptions-i.md#title)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

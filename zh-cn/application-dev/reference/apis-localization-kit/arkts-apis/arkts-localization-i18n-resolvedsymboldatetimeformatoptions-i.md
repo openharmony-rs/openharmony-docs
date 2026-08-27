@@ -6,8 +6,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-i18n-export interface ResolvedSymbolDateTimeFormatOptions--><!--Device-i18n-export interface ResolvedSymbolDateTimeFormatOptions-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 ## 导入模块
@@ -32,7 +30,4 @@ amPMSymbol?: string[]
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ResolvedSymbolDateTimeFormatOptions-amPMSymbol?: string[]--><!--Device-ResolvedSymbolDateTimeFormatOptions-amPMSymbol?: string[]-End-->
-
 **系统能力：** SystemCapability.Global.I18n
-

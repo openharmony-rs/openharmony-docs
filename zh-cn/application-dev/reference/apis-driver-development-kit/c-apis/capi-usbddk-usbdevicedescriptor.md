@@ -20,7 +20,7 @@ typedef struct UsbDeviceDescriptor {...} __attribute__((aligned(8))) UsbDeviceDe
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t bLength | 该描述符的大小，单位：字节。 |
+| uint8_t bLength | 该描述符的大小，单位：Byte。 |
 | uint8_t bDescriptorType | 描述符类型。 |
 | uint16_t bcdUSB | USB协议版本号。 |
 | uint8_t bDeviceClass | 由USB标准化组织（USB-IF）分配的设备类代码。 |

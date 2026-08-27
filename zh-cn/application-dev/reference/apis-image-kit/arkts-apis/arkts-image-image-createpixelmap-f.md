@@ -12,11 +12,9 @@ import { image } from '@kit.ImageKit';
 function createPixelMap(colors: ArrayBuffer, options: InitializationOptions, callback: AsyncCallback<PixelMap>): void
 ```
 
-Create pixelmap by data buffer. Starting from API 26.0.0, it is recommended to use [createPixelMapFromPixels](arkts-image-image-createpixelmapfrompixels-f.md) instead for better exception handling capabilities.
+Create pixelmap by data buffer.Starting from API 26.0.0, it is recommended to use [createPixelMapFromPixels](arkts-image-image-createpixelmapfrompixels-f.md) instead for better exception handling capabilities.
 
-**起始版本：** 23
-
-<!--Device-image-function createPixelMap(colors: ArrayBuffer, options: InitializationOptions, callback: AsyncCallback<PixelMap>): void--><!--Device-image-function createPixelMap(colors: ArrayBuffer, options: InitializationOptions, callback: AsyncCallback<PixelMap>): void-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -26,7 +24,7 @@ Create pixelmap by data buffer. Starting from API 26.0.0, it is recommended to u
 | --- | --- | --- | --- |
 | colors | ArrayBuffer | 是 | The image color buffer. |
 | options | [InitializationOptions](arkts-image-image-initializationoptions-i.md) | 是 | Initialization options for pixelmap. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;PixelMap&gt; | 是 | Callback used to return the PixelMap object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;PixelMap&gt; | 是 | Callback used to return the PixelMap object. |
 
 **示例**
 
@@ -58,11 +56,9 @@ function createPixelMap() {
 function createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise<PixelMap>
 ```
 
-Create pixelmap by data buffer. Starting from API 26.0.0, it is recommended to use [createPixelMapFromPixels](arkts-image-image-createpixelmapfrompixels-f.md) instead for better exception handling capabilities.
+Create pixelmap by data buffer.Starting from API 26.0.0, it is recommended to use [createPixelMapFromPixels](arkts-image-image-createpixelmapfrompixels-f.md) instead for better exception handling capabilities.
 
-**起始版本：** 23
-
-<!--Device-image-function createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise<PixelMap>--><!--Device-image-function createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise<PixelMap>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -77,11 +73,9 @@ Create pixelmap by data buffer. Starting from API 26.0.0, it is recommended to u
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;PixelMap&gt; | A Promise instance used to return the PixelMap object. |
+| Promise & lt;PixelMap & gt; | A Promise instance used to return the PixelMap object. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -101,23 +95,3 @@ function createPixelMap() {
   });
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-function createPixelMap() {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
-  let opts: image.InitializationOptions = {
-    size: { height: 4, width: 6 },
-    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区中的源像素数据的像素格式。
-    pixelFormat: image.PixelMapFormat.BGRA_8888, // 新创建的PixelMap的像素格式。
-    editable: true
-  };
-  image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in creating the PixelMap.');
-  }).catch((err: Error) => {
-    console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
-  });
-}
-```
-

@@ -24,8 +24,6 @@ function startBackgroundRunning(id: number, request: NotificationRequest, callba
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-particleAbility-function startBackgroundRunning(id: number, request: NotificationRequest, callback: AsyncCallback<void>): void--><!--Device-particleAbility-function startBackgroundRunning(id: number, request: NotificationRequest, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **参数：**
@@ -34,7 +32,7 @@ function startBackgroundRunning(id: number, request: NotificationRequest, callba
 | --- | --- | --- | --- |
 | id | number | 是 | 长时任务通知id号。 |
 | request | [NotificationRequest](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i.md) | 是 | 通知参数，用于显示通知栏的信息。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当向系统申请长时任务成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当向系统申请长时任务成功，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -99,8 +97,6 @@ function startBackgroundRunning(id: number, request: NotificationRequest): Promi
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-particleAbility-function startBackgroundRunning(id: number, request: NotificationRequest): Promise<void>--><!--Device-particleAbility-function startBackgroundRunning(id: number, request: NotificationRequest): Promise<void>-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **参数：**
@@ -114,7 +110,7 @@ function startBackgroundRunning(id: number, request: NotificationRequest): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -155,4 +151,3 @@ wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj) => {
   });
 });
 ```
-

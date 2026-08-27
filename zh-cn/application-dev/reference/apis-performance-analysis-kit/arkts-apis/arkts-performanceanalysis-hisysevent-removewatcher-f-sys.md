@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## removeWatcher
@@ -14,11 +13,9 @@ function removeWatcher(watcher: Watcher): void
 
 取消订阅系统事件，接收[Watcher](arkts-performanceanalysis-hisysevent-watcher-i-sys.md)类型的对象作为事件参数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
-
-<!--Device-hiSysEvent-function removeWatcher(watcher: Watcher): void--><!--Device-hiSysEvent-function removeWatcher(watcher: Watcher): void-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -34,10 +31,10 @@ function removeWatcher(watcher: Watcher): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [11200201](../errorcode-hisysevent-sys.md#11200201-系统事件监听者不存在) | The watcher does not exist. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. An attempt was made to read system event forbidden by permission: ohos.permission.READ_DFX_SYSEVENT. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | System API is not allowed called by Non-system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [11200201](../errorcode-hisysevent-sys.md#11200201-系统事件监听者不存在) | The watcher does not exist. |
 
 **示例**
 
@@ -68,4 +65,3 @@ try {
   console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
 }
 ```
-

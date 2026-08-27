@@ -4,8 +4,6 @@
 
 **起始版本：** 24
 
-<!--Device-applicationManager-interface DockInfo--><!--Device-applicationManager-interface DockInfo-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## 导入模块
@@ -28,8 +26,6 @@ abilityName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DockInfo-abilityName: string--><!--Device-DockInfo-abilityName: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## bundleName
@@ -45,8 +41,6 @@ bundleName: string
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DockInfo-bundleName: string--><!--Device-DockInfo-bundleName: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -64,7 +58,4 @@ index: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DockInfo-index: number--><!--Device-DockInfo-index: number-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

@@ -18,8 +18,6 @@ function getDialogSessionInfo(dialogSessionId: string): DialogSessionInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-dialogSession-function getDialogSessionInfo(dialogSessionId: string): DialogSessionInfo--><!--Device-dialogSession-function getDialogSessionInfo(dialogSessionId: string): DialogSessionInfo-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -40,49 +38,27 @@ function getDialogSessionInfo(dialogSessionId: string): DialogSessionInfo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000005](../errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
 | [16000006](../errorcode-ability.md#16000006-不允许跨用户操作) | Cross-user operations are not allowed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
 
-
-## getDialogSessionInfo
+**示例**
 
 ```TypeScript
-function getDialogSessionInfo(dialogSessionId: string): DialogSessionInfo | null
+import { dialogSession, Want, UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
+
+const TAG: string = '[testTag] UIExtAbility';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    // want由系统内部指定，dialogSessionId为内置参数
+    let dialogSessionId = want?.parameters?.dialogSessionId.toString();
+
+    // 查询DialogSessionInfo
+    let dialogSessionInfo: dialogSession.DialogSessionInfo = dialogSession.getDialogSessionInfo(dialogSessionId);
+    console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+  }
+}
 ```
-
-根据dialogSessionId获取会话信息。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-dialogSession-function getDialogSessionInfo(dialogSessionId: string): DialogSessionInfo | null--><!--Device-dialogSession-function getDialogSessionInfo(dialogSessionId: string): DialogSessionInfo | null-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| dialogSessionId | string | 是 | 用户请求会话ID。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [DialogSessionInfo](arkts-ability-dialogsession-dialogsessioninfo-i-sys.md) | Returns the session info when the target DialogSessionInfo of dialogSessionId exists. Returns null if the target DialogSessionInfo of dialogSessionId not exist. |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [16000005](../errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
-| [16000006](../errorcode-ability.md#16000006-不允许跨用户操作) | Cross-user operations are not allowed. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
-

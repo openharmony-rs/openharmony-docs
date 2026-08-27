@@ -10,7 +10,4 @@ type QueryCurrentSingleEvent = () => Promise<Single>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avMusicTemplate-type QueryCurrentSingleEvent = () => Promise<Single>--><!--Device-avMusicTemplate-type QueryCurrentSingleEvent = () => Promise<Single>-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-

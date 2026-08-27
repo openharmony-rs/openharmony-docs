@@ -2,13 +2,16 @@
 
 表示活跃设备类型的枚举。
 
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[CommunicationDeviceType](arkts-audio-audio-communicationdevicetype-e.md)替代。
+@enum { number }
+
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** [CommunicationDeviceType](arkts-audio-audio-communicationdevicetype-e.md)
-
-<!--Device-audio-enum ActiveDeviceType--><!--Device-audio-enum ActiveDeviceType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -26,8 +29,6 @@ SPEAKER = 2
 
 **替代接口：** SPEAKER
 
-<!--Device-ActiveDeviceType-SPEAKER = 2--><!--Device-ActiveDeviceType-SPEAKER = 2-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
 ## BLUETOOTH_SCO
@@ -44,7 +45,4 @@ BLUETOOTH_SCO = 7
 
 **替代接口：** BLUETOOTH_SCO
 
-<!--Device-ActiveDeviceType-BLUETOOTH_SCO = 7--><!--Device-ActiveDeviceType-BLUETOOTH_SCO = 7-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.Device
-

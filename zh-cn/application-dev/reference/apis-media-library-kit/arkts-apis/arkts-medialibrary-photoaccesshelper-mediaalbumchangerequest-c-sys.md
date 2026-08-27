@@ -1,12 +1,14 @@
 # MediaAlbumChangeRequest
 
-MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md). 相册变更请求。 > **说明：** > > - 本Class首批接口从API version 11开始支持。
+MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md).相册变更请求。
+
+> **说明：**
+> 
+> - 本Class首批接口从API version 11开始支持。
 
 **继承/实现关系：** MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md)
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-class MediaAlbumChangeRequest--><!--Device-photoAccessHelper-class MediaAlbumChangeRequest-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -22,11 +24,14 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 static createAlbumRequest(context: Context, name: string): MediaAlbumChangeRequest
 ```
 
-创建相册变更请求。 相册名的参数规格为： - 相册名字符串长度为1~255。 - 不允许出现的非法英文字符，包括： . .. \ / : * ? " ' ` &lt; &gt; | { } [ ] - 英文字符大小写不敏感。 - 相册名不允许重名。
+创建相册变更请求。相册名的参数规格为：  
+- 相册名字符串长度为1~255。  
+- 不允许出现的非法英文字符，包括：  
+. .. \ / : * ? " ' ` &lt; &gt; | { } [ ]  
+- 英文字符大小写不敏感。  
+- 相册名不允许重名。
 
 **起始版本：** 11
-
-<!--Device-MediaAlbumChangeRequest-static createAlbumRequest(context: Context, name: string): MediaAlbumChangeRequest--><!--Device-MediaAlbumChangeRequest-static createAlbumRequest(context: Context, name: string): MediaAlbumChangeRequest-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -49,8 +54,8 @@ static createAlbumRequest(context: Context, name: string): MediaAlbumChangeReque
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 14000011 | System inner fail |
 
 **示例**
@@ -71,43 +76,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## createAlbumRequest
-
-```TypeScript
-static createAlbumRequest(context: Context, name: string): MediaAlbumChangeRequest | null
-```
-
-创建相册变更请求。
-
-**起始版本：** 23
-
-<!--Device-MediaAlbumChangeRequest-static createAlbumRequest(context: Context, name: string): MediaAlbumChangeRequest | null--><!--Device-MediaAlbumChangeRequest-static createAlbumRequest(context: Context, name: string): MediaAlbumChangeRequest | null-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | Context of the ability instance. |
-| name | string | 是 | Name of the album. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [MediaAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c.md) | Returns a MediaAlbumChangeRequest instance. if the operation fails, returns null. |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
-
 ## deleteAlbums
 
 ```TypeScript
@@ -116,11 +84,9 @@ static deleteAlbums(context: Context, albums: Array<Album>): Promise<void>
 
 删除存在的用户相册。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
-
-<!--Device-MediaAlbumChangeRequest-static deleteAlbums(context: Context, albums: Array<Album>): Promise<void>--><!--Device-MediaAlbumChangeRequest-static deleteAlbums(context: Context, albums: Array<Album>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -131,21 +97,21 @@ static deleteAlbums(context: Context, albums: Array<Album>): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 传入Ability实例的Context。 |
-| albums | Array&lt;Album&gt; | 是 | 待删除的相册数组。 |
+| albums | Array & lt;Album & gt; | 是 | 待删除的相册数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，返回void。 |
+| Promise & lt;void & gt; | Promise对象，返回void。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 14000011 | System inner fail |
 
 **示例**
@@ -181,11 +147,9 @@ static deleteAlbumsWithUri(context: Context, albumUris: Array<string>): Promise<
 
 删除已存在的用户相册。使用promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 19
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
-
-<!--Device-MediaAlbumChangeRequest-static deleteAlbumsWithUri(context: Context, albumUris: Array<string>): Promise<void>--><!--Device-MediaAlbumChangeRequest-static deleteAlbumsWithUri(context: Context, albumUris: Array<string>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -196,22 +160,22 @@ static deleteAlbumsWithUri(context: Context, albumUris: Array<string>): Promise<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 传入Ability实例的Context。 |
-| albumUris | Array&lt;string&gt; | 是 | 待删除相册Uri的数组。 |
+| albumUris | Array & lt;string & gt; | 是 | 待删除相册Uri的数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
-| 14000011 | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out; |
+| 13900020 | Invalid argument |
+| 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out; |
 
 **示例**
 
@@ -233,11 +197,13 @@ async function example(context: Context, albumUri: string) {
 deleteAssets(assets: Array<PhotoAsset>): void
 ```
 
-从回收站中彻底删除资产。 > **注意：** > > 此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
+从回收站中彻底删除资产。
 
-**起始版本：** 23
+> **注意：**
+> 
+> 此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
 
-<!--Device-MediaAlbumChangeRequest-deleteAssets(assets: Array<PhotoAsset>): void--><!--Device-MediaAlbumChangeRequest-deleteAssets(assets: Array<PhotoAsset>): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -247,16 +213,16 @@ deleteAssets(assets: Array<PhotoAsset>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array&lt;PhotoAsset&gt; | 是 | 待从回收站中彻底删除的资产数组。 |
+| assets | Array & lt;PhotoAsset & gt; | 是 | 待从回收站中彻底删除的资产数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000016 | Operation Not Support |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 14000011 | System inner fail |
+| 14000016 | Operation Not Support |
 
 **示例**
 
@@ -302,11 +268,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 deleteAssetsWithUri(assetUris: Array<string>): void
 ```
 
-从回收站中彻底删除资产。 > **注意：** > > 此操作不可逆，执行此操作后文件资源将被彻底删除，请谨慎操作。
+从回收站中彻底删除资产。
 
-**起始版本：** 23
+> **注意：**
+> 
+> 此操作不可逆，执行此操作后文件资源将被彻底删除，请谨慎操作。
 
-<!--Device-MediaAlbumChangeRequest-deleteAssetsWithUri(assetUris: Array<string>): void--><!--Device-MediaAlbumChangeRequest-deleteAssetsWithUri(assetUris: Array<string>): void-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -316,16 +284,46 @@ deleteAssetsWithUri(assetUris: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assetUris | Array&lt;string&gt; | 是 | 待从回收站中彻底删除的资产Uri数组。 |
+| assetUris | Array & lt;string & gt; | 是 | 待从回收站中彻底删除的资产Uri数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 14000016 | Operation Not Support |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
-| 14000011 | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| 13900020 | Invalid argument |
+| 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
+| 14000016 | Operation Not Support |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('deleteAssetsWithUriDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.TRASH);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOptions);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+
+    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+    albumChangeRequest.deleteAssetsWithUri([asset.uri]);
+    await phAccessHelper.applyChanges(albumChangeRequest);
+    console.info('succeed to deleteAssets permanently');
+  } catch (err) {
+    console.error(`deleteAssetsWithUriDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## dismiss
 
@@ -335,9 +333,7 @@ dismiss(): void
 
 删除合影相册。
 
-**起始版本：** 23
-
-<!--Device-MediaAlbumChangeRequest-dismiss(): void--><!--Device-MediaAlbumChangeRequest-dismiss(): void-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -347,8 +343,8 @@ dismiss(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
 | 14000011 | System inner fail |
 
 **示例**
@@ -382,9 +378,7 @@ dismissAssets(assets: Array<PhotoAsset>): void
 
 从该人像相册或合影相册中移除指定图片。
 
-**起始版本：** 23
-
-<!--Device-MediaAlbumChangeRequest-dismissAssets(assets: Array<PhotoAsset>): void--><!--Device-MediaAlbumChangeRequest-dismissAssets(assets: Array<PhotoAsset>): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -394,16 +388,16 @@ dismissAssets(assets: Array<PhotoAsset>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array&lt;PhotoAsset&gt; | 是 | 需要移除的文件列表。 |
+| assets | Array & lt;PhotoAsset & gt; | 是 | 需要移除的文件列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000016 | Operation Not Support |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 14000011 | System inner fail |
+| 14000016 | Operation Not Support |
 
 **示例**
 
@@ -449,9 +443,7 @@ mergeAlbum(target: Album): void
 
 将两个人像相册合并。
 
-**起始版本：** 23
-
-<!--Device-MediaAlbumChangeRequest-mergeAlbum(target: Album): void--><!--Device-MediaAlbumChangeRequest-mergeAlbum(target: Album): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -467,10 +459,10 @@ mergeAlbum(target: Album): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000016 | Operation Not Support |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 14000011 | System inner fail |
+| 14000016 | Operation Not Support |
 
 **示例**
 
@@ -514,9 +506,7 @@ moveAssets(assets: Array<PhotoAsset>, targetAlbum: Album): void
 
 从相册中移动资产到另一个目标相册。
 
-**起始版本：** 23
-
-<!--Device-MediaAlbumChangeRequest-moveAssets(assets: Array<PhotoAsset>, targetAlbum: Album): void--><!--Device-MediaAlbumChangeRequest-moveAssets(assets: Array<PhotoAsset>, targetAlbum: Album): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -526,17 +516,17 @@ moveAssets(assets: Array<PhotoAsset>, targetAlbum: Album): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array&lt;PhotoAsset&gt; | 是 | 待从相册中移出的资产数组。 |
+| assets | Array & lt;PhotoAsset & gt; | 是 | 待从相册中移出的资产数组。 |
 | targetAlbum | Album | 是 | 待移入资产的目标相册。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000016 | Operation Not Support |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 14000011 | System inner fail |
+| 14000016 | Operation Not Support |
 
 **示例**
 
@@ -581,9 +571,7 @@ moveAssetsWithUri(assetUris: Array<string>, targetAlbum: Album): void
 
 把相册中的资产移动到另一个目标相册。
 
-**起始版本：** 23
-
-<!--Device-MediaAlbumChangeRequest-moveAssetsWithUri(assetUris: Array<string>, targetAlbum: Album): void--><!--Device-MediaAlbumChangeRequest-moveAssetsWithUri(assetUris: Array<string>, targetAlbum: Album): void-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -593,17 +581,55 @@ moveAssetsWithUri(assetUris: Array<string>, targetAlbum: Album): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assetUris | Array&lt;string&gt; | 是 | 待从相册中移出的资产Uri数组。 |
+| assetUris | Array & lt;string & gt; | 是 | 待从相册中移出的资产Uri数组。 |
 | targetAlbum | Album | 是 | 待移入资产的目标相册。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 14000016 | Operation Not Support |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
-| 14000011 | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| 13900020 | Invalid argument |
+| 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
+| 14000016 | Operation Not Support |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('moveAssetsWithUriDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOptions);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (asset === undefined) {
+      console.error('asset is undefined');
+      return;
+    }
+    if (albumFetchResult.isAfterLast()) {
+      console.error('lack of album to be moved into');
+      return;
+    }
+    let nextAlbum: photoAccessHelper.Album = await albumFetchResult.getNextObject();
+    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+    albumChangeRequest.moveAssetsWithUri([asset.uri], nextAlbum);
+    await phAccessHelper.applyChanges(albumChangeRequest);
+    console.info('moveAssetsWithUri successfully');
+  } catch (err) {
+    console.error(`moveAssetsWithUriDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## operateAttribute
 
@@ -621,8 +647,6 @@ operateAttribute(operation: AlbumOperation): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MediaAlbumChangeRequest-operateAttribute(operation: AlbumOperation): void--><!--Device-MediaAlbumChangeRequest-operateAttribute(operation: AlbumOperation): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -637,11 +661,11 @@ operateAttribute(operation: AlbumOperation): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800201](../errorcode-medialibrary.md#23800201-不支持的操作类型) | Unsupported operation type. It is recommended to check the logs. Possible causes: <br>1. Unsupported AlbumAttribute for the album. <br>2. Unsupported AlbumOperationType for the AlbumAttribute. <br>3. Other operation limit. |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error.It is recommended to retry and check the logs. <br>Possible causes:1. Database corrupted.2. The file system is abnormal.3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The attr of operation is invalid; <br>2. The type of operation is invalid; <br>3. The values of operation is incorrect; |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes:  1. The attr of operation is invalid;  2. The type of operation is invalid;  3. The values of operation is incorrect; |
+| [23800201](../errorcode-medialibrary.md#23800201-不支持的操作类型) | Unsupported operation type. It is recommended to check the logs. Possible causes:  1. Unsupported AlbumAttribute for the album.  2. Unsupported AlbumOperationType for the AlbumAttribute.  3. Other operation limit. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error.It is recommended to retry and check the logs. Possible causes:1. Database corrupted.2. The file system is abnormal.3. The IPC request timed out. |
 
 **示例**
 
@@ -691,9 +715,7 @@ placeBefore(album: Album): void
 
 将当前相册排序到目标相册之前。
 
-**起始版本：** 23
-
-<!--Device-MediaAlbumChangeRequest-placeBefore(album: Album): void--><!--Device-MediaAlbumChangeRequest-placeBefore(album: Album): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -709,8 +731,8 @@ placeBefore(album: Album): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 14000011 | System inner fail |
 
 **示例**
@@ -746,9 +768,7 @@ recoverAssets(assets: Array<PhotoAsset>): void
 
 从回收站中恢复指定的PhotoAsset对象数组所对应的资产。
 
-**起始版本：** 23
-
-<!--Device-MediaAlbumChangeRequest-recoverAssets(assets: Array<PhotoAsset>): void--><!--Device-MediaAlbumChangeRequest-recoverAssets(assets: Array<PhotoAsset>): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -758,16 +778,16 @@ recoverAssets(assets: Array<PhotoAsset>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array&lt;PhotoAsset&gt; | 是 | 待从回收站中恢复的资产数组。 |
+| assets | Array & lt;PhotoAsset & gt; | 是 | 待从回收站中恢复的资产数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000016 | Operation Not Support |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 14000011 | System inner fail |
+| 14000016 | Operation Not Support |
 
 **示例**
 
@@ -807,9 +827,7 @@ recoverAssetsWithUri(assetUris: Array<string>): void
 
 从回收站中恢复指定的URI字符串数组所对应的资产。
 
-**起始版本：** 23
-
-<!--Device-MediaAlbumChangeRequest-recoverAssetsWithUri(assetUris: Array<string>): void--><!--Device-MediaAlbumChangeRequest-recoverAssetsWithUri(assetUris: Array<string>): void-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -819,16 +837,46 @@ recoverAssetsWithUri(assetUris: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assetUris | Array&lt;string&gt; | 是 | 待从回收站中恢复的资产Uri数组。 |
+| assetUris | Array & lt;string & gt; | 是 | 待从回收站中恢复的资产Uri数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 14000016 | Operation Not Support |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
-| 14000011 | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| 13900020 | Invalid argument |
+| 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
+| 14000016 | Operation Not Support |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('recoverAssetsWithUriDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.TRASH);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOptions);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+
+    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+    albumChangeRequest.recoverAssetsWithUri([asset.uri]);
+    await phAccessHelper.applyChanges(albumChangeRequest);
+    console.info('recoverAssetsWithUri successfully');
+  } catch (err) {
+    console.error(`recoverAssetsWithUriDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## resetCoverUri
 
@@ -838,9 +886,7 @@ resetCoverUri(): void
 
 恢复默认封面。
 
-**起始版本：** 23
-
-<!--Device-MediaAlbumChangeRequest-resetCoverUri(): void--><!--Device-MediaAlbumChangeRequest-resetCoverUri(): void-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -850,8 +896,8 @@ resetCoverUri(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error.It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error.It is recommended to retry and check the logs. Possible causes:  1. Database corrupted.  2. The file system is abnormal.  3. The IPC request timed out. |
 
 **示例**
 
@@ -893,8 +939,6 @@ setAlbumNameByFile(name: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MediaAlbumChangeRequest-setAlbumNameByFile(name: string): void--><!--Device-MediaAlbumChangeRequest-setAlbumNameByFile(name: string): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -903,15 +947,15 @@ setAlbumNameByFile(name: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 相册名。 <br>取值范围:1-255 <br>相册名参数规格： 相册名字符串长度为1~255。 不允许出现的非法英文字符，包括： \ / : ? " ' ` &lt; &gt; \| { } [ ] 不允许仅命名为.或者.. 英文字符大小写不敏感。 相册名不允许重名。 |
+| name | string | 是 | 相册名。 取值范围:1-255 相册名参数规格： 相册名字符串长度为1~255。 不允许出现的非法英文字符，包括： \ / : * ? " ' ` &lt; &gt; \| { } [ ] 不允许仅命名为.或者.. 英文字符大小写不敏感。 相册名不允许重名。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error.It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The album is not exist; |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes:  1. The album is not exist; |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error.It is recommended to retry and check the logs. Possible causes:  1. Database corrupted.  2. The file system is abnormal.  3. The IPC request timed out. |
 
 **示例**
 
@@ -947,9 +991,7 @@ setCoverUri(coverUri: string): void
 
 设置相册封面。
 
-**起始版本：** 23
-
-<!--Device-MediaAlbumChangeRequest-setCoverUri(coverUri: string): void--><!--Device-MediaAlbumChangeRequest-setCoverUri(coverUri: string): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -965,8 +1007,8 @@ setCoverUri(coverUri: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 14000011 | System inner fail |
 
 **示例**
@@ -1009,14 +1051,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 ## setDisplayLevel
 
 ```TypeScript
-setDisplayLevel(displayLevel: int): void
+setDisplayLevel(displayLevel: number): void
 ```
 
 设置人像相册的显示级别。
 
-**起始版本：** 23
-
-<!--Device-MediaAlbumChangeRequest-setDisplayLevel(displayLevel: int): void--><!--Device-MediaAlbumChangeRequest-setDisplayLevel(displayLevel: int): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1026,14 +1066,14 @@ setDisplayLevel(displayLevel: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayLevel | int | 是 | 设置人像相册的显示级别， <br>0：取消该人像相册收藏； <br>1：设置人像相册为首届面； <br>2：设置人像相册为更多界面； <br>3：设置人像相册为收藏界面。 |
+| displayLevel | number | 是 | 设置人像相册的显示级别， 0：取消该人像相册收藏； 1：设置人像相册为首届面； 2：设置人像相册为更多界面； 3：设置人像相册为收藏界面。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 14000011 | System inner fail |
 
 **示例**
@@ -1075,8 +1115,6 @@ setHiddenAttribute(hiddenState: boolean, isInherited: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MediaAlbumChangeRequest-setHiddenAttribute(hiddenState: boolean, isInherited: boolean): void--><!--Device-MediaAlbumChangeRequest-setHiddenAttribute(hiddenState: boolean, isInherited: boolean): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -1085,16 +1123,16 @@ setHiddenAttribute(hiddenState: boolean, isInherited: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hiddenState | boolean | 是 | 是否隐藏状态 <br>相册的UI隐藏状态 |
-| isInherited | boolean | 是 | 目录下所有文件或者子文件是否继承UI隐藏属性 <br>是否所有子文件或者子目录是否继承 |
+| hiddenState | boolean | 是 | 是否隐藏状态 相册的UI隐藏状态 |
+| isInherited | boolean | 是 | 目录下所有文件或者子文件是否继承UI隐藏属性 是否所有子文件或者子目录是否继承 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error.It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The ablum is not exist; |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes:  1. The ablum is not exist; |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error.It is recommended to retry and check the logs. Possible causes:  1. Database corrupted.  2. The file system is abnormal.  3. The IPC request timed out. |
 
 **示例**
 
@@ -1131,9 +1169,7 @@ setIsMe(): void
 
 将人像相册的人物关系设置为“我”。
 
-**起始版本：** 23
-
-<!--Device-MediaAlbumChangeRequest-setIsMe(): void--><!--Device-MediaAlbumChangeRequest-setIsMe(): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1143,8 +1179,8 @@ setIsMe(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
 | 14000011 | System inner fail |
 
 **示例**
@@ -1182,11 +1218,9 @@ static setUploadStatus(context: Context, albums: Album[], allowUpload: boolean):
 
 设置相册是否可以同步到云空间或家庭存储。使用promise异步回调。
 
-**起始版本：** 26.0.0
+**起始版本：** 22
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
-
-<!--Device-MediaAlbumChangeRequest-static setUploadStatus(context: Context, albums: Album[], allowUpload: boolean): Promise<void>--><!--Device-MediaAlbumChangeRequest-static setUploadStatus(context: Context, albums: Album[], allowUpload: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1204,16 +1238,16 @@ static setUploadStatus(context: Context, albums: Album[], allowUpload: boolean):
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes: <br>1.Database corrupted; <br>2.The file system is abnormal; <br>3.The IPC request timed out; |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The context is empty; <br>2. Album array size is bigger than 500. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes:  1. The context is empty;  2. Album array size is bigger than 500. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:  1.Database corrupted;  2.The file system is abnormal;  3.The IPC request timed out; |
 
 **示例**
 
@@ -1229,4 +1263,3 @@ async function example(context: Context, album: photoAccessHelper.Album) {
   }
 }
 ```
-

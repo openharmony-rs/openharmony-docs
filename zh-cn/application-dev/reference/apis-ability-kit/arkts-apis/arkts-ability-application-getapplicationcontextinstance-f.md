@@ -20,8 +20,6 @@ export function getApplicationContextInstance(): ApplicationContext
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-application-export function getApplicationContextInstance(): ApplicationContext--><!--Device-application-export function getApplicationContextInstance(): ApplicationContext-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
@@ -54,4 +52,3 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-

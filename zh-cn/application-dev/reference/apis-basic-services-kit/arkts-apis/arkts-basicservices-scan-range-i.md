@@ -2,9 +2,7 @@
 
 定义范围的接口。
 
-**起始版本：** 23
-
-<!--Device-scan-interface Range--><!--Device-scan-interface Range-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -17,48 +15,41 @@ import { scan } from '@kit.BasicServicesKit';
 ## maxValue
 
 ```TypeScript
-maxValue: int
+maxValue: number
 ```
 
 范围的最大值。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Range-maxValue: int--><!--Device-Range-maxValue: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## minValue
 
 ```TypeScript
-minValue: int
+minValue: number
 ```
 
 范围的最小值。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Range-minValue: int--><!--Device-Range-minValue: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## quantValue
 
 ```TypeScript
-quantValue: int
+quantValue: number
 ```
 
 范围的量化值。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Range-quantValue: int--><!--Device-Range-quantValue: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
-

@@ -6,7 +6,7 @@ typedef struct HiDebug_ProcessSamplerConfig {...} HiDebug_ProcessSamplerConfig
 
 ## 概述
 
-Defines a struct for sampling configuration.
+采样配置的结构定义。
 
 **起始版本：** 22
 
@@ -20,10 +20,10 @@ Defines a struct for sampling configuration.
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t* tids | Array of thread IDs to sample. A maximum of 10 threads can be sampled at the same time. If the array lengthexceeds 10, the first 10 threads are sampled. |
-| uint32_t size | Length of the array to which **tids** points. |
-| uint32_t frequency | Sampling frequency, in Hz. The value ranges from 1 to 200. If the value is out of the range, the default value 100** is used. |
-| uint32_t duration | Sampling duration, in ms. The value ranges from 1000 to 10000. If the value is less than 1000, the API call isabnormal. If the value is greater than 10000, 10000 is used. |
-| uint32_t reserved | Reserved. |
+| uint32_t* tids | 待采样的线程号数组。最大支持10个线程的同时采样，数组长度超出时，将取前10个线程进行采样。 |
+| uint32_t size | tids指向的数组长度。该值必须与tids数组的实际长度一致。 |
+| uint32_t frequency | 采样频率，取值范围[1-200]，单位Hz。超出取值范围时取默认值100。 |
+| uint32_t duration | 采样时长，取值范围[1000-10000]，单位ms。小于1000时，接口调用异常；大于10000时，取10000。 |
+| uint32_t reserved | 保留字段。 |
 
 

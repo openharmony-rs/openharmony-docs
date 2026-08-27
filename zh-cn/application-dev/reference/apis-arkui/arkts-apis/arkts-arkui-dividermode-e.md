@@ -1,10 +1,8 @@
 # DividerMode
 
-Menu divider mode.
+Menu divider mode.@enum { number }
 
 **起始版本：** 19
-
-<!--Device-unnamed-declare enum DividerMode--><!--Device-unnamed-declare enum DividerMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,8 +20,6 @@ Menu divider mode floating above menu.
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DividerMode-FLOATING_ABOVE_MENU = 0--><!--Device-DividerMode-FLOATING_ABOVE_MENU = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## EMBEDDED_IN_MENU
@@ -40,7 +36,4 @@ Menu divider mode embedded in menu.
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DividerMode-EMBEDDED_IN_MENU = 1--><!--Device-DividerMode-EMBEDDED_IN_MENU = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -14,8 +14,6 @@ Swiper即将滑动前触发的回调，返回值表示是否允许此次滑动�
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare type ContentWillScrollCallback = (result: SwiperContentWillScrollResult) => boolean--><!--Device-unnamed-declare type ContentWillScrollCallback = (result: SwiperContentWillScrollResult) => boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -29,4 +27,3 @@ Swiper即将滑动前触发的回调，返回值表示是否允许此次滑动�
 | 类型 | 说明 |
 | --- | --- |
 | boolean | Swiper是否响应本次滑动，true表示响应，false表示不响应。 |
-

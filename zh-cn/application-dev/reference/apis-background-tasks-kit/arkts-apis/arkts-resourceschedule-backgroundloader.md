@@ -6,8 +6,6 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-declare namespace backgroundLoader--><!--Device-unnamed-declare namespace backgroundLoader-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 ## 导入模块
@@ -46,4 +44,3 @@ import { backgroundLoader } from '@kit.BackgroundTasksKit';
 | --- | --- |
 | [ON_START](arkts-backgroundtasks-backgroundloader-con.md#on_start) | 监听任务启动的方法 |
 | [ON_STOP](arkts-backgroundtasks-backgroundloader-con.md#on_stop) | 监听任务结束的方法 |
-

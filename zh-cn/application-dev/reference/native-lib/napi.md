@@ -32,7 +32,7 @@ libace_napi.z.so
 
 ## 已从Node-API组件标准库中导出的符号列表
 
-从Node-API标准库导出的接口，其使用方法及行为基于[Node.js](https://nodejs.org/docs/latest-v12.x/api/n-api.html)，并进行了部分[能力拓展](#node-api组件扩展的接口)。
+从Node-API标准库导出的接口，其使用方法及行为基于[Node.js](https://nodejs.org/docs/latest-v12.x/api/n-api.html)，并进行了部分能力拓展。
 
 |符号类型|符号名|说明|起始支持API版本|
 | --- | --- | --- | --- |
@@ -689,7 +689,7 @@ libace_napi.z.so
 
 > 说明：
 >
-> 有关Sendable特性的介绍，详见[Sendable开发指导](../../arkts-utils/arkts-sendable.md)。
+> 有关Sendable特性的介绍，详见Sendable开发指导。
 
 ### napi_qos_t
 
@@ -905,7 +905,7 @@ napi_status napi_create_ark_runtime(napi_env *env)
 
 **描述：**
 
-创建基础运行时环境，一个进程最多创建64个，并满足与[Worker](../../arkts-utils/worker-introduction.md)创建的子线程总数不超过80个。
+创建基础运行时环境，一个进程最多创建64个，并满足与Worker创建的子线程总数不超过80个。
 
 **起始版本：** 12
 
@@ -1464,7 +1464,7 @@ napi_status napi_wrap_enhance(napi_env env,
 
 - [in] native_object：将被包裹在ArkTS对象中的native实例。
 
-- [in] finalize_cb：[可选]ArkTS对象被销毁时调用的回调函数，详情请参见[napi_finalize回调函数说明](#napi_finalize回调函数说明)。
+- [in] finalize_cb：[可选]ArkTS对象被销毁时调用的回调函数，详情请参见napi_finalize回调函数说明。
 
 - [in] async_finalizer：一个布尔值，表示ArkTS对象被销毁时调用的回调函数是否异步执行。如果为true，表示异步执行，需确保线程安全；如果为false，则表示同步执行。
 
@@ -1787,7 +1787,7 @@ napi_status napi_create_external_string_utf16(napi_env env,
 
 - [in] length：字符串长度。
 
-- [in] finalize_callback：[可选]字符串对象被销毁时调用的回调函数，详情请参见[napi_finalize_callback回调函数说明](#napi_finalize_callback回调函数说明)。
+- [in] finalize_callback：[可选]字符串对象被销毁时调用的回调函数，详情请参见napi_finalize_callback回调函数说明。
 
 - [in] finalize_hint：[可选]上下文提示，会传递给回调函数。
 
@@ -1826,7 +1826,7 @@ napi_status napi_create_external_string_ascii(napi_env env,
 
 - [in] length：字符串长度。
 
-- [in] finalize_callback：[可选]字符串对象被销毁时调用的回调函数，详情请参见[napi_finalize_callback回调函数说明](#napi_finalize_callback回调函数说明)。
+- [in] finalize_callback：[可选]字符串对象被销毁时调用的回调函数，详情请参见napi_finalize_callback回调函数说明。
 
 - [in] finalize_hint：[可选]上下文提示，会传递给回调函数。
 
@@ -1848,7 +1848,7 @@ napi_status napi_create_strong_sendable_reference(napi_env env,
 **描述：**
 
 创建指向Sendable ArkTS对象的Sendable强引用。使用该接口需要注意以下几点：
-1. 只能为[Sendable对象](../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)创建`napi_sendable_ref`。
+1. 只能为Sendable对象创建`napi_sendable_ref`。
 2. `napi_sendable_ref`可跨ArkTS线程使用，在多线程操作时，调用者需自己保证释放时机，防止出现释放后使用的问题。
 3. 同一进程内，同时存活的`napi_sendable_ref`最大数量为51200个。
 4. 调用者需要保证传入的`env`参数是当前调用接口的ArkTS线程环境对象，避免将其他ArkTS线程的`env`作为参数传入导致出现[多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)。

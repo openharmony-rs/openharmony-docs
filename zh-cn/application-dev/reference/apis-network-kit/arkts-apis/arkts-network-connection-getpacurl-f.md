@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { connection } from '@kit.NetworkKit';
 ```
 
 ## getPacUrl
@@ -15,8 +14,6 @@ function getPacUrl(): string
 获取系统级代理自动配置（PAC）脚本地址。
 
 **起始版本：** 15
-
-<!--Device-connection-function getPacUrl(): string--><!--Device-connection-function getPacUrl(): string-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -40,4 +37,3 @@ import { connection } from '@kit.NetworkKit';
 
 let pacUrl = connection.getPacUrl();
 ```
-

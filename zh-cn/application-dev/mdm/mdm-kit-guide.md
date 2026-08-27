@@ -8,9 +8,9 @@
 
 ## 功能介绍
 
-MDM Kit为[MDM应用](./mdm-kit-term.md#mdm应用)提供设备管理能力，包括企业设备管理与事件监听、应用管理、禁用管理、安全管理、设备设置、设备控制、设备信息获取、硬件外设管理、系统管理、网络通信管理等，具体API接口说明详见<!--RP7-->[API参考/apis-mdm-kit/Readme-CN.md)<!--RP7End-->。
+MDM Kit为MDM应用提供设备管理能力，包括企业设备管理与事件监听、应用管理、禁用管理、安全管理、设备设置、设备控制、设备信息获取、硬件外设管理、系统管理、网络通信管理等，具体API接口说明详见<!--RP7-->API参考<!--RP7End-->。
 
-设备管理应用：具备[企业设备管理扩展能力](./mdm-kit-admin.md)的应用。
+设备管理应用：具备企业设备管理扩展能力的应用。
 
 ## 开发步骤
 
@@ -31,11 +31,11 @@ MDM Kit为[MDM应用](./mdm-kit-term.md#mdm应用)提供设备管理能力，包
 
 ### 创建EnterpriseAdminExtensionAbility
 
-请参阅[EnterpriseAdminExtensionAbility开发指南](./mdm-kit-admin.md)完成EnterpriseAdminExtensionAbility的创建。
+请参阅EnterpriseAdminExtensionAbility开发指南完成EnterpriseAdminExtensionAbility的创建。
 
 ### 声明接口所需权限
 
-在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后在工程Module对应的[module.json5](../quick-start/module-configuration-file.md)配置文件中"requestPermissions"标签下声明要使用的接口所需的权限。例如：
+在申请权限前，请保证符合权限使用的基本原则。然后在工程Module对应的module.json5配置文件中"requestPermissions"标签下声明要使用的接口所需的权限。例如：
 
 <!-- @[request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/module.json5) -->
 
@@ -52,7 +52,7 @@ MDM Kit为[MDM应用](./mdm-kit-term.md#mdm应用)提供设备管理能力，包
 
 > **说明**
 > 
-> 所需要申请的权限请参考具体接口，这里提供了[admin权限管理/apis-mdm-kit/js-apis-enterprise-adminManager.md)的链接，可基于该文档查看MDM Kit内其他API文档。
+> 所需要申请的权限请参考具体接口，这里提供了admin权限管理的链接，可基于该文档查看MDM Kit内其他API文档。
 >
 > <!--RP4--><!--RP4End-->
 
@@ -69,7 +69,7 @@ MDM Kit为[MDM应用](./mdm-kit-term.md#mdm应用)提供设备管理能力，包
 
 2. 调用接口，实现相应的功能。以下为禁用设备Wi-Fi的示例。
 
-   <!-- @[set_disallowed_policy_wifi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
+   <!-- @[set_disallowed_policy_wifi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->   
    
    ``` TypeScript
    import { adminManager, restrictions } from '@kit.MDMKit';
@@ -82,7 +82,7 @@ MDM Kit为[MDM应用](./mdm-kit-term.md#mdm应用)提供设备管理能力，包
      };
      // ...
        try {
-         restrictions.setDisallowedPolicy(this.wantTemp, 'wifi', isDisallow);
+         restrictions.setDisallowedPolicy(this.wantTemp, restrictions.FeatureForDevice.WIFI, isDisallow);
          console.info(isDisallow ? 'disable wifi success.' : 'enable wifi success.');
          // ...
        } catch (err) {
@@ -108,6 +108,8 @@ hdc shell edm disable-admin -n 包名
 ```
 
 > **说明**
+>
+> MDM应用必须在首用户（账户ID为100）下安装才能正常激活。
 >
 > 正式使用时，在同一设备上只能激活一个超级设备管理应用。
 >

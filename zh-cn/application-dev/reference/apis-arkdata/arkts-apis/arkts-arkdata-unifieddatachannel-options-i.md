@@ -2,9 +2,7 @@
 
 UDMF提供的数据操作接口包含三个可选参数：intention、key和visibility。如果接口不需要这些参数，可以不填，具体要求请参阅该接口的参数说明。
 
-**起始版本：** 23
-
-<!--Device-unifiedDataChannel-interface Options--><!--Device-unifiedDataChannel-interface Options-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -24,13 +22,11 @@ intention?: Intention
 
 **类型：** [Intention](arkts-arkdata-unifieddatachannel-intention-e.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Options-intention?: Intention--><!--Device-Options-intention?: Intention-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -40,17 +36,15 @@ intention?: Intention
 key?: string
 ```
 
-UDMF中数据对象的唯一标识符，可通过[insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md)接口的返回值获取。不填写时默认无值，具体是否必填请参阅具体接口的参数说明。 由udmf:/、intention、bundleName和groupId四部分组成，以'/'连接，比如：udmf://DataHub/com.ohos.test/0123456789。 其中udmf:/固定，DataHub为对应枚举的取值，com.ohos.test为包名，0123456789为随机生成的groupId。
+UDMF中数据对象的唯一标识符，可通过[insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md)接口的返回值获取。不填写时默认无值，具体是否必填请参阅具体接口的参数说明。由udmf:/、intention、bundleName和groupId四部分组成，以'/'连接，比如：udmf://DataHub/com.ohos.test/0123456789。其中udmf:/固定，DataHub为对应枚举的取值，com.ohos.test为包名，0123456789为随机生成的groupId。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Options-key?: string--><!--Device-Options-key?: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -64,13 +58,10 @@ visibility?: Visibility
 
 **类型：** Visibility
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Options-visibility?: Visibility--><!--Device-Options-visibility?: Visibility-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
-

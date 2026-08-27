@@ -2,9 +2,7 @@
 
 矩形信息。
 
-**起始版本：** 23
-
-<!--Device-screen-interface Rect--><!--Device-screen-interface Rect-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -14,22 +12,19 @@
 
 ```TypeScript
 import { screen } from '@kit.ArkUI';
-import { screenshot } from '@kit.ArkUI';
 ```
 
 ## height
 
 ```TypeScript
-height: long
+height: number
 ```
 
 矩形的高度，单位为px，该参数应为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Rect-height: long--><!--Device-Rect-height: long-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -38,16 +33,14 @@ height: long
 ## left
 
 ```TypeScript
-left: long
+left: number
 ```
 
 矩形左上角顶点的X轴坐标，单位为px，该参数应为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Rect-left: long--><!--Device-Rect-left: long-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -56,16 +49,14 @@ left: long
 ## top
 
 ```TypeScript
-top: long
+top: number
 ```
 
 矩形左上角顶点的Y轴坐标，单位为px，该参数应为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Rect-top: long--><!--Device-Rect-top: long-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -74,18 +65,15 @@ top: long
 ## width
 
 ```TypeScript
-width: long
+width: number
 ```
 
 矩形的宽度，单位为px，该参数应为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Rect-width: long--><!--Device-Rect-width: long-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
-

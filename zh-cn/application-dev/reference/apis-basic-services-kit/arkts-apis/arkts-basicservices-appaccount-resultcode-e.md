@@ -1,12 +1,15 @@
 # ResultCode
 
-表示返回码的枚举。 > **说明：**<br/> > > 从API version 8开始支持，从API version 9开始废弃。相关信息建议查看 > [账号管理错误码](../errorcode-account.md)替代。
+表示返回码的枚举。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 9开始废弃。相关信息建议查看
+> [账号管理错误码](../errorcode-account.md)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
-
-<!--Device-appAccount-enum ResultCode--><!--Device-appAccount-enum ResultCode-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -22,8 +25,6 @@ SUCCESS = 0
 
 **废弃版本：** 9
 
-<!--Device-ResultCode-SUCCESS = 0--><!--Device-ResultCode-SUCCESS = 0-End-->
-
 **系统能力：** SystemCapability.Account.AppAccount
 
 ## ERROR_ACCOUNT_NOT_EXIST
@@ -37,8 +38,6 @@ ERROR_ACCOUNT_NOT_EXIST = 10001
 **起始版本：** 8
 
 **废弃版本：** 9
-
-<!--Device-ResultCode-ERROR_ACCOUNT_NOT_EXIST = 10001--><!--Device-ResultCode-ERROR_ACCOUNT_NOT_EXIST = 10001-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -54,8 +53,6 @@ ERROR_APP_ACCOUNT_SERVICE_EXCEPTION = 10002
 
 **废弃版本：** 9
 
-<!--Device-ResultCode-ERROR_APP_ACCOUNT_SERVICE_EXCEPTION = 10002--><!--Device-ResultCode-ERROR_APP_ACCOUNT_SERVICE_EXCEPTION = 10002-End-->
-
 **系统能力：** SystemCapability.Account.AppAccount
 
 ## ERROR_INVALID_PASSWORD
@@ -69,8 +66,6 @@ ERROR_INVALID_PASSWORD = 10003
 **起始版本：** 8
 
 **废弃版本：** 9
-
-<!--Device-ResultCode-ERROR_INVALID_PASSWORD = 10003--><!--Device-ResultCode-ERROR_INVALID_PASSWORD = 10003-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -86,8 +81,6 @@ ERROR_INVALID_REQUEST = 10004
 
 **废弃版本：** 9
 
-<!--Device-ResultCode-ERROR_INVALID_REQUEST = 10004--><!--Device-ResultCode-ERROR_INVALID_REQUEST = 10004-End-->
-
 **系统能力：** SystemCapability.Account.AppAccount
 
 ## ERROR_INVALID_RESPONSE
@@ -101,8 +94,6 @@ ERROR_INVALID_RESPONSE = 10005
 **起始版本：** 8
 
 **废弃版本：** 9
-
-<!--Device-ResultCode-ERROR_INVALID_RESPONSE = 10005--><!--Device-ResultCode-ERROR_INVALID_RESPONSE = 10005-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -118,8 +109,6 @@ ERROR_NETWORK_EXCEPTION = 10006
 
 **废弃版本：** 9
 
-<!--Device-ResultCode-ERROR_NETWORK_EXCEPTION = 10006--><!--Device-ResultCode-ERROR_NETWORK_EXCEPTION = 10006-End-->
-
 **系统能力：** SystemCapability.Account.AppAccount
 
 ## ERROR_OAUTH_AUTHENTICATOR_NOT_EXIST
@@ -133,8 +122,6 @@ ERROR_OAUTH_AUTHENTICATOR_NOT_EXIST = 10007
 **起始版本：** 8
 
 **废弃版本：** 9
-
-<!--Device-ResultCode-ERROR_OAUTH_AUTHENTICATOR_NOT_EXIST = 10007--><!--Device-ResultCode-ERROR_OAUTH_AUTHENTICATOR_NOT_EXIST = 10007-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -150,8 +137,6 @@ ERROR_OAUTH_CANCELED = 10008
 
 **废弃版本：** 9
 
-<!--Device-ResultCode-ERROR_OAUTH_CANCELED = 10008--><!--Device-ResultCode-ERROR_OAUTH_CANCELED = 10008-End-->
-
 **系统能力：** SystemCapability.Account.AppAccount
 
 ## ERROR_OAUTH_LIST_TOO_LARGE
@@ -165,8 +150,6 @@ ERROR_OAUTH_LIST_TOO_LARGE = 10009
 **起始版本：** 8
 
 **废弃版本：** 9
-
-<!--Device-ResultCode-ERROR_OAUTH_LIST_TOO_LARGE = 10009--><!--Device-ResultCode-ERROR_OAUTH_LIST_TOO_LARGE = 10009-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -182,8 +165,6 @@ ERROR_OAUTH_SERVICE_BUSY = 10010
 
 **废弃版本：** 9
 
-<!--Device-ResultCode-ERROR_OAUTH_SERVICE_BUSY = 10010--><!--Device-ResultCode-ERROR_OAUTH_SERVICE_BUSY = 10010-End-->
-
 **系统能力：** SystemCapability.Account.AppAccount
 
 ## ERROR_OAUTH_SERVICE_EXCEPTION
@@ -197,8 +178,6 @@ ERROR_OAUTH_SERVICE_EXCEPTION = 10011
 **起始版本：** 8
 
 **废弃版本：** 9
-
-<!--Device-ResultCode-ERROR_OAUTH_SERVICE_EXCEPTION = 10011--><!--Device-ResultCode-ERROR_OAUTH_SERVICE_EXCEPTION = 10011-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -214,8 +193,6 @@ ERROR_OAUTH_SESSION_NOT_EXIST = 10012
 
 **废弃版本：** 9
 
-<!--Device-ResultCode-ERROR_OAUTH_SESSION_NOT_EXIST = 10012--><!--Device-ResultCode-ERROR_OAUTH_SESSION_NOT_EXIST = 10012-End-->
-
 **系统能力：** SystemCapability.Account.AppAccount
 
 ## ERROR_OAUTH_TIMEOUT
@@ -229,8 +206,6 @@ ERROR_OAUTH_TIMEOUT = 10013
 **起始版本：** 8
 
 **废弃版本：** 9
-
-<!--Device-ResultCode-ERROR_OAUTH_TIMEOUT = 10013--><!--Device-ResultCode-ERROR_OAUTH_TIMEOUT = 10013-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -246,8 +221,6 @@ ERROR_OAUTH_TOKEN_NOT_EXIST = 10014
 
 **废弃版本：** 9
 
-<!--Device-ResultCode-ERROR_OAUTH_TOKEN_NOT_EXIST = 10014--><!--Device-ResultCode-ERROR_OAUTH_TOKEN_NOT_EXIST = 10014-End-->
-
 **系统能力：** SystemCapability.Account.AppAccount
 
 ## ERROR_OAUTH_TOKEN_TOO_MANY
@@ -261,8 +234,6 @@ ERROR_OAUTH_TOKEN_TOO_MANY = 10015
 **起始版本：** 8
 
 **废弃版本：** 9
-
-<!--Device-ResultCode-ERROR_OAUTH_TOKEN_TOO_MANY = 10015--><!--Device-ResultCode-ERROR_OAUTH_TOKEN_TOO_MANY = 10015-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -278,8 +249,6 @@ ERROR_OAUTH_UNSUPPORT_ACTION = 10016
 
 **废弃版本：** 9
 
-<!--Device-ResultCode-ERROR_OAUTH_UNSUPPORT_ACTION = 10016--><!--Device-ResultCode-ERROR_OAUTH_UNSUPPORT_ACTION = 10016-End-->
-
 **系统能力：** SystemCapability.Account.AppAccount
 
 ## ERROR_OAUTH_UNSUPPORT_AUTH_TYPE
@@ -293,8 +262,6 @@ ERROR_OAUTH_UNSUPPORT_AUTH_TYPE = 10017
 **起始版本：** 8
 
 **废弃版本：** 9
-
-<!--Device-ResultCode-ERROR_OAUTH_UNSUPPORT_AUTH_TYPE = 10017--><!--Device-ResultCode-ERROR_OAUTH_UNSUPPORT_AUTH_TYPE = 10017-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -310,7 +277,4 @@ ERROR_PERMISSION_DENIED = 10018
 
 **废弃版本：** 9
 
-<!--Device-ResultCode-ERROR_PERMISSION_DENIED = 10018--><!--Device-ResultCode-ERROR_PERMISSION_DENIED = 10018-End-->
-
 **系统能力：** SystemCapability.Account.AppAccount
-

@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## p2pConnect
@@ -24,8 +21,6 @@ function p2pConnect(config: WifiP2PConfig): boolean
 **替代接口：** [p2pConnect](arkts-connectivity-wifimanager-p2pconnect-f.md)
 
 **需要权限：** ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
-
-<!--Device-wifi-function p2pConnect(config: WifiP2PConfig): boolean--><!--Device-wifi-function p2pConnect(config: WifiP2PConfig): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -50,7 +45,7 @@ let recvP2pConnectionChangeFunc = (result:wifi.WifiP2pLinkedInfo) => {
     console.info("p2p connection change receive event: " + JSON.stringify(result));
     wifi.getP2pLinkedInfo((err, data:wifi.WifiP2pLinkedInfo) => {
         if (err) {
-            console.error('failed to get getP2pLinkedInfo: ' + JSON.stringify(err));
+            console.error("failed to get getP2pLinkedInfo: " + JSON.stringify(err));
             return;
         }
         console.info("get getP2pLinkedInfo: " + JSON.stringify(data));
@@ -108,4 +103,3 @@ setTimeout(() => {wifi.off("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);}
 setTimeout(() => {wifi.off("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);}, 125 * 1000);
 console.info("start discover devices -> " + wifi.startDiscoverDevices());
 ```
-

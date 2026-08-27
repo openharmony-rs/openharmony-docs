@@ -17,7 +17,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ActionSheetButtonOptions(ActionSheet)](arkts-arkui-actionsheetbuttonoptions-i.md) | 弹窗中按钮的样式。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
+| [ActionSheetButtonOptions(ActionSheet)](arkts-arkui-actionsheetbuttonoptions-i.md) | 弹窗中按钮的样式。 |
 | [ActionSheetOffset(ActionSheet)](arkts-arkui-actionsheetoffset-i.md) | 弹窗相对alignment所在位置的偏移量。 |
 | [ActionSheetOptions(ActionSheet)](arkts-arkui-actionsheetoptions-i.md) | 列表选择弹窗的样式。 |
 | [DismissDialogAction(ActionSheet)](arkts-arkui-dismissdialogaction-i.md) | 弹窗关闭的信息。 |
@@ -37,4 +37,3 @@
 | --- | --- |
 | [ImmersiveMode(ActionSheet)](arkts-arkui-immersivemode-t.md) | 弹窗的蒙层效果。 |
 | [LevelMode(ActionSheet)](arkts-arkui-levelmode-t.md) | 弹窗的显示层级。 |
-

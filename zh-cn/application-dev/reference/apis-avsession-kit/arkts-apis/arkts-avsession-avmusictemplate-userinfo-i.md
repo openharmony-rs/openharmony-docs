@@ -1,10 +1,8 @@
 # UserInfo
 
-用户信息的定义。
+用户信息的定义。@interface MediaElement
 
 **起始版本：** 23
-
-<!--Device-avMusicTemplate-interface UserInfo--><!--Device-avMusicTemplate-interface UserInfo-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -28,8 +26,6 @@ isLogin: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserInfo-isLogin: boolean--><!--Device-UserInfo-isLogin: boolean-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## isVip
@@ -45,8 +41,6 @@ isVip: boolean
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserInfo-isVip: boolean--><!--Device-UserInfo-isVip: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -64,8 +58,6 @@ nickName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserInfo-nickName: string--><!--Device-UserInfo-nickName: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## profilePicUrl
@@ -81,8 +73,6 @@ profilePicUrl: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserInfo-profilePicUrl: string--><!--Device-UserInfo-profilePicUrl: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -100,8 +90,6 @@ tips: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserInfo-tips: string--><!--Device-UserInfo-tips: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## userInfoId
@@ -118,7 +106,4 @@ userInfoId: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserInfo-userInfoId: string--><!--Device-UserInfo-userInfoId: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-

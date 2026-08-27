@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-relationalStore-enum SyncResultCode--><!--Device-relationalStore-enum SyncResultCode-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## SUCCESS
@@ -19,8 +17,6 @@ SUCCESS = 0
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SyncResultCode-SUCCESS = 0--><!--Device-SyncResultCode-SUCCESS = 0-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -36,8 +32,6 @@ FAIL = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SyncResultCode-FAIL = 1--><!--Device-SyncResultCode-FAIL = 1-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## OFFLINE
@@ -51,8 +45,6 @@ OFFLINE = 2
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SyncResultCode-OFFLINE = 2--><!--Device-SyncResultCode-OFFLINE = 2-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -68,8 +60,6 @@ INVALID_ARGS = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SyncResultCode-INVALID_ARGS = 3--><!--Device-SyncResultCode-INVALID_ARGS = 3-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## DISTRIBUTED_TABLE_NOT_SET
@@ -83,8 +73,6 @@ DISTRIBUTED_TABLE_NOT_SET = 4
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SyncResultCode-DISTRIBUTED_TABLE_NOT_SET = 4--><!--Device-SyncResultCode-DISTRIBUTED_TABLE_NOT_SET = 4-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -100,8 +88,6 @@ TABLE_FIELD_MISMATCH = 5
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SyncResultCode-TABLE_FIELD_MISMATCH = 5--><!--Device-SyncResultCode-TABLE_FIELD_MISMATCH = 5-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## DISTRIBUTED_SCHEMA_MISMATCH
@@ -115,8 +101,6 @@ DISTRIBUTED_SCHEMA_MISMATCH = 6
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SyncResultCode-DISTRIBUTED_SCHEMA_MISMATCH = 6--><!--Device-SyncResultCode-DISTRIBUTED_SCHEMA_MISMATCH = 6-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -132,8 +116,6 @@ BUSY = 7
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SyncResultCode-BUSY = 7--><!--Device-SyncResultCode-BUSY = 7-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## CORRUPTED
@@ -147,8 +129,6 @@ CORRUPTED = 8
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SyncResultCode-CORRUPTED = 8--><!--Device-SyncResultCode-CORRUPTED = 8-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -164,8 +144,6 @@ TIMEOUT = 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SyncResultCode-TIMEOUT = 9--><!--Device-SyncResultCode-TIMEOUT = 9-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## SCHEMA_CHANGED
@@ -179,8 +157,6 @@ SCHEMA_CHANGED = 10
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SyncResultCode-SCHEMA_CHANGED = 10--><!--Device-SyncResultCode-SCHEMA_CHANGED = 10-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -196,7 +172,4 @@ CONSTRAINT_VIOLATION = 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SyncResultCode-CONSTRAINT_VIOLATION = 11--><!--Device-SyncResultCode-CONSTRAINT_VIOLATION = 11-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-

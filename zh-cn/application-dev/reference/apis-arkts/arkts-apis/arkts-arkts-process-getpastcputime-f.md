@@ -18,8 +18,6 @@ function getPastCpuTime(): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-process-function getPastCpuTime(): number--><!--Device-process-function getPastCpuTime(): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -33,4 +31,3 @@ function getPastCpuTime(): number
 ```TypeScript
 let result = process.getPastCpuTime();
 ```
-

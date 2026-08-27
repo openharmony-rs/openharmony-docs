@@ -1,10 +1,8 @@
-# NetFirewallRule(网络防火墙)
+# NetFirewallRule
 
 防火墙规则信息结构。
 
 **起始版本：** 15
-
-<!--Device-netFirewall-interface NetFirewallRule--><!--Device-netFirewall-interface NetFirewallRule-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -26,23 +24,19 @@ action: FirewallRuleAction
 
 **起始版本：** 15
 
-<!--Device-NetFirewallRule-action: FirewallRuleAction--><!--Device-NetFirewallRule-action: FirewallRuleAction-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## appUid
 
 ```TypeScript
-appUid?: int
+appUid?: number
 ```
 
 应用程序或服务UID。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 15
-
-<!--Device-NetFirewallRule-appUid?: int--><!--Device-NetFirewallRule-appUid?: int-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -58,8 +52,6 @@ description?: string
 
 **起始版本：** 15
 
-<!--Device-NetFirewallRule-description?: string--><!--Device-NetFirewallRule-description?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## direction
@@ -73,8 +65,6 @@ direction: NetFirewallRuleDirection
 **类型：** [NetFirewallRuleDirection](arkts-network-netfirewall-netfirewallruledirection-e.md)
 
 **起始版本：** 15
-
-<!--Device-NetFirewallRule-direction: NetFirewallRuleDirection--><!--Device-NetFirewallRule-direction: NetFirewallRuleDirection-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -90,8 +80,6 @@ DNS：当type=RULE_DNS时有效，否则将被忽略。当type=RULE_DNS时，该
 
 **起始版本：** 15
 
-<!--Device-NetFirewallRule-dns?: NetFirewallDnsParams--><!--Device-NetFirewallRule-dns?: NetFirewallDnsParams-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## domains
@@ -106,23 +94,19 @@ domains?: Array<NetFirewallDomainParams>
 
 **起始版本：** 15
 
-<!--Device-NetFirewallRule-domains?: Array<NetFirewallDomainParams>--><!--Device-NetFirewallRule-domains?: Array<NetFirewallDomainParams>-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## id
 
 ```TypeScript
-id?: int
+id?: number
 ```
 
 防火墙规则的ID。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 15
-
-<!--Device-NetFirewallRule-id?: int--><!--Device-NetFirewallRule-id?: int-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -140,8 +124,6 @@ interface?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-NetFirewallRule-interface?: string--><!--Device-NetFirewallRule-interface?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## isEnabled
@@ -155,8 +137,6 @@ isEnabled: boolean
 **类型：** boolean
 
 **起始版本：** 15
-
-<!--Device-NetFirewallRule-isEnabled: boolean--><!--Device-NetFirewallRule-isEnabled: boolean-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -172,8 +152,6 @@ localIps?: Array<NetFirewallIpParams>
 
 **起始版本：** 15
 
-<!--Device-NetFirewallRule-localIps?: Array<NetFirewallIpParams>--><!--Device-NetFirewallRule-localIps?: Array<NetFirewallIpParams>-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## localPorts
@@ -187,8 +165,6 @@ localPorts?: Array<NetFirewallPortParams>
 **类型：** Array&lt;[NetFirewallPortParams](arkts-network-netfirewall-netfirewallportparams-i.md)&gt;
 
 **起始版本：** 15
-
-<!--Device-NetFirewallRule-localPorts?: Array<NetFirewallPortParams>--><!--Device-NetFirewallRule-localPorts?: Array<NetFirewallPortParams>-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -204,23 +180,19 @@ name: string
 
 **起始版本：** 15
 
-<!--Device-NetFirewallRule-name: string--><!--Device-NetFirewallRule-name: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## protocol
 
 ```TypeScript
-protocol?: int
+protocol?: number
 ```
 
 协议，包含TCP：6，UDP：17。当type=RULE_IP时有效。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 15
-
-<!--Device-NetFirewallRule-protocol?: int--><!--Device-NetFirewallRule-protocol?: int-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -236,8 +208,6 @@ remoteIps?: Array<NetFirewallIpParams>
 
 **起始版本：** 15
 
-<!--Device-NetFirewallRule-remoteIps?: Array<NetFirewallIpParams>--><!--Device-NetFirewallRule-remoteIps?: Array<NetFirewallIpParams>-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## remotePorts
@@ -251,8 +221,6 @@ remotePorts?: Array<NetFirewallPortParams>
 **类型：** Array&lt;[NetFirewallPortParams](arkts-network-netfirewall-netfirewallportparams-i.md)&gt;
 
 **起始版本：** 15
-
-<!--Device-NetFirewallRule-remotePorts?: Array<NetFirewallPortParams>--><!--Device-NetFirewallRule-remotePorts?: Array<NetFirewallPortParams>-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -268,23 +236,18 @@ type: NetFirewallRuleType
 
 **起始版本：** 15
 
-<!--Device-NetFirewallRule-type: NetFirewallRuleType--><!--Device-NetFirewallRule-type: NetFirewallRuleType-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## userId
 
 ```TypeScript
-userId: int
+userId: number
 ```
 
 系统用户ID，只能是存在的用户ID。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 15
 
-<!--Device-NetFirewallRule-userId: int--><!--Device-NetFirewallRule-userId: int-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
-

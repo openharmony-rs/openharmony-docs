@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { hichecker } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## addCheckRule
@@ -14,9 +13,7 @@ function addCheckRule(rule: bigint) : void
 
 添加一条或多条规则到系统，系统根据添加的规则进行检测或反馈，当有相应规则触发时可在hilog中grep HiChecker查看运行信息。
 
-**起始版本：** 23
-
-<!--Device-hichecker-function addCheckRule(rule: bigint) : void--><!--Device-hichecker-function addCheckRule(rule: bigint) : void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
@@ -47,4 +44,3 @@ try {
     console.error(`code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
 }
 ```
-

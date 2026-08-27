@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-unnamed-declare enum FillMode--><!--Device-unnamed-declare enum FillMode-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -21,8 +19,6 @@ None
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-FillMode-None--><!--Device-FillMode-None-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ Forwards
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-FillMode-Forwards--><!--Device-FillMode-Forwards-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Backwards
@@ -57,8 +51,6 @@ Backwards
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-FillMode-Backwards--><!--Device-FillMode-Backwards-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,7 +68,4 @@ Both
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-FillMode-Both--><!--Device-FillMode-Both-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

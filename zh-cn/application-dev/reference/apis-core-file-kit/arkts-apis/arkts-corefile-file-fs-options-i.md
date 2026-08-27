@@ -4,16 +4,12 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-export interface Options--><!--Device-unnamed-export interface Options-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## 导入模块
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## encoding
@@ -28,7 +24,4 @@ encoding?: string
 
 **起始版本：** 11
 
-<!--Device-Options-encoding?: string--><!--Device-Options-encoding?: string-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
-

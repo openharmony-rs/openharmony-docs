@@ -1,10 +1,8 @@
 # SkillType
 
-枚举Skill类型。
+枚举Skill类型。@enum { number }
 
 **起始版本：** 26.0.0
-
-<!--Device-unnamed-export enum SkillType--><!--Device-unnamed-export enum SkillType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -22,8 +20,6 @@ APP_SKILL = 0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SkillType-APP_SKILL = 0--><!--Device-SkillType-APP_SKILL = 0-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## INDEPENDENT_SKILL
@@ -40,7 +36,4 @@ INDEPENDENT_SKILL = 1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SkillType-INDEPENDENT_SKILL = 1--><!--Device-SkillType-INDEPENDENT_SKILL = 1-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-

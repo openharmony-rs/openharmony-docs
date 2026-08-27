@@ -4,8 +4,6 @@ LocalSocket本地套接字文件路径信息，在传入套接字路径进行绑
 
 **起始版本：** 11
 
-<!--Device-socket-export interface LocalAddress--><!--Device-socket-export interface LocalAddress-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## 导入模块
@@ -26,7 +24,4 @@ address: string
 
 **起始版本：** 11
 
-<!--Device-LocalAddress-address: string--><!--Device-LocalAddress-address: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
-

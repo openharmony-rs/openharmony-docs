@@ -16,15 +16,13 @@ function createSystemSoundPlayer(): Promise<SystemSoundPlayer | null>
 
 **起始版本：** 23
 
-<!--Device-systemSoundManager-function createSystemSoundPlayer(): Promise<SystemSoundPlayer | null>--><!--Device-systemSoundManager-function createSystemSoundPlayer(): Promise<SystemSoundPlayer | null>-End-->
-
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;SystemSoundPlayer \| null&gt; | 成功返回系统音效播放器对象，失败返回null。 |
+| Promise & lt;SystemSoundPlayer \ | null & gt; | 成功返回系统音效播放器对象，失败返回null。 |
 
 **错误码：**
 
@@ -46,4 +44,3 @@ systemSoundManager.createSystemSoundPlayer().then((systemSoundPlayerInstance) =>
   console.error(`Failed to create the system sound player. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-

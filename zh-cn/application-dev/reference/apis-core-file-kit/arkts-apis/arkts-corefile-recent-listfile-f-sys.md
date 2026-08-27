@@ -22,8 +22,6 @@ function listFile(): Array<FileInfo>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-recent-function listFile(): Array<FileInfo>--><!--Device-recent-function listFile(): Array<FileInfo>-End-->
-
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
@@ -32,14 +30,14 @@ function listFile(): Array<FileInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;FileInfo&gt; | Returns the next level FileInfo Object. |
+| Array & lt;FileInfo & gt; | Returns the next level FileInfo Object. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
 | 13900002 | No such file or directory |
+| 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
 **示例**
@@ -56,4 +54,3 @@ for(let i = 0; i < fileinfos.length; i++){
   console.info('ctime: ' + fileinfos[i].ctime);
 }
 ```
-

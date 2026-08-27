@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-<!--Device-unnamed-declare enum CacheMode--><!--Device-unnamed-declare enum CacheMode-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## Default
@@ -19,8 +17,6 @@ Default = 0
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CacheMode-Default = 0--><!--Device-CacheMode-Default = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,8 +32,6 @@ None = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CacheMode-None = 1--><!--Device-CacheMode-None = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## Online
@@ -51,8 +45,6 @@ Online = 2
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CacheMode-Online = 2--><!--Device-CacheMode-Online = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -68,7 +60,4 @@ Only = 3
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CacheMode-Only = 3--><!--Device-CacheMode-Only = 3-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

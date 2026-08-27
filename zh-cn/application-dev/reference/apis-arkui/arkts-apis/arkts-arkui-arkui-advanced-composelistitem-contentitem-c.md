@@ -4,15 +4,12 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-export declare class ContentItem--><!--Device-unnamed-export declare class ContentItem-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
 
 ```TypeScript
 import { ComposeListItem, ContentItem, IconType, OperateButton, OperateCheck, OperateIcon, OperateItem } from '@kit.ArkUI';
-import { ComposeListItemV2, ContentItemV2, ContentItemV2Options, IconTypeV2, OperateButtonV2, OperateButtonV2Options, OperateCheckV2, OperateCheckV2Options, OperateIconV2, OperateIconV2Options, OperateItemV2, OperateItemV2Options } from '@kit.ArkUI';
 ```
 
 ## description
@@ -21,17 +18,16 @@ import { ComposeListItemV2, ContentItemV2, ContentItemV2Options, IconTypeV2, Ope
 description?: ResourceStr
 ```
 
-中间元素的描述内容。 默认不设置或设置为undefined，描述内容不显示。 **文字处理规则：** 文本超长后无限换行显示。
+中间元素的描述内容。默认不设置或设置为undefined，描述内容不显示。  
+**文字处理规则：** 文本超长后无限换行显示。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ContentItem-description?: ResourceStr--><!--Device-ContentItem-description?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,17 +37,15 @@ description?: ResourceStr
 icon?: ResourceStr
 ```
 
-左侧元素的图标资源。需同时设置iconStyle才显示图标；与symbolStyle同时设置时，优先显示Symbol图标。 默认不设置或设置为undefined，icon图标资源不显示。
+左侧元素的图标资源。需同时设置iconStyle才显示图标；与symbolStyle同时设置时，优先显示Symbol图标。默认不设置或设置为undefined，icon图标资源不显示。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ContentItem-icon?: ResourceStr--><!--Device-ContentItem-icon?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,7 +55,7 @@ icon?: ResourceStr
 iconStyle?: IconType
 ```
 
-左侧元素的图标样式。需同时设置icon或symbolStyle才显示图标。 默认不设置或设置为undefined，icon图标资源不显示。
+左侧元素的图标样式。需同时设置icon或symbolStyle才显示图标。默认不设置或设置为undefined，icon图标资源不显示。
 
 **类型：** [IconType](arkts-arkui-arkui-advanced-composelistitem-icontype-e.md)
 
@@ -71,8 +65,6 @@ iconStyle?: IconType
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ContentItem-iconStyle?: IconType--><!--Device-ContentItem-iconStyle?: IconType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryText
@@ -81,17 +73,16 @@ iconStyle?: IconType
 primaryText?: ResourceStr
 ```
 
-中间元素的标题内容。 默认不设置或设置为undefined，标题内容不显示。 **文字处理规则：** 文本超长后无限换行显示。
+中间元素的标题内容。默认不设置或设置为undefined，标题内容不显示。  
+**文字处理规则：** 文本超长后无限换行显示。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ContentItem-primaryText?: ResourceStr--><!--Device-ContentItem-primaryText?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,17 +92,16 @@ primaryText?: ResourceStr
 secondaryText?: ResourceStr
 ```
 
-中间元素的副标题内容。 默认不设置或设置为undefined，副标题内容不显示。 **文字处理规则：** 文本超长后无限换行显示。
+中间元素的副标题内容。默认不设置或设置为undefined，副标题内容不显示。  
+**文字处理规则：** 文本超长后无限换行显示。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ContentItem-secondaryText?: ResourceStr--><!--Device-ContentItem-secondaryText?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,7 +111,7 @@ secondaryText?: ResourceStr
 symbolStyle?: SymbolGlyphModifier
 ```
 
-左侧元素的Symbol图标样式。需同时设置iconStyle才显示图标；与icon同时设置时，优先显示Symbol图标。 默认不设置或设置为undefined，Symbol图标不显示。
+左侧元素的Symbol图标样式。需同时设置iconStyle才显示图标；与icon同时设置时，优先显示Symbol图标。默认不设置或设置为undefined，Symbol图标不显示。
 
 **类型：** SymbolGlyphModifier
 
@@ -131,7 +121,4 @@ symbolStyle?: SymbolGlyphModifier
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ContentItem-symbolStyle?: SymbolGlyphModifier--><!--Device-ContentItem-symbolStyle?: SymbolGlyphModifier-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -27,22 +27,12 @@
   - [move(系统接口)](arkts-mechanic-mechanicmanager-move-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [moveBySpeed(系统接口)](arkts-mechanic-mechanicmanager-movebyspeed-f-sys.md)<!--DelEnd-->
-  - [off_attachStateChange](arkts-mechanic-mechanicmanager-offattachstatechange-f.md)
+  - [off](arkts-mechanic-mechanicmanager-off-f.md)
   <!--Del-->
-  - [off_rotationAxesStatusChange(系统接口)](arkts-mechanic-mechanicmanager-offrotationaxesstatuschange-f-sys.md)<!--DelEnd-->
-  - [off_trackingStateChange](arkts-mechanic-mechanicmanager-offtrackingstatechange-f.md)
-  - [offAttachStateChange](arkts-mechanic-mechanicmanager-offattachstatechange-f.md)
+  - [off(系统接口)](arkts-mechanic-mechanicmanager-off-f-sys.md)<!--DelEnd-->
+  - [on](arkts-mechanic-mechanicmanager-on-f.md)
   <!--Del-->
-  - [offRotationAxesStatusChange(系统接口)](arkts-mechanic-mechanicmanager-offrotationaxesstatuschange-f-sys.md)<!--DelEnd-->
-  - [offTrackingStateChange](arkts-mechanic-mechanicmanager-offtrackingstatechange-f.md)
-  - [on_attachStateChange](arkts-mechanic-mechanicmanager-onattachstatechange-f.md)
-  <!--Del-->
-  - [on_rotationAxesStatusChange(系统接口)](arkts-mechanic-mechanicmanager-onrotationaxesstatuschange-f-sys.md)<!--DelEnd-->
-  - [on_trackingStateChange](arkts-mechanic-mechanicmanager-ontrackingstatechange-f.md)
-  - [onAttachStateChange](arkts-mechanic-mechanicmanager-onattachstatechange-f.md)
-  <!--Del-->
-  - [onRotationAxesStatusChange(系统接口)](arkts-mechanic-mechanicmanager-onrotationaxesstatuschange-f-sys.md)<!--DelEnd-->
-  - [onTrackingStateChange](arkts-mechanic-mechanicmanager-ontrackingstatechange-f.md)
+  - [on(系统接口)](arkts-mechanic-mechanicmanager-on-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [rotate(系统接口)](arkts-mechanic-mechanicmanager-rotate-f-sys.md)<!--DelEnd-->
   <!--Del-->

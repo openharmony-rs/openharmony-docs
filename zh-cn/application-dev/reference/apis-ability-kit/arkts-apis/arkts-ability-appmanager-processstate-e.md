@@ -2,9 +2,7 @@
 
 表示进程状态的枚举。
 
-**起始版本：** 23
-
-<!--Device-appManager-export enum ProcessState--><!--Device-appManager-export enum ProcessState-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -16,11 +14,9 @@ STATE_CREATE = 0
 
 The process is created.
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ProcessState-STATE_CREATE = 0--><!--Device-ProcessState-STATE_CREATE = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -32,11 +28,9 @@ STATE_FOREGROUND = 1
 
 The process is running in the foreground.
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ProcessState-STATE_FOREGROUND = 1--><!--Device-ProcessState-STATE_FOREGROUND = 1-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -48,11 +42,9 @@ STATE_ACTIVE = 2
 
 At least one window in the process has focus.
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ProcessState-STATE_ACTIVE = 2--><!--Device-ProcessState-STATE_ACTIVE = 2-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -64,11 +56,9 @@ STATE_BACKGROUND = 3
 
 The process is running in the background.
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ProcessState-STATE_BACKGROUND = 3--><!--Device-ProcessState-STATE_BACKGROUND = 3-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -80,11 +70,8 @@ STATE_DESTROY = 4
 
 The process is destroyed.
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ProcessState-STATE_DESTROY = 4--><!--Device-ProcessState-STATE_DESTROY = 4-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-

@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { inspector } from '@kit.ArkUI';
 ```
 
 ## getInspectorNodes
@@ -18,9 +17,7 @@ declare function getInspectorNodes(): object
 
 **废弃版本：** 9
 
-**替代接口：** getInspectorTree
-
-<!--Device-unnamed-declare function getInspectorNodes(): object--><!--Device-unnamed-declare function getInspectorNodes(): object-End-->
+**替代接口：** [getInspectorTree](arkts-arkui-global-getinspectortree-f.md)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,4 +28,3 @@ declare function getInspectorNodes(): object
 | 类型 | 说明 |
 | --- | --- |
 | object |  |
-

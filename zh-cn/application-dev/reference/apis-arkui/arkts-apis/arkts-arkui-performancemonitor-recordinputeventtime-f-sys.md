@@ -18,8 +18,6 @@ function recordInputEventTime(type: ActionType, sourceType: SourceType, time: nu
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-performanceMonitor-function recordInputEventTime(type: ActionType, sourceType: SourceType, time: number): void--><!--Device-performanceMonitor-function recordInputEventTime(type: ActionType, sourceType: SourceType, time: number): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -49,4 +47,3 @@ let time = systemDateTime.getTime(false);
 // 更新用户触发事件类型与时间
 performanceMonitor.recordInputEventTime(performanceMonitor.ActionType.LAST_UP, performanceMonitor.SourceType.PERF_MOUSE_EVENT, time);
 ```
-

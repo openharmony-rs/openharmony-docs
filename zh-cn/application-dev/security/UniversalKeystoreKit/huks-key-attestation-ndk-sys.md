@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-在使用本功能前，需申请权限：[ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key)。请开发者根据应用的APL等级，参考具体的操作路径[权限申请](../AccessToken/determine-application-mode.md)。
+在使用本功能前，需申请权限：ohos.permission.ATTEST_KEY。请开发者根据应用的APL等级，参考具体的操作路径权限申请。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -16,13 +16,13 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 ## 开发步骤
 
-1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
+1. 指定密钥别名，密钥别名命名规范参考密钥生成介绍及算法规格。
 
-2. 初始化参数集：通过[OH_Huks_InitParamSet/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)、[OH_Huks_AddParams/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_addparams)、[OH_Huks_BuildParamSet/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_buildparamset)构造参数集paramSet，通过[OH_HUKS_TAG_ALGORITHM/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyalg)、[OH_HUKS_TAG_KEY_SIZE/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keysize)、[OH_HUKS_TAG_PURPOSE/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keypurpose)分别指定算法、密钥大小、密钥用途属性。
+2. 初始化参数集：通过OH_Huks_InitParamSet、OH_Huks_AddParams、OH_Huks_BuildParamSet构造参数集paramSet，通过OH_HUKS_TAG_ALGORITHM、OH_HUKS_TAG_KEY_SIZE、OH_HUKS_TAG_PURPOSE分别指定算法、密钥大小、密钥用途属性。
 
-3. 生成非对称密钥，具体请参考[密钥生成](huks-key-generation-ndk.md)。
+3. 生成非对称密钥，具体请参考密钥生成。
 
-4. 将密钥别名与参数集作为参数传入[OH_Huks_AttestKeyItem/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_attestkeyitem)方法中，即可证明密钥。
+4. 将密钥别名与参数集作为参数传入OH_Huks_AttestKeyItem方法中，即可证明密钥。
 
 ## 开发步骤
 <!-- @[non_anonymized_key_proof_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/NonanonymousKeyProof/entry/src/main/cpp/napi_init.cpp) -->

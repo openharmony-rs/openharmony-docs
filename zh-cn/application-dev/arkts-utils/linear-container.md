@@ -2,9 +2,9 @@
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Designer: @wang_zhaoyong-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 线性容器实现能按顺序访问的数据结构，其底层主要通过数组实现，包括ArrayList、Vector、List、LinkedList、Deque、Queue和Stack。
@@ -26,7 +26,7 @@
 
 ## ArrayList
 
-[ArrayList/apis-arkts/js-apis-arraylist.md)即动态数组，可用来构造全局的数组对象。需要频繁读取集合元素时，推荐使用ArrayList。
+ArrayList即动态数组，可用来构造全局的数组对象。需要频繁读取集合元素时，推荐使用ArrayList。
 
 ArrayList依据泛型定义，存储位置为连续的内存空间，初始容量为10，支持动态扩容，每次扩容为原始容量的1.5倍。
 
@@ -38,16 +38,16 @@ ArrayList支持增、删、改、查操作，常用API如下：
 | 增加元素 | insert(element: T, index: number) | 在指定位置插入一个元素。 |
 | 访问元素 | arr[index: number] | 获取指定index对应的value值。 |
 | 访问元素 | forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; void, thisArg?: Object) | 访问整个ArrayList容器的元素，其中`callbackFn`是`forEach`方法中用于处理每个元素的回调函数，它接收当前元素、索引和原列表作为参数。 |
-| 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
+| 访问元素 | \:IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | arr[index] = xxx | 修改指定index位置对应的value值。 |
 | 删除元素 | remove(element: T) | 删除第一个匹配到的元素。 |
 | 删除元素 | removeByRange(fromIndex: number, toIndex:number) | 删除指定范围内的元素。 |
 
 ## List
 
-[List/apis-arkts/js-apis-list.md)可用来构造一个单向链表对象，若需要查找List中某一个元素，只能从头结点开始遍历。List依据泛型定义，存储的元素在内存中的存储位置可以不连续。
+List可用来构造一个单向链表对象，若需要查找List中某一个元素，只能从头结点开始遍历。List依据泛型定义，存储的元素在内存中的存储位置可以不连续。
 
-List和[LinkedList/apis-arkts/js-apis-linkedlist.md)相比，LinkedList是双向链表，支持在头部和尾部快速增删操作。List则是单向链表，不支持双向操作。
+List和LinkedList相比，LinkedList是双向链表，支持在头部和尾部快速增删操作。List则是单向链表，不支持双向操作。
 
 当需要频繁插入和删除元素，并且使用单向链表时，推荐使用List进行高效操作。
 
@@ -63,8 +63,8 @@ List和[LinkedList/apis-arkts/js-apis-linkedlist.md)相比，LinkedList是双向
 | 访问元素 | getLast() | 获取最后一个元素。 |
 | 访问元素 | getIndexOf(element: T) | 获取第一个匹配指定元素的位置。 |
 | 访问元素 | getLastIndexOf(element: T) | 获取最后一个匹配指定元素的位置。 |
-| 访问元素 | forEach(callbackfn: (value:T, index?: number, list?: List&lt;T&gt;)=&gt; void,thisArg?: Object) | 遍历访问整个List容器中的每个元素，并执行指定的回调函数。 |
-| 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
+| 访问元素 | forEach(callbackFn: (value:T, index?: number, list?: List&lt;T&gt;)=&gt; void,thisArg?: Object) | 遍历访问整个List容器中的每个元素，并执行指定的回调函数。 |
+| 访问元素 | \:IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | set(index:number, element: T) | 修改指定index位置的元素值为element。 |
 | 修改元素 | list[index] = element | 修改指定index位置的元素值为element时，不会对链表中的实际节点进行任何更改，仅会在对象上添加一个属性，可能导致程序状态与链表内部数据不符，引发难以预测的行为。 |
 | 修改元素 | replaceAllElements(callbackFn:(value: T,index?: number,list?: List&lt;T&gt;)=&gt;T,thisArg?: Object) | 对List内元素进行逐个替换。 |
@@ -73,11 +73,11 @@ List和[LinkedList/apis-arkts/js-apis-linkedlist.md)相比，LinkedList是双向
 
 ## LinkedList
 
-[LinkedList/apis-arkts/js-apis-linkedlist.md)可用于构造双向链表对象，支持在任意节点向前或向后遍历LinkedList。LinkedList依据泛型定义，其元素在内存中的存储位置可以不连续。
+LinkedList可用于构造双向链表对象，支持在任意节点向前或向后遍历LinkedList。LinkedList依据泛型定义，其元素在内存中的存储位置可以不连续。
 
-LinkedList和[List/apis-arkts/js-apis-list.md)相比，LinkedList是双向链表，支持快速的头尾增删操作。List是单向链表，不支持双向操作。
+LinkedList和List相比，LinkedList是双向链表，支持快速的头尾增删操作。List是单向链表，不支持双向操作。
 
-LinkedList和[ArrayList/apis-arkts/js-apis-arraylist.md)相比，LinkedList插入数据的效率高于ArrayList，ArrayList查询效率高于LinkedList。
+LinkedList和ArrayList相比，LinkedList插入数据的效率高于ArrayList，ArrayList查询效率高于LinkedList。
 
 需要频繁插入删除元素且使用双向链表时，推荐使用LinkedList。
 
@@ -94,7 +94,7 @@ LinkedList和[ArrayList/apis-arkts/js-apis-arraylist.md)相比，LinkedList插�
 | 访问元素 | getIndexOf(element: T) | 获取第一个匹配指定元素的位置。 |
 | 访问元素 | getLastIndexOf(element: T) | 获取最后一个匹配指定元素的位置。 |
 | 访问元素 | forEach(callbackFn: (value: T, index?: number, list?: LinkedList&lt;T&gt;) =&gt; void, thisArg?: Object) | 遍历访问整个LinkedList容器的每个元素，并执行指定的回调函数。 |
-| 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
+| 访问元素 | \:IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | set(index:number, element: T) | 修改指定index位置的元素值为element。 |
 | 修改元素 | list[index] = element | 修改指定index位置的元素值为element，若索引超出数组范围（index < 0 或 index >= list.length），或者数组是稀疏数组（存在未赋值的索引），则可能导致未定义行为。 |
 | 删除元素 | remove(element: T) | 删除第一个匹配到的元素。 |
@@ -102,13 +102,13 @@ LinkedList和[ArrayList/apis-arkts/js-apis-arraylist.md)相比，LinkedList插�
 
 ## Deque
 
-[Deque/apis-arkts/js-apis-deque.md)可用来构造双端队列对象，存储元素遵循先进先出以及先进后出的规则，双端队列可以分别从队头或者队尾进行访问。
+Deque可用来构造双端队列对象，存储元素遵循先进先出以及先进后出的规则，双端队列可以分别从队头或者队尾进行访问。
 
 Deque依据泛型定义，要求存储位置为连续的内存空间，初始容量为8，支持动态扩容，每次扩容为原容量的2倍。Deque底层采用循环队列实现，入队和出队操作效率高。
 
-Deque和[Queue/apis-arkts/js-apis-queue.md)相比，Deque支持在两端进行元素的增删操作，而Queue仅支持在头部删除元素，尾部增加元素。
+Deque和Queue相比，Deque支持在两端进行元素的增删操作，而Queue仅支持在头部删除元素，尾部增加元素。
 
-Deque和[Vector/apis-arkts/js-apis-vector.md)相比，都支持在两端增删元素，但Deque不支持中间插入。Deque在头部插入和删除元素的效率高于Vector，而Vector访问元素的效率高于Deque。
+Deque和Vector相比，都支持在两端增删元素，但Deque不支持中间插入。Deque在头部插入和删除元素的效率高于Vector，而Vector访问元素的效率高于Deque。
 
 需要频繁在两端增删元素时，推荐使用Deque。
 
@@ -121,19 +121,19 @@ Deque支持增、删、改、查操作。常用API如下：
 | 访问元素 | getFirst() | 获取第一个元素，不进行出队操作。 |
 | 访问元素 | getLast() | 获取最后一个元素，不进行出队操作。 |
 | 访问元素 | forEach(callbackFn:(value: T, index?: number, deque?: Deque&lt;T&gt;) =&gt; void, thisArg?: Object) | 遍历访问整个Deque容器的每个元素，并执行指定的回调函数。 |
-| 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
+| 访问元素 | \:IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 删除元素 | popFirst() | 将队首元素作为返回值进行返回，并将其出队，如果队列为空，则返回undefined。 |
 | 删除元素 | popLast() | 将队尾元素作为返回值进行返回，并将其出队，如果队列为空，则返回undefined。 |
 
 ## Queue
 
-[Queue/apis-arkts/js-apis-queue.md)可用来构造队列对象，存储元素遵循先进先出的规则。
+Queue可用来构造队列对象，存储元素遵循先进先出的规则。
 
 Queue基于泛型定义，存储位置为连续的内存空间，初始容量为8，支持动态扩容，每次扩容容量翻倍。
 
 Queue底层采用循环队列实现，入队和出队操作效率高。
 
-Queue和[Deque/apis-arkts/js-apis-deque.md)相比，Queue仅支持在头部删除元素，尾部增加元素，而Deque支持在两端进行元素的增删操作。
+Queue和Deque相比，Queue仅支持在头部删除元素，尾部增加元素，而Deque支持在两端进行元素的增删操作。
 
 符合先进先出的场景可以使用Queue。
 
@@ -144,16 +144,16 @@ Queue支持增、删、改、查操作，常用API如下：
 | 增加元素 | add(element: T) | 在尾部增加一个元素。 |
 | 访问元素 | getFirst() | 获取队首元素，不进行出队操作。 |
 | 访问元素 | forEach(callbackFn: (value: T, index?: number, queue?: Queue&lt;T&gt;) =&gt; void,thisArg?: Object) | 遍历访问整个Queue容器的每个元素，并执行指定的回调函数。 |
-| 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
+| 访问元素 | \:IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 删除元素 | pop() | 将队首元素作为返回值进行返回，并将其移除。|
 
 ## Stack
 
-[Stack/apis-arkts/js-apis-stack.md)可用来构造栈对象，存储元素遵循先进后出的规则。
+Stack可用来构造栈对象，存储元素遵循先进后出的规则。
 
 Stack基于泛型定义，要求使用连续的内存空间存储元素，初始容量为8，并支持动态扩容，每次扩容为原容量的1.5倍。Stack底层使用数组实现，入栈和出栈操作均在数组的一端进行。
 
-Stack和[Queue/apis-arkts/js-apis-queue.md)相比，Queue基于循环队列实现，仅支持在头部删除元素，尾部增加元素，而Stack都在一端进行操作。
+Stack和Queue相比，Queue基于循环队列实现，仅支持在头部删除元素，尾部增加元素，而Stack都在一端进行操作。
 
 符合先进后出的场景可以使用Stack。
 
@@ -162,21 +162,21 @@ Stack支持增、删、改、查操作，常用API如下：
 | 操作 | 方法 | 描述 |
 | --------- | ------- | ------- |
 | 增加元素 | push(item: T) | 在栈顶增加一个元素。 |
-| 访问元素 | peek() | 获取栈顶元素，不进行出队操作。 |
+| 访问元素 | peek() | 获取栈顶元素，不进行出栈操作。 |
 | 访问元素 | locate(element: T) | 获取元素对应的位置。 |
 | 访问元素 | forEach(callbackFn: (value: T, index?: number, stack?: Stack&lt;T&gt;) =&gt; void, thisArg?: Object) | 遍历访问整个Stack容器的每个元素，并执行指定的回调函数。 |
-| 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
+| 访问元素 | \:IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 删除元素 | pop() | 将栈顶元素作为返回值进行返回，并将其移除。|
 
 ## Vector
 
 > **说明**：
 >
-> API version 9开始，该接口不再维护，推荐使用[ArrayList/apis-arkts/js-apis-arraylist.md)。
+> API version 9开始，该接口不再维护，推荐使用ArrayList。
 
-[Vector/apis-arkts/js-apis-vector.md)是一种连续存储结构，用于创建全局数组对象。它基于泛型定义，要求存储在连续的内存空间中。Vector的初始容量为10，支持动态扩容，每次扩容时容量增加为原来的两倍。
+Vector是一种连续存储结构，用于创建全局数组对象。它基于泛型定义，要求存储在连续的内存空间中。Vector的初始容量为10，支持动态扩容，每次扩容时容量增加为原来的两倍。
 
-Vector和[ArrayList/apis-arkts/js-apis-arraylist.md)相似，都基于数组实现，但Vector提供了更多操作数组的接口，支持操作符访问，增加get/set接口，提供更完善的校验和容错机制，满足不同的场景需求。
+Vector和ArrayList相似，都基于数组实现，但Vector提供了更多操作数组的接口，支持操作符访问，增加get/set接口，提供更完善的校验和容错机制，满足不同的场景需求。
 
 Vector支持增、删、改、查操作，常用API如下：
 
@@ -191,14 +191,14 @@ Vector支持增、删、改、查操作，常用API如下：
 | 访问元素 | getIndexOf(element: T) | 获取第一个匹配指定元素的位置。 |
 | 访问元素 | getLastIndexOf(element: T) | 获取最后一个匹配指定元素的位置。 |
 | 访问元素 | forEach(callbackFn: (value: T, index?: number, Vector?: Vector&lt;T&gt;) =&gt; void, thisArg?: Object) | 遍历访问整个Vector容器的每个元素，并执行指定的回调函数。 |
-| 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
+| 访问元素 | \:IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | set(index:number, element: T) | 修改指定index位置的元素值为element。 |
 | 修改元素 | vec[index] = element | 修改指定index位置的元素值为element。 |
 | 修改元素 | replaceAllElements(callbackFn: (value: T, index?: number, vector?: Vector&lt;T&gt;) => T, thisArg?: Object) | 逐个替换Vector内的元素。|
 | 修改元素 | setLength(newSize:number) | 设置Vector的长度大小。 |
 | 删除元素 | remove(element: T) | 删除第一个匹配到的元素。 |
 | 删除元素 | removeByIndex(index:number) | 删除index位置对应的元素。 |
-| 删除元素 | removeByRange(fromIndex:number,toIndex:number) | 删除指定范围内的元素。 |
+| 删除元素 | removeByRange(fromIndex:number, toIndex:number) | 删除指定范围内的元素。 |
 
 ## 线性容器的使用
 

@@ -6,7 +6,7 @@ typedef struct HiDebug_ThreadCpuUsage {...} HiDebug_ThreadCpuUsage
 
 ## 概述
 
-Defines the struct for the CPU usage of all threads of an application.
+当前进程所有线程的CPU使用率结构体定义。<br>使用场景：<br>应用性能监控：获取线程CPU使用率，监控应用的运行状态和性能瓶颈。<br>线程性能优化：分析各线程的CPU占用情况，优化线程调度和资源分配。<br>系统调试：在调试阶段追踪线程的CPU使用情况，定位性能问题。
 
 **起始版本：** 12
 
@@ -20,8 +20,8 @@ Defines the struct for the CPU usage of all threads of an application.
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t threadId | Thread ID. |
-| double cpuUsage | Thread CPU usage, in percentage. |
-| struct [HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md) *next | Pointer to the CPU usage of the next thread. |
+| uint32_t threadId | 线程ID。 |
+| double cpuUsage | 线程CPU使用率百分比。 |
+| struct [HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md) *next | 下一个线程的使用率信息。 |
 
 

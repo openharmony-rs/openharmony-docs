@@ -11,7 +11,7 @@
 
 标准化数据类型（Uniform Type Descriptor，简称UTD）旨在解决数据类型描述的歧义问题。例如，JPEG图片可能被描述为image/jpeg、.jpg、.jpeg或image/picture等不同形式，导致跨系统传输时，接收方需依赖复杂的兼容逻辑（如扩展名匹配、MIME类型检测）才能识别数据类型，甚至可能因描述不一致而失败。UTD通过统一类型标识，确保数据能被准确、高效地解析和处理。
 
-标准化数据类型分为[预置数据类型](#预置数据类型)和[应用自定义数据类型](#应用自定义数据类型)。并且支持从其他类型体系，如文件扩展名和MIME type转换为UTD标准类型。
+标准化数据类型分为预置数据类型和应用自定义数据类型。并且支持从其他类型体系，如文件扩展名和MIME type转换为UTD标准类型。
 
 针对标准化数据类型，典型的应用场景有：文件管理中的图片预览、系统分享等。
 
@@ -27,7 +27,7 @@
 
 ### 标准化数据类型的分类原则
 
-UTD中定义的标准化数据类型在设计原则上按物理和逻辑分为两类。OpenHarmony中预置了常用的标准化数据类型，详见[UTD预置列表](./uniform-data-type-list.md)。
+UTD中定义的标准化数据类型在设计原则上按物理和逻辑分为两类。OpenHarmony中预置了常用的标准化数据类型，详见UTD预置列表。
 
 - **按物理分类**的根节点为general.entity，用于描述类型的物理属性，比如文件、目录等，具体可见图1。
 
@@ -35,7 +35,7 @@ UTD中定义的标准化数据类型在设计原则上按物理和逻辑分为�
 
 按照此分类原则，可以从两个维度对数据类型进行描述。如描述图片时，可以是一个图片对象，同时也可以是一个文件。
 
-并非所有的格式都具有两个维度，如general.calendar，更多的注重calendar对象的功能性描述。
+并非所有的格式都具有两个维度，如general.calendar，更注重calendar对象的功能性描述。
 
 **图1** 物理标准化数据类型示意图
 
@@ -47,7 +47,7 @@ UTD中定义的标准化数据类型在设计原则上按物理和逻辑分为�
 
 ## 标准化数据类型的定义
 
-标准化数据类型包含了标准化数据类型的标识ID、归属类型关系、简要描述等信息，具体可见[TypeDescriptor属性/apis-arkdata/js-apis-data-uniformTypeDescriptor.md#属性)，每个类型定义具体包含以下内容：
+标准化数据类型包含了标准化数据类型的标识ID、归属类型关系、简要描述等信息，具体可见TypeDescriptor属性，每个类型定义具体包含以下内容：
 
 + **typeId：** 定义标准化数据类型的ID，该ID具有唯一性。
 + **belongingToTypes：** 定义标准化数据类型的归属关系，即该标准化数据类型归属于哪个更高层级的类型，允许存在一个标准化数据类型归属于多个类型的情况。
@@ -59,7 +59,7 @@ UTD中定义的标准化数据类型在设计原则上按物理和逻辑分为�
 
 ## 预置数据类型
 
-基于常用的数据类型，预先定义了一部分标准数据类型描述符，即预置数据类型。如用于描述音频文件的“general.audio”，描述视频文件的“general.video”，更多预置数据类型参考[UTD预置列表](./uniform-data-type-list.md)。
+基于常用的数据类型，预先定义了一部分标准数据类型描述符，即预置数据类型。如用于描述音频文件的“general.audio”，描述视频文件的“general.video”，更多预置数据类型参考UTD预置列表。
 
 
 ## 应用自定义数据类型
@@ -88,7 +88,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
 
 + **FilenameExtensions：** 应用自定义标准化数据类型所关联的文件后缀。可以缺省；可以为多个，每个后缀为以.开头且长度不超过127的字符串。
 
-+ **MIMETypes：** 应用自定义标准化数据类型所关联的web消息数据类型。可以缺省；可以为多个，每个类型为长度不超过127的字符串。
++ **MIMETypes：** 应用自定义标准化数据类型所关联的多用途互联网邮件扩展类型。可以缺省；可以为多个，每个类型为长度不超过127的字符串。
 
 + **Description：** 应用自定义标准化数据类型的简要说明。可以缺省；填写时，长度为不超过255的字符串。
 
@@ -171,7 +171,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
 
 ## 接口说明
 
-以下是UTD常用接口说明，对于预置数据类型和应用自定义数据类型同样适用，更多接口和详细说明，请见[ @ohos.data.uniformTypeDescriptor (标准化数据定义与描述)/apis-arkdata/js-apis-data-uniformTypeDescriptor.md)。
+以下是UTD常用接口说明，对于预置数据类型和应用自定义数据类型同样适用，更多接口和详细说明，请见 @ohos.data.uniformTypeDescriptor (标准化数据定义与描述)。
 
 | 接口名称                                                     | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -202,7 +202,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
 5. 根据上述步骤中查询到的标准数据类型“general.mp3”与表示音频数据的已知标准数据类型“general.audio”做比较查询，确认是否存在归属关系。
 
     <!-- @[uniform_type_descriptor_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     function uniformTypeDescriptorTest() {
       try {
@@ -218,7 +218,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
         hilog.info(0xFF00, '[Sample_Udmf]', `description: ${typeObj1.description}`);
         hilog.info(0xFF00, '[Sample_Udmf]', `filenameExtensions: ${typeObj1.filenameExtensions}`);
         hilog.info(0xFF00, '[Sample_Udmf]', `mimeTypes: ${typeObj1.mimeTypes}`);
-
+    
         // 3.可根据 “audio/mp3” MIMEType查询对应UTD数据类型，并查询对应UTD数据类型的具体属性。
         let mimeType = 'audio/mp3';
         let typeIds2 = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mimeType);
@@ -231,21 +231,21 @@ utd.json5文件需要在类型为entry的HAP中配置。
         hilog.info(0xFF00, '[Sample_Udmf]', `description: ${typeObj2.description}`);
         hilog.info(0xFF00, '[Sample_Udmf]', `filenameExtensions: ${typeObj2.filenameExtensions}`);
         hilog.info(0xFF00, '[Sample_Udmf]', `mimeTypes: ${typeObj2.mimeTypes}`);
-
+    
         // 4.将数据类型进行比较，确认是否同一种数据类型
         if (typeObj1 != null && typeObj2 != null) {
           let ret = typeObj1.equals(typeObj2);
           hilog.info(0xFF00, '[Sample_Udmf]', `typeObj1 equals typeObj2, ret: ${ret}`);
         }
-
+    
         // 5.将查询到的标准数据类型“general.mp3”与表示音频数据的已知标准数据类型“general.audio”做比较查询，确认是否存在归属关系。
         if (typeObj1 != null) {
           let ret = typeObj1.belongsTo('general.audio');
-          hilog.info(0xFF00, '[Sample_Udmf]', `belongsTo, ret: + ${ret}`);
+          hilog.info(0xFF00, '[Sample_Udmf]', `belongsTo, ret: ${ret}`);
           let mediaTypeObj = uniformTypeDescriptor.getTypeDescriptor('general.media');
           // 确认是否存在归属关系
           ret = mediaTypeObj.isHigherLevelType('general.audio');
-          hilog.info(0xFF00, '[Sample_Udmf]', `isHigherLevelType, ret: + ${ret}`);
+          hilog.info(0xFF00, '[Sample_Udmf]', `isHigherLevelType, ret: ${ret}`);
         }
       } catch (err) {
         hilog.error(0xFF00, '[Sample_Udmf]', `err message: ${err.message}, err code: ${err.code}`);
@@ -271,7 +271,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
 3. 针对UTD数据类型，使用getTypeDescriptor()方法查询对应的MIMEType列表。
 
     <!-- @[get_filename_extensions_by_mimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     try {
       // 2.可根据 “.ts” 文件后缀查询对应UTD数据类型。
@@ -303,10 +303,10 @@ utd.json5文件需要在类型为entry的HAP中配置。
     ```
 
 2. 针对“text/plain”MIMEType，使用getUniformDataTypesByMIMEType()方法获取对应UTD数据类型。
-3. 针对UTD数据类型，使用getTypeDescriptor()方法查询对应的MIMEType列表。
+3. 根据UTD数据类型，使用getTypeDescriptor()方法查询对应的文件后缀列表。
 
     <!-- @[get_filename_extension_by_mimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     try {
       // 2.可根据 “text/plain” MIMEType查询对应UTD数据类型。

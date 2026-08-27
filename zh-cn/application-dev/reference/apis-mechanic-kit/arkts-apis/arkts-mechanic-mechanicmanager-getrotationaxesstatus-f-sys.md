@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## getRotationAxesStatus
 
 ```TypeScript
-function getRotationAxesStatus(mechId: int): RotationAxesStatus
+function getRotationAxesStatus(mechId: number): RotationAxesStatus
 ```
 
 获取当前转轴状态
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-function getRotationAxesStatus(mechId: int): RotationAxesStatus--><!--Device-mechanicManager-function getRotationAxesStatus(mechId: int): RotationAxesStatus-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -26,7 +23,7 @@ function getRotationAxesStatus(mechId: int): RotationAxesStatus
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | int | 是 | 机械设备ID |
+| mechId | number | 是 | 机械设备ID |
 
 **返回值：**
 
@@ -49,4 +46,3 @@ console.info('Query the rotation axis status');
 let axisStatus: mechanicManager.RotationAxesStatus = mechanicManager.getRotationAxesStatus(0);
 console.info(`'Query the rotation axis status successfully, axis state:' ${axisStatus}`);
 ```
-

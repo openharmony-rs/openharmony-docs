@@ -2,9 +2,7 @@
 
 版本检查结果。
 
-**起始版本：** 23
-
-<!--Device-update-export interface CheckResult--><!--Device-update-export interface CheckResult-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -26,9 +24,7 @@ isExistNewVersion: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-CheckResult-isExistNewVersion: boolean--><!--Device-CheckResult-isExistNewVersion: boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -44,11 +40,8 @@ newVersionInfo: NewVersionInfo
 
 **类型：** [NewVersionInfo](arkts-basicservices-update-newversioninfo-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CheckResult-newVersionInfo: NewVersionInfo--><!--Device-CheckResult-newVersionInfo: NewVersionInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Update.UpdateService
 
 **系统接口：** 此接口为系统接口。
-

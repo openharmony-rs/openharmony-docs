@@ -4,8 +4,6 @@
 
 **起始版本：** 26.1.0
 
-<!--Device-dialog-declare interface DialogButton--><!--Device-dialog-declare interface DialogButton-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -22,15 +20,11 @@ action: VoidCallback
 
 点击按钮时执行的回调。
 
-**类型：** VoidCallback
-
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DialogButton-action: VoidCallback--><!--Device-DialogButton-action: VoidCallback-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,15 +36,13 @@ backgroundColor?: ResourceColor
 
 按钮背景色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DialogButton-backgroundColor?: ResourceColor--><!--Device-DialogButton-backgroundColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,8 +64,6 @@ enabled?: boolean
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogButton-enabled?: boolean--><!--Device-DialogButton-enabled?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -84,15 +74,13 @@ fontColor?: ResourceColor
 
 按钮文字颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DialogButton-fontColor?: ResourceColor--><!--Device-DialogButton-fontColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,8 +100,6 @@ primary?: boolean
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogButton-primary?: boolean--><!--Device-DialogButton-primary?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## style
@@ -124,7 +110,7 @@ style?: DialogButtonStyle
 
 按钮的样式。
 
-**类型：** DialogButtonStyle
+**类型：** [DialogButtonStyle](arkts-arkui-dialogbuttonstyle-e.md)
 
 **默认值：** DialogButtonStyle.DEFAULT
 
@@ -133,8 +119,6 @@ style?: DialogButtonStyle
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DialogButton-style?: DialogButtonStyle--><!--Device-DialogButton-style?: DialogButtonStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,7 +130,7 @@ value: ResourceStr
 
 按钮的文本内容。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 26.1.0
 
@@ -154,7 +138,4 @@ value: ResourceStr
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogButton-value: ResourceStr--><!--Device-DialogButton-value: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

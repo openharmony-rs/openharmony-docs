@@ -1,10 +1,12 @@
 # NotificationButton
 
-描述通知按钮，用于在实况窗中展示可交互的按钮。 > **说明：** > > 实际显示效果依赖于设备能力和通知中心UI样式。
+描述通知按钮，用于在实况窗中展示可交互的按钮。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 实际显示效果依赖于设备能力和通知中心UI样式。
 
-<!--Device-unnamed-export interface NotificationButton--><!--Device-unnamed-export interface NotificationButton-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -18,9 +20,7 @@ icons?: Array<image.PixelMap>
 
 **类型：** Array&lt;image.PixelMap&gt;
 
-**起始版本：** 23
-
-<!--Device-NotificationButton-icons?: Array<image.PixelMap>--><!--Device-NotificationButton-icons?: Array<image.PixelMap>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -34,9 +34,7 @@ iconsResource?: Array<Resource>
 
 **类型：** Array&lt;[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-NotificationButton-iconsResource?: Array<Resource>--><!--Device-NotificationButton-iconsResource?: Array<Resource>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -50,9 +48,6 @@ names?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
-
-<!--Device-NotificationButton-names?: Array<string>--><!--Device-NotificationButton-names?: Array<string>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Notification.Notification
-

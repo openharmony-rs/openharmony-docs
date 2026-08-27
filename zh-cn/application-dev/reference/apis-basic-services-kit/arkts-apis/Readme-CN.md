@@ -1,9 +1,5 @@
 # ArkTS API<!--arkts-basicserviceskit-->
 
-<!--Del-->
-- [@ohos.WallpaperExtensionAbility](arkts-wallpaperextensionability.md)<!--DelEnd-->
-  <!--Del-->
-  - [WallpaperExtensionAbility(系统接口)](arkts-basicservices-wallpaperextensionability-c-sys.md)<!--DelEnd-->
 - [@ohos.account.appAccount](arkts-account-appaccount.md)
   - [createAppAccountManager](arkts-basicservices-appaccount-createappaccountmanager-f.md)
   - [Authenticator](arkts-basicservices-appaccount-authenticator-c.md)
@@ -128,24 +124,6 @@
   <!--Del-->
   - [SetPropertyRequest(系统接口)](arkts-basicservices-osaccount-setpropertyrequest-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [DomainPluginAuthFunc(系统接口)](arkts-basicservices-osaccount-domainpluginauthfunc-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [DomainPluginAuthWithPopupFunc(系统接口)](arkts-basicservices-osaccount-domainpluginauthwithpopupfunc-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [DomainPluginAuthWithTokenFunc(系统接口)](arkts-basicservices-osaccount-domainpluginauthwithtokenfunc-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [DomainPluginBindAccountFunc(系统接口)](arkts-basicservices-osaccount-domainpluginbindaccountfunc-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [DomainPluginGetAccessTokenFunc(系统接口)](arkts-basicservices-osaccount-domainplugingetaccesstokenfunc-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [DomainPluginGetAccountInfoFunc(系统接口)](arkts-basicservices-osaccount-domainplugingetaccountinfofunc-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [DomainPluginGetAuthStatusInfoFunc(系统接口)](arkts-basicservices-osaccount-domainplugingetauthstatusinfofunc-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [DomainPluginIsAccountTokenValidFunc(系统接口)](arkts-basicservices-osaccount-domainpluginisaccounttokenvalidfunc-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [DomainPluginUnbindAccountFunc(系统接口)](arkts-basicservices-osaccount-domainpluginunbindaccountfunc-t-sys.md)<!--DelEnd-->
-  <!--Del-->
   - [AuthIntent(系统接口)](arkts-basicservices-osaccount-authintent-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [AuthorizationResultCode(系统接口)](arkts-basicservices-osaccount-authorizationresultcode-e-sys.md)<!--DelEnd-->
@@ -176,7 +154,9 @@
   - [ResultCode(系统接口)](arkts-basicservices-osaccount-resultcode-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [SetPropertyType(系统接口)](arkts-basicservices-osaccount-setpropertytype-e-sys.md)<!--DelEnd-->
-- @ohos.annotation
+- [@ohos.annotation](arkts-annotation.md)
+  - [Available](arkts-basicservices-annotation-available-a.md)
+  - [SuppressWarnings](arkts-basicservices-annotation-suppresswarnings-a.md)
   - [SuppressWarningsType](arkts-basicservices-annotation-suppresswarningstype-e.md)
 - [@ohos.app.ability.PrintExtensionAbility](arkts-app-ability-printextensionability.md)
   - [PrintExtensionAbility](arkts-basicservices-app-ability-printextensionability-printextensionability-c.md)
@@ -195,12 +175,6 @@
   - [BusinessError](arkts-basicservices-base-businesserror-i.md)
   - [Callback](arkts-basicservices-base-callback-i.md)
   - [ErrorCallback](arkts-basicservices-base-errorcallback-i.md)
-- [@ohos.base](arkts-base.md)
-  - [BusinessError](arkts-basicservices-base-businesserror-c.md)
-  - [AsyncCallback](arkts-basicservices-asynccallback-t.md)
-  - [Callback](arkts-basicservices-callback-t.md)
-  - [ErrorCallback](arkts-basicservices-errorcallback-t.md)
-  - [RecordData](arkts-basicservices-recorddata-t.md)
 - [@ohos.batteryInfo](arkts-batteryinfo.md)
   <!--Del-->
   - [getBatteryConfig(系统接口)](arkts-basicservices-batteryinfo-getbatteryconfig-f-sys.md)<!--DelEnd-->
@@ -216,34 +190,6 @@
   - [常量](arkts-basicservices-batteryinfo-con.md)
   <!--Del-->
   - [常量(系统接口)](arkts-basicservices-batteryinfo-con-sys.md)<!--DelEnd-->
-- [@ohos.batteryInfo](arkts-batteryinfo.md)
-  - [batteryCapacityLevel](arkts-basicservices-batteryinfo-batterycapacitylevel-f.md)
-  - [batterySOC](arkts-basicservices-batteryinfo-batterysoc-f.md)
-  - [batteryTemperature](arkts-basicservices-batteryinfo-batterytemperature-f.md)
-  - [chargingStatus](arkts-basicservices-batteryinfo-chargingstatus-f.md)
-  <!--Del-->
-  - [estimatedRemainingChargeTime(系统接口)](arkts-basicservices-batteryinfo-estimatedremainingchargetime-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [getBatteryConfig(系统接口)](arkts-basicservices-batteryinfo-getbatteryconfig-f-sys.md)<!--DelEnd-->
-  - [healthStatus](arkts-basicservices-batteryinfo-healthstatus-f.md)
-  <!--Del-->
-  - [isBatteryConfigSupported(系统接口)](arkts-basicservices-batteryinfo-isbatteryconfigsupported-f-sys.md)<!--DelEnd-->
-  - [isBatteryPresent](arkts-basicservices-batteryinfo-isbatterypresent-f.md)
-  - [nowCurrent](arkts-basicservices-batteryinfo-nowcurrent-f.md)
-  - [pluggedType](arkts-basicservices-batteryinfo-pluggedtype-f.md)
-  <!--Del-->
-  - [remainingEnergy(系统接口)](arkts-basicservices-batteryinfo-remainingenergy-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [setBatteryConfig(系统接口)](arkts-basicservices-batteryinfo-setbatteryconfig-f-sys.md)<!--DelEnd-->
-  - [technology](arkts-basicservices-batteryinfo-technology-f.md)
-  <!--Del-->
-  - [totalEnergy(系统接口)](arkts-basicservices-batteryinfo-totalenergy-f-sys.md)<!--DelEnd-->
-  - [voltage](arkts-basicservices-batteryinfo-voltage-f.md)
-  - [BatteryCapacityLevel](arkts-basicservices-batteryinfo-batterycapacitylevel-e.md)
-  - [BatteryChargeState](arkts-basicservices-batteryinfo-batterychargestate-e.md)
-  - [BatteryHealthState](arkts-basicservices-batteryinfo-batteryhealthstate-e.md)
-  - [BatteryPluggedType](arkts-basicservices-batteryinfo-batterypluggedtype-e.md)
-  - [CommonEventBatteryChangedKey](arkts-basicservices-batteryinfo-commoneventbatterychangedkey-e.md)
 <!--Del-->
 - [@ohos.batteryStatistics](arkts-batterystatistics.md)<!--DelEnd-->
   <!--Del-->
@@ -330,21 +276,11 @@
   - [PerformanceClassLevel](arkts-basicservices-deviceinfo-performanceclasslevel-e.md)
   - [常量](arkts-basicservices-deviceinfo-con.md)
 - [@ohos.events.emitter](arkts-events-emitter.md)
-  - [emit_InnerEvent](arkts-basicservices-emitter-emitinnerevent-f.md)
-  - [emit_string](arkts-basicservices-emitter-emitstring-f.md)
+  - [emit](arkts-basicservices-emitter-emit-f.md)
   - [getListenerCount](arkts-basicservices-emitter-getlistenercount-f.md)
-  - [off_long](arkts-basicservices-emitter-offlong-f.md)
-  - [off_string](arkts-basicservices-emitter-offstring-f.md)
-  - [offEventData](arkts-basicservices-emitter-offeventdata-f.md)
-  - [offGenericEventData](arkts-basicservices-emitter-offgenericeventdata-f.md)
-  - [on_InnerEvent](arkts-basicservices-emitter-oninnerevent-f.md)
-  - [on_string](arkts-basicservices-emitter-onstring-f.md)
-  - [once_InnerEvent](arkts-basicservices-emitter-onceinnerevent-f.md)
-  - [once_string](arkts-basicservices-emitter-oncestring-f.md)
-  - [onceEventData](arkts-basicservices-emitter-onceeventdata-f.md)
-  - [onceGenericEventData](arkts-basicservices-emitter-oncegenericeventdata-f.md)
-  - [onEventData](arkts-basicservices-emitter-oneventdata-f.md)
-  - [onGenericEventData](arkts-basicservices-emitter-ongenericeventdata-f.md)
+  - [off](arkts-basicservices-emitter-off-f.md)
+  - [on](arkts-basicservices-emitter-on-f.md)
+  - [once](arkts-basicservices-emitter-once-f.md)
   - [Emitter](arkts-basicservices-emitter-emitter-c.md)
   - [EventData](arkts-basicservices-emitter-eventdata-i.md)
   - [GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)
@@ -370,8 +306,6 @@
   - [PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md)
   - [ProgressInfo](arkts-basicservices-pasteboard-progressinfo-i.md)
   - [SystemPasteboard](arkts-basicservices-pasteboard-systempasteboard-i.md)
-  <!--Del-->
-  - [SystemPasteboard(系统接口)](arkts-basicservices-pasteboard-systempasteboard-i-sys.md)<!--DelEnd-->
   - [ProgressListener](arkts-basicservices-pasteboard-progresslistener-t.md)
   - [UpdateCallback](arkts-basicservices-pasteboard-updatecallback-t.md)
   - [ValueType](arkts-basicservices-pasteboard-valuetype-t.md)
@@ -431,8 +365,7 @@
   - [cancelPrintJob(系统接口)](arkts-basicservices-print-cancelprintjob-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [checkPreferencesConflicts(系统接口)](arkts-basicservices-print-checkpreferencesconflicts-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [connectPrinter(系统接口)](arkts-basicservices-print-connectprinter-f-sys.md)<!--DelEnd-->
+  - [connectPrinter](arkts-basicservices-print-connectprinter-f.md)
   <!--Del-->
   - [connectPrinterByIdAndPpd(系统接口)](arkts-basicservices-print-connectprinterbyidandppd-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -455,43 +388,17 @@
   - [notifyPrintService(系统接口)](arkts-basicservices-print-notifyprintservice-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [notifyPrintServiceEvent(系统接口)](arkts-basicservices-print-notifyprintserviceevent-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [notifyPrintServiceSpoolerCloseForCancelled(系统接口)](arkts-basicservices-print-notifyprintservicespoolercloseforcancelled-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [notifyPrintServiceSpoolerCloseForStarted(系统接口)](arkts-basicservices-print-notifyprintservicespoolercloseforstarted-f-sys.md)<!--DelEnd-->
   - [notifyWatermarkComplete](arkts-basicservices-print-notifywatermarkcomplete-f.md)
+  - [off](arkts-basicservices-print-off-f.md)
   <!--Del-->
-  - [off_extInfoChange(系统接口)](arkts-basicservices-print-offextinfochange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [off_jobStateChange(系统接口)](arkts-basicservices-print-offjobstatechange-f-sys.md)<!--DelEnd-->
-  - [off_printerChange](arkts-basicservices-print-offprinterchange-f.md)
-  <!--Del-->
-  - [off_printerStateChange(系统接口)](arkts-basicservices-print-offprinterstatechange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [offExtInfoChange(系统接口)](arkts-basicservices-print-offextinfochange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [offJobStateChange(系统接口)](arkts-basicservices-print-offjobstatechange-f-sys.md)<!--DelEnd-->
-  - [offPrinterChange](arkts-basicservices-print-offprinterchange-f.md)
+  - [off(系统接口)](arkts-basicservices-print-off-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [offPrinterInfoQuery(系统接口)](arkts-basicservices-print-offprinterinfoquery-f-sys.md)<!--DelEnd-->
+  - [on](arkts-basicservices-print-on-f.md)
   <!--Del-->
-  - [offPrinterStateChange(系统接口)](arkts-basicservices-print-offprinterstatechange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_extInfoChange(系统接口)](arkts-basicservices-print-onextinfochange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_jobStateChange(系统接口)](arkts-basicservices-print-onjobstatechange-f-sys.md)<!--DelEnd-->
-  - [on_printerChange](arkts-basicservices-print-onprinterchange-f.md)
-  <!--Del-->
-  - [on_printerStateChange(系统接口)](arkts-basicservices-print-onprinterstatechange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [onExtInfoChange(系统接口)](arkts-basicservices-print-onextinfochange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [onJobStateChange(系统接口)](arkts-basicservices-print-onjobstatechange-f-sys.md)<!--DelEnd-->
-  - [onPrinterChange](arkts-basicservices-print-onprinterchange-f.md)
+  - [on(系统接口)](arkts-basicservices-print-on-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [onPrinterInfoQuery(系统接口)](arkts-basicservices-print-onprinterinfoquery-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [onPrinterStateChange(系统接口)](arkts-basicservices-print-onprinterstatechange-f-sys.md)<!--DelEnd-->
   - [print](arkts-basicservices-print-f.md)
   <!--Del-->
   - [queryAllActivePrintJobs(系统接口)](arkts-basicservices-print-queryallactiveprintjobs-f-sys.md)<!--DelEnd-->
@@ -527,63 +434,46 @@
   - [setDefaultPrinter(系统接口)](arkts-basicservices-print-setdefaultprinter-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [setPrinterPreferences(系统接口)](arkts-basicservices-print-setprinterpreferences-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [startDiscoverPrinter(系统接口)](arkts-basicservices-print-startdiscoverprinter-f-sys.md)<!--DelEnd-->
+  - [startDiscoverPrinter](arkts-basicservices-print-startdiscoverprinter-f.md)
   <!--Del-->
   - [startGettingPrintFile(系统接口)](arkts-basicservices-print-startgettingprintfile-f-sys.md)<!--DelEnd-->
   - [startPrint](arkts-basicservices-print-startprint-f.md)
   <!--Del-->
   - [startPrintJob(系统接口)](arkts-basicservices-print-startprintjob-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [stopDiscoverPrinter(系统接口)](arkts-basicservices-print-stopdiscoverprinter-f-sys.md)<!--DelEnd-->
+  - [stopDiscoverPrinter](arkts-basicservices-print-stopdiscoverprinter-f.md)
   - [unregisterWatermarkCallback](arkts-basicservices-print-unregisterwatermarkcallback-f.md)
   <!--Del-->
   - [updateExtensionInfo(系统接口)](arkts-basicservices-print-updateextensioninfo-f-sys.md)<!--DelEnd-->
   - [updatePrinterInDiscovery](arkts-basicservices-print-updateprinterindiscovery-f.md)
-  <!--Del-->
-  - [updatePrinterInformation(系统接口)](arkts-basicservices-print-updateprinterinformation-f-sys.md)<!--DelEnd-->
+  - [updatePrinterInformation](arkts-basicservices-print-updateprinterinformation-f.md)
   <!--Del-->
   - [updatePrinters(系统接口)](arkts-basicservices-print-updateprinters-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [updatePrinterState(系统接口)](arkts-basicservices-print-updateprinterstate-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [updatePrintJobState(系统接口)](arkts-basicservices-print-updateprintjobstate-f-sys.md)<!--DelEnd-->
+  - [updatePrintJobState](arkts-basicservices-print-updateprintjobstate-f.md)
   - [PpdInfo](arkts-basicservices-print-ppdinfo-i.md)
-  <!--Del-->
-  - [PreviewAttribute(系统接口)](arkts-basicservices-print-previewattribute-i-sys.md)<!--DelEnd-->
+  - [PreviewAttribute](arkts-basicservices-print-previewattribute-i.md)
   - [PrintAttributes](arkts-basicservices-print-printattributes-i.md)
   - [PrintDocumentAdapter](arkts-basicservices-print-printdocumentadapter-i.md)
   - [PrinterCapabilities](arkts-basicservices-print-printercapabilities-i.md)
-  <!--Del-->
-  - [PrinterCapability(系统接口)](arkts-basicservices-print-printercapability-i-sys.md)<!--DelEnd-->
+  - [PrinterCapability](arkts-basicservices-print-printercapability-i.md)
   <!--Del-->
   - [PrinterExtensionInfo(系统接口)](arkts-basicservices-print-printerextensioninfo-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [PrinterInfo(系统接口)](arkts-basicservices-print-printerinfo-i-sys.md)<!--DelEnd-->
+  - [PrinterInfo](arkts-basicservices-print-printerinfo-i.md)
   - [PrinterInformation](arkts-basicservices-print-printerinformation-i.md)
   - [PrinterPreferences](arkts-basicservices-print-printerpreferences-i.md)
-  <!--Del-->
-  - [PrinterRange(系统接口)](arkts-basicservices-print-printerrange-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [PrintJob(系统接口)](arkts-basicservices-print-printjob-i-sys.md)<!--DelEnd-->
+  - [PrinterRange](arkts-basicservices-print-printerrange-i.md)
+  - [PrintJob](arkts-basicservices-print-printjob-i.md)
   - [PrintJobData](arkts-basicservices-print-printjobdata-i.md)
-  <!--Del-->
-  - [PrintMargin(系统接口)](arkts-basicservices-print-printmargin-i-sys.md)<!--DelEnd-->
+  - [PrintMargin](arkts-basicservices-print-printmargin-i.md)
   - [PrintPageRange](arkts-basicservices-print-printpagerange-i.md)
   - [PrintPageSize](arkts-basicservices-print-printpagesize-i.md)
-  <!--Del-->
-  - [PrintResolution(系统接口)](arkts-basicservices-print-printresolution-i-sys.md)<!--DelEnd-->
+  - [PrintResolution](arkts-basicservices-print-printresolution-i.md)
   - [PrintTask](arkts-basicservices-print-printtask-i.md)
   - [SharedHost](arkts-basicservices-print-sharedhost-i.md)
-  <!--Del-->
-  - [ExtInfoChangeCallback(系统接口)](arkts-basicservices-print-extinfochangecallback-t-sys.md)<!--DelEnd-->
   - [PrinterChangeCallback](arkts-basicservices-print-printerchangecallback-t.md)
   <!--Del-->
   - [PrinterInfoQueryCallback(系统接口)](arkts-basicservices-print-printerinfoquerycallback-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [PrinterStateChangeCallback(系统接口)](arkts-basicservices-print-printerstatechangecallback-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [PrintJobStateChangeCallback(系统接口)](arkts-basicservices-print-printjobstatechangecallback-t-sys.md)<!--DelEnd-->
   - [WatermarkCallback](arkts-basicservices-print-watermarkcallback-t.md)
   - [ApplicationEvent](arkts-basicservices-print-applicationevent-e.md)
   - [DefaultPrinterType](arkts-basicservices-print-defaultprintertype-e.md)
@@ -636,7 +526,6 @@
       <!--Del-->
       - [TaskInfo(系统接口)](arkts-basicservices-agent-taskinfo-i-sys.md)<!--DelEnd-->
       - [Timeout](arkts-basicservices-agent-timeout-i.md)
-      - [ProgressCallback](arkts-basicservices-agent-progresscallback-t.md)
       - [Action](arkts-basicservices-agent-action-e.md)
       - [BroadcastEvent](arkts-basicservices-agent-broadcastevent-e.md)
       - [Faults](arkts-basicservices-agent-faults-e.md)
@@ -657,13 +546,6 @@
     - [TaskState](arkts-basicservices-request-taskstate-i.md)
     - [UploadConfig](arkts-basicservices-request-uploadconfig-i.md)
     - [UploadTask](arkts-basicservices-request-uploadtask-i.md)
-    - [DownloadCompleteCallback](arkts-basicservices-request-downloadcompletecallback-t.md)
-    - [DownloadFailCallback](arkts-basicservices-request-downloadfailcallback-t.md)
-    - [DownloadPauseCallback](arkts-basicservices-request-downloadpausecallback-t.md)
-    - [DownloadProgressCallback](arkts-basicservices-request-downloadprogresscallback-t.md)
-    - [DownloadRemoveCallback](arkts-basicservices-request-downloadremovecallback-t.md)
-    - [UploadHeaderReceiveCallback](arkts-basicservices-request-uploadheaderreceivecallback-t.md)
-    - [UploadProgressCallback](arkts-basicservices-request-uploadprogresscallback-t.md)
     - [常量](arkts-basicservices-request-con.md)
 - [@ohos.request.cacheDownload](arkts-request-cachedownload.md)
   - [cancel](arkts-basicservices-cachedownload-cancel-f.md)
@@ -693,10 +575,8 @@
   - [SslType](arkts-basicservices-cachedownload-ssltype-e.md)
 - [@ohos.resourceschedule.systemload](arkts-resourceschedule-systemload.md)
   - [getLevel](arkts-basicservices-systemload-getlevel-f.md)
-  - [off_systemLoadChange](arkts-basicservices-systemload-offsystemloadchange-f.md)
-  - [offSystemLoadChange](arkts-basicservices-systemload-offsystemloadchange-f.md)
-  - [on_systemLoadChange](arkts-basicservices-systemload-onsystemloadchange-f.md)
-  - [onSystemLoadChange](arkts-basicservices-systemload-onsystemloadchange-f.md)
+  - [off](arkts-basicservices-systemload-off-f.md)
+  - [on](arkts-basicservices-systemload-on-f.md)
   - [SystemLoadLevel](arkts-basicservices-systemload-systemloadlevel-e.md)
 - [@ohos.runningLock](arkts-runninglock.md)
   - [create](arkts-basicservices-runninglock-create-f.md)
@@ -719,30 +599,12 @@
   - [getScannerCurrentSetting](arkts-basicservices-scan-getscannercurrentsetting-f.md)
   - [getScannerParameter](arkts-basicservices-scan-getscannerparameter-f.md)
   - [init](arkts-basicservices-scan-init-f.md)
+  - [off](arkts-basicservices-scan-off-f.md)
   <!--Del-->
-  - [off_scanDeviceAdd(系统接口)](arkts-basicservices-scan-offscandeviceadd-f-sys.md)<!--DelEnd-->
+  - [off(系统接口)](arkts-basicservices-scan-off-f-sys.md)<!--DelEnd-->
+  - [on](arkts-basicservices-scan-on-f.md)
   <!--Del-->
-  - [off_scanDeviceDel(系统接口)](arkts-basicservices-scan-offscandevicedel-f-sys.md)<!--DelEnd-->
-  - [off_scanDeviceFound](arkts-basicservices-scan-offscandevicefound-f.md)
-  - [off_scanDeviceSync](arkts-basicservices-scan-offscandevicesync-f.md)
-  <!--Del-->
-  - [offScanDeviceAdd(系统接口)](arkts-basicservices-scan-offscandeviceadd-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [offScanDeviceDel(系统接口)](arkts-basicservices-scan-offscandevicedel-f-sys.md)<!--DelEnd-->
-  - [offScanDeviceFound](arkts-basicservices-scan-offscandevicefound-f.md)
-  - [offScanDeviceSync](arkts-basicservices-scan-offscandevicesync-f.md)
-  <!--Del-->
-  - [on_scanDeviceAdd(系统接口)](arkts-basicservices-scan-onscandeviceadd-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_scanDeviceDel(系统接口)](arkts-basicservices-scan-onscandevicedel-f-sys.md)<!--DelEnd-->
-  - [on_scanDeviceFound](arkts-basicservices-scan-onscandevicefound-f.md)
-  - [on_scanDeviceSync](arkts-basicservices-scan-onscandevicesync-f.md)
-  <!--Del-->
-  - [onScanDeviceAdd(系统接口)](arkts-basicservices-scan-onscandeviceadd-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [onScanDeviceDel(系统接口)](arkts-basicservices-scan-onscandevicedel-f-sys.md)<!--DelEnd-->
-  - [onScanDeviceFound](arkts-basicservices-scan-onscandevicefound-f.md)
-  - [onScanDeviceSync](arkts-basicservices-scan-onscandevicesync-f.md)
+  - [on(系统接口)](arkts-basicservices-scan-on-f-sys.md)<!--DelEnd-->
   - [openScanner](arkts-basicservices-scan-openscanner-f.md)
   - [setScanAutoOption](arkts-basicservices-scan-setscanautooption-f.md)
   - [setScannerParameter](arkts-basicservices-scan-setscannerparameter-f.md)
@@ -760,40 +622,24 @@
   - [ScanErrorCode](arkts-basicservices-scan-scanerrorcode-e.md)
   - [ScannerDiscoveryMode](arkts-basicservices-scan-scannerdiscoverymode-e.md)
   - [ScannerSyncMode](arkts-basicservices-scan-scannersyncmode-e.md)
-<!--Del-->
-- [@ohos.selectionInput.SelectionExtensionAbility](arkts-selectioninput-selectionextensionability.md)<!--DelEnd-->
-  <!--Del-->
-  - [SelectionExtensionAbility(系统接口)](arkts-basicservices-selectioninput-selectionextensionability-selectionextensionability-c-sys.md)<!--DelEnd-->
-<!--Del-->
-- [@ohos.selectionInput.SelectionExtensionContext](arkts-selectioninput-selectionextensioncontext.md)<!--DelEnd-->
-  <!--Del-->
-  - [SelectionExtensionContext(系统接口)](arkts-basicservices-selectioninput-selectionextensioncontext-selectionextensioncontext-c-sys.md)<!--DelEnd-->
-<!--Del-->
-- [@ohos.selectionInput.SelectionPanel](arkts-selectioninput-selectionpanel.md)<!--DelEnd-->
-  <!--Del-->
-  - [PanelInfo(系统接口)](arkts-basicservices-selectioninput-selectionpanel-panelinfo-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [PanelType(系统接口)](arkts-basicservices-selectioninput-selectionpanel-paneltype-e-sys.md)<!--DelEnd-->
+- [@ohos.selectionInput.SelectionExtensionAbility](arkts-selectioninput-selectionextensionability.md)
+  - [SelectionExtensionAbility](arkts-basicservices-selectioninput-selectionextensionability-selectionextensionability-c.md)
+- [@ohos.selectionInput.SelectionExtensionContext](arkts-selectioninput-selectionextensioncontext.md)
+  - [SelectionExtensionContext](arkts-basicservices-selectioninput-selectionextensioncontext-selectionextensioncontext-c.md)
 - [@ohos.selectionInput.selectionManager](arkts-selectioninput-selectionmanager.md)
-  <!--Del-->
-  - [createPanel(系统接口)](arkts-basicservices-selectionmanager-createpanel-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [destroyPanel(系统接口)](arkts-basicservices-selectionmanager-destroypanel-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [getSelectionContent(系统接口)](arkts-basicservices-selectionmanager-getselectioncontent-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [off_selectionCompleted(系统接口)](arkts-basicservices-selectionmanager-offselectioncompleted-f-sys.md)<!--DelEnd-->
-  - [offSelectionComplete](arkts-basicservices-selectionmanager-offselectioncomplete-f.md)
-  <!--Del-->
-  - [on_selectionCompleted(系统接口)](arkts-basicservices-selectionmanager-onselectioncompleted-f-sys.md)<!--DelEnd-->
-  - [onSelectionComplete](arkts-basicservices-selectionmanager-onselectioncomplete-f.md)
+  - [createPanel](arkts-basicservices-selectionmanager-createpanel-f.md)
+  - [destroyPanel](arkts-basicservices-selectionmanager-destroypanel-f.md)
+  - [getSelectionContent](arkts-basicservices-selectionmanager-getselectioncontent-f.md)
+  - [off](arkts-basicservices-selectionmanager-off-f.md)
+  - [on](arkts-basicservices-selectionmanager-on-f.md)
   - [Panel](arkts-basicservices-selectionmanager-panel-i.md)
   <!--Del-->
   - [Panel(系统接口)](arkts-basicservices-selectionmanager-panel-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [SelectionInfo(系统接口)](arkts-basicservices-selectionmanager-selectioninfo-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [SelectionType(系统接口)](arkts-basicservices-selectionmanager-selectiontype-e-sys.md)<!--DelEnd-->
+  - [SelectionInfo](arkts-basicservices-selectionmanager-selectioninfo-i.md)
+  - [SelectionType](arkts-basicservices-selectionmanager-selectiontype-e.md)
+- [@ohos.selectionInput.SelectionPanel](arkts-selectioninput-selectionpanel.md)
+  - [PanelInfo](arkts-basicservices-selectioninput-selectionpanel-panelinfo-i.md)
+  - [PanelType](arkts-basicservices-selectioninput-selectionpanel-paneltype-e.md)
 - [@ohos.systemDateTime](arkts-systemdatetime.md)
   - [getAutoTimeStatus](arkts-basicservices-systemdatetime-getautotimestatus-f.md)
   - [getCurrentTime](arkts-basicservices-systemdatetime-getcurrenttime-f.md)
@@ -817,6 +663,16 @@
   <!--Del-->
   - [updateNtpTime(系统接口)](arkts-basicservices-systemdatetime-updatentptime-f-sys.md)<!--DelEnd-->
   - [TimeType](arkts-basicservices-systemdatetime-timetype-e.md)
+<!--Del-->
+- [@ohos.systemparameter](arkts-systemparameter.md)<!--DelEnd-->
+  <!--Del-->
+  - [get(系统接口)](arkts-basicservices-systemparameter-get-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getSync(系统接口)](arkts-basicservices-systemparameter-getsync-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [set(系统接口)](arkts-basicservices-systemparameter-set-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setSync(系统接口)](arkts-basicservices-systemparameter-setsync-f-sys.md)<!--DelEnd-->
 <!--Del-->
 - [@ohos.systemParameterEnhance](arkts-systemparameterenhance.md)<!--DelEnd-->
   <!--Del-->
@@ -850,16 +706,6 @@
   - [TimerOptions(系统接口)](arkts-basicservices-systemtimer-timeroptions-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [常量(系统接口)](arkts-basicservices-systemtimer-con-sys.md)<!--DelEnd-->
-<!--Del-->
-- [@ohos.systemparameter](arkts-systemparameter.md)<!--DelEnd-->
-  <!--Del-->
-  - [get(系统接口)](arkts-basicservices-systemparameter-get-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [getSync(系统接口)](arkts-basicservices-systemparameter-getsync-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [set(系统接口)](arkts-basicservices-systemparameter-set-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [setSync(系统接口)](arkts-basicservices-systemparameter-setsync-f-sys.md)<!--DelEnd-->
 - [@ohos.thermal](arkts-thermal.md)
   - [getLevel](arkts-basicservices-thermal-getlevel-f.md)
   - [getThermalLevel](arkts-basicservices-thermal-getthermallevel-f.md)
@@ -1119,6 +965,58 @@
   - [DataBits](arkts-basicservices-serialmanager-databits-e.md)
   - [Parity](arkts-basicservices-serialmanager-parity-e.md)
   - [StopBits](arkts-basicservices-serialmanager-stopbits-e.md)
+- [@ohos.wallpaper](arkts-wallpaper.md)
+  - [getColors](arkts-basicservices-wallpaper-getcolors-f.md)
+  <!--Del-->
+  - [getColorsSync(系统接口)](arkts-basicservices-wallpaper-getcolorssync-f-sys.md)<!--DelEnd-->
+  - [getFile](arkts-basicservices-wallpaper-getfile-f.md)
+  - [getId](arkts-basicservices-wallpaper-getid-f.md)
+  <!--Del-->
+  - [getImage(系统接口)](arkts-basicservices-wallpaper-getimage-f-sys.md)<!--DelEnd-->
+  - [getMinHeight](arkts-basicservices-wallpaper-getminheight-f.md)
+  <!--Del-->
+  - [getMinHeightSync(系统接口)](arkts-basicservices-wallpaper-getminheightsync-f-sys.md)<!--DelEnd-->
+  - [getMinWidth](arkts-basicservices-wallpaper-getminwidth-f.md)
+  <!--Del-->
+  - [getMinWidthSync(系统接口)](arkts-basicservices-wallpaper-getminwidthsync-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getPixelMap(系统接口)](arkts-basicservices-wallpaper-getpixelmap-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getWallpaperByState(系统接口)](arkts-basicservices-wallpaper-getwallpaperbystate-f-sys.md)<!--DelEnd-->
+  - [isChangePermitted](arkts-basicservices-wallpaper-ischangepermitted-f.md)
+  - [isOperationAllowed](arkts-basicservices-wallpaper-isoperationallowed-f.md)
+  - [off](arkts-basicservices-wallpaper-off-f.md)
+  <!--Del-->
+  - [off(系统接口)](arkts-basicservices-wallpaper-off-f-sys.md)<!--DelEnd-->
+  - [on](arkts-basicservices-wallpaper-on-f.md)
+  <!--Del-->
+  - [on(系统接口)](arkts-basicservices-wallpaper-on-f-sys.md)<!--DelEnd-->
+  - [reset](arkts-basicservices-wallpaper-reset-f.md)
+  <!--Del-->
+  - [restore(系统接口)](arkts-basicservices-wallpaper-restore-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setAllWallpapers(系统接口)](arkts-basicservices-wallpaper-setallwallpapers-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setCustomWallpaper(系统接口)](arkts-basicservices-wallpaper-setcustomwallpaper-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setImage(系统接口)](arkts-basicservices-wallpaper-setimage-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setVideo(系统接口)](arkts-basicservices-wallpaper-setvideo-f-sys.md)<!--DelEnd-->
+  - [setWallpaper](arkts-basicservices-wallpaper-setwallpaper-f.md)
+  - [RgbaColor](arkts-basicservices-wallpaper-rgbacolor-i.md)
+  <!--Del-->
+  - [WallpaperInfo(系统接口)](arkts-basicservices-wallpaper-wallpaperinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FoldState(系统接口)](arkts-basicservices-wallpaper-foldstate-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [RotateState(系统接口)](arkts-basicservices-wallpaper-rotatestate-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [WallpaperResourceType(系统接口)](arkts-basicservices-wallpaper-wallpaperresourcetype-e-sys.md)<!--DelEnd-->
+  - [WallpaperType](arkts-basicservices-wallpaper-wallpapertype-e.md)
+<!--Del-->
+- [@ohos.WallpaperExtensionAbility](arkts-wallpaperextensionability.md)<!--DelEnd-->
+  <!--Del-->
+  - [WallpaperExtensionAbility(系统接口)](arkts-basicservices-wallpaperextensionability-c-sys.md)<!--DelEnd-->
 - [@ohos.zlib](arkts-zlib.md)
   - [compressFile](arkts-basicservices-zlib-compressfile-f.md)
   - [compressFiles](arkts-basicservices-zlib-compressfiles-f.md)

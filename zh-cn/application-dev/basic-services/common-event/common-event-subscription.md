@@ -12,11 +12,11 @@
 
 例如，某应用希望在其运行期间收到电量过低的事件，并根据该事件降低其运行功耗，那么该应用便可动态订阅电量过低事件，收到该事件后关闭一些非必要的任务来降低功耗。
 
-订阅部分系统公共事件需要先[申请权限](../../security/AccessToken/determine-application-mode.md)，订阅这些事件所需要的权限请见[系统定义的公共事件/apis-basic-services-kit/common_event/commonEventManager-definitions.md)。
+订阅部分系统公共事件需要先申请权限，订阅这些事件所需要的权限请见系统定义的公共事件。
 
 > **说明：**
 >
-> 订阅者对象的生命周期需要接入方管理，不再使用时需[取消动态订阅公共事件](common-event-unsubscription.md)后主动销毁释放，避免进程内订阅者数量超过200个导致其他业务订阅失败以及内存泄漏。
+> 订阅者对象的生命周期需要接入方管理，不再使用时需取消动态订阅公共事件后主动销毁释放，避免进程内订阅者数量超过200个导致其他业务订阅失败以及内存泄漏。
 > 
 > 动态订阅的公共事件回调受应用状态影响。当应用处于后台时，无法接收到动态订阅公共事件。当应用从后台切换到前台时，最多可以回调切回前30s内监听的公共事件。
 >
@@ -24,13 +24,13 @@
 
 ## 接口说明
 
-详细接口见[@ohos.commonEventManager/apis-basic-services-kit/js-apis-commonEventManager.md)。
+详细接口见@ohos.commonEventManager。
 
 | 接口名 | 接口描述 |
 | -------- | -------- |
-| [createSubscriber/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagercreatesubscriber)(subscribeInfo:&nbsp;CommonEventSubscribeInfo,&nbsp;callback:&nbsp;AsyncCallback&lt;CommonEventSubscriber&gt;):&nbsp;void | 创建订阅者对象（callback）。 |
-| [createSubscriber/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagercreatesubscriber-1)(subscribeInfo:&nbsp;CommonEventSubscribeInfo):&nbsp;Promise&lt;CommonEventSubscriber&gt; | 创建订阅者对象（promise）。 |
-| [subscribe/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagersubscribe)(subscriber:&nbsp;CommonEventSubscriber,&nbsp;callback:&nbsp;AsyncCallback&lt;CommonEventData&gt;):&nbsp;void | 订阅公共事件。 |
+| createSubscriber(subscribeInfo:&nbsp;CommonEventSubscribeInfo,&nbsp;callback:&nbsp;AsyncCallback&lt;CommonEventSubscriber&gt;):&nbsp;void | 创建订阅者对象（callback）。 |
+| createSubscriber(subscribeInfo:&nbsp;CommonEventSubscribeInfo):&nbsp;Promise&lt;CommonEventSubscriber&gt; | 创建订阅者对象（promise）。 |
+| subscribe(subscriber:&nbsp;CommonEventSubscriber,&nbsp;callback:&nbsp;AsyncCallback&lt;CommonEventData&gt;):&nbsp;void | 订阅公共事件。 |
 
 
 ## 开发步骤
@@ -47,7 +47,7 @@
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
-2. 创建订阅者信息，详细的订阅者信息数据类型及包含的参数请见[CommonEventSubscribeInfo/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventSubscribeInfo.md)文档介绍。
+2. 创建订阅者信息，详细的订阅者信息数据类型及包含的参数请见CommonEventSubscribeInfo文档介绍。
    - 自定义公共事件：应用定义的公共事件。
    
      <!-- @[CreateCustomSubscriberInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
@@ -61,7 +61,7 @@
      };
      ```
 
-   - 系统公共事件：CES内部定义的公共事件，当前仅支持系统应用和系统服务发布，例如HAP安装、更新、卸载等公共事件。目前支持的系统公共事件请参见[系统定义的公共事件/apis-basic-services-kit/common_event/commonEventManager-definitions.md)。
+   - 系统公共事件：CES内部定义的公共事件，当前仅支持系统应用和系统服务发布，例如HAP安装、更新、卸载等公共事件。目前支持的系统公共事件请参见系统定义的公共事件。
    
      <!-- @[CreateSystemSubscriberInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
      
@@ -92,7 +92,7 @@
      })
    ```
 
-4. 创建订阅回调函数，订阅回调函数会在接收到事件时触发。订阅回调函数返回的data内包含了公共事件的名称、发布者携带的数据等信息，公共事件数据的详细参数和数据类型请见[CommonEventData/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventData.md)文档介绍。
+4. 创建订阅回调函数，订阅回调函数会在接收到事件时触发。订阅回调函数返回的data内包含了公共事件的名称、发布者携带的数据等信息，公共事件数据的详细参数和数据类型请见CommonEventData文档介绍。
    
    <!-- @[SubscribeToPublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    

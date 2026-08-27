@@ -14,11 +14,9 @@ function init(): Promise<void>
 
 初始化扫描服务。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.PRINT
-
-<!--Device-scan-function init(): Promise<void>--><!--Device-scan-function init(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -26,7 +24,7 @@ function init(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -43,7 +41,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 scan.init().then(() => {
     console.info('scan init success');
 }).catch((error: BusinessError) => {
-    console.error('scan init failed: ' + JSON.stringify(error));
-})
+    console.error(`Failed to init scan. Code: ${error.code}, message: ${error.message}`);
+});
 ```
-

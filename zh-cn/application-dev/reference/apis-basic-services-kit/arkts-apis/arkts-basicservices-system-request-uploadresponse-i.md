@@ -1,12 +1,10 @@
-# UploadResponse(上传下载)
+# UploadResponse
 
 **起始版本：** 3
 
 **废弃版本：** 9
 
 **替代接口：** [UploadConfig](arkts-basicservices-request-uploadconfig-i.md)
-
-<!--Device-unnamed-export interface UploadResponse--><!--Device-unnamed-export interface UploadResponse-End-->
 
 **系统能力：** SystemCapability.MiscServices.Upload
 
@@ -32,8 +30,6 @@ code: number
 
 **替代接口：** statusCode
 
-<!--Device-UploadResponse-code: number--><!--Device-UploadResponse-code: number-End-->
-
 **系统能力：** SystemCapability.MiscServices.Upload
 
 ## data
@@ -51,8 +47,6 @@ data: string
 **废弃版本：** 9
 
 **替代接口：** extras
-
-<!--Device-UploadResponse-data: string--><!--Device-UploadResponse-data: string-End-->
 
 **系统能力：** SystemCapability.MiscServices.Upload
 
@@ -72,7 +66,4 @@ headers: Object
 
 **替代接口：** headers
 
-<!--Device-UploadResponse-headers: Object--><!--Device-UploadResponse-headers: Object-End-->
-
 **系统能力：** SystemCapability.MiscServices.Upload
-

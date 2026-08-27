@@ -1,10 +1,8 @@
 # SelectionOptions
 
-Defines the selection options.
+Defines the selection options.@interface SelectionOptions
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare interface SelectionOptions--><!--Device-unnamed-declare interface SelectionOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,7 +27,4 @@ Menu pop-up policy.
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SelectionOptions-menuPolicy?: MenuPolicy--><!--Device-SelectionOptions-menuPolicy?: MenuPolicy-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

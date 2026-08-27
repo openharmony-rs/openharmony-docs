@@ -4,11 +4,6 @@
 
 ```TypeScript
 import { inputMethod } from '@kit.IMEKit';
-import { inputMethodEngine } from '@kit.IMEKit';
-import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
-import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
-import { InputMethodExtraConfig } from '@kit.IMEKit';
-import { inputMethodSystemPanelManager } from '@kit.IMEKit';
 ```
 
 ## getSystemInputMethodConfigAbility
@@ -19,9 +14,7 @@ function getSystemInputMethodConfigAbility(): ElementName
 
 获取系统输入法设置界面Ability信息。
 
-**起始版本：** 23
-
-<!--Device-inputMethod-function getSystemInputMethodConfigAbility(): ElementName--><!--Device-inputMethod-function getSystemInputMethodConfigAbility(): ElementName-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -44,4 +37,3 @@ import { bundleManager } from '@kit.AbilityKit';
 
 let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility();
 ```
-

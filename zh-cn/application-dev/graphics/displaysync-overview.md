@@ -19,10 +19,10 @@ OpenHarmony支持可变帧率能力，开发者通过使用可变帧率接口，
 
 ## 使用场景
 可变帧率能力支持开发者自定义应用业务的帧率，其常见的使用场景：
-- 通过配置属性动画/显示动画的帧率属性参数，用于动画的绘制，具体可见[请求动画绘制帧率](displaysync-animation.md)。
-- 通过申请一个独立的绘制帧率，用于UI的绘制，具体可见[请求UI绘制帧率](displaysync-ui.md)。
-- 通过XComponent在Native侧申请独立的绘制帧率，用于游戏等自绘制内容的绘制，具体可见[请求自绘制内容绘制帧率](displaysync-xcomponent.md)。
-- 通过NativeVsync在Native侧申请独立的绘制帧率，用于非UI线程的绘制，具体可见[NativeDisplaySoloist开发指导 (C/C++)](displaysoloist-native-guidelines.md)。
+- 通过配置属性动画/显示动画的帧率属性参数，用于动画的绘制，具体可见请求动画绘制帧率。
+- 通过申请一个独立的绘制帧率，用于UI的绘制，具体可见请求UI绘制帧率。
+- 通过XComponent在Native侧申请独立的绘制帧率，用于游戏等自绘制内容的绘制，具体可见请求自绘制内容绘制帧率。
+- 通过NativeVsync在Native侧申请独立的绘制帧率，用于非UI线程的绘制，具体可见NativeDisplaySoloist开发指导 (C/C++)。
 
 ## 运作机制
 可变帧率为应用开发中的动画组件、XComponent组件、UI绘制等提供一种基础帧率配置和能力。

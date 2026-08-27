@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-interface PositionWithAffinity--><!--Device-unnamed-interface PositionWithAffinity-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ affinity: Affinity
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PositionWithAffinity-affinity: Affinity--><!--Device-PositionWithAffinity-affinity: Affinity-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## position
@@ -49,7 +45,4 @@ position: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PositionWithAffinity-position: number--><!--Device-PositionWithAffinity-position: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

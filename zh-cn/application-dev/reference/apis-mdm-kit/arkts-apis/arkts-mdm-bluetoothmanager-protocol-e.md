@@ -4,8 +4,6 @@
 
 **起始版本：** 20
 
-<!--Device-bluetoothManager-export enum Protocol--><!--Device-bluetoothManager-export enum Protocol-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## GATT
@@ -19,8 +17,6 @@ GATT协议。
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Protocol-GATT = 0--><!--Device-Protocol-GATT = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,8 +32,6 @@ SPP协议。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Protocol-SPP = 1--><!--Device-Protocol-SPP = 1-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## OPP
@@ -52,7 +46,4 @@ OPP协议。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Protocol-OPP = 2--><!--Device-Protocol-OPP = 2-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

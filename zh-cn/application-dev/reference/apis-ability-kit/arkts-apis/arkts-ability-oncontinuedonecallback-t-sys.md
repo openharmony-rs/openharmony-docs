@@ -1,14 +1,12 @@
 # OnContinueDoneCallback（系统接口）
 
 ```TypeScript
-type OnContinueDoneCallback = (result: int) => void
+type OnContinueDoneCallback = (result: number) => void
 ```
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-unnamed-type OnContinueDoneCallback = (result: int) => void--><!--Device-unnamed-type OnContinueDoneCallback = (result: int) => void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -18,5 +16,4 @@ type OnContinueDoneCallback = (result: int) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| result | int | 是 | The result code of continue mission. |
-
+| result | number | 是 | 迁移任务的结果，0表示迁移成功，非0值表示迁移失败。具体错误码及其含义、可能原因和解决措施请参见continueMission接口的错误码说明。 |

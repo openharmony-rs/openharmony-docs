@@ -2,9 +2,7 @@
 
 用于表示宿主应用窗口和UIExtensionComponent组件的信息。
 
-**起始版本：** 23
-
-<!--Device-uiExtensionHost-interface UIExtensionHostWindowProxyProperties--><!--Device-uiExtensionHost-interface UIExtensionHostWindowProxyProperties-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,13 +24,10 @@ UIExtensionComponent的位置和宽高。
 
 **类型：** window.Rect
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UIExtensionHostWindowProxyProperties-uiExtensionHostWindowProxyRect: window.Rect--><!--Device-UIExtensionHostWindowProxyProperties-uiExtensionHostWindowProxyRect: window.Rect-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

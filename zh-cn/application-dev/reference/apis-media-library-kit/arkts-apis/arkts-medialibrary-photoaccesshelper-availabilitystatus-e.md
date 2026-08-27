@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-photoAccessHelper-enum AvailabilityStatus--><!--Device-photoAccessHelper-enum AvailabilityStatus-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## AVAILABLE
@@ -19,8 +17,6 @@ AVAILABLE = 'available'
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AvailabilityStatus-AVAILABLE = 'available'--><!--Device-AvailabilityStatus-AVAILABLE = 'available'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -36,7 +32,4 @@ UNAVAILABLE = 'unavailable'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AvailabilityStatus-UNAVAILABLE = 'unavailable'--><!--Device-AvailabilityStatus-UNAVAILABLE = 'unavailable'-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-

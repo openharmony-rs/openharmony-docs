@@ -14,11 +14,9 @@ function getKioskStatus(): Promise<KioskStatus>
 
 获取系统Kiosk模式的状态信息（包括当前系统是否处于Kiosk模式、进入Kiosk模式应用的名称和UID）。使用Promise异步回调。 该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-kioskManager-function getKioskStatus(): Promise<KioskStatus>--><!--Device-kioskManager-function getKioskStatus(): Promise<KioskStatus>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -28,15 +26,15 @@ function getKioskStatus(): Promise<KioskStatus>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;KioskStatus&gt; | Promise对象，返回当前Kiosk状态信息。 |
+| Promise & lt;KioskStatus & gt; | Promise对象，返回当前Kiosk状态信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Failed to connect to the system service. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
 **示例**
 
@@ -67,4 +65,3 @@ struct Index {
   }
 }
 ```
-

@@ -2,17 +2,13 @@
 
 子窗口创建参数。
 
-**起始版本：** 23
-
-<!--Device-window-interface SubWindowOptions--><!--Device-window-interface SubWindowOptions-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -26,11 +22,8 @@ isTopmost?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-SubWindowOptions-isTopmost?: boolean--><!--Device-SubWindowOptions-isTopmost?: boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
-

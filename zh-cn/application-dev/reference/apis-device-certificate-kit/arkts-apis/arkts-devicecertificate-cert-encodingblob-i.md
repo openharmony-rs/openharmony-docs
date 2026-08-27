@@ -2,18 +2,13 @@
 
 表示一个编码后的二进制数据块。
 
-**起始版本：** 23
-
-<!--Device-cert-interface EncodingBlob--><!--Device-cert-interface EncodingBlob-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.Cert
 
 ## 导入模块
 
 ```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## data
@@ -26,11 +21,9 @@ data: Uint8Array
 
 **类型：** Uint8Array
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EncodingBlob-data: Uint8Array--><!--Device-EncodingBlob-data: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -44,11 +37,8 @@ encodingFormat: EncodingFormat
 
 **类型：** [EncodingFormat](arkts-devicecertificate-cert-encodingformat-e.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EncodingBlob-encodingFormat: EncodingFormat--><!--Device-EncodingBlob-encodingFormat: EncodingFormat-End-->
-
 **系统能力：** SystemCapability.Security.Cert
-

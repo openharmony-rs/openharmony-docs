@@ -1,10 +1,8 @@
 # ServiceData
 
-服务数据。
+表示服务相关数据。
 
 **起始版本：** 26.0.0
-
-<!--Device-advertising-interface ServiceData--><!--Device-advertising-interface ServiceData-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -20,15 +18,13 @@ import { advertising } from '@kit.ConnectivityKit';
 serviceData: ArrayBuffer
 ```
 
-服务数据。
+表示服务数据。
 
 **类型：** ArrayBuffer
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ServiceData-serviceData: ArrayBuffer--><!--Device-ServiceData-serviceData: ArrayBuffer-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -38,7 +34,7 @@ serviceData: ArrayBuffer
 serviceUuid: string
 ```
 
-服务UUID。
+表示服务的UUID。UUID长度必须为36个字符，由32个十六进制数字和4个连字符（-）组成。
 
 **类型：** string
 
@@ -46,7 +42,4 @@ serviceUuid: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ServiceData-serviceUuid: string--><!--Device-ServiceData-serviceUuid: string-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

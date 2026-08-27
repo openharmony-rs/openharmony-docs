@@ -19,8 +19,6 @@ function unbind(floatViewController: FloatViewController,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-floatView-function unbind(floatViewController: FloatViewController,    floatingBallController: floatingBall.FloatingBallController): Promise<void>--><!--Device-floatView-function unbind(floatViewController: FloatViewController,    floatingBallController: floatingBall.FloatingBallController): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -34,7 +32,7 @@ function unbind(floatViewController: FloatViewController,
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -49,7 +47,7 @@ function unbind(floatViewController: FloatViewController,
 ```TypeScript
 // Entry.ets
 import { BusinessError } from '@kit.BasicServicesKit';
-import { floatingBall } from '@kit.ArkUI';
+import { floatingBall, floatView } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -62,16 +60,16 @@ struct Index {
     try {
       // 使用绑定时传入的闪控窗和闪控球控制器
       if (this.floatViewController && this.floatingBallController) {
+        // 解绑闪控窗和闪控球
         floatView.unbind(this.floatViewController!, this.floatingBallController!).then(() => {
           console.info('Succeeded in unbinding float view and floating ball.');
         }).catch((err: BusinessError): void => {
           console.error(`Failed to unbind float view and floating ball. Cause:${err.code}, message:${err.message}`);
         });
       }
-    } catch(e) {
+    } catch (e) {
       console.error(`Failed to unbind float view and floating ball. Cause:${e.code}, message:${e.message}`);
     }
   }
 }
 ```
-

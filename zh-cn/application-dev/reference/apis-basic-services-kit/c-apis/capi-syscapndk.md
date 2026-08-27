@@ -2,7 +2,7 @@
 
 ## 概述
 
-Provides APIs for querying system capabilities.
+提供用于查询系统能力的API。
 
 **起始版本：** 8
 ## 文件汇总

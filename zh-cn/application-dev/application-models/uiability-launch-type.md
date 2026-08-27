@@ -7,14 +7,14 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)的启动模式是指UIAbility实例在启动时的不同呈现状态。针对不同的业务场景，系统提供了三种启动模式：
+UIAbility的启动模式是指UIAbility实例在启动时的不同呈现状态。针对不同的业务场景，系统提供了三种启动模式：
 
 
-- [singleton（单实例模式）](#singleton启动模式)
+- singleton（单实例模式）
 
-- [multiton（多实例模式）](#multiton启动模式)
+- multiton（多实例模式）
 
-- [specified（指定实例模式）](#specified启动模式)
+- specified（指定实例模式）
 
 > **说明：**
 >
@@ -24,16 +24,16 @@
 
 singleton启动模式为单实例模式，也是默认情况下的启动模式。
 
-每次调用[startAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法时，如果应用进程中该类型的[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例已经存在，则复用系统中的UIAbility实例。系统中只存在唯一一个该UIAbility实例，即在最近任务列表中只存在一个该类型的UIAbility实例。
+每次调用startAbility()方法时，如果应用进程中该类型的UIAbility实例已经存在，则复用系统中的UIAbility实例。系统中只存在唯一一个该UIAbility实例，即在最近任务列表中只存在一个该类型的UIAbility实例。
 
 **图1** 单实例模式演示效果  
 ![uiability-launch-type1](figures/uiability-launch-type1.gif)  
 
 > **说明**：
 >
-> 应用的UIAbility实例已创建，该UIAbility配置为单实例模式，再次调用[startAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法启动该UIAbility实例。由于启动的还是原来的UIAbility实例，并未重新创建一个新的UIAbility实例，此时只会进入该UIAbility的[onNewWant()/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)回调，不会进入其[onCreate()/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onWindowStageCreate()/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调。如果已经创建的实例仍在启动过程中，调用startAbility()方法启动该实例，将收到错误码16000082。
+> 应用的UIAbility实例已创建，该UIAbility配置为单实例模式，再次调用startAbility()方法启动该UIAbility实例。由于启动的还是原来的UIAbility实例，并未重新创建一个新的UIAbility实例，此时只会进入该UIAbility的onNewWant()回调，不会进入其onCreate()和onWindowStageCreate()生命周期回调。如果已经创建的实例仍在启动过程中，调用startAbility()方法启动该实例，将收到错误码16000082。
 
-如果需要使用singleton启动模式，在[module.json5配置文件](../quick-start/module-configuration-file.md)中的`launchType`字段配置为`singleton`即可。
+如果需要使用singleton启动模式，在module.json5配置文件中的`launchType`字段配置为`singleton`即可。
 
 <!-- @[singleton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
 
@@ -46,7 +46,7 @@ singleton启动模式为单实例模式，也是默认情况下的启动模式�
       {
         "launchType": "singleton",
         // ···
-      }
+      },
     // ···
     ]
   }
@@ -55,12 +55,12 @@ singleton启动模式为单实例模式，也是默认情况下的启动模式�
 
 ## multiton启动模式
 
-multiton启动模式为多实例模式，每次调用[startAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法时，都会在应用进程中创建一个新的该类型[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例。即在最近任务列表中可以看到有多个该类型的UIAbility实例。这种情况下可以将UIAbility配置为multiton（多实例模式）。
+multiton启动模式为多实例模式，每次调用startAbility()方法时，都会在应用进程中创建一个新的该类型UIAbility实例。即在最近任务列表中可以看到有多个该类型的UIAbility实例。这种情况下可以将UIAbility配置为multiton（多实例模式）。
 
 **图2** 多实例模式演示效果  
 ![uiability-launch-type2](figures/uiability-launch-type2.gif)  
 
-multiton启动模式的开发使用，在[module.json5配置文件](../quick-start/module-configuration-file.md)中的`launchType`字段配置为`multiton`即可。
+multiton启动模式的开发使用，在module.json5配置文件中的`launchType`字段配置为`multiton`即可。
 
 <!-- @[multiton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
 
@@ -73,7 +73,7 @@ multiton启动模式的开发使用，在[module.json5配置文件](../quick-sta
       {
         "launchType": "multiton",
         // ···
-      }
+      },
     // ···
     ]
   }
@@ -87,18 +87,18 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
 **图3** 指定实例启动模式原理  
 ![uiability-launch-type3-principle](figures/uiability-launch-type3-principle.png)  
 
-假设应用有两个[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例，即EntryAbility和SpecifiedAbility。EntryAbility以specified模式启动SpecifiedAbility。基本原理如下：
+假设应用有两个UIAbility实例，即EntryAbility和SpecifiedAbility。EntryAbility以specified模式启动SpecifiedAbility。基本原理如下：
 
-  1. EntryAbility调用[startAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法，并在[Want/apis-ability-kit/js-apis-app-ability-want.md)的parameters字段中设置唯一的Key值，用于标识SpecifiedAbility。
-  2. 系统在拉起SpecifiedAbility之前，会先进入对应的[AbilityStage/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onAcceptWant()/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant)生命周期回调，获取用于标识目标UIAbility的Key值。
+  1. EntryAbility调用startAbility()方法，并在Want的parameters字段中设置唯一的Key值，用于标识SpecifiedAbility。
+  2. 系统在拉起SpecifiedAbility之前，会先进入对应的AbilityStage的onAcceptWant()生命周期回调，获取用于标识目标UIAbility的Key值。
   3. 系统会根据获取的Key值来匹配UIAbility。
-      * 如果匹配到对应的UIAbility，则会启动该UIAbility实例，并进入[onNewWant()/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)生命周期回调。
-      * 如果无法匹配对应的UIAbility，则会创建一个新的UIAbility实例，并进入该UIAbility实例的[onCreate()/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期回调和[onWindowStageCreate()/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调。
+      * 如果匹配到对应的UIAbility，则会启动该UIAbility实例，并进入onNewWant()生命周期回调。
+      * 如果无法匹配对应的UIAbility，则会创建一个新的UIAbility实例，并进入该UIAbility实例的onCreate()生命周期回调和onWindowStageCreate()生命周期回调。
 
 **图4** 指定实例模式演示效果   
 ![uiability-launch-type3](figures/uiability-launch-type3.gif)  
 
-1. 在SpecifiedAbility中，需要将[module.json5配置文件](../quick-start/module-configuration-file.md)的`launchType`字段配置为`specified`。
+1. 在SpecifiedAbility中，需要将module.json5配置文件的`launchType`字段配置为`specified`。
    
     <!-- @[specified](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
     
@@ -110,14 +110,14 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
           {
             "launchType": "specified",
             // ···
-          }
+          },
         // ···
         ]
       }
     }
     ```
 
-2. 在EntryAbility中，调用[startAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法时，可以在[want/apis-ability-kit/js-apis-app-ability-want.md)参数中传入了自定义参数`instanceKey`作为唯一标识符，以此来区分不同的UIAbility实例。示例中`instanceKey`的value值设置为字符串'KEY'。
+2. 在EntryAbility中，调用startAbility()方法时，可以在want参数中传入了自定义参数`instanceKey`作为唯一标识符，以此来区分不同的UIAbility实例。示例中`instanceKey`的value值设置为字符串'KEY'。
 
     <!-- @[Page_StartModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/ets/pages/SpecifiedPage.ets) -->  
     
@@ -199,7 +199,7 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
     }
     ```
    
-3. 开发者根据业务在SpecifiedAbility所对应AbilityStage的[onAcceptWant()/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant)生命周期回调设置该UIAbility的标识。示例中标识设置为`SpecifiedAbilityInstance_KEY`。
+3. 开发者根据业务在SpecifiedAbility所对应AbilityStage的onAcceptWant()生命周期回调设置该UIAbility的标识。示例中标识设置为`SpecifiedAbilityInstance_KEY`。
 
     <!-- @[MyAbilityStage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/ets/abilitystage/MyAbilityStage.ets) -->
 
@@ -223,11 +223,11 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
 
    > **说明：**
    >
-   > 1. 当应用的UIAbility实例已经被创建，并且配置为指定实例模式时，如果再次调用[startAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法启动该UIAbility实例，且[AbilityStage/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onAcceptWant()/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant)回调匹配到一个已创建的UIAbility实例，则系统会启动原来的UIAbility实例，并且不会重新创建一个新的UIAbility实例。此时，该UIAbility实例的onNewWant()回调会被触发，而不会触发onCreate()和onWindowStageCreate()生命周期回调。
-   > 2. DevEco Studio默认工程中未自动生成AbilityStage，AbilityStage文件的创建请参见[AbilityStage开发步骤](abilitystage.md#开发步骤)。
-   > 3. 建议specified启动模式的UIAbility，在[module.json5配置文件](../quick-start/module-configuration-file.md)中的removeMissionAfterTerminate字段设置为true，以达到UIAbility生命周期结束即从任务列表中移除任务的目的。 否则，在应用冷启动场景下会无法复用历史任务，在任务列表中出现多个相同任务的情况。
+   > 1. 当应用的UIAbility实例已经被创建，并且配置为指定实例模式时，如果再次调用startAbility()方法启动该UIAbility实例，且AbilityStage的onAcceptWant()回调匹配到一个已创建的UIAbility实例，则系统会启动原来的UIAbility实例，并且不会重新创建一个新的UIAbility实例。此时，该UIAbility实例的onNewWant()回调会被触发，而不会触发onCreate()和onWindowStageCreate()生命周期回调。
+   > 2. DevEco Studio默认工程中未自动生成AbilityStage，AbilityStage文件的创建请参见AbilityStage开发步骤。
+   > 3. 建议specified启动模式的UIAbility，在module.json5配置文件中的removeMissionAfterTerminate字段设置为true，以达到UIAbility生命周期结束即从任务列表中移除任务的目的。 否则，在应用冷启动场景下会无法复用历史任务，在任务列表中出现多个相同任务的情况。
 
-   例如在文档应用中，可以为不同的文档实例内容绑定不同的Key值。每次新建文档时，可以传入一个新的Key值（例如可以将文件的路径作为一个Key标识），此时[AbilityStage/apis-ability-kit/js-apis-app-ability-abilityStage.md)中启动[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)时都会创建一个新的UIAbility实例；当新建的文档保存之后，回到桌面，或者新打开一个已保存的文档，回到桌面，此时再次打开该已保存的文档，此时AbilityStage中再次启动该UIAbility时，打开的仍然是之前原来已保存的文档界面。
+   例如在文档应用中，可以为不同的文档实例内容绑定不同的Key值。每次新建文档时，可以传入一个新的Key值（例如可以将文件的路径作为一个Key标识），此时AbilityStage中启动UIAbility时都会创建一个新的UIAbility实例；当新建的文档保存之后，回到桌面，或者新打开一个已保存的文档，回到桌面，此时再次打开该已保存的文档，此时AbilityStage中再次启动该UIAbility时，打开的仍然是之前原来已保存的文档界面。
 
    以如下步骤所示进行举例说明。
 

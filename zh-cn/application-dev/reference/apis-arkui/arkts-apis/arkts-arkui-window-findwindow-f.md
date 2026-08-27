@@ -3,8 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -16,11 +14,9 @@ function findWindow(name: string): Window
 
 查找指定名称对应的窗口。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-window-function findWindow(name: string): Window--><!--Device-window-function findWindow(name: string): Window-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -45,8 +41,6 @@ function findWindow(name: string): Window
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 let windowClass: window.Window | undefined = undefined;
 try {
@@ -55,15 +49,3 @@ try {
   console.error(`Failed to find the Window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let windowClass: window.Window | undefined = undefined;
-try {
-  windowClass = window.findWindow('test');
-} catch (err: Error) {
-  console.error(`Failed to find the Window. Cause code: ${err.code}, message: ${err.message}`);
-}
-```
-

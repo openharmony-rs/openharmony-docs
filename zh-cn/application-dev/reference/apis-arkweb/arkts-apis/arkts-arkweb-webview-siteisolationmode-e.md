@@ -4,8 +4,6 @@
 
 **起始版本：** 21
 
-<!--Device-webview-enum SiteIsolationMode--><!--Device-webview-enum SiteIsolationMode-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## PARTIAL
@@ -17,8 +15,6 @@ PARTIAL = 0
 部分站点隔离，即在同一个渲染进程内加载新站点。
 
 **起始版本：** 21
-
-<!--Device-SiteIsolationMode-PARTIAL = 0--><!--Device-SiteIsolationMode-PARTIAL = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -32,7 +28,4 @@ STRICT = 1
 
 **起始版本：** 21
 
-<!--Device-SiteIsolationMode-STRICT = 1--><!--Device-SiteIsolationMode-STRICT = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

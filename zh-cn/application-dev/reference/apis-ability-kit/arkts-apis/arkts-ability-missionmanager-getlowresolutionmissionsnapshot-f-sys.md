@@ -11,18 +11,16 @@ import { missionManager } from '@kit.AbilityKit';
 ```TypeScript
 function getLowResolutionMissionSnapShot(
     deviceId: string,
-    missionId: int,
+    missionId: number,
     callback: AsyncCallback<MissionSnapshot>
   ): void
 ```
 
 获取任务低分辨率快照。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
-
-<!--Device-missionManager-function getLowResolutionMissionSnapShot(    deviceId: string,    missionId: int,    callback: AsyncCallback<MissionSnapshot>  ): void--><!--Device-missionManager-function getLowResolutionMissionSnapShot(    deviceId: string,    missionId: int,    callback: AsyncCallback<MissionSnapshot>  ): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -33,16 +31,16 @@ function getLowResolutionMissionSnapShot(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
-| missionId | int | 是 | 任务ID。 |
-| callback | AsyncCallback&lt;MissionSnapshot&gt; | 是 | 执行结果回调函数，返回任务快照信息。 |
+| missionId | number | 是 | 任务ID。 |
+| callback | AsyncCallback & lt;MissionSnapshot & gt; | 是 | 执行结果回调函数，返回任务快照信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -55,7 +53,7 @@ let testMissionId = 2;
 
 try {
   missionManager.getLowResolutionMissionSnapShot('', testMissionId,
-    (err: BusinessError | null, data: missionManager.MissionSnapshot | undefined) => {
+    (err: BusinessError, data: missionManager.MissionSnapshot) => {
       if (err) {
         console.error(`getLowResolutionMissionSnapShot failed. Code: ${err.code}, message: ${err.message}.`);
       } else {
@@ -72,16 +70,14 @@ try {
 ## getLowResolutionMissionSnapShot
 
 ```TypeScript
-function getLowResolutionMissionSnapShot(deviceId: string, missionId: int): Promise<MissionSnapshot>
+function getLowResolutionMissionSnapShot(deviceId: string, missionId: number): Promise<MissionSnapshot>
 ```
 
 获取任务低分辨率快照。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
-
-<!--Device-missionManager-function getLowResolutionMissionSnapShot(deviceId: string, missionId: int): Promise<MissionSnapshot>--><!--Device-missionManager-function getLowResolutionMissionSnapShot(deviceId: string, missionId: int): Promise<MissionSnapshot>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -92,21 +88,21 @@ function getLowResolutionMissionSnapShot(deviceId: string, missionId: int): Prom
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
-| missionId | int | 是 | 任务ID。 |
+| missionId | number | 是 | 任务ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;MissionSnapshot&gt; | Promise对象，返回任务快照信息。 |
+| Promise & lt;MissionSnapshot & gt; | Promise对象，返回任务快照信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -120,13 +116,11 @@ let testMissionId = 2;
 try {
   missionManager.getLowResolutionMissionSnapShot('', testMissionId).then((data: missionManager.MissionSnapshot) => {
     console.info(`getLowResolutionMissionSnapShot successfully. Data: ${JSON.stringify(data)}`);
-  }).catch((error: Error) => {
-    let err: BusinessError = error as BusinessError;
-    console.error(`getLowResolutionMissionSnapShot failed. Code: ${err.code}, message: ${err.message}.`);
+  }).catch((error: BusinessError) => {
+    console.error(`getLowResolutionMissionSnapShot failed. Code: ${error.code}, message: ${error.message}.`);
   });
 } catch (error) {
   let err: BusinessError = error as BusinessError;
   console.error(`getLowResolutionMissionSnapShot failed. Code: ${err.code}, message: ${err.message}.`);
 }
 ```
-

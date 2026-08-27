@@ -37,7 +37,7 @@ Socket连接主要是通过Socket进行数据传输，支持TCP/UDP/Multicast/TL
 
 >**说明：** 
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见获取UIAbility的上下文信息。
 
 ## 应用TCP/UDP协议进行通信
 
@@ -107,37 +107,37 @@ UDP与TCP流程大体类似，下面以TCP为例：
     <!-- @[tcp_client_worker_ipAddress](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpClientWorker.ets) -->
     
     ``` TypeScript
-      // 绑定本地IP地址和端口。
-    // ···
-      tcpClient.bind(ipAddress, (err: BusinessError) => {
-        if (err) {
-          hilog.error(0x0000, 'testTag', 'bind fail');
-          return;
-        }
-        hilog.info(0x0000, 'testTag', 'bind success');
+    // 绑定本地IP地址和端口。
+    // ...
+    tcpClient.bind(ipAddress, (err: BusinessError) => {
+      if (err) {
+        hilog.error(0x0000, 'testTag', 'bind fail');
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'bind success');
     
-      // bind成功后，连接到指定的IP地址和端口。
-        // ···
-        let tcpConnect: socket.TCPConnectOptions = {
-          address: netAddress,
-          timeout: 6000 // 超时时间设置
+    // bind成功后，连接到指定的IP地址和端口。
+      // ...
+      let tcpConnect: socket.TCPConnectOptions = {
+        address: netAddress,
+        timeout: 6000 // 超时时间设置
+      };
+      tcpClient.connect(tcpConnect).then(() => {
+        hilog.info(0x0000, 'testTag', 'connect success');
+        let tcpSendOptions: socket.TCPSendOptions = {
+          data: tcpMessage.message!
         };
-        tcpClient.connect(tcpConnect).then(() => {
-          hilog.info(0x0000, 'testTag', 'connect success');
-          let tcpSendOptions: socket.TCPSendOptions = {
-            data: tcpMessage.message!
-          };
-          tcpClient.send(tcpSendOptions).then(() => {
-            hilog.info(0x0000, 'testTag', 'send success');
-            // ···
-          }).catch(() => {
-            hilog.info(0x0000, 'testTag', 'send fail');
-            // ···
-          });
-        }).catch((err: BusinessError) => {
-          hilog.error(0x0000, 'testTag', 'connect fail');
+        tcpClient.send(tcpSendOptions).then(() => {
+          hilog.info(0x0000, 'testTag', 'send success');
+          // ...
+        }).catch(() => {
+          hilog.error(0x0000, 'testTag', 'send fail');
+          // ...
         });
-      })
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', 'connect fail');
+      });
+    })
     ```
 
 5. Socket连接使用完毕后，主动关闭。
@@ -196,10 +196,10 @@ UDP与TCP流程大体类似，下面以TCP为例：
     // 绑定本地IP地址和端口，进行监听。
     tcpServer.listen(ipAddress).then(() => {
       hilog.info(0x0000, 'testTag', 'listen success');
-      // ···
+      // ...
     }).catch(() => {
-      hilog.info(0x0000, 'testTag', 'listen fail');
-      // ···
+      hilog.error(0x0000, 'testTag', 'listen fail');
+      // ...
     });
     ```
 
@@ -208,62 +208,62 @@ UDP与TCP流程大体类似，下面以TCP为例：
     <!-- @[tcp_server_worker_socketInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpServerWorker.ets) -->
     
     ``` TypeScript
-      class SocketInfo {
-        public message: ArrayBuffer = new ArrayBuffer(1);
-        public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
-      }
-      // 订阅TCPSocketServer的connect事件
-      // 客户端与服务端建立连接后，返回一个TCPSocketConnection对象，用于与客户端通信。
-      tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
-        // ···
+    class SocketInfo {
+      public message: ArrayBuffer = new ArrayBuffer(1);
+      public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
+    }
+    // 订阅TCPSocketServer的connect事件
+    // 客户端与服务端建立连接后，返回一个TCPSocketConnection对象，用于与客户端通信。
+    tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
+      // ...
     
-        // client即为建立连接后获取到的连接对象，可以通过该对象订阅TCPSocketConnection相关的事件。
-        client.on('close', () => {
-          hilog.info(0x0000, 'testTag', 'client on close success');
-        // ···
-        });
-    
-        client.on('message', (value: SocketInfo) => {
-          let buffer = value.message;
-          let dataView = new DataView(buffer);
-          let str = '';
-          for (let i = 0; i < dataView.byteLength; ++i) {
-            str += String.fromCharCode(dataView.getUint8(i));
-          }
-          hilog.info(0x0000, 'testTag', 'received message--:' + str);
-          hilog.info(0x0000, 'testTag', 'received address--:' + value.remoteInfo.address);
-          hilog.info(0x0000, 'testTag', 'received family--:' + value.remoteInfo.family);
-          hilog.info(0x0000, 'testTag', 'received port--:' + value.remoteInfo.port);
-          hilog.info(0x0000, 'testTag', 'received size--:' + value.remoteInfo.size);
-        // ···
-        });
+      // client即为建立连接后获取到的连接对象，可以通过该对象订阅TCPSocketConnection相关的事件。
+      client.on('close', () => {
+        hilog.info(0x0000, 'testTag', 'client on close success');
+        // ...
       });
-    // ···
-        let tcpSendOptions: socket.TCPSendOptions = {} as socket.TCPSendOptions;
-        // 用户可根据需要自行定义发送数据
-        tcpSendOptions.data = tcpMessage.message!;
     
-        client.send(tcpSendOptions).then(() => {
-          hilog.info(0x0000, 'testTag', 'send success');
-        // ···
-        }).catch((err: Object) => {
-          hilog.error(0x0000, 'testTag', 'send fail: ' + JSON.stringify(err));
-        // ···
-        });
-        // ···
-        client.close().then(() => {
-          hilog.info(0x0000, 'testTag', 'close success');
-        // ···
-        }).catch((err: BusinessError) => {
-          hilog.info(0x0000, 'testTag', 'close fail');
-        // ···
-        });
+      client.on('message', (value: SocketInfo) => {
+        let buffer = value.message;
+        let dataView = new DataView(buffer);
+        let str = '';
+        for (let i = 0; i < dataView.byteLength; ++i) {
+          str += String.fromCharCode(dataView.getUint8(i));
+        }
+        hilog.info(0x0000, 'testTag', 'received message--:' + str);
+        hilog.info(0x0000, 'testTag', 'received address--:' + value.remoteInfo.address);
+        hilog.info(0x0000, 'testTag', 'received family--:' + value.remoteInfo.family);
+        hilog.info(0x0000, 'testTag', 'received port--:' + value.remoteInfo.port);
+        hilog.info(0x0000, 'testTag', 'received size--:' + value.remoteInfo.size);
+        // ...
+      });
+    });
+    // ...
+      let tcpSendOptions: socket.TCPSendOptions = {} as socket.TCPSendOptions;
+      // 用户可根据需要自行定义发送数据
+      tcpSendOptions.data = tcpMessage.message!;
     
-        // 取消事件订阅，设置关闭连接超时（例如 10 秒后取消关闭连接）
-        setTimeout(() => {
-          client?.off('message');
-          client?.off('close');
-        }, 10 * 1000);
+      client.send(tcpSendOptions).then(() => {
+        hilog.info(0x0000, 'testTag', 'send success');
+        // ...
+      }).catch((err: Object) => {
+        hilog.error(0x0000, 'testTag', 'send fail: ' + JSON.stringify(err));
+        // ...
+      });
+      // ...
+      client.close().then(() => {
+        hilog.info(0x0000, 'testTag', 'close success');
+        // ...
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', 'close fail');
+        // ...
+      });
+    
+      // 取消事件订阅，设置关闭连接超时（例如 10 秒后取消关闭连接）
+      setTimeout(() => {
+        client?.off('message');
+        client?.off('close');
+      }, 10 * 1000);
     ```
 
 5. 取消TCPSocketServer相关事件的订阅。
@@ -448,10 +448,10 @@ UDP与TCP流程大体类似，下面以TCP为例：
      client.send(sendOpt).then(() => {
        hilog.info(0x0000, 'testTag', `send success`);
      }).catch((err: Object) => {
-       hilog.info(0x0000, 'testTag', `send failed: ` + JSON.stringify(err));
+       hilog.error(0x0000, 'testTag', `send failed: ` + JSON.stringify(err));
      });
    }).catch((err: Object) => {
-     hilog.info(0x0000, 'testTag', `connect fail: ` + JSON.stringify(err));
+     hilog.error(0x0000, 'testTag', `connect fail: ` + JSON.stringify(err));
    });
    ```
 
@@ -527,7 +527,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
    server.on('connect', (connection: socket.LocalSocketConnection) => {
      // 订阅LocalSocketConnection相关的事件。
      connection.on('error', (err: Object) => {
-       hilog.info(0x0000, 'testTag', 'on error success');
+       hilog.error(0x0000, 'testTag', 'on error received');
      });
    
      connection.on('message', (value: socket.LocalSocketMessageInfo) => {
@@ -601,7 +601,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
    let tlsSocket: socket.TLSSocket | null = socket.constructTLSSocketInstance();
    ```
 
-3. 绑定本地IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件。上传客户端CA证书及数字证书，调用[connect/apis-network-kit/js-apis-socket.md#connect9)接口建立连接。连接成功后，可调用[send/apis-network-kit/js-apis-socket.md#send9)接口发送数据。
+3. 绑定本地IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件。上传客户端CA证书及数字证书，调用connect接口建立连接。连接成功后，可调用send接口发送数据。
    ```ts
    // 绑定本地IP地址和端口。
    let ipAddress : socket.NetAddress = {} as socket.NetAddress;
@@ -720,7 +720,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
    let tlsOneWaySocket: socket.TLSSocket = socket.constructTLSSocketInstance();  // One way authentication
    ```
 
-3. 绑定本地IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件。上传客户端CA证书及数字证书，调用[connect/apis-network-kit/js-apis-socket.md#connect9)接口建立连接。连接成功后，可调用[send/apis-network-kit/js-apis-socket.md#send9)接口发送数据。
+3. 绑定本地IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件。上传客户端CA证书及数字证书，调用connect接口建立连接。连接成功后，可调用send接口发送数据。
    ```ts
    // 绑定本地IP地址和端口。
    let ipAddress : socket.NetAddress = {} as socket.NetAddress;
@@ -825,7 +825,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
 
-2. 参考[应用 TCP/UDP 协议进行通信](#应用tcpudp协议进行通信)，创建一个TCPSocket连接。
+2. 参考应用 TCP/UDP 协议进行通信，创建一个TCPSocket连接。
 
    <!-- @[tcp_to_tls_server_create_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
    
@@ -834,7 +834,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
    let tcpSocket: socket.TCPSocket = socket.constructTCPSocketInstance();
    ```
 
-3. 绑定本地IP地址和端口，绑定成功后，连接到服务器端IP地址和端口，连接成功后使用该TCPSocket对象创建TLSSocket，配置双向认证上传客户端 CA 证书及数字证书，可以建立TLSSocket连接，连接使用完毕后，主动关闭并取消相关事件的订阅。。
+3. 绑定本地IP地址和端口，绑定成功后，连接到服务器端IP地址和端口，连接成功后使用该TCPSocket对象创建TLSSocket，配置双向认证上传客户端CA证书及数字证书，可以建立TLSSocket连接，连接使用完毕后，主动关闭并取消相关事件的订阅。
    ```ts
    // 连接到服务器端指定的IP地址和端口。
    let serverAddress: socket.NetAddress = {} as socket.NetAddress;
@@ -895,7 +895,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
        hilog.info(0x0000, 'testTag', 'tls connect success');
        // ...
      }).catch((e: BusinessError) => {
-       hilog.info(0x0000, 'testTag', 'tls connect fail');
+       hilog.error(0x0000, 'testTag', 'tls connect fail');
        // ...
      });
    }).catch((e: BusinessError) => {
@@ -904,7 +904,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
    });
    ```
 
-4. 连接使用完毕后，主动关闭。取消相关事件的订阅。。
+4. 连接使用完毕后，主动关闭。取消相关事件的订阅。
 
    <!-- @[tls_server_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
    
@@ -1026,6 +1026,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
        // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
        client.off('message', callback);
        client.off('message');
+     });
    ```
 
 5. 取消订阅TLSSocketServer的相关事件。

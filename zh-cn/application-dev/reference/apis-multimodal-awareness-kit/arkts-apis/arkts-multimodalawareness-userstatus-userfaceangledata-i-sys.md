@@ -6,8 +6,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-userStatus-export interface UserFaceAngleData--><!--Device-userStatus-export interface UserFaceAngleData-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
 **系统接口：** 此接口为系统接口。
@@ -32,9 +30,6 @@ hpeNetworkId: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserFaceAngleData-hpeNetworkId: string--><!--Device-UserFaceAngleData-hpeNetworkId: string-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
 **系统接口：** 此接口为系统接口。
-

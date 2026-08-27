@@ -1,10 +1,12 @@
 # @ohos.batteryStatistics
 
-该模块提供软硬件耗电统计信息的查询接口，支持查询应用和硬件单元的耗电量与耗电百分比，适用于开发者需要监控和分析设备耗电情况的场景，便于定位高耗电应用或硬件组件，从而优化应用的能耗表现。 > **说明：** > > - 本模块接口为系统接口。
+该模块提供软硬件耗电统计信息的查询接口，支持查询应用和硬件单元的耗电量与耗电百分比，适用于开发者需要监控和分析设备耗电情况的场景，便于定位高耗电应用或硬件组件，从而优化应用的能耗表现。
 
-**起始版本：** 23
+> **说明：**
+> 
+> - 本模块接口为系统接口。
 
-<!--Device-unnamed-declare namespace batteryStats--><!--Device-unnamed-declare namespace batteryStats-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.PowerManager.BatteryStatistics
 
@@ -46,4 +48,3 @@ import { batteryStats } from '@kit.BasicServicesKit';
 | --- | --- |
 | [ConsumptionType](arkts-basicservices-batterystats-consumptiontype-e-sys.md) | 表示电量消耗类型的枚举值。 |
 <!--DelEnd-->
-

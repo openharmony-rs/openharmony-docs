@@ -18,8 +18,6 @@ function create(config: FloatViewConfiguration): Promise<FloatViewController>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-floatView-function create(config: FloatViewConfiguration): Promise<FloatViewController>--><!--Device-floatView-function create(config: FloatViewConfiguration): Promise<FloatViewController>-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -47,6 +45,7 @@ function create(config: FloatViewConfiguration): Promise<FloatViewController>
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
+import { floatView } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -55,21 +54,22 @@ struct Index {
   aboutToAppear(): void {
     // 请在组件内获取context，确保this.getUIContext().getHostContext()返回的结果为UIAbilityContext
     let ctx = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    // 创建闪控窗配置对象
     let config: floatView.FloatViewConfiguration = {
       context: ctx,
       templateType: floatView.FloatViewTemplateType.ROUNDED_RECTANGLE
     };
     try {
+      // 创建闪控窗控制器
       floatView.create(config).then((data: floatView.FloatViewController) => {
         this.floatViewController = data;
         console.info(`Succeeded in creating float view controller. Data: ${data}`);
       }).catch((err: BusinessError): void => {
         console.error(`Failed to create float view controller. Cause:${err.code}, message:${err.message}`);
       });
-    } catch(e) {
+    } catch (e) {
       console.error(`Failed to create float view controller. Cause:${e.code}, message:${e.message}`);
     }
   }
 }
 ```
-

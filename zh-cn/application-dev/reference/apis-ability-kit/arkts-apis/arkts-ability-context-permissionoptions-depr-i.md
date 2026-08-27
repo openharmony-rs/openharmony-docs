@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-unnamed-interface PermissionOptions--><!--Device-unnamed-interface PermissionOptions-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## pid
@@ -23,8 +21,6 @@ pid?: number
 **起始版本：** 7
 
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-PermissionOptions-pid?: number--><!--Device-PermissionOptions-pid?: number-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -44,7 +40,4 @@ uid?: number
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-PermissionOptions-uid?: number--><!--Device-PermissionOptions-uid?: number-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-

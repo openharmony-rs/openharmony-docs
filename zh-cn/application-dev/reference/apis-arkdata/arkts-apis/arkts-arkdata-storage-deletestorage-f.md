@@ -19,14 +19,33 @@ function deleteStorage(path: string, callback: AsyncCallback<void>): void
 
 **替代接口：** deletePreferences
 
-<!--Device-storage-function deleteStorage(path: string, callback: AsyncCallback<void>): void--><!--Device-storage-function deleteStorage(path: string, callback: AsyncCallback<void>): void-End-->
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 应用程序内部数据存储路径。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
+
+**示例**
+
+```TypeScript
+import featureAbility from '@ohos.ability.featureAbility';
+
+let path;
+let context = featureAbility.getContext();
+context.getFilesDir().then((filePath) => {
+  path = filePath;
+  console.info("======================>getFilesDirPromise====================>");
+
+  data_storage.deleteStorage(path + '/mystore', function (err) {
+    if (err) {
+      console.info("Failed to delete the storage with err: " + err);
+      return;
+    }
+    console.info("Succeeded in deleting the storage.");
+  })
+});
+```
 
 
 ## deleteStorage
@@ -43,8 +62,6 @@ function deleteStorage(path: string): Promise<void>
 
 **替代接口：** deletePreferences
 
-<!--Device-storage-function deleteStorage(path: string): Promise<void>--><!--Device-storage-function deleteStorage(path: string): Promise<void>-End-->
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -55,5 +72,24 @@ function deleteStorage(path: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise实例，用于异步获取结果。 |
+| Promise & lt;void & gt; | Promise实例，用于异步获取结果。 |
 
+**示例**
+
+```TypeScript
+import featureAbility from '@ohos.ability.featureAbility';
+
+let path;
+let context = featureAbility.getContext();
+context.getFilesDir().then((filePath) => {
+  path = filePath;
+  console.info("======================>getFilesDirPromise====================>");
+
+  let promisedelSt = data_storage.deleteStorage(path + '/mystore');
+  promisedelSt.then(() => {
+    console.info("Succeeded in deleting the storage.");
+  }).catch((err) => {
+    console.info("Failed to delete the storage with err: " + err);
+  })
+});
+```

@@ -2,9 +2,7 @@
 
 枚举，动态照片效果模式。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-enum MovingPhotoEffectMode--><!--Device-photoAccessHelper-enum MovingPhotoEffectMode-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -18,9 +16,7 @@ DEFAULT = 0
 
 默认模式。
 
-**起始版本：** 23
-
-<!--Device-MovingPhotoEffectMode-DEFAULT = 0--><!--Device-MovingPhotoEffectMode-DEFAULT = 0-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -34,9 +30,7 @@ BOUNCE_PLAY = 1
 
 来回播放。
 
-**起始版本：** 23
-
-<!--Device-MovingPhotoEffectMode-BOUNCE_PLAY = 1--><!--Device-MovingPhotoEffectMode-BOUNCE_PLAY = 1-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -50,9 +44,7 @@ LOOP_PLAY = 2
 
 循环播放。
 
-**起始版本：** 23
-
-<!--Device-MovingPhotoEffectMode-LOOP_PLAY = 2--><!--Device-MovingPhotoEffectMode-LOOP_PLAY = 2-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -66,9 +58,7 @@ LONG_EXPOSURE = 3
 
 长曝光。
 
-**起始版本：** 23
-
-<!--Device-MovingPhotoEffectMode-LONG_EXPOSURE = 3--><!--Device-MovingPhotoEffectMode-LONG_EXPOSURE = 3-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -82,9 +72,7 @@ MULTI_EXPOSURE = 4
 
 多曝光。
 
-**起始版本：** 23
-
-<!--Device-MovingPhotoEffectMode-MULTI_EXPOSURE = 4--><!--Device-MovingPhotoEffectMode-MULTI_EXPOSURE = 4-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -98,9 +86,7 @@ CINEMA_GRAPH = 5
 
 微动瞬间。
 
-**起始版本：** 23
-
-<!--Device-MovingPhotoEffectMode-CINEMA_GRAPH = 5--><!--Device-MovingPhotoEffectMode-CINEMA_GRAPH = 5-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -114,11 +100,8 @@ IMAGE_ONLY = 10
 
 关闭模式。
 
-**起始版本：** 23
-
-<!--Device-MovingPhotoEffectMode-IMAGE_ONLY = 10--><!--Device-MovingPhotoEffectMode-IMAGE_ONLY = 10-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

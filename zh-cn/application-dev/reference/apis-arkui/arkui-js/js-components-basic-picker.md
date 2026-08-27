@@ -24,7 +24,7 @@
 
 ## 属性
 
-除支持[通用属性](js-components-common-attributes.md)外，还支持如下属性：
+除支持通用属性外，还支持如下属性：
 
 | 名称   | 类型     | 默认值  | 必填   | 描述                                       |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -95,25 +95,25 @@
 
 ## 样式
 
-除支持[通用样式](js-components-common-styles.md)外，还支持如下样式：
+除支持通用样式外，还支持如下样式：
 
 | 名称                         | 类型                         | 默认值        | 必填   | 描述                                       |
 | -------------------------- | -------------------------- | ---------- | ---- | ---------------------------------------- |
 | text-color                 | &lt;color&gt;              | -          | 否    | 选择器的文本颜色。                                |
 | font-size                  | &lt;length&gt;             | -          | 否    | 选择器的文本尺寸。                                |
 | allow-scale                | boolean                    | true       | 否    | 选择器的文本尺寸是否跟随系统设置字体缩放尺寸进行放大缩小。<br/>如果在config描述文件中针对ability配置了fontSize的config-changes标签，则应用不会重启而直接生效。<br/>默认值：true，表示选择器的文本尺寸跟随系统设置字体缩放尺寸进行放大缩小。 |
-| letter-spacing             | &lt;length&gt;             | 0          | 否    | 选择器的字符间距。见[text组件的letter-spacing样式属性](js-components-basic-text.md#样式)。 |
-| text-decoration            | string                     | -          | 否    | 选择器的文本修饰。见[text组件的text-decoration样式属性](js-components-basic-text.md#样式)。 |
-| font-style                 | string                     | normal     | 否    | 选择器的字体样式。见[text组件的font-style样式属性](js-components-basic-text.md#样式)。 |
-| font-weight                | number&nbsp;\|&nbsp;string | normal     | 否    | 选择器的字体粗细。见[text组件的font-weight样式属性](js-components-basic-text.md#样式)。 |
-| font-family                | string                     | sans-serif | 否    | 选择器的字体列表，用逗号分隔，每个字体用字体名或者字体族名设置。列表中第一个系统中存在的或者通过[自定义字体](js-components-common-customizing-font.md)指定的字体，会被选中作为文本的字体。 |
+| letter-spacing             | &lt;length&gt;             | 0          | 否    | 选择器的字符间距。见text组件的letter-spacing样式属性。 |
+| text-decoration            | string                     | -          | 否    | 选择器的文本修饰。见text组件的text-decoration样式属性。 |
+| font-style                 | string                     | normal     | 否    | 选择器的字体样式。见text组件的font-style样式属性。 |
+| font-weight                | number&nbsp;\|&nbsp;string | normal     | 否    | 选择器的字体粗细。见text组件的font-weight样式属性。 |
+| font-family                | string                     | sans-serif | 否    | 选择器的字体列表，用逗号分隔，每个字体用字体名或者字体族名设置。列表中第一个系统中存在的或者通过自定义字体指定的字体，会被选中作为文本的字体。 |
 | line-height                | &lt;length&gt;             | 0px        | 否    | 选择器的文本行高。                                |
 | column-height<sup>5+</sup> | &lt;length&gt;             | -          | 否    | 选择器的选择项列表高度。                             |
 
 
 ## 事件
 
-除支持[通用事件](js-components-common-events.md)外，还支持如下事件：
+除支持通用事件外，还支持如下事件：
 
 
 ### 普通选择器
@@ -159,7 +159,7 @@
 
 ## 方法
 
-除支持[通用方法](js-components-common-methods.md)外，支持如下方法：
+除支持通用方法外，支持如下方法：
 
 | 名称   | 参数   | 描述              |
 | ---- | ---- | --------------- |

@@ -42,7 +42,7 @@ SysCap的用途：
 
 > **注意**：
 > 
-> 同一设备类型下不同的产品型号，软硬件规格可能不一致，所以需要开发者通过canIUse和能力查询接口判断，以达到先查询后使用的目的。例如部分手机不支持POI功能，所以需要开发者先使用canIUse判断SystemCapability.Location.Location.Core在手机上是否可调用，接着还需使用[geoLocationManager.isPoiServiceSupported]查询系统（即软件）是否支持POI服务，全部支持之后开发者才可正常使用POI相关接口。详情请参见[SysCap适配应用开发](#syscap适配应用开发)。
+> 同一设备类型下不同的产品型号，软硬件规格可能不一致，所以需要开发者通过canIUse和能力查询接口判断，以达到先查询后使用的目的。例如部分手机不支持POI功能，所以需要开发者先使用canIUse判断SystemCapability.Location.Location.Core在手机上是否可调用，接着还需使用[geoLocationManager.isPoiServiceSupported]查询系统（即软件）是否支持POI服务，全部支持之后开发者才可正常使用POI相关接口。详情请参见SysCap适配应用开发。
 
 ## SysCap与SDK和Kit的关系
 
@@ -73,7 +73,7 @@ SysCap与SDK、Kit形成结构化、层级化结构，如下图所示：
 
 ![Syscap-DEVDT](figures/Syscap-DEVDT.png) 
 
-也可在新建工程后，通过修改module.json5文件中的[deviceTypes](../quick-start/module-configuration-file.md#devicetypes标签)指定应用支持的设备类型：
+也可在新建工程后，通过修改module.json5文件中的deviceTypes指定应用支持的设备类型：
 
 ![Syscap-DTS](figures/Syscap-DTS.png) 
 
@@ -237,7 +237,7 @@ registerCameraStatus(cameraManager: camera.CameraManager): void {
 
 ![Syscap-ONE](figures/Syscap-ONE.png) 
 
-1. 如果存在API在同一设备类型下的不同设备型号存在能力不一致的情况，需使用能力查询接口判断接口能力可用性（注意：此处的能力查询机制并非canIUse，请参见[使用能力查询接口判断API是否可用](#使用能力查询接口判断api是否可用)）；
+1. 如果存在API在同一设备类型下的不同设备型号存在能力不一致的情况，需使用能力查询接口判断接口能力可用性（注意：此处的能力查询机制并非canIUse，请参见使用能力查询接口判断API是否可用）；
 
 2. 为了避免调用接口出现的异常情况，需要开发者进行错误码异常处理。
 
@@ -252,7 +252,7 @@ registerCameraStatus(cameraManager: camera.CameraManager): void {
 
    - canIUse仅适用于多设备应用开发，单设备应用开发可直接进行接口能力查询；
 
-   - 多设备应用开发场景下，当SysCap所属设备类型处于[deviceTypes](../quick-start/module-configuration-file.md#devicetypes标签)选择范围与API支持范围的并集但不在其交集内时（如设备类型选Phone/Tablet，而API仅支持Phone/2in1），必须通过canIUse进行可用性校验。
+   - 多设备应用开发场景下，当SysCap所属设备类型处于deviceTypes选择范围与API支持范围的并集但不在其交集内时（如设备类型选Phone/Tablet，而API仅支持Phone/2in1），必须通过canIUse进行可用性校验。
 
 2. 如果API在同一设备类型下的不同设备型号存在能力不一致的情况，需使用能力查询接口判断接口能力可用性（注意：此处的能力查询机制并非canIUse）；
 

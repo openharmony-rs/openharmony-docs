@@ -10,8 +10,6 @@ type TemplateFormDetailInfoCallback = (info: Array<TemplateFormDetailInfo>) => v
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-formInfo-type TemplateFormDetailInfoCallback = (info: Array<TemplateFormDetailInfo>) => void--><!--Device-formInfo-type TemplateFormDetailInfoCallback = (info: Array<TemplateFormDetailInfo>) => void-End-->
-
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
@@ -22,3 +20,13 @@ type TemplateFormDetailInfoCallback = (info: Array<TemplateFormDetailInfo>) => v
 | --- | --- | --- | --- |
 | info | Array&lt;[TemplateFormDetailInfo](arkts-form-forminfo-templateformdetailinfo-i-sys.md)&gt; | 是 | 模板卡真实卡片信息。 |
 
+**示例**
+
+```TypeScript
+import { formInfo } from '@kit.FormKit';
+
+let templateFormDetailInfoCallback: formInfo.TemplateFormDetailInfoCallback =
+  (info: Array<formInfo.TemplateFormDetailInfo>): void => {
+    console.info('template form detail info callback success.');
+  };
+```

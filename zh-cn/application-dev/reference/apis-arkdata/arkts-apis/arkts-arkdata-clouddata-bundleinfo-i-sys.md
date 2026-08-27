@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-cloudData-interface BundleInfo--><!--Device-cloudData-interface BundleInfo-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **系统接口：** 此接口为系统接口。
@@ -30,8 +28,6 @@ bundleName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BundleInfo-bundleName: string--><!--Device-BundleInfo-bundleName: string-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **系统接口：** 此接口为系统接口。
@@ -50,9 +46,6 @@ storeId?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BundleInfo-storeId?: string--><!--Device-BundleInfo-storeId?: string-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **系统接口：** 此接口为系统接口。
-

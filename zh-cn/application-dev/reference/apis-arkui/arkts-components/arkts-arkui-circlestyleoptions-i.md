@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface CircleStyleOptions--><!--Device-unnamed-declare interface CircleStyleOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,17 +17,15 @@
 color?: ResourceColor
 ```
 
-背景圆环颜色。 默认值：'#33182431'（深灰色，20%不透明度）。
+背景圆环颜色。默认值：'#33182431'（深灰色，20%不透明度）。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CircleStyleOptions-color?: ResourceColor--><!--Device-CircleStyleOptions-color?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,7 +35,7 @@ color?: ResourceColor
 enableForeground?: boolean
 ```
 
-背景圆环是否显示在宫格圆点上层。 true：背景圆环显示在宫格圆点上层，遮盖宫格圆点；false：背景圆环显示在宫格圆点下层，不遮盖宫格圆点。 默认值：false。
+背景圆环是否显示在宫格圆点上层。true：背景圆环显示在宫格圆点上层，遮盖宫格圆点；false：背景圆环显示在宫格圆点下层，不遮盖宫格圆点。默认值：false。
 
 **类型：** boolean
 
@@ -49,8 +45,6 @@ enableForeground?: boolean
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CircleStyleOptions-enableForeground?: boolean--><!--Device-CircleStyleOptions-enableForeground?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableWaveEffect
@@ -59,7 +53,7 @@ enableForeground?: boolean
 enableWaveEffect?: boolean
 ```
 
-选中宫格圆点后的波浪效果开关。 true：显示波浪效果；false：不显示波浪效果。 默认值：true。
+选中宫格圆点后的波浪效果开关。true：显示波浪效果；false：不显示波浪效果。默认值：true。
 
 **类型：** boolean
 
@@ -69,8 +63,6 @@ enableWaveEffect?: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CircleStyleOptions-enableWaveEffect?: boolean--><!--Device-CircleStyleOptions-enableWaveEffect?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## radius
@@ -79,7 +71,7 @@ enableWaveEffect?: boolean
 radius?: LengthMetrics
 ```
 
-背景圆环的半径。 默认值：circleRadius的约1.833倍（即11/6）。 取值范围：大于0。
+背景圆环的半径。默认值：[circleRadius](arkts-arkui-patternlock-attribute.md#circleradius)的约1.833倍（即11/6）。取值范围：大于0。
 
 **类型：** LengthMetrics
 
@@ -89,7 +81,4 @@ radius?: LengthMetrics
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CircleStyleOptions-radius?: LengthMetrics--><!--Device-CircleStyleOptions-radius?: LengthMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

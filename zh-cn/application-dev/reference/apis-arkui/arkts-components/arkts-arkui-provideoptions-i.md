@@ -4,8 +4,6 @@ ProvideOptions是\@Provide的选项。允许在同一组件树上通过allowOver
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare interface ProvideOptions--><!--Device-unnamed-declare interface ProvideOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,7 +17,7 @@ ProvideOptions是\@Provide的选项。允许在同一组件树上通过allowOver
 allowOverride?: string
 ```
 
-允许@Provide重写的别名。允许在同一组件树下通过allowOverride重写同名的@Provide。 缺省时表示@Provide不允许重写。若在未设置allowOverride的情况下定义同名@Provide，运行时会报错。
+允许@Provide重写的别名。允许在同一组件树下通过allowOverride重写同名的@Provide。缺省时表示@Provide不允许重写。若在未设置allowOverride的情况下定义同名@Provide，运行时会报错。
 
 **类型：** string
 
@@ -31,7 +29,4 @@ allowOverride?: string
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ProvideOptions-allowOverride?: string--><!--Device-ProvideOptions-allowOverride?: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

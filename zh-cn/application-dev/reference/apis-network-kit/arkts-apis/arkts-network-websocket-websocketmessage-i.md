@@ -2,16 +2,13 @@
 
 从指定客户端接收到的消息，包括客户端的信息和数据。
 
-**起始版本：** 23
-
-<!--Device-webSocket-export interface WebSocketMessage--><!--Device-webSocket-export interface WebSocketMessage-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## 导入模块
 
 ```TypeScript
-import { webSocket } from '@kit.NetworkKit';
 ```
 
 ## clientConnection
@@ -24,9 +21,7 @@ clientConnection: WebSocketConnection
 
 **类型：** [WebSocketConnection](arkts-network-websocket-websocketconnection-i.md)
 
-**起始版本：** 23
-
-<!--Device-WebSocketMessage-clientConnection: WebSocketConnection--><!--Device-WebSocketMessage-clientConnection: WebSocketConnection-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -40,9 +35,6 @@ data: string | ArrayBuffer
 
 **类型：** string \| ArrayBuffer
 
-**起始版本：** 23
-
-<!--Device-WebSocketMessage-data: string | ArrayBuffer--><!--Device-WebSocketMessage-data: string | ArrayBuffer-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Communication.NetStack
-

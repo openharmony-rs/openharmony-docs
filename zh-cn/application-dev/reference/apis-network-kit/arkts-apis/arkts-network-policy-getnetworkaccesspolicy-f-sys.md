@@ -9,7 +9,7 @@ import { policy } from '@kit.NetworkKit';
 ## getNetworkAccessPolicy
 
 ```TypeScript
-function getNetworkAccessPolicy(uid: int): Promise<NetworkAccessPolicy>
+function getNetworkAccessPolicy(uid: number): Promise<NetworkAccessPolicy>
 ```
 
 获取指定 uid 能否访问网络策略，使用 Promise 异步回调。
@@ -17,8 +17,6 @@ function getNetworkAccessPolicy(uid: int): Promise<NetworkAccessPolicy>
 **起始版本：** 12
 
 **需要权限：** ohos.permission.MANAGE_NET_STRATEGY
-
-<!--Device-policy-function getNetworkAccessPolicy(uid: int): Promise<NetworkAccessPolicy>--><!--Device-policy-function getNetworkAccessPolicy(uid: int): Promise<NetworkAccessPolicy>-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -28,7 +26,7 @@ function getNetworkAccessPolicy(uid: int): Promise<NetworkAccessPolicy>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uid | int | 是 | app 唯一标识符，取值范围为int32_t范围内的正整数。 |
+| uid | number | 是 | app 唯一标识符，取值范围为int32_t范围内的正整数。 |
 
 **返回值：**
 
@@ -40,12 +38,12 @@ function getNetworkAccessPolicy(uid: int): Promise<NetworkAccessPolicy>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 
 **示例**
 
@@ -75,8 +73,6 @@ function getNetworkAccessPolicy(): Promise<UidNetworkAccessPolicy>
 
 **需要权限：** ohos.permission.MANAGE_NET_STRATEGY
 
-<!--Device-policy-function getNetworkAccessPolicy(): Promise<UidNetworkAccessPolicy>--><!--Device-policy-function getNetworkAccessPolicy(): Promise<UidNetworkAccessPolicy>-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -85,16 +81,16 @@ function getNetworkAccessPolicy(): Promise<UidNetworkAccessPolicy>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[UidNetworkAccessPolicy](arkts-network-policy-uidnetworkaccesspolicy-i.md)&gt; | 以 Promise 形式返回设定结果。 |
+| Promise&lt;[UidNetworkAccessPolicy](arkts-network-policy-uidnetworkaccesspolicy-i-sys.md)&gt; | 以 Promise 形式返回设定结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
-| [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
+| [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
 **示例**
 
@@ -127,4 +123,3 @@ policy
     console.error(JSON.stringify(error));
   });
 ```
-

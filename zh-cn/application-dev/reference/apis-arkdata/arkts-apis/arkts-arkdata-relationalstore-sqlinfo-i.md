@@ -2,9 +2,7 @@
 
 描述数据库执行的SQL语句的详细信息。
 
-**起始版本：** 23
-
-<!--Device-relationalStore-interface SqlInfo--><!--Device-relationalStore-interface SqlInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -24,9 +22,7 @@ args: Array<ValueType>
 
 **类型：** Array&lt;ValueType&gt;
 
-**起始版本：** 23
-
-<!--Device-SqlInfo-args: Array<ValueType>--><!--Device-SqlInfo-args: Array<ValueType>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -40,9 +36,6 @@ sql: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SqlInfo-sql: string--><!--Device-SqlInfo-sql: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-

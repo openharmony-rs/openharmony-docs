@@ -10,7 +10,7 @@
 
 ## 接口说明
 
-开发者通过基础文件操作接口（[ohos.file.fs/apis-core-file-kit/js-apis-file-fs.md)）实现应用文件访问能力，主要功能如下表所示。
+开发者通过基础文件操作接口（ohos.file.fs）实现应用文件访问能力，主要功能如下表所示。
 
 **表1** 基础文件操作接口功能，其中“√”表示支持，“-”表示不区分同步和异步。
 
@@ -44,7 +44,7 @@
 
 ## 开发示例
 
-在对应用文件开始访问前，开发者需要[获取应用文件路径](../application-models/application-context-stage.md#获取应用文件路径)。以从UIAbilityContext获取HAP级别的文件路径为例进行说明，UIAbilityContext的获取方式请参见[获取UIAbility的上下文信息](../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在对应用文件开始访问前，开发者需要获取应用文件路径。以从UIAbilityContext获取HAP级别的文件路径为例进行说明，UIAbilityContext的获取方式请参见获取UIAbility的上下文信息。
 
 下面介绍几种常用操作示例。
 
@@ -367,7 +367,7 @@ function copyFileWithData(context: common.UIAbilityContext): void {
 
 ### 使用文件哈希流
 
-哈希流是一种数据传输和存储技术，可以将任意长度的数据转换为固定长度的哈希值来验证数据的完整性和一致性。以下代码演示了如何使用文件哈希处理接口（[ohos.file.hash/apis-core-file-kit/js-apis-file-hash.md)）来处理文件哈希流。
+哈希流是一种数据传输和存储技术，可以将任意长度的数据转换为固定长度的哈希值来验证数据的完整性和一致性。以下代码演示了如何使用文件哈希处理接口（ohos.file.hash）来处理文件哈希流。
 
 ```ts
 // pages/xxx.ets

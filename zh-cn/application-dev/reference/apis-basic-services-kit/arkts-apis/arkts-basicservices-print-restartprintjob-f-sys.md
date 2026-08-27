@@ -14,11 +14,9 @@ function restartPrintJob(jobId: string): Promise<void>
 
 重新打印之前打印过的打印任务，使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
-
-<!--Device-print-function restartPrintJob(jobId: string): Promise<void>--><!--Device-print-function restartPrintJob(jobId: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -34,7 +32,7 @@ function restartPrintJob(jobId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -47,13 +45,12 @@ function restartPrintJob(jobId: string): Promise<void>
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '121212';
 print.restartPrintJob(jobId).then(() => {
     console.info('restartPrintJob success');
 }).catch((error: BusinessError) => {
-    console.error('restartPrintJob failed, because : ' + JSON.stringify(error));
-})
+    console.error(`Failed to restart print job. Code: ${error.code}, message: ${error.message}`);
+});
 ```
-

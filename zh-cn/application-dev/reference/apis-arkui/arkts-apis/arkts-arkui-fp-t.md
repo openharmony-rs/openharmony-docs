@@ -14,9 +14,6 @@ declare type FP = `${number}fp`
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare type FP = `${number}fp`--><!--Device-unnamed-declare type FP = `${number}fp`-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **属性类型：** `${number}fp`
-

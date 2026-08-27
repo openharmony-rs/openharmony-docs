@@ -1,21 +1,23 @@
 # DRM解决方案开发指导
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
+
 DRM 解决方案插件实现DRM HDI接口（链接），DRM Kit的DRM框架将通过HDI接口加载DRM解决方案插件。
 
 插件由DRM解决方案集成方开发，放置在设备的/vendor分区中。
 
-OpenHarmony HDI插件驱动服务开发流程参考[HDF驱动开发流程](../../../device-dev/driver/driver-hdf-manage.md)，DRM HDI API的IDL在 ohos/drivers/interface/drm/v1_0目录中定义，其中v1_0对应不同版本的HDI API版本号，需根据实际调用的HDI API版本进行修改。
+OpenHarmony HDI插件驱动服务开发流程参考HDF驱动开发流程，DRM HDI API的IDL在 ohos/drivers/interface/drm/v1_0目录中定义，其中v1_0对应不同版本的HDI API版本号，需根据实际调用的HDI API版本进行修改。
 
 DRM HDI API的IDL构建完成后，可以在`//ohos/out/产品型号/gen/drivers/interface/drm/v1_0/`中找到生成的相应版本的.h和.cpp文件。
 
 实现DRM解决方案插件的步骤如下（以clearplay为例）：
 
-1. [开发插件](#开发插件)
+1. 开发插件
     - 模块添加
     - 驱动入口实现
     - HDI接口实现
@@ -24,12 +26,12 @@ DRM HDI API的IDL构建完成后，可以在`//ohos/out/产品型号/gen/drivers
     - 部件编译入口配置
     - 服务代码编译
 
-2. [DRM解决方案插件服务配置](#drm解决方案插件服务配置)
+2. DRM解决方案插件服务配置
     - hcs配置
     - host用户与组配置
     - 动态加载
 
-3. [添加SELinux权限](#添加selinux权限)
+3. 添加SELinux权限
 
 ## 开发插件
 
@@ -44,7 +46,7 @@ DRM HDI API的IDL构建完成后，可以在`//ohos/out/产品型号/gen/drivers
 ├── hdi_service  # DRM解决方案HDI服务代码。
 │   ├── BUILD.gn # DRM解决方案HDI服务代码编译BUILD.gn。
 │   ├── common   # DRM解决方案HDI服务依赖的工具类代码，包含json解析、base64编解码。
-│   ├── include  # RM解决方案HDI服务实现头文件。
+│   ├── include  # DRM解决方案HDI服务实现头文件。
 │   └── src      # DRM解决方案HDI服务实现代码。
 ├── interfaces   # DRM解决方案HDI服务能力接口。
 │   ├── BUILD.gn # DRM解决方案HDI服务能力接口编译BUILD.gn。
@@ -368,8 +370,7 @@ group("hdf_clearplay_interfaces") {
 
 ### 服务代码编译
 
-与编译系统部件编译类似：
-`./build.sh --product-name rk3568 --ccache --build-target drivers_peripheral_clearplay`
+与编译系统部件编译类似：`./build.sh --product-name rk3568 --ccache --build-target drivers_peripheral_clearplay`
 
 编译生成的二进制文件如下：
 
@@ -453,7 +454,7 @@ clearplay :: host {
     }
 }
 ```
-设备上`/etc/drm/drm_plugin_lazyloding.cfg`为 DRM 框架服务懒加载列表配置文件，键值对形式，DRM 解决方案插件解决方案名为键，DRM解决方案服务名为值：
+设备上`/etc/drm/drm_plugin_lazyloading.cfg`为 DRM 框架服务懒加载列表配置文件，键值对形式，DRM 解决方案插件解决方案名为键，DRM解决方案服务名为值：
 ```json
 {
     "plugin_services": {

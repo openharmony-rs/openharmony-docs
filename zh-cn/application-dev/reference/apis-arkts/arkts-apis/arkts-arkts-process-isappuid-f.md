@@ -20,8 +20,6 @@ function isAppUid(v: number): boolean
 
 **替代接口：** [isAppUid](arkts-arkts-process-processmanager-c.md#isappuid)
 
-<!--Device-process-function isAppUid(v: number): boolean--><!--Device-process-function isAppUid(v: number): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -44,3 +42,12 @@ let pres = process.uid;
 let result = process.isAppUid(pres);
 ```
 
+```TypeScript
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
+// uid通过process.uid获取
+let pres = process.uid;
+// 判断uid是否属于当前应用程序
+let result = processManager.isAppUid(pres);
+console.info("result:", result); // result: true
+```

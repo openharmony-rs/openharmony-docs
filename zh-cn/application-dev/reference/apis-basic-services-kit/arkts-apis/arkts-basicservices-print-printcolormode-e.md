@@ -2,9 +2,7 @@
 
 打印色彩模式的枚举。
 
-**起始版本：** 23
-
-<!--Device-print-enum PrintColorMode--><!--Device-print-enum PrintColorMode-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -16,9 +14,7 @@ COLOR_MODE_MONOCHROME = 0
 
 表示黑白打印。
 
-**起始版本：** 23
-
-<!--Device-PrintColorMode-COLOR_MODE_MONOCHROME = 0--><!--Device-PrintColorMode-COLOR_MODE_MONOCHROME = 0-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -30,9 +26,6 @@ COLOR_MODE_COLOR = 1
 
 表示彩色打印。
 
-**起始版本：** 23
-
-<!--Device-PrintColorMode-COLOR_MODE_COLOR = 1--><!--Device-PrintColorMode-COLOR_MODE_COLOR = 1-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
-

@@ -21,14 +21,14 @@
 
 ## 区域解码
 
-区域解码通过设置解码参数cropRegion，指定需要解码的矩形区域。解码器仅解码该区域的数据。参数详情请参考[Image_Region/apis-image-kit/capi-image-nativemodule-image-region.md)。
+区域解码通过设置解码参数cropRegion，指定需要解码的矩形区域。解码器仅解码该区域的数据。参数详情请参考Image_Region。
 
 > **说明：**
 > Native C版本区域解码需使用`OH_DecodingOptions_SetCropRegion`接口，而非`SetDesiredRegion`。`SetDesiredRegion`接口不生效。
 
 ### 开发步骤
 
-1. 参考[使用Image_NativeModule完成图片解码](image-source-c.md)创建OH_ImageSourceNative实例。
+1. 参考使用Image_NativeModule完成图片解码创建OH_ImageSourceNative实例。
 
 2. 设置cropRegion参数执行区域解码。
 
@@ -80,11 +80,11 @@
 - **JPEG、PNG、HEIF格式**：解码过程中采用下采样策略，按最优采样率解码，解码效率更高。
 - **其他格式**：先完整解码原图，再缩放至期望尺寸。
 
-参数详情请参考[OH_DecodingOptions/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md)。
+参数详情请参考OH_DecodingOptions。
 
 ### 开发步骤
 
-1. 参考[图片开发指导(C/C++)](image-source-c.md)创建OH_ImageSourceNative实例。
+1. 参考图片开发指导(C/C++)创建OH_ImageSourceNative实例。
 
 2. 设置`desiredSize`参数执行下采样解码。
 
@@ -134,11 +134,11 @@
 
 **推荐使用CROP_FIRST**：先裁剪再缩放可精确控制裁剪区域，保证不同格式解码效果一致。
 
-参数详情请参考[Image_CropAndScaleStrategy/apis-image-kit/capi-image-source-native-h.md#image_cropandscalestrategy)。
+参数详情请参考Image_CropAndScaleStrategy。
 
 ### 开发步骤
 
-1. 参考[图片开发指导(C/C++)](image-source-c.md)创建OH_ImageSourceNative实例。
+1. 参考图片开发指导(C/C++)创建OH_ImageSourceNative实例。
 
 2. 同时设置`cropRegion`、`desiredSize`和`cropAndScaleStrategy`参数。
 

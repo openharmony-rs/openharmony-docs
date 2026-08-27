@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { systemTime } from '@kit.BasicServicesKit';
-import { systemTimer } from '@kit.BasicServicesKit';
 ```
 
 ## setTimezone
@@ -23,16 +22,14 @@ function setTimezone(timezone: string, callback: AsyncCallback<void>): void
 
 **需要权限：** ohos.permission.SET_TIME_ZONE
 
-<!--Device-systemTime-function setTimezone(timezone: string, callback: AsyncCallback<void>): void--><!--Device-systemTime-function setTimezone(timezone: string, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timezone | string | 是 | 系统时区。具体可见 支持的系统时区 。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
+| timezone | string | 是 | 系统时区。具体可见 [支持的系统时区](../../../reference/apis-basic-services-kit/js-apis-system-time.md#支持的系统时区) 。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -76,21 +73,19 @@ function setTimezone(timezone: string): Promise<void>
 
 **需要权限：** ohos.permission.SET_TIME_ZONE
 
-<!--Device-systemTime-function setTimezone(timezone: string): Promise<void>--><!--Device-systemTime-function setTimezone(timezone: string): Promise<void>-End-->
-
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timezone | string | 是 | 系统时区。具体可见 支持的系统时区 。 |
+| timezone | string | 是 | 系统时区。具体可见 [支持的系统时区](../../../reference/apis-basic-services-kit/js-apis-system-time.md#支持的系统时区) 。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -114,4 +109,3 @@ try {
   console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
-

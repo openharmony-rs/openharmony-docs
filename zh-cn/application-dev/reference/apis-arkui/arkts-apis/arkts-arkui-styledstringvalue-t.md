@@ -14,24 +14,21 @@ UserDataSpan | BackgroundColorStyle | LineSpacingStyle
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type StyledStringValue = TextStyle | DecorationStyle | BaselineOffsetStyle | LetterSpacingStyle |TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightStyle | UrlStyle | CustomSpan |UserDataSpan | BackgroundColorStyle | LineSpacingStyle--><!--Device-unnamed-declare type StyledStringValue = TextStyle | DecorationStyle | BaselineOffsetStyle | LetterSpacingStyle |TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightStyle | UrlStyle | CustomSpan |UserDataSpan | BackgroundColorStyle | LineSpacingStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | --- | --- |
-| TextStyle | 文本字体样式。 |
-| DecorationStyle | 文本装饰线样式。 |
-| BaselineOffsetStyle | 文本基线偏移量样式。 |
-| LetterSpacingStyle | 文本字符间距样式。 |
-| TextShadowStyle | 文本阴影样式。 |
-| GestureStyle | 事件手势样式。 |
-| ImageAttachment | 图片样式。 |
-| ParagraphStyle | 文本段落样式。 |
-| LineHeightStyle | 文本行高样式。 |
-| UrlStyle | 超链接样式。 [since 14] |
-| CustomSpan | 自定义绘制Span样式。 |
-| UserDataSpan | UserDataSpan样式。 |
-| BackgroundColorStyle | 文本背景颜色样式。 [since 14] |
-| LineSpacingStyle | 文本行间距样式。 [since 26.0.0] |
-
+| [TextStyle](arkts-arkui-textstyle-c.md) | 文本字体样式。 |
+| [DecorationStyle](arkts-arkui-decorationstyle-c.md) | 文本装饰线样式。 |
+| [BaselineOffsetStyle](arkts-arkui-baselineoffsetstyle-c.md) | 文本基线偏移量样式。 |
+| [LetterSpacingStyle](arkts-arkui-letterspacingstyle-c.md) | 文本字符间距样式。 |
+| [TextShadowStyle](arkts-arkui-textshadowstyle-c.md) | 文本阴影样式。 |
+| [GestureStyle](arkts-arkui-gesturestyle-c.md) | 事件手势样式。 |
+| [ImageAttachment](arkts-arkui-imageattachment-c.md) | 图片样式。 |
+| [ParagraphStyle](arkts-arkui-paragraphstyle-c.md) | 文本段落样式。 |
+| [LineHeightStyle](arkts-arkui-lineheightstyle-c.md) | 文本行高样式。 |
+| [UrlStyle](arkts-arkui-urlstyle-c.md) | 超链接样式。 [since 14] |
+| [CustomSpan](arkts-arkui-customspan-c.md) | 自定义绘制Span样式。 |
+| [UserDataSpan](arkts-arkui-userdataspan-c.md) | UserDataSpan样式。 |
+| [BackgroundColorStyle](arkts-arkui-backgroundcolorstyle-c.md) | 文本背景颜色样式。 [since 14] |
+| [LineSpacingStyle](arkts-arkui-linespacingstyle-c.md) | 文本行间距样式。 [since 26.0.0] |

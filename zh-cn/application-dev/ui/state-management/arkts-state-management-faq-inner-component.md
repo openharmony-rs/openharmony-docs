@@ -76,7 +76,7 @@ struct Index {
 
 上面示例的渲染过程为：
 
-1. 创建第一个Text组件，触发this.message改变，[标脏](./arkts-state-management-glossary.md#mark-dirty标脏)第一个Text组件。
+1. 创建第一个Text组件，触发this.message改变，标脏第一个Text组件。
 2. 创建第二个Text组件，触发this.message改变，标脏两个Text组件。
 3. 下一帧到来时，刷新脏系统组件。
 4. 刷新第一个Text组件，触发this.message改变，不会标脏自己，仅标脏第二个Text组件。
@@ -88,11 +88,11 @@ struct Index {
 
 ## 注册回调中更改状态变量未解注册导致内存泄漏
 
-开发者可以在[aboutToAppear/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)中注册箭头函数，以此改变组件中的状态变量。
+开发者可以在aboutToAppear中注册箭头函数，以此改变组件中的状态变量。
 
 >**注意：**
 >
->需要在[aboutToDisappear/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)中将注册的函数置空，以避免箭头函数捕获自定义组件的this实例，导致自定义组件无法被释放，从而造成内存泄漏。
+>需要在aboutToDisappear中将注册的函数置空，以避免箭头函数捕获自定义组件的this实例，导致自定义组件无法被释放，从而造成内存泄漏。
 
 <!-- @[state_problem_unregister_state_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets) -->     
 
@@ -124,7 +124,6 @@ let model: Model = new Model();
 @Component
 struct Test {
   @State count: number = 10;
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   aboutToAppear(): void {
     model.add(() => {
@@ -149,7 +148,7 @@ struct Test {
 }
 ```
 
-此外，也可以使用 LocalStorage在[自定义组件外改变状态变量](./arkts-localstorage.md#自定义组件外改变状态变量)。
+此外，也可以使用 LocalStorage在自定义组件外改变状态变量。
 
 ## 使用a.b(this.object)形式调用，不会触发UI刷新
 
@@ -315,7 +314,7 @@ struct ConsumerChild {
 
 以上示例每次点击Button('change to self')，把相同的类实例赋值给一个Class类型的状态变量，会触发刷新并输出`this.dataObj.name change: a`日志。这是因为当再次赋值`list[0]`时，`dataObjFromList`已经是`Proxy`类型，而`list[0]`是`Object`类型，因此判断两者不相等，会触发赋值和刷新。
 
-为了避免这种不必要的赋值和刷新，可以通过用\@Observed装饰类，或者使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象，提前进行新旧值的判断，如果相同则不执行赋值。
+为了避免这种不必要的赋值和刷新，可以通过用\@Observed装饰类，或者使用UIUtils.getTarget()获取原始对象，提前进行新旧值的判断，如果相同则不执行赋值。
 
 方法一：增加\@Observed
 <!-- @[state_problem_complex_solution_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution01.ets) -->  
@@ -368,7 +367,7 @@ struct ConsumerChild {
 
 以上示例，给对应的类增加了\@Observed装饰器后，list[0]已经是Proxy类型了，这样再次赋值时，相同的对象，就不会触发刷新。
 
-方法二：使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象
+方法二：使用UIUtils.getTarget()获取原始对象
 <!-- @[state_problem_complex_solution_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution02.ets) -->  
 
 ``` TypeScript
@@ -453,7 +452,7 @@ struct Index {
 
 以上示例每次点击Button('change to self')，把相同的Array类型常量赋值给一个Array类型的状态变量，都会触发刷新。这是因为当再次赋值`list[0]`时，`dataObjFromList`已经是Proxy类型，而`list[0]`是Array类型。由于类型不相等，会触发赋值和刷新。
 
-为了避免这种不必要的赋值和刷新，可以使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象提前进行新旧值的判断，当两者相同时不执行赋值。
+为了避免这种不必要的赋值和刷新，可以使用UIUtils.getTarget()获取原始对象提前进行新旧值的判断，当两者相同时不执行赋值。
 
 使用UIUtils.getTarget()方法示例。
 
@@ -491,7 +490,7 @@ struct Index {
 
 ## 子组件无需修改状态变量时，使用@Prop导致不必要的深拷贝
 
-在应用开发中，父组件常向子组件传值。如果子组件不需要修改该状态变量，子组件使用[@Prop](./arkts-prop.md)装饰器会增加组件创建时间并影响性能，此时建议改用[@ObjectLink](./arkts-observed-and-objectlink.md)。
+在应用开发中，父组件常向子组件传值。如果子组件不需要修改该状态变量，子组件使用@Prop装饰器会增加组件创建时间并影响性能，此时建议改用@ObjectLink。
 
 【反例】
 
@@ -535,7 +534,7 @@ struct DeepReParent {
 }
 ```
 
-在以上示例中，DeepRePropChild组件没有改变\@Prop testClass: MyClass的值，因此使用\@ObjectLink更为合适。因为@Prop会深拷贝数据带来性能开销，所以\@ObjectLink是比\@Prop更优的选择。
+在以上示例中，DeepRePropChild组件没有改变\@Prop testClass: DeepReMyClass的值，因此使用\@ObjectLink更为合适。因为@Prop会深拷贝数据带来性能开销，所以\@ObjectLink是比\@Prop更优的选择。
 
 【正例】
 
@@ -581,7 +580,7 @@ struct Parent {
 
 ## 状态变量关联的组件数过多导致性能下降
 
-建议每个状态变量关联的组件数少于20个。精准控制状态变量关联的组件数量可减少不必要的组件刷新，提升刷新效率。有时开发者会将同一状态变量绑定于多个同级组件属性，状态变化时将导致这些组件同步更新，产生不必要的刷新，当组件复杂度较高时会显著影响整体性能。相反，将该状态变量绑定在这些组件的父组件上，可以减少需要刷新的组件数，提高性能。在应用开发中，可以通过HiDumper查看状态变量关联的组件数。<!--Del-->具体可参考[状态变量组件定位工具实践](../../performance/state_variable_dfx_pratice.md)。<!--DelEnd-->
+建议每个状态变量关联的组件数少于20个。精准控制状态变量关联的组件数量可减少不必要的组件刷新，提升刷新效率。有时开发者会将同一状态变量绑定于多个同级组件属性，状态变化时将导致这些组件同步更新，产生不必要的刷新，当组件复杂度较高时会显著影响整体性能。相反，将该状态变量绑定在这些组件的父组件上，可以减少需要刷新的组件数，提高性能。在应用开发中，可以通过HiDumper查看状态变量关联的组件数。<!--Del-->具体可参考状态变量组件定位工具实践。<!--DelEnd-->
 
 【反例】
 
@@ -788,7 +787,7 @@ struct Index {
 
 在应用开发中，应尽量减少对状态变量的直接赋值，通过临时变量完成数据计算操作。
 
-状态变量发生变化时，ArkUI会查询依赖该状态变量的组件并执行该组件的更新方法，完成组件渲染。通过使用临时变量的计算代替直接操作状态变量，可以使ArkUI仅在最后一次状态变量变更时查询并渲染组件，减少不必要的操作，从而提高应用性能。状态变量行为可参考[@State装饰器：组件内状态](arkts-state.md)。
+状态变量发生变化时，ArkUI会查询依赖该状态变量的组件并执行该组件的更新方法，完成组件渲染。通过使用临时变量的计算代替直接操作状态变量，可以使ArkUI仅在最后一次状态变量变更时查询并渲染组件，减少不必要的操作，从而提高应用性能。状态变量行为可参考@State装饰器：组件内状态。
 
 【反例】
 
@@ -833,7 +832,7 @@ struct Index {
 }
 ```
 
-直接操作状态变量，三次触发计算函数，运行[耗时](../ui-inspector-profiler.md#trace调试能力)结果如下：
+直接操作状态变量，三次触发计算函数，运行耗时结果如下：
 
 ![hp_arkui_use_state_var](figures/hp_arkui_use_state_var.png)
 
@@ -888,14 +887,14 @@ struct Index {
 
 【总结】
 
-| **计算方式**     | **耗时(局限不同设备和场景，数据仅供参考)** | **说明**                                          |
+| **计算方式**     | **耗时（因不同设备和场景而异，数据仅供参考）** | **说明**                                          |
 | ---------------- | ------------------------------------------ | ------------------------------------------------- |
 | 直接操作状态变量 | 1.01ms                                     | 增加了ArkUI不必要的查询和渲染行为，导致性能劣化。 |
 | 使用临时变量计算 | 0.63ms                                     | 减少了ArkUI不必要的行为，优化性能。               |
 
 ## 使用LazyForEach的重建机制刷新UI导致性能下降
 
-开发过程中通常会将[LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md)和状态变量结合起来使用。
+开发过程中通常会将LazyForEach和状态变量结合起来使用。
 
 <!-- @[StateArrayLazy_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy.ets) -->  
 
@@ -1197,11 +1196,11 @@ struct ChildComponent {
 
 可以观察到UI能够正常刷新，图片没有“闪烁”，且没有输出日志信息，说明没有对Text组件和Image组件进行重建。
 
-这是因为使用自定义组件之后，可以通过@Observed和@ObjectLink配合去直接更改自定义组件内的状态变量实现刷新，而不需要利用LazyForEach进行重建。使用[@Track装饰器](arkts-track.md)分别装饰StringData类型中的message和imgSrc属性可以使更新范围进一步缩小到指定的Text组件。
+这是因为使用自定义组件之后，可以通过@Observed和@ObjectLink配合去直接更改自定义组件内的状态变量实现刷新，而不需要利用LazyForEach进行重建。使用@Track装饰器分别装饰StringData类型中的message和imgSrc属性可以使更新范围进一步缩小到指定的Text组件。
 
 ## ForEach和对象数组结合使用导致UI不刷新
 
-开发过程中经常会使用对象数组和[ForEach](../rendering-control/arkts-rendering-control-foreach.md)结合起来使用，但是写法不当的话会出现UI不刷新的情况。
+开发过程中经常会使用对象数组和ForEach结合起来使用，但是写法不当的话会出现UI不刷新的情况。
 
 <!-- @[StateArrayForeach_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach.ets) -->   
 

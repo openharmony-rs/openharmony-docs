@@ -2,9 +2,7 @@
 
 输入法面板属性。
 
-**起始版本：** 23
-
-<!--Device-inputMethodEngine-export interface PanelInfo--><!--Device-inputMethodEngine-export interface PanelInfo-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -26,9 +24,7 @@ flag?: PanelFlag
 
 **默认值：** FLG_FIXED
 
-**起始版本：** 23
-
-<!--Device-PanelInfo-flag?: PanelFlag--><!--Device-PanelInfo-flag?: PanelFlag-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -42,9 +38,6 @@ type: PanelType
 
 **类型：** PanelType
 
-**起始版本：** 23
-
-<!--Device-PanelInfo-type: PanelType--><!--Device-PanelInfo-type: PanelType-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
-

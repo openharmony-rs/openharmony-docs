@@ -1,25 +1,25 @@
 # 使用扩展的Node-API接口创建对ArkTS对象的Sendable强引用
 
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 OpenHarmony的API提供进程内跨ArkTS线程共享的强引用能力。相较于`napi_ref`，`napi_sendable_ref`支持跨ArkTS线程操作，但同时也存在一些限制。
 
 ## 场景介绍
 
-开发者可使用[napi_create_strong_sendable_native-lib/napi.md#napi_create_strong_sendable_reference)接口创建指向Sendable ArkTS对象的Sendable强引用，使用[napi_get_strong_sendable_reference_value/native-lib/napi.md#napi_get_strong_sendable_reference_value)获取被引用的ArkTS对象，使用[napi_delete_strong_sendable_native-lib/napi.md#napi_delete_strong_sendable_reference)删除Sendable强引用。这些操作既可以在同一ArkTS线程进行，也可在不同ArkTS线程进行。
+开发者可使用napi_create_strong_sendable_reference接口创建指向Sendable ArkTS对象的Sendable强引用，使用napi_get_strong_sendable_reference_value获取被引用的ArkTS对象，使用napi_delete_strong_sendable_reference删除Sendable强引用。这些操作既可以在同一ArkTS线程进行，也可在不同ArkTS线程进行。
 
 ## Sendable强引用对象关联接口
 
 | 接口                                     | 描述                                       |
 | ---------------------------------------- | ------------------------------------------ |
-| [napi_create_strong_sendable_native-lib/napi.md#napi_create_strong_sendable_reference)    | 创建指向Sendable ArkTS对象的Sendable强引用。 |
-| [napi_delete_strong_sendable_native-lib/napi.md#napi_delete_strong_sendable_reference)    | 删除Sendable强引用。                        |
-| [napi_get_strong_sendable_reference_value/native-lib/napi.md#napi_get_strong_sendable_reference_value) | 根据Sendable强引用获取其关联的ArkTS对象值。   |
+| napi_create_strong_sendable_reference    | 创建指向Sendable ArkTS对象的Sendable强引用。 |
+| napi_delete_strong_sendable_reference    | 删除Sendable强引用。                        |
+| napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。   |
 
 ## 示例代码
 
@@ -319,7 +319,7 @@ OpenHarmony的API提供进程内跨ArkTS线程共享的强引用能力。相较�
    ```
 
 ## 注意事项
-1. 只能为[Sendable对象](../arkts-utils/arkts-sendable.md#sendable支持的数据类型)创建`napi_sendable_ref`。
+1. 只能为Sendable对象创建`napi_sendable_ref`。
 2. `napi_sendable_ref`可跨ArkTS线程使用，在多线程操作时，调用者需自己保证释放时机，防止出现释放后使用的问题。
 3. 同一进程内，同时存活的`napi_sendable_ref`最大数量为51200个。
 4. `napi_sendable_ref`与其他引用的类型不同，因此不可将`napi_ref`、`napi_strong_ref`等其他引用强转成`napi_sendable_ref`。`napi_delete_strong_sendable_reference`和`napi_get_strong_sendable_reference_value`接口仅允许接收由`napi_create_strong_sendable_reference`创建的`napi_sendable_ref`。

@@ -87,7 +87,7 @@
    }
    ```
 
-编译运行后，通过DevEco Studio中的[Profiler工具](application-performance-analysis.md)抓取Trace，可以得到图1。通过图中泳道可以看到，主页面加载完成共耗时22.9ms（从DispatchTouchEvent标签到sendCommands标签，即从点击进入页面到通知系统开始渲染页面）。其中，load page标签表示加载整个页面的时间，共耗时19ms。继续向下可以看到，虽然主页面并没有使用Web组件，但是依旧加载了libwebview_napi.z.so，耗时大概12ms左右。如果用户只是在主页面停留，并没有继续进入子页面，那么这个so库的初始化就是没有必要的，但是依旧产生了耗时，并且占用了一部分的内存，会降低应用的性能。
+编译运行后，通过DevEco Studio中的Profiler工具抓取Trace，可以得到图1。通过图中泳道可以看到，主页面加载完成共耗时22.9ms（从DispatchTouchEvent标签到sendCommands标签，即从点击进入页面到通知系统开始渲染页面）。其中，load page标签表示加载整个页面的时间，共耗时19ms。继续向下可以看到，虽然主页面并没有使用Web组件，但是依旧加载了libwebview_napi.z.so，耗时大概12ms左右。如果用户只是在主页面停留，并没有继续进入子页面，那么这个so库的初始化就是没有必要的，但是依旧产生了耗时，并且占用了一部分的内存，会降低应用的性能。
 
 图1 常规加载主页面泳道图
 

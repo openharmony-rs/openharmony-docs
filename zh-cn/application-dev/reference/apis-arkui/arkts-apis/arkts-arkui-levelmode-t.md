@@ -1,4 +1,4 @@
-# LevelMode(ActionSheet)
+# LevelMode
 
 ```TypeScript
 declare type LevelMode = import('../api/@ohos.promptAction').LevelMode
@@ -12,9 +12,6 @@ declare type LevelMode = import('../api/@ohos.promptAction').LevelMode
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type LevelMode = import('../api/@ohos.promptAction').LevelMode--><!--Device-unnamed-declare type LevelMode = import('../api/@ohos.promptAction').LevelMode-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **属性类型：** import('../api/@ohos.promptAction').LevelMode
-

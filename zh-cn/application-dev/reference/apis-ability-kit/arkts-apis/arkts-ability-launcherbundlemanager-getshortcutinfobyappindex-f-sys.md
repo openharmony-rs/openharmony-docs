@@ -9,16 +9,14 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 ## getShortcutInfoByAppIndex
 
 ```TypeScript
-function getShortcutInfoByAppIndex(bundleName: string, appIndex: int): Array<ShortcutInfo>
+function getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array<ShortcutInfo>
 ```
 
-查询当前用户下指定分身应用的快捷方式信息ShortcutInfo。 调用方获取自己的信息时不需要权限。
+查询当前用户下指定分身应用的快捷方式信息ShortcutInfo。调用方获取自己的信息时不需要权限。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
-
-<!--Device-launcherBundleManager-function getShortcutInfoByAppIndex(bundleName: string, appIndex: int): Array<ShortcutInfo>--><!--Device-launcherBundleManager-function getShortcutInfoByAppIndex(bundleName: string, appIndex: int): Array<ShortcutInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -29,23 +27,23 @@ function getShortcutInfoByAppIndex(bundleName: string, appIndex: int): Array<Sho
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| appIndex | int | 是 | 分身应用的索引。 |
+| appIndex | number | 是 | 分身应用的索引。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;ShortcutInfo&gt; | Array形式返回当前用户下指定分身应用的[ShortcutInfo]{ |
+| Array & lt;ShortcutInfo & gt; | Array形式返回当前用户下指定分身应用的[ShortcutInfo]{ |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not support. |
-| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The specified app index is invalid. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Verify permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not support. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The specified app index is invalid. |
 
 **示例**
 
@@ -62,4 +60,3 @@ try {
   console.error(`Failed to getShortcutInfoByAppIndex. Code: ${code}, message: ${message}`);
 }
 ```
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 9
 
-<!--Device-unnamed-interface ICurve--><!--Device-unnamed-interface ICurve-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,19 +25,16 @@ interpolate(fraction : number) : number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ICurve-interpolate(fraction : number) : number--><!--Device-ICurve-interpolate(fraction : number) : number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fraction | number | 是 | 当前的归一化时间参数。<br/>取值范围：[0,1]<br/>**说明：** <br/>设置的值小于0时，按0处理；设置的值大于1时，按1处理。 |
+| fraction | number | 是 | 当前的归一化时间参数。取值范围：[0,1]   **说明：** 设置的值小于0时，按0处理；设置的值大于1时，按1处理。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | number | 返回归一化time时间点对应的曲线插值。 |
-

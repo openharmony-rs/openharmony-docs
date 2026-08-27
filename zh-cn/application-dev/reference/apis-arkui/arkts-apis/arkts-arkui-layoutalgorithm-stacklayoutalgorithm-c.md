@@ -1,12 +1,15 @@
 # StackLayoutAlgorithm
 
-堆叠布局算法类。 > **说明：** > > StackLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为[DynamicLayout](../../apis-na/arkts-apis/arkts-na-arkui-components-arkdynamiclayout-dynamiclayout-f.md)组件的 > 入参指定布局算法。
+堆叠布局算法类。
+
+> **说明：**
+> 
+> StackLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为DynamicLayout组件的
+> 入参指定布局算法。
 
 **继承/实现关系：** StackLayoutAlgorithm implements [LayoutAlgorithm](arkts-arkui-layoutalgorithm-i.md)
 
 **起始版本：** 24
-
-<!--Device-unnamed-export class StackLayoutAlgorithm--><!--Device-unnamed-export class StackLayoutAlgorithm-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,8 +29,6 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 **卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-StackLayoutAlgorithm-constructor(option?: StackLayoutAlgorithmOptions)--><!--Device-StackLayoutAlgorithm-constructor(option?: StackLayoutAlgorithmOptions)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -39,12 +40,12 @@ constructor(option?: StackLayoutAlgorithmOptions)
 ## alignContent
 
 ```TypeScript
-@Trace public alignContent?: LocalizedAlignment
+public alignContent?: LocalizedAlignment
 ```
 
-设置子组件在堆叠布局算法中对齐格式。 默认值：LocalizedAlignment.CENTER 非法值：按默认值处理。 装饰器类型：@Trace
+设置子组件在堆叠布局算法中对齐格式。默认值：LocalizedAlignment.CENTER非法值：按默认值处理。装饰器类型：@Trace
 
-**类型：** [LocalizedAlignment](../../apis-na/arkts-apis/arkts-na-enums-localizedalignment-e.md)
+**类型：** [LocalizedAlignment](arkts-arkui-localizedalignment-e.md)
 
 **起始版本：** 24
 
@@ -54,7 +55,4 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 **卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-StackLayoutAlgorithm-@Trace public alignContent?: LocalizedAlignment--><!--Device-StackLayoutAlgorithm-@Trace public alignContent?: LocalizedAlignment-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -2,20 +2,15 @@
 
 辅助应用信息。
 
-**起始版本：** 23
-
-<!--Device-accessibility-interface AccessibilityAbilityInfo--><!--Device-accessibility-interface AccessibilityAbilityInfo-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ## 导入模块
 
 ```TypeScript
-import { config } from '@kit.AccessibilityKit';
 import { accessibility } from '@kit.AccessibilityKit';
 import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType } from '@kit.AccessibilityKit';
-import { GesturePath } from '@kit.AccessibilityKit';
-import { GesturePoint } from '@kit.AccessibilityKit';
 ```
 
 ## abilityTypes
@@ -28,13 +23,11 @@ readonly abilityTypes: Array<AbilityType>
 
 **类型：** Array&lt;AbilityType&gt;
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityAbilityInfo-readonly abilityTypes: Array<AbilityType>--><!--Device-AccessibilityAbilityInfo-readonly abilityTypes: Array<AbilityType>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -48,13 +41,11 @@ Bundle名称。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityAbilityInfo-readonly bundleName: string--><!--Device-AccessibilityAbilityInfo-readonly bundleName: string-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -68,13 +59,11 @@ readonly capabilities: Array<Capability>
 
 **类型：** Array&lt;Capability&gt;
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityAbilityInfo-readonly capabilities: Array<Capability>--><!--Device-AccessibilityAbilityInfo-readonly capabilities: Array<Capability>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -88,13 +77,11 @@ readonly description: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityAbilityInfo-readonly description: string--><!--Device-AccessibilityAbilityInfo-readonly description: string-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -108,13 +95,11 @@ readonly eventTypes: Array<EventType>
 
 **类型：** Array&lt;EventType&gt;
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityAbilityInfo-readonly eventTypes: Array<EventType>--><!--Device-AccessibilityAbilityInfo-readonly eventTypes: Array<EventType>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -128,13 +113,11 @@ ability id。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityAbilityInfo-readonly id: string--><!--Device-AccessibilityAbilityInfo-readonly id: string-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -148,13 +131,11 @@ readonly label: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityAbilityInfo-readonly label: string--><!--Device-AccessibilityAbilityInfo-readonly label: string-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -168,13 +149,11 @@ ability名。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityAbilityInfo-readonly name: string--><!--Device-AccessibilityAbilityInfo-readonly name: string-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -188,13 +167,11 @@ readonly needHide: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityAbilityInfo-readonly needHide: boolean--><!--Device-AccessibilityAbilityInfo-readonly needHide: boolean-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -208,13 +185,10 @@ readonly targetBundleNames: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-AccessibilityAbilityInfo-readonly targetBundleNames: Array<string>--><!--Device-AccessibilityAbilityInfo-readonly targetBundleNames: Array<string>-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-

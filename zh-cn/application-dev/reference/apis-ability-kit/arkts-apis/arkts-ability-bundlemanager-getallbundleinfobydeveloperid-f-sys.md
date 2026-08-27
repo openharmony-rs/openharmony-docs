@@ -14,11 +14,9 @@ function getAllBundleInfoByDeveloperId(developerId: string): Array<BundleInfo>
 
 根据给定的developerId获取当前用户下的包信息列表。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
-
-<!--Device-bundleManager-function getAllBundleInfoByDeveloperId(developerId: string): Array<BundleInfo>--><!--Device-bundleManager-function getAllBundleInfoByDeveloperId(developerId: string): Array<BundleInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -34,16 +32,16 @@ function getAllBundleInfoByDeveloperId(developerId: string): Array<BundleInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;BundleInfo&gt; | 同步返回Array&lt;BundleInfo&gt;。 |
+| Array & lt;BundleInfo & gt; | 同步返回Array & lt;BundleInfo & gt;。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter developerId is empty. |
-| [17700059](../errorcode-bundle.md#17700059-指定的开发者id不存在) | The specified developerId is invalid. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter developerId is empty. |
+| [17700059](../errorcode-bundle.md#17700059-指定的开发者id不存在) | The specified developerId is invalid. |
 
 **示例**
 
@@ -62,4 +60,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllBundleInfoByDeveloperId failed: %{public}s', message);
 }
 ```
-

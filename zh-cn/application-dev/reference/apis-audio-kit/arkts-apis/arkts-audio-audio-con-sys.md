@@ -6,13 +6,10 @@
 const LOCAL_NETWORK_ID: string
 ```
 
-Define local device network id for audio
+本地设备网络id。
 
-**起始版本：** 23
-
-<!--Device-audio-const LOCAL_NETWORK_ID: string--><!--Device-audio-const LOCAL_NETWORK_ID: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
 **系统接口：** 此接口为系统接口。
-

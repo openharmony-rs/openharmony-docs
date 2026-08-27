@@ -20,8 +20,6 @@ function offAVMusicTemplateCreate(callback?: Callback<AVMusicTemplateDescriptor>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avMusicTemplate-function offAVMusicTemplateCreate(callback?: Callback<AVMusicTemplateDescriptor>): void--><!--Device-avMusicTemplate-function offAVMusicTemplateCreate(callback?: Callback<AVMusicTemplateDescriptor>): void-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **系统接口：** 此接口为系统接口。
@@ -30,13 +28,12 @@ function offAVMusicTemplateCreate(callback?: Callback<AVMusicTemplateDescriptor>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AVMusicTemplateDescriptor](arkts-avsession-avmusictemplate-avmusictemplatedescriptor-i-sys.md)&gt; | 否 | 回调函数，返回音频模板描述。不填该参数则注销该类型对应的所有回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AVMusicTemplateDescriptor](arkts-avsession-avmusictemplate-avmusictemplatedescriptor-i-sys.md)&gt; | 否 | 回调函数，返回音频模板描述。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.function offAVMusicTemplateCreate can not work correctly due to limited device capabilities. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verify failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.function offAVMusicTemplateCreate can not work correctly due to limited device capabilities. |

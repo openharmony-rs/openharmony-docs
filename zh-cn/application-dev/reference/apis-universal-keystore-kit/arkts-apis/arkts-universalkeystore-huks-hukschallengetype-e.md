@@ -4,8 +4,6 @@
 
 **起始版本：** 9
 
-<!--Device-huks-export enum HuksChallengeType--><!--Device-huks-export enum HuksChallengeType-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Extension
 
 ## HUKS_CHALLENGE_TYPE_NORMAL
@@ -19,8 +17,6 @@ HUKS_CHALLENGE_TYPE_NORMAL = 0
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksChallengeType-HUKS_CHALLENGE_TYPE_NORMAL = 0--><!--Device-HuksChallengeType-HUKS_CHALLENGE_TYPE_NORMAL = 0-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -36,8 +32,6 @@ HUKS_CHALLENGE_TYPE_CUSTOM = 1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksChallengeType-HUKS_CHALLENGE_TYPE_CUSTOM = 1--><!--Device-HuksChallengeType-HUKS_CHALLENGE_TYPE_CUSTOM = 1-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Extension
 
 ## HUKS_CHALLENGE_TYPE_NONE
@@ -52,7 +46,4 @@ HUKS_CHALLENGE_TYPE_NONE = 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksChallengeType-HUKS_CHALLENGE_TYPE_NONE = 2--><!--Device-HuksChallengeType-HUKS_CHALLENGE_TYPE_NONE = 2-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Extension
-

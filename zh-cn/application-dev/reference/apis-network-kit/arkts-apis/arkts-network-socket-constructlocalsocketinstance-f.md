@@ -16,8 +16,6 @@ function constructLocalSocketInstance(): LocalSocket
 
 **起始版本：** 11
 
-<!--Device-socket-function constructLocalSocketInstance(): LocalSocket--><!--Device-socket-function constructLocalSocketInstance(): LocalSocket-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 **返回值：**
@@ -32,4 +30,3 @@ function constructLocalSocketInstance(): LocalSocket
 import { socket } from '@kit.NetworkKit';
 let client: socket.LocalSocket = socket.constructLocalSocketInstance();
 ```
-

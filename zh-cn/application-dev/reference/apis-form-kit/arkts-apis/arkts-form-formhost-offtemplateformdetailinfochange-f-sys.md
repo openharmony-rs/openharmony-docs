@@ -20,8 +20,6 @@ function offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailI
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-formHost-function offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallback): void--><!--Device-formHost-function offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallback): void-End-->
-
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
@@ -37,12 +35,10 @@ function offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailI
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permissions denied. |
-| [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
+| [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { formHost } from '@kit.FormKit';
@@ -55,19 +51,3 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  formHost.offTemplateFormDetailInfoChange();
-  console.info(`offTemplateFormDetailInfoChange success`);
-} catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
-}
-```
-

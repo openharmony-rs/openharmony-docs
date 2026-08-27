@@ -12,8 +12,6 @@ Defines the callback type used in accessibility hover events. The value of isHov
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) => void--><!--Device-unnamed-declare type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -22,4 +20,3 @@ Defines the callback type used in accessibility hover events. The value of isHov
 | --- | --- | --- | --- |
 | isHover | boolean | 是 |  |
 | event | [AccessibilityHoverEvent](arkts-arkui-accessibilityhoverevent-i.md) | 是 |  |
-

@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## statSync
@@ -20,15 +18,13 @@ declare function statSync(file: string | number): Stat
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare function statSync(file: string | number): Stat--><!--Device-unnamed-declare function statSync(file: string | number): Stat-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| file | string \| number | 是 | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。<br>**说明：**从API version 22开始，支持传入URI。 |
+| file | string \| number | 是 | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。   **说明：**从API version 22开始，支持传入URI。 |
 
 **返回值：**
 
@@ -40,17 +36,23 @@ declare function statSync(file: string | number): Stat
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900018 | Not a directory |
-| 13900030 | File name too long |
-| 13900031 | Function not implemented |
+| 13900002 | No such file or directory |
 | 13900004 | Interrupted system call |
 | 13900005 | I/O error |
-| 13900038 | Value too large for defined data type |
-| 13900033 | Too many symbolic links encountered |
-| 13900002 | No such file or directory |
+| 13900008 | Bad file descriptor |
+| 13900011 | Out of memory |
 | 13900012 | Permission denied |
 | 13900013 | Bad address |
-| 13900008 | Bad file descriptor |
+| 13900018 | Not a directory |
+| 13900030 | File name too number |
+| 13900031 | Function not implemented |
+| 13900033 | Too many symbolic links encountered |
+| 13900038 | Value too large for defined data type |
 | 13900042 | Unknown error |
-| 13900011 | Out of memory |
 
+**示例**
+
+```TypeScript
+let stat = fileIo.statSync(pathDir);
+console.info(`Succeeded in getting file info, the size of file is ${stat.size}`);
+```

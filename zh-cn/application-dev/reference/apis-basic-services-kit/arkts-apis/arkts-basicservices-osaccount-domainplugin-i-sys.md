@@ -2,9 +2,7 @@
 
 域插件，提供域账号认证功能。
 
-**起始版本：** 23
-
-<!--Device-osAccount-interface DomainPlugin--><!--Device-osAccount-interface DomainPlugin-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -26,8 +24,6 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 
 **起始版本：** 9
 
-<!--Device-DomainPlugin-auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUserAuthCallback): void--><!--Device-DomainPlugin-auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUserAuthCallback): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -43,15 +39,13 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 **示例**
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
-import { AsyncCallback } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let plugin: osAccount.DomainPlugin = {
   auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
         callback: osAccount.IUserAuthCallback) => {
-    // 模拟认证
-    // 通知认证结果
+    // mock authentication
+    // notify authentication result
     let result: osAccount.AuthResult = {
       token: new Uint8Array([0]),
       remainTimes: 5,
@@ -92,6 +86,27 @@ try {
 }
 ```
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let domainAccountInfo: osAccount.DomainAccountInfo = {
+  domain: 'CHINA',
+  accountName: 'zhangsan'
+}
+let credential = new Uint8Array([0])
+try {
+  osAccount.DomainAccountManager.auth(domainAccountInfo, credential, {
+    onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
+      console.info('auth resultCode = ' + resultCode);
+      console.info('auth authResult = ' + JSON.stringify(authResult));
+    }
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## authWithPopup
 
 ```TypeScript
@@ -101,8 +116,6 @@ authWithPopup(domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback)
 弹窗认证指定的域账号。
 
 **起始版本：** 10
-
-<!--Device-DomainPlugin-authWithPopup(domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback): void--><!--Device-DomainPlugin-authWithPopup(domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -118,16 +131,15 @@ authWithPopup(domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback)
 **示例**
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
 
 let plugin: osAccount.DomainPlugin = {
   auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {},
+        callback: osAccount.IUserAuthCallback) => {},
   authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: osAccount.IUserAuthCallback) => {
-    // 模拟认证
-    // 通知认证结果
+                  callback: osAccount.IUserAuthCallback) => {
+    // mock authentication
+    // notify authentication result
     let result: osAccount.AuthResult = {
       token: new Uint8Array([0]),
       remainTimes: 5,
@@ -136,16 +148,16 @@ let plugin: osAccount.DomainPlugin = {
     callback.onResult(0, result);
   },
   authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {},
+                  callback: osAccount.IUserAuthCallback) => {},
   getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
   getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
   bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-    callback: AsyncCallback<void>) => {},
+                callback: AsyncCallback<void>) => {},
   unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
   isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: AsyncCallback<boolean>) => {},
+                        callback: AsyncCallback<boolean>) => {},
   getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
 }
 osAccount.DomainAccountManager.registerPlugin(plugin)
@@ -160,8 +172,6 @@ authWithToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback:
 使用授权令牌认证指定的域账号。
 
 **起始版本：** 10
-
-<!--Device-DomainPlugin-authWithToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback: IUserAuthCallback): void--><!--Device-DomainPlugin-authWithToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback: IUserAuthCallback): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -178,18 +188,17 @@ authWithToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback:
 **示例**
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
 
 let plugin: osAccount.DomainPlugin = {
   auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {},
+        callback: osAccount.IUserAuthCallback) => {},
   authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: osAccount.IUserAuthCallback) => {},
+                  callback: osAccount.IUserAuthCallback) => {},
   authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {
-    // 模拟认证
-    // 通知认证结果
+                  callback: osAccount.IUserAuthCallback) => {
+    // mock authentication
+    // notify authentication result
     let result: osAccount.AuthResult = {
       token: new Uint8Array([0]),
       remainTimes: 5,
@@ -198,17 +207,17 @@ let plugin: osAccount.DomainPlugin = {
     callback.onResult(0, result);
   },
   getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
   getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
   bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-    callback: AsyncCallback<void>) => {},
+                callback: AsyncCallback<void>) => {},
   unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
   isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: AsyncCallback<boolean>) => {},
+                        callback: AsyncCallback<boolean>) => {},
   getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
 }
-osAccount.DomainAccountManager.registerPlugin(plugin);
+osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
 
 ## bindAccount
@@ -221,8 +230,6 @@ bindAccount(domainAccountInfo: DomainAccountInfo, localId: number, callback: Asy
 
 **起始版本：** 10
 
-<!--Device-DomainPlugin-bindAccount(domainAccountInfo: DomainAccountInfo, localId: number, callback: AsyncCallback<void>): void--><!--Device-DomainPlugin-bindAccount(domainAccountInfo: DomainAccountInfo, localId: number, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -233,29 +240,28 @@ bindAccount(domainAccountInfo: DomainAccountInfo, localId: number, callback: Asy
 | --- | --- | --- | --- |
 | domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | 是 | 指示域账号信息。 |
 | localId | number | 是 | 系统账号ID。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 指示绑定结果回调。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 指示绑定结果回调。 |
 
 **示例**
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let plugin: osAccount.DomainPlugin = {
   auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {},
+        callback: osAccount.IUserAuthCallback) => {},
   authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: osAccount.IUserAuthCallback) => {},
+                  callback: osAccount.IUserAuthCallback) => {},
   authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {},
+                  callback: osAccount.IUserAuthCallback) => {},
   getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
   getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
   bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-    callback: AsyncCallback<void>) => {
-    // 模拟绑定操作
-    // 通知绑定结果
+                callback: AsyncCallback<void>) => {
+    // mock unbinding operation
+    // notify binding result
     let code: BusinessError = {
       code: 0,
       name: "",
@@ -265,7 +271,7 @@ let plugin: osAccount.DomainPlugin = {
   },
   unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
   isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: AsyncCallback<boolean>) => {},
+                        callback: AsyncCallback<boolean>) => {},
   getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
 }
 osAccount.DomainAccountManager.registerPlugin(plugin)
@@ -281,8 +287,6 @@ getAccessToken(options: GetDomainAccessTokenOptions, callback: AsyncCallback<Uin
 
 **起始版本：** 10
 
-<!--Device-DomainPlugin-getAccessToken(options: GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>): void--><!--Device-DomainPlugin-getAccessToken(options: GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -292,33 +296,32 @@ getAccessToken(options: GetDomainAccessTokenOptions, callback: AsyncCallback<Uin
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [GetDomainAccessTokenOptions](arkts-basicservices-osaccount-getdomainaccesstokenoptions-i-sys.md) | 是 | 指示获取域访问令牌的选项。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;Uint8Array&gt; | 是 | 指示结果回调。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Uint8Array&gt; | 是 | 指示结果回调。 |
 
 **示例**
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let plugin: osAccount.DomainPlugin = {
   auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {},
+        callback: osAccount.IUserAuthCallback) => {},
   authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: osAccount.IUserAuthCallback) => {},
+                  callback: osAccount.IUserAuthCallback) => {},
   authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {},
+                  callback: osAccount.IUserAuthCallback) => {},
   getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
   getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
   bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-    callback: AsyncCallback<void>) => {},
+                callback: AsyncCallback<void>) => {},
   unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
   isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: AsyncCallback<boolean>) => {},
+                        callback: AsyncCallback<boolean>) => {},
   getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {
-    // 模拟获取令牌操作
-    // 通知结果
+    // mock getting operation
+    // notify result
     let code: BusinessError = {
       code: 0,
       name: "",
@@ -341,8 +344,6 @@ getAccountInfo(options: GetDomainAccountInfoPluginOptions, callback: AsyncCallba
 
 **起始版本：** 10
 
-<!--Device-DomainPlugin-getAccountInfo(options: GetDomainAccountInfoPluginOptions, callback: AsyncCallback<DomainAccountInfo>): void--><!--Device-DomainPlugin-getAccountInfo(options: GetDomainAccountInfoPluginOptions, callback: AsyncCallback<DomainAccountInfo>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -352,25 +353,24 @@ getAccountInfo(options: GetDomainAccountInfoPluginOptions, callback: AsyncCallba
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [GetDomainAccountInfoPluginOptions](arkts-basicservices-osaccount-getdomainaccountinfopluginoptions-i-sys.md) | 是 | 指示域账号信息。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;[DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md)&gt; | 是 | 指示查询结果回调。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md)&gt; | 是 | 指示查询结果回调。 |
 
 **示例**
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let plugin: osAccount.DomainPlugin = {
   auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {},
+        callback: osAccount.IUserAuthCallback) => {},
   authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: osAccount.IUserAuthCallback) => {},
+                  callback: osAccount.IUserAuthCallback) => {},
   authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {},
+                  callback: osAccount.IUserAuthCallback) => {},
   getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {
-    // 模拟获取账号信息
-    // 通知结果
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {
+    // mock getting account information
+    // notify result
     let code: BusinessError = {
       code: 0,
       name: "",
@@ -384,12 +384,12 @@ let plugin: osAccount.DomainPlugin = {
     callback(code, accountInfo);
   },
   getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
   bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-    callback: AsyncCallback<void>) => {},
+                callback: AsyncCallback<void>) => {},
   unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
   isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: AsyncCallback<boolean>) => {},
+                        callback: AsyncCallback<boolean>) => {},
   getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
 }
 osAccount.DomainAccountManager.registerPlugin(plugin)
@@ -405,8 +405,6 @@ getAuthStatusInfo(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<
 
 **起始版本：** 10
 
-<!--Device-DomainPlugin-getAuthStatusInfo(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<AuthStatusInfo>): void--><!--Device-DomainPlugin-getAuthStatusInfo(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<AuthStatusInfo>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -416,25 +414,24 @@ getAuthStatusInfo(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | 是 | 指示域账号信息。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;AuthStatusInfo&gt; | 是 | 指示查询结果回调。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;AuthStatusInfo&gt; | 是 | 指示查询结果回调。 |
 
 **示例**
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let plugin: osAccount.DomainPlugin = {
   auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {},
+        callback: osAccount.IUserAuthCallback) => {},
   authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: osAccount.IUserAuthCallback) => {},
+                  callback: osAccount.IUserAuthCallback) => {},
   authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {},
+                  callback: osAccount.IUserAuthCallback) => {},
   getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
   getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {
     let code: BusinessError = {
       code: 0,
       name: "",
@@ -447,10 +444,10 @@ let plugin: osAccount.DomainPlugin = {
     callback(code, statusInfo);
   },
   bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-    callback: AsyncCallback<void>) => {},
+                callback: AsyncCallback<void>) => {},
   unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
   isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: AsyncCallback<boolean>) => {},
+                        callback: AsyncCallback<boolean>) => {},
   getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
 }
 osAccount.DomainAccountManager.registerPlugin(plugin)
@@ -470,8 +467,6 @@ isAccountTokenValid(
 
 **起始版本：** 10
 
-<!--Device-DomainPlugin-isAccountTokenValid(      domainAccountInfo: DomainAccountInfo,      token: Uint8Array,      callback: AsyncCallback<boolean>    ): void--><!--Device-DomainPlugin-isAccountTokenValid(      domainAccountInfo: DomainAccountInfo,      token: Uint8Array,      callback: AsyncCallback<boolean>    ): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -482,32 +477,31 @@ isAccountTokenValid(
 | --- | --- | --- | --- |
 | domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | 是 | 指示域账号信息。 |
 | token | Uint8Array | 是 | 指示域账号令牌。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 指示检查结果回调。true表示指定的域账号令牌是有效的；false表示指定的域账号令牌是无效的。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 指示检查结果回调。true表示指定的域账号令牌是有效的；false表示指定的域账号令牌是无效的。 |
 
 **示例**
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let plugin: osAccount.DomainPlugin = {
   auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {},
+        callback: osAccount.IUserAuthCallback) => {},
   authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: osAccount.IUserAuthCallback) => {},
+                  callback: osAccount.IUserAuthCallback) => {},
   authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {},
+                  callback: osAccount.IUserAuthCallback) => {},
   getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
   getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
   bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-    callback: AsyncCallback<void>) => {},
+                callback: AsyncCallback<void>) => {},
   unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
   isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: AsyncCallback<boolean>) => {
-    // 模拟检查操作
-    // 通知结果
+                        callback: AsyncCallback<boolean>) => {
+    // mock checking operation
+    // notify checking result
     let code: BusinessError = {
       code: 0,
       name: "",
@@ -530,8 +524,6 @@ unbindAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<void
 
 **起始版本：** 10
 
-<!--Device-DomainPlugin-unbindAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<void>): void--><!--Device-DomainPlugin-unbindAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -541,30 +533,29 @@ unbindAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | 是 | 指示域账号信息。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 指示绑定结果回调。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 指示绑定结果回调。 |
 
 **示例**
 
 ```TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let plugin: osAccount.DomainPlugin = {
   auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {},
+        callback: osAccount.IUserAuthCallback) => {},
   authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: osAccount.IUserAuthCallback) => {},
+                  callback: osAccount.IUserAuthCallback) => {},
   authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {},
+                  callback: osAccount.IUserAuthCallback) => {},
   getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
   getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
   bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-    callback: AsyncCallback<void>) => {},
+                callback: AsyncCallback<void>) => {},
   unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {
-    // 模拟解绑操作
-    // 通知解绑结果
+    // mock unbinding operation
+    // notify unbinding result
     let code: BusinessError = {
       code: 0,
       name: "",
@@ -573,171 +564,8 @@ let plugin: osAccount.DomainPlugin = {
     callback(code);
   },
   isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: AsyncCallback<boolean>) => {},
+                        callback: AsyncCallback<boolean>) => {},
   getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
 }
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
-
-## auth
-
-```TypeScript
-auth: DomainPluginAuthFunc
-```
-
-认证指定的域账号。
-
-**类型：** [DomainPluginAuthFunc](arkts-basicservices-osaccount-domainpluginauthfunc-t-sys.md)
-
-**起始版本：** 23
-
-<!--Device-DomainPlugin-auth: DomainPluginAuthFunc--><!--Device-DomainPlugin-auth: DomainPluginAuthFunc-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
-## authWithPopup
-
-```TypeScript
-authWithPopup: DomainPluginAuthWithPopupFunc
-```
-
-弹窗认证指定的域账号。
-
-**类型：** [DomainPluginAuthWithPopupFunc](arkts-basicservices-osaccount-domainpluginauthwithpopupfunc-t-sys.md)
-
-**起始版本：** 23
-
-<!--Device-DomainPlugin-authWithPopup: DomainPluginAuthWithPopupFunc--><!--Device-DomainPlugin-authWithPopup: DomainPluginAuthWithPopupFunc-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
-## authWithToken
-
-```TypeScript
-authWithToken: DomainPluginAuthWithTokenFunc
-```
-
-使用授权令牌认证指定的域账号。
-
-**类型：** [DomainPluginAuthWithTokenFunc](arkts-basicservices-osaccount-domainpluginauthwithtokenfunc-t-sys.md)
-
-**起始版本：** 23
-
-<!--Device-DomainPlugin-authWithToken: DomainPluginAuthWithTokenFunc--><!--Device-DomainPlugin-authWithToken: DomainPluginAuthWithTokenFunc-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
-## bindAccount
-
-```TypeScript
-bindAccount: DomainPluginBindAccountFunc
-```
-
-绑定指定的域账号。
-
-**类型：** [DomainPluginBindAccountFunc](arkts-basicservices-osaccount-domainpluginbindaccountfunc-t-sys.md)
-
-**起始版本：** 23
-
-<!--Device-DomainPlugin-bindAccount: DomainPluginBindAccountFunc--><!--Device-DomainPlugin-bindAccount: DomainPluginBindAccountFunc-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
-## getAccessToken
-
-```TypeScript
-getAccessToken: DomainPluginGetAccessTokenFunc
-```
-
-根据指定的选项获取域访问令牌。
-
-**类型：** [DomainPluginGetAccessTokenFunc](arkts-basicservices-osaccount-domainplugingetaccesstokenfunc-t-sys.md)
-
-**起始版本：** 23
-
-<!--Device-DomainPlugin-getAccessToken: DomainPluginGetAccessTokenFunc--><!--Device-DomainPlugin-getAccessToken: DomainPluginGetAccessTokenFunc-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
-## getAccountInfo
-
-```TypeScript
-getAccountInfo: DomainPluginGetAccountInfoFunc
-```
-
-查询指定域账号的信息。
-
-**类型：** [DomainPluginGetAccountInfoFunc](arkts-basicservices-osaccount-domainplugingetaccountinfofunc-t-sys.md)
-
-**起始版本：** 23
-
-<!--Device-DomainPlugin-getAccountInfo: DomainPluginGetAccountInfoFunc--><!--Device-DomainPlugin-getAccountInfo: DomainPluginGetAccountInfoFunc-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
-## getAuthStatusInfo
-
-```TypeScript
-getAuthStatusInfo: DomainPluginGetAuthStatusInfoFunc
-```
-
-查询指定域账号的认证状态信息。
-
-**类型：** [DomainPluginGetAuthStatusInfoFunc](arkts-basicservices-osaccount-domainplugingetauthstatusinfofunc-t-sys.md)
-
-**起始版本：** 23
-
-<!--Device-DomainPlugin-getAuthStatusInfo: DomainPluginGetAuthStatusInfoFunc--><!--Device-DomainPlugin-getAuthStatusInfo: DomainPluginGetAuthStatusInfoFunc-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
-## isAccountTokenValid
-
-```TypeScript
-isAccountTokenValid: DomainPluginIsAccountTokenValidFunc
-```
-
-检查指定的域账号令牌是否有效。
-
-**类型：** [DomainPluginIsAccountTokenValidFunc](arkts-basicservices-osaccount-domainpluginisaccounttokenvalidfunc-t-sys.md)
-
-**起始版本：** 23
-
-<!--Device-DomainPlugin-isAccountTokenValid: DomainPluginIsAccountTokenValidFunc--><!--Device-DomainPlugin-isAccountTokenValid: DomainPluginIsAccountTokenValidFunc-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
-## unbindAccount
-
-```TypeScript
-unbindAccount: DomainPluginUnbindAccountFunc
-```
-
-解绑指定的域账号。
-
-**类型：** [DomainPluginUnbindAccountFunc](arkts-basicservices-osaccount-domainpluginunbindaccountfunc-t-sys.md)
-
-**起始版本：** 23
-
-<!--Device-DomainPlugin-unbindAccount: DomainPluginUnbindAccountFunc--><!--Device-DomainPlugin-unbindAccount: DomainPluginUnbindAccountFunc-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-

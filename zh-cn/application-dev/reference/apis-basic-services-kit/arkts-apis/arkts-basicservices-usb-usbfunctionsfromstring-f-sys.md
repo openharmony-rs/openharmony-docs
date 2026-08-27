@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { usb } from '@kit.BasicServicesKit';
-import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## usbFunctionsFromString
@@ -21,8 +19,6 @@ function usbFunctionsFromString(funcs: string): number
 **废弃版本：** 9
 
 **替代接口：** [usbFunctionsFromString](arkts-basicservices-usbmanager-usbfunctionsfromstring-f-sys.md)
-
-<!--Device-usb-function usbFunctionsFromString(funcs: string): number--><!--Device-usb-function usbFunctionsFromString(funcs: string): number-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -46,4 +42,3 @@ function usbFunctionsFromString(funcs: string): number
 let funcs = "acm";
 let ret = usb.usbFunctionsFromString(funcs);
 ```
-

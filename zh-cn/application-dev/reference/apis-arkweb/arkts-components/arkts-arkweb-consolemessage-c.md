@@ -4,18 +4,11 @@ ConsoleMessage是Web组件中封装JavaScript控制台输出信息的对象。�
 
 **起始版本：** 8
 
-<!--Device-unnamed-declare class ConsoleMessage--><!--Device-unnamed-declare class ConsoleMessage-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## constructor
@@ -31,8 +24,6 @@ ConsoleMessage的构造函数。
 **废弃版本：** 9
 
 **替代接口：** constructor
-
-<!--Device-ConsoleMessage-constructor(message: string, sourceId: string, lineNumber: number, messageLevel: MessageLevel)--><!--Device-ConsoleMessage-constructor(message: string, sourceId: string, lineNumber: number, messageLevel: MessageLevel)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -57,8 +48,6 @@ ConsoleMessage的构造函数。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConsoleMessage-constructor()--><!--Device-ConsoleMessage-constructor()-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## getLineNumber
@@ -72,8 +61,6 @@ getLineNumber(): number
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ConsoleMessage-getLineNumber(): number--><!--Device-ConsoleMessage-getLineNumber(): number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -95,8 +82,6 @@ getMessage(): string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConsoleMessage-getMessage(): string--><!--Device-ConsoleMessage-getMessage(): string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -117,8 +102,6 @@ getMessageLevel(): MessageLevel
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConsoleMessage-getMessageLevel(): MessageLevel--><!--Device-ConsoleMessage-getMessageLevel(): MessageLevel-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -136,8 +119,6 @@ getSource() : ConsoleMessageSource
 获取ConsoleMessage的日志来源。
 
 **起始版本：** 23
-
-<!--Device-ConsoleMessage-getSource() : ConsoleMessageSource--><!--Device-ConsoleMessage-getSource() : ConsoleMessageSource-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -159,8 +140,6 @@ getSourceId(): string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConsoleMessage-getSourceId(): string--><!--Device-ConsoleMessage-getSourceId(): string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -168,4 +147,3 @@ getSourceId(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 返回网页源文件路径和文件名。 |
-

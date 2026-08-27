@@ -2,9 +2,7 @@
 
 编辑框的配置信息。
 
-**起始版本：** 23
-
-<!--Device-inputMethod-export interface TextConfig--><!--Device-inputMethod-export interface TextConfig-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -12,11 +10,6 @@
 
 ```TypeScript
 import { inputMethod } from '@kit.IMEKit';
-import { inputMethodEngine } from '@kit.IMEKit';
-import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
-import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
-import { InputMethodExtraConfig } from '@kit.IMEKit';
-import { inputMethodSystemPanelManager } from '@kit.IMEKit';
 ```
 
 ## capitalizeMode
@@ -31,9 +24,7 @@ capitalizeMode?: CapitalizeMode
 
 **默认值：** CapitalizeMode.NONE
 
-**起始版本：** 23
-
-<!--Device-TextConfig-capitalizeMode?: CapitalizeMode--><!--Device-TextConfig-capitalizeMode?: CapitalizeMode-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -47,9 +38,7 @@ cursorInfo?: CursorInfo
 
 **类型：** [CursorInfo](arkts-ime-inputmethod-cursorinfo-i.md)
 
-**起始版本：** 23
-
-<!--Device-TextConfig-cursorInfo?: CursorInfo--><!--Device-TextConfig-cursorInfo?: CursorInfo-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -63,9 +52,7 @@ inputAttribute: InputAttribute
 
 **类型：** [InputAttribute](arkts-ime-inputmethod-inputattribute-i.md)
 
-**起始版本：** 23
-
-<!--Device-TextConfig-inputAttribute: InputAttribute--><!--Device-TextConfig-inputAttribute: InputAttribute-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -75,13 +62,11 @@ inputAttribute: InputAttribute
 newEditBox?: boolean
 ```
 
-表示是否为新编辑框。true表示新编辑框，false表示非新编辑框。
+表示是否为新编辑框。true表示新编辑框，false表示非新编辑框。默认值为false。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-TextConfig-newEditBox?: boolean--><!--Device-TextConfig-newEditBox?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -95,25 +80,20 @@ selection?: Range
 
 **类型：** Range
 
-**起始版本：** 23
-
-<!--Device-TextConfig-selection?: Range--><!--Device-TextConfig-selection?: Range-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ## windowId
 
 ```TypeScript
-windowId?: int
+windowId?: number
 ```
 
 编辑框所在的窗口Id，该参数应为整数。 推荐使用[getWindowProperties](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getwindowproperties)方法获取窗口id属性。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-TextConfig-windowId?: int--><!--Device-TextConfig-windowId?: int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
-

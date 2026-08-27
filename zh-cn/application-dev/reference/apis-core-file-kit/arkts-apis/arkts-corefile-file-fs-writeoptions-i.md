@@ -1,12 +1,10 @@
 # WriteOptions
 
-可选项类型，支持write接口使用，WriteOptions继承自[Options](../../apis-na/arkts-apis/arkts-na-file-fs-options-i.md)。
+可选项类型，支持write接口使用，WriteOptions继承自[Options](arkts-corefile-file-fs-options-i.md)。
 
-**继承/实现关系：** WriteOptions extends [Options](../../apis-na/arkts-apis/arkts-na-file-fs-options-i.md)
+**继承/实现关系：** WriteOptions extends [Options](arkts-corefile-file-fs-options-i.md)
 
 **起始版本：** 11
-
-<!--Device-unnamed-export interface WriteOptions--><!--Device-unnamed-export interface WriteOptions-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -14,8 +12,6 @@
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## length
@@ -31,8 +27,6 @@ length?: number
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WriteOptions-length?: number--><!--Device-WriteOptions-length?: number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -50,7 +44,4 @@ offset?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WriteOptions-offset?: number--><!--Device-WriteOptions-offset?: number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
-

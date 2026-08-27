@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## setHotspotConfig
@@ -15,7 +12,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 function setHotspotConfig(config: HotspotConfig): boolean
 ```
 
-设置热点配置信息。 &lt;p&gt;仅支持配置OPEN和WPA2 PSK热点。
+设置热点配置信息。<p>仅支持配置OPEN和WPA2 PSK热点。
 
 **起始版本：** 7
 
@@ -24,8 +21,6 @@ function setHotspotConfig(config: HotspotConfig): boolean
 **替代接口：** [setHotspotConfig](arkts-connectivity-wifimanager-sethotspotconfig-f-sys.md)
 
 **需要权限：** ohos.permission.SET_WIFI_INFO and ohos.permission.GET_WIFI_CONFIG
-
-<!--Device-wifi-function setHotspotConfig(config: HotspotConfig): boolean--><!--Device-wifi-function setHotspotConfig(config: HotspotConfig): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
@@ -62,4 +57,3 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
-

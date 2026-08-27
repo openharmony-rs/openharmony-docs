@@ -1,4 +1,4 @@
-# 自定义组件冻结功能（V2）
+# 自定义组件冻结（V2）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
@@ -6,9 +6,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-当@ComponentV2装饰的自定义组件处于非激活状态时，状态变量将不响应更新，即[@Monitor](./arkts-new-monitor.md)不会调用，状态变量关联的节点不会刷新。该冻结机制在复杂UI场景下能显著优化性能，避免非激活组件因状态变量更新进行无效刷新，从而减少资源消耗。通过freezeWhenInactive属性来决定是否使用冻结功能，不传参数时默认不使用。支持的场景有：[页面路由/apis-arkui/js-apis-router.md)、[TabContent/apis-arkui/arkui-ts/ts-container-tabcontent.md)、[Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)、[Repeat/apis-arkui/arkui-ts/ts-rendering-control-repeat.md)。
+当@ComponentV2装饰的自定义组件处于非激活状态时，状态变量将不响应更新，即@Monitor不会调用，状态变量关联的节点不会刷新。该冻结机制在复杂UI场景下能显著优化性能，避免非激活组件因状态变量更新进行无效刷新，从而减少资源消耗。通过freezeWhenInactive属性来决定是否使用冻结功能，不传参数时默认不使用。支持的场景有：页面路由、TabContent、Navigation、Repeat。
 
-在阅读本文档前，开发者需要了解\@ComponentV2基本语法。建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)。
+在阅读本文档前，开发者需要了解\@ComponentV2基本语法。建议提前阅读：\@ComponentV2。
 
 > **说明：**
 >
@@ -16,9 +16,9 @@
 >
 > 从API version 18开始，支持自定义组件冻结混用场景。
 >
-> 从API version 22开始，通过将[BuilderNode/apis-arkui/js-apis-arkui-builderNode.md)的[inheritFreezeOptions/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)配置为true，可实现如下场景：当父组件启用组件冻结，且组件树的中间层级启用了BuilderNode时，BuilderNode的子组件能够被冻结。具体可参考[设置BuilderNode继承冻结能力](../arkts-user-defined-arktsNode-builderNode.md#设置buildernode继承冻结能力)。
+> 从API version 22开始，通过将BuilderNode的inheritFreezeOptions配置为true，可实现如下场景：当父组件启用组件冻结，且组件树的中间层级启用了BuilderNode时，BuilderNode的子组件能够被冻结。具体可参考设置BuilderNode继承冻结能力。
 >
-> 与@Component的组件冻结不同，@ComponentV2装饰的自定义组件不支持在[LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md)场景下缓存节点组件冻结。
+> 与@Component的组件冻结不同，@ComponentV2装饰的自定义组件不支持在LazyForEach场景下缓存节点组件冻结。
 
 ## 当前支持的场景
 
@@ -26,7 +26,7 @@
 
 > **说明：**
 >
-> 本示例使用了router进行页面跳转，建议开发者使用组件导航(Navigation)代替页面路由(router)来实现页面切换。Navigation提供了更多的功能和更灵活的自定义能力。请参考[使用Navigation的组件冻结用例](#navigation)。
+> 本示例使用了router进行页面跳转，建议开发者使用组件导航(Navigation)代替页面路由(router)来实现页面切换。Navigation提供了更多的功能和更灵活的自定义能力。请参考使用Navigation的组件冻结用例。
 
 当页面1调用this.getUIContext().getRouter().pushUrl()接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。
 
@@ -111,7 +111,7 @@ struct Page2 {
 
 1.在页面1中点击`changeBookName`，bookTest变量的name属性改变，@Monitor中注册的方法onMessageChange会被调用。
 
-2.在页面1中点击`go to next page`，跳转到页面2，然后延迟1s更新状态变量bookTest。在更新bookTest的时候，已经跳转到页面2，页面1处于inactive状态，[@Local](./arkts-new-local.md)装饰的状态变量bookTest将不响应更新，其@Monitor不会调用，关联的节点不会刷新。
+2.在页面1中点击`go to next page`，跳转到页面2，然后延迟1s更新状态变量bookTest。在更新bookTest的时候，已经跳转到页面2，页面1处于inactive状态，@Local装饰的状态变量bookTest将不响应更新，其@Monitor不会调用，关联的节点不会刷新。
 
 Trace如下：
 
@@ -131,7 +131,7 @@ Trace如下：
 
 ![freezeWithTab](./figures/freezewithTabs.png)
 
-<!-- @[freeze_template2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template2/TabContentTest.ets) -->  
+<!-- @[freeze_template2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template2/TabContentTest.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -173,7 +173,7 @@ struct FreezeChild {
 
   @Monitor('message')
   onMessageUpdated(mon: IMonitor) {
-    hilog.info(DOMAIN, 'testTag', `FreezeChild message callback func ${this.message}, index: ${this.index}`);
+    hilog.info(DOMAIN, 'FreezeChild', `FreezeChild message callback func ${this.message}, index: ${this.index}`);
   }
 
   build() {
@@ -200,9 +200,9 @@ struct FreezeChild {
 
 当NavDestination不可见时，会将其子自定义组件设置成非激活态，修改状态变量不会触发冻结组件的刷新。当返回该页面时，其子自定义组件重新恢复成激活态，触发@Monitor回调进行刷新。
 
-需要注意：本文档里说的“激活（active）/非激活（inactive）”是指组件冻结的激活/非激活状态，和[NavDestination/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)组件中的[onActive/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onactive17)和[onInactive/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#oninactive17)不同。
+需要注意：本文档里说的“激活（active）/非激活（inactive）”是指组件冻结的激活/非激活状态，和NavDestination组件中的onActive和onInactive不同。
 
-<!-- @[freeze_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template3/MyNavigationTestStack.ets) --> 
+<!-- @[freeze_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template3/MyNavigationTestStack.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -220,7 +220,7 @@ struct MyNavigationTestStack {
 
   @Monitor('message')
   info() {
-    hilog.info(DOMAIN, 'testTag', `freeze-test MyNavigation message callback ${this.message}`);
+    hilog.info(DOMAIN, 'FreezeChild', `freeze-test MyNavigation message callback ${this.message}`);
   }
 
   @Builder
@@ -350,8 +350,8 @@ struct NavigationContentMsgStack {
 
   @Monitor('message')
   info() {
-    hilog.info(DOMAIN, 'testTag', `freeze-test NavigationContent message callback ${this.message}`);
-    hilog.info(DOMAIN, 'testTag', `freeze-test ---- called by content ${this.index}`);
+    hilog.info(DOMAIN, 'FreezeChild', `freeze-test NavigationContent message callback ${this.message}`);
+    hilog.info(DOMAIN, 'FreezeChild', `freeze-test ---- called by content ${this.index}`);
   }
 
   build() {
@@ -394,7 +394,7 @@ struct NavigationContentMsgStack {
 >
 > Repeat从API version 18开始支持自定义组件冻结。
 
-对Repeat缓存池中的自定义组件进行冻结，避免不必要的组件刷新。建议提前阅读[Repeat节点更新/复用能力说明](../rendering-control/arkts-new-rendering-control-repeat.md#节点更新复用能力说明)。
+对Repeat缓存池中的自定义组件进行冻结，避免不必要的组件刷新。建议提前阅读Repeat节点更新/复用能力说明。
 
 <!-- @[freeze_template4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template4/RepeatVirtualScrollFreeze.ets) --> 
 
@@ -638,7 +638,7 @@ struct PageB {
 
 ### 混用场景
 
-当支持组件冻结的场景彼此之间组合使用时，对于不同的API版本，冻结行为会有不同。给父组件设置组件冻结标志，在API version 17及以下，当父组件解冻时，会解冻其子组件所有的节点；从API version 18开始，父组件解冻时，只会解冻子组件的屏上节点，详细说明见[\@Component的自定义组件冻结的混用场景](./arkts-custom-components-freeze.md#组件混用)。
+当支持组件冻结的场景彼此之间组合使用时，对于不同的API版本，冻结行为会有不同。给父组件设置组件冻结标志，在API version 17及以下，当父组件解冻时，会解冻其子组件所有的节点；从API version 18开始，父组件解冻时，只会解冻子组件的屏上节点，详细说明见\@Component的自定义组件冻结的混用场景。
 
 **Navigation和TabContent的混用**
 
@@ -828,17 +828,17 @@ struct PageTwoStack2 {
 
 在API version 17及以下：
 
-点击`Next page`进入下一个页面并返回，会解冻Tabcontent所有的标签。
+点击`Next Page`进入下一个页面并返回，会解冻TabContent所有的标签。
 
 在API version 18及以上：
 
-点击`Next page`进入下一个页面并返回，只会解冻对应标签的节点。
+点击`Next Page`进入下一个页面并返回，只会解冻对应标签的节点。
 
 ## 限制条件
 
-API version 21及之前版本，如下面示例所示，FreezeBuildNode中使用了自定义节点[BuilderNode/apis-arkui/js-apis-arkui-builderNode.md)。BuilderNode可以通过命令式动态挂载组件，而组件冻结又是强依赖父子关系来通知是否开启组件冻结。如果父组件使用组件冻结，且组件树的中间层级上又启用了BuilderNode，则BuilderNode的子组件将无法被冻结。从API version 22开始，可以[设置BuilderNode继承冻结能力](../arkts-user-defined-arktsNode-builderNode.md#设置buildernode继承冻结能力)。
+API version 21及之前版本，如下面示例所示，FreezeBuildNode中使用了自定义节点BuilderNode。BuilderNode可以通过命令式动态挂载组件，而组件冻结又是强依赖父子关系来通知是否开启组件冻结。如果父组件使用组件冻结，且组件树的中间层级上又启用了BuilderNode，则BuilderNode的子组件将无法被冻结。从API version 22开始，可以设置BuilderNode继承冻结能力。
 
-<!-- @[freeze_template7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template7/BuilderNode.ets) -->
+<!-- @[freeze_template7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template7/BuilderNode.ets) --> 
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -879,7 +879,7 @@ struct BuildNodeChild {
   // 使用@Monitor装饰器监听storage.message的变化
   @Monitor('storage.message')
   onMessageChange(monitor: IMonitor) {
-    hilog.info(DOMAIN, 'onMessageChange',
+    hilog.info(DOMAIN, 'FreezeChild',
       `FreezeBuildNode BuildNodeChild message callback func ${this.storage.message}, index:${this.index}`);
   }
 
@@ -958,7 +958,7 @@ struct FreezeBuildNode {
   // 使用@Monitor装饰器监听storage.message的变化
   @Monitor('storage.message')
   onMessageChange(monitor: IMonitor) {
-    hilog.info(DOMAIN, 'onMessageChange',
+    hilog.info(DOMAIN, 'FreezeChild',
       `FreezeBuildNode message callback func ${this.storage.message}, index: ${this.index}`);
   }
 

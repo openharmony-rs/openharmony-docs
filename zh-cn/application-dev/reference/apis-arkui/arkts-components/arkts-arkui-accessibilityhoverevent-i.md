@@ -1,12 +1,10 @@
 # AccessibilityHoverEvent
 
-The accessibility hover action triggers this method invocation.
+The accessibility hover action triggers this method invocation.@extends BaseEvent
 
 **继承/实现关系：** AccessibilityHoverEvent extends [BaseEvent](arkts-arkui-baseevent-i.md)
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare interface AccessibilityHoverEvent--><!--Device-unnamed-declare interface AccessibilityHoverEvent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,8 +29,6 @@ X coordinate of the accessibility hover point relative to the left edge of the d
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AccessibilityHoverEvent-displayX: number--><!--Device-AccessibilityHoverEvent-displayX: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## displayY
@@ -50,8 +46,6 @@ Y coordinate of the accessibility hover point relative to the upper edge of the 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AccessibilityHoverEvent-displayY: number--><!--Device-AccessibilityHoverEvent-displayY: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,8 +65,6 @@ globalDisplayX?: number
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AccessibilityHoverEvent-globalDisplayX?: number--><!--Device-AccessibilityHoverEvent-globalDisplayX?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## globalDisplayY
@@ -91,8 +83,6 @@ globalDisplayY?: number
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AccessibilityHoverEvent-globalDisplayY?: number--><!--Device-AccessibilityHoverEvent-globalDisplayY?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -103,15 +93,13 @@ type: AccessibilityHoverType
 
 Type of the accessibility hover event.
 
-**类型：** AccessibilityHoverType
+**类型：** [AccessibilityHoverType](../arkts-apis/arkts-arkui-accessibilityhovertype-e.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AccessibilityHoverEvent-type: AccessibilityHoverType--><!--Device-AccessibilityHoverEvent-type: AccessibilityHoverType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,8 +119,6 @@ X coordinate of the accessibility hover point relative to the left edge of the c
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AccessibilityHoverEvent-windowX: number--><!--Device-AccessibilityHoverEvent-windowX: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## windowY
@@ -150,8 +136,6 @@ Y coordinate of the accessibility hover point relative to the upper edge of the 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AccessibilityHoverEvent-windowY: number--><!--Device-AccessibilityHoverEvent-windowY: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,8 +155,6 @@ X coordinate of the accessibility hover point relative to the left edge of the e
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AccessibilityHoverEvent-x: number--><!--Device-AccessibilityHoverEvent-x: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -191,7 +173,4 @@ Y coordinate of the accessibility hover point relative to the upper edge of the 
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AccessibilityHoverEvent-y: number--><!--Device-AccessibilityHoverEvent-y: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## createGroup
@@ -24,8 +21,6 @@ function createGroup(config: WifiP2PConfig): boolean
 **替代接口：** createP2pGroup
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
-
-<!--Device-wifi-function createGroup(config: WifiP2PConfig): boolean--><!--Device-wifi-function createGroup(config: WifiP2PConfig): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -60,4 +55,3 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
-

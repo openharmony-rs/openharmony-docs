@@ -1,4 +1,4 @@
-# @ohos.app.ability.UserAuthExtensionAbility
+# @ohos.app.ability.UserAuthExtensionAbility(用户认证扩展能力组件)
 
 ## 导入模块
 
@@ -12,5 +12,4 @@ import { UserAuthExtensionAbility } from '@kit.UserAuthenticationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [UserAuthExtensionAbility](arkts-userauthentication-app-ability-userauthextensionability-userauthextensionability-c.md) | 用户认证扩展能力组件 |
-
+| [UserAuthExtensionAbility(用户认证扩展能力组件)](arkts-userauthentication-app-ability-userauthextensionability-userauthextensionability-c.md) | 用户认证扩展能力组件@extends UIExtensionAbility |

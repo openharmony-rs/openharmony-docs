@@ -14,9 +14,7 @@ function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>
 
 设置当前应用指定的快捷方式是否显示。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-shortcutManager-function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>--><!--Device-shortcutManager-function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -31,7 +29,7 @@ function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -40,8 +38,6 @@ function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>
 | [17700070](../errorcode-bundle.md#17700070-指定的快捷方式id不合法) | The specified shortcut id is not exist. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { shortcutManager } from '@kit.AbilityKit';
@@ -52,24 +48,6 @@ shortcutManager.setShortcutVisibleForSelf("shortcut_id", false)
   .then(() => {
     console.info('setShortcutVisibleForSelf success');
   }).catch((err: BusinessError) => {
-    console.error(`setShortcutVisibleForSelf errData is errCode:${err.code}  message:${err.message}`);
+  console.error(`setShortcutVisibleForSelf errData is errCode:${err.code}  message:${err.message}`);
 });
 ```
-
-ArkTS-Sta示例:
-
-```TypeScript
-'use static'
-
-import { shortcutManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 请替换为module.json5配置文件中的shortcuts标签下实际配置的shortcutId字段
-shortcutManager.setShortcutVisibleForSelf("shortcut_id", false)
-  .then(() => {
-    console.info('setShortcutVisibleForSelf success');
-  }).catch((err: Error) => {
-    console.error(`setShortcutVisibleForSelf errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
-});
-```
-

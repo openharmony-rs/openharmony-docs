@@ -2,17 +2,13 @@
 
 相机的输出并发能力信息。
 
-**起始版本：** 23
-
-<!--Device-camera-interface CameraConcurrentInfo--><!--Device-camera-interface CameraConcurrentInfo-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## device
@@ -25,11 +21,9 @@ readonly device: CameraDevice
 
 **类型：** [CameraDevice](arkts-camera-camera-cameradevice-i.md)
 
-**起始版本：** 23
+**起始版本：** 18
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CameraConcurrentInfo-readonly device: CameraDevice--><!--Device-CameraConcurrentInfo-readonly device: CameraDevice-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -43,11 +37,9 @@ readonly modes: Array<SceneMode>
 
 **类型：** Array&lt;[SceneMode](arkts-camera-camera-scenemode-e.md)&gt;
 
-**起始版本：** 23
+**起始版本：** 18
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CameraConcurrentInfo-readonly modes: Array<SceneMode>--><!--Device-CameraConcurrentInfo-readonly modes: Array<SceneMode>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -61,11 +53,9 @@ readonly outputCapabilities: Array<CameraOutputCapability>
 
 **类型：** Array&lt;[CameraOutputCapability](arkts-camera-camera-cameraoutputcapability-i.md)&gt;
 
-**起始版本：** 23
+**起始版本：** 18
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CameraConcurrentInfo-readonly outputCapabilities: Array<CameraOutputCapability>--><!--Device-CameraConcurrentInfo-readonly outputCapabilities: Array<CameraOutputCapability>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -79,11 +69,8 @@ readonly type: CameraConcurrentType
 
 **类型：** [CameraConcurrentType](arkts-camera-camera-cameraconcurrenttype-e.md)
 
-**起始版本：** 23
+**起始版本：** 18
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CameraConcurrentInfo-readonly type: CameraConcurrentType--><!--Device-CameraConcurrentInfo-readonly type: CameraConcurrentType-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-

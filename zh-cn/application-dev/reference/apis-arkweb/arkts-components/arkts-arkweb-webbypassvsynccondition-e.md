@@ -4,8 +4,6 @@
 
 **起始版本：** 20
 
-<!--Device-unnamed-declare enum WebBypassVsyncCondition--><!--Device-unnamed-declare enum WebBypassVsyncCondition-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## NONE
@@ -17,8 +15,6 @@ NONE = 0
 默认值，按vsync调度流程绘制。
 
 **起始版本：** 20
-
-<!--Device-WebBypassVsyncCondition-NONE = 0--><!--Device-WebBypassVsyncCondition-NONE = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -32,7 +28,4 @@ SCROLLBY_FROM_ZERO_OFFSET = 1
 
 **起始版本：** 20
 
-<!--Device-WebBypassVsyncCondition-SCROLLBY_FROM_ZERO_OFFSET = 1--><!--Device-WebBypassVsyncCondition-SCROLLBY_FROM_ZERO_OFFSET = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

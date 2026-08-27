@@ -1,10 +1,8 @@
-# MatchResult(Identify sensitive file)
+# MatchResult
 
 表示敏感内容的识别结果。
 
 **起始版本：** 21
-
-<!--Device-identifySensitiveContent-export interface MatchResult--><!--Device-identifySensitiveContent-export interface MatchResult-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -26,8 +24,6 @@ readonly matchContent: string
 
 **起始版本：** 21
 
-<!--Device-MatchResult-readonly matchContent: string--><!--Device-MatchResult-readonly matchContent: string-End-->
-
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 ## matchNumber
@@ -41,8 +37,6 @@ readonly matchNumber: number
 **类型：** number
 
 **起始版本：** 21
-
-<!--Device-MatchResult-readonly matchNumber: number--><!--Device-MatchResult-readonly matchNumber: number-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -58,7 +52,4 @@ readonly sensitiveLabel: string
 
 **起始版本：** 21
 
-<!--Device-MatchResult-readonly sensitiveLabel: string--><!--Device-MatchResult-readonly sensitiveLabel: string-End-->
-
 **系统能力：** SystemCapability.Security.DataLossPrevention
-

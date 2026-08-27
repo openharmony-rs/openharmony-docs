@@ -18,13 +18,13 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 ## 随机生成AES密钥
 
-对应的算法规格请查看[对称密钥生成和转换规格：AES](crypto-sym-key-generation-conversion-spec.md#aes)。
+对应的算法规格请查看对称密钥生成和转换规格：AES。
 
-1. 调用[OH_CryptoSymKeyGenerator_Create/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create)，指定字符串参数'AES256'，创建密钥算法为AES、密钥长度为256位的对称密钥生成器（OH_CryptoSymKeyGenerator）。
+1. 调用OH_CryptoSymKeyGenerator_Create，指定字符串参数'AES256'，创建密钥算法为AES、密钥长度为256位的对称密钥生成器（OH_CryptoSymKeyGenerator）。
 
-2. 调用[OH_CryptoSymKeyGenerator_Generate/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate)，随机生成对称密钥对象（OH_CryptoSymKey）。
+2. 调用OH_CryptoSymKeyGenerator_Generate，随机生成对称密钥对象（OH_CryptoSymKey）。
 
-3. 调用[OH_CryptoSymKey_GetKeyData/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkey_getkeydata)，获取密钥对象的二进制数据。
+3. 调用OH_CryptoSymKey_GetKeyData，获取密钥对象的二进制数据。
 <!-- @[generate_aes_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKey/entry/src/main/cpp/types/project/aes.cpp) -->
 
 ``` C++
@@ -60,13 +60,13 @@ OH_Crypto_ErrCode testGenerateSymKey()
 
 ## 随机生成SM4密钥
 
-对应的算法规格请查看[对称密钥生成和转换规格：SM4](crypto-sym-key-generation-conversion-spec.md#sm4)。
+对应的算法规格请查看对称密钥生成和转换规格：SM4。
 
-1. 调用[OH_CryptoSymKeyGenerator_Create/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create)，指定字符串参数'SM4_128'，创建密钥算法为SM4、密钥长度为128位的对称密钥生成器（OH_CryptoSymKeyGenerator）。
+1. 调用OH_CryptoSymKeyGenerator_Create，指定字符串参数'SM4_128'，创建密钥算法为SM4、密钥长度为128位的对称密钥生成器（OH_CryptoSymKeyGenerator）。
 
-2. 调用[OH_CryptoSymKeyGenerator_Generate/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate)，随机生成对称密钥对象（OH_CryptoSymKey）。
+2. 调用OH_CryptoSymKeyGenerator_Generate，随机生成对称密钥对象（OH_CryptoSymKey）。
 
-3. 调用[OH_CryptoSymKey_GetKeyData/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkey_getkeydata)，获取密钥对象的二进制数据。
+3. 调用OH_CryptoSymKey_GetKeyData，获取密钥对象的二进制数据。
 
 <!-- @[generate_sm4_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKey/entry/src/main/cpp/types/project/sm4.cpp) -->
 

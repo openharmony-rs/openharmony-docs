@@ -12,13 +12,11 @@ import { bundleState } from '@kit.BackgroundTasksKit';
 function queryAppUsagePriorityGroup(callback: AsyncCallback<number>): void
 ```
 
-Queries the usage priority group of the calling application. The priority defined in a priority group restricts the resource usage of an application, for example, restricting the running of background tasks.
+Queries the usage priority group of the calling application.The priority defined in a priority group restricts the resource usage of an application, for example, restricting the running of background tasks.
 
 **起始版本：** 7
 
 **废弃版本：** 9
-
-<!--Device-bundleState-function queryAppUsagePriorityGroup(callback: AsyncCallback<number>): void--><!--Device-bundleState-function queryAppUsagePriorityGroup(callback: AsyncCallback<number>): void-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
@@ -26,7 +24,7 @@ Queries the usage priority group of the calling application. The priority define
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | the callback of queryAppUsagePriorityGroup. Returns the app group of the calling application. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | the callback of queryAppUsagePriorityGroup. Returns the app group of the calling application. |
 
 **示例**
 
@@ -50,13 +48,11 @@ bundleState.queryAppUsagePriorityGroup((err: BusinessError, res: number) => {
 function queryAppUsagePriorityGroup(): Promise<number>
 ```
 
-Queries the usage priority group of the calling application. The priority defined in a priority group restricts the resource usage of an application, for example, restricting the running of background tasks.
+Queries the usage priority group of the calling application.The priority defined in a priority group restricts the resource usage of an application, for example, restricting the running of background tasks.
 
 **起始版本：** 7
 
 **废弃版本：** 9
-
-<!--Device-bundleState-function queryAppUsagePriorityGroup(): Promise<number>--><!--Device-bundleState-function queryAppUsagePriorityGroup(): Promise<number>-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
@@ -64,7 +60,7 @@ Queries the usage priority group of the calling application. The priority define
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | the promise returned by queryAppUsagePriorityGroup. Returns the app group of the calling application. |
+| Promise & lt;number & gt; | the promise returned by queryAppUsagePriorityGroup. Returns the app group of the calling application. |
 
 **示例**
 
@@ -78,4 +74,3 @@ bundleState.queryAppUsagePriorityGroup().then((res: number) => {
   console.error('BUNDLE_ACTIVE QueryPackageGroup promise failed. because: ' + err.code);
 });
 ```
-

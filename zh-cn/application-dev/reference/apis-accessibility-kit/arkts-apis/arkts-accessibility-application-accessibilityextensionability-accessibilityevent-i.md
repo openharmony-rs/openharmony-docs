@@ -4,30 +4,25 @@
 
 **起始版本：** 9
 
-<!--Device-unnamed-export declare interface AccessibilityEvent--><!--Device-unnamed-export declare interface AccessibilityEvent-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ## 导入模块
 
 ```TypeScript
 import { AccessibilityExtensionAbility, AccessibilityElement, AccessibilityExtensionContext, ElementAttributeKeys, ElementAttributeValues, FocusDirection, FocusType, Rect, WindowType, AccessibilityEvent, AccessibilityEventInfo, Parameter, FocusRule, FocusCondition, FocusMoveResult, AccessibilityVirtualNode, TouchPosition } from '@kit.AccessibilityKit';
-import { AccessibilityExtensionAbility, AccessibilityElement, AccessibilityExtensionContext, FocusDirection, Rect, WindowType, AccessibilityEventInfo, Parameter, FocusRule, FocusCondition, FocusMoveResult, AccessibilityVirtualNode, TouchPosition } from '@kit.AccessibilityKit';
 ```
 
 ## elementId
 
 ```TypeScript
-elementId?: long
+elementId?: number
 ```
 
 主动聚焦的元素ID。主动聚焦指应用通过无障碍服务主动将焦点聚焦到指定元素上，与用户手动导航聚焦不同。默认值为0。
 
-**类型：** long
+**类型：** number
 
 **起始版本：** 12
-
-<!--Device-AccessibilityEvent-elementId?: long--><!--Device-AccessibilityEvent-elementId?: long-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -38,13 +33,11 @@ eventType: accessibility.EventType | accessibility.WindowUpdateType |
         TouchGuideType | GestureType | PageUpdateType
 ```
 
-具体事件类型，用于标识当前无障碍事件的类别。 EventType：无障碍事件类型； WindowUpdateType：窗口变化类型； TouchGuideType：触摸浏览事件类型； GestureType：手势事件类型； PageUpdateType：页面更新类型。
+具体事件类型，用于标识当前无障碍事件的类别。EventType：无障碍事件类型；WindowUpdateType：窗口变化类型；TouchGuideType：触摸浏览事件类型；GestureType：手势事件类型；PageUpdateType：页面更新类型。
 
 **类型：** accessibility.EventType \| accessibility.WindowUpdateType \| [TouchGuideType](arkts-accessibility-touchguidetype-t.md) \| [GestureType](arkts-accessibility-gesturetype-t.md) \| [PageUpdateType](arkts-accessibility-pageupdatetype-t.md)
 
 **起始版本：** 9
-
-<!--Device-AccessibilityEvent-eventType: accessibility.EventType | accessibility.WindowUpdateType |        TouchGuideType | GestureType | PageUpdateType--><!--Device-AccessibilityEvent-eventType: accessibility.EventType | accessibility.WindowUpdateType |        TouchGuideType | GestureType | PageUpdateType-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -60,8 +53,6 @@ extraInfo?: string
 
 **起始版本：** 20
 
-<!--Device-AccessibilityEvent-extraInfo?: string--><!--Device-AccessibilityEvent-extraInfo?: string-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ## target
@@ -75,8 +66,6 @@ target?: AccessibilityElement
 **类型：** [AccessibilityElement](arkts-accessibility-accessibilityelement-t.md)
 
 **起始版本：** 9
-
-<!--Device-AccessibilityEvent-target?: AccessibilityElement--><!--Device-AccessibilityEvent-target?: AccessibilityElement-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -92,23 +81,18 @@ textAnnouncedForAccessibility?: string
 
 **起始版本：** 12
 
-<!--Device-AccessibilityEvent-textAnnouncedForAccessibility?: string--><!--Device-AccessibilityEvent-textAnnouncedForAccessibility?: string-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ## timeStamp
 
 ```TypeScript
-timeStamp?: long
+timeStamp?: number
 ```
 
 事件时间戳，取值范围为非负整数，单位为毫秒，默认值为0。
 
-**类型：** long
+**类型：** number
 
 **起始版本：** 9
 
-<!--Device-AccessibilityEvent-timeStamp?: long--><!--Device-AccessibilityEvent-timeStamp?: long-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-

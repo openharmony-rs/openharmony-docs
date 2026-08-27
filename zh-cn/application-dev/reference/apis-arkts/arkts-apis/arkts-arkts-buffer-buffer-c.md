@@ -2,16 +2,13 @@
 
 Buffer对象是处理二进制数据的缓冲区。
 
-**起始版本：** 23
-
-<!--Device-buffer-class Buffer--><!--Device-buffer-class Buffer-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { buffer } from '@kit.ArkTS';
 ```
 
 ## compare
@@ -32,15 +29,13 @@ compare(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Buffer-compare(      target: Buffer | Uint8Array,      targetStart?: number,      targetEnd?: number,      sourceStart?: number,      sourceEnd?: number    ): -1 | 0 | 1--><!--Device-Buffer-compare(      target: Buffer | Uint8Array,      targetStart?: number,      targetEnd?: number,      sourceStart?: number,      sourceEnd?: number    ): -1 | 0 | 1-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 要比较的实例对象。 |
+| target | Buffer \| Uint8Array | 是 | 要比较的实例对象。 |
 | targetStart | number | 否 | target实例中开始的偏移量。默认值：0。 |
 | targetEnd | number | 否 | target实例中结束的偏移量（不包含结束位置）。默认值：目标对象的字节长度。 |
 | sourceStart | number | 否 | this实例中开始的偏移量。默认值：0。 |
@@ -50,73 +45,13 @@ compare(
 
 | 类型 | 说明 |
 | --- | --- |
-| -1 | 比较结果。如果两个Buffer对象相同，则返回0；如果当前对象在排序时位于目标对象之后，则返回1； 如果当前对象在排序时位于目标对象之前，则返回-1。 |
+| -1 \| 0 \| 1 | 比较结果。如果两个Buffer对象相同，则返回0；如果当前对象在排序时位于目标对象之后，则返回1； 如果当前对象在排序时位于目标对象之前，则返回-1。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and &lt;= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
-
-**示例**
-
-```TypeScript
-import { buffer } from '@kit.ArkTS';
-
-let buf1 = buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-let buf2 = buffer.from([5, 6, 7, 8, 9, 1, 2, 3, 4]);
-
-console.info(buf1.compare(buf2, 5, 9, 0, 4).toString());
-// 输出结果：0
-console.info(buf1.compare(buf2, 0, 6, 4).toString());
-// 输出结果：-1
-console.info(buf1.compare(buf2, 5, 6, 5).toString());
-// 输出结果：1
-```
-
-## compare
-
-```TypeScript
-compare(
-      target: Buffer | Uint8Array,
-      targetStart?: int,
-      targetEnd?: int,
-      sourceStart?: int,
-      sourceEnd?: int
-    ): int
-```
-
-比较当前Buffer对象与目标Buffer或Uint8Array对象，并返回在排序中的结果。
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-compare(      target: Buffer | Uint8Array,      targetStart?: int,      targetEnd?: int,      sourceStart?: int,      sourceEnd?: int    ): int--><!--Device-Buffer-compare(      target: Buffer | Uint8Array,      targetStart?: int,      targetEnd?: int,      sourceStart?: int,      sourceEnd?: int    ): int-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| target | [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 要比较的实例对象。 |
-| targetStart | int | 否 | `target`实例中开始的偏移量。取值范围：>= 0且&lt;= target的字节长度。默认值：0。 |
-| targetEnd | int | 否 | `target`实例中结束的偏移量（不包含结束位置）。默认值：目标对象的字节长度。 |
-| sourceStart | int | 否 | `this`实例中开始的偏移量。默认值：0。 |
-| sourceEnd | int | 否 | `this`实例中结束的偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| int | 返回比较结果。-1：当前排列在目标前，0：当前与目标相同，1：当前排列在目标后。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and &lt;= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be & gt;= 0 and & lt;= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
 **示例**
 
@@ -137,16 +72,14 @@ console.info(buf1.compare(buf2, 5, 6, 5).toString());
 ## copy
 
 ```TypeScript
-copy(target: Buffer | Uint8Array, targetStart?: int, sourceStart?: int, sourceEnd?: int): int
+copy(target: Buffer | Uint8Array, targetStart?: number, sourceStart?: number, sourceEnd?: number): number
 ```
 
 将`this`实例中指定位置的数据复制到`target`的指定位置上，并返回复制的字节总长度。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-copy(target: Buffer | Uint8Array, targetStart?: int, sourceStart?: int, sourceEnd?: int): int--><!--Device-Buffer-copy(target: Buffer | Uint8Array, targetStart?: int, sourceStart?: int, sourceEnd?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -154,22 +87,22 @@ copy(target: Buffer | Uint8Array, targetStart?: int, sourceStart?: int, sourceEn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 要复制到的Buffer或Uint8Array实例。 |
-| targetStart | int | 否 | `target`实例中开始写入的偏移量。取值范围：>= 0且&lt;= target的字节长度。默认值：0。 |
-| sourceStart | int | 否 | `this`实例中开始复制的偏移量。默认值: 0。 |
-| sourceEnd | int | 否 | `this`实例中结束复制的偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
+| target | Buffer \| Uint8Array | 是 | 要复制到的Buffer或Uint8Array实例。 |
+| targetStart | number | 否 | `target`实例中开始写入的偏移量。取值范围：&gt;= 0且&lt;= target的字节长度。默认值：0。 |
+| sourceStart | number | 否 | `this`实例中开始复制的偏移量。默认值: 0。 |
+| sourceEnd | number | 否 | `this`实例中结束复制的偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 复制的字节总长度。 |
+| number | 复制的字节总长度。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. It must be >= 0. Received value is: [targetStart/sourceStart/sourceEnd] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. It must be & gt;= 0. Received value is: [targetStart/sourceStart/sourceEnd] |
 
 **示例**
 
@@ -191,16 +124,14 @@ console.info(buf2.toString('ascii', 0, 25));
 ## entries
 
 ```TypeScript
-entries(): IterableIterator<[int, long]>
+entries(): IterableIterator<[number, number]>
 ```
 
 返回一个包含字节索引（key）和字节值（value）的迭代器。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-entries(): IterableIterator<[int, long]>--><!--Device-Buffer-entries(): IterableIterator<[int, long]>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -208,8 +139,8 @@ entries(): IterableIterator<[int, long]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[number, number]&gt; | 包含key和value的迭代器，同时两者皆为number类型。<br>**适用版本：** 9 - 10 |
-| IterableIterator&lt;[int, long]&gt; | <br>**适用版本：** 11+ |
+| IterableIterator & lt;[number, number] & gt; | 包含key和value的迭代器，同时两者皆为number类型。<br>**适用版本：** 9 - 10 |
+| IterableIterator & lt;[number, number] & gt; | <br>**适用版本：** 11+ |
 
 **示例**
 
@@ -241,11 +172,9 @@ equals(otherBuffer: Uint8Array | Buffer): boolean
 
 比较`this`实例和otherBuffer实例是否相等。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-equals(otherBuffer: Uint8Array | Buffer): boolean--><!--Device-Buffer-equals(otherBuffer: Uint8Array | Buffer): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -253,7 +182,7 @@ equals(otherBuffer: Uint8Array | Buffer): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| otherBuffer | Uint8Array \| [Buffer](arkts-arkts-buffer-buffer-c.md) | 是 | 比较的目标对象。 |
+| otherBuffer | Uint8Array \| Buffer | 是 | 比较的目标对象。 |
 
 **返回值：**
 
@@ -280,20 +209,18 @@ console.info(buf1.equals(buf3).toString());
 
 ```TypeScript
 fill(
-      value: string | Buffer | Uint8Array | int | double | long,
-      offset?: int,
-      end?: int,
+      value: string | Buffer | Uint8Array | number | number | number,
+      offset?: number,
+      end?: number,
       encoding?: BufferEncoding
     ): Buffer
 ```
 
 使用value填充当前对象指定位置的数据，当value的长度小于需要填充的范围时会重复value进行填充，并返回填充后的Buffer对象。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-fill(      value: string | Buffer | Uint8Array | int | double | long,      offset?: int,      end?: int,      encoding?: BufferEncoding    ): Buffer--><!--Device-Buffer-fill(      value: string | Buffer | Uint8Array | int | double | long,      offset?: int,      end?: int,      encoding?: BufferEncoding    ): Buffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -301,36 +228,44 @@ fill(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string \| [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array \| int \| double \| long | 是 | 用于填充的值。<br>**起始版本：** 11 |
-| offset | int | 否 | 起始偏移量。取值范围：>= 0且&lt;= Buffer.length。默认值：0。 |
-| end | int | 否 | 结束偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
+| value | string \| Buffer \| Uint8Array \| number \| number \| number | 是 | 用于填充的值。<br>**起始版本：** 11 |
+| offset | number | 否 | 起始偏移量。取值范围： & gt;= 0且 & lt;= Buffer.length。默认值：0。 |
+| end | number | 否 | 结束偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
 | encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Buffer](arkts-arkts-buffer-buffer-c.md) | 返回填充后的Buffer对象。 |
+| Buffer | 返回填充后的Buffer对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/end]" is out of range. It must be >= 0 and &lt;= [right range]. Received value is: [offset/end] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/end]" is out of range. It must be & gt;= 0 and & lt;= [right range]. Received value is: [offset/end] |
+
+**示例**
+
+```TypeScript
+import { buffer } from '@kit.ArkTS';
+
+let b = buffer.allocUninitializedFromPool(50).fill('h');
+console.info(b.toString());
+// 输出结果：hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+```
 
 ## includes
 
 ```TypeScript
-includes(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): boolean
+includes(value: string | number | number | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): boolean
 ```
 
 检查Buffer对象是否包含value值。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-includes(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): boolean--><!--Device-Buffer-includes(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -338,8 +273,8 @@ includes(value: string | int | double | long | Buffer | Uint8Array, byteOffset?:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string \| int \| double \| long \| [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 要搜索的内容。<br>**起始版本：** 11 |
-| byteOffset | int | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：0。 |
+| value | string \| number \| number \| number \| Buffer \| Uint8Array | 是 | 要搜索的内容。<br>**起始版本：** 11 |
+| byteOffset | number | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：0。 |
 | encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
 
 **返回值：**
@@ -348,19 +283,29 @@ includes(value: string | int | double | long | Buffer | Uint8Array, byteOffset?:
 | --- | --- |
 | boolean | 存在返回true，否则返回false。 |
 
+**示例**
+
+```TypeScript
+import { buffer } from '@kit.ArkTS';
+
+let buf = buffer.from('this is a buffer');
+console.info(buf.includes('this').toString());
+// 输出结果：true
+console.info(buf.includes('be').toString());
+// 输出结果：false
+```
+
 ## indexOf
 
 ```TypeScript
-indexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): int
+indexOf(value: string | number | number | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): number
 ```
 
 返回当前对象中首次出现value的索引，如果不包含value，则返回-1。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-indexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): int--><!--Device-Buffer-indexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -368,29 +313,39 @@ indexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string \| int \| double \| long \| [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 要查找的内容。<br>**起始版本：** 11 |
-| byteOffset | int | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：0。 |
+| value | string \| number \| number \| number \| Buffer \| Uint8Array | 是 | 要查找的内容。<br>**起始版本：** 11 |
+| byteOffset | number | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：0。 |
 | encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 第一次出现位置。 |
+| number | 第一次出现位置。 |
+
+**示例**
+
+```TypeScript
+import { buffer } from '@kit.ArkTS';
+
+let buf = buffer.from('this is a buffer');
+console.info(buf.indexOf('this').toString());
+// 输出结果：0
+console.info(buf.indexOf('is').toString());
+// 输出结果：2
+```
 
 ## keys
 
 ```TypeScript
-keys(): IterableIterator<int>
+keys(): IterableIterator<number>
 ```
 
 返回包含key值的迭代器。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-keys(): IterableIterator<int>--><!--Device-Buffer-keys(): IterableIterator<int>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -398,7 +353,7 @@ keys(): IterableIterator<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;int&gt; | 返回一个包含key值的迭代器。 |
+| IterableIterator & lt;number & gt; | 返回一个包含key值的迭代器。 |
 
 **示例**
 
@@ -423,16 +378,14 @@ for (const key of keys) {
 ## lastIndexOf
 
 ```TypeScript
-lastIndexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): int
+lastIndexOf(value: string | number | number | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): number
 ```
 
 返回this实例中最后一次出现value的索引，如果对象不包含value，则返回-1。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-lastIndexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): int--><!--Device-Buffer-lastIndexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -440,29 +393,39 @@ lastIndexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffse
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string \| int \| double \| long \| [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 要搜索的内容。<br>**起始版本：** 11 |
-| byteOffset | int | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：Buffer.length。 |
+| value | string \| number \| number \| number \| Buffer \| Uint8Array | 是 | 要搜索的内容。<br>**起始版本：** 11 |
+| byteOffset | number | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：Buffer.length。 |
 | encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 最后一次出现value值的索引。 |
+| number | 最后一次出现value值的索引。 |
+
+**示例**
+
+```TypeScript
+import { buffer } from '@kit.ArkTS';
+
+let buf = buffer.from('this buffer is a buffer');
+console.info(buf.lastIndexOf('this').toString());
+// 输出结果：0
+console.info(buf.lastIndexOf('buffer').toString());
+// 输出结果：17
+```
 
 ## readBigInt64BE
 
 ```TypeScript
-readBigInt64BE(offset?: int): bigint
+readBigInt64BE(offset?: number): bigint
 ```
 
 从指定的`offset`处读取有符号的大端序64位整数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readBigInt64BE(offset?: int): bigint--><!--Device-Buffer-readBigInt64BE(offset?: int): bigint-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -470,7 +433,7 @@ readBigInt64BE(offset?: int): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。当Buffer长度小于8时无法使用此方法。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 8。当Buffer长度小于8时无法使用此方法。 |
 
 **返回值：**
 
@@ -482,7 +445,7 @@ readBigInt64BE(offset?: int): bigint
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 8 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 8. Received value is: [offset] |
 
 **示例**
 
@@ -503,16 +466,14 @@ console.info("result = " + result);
 ## readBigInt64LE
 
 ```TypeScript
-readBigInt64LE(offset?: int): bigint
+readBigInt64LE(offset?: number): bigint
 ```
 
 从指定的`offset`处读取有符号的小端序64位整数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readBigInt64LE(offset?: int): bigint--><!--Device-Buffer-readBigInt64LE(offset?: int): bigint-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -520,7 +481,7 @@ readBigInt64LE(offset?: int): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 8，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 8，默认值：0。 |
 
 **返回值：**
 
@@ -532,7 +493,7 @@ readBigInt64LE(offset?: int): bigint
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 8 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 8. Received value is: [offset] |
 
 **示例**
 
@@ -553,16 +514,14 @@ console.info("result = " + result);
 ## readBigUInt64BE
 
 ```TypeScript
-readBigUInt64BE(offset?: int): bigint
+readBigUInt64BE(offset?: number): bigint
 ```
 
 从指定的`offset`处读取无符号的大端序64位整数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readBigUInt64BE(offset?: int): bigint--><!--Device-Buffer-readBigUInt64BE(offset?: int): bigint-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -570,7 +529,7 @@ readBigUInt64BE(offset?: int): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 8，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 8，默认值：0。 |
 
 **返回值：**
 
@@ -582,7 +541,7 @@ readBigUInt64BE(offset?: int): bigint
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 8 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 8. Received value is: [offset] |
 
 **示例**
 
@@ -602,16 +561,14 @@ console.info("result = " + result);
 ## readBigUInt64LE
 
 ```TypeScript
-readBigUInt64LE(offset?: int): bigint
+readBigUInt64LE(offset?: number): bigint
 ```
 
 从指定的`offset`处读取无符号的小端序64位整数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readBigUInt64LE(offset?: int): bigint--><!--Device-Buffer-readBigUInt64LE(offset?: int): bigint-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -619,7 +576,7 @@ readBigUInt64LE(offset?: int): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 8，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 8，默认值：0。 |
 
 **返回值：**
 
@@ -631,7 +588,7 @@ readBigUInt64LE(offset?: int): bigint
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 8 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 8. Received value is: [offset] |
 
 **示例**
 
@@ -652,16 +609,14 @@ console.info("result = " + result);
 ## readDoubleBE
 
 ```TypeScript
-readDoubleBE(offset?: int): double
+readDoubleBE(offset?: number): number
 ```
 
 从指定的`offset`处读取64位大端序双精度值。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readDoubleBE(offset?: int): double--><!--Device-Buffer-readDoubleBE(offset?: int): double-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -669,19 +624,19 @@ readDoubleBE(offset?: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 8，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 8，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 读取出的内容。 |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 8 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 8. Received value is: [offset] |
 
 **示例**
 
@@ -700,16 +655,14 @@ console.info("result = " + result);
 ## readDoubleLE
 
 ```TypeScript
-readDoubleLE(offset?: int): double
+readDoubleLE(offset?: number): number
 ```
 
 从指定的`offset`处读取64位小端序双精度值。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readDoubleLE(offset?: int): double--><!--Device-Buffer-readDoubleLE(offset?: int): double-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -717,19 +670,19 @@ readDoubleLE(offset?: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 8，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 8，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 读取出的内容。 |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 8 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 8. Received value is: [offset] |
 
 **示例**
 
@@ -748,16 +701,14 @@ console.info("result = " + result);
 ## readFloatBE
 
 ```TypeScript
-readFloatBE(offset?: int): double
+readFloatBE(offset?: number): number
 ```
 
 从指定的`offset`处读取32位大端序浮点数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readFloatBE(offset?: int): double--><!--Device-Buffer-readFloatBE(offset?: int): double-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -765,19 +716,19 @@ readFloatBE(offset?: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 4，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 读取出的内容。 |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 4 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 4. Received value is: [offset] |
 
 **示例**
 
@@ -796,16 +747,14 @@ console.info("result = " + result);
 ## readFloatLE
 
 ```TypeScript
-readFloatLE(offset?: int): double
+readFloatLE(offset?: number): number
 ```
 
 从指定的`offset`处读取32位小端序浮点数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readFloatLE(offset?: int): double--><!--Device-Buffer-readFloatLE(offset?: int): double-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -813,19 +762,19 @@ readFloatLE(offset?: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 4，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 读取出的内容。 |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 4 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 4. Received value is: [offset] |
 
 **示例**
 
@@ -844,16 +793,14 @@ console.info("result = " + result);
 ## readInt16BE
 
 ```TypeScript
-readInt16BE(offset?: int): long
+readInt16BE(offset?: number): number
 ```
 
 从指定的`offset`处读取有符号的大端序16位整数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readInt16BE(offset?: int): long--><!--Device-Buffer-readInt16BE(offset?: int): long-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -861,19 +808,19 @@ readInt16BE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 2，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 2，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 读取出的内容。 |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 2 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 2. Received value is: [offset] |
 
 **示例**
 
@@ -892,16 +839,14 @@ console.info("result = " + result);
 ## readInt16LE
 
 ```TypeScript
-readInt16LE(offset?: int): long
+readInt16LE(offset?: number): number
 ```
 
 从指定的`offset`处读取有符号的小端序16位整数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readInt16LE(offset?: int): long--><!--Device-Buffer-readInt16LE(offset?: int): long-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -909,19 +854,19 @@ readInt16LE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 2，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 2，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 读取出的内容。 |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 2 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 2. Received value is: [offset] |
 
 **示例**
 
@@ -940,16 +885,14 @@ console.info("result = " + result);
 ## readInt32BE
 
 ```TypeScript
-readInt32BE(offset?: int): long
+readInt32BE(offset?: number): number
 ```
 
 从指定的`offset`处读取有符号的大端序32位整数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readInt32BE(offset?: int): long--><!--Device-Buffer-readInt32BE(offset?: int): long-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -957,19 +900,19 @@ readInt32BE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 4，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 读取出的内容。 |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 4 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 4. Received value is: [offset] |
 
 **示例**
 
@@ -988,16 +931,14 @@ console.info("result = " + result);
 ## readInt32LE
 
 ```TypeScript
-readInt32LE(offset?: int): long
+readInt32LE(offset?: number): number
 ```
 
 从指定的`offset`处读取有符号的小端序32位整数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readInt32LE(offset?: int): long--><!--Device-Buffer-readInt32LE(offset?: int): long-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1005,19 +946,19 @@ readInt32LE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 4，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 读取出的内容。 |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 4 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 4. Received value is: [offset] |
 
 **示例**
 
@@ -1036,16 +977,14 @@ console.info("result = " + result);
 ## readInt8
 
 ```TypeScript
-readInt8(offset?: int): long
+readInt8(offset?: number): number
 ```
 
 从指定的`offset`处读取有符号的8位整数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readInt8(offset?: int): long--><!--Device-Buffer-readInt8(offset?: int): long-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1053,19 +992,19 @@ readInt8(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 1，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 1，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 读取出的内容。 |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 1 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 1. Received value is: [offset] |
 
 **示例**
 
@@ -1086,16 +1025,14 @@ console.info("result = " + result);
 ## readIntBE
 
 ```TypeScript
-readIntBE(offset: int, byteLength: int): long
+readIntBE(offset: number, byteLength: number): number
 ```
 
 从指定的`offset`处读取byteLength个字节，并将结果解释为支持最高48位精度的大端序、二进制补码有符号值。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readIntBE(offset: int, byteLength: int): long--><!--Device-Buffer-readIntBE(offset: int, byteLength: int): long-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1103,20 +1040,20 @@ readIntBE(offset: int, byteLength: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 是 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength，默认值：0。 |
-| byteLength | int | 是 | 读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
+| offset | number | 是 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - byteLength，默认值：0。 |
+| byteLength | number | 是 | 读取的字节数。取值范围：1 & lt;= byteLength & lt;= 6。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 读取的内容。当offset为小数时，返回undefined。 |
+| number | 读取的内容。当offset为小数时，返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -1136,16 +1073,14 @@ console.info("result = " + result);
 ## readIntLE
 
 ```TypeScript
-readIntLE(offset: int, byteLength: int): long
+readIntLE(offset: number, byteLength: number): number
 ```
 
 从指定的`offset`处读取`byteLength`个字节，并将结果解释为支持最高48位精度的小端序、二进制补码有符号值。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readIntLE(offset: int, byteLength: int): long--><!--Device-Buffer-readIntLE(offset: int, byteLength: int): long-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1153,20 +1088,20 @@ readIntLE(offset: int, byteLength: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 是 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength，默认值：0。 |
-| byteLength | int | 是 | 读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
+| offset | number | 是 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - byteLength，默认值：0。 |
+| byteLength | number | 是 | 读取的字节数。取值范围：1 & lt;= byteLength & lt;= 6。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 读取出的内容。当offset为小数时，返回undefined。 |
+| number | 读取出的内容。当offset为小数时，返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -1185,16 +1120,14 @@ console.info("result = " + result);
 ## readUInt16BE
 
 ```TypeScript
-readUInt16BE(offset?: int): long
+readUInt16BE(offset?: number): number
 ```
 
 从指定的`offset`处读取无符号的大端序16位整数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readUInt16BE(offset?: int): long--><!--Device-Buffer-readUInt16BE(offset?: int): long-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1202,19 +1135,19 @@ readUInt16BE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 2，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 2，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 读取出的内容。 |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 2 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 2. Received value is: [offset] |
 
 **示例**
 
@@ -1235,16 +1168,14 @@ console.info("result = " + result);
 ## readUInt16LE
 
 ```TypeScript
-readUInt16LE(offset?: int): long
+readUInt16LE(offset?: number): number
 ```
 
 从指定的`offset`处读取无符号的小端序16位整数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readUInt16LE(offset?: int): long--><!--Device-Buffer-readUInt16LE(offset?: int): long-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1252,19 +1183,19 @@ readUInt16LE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 2，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 2，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 读取出的内容。 |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 2 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 2. Received value is: [offset] |
 
 **示例**
 
@@ -1285,16 +1216,14 @@ console.info("result = " + result);
 ## readUInt32BE
 
 ```TypeScript
-readUInt32BE(offset?: int): long
+readUInt32BE(offset?: number): number
 ```
 
 从指定的`offset`处的buf读取无符号的大端序32位整数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readUInt32BE(offset?: int): long--><!--Device-Buffer-readUInt32BE(offset?: int): long-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1302,19 +1231,19 @@ readUInt32BE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 4，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 读取出的内容。 |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 4 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 4. Received value is: [offset] |
 
 **示例**
 
@@ -1333,16 +1262,14 @@ console.info("result = " + result);
 ## readUInt32LE
 
 ```TypeScript
-readUInt32LE(offset?: int): long
+readUInt32LE(offset?: number): number
 ```
 
 从指定的`offset`处的buf读取无符号的小端序32位整数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readUInt32LE(offset?: int): long--><!--Device-Buffer-readUInt32LE(offset?: int): long-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1350,19 +1277,19 @@ readUInt32LE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 4，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 读取出的内容。 |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 4 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 4. Received value is: [offset] |
 
 **示例**
 
@@ -1381,16 +1308,14 @@ console.info("result = " + result);
 ## readUInt8
 
 ```TypeScript
-readUInt8(offset?: int): long
+readUInt8(offset?: number): number
 ```
 
 从指定的`offset`处读取8位无符号整型数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readUInt8(offset?: int): long--><!--Device-Buffer-readUInt8(offset?: int): long-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1398,19 +1323,19 @@ readUInt8(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 1，默认值：0。 |
+| offset | number | 否 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - 1，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 读取出的内容。 |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 1 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 1. Received value is: [offset] |
 
 **示例**
 
@@ -1431,16 +1356,14 @@ console.info("result = " + result);
 ## readUIntBE
 
 ```TypeScript
-readUIntBE(offset: int, byteLength: int): long
+readUIntBE(offset: number, byteLength: number): number
 ```
 
 从指定的`offset`处的buf读取`byteLength`个字节，并将结果解释为支持最高48位精度的无符号大端序整数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readUIntBE(offset: int, byteLength: int): long--><!--Device-Buffer-readUIntBE(offset: int, byteLength: int): long-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1448,20 +1371,20 @@ readUIntBE(offset: int, byteLength: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 是 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength，默认值：0。 |
-| byteLength | int | 是 | 要读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
+| offset | number | 是 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - byteLength，默认值：0。 |
+| byteLength | number | 是 | 要读取的字节数。取值范围：1 & lt;= byteLength & lt;= 6。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 读取出的内容。当offset为小数时，返回undefined。 |
+| number | 读取出的内容。当offset为小数时，返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -1480,16 +1403,14 @@ console.info("result = " + result);
 ## readUIntLE
 
 ```TypeScript
-readUIntLE(offset: int, byteLength: int): long
+readUIntLE(offset: number, byteLength: number): number
 ```
 
 从指定的`offset`处的buf读取`byteLength`个字节，并将结果解释为支持最高48位精度的无符号小端序整数。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-readUIntLE(offset: int, byteLength: int): long--><!--Device-Buffer-readUIntLE(offset: int, byteLength: int): long-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1497,20 +1418,20 @@ readUIntLE(offset: int, byteLength: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 是 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength，默认值：0。 |
-| byteLength | int | 是 | 读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
+| offset | number | 是 | 偏移量。取值范围：0 & lt;= offset & lt;= Buffer.length - byteLength，默认值：0。 |
+| byteLength | number | 是 | 读取的字节数。取值范围：1 & lt;= byteLength & lt;= 6。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 读取出的内容。当offset为小数时，返回undefined。 |
+| number | 读取出的内容。当offset为小数时，返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -1529,16 +1450,14 @@ console.info("result = " + result);
 ## subarray
 
 ```TypeScript
-subarray(start?: int, end?: int): Buffer
+subarray(start?: number, end?: number): Buffer
 ```
 
 截取当前对象指定位置的数据并返回。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-subarray(start?: int, end?: int): Buffer--><!--Device-Buffer-subarray(start?: int, end?: int): Buffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1546,14 +1465,14 @@ subarray(start?: int, end?: int): Buffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | int | 否 | 截取开始位置。默认值：0。 |
-| end | int | 否 | 截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。在传入null时返回空Buffer。 |
+| start | number | 否 | 截取开始位置。默认值：0。 |
+| end | number | 否 | 截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。在传入null时返回空Buffer。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Buffer](arkts-arkts-buffer-buffer-c.md) | 返回新的Buffer对象。当start &lt; 0或end &lt; 0时返回空Buffer。 |
+| Buffer | 返回新的Buffer对象。当start & lt; 0或end & lt; 0时返回空Buffer。 |
 
 **示例**
 
@@ -1578,11 +1497,9 @@ swap16(): Buffer
 
 将当前对象转换为无符号的16位整数数组，并交换字节顺序。适用于需要在大端序和小端序之间转换16位数据的场景。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-swap16(): Buffer--><!--Device-Buffer-swap16(): Buffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1590,7 +1507,7 @@ swap16(): Buffer
 
 | 类型 | 说明 |
 | --- | --- |
-| [Buffer](arkts-arkts-buffer-buffer-c.md) | 交换之后的Buffer对象。 |
+| Buffer | 交换之后的Buffer对象。 |
 
 **错误码：**
 
@@ -1619,11 +1536,9 @@ swap32(): Buffer
 
 将当前对象转换为无符号的32位整数数组，并交换字节顺序。适用于需要在大端序和小端序之间转换32位数据的场景。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-swap32(): Buffer--><!--Device-Buffer-swap32(): Buffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1631,7 +1546,7 @@ swap32(): Buffer
 
 | 类型 | 说明 |
 | --- | --- |
-| [Buffer](arkts-arkts-buffer-buffer-c.md) | 交换之后的Buffer对象。 |
+| Buffer | 交换之后的Buffer对象。 |
 
 **错误码：**
 
@@ -1660,11 +1575,9 @@ swap64(): Buffer
 
 将当前对象转换为无符号的64位整数数组，并交换字节顺序。适用于需要在大端序和小端序之间转换64位数据的场景。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-swap64(): Buffer--><!--Device-Buffer-swap64(): Buffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1672,7 +1585,7 @@ swap64(): Buffer
 
 | 类型 | 说明 |
 | --- | --- |
-| [Buffer](arkts-arkts-buffer-buffer-c.md) | 交换之后的Buffer对象。 |
+| Buffer | 交换之后的Buffer对象。 |
 
 **错误码：**
 
@@ -1705,8 +1618,6 @@ toJSON(): Object
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Buffer-toJSON(): Object--><!--Device-Buffer-toJSON(): Object-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -1714,39 +1625,6 @@ toJSON(): Object
 | 类型 | 说明 |
 | --- | --- |
 | Object | JSON对象。 |
-
-**示例**
-
-```TypeScript
-import { buffer } from '@kit.ArkTS';
-
-let buf1 = buffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);
-let obj = buf1.toJSON();
-console.info(JSON.stringify(obj));
-// 输出结果: {"type":"Buffer","data":[1,2,3,4,5]}
-```
-
-## toJSON
-
-```TypeScript
-toJSON(): jsonx.JsonElement
-```
-
-将此Buffer实例转换为JsonElement。
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-toJSON(): jsonx.JsonElement--><!--Device-Buffer-toJSON(): jsonx.JsonElement-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| jsonx.JsonElement | 新的JsonElement对象，包含此Buffer的内容。 |
 
 **示例**
 
@@ -1771,8 +1649,6 @@ toString(encoding?: string, start?: number, end?: number): string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Buffer-toString(encoding?: string, start?: number, end?: number): string--><!--Device-Buffer-toString(encoding?: string, start?: number, end?: number): string-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1787,76 +1663,7 @@ toString(encoding?: string, start?: number, end?: number): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 字符串。当start >= Buffer.length或start > end时返回空字符串。 |
-
-**示例**
-
-```TypeScript
-import { buffer } from '@kit.ArkTS';
-
-let buf1 = buffer.allocUninitializedFromPool(26);
-for (let i = 0; i < 26; i++) {
-  buf1.writeInt8(i + 97, i);
-}
-console.info(buf1.toString('utf-8'));
-// 输出结果: abcdefghijklmnopqrstuvwxyz
-```
-
-## toString
-
-```TypeScript
-toString(): string
-```
-
-按照encoding指定的字符编码将buf解码为字符串。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-toString(): string--><!--Device-Buffer-toString(): string-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| string | 解码后的字符串。 |
-
-## toString
-
-```TypeScript
-toString(encoding?: BufferEncoding, start?: int, end?: int): string
-```
-
-按照encoding指定的字符编码将buf解码为字符串。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-toString(encoding?: BufferEncoding, start?: int, end?: int): string--><!--Device-Buffer-toString(encoding?: BufferEncoding, start?: int, end?: int): string-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| encoding | BufferEncoding | 否 | encoding [encoding='utf8'] 使用的字符编码。 |
-| start | int | 否 | start [start = 0] 开始解码的字节偏移量。 该值应为整数。 |
-| end | int | 否 | end [end = buf.length] 结束解码的字节偏移量（不包含结束位置）。 该值应为整数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| string | 解码后的字符串。 |
+| string | 字符串。当start & gt;= Buffer.length或start & gt; end时返回空字符串。 |
 
 **示例**
 
@@ -1874,16 +1681,14 @@ console.info(buf1.toString('utf-8'));
 ## values
 
 ```TypeScript
-values(): IterableIterator<long>
+values(): IterableIterator<number>
 ```
 
 返回一个包含value的迭代器。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-values(): IterableIterator<long>--><!--Device-Buffer-values(): IterableIterator<long>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1891,7 +1696,7 @@ values(): IterableIterator<long>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;long&gt; | 迭代器。 |
+| IterableIterator & lt;number & gt; | 迭代器。 |
 
 **示例**
 
@@ -1918,16 +1723,14 @@ while (!next.done) {
 ## write
 
 ```TypeScript
-write(str: string, offset?: int, length?: int, encoding?: string): int
+write(str: string, offset?: number, length?: number, encoding?: string): number
 ```
 
 在Buffer对象的offset偏移处写入指定编码的字符串，写入的字节长度为length。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-write(str: string, offset?: int, length?: int, encoding?: string): int--><!--Device-Buffer-write(str: string, offset?: int, length?: int, encoding?: string): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1936,21 +1739,21 @@ write(str: string, offset?: int, length?: int, encoding?: string): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | str | string | 是 | 要写入Buffer的字符串。 |
-| offset | int | 否 | 偏移量。取值范围：>= 0且&lt;= Buffer.length。默认值：0。 |
-| length | int | 否 | 最大字节长度。默认值：（Buffer.length - offset）。 |
+| offset | number | 否 | 偏移量。取值范围： & gt;= 0且 & lt;= Buffer.length。默认值：0。 |
+| length | number | 否 | 最大字节长度。默认值：（Buffer.length - offset）。 |
 | encoding | string | 否 | 字符编码，支持的格式范围为BufferEncoding。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 写入的字节数。 |
+| number | 写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/length]" is out of range. It must be >= 0 and &lt;= buf.length. Received value is: [offset/length] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/length]" is out of range. It must be & gt;= 0 and & lt;= buf.length. Received value is: [offset/length] |
 
 **示例**
 
@@ -1971,16 +1774,14 @@ console.info("length = " + length);
 ## writeBigInt64BE
 
 ```TypeScript
-writeBigInt64BE(value: bigint, offset?: int): int
+writeBigInt64BE(value: bigint, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入有符号的大端序64位BigInt型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeBigInt64BE(value: bigint, offset?: int): int--><!--Device-Buffer-writeBigInt64BE(value: bigint, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1989,19 +1790,19 @@ writeBigInt64BE(value: bigint, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2017,16 +1818,14 @@ console.info("result = " + result);
 ## writeBigInt64LE
 
 ```TypeScript
-writeBigInt64LE(value: bigint, offset?: int): int
+writeBigInt64LE(value: bigint, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入有符号的小端序64位BigInt型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeBigInt64LE(value: bigint, offset?: int): int--><!--Device-Buffer-writeBigInt64LE(value: bigint, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2035,19 +1834,19 @@ writeBigInt64LE(value: bigint, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2063,16 +1862,14 @@ console.info("result = " + result);
 ## writeBigUInt64BE
 
 ```TypeScript
-writeBigUInt64BE(value: bigint, offset?: int): int
+writeBigUInt64BE(value: bigint, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入无符号的大端序64位BigUInt型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeBigUInt64BE(value: bigint, offset?: int): int--><!--Device-Buffer-writeBigUInt64BE(value: bigint, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2081,19 +1878,19 @@ writeBigUInt64BE(value: bigint, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2109,16 +1906,14 @@ console.info("result = " + result);
 ## writeBigUInt64LE
 
 ```TypeScript
-writeBigUInt64LE(value: bigint, offset?: int): int
+writeBigUInt64LE(value: bigint, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入无符号的小端序64位BigUInt型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeBigUInt64LE(value: bigint, offset?: int): int--><!--Device-Buffer-writeBigUInt64LE(value: bigint, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2127,19 +1922,19 @@ writeBigUInt64LE(value: bigint, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2155,16 +1950,14 @@ console.info("result = " + result);
 ## writeDoubleBE
 
 ```TypeScript
-writeDoubleBE(value: double, offset?: int): int
+writeDoubleBE(value: number, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入大端序的64位双浮点型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeDoubleBE(value: double, offset?: int): int--><!--Device-Buffer-writeDoubleBE(value: double, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2172,20 +1965,20 @@ writeDoubleBE(value: double, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | double | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| value | number | 是 | 写入Buffer的数据。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 8 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 8. Received value is: [offset] |
 
 **示例**
 
@@ -2201,16 +1994,14 @@ console.info("result = " + result);
 ## writeDoubleLE
 
 ```TypeScript
-writeDoubleLE(value: double, offset?: int): int
+writeDoubleLE(value: number, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入小端序的64位双浮点型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeDoubleLE(value: double, offset?: int): int--><!--Device-Buffer-writeDoubleLE(value: double, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2218,20 +2009,20 @@ writeDoubleLE(value: double, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | double | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
+| value | number | 是 | 写入Buffer的数据。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 8 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 8. Received value is: [offset] |
 
 **示例**
 
@@ -2247,16 +2038,14 @@ console.info("result = " + result);
 ## writeFloatBE
 
 ```TypeScript
-writeFloatBE(value: double, offset?: int): int
+writeFloatBE(value: number, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入大端序的32位浮点型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeFloatBE(value: double, offset?: int): int--><!--Device-Buffer-writeFloatBE(value: double, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2264,20 +2053,20 @@ writeFloatBE(value: double, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | double | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| value | number | 是 | 写入Buffer的数据。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 4 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 4. Received value is: [offset] |
 
 **示例**
 
@@ -2293,16 +2082,14 @@ console.info("result = " + result);
 ## writeFloatLE
 
 ```TypeScript
-writeFloatLE(value: double, offset?: int): int
+writeFloatLE(value: number, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入小端序的32位浮点型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeFloatLE(value: double, offset?: int): int--><!--Device-Buffer-writeFloatLE(value: double, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2310,20 +2097,20 @@ writeFloatLE(value: double, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | double | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| value | number | 是 | 写入Buffer的数据。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 4 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be & gt;= 0 and & lt;= buf.length - 4. Received value is: [offset] |
 
 **示例**
 
@@ -2339,16 +2126,14 @@ console.info("result = " + result);
 ## writeInt16BE
 
 ```TypeScript
-writeInt16BE(value: long, offset?: int): int
+writeInt16BE(value: number, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入大端序的16位有符号整型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeInt16BE(value: long, offset?: int): int--><!--Device-Buffer-writeInt16BE(value: long, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2356,20 +2141,20 @@ writeInt16BE(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
+| value | number | 是 | 写入Buffer的数据。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2385,16 +2170,14 @@ console.info("result = " + result);
 ## writeInt16LE
 
 ```TypeScript
-writeInt16LE(value: long, offset?: int): int
+writeInt16LE(value: number, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入小端序的16位有符号整型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeInt16LE(value: long, offset?: int): int--><!--Device-Buffer-writeInt16LE(value: long, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2402,20 +2185,20 @@ writeInt16LE(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
+| value | number | 是 | 写入Buffer的数据。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2431,16 +2214,14 @@ console.info("result = " + result);
 ## writeInt32BE
 
 ```TypeScript
-writeInt32BE(value: long, offset?: int): int
+writeInt32BE(value: number, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入大端序的32位有符号整型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeInt32BE(value: long, offset?: int): int--><!--Device-Buffer-writeInt32BE(value: long, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2448,20 +2229,20 @@ writeInt32BE(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| value | number | 是 | 写入Buffer的数据。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2477,16 +2258,14 @@ console.info("result = " + result);
 ## writeInt32LE
 
 ```TypeScript
-writeInt32LE(value: long, offset?: int): int
+writeInt32LE(value: number, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入小端序的32位有符号整型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeInt32LE(value: long, offset?: int): int--><!--Device-Buffer-writeInt32LE(value: long, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2494,20 +2273,20 @@ writeInt32LE(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| value | number | 是 | 写入Buffer的数据。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2523,16 +2302,14 @@ console.info("result = " + result);
 ## writeInt8
 
 ```TypeScript
-writeInt8(value: long, offset?: int): int
+writeInt8(value: number, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入8位有符号整型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeInt8(value: long, offset?: int): int--><!--Device-Buffer-writeInt8(value: long, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2540,20 +2317,20 @@ writeInt8(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | long | 是 | 写入Buffer的数据。取值范围：-128 &lt;= value &lt;= 127（8位有符号整数）。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 1。 |
+| value | number | 是 | 写入Buffer的数据。取值范围：-128 & lt;= value & lt;= 127（8位有符号整数）。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 1。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2572,16 +2349,14 @@ console.info("result1 = " + result1);
 ## writeIntBE
 
 ```TypeScript
-writeIntBE(value: long, offset: int, byteLength: int): int
+writeIntBE(value: number, offset: number, byteLength: number): number
 ```
 
 在Buffer对象的offset偏移处写入大端序的有符号数据，字节长度为byteLength。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeIntBE(value: long, offset: int, byteLength: int): int--><!--Device-Buffer-writeIntBE(value: long, offset: int, byteLength: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2589,21 +2364,21 @@ writeIntBE(value: long, offset: int, byteLength: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
-| byteLength | int | 是 | 要写入的字节数。 |
+| value | number | 是 | 写入Buffer的数据。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - byteLength。 |
+| byteLength | number | 是 | 要写入的字节数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2619,16 +2394,14 @@ console.info("result = " + result);
 ## writeIntLE
 
 ```TypeScript
-writeIntLE(value: long, offset: int, byteLength: int): int
+writeIntLE(value: number, offset: number, byteLength: number): number
 ```
 
 在Buffer对象的offset偏移处写入小端序的有符号数据，字节长度为byteLength。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeIntLE(value: long, offset: int, byteLength: int): int--><!--Device-Buffer-writeIntLE(value: long, offset: int, byteLength: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2636,21 +2409,21 @@ writeIntLE(value: long, offset: int, byteLength: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
-| byteLength | int | 是 | 要写入的字节数。 |
+| value | number | 是 | 写入Buffer的数据。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - byteLength。 |
+| byteLength | number | 是 | 要写入的字节数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2666,16 +2439,14 @@ console.info("result = " + result);
 ## writeUInt16BE
 
 ```TypeScript
-writeUInt16BE(value: long, offset?: int): int
+writeUInt16BE(value: number, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入大端序的16位无符号整型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeUInt16BE(value: long, offset?: int): int--><!--Device-Buffer-writeUInt16BE(value: long, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2683,20 +2454,20 @@ writeUInt16BE(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值为0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
+| value | number | 是 | 写入Buffer的数据。 |
+| offset | number | 否 | 偏移量。默认值为0。取值范围：0 & lt;= offset & lt;= Buffer.length - 2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2715,16 +2486,14 @@ console.info("result1 = " + result1);
 ## writeUInt16LE
 
 ```TypeScript
-writeUInt16LE(value: long, offset?: int): int
+writeUInt16LE(value: number, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入小端序的16位无符号整型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeUInt16LE(value: long, offset?: int): int--><!--Device-Buffer-writeUInt16LE(value: long, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2732,20 +2501,20 @@ writeUInt16LE(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
+| value | number | 是 | 写入Buffer的数据。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2764,16 +2533,14 @@ console.info("result1 = " + result1);
 ## writeUInt32BE
 
 ```TypeScript
-writeUInt32BE(value: long, offset?: int): int
+writeUInt32BE(value: number, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入大端序的32位无符号整型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeUInt32BE(value: long, offset?: int): int--><!--Device-Buffer-writeUInt32BE(value: long, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2781,20 +2548,20 @@ writeUInt32BE(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| value | number | 是 | 写入Buffer的数据。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2810,16 +2577,14 @@ console.info("result = " + result);
 ## writeUInt32LE
 
 ```TypeScript
-writeUInt32LE(value: long, offset?: int): int
+writeUInt32LE(value: number, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入小端序的32位无符号整型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeUInt32LE(value: long, offset?: int): int--><!--Device-Buffer-writeUInt32LE(value: long, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2827,20 +2592,20 @@ writeUInt32LE(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | long | 是 | 写入Buffer对象的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
+| value | number | 是 | 写入Buffer对象的数据。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2856,16 +2621,14 @@ console.info("result = " + result);
 ## writeUInt8
 
 ```TypeScript
-writeUInt8(value: long, offset?: int): int
+writeUInt8(value: number, offset?: number): number
 ```
 
 在Buffer对象的offset偏移处写入8位无符号整型数据。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeUInt8(value: long, offset?: int): int--><!--Device-Buffer-writeUInt8(value: long, offset?: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2873,20 +2636,20 @@ writeUInt8(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | long | 是 | 写入Buffer的数据。取值范围：0 &lt;= value &lt;= 255（8位无符号整数）。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 1。 |
+| value | number | 是 | 写入Buffer的数据。取值范围：0 & lt;= value & lt;= 255（8位无符号整数）。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - 1。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2911,16 +2674,14 @@ console.info("result3 = " + result3);
 ## writeUIntBE
 
 ```TypeScript
-writeUIntBE(value: long, offset: int, byteLength: int): int
+writeUIntBE(value: number, offset: number, byteLength: number): number
 ```
 
 在Buffer对象的offset偏移处写入大端序的无符号数据，字节长度为byteLength。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeUIntBE(value: long, offset: int, byteLength: int): int--><!--Device-Buffer-writeUIntBE(value: long, offset: int, byteLength: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2928,21 +2689,21 @@ writeUIntBE(value: long, offset: int, byteLength: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
-| byteLength | int | 是 | 要写入的字节数。 |
+| value | number | 是 | 写入Buffer的数据。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - byteLength。 |
+| byteLength | number | 是 | 要写入的字节数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -2958,16 +2719,14 @@ console.info("result = " + result);
 ## writeUIntLE
 
 ```TypeScript
-writeUIntLE(value: long, offset: int, byteLength: int): int
+writeUIntLE(value: number, offset: number, byteLength: number): number
 ```
 
 在Buffer对象的offset偏移处写入小端序的无符号数据，字节长度为byteLength。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-writeUIntLE(value: long, offset: int, byteLength: int): int--><!--Device-Buffer-writeUIntLE(value: long, offset: int, byteLength: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2975,21 +2734,21 @@ writeUIntLE(value: long, offset: int, byteLength: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
-| byteLength | int | 是 | 要写入的字节数。 |
+| value | number | 是 | 写入Buffer的数据。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 & lt;= offset & lt;= Buffer.length - byteLength。 |
+| byteLength | number | 是 | 要写入的字节数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 偏移量offset加上写入的字节数。 |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [param] |
 
 **示例**
 
@@ -3016,8 +2775,6 @@ ArrayBuffer对象。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Buffer-buffer: ArrayBuffer--><!--Device-Buffer-buffer: ArrayBuffer-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## byteOffset
@@ -3026,15 +2783,15 @@ ArrayBuffer对象。
 byteOffset: number
 ```
 
-当前Buffer所在内存池的偏移量。<br>- 当Buffer通过内存池创建时（如使用[allocUninitializedFromPool](arkts-arkts-buffer-allocuninitializedfrompool-f.md)创 建Buffer，或使用buffer.from()传入字符串，且字符串长度加当前内存池偏移量小于4kb），返回相对于内存池的偏移量。<br>- 当Buffer直接分配内存时（如使用 [alloc](arkts-arkts-buffer-alloc-f.md)），返回值为0。
+当前Buffer所在内存池的偏移量。  
+- 当Buffer通过内存池创建时（如使用[allocUninitializedFromPool](arkts-arkts-buffer-allocuninitializedfrompool-f.md)创 建Buffer，或使用buffer.from()传入字符串，且字符串长度加当前内存池偏移量小于4kb），返回相对于内存池的偏移量。  
+- 当Buffer直接分配内存时（如使用 [alloc](arkts-arkts-buffer-alloc-f.md)），返回值为0。
 
 **类型：** number
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-byteOffset: number--><!--Device-Buffer-byteOffset: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3052,7 +2809,4 @@ Buffer对象的字节长度。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Buffer-length: number--><!--Device-Buffer-length: number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

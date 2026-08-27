@@ -18,8 +18,6 @@ function disconnectAbility(connection: number, callback: AsyncCallback<void>): v
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-featureAbility-function disconnectAbility(connection: number, callback: AsyncCallback<void>): void--><!--Device-featureAbility-function disconnectAbility(connection: number, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **参数：**
@@ -27,7 +25,7 @@ function disconnectAbility(connection: number, callback: AsyncCallback<void>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | connection | number | 是 | 表示断开连接的ServiceAbility的ID。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当断开与指定ServiceAbility的连接成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当断开与指定ServiceAbility的连接成功，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -76,8 +74,6 @@ function disconnectAbility(connection: number): Promise<void>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-featureAbility-function disconnectAbility(connection: number): Promise<void>--><!--Device-featureAbility-function disconnectAbility(connection: number): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **参数：**
@@ -90,7 +86,7 @@ function disconnectAbility(connection: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -124,4 +120,3 @@ featureAbility.disconnectAbility(connectId).then(() => {
   console.error(`featureAbilityTest result errCode : ${error.code}`);
 });
 ```
-

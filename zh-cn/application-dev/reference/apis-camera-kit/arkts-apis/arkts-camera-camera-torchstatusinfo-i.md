@@ -2,17 +2,13 @@
 
 手电筒回调返回的接口实例，表示手电筒状态信息。
 
-**起始版本：** 23
-
-<!--Device-camera-interface TorchStatusInfo--><!--Device-camera-interface TorchStatusInfo-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## isTorchActive
@@ -25,11 +21,9 @@ readonly isTorchActive: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TorchStatusInfo-readonly isTorchActive: boolean--><!--Device-TorchStatusInfo-readonly isTorchActive: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -43,29 +37,24 @@ readonly isTorchAvailable: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TorchStatusInfo-readonly isTorchAvailable: boolean--><!--Device-TorchStatusInfo-readonly isTorchAvailable: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## torchLevel
 
 ```TypeScript
-readonly torchLevel: double
+readonly torchLevel: number
 ```
 
 手电筒亮度等级，取值范围为[0,1]，越靠近1，亮度越大。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TorchStatusInfo-readonly torchLevel: double--><!--Device-TorchStatusInfo-readonly torchLevel: double-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-

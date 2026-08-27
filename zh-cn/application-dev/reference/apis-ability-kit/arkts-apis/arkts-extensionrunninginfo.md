@@ -9,4 +9,3 @@
 | --- | --- |
 | [ExtensionRunningInfo](arkts-ability-extensionrunninginfo-i-sys.md) | ExtensionRunningInfo模块封装了Extension运行的相关信息，可以通过 [getExtensionRunningInfos接口](arkts-ability-abilitymanager-getextensionrunninginfos-f-sys.md) 获取。 |
 <!--DelEnd-->
-

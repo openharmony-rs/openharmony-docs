@@ -2,9 +2,7 @@
 
 手势事件类型。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export declare enum ActionType--><!--Device-unnamed-export declare enum ActionType-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -16,9 +14,7 @@ CANCEL = 0
 
 手势取消。
 
-**起始版本：** 23
-
-<!--Device-ActionType-CANCEL = 0--><!--Device-ActionType-CANCEL = 0-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -30,9 +26,7 @@ BEGIN = 1
 
 手势开始。
 
-**起始版本：** 23
-
-<!--Device-ActionType-BEGIN = 1--><!--Device-ActionType-BEGIN = 1-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -44,9 +38,7 @@ UPDATE = 2
 
 手势更新。
 
-**起始版本：** 23
-
-<!--Device-ActionType-UPDATE = 2--><!--Device-ActionType-UPDATE = 2-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -58,9 +50,6 @@ END = 3
 
 手势结束。
 
-**起始版本：** 23
-
-<!--Device-ActionType-END = 3--><!--Device-ActionType-END = 3-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
-

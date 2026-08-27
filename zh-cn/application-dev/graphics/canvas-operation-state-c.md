@@ -37,22 +37,22 @@
 
 ### 接口说明
 
-裁剪操作常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
+裁剪操作常用接口如下表所示，详细的使用和参数说明请见drawing_canvas.h。
 
 | 接口 | 描述 |
 | -------- | -------- |
-| void OH_Drawing_CanvasClipRect (OH_Drawing_Canvas \*, const OH_Drawing_Rect \*, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | 用于裁剪一个矩形。 |
-| void OH_Drawing_CanvasClipRoundRect (OH_Drawing_Canvas \*, const OH_Drawing_RoundRect \*, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | 用于裁剪一个圆角矩形。 |
-| void OH_Drawing_CanvasClipPath (OH_Drawing_Canvas \*, const OH_Drawing_Path \*, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | 用于裁剪一个自定义路径。 |
-| OH_Drawing_ErrorCode OH_Drawing_CanvasClipRegion (OH_Drawing_Canvas \*canvas, const OH_Drawing_Region \*region, OH_Drawing_CanvasClipOp clipOp) | 用于裁剪一个区域。 |
+| void OH_Drawing_CanvasClipRect(OH_Drawing_Canvas \*canvas, const OH_Drawing_Rect \*rect, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | 用于裁剪一个矩形。 |
+| void OH_Drawing_CanvasClipRoundRect(OH_Drawing_Canvas \*canvas, const OH_Drawing_RoundRect \*roundRect, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | 用于裁剪一个圆角矩形。 |
+| void OH_Drawing_CanvasClipPath(OH_Drawing_Canvas \*canvas, const OH_Drawing_Path \*path, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | 用于裁剪一个自定义路径。 |
+| OH_Drawing_ErrorCode OH_Drawing_CanvasClipRegion(OH_Drawing_Canvas \*canvas, const OH_Drawing_Region \*region, OH_Drawing_CanvasClipOp clipOp) | 用于裁剪一个区域。 |
 
 
 ### 开发示例
 
-此处以在画布上裁剪矩形为例给出示例和效果图，其他裁剪操作的逻辑基本相同，注意调用对应的接口并确保要裁剪的数据类型对应准确即可，此处不再一一展开。详细的使用和参数说明请见[drawing_canvas.h/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
+此处以在画布上裁剪矩形为例给出示例和效果图，其他裁剪操作的逻辑基本相同，注意调用对应的接口并确保要裁剪的数据类型对应准确即可，此处不再一一展开。详细的使用和参数说明请见drawing_canvas.h。
 
 使用OH_Drawing_CanvasClipRect接口裁剪矩形。有以下四个入参：
-- 第一个参数是画布Canvas，裁剪操作将在这个画布上进行。请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)。
+- 第一个参数是画布Canvas，裁剪操作将在这个画布上进行。请确保已创建或获取得到画布Canvas，具体可见画布的获取与绘制结果的显示（C/C++）。
 
 - 第二个参数是要裁剪的矩形区域。
 
@@ -102,14 +102,14 @@ OH_Drawing_BrushDestroy(brush);
 
 ### 接口说明
 
-矩阵变换操作常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
+矩阵变换操作常用接口如下表所示，详细的使用和参数说明请见drawing_canvas.h。
 
 | 接口 | 描述 |
 | -------- | -------- |
-| void OH_Drawing_CanvasTranslate (OH_Drawing_Canvas \*, float dx, float dy) | 用于平移画布一段距离。 |
-| void OH_Drawing_CanvasScale (OH_Drawing_Canvas \*, float sx, float sy) | 用于画布缩放。 |
-| void OH_Drawing_CanvasRotate (OH_Drawing_Canvas \*, float degrees, float px, float py) | 用于画布旋转一定的角度，正数表示顺时针旋转，负数反之。 |
-| void OH_Drawing_CanvasSkew (OH_Drawing_Canvas \*, float sx, float sy) | 用于画布倾斜变换。等同于将当前画布矩阵左乘（premultiply）倾斜变换矩阵，并应用到画布上。其中倾斜变换矩阵为：\|1 sx 0\| \|sy 1 0\| \|0 0 1\|。 |
+| void OH_Drawing_CanvasTranslate(OH_Drawing_Canvas \*canvas, float dx, float dy) | 用于平移画布一段距离。 |
+| void OH_Drawing_CanvasScale(OH_Drawing_Canvas \*canvas, float sx, float sy) | 用于画布缩放。 |
+| void OH_Drawing_CanvasRotate(OH_Drawing_Canvas \*canvas, float degrees, float px, float py) | 用于画布旋转一定的角度，正数表示顺时针旋转，负数反之。 |
+| void OH_Drawing_CanvasSkew(OH_Drawing_Canvas \*canvas, float sx, float sy) | 用于画布倾斜变换。等同于将当前画布矩阵左乘（premultiply）倾斜变换矩阵，并应用到画布上。其中倾斜变换矩阵为：\|1 sx 0\| \|sy 1 0\| \|0 0 1\|。 |
 
 
 ### 平移
@@ -142,7 +142,7 @@ OH_Drawing_MatrixDestroy(matrix);
 
 | 原始图 | 平移后的效果图 |
 | -------- | -------- |
-| ![zh-cn_image_0000002194110929](figures/zh-cn_image_0000002194110929.png) | ![zh-cn_image_0000002194025285](figures/zh-cn_image_0000002194025285.png) |
+| ![Original-Image3](figures/Original-Image3.png) | ![Translated-Image](figures/Translated-Image.png) |
 
 
 ### 旋转
@@ -175,12 +175,12 @@ OH_Drawing_MatrixDestroy(matrix);
 
 | 原始图 | 旋转后的效果图 |
 | -------- | -------- |
-| ![zh-cn_image_0000002158584410](figures/zh-cn_image_0000002158584410.png) | ![zh-cn_image_0000002158584398](figures/zh-cn_image_0000002158584398.png) |
+| ![Original-Image1](figures/Original-Image1.png) | ![Rotated-Image](figures/Rotated-Image.png) |
 
 
 ### 缩放
 
-使用OH_Drawing_MatrixCreateScale()接口进行画布缩放，接口接受4个参数，分别为沿x轴和y轴的缩放因子、旋转中心的x轴和y轴坐标。
+使用OH_Drawing_MatrixCreateScale()接口进行画布缩放，接口接受4个参数，分别为沿x轴和y轴的缩放因子、缩放中心的x轴和y轴坐标。
 
 简单示例和示意图如下所示：
 
@@ -193,7 +193,7 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
 // 设置画布中的画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-// 创建缩放的矩阵对象，4个参数分别是旋转中心坐标和水平垂直方向的缩放因子
+// 创建缩放的矩阵对象，4个参数分别是水平垂直方向的缩放因子和缩放中心坐标
 OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateScale(2, 2, value200_, value300_);
 // 对Canvas进行矩阵变换
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
@@ -207,7 +207,7 @@ OH_Drawing_RectDestroy(rect);
 
 | 原始图 | 放大后的效果图 |
 | -------- | -------- |
-| ![zh-cn_image_0000002194110925](figures/zh-cn_image_0000002194110925.png) | ![zh-cn_image_0000002158584402](figures/zh-cn_image_0000002158584402.png) |
+| ![Original-Image2](figures/Original-Image2.png) | ![Scaled-up-Image](figures/Scaled-up-Image.png) |
 
 
 ## 画布状态保存与恢复
@@ -217,13 +217,13 @@ OH_Drawing_RectDestroy(rect);
 
 ### 接口说明
 
-画布状态保存与恢复使用的接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
+画布状态保存与恢复使用的接口如下表所示，详细的使用和参数说明请见drawing_canvas.h。
 
 | 接口 | 描述 |
 | -------- | -------- |
-| void OH_Drawing_CanvasSave (OH_Drawing_Canvas \*) | 用于保存当前画布的状态（画布矩阵）到一个栈顶。 |
-| void OH_Drawing_CanvasRestore (OH_Drawing_Canvas \*) | 用于恢复保存在栈顶的画布状态（画布矩阵）。 |
-| void OH_Drawing_CanvasRestoreToCount (OH_Drawing_Canvas \*, uint32_t saveCount) | 用于恢复到指定数量的画布状态（画布矩阵）。 |
+| void OH_Drawing_CanvasSave(OH_Drawing_Canvas \*canvas) | 用于保存当前画布的状态（画布矩阵）到一个栈顶。 |
+| void OH_Drawing_CanvasRestore(OH_Drawing_Canvas \*canvas) | 用于恢复保存在栈顶的画布状态（画布矩阵）。 |
+| void OH_Drawing_CanvasRestoreToCount(OH_Drawing_Canvas \*canvas, uint32_t saveCount) | 用于恢复到指定数量的画布状态（画布矩阵）。 |
 
 
 ### 开发示例
@@ -259,7 +259,7 @@ OH_Drawing_PointDestroy(point);
 OH_Drawing_MatrixDestroy(matrix);
 ```
 
-![zh-cn_image_0000002158744186](figures/zh-cn_image_0000002158744186.png)
+![Development-example](figures/Development-example.png)
 
 <!--RP1-->
 ## 相关实例

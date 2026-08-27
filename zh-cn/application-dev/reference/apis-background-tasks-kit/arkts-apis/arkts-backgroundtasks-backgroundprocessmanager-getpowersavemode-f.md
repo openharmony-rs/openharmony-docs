@@ -9,7 +9,7 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 ## getPowerSaveMode
 
 ```TypeScript
-function getPowerSaveMode(pid: int): Promise<PowerSaveMode>
+function getPowerSaveMode(pid: number): Promise<PowerSaveMode>
 ```
 
 获取进程能效模式。使用Promise异步回调。
@@ -18,15 +18,13 @@ function getPowerSaveMode(pid: int): Promise<PowerSaveMode>
 
 **需要权限：** ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
 
-<!--Device-backgroundProcessManager-function getPowerSaveMode(pid: int): Promise<PowerSaveMode>--><!--Device-backgroundProcessManager-function getPowerSaveMode(pid: int): Promise<PowerSaveMode>-End-->
-
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pid | int | 是 | 进程号。<br>取值范围：大于0的整数。 |
+| pid | number | 是 | 进程号。取值范围：大于0的整数。 |
 
 **返回值：**
 
@@ -38,9 +36,9 @@ function getPowerSaveMode(pid: int): Promise<PowerSaveMode>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [31800002](../../apis-backgroundtasks-kit/errorcode-backgroundProcessManager.md#31800002-参数错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [31800002](../errorcode-backgroundProcessManager.md#31800002-参数错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
 **示例**
 
@@ -59,4 +57,3 @@ try {
   console.error(`getPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-

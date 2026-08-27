@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface TextBaseController--><!--Device-unnamed-declare interface TextBaseController-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,8 +25,6 @@ closeSelectionMenu(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextBaseController-closeSelectionMenu(): void--><!--Device-TextBaseController-closeSelectionMenu(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getLayoutManager
@@ -45,8 +41,6 @@ getLayoutManager(): LayoutManager
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextBaseController-getLayoutManager(): LayoutManager--><!--Device-TextBaseController-getLayoutManager(): LayoutManager-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -61,7 +55,10 @@ getLayoutManager(): LayoutManager
 setSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void
 ```
 
-支持设置组件内的内容选中，选中部分背板高亮。 selectionStart和selectionEnd均为-1时表示全选。 未获焦时调用该接口不产生选中效果。 从API version 12开始，在PC/2in1设备中，无论options取何值，调用setSelection接口都不会弹出菜单，此外，如果组件中已经存在菜单，调用setSelection接口会关闭菜单。 在非2in1设备中，options取值为MenuPolicy.DEFAULT时，遵循以下规则： 1. 组件内有手柄菜单时，接口调用后不关闭菜单，并且调整菜单位置。 2. 组件内有不带手柄的菜单时，接口调用后不关闭菜单，并且菜单位置不变。 3. 组件内无菜单时，接口调用后也无菜单显示。
+支持设置组件内的内容选中，选中部分背板高亮。selectionStart和selectionEnd均为-1时表示全选。未获焦时调用该接口不产生选中效果。从API version 12开始，在PC/2in1设备中，无论options取何值，调用setSelection接口都不会弹出菜单，此外，如果组件中已经存在菜单，调用setSelection接口会关闭菜单。在非2in1设备中，options取值为MenuPolicy.DEFAULT时，遵循以下规则：
+1. 组件内有手柄菜单时，接口调用后不关闭菜单，并且调整菜单位置。
+2. 组件内有不带手柄的菜单时，接口调用后不关闭菜单，并且菜单位置不变。
+3. 组件内无菜单时，接口调用后也无菜单显示。
 
 **起始版本：** 12
 
@@ -69,15 +66,12 @@ setSelection(selectionStart: number, selectionEnd: number, options?: SelectionOp
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextBaseController-setSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void--><!--Device-TextBaseController-setSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectionStart | number | 是 | 选中开始位置。 <br>取值小于0时，按0处理。取值大于文本长度时，按当前文本长度处理。 <br>特殊取值效果：当selectionStart和selectionEnd均为-1时，表示全选。 |
-| selectionEnd | number | 是 | 选中结束位置。 <br>取值小于0时，按0处理。取值大于文本长度时，按当前文本长度处理。 <br>特殊取值效果：当selectionStart和selectionEnd均为-1时，表示全选。 |
-| options | SelectionOptions | 否 | 选择项配置。 默认值继承SelectionOptions。 |
-
+| selectionStart | number | 是 | 选中开始位置。 取值小于0时，按0处理。取值大于文本长度时，按当前文本长度处理。 特殊取值效果：当selectionStart和selectionEnd均为-1时，表示全选。 |
+| selectionEnd | number | 是 | 选中结束位置。 取值小于0时，按0处理。取值大于文本长度时，按当前文本长度处理。 特殊取值效果：当selectionStart和selectionEnd均为-1时，表示全选。 |
+| options | [SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md) | 否 | 选择项配置。 默认值继承[SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md)。 |

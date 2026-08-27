@@ -4,11 +4,6 @@
 
 ```TypeScript
 import { inputMethod } from '@kit.IMEKit';
-import { inputMethodEngine } from '@kit.IMEKit';
-import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
-import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
-import { InputMethodExtraConfig } from '@kit.IMEKit';
-import { inputMethodSystemPanelManager } from '@kit.IMEKit';
 ```
 
 ## getDefaultInputMethod
@@ -19,9 +14,7 @@ function getDefaultInputMethod(): InputMethodProperty
 
 获取默认输入法。
 
-**起始版本：** 23
-
-<!--Device-inputMethod-function getDefaultInputMethod(): InputMethodProperty--><!--Device-inputMethod-function getDefaultInputMethod(): InputMethodProperty-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -42,4 +35,3 @@ function getDefaultInputMethod(): InputMethodProperty
 ```TypeScript
 let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod();
 ```
-

@@ -14,11 +14,9 @@ function subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise<void>
 
 订阅通知扩展。使用蓝牙模块相关接口获取蓝牙设备的唯一地址后方可订阅。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **需要权限：** ohos.permission.SUBSCRIBE_NOTIFICATION
-
-<!--Device-notificationExtensionSubscription-function subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise<void>--><!--Device-notificationExtensionSubscription-function subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -38,7 +36,7 @@ getSubscribeInfo 获取应用通知扩展订阅信息。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -50,8 +48,6 @@ getSubscribeInfo 获取应用通知扩展订阅信息。
 | [1600023](../errorcode-notification.md#1600023-应用未实现notificationsubscriberextensionability) | The application does not implement the NotificationSubscriberExtensionAbility. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[] = [
@@ -66,21 +62,3 @@ notificationExtensionSubscription.subscribe(infos).then(() => {
   console.error(`subscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[] = [
-  {
-    addr: '01:23:45:67:89:AB', // 使用动态获取的蓝牙地址
-    type: notificationExtensionSubscription.SubscribeType.BLUETOOTH
-  }
-];
-notificationExtensionSubscription.subscribe(infos).then(() => {
-  console.info('subscribe success');
-}).catch((err: Error) => {
-  let error = err as BusinessError
-  console.error(`subscribe fail, code is ${error.code}, message is ${error.message}`);
-});
-```
-

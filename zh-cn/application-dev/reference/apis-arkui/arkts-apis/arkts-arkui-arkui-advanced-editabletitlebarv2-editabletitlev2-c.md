@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export declare class EditableTitleV2--><!--Device-unnamed-export declare class EditableTitleV2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,8 +26,6 @@ EditableTitleV2的构造函数。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EditableTitleV2-constructor(options?: EditableTitleV2Options)--><!--Device-EditableTitleV2-constructor(options?: EditableTitleV2Options)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -41,13 +37,12 @@ EditableTitleV2的构造函数。
 ## mainTitle
 
 ```TypeScript
-@Trace
-  public mainTitle: ResourceStr
+public mainTitle: ResourceStr
 ```
 
-主标题内容。 默认值：''，表示标题内容为空。
+主标题内容。默认值：''，表示标题内容为空。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **默认值：** ''
 
@@ -57,20 +52,17 @@ EditableTitleV2的构造函数。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EditableTitleV2-@Trace  public mainTitle: ResourceStr--><!--Device-EditableTitleV2-@Trace  public mainTitle: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## subTitle
 
 ```TypeScript
-@Trace
-  public subTitle?: ResourceStr
+public subTitle?: ResourceStr
 ```
 
 副标题内容。需要在标题下方显示补充说明信息时传入此参数。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 26.0.0
 
@@ -78,7 +70,4 @@ EditableTitleV2的构造函数。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EditableTitleV2-@Trace  public subTitle?: ResourceStr--><!--Device-EditableTitleV2-@Trace  public subTitle?: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

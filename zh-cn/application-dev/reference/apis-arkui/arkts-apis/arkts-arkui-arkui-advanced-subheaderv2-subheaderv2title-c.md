@@ -4,8 +4,6 @@
 
 **起始版本：** 18
 
-<!--Device-unnamed-export declare class SubHeaderV2Title--><!--Device-unnamed-export declare class SubHeaderV2Title-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,8 +26,6 @@ constructor(options: SubHeaderV2TitleOptions)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SubHeaderV2Title-constructor(options: SubHeaderV2TitleOptions)--><!--Device-SubHeaderV2Title-constructor(options: SubHeaderV2TitleOptions)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -41,11 +37,10 @@ constructor(options: SubHeaderV2TitleOptions)
 ## id
 
 ```TypeScript
-@Trace
-  id?: string
+id?: string
 ```
 
-标题id。需要为标题设置id的时候设置此参数，缺省时不设置此参数。 默认值：undefined，表示不设置标题id。
+标题id。需要为标题设置id的时候设置此参数，缺省时不设置此参数。默认值：undefined，表示不设置标题id。
 
 **类型：** string
 
@@ -55,20 +50,17 @@ constructor(options: SubHeaderV2TitleOptions)
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SubHeaderV2Title-@Trace  id?: string--><!--Device-SubHeaderV2Title-@Trace  id?: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryTitle
 
 ```TypeScript
-@Trace
-  primaryTitle?: ResourceStr
+primaryTitle?: ResourceStr
 ```
 
 The first line text of content area.
 
-**类型：** [ResourceStr](../../apis-na/arkts-apis/arkts-na-resourcestr-t.md)
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 18
 
@@ -76,15 +68,12 @@ The first line text of content area.
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SubHeaderV2Title-@Trace  primaryTitle?: ResourceStr--><!--Device-SubHeaderV2Title-@Trace  primaryTitle?: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryTitleModifier
 
 ```TypeScript
-@Trace
-  primaryTitleModifier?: TextModifier
+primaryTitleModifier?: TextModifier
 ```
 
 Text modifier for primary title.
@@ -97,20 +86,17 @@ Text modifier for primary title.
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SubHeaderV2Title-@Trace  primaryTitleModifier?: TextModifier--><!--Device-SubHeaderV2Title-@Trace  primaryTitleModifier?: TextModifier-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryTitle
 
 ```TypeScript
-@Trace
-  secondaryTitle?: ResourceStr
+secondaryTitle?: ResourceStr
 ```
 
 The secondary line text of content area.
 
-**类型：** [ResourceStr](../../apis-na/arkts-apis/arkts-na-resourcestr-t.md)
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 18
 
@@ -118,15 +104,12 @@ The secondary line text of content area.
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SubHeaderV2Title-@Trace  secondaryTitle?: ResourceStr--><!--Device-SubHeaderV2Title-@Trace  secondaryTitle?: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryTitleModifier
 
 ```TypeScript
-@Trace
-  secondaryTitleModifier?: TextModifier
+secondaryTitleModifier?: TextModifier
 ```
 
 Text modifier for secondary title.
@@ -139,20 +122,17 @@ Text modifier for secondary title.
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SubHeaderV2Title-@Trace  secondaryTitleModifier?: TextModifier--><!--Device-SubHeaderV2Title-@Trace  secondaryTitleModifier?: TextModifier-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## titleAccessibilityText
 
 ```TypeScript
-@Trace
-  titleAccessibilityText?: ResourceStr
+titleAccessibilityText?: ResourceStr
 ```
 
-设置标题自定义朗读内容。 默认值：undefined 值为undefined时，默认朗读组件显示的标题内容。
+设置标题自定义朗读内容。默认值：undefined值为undefined时，默认朗读组件显示的标题内容。
 
-**类型：** [ResourceStr](../../apis-na/arkts-apis/arkts-na-resourcestr-t.md)
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 23
 
@@ -160,7 +140,4 @@ Text modifier for secondary title.
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SubHeaderV2Title-@Trace  titleAccessibilityText?: ResourceStr--><!--Device-SubHeaderV2Title-@Trace  titleAccessibilityText?: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

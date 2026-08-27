@@ -9,7 +9,7 @@
 >  **说明：**
 >  从API version 5开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-工具栏[toolbar](js-components-basic-toolbar.md)子组件。 用于展示工具栏上的一个操作选项。 
+工具栏toolbar子组件。 用于展示工具栏上的一个操作选项。 
 
 
 ## 子组件
@@ -19,7 +19,7 @@
 
 ## 属性
 
-除支持[通用属性](js-components-common-attributes.md)外，还支持如下属性：
+除支持通用属性外，还支持如下属性：
 
 | 名称    | 类型     | 默认值  | 必填   | 描述                                       |
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
@@ -39,8 +39,8 @@
 | font-style          | string                                   | normal       | 否    | 文本字体样式，可选值为：<br/> -&nbsp;normal:&nbsp;标准的字体样式；<br/>- &nbsp;italic:&nbsp;斜体的字体样式。 |
 | font-weight         | number\|string                           | normal       | 否    | 文本字体粗细，number类型取值[100,&nbsp;900]的整数（被100整除），默认为400，取值越大，字体越粗。string类型取值为：lighter、normal、bold、bolder。 |
 | text-decoration     | string                                   | none         | 否    | 文本修饰，可选值为：<br/>- underline:&nbsp;文本下划线修饰；<br/>- &nbsp;line-through:&nbsp;穿过文本的修饰线；<br/>- &nbsp;none:&nbsp;标准文本。 |
-| font-family         | string                                   | sans-serif   | 否    | 字体列表，用逗号分隔，每个字体用字体名或者字体族名设置。列表中第一个系统中存在的或者通过[自定义字体](js-components-common-customizing-font.md)指定的字体，会被选中作为文本的字体。 |
-| background          | &lt;linear-gradient&gt;                  | -            | 否    | 仅支持设置[渐变样式](js-components-common-gradient.md)，与background-color、background-image不兼容。 |
+| font-family         | string                                   | sans-serif   | 否    | 字体列表，用逗号分隔，每个字体用字体名或者字体族名设置。列表中第一个系统中存在的或者通过自定义字体指定的字体，会被选中作为文本的字体。 |
+| background          | &lt;linear-gradient&gt;                  | -            | 否    | 仅支持设置渐变样式，与background-color、background-image不兼容。 |
 | background-color    | &lt;color&gt;                            | -            | 否    | 设置背景颜色。                                  |
 | background-image    | string                                   | -            | 否    | 设置背景图片。与background-color、background不兼容；支持网络图片资源和本地图片资源地址。 |
 | background-size     | -&nbsp;string<br/>-&nbsp;&lt;length&gt;&nbsp;&lt;length&gt;<br/>-&nbsp;&lt;percentage&gt;&nbsp;&lt;percentage&gt; | auto         | 否    | 设置背景图片的大小。<br/>-&nbsp;string可选值：<br/>&nbsp;&nbsp;-&nbsp;contain：把图像扩展至最大尺寸，以使其高度和宽度完全适用内容区域。<br/>&nbsp;&nbsp;-&nbsp;cover：把背景图像扩展至足够大，以使背景图像完全覆盖背景区域；背景图像的某些部分也许无法显示在背景定位区域中。<br/>&nbsp;&nbsp;-&nbsp;auto：保持原图的比例不变。<br/>-&nbsp;length参数方式：<br/>&nbsp;&nbsp;设置背景图像的高度和宽度。第一个值设置宽度，第二个值设置高度。如果只设置一个值，则第二个值会被设置为&nbsp;"auto"。<br/>-&nbsp;百分比参数方式：<br/>以父元素的百分比来设置背景图像的宽度和高度。第一个值设置宽度，第二个值设置高度。如果只设置一个值，则第二个值会被设置为&nbsp;"auto"。 |
@@ -53,7 +53,7 @@
 
 ## 事件
 
-支持[通用事件](js-components-common-events.md)。
+支持通用事件。
 
 
 ## 方法

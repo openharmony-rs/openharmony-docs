@@ -1,10 +1,14 @@
 # Ashmem
 
-提供与匿名共享内存对象相关的方法，包括创建、关闭、映射和取消映射Ashmem、从Ashmem读取数据和写入数据、获取Ashmem大小、设置Ashmem保护。 共享内存只适用与本设备内跨进程通信。 - 大数据传输：传输大量数据(如图片、文件)时使用共享内存提升效率。 - 跨进程数据共享：多个进程需要共享访问同一块内存数据。 - 传输效率问题：大数据通过共享内存传输避免序列化开销，提升传输效率。 - 内存复用问题：多进程可共享访问同一内存，避免数据拷贝。 - 提升传输性能：共享内存机制大幅提升大数据传输效率。 - 减少内存占用：避免数据多次拷贝，节省内存资源。
+提供与匿名共享内存对象相关的方法，包括创建、关闭、映射和取消映射Ashmem、从Ashmem读取数据和写入数据、获取Ashmem大小、设置Ashmem保护。共享内存只适用于本设备内跨进程通信。  
+- 大数据传输：传输大量数据(如图片、文件)时使用共享内存提升效率。  
+- 跨进程数据共享：多个进程需要共享访问同一块内存数据。  
+- 传输效率问题：大数据通过共享内存传输避免序列化开销，提升传输效率。  
+- 内存复用问题：多进程可共享访问同一内存，避免数据拷贝。  
+- 提升传输性能：共享内存机制大幅提升大数据传输效率。  
+- 减少内存占用：避免数据多次拷贝，节省内存资源。
 
-**起始版本：** 23
-
-<!--Device-rpc-class Ashmem--><!--Device-rpc-class Ashmem-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -20,11 +24,13 @@ import { rpc } from '@kit.IPCKit';
 closeAshmem(): void
 ```
 
-关闭这个Ashmem。 > **说明：** > > 关闭Ashmem对象前需要先解除地址映射。
+关闭这个Ashmem。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 关闭Ashmem对象前需要先解除地址映射。
 
-<!--Device-Ashmem-closeAshmem(): void--><!--Device-Ashmem-closeAshmem(): void-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -45,14 +51,12 @@ try {
 ## create
 
 ```TypeScript
-static create(name: string, size: int): Ashmem
+static create(name: string, size: number): Ashmem
 ```
 
 静态方法，根据指定的名称和大小创建Ashmem对象。
 
-**起始版本：** 23
-
-<!--Device-Ashmem-static create(name: string, size: int): Ashmem--><!--Device-Ashmem-static create(name: string, size: int): Ashmem-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -61,7 +65,7 @@ static create(name: string, size: int): Ashmem
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | Ashmem名称，用于查询Ashmem信息，其长度不能为0。 |
-| size | int | 是 | Ashmem的大小，其大小应大于0，以字节为单位。 |
+| size | number | 是 | Ashmem的大小，其大小应大于0，以字节为单位。 |
 
 **返回值：**
 
@@ -102,9 +106,7 @@ static create(ashmem: Ashmem): Ashmem
 
 静态方法，通过复制现有Ashmem对象的文件描述符(fd)来创建Ashmem对象。两个Ashmem对象指向同一个共享内存区域。
 
-**起始版本：** 23
-
-<!--Device-Ashmem-static create(ashmem: Ashmem): Ashmem--><!--Device-Ashmem-static create(ashmem: Ashmem): Ashmem-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -159,8 +161,6 @@ static createAshmem(name: string, size: number): Ashmem
 
 **替代接口：** create()
 
-<!--Device-Ashmem-static createAshmem(name: string, size: number): Ashmem--><!--Device-Ashmem-static createAshmem(name: string, size: number): Ashmem-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -206,8 +206,6 @@ static createAshmemFromExisting(ashmem: Ashmem): Ashmem
 
 **替代接口：** create()
 
-<!--Device-Ashmem-static createAshmemFromExisting(ashmem: Ashmem): Ashmem--><!--Device-Ashmem-static createAshmemFromExisting(ashmem: Ashmem): Ashmem-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -241,14 +239,12 @@ try {
 ## getAshmemSize
 
 ```TypeScript
-getAshmemSize(): int
+getAshmemSize(): number
 ```
 
 获取Ashmem对象的内存大小。
 
-**起始版本：** 23
-
-<!--Device-Ashmem-getAshmemSize(): int--><!--Device-Ashmem-getAshmemSize(): int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -256,7 +252,7 @@ getAshmemSize(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 返回Ashmem对象的内存大小。 |
+| number | 返回Ashmem对象的内存大小。 |
 
 **示例**
 
@@ -286,8 +282,6 @@ mapAshmem(mapType: number): boolean
 **废弃版本：** 9
 
 **替代接口：** [mapTypedAshmem](#maptypedashmem)(mapType: int)
-
-<!--Device-Ashmem-mapAshmem(mapType: number): boolean--><!--Device-Ashmem-mapAshmem(mapType: number): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -332,8 +326,6 @@ mapReadAndWriteAshmem(): boolean
 
 **替代接口：** [mapReadWriteAshmem](#mapreadwriteashmem)()
 
-<!--Device-Ashmem-mapReadAndWriteAshmem(): boolean--><!--Device-Ashmem-mapReadAndWriteAshmem(): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -371,8 +363,6 @@ mapReadOnlyAshmem(): boolean
 
 **替代接口：** [mapReadonlyAshmem](#mapreadonlyashmem)()
 
-<!--Device-Ashmem-mapReadOnlyAshmem(): boolean--><!--Device-Ashmem-mapReadOnlyAshmem(): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -396,43 +386,6 @@ try {
 }
 ```
 
-## mapReadWriteAshmem
-
-```TypeScript
-mapReadWriteAshmem(): void
-```
-
-在此进程虚拟地址空间上创建可读写的共享文件映射。
-
-**起始版本：** 23
-
-<!--Device-Ashmem-mapReadWriteAshmem(): void--><!--Device-Ashmem-mapReadWriteAshmem(): void-End-->
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [1900001](../errorcode-rpc.md#1900001-系统调用mmap失败) | Failed to call mmap. |
-
-**示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
-  ashmem.mapReadWriteAshmem();
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
-
 ## mapReadonlyAshmem
 
 ```TypeScript
@@ -441,9 +394,7 @@ mapReadonlyAshmem(): void
 
 在此进程虚拟地址空间上创建只读的共享文件映射。
 
-**起始版本：** 23
-
-<!--Device-Ashmem-mapReadonlyAshmem(): void--><!--Device-Ashmem-mapReadonlyAshmem(): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -470,17 +421,50 @@ try {
 }
 ```
 
+## mapReadWriteAshmem
+
+```TypeScript
+mapReadWriteAshmem(): void
+```
+
+在此进程虚拟地址空间上创建可读写的共享文件映射。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [1900001](../errorcode-rpc.md#1900001-系统调用mmap失败) | Failed to call mmap. |
+
+**示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  ashmem.mapReadWriteAshmem();
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
+```
+
 ## mapTypedAshmem
 
 ```TypeScript
-mapTypedAshmem(mapType: int): void
+mapTypedAshmem(mapType: number): void
 ```
 
 在此进程的虚拟地址空间上创建共享文件映射，映射区域大小由此Ashmem对象指定。
 
-**起始版本：** 23
-
-<!--Device-Ashmem-mapTypedAshmem(mapType: int): void--><!--Device-Ashmem-mapTypedAshmem(mapType: int): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -488,7 +472,7 @@ mapTypedAshmem(mapType: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mapType | int | 是 | 指定映射的内存区域的保护等级。 |
+| mapType | number | 是 | 指定映射的内存区域的保护等级。 |
 
 **错误码：**
 
@@ -520,15 +504,17 @@ try {
 readAshmem(size: number, offset: number): number[]
 ```
 
-从此Ashmem对象关联的共享文件中读取数据。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
+从此Ashmem对象关联的共享文件中读取数据。
+
+> **说明：**
+> 
+> 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
 **替代接口：** [readDataFromAshmem](#readdatafromashmem)(size: int, offset: int)
-
-<!--Device-Ashmem-readAshmem(size: number, offset: number): number[]--><!--Device-Ashmem-readAshmem(size: number, offset: number): number[]-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -576,14 +562,16 @@ try {
 ## readDataFromAshmem
 
 ```TypeScript
-readDataFromAshmem(size: int, offset: int): ArrayBuffer
+readDataFromAshmem(size: number, offset: number): ArrayBuffer
 ```
 
-从此Ashmem对象关联的共享文件中读取数据。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
+从此Ashmem对象关联的共享文件中读取数据。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
 
-<!--Device-Ashmem-readDataFromAshmem(size: int, offset: int): ArrayBuffer--><!--Device-Ashmem-readDataFromAshmem(size: int, offset: int): ArrayBuffer-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -591,8 +579,8 @@ readDataFromAshmem(size: int, offset: int): ArrayBuffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | int | 是 | 要读取的数据的大小，以字节为单位。 |
-| offset | int | 是 | 要读取的数据在此Ashmem对象关联的内存区间的起始位置。 |
+| size | number | 是 | 要读取的数据的大小，以字节为单位。 |
+| offset | number | 是 | 要读取的数据在此Ashmem对象关联的内存区间的起始位置。 |
 
 **返回值：**
 
@@ -640,15 +628,17 @@ try {
 readFromAshmem(size: number, offset: number): number[]
 ```
 
-从此Ashmem对象关联的共享文件中读取数据。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
+从此Ashmem对象关联的共享文件中读取数据。
+
+> **说明：**
+> 
+> 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [readDataFromAshmem](#readdatafromashmem)(size: int, offset: int)
-
-<!--Device-Ashmem-readFromAshmem(size: number, offset: number): number[]--><!--Device-Ashmem-readFromAshmem(size: number, offset: number): number[]-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -699,8 +689,6 @@ setProtection(protectionType: number): boolean
 
 **替代接口：** [setProtectionType](#setprotectiontype)(protectionType: int)
 
-<!--Device-Ashmem-setProtection(protectionType: number): boolean--><!--Device-Ashmem-setProtection(protectionType: number): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -734,14 +722,12 @@ try {
 ## setProtectionType
 
 ```TypeScript
-setProtectionType(protectionType: int): void
+setProtectionType(protectionType: number): void
 ```
 
 设置映射内存区域的保护等级。
 
-**起始版本：** 23
-
-<!--Device-Ashmem-setProtectionType(protectionType: int): void--><!--Device-Ashmem-setProtectionType(protectionType: int): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -749,7 +735,7 @@ setProtectionType(protectionType: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| protectionType | int | 是 | 要设置的保护类型。 |
+| protectionType | number | 是 | 要设置的保护类型。 |
 
 **错误码：**
 
@@ -783,9 +769,7 @@ unmapAshmem(): void
 
 删除该Ashmem对象的地址映射。
 
-**起始版本：** 23
-
-<!--Device-Ashmem-unmapAshmem(): void--><!--Device-Ashmem-unmapAshmem(): void-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -809,15 +793,17 @@ try {
 writeAshmem(buf: number[], size: number, offset: number): void
 ```
 
-将数据写入此Ashmem对象关联的共享文件。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
+将数据写入此Ashmem对象关联的共享文件。
+
+> **说明：**
+> 
+> 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
 **替代接口：** [writeDataToAshmem](#writedatatoashmem)(buf: ArrayBuffer, size: int, offset: int)
-
-<!--Device-Ashmem-writeAshmem(buf: number[], size: number, offset: number): void--><!--Device-Ashmem-writeAshmem(buf: number[], size: number, offset: number): void-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -858,14 +844,16 @@ try {
 ## writeDataToAshmem
 
 ```TypeScript
-writeDataToAshmem(buf: ArrayBuffer, size: int, offset: int): void
+writeDataToAshmem(buf: ArrayBuffer, size: number, offset: number): void
 ```
 
-将数据写入此Ashmem对象关联的共享文件。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
+将数据写入此Ashmem对象关联的共享文件。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
 
-<!--Device-Ashmem-writeDataToAshmem(buf: ArrayBuffer, size: int, offset: int): void--><!--Device-Ashmem-writeDataToAshmem(buf: ArrayBuffer, size: int, offset: int): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -874,8 +862,8 @@ writeDataToAshmem(buf: ArrayBuffer, size: int, offset: int): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buf | ArrayBuffer | 是 | 写入Ashmem对象的数据。 |
-| size | int | 是 | 要写入的数据大小，以字节为单位。 |
-| offset | int | 是 | 要写入的数据在此Ashmem对象关联的内存区间的起始位置。 |
+| size | number | 是 | 要写入的数据大小，以字节为单位。 |
+| offset | number | 是 | 要写入的数据在此Ashmem对象关联的内存区间的起始位置。 |
 
 **错误码：**
 
@@ -914,15 +902,17 @@ try {
 writeToAshmem(buf: number[], size: number, offset: number): boolean
 ```
 
-将数据写入此Ashmem对象关联的共享文件。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
+将数据写入此Ashmem对象关联的共享文件。
+
+> **说明：**
+> 
+> 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [writeDataToAshmem](#writedatatoashmem)(buf: ArrayBuffer, size: int, offset: int)
-
-<!--Device-Ashmem-writeToAshmem(buf: number[], size: number, offset: number): boolean--><!--Device-Ashmem-writeToAshmem(buf: number[], size: number, offset: number): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -972,8 +962,6 @@ static readonly PROT_EXEC: number
 
 **起始版本：** 8
 
-<!--Device-Ashmem-static readonly PROT_EXEC: number--><!--Device-Ashmem-static readonly PROT_EXEC: number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 ## PROT_NONE
@@ -989,8 +977,6 @@ static readonly PROT_NONE: number
 **默认值：** 0
 
 **起始版本：** 8
-
-<!--Device-Ashmem-static readonly PROT_NONE: number--><!--Device-Ashmem-static readonly PROT_NONE: number-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -1008,8 +994,6 @@ static readonly PROT_READ: number
 
 **起始版本：** 8
 
-<!--Device-Ashmem-static readonly PROT_READ: number--><!--Device-Ashmem-static readonly PROT_READ: number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 ## PROT_WRITE
@@ -1026,7 +1010,4 @@ static readonly PROT_WRITE: number
 
 **起始版本：** 8
 
-<!--Device-Ashmem-static readonly PROT_WRITE: number--><!--Device-Ashmem-static readonly PROT_WRITE: number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
-

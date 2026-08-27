@@ -12,9 +12,6 @@ Search类型的FrameNode节点类型。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-type Search = TypedFrameNode<SearchInterface, SearchAttribute>--><!--Device-typeNode-type Search = TypedFrameNode<SearchInterface, SearchAttribute>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** TypedFrameNode<SearchInterface, SearchAttribute>
-
+**属性类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;SearchInterface, [SearchAttribute](../arkts-components/arkts-arkui-search-attribute.md)&gt;

@@ -4,8 +4,6 @@
 
 **起始版本：** 9
 
-<!--Device-webview-enum WebHitTestType--><!--Device-webview-enum WebHitTestType-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## EditText
@@ -19,8 +17,6 @@ EditText = 0
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebHitTestType-EditText = 0--><!--Device-WebHitTestType-EditText = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,8 +32,6 @@ Email = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebHitTestType-Email = 1--><!--Device-WebHitTestType-Email = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## HttpAnchor
@@ -51,8 +45,6 @@ HttpAnchor = 2
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebHitTestType-HttpAnchor = 2--><!--Device-WebHitTestType-HttpAnchor = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -68,8 +60,6 @@ HttpAnchorImg = 3
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebHitTestType-HttpAnchorImg = 3--><!--Device-WebHitTestType-HttpAnchorImg = 3-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## Img
@@ -83,8 +73,6 @@ HTML::img标签。
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebHitTestType-Img = 4--><!--Device-WebHitTestType-Img = 4-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -100,8 +88,6 @@ Map = 5
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebHitTestType-Map = 5--><!--Device-WebHitTestType-Map = 5-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## Phone
@@ -115,8 +101,6 @@ Phone = 6
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebHitTestType-Phone = 6--><!--Device-WebHitTestType-Phone = 6-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -132,7 +116,4 @@ Unknown = 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebHitTestType-Unknown = 7--><!--Device-WebHitTestType-Unknown = 7-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

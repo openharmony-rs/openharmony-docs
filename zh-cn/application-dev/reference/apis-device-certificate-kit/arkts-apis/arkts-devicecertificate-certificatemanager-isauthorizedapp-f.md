@@ -3,8 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## isAuthorizedApp
@@ -15,11 +13,9 @@ function isAuthorizedApp(keyUri: string): Promise<boolean>
 
 表示当前应用是否由指定的用户凭据授权。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
-
-<!--Device-certificateManager-function isAuthorizedApp(keyUri: string): Promise<boolean>--><!--Device-certificateManager-function isAuthorizedApp(keyUri: string): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -33,15 +29,15 @@ function isAuthorizedApp(keyUri: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回查询应用是否被授权的结果，true为已授权，false为未授权。 |
+| Promise & lt;boolean & gt; | Promise对象，返回查询应用是否被授权的结果，true为已授权，false为未授权。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types; 3. Parameter verification failed. |
+| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;  2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**
 
@@ -65,4 +61,3 @@ try {
   console.error(`Failed to check if the application is authorized. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-

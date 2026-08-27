@@ -6,9 +6,7 @@ type IconType = Resource | image.PixelMap
 
 描述图标的类型。
 
-**起始版本：** 23
-
-<!--Device-unnamed-type IconType = Resource | image.PixelMap--><!--Device-unnamed-type IconType = Resource | image.PixelMap-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -16,6 +14,5 @@ type IconType = Resource | image.PixelMap
 
 | 类型 | 说明 |
 | --- | --- |
-| Resource | 表示值类型为图片资源。 |
+| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 表示值类型为图片资源。 |
 | image.PixelMap | 表示值类型为图片。 |
-

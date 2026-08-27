@@ -2,9 +2,7 @@
 
 USB配置，一个[USBDevice](arkts-basicservices-usbmanager-usbdevice-i.md)中可以含有多个配置。
 
-**起始版本：** 23
-
-<!--Device-usbManager-interface USBConfiguration--><!--Device-usbManager-interface USBConfiguration-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -12,38 +10,33 @@ USB配置，一个[USBDevice](arkts-basicservices-usbmanager-usbdevice-i.md)中�
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## attributes
 
 ```TypeScript
-attributes: int
+attributes: number
 ```
 
 配置的属性，取值遵循USB配置描述符规范，用于表示配置的供电方式、远程唤醒能力等特性。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBConfiguration-attributes: int--><!--Device-USBConfiguration-attributes: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
 ## id
 
 ```TypeScript
-id: int
+id: number
 ```
 
 配置的唯一标识。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBConfiguration-id: int--><!--Device-USBConfiguration-id: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -57,9 +50,7 @@ interfaces: Array<USBInterface>
 
 **类型：** Array&lt;USBInterface&gt;
 
-**起始版本：** 23
-
-<!--Device-USBConfiguration-interfaces: Array<USBInterface>--><!--Device-USBConfiguration-interfaces: Array<USBInterface>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -73,9 +64,7 @@ isRemoteWakeup: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-USBConfiguration-isRemoteWakeup: boolean--><!--Device-USBConfiguration-isRemoteWakeup: boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -89,25 +78,21 @@ isSelfPowered: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-USBConfiguration-isSelfPowered: boolean--><!--Device-USBConfiguration-isSelfPowered: boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
 ## maxPower
 
 ```TypeScript
-maxPower: int
+maxPower: number
 ```
 
 最大功耗，（单位：毫安）。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBConfiguration-maxPower: int--><!--Device-USBConfiguration-maxPower: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -121,9 +106,6 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-USBConfiguration-name: string--><!--Device-USBConfiguration-name: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
-

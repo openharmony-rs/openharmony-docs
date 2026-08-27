@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 HAR（Harmony Archive）是静态共享包，可以包含代码、C++库、资源和配置文件。通过HAR可以实现多个模块或多个工程共享ArkUI组件、资源等相关代码。
@@ -16,14 +16,14 @@ HAR（Harmony Archive）是静态共享包，可以包含代码、C++库、资�
 ## 约束限制
 
 - HAR不支持在设备上单独安装或运行，只能作为应用模块的依赖项被引用。
-- 从API version 14开始，HAR支持在配置文件中声明[UIAbility](../application-models/uiability-overview.md)组件，配置UIAbility的方法参考[在模块中添加Ability](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18658758104318)，拉起HAR中UIAbility的方式与[启动应用内的UIAbility](../application-models/uiability-intra-device-interaction.md)方法相同。
+- 从API version 14开始，HAR支持在配置文件中声明UIAbility组件，配置UIAbility的方法参考[在模块中添加Ability](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18658758104318)，拉起HAR中UIAbility的方式与启动应用内的UIAbility方法相同。
 
 > **说明：**
 >
-> 如果使用[startAbility/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口拉起HAR中的UIAbility，接口参数中的moduleName取值需要为依赖该HAR的[HAP](hap-package.md)/[HSP](in-app-hsp.md)的moduleName。
+> 如果使用startAbility接口拉起HAR中的UIAbility，接口参数中的moduleName取值需要为依赖该HAR的HAP/HSP的moduleName。
 
-- 从API version 18开始，HAR支持在配置文件中声明[ExtensionAbility](../application-models/extensionability-overview.md)组件，但不支持具有入口能力的ExtensionAbility（即skill标签配置了entity.system.home和ohos.want.action.home）。HAR中配置ExtensionAbility的方法和支持的类型请参考[模块中添加ExtensionAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18891639459)。API version 17及之前版本，不支持在配置文件中声明[ExtensionAbility](../application-models/extensionability-overview.md)组件。
-- HAR不支持在配置文件中声明[pages](./module-configuration-file.md#pages标签)页面，但是可以包含pages页面，并通过[Navigation跳转](../ui/arkts-navigation-jump.md#路由操作)的方式进行跳转。
+- 从API version 18开始，HAR支持在配置文件中声明ExtensionAbility组件，但不支持具有入口能力的ExtensionAbility（即skill标签配置了entity.system.home和ohos.want.action.home）。HAR中配置ExtensionAbility的方法和支持的类型请参考[模块中添加ExtensionAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18891639459)。API version 17及之前版本，不支持在配置文件中声明ExtensionAbility组件。
+- HAR不支持在配置文件中声明pages页面，但是可以包含pages页面，并通过Navigation跳转的方式进行跳转。
 - HAR不支持引用AppScope目录中的资源。在编译构建时，AppScope中的内容不会打包到HAR中，因此会导致HAR资源引用失败。
 - 由于HSP仅支持应用内共享，如果HAR依赖了HSP，则该HAR文件仅支持应用内共享，不支持发布到二方仓或三方仓供其他应用使用，否则会导致编译失败。
 - 多包（HAP/HSP）引用相同的HAR时，会造成多包间代码和资源的重复拷贝，从而导致应用包变大。
@@ -59,7 +59,7 @@ Index.ets文件是HAR导出声明文件的入口，HAR需要导出的接口，�
 
 > **说明：**
 >
-> HAR在和宿主应用一起编译时，会把HAR的代码直接编译到宿主应用中，HAR包是一个编译中间态产物，不是最终的运行实体。运行时，HAR运行的身份信息是其宿主应用，系统会以宿主应用的版本做行为区分。如果需要在HAR中区分宿主应用的版本做不同的行为区分，可以调用[getBundleInfoForSelf/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口，获取宿主应用的targetVersion，然后根据不同的targetVersion，做不同的逻辑处理。
+> HAR在和宿主应用一起编译时，会把HAR的代码直接编译到宿主应用中，HAR包是一个编译中间态产物，不是最终的运行实体。运行时，HAR运行的身份信息是其宿主应用，系统会以宿主应用的版本做行为区分。如果需要在HAR中区分宿主应用的版本做不同的行为区分，可以调用getBundleInfoForSelf接口，获取宿主应用的targetVersion，然后根据不同的targetVersion，做不同的逻辑处理。
 
 ### 导出ArkUI组件
 通过`export`导出ArkUI组件，示例如下：
@@ -363,9 +363,9 @@ struct Index {
 
 ### 混淆配置
 
-HAR可以作为二方库和三方库提供给其他应用使用，如果需要对代码资产进行保护，建议[开启混淆](../arkts-utils/source-obfuscation-guide.md#开启源码混淆)。
+HAR可以作为二方库和三方库提供给其他应用使用，如果需要对代码资产进行保护，建议按照HAR包混淆建议来进行源码混淆。
 
-[混淆能力](../arkts-utils/source-obfuscation.md)开启后，DevEco Studio在构建HAR时，会对代码进行编译、混淆及压缩处理，保护代码资产。
+混淆能力开启后，DevEco Studio在构建HAR时，会对代码进行编译、混淆及压缩处理，保护代码资产。
 
 HAR模块原先默认开启混淆能力，会对API 10及以上的HAR模块，且编译模块为release时，自动进行简单的代码混淆；**从DevEco Studio 5.0.3.600开始，新建工程默认关闭代码混淆功能**，可以在HAR模块的build-profile.json5文件中的ruleOptions字段下的enable进行开启混淆，详情请见[代码混淆](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-build-obfuscation)，配置如下所示：
 

@@ -2,18 +2,13 @@
 
 证书算法库框架提供证书相关接口。其中，依赖加解密算法库框架的基础算法能力的部分，详细接口说明可参考 [cryptoFramework API参考](../../apis-crypto-architecture-kit/arkts-apis/arkts-security-cryptoframework.md)。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace cert--><!--Device-unnamed-declare namespace cert-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.Cert
 
 ## 导入模块
 
 ```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## 汇总
@@ -23,8 +18,8 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 | 名称 | 说明 |
 | --- | --- |
 | [buildX509CertChain](arkts-devicecertificate-cert-buildx509certchain-f.md) | 表示使用CertChainBuildParameters对象方式创建X.509证书链对象。使用Promise方式返回结果。 |
-| [createCertCRLCollection](arkts-devicecertificate-cert-createcertcrlcollection-f.md) | 表示创建证书和证书吊销列表集合对象，并返回相应的结果。 |
 | [createCertChainValidator](arkts-devicecertificate-cert-createcertchainvalidator-f.md) | 表示创建证书链校验器对象。 |
+| [createCertCRLCollection](arkts-devicecertificate-cert-createcertcrlcollection-f.md) | 表示创建证书和证书吊销列表集合对象，并返回相应的结果。 |
 | [createCertExtension](arkts-devicecertificate-cert-createcertextension-f.md) | 创建一个证书扩展对象。使用Callback异步回调。 |
 | [createCertExtension](arkts-devicecertificate-cert-createcertextension-f.md) | 创建一个证书扩展对象。使用Promise方式返回结果。 |
 | [createCmsGenerator](arkts-devicecertificate-cert-createcmsgenerator-f.md) | 表示创建CmsGenerator对象。 |
@@ -34,15 +29,15 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 | [createTrustAnchorsWithKeyStore](arkts-devicecertificate-cert-createtrustanchorswithkeystore-f.md) | 表示从P12中读取ca证书来构造[TrustAnchor](arkts-devicecertificate-cert-x509trustanchor-i.md)对象数组。使用Promise方式返回结果。 |
 | [createX500DistinguishedName](arkts-devicecertificate-cert-createx500distinguishedname-f.md) | 表示使用字符串格式的名称创建X500DistinguishedName对象。使用Promise方式返回结果。 |
 | [createX500DistinguishedName](arkts-devicecertificate-cert-createx500distinguishedname-f.md) | 表示使用DER格式的名称创建X500DistinguishedName对象。使用Promise方式返回结果。 |
-| [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md) | 表示创建X.509证书吊销列表对象。使用Callback异步回调。 |
-| [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md) | 表示创建X.509证书吊销列表对象。使用Promise方式返回结果。 |
 | [createX509Cert](arkts-devicecertificate-cert-createx509cert-f.md) | 表示创建一个X.509证书对象。使用Callback异步回调。 |
 | [createX509Cert](arkts-devicecertificate-cert-createx509cert-f.md) | 表示创建一个X.509证书对象。使用Promise方式返回结果。 |
 | [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md) | 表示创建X.509证书链对象。使用Promise方式返回结果。 |
 | [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md) | 表示创建X.509证书链对象。使用Callback异步回调。 |
 | [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md) | 表示使用X509Cert数组方式创建X.509证书链对象，并同步返回结果。 |
-| [createX509Crl](arkts-devicecertificate-cert-createx509crl-f.md) | 表示创建X.509证书吊销列表对象。使用Callback异步回调。 |
-| [createX509Crl](arkts-devicecertificate-cert-createx509crl-f.md) | 表示创建X.509证书吊销列表对象。使用Promise方式返回结果。 |
+| [createX509Crl](arkts-devicecertificate-cert-createx509crl-depr-f.md#createx509crl) | 表示创建X.509证书吊销列表对象。使用Callback异步回调。 |
+| [createX509Crl](arkts-devicecertificate-cert-createx509crl-depr-f.md#createx509crl) | 表示创建X.509证书吊销列表对象。使用Promise方式返回结果。 |
+| [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md) | 表示创建X.509证书吊销列表对象。使用Callback异步回调。 |
+| [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md) | 表示创建X.509证书吊销列表对象。使用Promise方式返回结果。 |
 | [generateCsr](arkts-devicecertificate-cert-generatecsr-f.md) | 表示使用指定的私钥，传入主体、扩展、摘要算法、输出格式等配置参数去生成CSR。 |
 | [parsePkcs12](arkts-devicecertificate-cert-parsepkcs12-f.md) | 解析P12。 |
 | [parsePkcs12](arkts-devicecertificate-cert-parsepkcs12-f.md) | 解析P12。使用Promise方式返回结果。 |
@@ -51,13 +46,13 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [CertCRLCollection](arkts-devicecertificate-cert-certcrlcollection-i.md) | 证书和证书吊销列表集合。 |
 | [CertChainBuildParameters](arkts-devicecertificate-cert-certchainbuildparameters-i.md) | 证书链创建参数。 |
 | [CertChainBuildResult](arkts-devicecertificate-cert-certchainbuildresult-i.md) | 表示证书链创建结果。 |
 | [CertChainData](arkts-devicecertificate-cert-certchaindata-i.md) | 证书链数据，在证书链校验时，作为入参传入。 |
 | [CertChainValidationParameters](arkts-devicecertificate-cert-certchainvalidationparameters-i.md) | 表示证书链校验的参数。 |
 | [CertChainValidationResult](arkts-devicecertificate-cert-certchainvalidationresult-i.md) | 表示证书链校验的返回值。 |
 | [CertChainValidator](arkts-devicecertificate-cert-certchainvalidator-i.md) | 证书链校验器对象。 |
+| [CertCRLCollection](arkts-devicecertificate-cert-certcrlcollection-i.md) | 证书和证书吊销列表集合。 |
 | [CertExtension](arkts-devicecertificate-cert-certextension-i.md) | 提供操作X.509证书扩展的API。 |
 | [CertValidationParams](arkts-devicecertificate-cert-certvalidationparams-i.md) | 证书验证的参数。 |
 | [CertValidationResult](arkts-devicecertificate-cert-certvalidationresult-i.md) | 证书验证的结果。 |
@@ -70,7 +65,7 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 | [CmsRecipientInfo](arkts-devicecertificate-cert-cmsrecipientinfo-i.md) | CMS封装数据的接收者信息。 |
 | [CmsSignerConfig](arkts-devicecertificate-cert-cmssignerconfig-i.md) | 表示Cms签名者的配置选项。 |
 | [CmsVerificationConfig](arkts-devicecertificate-cert-cmsverificationconfig-i.md) | CMS验签的配置。 |
-| [CsrAttribute](arkts-devicecertificate-cert-csrattribute-i.md) | 定义CSR属性表示。 <br>CSR属性字段，当前仅支持字符串类型的属性字段，属性值添加到CSR中编码为utf-8。常见的type为challengePassword。 |
+| [CsrAttribute](arkts-devicecertificate-cert-csrattribute-i.md) | 定义CSR属性表示。 |
 | [CsrGenerationConfig](arkts-devicecertificate-cert-csrgenerationconfig-i.md) | 用于生成CSR的配置参数，包含主体名称、扩展、摘要算法、输出格式等。 |
 | [DataArray](arkts-devicecertificate-cert-dataarray-i.md) | 数据数组的列表。 |
 | [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | 二进制数据的封装接口，核心字段data为Uint8Array类型。 |
@@ -83,15 +78,15 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 | [PrivateKeyInfo](arkts-devicecertificate-cert-privatekeyinfo-i.md) | 表示私钥信息。 |
 | [RevocationCheckParameter](arkts-devicecertificate-cert-revocationcheckparameter-i.md) | 表示证书链校验证书吊销状态的参数。 |
 | [X500DistinguishedName](arkts-devicecertificate-cert-x500distinguishedname-i.md) | 提供X.500可分辨名称操作的API。 |
-| [X509CRL](arkts-devicecertificate-cert-x509crl-i.md) | 提供用于X.509证书吊销列表操作的API。 |
-| [X509CRLEntry](arkts-devicecertificate-cert-x509crlentry-i.md) | 证书吊销条目。 |
-| [X509CRLMatchParameters](arkts-devicecertificate-cert-x509crlmatchparameters-i.md) | 用于匹配证书吊销列表的过滤参数。如果参数中任一项都未指定，则匹配所有证书吊销列表。 |
 | [X509Cert](arkts-devicecertificate-cert-x509cert-i.md) | 提供用于X.509证书操作的API。 |
 | [X509CertChain](arkts-devicecertificate-cert-x509certchain-i.md) | X.509证书链对象。 |
 | [X509CertMatchParameters](arkts-devicecertificate-cert-x509certmatchparameters-i.md) | 用于匹配证书的过滤参数。如果参数中任一项都未指定，则匹配所有证书。 |
 | [X509CertRevokedParams](arkts-devicecertificate-cert-x509certrevokedparams-i.md) | 表示证书吊销检查参数。 |
-| [X509Crl](arkts-devicecertificate-cert-x509crl-i.md) | 提供用于X.509证书吊销列表操作的API。 |
-| [X509CrlEntry](arkts-devicecertificate-cert-x509crlentry-i.md) | 证书吊销条目。 |
+| [X509Crl](arkts-devicecertificate-cert-x509crl-depr-i.md) | 提供用于X.509证书吊销列表操作的API。 |
+| [X509CRL](arkts-devicecertificate-cert-x509crl-i.md) | 提供用于X.509证书吊销列表操作的API。 |
+| [X509CrlEntry](arkts-devicecertificate-cert-x509crlentry-depr-i.md) | 证书吊销条目。 |
+| [X509CRLEntry](arkts-devicecertificate-cert-x509crlentry-i.md) | 证书吊销条目。 |
+| [X509CRLMatchParameters](arkts-devicecertificate-cert-x509crlmatchparameters-i.md) | 用于匹配证书吊销列表的过滤参数。如果参数中任一项都未指定，则匹配所有证书吊销列表。 |
 | [X509TrustAnchor](arkts-devicecertificate-cert-x509trustanchor-i.md) | 表示X.509信任锚，用于校验证书链。使用信任锚中的证书或者公钥作为可信根，对证书链进行校验。 |
 
 ### 枚举
@@ -120,4 +115,3 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 | [Pkcs12MacDigestAlgorithm](arkts-devicecertificate-cert-pkcs12macdigestalgorithm-e.md) | 表示P12的MAC摘要算法枚举。 |
 | [RevocationCheckOptions](arkts-devicecertificate-cert-revocationcheckoptions-e.md) | 表示证书链在线校验证书吊销状态选项的枚举。 |
 | [ValidationPolicyType](arkts-devicecertificate-cert-validationpolicytype-e.md) | 表示证书链在线校验策略的枚举。 |
-

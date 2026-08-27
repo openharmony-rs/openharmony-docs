@@ -8,8 +8,8 @@
 
 > **说明：**
 >
-> 当前开发指导使用的接口为[Image/apis-image-kit/capi-image.md)模块下的C API，可完成图片编解码，图片接收器，处理图像数据等功能。这部分API在API version 11之前发布，在后续的版本不再增加新功能，**不再推荐使用**。<br>
-> 开发者可使用[Image_NativeModule/apis-image-kit/capi-image-nativemodule.md)模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考[图片开发指导(C/C++)](image-source-c.md)节点下的内容。这部分API从API version 12开始支持，并将持续演进，**推荐开发者使用**。<br>
+> 当前开发指导使用的接口为Image模块下的C API，可完成图片编解码，图片接收器，处理图像数据等功能。这部分API在API version 11之前发布，在后续的版本不再增加新功能，**不再推荐使用**。<br>
+> 开发者可使用Image_NativeModule模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考图片开发指导(C/C++)节点下的内容。这部分API从API version 12开始支持，并将持续演进，**推荐开发者使用**。<br>
 > 两套C API不建议同时使用，在部分场景下存在不兼容的问题。
 
 开发者可以调用本模块的Native API接口，完成图片编码，即将PixelMap压缩成不同格式的图片文件。
@@ -27,7 +27,7 @@
 
 ## 开发指导
 
-详细的API说明请参考文件[image_packer_mdk.h/apis-image-kit/capi-image-packer-mdk-h.md)。
+详细的API说明请参考文件image_packer_mdk.h。
 
 参考以下示例代码，完成图片编码的全流程，包括：创建编码器、初始化资源、编码过程、销毁资源。
 
@@ -79,7 +79,7 @@ target_link_libraries(entry PUBLIC libimage_packer_ndk.z.so)
 
    - 上述过程中获取的实例对象（ImagePacker_Native）。
 
-   - 需要编码的图像源（napi_value）, PixelMap或ImageSource（未调用过CreatePixelMap）的实例对象均可。
+   - 需要编码的图像源（napi_value），PixelMap或ImageSource（未调用过CreatePixelMap）的实例对象均可。
 
    - 编码参数：包括编码格式与编码质量。
 
@@ -113,7 +113,8 @@ target_link_libraries(entry PUBLIC libimage_packer_ndk.z.so)
        // 配置编码格式（必须）。
        opts.format = "image/jpeg";
        // 配置编码质量（必须）。
-       opts.quality = 95;
+       // quality默认值为0，建议不低于80；本示例统一设置为90，兼顾图片质量和文件体积。
+       opts.quality = 90;
        // 配置输出的缓存区大小为4k（缓存区大小视应用场景定）。
        size_t bufferSize = 4*1024;
        // 申请图片编码缓存区。
@@ -166,7 +167,8 @@ target_link_libraries(entry PUBLIC libimage_packer_ndk.z.so)
        // 配置编码格式（必须）。
        opts.format = "image/jpeg";
        // 配置编码质量（必须）。
-       opts.quality = 100;
+       // quality默认值为0，建议不低于80；本示例统一设置为90，兼顾图片质量和文件体积。
+       opts.quality = 90;
        // 打开需要输出的文件（请确保应用有权限访问这个路径）。
        int fd = open("/data/test.jpg", O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
        int result;

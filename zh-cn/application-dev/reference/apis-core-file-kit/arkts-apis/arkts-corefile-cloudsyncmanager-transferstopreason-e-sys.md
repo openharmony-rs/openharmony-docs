@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-cloudSyncManager-enum TransferStopReason--><!--Device-cloudSyncManager-enum TransferStopReason-End-->
-
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 **系统接口：** 此接口为系统接口。
@@ -21,8 +19,6 @@ SWITCH_OFF = 0
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TransferStopReason-SWITCH_OFF = 0--><!--Device-TransferStopReason-SWITCH_OFF = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -40,8 +36,6 @@ ACCOUNT_LOGOUT = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TransferStopReason-ACCOUNT_LOGOUT = 1--><!--Device-TransferStopReason-ACCOUNT_LOGOUT = 1-End-->
-
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 **系统接口：** 此接口为系统接口。
@@ -58,9 +52,6 @@ OTHER_REASON = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TransferStopReason-OTHER_REASON = 2--><!--Device-TransferStopReason-OTHER_REASON = 2-End-->
-
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 **系统接口：** 此接口为系统接口。
-

@@ -1,10 +1,8 @@
 # Service
 
-SSAP服务。
+表示星闪服务。
 
 **起始版本：** 26.0.0
-
-<!--Device-ssap-interface Service--><!--Device-ssap-interface Service-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -20,15 +18,13 @@ import { ssap } from '@kit.ConnectivityKit';
 properties: Property[]
 ```
 
-属于此服务的属性。
+表示服务的Property列表。
 
 **类型：** [Property](arkts-connectivity-ssap-property-i.md)[]
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Service-properties: Property[]--><!--Device-Service-properties: Property[]-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -38,7 +34,7 @@ properties: Property[]
 serviceUuid: string
 ```
 
-服务的UUID。 长度必须为36，由16进制数字字符和连字符共36个字符组成，形如“FFFFFFFF-1234-5678-ABCD-000000001234”，代表128比特标识。 <br>禁止使用星闪标准服务UUID。
+星闪服务UUID，个字符，由32个十六进制数字和4个连字符（-）组成，例如： FFFFFFFF-1234-5678-ABCD-000000001234，表示一个128位标识符。 不允许使用星闪标准UUID。
 
 **类型：** string
 
@@ -46,7 +42,4 @@ serviceUuid: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Service-serviceUuid: string--><!--Device-Service-serviceUuid: string-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

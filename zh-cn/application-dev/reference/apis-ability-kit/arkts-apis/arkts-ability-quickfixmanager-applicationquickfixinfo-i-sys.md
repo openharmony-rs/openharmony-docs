@@ -2,9 +2,7 @@
 
 应用级别的快速修复信息。
 
-**起始版本：** 23
-
-<!--Device-quickFixManager-export interface ApplicationQuickFixInfo--><!--Device-quickFixManager-export interface ApplicationQuickFixInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.QuickFix
 
@@ -26,9 +24,7 @@ readonly bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ApplicationQuickFixInfo-readonly bundleName: string--><!--Device-ApplicationQuickFixInfo-readonly bundleName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.QuickFix
 
@@ -37,16 +33,14 @@ readonly bundleName: string
 ## bundleVersionCode
 
 ```TypeScript
-readonly bundleVersionCode: long
+readonly bundleVersionCode: number
 ```
 
 应用的版本号。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ApplicationQuickFixInfo-readonly bundleVersionCode: long--><!--Device-ApplicationQuickFixInfo-readonly bundleVersionCode: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.QuickFix
 
@@ -62,9 +56,7 @@ readonly bundleVersionName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ApplicationQuickFixInfo-readonly bundleVersionName: string--><!--Device-ApplicationQuickFixInfo-readonly bundleVersionName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.QuickFix
 
@@ -80,9 +72,7 @@ hap级别的快速修复信息。
 
 **类型：** Array&lt;[HapModuleQuickFixInfo](arkts-ability-quickfixmanager-hapmodulequickfixinfo-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-ApplicationQuickFixInfo-readonly hapModuleQuickFixInfo: Array<HapModuleQuickFixInfo>--><!--Device-ApplicationQuickFixInfo-readonly hapModuleQuickFixInfo: Array<HapModuleQuickFixInfo>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.QuickFix
 
@@ -91,16 +81,14 @@ hap级别的快速修复信息。
 ## quickFixVersionCode
 
 ```TypeScript
-readonly quickFixVersionCode: long
+readonly quickFixVersionCode: number
 ```
 
 快速修复补丁包的版本号。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ApplicationQuickFixInfo-readonly quickFixVersionCode: long--><!--Device-ApplicationQuickFixInfo-readonly quickFixVersionCode: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.QuickFix
 
@@ -116,11 +104,8 @@ readonly quickFixVersionName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ApplicationQuickFixInfo-readonly quickFixVersionName: string--><!--Device-ApplicationQuickFixInfo-readonly quickFixVersionName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.QuickFix
 
 **系统接口：** 此接口为系统接口。
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-declare enum LazyForEachReleaseStrategy--><!--Device-unnamed-declare enum LazyForEachReleaseStrategy-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BATCH
@@ -21,8 +19,6 @@ BATCH为默认使用的资源释放策略，该策略在当前帧释放掉所有
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LazyForEachReleaseStrategy-BATCH = 0--><!--Device-LazyForEachReleaseStrategy-BATCH = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +36,4 @@ PROGRESSIVE为根据节点释放时间和当前帧剩余时间自动调整节点
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LazyForEachReleaseStrategy-PROGRESSIVE = 1--><!--Device-LazyForEachReleaseStrategy-PROGRESSIVE = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

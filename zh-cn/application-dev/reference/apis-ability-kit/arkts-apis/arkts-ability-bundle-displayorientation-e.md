@@ -1,14 +1,17 @@
 # DisplayOrientation
 
-> **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用 > [bundleManager.DisplayOrientation](arkts-ability-bundlemanager-displayorientation-e.md)替代。 屏幕显示方向。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃，建议使用
+> [bundleManager.DisplayOrientation](arkts-ability-bundlemanager-displayorientation-e.md)替代。
+屏幕显示方向。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** [DisplayOrientation](arkts-ability-bundlemanager-displayorientation-e.md)
-
-<!--Device-bundle-export enum DisplayOrientation--><!--Device-bundle-export enum DisplayOrientation-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -26,8 +29,6 @@ UNSPECIFIED = 0
 
 **替代接口：** [UNSPECIFIED](arkts-ability-bundlemanager-displayorientation-e.md#unspecified)
 
-<!--Device-DisplayOrientation-UNSPECIFIED = 0--><!--Device-DisplayOrientation-UNSPECIFIED = 0-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## LANDSCAPE
@@ -41,8 +42,6 @@ LANDSCAPE = 1
 **废弃版本：** 9
 
 **替代接口：** [LANDSCAPE](arkts-ability-bundlemanager-displayorientation-e.md#landscape)
-
-<!--Device-DisplayOrientation-LANDSCAPE = 1--><!--Device-DisplayOrientation-LANDSCAPE = 1-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -58,8 +57,6 @@ PORTRAIT = 2
 
 **替代接口：** [PORTRAIT](arkts-ability-bundlemanager-displayorientation-e.md#portrait)
 
-<!--Device-DisplayOrientation-PORTRAIT = 2--><!--Device-DisplayOrientation-PORTRAIT = 2-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## FOLLOW_RECENT
@@ -74,7 +71,4 @@ FOLLOW_RECENT = 3
 
 **替代接口：** [FOLLOW_RECENT](arkts-ability-bundlemanager-displayorientation-e.md#follow_recent)
 
-<!--Device-DisplayOrientation-FOLLOW_RECENT = 3--><!--Device-DisplayOrientation-FOLLOW_RECENT = 3-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
-

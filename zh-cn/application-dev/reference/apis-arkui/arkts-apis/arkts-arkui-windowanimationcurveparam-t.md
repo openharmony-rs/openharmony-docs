@@ -1,18 +1,15 @@
 # WindowAnimationCurveParam
 
 ```TypeScript
-declare type WindowAnimationCurveParam = Array<double>
+declare type WindowAnimationCurveParam = Array<number>
 ```
 
 动画曲线参数。
 
-**起始版本：** 23
+**起始版本：** 20
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-unnamed-declare type WindowAnimationCurveParam = Array<double>--><!--Device-unnamed-declare type WindowAnimationCurveParam = Array<double>-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**属性类型：** Array<double>
-
+**属性类型：** Array&lt;number&gt;

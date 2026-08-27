@@ -2,9 +2,7 @@
 
 应用接收到输入设备的变更事件。
 
-**起始版本：** 24
-
-<!--Device-audio-interface CurrentInputDeviceChangedEvent--><!--Device-audio-interface CurrentInputDeviceChangedEvent-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## changeReason
@@ -25,9 +22,7 @@ changeReason: AudioStreamDeviceChangeReason
 
 **类型：** [AudioStreamDeviceChangeReason](arkts-audio-audio-audiostreamdevicechangereason-e.md)
 
-**起始版本：** 24
-
-<!--Device-CurrentInputDeviceChangedEvent-changeReason: AudioStreamDeviceChangeReason--><!--Device-CurrentInputDeviceChangedEvent-changeReason: AudioStreamDeviceChangeReason-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -41,9 +36,6 @@ devices: AudioDeviceDescriptors
 
 **类型：** [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md)
 
-**起始版本：** 24
-
-<!--Device-CurrentInputDeviceChangedEvent-devices: AudioDeviceDescriptors--><!--Device-CurrentInputDeviceChangedEvent-devices: AudioDeviceDescriptors-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
-

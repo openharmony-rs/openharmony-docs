@@ -186,7 +186,7 @@ static assert(value?: Object, ...arguments: Object[]): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见通用错误码。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -223,7 +223,7 @@ static count(label?: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见通用错误码。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -264,7 +264,7 @@ static countReset(label?: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见通用错误码。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -488,7 +488,7 @@ static time(label?: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见通用错误码。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -518,7 +518,7 @@ static timeEnd(label?: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见通用错误码。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -551,7 +551,7 @@ static timeLog(label?: string, ...arguments: Object[]): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见通用错误码。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |

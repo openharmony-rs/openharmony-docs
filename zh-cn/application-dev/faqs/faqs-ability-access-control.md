@@ -20,7 +20,7 @@
 
 **参考链接**
 
-[应用权限列表 - ohos.permission.LOCATION](../security/AccessToken/permissions-for-all-user.md#ohospermissionlocation)
+应用权限列表 - ohos.permission.LOCATION
 
 
 ## 向用户申请授予权限但被用户拒绝后，如何处理才能避免应用二次进入时崩溃(API 9)
@@ -41,17 +41,17 @@
 
 **参考链接**
 
-[应用权限管控概述](../security/AccessToken/access-token-overview.md)
+应用权限管控概述
 
 ## module.json5配置文件中extensionAbilities和requestPermissions的权限声明有何区别(API 9)
 
 - requestPermissions：标识当前应用运行时需向系统申请的权限集合，应用申请的权限只有在此处配置的才会生效。
 
-- extensionAbilitie.permissions：标识当前ExtensionAbility组件自定义的权限信息，表示当其他应用访问该ExtensionAbility时，需要申请相应的权限信息，仅做权限校验使用。
+- extensionAbilities.permissions：标识当前ExtensionAbility组件自定义的权限信息，表示当其他应用访问该ExtensionAbility时，需要申请相应的权限信息，仅做权限校验使用。
 
 **参考链接**
 
-[module.json5配置文件](../quick-start/module-configuration-file.md)
+module.json5配置文件
 
 ## 如何自定义申请权限时的选项文本，例如申请定位权限时，如何自定义弹出的选项文本(API 10)
 
@@ -61,7 +61,7 @@
 
 **参考资料**
 
-[权限申请](../security/AccessToken/determine-application-mode.md)
+权限申请
 
 ## 如何使用安全控件SaveButton进行图片的快速保存，保存控件可以用于哪些场景，区别于使用filepicker方式有什么优势(API 10)
 
@@ -73,6 +73,6 @@
 
 **参考资料**
 
-[安全控件概述](../security/AccessToken/security-component-overview.md)
+安全控件概述
 
-[SaveButton/apis-arkui/arkui-ts/ts-security-components-savebutton.md)
+SaveButton

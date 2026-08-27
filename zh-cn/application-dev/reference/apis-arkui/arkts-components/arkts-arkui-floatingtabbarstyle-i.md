@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-interface FloatingTabBarStyle--><!--Device-unnamed-interface FloatingTabBarStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,8 +29,6 @@ adaptToHandedness?: boolean
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FloatingTabBarStyle-adaptToHandedness?: boolean--><!--Device-FloatingTabBarStyle-adaptToHandedness?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## barBottomMargin
@@ -43,15 +39,13 @@ barBottomMargin?: Length
 
 栏与选项卡底部之间的距离。不能以百分比形式设置。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FloatingTabBarStyle-barBottomMargin?: Length--><!--Device-FloatingTabBarStyle-barBottomMargin?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,15 +57,13 @@ barSideMargin?: Length
 
 条形的左右边距的宽度。不能以百分比形式设置。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FloatingTabBarStyle-barSideMargin?: Length--><!--Device-FloatingTabBarStyle-barSideMargin?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,8 +83,6 @@ barWidth?: FloatingTabBarWidth
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FloatingTabBarStyle-barWidth?: FloatingTabBarWidth--><!--Device-FloatingTabBarStyle-barWidth?: FloatingTabBarWidth-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## maskColor
@@ -103,15 +93,13 @@ maskColor?: ResourceColor
 
 蒙版的颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FloatingTabBarStyle-maskColor?: ResourceColor--><!--Device-FloatingTabBarStyle-maskColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -123,15 +111,13 @@ maskHeight?: Length
 
 遮罩的高度。不能以百分比形式设置。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FloatingTabBarStyle-maskHeight?: Length--><!--Device-FloatingTabBarStyle-maskHeight?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -151,7 +137,4 @@ systemMaterial?: UIMaterial.ImmersiveMaterial
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FloatingTabBarStyle-systemMaterial?: UIMaterial.ImmersiveMaterial--><!--Device-FloatingTabBarStyle-systemMaterial?: UIMaterial.ImmersiveMaterial-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

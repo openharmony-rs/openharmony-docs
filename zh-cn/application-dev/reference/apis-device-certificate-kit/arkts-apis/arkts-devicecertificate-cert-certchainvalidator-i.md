@@ -2,18 +2,13 @@
 
 证书链校验器对象。
 
-**起始版本：** 23
-
-<!--Device-cert-interface CertChainValidator--><!--Device-cert-interface CertChainValidator-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.Cert
 
 ## 导入模块
 
 ```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## validate
@@ -22,13 +17,13 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 validate(certChain: CertChainData, callback: AsyncCallback<void>): void
 ```
 
-表示校验X.509证书链。使用Callback异步回调。 <br>由于端侧系统时间不可信，证书链校验不包含对证书有效时间的校验。如果需要检查证书的时间有效性，可使用X.509证书的 [checkValidityWithDate](arkts-devicecertificate-cert-x509cert-i.md#checkvaliditywithdate)方法进行检查。详见 [证书规格](../../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications)。
+表示校验X.509证书链。使用Callback异步回调。
 
-**起始版本：** 23
+由于端侧系统时间不可信，证书链校验不包含对证书有效时间的校验。如果需要检查证书的时间有效性，可使用X.509证书的 [checkValidityWithDate](arkts-devicecertificate-cert-x509cert-i.md#checkvaliditywithdate)方法进行检查。详见 [证书规格](../../../security/DeviceCertificateKit/certificate-framework-overview.md#证书规格)。
+
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CertChainValidator-validate(certChain: CertChainData, callback: AsyncCallback<void>): void--><!--Device-CertChainValidator-validate(certChain: CertChainData, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -37,22 +32,22 @@ validate(certChain: CertChainData, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | certChain | [CertChainData](arkts-devicecertificate-cert-certchaindata-i.md) | 是 | 表示X.509证书链序列化数据。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当校验成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当校验成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
-| [19030002](../errorcode-cert.md#19030002-证书签名验证错误) | The certificate signature verification failed. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [19030003](../errorcode-cert.md#19030003-证书尚未生效) | The certificate has not taken effect. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes:  1. Memory copy failed;  2. A null pointer occurs inside the system;  3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
-| [19030006](../errorcode-cert.md#19030006-证书的密钥用途不含证书签名) | The key cannot be used for signing a certificate. |
-| [19030007](../errorcode-cert.md#19030007-证书的密钥用途不含数字签名) | The key cannot be used for a digital signature. |
+| [19030002](../errorcode-cert.md#19030002-证书签名验证错误) | The certificate signature verification failed. |
+| [19030003](../errorcode-cert.md#19030003-证书尚未生效) | The certificate has not taken effect. |
 | [19030004](../errorcode-cert.md#19030004-证书过期) | The certificate has expired. |
 | [19030005](../errorcode-cert.md#19030005-无法获取证书的颁发者) | Failed to obtain the certificate issuer. |
+| [19030006](../errorcode-cert.md#19030006-证书的密钥用途不含证书签名) | The key cannot be used for signing a certificate. |
+| [19030007](../errorcode-cert.md#19030007-证书的密钥用途不含数字签名) | The key cannot be used for a digital signature. |
 
 **示例**
 
@@ -153,13 +148,13 @@ try {
 validate(certChain: CertChainData): Promise<void>
 ```
 
-表示校验X.509证书链。使用Promise方式返回结果。 <br>由于端侧系统时间不可信，证书链校验不包含对证书有效时间的校验。如果需要检查证书的时间有效性，可使用X.509证书的 [checkValidityWithDate](arkts-devicecertificate-cert-x509cert-i.md#checkvaliditywithdate)方法进行检查。详见 [证书规格](../../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications)。
+表示校验X.509证书链。使用Promise方式返回结果。
 
-**起始版本：** 23
+由于端侧系统时间不可信，证书链校验不包含对证书有效时间的校验。如果需要检查证书的时间有效性，可使用X.509证书的 [checkValidityWithDate](arkts-devicecertificate-cert-x509cert-i.md#checkvaliditywithdate)方法进行检查。详见 [证书规格](../../../security/DeviceCertificateKit/certificate-framework-overview.md#证书规格)。
+
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CertChainValidator-validate(certChain: CertChainData): Promise<void>--><!--Device-CertChainValidator-validate(certChain: CertChainData): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -173,26 +168,24 @@ validate(certChain: CertChainData): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
-| [19030002](../errorcode-cert.md#19030002-证书签名验证错误) | The certificate signature verification failed. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [19030003](../errorcode-cert.md#19030003-证书尚未生效) | The certificate has not taken effect. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes:  1. Memory copy failed;  2. A null pointer occurs inside the system;  3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
-| [19030006](../errorcode-cert.md#19030006-证书的密钥用途不含证书签名) | The key cannot be used for signing a certificate. |
-| [19030007](../errorcode-cert.md#19030007-证书的密钥用途不含数字签名) | The key cannot be used for a digital signature. |
+| [19030002](../errorcode-cert.md#19030002-证书签名验证错误) | The certificate signature verification failed. |
+| [19030003](../errorcode-cert.md#19030003-证书尚未生效) | The certificate has not taken effect. |
 | [19030004](../errorcode-cert.md#19030004-证书过期) | The certificate has expired. |
 | [19030005](../errorcode-cert.md#19030005-无法获取证书的颁发者) | Failed to obtain the certificate issuer. |
+| [19030006](../errorcode-cert.md#19030006-证书的密钥用途不含证书签名) | The key cannot be used for signing a certificate. |
+| [19030007](../errorcode-cert.md#19030007-证书的密钥用途不含数字签名) | The key cannot be used for a digital signature. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
@@ -283,110 +276,28 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@ohos.base';
-
-// string转Uint8Array。
-function stringToUint8Array(str: string): Uint8Array {
-  let arr: Array<number> = [];
-  for (let i = 0, j = str.length; i < j; i++) {
-    arr.push(str.charCodeAt(i));
-  }
-  return new Uint8Array(arr);
-}
-
-async function TestValidate() {
-  // 证书链数据。
-  let certPem = '-----BEGIN CERTIFICATE-----\n' +
-    'MIIDTjCCAjagAwIBAgIBBDANBgkqhkiG9w0BAQsFADASMRAwDgYDVQQDDAdSb290\n' +
-    'IENBMB4XDTI0MDMxOTAyMDQwMVoXDTM0MDMxNzAyMDQwMVowEjEQMA4GA1UEAwwH\n' +
-    'ZGV2aWNlMjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMIXL3e7UE/c\n' +
-    'Z1dPVgRZ5L8gsQ/azuYVBvoFf7o8ksYrL7G1+qZIJjVRqZkuTirLW4GicbkIkPNW\n' +
-    'eix5cDhkjkC+q5SBCOrSSTTlvX3xcOY1gMlA5MgeBfGixFusq4d5VPF2KceZ20/a\n' +
-    'ygwGD0Uv0X81OERyPom/dYdJUvfaD9ifPFJ1fKIj/cPFG3yJK/ojpEfndZNdESQL\n' +
-    'TkoDekilg2UGOLtY6fb9Ns37ncuIj33gCS/R9m1tgtmqCTcgOQ4hwKhjVF3InmPO\n' +
-    '2BbWKvD1RUX+rHC2a2HHDQILOOtDTy8dHvE+qZlK0efrpRgoFEERJAGPi1GDGWiA\n' +
-    '7UX1c4MCxIECAwEAAaOBrjCBqzAJBgNVHRMEAjAAMB0GA1UdDgQWBBQbkAcMT7ND\n' +
-    'fGp3VPFzYHppZ1zxLTAfBgNVHSMEGDAWgBR0W/koCbvDtFGHUQZLM3j6HKsW2DAd\n' +
-    'BgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwCwYDVR0PBAQDAgeAMDIGCCsG\n' +
-    'AQUFBwEBBCYwJDAiBggrBgEFBQcwAYYWaHR0cHM6Ly8xMjcuMC4wLjE6OTk5OTAN\n' +
-    'BgkqhkiG9w0BAQsFAAOCAQEAF1OTzTmbklFOdZCxrF3zg9owUPJR5RB+PbuBlUfI\n' +
-    '8tkGXkMltQ8PN1dv6Cq+d8BluiJdWEzqVoJa/e5SHHJyYQSOhlurRG0GBXllVQ1I\n' +
-    'n1PFaI40+9X2X6wrEcdC5nbzogR1jSiksCiTcARMddj0Xrp5FMrFaaGY8M/xqzdW\n' +
-    'LTDl4nfbuxtA71cIjnE4kOcaemly9/S2wYWdPktsPxQPY1nPUOeJFI7o0sH3rK0c\n' +
-    'JSqtgAG8vnjK+jbx9RpkgqCsXgUbIahL573VTgxrNrsRjCuVal7XVxl/xOKXr6Er\n' +
-    'Gpc+OCrXbHNZkUQE5fZH3yL2tXd7EASEb6J3aEWHfF8YBA==\n' +
-    '-----END CERTIFICATE-----';
-
-  let caPem = '-----BEGIN CERTIFICATE-----\n' +
-    'MIIC/zCCAeegAwIBAgIBATANBgkqhkiG9w0BAQsFADASMRAwDgYDVQQDDAdSb290\n' +
-    'IENBMB4XDTI0MDMxOTAyMDIyNFoXDTM0MDMxNzAyMDIyNFowEjEQMA4GA1UEAwwH\n' +
-    'Um9vdCBDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALxI5SDvRfKU\n' +
-    '6XaTeyh2LHlUK0rVSeYfXkYf5Mc3Pgucg+ewzQjxkACMx5NYaW1zfGDNPG1i5IZl\n' +
-    'cPeWNz1Tm2g6wTd+LyNoNOOmwfLV8pLXSfAukgNrBREf3BzVrbu7hvPd2MmLH23H\n' +
-    'OBM9uDPTIqu3n2CDN2EzwULjaSk2g+jvhVKsDLInu5uKPmZBFhs1FWKgcnVnlbi1\n' +
-    'AyAx4efheits6EO70oV6UufCEtS1VsBXQHZRAG4ogshWldRBVNxkU6yHAfg0mM/5\n' +
-    'EhrZsfh51fWqlrhNWrInjgNV3xIt5ebTIgKZWUlSVHEA/UqDoGfY+CsAJdteZWOW\n' +
-    'KjsrC/DK2O0CAwEAAaNgMF4wHQYDVR0OBBYEFHRb+SgJu8O0UYdRBkszePocqxbY\n' +
-    'MB8GA1UdIwQYMBaAFHRb+SgJu8O0UYdRBkszePocqxbYMA8GA1UdEwEB/wQFMAMB\n' +
-    'Af8wCwYDVR0PBAQDAgEGMA0GCSqGSIb3DQEBCwUAA4IBAQAKOT1ObfQNMN2wdfHq\n' +
-    'PQgFDDp6rBMbZe70LswPirSXljo4S/vfbG+gBoWCdu/SfsV+lyP75kg1wX0IQvzW\n' +
-    'xYNh864dgqPmGd0v8TIfM0UT0PpnowUyBHQ+E7LNYIOh/kjHbl3oERdEFA2PUyE9\n' +
-    'j3GLdg8oe/LqhEQCSAlH+v2RQgBZ9eVN+mSdUxwywm9U3acb0uqVkGiWK/ywumpg\n' +
-    'AmIZLMJtMVvg8uDkfy16Z4lChTEdNaJVUqPczUNk2kHXIF4we4be9HoOuTVz/SD/\n' +
-    'IsOhXn/BjS3jnhyS9fxo+opJf9zVTWI02Hlh1WVVtH/m3nIZblyAJhcjCHA2wZSz\n' +
-    'sSus\n' +
-    '-----END CERTIFICATE-----';
-
-  let certPemData = stringToUint8Array(certPem);
-  let caPemData = stringToUint8Array(caPem);
-
-  let certPemDataLenData = new Uint8Array(new Uint16Array([certPemData.length]).buffer);
-  let caPemDataLenData = new Uint8Array(new Uint16Array([caPemData.length]).buffer);
-
-  let certChainBuff = new Uint8Array(certPemDataLenData.length + certPemData.length + caPemDataLenData.length + caPemData.length);
-  certChainBuff.set(certPemDataLenData);
-  certChainBuff.set(certPemData, certPemDataLenData.length);
-  certChainBuff.set(caPemDataLenData, certPemDataLenData.length + certPemData.length);
-  certChainBuff.set(caPemData, certPemDataLenData.length + certPemData.length + caPemDataLenData.length);
-
-  let certChainData: cert.CertChainData = {
-    data: certChainBuff,
-    // 证书链包含的证书个数，需业务自行赋值。
-    count: 2,
-    // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
-    encodingFormat: cert.EncodingFormat.FORMAT_PEM
-  };
-
-  try {
-    let validator = cert.createCertChainValidator('PKIX');
-    await validator.validate(certChainData);
-    console.info('validate result: success.');
-  } catch (error) {
-    let e: BusinessError = error as BusinessError;
-    console.error('validate failed, errCode: ' + e.code + ', errMsg: ' + e.message);
-  }
-}
-```
-
 ## validateCert
 
 ```TypeScript
 validateCert(cert: X509Cert, params: CertValidationParams): Promise<CertValidationResult>
 ```
 
-通过构建和验证证书链来验证证书。该接口使用Promise返回结果。 <br>证书链构建过程遵循以下规则： 1. 信任锚来源：始终以信任证书列表（trustedCerts）作为信任锚源。仅当trustSystemCa设置为true时，才使用预配置证书作为信任锚源。 2. 颁发者搜索顺序：系统首先从信任锚来源中搜索颁发者，若未找到，则继续在非信任证书列表（untrustedCerts）中查找。在线下载的中间CA证书 属于非受信任证书。 3. 信任锚锁定：一旦在信任锚来源中找到颁发者，后续查找过程将不会再回至非信任证书，即后续证书必须来自信任锚来源。 4. 构建完成条件：若partialChain为false（默认值），则仅在找到根证书（自签名证书）时构建完成。若partialChain为true，则在首次在 信任锚来源中找到颁发者时构建完成。 5. 后续验证：证书链构建完成后，执行其他验证操作，如证书签名验证和证书吊销检查。
+通过构建和验证证书链来验证证书。该接口使用Promise返回结果。
+
+证书链构建过程遵循以下规则：
+1. 信任锚来源：始终以信任证书列表（trustedCerts）作为信任锚源。仅当trustSystemCa设置为true时，才使用预配置证书作为信任锚源。
+2. 颁发者搜索顺序：系统首先从信任锚来源中搜索颁发者，若未找到，则继续在非信任证书列表（untrustedCerts）中查找。在线下载的中间CA证书
+属于非受信任证书。
+3. 信任锚锁定：一旦在信任锚来源中找到颁发者，后续查找过程将不会再回至非信任证书，即后续证书必须来自信任锚来源。
+4. 构建完成条件：若partialChain为false（默认值），则仅在找到根证书（自签名证书）时构建完成。若partialChain为true，则在首次在
+信任锚来源中找到颁发者时构建完成。
+5. 后续验证：证书链构建完成后，执行其他验证操作，如证书签名验证和证书吊销检查。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CertChainValidator-validateCert(cert: X509Cert, params: CertValidationParams): Promise<CertValidationResult>--><!--Device-CertChainValidator-validateCert(cert: X509Cert, params: CertValidationParams): Promise<CertValidationResult>-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -407,31 +318,31 @@ validateCert(cert: X509Cert, params: CertValidationParams): Promise<CertValidati
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
-| [19020003](../errorcode-cert.md#19020003-参数检查失败) | Parameter check failed. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes:  1. Memory copy failed;  2. A null pointer occurs inside the system;  3. Failed to obtain the native object or convert parameters. |
+| [19020003](../errorcode-cert.md#19020003-参数检查失败) | Parameter check failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 | [19030002](../errorcode-cert.md#19030002-证书签名验证错误) | The certificate signature verification failed. |
 | [19030003](../errorcode-cert.md#19030003-证书尚未生效) | The certificate has not taken effect. |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
-| [19030006](../errorcode-cert.md#19030006-证书的密钥用途不含证书签名) | The key cannot be used for signing a certificate. |
-| [19030007](../errorcode-cert.md#19030007-证书的密钥用途不含数字签名) | The key cannot be used for a digital signature. |
 | [19030004](../errorcode-cert.md#19030004-证书过期) | The certificate has expired. |
 | [19030005](../errorcode-cert.md#19030005-无法获取证书的颁发者) | Failed to obtain the certificate issuer. |
+| [19030006](../errorcode-cert.md#19030006-证书的密钥用途不含证书签名) | The key cannot be used for signing a certificate. |
+| [19030007](../errorcode-cert.md#19030007-证书的密钥用途不含数字签名) | The key cannot be used for a digital signature. |
+| [19030009](../errorcode-cert.md#19030009-证书不受信任) | Untrusted certificate. |
 | [19030010](../errorcode-cert.md#19030010-证书已被吊销) | The certificate has been revoked. |
 | [19030011](../errorcode-cert.md#19030011-未知的关键扩展) | Unsupported critical extension. |
-| [19030009](../errorcode-cert.md#19030009-证书不受信任) | Untrusted certificate. |
-| [19030014](../errorcode-cert.md#19030014-密钥用途不匹配) | Key usage mismatch in the certificate. |
-| [19030015](../errorcode-cert.md#19030015-无法获取证书吊销列表) | Failed to obtain the certificate revocation list. |
 | [19030012](../errorcode-cert.md#19030012-主机名不匹配) | Hostname mismatch in the certificate. |
 | [19030013](../errorcode-cert.md#19030013-邮箱地址不匹配) | Email address mismatch in the certificate. |
-| [19030018](../errorcode-cert.md#19030018-证书吊销列表签名验证失败) | Failed to verify the signature of the certificate revocation list. |
-| [19030019](../errorcode-cert.md#19030019-无法获取证书吊销列表颁发者) | Failed to find the issuer of the certificate revocation list. |
+| [19030014](../errorcode-cert.md#19030014-密钥用途不匹配) | Key usage mismatch in the certificate. |
+| [19030015](../errorcode-cert.md#19030015-无法获取证书吊销列表) | Failed to obtain the certificate revocation list. |
 | [19030016](../errorcode-cert.md#19030016-证书吊销列表尚未生效) | The certificate revocation list has not taken effect. |
 | [19030017](../errorcode-cert.md#19030017-证书吊销列表已过期) | The certificate revocation list has expired. |
-| [19030022](../errorcode-cert.md#19030022-ocsp签名验证失败) | Failed to verify the OCSP signature. |
-| [19030023](../errorcode-cert.md#19030023-ocsp证书状态未知) | Unknown OCSP certificate status. |
+| [19030018](../errorcode-cert.md#19030018-证书吊销列表签名验证失败) | Failed to verify the signature of the certificate revocation list. |
+| [19030019](../errorcode-cert.md#19030019-无法获取证书吊销列表颁发者) | Failed to find the issuer of the certificate revocation list. |
 | [19030020](../errorcode-cert.md#19030020-无法获取在线证书状态协议ocsp响应) | Failed to obtain the OCSP response. |
 | [19030021](../errorcode-cert.md#19030021-无效的ocsp响应) | Invalid OCSP response. |
+| [19030022](../errorcode-cert.md#19030022-ocsp签名验证失败) | Failed to verify the OCSP signature. |
+| [19030023](../errorcode-cert.md#19030023-ocsp证书状态未知) | Unknown OCSP certificate status. |
 | [19030024](../errorcode-cert.md#19030024-网络连接超时) | Network connection timed out. |
 
 **示例**
@@ -535,7 +446,7 @@ async function validateCert(): Promise<void> {
     let validator = cert.createCertChainValidator('PKIX');
     let result = await validator.validateCert(x509Cert, params);
 
-    console.info('Certificate validation result: success.');
+    console.info('Certificate validation succeeded!');
     console.info(`Verified chain length: ${result.certChain.length}`);
     for (let i = 0; i < result.certChain.length; i++) {
       let subject = result.certChain[i].getSubjectX500DistinguishedName().getName(cert.EncodingType.ENCODING_UTF8);
@@ -560,11 +471,8 @@ X.509证书链校验器算法名称。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CertChainValidator-readonly algorithm: string--><!--Device-CertChainValidator-readonly algorithm: string-End-->
-
 **系统能力：** SystemCapability.Security.Cert
-

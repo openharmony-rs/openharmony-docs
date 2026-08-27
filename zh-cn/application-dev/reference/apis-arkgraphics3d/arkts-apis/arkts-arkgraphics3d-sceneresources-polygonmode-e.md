@@ -1,10 +1,8 @@
 # PolygonMode
 
-控制多边形绘制模式的枚举。
+控制多边形绘制模式的枚举。@enum { number }
 
 **起始版本：** 23
-
-<!--Device-unnamed-export enum PolygonMode--><!--Device-unnamed-export enum PolygonMode-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -18,8 +16,6 @@ FILL = 0
 
 **起始版本：** 23
 
-<!--Device-PolygonMode-FILL = 0--><!--Device-PolygonMode-FILL = 0-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## LINE
@@ -31,8 +27,6 @@ LINE = 1
 仅绘制多边形线框。
 
 **起始版本：** 23
-
-<!--Device-PolygonMode-LINE = 1--><!--Device-PolygonMode-LINE = 1-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -46,7 +40,4 @@ POINT = 2
 
 **起始版本：** 23
 
-<!--Device-PolygonMode-POINT = 2--><!--Device-PolygonMode-POINT = 2-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

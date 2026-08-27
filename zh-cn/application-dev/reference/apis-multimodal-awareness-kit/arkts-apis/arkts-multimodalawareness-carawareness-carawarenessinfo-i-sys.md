@@ -4,8 +4,6 @@
 
 **起始版本：** 26.1.0
 
-<!--Device-carAwareness-export interface CarAwarenessInfo--><!--Device-carAwareness-export interface CarAwarenessInfo-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
 **系统接口：** 此接口为系统接口。
@@ -30,8 +28,6 @@ awarenessEvent?:Record<string, Object>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CarAwarenessInfo-awarenessEvent?:Record<string, Object>--><!--Device-CarAwarenessInfo-awarenessEvent?:Record<string, Object>-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
 **系统接口：** 此接口为系统接口。
@@ -49,8 +45,6 @@ capability: Capability
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CarAwarenessInfo-capability: Capability--><!--Device-CarAwarenessInfo-capability: Capability-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
@@ -70,9 +64,6 @@ timestamp: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CarAwarenessInfo-timestamp: number--><!--Device-CarAwarenessInfo-timestamp: number-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
 **系统接口：** 此接口为系统接口。
-

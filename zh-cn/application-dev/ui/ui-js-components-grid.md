@@ -2,15 +2,15 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-栅格布局容器根节点，使用grid-row与grid-col进行栅格布局。API具体描述请参考[grid-container/apis-arkui/arkui-js/js-components-grid-container.md)。
+栅格布局容器根节点，使用grid-row与grid-col进行栅格布局。API具体描述请参考grid-container。
 
 ## 创建grid-container组件
 
-在pages/index目录下的hml文件中创建一个grid-container组件，并添加[grid-row/apis-arkui/arkui-js/js-components-grid-row.md)子组件。
+在pages/index目录下的hml文件中创建一个grid-container组件，并添加grid-row子组件。
 
 ```html
 <!-- index.hml -->
@@ -35,7 +35,7 @@
 }
 ```
 
-![zh-cn_image_0000001226897009](figures/zh-cn_image_0000001226897009.png)
+![grid-container-Component](figures/grid-container-Component.png)
 
 > **说明：** 
 >
@@ -104,11 +104,11 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001227135613](figures/zh-cn_image_0000001227135613.gif)
+![Calling-Methods](figures/Calling-Methods.gif)
 
 ## 添加grid-col
 
-创建grid-container组件并添加grid-row，在grid-row组件内添加[grid-col/apis-arkui/arkui-js/js-components-grid-col.md)组件形成布局。
+创建grid-container组件并添加grid-row，在grid-row组件内添加grid-col组件形成布局。
 
 <!--code_no_check-->
 ```html
@@ -161,7 +161,7 @@ text{
 }
 ```
 
-![zh-cn_image_0000001227135731](figures/zh-cn_image_0000001227135731.png)
+![grid-col](figures/grid-col.png)
 
 > **说明：** 
 >
@@ -237,4 +237,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001263160403](figures/zh-cn_image_0000001263160403.gif)
+![Example-Scenario-5](figures/Example-Scenario-5.gif)

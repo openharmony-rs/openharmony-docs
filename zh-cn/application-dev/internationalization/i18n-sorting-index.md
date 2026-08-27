@@ -3,7 +3,7 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
@@ -13,7 +13,7 @@
 
 ## 开发步骤
 
-接口具体使用方法和说明请参考[IndexUtil/apis-localization-kit/js-apis-i18n.md#indexutil8)的API文档。
+接口具体使用方法和说明请参考IndexUtil的API文档。
 
 1. 导入模块。
 

@@ -1,12 +1,10 @@
 # Light
 
-光源，继承自Node。
+光源，继承自Node。@extends Node @interface Light
 
 **继承/实现关系：** Light extends [Node](arkts-arkgraphics3d-scenenodes-node-i.md)
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface Light--><!--Device-unnamed-export interface Light-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -20,9 +18,7 @@ color: Color
 
 **类型：** [Color](arkts-arkgraphics3d-scenetypes-color-i.md)
 
-**起始版本：** 23
-
-<!--Device-Light-color: Color--><!--Device-Light-color: Color-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -36,25 +32,21 @@ enabled: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Light-enabled: boolean--><!--Device-Light-enabled: boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## intensity
 
 ```TypeScript
-intensity: double
+intensity: number
 ```
 
 光照强度，单位为坎德拉（cd），取值范围是大于0的实数。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Light-intensity: double--><!--Device-Light-intensity: double-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -68,9 +60,7 @@ readonly lightType: LightType
 
 **类型：** [LightType](arkts-arkgraphics3d-scenenodes-lighttype-e.md)
 
-**起始版本：** 23
-
-<!--Device-Light-readonly lightType: LightType--><!--Device-Light-readonly lightType: LightType-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -84,9 +74,6 @@ shadowEnabled: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Light-shadowEnabled: boolean--><!--Device-Light-shadowEnabled: boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

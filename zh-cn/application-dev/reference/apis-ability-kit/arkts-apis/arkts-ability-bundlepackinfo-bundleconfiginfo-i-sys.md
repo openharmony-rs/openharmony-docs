@@ -2,9 +2,7 @@
 
 包的配置信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface BundleConfigInfo--><!--Device-unnamed-export interface BundleConfigInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -20,9 +18,7 @@ readonly bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BundleConfigInfo-readonly bundleName: string--><!--Device-BundleConfigInfo-readonly bundleName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -38,11 +34,8 @@ readonly version: Version
 
 **类型：** [Version](arkts-ability-bundlepackinfo-version-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-BundleConfigInfo-readonly version: Version--><!--Device-BundleConfigInfo-readonly version: Version-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **系统接口：** 此接口为系统接口。
-

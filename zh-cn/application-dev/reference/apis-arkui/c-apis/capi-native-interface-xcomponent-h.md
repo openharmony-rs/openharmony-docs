@@ -50,6 +50,13 @@
 | [OH_NativeXComponent_MouseEventButton](#oh_nativexcomponent_mouseeventbutton) | OH_NativeXComponent_MouseEventButton | 鼠标事件按键。 |
 | [OH_NativeXComponent_TouchEvent_SourceTool](#oh_nativexcomponent_touchevent_sourcetool) | OH_NativeXComponent_TouchEvent_SourceTool | 表示触摸事件的源工具类型。 |
 
+### 宏定义
+
+| 名称 | 描述 |
+| -- | -- |
+| OH_NATIVE_XCOMPONENT_OBJ ("__NATIVE_XCOMPONENT_OBJ__") | 代表Native XComponent实例。<br>**起始版本：** 8 |
+| OH_NATIVE_XCOMPONENT_MAX_TOUCH_POINTS_NUMBER 10 | 触摸事件中的可识别的触摸点个数最大值。<br>**起始版本：** 8 |
+
 ### 函数
 
 | 名称 | 描述 |
@@ -133,7 +140,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| const uint32_t OH_XCOMPONENT_ID_LEN_MAX = 128 | 声明用于访问Native XComponent的API。<br>**起始版本：** 8<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
+| const uint32_t OH_XCOMPONENT_ID_LEN_MAX = 128 | 触摸事件中的可识别的触摸点个数最大值。<br>**起始版本：** 8<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
 | const uint32_t OH_MAX_TOUCH_POINTS_NUMBER = 10 | 触摸事件中的可识别的触摸点个数最大值。 |
 
 ## 枚举类型说明
@@ -868,7 +875,7 @@ int32_t OH_NativeXComponent_GetKeyEventAction(OH_NativeXComponent_KeyEvent* keyE
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | 表示指向[OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)实例的指针。 |
-| [OH_NativeXComponent_KeyAction](capi-native-xcomponent-key-event-h.md#oh_nativexcomponent_keyaction)* action | 表示指向按键事件动作的指针。 |
+| OH_NativeXComponent_KeyAction* action | 表示指向按键事件动作的指针。 |
 
 **返回：**
 
@@ -893,7 +900,7 @@ int32_t OH_NativeXComponent_GetKeyEventCode(OH_NativeXComponent_KeyEvent* keyEve
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | 表示指向[OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)实例的指针。 |
-| [OH_NativeXComponent_KeyCode](capi-native-xcomponent-key-event-h.md#oh_nativexcomponent_keycode)* code | 表示指向按键事件按键码的指针。 |
+| OH_NativeXComponent_KeyCode* code | 表示指向按键事件按键码的指针。 |
 
 **返回：**
 

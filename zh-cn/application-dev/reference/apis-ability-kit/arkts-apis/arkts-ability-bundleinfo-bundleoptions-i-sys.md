@@ -2,9 +2,7 @@
 
 应用包选项，用于设置或查询应用相关信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface BundleOptions--><!--Device-unnamed-export interface BundleOptions-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -24,8 +22,6 @@ Ability名称。默认值为空字符串。 **模型约束：** 此接口仅可�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BundleOptions-abilityName?: string--><!--Device-BundleOptions-abilityName?: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
@@ -33,16 +29,14 @@ Ability名称。默认值为空字符串。 **模型约束：** 此接口仅可�
 ## appIndex
 
 ```TypeScript
-appIndex?: int
+appIndex?: number
 ```
 
 应用分身ID。默认为0，表示主应用。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleOptions-appIndex?: int--><!--Device-BundleOptions-appIndex?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -62,8 +56,6 @@ bundleName?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BundleOptions-bundleName?: string--><!--Device-BundleOptions-bundleName?: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
@@ -82,8 +74,6 @@ Ability所属的模块名称。默认值为空字符串。 **模型约束：** �
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BundleOptions-moduleName?: string--><!--Device-BundleOptions-moduleName?: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
@@ -91,18 +81,15 @@ Ability所属的模块名称。默认值为空字符串。 **模型约束：** �
 ## userId
 
 ```TypeScript
-userId?: int
+userId?: number
 ```
 
 用户ID。默认为当前调用方所在的用户。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleOptions-userId?: int--><!--Device-BundleOptions-userId?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
-

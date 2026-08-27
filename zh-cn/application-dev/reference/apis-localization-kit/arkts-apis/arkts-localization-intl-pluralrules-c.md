@@ -1,4 +1,4 @@
-# PluralRules(国际化-Intl)
+# PluralRules
 
 提供获取单复数类型的能力。
 
@@ -7,8 +7,6 @@
 **废弃版本：** 20
 
 **替代接口：** [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules)
-
-<!--Device-intl-export class PluralRules--><!--Device-intl-export class PluralRules-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -34,8 +32,6 @@ constructor()
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PluralRules-constructor()--><!--Device-PluralRules-constructor()-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **示例**
@@ -43,8 +39,45 @@ constructor()
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
 
+// 默认构造函数使用系统当前区域ID创建
+let locale = new intl.Locale();
+// 返回系统当前区域ID
+let localeID = locale.toString();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统当前区域ID创建DateTimeFormat对象
+let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统当前区域ID创建NumberFormat对象
+let formatter: intl.NumberFormat = new intl.NumberFormat();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统区域创建Collator对象
+let collator = new intl.Collator();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
 // 使用系统区域创建PluralRules对象
 let pluralRules = new intl.PluralRules();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统区域创建RelativeTimeFormat对象
+let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat();
 ```
 
 ## constructor
@@ -63,16 +96,14 @@ constructor(locale: string | Array<string>, options?: PluralRulesOptions)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PluralRules-constructor(locale: string | Array<string>, options?: PluralRulesOptions)--><!--Device-PluralRules-constructor(locale: string | Array<string>, options?: PluralRulesOptions)-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string \| Array&lt;string&gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
-| options | [PluralRulesOptions](arkts-localization-intl-pluralrulesoptions-i.md) | 否 | 创建单复数对象时设置的配置项。 <br>默认值：所有属性都取默认值时的配置项。 |
+| locale | string \| Array & lt;string & gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
+| options | [PluralRulesOptions](arkts-localization-intl-pluralrulesoptions-i.md) | 否 | 创建单复数对象时设置的配置项。 默认值：所有属性都取默认值时的配置项。 |
 
 **示例**
 
@@ -86,7 +117,7 @@ let pluralRules: intl.PluralRules = new intl.PluralRules('zh-CN', { localeMatche
 ## select
 
 ```TypeScript
-select(n: double): string
+select(n: number): string
 ```
 
 获取数字的单复数类别。
@@ -99,21 +130,19 @@ select(n: double): string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PluralRules-select(n: double): string--><!--Device-PluralRules-select(n: double): string-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | double | 是 | 待获取单复数类别的数字。 |
+| n | number | 是 | 待获取单复数类别的数字。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 单复数类别，取值包括："zero"，"one"，"two", "few", "many", "other"。 <br>不同取值的含义请参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
+| string | 单复数类别，取值包括："zero"，"one"，"two", "few", "many", "other"。 |
 
 **示例**
 
@@ -130,4 +159,3 @@ let enPluralRules = new intl.PluralRules('en-US');
 // 计算en-US区域中数字1对应的单复数类别
 plural = enPluralRules.select(1); // plural = 'one'
 ```
-

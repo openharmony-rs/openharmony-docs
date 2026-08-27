@@ -4,9 +4,7 @@
 
 **继承/实现关系：** CreateOsAccountForDomainOptions extends [CreateOsAccountOptions](arkts-basicservices-osaccount-createosaccountoptions-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-osAccount-interface CreateOsAccountForDomainOptions--><!--Device-osAccount-interface CreateOsAccountForDomainOptions-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -17,4 +15,3 @@
 ```TypeScript
 import { osAccount } from '@kit.BasicServicesKit';
 ```
-

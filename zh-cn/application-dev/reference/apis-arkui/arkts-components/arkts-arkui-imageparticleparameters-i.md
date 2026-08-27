@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-interface ImageParticleParameters--><!--Device-unnamed-interface ImageParticleParameters-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -21,7 +19,7 @@ objectFit?: ImageFit
 
 图片显示模式。
 
-**类型：** ImageFit
+**类型：** [ImageFit](../arkts-apis/arkts-arkui-imagefit-e.md)
 
 **默认值：** ImageFit.Cover
 
@@ -31,8 +29,6 @@ objectFit?: ImageFit
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ImageParticleParameters-objectFit?: ImageFit--><!--Device-ImageParticleParameters-objectFit?: ImageFit-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -41,17 +37,15 @@ objectFit?: ImageFit
 size: ParticleTuple<Dimension, Dimension>
 ```
 
-图像尺寸。 默认值：[0, 0]
+图像尺寸。默认值：[0, 0]
 
-**类型：** [ParticleTuple](arkts-arkui-particletuple-t.md)&lt;Dimension, Dimension&gt;
+**类型：** [ParticleTuple](arkts-arkui-particletuple-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md), [Dimension](../arkts-apis/arkts-arkui-dimension-t.md)&gt;
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ImageParticleParameters-size: ParticleTuple<Dimension, Dimension>--><!--Device-ImageParticleParameters-size: ParticleTuple<Dimension, Dimension>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,9 +55,9 @@ size: ParticleTuple<Dimension, Dimension>
 src: ResourceStr
 ```
 
-图片路径，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。 暂不支持svg图片类型。 src未发生变化时，会优先使用缓存的资源，无法动态切换资源。如需动态切换资源建议切换为不同的src。
+图片路径，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。暂不支持svg图片类型。src未发生变化时，会优先使用缓存的资源，无法动态切换资源。如需动态切换资源建议切换为不同的src。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 10
 
@@ -71,7 +65,4 @@ src: ResourceStr
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ImageParticleParameters-src: ResourceStr--><!--Device-ImageParticleParameters-src: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -50,7 +50,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_GetBaseContext
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md) modObjExtensionContext | 指向ModularObjectExtensionAbility上下文的指针。 |
-| AbilityRuntime_ContextHandle* baseContext | 指向[AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md)的指针，用于接收结果。 |
+| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md)* baseContext | 指向[AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md)的指针，用于接收结果。 |
 
 **返回：**
 

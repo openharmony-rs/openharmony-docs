@@ -14,9 +14,7 @@ function getDataSummary(): Array<Summary>
 
 获取所有拖拽对象的摘要。
 
-**起始版本：** 23
-
-<!--Device-dragInteraction-function getDataSummary(): Array<Summary>--><!--Device-dragInteraction-function getDataSummary(): Array<Summary>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
@@ -26,7 +24,7 @@ function getDataSummary(): Array<Summary>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;Summary&gt; | 所有拖拽对象的数据摘要，包含拖拽对象的类型和数据长度。 |
+| Array & lt;Summary & gt; | 所有拖拽对象的数据摘要，包含拖拽对象的类型和数据长度。 |
 
 **错误码：**
 
@@ -40,4 +38,3 @@ function getDataSummary(): Array<Summary>
 let summary: Array<dragInteraction.Summary> = dragInteraction.getDataSummary();
 console.info(`Drag interaction summary: ${summary}`);
 ```
-

@@ -5,7 +5,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS规范约束了TypeScript（简称TS）中影响开发正确性或增加运行时开销的特性。本文罗列了ArkTS中限制的TS特性，并提供重构代码的建议。ArkTS保留了TS大部分语法特性，未在本文中约束的TS特性，ArkTS完全支持。例如，ArkTS支持自定义装饰器，语法与TS一致。按本文约束进行代码重构后，代码仍为合法有效的TS代码。
 
@@ -51,7 +51,7 @@ function addTen(x: number): number {
 
 ## 概述
 
-本节罗列了ArkTS不支持或部分支持的TypeScript特性。完整的列表以及详细的代码示例和重构建议，请参考[约束说明](#约束说明)。更多案例请参考[适配指导案例](arkts-more-cases.md)。
+本节罗列了ArkTS不支持或部分支持的TypeScript特性。完整的列表以及详细的代码示例和重构建议，请参考约束说明。更多案例请参考适配指导案例。
 
 ### 强制使用静态类型
 
@@ -148,7 +148,7 @@ console.info('Distance between p5 and p6: ' + distance(p5, p6));
 
 ### 限制运算符的语义
 
-为获得更好的性能并鼓励开发者编写更清晰的代码，ArkTS限制了一些运算符的语义。详细的语义限制，请参考[约束说明](#约束说明)。
+为获得更好的性能并鼓励开发者编写更清晰的代码，ArkTS限制了一些运算符的语义。详细的语义限制，请参考约束说明。
 
 **示例**
 
@@ -194,7 +194,7 @@ class U {
 let u: U = new T(); // 是否允许？
 ```
 
-类型为`T`的值是否能传递给接受类型为`U`的参数的函数。
+类型为`T`的值是否能传递给接收类型为`U`的参数的函数。
 
 <!-- @[struct_typing_caseThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->
 
@@ -219,7 +219,7 @@ greeter(t); // 是否允许？
 
 因为对structural typing的支持是一个重大的特性，需要在语言规范、编译器和运行时进行大量的考虑和仔细的实现。另外，由于ArkTS使用静态类型，运行时为了支持这个特性需要额外的性能开销。
 
-鉴于此，当前我们还不支持该特性。根据实际场景的需求和反馈，我们后续会重新加以考虑。更多案例和建议请参考[约束说明](#约束说明)。
+鉴于此，当前我们还不支持该特性。根据实际场景的需求和反馈，我们后续会重新加以考虑。更多案例和建议请参考约束说明。
 
 ## 约束说明
 
@@ -2235,7 +2235,7 @@ class Label {
 
 // 'Label'类型
 let z: Label = {
-  public text: 'hello',
+  text: 'hello'
 }
 ```
 

@@ -8,14 +8,11 @@
 
 **替代接口：** [commonEventManager](arkts-commoneventmanager.md)
 
-<!--Device-unnamed-declare namespace commonEvent--><!--Device-unnamed-declare namespace commonEvent-End-->
-
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 ## 导入模块
 
 ```TypeScript
-import { commonEventManager } from '@kit.BasicServicesKit';
 ```
 
 ## 汇总
@@ -45,4 +42,3 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 | 名称 | 说明 |
 | --- | --- |
 | [Support](arkts-basicservices-commonevent-support-depr-e.md) | 系统公共事件是指由系统服务或系统应用发布的事件，订阅这些系统公共事件需要特定的权限。 |
-

@@ -9,7 +9,6 @@ import { EditorEventInfo, EditorMenuOptions, ExpandedMenuOptions, SelectionMenu,
 ## SelectionMenu
 
 ```TypeScript
-@Builder
 export declare function SelectionMenu(options: SelectionMenuOptions): void
 ```
 
@@ -21,13 +20,10 @@ export declare function SelectionMenu(options: SelectionMenuOptions): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-@Builderexport declare function SelectionMenu(options: SelectionMenuOptions): void--><!--Device-unnamed-@Builderexport declare function SelectionMenu(options: SelectionMenuOptions): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | SelectionMenuOptions | 是 | 文本选择菜单配置选项，用于配置编辑菜单、扩展下拉菜单、富文本控制器以及复制粘贴剪切等回调事件。 |
-
+| options | [SelectionMenuOptions](arkts-arkui-arkui-advanced-selectionmenu-selectionmenuoptions-i.md) | 是 | 文本选择菜单配置选项，用于配置编辑菜单、扩展下拉菜单、富文本控制器以及复制粘贴剪切等回调事件。 |

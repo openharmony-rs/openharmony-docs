@@ -2,55 +2,13 @@
 
 PlainArray可用于存储具有关联关系的key-value键值对集合，其中key值唯一且类型为number，每个key对应一个value。 PlainArray依据泛型定义，采用轻量级结构。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare class PlainArray--><!--Device-unnamed-declare class PlainArray-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { PlainArray } from '@kit.ArkTS';
-import { PlainArrayForEachCb } from '@kit.ArkTS';
-```
-
-## $_iterator
-
-```TypeScript
-$_iterator(): IterableIterator<[int, T]>
-```
-
-返回一个迭代器，每一项都是一个ArkTS对象。
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-$_iterator(): IterableIterator<[int, T]>--><!--Device-PlainArray-$_iterator(): IterableIterator<[int, T]>-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| IterableIterator&lt;[int, T]&gt; |  |
-
-**示例**
-
-```TypeScript
-let plainArray: PlainArray<string> = new PlainArray<string>();
-plainArray.add(1, "squirrel");
-plainArray.add(2, "sparrow");
-
-let iter = plainArray.$_iterator();
-let temp: IteratorResult<[int, string]> = iter.next();
-while(!temp.done) {
-  console.info("key:" + temp.value![0]);
-  console.info("value:" + temp.value![1]);
-  temp = iter.next();
-}
 ```
 
 ## [Symbol.iterator]
@@ -65,15 +23,13 @@ while(!temp.done) {
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PlainArray-[Symbol.iterator](): IterableIterator<[number, T]>--><!--Device-PlainArray-[Symbol.iterator](): IterableIterator<[number, T]>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[number, T]&gt; | 返回一个迭代器。 |
+| IterableIterator & lt;[number, T] & gt; | 返回一个迭代器。 |
 
 **错误码：**
 
@@ -110,16 +66,14 @@ for(let i = 0; i < 10; i++) {
 ## add
 
 ```TypeScript
-add(key: int, value: T): void
+add(key: number, value: T): void
 ```
 
 向容器中添加一组数据。若指定的key不存在，则新增键值对，且length增加；若指定的key存在，则替换该key对应的value值。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-add(key: int, value: T): void--><!--Device-PlainArray-add(key: int, value: T): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -127,7 +81,7 @@ add(key: int, value: T): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | int | 是 | 添加成员数据的键名。取值范围为[-2147483648, 2147483647]，即int32范围。 |
+| key | number | 是 | 添加成员数据的键名。取值范围为[-2147483648, 2147483647]，即int32范围。 |
 | value | T | 是 | 添加成员数据的值。 |
 
 **错误码：**
@@ -152,11 +106,9 @@ clear(): void
 
 清除容器中的所有元素，并将length置为0。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-clear(): void--><!--Device-PlainArray-clear(): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -185,11 +137,9 @@ clone(): PlainArray<T>
 
 克隆一个实例，并返回克隆后的实例。修改克隆后的实例并不会影响原实例。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-clone(): PlainArray<T>--><!--Device-PlainArray-clone(): PlainArray<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -223,11 +173,9 @@ constructor()
 
 PlainArray的构造函数。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-constructor()--><!--Device-PlainArray-constructor()-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -255,15 +203,13 @@ forEach(callbackFn: (value: T, index?: number, PlainArray?: PlainArray<T>) => vo
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PlainArray-forEach(callbackFn: (value: T, index?: number, PlainArray?: PlainArray<T>) => void, thisArg?: Object): void--><!--Device-PlainArray-forEach(callbackFn: (value: T, index?: number, PlainArray?: PlainArray<T>) => void, thisArg?: Object): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, PlainArray?: PlainArray&lt;T&gt;) =&gt; void | 是 | 回调函数。 |
+| callbackFn | (value: T, index?: number, PlainArray?: PlainArray & lt;T & gt;) = & gt; void | 是 | 回调函数。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **错误码：**
@@ -297,42 +243,6 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
-## forEach
-
-```TypeScript
-forEach(callbackFn: PlainArrayForEachCb<T>): void
-```
-
-在遍历PlainArray实例对象中每一个元素的过程中，对每个元素执行回调函数。
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-forEach(callbackFn: PlainArrayForEachCb<T>): void--><!--Device-PlainArray-forEach(callbackFn: PlainArrayForEachCb<T>): void-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callbackFn | [PlainArrayForEachCb](arkts-arkts-plainarrayforeachcb-t.md)&lt;T&gt; | 是 | 回调函数。 |
-
-**示例**
-
-```TypeScript
-import { PlainArrayForEachCb } from '@kit.ArkTS';
-
-let plainArray: PlainArray<string> = new PlainArray<string>();
-plainArray.add(1, "squirrel");
-plainArray.add(2, "sparrow");
-let plainArrayCb: PlainArrayForEachCb<string> = (value: string, key: int, PlainArray: PlainArray<string>) => {
-  console.info("value: " + value, " key: " + key);
-}
-plainArray.forEach(plainArrayCb);
-```
-
 ## get
 
 ```TypeScript
@@ -344,8 +254,6 @@ get(key: number): T
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-get(key: number): T--><!--Device-PlainArray-get(key: number): T-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -377,62 +285,17 @@ let result = plainArray.get(1);
 console.info("result:", result);  // result: squirrel
 ```
 
-## get
-
-```TypeScript
-get(key: int): T | undefined
-```
-
-查询与指定key关联的value。
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-get(key: int): T | undefined--><!--Device-PlainArray-get(key: int): T | undefined-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| key | int | 是 | 查找的目标key。 该值为整数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| T | 键值对中的value。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
-
-**示例**
-
-```TypeScript
-let plainArray: PlainArray<string> = new PlainArray<string>();
-plainArray.add(1, "squirrel");
-plainArray.add(2, "sparrow");
-let result = plainArray.get(1);
-```
-
 ## getIndexOfKey
 
 ```TypeScript
-getIndexOfKey(key: int): int
+getIndexOfKey(key: number): number
 ```
 
 查找指定key对应的下标值，如果未找到则返回-1。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-getIndexOfKey(key: int): int--><!--Device-PlainArray-getIndexOfKey(key: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -440,13 +303,13 @@ getIndexOfKey(key: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | int | 是 | 指定key。需要小于等于int32_max即2147483647。 |
+| key | number | 是 | 指定key。需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 返回指定key对应的下标值，查找失败返回-1。 |
+| number | 返回指定key对应的下标值，查找失败返回-1。 |
 
 **错误码：**
 
@@ -467,16 +330,14 @@ console.info("result:", result); // result: 1
 ## getIndexOfValue
 
 ```TypeScript
-getIndexOfValue(value: T): int
+getIndexOfValue(value: T): number
 ```
 
 查找指定value元素第一次出现的下标值，如果未找到则返回-1。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-getIndexOfValue(value: T): int--><!--Device-PlainArray-getIndexOfValue(value: T): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -490,7 +351,7 @@ getIndexOfValue(value: T): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 返回指定value元素第一次出现时的下标值，查找失败返回-1。 |
+| number | 返回指定value元素第一次出现时的下标值，查找失败返回-1。 |
 
 **错误码：**
 
@@ -511,16 +372,14 @@ console.info("result:", result);  // result: 0
 ## getKeyAt
 
 ```TypeScript
-getKeyAt(index: int): int
+getKeyAt(index: number): number
 ```
 
 查找指定下标元素键值对中的key值。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-getKeyAt(index: int): int--><!--Device-PlainArray-getKeyAt(index: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -528,13 +387,13 @@ getKeyAt(index: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 返回该下标元素键值对中的key值，失败返回undefined。 |
+| number | 返回该下标元素键值对中的key值，失败返回undefined。 |
 
 **错误码：**
 
@@ -555,16 +414,14 @@ console.info("result:", result); // result: 2
 ## getValueAt
 
 ```TypeScript
-getValueAt(index: int): T
+getValueAt(index: number): T
 ```
 
 查找指定下标元素键值对中的value值，失败则返回undefined。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-getValueAt(index: int): T--><!--Device-PlainArray-getValueAt(index: int): T-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -572,7 +429,7 @@ getValueAt(index: int): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
@@ -600,16 +457,14 @@ console.info("result:", result);  // result: sparrow
 ## has
 
 ```TypeScript
-has(key: int): boolean
+has(key: number): boolean
 ```
 
 判断容器中是否包含指定key。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-has(key: int): boolean--><!--Device-PlainArray-has(key: int): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -617,7 +472,7 @@ has(key: int): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | int | 是 | 指定key。取值范围为[-2147483648, 2147483647]，即int32范围。 |
+| key | number | 是 | 指定key。取值范围为[-2147483648, 2147483647]，即int32范围。 |
 
 **返回值：**
 
@@ -648,11 +503,9 @@ isEmpty(): boolean
 
 判断容器是否为空。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-isEmpty(): boolean--><!--Device-PlainArray-isEmpty(): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -688,8 +541,6 @@ remove(key: number): T
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PlainArray-remove(key: number): T--><!--Device-PlainArray-remove(key: number): T-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -720,49 +571,6 @@ let result = plainArray.remove(2);
 console.info("result:", result);  // result: sparrow
 ```
 
-## remove
-
-```TypeScript
-remove(key: int): T | undefined
-```
-
-如果存在指定key对应的键值对，则删除并返回该值。
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-remove(key: int): T | undefined--><!--Device-PlainArray-remove(key: int): T | undefined-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| key | int | 是 | 待删除的目标key。 该值为整数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| T | 如果key存在则返回映射的值，否则返回undefined。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
-
-**示例**
-
-```TypeScript
-let plainArray: PlainArray<string> = new PlainArray<string>();
-plainArray.add(1, "squirrel");
-plainArray.add(2, "sparrow");
-let result = plainArray.remove(2);
-```
-
 ## removeAt
 
 ```TypeScript
@@ -774,8 +582,6 @@ removeAt(index: number): T
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-removeAt(index: number): T--><!--Device-PlainArray-removeAt(index: number): T-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -807,62 +613,17 @@ let result = plainArray.removeAt(1);
 console.info("result:", result);  // result: sparrow
 ```
 
-## removeAt
-
-```TypeScript
-removeAt(index: int): T | undefined
-```
-
-如果存在指定下标的键值对，则删除并返回该值。
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-removeAt(index: int): T | undefined--><!--Device-PlainArray-removeAt(index: int): T | undefined-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| index | int | 是 | 查找的目标下标。 该值为整数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| T | T类型的值，容器为空时返回undefined。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
-
-**示例**
-
-```TypeScript
-let plainArray: PlainArray<string> = new PlainArray<string>();
-plainArray.add(1, "squirrel");
-plainArray.add(2, "sparrow");
-let result = plainArray.removeAt(1);
-```
-
 ## removeRangeFrom
 
 ```TypeScript
-removeRangeFrom(index: int, size: int): int
+removeRangeFrom(index: number, size: number): number
 ```
 
 删除指定范围内的元素。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-removeRangeFrom(index: int, size: int): int--><!--Device-PlainArray-removeRangeFrom(index: int, size: int): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -870,14 +631,14 @@ removeRangeFrom(index: int, size: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int | 是 | 删除元素的起始下标。取值范围为[0, PlainArray.length-1]，且需要小于等于int32_max即2147483647。 |
-| size | int | 是 | 期望删除元素个数。需要大于0，小于等于int32_max即2147483647。 |
+| index | number | 是 | 删除元素的起始下标。取值范围为[0, PlainArray.length-1]，且需要小于等于int32_max即2147483647。 |
+| size | number | 是 | 期望删除元素个数。需要大于0，小于等于int32_max即2147483647。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 实际删除元素个数。 |
+| number | 实际删除元素个数。 |
 
 **错误码：**
 
@@ -900,16 +661,14 @@ console.info("result:", result);  // result: 1
 ## setValueAt
 
 ```TypeScript
-setValueAt(index: int, value: T): void
+setValueAt(index: number, value: T): void
 ```
 
 替换容器中指定下标对应键值对中的value值。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-setValueAt(index: int, value: T): void--><!--Device-PlainArray-setValueAt(index: int, value: T): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -917,7 +676,7 @@ setValueAt(index: int, value: T): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int | 是 | 指定替换数据下标。取值范围为[0, PlainArray.length-1]，且需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 指定替换数据下标。取值范围为[0, PlainArray.length-1]，且需要小于等于int32_max即2147483647。 |
 | value | T | 是 | 替换键值对中的值。 |
 
 **错误码：**
@@ -928,8 +687,6 @@ setValueAt(index: int, value: T): void
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 let plainArray = new PlainArray<string | number>();
@@ -942,17 +699,6 @@ let result = plainArray.getValueAt(1);
 console.info("result:", result);  // result: 3546
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-let plainArray: PlainArray<string | int> = new PlainArray<string | int>();
-plainArray.add(1, "squirrel");
-plainArray.add(2, "sparrow");
-plainArray.setValueAt(1, 3546);
-let result = plainArray.getValueAt(1); 
-console.info("result:", result);  // result: 3546
-```
-
 ## toString
 
 ```TypeScript
@@ -961,11 +707,9 @@ toString(): String
 
 获取包含容器中所有键和值的字符串。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PlainArray-toString(): String--><!--Device-PlainArray-toString(): String-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1005,7 +749,4 @@ PlainArray的元素个数。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PlainArray-length: number--><!--Device-PlainArray-length: number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

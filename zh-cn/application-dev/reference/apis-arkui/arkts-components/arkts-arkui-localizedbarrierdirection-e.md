@@ -1,10 +1,9 @@
 # LocalizedBarrierDirection
 
-定义支持镜像模式的屏障线的方向。 | 名称 | 值 | 说明 | | ------ | -- | ----------------------------- | | START | 0 |屏障在其所有[referencedId](arkts-arkui-localizedbarrierstyle-i.md)的起始侧，LTR模式时为最左侧，RTL模式时为最右侧。| | END | 1 | 屏障在其所有[referencedId](arkts-arkui-localizedbarrierstyle-i.md)的结束侧，LTR模式时为最右侧，RTL模式时为最左侧。| | TOP | 2 | 屏障在其所有[referencedId](arkts-arkui-localizedbarrierstyle-i.md)的最上方。| | BOTTOM | 3 | 屏障在其所有[referencedId](arkts-arkui-localizedbarrierstyle-i.md)的最下方。|
+定义支持镜像模式的屏障线的方向。  
+| 名称 | 值 | 说明 | | ------ | -- | ----------------------------- | | START | 0 |屏障在其所有[referencedId](arkts-arkui-localizedbarrierstyle-i.md)的起始侧，LTR模式时为最左侧，RTL模式时为最右侧。| | END | 1 | 屏障在其所有[referencedId](arkts-arkui-localizedbarrierstyle-i.md)的结束侧，LTR模式时为最右侧，RTL模式时为最左侧。| | TOP | 2 | 屏障在其所有[referencedId](arkts-arkui-localizedbarrierstyle-i.md)的最上方。| | BOTTOM | 3 | 屏障在其所有[referencedId](arkts-arkui-localizedbarrierstyle-i.md)的最下方。|
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare enum LocalizedBarrierDirection--><!--Device-unnamed-declare enum LocalizedBarrierDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,8 +21,6 @@ The barrier is on the left (for left-to-right scripts) or right (for right-to-le
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LocalizedBarrierDirection-START = 0--><!--Device-LocalizedBarrierDirection-START = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## END
@@ -39,8 +36,6 @@ The barrier is on the right (for left-to-right scripts) or left (for right-to-le
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LocalizedBarrierDirection-END = 1--><!--Device-LocalizedBarrierDirection-END = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,8 +53,6 @@ The barrier is at the top of all the referenced components specified by [referen
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LocalizedBarrierDirection-TOP = 2--><!--Device-LocalizedBarrierDirection-TOP = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOTTOM
@@ -76,7 +69,4 @@ The barrier is at the bottom of all the referenced components specified by [refe
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LocalizedBarrierDirection-BOTTOM = 3--><!--Device-LocalizedBarrierDirection-BOTTOM = 3-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

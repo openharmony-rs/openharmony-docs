@@ -7,11 +7,11 @@
 <!--Adviser: @Brilliantry_Rui-->
 ArkUI的弹出框焦点策略可以设定是否中断用户当前操作，并聚焦到新弹出的弹出框。若设定弹出框不获取焦点，则新弹出时不会中断用户当前操作，例如，当用户正在文本框中输入内容时，新弹出的弹出框不会关闭软键盘，焦点仍保留在文本框中。
 
-从API version 19开始，可以通过设置[focusable/apis-arkui/js-apis-promptAction.md#basedialogoptions11)参数来管理弹出框是否获取焦点。
+从API version 19开始，可以通过设置focusable参数来管理弹出框是否获取焦点。
 
 ## 使用约束
 
-[openCustomDialog](arkts-uicontext-custom-dialog.md)和[CustomDialog](arkts-common-components-custom-dialog.md)支持通过focusable参数来管理弹出框是否获取焦点。
+openCustomDialog和CustomDialog支持通过focusable参数来管理弹出框是否获取焦点。
 
 > **说明：**
 > 
@@ -21,7 +21,7 @@ ArkUI的弹出框焦点策略可以设定是否中断用户当前操作，并聚
 
 > **说明：**
 > 
-> 详细变量定义请参考[完整示例](#完整示例)。
+> 详细变量定义请参考完整示例。
 
 1. 初始化一个弹出框内容区域，内含一个Text组件。
 
@@ -32,6 +32,22 @@ ArkUI的弹出框焦点策略可以设定是否中断用户当前操作，并聚
     // 请在resources\base\element\string.json文件中配置name为'dialog_message'，value为非空字符串的资源
     private message: string =
       this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('dialog_message') as string;
+    // 存储所有弹窗延时关闭定时器ID数组，页面销毁统一清除
+    private timerIdList: number[] = [];
+    // 标记页面是否已销毁，销毁后不再执行弹窗关闭逻辑
+    private isPageDestroy: boolean = false;
+    
+    /**
+     * 页面销毁生命周期：清除所有定时器，防止延时关闭弹窗触发异常、内存泄漏
+     */
+    aboutToDisappear(): void {
+      this.isPageDestroy = true;
+      // 遍历清除全部未执行的定时器
+      this.timerIdList.forEach(timerId => {
+        clearTimeout(timerId);
+      });
+      this.timerIdList = [];
+    }
     
     @Builder
     customDialogComponent() {
@@ -48,7 +64,7 @@ ArkUI的弹出框焦点策略可以设定是否中断用户当前操作，并聚
 
 
 
-2. 创建一个TextInput组件，在onChange事件函数中通过调用[UIContext/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getPromptAction/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[openCustomDialog/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口，并设置[focusable/apis-arkui/js-apis-promptAction.md#basedialogoptions11)参数为false，以创建弹出框。
+2. 创建一个TextInput组件，在onChange事件函数中通过调用UIContext中的getPromptAction方法获取PromptAction对象，再通过该对象调用openCustomDialog接口，并设置focusable参数为false，以创建弹出框。
 
     <!-- @[dialog_focus_text_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxfocuspolicy/DialogFocusStrategy.ets) -->
     
@@ -61,10 +77,30 @@ ArkUI的弹出框焦点策略可以设定是否中断用户当前操作，并聚
             this.customDialogComponent();
           },
           focusable: false
-        }).then((dialogId: number) => {
-          setTimeout(() => {
-            this.getUIContext().getPromptAction().closeCustomDialog(dialogId);
+        })
+        .then((dialogId: number) => {
+          // 创建延时关闭定时器
+          const timerId = setTimeout(() => {
+            // 页面已销毁则直接跳过关闭逻辑
+            if (this.isPageDestroy) {
+              return;
+            }
+            try {
+              this.getUIContext().getPromptAction().closeCustomDialog(dialogId);
+            } catch (error) {
+              console.error('closeCustomDialog error');
+            }
+            // 关闭弹窗后移除已完成定时器记录
+            const idx = this.timerIdList.findIndex(item => item === timerId);
+            if (idx > -1) {
+              this.timerIdList.splice(idx, 1);
+            }
           }, 3000);
+          // 保存定时器ID，页面销毁时统一清理
+          this.timerIdList.push(timerId);
+        })
+        .catch(() => {
+          console.error('openCustomDialog failed');
         });
       })
     ```
@@ -82,6 +118,22 @@ export struct Index {
   // 请在resources\base\element\string.json文件中配置name为'dialog_message'，value为非空字符串的资源
   private message: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('dialog_message') as string;
+  // 存储所有弹窗延时关闭定时器ID数组，页面销毁统一清除
+  private timerIdList: number[] = [];
+  // 标记页面是否已销毁，销毁后不再执行弹窗关闭逻辑
+  private isPageDestroy: boolean = false;
+
+  /**
+   * 页面销毁生命周期：清除所有定时器，防止延时关闭弹窗触发异常、内存泄漏
+   */
+  aboutToDisappear(): void {
+    this.isPageDestroy = true;
+    // 遍历清除全部未执行的定时器
+    this.timerIdList.forEach(timerId => {
+      clearTimeout(timerId);
+    });
+    this.timerIdList = [];
+  }
 
   @Builder
   customDialogComponent() {
@@ -106,10 +158,30 @@ export struct Index {
                 this.customDialogComponent();
               },
               focusable: false
-            }).then((dialogId: number) => {
-              setTimeout(() => {
-                this.getUIContext().getPromptAction().closeCustomDialog(dialogId);
+            })
+            .then((dialogId: number) => {
+              // 创建延时关闭定时器
+              const timerId = setTimeout(() => {
+                // 页面已销毁则直接跳过关闭逻辑
+                if (this.isPageDestroy) {
+                  return;
+                }
+                try {
+                  this.getUIContext().getPromptAction().closeCustomDialog(dialogId);
+                } catch (error) {
+                  console.error('closeCustomDialog error');
+                }
+                // 关闭弹窗后移除已完成定时器记录
+                const idx = this.timerIdList.findIndex(item => item === timerId);
+                if (idx > -1) {
+                  this.timerIdList.splice(idx, 1);
+                }
               }, 3000);
+              // 保存定时器ID，页面销毁时统一清理
+              this.timerIdList.push(timerId);
+            })
+            .catch(() => {
+              console.error('openCustomDialog failed');
             });
           })
       }.width('100%')

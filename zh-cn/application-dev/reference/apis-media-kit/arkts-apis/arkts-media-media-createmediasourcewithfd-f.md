@@ -20,21 +20,19 @@ function createMediaSourceWithFd(fdSrc: AVFileDescriptor): MediaSource | undefin
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-media-function createMediaSourceWithFd(fdSrc: AVFileDescriptor): MediaSource | undefined--><!--Device-media-function createMediaSourceWithFd(fdSrc: AVFileDescriptor): MediaSource | undefined-End-->
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fdSrc | [AVFileDescriptor](arkts-media-multimedia-media-avfiledescriptor-i.md) | 是 | 媒体文件描述符。 |
+| fdSrc | [AVFileDescriptor](arkts-media-media-avfiledescriptor-i.md) | 是 | 媒体文件描述符。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [MediaSource](arkts-media-multimedia-media-mediasource-i.md) | 返回MediaSource，用于媒体资源设置。 |
+| [MediaSource](arkts-media-media-mediasource-i.md) \| undefined | 返回MediaSource，用于媒体资源设置。 |
 
 **示例**
 
@@ -45,4 +43,3 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let fdSrc = await context.resourceManager.getRawFd('xxx.mp4');
 let mediaSource : media.MediaSource | undefined = media.createMediaSourceWithFd(fdSrc);
 ```
-

@@ -2,9 +2,7 @@
 
 请求策略。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-interface RequestOptions--><!--Device-photoAccessHelper-interface RequestOptions-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -24,9 +22,7 @@ compatibleMode?: CompatibleMode
 
 **类型：** [CompatibleMode](arkts-medialibrary-photoaccesshelper-compatiblemode-e.md)
 
-**起始版本：** 23
-
-<!--Device-RequestOptions-compatibleMode?: CompatibleMode--><!--Device-RequestOptions-compatibleMode?: CompatibleMode-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -40,9 +36,7 @@ deliveryMode: DeliveryMode
 
 **类型：** [DeliveryMode](arkts-medialibrary-photoaccesshelper-deliverymode-e.md)
 
-**起始版本：** 23
-
-<!--Device-RequestOptions-deliveryMode: DeliveryMode--><!--Device-RequestOptions-deliveryMode: DeliveryMode-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -56,9 +50,6 @@ mediaAssetProgressHandler?: MediaAssetProgressHandler
 
 **类型：** [MediaAssetProgressHandler](arkts-medialibrary-photoaccesshelper-mediaassetprogresshandler-i.md)
 
-**起始版本：** 23
-
-<!--Device-RequestOptions-mediaAssetProgressHandler?: MediaAssetProgressHandler--><!--Device-RequestOptions-mediaAssetProgressHandler?: MediaAssetProgressHandler-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-

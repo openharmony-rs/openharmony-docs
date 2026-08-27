@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { buffer } from '@kit.ArkTS';
 ```
 
 ## isEncoding
@@ -14,11 +13,9 @@ function isEncoding(encoding: string): boolean
 
 判断`encoding`是否为支持的编码格式。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-buffer-function isEncoding(encoding: string): boolean--><!--Device-buffer-function isEncoding(encoding: string): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -48,4 +45,3 @@ console.info(buffer.isEncoding('utf/8').toString());
 console.info(buffer.isEncoding('').toString());
 // 输出结果：false
 ```
-

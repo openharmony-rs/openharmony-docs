@@ -4,8 +4,6 @@
 
 **起始版本：** 24
 
-<!--Device-relationalStore-enum DistributedField--><!--Device-relationalStore-enum DistributedField-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **系统接口：** 此接口为系统接口。
@@ -21,8 +19,6 @@ ORIGIN = '#_origin'
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DistributedField-ORIGIN = '#_origin'--><!--Device-DistributedField-ORIGIN = '#_origin'-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -40,8 +36,6 @@ ORIGIN_ORIDEVICE = '#_ori_device'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DistributedField-ORIGIN_ORIDEVICE = '#_ori_device'--><!--Device-DistributedField-ORIGIN_ORIDEVICE = '#_ori_device'-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **系统接口：** 此接口为系统接口。
@@ -57,8 +51,6 @@ CURSOR_FIELD = '#_cursor'
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DistributedField-CURSOR_FIELD = '#_cursor'--><!--Device-DistributedField-CURSOR_FIELD = '#_cursor'-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -76,9 +68,6 @@ DELETED_FLAG_FIELD = '#_deleted_flag'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DistributedField-DELETED_FLAG_FIELD = '#_deleted_flag'--><!--Device-DistributedField-DELETED_FLAG_FIELD = '#_deleted_flag'-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **系统接口：** 此接口为系统接口。
-

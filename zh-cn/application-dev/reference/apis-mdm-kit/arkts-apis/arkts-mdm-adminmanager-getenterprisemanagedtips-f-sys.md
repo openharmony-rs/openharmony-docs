@@ -18,8 +18,6 @@ function getEnterpriseManagedTips(): Promise<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-adminManager-function getEnterpriseManagedTips(): Promise<string>--><!--Device-adminManager-function getEnterpriseManagedTips(): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -28,11 +26,10 @@ function getEnterpriseManagedTips(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | returns the enterprise message tips. |
+| Promise & lt;string & gt; | returns the enterprise message tips. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-

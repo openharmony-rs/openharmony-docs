@@ -4,16 +4,12 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export interface ListFileExtOptions--><!--Device-unnamed-export interface ListFileExtOptions-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## 导入模块
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## fileFilter
@@ -24,13 +20,11 @@ fileFilter?: FileFilter
 
 自定义文件名过滤的规则，默认为空，表示不进行过滤。
 
-**类型：** [FileFilter](../../apis-na/arkts-apis/arkts-na-file-fs-filefilter-i.md)
+**类型：** [FileFilter](arkts-corefile-file-fs-filefilter-i.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ListFileExtOptions-fileFilter?: FileFilter--><!--Device-ListFileExtOptions-fileFilter?: FileFilter-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -48,8 +42,6 @@ listNum?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ListFileExtOptions-listNum?: number--><!--Device-ListFileExtOptions-listNum?: number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## recursion
@@ -58,7 +50,7 @@ listNum?: number
 recursion?: boolean
 ```
 
-是否递归子目录下的文件名，默认为false。<br>false：返回当前目录下满足过滤要求的文件名及目录名。<br>true：返回该目录下所有符合过滤条件的文件的相对路径，相对路径以"/"开头。
+是否递归子目录下的文件名，默认为false。false：返回当前目录下满足过滤要求的文件名及目录名。true：返回该目录下所有符合过滤条件的文件的相对路径，相对路径以"/"开头。
 
 **类型：** boolean
 
@@ -66,7 +58,4 @@ recursion?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ListFileExtOptions-recursion?: boolean--><!--Device-ListFileExtOptions-recursion?: boolean-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
-

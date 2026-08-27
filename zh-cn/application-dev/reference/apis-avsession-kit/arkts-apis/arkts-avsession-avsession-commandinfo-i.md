@@ -2,9 +2,7 @@
 
 定义要发送到会话的命令信息。
 
-**起始版本：** 23
-
-<!--Device-avSession-interface CommandInfo--><!--Device-avSession-interface CommandInfo-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -24,9 +22,7 @@ callerBundleName?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-CommandInfo-callerBundleName?: string--><!--Device-CommandInfo-callerBundleName?: string-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -40,9 +36,7 @@ callerDeviceId?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-CommandInfo-callerDeviceId?: string--><!--Device-CommandInfo-callerDeviceId?: string-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -56,9 +50,7 @@ callerModuleName?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-CommandInfo-callerModuleName?: string--><!--Device-CommandInfo-callerModuleName?: string-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -72,9 +64,6 @@ callerType?: CallerType
 
 **类型：** [CallerType](arkts-avsession-avsession-callertype-e.md)
 
-**起始版本：** 23
-
-<!--Device-CommandInfo-callerType?: CallerType--><!--Device-CommandInfo-callerType?: CallerType-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
-

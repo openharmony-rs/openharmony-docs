@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { connection } from '@kit.NetworkKit';
 ```
 
 ## setProxyMode
@@ -17,8 +16,6 @@ function setProxyMode(mode: ProxyMode): Promise<void>
 **起始版本：** 20
 
 **需要权限：** ohos.permission.CONNECTIVITY_INTERNAL
-
-<!--Device-connection-function setProxyMode(mode: ProxyMode): Promise<void>--><!--Device-connection-function setProxyMode(mode: ProxyMode): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -34,7 +31,7 @@ function setProxyMode(mode: ProxyMode): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -55,4 +52,3 @@ connection.setProxyMode(connection.ProxyMode.PROXY_MODE_AUTO).then(() => {
     console.error("Error setting proxy mode:", error);
 });
 ```
-

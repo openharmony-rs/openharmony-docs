@@ -12,13 +12,17 @@ import { featureAbility } from '@kit.AbilityKit';
 function acquireDataAbilityHelper(uri: string): DataAbilityHelper
 ```
 
-获取dataAbilityHelper对象。 > **说明：** > > 组件启动规则详见：[组件启动规则（FA模型）](../../../application-models/component-startup-rules-fa.md)。 > > 跨应用访问dataAbility，对端应用需配置关联启动。
+获取dataAbilityHelper对象。
+
+> **说明：**
+> 
+> 组件启动规则详见：[组件启动规则（FA模型）](../../../application-models/component-startup-rules-fa.md)。
+> 
+> 跨应用访问dataAbility，对端应用需配置关联启动。
 
 **起始版本：** 7
 
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-featureAbility-function acquireDataAbilityHelper(uri: string): DataAbilityHelper--><!--Device-featureAbility-function acquireDataAbilityHelper(uri: string): DataAbilityHelper-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -44,4 +48,3 @@ let dataAbilityHelper = featureAbility.acquireDataAbilityHelper(
   'dataability:///com.example.DataAbility'
 );
 ```
-

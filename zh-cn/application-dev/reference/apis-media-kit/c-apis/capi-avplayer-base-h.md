@@ -4,6 +4,8 @@
 
 定义AVPlayer的结构体和枚举。
 
+**引用文件：** <multimedia/player_framework/avplayer_base.h>
+
 **库：** libavplayer.so
 
 **起始版本：** 11
@@ -49,8 +51,8 @@
 | -- | -- |
 | const char * OH_PLAYER_STATE | 获取播放状态的关键字，对应值类型是int32_t。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_STATE_CHANGE_REASON | 获取播放状态变更原因的关键字，对应值类型是int32_t。1：用户操作触发；2：系统变更触发。<br>**起始版本：** 12 |
-| const char * OH_PLAYER_VOLUME | 获取音量的关键字，对应值类型是float。<br>**起始版本：** 12 |
-| const char * OH_PLAYER_BITRATE_ARRAY | 获取比特率列表的关键字，对应值类型是uint8_t字节数组。通过该关键字获取信息时：需要先使用uint8_t类型指针变量保存比特率列表，使用size_t类型变量保存字节数组长度。然后分配若干个uint32_t类型的存储空间，接收将uint8_t字节数组转换为uint32_t类型比特率整数值。<br>**起始版本：** 12 |
+| const char * OH_PLAYER_VOLUME | 获取音量的关键字，对应值类型是float，取值范围[0.0，1.0]。<br>**起始版本：** 12 |
+| const char * OH_PLAYER_BITRATE_ARRAY | 获取比特率列表的关键字，对应值类型是uint8_t字节数组。通过该关键字获取信息时：需要先使用uint8_t类型指针变量保存比特率列表，使用size_t类型变量保存字节数组长度。然后分配若干个uint32_t类型的存储空间，接收将uint8_t字节数组转换为uint32_t类型比特率整数值，单位为bps。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_AUDIO_INTERRUPT_TYPE | 获取音频打断类型的关键字，对应值类型是int32_t。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_AUDIO_INTERRUPT_FORCE | 获取音频打断FORCE类型的关键字，对应值类型是int32_t。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_AUDIO_INTERRUPT_HINT | 获取音频打断HINT类型的关键字，对应值类型是int32_t。<br>**起始版本：** 12 |
@@ -88,11 +90,11 @@
 | const char * OH_MEDIA_EVENT_INFO_DOWNLOAD_TOTAL_SIZE | 获取统计指标信息中的已加载媒体资源累计字节数的关键字，对应值类型为int64_t。<br>**起始版本：** 23 |
 | const char * OH_MEDIA_EVENT_INFO_STALLING_COUNT | 获取统计指标信息中的累计卡顿次数的关键字，对应值类型为uint32_t。<br>**起始版本：** 23 |
 | const char * OH_MEDIA_EVENT_INFO_TOTAL_STALLING_TIME | 获取统计指标信息中的累计卡顿时长的关键字，对应值类型为uint32_t，单位为毫秒。<br>**起始版本：** 23 |
-| const char * OH_PLAYER_SERVER_IP_ADDRESS |  |
-| const char * OH_PLAYER_IS_DOWNLOADING |  |
-| const char * OH_PLAYER_BUFFER_DURATION |  |
-| const char * OH_PLAYER_DOWNLOAD_RATE |  |
-| const char * OH_PLAYER_AVG_DOWNLOAD_RATE |  |
+| const char * OH_PLAYER_SERVER_IP_ADDRESS | 播放信息中表示服务器IP地址的关键字，对应值类型为字符串。<br>**起始版本：** 23 |
+| const char * OH_PLAYER_IS_DOWNLOADING | 播放信息中表示当前是否处于下载状态的关键字，值类型为int32_t。值为1表示正在下载，0表示未下载。<br>**起始版本：** 23 |
+| const char * OH_PLAYER_BUFFER_DURATION | 播放信息中表示缓冲区时长的关键字，值类型为int32_t，单位为毫秒。<br>**起始版本：** 23 |
+| const char * OH_PLAYER_DOWNLOAD_RATE | 播放信息中表示当前下载速率的关键字，对应值类型是int32_t，下载速率的单位为比特率（bps）。<br>**起始版本：** 23 |
+| const char * OH_PLAYER_AVG_DOWNLOAD_RATE | 播放信息中表示平均下载速率的关键字，对应值类型是int32_t，下载速率的单位为比特率（bps）。<br>**起始版本：** 23 |
 
 ## 枚举类型说明
 
@@ -110,15 +112,15 @@ enum AVPlayerState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AV_IDLE = 0 | idle states |
-| AV_INITIALIZED = 1 | initialized states |
-| AV_PREPARED = 2 | prepared states |
-| AV_PLAYING = 3 | playing states |
-| AV_PAUSED = 4 | paused states |
-| AV_STOPPED = 5 | stopped states |
-| AV_COMPLETED = 6 | Play to the end states |
-| AV_RELEASED = 7 | released states |
-| AV_ERROR = 8 | error states |
+| AV_IDLE = 0 | 空闲 |
+| AV_INITIALIZED = 1 | 初始化 |
+| AV_PREPARED = 2 | 准备 |
+| AV_PLAYING = 3 | 播放 |
+| AV_PAUSED = 4 | 暂停 |
+| AV_STOPPED = 5 | 停止 |
+| AV_COMPLETED = 6 | 结束 |
+| AV_RELEASED = 7 | 释放 |
+| AV_ERROR = 8 | 错误 |
 
 ### AVPlayerSeekMode
 
@@ -134,8 +136,8 @@ enum AVPlayerSeekMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AV_SEEK_NEXT_SYNC = 0 | sync to keyframes after the time point. |
-| AV_SEEK_PREVIOUS_SYNC = 1 | sync to keyframes before the time point. |
+| AV_SEEK_NEXT_SYNC = 0 | 在时间点之后同步至关键帧。 |
+| AV_SEEK_PREVIOUS_SYNC = 1 | 在时间点之前同步至关键帧。 |
 | AV_SEEK_CLOSEST = 2 | 同步到距离指定时间点最近的帧。<br>**起始版本：** 12 |
 | AV_SEEK_CONTINUOUS = 3 | 连续拖动模式下的跳转（seek）。该模式可提供更流畅的拖拽体验，但要求设备支持对当前流执行连续跳转。在调用连续跳转前，请先检查是否支持，参见{@link OH_AVPlayer_IsSeekContinuousSupported}。**起始版本：** 23 |
 
@@ -153,11 +155,11 @@ enum AVPlaybackSpeed
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AV_SPEED_FORWARD_0_75_X = 0 | Video playback at 0.75x normal speed |
-| AV_SPEED_FORWARD_1_00_X = 1 | Video playback at normal speed |
-| AV_SPEED_FORWARD_1_25_X = 2 | Video playback at 1.25x normal speed |
-| AV_SPEED_FORWARD_1_75_X = 3 | Video playback at 1.75x normal speed |
-| AV_SPEED_FORWARD_2_00_X = 4 | Video playback at 2.0x normal speed |
+| AV_SPEED_FORWARD_0_75_X = 0 | 0.75倍速播放。 |
+| AV_SPEED_FORWARD_1_00_X = 1 | 正常播放。 |
+| AV_SPEED_FORWARD_1_25_X = 2 | 1.25倍速播放。 |
+| AV_SPEED_FORWARD_1_75_X = 3 | 1.75倍速播放。 |
+| AV_SPEED_FORWARD_2_00_X = 4 | 2.0倍速播放。 |
 | AV_SPEED_FORWARD_0_50_X = 5 | 0.5倍速播放。<br>**起始版本：** 12 |
 | AV_SPEED_FORWARD_1_50_X = 6 | 1.5倍速播放。<br>**起始版本：** 12 |
 | AV_SPEED_FORWARD_3_00_X = 7 | 3.0倍速播放。<br>**起始版本：** 13 |
@@ -178,23 +180,23 @@ OnInfo类型。可用于OH_AVPlayerOnInfoCallback和OH_AVPlayerOnInfo(已废弃)
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AV_INFO_TYPE_SEEKDONE = 0 | return the message when seeking done. |
-| AV_INFO_TYPE_SPEEDDONE = 1 | return the message when speeding done. |
-| AV_INFO_TYPE_BITRATEDONE = 2 | return the message when select bitrate done |
-| AV_INFO_TYPE_EOS = 3 | return the message when playback is end of steam. |
-| AV_INFO_TYPE_STATE_CHANGE = 4 | return the message when PlayerStates changed. |
-| AV_INFO_TYPE_POSITION_UPDATE = 5 | return the current posion of playback automatically. |
-| AV_INFO_TYPE_MESSAGE = 6 | return the playback message. |
-| AV_INFO_TYPE_VOLUME_CHANGE = 7 | return the message when volume changed. |
-| AV_INFO_TYPE_RESOLUTION_CHANGE = 8 | return the message when video size is first known or updated. |
-| AV_INFO_TYPE_BUFFERING_UPDATE = 9 | return multiqueue buffering time. |
-| AV_INFO_TYPE_BITRATE_COLLECT = 10 | return hls bitrate. Bitrate is to convert data into uint8_t array storage, |
-| AV_INFO_TYPE_INTERRUPT_EVENT = 11 | return the message when audio focus changed. |
-| AV_INFO_TYPE_DURATION_UPDATE = 12 | return the duration of playback. |
-| AV_INFO_TYPE_IS_LIVE_STREAM = 13 | return the playback is live stream. |
-| AV_INFO_TYPE_TRACKCHANGE = 14 | return the message when track changes. |
-| AV_INFO_TYPE_TRACK_INFO_UPDATE = 15 | return the message when subtitle track info updated. |
-| AV_INFO_TYPE_SUBTITLE_UPDATE = 16 | return the subtitle of playback. |
+| AV_INFO_TYPE_SEEKDONE = 0 | 跳转到对应播放位置时返回消息。 |
+| AV_INFO_TYPE_SPEEDDONE = 1 | 播放倍速设置完成时返回消息。 |
+| AV_INFO_TYPE_BITRATEDONE = 2 | 比特率设置完成时返回消息。 |
+| AV_INFO_TYPE_EOS = 3 | 播放完成时返回消息。 |
+| AV_INFO_TYPE_STATE_CHANGE = 4 | 状态改变时返回消息。 |
+| AV_INFO_TYPE_POSITION_UPDATE = 5 | 返回当前播放位置。 |
+| AV_INFO_TYPE_MESSAGE = 6 | 视频开始渲染时返回消息。 |
+| AV_INFO_TYPE_VOLUME_CHANGE = 7 | 音量改变时返回消息。 |
+| AV_INFO_TYPE_RESOLUTION_CHANGE = 8 | 首次获取视频大小或视频大小更新时返回消息。 |
+| AV_INFO_TYPE_BUFFERING_UPDATE = 9 | 返回多队列缓冲时间。 |
+| AV_INFO_TYPE_BITRATE_COLLECT = 10 | 上报HLS视频比特率列表消息。 |
+| AV_INFO_TYPE_INTERRUPT_EVENT = 11 | 音频焦点改变时返回消息。 |
+| AV_INFO_TYPE_DURATION_UPDATE = 12 | 返回播放时长。 |
+| AV_INFO_TYPE_IS_LIVE_STREAM = 13 | 播放为直播流时返回消息。 |
+| AV_INFO_TYPE_TRACKCHANGE = 14 | 轨道改变时返回消息。 |
+| AV_INFO_TYPE_TRACK_INFO_UPDATE = 15 | 轨道更新时返回消息。 |
+| AV_INFO_TYPE_SUBTITLE_UPDATE = 16 | 字幕信息更新时返回消息。 |
 | AV_INFO_TYPE_AUDIO_OUTPUT_DEVICE_CHANGE = 17 | 音频输出设备改变时返回消息。<br> key为OH_PLAYER_AUDIO_DEVICE_CHANGE_REASON：取值类型int32_t。系统通过int32_t传递value，应用需通过int32_t获取。 |
 | AV_INFO_TYPE_PLAYBACK_RATE_DONE = 18 | 播放速率成功应用时返回消息。key为OH_PLAYER_PLAYBACK_RATE：取值类型float。系统通过float传递value，应用通过float获取。<br>**起始版本：** 20 |
 | AV_INFO_TYPE_SUPER_RESOLUTION_CHANGED = 19 | 超分辨率变化时返回消息。<br>**起始版本：** 23 |
@@ -298,7 +300,7 @@ typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoTyp
 | -- | -- |
 | OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
 | [AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype) type | 信息类型。具体请参见[AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype)。 |
-| [OH_AVFormat](capi-core-oh-avformat.md)\* infoBody | 指向携带具体消息的指针，仅在该回调方法内有效。 |
+| [OH_AVFormat](../AVCodecKit/capi-core-oh-avformat.md)\* infoBody | 指向携带具体消息的指针，仅在该回调方法内有效。 |
 | void \*userData | 指向应用调用者设置该回调函数时提供的实例的指针。 |
 
 ### OH_AVPlayerOnError()
@@ -323,7 +325,7 @@ typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const
 | -- | -- |
 | OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
 | int32_t errorCode | 错误码。AV_ERR_NO_MEMORY：无内存，取值为1。AV_ERR_OPERATE_NOT_PERMIT：操作不允许，取值为2。AV_ERR_INVALID_VAL：无效值，取值为3。AV_ERR_IO：IO错误，取值为4。AV_ERR_TIMEOUT：超时错误，取值为5。AV_ERR_UNKNOWN：未知错误，取值为6。AV_ERR_SERVICE_DIED：服务死亡，取值为7。AV_ERR_INVALID_STATE：当前状态不支持此操作，取值为8。AV_ERR_UNSUPPORT：未支持的接口，取值为9。AV_ERR_EXTEND_START：扩展错误码初始值，取值为100。 |
-| const char \*errorMsg | Error message. |
+| const char \*errorMsg | 错误消息。 |
 
 ### OH_AVPlayerOnErrorCallback()
 
@@ -343,8 +345,8 @@ typedef void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCod
 | -- | -- |
 | OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
 | int32_t errorCode | 错误码。AV_ERR_NO_MEMORY：无内存，取值为1。AV_ERR_OPERATE_NOT_PERMIT：操作不允许，取值为2。AV_ERR_INVALID_VAL：无效值，取值为3。AV_ERR_IO：IO错误。API version 12-13取值为4；API version 14及以后，对应错误细化为错误码5411001~5411011。AV_ERR_TIMEOUT：超时错误，取值为5。AV_ERR_UNKNOWN：未知错误，取值为6。AV_ERR_SERVICE_DIED：服务死亡，取值为7。AV_ERR_INVALID_STATE：当前状态不支持此操作，取值为8。AV_ERR_UNSUPPORT：未支持的接口，取值为9。AV_ERR_EXTEND_START：扩展错误码初始值，取值为100。 |
-| const char \*errorMsg | Error message, only valid in callback function. |
-| void \*userData | Pointer to user specific data. |
+| const char \*errorMsg | 错误消息，只在回调函数中有效。 |
+| void \*userData | 指向用户特定数据的指针。 |
 
 ### OH_AVPlayerOnAmplitudeUpdateCallback()
 
@@ -362,10 +364,10 @@ typedef void (*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AVPlayer \*player | Pointer to an OH_AVPlayer instance. |
-| double \*amplitudes | The pointer to the maximum audio level values array.Note: the amplitudes array will be released after callback automatically.If necessary, user need copy the data for the further use. |
+| OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
+| double \*amplitudes | 指向最大音频电平值数组的指针。注意：最大音频电平值数组会在回调后自动释放。如有需要，用户需自行拷贝数据以供后续使用。 |
 | uint32_t size | 最大音频电平值数组的大小。 |
-| void \*userData | Pointer to user specific data. |
+| void \*userData | 指向用户特定数据的指针。 |
 
 ### OH_AVPlayerOnSeiMessageReceivedCallback()
 
@@ -383,9 +385,9 @@ typedef void (*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AVPlayer \*player | Pointer to an OH_AVPlayer instance |
-| [OH_AVSeiMessageArray](capi-avplayer-oh-avseimessagearray.md) \*message | SEI message array.Note: the message array will be released after callback automatically.If necessary, user need copy the data for the further use. |
+| OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
+| [OH_AVSeiMessageArray](capi-avplayer-oh-avseimessagearray.md) \*message | SEI消息数组。注意：SEI消息数组会在回调后自动释放。如有需要，用户需自行拷贝数据以供后续使用。 |
 | int32_t playbackPosition | 播放位置。 |
-| void \*userData | Pointer to user specific data |
+| void \*userData | 指向用户特定数据的指针。 |
 
 

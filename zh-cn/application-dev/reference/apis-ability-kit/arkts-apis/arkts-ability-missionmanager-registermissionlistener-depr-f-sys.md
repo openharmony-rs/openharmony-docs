@@ -17,11 +17,9 @@ function registerMissionListener(listener: MissionListener): number
 
 **废弃版本：** 9
 
-**替代接口：** [on](arkts-ability-missionmanager-onmission-f-sys.md)
+**替代接口：** [on](arkts-ability-missionmanager-on-f-sys.md)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
-
-<!--Device-missionManager-function registerMissionListener(listener: MissionListener): number--><!--Device-missionManager-function registerMissionListener(listener: MissionListener): number-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -70,4 +68,3 @@ let listenerId = missionManager.registerMissionListener({
   }
 });
 ```
-

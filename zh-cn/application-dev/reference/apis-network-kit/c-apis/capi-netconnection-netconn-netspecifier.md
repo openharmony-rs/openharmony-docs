@@ -1,7 +1,7 @@
 # NetConn_NetSpecifier
 
 ```c
-typedef struct NetConn_NetSpecifier {...} NetConn_NetSpecifier
+struct NetConn_NetSpecifier {...}
 ```
 
 ## 概述

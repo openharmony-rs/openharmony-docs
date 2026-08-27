@@ -10,15 +10,15 @@
 
 开发者在应用开发调试时，可能需要向应用沙箱下推送一些文件以期望在应用内访问或测试，此时有两种方式：
 
-1. 可以通过DevEco Studio向应用安装路径中放入目标文件，详见[应用安装资源访问](../quick-start/resource-categories-and-access.md#资源访问)。
+1. 可以通过DevEco Studio向应用安装路径中放入目标文件，详见应用安装资源访问。
 
 2. 在具备设备环境时，可以使用另一种更为灵活的方式，通过hdc工具来向设备中应用沙箱路径推送文件。即本文介绍的内容。
 
-但是hdc shell看到的调试进程下的文件路径与应用视角的应用沙箱路径不同，开发者需要先了解[应用沙箱路径和真实物理路径的对应关系](./app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)。
+但是hdc shell看到的调试进程下的文件路径与应用视角的应用沙箱路径不同，开发者需要先了解应用沙箱路径和真实物理路径的对应关系。
 
 ## 开发示例
 
-以应用包com.ohos.example为例，如果是在example的应用沙箱路径“/data/storage/el1/bundle”下读写文件，[应用沙箱路径和真实物理路径的对应关系](./app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)这个文档可知，对应的真实物理路径为“/data/app/el1/bundle/public/&lt;PACKAGENAME&gt;”，即“/data/app/el1/bundle/public/com.ohos.example”。
+以应用包com.ohos.example为例，如果是在example的应用沙箱路径“/data/storage/el1/bundle”下读写文件，应用沙箱路径和真实物理路径的对应关系这个文档可知，对应的真实物理路径为“/data/app/el1/bundle/public/&lt;PACKAGENAME&gt;”，即“/data/app/el1/bundle/public/com.ohos.example”。
 
 推送命令示例如下：
 

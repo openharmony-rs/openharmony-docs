@@ -11,8 +11,6 @@ type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: Cust
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avMusicTemplate-type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: CustomType,    customElement: CustomElement) => void--><!--Device-avMusicTemplate-type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: CustomType,    customElement: CustomElement) => void-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
@@ -22,4 +20,3 @@ type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: Cust
 | actionType | ActionType | 是 | 操作类型 |
 | customType | [CustomType](arkts-avsession-avmusictemplate-customtype-t.md) | 是 | 自定义信息类型 |
 | customElement | [CustomElement](arkts-avsession-avmusictemplate-customelement-i.md) | 是 | 自定义数据 |
-

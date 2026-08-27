@@ -10,7 +10,7 @@
 
 ## 文本显示（Text/Span）常见问题
 
-以下内容介绍了使用[Text/apis-arkui/arkui-ts/ts-basic-components-text.md)和[Span/apis-arkui/arkui-ts/ts-basic-components-span.md)组件进行文本显示时可能遇到的常见问题，包括文本截断、添加标签、显示表情等场景的处理方法。
+以下内容介绍了使用Text和Span组件进行文本显示时可能遇到的常见问题，包括文本截断、添加标签、显示表情等场景的处理方法。
 
 ### Text组件尾部省略号后为什么还有一段空白，没有占满组件宽度
 
@@ -26,7 +26,7 @@
 
 **解决措施**
 
-设置[wordBreak/apis-arkui/arkui-ts/ts-basic-components-text.md#wordbreak11)属性为`WordBreak.BREAK_ALL`，任意2个字符间断行使文本内容尽量占满组件区域。
+设置wordBreak属性为`WordBreak.BREAK_ALL`，任意2个字符间断行使文本内容尽量占满组件区域。
 
 示例代码如下：
   <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakd.ets) -->
@@ -35,7 +35,7 @@
   import { common } from '@kit.AbilityKit';
   @Entry
   @Component
-  export struct WordBreakd {
+  struct WordBreakd {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -70,9 +70,9 @@
 
 **解决措施**
 
-自行测算截断字符，并在行末添加`...展开`或者`...图标`作为组件内容。实现方式请参考[getParagraphs/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)的示例<!--RP1--><!--RP1End-->。
+自行测算截断字符，并在行末添加`...展开`或者`...图标`作为组件内容。实现方式请参考getParagraphs的示例<!--RP1--><!--RP1End-->。
 
-### Text组件如何实现内容超长时自动显示省略样式吗？
+### Text组件如何实现内容超长时自动显示省略样式
 
 **问题现象**
 
@@ -80,7 +80,7 @@
 
 **解决措施**
 
-设置[heightAdaptivePolicy/apis-arkui/arkui-ts/ts-basic-components-text.md#heightadaptivepolicy10)为TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST，该模式会删除超过布局约束的行，从而实现类似设置maxLines的效果。
+设置heightAdaptivePolicy为TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST，该模式会删除超过布局约束的行，从而实现类似设置maxLines的效果。
 
 示例代码如下：
   <!-- @[Height_AdaptivePolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/HeightAdaptivePolicy.ets) --> 
@@ -90,7 +90,7 @@
   
   @Entry
   @Component
-  export struct HeightAdaptivePolicy {
+  struct HeightAdaptivePolicy {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -132,11 +132,11 @@
 
 **问题现象**
 
-如何在文本的前后各添加一个标签，例如“专题”或“Top1”，且这些标签的[背景设置/apis-arkui/arkui-ts/ts-universal-attributes-background.md)、[尺寸设置/apis-arkui/arkui-ts/ts-universal-attributes-size.md)需要能够自定义。
+如何在文本的前后各添加一个标签，例如“专题”或“Top1”，且这些标签的背景设置、尺寸设置需要能够自定义。
 
 **解决措施一**
 
-如果标签和中间的长文本需在同一行显示，开发者可能会考虑使用[Span/apis-arkui/arkui-ts/ts-basic-components-span.md)实现，但是Span不支持设置尺寸。此时，可以在[弹性布局 (Flex)](./arkts-layout-development-flex-layout.md)或者[Row/apis-arkui/arkui-ts/ts-container-row.md)中放置标签和长文本，并为长文本设置[textOverflow/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)属性，以确保文本超长时能够自适应截断，显示在一行之内。
+如果标签和中间的长文本需在同一行显示，开发者可能会考虑使用Span实现，但是Span不支持设置尺寸。此时，可以在弹性布局 (Flex)或者Row中放置标签和长文本，并为长文本设置textOverflow属性，以确保文本超长时能够自适应截断，显示在一行之内。
 
 实现步骤：
 
@@ -144,19 +144,19 @@
 
 2.中间长文本设置textOverflow属性为TextOverflow.Ellipsis，空间不足时截断文本，显示省略号。
 
-实现案例请参考[实现热搜榜](./arkts-common-components-text-display.md#实现热搜榜)，该示例中，文字“1”、“爆”就是“我是热搜词条”的两个标签。这种实现方式写法简便，适合单行文本添加标签的场景。
+实现案例请参考实现热搜榜，该示例中，文字“1”、“爆”就是“我是热搜词条”的两个标签。这种实现方式写法简便，适合单行文本添加标签的场景。
 
 **解决措施二**
 
-如果需在多行文本前后添加标签并且不截断文本，上述方案会导致三个Text中的文本不能对齐，因为多行文本会在Row的宽度内折行。此时，可以在[层叠布局 (Stack)](./arkts-layout-development-stack-layout.md)中放置标签和长文本，给中间多行文本设置首行文本缩进距离[textIndent/apis-arkui/arkui-ts/ts-basic-components-text.md#textindent10)。多行文本后面的标签则需要通过[offset/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)属性调整位置。这种实现方式，可以让三个Text组件中的文字水平对齐。实现步骤如下：
+如果需在多行文本前后添加标签并且不截断文本，上述方案会导致三个Text中的文本不能对齐，因为多行文本会在Row的宽度内折行。此时，可以在层叠布局 (Stack)中放置标签和长文本，给中间多行文本设置首行文本缩进距离textIndent。多行文本后面的标签则需要通过offset属性调整位置。这种实现方式，可以让三个Text组件中的文字水平对齐。实现步骤如下：
 
 实现步骤：
 
 1.将标签和长文本放在Stack中。
 
-2.在组件显示之前的回调[aboutToAppear/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)中，使用[measureTextSize/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretextsize12)计算前标签的宽度，作为中间多行文本的首行缩进距离。
+2.在组件显示之前的回调aboutToAppear中，使用measureTextSize计算前标签的宽度，作为中间多行文本的首行缩进距离。
 
-3.在组件显示之前的回调aboutToAppear中，通过[getParagraphs/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)计算中间多行文本最后一行的宽度、除最后一行文本之外的高度，作为后标签的偏移量offset。
+3.在组件显示之前的回调aboutToAppear中，通过getParagraphs计算中间多行文本最后一行的宽度、除最后一行文本之外的高度，作为后标签的偏移量offset。
 
 4.设置后标签相对于Stack左上角的偏移量。
 
@@ -170,23 +170,21 @@
   
   @Entry
   @Component
-  export struct LengthMetric {
+  struct LengthMetric {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
     // 'Text_Add_Tags_Front_and_Post'资源文件中的value值为'这是一段长文本，超长部分折行，前后添加标签'
     @State message: string = this.manager.getStringByNameSync('Text_Add_Tags_Front_and_Post');
-    // 'Text_Add_Tags_Front'前标签'
+    // 'Text_Add_Tags_Front'资源文件中的value值为'前标签'
     @State frontTag: string = this.manager.getStringByNameSync('Text_Add_Tags_Front');
     // 'Text_Add_Tags_Post'资源文件中的value值为'后标签'
     @State backTag: string = this.manager.getStringByNameSync('Text_Add_Tags_Post');
     @State frontPaddingVp: number = 20;
     @State backPaddingVp: number = 10;
     @State fontTagWidthVp: Length = 0;
-    @State backTagWidthVp: Length = 0;
     @State backOffsetVpX: Length = 0;
     @State backOffsetVpY: Length = 0;
-    @State messageLines: number = 0;
     @State stackWidthVp: number = 300;
   
     // 显示之前，测算前后标签的位置，中间文本的缩进距离
@@ -269,7 +267,7 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
 
 **解决措施**
 
-使用正则表达式解析表情符号，再将表情符号与图片资源建立映射，通过[Span/apis-arkui/arkui-ts/ts-basic-components-span.md)和[ImageSpan/apis-arkui/arkui-ts/ts-basic-components-imagespan.md)同时展示表情和文字。
+使用正则表达式解析表情符号，再将表情符号与图片资源建立映射，通过Span和ImageSpan同时展示表情和文字。
 
   <!-- @[Displayed_Together](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisplayedTogether.ets) -->
   
@@ -278,7 +276,7 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
   import { common } from '@kit.AbilityKit';
   @Entry
   @Component
-  export struct DisplayedTogether {
+  struct DisplayedTogether {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -380,20 +378,22 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
 
 **问题现象**
 
-Text组件中内容过多，超出父组件容器[Column/apis-arkui/arkui-ts/ts-container-column.md)的高度，会导致文本溢出容器边界，如何让文本显示在父组件容器的区域内？
+Text组件中内容过多，超出父组件容器Column的高度，会导致文本溢出容器边界，如何让文本显示在父组件容器的区域内？
 
 **解决措施一**
 
-Text文本是自动折行的，当没有限制Text高度[height/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)时，Text高度在文本的行数增加时自动调整。可以通过设置[maxLines/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines)属性限制文本的最大行数，如果有多余的文本默认会被截断。也可以通过[textOverflow/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)属性来指定截断方式。
+Text文本是自动折行的，当没有限制Text高度height时，Text高度在文本的行数增加时自动调整。可以通过设置maxLines属性限制文本的最大行数，如果有多余的文本默认会被截断。也可以通过textOverflow属性来指定截断方式。
 
 以下示例展示了限制Text组件不超过三行的场景。
 
   <!-- @[Text_Long](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLong.ets) -->
   
   ``` TypeScript
+  import { common } from '@kit.AbilityKit';
+
   @Entry
   @Component
-  export struct TextLong {
+  struct TextLong {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -422,14 +422,16 @@ Text文本是自动折行的，当没有限制Text高度[height/apis-arkui/arkui
 
 **解决措施二**
 
-上述方法会导致部分文本被裁剪掉，如果需要保留全部文本，可以把Text组件放在滚动容器[Scroll/apis-arkui/arkui-ts/ts-container-scroll.md)内，再通过手势滑动来浏览全部文本，具体示例如下：
+上述方法会导致部分文本被裁剪掉，如果需要保留全部文本，可以把Text组件放在滚动容器Scroll内，再通过手势滑动来浏览全部文本，具体示例如下：
 
   <!-- @[Text_Long_Tow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTow.ets) -->
   
   ``` TypeScript
+  import { common } from '@kit.AbilityKit';
+  
   @Entry
   @Component
-  export struct TextLongTow {
+  struct TextLongTow {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -461,68 +463,70 @@ Text文本是自动折行的，当没有限制Text高度[height/apis-arkui/arkui
 
 **问题现象**
 
-在[bindSelectionMenu/apis-arkui/arkui-ts/ts-basic-components-text.md#bindselectionmenu11)自定义选择菜单中，可通过TextResponseType设置文本选择菜单的响应类型。通过[selection/apis-arkui/arkui-ts/ts-basic-components-text.md#selection11)如何触发弹出自定义菜单并设置菜单字体大小。
+在bindSelectionMenu自定义选择菜单中，可通过TextResponseType设置文本选择菜单的响应类型。通过selection如何触发弹出自定义菜单并设置菜单字体大小。
 
 **解决措施**
 
-若希望由selection触发自定义菜单，可将TextResponseType设置为DEFAULT。同时，在[Menu/apis-arkui/arkui-ts/ts-basic-components-menu.md)组件上通过配置font属性，即可自定义菜单的字体大小，灵活适配界面设计需求。
+若希望由selection触发自定义菜单，可将TextResponseType设置为DEFAULT。同时，在Menu组件上通过配置font属性，即可自定义菜单的字体大小，灵活适配界面设计需求。
+  <!-- @[How_To_Set_Custom_Selection_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/faq/HowToSetCustomSelectionMenu.ets) -->
 
-```ts
-// xxx.ets
-@Entry
-@Component
-struct TextExample8 {
-  controller: TextController = new TextController();
-  options: TextOptions = { controller: this.controller };
-  @State selectStart: number = 0;
-  @State selectEnd: number = 0;
+  ``` TypeScript
+  @Entry
+  @Component
+  export struct HowToSetCustomSelectionMenuExample {
+    @State selectStart: number = 0;
+    @State selectEnd: number = 0;
 
-  build() {
-    Column() {
+    build() {
+      NavDestination() {
+        Column() {
+          Column() {
+            // 请将$r('app.string.Set_Custom_Selection_Menu_Example_String')替换为实际资源文件，在本示例中该资源文件的value值为"TextTextTextText"
+            Text($r('app.string.Set_Custom_Selection_Menu_Example_String'))
+              .fontSize(14)
+              .selection(this.selectStart, this.selectEnd)
+              .copyOption(CopyOptions.InApp)
+              .bindSelectionMenu(TextSpanType.TEXT, this.CustomMenu, TextResponseType.DEFAULT, {
+                onDisappear: () => {
+                  this.selectStart = -1;
+                  this.selectEnd = -1;
+                },
+              })
+              .textAlign(TextAlign.Center)
+              .borderWidth(1)
+              .borderColor(Color.Red)
+            Button('Set selection')
+              .onClick(() => {
+                this.selectStart = 0;
+                this.selectEnd = 10;
+              })
+              .fontSize(14)
+              .margin({ top: 20 })
+          }
+          .width('100%')
+          .padding({ top: 300 })
+        }
+        .height('100%')
+      }
+    }
+  
+    @Builder
+    CustomMenu() {
       Column() {
-        Text("TextTextTextText")
-          .fontSize(14)
-          .selection(this.selectStart, this.selectEnd)
-          .copyOption(CopyOptions.InApp)
-          .bindSelectionMenu(TextSpanType.TEXT, this.CustomMenu, TextResponseType.DEFAULT, {
-            onDisappear: () => {
-              this.selectStart = -1;
-              this.selectEnd = -1;
-            },
-          })
-          .textAlign(TextAlign.Center)
-          .borderWidth(1)
-          .borderColor(Color.Red)
-        Button("Set selection")
-          .onClick(() => {
-            this.selectStart = 0;
-            this.selectEnd = 10;
-          })
-          .fontSize(14)
-          .margin({ top: 20 })
+        Menu() {
+          // 请将$r('app.string.Menu_Item_String')替换为实际资源文件，在本示例中该资源文件的value值为"Item Content"
+          MenuItem({ content: $r('app.string.Menu_Item_String') })
+          MenuItem({ content: $r('app.string.Menu_Item_String') })
+          MenuItem({ content: $r('app.string.Menu_Item_String') })
+        }
+        .font({ size: 14 })
+        .radius($r('sys.float.ohos_id_corner_radius_card'))
+        .clip(true)
+        .backgroundColor('#F0F0F0')
       }
-      .width('100%')
-      .padding({ top: 300 })
-    }
-    .height('100%')
-  }
-
-  @Builder
-  CustomMenu() {
-    Column() {
-      Menu() {
-        MenuItem({ content: "Item Content" })
-        MenuItem({ content: "Item Content" })
-        MenuItem({ content: "Item Content" })
-      }
-      .font({ size: 14 })
-      .radius($r('sys.float.ohos_id_corner_radius_card'))
-      .clip(true)
-      .backgroundColor('#F0F0F0')
     }
   }
-}
-```
+  ```
 
 ![](figures/selectionAndBindMenuAndFont.gif)
 
@@ -530,7 +534,7 @@ struct TextExample8 {
 
 **问题现象**
 
-配置[CopyOptions/apis-arkui/arkui-ts/ts-appendix-enums.md#copyoptions9)将文本设置为可选择，此时长按文本会选择文字内容并弹出系统菜单，如何使长按手势不生效。
+配置CopyOptions将文本设置为可选择，此时长按文本会选择文字内容并弹出系统菜单，如何使长按手势不生效。
 
 **解决措施**
 
@@ -564,9 +568,9 @@ struct TextExample8 {
 
 ## 文本输入（TextInput/TextArea/Search）常见问题
 
-以下内容介绍了使用[TextInput/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea/apis-arkui/arkui-ts/ts-basic-components-textarea.md)和[Search/apis-arkui/arkui-ts/ts-basic-components-search.md)组件输入文本时可能遇到的问题。
+以下内容介绍了使用TextInput、TextArea和Search组件输入文本时可能遇到的问题。
 
-### TextInput被遮挡时光标仍然不消失
+### TextInput被遮挡时操作手柄仍然不消失
 
 **问题现象**
 
@@ -576,14 +580,14 @@ struct TextExample8 {
 
 当TextInput组件处于选中状态并显示操作手柄时，选中区域和操作手柄可能不在同一图层渲染。其中，选中区域与输入框在同一图层，而操作手柄则在更高的图层上。因此，当输入框被其他元素遮挡时，选中区域也会被遮挡，但操作手柄仍然可见。
 
-TextInput被遮挡时，如果通过[TextInputController/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)设置焦点和选中区域会出现上述现象。涉及的选中区域设置接口包括[selectAll/apis-arkui/arkui-ts/ts-basic-components-textinput.md#selectall11)和[setTextSelection/apis-arkui/arkui-ts/ts-basic-components-textinput.md#settextselection10)。建议检查应用代码中以下接口的调用时机，在输入框被遮挡后避免设置选中区域。
+TextInput被遮挡时，如果通过TextInputController设置焦点和选中区域会出现上述现象。涉及的选中区域设置接口包括selectAll和setTextSelection。建议检查应用代码中以下接口的调用时机，在输入框被遮挡后避免设置选中区域。
 
 | 组件      | 接口              |
 |-----------|-------------------|
-| Search    | [setTextSelection/apis-arkui/arkui-ts/ts-basic-components-search.md#settextselection12)  |
-| TextArea  | [setTextSelection/apis-arkui/arkui-ts/ts-basic-components-textarea.md#settextselection10)  |
-| TextInput | [selectAll/apis-arkui/arkui-ts/ts-basic-components-textinput.md#selectall11)         |
-| TextInput | [setTextSelection/apis-arkui/arkui-ts/ts-basic-components-textinput.md#settextselection10)  |
+| Search    | setTextSelection  |
+| TextArea  | setTextSelection  |
+| TextInput | selectAll         |
+| TextInput | setTextSelection  |
 
 以下示例展示了一个典型的问题场景，存在一个内容为“TextInput被遮挡不显示”的TextInput组件被隐藏，但点击按钮后，图片上会出现TextInput操作手柄。此时，开发者需要检查应用代码，确保在输入框被遮挡时没有设置选中区域。移除设置输入框选中区域的代码逻辑，即可解决操作手柄出现的问题。
 
@@ -631,3 +635,72 @@ export struct CursorPersistsWhenTextInputIsCoveredExample {
 ```
 
 ![textInput_faq_show_handle](figures/textInput_faq_show_handle.gif)
+
+### 如何设置TextArea的文本最少展示行数并自适应高度
+
+**问题现象**
+
+设置TextArea的初始高度来控制最少文本展示行数，当输入文本超过初始高度时，TextArea的高度自适应。
+
+**解决措施**
+
+设置minLines（从API version 20开始），或者设置height为"auto"，并使用constraintSize自行计算高度。
+
+<!-- @[normal_question_text_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/NormalQuestion.ets) -->
+
+``` TypeScript
+import { MeasureUtils } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextExample {
+  private textAreaPadding = 12;
+  private setMaxLines = 3;
+  private resourceManager = this.getUIContext().getHostContext()?.resourceManager;
+  // 请在resources\base\element\string.json文件中配置name为'NormalQuestion_change'，value为非空字符串的资源
+  private changeText = this.resourceManager?.getStringByNameSync('NormalQuestion_change') as string;
+  @State fullText: string = this.changeText;
+  @State originText: string = this.changeText;
+  @State uiContext: UIContext = this.getUIContext();
+  @State uiContextMeasure: MeasureUtils = this.uiContext.getMeasureUtils();
+  textSize: SizeOptions = this.uiContextMeasure.measureTextSize({
+    textContent: this.originText,
+    fontSize: 18
+  });
+
+  build() {
+    Column() {
+      TextArea({ text: 'minLines: ' + this.fullText })
+        .fontSize(18)
+        .width(300)
+        .minLines(3)
+
+      Blank(50)
+
+      TextArea({ text: 'constraintSize: ' + this.fullText })
+        .fontSize(18)
+        .padding({ top: this.textAreaPadding, bottom: this.textAreaPadding })
+        .width(300)
+        .height('auto')
+        .constraintSize({
+          // 结合padding计算，设置至少显示this.setMaxLines行文本
+          // 若涉及适老化字号缩放，需要监听并调整高度
+          minHeight: this.textAreaPadding * 2 +
+            this.setMaxLines * this.getUIContext().px2vp(Number(this.textSize.height))
+        })
+
+      Blank(50)
+      // 请将$r('app.string.NormalQuestion_AddInput')替换为实际资源文件，在本示例中该资源文件的value值为"增加输入"
+      Button($r('app.string.NormalQuestion_AddInput'))
+        .onClick(() => {
+          this.fullText += this.changeText;
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .padding({ top: 30 })
+  }
+}
+```
+
+![textinputkeyboardavoid](figures/textareaHeight.gif)

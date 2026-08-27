@@ -12,13 +12,13 @@ import { startupManager } from '@kit.AbilityKit';
 function removeStartupTaskResult(startupTask: string): void
 ```
 
-删除指定启动任务或so预加载任务的初始化结果。 - 输入为启动任务名时，删除指定启动任务的初始化结果。 - 输入为so文件时，将该so文件置为未加载，缓存中已加载的so文件不会被移除。
+删除指定启动任务或so预加载任务的初始化结果。  
+- 输入为启动任务名时，删除指定启动任务的初始化结果。  
+- 输入为so文件时，将该so文件置为未加载，缓存中已加载的so文件不会被移除。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-startupManager-function removeStartupTaskResult(startupTask: string): void--><!--Device-startupManager-function removeStartupTaskResult(startupTask: string): void-End-->
 
 **系统能力：** SystemCapability.Ability.AppStartup
 
@@ -26,7 +26,7 @@ function removeStartupTaskResult(startupTask: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| startupTask | string | 是 | 启动任务[StartupTask](../../apis-na/arkts-apis/arkts-na-app-appstartup-startuptask-startuptask-c.md)的名称或预加载so名称。 |
+| startupTask | string | 是 | 启动任务[StartupTask](arkts-ability-app-appstartup-startuptask-startuptask-c.md)的名称或预加载so名称。 |
 
 **错误码：**
 
@@ -60,12 +60,9 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     startupManager.removeStartupTaskResult('StartupTask_001');
     startupManager.removeStartupTaskResult('libentry_001');
-
     windowStage.loadContent('pages/Index', (err, data) => {
-      if (err) {
-        let error = err as BusinessError;
-        hilog.error(0x0000, 'testTag',
-          `Failed to load the content. Cause: error code ${error.code}, error msg ${error.message}`);
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', `Failed to load the content. Cause error code: ${err.code}, error msg: ${err.message}`);
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
@@ -73,4 +70,3 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-

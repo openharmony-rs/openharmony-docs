@@ -6,8 +6,6 @@
 
 **起始版本：** 18
 
-<!--Device-unnamed-declare class PinchRecognizer--><!--Device-unnamed-declare class PinchRecognizer-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,13 +27,10 @@ getDistance(): number
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PinchRecognizer-getDistance(): number--><!--Device-PinchRecognizer-getDistance(): number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 预设捏合手势识别器最小识别距离阈值，单位为vp。<br/>取值范围：[0, +∞) |
-
+| number | 预设捏合手势识别器最小识别距离阈值，单位为vp。 |

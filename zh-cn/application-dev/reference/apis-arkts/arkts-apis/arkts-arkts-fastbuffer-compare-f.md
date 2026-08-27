@@ -18,8 +18,6 @@ function compare(buf1: FastBuffer | Uint8Array, buf2: FastBuffer | Uint8Array): 
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-fastbuffer-function compare(buf1: FastBuffer | Uint8Array, buf2: FastBuffer | Uint8Array): -1 | 0 | 1--><!--Device-fastbuffer-function compare(buf1: FastBuffer | Uint8Array, buf2: FastBuffer | Uint8Array): -1 | 0 | 1-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -33,7 +31,7 @@ function compare(buf1: FastBuffer | Uint8Array, buf2: FastBuffer | Uint8Array): 
 
 | 类型 | 说明 |
 | --- | --- |
-| -1 | 如果buf1与buf2相同，则返回0。<br/>如果排序时buf1位于buf2之后，则返回1。<br/>如果排序时buf1位于buf2之前，则返回-1。 |
+| -1 \| 0 \| 1 | 如果buf1与buf2相同，则返回0。 |
 
 **错误码：**
 
@@ -53,4 +51,3 @@ let compareResult = fastbuffer.compare(buf1, buf2);
 console.info(Number(compareResult).toString());
 // 输出结果：1
 ```
-

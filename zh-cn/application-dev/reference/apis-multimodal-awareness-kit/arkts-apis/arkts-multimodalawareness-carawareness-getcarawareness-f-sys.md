@@ -18,8 +18,6 @@ function getCarAwareness(capability: Capability, options?: CarAwarenessOptions):
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-carAwareness-function getCarAwareness(capability: Capability, options?: CarAwarenessOptions): Promise<CarAwarenessInfo[]>--><!--Device-carAwareness-function getCarAwareness(capability: Capability, options?: CarAwarenessOptions): Promise<CarAwarenessInfo[]>-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
 **系统接口：** 此接口为系统接口。
@@ -41,8 +39,7 @@ function getCarAwareness(capability: Capability, options?: CarAwarenessOptions):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Car awareness not supported. Function can not work correctly due to limited device capabilities. |
-| [34000002](../../apis-multimodalawareness-kit/errorcode-carAwareness.md#34000002-指定能力不支持) | Specific capability not supported. |
-| [34000001](../../apis-multimodalawareness-kit/errorcode-carAwareness.md#34000001-服务异常) | Service exception. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission check failed. A non-system application uses the system capability. |
-
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Car awareness not supported. Function can not work correctly due to limited device capabilities. |
+| [34000001](../errorcode-carAwareness.md#34000001-服务异常) | Service exception. |
+| [34000002](../errorcode-carAwareness.md#34000002-指定能力不支持) | Specific capability not supported. |

@@ -4,14 +4,11 @@ MediaSourceInfo 是表示媒体源信息的数据类。在 Web 媒体播放场�
 
 **起始版本：** 12
 
-<!--Device-webview-class MediaSourceInfo--><!--Device-webview-class MediaSourceInfo-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { webview } from '@kit.ArkWeb';
 ```
 
 ## format
@@ -27,8 +24,6 @@ format: string
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MediaSourceInfo-format: string--><!--Device-MediaSourceInfo-format: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -46,8 +41,6 @@ source: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MediaSourceInfo-source: string--><!--Device-MediaSourceInfo-source: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## type
@@ -62,7 +55,4 @@ type: SourceType
 
 **起始版本：** 12
 
-<!--Device-MediaSourceInfo-type: SourceType--><!--Device-MediaSourceInfo-type: SourceType-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

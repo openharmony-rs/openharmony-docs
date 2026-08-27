@@ -16,21 +16,21 @@
 
 ## 填充效果
 
-可以通过画刷设置基础的填充颜色，还可以通过画刷使用混合模式、着色器效果、滤波器效果等实现更多复杂绘制效果，具体可见[复杂绘制效果](complex-drawing-effect-c.md)。
+可以通过画刷设置基础的填充颜色，还可以通过画刷使用混合模式、着色器效果、滤波器效果等实现更多复杂绘制效果，具体可见复杂绘制效果。
 
 
 ### 接口说明
 
-使用画刷（Brush）设置绘制效果的常用接口如下表所示，详细的使用和参数请见[drawing_brush/apis-arkgraphics2d/capi-drawing-brush-h.md)。
+使用画刷（Brush）设置绘制效果的常用接口如下表所示，详细的使用和参数请见drawing_brush和drawing_canvas。
 
 | 接口 | 描述 |
 | -------- | -------- |
-| OH_Drawing_Brush\* OH_Drawing_BrushCreate (void) | 用于创建一个画刷对象。 |
-| void OH_Drawing_CanvasAttachBrush (OH_Drawing_Canvas\*, const OH_Drawing_Brush\*) | 用于设置画刷给画布，画布将使用设置的画刷样式和颜色填充绘制的图形形状。 |
-| void OH_Drawing_BrushSetColor (OH_Drawing_Brush\* , uint32_t color) | 用于设置画刷的颜色属性，颜色属性描述了画刷填充图形时使用的颜色，用一个32位（ARGB）的变量表示。 |
-| void OH_Drawing_BrushSetAntiAlias (OH_Drawing_Brush\* , bool) | 用于设置画刷的抗锯齿属性，设置为true则画刷在绘制图形时会对图形的边缘像素进行半透明的模糊处理，以使图形边缘更加平滑。 |
-| void OH_Drawing_CanvasDetachBrush (OH_Drawing_Canvas\*) | 用于去除画布中的画刷，执行后画布将不使用此前设置的画刷，恢复到默认的填充效果。 |
-| void OH_Drawing_BrushDestroy (OH_Drawing_Brush\*) | 用于销毁画刷对象并回收该对象占有的内存。 |
+| OH_Drawing_Brush\* OH_Drawing_BrushCreate(void) | 用于创建一个画刷对象。 |
+| void OH_Drawing_CanvasAttachBrush(OH_Drawing_Canvas\* canvas, const OH_Drawing_Brush\* brush) | 用于设置画刷给画布，画布将使用设置的画刷样式和颜色填充绘制的图形形状。 |
+| void OH_Drawing_BrushSetColor(OH_Drawing_Brush\* brush, uint32_t color) | 用于设置画刷的颜色属性，颜色属性描述了画刷填充图形时使用的颜色，用一个32位（ARGB）的变量表示。 |
+| void OH_Drawing_BrushSetAntiAlias(OH_Drawing_Brush\* brush, bool antiAlias) | 用于设置画刷的抗锯齿属性，设置为true则画刷在绘制图形时会对图形的边缘像素进行半透明的模糊处理，以使图形边缘更加平滑。 |
+| void OH_Drawing_CanvasDetachBrush(OH_Drawing_Canvas\* canvas) | 用于去除画布中的画刷，执行后画布将不使用此前设置的画刷，恢复到默认的填充效果。 |
+| void OH_Drawing_BrushDestroy(OH_Drawing_Brush\* brush) | 用于销毁画刷对象并回收该对象占用的内存。 |
 
 
 ### 开发步骤
@@ -67,7 +67,7 @@
       OH_Drawing_BrushSetAntiAlias(brush, true);
       ```
 
-3. 使用OH_Drawing_CanvasAttachBrush()接口给Canvas画布设置画刷。接口接受两个参数，一个是画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)；另一个是要设置的画刷对象。画布将会使用设置的画刷样式和颜色等填充图形。
+3. 使用OH_Drawing_CanvasAttachBrush()接口给Canvas画布设置画刷。接口接受两个参数，一个是画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见画布的获取与绘制结果的显示（C/C++）；另一个是要设置的画刷对象。画布将会使用设置的画刷样式和颜色等填充图形。
 
    <!-- @[ndk_graphics_draw_canvas_attach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
@@ -76,7 +76,7 @@
    OH_Drawing_CanvasAttachBrush(canvas, brush);
    ```
 
-4. 按需绘制图元，具体可见[图元绘制](primitive-drawing-overview.md)一节。
+4. 按需绘制图元，具体可见图元绘制一节。
 
 5. 当不需要填充效果时，可以使用OH_Drawing_CanvasDetachBrush()去除。入参为画布对象Canvas。
 
@@ -99,24 +99,24 @@
 
 ## 描边效果
 
-可以通过画笔设置基础的描边颜色，还可以通过画笔使用混合模式、路径效果、着色器效果、滤波器效果等实现更多复杂绘制效果，具体可见[复杂绘制效果](complex-drawing-effect-c.md)。
+可以通过画笔设置基础的描边颜色，还可以通过画笔使用混合模式、路径效果、着色器效果、滤波器效果等实现更多复杂绘制效果，具体可见复杂绘制效果。
 
 
 ### 接口说明
 
-使用画笔（Pen）设置绘制效果的常用接口如下表所示，详细的使用和参数请见[drawing_pen/apis-arkgraphics2d/capi-drawing-pen-h.md)。
+使用画笔（Pen）设置绘制效果的常用接口如下表所示，详细的使用和参数请见drawing_pen和drawing_canvas。
 
 | 接口 | 描述 |
 | -------- | -------- |
-| OH_Drawing_Pen\* OH_Drawing_PenCreate (void) | 用于创建一个画笔对象。 |
-| void OH_Drawing_CanvasAttachPen (OH_Drawing_Canvas\* , const OH_Drawing_Pen\* ) | 用于设置画笔给画布，画布将会使用设置画笔的样式和颜色去绘制图形形状的轮廓。 |
-| void OH_Drawing_PenSetColor (OH_Drawing_Pen\* , uint32_t color) | 用于设置画笔的颜色属性，颜色属性描述了画笔绘制图形轮廓时使用的颜色，用一个32位（ARGB）的变量表示。 |
-| void OH_Drawing_PenSetWidth (OH_Drawing_Pen\* , float width) | 用于设置画笔的线宽。0线宽被视作特殊的极细线宽，在绘制时始终会被绘制为1像素，不随画布的缩放而改变；负数线宽在实际绘制时会被视作0线宽。 |
-| void OH_Drawing_PenSetAntiAlias (OH_Drawing_Pen\* , bool ) | 用于设置画笔的抗锯齿属性，设置为true则画笔在绘制图形时会对图形的边缘像素进行半透明的模糊处理。 |
-| void OH_Drawing_PenSetCap (OH_Drawing_Pen\* , OH_Drawing_PenLineCapStyle) | 用于设置画笔线帽样式。 |
-| void OH_Drawing_PenSetJoin (OH_Drawing_Pen\* , OH_Drawing_PenLineJoinStyle) | 用于设置画笔绘制转角的样式。 |
-| void OH_Drawing_CanvasDetachPen (OH_Drawing_Canvas\*) | 用于去除画布中的画笔，执行后画布将不去绘制图形形状的轮廓，恢复到默认的填充效果。 |
-| void OH_Drawing_PenDestroy (OH_Drawing_Pen\*) | 用于销毁画笔对象并回收该对象占有的内存。 |
+| OH_Drawing_Pen\* OH_Drawing_PenCreate(void) | 用于创建一个画笔对象。 |
+| void OH_Drawing_CanvasAttachPen(OH_Drawing_Canvas\* canvas, const OH_Drawing_Pen\* pen) | 用于设置画笔给画布，画布将会使用设置画笔的样式和颜色去绘制图形形状的轮廓。 |
+| void OH_Drawing_PenSetColor(OH_Drawing_Pen\* pen, uint32_t color) | 用于设置画笔的颜色属性，颜色属性描述了画笔绘制图形轮廓时使用的颜色，用一个32位（ARGB）的变量表示。 |
+| void OH_Drawing_PenSetWidth(OH_Drawing_Pen\* pen, float width) | 用于设置画笔的线宽。0线宽被视作特殊的极细线宽，在绘制时始终会被绘制为1像素，不随画布的缩放而改变；负数线宽在实际绘制时会被视作0线宽。 |
+| void OH_Drawing_PenSetAntiAlias(OH_Drawing_Pen\* pen, bool antiAlias) | 用于设置画笔的抗锯齿属性，设置为true则画笔在绘制图形时会对图形的边缘像素进行半透明的模糊处理。 |
+| void OH_Drawing_PenSetCap(OH_Drawing_Pen\* pen, OH_Drawing_PenLineCapStyle capStyle) | 用于设置画笔线帽样式。 |
+| void OH_Drawing_PenSetJoin(OH_Drawing_Pen\* pen, OH_Drawing_PenLineJoinStyle joinStyle) | 用于设置画笔绘制转角的样式。 |
+| void OH_Drawing_CanvasDetachPen(OH_Drawing_Canvas\* canvas) | 用于去除画布中的画笔，执行后画布将不去绘制图形形状的轮廓，恢复到默认的填充效果。 |
+| void OH_Drawing_PenDestroy(OH_Drawing_Pen\* pen) | 用于销毁画笔对象并回收该对象占用的内存。 |
 
 
 ### 开发步骤
@@ -194,11 +194,11 @@
       OH_Drawing_PenLineJoinStyle转角样式可选分类对应如下：
       | 转角样式 | 说明 | 示意图 |
       | -------- | -------- | -------- |
-      | LINE_MITER_JOIN | 转角类型为尖角 | ![zh-cn_image_0000002194025261](figures/zh-cn_image_0000002194025261.png) |
-      | LINE_ROUND_JOIN | 转角类型为圆头 | ![zh-cn_image_0000002194110901](figures/zh-cn_image_0000002194110901.png) |
-      | LINE_BEVEL_JOIN | 转角类型为平头 | ![zh-cn_image_0000002158744158](figures/zh-cn_image_0000002158744158.png) |
+      | LINE_MITER_JOIN | 转角类型为尖角 | ![LINE-MITER-JOIN](figures/LINE-MITER-JOIN.png) |
+      | LINE_ROUND_JOIN | 转角类型为圆头 | ![LINE-ROUND-JOIN](figures/LINE-ROUND-JOIN.png) |
+      | LINE_BEVEL_JOIN | 转角类型为平头 | ![LINE-BEVEL-JOIN](figures/LINE-BEVEL-JOIN.png) |
 
-3. 使用OH_Drawing_CanvasAttachPen()接口给Canvas画布设置画笔。接口接受两个参数，一个是画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)；另一个是要设置的画笔对象。画布将会使用设置的画笔样式和颜色等绘制图形轮廓。
+3. 使用OH_Drawing_CanvasAttachPen()接口给Canvas画布设置画笔。接口接受两个参数，一个是画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见画布的获取与绘制结果的显示（C/C++）；另一个是要设置的画笔对象。画布将会使用设置的画笔样式和颜色等绘制图形轮廓。
 
    <!-- @[ndk_graphics_draw_canvas_attach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
@@ -207,9 +207,9 @@
    OH_Drawing_CanvasAttachPen(canvas, pen);
    ```
 
-4. 按需绘制图元，具体可见[图元绘制](primitive-drawing-overview.md)一节。
+4. 按需绘制图元，具体可见图元绘制一节。
 
-5. 当不需要描边效果时，可以使用OH_Drawing_CanvasDetachPen()去除。入参为画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)。
+5. 当不需要描边效果时，可以使用OH_Drawing_CanvasDetachPen()去除。入参为画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见画布的获取与绘制结果的显示（C/C++）。
 
    <!-- @[ndk_graphics_draw_canvas_detach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    

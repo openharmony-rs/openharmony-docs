@@ -14,11 +14,9 @@ function startPrintJob(jobInfo: PrintJob, callback: AsyncCallback<void>): void
 
 开始打印任务，使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
-
-<!--Device-print-function startPrintJob(jobInfo: PrintJob, callback: AsyncCallback<void>): void--><!--Device-print-function startPrintJob(jobInfo: PrintJob, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -28,25 +26,25 @@ function startPrintJob(jobInfo: PrintJob, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i-sys.md) | 是 | 打印任务信息。 |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步开始打印任务之后的回调。 |
+| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | 是 | 打印任务信息。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步开始打印任务之后的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let jobInfo : print.PrintJob = {
-    fdList : [44,45],
+    fdList : [44, 45], // fdList中的fd可通过fs.open等文件操作获取文件描述符
     jobId : 'jobId_12',
     printerId : 'printerId_32',
     jobState : print.PrintJobState.PRINT_JOB_COMPLETED,
@@ -62,13 +60,13 @@ let jobInfo : print.PrintJob = {
     preview : undefined,
     options : undefined
 };
-print.startPrintJob(jobInfo, (err: BusinessError) => {
-    if (err) {
-        console.error('failed to start Print Job because : ' + JSON.stringify(err));
+print.startPrintJob(jobInfo, (error: BusinessError) => {
+    if (error) {
+        console.error(`Failed to start print job. Code: ${error.code}, message: ${error.message}`);
     } else {
         console.info('start Print Job success');
     }
-})
+});
 ```
 
 
@@ -80,11 +78,9 @@ function startPrintJob(jobInfo: PrintJob): Promise<void>
 
 开始打印任务，使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
-
-<!--Device-print-function startPrintJob(jobInfo: PrintJob): Promise<void>--><!--Device-print-function startPrintJob(jobInfo: PrintJob): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -94,30 +90,30 @@ function startPrintJob(jobInfo: PrintJob): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i-sys.md) | 是 | 打印任务信息。 |
+| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | 是 | 打印任务信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let jobInfo : print.PrintJob = {
-    fdList : [44,45],
+    fdList : [44, 45], // fdList中的fd可通过fs.open等文件操作获取文件描述符
     jobId : 'jobId_12',
     printerId : 'printerId_32',
     jobState : print.PrintJobState.PRINT_JOB_COMPLETED,
@@ -136,7 +132,6 @@ let jobInfo : print.PrintJob = {
 print.startPrintJob(jobInfo).then(() => {
     console.info('start Print success');
 }).catch((error: BusinessError) => {
-    console.error('failed to start Print because : ' + JSON.stringify(error));
-})
+    console.error(`Failed to start print job. Code: ${error.code}, message: ${error.message}`);
+});
 ```
-

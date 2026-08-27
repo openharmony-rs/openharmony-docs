@@ -1,10 +1,10 @@
 # 监听设备上下线（C/C++）
 <!--Kit: Game Controller Kit-->
 <!--Subsystem: Game-->
-<!--Owner: @zhaoshuhao123-->
+<!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
-<!--Tester: @csp1992-->
-<!--Adviser: @luwy2025-->
+<!--Tester: @fei_0805-->
+<!--Adviser: @yuwenliang0514-->
 
 ## 功能介绍
 
@@ -34,7 +34,7 @@ Game Controller Kit提供设备上下线事件监听和查询在线设备信息�
 
 ## 接口说明
 
-接口详细介绍请参考[API参考/apis-game-controller-kit/capi-game-controller.md)。
+接口详细介绍请参考GameController。
 
 | 接口名 | 描述 | 
 | -------- | -------- |

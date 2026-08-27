@@ -1,10 +1,8 @@
-# MediaKeyStatus(Defines the DRM capability.)
+# MediaKeyStatus
 
 媒体密钥状态。
 
-**起始版本：** 23
-
-<!--Device-drm-interface MediaKeyStatus--><!--Device-drm-interface MediaKeyStatus-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -24,11 +22,9 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MediaKeyStatus-name: string--><!--Device-MediaKeyStatus-name: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -42,11 +38,8 @@ value: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MediaKeyStatus-value: string--><!--Device-MediaKeyStatus-value: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Drm.Core
-

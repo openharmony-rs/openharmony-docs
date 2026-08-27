@@ -1,10 +1,8 @@
 # EffectParameters
 
-特效参数配置，用于指定创建特效时所需的特效ID，作为createEffect接口的入参来创建特效对象。
+特效参数配置，用于指定创建特效时所需的特效ID，作为createEffect接口的入参来创建特效对象。@interface EffectParameters
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface EffectParameters--><!--Device-unnamed-export interface EffectParameters-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -18,9 +16,6 @@ effectId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-EffectParameters-effectId: string--><!--Device-EffectParameters-effectId: string-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

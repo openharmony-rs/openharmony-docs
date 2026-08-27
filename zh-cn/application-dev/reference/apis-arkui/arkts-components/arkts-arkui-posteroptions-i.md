@@ -4,8 +4,6 @@
 
 **起始版本：** 18
 
-<!--Device-unnamed-declare interface PosterOptions--><!--Device-unnamed-declare interface PosterOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,9 +17,9 @@
 contentTransitionEffect?: ContentTransitionEffect
 ```
 
-当前视频的预览图内容变化时的转场动效。配置showFirstFrame为true（即配置开启首帧送显时），或未配置有效的 [VideoOptions对象](../../../reference/apis-arkui/arkui-ts/ts-media-components-video.md#videooptions对象说明)的previewUri 时，该字段不生效。 默认值：ContentTransitionEffect.IDENTITY 设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。
+当前视频的预览图内容变化时的转场动效。配置showFirstFrame为true（即配置开启首帧送显时），或未配置有效的 [VideoOptions](arkts-arkui-videooptions-i.md)的previewUri 时，该字段不生效。默认值：ContentTransitionEffect.IDENTITY设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。
 
-**类型：** ContentTransitionEffect
+**类型：** [ContentTransitionEffect](arkts-arkui-contenttransitioneffect-c.md)
 
 **默认值：** ContentTransitionEffect.IDENTITY
 
@@ -31,8 +29,6 @@ contentTransitionEffect?: ContentTransitionEffect
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PosterOptions-contentTransitionEffect?: ContentTransitionEffect--><!--Device-PosterOptions-contentTransitionEffect?: ContentTransitionEffect-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## showFirstFrame
@@ -41,7 +37,7 @@ contentTransitionEffect?: ContentTransitionEffect
 showFirstFrame?: boolean
 ```
 
-当前视频是否配置首帧送显，当开启首帧送显时， [VideoOptions对象](../../../reference/apis-arkui/arkui-ts/ts-media-components-video.md#videooptions对象说明)中的previewUri 字段不生效。 true：开启首帧送显；false：关闭首帧送显。 默认值：false
+当前视频是否配置首帧送显，当开启首帧送显时， [VideoOptions](arkts-arkui-videooptions-i.md)中的previewUri 字段不生效。true：开启首帧送显；false：关闭首帧送显。默认值：false
 
 **类型：** boolean
 
@@ -53,7 +49,4 @@ showFirstFrame?: boolean
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PosterOptions-showFirstFrame?: boolean--><!--Device-PosterOptions-showFirstFrame?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

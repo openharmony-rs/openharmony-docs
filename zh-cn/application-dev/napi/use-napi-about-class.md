@@ -1,10 +1,10 @@
 # 使用Node-API进行class相关开发
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -20,7 +20,7 @@
 
 ## 场景和功能介绍
 
-以下Node-API接口主要用于处理class。他们的使用场景如下：
+以下Node-API接口主要用于处理class。它们的使用场景如下：
 | 接口 | 描述 |
 | -------- | -------- |
 | napi_new_instance | 需要通过给定的构造函数构建一个实例时，可以使用这个函数。 |
@@ -32,7 +32,7 @@
 
 ## 使用示例
 
-Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程](use-napi-process.md)，本文仅对接口对应C++及ArkTS相关代码进行展示。
+Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程，本文仅对接口对应C++及ArkTS相关代码进行展示。
 
 ### napi_new_instance
 
@@ -99,7 +99,7 @@ hilog.info(0x0000, 'Node-API', 'napi_new_instance %{public}s', JSON.stringify(ob
 
 示例代码可以参考链接：
 
-[Native与ArkTS对象绑定](use-napi-object-wrap.md)
+Native与ArkTS对象绑定
 
 ### napi_define_class
 
@@ -107,7 +107,7 @@ hilog.info(0x0000, 'Node-API', 'napi_new_instance %{public}s', JSON.stringify(ob
 
 示例代码可以参考链接：
 
-[Native与ArkTS对象绑定](use-napi-object-wrap.md)
+Native与ArkTS对象绑定
 
 ### napi_wrap
 
@@ -132,6 +132,7 @@ hilog.info(0x0000, 'Node-API', 'napi_new_instance %{public}s', JSON.stringify(ob
 > **说明：**
 >
 > 参数js_object不为object类型或function类型时返回napi_object_expected。
+> 如果封装中关联有finalize回调，本接口将在移除封装前调用它。
 
 cpp部分代码
 

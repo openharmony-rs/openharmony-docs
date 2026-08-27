@@ -2,9 +2,7 @@
 
 所有短时任务信息。
 
-**起始版本：** 23
-
-<!--Device-backgroundTaskManager-interface TransientTaskInfo--><!--Device-backgroundTaskManager-interface TransientTaskInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
@@ -17,16 +15,14 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ## remainingQuota
 
 ```TypeScript
-remainingQuota: int
+remainingQuota: number
 ```
 
 应用当日所剩余总配额，单位：ms。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-TransientTaskInfo-remainingQuota: int--><!--Device-TransientTaskInfo-remainingQuota: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
@@ -40,9 +36,6 @@ transientTasks: DelaySuspendInfo[]
 
 **类型：** DelaySuspendInfo[]
 
-**起始版本：** 23
-
-<!--Device-TransientTaskInfo-transientTasks: DelaySuspendInfo[]--><!--Device-TransientTaskInfo-transientTasks: DelaySuspendInfo[]-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
-

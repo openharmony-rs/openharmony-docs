@@ -28,15 +28,15 @@
 
 ## 接口说明
 
-文本测量中常用接口如下表所示，详细接口说明参考[drawing_text_typography.h/apis-arkgraphics2d/capi-drawing-text-typography-h.md)。
+文本测量中常用接口如下表所示，详细接口说明参考drawing_text_typography.h。
 
 | 接口名 | 描述 | 
 | -------- | -------- |
-| double OH_Drawing_TypographyGetLongestLine(OH_Drawing_Typography\*) | 获取最长行的宽度，建议实际使用时将返回值向上取整。 | 
-| double OH_Drawing_TypographyGetLongestLineWithIndent(OH_Drawing_Typography\*) | 获取最长行的宽度（该宽度包含当前行缩进的宽度），建议实际使用时将返回值向上取整。 | 
-| size_t OH_Drawing_TypographyGetLineCount (OH_Drawing_Typography\* ) | 获取文本行数。 | 
-| OH_Drawing_LineMetrics\* OH_Drawing_TypographyGetLineMetrics (OH_Drawing_Typography\* ) | 获取段落行的度量信息。包含行的高度、宽度、起始坐标等信息。 | 
-| double OH_Drawing_TextStyleGetLetterSpacing (OH_Drawing_TextStyle \*) | 获取文本的字符间距。 | 
+| double OH_Drawing_TypographyGetLongestLine(OH_Drawing_Typography\* typography) | 获取最长行的宽度，建议实际使用时将返回值向上取整。 | 
+| double OH_Drawing_TypographyGetLongestLineWithIndent(OH_Drawing_Typography\* typography) | 获取最长行的宽度（该宽度包含当前行缩进的宽度），建议实际使用时将返回值向上取整。 | 
+| size_t OH_Drawing_TypographyGetLineCount(OH_Drawing_Typography\* typography) | 获取文本行数。 | 
+| OH_Drawing_LineMetrics\* OH_Drawing_TypographyGetLineMetrics(OH_Drawing_Typography\* typography) | 获取段落行的度量信息。包含行的高度、宽度、起始坐标等信息。 | 
+| double OH_Drawing_TextStyleGetLetterSpacing(OH_Drawing_TextStyle\* style) | 获取文本的字符间距。 | 
 
 
 ## 开发步骤
@@ -80,7 +80,7 @@
    OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
    ```
 
-4. 调用排版接口并设置段落排版宽度，对段落进行塑型排版。
+4. 调用排版接口并设置段落排版宽度，对段落进行塑形排版。
 
    <!-- @[c_text_metrics_layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
@@ -91,12 +91,12 @@
 
 5. 调用段落测量信息获取接口，获取指定数据。
 
-   <!-- @[c_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[c_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
    
    ``` C++
    // case1: 获取排版后最长行行宽
    double longestLine = OH_Drawing_TypographyGetLongestLine(typography);
-   DRAWING_LOGI("第%{public}d行 longestLine: %{public}f", longestLine);
+   DRAWING_LOGI("longestLine: %{public}f", longestLine);
    
    // case2:获取排版后段落行数
    size_t lineCnt = OH_Drawing_TypographyGetLineCount(typography);
@@ -120,7 +120,7 @@
    OH_Drawing_Font_Metrics fontMetrics;
    // 获取文本字体属性
    bool result = OH_Drawing_TextStyleGetFontMetrics(typography, myTextStyle, &fontMetrics);
-   DRAWING_LOGI("result: %{public}zu, fontMetrics ascent: %{public}f" , result, fontMetrics.ascent);
+   DRAWING_LOGI("result: %{public}d, fontMetrics ascent: %{public}f", result, fontMetrics.ascent);
    // 获取排版对象的指定行位置信息，该接口需要在OH_Drawing_TypographyLayout接口调用之后调用
    OH_Drawing_LineMetrics lineMetric;
    OH_Drawing_TypographyGetLineMetricsAt(typography, 0, &lineMetric);
@@ -129,7 +129,7 @@
 
 6. 从API version 24开始支持在限定宽高区域内排版文本，获取排版结果。
 
-   使用[OH_Drawing_TypographyLayoutWithConstraintsWithBuffer/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographylayoutwithconstraintswithbuffer)接口可以在指定的宽高约束内进行排版，返回的结果包含实际排版尺寸（OH_Drawing_RectSize）和适配的字符串范围。
+   使用OH_Drawing_TypographyLayoutWithConstraintsWithBuffer接口可以在指定的宽高约束内进行排版，返回的结果包含实际排版尺寸（OH_Drawing_RectSize）和适配的字符串范围。
 
    <!-- @[c_text_metrics_layout_with_constraints](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
@@ -159,7 +159,7 @@
 
 7. 从API version 24开始支持根据坐标获取字符位置信息。
 
-   使用[OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographygetcharacterpositionatcoordinatewithbuffer)获取指定编码类型下的字符位置。返回的`OH_Drawing_PositionAndAffinity`包含位置索引和亲和度信息。
+   使用OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer获取指定编码类型下的字符位置。返回的`OH_Drawing_PositionAndAffinity`包含位置索引和亲和度信息。
 
    <!-- @[c_text_metrics_char_position_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
@@ -179,7 +179,7 @@
 
 8. 从API version 24开始支持字形范围与字符范围的相互转换。
 
-   使用[OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographygetcharacterrangeforglyphrangewithbuffer)根据字形范围获取对应的字符范围。
+   使用OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer根据字形范围获取对应的字符范围。
 
    <!-- @[c_text_metrics_glyph_info_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
@@ -201,7 +201,7 @@
    }
    ```
 
-   使用[OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographygetglyphrangeforcharacterrangewithbuffer)根据字符范围获取对应的字形范围。
+   使用OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer根据字符范围获取对应的字形范围。
 
    <!-- @[c_text_metrics_glyph_info_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 

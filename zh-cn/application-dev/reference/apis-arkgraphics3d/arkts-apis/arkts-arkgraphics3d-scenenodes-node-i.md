@@ -1,12 +1,10 @@
 # Node
 
-3D场景由树状层次结构的节点组成，其中每个节点都实现了Node接口。继承自SceneResource。
+3D场景由树状层次结构的节点组成，其中每个节点都实现了Node接口。继承自SceneResource。@extends SceneResource @interface Node
 
 **继承/实现关系：** Node extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface Node--><!--Device-unnamed-export interface Node-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -18,9 +16,7 @@ getNodeByPath(path: string): Node | null
 
 根据路径获取节点，如果获取不到则返回空。
 
-**起始版本：** 23
-
-<!--Device-Node-getNodeByPath(path: string): Node | null--><!--Device-Node-getNodeByPath(path: string): Node | null-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -34,7 +30,7 @@ getNodeByPath(path: string): Node | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 返回节点对象。 |
+| [Node](arkts-arkgraphics3d-scenenodes-node-i.md) \| null | 返回节点对象。 |
 
 **示例**
 
@@ -89,9 +85,7 @@ readonly children: Container<Node>
 
 **类型：** [Container](arkts-arkgraphics3d-scenenodes-container-i.md)&lt;[Node](arkts-arkgraphics3d-scenenodes-node-i.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-Node-readonly children: Container<Node>--><!--Device-Node-readonly children: Container<Node>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -105,9 +99,7 @@ readonly layerMask: LayerMask
 
 **类型：** [LayerMask](arkts-arkgraphics3d-scenenodes-layermask-i.md)
 
-**起始版本：** 23
-
-<!--Device-Node-readonly layerMask: LayerMask--><!--Device-Node-readonly layerMask: LayerMask-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -121,9 +113,7 @@ readonly nodeType: NodeType
 
 **类型：** [NodeType](arkts-arkgraphics3d-scenenodes-nodetype-e.md)
 
-**起始版本：** 23
-
-<!--Device-Node-readonly nodeType: NodeType--><!--Device-Node-readonly nodeType: NodeType-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -137,9 +127,7 @@ readonly parent: Node | null
 
 **类型：** [Node](arkts-arkgraphics3d-scenenodes-node-i.md) \| null
 
-**起始版本：** 23
-
-<!--Device-Node-readonly parent: Node | null--><!--Device-Node-readonly parent: Node | null-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -153,9 +141,7 @@ readonly path: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Node-readonly path: string--><!--Device-Node-readonly path: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -169,9 +155,7 @@ position: Position3
 
 **类型：** [Position3](arkts-arkgraphics3d-position3-t.md)
 
-**起始版本：** 23
-
-<!--Device-Node-position: Position3--><!--Device-Node-position: Position3-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -185,9 +169,7 @@ rotation: Quaternion
 
 **类型：** [Quaternion](arkts-arkgraphics3d-scenetypes-quaternion-i.md)
 
-**起始版本：** 23
-
-<!--Device-Node-rotation: Quaternion--><!--Device-Node-rotation: Quaternion-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -201,9 +183,7 @@ scale: Scale3
 
 **类型：** [Scale3](arkts-arkgraphics3d-scale3-t.md)
 
-**起始版本：** 23
-
-<!--Device-Node-scale: Scale3--><!--Device-Node-scale: Scale3-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -217,9 +197,6 @@ visible: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Node-visible: boolean--><!--Device-Node-visible: boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

@@ -1,10 +1,8 @@
 # CanvasPattern
 
-描述一个模板的不透明对象，该对象通过createPattern()方法创建。
+描述一个模板的不透明对象，该对象通过createPattern()方法创建。@interface CanvasPattern
 
 **起始版本：** 11
-
-<!--Device-unnamed-export interface CanvasPattern--><!--Device-unnamed-export interface CanvasPattern-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,8 +22,6 @@ setTransform(transform?: Matrix2D): void
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-CanvasPattern-setTransform(transform?: Matrix2D): void--><!--Device-CanvasPattern-setTransform(transform?: Matrix2D): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -33,4 +29,3 @@ setTransform(transform?: Matrix2D): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | transform | [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | 否 | 变换矩阵。 |
-

@@ -2,9 +2,7 @@
 
 拖拽对象的数据摘要。
 
-**起始版本：** 23
-
-<!--Device-dragInteraction-interface Summary--><!--Device-dragInteraction-interface Summary-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
@@ -19,16 +17,14 @@ import { dragInteraction } from '@kit.ArkUI';
 ## dataSize
 
 ```TypeScript
-dataSize: int
+dataSize: number
 ```
 
 拖拽对象数据长度。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Summary-dataSize: int--><!--Device-Summary-dataSize: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
@@ -44,11 +40,8 @@ dataType: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Summary-dataType: string--><!--Device-Summary-dataType: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
 **系统接口：** 此接口为系统接口。
-

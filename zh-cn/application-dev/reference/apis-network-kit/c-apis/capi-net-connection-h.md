@@ -689,7 +689,7 @@ NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)
 
 | 类型 | 说明 |
 | -- | -- |
-| [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode) | 结果定义在 [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode)。      <br>[NETCONN_SUCCESS](capi-net-connection-type-h.md#netconn_errorcode) 成功。      <br>[NETCONN_PERMISSION_DENIED](capi-net-connection-type-h.md#netconn_errorcode) 缺少权限。      <br>[NETCONN_PARAMETER_ERROR](capi-net-connection-type-h.md#netconn_errorcode) 参数错误。      <br>[NETCONN_OPERATION_FAILED](capi-net-connection-type-h.md#netconn_errorcode) 无法连接到服务。      <br>[NETCONN_INTERNAL_ERROR](capi-net-connection-type-h.md#netconn_errorcode) 内部错误。 |
+| NetConn_ErrorCode | 结果定义在 {@link NetConn_ErrorCode}。      <br>{@link NETCONN_SUCCESS} 成功。      <br>{@link NETCONN_PERMISSION_DENIED} 缺少权限。      <br>{@link NETCONN_PARAMETER_ERROR} 参数错误。      <br>{@link NETCONN_OPERATION_FAILED} 无法连接到服务。      <br>{@link NETCONN_INTERNAL_ERROR} 内部错误。 |
 
 ### OH_NetConn_GetPacUrl()
 
@@ -713,7 +713,7 @@ NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)
 
 | 类型 | 说明 |
 | -- | -- |
-| [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode) | 结果定义在 [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode)。      <br>[NETCONN_SUCCESS](capi-net-connection-type-h.md#netconn_errorcode) 成功。      <br>[NETCONN_PARAMETER_ERROR](capi-net-connection-type-h.md#netconn_errorcode) 参数错误。      <br>[NETCONN_OPERATION_FAILED](capi-net-connection-type-h.md#netconn_errorcode) 无法连接到服务。      <br>[NETCONN_INTERNAL_ERROR](capi-net-connection-type-h.md#netconn_errorcode) 内部错误。 |
+| NetConn_ErrorCode | 结果定义在 {@link NetConn_ErrorCode}。      <br>{@link NETCONN_SUCCESS} 成功。      <br>{@link NETCONN_PARAMETER_ERROR} 参数错误。      <br>{@link NETCONN_OPERATION_FAILED} 无法连接到服务。      <br>{@link NETCONN_INTERNAL_ERROR} 内部错误。 |
 
 ### OH_NetConn_QueryProbeResult()
 

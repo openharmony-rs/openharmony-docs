@@ -2,7 +2,7 @@
 
 ## 概述
 
-提供标准化数据结构相关接口函数、结构体定义。当参数类型为char*时，字符串必须以空字符（'\0'）结尾。
+提供标准化数据结构相关接口函数、结构体定义。当参数类型为char*时，字符串必须以空字符（'\0'）结尾，否则可能导致未定义行为或函数返回错误。
 
 **库：** libudmf.so
 
@@ -23,7 +23,7 @@
 | [OH_UdsHtml](capi-udmf-oh-udshtml.md) | OH_UdsHtml | 描述超文本标记语言类型的统一数据结构。 |
 | [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) | OH_UdsAppItem | 描述桌面图标类型的统一数据结构。 |
 | [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) | OH_UdsFileUri | 描述文件Uri类型的统一数据结构。 |
-| [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) | OH_UdsPixelMap | 描述像素图片类型的统一数据结构。 |
+| [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) | OH_UdsPixelMap | 描述像素图类型的统一数据结构。 |
 | [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) | OH_UdsContentForm | 描述内容卡片类型的统一数据结构。 |
 | [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) | OH_UdsArrayBuffer | 描述ArrayBuffer类型的统一数据结构。 |
 | [OH_UdsDetails](capi-udmf-oh-udsdetails.md) | OH_UdsDetails | 描述字典类型的统一数据结构。 |
@@ -32,7 +32,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [Udmf_AuthPermission](#udmf_authpermission) | Udmf_AuthPermission | 拖拽场景下的URI授权策略。 |
+| [Udmf_AuthPermission](#udmf_authpermission) | Udmf_AuthPermission | 拖拽场景下的URI授权策略。> **说明：> 此授权策略仅在拖拽场景下生效，其他场景不生效。支持不授权、读、写、持久化四种权限策略，可组合使用，仅以下组合生效：- 仅使用NONE：不做任何文件授权。- 仅使用READ：仅做单次只读授权。- 仅使用WRITE：做单次读、写授权（写授权包含读授权）。- READ+WRITE：做单次读、写授权，与仅写授权等同。- READ+PERSIST：做持久化读授权。- WRITE+PERSIST：做持久化读写授权。- READ+WRITE+PERSIST：做持久化读写授权。拖拽授权策略应用规则（按优先级从高到低）：- 单个数据级别：FileUri、HTML两个UDS支持配置授权策略参数，仅对单个record单次生效，优先级最高。- [OH_UdmfData](capi-udmf-oh-udmfdata.md)级别：[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)中提供的授权参数对单次拖拽有效。若某个数据中配置了授权策略，则优先按照该数据的配置进行，优先级次之。- 默认级别：若单个数据和[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)均未配置授权策略，则按照拖拽默认逻辑进行代理授权。默认逻辑如下：- FileUri类型数据：拖拽场景下默认授权为READ+WRITE+PERSIST（读+写+持久化授权）。- HTML类型数据：仅针对HTML文本中img标签下的uri做读授权。 |
 
 ### 函数
 
@@ -65,7 +65,7 @@
 | [int OH_UdsHtml_SetContent(OH_UdsHtml* pThis, const char* content)](#oh_udshtml_setcontent) | 设置超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)中的HTML格式内容参数。 |
 | [int OH_UdsHtml_SetPlainContent(OH_UdsHtml* pThis, const char* plainContent)](#oh_udshtml_setplaincontent) | 设置超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)中的纯文本内容参数。 |
 | [int OH_UdsHtml_SetDetails(OH_UdsHtml* pThis, const OH_UdsDetails* details)](#oh_udshtml_setdetails) | 设置超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)中的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
-| [int OH_UdsHtml_SetAuthPolicy(OH_UdsHtml* pThis, uint32_t authPolicy)](#oh_udshtml_setauthpolicy) | 给[OH_UdsHtml](capi-udmf-oh-udshtml.md)设置授权策略。 |
+| [int OH_UdsHtml_SetAuthPolicy(OH_UdsHtml* pThis, uint32_t authPolicy)](#oh_udshtml_setauthpolicy) | 给[OH_UdsHtml](capi-udmf-oh-udshtml.md)设置授权策略。> **说明：> 此授权策略仅在拖拽场景下生效，其他场景不生效。 |
 | [OH_UdsAppItem* OH_UdsAppItem_Create()](#oh_udsappitem_create) | 创建桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdsAppItem_Destroy](capi-uds-h.md#oh_udsappitem_destroy)销毁实例对象，否则会导致内存泄漏。 |
 | [void OH_UdsAppItem_Destroy(OH_UdsAppItem* pThis)](#oh_udsappitem_destroy) | 销毁桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)指针指向的实例对象。 |
 | [const char* OH_UdsAppItem_GetType(OH_UdsAppItem* pThis)](#oh_udsappitem_gettype) | 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例获取类型ID。 |
@@ -92,7 +92,7 @@
 | [int OH_UdsFileUri_SetFileUri(OH_UdsFileUri* pThis, const char* fileUri)](#oh_udsfileuri_setfileuri) | 设置文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)对象的Uri信息。 |
 | [int OH_UdsFileUri_SetFileType(OH_UdsFileUri* pThis, const char* fileType)](#oh_udsfileuri_setfiletype) | 设置文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)对象的文件类型。 |
 | [int OH_UdsFileUri_SetDetails(OH_UdsFileUri* pThis, const OH_UdsDetails* details)](#oh_udsfileuri_setdetails) | 设置文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)对象的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
-| [int OH_UdsFileUri_SetAuthPolicy(OH_UdsFileUri* pThis, uint32_t authPolicy)](#oh_udsfileuri_setauthpolicy) | 给[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)设置授权策略。 |
+| [int OH_UdsFileUri_SetAuthPolicy(OH_UdsFileUri* pThis, uint32_t authPolicy)](#oh_udsfileuri_setauthpolicy) | 给[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)设置授权策略。> **说明：> 此授权策略仅在拖拽场景下生效，其他场景不生效。 |
 | [OH_UdsPixelMap* OH_UdsPixelMap_Create()](#oh_udspixelmap_create) | 创建像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)的实例对象以及指向它的指针。当不再需要使用指针时，请使用[OH_UdsPixelMap_Destroy](capi-uds-h.md#oh_udspixelmap_destroy)销毁实例对象，否则会导致内存泄漏。 |
 | [void OH_UdsPixelMap_Destroy(OH_UdsPixelMap* pThis)](#oh_udspixelmap_destroy) | 销毁像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)的实例对象。 |
 | [const char* OH_UdsPixelMap_GetType(OH_UdsPixelMap* pThis)](#oh_udspixelmap_gettype) | 从像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例中获取类型ID。 |
@@ -119,7 +119,7 @@
 | [int OH_UdsContentForm_SetAppIcon(OH_UdsContentForm* pThis, const unsigned char* appIcon, unsigned int len)](#oh_udscontentform_setappicon) | 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的应用图标数据。 |
 | [int OH_UdsContentForm_SetAppName(OH_UdsContentForm* pThis, const char* appName)](#oh_udscontentform_setappname) | 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的应用名称数据。 |
 | [int OH_UdsContentForm_SetLinkUri(OH_UdsContentForm* pThis, const char* linkUri)](#oh_udscontentform_setlinkuri) | 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的超链接数据。 |
-| [OH_UdsDetails* OH_UdsDetails_Create()](#oh_udsdetails_create) | 创建字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针及实例对象。<br>当不再需要使用指针时，请使用OH_UdsDetails_Destroy销毁实例对象，否则会导致内存泄漏。 |
+| [OH_UdsDetails* OH_UdsDetails_Create()](#oh_udsdetails_create) | 创建字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针及实例对象。<br>当不再需要使用指针时，请使用[OH_UdsDetails_Destroy](capi-uds-h.md#oh_udsdetails_destroy)销毁实例对象，否则会导致内存泄漏。 |
 | [void OH_UdsDetails_Destroy(OH_UdsDetails* pThis)](#oh_udsdetails_destroy) | 销毁字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针指向的实例对象。 |
 | [bool OH_UdsDetails_HasKey(const OH_UdsDetails* pThis, const char* key)](#oh_udsdetails_haskey) | 检查字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中是否存在指定键。 |
 | [int OH_UdsDetails_Remove(OH_UdsDetails* pThis, const char* key)](#oh_udsdetails_remove) | 删除字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中指定键值对。 |
@@ -138,7 +138,7 @@ enum Udmf_AuthPermission
 
 **描述**
 
-拖拽场景下的URI授权策略。
+拖拽场景下的URI授权策略。> **说明：> 此授权策略仅在拖拽场景下生效，其他场景不生效。支持不授权、读、写、持久化四种权限策略，可组合使用，仅以下组合生效：- 仅使用NONE：不做任何文件授权。- 仅使用READ：仅做单次只读授权。- 仅使用WRITE：做单次读、写授权（写授权包含读授权）。- READ+WRITE：做单次读、写授权，与仅写授权等同。- READ+PERSIST：做持久化读授权。- WRITE+PERSIST：做持久化读写授权。- READ+WRITE+PERSIST：做持久化读写授权。拖拽授权策略应用规则（按优先级从高到低）：- 单个数据级别：FileUri、HTML两个UDS支持配置授权策略参数，仅对单个record单次生效，优先级最高。- [OH_UdmfData](capi-udmf-oh-udmfdata.md)级别：[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)中提供的授权参数对单次拖拽有效。若某个数据中配置了授权策略，则优先按照该数据的配置进行，优先级次之。- 默认级别：若单个数据和[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)均未配置授权策略，则按照拖拽默认逻辑进行代理授权。默认逻辑如下：- FileUri类型数据：拖拽场景下默认授权为READ+WRITE+PERSIST（读+写+持久化授权）。- HTML类型数据：仅针对HTML文本中img标签下的uri做读授权。
 
 **起始版本：** 26.0.0
 
@@ -919,7 +919,7 @@ int OH_UdsHtml_SetAuthPolicy(OH_UdsHtml* pThis, uint32_t authPolicy)
 
 **描述**
 
-给[OH_UdsHtml](capi-udmf-oh-udshtml.md)设置授权策略。
+给[OH_UdsHtml](capi-udmf-oh-udshtml.md)设置授权策略。> **说明：> 此授权策略仅在拖拽场景下生效，其他场景不生效。
 
 **起始版本：** 26.0.0
 
@@ -1691,7 +1691,7 @@ int OH_UdsFileUri_SetAuthPolicy(OH_UdsFileUri* pThis, uint32_t authPolicy)
 
 **描述**
 
-给[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)设置授权策略。
+给[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)设置授权策略。> **说明：> 此授权策略仅在拖拽场景下生效，其他场景不生效。
 
 **起始版本：** 26.0.0
 
@@ -2459,7 +2459,7 @@ OH_UdsDetails* OH_UdsDetails_Create()
 
 **描述**
 
-创建字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针及实例对象。<br>当不再需要使用指针时，请使用OH_UdsDetails_Destroy销毁实例对象，否则会导致内存泄漏。
+创建字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针及实例对象。<br>当不再需要使用指针时，请使用[OH_UdsDetails_Destroy](capi-uds-h.md#oh_udsdetails_destroy)销毁实例对象，否则会导致内存泄漏。
 
 **起始版本：** 22
 

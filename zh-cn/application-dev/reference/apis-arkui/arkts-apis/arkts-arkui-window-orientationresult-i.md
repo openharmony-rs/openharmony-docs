@@ -4,15 +4,11 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-window-interface OrientationResult--><!--Device-window-interface OrientationResult-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -32,7 +28,4 @@ executionResult : OrientationExecutionResult
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OrientationResult-executionResult : OrientationExecutionResult--><!--Device-OrientationResult-executionResult : OrientationExecutionResult-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
-

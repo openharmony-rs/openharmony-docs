@@ -2,9 +2,7 @@
 
 卡片配置信息。
 
-**起始版本：** 23
-
-<!--Device-formInfo-interface FormInfo--><!--Device-formInfo-interface FormInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -20,13 +18,13 @@ import { formInfo } from '@kit.FormKit';
 readonly enableBlurBackground?: boolean
 ```
 
-卡片是否使用模糊背板。 - true：开启模糊背板。 - false：关闭模糊背板。
+卡片是否使用模糊背板。  
+- true：开启模糊背板。  
+- false：关闭模糊背板。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-FormInfo-readonly enableBlurBackground?: boolean--><!--Device-FormInfo-readonly enableBlurBackground?: boolean-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -42,9 +40,7 @@ readonly funInteractionParams?: FunInteractionParams
 
 **类型：** [FunInteractionParams](arkts-form-forminfo-funinteractionparams-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-FormInfo-readonly funInteractionParams?: FunInteractionParams--><!--Device-FormInfo-readonly funInteractionParams?: FunInteractionParams-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -56,13 +52,11 @@ readonly funInteractionParams?: FunInteractionParams
 readonly groupId?: string
 ```
 
-表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享。例如，卡片A和B的groupId相同且resizable均为true，则卡片A可以调整 为卡片A和B的supportDimensions配置中的任意尺寸。 推荐多张卡片功能相同且需要调整卡片尺寸时配置。
+表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享。例如，卡片A和B的groupId相同且resizable均为true，则卡片A可以调整 为卡片A和B的supportDimensions配置中的任意尺寸。推荐多张卡片功能相同且需要调整卡片尺寸时配置。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-FormInfo-readonly groupId?: string--><!--Device-FormInfo-readonly groupId?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -74,15 +68,15 @@ readonly groupId?: string
 isFontScaleFollowSystem?: boolean
 ```
 
-卡片的字体缩放是否跟随系统，默认值为true。 - true：字体缩放跟随系统。 - false：字体缩放不会跟随系统。
+卡片的字体缩放是否跟随系统，默认值为true。  
+- true：字体缩放跟随系统。  
+- false：字体缩放不会跟随系统。
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FormInfo-isFontScaleFollowSystem?: boolean--><!--Device-FormInfo-isFontScaleFollowSystem?: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -94,15 +88,15 @@ isFontScaleFollowSystem?: boolean
 readonly isPrivacySensitive?: boolean
 ```
 
-卡片是否是隐私敏感卡片。 - true：是隐私敏感卡片。 - false：不是隐私敏感卡片。
+卡片是否是隐私敏感卡片。  
+- true：是隐私敏感卡片。  
+- false：不是隐私敏感卡片。
 
 **类型：** boolean
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FormInfo-readonly isPrivacySensitive?: boolean--><!--Device-FormInfo-readonly isPrivacySensitive?: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -114,15 +108,15 @@ readonly isPrivacySensitive?: boolean
 readonly isStandbyAdapted?: boolean
 ```
 
-卡片是否已适配灵动显示规则。 - true：已适配灵动显示。 - false：未适配灵动显示。
+卡片是否已适配灵动显示规则。  
+- true：已适配灵动显示。  
+- false：未适配灵动显示。
 
 **类型：** boolean
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FormInfo-readonly isStandbyAdapted?: boolean--><!--Device-FormInfo-readonly isStandbyAdapted?: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -134,15 +128,15 @@ readonly isStandbyAdapted?: boolean
 readonly isStandbySupported?: boolean
 ```
 
-卡片是否支持在灵动显示界面展示。 - true：支持灵动显示。 - false：不支持灵动显示。
+卡片是否支持在灵动显示界面展示。  
+- true：支持灵动显示。  
+- false：不支持灵动显示。
 
 **类型：** boolean
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FormInfo-readonly isStandbySupported?: boolean--><!--Device-FormInfo-readonly isStandbySupported?: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -154,13 +148,13 @@ readonly isStandbySupported?: boolean
 readonly isTemplateForm?: boolean
 ```
 
-表示卡片是否是模板卡。 - true：是模板卡。 - false：不是模板卡。
+表示卡片是否是模板卡。  
+- true：是模板卡。  
+- false：不是模板卡。
 
 **类型：** boolean
 
 **起始版本：** 23
-
-<!--Device-FormInfo-readonly isTemplateForm?: boolean--><!--Device-FormInfo-readonly isTemplateForm?: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -169,18 +163,17 @@ readonly isTemplateForm?: boolean
 ## previewImages
 
 ```TypeScript
-readonly previewImages?: Array<int>
+readonly previewImages?: Array<number>
 ```
 
-卡片预览图资源ID。 **说明：** 值为正整数的数组。
+卡片预览图资源ID。  
+**说明：** 值为正整数的数组。
 
-**类型：** Array&lt;int&gt;
+**类型：** Array&lt;number&gt;
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FormInfo-readonly previewImages?: Array<int>--><!--Device-FormInfo-readonly previewImages?: Array<int>-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -196,9 +189,7 @@ readonly renderingMode?: RenderingMode
 
 **类型：** [RenderingMode](arkts-form-forminfo-renderingmode-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-FormInfo-readonly renderingMode?: RenderingMode--><!--Device-FormInfo-readonly renderingMode?: RenderingMode-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -210,13 +201,13 @@ readonly renderingMode?: RenderingMode
 readonly resizable?: boolean
 ```
 
-表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。 - true：可以调整大小。 - false：不可以调整大小。
+表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。  
+- true：可以调整大小。  
+- false：不可以调整大小。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-FormInfo-readonly resizable?: boolean--><!--Device-FormInfo-readonly resizable?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -232,11 +223,8 @@ readonly sceneAnimationParams?: SceneAnimationParams
 
 **类型：** [SceneAnimationParams](arkts-form-forminfo-sceneanimationparams-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-FormInfo-readonly sceneAnimationParams?: SceneAnimationParams--><!--Device-FormInfo-readonly sceneAnimationParams?: SceneAnimationParams-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
-

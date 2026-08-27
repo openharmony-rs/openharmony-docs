@@ -1,10 +1,8 @@
 # SearchPlayMusicItem
 
-搜播的音频项目的定义。
+搜播的音频项目的定义。@interface SearchPlayMusicItem
 
 **起始版本：** 23
-
-<!--Device-avMusicTemplate-interface SearchPlayMusicItem--><!--Device-avMusicTemplate-interface SearchPlayMusicItem-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -28,8 +26,6 @@ entityId: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SearchPlayMusicItem-entityId: string--><!--Device-SearchPlayMusicItem-entityId: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## entityName
@@ -46,7 +42,4 @@ entityName?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SearchPlayMusicItem-entityName?: string--><!--Device-SearchPlayMusicItem-entityName?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-

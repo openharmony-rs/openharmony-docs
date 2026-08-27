@@ -2,9 +2,7 @@
 
 表示某次权限授权状态变化的详情。
 
-**起始版本：** 23
-
-<!--Device-abilityAccessCtrl-interface PermissionStateChangeInfo--><!--Device-abilityAccessCtrl-interface PermissionStateChangeInfo-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -24,11 +22,9 @@ change: PermissionStateChangeType
 
 **类型：** [PermissionStateChangeType](arkts-ability-abilityaccessctrl-permissionstatechangetype-e.md)
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PermissionStateChangeInfo-change: PermissionStateChangeType--><!--Device-PermissionStateChangeInfo-change: PermissionStateChangeType-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -42,29 +38,24 @@ permissionName: Permissions
 
 **类型：** Permissions
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PermissionStateChangeInfo-permissionName: Permissions--><!--Device-PermissionStateChangeInfo-permissionName: Permissions-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
 ## tokenID
 
 ```TypeScript
-tokenID: int
+tokenID: number
 ```
 
 被订阅的应用身份标识。该参数必须为大于0的整数，传入0时返回错误码12100001。 BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md)。 获取。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PermissionStateChangeInfo-tokenID: int--><!--Device-PermissionStateChangeInfo-tokenID: int-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
-

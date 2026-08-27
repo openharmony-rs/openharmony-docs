@@ -2,9 +2,7 @@
 
 枚举，智慧分析类型。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-enum AnalysisType--><!--Device-photoAccessHelper-enum AnalysisType-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -18,9 +16,7 @@ ANALYSIS_AESTHETICS_SCORE = 0
 
 美学评分分析类别。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_AESTHETICS_SCORE = 0--><!--Device-AnalysisType-ANALYSIS_AESTHETICS_SCORE = 0-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -34,9 +30,7 @@ ANALYSIS_LABEL = 1
 
 分类标签分析类别。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_LABEL = 1--><!--Device-AnalysisType-ANALYSIS_LABEL = 1-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -50,9 +44,7 @@ ANALYSIS_OCR = 2
 
 文字识别分析类别。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_OCR = 2--><!--Device-AnalysisType-ANALYSIS_OCR = 2-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -66,9 +58,7 @@ ANALYSIS_FACE = 3
 
 人脸检测分析类别。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_FACE = 3--><!--Device-AnalysisType-ANALYSIS_FACE = 3-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -82,9 +72,7 @@ ANALYSIS_OBJECT = 4
 
 目标检测分析类别。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_OBJECT = 4--><!--Device-AnalysisType-ANALYSIS_OBJECT = 4-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -98,9 +86,7 @@ ANALYSIS_RECOMMENDATION = 5
 
 推荐构图分析类别。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_RECOMMENDATION = 5--><!--Device-AnalysisType-ANALYSIS_RECOMMENDATION = 5-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -114,9 +100,7 @@ ANALYSIS_SEGMENTATION = 6
 
 抠图分析类别。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_SEGMENTATION = 6--><!--Device-AnalysisType-ANALYSIS_SEGMENTATION = 6-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -130,9 +114,7 @@ ANALYSIS_COMPOSITION = 7
 
 美学构图分析类别。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_COMPOSITION = 7--><!--Device-AnalysisType-ANALYSIS_COMPOSITION = 7-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -146,9 +128,7 @@ ANALYSIS_SALIENCY = 8
 
 最佳呈现主体中心分析类别。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_SALIENCY = 8--><!--Device-AnalysisType-ANALYSIS_SALIENCY = 8-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -162,9 +142,7 @@ ANALYSIS_DETAIL_ADDRESS = 9
 
 详细地址分析类别。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_DETAIL_ADDRESS = 9--><!--Device-AnalysisType-ANALYSIS_DETAIL_ADDRESS = 9-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -178,9 +156,7 @@ ANALYSIS_HUMAN_FACE_TAG = 10
 
 人像聚类信息分析类别。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_HUMAN_FACE_TAG = 10--><!--Device-AnalysisType-ANALYSIS_HUMAN_FACE_TAG = 10-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -194,9 +170,7 @@ ANALYSIS_HEAD_POSITION = 11
 
 人头、宠物头位置分析类别。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_HEAD_POSITION = 11--><!--Device-AnalysisType-ANALYSIS_HEAD_POSITION = 11-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -210,9 +184,7 @@ ANALYSIS_BONE_POSE = 12
 
 人体骨骼点信息分析类别。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_BONE_POSE = 12--><!--Device-AnalysisType-ANALYSIS_BONE_POSE = 12-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -226,9 +198,7 @@ ANALYSIS_VIDEO_LABEL = 13
 
 视频标签。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_VIDEO_LABEL = 13--><!--Device-AnalysisType-ANALYSIS_VIDEO_LABEL = 13-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -242,9 +212,7 @@ ANALYSIS_HIGHLIGHT = 14
 
 时刻标签。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_HIGHLIGHT = 14--><!--Device-AnalysisType-ANALYSIS_HIGHLIGHT = 14-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -258,9 +226,7 @@ ANALYSIS_MULTI_CROP = 15
 
 2D运镜检测框标签。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_MULTI_CROP = 15--><!--Device-AnalysisType-ANALYSIS_MULTI_CROP = 15-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -274,9 +240,7 @@ ANALYSIS_SEARCH_INDEX = 16
 
 前台索引分析。
 
-**起始版本：** 23
-
-<!--Device-AnalysisType-ANALYSIS_SEARCH_INDEX = 16--><!--Device-AnalysisType-ANALYSIS_SEARCH_INDEX = 16-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -294,8 +258,6 @@ ANALYSIS_SELECTED = 17
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AnalysisType-ANALYSIS_SELECTED = 17--><!--Device-AnalysisType-ANALYSIS_SELECTED = 17-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -311,8 +273,6 @@ ANALYSIS_DUPLICATE_SIMILARITY = 18
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AnalysisType-ANALYSIS_DUPLICATE_SIMILARITY = 18--><!--Device-AnalysisType-ANALYSIS_DUPLICATE_SIMILARITY = 18-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -330,8 +290,6 @@ ANALYSIS_NEGATIVE_EMOTION = 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AnalysisType-ANALYSIS_NEGATIVE_EMOTION = 19--><!--Device-AnalysisType-ANALYSIS_NEGATIVE_EMOTION = 19-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -347,8 +305,6 @@ ANALYSIS_FACE_AESTHETICS = 20
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AnalysisType-ANALYSIS_FACE_AESTHETICS = 20--><!--Device-AnalysisType-ANALYSIS_FACE_AESTHETICS = 20-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -366,8 +322,6 @@ ANALYSIS_MAGIC_EMOJI = 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AnalysisType-ANALYSIS_MAGIC_EMOJI = 21--><!--Device-AnalysisType-ANALYSIS_MAGIC_EMOJI = 21-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -384,9 +338,6 @@ AI编辑分析类别。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AnalysisType-ANALYSIS_AI_EDIT = 22--><!--Device-AnalysisType-ANALYSIS_AI_EDIT = 22-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

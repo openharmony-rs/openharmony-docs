@@ -4,18 +4,11 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface JavaScriptProxy--><!--Device-unnamed-declare interface JavaScriptProxy-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## asyncMethodList
@@ -31,8 +24,6 @@ asyncMethodList?: Array<string>
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-JavaScriptProxy-asyncMethodList?: Array<string>--><!--Device-JavaScriptProxy-asyncMethodList?: Array<string>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -50,8 +41,6 @@ controller: WebController | WebviewController
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-JavaScriptProxy-controller: WebController | WebviewController--><!--Device-JavaScriptProxy-controller: WebController | WebviewController-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## methodList
@@ -67,8 +56,6 @@ methodList: Array<string>
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-JavaScriptProxy-methodList: Array<string>--><!--Device-JavaScriptProxy-methodList: Array<string>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -86,8 +73,6 @@ name: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-JavaScriptProxy-name: string--><!--Device-JavaScriptProxy-name: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## object
@@ -104,8 +89,6 @@ object: object
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-JavaScriptProxy-object: object--><!--Device-JavaScriptProxy-object: object-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## permission
@@ -114,7 +97,7 @@ object: object
 permission?: string
 ```
 
-json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。 JavaScriptProxy的permission参数支持resource/http/https协议，不支持file协议。 示例请参考[前端页面调用应用侧函数](../../../web/web-in-page-app-function-invoking.md)。
+json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。JavaScriptProxy的permission参数支持resource/http/https协议，不支持file协议。示例请参考[前端页面调用应用侧函数](../../../web/web-in-page-app-function-invoking.md)。
 
 **类型：** string
 
@@ -122,7 +105,4 @@ json字符串，默认为空，通过该字符串配置JSBridge的权限管控�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-JavaScriptProxy-permission?: string--><!--Device-JavaScriptProxy-permission?: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

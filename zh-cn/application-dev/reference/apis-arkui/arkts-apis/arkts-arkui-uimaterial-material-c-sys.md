@@ -1,14 +1,10 @@
-# Material（系统接口）
+# Material
 
 系统材质对象基类。
 
-**起始版本：** 23
-
-<!--Device-uiMaterial-class Material--><!--Device-uiMaterial-class Material-End-->
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**系统接口：** 此接口为系统接口。
 
 ## 导入模块
 
@@ -30,8 +26,6 @@ Material的构造函数。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Material-constructor(options?: MaterialOptions)--><!--Device-Material-constructor(options?: MaterialOptions)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -40,5 +34,4 @@ Material的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [MaterialOptions](arkts-arkui-uimaterial-materialoptions-i-sys.md) | 否 | 系统材质配置选项，包括材质类型。<br/>默认值：{type:MaterialType.NONE} |
-
+| options | [MaterialOptions](arkts-arkui-uimaterial-materialoptions-i-sys.md) | 否 | 系统材质配置选项，包括材质类型。默认值：{type:MaterialType.NONE} |

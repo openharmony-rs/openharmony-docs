@@ -14,11 +14,9 @@ function removeAllStartupTaskResults(): void
 
 删除所有启动任务结果。 如果存在so预加载任务，则将对应so文件置为未加载状态。对于缓存中已加载的so文件，不会被移除。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-startupManager-function removeAllStartupTaskResults(): void--><!--Device-startupManager-function removeAllStartupTaskResults(): void-End-->
 
 **系统能力：** SystemCapability.Ability.AppStartup
 
@@ -49,10 +47,8 @@ export default class EntryAbility extends UIAbility {
     startupManager.removeAllStartupTaskResults(); // 移除所有启动任务结果
 
     windowStage.loadContent('pages/Index', (err, data) => {
-      if (err) {
-        let error = err as BusinessError;
-        hilog.error(0x0000, 'testTag',
-          `Failed to load the content. err code: ${error.code}, err msg: ${error.message}`);
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', `Failed to load the content. Cause error code: ${err.code}, error msg: ${err.message}`);
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
@@ -60,4 +56,3 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-

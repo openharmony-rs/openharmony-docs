@@ -26,6 +26,8 @@
 
 ### 接口说明
 
+多语言文本绘制的相关接口如下所示，详细接口说明请参考drawing_text_typography.h。
+
 | 接口定义 | 描述 | 
 | -------- | -------- |
 | void OH_Drawing_SetTypographyTextLocale(OH_Drawing_TypographyStyle\* style, const char\* locale) | 设置指定排版样式的语言环境。 | 
@@ -33,7 +35,7 @@
 
 ### 开发步骤
 
-画布Canvas对象具体可见[画布的获取与绘制结果的显示](canvas-get-result-draw-c.md)。
+画布Canvas对象具体可见画布的获取与绘制结果的显示。
 
 <!-- @[complex_text_c_multilingual_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
@@ -80,7 +82,7 @@ OH_Drawing_DestroyTypography(typography);
 
 ### 效果展示
 
-![zh-cn_image_0000002246563765](figures/zh-cn_image_0000002246563765.png)
+![hello-chinese](figures/hello-chinese.png)
 
 
 ## 多行文本绘制与显示
@@ -89,6 +91,8 @@ OH_Drawing_DestroyTypography(typography);
 
 
 ### 接口说明
+
+多行文本绘制的相关接口如下所示，详细接口说明请参考drawing_text_typography.h。
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
@@ -160,7 +164,7 @@ OH_Drawing_DestroyTypography(typography);
 
 | BREAK_HYPHEN（locale：未设置） | BREAK_HYPHEN（locale：en-gb） | BREAK_HYPHEN（locale：en-us） | 
 | -------- | -------- |-------- |
-| ![ndk_word_break_hyphen_locale_undefined.jpg](figures/ndk_word_break_hyphen_locale_undefined.jpg) | ![ndk_word_break_hyphen_local_en-gb.jpg](figures/ndk_word_break_hyphen_local_en-gb.jpg) | ![ndk_word_break_hyphen_local_en-us.jpg](figures/ndk_word_break_hyphen_local_en-us.jpg) |
+| ![hyphen-locale-undefined.jpg](figures/hyphen-locale-undefined.jpg) | ![hyphen-local-en-gb.jpg](figures/hyphen-local-en-gb.jpg) | ![hyphen-local-en-us.jpg](figures/hyphen-local-en-us.jpg) |
 
 ## 多样式文本绘制与显示
 
@@ -170,7 +174,7 @@ OH_Drawing_DestroyTypography(typography);
 
 - **装饰线样式绘制：** 主要通过不同的线条样式对文本进行装饰，可以使文本更加突出，富有表现力。
 
-- **字体特性绘制：** 主要通过字体的变化，包括粗细、斜体等特性来改变文本的外观，增强文本的可读性和美观性。
+- **字体特征绘制：** 主要通过字体的变化，包括粗细、斜体等特征来改变文本的外观，增强文本的可读性和美观性。
 
 - **可变字体绘制：** 对应提供文本在不同的显示环境和设备上灵活调整的能力，可满足更为精细的视觉效果。
 
@@ -276,12 +280,12 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![zh-cn_image_0000002211603604](figures/zh-cn_image_0000002211603604.png)
+![Decoration](figures/Decoration.png)
 
 
 ### 字体特征
 
-**字体特征**绘制专注于在文本渲染过程中对字体特性（如粗体、斜体、字体变种等）的处理，允许字体在不同的排版场景下表现出不同的效果，可用于增强文本的表现力，使其更符合设计和阅读需求。
+**字体特征**绘制专注于在文本渲染过程中对字体特征（如粗体、斜体、字体变种等）的处理，允许字体在不同的排版场景下表现出不同的效果，可用于增强文本的表现力，使其更符合设计和阅读需求。
 
 常见的**FontFeature**包含有liga、frac、case等，需要对应的ttf文件支持才能正常使能。
 
@@ -327,14 +331,14 @@ OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoSt
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyleWithFeature);
 // 将文本添加到 handler 中
 OH_Drawing_TypographyHandlerAddText(handler, text);
-// 销毁之前创建的 TextStyle
+// 弹出之前添加的 TextStyle
 OH_Drawing_TypographyHandlerPopTextStyle(handler);
 
 // 后续加入的不带字体特征的文本样式
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyleNoFeature);
 // 将文本添加到 handler 中
 OH_Drawing_TypographyHandlerAddText(handler, text);
-// 销毁之前创建的 TextStyle
+// 弹出之前添加的 TextStyle
 OH_Drawing_TypographyHandlerPopTextStyle(handler);
 
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
@@ -353,7 +357,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![zh-cn_image_0000002246603641](figures/zh-cn_image_0000002246603641.png)
+![Font-Feature](figures/Font-Feature.png)
 
 
 ### 可变字体
@@ -431,14 +435,14 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![zh-cn_image_0000002211443824](figures/zh-cn_image_0000002211443824.png)
+![Font-Variation](figures/Font-Variation.png)
 
 
 ### 文本阴影
 
 **文本阴影**为文本提供了深度感，使得文本在背景上更具立体感。通常用于提升文本的视觉吸引力或增强可读性，尤其是在色彩对比度较低的场景下。
 
-其中，TextShadow有三个属性，分别为阴影颜色color、阴影基于当前文本的偏移位置point、阴影半径blurRadius。
+其中，文本阴影有三个属性，分别为阴影颜色color、阴影基于当前文本的偏移位置offset、阴影半径blurRadius。
 
 使用阴影效果需要在文本样式中设置对应的阴影效果数组，从而在文本绘制时生效。
 
@@ -446,10 +450,10 @@ OH_Drawing_DestroyTypography(typography);
 | 接口定义 | 描述 | 
 | -------- | -------- |
 | OH_Drawing_Point\* OH_Drawing_PointCreate(float x, float y) | 用于创建一个坐标点对象。 | 
-| OH_Drawing_TextShadow\* OH_Drawing_CreateTextShadow(void) | 创建指向字体阴影对象的指针。 | 
-| void OH_Drawing_SetTextShadow(OH_Drawing_TextShadow\* shadow, uint32_t color, OH_Drawing_Point\* offset, double blurRadius) | 设置字体阴影对象的参数。 | 
-| void OH_Drawing_TextStyleAddShadow(OH_Drawing_TextStyle\* style, const OH_Drawing_TextShadow\* shadow) | 字体阴影容器中添加字体阴影元素。 | 
-| void OH_Drawing_DestroyTextShadow(OH_Drawing_TextShadow\* shadow) | 释放被字体阴影对象占据的内存。 | 
+| OH_Drawing_TextShadow\* OH_Drawing_CreateTextShadow(void) | 创建指向文本阴影对象的指针。 | 
+| void OH_Drawing_SetTextShadow(OH_Drawing_TextShadow\* shadow, uint32_t color, OH_Drawing_Point\* offset, double blurRadius) | 设置文本阴影对象的参数。 | 
+| void OH_Drawing_TextStyleAddShadow(OH_Drawing_TextStyle\* style, const OH_Drawing_TextShadow\* shadow) | 文本阴影容器中添加文本阴影元素。 | 
+| void OH_Drawing_DestroyTextShadow(OH_Drawing_TextShadow\* shadow) | 释放被文本阴影对象占据的内存。 | 
 
 
 示例及示意效果如下所示：
@@ -518,7 +522,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![zh-cn_image_0000002246563769](figures/zh-cn_image_0000002246563769.png)
+![Text-Shadow](figures/Text-Shadow.png)
 
 
 ### 占位符
@@ -603,7 +607,7 @@ OH_Drawing_DestroyTypography(typographyWithPlaceholder);
 OH_Drawing_DestroyTypography(typographyNoPlaceholder);
 ```
 
-![zh-cn_image_0000002211443820](figures/zh-cn_image_0000002211443820.png)
+![Placeholder](figures/Placeholder.png)
 
 
 ### 自动间距
@@ -680,12 +684,12 @@ OH_Drawing_DestroyTypography(typographyWithoutAutoSpace);
 
 | 段落样式设置（自动间距） | 示意效果 | 
 | -------- | -------- |
-| 不使能自动间距 | ![zh-cn_image_autoSpace_1](figures/zh-cn_image_autoSpace_1.png) | 
-| 使能自动间距 | ![zh-cn_image_autoSpace_2](figures/zh-cn_image_autoSpace_2.png) | 
+| 不使能自动间距 | ![Disabled-autoSpace](figures/Disabled-autoSpace.png) | 
+| 使能自动间距 | ![Enabled-autoSpace](figures/Enabled-autoSpace.png) | 
 
 ### 渐变色
 
-**渐变色**是一种在文字设计中广泛应用的视觉效果，通过在文字的不同部分应用不同的颜色，从而创造出从一种颜色平滑过渡到另一种颜色的效果。可以通过着色器实现文字渐变的效果，着色器的更多介绍请参考[着色器效果](complex-drawing-effect-c.md#着色器效果)。
+**渐变色**是一种在文字设计中广泛应用的视觉效果，通过在文字的不同部分应用不同的颜色，从而创造出从一种颜色平滑过渡到另一种颜色的效果。可以通过着色器实现文字渐变的效果，着色器的更多介绍请参考着色器效果。
 
 
 | 接口定义 | 描述 | 
@@ -730,6 +734,8 @@ OH_Drawing_TypographyLayout(typography, maxWidth);
 OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
 
 // 释放对象
+OH_Drawing_PointDestroy(startPt);
+OH_Drawing_PointDestroy(endPt);
 OH_Drawing_DestroyFontCollection(fc);
 OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
 OH_Drawing_BrushDestroy(brush);
@@ -739,7 +745,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![zh-cn_image_gradient_c](figures/zh-cn_image_gradient_c.png)
+![gradient-c](figures/gradient-c.png)
 
 ### 垂直对齐
 
@@ -786,7 +792,7 @@ OH_Drawing_DestroyTypography(typography);
 
 效果如下（黑框仅为展示文本绘制区域，实际不绘制）：
 
-![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_center.jpg)
+![verticalAlignment-center](figures/verticalAlignment-center.jpg)
 
 ### 上下标
 
@@ -837,7 +843,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![zh-cn_image_complexArkTsDemo2_2](figures/en_image_superscript.jpg)
+![superscript](figures/superscript.jpg)
 
 ### 高对比度
 
@@ -846,7 +852,7 @@ OH_Drawing_DestroyTypography(typography);
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
-| void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action) | 设置文字渲染高对比度模式。模式具体可参考[OH_Drawing_TextHighContrast/apis-arkgraphics2d/capi-drawing-text-global-h.md#oh_drawing_texthighcontrast)。 | 
+| void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action) | 设置文字渲染高对比度模式。模式具体可参考OH_Drawing_TextHighContrast。 | 
 
 
 示例及示意效果如下所示：
@@ -893,8 +899,8 @@ OH_Drawing_DestroyTypography(typography);
 
 | 高对比度设置 | 示意效果 | 
 | -------- | -------- |
-| 不开启高对比度 | ![zh-cn_image_highContrast_1](figures/zh-cn_image_highContrast_1.png) | 
-| 开启高对比度 | ![zh-cn_image_highContrast_2](figures/zh-cn_image_highContrast_2.png) | 
+| 不开启高对比度 | ![Disabled-highContrast](figures/Disabled-highContrast.png) | 
+| 开启高对比度 | ![Enabled-highContrast](figures/Enabled-highContrast.png) | 
 
 ### 行高调整
 
@@ -908,8 +914,8 @@ OH_Drawing_DestroyTypography(typography);
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
-| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributedouble) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM，设置行高上限。|
-| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributedouble) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM，设置行高下限。|
+| OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM，设置行高上限。|
+| OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM，设置行高下限。|
 
 示例及效果如下所示：
 <!-- @[complex_text_c_line_height_limit_one_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
@@ -957,8 +963,8 @@ OH_Drawing_DestroyTypography(typography);
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
-| [void OH_Drawing_SetTextStyleFontHeight(OH_Drawing_TextStyle* style, double fontHeight)/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight) | 使能行高缩放。|
-| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id)/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributeint) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE，使能行高缩放样式。|
+| void OH_Drawing_SetTextStyleFontHeight(OH_Drawing_TextStyle* style, double fontHeight) | 使能行高缩放。|
+| OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int value) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE，使能行高缩放样式。|
 
 示例及效果如下所示：
 <!-- @[complex_text_c_line_height_limit_two_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
@@ -1008,7 +1014,7 @@ OH_Drawing_DestroyTypography(typography);
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
-| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double value)/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributedouble) | 传入id为OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING，设置行间距。|
+| OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double value) | 传入id为OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING，设置行间距。|
 
 示例及效果如下所示：
 <!-- @[complex_text_c_line_spacing_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
@@ -1054,7 +1060,7 @@ OH_Drawing_DestroyTypography(typography);
 
 从API version 22开始，支持设置省略号样式，在文本内容超出显示区域时截断文本。从API version 24开始，支持多行省略模式。
 
-使用[OH_Drawing_SetTypographyStyleAttributeInt/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributeint)接口，传入[TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid)设置省略号模式，可选的省略号模式可见[OH_Drawing_EllipsisModal/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal)。
+使用OH_Drawing_SetTypographyStyleAttributeInt接口，传入TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL设置省略号模式，可选的省略号模式可见OH_Drawing_EllipsisModal。
 
 <!-- @[complex_text_c_ellipsis_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
@@ -1083,7 +1089,7 @@ OH_Drawing_SetTypographyTextEllipsis(typoStyle, "...");
 
 从API version 22开始，支持在文本排版时设置断行策略，断行策略决定了文本如何在行尾进行换行处理。
 
-使用[OH_Drawing_SetTypographyTextBreakStrategy/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographytextbreakstrategy)接口设置断行策略，可选的断行策略可见[OH_Drawing_BreakStrategy/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_breakstrategy)。
+使用OH_Drawing_SetTypographyTextBreakStrategy接口设置断行策略，可选的断行策略可见OH_Drawing_BreakStrategy。
 
 <!-- @[complex_text_c_break_strategy_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
@@ -1104,7 +1110,7 @@ OH_Drawing_SetTypographyTextBreakStrategy(typoStyle, BREAK_STRATEGY_BALANCED);
 
 从API version 23开始，在文本排版中支持行首标点压缩功能。通过启用行首标点压缩功能，可以将行首标点符号进行挤压处理，提升排版紧凑度。
 
-使用[OH_Drawing_SetTypographyStyleAttributeBool/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributebool)接口，传入[TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid)设置是否启用行首标点压缩，使用[OH_Drawing_GetTypographyStyleAttributeBool/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_gettypographystyleattributebool)接口查询是否启用了行首标点压缩。
+使用OH_Drawing_SetTypographyStyleAttributeBool接口，传入TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION设置是否启用行首标点压缩，使用OH_Drawing_GetTypographyStyleAttributeBool接口查询是否启用了行首标点压缩。
 
 <!-- @[complex_text_c_punctuation_compress_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
@@ -1146,8 +1152,7 @@ OH_Drawing_SetTypographyTextAutoSpace(typoStyle, true);
 // 设置段落最大行数为3行
 OH_Drawing_SetTypographyTextMaxLines(typoStyle, 3);
 // 设置省略号模式为尾部省略号
-OH_Drawing_SetTypographyStyleAttributeInt(typoStyle,
-    OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL, ELLIPSIS_MODAL_TAIL);
+OH_Drawing_SetTypographyStyleAttributeInt(typoStyle, TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL, ELLIPSIS_MODAL_TAIL);
 // 设置省略号文本
 OH_Drawing_SetTypographyTextEllipsis(typoStyle, "...");
 // 设置对齐方式为居中对齐
@@ -1173,8 +1178,7 @@ OH_Drawing_TextShadow *shadow = OH_Drawing_CreateTextShadow();
 // 设置阴影偏移量为(5, 5)
 OH_Drawing_Point *offset = OH_Drawing_PointCreate(5, 5);
 // 定义阴影模糊半径为4
-double blurRadius = 4;
-OH_Drawing_SetTextShadow(shadow, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0xFF), offset, blurRadius);
+OH_Drawing_SetTextShadow(shadow, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0xFF), offset, 4);
 
 // 拷贝阴影对象
 OH_Drawing_TextShadow *shadowCopy = OH_Drawing_CopyTextShadow(shadow);
@@ -1224,6 +1228,9 @@ OH_Drawing_DestroyTypographyStyle(typographyStyleCopy);
 OH_Drawing_DestroyTextStyle(textStyleCopy);
 OH_Drawing_DestroyTypographyHandler(handlerCopy);
 OH_Drawing_DestroyTypography(typographyCopy);
+OH_Drawing_PointDestroy(offset);
+OH_Drawing_DestroyTextShadow(shadow);
+OH_Drawing_DestroyTextShadow(shadowCopy);
 ```
 
-![zh-cn_image_styleCopy_1](figures/zh-cn_image_styleCopy_1.png)
+![styleCopy](figures/styleCopy.png)

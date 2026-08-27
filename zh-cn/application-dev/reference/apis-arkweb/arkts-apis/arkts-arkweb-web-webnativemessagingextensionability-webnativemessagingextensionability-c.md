@@ -6,8 +6,6 @@
 
 **起始版本：** 21
 
-<!--Device-unnamed-export default class WebNativeMessagingExtensionAbility--><!--Device-unnamed-export default class WebNativeMessagingExtensionAbility-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -28,8 +26,6 @@ Web原生消息连接建立时回调此方法。在此回调中，可以获取�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WebNativeMessagingExtensionAbility-onConnectNative(info: ConnectionInfo): void--><!--Device-WebNativeMessagingExtensionAbility-onConnectNative(info: ConnectionInfo): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -40,8 +36,6 @@ Web原生消息连接建立时回调此方法。在此回调中，可以获取�
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
 
@@ -49,23 +43,6 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
   onConnectNative(info: ConnectionInfo): void {
     console.info('Web Native connection established!');
     console.info(`Connection ID: ${info.connectionId}`);
-    console.info(`Caller bundle: ${info.bundleName}`);
-    // 在此处处理连接建立后的业务逻辑
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { ConnectionInfo } from '@ohos.web.WebNativeMessagingExtensionAbility';
-import WebNativeMessagingExtensionAbility from "@ohos.web.WebNativeMessagingExtensionAbility";
-
-export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
-  onConnectNative(info: ConnectionInfo): void {
-    console.info('Web Native connection established!');
-    console.info(`Connnection ID: ${info.connectionId}`);
     console.info(`Caller bundle: ${info.bundleName}`);
     // 在此处处理连接建立后的业务逻辑
   }
@@ -84,30 +61,12 @@ WebNativeMessagingExtensionAbility销毁时回调。在此回调中，可以释�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WebNativeMessagingExtensionAbility-onDestroy(): void--><!--Device-WebNativeMessagingExtensionAbility-onDestroy(): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { WebNativeMessagingExtensionAbility } from '@kit.ArkWeb';
-
-export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
-  onDestroy(): void {
-    console.info('WebNativeMessagingExtensionAbility is about to be destroyed!');
-    // 在此处释放资源或者执行清理操作
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import WebNativeMessagingExtensionAbility from "@ohos.web.WebNativeMessagingExtensionAbility";
 
 export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
   onDestroy(): void {
@@ -129,8 +88,6 @@ Web原生消息连接断开时回调此方法。在此回调中，可以释放�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WebNativeMessagingExtensionAbility-onDisconnectNative(info: ConnectionInfo): void--><!--Device-WebNativeMessagingExtensionAbility-onDisconnectNative(info: ConnectionInfo): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -140,8 +97,6 @@ Web原生消息连接断开时回调此方法。在此回调中，可以释放�
 | info | [ConnectionInfo](arkts-arkweb-web-webnativemessagingextensionability-connectioninfo-i.md) | 是 | 连接信息对象。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
@@ -155,22 +110,6 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { ConnectionInfo } from '@ohos.web.WebNativeMessagingExtensionAbility';
-import WebNativeMessagingExtensionAbility from "@ohos.web.WebNativeMessagingExtensionAbility";
-
-export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
-  onDisconnectNative(info: ConnectionInfo): void {
-    console.info('Web Native connection closed!');
-    console.info(`Connnection ID: ${info.connectionId}`);
-    // 在此处处理连接断开后的清理工作
-  }
-}
-```
-
 ## context
 
 ```TypeScript
@@ -179,13 +118,10 @@ context: WebNativeMessagingExtensionContext
 
 当前Web原生消息扩展Ability的上下文。
 
-**类型：** [WebNativeMessagingExtensionContext](../../apis-na/arkts-apis/arkts-na-web-webnativemessagingextensioncontext-webnativemessagingextensioncontext-c.md)
+**类型：** [WebNativeMessagingExtensionContext](arkts-arkweb-web-webnativemessagingextensioncontext-webnativemessagingextensioncontext-c.md)
 
 **起始版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WebNativeMessagingExtensionAbility-context: WebNativeMessagingExtensionContext--><!--Device-WebNativeMessagingExtensionAbility-context: WebNativeMessagingExtensionContext-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

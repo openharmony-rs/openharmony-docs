@@ -132,9 +132,9 @@
   <!--Del-->
   - [isIfaceActive(系统接口)](arkts-network-ethernet-isifaceactive-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [off_interfaceStateChange(系统接口)](arkts-network-ethernet-offinterfacestatechange-f-sys.md)<!--DelEnd-->
+  - [off(系统接口)](arkts-network-ethernet-off-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [on_interfaceStateChange(系统接口)](arkts-network-ethernet-oninterfacestatechange-f-sys.md)<!--DelEnd-->
+  - [on(系统接口)](arkts-network-ethernet-on-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [setIfaceConfig(系统接口)](arkts-network-ethernet-setifaceconfig-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -265,25 +265,9 @@
   <!--Del-->
   - [isUidNetAllowed(系统接口)](arkts-network-policy-isuidnetallowed-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [off_netBackgroundPolicyChange(系统接口)](arkts-network-policy-offnetbackgroundpolicychange-f-sys.md)<!--DelEnd-->
+  - [off(系统接口)](arkts-network-policy-off-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [off_netMeteredIfacesChange(系统接口)](arkts-network-policy-offnetmeteredifaceschange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [off_netQuotaPolicyChange(系统接口)](arkts-network-policy-offnetquotapolicychange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [off_netUidPolicyChange(系统接口)](arkts-network-policy-offnetuidpolicychange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [off_netUidRuleChange(系统接口)](arkts-network-policy-offnetuidrulechange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_netBackgroundPolicyChange(系统接口)](arkts-network-policy-onnetbackgroundpolicychange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_netMeteredIfacesChange(系统接口)](arkts-network-policy-onnetmeteredifaceschange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_netQuotaPolicyChange(系统接口)](arkts-network-policy-onnetquotapolicychange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_netUidPolicyChange(系统接口)](arkts-network-policy-onnetuidpolicychange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_netUidRuleChange(系统接口)](arkts-network-policy-onnetuidrulechange-f-sys.md)<!--DelEnd-->
+  - [on(系统接口)](arkts-network-policy-on-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [resetPolicies(系统接口)](arkts-network-policy-resetpolicies-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -316,7 +300,8 @@
   - [NetworkMatchRule(系统接口)](arkts-network-policy-networkmatchrule-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [QuotaPolicy(系统接口)](arkts-network-policy-quotapolicy-i-sys.md)<!--DelEnd-->
-  - [UidNetworkAccessPolicy](arkts-network-policy-uidnetworkaccesspolicy-i.md)
+  <!--Del-->
+  - [UidNetworkAccessPolicy(系统接口)](arkts-network-policy-uidnetworkaccesspolicy-i-sys.md)<!--DelEnd-->
   - [NetBearType](arkts-network-policy-netbeartype-t.md)
   <!--Del-->
   - [LimitAction(系统接口)](arkts-network-policy-limitaction-e-sys.md)<!--DelEnd-->
@@ -346,17 +331,9 @@
   <!--Del-->
   - [isSharingSupported(系统接口)](arkts-network-sharing-issharingsupported-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [off_interfaceSharingStateChange(系统接口)](arkts-network-sharing-offinterfacesharingstatechange-f-sys.md)<!--DelEnd-->
+  - [off(系统接口)](arkts-network-sharing-off-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [off_sharingStateChange(系统接口)](arkts-network-sharing-offsharingstatechange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [off_sharingUpstreamChange(系统接口)](arkts-network-sharing-offsharingupstreamchange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_interfaceSharingStateChange(系统接口)](arkts-network-sharing-oninterfacesharingstatechange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_sharingStateChange(系统接口)](arkts-network-sharing-onsharingstatechange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_sharingUpstreamChange(系统接口)](arkts-network-sharing-onsharingupstreamchange-f-sys.md)<!--DelEnd-->
+  - [on(系统接口)](arkts-network-sharing-on-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [startSharing(系统接口)](arkts-network-sharing-startsharing-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -432,13 +409,9 @@
   - [getUidRxBytes](arkts-network-statistics-getuidrxbytes-f.md)
   - [getUidTxBytes](arkts-network-statistics-getuidtxbytes-f.md)
   <!--Del-->
-  - [off_netStatsChange(系统接口)](arkts-network-statistics-offnetstatschange-f-sys.md)<!--DelEnd-->
+  - [off(系统接口)](arkts-network-statistics-off-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [offNetStatsChange(系统接口)](arkts-network-statistics-offnetstatschange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_netStatsChange(系统接口)](arkts-network-statistics-onnetstatschange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [onNetStatsChange(系统接口)](arkts-network-statistics-onnetstatschange-f-sys.md)<!--DelEnd-->
+  - [on(系统接口)](arkts-network-statistics-on-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [setCalibrationTraffic(系统接口)](arkts-network-statistics-setcalibrationtraffic-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -451,17 +424,11 @@
   - [IfaceInfo(系统接口)](arkts-network-statistics-ifaceinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [NetStatsChangeInfo(系统接口)](arkts-network-statistics-netstatschangeinfo-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [NetStatsInfo(系统接口)](arkts-network-statistics-netstatsinfo-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [NetStatsInfoSequenceItem(系统接口)](arkts-network-statistics-netstatsinfosequenceitem-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [NetworkInfo(系统接口)](arkts-network-statistics-networkinfo-i-sys.md)<!--DelEnd-->
+  - [NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)
+  - [NetworkInfo](arkts-network-statistics-networkinfo-i.md)
   <!--Del-->
   - [UidInfo(系统接口)](arkts-network-statistics-uidinfo-i-sys.md)<!--DelEnd-->
   - [NetBearType](arkts-network-statistics-netbeartype-t.md)
-  <!--Del-->
-  - [NetStatsInfoSequence(系统接口)](arkts-network-statistics-netstatsinfosequence-t-sys.md)<!--DelEnd-->
   <!--Del-->
   - [UidNetStatsInfo(系统接口)](arkts-network-statistics-uidnetstatsinfo-t-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -482,13 +449,9 @@
   <!--Del-->
   - [getSysVpnConfigList(系统接口)](arkts-network-vpn-getsysvpnconfiglist-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [off_connect(系统接口)](arkts-network-vpn-offconnect-f-sys.md)<!--DelEnd-->
+  - [off(系统接口)](arkts-network-vpn-off-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [off_connectMulti(系统接口)](arkts-network-vpn-offconnectmulti-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_connect(系统接口)](arkts-network-vpn-onconnect-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_connectMulti(系统接口)](arkts-network-vpn-onconnectmulti-f-sys.md)<!--DelEnd-->
+  - [on(系统接口)](arkts-network-vpn-on-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [IpsecVpnConfig(系统接口)](arkts-network-vpn-ipsecvpnconfig-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -528,7 +491,6 @@
   - [createWebSocketServer](arkts-network-websocket-createwebsocketserver-f.md)
   - [ClientCert](arkts-network-websocket-clientcert-i.md)
   - [CloseResult](arkts-network-websocket-closeresult-i.md)
-  - [OpenResult](arkts-network-websocket-openresult-i.md)
   - [ServerCert](arkts-network-websocket-servercert-i.md)
   - [WebSocket](arkts-network-websocket-websocket-i.md)
   - [WebSocketCloseOptions](arkts-network-websocket-websocketcloseoptions-i.md)
@@ -549,3 +511,6 @@
 - [@system.network](arkts-system-network.md)
   - [Network](arkts-network-system-network-network-depr-c.md)
   - [NetworkResponse](arkts-network-system-network-networkresponse-depr-i.md)
+- application<!--arkts-networkkit-application-->
+  - [VpnExtensionContext](arkts-vpnextensioncontext.md)
+    - [VpnExtensionContext](arkts-network-vpnextensioncontext-c.md)

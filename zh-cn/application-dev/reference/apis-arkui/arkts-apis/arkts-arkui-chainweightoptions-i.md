@@ -1,10 +1,8 @@
 # ChainWeightOptions
 
-Defines the ChainWeightOptions interface.
+Defines the ChainWeightOptions interface.@interface ChainWeightOptions
 
 **起始版本：** 14
-
-<!--Device-unnamed-declare interface ChainWeightOptions--><!--Device-unnamed-declare interface ChainWeightOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,8 +27,6 @@ Horizontal ChainWeight.
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ChainWeightOptions-horizontal?: number--><!--Device-ChainWeightOptions-horizontal?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## vertical
@@ -49,7 +45,4 @@ Vertical ChainWeight.
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ChainWeightOptions-vertical?: number--><!--Device-ChainWeightOptions-vertical?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

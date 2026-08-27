@@ -2,9 +2,7 @@
 
 通知栏自定义信息。
 
-**起始版本：** 23
-
-<!--Device-agent-interface Notification--><!--Device-agent-interface Notification-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
-import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
 ## disable
@@ -25,11 +22,8 @@ Disables the notification. If the value is false, a notification will be display
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Notification-disable?: boolean--><!--Device-Notification-disable?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 **系统接口：** 此接口为系统接口。
-

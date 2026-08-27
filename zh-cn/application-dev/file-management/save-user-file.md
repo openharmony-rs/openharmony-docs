@@ -11,13 +11,13 @@
 **权限说明**
 
 - 通过Picker获取的URI默认只具备**临时读写权限**，临时授权在应用退出后台自动失效。
-- 如果设置[autoCreateEmptyFile/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)参数为false，获取的URI除了具备**临时读写权限**外，还具备**临时创建和删除权限**。
-- 获取持久化权限需要通过[FilePicker设置永久授权](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)方式获取。
+- 如果设置autoCreateEmptyFile参数为false，获取的URI除了具备**临时读写权限**外，还具备**临时创建和删除权限**。
+- 获取持久化权限需要通过FilePicker设置永久授权方式获取。
 - 使用Picker对音频、图片、视频、文档类文件的保存操作**无需申请权限**。
 
 **约束限制**
 
-如果使用系统能力为SystemCapability.FileManagement.UserFileService.FolderSelection的接口时，可使用[canIUse/common/js-apis-syscap.md#caniuse)接口，确认设备是否具有该系统能力：
+如果使用系统能力为SystemCapability.FileManagement.UserFileService.FolderSelection的接口时，可使用canIUse接口，确认设备是否具有该系统能力：
 
 ```ts
 if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection')) {
@@ -29,13 +29,13 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 **系统隔离说明**
 
 - 通过Picker保存的文件存储在用户指定的目录。此类文件与图库管理的资源隔离，无法在图库中看到。
-- 若开发者需要保存图片、视频资源到图库，可使用用户无感的[安全控件进行保存](../media/medialibrary/photoAccessHelper-savebutton.md#使用安全控件保存媒体库资源)。
+- 若开发者需要保存图片、视频资源到图库，可使用用户无感的安全控件进行保存。
 
 ## 保存图片或视频类文件
 
-[PhotoViewPicker/apis-core-file-kit/js-apis-file-picker.md#photoviewpickerdeprecated)在后续版本不再演进，建议使用[Media Library Kit（媒体文件管理服务）中能力来保存媒体库资源](../media/medialibrary/photoAccessHelper-savebutton.md)。
+PhotoViewPicker在后续版本不再演进，建议使用Media Library Kit（媒体文件管理服务）中能力来保存媒体库资源。
 
-如果开发场景无法调用安全控件进行图片、视频保存，可使用相册管理模块[PhotoAccessHelper.showAssetsCreationDialog/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#showassetscreationdialog12)接口进行保存操作。
+如果开发场景无法调用安全控件进行图片、视频保存，可使用相册管理模块PhotoAccessHelper.showAssetsCreationDialog接口进行保存操作。
 
 ## 保存文档类文件
 
@@ -48,7 +48,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    import { common } from '@kit.AbilityKit';
    ```
 
-2. 根据实际业务需求配置[文件保存选项/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)。以下代码仅例举各选项的配置参考。
+2. 根据实际业务需求配置文件保存选项DocumentSaveOptions。以下代码仅列举各选项的配置参考。
 
    ```ts
    // 创建文件管理器选项实例。
@@ -63,7 +63,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    documentSaveOptions.autoCreateEmptyFile = false;
    ```
 
-3. 创建文件选择器[DocumentViewPicker/apis-core-file-kit/js-apis-file-picker.md#constructor12)实例。调用[save()/apis-core-file-kit/js-apis-file-picker.md#save)接口拉起FilePicker界面进行文件保存。
+3. 创建文件选择器DocumentViewPicker实例。调用save()接口拉起FilePicker界面进行文件保存。
 
    <!--@[save_file_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
 
@@ -81,13 +81,13 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ```
 
    > **注意**：
-
-   > - Picker会默认[预置空文件/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[文件管理/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
+   >
+   > - Picker会默认预置空文件并返回保存文件的URI数组，应用拿到URI后可使用文件管理模块的接口进行文件读写操作。
    > - 避免在Picker回调中直接操作URI。
    > - 建议使用全局变量保存URI以供后续使用。
-   > - 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
+   > - 可以通过DOWNLOAD模式直达下载目录。
 
-4. 待界面从FilePicker返回后，使用[fileIo.openSync/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
+4. 待界面从FilePicker返回后，使用fileIo.openSync接口，通过URI打开这个文件得到文件描述符（fd）。
 
    ```ts
    if (uris.length > 0) {
@@ -98,7 +98,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    }
    ```
 
-5. 通过（fd）使用[fileIo.writeSync/apis-core-file-kit/js-apis-file-fs.md#fileiowritesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
+5. 通过（fd）使用fileIo.writeSync接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
 
    ```ts
    let writeLen: number = fileIo.writeSync(file.fd, 'hello, world');
@@ -125,7 +125,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    audioSaveOptions.newFileNames = ['AudioViewPicker01.mp3'];
    ```
 
-3. 创建[音频选择器AudioViewPicker/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)实例。调用[save()/apis-core-file-kit/js-apis-file-picker.md#save-5)接口拉起FilePicker界面进行文件保存。
+3. 创建音频选择器AudioViewPicker实例。调用save()接口拉起FilePicker界面进行文件保存。
 
    <!--@[audio_save_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
 
@@ -143,13 +143,13 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ```
 
    > **注意**：
-
-   > - Picker会默认[预置空文件/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[文件管理/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
+   >
+   > - Picker会默认预置空文件并返回保存文件的URI数组，应用拿到URI后可使用文件管理模块的接口进行文件读写操作。
    > - 避免在Picker回调中直接操作URI。
    > - 建议使用全局变量保存URI以供后续使用。
-   > - 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
+   > - 可以通过DOWNLOAD模式直达下载目录。
 
-4. 待界面从FilePicker返回后，可以使用[fileIo.openSync/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
+4. 待界面从FilePicker返回后，可以使用fileIo.openSync接口，通过URI打开这个文件得到文件描述符（fd）。
 
    ```ts
    if (uris.length > 0) {
@@ -160,7 +160,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    }
    ```
 
-5. 通过（fd）使用[fileIo.writeSync/apis-core-file-kit/js-apis-file-fs.md#fileiowritesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
+5. 通过（fd）使用fileIo.writeSync接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
 
    ```ts
    let writeLen = fileIo.writeSync(file.fd, 'hello, world');

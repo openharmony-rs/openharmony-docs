@@ -4,18 +4,11 @@
 
 **起始版本：** 13
 
-<!--Device-unnamed-declare interface SelectionMenuOptionsExt--><!--Device-unnamed-declare interface SelectionMenuOptionsExt-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## menuType
@@ -24,13 +17,11 @@ import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 menuType?: MenuType
 ```
 
-自定义选择菜单类型。 默认值：`MenuType.SELECTION_MENU`。 从API version 20起，`MenuType.PREVIEW_MENU`支持超链接预览。
+自定义选择菜单类型。默认值：`MenuType.SELECTION_MENU`。从API version 20起，`MenuType.PREVIEW_MENU`支持超链接预览。
 
-**类型：** MenuType
+**类型：** [MenuType](../../apis-arkui/arkts-apis/arkts-arkui-menutype-e.md)
 
 **起始版本：** 13
-
-<!--Device-SelectionMenuOptionsExt-menuType?: MenuType--><!--Device-SelectionMenuOptionsExt-menuType?: MenuType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -46,8 +37,6 @@ onAppear?: Callback<void>
 
 **起始版本：** 13
 
-<!--Device-SelectionMenuOptionsExt-onAppear?: Callback<void>--><!--Device-SelectionMenuOptionsExt-onAppear?: Callback<void>-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## onDisappear
@@ -61,8 +50,6 @@ onDisappear?: Callback<void>
 **类型：** Callback&lt;void&gt;
 
 **起始版本：** 13
-
-<!--Device-SelectionMenuOptionsExt-onDisappear?: Callback<void>--><!--Device-SelectionMenuOptionsExt-onDisappear?: Callback<void>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -78,8 +65,6 @@ onMenuHide?: Callback<void>
 
 **起始版本：** 21
 
-<!--Device-SelectionMenuOptionsExt-onMenuHide?: Callback<void>--><!--Device-SelectionMenuOptionsExt-onMenuHide?: Callback<void>-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## onMenuShow
@@ -94,8 +79,6 @@ onMenuShow?: Callback<void>
 
 **起始版本：** 21
 
-<!--Device-SelectionMenuOptionsExt-onMenuShow?: Callback<void>--><!--Device-SelectionMenuOptionsExt-onMenuShow?: Callback<void>-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## preview
@@ -106,11 +89,9 @@ preview?: CustomBuilder
 
 自定义选择菜单的预览内容样式，未配置时无预览内容。
 
-**类型：** CustomBuilder
+**类型：** [CustomBuilder](../../apis-arkui/arkts-components/arkts-arkui-custombuilder-t.md)
 
 **起始版本：** 13
-
-<!--Device-SelectionMenuOptionsExt-preview?: CustomBuilder--><!--Device-SelectionMenuOptionsExt-preview?: CustomBuilder-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -126,7 +107,4 @@ previewMenuOptions?: PreviewMenuOptions
 
 **起始版本：** 20
 
-<!--Device-SelectionMenuOptionsExt-previewMenuOptions?: PreviewMenuOptions--><!--Device-SelectionMenuOptionsExt-previewMenuOptions?: PreviewMenuOptions-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

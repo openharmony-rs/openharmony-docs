@@ -9,7 +9,7 @@
 
 ## 概述
 
-OpenHarmony的DFX子系统提供了为应用框架以及系统底座核心模块的性能打点能力，每一处打点即是一个Trace，其上附带了记录执行时间、运行时格式化数据、进程或线程信息等。开发者可以使用[SmartPerf-Host调试工具](../../device-dev/device-test/smartperf-host.md)对Trace进行解析，在其绘制的泳道图中，对应用运行过程中的性能热点进行分析，得出优化方案。本文旨在介绍OpenHarmony中常用的Trace，解释它们的含义和用途，并阐述如何通过这些Trace来识别潜在的性能问题。同时，我们还将详细介绍Trace的工作原理，帮助读者更好地理解这些Trace及如何实现性能数据的采集和分析。通过本文的阅读，读者将对OpenHarmony中的Trace有一个深入的了解，为应用程序性能优化提供有力支持。
+OpenHarmony的DFX子系统提供了为应用框架以及系统底座核心模块的性能打点能力，每一处打点即是一个Trace，其上附带了记录执行时间、运行时格式化数据、进程或线程信息等。开发者可以使用SmartPerf-Host调试工具对Trace进行解析，在其绘制的泳道图中，对应用运行过程中的性能热点进行分析，得出优化方案。本文旨在介绍OpenHarmony中常用的Trace，解释它们的含义和用途，并阐述如何通过这些Trace来识别潜在的性能问题。同时，我们还将详细介绍Trace的工作原理，帮助读者更好地理解这些Trace及如何实现性能数据的采集和分析。通过本文的阅读，读者将对OpenHarmony中的Trace有一个深入的了解，为应用程序性能优化提供有力支持。
 
 ## 常用Trace及含义
 
@@ -114,7 +114,7 @@ OpenHarmony的DFX子系统提供了为应用框架以及系统底座核心模块
 
 ## Trace实践
 
-以下示例采用`LazyForEach`的方式遍历列表，并借助[SmartPerf-Host调试工具](../../device-dev/device-test/smartperf-host.md)追踪代码执行流程。
+以下示例采用`LazyForEach`的方式遍历列表，并借助SmartPerf-Host调试工具追踪代码执行流程。
 在[代码示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/PerformanceLibrary/feature/trace)中，使用一个List容器组件，通过懒加载方式来创建出120个IconView自定义组件。在IconView组件中，使用了Flex容器组件包含Image和Text子组件，形成了图文混合列表。
 
 ```ts
@@ -188,7 +188,7 @@ export struct IconItem {
 }
 ```
 
-下面使用[SmartPerf-Host调试工具](../../device-dev/device-test/smartperf-host.md)抓取htrace文件，并生成一个跟踪泳道分析图，来了解示例代码的加载流程。跟踪泳道分析图被分为五个部分，每个部分都标注数字并框选出相应的标签，从而使得整体的过程能够得到更好的理解。
+下面使用SmartPerf-Host调试工具抓取htrace文件，并生成一个跟踪泳道分析图，来了解示例代码的加载流程。跟踪泳道分析图被分为五个部分，每个部分都标注数字并框选出相应的标签，从而使得整体的过程能够得到更好的理解。
 
 **图6 LazyForEach遍历的列表的泳道分析图**
 
@@ -264,10 +264,10 @@ export struct IconItem {
 
 开发者可以根据业务需求，使用hiTraceMeter进行自定义Trace打点跟踪，目前支持ArkTS和Native，具体使用细节可参考下方链接：
 
-> [性能打点跟踪开发指导（ArkTS）](../dfx/hitracemeter-guidelines-arkts.md)
-> [性能打点跟踪开发指导（Native）](../dfx/hitracemeter-guidelines-ndk.md)
+> 性能打点跟踪开发指导（ArkTS）
+> 性能打点跟踪开发指导（Native）
 
-添加自定义Trace后，可在[SmartPerf-Host调试工具](../../device-dev/device-test/smartperf-host.md)上查看，自定义Trace将以独立泳道的形式呈现在对应打点的进程下。
+添加自定义Trace后，可在SmartPerf-Host调试工具上查看，自定义Trace将以独立泳道的形式呈现在对应打点的进程下。
 下图两条泳道使用了startTrace和finishTrace方法，表示程序运行过程中，指定标签从调用startTrace到调用finishTrace的耗时统计。图中记录了CUSTOM_TRACE_TAG_1和CUSTOM_TRACE_TAG_2两个标签，先后呈现了2个标签的耗时统计。
 
 **图12 自定义Trace示例**
@@ -285,7 +285,7 @@ export struct IconItem {
 Trace的生成依赖了DFX子系统中的HiTrace组件，其中包含的hiTraceMeter模块为开发者提供系统性能打点接口，具体细节可参考下方链接：
 
 > [HiTrace组件](https://gitcode.com/openharmony/hiviewdfx_hitrace)
-> [hiTraceMeter模块/apis-performance-analysis-kit/capi-trace-h.md)
+> hiTraceMeter模块
 
 hiTraceMeter拥有两套开始和结束打点接口，实现对逻辑行为的耗时统计。由于耗时统计大多数以方法为单位，所以hiTraceMeter也提供了快速打点单个方法执行耗时的宏定义HITRACE_METER、HITRACE_METER_NAME、HITRACE_METER_FMT，使用它们，只需要在方法起始位置调用即可。这些宏定义依赖了方法内局部变量的生命周期，其原理是在方法开始时构造了一个打点实例，在实例构造函数中调用开始打点接口，当方法执行完毕，打点实例随着方法结束而执行析构，在实例析构函数中调用结束打点接口。
 

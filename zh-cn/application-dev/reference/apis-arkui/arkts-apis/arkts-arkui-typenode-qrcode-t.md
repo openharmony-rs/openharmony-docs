@@ -12,9 +12,6 @@ QRCode类型的FrameNode节点类型。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-type QRCode = TypedFrameNode<QRCodeInterface, QRCodeAttribute>--><!--Device-typeNode-type QRCode = TypedFrameNode<QRCodeInterface, QRCodeAttribute>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** TypedFrameNode<QRCodeInterface, QRCodeAttribute>
-
+**属性类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;QRCodeInterface, [QRCodeAttribute](../arkts-components/arkts-arkui-qrcode-attribute.md)&gt;

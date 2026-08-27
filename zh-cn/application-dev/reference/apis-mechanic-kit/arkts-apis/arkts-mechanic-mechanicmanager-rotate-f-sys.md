@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## rotate
 
 ```TypeScript
-function rotate(mechId: int, angles: RotationAngles, duration: int): Promise<Result>
+function rotate(mechId: number, angles: RotationAngles, duration: number): Promise<Result>
 ```
 
 将机械设备旋转到相对角度
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-function rotate(mechId: int, angles: RotationAngles, duration: int): Promise<Result>--><!--Device-mechanicManager-function rotate(mechId: int, angles: RotationAngles, duration: int): Promise<Result>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -26,15 +23,15 @@ function rotate(mechId: int, angles: RotationAngles, duration: int): Promise<Res
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | int | 是 | ID of the mechanical device. |
+| mechId | number | 是 | ID of the mechanical device. |
 | angles | [RotationAngles](arkts-mechanic-mechanicmanager-rotationangles-i-sys.md) | 是 | Relative angles. |
-| duration | int | 是 | Rotation duration. Unit: millisecond. |
+| duration | number | 是 | Rotation duration. Unit: millisecond. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Result&gt; | Promise that return the execution result. |
+| Promise & lt;Result & gt; | Promise that return the execution result. |
 
 **错误码：**
 
@@ -59,4 +56,3 @@ mechanicManager.rotate(0, degree, 500)
   });
 console.info('End rotation');
 ```
-

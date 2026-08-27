@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-insightIntentDriver-interface QueryParam--><!--Device-insightIntentDriver-interface QueryParam-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -30,8 +28,6 @@ bundleName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-QueryParam-bundleName: string--><!--Device-QueryParam-bundleName: string-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -49,8 +45,6 @@ className: string
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-QueryParam-className: string--><!--Device-QueryParam-className: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -70,8 +64,6 @@ intentName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-QueryParam-intentName: string--><!--Device-QueryParam-intentName: string-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -89,8 +81,6 @@ moduleName: string
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-QueryParam-moduleName: string--><!--Device-QueryParam-moduleName: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -110,8 +100,6 @@ queryEntityParam: insightIntent.QueryEntityParam
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-QueryParam-queryEntityParam: insightIntent.QueryEntityParam--><!--Device-QueryParam-queryEntityParam: insightIntent.QueryEntityParam-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -119,20 +107,17 @@ queryEntityParam: insightIntent.QueryEntityParam
 ## userId
 
 ```TypeScript
-userId?: int
+userId?: number
 ```
 
 目标用户ID。 如果调用方应用的用户ID与目标用户ID不一致，则需要申请权限： oos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。 取值范围为全体整数。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-QueryParam-userId?: int--><!--Device-QueryParam-userId?: int-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-

@@ -16,14 +16,14 @@
 > 建议直接使用手势系统来处理交互，可不关注基础事件之间的区别。
 
 
-[支持触屏输入事件](./arkts-interaction-development-guide-touch-screen.md)：触屏设备及对其产生的触摸事件。
+支持触屏输入事件：触屏设备及对其产生的触摸事件。
 
-[支持鼠标输入事件](./arkts-interaction-development-guide-mouse.md)：鼠标设备及如何处理其产生的事件。
+支持鼠标输入事件：鼠标设备及如何处理其产生的事件。
 
-[支持触控板输入事件](./arkts-interaction-development-guide-touchpad.md)：触控板设备及如何处理其产生的事件。
+支持触控板输入事件：触控板设备及如何处理其产生的事件。
 
-[支持键盘输入事件](./arkts-interaction-development-guide-keyboard.md)：键盘类设备及如何处理其产生的事件。
+支持键盘输入事件：键盘类设备及如何处理其产生的事件。
 
-[支持游戏手柄输入事件](./arkts-interaction-development-guide-gamepad.md)：游戏手柄设备及如何处理其产生的事件。
+支持游戏手柄输入事件：游戏手柄设备及如何处理其产生的事件。
 
-[支持表冠输入事件](./arkts-common-events-crown-event.md)：旋转表冠及其如何处理其产生的事件。
+支持表冠输入事件：旋转表冠及其如何处理其产生的事件。

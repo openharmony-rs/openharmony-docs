@@ -1,10 +1,8 @@
 # RenderTarget（系统接口）
 
-Audio render target.
+枚举，音频渲染器的渲染目标。@enum { number }
 
-**起始版本：** 23
-
-<!--Device-audio-enum RenderTarget--><!--Device-audio-enum RenderTarget-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -16,11 +14,9 @@ Audio render target.
 PLAYBACK = 0
 ```
 
-Playback. Under this target, the audio renderer will be played out. This is the default target of audio renderer.
+播放模式（音频渲染器的默认模式）。在此模式下，音频将通过音频渲染器正常播放。
 
-**起始版本：** 23
-
-<!--Device-RenderTarget-PLAYBACK = 0--><!--Device-RenderTarget-PLAYBACK = 0-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -32,13 +28,10 @@ Playback. Under this target, the audio renderer will be played out. This is the 
 INJECT_TO_VOICE_COMMUNICATION_CAPTURE = 1
 ```
 
-Inject to voice communication capture. Under this target, the audio renderer will be injected to audio capture with source type of [SOURCE_TYPE_VOICE_COMMUNICATION](arkts-audio-audio-sourcetype-e.md#source_type_voice_communication) when the audio scene is [AUDIO_SCENE_VOICE_CHAT](arkts-audio-audio-audioscene-e.md#audio_scene_voice_chat).
+注入模式。在此模式下，当录音流的source type为[SOURCE_TYPE_VOICE_COMMUNICATION](arkts-apis-audio-e.md#sourcetype8)，audio scene为 [AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene)时，音频渲染器的输出将被注入到VoIP录音流上。
 
-**起始版本：** 23
-
-<!--Device-RenderTarget-INJECT_TO_VOICE_COMMUNICATION_CAPTURE = 1--><!--Device-RenderTarget-INJECT_TO_VOICE_COMMUNICATION_CAPTURE = 1-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **系统接口：** 此接口为系统接口。
-

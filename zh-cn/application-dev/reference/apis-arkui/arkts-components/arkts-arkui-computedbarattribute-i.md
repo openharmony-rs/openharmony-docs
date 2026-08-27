@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface ComputedBarAttribute--><!--Device-unnamed-declare interface ComputedBarAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,7 +17,7 @@
 totalLength: number
 ```
 
-Grid内容总长度，单位px。
+Grid内容总长度，单位vp。
 
 **类型：** number
 
@@ -28,8 +26,6 @@ Grid内容总长度，单位px。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ComputedBarAttribute-totalLength: number--><!--Device-ComputedBarAttribute-totalLength: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,7 +35,7 @@ Grid内容总长度，单位px。
 totalOffset: number
 ```
 
-Grid内容相对显示区域的总偏移，单位px。
+Grid内容相对显示区域的总偏移，单位vp。
 
 **类型：** number
 
@@ -49,7 +45,4 @@ Grid内容相对显示区域的总偏移，单位px。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ComputedBarAttribute-totalOffset: number--><!--Device-ComputedBarAttribute-totalOffset: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -22,8 +22,6 @@ function rebootDevice(reason: string): void
 
 **需要权限：** ohos.permission.REBOOT
 
-<!--Device-power-function rebootDevice(reason: string): void--><!--Device-power-function rebootDevice(reason: string): void-End-->
-
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
 **参数：**
@@ -37,4 +35,3 @@ function rebootDevice(reason: string): void
 ```TypeScript
 power.rebootDevice('reboot_test');
 ```
-

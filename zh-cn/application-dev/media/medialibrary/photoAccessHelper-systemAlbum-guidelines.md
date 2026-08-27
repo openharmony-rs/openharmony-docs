@@ -10,10 +10,10 @@ photoAccessHelper提供对收藏夹、视频相册、截屏和录屏相册的相
 
 > **说明：**
 >
-> 在进行功能开发前，请查阅[开发准备](photoAccessHelper-preparation.md)，了解如何获取相册管理模块实例及申请相关权限。
-> 文档中使用到PhotoAccessHelper的地方，默认使用[开发准备](photoAccessHelper-preparation.md)中获取的对象，如未添加此段代码提示PhotoAccessHelper未定义的错误请自行添加。
+> 在进行功能开发前，请查阅开发准备，了解如何获取相册管理模块实例及申请相关权限。
+> 文档中使用到PhotoAccessHelper的地方，默认使用开发准备中获取的对象，如未添加此段代码提示PhotoAccessHelper未定义的错误请自行添加。
 
-为了保证应用的运行效率，大部分photoAccessHelper的接口调用都是异步的。以下异步调用的API示例均采用Promise函数，更多方式可以查阅[模块描述/apis-media-library-kit/arkts-apis-photoAccessHelper.md)。
+为了保证应用的运行效率，大部分photoAccessHelper的接口调用都是异步的。以下异步调用的API示例均采用Promise函数，更多方式可以查阅模块描述。
 
 如无特别说明，文档中涉及的待获取的资源均视为已经预置且在数据库中存在相应数据。如出现按照示例代码执行出现获取资源为空的情况，请确认文件是否已预置，数据库中是否存在该文件的数据。
 
@@ -23,12 +23,12 @@ photoAccessHelper提供对收藏夹、视频相册、截屏和录屏相册的相
 
 ### 获取收藏夹对象
 
-通过[PhotoAccessHelper.getAlbums/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums-2)接口获取收藏夹对象。
+通过PhotoAccessHelper.getAlbums接口获取收藏夹对象。
 
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'。
+- 申请相册管理模块功能相关权限'ohos.permission.READ_IMAGEVIDEO'。
 
 **开发步骤**
 
@@ -60,18 +60,18 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 <!--Del-->
 ### 收藏图片和视频（仅向系统应用开放）
 
-通过[MediaAssetChangeRequest.setFavorite/apis-media-library-kit/js-apis-photoAccessHelper-sys.md#setfavorite11)和[PhotoAccessHelper.applyChanges/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口将图片或视频设置为收藏。
+通过MediaAssetChangeRequest.setFavorite和PhotoAccessHelper.applyChanges接口将图片或视频设置为收藏。
 
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'和'ohos.permission.WRITE_IMAGEVIDEO'。
+- 申请相册管理模块功能相关权限'ohos.permission.READ_IMAGEVIDEO'和'ohos.permission.WRITE_IMAGEVIDEO'。
 
 下面将以收藏一张图片为例。
 
 **开发步骤**
 
-1. [获取指定媒体资源](photoAccessHelper-resource-guidelines.md#获取指定媒体资源)。
+1. 获取指定媒体资源。
 2. 调用MediaAssetChangeRequest.setFavorite接口将图片设置为收藏。
 3. 调用PhotoAccessHelper.applyChanges接口提交收藏图片的变更请求。
 
@@ -103,23 +103,23 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### 获取收藏夹中的图片和视频
 
-先[获取收藏夹对象](#获取收藏夹对象)。然后调用[Album.getAssets/apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets-1)接口获取收藏夹中的资源。
+先获取收藏夹对象。然后调用Album.getAssets接口获取收藏夹中的资源。
 
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'。
+- 申请相册管理模块功能相关权限'ohos.permission.READ_IMAGEVIDEO'。
 
 下面以获取收藏夹中的一张图片为例。
 
 **开发步骤**
 
-1. [获取收藏夹对象](#获取收藏夹对象)。
+1. 获取收藏夹对象。
 2. 建立图片检索条件，用于获取图片。
 3. 调用Album.getAssets接口获取图片资源。
-4. 调用[FetchResult.getFirstObject/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一张图片。
+4. 调用FetchResult.getFirstObject接口获取第一张图片。
 
-<!-- @[get_media_from_favorites](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getmediafromfavoritesability/GetMediaFromFavoritesAbility.ets) -->
+<!-- @[get_media_from_favorites](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getmediafromfavoritesability/GetMediaFromFavoritesAbility.ets) --> 
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -134,22 +134,28 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     predicates: predicates
   };
 
+  let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> | null = null;
+  let photoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
   try {
-    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
-      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.FAVORITE);
+    albumFetchResult = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM,
+      photoAccessHelper.AlbumSubtype.FAVORITE);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     console.info('get favorite album successfully, albumUri: ' + album.albumUri);
 
-    let photoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
-      await album.getAssets(fetchOptions);
+    photoFetchResult = await album.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await photoFetchResult.getFirstObject();
     console.info('favorite album getAssets successfully, photoAsset displayName: ' + photoAsset.displayName);
-    photoFetchResult.close();
-    albumFetchResult.close();
     // ...
   } catch (err) {
     console.error('favorite failed with err: ' + err);
     // ...
+  } finally {
+    if (photoFetchResult) {
+      photoFetchResult.close();
+    }
+    if (albumFetchResult) {
+      albumFetchResult.close();
+    }
   }
 }
 ```
@@ -157,18 +163,18 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 <!--Del-->
 ### 取消收藏图片或视频（仅向系统应用开放）
 
-通过[MediaAssetChangeRequest.setFavorite/apis-media-library-kit/js-apis-photoAccessHelper-sys.md#setfavorite11)和[PhotoAccessHelper.applyChanges/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口将图片或视频取消收藏。
+通过MediaAssetChangeRequest.setFavorite和PhotoAccessHelper.applyChanges接口将图片或视频取消收藏。
 
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'和'ohos.permission.WRITE_IMAGEVIDEO'。
+- 申请相册管理模块功能相关权限'ohos.permission.READ_IMAGEVIDEO'和'ohos.permission.WRITE_IMAGEVIDEO'。
 
 下面以将一张图片取消收藏为例。
 
 **开发步骤**
 
-1. [获取收藏夹中的图片和视频](#获取收藏夹中的图片和视频)。
+1. 获取收藏夹中的图片和视频。
 2. 调用MediaAssetChangeRequest.setFavorite接口将图片设置为取消收藏。
 3. 调用PhotoAccessHelper.applyChanges接口提交取消收藏图片的变更请求。
 
@@ -212,12 +218,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### 获取视频相册对象
 
-通过[PhotoAccessHelper.getAlbums/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums-2)接口获取视频相册对象。
+通过PhotoAccessHelper.getAlbums接口获取视频相册对象。
 
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'。
+- 申请相册管理模块功能相关权限'ohos.permission.READ_IMAGEVIDEO'。
 
 **开发步骤**
 
@@ -248,21 +254,21 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### 获取视频相册中的视频
 
-先[获取视频相册对象](#获取视频相册对象)。然后调用[Album.getAssets/apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets-1)接口获取视频相册对象中的视频资源。
+先获取视频相册对象。然后调用Album.getAssets接口获取视频相册对象中的视频资源。
 
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'。
+- 申请相册管理模块功能相关权限'ohos.permission.READ_IMAGEVIDEO'。
 
 下面以获取视频相册中的一个视频为例。
 
 **开发步骤**
 
-1. 先[获取视频相册对象](#获取视频相册对象)。
+1. 先获取视频相册对象。
 2. 建立视频检索条件，用于获取视频。
 3. 调用Album.getAssets接口获取视频资源。
-4. 调用[FetchResult.getFirstObject/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一个视频。
+4. 调用FetchResult.getFirstObject接口获取第一个视频。
 
 <!-- @[get_videos_from_video_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getvideosfromvideoalbumability/GetVideosFromVideoAlbumAbility.ets) --> 
 
@@ -306,12 +312,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### 获取截屏和录屏相册对象
 
-通过[PhotoAccessHelper.getAlbums/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums-2)接口获取截屏和录屏相册对象。
+通过PhotoAccessHelper.getAlbums接口获取截屏和录屏相册对象。
 
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'。
+- 申请相册管理模块功能相关权限'ohos.permission.READ_IMAGEVIDEO'。
 
 **开发步骤**
 
@@ -335,21 +341,21 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### 获取截屏和录屏相册中的媒体资源
 
-先[获取截屏和录屏相册对象](#获取截屏和录屏相册对象)。然后调用[Album.getAssets/apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets-1)接口获取截屏和录屏相册对象中的媒体资源。
+先获取截屏和录屏相册对象。然后调用Album.getAssets接口获取截屏和录屏相册对象中的媒体资源。
 
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'。
+- 申请相册管理模块功能相关权限'ohos.permission.READ_IMAGEVIDEO'。
 
 下面以获取截屏和录屏相册中的一个媒体资源为例。
 
 **开发步骤**
 
-1. 先[获取截屏和录屏相册对象](#获取截屏和录屏相册对象)。
+1. 先获取截屏和录屏相册对象。
 2. 建立检索条件，用于获取媒体资源。
 3. 调用Album.getAssets接口获取媒体资源。
-4. 调用[FetchResult.getFirstObject/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一个媒体资源。
+4. 调用FetchResult.getFirstObject接口获取第一个媒体资源。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';

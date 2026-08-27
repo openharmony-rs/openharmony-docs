@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## getMaxRotationTime
 
 ```TypeScript
-function getMaxRotationTime(mechId: int): int
+function getMaxRotationTime(mechId: number): number
 ```
 
 Obtains the maximum continuous rotation duration of a mechanical device.
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-function getMaxRotationTime(mechId: int): int--><!--Device-mechanicManager-function getMaxRotationTime(mechId: int): int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -26,13 +23,13 @@ Obtains the maximum continuous rotation duration of a mechanical device.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | int | 是 | 机械设备ID |
+| mechId | number | 是 | 机械设备ID |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| int | Maximum rotation duration. Unit: millisecond. |
+| number | Maximum rotation duration. Unit: millisecond. |
 
 **错误码：**
 
@@ -49,4 +46,3 @@ console.info('Query maximum rotation time');
 let maxTime = mechanicManager.getMaxRotationTime(0);
 console.info(`'Query maximum rotation time successful, maximum time:' ${maxTime}`);
 ```
-

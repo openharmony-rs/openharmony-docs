@@ -27,7 +27,7 @@ typedef struct OH_Cursor {...} OH_Cursor
 
 | 名称 | 描述 |
 | -- | -- |
-| [int (\*getColumnCount)(OH_Cursor *cursor, int *count)](#getcolumncount) | 函数指针，获取结果集中的行数。 |
+| [int (\*getColumnCount)(OH_Cursor *cursor, int *count)](#getcolumncount) | 函数指针，获取结果集中的列数。 |
 | [int (\*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *columnType)](#getcolumntype) | 函数指针，根据指定的列索引获取列类型。 |
 | [int (\*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)](#getcolumnindex) | 函数指针，根据指定的列名获取列索引。 |
 | [int (\*getColumnName)(OH_Cursor *cursor, int32_t columnIndex, char *name, int length)](#getcolumnname) | 函数指针，根据指定的列索引获取列名。 |
@@ -53,7 +53,7 @@ int (*getColumnCount)(OH_Cursor *cursor, int *count)
 
 **描述**
 
-函数指针，获取结果集中的行数。
+函数指针，获取结果集中的列数。
 
 **起始版本：** 10
 
@@ -93,7 +93,7 @@ int (*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *colu
 | -- | -- |
 | [OH_Cursor](capi-rdb-oh-cursor.md) *cursor | 表示指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。 |
 |  int32_t columnIndex | 表示结果集中指定列的索引，索引值从0开始。 |
-|  [OH_ColumnType](capi-oh-data-value-h.md#oh_columntype) *columnType | 该参数是输出参数，列值类型写入此变量。 |
+|  OH_ColumnType *columnType | 该参数是输出参数，列值类型写入此变量。 |
 
 **返回：**
 
@@ -495,7 +495,7 @@ int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uin
 | [OH_Cursor](capi-rdb-oh-cursor.md) *cursor | 表示指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。 |
 |  int32_t columnIndex | 表示结果集中指定列的索引，索引值从0开始。 |
 |  [Data_Asset](capi-rdb-data-asset.md) **value | 该参数是输出参数，请求列的值以[Data_Asset](capi-rdb-data-asset.md)实例写入此变量。 |
-|  uint32_t *length | 表示值的长度。 |
+|  uint32_t *length | 既是入参又是出参：作为入参，需要开发者传入一个uint32_t类型的变量，表示输入缓冲区的大小；<br>作为出参，表示函数执行后，length指向的变量会被更新为实际返回的资产数组的长度。 |
 
 **返回：**
 

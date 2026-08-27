@@ -2,20 +2,20 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
 ## 简介
 
-当应用的主线程执行耗时任务时，开发者会感知到应用卡顿，但卡顿时间未达到系统设定的[应用冻屏](appfreeze-guidelines.md)时间限制，因此不会生成故障日志。为了更好地定位和分析问题，开发者可以查看[主线程超时事件检测原理](apptask-timeout-guidelines.md#检测原理)，根据生成的[主线程超时事件日志规格](apptask-timeout-guidelines.md#日志规格)，分析主线程任务的执行情况。
+当应用的主线程执行耗时任务时，开发者会感知到应用卡顿，但卡顿时间未达到系统设定的应用冻屏时间限制，因此不会生成故障日志。为了更好地定位和分析问题，开发者可以查看主线程超时事件检测原理，根据生成的主线程超时事件日志规格，分析主线程任务的执行情况。
 
 本文面向开发者介绍主线程超时检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅主线程超时事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。
 
-- [订阅主线程超时事件（ArkTS）](hiappevent-watcher-mainthreadjank-events-arkts.md)。
+- 订阅主线程超时事件（ArkTS）。
 
-- [订阅主线程超时事件（C/C++）](hiappevent-watcher-mainthreadjank-events-ndk.md)。
+- 订阅主线程超时事件（C/C++）。
 
 > **说明：**
 >
@@ -23,7 +23,7 @@
 
 ## 检测原理
 
-详见[主线程超时检测原理](apptask-timeout-guidelines.md#主线程超时检测)。
+详见主线程超时检测原理。
 
 > **注意：**
 >
@@ -37,7 +37,7 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [setEventConfig(name: string, config: Record&lt;string, ParamType>): Promise&lt;void>/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventseteventconfig15) | 设置主线程采样栈参数接口。 |
+| setEventConfig(name: string, config: Record&lt;string, ParamType>): Promise&lt;void> | 设置主线程采样栈参数接口。 |
 
 ### setEventConfig接口参数设置说明
 
@@ -58,11 +58,11 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| log_type | string | 是 | 采集MAIN_THREAD_JANK事件日志类型。<br/>log_type=0：默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br/>log_type=1：仅采集调用栈。<br/>log_type=2：仅采集trace。 |
-| sample_interval | string | 否 | 主线程超时检测间隔和采样间隔。<br/>单位为ms，默认值：150，取值范围为[50, 500]。<br/>系统根据开发者设置的sample_interval进行超时检测判断，并使用该sample_interval作为周期性任务检测的间隔。 |
-| ignore_startup_time | string | 否 | 忽略启动时间内的主线程超时检测。单位为s，最小值：3，默认值：10。<br/>线程启动一定时间内，不进行超时检测。一些进程启动时间较长，此时抓全的超时采样栈，分析意义不大。因此，在开发者定义启动时间间隔内，不进行超时检测。 |
-| sample_count | string | 否 | 主线程超时采样次数。系统检测到当前主线程执行任务时长达到可采样阈值时，开始周期性采集堆栈，每个间隔采集一次堆栈，共采集sample_count次。<br/>默认值：10次。<br/>最小值：1次，最大值需要结合自定义的sample_interval进行动态计算，计算公式：sample_count &lt;= (2500 / sample_interval - 4)。 |
-| report_times_per_app | string | 否 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1次，单位：次。<br/>开发者选项打开，每小时范围：[1, 3]。<br/>开发者选项关闭，每天上报次数范围：[1, 3]。 |
+| log_type | string | 是 | 采集MAIN_THREAD_JANK事件日志类型。<br>log_type=0：默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br>log_type=1：仅采集调用栈。<br>log_type=2：仅采集trace。 |
+| sample_interval | string | 否 | 主线程超时检测间隔和采样间隔。<br>单位为ms，默认值：150，取值范围为[50, 500]。<br>系统根据开发者设置的sample_interval进行超时检测判断，并使用该sample_interval作为周期性任务检测的间隔。 |
+| ignore_startup_time | string | 否 | 忽略启动时间内的主线程超时检测。单位为s，最小值：3，默认值：10。<br>线程启动一定时间内，不进行超时检测。一些进程启动时间较长，此时抓全的超时采样栈，分析意义不大。因此，在开发者定义启动时间间隔内，不进行超时检测。 |
+| sample_count | string | 否 | 主线程超时采样次数。系统检测到当前主线程执行任务时长达到可采样阈值时，开始周期性采集堆栈，每个间隔采集一次堆栈，共采集sample_count次。<br>默认值：10次。<br>最小值：1次，最大值需要结合自定义的sample_interval进行动态计算，计算公式：sample_count &lt;= (2500 / sample_interval - 4)。 |
+| report_times_per_app | string | 否 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br>默认值：1次，单位：次。<br>开发者选项打开，每小时范围：[1, 3]。<br>开发者选项关闭，每天上报次数范围：[1, 3]。 |
 
 1. sample_count说明：
 
@@ -132,15 +132,15 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [configEventPolicy(policy: EventPolicy): Promise&lt;void>/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) | 设置主线程采样栈参数接口。支持超时卡顿结束自动停止采样。 |
+| configEventPolicy(policy: EventPolicy): Promise&lt;void> | 设置主线程采样栈参数接口。支持超时卡顿结束自动停止采样。 |
 
 ### configEventPolicy接口参数设置说明
 
-开发者可以使用上述hiappevent提供的接口，在[EventPolicy/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 中配置采样栈接口的参数。
+开发者可以使用上述hiappevent提供的接口，在EventPolicy 中配置采样栈接口的参数。
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| mainThreadJankPolicy | [MainThreadJankPolicy/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。 |
+| mainThreadJankPolicy | MainThreadJankPolicy | 否 | 是   | 主线程超时事件配置策略。 |
 
 **参数设置示例**
 
@@ -210,14 +210,14 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [int OH_HiAppEvent_SetEventConfig(const char\* name, HiAppEvent_Config\* config)/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_seteventconfig) | 设置主线程采样栈参数接口。 |
+| int OH_HiAppEvent_SetEventConfig(const char\* name, HiAppEvent_Config\* config) | 设置主线程采样栈参数接口。 |
 
 ### OH_HiAppEvent_SetEventConfig接口参数设置说明
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | name | const char\* | 是 | 主线程超时事件名称，此处为预定义的宏EVENT_MAIN_THREAD_JANK或EVENT_MAIN_THREAD_JANK_V2。|
-| config | HiAppEvent_Config\* | 是 | 主线程超时采样栈配置参数，可使用[OH_HiAppEvent_SetConfigItem/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_setconfigitem)函数设置config参数的配置项。 |
+| config | HiAppEvent_Config\* | 是 | 主线程超时采样栈配置参数，可使用OH_HiAppEvent_SetConfigItem函数设置config参数的配置项。 |
 
 **name为EVENT_MAIN_THREAD_JANK**
 
@@ -241,11 +241,11 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 | 配置项名称 | 类型 | 必须配置 | 说明 |
 | -------- | -------- | -------- | -------- |
-| 宏：MAIN_THREAD_JANK_PARAM_LOG_TYPE<br/>字符串：log_type | const char\* | 是 | 采集日志的类型。<br/>值为"0"：默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br/>值为"1"：仅采集调用栈。<br/>值为"2"：仅采集trace。 |
-| 宏：MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL<br/>字符串：sample_interval | const char\* | 否 | 主线程超时检测间隔和采样间隔。<br/>单位为ms，默认值：150，取值范围为[50, 500]。<br/>系统根据开发者设置的MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL的值进行超时检测判断，并使用该值作为周期性任务检测的间隔。 |
-| 宏：MAIN_THREAD_JANK_PARAM_IGNORE_STARTUP_TIME<br/>字符串：ignore_startup_time | const char\* | 否 | 忽略启动时间内的主线程超时检测。<br/>单位为s，最小值：3，默认值：10。<br/>线程启动一定时间内，不进行超时检测。一些进程启动时间较长，此时抓全的超时采样栈，分析意义不大。因此，在开发者定义启动时间间隔内，不进行超时检测。 |
-| 宏：MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT<br/>字符串：sample_count | const char\* | 否 | 主线程超时采样次数。系统检测到当前主线程执行任务时长达到可采样阈值时，开始周期性采集堆栈，每个间隔采集一次堆栈，共采集MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT次。<br/>默认值：10次。<br/>最小值：1次，最大值需要结合自定义的MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL进行动态计算，计算公式：MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT &lt;= (2500 / MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL - 4)。 |
-| 宏：MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP<br/>字符串：report_times_per_app | const char\* | 否 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1次，单位：次。<br/>开发者选项打开，每小时范围：[1, 3]。<br/>开发者选项关闭，每天上报次数范围：[1, 3]。 |
+| 宏：MAIN_THREAD_JANK_PARAM_LOG_TYPE<br>字符串：log_type | const char\* | 是 | 采集日志的类型。<br>值为"0"：默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br>值为"1"：仅采集调用栈。<br>值为"2"：仅采集trace。 |
+| 宏：MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL<br>字符串：sample_interval | const char\* | 否 | 主线程超时检测间隔和采样间隔。<br>单位为ms，默认值：150，取值范围为[50, 500]。<br>系统根据开发者设置的MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL的值进行超时检测判断，并使用该值作为周期性任务检测的间隔。 |
+| 宏：MAIN_THREAD_JANK_PARAM_IGNORE_STARTUP_TIME<br>字符串：ignore_startup_time | const char\* | 否 | 忽略启动时间内的主线程超时检测。<br>单位为s，最小值：3，默认值：10。<br>线程启动一定时间内，不进行超时检测。一些进程启动时间较长，此时抓全的超时采样栈，分析意义不大。因此，在开发者定义启动时间间隔内，不进行超时检测。 |
+| 宏：MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT<br>字符串：sample_count | const char\* | 否 | 主线程超时采样次数。系统检测到当前主线程执行任务时长达到可采样阈值时，开始周期性采集堆栈，每个间隔采集一次堆栈，共采集MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT次。<br>默认值：10次。<br>最小值：1次，最大值需要结合自定义的MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL进行动态计算，计算公式：MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT &lt;= (2500 / MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL - 4)。 |
+| 宏：MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP<br>字符串：report_times_per_app | const char\* | 否 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br>默认值：1次，单位：次。<br>开发者选项打开，每小时范围：[1, 3]。<br>开发者选项关闭，每天上报次数范围：[1, 3]。 |
 
 1. MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT说明：
 
@@ -324,7 +324,7 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 **name为EVENT_MAIN_THREAD_JANK_V2**
 
-从API VERSION 22开始，name可以为EVENT_MAIN_THREAD_JANK_V2，接口提供主线程超时结束自动停止采样栈的功能，config参数作如下配置。
+从API version 22开始，name可以为EVENT_MAIN_THREAD_JANK_V2，接口提供主线程超时结束自动停止采样栈的功能，config参数作如下配置。
 
 > **注意：**
 > 
@@ -342,12 +342,12 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 | 配置项名称 | 类型 | 必须配置 | 说明 |
 | -------- | -------- | -------- | -------- |
-| MAIN_THREAD_JANK_PARAM_LOG_TYPE | const char\* | 否 | 采集日志的类型。<br/>值为"0"：默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br/>值为"1"：仅采集调用栈。<br/>值为"2"：仅采集trace。 |
-| MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL | const char\* | 否 | 主线程超时检测间隔和采样间隔。<br/>单位为ms，默认值：150，取值范围为[50, 500]。<br/>系统根据开发者设置的MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL的值进行超时检测判断，并使用该值作为周期性任务检测的间隔。 |
-| MAIN_THREAD_JANK_PARAM_IGNORE_STARTUP_TIME | const char\* | 否 | 忽略启动时间内的主线程超时检测。<br/>单位为s，最小值：3，默认值：10。<br/>线程启动一定时间内，不进行超时检测。一些进程启动时间较长，此时抓全的超时采样栈，分析意义不大。因此，在开发者定义启动时间间隔内，不进行超时检测。 |
-| MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT | const char\* | 否 | 主线程超时采样次数。系统检测到当前主线程执行任务时长达到可采样阈值时，系统检测到当前主线程执行任务超过采样限制后，开始周期性采集堆栈，每个间隔采集一次堆栈，共采集MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT次。<br/>默认值：10次。<br/>最小值：1次，最大值需要结合自定义的MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL进行动态计算，计算公式：MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT &lt;= (2500 / MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL - 4)。 |
-| MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP | const char\* | 否 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1次，单位：次。<br/>开发者选项打开，每小时范围：[1, 3]。<br/>开发者选项关闭，每天上报次数范围：[1, 3]。 |
-| MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING | const char\* | 否 | 主线程超时结束时，是否自动停止采样主线程堆栈。<br/>true: 超时结束或达到设置的采样次数，停止采样。<br/>false：达到设置的采样次数时停止采样。<br/>默认值：false。 |
+| MAIN_THREAD_JANK_PARAM_LOG_TYPE | const char\* | 否 | 采集日志的类型。<br>值为"0"：默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br>值为"1"：仅采集调用栈。<br>值为"2"：仅采集trace。 |
+| MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL | const char\* | 否 | 主线程超时检测间隔和采样间隔。<br>单位为ms，默认值：150，取值范围为[50, 500]。<br>系统根据开发者设置的MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL的值进行超时检测判断，并使用该值作为周期性任务检测的间隔。 |
+| MAIN_THREAD_JANK_PARAM_IGNORE_STARTUP_TIME | const char\* | 否 | 忽略启动时间内的主线程超时检测。<br>单位为s，最小值：3，默认值：10。<br>线程启动一定时间内，不进行超时检测。一些进程启动时间较长，此时抓全的超时采样栈，分析意义不大。因此，在开发者定义启动时间间隔内，不进行超时检测。 |
+| MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT | const char\* | 否 | 主线程超时采样次数。系统检测到当前主线程执行任务时长达到可采样阈值时，系统检测到当前主线程执行任务超过采样限制后，开始周期性采集堆栈，每个间隔采集一次堆栈，共采集MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT次。<br>默认值：10次。<br>最小值：1次，最大值需要结合自定义的MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL进行动态计算，计算公式：MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT &lt;= (2500 / MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL - 4)。 |
+| MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP | const char\* | 否 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br>默认值：1次，单位：次。<br>开发者选项打开，每小时范围：[1, 3]。<br>开发者选项关闭，每天上报次数范围：[1, 3]。 |
+| MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING | const char\* | 否 | 主线程超时结束时，是否自动停止采样主线程堆栈。<br>true: 超时结束或达到设置的采样次数，停止采样。<br>false：达到设置的采样次数时停止采样。<br>默认值：false。 |
 
 1. MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT说明：
 
@@ -400,7 +400,7 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING, "true");
 
    int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK_V2, config);
-   if (ret == HIAPPEVENT_SUCCESS) {{
+   if (ret == HIAPPEVENT_SUCCESS) {
        OH_LOG_INFO(LogType::LOG_APP, "Successfully set sampling stack parameters.");
    }
    OH_HiAppEvent_DestroyConfig(config);

@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 501 无法调用接口
 
@@ -51,7 +51,7 @@ The operation failed. Possible cause: 1.Image upload exception. 2. Decoding proc
 
 请检查图片并按指示操作重新解码。
 
-## 62980097 pixelmap序列化传输失败
+## 62980097 Pixelmap序列化传输失败
 
 **错误信息**
 
@@ -59,7 +59,7 @@ IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception
 
 **错误描述**
 
-pixelmap序列化传输失败。
+Pixelmap序列化传输失败。
 
 **可能原因**
 
@@ -193,7 +193,7 @@ The image data is not supported.
 
 **错误信息**
 
-Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap.
+Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty Pixelmap.
 
 **错误描述**
 
@@ -492,7 +492,7 @@ Failed to encode the image.
 
 **错误信息**
 
-Add pixelmap out of range.
+Add Pixelmap out of range.
 
 **错误描述**
 
@@ -949,7 +949,7 @@ PixelMap设置内存标识符失败。
 
 **处理步骤**
 
-检查是否已释放pixelmap实例。检查内存类型是否匹配。
+检查是否已释放Pixelmap实例。检查内存类型是否匹配。
 
 ## 62980302 内存拷贝失败
 

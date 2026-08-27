@@ -18,8 +18,6 @@ function setFontWeightScale(fontWeightScale: number): Promise<void>
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
-<!--Device-uiAppearance-function setFontWeightScale(fontWeightScale: number): Promise<void>--><!--Device-uiAppearance-function setFontWeightScale(fontWeightScale: number): Promise<void>-End-->
-
 **系统能力：** SystemCapability.ArkUI.UiAppearance
 
 **系统接口：** 此接口为系统接口。
@@ -34,15 +32,15 @@ function setFontWeightScale(fontWeightScale: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | the promise returned by the function |
+| Promise & lt;void & gt; | the promise returned by the function |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [500001](../errorcode-uiappearance.md#500001-内部错误) | Internal error. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [500001](../errorcode-uiappearance.md#500001-内部错误) | Internal error. |
 
 **示例**
 
@@ -63,4 +61,3 @@ try {
   console.error(`Set fontWeightScale failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

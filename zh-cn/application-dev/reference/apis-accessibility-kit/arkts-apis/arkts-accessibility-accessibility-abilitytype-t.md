@@ -6,13 +6,11 @@ type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all
 
 无障碍辅助应用类型。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-accessibility-type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all'--><!--Device-accessibility-type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all'-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -24,4 +22,3 @@ type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all
 | 'spoken' | 表示具有语音反馈。 |
 | 'visual' | 表示具有视觉反馈。 |
 | 'all' | 表示以上所有类别。 [since 9] |
-

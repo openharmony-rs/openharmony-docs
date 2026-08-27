@@ -18,12 +18,12 @@
 
 ## 子组件
 
-支持[animate](js-components-svg-animate.md)、[animateMotion](js-components-svg-animatemotion.md)、[animateTransform](js-components-svg-animatetransform.md)。
+支持animate、animateMotion、animateTransform。
 
 
 ## 属性
 
-支持Svg组件[通用属性](js-components-svg-common-attributes.md)和以下属性，设置的通用属性会传递给子组件。
+支持Svg组件通用属性和以下属性，设置的通用属性会传递给子组件。
 
 | 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |

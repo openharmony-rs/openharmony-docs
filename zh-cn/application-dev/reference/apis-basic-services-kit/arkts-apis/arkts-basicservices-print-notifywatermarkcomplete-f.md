@@ -20,8 +20,6 @@ function notifyWatermarkComplete(jobId: string, result: WatermarkHandleResult): 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-print-function notifyWatermarkComplete(jobId: string, result: WatermarkHandleResult): void--><!--Device-print-function notifyWatermarkComplete(jobId: string, result: WatermarkHandleResult): void-End-->
-
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
@@ -50,15 +48,14 @@ let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => 
         print.notifyWatermarkComplete(jobId, print.WatermarkHandleResult.WATERMARK_HANDLE_SUCCESS);
         console.info('notifyWatermarkComplete success');
     } catch (error) {
-        console.error('notifyWatermarkComplete error: ' + JSON.stringify(error));
+        console.error(`Failed to notifyWatermarkComplete. Code: ${error.code}, message: ${error.message}`);
     }
-}
+};
 
 try {
     print.registerWatermarkCallback(watermarkCallback);
     console.info('registerWatermarkCallback success');
 } catch (error) {
-    console.error('registerWatermarkCallback error: ' + JSON.stringify(error));
+    console.error(`Failed to registerWatermarkCallback. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-

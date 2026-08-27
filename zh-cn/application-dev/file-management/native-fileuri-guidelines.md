@@ -1,8 +1,8 @@
 # FileUri开发指导(C/C++)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
@@ -16,13 +16,13 @@ FileUri提供了关于文件URI的基本操作，将URI转换成对应的沙箱�
 
 ## 约束限制
 
-- URI转路径时，URI来源建议使用系统能力获取，例如：picker、剪切板、拖拽、及系统提供的路径转URI接口等系统能力返回的URI；如果转换应用或用户拼接的URI，则转换后的路径可能无法访问。
+- URI转路径时，URI来源建议使用系统能力获取，例如：picker、剪贴板、拖拽、及系统提供的路径转URI接口等系统能力返回的URI；如果转换应用或用户拼接的URI，则转换后的路径可能无法访问。
 
 - 为保证数据的准确性，在转换或判断过程中应保持单对象处理，避免资源竞争导致数据异常。
 
 ## 接口说明
 
-接口的详细说明，请参考[oh_file_uri.h/apis-core-file-kit/capi-oh-file-uri-h.md)。
+接口的详细说明，请参考oh_file_uri.h。
 
 | 接口名称 | 描述 |
 | -------- |-------|

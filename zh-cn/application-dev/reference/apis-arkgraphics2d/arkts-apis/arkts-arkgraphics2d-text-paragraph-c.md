@@ -1,10 +1,8 @@
 # Paragraph
 
-保存文本内容及样式的载体，支持排版与绘制操作。 下列API示例中都需先使用[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)类的[build()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#build)接口获取到 Paragraph对象实例，再通过此实例调用对应方法。
+保存文本内容及样式的载体，支持排版与绘制操作。下列API示例中都需先使用[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)类的[build()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#build)接口获取到 Paragraph对象实例，再通过此实例调用对应方法。
 
-**起始版本：** 23
-
-<!--Device-text-class Paragraph--><!--Device-text-class Paragraph-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -22,11 +20,9 @@ didExceedMaxLines(): boolean
 
 返回段落是否超过最大行数。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-didExceedMaxLines(): boolean--><!--Device-Paragraph-didExceedMaxLines(): boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -48,15 +44,13 @@ let didExceed = paragraph.didExceedMaxLines();
 forceReuseRasterResult(isForce: boolean): void
 ```
 
-设置是否强制复用光栅化结果。不调用此接口时，系统默认允许更新光栅化结果。 适用于文本内容未发生变化但需要多次调用[paint](#paint)绘制的场景，通过复用光栅化结果可避免重复光栅化计算以提升绘制性能。设置后，在下次调用 [paint](#paint)绘制时生效。
+设置是否强制复用光栅化结果。不调用此接口时，系统默认允许更新光栅化结果。适用于文本内容未发生变化但需要多次调用[paint](#paint)绘制的场景，通过复用光栅化结果可避免重复光栅化计算以提升绘制性能。设置后，在下次调用 [paint](#paint)绘制时生效。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-forceReuseRasterResult(isForce: boolean): void--><!--Device-Paragraph-forceReuseRasterResult(isForce: boolean): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -67,8 +61,6 @@ forceReuseRasterResult(isForce: boolean): void
 | isForce | boolean | 是 | 是否强制复用光栅化结果。true表示强制复用光栅化结果，false表示允许更新光栅化结果。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 // Index.ets
@@ -115,73 +107,17 @@ struct Index {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-// Index.ets
-import { Entry, Component, Column, Button, Image, ClickEvent} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
-import { drawing } from '@kit.ArkGraphics2D'
-import { text } from "@kit.ArkGraphics2D"
-import { image } from '@kit.ImageKit';
-
-function textFunc(pixelmap?: image.PixelMap) {
-  if (pixelmap) {
-    let canvas = new drawing.Canvas(pixelmap);
-    let textData = "Hello World";
-    let myTextStyle: text.TextStyle = {
-      color: { alpha: 255, red: 255, green: 0, blue: 0 },
-      fontSize: 33,
-    };
-    let myParagraphStyle: text.ParagraphStyle = {
-      textStyle: myTextStyle
-    };
-    let fontCollection = new text.FontCollection();
-    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-    paragraphBuilder.addText(textData);
-    let paragraph = paragraphBuilder.build();
-    paragraph.layoutSync(200);
-    
-    paragraph.forceReuseRasterResult(true);
-    paragraph.paint(canvas, 0, 0);
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State pixelmap?: image.PixelMap = undefined;
-  fun: (pixelmap?: image.PixelMap) => void = textFunc;
-  build() {
-    Column() {
-      Image(this.pixelmap).width(200).height(200);
-      Button("Click").onClick((e: ClickEvent) => {
-        if (this.pixelmap == undefined) {
-          const color: ArrayBuffer = new ArrayBuffer(160000);
-          let opts: image.InitializationOptions =
-            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
-          this.pixelmap = image.createPixelMapSync(color, opts);
-        }
-        this.fun(this.pixelmap);
-      })
-    }
-  }
-}
-```
-
 ## getActualTextRange
 
 ```TypeScript
-getActualTextRange(lineNumber: int, includeSpaces: boolean): Range
+getActualTextRange(lineNumber: number, includeSpaces: boolean): Range
 ```
 
 获取指定行的实际可见文本范围，不包括溢出的省略号。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getActualTextRange(lineNumber: int, includeSpaces: boolean): Range--><!--Device-Paragraph-getActualTextRange(lineNumber: int, includeSpaces: boolean): Range-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -189,7 +125,7 @@ getActualTextRange(lineNumber: int, includeSpaces: boolean): Range
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| lineNumber | int | 是 | 要获取文本范围的行索引，行索引从0开始。该接口只能获取已有行的边界，即输入行索引从0开始。最大行索引为文本行数量-1，文本行数量可通过 [getLineCount](#getlinecount)接口获取。 |
+| lineNumber | number | 是 | 要获取文本范围的行索引，行索引从0开始。该接口只能获取已有行的边界，即输入行索引从0开始。最大行索引为文本行数量-1，文本行数量可通过 [getLineCount](#getlinecount)接口获取。 |
 | includeSpaces | boolean | 是 | 表示是否应包含空白字符。true表示包含空白字符，false表示不包含空白字符。 |
 
 **返回值：**
@@ -207,16 +143,14 @@ let rang = paragraph.getActualTextRange(0, true);
 ## getAlphabeticBaseline
 
 ```TypeScript
-getAlphabeticBaseline(): double
+getAlphabeticBaseline(): number
 ```
 
 获取拉丁字母基线位置。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getAlphabeticBaseline(): double--><!--Device-Paragraph-getAlphabeticBaseline(): double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -224,7 +158,7 @@ getAlphabeticBaseline(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 拉丁字母下的基线位置，浮点数，单位为物理像素px。 |
+| number | 拉丁字母下的基线位置，浮点数，单位为物理像素px。 |
 
 **示例**
 
@@ -235,7 +169,7 @@ let alphabeticBaseline = paragraph.getAlphabeticBaseline();
 ## getCharacterPositionAtCoordinate
 
 ```TypeScript
-getCharacterPositionAtCoordinate(x: double, y: double, encoding: drawing.TextEncoding): PositionWithAffinity
+getCharacterPositionAtCoordinate(x: number, y: number, encoding: drawing.TextEncoding): PositionWithAffinity
 ```
 
 获取与给定坐标最接近的字符位置信息。
@@ -246,16 +180,14 @@ getCharacterPositionAtCoordinate(x: double, y: double, encoding: drawing.TextEnc
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Paragraph-getCharacterPositionAtCoordinate(x: double, y: double, encoding: drawing.TextEncoding): PositionWithAffinity--><!--Device-Paragraph-getCharacterPositionAtCoordinate(x: double, y: double, encoding: drawing.TextEncoding): PositionWithAffinity-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | double | 是 | 文本排版区域内的水平坐标，单位为物理像素（px）。相对于文本排版区域左上角的x偏移量，向右为正方向。支持浮点数，可取负值（表示在文本区域左侧）。坐标超出文本区域范围时，将返回最近的字 符位置。可通过触摸事件或点击事件获取。 |
-| y | double | 是 | 文本排版区域内的垂直坐标，单位为物理像素（px）。相对于文本排版区域左上角的y偏移量，向下为正方向。支持浮点数，可取负值（表示在文本区域上方）。坐标超出文本区域范围时，将返回最近的字 符位置。可通过触摸事件或点击事件获取。 |
+| x | number | 是 | 文本排版区域内的水平坐标，单位为物理像素（px）。相对于文本排版区域左上角的x偏移量，向右为正方向。支持浮点数，可取负值（表示在文本区域左侧）。坐标超出文本区域范围时，将返回最近的字 符位置。可通过触摸事件或点击事件获取。 |
+| y | number | 是 | 文本排版区域内的垂直坐标，单位为物理像素（px）。相对于文本排版区域左上角的y偏移量，向下为正方向。支持浮点数，可取负值（表示在文本区域上方）。坐标超出文本区域范围时，将返回最近的字 符位置。可通过触摸事件或点击事件获取。 |
 | encoding | drawing.TextEncoding | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，返回的字符位置表示字节偏移量。对于UTF-16编码，返回的字符 位置表示UTF-16编码单元偏移量。 |
 
 **返回值：**
@@ -272,46 +204,7 @@ getCharacterPositionAtCoordinate(x: double, y: double, encoding: drawing.TextEnc
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { drawing, text } from '@kit.ArkGraphics2D'
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Button("get character position")
-        .onClick(() => {
-          let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
-          let myTextStyle: text.TextStyle = {
-            color: { alpha: 255, red: 255, green: 0, blue: 0 },
-            fontSize: 33,
-          };
-          let myParagraphStyle: text.ParagraphStyle = {
-            textStyle: myTextStyle,
-            align: text.TextAlign.END,
-          };
-          let fontCollection = new text.FontCollection();
-          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-          paragraphBuilder.addText(textData);
-          let paragraph = paragraphBuilder.build();
-          paragraph.layoutSync(200);
-          let x = 10;
-          let y = 5;
-          let position = paragraph.getCharacterPositionAtCoordinate(x, y, encoding);
-        })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { Entry, Component, Column, Button } from '@ohos.arkui.component';
 import { drawing, text } from '@kit.ArkGraphics2D'
 
 @Entry
@@ -359,8 +252,6 @@ getCharacterRangeForGlyphRange(glyphRange: Range, encoding: drawing.TextEncoding
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Paragraph-getCharacterRangeForGlyphRange(glyphRange: Range, encoding: drawing.TextEncoding): Array<Range>--><!--Device-Paragraph-getCharacterRangeForGlyphRange(glyphRange: Range, encoding: drawing.TextEncoding): Array<Range>-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -374,7 +265,7 @@ getCharacterRangeForGlyphRange(glyphRange: Range, encoding: drawing.TextEncoding
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;Range&gt; | 字符范围。如果数组包含一个元素，它表示字符范围。如果包含两个元素，第一个是字符范围，第二个是实际的字形范围。 |
+| Array & lt;Range & gt; | 字符范围。如果数组包含一个元素，它表示字符范围。如果包含两个元素，第一个是字符范围，第二个是实际的字形范围。 |
 
 **错误码：**
 
@@ -384,45 +275,7 @@ getCharacterRangeForGlyphRange(glyphRange: Range, encoding: drawing.TextEncoding
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { drawing, text } from '@kit.ArkGraphics2D'
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Button("get character range")
-        .onClick(() => {
-          let glyphRange: text.Range = { start: 0, end: 5 };
-          let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
-          let myTextStyle: text.TextStyle = {
-            color: { alpha: 255, red: 255, green: 0, blue: 0 },
-            fontSize: 33,
-          };
-          let myParagraphStyle: text.ParagraphStyle = {
-            textStyle: myTextStyle,
-            align: text.TextAlign.END,
-          };
-          let fontCollection = new text.FontCollection();
-          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-          paragraphBuilder.addText(textData);
-          let paragraph = paragraphBuilder.build();
-          paragraph.layoutSync(200);
-          let ranges = paragraph.getCharacterRangeForGlyphRange(glyphRange, encoding);
-        })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { Entry, Component, Column, Button } from '@ohos.arkui.component';
 import { drawing, text } from '@kit.ArkGraphics2D'
 
 @Entry
@@ -458,16 +311,14 @@ struct Index {
 ## getGlyphPositionAtCoordinate
 
 ```TypeScript
-getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffinity
+getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 ```
 
 获取与给定坐标最接近的字形位置信息。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffinity--><!--Device-Paragraph-getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffinity-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -475,8 +326,8 @@ getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffinity
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | double | 是 | 横坐标，浮点数，单位为物理像素px。 |
-| y | double | 是 | 纵坐标，浮点数，单位为物理像素px。 |
+| x | number | 是 | 横坐标，浮点数，单位为物理像素px。 |
+| y | number | 是 | 纵坐标，浮点数，单位为物理像素px。 |
 
 **返回值：**
 
@@ -504,8 +355,6 @@ getGlyphRangeForCharacterRange(characterRange: Range, encoding: drawing.TextEnco
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Paragraph-getGlyphRangeForCharacterRange(characterRange: Range, encoding: drawing.TextEncoding): Array<Range>--><!--Device-Paragraph-getGlyphRangeForCharacterRange(characterRange: Range, encoding: drawing.TextEncoding): Array<Range>-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -519,7 +368,7 @@ getGlyphRangeForCharacterRange(characterRange: Range, encoding: drawing.TextEnco
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;Range&gt; | 字形范围。数组包含两个元素，第一个是字形范围，第二个是实际的字符范围。 |
+| Array & lt;Range & gt; | 字形范围。数组包含两个元素，第一个是字形范围，第二个是实际的字符范围。 |
 
 **错误码：**
 
@@ -529,45 +378,7 @@ getGlyphRangeForCharacterRange(characterRange: Range, encoding: drawing.TextEnco
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { drawing, text } from '@kit.ArkGraphics2D'
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Button("get glyph range")
-        .onClick(() => {
-          let characterRange: text.Range = { start: 0, end: 5 };
-          let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
-          let myTextStyle: text.TextStyle = {
-            color: { alpha: 255, red: 255, green: 0, blue: 0 },
-            fontSize: 33,
-          };
-          let myParagraphStyle: text.ParagraphStyle = {
-            textStyle: myTextStyle,
-            align: text.TextAlign.END,
-          };
-          let fontCollection = new text.FontCollection();
-          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-          paragraphBuilder.addText(textData);
-          let paragraph = paragraphBuilder.build();
-          paragraph.layoutSync(200);
-          let ranges = paragraph.getGlyphRangeForCharacterRange(characterRange, encoding);
-        })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { Entry, Component, Column, Button } from '@ohos.arkui.component';
 import { drawing, text } from '@kit.ArkGraphics2D'
 
 @Entry
@@ -603,16 +414,14 @@ struct Index {
 ## getHeight
 
 ```TypeScript
-getHeight(): double
+getHeight(): number
 ```
 
 获取文本总高度。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getHeight(): double--><!--Device-Paragraph-getHeight(): double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -620,7 +429,7 @@ getHeight(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 总高度，浮点数，单位为物理像素px。 |
+| number | 总高度，浮点数，单位为物理像素px。 |
 
 **示例**
 
@@ -631,16 +440,14 @@ let height = paragraph.getHeight();
 ## getIdeographicBaseline
 
 ```TypeScript
-getIdeographicBaseline(): double
+getIdeographicBaseline(): number
 ```
 
 获取表意字（如CJK（中文，日文，韩文））下的基线位置。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getIdeographicBaseline(): double--><!--Device-Paragraph-getIdeographicBaseline(): double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -648,7 +455,7 @@ getIdeographicBaseline(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 表意字下的基线位置，浮点数，单位为物理像素px。 |
+| number | 表意字下的基线位置，浮点数，单位为物理像素px。 |
 
 **示例**
 
@@ -659,16 +466,14 @@ let ideographicBaseline = paragraph.getIdeographicBaseline();
 ## getLineCount
 
 ```TypeScript
-getLineCount(): int
+getLineCount(): number
 ```
 
 返回文本行数。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getLineCount(): int--><!--Device-Paragraph-getLineCount(): int-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -676,7 +481,7 @@ getLineCount(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 文本行数量，整数。 |
+| number | 文本行数量，整数。 |
 
 **示例**
 
@@ -687,16 +492,14 @@ let lineCount = paragraph.getLineCount();
 ## getLineHeight
 
 ```TypeScript
-getLineHeight(line: int): double
+getLineHeight(line: number): number
 ```
 
 返回指定行的行高。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getLineHeight(line: int): double--><!--Device-Paragraph-getLineHeight(line: int): double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -704,13 +507,13 @@ getLineHeight(line: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| line | int | 是 | 文本行索引，整数，范围为0~[getLineCount](#getlinecount)-1。 |
+| line | number | 是 | 文本行索引，整数，范围为0~[getLineCount](#getlinecount)-1。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 行高，单位为物理像素px。 |
+| number | 行高，单位为物理像素px。 |
 
 **示例**
 
@@ -726,11 +529,9 @@ getLineMetrics(): Array<LineMetrics>
 
 获取文本行的行度量数组。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getLineMetrics(): Array<LineMetrics>--><!--Device-Paragraph-getLineMetrics(): Array<LineMetrics>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -738,7 +539,7 @@ getLineMetrics(): Array<LineMetrics>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;LineMetrics&gt; | 文本行的行度量数组。 |
+| Array & lt;LineMetrics & gt; | 文本行的行度量数组。 |
 
 **示例**
 
@@ -749,16 +550,14 @@ let arrLineMetric =  paragraph.getLineMetrics();
 ## getLineMetrics
 
 ```TypeScript
-getLineMetrics(lineNumber: int): LineMetrics | undefined
+getLineMetrics(lineNumber: number): LineMetrics | undefined
 ```
 
 获取特定行号的行度量信息。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getLineMetrics(lineNumber: int): LineMetrics | undefined--><!--Device-Paragraph-getLineMetrics(lineNumber: int): LineMetrics | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -766,13 +565,13 @@ getLineMetrics(lineNumber: int): LineMetrics | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| lineNumber | int | 是 | 要查询度量信息的行的编号，行号从0开始，最大行索引为文本行数量-1，文本行数量可通过 [getLineCount](#getlinecount)接口获取。 |
+| lineNumber | number | 是 | 要查询度量信息的行的编号，行号从0开始，最大行索引为文本行数量-1，文本行数量可通过 [getLineCount](#getlinecount)接口获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| LineMetrics | 如果指定的行号有效且度量信息存在，则返回一个包含该行度量数据的LineMetrics对象；如果行号无效或无法获取度量信息，则返回undefined。 |
+| LineMetrics \| undefined | 如果指定的行号有效且度量信息存在，则返回一个包含该行度量数据的LineMetrics对象；如果行号无效或无法获取度量信息，则返回undefined。 |
 
 **示例**
 
@@ -783,16 +582,14 @@ let lineMetrics =  paragraph.getLineMetrics(0);
 ## getLineWidth
 
 ```TypeScript
-getLineWidth(line: int): double
+getLineWidth(line: number): number
 ```
 
 返回指定行的行宽。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getLineWidth(line: int): double--><!--Device-Paragraph-getLineWidth(line: int): double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -800,13 +597,13 @@ getLineWidth(line: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| line | int | 是 | 文本行索引，整数，范围为0~[getLineCount](#getlinecount)-1。 |
+| line | number | 是 | 文本行索引，整数，范围为0~[getLineCount](#getlinecount)-1。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 行宽，单位为物理像素px。 |
+| number | 行宽，单位为物理像素px。 |
 
 **示例**
 
@@ -817,16 +614,14 @@ let lineWidth = paragraph.getLineWidth(0);
 ## getLongestLine
 
 ```TypeScript
-getLongestLine(): double
+getLongestLine(): number
 ```
 
 获取文本最长行宽。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getLongestLine(): double--><!--Device-Paragraph-getLongestLine(): double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -834,7 +629,7 @@ getLongestLine(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 最长一行的宽度，浮点数，单位为物理像素px。 |
+| number | 最长一行的宽度，浮点数，单位为物理像素px。 |
 
 **示例**
 
@@ -845,16 +640,14 @@ let longestLine = paragraph.getLongestLine();
 ## getLongestLineWithIndent
 
 ```TypeScript
-getLongestLineWithIndent(): double
+getLongestLineWithIndent(): number
 ```
 
 获取文本最长一行的宽度（包含缩进），建议向上取整。文本内容为空时返回0。
 
-**起始版本：** 23
+**起始版本：** 13
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getLongestLineWithIndent(): double--><!--Device-Paragraph-getLongestLineWithIndent(): double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -862,7 +655,7 @@ getLongestLineWithIndent(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 最长一行的宽度（该宽度包含当前行缩进的宽度），浮点数，单位为物理像素px。 |
+| number | 最长一行的宽度（该宽度包含当前行缩进的宽度），浮点数，单位为物理像素px。 |
 
 **示例**
 
@@ -873,16 +666,14 @@ let longestLineWithIndent = paragraph.getLongestLineWithIndent();
 ## getMaxIntrinsicWidth
 
 ```TypeScript
-getMaxIntrinsicWidth(): double
+getMaxIntrinsicWidth(): number
 ```
 
 获取段落最大固有宽度。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getMaxIntrinsicWidth(): double--><!--Device-Paragraph-getMaxIntrinsicWidth(): double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -890,7 +681,7 @@ getMaxIntrinsicWidth(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 该段落所占水平空间的最大固有宽度，浮点数，单位为物理像素px。 |
+| number | 该段落所占水平空间的最大固有宽度，浮点数，单位为物理像素px。 |
 
 **示例**
 
@@ -901,16 +692,14 @@ let maxIntrinsicWidth = paragraph.getMaxIntrinsicWidth();
 ## getMaxWidth
 
 ```TypeScript
-getMaxWidth(): double
+getMaxWidth(): number
 ```
 
 获取文本最大行宽。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getMaxWidth(): double--><!--Device-Paragraph-getMaxWidth(): double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -918,7 +707,7 @@ getMaxWidth(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 最大的行宽，浮点数，单位为物理像素px。 |
+| number | 最大的行宽，浮点数，单位为物理像素px。 |
 
 **示例**
 
@@ -929,16 +718,14 @@ let maxWidth = paragraph.getMaxWidth();
 ## getMinIntrinsicWidth
 
 ```TypeScript
-getMinIntrinsicWidth(): double
+getMinIntrinsicWidth(): number
 ```
 
 获取段落最小固有宽度。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getMinIntrinsicWidth(): double--><!--Device-Paragraph-getMinIntrinsicWidth(): double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -946,7 +733,7 @@ getMinIntrinsicWidth(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 该段落所占水平空间的最小固有宽度，浮点数，单位为物理像素px。 |
+| number | 该段落所占水平空间的最小固有宽度，浮点数，单位为物理像素px。 |
 
 **示例**
 
@@ -968,19 +755,15 @@ getParagraphStyle(): ParagraphStyle
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Paragraph-getParagraphStyle(): ParagraphStyle--><!--Device-Paragraph-getParagraphStyle(): ParagraphStyle-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ParagraphStyle | 段落的样式配置。 <br>其中`textStyle.color`、`textStyle.textShadows.color`、`textStyle.backgroundRect.color`、 `textStyle.decoration.color`属性：返回32位无符号整型颜色数值。示例：返回值`4278190080`，对应纯黑色十六进制颜色值`0xFF000000`，等价于 [common2D.Color]{ |
+| ParagraphStyle | 段落的样式配置。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { text } from '@kit.ArkGraphics2D'
@@ -1028,47 +811,6 @@ function numberToRGBA(colorNum: number): common2D.Color {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { Entry, Component, Column, Button} from '@ohos.arkui.component'
-import { text } from "@kit.ArkGraphics2D";
-import { common2D } from '@kit.ArkGraphics2D'
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Button("Click")
-        .onClick(() => {
-          let textData = "Hello World";
-          let myTextStyle: text.TextStyle = {
-            color: { alpha: 255, red: 255, green: 0, blue: 0 },
-            fontSize: 33,
-          };
-          let myParagraphStyle: text.ParagraphStyle = {
-            textStyle: myTextStyle
-          };
-          let fontCollection = new text.FontCollection();
-          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-          paragraphBuilder.addText(textData);
-          let paragraph = paragraphBuilder.build();
-          paragraph.layoutSync(200);
-          let paragraphStyle = paragraph.getParagraphStyle();
-          if (paragraphStyle.textStyle != undefined) {
-            console.info("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
-            let textColor = paragraphStyle.textStyle?.color;
-            if (textColor != undefined) {
-              console.info(`Print text color ARGB: ${textColor.alpha}, ${textColor.red}, ${textColor.green}, ${textColor.blue}`);
-            }
-          }
-        })
-    }
-  }
-}
-```
-
 ## getProcessState
 
 ```TypeScript
@@ -1083,8 +825,6 @@ getProcessState(): TextProcessState
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Paragraph-getProcessState(): TextProcessState--><!--Device-Paragraph-getProcessState(): TextProcessState-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -1095,46 +835,8 @@ getProcessState(): TextProcessState
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { text } from '@kit.ArkGraphics2D'
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Button("Click")
-        .onClick(() => {
-          let textData = "Hello World";
-          let myTextStyle: text.TextStyle = {
-            color: { alpha: 255, red: 255, green: 0, blue: 0 },
-            fontSize: 33,
-          };
-          let myParagraphStyle: text.ParagraphStyle = {
-            textStyle: myTextStyle
-          };
-          let fontCollection = new text.FontCollection();
-          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-          paragraphBuilder.addText(textData);
-          let paragraph = paragraphBuilder.build();
-          let processState = paragraph.getProcessState(); // Now it is INIT
-          console.info("Print state: " + processState);
-          paragraph.layoutSync(200);
-          processState = paragraph.getProcessState(); // Now it is FORMATTED
-          console.info("Print state: " + processState);
-        })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { Entry, Component, Column, Button} from '@ohos.arkui.component'
-import { text } from "@kit.ArkGraphics2D";
 
 @Entry
 @Component
@@ -1174,11 +876,9 @@ getRectsForPlaceholders(): Array<TextBox>
 
 获取文本中所有占位符所占的矩形区域。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getRectsForPlaceholders(): Array<TextBox>--><!--Device-Paragraph-getRectsForPlaceholders(): Array<TextBox>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1186,7 +886,7 @@ getRectsForPlaceholders(): Array<TextBox>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;TextBox&gt; | 矩形区域数组。 |
+| Array & lt;TextBox & gt; | 矩形区域数组。 |
 
 **示例**
 
@@ -1202,11 +902,9 @@ getRectsForRange(range: Range, widthStyle: RectWidthStyle, heightStyle: RectHeig
 
 获取给定的矩形区域宽度以及矩形区域高度的规格下，文本中该区间范围内的字符所占的矩形区域。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getRectsForRange(range: Range, widthStyle: RectWidthStyle, heightStyle: RectHeightStyle): Array<TextBox>--><!--Device-Paragraph-getRectsForRange(range: Range, widthStyle: RectWidthStyle, heightStyle: RectHeightStyle): Array<TextBox>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1222,7 +920,7 @@ getRectsForRange(range: Range, widthStyle: RectWidthStyle, heightStyle: RectHeig
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;TextBox&gt; | 矩形区域数组。 |
+| Array & lt;TextBox & gt; | 矩形区域数组。 |
 
 **示例**
 
@@ -1245,8 +943,6 @@ getTextDisplayState(): TextDisplayState
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Paragraph-getTextDisplayState(): TextDisplayState--><!--Device-Paragraph-getTextDisplayState(): TextDisplayState-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -1257,46 +953,8 @@ getTextDisplayState(): TextDisplayState
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { text } from '@kit.ArkGraphics2D'
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Button("Click")
-        .onClick(() => {
-          let textData = "Hello World";
-          let myTextStyle: text.TextStyle = {
-            color: { alpha: 255, red: 255, green: 0, blue: 0 },
-            fontSize: 33,
-          };
-          let myParagraphStyle: text.ParagraphStyle = {
-            textStyle: myTextStyle
-          };
-          let fontCollection = new text.FontCollection();
-          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-          paragraphBuilder.addText(textData);
-          let paragraph = paragraphBuilder.build();
-          let displayState = paragraph.getTextDisplayState(); // Now it is UNKNOWN
-          console.info("Print state: " + displayState);
-          paragraph.layoutSync(200);
-          displayState = paragraph.getTextDisplayState(); // Now it is CLIP
-          console.info("Print state: " + displayState);
-        })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { Entry, Component, Column, Button} from '@ohos.arkui.component'
-import { text } from "@kit.ArkGraphics2D";
 
 @Entry
 @Component
@@ -1336,11 +994,9 @@ getTextLines(): Array<TextLine>
 
 返回所有的文本行。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getTextLines(): Array<TextLine>--><!--Device-Paragraph-getTextLines(): Array<TextLine>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1362,7 +1018,8 @@ let lines = paragraph.getTextLines();
 getVisibleTextRanges(): Array<Range>
 ```
 
-获取段落中在屏幕上可见的文本范围。不包含因最大行数（[ParagraphStyle](arkts-arkgraphics2d-text-paragraphstyle-i.md)的maxLines属性）截断或省略号模式（ [EllipsisMode](arkts-arkgraphics2d-text-ellipsismode-e.md)）替换而未显示的文本。 **说明：** 返回的范围取决于段落的具体截断情况（如是否设置最大行数或省略号等）： | 场景 | 说明 | |---|---| | 文本未被截断 | 范围包含全部已排版文本 | | 仅设置maxLines截断（未设置省略号） | 范围为实际显示的文本，即第一行至第maxLines行末尾的文本。 | | 尾部省略（EllipsisMode.END） | 范围为省略号之前的文本。 | | 头部省略（EllipsisMode.START） | 范围为省略号之后的文本。 | | 中部省略（EllipsisMode.MIDDLE） | 第一个范围为省略号之前的文本，第二个范围为省略号之后的文本。 | | 多行头部省略（EllipsisMode.MULTILINE_START） | 同中部省略，返回省略号前后的文本范围。 | | 多行中部省略（EllipsisMode.MULTILINE_MIDDLE） | 同中部省略，返回省略号前后的文本范围。 |
+获取段落中在屏幕上可见的文本范围。不包含因最大行数（[ParagraphStyle](arkts-arkgraphics2d-text-paragraphstyle-i.md)的maxLines属性）截断或省略号模式（ [EllipsisMode](arkts-arkgraphics2d-text-ellipsismode-e.md)）替换而未显示的文本。  
+**说明：**返回的范围取决于段落的具体截断情况（如是否设置最大行数或省略号等）： | 场景 | 说明 | |---|---| | 文本未被截断 | 范围包含全部已排版文本 | | 仅设置maxLines截断（未设置省略号） | 范围为实际显示的文本，即第一行至第maxLines行末尾的文本。 | | 尾部省略（EllipsisMode.END） | 范围为省略号之前的文本。 | | 头部省略（EllipsisMode.START） | 范围为省略号之后的文本。 | | 中部省略（EllipsisMode.MIDDLE） | 第一个范围为省略号之前的文本，第二个范围为省略号之后的文本。 | | 多行头部省略（EllipsisMode.MULTILINE_START） | 同中部省略，返回省略号前后的文本范围。 | | 多行中部省略（EllipsisMode.MULTILINE_MIDDLE） | 同中部省略，返回省略号前后的文本范围。 |
 
 **起始版本：** 26.0.0
 
@@ -1370,98 +1027,31 @@ getVisibleTextRanges(): Array<Range>
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Paragraph-getVisibleTextRanges(): Array<Range>--><!--Device-Paragraph-getVisibleTextRanges(): Array<Range>-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;Range&gt; | 段落可见文本范围数组，范围为UTF-16编码单元索引。 |
+| Array & lt;Range & gt; | 段落可见文本范围数组，范围为UTF-16编码单元索引。 |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { text } from '@kit.ArkGraphics2D'
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Button("Click")
-        .onClick(() => {
-          let textData = "Hello World Hello World Hello World Hello World";
-          let myTextStyle: text.TextStyle = {
-            color: { alpha: 255, red: 255, green: 0, blue: 0 },
-            fontSize: 33,
-          };
-          let myParagraphStyle: text.ParagraphStyle = {
-            textStyle: myTextStyle,
-            maxLines: 1,
-          };
-          let fontCollection = new text.FontCollection();
-          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-          paragraphBuilder.addText(textData);
-          let paragraph = paragraphBuilder.build();
-          paragraph.layoutSync(200);
-          let visibleRanges = paragraph.getVisibleTextRanges();
-        })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { Entry, Component, Column, Button} from '@ohos.arkui.component'
-import { text } from "@kit.ArkGraphics2D";
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Button("Click")
-        .onClick(() => {
-          let textData = "Hello World Hello World Hello World Hello World";
-          let myTextStyle: text.TextStyle = {
-            color: { alpha: 255, red: 255, green: 0, blue: 0 },
-            fontSize: 33,
-          };
-          let myParagraphStyle: text.ParagraphStyle = {
-            textStyle: myTextStyle,
-            maxLines: 1,
-          };
-          let fontCollection = new text.FontCollection();
-          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-          paragraphBuilder.addText(textData);
-          let paragraph = paragraphBuilder.build();
-          paragraph.layoutSync(200);
-          let visibleRanges = paragraph.getVisibleTextRanges();
-        })
-    }
-  }
-}
+let visibleRanges = paragraph.getVisibleTextRanges();
 ```
 
 ## getWordBoundary
 
 ```TypeScript
-getWordBoundary(offset: int): Range
+getWordBoundary(offset: number): Range
 ```
 
 返回给定offset的字形所在单词的索引区间。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-getWordBoundary(offset: int): Range--><!--Device-Paragraph-getWordBoundary(offset: int): Range-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1469,7 +1059,7 @@ getWordBoundary(offset: int): Range
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 是 | 字形的偏移量，整数。 |
+| offset | number | 是 | 字形的偏移量，整数。 |
 
 **返回值：**
 
@@ -1486,16 +1076,14 @@ let wordRange = paragraph.getWordBoundary(0);
 ## layout
 
 ```TypeScript
-layout(width: double): Promise<void>
+layout(width: number): Promise<void>
 ```
 
 进行排版并计算所有字形位置，使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-layout(width: double): Promise<void>--><!--Device-Paragraph-layout(width: double): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1503,13 +1091,13 @@ layout(width: double): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| width | double | 是 | 单行的最大宽度，浮点数，单位为物理像素px。 |
+| width | number | 是 | 单行的最大宽度，浮点数，单位为物理像素px。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1518,8 +1106,6 @@ layout(width: double): Promise<void>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { drawing, text } from '@kit.ArkGraphics2D'
@@ -1557,7 +1143,7 @@ struct Index {
   @State pixelmap?: PixelMap = undefined;
   fun: Function = textFunc;
 
-  async prepareLayoutPromise() {
+async prepareLayoutPromise() {
     try {
       await paragraph.layout(200);
       console.info('Succeeded in doing layout');
@@ -1579,85 +1165,7 @@ struct Index {
         .height(50)
         .onClick(() => {
           const color: ArrayBuffer = new ArrayBuffer(160000);
-          let opts: image.InitializationOptions =
-            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
-          if (this.pixelmap == undefined) {
-            // 构造图片对象
-            this.pixelmap = image.createPixelMapSync(color, opts);
-          }
-          // 进行绘制文字
-          this.fun(this.pixelmap);
-        })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { Entry, Component, Column, Image, Button, ClickEvent} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
-import { drawing, text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit';
-
-let textStyle: text.TextStyle = {
-  color: {
-    alpha: 255,
-    red: 255,
-    green: 0,
-    blue: 0
-  },
-  fontSize: 30,
-};
-let paragraphStyle: text.ParagraphStyle = {
-  textStyle: textStyle,
-};
-let fontCollection: text.FontCollection = new text.FontCollection();
-let paragraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
-// 添加文本字符串
-paragraphBuilder.addText("test");
-// 生成排版对象
-let paragraph = paragraphBuilder.build();
-
-function textFunc(pixelmap?: image.PixelMap) {
-  if (pixelmap != undefined) {
-    // 通过图片对象构造画布
-    let canvas = new drawing.Canvas(pixelmap);
-    // 进行绘制文本字符串
-    paragraph.paint(canvas, 100, 10);
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State pixelmap?: image.PixelMap = undefined;
-  fun: (pixelmap?: image.PixelMap) => void = textFunc;
-
-  async prepareLayoutPromise() {
-    // 排版对象进行布局计算
-    paragraph.layout(200).then(() => {
-      console.info(`Succeeded in doing layout`);
-    }).catch((error: Error) => {
-      console.error(`Failed to do layout, error: ${JSON.stringify(error)} message: ${error.message}`);
-    });
-  }
-
-  aboutToAppear() {
-    this.prepareLayoutPromise();
-  }
-
-  build() {
-    Column() {
-      Image(this.pixelmap).width(200).height(200);
-      Button("layout")
-        .width(100)
-        .height(50)
-        .onClick((e: ClickEvent) => {
-          const color: ArrayBuffer = new ArrayBuffer(160000);
-          let opts: image.InitializationOptions =
-            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
+          let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
           if (this.pixelmap == undefined) {
             // 构造图片对象
             this.pixelmap = image.createPixelMapSync(color, opts);
@@ -1673,16 +1181,14 @@ struct Index {
 ## layoutSync
 
 ```TypeScript
-layoutSync(width: double): void
+layoutSync(width: number): void
 ```
 
 进行排版并计算所有字形位置。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-layoutSync(width: double): void--><!--Device-Paragraph-layoutSync(width: double): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1690,7 +1196,7 @@ layoutSync(width: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| width | double | 是 | 单行的最大宽度，浮点数，单位为物理像素px。 |
+| width | number | 是 | 单行的最大宽度，浮点数，单位为物理像素px。 |
 
 **示例**
 
@@ -1711,8 +1217,6 @@ layoutWithConstraints(size: TextRectSize): TextLayoutResult
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-layoutWithConstraints(size: TextRectSize): TextLayoutResult--><!--Device-Paragraph-layoutWithConstraints(size: TextRectSize): TextLayoutResult-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1742,16 +1246,14 @@ for (let i = 0; i < result.fitStrRange.length; ++i) {
 ## paint
 
 ```TypeScript
-paint(canvas: drawing.Canvas, x: double, y: double): void
+paint(canvas: drawing.Canvas, x: number, y: number): void
 ```
 
 在画布上以 (x, y) 为左上角绘制文本。调用前必须先调用[layout()](#layout)接口进行排版，否则无法正确显示文本内容。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-paint(canvas: drawing.Canvas, x: double, y: double): void--><!--Device-Paragraph-paint(canvas: drawing.Canvas, x: double, y: double): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1760,32 +1262,91 @@ paint(canvas: drawing.Canvas, x: double, y: double): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | canvas | drawing.Canvas | 是 | 绘制的目标画布。 |
-| x | double | 是 | 绘制的左上角位置的横坐标，浮点数，单位为物理像素px。 |
-| y | double | 是 | 绘制的左上角位置的纵坐标，浮点数，单位为物理像素px。 |
+| x | number | 是 | 绘制的左上角位置的横坐标，浮点数，单位为物理像素px。 |
+| y | number | 是 | 绘制的左上角位置的纵坐标，浮点数，单位为物理像素px。 |
 
 **示例**
 
 ```TypeScript
 const color: ArrayBuffer = new ArrayBuffer(160000);
-let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
+let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
 let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
 let canvas = new drawing.Canvas(pixelMap);
 paragraph.paint(canvas, 0, 0);
 ```
 
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit'
+
+function textFunc(pixelmap: PixelMap) {
+  let canvas = new drawing.Canvas(pixelmap);
+  lines[0].paint(canvas, 0, 0);
+}
+
+@Entry
+@Component
+struct Index {
+  @State pixelmap?: PixelMap = undefined;
+  fun: Function = textFunc;
+  build() {
+    Column() {
+      Image(this.pixelmap).width(200).height(200);
+      Button().onClick(() => {
+        if (this.pixelmap == undefined) {
+          const color: ArrayBuffer = new ArrayBuffer(160000);
+          let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
+          this.pixelmap = image.createPixelMapSync(color, opts);
+        }
+        this.fun(this.pixelmap);
+      })
+    }
+  }
+}
+```
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D'
+import { text } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit'
+
+function textFunc(pixelmap: PixelMap) {
+  let canvas = new drawing.Canvas(pixelmap);
+  runs[0].paint(canvas, 0, 0);
+}
+
+@Entry
+@Component
+struct Index {
+  @State pixelmap?: PixelMap = undefined;
+  fun: Function = textFunc;
+  build() {
+    Column() {
+      Image(this.pixelmap).width(200).height(200);
+      Button().onClick(() => {
+        if (this.pixelmap == undefined) {
+          const color: ArrayBuffer = new ArrayBuffer(160000);
+          let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
+          this.pixelmap = image.createPixelMapSync(color, opts);
+        }
+        this.fun(this.pixelmap);
+      })
+    }
+  }
+}
+```
+
 ## paintOnPath
 
 ```TypeScript
-paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: double, vOffset: double): void
+paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: number, vOffset: number): void
 ```
 
 在画布上沿路径绘制文本。调用前必须先调用[layout()](#layout)接口进行排版，否则无法正确显示文本内容。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: double, vOffset: double): void--><!--Device-Paragraph-paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: double, vOffset: double): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1795,14 +1356,14 @@ paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: double, vOffset
 | --- | --- | --- | --- |
 | canvas | drawing.Canvas | 是 | 绘制的目标画布。 |
 | path | drawing.Path | 是 | 确认文字位置的路径。 |
-| hOffset | double | 是 | 沿路径方向偏置，从路径起点向前为正，向后为负，单位为物理像素px。 |
-| vOffset | double | 是 | 沿路径垂直方向偏置，沿路径方向左侧为负，右侧为正，单位为物理像素px。 |
+| hOffset | number | 是 | 沿路径方向偏置，从路径起点向前为正，向后为负，单位为物理像素px。 |
+| vOffset | number | 是 | 沿路径垂直方向偏置，沿路径方向左侧为负，右侧为正，单位为物理像素px。 |
 
 **示例**
 
 ```TypeScript
 const color: ArrayBuffer = new ArrayBuffer(160000);
-let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
+let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
 let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
 let canvas = new drawing.Canvas(pixelMap);
 let path = new drawing.Path();
@@ -1818,11 +1379,9 @@ updateColor(color: common2D.Color): void
 
 更新整个文本段落的颜色。如果当前装饰线未设置颜色，使用该接口也会同时更新装饰线的颜色。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-updateColor(color: common2D.Color): void--><!--Device-Paragraph-updateColor(color: common2D.Color): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1846,11 +1405,9 @@ updateDecoration(decoration: Decoration): void
 
 更新整个文本段落的装饰线。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Paragraph-updateDecoration(decoration: Decoration): void--><!--Device-Paragraph-updateDecoration(decoration: Decoration): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1870,4 +1427,3 @@ paragraph.updateDecoration({
   decorationThicknessScale: 2.0,
 });
 ```
-

@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 `deviceConfig` 包含设备上的应用配置信息，支持 `default`、`tv`、`car`、`wearable` 等属性。
@@ -15,7 +15,7 @@
 <!--RP1-->
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| default | 默认设备类型，详情参考[标准系统开发板](../../device-dev/dev-board-on-the-master.md#标准系统开发板)。 | 对象 | 可缺省，缺省值为空。 |
+| default | 默认设备类型，详情参考标准系统开发板。 | 对象 | 可缺省，缺省值为空。 |
 | tablet | 标识平板特有的应用配置信息。 | 对象 | 可缺省，缺省值为空。 |
 | tv | 标识智慧屏特有的应用配置信息。 | 对象 | 可缺省，缺省值为空。 |
 | car | 标识车机特有的应用配置信息。 | 对象 | 可缺省，缺省值为空。 |
@@ -24,7 +24,7 @@
 <!--RP1End-->
 
 
-上表中各设备对象的内部结构说明参见[deviceConfig设备对象内部结构](#deviceconfig设备对象内部结构)。
+上表中各设备对象的内部结构说明参见deviceConfig设备对象内部结构。
 
 ## deviceConfig设备对象内部结构
 

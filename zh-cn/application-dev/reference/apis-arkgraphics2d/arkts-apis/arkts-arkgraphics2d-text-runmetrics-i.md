@@ -2,9 +2,7 @@
 
 描述文本行中连续文本块的布局信息和度量数据。
 
-**起始版本：** 23
-
-<!--Device-text-interface RunMetrics--><!--Device-text-interface RunMetrics-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -24,11 +22,9 @@ fontMetrics: drawing.FontMetrics
 
 **类型：** drawing.FontMetrics
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RunMetrics-fontMetrics: drawing.FontMetrics--><!--Device-RunMetrics-fontMetrics: drawing.FontMetrics-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -42,11 +38,8 @@ textStyle: TextStyle
 
 **类型：** TextStyle
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RunMetrics-textStyle: TextStyle--><!--Device-RunMetrics-textStyle: TextStyle-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
-

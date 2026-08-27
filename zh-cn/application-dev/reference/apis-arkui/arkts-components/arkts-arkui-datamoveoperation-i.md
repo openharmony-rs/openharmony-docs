@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-interface DataMoveOperation--><!--Device-unnamed-interface DataMoveOperation-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ index: MoveIndex
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DataMoveOperation-index: MoveIndex--><!--Device-DataMoveOperation-index: MoveIndex-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## key
@@ -48,8 +44,6 @@ key?: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DataMoveOperation-key?: string--><!--Device-DataMoveOperation-key?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,7 +63,4 @@ type: DataOperationType.MOVE
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DataMoveOperation-type: DataOperationType.MOVE--><!--Device-DataMoveOperation-type: DataOperationType.MOVE-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -12,13 +12,10 @@ export declare type PopoverDialogV2OnVisibleChange = (visible: boolean) => void
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-export declare type PopoverDialogV2OnVisibleChange = (visible: boolean) => void--><!--Device-unnamed-export declare type PopoverDialogV2OnVisibleChange = (visible: boolean) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| visible | boolean | 是 | 表示跟手弹出框显示状态。<br />值为true时跟手弹出框显示，为false时隐藏。 |
-
+| visible | boolean | 是 | 表示跟手弹出框显示状态。 值为true时跟手弹出框显示，为false时隐藏。 |

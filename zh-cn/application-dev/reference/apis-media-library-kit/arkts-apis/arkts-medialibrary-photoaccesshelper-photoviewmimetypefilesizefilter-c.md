@@ -2,9 +2,7 @@
 
 指定媒体文件类型和文件大小进行过滤。
 
-**起始版本：** 26.0.0
-
-<!--Device-photoAccessHelper-class PhotoViewMimeTypeFileSizeFilter--><!--Device-photoAccessHelper-class PhotoViewMimeTypeFileSizeFilter-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -24,11 +22,9 @@ photoViewMimeType: PhotoViewMIMETypes
 
 **类型：** PhotoViewMIMETypes
 
-**起始版本：** 26.0.0
+**起始版本：** 20
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoViewMimeTypeFileSizeFilter-photoViewMimeType: PhotoViewMIMETypes--><!--Device-PhotoViewMimeTypeFileSizeFilter-photoViewMimeType: PhotoViewMIMETypes-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -42,11 +38,8 @@ sizeFilter: FileSizeFilter
 
 **类型：** [FileSizeFilter](arkts-medialibrary-photoaccesshelper-filesizefilter-c.md)
 
-**起始版本：** 26.0.0
+**起始版本：** 20
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoViewMimeTypeFileSizeFilter-sizeFilter: FileSizeFilter--><!--Device-PhotoViewMimeTypeFileSizeFilter-sizeFilter: FileSizeFilter-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-

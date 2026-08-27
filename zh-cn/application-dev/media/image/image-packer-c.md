@@ -20,7 +20,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 ### Native接口调用
 
-具体接口说明请参考[Image_NativeModule/apis-image-kit/capi-image-nativemodule.md)。
+具体接口说明请参考Image_NativeModule。
 
 在Deveco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
 
@@ -30,7 +30,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 >
 > - 根据MIME标准，标准编码格式为image/jpeg。当使用image编码时，编码参数中的编码格式image_MimeType设置为image/jpeg，image编码后的文件扩展名可设为.jpg或.jpeg，可在支持image/jpeg解码的平台上使用。
 >
-> - 部分接口（如：[OH_ImagePackerNative_GetSupportedFormats/apis-image-kit/capi-image-packer-native-h.md#oh_imagepackernative_getsupportedformats)）在API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
+> - 部分接口（如：OH_ImagePackerNative_GetSupportedFormats）在API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
 
 1. 导入相关头文件。
 
@@ -191,7 +191,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
        OH_PackingOptions_SetMimeType(option, &image_MimeType);
        // 当设备支持HDR编码，资源本身为HDR图且图片资源的格式为jpeg时，编码产物才能为HDR内容。
        OH_PackingOptions_SetDesiredDynamicRange(option, IMAGE_PACKER_DYNAMIC_RANGE_AUTO);
-       // 设置编码质量，quality默认为0，建议quality的值不低于80
+       // 设置编码质量。quality默认值为0，建议不低于80；本示例统一设置为90，兼顾图片质量和文件体积。
        uint32_t quality = 90;
        OH_PackingOptions_SetQuality(option, quality);
        errCode = OH_ImagePackerNative_PackToFileFromImageSource(testPacker, option, imageSource, fd);
@@ -231,7 +231,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
            OH_ImagePackerNative_Release(testPacker);
            return errCode;
        }
-       // 设置编码质量，quality默认为0，建议quality的值不低于80
+       // 设置编码质量。quality默认值为0，建议不低于80；本示例统一设置为90，兼顾图片质量和文件体积。
        uint32_t quality = 90;
        OH_PackingOptions_SetQuality(option, quality);
        errCode = OH_ImagePackerNative_PackToFileFromPixelmap(testPacker, option, pixelmap, fd);

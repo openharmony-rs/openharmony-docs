@@ -1,10 +1,8 @@
 # ErrorObserver
 
-定义异常监听，可以作为 [errorManager.on('error')](arkts-ability-errormanager-onerror-f.md#onerror) 的入参监听当前应用发生的异常。通过异常监听，开发者可以及时捕获和处理应用运行时的未捕获异常及JS层上报的异常，提升应用的稳定性和用户体验。
+定义异常监听，可以作为 [errorManager.on('error')](arkts-ability-errormanager-on-f.md#onerror) 的入参监听当前应用发生的异常。通过异常监听，开发者可以及时捕获和处理应用运行时的未捕获异常及JS层上报的异常，提升应用的稳定性和用户体验。
 
 **起始版本：** 9
-
-<!--Device-unnamed-export default class ErrorObserver--><!--Device-unnamed-export default class ErrorObserver-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -19,8 +17,6 @@ onException?(errObject: Error): void
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ErrorObserver-onException?(errObject: Error): void--><!--Device-ErrorObserver-onException?(errObject: Error): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -68,8 +64,6 @@ onUnhandledException(errMsg: string): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ErrorObserver-onUnhandledException(errMsg: string): void--><!--Device-ErrorObserver-onUnhandledException(errMsg: string): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -96,4 +90,3 @@ try {
   console.error(`registerErrorObserver failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
 }
 ```
-

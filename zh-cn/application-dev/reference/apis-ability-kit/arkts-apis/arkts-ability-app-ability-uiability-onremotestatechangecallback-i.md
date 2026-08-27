@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-export interface OnRemoteStateChangeCallback--><!--Device-unnamed-export interface OnRemoteStateChangeCallback-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## 导入模块
@@ -14,7 +12,7 @@
 import { UIAbility, Callee, CalleeCallback, Caller, OnReleaseCallback, OnRemoteStateChangeCallback } from '@kit.AbilityKit';
 ```
 
-## constructor
+## [[Call]]
 
 ```TypeScript
 (msg: string): void
@@ -26,8 +24,6 @@ import { UIAbility, Callee, CalleeCallback, Caller, OnReleaseCallback, OnRemoteS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-OnRemoteStateChangeCallback-(msg: string): void--><!--Device-OnRemoteStateChangeCallback-(msg: string): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **参数：**
@@ -35,4 +31,3 @@ import { UIAbility, Callee, CalleeCallback, Caller, OnReleaseCallback, OnRemoteS
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | msg | string | 是 | 用于传递释放消息。 |
-

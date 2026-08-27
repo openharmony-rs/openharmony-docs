@@ -4,49 +4,11 @@
 
 **起始版本：** 8
 
-<!--Device-util-class types--><!--Device-util-class types-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { ArrayList } from '@kit.ArkTS';
-import { ArrayListComparatorFn } from '@kit.ArkTS';
-import { ArrayListForEachCb } from '@kit.ArkTS';
-import { ArrayListReplaceCb } from '@kit.ArkTS';
-import { util } from '@kit.ArkTS';
-import { Deque } from '@kit.ArkTS';
-import { DequeForEachCb } from '@kit.ArkTS';
-import { HashMap } from '@kit.ArkTS';
-import { HashMapCbFn } from '@kit.ArkTS';
-import { HashSet } from '@kit.ArkTS';
-import { HashSetCbFn } from '@kit.ArkTS';
-import { LightWeightMap } from '@kit.ArkTS';
-import { LightWeightMapCbFn } from '@kit.ArkTS';
-import { LightWeightSet } from '@kit.ArkTS';
-import { LightWeightSetForEachCb } from '@kit.ArkTS';
-import { LinkedList } from '@kit.ArkTS';
-import { LinkedListForEachCb } from '@kit.ArkTS';
-import { List } from '@kit.ArkTS';
-import { ListComparatorFn } from '@kit.ArkTS';
-import { ListForEachCb } from '@kit.ArkTS';
-import { ListReplaceCb } from '@kit.ArkTS';
-import { PlainArray } from '@kit.ArkTS';
-import { PlainArrayForEachCb } from '@kit.ArkTS';
-import { Queue } from '@kit.ArkTS';
-import { QueueForEachCb } from '@kit.ArkTS';
-import { Stack } from '@kit.ArkTS';
-import { StackForEachCb } from '@kit.ArkTS';
-import { TreeMap } from '@kit.ArkTS';
-import { TreeMapForEachCb } from '@kit.ArkTS';
-import { TreeMapComparator } from '@kit.ArkTS';
-import { TreeSet } from '@kit.ArkTS';
-import { TreeSetForEachCb } from '@kit.ArkTS';
-import { TreeSetComparator } from '@kit.ArkTS';
-import { stream } from '@kit.ArkTS';
-import { Vector } from '@kit.ArkTS';
-import { JSON } from '@kit.ArkTS';
 ```
 
 ## constructor
@@ -61,14 +23,35 @@ constructor()
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-constructor()--><!--Device-types-constructor()-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **示例**
 
 ```TypeScript
+let textDecoder = new util.TextDecoder();
+let retStr = textDecoder.encoding;
+console.info('retStr = ' + retStr);
+// 输出结果：retStr = utf-8
+```
+
+```TypeScript
+let textEncoder = new util.TextEncoder();
+```
+
+```TypeScript
+let rationalNumber = new util.RationalNumber();
+```
+
+```TypeScript
+let base64 = new util.Base64Helper();
+```
+
+```TypeScript
 let type = new util.types();
+```
+
+```TypeScript
+let base64 = new  util.Base64();
 ```
 
 ## isAnyArrayBuffer
@@ -82,8 +65,6 @@ isAnyArrayBuffer(value: Object): boolean
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isAnyArrayBuffer(value: Object): boolean--><!--Device-types-isAnyArrayBuffer(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -119,8 +100,6 @@ isArgumentsObject(value: Object): boolean
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isArgumentsObject(value: Object): boolean--><!--Device-types-isArgumentsObject(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -160,8 +139,6 @@ isArrayBuffer(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isArrayBuffer(value: Object): boolean--><!--Device-types-isArrayBuffer(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -197,8 +174,6 @@ isArrayBufferView(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isArrayBufferView(value: Object): boolean--><!--Device-types-isArrayBufferView(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -228,13 +203,17 @@ console.info("result = " + result);
 isAsyncFunction(value: Object): boolean
 ```
 
-判断入参是否为异步函数。 > **说明：** > > 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的constructor.name属性与'AsyncGeneratorFunction'做判等的方式替代。 > > 该接口无法对Sendable class中的async成员函数进行有效判断，无替代方案。
+判断入参是否为异步函数。
+
+> **说明：**
+> 
+> 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的constructor.name属性与'AsyncGeneratorFunction'做判等的方式替代。
+> 
+> 该接口无法对Sendable class中的async成员函数进行有效判断，无替代方案。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isAsyncFunction(value: Object): boolean--><!--Device-types-isAsyncFunction(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -301,8 +280,6 @@ isBigInt64Array(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isBigInt64Array(value: Object): boolean--><!--Device-types-isBigInt64Array(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -338,8 +315,6 @@ isBigUint64Array(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isBigUint64Array(value: Object): boolean--><!--Device-types-isBigUint64Array(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -369,15 +344,17 @@ console.info("result = " + result);
 isBooleanObject(value: Object): boolean
 ```
 
-判断入参是否为 Boolean 类型。 > **NOTE：**> > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
+判断入参是否为 Boolean 类型。
+
+> **NOTE：**
+> 
+> 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 14
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isBooleanObject(value: Object): boolean--><!--Device-types-isBooleanObject(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -408,15 +385,17 @@ console.info("result = " + result);
 isBoxedPrimitive(value: Object): boolean
 ```
 
-判断入参是否为 Boolean、Number、String 或 Symbol 类型。 > **NOTE：**> > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
+判断入参是否为 Boolean、Number、String 或 Symbol 类型。
+
+> **NOTE：**
+> 
+> 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 14
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isBoxedPrimitive(value: Object): boolean--><!--Device-types-isBoxedPrimitive(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -452,8 +431,6 @@ isDataView(value: Object): boolean
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isDataView(value: Object): boolean--><!--Device-types-isDataView(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -491,8 +468,6 @@ isDate(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isDate(value: Object): boolean--><!--Device-types-isDate(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -527,8 +502,6 @@ isExternal(value: Object): boolean
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isExternal(value: Object): boolean--><!--Device-types-isExternal(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -603,8 +576,6 @@ isFloat32Array(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isFloat32Array(value: Object): boolean--><!--Device-types-isFloat32Array(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -640,8 +611,6 @@ isFloat64Array(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isFloat64Array(value: Object): boolean--><!--Device-types-isFloat64Array(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -671,13 +640,15 @@ console.info("result = " + result);
 isGeneratorFunction(value: Object): boolean
 ```
 
-判断入参是否为 generator 函数。 > **说明：** > > 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的constructor.name属性与'AsyncGeneratorFunction'做判等的方式替代。
+判断入参是否为 generator 函数。
+
+> **说明：**
+> 
+> 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的constructor.name属性与'AsyncGeneratorFunction'做判等的方式替代。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isGeneratorFunction(value: Object): boolean--><!--Device-types-isGeneratorFunction(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -741,8 +712,6 @@ isGeneratorObject(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isGeneratorObject(value: Object): boolean--><!--Device-types-isGeneratorObject(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -786,8 +755,6 @@ isInt16Array(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isInt16Array(value: Object): boolean--><!--Device-types-isInt16Array(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -822,8 +789,6 @@ isInt32Array(value: Object): boolean
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isInt32Array(value: Object): boolean--><!--Device-types-isInt32Array(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -860,8 +825,6 @@ isInt8Array(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isInt8Array(value: Object): boolean--><!--Device-types-isInt8Array(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -896,8 +859,6 @@ isMap(value: Object): boolean
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isMap(value: Object): boolean--><!--Device-types-isMap(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -934,8 +895,6 @@ isMapIterator(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isMapIterator(value: Object): boolean--><!--Device-types-isMapIterator(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -952,21 +911,9 @@ isMapIterator(value: Object): boolean
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 let type = new util.types();
-const map : Map<number, number> = new Map();
-let result = type.isMapIterator(map.keys());
-console.info("result = " + result);
-// 输出结果：result = true
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let type = new util.types();
-const map : Map<int, int> = new Map<int, int>();
+const map : Map<number,number> = new Map();
 let result = type.isMapIterator(map.keys());
 console.info("result = " + result);
 // 输出结果：result = true
@@ -983,8 +930,6 @@ isModuleNamespaceObject(value: Object): boolean
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isModuleNamespaceObject(value: Object): boolean--><!--Device-types-isModuleNamespaceObject(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1030,8 +975,6 @@ isNativeError(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isNativeError(value: Object): boolean--><!--Device-types-isNativeError(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1061,15 +1004,17 @@ console.info("result = " + result);
 isNumberObject(value: Object): boolean
 ```
 
-判断入参是否为 Number 类型。 > **NOTE：**> > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
+判断入参是否为 Number 类型。
+
+> **NOTE：**
+> 
+> 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 14
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isNumberObject(value: Object): boolean--><!--Device-types-isNumberObject(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1106,8 +1051,6 @@ isPromise(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isPromise(value: Object): boolean--><!--Device-types-isPromise(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1142,8 +1085,6 @@ isProxy(value: Object): boolean
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isProxy(value: Object): boolean--><!--Device-types-isProxy(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1184,8 +1125,6 @@ isRegExp(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isRegExp(value: Object): boolean--><!--Device-types-isRegExp(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1221,8 +1160,6 @@ isSet(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isSet(value: Object): boolean--><!--Device-types-isSet(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1239,21 +1176,9 @@ isSet(value: Object): boolean
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 let type = new util.types();
 let set : Set<number> = new Set();
-let result = type.isSet(set);
-console.info("result = " + result);
-// 输出结果：result = true
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let type = new util.types();
-let set : Set<int> = new Set<int>();
 let result = type.isSet(set);
 console.info("result = " + result);
 // 输出结果：result = true
@@ -1271,8 +1196,6 @@ isSetIterator(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isSetIterator(value: Object): boolean--><!--Device-types-isSetIterator(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1289,21 +1212,9 @@ isSetIterator(value: Object): boolean
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 let type = new util.types();
 const set : Set<number> = new Set();
-let result = type.isSetIterator(set.keys());
-console.info("result = " + result);
-// 输出结果：result = true
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let type = new util.types();
-const set : Set<int> = new Set<int>();
 let result = type.isSetIterator(set.keys());
 console.info("result = " + result);
 // 输出结果：result = true
@@ -1320,8 +1231,6 @@ isSharedArrayBuffer(value: Object): boolean
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isSharedArrayBuffer(value: Object): boolean--><!--Device-types-isSharedArrayBuffer(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1352,15 +1261,17 @@ console.info("result = " + result);
 isStringObject(value: Object): boolean
 ```
 
-判断入参是否为字符串对象。 > **NOTE：**> > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
+判断入参是否为字符串对象。
+
+> **NOTE：**
+> 
+> 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 14
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isStringObject(value: Object): boolean--><!--Device-types-isStringObject(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1391,15 +1302,17 @@ console.info("result = " + result);
 isSymbolObject(value: Object): boolean
 ```
 
-判断入参是否为 symbol 对象。 > **NOTE：**> > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
+判断入参是否为 symbol 对象。
+
+> **NOTE：**
+> 
+> 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 14
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isSymbolObject(value: Object): boolean--><!--Device-types-isSymbolObject(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1443,8 +1356,6 @@ isTypedArray(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isTypedArray(value: Object): boolean--><!--Device-types-isTypedArray(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1479,8 +1390,6 @@ isUint16Array(value: Object): boolean
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isUint16Array(value: Object): boolean--><!--Device-types-isUint16Array(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1517,8 +1426,6 @@ isUint32Array(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isUint32Array(value: Object): boolean--><!--Device-types-isUint32Array(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1553,8 +1460,6 @@ isUint8Array(value: Object): boolean
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isUint8Array(value: Object): boolean--><!--Device-types-isUint8Array(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1591,8 +1496,6 @@ isUint8ClampedArray(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isUint8ClampedArray(value: Object): boolean--><!--Device-types-isUint8ClampedArray(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1628,8 +1531,6 @@ isWeakMap(value: Object): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-types-isWeakMap(value: Object): boolean--><!--Device-types-isWeakMap(value: Object): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1646,21 +1547,9 @@ isWeakMap(value: Object): boolean
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 let type = new util.types();
 let value : WeakMap<object, number> = new WeakMap();
-let result = type.isWeakMap(value);
-console.info("result = " + result);
-// 输出结果：result = true
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let type = new util.types();
-let value : WeakMap<object, int> = new WeakMap();
 let result = type.isWeakMap(value);
 console.info("result = " + result);
 // 输出结果：result = true
@@ -1677,8 +1566,6 @@ isWeakSet(value: Object): boolean
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-types-isWeakSet(value: Object): boolean--><!--Device-types-isWeakSet(value: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1702,4 +1589,3 @@ let result = type.isWeakSet(new WeakSet());
 console.info("result = " + result);
 // 输出结果：result = true
 ```
-

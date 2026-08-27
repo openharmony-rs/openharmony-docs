@@ -2,9 +2,7 @@
 
 表示Kiosk状态信息，包括系统是否处于Kiosk模式以及该模式下的应用信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface KioskStatus--><!--Device-unnamed-export interface KioskStatus-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -18,11 +16,9 @@ isKioskMode: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-KioskStatus-isKioskMode: boolean--><!--Device-KioskStatus-isKioskMode: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -36,29 +32,24 @@ kioskBundleName: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-KioskStatus-kioskBundleName: string--><!--Device-KioskStatus-kioskBundleName: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## kioskBundleUid
 
 ```TypeScript
-kioskBundleUid: int
+kioskBundleUid: number
 ```
 
 进入Kiosk模式的应用的UID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-KioskStatus-kioskBundleUid: int--><!--Device-KioskStatus-kioskBundleUid: int-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-

@@ -2,9 +2,7 @@
 
 定义扫描仪选项值的接口。
 
-**起始版本：** 23
-
-<!--Device-scan-interface ScannerOptionValue--><!--Device-scan-interface ScannerOptionValue-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -24,25 +22,21 @@ boolValue?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-ScannerOptionValue-boolValue?: boolean--><!--Device-ScannerOptionValue-boolValue?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## numValue
 
 ```TypeScript
-numValue?: int
+numValue?: number
 ```
 
 数值。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ScannerOptionValue-numValue?: int--><!--Device-ScannerOptionValue-numValue?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -56,9 +50,7 @@ strValue?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ScannerOptionValue-strValue?: string--><!--Device-ScannerOptionValue-strValue?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -72,9 +64,6 @@ valueType: OptionValueType
 
 **类型：** [OptionValueType](arkts-basicservices-scan-optionvaluetype-e.md)
 
-**起始版本：** 23
-
-<!--Device-ScannerOptionValue-valueType: OptionValueType--><!--Device-ScannerOptionValue-valueType: OptionValueType-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
-

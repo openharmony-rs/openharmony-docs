@@ -3,7 +3,7 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -13,7 +13,7 @@
 ## 开发步骤
 
 ### 申请蓝牙权限
-需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，具体操作请参考[声明权限](../../security/AccessToken/declare-permissions.md)和[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，具体操作请参考声明权限和向用户申请授权。
 
 ### 导入所需API模块
 导入connection和错误码模块。
@@ -26,7 +26,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 用于扫描周边支持蓝牙能力的设备，并获取到蓝牙设备的部分信息。此过程也可被称为“搜索”、“发现”或“查找”。只有周边蓝牙设备处于可被发现的状态时，才能被本机蓝牙设备扫描到。
 
 **1. 订阅扫描设备结果上报事件**<br>
-- 推荐使用API version 18开始支持的扫描结果上报方式。该方式可获取到更多设备信息，包括设备地址、设备信号强度、设备名称和设备类型。详情请见[connection.on('discoveryResult')/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionondiscoveryresult18)。
+- 推荐使用API version 18开始支持的扫描结果上报方式。该方式可获取到更多设备信息，包括设备地址、设备信号强度、设备名称和设备类型。详情请见connection.on('discoveryResult')。
 ```ts
 // 定义扫描结果上报回调函数
 function onReceiveEvent(data: Array<connection.DiscoveryResult>) {
@@ -40,7 +40,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
-- API version 17及以前的扫描结果上报方式只支持获取设备地址信息。详情请见[connection.on('bluetoothDeviceFind')/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectiononbluetoothdevicefind)。
+- API version 17及以前的扫描结果上报方式只支持获取设备地址信息。详情请见connection.on('bluetoothDeviceFind')。
 ```ts
 // 定义扫描结果上报回调函数
 function onReceiveEvent(data: Array<string>) {
@@ -56,7 +56,7 @@ try {
 ```
 
 **2. 发起设备扫描**<br>
-应用发起扫描后，整个扫描过程大约持续12s。应用可以对扫描到的蓝牙设备发起配对、连接和传输数据流程。具体操作请参考[配对与连接设备](br-pair-device-development-guide.md)、[连接和传输数据](spp-development-guide.md)。
+应用发起扫描后，整个扫描过程大约持续12s。应用可以对扫描到的蓝牙设备发起配对、连接和传输数据流程。具体操作请参考配对与连接设备、连接和传输数据。
 ```ts
 try {
   // 判断本机设备是否正在进行扫描
@@ -93,8 +93,8 @@ try {
 
 ### 设置本机蓝牙扫描模式
 本机蓝牙扫描模式用于控制本机设备是否可以被周边其他蓝牙设备扫描到或连接上。非系统应用一般不用关注这个模式，系统设置应用会决定如何设置。
-- 系统设置应用打开蓝牙后，若系统蓝牙设置界面在前台，会将本机蓝牙扫描模式设置为可被扫描和可被连接，即[SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE/apis-connectivity-kit/js-apis-bluetooth-connection.md#scanmode)。
-- 系统设置应用打开蓝牙后，若系统蓝牙设置界面在后台，会将本机蓝牙扫描模式设置为可被连接，即[SCAN_MODE_CONNECTABLE/apis-connectivity-kit/js-apis-bluetooth-connection.md#scanmode)。
+- 系统设置应用打开蓝牙后，若系统蓝牙设置界面在前台，会将本机蓝牙扫描模式设置为可被扫描和可被连接，即SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE。
+- 系统设置应用打开蓝牙后，若系统蓝牙设置界面在后台，会将本机蓝牙扫描模式设置为可被连接，即SCAN_MODE_CONNECTABLE。
 
 ```ts
 try {
@@ -111,7 +111,7 @@ try {
 ```
 
 ### 查找已配对设备信息
-在发起扫描设备前，可以查找该设备是否是已配对的设备，以减少扫描设备的流程。也可以对已配对设备发起连接和传输数据流程，具体操作请参考[配对与连接设备](br-pair-device-development-guide.md)和[传输数据](spp-development-guide.md)。
+在发起扫描设备前，可以查找该设备是否是已配对的设备，以减少扫描设备的流程。也可以对已配对设备发起连接和传输数据流程，具体操作请参考配对与连接设备和传输数据。
 
 ```ts
 try {

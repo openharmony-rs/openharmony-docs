@@ -21,4 +21,3 @@ import { Cipher, CipherAesOptions, CipherResponse, CipherRsaOptions } from '@kit
 | [CipherAesOptions](arkts-cryptoarchitecture-system-cipher-cipheraesoptions-i.md) | 调用cipher aes方法时，传入的参数。 |
 | [CipherResponse](arkts-cryptoarchitecture-system-cipher-cipherresponse-i.md) | 调用cipher接口后，返回的内容。 |
 | [CipherRsaOptions](arkts-cryptoarchitecture-system-cipher-cipherrsaoptions-i.md) | 调用cipher rsa方法时，传入的参数。 |
-

@@ -47,11 +47,11 @@
 
  - 调试工具
 
-   为开发者提供c++调试功能的工具链。如：[LLDB工具](../tools/lldb-tool-sys.md)
+   为开发者提供c++调试功能的工具链。如：LLDB工具
 
  - Profile文件：
 
-   [HarmonyAppProvision配置文件](app-provision-structure.md)，应用包中的描述文件，该描述文件描述了已授权的证书权限和设备ID信息等信息。
+   HarmonyAppProvision配置文件，应用包中的描述文件，该描述文件描述了已授权的证书权限和设备ID信息等信息。
 
 ## 约束与限制
 

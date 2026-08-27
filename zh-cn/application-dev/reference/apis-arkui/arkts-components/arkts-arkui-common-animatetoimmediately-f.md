@@ -17,8 +17,6 @@ declare function animateToImmediately(value: AnimateParam, event: () => void): v
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare function animateToImmediately(value: AnimateParam, event: () => void): void--><!--Device-unnamed-declare function animateToImmediately(value: AnimateParam, event: () => void): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -26,5 +24,4 @@ declare function animateToImmediately(value: AnimateParam, event: () => void): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [AnimateParam](arkts-arkui-animateparam-i.md) | 是 | Animation settings. |
-| event | () =&gt; void | 是 | Closure function that displays the animation. The system automatically inserts a transition animation for state changes caused by the closure function. |
-
+| event | () = & gt; void | 是 | Closure function that displays the animation. The system automatically inserts a transition animation for state changes caused by the closure function. |

@@ -2,9 +2,7 @@
 
 该模块提供热管理相关的接口，包括热档位查询及注册回调等功能。系统根据设备温度阈值将热状态划分为多个档位层级（参见[ThermalLevel](arkts-basicservices-thermal-thermallevel-e.md)）， 当设备温度跨越档位阈值时触发回调通知，开发者可根据档位等级执行相应的业务降级策略。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace thermal--><!--Device-unnamed-declare namespace thermal-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -32,4 +30,3 @@ import { thermal } from '@kit.BasicServicesKit';
 | 名称 | 说明 |
 | --- | --- |
 | [ThermalLevel](arkts-basicservices-thermal-thermallevel-e.md) | 热档位信息。热档位从COOL到ESCAPE逐级递进，各级别对应的设备状态与业务动作建议如下表所示。 |
-

@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## isWlanSupported
@@ -19,8 +18,6 @@ function isWlanSupported(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-wifiManager-function isWlanSupported(): boolean--><!--Device-wifiManager-function isWlanSupported(): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
 **返回值：**
@@ -34,4 +31,3 @@ function isWlanSupported(): boolean
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [2401000](../errorcode-wifi.md#2401000-sta内部异常) | Operation failed. |
-

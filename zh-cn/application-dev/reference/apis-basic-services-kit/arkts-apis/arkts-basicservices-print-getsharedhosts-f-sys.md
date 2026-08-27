@@ -20,8 +20,6 @@ function getSharedHosts(): Promise<SharedHost[]>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-print-function getSharedHosts(): Promise<SharedHost[]>--><!--Device-print-function getSharedHosts(): Promise<SharedHost[]>-End-->
-
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -38,4 +36,3 @@ function getSharedHosts(): Promise<SharedHost[]>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-

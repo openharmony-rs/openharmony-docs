@@ -14,11 +14,7 @@ function isBatteryConfigSupported(sceneName: string): boolean
 
 检查是否按场景名称启用电池配置。调用该接口后，系统将判断当前设备是否支持指定的充电场景配置，并返回检查结果。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-batteryInfo-function isBatteryConfigSupported(sceneName: string): boolean--><!--Device-batteryInfo-function isBatteryConfigSupported(sceneName: string): boolean-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -40,19 +36,17 @@ function isBatteryConfigSupported(sceneName: string): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5100101](../errorcode-battery-info.md#5100101-连接服务失败) | Failed to connect to the service. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [5100101](../errorcode-battery-info.md#5100101-连接服务失败) | Failed to connect to the service. |
 
 **示例**
 
 ```TypeScript
-try {
-  let sceneName = 'xxx';
-  let result = batteryInfo.isBatteryConfigSupported(sceneName);
+import { batteryInfo } from '@kit.BasicServicesKit';
 
-  console.info("The result is: " + result);
-} catch(err) {
-  console.error('isBatteryConfigSupported failed, err: ' + err);
-}
+let sceneName = 'xxx';
+let result = batteryInfo.isBatteryConfigSupported(sceneName);
+
+console.info('The result is: ' + result);
 ```
-

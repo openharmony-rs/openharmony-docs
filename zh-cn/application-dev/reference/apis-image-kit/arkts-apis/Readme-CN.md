@@ -9,7 +9,6 @@
   - [createImageReceiver](arkts-image-image-createimagereceiver-f.md)
   - [createImageSource](arkts-image-image-createimagesource-f.md)
   - [CreateIncrementalSource](arkts-image-image-createincrementalsource-f.md)
-  - [createIncrementalSource](arkts-image-image-createincrementalsource-f.md)
   - [createPicture](arkts-image-image-createpicture-f.md)
   <!--Del-->
   - [createPictureByHdrAndSdrPixelMap(系统接口)](arkts-image-image-createpicturebyhdrandsdrpixelmap-f-sys.md)<!--DelEnd-->
@@ -85,6 +84,8 @@
   - [Region](arkts-image-image-region-i.md)
   - [Size](arkts-image-image-size-i.md)
   - [SourceOptions](arkts-image-image-sourceoptions-i.md)
+  <!--Del-->
+  - [SourceOptions(系统接口)](arkts-image-image-sourceoptions-i-sys.md)<!--DelEnd-->
   - [XMPEnumerateOptions](arkts-image-image-xmpenumerateoptions-i.md)
   - [XMPNamespace](arkts-image-image-xmpnamespace-i.md)
   - [XMPTag](arkts-image-image-xmptag-i.md)
@@ -117,6 +118,8 @@
   <!--Del-->
   - [ResolutionQuality(系统接口)](arkts-image-image-resolutionquality-e-sys.md)<!--DelEnd-->
   - [ScaleMode](arkts-image-image-scalemode-e.md)
+  <!--Del-->
+  - [SVGResourceLimitLevel(系统接口)](arkts-image-image-svgresourcelimitlevel-e-sys.md)<!--DelEnd-->
   - [TiffPropertyKey](arkts-image-image-tiffpropertykey-e.md)
   - [WebPPropertyKey](arkts-image-image-webppropertykey-e.md)
   - [XmageColorMode](arkts-image-image-xmagecolormode-e.md)
@@ -138,3 +141,9 @@
   - [Region](arkts-image-sendableimage-region-i.md)
   - [Size](arkts-image-sendableimage-size-i.md)
   - [ISendable](arkts-image-sendableimage-isendable-t.md)
+- [@ohos.multimedia.videoProcessingEngine](arkts-multimedia-videoprocessingengine.md)
+  - [create](arkts-image-videoprocessingengine-create-f.md)
+  - [deinitializeEnvironment](arkts-image-videoprocessingengine-deinitializeenvironment-f.md)
+  - [initializeEnvironment](arkts-image-videoprocessingengine-initializeenvironment-f.md)
+  - [ImageProcessor](arkts-image-videoprocessingengine-imageprocessor-i.md)
+  - [QualityLevel](arkts-image-videoprocessingengine-qualitylevel-e.md)

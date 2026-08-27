@@ -2,9 +2,7 @@
 
 定义应用多开在运行态的结构信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface RunningMultiAppInfo--><!--Device-unnamed-export interface RunningMultiAppInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -20,9 +18,7 @@ bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-RunningMultiAppInfo-bundleName: string--><!--Device-RunningMultiAppInfo-bundleName: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -38,9 +34,7 @@ mode: MultiAppMode
 
 **类型：** [MultiAppMode](arkts-ability-multiappmode-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-RunningMultiAppInfo-mode: MultiAppMode--><!--Device-RunningMultiAppInfo-mode: MultiAppMode-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -56,9 +50,7 @@ runningAppClones?: Array<RunningAppClone>
 
 **类型：** Array&lt;[RunningAppClone](arkts-ability-runningappclone-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-RunningMultiAppInfo-runningAppClones?: Array<RunningAppClone>--><!--Device-RunningMultiAppInfo-runningAppClones?: Array<RunningAppClone>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -74,11 +66,31 @@ runningMultiInstances?: Array<RunningMultiInstanceInfo>
 
 **类型：** Array&lt;[RunningMultiInstanceInfo](arkts-ability-runningmultiinstanceinfo-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-RunningMultiAppInfo-runningMultiInstances?: Array<RunningMultiInstanceInfo>--><!--Device-RunningMultiAppInfo-runningMultiInstances?: Array<RunningMultiInstanceInfo>-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
 
+**示例**
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let bundleName = 'ohos.samples.etsclock';
+  // 获取应用多开运行态信息
+  appManager.getRunningMultiAppInfo(bundleName)
+    .then((info: appManager.RunningMultiAppInfo) => {
+      console.info(`getRunningMultiAppInfo success, data: ${JSON.stringify(info)}`);
+    }).catch((err: BusinessError) => {
+      console.error(`getRunningMultiAppInfo failed, code: ${err.code}, message: ${err.message}`);
+    });
+} catch (err) {
+  // 处理入参错误异常
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  console.error(`getRunningMultiAppInfo error, code: ${code}, message: ${msg}`);
+}
+```

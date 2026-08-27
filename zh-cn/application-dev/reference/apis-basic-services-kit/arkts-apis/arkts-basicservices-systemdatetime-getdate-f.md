@@ -18,9 +18,7 @@ function getDate(callback: AsyncCallback<Date>): void
 
 **废弃版本：** 10
 
-**替代接口：** new Date()
-
-<!--Device-systemDateTime-function getDate(callback: AsyncCallback<Date>): void--><!--Device-systemDateTime-function getDate(callback: AsyncCallback<Date>): void-End-->
+**替代接口：** new
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -28,13 +26,13 @@ function getDate(callback: AsyncCallback<Date>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;Date&gt; | 是 | 回调函数，返回当前系统日期。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Date&gt; | 是 | 回调函数，返回当前系统日期。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. System error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:   1. System error. |
 
 **示例**
 
@@ -68,9 +66,7 @@ function getDate(): Promise<Date>
 
 **废弃版本：** 10
 
-**替代接口：** new Date()
-
-<!--Device-systemDateTime-function getDate(): Promise<Date>--><!--Device-systemDateTime-function getDate(): Promise<Date>-End-->
+**替代接口：** new
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -78,13 +74,13 @@ function getDate(): Promise<Date>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Date&gt; | Promise对象，返回当前系统日期。 |
+| Promise & lt;Date & gt; | Promise对象，返回当前系统日期。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. System error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:   1. System error. |
 
 **示例**
 
@@ -102,4 +98,3 @@ try {
   console.error(`Failed to get date. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-

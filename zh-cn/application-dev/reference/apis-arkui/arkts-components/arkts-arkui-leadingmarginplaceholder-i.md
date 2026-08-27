@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare interface LeadingMarginPlaceholder--><!--Device-unnamed-declare interface LeadingMarginPlaceholder-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ pixelMap: PixelMap
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LeadingMarginPlaceholder-pixelMap: PixelMap--><!--Device-LeadingMarginPlaceholder-pixelMap: PixelMap-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -49,7 +45,4 @@ size: [Dimension, Dimension]
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LeadingMarginPlaceholder-size: [Dimension, Dimension]--><!--Device-LeadingMarginPlaceholder-size: [Dimension, Dimension]-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -21,8 +21,6 @@ function notifyInvisibleForms(formIds: Array<string>, callback: AsyncCallback<vo
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
-<!--Device-formHost-function notifyInvisibleForms(formIds: Array<string>, callback: AsyncCallback<void>): void--><!--Device-formHost-function notifyInvisibleForms(formIds: Array<string>, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
@@ -31,8 +29,21 @@ function notifyInvisibleForms(formIds: Array<string>, callback: AsyncCallback<vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| formIds | Array&lt;string&gt; | 是 | 卡片标识列表。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当向卡片框架发送通知以使指定的卡片不可见成功，error为undefined，否则为错误对象。 |
+| formIds | Array & lt;string & gt; | 是 | 卡片标识列表。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当向卡片框架发送通知以使指定的卡片不可见成功，error为undefined，否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let formIds: string[] = ['12400633174999288'];
+formHost.notifyInvisibleForms(formIds, (error: Base.BusinessError) => {
+  if (error.code) {
+    console.error(`formHost notifyInvisibleForms, error: ${JSON.stringify(error)}`);
+  }
+});
+```
 
 
 ## notifyInvisibleForms
@@ -51,8 +62,6 @@ function notifyInvisibleForms(formIds: Array<string>): Promise<void>
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
-<!--Device-formHost-function notifyInvisibleForms(formIds: Array<string>): Promise<void>--><!--Device-formHost-function notifyInvisibleForms(formIds: Array<string>): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
@@ -61,11 +70,23 @@ function notifyInvisibleForms(formIds: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| formIds | Array&lt;string&gt; | 是 | 卡片标识列表。 |
+| formIds | Array & lt;string & gt; | 是 | 卡片标识列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let formIds: string[] = ['12400633174999288'];
+formHost.notifyInvisibleForms(formIds).then(() => {
+  console.info('formHost notifyInvisibleForms success');
+}).catch((error: Base.BusinessError) => {
+  console.error(`formHost notifyInvisibleForms, error: ${JSON.stringify(error)}`);
+});
+```

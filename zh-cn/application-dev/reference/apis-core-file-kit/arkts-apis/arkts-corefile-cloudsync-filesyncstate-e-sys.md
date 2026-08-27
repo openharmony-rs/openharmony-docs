@@ -2,9 +2,7 @@
 
 端云文件同步状态，为枚举类型。
 
-**起始版本：** 23
-
-<!--Device-cloudSync-enum FileSyncState--><!--Device-cloudSync-enum FileSyncState-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -18,9 +16,7 @@ UPLOADING = 0
 
 上行同步中。
 
-**起始版本：** 23
-
-<!--Device-FileSyncState-UPLOADING = 0--><!--Device-FileSyncState-UPLOADING = 0-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -34,9 +30,7 @@ DOWNLOADING = 1
 
 下行同步中。
 
-**起始版本：** 23
-
-<!--Device-FileSyncState-DOWNLOADING = 1--><!--Device-FileSyncState-DOWNLOADING = 1-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -50,9 +44,7 @@ COMPLETED = 2
 
 同步成功。
 
-**起始版本：** 23
-
-<!--Device-FileSyncState-COMPLETED = 2--><!--Device-FileSyncState-COMPLETED = 2-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -66,9 +58,7 @@ STOPPED = 3
 
 同步已停止。
 
-**起始版本：** 23
-
-<!--Device-FileSyncState-STOPPED = 3--><!--Device-FileSyncState-STOPPED = 3-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -82,9 +72,7 @@ TO_BE_UPLOADED = 4
 
 正在等待上行。
 
-**起始版本：** 23
-
-<!--Device-FileSyncState-TO_BE_UPLOADED = 4--><!--Device-FileSyncState-TO_BE_UPLOADED = 4-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -98,9 +86,7 @@ UPLOAD_SUCCESS = 5
 
 文件已成功上行。
 
-**起始版本：** 23
-
-<!--Device-FileSyncState-UPLOAD_SUCCESS = 5--><!--Device-FileSyncState-UPLOAD_SUCCESS = 5-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -114,11 +100,8 @@ UPLOAD_FAILURE = 6
 
 文件上行失败。
 
-**起始版本：** 23
-
-<!--Device-FileSyncState-UPLOAD_FAILURE = 6--><!--Device-FileSyncState-UPLOAD_FAILURE = 6-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口：** 此接口为系统接口。
-

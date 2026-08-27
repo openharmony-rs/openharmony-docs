@@ -2,9 +2,7 @@
 
 提供文本标准化的能力。
 
-**起始版本：** 23
-
-<!--Device-i18n-export class Normalizer--><!--Device-i18n-export class Normalizer-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -22,11 +20,9 @@ static getInstance(mode: NormalizerMode): Normalizer
 
 获取文本标准化对象。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Normalizer-static getInstance(mode: NormalizerMode): Normalizer--><!--Device-Normalizer-static getInstance(mode: NormalizerMode): Normalizer-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -34,13 +30,13 @@ static getInstance(mode: NormalizerMode): Normalizer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [NormalizerMode](../../apis-na/arkts-apis/arkts-na-i18n-normalizermode-e.md) | 是 | 文本标准化范式。 |
+| mode | [NormalizerMode](arkts-localization-i18n-normalizermode-e.md) | 是 | 文本标准化范式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Normalizer](../../apis-na/arkts-apis/arkts-na-i18n-normalizer-c.md) | 返回指定范式的文本标准化对象。 |
+| [Normalizer](arkts-localization-i18n-normalizer-c.md) | 返回指定范式的文本标准化对象。 |
 
 **错误码：**
 
@@ -70,11 +66,9 @@ normalize(text: string): string
 
 对字符串进行标准化处理。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Normalizer-normalize(text: string): string--><!--Device-Normalizer-normalize(text: string): string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -110,4 +104,3 @@ try {
   console.error(`call Normalizer.getInstance failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
-

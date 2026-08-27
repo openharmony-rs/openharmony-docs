@@ -3,9 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { AdComponent } from '@kit.AdsKit';
-import { AdsServiceExtensionAbility, RespCallback } from '@kit.AdsKit';
-import { AutoAdComponent } from '@kit.AdsKit';
 import { advertising } from '@kit.AdsKit';
 ```
 
@@ -18,8 +15,6 @@ function getAdRequestBody(adParams: AdRequestParams[], adOptions: AdOptions): Pr
 获取广告请求体，使用Promise异步回调（该接口仅对部分系统预置应用开放）。
 
 **起始版本：** 12
-
-<!--Device-advertising-function getAdRequestBody(adParams: AdRequestParams[], adOptions: AdOptions): Promise<string>--><!--Device-advertising-function getAdRequestBody(adParams: AdRequestParams[], adOptions: AdOptions): Promise<string>-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
 
@@ -34,7 +29,7 @@ function getAdRequestBody(adParams: AdRequestParams[], adOptions: AdOptions): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回字符类型的广告数据。 |
+| Promise & lt;string & gt; | Promise对象，返回字符类型的广告数据。 |
 
 **错误码：**
 
@@ -61,4 +56,3 @@ async function getAdRequestBody(adRequestParamsArray: advertising.AdRequestParam
   });
 }
 ```
-

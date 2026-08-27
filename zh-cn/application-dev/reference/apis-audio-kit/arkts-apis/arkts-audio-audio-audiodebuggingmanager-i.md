@@ -1,10 +1,12 @@
 # AudioDebuggingManager
 
-实现音频调试功能。
+音频调试管理器，用于音频运行时调试，包括获取快照信息等功能，用于定位音频播放、录音、耳返、会话等场景中的异常问题。 **起始版本：** 26.0.0
+
+> **说明：**
+> 
+> 快照信息的内容和格式后续会根据开发者使用情况和反馈建议优化调整，随版本迭代可能发生变化，所以仅供人工调试参考，不建议开发者依据快照信息开发功能逻辑。
 
 **起始版本：** 26.0.0
-
-<!--Device-audio-interface AudioDebuggingManager--><!--Device-audio-interface AudioDebuggingManager-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -12,22 +14,19 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## printAppInfo
 
 ```TypeScript
-printAppInfo(fd: int): void
+printAppInfo(fd: number): void
 ```
 
-显示当前应用进程的完整运行时快照。
+打印当前应用进程的完整音频运行时快照。快照包含所有播放流、录音流和音频会话信息。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AudioDebuggingManager-printAppInfo(fd: int): void--><!--Device-AudioDebuggingManager-printAppInfo(fd: int): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -35,21 +34,19 @@ printAppInfo(fd: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fd | int | 是 | fd为文件句柄，表示快照信息将要写入的位置。 如果fd小于0，则将快照信息打印到运行日志中，否则快照将写入文件。 取值限定为整数。 |
+| fd | number | 是 | 文件描述符，指定快照信息的写入位置。小于0或不可写时，快照信息将输出到运行日志；否则输出到fd指向的文件。 |
 
 ## printCapturerInfo
 
 ```TypeScript
-printCapturerInfo(capturer: AudioCapturer, fd: int): void
+printCapturerInfo(capturer: AudioCapturer, fd: number): void
 ```
 
-打印目标音频捕获程序实例的完整音频运行时快照。 快照将包含流、管道、卷和设备信息。 请注意，不同版本的信息详情和格式可能会有所不同，它只能用于 手动调试，用户不应依赖实际功能实现或文件的信息 内容提取。
+打印指定录音实例的完整音频运行时快照。快照包含流信息、通路信息、音量和设备信息。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AudioDebuggingManager-printCapturerInfo(capturer: AudioCapturer, fd: int): void--><!--Device-AudioDebuggingManager-printCapturerInfo(capturer: AudioCapturer, fd: int): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -57,22 +54,20 @@ printCapturerInfo(capturer: AudioCapturer, fd: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| capturer | [AudioCapturer](arkts-audio-audio-audiocapturer-i.md) | 是 | 目标音频捕获程序实例以打印快照。 取值限定为整数。 |
-| fd | int | 是 | fd是文件描述符，表示快照信息的位置 写入到。如果fd小于0或无可写，则快照信息将打印到 运行日志，否则快照将写入文件。 取值限定为整数。 |
+| capturer | [AudioCapturer](arkts-audio-audio-audiocapturer-i.md) | 是 | 目标录音实例。 |
+| fd | number | 是 | 文件描述符，指定快照信息的写入位置。小于0或不可写时，快照信息将输出到运行日志；否则输出到fd指向的文件。 |
 
 ## printLoopbackInfo
 
 ```TypeScript
-printLoopbackInfo(loopback: AudioLoopback, fd: int): void
+printLoopbackInfo(loopback: AudioLoopback, fd: number): void
 ```
 
-打印目标音频环回实例的完整音频运行时快照。 快照将包含环回状态、设备和效果信息。 请注意，不同版本的信息详情和格式可能会有所不同，它只能用于 手动调试，用户不应依赖实际功能实现或文件的信息 内容提取。
+打印指定耳返实例的完整音频运行时快照。快照包含耳返状态、设备和音效信息。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AudioDebuggingManager-printLoopbackInfo(loopback: AudioLoopback, fd: int): void--><!--Device-AudioDebuggingManager-printLoopbackInfo(loopback: AudioLoopback, fd: int): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -80,22 +75,20 @@ printLoopbackInfo(loopback: AudioLoopback, fd: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| loopback | [AudioLoopback](arkts-audio-audio-audioloopback-i.md) | 是 | 目标音频环回实例以打印快照。 取值限定为整数。 |
-| fd | int | 是 | fd是文件描述符，表示快照信息的位置 写入到。如果fd小于0或无可写，则快照信息将打印到 运行日志，否则快照将写入文件。 取值限定为整数。 |
+| loopback | [AudioLoopback](arkts-audio-audio-audioloopback-i.md) | 是 | 目标耳返实例。 |
+| fd | number | 是 | 文件描述符，指定快照信息的写入位置。小于0或不可写时，快照信息将输出到运行日志；否则输出到fd指向的文件。 |
 
 ## printRendererInfo
 
 ```TypeScript
-printRendererInfo(renderer: AudioRenderer, fd: int): void
+printRendererInfo(renderer: AudioRenderer, fd: number): void
 ```
 
-打印目标音频渲染器实例的完整音频运行时快照。 快照将包含流、管道、卷和设备信息。 请注意，不同版本的信息详情和格式可能会有所不同，它只能用于 手动调试，用户不应依赖实际功能实现或文件的信息 内容提取。
+打印指定音频播放实例的完整音频运行时快照。快照包含流信息、通路信息、音量和设备信息。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AudioDebuggingManager-printRendererInfo(renderer: AudioRenderer, fd: int): void--><!--Device-AudioDebuggingManager-printRendererInfo(renderer: AudioRenderer, fd: int): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -103,22 +96,20 @@ printRendererInfo(renderer: AudioRenderer, fd: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| renderer | [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) | 是 | 目标音频渲染器实例以打印快照。 取值限定为整数。 |
-| fd | int | 是 | fd是文件描述符，表示快照信息的位置 写入到。如果fd小于0或无可写，则快照信息将打印到 运行日志，否则快照将写入文件。 取值限定为整数。 |
+| renderer | [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) | 是 | 目标音频播放实例。 |
+| fd | number | 是 | 文件描述符，指定快照信息的写入位置。小于0或不可写时，快照信息将输出到运行日志；否则输出到fd指向的文件。 |
 
 ## printSessionInfo
 
 ```TypeScript
-printSessionInfo(session: AudioSessionManager, fd: int): void
+printSessionInfo(session: AudioSessionManager, fd: number): void
 ```
 
-打印目标音频会话管理器实例的完整音频运行时快照。 快照将包含会话状态、场景、策略和设备信息。 请注意，不同版本的信息详情和格式可能会有所不同，它只能用于 手动调试，用户不应依赖实际功能实现或文件的信息 内容提取。
+打印指定会话管理器实例的完整音频运行时快照。快照包含会话状态、场景、策略和设备信息。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AudioDebuggingManager-printSessionInfo(session: AudioSessionManager, fd: int): void--><!--Device-AudioDebuggingManager-printSessionInfo(session: AudioSessionManager, fd: int): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -126,6 +117,5 @@ printSessionInfo(session: AudioSessionManager, fd: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| session | [AudioSessionManager](arkts-audio-audio-audiosessionmanager-i.md) | 是 | 目标音频会话管理器实例以打印快照。 取值限定为整数。 |
-| fd | int | 是 | fd是文件描述符，表示快照信息的位置 写入到。如果fd小于0或无可写，则快照信息将打印到 运行日志，否则快照将写入文件。 取值限定为整数。 |
-
+| session | [AudioSessionManager](arkts-audio-audio-audiosessionmanager-i.md) | 是 | 目标会话管理器实例。 |
+| fd | number | 是 | 文件描述符，指定快照信息的写入位置。小于0或不可写时，快照信息将输出到运行日志；否则输出到fd指向的文件。 |

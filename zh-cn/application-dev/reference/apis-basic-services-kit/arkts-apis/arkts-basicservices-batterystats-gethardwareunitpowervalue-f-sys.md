@@ -9,14 +9,12 @@ import { batteryStats } from '@kit.BasicServicesKit';
 ## getHardwareUnitPowerValue
 
 ```TypeScript
-function getHardwareUnitPowerValue(type: ConsumptionType): double
+function getHardwareUnitPowerValue(type: ConsumptionType): number
 ```
 
 根据耗电类型获取硬件单元的耗电量，单位毫安时。适用于需要精确耗电数值的场景。如需比较不同硬件单元耗电占比，请使用[getHardwareUnitPowerPercent](arkts-basicservices-batterystats-gethardwareunitpowerpercent-f-sys.md)获取相对百分比。
 
-**起始版本：** 23
-
-<!--Device-batteryStats-function getHardwareUnitPowerValue(type: ConsumptionType): double--><!--Device-batteryStats-function getHardwareUnitPowerValue(type: ConsumptionType): double-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.PowerManager.BatteryStatistics
 
@@ -32,24 +30,23 @@ function getHardwareUnitPowerValue(type: ConsumptionType): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 电量消耗类型对应硬件的耗电量，单位毫安时。 |
+| number | 电量消耗类型对应硬件的耗电量，单位毫安时。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [4600101](../errorcode-batteryStatistics.md#4600101-连接服务失败) | Failed to connect to the service. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 **示例**
 
 ```TypeScript
 try {
-    let value = batteryStats.getHardwareUnitPowerValue(batteryStats.ConsumptionType.CONSUMPTION_TYPE_SCREEN);
-    console.info('battery statistics value of hardware is: ' + value);
-} catch(err) {
-    console.error('get battery statistics percent of hardware failed, err: ' + err);
+    let powerValue = batteryStats.getHardwareUnitPowerValue(batteryStats.ConsumptionType.CONSUMPTION_TYPE_SCREEN);
+    console.info('battery statistics value of hardware is: ' + powerValue);
+} catch (err) {
+    console.error(`Failed to get battery statistics value of hardware. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

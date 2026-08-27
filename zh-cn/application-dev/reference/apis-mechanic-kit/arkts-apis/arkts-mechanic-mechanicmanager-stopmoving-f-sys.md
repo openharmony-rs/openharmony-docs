@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## stopMoving
 
 ```TypeScript
-function stopMoving(mechId: int): Promise<void>
+function stopMoving(mechId: number): Promise<void>
 ```
 
 停止转动
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-function stopMoving(mechId: int): Promise<void>--><!--Device-mechanicManager-function stopMoving(mechId: int): Promise<void>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -26,13 +23,13 @@ function stopMoving(mechId: int): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | int | 是 | 机械设备ID |
+| mechId | number | 是 | 机械设备ID |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 返回操作结果 |
+| Promise & lt;void & gt; | 返回操作结果 |
 
 **错误码：**
 
@@ -52,4 +49,3 @@ mechanicManager.stopMoving(0)
   });
 console.info('Stop succeeded');
 ```
-

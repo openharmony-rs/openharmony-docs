@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare interface ComponentOptions--><!--Device-unnamed-declare interface ComponentOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,7 +17,7 @@
 freezeWhenInactive : boolean
 ```
 
-配置自定义组件支持组件冻结。true：开启组件冻结，false：不开启组件冻结。当开发者未指定ComponentOptions时，freezeWhenInactive将使用false作为默认值。 从API version 11开始，支持通过此参数配置[@Component](../../../ui/state-management/arkts-create-custom-components.md#component)组 件冻结。示例可见[自定义组件冻结](../../../ui/state-management/arkts-custom-components-freeze.md)。 从API version 12开始，支持通过此参数配置 [@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)组件冻结。示例可见 [自定义组件冻结](../../../ui/state-management/arkts-custom-components-freezeV2.md)。
+配置自定义组件支持组件冻结。true：开启组件冻结，false：不开启组件冻结。当开发者未指定ComponentOptions时，freezeWhenInactive将使用false作为默认值。从API version 11开始，支持通过此参数配置[@Component](../../../ui/state-management/arkts-create-custom-components.md#component)组 件冻结。示例可见[自定义组件冻结](../../../ui/state-management/arkts-custom-components-freeze.md)。从API version 12开始，支持通过此参数配置 [@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)组件冻结。示例可见 [自定义组件冻结](../../../ui/state-management/arkts-custom-components-freezeV2.md)。
 
 **类型：** boolean
 
@@ -32,8 +30,6 @@ freezeWhenInactive : boolean
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-ComponentOptions-freezeWhenInactive : boolean--><!--Device-ComponentOptions-freezeWhenInactive : boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,8 +50,6 @@ poolAccepts?: Function[]
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-ComponentOptions-poolAccepts?: Function[]--><!--Device-ComponentOptions-poolAccepts?: Function[]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,7 +73,4 @@ reusePool?: ReusePoolOwnership
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ComponentOptions-reusePool?: ReusePoolOwnership--><!--Device-ComponentOptions-reusePool?: ReusePoolOwnership-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

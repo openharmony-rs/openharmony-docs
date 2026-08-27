@@ -1,4 +1,4 @@
-# RepeatInterface(Defines Repeat component.)
+# RepeatInterface
 
 ```TypeScript
 declare type RepeatInterface = <T>(arr: RepeatArray<T>) => RepeatAttribute<T>
@@ -14,8 +14,6 @@ Indicates the type of Repeat.
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare type RepeatInterface = <T>(arr: RepeatArray<T>) => RepeatAttribute<T>--><!--Device-unnamed-declare type RepeatInterface = <T>(arr: RepeatArray<T>) => RepeatAttribute<T>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -28,5 +26,4 @@ Indicates the type of Repeat.
 
 | 类型 | 说明 |
 | --- | --- |
-| RepeatAttribute&lt;T&gt; | - |
-
+| [RepeatAttribute](arkts-arkui-repeatattribute-c.md)&lt;T&gt; | - |

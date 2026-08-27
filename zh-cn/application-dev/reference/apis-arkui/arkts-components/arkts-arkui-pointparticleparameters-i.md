@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-interface PointParticleParameters--><!--Device-unnamed-interface PointParticleParameters-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,7 +17,7 @@
 radius: VP
 ```
 
-粒子半径。 默认值：0，小于0时取默认值0。
+粒子半径。默认值：0，小于0时取默认值0。
 
 **类型：** VP
 
@@ -29,7 +27,4 @@ radius: VP
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PointParticleParameters-radius: VP--><!--Device-PointParticleParameters-radius: VP-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

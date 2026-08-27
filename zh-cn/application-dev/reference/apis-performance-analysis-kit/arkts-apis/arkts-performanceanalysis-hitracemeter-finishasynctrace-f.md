@@ -3,22 +3,19 @@
 ## 导入模块
 
 ```TypeScript
-import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## finishAsyncTrace
 
 ```TypeScript
-function finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: int): void
+function finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: number): void
 ```
 
-标记一个异步跟踪耗时任务的结束，分级控制跟踪输出。 finishAsyncTrace的level、name和taskId必须与流程开始的[startAsyncTrace()](arkts-performanceanalysis-hitracemeter-startasynctrace-f.md)对应参数值一致。
+标记一个异步跟踪耗时任务的结束，分级控制跟踪输出。finishAsyncTrace的level、name和taskId必须与流程开始的[startAsyncTrace()](arkts-performanceanalysis-hitracemeter-startasynctrace-f.md)对应参数值一致。
 
-**起始版本：** 23
+**起始版本：** 19
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-hiTraceMeter-function finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: int): void--><!--Device-hiTraceMeter-function finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: int): void-End-->
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -28,7 +25,7 @@ function finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: int):
 | --- | --- | --- | --- |
 | level | [HiTraceOutputLevel](arkts-performanceanalysis-hitracemeter-hitraceoutputlevel-e.md) | 是 | 跟踪输出级别，必须与流程开始的 [startAsyncTrace()](arkts-performanceanalysis-hitracemeter-startasynctrace-f.md)的level参数值一致。 |
 | name | string | 是 | 要跟踪的任务名称，必须与流程开始的[startAsyncTrace()](arkts-performanceanalysis-hitracemeter-startasynctrace-f.md)的name 参数值一致。 |
-| taskId | int | 是 | 任务id，必须与流程开始的[startAsyncTrace()](arkts-performanceanalysis-hitracemeter-startasynctrace-f.md)的taskId参数值一致。 |
+| taskId | number | 是 | 任务id，必须与流程开始的[startAsyncTrace()](arkts-performanceanalysis-hitracemeter-startasynctrace-f.md)的taskId参数值一致。 |
 
 **示例**
 
@@ -68,4 +65,3 @@ hiTraceMeter.startAsyncTrace(COMMERCIAL, "myTestFunc", 1, "categoryTest", "key=v
 // 第二个跟踪的同名任务结束
 hiTraceMeter.finishAsyncTrace(COMMERCIAL, "myTestFunc", 1);
 ```
-

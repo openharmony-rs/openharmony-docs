@@ -3,13 +3,12 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## disconnectDevice
 
 ```TypeScript
-function disconnectDevice(mechId: int): Promise<Result>
+function disconnectDevice(mechId: number): Promise<Result>
 ```
 
 基于具身设备ID断开设备
@@ -20,8 +19,6 @@ function disconnectDevice(mechId: int): Promise<Result>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-mechanicManager-function disconnectDevice(mechId: int): Promise<Result>--><!--Device-mechanicManager-function disconnectDevice(mechId: int): Promise<Result>-End-->
-
 **系统能力：** SystemCapability.Mechanic.Core
 
 **系统接口：** 此接口为系统接口。
@@ -30,13 +27,13 @@ function disconnectDevice(mechId: int): Promise<Result>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | int | 是 | 具身设备ID。 <br>取值限定为整数。 |
+| mechId | number | 是 | 具身设备ID。 取值限定为整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Result&gt; | Promise used to return the execution result. |
+| Promise & lt;Result & gt; | Promise used to return the execution result. |
 
 **错误码：**
 
@@ -45,4 +42,3 @@ function disconnectDevice(mechId: int): Promise<Result>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
-

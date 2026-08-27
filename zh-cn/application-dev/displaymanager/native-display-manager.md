@@ -1,14 +1,14 @@
 # 使用OH_DisplayManager实现屏幕基础信息查询和状态监听 (C/C++)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
 ## 场景介绍
 
-[OH_DisplayManager/apis-arkui/capi-oh-displaymanager.md)屏幕管理模块用于提供屏幕的信息查询、屏幕状态变化监听、折叠设备的折叠状态变化监听等能力，应用可根据对应的屏幕信息、屏幕状态变化、屏幕折叠状态适配不同的UI界面显示。
+OH_DisplayManager屏幕管理模块用于提供屏幕的信息查询、屏幕状态变化监听、折叠设备的折叠状态变化监听等能力，应用可根据对应的屏幕信息、屏幕状态变化、屏幕折叠状态适配不同的UI界面显示。
 
 - 支持查询的屏幕信息，包括屏幕的分辨率、物理像素密度、逻辑像素密度、刷新率、屏幕尺寸、屏幕旋转方向、屏幕旋转角度等。
 
@@ -24,7 +24,7 @@
 
 ## 接口说明
 
-常用接口如下表所示。更多API说明请参考[OH_DisplayManager/apis-arkui/capi-oh-displaymanager.md)。
+常用接口如下表所示。更多API说明请参考OH_DisplayManager。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -38,10 +38,11 @@
 |OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener(uint32_t listenerIndex)|取消屏幕展开、折叠状态变化监听。|
 
 ## 在CMake脚本中链接动态库
+<!-- @[add_display_target_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/CMakeLists.txt) -->
 
-``` text
-target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
-target_link_libraries(entry PUBLIC libnative_display_manager.so )
+``` Text
+target_link_libraries(nativedisplay PUBLIC libhilog_ndk.z.so)
+target_link_libraries(nativedisplay PUBLIC libnative_display_manager.so)
 ```
 
 ## 添加头文件
@@ -274,23 +275,6 @@ EXTERN_C_END
 ## 注册模块
 
 <!-- @[register_display_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_module displayModule = {
-    .nm_version = 1,
-    .nm_flags = 0,
-    .nm_filename = nullptr,
-    .nm_register_func = Init,
-    .nm_modname = "nativedisplay",
-    .nm_priv = ((void*)0),
-    .reserved = { 0 },
-};
-
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-{
-    napi_module_register(&displayModule);
-}
-```
 
 ``` C++
 static napi_module displayModule = {

@@ -2,17 +2,13 @@
 
 控制中心类，用于查询是否支持相机控制器。
 
-**起始版本：** 23
-
-<!--Device-camera-interface ControlCenterQuery--><!--Device-camera-interface ControlCenterQuery-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## getSupportedEffectTypes
@@ -23,11 +19,9 @@ getSupportedEffectTypes(): Array<ControlCenterEffectType>
 
 查询相机控制器支持的效果类型。
 
-**起始版本：** 23
+**起始版本：** 20
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ControlCenterQuery-getSupportedEffectTypes(): Array<ControlCenterEffectType>--><!--Device-ControlCenterQuery-getSupportedEffectTypes(): Array<ControlCenterEffectType>-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -37,6 +31,16 @@ getSupportedEffectTypes(): Array<ControlCenterEffectType>
 | --- | --- |
 | Array&lt;[ControlCenterEffectType](arkts-camera-camera-controlcentereffecttype-e.md)&gt; | 支持的效果类型。 |
 
+**示例**
+
+```TypeScript
+function getSupportedEffectTypes(videoSession: camera.VideoSession): Array<camera.ControlCenterEffectType> {
+    let effectTypes: Array<camera.ControlCenterEffectType> = [];
+    effectTypes = videoSession.getSupportedEffectTypes();
+    return effectTypes;
+}
+```
+
 ## isControlCenterSupported
 
 ```TypeScript
@@ -45,11 +49,9 @@ isControlCenterSupported(): boolean
 
 查询是否支持相机控制器。
 
-**起始版本：** 23
+**起始版本：** 20
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ControlCenterQuery-isControlCenterSupported(): boolean--><!--Device-ControlCenterQuery-isControlCenterSupported(): boolean-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -59,3 +61,11 @@ isControlCenterSupported(): boolean
 | --- | --- |
 | boolean | 返回是否支持相机控制器。true表示支持，false表示不支持。 |
 
+**示例**
+
+```TypeScript
+function isControlCenterSupported(videoSession: camera.VideoSession): boolean {
+    let isSupported: boolean = videoSession.isControlCenterSupported();
+    return isSupported;
+}
+```

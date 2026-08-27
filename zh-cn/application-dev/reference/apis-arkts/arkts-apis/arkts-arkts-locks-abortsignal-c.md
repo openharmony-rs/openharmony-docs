@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-locks-class AbortSignal--><!--Device-locks-class AbortSignal-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
@@ -28,8 +26,6 @@ aborted: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AbortSignal-aborted: boolean--><!--Device-AbortSignal-aborted: boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## reason
@@ -46,7 +42,4 @@ reason: T
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AbortSignal-reason: T--><!--Device-AbortSignal-reason: T-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

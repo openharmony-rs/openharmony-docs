@@ -1,8 +1,8 @@
 # AudioCapturerFilter（系统接口）
 
-**起始版本：** 23
+过滤条件类。在调用selectOutputDeviceByFilter接口前，需要先创建AudioCapturerFilter实例。
 
-<!--Device-audio-interface AudioCapturerFilter--><!--Device-audio-interface AudioCapturerFilter-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -12,7 +12,6 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## capturerInfo
@@ -21,11 +20,11 @@ import { audioHaptic } from '@kit.AudioKit';
 capturerInfo?: AudioCapturerInfo
 ```
 
+表示采集器信息。SystemCapability.Multimedia.Audio.Capturer
+
 **类型：** [AudioCapturerInfo](arkts-audio-audio-audiocapturerinfo-i.md)
 
-**起始版本：** 23
-
-<!--Device-AudioCapturerFilter-capturerInfo?: AudioCapturerInfo--><!--Device-AudioCapturerFilter-capturerInfo?: AudioCapturerInfo-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -34,18 +33,29 @@ capturerInfo?: AudioCapturerInfo
 ## uid
 
 ```TypeScript
-uid?: int
+uid?: number
 ```
 
-Application uid.
+表示应用ID。SystemCapability.Multimedia.Audio.Core
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AudioCapturerFilter-uid?: int--><!--Device-AudioCapturerFilter-uid?: int-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **系统接口：** 此接口为系统接口。
 
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+let inputAudioCapturerFilter: audio.AudioCapturerFilter = {
+    uid : 20010041,
+    capturerInfo : {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+    }
+};
+```

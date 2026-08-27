@@ -19,8 +19,6 @@ declare function fstatSync(fd: number): Stat
 
 **替代接口：** [statSync](arkts-corefile-file-fs-statsync-f.md)
 
-<!--Device-unnamed-declare function fstatSync(fd: number): Stat--><!--Device-unnamed-declare function fstatSync(fd: number): Stat-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -35,3 +33,10 @@ declare function fstatSync(fd: number): Stat
 | --- | --- |
 | [Stat](arkts-corefile-fileio-stat-depr-i.md) | 表示文件状态的具体信息。 |
 
+**示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+let fd = fileio.openSync(filePath);
+let stat = fileio.fstatSync(fd);
+```

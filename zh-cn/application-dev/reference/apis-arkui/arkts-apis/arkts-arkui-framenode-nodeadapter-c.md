@@ -1,10 +1,12 @@
 # NodeAdapter
 
-NodeAdapter提供FrameNode的数据懒加载能力，通过LazyForEach实现接口功能。适用于长列表等需要按需加载节点数 据的场景，可提升渲染性能并降低内存占用。 > **说明：** > > NodeAdapter各方法中的数值入参（如start、count、from、to）不能为负数，入参为负数时不做处理。
+NodeAdapter提供FrameNode的数据懒加载能力，通过LazyForEach实现接口功能。适用于长列表等需要按需加载节点数 据的场景，可提升渲染性能并降低内存占用。
+
+> **说明：**
+> 
+> NodeAdapter各方法中的数值入参（如start、count、from、to）不能为负数，入参为负数时不做处理。
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare class NodeAdapter--><!--Device-unnamed-declare class NodeAdapter-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -14,15 +16,17 @@ NodeAdapter提供FrameNode的数据懒加载能力，通过LazyForEach实现接�
 static attachNodeAdapter(adapter: NodeAdapter, node: FrameNode): boolean
 ```
 
-给FrameNode绑定一个NodeAdapter。一个节点只能绑定一个NodeAdapter。已经绑定NodeAdapter的再次绑定会失败并返回false。 > **说明：** > > 支持绑定的组件：Column、Row、Stack、GridRow、Flex、Swiper、RelativeContainer、List、ListItemGroup、WaterFlow、Grid。
+给FrameNode绑定一个NodeAdapter。一个节点只能绑定一个NodeAdapter。已经绑定NodeAdapter的再次绑定会失败并返回false。
+
+> **说明：**
+> 
+> 支持绑定的组件：Column、Row、Stack、GridRow、Flex、Swiper、RelativeContainer、List、ListItemGroup、WaterFlow、Grid。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NodeAdapter-static attachNodeAdapter(adapter: NodeAdapter, node: FrameNode): boolean--><!--Device-NodeAdapter-static attachNodeAdapter(adapter: NodeAdapter, node: FrameNode): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,8 +57,6 @@ NodeAdapter的构造函数。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NodeAdapter-constructor()--><!--Device-NodeAdapter-constructor()-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## detachNodeAdapter
@@ -70,8 +72,6 @@ static detachNodeAdapter(node: FrameNode): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NodeAdapter-static detachNodeAdapter(node: FrameNode): void--><!--Device-NodeAdapter-static detachNodeAdapter(node: FrameNode): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,9 +95,95 @@ dispose(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NodeAdapter-dispose(): void--><!--Device-NodeAdapter-dispose(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { NodeController, FrameNode, BuilderNode } from '@kit.ArkUI';
+
+@Component
+struct TestComponent {
+  build() {
+    Column() {
+      Text('This is a BuilderNode.')
+        .fontSize(16)
+        .fontWeight(FontWeight.Bold)
+    }
+    .width('100%')
+    .backgroundColor(Color.Gray)
+  }
+
+  aboutToAppear() {
+    console.info('aboutToAppear');
+  }
+
+  aboutToDisappear() {
+    console.info('aboutToDisappear');
+  }
+}
+
+@Builder
+function buildComponent() {
+  TestComponent()
+}
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private builderNode: BuilderNode<[]> | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.builderNode = new BuilderNode(uiContext, { selfIdealSize: { width: 200, height: 100 } });
+    this.builderNode.build(new WrappedBuilder(buildComponent));
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.size = { width: 200, height: 200 };
+      rootRenderNode.backgroundColor = 0xffd5d5d5;
+      rootRenderNode.appendChild(this.builderNode!.getFrameNode()!.getRenderNode());
+    }
+
+    return this.rootNode;
+  }
+
+  disposeFrameNode() {
+    if (this.rootNode !== null && this.builderNode !== null) {
+      // 解除rootNode对实体FrameNode节点的引用关系前，移除rootNode的所有子节点
+      this.rootNode.removeChild(this.builderNode.getFrameNode());
+      // 解除builderNode对实体FrameNode节点的引用关系
+      this.builderNode.dispose();
+      // 解除rootNode对实体FrameNode节点的引用关系
+      this.rootNode.dispose();
+    }
+  }
+
+  removeBuilderNode() {
+    const rootRenderNode = this.rootNode!.getRenderNode();
+    if (rootRenderNode !== null && this.builderNode !== null && this.builderNode.getFrameNode() !== null) {
+      rootRenderNode.removeChild(this.builderNode!.getFrameNode()!.getRenderNode());
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 4 }) {
+      NodeContainer(this.myNodeController)
+      Button('FrameNode dispose')
+        .onClick(() => {
+          this.myNodeController.disposeFrameNode();
+        })
+        .width('100%')
+    }
+  }
+}
+```
 
 ## getAllAvailableItems
 
@@ -112,8 +198,6 @@ getAllAvailableItems(): Array<FrameNode>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NodeAdapter-getAllAvailableItems(): Array<FrameNode>--><!--Device-NodeAdapter-getAllAvailableItems(): Array<FrameNode>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -137,16 +221,14 @@ insertItem(start: number, count: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NodeAdapter-insertItem(start: number, count: number): void--><!--Device-NodeAdapter-insertItem(start: number, count: number): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 是 | 新增的节点开始索引值。<br/>取值范围：0, +∞) |
-| count | number | 是 | 新增数据节点的数量。<br/>取值范围：[0, +∞) |
+| start | number | 是 | 新增的节点开始索引值。取值范围：0, +∞) |
+| count | number | 是 | 新增数据节点的数量。取值范围：[0, +∞) |
 
 ## isDisposed
 
@@ -162,8 +244,6 @@ isDisposed(): boolean
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NodeAdapter-isDisposed(): boolean--><!--Device-NodeAdapter-isDisposed(): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -174,7 +254,9 @@ isDisposed(): boolean
 
 **示例**
 
-请参考[检验NodeAdapter是否有效示例。
+请参考[检验FrameNode是否有效示例。
+
+请参考检验NodeAdapter是否有效示例。
 
 ## moveItem
 
@@ -190,16 +272,14 @@ moveItem(from: number, to: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NodeAdapter-moveItem(from: number, to: number): void--><!--Device-NodeAdapter-moveItem(from: number, to: number): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| from | number | 是 | 数据移动的原始索引值。<br/>取值范围：[0, +∞) |
-| to | number | 是 | 数据移动的目的索引值。<br/>取值范围：[0, +∞) |
+| from | number | 是 | 数据移动的原始索引值。取值范围：[0, +∞) |
+| to | number | 是 | 数据移动的目的索引值。取值范围：[0, +∞) |
 
 ## onAttachToNode
 
@@ -207,15 +287,22 @@ moveItem(from: number, to: number): void
 onAttachToNode?(target: FrameNode): void
 ```
 
-FrameNode绑定NodeAdapter时回调。 > **说明：** > > 在API版本26.0.0之前，该回调在宿主节点挂载到主树时触发。如果通过动态赋值方式设置该回调，开发者可以在调用[attachNodeAdapter](#attachnodeadapter)后 > 、宿主节点挂载到主树前完成设置，并在宿主节点挂载到主树时收到该回调。 > > 从API版本26.0.0开始，该回调会在NodeAdapter绑定到宿主节点时立即触发，而不是在宿主节点挂载到主节点树时触发。此时宿主节点可能尚未挂载到主节点树。如果回调逻辑依赖节点已挂载（例如访问布局信息或执行动画），建议在 > 该回调中注册onAppear，并将相关逻辑放入onAppear中执行。如果通过动态赋值方式设置该回调，请在调用 > [attachNodeAdapter](#attachnodeadapter)前完成设置，否则回调可能无法触发。
+FrameNode绑定NodeAdapter时回调。
+
+> **说明：**
+> 
+> 在API版本26.0.0之前，该回调在宿主节点挂载到主树时触发。如果通过动态赋值方式设置该回调，开发者可以在调用[attachNodeAdapter](#attachnodeadapter)后
+> 、宿主节点挂载到主树前完成设置，并在宿主节点挂载到主树时收到该回调。
+> 
+> 从API版本26.0.0开始，该回调会在NodeAdapter绑定到宿主节点时立即触发，而不是在宿主节点挂载到主节点树时触发。此时宿主节点可能尚未挂载到主节点树。如果回调逻辑依赖节点已挂载（例如访问布局信息或执行动画），建议在
+> 该回调中注册onAppear，并将相关逻辑放入onAppear中执行。如果通过动态赋值方式设置该回调，请在调用
+> [attachNodeAdapter](#attachnodeadapter)前完成设置，否则回调可能无法触发。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NodeAdapter-onAttachToNode?(target: FrameNode): void--><!--Device-NodeAdapter-onAttachToNode?(target: FrameNode): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,15 +326,13 @@ onCreateChild?(index: number): FrameNode
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NodeAdapter-onCreateChild?(index: number): FrameNode--><!--Device-NodeAdapter-onCreateChild?(index: number): FrameNode-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 加载节点索引值。<br/>取值范围：[0, +∞) |
+| index | number | 是 | 加载节点索引值。取值范围：[0, +∞) |
 
 **返回值：**
 
@@ -269,8 +354,6 @@ onDetachFromNode?(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NodeAdapter-onDetachFromNode?(): void--><!--Device-NodeAdapter-onDetachFromNode?(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDisposeChild
@@ -286,8 +369,6 @@ onDisposeChild?(id: number, node: FrameNode): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NodeAdapter-onDisposeChild?(id: number, node: FrameNode): void--><!--Device-NodeAdapter-onDisposeChild?(id: number, node: FrameNode): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -312,15 +393,13 @@ onGetChildId?(index: number): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NodeAdapter-onGetChildId?(index: number): number--><!--Device-NodeAdapter-onGetChildId?(index: number): number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 加载节点索引值。<br/>取值范围：[0, +∞) |
+| index | number | 是 | 加载节点索引值。取值范围：[0, +∞) |
 
 **返回值：**
 
@@ -342,8 +421,6 @@ onUpdateChild?(id: number, node: FrameNode): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NodeAdapter-onUpdateChild?(id: number, node: FrameNode): void--><!--Device-NodeAdapter-onUpdateChild?(id: number, node: FrameNode): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -359,15 +436,13 @@ onUpdateChild?(id: number, node: FrameNode): void
 reloadAllItems(): void
 ```
 
-重新加载全部数据操作。实际调用了LazyForEach中的onDataReloaded接口通知组件重新加载所有数据。
+重新加载全部数据操作。实际调用了LazyForEach中的[onDataReloaded](../arkts-components/arkts-arkui-datachangelistener-i.md#ondatareloaded)接口通知组件重新加载所有数据。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NodeAdapter-reloadAllItems(): void--><!--Device-NodeAdapter-reloadAllItems(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -385,16 +460,14 @@ reloadItem(start: number, count: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NodeAdapter-reloadItem(start: number, count: number): void--><!--Device-NodeAdapter-reloadItem(start: number, count: number): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 是 | 重新加载的节点开始索引值。<br/>取值范围：[0, +∞) |
-| count | number | 是 | 重新加载数据节点的数量。<br/>取值范围：[0, +∞) |
+| start | number | 是 | 重新加载的节点开始索引值。取值范围：0, +∞) |
+| count | number | 是 | 重新加载数据节点的数量。取值范围：[0, +∞) |
 
 ## removeItem
 
@@ -410,14 +483,33 @@ removeItem(start: number, count: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NodeAdapter-removeItem(start: number, count: number): void--><!--Device-NodeAdapter-removeItem(start: number, count: number): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 是 | 删除的节点开始索引值。<br/>取值范围：[0, +∞) |
-| count | number | 是 | 删除数据节点的数量。<br/>取值范围：[0, +∞) |
+| start | number | 是 | 删除的节点开始索引值。取值范围：[0, +∞) |
+| count | number | 是 | 删除数据节点的数量。取值范围：[0, +∞) |
 
+## totalNodeCount
+
+```TypeScript
+get totalNodeCount(): number
+```
+
+Get the total number of node count.
+
+**类型：** number
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+请参考[NodeAdapter使用示例。

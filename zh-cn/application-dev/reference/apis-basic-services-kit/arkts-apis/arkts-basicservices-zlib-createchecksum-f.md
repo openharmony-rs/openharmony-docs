@@ -14,11 +14,9 @@ function createChecksum(): Promise<Checksum>
 
 创建校验对象。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-zlib-function createChecksum(): Promise<Checksum>--><!--Device-zlib-function createChecksum(): Promise<Checksum>-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -37,4 +35,3 @@ zlib.createChecksum().then((data) => {
   console.info('createChecksum success');
 })
 ```
-

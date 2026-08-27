@@ -2,9 +2,7 @@
 
 FA模型的使用信息属性集合。
 
-**起始版本：** 23
-
-<!--Device-usageStatistics-interface HapModuleInfo--><!--Device-usageStatistics-interface HapModuleInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -19,16 +17,14 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 ## abilityDescriptionId
 
 ```TypeScript
-abilityDescriptionId?: long
+abilityDescriptionId?: number
 ```
 
 FA的MainAbility descriptionId。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-HapModuleInfo-abilityDescriptionId?: long--><!--Device-HapModuleInfo-abilityDescriptionId?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -37,16 +33,14 @@ FA的MainAbility descriptionId。
 ## abilityIconId
 
 ```TypeScript
-abilityIconId?: long
+abilityIconId?: number
 ```
 
 FA的MainAbility iconId。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-HapModuleInfo-abilityIconId?: long--><!--Device-HapModuleInfo-abilityIconId?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -55,16 +49,14 @@ FA的MainAbility iconId。
 ## abilityLableId
 
 ```TypeScript
-abilityLableId?: long
+abilityLableId?: number
 ```
 
 FA的MainAbility labelId。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-HapModuleInfo-abilityLableId?: long--><!--Device-HapModuleInfo-abilityLableId?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -80,9 +72,7 @@ FA的MainAbility名。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-HapModuleInfo-abilityName?: string--><!--Device-HapModuleInfo-abilityName?: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -91,16 +81,14 @@ FA的MainAbility名。
 ## appLabelId
 
 ```TypeScript
-appLabelId?: long
+appLabelId?: number
 ```
 
 FA的应用labelId。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-HapModuleInfo-appLabelId?: long--><!--Device-HapModuleInfo-appLabelId?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -116,9 +104,7 @@ bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-HapModuleInfo-bundleName: string--><!--Device-HapModuleInfo-bundleName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -127,16 +113,14 @@ bundleName: string
 ## descriptionId
 
 ```TypeScript
-descriptionId?: long
+descriptionId?: number
 ```
 
 FA所属的应用descriptionId。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-HapModuleInfo-descriptionId?: long--><!--Device-HapModuleInfo-descriptionId?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -152,9 +136,7 @@ deviceId?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-HapModuleInfo-deviceId?: string--><!--Device-HapModuleInfo-deviceId?: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -170,9 +152,7 @@ FA中卡片的使用记录。
 
 **类型：** Array&lt;[HapFormInfo](arkts-backgroundtasks-usagestatistics-hapforminfo-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-HapModuleInfo-formRecords: Array<HapFormInfo>--><!--Device-HapModuleInfo-formRecords: Array<HapFormInfo>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -181,16 +161,14 @@ FA中卡片的使用记录。
 ## labelId
 
 ```TypeScript
-labelId?: long
+labelId?: number
 ```
 
 FA所属module的labelId。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-HapModuleInfo-labelId?: long--><!--Device-HapModuleInfo-labelId?: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -199,16 +177,14 @@ FA所属module的labelId。
 ## lastModuleUsedTime
 
 ```TypeScript
-lastModuleUsedTime: long
+lastModuleUsedTime: number
 ```
 
 FA的上一次使用时间，单位：ms。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-HapModuleInfo-lastModuleUsedTime: long--><!--Device-HapModuleInfo-lastModuleUsedTime: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -217,16 +193,14 @@ FA的上一次使用时间，单位：ms。
 ## launchedCount
 
 ```TypeScript
-launchedCount: int
+launchedCount: number
 ```
 
 FA的启动次数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-HapModuleInfo-launchedCount: int--><!--Device-HapModuleInfo-launchedCount: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -242,11 +216,8 @@ FA所属module名。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-HapModuleInfo-moduleName: string--><!--Device-HapModuleInfo-moduleName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **系统接口：** 此接口为系统接口。
-

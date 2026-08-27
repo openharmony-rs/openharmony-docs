@@ -2,9 +2,7 @@
 
 备份恢复扩展能力。应用可通过该类实现自定义备份、恢复、进度上报和安全退出逻辑。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare class BackupExtensionAbility--><!--Device-unnamed-declare class BackupExtensionAbility-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -12,8 +10,6 @@
 
 ```TypeScript
 import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
-import { BackupExtensionAbility } from '@kit.CoreFileKit';
-import { BundleVersion } from '@kit.CoreFileKit';
 ```
 
 ## onBackup
@@ -24,11 +20,9 @@ onBackup(): void
 
 Extension生命周期回调，在执行备份数据时回调，由开发者实现自定义备份数据处理。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BackupExtensionAbility-onBackup(): void--><!--Device-BackupExtensionAbility-onBackup(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -50,11 +44,9 @@ onBackupEx(backupInfo: string): string | Promise<string>
 
 备份恢复框架在备份时向应用传递扩展参数，由开发者实现自定义备份处理。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BackupExtensionAbility-onBackupEx(backupInfo: string): string | Promise<string>--><!--Device-BackupExtensionAbility-onBackupEx(backupInfo: string): string | Promise<string>-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -68,7 +60,7 @@ onBackupEx(backupInfo: string): string | Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 应用执行自定义备份操作的信息，返回值为JSON格式字符串， 包含type、errorCode和errorInfo字段，支持同步返回或使用Promise异步返回。 |
+| string \| Promise & lt;string & gt; | 应用执行自定义备份操作的信息，返回值为JSON格式字符串， 包含type、errorCode和errorInfo字段，支持同步返回或使用Promise异步返回。 |
 
 **示例**
 
@@ -155,11 +147,9 @@ onProcess(): string
 
 返回应用执行备份或恢复业务的进度信息。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BackupExtensionAbility-onProcess(): string--><!--Device-BackupExtensionAbility-onProcess(): string-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -251,16 +241,14 @@ function appJob(progressInfo: MigrateProgressInfo, args: number) : string {
 ## onRelease
 
 ```TypeScript
-onRelease(scenario: int): Promise<void>
+onRelease(scenario: number): Promise<void>
 ```
 
 备份恢复框架安全退出回调，应用可在备份或恢复完成后清理临时文件。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BackupExtensionAbility-onRelease(scenario: int): Promise<void>--><!--Device-BackupExtensionAbility-onRelease(scenario: int): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -268,13 +256,13 @@ onRelease(scenario: int): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scenario | int | 是 | 当前操作场景，值为1表示备份，值为2表示恢复。 |
+| scenario | number | 是 | 当前操作场景，值为1表示备份，值为2表示恢复。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -319,11 +307,9 @@ onRestore(bundleVersion: BundleVersion): void
 
 Extension生命周期回调，在执行恢复数据时回调，由开发者提供扩展的恢复数据操作。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BackupExtensionAbility-onRestore(bundleVersion: BundleVersion): void--><!--Device-BackupExtensionAbility-onRestore(bundleVersion: BundleVersion): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -353,11 +339,9 @@ onRestoreEx(bundleVersion: BundleVersion, restoreInfo: string): string | Promise
 
 Extension生命周期回调，在执行恢复数据时回调，由开发者实现自定义恢复数据处理。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BackupExtensionAbility-onRestoreEx(bundleVersion: BundleVersion, restoreInfo: string): string | Promise<string>--><!--Device-BackupExtensionAbility-onRestoreEx(bundleVersion: BundleVersion, restoreInfo: string): string | Promise<string>-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -372,7 +356,7 @@ Extension生命周期回调，在执行恢复数据时回调，由开发者实�
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 应用执行自定义恢复操作的信息，返回值为JSON格式字符串， 包含type、errorCode和errorInfo字段，支持同步返回或使用Promise异步返回。 |
+| string \| Promise & lt;string & gt; | 应用执行自定义恢复操作的信息，返回值为JSON格式字符串， 包含type、errorCode和errorInfo字段，支持同步返回或使用Promise异步返回。 |
 
 **示例**
 
@@ -461,11 +445,8 @@ BackupExtensionAbility的上下文环境，继承自ExtensionContext。
 
 **类型：** [BackupExtensionContext](arkts-corefile-file-backupextensioncontext-backupextensioncontext-c.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BackupExtensionAbility-context: BackupExtensionContext--><!--Device-BackupExtensionAbility-context: BackupExtensionContext-End-->
-
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
-

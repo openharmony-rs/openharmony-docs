@@ -18,8 +18,6 @@ function begin(scene: string, startInputType: ActionType, note?: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-performanceMonitor-function begin(scene: string, startInputType: ActionType, note?: string): void--><!--Device-performanceMonitor-function begin(scene: string, startInputType: ActionType, note?: string): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -39,4 +37,3 @@ function begin(scene: string, startInputType: ActionType, note?: string): void
 ```TypeScript
 performanceMonitor.begin("LAUNCHER_APP_LAUNCH_FROM_ICON", performanceMonitor.ActionType.LAST_UP, "APP_START_BEGIN");
 ```
-

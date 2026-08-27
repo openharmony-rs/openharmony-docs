@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 <!--Del-->
 ## 29300001 入参错误
 
@@ -63,12 +63,12 @@ The application has not enabled the data protection function under lock screen.
 
 **可能原因**
 
-1. 应用未在[requestpermissions](../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)配置权限ohos.permission.PROTECT_SCREEN_LOCK_DATA开启应用锁屏敏感数据保护功能。
+1. 应用未在requestpermissions配置权限ohos.permission.PROTECT_SCREEN_LOCK_DATA开启应用锁屏敏感数据保护功能。
 2. 当前硬件不支持锁屏敏感数据保护功能。
 
 **处理步骤**
 
-在[requestpermissions](../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)中配置权限ohos.permission.PROTECT_SCREEN_LOCK_DATA开启应用锁屏敏感数据保护功能。
+在requestpermissions中配置权限ohos.permission.PROTECT_SCREEN_LOCK_DATA开启应用锁屏敏感数据保护功能。
 
 
 ## 29300004 锁屏敏感数据访问权限已释放

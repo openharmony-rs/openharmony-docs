@@ -12,9 +12,6 @@ export type SkillType = _SkillType
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-skillManager-export type SkillType = _SkillType--><!--Device-skillManager-export type SkillType = _SkillType-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **属性类型：** _SkillType
-

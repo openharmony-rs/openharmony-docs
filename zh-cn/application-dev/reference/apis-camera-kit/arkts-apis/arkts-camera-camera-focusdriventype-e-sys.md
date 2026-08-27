@@ -2,9 +2,7 @@
 
 Enumerates the focus drive types.
 
-**起始版本：** 23
-
-<!--Device-camera-enum FocusDrivenType--><!--Device-camera-enum FocusDrivenType-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -18,9 +16,7 @@ AUTO = 0
 
 Automatic.
 
-**起始版本：** 23
-
-<!--Device-FocusDrivenType-AUTO = 0--><!--Device-FocusDrivenType-AUTO = 0-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -34,11 +30,8 @@ FACE = 1
 
 Face-driven.
 
-**起始版本：** 23
-
-<!--Device-FocusDrivenType-FACE = 1--><!--Device-FocusDrivenType-FACE = 1-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
-

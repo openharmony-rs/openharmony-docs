@@ -1,10 +1,8 @@
 # AsrVoiceControlMode（系统接口）
 
-ASR voice control mode.
+枚举，自动语音识别（ASR）的音频通路模式。
 
-**起始版本：** 23
-
-<!--Device-audio-enum AsrVoiceControlMode--><!--Device-audio-enum AsrVoiceControlMode-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -16,11 +14,9 @@ ASR voice control mode.
 AUDIO_2_VOICE_TX = 0
 ```
 
-Send output stream to TX.
+仅媒体音频流生效。
 
-**起始版本：** 23
-
-<!--Device-AsrVoiceControlMode-AUDIO_2_VOICE_TX = 0--><!--Device-AsrVoiceControlMode-AUDIO_2_VOICE_TX = 0-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -32,11 +28,9 @@ Send output stream to TX.
 AUDIO_MIX_2_VOICE_TX = 1
 ```
 
-Send both output stream and MIC input to TX.
+媒体音频流和MIC音频流均生效。
 
-**起始版本：** 23
-
-<!--Device-AsrVoiceControlMode-AUDIO_MIX_2_VOICE_TX = 1--><!--Device-AsrVoiceControlMode-AUDIO_MIX_2_VOICE_TX = 1-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -48,11 +42,9 @@ Send both output stream and MIC input to TX.
 AUDIO_2_VOICE_TX_EX = 2
 ```
 
-Based on the AUDIO_2_VOICE_TX, Send output stream to voice call record.
+仅媒体音频流生效，将媒体流上报给通话录音。
 
-**起始版本：** 23
-
-<!--Device-AsrVoiceControlMode-AUDIO_2_VOICE_TX_EX = 2--><!--Device-AsrVoiceControlMode-AUDIO_2_VOICE_TX_EX = 2-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -64,13 +56,10 @@ Based on the AUDIO_2_VOICE_TX, Send output stream to voice call record.
 AUDIO_MIX_2_VOICE_TX_EX = 3
 ```
 
-Based on the AUDIO_MIX_2_VOICE_TX, Send output stream to voice call record.
+媒体音频流和MIC音频流均生效，将媒体流上报给通话录音。
 
-**起始版本：** 23
-
-<!--Device-AsrVoiceControlMode-AUDIO_MIX_2_VOICE_TX_EX = 3--><!--Device-AsrVoiceControlMode-AUDIO_MIX_2_VOICE_TX_EX = 3-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **系统接口：** 此接口为系统接口。
-

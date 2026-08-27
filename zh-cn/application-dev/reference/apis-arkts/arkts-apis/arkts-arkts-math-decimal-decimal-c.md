@@ -1,17 +1,14 @@
-# Decimal(定义ArkTS的Decimal类型。Decimal支持任意精度的十进制运算。)
+# Decimal
 
 任意精度的Decimal类型。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare class Decimal--><!--Device-unnamed-declare class Decimal-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { Decimal } from '@kit.ArkTS';
 ```
 
 ## abs
@@ -22,11 +19,9 @@ abs(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的绝对值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-abs(): Decimal--><!--Device-Decimal-abs(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -44,11 +39,9 @@ static abs(n: Value): Decimal
 
 返回一个新的Decimal对象，Decimal的值为参数n的绝对值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static abs(n: Value): Decimal--><!--Device-Decimal-static abs(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -56,7 +49,7 @@ static abs(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -78,11 +71,9 @@ acos(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的反余弦值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-acos(): Decimal--><!--Device-Decimal-acos(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -106,11 +97,9 @@ static acos(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的反余弦值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static acos(n: Value): Decimal--><!--Device-Decimal-static acos(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -118,7 +107,7 @@ static acos(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -141,11 +130,9 @@ acosh(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal值的双曲余弦的倒数。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-acosh(): Decimal--><!--Device-Decimal-acosh(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -169,11 +156,9 @@ static acosh(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的双曲余弦的倒数。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static acosh(n: Value): Decimal--><!--Device-Decimal-static acosh(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -181,7 +166,7 @@ static acosh(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -204,11 +189,9 @@ add(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是将此Decimal的值加上n。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-add(n: Value): Decimal--><!--Device-Decimal-add(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -216,7 +199,7 @@ add(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -238,11 +221,9 @@ static add(x: Value, y: Value): Decimal
 
 返回一个新的Decimal对象，其值为x加y的和。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static add(x: Value, y: Value): Decimal--><!--Device-Decimal-static add(x: Value, y: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -250,8 +231,8 @@ static add(x: Value, y: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
-| y | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| x | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
+| y | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -273,11 +254,9 @@ asin(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的反正弦值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-asin(): Decimal--><!--Device-Decimal-asin(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -301,11 +280,9 @@ static asin(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的反正弦值。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static asin(n: Value): Decimal--><!--Device-Decimal-static asin(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -313,7 +290,7 @@ static asin(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -336,11 +313,9 @@ asinh(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal值的双曲正弦的倒数。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-asinh(): Decimal--><!--Device-Decimal-asinh(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -364,11 +339,9 @@ static asinh(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的双曲正弦的倒数。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static asinh(n: Value): Decimal--><!--Device-Decimal-static asinh(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -376,7 +349,7 @@ static asinh(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} 以弧度为单位的值。 |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} 以弧度为单位的值。 |
 
 **返回值：**
 
@@ -399,11 +372,9 @@ atan(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的反正切值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-atan(): Decimal--><!--Device-Decimal-atan(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -427,11 +398,9 @@ static atan(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的反正切值。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static atan(n: Value): Decimal--><!--Device-Decimal-static atan(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -439,7 +408,7 @@ static atan(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -462,11 +431,9 @@ static atan2(y: Value, x: Value): Decimal
 
 返回一个新的Decimal对象，其值是-π到π（含边界）范围内y/x的反正切值。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static atan2(y: Value, x: Value): Decimal--><!--Device-Decimal-static atan2(y: Value, x: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -474,8 +441,8 @@ static atan2(y: Value, x: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| y | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} y坐标值，用于计算y/x的反正切值并确定象限。 |
-| x | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} x坐标值，用于计算y/x的反正切值并确定象限。 |
+| y | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} y坐标值，用于计算y/x的反正切值并确定象限。 |
+| x | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} x坐标值，用于计算y/x的反正切值并确定象限。 |
 
 **返回值：**
 
@@ -498,11 +465,9 @@ atanh(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal值的双曲正切的倒数。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-atanh(): Decimal--><!--Device-Decimal-atanh(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -526,11 +491,9 @@ static atanh(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的反双曲正切值。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static atanh(n: Value): Decimal--><!--Device-Decimal-static atanh(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -538,7 +501,7 @@ static atanh(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} 以弧度为单位的值。 |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} 以弧度为单位的值。 |
 
 **返回值：**
 
@@ -561,11 +524,9 @@ cbrt(): Decimal
 
 返回一个新的Decimal对象，其值是当前Decimal对象的立方根。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-cbrt(): Decimal--><!--Device-Decimal-cbrt(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -583,11 +544,9 @@ static cbrt(n: Value): Decimal
 
 返回一个新的Decimal对象，其值为n的立方根。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static cbrt(n: Value): Decimal--><!--Device-Decimal-static cbrt(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -595,7 +554,7 @@ static cbrt(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -617,11 +576,9 @@ ceil(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal向正无穷方向舍入得到的结果。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-ceil(): Decimal--><!--Device-Decimal-ceil(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -639,11 +596,9 @@ static ceil(n: Value): Decimal
 
 返回一个新的Decimal对象，其值为参数n向正无穷方向舍入得到的结果。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static ceil(n: Value): Decimal--><!--Device-Decimal-static ceil(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -651,7 +606,7 @@ static ceil(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -673,11 +628,9 @@ clamp(min: Value, max: Value): Decimal
 
 返回一个将Decimal值限制在min到max范围内的Decimal对象。如果值大于max，返回max；如果值小于min，返回min；否则，返回原值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-clamp(min: Value, max: Value): Decimal--><!--Device-Decimal-clamp(min: Value, max: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -685,8 +638,8 @@ clamp(min: Value, max: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| min | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
-| max | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| min | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
+| max | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -709,11 +662,9 @@ static clamp(n: Value, min: Value, max: Value): Decimal
 
 返回一个值为将参数n的值限制在min到max范围内的Decimal对象，当n大于max时返回max，当n小于min时返回min，在范围内返回值不变。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static clamp(n: Value, min: Value, max: Value): Decimal--><!--Device-Decimal-static clamp(n: Value, min: Value, max: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -721,9 +672,9 @@ static clamp(n: Value, min: Value, max: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
-| min | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
-| max | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
+| min | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
+| max | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -741,16 +692,14 @@ static clamp(n: Value, min: Value, max: Value): Decimal
 ## comparedTo
 
 ```TypeScript
-comparedTo(n: Value): double
+comparedTo(n: Value): number
 ```
 
 返回该Decimal与比较值的比较结果。 1 如果此Decimal大于n的值， -1 如果此Decimal小于n的值， 0 如果两者的值相等， NaN 如果两者中任一Decimal的值为NaN。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-comparedTo(n: Value): double--><!--Device-Decimal-comparedTo(n: Value): double-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -758,13 +707,13 @@ comparedTo(n: Value): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| double | the number type |
+| number | the number type |
 
 **错误码：**
 
@@ -780,11 +729,9 @@ constructor(n: Value)
 
 Decimal的构造函数。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-constructor(n: Value)--><!--Device-Decimal-constructor(n: Value)-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -792,7 +739,7 @@ Decimal的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **错误码：**
 
@@ -808,11 +755,9 @@ cos(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的余弦值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-cos(): Decimal--><!--Device-Decimal-cos(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -830,11 +775,9 @@ static cos(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的余弦值。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static cos(n: Value): Decimal--><!--Device-Decimal-static cos(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -842,7 +785,7 @@ static cos(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} 以弧度为单位的值。 |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} 以弧度为单位的值。 |
 
 **返回值：**
 
@@ -864,11 +807,9 @@ cosh(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的双曲余弦值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-cosh(): Decimal--><!--Device-Decimal-cosh(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -886,11 +827,9 @@ static cosh(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的双曲余弦值。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static cosh(n: Value): Decimal--><!--Device-Decimal-static cosh(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -898,7 +837,7 @@ static cosh(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} 以弧度为单位的值。 |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} 以弧度为单位的值。 |
 
 **返回值：**
 
@@ -915,16 +854,14 @@ static cosh(n: Value): Decimal
 ## decimalPlaces
 
 ```TypeScript
-decimalPlaces(): double
+decimalPlaces(): number
 ```
 
 返回Decimal对象的小数位数。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-decimalPlaces(): double--><!--Device-Decimal-decimalPlaces(): double-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -932,7 +869,7 @@ decimalPlaces(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | the number type |
+| number | the number type |
 
 ## div
 
@@ -942,11 +879,9 @@ div(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是将此Decimal的值除以n。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-div(n: Value): Decimal--><!--Device-Decimal-div(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -954,7 +889,7 @@ div(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -976,11 +911,9 @@ static div(x: Value, y: Value): Decimal
 
 返回一个新的Decimal对象，其值为x除以y的商。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static div(x: Value, y: Value): Decimal--><!--Device-Decimal-static div(x: Value, y: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -988,8 +921,8 @@ static div(x: Value, y: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
-| y | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| x | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
+| y | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1011,11 +944,9 @@ dividedToIntegerBy(n: Value): Decimal
 
 返回该Decimal除以n后获得的整数部分。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-dividedToIntegerBy(n: Value): Decimal--><!--Device-Decimal-dividedToIntegerBy(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1023,7 +954,7 @@ dividedToIntegerBy(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1045,11 +976,9 @@ equals(n: Value): boolean
 
 返回此Decimal是否等于比较值n，相等返回true，否则返回false。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-equals(n: Value): boolean--><!--Device-Decimal-equals(n: Value): boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1057,7 +986,7 @@ equals(n: Value): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1079,11 +1008,9 @@ exp(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal值的自然指数（即以e为底，此Decimal值为指数的幂）。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-exp(): Decimal--><!--Device-Decimal-exp(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1107,11 +1034,9 @@ static exp(n: Value): Decimal
 
 返回一个新的Decimal对象，其值为n的自然指数。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static exp(n: Value): Decimal--><!--Device-Decimal-static exp(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1119,7 +1044,7 @@ static exp(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1142,11 +1067,9 @@ floor(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal向负无穷方向舍入得到的结果。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-floor(): Decimal--><!--Device-Decimal-floor(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1164,11 +1087,9 @@ static floor(n: Value): Decimal
 
 返回一个新的Decimal对象，其值为参数n向负无穷方向舍入得到的结果。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static floor(n: Value): Decimal--><!--Device-Decimal-static floor(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1176,7 +1097,7 @@ static floor(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1198,11 +1119,9 @@ greaterThan(n: Value): boolean
 
 返回此Decimal是否大于比较值n，大于返回true，否则返回false。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-greaterThan(n: Value): boolean--><!--Device-Decimal-greaterThan(n: Value): boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1210,7 +1129,7 @@ greaterThan(n: Value): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1232,11 +1151,9 @@ greaterThanOrEqualTo(n: Value): boolean
 
 返回此Decimal是否大于等于比较值n，大于等于返回true，否则返回false。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-greaterThanOrEqualTo(n: Value): boolean--><!--Device-Decimal-greaterThanOrEqualTo(n: Value): boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1244,7 +1161,7 @@ greaterThanOrEqualTo(n: Value): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1266,11 +1183,9 @@ static hypot(...n: Value[]): Decimal
 
 返回一个新的Decimal对象，其值是参数平方和的平方根。无入参时默认返回0。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static hypot(...n: Value[]): Decimal--><!--Device-Decimal-static hypot(...n: Value[]): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1278,7 +1193,7 @@ static hypot(...n: Value[]): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md)[] | 是 | {double \| string \| Decimal} Decimal |
+| n | [Value](arkts-arkts-value-t.md)[] | 是 | {number \| string \| Decimal} Decimal |
 
 **返回值：**
 
@@ -1300,11 +1215,9 @@ isFinite(): boolean
 
 返回此Decimal是否为有限值，是有限值返回true，否则返回false。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-isFinite(): boolean--><!--Device-Decimal-isFinite(): boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1322,11 +1235,9 @@ isInteger(): boolean
 
 返回此Decimal是否为整数，是整数返回true，否则返回false。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-isInteger(): boolean--><!--Device-Decimal-isInteger(): boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1344,11 +1255,9 @@ isNaN(): boolean
 
 返回此Decimal是否为无效值（NaN），是NaN返回true，否则返回false。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-isNaN(): boolean--><!--Device-Decimal-isNaN(): boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1366,11 +1275,9 @@ isNegative(): boolean
 
 返回此Decimal是否为负数（区分正负零），是负数返回true，否则返回false。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-isNegative(): boolean--><!--Device-Decimal-isNegative(): boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1388,11 +1295,9 @@ isPositive(): boolean
 
 返回此Decimal是否为正数（区分正负零），是正数返回true，否则返回false。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-isPositive(): boolean--><!--Device-Decimal-isPositive(): boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1410,11 +1315,9 @@ isZero(): boolean
 
 返回此Decimal是否为0或是-0，是返回true，否则返回false。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-isZero(): boolean--><!--Device-Decimal-isZero(): boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1432,11 +1335,9 @@ lessThan(n: Value): boolean
 
 返回此Decimal是否小于比较值n，小于返回true，否则返回false。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-lessThan(n: Value): boolean--><!--Device-Decimal-lessThan(n: Value): boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1444,7 +1345,7 @@ lessThan(n: Value): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1466,11 +1367,9 @@ lessThanOrEqualTo(n: Value): boolean
 
 返回此Decimal是否小于等于比较值n，小于等于返回true，否则返回false。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-lessThanOrEqualTo(n: Value): boolean--><!--Device-Decimal-lessThanOrEqualTo(n: Value): boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1478,7 +1377,7 @@ lessThanOrEqualTo(n: Value): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1500,11 +1399,9 @@ ln(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal值的自然对数。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-ln(): Decimal--><!--Device-Decimal-ln(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1528,11 +1425,9 @@ static ln(n: Value): Decimal
 
 返回一个新的Decimal对象，其值为n的自然对数。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static ln(n: Value): Decimal--><!--Device-Decimal-static ln(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1540,7 +1435,7 @@ static ln(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1563,11 +1458,9 @@ log(n: Value): Decimal
 
 返回一个对数运算后的Decimal对象，其值是以n为底的此Decimal的对数值。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-log(n: Value): Decimal--><!--Device-Decimal-log(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1575,7 +1468,7 @@ log(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1598,11 +1491,9 @@ static log(n: Value, base: Value): Decimal
 
 返回一个新的Decimal对象，其值是以base为底n的对数。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static log(n: Value, base: Value): Decimal--><!--Device-Decimal-static log(n: Value, base: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1610,8 +1501,8 @@ static log(n: Value, base: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
-| base | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
+| base | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1634,11 +1525,9 @@ static log10(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是以10为底n的对数。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static log10(n: Value): Decimal--><!--Device-Decimal-static log10(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1646,7 +1535,7 @@ static log10(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1669,11 +1558,9 @@ static log2(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是以2为底n的对数。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static log2(n: Value): Decimal--><!--Device-Decimal-static log2(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1681,7 +1568,7 @@ static log2(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1704,11 +1591,9 @@ static max(...n: Value[]): Decimal
 
 返回一个新的Decimal对象，其值是所有参数中的最大值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static max(...n: Value[]): Decimal--><!--Device-Decimal-static max(...n: Value[]): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1716,7 +1601,7 @@ static max(...n: Value[]): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md)[] | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md)[] | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1738,11 +1623,9 @@ static min(...n: Value[]): Decimal
 
 返回一个新的Decimal对象，其值是所有参数中的最小值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static min(...n: Value[]): Decimal--><!--Device-Decimal-static min(...n: Value[]): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1750,7 +1633,7 @@ static min(...n: Value[]): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md)[] | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md)[] | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1772,11 +1655,9 @@ mod(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是将此Decimal的值除以n后的模。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-mod(n: Value): Decimal--><!--Device-Decimal-mod(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1784,7 +1665,7 @@ mod(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1806,11 +1687,9 @@ static mod(x: Value, y: Value): Decimal
 
 返回一个新的Decimal对象，其值是x除以y的模。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static mod(x: Value, y: Value): Decimal--><!--Device-Decimal-static mod(x: Value, y: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1818,8 +1697,8 @@ static mod(x: Value, y: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
-| y | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| x | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
+| y | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1841,11 +1720,9 @@ mul(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是将此Decimal的值乘以n。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-mul(n: Value): Decimal--><!--Device-Decimal-mul(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1853,7 +1730,7 @@ mul(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1875,11 +1752,9 @@ static mul(x: Value, y: Value): Decimal
 
 返回一个新的Decimal对象，其值为x乘以y的积。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static mul(x: Value, y: Value): Decimal--><!--Device-Decimal-static mul(x: Value, y: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1887,8 +1762,8 @@ static mul(x: Value, y: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
-| y | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| x | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
+| y | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1910,11 +1785,9 @@ negate(): Decimal
 
 返回一个新的Decimal对象，其值将此Decimal的值乘以-1。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-negate(): Decimal--><!--Device-Decimal-negate(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1932,11 +1805,9 @@ pow(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是这个Decimal值的n次幂。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-pow(n: Value): Decimal--><!--Device-Decimal-pow(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1944,7 +1815,7 @@ pow(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -1967,11 +1838,9 @@ static pow(base: Value, exponent: Value): Decimal
 
 返回一个新的Decimal对象，其值为base的exponent次幂。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static pow(base: Value, exponent: Value): Decimal--><!--Device-Decimal-static pow(base: Value, exponent: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1979,8 +1848,8 @@ static pow(base: Value, exponent: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| base | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} 幂运算的底数的值。 |
-| exponent | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} 幂运算的指数值。 |
+| base | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} 幂运算的底数的值。 |
+| exponent | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} 幂运算的指数值。 |
 
 **返回值：**
 
@@ -1998,16 +1867,14 @@ static pow(base: Value, exponent: Value): Decimal
 ## precision
 
 ```TypeScript
-precision(): double
+precision(): number
 ```
 
 返回Decimal对象的有效数字位数。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-precision(): double--><!--Device-Decimal-precision(): double-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2015,21 +1882,19 @@ precision(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | the number type |
+| number | the number type |
 
 ## precision
 
 ```TypeScript
-precision(includeZeros: boolean | int): double
+precision(includeZeros: boolean | number): number
 ```
 
 返回Decimal对象的有效数字位数，可通过includeZeros判断是否计算整数部分的尾随零。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-precision(includeZeros: boolean | int): double--><!--Device-Decimal-precision(includeZeros: boolean | int): double-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2037,13 +1902,13 @@ precision(includeZeros: boolean | int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| includeZeros | boolean \| int | 是 | 是否计算整数部分尾随零。true或1表示计算，false或0表示不计算。 |
+| includeZeros | boolean \| number | 是 | 是否计算整数部分尾随零。true或1表示计算，false或0表示不计算。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| double | the number type |
+| number | the number type |
 
 **错误码：**
 
@@ -2059,11 +1924,9 @@ static random(): Decimal
 
 返回一个新的Decimal对象，其值为大于等于0且小于1的随机值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static random(): Decimal--><!--Device-Decimal-static random(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2082,16 +1945,14 @@ static random(): Decimal
 ## random
 
 ```TypeScript
-static random(significantDigits: double): Decimal
+static random(significantDigits: number): Decimal
 ```
 
 返回一个新的Decimal对象，其值为大于等于0且小于1的随机值，并保留significantDigits位有效数字（若产生尾随零则可能少于该位数）。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static random(significantDigits: double): Decimal--><!--Device-Decimal-static random(significantDigits: double): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2099,7 +1960,7 @@ static random(significantDigits: double): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | double | 是 | {number} 随机值保留的有效数字。取值范围为[0, 1e9]的整数。[since 12 - 17] |
+| significantDigits | number | 是 | {number} 随机值保留的有效数字。取值范围为[0, 1e9]的整数。[since 12 - 17] |
 
 **返回值：**
 
@@ -2122,11 +1983,9 @@ static round(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是使用rounding舍入模式将n舍入为整数的结果。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static round(n: Value): Decimal--><!--Device-Decimal-static round(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2134,7 +1993,7 @@ static round(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -2156,11 +2015,9 @@ static set(config: DecimalConfig): void
 
 用于设置Decimal的配置属性，通过set设置的属性是全局生效的。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static set(config: DecimalConfig): void--><!--Device-Decimal-static set(config: DecimalConfig): void-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2175,22 +2032,20 @@ static set(config: DecimalConfig): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
-| [10200061](../errorcode-utils.md#10200061-加密方法不可用) | Crypto unavailable |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `DecimalConfig.properties` is out of range. |
+| [10200061](../errorcode-utils.md#10200061-加密方法不可用) | Crypto unavailable |
 
 ## sign
 
 ```TypeScript
-static sign(n: Value): double
+static sign(n: Value): number
 ```
 
-根据参数n的值返回对应的符号： 1 如果 n > 0， -1 如果 n &lt; 0， 0 如果 n 为 0， NaN 其他情况
+根据参数n的值返回对应的符号： 1 如果 n &gt; 0， -1 如果 n &lt; 0， 0 如果 n 为 0， NaN 其他情况
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static sign(n: Value): double--><!--Device-Decimal-static sign(n: Value): double-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2198,14 +2053,14 @@ static sign(n: Value): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type<br>**适用版本：** 12 - 17 |
-| double | the Decimal type<br>**适用版本：** 18+ |
+| number | the Decimal type<br>**适用版本：** 18+ |
 
 **错误码：**
 
@@ -2221,11 +2076,9 @@ sin(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的正弦值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-sin(): Decimal--><!--Device-Decimal-sin(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2243,11 +2096,9 @@ static sin(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的正弦值。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static sin(n: Value): Decimal--><!--Device-Decimal-static sin(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2255,7 +2106,7 @@ static sin(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} 以弧度为单位的值。 |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} 以弧度为单位的值。 |
 
 **返回值：**
 
@@ -2277,11 +2128,9 @@ sinh(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的双曲正弦值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-sinh(): Decimal--><!--Device-Decimal-sinh(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2299,11 +2148,9 @@ static sinh(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的双曲正弦值。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static sinh(n: Value): Decimal--><!--Device-Decimal-static sinh(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2311,7 +2158,7 @@ static sinh(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -2333,11 +2180,9 @@ sqrt(): Decimal
 
 返回一个新的Decimal对象，其值是当前Decimal的平方根。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-sqrt(): Decimal--><!--Device-Decimal-sqrt(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2355,11 +2200,9 @@ static sqrt(n: Value): Decimal
 
 返回一个新的Decimal对象，其值为n的平方根。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static sqrt(n: Value): Decimal--><!--Device-Decimal-static sqrt(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2367,7 +2210,7 @@ static sqrt(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -2389,11 +2232,9 @@ sub(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是将此Decimal的值减去n。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-sub(n: Value): Decimal--><!--Device-Decimal-sub(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2401,7 +2242,7 @@ sub(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -2423,11 +2264,9 @@ static sub(x: Value, y: Value): Decimal
 
 返回一个新的Decimal对象，其值为x减y的差。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static sub(x: Value, y: Value): Decimal--><!--Device-Decimal-static sub(x: Value, y: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2435,8 +2274,8 @@ static sub(x: Value, y: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
-| y | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| x | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
+| y | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -2456,13 +2295,11 @@ static sub(x: Value, y: Value): Decimal
 static sum(...n: Value[]): Decimal
 ```
 
-返回一个新的Decimal对象，其值为参数的和。按照precision设置有效位数，按照rounding设置舍入模式。 仅对结果进行舍入，不对中间计算结果进行舍入。
+返回一个新的Decimal对象，其值为参数的和。按照precision设置有效位数，按照rounding设置舍入模式。仅对结果进行舍入，不对中间计算结果进行舍入。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static sum(...n: Value[]): Decimal--><!--Device-Decimal-static sum(...n: Value[]): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2470,7 +2307,7 @@ static sum(...n: Value[]): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md)[] | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md)[] | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -2492,11 +2329,9 @@ tan(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的正切值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-tan(): Decimal--><!--Device-Decimal-tan(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2514,11 +2349,9 @@ static tan(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的正切值。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static tan(n: Value): Decimal--><!--Device-Decimal-static tan(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2526,7 +2359,7 @@ static tan(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} 以弧度为单位的值。 |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} 以弧度为单位的值。 |
 
 **返回值：**
 
@@ -2548,11 +2381,9 @@ tanh(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的双曲正切值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-tanh(): Decimal--><!--Device-Decimal-tanh(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2570,11 +2401,9 @@ static tanh(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的双曲正切值。按照precision设置有效位数，按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static tanh(n: Value): Decimal--><!--Device-Decimal-static tanh(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2582,7 +2411,7 @@ static tanh(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} 以弧度为单位的值。 |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} 以弧度为单位的值。 |
 
 **返回值：**
 
@@ -2604,11 +2433,9 @@ toBinary(): string
 
 将Decimal转换为二进制表示的字符串。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toBinary(): string--><!--Device-Decimal-toBinary(): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2621,16 +2448,14 @@ toBinary(): string
 ## toBinary
 
 ```TypeScript
-toBinary(significantDigits: double): string
+toBinary(significantDigits: number): string
 ```
 
 将Decimal转换为二进制表示的字符串，可按照significantDigits设置有效数字。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toBinary(significantDigits: double): string--><!--Device-Decimal-toBinary(significantDigits: double): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2638,7 +2463,7 @@ toBinary(significantDigits: double): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | double | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
+| significantDigits | number | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
 
 **返回值：**
 
@@ -2655,16 +2480,14 @@ toBinary(significantDigits: double): string
 ## toBinary
 
 ```TypeScript
-toBinary(significantDigits: double, rounding: Rounding): string
+toBinary(significantDigits: number, rounding: Rounding): string
 ```
 
 将Decimal转换为二进制表示的字符串，可按照significantDigits设置有效数字，可按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toBinary(significantDigits: double, rounding: Rounding): string--><!--Device-Decimal-toBinary(significantDigits: double, rounding: Rounding): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2672,7 +2495,7 @@ toBinary(significantDigits: double, rounding: Rounding): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | double | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
+| significantDigits | number | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
 | rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
 
 **返回值：**
@@ -2695,11 +2518,9 @@ toDecimalPlaces(): Decimal
 
 返回一个保留小数点后指定位数的Decimal对象，不进行小数的取舍。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toDecimalPlaces(): Decimal--><!--Device-Decimal-toDecimalPlaces(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2712,16 +2533,14 @@ toDecimalPlaces(): Decimal
 ## toDecimalPlaces
 
 ```TypeScript
-toDecimalPlaces(decimalPlaces: double): Decimal
+toDecimalPlaces(decimalPlaces: number): Decimal
 ```
 
 返回一个保留小数点后指定位数的Decimal对象，可按照decimalPlaces设置小数位数。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toDecimalPlaces(decimalPlaces: double): Decimal--><!--Device-Decimal-toDecimalPlaces(decimalPlaces: double): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2729,7 +2548,7 @@ toDecimalPlaces(decimalPlaces: double): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| decimalPlaces | double | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
+| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
 
 **返回值：**
 
@@ -2746,16 +2565,14 @@ toDecimalPlaces(decimalPlaces: double): Decimal
 ## toDecimalPlaces
 
 ```TypeScript
-toDecimalPlaces(decimalPlaces: double, rounding: Rounding): Decimal
+toDecimalPlaces(decimalPlaces: number, rounding: Rounding): Decimal
 ```
 
 返回一个保留小数点后指定位数的Decimal对象，可按照decimalPlaces设置小数位数，可按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toDecimalPlaces(decimalPlaces: double, rounding: Rounding): Decimal--><!--Device-Decimal-toDecimalPlaces(decimalPlaces: double, rounding: Rounding): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2763,7 +2580,7 @@ toDecimalPlaces(decimalPlaces: double, rounding: Rounding): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| decimalPlaces | double | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
+| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
 | rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
 
 **返回值：**
@@ -2786,11 +2603,9 @@ toExponential(): string
 
 将数值转换为指数表示法的字符串，不进行小数部分的舍入。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toExponential(): string--><!--Device-Decimal-toExponential(): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2803,16 +2618,14 @@ toExponential(): string
 ## toExponential
 
 ```TypeScript
-toExponential(decimalPlaces: double): string
+toExponential(decimalPlaces: number): string
 ```
 
 将数值转换为指数表示法的字符串，可按照decimalPlaces设置小数位数。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toExponential(decimalPlaces: double): string--><!--Device-Decimal-toExponential(decimalPlaces: double): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2820,7 +2633,7 @@ toExponential(decimalPlaces: double): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| decimalPlaces | double | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
+| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
 
 **返回值：**
 
@@ -2837,16 +2650,14 @@ toExponential(decimalPlaces: double): string
 ## toExponential
 
 ```TypeScript
-toExponential(decimalPlaces: double, rounding: Rounding): string
+toExponential(decimalPlaces: number, rounding: Rounding): string
 ```
 
 将数值转换为指数表示法的字符串，可按照decimalPlaces设置小数位数，可按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toExponential(decimalPlaces: double, rounding: Rounding): string--><!--Device-Decimal-toExponential(decimalPlaces: double, rounding: Rounding): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2854,7 +2665,7 @@ toExponential(decimalPlaces: double, rounding: Rounding): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| decimalPlaces | double | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
+| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
 | rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
 
 **返回值：**
@@ -2877,11 +2688,9 @@ toFixed(): string
 
 将数值转换为十进制定点模式表示的字符串，不进行小数的取舍。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toFixed(): string--><!--Device-Decimal-toFixed(): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2894,16 +2703,14 @@ toFixed(): string
 ## toFixed
 
 ```TypeScript
-toFixed(decimalPlaces: double): string
+toFixed(decimalPlaces: number): string
 ```
 
 将数值转换为十进制定点模式表示的字符串，可按照decimalPlaces设置小数位数。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toFixed(decimalPlaces: double): string--><!--Device-Decimal-toFixed(decimalPlaces: double): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2911,7 +2718,7 @@ toFixed(decimalPlaces: double): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| decimalPlaces | double | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
+| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
 
 **返回值：**
 
@@ -2928,16 +2735,14 @@ toFixed(decimalPlaces: double): string
 ## toFixed
 
 ```TypeScript
-toFixed(decimalPlaces: double, rounding: Rounding): string
+toFixed(decimalPlaces: number, rounding: Rounding): string
 ```
 
 将数值转换为十进制定点模式表示的字符串，可按照decimalPlaces设置小数位数，可按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toFixed(decimalPlaces: double, rounding: Rounding): string--><!--Device-Decimal-toFixed(decimalPlaces: double, rounding: Rounding): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2945,7 +2750,7 @@ toFixed(decimalPlaces: double, rounding: Rounding): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| decimalPlaces | double | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
+| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
 | rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
 
 **返回值：**
@@ -2968,11 +2773,9 @@ toFraction(): Decimal[]
 
 转换为分数表示的数。返回一个长度固定为2的Decimal数组，分别表示分子和分母。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toFraction(): Decimal[]--><!--Device-Decimal-toFraction(): Decimal[]-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2990,11 +2793,9 @@ toFraction(maxDenominator: Value): Decimal[]
 
 转换为分数表示的数，可以通过maxDenominator设置最大分母值。返回一个长度固定为2的Decimal数组，分别表示分子和分母。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toFraction(maxDenominator: Value): Decimal[]--><!--Device-Decimal-toFraction(maxDenominator: Value): Decimal[]-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3002,7 +2803,7 @@ toFraction(maxDenominator: Value): Decimal[]
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| maxDenominator | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| maxDenominator | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -3024,11 +2825,9 @@ toHexadecimal(): string
 
 将Decimal转换为十六进制表示的字符串。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toHexadecimal(): string--><!--Device-Decimal-toHexadecimal(): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3041,16 +2840,14 @@ toHexadecimal(): string
 ## toHexadecimal
 
 ```TypeScript
-toHexadecimal(significantDigits: double): string
+toHexadecimal(significantDigits: number): string
 ```
 
 将Decimal转换为十六进制表示的字符串，可按照significantDigits设置有效数字。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toHexadecimal(significantDigits: double): string--><!--Device-Decimal-toHexadecimal(significantDigits: double): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3058,7 +2855,7 @@ toHexadecimal(significantDigits: double): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | double | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
+| significantDigits | number | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
 
 **返回值：**
 
@@ -3075,16 +2872,14 @@ toHexadecimal(significantDigits: double): string
 ## toHexadecimal
 
 ```TypeScript
-toHexadecimal(significantDigits: double, rounding: Rounding): string
+toHexadecimal(significantDigits: number, rounding: Rounding): string
 ```
 
 将Decimal转换为十六进制表示的字符串，可按照significantDigits设置有效数字，可按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toHexadecimal(significantDigits: double, rounding: Rounding): string--><!--Device-Decimal-toHexadecimal(significantDigits: double, rounding: Rounding): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3092,7 +2887,7 @@ toHexadecimal(significantDigits: double, rounding: Rounding): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | double | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
+| significantDigits | number | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
 | rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
 
 **返回值：**
@@ -3115,11 +2910,9 @@ toNearest(n: Value): Decimal
 
 返回一个新的Decimal对象，其值为指定值n的整数倍中最接近原Decimal值的值。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toNearest(n: Value): Decimal--><!--Device-Decimal-toNearest(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3127,7 +2920,7 @@ toNearest(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -3149,11 +2942,9 @@ toNearest(n: Value, rounding: Rounding): Decimal
 
 返回一个新的Decimal对象，其值为指定值n的整数倍中最接近原Decimal值的值，可按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toNearest(n: Value, rounding: Rounding): Decimal--><!--Device-Decimal-toNearest(n: Value, rounding: Rounding): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3161,7 +2952,7 @@ toNearest(n: Value, rounding: Rounding): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 | rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
 
 **返回值：**
@@ -3180,16 +2971,14 @@ toNearest(n: Value, rounding: Rounding): Decimal
 ## toNumber
 
 ```TypeScript
-toNumber(): double
+toNumber(): number
 ```
 
 将值转换为number类型。零保留其符号。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toNumber(): double--><!--Device-Decimal-toNumber(): double-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3197,7 +2986,7 @@ toNumber(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | the number type |
+| number | the number type |
 
 ## toOctal
 
@@ -3207,11 +2996,9 @@ toOctal(): string
 
 将Decimal转换为八进制表示的字符串。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toOctal(): string--><!--Device-Decimal-toOctal(): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3224,16 +3011,14 @@ toOctal(): string
 ## toOctal
 
 ```TypeScript
-toOctal(significantDigits: double): string
+toOctal(significantDigits: number): string
 ```
 
 将Decimal转换为八进制表示的字符串，可按照significantDigits设置有效数字。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toOctal(significantDigits: double): string--><!--Device-Decimal-toOctal(significantDigits: double): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3241,7 +3026,7 @@ toOctal(significantDigits: double): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | double | 是 | {double \| string \| Decimal} |
+| significantDigits | number | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -3258,16 +3043,14 @@ toOctal(significantDigits: double): string
 ## toOctal
 
 ```TypeScript
-toOctal(significantDigits: double, rounding: Rounding): string
+toOctal(significantDigits: number, rounding: Rounding): string
 ```
 
 将Decimal转换为八进制表示的字符串，可按照significantDigits设置有效数字，可按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toOctal(significantDigits: double, rounding: Rounding): string--><!--Device-Decimal-toOctal(significantDigits: double, rounding: Rounding): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3275,7 +3058,7 @@ toOctal(significantDigits: double, rounding: Rounding): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | double | 是 | {double \| string \| Decimal} |
+| significantDigits | number | 是 | {number \| string \| Decimal} |
 | rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
 
 **返回值：**
@@ -3298,11 +3081,9 @@ toPrecision(): string
 
 将Decimal对象转换为字符串。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toPrecision(): string--><!--Device-Decimal-toPrecision(): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3315,16 +3096,14 @@ toPrecision(): string
 ## toPrecision
 
 ```TypeScript
-toPrecision(significantDigits: double): string
+toPrecision(significantDigits: number): string
 ```
 
 将数值转换为字符串，可按照significantDigits设置有效数字。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toPrecision(significantDigits: double): string--><!--Device-Decimal-toPrecision(significantDigits: double): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3332,7 +3111,7 @@ toPrecision(significantDigits: double): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | double | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
+| significantDigits | number | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
 
 **返回值：**
 
@@ -3349,16 +3128,14 @@ toPrecision(significantDigits: double): string
 ## toPrecision
 
 ```TypeScript
-toPrecision(significantDigits: double, rounding: Rounding): string
+toPrecision(significantDigits: number, rounding: Rounding): string
 ```
 
 将数值转换为字符串，可按照significantDigits设置有效数字，可按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toPrecision(significantDigits: double, rounding: Rounding): string--><!--Device-Decimal-toPrecision(significantDigits: double, rounding: Rounding): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3366,7 +3143,7 @@ toPrecision(significantDigits: double, rounding: Rounding): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | double | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
+| significantDigits | number | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
 | rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
 
 **返回值：**
@@ -3389,11 +3166,9 @@ toSignificantDigits(): Decimal
 
 返回一个按照保留有效数字转换的Decimal对象。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toSignificantDigits(): Decimal--><!--Device-Decimal-toSignificantDigits(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3406,16 +3181,14 @@ toSignificantDigits(): Decimal
 ## toSignificantDigits
 
 ```TypeScript
-toSignificantDigits(significantDigits: double): Decimal
+toSignificantDigits(significantDigits: number): Decimal
 ```
 
 返回一个按照保留有效数字转换的Decimal对象，可按照significantDigits设置有效数字。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toSignificantDigits(significantDigits: double): Decimal--><!--Device-Decimal-toSignificantDigits(significantDigits: double): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3423,7 +3196,7 @@ toSignificantDigits(significantDigits: double): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | double | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
+| significantDigits | number | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
 
 **返回值：**
 
@@ -3440,16 +3213,14 @@ toSignificantDigits(significantDigits: double): Decimal
 ## toSignificantDigits
 
 ```TypeScript
-toSignificantDigits(significantDigits: double, rounding: Rounding): Decimal
+toSignificantDigits(significantDigits: number, rounding: Rounding): Decimal
 ```
 
 返回一个按照保留有效数字转换的Decimal对象，可按照significantDigits设置有效数字，可按照rounding设置舍入模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toSignificantDigits(significantDigits: double, rounding: Rounding): Decimal--><!--Device-Decimal-toSignificantDigits(significantDigits: double, rounding: Rounding): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3457,7 +3228,7 @@ toSignificantDigits(significantDigits: double, rounding: Rounding): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | double | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
+| significantDigits | number | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
 | rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
 
 **返回值：**
@@ -3480,11 +3251,9 @@ toString(): string
 
 返回一个字符串，表示此 Decimal 的值。如果此 Decimal 的正指数等于或大于toExpPos，或负指数等于或小于toExpNeg，则将返回指数表示法。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-toString(): string--><!--Device-Decimal-toString(): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3502,11 +3271,9 @@ trunc(): Decimal
 
 返回一个新的Decimal对象，其值是将参数n截断为整数部分。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-trunc(): Decimal--><!--Device-Decimal-trunc(): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3524,11 +3291,9 @@ static trunc(n: Value): Decimal
 
 返回一个新的Decimal对象，其值为将n截断为整数的结果。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static trunc(n: Value): Decimal--><!--Device-Decimal-static trunc(n: Value): Decimal-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3536,7 +3301,7 @@ static trunc(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double \| string \| Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {number \| string \| Decimal} |
 
 **返回值：**
 
@@ -3558,11 +3323,9 @@ valueOf(): string
 
 返回一个字符串，表示此 Decimal 的值。与toString不同，负零将包含负号。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-valueOf(): string--><!--Device-Decimal-valueOf(): string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3571,186 +3334,6 @@ valueOf(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | the string type |
-
-## EUCLIDEAN
-
-```TypeScript
-static readonly EUCLIDEAN: int
-```
-
-模运算下，余数始终为正。使用欧几里得除法：q = sign(x) * floor(a / abs(x))。 取值为整数。
-
-**类型：** int
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static readonly EUCLIDEAN: int--><!--Device-Decimal-static readonly EUCLIDEAN: int-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## ROUND_CEILING
-
-```TypeScript
-static readonly ROUND_CEILING: int
-```
-
-向正无穷方向舍入。 取值为整数。
-
-**类型：** int
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static readonly ROUND_CEILING: int--><!--Device-Decimal-static readonly ROUND_CEILING: int-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## ROUND_DOWN
-
-```TypeScript
-static readonly ROUND_DOWN: int
-```
-
-向靠近零的方向舍入。模运算下，余数与被除数的符号相同，使用截断除法。 取值为整数。
-
-**类型：** int
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static readonly ROUND_DOWN: int--><!--Device-Decimal-static readonly ROUND_DOWN: int-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## ROUND_FLOOR
-
-```TypeScript
-static readonly ROUND_FLOOR: int
-```
-
-向负无穷方向舍入。模运算下，余数与除数的符号相同。 取值为整数。
-
-**类型：** int
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static readonly ROUND_FLOOR: int--><!--Device-Decimal-static readonly ROUND_FLOOR: int-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## ROUND_HALF_CEILING
-
-```TypeScript
-static readonly ROUND_HALF_CEILING: int
-```
-
-向最近的邻值舍入。如果距离相等，则向正无穷方向舍入。 取值为整数。
-
-**类型：** int
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static readonly ROUND_HALF_CEILING: int--><!--Device-Decimal-static readonly ROUND_HALF_CEILING: int-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## ROUND_HALF_DOWN
-
-```TypeScript
-static readonly ROUND_HALF_DOWN: int
-```
-
-向最近的邻值舍入。如果距离相等，则向靠近零方向舍入。 取值为整数。
-
-**类型：** int
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static readonly ROUND_HALF_DOWN: int--><!--Device-Decimal-static readonly ROUND_HALF_DOWN: int-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## ROUND_HALF_EVEN
-
-```TypeScript
-static readonly ROUND_HALF_EVEN: int
-```
-
-向最近的邻值舍入。如果距离相等，则向偶数邻值舍入。模运算下，IEEE 754 求余函数。 取值为整数。
-
-**类型：** int
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static readonly ROUND_HALF_EVEN: int--><!--Device-Decimal-static readonly ROUND_HALF_EVEN: int-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## ROUND_HALF_FLOOR
-
-```TypeScript
-static readonly ROUND_HALF_FLOOR: int
-```
-
-向最近的邻值舍入。如果距离相等，则向负无穷方向舍入。 取值为整数。
-
-**类型：** int
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static readonly ROUND_HALF_FLOOR: int--><!--Device-Decimal-static readonly ROUND_HALF_FLOOR: int-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## ROUND_HALF_UP
-
-```TypeScript
-static readonly ROUND_HALF_UP: int
-```
-
-向最近的邻值舍入。如果距离相等，则向远离零的方向舍入。 取值为整数。
-
-**类型：** int
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static readonly ROUND_HALF_UP: int--><!--Device-Decimal-static readonly ROUND_HALF_UP: int-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## ROUND_UP
-
-```TypeScript
-static readonly ROUND_UP: int
-```
-
-向远离零的方向舍入。模运算下，如果被除数为负，则余数为正，否则为负。 取值为整数。
-
-**类型：** int
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decimal-static readonly ROUND_UP: int--><!--Device-Decimal-static readonly ROUND_UP: int-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
 
 ## d
 
@@ -3766,7 +3349,196 @@ digits：表示Decimal数整数部分和小数部分的数组。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Decimal-readonly d: number[]--><!--Device-Decimal-readonly d: number[]-End-->
+**系统能力：** SystemCapability.Utils.Lang
+
+## e
+
+```TypeScript
+get e(): number
+```
+
+exponent：表示Decimal数的十进制指数。
+
+**类型：** number
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
+## EUCLIDEAN
+
+```TypeScript
+static readonly EUCLIDEAN : 9
+```
+
+模运算下，余数始终为正。使用欧几里得除法：q = sign(x) * floor(a / abs(x))。
+
+**类型：** 9
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## ROUND_CEILING
+
+```TypeScript
+static readonly ROUND_CEILING : 2
+```
+
+向正无穷方向舍入。
+
+**类型：** 2
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## ROUND_DOWN
+
+```TypeScript
+static readonly ROUND_DOWN : 1
+```
+
+向靠近零的方向舍入。模运算下，余数与被除数的符号相同，使用截断除法。
+
+**类型：** 1
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## ROUND_FLOOR
+
+```TypeScript
+static readonly ROUND_FLOOR : 3
+```
+
+向负无穷方向舍入。模运算下，余数与除数的符号相同。
+
+**类型：** 3
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## ROUND_HALF_CEILING
+
+```TypeScript
+static readonly ROUND_HALF_CEILING : 7
+```
+
+向最近的邻值舍入。如果距离相等，则向正无穷方向舍入。
+
+**类型：** 7
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## ROUND_HALF_DOWN
+
+```TypeScript
+static readonly ROUND_HALF_DOWN : 5
+```
+
+向最近的邻值舍入。如果距离相等，则向靠近零方向舍入。
+
+**类型：** 5
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## ROUND_HALF_EVEN
+
+```TypeScript
+static readonly ROUND_HALF_EVEN : 6
+```
+
+向最近的邻值舍入。如果距离相等，则向偶数邻值舍入。模运算下，IEEE 754 求余函数。
+
+**类型：** 6
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## ROUND_HALF_FLOOR
+
+```TypeScript
+static readonly ROUND_HALF_FLOOR : 8
+```
+
+向最近的邻值舍入。如果距离相等，则向负无穷方向舍入。
+
+**类型：** 8
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## ROUND_HALF_UP
+
+```TypeScript
+static readonly ROUND_HALF_UP : 4
+```
+
+向最近的邻值舍入。如果距离相等，则向远离零的方向舍入。
+
+**类型：** 4
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## ROUND_UP
+
+```TypeScript
+static readonly ROUND_UP : 0
+```
+
+向远离零的方向舍入。模运算下，如果被除数为负，则余数为正，否则为负。
+
+**类型：** 0
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## s
+
+```TypeScript
+get s(): number
+```
+
+sign：表示Decimal数的符号位，0表示正数，1表示负数。
+
+**类型：** number
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang

@@ -19,7 +19,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ArkUI_NavDestinationState](#arkui_navdestinationstate) | ArkUI_NavDestinationState | 定义NavDestination组件的状态。 |
-| [ArkUI_RouterPageState](#arkui_routerpagestate) | ArkUI_RouterPageState | 定义[Router](arkts-apis-uicontext-router.md)（路由页面）的状态。 |
+| [ArkUI_RouterPageState](#arkui_routerpagestate) | ArkUI_RouterPageState | 定义[Router]{@link @ohos.arkui.UIContext#Router}（路由页面）的状态。 |
 
 ## 枚举类型说明
 
@@ -55,7 +55,7 @@ enum ArkUI_RouterPageState
 
 **描述**
 
-定义[Router](arkts-apis-uicontext-router.md)（路由页面）的状态。
+定义[Router]{@link @ohos.arkui.UIContext#Router}（路由页面）的状态。
 
 **起始版本：** 12
 

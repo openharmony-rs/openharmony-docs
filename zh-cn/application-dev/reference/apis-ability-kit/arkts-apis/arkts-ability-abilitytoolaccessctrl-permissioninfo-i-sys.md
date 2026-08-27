@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-abilityToolAccessCtrl-interface PermissionInfo--><!--Device-abilityToolAccessCtrl-interface PermissionInfo-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -27,8 +25,6 @@ authStatusInfo?: AuthStatusInfo
 
 **起始版本：** 26.0.0
 
-<!--Device-PermissionInfo-authStatusInfo?: AuthStatusInfo--><!--Device-PermissionInfo-authStatusInfo?: AuthStatusInfo-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -44,8 +40,6 @@ permission: string
 **类型：** string
 
 **起始版本：** 26.0.0
-
-<!--Device-PermissionInfo-permission: string--><!--Device-PermissionInfo-permission: string-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -63,9 +57,6 @@ permissionStatus: abilityAccessCtrl.PermissionStatus
 
 **起始版本：** 26.0.0
 
-<!--Device-PermissionInfo-permissionStatus: abilityAccessCtrl.PermissionStatus--><!--Device-PermissionInfo-permissionStatus: abilityAccessCtrl.PermissionStatus-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
-

@@ -6,9 +6,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)
-
-<!--Device-resourceManager-export interface AsyncCallback--><!--Device-resourceManager-export interface AsyncCallback-End-->
+**替代接口：** [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -18,7 +16,7 @@
 import { resourceManager } from '@kit.LocalizationKit';
 ```
 
-## constructor
+## [[Call]]
 
 ```TypeScript
 (err: Error, data: T): void
@@ -30,9 +28,7 @@ import { resourceManager } from '@kit.LocalizationKit';
 
 **废弃版本：** 9
 
-**替代接口：** [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)
-
-<!--Device-AsyncCallback-(err: Error, data: T): void--><!--Device-AsyncCallback-(err: Error, data: T): void-End-->
+**替代接口：** [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -42,4 +38,3 @@ import { resourceManager } from '@kit.LocalizationKit';
 | --- | --- | --- | --- |
 | err | Error | 是 | 接口调用失败的错误信息。 |
 | data | T | 是 | 接口调用时的回调信息。 |
-

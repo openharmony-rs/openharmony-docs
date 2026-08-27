@@ -11,19 +11,19 @@
 
 | V1装饰器名称/场景 | V2装饰器名称 |
 | -------- | -------- |
-| 滚动组件场景 | [makeObserved](./arkts-new-makeObserved.md) |
-| [Modifier](../arkts-user-defined-modifier.md) | [makeObserved](./arkts-new-makeObserved.md)、[\@ObservedV2](./arkts-new-observedV2-and-trace.md)、[\@Trace](./arkts-new-observedV2-and-trace.md) |
+| 滚动组件场景 | makeObserved |
+| Modifier | makeObserved、\@ObservedV2、\@Trace |
 
 
 ## 滚动组件
 
 ### List
 
-开发者可以通过[ChildrenMainSize/apis-arkui/arkui-ts/ts-container-list.md#childrenmainsize12)来设置[List/apis-arkui/arkui-ts/ts-container-list.md)的子组件在主轴方向的大小信息。
+开发者可以通过ChildrenMainSize来设置List的子组件在主轴方向的大小信息。
 
 V1：
 
-在状态管理V1中，可以通过[@State](./arkts-state.md)装饰观察其api调用。
+在状态管理V1中，可以通过@State装饰观察其api调用。
 
 具体示例如下：
 
@@ -59,7 +59,7 @@ struct ListExample {
           }.backgroundColor(Color.Pink)
         })
       }
-      .childrenMainSize(this.listChildrenSize) // 10
+      .childrenMainSize(this.listChildrenSize)
     }
   }
 }
@@ -67,7 +67,7 @@ struct ListExample {
 
 V2：
 
-在状态管理V2中，[@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，而由于ChildrenMainSize定义在List组件框架中，开发者无法使用[@Trace](./arkts-new-observedV2-and-trace.md)来标注ChildrenMainSize属性。可以使用[makeObserved](./arkts-new-makeObserved.md)替代。从API version 22开始，可以无需使用makeObserved，直接使用\@Local标注的ChildrenMainSize设置List的子组件在主轴方向的大小信息。
+在状态管理V2中，@Local只能观察本身的变化，无法观察第一层的变化，而由于ChildrenMainSize定义在List组件框架中，开发者无法使用@Trace来标注ChildrenMainSize属性。可以使用makeObserved替代。从API version 22开始，可以无需使用makeObserved，直接使用\@Local标注的ChildrenMainSize设置List的子组件在主轴方向的大小信息。
 
 具体示例如下：
 
@@ -106,7 +106,7 @@ struct ListExample {
           }.backgroundColor(Color.Pink)
         })
       }
-      .childrenMainSize(this.listChildrenSize) // 10
+      .childrenMainSize(this.listChildrenSize)
     }
   }
 }
@@ -115,7 +115,7 @@ struct ListExample {
 
 ### WaterFlow
 
-开发者可以通过[WaterFlowSections/apis-arkui/arkui-ts/ts-container-waterflow.md#waterflowsections12)来设置WaterFlow瀑布流分组信息。
+开发者可以通过WaterFlowSections来设置WaterFlow瀑布流分组信息。
 
 需要注意的是，数组arr的长度需要与WaterFlowSections的所有SectionOptions的itemsCount总和一致，否则WaterFlow无法处理，导致UI不刷新。
 
@@ -123,7 +123,7 @@ struct ListExample {
 
 V1：
 
-在状态管理V1中，可以通过[@State](./arkts-state.md)装饰观察其api调用。
+在状态管理V1中，可以通过@State装饰观察其api调用。
 
 具体示例如下：
 
@@ -207,7 +207,7 @@ struct WaterFlowSample {
 
 V2：
 
-在状态管理V2中，[@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，由于WaterFlowSections定义在框架中，开发者无法使用[@Trace](./arkts-new-observedV2-and-trace.md)标注其属性，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
+在状态管理V2中，@Local只能观察本身的变化，无法观察第一层的变化，由于WaterFlowSections定义在框架中，开发者无法使用@Trace标注其属性，此时可以使用makeObserved替代。
 
 具体示例如下：
 
@@ -297,11 +297,11 @@ struct WaterFlowSample {
 
 ### attributeModifier
 
-开发者可以通过[attributeModifier/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置组件的属性方法。
+开发者可以通过attributeModifier动态设置组件的属性方法。
 
 V1：
 
-在状态管理V1中，可以通过[@State](./arkts-state.md)装饰观察其变化。
+在状态管理V1中，可以通过@State装饰观察其变化。
 
 具体示例如下：
 
@@ -344,7 +344,7 @@ struct AttributeDemo {
 
 V2：
 
-在状态管理V2中，[@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，如果要观察attributeModifier的属性变化，可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
+在状态管理V2中，@Local只能观察本身的变化，无法观察第一层的变化，如果要观察attributeModifier的属性变化，可以使用makeObserved替代。
 
 具体示例如下：
 
@@ -390,11 +390,11 @@ struct AttributeDemo {
 
 ### CommonModifier
 
-动态设置组件的属性类。以[自定义Modifier/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)为例。
+动态设置组件的属性类。以自定义Modifier为例。
 
 V1：
 
-在状态管理V1中，可以通过[@State](./arkts-state.md)装饰观察其变化。
+在状态管理V1中，可以通过@State装饰观察其变化。
 
 具体实例如下：
 
@@ -464,7 +464,7 @@ struct Index {
 
 V2：
 
-在状态管理V2中，[@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，又因为[自定义Modifier/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)在框架内是通过其属性触发刷新，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
+在状态管理V2中，@Local只能观察本身的变化，无法观察第一层的变化，又因为自定义Modifier在框架内是通过其属性触发刷新，此时可以使用makeObserved替代。
 
 具体示例如下：
 
@@ -540,7 +540,7 @@ struct Index {
 
 V1：
 
-在状态管理V1中，可以通过[@State](./arkts-state.md)装饰观察其变化。
+在状态管理V1中，可以通过@State装饰观察其变化。
 
 具体示例如下：
 
@@ -553,7 +553,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0000;
 
 class MyModifier extends TextModifier {
-  applyNormalAttribute(instance: TextModifier): void {
+  applyNormalAttribute(instance: TextAttribute): void {
     super.applyNormalAttribute?.(instance);
   }
 
@@ -619,7 +619,7 @@ struct Index {
 
 V2：
 
-但在状态管理V2中，[@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
+但在状态管理V2中，@Local只能观察本身的变化，无法观察第一层的变化，此时可以使用makeObserved替代。
 
 具体示例如下：
 
@@ -632,7 +632,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0000;
 
 class MyModifier extends TextModifier {
-  applyNormalAttribute(instance: TextModifier): void {
+  applyNormalAttribute(instance: TextAttribute): void {
     super.applyNormalAttribute?.(instance);
   }
 
@@ -699,7 +699,7 @@ struct Index {
 
 ### AttributeUpdater
 
-[AttributeUpdater](../arkts-user-defined-extension-attributeUpdater.md)可以将属性直接设置给组件，无需标记为状态变量即可直接触发UI更新。
+AttributeUpdater可以将属性直接设置给组件，无需标记为状态变量即可直接触发UI更新。
 
 V1：
 

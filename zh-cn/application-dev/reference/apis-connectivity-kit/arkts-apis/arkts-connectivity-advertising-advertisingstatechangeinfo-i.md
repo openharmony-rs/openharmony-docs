@@ -1,10 +1,8 @@
 # AdvertisingStateChangeInfo
 
-广播状态变化信息。
+表示广播启停状态变化信息。
 
 **起始版本：** 26.0.0
-
-<!--Device-advertising-interface AdvertisingStateChangeInfo--><!--Device-advertising-interface AdvertisingStateChangeInfo-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -17,18 +15,16 @@ import { advertising } from '@kit.ConnectivityKit';
 ## advertisingId
 
 ```TypeScript
-advertisingId: int
+advertisingId: number
 ```
 
-广播ID。 取值范围为全体整数。
+表示广播ID。取值范围[0, 255]。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AdvertisingStateChangeInfo-advertisingId: int--><!--Device-AdvertisingStateChangeInfo-advertisingId: int-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -38,7 +34,7 @@ advertisingId: int
 state: AdvertisingState
 ```
 
-广播状态。
+表示当前广播状态。
 
 **类型：** [AdvertisingState](arkts-connectivity-advertising-advertisingstate-e.md)
 
@@ -46,7 +42,4 @@ state: AdvertisingState
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AdvertisingStateChangeInfo-state: AdvertisingState--><!--Device-AdvertisingStateChangeInfo-state: AdvertisingState-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

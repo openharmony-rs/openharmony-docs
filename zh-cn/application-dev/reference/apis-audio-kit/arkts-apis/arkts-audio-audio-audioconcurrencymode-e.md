@@ -2,9 +2,7 @@
 
 表示音频并发模式的枚举。
 
-**起始版本：** 23
-
-<!--Device-audio-enum AudioConcurrencyMode--><!--Device-audio-enum AudioConcurrencyMode-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -16,11 +14,9 @@ CONCURRENCY_DEFAULT = 0
 
 默认使用系统策略。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AudioConcurrencyMode-CONCURRENCY_DEFAULT = 0--><!--Device-AudioConcurrencyMode-CONCURRENCY_DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -32,11 +28,9 @@ CONCURRENCY_MIX_WITH_OTHERS = 1
 
 和其他音频并发，即混音。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AudioConcurrencyMode-CONCURRENCY_MIX_WITH_OTHERS = 1--><!--Device-AudioConcurrencyMode-CONCURRENCY_MIX_WITH_OTHERS = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -48,11 +42,9 @@ CONCURRENCY_DUCK_OTHERS = 2
 
 压低其他音频的音量。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AudioConcurrencyMode-CONCURRENCY_DUCK_OTHERS = 2--><!--Device-AudioConcurrencyMode-CONCURRENCY_DUCK_OTHERS = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -64,11 +56,8 @@ CONCURRENCY_PAUSE_OTHERS = 3
 
 暂停其他音频。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AudioConcurrencyMode-CONCURRENCY_PAUSE_OTHERS = 3--><!--Device-AudioConcurrencyMode-CONCURRENCY_PAUSE_OTHERS = 3-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.Core
-

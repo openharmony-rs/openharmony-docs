@@ -12,8 +12,6 @@ declare type EnvDecorator = (value: SystemProperties) => PropertyDecorator
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type EnvDecorator = (value: SystemProperties) => PropertyDecorator--><!--Device-unnamed-declare type EnvDecorator = (value: SystemProperties) => PropertyDecorator-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -27,4 +25,3 @@ declare type EnvDecorator = (value: SystemProperties) => PropertyDecorator
 | 类型 | 说明 |
 | --- | --- |
 | PropertyDecorator | 属性装饰器，开发者无需关注该返回值。 |
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-<!--Device-unnamed-declare class TimePickerDialog--><!--Device-unnamed-declare class TimePickerDialog-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,17 +17,20 @@
 static show(options?: TimePickerDialogOptions)
 ```
 
-定义时间滑动选择器弹窗并弹出。 > **说明：** > > 从API version 10开始，可以通过使用[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)中的 > [showTimePickerDialog](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#showtimepickerdialog)来明确UI的执行上下文。
+定义时间滑动选择器弹窗并弹出。
+
+> **说明：**
+> 
+> 从API version 10开始，可以通过使用[UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)中的
+> [showTimePickerDialog](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#showtimepickerdialog)来明确UI的执行上下文。
 
 **起始版本：** 8
 
 **废弃版本：** 18
 
-**替代接口：** [showTimePickerDialog](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#showtimepickerdialog)
+**替代接口：** [showTimePickerDialog](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#showtimepickerdialog)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TimePickerDialog-static show(options?: TimePickerDialogOptions)--><!--Device-TimePickerDialog-static show(options?: TimePickerDialogOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,4 +39,3 @@ static show(options?: TimePickerDialogOptions)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [TimePickerDialogOptions](arkts-arkui-timepickerdialogoptions-i.md) | 否 | 配置时间选择器弹窗的参数。参数缺省时不弹出弹窗。 |
-

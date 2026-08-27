@@ -1,10 +1,12 @@
 # LinearGradientOptions
 
-线性渐变的参数。 > **说明：** > > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
+线性渐变的参数。
+
+> **说明：**
+> 
+> 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素
 
 **起始版本：** 18
-
-<!--Device-unnamed-declare interface LinearGradientOptions--><!--Device-unnamed-declare interface LinearGradientOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -19,7 +21,7 @@
 angle?: number | string
 ```
 
-Defines starting angle of linear gradient. Anonymous Object Rectification.
+Defines starting angle of linear gradient.Anonymous Object Rectification.
 
 **类型：** number \| string
 
@@ -31,8 +33,6 @@ Defines starting angle of linear gradient. Anonymous Object Rectification.
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LinearGradientOptions-angle?: number | string--><!--Device-LinearGradientOptions-angle?: number | string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## colors
@@ -41,7 +41,7 @@ Defines starting angle of linear gradient. Anonymous Object Rectification.
 colors: Array<[ResourceColor, number]>
 ```
 
-Defines color description for gradients. Anonymous Object Rectification.
+Defines color description for gradients.Anonymous Object Rectification.
 
 **类型：** Array&lt;[ResourceColor, number]&gt;
 
@@ -51,8 +51,6 @@ Defines color description for gradients. Anonymous Object Rectification.
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LinearGradientOptions-colors: Array<[ResourceColor, number]>--><!--Device-LinearGradientOptions-colors: Array<[ResourceColor, number]>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -61,9 +59,9 @@ Defines color description for gradients. Anonymous Object Rectification.
 direction?: GradientDirection
 ```
 
-Defines the direction of linear gradient. Anonymous Object Rectification.
+Defines the direction of linear gradient.Anonymous Object Rectification.
 
-**类型：** GradientDirection
+**类型：** [GradientDirection](../arkts-apis/arkts-arkui-gradientdirection-e.md)
 
 **默认值：** GradientDirection.Bottom
 
@@ -73,8 +71,6 @@ Defines the direction of linear gradient. Anonymous Object Rectification.
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LinearGradientOptions-direction?: GradientDirection--><!--Device-LinearGradientOptions-direction?: GradientDirection-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## repeating
@@ -83,7 +79,7 @@ Defines the direction of linear gradient. Anonymous Object Rectification.
 repeating?: boolean
 ```
 
-Defines gradient colors with repeated coloring. Anonymous Object Rectification.
+Defines gradient colors with repeated coloring.Anonymous Object Rectification.
 
 **类型：** boolean
 
@@ -95,7 +91,4 @@ Defines gradient colors with repeated coloring. Anonymous Object Rectification.
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LinearGradientOptions-repeating?: boolean--><!--Device-LinearGradientOptions-repeating?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

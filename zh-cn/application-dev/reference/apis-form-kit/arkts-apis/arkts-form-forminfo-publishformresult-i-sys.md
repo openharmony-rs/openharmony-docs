@@ -2,9 +2,7 @@
 
 发布卡片加桌结果。
 
-**起始版本：** 23
-
-<!--Device-formInfo-interface PublishFormResult--><!--Device-formInfo-interface PublishFormResult-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -26,11 +24,9 @@ code: PublishFormErrorCode
 
 **类型：** [PublishFormErrorCode](arkts-form-forminfo-publishformerrorcode-e-sys.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PublishFormResult-code: PublishFormErrorCode--><!--Device-PublishFormResult-code: PublishFormErrorCode-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -46,13 +42,10 @@ message: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PublishFormResult-message: string--><!--Device-PublishFormResult-message: string-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
-

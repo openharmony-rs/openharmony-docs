@@ -2,13 +2,13 @@
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 12800001 包管理服务异常
 
@@ -511,6 +511,6 @@ Input method system panel error. Possible causes:
 **处理步骤**
 
 1. 开发者确保已调用connectSystemChannel接口连接系统通道。
-2. 开发者根据[IPC的约束与限制](../../ipc/ipc-rpc-overview.md#约束与限制)，需先调整传输数据量，控制为较小规模后再发起请求。需特别注意：一次接口调用在IPC层的总传输数据量=应用侧发送的数据量+系统层处理所需的必要数据量，因此应用调用接口时实际可发送的最大数据量，会小于IPC本身限制的最大数据量。
+2. 开发者根据IPC的约束与限制，需先调整传输数据量，控制为较小规模后再发起请求。需特别注意：一次接口调用在IPC层的总传输数据量=应用侧发送的数据量+系统层处理所需的必要数据量，因此应用调用接口时实际可发送的最大数据量，会小于IPC本身限制的最大数据量。
 3. 开发者确保调用者为系统面板。
 <!--DelEnd-->

@@ -18,9 +18,7 @@ export function is24HourClock(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [is24HourClock](../../apis-na/arkts-apis/arkts-na-i18n-system-c.md#is24hourclock)
-
-<!--Device-i18n-export function is24HourClock(): boolean--><!--Device-i18n-export function is24HourClock(): boolean-End-->
+**替代接口：** [is24HourClock](arkts-localization-i18n-system-c.md#is24hourclock)
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -35,6 +33,11 @@ export function is24HourClock(): boolean
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
 
-let is24HourClock: boolean = i18n.is24HourClock();
+let is24HourClock: boolean = i18n.System.is24HourClock(); // 如果系统时制是24小时制，is24HourClock = true
 ```
 
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let is24HourClock: boolean = i18n.is24HourClock();
+```

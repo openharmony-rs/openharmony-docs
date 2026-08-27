@@ -18,11 +18,9 @@ function notifyFormsPrivacyProtected(
 
 通知指定卡片隐私保护状态改变。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.REQUIRE_FORM
-
-<!--Device-formHost-function notifyFormsPrivacyProtected(    formIds: Array<string>,    isProtected: boolean,    callback: AsyncCallback<void>  ): void--><!--Device-formHost-function notifyFormsPrivacyProtected(    formIds: Array<string>,    isProtected: boolean,    callback: AsyncCallback<void>  ): void-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -32,20 +30,38 @@ function notifyFormsPrivacyProtected(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| formIds | Array&lt;string&gt; | 是 | 需要修改隐私保护的卡片标识列表。 |
-| isProtected | boolean | 是 | 表示卡片是否进行隐私保护状态。 <br>true: 表示卡片要进行隐私保护状态。 <br>false: 表示卡片不需要进行隐私保护状态。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当指定卡片设置隐私保护属性成功，error为undefined，否则为错误对象。 |
+| formIds | Array & lt;string & gt; | 是 | 需要修改隐私保护的卡片标识列表。 |
+| isProtected | boolean | 是 | 表示卡片是否进行隐私保护状态。 true: 表示卡片要进行隐私保护状态。 false: 表示卡片不需要进行隐私保护状态。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当指定卡片设置隐私保护属性成功，error为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
-| [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permissions denied. |
-| [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
+| [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
+| [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
+
+**示例**
+
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formIds: string[] = new Array('12400633174999288', '12400633174999289');
+try {
+  formHost.notifyFormsPrivacyProtected(formIds, true, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
 
 
 ## notifyFormsPrivacyProtected
@@ -56,11 +72,9 @@ function notifyFormsPrivacyProtected(formIds: Array<string>, isProtected: boolea
 
 通知指定卡片隐私保护状态改变。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.REQUIRE_FORM
-
-<!--Device-formHost-function notifyFormsPrivacyProtected(formIds: Array<string>, isProtected: boolean): Promise<void>--><!--Device-formHost-function notifyFormsPrivacyProtected(formIds: Array<string>, isProtected: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -70,23 +84,26 @@ function notifyFormsPrivacyProtected(formIds: Array<string>, isProtected: boolea
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| formIds | Array&lt;string&gt; | 是 | 需要修改隐私保护的卡片标识列表。 |
-| isProtected | boolean | 是 | 表示卡片是否进行隐私保护状态。 <br>true: 表示卡片要进行隐私保护状态。 <br>false: 表示卡片不需要进行隐私保护状态。 |
+| formIds | Array & lt;string & gt; | 是 | 需要修改隐私保护的卡片标识列表。 |
+| isProtected | boolean | 是 | 表示卡片是否进行隐私保护状态。 true: 表示卡片要进行隐私保护状态。 false: 表示卡片不需要进行隐私保护状态。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
-| [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permissions denied. |
-| [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
+| [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
+| [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 
+**示例**
+
+参见 [notifyFormsPrivacyProtected](#notifyformsprivacyprotected)

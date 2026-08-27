@@ -14,9 +14,7 @@ function getLevel(): Promise<SystemLoadLevel>
 
 获取系统负载融合档位，使用promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-systemLoad-function getLevel(): Promise<SystemLoadLevel>--><!--Device-systemLoad-function getLevel(): Promise<SystemLoadLevel>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ResourceSchedule.SystemLoad
 
@@ -26,3 +24,15 @@ function getLevel(): Promise<SystemLoadLevel>
 | --- | --- |
 | Promise&lt;[SystemLoadLevel](arkts-basicservices-systemload-systemloadlevel-e.md)&gt; | Promise对象，返回系统负载融合档位。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { systemLoad } from '@kit.BasicServicesKit';
+
+systemLoad.getLevel().then((res: systemLoad.SystemLoadLevel) => {
+    console.info(`getLevel promise succeeded. result: ` + JSON.stringify(res));
+}).catch((err: BusinessError) => {
+    console.error(`getLevel promise failed. code is ${err.code} message is ${err.message}`);
+})
+```

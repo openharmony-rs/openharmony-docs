@@ -1,10 +1,8 @@
 # TransferMode
 
-数据传输模式。
+表示和远端设备的数据传输模式，为枚举值。
 
 **起始版本：** 26.0.0
-
-<!--Device-dataTransfer-enum TransferMode--><!--Device-dataTransfer-enum TransferMode-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -14,13 +12,11 @@
 BASIC = 0
 ```
 
-基本数据传输模式。
+表示基础模式，无数据重传机制。适用于对时延和吞吐量敏感的业务场景。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TransferMode-BASIC = 0--><!--Device-TransferMode-BASIC = 0-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -30,13 +26,10 @@ BASIC = 0
 RELIABLE = 1
 ```
 
-可靠数据传输模式。
+表示可靠模式，有数据重传机制。适用于对数据完整性要求高的业务场景。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TransferMode-RELIABLE = 1--><!--Device-TransferMode-RELIABLE = 1-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

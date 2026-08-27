@@ -6,8 +6,6 @@
 
 **起始版本：** 12
 
-<!--Device-sendablePhotoAccessHelper-interface FetchResult--><!--Device-sendablePhotoAccessHelper-interface FetchResult-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## 导入模块
@@ -25,8 +23,6 @@ close(): void
 释放FetchResult实例并使其失效。释放后无法调用其他方法。
 
 **起始版本：** 12
-
-<!--Device-FetchResult-close(): void--><!--Device-FetchResult-close(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -71,15 +67,13 @@ getAllObjects(): Promise<Array<T>>
 
 **起始版本：** 12
 
-<!--Device-FetchResult-getAllObjects(): Promise<Array<T>>--><!--Device-FetchResult-getAllObjects(): Promise<Array<T>>-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;T&gt;&gt; | Promise对象，返回结果集中所有文件资产数组。 |
+| Promise & lt;Array & lt;T & gt; & gt; | Promise对象，返回结果集中所有文件资产数组。 |
 
 **错误码：**
 
@@ -117,8 +111,6 @@ getCount(): number
 获取文件检索结果中的文件总数。
 
 **起始版本：** 12
-
-<!--Device-FetchResult-getCount(): number--><!--Device-FetchResult-getCount(): number-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -165,15 +157,13 @@ getFirstObject(): Promise<T>
 
 **起始版本：** 12
 
-<!--Device-FetchResult-getFirstObject(): Promise<T>--><!--Device-FetchResult-getFirstObject(): Promise<T>-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;T&gt; | Promise对象，返回结果集中第一个对象。 |
+| Promise & lt;T & gt; | Promise对象，返回结果集中第一个对象。 |
 
 **错误码：**
 
@@ -212,15 +202,13 @@ getLastObject(): Promise<T>
 
 **起始版本：** 12
 
-<!--Device-FetchResult-getLastObject(): Promise<T>--><!--Device-FetchResult-getLastObject(): Promise<T>-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;T&gt; | Promise对象，返回结果集中最后一个对象。 |
+| Promise & lt;T & gt; | Promise对象，返回结果集中最后一个对象。 |
 
 **错误码：**
 
@@ -255,11 +243,9 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 getNextObject(): Promise<T>
 ```
 
-获取文件检索结果中的下一个文件资产。使用Promise异步回调。 在调用此方法之前，必须使用[isAfterLast()](#isafterlast)来检查当前位置 是否为最后一行。
+获取文件检索结果中的下一个文件资产。使用Promise异步回调。在调用此方法之前，必须使用[isAfterLast()](#isafterlast)来检查当前位置 是否为最后一行。
 
 **起始版本：** 12
-
-<!--Device-FetchResult-getNextObject(): Promise<T>--><!--Device-FetchResult-getNextObject(): Promise<T>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -267,7 +253,7 @@ getNextObject(): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;T&gt; | Promise对象，返回结果集中下一个对象。 |
+| Promise & lt;T & gt; | Promise对象，返回结果集中下一个对象。 |
 
 **错误码：**
 
@@ -307,8 +293,6 @@ getObjectByPosition(index: number): Promise<T>
 
 **起始版本：** 12
 
-<!--Device-FetchResult-getObjectByPosition(index: number): Promise<T>--><!--Device-FetchResult-getObjectByPosition(index: number): Promise<T>-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
@@ -321,13 +305,13 @@ getObjectByPosition(index: number): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;T&gt; | Promise对象，返回结果集中指定索引的一个对象。 |
+| Promise & lt;T & gt; | Promise对象，返回结果集中指定索引的一个对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 14000011 | Internal system error |
 
 **示例**
@@ -360,8 +344,6 @@ isAfterLast(): boolean
 检查结果集是否指向最后一行。
 
 **起始版本：** 12
-
-<!--Device-FetchResult-isAfterLast(): boolean--><!--Device-FetchResult-isAfterLast(): boolean-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -402,4 +384,3 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   }
 }
 ```
-

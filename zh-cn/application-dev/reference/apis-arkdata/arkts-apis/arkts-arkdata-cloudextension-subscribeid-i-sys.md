@@ -2,9 +2,7 @@
 
 订阅ID。
 
-**起始版本：** 23
-
-<!--Device-cloudExtension-export interface SubscribeId--><!--Device-cloudExtension-export interface SubscribeId-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -26,9 +24,7 @@ databaseAlias: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SubscribeId-databaseAlias: string--><!--Device-SubscribeId-databaseAlias: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -44,11 +40,8 @@ id: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SubscribeId-id: string--><!--Device-SubscribeId-id: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **系统接口：** 此接口为系统接口。
-

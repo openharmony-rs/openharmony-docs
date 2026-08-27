@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { pointer } from '@kit.InputKit';
 ```
 
 ## getPointerColorSync
 
 ```TypeScript
-function getPointerColorSync(): int
+function getPointerColorSync(): number
 ```
 
 获取鼠标光标颜色，使用同步方式返回结果。
 
-**起始版本：** 23
-
-<!--Device-pointer-function getPointerColorSync(): int--><!--Device-pointer-function getPointerColorSync(): int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -26,7 +23,7 @@ function getPointerColorSync(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 鼠标光标颜色。 |
+| number | 鼠标光标颜色。 |
 
 **错误码：**
 
@@ -35,8 +32,6 @@ function getPointerColorSync(): int
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { pointer } from '@kit.InputKit';
@@ -60,30 +55,3 @@ struct Index {
   }
 }
 ```
-
-ArkTS-Sta示例:
-
-```TypeScript
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
-import { pointer } from '@kit.InputKit';
-import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            let pointerColor = pointer.getPointerColorSync();
-            console.info(`Succeeded in getting pointer color sync, pointerColor: ${JSON.stringify(pointerColor)}.`);
-          } catch (error) {
-            console.error(`Failed to get pointer color sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 24
 
-<!--Device-deviceSettings-enum SettingsMenu--><!--Device-deviceSettings-enum SettingsMenu-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## ACCOUNT_ID
@@ -19,8 +17,6 @@ ACCOUNT_ID = 0
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-ACCOUNT_ID = 0--><!--Device-SettingsMenu-ACCOUNT_ID = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,8 +32,6 @@ WLAN菜单
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-WIFI = 1--><!--Device-SettingsMenu-WIFI = 1-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## WIFI_PROXY_SETTINGS
@@ -51,8 +45,6 @@ WLAN 代理。
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-WIFI_PROXY_SETTINGS = 2--><!--Device-SettingsMenu-WIFI_PROXY_SETTINGS = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -68,8 +60,6 @@ WALN IP设置
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-WIFI_IP_SETTINGS = 3--><!--Device-SettingsMenu-WIFI_IP_SETTINGS = 3-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## BLUETOOTH
@@ -83,8 +73,6 @@ BLUETOOTH = 4
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-BLUETOOTH = 4--><!--Device-SettingsMenu-BLUETOOTH = 4-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -100,8 +88,6 @@ NETWORK = 5
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-NETWORK = 5--><!--Device-SettingsMenu-NETWORK = 5-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## MOBILE_NETWORK
@@ -115,8 +101,6 @@ MOBILE_NETWORK = 6
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-MOBILE_NETWORK = 6--><!--Device-SettingsMenu-MOBILE_NETWORK = 6-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -132,8 +116,6 @@ SUPER_DEVICE = 7
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-SUPER_DEVICE = 7--><!--Device-SettingsMenu-SUPER_DEVICE = 7-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## MORE_CONNECTIVITY_OPTIONS
@@ -147,8 +129,6 @@ MORE_CONNECTIVITY_OPTIONS = 8
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-MORE_CONNECTIVITY_OPTIONS = 8--><!--Device-SettingsMenu-MORE_CONNECTIVITY_OPTIONS = 8-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -164,8 +144,6 @@ HOME_SCREEN_STYLE = 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-HOME_SCREEN_STYLE = 9--><!--Device-SettingsMenu-HOME_SCREEN_STYLE = 9-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DISPLAY_BRIGHTNESS
@@ -179,8 +157,6 @@ DISPLAY_BRIGHTNESS = 10
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-DISPLAY_BRIGHTNESS = 10--><!--Device-SettingsMenu-DISPLAY_BRIGHTNESS = 10-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -196,8 +172,6 @@ SOUND_VIBRATION = 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-SOUND_VIBRATION = 11--><!--Device-SettingsMenu-SOUND_VIBRATION = 11-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## NOTIFICATIONS
@@ -211,8 +185,6 @@ NOTIFICATIONS = 12
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-NOTIFICATIONS = 12--><!--Device-SettingsMenu-NOTIFICATIONS = 12-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -228,8 +200,6 @@ BIOMETRICS_PASSWORD = 13
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-BIOMETRICS_PASSWORD = 13--><!--Device-SettingsMenu-BIOMETRICS_PASSWORD = 13-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## APPS_AND_SERVICES
@@ -243,8 +213,6 @@ APPS_AND_SERVICES = 14
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-APPS_AND_SERVICES = 14--><!--Device-SettingsMenu-APPS_AND_SERVICES = 14-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -260,8 +228,6 @@ BATTERY = 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-BATTERY = 15--><!--Device-SettingsMenu-BATTERY = 15-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## STORAGE
@@ -275,8 +241,6 @@ STORAGE = 16
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-STORAGE = 16--><!--Device-SettingsMenu-STORAGE = 16-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -292,8 +256,6 @@ PRIVACY_AND_SECURITY = 17
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-PRIVACY_AND_SECURITY = 17--><!--Device-SettingsMenu-PRIVACY_AND_SECURITY = 17-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DIGITAL_BALANCE
@@ -307,8 +269,6 @@ DIGITAL_BALANCE = 18
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-DIGITAL_BALANCE = 18--><!--Device-SettingsMenu-DIGITAL_BALANCE = 18-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -324,8 +284,6 @@ SMART_ASSISTANT = 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-SMART_ASSISTANT = 19--><!--Device-SettingsMenu-SMART_ASSISTANT = 19-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## ACCESSIBILITY
@@ -339,8 +297,6 @@ ACCESSIBILITY = 20
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-ACCESSIBILITY = 20--><!--Device-SettingsMenu-ACCESSIBILITY = 20-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -356,8 +312,6 @@ SYSTEM = 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-SYSTEM = 21--><!--Device-SettingsMenu-SYSTEM = 21-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## ABOUT_DEVICE
@@ -371,8 +325,6 @@ ABOUT_DEVICE = 22
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-ABOUT_DEVICE = 22--><!--Device-SettingsMenu-ABOUT_DEVICE = 22-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -388,8 +340,6 @@ SYSTEM_NAVIGATION = 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-SYSTEM_NAVIGATION = 23--><!--Device-SettingsMenu-SYSTEM_NAVIGATION = 23-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## LANGUAGE_REGION
@@ -403,8 +353,6 @@ LANGUAGE_REGION = 24
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-LANGUAGE_REGION = 24--><!--Device-SettingsMenu-LANGUAGE_REGION = 24-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -420,8 +368,6 @@ INPUT_METHODS = 25
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-INPUT_METHODS = 25--><!--Device-SettingsMenu-INPUT_METHODS = 25-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DATE_TIME
@@ -435,8 +381,6 @@ DATE_TIME = 26
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-DATE_TIME = 26--><!--Device-SettingsMenu-DATE_TIME = 26-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -452,8 +396,6 @@ DATA_CLONE = 27
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-DATA_CLONE = 27--><!--Device-SettingsMenu-DATA_CLONE = 27-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## BACKUP_SETTINGS
@@ -467,8 +409,6 @@ BACKUP_SETTINGS = 28
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-BACKUP_SETTINGS = 28--><!--Device-SettingsMenu-BACKUP_SETTINGS = 28-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -484,8 +424,6 @@ RESET = 29
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-RESET = 29--><!--Device-SettingsMenu-RESET = 29-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## SUPERHUB
@@ -499,8 +437,6 @@ SUPERHUB = 30
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-SUPERHUB = 30--><!--Device-SettingsMenu-SUPERHUB = 30-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -516,8 +452,6 @@ USER_EXPERIENCE = 31
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-USER_EXPERIENCE = 31--><!--Device-SettingsMenu-USER_EXPERIENCE = 31-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## SCREEN_CAST
@@ -531,8 +465,6 @@ SCREEN_CAST = 32
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-SCREEN_CAST = 32--><!--Device-SettingsMenu-SCREEN_CAST = 32-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -548,8 +480,6 @@ PRINTERS_SCANNERS = 33
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-PRINTERS_SCANNERS = 33--><!--Device-SettingsMenu-PRINTERS_SCANNERS = 33-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## MOBILE_DATA
@@ -563,8 +493,6 @@ MOBILE_DATA = 34
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-MOBILE_DATA = 34--><!--Device-SettingsMenu-MOBILE_DATA = 34-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -580,8 +508,6 @@ PERSONAL_HOTSPOT = 35
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-PERSONAL_HOTSPOT = 35--><!--Device-SettingsMenu-PERSONAL_HOTSPOT = 35-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## SIM_MANAGEMENT
@@ -595,8 +521,6 @@ SIM_MANAGEMENT = 36
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-SIM_MANAGEMENT = 36--><!--Device-SettingsMenu-SIM_MANAGEMENT = 36-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -612,8 +536,6 @@ AIRPLANE_MODE = 37
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-AIRPLANE_MODE = 37--><!--Device-SettingsMenu-AIRPLANE_MODE = 37-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## MANAGE_DATA_USAGE
@@ -627,8 +549,6 @@ MANAGE_DATA_USAGE = 38
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-MANAGE_DATA_USAGE = 38--><!--Device-SettingsMenu-MANAGE_DATA_USAGE = 38-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -644,8 +564,6 @@ VPN_SETTINGS = 39
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-VPN_SETTINGS = 39--><!--Device-SettingsMenu-VPN_SETTINGS = 39-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## TEXT_DISPLAY_SIZE
@@ -659,8 +577,6 @@ TEXT_DISPLAY_SIZE = 40
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsMenu-TEXT_DISPLAY_SIZE = 40--><!--Device-SettingsMenu-TEXT_DISPLAY_SIZE = 40-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -676,8 +592,6 @@ APP_DUPLICATOR = 41
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-APP_DUPLICATOR = 41--><!--Device-SettingsMenu-APP_DUPLICATOR = 41-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## SEARCH
@@ -692,7 +606,4 @@ SEARCH = 42
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsMenu-SEARCH = 42--><!--Device-SettingsMenu-SEARCH = 42-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

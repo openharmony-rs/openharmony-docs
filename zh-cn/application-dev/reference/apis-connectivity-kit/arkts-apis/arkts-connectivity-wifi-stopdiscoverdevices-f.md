@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## stopDiscoverDevices
@@ -24,8 +21,6 @@ function stopDiscoverDevices(): boolean
 **替代接口：** stopDiscoverP2pDevices
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
-
-<!--Device-wifi-function stopDiscoverDevices(): boolean--><!--Device-wifi-function stopDiscoverDevices(): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -46,4 +41,3 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
-

@@ -1,5 +1,8 @@
 # @ohos.arkui.theme
 
+主题换肤
+
+
 ## 导入模块
 
 ```TypeScript
@@ -20,7 +23,7 @@ import { Colors, CustomColors, Theme, ThemeControl, CustomTheme, CustomDarkColor
 | --- | --- |
 | [Colors](arkts-arkui-arkui-theme-colors-i.md) | 主题颜色资源。 |
 | [CustomTheme](arkts-arkui-arkui-theme-customtheme-i.md) | 自定义主题风格对象。 |
-| [Theme](arkts-arkui-arkui-theme-theme-i.md) | 当前生效的主题风格对象，可从 [onWillApplyTheme](../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12)中获取。 |
+| [Theme](arkts-arkui-arkui-theme-theme-i.md) | 当前生效的主题风格对象，可从 [onWillApplyTheme](../arkts-components/arkts-arkui-basecustomcomponent-c.md#onwillapplytheme)中获取。 |
 
 ### 类型
 
@@ -28,4 +31,3 @@ import { Colors, CustomColors, Theme, ThemeControl, CustomTheme, CustomDarkColor
 | --- | --- |
 | [CustomColors](arkts-arkui-customcolors-t.md) | 自定义主题颜色资源类型。 |
 | [CustomDarkColors](arkts-arkui-customdarkcolors-t.md) | 自定义深色主题颜色资源类型。 |
-

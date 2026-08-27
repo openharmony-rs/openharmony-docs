@@ -2,16 +2,13 @@
 
 应用进程内存限制。
 
-**起始版本：** 23
-
-<!--Device-hidebug-interface MemoryLimit--><!--Device-hidebug-interface MemoryLimit-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## 导入模块
 
 ```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## rssLimit
@@ -20,13 +17,9 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 rssLimit: bigint
 ```
 
-应用程序进程可用的物理内存限制，以KB为单位。
-
 **类型：** bigint
 
-**起始版本：** 23
-
-<!--Device-MemoryLimit-rssLimit: bigint--><!--Device-MemoryLimit-rssLimit: bigint-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -36,13 +29,9 @@ rssLimit: bigint
 vmHeapLimit: bigint
 ```
 
-当前线程的 JS VM 堆大小限制，以KB为单位。
-
 **类型：** bigint
 
-**起始版本：** 23
-
-<!--Device-MemoryLimit-vmHeapLimit: bigint--><!--Device-MemoryLimit-vmHeapLimit: bigint-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -52,13 +41,9 @@ vmHeapLimit: bigint
 vmTotalHeapSize: bigint
 ```
 
-当前进程的 JS 堆内存大小限制，以KB为单位。
-
 **类型：** bigint
 
-**起始版本：** 23
-
-<!--Device-MemoryLimit-vmTotalHeapSize: bigint--><!--Device-MemoryLimit-vmTotalHeapSize: bigint-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -68,13 +53,8 @@ vmTotalHeapSize: bigint
 vssLimit: bigint
 ```
 
-进程的虚拟内存限制，以KB为单位。
-
 **类型：** bigint
 
-**起始版本：** 23
-
-<!--Device-MemoryLimit-vssLimit: bigint--><!--Device-MemoryLimit-vssLimit: bigint-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
-

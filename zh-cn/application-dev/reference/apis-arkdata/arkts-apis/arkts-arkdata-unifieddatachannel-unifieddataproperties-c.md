@@ -2,9 +2,7 @@
 
 定义统一数据对象中所有数据记录的属性，包含时间戳、标签、粘贴范围以及一些附加数据等。
 
-**起始版本：** 23
-
-<!--Device-unifiedDataChannel-class UnifiedDataProperties--><!--Device-unifiedDataChannel-class UnifiedDataProperties-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -14,24 +12,6 @@
 import { unifiedDataChannel } from '@kit.ArkData';
 ```
 
-## extras
-
-```TypeScript
-extras?: Record<string, RecordData>
-```
-
-是一个字典类型对象，用于设置其他附加属性数据。非必填字段，默认值为空字典对象。
-
-**类型：** Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UnifiedDataProperties-extras?: Record<string, RecordData>--><!--Device-UnifiedDataProperties-extras?: Record<string, RecordData>-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
-
 ## getDelayData
 
 ```TypeScript
@@ -40,15 +20,29 @@ getDelayData?: GetDelayData
 
 延迟获取数据回调。当前只支持同设备剪贴板场景，当用户从剪贴板读取数据时触发该回调。非必填字段，默认值为undefined。
 
-**类型：** [GetDelayData](arkts-arkdata-unifieddatachannel-getdelaydata-t.md)
-
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-UnifiedDataProperties-getDelayData?: GetDelayData--><!--Device-UnifiedDataProperties-getDelayData?: GetDelayData-End-->
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+## extras
+
+```TypeScript
+extras?: Record<string, object>
+```
+
+是一个字典类型对象，用于设置其他附加属性数据。非必填字段，默认值为空字典对象。
+
+**类型：** Record&lt;string, object&gt;
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -62,13 +56,11 @@ shareOptions?: ShareOptions
 
 **类型：** [ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UnifiedDataProperties-shareOptions?: ShareOptions--><!--Device-UnifiedDataProperties-shareOptions?: ShareOptions-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -82,13 +74,11 @@ tag?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UnifiedDataProperties-tag?: string--><!--Device-UnifiedDataProperties-tag?: string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -102,13 +92,11 @@ readonly timestamp?: Date
 
 **类型：** Date
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UnifiedDataProperties-readonly timestamp?: Date--><!--Device-UnifiedDataProperties-readonly timestamp?: Date-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -128,7 +116,42 @@ uriAuthorizationPolicies?: Array<UriPermission>
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-UnifiedDataProperties-uriAuthorizationPolicies?: Array<UriPermission>--><!--Device-UnifiedDataProperties-uriAuthorizationPolicies?: Array<UriPermission>-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
+**示例**
+
+```TypeScript
+import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+
+let properties = new unifiedDataChannel.UnifiedDataProperties();
+properties.extras = {
+  key: {
+    title: 'MyTitle',
+    content: 'MyContent'
+  }
+};
+properties.tag = "This is a tag of properties";
+properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
+// 从API 26.0.0版本开始，支持uri授权策略
+properties.uriAuthorizationPolicies = [
+  unifiedDataChannel.UriPermission.WRITE
+];
+properties.getDelayData = ((type: string) => {
+  if (type == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
+    let plainTextDetails: Record<string, string> = {
+      'attr1': 'value1',
+      'attr2': 'value2'
+    };
+    let plainText: uniformDataStruct.PlainText = {
+      uniformDataType: 'general.plain-text',
+      textContent: 'This is a plain text example',
+      abstract: 'This is abstract',
+      details: plainTextDetails
+    };
+    let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
+    let textData = new unifiedDataChannel.UnifiedData(text);
+    return textData;
+  }
+  return new unifiedDataChannel.UnifiedData();
+});
+```

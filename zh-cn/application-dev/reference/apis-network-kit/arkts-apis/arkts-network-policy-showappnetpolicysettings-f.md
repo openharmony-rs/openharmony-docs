@@ -18,8 +18,6 @@ function showAppNetPolicySettings(context: Context): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-policy-function showAppNetPolicySettings(context: Context): Promise<void>--><!--Device-policy-function showAppNetPolicySettings(context: Context): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **参数：**
@@ -32,7 +30,7 @@ function showAppNetPolicySettings(context: Context): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -50,4 +48,3 @@ policy.showAppNetPolicySettings(context).then(() => {
     }
 )
 ```
-

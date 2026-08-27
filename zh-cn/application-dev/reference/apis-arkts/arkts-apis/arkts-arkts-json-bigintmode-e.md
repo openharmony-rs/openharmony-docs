@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-json-const enum BigIntMode--><!--Device-json-const enum BigIntMode-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## DEFAULT
@@ -19,8 +17,6 @@ DEFAULT = 0
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BigIntMode-DEFAULT = 0--><!--Device-BigIntMode-DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -36,8 +32,6 @@ PARSE_AS_BIGINT = 1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BigIntMode-PARSE_AS_BIGINT = 1--><!--Device-BigIntMode-PARSE_AS_BIGINT = 1-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## ALWAYS_PARSE_AS_BIGINT
@@ -52,7 +46,4 @@ ALWAYS_PARSE_AS_BIGINT = 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BigIntMode-ALWAYS_PARSE_AS_BIGINT = 2--><!--Device-BigIntMode-ALWAYS_PARSE_AS_BIGINT = 2-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

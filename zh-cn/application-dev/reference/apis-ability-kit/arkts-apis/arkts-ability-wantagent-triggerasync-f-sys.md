@@ -14,11 +14,9 @@ function triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Conte
 
 主动触发WantAgent实例，即按照WantAgent实例中已封装的指定操作和参数等信息执行。使用Promise异步回调。 仅当入参agent为本地WantAgent实例时需要申请: ohos.permission.TRIGGER_LOCAL_WANTAGENT permission.
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-wantAgent-function triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Context): Promise<CompleteData>--><!--Device-wantAgent-function triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Context): Promise<CompleteData>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -36,16 +34,16 @@ function triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Conte
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;CompleteData&gt; | Promise对象，返回主动激发WantAgent获得的数据。 |
+| Promise & lt;CompleteData & gt; | Promise对象，返回主动激发WantAgent获得的数据。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [16000020](../errorcode-ability.md#16000020-传入的context对象不是ability级别context) | The context is not ability context. |
-| [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantagent object. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
+| [16000020](../errorcode-ability.md#16000020-传入的context对象不是ability级别context) | The context is not ability context. |
+| [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantagent object. |
 | [16000153](../errorcode-ability.md#16000153-wantagent对象已被取消) | The Wantagent has been canceled. |
 
 **示例**
@@ -122,4 +120,3 @@ class MyAbility extends UIAbility {
    }
  }
 ```
-

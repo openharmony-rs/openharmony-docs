@@ -1,10 +1,8 @@
 # @ohos.distributedHardware.hardwareManager
 
-分布式硬件管理模块提供控制分布式硬件的能力，包括暂停、恢复和停止被控端分布式硬件业务。
+分布式硬件管理模块提供控制分布式硬件的能力，包括暂停、恢复和停止被控端分布式硬件业务。@namespace hardwareManager
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace hardwareManager--><!--Device-unnamed-declare namespace hardwareManager-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedHardware.DistributedHardwareFWK
 
@@ -44,4 +42,3 @@ import { hardwareManager } from '@kit.DistributedServiceKit';
 | [DistributedHardwareErrorCode](arkts-distributedservice-hardwaremanager-distributedhardwareerrorcode-e-sys.md) | 分布式硬件错误码的枚举。 |
 | [DistributedHardwareType](arkts-distributedservice-hardwaremanager-distributedhardwaretype-e-sys.md) | 表示分布式硬件类型。 |
 <!--DelEnd-->
-

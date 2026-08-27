@@ -1,10 +1,8 @@
 # DistributedInfo
 
-提供操作系统账号的分布式信息。
+提供操作系统账号的分布式账号信息。
 
-**起始版本：** 23
-
-<!--Device-distributedAccount-interface DistributedInfo--><!--Device-distributedAccount-interface DistributedInfo-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -20,13 +18,11 @@ import { distributedAccount } from '@kit.BasicServicesKit';
 avatar?: string
 ```
 
-分布式账号的头像，默认为空。
+分布式账号的头像，当需要显示用户头像时设置。不设置时默认为空，不影响账号功能使用。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DistributedInfo-avatar?: string--><!--Device-DistributedInfo-avatar?: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -36,13 +32,15 @@ avatar?: string
 event: string
 ```
 
-分布式账号登录状态，包括登录、登出、Token失效和注销，分别对应以下字符串： - Ohos.account.event.LOGIN - Ohos.account.event.LOGOUT - Ohos.account.event.TOKEN_INVALID - Ohos.account.event.LOGOFF
+分布式账号登录状态，包括登录、登出、Token失效和注销，分别对应以下字符串：  
+- Ohos.account.event.LOGIN  
+- Ohos.account.event.LOGOUT  
+- Ohos.account.event.TOKEN_INVALID  
+- Ohos.account.event.LOGOFF
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DistributedInfo-event: string--><!--Device-DistributedInfo-event: string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -56,9 +54,7 @@ id: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DistributedInfo-id: string--><!--Device-DistributedInfo-id: string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -72,9 +68,7 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DistributedInfo-name: string--><!--Device-DistributedInfo-name: string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -84,29 +78,25 @@ name: string
 nickname?: string
 ```
 
-分布式账号的昵称，默认为空。
+分布式账号的昵称，当需要显示用户昵称时设置。不设置时默认为空，不影响账号功能使用。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DistributedInfo-nickname?: string--><!--Device-DistributedInfo-nickname?: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 ## scalableData
 
 ```TypeScript
-scalableData?: Record<string, RecordData>
+scalableData?: object
 ```
 
-分布式账号扩展信息，根据业务所需，以k-v形式传递定制化信息，默认为空。
+分布式账号扩展信息，当需要传递定制化业务信息时设置，以k-v形式传递。不设置时默认为空，不影响账号基本功能。
 
-**类型：** Record&lt;string, [RecordData](arkts-basicservices-recorddata-t.md)&gt;
+**类型：** object
 
-**起始版本：** 23
-
-<!--Device-DistributedInfo-scalableData?: Record<string, RecordData>--><!--Device-DistributedInfo-scalableData?: Record<string, RecordData>-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -116,13 +106,10 @@ scalableData?: Record<string, RecordData>
 readonly status?: DistributedAccountStatus
 ```
 
-分布式账号的状态，枚举类型，默认为未登录状态。
+分布式账号的状态，枚举类型。当需要查询或设置账号登录状态时使用。不设置时默认为NOT_LOGGED_IN（未登录状态）。
 
 **类型：** [DistributedAccountStatus](arkts-basicservices-distributedaccount-distributedaccountstatus-e.md)
 
-**起始版本：** 23
-
-<!--Device-DistributedInfo-readonly status?: DistributedAccountStatus--><!--Device-DistributedInfo-readonly status?: DistributedAccountStatus-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Account.OsAccount
-

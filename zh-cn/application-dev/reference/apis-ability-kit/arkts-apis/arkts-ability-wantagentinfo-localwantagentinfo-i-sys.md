@@ -1,10 +1,8 @@
 # LocalWantAgentInfo（系统接口）
 
-定义触发本地WantAgent所需要的信息，可以作为 createLocalWantAgent 的入参创建指定的本地WantAgent对象。
+定义触发本地WantAgent所需要的信息，可以作为 [createLocalWantAgent](../../../reference/apis-ability-kit/js-apis-app-ability-wantAgent-sys.md#wantagentcreatelocalwantagent20) 的入参创建指定的本地WantAgent对象。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface LocalWantAgentInfo--><!--Device-unnamed-export interface LocalWantAgentInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -20,11 +18,9 @@ operationType?: abilityWantAgent.OperationType
 
 **类型：** abilityWantAgent.OperationType
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-LocalWantAgentInfo-operationType?: abilityWantAgent.OperationType--><!--Device-LocalWantAgentInfo-operationType?: abilityWantAgent.OperationType-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -33,18 +29,16 @@ operationType?: abilityWantAgent.OperationType
 ## requestCode
 
 ```TypeScript
-requestCode: int
+requestCode: number
 ```
 
 开发者自定义的请求码，用于标识将被执行的动作。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-LocalWantAgentInfo-requestCode: int--><!--Device-LocalWantAgentInfo-requestCode: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -60,13 +54,10 @@ wants: Array<Want>
 
 **类型：** Array&lt;[Want](arkts-ability-app-ability-want-want-c.md)&gt;
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-LocalWantAgentInfo-wants: Array<Want>--><!--Device-LocalWantAgentInfo-wants: Array<Want>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-

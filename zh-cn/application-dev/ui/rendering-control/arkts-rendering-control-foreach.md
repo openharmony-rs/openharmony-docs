@@ -6,9 +6,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-ForEach接口基于数组循环渲染，需要与容器组件配合使用，且接口返回的组件应当是允许包含在ForEach父容器组件中的子组件。例如，[ListItem/apis-arkui/arkui-ts/ts-container-listitem.md)组件要求ForEach的父容器组件必须为[List组件/apis-arkui/arkui-ts/ts-container-list.md)。
+ForEach接口基于数组循环渲染，需要与容器组件配合使用，且接口返回的组件应当是允许包含在ForEach父容器组件中的子组件。例如，ListItem组件要求ForEach的父容器组件必须为List组件。
 
-API参数说明见：[ForEach API参数说明/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)。
+API参数说明见：ForEach API参数说明。
 
 > **说明：**
 >
@@ -27,13 +27,15 @@ ArkUI框架对于`ForEach`的键值生成有一套特定的判断规则，这主
 
 > **说明：**
 >
-> 1. ArkUI框架会对重复的键值发出运行时警告。在UI更新时，如果出现重复的键值，框架可能无法正常工作，具体请参见[渲染结果非预期](#渲染结果非预期)。
-> 2. 不建议在键值中包含数据项索引`index`，这可能会导致[渲染结果非预期](#渲染结果非预期)和[渲染性能降低](#渲染性能降低)。
+> 1. ArkUI框架会对重复的键值发出运行时警告。在UI更新时，如果出现重复的键值，框架可能无法正常工作，具体请参见渲染结果非预期。
+> 2. 不建议在键值中包含数据项索引`index`，这可能会导致渲染结果非预期和渲染性能降低。
 > 3. 如果开发者在`itemGenerator`函数中声明了`index`参数，但未在`keyGenerator`函数中声明`index`参数，框架会在`keyGenerator`函数返回值的基础上拼接`index`，作为最终的键值，这将会引发上述第二点中的问题。为避免此现象，请在`keyGenerator`函数中声明`index`参数。
 
 键值生成示例:
 
-```ts
+<!-- @[foreach_key_generation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEachKeyGeneration.ets) -->
+
+``` TypeScript
 interface ChildItemType {
   str: string;
   num: number;
@@ -41,7 +43,7 @@ interface ChildItemType {
 
 @Entry
 @Component
-struct Index {
+export struct ForEachKeyGeneration {
   @State simpleList: Array<ChildItemType> = [
     { str: 'one', num: 1 },
     { str: 'two', num: 2 },
@@ -66,7 +68,7 @@ struct Index {
 }
 
 @Component
-struct ChildItem {
+export struct ChildItem {
   @Prop str: string = '';
   @Prop num: number = 0;
 
@@ -81,7 +83,7 @@ struct ChildItem {
 
 ## 组件创建规则
 
-在确定键值生成规则后，ForEach的第二个参数`itemGenerator`函数会根据键值生成规则为数据源的每个数组项创建组件。组件的创建包括两种情况：[ForEach首次渲染](#首次渲染)和[ForEach非首次渲染](#非首次渲染)。
+在确定键值生成规则后，ForEach的第二个参数`itemGenerator`函数会根据键值生成规则为数据源的每个数组项创建组件。组件的创建包括两种情况：ForEach首次渲染和ForEach非首次渲染。
 
 ### 首次渲染
 
@@ -223,7 +225,7 @@ struct NotFirstRenderChildItem {
 **图4**  ForEach非首次渲染案例运行效果图  
 ![ForEach-Non-Initial-Render-Case-Effect](figures/ForEach-Non-Initial-Render-Case-Effect.gif)
 
-从本例可以看出[\@State](../state-management/arkts-state.md)能够监听到简单数据类型数组`simpleList`数组项的变化。
+从本例可以看出\@State能够监听到简单数据类型数组`simpleList`数组项的变化。
 
 1. 当`simpleList`数组项发生变化时，会触发`ForEach`重新渲染。
 2. `ForEach`遍历新的数据源`['one', 'two', 'new three']`，并生成对应的键值`one`、`two`和`new three`。
@@ -231,7 +233,7 @@ struct NotFirstRenderChildItem {
 
 ## 使用场景
 
-ForEach组件在开发过程中的主要应用场景包括：[数据源不变](#数据源不变)、[数据源数组项发生变化](#数据源数组项发生变化)（如插入、删除操作）、[数据源数组项子属性变化](#数据源数组项子属性变化)。
+ForEach组件在开发过程中的主要应用场景包括：数据源不变、数据源数组项发生变化（如插入、删除操作）、数据源数组项子属性变化。
 
 ### 数据源不变
 
@@ -407,14 +409,14 @@ struct ArticleCardChangeSource {
 **图6**  数据源数组项变化案例运行效果图  
 ![ForEach-DataSourceArrayChange](figures/ForEach-DataSourceArrayChange.png)
 
-在本示例中，`ArticleCardChangeSource`组件作为`ArticleListViewChangeSource`组件的子组件，通过[\@Prop](../state-management/arkts-prop.md)装饰器接收一个`ArticleChangeSource`对象，用于渲染文章卡片。
+在本示例中，`ArticleCardChangeSource`组件作为`ArticleListViewChangeSource`组件的子组件，通过\@Prop装饰器接收一个`ArticleChangeSource`对象，用于渲染文章卡片。
 
 1. 当列表滚动到底部且手势滑动距离超过80vp时，触发`loadMoreArticles()`函数。此函数在`articleList`数据源尾部添加新数据项，增加数据源长度。
 2. 数据源被`@State`装饰器修饰，ArkUI框架能够感知数据源长度的变化并触发`ForEach`进行重新渲染。
 
 ### 数据源数组项子属性变化
 
-当数据源的数组项为对象数据类型，并且只修改某个数组项的属性值时，由于数据源为复杂数据类型，ArkUI框架无法监听到`@State`装饰器修饰的数据源数组项的属性变化，从而无法触发`ForEach`的重新渲染。为实现`ForEach`子组件重新渲染，需要结合[\@Observed和\@ObjectLink](../state-management/arkts-observed-and-objectlink.md)装饰器使用。例如，在文章列表卡片上点击“点赞”按钮，从而修改文章的点赞数量。
+当数据源的数组项为对象数据类型，并且只修改某个数组项的属性值时，由于数据源为复杂数据类型，ArkUI框架无法监听到`@State`装饰器修饰的数据源数组项的属性变化，从而无法触发`ForEach`的重新渲染。为实现`ForEach`子组件重新渲染，需要结合\@Observed和\@ObjectLink装饰器使用。例如，在文章列表卡片上点击“点赞”按钮，从而修改文章的点赞数量。
 
 <!-- @[article_list_view_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ArticleListView2.ets) -->
 
@@ -492,8 +494,8 @@ struct ArticleCardChangeChild {
           .margin({ bottom: 8 })
 
         Row() {
-          // 此处app.media.iconLiked'，'app.media.iconUnLiked'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-          Image(this.article.isLiked ? $r('app.media.iconLiked') : $r('app.media.iconUnLiked'))
+          // 此处'app.media.iconLiked'，'app.media.iconUnliked'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+          Image(this.article.isLiked ? $r('app.media.iconLiked') : $r('app.media.iconUnliked'))
             .width(24)
             .height(24)
             .margin({ right: 8 })
@@ -528,7 +530,7 @@ struct ArticleCardChangeChild {
 2. `ArticleChangeChild`实例是`@ObjectLink`装饰的状态变量，其属性值变化，会触发`ArticleCardChangeChild`组件渲染，此时读取的`isLiked`和`likesCount`为修改后的新值。
 
 ### 拖拽排序
-在List组件下使用ForEach，并设置[onMove/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)事件，每次迭代生成一个ListItem时，可以使能拖拽排序。拖拽排序离手后，如果组件位置发生变化，将触发onMove事件，上报组件移动原始索引号和目标索引号。在onMove事件中，需要根据上报的起始索引号和目标索引号修改数据源。数据源修改前后，要保持每个数据的键值不变，只是顺序发生变化，才能保证落位动画正常执行。
+在List组件下使用ForEach，并设置onMove事件，每次迭代生成一个ListItem时，可以使能拖拽排序。拖拽排序离手后，如果组件位置发生变化，将触发onMove事件，上报组件移动原始索引号和目标索引号。在onMove事件中，需要根据上报的起始索引号和目标索引号修改数据源。数据源修改前后，要保持每个数据的键值不变，只是顺序发生变化，才能保证落位动画正常执行。
 
 <!-- @[foreach_sort](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEachSort.ets) -->
 
@@ -591,16 +593,16 @@ struct ForEachSort {
 ## 使用建议
 
 - 为满足键值的唯一性，对于对象数据类型，建议使用对象数据中的唯一`id`作为键值。
-- 不建议在键值中包含数据项索引`index`，可能会导致[渲染结果非预期](#渲染结果非预期)和[渲染性能降低](#渲染性能降低)。如果确实需要使用`index`，例如列表通过`index`进行条件渲染，开发者需接受`ForEach`在数据源变更后重新创建组件导致的性能损耗。
+- 不建议在键值中包含数据项索引`index`，可能会导致渲染结果非预期和渲染性能降低。如果确实需要使用`index`，例如列表通过`index`进行条件渲染，开发者需接受`ForEach`在数据源变更后重新创建组件导致的性能损耗。
 - 基本类型数组的数据项没有唯一`ID`属性。如果使用数据项作为键值，必须确保数据项无重复。对于数据源会变化的场景，建议将基本类型数组转换为具有唯一`ID`属性的Object类型数组，再使用唯一`ID`属性作为键值。
 - 对于以上限制规则，`index`参数存在的意义为：index是开发者保证键值唯一性的最终手段；对数据项进行修改时，由于`itemGenerator`中的`item`参数是不可修改的，所以须用index索引值对数据源进行修改，进而触发UI重新渲染。
-- ForEach在滚动容器组件 [List/apis-arkui/arkui-ts/ts-container-list.md)、[Grid/apis-arkui/arkui-ts/ts-container-grid.md)、[Swiper/apis-arkui/arkui-ts/ts-container-swiper.md)以及[WaterFlow/apis-arkui/arkui-ts/ts-container-waterflow.md) 内使用的时候，不建议与[LazyForEach](./arkts-rendering-control-lazyforeach.md) 同时使用。
-- 在大量子组件的场景下，ForEach可能会导致卡顿。请考虑使用[LazyForEach](./arkts-rendering-control-lazyforeach.md)替代。最佳实践请参考[使用懒加载优化性能](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-lazyforeach-optimization)。
-- 当数组项为对象类型时，不建议用内容相同的数组项替换旧项。若数组项发生变更但键值未变，会导致[数据变化不渲染](#数据变化不渲染)。
+- ForEach在滚动容器组件 List、Grid、Swiper以及WaterFlow 内使用的时候，不建议与LazyForEach 同时使用。
+- 在大量子组件的场景下，ForEach可能会导致卡顿。请考虑使用LazyForEach替代。最佳实践请参考[使用懒加载优化性能](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-lazyforeach-optimization)。
+- 当数组项为对象类型时，不建议用内容相同的数组项替换旧项。若数组项发生变更但键值未变，会导致数据变化不渲染。
 
 ## 常见问题
 
-对ForEach键值的错误使用会导致功能和性能问题。详见案例[渲染结果非预期](#渲染结果非预期)和[渲染性能降低](#渲染性能降低)。
+对ForEach键值的错误使用会导致功能和性能问题。详见案例渲染结果非预期和渲染性能降低。
 
 ### 渲染结果非预期
 
@@ -645,7 +647,7 @@ struct ForEachAbnormalChildItem {
 }
 ```
 
-上述代码的初始渲染效果和点击“在第1项后插入新项”文本组件后的渲染效果如下图所示。
+上述代码的初始渲染效果和点击“Insert Item After First Item”文本组件后的渲染效果如下图所示。
 
 **图10**  渲染结果非预期运行效果图  
 ![ForEach-UnexpectedRenderingResult](figures/ForEach-UnexpectedRenderingResult.gif)
@@ -660,7 +662,7 @@ struct ForEachAbnormalChildItem {
 
 ### 渲染性能降低
 
-在本示例中，`ForEach`的第三个参数`KeyGenerator`函数缺省。根据上述[键值生成规则](#键值生成规则)，此例使用框架默认的键值，即最终键值为字符串`index + '__' + JSON.stringify(item)`。点击文本组件“在第1项后插入新项”后，`ForEach`将为第2个数组项及后面的所有数据项重新创建组件。
+在本示例中，`ForEach`的第三个参数`KeyGenerator`函数缺省。根据上述键值生成规则，此例使用框架默认的键值，即最终键值为字符串`index + '__' + JSON.stringify(item)`。点击文本组件“在第1项后插入新项”后，`ForEach`将为第2个数组项及后面的所有数据项重新创建组件。
 
 <!-- @[bad_performance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/BadPerformance.ets) -->
 
@@ -681,7 +683,7 @@ struct ReducedRenderingPerformance {
       }
       .onClick(() => {
         this.simpleList.splice(1, 0, 'new item');
-        hilog.info(DOMAIN, 'testTag', '[onClick]: simpleList is [${this.simpleList.join(', ')}]');
+        hilog.info(DOMAIN, 'testTag', `[onClick]: simpleList is [${this.simpleList.join(', ')}]`);
       })
 
       ForEach(this.simpleList, (item: string) => {
@@ -700,7 +702,7 @@ struct ReducedChildItem {
   @Prop item: string;
 
   aboutToAppear() {
-    hilog.info(DOMAIN, TAG, '[aboutToAppear]: item is ${this.item}');
+    hilog.info(DOMAIN, TAG, `[aboutToAppear]: item is ${this.item}`);
   }
 
   build() {
@@ -720,7 +722,7 @@ struct ReducedChildItem {
 **图12**  渲染性能降低案例日志打印图  
 ![ForEach-RenderPerformanceDecreaseLogs](figures/ForEach-RenderPerformanceDecreaseLogs.png)
 
-插入新项后，`ForEach`为`new item`、 `two`、 `three`三个数组项创建了对应的`ReducedChildItem`组件，并执行了组件的[`aboutToAppear()`/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)生命周期函数。这是因为：
+插入新项后，`ForEach`为`new item`、 `two`、 `three`三个数组项创建了对应的`ReducedChildItem`组件，并执行了组件的`aboutToAppear()`生命周期函数。这是因为：
 
 1. `ForEach`首次渲染时，生成的键值依次为`0__one`、`1__two`和`2__three`。
 2. 插入新项后，数据源`simpleList`变为`['one', 'new item', 'two', 'three']`，ArkUI框架监听到`@State`装饰的数据源长度变化触发`ForEach`重新渲染。
@@ -741,7 +743,7 @@ ForEach(this.simpleList, (item: string) => {
 提供了第三个参数`KeyGenerator`，在这个例子中，对数据源的不同数据项生成不同的key，并且对同一个数据项每次生成相同的key。
 
 ### 数据变化不渲染
-点击按钮`Like/UnLike first article`，第一个组件会切换点赞手势和后面的点赞数量，但是点击按钮`Replace first article`之后再点击按钮`Like/UnLike first article`就不生效了。原因是替换`articleList[0]`之后，`articleList`状态变量发生变化，触发ForEach重新渲染，但是新的`articleList[0]`生成的key没有变，ForEach不会将数据更新同步给子组件，因此第一个组件仍然绑定旧的`articleList[0]`。新`articleList[0]`的属性发生变更，第一个组件感知不到，不会重新渲染。点击点赞手势，会触发渲染。因为变更的是跟组件绑定的数组项的属性，组件会感知并重新渲染。
+点击按钮`Like/Unlike first article`，第一个组件会切换点赞手势和后面的点赞数量，但是点击按钮`Replace first article`之后再点击按钮`Like/Unlike first article`就不生效了。原因是替换`articleList[0]`之后，`articleList`状态变量发生变化，触发ForEach重新渲染，但是新的`articleList[0]`生成的key没有变，ForEach不会将数据更新同步给子组件，因此第一个组件仍然绑定旧的`articleList[0]`。新`articleList[0]`的属性发生变更，第一个组件感知不到，不会重新渲染。点击点赞手势，会触发渲染。因为变更的是跟组件绑定的数组项的属性，组件会感知并重新渲染。
 
 <!-- @[article_list_view_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ArticleListView3.ets) -->
 
@@ -837,8 +839,8 @@ struct ArticleCardChangeData {
           .margin({ bottom: 8 })
 
         Row() {
-          // 此处app.media.iconLiked'，'app.media.iconUnLiked'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-          Image(this.article.isLiked ? $r('app.media.iconLiked') : $r('app.media.iconUnLiked'))
+          // 此处'app.media.iconLiked'，'app.media.iconUnliked'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+          Image(this.article.isLiked ? $r('app.media.iconLiked') : $r('app.media.iconUnliked'))
             .width(24)
             .height(24)
             .margin({ right: 8 })
@@ -974,6 +976,7 @@ struct GenerationKeyChildItem {
 
 开发者定义`keyGenerator`函数，应用正常启动：
 
+**图16** 键值生成失败  
 ![ForEach-StateVarNoRender](figures/ForEach-defined-keyGenerator2.PNG)  
 
 使用默认的键值生成函数，应用发生jscrash： 

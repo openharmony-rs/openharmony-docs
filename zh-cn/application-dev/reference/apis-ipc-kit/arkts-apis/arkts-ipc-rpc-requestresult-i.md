@@ -2,9 +2,7 @@
 
 发送请求的响应结果。
 
-**起始版本：** 23
-
-<!--Device-rpc-interface RequestResult--><!--Device-rpc-interface RequestResult-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -17,16 +15,14 @@ import { rpc } from '@kit.IPCKit';
 ## code
 
 ```TypeScript
-code: int
+code: number
 ```
 
 消息代码。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RequestResult-code: int--><!--Device-RequestResult-code: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -40,25 +36,21 @@ data: MessageSequence
 
 **类型：** [MessageSequence](arkts-ipc-rpc-messagesequence-c.md)
 
-**起始版本：** 23
-
-<!--Device-RequestResult-data: MessageSequence--><!--Device-RequestResult-data: MessageSequence-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 ## errCode
 
 ```TypeScript
-errCode: int
+errCode: number
 ```
 
 错误码。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RequestResult-errCode: int--><!--Device-RequestResult-errCode: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -72,9 +64,6 @@ reply: MessageSequence
 
 **类型：** [MessageSequence](arkts-ipc-rpc-messagesequence-c.md)
 
-**起始版本：** 23
-
-<!--Device-RequestResult-reply: MessageSequence--><!--Device-RequestResult-reply: MessageSequence-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.IPC.Core
-

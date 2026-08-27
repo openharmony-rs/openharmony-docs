@@ -17,6 +17,6 @@ typedef struct PurgMem OH_PurgeableMemory
 
 **起始版本：** 10
 
-**相关模块：** [memory](capi-memory.md)
+**相关模块：** memory
 
-**所在头文件：** [purgeable_memory.h](capi-purgeable-memory-h.md)
+**所在头文件：** purgeable_memory.h

@@ -14,9 +14,7 @@ function getSystemSoundManager(): SystemSoundManager
 
 获取系统声音管理器。
 
-**起始版本：** 23
-
-<!--Device-systemSoundManager-function getSystemSoundManager(): SystemSoundManager--><!--Device-systemSoundManager-function getSystemSoundManager(): SystemSoundManager-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -33,4 +31,3 @@ function getSystemSoundManager(): SystemSoundManager
 ```TypeScript
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 ```
-

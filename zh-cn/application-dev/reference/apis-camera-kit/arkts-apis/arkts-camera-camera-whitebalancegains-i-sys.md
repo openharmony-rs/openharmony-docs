@@ -4,8 +4,6 @@ RGB white balance gain values.
 
 **起始版本：** 26.1.0
 
-<!--Device-camera-interface WhiteBalanceGains--><!--Device-camera-interface WhiteBalanceGains-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
@@ -13,25 +11,21 @@ RGB white balance gain values.
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## blueGain
 
 ```TypeScript
-blueGain: double
+blueGain: number
 ```
 
 The blue gain component of the white balance value.
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WhiteBalanceGains-blueGain: double--><!--Device-WhiteBalanceGains-blueGain: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -40,18 +34,16 @@ The blue gain component of the white balance value.
 ## greenGain
 
 ```TypeScript
-greenGain: double
+greenGain: number
 ```
 
 The green gain component of the white balance value.
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WhiteBalanceGains-greenGain: double--><!--Device-WhiteBalanceGains-greenGain: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -60,20 +52,17 @@ The green gain component of the white balance value.
 ## redGain
 
 ```TypeScript
-redGain: double
+redGain: number
 ```
 
 The red gain component of the white balance value.
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WhiteBalanceGains-redGain: double--><!--Device-WhiteBalanceGains-redGain: double-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
-

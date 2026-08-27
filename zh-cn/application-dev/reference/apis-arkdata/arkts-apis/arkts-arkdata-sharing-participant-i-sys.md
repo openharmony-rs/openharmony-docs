@@ -2,9 +2,7 @@
 
 端云共享的参与者。
 
-**起始版本：** 23
-
-<!--Device-sharing-interface Participant--><!--Device-sharing-interface Participant-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -26,9 +24,7 @@ attachInfo?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Participant-attachInfo?: string--><!--Device-Participant-attachInfo?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -44,9 +40,7 @@ identity: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Participant-identity: string--><!--Device-Participant-identity: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -62,9 +56,7 @@ privilege?: Privilege
 
 **类型：** [Privilege](arkts-arkdata-sharing-privilege-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-Participant-privilege?: Privilege--><!--Device-Participant-privilege?: Privilege-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -80,9 +72,7 @@ role?: Role
 
 **类型：** Role
 
-**起始版本：** 23
-
-<!--Device-Participant-role?: Role--><!--Device-Participant-role?: Role-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -98,11 +88,8 @@ state?: State
 
 **类型：** State
 
-**起始版本：** 23
-
-<!--Device-Participant-state?: State--><!--Device-Participant-state?: State-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **系统接口：** 此接口为系统接口。
-

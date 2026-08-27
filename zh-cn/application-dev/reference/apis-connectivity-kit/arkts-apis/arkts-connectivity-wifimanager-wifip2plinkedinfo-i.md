@@ -2,9 +2,7 @@
 
 P2P连接信息。
 
-**起始版本：** 23
-
-<!--Device-wifiManager-interface WifiP2pLinkedInfo--><!--Device-wifiManager-interface WifiP2pLinkedInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -12,7 +10,6 @@ P2P连接信息。
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## connectState
@@ -25,9 +22,7 @@ P2P连接状态。
 
 **类型：** P2pConnectState
 
-**起始版本：** 23
-
-<!--Device-WifiP2pLinkedInfo-connectState: P2pConnectState--><!--Device-WifiP2pLinkedInfo-connectState: P2pConnectState-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -41,9 +36,7 @@ groupOwnerAddr: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiP2pLinkedInfo-groupOwnerAddr: string--><!--Device-WifiP2pLinkedInfo-groupOwnerAddr: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -57,9 +50,6 @@ isGroupOwner: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-WifiP2pLinkedInfo-isGroupOwner: boolean--><!--Device-WifiP2pLinkedInfo-isGroupOwner: boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-

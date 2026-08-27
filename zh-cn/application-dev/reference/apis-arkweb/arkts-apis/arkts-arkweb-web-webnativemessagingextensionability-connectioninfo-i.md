@@ -4,8 +4,6 @@ Web原生消息连接的信息对象。
 
 **起始版本：** 21
 
-<!--Device-unnamed-export interface ConnectionInfo--><!--Device-unnamed-export interface ConnectionInfo-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -26,8 +24,6 @@ bundleName: string
 
 **起始版本：** 21
 
-<!--Device-ConnectionInfo-bundleName: string--><!--Device-ConnectionInfo-bundleName: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## connectionId
@@ -41,8 +37,6 @@ connectionId: number
 **类型：** number
 
 **起始版本：** 21
-
-<!--Device-ConnectionInfo-connectionId: number--><!--Device-ConnectionInfo-connectionId: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -58,8 +52,6 @@ extensionOrigin: string
 
 **起始版本：** 21
 
-<!--Device-ConnectionInfo-extensionOrigin: string--><!--Device-ConnectionInfo-extensionOrigin: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## fdRead
@@ -73,8 +65,6 @@ fdRead: number
 **类型：** number
 
 **起始版本：** 21
-
-<!--Device-ConnectionInfo-fdRead: number--><!--Device-ConnectionInfo-fdRead: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -90,7 +80,4 @@ fdWrite: number
 
 **起始版本：** 21
 
-<!--Device-ConnectionInfo-fdWrite: number--><!--Device-ConnectionInfo-fdWrite: number-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

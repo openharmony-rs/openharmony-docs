@@ -2,9 +2,7 @@
 
 用户认证结果。认证通过时，返回认证类型和认证通过的令牌信息；认证不通过时，返回相应的错误码。该接口用于描述认证完成后的结果信息，应用可通过[IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md)的 onResult回调获取此结果。
 
-**起始版本：** 23
-
-<!--Device-userAuth-interface UserAuthResult--><!--Device-userAuth-interface UserAuthResult-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';
-import { UserAuthIcon } from '@kit.UserAuthenticationKit';
 ```
 
 ## authType
@@ -25,11 +22,9 @@ authType?: UserAuthType
 
 **类型：** [UserAuthType](arkts-userauthentication-userauth-userauthtype-e.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UserAuthResult-authType?: UserAuthType--><!--Device-UserAuthResult-authType?: UserAuthType-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -43,29 +38,32 @@ enrolledState?: EnrolledState
 
 **类型：** [EnrolledState](arkts-userauthentication-userauth-enrolledstate-i.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UserAuthResult-enrolledState?: EnrolledState--><!--Device-UserAuthResult-enrolledState?: EnrolledState-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 ## result
 
 ```TypeScript
-result: int
+result: number
 ```
 
-用户认证结果。若成功返回SUCCESS(12500000)，若失败返回相应错误码。错误码包括： - FAIL(12500001)：认证不通过。 - CANCELED(12500003)：认证取消。 - TIMEOUT(12500004)：认证超时。 - LOCKED(12500009)：认证器锁定。 - NOT_ENROLLED(12500010)：未注册凭据。 - PIN_EXPIRED(12500013)：锁屏密码过期。 完整错误码列表参见[UserAuthResultCode](arkts-userauthentication-userauth-userauthresultcode-e.md)。
+用户认证结果。若成功返回SUCCESS(12500000)，若失败返回相应错误码。错误码包括：  
+- FAIL(12500001)：认证不通过。  
+- CANCELED(12500003)：认证取消。  
+- TIMEOUT(12500004)：认证超时。  
+- LOCKED(12500009)：认证器锁定。  
+- NOT_ENROLLED(12500010)：未注册凭据。  
+- PIN_EXPIRED(12500013)：锁屏密码过期。  
+完整错误码列表参见[UserAuthResultCode](arkts-userauthentication-userauth-userauthresultcode-e.md)。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UserAuthResult-result: int--><!--Device-UserAuthResult-result: int-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -79,11 +77,8 @@ token?: Uint8Array
 
 **类型：** Uint8Array
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-UserAuthResult-token?: Uint8Array--><!--Device-UserAuthResult-token?: Uint8Array-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
-

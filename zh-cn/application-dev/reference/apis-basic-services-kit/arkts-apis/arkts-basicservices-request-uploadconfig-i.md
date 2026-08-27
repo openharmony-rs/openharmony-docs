@@ -2,9 +2,7 @@
 
 上传任务的配置信息。
 
-**起始版本：** 23
-
-<!--Device-request-interface UploadConfig--><!--Device-request-interface UploadConfig-End-->
+**起始版本：** 6
 
 **系统能力：** SystemCapability.MiscServices.Upload
 
@@ -12,22 +10,19 @@
 
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
-import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
 ## begins
 
 ```TypeScript
-begins?: long
+begins?: number
 ```
 
 上传任务开始时读取的文件起点，单位为字节（B）。默认值为0，取值范围为闭区间，表示从头开始传输。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-UploadConfig-begins?: long--><!--Device-UploadConfig-begins?: long-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MiscServices.Upload
 
@@ -41,25 +36,21 @@ data: Array<RequestData>
 
 **类型：** Array&lt;RequestData&gt;
 
-**起始版本：** 23
-
-<!--Device-UploadConfig-data: Array<RequestData>--><!--Device-UploadConfig-data: Array<RequestData>-End-->
+**起始版本：** 6
 
 **系统能力：** SystemCapability.MiscServices.Upload
 
 ## ends
 
 ```TypeScript
-ends?: long
+ends?: number
 ```
 
 上传任务结束时读取的文件终点，单位为字节（B）。默认值为-1，取值范围为闭区间，表示传输到整个文件末尾结束。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-UploadConfig-ends?: long--><!--Device-UploadConfig-ends?: long-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MiscServices.Upload
 
@@ -73,41 +64,35 @@ files: Array<File>
 
 **类型：** Array&lt;File&gt;
 
-**起始版本：** 23
-
-<!--Device-UploadConfig-files: Array<File>--><!--Device-UploadConfig-files: Array<File>-End-->
+**起始版本：** 6
 
 **系统能力：** SystemCapability.MiscServices.Upload
 
 ## header
 
 ```TypeScript
-header: Record<string, string>
+header: Object
 ```
 
-Adds an HTTP or HTTPS header to be included with the upload request.
+添加要包含在上传请求中的HTTP或HTTPS标志头。
 
-**类型：** Record&lt;string, string&gt;
+**类型：** Object
 
-**起始版本：** 23
-
-<!--Device-UploadConfig-header: Record<string, string>--><!--Device-UploadConfig-header: Record<string, string>-End-->
+**起始版本：** 6
 
 **系统能力：** SystemCapability.MiscServices.Upload
 
 ## index
 
 ```TypeScript
-index?: int
+index?: number
 ```
 
 任务的路径索引，默认值为0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-UploadConfig-index?: int--><!--Device-UploadConfig-index?: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MiscServices.Upload
 
@@ -121,9 +106,7 @@ HTTP请求方法：POST、PUT，缺省为POST。使用POST新增资源，使用P
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-UploadConfig-method: string--><!--Device-UploadConfig-method: string-End-->
+**起始版本：** 6
 
 **系统能力：** SystemCapability.MiscServices.Upload
 
@@ -137,9 +120,6 @@ url: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-UploadConfig-url: string--><!--Device-UploadConfig-url: string-End-->
+**起始版本：** 6
 
 **系统能力：** SystemCapability.MiscServices.Upload
-

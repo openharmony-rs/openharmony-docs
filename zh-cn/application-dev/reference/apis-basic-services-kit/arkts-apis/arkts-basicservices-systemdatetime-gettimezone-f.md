@@ -14,9 +14,7 @@ function getTimezone(callback: AsyncCallback<string>): void
 
 获取系统时区，使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-systemDateTime-function getTimezone(callback: AsyncCallback<string>): void--><!--Device-systemDateTime-function getTimezone(callback: AsyncCallback<string>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -24,11 +22,9 @@ function getTimezone(callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回系统时区。具体可见 支持的系统时区。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回系统时区。具体可见 [支持的系统时区](../../../reference/apis-basic-services-kit/js-apis-date-time.md#支持的系统时区)。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -47,25 +43,6 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  systemDateTime.getTimezone((error: BusinessError<void> | null, data: string | undefined) => {
-    if (error) {
-      console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
-      return;
-    }
-    console.info(`Succeeded in get timezone : ${data}`);
-  });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
-}
-```
-
 
 ## getTimezone
 
@@ -75,9 +52,7 @@ function getTimezone(): Promise<string>
 
 获取系统时区，使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-systemDateTime-function getTimezone(): Promise<string>--><!--Device-systemDateTime-function getTimezone(): Promise<string>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -85,11 +60,9 @@ function getTimezone(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回系统时区。具体可见 支持的系统时区。 |
+| Promise & lt;string & gt; | Promise对象，返回系统时区。具体可见 [支持的系统时区](../../../reference/apis-basic-services-kit/js-apis-date-time.md#支持的系统时区)。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -105,21 +78,3 @@ try {
   console.error(`Failed to get timezone. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  systemDateTime.getTimezone().then((data: string) => {
-    console.info(`Succeeded in getting timezone: ${data}`);
-  }).catch((error: Error) => {
-    console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
-  });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
-}
-```
-

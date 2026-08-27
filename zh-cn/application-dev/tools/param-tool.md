@@ -10,7 +10,7 @@ param是为开发人员提供用于操作系统参数的工具，该工具只支
 
 ## 环境要求
 
-* 获取<!--Del-->[<!--DelEnd-->hdc工具<!--Del-->](../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)<!--DelEnd-->，执行hdc shell。
+* 获取<!--Del--><!--DelEnd-->hdc工具<!--Del--><!--DelEnd-->，执行hdc shell。
 * 正常连接设备。
 
 ## param工具命令列表

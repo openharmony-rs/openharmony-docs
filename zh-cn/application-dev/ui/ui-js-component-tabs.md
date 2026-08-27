@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @@jiangdayuan-->
+<!--Designer: @@fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-tabs是一种常见的界面导航结构。通过页签容器，用户可以快捷地访问应用的不同模块。具体用法请参考[tabs API/apis-arkui/arkui-js/js-components-container-tabs.md)。
+tabs是一种常见的界面导航结构。通过页签容器，用户可以快捷地访问应用的不同模块。具体用法请参考tabs API。
 
 
 ## 创建tabs
@@ -53,7 +53,7 @@ tabs是一种常见的界面导航结构。通过页签容器，用户可以快�
 }
 ```
 
-![zh-cn_image_0000001165191390](figures/zh-cn_image_0000001165191390.gif)
+![Creating-Tabs](figures/Creating-Tabs.gif)
 
 
 ## 设置样式
@@ -107,7 +107,7 @@ tabs是一种常见的界面导航结构。通过页签容器，用户可以快�
 }
 ```
 
-![zh-cn_image_0000001163388642](figures/zh-cn_image_0000001163388642.gif)
+![Setting-Styles](figures/Setting-Styles.gif)
 
 
 ## 显示页签索引
@@ -146,12 +146,12 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001163228638](figures/zh-cn_image_0000001163228638.gif)
+![Displaying-the-Tab-Index](figures/Displaying-the-Tab-Index.gif)
 
 
 > **说明：**
 >
-> tabs子组件仅支持一个[\<tab-bar>/apis-arkui/arkui-js/js-components-container-tab-bar.md)和一个[\<tab-content>/apis-arkui/arkui-js/js-components-container-tab-content.md)。
+> tabs子组件仅支持一个\<tab-bar>和一个\<tab-content>。
 
 
 ## 场景示例
@@ -266,4 +266,4 @@ export default {
 }
 ```
 
-![zh-cn_image_tab.gif](figures/zh-cn_image_tab.gif)
+![Example-Scenario-9](figures/Example-Scenario-9.gif)

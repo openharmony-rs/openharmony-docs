@@ -2,9 +2,7 @@
 
 提供系统属性相关的能力，包括语言地区名称翻译、支持的语言地区列表获取和系统语言地区获取等。
 
-**起始版本：** 23
-
-<!--Device-i18n-export class System--><!--Device-i18n-export class System-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -22,11 +20,9 @@ static getAppPreferredLanguage(): string
 
 获取应用偏好语言。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static getAppPreferredLanguage(): string--><!--Device-System-static getAppPreferredLanguage(): string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -52,11 +48,9 @@ static getDisplayCountry(country: string, locale: string, sentenceCase?: boolean
 
 获取国家地区名称在指定语言下的翻译。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): string--><!--Device-System-static getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -95,6 +89,13 @@ try {
 }
 ```
 
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let countryName: string = i18n.getDisplayCountry('zh-CN', 'en-GB', true); // countryName = 'China'
+countryName = i18n.getDisplayCountry('zh-CN', 'en-GB'); // countryName = 'China'
+```
+
 ## getDisplayLanguage
 
 ```TypeScript
@@ -103,11 +104,9 @@ static getDisplayLanguage(language: string, locale: string, sentenceCase?: boole
 
 获取语言名称在指定语言下的翻译。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static getDisplayLanguage(language: string, locale: string, sentenceCase?: boolean): string--><!--Device-System-static getDisplayLanguage(language: string, locale: string, sentenceCase?: boolean): string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -147,6 +146,13 @@ try {
 }
 ```
 
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let languageName: string = i18n.getDisplayLanguage('zh', 'en-GB', true); // languageName = 'Chinese'
+languageName = i18n.getDisplayLanguage('zh', 'en-GB'); // languageName = 'Chinese'
+```
+
 ## getFirstDayOfWeek
 
 ```TypeScript
@@ -155,11 +161,9 @@ static getFirstDayOfWeek(): WeekDay
 
 获取系统设置的周起始日。
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static getFirstDayOfWeek(): WeekDay--><!--Device-System-static getFirstDayOfWeek(): WeekDay-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -167,7 +171,7 @@ static getFirstDayOfWeek(): WeekDay
 
 | 类型 | 说明 |
 | --- | --- |
-| [WeekDay](../../apis-na/arkts-apis/arkts-na-i18n-weekday-e.md) | 周起始日。 |
+| [WeekDay](arkts-localization-i18n-weekday-e.md) | 周起始日。 |
 
 **示例**
 
@@ -185,11 +189,9 @@ static getFirstPreferredLanguage(): string
 
 获取系统偏好语言列表中的第一个语言。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static getFirstPreferredLanguage(): string--><!--Device-System-static getFirstPreferredLanguage(): string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -207,6 +209,12 @@ import { i18n } from '@kit.LocalizationKit';
 let firstPreferredLanguage: string = i18n.System.getFirstPreferredLanguage();
 ```
 
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let firstPreferredLanguage: string = i18n.getFirstPreferredLanguage();
+```
+
 ## getPreferredLanguageList
 
 ```TypeScript
@@ -215,11 +223,9 @@ static getPreferredLanguageList(): Array<string>
 
 获取系统偏好语言列表。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static getPreferredLanguageList(): Array<string>--><!--Device-System-static getPreferredLanguageList(): Array<string>-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -227,7 +233,7 @@ static getPreferredLanguageList(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | 系统偏好语言列表。 |
+| Array & lt;string & gt; | 系统偏好语言列表。 |
 
 **示例**
 
@@ -235,6 +241,12 @@ static getPreferredLanguageList(): Array<string>
 import { i18n } from '@kit.LocalizationKit';
 
 let preferredLanguageList: Array<string> = i18n.System.getPreferredLanguageList();
+```
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let preferredLanguageList: Array<string> = i18n.getPreferredLanguageList();
 ```
 
 ## getSimplifiedLanguage
@@ -245,11 +257,9 @@ static getSimplifiedLanguage(language?: string): string
 
 获取语言的简化表示。例如：'en-Latn-US'的简化表示为'en'，'en-Latn-GB'的简化表示为'en-GB'。
 
-**起始版本：** 23
+**起始版本：** 15
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static getSimplifiedLanguage(language?: string): string--><!--Device-System-static getSimplifiedLanguage(language?: string): string-End-->
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -263,7 +273,7 @@ static getSimplifiedLanguage(language?: string): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 不传入language时，会根据系统语言和地区判断是否存在系统支持的方言，若存在则返回方言的简化表示；若不存在，则返回系统语言的简化表示。 <br>传入language时，返回language的简化表示。 |
+| string | 不传入language时，会根据系统语言和地区判断是否存在系统支持的方言，若存在则返回方言的简化表示；若不存在，则返回系统语言的简化表示。 |
 
 **错误码：**
 
@@ -297,11 +307,9 @@ static getSystemCountries(language: string): Array<string>
 
 获取输入语言下系统支持的国家地区列表。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static getSystemCountries(language: string): Array<string>--><!--Device-System-static getSystemCountries(language: string): Array<string>-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -315,7 +323,7 @@ static getSystemCountries(language: string): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | language参数指定的语言下，系统支持的国家/地区列表。 |
+| Array & lt;string & gt; | language参数指定的语言下，系统支持的国家/地区列表。 |
 
 **错误码：**
 
@@ -345,15 +353,13 @@ try {
 static getSystemLanguage(): string
 ```
 
-获取系统当前设置的语言。若要监听系统语言变化，可以监听 [公共事件](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed) OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED，具体可参考 [系统语言与区域](../../../internationalization/i18n-system-language-region.md#开发步骤)。
+获取系统当前设置的语言。若要监听系统语言变化，可以监听 [公共事件](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-commoneventmanager-support-e.md#common_event_locale_changed) OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED，具体可参考 [系统语言与区域](../../../internationalization/i18n-system-language-region.md#开发步骤)。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-System-static getSystemLanguage(): string--><!--Device-System-static getSystemLanguage(): string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -371,6 +377,12 @@ import { i18n } from '@kit.LocalizationKit';
 let systemLanguage: string = i18n.System.getSystemLanguage(); // 如果系统语言为简体中文，systemLanguage = 'zh-Hans'
 ```
 
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let systemLanguage: string = i18n.getSystemLanguage();
+```
+
 ## getSystemLanguages
 
 ```TypeScript
@@ -379,11 +391,9 @@ static getSystemLanguages(): Array<string>
 
 获取系统支持的语言列表。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static getSystemLanguages(): Array<string>--><!--Device-System-static getSystemLanguages(): Array<string>-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -391,7 +401,7 @@ static getSystemLanguages(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | 系统支持的语言列表。 |
+| Array & lt;string & gt; | 系统支持的语言列表。 |
 
 **示例**
 
@@ -408,17 +418,17 @@ let systemLanguages: Array<string> = i18n.System.getSystemLanguages();
 static getSystemLocale(): string
 ```
 
-> [System.getSystemLocaleInstance](../../apis-na/arkts-apis/arkts-na-i18n-system-c.md#getsystemlocaleinstance)代替。 > 获取系统当前设置的区域。
+
+> [System.getSystemLocaleInstance](#getsystemlocaleinstance)代替。
+> 获取系统当前设置的区域。
 
 **起始版本：** 9
 
 **废弃版本：** 20
 
-**替代接口：** [getSystemLocaleInstance](../../apis-na/arkts-apis/arkts-na-i18n-system-c.md#getsystemlocaleinstance)
+**替代接口：** [getSystemLocaleInstance](#getsystemlocaleinstance)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static getSystemLocale(): string--><!--Device-System-static getSystemLocale(): string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -436,19 +446,23 @@ import { i18n } from '@kit.LocalizationKit';
 let systemLocale: string = i18n.System.getSystemLocale(); // 如果系统语言为简体中文、地区为中国，systemLocale = 'zh-Hans-CN'
 ```
 
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let locale: string = i18n.getSystemLocale();
+```
+
 ## getSystemLocaleInstance
 
 ```TypeScript
 static getSystemLocaleInstance(): Intl.Locale
 ```
 
-获取系统当前设置的区域对象。若要监听系统区域变化，可以监听 [公共事件](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed) OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED，具体可参考 [系统语言与区域](../../../internationalization/i18n-system-language-region.md#开发步骤)。
+获取系统当前设置的区域对象。若要监听系统区域变化，可以监听 [公共事件](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-commoneventmanager-support-e.md#common_event_locale_changed) OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED，具体可参考 [系统语言与区域](../../../internationalization/i18n-system-language-region.md#开发步骤)。
 
-**起始版本：** 23
+**起始版本：** 20
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static getSystemLocaleInstance(): Intl.Locale--><!--Device-System-static getSystemLocaleInstance(): Intl.Locale-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -456,7 +470,7 @@ static getSystemLocaleInstance(): Intl.Locale
 
 | 类型 | 说明 |
 | --- | --- |
-| Intl.Locale | the locale object currently used by the system. |
+| Intl.Locale | 系统区域对象。 |
 
 **示例**
 
@@ -472,13 +486,11 @@ let systemLocale: Intl.Locale = i18n.System.getSystemLocaleInstance();
 static getSystemRegion(): string
 ```
 
-获取系统当前设置的国家地区。若要监听系统地区变化，可以监听 [公共事件](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed) OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED，具体可参考 [系统语言与区域](../../../internationalization/i18n-system-language-region.md#开发步骤)。
+获取系统当前设置的国家地区。若要监听系统地区变化，可以监听 [公共事件](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-commoneventmanager-support-e.md#common_event_locale_changed) OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED，具体可参考 [系统语言与区域](../../../internationalization/i18n-system-language-region.md#开发步骤)。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static getSystemRegion(): string--><!--Device-System-static getSystemRegion(): string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -496,6 +508,12 @@ import { i18n } from '@kit.LocalizationKit';
 let systemRegion: string = i18n.System.getSystemRegion(); // 如果系统地区为中国，systemRegion = 'CN'
 ```
 
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let region: string = i18n.getSystemRegion();
+```
+
 ## getTemperatureName
 
 ```TypeScript
@@ -504,11 +522,9 @@ static getTemperatureName(type: TemperatureType): string
 
 获取温度单位的名称。
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static getTemperatureName(type: TemperatureType): string--><!--Device-System-static getTemperatureName(type: TemperatureType): string-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -516,7 +532,7 @@ static getTemperatureName(type: TemperatureType): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [TemperatureType](../../apis-na/arkts-apis/arkts-na-i18n-temperaturetype-e.md) | 是 | 温度单位。 |
+| type | [TemperatureType](arkts-localization-i18n-temperaturetype-e.md) | 是 | 温度单位。 |
 
 **返回值：**
 
@@ -553,11 +569,9 @@ static getTemperatureType(): TemperatureType
 
 获取系统设置的温度单位。
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static getTemperatureType(): TemperatureType--><!--Device-System-static getTemperatureType(): TemperatureType-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -565,7 +579,7 @@ static getTemperatureType(): TemperatureType
 
 | 类型 | 说明 |
 | --- | --- |
-| [TemperatureType](../../apis-na/arkts-apis/arkts-na-i18n-temperaturetype-e.md) | 温度单位。 |
+| [TemperatureType](arkts-localization-i18n-temperaturetype-e.md) | 温度单位。 |
 
 **示例**
 
@@ -583,11 +597,9 @@ static getUsingLocalDigit(): boolean
 
 判断系统是否使用本地数字。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static getUsingLocalDigit(): boolean--><!--Device-System-static getUsingLocalDigit(): boolean-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -611,15 +623,13 @@ let usingLocalDigit: boolean = i18n.System.getUsingLocalDigit();
 static is24HourClock(): boolean
 ```
 
-判断系统时制是否为24小时制。若要监听系统时制变化，可以监听 [公共事件](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_time_changed) OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_TIME_CHANGED，具体可参考 [用户偏好](../../../internationalization/i18n-user-preferences.md#开发步骤)。
+判断系统时制是否为24小时制。若要监听系统时制变化，可以监听 [公共事件](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-commoneventmanager-support-e.md#common_event_time_changed) OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_TIME_CHANGED，具体可参考 [用户偏好](../../../internationalization/i18n-user-preferences.md#开发步骤)。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-System-static is24HourClock(): boolean--><!--Device-System-static is24HourClock(): boolean-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -637,6 +647,12 @@ import { i18n } from '@kit.LocalizationKit';
 let is24HourClock: boolean = i18n.System.is24HourClock(); // 如果系统时制是24小时制，is24HourClock = true
 ```
 
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let is24HourClock: boolean = i18n.is24HourClock();
+```
+
 ## isSuggested
 
 ```TypeScript
@@ -645,11 +661,9 @@ static isSuggested(language: string, region?: string): boolean
 
 判断语言是否是地区的推荐语言。用于根据地区推荐语言或根据语言推荐地区。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static isSuggested(language: string, region?: string): boolean--><!--Device-System-static isSuggested(language: string, region?: string): boolean-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -658,7 +672,7 @@ static isSuggested(language: string, region?: string): boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | language | string | 是 | [合法的语言ID](../../../internationalization/i18n-locale-culture.md#实现原理)，例如zh。 |
-| region | string | 否 | [合法的国家地区码](../../../internationalization/i18n-locale-culture.md#实现原理)，例如CN。 <br>默认值：SIM卡国家地区。 |
+| region | string | 否 | [合法的国家地区码](../../../internationalization/i18n-locale-culture.md#实现原理)，例如CN。 默认值：SIM卡国家地区。 |
 
 **返回值：**
 
@@ -696,11 +710,9 @@ static setAppPreferredLanguage(language: string): void
 
 设置应用偏好语言。设置后，应用将优先加载应用偏好语言对应的资源。设置偏好语言为'default'后，应用语言将跟随系统语言，应用冷启动生效。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-System-static setAppPreferredLanguage(language: string): void--><!--Device-System-static setAppPreferredLanguage(language: string): void-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -730,4 +742,3 @@ try {
   console.error(`call System.setAppPreferredLanguage failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
-

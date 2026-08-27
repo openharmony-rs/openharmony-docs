@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
-import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
 ## abortSession
@@ -19,8 +18,6 @@ abortSession终止密钥操作。使用callback异步回调。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-huks-function abortSession(handle: number, options: HuksOptions, callback: AsyncCallback<void>): void--><!--Device-huks-function abortSession(handle: number, options: HuksOptions, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **参数：**
@@ -29,7 +26,7 @@ abortSession终止密钥操作。使用callback异步回调。
 | --- | --- | --- | --- |
 | handle | number | 是 | abortSession操作的uint64类型的handle值。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | abortSession操作的参数集合。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当密钥操作abort成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当密钥操作abort成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -37,15 +34,15 @@ abortSession终止密钥操作。使用callback异步回调。
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
-| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine or UKey driver |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
 | [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
-| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | the provider operation failed<br>**适用版本：** 22+ |
-| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
-| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine or UKey driver |
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
-| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | the provider operation failed<br>**适用版本：** 22+ |
 | [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy<br>**适用版本：** 22+ |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
+| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
 
 **示例**
 
@@ -60,7 +57,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
  * 以下以RSA密钥的callback功能使用为例
  */
 
-let keyAlias = "HuksDemoRSA";
+let keyAlias = 'HuksDemoRSA';
 let properties: Array<huks.HuksParam> = []
 let options: huks.HuksOptions = {
   properties: properties,
@@ -436,8 +433,6 @@ abortSession终止密钥操作。使用Promise异步回调。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-huks-function abortSession(handle: number, options: HuksOptions): Promise<void>--><!--Device-huks-function abortSession(handle: number, options: HuksOptions): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
@@ -451,7 +446,7 @@ abortSession终止密钥操作。使用Promise异步回调。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -459,15 +454,15 @@ abortSession终止密钥操作。使用Promise异步回调。
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
-| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine or UKey driver |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
 | [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
-| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | the provider operation failed<br>**适用版本：** 22+ |
-| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
-| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine or UKey driver |
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
-| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | the provider operation failed<br>**适用版本：** 22+ |
 | [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy<br>**适用版本：** 22+ |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
+| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
 
 **示例**
 
@@ -479,7 +474,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
  *
  * 以下以RSA密钥的promise功能使用为例
  */
-let keyAlias = "HuksDemoRSA";
+let keyAlias = 'HuksDemoRSA';
 let genProperties: Array<huks.HuksParam> = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_RSA
@@ -538,4 +533,3 @@ async function testAbort() {
   await huksAbort();
 }
 ```
-

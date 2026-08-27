@@ -8,15 +8,12 @@
 
 **替代接口：** [ActionButton](arkts-backgroundtasks-reminderagentmanager-actionbutton-i.md)
 
-<!--Device-reminderAgent-interface ActionButton--><!--Device-reminderAgent-interface ActionButton-End-->
-
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 ## 导入模块
 
 ```TypeScript
 import { reminderAgent } from '@kit.BackgroundTasksKit';
-import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
 ## title
@@ -34,8 +31,6 @@ title: string
 **废弃版本：** 9
 
 **替代接口：** title
-
-<!--Device-ActionButton-title: string--><!--Device-ActionButton-title: string-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -55,7 +50,4 @@ type: ActionButtonType
 
 **替代接口：** type
 
-<!--Device-ActionButton-type: ActionButtonType--><!--Device-ActionButton-type: ActionButtonType-End-->
-
 **系统能力：** SystemCapability.Notification.ReminderAgent
-

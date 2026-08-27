@@ -18,8 +18,6 @@ function isAppKioskAllowed(appIdentifier: string): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-applicationManager-function isAppKioskAllowed(appIdentifier: string): boolean--><!--Device-applicationManager-function isAppKioskAllowed(appIdentifier: string): boolean-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
@@ -47,4 +45,3 @@ try {
   console.error(`Failed to query if the app is allowed kiosk. Code is ${err.code}, message is ${err.message}`);
 }
 ```
-

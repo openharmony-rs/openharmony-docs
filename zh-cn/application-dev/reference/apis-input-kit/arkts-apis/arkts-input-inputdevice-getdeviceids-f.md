@@ -3,8 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { inputDevice } from '@kit.InputKit';
-import { inputDeviceCooperate } from '@kit.InputKit';
 ```
 
 ## getDeviceIds
@@ -13,7 +11,9 @@ import { inputDeviceCooperate } from '@kit.InputKit';
 function getDeviceIds(callback: AsyncCallback<Array<number>>): void
 ```
 
-获取所有输入设备的ID列表，使用callback异步回调。 > **说明：**
+获取所有输入设备的ID列表，使用callback异步回调。
+
+> **说明：**
 
 **起始版本：** 8
 
@@ -21,15 +21,13 @@ function getDeviceIds(callback: AsyncCallback<Array<number>>): void
 
 **替代接口：** [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md)
 
-<!--Device-inputDevice-function getDeviceIds(callback: AsyncCallback<Array<number>>): void--><!--Device-inputDevice-function getDeviceIds(callback: AsyncCallback<Array<number>>): void-End-->
-
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;number&gt;&gt; | 是 | 回调函数。当获取成功，err为undefined，data为所有输入设备的ID列表；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 回调函数。当获取成功，err为undefined，data为所有输入设备的ID列表；否则为错误对象。 |
 
 **示例**
 
@@ -65,7 +63,9 @@ struct Index {
 function getDeviceIds(): Promise<Array<number>>
 ```
 
-获取所有输入设备的ID列表，使用Promise异步回调。 > **说明：**
+获取所有输入设备的ID列表，使用Promise异步回调。
+
+> **说明：**
 
 **起始版本：** 8
 
@@ -73,15 +73,13 @@ function getDeviceIds(): Promise<Array<number>>
 
 **替代接口：** [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md)
 
-<!--Device-inputDevice-function getDeviceIds(): Promise<Array<number>>--><!--Device-inputDevice-function getDeviceIds(): Promise<Array<number>>-End-->
-
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回所有输入设备的ID列表。ID是输入设备的唯一标识。 |
+| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，返回所有输入设备的ID列表。ID是输入设备的唯一标识。 |
 
 **示例**
 
@@ -107,4 +105,3 @@ struct Index {
   }
 }
 ```
-

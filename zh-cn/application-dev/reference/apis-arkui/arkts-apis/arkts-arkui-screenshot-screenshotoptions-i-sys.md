@@ -2,9 +2,7 @@
 
 设置截取图像的信息。
 
-**起始版本：** 23
-
-<!--Device-screenshot-interface ScreenshotOptions--><!--Device-screenshot-interface ScreenshotOptions-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -19,16 +17,14 @@ import { screenshot } from '@kit.ArkUI';
 ## displayId
 
 ```TypeScript
-displayId?: long
+displayId?: number
 ```
 
 表示截取图像的显示设备[Display](arkts-arkui-display-displaystate-e.md)的ID号，该参数应为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ScreenshotOptions-displayId?: long--><!--Device-ScreenshotOptions-displayId?: long-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -44,9 +40,7 @@ imageSize?: Size
 
 **类型：** Size
 
-**起始版本：** 23
-
-<!--Device-ScreenshotOptions-imageSize?: Size--><!--Device-ScreenshotOptions-imageSize?: Size-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -62,9 +56,7 @@ isCaptureFullOfScreen?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-ScreenshotOptions-isCaptureFullOfScreen?: boolean--><!--Device-ScreenshotOptions-isCaptureFullOfScreen?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -80,9 +72,7 @@ isNotificationNeeded?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-ScreenshotOptions-isNotificationNeeded?: boolean--><!--Device-ScreenshotOptions-isNotificationNeeded?: boolean-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -91,16 +81,14 @@ isNotificationNeeded?: boolean
 ## rotation
 
 ```TypeScript
-rotation?: int
+rotation?: number
 ```
 
 表示截取图像后要旋转的角度，当前仅支持输入值为0，默认值为0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ScreenshotOptions-rotation?: int--><!--Device-ScreenshotOptions-rotation?: int-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -116,11 +104,8 @@ screenRect?: Rect
 
 **类型：** Rect
 
-**起始版本：** 23
-
-<!--Device-ScreenshotOptions-screenRect?: Rect--><!--Device-ScreenshotOptions-screenRect?: Rect-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
-

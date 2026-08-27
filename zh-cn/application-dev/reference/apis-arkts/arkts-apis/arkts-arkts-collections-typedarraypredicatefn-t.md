@@ -11,8 +11,6 @@ ArkTS TypedArray断言函数类型，被TypedArray类的'some'、'every'、'filt
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-collections-type TypedArrayPredicateFn<ElementType, ArrayType> =    (value: ElementType, index: number, array: ArrayType) => boolean--><!--Device-collections-type TypedArrayPredicateFn<ElementType, ArrayType> =    (value: ElementType, index: number, array: ArrayType) => boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -28,4 +26,3 @@ ArkTS TypedArray断言函数类型，被TypedArray类的'some'、'every'、'filt
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 断言函数的结果，该结果作为判断当前元素是否通过测试条件。为true时表示当前元素已满足测试条件，为false时表示当前元素不满足测试条件。 |
-

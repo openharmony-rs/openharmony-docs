@@ -1,10 +1,8 @@
 # WidthBreakpoint
 
-Type of window width breakpoint.
+Type of window width breakpoint.@enum { number }
 
 **起始版本：** 22
-
-<!--Device-unnamed-declare enum WidthBreakpoint--><!--Device-unnamed-declare enum WidthBreakpoint-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,8 +20,6 @@ Window width &lt; 320vp type.
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WidthBreakpoint-WIDTH_XS = 0--><!--Device-WidthBreakpoint-WIDTH_XS = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## WIDTH_SM
@@ -32,15 +28,13 @@ Window width &lt; 320vp type.
 WIDTH_SM = 1
 ```
 
-Window width >= 320vp and &lt; 600vp type.
+Window width &gt;= 320vp and &lt; 600vp type.
 
 **起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WidthBreakpoint-WIDTH_SM = 1--><!--Device-WidthBreakpoint-WIDTH_SM = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,15 +44,13 @@ Window width >= 320vp and &lt; 600vp type.
 WIDTH_MD = 2
 ```
 
-Window width >= 600vp and &lt; 840vp type.
+Window width &gt;= 600vp and &lt; 840vp type.
 
 **起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WidthBreakpoint-WIDTH_MD = 2--><!--Device-WidthBreakpoint-WIDTH_MD = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,15 +60,13 @@ Window width >= 600vp and &lt; 840vp type.
 WIDTH_LG = 3
 ```
 
-Window width >= 840vp and &lt; 1440vp type.
+Window width &gt;= 840vp and &lt; 1440vp type.
 
 **起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WidthBreakpoint-WIDTH_LG = 3--><!--Device-WidthBreakpoint-WIDTH_LG = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,7 +76,7 @@ Window width >= 840vp and &lt; 1440vp type.
 WIDTH_XL = 4
 ```
 
-Window width >= 1440vp type.
+Window width &gt;= 1440vp type.
 
 **起始版本：** 22
 
@@ -94,7 +84,4 @@ Window width >= 1440vp type.
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WidthBreakpoint-WIDTH_XL = 4--><!--Device-WidthBreakpoint-WIDTH_XL = 4-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

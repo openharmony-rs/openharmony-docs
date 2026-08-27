@@ -2,9 +2,7 @@
 
 段落风格的文本制表符，储存了对齐方式和位置。
 
-**起始版本：** 23
-
-<!--Device-text-interface TextTab--><!--Device-text-interface TextTab-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -24,29 +22,28 @@ alignment: TextAlign
 
 **类型：** TextAlign
 
-**起始版本：** 23
+**起始版本：** 18
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextTab-alignment: TextAlign--><!--Device-TextTab-alignment: TextAlign-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## location
 
 ```TypeScript
-location: double
+location: number
 ```
 
 制表符之后的文本对齐位置，浮点数，单位为物理像素px，最小值为1.0，当该值小于1.0时，该制表符会被替换为一个空格。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 18
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextTab-location: double--><!--Device-TextTab-location: double-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**示例**
+
+alignment为CENTER，location为200，文本为"12/t345"：

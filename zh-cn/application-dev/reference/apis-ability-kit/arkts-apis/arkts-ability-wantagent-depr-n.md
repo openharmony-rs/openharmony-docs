@@ -8,8 +8,6 @@ WantAgent模块提供了创建WantAgent实例、获取实例的用户ID、获取
 
 **替代接口：** [wantAgent/wantAgent](arkts-ability-wantagent-n.md)
 
-<!--Device-unnamed-declare namespace wantAgent--><!--Device-unnamed-declare namespace wantAgent-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## 导入模块
@@ -56,4 +54,3 @@ WantAgent模块提供了创建WantAgent实例、获取实例的用户ID、获取
 | --- | --- |
 | [WantAgentFlags](arkts-ability-wantagent-wantagentflags-depr-e.md) | 表示WantAgent行为控制标志，用于配置WantAgent的创建和触发行为。 |
 | [OperationType](arkts-ability-wantagent-operationtype-depr-e.md) | 表示WantAgent支持的操作类型。 |
-

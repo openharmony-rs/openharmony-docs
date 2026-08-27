@@ -1,4 +1,4 @@
-# 使用分布式媒体会话(仅对系统应用开放)
+# 使用分布式媒体会话（仅对系统应用开放）
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @devil_red-->
@@ -16,7 +16,7 @@
 
 使用分布式媒体会话进行远端投播时使用的关键接口如下表所示。接口返回值有两种返回形式：callback和promise，下表中为callback形式接口，promise和callback只是返回值方式不一样，功能相同。
 
-更多API说明请参考文档：[模块描述/apis-avsession-kit/arkts-apis-avsession.md)。
+更多API说明请参考文档：模块描述。
 
 | 接口名 | 说明 | 
 | -------- | -------- |
@@ -33,7 +33,7 @@
    import { audio } from '@kit.AudioKit';
    ```
 
-2. 通过AVSessionManager的castAudio接口将当前设备所有会话投播到其他设备。
+2. 通过AVSessionManager的castAudio接口将当前设备所有会话投播到获取的设备列表。
      
    ```ts
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -41,25 +41,20 @@
    import { BusinessError } from '@kit.BasicServicesKit';
 
    async function castAudio() {
-     // 投播到其他设备。
      let audioManager = audio.getAudioManager();
      let audioRoutingManager = audioManager.getRoutingManager();
-     let audioDevices: audio.AudioDeviceDescriptors | undefined = undefined;
-     audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data) => {
-       audioDevices = data;
+     try {
+       let audioDevices = await audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
        console.info(`Promise returned to indicate that the device list is obtained.`);
-     }).catch((err: BusinessError) => {
-       console.error(`Failed to get devices. Code: ${err.code}, message: ${err.message}`);
-     });
-     if (audioDevices !== undefined) {
-       AVSessionManager.castAudio('all', audioDevices as audio.AudioDeviceDescriptors).then(() => {
-         console.info(`createController : SUCCESS`);
-       }).catch((err: BusinessError) => {
-         console.error(`Failed to cast audio. Code: ${err.code}, message: ${err.message}`);
-       });
+       if (audioDevices !== undefined) {
+         await AVSessionManager.castAudio('all', audioDevices);
+         console.info(`castAudio : SUCCESS`);
+       }
+     } catch (err) {
+       let error = err as BusinessError;
+       console.error(`Failed to get devices or cast audio. Code: ${error.code}, message: ${error.message}`);
      }
    }
-
    ```
 
    系统应用在投播主控端发起投播后，媒体会话框架会通知远端设备的AVSession服务创建远端媒体会话。投播主控端的媒体会话变化时（例如媒体信息变化、播放状态变化等），媒体会话框架会自动同步变化到远端设备。

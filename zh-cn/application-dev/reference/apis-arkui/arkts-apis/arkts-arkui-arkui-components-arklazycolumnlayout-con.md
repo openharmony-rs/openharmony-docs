@@ -14,8 +14,6 @@ export declare const LazyColumnLayout: LazyColumnLayoutInterface
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-export declare const LazyColumnLayout: LazyColumnLayoutInterface--><!--Device-unnamed-export declare const LazyColumnLayout: LazyColumnLayoutInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LazyColumnLayoutInstance
@@ -32,7 +30,4 @@ export declare const LazyColumnLayoutInstance: LazyColumnLayoutAttribute
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-export declare const LazyColumnLayoutInstance: LazyColumnLayoutAttribute--><!--Device-unnamed-export declare const LazyColumnLayoutInstance: LazyColumnLayoutAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

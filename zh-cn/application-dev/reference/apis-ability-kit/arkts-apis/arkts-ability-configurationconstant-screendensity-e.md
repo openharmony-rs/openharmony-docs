@@ -1,10 +1,8 @@
 # ScreenDensity
 
-表示屏幕像素密度的枚举，用于[Configuration.screenDensity](arkts-ability-app-ability-configuration-configuration-i.md)字段。开发者可以使用这些预置枚举设置或 获取屏幕的像素密度。 字体显示大小与屏幕像素密度呈正相关关系。通过监听屏幕像素密度变化，可以感知字体显示大小的调整。通常情况下，对于相同的物理尺寸，屏幕像素密度越高，字体显示效果越大。
+表示屏幕像素密度的枚举，用于[Configuration.screenDensity](arkts-ability-app-ability-configuration-configuration-i.md)字段。开发者可以使用这些预置枚举设置或 获取屏幕的像素密度。字体显示大小与屏幕像素密度呈正相关关系。通过监听屏幕像素密度变化，可以感知字体显示大小的调整。通常情况下，对于相同的物理尺寸，屏幕像素密度越高，字体显示效果越大。
 
-**起始版本：** 23
-
-<!--Device-ConfigurationConstant-export enum ScreenDensity--><!--Device-ConfigurationConstant-export enum ScreenDensity-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -16,11 +14,9 @@ SCREEN_DENSITY_NOT_SET = 0
 
 表示未设置屏幕像素密度。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ScreenDensity-SCREEN_DENSITY_NOT_SET = 0--><!--Device-ScreenDensity-SCREEN_DENSITY_NOT_SET = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -32,11 +28,9 @@ SCREEN_DENSITY_SDPI = 120
 
 表示屏幕像素密度为'SDPI'。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ScreenDensity-SCREEN_DENSITY_SDPI = 120--><!--Device-ScreenDensity-SCREEN_DENSITY_SDPI = 120-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -48,11 +42,9 @@ SCREEN_DENSITY_MDPI = 160
 
 表示屏幕像素密度为'MDPI'。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ScreenDensity-SCREEN_DENSITY_MDPI = 160--><!--Device-ScreenDensity-SCREEN_DENSITY_MDPI = 160-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -64,11 +56,9 @@ SCREEN_DENSITY_LDPI = 240
 
 表示屏幕像素密度为'LDPI'。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ScreenDensity-SCREEN_DENSITY_LDPI = 240--><!--Device-ScreenDensity-SCREEN_DENSITY_LDPI = 240-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -80,11 +70,9 @@ SCREEN_DENSITY_XLDPI = 320
 
 表示屏幕像素密度为'XLDPI'。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ScreenDensity-SCREEN_DENSITY_XLDPI = 320--><!--Device-ScreenDensity-SCREEN_DENSITY_XLDPI = 320-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -96,11 +84,9 @@ SCREEN_DENSITY_XXLDPI = 480
 
 表示屏幕像素密度为'XXLDPI'。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ScreenDensity-SCREEN_DENSITY_XXLDPI = 480--><!--Device-ScreenDensity-SCREEN_DENSITY_XXLDPI = 480-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -112,11 +98,8 @@ SCREEN_DENSITY_XXXLDPI = 640
 
 表示屏幕像素密度为'XXXLDPI'。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ScreenDensity-SCREEN_DENSITY_XXXLDPI = 640--><!--Device-ScreenDensity-SCREEN_DENSITY_XXXLDPI = 640-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityBase
-

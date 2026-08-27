@@ -20,15 +20,13 @@ function selectContact(callback: AsyncCallback<Array<Contact>>): void
 
 **替代接口：** [selectContacts](arkts-contacts-contact-selectcontacts-f.md)(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
-<!--Device-contact-function selectContact(callback: AsyncCallback<Array<Contact>>): void--><!--Device-contact-function selectContact(callback: AsyncCallback<Array<Contact>>): void-End-->
-
 **系统能力：** SystemCapability.Applications.Contacts
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt;&gt; | 是 | 回调函数。成功返回选择的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt;&gt; | 是 | 回调函数。成功返回选择的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例**
 
@@ -61,8 +59,6 @@ function selectContact(): Promise<Array<Contact>>
 
 **替代接口：** [selectContacts](arkts-contacts-contact-selectcontacts-f.md)()
 
-<!--Device-contact-function selectContact(): Promise<Array<Contact>>--><!--Device-contact-function selectContact(): Promise<Array<Contact>>-End-->
-
 **系统能力：** SystemCapability.Applications.Contacts
 
 **返回值：**
@@ -82,4 +78,3 @@ promise.then((data) => {
   console.info(`Succeeded in selecting Contact. data->${JSON.stringify(data)}`);
 });
 ```
-

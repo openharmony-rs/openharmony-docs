@@ -16,8 +16,6 @@ function constructTLSSocketServerInstance(): TLSSocketServer
 
 **起始版本：** 10
 
-<!--Device-socket-function constructTLSSocketServerInstance(): TLSSocketServer--><!--Device-socket-function constructTLSSocketServerInstance(): TLSSocketServer-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 **返回值：**
@@ -34,4 +32,3 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
 ```
-

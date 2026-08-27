@@ -1,10 +1,8 @@
 # @ohos.wifiManagerExt
 
-提供WLAN扩展接口，供非通用类型产品使用。 &lt;p&gt;本文件涉及的接口为非通用接口。这些扩展接口仅供部分产品类型使用，例如路由器。普通产品不应使用这些接口。&lt;/p&gt;
+提供WLAN扩展接口，供非通用类型产品使用。<p>本文件涉及的接口为非通用接口。这些扩展接口仅供部分产品类型使用，例如路由器。普通产品不应使用这些接口。</p>@namespace wifiManagerExt
 
 **起始版本：** 9
-
-<!--Device-unnamed-declare namespace wifiManagerExt--><!--Device-unnamed-declare namespace wifiManagerExt-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Extension
 
@@ -32,5 +30,4 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md) | 表示功率模式的枚举。 |
-
+| [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md) | 表示功率模式的枚举。@enum { number } PowerMode |

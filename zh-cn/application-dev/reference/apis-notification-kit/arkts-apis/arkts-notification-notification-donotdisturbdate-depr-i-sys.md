@@ -8,8 +8,6 @@
 
 **替代接口：** [DoNotDisturbDate](arkts-notification-notificationmanager-donotdisturbdate-i-sys.md)
 
-<!--Device-notification-export interface DoNotDisturbDate--><!--Device-notification-export interface DoNotDisturbDate-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -17,9 +15,6 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
-import { notificationSubscribe } from '@kit.NotificationKit';
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
 ## begin
@@ -37,8 +32,6 @@ begin: Date
 **废弃版本：** 9
 
 **替代接口：** [begin](arkts-notification-notificationmanager-donotdisturbdate-i-sys.md#begin)
-
-<!--Device-DoNotDisturbDate-begin: Date--><!--Device-DoNotDisturbDate-begin: Date-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -60,8 +53,6 @@ end: Date
 
 **替代接口：** [end](arkts-notification-notificationmanager-donotdisturbdate-i-sys.md#end)
 
-<!--Device-DoNotDisturbDate-end: Date--><!--Device-DoNotDisturbDate-end: Date-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -82,9 +73,6 @@ type: DoNotDisturbType
 
 **替代接口：** [type](arkts-notification-notificationmanager-donotdisturbdate-i-sys.md#type)
 
-<!--Device-DoNotDisturbDate-type: DoNotDisturbType--><!--Device-DoNotDisturbDate-type: DoNotDisturbType-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
-

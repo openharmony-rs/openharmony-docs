@@ -13,4 +13,3 @@
 | 名称 | 说明 |
 | --- | --- |
 | [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md) | 当监听到Ability时调用此回调。 |
-

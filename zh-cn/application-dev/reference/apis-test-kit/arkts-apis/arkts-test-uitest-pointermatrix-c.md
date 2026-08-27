@@ -2,32 +2,27 @@
 
 存储多指操作中每根手指每一步动作的坐标点及其行为的二维数组。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare class PointerMatrix--><!--Device-unnamed-declare class PointerMatrix-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Test.UiTest
 
 ## 导入模块
 
 ```TypeScript
-import { Component, DisplayRotation, Driver, MatchPattern, MouseButton, ON, On, PointerMatrix, ResizeDirection, UIElementInfo, UIEventObserver, UiDirection, UiWindow, WindowMode, Point, WindowFilter, Rect, TouchPadSwipeOptions, InputTextMode, WindowChangeType, ComponentEventType, WindowChangeOptions, ComponentEventOptions, TouchOptions, KeyOptions, PenKey, PenMode, PenKeyOperation, PenKeyOperationOptions } from '@kit.TestKit';
 import { UiComponent, UiDriver, BY, By } from '@kit.TestKit';
 ```
 
 ## create
 
 ```TypeScript
-static create(fingers: int, steps: int): PointerMatrix
+static create(fingers: number, steps: number): PointerMatrix
 ```
 
 静态方法，构造一个PointerMatrix对象，并返回该对象。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PointerMatrix-static create(fingers: int, steps: int): PointerMatrix--><!--Device-PointerMatrix-static create(fingers: int, steps: int): PointerMatrix-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -35,8 +30,8 @@ static create(fingers: int, steps: int): PointerMatrix
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fingers | int | 是 | 多指操作中注入的手指数，取值范围：[1,10]的整数。 |
-| steps | int | 是 | 每根手指操作的步骤数，取值范围：[1,1000]的整数。 |
+| fingers | number | 是 | 多指操作中注入的手指数，取值范围：[1,10]的整数。 |
+| steps | number | 是 | 每根手指操作的步骤数，取值范围：[1,1000]的整数。 |
 
 **返回值：**
 
@@ -64,16 +59,14 @@ async function demo() {
 ## setPoint
 
 ```TypeScript
-setPoint(finger: int, step: int, point: Point): void
+setPoint(finger: number, step: number, point: Point): void
 ```
 
 设置PointerMatrix对象中指定手指和步骤对应动作的坐标点。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PointerMatrix-setPoint(finger: int, step: int, point: Point): void--><!--Device-PointerMatrix-setPoint(finger: int, step: int, point: Point): void-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -81,8 +74,8 @@ setPoint(finger: int, step: int, point: Point): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| finger | int | 是 | 手指的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的手指数。 |
-| step | int | 是 | 步骤的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的操作的步骤数。 |
+| finger | number | 是 | 手指的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的手指数。 |
+| step | number | 是 | 步骤的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的操作的步骤数。 |
 | point | [Point](arkts-test-uitest-point-i.md) | 是 | 该行为的坐标点。建议相邻的坐标点距离在10px至80px范围内。 |
 
 **错误码：**
@@ -111,4 +104,3 @@ async function demo() {
   pointers.setPoint(1, 4, { x: 250, y: 320 });
 }
 ```
-

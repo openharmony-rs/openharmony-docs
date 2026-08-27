@@ -19,8 +19,6 @@ declare function renameSync(oldPath: string, newPath: string): void
 
 **替代接口：** [renameSync](arkts-corefile-file-fs-renamesync-f.md)
 
-<!--Device-unnamed-declare function renameSync(oldPath: string, newPath: string): void--><!--Device-unnamed-declare function renameSync(oldPath: string, newPath: string): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -30,3 +28,10 @@ declare function renameSync(oldPath: string, newPath: string): void
 | oldPath | string | 是 | 目标文件的当前应用沙箱路径。 |
 | newPath | string | 是 | 目标文件的新应用沙箱路径。 |
 
+**示例**
+
+```TypeScript
+let srcFile = pathDir + "/test.txt";
+let dstFile = pathDir + '/new.txt';
+fileio.renameSync(srcFile, dstFile);
+```

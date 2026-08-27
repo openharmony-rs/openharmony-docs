@@ -4,9 +4,7 @@ Portrait: inherits from [PortraitQuery](arkts-camera-camera-portraitquery-i-sys.
 
 **继承/实现关系：** Portrait extends [PortraitQuery](arkts-camera-camera-portraitquery-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-camera-interface Portrait--><!--Device-camera-interface Portrait-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -15,8 +13,6 @@ Portrait: inherits from [PortraitQuery](arkts-camera-camera-portraitquery-i-sys.
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## getPortraitEffect
@@ -27,9 +23,7 @@ getPortraitEffect(): PortraitEffect
 
 Obtains the portrait effect in use.
 
-**起始版本：** 23
-
-<!--Device-Portrait-getPortraitEffect(): PortraitEffect--><!--Device-Portrait-getPortraitEffect(): PortraitEffect-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -65,9 +59,7 @@ setPortraitEffect(effect: PortraitEffect): void
 
 Sets a portrait effect. Before the setting, use [getSupportedPortraitEffects](arkts-camera-camera-portraitquery-i-sys.md#getsupportedportraiteffects) to obtain the supported portrait effects and check whether the target portrait effect is supported.
 
-**起始版本：** 23
-
-<!--Device-Portrait-setPortraitEffect(effect: PortraitEffect): void--><!--Device-Portrait-setPortraitEffect(effect: PortraitEffect): void-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -103,4 +95,3 @@ function setPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession, po
   }
 }
 ```
-

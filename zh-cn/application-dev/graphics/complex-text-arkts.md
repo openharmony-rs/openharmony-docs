@@ -21,7 +21,7 @@
 多语言支持是全球化应用的基础。多语言文本绘制需要支持不同语言的字符集及其独特的显示需求，例如右到左语言（如阿拉伯语）或竖排文本（如中文）。开发者需要理解不同语言的渲染特性，确保文本的正确显示。
 
 
-在多语言文本使用的场景下，主要通过指定[TextStyle/apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)文本样式中的**locale**字段来实现，可直接通过locale字段的值优先匹配对应字体，跳过遍历列表匹配字体的过程，从而降低匹配时间和内存使用。
+在多语言文本使用的场景下，主要通过指定TextStyle文本样式中的**locale**字段来实现，可直接通过locale字段的值优先匹配对应字体，跳过遍历列表匹配字体的过程，从而降低匹配时间和内存使用。
 
 
 ### 开发步骤
@@ -103,7 +103,7 @@
 
 ### 效果展示
 
-![zh-cn_image_0000002246603733](figures/zh-cn_image_0000002246603733.png)
+![Effect](figures/Effect.png)
 
 
 ## 多行文本绘制与显示
@@ -113,7 +113,7 @@
 
 ### 实现说明
 
-**段落样式**（[ParagraphStyle/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)）是对多行文本中每段内容的样式设置，包括断词策略、文本对齐方式、最大行数限制等。开发者可以通过对不同段落进行样式化，以提高文本的可读性和美观性。
+**段落样式**（ParagraphStyle）是对多行文本中每段内容的样式设置，包括断词策略、文本对齐方式、最大行数限制等。开发者可以通过对不同段落进行样式化，以提高文本的可读性和美观性。
 
 
 ### 开发步骤
@@ -167,7 +167,7 @@
 
    <!-- -->
 
-4. 初始化段落对象，并添加占位符和文本。
+4. 初始化段落对象，并添加文本。
 
    <!-- @[arkts_multi_line_text_drawing_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
    
@@ -205,14 +205,14 @@
 
 | 段落样式设置（断词策略、文本对齐方式、最大行数限制） | 效果示意 | 
 | -------- | -------- |
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![zh-cn_image_0000002246563849](figures/zh-cn_image_0000002246563849.png) | 
-| 文本对齐方式为text.TextAlign.RIGHT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![zh-cn_image_0000002211443900](figures/zh-cn_image_0000002211443900.png) | 
-| 文本对齐方式为text.TextAlign.JUSTIFY，最大行数为10，断词策略为text.WordBreak.BREAK_WORD。 | ![zh-cn_image_complexArkTsDemoJustify](figures/zh-cn_image_complexArkTsDemoJustify.png) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_ALL。 | ![zh-cn_image_0000002211603680](figures/zh-cn_image_0000002211603680.png) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_ALL。 | ![zh-cn_image_0000002246563845](figures/zh-cn_image_0000002246563845.png) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>不设置语言偏好。段落无连字符“-”断词效果。 | ![ts_word_break_hyphen_locale_undefined.jpg](figures/ts_word_break_hyphen_locale_undefined.jpg) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-gb（英式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现英式语言环境断词效果。 | ![ts_word_break_hyphen_local_en-gb.jpg](figures/ts_word_break_hyphen_local_en-gb.jpg) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-us（美式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现美式语言环境断词效果。 | ![ts_word_break_hyphen_local_en-us.jpg](figures/ts_word_break_hyphen_local_en-us.jpg) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![BREAK-WORD-LEFT](figures/BREAK-WORD-LEFT.png) | 
+| 文本对齐方式为text.TextAlign.RIGHT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![BREAK-WORD-RIGHT](figures/BREAK-WORD-RIGHT.png) | 
+| 文本对齐方式为text.TextAlign.JUSTIFY，最大行数为10，断词策略为text.WordBreak.BREAK_WORD。 | ![complexArkTsDemoJustify](figures/complexArkTsDemoJustify.png) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_ALL。 | ![BREAK-ALL-LEFT](figures/BREAK-ALL-LEFT.png) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_ALL。 | ![BREAK-ALL-LEFT-10](figures/BREAK-ALL-LEFT-10.png) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>不设置语言偏好。段落无连字符“-”断词效果。 | ![ts-hyphen-locale-undefined.jpg](figures/ts-hyphen-locale-undefined.jpg) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-gb（英式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现英式语言环境断词效果。 | ![ts-hyphen-local-en-gb.jpg](figures/ts-hyphen-local-en-gb.jpg) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-us（美式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现美式语言环境断词效果。 | ![ts-hyphen-local-en-us.jpg](figures/ts-hyphen-local-en-us.jpg) | 
 
 
 ## 多样式文本绘制与显示
@@ -251,39 +251,39 @@
 
 ### 装饰线
 
-装饰线（[Decoration/apis-arkgraphics2d/js-apis-graphics-text.md#decoration)）是指在文本上方、下方或中间添加的装饰性线条，当前支持上划线、下划线、删除线。
+装饰线（Decoration）是指在文本上方、下方或中间添加的装饰性线条，当前支持上划线、下划线、删除线。
 
 可以通过添加文本装饰线，提升文本的视觉效果和可读性。
 
 使用装饰线需要初始化装饰线样式对象，并添加到文本样式中，从而在文本绘制时生效。
 
-具体使用效果可参见下文[示例一](#示例一装饰线字体特征)。
+具体使用效果可参见下文示例一。
 
 ### 字体特征
 
-**字体特征**（[FontFeature/apis-arkgraphics2d/js-apis-graphics-text.md#fontfeature)）绘制专注于在文本渲染过程中对字体特性（如粗体、斜体、字体变种等）的处理，允许字体在不同的排版场景下表现出不同的效果，可用于增强文本的表现力，使其更符合设计和阅读需求。
+**字体特征**（FontFeature）绘制专注于在文本渲染过程中对字体特性（如粗体、斜体、字体变体等）的处理，允许字体在不同的排版场景下表现出不同的效果，可用于增强文本的表现力，使其更符合设计和阅读需求。
 
 常见的**FontFeature**包含有liga、frac、case等，需要对应的ttf文件支持才能正常使能。
 
-具体使用效果可参见下文[示例一](#示例一装饰线字体特征)。
+具体使用效果可参见下文示例一。
 
 ### 可变字体
 
-**可变字体**（[FontVariation/apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)）是一种在一个字体文件中包含多个字形变体的字体格式，允许在一个字体文件内灵活地调整字体的各种属性（如字重、字宽、斜体等）。
+**可变字体**（FontVariation）是一种在一个字体文件中包含多个字形变体的字体格式，允许在一个字体文件内灵活地调整字体的各种属性（如字重、字宽、斜体等）。
 
 与传统字体文件（每种变体需要一个独立的文件）不同，可变字体在一个字体文件中包含多个变体轴，可通过使用可变字体实现文本渲染绘制时的平滑过渡。
 
-具体使用效果可参见下文[示例二](#示例二可变字体文本阴影占位符)。
+具体使用效果可参见下文示例二。
 
 ### 文本阴影
 
-**文本阴影**（[TextShadow/apis-arkgraphics2d/js-apis-graphics-text.md#textshadow)）为文本提供了深度感，使得文本在背景上更具立体感。通常用于提升文本的视觉吸引力或增强可读性，尤其是在色彩对比度较低的场景下。
+**文本阴影**（TextShadow）为文本提供了深度感，使得文本在背景上更具立体感。通常用于提升文本的视觉吸引力或增强可读性，尤其是在色彩对比度较低的场景下。
 
 其中，TextShadow有三个属性，分别为阴影颜色color、阴影基于当前文本的偏移位置point、阴影半径blurRadius。
 
 使用阴影效果需要在文本样式中设置对应的阴影效果数组，从而在文本绘制时生效。
 
-具体使用效果可参见下文[示例二](#示例二可变字体文本阴影占位符)。
+具体使用效果可参见下文示例二。
 
 ### 占位符
 
@@ -291,7 +291,7 @@
 
 占位符也是用来实现图文混排的关键，是指在实际图像或内容注册之前，用来预先提供或替代某个位置的视觉元素。
 
-具体使用效果可参见下文[示例二](#示例二可变字体文本阴影占位符)。
+具体使用效果可参见下文示例二。
 
 ### 自动间距
 
@@ -314,7 +314,7 @@ let myParagraphStyle: text.ParagraphStyle = {
 };
 ```
 
-具体使用效果可参见下文[示例三](#示例三垂直对齐)。
+具体使用效果可参见下文示例三。
 
 ### 上下标
 
@@ -326,15 +326,15 @@ let superScriptStyle: text.TextStyle = {
 };
 ```
 
-具体使用效果可参见下文[示例四](#示例四上下标文本)。
+具体使用效果可参见下文示例四。
 
 ### 高对比度
 
 高对比度可将深色文字变黑、浅色文字变白。开发者可选择开启或关闭应用的高对比度文字渲染，或遵循系统设置中的高对比度文字配置。
 
-高对比度模式有3种，具体参考[TextHighContrast/apis-arkgraphics2d/js-apis-graphics-text.md#texthighcontrast20)。
+高对比度模式有3种，具体参考TextHighContrast。
 
-具体使用效果可参见下文[示例五](#示例五高对比度)。
+具体使用效果可参见下文示例五。
 
 ### 行高调整
 
@@ -353,7 +353,7 @@ let myTextStyle: text.TextStyle = {
 };
 ```
 
-使用效果参考下文[示例六](#示例六行高调整方式一)。
+使用效果参考下文示例六。
 
 **行高调整（方式二）**
 
@@ -370,7 +370,7 @@ let myTextStyle: text.TextStyle = {
 };
 ```
 
-使用效果参考下文[示例七](#示例七行高调整方式二)。
+使用效果参考下文示例七。
 
 ### 行间距调整
 
@@ -385,33 +385,33 @@ let myParagraphStyle: text.ParagraphStyle = {
 };
 ```
 
-具体使用效果可参见下文[示例八](#示例八行间距调整)。
+具体使用效果可参见下文示例八。
 
 ### 省略号样式设置
 
 从API version 22开始，支持设置省略号样式，在文本内容超出显示区域时截断文本。从API version 24开始，支持多行省略模式。
 
-通过[ParagraphStyle/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的textStyle属性设置省略号模式，可选的省略号模式可见[EllipsisMode/apis-arkgraphics2d/js-apis-graphics-text.md#ellipsismode)。
+通过ParagraphStyle中的textStyle属性设置省略号模式，可选的省略号模式可见EllipsisMode。
 
 需要注意，省略号相关属性需要在ParagraphStyle的textStyle中设置才生效，通过pushStyle设置的省略号属性不会生效。
 
-具体使用效果可参见下文[示例九](#示例九省略号样式)。
+具体使用效果可参见下文示例九。
 
 ### 文字换行方式设置
 
 从API version 22开始，支持在文本排版时设置断行策略，断行策略决定了文本如何在行尾进行换行处理。
 
-通过设置[ParagraphStyle/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的breakStrategy属性可以控制断行策略，可选的断行策略可见[BreakStrategy/apis-arkgraphics2d/js-apis-graphics-text.md#breakstrategy)。
+通过设置ParagraphStyle中的breakStrategy属性可以控制断行策略，可选的断行策略可见BreakStrategy。
 
-具体使用效果可参见下文[示例十](#示例十文字换行方式)。
+具体使用效果可参见下文示例十。
 
 ### 行首标点压缩
 
 从API version 23开始，在文本排版中支持行首标点压缩功能。通过启用行首标点压缩功能，可以将行首标点符号进行挤压处理，提升排版紧凑度。
 
-通过设置[ParagraphStyle/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的compressHeadPunctuation属性设置是否启用行首标点压缩。
+通过设置ParagraphStyle中的compressHeadPunctuation属性设置是否启用行首标点压缩。
 
-具体使用效果可参见下文[示例十一](#示例十一行首标点压缩)。
+具体使用效果可参见下文示例十一。
 
 ### 示例一（装饰线、字体特征）
 
@@ -441,7 +441,7 @@ class MyRenderNode extends RenderNode {
         },
         // 装饰线样式，支持波浪，虚线，直线等
         decorationStyle:text.TextDecorationStyle.SOLID,
-        // 装饰线的高度
+        // 装饰线粗细缩放比例
         decorationThicknessScale: 1
       };
 
@@ -568,8 +568,8 @@ struct Font08 {
 
 | 样式设置（装饰线样式、字体特征） | 示意效果 | 
 | -------- | -------- |
-| 不开启装饰线和字体特征 | ![zh-cn_image_complexArkTsDemo1_1](figures/zh-cn_image_complexArkTsDemo1_1.png) | 
-| 开启装饰线和字体特征 | ![zh-cn_image_complexArkTsDemo1_2](figures/zh-cn_image_complexArkTsDemo1_2.png) | 
+| 不开启装饰线和字体特征 | ![complexArkTsDemo1-1](figures/complexArkTsDemo1-1.png) | 
+| 开启装饰线和字体特征 | ![complexArkTsDemo1-2](figures/complexArkTsDemo1-2.png) | 
 
 ### 示例二（可变字体、文本阴影、占位符）
 这里以可变字体、文本阴影、占位符三个特性为例，呈现多样式文本的绘制与显示。
@@ -743,8 +743,8 @@ struct Font08 {
 
 | 样式设置（可变字体、文本阴影、占位符） | 示意效果 | 
 | -------- | -------- |
-| 不开启可变字体和文本阴影，不使用占位符 | ![zh-cn_image_complexArkTsDemo2_1](figures/zh-cn_image_complexArkTsDemo2_1.png) | 
-| 开启可变字体和文本阴影，使用占位符 | ![zh-cn_image_complexArkTsDemo2_2](figures/zh-cn_image_complexArkTsDemo2_2.png) | 
+| 不开启可变字体和文本阴影，不使用占位符 | ![complexArkTsDemo2-1](figures/complexArkTsDemo2-1.png) | 
+| 开启可变字体和文本阴影，使用占位符 | ![complexArkTsDemo2-2](figures/complexArkTsDemo2-2.png) | 
 
 ### 示例三（垂直对齐）
 这里以垂直对齐-居中对齐特性为例，呈现文本垂直方向排版的特性。
@@ -883,10 +883,10 @@ struct Font08 {
 具体示意效果如下所示：
 | 样式设置（垂直对齐） | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） | 
 | -------- | -------- |
-| 基线对齐（默认）| ![zh-cn_image_complexArkTsDemo2_1](figures/en_image_verticalAlignment_baseline.jpg) | 
-| 顶部对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_top.jpg) | 
-| 居中对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_center.jpg) | 
-| 底部对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_bottom.jpg) | 
+| 基线对齐（默认）| ![verticalAlignment-baseline](figures/verticalAlignment-baseline.jpg) | 
+| 顶部对齐 | ![verticalAlignment-top](figures/verticalAlignment-top.jpg) | 
+| 居中对齐 | ![verticalAlignment-center](figures/verticalAlignment-center.jpg) | 
+| 底部对齐 | ![verticalAlignment-bottom](figures/verticalAlignment-bottom.jpg) | 
 
 ### 示例四（上下标文本）
 这里以下标样式为例，呈现上下标文本排版特性。
@@ -1035,8 +1035,8 @@ struct Font08 {
 具体示意效果如下所示：
 | 样式设置（上下标） | 示意效果 | 
 | -------- | -------- |
-| 上标文本 | ![zh-cn_image_complexArkTsDemo2_1](figures/en_image_subscript.jpg) | 
-| 下标文本 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_superscript.jpg) | 
+| 上标文本 | ![superscript](figures/superscript.jpg) | 
+| 下标文本 | ![subscript](figures/subscript.jpg) | 
 
 ### 示例五（高对比度）
 这里以高对比度为例，呈现高对比度文字的绘制与显示。
@@ -1171,8 +1171,8 @@ struct Font08 {
 
 | 高对比度设置 | 示意效果 | 
 | -------- | -------- |
-| 不开启高对比度 | ![zh-cn_image_complexArkTsDemo5_1](figures/zh-cn_image_complexArkTsDemo5_1.png) | 
-| 开启高对比度 | ![zh-cn_image_complexArkTsDemo5_2](figures/zh-cn_image_complexArkTsDemo5_2.png) | 
+| 不开启高对比度 | ![complexArkTsDemo5-1](figures/complexArkTsDemo5-1.png) | 
+| 开启高对比度 | ![complexArkTsDemo5-2](figures/complexArkTsDemo5-2.png) | 
 
 ### 示例六（行高调整方式一）
 这里以行高上限与行高下限设置相同值为例，呈现固定行高时的绘制表现。

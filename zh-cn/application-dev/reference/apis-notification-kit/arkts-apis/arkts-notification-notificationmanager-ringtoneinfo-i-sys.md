@@ -2,9 +2,7 @@
 
 描述自定义铃声信息。
 
-**起始版本：** 23
-
-<!--Device-notificationManager-export interface RingtoneInfo--><!--Device-notificationManager-export interface RingtoneInfo-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -26,9 +24,7 @@ ringtoneFileName?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-RingtoneInfo-ringtoneFileName?: string--><!--Device-RingtoneInfo-ringtoneFileName?: string-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -44,9 +40,7 @@ ringtoneTitle?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-RingtoneInfo-ringtoneTitle?: string--><!--Device-RingtoneInfo-ringtoneTitle?: string-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -62,9 +56,7 @@ ringtoneType: RingtoneType
 
 **类型：** RingtoneType
 
-**起始版本：** 23
-
-<!--Device-RingtoneInfo-ringtoneType: RingtoneType--><!--Device-RingtoneInfo-ringtoneType: RingtoneType-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -80,11 +72,8 @@ ringtoneUri?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-RingtoneInfo-ringtoneUri?: string--><!--Device-RingtoneInfo-ringtoneUri?: string-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
-

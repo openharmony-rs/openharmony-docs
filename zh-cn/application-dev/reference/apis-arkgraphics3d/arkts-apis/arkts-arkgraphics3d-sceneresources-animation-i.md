@@ -1,12 +1,10 @@
 # Animation
 
-动画类型，继承自SceneResource。
+动画类型，继承自SceneResource。@extends SceneResource @interface Animation
 
 **继承/实现关系：** Animation extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface Animation--><!--Device-unnamed-export interface Animation-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -18,9 +16,7 @@ finish(): void
 
 直接跳转到动画的最后，并将动画的进度设置为1。
 
-**起始版本：** 23
-
-<!--Device-Animation-finish(): void--><!--Device-Animation-finish(): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -50,9 +46,7 @@ onFinished(callback: Callback<void>): void
 
 动画播放结束时执行的回调函数，动画播放完成或者finish操作会触发这个回调。
 
-**起始版本：** 23
-
-<!--Device-Animation-onFinished(callback: Callback<void>): void--><!--Device-Animation-onFinished(callback: Callback<void>): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -60,7 +54,7 @@ onFinished(callback: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | 回调函数，返回值为空。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数，返回值为空。 |
 
 **示例**
 
@@ -90,9 +84,7 @@ onStarted(callback: Callback<void>): void
 
 当动画开始播放时执行的回调函数，start操作以及restart操作也会触发这个回调。
 
-**起始版本：** 23
-
-<!--Device-Animation-onStarted(callback: Callback<void>): void--><!--Device-Animation-onStarted(callback: Callback<void>): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -100,7 +92,7 @@ onStarted(callback: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | 回调函数，返回值为空。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数，返回值为空。 |
 
 **示例**
 
@@ -130,9 +122,7 @@ pause(): void
 
 将动画暂停，动画的播放进度保持在当前状态。
 
-**起始版本：** 23
-
-<!--Device-Animation-pause(): void--><!--Device-Animation-pause(): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -162,9 +152,7 @@ restart(): void
 
 从动画的起点开始播放动画。
 
-**起始版本：** 23
-
-<!--Device-Animation-restart(): void--><!--Device-Animation-restart(): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -189,14 +177,12 @@ function restart(): void {
 ## seek
 
 ```TypeScript
-seek(position: double): void
+seek(position: number): void
 ```
 
 将动画进度跳转到指定位置，不改变动画的播放状态（已播放仍继续播放，已暂停仍暂停）。
 
-**起始版本：** 23
-
-<!--Device-Animation-seek(position: double): void--><!--Device-Animation-seek(position: double): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -204,7 +190,7 @@ seek(position: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| position | double | 是 | 要重新播放动画的起始位置，取值区间为[0, 1]。 |
+| position | number | 是 | 要重新播放动画的起始位置，取值区间为[0, 1]。 |
 
 **示例**
 
@@ -232,9 +218,7 @@ start(): void
 
 基于当前进度开始播放一个动画。
 
-**起始版本：** 23
-
-<!--Device-Animation-start(): void--><!--Device-Animation-start(): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -264,9 +248,7 @@ stop(): void
 
 停止播放一个动画，并将动画的进度设置为0。
 
-**起始版本：** 23
-
-<!--Device-Animation-stop(): void--><!--Device-Animation-stop(): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -291,16 +273,14 @@ function stop(): void {
 ## duration
 
 ```TypeScript
-readonly duration: double
+readonly duration: number
 ```
 
 动画持续时间，单位为秒（s），取值范围大于等于0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Animation-readonly duration: double--><!--Device-Animation-readonly duration: double-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -314,25 +294,21 @@ enabled: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Animation-enabled: boolean--><!--Device-Animation-enabled: boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## progress
 
 ```TypeScript
-readonly progress: double
+readonly progress: number
 ```
 
 动画进度状态，取值区间为[0, 1]。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Animation-readonly progress: double--><!--Device-Animation-readonly progress: double-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -346,25 +322,20 @@ readonly running: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Animation-readonly running: boolean--><!--Device-Animation-readonly running: boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## speed
 
 ```TypeScript
-speed?: double
+speed?: number
 ```
 
 动画的播放速度因子。默认值为1.0，表示正常速度播放。如果设置为负值，动画将以反向速度播放。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Animation-speed?: double--><!--Device-Animation-speed?: double-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

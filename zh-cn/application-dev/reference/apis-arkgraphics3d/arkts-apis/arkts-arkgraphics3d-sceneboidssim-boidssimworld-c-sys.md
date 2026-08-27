@@ -1,10 +1,11 @@
 # BoidsSimWorld（系统接口）
 
-群组模拟世界对象，用于管理群组模拟的生命周期及组件。 > **说明：** > 使用以下接口前，需先通过[BoidsSimPlugin.getDefaultBoidsSimWorld](arkts-arkgraphics3d-sceneboidssim-boidssimplugin-c-sys.md#getdefaultboidssimworld)获取群组模拟世界实例。
+群组模拟世界对象，用于管理群组模拟的生命周期及组件。
+
+> **说明：**
+> 使用以下接口前，需先通过[BoidsSimPlugin.getDefaultBoidsSimWorld](arkts-arkgraphics3d-sceneboidssim-boidssimplugin-c-sys.md#getdefaultboidssimworld)获取群组模拟世界实例。
 
 **起始版本：** 26.0.0
-
-<!--Device-unnamed-export declare class BoidsSimWorld--><!--Device-unnamed-export declare class BoidsSimWorld-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -21,8 +22,6 @@ addBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimWorld-addBoidsSimComponent(node: Node, param: BoidsSimParameters): void--><!--Device-BoidsSimWorld-addBoidsSimComponent(node: Node, param: BoidsSimParameters): void-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -73,8 +72,6 @@ addBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BoidsSimWorld-addBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void--><!--Device-BoidsSimWorld-addBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **系统接口：** 此接口为系统接口。
@@ -118,8 +115,6 @@ addBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): v
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimWorld-addBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): void--><!--Device-BoidsSimWorld-addBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): void-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -165,8 +160,6 @@ getBoidsSimComponent(node: Node): BoidsSimParameters | null
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BoidsSimWorld-getBoidsSimComponent(node: Node): BoidsSimParameters | null--><!--Device-BoidsSimWorld-getBoidsSimComponent(node: Node): BoidsSimParameters | null-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **系统接口：** 此接口为系统接口。
@@ -181,7 +174,7 @@ getBoidsSimComponent(node: Node): BoidsSimParameters | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) | 返回群组行为参数，若节点未挂载该组件则返回null。 |
+| [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) \| null | 返回群组行为参数，若节点未挂载该组件则返回null。 |
 
 **示例**
 
@@ -208,8 +201,6 @@ getBoidsSimGravityComponent(node: Node): BoidsSimGravityParameters | null
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BoidsSimWorld-getBoidsSimGravityComponent(node: Node): BoidsSimGravityParameters | null--><!--Device-BoidsSimWorld-getBoidsSimGravityComponent(node: Node): BoidsSimGravityParameters | null-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **系统接口：** 此接口为系统接口。
@@ -224,7 +215,7 @@ getBoidsSimGravityComponent(node: Node): BoidsSimGravityParameters | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) | 返回引力场参数，若节点未挂载该组件则返回null。 |
+| [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) \| null | 返回引力场参数，若节点未挂载该组件则返回null。 |
 
 **示例**
 
@@ -251,8 +242,6 @@ getBoidsSimRepulsionComponent(node: Node): BoidsSimRepulsionParameters | null
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BoidsSimWorld-getBoidsSimRepulsionComponent(node: Node): BoidsSimRepulsionParameters | null--><!--Device-BoidsSimWorld-getBoidsSimRepulsionComponent(node: Node): BoidsSimRepulsionParameters | null-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **系统接口：** 此接口为系统接口。
@@ -267,7 +256,7 @@ getBoidsSimRepulsionComponent(node: Node): BoidsSimRepulsionParameters | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) | 返回斥力场参数，若节点未挂载该组件则返回null。 |
+| [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) \| null | 返回斥力场参数，若节点未挂载该组件则返回null。 |
 
 **示例**
 
@@ -293,8 +282,6 @@ pause(): void
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimWorld-pause(): void--><!--Device-BoidsSimWorld-pause(): void-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -322,8 +309,6 @@ play(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BoidsSimWorld-play(): void--><!--Device-BoidsSimWorld-play(): void-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **系统接口：** 此接口为系统接口。
@@ -349,8 +334,6 @@ removeBoidsSimComponent(node: Node): void
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimWorld-removeBoidsSimComponent(node: Node): void--><!--Device-BoidsSimWorld-removeBoidsSimComponent(node: Node): void-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -384,8 +367,6 @@ removeBoidsSimGravityComponent(node: Node): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BoidsSimWorld-removeBoidsSimGravityComponent(node: Node): void--><!--Device-BoidsSimWorld-removeBoidsSimGravityComponent(node: Node): void-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **系统接口：** 此接口为系统接口。
@@ -418,8 +399,6 @@ removeBoidsSimRepulsionComponent(node: Node): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BoidsSimWorld-removeBoidsSimRepulsionComponent(node: Node): void--><!--Device-BoidsSimWorld-removeBoidsSimRepulsionComponent(node: Node): void-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **系统接口：** 此接口为系统接口。
@@ -451,8 +430,6 @@ setBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimWorld-setBoidsSimComponent(node: Node, param: BoidsSimParameters): void--><!--Device-BoidsSimWorld-setBoidsSimComponent(node: Node, param: BoidsSimParameters): void-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -493,8 +470,6 @@ setBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BoidsSimWorld-setBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void--><!--Device-BoidsSimWorld-setBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **系统接口：** 此接口为系统接口。
@@ -528,8 +503,6 @@ setBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): v
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimWorld-setBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): void--><!--Device-BoidsSimWorld-setBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): void-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -565,8 +538,6 @@ stop(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BoidsSimWorld-stop(): void--><!--Device-BoidsSimWorld-stop(): void-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **系统接口：** 此接口为系统接口。
@@ -581,3 +552,20 @@ function stopBoidsSim(world: BoidsSimWorld): void {
 }
 ```
 
+## isPlaying
+
+```TypeScript
+get isPlaying(): boolean
+```
+
+当前模拟是否正在播放。true表示正在播放，false表示已经暂停。
+
+**类型：** boolean
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**系统接口：** 此接口为系统接口。

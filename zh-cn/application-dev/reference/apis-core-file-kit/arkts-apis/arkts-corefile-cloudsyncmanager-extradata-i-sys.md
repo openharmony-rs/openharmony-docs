@@ -2,9 +2,7 @@
 
 云端数据变更信息。
 
-**起始版本：** 23
-
-<!--Device-cloudSyncManager-interface ExtraData--><!--Device-cloudSyncManager-interface ExtraData-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -26,9 +24,7 @@ eventId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ExtraData-eventId: string--><!--Device-ExtraData-eventId: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -44,11 +40,8 @@ extraData: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ExtraData-extraData: string--><!--Device-ExtraData-extraData: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 **系统接口：** 此接口为系统接口。
-

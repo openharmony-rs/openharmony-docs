@@ -15,4 +15,3 @@ import { WallpaperExtensionAbility } from '@kit.BasicServicesKit';
 | --- | --- |
 | [WallpaperExtensionAbility](arkts-basicservices-wallpaperextensionability-c-sys.md) | class of wallpaper extension ability. |
 <!--DelEnd-->
-

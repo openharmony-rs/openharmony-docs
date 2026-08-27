@@ -1,14 +1,10 @@
 # RoundRectShapeOptions
 
-RectShape 带有半径的构造函数参数。 继承自[ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md)。
+RectShape 带有圆角半径的构造函数参数。继承自[ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md)。
 
 **继承/实现关系：** RoundRectShapeOptions extends [ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md)
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-unnamed-export interface RoundRectShapeOptions--><!--Device-unnamed-export interface RoundRectShapeOptions-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -21,40 +17,39 @@ import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 ## radiusHeight
 
 ```TypeScript
-radiusHeight?: double | string
+radiusHeight?: number | string
 ```
 
-矩形形状圆角半径的高度。 类型为number时取值范围是0, +∞)，string时是[Length。 单位：vp 取值为异常值时按照0vp处理。
+矩形形状圆角半径的高度。类型为number时取值范围是[0, +∞)，string时是[Length](arkts-arkui-length-t.md)。单位：vp默认值：0vp取值为异常值时按照0vp处理。
 
-**类型：** double \| string
+**类型：** number \| string
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-RoundRectShapeOptions-radiusHeight?: double | string--><!--Device-RoundRectShapeOptions-radiusHeight?: double | string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## radiusWidth
 
 ```TypeScript
-radiusWidth?: double | string
+radiusWidth?: number | string
 ```
 
-矩形形状圆角半径的宽度。 类型为number时取值范围是0, +∞)，string时是[Length。 单位：vp 取值为异常值时按照0vp处理。
+矩形形状圆角半径的宽度。类型为number时取值范围是[0, +∞)，string时是[Length](arkts-arkui-length-t.md)。单位：vp默认值：0vp取值为异常值时按照0vp处理。
 
-**类型：** double \| string
+**类型：** number \| string
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-RoundRectShapeOptions-radiusWidth?: double | string--><!--Device-RoundRectShapeOptions-radiusWidth?: double | string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

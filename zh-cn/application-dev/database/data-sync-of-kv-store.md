@@ -39,12 +39,12 @@
 
 ### 手动同步
 
-由应用程序调用sync接口来触发，需要指定端端同步的设备列表和同步模式。同步模式分为PULL_ONLY（将远端数据拉取到本端）、PUSH_ONLY（将本端数据推送到远端）和PUSH_PULL（将本端数据推送到远端同时也将远端数据拉取到本端）。[带有Query参数的端端同步接口/apis-arkdata/js-apis-distributedKVStore.md#sync-1)，支持按条件过滤的方法进行端端同步，将符合条件的数据同步到远端。
+由应用程序调用sync接口来触发，需要指定端端同步的设备列表和同步模式。同步模式分为PULL_ONLY（将远端数据拉取到本端）、PUSH_ONLY（将本端数据推送到远端）和PUSH_PULL（将本端数据推送到远端同时也将远端数据拉取到本端）。带有Query参数的端端同步接口sync，支持按条件过滤的方法进行端端同步，将符合条件的数据同步到远端。
 
 ### 自动同步
 
 <!--RP5-->
-在[跨设备Call调用实现的多端协同](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)场景中，在应用程序更新数据后，由分布式数据库自动将本端数据推送到远端，同时也将远端数据拉取到本端来完成数据同步，应用不需要主动调用sync接口。<!--RP5End-->
+在跨设备Call调用实现的多端协同场景中，在应用程序更新数据后，由分布式数据库自动将本端数据推送到远端，同时也将远端数据拉取到本端来完成数据同步，应用不需要主动调用sync接口。<!--RP5End-->
 
 
 ## 运作机制
@@ -85,7 +85,7 @@
 
 ## 接口说明
 
-以下是单版本键值型分布式数据库跨设备数据端端同步功能的相关接口，更多接口及使用方式请见[分布式键值数据库/apis-arkdata/js-apis-distributedKVStore.md)。
+以下是单版本键值型分布式数据库跨设备数据端端同步功能的相关接口，更多接口及使用方式请见分布式键值数据库。
 
 | 接口名称 | 描述 | 
 | -------- | -------- |
@@ -105,7 +105,7 @@
 
 > **说明：**
 >
-> 数据只允许向数据安全标签不高于对端设备安全等级的设备同步数据，具体规则可见[跨设备同步访问控制机制](access-control-by-device-and-data-level.md#跨设备同步访问控制机制)。
+> 数据只允许向数据安全标签不高于对端设备安全等级的设备同步数据，具体规则可见跨设备同步访问控制机制。
 
 1. 导入模块获取context。
 
@@ -139,8 +139,8 @@
 
 2. 请求权限。
 
-   1. 需要申请ohos.permission.DISTRIBUTED_DATASYNC权限，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。
-   2. 同时需要在应用首次启动时弹窗向用户申请授权，使用方式请参见[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
+   1. 需要申请ohos.permission.DISTRIBUTED_DATASYNC权限，配置方式请参见声明权限。
+   2. 同时需要在应用首次启动时弹窗向用户申请授权，使用方式请参见向用户申请授权。
 
 3. 根据配置调用createKVManager()方法构造分布式数据库管理类实例。
 
@@ -233,7 +233,7 @@
    })
    ```
 
-5. 调用on()方法订阅分布式数据变化，如需关闭订阅分布式数据变化，调用[off('dataChange')/apis-arkdata/js-apis-distributedKVStore.md#offdatachange)关闭。
+5. 调用on()方法订阅分布式数据变化，如需关闭订阅分布式数据变化，调用off('dataChange')关闭。
 
    <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
@@ -323,7 +323,7 @@
 
    > **说明：**
    >
-   > 在手动端端同步的方式下，其中的deviceIds通过调用[devManager.getAvailableDeviceListSync/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
+   > 在手动端端同步的方式下，其中的deviceIds通过调用devManager.getAvailableDeviceListSync方法得到。
 
    <!-- @[kv_store13](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
@@ -368,7 +368,7 @@
 
 针对键值型数据库开发，有以下相关实例可供参考：
 
-- [分布式组网认证（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication)
+- [分布式组网认证（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/DistributedAppDev/DistributedAuthentication)
 
 - [分布式数据管理（ArkTS）（Full SDK）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/Kvstore)
 

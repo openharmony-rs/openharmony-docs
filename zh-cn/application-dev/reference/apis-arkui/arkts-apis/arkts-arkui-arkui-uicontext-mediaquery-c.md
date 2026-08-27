@@ -4,8 +4,6 @@ class MediaQuery
 
 **起始版本：** 10
 
-<!--Device-unnamed-export class MediaQuery--><!--Device-unnamed-export class MediaQuery-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,8 +29,6 @@ Sets the media query criteria and returns the corresponding listening handle
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MediaQuery-matchMediaSync(condition: string): mediaQuery.MediaQueryListener--><!--Device-MediaQuery-matchMediaSync(condition: string): mediaQuery.MediaQueryListener-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -47,3 +43,6 @@ Sets the media query criteria and returns the corresponding listening handle
 | --- | --- |
 | mediaQuery.MediaQueryListener | the corresponding listening handle |
 
+**示例**
+
+完整示例请参考mediaquery示例。

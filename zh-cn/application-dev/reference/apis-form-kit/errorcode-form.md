@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 16500050 进程间通信失败
 
@@ -230,7 +230,7 @@ The form can not support this operation.
 
 **处理步骤**
 
-检查当前卡片对应互动卡片配置项[sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)是否正确。
+检查当前卡片对应互动卡片配置项sceneAnimationParams是否正确。
 
 ## 16501012 卡片尺寸错误
 
@@ -248,7 +248,7 @@ The form host uses an incorrect dimension.
 
 **处理步骤**
 
-检查入参卡片尺寸是否在FormDimension和[supportDimensions](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)配置列表。
+检查入参卡片尺寸是否在FormDimension和supportDimensions配置列表。
 
 ## 16501013 系统不支持当前操作
 
@@ -322,6 +322,43 @@ The location of the widget is invalid.
 
 检查入参卡片位置是否在FormLocation配置列表。
 
+## 16501017 无空间发布卡片
+
+**错误信息**
+
+There is no space to publish the form.
+
+**错误描述**
+
+发布卡片时，桌面无空间容纳新卡片。
+
+**可能原因**
+
+1. 桌面当前页与下一页空间不足且桌面总页数已满。
+2. 桌面卡片数量已达上限，无法添加更多卡片。
+
+**处理步骤**
+
+删除不必要的卡片后重试发布。
+
+## 16501018 卡片不支持发布
+
+**错误信息**
+
+This form does not support publishing.
+
+**错误描述**
+
+发布卡片时，桌面不允许该卡片发布。
+
+**可能原因**
+
+卡片不支持在桌面上发布。
+
+**处理步骤**
+
+检查卡片配置是否符合当前场景，详细参考配置文件renderingMode字段说明和supportdimensions字段与设备支持关系表。
+
 ## 2293761 内部服务错误
 
 **错误信息**
@@ -378,7 +415,7 @@ Invalid params received on operating form.
 3. 参数数量错误。
 4. 空参数错误，比如传入空字符串（''）。
 5. 参数格式错误。
-6. 参数值错误。输入参数需要与[app.json5](../../quick-start/app-configuration-file.md)和[配置ArkTS卡片的配置文件](../../form/arkts-ui-widget-configuration.md)中对应的配置保持一致。
+6. 参数值错误。输入参数需要与app.json5和配置ArkTS卡片的配置文件中对应的配置保持一致。
 
 **处理步骤**
 

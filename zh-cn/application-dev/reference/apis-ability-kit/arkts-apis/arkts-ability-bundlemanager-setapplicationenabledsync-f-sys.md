@@ -14,11 +14,9 @@ function setApplicationEnabledSync(bundleName: string, isEnabled: boolean): void
 
 以同步方法设置指定应用的禁用或使能状态。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
-
-<!--Device-bundleManager-function setApplicationEnabledSync(bundleName: string, isEnabled: boolean): void--><!--Device-bundleManager-function setApplicationEnabledSync(bundleName: string, isEnabled: boolean): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -35,9 +33,9 @@ function setApplicationEnabledSync(bundleName: string, isEnabled: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
 **示例**
@@ -62,7 +60,7 @@ try {
 ## setApplicationEnabledSync
 
 ```TypeScript
-function setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled: boolean, killProcess: boolean): void
+function setApplicationEnabledSync(bundleName: string, appIndex: number, isEnabled: boolean, killProcess: boolean): void
 ```
 
 设置应用程序是启用还是禁用，并控制在禁用时是否杀死进程。
@@ -73,8 +71,6 @@ function setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled:
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-bundleManager-function setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled: boolean, killProcess: boolean): void--><!--Device-bundleManager-function setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled: boolean, killProcess: boolean): void-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
@@ -84,7 +80,7 @@ function setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用包名 |
-| appIndex | int | 是 | 应用的分身索引 <br>取值范围为全体整数。 |
+| appIndex | number | 是 | 应用的分身索引 取值范围为全体整数。 |
 | isEnabled | boolean | 是 | true表示启用应用程序，false表示启用应用程序。 |
 | killProcess | boolean | 是 | true表示应用进程在禁用时杀死应用程序进程，而值为false表示禁用时不会杀死应用程序进程 |
 
@@ -92,10 +88,10 @@ function setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled:
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The specified app index is invalid. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Non-system APP calling system API. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle is not found. |
+| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The specified app index is invalid. |
 
 **示例**
 
@@ -105,10 +101,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // 需要替换为要设置的应用Bundle名称、应用索引、是否启用应用和禁用应用时是否退出应用进程
-let bundleName = 'com.example.myapplication';
-let appIndex = 0;
-let isEnabled = true;
-let killProcess = false;
+let bundleName: string = 'com.example.myapplication';
+let appIndex: number = 0;
+let isEnabled: boolean = true;
+let killProcess: boolean = false;
 
 try {
   bundleManager.setApplicationEnabledSync(bundleName, appIndex, isEnabled, killProcess);
@@ -118,4 +114,3 @@ try {
   hilog.error(0x0000, 'testTag', 'setApplicationEnabledSync failed: %{public}s', message);
 }
 ```
-

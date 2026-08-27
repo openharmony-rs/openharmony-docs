@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-i18n-export class AdvancedMeasureFormat--><!--Device-i18n-export class AdvancedMeasureFormat-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 ## 导入模块
@@ -28,8 +26,6 @@ constructor(numberFormat: Intl.NumberFormat, options?: AdvancedMeasureFormatOpti
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AdvancedMeasureFormat-constructor(numberFormat: Intl.NumberFormat, options?: AdvancedMeasureFormatOptions)--><!--Device-AdvancedMeasureFormat-constructor(numberFormat: Intl.NumberFormat, options?: AdvancedMeasureFormatOptions)-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **参数：**
@@ -37,7 +33,7 @@ constructor(numberFormat: Intl.NumberFormat, options?: AdvancedMeasureFormatOpti
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | numberFormat | Intl.NumberFormat | 是 | 用于格式化数字的对象。 |
-| options | [AdvancedMeasureFormatOptions](../../apis-na/arkts-apis/arkts-na-i18n-advancedmeasureformatoptions-i.md) | 否 |  |
+| options | [AdvancedMeasureFormatOptions](arkts-localization-i18n-advancedmeasureformatoptions-i.md) | 否 |  |
 
 **示例**
 
@@ -53,7 +49,7 @@ let advancedMeasureFormat: i18n.AdvancedMeasureFormat = new i18n.AdvancedMeasure
 ## format
 
 ```TypeScript
-format(num: double): string
+format(num: number): string
 ```
 
 对数字进行格式化。
@@ -64,15 +60,13 @@ format(num: double): string
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AdvancedMeasureFormat-format(num: double): string--><!--Device-AdvancedMeasureFormat-format(num: double): string-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| num | double | 是 | 需要格式化的数字。 |
+| num | number | 是 | 需要格式化的数字。 |
 
 **返回值：**
 
@@ -91,4 +85,3 @@ let advancedMeasureFormat: i18n.AdvancedMeasureFormat = new i18n.AdvancedMeasure
 });
 let result = advancedMeasureFormat.format(100); // result = '37.778°C'
 ```
-

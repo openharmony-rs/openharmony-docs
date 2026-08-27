@@ -2,9 +2,7 @@
 
 鼠标注入描述信息。
 
-**起始版本：** 23
-
-<!--Device-inputEventClient-interface MouseEventData--><!--Device-inputEventClient-interface MouseEventData-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -13,7 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { inputEventClient } from '@kit.InputKit';
 ```
 
 ## mouseEvent
@@ -26,9 +23,7 @@ mouseEvent: MouseEvent
 
 **类型：** [MouseEvent](arkts-input-multimodalinput-mouseevent-mouseevent-i.md)
 
-**起始版本：** 23
-
-<!--Device-MouseEventData-mouseEvent: MouseEvent--><!--Device-MouseEventData-mouseEvent: MouseEvent-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -44,11 +39,8 @@ useGlobalCoordinate? : boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-MouseEventData-useGlobalCoordinate? : boolean--><!--Device-MouseEventData-useGlobalCoordinate? : boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **系统接口：** 此接口为系统接口。
-

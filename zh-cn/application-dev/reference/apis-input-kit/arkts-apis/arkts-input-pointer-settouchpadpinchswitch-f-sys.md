@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { pointer } from '@kit.InputKit';
 ```
 
 ## setTouchpadPinchSwitch
@@ -14,9 +13,7 @@ function setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback<void>): 
 
 设置触控板双指捏合功能开关，使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-pointer-function setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback<void>): void--><!--Device-pointer-function setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback<void>): void-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -27,18 +24,16 @@ function setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback<void>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | state | boolean | 是 | 触控板双指捏合功能开关开启状态。 true代表开启，false代表关闭，默认开启。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置触控板双指捏合功能开关成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置触控板双指捏合功能开关成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { pointer } from '@kit.InputKit';
@@ -69,39 +64,6 @@ struct Index {
 }
 ```
 
-ArkTS-Sta示例:
-
-```TypeScript
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
-import { pointer } from '@kit.InputKit';
-import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
-
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 设置触摸板捏合开关
-            pointer.setTouchpadPinchSwitch(true, (error: BusinessError<void>|null, data: undefined) => {
-              if (error) {
-                console.error(`Failed to set touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-                return;
-              }
-              console.info(`Succeeded in setting touchpad pinch switch.`);
-            });
-          } catch (error) {
-            console.error(`Failed to set touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
 
 ## setTouchpadPinchSwitch
 
@@ -111,9 +73,7 @@ function setTouchpadPinchSwitch(state: boolean): Promise<void>
 
 设置触控板双指捏合功能开关，使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-pointer-function setTouchpadPinchSwitch(state: boolean): Promise<void>--><!--Device-pointer-function setTouchpadPinchSwitch(state: boolean): Promise<void>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -129,18 +89,16 @@ function setTouchpadPinchSwitch(state: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { pointer } from '@kit.InputKit';
@@ -168,32 +126,3 @@ struct Index {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
-import { pointer } from '@kit.InputKit';
-import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 设置触摸板捏合开关
-            pointer.setTouchpadPinchSwitch(false).then(() => {
-              console.info(`Succeeded in setting touchpad pinch switch.`);
-            });
-          } catch (error) {
-            console.error(`Failed to set touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-

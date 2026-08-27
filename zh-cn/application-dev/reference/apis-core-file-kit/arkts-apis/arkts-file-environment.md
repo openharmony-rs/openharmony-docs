@@ -2,9 +2,7 @@
 
 该模块提供环境目录能力，获取内存存储根目录、公共文件根目录的ArkTS接口。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace Environment--><!--Device-unnamed-declare namespace Environment-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.File.Environment
 
@@ -36,4 +34,3 @@ import { Environment } from '@kit.CoreFileKit';
 | [getUserDataDir](arkts-corefile-environment-getuserdatadir-f-sys.md) | 异步方法获取公共文件根目录，使用callback异步回调。 |
 | [getUserHomeDir](arkts-corefile-environment-getuserhomedir-f-sys.md) | 获取当前用户下应用沙箱路径的内卡目录，该接口仅对具有该系统能力的设备开放。 |
 <!--DelEnd-->
-

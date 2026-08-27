@@ -1,10 +1,8 @@
 # InterruptRequestResultType（系统接口）
 
-Enumerates audio interrupt request result type.
+枚举，音频中断请求结果类型。
 
-**起始版本：** 23
-
-<!--Device-audio-enum InterruptRequestResultType--><!--Device-audio-enum InterruptRequestResultType-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 
@@ -16,11 +14,9 @@ Enumerates audio interrupt request result type.
 INTERRUPT_REQUEST_GRANT = 0
 ```
 
-Request audio interrupt success
+请求音频中断成功。
 
-**起始版本：** 23
-
-<!--Device-InterruptRequestResultType-INTERRUPT_REQUEST_GRANT = 0--><!--Device-InterruptRequestResultType-INTERRUPT_REQUEST_GRANT = 0-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 
@@ -32,13 +28,10 @@ Request audio interrupt success
 INTERRUPT_REQUEST_REJECT = 1
 ```
 
-Request audio interrupt fail, may have higher priority type
+请求音频中断失败，可能具有较高优先级类型。
 
-**起始版本：** 23
-
-<!--Device-InterruptRequestResultType-INTERRUPT_REQUEST_REJECT = 1--><!--Device-InterruptRequestResultType-INTERRUPT_REQUEST_REJECT = 1-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 
 **系统接口：** 此接口为系统接口。
-

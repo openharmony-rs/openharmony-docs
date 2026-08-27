@@ -9,14 +9,12 @@ import { statfs } from '@kit.CoreFileKit';
 ## getTotalSizeSync
 
 ```TypeScript
-function getTotalSizeSync(path: string): long
+function getTotalSizeSync(path: string): number
 ```
 
 以同步方法获取指定文件或目录所在文件系统的总字节数。
 
-**起始版本：** 23
-
-<!--Device-statfs-function getTotalSizeSync(path: string): long--><!--Device-statfs-function getTotalSizeSync(path: string): long-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -30,25 +28,25 @@ function getTotalSizeSync(path: string): long
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 返回总字节数，单位为Byte。 |
+| number | 返回总字节数，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900018 | Not a directory |
-| 13900030 | File name too long |
-| 13900031 | Function not implemented |
+| 13900002 | No such file or directory |
 | 13900004 | Interrupted system call |
 | 13900005 | I/O error |
-| 13900038 | Value too large for defined data type |
-| 13900033 | Too many symbolic links encountered |
-| 13900002 | No such file or directory |
+| 13900008 | Bad file descriptor |
+| 13900011 | Out of memory |
 | 13900012 | Permission denied |
 | 13900013 | Bad address |
-| 13900008 | Bad file descriptor |
+| 13900018 | Not a directory |
+| 13900030 | File name too number |
+| 13900031 | Function not implemented |
+| 13900033 | Too many symbolic links encountered |
+| 13900038 | Value too large for defined data type |
 | 13900042 | Unknown error |
-| 13900011 | Out of memory |
 
 **示例**
 
@@ -61,4 +59,3 @@ let path = context.filesDir;
 let totalSize = statfs.getTotalSizeSync(path);
 console.info("Succeeded in getting total size: " + totalSize);
 ```
-

@@ -1,6 +1,6 @@
 # WifiLinkedInfo
 
-WLAN连接信息。
+WLAN连接信息。@interface WifiLinkedInfo
 
 **起始版本：** 6
 
@@ -8,17 +8,12 @@ WLAN连接信息。
 
 **替代接口：** [WifiLinkedInfo](arkts-connectivity-wifimanager-wifilinkedinfo-i.md)
 
-<!--Device-wifi-interface WifiLinkedInfo--><!--Device-wifi-interface WifiLinkedInfo-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 ## 导入模块
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## band
@@ -36,8 +31,6 @@ WLAN AP的频段。
 **废弃版本：** 9
 
 **替代接口：** [band](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#band)
-
-<!--Device-WifiLinkedInfo-band: number--><!--Device-WifiLinkedInfo-band: number-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -57,8 +50,6 @@ WLAN热点的BSSID
 
 **替代接口：** [bssid](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#bssid)
 
-<!--Device-WifiLinkedInfo-bssid: string--><!--Device-WifiLinkedInfo-bssid: string-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 ## connState
@@ -76,8 +67,6 @@ connState: ConnState
 **废弃版本：** 9
 
 **替代接口：** [connState](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#connstate)
-
-<!--Device-WifiLinkedInfo-connState: ConnState--><!--Device-WifiLinkedInfo-connState: ConnState-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -97,8 +86,6 @@ WLAN AP的频率。
 
 **替代接口：** [frequency](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#frequency)
 
-<!--Device-WifiLinkedInfo-frequency: number--><!--Device-WifiLinkedInfo-frequency: number-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 ## ipAddress
@@ -116,8 +103,6 @@ ipAddress: number
 **废弃版本：** 9
 
 **替代接口：** [ipAddress](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#ipaddress)
-
-<!--Device-WifiLinkedInfo-ipAddress: number--><!--Device-WifiLinkedInfo-ipAddress: number-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -137,8 +122,6 @@ isHidden: boolean
 
 **替代接口：** [isHidden](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#ishidden)
 
-<!--Device-WifiLinkedInfo-isHidden: boolean--><!--Device-WifiLinkedInfo-isHidden: boolean-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 ## isRestricted
@@ -156,8 +139,6 @@ isRestricted: boolean
 **废弃版本：** 9
 
 **替代接口：** [isRestricted](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#isrestricted)
-
-<!--Device-WifiLinkedInfo-isRestricted: boolean--><!--Device-WifiLinkedInfo-isRestricted: boolean-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -177,8 +158,6 @@ WLAN AP的速度。
 
 **替代接口：** [linkSpeed](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#linkspeed)
 
-<!--Device-WifiLinkedInfo-linkSpeed: number--><!--Device-WifiLinkedInfo-linkSpeed: number-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 ## macAddress
@@ -196,8 +175,6 @@ macAddress: string
 **废弃版本：** 9
 
 **替代接口：** [macAddress](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#macaddress)
-
-<!--Device-WifiLinkedInfo-macAddress: string--><!--Device-WifiLinkedInfo-macAddress: string-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -217,8 +194,6 @@ WLAN AP的RSSI(dBm)。
 
 **替代接口：** [rssi](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#rssi)
 
-<!--Device-WifiLinkedInfo-rssi: number--><!--Device-WifiLinkedInfo-rssi: number-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 ## ssid
@@ -237,7 +212,4 @@ WLAN热点的SSID
 
 **替代接口：** [ssid](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#ssid)
 
-<!--Device-WifiLinkedInfo-ssid: string--><!--Device-WifiLinkedInfo-ssid: string-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
-

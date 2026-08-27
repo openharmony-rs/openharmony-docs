@@ -2,9 +2,7 @@
 
 表示应用账号信息。
 
-**起始版本：** 23
-
-<!--Device-appAccount-interface AppAccountInfo--><!--Device-appAccount-interface AppAccountInfo-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -24,9 +22,7 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AppAccountInfo-name: string--><!--Device-AppAccountInfo-name: string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -40,9 +36,6 @@ owner: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AppAccountInfo-owner: string--><!--Device-AppAccountInfo-owner: string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Account.AppAccount
-

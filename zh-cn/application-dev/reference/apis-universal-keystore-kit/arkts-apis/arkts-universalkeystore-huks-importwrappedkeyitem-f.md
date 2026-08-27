@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
-import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
 ## importWrappedKeyItem
@@ -18,13 +17,15 @@ function importWrappedKeyItem(
   ): void
 ```
 
-Imports a wrapped key. This API uses an asynchronous callback to return the result. > **说明：** > > 导入[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md)中定义的SE安全级别加密密钥需要ohos.permission.ACCESS_SE_KEY权限。
+Imports a wrapped key. This API uses an asynchronous callback to return the result.
+
+> **说明：**
+> 
+> 导入[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md)中定义的SE安全级别加密密钥需要ohos.permission.ACCESS_SE_KEY权限。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-huks-function importWrappedKeyItem(    keyAlias: string,    wrappingKeyAlias: string,    options: HuksOptions,    callback: AsyncCallback<void>  ): void--><!--Device-huks-function importWrappedKeyItem(    keyAlias: string,    wrappingKeyAlias: string,    options: HuksOptions,    callback: AsyncCallback<void>  ): void-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.Huks.Core
@@ -37,44 +38,44 @@ Imports a wrapped key. This API uses an asynchronous callback to return the resu
 | keyAlias | string | 是 | Alias of the wrapped key to import. |
 | wrappingKeyAlias | string | 是 | Alias of the data used to unwrap the key imported. |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | Tags required for the import and the wrapped key to import. The algorithm, key purpose, and key length are mandatory. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful, no **err** value is returned; otherwise, an error code is returned. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful, no **err** value is returned; otherwise, an error code is returned. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12000023](../errorcode-huks.md#12000023-ukey-pin码未认证) | the UKey PIN not authenticated<br>**适用版本：** 26.0.0+ |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
-| [12000021](../errorcode-huks.md#12000021-ukey-pin码被锁定) | the UKey PIN is locked<br>**适用版本：** 26.0.0+ |
-| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | the provider operation failed<br>**适用版本：** 26.0.0+ |
-| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
-| [12000017](../errorcode-huks.md#12000017-同名密钥已存在) | The key with the same alias already exists<br>**适用版本：** 20+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
-| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
-| [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy<br>**适用版本：** 26.0.0+ |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
-| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
-| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
-| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
-| [12000015](../errorcode-huks.md#12000015-调用其他系统服务失败) | Failed to obtain the security information via UserIAM |
-| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
-| [12000013](../errorcode-huks.md#12000013-密钥设置生物访问控制时待绑定的凭据不存在) | queried credential does not exist |
-| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
+| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000013](../errorcode-huks.md#12000013-密钥设置生物访问控制时待绑定的凭据不存在) | queried credential does not exist |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000015](../errorcode-huks.md#12000015-调用其他系统服务失败) | Failed to obtain the security information via UserIAM |
+| [12000017](../errorcode-huks.md#12000017-同名密钥已存在) | The key with the same alias already exists<br>**适用版本：** 20+ |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
+| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | the provider operation failed<br>**适用版本：** 26.0.0+ |
+| [12000021](../errorcode-huks.md#12000021-ukey-pin码被锁定) | the UKey PIN is locked<br>**适用版本：** 26.0.0+ |
+| [12000023](../errorcode-huks.md#12000023-ukey-pin码未认证) | the UKey PIN not authenticated<br>**适用版本：** 26.0.0+ |
+| [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy<br>**适用版本：** 26.0.0+ |
+| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
 
 **示例**
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
 
-let alias1 = "importAlias";
-let alias2 = "wrappingKeyAlias";
+let alias1 = 'importAlias';
+let alias2 = 'wrappingKeyAlias';
 
 /* 1. 生成ECC密钥 */
-async function TestGenFunc(alias: string, options: huks.HuksOptions) {
+async function testGenFunc(alias: string, options: huks.HuksOptions) {
   await genKey(alias, options)
     .then(() => {
       console.info(`callback: generateKeyItem success`);
@@ -94,7 +95,7 @@ function genKey(alias: string, options: huks.HuksOptions) {
 }
 
 /* 2. 导出公钥 */
-async function TestExportFunc(alias: string, options: huks.HuksOptions) {
+async function testExportFunc(alias: string, options: huks.HuksOptions) {
   await exportKey(alias, options)
     .then((data) => {
       console.info(`callback: exportKeyItem success, data = ${JSON.stringify(data)}`);
@@ -114,7 +115,7 @@ function exportKey(alias: string, options: huks.HuksOptions) {
 }
 
 /* 3. 安全导入密钥 */
-async function TestImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
+async function testImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
   await importWrappedKey(alias, wrappingAlias, options)
     .then(() => {
       console.info(`callback: importWrappedKeyItem success`);
@@ -133,18 +134,18 @@ function importWrappedKey(alias: string, wrappingAlias: string, options: huks.Hu
   });
 }
 
-async function TestImportWrappedKeyFunc(
+async function testImportWrappedKeyFunc(
   alias: string,
   wrappingAlias: string,
   genOptions: huks.HuksOptions,
   importOptions: huks.HuksOptions
 ) {
-  await TestGenFunc(wrappingAlias, genOptions);
-  await TestExportFunc(wrappingAlias, genOptions);
+  await testGenFunc(wrappingAlias, genOptions);
+  await testExportFunc(wrappingAlias, genOptions);
 
   /* 以下操作不需要调用HUKS接口，此处不给出具体实现：
    * 假设待导入的密钥为keyA。
-   * 1. 生成ECC公私钥keyB，公钥为keyB_pub, 私钥为keyB_pri。
+   * 1. 生成ECC公私钥keyB，公钥为keyB_pub，私钥为keyB_pri。
    * 2. 使用keyB_pri和wrappingAlias密钥中获取的公钥进行密钥协商，协商出共享密钥share_key。
    * 3. 随机生成密钥kek，用于加密keyA，采用AES-GCM加密，加密过程中需要记录：nonce1、aad1、加密后的密文keyA_enc、加密后的tag1。
    * 4. 使用share_key加密kek，采用AES-GCM加密，加密过程中需要记录：nonce2、aad2、加密后的密文kek_enc、加密后的tag2。
@@ -158,7 +159,7 @@ async function TestImportWrappedKeyFunc(
   /* 该处为示例代码，实际运行过程中，应使用实际导入密钥数据。数据构造方式由上注释可见说明 */
   let inputKey = new Uint8Array([0x02, 0x00, 0x00, 0x00]);
   importOptions.inData = inputKey;
-  await TestImportWrappedFunc(alias, wrappingAlias, importOptions);
+  await testImportWrappedFunc(alias, wrappingAlias, importOptions);
 }
 
 /* ECC密钥生成的参数集 */
@@ -228,7 +229,7 @@ function makeImportOptions() {
 function huksImportWrappedKey() {
   let genOptions = makeGenerateOptions();
   let importOptions = makeImportOptions();
-  TestImportWrappedKeyFunc(
+  testImportWrappedKeyFunc(
     alias1,
     alias2,
     genOptions,
@@ -244,13 +245,15 @@ function huksImportWrappedKey() {
 function importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOptions): Promise<void>
 ```
 
-Imports a wrapped key. This API uses a promise to return the result. > **说明：** > > 导入[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md)中定义的SE安全级别加密密钥需要ohos.permission.ACCESS_SE_KEY权限。
+Imports a wrapped key. This API uses a promise to return the result.
+
+> **说明：**
+> 
+> 导入[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md)中定义的SE安全级别加密密钥需要ohos.permission.ACCESS_SE_KEY权限。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-huks-function importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOptions): Promise<void>--><!--Device-huks-function importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOptions): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -266,33 +269,33 @@ Imports a wrapped key. This API uses a promise to return the result. > **说明�
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Promise & lt;void & gt; | Promise that returns no value. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12000023](../errorcode-huks.md#12000023-ukey-pin码未认证) | the UKey PIN not authenticated<br>**适用版本：** 26.0.0+ |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
-| [12000021](../errorcode-huks.md#12000021-ukey-pin码被锁定) | the UKey PIN is locked<br>**适用版本：** 26.0.0+ |
-| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | the provider operation failed<br>**适用版本：** 26.0.0+ |
-| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
-| [12000017](../errorcode-huks.md#12000017-同名密钥已存在) | The key with the same alias already exists<br>**适用版本：** 20+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
-| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
-| [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy<br>**适用版本：** 26.0.0+ |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
-| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
-| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
-| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
-| [12000015](../errorcode-huks.md#12000015-调用其他系统服务失败) | Failed to obtain the security information via UserIAM |
-| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
-| [12000013](../errorcode-huks.md#12000013-密钥设置生物访问控制时待绑定的凭据不存在) | queried credential does not exist |
-| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
+| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000013](../errorcode-huks.md#12000013-密钥设置生物访问控制时待绑定的凭据不存在) | queried credential does not exist |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000015](../errorcode-huks.md#12000015-调用其他系统服务失败) | Failed to obtain the security information via UserIAM |
+| [12000017](../errorcode-huks.md#12000017-同名密钥已存在) | The key with the same alias already exists<br>**适用版本：** 20+ |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
+| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | the provider operation failed<br>**适用版本：** 26.0.0+ |
+| [12000021](../errorcode-huks.md#12000021-ukey-pin码被锁定) | the UKey PIN is locked<br>**适用版本：** 26.0.0+ |
+| [12000023](../errorcode-huks.md#12000023-ukey-pin码未认证) | the UKey PIN not authenticated<br>**适用版本：** 26.0.0+ |
+| [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy<br>**适用版本：** 26.0.0+ |
+| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
 
 **示例**
 
@@ -301,11 +304,10 @@ import { huks } from '@kit.UniversalKeystoreKit';
 
 /* 处理流程与callback类似，主要差异点为如下函数： */
 /* 该处为示例代码，实际运行过程中，应使用实际导入密钥数据。数据构造方式由上注释可见说明 */
-async function TestImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
+async function testImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
   await huks.importWrappedKeyItem(alias, wrappingAlias, options)
     .then(() => {
       console.info(`promise: importWrappedKeyItem success`);
     });
 }
 ```
-

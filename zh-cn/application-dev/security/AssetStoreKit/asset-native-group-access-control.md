@@ -9,10 +9,10 @@
 
 以下为管理群组关键资产使用示例，请先查看开发指导：
 
-- [新增关键资产(C/C++)](asset-native-add.md)
-- [删除关键资产(C/C++)](asset-native-remove.md)
-- [更新关键资产(C/C++)](asset-native-update.md)
-- [查询关键资产(C/C++)](asset-native-query.md)
+- 新增关键资产(C/C++)
+- 删除关键资产(C/C++)
+- 更新关键资产(C/C++)
+- 查询关键资产(C/C++)
 
 ## 前置条件
 

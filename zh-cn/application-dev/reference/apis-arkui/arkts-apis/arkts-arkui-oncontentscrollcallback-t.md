@@ -1,18 +1,14 @@
 # OnContentScrollCallback
 
 ```TypeScript
-export type OnContentScrollCallback = (totalOffsetX: double, totalOffsetY: double) => void
+declare type OnContentScrollCallback = (totalOffsetX: number, totalOffsetY: number) => void
 ```
 
-文本内容滚动回调。
+文本内容滚动时，触发该回调。
 
-**起始版本：** 23
+**起始版本：** 18
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-unnamed-export type OnContentScrollCallback = (totalOffsetX: double, totalOffsetY: double) => void--><!--Device-unnamed-export type OnContentScrollCallback = (totalOffsetX: double, totalOffsetY: double) => void-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,6 +16,5 @@ export type OnContentScrollCallback = (totalOffsetX: double, totalOffsetY: doubl
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| totalOffsetX | double | 是 | 文本在内容区的横坐标偏移，单位px。 |
-| totalOffsetY | double | 是 | 文本在内容区的纵坐标偏移，单位px。 |
-
+| totalOffsetX | number | 是 | 文本左上角横坐标相较于整个内容输入区左上角横坐标的偏移量。单位：px。 |
+| totalOffsetY | number | 是 | 文本左上角纵坐标相较于整个内容输入区左上角纵坐标的偏移量。单位：px。 |

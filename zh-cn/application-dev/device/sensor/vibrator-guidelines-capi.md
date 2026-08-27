@@ -3,14 +3,14 @@
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
 <!--Designer: @andeszhang-->
-<!--Tester: @liuhaonan2-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## 场景介绍
 
 当设备需要设置不同的振动效果时，可以调用Vibrator模块，例如：设备的按键可以设置不同强度和不同时长的振动，闹钟和来电可以设置不同强度和时长的单次或周期振动。
 
-详细的接口介绍请参考[Vibrator/apis-sensor-service-kit/capi-vibrator.md)。
+详细的接口介绍请参考Vibrator。
 
 
 ## 函数说明
@@ -40,7 +40,7 @@
 
    ![输入图片说明](figures/006.png)
 
-2. 控制设备上的振动器，需要申请权限ohos.permission.VIBRATE。具体配置方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
+2. 控制设备上的振动器，需要申请权限ohos.permission.VIBRATE。具体配置方式请参考声明权限。
 
    <!-- @[vibrator_capi_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/module.json5) --> 
    

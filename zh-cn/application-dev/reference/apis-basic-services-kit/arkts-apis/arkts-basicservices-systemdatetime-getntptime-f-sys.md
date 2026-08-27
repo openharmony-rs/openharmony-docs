@@ -9,14 +9,12 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 ## getNtpTime
 
 ```TypeScript
-function getNtpTime(): long
+function getNtpTime(): number
 ```
 
 使用同步方式获取基于上次更新的NTP时间所计算出的真实时间。
 
-**起始版本：** 23
-
-<!--Device-systemDateTime-function getNtpTime(): long--><!--Device-systemDateTime-function getNtpTime(): long-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -26,18 +24,16 @@ function getNtpTime(): long
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 基于上次更新的NTP时间所计算出的Unix纪元时间(ms)。 |
+| number | 基于上次更新的NTP时间所计算出的Unix纪元时间(ms)。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13000002](../errorcode-time.md#13000002-未更新ntp时间) | updateNtpTime() is not called successfully. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [13000002](../errorcode-time.md#13000002-未更新ntp时间) | updateNtpTime() is not called successfully. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -49,16 +45,3 @@ try {
   console.error(`Failed to get ntp time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@ohos.base';
-
-try {
-  let time: long = systemDateTime.getNtpTime();
-} catch(error: BusinessError) {
-  console.error(`Failed to get ntp time. message: ${error.message}, code: ${error.code}`);
-}
-```
-

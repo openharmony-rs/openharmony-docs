@@ -4,8 +4,6 @@
 
 **起始版本：** 19
 
-<!--Device-unnamed-declare enum TabsCacheMode--><!--Device-unnamed-declare enum TabsCacheMode-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CACHE_BOTH_SIDE
@@ -21,8 +19,6 @@ CACHE_BOTH_SIDE = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TabsCacheMode-CACHE_BOTH_SIDE = 0--><!--Device-TabsCacheMode-CACHE_BOTH_SIDE = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +36,4 @@ CACHE_LATEST_SWITCHED = 1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TabsCacheMode-CACHE_LATEST_SWITCHED = 1--><!--Device-TabsCacheMode-CACHE_LATEST_SWITCHED = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -2,9 +2,7 @@
 
 定义打印参数的接口。
 
-**起始版本：** 23
-
-<!--Device-print-interface PrintAttributes--><!--Device-print-interface PrintAttributes-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -24,25 +22,21 @@ colorMode?: PrintColorMode
 
 **类型：** [PrintColorMode](arkts-basicservices-print-printcolormode-e.md)
 
-**起始版本：** 23
-
-<!--Device-PrintAttributes-colorMode?: PrintColorMode--><!--Device-PrintAttributes-colorMode?: PrintColorMode-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## copyNumber
 
 ```TypeScript
-copyNumber?: int
+copyNumber?: number
 ```
 
 表示文件打印份数。默认值为1。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PrintAttributes-copyNumber?: int--><!--Device-PrintAttributes-copyNumber?: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -56,9 +50,7 @@ directionMode?: PrintDirectionMode
 
 **类型：** [PrintDirectionMode](arkts-basicservices-print-printdirectionmode-e.md)
 
-**起始版本：** 23
-
-<!--Device-PrintAttributes-directionMode?: PrintDirectionMode--><!--Device-PrintAttributes-directionMode?: PrintDirectionMode-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -72,9 +64,7 @@ duplexMode?: PrintDuplexMode
 
 **类型：** [PrintDuplexMode](arkts-basicservices-print-printduplexmode-e.md)
 
-**起始版本：** 23
-
-<!--Device-PrintAttributes-duplexMode?: PrintDuplexMode--><!--Device-PrintAttributes-duplexMode?: PrintDuplexMode-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -88,9 +78,7 @@ pageRange?: PrintPageRange
 
 **类型：** [PrintPageRange](arkts-basicservices-print-printpagerange-i.md)
 
-**起始版本：** 23
-
-<!--Device-PrintAttributes-pageRange?: PrintPageRange--><!--Device-PrintAttributes-pageRange?: PrintPageRange-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -104,9 +92,6 @@ pageSize?: PrintPageSize | PrintPageType
 
 **类型：** [PrintPageSize](arkts-basicservices-print-printpagesize-i.md) \| [PrintPageType](arkts-basicservices-print-printpagetype-e.md)
 
-**起始版本：** 23
-
-<!--Device-PrintAttributes-pageSize?: PrintPageSize | PrintPageType--><!--Device-PrintAttributes-pageSize?: PrintPageSize | PrintPageType-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Print.PrintFramework
-

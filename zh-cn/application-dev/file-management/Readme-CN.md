@@ -46,4 +46,9 @@
   - [设置分布式文件数据等级](set-security-label.md)
   - [跨设备文件共享和访问](file-access-across-devices.md)
   - [跨设备文件拷贝](file-copy-across-devices.md)<!--RP1--><!--RP1End-->
+- 文件压缩解压缩<!--compression-->
+  - [压缩解压缩概述](archive-overview.md)
+  - [文件归档类压缩解压缩(C/C++)](archive-file-compression-guidelines.md)
+  - [流式压缩解压缩(C/C++)](archive-stream-compression-guidelines.md)
+  - [缓冲区压缩解压缩(C/C++)](archive-buffer-compression-guidelines.md)
   <!--RP3--><!--RP3End-->

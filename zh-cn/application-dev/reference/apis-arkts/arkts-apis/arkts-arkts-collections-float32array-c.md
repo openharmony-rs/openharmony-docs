@@ -1,17 +1,19 @@
 # Float32Array
 
-一种线性数据结构，底层基于[ArkTS ArrayBuffer](../../apis-na/arkts-apis/arkts-collections.md)实现。 > **说明：** > > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 > **装饰器类型：** \@Sendable
+一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-arkts-collections-arraybuffer-c.md)实现。
+
+> **说明：**
+> 
+> - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
+> **装饰器类型：** \@Sendable
 
 **起始版本：** 12
-
-<!--Device-collections-class Float32Array--><!--Device-collections-class Float32Array-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { collections } from '@kit.ArkTS';
 ```
 
 ## [Symbol.iterator]
@@ -26,15 +28,13 @@ import { collections } from '@kit.ArkTS';
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-[Symbol.iterator](): IterableIterator<number>--><!--Device-Float32Array-[Symbol.iterator](): IterableIterator<number>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;number&gt; | 迭代器对象。 |
+| IterableIterator & lt;number & gt; | 迭代器对象。 |
 
 **错误码：**
 
@@ -54,21 +54,19 @@ at(index: number): number | undefined
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-at(index: number): number | undefined--><!--Device-Float32Array-at(index: number): number | undefined-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 要返回的Array元素的索引（从零开始），取值为整数。<br/> 如果`index &lt; 0`，则会访问`index + Float32Array.length`位置的元素。 |
+| index | number | 是 | 要返回的Array元素的索引（从零开始），取值为整数。如果`index &lt; 0`，则会访问`index + Float32Array.length`位置的元素。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 指定下标的元素；如果不存在，则返回**undefined**。 |
+| number \| undefined | 指定下标的元素；如果不存在，则返回**undefined**。 |
 
 **错误码：**
 
@@ -89,8 +87,6 @@ constructor()
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-constructor()--><!--Device-Float32Array-constructor()-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **错误码：**
@@ -110,8 +106,6 @@ constructor(length: number)
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Float32Array-constructor(length: number)--><!--Device-Float32Array-constructor(length: number)-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -139,15 +133,13 @@ constructor(elements: Iterable<number>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-constructor(elements: Iterable<number>)--><!--Device-Float32Array-constructor(elements: Iterable<number>)-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elements | Iterable&lt;number&gt; | 是 | 可迭代数字集合，用于构造ArkTS Float32Array对象。 |
+| elements | Iterable & lt;number & gt; | 是 | 可迭代数字集合，用于构造ArkTS Float32Array对象。 |
 
 **错误码：**
 
@@ -167,15 +159,13 @@ constructor(array: ArrayLike<number> | ArrayBuffer)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-constructor(array: ArrayLike<number> | ArrayBuffer)--><!--Device-Float32Array-constructor(array: ArrayLike<number> | ArrayBuffer)-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| array | [ArrayLike](../../apis-na/arkts-apis/arkts-na-arraylike-i.md)&lt;number&gt; \| ArrayBuffer | 是 | 用于构造ArkTS Float32Array的对象。 当参数类型是ArrayBuffer时buffer所占的字节数需是4的整数倍。 |
+| array | ArrayLike & lt;number & gt; \ | ArrayBuffer | 是 | 用于构造ArkTS Float32Array的对象。 当参数类型是ArrayBuffer时buffer所占的字节数需是4的整数倍。 |
 
 **错误码：**
 
@@ -194,8 +184,6 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Float32Array-constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)--><!--Device-Float32Array-constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -224,8 +212,6 @@ copyWithin(target: number, start: number, end?: number): Float32Array
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Float32Array-copyWithin(target: number, start: number, end?: number): Float32Array--><!--Device-Float32Array-copyWithin(target: number, start: number, end?: number): Float32Array-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -262,15 +248,13 @@ entries(): IterableIterator<[number, number]>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-entries(): IterableIterator<[number, number]>--><!--Device-Float32Array-entries(): IterableIterator<[number, number]>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[number, number]&gt; | 迭代器对象。 |
+| IterableIterator & lt;[number, number] & gt; | 迭代器对象。 |
 
 **错误码：**
 
@@ -290,8 +274,6 @@ every(predicate: TypedArrayPredicateFn<number, Float32Array>): boolean
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Float32Array-every(predicate: TypedArrayPredicateFn<number, Float32Array>): boolean--><!--Device-Float32Array-every(predicate: TypedArrayPredicateFn<number, Float32Array>): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -325,8 +307,6 @@ fill(value: number, start?: number, end?: number): Float32Array
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Float32Array-fill(value: number, start?: number, end?: number): Float32Array--><!--Device-Float32Array-fill(value: number, start?: number, end?: number): Float32Array-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -363,8 +343,6 @@ filter(predicate: TypedArrayPredicateFn<number, Float32Array>): Float32Array
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-filter(predicate: TypedArrayPredicateFn<number, Float32Array>): Float32Array--><!--Device-Float32Array-filter(predicate: TypedArrayPredicateFn<number, Float32Array>): Float32Array-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -398,8 +376,6 @@ find(predicate: TypedArrayPredicateFn<number, Float32Array>): number | undefined
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-find(predicate: TypedArrayPredicateFn<number, Float32Array>): number | undefined--><!--Device-Float32Array-find(predicate: TypedArrayPredicateFn<number, Float32Array>): number | undefined-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -412,7 +388,7 @@ find(predicate: TypedArrayPredicateFn<number, Float32Array>): number | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 第一个满足条件的元素的值；如果所有元素都不满足条件，则返回**undefined**。 |
+| number \| undefined | 第一个满足条件的元素的值；如果所有元素都不满足条件，则返回**undefined**。 |
 
 **错误码：**
 
@@ -432,8 +408,6 @@ findIndex(predicate: TypedArrayPredicateFn<number, Float32Array>): number
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Float32Array-findIndex(predicate: TypedArrayPredicateFn<number, Float32Array>): number--><!--Device-Float32Array-findIndex(predicate: TypedArrayPredicateFn<number, Float32Array>): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -468,8 +442,6 @@ forEach(callbackFn: TypedArrayForEachCallback<number, Float32Array>): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-forEach(callbackFn: TypedArrayForEachCallback<number, Float32Array>): void--><!--Device-Float32Array-forEach(callbackFn: TypedArrayForEachCallback<number, Float32Array>): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -497,15 +469,13 @@ static from(arrayLike: ArrayLike<number>): Float32Array
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-static from(arrayLike: ArrayLike<number>): Float32Array--><!--Device-Float32Array-static from(arrayLike: ArrayLike<number>): Float32Array-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLike | [ArrayLike](../../apis-na/arkts-apis/arkts-na-arraylike-i.md)&lt;number&gt; | 是 | 用于构造ArkTS Float32Array的ArrayLike对象。 |
+| arrayLike | ArrayLike & lt;number & gt; | 是 | 用于构造ArkTS Float32Array的ArrayLike对象。 |
 
 **返回值：**
 
@@ -525,15 +495,13 @@ static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): 
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): Float32Array--><!--Device-Float32Array-static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): Float32Array-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLike | [ArrayLike](../../apis-na/arkts-apis/arkts-na-arraylike-i.md)&lt;T&gt; | 是 | 用于构造ArrayLike对象。 |
+| arrayLike | ArrayLike & lt;T & gt; | 是 | 用于构造ArrayLike对象。 |
 | mapFn | [TypedArrayFromMapFn](arkts-arkts-collections-typedarrayfrommapfn-t.md)&lt;T, number&gt; | 是 | 映射函数。 |
 
 **返回值：**
@@ -554,15 +522,13 @@ static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, num
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, number>): Float32Array--><!--Device-Float32Array-static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, number>): Float32Array-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLike | Iterable&lt;number&gt; | 是 | 用于构造的可迭代对象。 |
+| arrayLike | Iterable & lt;number & gt; | 是 | 用于构造的可迭代对象。 |
 | mapFn | [TypedArrayFromMapFn](arkts-arkts-collections-typedarrayfrommapfn-t.md)&lt;number, number&gt; | 否 | 映射函数。如果省略，则不对元素进行加工处理。 |
 
 **返回值：**
@@ -582,8 +548,6 @@ includes(searchElement: number, fromIndex?: number): boolean
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Float32Array-includes(searchElement: number, fromIndex?: number): boolean--><!--Device-Float32Array-includes(searchElement: number, fromIndex?: number): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -619,8 +583,6 @@ indexOf(searchElement: number, fromIndex?: number): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-indexOf(searchElement: number, fromIndex?: number): number--><!--Device-Float32Array-indexOf(searchElement: number, fromIndex?: number): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -655,8 +617,6 @@ join(separator?: string): string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-join(separator?: string): string--><!--Device-Float32Array-join(separator?: string): string-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -690,15 +650,13 @@ keys(): IterableIterator<number>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-keys(): IterableIterator<number>--><!--Device-Float32Array-keys(): IterableIterator<number>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;number&gt; | 迭代器对象。 |
+| IterableIterator & lt;number & gt; | 迭代器对象。 |
 
 **错误码：**
 
@@ -718,8 +676,6 @@ lastIndexOf(searchElement: number, fromIndex?: number): number
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Float32Array-lastIndexOf(searchElement: number, fromIndex?: number): number--><!--Device-Float32Array-lastIndexOf(searchElement: number, fromIndex?: number): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -755,8 +711,6 @@ map(callbackFn: TypedArrayMapCallback<number, Float32Array>): Float32Array
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-map(callbackFn: TypedArrayMapCallback<number, Float32Array>): Float32Array--><!--Device-Float32Array-map(callbackFn: TypedArrayMapCallback<number, Float32Array>): Float32Array-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -790,8 +744,6 @@ static of(...items: number[]): Float32Array
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-static of(...items: number[]): Float32Array--><!--Device-Float32Array-static of(...items: number[]): Float32Array-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -804,7 +756,7 @@ static of(...items: number[]): Float32Array
 
 | 类型 | 说明 |
 | --- | --- |
-| Float32Array | 新的ArkTS Float32Array实例。可能的原因：1.必填参数未指定； <br>2.参数类型不正确；3.参数校验失败。 |
+| Float32Array | 新的ArkTS Float32Array实例。可能的原因：1.必填参数未指定； |
 
 ## reduce
 
@@ -817,8 +769,6 @@ reduce(callbackFn: TypedArrayReduceCallback<number, number, Float32Array>): numb
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Float32Array-reduce(callbackFn: TypedArrayReduceCallback<number, number, Float32Array>): number--><!--Device-Float32Array-reduce(callbackFn: TypedArrayReduceCallback<number, number, Float32Array>): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -852,8 +802,6 @@ reduce<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Float32Array>
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Float32Array-reduce<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Float32Array>, initialValue: U): U--><!--Device-Float32Array-reduce<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Float32Array>, initialValue: U): U-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -889,8 +837,6 @@ reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Float32A
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Float32Array>, initialValue: U): U--><!--Device-Float32Array-reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Float32Array>, initialValue: U): U-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -898,7 +844,7 @@ reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Float32A
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)&lt;U, number, Float32Array&gt; | 是 | 对Float32Array中的每个元素调用的函数。 |
-| initialValue | U | 是 | 作为回调函数首次调用第一个参数的值。 <br>如果未提供初始值，则使用Float32Array的最后一个元素， <br>并且回调函数从倒数第二个元素开始调用。 |
+| initialValue | U | 是 | 作为回调函数首次调用第一个参数的值。 如果未提供初始值，则使用Float32Array的最后一个元素， 并且回调函数从倒数第二个元素开始调用。 |
 
 **返回值：**
 
@@ -924,8 +870,6 @@ reduceRight(callbackFn: TypedArrayReduceCallback<number, number, Float32Array>):
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Float32Array-reduceRight(callbackFn: TypedArrayReduceCallback<number, number, Float32Array>): number--><!--Device-Float32Array-reduceRight(callbackFn: TypedArrayReduceCallback<number, number, Float32Array>): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -960,8 +904,6 @@ reverse(): Float32Array
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-reverse(): Float32Array--><!--Device-Float32Array-reverse(): Float32Array-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -989,15 +931,13 @@ set(array: ArrayLike<number>, offset?: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-set(array: ArrayLike<number>, offset?: number): void--><!--Device-Float32Array-set(array: ArrayLike<number>, offset?: number): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| array | [ArrayLike](../../apis-na/arkts-apis/arkts-na-arraylike-i.md)&lt;number&gt; | 是 | 用于设置的ArrayLike对象。 |
+| array | ArrayLike & lt;number & gt; | 是 | 用于设置的ArrayLike对象。 |
 | offset | number | 否 | 写入的起始位置。默认为0。 |
 
 **错误码：**
@@ -1018,8 +958,6 @@ slice(start?: number, end?: number): Float32Array
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Float32Array-slice(start?: number, end?: number): Float32Array--><!--Device-Float32Array-slice(start?: number, end?: number): Float32Array-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1055,8 +993,6 @@ some(predicate: TypedArrayPredicateFn<number, Float32Array>): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-some(predicate: TypedArrayPredicateFn<number, Float32Array>): boolean--><!--Device-Float32Array-some(predicate: TypedArrayPredicateFn<number, Float32Array>): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1090,8 +1026,6 @@ sort(compareFn?: TypedArrayCompareFn<number>): Float32Array
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-sort(compareFn?: TypedArrayCompareFn<number>): Float32Array--><!--Device-Float32Array-sort(compareFn?: TypedArrayCompareFn<number>): Float32Array-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1124,8 +1058,6 @@ subarray(begin?: number, end?: number): Float32Array
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Float32Array-subarray(begin?: number, end?: number): Float32Array--><!--Device-Float32Array-subarray(begin?: number, end?: number): Float32Array-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1161,8 +1093,6 @@ toLocaleString(): string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-toLocaleString(): string--><!--Device-Float32Array-toLocaleString(): string-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -1189,8 +1119,6 @@ toString(): string
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Float32Array-toString(): string--><!--Device-Float32Array-toString(): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1219,15 +1147,13 @@ values(): IterableIterator<number>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-values(): IterableIterator<number>--><!--Device-Float32Array-values(): IterableIterator<number>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;number&gt; | 迭代器对象。 |
+| IterableIterator & lt;number & gt; | 迭代器对象。 |
 
 **错误码：**
 
@@ -1236,21 +1162,19 @@ values(): IterableIterator<number>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The values method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-## BYTES_PER_ELEMENT
+## [index: number]
 
 ```TypeScript
-static readonly BYTES_PER_ELEMENT: number
+[index: number]: number
 ```
 
-ArkTS Float32Array中每个元素所占的字节数。
+返回ArkTS Float32Array指定索引位置的元素。
 
 **类型：** number
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Float32Array-static readonly BYTES_PER_ELEMENT: number--><!--Device-Float32Array-static readonly BYTES_PER_ELEMENT: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1268,8 +1192,6 @@ ArkTS Float32Array底层使用的buffer。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-readonly buffer: ArrayBuffer--><!--Device-Float32Array-readonly buffer: ArrayBuffer-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## byteLength
@@ -1285,8 +1207,6 @@ ArkTS Float32Array所占的字节数。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Float32Array-readonly byteLength: number--><!--Device-Float32Array-readonly byteLength: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1304,7 +1224,21 @@ ArkTS Float32Array距离其ArrayBuffer起始位置的字节偏移。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-readonly byteOffset: number--><!--Device-Float32Array-readonly byteOffset: number-End-->
+**系统能力：** SystemCapability.Utils.Lang
+
+## BYTES_PER_ELEMENT
+
+```TypeScript
+static readonly BYTES_PER_ELEMENT: number
+```
+
+ArkTS Float32Array中每个元素所占的字节数。
+
+**类型：** number
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1322,7 +1256,4 @@ ArkTS Float32Array元素个数。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Float32Array-readonly length: number--><!--Device-Float32Array-readonly length: number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

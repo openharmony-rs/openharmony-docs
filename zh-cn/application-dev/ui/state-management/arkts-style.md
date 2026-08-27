@@ -20,22 +20,22 @@
 
 ## 装饰器使用说明
 
-- 当前\@Styles仅支持[通用属性/apis-arkui/arkui-ts/ts-component-general-attributes.md)和[通用事件/apis-arkui/arkui-ts/ts-component-general-events.md)。
+- 当前\@Styles仅支持通用属性和通用事件。
 
-- \@Styles可以定义在组件内或全局，在全局定义时需在方法名前面添加function关键字，组件内定义时则不需要添加function关键字。请参考用例[组件内styles和全局styles的用法](#组件内styles和全局styles的用法)。
+- \@Styles可以定义在组件内或全局，在全局定义时需在方法名前面添加function关键字，组件内定义时则不需要添加function关键字。请参考用例组件内styles和全局styles的用法。
 
 - 组件内\@Styles的优先级高于全局\@Styles。框架优先找当前组件内的\@Styles，如果找不到，则会全局查找。
 
 > **说明：**
 >
-> 只能在当前文件内使用@Styles，不支持export。
+> 只能在当前文件内使用\@Styles，不支持export。
 >
-> 若需要实现样式导出，推荐使用[AttributeModifier](../../ui/arkts-user-defined-extension-attributeModifier.md)。
+> 若需要实现样式导出，推荐使用AttributeModifier。
 
 
 定义在组件内的\@Styles可以通过this访问组件的常量和状态变量，并可以在\@Styles里通过事件来改变状态变量的值，示例如下：
 
-<!-- @[inner_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets) -->
+<!-- @[inner_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -54,6 +54,7 @@ struct FancyUse {
 
   build() {
     Column() {
+      // 通过fancy给Button提供样式设置
       Button('change height')
         .fancy()
     }
@@ -87,7 +88,7 @@ struct FancyUse {
   }
 ```
 
-- 不支持在\@Styles方法内使用逻辑组件，逻辑组件内的属性不生效。
+- 不支持在\@Styles方法内使用条件渲染语句，条件渲染语句内的属性不生效。
 
 ``` TypeScript
   // 错误写法

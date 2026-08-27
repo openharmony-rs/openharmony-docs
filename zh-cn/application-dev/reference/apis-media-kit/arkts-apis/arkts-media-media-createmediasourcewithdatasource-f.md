@@ -20,21 +20,19 @@ function createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSou
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-media-function createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSource | undefined--><!--Device-media-function createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSource | undefined-End-->
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dataSrc | [AVDataSrcDescriptor](arkts-media-multimedia-media-avdatasrcdescriptor-i.md) | 是 | 流式媒体资源描述符。 |
+| dataSrc | [AVDataSrcDescriptor](arkts-media-media-avdatasrcdescriptor-i.md) | 是 | 流式媒体资源描述符。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [MediaSource](arkts-media-multimedia-media-mediasource-i.md) | 返回MediaSource，用于媒体资源设置。 |
+| [MediaSource](arkts-media-media-mediasource-i.md) \| undefined | 返回MediaSource，用于媒体资源设置。 |
 
 **示例**
 
@@ -59,6 +57,5 @@ let dataSrc: media.AVDataSrcDescriptor = {
     return readLen > 0 ? readLen : -1;
   }
 }
-let mediaSource : media.MediaSource | undefined = media.createMediaSourceWithDataSource(dataSrc);
+let mediaSource : media.MediaSource | undefined =  media.createMediaSourceWithDataSource(dataSrc);
 ```
-

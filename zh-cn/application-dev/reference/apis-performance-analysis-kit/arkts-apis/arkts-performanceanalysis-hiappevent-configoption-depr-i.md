@@ -8,8 +8,6 @@
 
 **替代接口：** [ConfigOption](arkts-performanceanalysis-hiappevent-configoption-i.md)
 
-<!--Device-hiAppEvent-interface ConfigOption--><!--Device-hiAppEvent-interface ConfigOption-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 ## 导入模块
@@ -33,8 +31,6 @@ disable?: boolean
 
 **替代接口：** [disable](arkts-performanceanalysis-hiappevent-configoption-i.md#disable)
 
-<!--Device-ConfigOption-disable?: boolean--><!--Device-ConfigOption-disable?: boolean-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 ## maxStorage
@@ -53,7 +49,4 @@ maxStorage?: string
 
 **替代接口：** [maxStorage](arkts-performanceanalysis-hiappevent-configoption-i.md#maxstorage)
 
-<!--Device-ConfigOption-maxStorage?: string--><!--Device-ConfigOption-maxStorage?: string-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 24
 
-<!--Device-deviceSettings-enum SettingsItem--><!--Device-deviceSettings-enum SettingsItem-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DEVICE_NAME
@@ -19,8 +17,6 @@ DEVICE_NAME = 0
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SettingsItem-DEVICE_NAME = 0--><!--Device-SettingsItem-DEVICE_NAME = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,7 +32,4 @@ FLOATING_NAVIGATION = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingsItem-FLOATING_NAVIGATION = 1--><!--Device-SettingsItem-FLOATING_NAVIGATION = 1-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

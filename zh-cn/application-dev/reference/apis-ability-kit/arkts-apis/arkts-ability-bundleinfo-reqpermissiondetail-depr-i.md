@@ -1,14 +1,16 @@
 # ReqPermissionDetail
 
-> **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用[ReqPermissionDetail](#reqpermissiondetail)替代。 应用运行时需向系统申请的权限集合的详细信息。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[ReqPermissionDetail](#reqpermissiondetail)替代。
+应用运行时需向系统申请的权限集合的详细信息。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** bundleInfo
-
-<!--Device-unnamed-export interface ReqPermissionDetail--><!--Device-unnamed-export interface ReqPermissionDetail-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -30,8 +32,6 @@ name: string
 
 **替代接口：** name
 
-<!--Device-ReqPermissionDetail-name: string--><!--Device-ReqPermissionDetail-name: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## reason
@@ -51,8 +51,6 @@ reason: string
 **废弃版本：** 9
 
 **替代接口：** reason
-
-<!--Device-ReqPermissionDetail-reason: string--><!--Device-ReqPermissionDetail-reason: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -74,7 +72,4 @@ usedScene: UsedScene
 
 **替代接口：** usedScene
 
-<!--Device-ReqPermissionDetail-usedScene: UsedScene--><!--Device-ReqPermissionDetail-usedScene: UsedScene-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
-

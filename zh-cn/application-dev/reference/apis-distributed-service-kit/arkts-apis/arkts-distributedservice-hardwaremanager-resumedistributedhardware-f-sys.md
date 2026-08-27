@@ -14,11 +14,9 @@ function resumeDistributedHardware(description: HardwareDescriptor): Promise<voi
 
 恢复被控端分布式硬件业务。使用promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **需要权限：** ohos.permission.ACCESS_DISTRIBUTED_HARDWARE
-
-<!--Device-hardwareManager-function resumeDistributedHardware(description: HardwareDescriptor): Promise<void>--><!--Device-hardwareManager-function resumeDistributedHardware(description: HardwareDescriptor): Promise<void>-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DistributedHardwareFWK
 
@@ -34,17 +32,17 @@ function resumeDistributedHardware(description: HardwareDescriptor): Promise<voi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Input parameter error. |
 | 24200101 | The specified distributed hardware is not started. |
 | 24200102 | The specified source device is not connected. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
 **示例**
 
@@ -67,4 +65,3 @@ try {
   console.error(`resume distributed hardware failed, code: ${err.code}, message: ${err.message}`);
 }
 ```
-

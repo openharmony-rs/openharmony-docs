@@ -10,8 +10,6 @@ type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-avMusicTemplate-type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise<void>--><!--Device-avMusicTemplate-type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise<void>-End-->
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
@@ -24,5 +22,4 @@ type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |

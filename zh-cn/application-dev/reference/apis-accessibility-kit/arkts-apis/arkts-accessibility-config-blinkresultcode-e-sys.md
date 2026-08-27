@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-config-export enum BlinkResultCode--><!--Device-config-export enum BlinkResultCode-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -21,8 +19,6 @@ SUCCESS = 0
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BlinkResultCode-SUCCESS = 0--><!--Device-BlinkResultCode-SUCCESS = 0-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -40,8 +36,6 @@ ALREADY_FLASHING = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BlinkResultCode-ALREADY_FLASHING = 1--><!--Device-BlinkResultCode-ALREADY_FLASHING = 1-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -57,8 +51,6 @@ DEVICE_IN_USE = 2
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BlinkResultCode-DEVICE_IN_USE = 2--><!--Device-BlinkResultCode-DEVICE_IN_USE = 2-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -76,8 +68,6 @@ FLASH_BLINKING_UNSUPPORTED = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BlinkResultCode-FLASH_BLINKING_UNSUPPORTED = 3--><!--Device-BlinkResultCode-FLASH_BLINKING_UNSUPPORTED = 3-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -93,8 +83,6 @@ SCREEN_BLINKING_UNSUPPORTED = 4
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BlinkResultCode-SCREEN_BLINKING_UNSUPPORTED = 4--><!--Device-BlinkResultCode-SCREEN_BLINKING_UNSUPPORTED = 4-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -112,9 +100,6 @@ FEATURE_DISABLED = 5
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BlinkResultCode-FEATURE_DISABLED = 5--><!--Device-BlinkResultCode-FEATURE_DISABLED = 5-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
-

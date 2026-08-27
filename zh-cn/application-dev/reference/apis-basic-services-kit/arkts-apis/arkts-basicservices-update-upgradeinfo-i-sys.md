@@ -2,9 +2,7 @@
 
 升级信息。
 
-**起始版本：** 23
-
-<!--Device-update-export interface UpgradeInfo--><!--Device-update-export interface UpgradeInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -26,9 +24,7 @@ businessType: BusinessType
 
 **类型：** BusinessType
 
-**起始版本：** 23
-
-<!--Device-UpgradeInfo-businessType: BusinessType--><!--Device-UpgradeInfo-businessType: BusinessType-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -44,11 +40,8 @@ upgradeApp: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-UpgradeInfo-upgradeApp: string--><!--Device-UpgradeInfo-upgradeApp: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Update.UpdateService
 
 **系统接口：** 此接口为系统接口。
-

@@ -10,15 +10,12 @@
 
 **替代接口：** [ReminderRequestCalendar](arkts-backgroundtasks-reminderagentmanager-reminderrequestcalendar-i.md)
 
-<!--Device-reminderAgent-interface ReminderRequestCalendar--><!--Device-reminderAgent-interface ReminderRequestCalendar-End-->
-
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 ## 导入模块
 
 ```TypeScript
 import { reminderAgent } from '@kit.BackgroundTasksKit';
-import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
 ## dateTime
@@ -36,8 +33,6 @@ dateTime: LocalDateTime
 **废弃版本：** 9
 
 **替代接口：** dateTime
-
-<!--Device-ReminderRequestCalendar-dateTime: LocalDateTime--><!--Device-ReminderRequestCalendar-dateTime: LocalDateTime-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -57,8 +52,6 @@ repeatDays?: Array<number>
 
 **替代接口：** repeatDays
 
-<!--Device-ReminderRequestCalendar-repeatDays?: Array<number>--><!--Device-ReminderRequestCalendar-repeatDays?: Array<number>-End-->
-
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 ## repeatMonths
@@ -77,7 +70,4 @@ repeatMonths?: Array<number>
 
 **替代接口：** repeatMonths
 
-<!--Device-ReminderRequestCalendar-repeatMonths?: Array<number>--><!--Device-ReminderRequestCalendar-repeatMonths?: Array<number>-End-->
-
 **系统能力：** SystemCapability.Notification.ReminderAgent
-

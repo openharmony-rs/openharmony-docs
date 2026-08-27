@@ -2,9 +2,7 @@
 
 窗口类型枚举。
 
-**起始版本：** 23
-
-<!--Device-window-enum WindowType--><!--Device-window-enum WindowType-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -14,15 +12,14 @@
 TYPE_INPUT_METHOD
 ```
 
-表示输入法窗口。 **说明：** 从API version 9开始支持，从API version 13开始废弃，无替代窗口类型，输入法相关控制都请调用 [输入法框架侧接口](../../../inputmethod/inputmethod-application-guide.md)执行。
+表示输入法窗口。  
+**说明：** 从API version 9开始支持，从API version 13开始废弃，无替代窗口类型，输入法相关控制都请调用 [输入法框架侧接口](../../../inputmethod/inputmethod-application-guide.md)执行。
 
 **起始版本：** 9
 
 **废弃版本：** 13
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_INPUT_METHOD--><!--Device-WindowType-TYPE_INPUT_METHOD-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -36,11 +33,9 @@ TYPE_STATUS_BAR = 3
 
 表示状态栏窗口。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_STATUS_BAR = 3--><!--Device-WindowType-TYPE_STATUS_BAR = 3-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -54,11 +49,9 @@ TYPE_PANEL = 4
 
 表示通知栏。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_PANEL = 4--><!--Device-WindowType-TYPE_PANEL = 4-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -72,11 +65,9 @@ TYPE_KEYGUARD = 5
 
 表示锁屏。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_KEYGUARD = 5--><!--Device-WindowType-TYPE_KEYGUARD = 5-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -90,11 +81,9 @@ TYPE_VOLUME_OVERLAY = 6
 
 表示音量条。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_VOLUME_OVERLAY = 6--><!--Device-WindowType-TYPE_VOLUME_OVERLAY = 6-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -108,11 +97,9 @@ TYPE_NAVIGATION_BAR = 7
 
 表示导航栏窗口。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_NAVIGATION_BAR = 7--><!--Device-WindowType-TYPE_NAVIGATION_BAR = 7-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -126,11 +113,9 @@ TYPE_WALLPAPER = 9
 
 表示壁纸。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_WALLPAPER = 9--><!--Device-WindowType-TYPE_WALLPAPER = 9-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -144,11 +129,9 @@ TYPE_DESKTOP = 10
 
 表示桌面。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_DESKTOP = 10--><!--Device-WindowType-TYPE_DESKTOP = 10-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -162,11 +145,9 @@ TYPE_LAUNCHER_RECENT = 11
 
 表示多任务中心。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_LAUNCHER_RECENT = 11--><!--Device-WindowType-TYPE_LAUNCHER_RECENT = 11-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -180,11 +161,9 @@ TYPE_LAUNCHER_DOCK = 12
 
 表示桌面Dock栏。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_LAUNCHER_DOCK = 12--><!--Device-WindowType-TYPE_LAUNCHER_DOCK = 12-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -198,11 +177,9 @@ TYPE_VOICE_INTERACTION = 13
 
 表示智慧语音。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_VOICE_INTERACTION = 13--><!--Device-WindowType-TYPE_VOICE_INTERACTION = 13-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -216,11 +193,9 @@ TYPE_POINTER = 14
 
 表示鼠标。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_POINTER = 14--><!--Device-WindowType-TYPE_POINTER = 14-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -234,11 +209,9 @@ TYPE_FLOAT_CAMERA = 15
 
 表示相机类型悬浮窗。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_FLOAT_CAMERA = 15--><!--Device-WindowType-TYPE_FLOAT_CAMERA = 15-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -252,11 +225,9 @@ TYPE_SCREENSHOT = 17
 
 表示截屏窗口。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_SCREENSHOT = 17--><!--Device-WindowType-TYPE_SCREENSHOT = 17-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -270,11 +241,9 @@ TYPE_SYSTEM_TOAST = 18
 
 表示顶层提示窗口。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_SYSTEM_TOAST = 18--><!--Device-WindowType-TYPE_SYSTEM_TOAST = 18-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -288,11 +257,9 @@ TYPE_DIVIDER = 19
 
 表示分屏条。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_DIVIDER = 19--><!--Device-WindowType-TYPE_DIVIDER = 19-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -306,11 +273,9 @@ TYPE_GLOBAL_SEARCH = 20
 
 表示全局搜索窗口。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_GLOBAL_SEARCH = 20--><!--Device-WindowType-TYPE_GLOBAL_SEARCH = 20-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -324,11 +289,9 @@ TYPE_HANDWRITE = 21
 
 表示手写笔窗口。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_HANDWRITE = 21--><!--Device-WindowType-TYPE_HANDWRITE = 21-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -342,11 +305,9 @@ TYPE_WALLET_SWIPE_CARD = 22
 
 表示钱包刷卡窗口。
 
-**起始版本：** 23
+**起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_WALLET_SWIPE_CARD = 22--><!--Device-WindowType-TYPE_WALLET_SWIPE_CARD = 22-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -360,11 +321,9 @@ TYPE_SCREEN_CONTROL = 23
 
 表示锁定触控的顶层窗口，用于拦截屏幕触摸和点击事件。
 
-**起始版本：** 23
+**起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_SCREEN_CONTROL = 23--><!--Device-WindowType-TYPE_SCREEN_CONTROL = 23-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -382,8 +341,6 @@ TYPE_FLOAT_NAVIGATION.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowType-TYPE_FLOAT_NAVIGATION = 22--><!--Device-WindowType-TYPE_FLOAT_NAVIGATION = 22-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -396,11 +353,9 @@ TYPE_DYNAMIC = 25
 
 表示可设置窗口层级的系统窗口。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_DYNAMIC = 25--><!--Device-WindowType-TYPE_DYNAMIC = 25-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -414,13 +369,10 @@ TYPE_MUTISCREEN_COLLABORATION = 26
 
 表示多屏协同窗口。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowType-TYPE_MUTISCREEN_COLLABORATION = 26--><!--Device-WindowType-TYPE_MUTISCREEN_COLLABORATION = 26-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
-

@@ -17,9 +17,9 @@ typedef struct VkNativeBufferOHOS {...} VkNativeBufferOHOS
 
 **起始版本：** 10
 
-**相关模块：** [Vulkan](capi-vulkan.md)
+**相关模块：** Vulkan
 
-**所在头文件：** [vulkan_ohos.h](capi-vulkan-ohos-h.md)
+**所在头文件：** vulkan_ohos.h
 
 ## 汇总
 
@@ -29,4 +29,4 @@ typedef struct VkNativeBufferOHOS {...} VkNativeBufferOHOS
 | -- | -- |
 | VkStructureType sType | 结构体类型。 |
 | const void*        pNext | 下一级结构体指针，pNext为空或者下一级结构体指针。 |
-| struct [OHBufferHandle*](capi-vulkan-ohbufferhandle.md)      handle | 显存句柄。 |
+| struct OHBufferHandle*      handle | 显存句柄。 |

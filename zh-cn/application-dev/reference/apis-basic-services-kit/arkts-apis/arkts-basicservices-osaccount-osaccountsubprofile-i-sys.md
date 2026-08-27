@@ -1,10 +1,8 @@
 # OsAccountSubProfile（系统接口）
 
-系统账号子Profile的定义
+系统账号子身份资料的定义。
 
 **起始版本：** 26.0.0
-
-<!--Device-osAccount-interface OsAccountSubProfile--><!--Device-osAccount-interface OsAccountSubProfile-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -16,21 +14,37 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
+## createTime
+
+```TypeScript
+createTime: number
+```
+
+子身份资料的创建时间，单位为ms。
+
+**类型：** number
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
 ## distributedInfo
 
 ```TypeScript
 distributedInfo?: distributedAccount.DistributedInfo
 ```
 
-系统账号子profile绑定的分布式账号信息。
+系统账号子身份资料绑定的分布式账号信息，默认为undefined。
 
 **类型：** distributedAccount.DistributedInfo
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-OsAccountSubProfile-distributedInfo?: distributedAccount.DistributedInfo--><!--Device-OsAccountSubProfile-distributedInfo?: distributedAccount.DistributedInfo-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -39,18 +53,16 @@ distributedInfo?: distributedAccount.DistributedInfo
 ## id
 
 ```TypeScript
-id: int
+id: number
 ```
 
-系统账号子profile的标识符。 取值范围为全体整数。
+系统账号子身份资料的标识符。 取值范围为全体整数。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-OsAccountSubProfile-id: int--><!--Device-OsAccountSubProfile-id: int-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -59,18 +71,16 @@ id: int
 ## index
 
 ```TypeScript
-index: int
+index: number
 ```
 
-系统账号子profile的位置索引，取值范围：0~子profile个数减1。 该索引在每个系统账号下唯一，由系统在创建子Profile时自动分配。 取值范围为全体整数。
+系统账号子身份资料的位置索引，取值范围：0~子身份资料个数减1。该索引在每个系统账号下唯一，由系统在创建子身份资料时自动分配。 取值范围为全体整数。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-OsAccountSubProfile-index: int--><!--Device-OsAccountSubProfile-index: int-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -79,20 +89,17 @@ index: int
 ## osAccountLocalId
 
 ```TypeScript
-osAccountLocalId: int
+osAccountLocalId: number
 ```
 
-子profile所属系统账号的本地标识符。 取值范围为全体整数。
+子身份资料所属系统账号的本地标识符。 取值范围为全体整数。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-OsAccountSubProfile-osAccountLocalId: int--><!--Device-OsAccountSubProfile-osAccountLocalId: int-End-->
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
-

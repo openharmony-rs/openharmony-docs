@@ -1,7 +1,7 @@
 # NetConn_NetAddr
 
 ```c
-typedef struct NetConn_NetAddr {...} NetConn_NetAddr
+struct NetConn_NetAddr {...}
 ```
 
 ## 概述

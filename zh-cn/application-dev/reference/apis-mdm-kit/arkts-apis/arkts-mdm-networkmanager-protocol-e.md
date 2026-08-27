@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-networkManager-enum Protocol--><!--Device-networkManager-enum Protocol-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## ALL
@@ -19,8 +17,6 @@ ALL = 0
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Protocol-ALL = 0--><!--Device-Protocol-ALL = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,8 +32,6 @@ TCP = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Protocol-TCP = 1--><!--Device-Protocol-TCP = 1-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## UDP
@@ -51,8 +45,6 @@ UDP = 2
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Protocol-UDP = 2--><!--Device-Protocol-UDP = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -68,7 +60,4 @@ ICMP = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Protocol-ICMP = 3--><!--Device-Protocol-ICMP = 3-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

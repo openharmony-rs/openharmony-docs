@@ -9,7 +9,7 @@
 当开发者掌握了状态管理的基本概念后，通常会尝试开发自己的应用，在应用开发初期，如果未能精心规划项目结构，随着项目扩展和复杂化，状态变量的增多将导致组件间关系变得错综复杂。此时，开发新功能可能引起连锁反应，维护成本也会增加。为此，本文旨在介绍MVVM模式以及ArkUI的UI开发模式与MVVM的关系，指导开发者如何设计项目结构，以便在产品迭代和升级时能更轻松地开发和维护。
 
 
-本文档涵盖了大多数状态管理V1装饰器，所以在阅读本文档前，建议开发者对状态管理V1有一定的了解。建议提前阅读：[状态管理概述](./arkts-state-management-overview.md)和状态管理V1装饰器相关文档。
+本文档涵盖了大多数状态管理V1装饰器，所以在阅读本文档前，建议开发者对状态管理V1有一定的了解。建议提前阅读：状态管理概述和状态管理V1装饰器相关文档。
 
 ## MVVM模式介绍
 
@@ -39,7 +39,7 @@ ArkUI的UI开发模式即是MVVM模式，而状态变量在MVVM模式中扮演�
 View层通常可以分为下列组件：
 * 页面组件：所有应用基本都是按照页面进行分类的，比如登录页，列表页，编辑页，帮助页，版权页等。每个页面对应需要的数据可能是完全不一样的，也可能多个页面需要的数据是同一套。
 * 业务组件：本身具备本APP部分业务能力的功能组件，典型的就是这个业务组件可能关联了本项目的ViewModel中的数据，不可以被共享给其他项目使用。
-* 通用组件：像系统组件一样，这类组件不会关联本APP中ViewModel的数据，这些组件可实现跨越多个项目进行共享，来完成比较通用的功能。
+* 共享组件：像系统组件一样，这类组件不会关联本APP中ViewModel的数据，这些组件可实现跨越多个项目进行共享，来完成比较通用的功能。
 
 **Model层**
 
@@ -85,7 +85,7 @@ Model层是应用的原始数据提供者，代表应用的核心业务逻辑和
 
 ### @State状态变量
 
-* [@State](./arkts-state.md)装饰器是最常用的装饰器之一，用于定义状态变量。通常，这些状态变量作为父组件的数据源，开发者点击时，触发状态变量的更新，刷新UI。
+* @State装饰器是最常用的装饰器之一，用于定义状态变量。通常，这些状态变量作为父组件的数据源，开发者点击时，触发状态变量的更新，刷新UI。
 
 <!-- @[state_source_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/StateIndex.ets) -->
 
@@ -148,8 +148,8 @@ struct StateIndex {
 
 上述示例中，所有代码都写在了`@Entry`组件中。随着需要渲染的组件越来越多，`@Entry`组件必然需要进行拆分，为此，拆分出的子组件就需要使用\@Prop和\@Link装饰器：
 
-* [\@Prop](./arkts-prop.md)是父子间单向传递，子组件会深拷贝父组件数据，可从父组件更新，也可自己更新数据，但不会同步回父组件。
-* [\@Link](./arkts-link.md)是父子间双向传递，父组件改变，会通知所有的\@Link，同时\@Link的更新也会通知父组件的数据源进行刷新。
+* \@Prop是父子间单向传递，子组件会深拷贝父组件数据，可从父组件更新，也可自己更新数据，但不会同步回父组件。
+* \@Link是父子间双向传递，父组件改变，会通知所有的\@Link，同时\@Link的更新也会通知父组件的数据源进行刷新。
 
 <!-- @[prop_link_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/PropLinkIndex.ets) -->
 
@@ -227,7 +227,7 @@ struct ThingComponent2 {
   @Prop isFinished: boolean;
 
   build() {
-    // 待办事项1
+      // 待办事项2
     Row({ space: 15 }) {
       if (this.isFinished) {
         // 请将$r('app.media.finished')替换为实际资源文件
@@ -289,7 +289,7 @@ struct PropLinkIndex {
 
 ### 循环渲染组件
 
-* 上个示例虽然拆分出了子组件，但发现组件1和组件2的代码非常相似，当渲染的组件除了数据外，其他设置都相同时，此时就需要使用[ForEach循环渲染/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)。
+* 上个示例虽然拆分出了子组件，但发现组件1和组件2的代码非常相似，当渲染的组件除了数据外，其他设置都相同时，此时就需要使用ForEach循环渲染。
 * ForEach使用之后，冗余代码变得更少，并且代码结构更加清晰。
 
 <!-- @[foreach_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/ForEachIndex.ets) --> 
@@ -336,7 +336,7 @@ struct ForEachThingComponent {
   @Prop thing: string;
 
   build() {
-    // 待办事项1
+      // 待办事项
     Row({ space: 15 }) {
       if (this.isFinished) {
         // 请将$r('app.media.finished')替换为实际资源文件
@@ -388,7 +388,6 @@ struct ForEachIndex {
     // 请将$r('app.string.sleep')替换为实际资源文件，在本示例中该资源文件的value值为"1.30 睡觉"
     $r('app.string.sleep')
   ];
-  context1 = this.getUIContext().getHostContext();
 
   aboutToAppear(): void {
     for (let i = 0; i < this.planList.length; i++) {
@@ -406,7 +405,7 @@ struct ForEachIndex {
 
       List() {
         ForEach(this.planList, (item: string) => {
-          // 待办事项1
+          // 待办事项
           ForEachThingComponent({ isFinished: this.isFinished, thing: item })
             .margin(5)
         })
@@ -428,7 +427,7 @@ struct ForEachIndex {
 ### @Builder方法
 
 * Builder方法用于组件内定义方法，可以使得相同代码可以在组件内进行复用。
-* 本示例不仅使用了[@Builder](./arkts-builder.md)方法进行去重，还对数据进行了移除，可以看到此时代码更加清晰易读，相对于最开始的代码，`@Entry`组件基本只用于处理页面构建逻辑，而不处理大量与页面设计无关的内容。
+* 本示例不仅使用了@Builder方法进行去重，还对数据进行了移除，可以看到此时代码更加清晰易读，相对于最开始的代码，`@Entry`组件基本只用于处理页面构建逻辑，而不处理大量与页面设计无关的内容。
 
 <!-- @[builder_source_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/BuilderIndex.ets) --> 
 
@@ -505,7 +504,7 @@ struct BuilderThingComponent {
   }
 
   build() {
-    // 待办事项1
+      // 待办事项
     Row({ space: 15 }) {
       if (this.isFinished) {
         // 请将$r('app.media.finished')替换为实际资源文件
@@ -555,7 +554,7 @@ struct BuilderIndex {
 
       List() {
         ForEach(this.data.planList, (item: string) => {
-          // 待办事项1
+          // 待办事项
           BuilderThingComponent({ isFinished: this.isFinished, thing: item })
             .margin(5)
         })
@@ -584,25 +583,11 @@ struct BuilderIndex {
 
 上一章节展示了非MVVM模式下的代码组织方式。随着主页面代码的增加，应该采取合理的分层策略，使项目结构清晰，组件之间不互相引用，避免后期维护时牵一发而动全身，增加功能更新的困难。本章将通过对MVVM的核心文件组织模式，向开发者展示如何使用MVVM来重构上一章节的代码。
 
-### MVVM文件结构说明
-
-```txt
-├── src
-│   ├── ets
-│   │   ├── pages 存放页面组件。
-│   │   ├── views 存放业务组件。
-│   │   ├── shares 存放通用组件。
-│   │   └── viewmodel 数据服务。
-│   │   │   ├── LoginViewModel.ets 登录页ViewModel。
-│   │   │   └── xxxViewModel.ets 其他页ViewModel。
-│
-```
-
 ### 分层设计技巧
 
 **Model层**
 
-* model层存放本应用核心数据结构，这层本身和UI开发关系不大，让用户按照自己的业务逻辑进行封装。
+* Model层存放本应用核心数据结构，这层本身和UI开发关系不大，让用户按照自己的业务逻辑进行封装。
 
 **ViewModel层**
 
@@ -616,7 +601,7 @@ struct BuilderIndex {
 
 **View层**
 
-View层根据需要来组织，但View层需要区分一下三种组件：
+View层根据需要来组织，但View层需要区分以下三种组件：
 
 * 页面组件：提供整体页面布局，实现多页面之间的跳转，前后台事件处理等页面内容。
 * 业务组件：被页面引用，构建出页面。
@@ -635,17 +620,17 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 ```txt
 ├── src
 │   ├── ets
-│   │   ├── model
+│   │   ├── model // 存放数据结构
 │   │   │   ├── ThingModel.ets
 │   │   │   └── TodoListModel.ets
-│   │   ├── pages
+│   │   ├── pages // 存放页面组件
 │   │   │   ├── Index.ets
-│   │   ├── views
+│   │   ├── views // 存放业务组件
 │   │   │   ├── AllChooseComponent.ets
 │   │   │   ├── ThingComponent.ets
 │   │   │   ├── TodoComponent.ets
 │   │   │   └── TodoListComponent.ets
-│   │   ├── viewmodel
+│   │   ├── viewmodel // 存放数据服务
 │   │   │   ├── ThingViewModel.ets
 │   │   │   └── TodoListViewModel.ets
 │   └── resources
@@ -892,7 +877,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
   * ThingViewModel.ets
 
-  <!-- @[thing_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/ThingViewModel.ets) --> 
+  <!-- @[thing_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/ThingViewModel.ets) -->
   
   ``` TypeScript
   import ThingModel from '../model/ThingModel';
@@ -913,7 +898,8 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     }
   
     addSuffixes(): void {
-      this.thingName += 'lala';
+      // 请将$r('app.string.la_la')替换为实际资源文件，在本示例中该资源文件的value值为"啦"
+      this.thingName += resource.resourceToString($r('app.string.la_la'));
     }
   }
   ```

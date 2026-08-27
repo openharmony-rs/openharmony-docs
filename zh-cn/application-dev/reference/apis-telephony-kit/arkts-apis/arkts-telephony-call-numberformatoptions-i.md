@@ -2,16 +2,13 @@
 
 格式化号码的可选参数。
 
-**起始版本：** 23
-
-<!--Device-call-export interface NumberFormatOptions--><!--Device-call-export interface NumberFormatOptions-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
 ## 导入模块
 
 ```TypeScript
-import { call } from '@kit.TelephonyKit';
 ```
 
 ## countryCode
@@ -24,9 +21,6 @@ countryCode?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-NumberFormatOptions-countryCode?: string--><!--Device-NumberFormatOptions-countryCode?: string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CallManager
-

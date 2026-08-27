@@ -4,18 +4,11 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface ScreenCaptureConfig--><!--Device-unnamed-declare interface ScreenCaptureConfig-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## captureMode
@@ -32,7 +25,4 @@ Web屏幕捕获模式。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ScreenCaptureConfig-captureMode: WebCaptureMode--><!--Device-ScreenCaptureConfig-captureMode: WebCaptureMode-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

@@ -1,12 +1,10 @@
-# AlertDialogParamWithConfirm(AlertDialog)
+# AlertDialogParamWithConfirm
 
-继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md)。 confirm参数优先级：fontColor、backgroundColor > style > defaultFocus
+继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md)。confirm参数优先级：fontColor、backgroundColor &gt; style &gt; defaultFocus
 
 **继承/实现关系：** AlertDialogParamWithConfirm extends [AlertDialogParam](arkts-arkui-alertdialogparam-i.md)
 
 **起始版本：** 7
-
-<!--Device-unnamed-declare interface AlertDialogParamWithConfirm--><!--Device-unnamed-declare interface AlertDialogParamWithConfirm-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,7 +27,4 @@ confirm?: AlertDialogButtonBaseOptions
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AlertDialogParamWithConfirm-confirm?: AlertDialogButtonBaseOptions--><!--Device-AlertDialogParamWithConfirm-confirm?: AlertDialogButtonBaseOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

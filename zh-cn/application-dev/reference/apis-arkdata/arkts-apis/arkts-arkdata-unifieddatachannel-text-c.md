@@ -4,9 +4,7 @@
 
 **继承/实现关系：** Text extends [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md)
 
-**起始版本：** 23
-
-<!--Device-unifiedDataChannel-class Text--><!--Device-unifiedDataChannel-class Text-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -22,7 +20,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 details?: Record<string, string>
 ```
 
-是一个字典类型对象，key和value都是string类型，用于描述文本内容。例如，可生成一个details内容为 { "title":"标题", "content":"内容" } 的数据对象，用于描述一篇文章。非必填字段，默认值为空字典对象。
+是一个字典类型对象，key和value都是string类型，用于描述文本内容。例如，可生成一个details内容为{"title":"标题","content":"内容"}的数据对象，用于描述一篇文章。非必填字段，默认值为空字典对象。
 
 **类型：** Record&lt;string, string&gt;
 
@@ -32,7 +30,15 @@ details?: Record<string, string>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Text-details?: Record<string, string>--><!--Device-Text-details?: Record<string, string>-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
+**示例**
+
+```TypeScript
+let text = new unifiedDataChannel.Text();
+text.details = {
+  title: 'MyTitle',
+  content: 'This is content'
+};
+let unifiedData = new unifiedDataChannel.UnifiedData(text);
+```

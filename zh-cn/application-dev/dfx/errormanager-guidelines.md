@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -11,15 +11,15 @@
 
 当应用的代码存在规范问题或错误时，会在运行中产生异常和错误，如应用未捕获异常等。在错误产生后，应用会异常退出。错误日志通常会保存在用户本地存储设备中，不方便开发者定位问题。所以，应用开发者可以使用错误管理的接口，在应用退出前，及时将相关错误及日志上报到开发者的服务平台来定位问题。
 
-使用errorManager接口监听异常和错误后，应用不会退出，建议在回调函数执行完后，增加同步退出操作，如果只是为了获取错误日志，建议使用[HiAppEvent订阅事件](hiappevent-intro.md)。
+使用errorManager接口监听异常和错误后，应用不会退出，建议在回调函数执行完后，增加同步退出操作，如果只是为了获取错误日志，建议使用HiAppEvent订阅事件。
 
 > **说明：**
 >
-> 从API版本26.0.0开始，如果已经通过errorManager接口监听了可捕获异常，则HiAppEvent将无法订阅[JsError崩溃](hiappevent-watcher-crash-events.md#jserror崩溃类型检测原理)问题。
+> 从API版本26.0.0开始，如果已经通过errorManager接口监听了可捕获异常，则HiAppEvent将无法订阅JsError崩溃问题。
 
 ## 接口说明
 
-应用错误管理接口由[@ohos.app.ability.errorManager (错误管理模块)/apis-ability-kit/js-apis-app-ability-errorManager.md)提供，使用接口能力前需注册错误观测器，开发者可以通过import引入，详见[开发示例](#开发示例)。
+应用错误管理接口由@ohos.app.ability.errorManager (错误管理模块)提供，使用接口能力前需注册错误观测器，开发者可以通过import引入，详见开发示例。
 
 **错误管理接口功能介绍**：
 
@@ -42,14 +42,14 @@
 
 当采用callback作为异步回调时，可以在callback中进行下一步处理。
 
-当采用Promise对象返回时，可以在Promise对象中类似地处理接口返回值，具体结果码说明见[解除注册结果码](#解除注册结果码)。
+当采用Promise对象返回时，可以在Promise对象中类似地处理接口返回值，具体结果码说明见解除注册结果码。
 
 **错误监听(ErrorObserver)接口功能介绍**：
 
 | 接口名称 | 说明 |
 | -------- | -------- |
 | onUnhandledException(errMsg: string): void | 系统回调接口，应用注册后，当应用产生未捕获的异常时的回调。 |
-| onException?(errObject: Error): void | 系统回调接口，应用注册后，当应用产生异常上报js层时的回调。 |
+| onException?(errObject: Error): void | 系统回调接口，应用注册后，当应用产生异常上报JS层时的回调。 |
 
 **应用主线程监听(LoopObserver)接口功能介绍**：
 
@@ -375,11 +375,12 @@ export function setFirstErrorHandler() {
 ```
 
  定义第二个错误处理器及注册方法，形成链式调用。
-<!-- @[second_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets) --> 
+<!-- @[second_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets) -->  
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { process } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let secondHandler: errorManager.ErrorHandler;
 const secondErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
@@ -394,7 +395,13 @@ const secondErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
 };
 
 export function setSecondErrorHandler() {
-    secondHandler = errorManager.setDefaultErrorHandler(secondErrorHandler); 
+    try {
+        secondHandler = errorManager.setDefaultErrorHandler(secondErrorHandler);
+    } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error('setSecondErrorHandler',`error: ${code}, ${message}`);
+    }
     console.info('Registered Second Error Handler');
 }
 ```

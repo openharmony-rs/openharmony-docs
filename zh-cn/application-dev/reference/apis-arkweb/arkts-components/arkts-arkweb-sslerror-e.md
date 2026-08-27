@@ -4,8 +4,6 @@ onSslErrorEventReceive接口返回的SSL错误的具体原因。
 
 **起始版本：** 9
 
-<!--Device-unnamed-declare enum SslError--><!--Device-unnamed-declare enum SslError-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## Invalid
@@ -19,8 +17,6 @@ Invalid = 0
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SslError-Invalid = 0--><!--Device-SslError-Invalid = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,8 +32,6 @@ HostMismatch = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SslError-HostMismatch = 1--><!--Device-SslError-HostMismatch = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## DateInvalid
@@ -51,8 +45,6 @@ DateInvalid = 2
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SslError-DateInvalid = 2--><!--Device-SslError-DateInvalid = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -68,7 +60,4 @@ Untrusted = 3
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SslError-Untrusted = 3--><!--Device-SslError-Untrusted = 3-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

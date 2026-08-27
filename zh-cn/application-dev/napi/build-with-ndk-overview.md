@@ -1,10 +1,10 @@
 # NDK工程构建概述
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @liyiming13-->
 <!--Designer: @liyiming13-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 OpenHarmony NDK默认使用CMake作为构建系统，随包提供了符合OpenHarmony工具链的基础配置文件<!--RP2-->ohos.toolchain.cmake<!--RP2End-->，用于预定义CMake变量来简化开发者配置。
 
@@ -16,10 +16,10 @@ OpenHarmony NDK默认使用CMake作为构建系统，随包提供了符合OpenHa
 
   源码构建也有不同方式：
 
-  - 可以使用DevEco Studio提供的C++应用模板，[用DevEco Studio来编译构建](build-with-ndk-ide.md)
-  - 也可以[使用命令行CMake来编译构建](build-with-ndk-cmake.md)
+  - 可以使用DevEco Studio提供的C++应用模板，用DevEco Studio来编译构建
+  - 也可以使用命令行CMake来编译构建
 
-- [使用预构建库构建](build-with-ndk-prebuilts.md)
+- 使用预构建库构建
 
 
 本章节将通过具体示例介绍如何在Native工程中使用NDK，以及如何编写CMake脚本来构建NDK工程。

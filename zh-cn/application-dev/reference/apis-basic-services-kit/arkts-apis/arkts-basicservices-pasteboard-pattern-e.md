@@ -2,9 +2,7 @@
 
 剪贴板支持检测的模式类型。
 
-**起始版本：** 23
-
-<!--Device-pasteboard-enum Pattern--><!--Device-pasteboard-enum Pattern-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -16,9 +14,7 @@ URL = 0
 
 URL类型。
 
-**起始版本：** 23
-
-<!--Device-Pattern-URL = 0--><!--Device-Pattern-URL = 0-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -30,9 +26,7 @@ NUMBER = 1
 
 数字类型。
 
-**起始版本：** 23
-
-<!--Device-Pattern-NUMBER = 1--><!--Device-Pattern-NUMBER = 1-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -44,9 +38,7 @@ EMAIL_ADDRESS = 2
 
 邮箱地址类型。
 
-**起始版本：** 23
-
-<!--Device-Pattern-EMAIL_ADDRESS = 2--><!--Device-Pattern-EMAIL_ADDRESS = 2-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -62,8 +54,6 @@ HTTP web链接类型。 模型约束：此接口仅可在Stage模型下使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Pattern-HTTP_URL = 3--><!--Device-Pattern-HTTP_URL = 3-End-->
-
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
 ## FLIGHT_NUMBER
@@ -78,7 +68,4 @@ FLIGHT_NUMBER = 4
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Pattern-FLIGHT_NUMBER = 4--><!--Device-Pattern-FLIGHT_NUMBER = 4-End-->
-
 **系统能力：** SystemCapability.MiscServices.Pasteboard
-

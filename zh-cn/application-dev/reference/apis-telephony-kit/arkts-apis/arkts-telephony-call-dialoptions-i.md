@@ -2,16 +2,13 @@
 
 拨打电话的可选参数。
 
-**起始版本：** 23
-
-<!--Device-call-export interface DialOptions--><!--Device-call-export interface DialOptions-End-->
+**起始版本：** 6
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
 ## 导入模块
 
 ```TypeScript
-import { call } from '@kit.TelephonyKit';
 ```
 
 ## extras
@@ -20,13 +17,12 @@ import { call } from '@kit.TelephonyKit';
 extras?: boolean
 ```
 
-根据extras的值判断是否为视频通话，默认为语音通话。 - true：视频通话。 - false：语音通话。
+根据extras的值判断是否为视频通话，默认为语音通话。  
+- true：视频通话。  
+- false：语音通话。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-DialOptions-extras?: boolean--><!--Device-DialOptions-extras?: boolean-End-->
+**起始版本：** 6
 
 **系统能力：** SystemCapability.Telephony.CallManager
-

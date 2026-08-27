@@ -2,9 +2,7 @@
 
 扩展屏投播显示设备相关属性。
 
-**起始版本：** 23
-
-<!--Device-avSession-interface CastDisplayInfo--><!--Device-avSession-interface CastDisplayInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
 
@@ -17,36 +15,32 @@ import { avSession } from '@kit.AVSessionKit';
 ## height
 
 ```TypeScript
-height: int
+height: number
 ```
 
 投播显示设备的屏幕高度，单位为px，该参数应为整数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CastDisplayInfo-height: int--><!--Device-CastDisplayInfo-height: int-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
 
 ## id
 
 ```TypeScript
-id: long
+id: number
 ```
 
 投播显示设备的ID，该参数应为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CastDisplayInfo-id: long--><!--Device-CastDisplayInfo-id: long-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
 
@@ -60,11 +54,9 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CastDisplayInfo-name: string--><!--Device-CastDisplayInfo-name: string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
 
@@ -78,29 +70,24 @@ state: CastDisplayState
 
 **类型：** [CastDisplayState](arkts-avsession-avsession-castdisplaystate-e.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CastDisplayInfo-state: CastDisplayState--><!--Device-CastDisplayInfo-state: CastDisplayState-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
 
 ## width
 
 ```TypeScript
-width: int
+width: number
 ```
 
 投播显示设备的屏幕宽度，单位为px，该参数应为整数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CastDisplayInfo-width: int--><!--Device-CastDisplayInfo-width: int-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
-

@@ -2,9 +2,7 @@
 
 定义扫描仪设备的接口。
 
-**起始版本：** 23
-
-<!--Device-scan-interface ScannerDevice--><!--Device-scan-interface ScannerDevice-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -24,9 +22,7 @@ deviceName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ScannerDevice-deviceName: string--><!--Device-ScannerDevice-deviceName: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -40,9 +36,7 @@ discoveryMode: ScannerDiscoveryMode
 
 **类型：** [ScannerDiscoveryMode](arkts-basicservices-scan-scannerdiscoverymode-e.md)
 
-**起始版本：** 23
-
-<!--Device-ScannerDevice-discoveryMode: ScannerDiscoveryMode--><!--Device-ScannerDevice-discoveryMode: ScannerDiscoveryMode-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -56,9 +50,7 @@ manufacturer: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ScannerDevice-manufacturer: string--><!--Device-ScannerDevice-manufacturer: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -72,9 +64,7 @@ model: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ScannerDevice-model: string--><!--Device-ScannerDevice-model: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -88,9 +78,7 @@ scannerId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ScannerDevice-scannerId: string--><!--Device-ScannerDevice-scannerId: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -104,9 +92,6 @@ uniqueId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ScannerDevice-uniqueId: string--><!--Device-ScannerDevice-uniqueId: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Print.PrintFramework
-

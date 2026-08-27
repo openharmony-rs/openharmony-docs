@@ -1,17 +1,18 @@
 # ViewportRect
 
-用于描述Viewport的绘制属性。 > **说明：** > > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
+用于描述Viewport的绘制属性。
+
+> **说明：**
+> 
+> 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素
 
 **起始版本：** 18
-
-<!--Device-unnamed-declare interface ViewportRect--><!--Device-unnamed-declare interface ViewportRect-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
 
 ```TypeScript
-import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 ```
 
 ## height
@@ -20,17 +21,15 @@ import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 height?: Length
 ```
 
-形状视口的高度，取值范围≥0。 默认值：0 默认单位：vp 异常值undefined、null、NaN和Infinity按照默认值处理。
+形状视口的高度，取值范围≥0。默认值：0默认单位：vp异常值undefined、null、NaN和Infinity按照默认值处理。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-ViewportRect-height?: Length--><!--Device-ViewportRect-height?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,17 +39,15 @@ height?: Length
 width?: Length
 ```
 
-形状视口的宽度，取值范围≥0。 默认值：0 默认单位：vp 异常值undefined、null、NaN和Infinity按照默认值处理。
+形状视口的宽度，取值范围≥0。默认值：0默认单位：vp异常值undefined、null、NaN和Infinity按照默认值处理。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-ViewportRect-width?: Length--><!--Device-ViewportRect-width?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,17 +57,15 @@ width?: Length
 x?: Length
 ```
 
-形状视口起始点的水平坐标。 默认值：0 默认单位：vp 异常值undefined、null、NaN和Infinity按照默认值处理。
+形状视口起始点的水平坐标。默认值：0默认单位：vp异常值undefined、null、NaN和Infinity按照默认值处理。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-ViewportRect-x?: Length--><!--Device-ViewportRect-x?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,9 +75,9 @@ x?: Length
 y?: Length
 ```
 
-形状视口起始点的垂直坐标。 默认值：0 默认单位：vp 异常值undefined、null、NaN和Infinity按照默认值处理。
+形状视口起始点的垂直坐标。默认值：0默认单位：vp异常值undefined、null、NaN和Infinity按照默认值处理。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 7
 
@@ -90,7 +85,4 @@ y?: Length
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ViewportRect-y?: Length--><!--Device-ViewportRect-y?: Length-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

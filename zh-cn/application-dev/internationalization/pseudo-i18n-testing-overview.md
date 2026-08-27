@@ -3,7 +3,7 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
@@ -13,4 +13,4 @@
 对于新开发的软件或界面变更较大的软件，若等待翻译完成后再进行界面测试，可能会延误整个交付周期。此外，软件开发初期，界面随时可能调整，通常会在产品成熟后再开始界面翻译和翻译测试，这可能会导致产品发布延误。采用伪本地化测试可以避免延误开发进程，确保产品正常发布。
 
 
-伪本地化测试包括[翻译伪本地化](pseudo-i18n-testing-translation.md)和[界面镜像伪本地化](pseudo-i18n-testing-mirror.md)。
+伪本地化测试包括翻译伪本地化和界面镜像伪本地化。

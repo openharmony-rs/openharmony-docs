@@ -4,18 +4,11 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface OnSearchResultReceiveEvent--><!--Device-unnamed-declare interface OnSearchResultReceiveEvent-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## activeMatchOrdinal
@@ -32,8 +25,6 @@ activeMatchOrdinal: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnSearchResultReceiveEvent-activeMatchOrdinal: number--><!--Device-OnSearchResultReceiveEvent-activeMatchOrdinal: number-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## isDoneCounting
@@ -42,15 +33,13 @@ activeMatchOrdinal: number
 isDoneCounting: boolean
 ```
 
-当次页内查找操作是否结束。 true表示当次页内查找操作结束，false表示未结束。 该方法可能回调多次，直到isDoneCounting为true。
+当次页内查找操作是否结束。true表示当次页内查找操作结束，false表示未结束。该方法可能回调多次，直到isDoneCounting为true。
 
 **类型：** boolean
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OnSearchResultReceiveEvent-isDoneCounting: boolean--><!--Device-OnSearchResultReceiveEvent-isDoneCounting: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -68,7 +57,4 @@ numberOfMatches: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnSearchResultReceiveEvent-numberOfMatches: number--><!--Device-OnSearchResultReceiveEvent-numberOfMatches: number-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

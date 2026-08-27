@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-drawing-enum VertexMode--><!--Device-drawing-enum VertexMode-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## TRIANGLES_VERTEXMODE
@@ -17,8 +15,6 @@ TRIANGLES_VERTEXMODE = 0
 顶点按顺序每三个一组，分别构成独立的三角形。
 
 **起始版本：** 23
-
-<!--Device-VertexMode-TRIANGLES_VERTEXMODE = 0--><!--Device-VertexMode-TRIANGLES_VERTEXMODE = 0-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -32,8 +28,6 @@ TRIANGLESSTRIP_VERTEXMODE = 1
 
 **起始版本：** 23
 
-<!--Device-VertexMode-TRIANGLESSTRIP_VERTEXMODE = 1--><!--Device-VertexMode-TRIANGLESSTRIP_VERTEXMODE = 1-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## TRIANGLESFAN_VERTEXMODE
@@ -46,7 +40,4 @@ TRIANGLESFAN_VERTEXMODE = 2
 
 **起始版本：** 23
 
-<!--Device-VertexMode-TRIANGLESFAN_VERTEXMODE = 2--><!--Device-VertexMode-TRIANGLESFAN_VERTEXMODE = 2-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
-

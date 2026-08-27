@@ -12,15 +12,17 @@ import { application } from '@kit.AbilityKit';
 export function createModuleContextSync(context: Context, moduleName: string): Context
 ```
 
-创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-configuration-c.md)资源继承 自入参上下文，便于开发者获取[跨HAP/HSP包应用资源](../../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。 > **说明：** > > 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
+创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-configuration-c.md)资源继承 自入参上下文，便于开发者获取[跨HAP/HSP包应用资源](../../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。
+
+> **说明：**
+> 
+> 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
 
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-application-export function createModuleContextSync(context: Context, moduleName: string): Context--><!--Device-application-export function createModuleContextSync(context: Context, moduleName: string): Context-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -41,6 +43,17 @@ export function createModuleContextSync(context: Context, moduleName: string): C
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [16000021](../errorcode-ability.md#16000021-模块名不存在) | The module does not exist. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000021](../errorcode-ability.md#16000021-模块名不存在) | The module does not exist. |
 
+**示例**
+
+```TypeScript
+import { AbilityConstant, UIAbility, application, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let moduleContext = application.createModuleContextSync(this.context, 'entry');
+  }
+}
+```

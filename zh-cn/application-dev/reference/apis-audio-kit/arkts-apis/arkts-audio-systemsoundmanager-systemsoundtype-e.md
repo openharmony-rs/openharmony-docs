@@ -1,10 +1,8 @@
 # SystemSoundType
 
-枚举，表示系统音效类型。
+枚举，表示系统音效类型。@enum { number }
 
 **起始版本：** 23
-
-<!--Device-systemSoundManager-enum SystemSoundType--><!--Device-systemSoundManager-enum SystemSoundType-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -20,8 +18,6 @@ PHOTO_SHUTTER = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SystemSoundType-PHOTO_SHUTTER = 0--><!--Device-SystemSoundType-PHOTO_SHUTTER = 0-End-->
-
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 ## VIDEO_RECORDING_BEGIN
@@ -35,8 +31,6 @@ VIDEO_RECORDING_BEGIN = 1
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SystemSoundType-VIDEO_RECORDING_BEGIN = 1--><!--Device-SystemSoundType-VIDEO_RECORDING_BEGIN = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -52,7 +46,4 @@ VIDEO_RECORDING_END = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SystemSoundType-VIDEO_RECORDING_END = 2--><!--Device-SystemSoundType-VIDEO_RECORDING_END = 2-End-->
-
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
-

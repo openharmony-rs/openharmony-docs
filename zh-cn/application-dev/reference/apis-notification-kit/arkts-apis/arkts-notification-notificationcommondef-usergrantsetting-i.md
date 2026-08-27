@@ -1,10 +1,8 @@
-# UserGrantSetting(Some common definitions)
+# UserGrantSetting
 
 描述用户授权的设置信息。
 
 **起始版本：** 26.0.0
-
-<!--Device-unnamed-export interface UserGrantSetting--><!--Device-unnamed-export interface UserGrantSetting-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -22,8 +20,6 @@ readonly grantedBundleInfos?: Array<GrantedBundleInfo>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserGrantSetting-readonly grantedBundleInfos?: Array<GrantedBundleInfo>--><!--Device-UserGrantSetting-readonly grantedBundleInfos?: Array<GrantedBundleInfo>-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 ## userGrantEnabled
@@ -40,7 +36,4 @@ readonly userGrantEnabled: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserGrantSetting-readonly userGrantEnabled: boolean--><!--Device-UserGrantSetting-readonly userGrantEnabled: boolean-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
-

@@ -1,10 +1,8 @@
 # BreakPoints
 
-设置栅格容器组件的断点。更多断点的说明参考[栅格容器断点](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)。 <!--code_no_check-->
+设置栅格容器组件的断点。更多断点的说明参考[栅格容器断点](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)。<!--code_no_check-->
 
 **起始版本：** 9
-
-<!--Device-unnamed-declare interface BreakPoints--><!--Device-unnamed-declare interface BreakPoints-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -19,7 +17,7 @@
 reference?: BreakpointsReference
 ```
 
-断点切换参照物。支持WindowSize（以窗口为参照）和ComponentSize（以容器为参照）。 默认值：BreakpointsReference.WindowSize 非法值：按默认值处理。
+断点切换参照物。支持WindowSize（以窗口为参照）和ComponentSize（以容器为参照）。默认值：BreakpointsReference.WindowSize非法值：按默认值处理。
 
 **类型：** [BreakpointsReference](arkts-arkui-breakpointsreference-e.md)
 
@@ -29,8 +27,6 @@ reference?: BreakpointsReference
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BreakPoints-reference?: BreakpointsReference--><!--Device-BreakPoints-reference?: BreakpointsReference-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -39,7 +35,7 @@ reference?: BreakpointsReference
 value?: Array<string>
 ```
 
-设置断点位置的单调递增数组，字符串格式为"数字+vp"，例如"320vp"、"600vp"等。 默认值：["320vp", "600vp", "840vp"] 非法值：按默认值处理。 单位：vp 默认断点适用于大多数场景，可根据特殊屏幕尺寸或特定布局需求自定义。
+设置断点位置的单调递增数组，字符串格式为"数字+vp"，例如"320vp"、"600vp"等。默认值：["320vp", "600vp", "840vp"]非法值：按默认值处理。单位：vp默认断点适用于大多数场景，可根据特殊屏幕尺寸或特定布局需求自定义。
 
 **类型：** Array&lt;string&gt;
 
@@ -49,7 +45,4 @@ value?: Array<string>
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BreakPoints-value?: Array<string>--><!--Device-BreakPoints-value?: Array<string>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

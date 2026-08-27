@@ -12,7 +12,4 @@ declare type OnNeedSoftkeyboardCallback = () => boolean
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type OnNeedSoftkeyboardCallback = () => boolean--><!--Device-unnamed-declare type OnNeedSoftkeyboardCallback = () => boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

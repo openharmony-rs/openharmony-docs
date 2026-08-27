@@ -2,9 +2,7 @@
 
 圆角矩形。
 
-**起始版本：** 23
-
-<!--Device-windowAnimationManager-export interface RRect--><!--Device-windowAnimationManager-export interface RRect-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -19,16 +17,14 @@ import { windowAnimationManager } from '@kit.ArkUI';
 ## height
 
 ```TypeScript
-height: double
+height: number
 ```
 
 动画目标窗口的高度大小。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RRect-height: double--><!--Device-RRect-height: double-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -37,16 +33,14 @@ height: double
 ## left
 
 ```TypeScript
-left: double
+left: number
 ```
 
 动画目标窗口左上角相对于屏幕的横坐标。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RRect-left: double--><!--Device-RRect-left: double-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -55,16 +49,14 @@ left: double
 ## radius
 
 ```TypeScript
-radius: double
+radius: number
 ```
 
 动画目标窗口的圆角大小。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RRect-radius: double--><!--Device-RRect-radius: double-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -73,16 +65,14 @@ radius: double
 ## top
 
 ```TypeScript
-top: double
+top: number
 ```
 
 动画目标窗口左上角相对于屏幕的纵坐标。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RRect-top: double--><!--Device-RRect-top: double-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -91,18 +81,15 @@ top: double
 ## width
 
 ```TypeScript
-width: double
+width: number
 ```
 
 动画目标窗口的宽度大小。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RRect-width: double--><!--Device-RRect-width: double-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
-

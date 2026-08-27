@@ -2,9 +2,7 @@
 
 设备管理应用的企业信息。
 
-**起始版本：** 23
-
-<!--Device-adminManager-export interface EnterpriseInfo--><!--Device-adminManager-export interface EnterpriseInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -26,9 +24,7 @@ description: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-EnterpriseInfo-description: string--><!--Device-EnterpriseInfo-description: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -44,11 +40,8 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-EnterpriseInfo-name: string--><!--Device-EnterpriseInfo-name: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
-

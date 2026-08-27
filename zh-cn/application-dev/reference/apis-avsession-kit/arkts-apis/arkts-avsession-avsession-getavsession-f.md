@@ -12,13 +12,11 @@ import { avSession } from '@kit.AVSessionKit';
 function getAVSession(context: Context): Promise<AVSession>
 ```
 
-获取会话对象。使用Promise异步回调。 该接口可将当前进程已创建过的会话对象返回，如果没有创建过会话对象，该接口调用会失败并抛出异常。
+获取会话对象。使用Promise异步回调。该接口可将当前进程已创建过的会话对象返回，如果没有创建过会话对象，该接口调用会失败并抛出异常。
 
-**起始版本：** 24
+**起始版本：** 22
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-avSession-function getAVSession(context: Context): Promise<AVSession>--><!--Device-avSession-function getAVSession(context: Context): Promise<AVSession>-End-->
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -73,4 +71,3 @@ struct Index {
   }
 }
 ```
-

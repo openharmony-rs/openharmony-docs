@@ -2,9 +2,7 @@
 
 本模块提供了系统事件打点能力，包括系统事件的埋点、落盘系统事件的订阅及已落盘的系统事件的查询能力。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace hiSysEvent--><!--Device-unnamed-declare namespace hiSysEvent-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -13,7 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## 汇总
@@ -42,8 +39,8 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 | [QueryArg](arkts-performanceanalysis-hisysevent-queryarg-i-sys.md) | 系统事件查询参数对象接口。 |
 | [QueryRule](arkts-performanceanalysis-hisysevent-queryrule-i-sys.md) | 系统事件查询规则对象接口。 |
 | [SysEventInfo](arkts-performanceanalysis-hisysevent-syseventinfo-i-sys.md) | 系统事件信息对象接口。 |
-| [WatchRule](arkts-performanceanalysis-hisysevent-watchrule-i-sys.md) | 系统事件订阅规则对象接口。 |
 | [Watcher](arkts-performanceanalysis-hisysevent-watcher-i-sys.md) | 系统事件订阅者对象接口。 |
+| [WatchRule](arkts-performanceanalysis-hisysevent-watchrule-i-sys.md) | 系统事件订阅规则对象接口。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -54,4 +51,3 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 | [EventType](arkts-performanceanalysis-hisysevent-eventtype-e-sys.md) | 系统事件类型枚举。 |
 | [RuleType](arkts-performanceanalysis-hisysevent-ruletype-e-sys.md) | 匹配规则类型枚举。 |
 <!--DelEnd-->
-

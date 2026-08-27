@@ -1,10 +1,10 @@
 # Longque-JS-API使用指导
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou; @string_sz-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 Longque JS API 由 Longque JS Engine 提供，适用于在 OpenHarmony 平台构建稳定、高性能的应用。所有 API 均位于 `__Longque__` 对象下。接口的版本可通过 `__Longque__.version` 获得，开发者可使用该版本进行特性判断。
 
@@ -69,7 +69,7 @@ __Longque__.SKIP_CONSTRUCTOR: 过滤掉 'constructor' 属性
 
 ### 使用示例
 
-本示例展示了在 JSVM 中使用 Longque JS API 的方式，JSVM-API 接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅对接口对应C++相关代码进行展示。
+本示例展示了在 JSVM 中使用 Longque JS API 的方式，JSVM-API 接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程，本文仅对接口对应C++相关代码进行展示。
 
 cpp部分代码：
 ``` cpp

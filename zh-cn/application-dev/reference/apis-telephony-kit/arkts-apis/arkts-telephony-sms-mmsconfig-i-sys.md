@@ -2,9 +2,7 @@
 
 彩信配置文件。
 
-**起始版本：** 23
-
-<!--Device-sms-export interface MmsConfig--><!--Device-sms-export interface MmsConfig-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -13,7 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { sms } from '@kit.TelephonyKit';
 ```
 
 ## userAgent
@@ -26,9 +23,7 @@ userAgent: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MmsConfig-userAgent: string--><!--Device-MmsConfig-userAgent: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -44,11 +39,8 @@ userAgentProfile: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MmsConfig-userAgentProfile: string--><!--Device-MmsConfig-userAgentProfile: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
 **系统接口：** 此接口为系统接口。
-

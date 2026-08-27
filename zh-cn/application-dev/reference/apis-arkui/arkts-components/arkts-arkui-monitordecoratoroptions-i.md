@@ -1,8 +1,8 @@
 # MonitorDecoratorOptions
 
-**起始版本：** 26.0.0
+@Monitor装饰器的配置选项。
 
-<!--Device-unnamed-declare interface MonitorDecoratorOptions--><!--Device-unnamed-declare interface MonitorDecoratorOptions-End-->
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,7 +29,4 @@ enableWildcard?: boolean
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-MonitorDecoratorOptions-enableWildcard?: boolean--><!--Device-MonitorDecoratorOptions-enableWildcard?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

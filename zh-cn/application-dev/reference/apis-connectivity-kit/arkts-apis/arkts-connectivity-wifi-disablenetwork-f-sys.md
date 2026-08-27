@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## disableNetwork
@@ -15,7 +12,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 function disableNetwork(netId: number): boolean
 ```
 
-去使能网络配置。 &lt;p&gt;去使能的网络将不再被关联。
+去使能网络配置。<p>去使能的网络将不再被关联。
 
 **起始版本：** 7
 
@@ -24,8 +21,6 @@ function disableNetwork(netId: number): boolean
 **替代接口：** disableDeviceConfig
 
 **需要权限：** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
-
-<!--Device-wifi-function disableNetwork(netId: number): boolean--><!--Device-wifi-function disableNetwork(netId: number): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -55,4 +50,3 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
-

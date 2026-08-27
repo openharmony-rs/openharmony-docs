@@ -2,20 +2,15 @@
 
 无障碍事件信息，用于描述界面变更或交互事件，作为[sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md)的参数定义事件的类型和触发动作。发送的无障碍事 件将被系统分发到已注册且匹配事件类型的辅助应用进行响应，详见[sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md)。
 
-**起始版本：** 23
-
-<!--Device-accessibility-class EventInfo--><!--Device-accessibility-class EventInfo-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ## 导入模块
 
 ```TypeScript
-import { config } from '@kit.AccessibilityKit';
 import { accessibility } from '@kit.AccessibilityKit';
 import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType } from '@kit.AccessibilityKit';
-import { GesturePath } from '@kit.AccessibilityKit';
-import { GesturePoint } from '@kit.AccessibilityKit';
 ```
 
 ## constructor
@@ -32,8 +27,6 @@ constructor(jsonObject: Object)
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-EventInfo-constructor(jsonObject: Object)--><!--Device-EventInfo-constructor(jsonObject: Object)-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -47,37 +40,7 @@ constructor(jsonObject: Object)
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';
 
-let eventInfo: accessibility.EventInfo = ({
-  type: 'click',
-  bundleName: 'com.example.MyApplication',
-  triggerAction: 'click',
-});
-```
-
-## constructor
-
-```TypeScript
-constructor()
-```
-
-A constructor used to create a EventInfo object.
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-constructor()--><!--Device-EventInfo-constructor()-End-->
-
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-
-**示例**
-
-```TypeScript
-import { accessibility } from '@kit.AccessibilityKit';
-
-let eventInfo: accessibility.EventInfo = ({
+let eventInfo = new accessibility.EventInfo({
   type: 'click',
   bundleName: 'com.example.MyApplication',
   triggerAction: 'click',
@@ -92,13 +55,11 @@ constructor(type: EventType, bundleName: string, triggerAction: Action)
 
 构造函数，通过独立参数构造EventInfo实例。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-constructor(type: EventType, bundleName: string, triggerAction: Action)--><!--Device-EventInfo-constructor(type: EventType, bundleName: string, triggerAction: Action)-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -122,20 +83,18 @@ let eventInfo = new accessibility.EventInfo('click', 'com.example.MyApplication'
 ## beginIndex
 
 ```TypeScript
-beginIndex?: int
+beginIndex?: number
 ```
 
 画面显示条目的开始序号，默认值为0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-beginIndex?: int--><!--Device-EventInfo-beginIndex?: int-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -149,13 +108,11 @@ bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-bundleName: string--><!--Device-EventInfo-bundleName: string-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -165,17 +122,17 @@ bundleName: string
 componentType?: string
 ```
 
-应与事件源组件类型对应，默认值为空。 例如： - 按钮Button类型->'Button'。 - 图片Image类型->'Image'。
+应与事件源组件类型对应，默认值为空。例如：  
+- 按钮Button类型-&gt;'Button'。  
+- 图片Image类型-&gt;'Image'。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-componentType?: string--><!--Device-EventInfo-componentType?: string-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -189,33 +146,29 @@ contents?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-contents?: Array<string>--><!--Device-EventInfo-contents?: Array<string>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ## currentIndex
 
 ```TypeScript
-currentIndex?: int
+currentIndex?: number
 ```
 
 当前条目序号，默认值为0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-currentIndex?: int--><!--Device-EventInfo-currentIndex?: int-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -229,13 +182,11 @@ customId?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-customId?: string--><!--Device-EventInfo-customId?: string-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -249,73 +200,65 @@ description?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-description?: string--><!--Device-EventInfo-description?: string-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ## elementId
 
 ```TypeScript
-elementId?: int
+elementId?: number
 ```
 
 组件elementId，默认值为0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-elementId?: int--><!--Device-EventInfo-elementId?: int-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ## endIndex
 
 ```TypeScript
-endIndex?: int
+endIndex?: number
 ```
 
 画面显示条目的结束序号，默认值为0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-endIndex?: int--><!--Device-EventInfo-endIndex?: int-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ## itemCount
 
 ```TypeScript
-itemCount?: int
+itemCount?: number
 ```
 
 条目总数，默认值为0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-itemCount?: int--><!--Device-EventInfo-itemCount?: int-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -329,33 +272,29 @@ lastContent?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-lastContent?: string--><!--Device-EventInfo-lastContent?: string-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ## pageId
 
 ```TypeScript
-pageId ?: int
+pageId ?: number
 ```
 
 事件源的页面ID，默认值为0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-pageId ?: int--><!--Device-EventInfo-pageId ?: int-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -369,13 +308,11 @@ textAnnouncedForAccessibility?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-textAnnouncedForAccessibility?: string--><!--Device-EventInfo-textAnnouncedForAccessibility?: string-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -389,13 +326,11 @@ textMoveUnit?: TextMoveUnit
 
 **类型：** [TextMoveUnit](arkts-accessibility-accessibility-textmoveunit-t.md)
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-textMoveUnit?: TextMoveUnit--><!--Device-EventInfo-textMoveUnit?: TextMoveUnit-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -409,13 +344,11 @@ textResourceAnnouncedForAccessibility?: Resource
 
 **类型：** Resource
 
-**起始版本：** 23
+**起始版本：** 18
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-textResourceAnnouncedForAccessibility?: Resource--><!--Device-EventInfo-textResourceAnnouncedForAccessibility?: Resource-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -429,13 +362,11 @@ triggerAction: Action
 
 **类型：** Action
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-triggerAction: Action--><!--Device-EventInfo-triggerAction: Action-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -449,13 +380,11 @@ type: EventType
 
 **类型：** EventType
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EventInfo-type: EventType--><!--Device-EventInfo-type: EventType-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -469,13 +398,10 @@ windowUpdateType?: WindowUpdateType
 
 **类型：** [WindowUpdateType](arkts-accessibility-accessibility-windowupdatetype-t.md)
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-EventInfo-windowUpdateType?: WindowUpdateType--><!--Device-EventInfo-windowUpdateType?: WindowUpdateType-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-

@@ -12,9 +12,6 @@ Stack类型的FrameNode节点类型。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-type Stack = TypedFrameNode<StackInterface, StackAttribute>--><!--Device-typeNode-type Stack = TypedFrameNode<StackInterface, StackAttribute>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** TypedFrameNode<StackInterface, StackAttribute>
-
+**属性类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;StackInterface, [StackAttribute](../arkts-components/arkts-arkui-stack-attribute.md)&gt;

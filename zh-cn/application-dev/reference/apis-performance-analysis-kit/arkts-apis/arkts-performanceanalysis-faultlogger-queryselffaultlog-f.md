@@ -20,8 +20,6 @@ function querySelfFaultLog(faultType: FaultType, callback: AsyncCallback<Array<F
 
 **替代接口：** query
 
-<!--Device-FaultLogger-function querySelfFaultLog(faultType: FaultType, callback: AsyncCallback<Array<FaultLogInfo>>): void--><!--Device-FaultLogger-function querySelfFaultLog(faultType: FaultType, callback: AsyncCallback<Array<FaultLogInfo>>): void-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
 **参数：**
@@ -29,7 +27,7 @@ function querySelfFaultLog(faultType: FaultType, callback: AsyncCallback<Array<F
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | faultType | [FaultType](arkts-performanceanalysis-faultlogger-faulttype-e.md) | 是 | 输入要查询的故障类型。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[FaultLogInfo](arkts-performanceanalysis-faultlogger-faultloginfo-i.md)&gt;&gt; | 是 | 回调函数，在回调函数中获取故障信息数组。 <br>value拿到故障信息数组；value为undefined表示获取过程中出现异常，error返回错误提示字符串。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[FaultLogInfo](arkts-performanceanalysis-faultlogger-faultloginfo-i.md)&gt;&gt; | 是 | 回调函数，在回调函数中获取故障信息数组。 value拿到故障信息数组；value为undefined表示获取过程中出现异常，error返回错误提示字符串。 |
 
 **示例**
 
@@ -74,8 +72,6 @@ function querySelfFaultLog(faultType: FaultType): Promise<Array<FaultLogInfo>>
 
 **替代接口：** query
 
-<!--Device-FaultLogger-function querySelfFaultLog(faultType: FaultType): Promise<Array<FaultLogInfo>>--><!--Device-FaultLogger-function querySelfFaultLog(faultType: FaultType): Promise<Array<FaultLogInfo>>-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
 **参数：**
@@ -88,7 +84,7 @@ function querySelfFaultLog(faultType: FaultType): Promise<Array<FaultLogInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[FaultLogInfo](arkts-performanceanalysis-faultlogger-faultloginfo-i.md)&gt;&gt; | Promise实例，可以在其then()方法中获取故障信息实例，也可以使用await。 <br>value拿到故障信息数组；value为undefined表示获取过程中出现异常。 |
+| Promise&lt;Array&lt;[FaultLogInfo](arkts-performanceanalysis-faultlogger-faultloginfo-i.md)&gt;&gt; | Promise实例，可以在其then()方法中获取故障信息实例，也可以使用await。 |
 
 **示例**
 
@@ -114,4 +110,3 @@ async function getLog() {
   }
 }
 ```
-

@@ -2,17 +2,13 @@
 
 表示接口的返回结果。
 
-**起始版本：** 23
-
-<!--Device-certificateManager-export interface CMResult--><!--Device-certificateManager-export interface CMResult-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 ## 导入模块
 
 ```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## appUidList
@@ -25,9 +21,7 @@ appUidList?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
-
-<!--Device-CMResult-appUidList?: Array<string>--><!--Device-CMResult-appUidList?: Array<string>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -41,9 +35,7 @@ certInfo?: CertInfo
 
 **类型：** [CertInfo](arkts-devicecertificate-certificatemanager-certinfo-i.md)
 
-**起始版本：** 23
-
-<!--Device-CMResult-certInfo?: CertInfo--><!--Device-CMResult-certInfo?: CertInfo-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -57,9 +49,7 @@ certList?: Array<CertAbstract>
 
 **类型：** Array&lt;[CertAbstract](arkts-devicecertificate-certificatemanager-certabstract-i.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-CMResult-certList?: Array<CertAbstract>--><!--Device-CMResult-certList?: Array<CertAbstract>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -73,9 +63,7 @@ credential?: Credential
 
 **类型：** Credential
 
-**起始版本：** 23
-
-<!--Device-CMResult-credential?: Credential--><!--Device-CMResult-credential?: Credential-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -89,9 +77,7 @@ credentialDetailList?: Array<Credential>
 
 **类型：** Array&lt;Credential&gt;
 
-**起始版本：** 23
-
-<!--Device-CMResult-credentialDetailList?: Array<Credential>--><!--Device-CMResult-credentialDetailList?: Array<Credential>-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -105,9 +91,7 @@ credentialList?: Array<CredentialAbstract>
 
 **类型：** Array&lt;[CredentialAbstract](arkts-devicecertificate-certificatemanager-credentialabstract-i.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-CMResult-credentialList?: Array<CredentialAbstract>--><!--Device-CMResult-credentialList?: Array<CredentialAbstract>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -121,9 +105,7 @@ outData?: Uint8Array
 
 **类型：** Uint8Array
 
-**起始版本：** 23
-
-<!--Device-CMResult-outData?: Uint8Array--><!--Device-CMResult-outData?: Uint8Array-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -137,9 +119,7 @@ uri?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-CMResult-uri?: string--><!--Device-CMResult-uri?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -157,7 +137,4 @@ uriList?: Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CMResult-uriList?: Array<string>--><!--Device-CMResult-uriList?: Array<string>-End-->
-
 **系统能力：** SystemCapability.Security.CertificateManager
-

@@ -3,9 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
-import { notificationSubscribe } from '@kit.NotificationKit';
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
 ## getSlot
@@ -22,8 +19,6 @@ function getSlot(slotType: SlotType, callback: AsyncCallback<NotificationSlot>):
 
 **替代接口：** [getSlot](arkts-notification-notificationmanager-getslot-f.md)
 
-<!--Device-notification-function getSlot(slotType: SlotType, callback: AsyncCallback<NotificationSlot>): void--><!--Device-notification-function getSlot(slotType: SlotType, callback: AsyncCallback<NotificationSlot>): void-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **参数：**
@@ -31,7 +26,24 @@ function getSlot(slotType: SlotType, callback: AsyncCallback<NotificationSlot>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotType | SlotType | 是 | 通知渠道类型，目前分为社交通信、服务提醒、内容咨询和其他类型。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[NotificationSlot](arkts-notification-notificationslot-notificationslot-i.md)&gt; | 是 | 表示被指定的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NotificationSlot](arkts-notification-notificationslot-notificationslot-i.md)&gt; | 是 | 表示被指定的回调方法。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+// getSlot回调
+let getSlotCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("getSlot failed " + JSON.stringify(err));
+  } else {
+    console.info("getSlot success");
+  }
+}
+let slotType: Notification.SlotType = Notification.SlotType.SOCIAL_COMMUNICATION;
+Notification.getSlot(slotType, getSlotCallback);
+```
 
 
 ## getSlot
@@ -48,8 +60,6 @@ function getSlot(slotType: SlotType): Promise<NotificationSlot>
 
 **替代接口：** [getSlot](arkts-notification-notificationmanager-getslot-f.md)
 
-<!--Device-notification-function getSlot(slotType: SlotType): Promise<NotificationSlot>--><!--Device-notification-function getSlot(slotType: SlotType): Promise<NotificationSlot>-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **参数：**
@@ -64,3 +74,15 @@ function getSlot(slotType: SlotType): Promise<NotificationSlot>
 | --- | --- |
 | Promise&lt;[NotificationSlot](arkts-notification-notificationslot-notificationslot-i.md)&gt; | 以Promise形式返回获取一个通知通道。 |
 
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let slotType: Notification.SlotType = Notification.SlotType.SOCIAL_COMMUNICATION;
+Notification.getSlot(slotType).then((data) => {
+  console.info("getSlot success, data: " + JSON.stringify(data));
+}).catch((err: Base.BusinessError) => {
+  console.error(`getSlot failed, code is ${err}`);
+});
+```

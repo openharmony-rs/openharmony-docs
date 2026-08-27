@@ -1,10 +1,8 @@
-# HiTraceCommunicationMode(分布式跟踪)
+# HiTraceCommunicationMode
 
 跟踪通信类型枚举。用于标识通信发生的层级，例如THREAD用于标记同一应用内线程间通信，PROCESS用于标记同一设备内进程间通信，DEVICE用于标记跨设 备的分布式通信。
 
-**起始版本：** 23
-
-<!--Device-hiTraceChain-enum HiTraceCommunicationMode--><!--Device-hiTraceChain-enum HiTraceCommunicationMode-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -16,9 +14,7 @@ DEFAULT = 0
 
 缺省通信类型。
 
-**起始版本：** 23
-
-<!--Device-HiTraceCommunicationMode-DEFAULT = 0--><!--Device-HiTraceCommunicationMode-DEFAULT = 0-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -30,9 +26,7 @@ THREAD = 1
 
 线程间通信。
 
-**起始版本：** 23
-
-<!--Device-HiTraceCommunicationMode-THREAD = 1--><!--Device-HiTraceCommunicationMode-THREAD = 1-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -44,9 +38,7 @@ PROCESS = 2
 
 进程间通信。
 
-**起始版本：** 23
-
-<!--Device-HiTraceCommunicationMode-PROCESS = 2--><!--Device-HiTraceCommunicationMode-PROCESS = 2-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -58,9 +50,6 @@ DEVICE = 3
 
 设备间通信。
 
-**起始版本：** 23
-
-<!--Device-HiTraceCommunicationMode-DEVICE = 3--><!--Device-HiTraceCommunicationMode-DEVICE = 3-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
-

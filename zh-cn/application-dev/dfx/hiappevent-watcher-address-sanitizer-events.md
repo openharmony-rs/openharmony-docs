@@ -12,9 +12,9 @@
 
 开发者可通过HiAppEvent接口订阅地址越界事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。
 
-- [订阅地址越界事件（ArkTS）](hiappevent-watcher-address-sanitizer-events-arkts.md)
+- 订阅地址越界事件（ArkTS）
 
-- [订阅地址越界事件（C/C++）](hiappevent-watcher-address-sanitizer-events-ndk.md)
+- 订阅地址越界事件（C/C++）
 
 > **说明：**
 >
@@ -22,7 +22,7 @@
 
 ## 检测原理
 
-详见[地址越界类问题检测](address-sanitizer-guidelines.md)。
+详见地址越界类问题检测。
 
 ## 页面切换日志规格自定义参数
 
@@ -32,15 +32,15 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [configEventPolicy/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| 设置地址越界事件策略参数接口，支持开启地址越界事件的页面切换日志采集。 |
+| configEventPolicy (policy: EventPolicy): Promise&lt;void>| 设置地址越界事件策略参数接口，支持开启地址越界事件的页面切换日志采集。 |
 
 ### configEventPolicy接口参数设置说明
 
-开发者可以通过设置[EventPolicy/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 的参数来开启地址越界事件的页面切换日志采集。
+开发者可以通过设置EventPolicy 的参数来开启地址越界事件的页面切换日志采集。
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| addressSanitizerPolicy | [AddressSanitizerPolicy/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#addresssanitizerpolicy24) | 否 | 是   | 地址越界事件配置策略。 |
+| addressSanitizerPolicy | AddressSanitizerPolicy | 否 | 是   | 地址越界事件配置策略。 |
 
 
 参数配置示例：
@@ -74,10 +74,10 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | bundle_name | string | 应用名称。 |
 | pid | number | 应用的进程id。 |
 | uid | number | 应用的用户id。 |
-| type | string | 地址越界错误类型，取值范围详见type属性。 |
+| type | string | 地址越界错误类型，取值范围详见type字段说明。 |
 | external_log | string[] | 故障日志文件路径。**为避免目录空间超限（限制参考log_over_limit），导致新生成的日志文件写入失败，日志文件处理完后请及时删除。** |
-| log_over_limit | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。<br>启用minidump时，上限调整至35MB；关闭minidump时，上限恢复到5MB。 |
-| page_switch_log | string | 页面切换日志路径，日志介绍详见[页面切换日志](pageswitch-log.md)。<br>**说明**：从API version 24开始支持。 |
+| log_over_limit | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5MB上限。true表示超过上限，日志写入失败；false表示未超过上限。<br>启用minidump时，上限调整至35MB；关闭minidump时，上限恢复到5MB。 |
+| page_switch_log | string | 页面切换日志路径，日志介绍详见页面切换日志。<br>**说明**：从API version 24开始支持。 |
 
 ### type字段说明
 
@@ -88,7 +88,8 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | GWP-ASAN | 由[GWP-ASan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-gwpasan-detection)触发的错误类型。 |
 | UBSAN | 由[UBSan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ubsan-detection)触发的错误类型。 |
 | TSAN | 由[TSan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-tsan-detection)触发的错误类型。 |
-| FDSAN | 从API version 20开始，可以支持订阅由[fdsan](../napi/fdsan.md)触发的错误类型。 |
+| FDSAN | 从API version 20开始，可以支持订阅由fdsan触发的错误类型。 |
+| ARKTS_ENVSAN | 从API版本26.0.0开始，支持订阅[方舟多线程检测](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section75786272088)。 |
 | stack tag-mismatch | [HWASan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-hwasan-detection)检测堆栈标记不匹配，可能是因为堆栈返回后使用、堆栈范围外使用或出界。 |
 | alloc-dealloc-mismatch | 内存分配和释放方式不匹配。 |
 | allocation-size-too-big | 分配过大的堆内存。 |

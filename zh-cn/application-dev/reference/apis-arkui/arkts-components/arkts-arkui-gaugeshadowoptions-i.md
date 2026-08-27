@@ -1,8 +1,8 @@
 # GaugeShadowOptions
 
-GaugeShadowOptions继承自MultiShadowOptions，具有MultiShadowOptions的全部属性。
+GaugeShadowOptions继承自[MultiShadowOptions](arkts-arkui-multishadowoptions-i.md)，具有MultiShadowOptions的全部属性。
 
-**继承/实现关系：** GaugeShadowOptions extends MultiShadowOptions
+**继承/实现关系：** GaugeShadowOptions extends [MultiShadowOptions](arkts-arkui-multishadowoptions-i.md)
 
 **起始版本：** 11
 
@@ -12,12 +12,9 @@ GaugeShadowOptions继承自MultiShadowOptions，具有MultiShadowOptions的全�
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare interface GaugeShadowOptions--><!--Device-unnamed-declare interface GaugeShadowOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
 
 ```TypeScript
 ```
-

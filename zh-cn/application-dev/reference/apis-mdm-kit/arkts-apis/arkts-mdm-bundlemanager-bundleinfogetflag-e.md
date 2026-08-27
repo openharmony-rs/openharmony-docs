@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-bundleManager-export enum BundleInfoGetFlag--><!--Device-bundleManager-export enum BundleInfoGetFlag-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DEFAULT
@@ -19,8 +17,6 @@ DEFAULT = 0
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BundleInfoGetFlag-DEFAULT = 0--><!--Device-BundleInfoGetFlag-DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,8 +32,6 @@ WITH_APPLICATION_INFO = 1 << 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BundleInfoGetFlag-WITH_APPLICATION_INFO = 1 << 0--><!--Device-BundleInfoGetFlag-WITH_APPLICATION_INFO = 1 << 0-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## WITH_SIGNATURE_INFO
@@ -51,8 +45,6 @@ WITH_SIGNATURE_INFO = 1 << 1
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BundleInfoGetFlag-WITH_SIGNATURE_INFO = 1 << 1--><!--Device-BundleInfoGetFlag-WITH_SIGNATURE_INFO = 1 << 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -68,7 +60,4 @@ WITH_APPLICATION_ICON_INFO = 1 << 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BundleInfoGetFlag-WITH_APPLICATION_ICON_INFO = 1 << 2--><!--Device-BundleInfoGetFlag-WITH_APPLICATION_ICON_INFO = 1 << 2-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

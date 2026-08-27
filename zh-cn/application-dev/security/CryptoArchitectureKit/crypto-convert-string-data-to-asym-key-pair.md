@@ -19,20 +19,21 @@
 
 ## 指定PEM格式字符串数据转换密钥对
 
-对应的算法规格请查看[非对称密钥生成和转换规格](crypto-asym-key-generation-conversion-spec.md)。
+对应的算法规格请查看非对称密钥生成和转换规格。
 
-1. 调用[cryptoFramework.createAsyKeyGenerator/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)，指定字符串参数'RSA1024'，创建RSA密钥类型为RSA1024、素数个数为2的非对称密钥生成器（AsyKeyGenerator）。
+1. 调用cryptoFramework.createAsyKeyGenerator，指定字符串参数'RSA1024'，创建RSA密钥类型为RSA1024、素数个数为2的非对称密钥生成器（AsyKeyGenerator）。
 
    生成RSA非对称密钥时，默认素数为2，此处省略了参数PRIMES_2。
 
-2. 调用[AsyKeyGenerator.convertPemKey/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpemkey12)，传入二进制密钥数据，生成非对称密钥对象（KeyPair）。
-3. 调用[AsyKeyGenerator.getEncodedPem/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedpem12)，将非对称密钥对象中的公钥转换成PKCS#1或X.509格式，私钥转换成PKCS#1或PKCS#8格式。
+2. 调用AsyKeyGenerator.convertPemKey，传入二进制密钥数据，生成非对称密钥对象（KeyPair）。
+3. 调用AsyKeyGenerator.getEncodedPem，将非对称密钥对象中的公钥转换成PKCS #1或X.509格式，私钥转换成PKCS #1或PKCS #8格式。
 
 - 以Promise方式生成RSA密钥对为例：
   <!-- @[specify_pem_string_convert_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSpecifiedPEMAsymmetricKeyPair/entry/src/main/ets/pages/Promise.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   let priKeyPkcs1Str1024: string =
     '-----BEGIN RSA PRIVATE KEY-----\n' +
@@ -58,19 +59,24 @@
       '-----END RSA PUBLIC KEY-----\n';
   
   async function testPkcs1ToPkcs8ByPromise() {
-    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-    let keyPair = await asyKeyGenerator.convertPemKey(publicPkcs1Str1024, priKeyPkcs1Str1024);
-    let priPemKey = keyPair.priKey;
-    let pubPemKey = keyPair.pubKey;
-    let priString = priPemKey.getEncodedPem('PKCS8');
-    let pubString = pubPemKey.getEncodedPem('X509');
-    console.info('[promise]TestPkcs1ToPkcs8ByPromise priString output: ' + priString);
-    console.info('[promise]TestPkcs1ToPkcs8ByPromise pubString output: ' + pubString);
+    try {
+      let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+      let keyPair = await asyKeyGenerator.convertPemKey(publicPkcs1Str1024, priKeyPkcs1Str1024);
+      let priPemKey = keyPair.priKey;
+      let pubPemKey = keyPair.pubKey;
+      let priString = priPemKey.getEncodedPem('PKCS8');
+      let pubString = pubPemKey.getEncodedPem('X509');
+      console.info('[promise]TestPkcs1ToPkcs8ByPromise priString output: ' + priString);
+      console.info('[promise]TestPkcs1ToPkcs8ByPromise pubString output: ' + pubString);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`testPkcs1ToPkcs8ByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 
 
-- 同步返回结果（调用方法[convertPemKeySync/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpemkeysync12)）：
+- 同步返回结果（调用方法convertPemKeySync）：
 
   <!-- @[specify_pem_string_convert_rsa_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSpecifiedPEMAsymmetricKeyPair/entry/src/main/ets/pages/Sync.ets) -->
   

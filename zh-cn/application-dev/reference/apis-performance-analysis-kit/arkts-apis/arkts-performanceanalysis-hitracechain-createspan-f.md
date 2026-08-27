@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## createSpan
@@ -12,11 +11,9 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 function createSpan(): HiTraceId
 ```
 
-创建跟踪分支，同步接口。用于在业务流程中标记重要的子流程，例如在请求处理过程中的关键步骤、服务端处理链中的各个阶段、或者需要重点关注的业务 分支。 创建一个HiTraceId，使用当前线程TLS中的chainId、spanId初始化HiTraceId的chainId、parentSpanId，并为HiTraceId生成一个新的spanId， 返回该HiTraceId。
+创建跟踪分支，同步接口。用于在业务流程中标记重要的子流程，例如在请求处理过程中的关键步骤、服务端处理链中的各个阶段、或者需要重点关注的业务 分支。创建一个HiTraceId，使用当前线程TLS中的chainId、spanId初始化HiTraceId的chainId、parentSpanId，并为HiTraceId生成一个新的spanId， 返回该HiTraceId。
 
-**起始版本：** 23
-
-<!--Device-hiTraceChain-function createSpan(): HiTraceId--><!--Device-hiTraceChain-function createSpan(): HiTraceId-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -40,4 +37,3 @@ if (spanTraceId.chainId != traceId.chainId) {
 // 业务结束，结束跟踪。
 hiTraceChain.end(traceId);
 ```
-

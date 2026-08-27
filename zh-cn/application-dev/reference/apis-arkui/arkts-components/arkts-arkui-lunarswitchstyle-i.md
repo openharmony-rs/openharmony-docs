@@ -4,8 +4,6 @@
 
 **起始版本：** 14
 
-<!--Device-unnamed-declare interface LunarSwitchStyle--><!--Device-unnamed-declare interface LunarSwitchStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,9 +17,11 @@
 selectedColor?: ResourceColor
 ```
 
-设置开关开启时开关的背景颜色。 > 默认值：\$r('sys.color.ohos_id_color_text_primary_actived')。
+设置开关开启时开关的背景颜色。
 
-**类型：** ResourceColor
+> 默认值：\$r('sys.color.ohos_id_color_text_primary_actived')。
+
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **默认值：** $r('sys.color.ohos_id_color_text_primary_actived')
 
@@ -31,8 +31,6 @@ selectedColor?: ResourceColor
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LunarSwitchStyle-selectedColor?: ResourceColor--><!--Device-LunarSwitchStyle-selectedColor?: ResourceColor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeColor
@@ -41,9 +39,11 @@ selectedColor?: ResourceColor
 strokeColor?: ResourceColor
 ```
 
-设置开关内部图标颜色。 > 默认值：Color.White。
+设置开关内部图标颜色。
 
-**类型：** ResourceColor
+> 默认值：Color.White。
+
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **默认值：** Color.White
 
@@ -53,8 +53,6 @@ strokeColor?: ResourceColor
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LunarSwitchStyle-strokeColor?: ResourceColor--><!--Device-LunarSwitchStyle-strokeColor?: ResourceColor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## unselectedColor
@@ -63,9 +61,11 @@ strokeColor?: ResourceColor
 unselectedColor?: ResourceColor
 ```
 
-设置开关未开启时开关的边框颜色。 > 默认值：\$r('sys.color.ohos_id_color_switch_outline_off')。
+设置开关未开启时开关的边框颜色。
 
-**类型：** ResourceColor
+> 默认值：\$r('sys.color.ohos_id_color_switch_outline_off')。
+
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **默认值：** $r('sys.color.ohos_id_color_switch_outline_off')
 
@@ -75,7 +75,4 @@ unselectedColor?: ResourceColor
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LunarSwitchStyle-unselectedColor?: ResourceColor--><!--Device-LunarSwitchStyle-unselectedColor?: ResourceColor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## lseek
@@ -17,8 +15,6 @@ declare function lseek(fd: number, offset: number, whence?: WhenceType): number
 调整文件偏移指针位置。
 
 **起始版本：** 11
-
-<!--Device-unnamed-declare function lseek(fd: number, offset: number, whence?: WhenceType): number--><!--Device-unnamed-declare function lseek(fd: number, offset: number, whence?: WhenceType): number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -40,9 +36,18 @@ declare function lseek(fd: number, offset: number, whence?: WhenceType): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900038 | Value too large for defined data type |
 | 13900008 | Bad file descriptor |
+| 13900020 | Invalid argument |
 | 13900026 | Illegal seek |
+| 13900038 | Value too large for defined data type |
 | 13900042 | Unknown error |
 
+**示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+let offset = fileIo.lseek(file.fd, 5, fileIo.WhenceType.SEEK_SET);
+console.info(`Succeeded in seeking, the current offset is at ${offset}`);
+fileIo.closeSync(file);
+```

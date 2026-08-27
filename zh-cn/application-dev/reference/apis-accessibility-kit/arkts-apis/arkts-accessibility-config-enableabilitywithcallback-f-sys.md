@@ -12,15 +12,13 @@ import { config } from '@kit.AccessibilityKit';
 function enableAbilityWithCallback(name: string, capability: Array<accessibility.Capability>, connectCallback: ConnectCallback): Promise<void>
 ```
 
-启用辅助扩展，并指定[ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md)作为辅助扩展连接断开事件的回调函数。使用Promise异步回调。 当辅助扩展进程异常断开连接时，将触发ConnectCallback的onDisconnect回调。需与[config.disableAbility](arkts-accessibility-config-disableability-f-sys.md)配对使用。
+启用辅助扩展，并指定[ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md)作为辅助扩展连接断开事件的回调函数。使用Promise异步回调。当辅助扩展进程异常断开连接时，将触发ConnectCallback的onDisconnect回调。需与[config.disableAbility](arkts-accessibility-config-disableability-f-sys.md)配对使用。
 
 **起始版本：** 23
 
 **需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-config-function enableAbilityWithCallback(name: string, capability: Array<accessibility.Capability>, connectCallback: ConnectCallback): Promise<void>--><!--Device-config-function enableAbilityWithCallback(name: string, capability: Array<accessibility.Capability>, connectCallback: ConnectCallback): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -31,14 +29,14 @@ function enableAbilityWithCallback(name: string, capability: Array<accessibility
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 辅助扩展应用的名称，格式为：'bundleName/abilityName'。 |
-| capability | Array&lt;accessibility.Capability&gt; | 是 | 辅助扩展应用的能力属性。 |
+| capability | Array & lt;accessibility.Capability & gt; | 是 | 辅助扩展应用的能力属性。 |
 | connectCallback | [ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md) | 是 | 辅助扩展应用连接断开时调用的回调函数，用于监听辅助扩展的断开连接事件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -69,4 +67,3 @@ config.enableAbilityWithCallback(name, capability, connectCallback).then(() => {
   console.error(`Failed to enable ability. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-

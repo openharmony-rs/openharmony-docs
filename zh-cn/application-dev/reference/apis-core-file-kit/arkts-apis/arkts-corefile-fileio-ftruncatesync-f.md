@@ -19,8 +19,6 @@ declare function ftruncateSync(fd: number, len?: number): void
 
 **替代接口：** [truncateSync](arkts-corefile-file-fs-truncatesync-f.md)
 
-<!--Device-unnamed-declare function ftruncateSync(fd: number, len?: number): void--><!--Device-unnamed-declare function ftruncateSync(fd: number, len?: number): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -30,3 +28,11 @@ declare function ftruncateSync(fd: number, len?: number): void
 | fd | number | 是 | 待截断文件的文件描述符。 |
 | len | number | 否 | 文件截断后的长度，单位为Byte。默认为0。 |
 
+**示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+let fd = fileio.openSync(filePath);
+let len = 5;
+fileio.ftruncateSync(fd, len);
+```

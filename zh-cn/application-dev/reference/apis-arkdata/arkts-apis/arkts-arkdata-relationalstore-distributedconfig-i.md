@@ -2,9 +2,7 @@
 
 记录表的分布式配置信息。
 
-**起始版本：** 23
-
-<!--Device-relationalStore-interface DistributedConfig--><!--Device-relationalStore-interface DistributedConfig-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -28,8 +26,6 @@ assetConflictPolicy?: AssetConflictPolicy
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DistributedConfig-assetConflictPolicy?: AssetConflictPolicy--><!--Device-DistributedConfig-assetConflictPolicy?: AssetConflictPolicy-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## assetDownloadOnDemand
@@ -46,8 +42,6 @@ assetDownloadOnDemand?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DistributedConfig-assetDownloadOnDemand?: boolean--><!--Device-DistributedConfig-assetDownloadOnDemand?: boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## assetTempPath
@@ -56,15 +50,13 @@ assetDownloadOnDemand?: boolean
 assetTempPath?: string
 ```
 
-资产临时路径。仅当assetConflictPolicy值为CONFLICT_POLICY_TEMP_PATH时生效，需指定为 [distributedfiles](../../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)下的临时路径，格式示例：tmp/，若未填写或路径不合规，将 抛出 401 错误码。默认值为空。
+资产临时路径。仅当assetConflictPolicy值为CONFLICT_POLICY_TEMP_PATH时生效，需指定为 [应用文件目录与应用文件路径](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)下的临时路径，格式示例：tmp/，若未填写或路径不合规，将 抛出 401 错误码。默认值为空。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DistributedConfig-assetTempPath?: string--><!--Device-DistributedConfig-assetTempPath?: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -78,9 +70,7 @@ asyncDownloadAsset?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-DistributedConfig-asyncDownloadAsset?: boolean--><!--Device-DistributedConfig-asyncDownloadAsset?: boolean-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -94,9 +84,7 @@ autoSync: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-DistributedConfig-autoSync: boolean--><!--Device-DistributedConfig-autoSync: boolean-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -114,8 +102,6 @@ autoSyncSwitch?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DistributedConfig-autoSyncSwitch?: boolean--><!--Device-DistributedConfig-autoSyncSwitch?: boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## enableCloud
@@ -128,9 +114,7 @@ enableCloud?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-DistributedConfig-enableCloud?: boolean--><!--Device-DistributedConfig-enableCloud?: boolean-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -146,7 +130,4 @@ tableType?: DistributedTableType
 
 **起始版本：** 23
 
-<!--Device-DistributedConfig-tableType?: DistributedTableType--><!--Device-DistributedConfig-tableType?: DistributedTableType-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-

@@ -12,8 +12,6 @@ declare type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideogra
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideographic" | "middle" | "top"--><!--Device-unnamed-declare type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideographic" | "middle" | "top"-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
@@ -24,4 +22,3 @@ declare type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideogra
 | "ideographic" | 文字基线是表意字基线；如果字符本身超出了alphabetic基线， 那么ideographic基线位置在字符本身的底部。 |
 | "middle" | 文本基线在文本块的中间。 |
 | "top" | 文本基线在文本块的顶部。 |
-

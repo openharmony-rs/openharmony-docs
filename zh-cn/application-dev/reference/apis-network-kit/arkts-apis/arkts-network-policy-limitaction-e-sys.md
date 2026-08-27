@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-policy-export enum LimitAction--><!--Device-policy-export enum LimitAction-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -19,8 +17,6 @@ LIMIT_ACTION_NONE = -1
 默认值。
 
 **起始版本：** 10
-
-<!--Device-LimitAction-LIMIT_ACTION_NONE = -1--><!--Device-LimitAction-LIMIT_ACTION_NONE = -1-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -36,8 +32,6 @@ LIMIT_ACTION_ACCESS_DISABLED = 0
 
 **起始版本：** 10
 
-<!--Device-LimitAction-LIMIT_ACTION_ACCESS_DISABLED = 0--><!--Device-LimitAction-LIMIT_ACTION_ACCESS_DISABLED = 0-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -52,9 +46,6 @@ LIMIT_ACTION_ALERT_ONLY = 1
 
 **起始版本：** 10
 
-<!--Device-LimitAction-LIMIT_ACTION_ALERT_ONLY = 1--><!--Device-LimitAction-LIMIT_ACTION_ALERT_ONLY = 1-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **系统接口：** 此接口为系统接口。
-

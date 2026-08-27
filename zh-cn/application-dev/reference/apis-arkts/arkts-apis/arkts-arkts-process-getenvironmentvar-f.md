@@ -20,8 +20,6 @@ function getEnvironmentVar(name: string): string
 
 **替代接口：** [getEnvironmentVar](arkts-arkts-process-processmanager-c.md#getenvironmentvar)
 
-<!--Device-process-function getEnvironmentVar(name: string): string--><!--Device-process-function getEnvironmentVar(name: string): string-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -42,3 +40,9 @@ function getEnvironmentVar(name: string): string
 let pres = process.getEnvironmentVar("PATH");
 ```
 
+```TypeScript
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
+// 获取PATH环境变量的值
+let pres = processManager.getEnvironmentVar("PATH");
+```

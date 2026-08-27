@@ -4,6 +4,8 @@
 
 提供USB Serial DDK中的枚举类型与结构体的定义，用于USB串口驱动开发，简化串口设备参数配置、返回码处理和流量控制等操作，提升驱动开发效率。
 
+**引用文件：** <usb_serial/usb_serial_types.h>
+
 **库：** libusb_serial_ndk.z.so
 
 **系统能力：** SystemCapability.Driver.UsbSerial.Extension

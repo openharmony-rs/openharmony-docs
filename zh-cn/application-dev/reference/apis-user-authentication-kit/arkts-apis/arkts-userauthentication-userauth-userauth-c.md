@@ -8,15 +8,12 @@
 
 **替代接口：** [AuthInstance](arkts-userauthentication-userauth-authinstance-i.md)
 
-<!--Device-userAuth-class UserAuth--><!--Device-userAuth-class UserAuth-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 ## 导入模块
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';
-import { UserAuthIcon } from '@kit.UserAuthenticationKit';
 ```
 
 ## auth
@@ -39,8 +36,6 @@ auth(
 **替代接口：** [start](arkts-userauthentication-userauth-authinstance-i.md#start)
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
-
-<!--Device-UserAuth-auth(      challenge: Uint8Array,      authType: UserAuthType,      authTrustLevel: AuthTrustLevel,      callback: IUserAuthCallback    ): Uint8Array--><!--Device-UserAuth-auth(      challenge: Uint8Array,      authType: UserAuthType,      authTrustLevel: AuthTrustLevel,      callback: IUserAuthCallback    ): Uint8Array-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -76,7 +71,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
         // 此处添加认证失败逻辑。
       }
     } catch (error) {
-      console.error(`auth onResult failed. Code: ${error?.code}, message: ${error?.message}`);
+      console.error(`Failed to auth onResult. Code: ${error?.code}, message: ${error?.message}`);
     }
   }
 });
@@ -97,8 +92,6 @@ cancelAuth(contextID: Uint8Array): number
 **替代接口：** [cancel](arkts-userauthentication-userauth-authinstance-i.md#cancel)
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
-
-<!--Device-UserAuth-cancelAuth(contextID: Uint8Array): number--><!--Device-UserAuth-cancelAuth(contextID: Uint8Array): number-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -126,7 +119,7 @@ let cancelCode = auth.cancelAuth(contextId);
 if (cancelCode == userAuth.ResultCode.SUCCESS) {
   console.info('cancel auth successfully.');
 } else {
-  console.error('cancel auth failed.');
+  console.error('Failed to cancel auth.');
 }
 ```
 
@@ -143,8 +136,6 @@ constructor()
 **废弃版本：** 9
 
 **替代接口：** [getAuthInstance](arkts-userauthentication-userauth-getauthinstance-f.md)
-
-<!--Device-UserAuth-constructor()--><!--Device-UserAuth-constructor()-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -172,8 +163,6 @@ getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): numb
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
-<!--Device-UserAuth-getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): number--><!--Device-UserAuth-getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): number-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **参数：**
@@ -199,7 +188,7 @@ let checkCode = auth.getAvailableStatus(userAuth.UserAuthType.FACE, userAuth.Aut
 if (checkCode == userAuth.ResultCode.SUCCESS) {
   console.info('check auth support successfully.');
 } else {
-  console.error(`check auth support failed, code = ${checkCode}`);
+  console.error(`Failed to check auth support. Code: ${checkCode}`);
 }
 ```
 
@@ -216,8 +205,6 @@ getVersion(): number
 **废弃版本：** 9
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
-
-<!--Device-UserAuth-getVersion(): number--><!--Device-UserAuth-getVersion(): number-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -236,4 +223,3 @@ let auth = new userAuth.UserAuth();
 let version = auth.getVersion();
 console.info(`auth version = ${version}`);
 ```
-

@@ -2,9 +2,7 @@
 
 配置共享批量操作结果的数据结构。
 
-**起始版本：** 23
-
-<!--Device-dataShare-interface DataProxyResult--><!--Device-dataShare-interface DataProxyResult-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { dataShare } from '@kit.ArkData';
-import { dataSharePredicates } from '@kit.ArkData';
 ```
 
 ## result
@@ -25,11 +22,9 @@ result: DataProxyErrorCode
 
 **类型：** [DataProxyErrorCode](arkts-arkdata-datashare-dataproxyerrorcode-e.md)
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataProxyResult-result: DataProxyErrorCode--><!--Device-DataProxyResult-result: DataProxyErrorCode-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -43,11 +38,8 @@ uri: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataProxyResult-uri: string--><!--Device-DataProxyResult-uri: string-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
-

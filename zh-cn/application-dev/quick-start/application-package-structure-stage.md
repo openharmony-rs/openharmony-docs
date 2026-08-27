@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 为了让开发者能对应用程序包在不同阶段的形态有更加清晰的认知，分别对开发态、编译态、发布态的应用程序结构展开介绍。
@@ -25,9 +25,9 @@
 <!--Table: 25%; 75%-->
 | 文件类型 | 说明 |
 | -------- | -------- |
-| 配置文件 | 包括应用级配置信息、以及Module级配置信息：<br/> - **AppScope &gt; app.json5**：[app.json5配置文件](app-configuration-file.md)，用于声明应用的全局配置信息，比如应用Bundle名称、应用名称、应用图标、应用版本号等。<br/> - **ModuleName &gt; src &gt; main &gt; module.json5**：[module.json5配置文件](module-configuration-file.md)，用于声明Module基本信息、支持的设备类型、所含的组件信息、运行所需申请的权限等。 |
+| 配置文件 | 包括应用级配置信息、以及Module级配置信息：<br/> - **AppScope &gt; app.json5**：app.json5配置文件，用于声明应用的全局配置信息，比如应用Bundle名称、应用名称、应用图标、应用版本号等。<br/> - **ModuleName &gt; src &gt; main &gt; module.json5**：module.json5配置文件，用于声明Module基本信息、支持的设备类型、所含的组件信息、运行所需申请的权限等。 |
 | ArkTS源码文件 | **ModuleName &gt; src &gt; main &gt; ets**：用于存放Module的ArkTS源码文件（.ets文件）。|
-| 资源文件 | 包括应用级资源文件、以及Module级资源文件，支持图形、多媒体、字符串、布局文件等，详见[资源分类与访问](resource-categories-and-access.md)。<br/> - **AppScope &gt; resources** ：用于存放应用需要用到的资源文件。<br/> - **ModuleName &gt; src &gt; main &gt; resources** ：用于存放该Module需要用到的资源文件。|
+| 资源文件 | 包括应用级资源文件、以及Module级资源文件，支持图形、多媒体、字符串、布局文件等，详见资源分类与访问。<br/> - **AppScope &gt; resources** ：用于存放应用需要用到的资源文件。<br/> - **ModuleName &gt; src &gt; main &gt; resources** ：用于存放该Module需要用到的资源文件。|
 | 其他配置文件 | 用于编译构建，包括构建配置文件、编译构建任务脚本、混淆规则文件、依赖的共享包信息等。<br/> - **build-profile.json5**：[工程级](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)或[Module级](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile)的构建配置文件，包括[应用签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)、产品配置等。 <br/> - **hvigorfile.ts**：工程级或Module级的编译构建任务脚本，开发者可以自定义编译构建工具版本、控制构建行为的配置参数。<br/> - **[obfuscation-rules.txt](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-build-obfuscation#section760533133313)**：混淆规则文件。混淆开启后，在使用Release模式进行编译时，会对代码进行编译、混淆及压缩处理，保护代码资产。<br/> - **[oh-package.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-oh-package-json5)**：用于存放依赖库的信息，包括所依赖的三方库和共享包。 |
 
 
@@ -46,7 +46,7 @@
 
 ## 发布态包结构
 
-每个应用中至少包含一个.hap文件，可能包含若干个.hsp文件、也可能不含，一个应用中的所有.hap与.hsp文件合在一起称为**Bundle**，其对应的bundleName是应用的唯一标识（详见[app.json5配置文件](app-configuration-file.md)中的bundleName标签）。
+每个应用中至少包含一个.hap文件，可能包含若干个.hsp文件、也可能不含，一个应用中的所有.hap与.hsp文件合在一起称为**Bundle**，其对应的bundleName是应用的唯一标识（详见app.json5配置文件中的bundleName标签）。
 
 当应用发布上架到应用市场时，需要将Bundle打包为一个.app后缀的文件用于上架，这个.app文件称为**App Pack**（Application Package），与此同时，DevEco Studio工具会自动生成一个**pack.info**文件。**pack.info**文件描述了App Pack中每个HAP和HSP的属性，包含APP中的bundleName和versionCode信息、以及Module中的name、type和abilities等信息。
 

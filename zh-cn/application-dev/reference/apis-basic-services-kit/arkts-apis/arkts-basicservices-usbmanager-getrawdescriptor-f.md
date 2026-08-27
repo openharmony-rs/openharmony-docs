@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { usbManager } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
 ```
 
 ## getRawDescriptor
@@ -15,9 +14,7 @@ function getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
 获取原始的USB描述符。如果USB服务异常，可能返回`undefined`，注意需要对接口返回值做判空处理。
 
-**起始版本：** 23
-
-<!--Device-usbManager-function getRawDescriptor(pipe: USBDevicePipe): Uint8Array--><!--Device-usbManager-function getRawDescriptor(pipe: USBDevicePipe): Uint8Array-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -37,7 +34,7 @@ function getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  <br>1.Mandatory parameters are left unspecified.  <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1.Mandatory parameters are left unspecified.  2.Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 | [14400001](../errorcode-usb.md#14400001-usb设备访问权限被拒绝) |  |
 | [14400004](../errorcode-usb.md#14400004-服务异常) |  |
@@ -66,4 +63,3 @@ async function getRawDescriptor() {
   usbManager.closePipe(devicePipe);
 }
 ```
-

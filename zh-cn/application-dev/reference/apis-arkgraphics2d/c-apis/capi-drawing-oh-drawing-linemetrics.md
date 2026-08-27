@@ -30,6 +30,6 @@ typedef struct OH_Drawing_LineMetrics {...} OH_Drawing_LineMetrics
 | double y | 文字上端到容器上端高度，第一行为0，第二行为第一行高度。 |
 | size_t startIndex | 行起始位置字符索引。 |
 | size_t endIndex | 行结束位置字符索引。 |
-| OH_Drawing_Font_Metrics firstCharMetrics | 第一个字的度量信息。 |
+| [OH_Drawing_Font_Metrics](capi-drawing-oh-drawing-font-metrics.md) firstCharMetrics | 第一个字的度量信息。 |
 
 

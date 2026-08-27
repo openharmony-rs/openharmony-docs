@@ -46,4 +46,4 @@
 
 游戏内容具体开发可参考[互动卡片小游戏开发指导](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-interact-card-dev-0000002045919412)。
 
-端侧卡片配置开发可参考[趣味交互类型互动卡片配置](arkts-ui-widget-configuration.md#funinteractionparams标签)。
+端侧卡片配置开发可参考趣味交互类型互动卡片配置。

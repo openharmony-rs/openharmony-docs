@@ -16,11 +16,11 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 >
 > - 在进行IPC&RPC跨进程通信前需要通过Ability Kit获取服务端的代理对象。
 >
-> - 不支持三方应用实现跨进程通信，三方应用仅可通过[connectServiceExtensionAbility/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)连接系统提供的ServiceExtensionAbility，通过返回的代理对[ServiceExtensionAbility](../application-models/extensionability-overview.md)进行通信从而达到三方应用和系统服务通信的目的。
+> - 不支持三方应用实现跨进程通信，三方应用仅可通过connectServiceExtensionAbility连接系统提供的ServiceExtensionAbility，通过返回的代理对ServiceExtensionAbility进行通信从而达到三方应用和系统服务通信的目的。
 >
-> - 从API version 20开始，在2in1设备上，开发者可使用AppServiceExtensionAbility组件，为应用提供后台服务能力。三方应用可[connectAppServiceExtensionAbility/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)连接AppServiceExtensionAbility，通过返回的代理对象和[AppServiceExtensionAbility/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)进行通信从而达到三方和三方应用通信的目的。详细开发步骤参考[AppServiceExtensionAbility](../application-models/app-service-extension-ability.md#连接一个后台服务)。
+> - 从API version 20开始，在2in1设备上，开发者可使用AppServiceExtensionAbility组件，为应用提供后台服务能力。三方应用可connectAppServiceExtensionAbility连接AppServiceExtensionAbility，通过返回的代理对象和AppServiceExtensionAbility进行通信从而达到三方和三方应用通信的目的。详细开发步骤参考AppServiceExtensionAbility。
 >
-> - 三方应用之间也可通过[动态订阅公共事件](../basic-services/common-event/common-event-subscription.md)进行进程间通信。
+> - 三方应用之间也可通过动态订阅公共事件进行进程间通信。
 >
 > - 完整的IPC&RPC通信开发流程涉及系统ServiceExtensionAbility的实现，故本篇指南仅提供客户端示例代码。
 
@@ -40,11 +40,11 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
     └
     ```
 
-3. 在ServiceExtAbility.ets文件中，导入ServiceExtensionAbility的依赖包，自定义类继承ServiceExtensionAbility并实现生命周期回调。定义一个继承自[rpc.RemoteObject/apis-ipc-kit/js-apis-rpc.md#remoteobject)的stub类，实现[onRemoteMessageRequest/apis-ipc-kit/js-apis-rpc.md#onremotemessagerequest9)方法，用来处理客户端的请求。在onConnect生命周期回调函数里，创建之前定义的Stub对象并返回。
+3. 在ServiceExtAbility.ets文件中，导入ServiceExtensionAbility的依赖包，自定义类继承ServiceExtensionAbility并实现生命周期回调。定义一个继承自rpc.RemoteObject的stub类，实现onRemoteMessageRequest方法，用来处理客户端的请求。在onConnect生命周期回调函数里，创建之前定义的Stub对象并返回。
 
 > **说明：**
 >
-> - ServiceExtensionAbility该模块仅对系统应用开放，业务使用时需要开发者自行替换当前工程中的SDK为full-SDK。使用full-SDK时需要开发者手动从镜像站点获取，并在DevEco Studio中替换，具体操作可参考[替换指南](../faqs/full-sdk-switch-guide.md)。
+> - ServiceExtensionAbility该模块仅对系统应用开放，业务使用时需要开发者自行替换当前工程中的SDK为full-SDK。使用full-SDK时需要开发者手动从镜像站点获取，并在DevEco Studio中替换，具体操作可参考替换指南。
 
   <!-- @[service_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Stub/entry/src/main/ets/ServiceExtAbility/ServiceExtAbility.ets) -->
   
@@ -115,7 +115,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 
 > **说明：**
 >
-> - 在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../application-models/uiability-usage.md#获取uiability的上下文信息)。
+> - 在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见获取UIAbility的上下文信息。
 
   在IPC（同设备的跨进程通信）场景中，客户端的示例如下：
 
@@ -281,7 +281,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
   let deathRecipient = new MyDeathRecipient();
   ```
 
-获取[允许多设备协同的权限](../security/AccessToken/permissions-for-all-user.md#ohospermissiondistributed_datasync)，在组网的情况下获取到对端的设备ID（组网场景下对应设备的唯一网络标识符，可以使用distributedDeviceManager获取目标设备的NetworkId）后连接服务，获取代理对象并发送信息给服务端，当代理对象与服务端的通信结束后，进行断连。
+获取允许多设备协同的权限，在组网的情况下获取到对端的设备ID（组网场景下对应设备的唯一网络标识符，可以使用distributedDeviceManager获取目标设备的NetworkId）后连接服务，获取代理对象并发送信息给服务端，当代理对象与服务端的通信结束后，进行断连。
 
   <!-- @[rpc_function_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
   
@@ -437,9 +437,9 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
   ```
 
 <!--Del-->
-FA模型使用[connectAbility/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityconnectability7)接口连接Ability。
+FA模型使用connectAbility接口连接Ability。
 
-IPC通信结束后，使用[disconnectAbility/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilitydisconnectability7)接口断开连接，此处的connectId是在连接服务时保存的。
+IPC通信结束后，使用disconnectAbility接口断开连接，此处的connectId是在连接服务时保存的。
 
 <!--code_no_check_fa-->
 ``` TypeScript

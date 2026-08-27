@@ -1,7 +1,7 @@
 # NetConn_HttpProxy
 
 ```c
-typedef struct NetConn_HttpProxy {...} NetConn_HttpProxy
+struct NetConn_HttpProxy {...}
 ```
 
 ## 概述

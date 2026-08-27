@@ -18,9 +18,7 @@ export function getSystemLanguage(): string
 
 **废弃版本：** 9
 
-**替代接口：** [getSystemLanguage](../../apis-na/arkts-apis/arkts-na-i18n-system-c.md#getsystemlanguage)
-
-<!--Device-i18n-export function getSystemLanguage(): string--><!--Device-i18n-export function getSystemLanguage(): string-End-->
+**替代接口：** [getSystemLanguage](arkts-localization-i18n-system-c.md#getsystemlanguage)
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -35,6 +33,11 @@ export function getSystemLanguage(): string
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
 
-let systemLanguage: string = i18n.getSystemLanguage();
+let systemLanguage: string = i18n.System.getSystemLanguage(); // 如果系统语言为简体中文，systemLanguage = 'zh-Hans'
 ```
 
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let systemLanguage: string = i18n.getSystemLanguage();
+```

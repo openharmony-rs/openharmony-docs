@@ -3,20 +3,21 @@
 ## 导入模块
 
 ```TypeScript
-import { statistics } from '@kit.NetworkKit';
 ```
 
 ## getSockfdRxBytes
 
 ```TypeScript
-function getSockfdRxBytes(sockfd: int, callback: AsyncCallback<long>): void
+function getSockfdRxBytes(sockfd: number, callback: AsyncCallback<number>): void
 ```
 
-获取指定Socket的下行流量（单位：字节）。使用callback异步回调。 > **说明：** > > 推荐在Socket连接时使用，否则Socket已经关闭后无法查询到对应流量数据。
+获取指定Socket的下行流量（单位：字节）。使用callback异步回调。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 推荐在Socket连接时使用，否则Socket已经关闭后无法查询到对应流量数据。
 
-<!--Device-statistics-function getSockfdRxBytes(sockfd: int, callback: AsyncCallback<long>): void--><!--Device-statistics-function getSockfdRxBytes(sockfd: int, callback: AsyncCallback<long>): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -24,8 +25,8 @@ function getSockfdRxBytes(sockfd: int, callback: AsyncCallback<long>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sockfd | int | 是 | 指定查询的Socket的FD(file description)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数。当成功获取Socket的下行流量时，error为undefined，否则为错误对象。 |
+| sockfd | number | 是 | 指定查询的Socket的FD(file description)。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当成功获取Socket的下行流量时，error为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -38,28 +39,16 @@ function getSockfdRxBytes(sockfd: int, callback: AsyncCallback<long>): void
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
 
-let sockfd = 50; // 实际开发中需要先根据自己创建的socket获取到。
+let sockfd = 50; // 实际开发中需要先根据自己创建的Socket获取到。
 statistics.getSockfdRxBytes(sockfd, (error: BusinessError, stats: number) => {
-  console.error(JSON.stringify(error));
-  console.info(JSON.stringify(stats));
-});
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { statistics } from '@kit.NetworkKit';
-
-let sockfd = 50; // 实际开发中需要先根据自己创建的socket获取到。
-statistics.getSockfdRxBytes(sockfd, (error: BusinessError|null, stats: long|undefined) => {
-  console.error(JSON.stringify(error));
+  if (error) {
+    console.error(JSON.stringify(error));
+    return;
+  }
   console.info(JSON.stringify(stats));
 });
 ```
@@ -68,14 +57,16 @@ statistics.getSockfdRxBytes(sockfd, (error: BusinessError|null, stats: long|unde
 ## getSockfdRxBytes
 
 ```TypeScript
-function getSockfdRxBytes(sockfd: int): Promise<long>
+function getSockfdRxBytes(sockfd: number): Promise<number>
 ```
 
-获取指定Socket的下行流量（单位：字节）。使用Promise异步回调。 > **说明：** > > 推荐在Socket连接时使用，否则Socket已经关闭后无法查询到对应流量数据。
+获取指定Socket的下行流量（单位：字节）。使用Promise异步回调。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 推荐在Socket连接时使用，否则Socket已经关闭后无法查询到对应流量数据。
 
-<!--Device-statistics-function getSockfdRxBytes(sockfd: int): Promise<long>--><!--Device-statistics-function getSockfdRxBytes(sockfd: int): Promise<long>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -83,13 +74,13 @@ function getSockfdRxBytes(sockfd: int): Promise<long>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sockfd | int | 是 | 指定查询的Socket的FD(file description)。 |
+| sockfd | number | 是 | 指定查询的Socket的FD(file description)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;long&gt; | Promise对象。返回该Socket的下行流量（单位：字节）。 |
+| Promise & lt;number & gt; | Promise对象。返回该Socket的下行流量（单位：字节）。 |
 
 **错误码：**
 
@@ -102,32 +93,14 @@ function getSockfdRxBytes(sockfd: int): Promise<long>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
 
-let sockfd = 50; // 实际开发中需要先根据自己创建的socket获取到。
+let sockfd = 50; // 实际开发中需要先根据自己创建的Socket获取到。
 statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
   console.info(JSON.stringify(stats));
 }).catch((err: BusinessError) => {
   console.error(JSON.stringify(err));
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { statistics } from '@kit.NetworkKit';
-
-let sockfd = 50; // 实际开发中需要先根据自己创建的socket获取到。
-statistics.getSockfdRxBytes(sockfd).then((stats: long) => {
-  console.info(JSON.stringify(stats));
-}).catch((err: Error) => {
-  let businessError = err as BusinessError;
-  console.error(JSON.stringify(businessError));
-});
-```
-

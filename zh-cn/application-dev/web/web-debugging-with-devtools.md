@@ -7,10 +7,10 @@
 <!--Adviser: @HelloShuo-->
 
 
-Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开发调试工具，支持在电脑上调试移动设备前端页面。开发者通过[setWebDebuggingAccess()/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess)接口开启Web组件前端页面调试能力，使用DevTools在电脑上调试移动前端网页，设备需为4.1.0及以上版本。
+Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开发调试工具，支持在电脑上调试移动设备前端页面。开发者通过setWebDebuggingAccess()接口开启Web组件前端页面调试能力，使用DevTools在电脑上调试移动前端网页，设备需为4.1.0及以上版本。
 
 ## 无线调试
-从API version 20开始，可使用无线调试接口[setWebDebuggingAccess<sup>20+</sup>/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20)，来简化调试流程。
+从API version 20开始，可使用无线调试接口setWebDebuggingAccess<sup>20+</sup>，来简化调试流程。
 
 ### 应用代码开启Web调试开关
 
@@ -18,7 +18,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 
 如果没有开启Web调试开关，则DevTools无法发现被调试的网页。
 
-   1. 在应用代码中开启Web调试开关，应用需要调用[setWebDebuggingAccess<sup>20+</sup>/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20)接口，设置TCP Socket端口号并启用Web调试功能。
+   1. 在应用代码中开启Web调试开关，应用需要调用setWebDebuggingAccess<sup>20+</sup>接口，设置TCP Socket端口号并启用Web调试功能。
       <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->
       
       ``` TypeScript
@@ -51,7 +51,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
        > **说明：**
        >
        >  代码中使用的8888端口仅作为示例展示，开发者使用过程中，应保证端口号可以被应用使用。如果因为端口被占用或者应用无权限使用等因素导致端口无法被应用使用，会导致接口抛出异常或者ArkWeb无法开启调试模式。
-   2. 开启调试功能需要在DevEco Studio应用工程hap模块的module.json5文件中增加如下权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
+   2. 开启调试功能需要在DevEco Studio应用工程hap模块的module.json5文件中增加如下权限，添加方法请参考在配置文件中声明权限。
 
         <!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
        
@@ -68,7 +68,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
    2. 修改Chrome调试工具的配置。<br/>   
      确保已勾选 "Discover network targets"，以便从指定的IP地址和端口号发现被调试网页。<br/>  
      (1) 点击 "Configure" 按钮。<br/>   
-     (2) 在 "Target discovery settings" 中添加被调试设备的IP地址和[setWebDebuggingAccess<sup>20+</sup>/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20)接口中指定的port端口，比如：192.168.0.3:8888。
+     (2) 在 "Target discovery settings" 中添加被调试设备的IP地址和setWebDebuggingAccess<sup>20+</sup>接口中指定的port端口，比如：192.168.0.3:8888。
 
    > **说明：**
    >
@@ -87,7 +87,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 
 ### 应用代码开启Web调试开关
 
-调试网页前，需要应用侧代码调用[setWebDebuggingAccess()/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess)接口开启Web调试开关。  
+调试网页前，需要应用侧代码调用setWebDebuggingAccess()接口开启Web调试开关。  
 
 如果没有开启Web调试开关，则DevTools无法发现被调试的网页。
 
@@ -116,7 +116,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
     }
     ```
 
-2. 开启调试功能需要在DevEco Studio应用工程hap模块的module.json5文件中增加如下权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
+2. 开启调试功能需要在DevEco Studio应用工程hap模块的module.json5文件中增加如下权限，添加方法请参考在配置文件中声明权限。
 
     <!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
     
@@ -372,7 +372,7 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
 ### 可以调试系统浏览器打开的网页吗？
 
 能否调试系统浏览器打开的网页，取决于系统浏览器是否开启Web调试开关。
-* 当前系统浏览器已启用Web调试开关，可继续执行[USB连接调试](#usb连接调试)中的后续步骤。
+* 当前系统浏览器已启用Web调试开关，可继续执行USB连接调试中的后续步骤。
 
 ### hdc无法发现设备
 **问题现象**
@@ -411,7 +411,7 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
 
 **解决方法**
 
-  * 请确保应用[开启了Web调试开关](#应用代码开启web调试开关)。
+  * 请确保应用开启了Web调试开关。
   * 请确保应用使用Web组件加载了网页。
 
 ### 删除端口转发任务失败
@@ -461,16 +461,16 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
   * 请删除hdc里其他不必要的转发任务。
   * 转发成功后，请用电脑端的Chrome浏览器打开网址 http://localhost:9222/json ，URL里的9222需要改为自己实际配置的TCP端口。
 
-    - 如果网页有内容， 说明端口转发成功，请在Chrome的调试页面[等待被调试页面的出现](#等待发现被调试页面)。<br/>
+    - 如果网页有内容， 说明端口转发成功，请在Chrome的调试页面等待被调试页面的出现。<br/>
     ![chrome_localhost](figures/devtools_resources_chrome_localhost.jpg)
 
-    - 如果展示的是错误网页， 说明端口转发失败， 请参阅[端口转发不成功](#端口转发不成功)中的解决方法。<br/>
+    - 如果展示的是错误网页， 说明端口转发失败， 请参阅端口转发不成功中的解决方法。<br/>
     ![chrome_localhost_refused](figures/devtools_resources_chrome_localhost_refused.jpg)
 
   * 电脑端Chrome浏览器打开 http://localhost:9222/json 页面有内容，但是Chrome的调试工具界面还是无法发现调试目标。
     - 请确保Chrome调试工具界面的 "Configure" 中配置的端口号，与端口转发指定的TCP端口号一致。
     - 在本文档中，默认使用的TCP端口号为9222。<br/>
-      如果开发者使用了其他的TCP端口号（比如9223），请同时修改[端口转发](#端口转发)中的TCP端口号和[Chrome调试工具界面"Configure"配置](#在chrome浏览器上打开调试工具页面)中的端口号。
+      如果开发者使用了其他的TCP端口号（比如9223），请同时修改端口转发中的TCP端口号和Chrome调试工具界面"Configure"配置中的端口号。
 
 ### 开启了无线调试模式后，电脑端Chrome无法发现被调试网页
 **问题现象**

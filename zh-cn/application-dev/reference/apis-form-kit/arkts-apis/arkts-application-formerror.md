@@ -4,9 +4,7 @@
  无
 
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace formError--><!--Device-unnamed-declare namespace formError-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -31,4 +29,3 @@ import { formError } from '@kit.FormKit';
 | --- | --- |
 | [FormError(formError)](arkts-form-formerror-formerror-e-sys.md) | 枚举，卡片错误码。 |
 <!--DelEnd-->
-

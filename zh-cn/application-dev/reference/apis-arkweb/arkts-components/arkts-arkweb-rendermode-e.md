@@ -1,10 +1,8 @@
 # RenderMode
 
-定义Web组件的渲染方式，默认为异步渲染模式。 建议使用异步渲染模式，异步渲染模式有更好的性能和更低的功耗。
+定义Web组件的渲染方式，默认为异步渲染模式。建议使用异步渲染模式，异步渲染模式有更好的性能和更低的功耗。
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare enum RenderMode--><!--Device-unnamed-declare enum RenderMode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -20,8 +18,6 @@ Web组件异步渲染模式，ArkWeb组件作为图形surface节点，独立送�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RenderMode-ASYNC_RENDER = 0--><!--Device-RenderMode-ASYNC_RENDER = 0-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## SYNC_RENDER
@@ -36,7 +32,4 @@ Web组件同步渲染模式，ArkWeb组件作为图形canvas节点，跟随系�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RenderMode-SYNC_RENDER = 1--><!--Device-RenderMode-SYNC_RENDER = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

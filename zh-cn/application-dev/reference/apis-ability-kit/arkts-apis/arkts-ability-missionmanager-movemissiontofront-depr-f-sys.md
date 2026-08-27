@@ -21,8 +21,6 @@ function moveMissionToFront(missionId: number, callback: AsyncCallback<void>): v
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
-<!--Device-missionManager-function moveMissionToFront(missionId: number, callback: AsyncCallback<void>): void--><!--Device-missionManager-function moveMissionToFront(missionId: number, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -32,7 +30,7 @@ function moveMissionToFront(missionId: number, callback: AsyncCallback<void>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | missionId | number | 是 | 任务ID。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当把指定任务id的任务切到前台成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当把指定任务id的任务切到前台成功，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -73,8 +71,6 @@ function moveMissionToFront(missionId: number, options: StartOptions, callback: 
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
-<!--Device-missionManager-function moveMissionToFront(missionId: number, options: StartOptions, callback: AsyncCallback<void>): void--><!--Device-missionManager-function moveMissionToFront(missionId: number, options: StartOptions, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -85,7 +81,7 @@ function moveMissionToFront(missionId: number, options: StartOptions, callback: 
 | --- | --- | --- | --- |
 | missionId | number | 是 | 任务ID。 |
 | options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md) | 是 | 启动参数选项，用于指定任务切到前台时的窗口模式，设备ID等。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当把指定任务id的任务切到前台成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当把指定任务id的任务切到前台成功，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -126,8 +122,6 @@ function moveMissionToFront(missionId: number, options?: StartOptions): Promise<
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
-<!--Device-missionManager-function moveMissionToFront(missionId: number, options?: StartOptions): Promise<void>--><!--Device-missionManager-function moveMissionToFront(missionId: number, options?: StartOptions): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -143,7 +137,7 @@ function moveMissionToFront(missionId: number, options?: StartOptions): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -163,4 +157,3 @@ try {
   console.error(`moveMissionToFront failed. Cause: ${error.message}`);
 }
 ```
-

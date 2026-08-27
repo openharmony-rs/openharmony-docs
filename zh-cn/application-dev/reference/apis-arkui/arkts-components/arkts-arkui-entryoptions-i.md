@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface EntryOptions--><!--Device-unnamed-declare interface EntryOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,8 +29,6 @@ routeName? : string
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-EntryOptions-routeName? : string--><!--Device-EntryOptions-routeName? : string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## storage
@@ -43,7 +39,7 @@ storage? : LocalStorage
 
 页面级的UI状态存储。当需要在页面外部预先创建并管理UI状态、或需要将已有的LocalStorage实例绑定到此页面以实现状态共享时，传入此参数。当未传入时，框架会创建一个新的LocalStorage实例作为默认值。当 useSharedStorage设置为true且storage已赋值时，useSharedStorage的值优先级更高。
 
-**类型：** LocalStorage
+**类型：** [LocalStorage](../arkts-apis/arkts-arkui-localstorage-c.md)
 
 **起始版本：** 10
 
@@ -52,8 +48,6 @@ storage? : LocalStorage
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-EntryOptions-storage? : LocalStorage--><!--Device-EntryOptions-storage? : LocalStorage-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,7 +69,17 @@ useSharedStorage? : boolean
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-EntryOptions-useSharedStorage? : boolean--><!--Device-EntryOptions-useSharedStorage? : boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**示例**
+
+```TypeScript
+// 设置路由页面名字为myPage
+@Entry({ routeName: 'myPage' })
+@Component
+struct Index {
+  build() {
+    Text('Index')
+  }
+}
+```

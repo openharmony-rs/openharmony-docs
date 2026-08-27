@@ -4,8 +4,6 @@
 
 **起始版本：** 26.1.0
 
-<!--Device-backgroundLoader-export interface TaskStopInfo--><!--Device-backgroundLoader-export interface TaskStopInfo-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 ## 导入模块
@@ -28,8 +26,6 @@ abilityName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TaskStopInfo-abilityName: string--><!--Device-TaskStopInfo-abilityName: string-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 ## stopCode
@@ -45,8 +41,6 @@ stopCode: StopCode
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TaskStopInfo-stopCode: StopCode--><!--Device-TaskStopInfo-stopCode: StopCode-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -64,25 +58,20 @@ stopMessage: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TaskStopInfo-stopMessage: string--><!--Device-TaskStopInfo-stopMessage: string-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 ## taskId
 
 ```TypeScript
-taskId: int
+taskId: number
 ```
 
 任务id。 取值范围为全体整数。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TaskStopInfo-taskId: int--><!--Device-TaskStopInfo-taskId: int-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
-

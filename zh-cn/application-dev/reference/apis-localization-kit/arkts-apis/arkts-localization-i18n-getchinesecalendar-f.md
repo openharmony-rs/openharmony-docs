@@ -20,8 +20,6 @@ export function getChineseCalendar(locale?: Intl.Locale): ChineseCalendar
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-i18n-export function getChineseCalendar(locale?: Intl.Locale): ChineseCalendar--><!--Device-i18n-export function getChineseCalendar(locale?: Intl.Locale): ChineseCalendar-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **参数：**
@@ -34,7 +32,7 @@ export function getChineseCalendar(locale?: Intl.Locale): ChineseCalendar
 
 | 类型 | 说明 |
 | --- | --- |
-| [ChineseCalendar](../../apis-na/arkts-apis/arkts-na-i18n-chinesecalendar-c.md) | 农历对象。 |
+| [ChineseCalendar](arkts-localization-i18n-chinesecalendar-c.md) | 农历对象。 |
 
 **示例**
 
@@ -42,4 +40,3 @@ export function getChineseCalendar(locale?: Intl.Locale): ChineseCalendar
 let locale: Intl.Locale = i18n.System.getSystemLocaleInstance();
 let calendar: i18n.ChineseCalendar = i18n.getChineseCalendar(locale);
 ```
-

@@ -14,11 +14,9 @@ function isFoldable(): boolean
 
 判断设备是否可折叠。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-display-function isFoldable(): boolean--><!--Device-display-function isFoldable(): boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -40,4 +38,3 @@ function isFoldable(): boolean
 let ret: boolean = false;
 ret = display.isFoldable();
 ```
-

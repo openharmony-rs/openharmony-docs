@@ -1,12 +1,15 @@
 # RowLayoutAlgorithm
 
-水平方向线性布局算法类。 > **说明：** > > RowLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为[DynamicLayout](../../apis-na/arkts-apis/arkts-na-arkui-components-arkdynamiclayout-dynamiclayout-f.md)组件的入参 > 指定布局算法。
+水平方向线性布局算法类。
+
+> **说明：**
+> 
+> RowLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为DynamicLayout组件的入参
+> 指定布局算法。
 
 **继承/实现关系：** RowLayoutAlgorithm implements [LayoutAlgorithm](arkts-arkui-layoutalgorithm-i.md)
 
 **起始版本：** 24
-
-<!--Device-unnamed-export class RowLayoutAlgorithm--><!--Device-unnamed-export class RowLayoutAlgorithm-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,8 +29,6 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 **卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RowLayoutAlgorithm-constructor(option?: RowLayoutAlgorithmOptions)--><!--Device-RowLayoutAlgorithm-constructor(option?: RowLayoutAlgorithmOptions)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -39,12 +40,12 @@ constructor(option?: RowLayoutAlgorithmOptions)
 ## alignItems
 
 ```TypeScript
-@Trace public alignItems?: VerticalAlign
+public alignItems?: VerticalAlign
 ```
 
-所有子组件在垂直方向上的对齐格式。 默认值：VerticalAlign.Center 非法值：按默认值处理。 装饰器类型：@Trace
+所有子组件在垂直方向上的对齐格式。默认值：VerticalAlign.Center非法值：按默认值处理。装饰器类型：@Trace
 
-**类型：** [VerticalAlign](../../apis-na/arkts-apis/arkts-na-enums-verticalalign-e.md)
+**类型：** [VerticalAlign](arkts-arkui-verticalalign-e.md)
 
 **起始版本：** 24
 
@@ -54,17 +55,15 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 **卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RowLayoutAlgorithm-@Trace public alignItems?: VerticalAlign--><!--Device-RowLayoutAlgorithm-@Trace public alignItems?: VerticalAlign-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isReverse
 
 ```TypeScript
-@Trace public isReverse?: boolean
+public isReverse?: boolean
 ```
 
-子组件在水平方向上的排列是否反转。取值为true表示子组件在水平方向上反转排列，由于水平方向受通用属性direction影响，如果 direction属性生效，再做一次反转。取值为false表示子组件在水平方向上正序排列。 默认值：false 非法值：按默认值处理。 装饰器类型：@Trace
+子组件在水平方向上的排列是否反转。取值为true表示子组件在水平方向上反转排列，由于水平方向受通用属性direction影响，如果 direction属性生效，再做一次反转。取值为false表示子组件在水平方向上正序排列。默认值：false非法值：按默认值处理。装饰器类型：@Trace
 
 **类型：** boolean
 
@@ -76,19 +75,17 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 **卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RowLayoutAlgorithm-@Trace public isReverse?: boolean--><!--Device-RowLayoutAlgorithm-@Trace public isReverse?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## justifyContent
 
 ```TypeScript
-@Trace public justifyContent?: FlexAlign
+public justifyContent?: FlexAlign
 ```
 
-所有子组件在水平方向上的对齐格式。 默认值：FlexAlign.Start 非法值：按默认值处理。 装饰器类型：@Trace
+所有子组件在水平方向上的对齐格式。默认值：FlexAlign.Start非法值：按默认值处理。装饰器类型：@Trace
 
-**类型：** [FlexAlign](../../apis-na/arkts-apis/arkts-na-enums-flexalign-e.md)
+**类型：** [FlexAlign](arkts-arkui-flexalign-e.md)
 
 **起始版本：** 24
 
@@ -98,17 +95,15 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 **卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RowLayoutAlgorithm-@Trace public justifyContent?: FlexAlign--><!--Device-RowLayoutAlgorithm-@Trace public justifyContent?: FlexAlign-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## space
 
 ```TypeScript
-@Trace public space?: LengthMetrics
+public space?: LengthMetrics
 ```
 
-横向布局元素水平方向间距。 默认值：LengthMetrics.vp(0) 非法值：按默认值处理。 装饰器类型：@Trace
+横向布局元素水平方向间距。默认值：LengthMetrics.vp(0)非法值：按默认值处理。装饰器类型：@Trace
 
 **类型：** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -120,7 +115,4 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 **卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RowLayoutAlgorithm-@Trace public space?: LengthMetrics--><!--Device-RowLayoutAlgorithm-@Trace public space?: LengthMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

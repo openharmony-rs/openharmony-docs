@@ -14,13 +14,11 @@ function enableAppRecovery(restart?: RestartFlag, saveOccasion?: SaveOccasionFla
 
 使能应用恢复功能，参数按顺序填入。该接口调用后，应用从启动器启动时第一个Ability支持恢复。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-appRecovery-function enableAppRecovery(restart?: RestartFlag, saveOccasion?: SaveOccasionFlag, saveMode?: SaveModeFlag) : void--><!--Device-appRecovery-function enableAppRecovery(restart?: RestartFlag, saveOccasion?: SaveOccasionFlag, saveMode?: SaveModeFlag) : void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -32,3 +30,18 @@ function enableAppRecovery(restart?: RestartFlag, saveOccasion?: SaveOccasionFla
 | saveOccasion | [SaveOccasionFlag](arkts-ability-apprecovery-saveoccasionflag-e.md) | 否 | 枚举类型，状态保存时机，默认为故障时保存。 |
 | saveMode | [SaveModeFlag](arkts-ability-apprecovery-savemodeflag-e.md) | 否 | 枚举类型，状态保存方式， 默认为文件缓存。 |
 
+**示例**
+
+```TypeScript
+import { appRecovery, AbilityStage } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onCreate() {
+    appRecovery.enableAppRecovery(
+      appRecovery.RestartFlag.ALWAYS_RESTART,
+      appRecovery.SaveOccasionFlag.SAVE_WHEN_ERROR,
+      appRecovery.SaveModeFlag.SAVE_WITH_FILE
+    );
+  }
+}
+```

@@ -2,9 +2,7 @@
 
 音频中断时，应用接收的中断事件。
 
-**起始版本：** 23
-
-<!--Device-audio-interface InterruptEvent--><!--Device-audio-interface InterruptEvent-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-import { audioHaptic } from '@kit.AudioKit';
 ```
 
 ## eventType
@@ -25,11 +22,9 @@ eventType: InterruptType
 
 **类型：** [InterruptType](arkts-audio-audio-interrupttype-e.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-InterruptEvent-eventType: InterruptType--><!--Device-InterruptEvent-eventType: InterruptType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -43,11 +38,9 @@ forceType: InterruptForceType
 
 **类型：** [InterruptForceType](arkts-audio-audio-interruptforcetype-e.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-InterruptEvent-forceType: InterruptForceType--><!--Device-InterruptEvent-forceType: InterruptForceType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -61,11 +54,8 @@ hintType: InterruptHint
 
 **类型：** [InterruptHint](arkts-audio-audio-interrupthint-e.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-InterruptEvent-hintType: InterruptHint--><!--Device-InterruptEvent-hintType: InterruptHint-End-->
-
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
-

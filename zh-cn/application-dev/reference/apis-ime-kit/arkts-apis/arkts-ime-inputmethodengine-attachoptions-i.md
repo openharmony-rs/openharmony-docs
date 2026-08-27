@@ -2,9 +2,7 @@
 
 绑定输入法时的附加选项。
 
-**起始版本：** 23
-
-<!--Device-inputMethodEngine-export interface AttachOptions--><!--Device-inputMethodEngine-export interface AttachOptions-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -24,9 +22,7 @@ isSimpleKeyboardEnabled?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-AttachOptions-isSimpleKeyboardEnabled?: boolean--><!--Device-AttachOptions-isSimpleKeyboardEnabled?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -40,9 +36,6 @@ requestKeyboardReason?: RequestKeyboardReason
 
 **类型：** RequestKeyboardReason
 
-**起始版本：** 23
-
-<!--Device-AttachOptions-requestKeyboardReason?: RequestKeyboardReason--><!--Device-AttachOptions-requestKeyboardReason?: RequestKeyboardReason-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
-

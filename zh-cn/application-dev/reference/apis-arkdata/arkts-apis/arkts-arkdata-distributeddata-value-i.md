@@ -8,14 +8,11 @@
 
 **替代接口：** Value
 
-<!--Device-distributedData-interface Value--><!--Device-distributedData-interface Value-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## 导入模块
 
 ```TypeScript
-import { distributedDataObject } from '@kit.ArkData';
 ```
 
 ## type
@@ -33,8 +30,6 @@ type: ValueType
 **废弃版本：** 9
 
 **替代接口：** type
-
-<!--Device-Value-type: ValueType--><!--Device-Value-type: ValueType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -54,7 +49,4 @@ value: Uint8Array | string | number | boolean
 
 **替代接口：** value
 
-<!--Device-Value-value: Uint8Array | string | number | boolean--><!--Device-Value-value: Uint8Array | string | number | boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-

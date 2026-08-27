@@ -2,9 +2,7 @@
 
 投播设备的连接状态。
 
-**起始版本：** 23
-
-<!--Device-avSession-interface DeviceState--><!--Device-avSession-interface DeviceState-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -26,9 +24,7 @@ readonly deviceId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DeviceState-readonly deviceId: string--><!--Device-DeviceState-readonly deviceId: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -37,16 +33,14 @@ readonly deviceId: string
 ## deviceState
 
 ```TypeScript
-readonly deviceState: int
+readonly deviceState: number
 ```
 
 投播设备连接状态码。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DeviceState-readonly deviceState: int--><!--Device-DeviceState-readonly deviceState: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -55,16 +49,14 @@ readonly deviceState: int
 ## radarErrorCode
 
 ```TypeScript
-readonly radarErrorCode: int
+readonly radarErrorCode: number
 ```
 
 系统雷达错误码。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DeviceState-readonly radarErrorCode: int--><!--Device-DeviceState-readonly radarErrorCode: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -73,18 +65,15 @@ readonly radarErrorCode: int
 ## reasonCode
 
 ```TypeScript
-readonly reasonCode: int
+readonly reasonCode: number
 ```
 
 投播设备连接错误码。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DeviceState-readonly reasonCode: int--><!--Device-DeviceState-readonly reasonCode: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 此接口为系统接口。
-

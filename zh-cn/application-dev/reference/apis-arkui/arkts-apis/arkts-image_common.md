@@ -25,4 +25,3 @@
 | 名称 | 说明 |
 | --- | --- |
 | [ImageAnalyzerType](arkts-arkui-imageanalyzertype-e.md) | 图像AI分析类型，未设置时默认开启主体识别和文字识别功能。 |
-

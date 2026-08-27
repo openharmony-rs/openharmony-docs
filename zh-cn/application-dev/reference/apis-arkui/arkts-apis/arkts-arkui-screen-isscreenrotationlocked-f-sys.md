@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { screen } from '@kit.ArkUI';
-import { screenshot } from '@kit.ArkUI';
 ```
 
 ## isScreenRotationLocked
@@ -15,9 +14,7 @@ function isScreenRotationLocked(callback: AsyncCallback<boolean>): void
 
 查询当前自动转屏是否锁定，使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-screen-function isScreenRotationLocked(callback: AsyncCallback<boolean>): void--><!--Device-screen-function isScreenRotationLocked(callback: AsyncCallback<boolean>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -27,7 +24,7 @@ function isScreenRotationLocked(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示当前自动转屏处于锁定状态；返回false表示当前自动转屏不处于锁定状态。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示当前自动转屏处于锁定状态；返回false表示当前自动转屏不处于锁定状态。 |
 
 **错误码：**
 
@@ -36,8 +33,6 @@ function isScreenRotationLocked(callback: AsyncCallback<boolean>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -53,21 +48,6 @@ screen.isScreenRotationLocked((err: BusinessError, isLocked: boolean) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-screen.isScreenRotationLocked((err: BusinessError | null, isLocked: boolean | undefined) => {
-  const errCode = err?.code;
-  if (errCode) {
-    console.error(`Failed to get the screen rotation lock status. Code: ${err?.code}, message: ${err?.message}`);
-    return;
-  }
-  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
-});
-```
-
 
 ## isScreenRotationLocked
 
@@ -77,9 +57,7 @@ function isScreenRotationLocked(): Promise<boolean>
 
 查询当前自动转屏是否锁定，使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-screen-function isScreenRotationLocked(): Promise<boolean>--><!--Device-screen-function isScreenRotationLocked(): Promise<boolean>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -89,7 +67,7 @@ function isScreenRotationLocked(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前自动转屏处于锁定状态；返回false表示当前自动转屏不处于锁定状态。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示当前自动转屏处于锁定状态；返回false表示当前自动转屏不处于锁定状态。 |
 
 **错误码：**
 
@@ -98,8 +76,6 @@ function isScreenRotationLocked(): Promise<boolean>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -111,16 +87,3 @@ screen.isScreenRotationLocked().then((isLocked: boolean) => {
   console.error(`Failed to get the screen rotation lock status. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-screen.isScreenRotationLocked().then((isLocked: boolean) => {
-  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
-}).catch((err: Error) => {
-  console.error(`Failed to get the screen rotation lock status. Code: ${err?.code}, message: ${err?.message}`);
-});
-```
-

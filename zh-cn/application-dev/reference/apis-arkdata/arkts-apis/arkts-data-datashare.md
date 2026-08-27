@@ -2,21 +2,16 @@
 
 **DataShare**用于应用管理其自身数据，同时支持同个设备上不同应用间的数据共享。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-declare namespace dataShare--><!--Device-unnamed-declare namespace dataShare-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
-
-**系统接口：** 此接口为系统接口。
 
 ## 导入模块
 
 ```TypeScript
 import { dataShare } from '@kit.ArkData';
-import { dataSharePredicates } from '@kit.ArkData';
 ```
 
 ## 汇总
@@ -35,8 +30,8 @@ import { dataSharePredicates } from '@kit.ArkData';
 | [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md) | 创建DataShareHelper实例。使用callback异步回调。 |
 | [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md) | 创建DataShareHelper实例，通过DataShareHelperOptions指定是否通过代理访问。使用callback异步回调。 |
 | [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md) | 创建DataShareHelper实例，通过DataShareHelperOptions指定是否通过代理访问。使用Promise异步回调。 |
-| [disableSilentProxy](arkts-arkdata-datashare-disablesilentproxy-f-sys.md) | 关闭静默访问。使用Promise异步回调。 使用规则： - 数据提供方调用此接口，来关闭静默访问功能。 - 此接口设置的关闭结果在校验的时候是搭配data_share_config.json文件中isSilentProxyEnable字段进行工作的。支持的配置可参考 [data_share_config.json配置](../../../database/share-data-by-datashareextensionability-sys.md)。 - 此接口生效在调用datashareHelper相关接口过程中，如果此接口有关闭过相关uri，那么会按照此接口的配置来关闭静默访问。如果此接口未调用过，则会读取data_share_config.json中的配置来校验 Datashare的关闭状态。 |
-| [enableSilentProxy](arkts-arkdata-datashare-enablesilentproxy-f-sys.md) | 开启静默访问。使用Promise异步回调。 使用规则： - 数据提供方调用此接口，来开启静默访问功能。 - 此接口设置的开启结果在校验的时候是搭配data_share_config.json文件中isSilentProxyEnable字段进行工作的。支持的配置可参考 [data_share_config.json配置](../../../database/share-data-by-datashareextensionability-sys.md)。 - 此接口生效在调用datashareHelper相关接口过程中，如果此接口有开启过相关uri，那么会按照此接口的配置来开启静默访问。如果此接口未调用过，则会读取data_share_config.json中的配置来校验 Datashare的开启状态。 |
+| [disableSilentProxy](arkts-arkdata-datashare-disablesilentproxy-f-sys.md) | 关闭静默访问。使用Promise异步回调。使用规则：  - 数据提供方调用此接口，来关闭静默访问功能。  - 此接口设置的关闭结果在校验的时候是搭配data_share_config.json文件中isSilentProxyEnable字段进行工作的。支持的配置可参考  [data_share_config.json配置](../../../database/share-data-by-datashareextensionability-sys.md)。  - 此接口生效在调用datashareHelper相关接口过程中，如果此接口有关闭过相关uri，那么会按照此接口的配置来关闭静默访问。如果此接口未调用过，则会读取data_share_config.json中的配置来校验  Datashare的关闭状态。 |
+| [enableSilentProxy](arkts-arkdata-datashare-enablesilentproxy-f-sys.md) | 开启静默访问。使用Promise异步回调。使用规则：  - 数据提供方调用此接口，来开启静默访问功能。  - 此接口设置的开启结果在校验的时候是搭配data_share_config.json文件中isSilentProxyEnable字段进行工作的。支持的配置可参考  [data_share_config.json配置](../../../database/share-data-by-datashareextensionability-sys.md)。  - 此接口生效在调用datashareHelper相关接口过程中，如果此接口有开启过相关uri，那么会按照此接口的配置来开启静默访问。如果此接口未调用过，则会读取data_share_config.json中的配置来校验  Datashare的开启状态。 |
 <!--DelEnd-->
 
 ### 接口
@@ -71,6 +66,7 @@ import { dataSharePredicates } from '@kit.ArkData';
 
 | 名称 | 说明 |
 | --- | --- |
+| [ChangeType](arkts-arkdata-datashare-changetype-e.md) | 数据变更类型枚举。 |
 | [DataProxyErrorCode](arkts-arkdata-datashare-dataproxyerrorcode-e.md) | 配置共享批量操作返回值的状态码枚举。 |
 | [DataProxyMaxValueLength](arkts-arkdata-datashare-dataproxymaxvaluelength-e.md) | [共享配置](arkts-arkdata-datashare-proxydata-i.md)的值允许的最大长度的枚举值。 |
 | [DataProxyType](arkts-arkdata-datashare-dataproxytype-e.md) | 数据代理类型的枚举。 |
@@ -80,7 +76,5 @@ import { dataSharePredicates } from '@kit.ArkData';
 
 | 名称 | 说明 |
 | --- | --- |
-| [ChangeType](arkts-arkdata-datashare-changetype-e-sys.md) | 数据变更类型枚举。 |
 | [SubscriptionType](arkts-arkdata-datashare-subscriptiontype-e-sys.md) | 数据订阅类型枚举。 |
 <!--DelEnd-->
-

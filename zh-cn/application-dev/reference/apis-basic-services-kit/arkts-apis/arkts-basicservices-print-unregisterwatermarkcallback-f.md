@@ -20,8 +20,6 @@ function unregisterWatermarkCallback(callback?: WatermarkCallback): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-print-function unregisterWatermarkCallback(callback?: WatermarkCallback): void--><!--Device-print-function unregisterWatermarkCallback(callback?: WatermarkCallback): void-End-->
-
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
@@ -43,7 +41,7 @@ import { print } from '@kit.BasicServicesKit';
 
 let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
     console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
-}
+};
 
 try {
     print.registerWatermarkCallback(watermarkCallback);
@@ -52,7 +50,6 @@ try {
     print.unregisterWatermarkCallback(watermarkCallback);
     console.info('unregisterWatermarkCallback success');
 } catch (error) {
-    console.error('unregisterWatermarkCallback error: ' + JSON.stringify(error));
+    console.error(`Failed to unregisterWatermarkCallback. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-

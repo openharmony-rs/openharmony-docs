@@ -4,8 +4,6 @@
 
 **起始版本：** 18
 
-<!--Device-unnamed-declare class ArcSliderValueOptions--><!--Device-unnamed-declare class ArcSliderValueOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -26,8 +24,6 @@ ArcSliderValueOptions的构造函数。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSliderValueOptions-constructor(options?: ArcSliderValueOptionsConstructorOptions)--><!--Device-ArcSliderValueOptions-constructor(options?: ArcSliderValueOptionsConstructorOptions)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 **参数：**
@@ -39,11 +35,11 @@ ArcSliderValueOptions的构造函数。
 ## max
 
 ```TypeScript
-@Trace
-  max?: number
+max?: number
 ```
 
-设置最大值。 默认值：100 **说明：** 当出现异常情况min >= max时，min取默认值0，max取默认值100。 progress不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。
+设置最大值。默认值：100  
+**说明：**当出现异常情况min &gt;= max时，min取默认值0，max取默认值100。progress不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。@Trace
 
 **类型：** number
 
@@ -53,18 +49,15 @@ ArcSliderValueOptions的构造函数。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSliderValueOptions-@Trace  max?: number--><!--Device-ArcSliderValueOptions-@Trace  max?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## min
 
 ```TypeScript
-@Trace
-  min?: number
+min?: number
 ```
 
-设置最小值。 默认值：0
+设置最小值。默认值：0@Trace
 
 **类型：** number
 
@@ -74,18 +67,15 @@ ArcSliderValueOptions的构造函数。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSliderValueOptions-@Trace  min?: number--><!--Device-ArcSliderValueOptions-@Trace  min?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## progress
 
 ```TypeScript
-@Trace
-  progress?: number
+progress?: number
 ```
 
-设置当前进度值。 默认值：与参数min的取值一致
+设置当前进度值。默认值：与参数min的取值一致@Trace
 
 **类型：** number
 
@@ -93,7 +83,4 @@ ArcSliderValueOptions的构造函数。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSliderValueOptions-@Trace  progress?: number--><!--Device-ArcSliderValueOptions-@Trace  progress?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
-

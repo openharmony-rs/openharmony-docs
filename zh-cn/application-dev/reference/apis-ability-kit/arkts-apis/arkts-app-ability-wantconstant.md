@@ -2,9 +2,7 @@
 
 wantConstant模块提供want中操作want常数和解释Flags说明的能力。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace wantConstant--><!--Device-unnamed-declare namespace wantConstant-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -31,4 +29,3 @@ import { wantConstant } from '@kit.AbilityKit';
 | --- | --- |
 | [Params](arkts-ability-wantconstant-params-e-sys.md) | want的Params操作的常量。 |
 <!--DelEnd-->
-

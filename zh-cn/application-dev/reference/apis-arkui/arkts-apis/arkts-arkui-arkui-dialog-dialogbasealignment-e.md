@@ -4,8 +4,6 @@
 
 **起始版本：** 26.1.0
 
-<!--Device-unnamed-export enum DialogBaseAlignment--><!--Device-unnamed-export enum DialogBaseAlignment-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TOP
@@ -21,8 +19,6 @@ TOP = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DialogBaseAlignment-TOP = 0--><!--Device-DialogBaseAlignment-TOP = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ CENTER = 1
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogBaseAlignment-CENTER = 1--><!--Device-DialogBaseAlignment-CENTER = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOTTOM
@@ -57,8 +51,6 @@ BOTTOM = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DialogBaseAlignment-BOTTOM = 2--><!--Device-DialogBaseAlignment-BOTTOM = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,8 +68,6 @@ DEFAULT = 3
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogBaseAlignment-DEFAULT = 3--><!--Device-DialogBaseAlignment-DEFAULT = 3-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TOP_START
@@ -93,8 +83,6 @@ TOP_START = 4
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DialogBaseAlignment-TOP_START = 4--><!--Device-DialogBaseAlignment-TOP_START = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,8 +100,6 @@ TOP_END = 5
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogBaseAlignment-TOP_END = 5--><!--Device-DialogBaseAlignment-TOP_END = 5-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CENTER_START
@@ -129,8 +115,6 @@ CENTER_START = 6
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DialogBaseAlignment-CENTER_START = 6--><!--Device-DialogBaseAlignment-CENTER_START = 6-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,8 +132,6 @@ CENTER_END = 7
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogBaseAlignment-CENTER_END = 7--><!--Device-DialogBaseAlignment-CENTER_END = 7-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOTTOM_START
@@ -165,8 +147,6 @@ BOTTOM_START = 8
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DialogBaseAlignment-BOTTOM_START = 8--><!--Device-DialogBaseAlignment-BOTTOM_START = 8-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -184,7 +164,4 @@ BOTTOM_END = 9
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogBaseAlignment-BOTTOM_END = 9--><!--Device-DialogBaseAlignment-BOTTOM_END = 9-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

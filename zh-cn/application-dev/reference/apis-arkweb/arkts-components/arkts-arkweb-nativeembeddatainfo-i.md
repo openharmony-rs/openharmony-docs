@@ -1,21 +1,14 @@
 # NativeEmbedDataInfo
 
-提供同层标签生命周期变化的详细信息，包括状态和标签信息。适用于需要监控同层元素生命周期的场景，提升渲染状态管理的准确性和用户体验。
+提供同层标签生命周期变化的详细信息，包括状态和标签信息。适用于需要监控同层元素生命周期的场景，提升渲染状态管理的准确性和用户体验。@interface NativeEmbedDataInfo [since 11 - 11]
 
 **起始版本：** 11
-
-<!--Device-unnamed-declare interface NativeEmbedDataInfo--><!--Device-unnamed-declare interface NativeEmbedDataInfo-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## embedId
@@ -31,8 +24,6 @@ embedId?: string
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NativeEmbedDataInfo-embedId?: string--><!--Device-NativeEmbedDataInfo-embedId?: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -50,8 +41,6 @@ info?: NativeEmbedInfo
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NativeEmbedDataInfo-info?: NativeEmbedInfo--><!--Device-NativeEmbedDataInfo-info?: NativeEmbedInfo-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## status
@@ -67,8 +56,6 @@ status?: NativeEmbedStatus
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NativeEmbedDataInfo-status?: NativeEmbedStatus--><!--Device-NativeEmbedDataInfo-status?: NativeEmbedStatus-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -86,7 +73,4 @@ NativeImage的surfaceId。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NativeEmbedDataInfo-surfaceId?: string--><!--Device-NativeEmbedDataInfo-surfaceId?: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

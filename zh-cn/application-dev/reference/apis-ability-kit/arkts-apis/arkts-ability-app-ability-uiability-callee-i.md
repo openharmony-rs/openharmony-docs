@@ -2,9 +2,7 @@
 
 系统为UIAbility创建的后台通信对象，Callee UIAbility（被调用方）可以通过Callee对象接收Caller对象发送的数据。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface Callee--><!--Device-unnamed-export interface Callee-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -14,7 +12,7 @@
 import { UIAbility, Callee, CalleeCallback, Caller, OnReleaseCallback, OnRemoteStateChangeCallback } from '@kit.AbilityKit';
 ```
 
-## off_string
+## off
 
 ```TypeScript
 off(method: string): void
@@ -22,11 +20,9 @@ off(method: string): void
 
 解除通用组件服务端注册消息通知callback。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Callee-off(method: string): void--><!--Device-Callee-off(method: string): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -48,7 +44,6 @@ off(method: string): void
 
 ```TypeScript
 import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let method = 'call_Function';
 
@@ -56,16 +51,16 @@ export default class MainUIAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info('Callee onCreate is called');
     try {
+      // 取消注册消息监听
       this.callee.off(method);
-    } catch (err) {
-      let error = err as BusinessError;
+    } catch (error) {
       console.error(`Callee.off catch error, error.code: ${error.code}, error.message: ${error.message}`);
     }
   }
 }
 ```
 
-## on_string
+## on
 
 ```TypeScript
 on(method: string, callback: CalleeCallback): void
@@ -73,11 +68,9 @@ on(method: string, callback: CalleeCallback): void
 
 通用组件服务端注册消息通知callback。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Callee-on(method: string, callback: CalleeCallback): void--><!--Device-Callee-on(method: string, callback: CalleeCallback): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -98,16 +91,14 @@ on(method: string, callback: CalleeCallback): void
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 
 class MyMessageAble implements rpc.Parcelable {
-  name: string;
-  str: string;
-  num: number = 1;
+  name: string
+  str: string
+  num: number = 1
 
   constructor(name: string, str: string) {
     this.name = name;
@@ -151,60 +142,3 @@ export default class MainUIAbility extends UIAbility {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
-import rpc from '@ohos.rpc';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class MyMessageAble implements rpc.Parcelable {
-  name: string;
-  str: string;
-  num: int = 1;
-
-  constructor(name: string, str: string) {
-    this.name = name;
-    this.str = str;
-  }
-
-  marshalling(messageSequence: rpc.MessageSequence) {
-    messageSequence.writeInt(this.num);
-    messageSequence.writeString(this.str);
-    console.info(`MyMessageAble marshalling num[${this.num}] str[${this.str}]`);
-    return true;
-  }
-
-  unmarshalling(messageSequence: rpc.MessageSequence) {
-    this.num = messageSequence.readInt();
-    this.str = messageSequence.readString();
-    console.info(`MyMessageAble unmarshalling num[${this.num}] str[${this.str}]`);
-    return true;
-  }
-}
-
-let method = 'call_Function';
-
-function funcCallBack(pdata: rpc.MessageSequence) {
-  console.info(`Callee funcCallBack is called ${pdata}`);
-  let msg = new MyMessageAble('test', '');
-  pdata.readParcelable(msg);
-  return new MyMessageAble('test1', 'Callee test');
-}
-
-export default class MainUIAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.info('Callee onCreate is called');
-    try {
-      this.callee.on(method, funcCallBack);
-    } catch (error) {
-      let code = (error as BusinessError).code;
-      let message = (error as BusinessError).message;
-      console.error(`Callee.on catch error, error.code: ${code}, error.message: ${message}`);
-    }
-  }
-}
-```
-

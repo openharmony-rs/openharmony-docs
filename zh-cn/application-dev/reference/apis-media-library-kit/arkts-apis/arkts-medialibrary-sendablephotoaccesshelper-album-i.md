@@ -6,8 +6,6 @@
 
 **起始版本：** 12
 
-<!--Device-sendablePhotoAccessHelper-interface Album--><!--Device-sendablePhotoAccessHelper-interface Album-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## 导入模块
@@ -28,15 +26,13 @@ commitModify(): Promise<void>
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
-<!--Device-Album-commitModify(): Promise<void>--><!--Device-Album-commitModify(): Promise<void>-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -46,6 +42,35 @@ commitModify(): Promise<void>
 | 14000011 | Internal system error |
 
 **示例**
+
+phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
+  console.info('commitModifyDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: ['title'],
+    predicates: predicates
+  };
+  let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let photoAsset: sendablePhotoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+  let title: string = photoAccessHelper.PhotoKeys.TITLE.toString();
+  let photoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
+  console.info('photoAsset get photoAssetTitle = ', photoAssetTitle);
+  photoAsset.set(title, 'newTitle3');
+  try {
+    await photoAsset.commitModify();
+    let newPhotoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
+    console.info('photoAsset get newPhotoAssetTitle = ', newPhotoAssetTitle);
+  } catch (err) {
+    console.error(`commitModify failed. error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
 
@@ -81,8 +106,6 @@ convertToPhotoAlbum(): photoAccessHelper.Album
 将Sendable类型Album转换为非Sendable类型Album。
 
 **起始版本：** 12
-
-<!--Device-Album-convertToPhotoAlbum(): photoAccessHelper.Album--><!--Device-Album-convertToPhotoAlbum(): photoAccessHelper.Album-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -142,8 +165,6 @@ readonly imageCount?: number
 
 **起始版本：** 12
 
-<!--Device-Album-readonly imageCount?: number--><!--Device-Album-readonly imageCount?: number-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## videoCount
@@ -158,7 +179,4 @@ readonly videoCount?: number
 
 **起始版本：** 12
 
-<!--Device-Album-readonly videoCount?: number--><!--Device-Album-readonly videoCount?: number-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-

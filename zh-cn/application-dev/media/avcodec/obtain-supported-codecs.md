@@ -40,14 +40,14 @@
 
    可通过以下方式获取音视频编解码能力实例。获取成功后，可继续执行后续操作。实例无显式释放接口，使用完毕后系统会自动释放资源并回收。
 
-   方式一：通过`OH_AVCodec_GetCapability`获取系统推荐的音视频编解码器能力实例。推荐策略与`OH_XXX_CreateByMime`系列接口一致。
-
+   方式一：通过OH_AVCodec_GetCapability获取系统推荐的音视频编解码器能力实例。
+   
    ```c++
    // 获取系统推荐的音频AAC解码器能力实例。
    OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
    ```
 
-   方式二：通过`OH_AVCodec_GetCapabilityByCategory`获取指定软硬件的编解码能力实例。
+   方式二：通过OH_AVCodec_GetCapabilityByCategory获取指定软硬件的编解码能力实例。
 
    ```c++
    // 获取指定硬件的视频AVC编码器能力实例。
@@ -62,7 +62,7 @@
    OH_AVCapability **capabilityList = OH_AVCodec_GetCapabilityList(OH_AVCODEC_TYPE_VIDEO_DECODER, &count);
    ```
 
-4. 按需调用相应的查询接口。详细的API说明请参考[native_avcapability.h/apis-avcodec-kit/capi-native-avcapability-h.md)。
+4. 按需调用相应的查询接口。详细的API说明请参考native_avcapability.h。
 
 ## 场景化开发
 
@@ -74,7 +74,7 @@
 
 | 接口     | 功能描述                         |
 | -------- | -------------------------------- |
-| OH_AVCapability_GetName     | 获取能力实例对应编解码器的名称。 |
+| OH_AVCapability_GetName     | 获取对应的编解码器名称。 |
 
 当H.264软件解码器和H.264硬件解码器同时存在时，创建H.264软件解码器的示例代码如下。
 
@@ -392,7 +392,7 @@ OH_AVFormat_Destroy(format);
 
 ### 查询编码器支持复杂度范围
 
-复杂度等级决定了编码器使用的工具数量，但并非所有编码器都支持这一功能。
+复杂度等级决定了编码器使用的工具数量，但并非所有编码器都支持这一功能。若变量complexityRange返回值为{0, 0}，则表示当前编码器不支持复杂度等级配置。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
@@ -485,9 +485,9 @@ OH_AVFormat_Destroy(format);
 
 ### 查询编解码档次和级别支持情况
 
-编解码标准包含多种编码工具，适用于不同的编码场景。对于特定应用场景，编解码标准按档次确定所需编码工具的开启与关闭情况（例如，H.264有基本档次、主档次和高档次）。详情参见 [OH_AVCProfile/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcprofile)。
+编解码标准包含多种编码工具，适用于不同的编码场景。对于特定应用场景，编解码标准按档次确定所需编码工具的开启与关闭情况（例如，H.264有基本档次、高档次和主档次）。详情参见 OH_AVCProfile。
 
-级别划分了编解码器所需的处理能力和存储空间。H.264有1到6.2的20个级别，参考[OH_AVCLevel/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avclevel)。
+级别划分了编解码器所需的处理能力和存储空间。H.264有1到6.2的20个级别，参考OH_AVCLevel。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
@@ -581,7 +581,7 @@ bool isSupported = OH_AVCapability_AreProfileAndLevelSupported(capability, AVC_P
 
 ![](figures/formula-maxmbsperframe.png)
 
-*MaxMBsPerFrameLevelLimits*表示协议限定的编解码器最大每帧宏块数，*MaxMBsPerFrameSubmit*表示编解码器上报的最大每帧宏块数，实际能力取这两者的最小值。
+*MaxMBsPerFrameLevelLimits*表示协议限定的编解码器最大每帧宏块数，*MaxMBsPerFrameSubmit*表示编解码器上报的最大每帧宏块数，实际生效的每帧最大宏块数（*MaxMBsPerFrame*）取这两者的最小值。在此基础上，结合给定的视频高度（*height*）以及单个宏块的宽和高（*MBWidth*和*MBHeight*，通常为16），即可推算得出该高度下所支持的最大视频宽度（*maxWidth*）。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
@@ -757,11 +757,12 @@ OH_AVFormat_Destroy(format);
 
 ### 设置正确的视频像素格式信息
 
-视频像素格式指示的编码输入图像或解码输出图像的像素排布方式，参考[OH_AVPixelFormat/apis-avcodec-kit/capi-native-avformat-h.md#oh_avpixelformat)。
+视频像素格式指示的编码输入图像或解码输出图像的像素排布方式，参考OH_AVPixelFormat。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
 | OH_AVCapability_GetVideoSupportedPixelFormats             | 获取当前视频编解码器支持的像素格式。 |
+| OH_AVCapability_GetVideoSupportedNativeBufferFormats      | 获取视频编解码器支持的OH_NativeBuffer格式。 |
 
 ```c++
 constexpr OH_AVPixelFormat DEFAULT_PIXELFORMAT = AV_PIXEL_FORMAT_NV12;
@@ -773,6 +774,9 @@ if (capability == nullptr) {
 const int32_t *pixFormats = nullptr;
 uint32_t pixFormatNum = 0;
 int32_t ret = OH_AVCapability_GetVideoSupportedPixelFormats(capability, &pixFormats, &pixFormatNum);
+// 获取当前视频编解码器支持的OH_NativeBuffer格式，使用方式同OH_AVCapability_GetVideoSupportedPixelFormats接口。
+// const OH_NativeBuffer_Format *nativeBufferFormats = nullptr;
+// int32_t ret = OH_AVCapability_GetVideoSupportedNativeBufferFormats(capability, &nativeBufferFormats, &pixFormatNum);
 if (ret != AV_ERR_OK || pixFormats == nullptr || pixFormatNum == 0) {
    // 异常处理。
 }
@@ -791,7 +795,7 @@ if (!isMatched) {
 
 ### 查询编解码特性支持情况并获取特性属性信息
 
-编解码特性是指在特定编解码场景中使用的可选特性，例如视频编码场景的时域可分级编码、 低时延编解码等。具体请参考[OH_AVCapabilityFeature/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapabilityfeature)。
+编解码特性是指在特定编解码场景中使用的可选特性，例如视频编码场景的时域可分级编码、 低时延编解码等。具体请参考OH_AVCapabilityFeature。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |

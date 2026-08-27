@@ -1,10 +1,8 @@
 # TextContentControllerOptions
 
-Defines the span options of TextContentController.
+Defines the span options of TextContentController.@interface TextContentControllerOptions
 
 **起始版本：** 15
-
-<!--Device-unnamed-declare interface TextContentControllerOptions--><!--Device-unnamed-declare interface TextContentControllerOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,7 +27,4 @@ the offset that add a text at.
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextContentControllerOptions-offset?: number--><!--Device-TextContentControllerOptions-offset?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

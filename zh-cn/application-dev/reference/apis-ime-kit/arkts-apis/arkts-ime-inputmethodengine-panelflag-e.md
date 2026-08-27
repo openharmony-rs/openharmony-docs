@@ -1,10 +1,9 @@
 # PanelFlag
 
-输入法面板状态类型枚举。 | 名称 | 值 | 说明 | | ------------ | -- | ------------------ | | FLG_FIXED | 0 | 固定态面板类型。 | | FLG_FLOATING | 1 | 悬浮态面板类型。 | | FLAG_CANDIDATE&lt;sup&gt;15+&lt;/sup&gt; | 2 | 候选词态面板类型。 |
+输入法面板状态类型枚举。   
+ | 名称 | 值 | 说明 | | ------------ | -- | ------------------ | | FLG_FIXED | 0 | 固定态面板类型。 | | FLG_FLOATING | 1 | 悬浮态面板类型。 | | FLAG_CANDIDATE&lt;sup&gt;15+&lt;/sup&gt; | 2 | 候选词态面板类型。 |
 
-**起始版本：** 23
-
-<!--Device-inputMethodEngine-export enum PanelFlag--><!--Device-inputMethodEngine-export enum PanelFlag-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -14,11 +13,9 @@
 FLG_FIXED = 0
 ```
 
-固定态面板类型。 &lt;p&gt;该功能是为SOFT_KEYBOARD类型的面板提供的。当该标志被设置时，软键盘将固定在屏幕底部。&lt;/p&gt;
+固定态面板类型。 <p>提供给 SOFT_KEYBOARD 类型的面板。当该标志被设置时，软键盘将固定在屏幕底部。</p>
 
-**起始版本：** 23
-
-<!--Device-PanelFlag-FLG_FIXED = 0--><!--Device-PanelFlag-FLG_FIXED = 0-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -28,11 +25,9 @@ FLG_FIXED = 0
 FLG_FLOATING
 ```
 
-悬浮态面板类型。 &lt;p&gt;该功能是为SOFT_KEYBOARD类型的面板提供的。当该标志被设置时，软键盘将是悬浮态的。&lt;/p&gt;
+悬浮态面板类型。 <p>提供给 SOFT_KEYBOARD 类型的面板。当该标志被设置时，软键盘处于浮动状态。</p>
 
-**起始版本：** 23
-
-<!--Device-PanelFlag-FLG_FLOATING--><!--Device-PanelFlag-FLG_FLOATING-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -42,11 +37,8 @@ FLG_FLOATING
 FLAG_CANDIDATE
 ```
 
-候选词态面板类型。 &lt;p&gt;它为类型为SOFT_KEYBOARD的面板提供支持。 当该标志被设置时，软键盘将作为一个候选窗口，当用户输入代码时，该窗口会显示可能的字符。 具有候选样式的面板不会由输入法服务自动显示或隐藏。 输入法应用程序开发者应自行控制面板的状态。&lt;/p&gt;
+候选词态面板类型。 <p>提供给 SOFT_KEYBOARD 类型的面板。当该标志被设置时，软键盘为候选窗口，在用户输入编码时显示可能的候选字符。 候选样式的面板不会被输入法服务自动显示或隐藏。输入法应用开发者需要自行控制面板的显示状态。</p>
 
-**起始版本：** 23
-
-<!--Device-PanelFlag-FLAG_CANDIDATE--><!--Device-PanelFlag-FLAG_CANDIDATE-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
-

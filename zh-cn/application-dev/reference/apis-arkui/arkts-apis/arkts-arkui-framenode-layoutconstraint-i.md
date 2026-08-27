@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface LayoutConstraint--><!--Device-unnamed-declare interface LayoutConstraint-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## maxSize
@@ -16,15 +14,13 @@ maxSize: Size
 
 最大尺寸。
 
-**类型：** [Size](arkts-arkui-graphics-size-i.md)
+**类型：** Size
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LayoutConstraint-maxSize: Size--><!--Device-LayoutConstraint-maxSize: Size-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,15 +32,13 @@ minSize: Size
 
 最小尺寸。
 
-**类型：** [Size](arkts-arkui-graphics-size-i.md)
+**类型：** Size
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LayoutConstraint-minSize: Size--><!--Device-LayoutConstraint-minSize: Size-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,7 +50,7 @@ percentReference: Size
 
 子节点计算百分比时的尺寸基准。
 
-**类型：** [Size](arkts-arkui-graphics-size-i.md)
+**类型：** Size
 
 **起始版本：** 12
 
@@ -64,7 +58,4 @@ percentReference: Size
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LayoutConstraint-percentReference: Size--><!--Device-LayoutConstraint-percentReference: Size-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

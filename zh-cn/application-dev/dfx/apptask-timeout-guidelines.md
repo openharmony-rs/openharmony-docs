@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -11,11 +11,11 @@
 
 开发者在开发应用时，某一段业务逻辑期望执行一定时间，如果该业务逻辑执行时长超过预期时间，即为任务超时。
 
-任务超时检测主要包括主线程超时检测和任务执行超时检测，二者均可使用HiCollie实现自定义时长来对开发者选择的业务逻辑进行主动检测，主线程超时也可采用默认时长进行检测。详见：[HiCollie使用指导](hicollie-guidelines-ndk.md)。
+任务超时检测主要包括主线程超时检测和任务执行超时检测，二者均可使用HiCollie实现自定义时长来对开发者选择的业务逻辑进行主动检测，主线程超时也可采用默认时长进行检测。详见：HiCollie使用指导。
 
 > **说明：**
 >
-> [AppFreeze（应用冻屏）检测](appfreeze-guidelines.md)相比任务超时检测，主要是由系统侧提供检测周期性检测逻辑，无需开发者感知和适配。
+> AppFreeze（应用冻屏）检测相比任务超时检测，主要是由系统侧提供检测周期性检测逻辑，无需开发者感知和适配。
 
 ## 主线程超时检测
 
@@ -28,7 +28,7 @@
 | 采集流程 | 触发条件 | 采集日志格式 | 前提条件与限制 |
 | -------- | -------- | -------- | -------- |
 | 堆栈采集 | 150ms &lt; 主线程处理时长 &lt; 450ms | 文件名格式：MAIN_THREAD_JANK_秒级时间_进程PID.txt。<br/>例如：MAIN_THREAD_JANK_20240613211739_40986.txt。| - **应用启动10s内不进行检测。** <br/> - **关闭[开发者选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section0736139111917)：应用在一个生命周期内，一天最多触发一次主线程超时事件堆栈采集流程。** <br/> - **启用[开发者选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)：应用在一个生命周期内，一小时最多触发一次主线程超时事件采集堆栈采集流程。** |
-| trace采集 | 主线程处理时长 > 450ms | 文件名格式：MAIN_THREAD_JANK_unix时间戳_进程PID.trace。<br/>例如：MAIN_THREAD_JANK_1762064185461_40986.trace。| - 触发trace采集的前提：**开发者使用[nolog](performance-analysis-kit-terminology.md#nolog版本)版本，并且关闭[开发者选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)**。<br/> - **应用一天内，最多触发一次主线程超时事件trace采集流程。** |
+| trace采集 | 主线程处理时长 > 450ms | 文件名格式：MAIN_THREAD_JANK_unix时间戳_进程PID.trace。<br/>例如：MAIN_THREAD_JANK_1762064185461_40986.trace。| - 触发trace采集的前提：**开发者使用nolog版本，并且关闭[开发者选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)**。<br/> - **应用一天内，最多触发一次主线程超时事件trace采集流程。** |
 
 > **注意：**
 >
@@ -66,17 +66,17 @@
 
 ### 日志获取
 
-主线程超时日志保存在应用沙箱目录下，可通过以下方式获取
+主线程超时日志保存在应用沙箱目录下，可通过以下方式获取。
 
 **通过HiAppEvent接口订阅**
 
-HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hiappevent-intro.md)。参考[订阅主线程超时事件（ArkTS）](hiappevent-watcher-mainthreadjank-events-arkts.md)或[订阅主线程超时事件（C/C++）](hiappevent-watcher-mainthreadjank-events-ndk.md)完成主线程超时事件订阅，并通过事件的[external_log](hiappevent-watcher-mainthreadjank-events.md#事件字段说明)字段读取故障日志文件名。
+HiAppEvent给开发者提供了故障订阅接口，详见HiAppEvent介绍。参考订阅主线程超时事件（ArkTS）或订阅主线程超时事件（C/C++）完成主线程超时事件订阅，并通过事件的external_log字段读取故障日志文件名。
 
 ### 日志规格
 
 1. 主线程超时检测采集日志老化规格
 
-   一般情况，栈文件的大小为7-10KB，trace大小为1-5MB。应用沙箱内的watchdog目录最大保存10M内容，超出后，会自动触发此目录老化机制，按照文件名顺序最多删除100文件。目录地址：/data/storage/el2/log/watchdog/。
+   一般情况，栈文件的大小为7-10KB，trace大小为1-5MB。应用沙箱内的watchdog目录最大保存10MB内容，超出后，会自动触发此目录老化机制，按照文件名顺序最多删除100文件。目录地址：/data/storage/el2/log/watchdog/。
 
 2. 主线程超时检测采集堆栈规格
 
@@ -171,9 +171,9 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 
     开发者可通过自定义参数接口设置采集次数：
 
-    - [setEventConfig接口参数设置说明](hiappevent-watcher-mainthreadjank-events.md#seteventconfig接口参数设置说明)中的report_times_per_app参数，取值范围为[1, 3]。
+    - setEventConfig接口参数设置说明中的report_times_per_app参数，取值范围为[1, 3]。
 
-    - [configEventPolicy接口参数设置说明](hiappevent-watcher-mainthreadjank-events.md#configeventpolicy接口参数设置说明)中的reportTimesPerApp参数，取值范围为[1, 3]。
+    - configEventPolicy接口参数设置说明中的reportTimesPerApp参数，取值范围为[1, 3]。
 
 ## 任务执行超时检测
 
@@ -185,7 +185,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 
 检测原理如下图：
 
-![zh-cn_image_0000002326273258](figures/zh-cn_image_0000002326273258.png)
+![task-execution-timeout-principle](figures/task-execution-timeout-principle.png)
 
 ### 日志获取
 
@@ -193,8 +193,8 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 
 **通过HiAppEvent接口订阅**
 
-HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hiappevent-intro.md)。参考[订阅任务执行超时事件（ArkTS）](hiappevent-watcher-apphicollie-events-arkts.md)或[订阅任务执行超时事件（C/C++）](hiappevent-watcher-apphicollie-events-ndk.md)完成任务执行超时事件订阅，并通过事件的[external_log](hiappevent-watcher-apphicollie-events.md#事件字段说明)字段读取故障日志文件名。
+HiAppEvent给开发者提供了故障订阅接口，详见HiAppEvent介绍。参考订阅任务执行超时事件（ArkTS）或订阅任务执行超时事件（C/C++）完成任务执行超时事件订阅，并通过事件的external_log字段读取故障日志文件名。
 
 ### 日志规格
 
-任务执行超时事件日志规格与应用冻屏日志相同，可详见[应用冻屏日志规格](appfreeze-guidelines.md#日志规格)。
+任务执行超时事件日志规格与应用冻屏日志相同，可详见应用冻屏日志规格。

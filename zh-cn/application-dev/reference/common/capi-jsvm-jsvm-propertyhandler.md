@@ -24,9 +24,9 @@ typedef struct {...} JSVM_PropertyHandler
 
 **起始版本：** 18
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**相关模块：** JSVM
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
+**所在头文件：** jsvm_types.h
 
 ## 汇总
 
@@ -34,7 +34,7 @@ typedef struct {...} JSVM_PropertyHandler
 
 | 名称                                                                                                  | 描述 |
 |-----------------------------------------------------------------------------------------------------| -- |
-| [JSVM_PropertyHandlerCfg](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md) propertyHandlerCfg | 访问实例对象属性触发相应的回调函数。 |
-| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct8h.md) callAsFunctionCallback                                                            | 实例对象作为函数调用将触发此回调。 |
+| JSVM_PropertyHandlerCfg propertyHandlerCfg | 访问实例对象属性触发相应的回调函数。 |
+| JSVM_Callback callAsFunctionCallback                                                            | 实例对象作为函数调用将触发此回调。 |
 
 

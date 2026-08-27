@@ -4,20 +4,17 @@
 
 ```TypeScript
 import { screen } from '@kit.ArkUI';
-import { screenshot } from '@kit.ArkUI';
 ```
 
 ## stopMirror
 
 ```TypeScript
-function stopMirror(mirrorScreen:Array<long>, callback: AsyncCallback<void>): void
+function stopMirror(mirrorScreen:Array<number>, callback: AsyncCallback<void>): void
 ```
 
 停止屏幕的镜像模式，使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-screen-function stopMirror(mirrorScreen:Array<long>, callback: AsyncCallback<void>): void--><!--Device-screen-function stopMirror(mirrorScreen:Array<long>, callback: AsyncCallback<void>): void-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -27,20 +24,18 @@ function stopMirror(mirrorScreen:Array<long>, callback: AsyncCallback<void>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mirrorScreen | Array&lt;long&gt; | 是 | 镜像屏幕ID集合，其中ID应为整数。 mirrorScreen数组大小不应超过1000。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当停止屏幕镜像模式成功，err为undefined，否则为错误对象。 |
+| mirrorScreen | Array & lt;number & gt; | 是 | 镜像屏幕ID集合，其中ID应为整数。 mirrorScreen数组大小不应超过1000。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当停止屏幕镜像模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
-| [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -58,34 +53,16 @@ screen.stopMirror(mirrorScreenIds, (err: BusinessError) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let mirrorScreenIds: Array<long> = [1, 2, 3];
-screen.stopMirror(mirrorScreenIds, (err: BusinessError | null) => {
-  const errCode = err?.code;
-  if (errCode) {
-    console.error(`Failed to stop mirror screens. Code: ${err?.code}, message: ${err?.message}`);
-    return;
-  }
-  console.info('Succeeded in stopping mirror screens.');
-});
-```
-
 
 ## stopMirror
 
 ```TypeScript
-function stopMirror(mirrorScreen:Array<long>): Promise<void>
+function stopMirror(mirrorScreen:Array<number>): Promise<void>
 ```
 
 停止屏幕的镜像模式，使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-screen-function stopMirror(mirrorScreen:Array<long>): Promise<void>--><!--Device-screen-function stopMirror(mirrorScreen:Array<long>): Promise<void>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -95,25 +72,23 @@ function stopMirror(mirrorScreen:Array<long>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mirrorScreen | Array&lt;long&gt; | 是 | 镜像屏幕ID集合，其中ID应为整数。mirrorScreen数组大小不应超过1000。 |
+| mirrorScreen | Array & lt;number & gt; | 是 | 镜像屏幕ID集合，其中ID应为整数。mirrorScreen数组大小不应超过1000。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -127,15 +102,3 @@ screen.stopMirror(mirrorScreenIds).then(() => {
   console.error(`Failed to stop mirror screens. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let mirrorScreenIds: Array<long> = [1, 2, 3];
-screen.stopMirror(mirrorScreenIds).then(() => {
-  console.info('Succeeded in stopping mirror screens.');
-}).catch((err: Error) => {
-  console.error(`Failed to stop mirror screens. Code: ${err?.code}, message: ${err?.message}`);
-});
-```
-

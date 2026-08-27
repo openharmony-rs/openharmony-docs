@@ -20,8 +20,6 @@ function getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelp
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-sendablePhotoAccessHelper-function getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelper--><!--Device-sendablePhotoAccessHelper-function getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelper-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -43,9 +41,9 @@ function getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelp
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| 13900020 | Invalid argument |
 
 **示例**
 
@@ -69,4 +67,3 @@ struct Index {
   }
 }
 ```
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface RichEditorImageSpan--><!--Device-unnamed-declare interface RichEditorImageSpan-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ imageStyle?: RichEditorImageSpanStyle
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorImageSpan-imageStyle?: RichEditorImageSpanStyle--><!--Device-RichEditorImageSpan-imageStyle?: RichEditorImageSpanStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## spanPosition
@@ -49,8 +45,6 @@ Span位置。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorImageSpan-spanPosition: RichEditorSpanPosition--><!--Device-RichEditorImageSpan-spanPosition: RichEditorSpanPosition-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -61,7 +55,7 @@ value: PixelMap | ResourceStr
 
 图片内容。
 
-**类型：** PixelMap \| ResourceStr
+**类型：** PixelMap \| [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 10
 
@@ -69,7 +63,4 @@ value: PixelMap | ResourceStr
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorImageSpan-value: PixelMap | ResourceStr--><!--Device-RichEditorImageSpan-value: PixelMap | ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

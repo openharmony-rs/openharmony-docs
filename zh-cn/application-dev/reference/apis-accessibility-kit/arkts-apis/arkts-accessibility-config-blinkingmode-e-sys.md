@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-config-export enum BlinkingMode--><!--Device-config-export enum BlinkingMode-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -21,8 +19,6 @@ SINGLE_BLINK = 1
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BlinkingMode-SINGLE_BLINK = 1--><!--Device-BlinkingMode-SINGLE_BLINK = 1-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -40,9 +36,6 @@ CONTINUOUS_BLINK = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BlinkingMode-CONTINUOUS_BLINK = 2--><!--Device-BlinkingMode-CONTINUOUS_BLINK = 2-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
-

@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 应用多实例允许一个应用同时运行多个进程，实现多个账号同时登录使用，且互不影响。主要应用场景包括社交账户多开和游戏大小号多开等，无需切换账号从而避免频繁登录的繁琐操作。
@@ -12,7 +12,7 @@
 
 应用多实例间的关系：
 - 多实例的应用图标相同。
-- 各实例共享[应用文件目录](../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)下的文件数据。
+- 各实例共享应用文件目录下的文件数据。
 - 可通过账号进行切换，单个实例可以切换不同的账号登录。
 
 ## 约束限制
@@ -22,7 +22,7 @@
 ## 应用多实例的开发步骤
 1. 应用多实例的配置方法。
 
-    在工程项目中对App/app.json5配置文件配置[multiAppMode](app-configuration-file.md#multiappmode标签)字段。具体配置如下：
+    在工程项目中对App/app.json5配置文件配置multiAppMode字段。具体配置如下：
     <!-- @[multi_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/Multiinstance/AppScope/app.json5)  -->
     
     ``` JSON5

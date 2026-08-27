@@ -1,10 +1,8 @@
 # GeometryType
 
-几何类型枚举，用于指定不同的几何类型。
+几何类型枚举，用于指定不同的几何类型。@enum { number }
 
-**起始版本：** 23
-
-<!--Device-unnamed-export enum GeometryType--><!--Device-unnamed-export enum GeometryType-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -16,9 +14,7 @@ CUSTOM = 0
 
 自定义几何体类型。
 
-**起始版本：** 23
-
-<!--Device-GeometryType-CUSTOM = 0--><!--Device-GeometryType-CUSTOM = 0-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -30,9 +26,7 @@ CUBE = 1
 
 立方体类型。
 
-**起始版本：** 23
-
-<!--Device-GeometryType-CUBE = 1--><!--Device-GeometryType-CUBE = 1-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -44,9 +38,7 @@ PLANE = 2
 
 平面类型。
 
-**起始版本：** 23
-
-<!--Device-GeometryType-PLANE = 2--><!--Device-GeometryType-PLANE = 2-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -58,9 +50,7 @@ SPHERE = 3
 
 球体类型。
 
-**起始版本：** 23
-
-<!--Device-GeometryType-SPHERE = 3--><!--Device-GeometryType-SPHERE = 3-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -74,7 +64,4 @@ CYLINDER = 4
 
 **起始版本：** 23
 
-<!--Device-GeometryType-CYLINDER = 4--><!--Device-GeometryType-CYLINDER = 4-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

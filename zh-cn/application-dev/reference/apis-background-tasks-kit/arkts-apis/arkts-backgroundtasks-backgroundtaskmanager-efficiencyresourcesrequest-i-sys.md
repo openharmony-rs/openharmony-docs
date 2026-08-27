@@ -2,9 +2,7 @@
 
 能效资源申请参数。
 
-**起始版本：** 23
-
-<!--Device-backgroundTaskManager-export interface EfficiencyResourcesRequest--><!--Device-backgroundTaskManager-export interface EfficiencyResourcesRequest-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
@@ -30,8 +28,6 @@ cpuLevel?: EfficiencyResourcesCpuLevel
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EfficiencyResourcesRequest-cpuLevel?: EfficiencyResourcesCpuLevel--><!--Device-EfficiencyResourcesRequest-cpuLevel?: EfficiencyResourcesCpuLevel-End-->
-
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
 **系统接口：** 此接口为系统接口。
@@ -42,13 +38,13 @@ cpuLevel?: EfficiencyResourcesCpuLevel
 isApply: boolean
 ```
 
-申请或释放资源。 - true表示申请资源。 - false表示释放部分资源。
+申请或释放资源。  
+- true表示申请资源。  
+- false表示释放部分资源。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-EfficiencyResourcesRequest-isApply: boolean--><!--Device-EfficiencyResourcesRequest-isApply: boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
@@ -60,13 +56,13 @@ isApply: boolean
 isPersist?: boolean
 ```
 
-是否永久持有资源，默认为false。 - true表示永久持有 - false表示有限时间内持有。
+是否永久持有资源，默认为false。  
+- true表示永久持有  
+- false表示有限时间内持有。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-EfficiencyResourcesRequest-isPersist?: boolean--><!--Device-EfficiencyResourcesRequest-isPersist?: boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
@@ -78,13 +74,13 @@ isPersist?: boolean
 isProcess?: boolean
 ```
 
-进程或应用申请，默认为false。 - true表示进程申请。 - false表示应用申请。
+进程或应用申请，默认为false。  
+- true表示进程申请。  
+- false表示应用申请。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-EfficiencyResourcesRequest-isProcess?: boolean--><!--Device-EfficiencyResourcesRequest-isProcess?: boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
@@ -100,9 +96,7 @@ reason: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-EfficiencyResourcesRequest-reason: string--><!--Device-EfficiencyResourcesRequest-reason: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
@@ -111,16 +105,14 @@ reason: string
 ## resourceTypes
 
 ```TypeScript
-resourceTypes: int
+resourceTypes: number
 ```
 
 申请的资源类型。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-EfficiencyResourcesRequest-resourceTypes: int--><!--Device-EfficiencyResourcesRequest-resourceTypes: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
@@ -129,18 +121,15 @@ resourceTypes: int
 ## timeOut
 
 ```TypeScript
-timeOut: int
+timeOut: number
 ```
 
 资源使用时间，单位：ms。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-EfficiencyResourcesRequest-timeOut: int--><!--Device-EfficiencyResourcesRequest-timeOut: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
 **系统接口：** 此接口为系统接口。
-

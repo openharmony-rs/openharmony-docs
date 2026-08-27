@@ -2,9 +2,7 @@
 
 定义打印扩展信息的接口。
 
-**起始版本：** 23
-
-<!--Device-print-interface PrinterExtensionInfo--><!--Device-print-interface PrinterExtensionInfo-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -26,9 +24,7 @@ extensionId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PrinterExtensionInfo-extensionId: string--><!--Device-PrinterExtensionInfo-extensionId: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -37,16 +33,14 @@ extensionId: string
 ## vendorIcon
 
 ```TypeScript
-vendorIcon: int
+vendorIcon: number
 ```
 
 表示供应商图标。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PrinterExtensionInfo-vendorIcon: int--><!--Device-PrinterExtensionInfo-vendorIcon: int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -62,9 +56,7 @@ vendorId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PrinterExtensionInfo-vendorId: string--><!--Device-PrinterExtensionInfo-vendorId: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -80,9 +72,7 @@ vendorName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PrinterExtensionInfo-vendorName: string--><!--Device-PrinterExtensionInfo-vendorName: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -98,11 +88,8 @@ version: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PrinterExtensionInfo-version: string--><!--Device-PrinterExtensionInfo-version: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
-

@@ -20,8 +20,6 @@ function onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInf
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-formHost-function onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback): void--><!--Device-formHost-function onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback): void-End-->
-
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
@@ -37,12 +35,10 @@ function onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInf
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permissions denied. |
-| [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
+| [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { formHost, formInfo } from '@kit.FormKit';
@@ -60,24 +56,3 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { formHost, formInfo } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  const callback: formInfo.TemplateFormDetailInfoCallback = (info) => {
-    for (let templateFormDetailInfo of info) {
-      console.info(`TemplateFormDetailInfoCallback bundleName: ${templateFormDetailInfo.bundleName}, moduleName: ${templateFormDetailInfo.moduleName}, formName: ${templateFormDetailInfo.formName}`);
-    }
-  };
-  formHost.onTemplateFormDetailInfoChange(callback);
-  console.info(`onTemplateFormDetailInfoChange success`);
-} catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
-}
-```
-

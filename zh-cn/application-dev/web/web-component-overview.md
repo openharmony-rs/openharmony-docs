@@ -23,7 +23,7 @@ Web组件为开发者提供了丰富的控制Web页面能力。包括：
 
 - 生命周期管理：组件生命周期状态变化，通知Web页面的加载状态变化等。
 
-- 常用属性与事件：[User-Agent开发指导](./web-default-userAgent.md)、[管理Cookie及数据存储](./web-cookie-and-data-storage-mgmt.md)、字体与[Web深色模式适配](./web-set-dark-mode.md)、权限管理等。
+- 常用属性与事件：User-Agent开发指导、管理Cookie及数据存储、字体与Web深色模式适配、权限管理等。
 
 - 与应用界面交互：自定义文本选择菜单、上下文菜单、文件上传界面等与应用界面交互能力。
 
@@ -31,13 +31,13 @@ Web组件为开发者提供了丰富的控制Web页面能力。包括：
 
 - 安全与隐私：无痕浏览模式、广告拦截、坚盾守护模式等。
 
-- 维测能力：[DevTools工具](web-debugging-with-devtools.md)调试能力，使用crashpad收集Web组件崩溃信息、定位与解决Web白屏问题<!--RP2--><!--RP2End-->。
+- 维测能力：DevTools工具调试能力，使用crashpad收集Web组件崩溃信息、定位与解决Web白屏问题<!--RP2--><!--RP2End-->。
 
 - 其他高阶能力：与系统组件同层渲染、Web组件的网络托管、Web组件的媒体播放托管、Web组件输入框拉起自定义输入法<!--RP1--><!--RP1End-->等。
 
 ## 需要权限
 
-使用Web组件访问在线Web网页时需添加网络权限：ohos.permission.INTERNET，具体申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
+使用Web组件访问在线Web网页时需添加网络权限：ohos.permission.INTERNET，具体申请方式请参考声明权限。
 
   ```ts
   "requestPermissions":[

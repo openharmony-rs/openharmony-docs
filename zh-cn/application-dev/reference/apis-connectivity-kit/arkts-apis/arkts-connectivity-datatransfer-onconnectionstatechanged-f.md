@@ -12,13 +12,11 @@ import { dataTransfer } from '@kit.ConnectivityKit';
 function onConnectionStateChanged(callback: Callback<ConnectionResult>): void
 ```
 
-订阅连接状态变化事件。 只有授予了ohos.permission.NEARLINK_ACCESS权限的应用程序才能访问此事件。
+订阅端口通道连接状态变更事件。使用callback异步回调。应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-dataTransfer-function onConnectionStateChanged(callback: Callback<ConnectionResult>): void--><!--Device-dataTransfer-function onConnectionStateChanged(callback: Callback<ConnectionResult>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -26,7 +24,7 @@ function onConnectionStateChanged(callback: Callback<ConnectionResult>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ConnectionResult](arkts-connectivity-datatransfer-connectionresult-i.md)&gt; | 是 | 用于监听状态改变事件的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ConnectionResult](arkts-connectivity-datatransfer-connectionresult-i.md)&gt; | 是 | 回调函数，返回与远端设备端口连接参数的协商结果。 |
 
 **错误码：**
 
@@ -34,4 +32,3 @@ function onConnectionStateChanged(callback: Callback<ConnectionResult>): void
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the chip does not support it. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
-

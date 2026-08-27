@@ -6,8 +6,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class PinchGestureHandler--><!--Device-unnamed-declare class PinchGestureHandler-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,8 +26,6 @@ constructor(options?: PinchGestureHandlerOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PinchGestureHandler-constructor(options?: PinchGestureHandlerOptions)--><!--Device-PinchGestureHandler-constructor(options?: PinchGestureHandlerOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,15 +49,13 @@ onActionCancel(event: Callback<void>): PinchGestureHandler
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PinchGestureHandler-onActionCancel(event: Callback<void>): PinchGestureHandler--><!--Device-PinchGestureHandler-onActionCancel(event: Callback<void>): PinchGestureHandler-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback&lt;void&gt; | 是 | 捏合手势处理器取消回调。不返回手势事件信息。 |
+| event | Callback & lt;void & gt; | 是 | 捏合手势处理器取消回调。不返回手势事件信息。 |
 
 **返回值：**
 
@@ -82,8 +76,6 @@ onActionCancel(event: Callback<GestureEvent>): PinchGestureHandler
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PinchGestureHandler-onActionCancel(event: Callback<GestureEvent>): PinchGestureHandler--><!--Device-PinchGestureHandler-onActionCancel(event: Callback<GestureEvent>): PinchGestureHandler-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -113,8 +105,6 @@ onActionEnd(event: Callback<GestureEvent>): PinchGestureHandler
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PinchGestureHandler-onActionEnd(event: Callback<GestureEvent>): PinchGestureHandler--><!--Device-PinchGestureHandler-onActionEnd(event: Callback<GestureEvent>): PinchGestureHandler-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -142,8 +132,6 @@ onActionStart(event: Callback<GestureEvent>): PinchGestureHandler
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PinchGestureHandler-onActionStart(event: Callback<GestureEvent>): PinchGestureHandler--><!--Device-PinchGestureHandler-onActionStart(event: Callback<GestureEvent>): PinchGestureHandler-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -173,8 +161,6 @@ onActionUpdate(event: Callback<GestureEvent>): PinchGestureHandler
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PinchGestureHandler-onActionUpdate(event: Callback<GestureEvent>): PinchGestureHandler--><!--Device-PinchGestureHandler-onActionUpdate(event: Callback<GestureEvent>): PinchGestureHandler-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -188,4 +174,3 @@ onActionUpdate(event: Callback<GestureEvent>): PinchGestureHandler
 | 类型 | 说明 |
 | --- | --- |
 | [PinchGestureHandler](arkts-arkui-pinchgesturehandler-c.md) | 返回当前捏合手势处理器对象。 |
-

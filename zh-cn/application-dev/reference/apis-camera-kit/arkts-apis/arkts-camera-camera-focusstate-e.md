@@ -2,9 +2,7 @@
 
 枚举，焦距状态。
 
-**起始版本：** 23
-
-<!--Device-camera-enum FocusState--><!--Device-camera-enum FocusState-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -16,11 +14,9 @@ FOCUS_STATE_SCAN = 0
 
 触发对焦。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FocusState-FOCUS_STATE_SCAN = 0--><!--Device-FocusState-FOCUS_STATE_SCAN = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -32,11 +28,9 @@ FOCUS_STATE_FOCUSED = 1
 
 对焦成功。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FocusState-FOCUS_STATE_FOCUSED = 1--><!--Device-FocusState-FOCUS_STATE_FOCUSED = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -48,11 +42,8 @@ FOCUS_STATE_UNFOCUSED = 2
 
 未完成对焦。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FocusState-FOCUS_STATE_UNFOCUSED = 2--><!--Device-FocusState-FOCUS_STATE_UNFOCUSED = 2-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-

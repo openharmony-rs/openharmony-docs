@@ -20,8 +20,6 @@ function disconnectNative(connectionId: number): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-webNativeMessagingExtensionManager-function disconnectNative(connectionId: number): Promise<void>--><!--Device-webNativeMessagingExtensionManager-function disconnectNative(connectionId: number): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -34,20 +32,18 @@ function disconnectNative(connectionId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -74,34 +70,3 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import UIAbility from '@ohos.app.ability.UIAbility';
-import Want from '@ohos.app.ability.Want';
-import { BusinessError } from '@ohos.base'
-import webNativeMessagingExtensionManager from '@ohos.web.webNativeMessagingExtensionManager';
-
-export default class EntryAbility extends UIAbility {
-  async disconnect() {
-    try {
-        let connectionId = 1;
-        // 假设之前已连接并获得connectionId
-        await webNativeMessagingExtensionManager.disconnectNative(connectionId).then(() => {
-            console.info('disconnectNative success');
-        })
-    } catch (err) {
-      // 处理入参错误异常
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`disconnectNative failed, code is ${code}, message is ${message}`);
-    }
-  }
-  onForeground() {
-    this.disconnect();
-  }
-}
-```
-

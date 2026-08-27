@@ -4,9 +4,7 @@
 
 **继承/实现关系：** Hyperlink extends [Text](arkts-arkdata-unifieddatachannel-text-c.md)
 
-**起始版本：** 23
-
-<!--Device-unifiedDataChannel-class Hyperlink--><!--Device-unifiedDataChannel-class Hyperlink-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -32,7 +30,30 @@ description?: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Hyperlink-description?: string--><!--Device-Hyperlink-description?: string-End-->
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+## url
+
+```TypeScript
+set url(value: string)
+```
+
+链接url。
+
+**类型：** string
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
+**示例**
+
+```TypeScript
+let link = new unifiedDataChannel.Hyperlink();
+link.url = 'www.XXX.com';
+link.description = 'This is description';
+```

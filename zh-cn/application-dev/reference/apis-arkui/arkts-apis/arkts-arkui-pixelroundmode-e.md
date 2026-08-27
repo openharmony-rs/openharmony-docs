@@ -1,10 +1,8 @@
 # PixelRoundMode
 
-像素取整模式
+像素取整模式@enum { number }
 
 **起始版本：** 18
-
-<!--Device-unnamed-declare enum PixelRoundMode--><!--Device-unnamed-declare enum PixelRoundMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,8 +22,6 @@ PIXEL_ROUND_ON_LAYOUT_FINISH = 0
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-PixelRoundMode-PIXEL_ROUND_ON_LAYOUT_FINISH = 0--><!--Device-PixelRoundMode-PIXEL_ROUND_ON_LAYOUT_FINISH = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PIXEL_ROUND_AFTER_MEASURE
@@ -44,7 +40,4 @@ PIXEL_ROUND_AFTER_MEASURE = 1
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-PixelRoundMode-PIXEL_ROUND_AFTER_MEASURE = 1--><!--Device-PixelRoundMode-PIXEL_ROUND_AFTER_MEASURE = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

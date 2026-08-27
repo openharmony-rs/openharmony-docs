@@ -2,9 +2,7 @@
 
 表结构信息。
 
-**起始版本：** 23
-
-<!--Device-cloudExtension-export interface Table--><!--Device-cloudExtension-export interface Table-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -26,9 +24,7 @@ alias: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Table-alias: string--><!--Device-Table-alias: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -44,9 +40,7 @@ fields: Array<Field>
 
 **类型：** Array&lt;Field&gt;
 
-**起始版本：** 23
-
-<!--Device-Table-fields: Array<Field>--><!--Device-Table-fields: Array<Field>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -62,11 +56,8 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Table-name: string--><!--Device-Table-name: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **系统接口：** 此接口为系统接口。
-

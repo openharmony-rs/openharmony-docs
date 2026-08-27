@@ -2,9 +2,7 @@
 
 用户认证界面配置相关参数。该接口用于配置认证界面的显示样式和交互方式，包括标题、导航按钮文本、窗口模式等。通过合理配置这些参数，可以为用户提供清晰的认证引导和良好的交互体验。
 
-**起始版本：** 23
-
-<!--Device-userAuth-interface WidgetParam--><!--Device-userAuth-interface WidgetParam-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';
-import { UserAuthIcon } from '@kit.UserAuthenticationKit';
 ```
 
 ## appWindow
@@ -21,7 +18,7 @@ import { UserAuthIcon } from '@kit.UserAuthenticationKit';
 appWindow?: window.Window
 ```
 
-应用窗口对象。用于以模应用弹窗方式显示身份认证对话框，适用于需要通过窗口对象控制认证对话框显示的场景。如果已提供此参数，则uiContext将被忽略。
+应用窗口对象。用于以模应用弹窗方式显示身份认证对话框，适用于需要通过窗口对象控制认证对话框显示的场景。如果已提供此参数，则uiContext将被忽略；若不传入此参数，则认证界面的显示由uiContext控制。
 
 **类型：** window.Window
 
@@ -30,8 +27,6 @@ appWindow?: window.Window
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WidgetParam-appWindow?: window.Window--><!--Device-WidgetParam-appWindow?: window.Window-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -49,11 +44,8 @@ windowMode?: WindowModeType
 
 **默认值：** WindowModeType.DIALOG_BOX
 
-**起始版本：** 23
-
-<!--Device-WidgetParam-windowMode?: WindowModeType--><!--Device-WidgetParam-windowMode?: WindowModeType-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
-

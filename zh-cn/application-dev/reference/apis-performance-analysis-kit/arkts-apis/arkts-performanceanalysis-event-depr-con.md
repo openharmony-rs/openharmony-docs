@@ -14,8 +14,6 @@ const DISTRIBUTED_SERVICE_START: string
 
 **替代接口：** DISTRIBUTED_SERVICE_START
 
-<!--Device-Event-const DISTRIBUTED_SERVICE_START: string--><!--Device-Event-const DISTRIBUTED_SERVICE_START: string-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 ## USER_LOGIN
@@ -31,8 +29,6 @@ const USER_LOGIN: string
 **废弃版本：** 9
 
 **替代接口：** USER_LOGIN
-
-<!--Device-Event-const USER_LOGIN: string--><!--Device-Event-const USER_LOGIN: string-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -50,7 +46,4 @@ const USER_LOGOUT: string
 
 **替代接口：** USER_LOGOUT
 
-<!--Device-Event-const USER_LOGOUT: string--><!--Device-Event-const USER_LOGOUT: string-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
-

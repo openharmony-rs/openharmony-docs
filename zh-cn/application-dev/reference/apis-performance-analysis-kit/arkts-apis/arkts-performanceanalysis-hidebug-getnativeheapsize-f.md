@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## getNativeHeapSize
@@ -14,9 +13,7 @@ function getNativeHeapSize() : bigint
 
 获取内存分配器统计的进程持有的普通块所占用的总字节数。
 
-**起始版本：** 23
-
-<!--Device-hidebug-function getNativeHeapSize() : bigint--><!--Device-hidebug-function getNativeHeapSize() : bigint-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -34,4 +31,3 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 let nativeHeapSize: bigint = hidebug.getNativeHeapSize();
 console.info(`nativeHeapSize = ${nativeHeapSize}`);
 ```
-

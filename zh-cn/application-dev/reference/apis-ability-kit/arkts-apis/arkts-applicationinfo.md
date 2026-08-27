@@ -1,5 +1,11 @@
 # ApplicationInfo
 
+The module defines the application information. An application can obtain its own application information through
+ [bundleManager.getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)
+ , with **GET_BUNDLE_INFO_WITH_APPLICATION** passed in to
+ [bundleFlags](arkts-ability-bundlemanager-bundleflag-e.md).
+
+
 ## 汇总
 
 ### 接口
@@ -18,4 +24,3 @@
 | [ApplicationInfo](arkts-ability-applicationinfo-i-sys.md) | 应用程序信息。 |
 | [PreinstalledApplicationInfo](arkts-ability-applicationinfo-preinstalledapplicationinfo-i-sys.md) | 预装应用的信息。 |
 <!--DelEnd-->
-
