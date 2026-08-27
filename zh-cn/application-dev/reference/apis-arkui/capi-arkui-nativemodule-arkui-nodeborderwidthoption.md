@@ -1,4 +1,4 @@
-# ArkUI_NodeBorderWidthOption
+# ArkUI_NodeBorderWidth
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

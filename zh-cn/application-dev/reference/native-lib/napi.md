@@ -35,7 +35,7 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 从Node-API标准库导出的接口，其使用方法及行为基于[Node.js](https://nodejs.org/docs/latest-v18.x/api/n-api.html)。部分接口存在差异，请参考[已导出符号列表与标准库对应符号的差异](#已导出符号列表与标准库对应符号的差异)。
 
 > **注意：**
-> 使用 NAPI 接口时，应确保环境、对象和值有效且符合规格；无效或跨生命周期使用可能导致失败、崩溃或未定义行为。开发过程常见问题可参考[Node-API常见问题](../../napi/use-napi-faqs.md#node-api常见问题)。
+> 使用 NAPI 接口时，应确保环境、对象和值有效且符合规格；无效或跨生命周期使用可能导致失败、崩溃或未定义行为。开发过程常见问题可参考[Node-API常见问题](../../napi/use-napi-faqs.md)。
 
 |符号类型|符号名|说明|起始支持API版本|
 | --- | --- | --- | --- |
@@ -2059,6 +2059,28 @@ napi_status napi_set_property_with_callsite_info(napi_env env,
 - [in] info：调用点信息句柄。可以为NULL。
 
 - [out] hit：写入缓存是否命中：true表示命中（快速路径），false表示未命中。可以传入nullptr。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_get_global_handle_count
+
+```cpp
+napi_status napi_get_global_handle_count(napi_env env, size_t* count);
+```
+
+**描述：**
+
+获取当前虚拟机环境中global handle数量，可用于根据global handle的实际数量来进一步处理业务，比如打印当前堆快照，分析当前的内存占用情况。注意：由于需要遍历，此接口可能耗时较长，在us级别。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [out] count：指向size_t的指针，用于接收global handle数量。
 
 **返回：**
 

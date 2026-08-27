@@ -323,7 +323,7 @@ int32_t (*setGestureEventTarget)(ArkUI_GestureRecognizer* recognizer, ArkUI_Gest
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 需要被绑定回调事件的各类手势指针。 |
 | [ArkUI_GestureEventActionTypeMask](capi-native-gesture-h.md#变量) actionTypeMask            | 需要响应的手势事件类型集合，一次性可以注册多个事件类型，在回调中区分回调事件类型。例：actionTypeMask = GESTURE_EVENT_ACTION_ACCEPT \| GESTURE_EVENT_ACTION_UPDATE; |
 | void* extraParams | targetReceiver回调时传入的上下文数据，当需要在回调中访问自定义业务数据时传入对应数据指针。 |
-| targetReceiver                                                                            | 手势事件回调函数，签名为void (\*targetReceiver)(ArkUI_GestureEvent* event, void* extraParams)，用于处理已注册手势类型的事件。其中event为手势回调数据，extraParams为注册时传入的上下文数据，无返回值。 |
+| void (\*targetReceiver)(ArkUI_GestureEvent* event, void* extraParams)                 | 手势事件回调函数，用于处理已注册手势类型的事件。其中event为手势回调数据，extraParams为注册时传入的上下文数据，无返回值。 |
 
 **返回：**
 
@@ -448,7 +448,7 @@ int32_t (*setInnerGestureParallelTo)(ArkUI_NodeHandle node, void* userData, ArkU
 |------------------------------------------------------------------| -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 需要被设置并行内部手势事件回调的ArkUI节点指针。 |
 | void* userData | 用户自定义数据，设置后会作为并行内部手势事件回调的上下文数据透传，供开发者在处理回调时使用。当不需要传递额外上下文时可传入nullptr。 |
-| parallelInnerGesture                                             | 并行内部手势事件回调函数，签名为ArkUI_GestureRecognizer* (\*parallelInnerGesture)(ArkUI_ParallelInnerGestureEvent* event)，用于根据并行内部手势事件数据返回需要与内部手势并行识别的手势识别器指针。其中event为并行内部手势事件数据，返回值为需要并行的手势识别器指针。 |
+| ArkUI_GestureRecognizer* (\*parallelInnerGesture)(ArkUI_ParallelInnerGestureEvent* event) | 并行内部手势事件回调函数，用于根据并行内部手势事件数据返回需要与内部手势并行识别的手势识别器指针。其中event为并行内部手势事件数据，返回值为需要并行的手势识别器指针。 |
 
 **返回：**
 

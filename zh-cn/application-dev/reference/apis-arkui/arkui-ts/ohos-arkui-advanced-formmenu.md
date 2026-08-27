@@ -23,6 +23,8 @@
 > 该组件不支持在Wearable设备上使用。
 >
 > 卡片具体开发指导请参考[卡片开发指南](../../../form/formkit-overview.md)。
+>
+> 从API version 18开始，建议使用[formProvider.openFormManager](../../apis-form-kit/js-apis-app-form-formProvider.md#formprovideropenformmanager18)接口。
 
 
 ## 导入模块
@@ -221,6 +223,6 @@ struct WidgetCard {
 
 **调用高级自定义控件桌面加桌结果**
 
-左侧是formbindingdata为空加桌结果，右侧是formbindingdata为{ data: 'share' }的加桌结果。
+左侧是formBindingData为空加桌结果，右侧是formBindingData为{ data: 'share' }的加桌结果。
 
 ![zh-cn_image_0000001616959836](figures/add-form-to-desktop-result.jpeg)
