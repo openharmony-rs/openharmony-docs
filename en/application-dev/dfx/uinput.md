@@ -75,7 +75,7 @@ commands for keyboard:
 
 ## Specifying the Target Display
 
-Specifies the target display for injected events. This is an optional parameter and, when used, must be placed before the device type option (such as -M or -K). After it is specified, the injected mouse, touch, and touchpad events take effect on the screen corresponding to the target display, while the injected keyboard events take effect on the screen group. If it is not specified, the event injection behavior remains the same as the default behavior.
+Specifies the target display for injected events. This is an optional parameter and, when used, must be placed before the device type option (such as -M or -K). After it is specified, the injected mouse, keyboard, touch, and touchpad events take effect on the screen corresponding to the target display. If it is not specified, the event injection behavior remains the same as the default behavior.
 
 **Command**
 
