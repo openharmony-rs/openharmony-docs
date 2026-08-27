@@ -10,9 +10,9 @@
 
 ## 卡片数据交互
 
-ArkTS卡片管理服务支持卡片提供方（例如：应用）和卡片之间的数据交互。卡片通过[postCardAction/apis-arkui/js-apis-postCardAction.md#postcardaction-1)传递数据给卡片提供方，卡片提供方则通过[updateForm/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口传递数据给卡片。卡片提供方将数据提供给卡片后，可以用于卡片页面刷新等。
+ArkTS卡片管理服务支持卡片提供方（例如：应用）和卡片之间的数据交互。卡片通过postCardAction传递数据给卡片提供方，卡片提供方则通过updateForm接口传递数据给卡片。卡片提供方将数据提供给卡片后，可以用于卡片页面刷新等。
 
-由于卡片提供方和卡片为相互独立的进程，两者间的数据共享只能通过[LocalStorageProp](../ui/state-management/arkts-localstorage.md#localstorageprop)传递，不能使用getContext方法。因此卡片提供方推送数据后，卡片UI需要通过LocalStorageProp接收数据，且接收数据时，卡片数据会被转换成string类型。
+由于卡片提供方和卡片为相互独立的进程，两者间的数据共享只能通过LocalStorageProp传递，不能使用getContext方法。因此卡片提供方推送数据后，卡片UI需要通过LocalStorageProp接收数据，且接收数据时，卡片数据会被转换成string类型。
 
 ## 页面刷新分类
 
@@ -20,13 +20,13 @@ ArkTS卡片管理服务支持卡片提供方（例如：应用）和卡片之间
 
 ### 主动刷新
 
-主动刷新包括卡片提供方主动刷新卡片和卡片使用方主动刷新卡片。开发指导请参考[ArkTS卡片主动刷新](arkts-ui-widget-active-refresh.md)。
+主动刷新包括卡片提供方主动刷新卡片和卡片使用方主动刷新卡片。开发指导请参考ArkTS卡片主动刷新。
 
 **图1 卡片提供方主动刷新卡片流程图**
 
 ![updateForm](figures/updateForm.PNG)
 
-卡片提供方应用运行过程中，如果识别到有要更新卡片数据的诉求，可以主动通过formProvider提供的[updateForm/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口更新卡片。
+卡片提供方应用运行过程中，如果识别到有要更新卡片数据的诉求，可以主动通过formProvider提供的updateForm接口更新卡片。
 
 **图2 卡片使用方主动刷新卡片流程图**
 
@@ -36,9 +36,9 @@ ArkTS卡片管理服务支持卡片提供方（例如：应用）和卡片之间
 
 ### 被动刷新
 
-被动刷新包括定时刷新、定点刷新<!--Del-->和条件刷新<!--DelEnd-->。开发指导请参考[ArkTS卡片被动刷新](arkts-ui-widget-passive-refresh.md)。
+被动刷新包括定时刷新、定点刷新<!--Del-->和条件刷新<!--DelEnd-->。开发指导请参考ArkTS卡片被动刷新。
 
-卡片定时刷新：表示在一定时间间隔内调用[onUpdateForm/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)的生命周期回调函数自动刷新卡片内容。
+卡片定时刷新：表示在一定时间间隔内调用onUpdateForm的生命周期回调函数自动刷新卡片内容。
 
 卡片定点刷新：表示在每天的某个特定时间点自动刷新卡片内容。
 

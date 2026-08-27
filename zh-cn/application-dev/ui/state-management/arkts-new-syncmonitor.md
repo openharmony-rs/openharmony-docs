@@ -8,7 +8,7 @@
 
 为了增强状态管理框架对状态变量变化的监听能力，开发者可以使用\@SyncMonitor装饰器对状态变量进行监听。
 
-\@SyncMonitor提供了对V2状态变量的同步监听。在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，[\@Local](./arkts-new-local.md)，[\@Monitor](./arkts-new-monitor.md)。
+\@SyncMonitor提供了对V2状态变量的同步监听。在阅读本文档前，建议提前阅读：\@ComponentV2，\@ObservedV2和\@Trace，\@Local，\@Monitor。
 
 >**说明：**
 >
@@ -20,11 +20,11 @@
 
 \@SyncMonitor装饰器用于同步监听状态变量修改，使得状态变量具有深度监听的能力：
 
-- \@SyncMonitor装饰器支持在\@ComponentV2装饰的自定义组件中使用，未被状态变量装饰器[\@Local](arkts-new-local.md)、[\@Param](arkts-new-param.md)、[\@Provider](arkts-new-provider-and-consumer.md)、[\@Consumer](arkts-new-provider-and-consumer.md)、[\@Computed](arkts-new-computed.md)装饰的变量无法被\@SyncMonitor监听到变化。
+- \@SyncMonitor装饰器支持在\@ComponentV2装饰的自定义组件中使用，未被状态变量装饰器\@Local、\@Param、\@Provider、\@Consumer、\@Computed装饰的变量无法被\@SyncMonitor监听到变化。
 
 ## 装饰器使用规则说明
 
-- \@SyncMonitor装饰器支持在类中与[\@ObservedV2、\@Trace](arkts-new-observedV2-and-trace.md)配合使用，不允许在未被\@ObservedV2装饰的类中使用\@SyncMonitor装饰器。未被\@Trace装饰的属性无法被\@SyncMonitor监听到变化。当观测的属性变化时，\@SyncMonitor装饰器定义的回调方法将被调用。判断属性是否变化使用的是严格相等（===），当严格相等判断的结果是false（即不相等）的情况下，就会立即触发\@SyncMonitor的回调。同一事件内，当被观察的属性多次改变时，回调函数将在每次属性改变时被调用。
+- \@SyncMonitor装饰器支持在类中与\@ObservedV2、\@Trace配合使用，不允许在未被\@ObservedV2装饰的类中使用\@SyncMonitor装饰器。未被\@Trace装饰的属性无法被\@SyncMonitor监听到变化。当观测的属性变化时，\@SyncMonitor装饰器定义的回调方法将被调用。判断属性是否变化使用的是严格相等（===），当严格相等判断的结果是false（即不相等）的情况下，就会立即触发\@SyncMonitor的回调。同一事件内，当被观察的属性多次改变时，回调函数将在每次属性改变时被调用。
 
 - 单个\@SyncMonitor装饰器能够同时监听多个属性的变化，当这些属性在一次事件中共同变化时，只会触发一次\@SyncMonitor的回调方法。 当\@SyncMonitor监听整个数组时，更改数组的某一项不会被监听到。
 
@@ -32,13 +32,13 @@
 
 - \@SyncMonitor装饰器具有深度监听的能力，能够监听嵌套类、多维数组、对象数组中指定项的变化。对于嵌套类、对象数组中成员属性变化的监听要求该类被\@ObservedV2装饰且该属性被\@Trace装饰。
 
-- \@SyncMonitor可以观察内置类型`Map`、`Set`、`Date`以及`Array`类型API调用引起的数据变化，详情参见[通用监听能力](#通用监听能力)。
+- \@SyncMonitor可以观察内置类型`Map`、`Set`、`Date`以及`Array`类型API调用引起的数据变化，详情参见通用监听能力。
 
-- \@SyncMonitor装饰器新增[通配符('*')](#监听路径中通配符的说明)支持一层模糊监听，便于\@Watch装饰器向\@SyncMonitor装饰器迁移。
+- \@SyncMonitor装饰器新增通配符('*')支持一层模糊监听，便于\@Watch装饰器向\@SyncMonitor装饰器迁移。
 
 ### 比较\@Monitor，\@SyncMonitor和\@Watch
 
-与[\@Watch](arkts-watch.md)装饰器类似，开发者必须自己定义回调函数。不同之处在于，\@Watch使用函数名作为参数，而\@SyncMonitor直接装饰回调函数。带有通配符监听路径的\@SyncMonitor监听范围与\@Watch一致。\@Watch和\@SyncMonitor装饰的函数都同步执行。下表比较\@Monitor、\@SyncMonitor和\@Watch的用法和功能。
+与\@Watch装饰器类似，开发者必须自己定义回调函数。不同之处在于，\@Watch使用函数名作为参数，而\@SyncMonitor直接装饰回调函数。带有通配符监听路径的\@SyncMonitor监听范围与\@Watch一致。\@Watch和\@SyncMonitor装饰的函数都同步执行。下表比较\@Monitor、\@SyncMonitor和\@Watch的用法和功能。
 
 | 类别                   | \@Watch                                 | \@Monitor                                                    |\@SyncMonitor                                                  |
 | ------------------ | --------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -51,9 +51,9 @@
 | 通配符支持 | 否  | 默认不支持，从API版本26.0.0开始可以通过配置项支持 | 是（从API version 23开始） |
 | 回调调用时机 | 立即（同步） | 状态变更函数结束后（异步），多次变更，只触发一次。 |  立即（同步） |
 
-[addMonitor和clearMonitor](./arkts-new-addMonitor-clearMonitor.md)API允许在应用程序执行期间动态添加和清除监听器。当isSynchronous设置为true，addMonitor类似于\@SyncMonitor，当设置为false，addMonitor类似于\@Monitor功能。
+addMonitor和clearMonitorAPI允许在应用程序执行期间动态添加和清除监听器。当isSynchronous设置为true，addMonitor类似于\@SyncMonitor，当设置为false，addMonitor类似于\@Monitor功能。
 
-\@Monitor和\@SyncMonitor分别是\@ComponentV2和\@ObservedV2类的成员函数装饰器，属于V2状态管理的一部分。\@Watch是[@Component](./arkts-create-custom-components.md#component)中使用的变量装饰器，属于V1状态管理的一部分。
+\@Monitor和\@SyncMonitor分别是\@ComponentV2和\@ObservedV2类的成员函数装饰器，属于V2状态管理的一部分。\@Watch是@Component中使用的变量装饰器，属于V1状态管理的一部分。
 
 \@Monitor装饰的函数会异步执行，在事件处理程序执行结束后执行。\@SyncMonitor和\@Watch函数在观察到的状态变量改变后，回调函数会立即同步执行。
 
@@ -136,8 +136,8 @@ Monitor - sum changed from 0 to 6
 ## 装饰器说明
 |\@SyncMonitor属性装饰器| 说明                                                        |
 | ------------------- | ------------------------------------------------------------ |
-| 装饰器参数         | 字符串类型的对象属性名称。可同时监听多个对象属性，每个属性以逗号隔开，例如： @SyncMonitor('prop1', 'prop2')。此外，可监听深层的属性变化：多维数组中的元素、嵌套对象中的属性、对象数组中的属性。支持在路径末尾添加通配符'*'来监听任意被观察属性的变化。详情参见 [监听变化](#监听变化)。|
-| 装饰内容           | 成员方法。在被观察属性变化时，该回调会被触发。该回调方法以[IMonitor类型/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md#imonitor12)的变量作为参数，开发者可以从该参数中获取变化前后的相关信息。|
+| 装饰器参数         | 字符串类型的对象属性名称。可同时监听多个对象属性，每个属性以逗号隔开，例如： @SyncMonitor('prop1', 'prop2')。此外，可监听深层的属性变化：多维数组中的元素、嵌套对象中的属性、对象数组中的属性。支持在路径末尾添加通配符'*'来监听任意被观察属性的变化。详情参见 监听变化。|
+| 装饰内容           | 成员方法。在被观察属性变化时，该回调会被触发。该回调方法以IMonitor类型的变量作为参数，开发者可以从该参数中获取变化前后的相关信息。|
 
 ## 监听路径中通配符的说明
 
@@ -170,7 +170,7 @@ Monitor - sum changed from 0 to 6
 
 ## 接口说明
 
-IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状态变量变化监听/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md)。
+IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：@Monitor：状态变量修改监听。
 
 ## 监听变化
 
@@ -591,6 +591,8 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 - 在一次事件中多次改变被\@SyncMonitor监听的属性，\@SyncMonitor回调将在该属性每次改变时被调用。
 
   \@SyncMonitor与\@Monitor行为不一样，\@Monitor只被调用一次并以最后一次修改为准。
+
+  <!-- @[syncmonitor_behaves_differently_from_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/SyncMonitorBehavesDifferentlyFromMonitor.ets) -->
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -655,7 +657,9 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 
 - 如果\@SyncMonitor观察的多个属性在不同的赋值操作中发生改变，则每次赋值操作后都会立即调用\@SyncMonitor回调函数。这与\@Monitor的行为相反，后者只调用一次并使用最后一次更改的值。调用Array的API可能会一次改变多个数组元素，但每次只会触发一次\@SyncMonitor装饰的回调函数。
 
-  ``` typescript
+  <!-- @[syncmonitor_array_multi_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/SyncMonitorArrayMultiPath.ets) -->
+  
+  ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   @Entry
   @ComponentV2
@@ -684,7 +688,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
             // changes arr from [ 0, 1, 2, 3, 4, 5 ] to [ 0, 100, 101, 102, 5]
             this.arr.splice(1, 4, 100, 101, 102);
             hilog.info(0xFF00, 'testTag', 'shift execute ...');
-            // changes arr from [ 1, 100, 101, 102, 5] to [ 100, 101, 102, 5]
+            // changes arr from [ 0, 100, 101, 102, 5] to [ 100, 101, 102, 5]
             this.arr.shift();
             hilog.info(0xFF00, 'testTag', '.. done');
           })
@@ -697,7 +701,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 
   1. 执行`onClick`；
   2. 打印`arr[1] assign ...`；
-  3. 执行`onArrChangedSync`，打印日志: '@SyncMonitor: arr: [0,100,2,3,4,5], m.dirty [arr.1]'；
+  3. 执行`onArrChangedSync`，打印日志: '@SyncMonitor: arr: [0,100,2,3,4,5], m.dirty: [arr.1]'；
   4. 打印日志`arr[2] assign ...`；
   5. 执行`onArrChangedSync`, 打印日志: '@SyncMonitor: arr: [0,100,200,3,4,5], m.dirty: [arr.2]'；
   6. onClick执行完毕，打印日志`.. done`。
@@ -1166,6 +1170,8 @@ struct DocSampleArrayOfArrays {
 
 - 当@SyncMonitor传入多个路径参数时，以参数的全拼接结果判断是否重复监听。全拼接时会在参数间加空格，以区分不同参数。例如，`'ab', 'c'`的全拼接结果为`'ab c'`，`'a', 'bc'`的全拼接结果为`'a bc'`，二者全拼接不相等。以下示例中，`SyncMonitor 1`、`SyncMonitor 2`与`SyncMonitor 3`都监听了name属性的变化。由于`SyncMonitor 2`与`SyncMonitor 3`的入参全拼接相等（都为`'name position'`），因此`SyncMonitor 2`不生效，仅`SyncMonitor 3`生效。当name属性变化时，将同时触发onNameAgeChange与onNamePositionChangeDuplicate方法。但请注意，`SyncMonitor 2`与`SyncMonitor 3`的写法仍然被视作在一个类中对同一个属性进行多次@SyncMonitor的监听，这是不建议的。
 
+  <!-- @[monitor_duplicate_multiple_paths](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorDuplicateMultiplePaths.ets) -->
+  
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -1297,6 +1303,8 @@ struct DocSampleArrayOfArrays {
 \@SyncMonitor可以监听深层属性的变化，并能够根据更改前后的值做分类处理。
 
 下面的示例中监听了属性value的变化，并根据变化的幅度改变Text组件显示的样式。
+
+<!-- @[monitor_deep_property_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorDeepPropertyChange.ets) -->
 
 ``` TypeScript
 @ObservedV2
@@ -1448,6 +1456,8 @@ struct Index {
 
 当\@SyncMonitor定义在\@ObservedV2装饰的类中时，\@SyncMonitor会在类的实例创建完成后生效，在类的实例销毁时失效。
 
+<!-- @[syncmonitor_class_effective_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/SyncMonitorClassEffectiveTime.ets) -->
+
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1494,6 +1504,8 @@ message change from Index aboutToAppear to Index click to change message
 ```
 
 类中定义的\@SyncMonitor随着类的销毁失效。而由于类的实际销毁释放依赖于垃圾回收机制，因此会出现即使所在自定义组件已经销毁，类却还未及时销毁，导致类中定义的\@SyncMonitor仍在监听变化的情况。
+
+<!-- @[syncmonitor_class_gc_destruction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/SyncMonitorClassGcDestruction.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1583,6 +1595,8 @@ struct Index {
 
 将\@SyncMonitor定义在自定义组件中。由于自定义组件在销毁时，状态管理框架会手动取消\@SyncMonitor的监听，因此在自定义组件调用完aboutToDisappear，尽管自定义组件的数据不一定已经被释放，但\@SyncMonitor回调已不会再被触发。与@Monitor不同的是，当自定义组件即将销毁时，主动置空\@SyncMonitor监听的对象，\@SyncMonitor依然能监听原监听目标的变化。
 
+<!-- @[syncmonitor_component_destruction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/SyncMonitorComponentDestruction.ets) -->
+
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1671,6 +1685,8 @@ struct Index {
 
 【反例1】
 
+<!-- @[monitor_non_state_variable_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorNonStateVariableNegative.ets) -->
+
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1679,7 +1695,8 @@ class Info {
   public name: string = 'John';
   @Trace public age: number = 24;
 
-  // 只允许监听状态变量age，监听非状态变量name，会编译告警，提示`Cannot observe non-existent variables or non-state variables, except in wildcard-based monitoring scenarios.`
+  // 只允许监听状态变量age。监听非状态变量name，会编译告警，
+  // 提示：`Cannot observe non-existent variables or non-state variables, except in wildcard-based monitoring scenarios.`
   @SyncMonitor('age', 'name')
   onPropertyChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
@@ -1714,6 +1731,8 @@ property path:age change from 24 to 25
 ```
 
 【正例1】
+
+<!-- @[monitor_non_state_variable_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorNonStateVariablePositive.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1751,6 +1770,8 @@ struct Index {
 ```
 
 【反例2】
+
+<!-- @[monitor_non_computed_getter_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorNonComputedGetterNegative.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1837,6 +1858,8 @@ struct Index {
 
 或直接监听状态变量本身：
 
+<!-- @[monitor_state_variable_directly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorStateVariableDirectly.ets) -->
+
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1893,7 +1916,8 @@ struct Index {
 * `@SyncMonitor('*')` - 错误，不存在属性名称
 
 ### 监听变量从可访问变为不可访问和从不可访问变为可访问
-\@Monitor仅会保存变量可访问时的值，当状态变量变为不可访问的状态时，并不会记录其值的变化。从API version 20开始，如果需要监听可访问到不可访问和不可访问到可访问的状态变化，可以使用[addMonitor](./arkts-new-addMonitor-clearMonitor.md#监听变量从可访问到不访问和从不可访问到可访问)。
+
+\@Monitor仅会保存变量可访问时的值，当状态变量变为不可访问的状态时，并不会记录其值的变化。从API version 20开始，可以使用addMonitor监听变量从可访问到不可访问和从不可访问到可访问的状态变化。
 
 \@SyncMonitor可以监听变量从可访问变为不可访问或从不可访问变为可访问的变化。在下面的例子中，点击三个Button，均会触发`onChange`的回调。
 

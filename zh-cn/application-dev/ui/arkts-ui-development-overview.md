@@ -11,7 +11,7 @@
 
 - **ArkTS**
 
-  ArkTS是优选的主力应用开发语言，围绕应用开发在[TypeScript](https://www.typescriptlang.org/)（简称TS）生态基础上做了进一步扩展。扩展能力包含声明式UI描述、自定义组件、动态扩展UI元素、状态管理和渲染控制。状态管理作为基于ArkTS的声明式开发范式的特色，通过功能不同的装饰器给开发者提供了清晰的页面更新渲染流程和管道。状态管理包括UI组件状态和应用程序状态，两者协作可以使开发者完整地构建整个应用的数据更新和UI渲染。ArkTS语言的基础知识请参考[初识ArkTS语言](../quick-start/arkts-get-started.md)。
+  ArkTS是优选的主力应用开发语言，围绕应用开发在[TypeScript](https://www.typescriptlang.org/)（简称TS）生态基础上做了进一步扩展。扩展能力包含声明式UI描述、自定义组件、动态扩展UI元素、状态管理和渲染控制。状态管理作为基于ArkTS的声明式开发范式的特色，通过功能不同的装饰器给开发者提供了清晰的页面更新渲染流程和管道。状态管理包括UI组件状态和应用程序状态，两者协作可以使开发者完整地构建整个应用的数据更新和UI渲染。ArkTS语言的基础知识请参考初识ArkTS语言。
 
 - **布局**
 
@@ -23,7 +23,7 @@
 
 - **页面路由和组件导航**
 
-  开发者可以将应用的用户界面设计为多个功能页面[NavDestination/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)，页面通过栈结构管理，并通过导航容器[Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)完成页面间的调度管理如跳转、回退等操作，以实现应用内的功能解耦。
+  开发者可以将应用的用户界面设计为多个功能页面NavDestination，页面通过栈结构管理，并通过导航容器Navigation完成页面间的调度管理如跳转、回退等操作，以实现应用内的功能解耦。
 
 - **图形**
 
@@ -93,29 +93,29 @@
 
 | 任务          | 简介                                  | 相关指导                                     |
 | ----------- | ----------------------------------- | ---------------------------------------- |
-| 学习ArkTS     | 介绍了ArkTS的基本语法、状态管理和渲染控制的场景。         | - [基本语法](state-management/arkts-basic-syntax-overview.md)<br>- [状态管理](state-management/arkts-state-management-overview.md)<br>- [渲染控制](rendering-control/arkts-rendering-control-overview.md) |
-| 设置组件导航和页面路由 | 介绍了如何设置组件间的导航以及页面路由。 | -&nbsp;[组件导航（推荐）](./arkts-navigation-architecture.md)<br/>-&nbsp;[页面路由](arkts-routing.md) |
-| 组件布局   | 介绍了几种常用的布局方式。             | -&nbsp;[常用布局](arkts-layout-development-overview.md) |
-| 列表与网格 | 介绍了几种列表与网格组件的使用方法。 | -&nbsp;[列表与网格](arkts-list-grid-development-overview.md) |
-| 使用文本 | 介绍了输入框、富文本和属性字符串等文本组件的使用方法。                | -&nbsp;[文本显示](arkts-common-components-text-display.md) <br/>- [文本输入](arkts-common-components-text-input.md)<br/>- [富文本](arkts-common-components-richeditor.md)<br/>- [图标小符号](arkts-common-components-symbol.md)<br/>- [属性字符串](arkts-styled-string.md)|
-| 媒体展示 | 介绍了几种媒体展示组件的使用方法。 | -&nbsp;[显示图片 (Image)](arkts-graphics-display.md)<br/>-&nbsp;[视频播放 (Video)](arkts-common-components-video-player.md)<br/>-&nbsp;[创建轮播 (Swiper)](arkts-layout-development-create-looping.md)<br/>-&nbsp;[创建弧形轮播 (ArcSwiper)](arkts-layout-development-arcswiper.md) |
-| 按钮与选择 | 介绍了几种常用按钮与选择组件的使用方法。 | -&nbsp;[按钮与选择组件](arkts-forms-overview.md) |
-| 添加组件 | 介绍了XComponent和Progress组件的使用方法。 | -&nbsp;[自定义渲染 (XComponent)](napi-xcomponent-guidelines.md)<br/>-&nbsp;[进度条 (Progress)](arkts-common-components-progress-indicator.md) |
-| 使用弹窗 | 介绍了弹窗的应用场景与使用方法。 | -&nbsp;[使用弹出框](arkts-base-dialog-overview.md)<br/>-&nbsp;[菜单](arkts-menu-overview.md)<br/>-&nbsp;[气泡提示](arkts-popup-overview.md)<br/>-&nbsp;[绑定模态页面](arkts-modal-overview.md)<br/>-&nbsp;[即时反馈](arkts-create-toast.md)<br/>-&nbsp;[设置浮层](arkts-create-overlaymanager.md) |
-| 显示图形        | 介绍了如何显示图片、绘制自定义几何图形以及使用画布绘制自定义图形。   | -&nbsp;[几何图形](arkts-shape-overview.md)<br/>-&nbsp;[画布](arkts-drawing-customization-on-canvas.md) |
-| 添加交互响应 | 介绍了交互基础机制、输入设备与事件和手势响应的能力。 | -&nbsp;[交互基础机制](arkts-interaction-basic-principles.md)<br/>-&nbsp;[输入设备与事件](arkts-interaction-development-guide-raw-input-event.md)<br/>-&nbsp;[手势响应](arkts-interaction-development-guide-support-gesture.md) |
-| 使用动画        | 介绍了组件和页面使用动画的典型场景。                  | - [属性动画](arkts-attribute-animation-overview.md)<br>- [转场动画](arkts-transition-overview.md)<br>- [粒子动画](arkts-particle-animation.md)<br>- [组件动画](arkts-component-animation.md)<br>- [动画曲线](arkts-traditional-curve.md)<br>- [动画衔接](arkts-animation-smoothing.md)<br>- [动画效果](arkts-blur-effect.md)<br>- [帧动画](arkts-animator.md) |
-| 使用自定义能力        | 介绍了自定义能力的基本概念和如何使用自定义能力。       | -&nbsp;[自定义组合](arkts-user-defined-composition.md)<br/>-&nbsp;[自定义节点](arkts-user-defined-node.md)<br/>-&nbsp;[自定义扩展](arkts-user-defined-modifier.md)|
-| UI国际化        | 介绍如何实现应用程序UI界面的国际化，包含资源配置和镜像布局。       | -&nbsp;[UI国际化](arkts-internationalization.md) |
-| 无障碍与适老化      | 介绍了无障碍和适老化的使用场景和使用方法。   | <!--RP1-->-&nbsp;[支持无障碍](arkts-universal-attributes-accessibility.md)<br/>-&nbsp;<!--RP1End-->[支持适老化](arkui-support-for-aging-adaptation.md) |
-| 主题设置       | 介绍了应用级和页面级的主题设置能力。       | -&nbsp;[应用深浅色适配](ui-dark-light-color-adaptation.md)<br/>-&nbsp;[设置应用内主题换肤](theme_skinning.md) |
-| UI系统场景化能力 | 介绍了如何使用UIContext中对应的接口获取与实例绑定的对象，以及全屏方式拉起原子化服务的方法。 | -&nbsp;[使用UI上下文接口操作界面](arkts-global-interface.md)<br/>- [全屏启动原子化服务组件](arkts-FullScreenComponent.md) |
+| 学习ArkTS     | 介绍了ArkTS的基本语法、状态管理和渲染控制的场景。         | - 基本语法<br>- 状态管理<br>- 渲染控制 |
+| 设置组件导航和页面路由 | 介绍了如何设置组件间的导航以及页面路由。 | -&nbsp;组件导航（推荐）<br/>-&nbsp;页面路由 |
+| 组件布局   | 介绍了几种常用的布局方式。             | -&nbsp;常用布局 |
+| 列表与网格 | 介绍了几种列表与网格组件的使用方法。 | -&nbsp;列表与网格 |
+| 使用文本 | 介绍了输入框、富文本和属性字符串等文本组件的使用方法。                | -&nbsp;文本显示 <br/>- 文本输入<br/>- 富文本<br/>- 图标小符号<br/>- 属性字符串|
+| 媒体展示 | 介绍了几种媒体展示组件的使用方法。 | -&nbsp;显示图片 (Image)<br/>-&nbsp;视频播放 (Video)<br/>-&nbsp;创建轮播 (Swiper)<br/>-&nbsp;创建弧形轮播 (ArcSwiper) |
+| 按钮与选择 | 介绍了几种常用按钮与选择组件的使用方法。 | -&nbsp;按钮与选择组件 |
+| 添加组件 | 介绍了XComponent和Progress组件的使用方法。 | -&nbsp;自定义渲染 (XComponent)<br/>-&nbsp;进度条 (Progress) |
+| 使用弹窗 | 介绍了弹窗的应用场景与使用方法。 | -&nbsp;使用弹出框<br/>-&nbsp;菜单<br/>-&nbsp;气泡提示<br/>-&nbsp;绑定模态页面<br/>-&nbsp;即时反馈<br/>-&nbsp;设置浮层 |
+| 绘制图形        | 介绍了如何绘制自定义几何图形以及使用画布绘制自定义图形。   | -&nbsp;几何图形<br/>-&nbsp;画布 |
+| 添加交互响应 | 介绍了交互基础机制、输入设备与事件和手势响应的能力。 | -&nbsp;交互基础机制<br/>-&nbsp;输入设备与事件<br/>-&nbsp;手势响应 |
+| 使用动画        | 介绍了组件和页面使用动画的典型场景。                  | - 属性动画<br>- 转场动画<br>- 粒子动画<br>- 组件动画<br>- 动画曲线<br>- 动画衔接<br>- 动态模糊<br>- 帧动画 |
+| 使用自定义能力        | 介绍了自定义能力的基本概念和如何使用自定义能力。       | -&nbsp;自定义组合<br/>-&nbsp;自定义节点<br/>-&nbsp;自定义扩展|
+| UI国际化        | 介绍如何实现应用程序UI界面的国际化，包含资源配置和镜像布局。       | -&nbsp;UI国际化 |
+| 无障碍与适老化      | 介绍了无障碍和适老化的使用场景和使用方法。   | <!--RP1-->-&nbsp;支持无障碍<br/>-&nbsp;<!--RP1End-->支持适老化 |
+| 主题设置       | 介绍了应用级和页面级的主题设置能力。       | -&nbsp;应用深浅色适配<br/>-&nbsp;设置应用内主题换肤 |
+| UI系统场景化能力 | 介绍了如何使用UIContext中对应的接口获取与实例绑定的对象，以及全屏方式拉起原子化服务的方法。 | -&nbsp;使用UI上下文接口操作界面<br/>- 全屏启动原子化服务组件 |
 
 ## 通用规则
 
 - **默认单位**
 
-  表示长度的入参单位默认为vp，即入参为number类型、以及[Length/apis-arkui/arkui-ts/ts-types.md#length)和[Dimension/apis-arkui/arkui-ts/ts-types.md#dimension10)类型中的number单位为vp。
+  表示长度的入参单位默认为vp，即入参为number类型、以及Length和Dimension类型中的number单位为vp。
 
 - **异常值处理**
 

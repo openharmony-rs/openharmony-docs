@@ -11,7 +11,7 @@ Ability assistant（Ability助手，简称为aa），是用于启动应用和启
 
 ## 环境要求
 
-在使用本工具前，开发者需要先获取[hdc工具](../dfx/hdc.md#环境准备)，执行hdc shell。
+在使用本工具前，开发者需要先获取hdc工具，执行hdc shell。
 
 本文中命令介绍均基于交互式命令环境。如果直接执行hdc shell [aa命令]，则需要采用""来包裹aa命令，确保命令中的传参能被正确识别。示例如下：
 
@@ -124,7 +124,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-u 
 
   > **说明：**
   > 
-  > 本例中仅介绍了部分字段的使用。关于Ability匹配的详细规则参考[显式Want与隐式Want匹配规则](../application-models/explicit-implicit-want-mappings.md)。
+  > 本例中仅介绍了部分字段的使用。关于Ability匹配的详细规则参考显式Want与隐式Want匹配规则。
 
 
   - **目标应用**：修改module.json5配置，为目标Ability配置uris。
@@ -241,14 +241,14 @@ aa dump -a
 
 > **说明：**
 >
-> aa dump命令从API version 7开始支持，从API version 9废弃，替换命令为[hidumper](../dfx/hidumper.md) -s AbilityManagerService。
+> aa dump命令从API version 7开始支持，从API version 9废弃，替换命令为hidumper -s AbilityManagerService。
 
   **打印命令参数列表**
   | 参数 | 二级参数 | 参数说明 |
   | -------- | -------- | -------- |
   | -h/--help | - | 帮助信息。 |
   | -a/--all | - | 打印所有mission内的应用组件信息。 |
-  | -l/--mission-list | type（缺省打印全部） | 服务侧为了方便管理任务链，内部维护了4种类型的任务链。<br/>可取值：<br/>-&nbsp;NORMAL：正常启动的任务链(比如A拉起B拉起C, 则对应的任务链是A->B->C)<br/>-&nbsp;DEFAULT_STANDARD：已经被破坏的任务链中的任务, 启动模式为`multiton`的任务被放到该任务链中, 这里面的任务之间没有关联关系<br/>-&nbsp;DEFAULT_SINGLE：已经被破坏的任务链中的任务, 启动模式为`singleton`的任务被放到该任务链中, 这里面的任务之间没有关联关系<br/>-&nbsp;LAUNCHER：launcher的任务链 |
+  | -l/--mission-list | type（缺省打印全部） | 服务侧为了方便管理任务链，内部维护了4种类型的任务链。<br/>可取值：<br/>-&nbsp;NORMAL：正常启动的任务链（比如A拉起B拉起C, 则对应的任务链是A->B->C）<br/>-&nbsp;DEFAULT_STANDARD：已经被破坏的任务链中的任务，启动模式为`multiton`的任务被放到该任务链中，这里面的任务之间没有关联关系<br/>-&nbsp;DEFAULT_SINGLE：已经被破坏的任务链中的任务，启动模式为`singleton`的任务被放到该任务链中，这里面的任务之间没有关联关系<br/>-&nbsp;LAUNCHER：launcher的任务链 |
   | -e/--extension | elementName | 打印扩展组件信息。 |
   | -u/--userId | UserId | 打印指定UserId的栈信息，需要和其他参数组合使用，例如aa&nbsp;dump&nbsp;-a&nbsp;-u&nbsp;100、aa&nbsp;dump&nbsp;-d&nbsp;-u&nbsp;100。 |
   | -d/--data | - | 打印DataAbility相关信息。 |
@@ -333,7 +333,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
 
 > **说明**：
 > 
-> 关于class、level、size、testType等参数的详细说明请参见<!--RP2-->[aa test命令执行配置参数](../application-test/unittest-guidelines.md#命令行执行测试脚本)<!--RP2End-->。
+> 关于class、level、size、testType等参数的详细说明请参见<!--RP2-->aa test命令执行配置参数<!--RP2End-->。
 
   **启动测试框架命令参数列表**
   | 参数 | 参数说明 |
@@ -537,7 +537,7 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
 
 ## onMemoryLevel回调命令（send-memory-level）
 
-从API version 13开始，开发者可以通过该命令来调试应用的[onMemoryLevel/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)生命周期。通过在参数中指定进程的pid和内存使用级别来触发该进程的onMemoryLevel生命周期回调。该命令只提供基本的应用调试能力，不能完全模拟真实的内存加压测试场景。
+从API version 13开始，开发者可以通过该命令来调试应用的onMemoryLevel生命周期。通过在参数中指定进程的pid和内存使用级别来触发该进程的onMemoryLevel生命周期回调。该命令只提供基本的应用调试能力，不能完全模拟真实的内存加压测试场景。
 
 ```bash
 # 触发onMemoryLevel回调
@@ -550,7 +550,7 @@ aa send-memory-level -p <processId> -l <memoryLevel>
 | -------- | -------- |
 | -h/--help | 帮助信息。 |
 | -p | 必选参数，进程pid。 |
-| -l | 必选参数，内存使用级别，具体值参考[AbilityConstant.MemoryLevel/apis-ability-kit/js-apis-app-ability-abilityConstant.md#memorylevel)。 |
+| -l | 必选参数，内存使用级别，具体值参考AbilityConstant.MemoryLevel。 |
 
 **返回值**：
 
@@ -570,7 +570,7 @@ aa send-memory-level -p 6066 -l 0
 
 ## 应用预启动命令（pre-start）
 
-从 API version 26.0.0 开始，开发者可以通过此命令在后台预先启动应用，以提升用户点击应用的启动速度。当前支持预启动应用到生命周期的特定阶段，即会先将应用预启动到[onDidForeground/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidforeground20)阶段（前台窗口会隐藏不显示），若默认30秒内用户未手动点击应用，系统会自动将应用预启动到[onDidBackground/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidbackground20)阶段。
+从 API version 26.0.0 开始，开发者可以通过此命令在后台预先启动应用，以提升用户点击应用的启动速度。当前支持预启动应用到生命周期的特定阶段，即会先将应用预启动到onDidForeground阶段（前台窗口会隐藏不显示），若默认30秒内用户未手动点击应用，系统会自动将应用预启动到onDidBackground阶段。
 
 ```bash
 aa pre-start -m <MODE> -b <BUNDLE-NAME> -u <USER-ID>
@@ -619,7 +619,7 @@ Failed to verify the visibility of the target ability.
 
 **可能原因**
 
-当目标应用在module.json5配置文件中的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)/[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)中的exported字段配置为false时，表示对应UIAbility组件/ExtensionAbility组件不可以被其他应用调用，也无法被aa工具命令拉起。
+当目标应用在module.json5配置文件中的abilities标签/extensionAbilities标签中的exported字段配置为false时，表示对应UIAbility组件/ExtensionAbility组件不可以被其他应用调用，也无法被aa工具命令拉起。
 
 **处理步骤**
 

@@ -13,17 +13,17 @@
 
  > **说明：** 
  > 
- > 当前使用C/C++的方式从API version 12开始支持验签，从API version 20开始支持签名。
+ > 当前使用C/C++的方式从API版本12开始支持验签，从API版本20开始支持签名。
 
 ## RSA
 
 算法库框架目前提供了两种RSA签名验签的填充模式：
 
-- [PKCS1](#填充模式为pkcs1)：即RFC3447规范中的RSAES-PKCS1-V1_5模式，对应OpenSSL中的RSA_PKCS1_PADDING。
+- PKCS1：即RFC3447规范中的RSAES-PKCS1-V1_5模式，对应OpenSSL中的RSA_PKCS1_PADDING。
   
   使用该模式时需要设置摘要（md），摘要算法输出的长度需要小于RSA密钥长度。例如RSA2048的密钥字节长度为256。
 
-- [PSS](#填充模式为pss)： 即RFC3447规范中的RSASSA-PSS模式，对应OpenSSL中的RSA_PKCS1_PSS_PADDING。
+- PSS： 即RFC3447规范中的RSASSA-PSS模式，对应OpenSSL中的RSA_PKCS1_PSS_PADDING。
   
   使用该模式时需要设置两个摘要（md和mgf1_md），且md摘要字节长度 + saltLen + 2 需要小于等于RSA的密钥长度。
 
@@ -41,7 +41,7 @@
 >
 > 使用同步接口生成RSA2048、RSA3072、RSA4096、RSA8192非对称密钥或者明文长度超过2048会导致耗时增加。
 >
-> 由于系统对主线程有时间限制，耗时较长会导致失败，建议开发者在生成位数较大的密钥时，使用对应的异步接口或是[使用多线程并发能力](../../arkts-utils/multi-thread-concurrency-overview.md)进行开发。
+> 由于系统对主线程有时间限制，耗时较长会导致失败，建议开发者在生成位数较大的密钥时，使用对应的异步接口或是使用多线程并发能力进行开发。
 
 ### 填充模式为PKCS1
 
@@ -124,11 +124,11 @@
 
 | PSS参数 | 枚举值 | 获取 | 设置 | 
 | -------- | -------- | -------- | -------- |
-| md | PSS_MD_NAME_STR | √ | - | 
-| mgf | PSS_MGF_NAME_STR | √ | - | 
-| mgf1_md | PSS_MGF1_MD_STR | √ | - | 
+| md | PSS_MD_NAME_STR | √ | － | 
+| mgf | PSS_MGF_NAME_STR | √ | － | 
+| mgf1_md | PSS_MGF1_MD_STR | √ | － | 
 | saltLen | PSS_SALT_LEN_NUM | √ | √ | 
-| trailer_field | PSS_TRAILER_FIELD_NUM | √ | - | 
+| trailer_field | PSS_TRAILER_FIELD_NUM | √ | － | 
 
 ### PKCS1模式下的OnlySign/OnlyVerify
 
@@ -202,7 +202,7 @@ PSS模式的OnlySign/OnlyVerify规格与PSS签名验签规格一致，仅在字�
 
 ## ECDSA
 
-ECDSA（Elliptic Curve Digital Signature Algorithm，椭圆曲线数字签名算法）是基于椭圆曲线密码（ECC）的数字签名算法（DSA）。相比DLP（Discrete Logarithm Problem，普通的离散对数问题）和IFP（Integer Factorization Problem，大数分解问题），椭圆曲线密码的单位比特强度要高于其他公钥体制。
+ECDSA（Elliptic Curve Digital Signature Algorithm，椭圆曲线数字签名算法）是基于椭圆曲线密码（ECC）的数字签名算法（DSA）。相比DLP（Discrete Logarithm Problem，离散对数问题）和IFP（Integer Factorization Problem，大数分解问题），椭圆曲线密码的单位比特强度要高于其他公钥体制。
 
 算法库框架提供了多种椭圆曲线及摘要算法组合的ECDSA签名验签能力，同时支持OnlySign和OnlyVerify模式。
 
@@ -296,4 +296,6 @@ Ed25519是基于椭圆曲线的签名验签算法。
 
 | 非对称密钥类型 | 字符串参数 | API版本 |
 | -------- | -------- | -------- |
-| ML-DSA | ML-DSA | 26.0.0+ |
+| ML-DSA-44 | ML-DSA | 26.0.0+ |
+| ML-DSA-65 | ML-DSA | 26.0.0+ |
+| ML-DSA-87 | ML-DSA | 26.0.0+ |

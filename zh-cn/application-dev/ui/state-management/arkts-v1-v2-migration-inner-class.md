@@ -10,7 +10,7 @@
 
 | V1装饰器名                | V2装饰器名                  |
 |------------------------|--------------------------|
-|[\@ObjectLink](./arkts-observed-and-objectlink.md)/[\@Observed](./arkts-observed-and-objectlink.md) /[\@Track](./arkts-track.md)|[\@ObservedV2](./arkts-new-observedV2-and-trace.md)/[\@Trace](./arkts-new-observedV2-and-trace.md)|
+|\@ObjectLink/\@Observed /\@Track|\@ObservedV2/\@Trace|
 
 
 ## 各装饰器迁移示例

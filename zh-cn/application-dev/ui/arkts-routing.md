@@ -2,16 +2,16 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @tsj_20201-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
-页面路由指在应用程序中实现不同页面之间的跳转和数据传递。Router模块通过不同的url地址，可以方便地进行页面路由，轻松地访问不同的页面。本文将从[页面跳转](#页面跳转)、[页面返回](#页面返回)、[页面返回前增加一个询问框](#页面返回前增加一个询问框)和[命名路由](#命名路由)这几个方面，介绍如何通过Router模块实现页面路由。
+页面路由指在应用程序中实现不同页面之间的跳转和数据传递。Router模块通过不同的url地址，可以方便地进行页面路由，轻松地访问不同的页面。本文将从页面跳转、页面返回、页面返回前增加一个询问框和命名路由这几个方面，介绍如何通过Router模块实现页面路由。
 
 >**说明：**
 >
->[组件导航 (Navigation)](./arkts-navigation-architecture.md)具有更强的功能和自定义能力，推荐使用该组件作为应用的路由框架。Navigation和Router的差异可参考[Router切换Navigation](./arkts-router-to-navigation.md)指导。
+>组件导航 (Navigation)具有更强的功能和自定义能力，推荐使用该组件作为应用的路由框架。Navigation和Router的差异可参考Router切换Navigation指导。
 
 ## 页面跳转
 
@@ -20,18 +20,18 @@
   **图1** 页面跳转  
 ![router-jump-to-detail](figures/router-jump-to-detail.gif)
 
-Router模块提供了两种跳转模式，分别是[pushUrl/apis-arkui/arkts-apis-uicontext-router.md#pushurl)和[replaceUrl/apis-arkui/arkts-apis-uicontext-router.md#replaceurl)。这两种模式决定了目标页面是否会替换当前页。
+Router模块提供了两种跳转模式，分别是pushUrl和replaceUrl。这两种模式决定了目标页面是否会替换当前页。
 
-- pushUrl：目标页面不会替换当前页，而是压入页面栈。这样可以保留当前页的状态，并且可以通过返回键或者调用[back/apis-arkui/arkts-apis-uicontext-router.md#back)方法返回到当前页。
+- pushUrl：目标页面不会替换当前页，而是压入页面栈。这样可以保留当前页的状态，并且可以通过返回键或者调用back方法返回到当前页。
 
 - replaceUrl：目标页面会替换当前页，并销毁当前页。这样可以释放当前页的资源，并且无法返回到当前页。
 
 >**说明：** 
 >
->- 创建新页面时，请参考<!--RP1-->[构建第二个页面](../quick-start/start-with-ets-stage.md#构建第二个页面)<!--RP1End-->配置第二个页面的路由。
+>- 创建新页面时，请参考<!--RP1-->构建第二个页面<!--RP1End-->配置第二个页面的路由。
 >
 >
->- 页面栈的最大容量为32个页面。如果超过这个限制，可以调用[clear/apis-arkui/arkts-apis-uicontext-router.md#clear)方法清空历史页面栈，释放内存空间。
+>- 页面栈的最大容量为32个页面。如果超过这个限制，可以调用clear方法清空历史页面栈，释放内存空间。
 
 同时，Router模块提供了两种实例模式，分别是Standard和Single。这两种模式决定了目标url是否会对应多个实例。
 
@@ -123,7 +123,7 @@ Router模块提供了两种跳转模式，分别是[pushUrl/apis-arkui/arkts-api
   
   @Entry
   @Component
-  struct Login {
+  struct Setting {
     // 在Setting页面中
     onJumpClick(): void {
       this.getUIContext().getRouter().pushUrl({
@@ -165,7 +165,7 @@ Router模块提供了两种跳转模式，分别是[pushUrl/apis-arkui/arkts-api
           hilog.error(DOMAIN, TAG, `Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        hilog.error(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
+        hilog.info(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
       });
     }
   
@@ -221,7 +221,7 @@ onJumpClick(): void {
 }
 ```
 
-在目标页面中，可以通过调用Router模块的[getParams/apis-arkui/arkts-apis-uicontext-router.md#getparams)方法来获取传递过来的参数。例如：
+在目标页面中，可以通过调用Router模块的getParams方法来获取传递过来的参数。例如：
 
 <!-- @[detail_param1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/DetailPara.ets) -->
 
@@ -257,7 +257,7 @@ private age: number = this.params.info.age; // 获取age属性的值
 
 ![router-back-to-home](figures/router-back-to-home.gif)
 
-直接使用router可能导致[UI上下文不明确](./arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext/apis-arkui/arkts-apis-uicontext-uicontext.md)实例，并使用[getRouter/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取绑定实例的router。
+直接使用router可能导致UI上下文不明确的问题，建议使用getUIContext()获取UIContext实例，并使用getRouter获取绑定实例的router。
 
 可以使用以下几种方式返回页面：
 
@@ -328,13 +328,13 @@ this.getUIContext().getRouter().back();
   });
   ```
 
-  这种方式不仅可以返回到指定页面，还可以在返回的同时传递自定义参数信息。这些参数信息可以在目标页面中通过调用[getParams/apis-arkui/arkts-apis-uicontext-router.md#getparams)方法进行获取和解析。
+  这种方式不仅可以返回到指定页面，还可以在返回的同时传递自定义参数信息。这些参数信息可以在目标页面中通过调用getParams方法进行获取和解析。
 
-在目标页面中，在需要获取参数的位置调用[getParams/apis-arkui/arkts-apis-uicontext-router.md#getparams)方法即可，例如在[onPageShow/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)生命周期回调中：
+在目标页面中，在需要获取参数的位置调用getParams方法即可，例如在onPageShow生命周期回调中：
 
 > **说明：**
 > 
-> 直接使用router可能导致[UI上下文不明确](./arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext/apis-arkui/arkts-apis-uicontext-uicontext.md)实例，并使用[getRouter/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取绑定实例的router。
+> 直接使用router可能导致UI上下文不明确的问题，建议使用getUIContext()获取UIContext实例，并使用getRouter获取绑定实例的router。
 
 <!-- @[home_router](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/backPage/Home.ets) -->
 
@@ -360,17 +360,17 @@ struct Home {
 >
 >当使用back方法返回到指定页面时，原栈顶页面（包括）到指定页面（不包括）之间的所有页面栈都将从栈中弹出并销毁。
 >
-> 另外，如果使用back方法返回到原来的页面，原页面不会被重复创建，因此使用[\@State](state-management/arkts-state.md)声明的变量不会重复声明，也不会触发页面的[aboutToAppear/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)生命周期回调。如果需要在原页面中使用返回页面传递的自定义参数，可以在需要的位置进行参数解析。例如，在onPageShow生命周期回调中进行参数解析。
+> 另外，如果使用back方法返回到原来的页面，原页面不会被重复创建，因此使用\@State声明的变量不会重复声明，也不会触发页面的aboutToAppear生命周期回调。如果需要在原页面中使用返回页面传递的自定义参数，可以在需要的位置进行参数解析。例如，在onPageShow生命周期回调中进行参数解析。
 
 ## 生命周期
 
-[router/apis-arkui/js-apis-router.md)页面生命周期，即被[\@Entry](state-management/arkts-create-custom-components.md#entry)装饰的组件生命周期，提供以下生命周期接口，其中onPageShow和onPageHide的生命周期时序图可参考Router切换Navigation中的[生命周期](./arkts-router-to-navigation.md#生命周期)：
+router页面生命周期，即被\@Entry装饰的组件生命周期，提供以下生命周期接口，其中onPageShow和onPageHide的生命周期时序图可参考Router切换Navigation中的生命周期：
 
-- [onPageShow/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)：页面每次显示时触发一次，包括路由过程、应用进入前台等场景。
+- onPageShow：页面每次显示时触发一次，包括路由过程、应用进入前台等场景。
 
-- [onPageHide/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpagehide)：页面每次隐藏时触发一次，包括路由过程、应用进入后台等场景。
+- onPageHide：页面每次隐藏时触发一次，包括路由过程、应用进入后台等场景。
 
-- [onBackPress/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onbackpress)：当用户点击返回按钮时触发。
+- onBackPress：当用户点击返回按钮时触发。
 
 <!-- @[life_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/lifeCycle/Index.ets) -->
 
@@ -413,9 +413,12 @@ struct MyComponent {
 
 
 
-<!-- @[life_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/lifeCycle/Page.ets) -->
+<!-- @[life_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/lifeCycle/Page.ets) -->   
 
 ``` TypeScript
+ import { hilog } from '@kit.PerformanceAnalysisKit';
+ const DOMAIN = 0xF811;
+ const TAG = '[Sample_ArkTSRouter]';
 // Page.ets
 @Entry
 @Component
@@ -425,18 +428,18 @@ struct Page {
 
   // 只有被@Entry装饰的组件才可以调用页面的生命周期
   onPageShow() {
-    console.info('Page onPageShow');
+    hilog.info(DOMAIN, TAG, 'Page onPageShow');
     this.num = 5;
   }
 
   // 只有被@Entry装饰的组件才可以调用页面的生命周期
   onPageHide() {
-    console.info('Page onPageHide');
+    hilog.info(DOMAIN, TAG, 'Page onPageHide');
   }
 
   // 只有被@Entry装饰的组件才可以调用页面的生命周期
   onBackPress() { // 不设置返回值按照false处理
-    console.info('Page onBackPress');
+    hilog.info(DOMAIN, TAG, 'Page onBackPress');
     this.textColor = Color.Grey;
     this.num = 0;
   }
@@ -464,13 +467,13 @@ struct Page {
 
 ## 自定义转场
 
-router自定义转场可以通过[pageTransition/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#pagetransition9)实现，具体参考[页面间转场 (pageTransition)/apis-arkui/arkui-ts/ts-page-transition-animation.md)。
+router自定义转场可以通过pageTransition实现，具体参考页面间转场 (pageTransition)。
 
 ## 页面返回前增加一个询问框
 
 在开发应用时，为了避免用户误操作或者丢失数据，有时候需要在用户从一个页面返回到另一个页面之前，弹出一个询问框，让用户确认是否要执行这个操作。
 
-本文将从[系统默认询问框](#系统默认询问框)和[自定义询问框](#自定义询问框)两个方面来介绍如何实现页面返回前增加一个询问框的功能。
+本文将从系统默认询问框和自定义询问框两个方面来介绍如何实现页面返回前增加一个询问框的功能。
 
   **图3** 页面返回前增加一个询问框  
 
@@ -479,11 +482,11 @@ router自定义转场可以通过[pageTransition/apis-arkui/arkui-ts/ts-custom-c
 
 ### 系统默认询问框
 
-为了实现这个功能，可以使用页面路由Router模块提供的两个方法：[showAlertBeforeBackPage/apis-arkui/arkts-apis-uicontext-router.md#showalertbeforebackpage)和[back/apis-arkui/arkts-apis-uicontext-router.md#back)来实现这个功能。
+为了实现这个功能，可以使用页面路由Router模块提供的两个方法：showAlertBeforeBackPage和back来实现这个功能。
 
-直接使用router可能导致[UI上下文不明确](./arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext/apis-arkui/arkts-apis-uicontext-uicontext.md)实例，并使用[getRouter/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取绑定实例的router。
+直接使用router可能导致UI上下文不明确的问题，建议使用getUIContext()获取UIContext实例，并使用getRouter获取绑定实例的router。
 
-如果想要在目标界面开启页面返回询问框，需要在调用[back/apis-arkui/arkts-apis-uicontext-router.md#back)方法之前，通过调用[showAlertBeforeBackPage/apis-arkui/arkts-apis-uicontext-router.md#showalertbeforebackpage)方法设置返回询问框的信息。例如，在支付页面中定义一个返回按钮的点击事件处理函数：
+如果想要在目标界面开启页面返回询问框，需要在调用back方法之前，通过调用showAlertBeforeBackPage方法设置返回询问框的信息。例如，在支付页面中定义一个返回按钮的点击事件处理函数：
 
 <!-- @[page_showAlert1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/pageTransition/ShowAlert.ets) -->
 
@@ -524,20 +527,20 @@ message：string类型，表示询问框的内容。
 
 如果调用成功，则会在目标界面开启页面返回询问框；如果调用失败，则会抛出异常，并通过err.code和err.message获取错误码和错误信息。
 
-当用户点击“返回”按钮时，会弹出确认对话框，询问用户是否确认返回。选择“取消”将停留在当前页目标页面；选择“确认”将触发[back/apis-arkui/arkts-apis-uicontext-router.md#back)方法，并根据参数决定如何执行跳转。
+当用户点击“返回”按钮时，会弹出确认对话框，询问用户是否确认返回。选择“取消”将停留在当前页目标页面；选择“确认”将触发back方法，并根据参数决定如何执行跳转。
 
 ### 自定义询问框
 
-自定义询问框的方式，可以使用弹窗[showDialog/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1)或者自定义弹窗实现。这样可以让应用界面与系统默认询问框有所区别，提高应用的用户体验度。本文以弹窗为例，介绍如何实现自定义询问框。
+自定义询问框的方式，可以使用弹窗showDialog或者自定义弹窗实现。这样可以让应用界面与系统默认询问框有所区别，提高应用的用户体验度。本文以弹窗为例，介绍如何实现自定义询问框。
 
-直接使用router可能导致[UI上下文不明确](./arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext/apis-arkui/arkts-apis-uicontext-uicontext.md)实例，并使用[getRouter/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取绑定实例的router。
+直接使用router可能导致UI上下文不明确的问题，建议使用getUIContext()获取UIContext实例，并使用getRouter获取绑定实例的router。
 
-在事件回调中，调用弹窗的[showDialog/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1)方法：
+在事件回调中，调用弹窗的showDialog方法：
 
 <!-- @[page_showDialog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/pageTransition/ShowDialog.ets) -->
 
 ``` TypeScript
-import { promptAction} from '@kit.ArkUI';
+import { promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0xF811;
@@ -585,17 +588,17 @@ onBackClick() {
 }
 ```
 
-当用户点击“返回”按钮时，会弹出自定义的询问框，询问用户是否确认返回。选择“取消”将停留在当前页目标页面；选择“确认”将触发[back/apis-arkui/arkts-apis-uicontext-router.md#back)方法，并根据参数决定如何执行跳转。
+当用户点击“返回”按钮时，会弹出自定义的询问框，询问用户是否确认返回。选择“取消”将停留在当前页目标页面；选择“确认”将触发back方法，并根据参数决定如何执行跳转。
 
 ## 命名路由
 
-在开发中为了跳转到共享包[HAR](../quick-start/har-package.md)或者[HSP](../quick-start/in-app-hsp.md)中的页面（即共享包中路由跳转），可以使用[pushNamedRoute/apis-arkui/arkts-apis-uicontext-router.md#pushnamedroute)来实现。
+在开发中为了跳转到共享包HAR或者HSP中的页面（即共享包中路由跳转），可以使用pushNamedRoute来实现。
 
   **图4** 命名路由跳转  
 
 ![(figures/router-add-query-box-before-back.gif)](figures/namedroute-jump-to-mypage.gif)
 
-在想要跳转到的共享包[HAR](../quick-start/har-package.md)或者[HSP](../quick-start/in-app-hsp.md)页面里，给[@Entry](../ui/state-management/arkts-create-custom-components.md#entry)修饰的自定义组件EntryOptions命名：
+在想要跳转到的共享包HAR或者HSP页面里，给@Entry装饰的自定义组件EntryOptions命名：
 
 <!-- @[page_router_hsp2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/hsp/Hsp12.ets) -->
 
@@ -680,4 +683,4 @@ struct Index {
 
 针对页面路由开发，有以下相关实例可供参考：
 
-- [页面布局和连接（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/UI/ArkTsComponentCollection/DefiningPageLayoutAndConnection)
+- [页面布局和连接（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/DefiningPageLayoutAndConnection)

@@ -19,13 +19,13 @@ DevEco Studio为开发者提供了UI预览功能，方便查看UI效果并随时
 
 ## 页面预览
 
-ArkTS应用/原子化服务均支持页面预览。页面预览通过在工程的ets文件中，给自定义组件添加[@Entry](./state-management/arkts-create-custom-components.md#entry)装饰器，即可以查看当前UI页面效果。
+ArkTS应用/原子化服务均支持页面预览。页面预览通过在工程的ets文件中，给自定义组件添加@Entry装饰器，即可以查看当前UI页面效果。
 
 - 启动方式：选中需要预览的ets页面，点击右侧侧边栏的Previewer按钮，启动页面预览。
 
 - 热加载：在启动页面预览的前提下，添加、删除或修改UI组件后，通过`Ctrl+S`保存，预览器会同步刷新预览效果，无需重新启动预览。
 
-- 路由能力：支持通过路由能力进行页面切换查看其它页面预览效果。
+- 路由能力：支持通过路由能力进行页面切换查看其他页面预览效果。
 
 在页面预览的基础上，提供了极速预览和Inspector双向预览两种特性。下面将详细说明这两种特性。
 
@@ -39,7 +39,7 @@ ArkTS应用/原子化服务均支持页面预览。页面预览通过在工程�
 > - 不显示的组件。
 > - 新增或删除组件。
 > - 包含private变量或无类型的controller的组件。
-> - 使用了[@Builder](./state-management/arkts-builder.md)、[@Style](./state-management/arkts-style.md)、[@Extend](./state-management/arkts-extend.md)等装饰器的组件。
+> - 使用了@Builder、@Style、@Extend等装饰器的组件。
 > - 修改使用import导入外部组件/模块的组件。
 > - 修改状态变量。
 
@@ -49,7 +49,7 @@ ArkTS应用/原子化服务均支持页面预览。页面预览通过在工程�
 
 ![ide_previewer_001](figures/ide_previewer_001.gif)
 
-### inspector双向预览
+### Inspector双向预览
 
 支持ets文件与预览器的双向预览。使用时，点击预览器界面图标![ide_previewer_006](figures/ide_previewer_006.png)开启双向预览功能。
 
@@ -65,17 +65,17 @@ ArkTS应用/原子化服务均支持页面预览。页面预览通过在工程�
 
 效果如图3所示：
 
-**图3** inspector双向预览演示图
+**图3** Inspector双向预览演示图
 
 ![ide_previewer_002](figures/ide_previewer_002.gif)
 
 ## 组件预览
 
-ArkTS应用/原子化服务支持组件预览功能。组件预览通过在自定义组件前添加[`@Preview`/apis-arkui/arkui-ts/ts-universal-component-previewer.md#preview装饰器)装饰器实现。在单个源文件中，最多可以使用10个`@Preview`装饰自定义组件。启动方式：
+ArkTS应用/原子化服务支持组件预览功能。组件预览通过在自定义组件前添加@Preview装饰器实现。在单个源文件中，最多可以使用10个`@Preview`装饰自定义组件。启动方式：
 - 当组件被\@Entry和\@Preview装饰时，点击右侧侧边栏的Previewer按钮，启动页面预览，页面加载成功后，点击![ide_previewer_003](figures/ide_previewer_003.png)，切换到组件预览。
 - 当组件仅被\@Preview装饰时，点击右侧侧边栏的Previewer按钮，则默认为组件预览。
 
-组件预览时，使用@Preview装饰器的默认属性（请参考[PreviewParams/apis-arkui/arkui-ts/ts-universal-component-previewer.md#previewparams9)）进行效果显示。可以通过设置@Preview的参数，指定预览设备的相关属性，包括设备类型、屏幕形状等。
+组件预览时，使用@Preview装饰器的默认属性（请参考PreviewParams）进行效果显示。可以通过设置@Preview的参数，指定预览设备的相关属性，包括设备类型、屏幕形状等。
 
 @Preview的使用参考如下示例：
 

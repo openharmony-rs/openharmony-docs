@@ -6,7 +6,7 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-如果开发者需要以独立的帧率绘制更新操作UI界面时，可以通过DisplaySync来实现。应用中绘制内容的帧率可以使用DisplaySync实例来控制，具体请查阅[@ohos.graphics.displaySync (可变帧率)/apis-arkgraphics2d/js-apis-graphics-displaySync.md)。
+如果开发者需要以独立的帧率绘制更新操作UI界面时，可以通过DisplaySync来实现。应用中绘制内容的帧率可以使用DisplaySync实例来控制，具体请查阅@ohos.graphics.displaySync (可变帧率)。
 
 ## 开发步骤
 
@@ -122,7 +122,7 @@
 
    > **说明：**
    >
-   > 创建的DisplaySync实例在start使能后需要aboutToDisappear函数中进行stop操作并置空，避免内存泄漏问题。
+   > 创建的DisplaySync实例在start使能后需要在aboutToDisappear函数中进行stop操作并置空，避免内存泄漏问题。
    <!-- @[display_sync_call_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/CustomDrawDisplaySync.ets) -->
    
    ``` TypeScript

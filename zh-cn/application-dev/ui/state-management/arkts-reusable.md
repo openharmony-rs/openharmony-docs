@@ -22,18 +22,18 @@
 
 > **注意：**
 > - \@Reusable装饰的自定义组件在从组件树中移除时，自定义组件（包含视图节点、组件实例和状态上下文）将被放入其父自定义组件的缓存池中。后续创建新自定义组件节点时，将优先复用缓存池中的节点，从而节约组件重新创建的时间。
-> - \@Reusable提供了[aboutToRecycle/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)和[aboutToReuse/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)两个生命周期，在组件被回收时调用aboutToRecycle，在组件被复用时调用aboutToReuse。开发者可以在这两个生命周期中实现组件回收、复用相关的业务逻辑。
+> - \@Reusable提供了aboutToRecycle和aboutToReuse两个生命周期，在组件被回收时调用aboutToRecycle，在组件被复用时调用aboutToReuse。开发者可以在这两个生命周期中实现组件回收、复用相关的业务逻辑。
 > - \@Reusable装饰的自定义组件下有子组件时，会在回收和复用时递归调用子组件的aboutToRecycle和aboutToReuse（与子组件是否被@Reusable标记无关），直到遍历完所有子组件。
-> - 组件复用前后应保持组件结构不变。针对组件结构存在差异的场景，可以使用[reuseIdapis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid)来区分不同结构的复用组件。
+> - 组件复用前后应保持组件结构不变。针对组件结构存在差异的场景，可以使用reuseId来区分不同结构的复用组件。
 > - 当\@Reusable装饰的自定义组件无子组件时，不会触发回收和复用。
 
 ## 限制条件
 
 ### 仅用于自定义组件
 
-\@Reusable装饰器仅用于自定义组件[\@Component](./arkts-create-custom-components.md#component)，不可与[\@Builder](./arkts-builder.md)搭配使用。
+\@Reusable装饰器仅用于自定义组件\@Component，不可与\@Builder搭配使用。
 
-\@Reusable不支持跟[\@ComponentV2](./arkts-create-custom-components.md#componentv2)搭配使用，\@ComponentV2组件复用推荐[\@ReusableV2装饰器](./arkts-new-reusableV2.md)。
+\@Reusable不支持跟\@ComponentV2搭配使用，\@ComponentV2组件复用推荐\@ReusableV2装饰器。
 
 <!-- @[reusable_for_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForCustomComponents.ets) -->
 
@@ -161,6 +161,7 @@ struct IncorrectReuseComponent {
       IncorrectReuseComponentChild({ num: this.num })
       Button('plus')
         .onClick(() => {
+          // 每次点击增加10
           this.num += 10;
         })
     }
@@ -274,7 +275,7 @@ struct ReuseComponentChild {
 
 被@Reusable装饰的自定义组件在复用前后，应保持组件的结构不变。否则，会在复用过程中创建或销毁子组件，降低复用效率和性能，甚至造成应用行为异常。</br>
 对于复用过程中创建的子组件，框架会在其创建后依次调用aboutToReuse方法和aboutToAppear方法。在调用aboutToReuse方法时，由于其aboutToAppear方法还未执行，且内部子组件还未创建，因此aboutToReuse方法中依赖aboutToAppear方法执行结果，或依赖内部子组件状态的相关操作会引起预期外的行为。在调用aboutToReuse方法后，框架会再调用aboutToAppear方法并初始化组件。</br>
-针对组件结构存在差异的场景，开发者需要通过设定不同的reuseId来进行区分，具体方式请参考[多种条目类型使用场景](#多种条目类型使用场景)。
+针对组件结构存在差异的场景，开发者需要通过设定不同的reuseId来进行区分，具体方式请参考多种条目类型使用场景。
 
 【反例】
 
@@ -303,6 +304,7 @@ struct Index {
           this.showBranchA = !this.showBranchA;
         })
       if (this.showBranchA) {
+        // 组件结构存在差异，需要通过reuseId进行区分
         ReusableComponent({ flag: true })
       }
       Button('show/hide branch B')
@@ -310,6 +312,7 @@ struct Index {
           this.showBranchB = !this.showBranchB;
         })
       if (this.showBranchB) {
+        // 组件结构存在差异，需要通过reuseId进行区分
         ReusableComponent({ flag: false })
       }
     }
@@ -828,9 +831,9 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 }
 ```
 
-### 列表滚动-Foreach使用场景
+### 列表滚动-ForEach使用场景
 
-使用Foreach创建可复用的自定义组件，由于Foreach渲染控制语法的全展开属性，导致复用组件无法复用。示例中点击update，数据刷新成功，但滑动列表时，ListItemView无法复用。点击clear，再次点击update，ListItemView复用成功，因为一帧内重复创建多个已被销毁的自定义组件。
+使用ForEach创建可复用的自定义组件，由于ForEach渲染控制语法的全展开属性，导致复用组件无法复用。示例中点击update，数据刷新成功，但滑动列表时，ListItemView无法复用。点击clear，再次点击update，ListItemView复用成功，因为一帧内重复创建多个已被销毁的自定义组件。
 
 <!-- @[list_scrolling_with_for_each](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ListScrollingWithForEach.ets) -->
 
@@ -877,7 +880,7 @@ struct Index {
       this.data.pushData(i.toString());
     }
 
-    for (let i = 30; i <= 80; i++) { // 循环50次
+    for (let i = 30; i < 80; i++) { // 循环50次
       this.data02.pushData(i.toString());
     }
   }
@@ -927,7 +930,7 @@ struct ListItemView {
   @State item: string = '';
 
   aboutToAppear(): void {
-    // 点击 update，首次进入，上下滑动，由于Foreach折叠展开属性，无法复用。
+    // 点击 update，首次进入，上下滑动，由于ForEach折叠展开属性，无法复用。
     hilog.info(DOMAIN, TAG, BUNDLE + '=====aboutToAppear=====ListItemView==创建了==' + this.item);
   }
 
@@ -978,7 +981,7 @@ class ListItemObject {
 
 使用aboutToReuse可以在Grid滑动时，从复用缓存中加入到组件树之前触发，从而更新组件状态变量，展示正确内容。
 
-需要注意的是无需在aboutToReuse中对[\@Link](arkts-link.md)、[\@StorageLink](arkts-appstorage.md#storagelink)、[\@ObjectLink](arkts-observed-and-objectlink.md)、[\@Consume](arkts-provide-and-consume.md)等自动更新值的状态变量进行更新，可能触发不必要的组件刷新。
+需要注意的是无需在aboutToReuse中对\@Link、\@StorageLink、\@ObjectLink、\@Consume等自动更新值的状态变量进行更新，可能触发不必要的组件刷新。
 
 <!-- @[reusable_for_grid_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForGridUsageScenario.ets) -->
 
@@ -1028,7 +1031,7 @@ struct MyComponent {
             // 使用可复用自定义组件。
             ReusableChildComponent({ item: item });
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .cachedCount(2) // 设置GridItem的缓存数量。
       .columnsTemplate('1fr 1fr 1fr')
@@ -1163,7 +1166,6 @@ struct ReusableChildComponent {
   struct Index {
     @State minSize: number = 50; // 最小值50
     @State maxSize: number = 80; // 最大值80
-    @State fontSize: number = 24; // 字体大小为24
     @State colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
     scroller: Scroller = new Scroller();
     dataSource: WaterFlowDataSource = new WaterFlowDataSource();
@@ -1221,7 +1223,7 @@ struct ReusableChildComponent {
 
 - 在Swiper滑动场景中，条目中的子组件频繁创建和销毁。可以将这些子组件封装成自定义组件，并使用\@Reusable装饰器修饰，以实现组件复用。
 
-  <!-- @[reusable_for_swiper_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForSwiperUsageScenario.ets) -->
+  <!-- @[reusable_for_swiper_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForSwiperUsageScenario.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -1286,7 +1288,6 @@ struct ReusableChildComponent {
           })
           
         Image(this.itemData?.image)
-          .width('100%')
           .borderRadius(12)
           .objectFit(ImageFit.Contain)
           .margin({
@@ -1570,18 +1571,18 @@ struct ReusableChildComponent {
 
 ``` TypeScript
 class LimitedMyDataSource implements IDataSource {
-  private dataArray: string[] = [];
+  private dataArray: number[] = [];
   private listener: DataChangeListener | undefined;
 
   public totalCount(): number {
     return this.dataArray.length;
   }
 
-  public getData(index: number): string {
+  public getData(index: number): number {
     return this.dataArray[index];
   }
 
-  public pushData(data: string): void {
+  public pushData(data: number): void {
     this.dataArray.push(data);
   }
 
@@ -1605,7 +1606,7 @@ struct LimitedIndex {
 
   aboutToAppear() {
     for (let i = 0; i < 1000; i++) { // 循环1000次
-      this.data.pushData(i + '');
+      this.data.pushData(i);
     }
   }
 
@@ -1755,7 +1756,7 @@ struct MyComponent {
         .onAppear(() => {
           hilog.info(DOMAIN, TAG, BUNDLE + `ListItem ${index} onAppear`);
         })
-      }, (item: number) => item.toString())
+      }, (item: string) => item)
     }
     .width('100%')
     .height('100%')

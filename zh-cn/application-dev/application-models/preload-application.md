@@ -15,9 +15,7 @@
 
 ## 约束限制
 
-- 当前仅支持2in1设备。
-
-- 仅支持entry模块的AbilityStage和UIAbility预加载。无论预加载到哪种阶段，entry模块必须配置入口UIAbility，详见[开发步骤](#开发步骤)中步骤2。
+- 仅支持entry模块的AbilityStage和UIAbility预加载。无论预加载到哪种阶段，entry模块必须配置入口UIAbility，详见开发步骤中步骤2。
 
 - 应用配置预加载后，实际是否进行预加载以及具体的预加载时机，均由系统根据用户习惯等信息来综合决定。开发者无法对此进行干预。
 
@@ -31,17 +29,43 @@
 
 - processCreated：进程创建完成阶段。开发者配置此阶段后，预加载机制会创建空进程并初始化Application，但是不会触发任何生命周期回调。
 
-- abilityStageCreated：[AbilityStage/apis-ability-kit/js-apis-app-ability-abilityStage.md)创建完成阶段。开发者配置此阶段后，预加载机制会创建空进程并初始化Application，随后触发entry模块[AbilityStage/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onCreate/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)回调。
+- abilityStageCreated：AbilityStage创建完成阶段。开发者配置此阶段后，预加载机制会创建空进程并初始化Application，随后触发entry模块AbilityStage的onCreate回调。
 
-- windowStageCreated：[WindowStage/apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。开发者配置此阶段后，预加载机制会创建空进程并初始化Application，随后触发entry模块[AbilityStage/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onCreate/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)回调。接着会拉起entry模块的入口UIAbility，并触发其[onCreate/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)回调和[onWindowStageCreate/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)回调。开发者可以在UIAbility的[onCreate/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)回调中，通过[launchParam.launchReason/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchreason)的枚举值获取启动原因。枚举值为PRELOAD表示当前UIAbility是由预加载机制启动的。
+- windowStageCreated：WindowStage创建完成阶段。开发者配置此阶段后，预加载机制会创建空进程并初始化Application，随后触发entry模块AbilityStage的onCreate回调。接着会拉起entry模块的入口UIAbility，并触发其onCreate回调和onWindowStageCreate回调。开发者可以在UIAbility的onCreate回调中，通过launchParam.launchReason的枚举值获取启动原因。枚举值为PRELOAD表示当前UIAbility是由预加载机制启动的。
 
 ![preload-application-procedure](figures/preload-application-procedure.png)
+
+## 应用预加载状态识别与判断
+
+从API version 22开始，应用可以在启动过程中识别并判断当前进程的预加载状态。
+
+当应用被预加载后，开发者可以在AbilityStage的onCreate生命周期回调中，通过调用application.getAppPreloadType()获取当前进程的预加载类型（返回值为AppPreloadType）。从而判断本次启动是否由预加载触发，并明确应用当前正处于哪一个预加载阶段。
+
+> **说明：**
+>
+> - 只有在进程首次执行AbilityStage的onCreate完成之前调用application.getAppPreloadType()接口，才可以返回真实的预加载类型。
+> - AbilityStage创建完成后，应用的预加载数据将被清除，此时调用application.getAppPreloadType()将返回UNSPECIFIED，无法获取到真实的预加载类型。
+
+```ts
+import { AbilityStage, application } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onCreate() {
+    // 根据appPreloadType的值判断当前进程的预加载类型
+    let appPreloadType = application.getAppPreloadType();
+  }
+}
+```
+
+除了在AbilityStage中判断进程级别的预加载类型外，若应用配置的预加载阶段为windowStageCreated，开发者还可以在UIAbility的onCreate生命周期回调中进行判断。通过校验launchParam.launchReason是否等于PRELOAD，即可识别当前UIAbility实例是否由预加载机制启动。具体实现请参考开发步骤中的步骤3。
+
+<!--RP1--><!--RP1End-->
 
 ## 开发步骤
 
 1. 声明应用支持预加载到的阶段。
 
-    以windowStageCreated阶段为例，在[app.json5配置文件](../quick-start/app-configuration-file.md)中配置[appPreloadPhase](../quick-start/app-configuration-file.md#配置文件标签)标签。
+    以windowStageCreated阶段为例，在app.json5配置文件中配置appPreloadPhase标签。
 
     ```json
     {
@@ -59,9 +83,9 @@
 
 2. 配置入口UIAbility（新建工程默认已自动配置）。
 
-    1. 以EntryAbility为例，在entry模块的[module.json5配置文件](../quick-start/module-configuration-file.md)中，设置mainElement为EntryAbility，且EntryAbility的skills标签下面的entities中添加"entity.system.home"、actions中添加"ohos.want.action.home"。
+    1. 以EntryAbility为例，在entry模块的module.json5配置文件中，设置mainElement为EntryAbility，且EntryAbility的skills标签下面的entities中添加"entity.system.home"、actions中添加"ohos.want.action.home"。
 
-    2. 当[app.json5配置文件](../quick-start/app-configuration-file.md)中的[appPreloadPhase](../quick-start/app-configuration-file.md#配置文件标签)配置为windowStageCreated时，需要在entry模块的[module.json5配置文件](../quick-start/module-configuration-file.md)中配置EntryAbility的launchType标签为[singleton](uiability-launch-type.md#singleton启动模式)或[specified](uiability-launch-type.md#specified启动模式)。
+    2. 当app.json5配置文件中的appPreloadPhase配置为windowStageCreated时，需要在entry模块的module.json5配置文件中配置EntryAbility的launchType标签为singleton或specified。
 
     ```json5
     {
@@ -94,7 +118,7 @@
 
 3. （可选）获取UIAbility启动原因。
 
-    仅当appPreloadPhase配置为windowStageCreated时，开发者可在UIAbility的[onCreate/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期回调中通过[launchParam.launchReason/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchreason)的枚举值获取启动原因。枚举值为PRELOAD表示当前UIAbility是由预加载机制启动的。
+    仅当appPreloadPhase配置为windowStageCreated时，开发者可在UIAbility的onCreate生命周期回调中通过launchParam.launchReason的枚举值获取启动原因。枚举值为PRELOAD表示当前UIAbility是由预加载机制启动的。
 
     ```ts
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -108,3 +132,5 @@
       }
     }
     ```
+
+<!--RP2--><!--RP2End-->

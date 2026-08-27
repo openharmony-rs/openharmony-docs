@@ -4,13 +4,10 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
-同步任务用于在多个线程间协调执行，确保任务按特定顺序和规则进行（如使用锁防止数据竞争）。
-
-
-同步任务的实现需要考虑多个线程之间的协作和同步，以确保数据的正确性和程序的正确执行。
+同步任务通过多个线程之间的协作和同步（如使用锁防止数据竞争），确保任务按特定顺序和规则进行，以保障数据的正确性和程序的正确执行。
 
 当同步任务之间相对独立时，推荐使用TaskPool，例如一系列导入的静态方法或单例实现的方法。如果同步任务之间有关联性，则需要使用Worker。
 
@@ -27,15 +24,15 @@
 
 > **说明：**
 >
-> 由于[Actor模型](multi-thread-concurrency-overview.md#actor模型)不同线程间内存隔离的特性，非线程安全的单例无法在不同线程间使用。可通过共享模块导出单例解决此问题。
+> 由于Actor模型不同线程间内存隔离的特性，非线程安全的单例无法在不同线程间使用。可通过共享模块导出单例解决此问题。
 
 1. 定义并发函数，实现业务逻辑。
 
-2. 创建任务[Task/apis-arkts/js-apis-taskpool.md#task)，通过[execute()/apis-arkts/js-apis-taskpool.md#taskpoolexecute-1)接口执行该任务。
+2. 创建任务Task，通过execute()接口执行该任务。
 
 3. 对任务返回的结果进行操作。
 
-如下示例中业务使用TaskPool调用相关同步方法的代码，首先定义并发函数taskpoolFunc，需要注意必须使用[@Concurrent装饰器](taskpool-introduction.md#concurrent装饰器)装饰该函数；其次定义函数mainFunc，该函数功能为创建任务，执行任务并处理任务返回的结果。
+如下示例中业务使用TaskPool调用相关同步方法的代码，首先定义并发函数taskpoolFunc，需要注意必须使用@Concurrent装饰器装饰该函数；其次定义函数mainFunc，该函数功能为创建任务，执行任务并处理任务返回的结果。
 
 <!-- @[taskpool_handle_sync_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/SyncTaskDevelopment.ets) --> 
 
@@ -58,8 +55,8 @@ async function mainFunc(): Promise<void> {
   let task2: taskpool.Task = new taskpool.Task(taskpoolFunc, res1);
   let res2: number = await taskpool.execute(task2) as number;
   // 步骤3: 对任务返回的结果进行操作
-  console.info('taskpool: task res1 is: ' + res1);
-  console.info('taskpool: task res2 is: ' + res2);
+  console.info(`taskpool: task res1 is: ${res1}`);
+  console.info(`taskpool: task res2 is: ${res2}`);
 }
 
 @Entry
@@ -74,7 +71,7 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(async () => {
-            mainFunc();
+            await mainFunc();
             // ...
           })
       }
@@ -110,10 +107,10 @@ struct Index {
               .fontWeight(FontWeight.Bold)
               .onClick(async () => {
                 // ...
-                let w: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/MyWorker2.ts');
+                let w: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/MyWorker2.ets');
                 w.onmessage = (e: MessageEvents): void => {
                   // 接收Worker子线程的结果
-                  console.info('main thread onmessage, ' + e.data.message);
+                  console.info(`main thread onmessage, ${e.data.message}`);
                   // 销毁Worker
                   if (e.data.isTerminate) {
                     w.terminate();
@@ -152,11 +149,11 @@ struct Index {
     }
     ```
 
-    <!-- @[worker_handle_associated_sync_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/MyWorker2.ts) -->
+    <!-- @[worker_handle_associated_sync_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/MyWorker2.ets) --> 
     
     ``` TypeScript
     import { worker, ThreadWorkerGlobalScope, MessageEvents } from '@kit.ArkTS';
-    // 返回句柄
+    // 导入句柄类型
     import Handle from './handle'; 
     
     let workerPort : ThreadWorkerGlobalScope = worker.workerPort;
@@ -168,16 +165,17 @@ struct Index {
     workerPort.onmessage = (e : MessageEvents): void => {
       switch (e.data.type as number) {
         case 0:
-          let result: boolean = false;
-          result = handler.syncSet(e.data.data);
-          console.info("worker: result is " + result);
+          let result: boolean = handler.syncSet(e.data.data);
+          console.info('worker: result is ' + result);
           workerPort.postMessage({'message': 'the result of syncSet() is ' + result, 'isTerminate': false});
           break;
         case 1:
-          let num: number = 0;
-          num = handler.syncGet();
-          console.info("worker: num is " + num);
+          let num: number = handler.syncGet();
+          console.info('worker: num is ' + num);
           workerPort.postMessage({'message': 'the result of syncGet() is ' + num, 'isTerminate': true});
+          break;
+        default:
+          workerPort.postMessage({ 'message': 'send message is invalid', 'isTerminate': false });
           break;
       }
     }

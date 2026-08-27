@@ -6,13 +6,13 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
 
-IPC/RPC提供了订阅远端Stub对象状态的机制。当远端Stub对象死亡时，可以自动触发本端Proxy注册的死亡通知。这种死亡通知订阅需要调用指定接口[registerDeathRecipient/apis-ipc-kit/js-apis-rpc.md#registerdeathrecipient9-1)完成。不再需要订阅时，也需要调用指定接口[unregisterDeathRecipient/apis-ipc-kit/js-apis-rpc.md#unregisterdeathrecipient9-1)取消订阅。
+IPC/RPC提供了订阅远端Stub对象状态的机制。当远端Stub对象死亡时，可以自动触发本端Proxy注册的死亡通知。这种死亡通知订阅需要调用指定接口registerDeathRecipient完成。不再需要订阅时，也需要调用指定接口unregisterDeathRecipient取消订阅。
 
-使用这种订阅机制的用户需要继承死亡通知类[DeathRecipient/apis-ipc-kit/js-apis-rpc.md#deathrecipient)，并实现[onRemoteDied/apis-ipc-kit/js-apis-rpc.md#onremotedied)方法清理资源。该方法会在远端Stub对象所在进程退出或当前RPC通信依赖的软总线连接断开时被回调。
+使用这种订阅机制的用户需要继承死亡通知类DeathRecipient，并实现onRemoteDied方法清理资源。该方法会在远端Stub对象所在进程退出或当前RPC通信依赖的软总线连接断开时被回调。
 
 > **注意：**
 > - 首先，Proxy订阅Stub死亡通知，若在订阅期间Stub状态正常，则在不再需要时取消订阅。 
-> - 其次，若在订阅期间，Stub所在进程退出或当前RPC通信依赖的软总线连接断开，则会自动触发执行业务已向Proxy注册的自定义的[onRemoteDied/apis-ipc-kit/js-apis-rpc.md#onremotedied)方法。
+> - 其次，若在订阅期间，Stub所在进程退出或当前RPC通信依赖的软总线连接断开，则会自动触发执行业务已向Proxy注册的自定义的onRemoteDied方法。
 
 ## 使用场景
 
@@ -35,9 +35,9 @@ IPC/RPC的订阅机制适用于以下场景：</br>
 
 | 接口名                                                       | 返回值类型 | 功能描述                                                     |
 | ------------------------------------------------------------ | ---------- | ------------------------------------------------------------ |
-| [registerDeathRecipient/apis-ipc-kit/js-apis-rpc.md#registerdeathrecipient9-1) | void       | 注册用于接收远程对象死亡通知的回调，该方法应该在proxy侧调用。 |
-| [unregisterDeathRecipient/apis-ipc-kit/js-apis-rpc.md#unregisterdeathrecipient9-1) | void       | 注销用于接收远程对象死亡通知的回调。                         |
-| [onRemoteDied/apis-ipc-kit/js-apis-rpc.md#onremotedied) | void       | Proxy侧注册死亡通知成功后，当远端Stub对象所在进程死亡时，将自动回调本方法。 |
+| registerDeathRecipient | void       | 注册用于接收远程对象死亡通知的回调，该方法应该在proxy侧调用。 |
+| unregisterDeathRecipient | void       | 注销用于接收远程对象死亡通知的回调。                         |
+| onRemoteDied | void       | Proxy侧注册死亡通知成功后，当远端Stub对象所在进程死亡时，将自动回调本方法。 |
 
 ### 参考代码
 
@@ -171,7 +171,7 @@ class MyDeathRecipient implements rpc.DeathRecipient {
 let deathRecipient = new MyDeathRecipient();
 ```
 
-获取[允许多设备协同的权限](../security/AccessToken/permissions-for-all-user.md#ohospermissiondistributed_datasync)，在组网的情况下获取到对端的设备ID（组网场景下对应设备的唯一网络标识符，可以使用distributedDeviceManager获取目标设备的NetworkId）后连接服务，获取代理对象并注册死亡监听。当代理对象与服务端的通信结束后，在断开连接时，移除死亡监听。
+获取允许多设备协同的权限，在组网的情况下获取到对端的设备ID（组网场景下对应设备的唯一网络标识符，可以使用distributedDeviceManager获取目标设备的NetworkId）后连接服务，获取代理对象并注册死亡监听。当代理对象与服务端的通信结束后，在断开连接时，移除死亡监听。
 
 <!-- @[rpc_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
 
@@ -291,7 +291,7 @@ function disconnectAbility(context: common.UIAbilityContext) {
 
 ## Stub反向感知Proxy死亡状态（匿名Stub的特殊用法）
 
-正向的死亡通知是Proxy感知Stub的状态，要实现反向的死亡通知（即Stub感知Proxy的状态），可以利用反向死亡通知。例如，进程A（原Stub所在进程）和进程B（原Proxy所在进程），进程B获取到进程A的原Proxy对象后，在B进程新建一个匿名Stub对象（未向SAMgr注册），称为回调Stub，通过[sendMessageRequest/apis-ipc-kit/js-apis-rpc.md#sendmessagerequest9-2)接口将回调Stub传给进程A的原Stub，进程A就可以获取到进程B的回调Proxy。只要向回调Proxy注册了死亡通知，当进程B（回调Stub）死亡或者RPC通信依赖的软总线连接断开时，回调Proxy会感知并通知进程A（原Stub），从而实现反向死亡通知。
+正向的死亡通知是Proxy感知Stub的状态，要实现反向的死亡通知（即Stub感知Proxy的状态），可以利用反向死亡通知。例如，进程A（原Stub所在进程）和进程B（原Proxy所在进程），进程B获取到进程A的原Proxy对象后，在B进程新建一个匿名Stub对象（未向SAMgr注册），称为回调Stub，通过sendMessageRequest接口将回调Stub传给进程A的原Stub，进程A就可以获取到进程B的回调Proxy。只要向回调Proxy注册了死亡通知，当进程B（回调Stub）死亡或者RPC通信依赖的软总线连接断开时，回调Proxy会感知并通知进程A（原Stub），从而实现反向死亡通知。
 
 > **注意：**
 > - 反向死亡通知仅限设备内跨进程通信使用，不可用于跨设备。

@@ -9,7 +9,7 @@
 **前提条件**
 
 1. 需注册码云SSH公钥，具体请参考 http://gitee.com/help/articles/4191
-2. 配置服务器环境，具体请参考[搭建开发环境](../../device-dev/quick-start/quickstart-ide-env-ubuntu.md)
+2. 配置服务器环境，具体请参考搭建开发环境
 
 **下载和编译命令**
 
@@ -23,4 +23,4 @@
 
 ## 替换SDK
 
-full-SDK编译完成后需要在DevEcoStudio替换使用，具体请参考[full-SDK替换指南](full-sdk-switch-guide.md)。
+full-SDK编译完成后需要在DevEcoStudio替换使用，具体请参考full-SDK替换指南。

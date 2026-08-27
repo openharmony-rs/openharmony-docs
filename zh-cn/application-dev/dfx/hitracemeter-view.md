@@ -14,9 +14,9 @@
 
 ## 通过命令行工具查看
 
-1. 根据hdc命令行工具指导，完成[hdc环境准备](hdc.md#环境准备)，确保可以使用“hdc shell”命令正常连接设备。
+1. 根据hdc命令行工具指导，完成hdc环境准备，确保可以使用“hdc shell”命令正常连接设备。
 
-2. 在DevEco Studio Terminal窗口或主机命令行窗口执行“hdc shell”命令连接设备，然后在设备上执行[hitrace](hitrace.md)命令，开启HiTraceMeter日志抓取服务。
+2. 在DevEco Studio Terminal窗口或主机命令行窗口执行“hdc shell”命令连接设备，然后在设备上执行hitrace命令，开启HiTraceMeter日志抓取服务。
 
    ```shell
    PS D:\xxx\xxx> hdc shell
@@ -25,7 +25,7 @@
 
 3. 在设备上运行包含HiTraceMeter打点的相关程序。
 
-4. 使用hitrace命令行工具采集文本格式trace信息，将trace文件保存到设备/data/local/tmp/路径下，具体流程可参考[快照模式捕获文本格式trace](hitrace.md#快照模式捕获文本格式trace)。
+4. 使用hitrace命令行工具采集文本格式trace信息，将trace文件保存到设备/data/local/tmp/路径下，具体流程可参考快照模式捕获文本格式trace。
 
 5. 退出设备，进入主机，导出设备中的HiTraceMeter文本日志到当前目录（下面命令中的trace.ftrace根据采集时设置的文件名修改）。
 
@@ -47,9 +47,9 @@
 
 ## 用户态trace格式说明
 
-开发者可以通过[hitrace](hitrace.md)命令采集用户通过HiTraceMeter接口生成的用户态trace日志，从而对应用进行性能分析。本章节将详细介绍用户态trace的格式和扩展规则，包括同步、异步和整数值跟踪等类型。每种trace的字段组成、含义及与打点入参的关系都会逐一说明，并提供[具体样例](#各场景trace日志样例)供参考。
+开发者可以通过hitrace命令采集用户通过HiTraceMeter接口生成的用户态trace日志，从而对应用进行性能分析。本章节将详细介绍用户态trace的格式和扩展规则，包括同步、异步和整数值跟踪等类型。每种trace的字段组成、含义及与打点入参的关系都会逐一说明，并提供具体样例供参考。
 
-API version 19及以上版本的用户态trace格式参考[当前版本用户态trace格式](#当前版本用户态trace格式)，API version 19以下版本的用户态trace格式参考[API version 19前用户态trace格式](#api-version-19前用户态trace格式)。
+API version 19及以上版本的用户态trace格式参考当前版本用户态trace格式，API version 19以下版本的用户态trace格式参考API version 19前用户态trace格式。
 
 
 ### 当前版本用户态trace格式
@@ -80,17 +80,17 @@ API version 19及以上版本的用户态trace格式参考[当前版本用户态
 
 > **注意：**
 >
-> 1. 一条有效且完整的同步跟踪trace与异步跟踪trace，均包含一条起始trace和一条结束trace，开发者需要保证接口调用的匹配性，否则会导致性能跟踪异常问题。具体可参考ArkTS接口[@ohos.hiTraceMeter (性能打点)/apis-performance-analysis-kit/js-apis-hitracemeter.md)或C++接口[trace.h/apis-performance-analysis-kit/capi-trace-h.md)。
+> 1. 一条有效且完整的同步跟踪trace与异步跟踪trace，均包含一条起始trace和一条结束trace，开发者需要保证接口调用的匹配性，否则会导致性能跟踪异常问题。具体可参考ArkTS接口@ohos.hiTraceMeter (性能打点)或C++接口trace.h。
 > 2. 用户态trace总长度限制512字符，超过部分将被截断。
 
 
 ### 字段说明
 
-本小节将详细介绍用户态trace的各个字段，包括字段组成、含义，字段与打点入参之间的关系，使用[@ohos.hiTraceMeter (性能打点)/apis-performance-analysis-kit/js-apis-hitracemeter.md)作为参考。
+本小节将详细介绍用户态trace的各个字段，包括字段组成、含义，字段与打点入参之间的关系，使用@ohos.hiTraceMeter (性能打点)作为参考。
 
 - **类型标识符**
 
-  类型标识符与调用的[@ohos.hiTraceMeter (性能打点)/apis-performance-analysis-kit/js-apis-hitracemeter.md)具体接口相关，其映射关系如下：
+  类型标识符与调用的@ohos.hiTraceMeter (性能打点)具体接口相关，其映射关系如下：
 
   - `B`：开启一个同步时间片跟踪事件。
   - `E`：结束一个同步时间片跟踪事件。
@@ -100,7 +100,7 @@ API version 19及以上版本的用户态trace格式参考[当前版本用户态
 
 - **分布式跟踪链路ID**
 
-  开启HiTraceChain（分布式跟踪）时，会将[HiTraceId/apis-performance-analysis-kit/capi-hitrace-hitraceid.md)核心信息记录在trace打点中，格式为`[ChainId,SpanId,ParentSpanId]`，结尾使用`#`分隔符与内容字段区分。
+  开启HiTraceChain（分布式跟踪）时，会将HiTraceId核心信息记录在trace打点中，格式为`[ChainId,SpanId,ParentSpanId]`，结尾使用`#`分隔符与内容字段区分。
 
   未开启HiTraceChain（分布式跟踪）时，打点不包含该字段。
 
@@ -108,46 +108,46 @@ API version 19及以上版本的用户态trace格式参考[当前版本用户态
   - `SpanId`：HiTraceId的分支标识。
   - `ParentSpanId`：HiTraceId的父分支标识。
 
-  HiTraceChain具体使用指导请参考[使用HiTraceChain打点（ArkTS）](hitracechain-guidelines-arkts.md)与[使用HiTraceChain打点（C/C++）](hitracechain-guidelines-ndk.md)。
+  HiTraceChain具体使用指导请参考使用HiTraceChain打点（ArkTS）与使用HiTraceChain打点（C/C++）。
 
 - **内容**
 
-  表示打点名称或整数变量名。对应[@ohos.hiTraceMeter (性能打点)/apis-performance-analysis-kit/js-apis-hitracemeter.md)接口的`name`入参。
+  表示打点名称或整数变量名。对应@ohos.hiTraceMeter (性能打点)接口的`name`入参。
 
 - **异步任务ID**
 
-  和内容字段合并用于匹配相同的异步跟踪trace的开始与结束打点。对应[@ohos.hiTraceMeter (性能打点)/apis-performance-analysis-kit/js-apis-hitracemeter.md)接口的`taskId`入参。
+  和内容字段合并用于匹配相同的异步跟踪trace的开始与结束打点。对应@ohos.hiTraceMeter (性能打点)接口的`taskId`入参。
 
 - **整数值**
 
-  仅在整数值跟踪trace中包含，为跟踪的整数值。对应[@ohos.hiTraceMeter (性能打点)/apis-performance-analysis-kit/js-apis-hitracemeter.md)接口的`count`入参。
+  仅在整数值跟踪trace中包含，为跟踪的整数值。对应@ohos.hiTraceMeter (性能打点)接口的`count`入参。
 
 - **级别与所属Tag集合**
 
   本字段由级别和所属Tag集合两部分信息组成。
 
-  通过打点接口传入的`级别`信息，该部分为以下字符之一：`D`、`I`、`C`、`M`。对应[@ohos.hiTraceMeter (性能打点)/apis-performance-analysis-kit/js-apis-hitracemeter.md)接口的`level`入参，详细介绍及映射关系参考[HiTraceOutputLevel](#hitraceoutputlevel)。
+  通过打点接口传入的`级别`信息，该部分为以下字符之一：`D`、`I`、`C`、`M`。对应@ohos.hiTraceMeter (性能打点)接口的`level`入参，详细介绍及映射关系参考HiTraceOutputLevel。
 
   所属Tag集合表示trace打点所属Tag类别，每类用两位数字表示，可包含多个从小到大排列的两位数字。
 
-  例如`B|1314|H:TestFunction|I3062`，其中`I`表示该条打点级别为`Info`，`3062`表示该条打点所属Tag集合，根据Tag名称与值的映射关系，参考[HiTraceMeter Tag](#hitracemeter-tag)可知`30`对应`ohos`Tag，`62`对应`app`Tag。
+  例如`B|1314|H:TestFunction|I3062`，其中`I`表示该条打点级别为`Info`，`3062`表示该条打点所属Tag集合，根据Tag名称与值的映射关系，参考HiTraceMeter Tag可知`30`对应`ohos`Tag，`62`对应`app`Tag。
 
   > **说明：**
   >
   > 1. 对于API version 19及之后接口，支持自定义输出级别；对于API version 18及之前接口，trace打点默认为`COMMERCIAL`级别打点。
   >
-  > 2. 系统侧存在一条用户态trace隶属于多个Tag的情况，ArkTS接口[@ohos.hiTraceMeter (性能打点)/apis-performance-analysis-kit/js-apis-hitracemeter.md)和C++接口[trace.h/apis-performance-analysis-kit/capi-trace-h.md)提供的应用侧用户态trace打点功能无法指定`所属Tag集合`，对应Tag分类固定为`app`，字段值为`62`。
+  > 2. 系统侧存在一条用户态trace隶属于多个Tag的情况，ArkTS接口@ohos.hiTraceMeter (性能打点)和C++接口trace.h提供的应用侧用户态trace打点功能无法指定`所属Tag集合`，对应Tag分类固定为`app`，字段值为`62`。
 
 
 - **自定义聚类名称**
 
-  可用于开发者自定义的聚类操作。对应[@ohos.hiTraceMeter (性能打点)/apis-performance-analysis-kit/js-apis-hitracemeter.md)接口的`customCategory`入参。该字段值可能为空，从而使得日志格式发生变化，详见[字段为空情况说明](#字段为空情况说明)。
+  可用于开发者自定义的聚类操作。对应@ohos.hiTraceMeter (性能打点)接口的`customCategory`入参。该字段值可能为空，从而使得日志格式发生变化，详见字段为空情况说明。
 
   在trace可视化工具中，同一进程中相同聚类名称的异步打点放在同一泳道上进行展示。
 
 - **自定义键值对**
 
-  格式为`key=value`，多个键值对使用逗号分隔，例如`key1=value1,key2=value2`。对应[@ohos.hiTraceMeter (性能打点)/apis-performance-analysis-kit/js-apis-hitracemeter.md)接口的`customArgs`入参。该字段值可能为空，从而使得日志格式发生变化，详见[字段为空情况说明](#字段为空情况说明)。
+  格式为`key=value`，多个键值对使用逗号分隔，例如`key1=value1,key2=value2`。对应@ohos.hiTraceMeter (性能打点)接口的`customArgs`入参。该字段值可能为空，从而使得日志格式发生变化，详见字段为空情况说明。
 
   在trace可视化工具中，对满足格式要求的自定义键值对，以键值对形式展示解析结果。
 
@@ -175,7 +175,7 @@ API version 19及后续版本的新增字段，均以**竖线+字段**的方式�
 
 ### 字段为空情况说明
 
-如果用户态trace格式中间字段对应接口参数传入内容为空，用户态trace格式将保留`|`分隔符，如果尾部字段为空，用户态trace格式将不保留`|`分隔符。以[hiTraceMeter.startAsyncTrace()/apis-performance-analysis-kit/js-apis-hitracemeter.md#hitracemeterstartasynctrace19)和[hiTraceMeter.startSyncTrace()/apis-performance-analysis-kit/js-apis-hitracemeter.md#hitracemeterstartsynctrace19)接口的`自定义聚类名称`和`自定义键值对`参数为例，对应的格式参考如下。
+如果用户态trace格式中间字段对应接口参数传入内容为空，用户态trace格式将保留`|`分隔符，如果尾部字段为空，用户态trace格式将不保留`|`分隔符。以hiTraceMeter.startAsyncTrace()和hiTraceMeter.startSyncTrace()接口的`自定义聚类名称`和`自定义键值对`参数为例，对应的格式参考如下。
 
 - 开始同步trace打点。
 
@@ -219,7 +219,7 @@ API version 19及后续版本的新增字段，均以**竖线+字段**的方式�
 
 ### HiTraceMeter Tag
 
-以下为HitraceMeter用户态Tag集合，其中Tag值为实际代码层面基于数字1的左移值。用户态Tag释义可通过[hitrace](hitrace.md#查看hitrace包含的tag)命令行工具查看，其中`always`和`commercial`分别为系统侧默认常开Tag和商用版本场景定制Tag。
+以下为HiTraceMeter用户态Tag集合，其中Tag值为实际代码层面基于数字1的左移值。用户态Tag释义可通过hitrace命令行工具查看，其中`always`和`commercial`分别为系统侧默认常开Tag和商用版本场景定制Tag。
 
 | Tag名称            | 代码层常量值 | Tag值 |
 | ------------------ | ------------ | ----- |

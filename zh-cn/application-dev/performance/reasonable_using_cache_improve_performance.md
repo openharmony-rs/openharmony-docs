@@ -11,19 +11,19 @@
 
 随着应用功能的日益丰富与复杂化，数据加载效率成为了衡量应用性能的重要指标。不合理的加载策略往往导致用户面临长时间的等待，这不仅损害了用户体验，还可能引发用户流失。因此，合理运用缓存技术变得尤为重要。  
 
-系统提供了[Preferences](../database/data-persistence-by-preferences.md)、[数据库](../database/data-persistence-by-rdb-store.md)、[文件/apis-core-file-kit/js-apis-file-fs.md)、[AppStorage](../ui/state-management/arkts-appstorage.md)等缓存方式，开发者可以对应用数据先进行缓存，再次加载时优先展示缓存数据，减少加载时间，从而提升用户体验。  
+系统提供了Preferences、数据库、文件、AppStorage等缓存方式，开发者可以对应用数据先进行缓存，再次加载时优先展示缓存数据，减少加载时间，从而提升用户体验。  
 
 本文将介绍以下内容，来帮助开发者通过缓存技术提升应用的冷启动速度、预下载网络图片减少Image白块时长，避免卡顿感：
 
-- [冷启动首页时，缓存网络数据](#场景1缓存网络数据)。
-- [冷启动首页时，缓存地址数据](#场景2缓存地址数据)。
-- [预下载网络图片数据](#场景3预下载图片数据)。
+- 冷启动首页时，缓存网络数据。
+- 冷启动首页时，缓存地址数据。
+- 预下载网络图片数据。
 
 ## 识别使用缓存的场景
 
-1. 当应用冷启动过程中，应用的首页数据如果依赖于网络请求获取相应数据。可通过[缓存网络数据](#场景1缓存网络数据)，从而避免在页面冷启动过程中出现较长时间的白屏或白块现象，提升冷启动速度。
-2. 当需要应用在冷启动时即时加载首页地址数据，可通过[缓存地址数据](#场景2缓存地址数据)，使用缓存减少首次数据加载展示时间，提升冷启动速度。
-3. 当子页面需要加载很大的网络图片时，可以在父页面提前[预下载图片数据](#场景3预下载图片数据)到应用沙箱中，子组件加载时从沙箱中读取，减少Image白块出现时长。
+1. 当应用冷启动过程中，应用的首页数据如果依赖于网络请求获取相应数据。可通过缓存网络数据，从而避免在页面冷启动过程中出现较长时间的白屏或白块现象，提升冷启动速度。
+2. 当需要应用在冷启动时即时加载首页地址数据，可通过缓存地址数据，使用缓存减少首次数据加载展示时间，提升冷启动速度。
+3. 当子页面需要加载很大的网络图片时，可以在父页面提前预下载图片数据到应用沙箱中，子组件加载时从沙箱中读取，减少Image白块出现时长。
 
 ## 冷启动首页时常用的缓存使用流程
 
@@ -110,7 +110,7 @@ struct Index {
   }
 
   /**
-   * 使用createPixelMap将ArrayBuffer类型的图片装换为PixelMap类型
+   * 使用createPixelMap将ArrayBuffer类型的图片转换为PixelMap类型
    * @param data：网络获取到的资源
    */
   transcodePixelMap(data: http.HttpResponse) {
@@ -215,11 +215,11 @@ struct Index {
 
 **使用场景**
 
-如果应用每次冷启动都先通过[getCurrentLocation/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)获取位置数据，特别是在信号较弱的区域，这可能导致显著的延迟，迫使用户等待较长时间才能获取到所需的位置信息，从而极大地影响了应用的冷启动体验。  
+如果应用每次冷启动都先通过getCurrentLocation获取位置数据，特别是在信号较弱的区域，这可能导致显著的延迟，迫使用户等待较长时间才能获取到所需的位置信息，从而极大地影响了应用的冷启动体验。  
 
 针对上述问题，下面将通过使用缓存减少首次数据加载展示时间，优化应用启动性能，为开发者优化应用性能提供参考。
 
-下面是一个使用[PersistentStorage（持久化存储UI状态）](../ui/state-management/arkts-persiststorage.md)缓存位置数据的场景示例。主要步骤如下：
+下面是一个使用PersistentStorage（持久化存储UI状态）缓存位置数据的场景示例。主要步骤如下：
 
 1.通过persistProp初始化PersistentStorage。
 
@@ -348,7 +348,7 @@ struct Index {
 
 **性能分析**
 
-下面使用DevEco Studio内置的Profiler中的启动分析工具Launch，对使用getCurrentLocation获取位置数据及使用缓存获取位置数据的冷启动性能进行对比分析。本例中通过在aboutToAppear进行起始位置的[性能打点/apis-performance-analysis-kit/js-apis-hitracemeter.md)，然后在使用本地缓存和使用getCurrentLocation获取数据的位置分别进行结束位置的性能打点来分析两者的性能差异。对比性能前，需要先打开一次应用页面，在弹出位置信息授权弹窗时选择允许授权的选项。
+下面使用DevEco Studio内置的Profiler中的启动分析工具Launch，对使用getCurrentLocation获取位置数据及使用缓存获取位置数据的冷启动性能进行对比分析。本例中通过在aboutToAppear进行起始位置的性能打点，然后在使用本地缓存和使用getCurrentLocation获取数据的位置分别进行结束位置的性能打点来分析两者的性能差异。对比性能前，需要先打开一次应用页面，在弹出位置信息授权弹窗时选择允许授权的选项。
 
 优化前未使用本地缓存（通过getCurrentLocation获取地址数据）的测试步骤：先打开示例页面，点击'clear cache'按钮（清除本地位置信息的缓存）后退出应用，再使用Launch抓取性能数据。
 
@@ -356,7 +356,7 @@ struct Index {
 
 ![reasonable_using_cache_improve_performance_use_api](./figures/reasonable_using_cache_improve_performance_use_api.png)
 
-优化后使用本地缓存（通过PersistentStorage获取地址数据）的测试步骤：在使用getCurrentLocation获取地址数据后退出应用（本例中在getCurrentLocation获取地址数据数据后会保存到本地缓存），再使用Launch工具抓取性能数据。
+优化后使用本地缓存（通过PersistentStorage获取地址数据）的测试步骤：在使用getCurrentLocation获取地址数据后退出应用（本例中在getCurrentLocation获取地址数据后会保存到本地缓存），再使用Launch工具抓取性能数据。
 
 图6 优化后使用本地缓存
 

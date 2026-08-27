@@ -9,7 +9,7 @@
 
 ## 背景
 
-瀑布流常用于展示图片信息，如多用于购物、资讯类应用。下面通过对[WaterFlow/apis-arkui/arkui-ts/ts-container-waterflow.md)组件示例代码的逐步改造，介绍优化WaterFlow性能的方法。
+瀑布流常用于展示图片信息，如多用于购物、资讯类应用。下面通过对WaterFlow组件示例代码的逐步改造，介绍优化WaterFlow性能的方法。
 
 ## 使用懒加载
 
@@ -45,7 +45,7 @@
   }
 ```
 
-示例代码已经使用了[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)进行数据懒加载，WaterFlow布局时会根据可视区域按需创建FlowItem组件，并在FlowItem滑出可视区域外时销毁以降低内存占用。
+示例代码已经使用了LazyForEach进行数据懒加载，WaterFlow布局时会根据可视区域按需创建FlowItem组件，并在FlowItem滑出可视区域外时销毁以降低内存占用。
 
 另外，由于Image组件默认异步加载，建议提前根据图片大小设定FlowItem的高度，避免图片加载成功后高度变化触发瀑布流刷新布局。
 
@@ -53,7 +53,7 @@
 
 示例代码中FlowItem数量是固定的，不能满足无限滚动的场景。
 
-基于WaterFlow本身提供的能力，可以在onReachEnd时给LazyForEach数据源增加新数据，并将footer做成正在加载新数据的样式（使用[LoadingProgress/apis-arkui/arkui-ts/ts-basic-components-loadingprogress.md)组件）。
+基于WaterFlow本身提供的能力，可以在onReachEnd时给LazyForEach数据源增加新数据，并将footer做成正在加载新数据的样式（使用LoadingProgress组件）。
 
 ```ts
   build() {
@@ -110,7 +110,7 @@
 
 虽然在onReachEnd()触发时新增数据可以实现无限加载，但在滑动到底部时，会有明显的停顿加载新数据的过程。
 
-想要流畅的进行无限滑动，还需要调整下增加新数据的时机。比如可以在LazyForEach还剩若干个数据就迭代到结束的情况下提前增加一些新数据。
+想要流畅地进行无限滑动，还需要调整下增加新数据的时机。比如可以在LazyForEach还剩若干个数据就迭代到结束的情况下提前增加一些新数据。
 
 ```ts
   build() {
@@ -119,7 +119,7 @@
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
             Column() {
-              Text("N" + item).fontSize(12).height('16')
+              Text("N" + item).fontSize(12).height(16)
               Image('res/waterFlowTest (' + item % 5 + ').jpg')
                 .objectFit(ImageFit.Fill)
                 .width('100%')
@@ -155,7 +155,7 @@
 
 现在，得到了一个无限滚动且没有显式等待加载的瀑布流，还能不能进一步优化性能呢？
 
-考虑到滑动场景存在FlowItem及其子组件的频繁创建和销毁，可以将FlowItem中的组件封装成自定义组件，并使用@Reusable装饰器修饰，使其具备组件复用能力，减少ArkUI框架内部反复创建销毁节点的开销。组件复用的详细介绍可以参考[组件复用最佳实践](component-recycle.md)。
+考虑到滑动场景存在FlowItem及其子组件的频繁创建和销毁，可以将FlowItem中的组件封装成自定义组件，并使用@Reusable装饰器修饰，使其具备组件复用能力，减少ArkUI框架内部反复创建销毁节点的开销。组件复用的详细介绍可以参考组件复用最佳实践。
 
 ```ts
   build() {

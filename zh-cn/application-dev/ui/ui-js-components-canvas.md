@@ -1,13 +1,13 @@
 # Canvas对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
-Canvas组件提供画布，用于自定义绘制图形。具体用法请参考[CanvasRenderingContext2D对象/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md)。
+Canvas组件提供画布，用于自定义绘制图形。具体用法请参考CanvasRenderingContext2D对象。
 
 
 ## 创建Canvas组件
@@ -39,7 +39,7 @@ canvas {
 }
 ```
 
-![zh-cn_image_0000001222984605](figures/zh-cn_image_0000001222984605.png)
+![canvas-Component](figures/canvas-Component.png)
 
 > **说明：**
 > - Canvas组件默认背景色与父组件的背景色一致。
@@ -79,7 +79,7 @@ canvas {
 }
 ```
 
-![zh-cn_image_0000001177623482](figures/zh-cn_image_0000001177623482.png)
+![Adding-Styles](figures/Adding-Styles.png)
 
 
 ## 添加事件
@@ -88,7 +88,7 @@ Canvas添加长按事件，长按后可获取Canvas组件的dataUrl值（toDataU
 
 > **说明：** 
 >
-> promptAction相关接口参考[弹窗/apis-arkui/js-apis-promptAction.md)。
+> promptAction相关接口参考弹窗。
 
 
 ```html
@@ -144,15 +144,15 @@ export default {
         ctx.strokeRect(100, 100, 300, 300);
     },
     getUrl() {
-        let el = this.$refs.canvas1
-        let dataUrl = el.toDataURL()
+        let el = this.$refs.canvas1;
+        let dataUrl = el.toDataURL();
         this.dataURL = dataUrl;
-        promptAction.showToast({ duration: 2000, message: "long press,get dataURL" })
+        promptAction.showToast({ duration: 2000, message: "long press,get dataURL" });
     }
 }
 ```
 
-![zh-cn_image_0000001222985331](figures/zh-cn_image_0000001222985331.gif)
+![Adding-Events](figures/Adding-Events.gif)
 
 > **说明：** 
 >

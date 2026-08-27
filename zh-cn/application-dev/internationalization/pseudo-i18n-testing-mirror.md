@@ -3,7 +3,7 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
@@ -30,6 +30,6 @@
 
 ## 测试事项
 
-1. 检查界面布局、文字方向和控制逻辑是否符合从右至左的阅读习惯。具体要点见[界面镜像](i18n-ui-design.md#界面镜像)章节。
+1. 检查界面布局、文字方向和控制逻辑是否符合从右至左的阅读习惯。具体要点见界面镜像章节。
 
 2. 检查相关功能是否异常无法使用。

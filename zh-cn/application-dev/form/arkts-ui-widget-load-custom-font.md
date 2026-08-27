@@ -6,10 +6,10 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-API version 22开始新增了[ohos.graphics.text.FontCollection.getLocalInstance/apis-arkgraphics2d/js-apis-graphics-text.md#getlocalinstance22)接口获取本地字体集实例，应用可以通过这个本地实例为卡片加载自定义字体。
+API version 22开始新增了ohos.graphics.text.FontCollection.getLocalInstance接口获取本地字体集实例，应用可以通过这个本地实例为卡片加载自定义字体。
 
 ## 开发步骤
-1. 创建动态卡片：按照[创建ArkTS卡片](arkts-ui-widget-creation.md)里的描述创建动态卡片。
+1. 创建动态卡片：按照创建ArkTS卡片里的描述创建动态卡片。
 
 2. 在项目`entry\src\main\resources\rawfile`目录下添加自定义字体文件`xxx.ttf`。
 
@@ -17,7 +17,7 @@ API version 22开始新增了[ohos.graphics.text.FontCollection.getLocalInstance
 
     在卡片页面中布局两个按钮，点击按钮`load font`或按钮`unload font`，调用本地字体集实例的loadFontSync、unloadFontSync进行字体的加载、卸载。
 
-<!-- @[loadFontSyncCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/CustomFontWidgetCards/entry/src/main/ets/widget/pages/WidgetCard.ets) -->  
+<!-- @[loadFontSyncCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/CustomFontWidgetCards/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
 
 ``` TypeScript
 // entry/src/main/ets/widget/pages/WidgetCard.ets
@@ -25,7 +25,7 @@ import { text } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
-struct loadFontSyncCard {
+struct LoadFontSyncCard {
   // 在这里使用getLocalInstance访问本地字体集实例
   private fc: text.FontCollection = text.FontCollection.getLocalInstance();
   @State content: string = '默认字体';

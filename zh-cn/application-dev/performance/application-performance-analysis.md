@@ -87,7 +87,7 @@ Chrome浏览器JavaScript Profiler工具默认调用V8引擎提供的Profiler工
 
 可将鼠标放在某一函数上，展示该函数详细信息，详情中包含以下几个字段：
 
-- **Name**：格式为“函数名（标签）”。函数名表示TS/JS代码函数名，标签信息代表函数类型，具体可见 [函数名标签tag的相关说明](#函数名标签tag的相关说明)。
+- **Name**：格式为“函数名（标签）”。函数名表示TS/JS代码函数名，标签信息代表函数类型，具体可见 函数名标签tag的相关说明。
 
 - **Self Time**：以毫秒（ms）为单位。表示该函数本次调用过程中，除去调用下一级函数所消耗时间后的自身执行耗时。计算方法为该函数本次调用的总耗时减去该函数本次调用下一级所有函数的总时间。
 
@@ -189,7 +189,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
 
 ### 各采集工具适用场景及支持情况
 
-| 采集方法       | [DevEco Studio Profiler](#deveco-studio-profiler工具采集) | [JavaScript Profiler](#chrome浏览器javascript-profiler工具采集) | [hdc shell](#hdc-shell命令采集) | [应用代码插桩](#应用代码插桩采集) |
+| 采集方法       | DevEco Studio Profiler | JavaScript Profiler | hdc shell | 应用代码插桩 |
 | -------------- | ------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------- | --------------------------------- |
 | debug应用      | 支持                                                    | 支持                                                            | 支持                            | 支持                              |
 | release应用    | 暂不支持                                                | 暂不支持                                                        | 支持                            | 支持                              |
@@ -214,7 +214,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
 
 5. 再次点击录制按钮，方框变成灰色，结束录制。
 
-6. 选择ArkTS Callstack泳道，框选时间范围或者直接选择函数进行分析，具体可见[DevEco Studio Profiler视图](#deveco-studio-profiler视图)。
+6. 选择ArkTS Callstack泳道，框选时间范围或者直接选择函数进行分析，具体可见DevEco Studio Profiler视图。
 
 ### Chrome浏览器JavaScript Profiler工具采集
 
@@ -250,11 +250,11 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
 
 6. 再次点击录制按钮，按钮变为灰色结束录制。
 
-7. 点击左上角性能分析报告，右侧显示性能分析图表，可以选择图表类型，显示数据表或者火焰图，具体可见 [Chrome浏览器JavaScript Profiler工具视图](#chrome浏览器javascript-profiler工具视图)。
+7. 点击左上角性能分析报告，右侧显示性能分析图表，可以选择图表类型，显示数据表或者火焰图，具体可见 Chrome浏览器JavaScript Profiler工具视图。
 
     图14 **JavaScript Profile视图布局**
 
-   ![JavaScript Profile视图布局](figures/javascript-profiler-view.png)
+   ![JavaScript Profiler视图布局](figures/javascript-profiler-view.png)
 
 ### hdc shell命令采集
 
@@ -336,7 +336,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
     hdc file recv /data/app/el2/0/base/com.ohos.example/files/com.ohos.example_线程id_次数.cpuprofile ./
     ```
 
-10. 将 `com.ohos.example.cpuprofile` 文件导入**Chrome浏览器 > JavaScript Profiler**进行分析，具体可见 [Chrome浏览器JavaScript Profiler工具视图](#chrome浏览器javascript-profiler工具视图)。
+10. 将 `com.ohos.example.cpuprofile` 文件导入**Chrome浏览器 > JavaScript Profiler**进行分析，具体可见 Chrome浏览器JavaScript Profiler工具视图。
 
     图15 **加载cpuprofile文件**
 
@@ -357,7 +357,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
     // code block
     // ...
     // code block
-    hidebug.stopJsCpuProfiling("filename");
+    hidebug.stopJsCpuProfiling();
     ```
 
 2. 启动并操作应用，复现待分析场景，确保插桩代码行能执行到。
@@ -372,7 +372,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
     hdc file recv /data/app/el2/0/base/com.ohos.example/files/filename.json ./filename.cpuprofile
     ```
 
-4. 将 `filename.cpuprofile` 文件导入**Chrome浏览器 > JavaScript Profiler**进行分析，具体可见 [Chrome浏览器javascript-profiler工具视图](#chrome浏览器javascript-profiler工具视图)。
+4. 将 `filename.cpuprofile` 文件导入**Chrome浏览器 > JavaScript Profiler**进行分析，具体可见 Chrome浏览器JavaScript Profiler工具视图。
 
     图16 **加载cpuprofile文件**
 

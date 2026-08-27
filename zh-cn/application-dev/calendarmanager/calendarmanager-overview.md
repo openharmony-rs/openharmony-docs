@@ -3,7 +3,7 @@
 <!--Kit: Calendar Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @qq_42718467-->
-<!--Designer: @windsky6-->
+<!--Designer: @qq_42718467-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
 
@@ -55,7 +55,7 @@ Calendar Kit为用户提供了一系列接口来获取日历账户，并使用�
 
 - 目前Calendar Kit的相关能力及接口使用，仅支持在Stage模型下使用。
 
-- 使用Calendar Kit的相关能力，需要获取读取或写入日历、日程的权限。具体指导可见[声明权限](../security/AccessToken/declare-permissions.md)。
+- 使用Calendar Kit的相关能力，需要获取读取或写入日历、日程的权限。具体指导可见声明权限。
 
   - 进行日历或日程的读取时，需要申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR权限。
 

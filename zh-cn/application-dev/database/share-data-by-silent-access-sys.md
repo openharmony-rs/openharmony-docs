@@ -17,7 +17,7 @@
 
 数据管理服务仅支持数据库的基本访问或数据托管，如果有业务处理，需要将业务处理封装成接口，给数据访问方调用。
 
-如果业务过于复杂，无法放到数据访问方，建议通过[DataShareExtensionAbility/apis-arkdata/js-apis-application-dataShareExtensionAbility-sys.md)拉起数据提供方实现功能。
+如果业务过于复杂，无法放到数据访问方，建议通过DataShareExtensionAbility拉起数据提供方实现功能。
 
 
 ## 运作机制
@@ -51,21 +51,23 @@
 
 - URI还支持添加其他参数来设置具体的访问方式或访问对象，URI添加参数需严格遵循格式：`datashareproxy://{bundleName}/{dataPath}?{arg1}&{arg2}`，不符合规范的URI参数不生效。
 
-  其中以"?"符号开始参数，以"&"符号连接参数，连续的多个符号会被视为一个。当前仅支持"appIndex"以及"user"参数。
+  其中以"?"符号开始参数，以"&"符号连接参数，连续的多个符号会被视为一个。当前仅支持"appIndex"、"user"以及"accountId"参数。
 
-  - "appIndex"仅支持设置为整型，表示应用包的分身索引，从1开始支持，仅在分身应用中生效。appIndex的定义及获取参照[BundleInfo/apis-ability-kit/js-apis-bundleManager-bundleInfo.md)。appIndex为0，或不填写时，访问数据提供者的应用本体。
+  - "appIndex"仅支持设置为整型，表示应用包的分身索引，从1开始支持，仅在分身应用中生效。appIndex的定义及获取参照BundleInfo。appIndex为0，或不填写时，访问数据提供者的应用本体。
 
     目前访问分身应用仅支持静默访问方式，不支持非静默访问方式。
 
-  - "user"仅支持设置为整型，表示要访问的数据提供方的用户ID。user的定义及获取参照[user/apis-basic-services-kit/js-apis-osAccount.md#getactivatedosaccountlocalids9)。user不填写时，默认为数据访问方所在的用户ID。目前跨用户访问功能仅支持增删改查功能，订阅通知功能不支持跨用户。
+  - "user"仅支持设置为整型，表示要访问的数据提供方的用户ID。user的定义及获取参照getActivatedOsAccountLocalIds。user不填写时，默认为数据访问方所在的用户ID。目前跨用户访问功能仅支持增删改查功能，订阅通知功能不支持跨用户。
 
     目前跨用户访问仅支持主空间和隐私空间之间的访问，且需要数据访问方配有跨用户访问权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS才可成功访问。
+
+  - "accountId"仅支持设置为整型，表示系统账号子身份资料标识符。accountId的定义及获取参照getOsAccountForegroundSubProfileId。accountId不填写时，默认为调用方所属系统账号的前台子身份资料标识符。例如访问方需要访问数据提供方中特定子身份资料下的数据时，可通过在URI中指定accountId访问，格式为：`datashareproxy://{bundleName}/{dataPath}?accountId={accountId}`。<br>搭载OpenHarmony 7.0.0及以上版本的设备，可正常配置使用此参数。仅支持Car设备。<br>针对低于该版本的设备，此参数配置不生效。
 
 ## 约束与限制
 
 - 目前持久化数据中仅关系型数据库支持静默数据访问方式。
 - 整个系统最多同时并发32路查询，有多出来的查询请求需要重试处理。
-- 查询完成后返回的数据共享结果集应在使用后及时释放，参见[DataShareResultSet/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close)。
+- 查询完成后返回的数据共享结果集应在使用后及时释放，参见close。
 - 持久化数据不支持代理创建数据库，如果需要创建数据库，需要拉起数据提供方。
 - 数据提供方如果是normal级别签名的应用，配置的数据读写权限必须为system_basic及以上权限。
 - 调用静默访问接口（insert、delete、update或者query）时需遵循流量控制机制：每30秒为一个流控周期，若在该流控周期内调用对应接口的次数大于等于3000次，则该流控周期剩余时间内调用该接口均返回失败，到下一个流控周期重新开始计数，接口恢复正常。建议避免短时间高频调用接口，合理控制接口调用频率。
@@ -73,7 +75,7 @@
 
 ## 接口说明
 
-以下是静默数据访问的相关接口，更多接口及使用方式请见[数据共享/apis-arkdata/js-apis-data-dataShare-sys.md)。
+以下是静默数据访问的相关接口，更多接口及使用方式请见数据共享。
 
 ### 通用接口
 
@@ -114,15 +116,15 @@
 
 ### 数据提供方应用的开发
 
-1. 数据提供方需要在module.json5中的proxyData节点定义要共享的表的标识，读写权限和基本信息， 配置方法可参考[配置文件](../quick-start/module-configuration-file.md)。
+1. 数据提供方需要在module.json5中的proxyData节点定义要共享的表的标识，读写权限和基本信息， 配置方法可参考配置文件。
 
    **表1** module.json5中proxyData节点对应的属性字段
 
    | 属性名称                    | 备注说明                                     | 必填   |
    | ----------------------- | ---------------------------------------- | ---- |
    | uri                     | 数据使用的URI，是跨应用数据访问的唯一标识。                  | 是    |
-   | requiredReadPermission  | 标识从该数据代理读取数据时所需要的权限，不配置默认不允许其他APP访问数据。支持权限可参考[权限列表](../security/AccessToken/app-permissions.md)。<br>注意：当前静默访问的权限约束方式与DataShareExtensionAbility的权限约束方式不同，请注意区分，切勿混淆，具体可参考[DataShareExtensionAbility章节](share-data-by-datashareextensionability-sys.md)。            | 否    |
-   | requiredWritePermission | 标识从该数据代理修改数据时所需要的权限，不配置默认不允许其他APP修改数据。支持权限可参考[权限列表](../security/AccessToken/app-permissions.md)。<br>注意：当前静默访问的权限约束方式与DataShareExtensionAbility的权限约束方式不同，请注意区分，切勿混淆，具体可参考[DataShareExtensionAbility章节](share-data-by-datashareextensionability-sys.md)。          | 否    |
+   | requiredReadPermission  | 标识从该数据代理读取数据时所需要的权限，不配置默认不允许其他APP访问数据。支持权限可参考权限列表。<br>注意：当前静默访问的权限约束方式与DataShareExtensionAbility的权限约束方式不同，请注意区分，切勿混淆，具体可参考DataShareExtensionAbility章节。            | 否    |
+   | requiredWritePermission | 标识从该数据代理修改数据时所需要的权限，不配置默认不允许其他APP修改数据。支持权限可参考权限列表。<br>注意：当前静默访问的权限约束方式与DataShareExtensionAbility的权限约束方式不同，请注意区分，切勿混淆，具体可参考DataShareExtensionAbility章节。          | 否    |
    | metadata                | 数据源的信息，包含name和resource字段。<br /> name类型固定为"dataProperties"，是配置的唯一标识。 <br /> resource类型固定为"$profile:{fileName}"，表示配置文件的名称为{fileName}.json。 | 是    |
 
    一个URI所能访问的范围为一张数据表，因此请确认表中的所有数据适用相同的权限范围，推荐不同范围的数据分开使用多张表存储，配置各自的权限约束，做好表粒度的数据隔离。针对风险等级高的数据，建议配置白名单来限制数据访问方，具体请参考下方my_config.json示例中的allowLists字段。
@@ -151,20 +153,22 @@
    | path  | 指定数据源路径，目前支持关系型数据库，配置为库名/表名。             | 是    |
    | type  | 标识数据库类型，目前支持配置为rdb，表示关系型数据库。             | 是    |
    | scope | 数据库所在范围。<br>1.module表示数据库位于本模块下。<br>2.application表示数据库位于本应用下。 | 否    |
-   | allowLists          | 包括appIdentifier和onlyMain。<br>allowLists中配置被允许访问的应用列表，最多配置256个授权信息。在跨应用数据访问时通过该配置校验数据访问方是否在数据提供方配置的列表内，若不在则拒绝访问。若无allowLists配置则不做白名单校验。不管是否配置allowLists，在[表1](#数据提供方应用的开发)中的读写权限依然会被正常校验。<br>**-appIdentifier：** 字符串，应用的唯一标识，由云端统一分配。数据提供方自行向访问方获取。<br>appIdentifier信息可参考[应用包信息/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)。 <br>**-onlyMain：** 布尔值，控制是否仅支持主应用。true: 只允许主应用访问，分身应用不可访问。false: 主应用和分身应用均可访问。该功能仅支持静默访问。 | 否   |
+   | allowLists          | 包括appIdentifier和onlyMain。<br>allowLists中配置被允许访问的应用列表，最多配置256个授权信息。在跨应用数据访问时通过该配置校验数据访问方是否在数据提供方配置的列表内，若不在则拒绝访问。若无allowLists配置则不做白名单校验。不管是否配置allowLists，在表1中的读写权限依然会被正常校验。<br>**-appIdentifier：** 字符串，应用的唯一标识，由云端统一分配。数据提供方自行向访问方获取。<br>appIdentifier信息可参考SignatureInfo。 <br>**-onlyMain：** 布尔值，控制是否仅支持主应用。true: 只允许主应用访问，分身应用不可访问。false: 主应用和分身应用均可访问。该功能仅支持静默访问。 | 否   |
+   | accountIsolation          | 表示数据是否区分账号。布尔值，true表示数据区分账号，即不同账号访问不同数据；false表示数据不区分账号，即不同账号访问相同数据。不配置时默认为false。<br>搭载OpenHarmony 7.0.0及以上版本的设备，可正常配置使用此参数。仅支持Car设备。<br>针对低于该版本的设备，此参数配置不生效。 | 否   |
 
    **my_config.json配置样例**
 
    ```json
-   {
-     "path": "DB00/TBL00",
-     "type": "rdb",
-     "scope": "application",
-     "allowLists":[
-           {"appIdentifier": "appIdentifier1", "onlyMain": false},
-           {"appIdentifier": "appIdentifier2", "onlyMain": true}
-     ]
-   }
+    {
+      "path": "DB00/TBL00",
+      "type": "rdb",
+      "scope": "application",
+      "accountIsolation": true,
+      "allowLists":[
+            {"appIdentifier": "appIdentifier1", "onlyMain": false},
+            {"appIdentifier": "appIdentifier2", "onlyMain": true}
+      ]
+    }
    ```
 
 ### 数据访问方应用的开发
@@ -290,7 +294,7 @@
 
 ### 数据提供方应用的开发（可选）
 
-数据提供方需要在module.json5中的proxyData节点定义过程数据的标识，读写权限和基本信息， 配置方法可参考[配置文件](../quick-start/module-configuration-file.md)。
+数据提供方需要在module.json5中的proxyData节点定义过程数据的标识，读写权限和基本信息， 配置方法可参考配置文件。
 
 > 注意：
 >
@@ -302,8 +306,8 @@
 | 属性名称                    | 备注说明                          | 必填   |
 | ----------------------- | ----------------------------- | ---- |
 | uri                     | 数据使用的URI，是跨应用数据访问的唯一标识。       | 是    |
-| requiredReadPermission  | 标识从该数据代理读取数据时所需要的权限，不配置默认不允许其他APP访问数据。支持权限可参考[权限列表](../security/AccessToken/app-permissions.md)。<br>注意：当前静默访问的权限约束方式与[DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md)的权限约束方式不同，请注意区分，切勿混淆，具体可参考[DataShareExtensionAbility章节](share-data-by-datashareextensionability-sys.md)。 | 否    |
-| requiredWritePermission | 标识从该数据代理修改数据时所需要的权限，不配置默认不允许其他APP访问数据。支持权限可参考[权限列表](../security/AccessToken/app-permissions.md)。<br>注意：当前静默访问的权限约束方式与[DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md)的权限约束方式不同，请注意区分，切勿混淆，具体可参考[DataShareExtensionAbility章节](share-data-by-datashareextensionability-sys.md)。 | 否    |
+| requiredReadPermission  | 标识从该数据代理读取数据时所需要的权限，不配置默认不允许其他APP访问数据。支持权限可参考权限列表。<br>注意：当前静默访问的权限约束方式与DataShareExtensionAbility的权限约束方式不同，请注意区分，切勿混淆，具体可参考DataShareExtensionAbility章节。 | 否    |
+| requiredWritePermission | 标识从该数据代理修改数据时所需要的权限，不配置默认不允许其他APP修改数据。支持权限可参考权限列表。<br>注意：当前静默访问的权限约束方式与DataShareExtensionAbility的权限约束方式不同，请注意区分，切勿混淆，具体可参考DataShareExtensionAbility章节。 | 否    |
 
 **module.json5配置样例：**
 
@@ -390,7 +394,7 @@
 
 ### 数据提供方应用的开发
 
-数据提供方调用接口以动态开启静默访问功能。此接口与data_share_config.json文件中isSilentProxyEnable字段配合使用。支持的配置可参考[data_share_config.json配置](./share-data-by-datashareextensionability-sys.md)。
+数据提供方调用接口以动态开启静默访问功能。此接口与data_share_config.json文件中isSilentProxyEnable字段配合使用。支持的配置可参考data_share_config.json配置。
 
 > 注意：
 >

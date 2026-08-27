@@ -1,23 +1,23 @@
 # ASON解析与生成
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @huanghello-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
-[ASON/apis-arkts/arkts-apis-arkts-utils-ASON.md)工具与JS提供的JSON工具类似，JSON用于进行JS对象的序列化（stringify）、反序列化（parse）。ASON则提供了[Sendable对象](arkts-sendable.md)的序列化、反序列化能力。使用ASON.stringify方法可将对象转换为字符串，使用ASON.parse方法可将字符串转换为Sendable对象，从而实现对象在并发任务间的高性能引用传递。
+ASON工具与JS提供的JSON工具类似，JSON用于进行JS对象的序列化（stringify）、反序列化（parse）。ASON则提供了Sendable对象的序列化、反序列化能力。使用ASON.stringify方法可将对象转换为字符串，使用ASON.parse方法可将字符串转换为Sendable对象，从而实现对象在并发任务间的高性能引用传递。
 
-ASON.stringify方法还支持将Map和Set对象转换为字符串，可转换的Map和Set类型包括：Map、Set、[collections.Map/apis-arkts/arkts-apis-arkts-collections-Map.md)、[collections.Set/apis-arkts/arkts-apis-arkts-collections-Set.md)、[HashMap/apis-arkts/js-apis-hashmap.md#hashmap)、[HashSet/apis-arkts/js-apis-hashset.md#hashset)。
+ASON.stringify方法还支持将Map和Set对象转换为字符串，可转换的Map和Set类型包括：Map、Set、collections.Map、collections.Set、HashMap、HashSet。
 
 > **说明：**
 >
-> ASON.parse默认生成的对象为Sendable对象，布局不可变，不支持增删属性。如果返回的对象需要支持增删属性，可以指定返回类型为[collections.Map/apis-arkts/arkts-apis-arkts-collections-Map.md)对象。
+> ASON.parse默认生成的对象为Sendable对象，布局不可变，不支持增删属性。如果返回的对象需要支持增删属性，可以指定返回类型为collections.Map对象。
 
 ## 使用示例
 
-使用ASON提供的接口，对[Sendable对象](arkts-sendable.md)进行序列化、反序列化。
-<!-- @[example_serialize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/AsonParsingGeneration.ets) --> 
+使用ASON提供的接口，对Sendable对象进行序列化、反序列化。
+<!-- @[example_serialize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectRelated/entry/src/main/ets/managers/AsonParsingGeneration.ets) --> 
 
 ``` TypeScript
 import { ArkTSUtils, collections } from '@kit.ArkTS';
@@ -38,7 +38,7 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          console.info(ArkTSUtils.ASON.parse('{}'));
+          console.info(`ASON parse object result is ${ArkTSUtils.ASON.parse('{}')}`)
           console.info(ArkTSUtils.ASON.stringify(new collections.Array(1, 2, 3)));
 
           let options2: ArkTSUtils.ASON.ParseOptions = {

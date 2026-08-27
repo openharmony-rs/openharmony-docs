@@ -9,7 +9,7 @@ TaskPool支持开发者在宿主线程封装任务抛给任务队列，系统选
 
 ## TaskPool注意事项
 
-- 实现任务的函数需要使用[@Concurrent装饰器](#concurrent装饰器)标注，且仅支持在.ets文件中使用。
+- 实现任务的函数需要使用@Concurrent装饰器标注，且仅支持在.ets文件中使用。
 
 - 从API version 11开始，跨并发实例传递带方法的实例对象时，该类必须使用装饰器@Sendable装饰器标注，且仅支持在.ets文件中使用。
 

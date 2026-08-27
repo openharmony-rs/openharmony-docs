@@ -16,12 +16,12 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
 
 | 对象类型 | 适用场景 | 特性 |
 |---|---|---|
-| [PixelMap/apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) | 单图显示、基础图片处理 | 单一像素数据，支持图像变换（裁剪、缩放、旋转等）、位图操作。 |
-| [Picture/apis-image-kit/capi-image-nativemodule-oh-picturenative.md) | HDR图片、HEIF专业格式、辅助图处理 | 包含主图+辅助图+元数据，可提取主图/增益图/合成HDR图为PixelMap后显示或处理，支持辅助图和元数据操作。 |
+| PixelMap | 单图显示、基础图片处理 | 单一像素数据，支持图像变换（裁剪、缩放、旋转等）、位图操作。 |
+| Picture | HDR图片、HEIF专业格式、辅助图处理 | 包含主图+辅助图+元数据，可提取主图/增益图/合成HDR图为PixelMap后显示或处理，支持辅助图和元数据操作。 |
 
 > **选择建议：**
 > - 需要直接显示单张图片或进行裁剪、缩放、旋转等图像处理时，使用PixelMap。
-> - 需要处理HDR图片、获取辅助图（如GAINMAP）、操作图片元数据时，使用Picture。如需对Picture的内容进行裁剪缩放，可通过[OH_PictureNative_GetMainPixelmap()/apis-image-kit/capi-picture-native-h.md#oh_picturenative_getmainpixelmap)等接口提取PixelMap后再处理。
+> - 需要处理HDR图片、获取辅助图（如GAINMAP）、操作图片元数据时，使用Picture。如需对Picture的内容进行裁剪缩放，可通过OH_PictureNative_GetMainPixelmap()等接口提取PixelMap后再处理。
 
 ## 开发步骤
 
@@ -35,7 +35,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 
 ### Native接口调用
 
-具体接口说明请参考[Image_NativeModule/apis-image-kit/capi-image-nativemodule.md)。
+具体接口说明请参考Image_NativeModule。
 
 在Deveco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
 
@@ -147,7 +147,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 
    > **说明：**
    >
-   > 并非所有图片都包含辅助图。在获取辅助图前，应先调用`OH_PictureNative_GetAuxiliaryPicture`接口尝试获取。其他辅助图类型请参考[Image_AuxiliaryPictureType/apis-image-kit/capi-picture-native-h.md#image_auxiliarypicturetype)。
+   > 并非所有图片都包含辅助图。在获取辅助图前，应先调用`OH_PictureNative_GetAuxiliaryPicture`接口尝试获取。其他辅助图类型请参考Image_AuxiliaryPictureType。
 
 
    <!-- @[picture_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->      
@@ -240,9 +240,13 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
            return GetJsResult(env, IMAGE_BAD_PARAMETER);
        }
        
-       char filePath[MAX_SIZE];
-       size_t pathSize;
-       napi_get_value_string_utf8(env, args[0], filePath, MAX_SIZE, &pathSize);
+       char filePath[MAX_SIZE] = {0};
+       size_t pathSize = 0;
+       if (napi_get_value_string_utf8(env, args[0], filePath, sizeof(filePath), &pathSize) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "CreatePictureByImageSource napi_get_value_string_utf8 failed !");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       filePath[MAX_SIZE - 1] = '\0';
    
        g_thisPicture->errorCode = OH_ImageSourceNative_CreateFromUri(filePath, pathSize, &g_thisPicture->source);
        if (g_thisPicture->errorCode != IMAGE_SUCCESS) {

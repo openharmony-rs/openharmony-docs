@@ -1,10 +1,10 @@
 # 使用Node-API接口创建基本数据类型 
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -23,28 +23,28 @@ ArkTS的Number类型是一个双精度64位二进制格式IEEE 754值。只有�
 以下Node-API函数通常在开发ArkTS的Node-API模块时使用，以便处理数值类型值，帮助开发人员在Node-API模块中和ArkTS数值进行交互：
 | 接口 | 描述 |
 | -------- | -------- |
-| [napi_get_value_uint32](#napi_get_value_uint32) | 将从ArkTS环境中获取的number类型数据转为Node-API模块中的uint32_t类型数据。 |
-| [napi_get_value_int32](#napi_get_value_int32) | 将从ArkTS环境中获取的number类型数据转为Node-API模块中的int32_t类型数据。 |
-| [napi_get_value_int64](#napi_get_value_int64) | 将从ArkTS环境中获取的number类型数据转为Node-API模块中的int64_t类型数据。 |
-| [napi_get_value_double](#napi_get_value_double) | 将从ArkTS环境中获取的number类型数据转为Node-API模块中的double类型数据。 |
-| [napi_get_value_bool](use-napi-about-primitive.md#napi_get_value_bool) | 将ArkTS环境中获取的boolean类型数据转为Node-API模块中的bool类型数据。 |
-| [napi_get_value_string_utf8](use-napi-about-string.md#napi_get_value_string_utf8) | 将ArkTS环境中获取的string类型数据转为Node-API模块中的utf8编码的字符类型数据。 |
-| [napi_get_value_string_utf16](use-napi-about-string.md#napi_get_value_string_utf16) | 将ArkTS环境中获取的string类型数据转为Node-API模块中的utf16编码的字符类型数据。 |
-| [napi_get_value_string_latin1](use-napi-about-string.md#napi_get_value_string_latin1) | 将ArkTS环境中获取的string类型数据转为Node-API模块中的ISO-8859-1编码的字符类型数据。 |
-| [napi_create_int32](#napi_create_int32) | 将Node-API模块中的int32_t类型转换为ArkTS环境中number类型。 |
-| [napi_create_uint32](#napi_create_uint32) | 将Node-API模块中的uint32_t类型转换为ArkTS环境中number类型。 |
-| [napi_create_int64](#napi_create_int64) | 将Node-API模块中的int64_t类型转换为ArkTS环境中number类型。 |
-| [napi_create_double](#napi_create_double) | 将Node-API模块中的double类型转换为ArkTS环境中number类型。 |
-| [napi_get_boolean](use-napi-about-primitive.md#napi_get_boolean) | 将Node-API模块中的bool类型转换为ArkTS环境中boolean类型。 |
-| [napi_create_string_utf8](use-napi-about-string.md#napi_create_string_utf8) | 将Node-API模块中的utf8编码的字符串类型转换为ArkTS环境中string类型。 |
-| [napi_create_string_utf16](use-napi-about-string.md#napi_create_string_utf16) | 将Node-API模块中的utf16编码的字符串类型转换为ArkTS环境中string类型。 |
-| [napi_create_string_latin1](use-napi-about-string.md#napi_create_string_latin1) | 将Node-API模块中的ISO-8859-1编码的字符串类型转换为ArkTS环境中string类型。 |
-| [napi_create_external_string_ascii](use-napi-about-string.md#napi_create_external_string_ascii) | 将Node-API模块中的ascii编码的字符串类型无拷贝的转换为ArkTS环境中string类型。 |
-| [napi_create_external_string_utf16](use-napi-about-string.md#napi_create_external_string_utf16) | 将Node-API模块中的utf16编码的字符串类型无拷贝的转换为ArkTS环境中string类型。 |
+| napi_get_value_uint32 | 将从ArkTS环境中获取的number类型数据转为Node-API模块中的uint32_t类型数据。 |
+| napi_get_value_int32 | 将从ArkTS环境中获取的number类型数据转为Node-API模块中的int32_t类型数据。 |
+| napi_get_value_int64 | 将从ArkTS环境中获取的number类型数据转为Node-API模块中的int64_t类型数据。 |
+| napi_get_value_double | 将从ArkTS环境中获取的number类型数据转为Node-API模块中的double类型数据。 |
+| napi_get_value_bool | 将ArkTS环境中获取的boolean类型数据转为Node-API模块中的bool类型数据。 |
+| napi_get_value_string_utf8 | 将ArkTS环境中获取的string类型数据转为Node-API模块中的utf8编码的字符类型数据。 |
+| napi_get_value_string_utf16 | 将ArkTS环境中获取的string类型数据转为Node-API模块中的utf16编码的字符类型数据。 |
+| napi_get_value_string_latin1 | 将ArkTS环境中获取的string类型数据转为Node-API模块中的ISO-8859-1编码的字符类型数据。 |
+| napi_create_int32 | 将Node-API模块中的int32_t类型转换为ArkTS环境中number类型。 |
+| napi_create_uint32 | 将Node-API模块中的uint32_t类型转换为ArkTS环境中number类型。 |
+| napi_create_int64 | 将Node-API模块中的int64_t类型转换为ArkTS环境中number类型。 |
+| napi_create_double | 将Node-API模块中的double类型转换为ArkTS环境中number类型。 |
+| napi_get_boolean | 将Node-API模块中的bool类型转换为ArkTS环境中boolean类型。 |
+| napi_create_string_utf8 | 将Node-API模块中的utf8编码的字符串类型转换为ArkTS环境中string类型。 |
+| napi_create_string_utf16 | 将Node-API模块中的utf16编码的字符串类型转换为ArkTS环境中string类型。 |
+| napi_create_string_latin1 | 将Node-API模块中的ISO-8859-1编码的字符串类型转换为ArkTS环境中string类型。 |
+| napi_create_external_string_ascii | 将Node-API模块中的ascii编码的字符串类型无拷贝地转换为ArkTS环境中string类型。 |
+| napi_create_external_string_utf16 | 将Node-API模块中的utf16编码的字符串类型无拷贝地转换为ArkTS环境中string类型。 |
 
 ## 使用示例
 
-Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程](use-napi-process.md)，本文仅对接口对应C++及ArkTS相关代码进行展示。
+Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程，本文仅对接口对应C++及ArkTS相关代码进行展示。
 
 ### napi_get_value_uint32
 

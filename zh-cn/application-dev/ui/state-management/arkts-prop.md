@@ -8,7 +8,7 @@
 
 \@Prop装饰的变量可以和父组件建立单向同步关系。
 
-在阅读\@Prop文档前，建议开发者首先了解[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考[状态管理常见问题](./arkts-state-management-faq.md)。
+在阅读\@Prop文档前，建议开发者首先了解\@State的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考状态管理常见问题。
 
 > **说明：**
 >
@@ -30,18 +30,18 @@
 | \@Prop变量装饰器 | 说明                                       |
 | ----------- | ---------------------------------------- |
 | 装饰器参数       | 无。                                        |
-| 同步类型        | 单向同步。对父组件状态变量值的修改，将同步给子组件\@Prop装饰的变量，子组件\@Prop装饰的变量的修改不会同步到父组件的状态变量上。<br>嵌套类型的场景请参考[观察变化](#观察变化)。 |
-| 允许装饰的变量类型   |  Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型[Length/apis-arkui/arkui-ts/ts-types.md#length)、[ResourceStr/apis-arkui/arkui-ts/ts-types.md#resourcestr)、[ResourceColor/apis-arkui/arkui-ts/ts-types.md#resourcecolor)类型以及这些类型的联合类型，示例见[Prop支持联合类型实例](#prop支持联合类型实例)。<br/>支持类型的场景请参考[观察变化](#观察变化)。|
+| 同步类型        | 单向同步。对父组件状态变量值的修改，将同步给子组件\@Prop装饰的变量，子组件\@Prop装饰的变量的修改不会同步到父组件的状态变量上。<br>嵌套类型的场景请参考观察变化。 |
+| 允许装饰的变量类型   |  Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持Date类型。<br/>API version 11及以上支持Map、Set类型、undefined和null类型、ArkUI框架定义的联合类型Length、ResourceStr、ResourceColor类型以及这些类型的联合类型，示例见Prop支持联合类型实例。<br/>支持类型的场景请参考观察变化。|
 | 不允许装饰的变量类型 | 不支持装饰Function类型。      |
-| 嵌套传递层数        | 在组件复用场景，建议@Prop深度嵌套数据不要超过5层，嵌套太多会导致深拷贝占用的空间过大以及GarbageCollection(垃圾回收)，引起性能问题，此时更建议使用[\@ObjectLink](arkts-observed-and-objectlink.md)。 |
-| 被装饰变量的初始值   | 允许本地初始化。API version 11及以上，如果和[\@Require](arkts-require.md)结合使用，则必须父组件构造传参。 |
+| 嵌套传递层数        | 在组件复用场景，建议@Prop深度嵌套数据不要超过5层，嵌套太多会导致深拷贝占用的空间过大以及GarbageCollection(垃圾回收)，引起性能问题，此时更建议使用\@ObjectLink。 |
+| 被装饰变量的初始值   | 允许本地初始化。API version 11及以上，如果和\@Require结合使用，则必须父组件构造传参。 |
 
 
 ## 变量的传递/访问规则说明
 
 | 装饰器使用规则          | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| 从父组件初始化     | 如果本地有初始化，则是可选的，初始化行为和[\@State](./arkts-state.md#变量的传递访问规则说明)保持一致。没有的话，则必选，支持父组件中的常规变量（常规变量对@Prop赋值，只是数值的初始化，常规变量的变化不会触发UI刷新。只有状态变量才能触发UI刷新）、[\@State](arkts-state.md)、[\@Link](arkts-link.md)、\@Prop、[\@Provide](arkts-provide-and-consume.md)、[\@Consume](arkts-provide-and-consume.md)、[\@ObjectLink](arkts-observed-and-objectlink.md)、[\@StorageLink](arkts-appstorage.md#storagelink)、[\@StorageProp](arkts-appstorage.md#storageprop)、[\@LocalStorageLink](arkts-localstorage.md#localstoragelink)和[\@LocalStorageProp](arkts-localstorage.md#localstorageprop)去初始化子组件中的\@Prop装饰的变量。 |
+| 从父组件初始化     | 如果本地有初始化，则是可选的，初始化行为和\@State保持一致。没有的话，则必选，支持父组件中的常规变量（常规变量对@Prop赋值，只是数值的初始化，常规变量的变化不会触发UI刷新。只有状态变量才能触发UI刷新）、\@State、\@Link、\@Prop、\@Provide、\@Consume、\@ObjectLink、\@StorageLink、\@StorageProp、\@LocalStorageLink和\@LocalStorageProp去初始化子组件中的\@Prop装饰的变量。 |
 |用于初始化子组件| \@Prop支持初始化子组件中的常规变量、\@State、\@Link、\@Prop、\@Provide。|
 | 是否支持组件外访问 | \@Prop装饰的变量是私有的，只能在组件内访问。                 |
 
@@ -55,7 +55,7 @@
 
 \@Prop装饰的数据可以观察到以下变化。
 
-- 当装饰支持类型，可以观察到赋值的变化。简单类型完整示例请参考[父组件\@State到子组件\@Prop简单数据类型同步](#父组件state到子组件prop简单数据类型同步)。
+- 当装饰支持类型，可以观察到赋值的变化。简单类型完整示例请参考父组件\@State到子组件\@Prop简单数据类型同步。
 
   ```ts
   // 简单类型
@@ -68,7 +68,7 @@
   this.title = new Model('Hi');
   ```
 
-- 当装饰的类型是Object或者class复杂类型时，可以观察到自身的赋值和第一层的属性的变化，属性即object.keys(observedObject)返回的所有属性。复杂类型完整示例请参考[从父组件中的\@State类对象属性到\@Prop简单类型的同步](#从父组件中的state类对象属性到prop简单类型的同步)。
+- 当装饰的类型是Object或者class复杂类型时，可以观察到自身的赋值和第一层的属性的变化，属性即Object.keys(observedObject)返回的所有属性。复杂类型完整示例请参考从父组件中的\@State类对象属性到\@Prop简单类型的同步。
 
   <!-- @[prop_seventeen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
   
@@ -111,9 +111,9 @@
   ```
 
 
-对于嵌套场景，如果class是被\@Observed装饰的，可以观察到class属性的变化，示例请参考[@Prop嵌套场景](#prop嵌套场景)。
+对于嵌套场景，如果class是被\@Observed装饰的，可以观察到class属性的变化，示例请参考@Prop嵌套场景。
 
-- 当装饰的类型是数组的时候，可以观察到数组本身的赋值和数组项的添加、删除和更新。数组类型完整示例请参考[父组件\@State数组项到子组件\@Prop简单数据类型同步](#父组件state数组项到子组件prop简单数据类型同步)。
+- 当装饰的类型是数组的时候，可以观察到数组本身的赋值和数组项的添加、删除和更新。数组类型完整示例请参考父组件\@State数组项到子组件\@Prop简单数据类型同步。
 
   ```ts
   // @Prop装饰的对象为数组时
@@ -135,11 +135,11 @@
 - 除了\@State，数据源也可以用\@Link或\@Prop装饰，对\@Prop的同步机制是相同的。
 - 数据源和\@Prop装饰的变量的类型需要相同。
 
-- 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性，详见[装饰Date类型变量](#装饰date类型变量)。
+- 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性，详见装饰Date类型变量。
 
-- 当装饰的变量是Map时，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。详见[装饰Map类型变量](#装饰map类型变量)。
+- 当装饰的变量是Map时，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。详见装饰Map类型变量。
 
-- 当装饰的变量是Set时，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`, `clear`, `delete` 更新Set的值。详见[装饰Set类型变量](#装饰set类型变量)。
+- 当装饰的变量是Set时，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`, `clear`, `delete` 更新Set的值。详见装饰Set类型变量。
 
 ### 框架行为
 
@@ -193,7 +193,7 @@ struct Father {
 
 ## 限制条件
 
-- \@Prop装饰变量时会进行深拷贝，在拷贝的过程中除了基本类型、Map、Set、Date、Array外，都会丢失类型。例如，对于通过NAPI提供的复杂类型（如[PixelMap/apis-image-kit/arkts-apis-image-PixelMap.md)），由于其部分实现在Native侧，因此无法在ArkTS侧通过深拷贝获得完整的数据；同样，RegExp类型在拷贝过程中会丢失原类型，导致被\@Prop装饰后无法调用正则相关函数。
+- \@Prop装饰变量时会进行深拷贝，在拷贝的过程中除了基本类型、Map、Set、Date、Array外，都会丢失类型。例如，对于通过NAPI提供的复杂类型（如PixelMap），由于其部分实现在Native侧，因此无法在ArkTS侧通过深拷贝获得完整的数据；同样，RegExp类型在拷贝过程中会丢失原类型，导致被\@Prop装饰后无法调用正则相关函数。
 
 - \@Prop不支持装饰Function类型的变量，API version 23之前，应用在运行时会出现错误。
 
@@ -390,7 +390,7 @@ struct Index {
 
 如果图书馆有一本图书和两位用户，每位用户都可以将图书标记为已读，此标记行为不会影响其他用户。从代码角度讲，对\@Prop图书对象的本地更改不会同步给图书馆组件中的\@State图书对象。
 
-在此示例中，图书类可以使用\@Observed装饰器，但不是必须的，只有在嵌套结构时需要此装饰器。这一点会在[从父组件中的\@State数组项到\@Prop class类型的同步](#从父组件中的state数组项到prop-class类型的同步)说明。
+在此示例中，图书类可以使用\@Observed装饰器，但不是必须的，只有在嵌套结构时需要此装饰器。这一点会在从父组件中的\@State数组项到\@Prop class类型的同步说明。
 
 <!-- @[prop_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFive.ets) --> 
 

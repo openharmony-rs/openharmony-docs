@@ -11,7 +11,7 @@
 
 开发者可以通过本指导了解在OpenHarmony应用中，如何使用Native Rawfile接口操作Rawfile目录和文件。功能包括文件列表遍历、文件打开、搜索、读取和关闭Rawfile。  
 
-64后缀相关接口属于新增接口，新接口支持打开更大的rawfile文件(超过2G建议使用)，具体请参考：[Rawfile接口介绍/apis-localization-kit/capi-rawfile.md)。64相关的开发步骤和非64一致，将非64接口替换为64接口即可，例如：OH_ResourceManager_OpenRawFile替换为OH_ResourceManager_OpenRawFile64。
+64后缀相关接口属于新增接口，新接口支持打开更大的rawfile文件(超过2G建议使用)，具体请参考：Rawfile接口介绍。64相关的开发步骤和非64一致，将非64接口替换为64接口即可，例如：OH_ResourceManager_OpenRawFile替换为OH_ResourceManager_OpenRawFile64。
 
 ## 接口说明
 
@@ -30,7 +30,7 @@
 | void OH_ResourceManager_ReleaseNativeResourceManager(NativeResourceManager *resMgr) | 释放native resource manager相关资源。    |
 | bool OH_ResourceManager_IsRawDir(const NativeResourceManager *mgr, const char *path) | 判断路径是否是rawfile下的目录。    |
 
-详细的接口说明请参考[rawfile/apis-localization-kit/capi-rawfile.md)。
+详细的接口说明请参考rawfile。
 
 ## 开发步骤
 
@@ -371,7 +371,7 @@
 
 1. 打开src\main\ets\pages\index.ets, 导入"libentry.so"。
 
-2. 资源获取包括获取本应用包资源、应用内跨包资源、跨应用包资源。<br>通过context.resourceManager获取本应用包resourceManager对象。<br>通过context.createModuleContext().resourceManager获取应用内跨包resourceManager对象。<!--Del--><br>通过context.createModuleContext(bundleName: 'bundleName name', moduleName: 'module name').resourceManager获取跨应用包resourceManager对象，该方法仅支持系统应用使用。<!--DelEnd--><br>Context的更多使用信息请参考[应用上下文Context](../application-models/application-context-stage.md)。
+2. 资源获取包括获取本应用包资源、应用内跨包资源、跨应用包资源。<br>通过context.resourceManager获取本应用包resourceManager对象。<br>通过context.createModuleContext().resourceManager获取应用内跨包resourceManager对象。<!--Del--><br>通过context.createModuleContext(bundleName: 'bundleName name', moduleName: 'module name').resourceManager获取跨应用包resourceManager对象，该方法仅支持系统应用使用。<!--DelEnd--><br>Context的更多使用信息请参考应用上下文Context。
     
 3. 调用src/main/cpp/types/libentry/index.d.ts中声明的接口，如getFileList，传入js的资源管理对象以及rawfile文件夹的相对路径。
 

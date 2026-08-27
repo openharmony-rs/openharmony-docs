@@ -18,11 +18,11 @@
 单元测试框架支持的功能特性如下。
 |   特性     | 功能说明                                                     |
 |  -------- | ------------------------------------------------------------ |
-|  [基础流程能力](#基础流程能力) | 支持测试用例识别调度及异步执行测试用例。                                 |
-|  [断言能力](#断言能力)   | 判断用例实际结果值与预期值是否相符。                         |
-|  [Mock能力](#mock能力) | 支持函数级Mock能力，对定义的函数进行Mock并修改函数的行为，使其返回指定的值或者执行指定操作。 |
-|  [数据驱动能力](#数据驱动) | 提供数据驱动能力，支持复用同一个测试脚本，使用不同输入数据驱动测试脚本执行。 |
-|  [专项能力](#命令行执行测试脚本) | 支持测试套与用例筛选、随机执行、压力测试、超时设置、遇错即停模式和跳过执行模式。 |
+|  基础流程能力 | 支持测试用例识别调度及异步执行测试用例。                                 |
+|  断言能力   | 判断用例实际结果值与预期值是否相符。                         |
+|  Mock能力 | 支持函数级Mock能力，对定义的函数进行Mock并修改函数的行为，使其返回指定的值或者执行指定操作。 |
+|  数据驱动能力 | 提供数据驱动能力，支持复用同一个测试脚本，使用不同输入数据驱动测试脚本执行。 |
+|  专项能力 | 支持测试套与用例筛选、随机执行、压力测试、超时设置、遇错即停模式和跳过执行模式。 |
 
   **图1.单元测试框架主要功能**
 
@@ -43,7 +43,7 @@
 
 ### 搭建环境
 
-测试脚本基于DevEco Studio编写，请下载[DevEco Studio](https://developer.huawei.com/consumer/cn/download/)并完成<!--RP1-->[hdc配置](../dfx/hdc.md)<!--RP1End-->。
+测试脚本基于DevEco Studio编写，请下载[DevEco Studio](https://developer.huawei.com/consumer/cn/download/)并完成<!--RP1-->hdc配置<!--RP1End-->。
 
 ### 新建测试脚本
 
@@ -124,7 +124,7 @@ export default function abilityTest() {
 
 * aa test工具命令列表
 
-以下是单元测试过程中的常用命令，其他aa test命令及含义说明参考<!--RP2-->[命令指南说明](../tools/aa-tool.md)<!--RP2End-->。
+以下是单元测试过程中的常用命令，其他aa test命令及含义说明参考<!--RP2-->命令指南说明<!--RP2End-->。
 
 | 参数  | 参数说明                          | 示例                       |
 | ------------- |  -------------------------------------- | ---------------------------------- |
@@ -156,7 +156,7 @@ export default function abilityTest() {
 >
 > 下文参数配置和命令示例均基于Stage模型。
 >
-> 执行命令参数需基于@ohos/hypium框架发布版本，且测试应用包需集成该版本，否则命令参数无法响应，具体配置方式参考[发布方式](#单元测试框架发布方式)。  
+> 执行命令参数需基于@ohos/hypium框架发布版本，且测试应用包需集成该版本，否则命令参数无法响应，具体配置方式参考发布方式。  
 
 
 **示例代码1**：执行所有测试用例
@@ -641,7 +641,7 @@ interface PromiseInfo {
 }
 ```
 ### Mock能力
-从@ohos/hypium 1.0.1版本开始，单元测试框架支持Mock能力。配置方式参考上文[发布方式](#单元测试框架发布方式)。
+从@ohos/hypium 1.0.1版本开始，单元测试框架支持Mock能力。配置方式参考上文发布方式。
 
 > **说明：**
 >
@@ -735,7 +735,7 @@ export default function afterReturnTest() {
       let claser: ClassName = new ClassName();
       // 进行Mock操作，对ClassName类的method_1函数进行Mock
       let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
-      // 期望claser.method_1函数被Mock后, 以'testA'为入参时调用函数返回结果'1',以'testB''为入参时调用函数返回结果undefined
+      // 期望claser.method_1函数被Mock后, 以'testA'为入参时调用函数返回结果'1',以'testB'为入参时调用函数返回结果undefined
       when(mockfunc)('testA').afterReturn('1');
       when(mockfunc)('testB').afterReturnNothing();
       // 对Mock后的函数进行断言，看是否符合预期。分别传入参数'testA'和'testB'时，应该返回自定义的预期结果1和undefined
@@ -1017,7 +1017,7 @@ export default function afterThrowTest() {
       let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
       // 期望claser.method_1函数被Mock后, 以'test'为参数调用函数时抛出error xxx异常
       when(mockfunc)('test').afterThrow('error xxx');
-      // 执行Mock后的函数，捕捉异常并使用assertEqual对比msg否符合预期
+      // 执行Mock后的函数，捕捉异常并使用assertEqual对比msg是否符合预期
       try {
         claser.method_1('test');
       } catch (e) {
@@ -1321,7 +1321,7 @@ export default class TestAbility extends UIAbility {
 ```
 
  <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) --> 
- 
+
  ``` TypeScript
  import { describe, it } from '@ohos/hypium';
  
@@ -1341,12 +1341,13 @@ export default class TestAbility extends UIAbility {
    value: string
  }
  ```
->**说明:** 
+ 
+> **说明：** 
 >
->若要使用数据驱动传入参数功能，测试用例`it`的`func`必须传入两个参数：`done`和`data`，且入参顺序不可调整。若不使用数据驱动传入参数功能，`func`可以不传参或仅传入`done`。
+> 若要使用数据驱动传入参数功能，测试用例`it`的`func`必须传入两个参数：`done`和`data`，且入参顺序不可调整。若不使用数据驱动传入参数功能，`func`可以不传参或仅传入`done`。
 
 ### 专项能力
-专项能力提供脚本执行配置能力，包括筛选执行、压力执行、随机执行等，通过命令行方式执行，具体用法请参考[命令行执行测试脚本](#命令行执行测试脚本)章节介绍。
+专项能力提供脚本执行配置能力，包括筛选执行、压力执行、随机执行等，通过命令行方式执行，具体用法请参考命令行执行测试脚本章节介绍。
 
 ## 单元测试框架常见问题
 
@@ -1383,5 +1384,5 @@ export default class TestAbility extends UIAbility {
 3. 检查用例代码逻辑，确保断言通过。
 ## 完整示例
 <!--RP3-->
-[测试框架](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit)
+[测试框架](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Test/jsunit)
 <!--RP3End-->

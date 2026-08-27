@@ -11,14 +11,14 @@
 
 > **说明：**
 > 
-> 从API 12开始，已不再推荐三方应用使用指定Ability方式（即显式Want）拉起其他应用。关于如何从指定Ability方式切换到指定[应用链接](app-startup-overview.md#应用链接)方式，详见[显式Want跳转切换应用链接跳转适配指导](uiability-startup-adjust.md)。
+> 从API 12开始，已不再推荐三方应用使用指定Ability方式（即显式Want）拉起其他应用。关于如何从指定Ability方式切换到指定应用链接方式，详见显式Want跳转切换应用链接跳转适配指导。
 
 
 ## 应用链接
 
-应用链接是指可以将用户引导至应用内特定位置或相关网页的URL，常见的格式如下。更多关于应用链接格式与字段含义的说明，详见[应用链接说明](app-uri-config.md)。
+应用链接是指可以将用户引导至应用内特定位置或相关网页的URL，常见的格式如下。更多关于应用链接格式与字段含义的说明，详见应用链接说明。
 
-```
+```txt
 scheme://host[:port]/path
 ```
 
@@ -48,7 +48,7 @@ scheme://host[:port]/path
 | 是否可用于分享或直接在网页中访问 | 可以 | 不可以，需在代码中调用。 |
 | 是否可以直接拉起目标应用 | 可以 | 可以，但不推荐使用，存在被仿冒风险。 |
 
-Deep Linking与App Linking均可以使用[openLink/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口实现，不同条件下的跳转效果如下。
+Deep Linking与App Linking均可以使用openLink()接口实现，不同条件下的跳转效果如下。
 
 > **说明：**
 > 

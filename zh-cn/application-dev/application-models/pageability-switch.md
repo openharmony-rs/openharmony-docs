@@ -7,10 +7,10 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-[FA模型](ability-terminology.md#fa模型)中PageAbility对应[Stage模型](ability-terminology.md#stage模型)中的UIAbility，PageAbility切换为UIAbility的方法如下。
+FA模型中PageAbility对应Stage模型中的UIAbility，PageAbility切换为UIAbility的方法如下。
 
 
-1. 在Stage应用中[创建UIAbility](uiability-usage.md)。
+1. 在Stage应用中创建UIAbility。
 
 2. 将FA应用中PageAbility的代码迁移到新创建的UIAbility中。
 

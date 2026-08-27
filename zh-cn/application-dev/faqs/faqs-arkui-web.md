@@ -2,10 +2,10 @@
 
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @weixin_41848015-->
-<!--Designer: @ctqctq99; @yaomingliu; @libing23232323-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ## H5页面如何与ArkTS交互(API 10)
 
@@ -113,7 +113,7 @@ Web组件的onUrlLoadIntercept的不同返回结果对应不同的操作：
 
 **参考链接**
 
-[onUrlloadIntercept/apis-arkweb/arkts-basic-components-web-events.md#onurlloadinterceptdeprecated)
+onUrlLoadIntercept
 
 
 ## 为什么Web组件的onKeyEvent键盘事件不生效(API 9)
@@ -128,7 +128,7 @@ onKeyEvent为通用事件，当前Web组件不支持通用事件。Web组件监�
 
 **参考链接**
 
-[onInterceptKeyEvent/apis-arkweb/arkts-basic-components-web-events.md#oninterceptkeyevent9)
+onInterceptKeyEvent
 
 
 ## onInterceptRequest拦截URL并自定义HTML文件，页面加载失败(API 9)
@@ -146,7 +146,7 @@ onInterceptRequest拦截页面Web的src的链接后返回自定义HTML，但是�
 ```ts
 Web({ src: 'www.example.com', controller: this.controller })
   .onInterceptRequest((event) => {
-    console.log('url:' + event.request.getRequestUrl())
+    console.info('url:' + event.request.getRequestUrl())
     this.responseweb = new WebResourceResponse();
     var head1:Header = {
       headerKey:"Connection",
@@ -165,7 +165,7 @@ Web({ src: 'www.example.com', controller: this.controller })
 
 **参考链接**
 
-[WebResourceResponse/apis-arkweb/arkts-basic-components-web-WebResourceResponse.md)
+WebResourceResponse
 
 
 ## 如何在ArkTS代码中执行HTML内的JS函数(API 9)
@@ -179,20 +179,20 @@ Web({ src: 'www.example.com', controller: this.controller })
 
 **参考链接**
 
-[runJavaScript/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascript)
+runJavaScript
 
 
 ## 使用Web组件加载本地网页时，如何在本地网页中调用ArkTS中的函数(API 9)
 
 **解决措施**
 
-在ArkTs中使用JavaScriptProxy方法将ArkTs里的对象注册到H5的window对象中，然后在h5中使用window对象调用该方法。比如下面例子，在ArkTs中将testObj这个对象以别名testObjName注册到h5的window对象上，在上面的h5中就可以使用window.testObjName去访问这个对象。
+在ArkTS中使用JavaScriptProxy方法将ArkTS里的对象注册到H5的window对象中，然后在h5中使用window对象调用该方法。比如下面例子，在ArkTS中将testObj这个对象以别名testObjName注册到h5的window对象上，在上面的h5中就可以使用window.testObjName去访问这个对象。
 
-示例参考：[前端页面调用应用侧函数](../web/web-in-page-app-function-invoking.md#如何建立应用侧与h5侧的交互通道)
+示例参考：前端页面调用应用侧函数
 
 **参考链接**
 
-[javaScriptProxy/apis-arkweb/arkts-basic-components-web-i.md#javascriptproxy12)
+javaScriptProxy
 
 
 ## Web组件domStorageAccess属性设置(API 9)
@@ -203,7 +203,7 @@ Web({ src: 'www.example.com', controller: this.controller })
 
 **参考链接**
 
-[domStorageAccess/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess)
+domStorageAccess
 
 
 ## 如何解决Web组件加载的HTML页面内检测网络状态失败(API 9)
@@ -218,7 +218,7 @@ Web({ src: 'www.example.com', controller: this.controller })
 
 **参考链接**
 
-[GET\_NETWORK\_INFO](../security/AccessToken/permissions-for-all.md#ohospermissionget_network_info)
+GET\_NETWORK\_INFO
 
 
 ## 如何自定义拼接设置User-Agent参数
@@ -261,7 +261,7 @@ struct WebComponent {
 
 **参考链接**
 
-[User-Agent开发指导（自定义user-agent结构）](../web/web-default-userAgent.md#自定义user-agent结构)
+User-Agent开发指导（自定义user-agent结构）
 ## WebView支持同层渲染吗(API 10)
 
 **解决措施**
@@ -278,7 +278,7 @@ setWebDebuggingAccess()接口开启Web组件前端页面调试能力，利用Dev
 
 **参考链接**
 
-[使用Devtools工具调试前端页面（开发指南）](../web/web-debugging-with-devtools.md)
+使用Devtools工具调试前端页面（开发指南）
 
 
 ## WebView如何实现网络请求拦截功能(API 10)
@@ -289,20 +289,20 @@ setWebDebuggingAccess()接口开启Web组件前端页面调试能力，利用Dev
 
 **参考链接**
 
-[自定义页面请求响应（开发指南）](../web/web-resource-interception-request-mgmt.md)
+自定义页面请求响应（开发指南）
 
 
 ## WebView和原生进行通信的方式有哪些，如何实现(API 10)
 
 **解决措施**
 
-1. Native->H5使用runJavaScript接口注入JS进行通信，H5->Native使用registerJavaScriptProy接口。先将Native方法注册至H5侧，H5再通过调用前端方法实现与Native侧的通信。
-2. runJavaScript、registerJavaScriptProy接口同时在NDK侧C API暴露。
-3. 使用onInterceptrequest接口拦截H5侧请求，同时将Native侧数据作为Response返回至H5，实现Native与H5的通信。
+1. Native->H5使用runJavaScript接口注入JS进行通信，H5->Native使用registerJavaScriptProxy接口。先将Native方法注册至H5侧，H5再通过调用前端方法实现与Native侧的通信。
+2. runJavaScript、registerJavaScriptProxy接口同时在NDK侧C API暴露。
+3. 使用onInterceptRequest接口拦截H5侧请求，同时将Native侧数据作为Response返回至H5，实现Native与H5的通信。
 
 **参考链接**
 
-[runJavaScript/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)、[registerJavaScriptProxy/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)、[javaScriptProxy/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)、[onInterceptRequest/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9)
+runJavaScript、registerJavaScriptProxy、javaScriptProxy、onInterceptRequest
 
 
 ## WebView进程模型和渲染机制是什么(API 11)
@@ -323,15 +323,15 @@ setWebDebuggingAccess()接口开启Web组件前端页面调试能力，利用Dev
    * 提供编译样例指导
 
 
-## Webview如何设置mixcontent策略，用以解决http与https混合加载的问题？
+## WebView如何设置mixed content策略，用以解决http与https混合加载的问题？
 
 **解决措施**
 
-Webview提供mixedMode(mixedMode: MixedMode)接口，设置是否允许加载超文本传输协议（HTTP）和超文本传输安全协议（HTTPS）混合内容，默认不允许加载HTTP和HTTPS混合内容。
+WebView提供mixedMode(mixedMode: MixedMode)接口，设置是否允许加载超文本传输协议（HTTP）和超文本传输安全协议（HTTPS）混合内容，默认不允许加载HTTP和HTTPS混合内容。
 
 **参考链接**
 
-[mixedmode/apis-arkweb/arkts-basic-components-web-e.md#mixedmode)
+mixedmode
 
 
 ## WebView除了设置缓存，还有什么方式可以提升渲染速度吗？
@@ -342,10 +342,10 @@ Webview提供mixedMode(mixedMode: MixedMode)接口，设置是否允许加载超
 
 **参考链接**
 
-[prepareforpageload/apis-arkweb/arkts-apis-webview-WebviewController.md#prepareforpageload10)
+prepareforpageload
 
 
-## 如何预创建Web组件？如何回收web组件复用？
+## 如何预创建Web组件？如何回收Web组件复用？
 
 **解决措施**
 
@@ -353,7 +353,7 @@ Webview提供mixedMode(mixedMode: MixedMode)接口，设置是否允许加载超
 
 **参考链接**
 
-[动态创建Web组件](../web/web-page-loading-with-web-components.md)
+动态创建Web组件
 
 
 ## 目前OpenHarmony是否有提供类似其他系统的JavaScript引擎能力?
@@ -364,7 +364,7 @@ Webview提供mixedMode(mixedMode: MixedMode)接口，设置是否允许加载超
 
 **参考链接**
 
-[JSVM/common/capi-jsvm.md)
+JSVM
 
 ## 无法使用`requestPointerLock`鼠标锁定功能
 
@@ -375,4 +375,4 @@ Webview提供mixedMode(mixedMode: MixedMode)接口，设置是否允许加载超
 
 **解决措施**
 
-从API version 22开始，ArkWeb支持完整的鼠标锁定功能，该功能需要应用权限[ohos.permission.LOCK_WINDOW_CURSOR](../security/AccessToken/permissions-for-all.md#ohospermissionlock_window_cursor)。
+从API version 22开始，ArkWeb支持完整的鼠标锁定功能，该功能需要应用权限ohos.permission.LOCK_WINDOW_CURSOR。

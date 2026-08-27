@@ -10,7 +10,7 @@
 
 当应用需要获取用户动作时，可以调用motion模块，例如判断用户当前是用左手还是右手操作设备屏幕。
 
-详细的接口介绍请参考[@ohos.multimodalAwareness.motion (动作感知能力)/apis-multimodalawareness-kit/js-apis-awareness-motion.md)。
+详细的接口介绍请参考@ohos.multimodalAwareness.motion (动作感知能力)。
 
 从API version 15开始，支持获取操作手状态。从API version 20开始，支持获取握持手状态。
 
@@ -26,7 +26,7 @@
 
 ### 需要权限
 
-使用motion模块获取用户操作手时，需要权限：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE，具体申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
+使用motion模块获取用户操作手时，需要权限：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE，具体申请方式请参考声明权限。
 
   ```JSON5
   "requestPermissions":[
@@ -84,43 +84,49 @@
 
 3. 订阅操作手感知
 
-   <!-- @[motion_subscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   <!-- @[motion_subscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->  
+   
+   ``` TypeScript
    try {
-      motion.on('operatingHandChanged', callback);
-      console.info("on succeeded");
+     motion.on('operatingHandChanged', callback);
+     console.info('on succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed on and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed on and err code is ' + error.code);
+     // ...
    }
    ```
 
 4. 取消订阅操作手感知
 
-   <!-- @[motion_unsubscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   <!-- @[motion_unsubscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
    try {
-      motion.off('operatingHandChanged');
-      console.info("off succeeded");
+     motion.off('operatingHandChanged');
+     console.info('off succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed off and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed off and err code is ' + error.code);
+     // ...
    }
    ```
 
 5. 获取最新操作手状态
 
-   <!-- @[motion_get_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   <!-- @[motion_get_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
    try {
-      let data:motion.OperatingHandStatus = motion.getRecentOperatingHandStatus();
-      console.info('get succeeded' + data);
+     let data:motion.OperatingHandStatus = motion.getRecentOperatingHandStatus();
+     console.info('get succeeded' + data);
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed get and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed get and err code is ' + error.code);
+     // ...
    }
    ```
 
@@ -135,7 +141,7 @@
 
 ### 需要权限
 
-使用motion模块获取用户握持手时，需要权限： ohos.permission.DETECT_GESTURE，具体申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
+使用motion模块获取用户握持手时，需要权限： ohos.permission.DETECT_GESTURE，具体申请方式请参考声明权限。
 
   ```JSON5
   "requestPermissions":[
@@ -163,47 +169,55 @@
 
 1. 导入模块。
 
-   <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
    import { motion } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
+   
 
 2. 定义回调函数接收握持手结果
 
-   <!-- @[motion_subscribe_holding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   <!-- @[motion_subscribe_holding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
    let callback:Callback<motion.HoldingHandStatus> = (data:motion.HoldingHandStatus) => {
      console.info('callback succeeded' + data);
    };
    ```
 
+
 3. 订阅握持手感知
 
-   <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
    try {
-      motion.on('holdingHandChanged', callback);
-      console.info("on succeeded");
+     motion.on('holdingHandChanged', callback);
+     console.info('on succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed on and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed on and err code is ' + error.code);
+     // ...
    }
    ```
+   
 
 4. 取消订阅握持手感知
 
-   <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
    
-   ```ts
+   ``` TypeScript
    try {
-      motion.off('holdingHandChanged');
-      console.info("off succeeded");
+     motion.off('holdingHandChanged');
+     console.info('off succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed off and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed off and err code is ' + error.code);
+     // ...
    }
    ```
+

@@ -22,9 +22,9 @@
 
 ## 开发步骤
 
-详细的API说明请参考[Camera/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考Camera。
 
-Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+Context获取方式请参考：获取UIAbility的上下文信息。
 
 1. 需要导入相机框架、媒体库、图片等相关领域依赖。
 
@@ -37,7 +37,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 通过[getCameraDevice/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameradevice18)获取对应的前置和后置相机。如果接口返回undefined，基于示例中的配置信息，表示当前设备不支持指定位置（前置/后置）的默认类型相机，无法实现多摄同开功能。
+2. 通过getCameraDevice获取对应的前置和后置相机。如果接口返回undefined，基于示例中的配置信息，表示当前设备不支持指定位置（前置/后置）的默认类型相机，无法实现多摄同开功能。
    
    ```ts
    function getSupportedCamerasFn(cameraManager: camera.CameraManager)
@@ -55,7 +55,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    }
    ```
 
-3. 获取对应的并发能力集。通过[getCameraConcurrentInfos/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)获取相机的输出并发能力信息数组[CameraConcurrentInfo/apis-camera-kit/arkts-apis-camera-i.md#cameraconcurrentinfo18)，数组内部包含相机在对应并发模式下支持的模式和输出能力，**在多摄同开场景下设置的模式和输出能力必须在并发能力集的范围之内**。若[getCameraConcurrentInfos/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)接口返回空数组，则表明当前设备不支持并发功能。
+3. 获取对应的并发能力集。通过getCameraConcurrentInfos获取相机的输出并发能力信息数组CameraConcurrentInfo，数组内部包含相机在对应并发模式下支持的模式和输出能力，**在多摄同开场景下设置的模式和输出能力必须在并发能力集的范围之内**。若getCameraConcurrentInfos接口返回空数组，则表明当前设备不支持并发功能。
 
    ```ts
    function getSupportedOutputCapabilityFn(cameraManager: camera.CameraManager, curCameraDeviceFront: camera.CameraDevice, curCameraDeviceBack: camera.CameraDevice)
@@ -65,9 +65,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
      if (sceneModes === undefined) {
        return;
      }
-     let isSupported = sceneModes.findIndex((sceneMode: camera.SceneMode) => {
-       return sceneMode === camera.SceneMode.NORMAL_PHOTO;
-     });
+     let isSupported: boolean = sceneModes.includes(camera.SceneMode.NORMAL_PHOTO); 
      if (!isSupported) {
        return;
      }
@@ -256,7 +254,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    }
    ```
   
-7. 打开相机。通过[open/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18)以多摄同开状态打开指定相机。在使用[open/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18)接口前，请先查询接口是否支持并发能力集，并优先调用[getCameraConcurrentInfos/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)方法，获取多摄同开状态下的相机并发能力集。请勿在未查询并发能力集的情况下使用[open/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18)，否则会导致打开相机失败。
+7. 打开相机。通过open以多摄同开状态打开指定相机。在使用open接口前，请先查询接口是否支持并发能力集，并优先调用getCameraConcurrentInfos方法，获取多摄同开状态下的相机并发能力集。请勿在未查询并发能力集的情况下使用open，否则会导致打开相机失败。
 
    ```ts
    async function initCamera(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice) {
@@ -412,6 +410,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
       try {
         await videoOutput?.start();
         await avRecorder?.start();
+        isRecording = true;
       } catch (error) {
         console.error(`startVideo err`);
       }
@@ -419,7 +418,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 
     // 停止录制。
     async function stopVideo(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
-      if (isRecording) {
+      if (!isRecording) {
         return;
       }
       try {

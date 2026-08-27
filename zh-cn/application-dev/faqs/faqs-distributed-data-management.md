@@ -15,7 +15,7 @@
 
 **参考链接**
 
-[关系型数据库/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)
+关系型数据库StoreConfig
 
 
 ## 关系型数据库rdb中使用TRUNCATE TABLE语句无法清空表数据(API 9)
@@ -68,7 +68,7 @@ struct Index {
 
 **参考链接**
 
-[持久化数据管理\(OpenHarmony\)](../ui/state-management/arkts-persiststorage.md)
+持久化数据管理\(OpenHarmony\)
 
 
 ## 如何将PixelMap的数据存储到数据库中(API 9)
@@ -79,7 +79,7 @@ PixelMap应该被转换成相应的ArrayBuffer再放进数据库。
 
 **参考链接**
 
-[readPixelsToBuffer/apis-image-kit/arkts-apis-image-PixelMap.md#readpixelstobuffer7-1)
+readPixelsToBuffer
 
 
 ## 如何获取rdb关系型数据库文件(API 9)
@@ -144,7 +144,7 @@ API9版本之前对TEXT文本存储长度限制在1024字节，所以会存在�
 
 1. 使用put操作后，使用flush持久化数据，然后再使用get获取数据。
 
-2. 由于flush操作是异步执行，将Storage实例通过异步线程回写入文件中, 所以需要等待flush操作执行完成后，再执行get操作。
+2. 由于flush操作是异步执行，将Storage实例通过异步线程回写入文件中，所以需要等待flush操作执行完成后，再执行get操作。
 
 
 ## 使用RDB数据库时，能否指定内存数据库模式(API 9)
@@ -158,7 +158,7 @@ RDB数据库底层使用的是SQLite，默认的内存数据库模式是文件�
 
 **解决措施**
 
-可以使用[execute/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)接口执行sql语句获取数据库大小，如：SELECT page_count * page_size AS size FROM pragma_page_count(), pragma_page_size()。关系型数据库使用的是WAL模式，在查询前可以执行sql语句触发一次checkpoint刷新数据库文件大小，如：PRAGMA wal_checkpoint。
+可以使用execute接口执行sql语句获取数据库大小，如：SELECT page_count * page_size AS size FROM pragma_page_count(), pragma_page_size()。关系型数据库使用的是WAL模式，在查询前可以执行sql语句触发一次checkpoint刷新数据库文件大小，如：PRAGMA wal_checkpoint。
 
 
 ## 如何获取rdb关系型数据库路径

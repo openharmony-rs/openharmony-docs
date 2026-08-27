@@ -1,12 +1,12 @@
 # Web组件大小自适应页面内容布局
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc-->
-<!--Designer: @LongLie-->
+<!--Owner: @sinat_22543221-->
+<!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-使用Web组件大小自适应页面内容布局模式[layoutMode/apis-arkweb/arkts-basic-components-web-attributes.md#layoutmode11)([WebLayoutMode/apis-arkweb/arkts-basic-components-web-e.md#weblayoutmode11).FIT_CONTENT)时，能使Web组件的大小根据页面内容自适应变化。
+使用Web组件大小自适应页面内容布局模式layoutMode(WebLayoutMode.FIT_CONTENT)时，能使Web组件的大小根据页面内容自适应变化。
 
 <!--RP1--><!--RP1End-->
 
@@ -35,10 +35,10 @@
 
 ## 规格与约束
 
-1. 建议配置[渲染模式](web-render-mode.md)为[同步渲染模式](web-render-mode.md#同步渲染模式)，避免因为组件大小超出限制导致异常场景（白屏，布局错误）。
-2. 建议配置[overScrollMode/apis-arkweb/arkts-basic-components-web-attributes.md#overscrollmode11)（过滚动模式）为关闭状态。当过滚动模式开启时，当用户在Web界面上滑动到边缘时，Web会通过弹性动画弹回界面，会与Scroll组件的回弹相互冲突，影响体验。
-3. [keyboardAvoidMode/apis-arkweb/arkts-basic-components-web-attributes.md#keyboardavoidmode12)（键盘避让）属性配置为RESIZE_CONTENT时，该避让模式不生效。
-4. 不支持对页面进行缩放。
+1. 建议配置渲染模式为同步渲染模式，避免因为组件大小超出限制导致异常场景（白屏，布局错误）。
+2. 建议配置overScrollMode（过滚动模式）为关闭状态。当过滚动模式开启时，当用户在Web界面上滑动到边缘时，Web会通过弹性动画弹回界面，会与Scroll组件的回弹相互冲突，影响体验。
+3. keyboardAvoidMode（键盘避让）属性配置为RESIZE_CONTENT时，该避让模式不生效。
+4. 不支持对页面进行手势缩放。
 5. 不支持通过Web组件的height属性修改组件高度。
 6. 仅支持根据页面内容自适应组件高度，不支持自适应宽度。
 7. 不支持瀑布流页面。
@@ -143,12 +143,12 @@ fit_content.html页面代码如下：
 
 **可能原因：**
 
-- 内部H5页面高度超过了7680px（物理像素），但没有设置渲染模式为[同步渲染模式](web-render-mode.md#同步渲染模式)。
-- 未配置[metaviewport/apis-arkweb/arkts-basic-components-web-attributes.md#metaviewport12)属性。
+- 内部H5页面高度超过了7680px（物理像素），但没有设置渲染模式为同步渲染模式。
+- 未配置metaviewport属性。
 
 **解决方案：**
 
-- 更改渲染模式为[同步渲染模式](web-render-mode.md#同步渲染模式)。
+- 更改渲染模式为同步渲染模式。
 - 在H5页面增加meta配置`<meta name="viewport" content="width=device-width, initial-scale=1.0">`
 
 
@@ -158,7 +158,7 @@ fit_content.html页面代码如下：
 
 核心内容DOM节点高度为0。
 
-CSS样式`height：<number> vh`和Web组件大小自适应页面布局存在计算冲突，请检查`height：<number> vh`是否是由body节点以内的第一个高度CSS样式。如以下结构，id为2的DOM节点高度将为0。
+CSS样式`height: <number> vh`和Web组件大小自适应页面布局存在计算冲突，请检查`height: <number> vh`是否是由body节点以内的第一个高度CSS样式。如以下结构，id为2的DOM节点高度将为0。
 
 ```html
 <body>

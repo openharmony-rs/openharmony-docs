@@ -35,7 +35,7 @@
   用于扩展应用的功能或实现跨设备协同。它允许应用在后台运行某些任务，或者将部分功能迁移到其他设备上执行，从而实现分布式能力。
 * **字节流**
   
-  字节流是数据类型为[ArrayBuffer](../arkts-utils/arraybuffer-object.md)类型的数据。可以被用于存储二进制数据，例如图像或音频数据。
+  字节流是数据类型为ArrayBuffer类型的数据。可以被用于存储二进制数据，例如图像或音频数据。
 * **传输流**
   
   可进行图片、音频、文本信息和字节流。
@@ -63,7 +63,7 @@
 ### 搭建环境
 
 1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
-2. 将public-SDK更新到API 20或以上，更新SDK的具体操作可参见[更新指南](../tools/openharmony_sdk_upgrade_assistant.md)。
+2. 将public-SDK更新到API 20或以上，更新SDK的具体操作可参见更新指南。
 3. 打开设备A和设备B的蓝牙，互相识别，实现组网。
 
 ### 检验环境是否搭建成功
@@ -83,37 +83,40 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 ### 接口说明
 
-分布式扩展能力API的接口使用指导请参见[@ohos.application.DistributedExtensionAbility (协同Extension)/apis-distributedservice-kit/js-apis-distributedExtensionAbility.md)。
+分布式扩展能力API的接口使用指导请参见@ohos.application.DistributedExtensionAbility (协同Extension)。
 
 | 接口名                                                               | 描述                       |
 | -------------------------------------------------------------------- | -------------------------- |
 | onCreate(want: Want): void;                                          | 分布式协同触发创建。       |
-| onDestroy(): void;                                                   | 分布式协同销毁 。          |
-| onCollaborate(wantParam: Record): AbilityConstant.CollaborateResult; | 分布式协同有请求时时回调。 |
+| onDestroy(): void;                                                   | 分布式协同销毁。          |
+| onCollaborate(wantParam: Record): AbilityConstant.CollaborateResult; | 分布式协同有请求时回调。 |
 
 ### 开发步骤
 
 1. 在配置文件中注册 `Extension`组件。
    
-   在应用配置文件 `module.json5`中新增 `"extensionAbilities"`字段，其中注册类型 `"type"`设置为 `"distributed"`，元数据信息["metadata"/apis-ability-kit/js-apis-bundleManager-metadata.md)新增一个 `"name"`为 `"ohos.extension.DistributedExtension"`的条目。
+   在应用配置文件 `module.json5`中新增 `"extensionAbilities"`字段，其中注册类型 `"type"`设置为 `"distributed"`，元数据信息"metadata"新增一个 `"name"`为 `"ohos.extension.DistributedExtension"`的条目。
    
    DistributedExtensionAbility配置文件示例：
    
-   ```json
-   "extensionAbilities": [
-     {
-       "name": "EntrydistributedAbility",
-       "srcEntry": "./ets/entrybackupability/EntryDistributedAbility.ets",
-       "type": "distributed",
-       "exported": false,
-       "metadata": [
-         {
-           "name": "ohos.extension.DistributedExtension",
-         }
-       ],
-       "srcEntry": "./ets/common/MDSExtension.ts",
+   ```json5
+   {
+     "module": {
+       "extensionAbilities": [
+        {
+          "name": "EntrydistributedAbility",
+          "type": "distributed",
+          "exported": false,
+          "metadata": [
+            {
+              "name": "ohos.extension.DistributedExtension"
+            }
+          ],
+          "srcEntry": "./ets/common/MDSExtension.ts"
+        }
+       ]
      }
-   ]
+   }
    ```
 2. 导入开发所需模块。
    

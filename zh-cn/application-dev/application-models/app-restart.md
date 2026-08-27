@@ -20,7 +20,7 @@
 
 ### 不保留应用窗口的重启
 
-从API version 12开始，ApplicationContext提供了[restartApp/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12)接口，用于主动重启应用并拉起指定的UIAbility。重启过程中不保留当前应用窗口，相当于完全重新启动应用。重启过程中不会触发应用中Ability的onDestroy生命周期回调。
+从API version 12开始，ApplicationContext提供了restartApp()接口，用于主动重启应用并拉起指定的UIAbility。重启过程中不保留当前应用窗口，相当于完全重新启动应用。重启过程中不会触发应用中Ability的onDestroy生命周期回调。
 
 存在以下约束限制：
 - 仅支持主线程调用该接口。
@@ -74,7 +74,7 @@ struct Index {
 
 ### 保留应用窗口的重启
 
-从API version 22开始，UIAbilityContext提供了[restartApp/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#restartapp22)接口，用于重启当前UIAbility所在的进程，并拉起应用内的指定UIAbility。与ApplicationContext的restartApp不同，该接口可选择保留当前窗口或跳转到新窗口。重启过程中不触发进程中Ability的onDestroy生命周期回调。
+从API version 22开始，UIAbilityContext提供了restartApp()接口，用于重启当前UIAbility所在的进程，并拉起应用内的指定UIAbility。与ApplicationContext的restartApp不同，该接口可选择保留当前窗口或跳转到新窗口。重启过程中不触发进程中Ability的onDestroy生命周期回调。
 
 存在以下约束限制：
 - 仅支持主线程调用该接口。
@@ -171,13 +171,13 @@ struct Index {
 
 ## 原子化服务主动重启
 
-从API version 20开始，系统为原子化服务（Atomic Service）提供了专用的重启接口[restartSelfAtomicService/apis-ability-kit/js-apis-app-ability-abilityManager.md#abilitymanagerrestartselfatomicservice20)，用于触发原子化服务更新并重启当前原子化服务。重启过程中不会保留当前原子化服务窗口，也不会触发旧Ability的onDestroy生命周期回调。
+从API version 20开始，系统为原子化服务（Atomic Service）提供了专用的重启接口restartSelfAtomicService()，用于触发原子化服务更新并重启当前原子化服务。重启过程中不会保留当前原子化服务窗口，也不会触发旧Ability的onDestroy生命周期回调。
 
 存在以下约束限制：
 - 仅支持以独立窗口方式拉起原子化服务。
 - 不支持3秒内重复调用重启接口。
 
-原子化服务是应用的一种特殊形式，也可采用[应用主动重启以重新初始化应用](#应用主动重启以重新初始化应用)的方式进行重启。
+原子化服务是应用的一种特殊形式，也可采用应用主动重启以重新初始化应用的方式进行重启。
 
 以下是三种方式主动重启原子化服务的能力对比，开发者可以根据自己的业务需求进行选择。
 
@@ -213,4 +213,4 @@ export default class DemoAbility extends EmbeddableUIAbility {
 
 ## 应用故障恢复被动重启
 
-应用故障恢复重启接口由appRecovery模块提供，详见[应用恢复开发指导](../dfx/apprecovery-guidelines.md)。
+应用故障恢复重启接口由appRecovery模块提供，详见应用恢复开发指导。

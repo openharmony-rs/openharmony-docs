@@ -8,7 +8,7 @@
 
 ## 简介
 
-应用中的每个[进程](../application-models/process-model-stage.md)都会有一个主线程，主线程主要承担执行UI绘制操作、管理ArkTS引擎实例的创建和销毁、分发和处理事件、管理Ability生命周期等职责，具体可参见[线程模型概述](../application-models/thread-model-stage.md)。因此，开发应用时应当尽量避免将耗时的操作放在主线程中执行。ArkTS提供了**Worker**和**TaskPool**两种多线程并发能力，多线程并发允许在同一时间段内同时执行多段代码，这两个并发的基本能力可参见[TaskPool和Worker的对比](../arkts-utils/taskpool-vs-worker.md)。
+应用中的每个进程都会有一个主线程，主线程主要承担执行UI绘制操作、管理ArkTS引擎实例的创建和销毁、分发和处理事件、管理Ability生命周期等职责，具体可参见线程模型概述。因此，开发应用时应当尽量避免将耗时的操作放在主线程中执行。ArkTS提供了**Worker**和**TaskPool**两种多线程并发能力，多线程并发允许在同一时间段内同时执行多段代码，这两个并发的基本能力可参见TaskPool和Worker的对比。
 
 在介绍**Worker**和**TaskPool**的详细使用方法前，我们先简单介绍并发模型的相关概念，以便于大家的理解。
 
@@ -46,7 +46,7 @@ CSP与Actor之间的主要区别：
 
 ### 基本概念和运作原理
 
-当前系统中的Worker是一个独立的线程，基本概念可参见[TaskPool和Worker的对比](../arkts-utils/taskpool-vs-worker.md)。Worker拥有独立的运行环境，每个Worker线程和主线程一样拥有自己的内存空间、消息队列（MessageQueue）、事件轮询机制（EventLoop）、调用栈（CallStack）等。线程之间通过消息（Massage）进行交互，如下图所示：  
+当前系统中的Worker是一个独立的线程，基本概念可参见TaskPool和Worker的对比。Worker拥有独立的运行环境，每个Worker线程和主线程一样拥有自己的内存空间、消息队列（MessageQueue）、事件轮询机制（EventLoop）、调用栈（CallStack）等。线程之间通过消息（Message）进行交互，如下图所示：  
 
 **图2**  线程交互示意图
 
@@ -171,7 +171,7 @@ CSP与Actor之间的主要区别：
 
 ### 基本概念和运作原理
 
-相比使用Worker实现多线程并发，TaskPool更加易于使用，创建开销也少于Worker，并且Worker线程有个数限制，需要开发者自己掌握，TaskPool的基本概念可参见[TaskPool和Worker的对比](../arkts-utils/taskpool-vs-worker.md)。TaskPool作用是为应用程序提供一个多线程的运行环境。TaskPool在Worker之上实现了调度器和Worker线程池，TaskPool根据任务的优先级，将其放入不同的优先级队列，调度器会依据自己实现的调度算法（优先级，防饥饿），从优先级队列中取出任务，放入TaskPool中的Worker线程池，执行相关任务，流程图如下所示：
+相比使用Worker实现多线程并发，TaskPool更加易于使用，创建开销也少于Worker，并且Worker线程有个数限制，需要开发者自己掌握，TaskPool的基本概念可参见TaskPool和Worker的对比。TaskPool作用是为应用程序提供一个多线程的运行环境。TaskPool在Worker之上实现了调度器和Worker线程池，TaskPool根据任务的优先级，将其放入不同的优先级队列，调度器会依据自己实现的调度算法（优先级，防饥饿），从优先级队列中取出任务，放入TaskPool中的Worker线程池，执行相关任务，流程图如下所示：
 
 **图5**  TaskPool流程示意图
 
@@ -213,7 +213,7 @@ TaskPool的适用场景主要分为如下三类：
 
 使用步骤如下：
 
-1. 首先import引入TaskPool模块，TaskPool的API介绍可参见[@ohos.taskpool（启动TaskPool）/apis-arkts/js-apis-taskpool.md)。
+1. 首先import引入TaskPool模块，TaskPool的API介绍可参见@ohos.taskpool (启动任务池)。
    
    ```typescript
    import { taskpool } from '@kit.ArkTS';
@@ -583,47 +583,47 @@ workerPort.onmessage = (e: MessageEvents): void => {
   import { common } from '@kit.AbilityKit';
   import { Contact } from '../constant/Contact';
   
-  /**
-     * 批量插入数据库
-     */
-    public async batchInsertData(context: common.Context, array: Array<Contact>): Promise<void> {
-      Logger.info(TAG, 'batch insert begin');
-      if (!context) {
-        Logger.info(TAG, 'context is null or undefined');
-      }
-  
-      if (predicates === null || predicates === undefined) {
-        Logger.info(TAG, 'predicates is null or undefined');
-      }
-  
-      if (!this.rdbStore) {
-        await this.initRdbStore(context);
-      }
-  
-      let valueBuckets: Array<ValuesBucket> = [];
-      for (let index = 0; index < array.length; index++) {
-        let Contact = array[index] as Contact;
-        let value1 = Contact.name;
-        let value2 = Contact.gender;
-        let value3 = Contact.phone;
-        let value4 = Contact.remark;
-        let value5 = Contact.age;
-  
-        const valueBucket: ValuesBucket = {
-          'name': value1,
-          'gender': value2,
-          'phone': value3,
-          'remark': value4,
-          'age': value5,
-        };
-        valueBuckets.push(valueBucket);
-      }
-  
-      if (this.rdbStore != undefined) {
-        let ret = await this.rdbStore.batchInsert(TABLE_NAME, valueBuckets);
-        Logger.info(TAG, `batch insert done:${ret}`);
-      }
+   /**
+    * 批量插入数据库
+    */
+  public async batchInsertData(context: common.Context, array: Array<Contact>): Promise<void> {
+    Logger.info(TAG, 'batch insert begin');
+    if (!context) {
+      Logger.info(TAG, 'context is null or undefined');
     }
+
+    if (predicates === null || predicates === undefined) {
+      Logger.info(TAG, 'predicates is null or undefined');
+    }
+
+    if (!this.rdbStore) {
+      await this.initRdbStore(context);
+    }
+
+    let valueBuckets: Array<ValuesBucket> = [];
+    for (let index = 0; index < array.length; index++) {
+      let Contact = array[index] as Contact;
+      let value1 = Contact.name;
+      let value2 = Contact.gender;
+      let value3 = Contact.phone;
+      let value4 = Contact.remark;
+      let value5 = Contact.age;
+
+      const valueBucket: ValuesBucket = {
+        'name': value1,
+        'gender': value2,
+        'phone': value3,
+        'remark': value4,
+        'age': value5,
+      };
+      valueBuckets.push(valueBucket);
+    }
+
+    if (this.rdbStore != undefined) {
+      let ret = await this.rdbStore.batchInsert(TABLE_NAME, valueBuckets);
+      Logger.info(TAG, `batch insert done:${ret}`);
+    }
+  }
   ```
   
 - relationalStore数据库查询方法
@@ -794,7 +794,7 @@ workerPort.onmessage = (e: MessageEvents): void => {
 
 运用TaskPool线程池技术创建子线程执行数据库查询任务，可有效避免主线程阻塞，确保其专注于关键操作如界面渲染和用户交互，提升应用流畅度与用户体验。查询结果通过`.then()`异步返回，实现非阻塞处理与列表数据刷新，既充分利用系统资源、加快响应速度，又保持代码结构清晰、易于维护，是一种兼顾效率与可读性的数据库查询优化策略。
 
-同理，数据库的其他操作，包括单条数据插入、批量插入、数据修改及删除等，建议在子线程中执行，以维持应用的流畅互动性。在处理大数据量插入或批量插入任务时，多线程存在线程间通信耗时问题，用[@Sendable装饰器](../arkts-utils/arkts-sendable.md#sendable装饰器)获取性能提升。该装饰器标记的子线程返回类对象，促使系统采取共享内存策略来处理这些对象，大大减少了反序列化的成本，进一步提升了效率。具体可参考[《避免在主线程中执行耗时操作》](./avoid_time_consuming_operations_in_mainthread.md)。
+同理，数据库的其他操作，包括单条数据插入、批量插入、数据修改及删除等，建议在子线程中执行，以维持应用的流畅互动性。在处理大数据量插入或批量插入任务时，多线程存在线程间通信耗时问题，用@Sendable装饰器获取性能提升。该装饰器标记的子线程返回类对象，促使系统采取共享内存策略来处理这些对象，大大减少了反序列化的成本，进一步提升了效率。具体可参考《避免在主线程中执行耗时操作》。
 
 ## 相关实例
 

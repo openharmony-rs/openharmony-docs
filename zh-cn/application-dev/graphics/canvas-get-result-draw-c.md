@@ -18,13 +18,13 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 
 ## 接口说明
 
-创建Canvas常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
+创建Canvas常用接口如下表所示，详细的使用和参数说明请见drawing_canvas.h和drawing_surface.h。
 
 | 接口 | 描述 |
 | -------- | -------- |
-| OH_Drawing_Canvas\* OH_Drawing_CanvasCreate (void) | 用于创建一个画布对象。 |
-| void OH_Drawing_CanvasBind (OH_Drawing_Canvas\*, OH_Drawing_Bitmap\*) | 用于将一个位图对象绑定到画布中，使得画布绘制的内容输出到位图中。 |
-| OH_Drawing_Canvas\* OH_Drawing_SurfaceGetCanvas (OH_Drawing_Surface \*) | 通过surface对象获取画布对象。 |
+| OH_Drawing_Canvas\* OH_Drawing_CanvasCreate(void) | 用于创建一个画布对象。 |
+| void OH_Drawing_CanvasBind(OH_Drawing_Canvas\* canvas, OH_Drawing_Bitmap\* bitmap) | 用于将一个位图对象绑定到画布中，使得画布绘制的内容输出到位图中。 |
+| OH_Drawing_Canvas\* OH_Drawing_SurfaceGetCanvas(OH_Drawing_Surface\* surface) | 通过surface对象获取画布对象。 |
 
 
 ## 获取可直接显示的Canvas画布
@@ -54,7 +54,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    #include <native_drawing/drawing_surface.h>
    ```
 
-3. 从XComponent对应的NativeWindow中获取BufferHandle对象。NativeWindow相关的API请参考[NativeWindow/apis-arkgraphics2d/capi-nativewindow.md)。
+3. 从XComponent对应的NativeWindow中获取BufferHandle对象。NativeWindow相关的API请参考NativeWindow。
 
    <!-- @[ndk_graphics_draw_get_buffer_handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
@@ -132,7 +132,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    #include <native_drawing/drawing_canvas.h>
    ```
 
-2. 创建基于CPU的Canvas。需要通过OH_Drawing_BitmapCreate()接口创建一个位图对象（具体可参考[图片绘制](pixelmap-drawing-c.md)），并通过OH_Drawing_CanvasBind()接口将位图绑定到Canvas中，从而使得Canvas绘制的内容可以输出到位图中。
+2. 创建基于CPU的Canvas。需要通过OH_Drawing_BitmapCreate()接口创建一个位图对象（具体可参考图片绘制），并通过OH_Drawing_CanvasBind()接口将位图绑定到Canvas中，从而使得Canvas绘制的内容可以输出到位图中。
 
    <!-- @[ndk_graphics_draw_create_canvas_by_cpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
@@ -161,7 +161,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    OH_Drawing_CanvasClear(cCPUCanvas_, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MAX, 0xFF));
    ```
 
-3. 将上一步中创建的位图绘制到[窗口画布](#获取可直接显示的canvas画布)上。
+3. 将上一步中创建的位图绘制到窗口画布上。
 
    <!-- @[ndk_graphics_draw_drawing_to_window_canvas_cpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
@@ -200,7 +200,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    ```
 
 
-3. 需要通过OH_Drawing_PixelMapGetFromOhPixelMapNative()接口创建一个像素图对象（具体可参考[图片绘制](pixelmap-drawing-c.md)），并通过OH_Drawing_CanvasCreateWithPixelMap()接口借助像素图对象创建Canvas。
+3. 需要通过OH_Drawing_PixelMapGetFromOhPixelMapNative()接口创建一个像素图对象（具体可参考图片绘制），并通过OH_Drawing_CanvasCreateWithPixelMap()接口借助像素图对象创建Canvas。
 
    <!-- @[ndk_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
@@ -256,7 +256,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    OH_Drawing_CanvasClear(pixelmapCanvas, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0xFF));
    ```
 
-4. 将上一步中创建的像素图绘制到[窗口画布](#获取可直接显示的canvas画布)上。
+4. 将上一步中创建的像素图绘制到窗口画布上。
 
    <!-- @[ndk_graphics_draw_image_to_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
@@ -302,7 +302,7 @@ GPU后端Canvas指画布是基于GPU进行绘制的，GPU的并行计算能力�
 
 3. 初始化EGL上下文。
 
-   初始化上下文相关参数:
+   初始化上下文相关参数：
    <!-- @[ndk_graphics_draw_initialize_egl_context_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
    
    ``` C
@@ -382,7 +382,7 @@ GPU后端Canvas指画布是基于GPU进行绘制的，GPU的并行计算能力�
    }
    ```
 
-4. 创建GPU后端Canvas。GPU后端Canvas需要借助Surface对象来获取，需先创建surface，surface的API请参考[drawing_surface.h/apis-arkgraphics2d/capi-drawing-surface-h.md)。通过OH_Drawing_GpuContextCreateFromGL接口创建绘图上下文，再将这个上下文作为参数创建surface，最后通过OH_Drawing_SurfaceGetCanvas接口从surface中获取到canvas。
+4. 创建GPU后端Canvas。GPU后端Canvas需要借助Surface对象来获取，需先创建surface，surface的API请参考drawing_surface.h。通过OH_Drawing_GpuContextCreateFromGL接口创建绘图上下文，再将这个上下文作为参数创建surface，最后通过OH_Drawing_SurfaceGetCanvas接口从surface中获取到canvas。
 
    <!-- @[ndk_graphics_draw_create_canvas_by_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
@@ -412,7 +412,7 @@ GPU后端Canvas指画布是基于GPU进行绘制的，GPU的并行计算能力�
    OH_Drawing_CanvasClear(cGPUCanvas_, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MAX, 0xFF));
    ```
 
-5. 将上一步中的绘制结果拷贝到[窗口画布](#获取可直接显示的canvas画布)上。
+5. 将上一步中的绘制结果拷贝到窗口画布上。
 
    <!-- @[ndk_graphics_draw_drawing_to_window_canvas_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    

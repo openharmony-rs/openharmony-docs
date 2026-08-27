@@ -26,7 +26,7 @@
 
 ## 接口说明
 
-外置存储设备管理相关API的详细介绍请参见[@ohos.file.volumeManager (卷管理)/apis-core-file-kit/js-apis-file-volumemanager-sys.md)。
+外置存储设备管理相关API的详细介绍请参见@ohos.file.volumeManager (卷管理)。
 
 各类广播传递的相关参数，请见下表。
 
@@ -46,7 +46,7 @@
 
 1. 获取权限。  
 
-   订阅卷设备广播事件需要申请ohos.permission.STORAGE_MANAGER权限，配置方式请参见[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
+   订阅卷设备广播事件需要申请ohos.permission.STORAGE_MANAGER权限，配置方式请参见申请应用权限。
 
 2. 订阅广播事件。  
 

@@ -18,13 +18,13 @@ HiProfiler调优组件旨在为开发者提供一系列调优能力，可以用�
 
 
 
-Hiprofiler工具对标业界调优工具，并提供更多能力，比如[跨语言回栈、能耗数据获取、长时间堆内存抓栈功能](#插件参数说明)等。
+Hiprofiler工具对标业界调优工具，并提供更多能力，比如跨语言回栈、能耗数据获取、长时间堆内存抓栈功能等。
 
 
 
 ## 环境要求
 
-- 根据hdc命令行工具指导，完成[环境准备](hdc.md#环境准备)。
+- 根据hdc命令行工具指导，完成环境准备。
 
 - 确保设备已正常连接，并执行hdc shell。
 
@@ -81,16 +81,16 @@ CONFIG
 | 命令 | 命令说明 | 
 | -------- | -------- |
 | -c | 设置该选项后，需要将配置文件放入/data/local/tmp目录下，将路径作为参数输入。 | 
-| -o | 自定义文件保存路径（需要以/data/local/tmp开头）。若不设置路径，则调优数据自动保存至/data/local/tmp/hiprofiler_data.htrace。重复调优会覆盖原来路径的文件。 | 
+| -o | 自定义文件保存路径（需要以/data/local/tmp开头）。若不设置路径，则调优数据自动保存至/data/local/tmp/hiprofiler_data.htrace。重复调优会覆盖原来路径的文件。<br>抓取三合一维测日志时，自定义保存路径必须是以.zip为后缀的文件。若不设置路径，则三合一维测日志自动保存至/data/local/tmp/hiprofiler_data_{timestamp}.zip | 
 | -k | 杀掉已存在的调优服务进程。 | 
 | -s | 拉起调优服务进程。 | 
 | -t | 设置调优持续时间，单位：s。若需手动控制采集时长，请使用start/stop参数组合。|
 | --nonblock | 设置hiprofiler_cmd通过非阻塞的方式运行。<br>执行命令后，hiprofiler_cmd转入后台运行，继续执行其他命令。<br>如果不设置该参数，hiprofiler_cmd会阻塞执行，直到该命令结束。<br>**说明**：从API version 23开始支持该参数。 |
-| start | 设置该选项后，直至输入hiprofiler_cmd stop命令才会停止调优。通过hiprofiler_cmd start params执行， 其中params为hiprofiler_cmd输入的其它参数。不支持同时设置-t参数设置调优时间。具体使用方法参考[常用命令](#常用命令)。<br>**说明**：从API version 24开始支持该参数。若开启调优后未执行hiprofiler_cmd stop命令，则调优默认3600秒后结束。 |
+| start | 设置该选项后，直至输入hiprofiler_cmd stop命令才会停止调优。通过hiprofiler_cmd start params执行， 其中params为hiprofiler_cmd输入的其它参数。不支持同时设置-t参数设置调优时间。具体使用方法参考常用命令。<br>**说明**：从API version 24开始支持该参数。若开启调优后未执行hiprofiler_cmd stop命令，则调优默认3600秒后结束。 |
 | stop | 设置该选项后停止通过start命令开启的调优。<br>**说明**：从API version 24开始支持该参数。start命令与stop命令必须成对调用， 避免重复开启或者重复关闭调优。|
 
 
-输入完hiprofiler_cmd参数后，需要输入插件配置信息，以&lt;&lt;CONFIG开头，CONFIG结尾。每个插件需要的配置不同，参考[插件参数说明](#插件参数说明)。
+输入完hiprofiler_cmd参数后，需要输入插件配置信息，以&lt;&lt;CONFIG开头，CONFIG结尾。每个插件需要的配置不同，参考插件参数说明。
 
 
 以下是session config字段介绍：
@@ -120,17 +120,17 @@ plugin_configs字段介绍：
 
 | 插件名字 | 简介 | 规格说明 |
 | -------- | -------- | -------- |
-| [native hook](#native-hook插件) | 获取堆内存分配的调用栈信息。 | 采集的进程仅支持[使用调试证书签名的应用](#使用调试证书签名的应用)。|
-| [ftrace plugin](#ftrace-plugin插件) | 获取内核打点的trace事件，以及hitrace打点的数据。 | - |
-| [cpu plugin](#cpu-plugin插件) | 获取进程CPU使用率信息，包括进程级和线程级的使用率。 | - |
-| [gpu plugin](#gpu-plugin插件) | 获取进程GPU使用率信息。 | - |
-| [xpower plugin](#xpower-plugin插件) | 获取进程能耗使用情况的数据。 | - |
-| [memory plugin](#memory-plugin插件) | 获取进程内存占用情况，主要是获取进程smaps节点的数据。 | - |
-| [diskio plugin](#diskio-plugin插件) | 获取进程磁盘空间占用情况。 | - |
-| [network profiler](#network-profiler插件) | 通过进程内打点，获取进程HTTP/HTTPS请求的详细信息。 | 采集的进程仅支持[使用调试证书签名的应用](#使用调试证书签名的应用)。|
-| [network plugin](#network-plugin插件) | 获取进程网络流量统计信息。 | - |
-| [hisysevent plugin](#hisysevent-plugin插件) | 通过hisysevent命令，获取hisysevent的事件记录数据。 | - |
-| [hidump plugin](#hidump-plugin插件) | 通过SP_daemon命令获取相关数据。 | - |
+| native hook | 获取堆内存分配的调用栈信息。 | 采集的进程仅支持使用调试证书签名的应用。|
+| ftrace plugin | 获取内核打点的trace事件，以及hitrace打点的数据。 | - |
+| cpu plugin | 获取进程CPU使用率信息，包括进程级和线程级的使用率。 | - |
+| gpu plugin | 获取进程GPU使用率信息。 | - |
+| xpower plugin | 获取进程能耗使用情况的数据。 | - |
+| memory plugin | 获取进程内存占用情况，主要是获取进程smaps节点的数据。 | - |
+| diskio plugin | 获取进程磁盘空间占用情况。 | - |
+| network profiler | 通过进程内打点，获取进程HTTP/HTTPS请求的详细信息。 | 采集的进程仅支持使用调试证书签名的应用。|
+| network plugin | 获取进程网络流量统计信息。 | - |
+| hisysevent plugin | 通过hisysevent命令，获取hisysevent的事件记录数据。 | - |
+| hidump plugin | 通过SP_daemon命令获取相关数据。 | - |
 
 
 ## 使用调试证书签名的应用
@@ -170,7 +170,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 
 | 参数名字 | 类型 | 参数含义 | 详细介绍 | 
 | -------- | -------- | -------- | -------- |
-| fp_unwind | bool | true表示使用fp回栈方式进行回栈；<br/>false表示使用dwarf回栈方式进行回栈。 | fp回栈是利用了x29寄存器保存的fp指针，函数的fp指针始终指向父函数（调用方）的fp指针，调优服务根据这一特点进行回栈，根据ip计算相对PC，然后查找maps对应区间来进行符号化。<br/>由于现在编译期越来越优化，出现寄存器重用或者编译禁用fp，会导致fp方式回不出相应的栈；混合栈情况下，fp不会记录多重混合，于是便需要dwarf回栈方式做更精确的回栈。<br/>dwarf回栈是根据pc寄存器在map表中查找对应的map信息，由于dwarf是逐级解析调用栈，所以其性能会比fp有劣化。<br/>注意：fp回栈暂不支持调优非aarch64架构的设备。 | 
+| fp_unwind | bool | true表示使用fp回栈方式进行回栈；<br/>false表示使用dwarf回栈方式进行回栈。 | FP回栈机制依赖于x29寄存器保存的帧指针（FP），该指针始终指向调用方函数的FP。调优服务正是基于这一特性，通过FP链回溯调用栈，并根据指令指针（IP）计算出相对于程序计数器（PC）的偏移量，随后查找maps文件中的对应内存区间以完成符号化。<br/>随着编译器优化级别的提升，寄存器重用或编译时禁用FP等优化手段，往往导致FP回栈无法准确还原调用栈。此外，在涉及混合栈的场景下，FP机制也无法完整记录多重混合的调用信息。因此，需要引入DWARF回栈方式，以实现更精确的调用栈回溯。<br/>DWARF回栈是根据pc寄存器在map表中查找对应的map信息，由于DWARF是逐级解析调用栈，所以其性能会比FP有劣化。<br/>注意：FP回栈暂不支持调优非aarch64架构的设备。 | 
 | statistics_interval | int | 统计间隔，表示将一个统计周期内的栈进行汇总，单位：s。 | 为实现长时间轻量化采集，提供统计模式抓栈。如果更关注调优时的性能，只需要知道每个调用栈出现的次数和总大小，不需要知道每一次具体时间，可以使用统计模式。 | 
 | process_name | string | 需要进行内存调优的进程名 | 和/proc/节点下的进程名一致。 | 
 | startup_mode | bool | 是否抓取进程启动阶段内存。默认不抓取启动阶段内存。 | 记录进程孵化启动到调优结束这个期间内堆内存分配的信息。 | 
@@ -178,10 +178,11 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | malloc_free_matching_interval | int | 匹配间隔，单位：s，指在相应时间间隔内，将malloc和free进行匹配。匹配到的就不进行落盘。 | 在匹配间隔内，分配并释放了的调用栈不被记录，减少了抓栈服务进程的开销。此参数设置的值大于0时，需同步将statistics_interval参数设置为0。 |
 | offline_symbolization | bool | 是否开启离线符号化。<br/>true：使用离线符号化。<br/>false：使用在线符号化。 | 使用离线符号化时，根据IP匹配符号的操作在网页端（smartperf）完成，优化了native daemon的性能，减少了调优时的进程卡顿。但离线符号化会将符号表写入trace文件，导致文件大小比在线符号化时更大。 |
 | sample_interval | int | 采样大小。 | 设置此参数时开启采样模式。采样模式下对于malloc size小于采样大小进行概率性统计。调用栈分配内存大小越大，出现次数越高，被统计的几率越大。 | 
-| restrace_tag | string | 需要抓取资源的类型 | 参数可多次添加不同类型。当前支持类型见表[restrace_tag参数介绍](#restrace_tag参数介绍)。|
+| restrace_tag | string | 需要抓取资源的类型 | 参数可多次添加不同类型。当前支持类型见表restrace_tag参数介绍。|
 | use_file_cache_mode | bool | 是否使用文件缓存模式。<br/>true：使用文件缓存模式。<br/>false：不使用文件缓存模式。<br/>默认为false。 |文件缓存模式通过将缓存数据落盘，提升内存分配信息的采集性能，有效缓解应用进程在内存信息采集过程中可能出现的卡顿问题。<br/>**说明**：从API version 24开始，支持该参数。 | 
 | async_stack_enable | bool | 是否抓取异步栈。<br/>true：表示开启抓取异步栈功能。<br/>false：表示关闭抓取异步栈功能。 | 默认为false。<br/>**说明**：从API version 24开始，支持该参数。|
-| async_type | AsyncFlagType | 当前系统支持的异步栈类型。 | async_stack_enable为true时，该参数才有效。<br/>默认抓取所有的异步栈。当前支持的类型见表[async_type参数介绍](#async_type参数介绍)。<br/>**说明**：从API version 24开始，支持该参数。|
+| async_type | AsyncFlagType | 当前系统支持的异步栈类型。 | async_stack_enable为true时，该参数才有效。<br/>默认抓取所有的异步栈。当前支持的类型见表async_type参数介绍。<br/>**说明**：从API version 24开始，支持该参数。|
+| discard_destroyed_traces | bool | 是否丢弃已释放内存的调用栈数据。<br>true：尽量丢弃已释放的调用栈数据，保留未释放的调用栈数据；<br>false：保留全部申请和释放内存调用栈数据。<br>默认为false。 | 设置为true时，可减少被调优应用的性能影响。<br>注意：<br>此功能仅在统计周期或文件缓存周期内生效，本插件会尽量匹配并丢弃已释放内存的调用栈数据；如果数据已持久化，则无法丢弃。<br>在共享内存模式（use_file_cache_mode为false）与详情模式（statistics_interval为0）同时开启的场景下，将无法丢弃已释放内存调用栈数据。<br>**说明**：从API版本26.0.0开始，支持该参数。|
 
 ### restrace_tag参数介绍
 
@@ -209,6 +210,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | RES_ARK_GLOBAL_HANDLE | ark全局句柄分配栈。 | 23 |
 | RES_VMA_ARKWEB | ArkWeb PA分配器内存跟踪。 | 23 |
 | RES_ARK_LOCAL_HANDLE | ark本地句柄分配栈。 | 23 |
+| RES_COMPOSITE_HEAP | 三合一维测日志，具体包含调用栈trace、堆快照rawheap、map映射文件。 | 26.0.0 |
 
 ### async_type参数介绍
 
@@ -226,21 +228,180 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 **结果分析**
 
 开启fp回栈+跨语言回栈（其中绿色部分为js栈）：
+> **说明：**
+>
+> fp_unwind参数需要设置为true。
+>
+> js_stack_report参数需要设置为1，否则无法回溯出js栈。
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -t 60 \
+  -s \
+  -k \
+<<CONFIG
+ request_id: 1
+ session_config {
+  buffers {
+   pages: 16384
+  }
+ }
+ plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+   save_file: false
+   smb_pages: 16384
+   max_stack_depth: 20
+   process_name: "com.example.insight_test_stage"
+   string_compressed: true
+   fp_unwind: true
+   blocked: true
+   callframe_compress: true
+   record_accurately: true
+   offline_symbolization: true
+   startup_mode: false
+   js_stack_report: 1
+   max_js_stack_depth: 20
+  }
+ }
+CONFIG
+```
 
 ![hiprofiler-nativehook-fp](figures/hiprofiler-nativehook-fp.png)
 
 开启dwarf回栈和跨语言回栈（可以展示出native -&gt; js -&gt;native的栈）：
+> **说明：**
+>
+> fp_unwind参数需要设置为false。
+>
+> js_stack_report参数需要设置为1，否则无法回溯出js栈。
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -t 60 \
+  -s \
+  -k \
+<<CONFIG
+ request_id: 1
+ session_config {
+  buffers {
+   pages: 16384
+  }
+ }
+ plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+   save_file: false
+   smb_pages: 16384
+   max_stack_depth: 20
+   process_name: "com.example.insight_test_stage"
+   string_compressed: true
+   fp_unwind: false
+   blocked: true
+   callframe_compress: true
+   record_accurately: true
+   offline_symbolization: true
+   startup_mode: false
+   js_stack_report: 1
+   max_js_stack_depth: 20
+  }
+ }
+CONFIG
+```
 
 ![hiprofiler-nativehook-dwarf](figures/hiprofiler-nativehook-dwarf.png)
 
 开启统计模式，在此模式下，栈数据会周期性展示：
+> **说明：**
+>
+> statistics_interval参数必须设置一个大于0的值，表示每隔多少秒进行一次统计。设置为10，表示每10秒进行一次统计。
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -t 60 \
+  -s \
+  -k \
+<<CONFIG
+ request_id: 1
+ session_config {
+  buffers {
+   pages: 16384
+  }
+ }
+ plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+   save_file: false
+   smb_pages: 16384
+   max_stack_depth: 20
+   process_name: "com.example.insight_test_stage"
+   string_compressed: true
+   fp_unwind: true
+   blocked: true
+   callframe_compress: true
+   record_accurately: true
+   offline_symbolization: true
+   startup_mode: false
+   statistics_interval: 10
+   js_stack_report: 1
+   max_js_stack_depth: 20
+  }
+ }
+CONFIG
+```
 
 ![hiprofiler-nativehook-statistical](figures/hiprofiler-nativehook-statistical.png)
 
 开启非统计模式，在此模式下，栈数据不会周期性展示：
+> **说明：**
+>
+> statistics_interval必须设置为0或者不设置。
 
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -t 60 \
+  -s \
+  -k \
+<<CONFIG
+ request_id: 1
+ session_config {
+  buffers {
+   pages: 16384
+  }
+ }
+ plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+   save_file: false
+   smb_pages: 16384
+   max_stack_depth: 20
+   process_name: "com.example.insight_test_stage"
+   string_compressed: true
+   fp_unwind: false
+   blocked: true
+   callframe_compress: true
+   record_accurately: true
+   offline_symbolization: true
+   startup_mode: false
+   statistics_interval: 0
+   max_js_stack_depth: 20
+  }
+ }
+CONFIG
+```
 ![hiprofiler-nativehook-non-statistical](figures/hiprofiler-nativehook-non-statistical.png)
-
 
 ### ftrace plugin插件
 
@@ -660,7 +821,7 @@ plugin_configs {
 }
 CONFIG
 ```
-此命令示例抓取整机网络数据信息。执行命令后，通过hdc file recv /data/local/tmp/hiprofiler_data.htrace将文件导出到当前模板，然后通过smartperf打开并解析。结果示例如下图：
+此命令示例抓取整机网络数据信息。执行命令后，通过hdc file recv /data/local/tmp/hiprofiler_data.htrace将文件导出到当前目录，然后通过smartperf打开并解析。结果示例如下图：
 
 ![network_001.png](figures/network_001.png)
 
@@ -816,7 +977,7 @@ CONFIG
 
 ### 抓取指定进程GlobalHandle对象的调用栈
 
-从API version 23开始支持抓取指定进程创建[napi_ref](../napi/use-napi-life-cycle.md#napi_ref)的调用栈，不会抓取创建弱引用的调用栈。
+从API version 23开始支持抓取指定进程创建napi_ref的调用栈，不会抓取创建弱引用的调用栈。
 
 ```shell
 $ hiprofiler_cmd \
@@ -905,19 +1066,21 @@ LocalHandle对象内存录制功能要求被测应用在启动时替换加载维
 
 应用替换加载维测库方法：
 
-1.应用处于退出状态：下发LocalHandle对象内存录制命令，设置startup_mode参数为true，然后启动应用，应用启动后即可进行数据采集。
+1. 应用处于退出状态：下发LocalHandle对象内存录制命令，设置startup_mode参数为true，然后启动应用，应用启动后即可进行数据采集。
 
-2.应用处于运行状态：下发LocalHandle对象内存录制命令，设置startup_mode参数为true，然后重启应用，应用重启后即可进行数据采集。
+2. 应用处于运行状态：下发LocalHandle对象内存录制命令，设置startup_mode参数为true，然后重启应用，应用重启后即可进行数据采集。
 
 > **说明：**
 >
-> 1.应用加载维测库后，只要应用不退出，维测库持续生效。此后，可以通过非启动模式录制LocalHandle内存，此时startup_mode参数必须设置为false。
+> 1. 应用加载维测库后，只要应用不退出，维测库持续生效。此后，可以通过非启动模式录制LocalHandle内存，此时startup_mode参数必须设置为false。
 >
-> 2.使用此种方式后，此次应用打开的时长会变长，此次运行的性能上也会有损失。但不影响下次的使用。
+> 2. 使用此种方式后，此次应用打开的时长会变长，此次运行的性能上也会有损失。但不影响下次的使用。
 >
-> 3.此种方式抓取到的LocalHandle内存一定是泄漏的。
+> 3. 此种方式抓取到的LocalHandle内存一定是泄漏的。
 >
-> 4.命令行方式获取的trace文件，可以通过DevEco Profiler[离线导入](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)文件功能进行解析。导入的单个文件大小不超过1.5G。
+> 4. 命令行方式获取的trace文件，可以通过DevEco Profiler[离线导入](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)文件功能进行解析。导入的单个文件大小不超过1.5G。
+>
+> 5. 从API版本26.0.0开始，统计模式支持采集local/global handle地址信息能力。
 
 
 ### 手动控制采集时长
@@ -966,6 +1129,108 @@ CONFIG
 $ hiprofiler_cmd stop
 ```
 
+### 使用文件缓存模式
+
+从API version 24开始支持使用文件缓存模式，可通过如下方式对com.example.insight_test_stage进程进行内存录制。
+
+> **说明：**
+>
+> 使用文件缓存模式时，use_file_cache_mode必须设置为true。
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -t 60 \
+  -s \
+  -k \
+<<CONFIG
+ request_id: 1
+ session_config {
+  buffers {
+   pages: 16384
+  }
+ }
+ plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+   save_file: false
+   smb_pages: 16384
+   max_stack_depth: 20
+   process_name: "com.example.insight_test_stage"
+   string_compressed: true
+   fp_unwind: false
+   blocked: true
+   callframe_compress: true
+   record_accurately: true
+   offline_symbolization: true
+   startup_mode: false
+   max_js_stack_depth: 20
+   use_file_cache_mode: true
+  }
+ }
+CONFIG
+```
+
+### 抓取指定进程三合一维测日志
+
+从API版本26.0.0开始支持抓取指定进程三合一维测日志，具体包含调用栈trace、堆快照rawheap、map映射文件，可配合RES_ARK_GLOBAL_HANDLE和RES_ARK_LOCAL_HANDLE使用。
+
+> **说明：**
+>
+> 抓取三合一维测日志，须在native hook插件配置中增加restrace_tag参数为RES_COMPOSITE_HEAP。
+>
+> 三合一维测日志保存至命令行-o参数指定的zip压缩文件中。若未设置-o参数，则默认保存至/data/local/tmp/hiprofiler_data_{timestamp}.zip中。三合一维测日志文件仅保留最新的一份记录。
+>
+> 采集的进程仅支持使用调试证书签名的应用。
+
+示例命令：
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -t 60 \
+  -s \
+  -k \
+<<CONFIG
+ request_id: 1
+ session_config {
+  buffers {
+   pages: 16384
+  }
+ }
+ plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+   save_file: false
+   smb_pages: 16384
+   max_stack_depth: 20
+   process_name: "com.example.insight_test_stage"
+   string_compressed: true
+   fp_unwind: true
+   blocked: true
+   callframe_compress: true
+   record_accurately: true
+   offline_symbolization: true
+   js_stack_report: 1
+   max_js_stack_depth: 20
+   filter_size: 0
+   statistics_interval: 10
+   restrace_tag: "RES_COMPOSITE_HEAP"
+   restrace_tag: "RES_ARK_LOCAL_HANDLE"
+   restrace_tag: "RES_ARK_GLOBAL_HANDLE"
+   startup_mode: true
+   memtrace_enable: true
+   malloc_disable:false
+   discard_destroyed_traces: true
+  }
+ }
+CONFIG
+```
+
 ## 常见问题
 
 ### 调优出现异常
@@ -988,7 +1253,7 @@ $ hiprofiler_cmd stop
 
 **可能原因&amp;解决方法**
 
-需要检查生成文件的路径是否在/data/local/tmp/目录下。如果目标路径是/data/local/tmp下的一个文件夹，则尝试对文件夹执行chmod 777操作。如果是user版本使用nativehook或者network profiler插件抓取的应用不是[使用调试证书签名的应用](#使用调试证书签名的应用)，也抓不到数据。
+需要检查生成文件的路径是否在/data/local/tmp/目录下。如果目标路径是/data/local/tmp下的一个文件夹，则尝试对文件夹执行chmod 777操作。如果是user版本使用nativehook或者network profiler插件抓取的应用不是使用调试证书签名的应用，也抓不到数据。
 
 ### 调优数据疑似不准确
 

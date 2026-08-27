@@ -18,7 +18,7 @@
 
 ## 申请方式
 
-以下权限的授权方式均为[system_grant](app-permission-mgmt-overview.md#system_grant系统授权)，申请方式请参考[声明权限](declare-permissions.md)。
+以下权限的授权方式均为system_grant，申请方式请参考声明权限。
 
 ## ohos.permission.USE_BLUETOOTH
 
@@ -46,7 +46,7 @@
 
 允许应用关闭前执行自定义的预关闭动作。
 
-例如，当应用被关闭时，应用可向用户通过弹窗等方式向用户确认是否执行关闭。
+例如，当应用被关闭时，应用可通过弹窗等方式向用户确认是否执行关闭。
 
 **权限级别**：normal
 
@@ -82,7 +82,7 @@
 
 允许应用读取加速度传感器的数据。
 
-包括：加速度计传感器、未校准加速度计传感器、线性加速器传感器。
+包括：加速度计传感器、未校准加速度计传感器、线性加速度计传感器。
 
 **权限级别**：normal
 
@@ -148,7 +148,11 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
 **起始版本**：8
+
+**变更信息**：从API 22开始，获取该权限后，增加支持P2P能力的使用。
 
 ## ohos.permission.GYROSCOPE
 
@@ -218,6 +222,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
 **起始版本**：9
 
 **变更信息：** API 9-10，权限级别为system_basic；从API 11开始，变更为normal。
@@ -241,6 +247,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
 
 **起始版本**：8
 
@@ -279,6 +287,18 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**起始版本**：7
+
+## ohos.permission.RUNNING_LOCK
+
+允许应用获取运行锁，保证应用在后台的持续运行。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet | Car | Phone | TV | Wearable
 
 **起始版本**：7
 
@@ -440,11 +460,13 @@
 
 允许应用通过C API启动同应用的UIAbility。
 
-当前仅2in1设备应用可申请此权限。
+仅用于在Native层启动同应用内的UIAbility，适用于C/C++调用接口拉起UIAbility的场景。
 
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet | Phone
 
 **起始版本**：15
 
@@ -758,3 +780,59 @@
 **支持设备**：Car
 
 **起始版本**：26.0.0
+
+## ohos.permission.vehicle.ACCESS_CAR_SECURITY_PRIVACY
+
+允许应用访问车载安全隐私服务的接口。
+
+获取该权限后，应用可以查询整车隐私相关协议或政策、主驾隐私模式、一键除痕状态等。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.DCAS_RUN_MODEL
+
+允许应用和服务接入端侧模型运行态管理。
+
+获取该权限后，应用可接入端侧模型运行态管理能力，完成模型的加载和推理。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.UPDATE_SCOPE_FONT
+
+允许应用管理应用级和会话级字体。
+
+获取该权限后，应用可使用字体管理接口安装、卸载和查询应用级和会话级字体，并注册字体服务状态监听器。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
+
+允许应用获取本地账号授权。
+
+获取该权限后，应用可调用接口请求本地账号授权。用户将通过系统授权弹窗进行本地账号身份认证后授予目标特权，应用可执行目标特权对应的敏感操作（如网络抓包等）。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car | TV | Wearable
+
+**起始版本**：26.1.0

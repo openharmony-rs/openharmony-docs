@@ -8,12 +8,12 @@
 <!--Adviser: @HelloCrease-->
 
 
-本小节介绍[Stage模型](ability-terminology.md#stage模型)的两种应用组件如何绑定[FA模型](ability-terminology.md#fa模型)ServiceAbility组件。
+本小节介绍Stage模型的两种应用组件如何绑定FA模型ServiceAbility组件。
 
 
 ## UIAbility关联访问ServiceAbility
 
-[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)关联访问ServiceAbility和UIAbility关联访问[ServiceExtensionAbility/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)的方式完全相同。
+UIAbility关联访问ServiceAbility和UIAbility关联访问ServiceExtensionAbility的方式完全相同。
 
 
 ```ts
@@ -72,7 +72,7 @@ struct Page_StartFAModel {
 
 ## ExtensionAbility关联访问ServiceAbility
 
-下面以[ServiceExtensionAbility/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)为例来说明[ExtensionAbility/apis-ability-kit/js-apis-app-ability-extensionAbility.md)关联访问ServiceAbility。ServiceExtensionAbility关联访问ServiceAbility和ServiceExtensionAbility关联访问ServiceExtensionAbility的方式完全相同。
+下面以ServiceExtensionAbility为例来说明ExtensionAbility关联访问ServiceAbility。ServiceExtensionAbility关联访问ServiceAbility和ServiceExtensionAbility关联访问ServiceExtensionAbility的方式完全相同。
 
 
 ```ts

@@ -17,7 +17,7 @@
 <!--RP2-->
 | SlotType             | 取值   | 分类     | 通知中心 | 横幅 | 锁屏 | 铃声/振动 | 状态栏图标 | 自动亮屏 |
 | -------------------- | ------ | --------| ------- |------|------|----------|-----------|---------|
-| SOCIAL_COMMUNICATION | 1      | 社交通信 | Y | Y | Y | Y | Y | Y |
+| SOCIAL_COMMUNICATION | 1      | 社交通讯 | Y | Y | Y | Y | Y | Y |
 | SERVICE_INFORMATION  | 2      | 服务提醒 | Y | Y | Y | Y | Y | Y |
 | CUSTOMER_SERVICE     | 5      | 客服消息 | Y | N | N | Y | Y | N |
 | CONTENT_INFORMATION  | 3      | 内容资讯 | Y | N | N | N | N | N |
@@ -27,7 +27,7 @@
 
 ## 接口说明
 
-通知渠道主要接口如下。其他接口介绍详情参见[@ohos.notificationManager (NotificationManager模块)/apis-notification-kit/js-apis-notificationManager.md)。
+通知渠道主要接口如下。其他接口介绍详情参见@ohos.notificationManager (NotificationManager模块)。
 
 | **接口名** | **描述** |
 | ---------- | -------- |
@@ -35,7 +35,7 @@
 | getSlot(slotType: SlotType): Promise\<NotificationSlot\> | 获取一个指定类型的通知渠道。       |
 | removeSlot(slotType: SlotType): Promise\<void\>          | 删除此应用程序指定类型的通知渠道。  |
 
-除了可以使用`addSlot()`创建通知渠道，还可以在发布通知的[NotificationRequest/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)中携带notificationSlotType字段，如果对应渠道不存在，会自动创建。
+除了可以使用`addSlot()`创建通知渠道，还可以在发布通知的NotificationRequest中携带notificationSlotType字段，如果对应渠道不存在，会自动创建。
 
 ## 开发步骤
 

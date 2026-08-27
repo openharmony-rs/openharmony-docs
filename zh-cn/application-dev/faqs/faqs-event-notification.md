@@ -109,7 +109,7 @@ struct Faq10_1 {
 
 **参考链接**
 
-[公共事件模块/apis-basic-services-kit/js-apis-commonEventManager.md)
+公共事件模块
 
 ## 如何让事件只在一个UIAbility实例中传递(API 9)
 
@@ -149,7 +149,7 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 
 **参考链接**
 
-[使用EventHub进行数据](../application-models/uiability-data-sync-with-ui.md#使用eventhub进行数据通信)
+使用EventHub进行数据
 
 
 ## 如何实现点击Notification通知打开App功能(API 9)
@@ -193,7 +193,7 @@ async function publishNotification() {
 
 **参考链接**
 
-[Notification/apis-notification-kit/js-apis-notificationManager.md)、[WantAgent/apis-ability-kit/js-apis-app-ability-wantAgent.md)
+Notification、WantAgent
 
 
 ## 调用notificationManager.publish发布通知失败(API 9)

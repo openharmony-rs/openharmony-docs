@@ -10,11 +10,11 @@
 
 ## 如何建立应用侧与H5侧的交互通道
 
-注册应用侧代码有两种方式，一种在Web组件初始化调用，使用[javaScriptProxy()/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)接口。另外一种在Web组件初始化完成后调用，使用[registerJavaScriptProxy()/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)接口。两种方式都需要和[deleteJavaScriptRegister/apis-arkweb/arkts-apis-webview-WebviewController.md#deletejavascriptregister)接口配合使用，防止内存泄漏。
+注册应用侧代码有两种方式，一种在Web组件初始化调用，使用javaScriptProxy()接口。另外一种在Web组件初始化完成后调用，使用registerJavaScriptProxy()接口。两种方式都需要和deleteJavaScriptRegister接口配合使用，防止内存泄漏。
 
 在下面的示例中，将test()方法注册在前端页面中， 该函数可以在前端页面触发运行。
 
-应用侧使用[javaScriptProxy()/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)接口注册示例：
+应用侧使用javaScriptProxy()接口注册示例：
 
 <!-- @[functions_that_trigger_a_run_on_the_front_end_page_are_registered_in_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/JavaScriptProxy.ets) -->
 
@@ -75,17 +75,18 @@ struct WebComponent {
 }
 ```
 
-  应用侧使用[registerJavaScriptProxy()/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)接口注册。
+  应用侧使用registerJavaScriptProxy()接口注册。
 
   > **说明：**
   >
-  > - 使用[registerJavaScriptProxy()/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册后，在下次加载或者重新加载后生效。
+  > - 使用registerJavaScriptProxy()方法注册后，在下次加载或者重新加载后生效。
 
 - 示例1：
 
-  <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->
+  <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->    
   
   ``` TypeScript
+  // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
   
@@ -121,6 +122,7 @@ struct WebComponent {
             }
           })
         Web({ src: $rawfile('index1.html'), controller: this.webviewController })
+        // 在页面加载前注册，页面加载完成后生效
           .onControllerAttached(()=>{
             try {
               this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString'],
@@ -144,10 +146,9 @@ struct WebComponent {
  
 - 示例2：
 
-   <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->
+   <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->    
    
    ``` TypeScript
-   // xxx.ets
    // xxx.ets
    import { webview } from '@kit.ArkWeb';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -868,10 +869,10 @@ struct WebComponent {
 
 1. 打开web调试。
 
-   开启web调试请参考[使用DevTools工具调试前端页面](web-debugging-with-devtools.md)。
+   开启web调试请参考使用DevTools工具调试前端页面。
 
 2. 举例说明通道是否建立成功。
 
-   使用[复杂类型使用方法](#复杂类型使用方法)中应用侧和前端页面之间传递Array作为示例，调试结果如下图所示：
+   使用复杂类型使用方法中应用侧和前端页面之间传递Array作为示例，调试结果如下图所示：
 
    ![DevTools工具验证成功示例](figures/webtoolstest.png)

@@ -13,20 +13,20 @@ API 22开始支持本地证书链吊销状态校验时仅校验终端实体证�
 
 ### 开发步骤
 
-1. 导入[证书模块/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入证书模块。
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. 调用[cert.createX509CertChain/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11)创建证书链对象。
+2. 调用cert.createX509CertChain创建证书链对象。
 
-3. 调用[cert.createX509Cert/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建X509证书对象。
+3. 调用cert.createX509Cert创建X.509证书对象。
 
-4. 调用[cert.createX509CRL/apis-device-certificate-kit/js-apis-cert.md#certcreatex509crl11)创建X509证书吊销列表对象。
+4. 调用cert.createX509CRL创建X.509证书吊销列表对象。
 
-5. 构造[cert.CertChainValidationParameters/apis-device-certificate-kit/js-apis-cert.md#certchainvalidationparameters11)证书链校验参数对象。
+5. 构造cert.CertChainValidationParameters证书链校验参数对象。
 
-6. 调用[cert.validate/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
+6. 调用cert.validate，传入证书链校验参数，进行证书链校验。
 
 本地仅校验终端实体证书的吊销状态示例：
 
@@ -124,20 +124,20 @@ async function doTestLeafCertCrlCheck() {
 
 ### 开发步骤
 
-1. 导入[证书模块/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入证书模块。
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. 调用[cert.createX509CertChain/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11)创建证书链对象。
+2. 调用cert.createX509CertChain创建证书链对象。
 
-3. 调用[cert.createX509Cert/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建X509证书对象。
+3. 调用cert.createX509Cert创建X.509证书对象。
 
-4. 构造[cert.CertChainValidationParameters/apis-device-certificate-kit/js-apis-cert.md#certchainvalidationparameters11)证书链校验参数。
+4. 构造cert.CertChainValidationParameters证书链校验参数。
 
-5. 调用[cert.validate/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
+5. 调用cert.validate，传入证书链校验参数，进行证书链校验。
 
-> **说明**
+> **说明：**
 >
 > 本开发指导中提供的示例代码需要在配置网络的前提下执行。
 
@@ -223,16 +223,16 @@ async function doTestCaCheck() {
 
 ### 开发步骤
 
-1. 导入[证书模块/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入证书模块。
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. 调用[cert.createX509CertChain/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11-2)创建证书链对象。
+2. 调用cert.createX509CertChain创建证书链对象。
 
-3. 调用[cert.createX509Cert/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建X509证书对象。构造 `cert.CertChainValidationParameters` 证书链校验参数，配置 `revocationCheckParam` 为 `RevocationCheckOptions.REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR`，以忽略网络不可达的情况。
+3. 调用cert.createX509Cert创建X.509证书对象。构造 `cert.CertChainValidationParameters` 证书链校验参数，配置 `revocationCheckParam` 为 `RevocationCheckOptions.REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR`，以忽略网络不可达的情况。
 
-4. 调用[cert.validate/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
+4. 调用cert.validate，传入证书链校验参数，进行证书链校验。
 
 在线CRL检查忽略网络不可达异常示例：
 

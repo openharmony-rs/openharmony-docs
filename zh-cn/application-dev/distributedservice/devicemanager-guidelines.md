@@ -15,7 +15,7 @@
 分布式设备管理提供如下四大功能：
 
 - **发现**<br/>
-  发现周围终端设备并上报。周围设备需要连接同局域网或者同时打开蓝牙，可以根据设备类型、距离、设备是否可信等进行筛选。
+  发现周围终端设备并上报。周围设备需要连接同局域网或者同时打开蓝牙。
 
 - **绑定**<br/>
   不同设备协同合作完成分布式业务的前提是设备间可信，对于周边发现的不可信设备，可通过绑定使彼此建立可信关系，提供PIN码、碰、扫、靠等设备认证框架，支持对接各种认证交互接口。
@@ -79,7 +79,7 @@ ohos.permission.DISTRIBUTED_DATASYNC：分布式数据同步权限
    import { abilityAccessCtrl } from '@kit.AbilityKit';
    ```
 
-3. 分布式数据同步权限的授权方式为user_grant，因此需要调用[requestPermissionsFromUser()apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)接口，以动态弹窗的方式向用户申请授权。
+3. 分布式数据同步权限的授权方式为user_grant，因此需要调用requestPermissionsFromUser()接口，以动态弹窗的方式向用户申请授权。
 
    <!-- @[permissions_user_grant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/pages/Index.ets) --> 
    
@@ -106,7 +106,7 @@ ohos.permission.DISTRIBUTED_DATASYNC：分布式数据同步权限
 
 startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptions?: {[key:&nbsp;string]:&nbsp;Object;} ): void;
 
-发现周边同局域网或者开启蓝牙的设备。详细信息参见：[startDiscovering/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)。
+发现周边同局域网或者开启蓝牙的设备。详细信息参见：startDiscovering。
 
 
 ### 开发步骤
@@ -195,22 +195,22 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 
 6. 发现结束或页面退出时，调用停止发现接口释放发现监听。
 
-   <!-- @[stop_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
-
+   <!-- @[stop_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
+   
    ``` TypeScript
    stopDeviceDiscovery(): void {
      if (typeof (this.deviceManager) == 'undefined') {
        logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+       this.showErrMsg('deviceManager has not initialized');
        return;
      }
-
+     logger.info('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery');
      try {
        this.deviceManager.stopDiscovering();
        this.deviceManager.off('discoverSuccess');
        this.deviceManager.off('discoverFailure');
-     } catch (err) {
-       let error: BusinessError = err as BusinessError;
-       logger.error('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery failed err: ' + error.toString());
+     } catch (e) {
+       logger.error('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery failed err: ' + e.toString());
      }
    }
    ```
@@ -225,7 +225,7 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 
 bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , callback: AsyncCallback&lt;{deviceId: string;}>): void;
 
-设备绑定。详细信息参见：[bindTarget/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#bindtarget)。
+设备绑定。详细信息参见：bindTarget。
 
 ### 开发步骤
 
@@ -285,7 +285,7 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
 
 getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
 
-设备信息查询。详细信息参见：[getAvailableDeviceListSync/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)。
+设备信息查询。详细信息参见：getAvailableDeviceListSync。
 
 ### 开发步骤
 
@@ -330,7 +330,7 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
 
 on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;): void;
 
-设备上下线监听。详细信息参见：[on('deviceStateChange')/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)。
+设备上下线监听。详细信息参见：on('deviceStateChange')。
 
 ### 开发步骤
 

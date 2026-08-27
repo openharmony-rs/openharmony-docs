@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-以X25519、DH和ECDH协商密钥类型为例，在密钥由HUKS管理的情况下，完成密钥协商。具体的场景介绍及支持的算法规格，请参考[密钥协商支持的算法](huks-key-agreement-overview.md#支持的算法)。
+以X25519、DH和ECDH协商密钥类型为例，在密钥由HUKS管理的情况下，完成密钥协商。具体的场景介绍及支持的算法规格，请参考密钥协商支持的算法。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -18,13 +18,13 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 **生成密钥**
 
-设备A、设备B各自生成一个非对称密钥，具体请参考[密钥生成](huks-key-generation-overview.md)或[密钥导入](huks-key-import-overview.md)。
+设备A、设备B各自生成一个非对称密钥，具体请参考密钥生成或密钥导入。
 
 密钥生成时，可指定参数，OH_HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG（可选），用于标识此步骤生成的密钥是否由HUKS管理。
 
 **导出密钥**
 
-设备A、B导出非对称密钥对的公钥材料，具体请参考[密钥导出](huks-export-key-arkts.md)。
+设备A、B导出非对称密钥对的公钥材料，具体请参考密钥导出。
 
 **密钥协商**
 
@@ -50,7 +50,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 **删除密钥**
 
-当密钥废弃不用时，设备A、B均需要删除密钥，具体请参考[密钥删除](huks-delete-key-ndk.md)。
+当密钥废弃不用时，设备A、B均需要删除密钥，具体请参考密钥删除。
  
 ## 开发案例
 下面分别以X25519、DH和ECDH密钥为例，进行协商。  

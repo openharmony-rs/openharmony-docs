@@ -8,8 +8,8 @@
 
 > **说明：**
 >
-> 当前开发指导使用的接口为[Image/apis-image-kit/capi-image.md)模块下的C API，可完成图片编解码，图片接收器，处理图像数据等功能。这部分API在API version 11之前发布，在后续的版本不再增加新功能，**不再推荐使用**。<br>
-> 开发者可使用[Image_NativeModule/apis-image-kit/capi-image-nativemodule.md)模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考[图片开发指导(C/C++)](image-source-c.md)节点下的内容。这部分API从API version 12开始支持，并将持续演进，**推荐开发者使用**。<br>
+> 当前开发指导使用的接口为Image模块下的C API，可完成图片编解码，图片接收器，处理图像数据等功能。这部分API在API version 11之前发布，在后续的版本不再增加新功能，**不再推荐使用**。<br>
+> 开发者可使用Image_NativeModule模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考图片开发指导(C/C++)节点下的内容。这部分API从API version 12开始支持，并将持续演进，**推荐开发者使用**。<br>
 > 两套C API不建议同时使用，在部分场景下存在不兼容的问题。
 
 开发者可以通过本指导了解如何使用Native Image的接口完成位图操作。
@@ -46,7 +46,7 @@ EXTERN_C_END
 
 **Native接口调用**
 
-具体接口说明请参考[Image/apis-image-kit/capi-image.md)。
+具体接口说明请参考Image。
 
 在hello.cpp文件中获取JS的资源对象，并转为Native的资源对象，即可调用Native接口，调用方式示例代码如下：
 
@@ -62,14 +62,17 @@ EXTERN_C_END
 
     ```c++
     napi_value CreatePixelMapTest(napi_env env, napi_callback_info info) {
+        const int32_t PIXEL_FORMAT_BGRA_8888 = 4;
+        const uint32_t ALPHA_TYPE_UNKNOWN = 0;
+
         napi_value udfVar = nullptr;
         napi_value pixelMap = nullptr;
 
         struct OhosPixelMapCreateOps createOps;
         createOps.width = 4;
         createOps.height = 6;
-        createOps.pixelFormat = 4;
-        createOps.alphaType = 0;
+        createOps.pixelFormat = PIXEL_FORMAT_BGRA_8888;
+        createOps.alphaType = ALPHA_TYPE_UNKNOWN;
         size_t bufferSize = createOps.width * createOps.height * 4;
         void *buff = malloc(bufferSize);
         if (buff == nullptr) {
@@ -168,35 +171,36 @@ EXTERN_C_END
         OH_PixelMap_SetOpacity(native, opacity);
 
         // 设置缩放比例。
-        // scaleX: 宽为原来的0.5。
-        // scaleY: 高为原来的0.5。
+        // scaleX：宽为原来的0.5倍。
+        // scaleY：高为原来的0.5倍。
         float scaleX = 0.5;
         float scaleY = 0.5;
         OH_PixelMap_Scale(native, scaleX, scaleY);
 
         // 设置偏移。
-        // translateX: 向下偏移50。
-        // translateY: 向右偏移50。
+        // translateX：向下偏移50像素。
+        // translateY：向右偏移50像素。
         float translateX = 50;
         float translateY = 50;
         OH_PixelMap_Translate(native, translateX, translateY);
 
-        // 设置顺时针旋转90度。
+        // 设置旋转角。
+        // angle：顺时针旋转90度。
         float angle = 90;
         OH_PixelMap_Rotate(native, angle);
 
-        // 设置翻转
-        // flipX: 水平翻转，0为不翻转，1为翻转。
-        // flipY: 垂直翻转，0为不翻转，1为翻转。
+        // 设置翻转。
+        // flipX：水平翻转，0为不翻转，1为翻转。
+        // flipY：垂直翻转，0为不翻转，1为翻转。
         int32_t flipX = 0;
         int32_t flipY = 1;
         OH_PixelMap_Flip(native, flipX, flipY);
 
         // 设置裁剪区域。
-        // cropX: 裁剪起始点横坐标。
-        // cropY: 裁剪起始点纵坐标。
-        // cropH: 裁剪高度10，方向为从上往下（裁剪后的图片高度为10）。
-        // cropW: 裁剪宽度10，方向为从左到右（裁剪后的图片宽度为10）。
+        // cropX：裁剪起始点横坐标。
+        // cropY：裁剪起始点纵坐标。
+        // cropH：裁剪高度10，方向为从上往下（裁剪后的图片高度为10）。
+        // cropW：裁剪宽度10，方向为从左到右（裁剪后的图片宽度为10）。
         int32_t cropX = 1;
         int32_t cropY = 1;
         int32_t cropW = 10;
@@ -205,10 +209,12 @@ EXTERN_C_END
 
         // 获取PixelMap对象数据的内存地址，并锁定该内存。
         void *pixelAddr = nullptr;
-        OH_PixelMap_AccessPixels(native, &pixelAddr);
+        int32_t ret = OH_PixelMap_AccessPixels(native, &pixelAddr);
 
-        // 释放PixelMap对象数据的内存锁。
-        OH_PixelMap_UnAccessPixels(native);
+        if (ret == IMAGE_RESULT_SUCCESS) {
+            // 释放PixelMap对象数据的内存锁。
+            OH_PixelMap_UnAccessPixels(native);
+        }
 
         return result;
     }
@@ -225,7 +231,7 @@ EXTERN_C_END
     export const transform: (a: image.PixelMap) => void;
     ```
 
-2. 打开src\main\ets\pages\index.ets, 导入"libentry.so"(根据工程名生成)，调用Native接口，传入JS的资源对象。示例如下：
+2. 打开src\main\ets\pages\index.ets，导入"libentry.so"(根据工程名生成)，调用Native接口，传入JS的资源对象。示例如下：
 
     ```js
     import testNapi from 'libentry.so';

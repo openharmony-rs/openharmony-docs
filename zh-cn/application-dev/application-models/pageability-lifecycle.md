@@ -20,8 +20,8 @@ PageAbility生命周期是PageAbility被调度到INACTIVE、ACTIVE、BACKGROUND�
 
 | 生命周期状态 | 生命周期状态说明 |
 | -------- | -------- |
-| UNINITIALIZED | 未初始状态，为临时状态，PageAbility被创建后会由UNINITIALIZED状态进入INITIAL状态。 |
-| INITIAL | 初始化状态，也表示停止状态，表示当前PageAbility未运行，PageAbility被启动后由INITIAL态进入INACTIVE状态。 |
+| UNINITIALIZED | 未初始化状态，为临时状态，PageAbility被创建后会由UNINITIALIZED状态进入INITIAL状态。 |
+| INITIAL | 初始化状态，也表示停止状态，表示当前PageAbility未运行，PageAbility被启动后由INITIAL状态进入INACTIVE状态。 |
 | INACTIVE | 失去焦点状态，表示当前窗口已显示但是无焦点状态。 |
 | ACTIVE | 前台激活状态，表示当前窗口已显示，并获取焦点。 |
 | BACKGROUND | 后台状态，表示当前PageAbility退到后台，PageAbility在被销毁后由BACKGROUND状态进入INITIAL状态，或者重新被激活后由BACKGROUND状态进入ACTIVE状态。 |
@@ -123,7 +123,7 @@ PageAbility生命周期回调与生命周期状态的关系如下图所示。
     export default new Test()
     ```
 
-2. Index.ets页面提供一个"terminateSelf"按钮，点击后调用[featureAbility.terminateSelf/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityterminateself7-1)接口关闭Ability，从而触发`onDestroy`生命周期回调。
+2. Index.ets页面提供一个"terminateSelf"按钮，点击后调用featureAbility.terminateSelf接口关闭Ability，从而触发`onDestroy`生命周期回调。
 
     <!--code_no_check-->
     ```ts

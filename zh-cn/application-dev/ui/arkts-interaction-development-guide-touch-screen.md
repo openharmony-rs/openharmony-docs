@@ -10,23 +10,23 @@
 
 触屏设备是最常见的输入设备，几乎所有手持类终端设备都支持用户通过触控操作。触摸事件也是应用开发者最常处理的事件类型之一。
 
-需要注意的是，对于其他类型的输入设备上的类似触控行为的操作，系统为了交互一致性，也会将其转换为触摸事件派发给应用，如按下**鼠标**左键点击、滑动，既可以接收到Touch事件，也可以接收到鼠标事件。如果要将其与触屏设备产生的触摸事件进行区分，可以通过事件中的[SourceType/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetype枚举说明8)进行判断。
+需要注意的是，对于其他类型的输入设备上的类似触控行为的操作，系统为了交互一致性，也会将其转换为触摸事件派发给应用，如按下**鼠标**左键点击、滑动，既可以接收到Touch事件，也可以接收到鼠标事件。如果要将其与触屏设备产生的触摸事件进行区分，可以通过事件中的SourceType进行判断。
 
 
 ## 触摸事件
 
-触摸事件可以通过通用事件[onTouch/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)在组件上接收，该回调响应遵循命中测试规则。
+触摸事件可以通过通用事件onTouch在组件上接收，该回调响应遵循命中测试规则。
 
-触摸事件的上报频率会由系统降采样到与屏幕刷新率一致，详见[重采样与历史点](#重采样与历史点)章节。
+触摸事件的上报频率会由系统降采样到与屏幕刷新率一致，详见重采样与历史点章节。
 
-对于支持多点触控的输入设备，使用多根手指同时操作可以产生多个触点，全部的触点信息可以通过[TouchEvent/apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent对象说明)的touches成员得到，而changedTouches会给出当前事件上报时，是哪些触点在产生变化。
+对于支持多点触控的输入设备，使用多根手指同时操作可以产生多个触点，全部的触点信息可以通过TouchEvent的touches成员得到，而changedTouches会给出当前事件上报时，是哪些触点在产生变化。
 
-其他更多的事件信息可以从[TouchEvent/apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent对象说明)的基类[BaseEvent/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#baseevent8)中获得。
+其他更多的事件信息可以从TouchEvent的基类BaseEvent中获得。
 
 
 ## 阻止冒泡
 
-参考[事件冒泡](./arkts-interaction-basic-principles.md#事件冒泡)了解冒泡机制，以下是一个简单示例，实现了只要点击在子组件区域内，就阻止父组件接收触摸事件：
+参考事件冒泡了解冒泡机制，以下是一个简单示例，实现了只要点击在子组件区域内，就阻止父组件接收触摸事件：
 <!-- @[prevent_bubbling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/PreventBubbling/PreventBubbling.ets) -->
 
 ``` TypeScript
@@ -186,7 +186,7 @@ struct MultipleFingerInformation {
 
 ![finger ids](figures/finger_ids.png)
 
-按下手指① -> 按下手指② -> 按下手指③ -> 抬起手指② -> 抬起手指③ -> 按下手指② -> 抬起手指① -> 抬起手指③
+按下手指① -> 按下手指② -> 按下手指③ -> 抬起手指② -> 抬起手指③ -> 按下手指③ -> 抬起手指① -> 抬起手指③
 
 ```text
   fingers start to press down   // 按下手指①
@@ -210,7 +210,7 @@ struct MultipleFingerInformation {
 
 ## 触控笔
 
-触控笔操作触摸屏与通过手指操作类似，都会产生触摸事件，可以通过sourceTool进行区分。而对于一些主动式电容笔，上报的触摸事件中，还会包含笔接触屏幕时的夹角信息，可参考[BaseEvent/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#baseevent8)。
+触控笔操作触摸屏与通过手指操作类似，都会产生触摸事件，可以通过sourceTool进行区分。而对于一些主动式电容笔，上报的触摸事件中，还会包含笔接触屏幕时的夹角信息，可参考BaseEvent。
 
 - tiltX：触控笔在设备平面上的投影与设备平面X轴的夹角。
 - tiltY：触控笔在设备平面上的投影与设备平面Y轴的夹角。

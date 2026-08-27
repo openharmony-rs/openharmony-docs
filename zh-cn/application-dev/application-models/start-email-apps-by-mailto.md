@@ -22,7 +22,7 @@
 > **说明：**
 >
 > - 如果使用mailto方式拉起邮件应用，需要拉起方先按mailto格式封装字符串，再使用mailto方式拉起。邮件应用会解析收到的mailto协议字符串，并填充发件人、收件人、邮件内容等信息。
-> - 如果拉起方已知发件人、收件人、邮件内容等信息，推荐[使用startAbilityByType方式拉起邮件应用](start-email-apps.md)。
+> - 如果拉起方已知发件人、收件人、邮件内容等信息，推荐使用startAbilityByType方式拉起邮件应用。
 
 ## mailto协议格式
 
@@ -101,7 +101,7 @@ struct Index {
 
 ## 目标方开发步骤
 
-1. 为了能够支持被其他应用通过mailto协议拉起，目标应用需要在[module.json5配置文件](../quick-start/module-configuration-file.md)中声明mailto。
+1. 为了能够支持被其他应用通过mailto协议拉起，目标应用需要在module.json5配置文件中声明mailto。
 
     ```json
     {

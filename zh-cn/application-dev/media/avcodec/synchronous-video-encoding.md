@@ -1,8 +1,8 @@
-# 视频编码同步模式
+# 同步模式视频编码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
@@ -13,9 +13,9 @@
 
 具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
 
-当前支持的编码能力，请参考[AVCodec支持的格式](avcodec-support-formats.md#视频编码)。
+当前支持的编码能力，请参考AVCodec支持的格式。
 
-视频编码的限制约束、支持的能力、状态机调用关系请参考[视频编码](video-encoding.md)。
+视频编码的限制约束、支持的能力、状态机调用关系请参考异步模式视频编码。
 
 ## 适用场景
 
@@ -24,7 +24,7 @@
 
 ## 开发指导
 
-详细的API说明请参考[VideoEncoder/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md)。
+详细的API说明请参考VideoEncoder。
 
 ![Invoking relationship of video encode stream](figures/synchronous-video-encode.png)
 
@@ -61,7 +61,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    #include <shared_mutex>
    ```
    
-2. 全局变量（仅作参考，可以根据实际情况将其封装到对象中）。
+2. 定义全局变量（仅作示例，具体参数值，请据能力查询接口获取相应值范围来参考配置）。
 
    ```c++
    // 视频帧宽度。
@@ -96,7 +96,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    - videoEnc：视频编码器实例的指针。
    - capability：编码器能力查询实例的指针。
-   - [OH_AVCODEC_MIMETYPE_VIDEO_AVC/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)：AVC格式视频编解码器。
+   - OH_AVCODEC_MIMETYPE_VIDEO_AVC：AVC格式视频编解码器。
 
    ```c++
    // 创建硬件编码器实例。
@@ -111,9 +111,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 2. 调用OH_VideoEncoder_Configure()配置编码器。
 
-   - 详细可配置选项的说明请参考[媒体数据键值对/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
-   - 参数校验规则请参考[OH_VideoEncoder_Configure()/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)。
-   - 参数取值范围可以通过能力查询接口获取，具体示例请参考[获取支持的编解码能力](obtain-supported-codecs.md)。
+   - 详细可配置选项的说明请参考媒体数据键值对。
+   - 参数校验规则请参考OH_VideoEncoder_Configure()。
+   - 参数取值范围可以通过能力查询接口获取，具体示例请参考获取支持的编解码能力。
 
    目前支持的所有格式都必须配置以下选项：视频帧宽度、视频帧高度、视频像素格式。
 
@@ -145,7 +145,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    示例中的变量说明如下：
 
-   nativeWindow：获取方式请参考[视频编码Surface模式](video-encoding.md#surface模式)的“步骤-6：设置surface”。
+   nativeWindow：获取方式请参考异步模式视频编码Surface模式的“步骤-6：设置surface”。
 
    ```c++
    // 获取需要输入的surface，以进行编码。
@@ -169,7 +169,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 5. 调用OH_VideoEncoder_Start()启动编码器。
 
    ```c++
-   // 配置待编码文件路径。
+   // 配置待编码文件路径。可填写应用沙箱路径等可访问目录。
    std::string_view outputFilePath = "/*yourpath*.h264";
    std::unique_ptr<std::ofstream> outputFile = std::make_unique<std::ofstream>();
    if (outputFile != nullptr) {
@@ -184,9 +184,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 6. 获取可用buffer并释放编码帧。
 
-   - 调用[OH_VideoEncoder_QueryOutputBuffer/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryoutputbuffer)接口获取下一个可用的输出缓冲区（buffer）的索引（index）。
-   - 根据获取的索引（index），调用[OH_VideoEncoder_GetOutputBuffer/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputbuffer)接口获取对应的缓冲区（buffer）实例。
-   - 调用[OH_VideoEncoder_FreeOutputBuffer/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_freeoutputbuffer)接口释放编码帧。
+   - 调用OH_VideoEncoder_QueryOutputBuffer接口获取下一个可用的输出缓冲区（buffer）的索引（index）。
+   - 根据获取的索引（index），调用OH_VideoEncoder_GetOutputBuffer接口获取对应的缓冲区（buffer）实例。
+   - 调用OH_VideoEncoder_FreeOutputBuffer接口释放编码帧。
 
    ```c++
    bool EncoderOutput(OH_AVCodec *videoEnc, int64_t timeoutUs)
@@ -301,7 +301,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 10. （可选）调用OH_VideoEncoder_Reset()重置编码器。
 
-    调用OH_VideoEncoder_Reset接口后，编码器回到初始化的状态，需要调用接口[OH_VideoEncoder_Configure/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)和[OH_VideoEncoder_Prepare/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_prepare)重新配置。
+    调用OH_VideoEncoder_Reset接口后，编码器回到初始化的状态，需要调用接口OH_VideoEncoder_Configure和OH_VideoEncoder_Prepare重新配置。
 
     ```c++
     // 重置编码器videoEnc。
@@ -423,7 +423,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     配置输入文件、输出文件。
 
     ```c++
-    // 配置待编码文件路径。
+    // 配置待编码文件路径。可填写应用沙箱路径等可访问目录。
     std::string_view inputFilePath = "/*yourpath*.yuv";
     std::string_view outputFilePath = "/*yourpath*.h264";
     std::unique_ptr<std::ifstream> inputFile = std::make_unique<std::ifstream>();
@@ -443,9 +443,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 5. 获取可用buffer并写入码流至编码器
 
-    - 调用[OH_VideoEncoder_QueryInputBuffer/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryinputbuffer)接口获取下一个可用的输入缓冲区（buffer）的索引（index）。
-    - 根据获取的索引（index），调用[OH_VideoEncoder_GetInputBuffer/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputbuffer)接口获取对应的缓冲区（buffer）实例。
-    - 将需要编码的数据写入该缓冲区（buffer）后，调用[OH_VideoEncoder_PushInputBuffer/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputbuffer)接口将其送入编码输入队列进行编码。当最后一帧数据被送入编码输入队列时，需要将flag标识成[AVCODEC_BUFFER_FLAGS_EOS/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)，通知编码器输入结束。
+    - 调用OH_VideoEncoder_QueryInputBuffer接口获取下一个可用的输入缓冲区（buffer）的索引（index）。
+    - 根据获取的索引（index），调用OH_VideoEncoder_GetInputBuffer接口获取对应的缓冲区（buffer）实例。
+    - 将需要编码的数据写入该缓冲区（buffer）后，调用OH_VideoEncoder_PushInputBuffer接口将其送入编码输入队列进行编码。当最后一帧数据被送入编码输入队列时，需要将flag标识成AVCODEC_BUFFER_FLAGS_EOS，通知编码器输入结束。
 
 
     示例中的变量size、offset、pts、frameData、flags说明与Surface模式相同，此处不再赘述。
@@ -537,9 +537,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 6. 获取可用buffer并释放编码帧。
 
-   - 调用[OH_VideoEncoder_QueryOutputBuffer/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryoutputbuffer)接口获取下一个可用的输出缓冲区（buffer）的索引（index）。
-   - 根据获取的索引（index），调用[OH_VideoEncoder_GetOutputBuffer/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputbuffer)接口获取对应的缓冲区（buffer）实例。
-   - 调用[OH_VideoEncoder_FreeOutputBuffer/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_freeoutputbuffer)接口释放编码帧。
+   - 调用OH_VideoEncoder_QueryOutputBuffer接口获取下一个可用的输出缓冲区（buffer）的索引（index）。
+   - 根据获取的索引（index），调用OH_VideoEncoder_GetOutputBuffer接口获取对应的缓冲区（buffer）实例。
+   - 调用OH_VideoEncoder_FreeOutputBuffer接口释放编码帧。
   
 
     ```c++
@@ -615,4 +615,4 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     }
     ```
 
-后续流程（包括刷新、重置、停止和销毁编码器）与Surface模式基本一致，请参考[Surface模式](#surface模式)的步骤9-12。
+后续流程（包括刷新、重置、停止和销毁编码器）与Surface模式基本一致，请参考Surface模式的步骤9-12。

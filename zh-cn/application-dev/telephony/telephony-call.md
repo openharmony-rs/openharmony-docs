@@ -36,7 +36,7 @@
 ## 接口说明
 
 > **说明：**
-> 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用callback函数，更多方式可以查阅[API参考/apis-telephony-kit/js-apis-call.md)。
+> 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用callback函数，更多方式可以查阅API参考。
 
 |                                  接口名                                             | 描述                                                         |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------ |
@@ -44,7 +44,7 @@
 |<!--DelRow--> dialCall(phoneNumber: string, callback: AsyncCallback&lt;void&gt;): void;                 | 拨号。该接口为系统接口。                                      |
 | makeCall(phoneNumber: string, callback: AsyncCallback&lt;void&gt;): void;                 | 转到拨号屏幕，显示被叫号码。                                  |
 
-observer模块为开发者提供订阅和取消订阅通话业务状态的功能。具体API说明详见[接口文档/apis-telephony-kit/js-apis-observer.md)。
+observer模块为开发者提供订阅和取消订阅通话业务状态的功能。具体API说明详见接口文档。
 
 | 接口名                                                       | 描述               |
 | ------------------------------------------------------------ | ------------------ |
@@ -57,7 +57,7 @@ observer模块为开发者提供订阅和取消订阅通话业务状态的功能
 
 1. 声明接口调用所需要的权限：ohos.permission.PLACE_CALL。
 
-   此权限级别为system_basic，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)声明对应权限。
+   此权限级别为system_basic，在申请权限前，请保证符合权限使用的基本原则。然后参考申请应用权限声明对应权限。
 2. 导入call和observer模块。
 3. 调用hasVoiceCapability，确认当前设备是否支持拨号。
 4. 调用dialCall接口，拨打电话。

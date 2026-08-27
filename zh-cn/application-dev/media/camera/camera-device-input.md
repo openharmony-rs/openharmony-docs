@@ -6,13 +6,13 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
+在开发相机应用时，需要先申请相关权限。
 
 相机应用可通过调用和控制相机设备，完成预览、拍照和录像等基础操作。
 
 ## 开发步骤
 
-详细的API说明请参考[@ohos.multimedia.camera (相机管理)/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考@ohos.multimedia.camera (相机管理)。
 
 1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
@@ -23,9 +23,9 @@
 
    > **说明：**
    >
-   > 在相机设备输入之前需要先完成相机管理，详细开发步骤请参考[相机管理](camera-device-management.md)。
+   > 在相机设备输入之前需要先完成相机管理，详细开发步骤请参考相机管理。
 
-2. 通过[cameraManager/apis-camera-kit/arkts-apis-camera-CameraManager.md)中的[createCameraInput/apis-camera-kit/arkts-apis-camera-CameraManager.md#createcamerainput)方法创建相机输入流。
+2. 通过cameraManager中的createCameraInput方法创建相机输入流。
 
    ```ts
    async function createInput(cameraDevice: camera.CameraDevice, cameraManager: camera.CameraManager): Promise<camera.CameraInput | undefined> {
@@ -50,7 +50,7 @@
    }
    ```
 
-3. 通过[getSupportedSceneModes/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedscenemodes11)方法，获取当前相机设备支持的模式列表，列表中存储了相机设备支持的所有模式[SceneMode/apis-camera-kit/arkts-apis-camera-e.md#scenemode11)。
+3. 通过getSupportedSceneModes方法，获取当前相机设备支持的模式列表，列表中存储了相机设备支持的所有模式SceneMode。
 
     ```ts
     function getSupportedSceneMode(cameraDevice: camera.CameraDevice, cameraManager: camera.CameraManager): Array<camera.SceneMode> {
@@ -68,7 +68,7 @@
     }
     ```
 
-4. 通过[getSupportedOutputCapability/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)方法，获取当前相机设备支持的所有输出流，如预览流、拍照流、录像流等。输出流在[CameraOutputCapability/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的各个profile字段中，根据相机设备指定模式[SceneMode/apis-camera-kit/arkts-apis-camera-e.md#scenemode11)的不同，需要添加不同类型的输出流。
+4. 通过getSupportedOutputCapability方法，获取当前相机设备支持的所有输出流，如预览流、拍照流、录像流等。输出流在CameraOutputCapability中的各个profile字段中，根据相机设备指定模式SceneMode的不同，需要添加不同类型的输出流。
 
    ```ts
    async function getSupportedOutputCapability(cameraDevice: camera.CameraDevice, cameraManager: camera.CameraManager, sceneMode: camera.SceneMode): Promise<camera.CameraOutputCapability | undefined> {

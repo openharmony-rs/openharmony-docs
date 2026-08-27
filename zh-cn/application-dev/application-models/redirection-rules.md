@@ -40,4 +40,4 @@ PageAbility作为可见Ability，可以通过startAbility启动有界面的且�
 ```
 
 
-如果应用中的Ability包含skills过滤器，建议此属性设置为"true"，以允许其他应用通过[隐式调用](explicit-implicit-want-mappings.md)启动该Ability。如果此属性设为"false"，其他应用尝试启动该Ability时系统会返回PERMISSION_DENIED。这种情况下系统应用可以通过申请<!--Del-->[<!--DelEnd-->START_INVISIBLE_ABILITY<!--Del-->](../security/AccessToken/permissions-for-system-apps.md#ohospermissionstart_invisible_ability)<!--DelEnd-->权限启动visible为false的组件，例如系统桌面、语音助手、搜索助手等。
+如果应用中的Ability包含skills过滤器，建议此属性设置为"true"，以允许其他应用通过隐式调用启动该Ability。如果此属性设为"false"，其他应用尝试启动该Ability时系统会返回PERMISSION_DENIED。这种情况下系统应用可以通过申请<!--Del--><!--DelEnd-->START_INVISIBLE_ABILITY<!--Del--><!--DelEnd-->权限启动visible为false的组件，例如系统桌面、语音助手、搜索助手等。

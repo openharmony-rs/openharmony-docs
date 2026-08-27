@@ -12,7 +12,7 @@ Web组件支持手势缩放、鼠标滚轮、键盘缩放，以方便用户调�
 
 ### 启用/禁用网页手势缩放
 
-通过属性[zoomAccess/apis-arkweb/arkts-basic-components-web-attributes.md#zoomaccess)控制网页缩放功能，当设置为false时，网页不允许手势缩放行为。
+通过属性zoomAccess控制网页缩放功能，当设置为false时，网页不允许手势缩放行为。
 
 当html网页设置`<meta name="viewport" id="viewport" content="user-scalable=no">`时，网页不允许手势缩放。
 
@@ -47,7 +47,7 @@ struct WebComponent {
 
 ### 启用/禁用手势强制缩放
 
-通过属性[forceEnableZoom/apis-arkweb/arkts-basic-components-web-attributes.md#forceenablezoom21)控制网页强制缩放功能，当设置为`true`时，手势缩放行为不受`minimum-scale`和`maximum-scale`以及`user-scalable=no`的限制。
+通过属性forceEnableZoom控制网页强制缩放功能，当设置为`true`时，手势缩放行为不受`minimum-scale`和`maximum-scale`以及`user-scalable=no`的限制。
 
 ### 启用/禁用网页键盘鼠标缩放
 
@@ -85,7 +85,7 @@ struct WebComponent {
 }
 ```
 
-或者通过属性[zoomControlAccess/apis-arkweb/arkts-basic-components-web-attributes.md#zoomcontrolaccess22)设置是否允许通过组合按键（Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板）进行缩放。
+或者通过属性zoomControlAccess设置是否允许通过组合按键（Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板）进行缩放。
 
 ```ts
 // xxx.ets
@@ -107,7 +107,7 @@ struct WebComponent {
 
 ## 监听页面缩放比例变化
 
-应用可以通过[onScaleChange/apis-arkweb/arkts-basic-components-web-events.md#onscalechange9)接口监听页面缩放比例的变化。该接口事件对应手势事件（双指缩放），`event.newScale`对应网页属性`visualViewport.scale`。
+应用可以通过onScaleChange接口监听页面缩放比例的变化。该接口事件对应手势事件（双指缩放），`event.newScale`对应网页属性`visualViewport.scale`。
 
 <!-- @[MonitorZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/MonitorZoomRatio.ets) -->
 
@@ -132,9 +132,9 @@ struct WebComponent {
 
 ## 控制网页的缩放比例
 
-应用可以通过设置[initialScale/apis-arkweb/arkts-basic-components-web-attributes.md#initialscale9)属性设置页面初始缩放比例。
+应用可以通过设置initialScale属性设置页面初始缩放比例。
 
-应用可以通过[zoom/apis-arkweb/arkts-apis-webview-WebviewController.md#zoom)、[zoomIn/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomin)、[zoomOut/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomout)接口控制页面缩放。
+应用可以通过zoom、zoomIn、zoomOut接口控制页面缩放。
 
  > **说明：**
  >
@@ -226,7 +226,7 @@ struct WebComponent {
 factor = 100 * targetFactor / pageFactor
 ```
 
-<!-- @[ControlZoomToFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomToFixedRatio.ets) -->
+<!-- @[ControlZoomToFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomToFixedRatio.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -261,7 +261,7 @@ struct WebComponent {
       Web({ src: 'www.example.com', controller: this.controller })
         .zoomAccess(true)
         .onScaleChange((event) => {
-          console.error('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
+          console.info('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
           this.pageFactor = event.newScale;
         })
     }

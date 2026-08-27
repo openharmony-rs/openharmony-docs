@@ -10,13 +10,13 @@ Media Kit（媒体服务）用于开发音视频播放或录制的各类功能�
 
 Media Kit提供的模块有：
 
-- [AVPlayer](#avplayer)：播放音视频
-- [SoundPool](#soundpool)：播放短音频
-- [AVRecorder](#avrecorder)：录制音视频
-- [AVScreenCapture](#avscreencapture)：录制屏幕
-- [AVMetadataExtractor](#avmetadataextractor)：获取音视频元数据
-- [AVImageGenerator](#avimagegenerator)：获取视频缩略图
-- [AVTranscoder](#avtranscoder)：视频转码
+- AVPlayer：播放音视频
+- SoundPool：播放短音频
+- AVRecorder：录制音视频
+- AVScreenCapture：录制屏幕
+- AVMetadataExtractor：获取音视频元数据
+- AVImageGenerator：获取视频缩略图
+- AVTranscoder：视频转码
 
 ## 亮点/特征
 
@@ -46,7 +46,7 @@ Media Kit提供的模块有：
 
 - 编码格式：比如h264/h265
 
-详细流媒体开发流程请参考[流媒体播放开发指导](streaming-media-playback-development-guide.md)。
+详细流媒体开发流程请参考流媒体播放开发指导。
 
 ## AVPlayer
 
@@ -80,7 +80,7 @@ AVPlayer提供功能完善一体化播放能力，应用只需要提供流媒体
 
 图中的数字标注表示需要数据与外部模块的传递。
 
-1. 应用从XComponent组件获取窗口SurfaceID，获取方式参考[XComponent/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)。
+1. 应用从XComponent组件获取窗口SurfaceID，获取方式参考XComponent。
 
 2. 应用把媒体资源、SurfaceID传递给AVPlayer接口。
 
@@ -265,7 +265,7 @@ AVScreenCapture主要工作是捕获音频信号、视频信号，并通过音�
 | 音频源类型 | 说明 | 
 | -------- | -------- |
 | MIC | 系统麦克风作为音频源输入。 | 
-| ALL_PLAYBACK | 系统内录使用作为音频源输入。 | 
+| ALL_PLAYBACK | 系统内录音频作为音频源输入。 | 
 
 支持的视频源如下：
 
@@ -300,7 +300,7 @@ AVMetadataExtractor 主要用于获取音视频元数据。通过使用 AVMetada
 
 ### 支持的格式
 
-支持的音视频源参考[媒体数据解析](../avcodec/audio-video-demuxer.md)。
+支持的音视频源参考媒体数据解析。
 
 ## AVImageGenerator
 
@@ -308,7 +308,7 @@ AVImageGenerator 主要用于获取视频缩略图。通过使用 AVImageGenerat
 
 ### 支持的格式
 
-支持的视频源参考[视频解码](../avcodec/video-decoding.md)。
+支持的视频源参考视频解码。
 
 ## AVTranscoder
 
@@ -323,7 +323,7 @@ AVTranscoder主要用于将已压缩编码的视频文件按照指定参数转�
 <!--RP1--><!--RP1End-->
 - 支持的源视频格式：
 
-   当前转码支持的源视频格式依赖于系统解码器和解封装支持的格式，详细情况请参考[AVCodec支持的格式](../avcodec/avcodec-support-formats.md#媒体数据解析)。
+   当前转码支持的源视频格式依赖于系统解码器和解封装支持的格式，详细情况请参考AVCodec支持的格式。
 
 - 支持的目标视频格式：
 

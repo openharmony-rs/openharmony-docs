@@ -28,8 +28,8 @@ Driver Development Kit（驱动开发套件）为外设驱动开发者提供高�
 
 ## 基本概念
 
-- 扩展外设驱动客户端：查询驱动并绑定驱动，自定义驱动与设备之间的通信方式以及数据处理方式等，即[带UI界面基础驱动](externaldevice-guidelines.md)。
-- 扩展外设驱动：基于DDK能力开发的专业专用扩展外设驱动或扩展外设增强驱动，即[无UI界面基础驱动](driverextensionability.md)。
+- 扩展外设驱动客户端：查询驱动并绑定驱动，自定义驱动与设备之间的通信方式以及数据处理方式等，即带UI界面基础驱动。
+- 扩展外设驱动：基于DDK能力开发的专业专用扩展外设驱动或扩展外设增强驱动，即无UI界面基础驱动。
 - 扩展外设管理服务（External Device Manager）：扩展设备管理，驱动包全生命周期管理等。
 - BMS（Bundle Manager Service）：包管理服务，在OpenHarmony上主要负责应用的安装、卸载和数据管理。
 - AMS（Ability Manager Service）：元能力管理服务，用于拉起和关闭扩展驱动能力DriverExtensionAbility。
@@ -79,16 +79,18 @@ HDF扩展驱动框架为扩展外设驱动开发，提供稳定统一的外设�
 
 <!--RP1--><!--RP1End-->
 
+针对 DriverExtensionAbility接口调用限制，详细请参考 API 中的约束限制。
+
 ## 关联模块
 
 在扩展外设驱动开发过程中，需要使用到其他关联模块的部分能力，来协助驱动开发。
 
 | 名称 | 作用 | 
 | --------- | --------- |
-| PerformanceAnalysisKit | 引入[hilog/apis-performance-analysis-kit/js-apis-hilog.md)用于日志打印。| 
-| BasicServicesKit       | 引入[BusinessError/apis-basic-services-kit/js-apis-base.md#businesserror)用于捕获错误信息。 |
-| IPCKit                 | 引入[rpc/apis-ipc-kit/js-apis-rpc.md)用于驱动与客户端IPC（Inter-Process Communication）通信。|
-| AbilityKit             | 引入[@ohos.application.Want (Want)/apis-ability-kit/js-apis-application-want.md)用于生命周期管理。|
+| PerformanceAnalysisKit | 引入hilog用于日志打印。| 
+| BasicServicesKit       | 引入BusinessError用于捕获错误信息。 |
+| IPCKit                 | 引入rpc用于驱动与客户端IPC（Inter-Process Communication）通信。|
+| AbilityKit             | 引入@ohos.application.Want (Want)用于生命周期管理。|
 
 ## 驱动应用规格说明
 1.驱动应用定义
@@ -108,7 +110,7 @@ HDF扩展驱动框架为扩展外设驱动开发，提供稳定统一的外设�
 4.在DriverExtensionAbility中API访问安全管控说明
 - 系统支持基于ExtensionAbility构建场景化扩展Ability，DriverExtensionAbility为支持开发用户态扩展驱动的一类Ability。
 - 在DriverExtensionAbility中仅支持访问DDK（Driver Development Kit）API，实现对非标外设进行访问控制和数据通信。
-- 基于驱动开发安全约束及驱动开发业务场景，在DriverExtensionAbility中不支持访问其它ArkTS API，以防止恶意行为和数据泄漏。
+- 基于驱动开发安全约束及驱动开发业务场景，在DriverExtensionAbility中不支持访问其它ArkTS API，以防止恶意行为和数据泄露。
 - DriverExtensionAbility受限访问ArkTS API方案说明：
   - ArkTS API受限原理：在初始化和创建Extension进程时，会根据Extension配置的受限访问ArkTS API名单加载系统模块。在运行时，如果在DriverExtensionAbility中调用受限ArkTS API，由于初始化和创建阶段未加载相应系统模块，API会调用失败。
 - DriverExtensionAbility具体受限ArkTS API名单，请参考[frameworks/native/ability/native/etc/extension_blocklist_config.json · OpenHarmony/ability_ability_runtime - AtomGit | GitCode](https://gitcode.com/openharmony/ability_ability_runtime/blob/master/frameworks/native/ability/native/etc/extension_blocklist_config.json)中DriverExtension配置。

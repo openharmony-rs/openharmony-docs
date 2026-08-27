@@ -1,4 +1,4 @@
-# 使用多线程NDK接口并行化构建UI页面
+# NDK多线程创建组件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
@@ -24,9 +24,9 @@
   
 ## 多线程NDK接口使用方式
 
-- 在使用多线程NDK接口前，建议开发者先阅读[NDK接口概述](ndk-build-ui-overview.md)，掌握使用NDK接口必备的基本概念和基础知识。
+- 在使用多线程NDK接口前，建议开发者先阅读NDK接口概述，掌握使用NDK接口必备的基本概念和基础知识。
 
-- 为降低开发者适配多线程NDK接口的成本，多线程NDK接口的获取和使用方式与现有NDK接口保持一致。只需要调用[OH_ArkUI_GetModuleInterface/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface)接口，入参传入[ARKUI_MULTI_THREAD_NATIVE_NODE/apis-arkui/capi-native-interface-h.md#arkui_nativeapivariantkind)即可获取多线程NDK接口集合。例如：
+- 为降低开发者适配多线程NDK接口的成本，多线程NDK接口的获取和使用方式与现有NDK接口保持一致。只需要调用OH_ArkUI_GetModuleInterface接口，入参传入ARKUI_MULTI_THREAD_NATIVE_NODE即可获取多线程NDK接口集合。例如：
 
   ``` cpp
   ArkUI_NativeNodeAPI_1 *multiThreadNodeAPI = nullptr;
@@ -40,15 +40,15 @@
   auto node = multiThreadNodeAPI->createNode(ARKUI_NODE_COLUMN);
   ```
 
-支持多线程调用的全量NDK接口请参考[多线程NDK接口集合规格](#多线程ndk接口集合规格)。
+支持多线程调用的全量NDK接口请参考多线程NDK接口集合规格。
 
 开发者可以使用多线程NDK接口在任意线程创建UI组件并设置属性，但是必须在UI线程中，把UI组件挂载到UI主树上。可以通过如下接口完成多线程UI组件创建任务的分发和执行。
 
-- 对于可以在非UI线程执行的任务（如组件创建、属性设置等），可以使用[OH_ArkUI_PostAsyncUITask/apis-arkui/capi-native-node-h.md#oh_arkui_postasyncuitask)接口，将组件创建和属性设置等任务调度到系统线程池中执行，之后将组件挂载到主树的任务提交到UI线程执行。
+- 对于可以在非UI线程执行的任务（如组件创建、属性设置等），可以使用OH_ArkUI_PostAsyncUITask接口，将组件创建和属性设置等任务调度到系统线程池中执行，之后将组件挂载到主树的任务提交到UI线程执行。
 
-- 当开发者需要在自己创建的非UI线程中创建UI组件时，使用[OH_ArkUI_PostUITask/apis-arkui/capi-native-node-h.md#oh_arkui_postuitask)接口将组件挂载到主树的任务提交到UI线程执行。
+- 当开发者需要在自己创建的非UI线程中创建UI组件时，使用OH_ArkUI_PostUITask接口将组件挂载到主树的任务提交到UI线程执行。
   
-- 开发者在多线程创建UI组件的过程中需要执行只支持UI线程的任务时，使用[OH_ArkUI_PostUITaskAndWait/apis-arkui/capi-native-node-h.md#oh_arkui_postuitaskandwait)接口将任务提交到UI线程执行，调用此接口的非UI线程等待函数执行完成后继续创建组件。当UI线程负载很高时，调用此接口的非UI线程可能长时间阻塞，会影响多线程创建UI组件的性能收益，不建议频繁使用。
+- 开发者在多线程创建UI组件的过程中需要执行只支持UI线程的任务时，使用OH_ArkUI_PostUITaskAndWait接口将任务提交到UI线程执行，调用此接口的非UI线程等待函数执行完成后继续创建组件。当UI线程负载很高时，调用此接口的非UI线程可能长时间阻塞，会影响多线程创建UI组件的性能收益，不建议频繁使用。
 
 ## 多线程NDK接口适配说明
 
@@ -62,126 +62,126 @@
 
 框架将UI组件划分为Free（游离）和Attached（已挂载）两种状态。
 
-使用多线程[createNode/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建的UI组件初始为Free状态，且可以在Free和Attached两种状态间进行转换，使用其他方式创建的UI组件初始为Attached状态且状态不可转换。
+使用多线程createNode接口创建的UI组件初始为Free状态，且可以在Free和Attached两种状态间进行转换，使用其他方式创建的UI组件初始为Attached状态且状态不可转换。
 
 > **说明：**
 >
 > - 开发者可以在任意线程使用多线程NDK接口操作处于Free状态的组件，为保证应用功能正常和线程安全，需遵守如下使用约束：
 >   - 禁止多线程同时操作同一个处于Free状态的组件或组件树，处于Free状态的组件内部是无锁的，多线程同时访问会出现稳定性问题。
->   - 禁止使用[多线程NDK接口集合](#多线程ndk接口集合规格)外的其他NDK接口操作处于Free状态的组件，需先将组件转换为Attach状态后才可以在UI线程使用其他NDK接口，否则接口功能会出现异常。
+>   - 禁止使用多线程NDK接口集合外的其他NDK接口操作处于Free状态的组件，需先将组件转换为Attached状态后才可以在UI线程使用其他NDK接口，否则接口功能会出现异常。
 >
 > - 为兼顾性能，上述约束框架侧无运行时校验，需要开发者自行保证。
 >
-> - 为保证接口多线程安全，处于Free状态的组件的一部分属性通过[setAttribute/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)设置后，无法立即通过[getAttribute/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)接口读取到，需要将组件转换为Attached状态后才能读取到正确的属性值。
+> - 为保证接口多线程安全，处于Free状态的组件的一部分属性通过setAttribute设置后，无法立即通过getAttribute接口读取到，需要将组件转换为Attached状态后才能读取到正确的属性值。
 
 当开发者进行如下操作后，UI组件状态从Free转换为Attached：
 
-- 使用多线程[markDirty/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#markdirty)、[measureNode/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#measurenode)或[layoutNode/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#layoutnode)接口对Free组件进行标脏、测量或布局后，此组件所在组件树内所有处于Free状态的组件转换为Attached状态。
-- 使用多线程[组件树操作](#组件树操作)接口将处于Free状态的组件挂载为Attached组件的子组件，此组件所在组件树内所有处于Free状态的组件转换为Attached状态。
-- 使用多线程[组件树操作](#组件树操作)接口把Attached组件挂载为处于Free状态的组件的子组件，此组件所在组件树内所有处于Free状态的组件转换为Attached状态。
+- 使用多线程markDirty、measureNode或layoutNode接口对Free组件进行标脏、测量或布局后，此组件所在组件树内所有处于Free状态的组件转换为Attached状态。
+- 使用多线程组件树操作接口将处于Free状态的组件挂载为Attached组件的子组件，此组件所在组件树内所有处于Free状态的组件转换为Attached状态。
+- 使用多线程组件树操作接口把Attached组件挂载为处于Free状态的组件的子组件，此组件所在组件树内所有处于Free状态的组件转换为Attached状态。
 
 对于状态可转换的Attached组件，当开发者进行如下操作后，UI组件状态从Attached转换为Free：
 
-- 使用多线程[组件树操作](#组件树操作)接口将组件从组件树上移除，且移除后的组件所在组件树不包含不可转换的Attached组件，此组件所在组件树内所有组件转换为Free状态。
+- 使用多线程组件树操作接口将组件从组件树上移除，且移除后的组件所在组件树不包含不可转换的Attached组件，此组件所在组件树内所有组件转换为Free状态。
 
 基于上述状态转换规则，每个UI组件树内所有组件都处于相同状态。
 
 ## 多线程NDK接口的错误与异常
 
-多线程NDK接口调用规范请参考[多线程NDK接口集合规格](#多线程ndk接口集合规格)。调用多线程NDK接口时必须检查接口返回值，如下两种情况接口会返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。
+多线程NDK接口调用规范请参考多线程NDK接口集合规格。调用多线程NDK接口时必须检查接口返回值，如下两种情况接口会返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。
 
 - 在非UI线程中调用集合中不支持多线程的接口。
 
 - 在非UI线程调用多线程NDK接口操作处于Attached状态的组件。
 
-多线程NDK适配过程中遇到的更多问题可以参考[UI并行化常见问题](multi-thread-ui-build-faq.md)。
+多线程NDK适配过程中遇到的更多问题可以参考UI并行化常见问题。
 
 ## 多线程NDK接口集合规格
 
-集合中支持多线程调用的接口包括：[组件创建销毁](#组件创建销毁)，[组件属性读写](#组件属性读写)，[组件事件注册解注册](#组件事件注册解注册)，[组件树操作](#组件树操作)和[组件自定义数据读写](#组件自定义数据读写)。
+集合中支持多线程调用的接口包括：组件创建销毁，组件属性读写，组件事件注册解注册，组件树操作和组件自定义数据读写。
 
-集合中仅支持UI线程调用的接口包括：[全局事件注册解注册](#全局事件注册解注册)和[组件测算布局](#组件测算布局)。
+集合中仅支持UI线程调用的接口包括：全局事件注册解注册和组件测算布局。
 
 ### 组件创建销毁
 
 | 接口名 | 描述 | 非UI线程调用 | 多线程规格 |
 | -------- | ------- | ------- | ------- |  
-| [ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [createNode/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode) )([ArkUI_NodeType/apis-arkui/capi-native-node-h.md#arkui_nodetype) type) | 基于[ArkUI_NodeType/apis-arkui/capi-native-node-h.md#arkui_nodetype)生成对应的Free节点并返回Free节点对象指针。  | 支持 | 支持在任意线程调用。 |
-| void(\* [disposeNode/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | 销毁节点指针指向的节点对象。  | 支持 | 在非UI线程调用函数操作Attached节点时，接口调用无效。 |
+| ArkUI_NodeHandle(\* createNode )(ArkUI_NodeType type) | 基于ArkUI_NodeType生成对应的Free节点并返回Free节点对象指针。  | 支持 | 支持在任意线程调用。 |
+| void(\* disposeNode )(ArkUI_NodeHandle node) | 销毁节点指针指向的节点对象。  | 支持 | 在非UI线程调用函数操作Attached节点时，接口调用无效。 |
 
 ### 组件属性读写
 
 <!--Table: 25%; 35%; 15%; 25%-->
 | 接口名 | 描述 | 非UI线程调用 | 多线程规格 |
 | -------- | ------- | ------- | ------- | 
-| int32_t(\* [setAttribute/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeAttributeType/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) attribute, const [ArkUI_AttributeItem/apis-arkui/capi-arkui-nativemodule-arkui-attributeitem.md) \*item) | 设置node节点的属性。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| const [ArkUI_AttributeItem/apis-arkui/capi-arkui-nativemodule-arkui-attributeitem.md) \*(\* [getAttribute/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeAttributeType/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) attribute) | 获取node节点的属性。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回空指针。 |
-| int32_t(\* [resetAttribute/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeAttributeType/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) attribute) | 重置node节点的属性为默认值。  | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| int32_t(\* [setLengthMetricUnit/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_LengthMetricUnit/apis-arkui/capi-native-type-h.md#arkui_lengthmetricunit) unit) | 指定node节点的单位。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
+| int32_t(\* setAttribute )(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute, const ArkUI_AttributeItem \*item) | 设置node节点的属性。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| const ArkUI_AttributeItem \*(\* getAttribute )(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute) | 获取node节点的属性。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回空指针。 |
+| int32_t(\* resetAttribute )(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute) | 重置node节点的属性为默认值。  | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| int32_t(\* setLengthMetricUnit )(ArkUI_NodeHandle node, ArkUI_LengthMetricUnit unit) | 指定node节点的单位。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
 
 ### 组件事件注册解注册
 
 <!--Table: 25%; 35%; 15%; 25%-->
 | 接口名 | 描述 | 非UI线程调用 | 多线程规格 |
 | -------- | ------- | ------- | ------- | 
-| int32_t(\* [registerNodeEvent/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeEventType/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) eventType, int32_t targetId, void \*userData) | 向node节点注册事件。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| void(\* [unregisterNodeEvent/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodeevent) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeEventType/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) eventType) | node节点解注册事件。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口调用无效。 |
-| int32_t(\* [registerNodeCustomEvent/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeCustomEventType/apis-arkui/capi-native-node-h.md#arkui_nodecustomeventtype) eventType, int32_t targetId, void \*userData) | 向node节点注册自定义事件。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| void(\* [unregisterNodeCustomEvent/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodecustomevent) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeCustomEventType/apis-arkui/capi-native-node-h.md#arkui_nodecustomeventtype) eventType) | node节点解注册自定义事件。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口调用不生效。 |
-| int32_t(\* [addNodeEventReceiver/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodeeventreceiver) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, void(\*eventReceiver)([ArkUI_NodeEvent/apis-arkui/capi-arkui-nativemodule-arkui-nodeevent.md) \*event)) | 向node节点注册事件回调函数，用于接收该组件产生的组件事件。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| int32_t(\* [removeNodeEventReceiver/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removenodeeventreceiver) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, void(\*eventReceiver)([ArkUI_NodeEvent/apis-arkui/capi-arkui-nativemodule-arkui-nodeevent.md) \*event)) | 删除node节点上注册的事件回调函数。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| int32_t(\* [addNodeCustomEventReceiver/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, void(\*eventReceiver)([ArkUI_NodeCustomEvent/apis-arkui/capi-arkui-nativemodule-arkui-nodecustomevent.md) \*event)) | 向node节点注册自定义事件回调函数，用于接收该组件产生的自定义事件（如布局事件，绘制事件）。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| int32_t(\* [removeNodeCustomEventReceiver/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removenodecustomeventreceiver) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, void(\*eventReceiver)([ArkUI_NodeCustomEvent/apis-arkui/capi-arkui-nativemodule-arkui-nodecustomevent.md) \*event)) | 删除node节点上注册的自定义事件回调函数。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
+| int32_t(\* registerNodeEvent )(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType, int32_t targetId, void \*userData) | 向node节点注册事件。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| void(\* unregisterNodeEvent )(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType) | node节点解注册事件。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口调用无效。 |
+| int32_t(\* registerNodeCustomEvent )(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType, int32_t targetId, void \*userData) | 向node节点注册自定义事件。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| void(\* unregisterNodeCustomEvent )(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType) | node节点解注册自定义事件。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口调用不生效。 |
+| int32_t(\* addNodeEventReceiver )(ArkUI_NodeHandle node, void(\*eventReceiver)(ArkUI_NodeEvent \*event)) | 向node节点注册事件回调函数，用于接收该组件产生的组件事件。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| int32_t(\* removeNodeEventReceiver )(ArkUI_NodeHandle node, void(\*eventReceiver)(ArkUI_NodeEvent \*event)) | 删除node节点上注册的事件回调函数。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| int32_t(\* addNodeCustomEventReceiver )(ArkUI_NodeHandle node, void(\*eventReceiver)(ArkUI_NodeCustomEvent \*event)) | 向node节点注册自定义事件回调函数，用于接收该组件产生的自定义事件（如布局事件，绘制事件）。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| int32_t(\* removeNodeCustomEventReceiver )(ArkUI_NodeHandle node, void(\*eventReceiver)(ArkUI_NodeCustomEvent \*event)) | 删除node节点上注册的自定义事件回调函数。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
 
 ### 组件树操作
 
 <!--Table: 25%; 35%; 15%; 25%-->
 | 接口名 | 描述 | 非UI线程调用 | 多线程规格 |
 | -------- | ------- | ------- | ------- | 
-| int32_t(\* [addChild/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent, [ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) child) | 将child节点挂载到parent节点的子节点列表中。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| int32_t(\* [removeChild/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removechild) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent, [ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) child) | 将child节点从parent节点的子节点列表中移除。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| int32_t(\* [insertChildAfter/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildafter) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent, [ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) child, [ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) sibling) | 将child节点挂载到parent节点的子节点列表中，挂载位置在sibling节点之后。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| int32_t(\* [insertChildBefore/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildbefore) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent, [ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) child, [ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) sibling) | 将child节点挂载到parent节点的子节点列表中，挂载位置在sibling节点之前。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| int32_t(\* [insertChildAt/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildat) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent, [ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) child, int32_t position) | 将child节点挂载到parent节点的子节点列表中，挂载位置由position指定。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| [ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getParent/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getparent) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | 获取node节点的父节点。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| int32_t(\* [removeAllChildren/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removeallchildren) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent) | 移除node节点的所有子节点。 | 支持 | 在非UI线程调用函数操作Attached节点节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| uint32_t(\* [getTotalChildCount/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#gettotalchildcount) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | 获取node节点的子节点个数。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回0。 |
-| [ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getChildAt/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getchildat) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, int32_t position) | 获取node节点的子节点指针，位置由position指定。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回空指针。 |
-| [ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getFirstChild/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getfirstchild) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | 获取node节点的第一个子节点指针。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回空指针。 |
-| [ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getLastChild/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getlastchild) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | 获取node节点的最后一个子节点指针。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回空指针。 |
-| [ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getPreviousSibling/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getprevioussibling) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | 获取node节点的上一个兄弟节点指针。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回空指针。 |
-| [ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getNextSibling/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getnextsibling) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | 获取node节点的下一个兄弟节点指针。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回空指针。 |
+| int32_t(\* addChild )(ArkUI_NodeHandle parent, ArkUI_NodeHandle child) | 将child节点挂载到parent节点的子节点列表中。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| int32_t(\* removeChild )(ArkUI_NodeHandle parent, ArkUI_NodeHandle child) | 将child节点从parent节点的子节点列表中移除。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| int32_t(\* insertChildAfter )(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling) | 将child节点挂载到parent节点的子节点列表中，挂载位置在sibling节点之后。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| int32_t(\* insertChildBefore )(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling) | 将child节点挂载到parent节点的子节点列表中，挂载位置在sibling节点之前。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| int32_t(\* insertChildAt )(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_t position) | 将child节点挂载到parent节点的子节点列表中，挂载位置由position指定。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| ArkUI_NodeHandle(\* getParent )(ArkUI_NodeHandle node) | 获取node节点的父节点。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| int32_t(\* removeAllChildren )(ArkUI_NodeHandle parent) | 移除parent节点的所有子节点。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| uint32_t(\* getTotalChildCount )(ArkUI_NodeHandle node) | 获取node节点的子节点个数。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回0。 |
+| ArkUI_NodeHandle(\* getChildAt )(ArkUI_NodeHandle node, int32_t position) | 获取node节点的子节点指针，位置由position指定。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回空指针。 |
+| ArkUI_NodeHandle(\* getFirstChild )(ArkUI_NodeHandle node) | 获取node节点的第一个子节点指针。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回空指针。 |
+| ArkUI_NodeHandle(\* getLastChild )(ArkUI_NodeHandle node) | 获取node节点的最后一个子节点指针。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回空指针。 |
+| ArkUI_NodeHandle(\* getPreviousSibling )(ArkUI_NodeHandle node) | 获取node节点的上一个兄弟节点指针。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回空指针。 |
+| ArkUI_NodeHandle(\* getNextSibling )(ArkUI_NodeHandle node) | 获取node节点的下一个兄弟节点指针。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回空指针。 |
 
 ### 组件自定义数据读写
 
 <!--Table: 25%; 35%; 15%; 25%-->
 | 接口名 | 描述 | 非UI线程调用 | 多线程规格 |
 | -------- | ------- | ------- | ------- | 
-| int32_t(\* [setUserData/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setuserdata) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, void \*userData) | 在node节点上保存自定义数据。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| void \*(\* [getUserData/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getuserdata) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | 获取node节点上保存的自定义数据。 | 支持 |  在非UI线程调用函数操作Attached节点时，接口返回空指针。 |
+| int32_t(\* setUserData )(ArkUI_NodeHandle node, void \*userData) | 在node节点上保存自定义数据。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| void \*(\* getUserData )(ArkUI_NodeHandle node) | 获取node节点上保存的自定义数据。 | 支持 |  在非UI线程调用函数操作Attached节点时，接口返回空指针。 |
 
 ### 全局事件注册解注册
 
 <!--Table: 25%; 35%; 15%; 25%-->
 | 接口名 | 描述 | 非UI线程调用 | 多线程规格 |
 | -------- | ------- | ------- | ------- | 
-| void(\* [registerNodeEventReceiver/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver) )(void(\*eventReceiver)([ArkUI_NodeEvent/apis-arkui/capi-arkui-nativemodule-arkui-nodeevent.md) \*event)) | 注册节点事件回调统一入口函数。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口不生效。 |
-|  void(\* [unregisterNodeEventReceiver/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodeeventreceiver) )() | 解注册节点事件回调统一入口函数。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口不生效。 |
-| void(\* [registerNodeCustomEventReceiver/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomeventreceiver) )(void(\*eventReceiver)([ArkUI_NodeCustomEvent/apis-arkui/capi-arkui-nativemodule-arkui-nodecustomevent.md) \*event)) |  注册节点自定义事件回调统一入口函数。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口不生效。 |
-|  void(\* [unregisterNodeCustomEventReceiver/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodecustomeventreceiver) )() |  解注册节点自定义事件回调统一入口函数。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口不生效。 |
+| void(\* registerNodeEventReceiver )(void(\*eventReceiver)(ArkUI_NodeEvent \*event)) | 注册节点事件回调统一入口函数。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口不生效。 |
+|  void(\* unregisterNodeEventReceiver )() | 解注册节点事件回调统一入口函数。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口不生效。 |
+| void(\* registerNodeCustomEventReceiver )(void(\*eventReceiver)(ArkUI_NodeCustomEvent \*event)) |  注册节点自定义事件回调统一入口函数。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口不生效。 |
+|  void(\* unregisterNodeCustomEventReceiver )() |  解注册节点自定义事件回调统一入口函数。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口不生效。 |
 
 ### 组件测算布局
 
 <!--Table: 25%; 35%; 15%; 25%-->
 | 接口名 | 描述 | 非UI线程调用 | 多线程规格 |
 | -------- | ------- | ------- | ------- | 
-| int32_t(\* [setMeasuredSize/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setmeasuredsize) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, int32_t width, int32_t height) | 在测算回调函数中设置组件测算完成后的宽和高。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| int32_t(\* [setLayoutPosition/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlayoutposition) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, int32_t positionX, int32_t positionY) | 在布局回调函数中设置组件的位置。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| [ArkUI_IntSize/apis-arkui/capi-arkui-nativemodule-arkui-intsize.md)(\* [getMeasuredSize/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getmeasuredsize) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | 获取node节点测算完成后的宽高尺寸。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口返回默认值。 |
-| [ArkUI_IntOffset/apis-arkui/capi-arkui-nativemodule-arkui-intoffset.md)(\* [getLayoutPosition/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getlayoutposition) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | 获取node节点布局完成后的位置。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口返回默认值。 |
-| int32_t(\* [measureNode/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#measurenode) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_LayoutConstraint/apis-arkui/capi-arkui-nativemodule-arkui-layoutconstraint.md) \*Constraint) | 对node节点进行测算，可以通过getMeasuredSize获取测算后的大小。节点所在组件树内所有Free节点的状态转换为Attached。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| int32_t(\* [layoutNode/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#layoutnode) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, int32_t positionX, int32_t positionY) | 对node节点进行布局并传递该组件相对父组件的期望位置。节点所在组件树内所有Free节点的状态转换为Attached。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
-| void(\* [markDirty/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#markdirty) )([ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeDirtyFlag/apis-arkui/capi-native-node-h.md#arkui_nodedirtyflag) dirtyFlag) | 强制标记node节点重新执行测量、布局或者绘制的区域。节点所在组件树内所有Free节点的状态转换为Attached。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口调用不生效。 |
+| int32_t(\* setMeasuredSize )(ArkUI_NodeHandle node, int32_t width, int32_t height) | 在测算回调函数中设置组件测算完成后的宽和高。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| int32_t(\* setLayoutPosition )(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY) | 在布局回调函数中设置组件的位置。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| ArkUI_IntSize(\* getMeasuredSize )(ArkUI_NodeHandle node) | 获取node节点测算完成后的宽高尺寸。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口返回默认值。 |
+| ArkUI_IntOffset(\* getLayoutPosition )(ArkUI_NodeHandle node) | 获取node节点布局完成后的位置。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口返回默认值。 |
+| int32_t(\* measureNode )(ArkUI_NodeHandle node, ArkUI_LayoutConstraint \*Constraint) | 对node节点进行测算，可以通过getMeasuredSize获取测算后的大小。节点所在组件树内所有Free节点的状态转换为Attached。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| int32_t(\* layoutNode )(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY) | 对node节点进行布局并传递该组件相对父组件的期望位置。节点所在组件树内所有Free节点的状态转换为Attached。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口返回错误码ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD。 |
+| void(\* markDirty )(ArkUI_NodeHandle node, ArkUI_NodeDirtyFlag dirtyFlag) | 强制标记node节点重新执行测量、布局或者绘制的区域。节点所在组件树内所有Free节点的状态转换为Attached。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口调用不生效。 |
 
 ## 多线程NDK接口使用示例
 
@@ -191,9 +191,9 @@
 
 ![build_on_multi_thread](figures/build_on_multi_thread.gif)
 
-示例主要展示了如何获取和使用多线程NDK接口，并使用[OH_ArkUI_PostAsyncUITask/apis-arkui/capi-native-node-h.md#oh_arkui_postasyncuitask)、[OH_ArkUI_PostUITask/apis-arkui/capi-native-node-h.md#oh_arkui_postuitask)和[OH_ArkUI_PostUITaskAndWait/apis-arkui/capi-native-node-h.md#oh_arkui_postuitaskandwait)等接口将组件创建和属性设置等任务分发到多线程并行执行。
+示例主要展示了如何获取和使用多线程NDK接口，并使用OH_ArkUI_PostAsyncUITask、OH_ArkUI_PostUITask和OH_ArkUI_PostUITaskAndWait等接口将组件创建和属性设置等任务分发到多线程并行执行。
 
-为简化编程和工程管理，在开始编写并行化组件创建代码前，请先参考[接入ArkTS页面](ndk-access-the-arkts-page.md)指导文档，在Native侧使用面向对象的方式将ArkUI_NodeHandle封装为ArkUINode对象。
+为简化编程和工程管理，在开始编写并行化组件创建代码前，请先参考接入ArkTS页面指导文档，在Native侧使用面向对象的方式将ArkUI_NodeHandle封装为ArkUINode对象。
 
 ``` ts
 // index.ets
@@ -262,11 +262,12 @@ export const createNodeTreeOnMultiThread: (content1: Object, content2: Object) =
 export const disposeNodeTreeOnMultiThread: (content1: Object) => void;
 ```
 
-``` cpp
-# CMakeLists.txt
+<!-- @[cmake_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBuildOnMultiThread/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
 # the minimum version of CMake.
 cmake_minimum_required(VERSION 3.5.0)
-project(ndk_build_on_multi_thread)
+project(myapp)
 
 set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -277,8 +278,12 @@ endif()
 include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include)
 
-add_library(entry SHARED napi_init.cpp NativeEntry.cpp NativeModule.h ArkUIBaseNode.h ArkUINode.h ArkUIListNode.h ArkUIListItemNode.h ArkUITextNode.h NormalTextListExample.h CreateNode.h CreateNode.cpp)
-target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so libhilog_ndk.z.so)
+add_library(entry SHARED
+    napi_init.cpp
+    node/NodeCreator.cpp
+    card/CardCreator.cpp
+    )
+target_link_libraries(entry PUBLIC libace_napi.z.so ace_ndk.z.so hilog_ndk.z.so)
 ```
 
 ``` cpp
@@ -385,7 +390,6 @@ namespace NativeModule {
 #define FRAMEWORK_NODE_TREE_NUMBER 4 // 在框架线程创建组件树的数量。
 #define USER_NODE_TREE_NUMBER 3 // 在开发者线程创建组件树的数量。
 struct AsyncData {
-    napi_env env;
     std::shared_ptr<ArkUINode> parent = nullptr;
     std::shared_ptr<ArkUINode> child = nullptr;
     std::string label = "";
@@ -434,7 +438,7 @@ void CreateNodeTree(void *asyncUITaskData) {
     ArkUI_NumberValue value2[] = {{.f32 = 5}, {.f32 = 5}, {.f32 = 5}, {.f32 = 5}};
     ArkUI_AttributeItem item2 = {value2, 4};
     // 设置button组件的margin属性。
-    result = buttonNode1->SetMargin(item2);
+    result = buttonNode2->SetMargin(item2);
     if (result != ARKUI_ERROR_CODE_NO_ERROR) {
         OH_LOG_ERROR(LOG_APP, "Button SetMargin Failed %{public}d", result);
     }

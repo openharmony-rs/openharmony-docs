@@ -6,40 +6,74 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-当应用进行音频输出时，系统会根据音频流类型选择对应的输出设备（[STREAM_USAGE_MUSIC/apis-audio-kit/arkts-apis-audio-e.md#streamusage)：扬声器发声；[STREAM_USAGE_VOICE_COMMUNICATION/apis-audio-kit/arkts-apis-audio-e.md#streamusage)：听筒发声）。如果系统提供的默认输出设备不满足应用需求，应用可通过`AVCastPicker`或`setDefaultOutputDevice`实现音频输出设备路由切换。
+当应用进行音频输出时，系统将依据音频流类型自动匹配对应的输出设备。如果系统输出设备不满足应用需求，应用可通过`AVCastPicker`或`setDefaultOutputDevice`实现音频输出设备路由切换。在连接音频外设（如蓝牙耳机、有线耳机）的情况下，应用还可通过`setMediaOutputDevice`强制将媒体输出切换到扬声器。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS)。
+从API版本26.0.0开始，PC/2in1设备还支持基于AudioDeviceEnhanceManager和native_audio_device_enhance_manager.h的输出设备切换能力，应用可按应用级或音频流级精确指定输出设备，满足多设备场景下对声音输出去向的控制需求。
 
-## 媒体类应用实现输出设备路由切换
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。其中，PC/2in1设备输出设备切换的完整示例请参见[ArkTS示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS)和[C/C++示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC)。
 
-应用可使用[AVCastPicker/apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker)投播组件进行媒体类应用输出设备路由切换。
+## 使用场景
 
-## 通话类应用实现输出设备路由切换
+1. 若应用需要为用户提供可视化、可交互的音频输出设备切换入口时，可以使用`AVCastPicker`组件，开发者只需在布局中放置该组件，系统会自动检测当前可用的音频输出设备列表，用户点击后即可完成路由切换。
+2. 应用在不同场景下对默认输出设备存在不同要求。例如，语音消息流通常默认从扬声器播放，以便用户直接收听；但在某些私密场景下，应用可能希望将语音消息设置为默认从听筒播放，以保护用户隐私。此时，开发者可使用`setDefaultOutputDevice`接口，灵活更改语音消息的默认输出设备，满足特定业务需求。
+3. 连接蓝牙耳机或有线耳机等外设时，系统优先从外设播放。但某些场景下，应用希望即使外设已连接，仍将媒体音频强制切换到扬声器播放（如实时翻译对话给对方）。从API版本26.0.0开始，开发者可调用`setMediaOutputDevice`接口，在连接外设的情况下通过将参数设为`audio.DeviceType.SPEAKER`强制切换媒体输出设备为扬声器；需要恢复系统默认路由时，可再次调用`setMediaOutputDevice`接口，将参数设为`audio.DeviceType.DEFAULT`即可。
 
-### 外接设备路由切换
+## 实现媒体流输出设备路由切换
 
-应用可[使用通话设备切换组件](../avsession/using-switch-call-devices.md)进行通话类应用外接输出设备路由切换。
+应用可以通过使用AVCastPicker组件为用户提供选择设备的入口。
 
-### 内置听筒和扬声器路由切换
+该组件集成了设备发现、连接、认证等能力，可嵌入应用界面。用户点击后，系统自动识别并展示当前可切换的设备列表，支持在扬声器、耳机、智能音箱等输出设备间自由切换。
 
-如果未连接外设，语音通话场景系统默认听筒发声，其他场景系统默认扬声器发声；如果连接了外设，系统默认通过外接设备发声。
+## 实现通话流输出设备路由切换
 
-调用`setDefaultOutputDevice`设置音频输出设备后，如需取消，可将参数设为`audio.DeviceType.DEFAULT`，将音频输出设备选择权交还给系统。
+`AVCastPicker`组件也适用于通话场景，应用可使用通话设备切换组件为用户提供听筒、扬声器、耳机等通话设备的切换入口，方便用户在通话过程中灵活调整音频输出设备。
 
-1. 从API version 12开始，应用可使用AudioRenderer的[setDefaultOutputDevice/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)设置听筒和扬声器路由切换，调用前需要先获取[AudioRenderer/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)实例。
+## 设置默认输出设备
+
+如果系统未连接外设（如蓝牙耳机），语音通话场景音频默认听筒播放，其他场景音频默认扬声器播放；外设接入后，系统优先从外设播放。应用可通过`setDefaultOutputDevice`更改默认输出设备，但仅对以下三种StreamUsage生效：
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| STREAM_USAGE_VOICE_MESSAGE | 5 | 语音消息。 |
+| STREAM_USAGE_VOICE_COMMUNICATION | 2 | VoIP语音通话。 |
+| STREAM_USAGE_VIDEO_COMMUNICATION | 17 | VoIP视频通话。 |
+
+支持的设备类型:
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| EARPIECE | 1 | 听筒。 |
+| SPEAKER | 2 | 扬声器。 |
+| DEFAULT | 1000 | 跟随系统。 |
+
+调用此接口后，系统会记录指定的默认输出设备。当无外接设备连接时，音频流将路由至指定默认输出设备播放；当外设接入时，系统优先从外设播放，外设断开后自动切换至设置的默认输出设备。
+
+### 开发步骤
+
+`AudioRenderer`和`AudioSessionManager`都提供了`setDefaultOutputDevice`接口，用于设置通话或语音的默认输出设备。
+
+- 音频流级：`AudioRenderer`接口生效范围为单流级别，仅对当前`AudioRenderer`实例对应的音频流生效。
+- 应用级：`AudioSessionManager`接口对当前应用内所有语音和通话音频流生效，不限于单个`AudioRenderer`实例。
+
+应用级接口优先级高于音频流级，如果同时调用了两个接口，`AudioSessionManager`的设置会覆盖`AudioRenderer`，`AudioRenderer`的设置将不再生效。
+
+**音频流级设置接口**
+
+从API version 12开始，应用可使用AudioRenderer的setDefaultOutputDevice设置默认设备为听筒和扬声器，调用前需要先获取AudioRenderer实例，设置默认设备的生命周期跟随音频流。调用`setDefaultOutputDevice`设置音频输出设备后，如需取消，可将参数设为`audio.DeviceType.DEFAULT`，将音频输出设备选择权交还给系统。
 
    > **说明：**
    >
    > - 由于AudioRenderer是流级别，调用本接口设置的默认音频输出设备仅对当前流生效。
-   > - 本接口优先级低于AudioSessionManager的[setDefaultOutputDevice/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)。如果使用AudioSessionManager的[setDefaultOutputDevice/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)设置了默认音频输出设备，本接口的设置将不会生效。
+   > - 本接口优先级低于AudioSessionManager的setDefaultOutputDevice。如果使用AudioSessionManager的setDefaultOutputDevice设置了默认音频输出设备，本接口的设置将不会生效。
 
-   <!-- @[set_DefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/OutputDeviceChangePause.ets) -->  
+   <!-- @[audioRenderer_setDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets) -->  
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    // ...
-       // 设置默认输出设备为本机扬声器。
+   
+       // 设置默认输出设备为扬声器。
        audioRenderer.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
          console.info('Succeeded in setting default output device.');
          // ...
@@ -48,8 +82,9 @@
          // ...
        });
        // ...
-       // 设置默认输出设备为系统默认输出设备,即取消应用设置的默认设备,交由系统选择设备。
-       audioRenderer.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
+   
+       // 设置默认输出设备为听筒。
+       audioRenderer.setDefaultOutputDevice(audio.DeviceType.EARPIECE).then(() => {
          console.info('Succeeded in setting default output device.');
          // ...
        }).catch((err: BusinessError) => {
@@ -58,13 +93,15 @@
        });
    ```
 
-2. 从API version 20开始，应用可使用AudioSessionManager的[setDefaultOutputDevice/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)设置听筒和扬声器路由切换。
+**应用级设置接口**
+
+从API version 20开始，应用激活AudioSession后，可使用AudioSessionManager的setDefaultOutputDevice设置默认输出设备，并通过`AudioSessionManager.getDefaultOutputDevice`查看默认设备是否设置成功，设置默认设备的生命周期跟随`AudioSession`。调用`setDefaultOutputDevice`设置音频输出设备后，如需取消，可将参数设为`audio.DeviceType.DEFAULT`，将音频输出设备选择权交还给系统。
 
    > **说明：**
    >
-   > 由于AudioSessionManager是应用级设置，调用本接口设置默认音频输出设备，会对当前应用所有适用范围内的音频流生效，且会覆盖AudioRenderer的[setDefaultOutputDevice/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)接口设置的默认音频输出设备信息。
+   > 由于AudioSessionManager是应用级设置，调用本接口设置默认音频输出设备，会对当前应用所有适用范围内的音频流生效，且会覆盖AudioRenderer的setDefaultOutputDevice接口设置的默认音频输出设备信息。
 
-   <!-- @[set_default_output_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->  
+   <!-- @[audioSessionManager_setDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets) -->  
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -72,16 +109,18 @@
    // ...
    
    let audioManager = audio.getAudioManager();
-   // 创建音频会话管理器。
-   let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
+   let audioSessionManager = audioManager.getSessionManager();
    // ...
    
-     // 设置音频并发模式。
+     // 应用根据业务场景设置适合自己的音频会话场景，激活AudioSession时，系统会根据应用选择的音频会话场景申请对应的音频焦点。
+     audioSessionManager.setAudioSessionScene(audio.AudioSessionScene.AUDIO_SESSION_SCENE_VOICE_COMMUNICATION);
+   
+     // 设置音频会话策略。
      let strategy: audio.AudioSessionStrategy = {
        concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
      };
    
-     // 激活音频会话。
+     // 激活AudioSession。
      audioSessionManager.activateAudioSession(strategy).then(() => {
        console.info('Succeeded in activating audio session.');
        // ...
@@ -89,8 +128,18 @@
        console.error(`Failed to activate audio session. Code: ${err.code}, message: ${err.message}`);
        // ...
      });
-   
      // ...
+   
+     // 设置默认输出设备为扬声器。
+     audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+       console.info('Succeeded in setting default output device.');
+       // ...
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
+       // ...
+     });
+     // ...
+   
      // 设置默认输出设备为听筒。
      audioSessionManager.setDefaultOutputDevice(audio.DeviceType.EARPIECE).then(() => {
        console.info('Succeeded in setting default output device.');
@@ -99,12 +148,328 @@
        console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
        // ...
      });
+   ```
+
+## 连接外设时强制切换媒体输出设备
+
+当系统连接蓝牙耳机或有线耳机等外设时，系统优先从外设播放。从API版本26.0.0开始，应用可使用`AudioSessionManager`的setMediaOutputDevice接口，强制将媒体输出设备切换为扬声器，使音频在连接外设的情况下仍从扬声器播放。
+
+   > **说明：**
+   >
+   > - 本接口仅对媒体流生效，作用于应用内所有媒体流，通话流不受影响。应用需处于前台且有正在运行的媒体流，否则设置不生效且应用退出后自动清除。
+   > - 本接口设置的输出设备与实现媒体流输出设备路由切换设置的输出设备会相互覆盖（后调用者会覆盖先调用者设置的输出设备）。
+   > - 本接口设置的输出设备不会覆盖通过设置默认输出设备设置的输出设备。
+   > - 应用可通过监听CurrentOutputDeviceChangedEvent事件获取当前输出设备信息，以确认设置的输出设备是否生效。
+   > - 在无内置扬声器的设备（如智慧屏）上调用本接口将输出设备切换为扬声器不会生效，但接口调用仍会返回成功，不会抛出错误或触发错误回调。
+
+### 开发步骤
+
+应用可使用`AudioSessionManager`的setMediaOutputDevice接口强制将媒体输出设备切换为扬声器。调用`setMediaOutputDevice`后，如需取消强制切换、恢复系统默认路由规则，可将参数设为`audio.DeviceType.DEFAULT`。
+
+支持的设备类型：
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| SPEAKER | 2 | 扬声器，强制将媒体输出切换到扬声器。 |
+| DEFAULT | 1000 | 系统默认设备，清除强制切换，恢复系统默认路由规则。 |
+
+   <!-- @[audioSessionManager_setMediaOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets) -->
+   
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+   
+   let audioManager = audio.getAudioManager();
+   let audioSessionManager = audioManager.getSessionManager();
+   // ...
+   
+     // 连接蓝牙耳机后，强制将媒体输出设备切换为扬声器。
+     audioSessionManager.setMediaOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+       console.info('Succeeded in setting media output device to speaker.');
+       // ...
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to set media output device. Code: ${err.code}, message: ${err.message}`);
+       // ...
+     });
      // ...
    
-     // 设置默认输出设备为默认设备,即取消应用设置的默认设备,交由系统选择设备。
-     audioSessionManager.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
-       console.info('Succeeded in setting default output device.');
+     // 取消强制切换，将媒体输出设备选择权交还给系统默认路由规则。
+     audioSessionManager.setMediaOutputDevice(audio.DeviceType.DEFAULT).then(() => {
+       console.info('Succeeded in setting media output device to default.');
+       // ...
      }).catch((err: BusinessError) => {
-       console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
+       console.error(`Failed to set media output device. Code: ${err.code}, message: ${err.message}`);
+       // ...
      });
    ```
+
+## PC/2in1设备输出设备切换
+
+PC/2in1设备经常存在多路输出设备可用（如内置扬声器、外接音箱、USB/蓝牙耳机等），系统默认的设备选择策略可能无法满足应用在各种场景下的输出需求。通过本能力，应用可按**应用级**或**音频流级**精确指定输出设备，满足多设备场景下对声音输出去向的控制需求。
+
+### 查询能力是否支持
+
+使用前需先通过isEnhancedRoutingSupported或OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported查询系统是否支持该能力，不支持时调用输出设备切换接口不生效，将继续使用当前输出设备。
+
+ArkTS示例：
+
+<!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
+
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+  let audioManager = audio.getAudioManager();
+  let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+  // 查询系统是否支持当前管理器提供的增强路由能力。
+  let isSupported: boolean = audioDeviceEnhanceManager.isEnhancedRoutingSupported();
+  console.info(`Succeeded in querying whether enhanced routing is supported. Result: ${isSupported}.`);
+```
+
+C/C++示例：
+
+使用前需添加头文件：
+
+<!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+
+``` C++
+#include <ohaudio/native_audio_device_enhance_manager.h>
+#include <ohaudio/native_audio_routing_manager.h>
+#include <ohaudio/native_audio_device_base.h>
+#include <ohaudio/native_audiocapturer.h>
+#include <ohaudio/native_audiorenderer.h>
+#include <ohaudio/native_audiostreambuilder.h>
+```
+
+<!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+
+``` C++
+napi_value IsEnhancedRoutingSupported(napi_env env, napi_callback_info info)
+{
+    OH_AudioDeviceEnhanceManager *enhanceManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioDeviceEnhanceManager(&enhanceManager);
+    bool isSupported = false;
+    // 查询系统是否支持当前管理器提供的增强路由能力。
+    result = OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported(enhanceManager, &isSupported);
+    // ...
+}
+```
+
+### 切换输出设备
+
+输出设备切换支持应用级和音频流级两种粒度，应用级对应用下所有播放流生效，音频流级仅对指定播放流生效，且音频流级的优先级高于应用级。
+
+> **说明：**
+>
+> 若某条播放流已通过音频流级接口指定了专属输出设备，则该流使用其专属输出设备，应用内其他播放流仍使用应用级设置的输出设备或系统默认输出设备。
+
+ArkTS示例：
+
+- **应用级：** 通过selectOutputDevice选择指定的输出设备，设置成功后对应用下创建的所有播放流生效。
+
+  <!-- @[select_OutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
+
+  ``` TypeScript
+  import { audio } from '@kit.AudioKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  // ...
+    let audioManager = audio.getAudioManager();
+    let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+    // 为应用选择输出设备，此处device可通过ArkTS完整示例查看获取方式。
+    audioDeviceEnhanceManager.selectOutputDevice(device).then(() => {
+      console.info('Succeeded in selecting output device.');
+      // ...
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to select output device. Code: ${err.code}, message: ${err.message}`);
+      // ...
+    });
+  ```
+
+- **音频流级：** 通过selectOutputDeviceForAudioRenderer为指定音频播放流选择输出设备，设置成功后仅对该播放流生效。
+
+  <!-- @[select_OutputDeviceForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
+
+  ``` TypeScript
+  import { audio } from '@kit.AudioKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  // ...
+    let audioManager = audio.getAudioManager();
+    let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+    // 为指定音频播放流设置首选输出设备，此处renderer和outputDevice可通过ArkTS完整示例查看获取方式。
+    audioDeviceEnhanceManager.selectOutputDeviceForAudioRenderer(renderer, outputDevice).then(() => {
+      console.info('Succeeded in selecting output device for audio renderer.');
+      // ...
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to select output device for audio renderer. Code: ${err.code}, message: ${err.message}`);
+      // ...
+    });
+  ```
+
+C/C++示例：
+
+- **应用级：** 通过OH_AudioDeviceEnhanceManager_SelectOutputDevice选择指定的输出设备。
+
+  <!-- @[select_OutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+
+  ``` C++
+  // 获取音频设备增强管理器。
+  static OH_AudioDeviceEnhanceManager *GetEnhanceManager(std::string &errorMsg)
+  {
+      OH_AudioDeviceEnhanceManager *manager = nullptr;
+      OH_AudioCommon_Result result = OH_AudioManager_GetAudioDeviceEnhanceManager(&manager);
+      if (result != AUDIOCOMMON_RESULT_SUCCESS || manager == nullptr) {
+          errorMsg = "获取AudioDeviceEnhanceManager失败";
+          return nullptr;
+      }
+      bool isSupported = false;
+      OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported(manager, &isSupported);
+      if (!isSupported) {
+          errorMsg = "Enhanced routing不支持，该功能不会生效";
+          return nullptr;
+      }
+      return manager;
+  }
+  
+  struct DeviceSearchResult {
+      OH_AudioRoutingManager *routingManager;
+      OH_AudioDeviceDescriptorArray *deviceArray;
+      OH_AudioDeviceDescriptor *targetDescriptor;
+  };
+  
+  // 获取音频可选设备。
+  static DeviceSearchResult FindDescriptorById(int32_t deviceId, OH_AudioDevice_Usage usage)
+  {
+      DeviceSearchResult search = {nullptr, nullptr, nullptr};
+      OH_AudioManager_GetAudioRoutingManager(&search.routingManager);
+      OH_AudioRoutingManager_GetAvailableDevices(search.routingManager, usage, &search.deviceArray);
+      if (search.deviceArray == nullptr) {
+          return search;
+      }
+      for (uint32_t i = 0; i < search.deviceArray->size; i++) {
+          uint32_t id = 0;
+          OH_AudioDeviceDescriptor_GetDeviceId(search.deviceArray->descriptors[i], &id);
+          if (id == static_cast<uint32_t>(deviceId)) {
+              search.targetDescriptor = search.deviceArray->descriptors[i];
+              break;
+          }
+      }
+      return search;
+  }
+  
+  static void ReleaseDeviceSearch(DeviceSearchResult &search)
+  {
+      if (search.routingManager != nullptr && search.deviceArray != nullptr) {
+          OH_AudioRoutingManager_ReleaseDevices(search.routingManager, search.deviceArray);
+      }
+  }
+  // ...
+  // 为应用选择输出设备。
+  napi_value SelectOutputDevice(napi_env env, napi_callback_info info)
+  {
+      int32_t deviceId = 0;
+      ParseInt32Arg(env, info, deviceId);
+      std::string errorMsg;
+      OH_AudioDeviceEnhanceManager *enhanceManager = GetEnhanceManager(errorMsg);
+      // ...
+  
+      DeviceSearchResult search = FindDescriptorById(deviceId, AUDIO_DEVICE_USAGE_MEDIA_OUTPUT);
+      OH_AudioCommon_Result result = OH_AudioDeviceEnhanceManager_SelectOutputDevice(
+          enhanceManager, search.targetDescriptor);
+      ReleaseDeviceSearch(search);
+      // ...
+  }
+  ```
+
+- **音频流级：** 通过OH_AudioDeviceEnhanceManager_SelectOutputDeviceForAudioRenderer为指定音频播放流选择输出设备。
+
+  <!-- @[select_OutputDeviceForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+
+  ``` C++
+  // 获取音频设备增强管理器。
+  static OH_AudioDeviceEnhanceManager *GetEnhanceManager(std::string &errorMsg)
+  {
+      OH_AudioDeviceEnhanceManager *manager = nullptr;
+      OH_AudioCommon_Result result = OH_AudioManager_GetAudioDeviceEnhanceManager(&manager);
+      if (result != AUDIOCOMMON_RESULT_SUCCESS || manager == nullptr) {
+          errorMsg = "获取AudioDeviceEnhanceManager失败";
+          return nullptr;
+      }
+      bool isSupported = false;
+      OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported(manager, &isSupported);
+      if (!isSupported) {
+          errorMsg = "Enhanced routing不支持，该功能不会生效";
+          return nullptr;
+      }
+      return manager;
+  }
+  
+  struct DeviceSearchResult {
+      OH_AudioRoutingManager *routingManager;
+      OH_AudioDeviceDescriptorArray *deviceArray;
+      OH_AudioDeviceDescriptor *targetDescriptor;
+  };
+  
+  // 获取音频可选设备。
+  static DeviceSearchResult FindDescriptorById(int32_t deviceId, OH_AudioDevice_Usage usage)
+  {
+      DeviceSearchResult search = {nullptr, nullptr, nullptr};
+      OH_AudioManager_GetAudioRoutingManager(&search.routingManager);
+      OH_AudioRoutingManager_GetAvailableDevices(search.routingManager, usage, &search.deviceArray);
+      if (search.deviceArray == nullptr) {
+          return search;
+      }
+      for (uint32_t i = 0; i < search.deviceArray->size; i++) {
+          uint32_t id = 0;
+          OH_AudioDeviceDescriptor_GetDeviceId(search.deviceArray->descriptors[i], &id);
+          if (id == static_cast<uint32_t>(deviceId)) {
+              search.targetDescriptor = search.deviceArray->descriptors[i];
+              break;
+          }
+      }
+      return search;
+  }
+  
+  static void ReleaseDeviceSearch(DeviceSearchResult &search)
+  {
+      if (search.routingManager != nullptr && search.deviceArray != nullptr) {
+          OH_AudioRoutingManager_ReleaseDevices(search.routingManager, search.deviceArray);
+      }
+  }
+  // 创建音频渲染器。
+  static OH_AudioRenderer *CreateAudioRenderer()
+  {
+      OH_AudioStreamBuilder *builder = nullptr;
+      if (OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_RENDERER) != AUDIOSTREAM_SUCCESS) {
+          return nullptr;
+      }
+      OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLE_RATE_48K);
+      OH_AudioStreamBuilder_SetChannelCount(builder, CHANNEL_COUNT_STEREO);
+      OH_AudioStreamBuilder_SetSampleFormat(builder, AUDIOSTREAM_SAMPLE_S16LE);
+      OH_AudioStreamBuilder_SetEncodingType(builder, AUDIOSTREAM_ENCODING_TYPE_RAW);
+      OH_AudioStreamBuilder_SetRendererInfo(builder, AUDIOSTREAM_USAGE_VOICE_COMMUNICATION);
+      OH_AudioRenderer *renderer = nullptr;
+      OH_AudioStreamBuilder_GenerateRenderer(builder, &renderer);
+      OH_AudioStreamBuilder_Destroy(builder);
+      return renderer;
+  }
+  
+  // ...
+  // 为指定音频播放流设置首选输出设备。
+  napi_value SelectOutputDeviceForAudioRenderer(napi_env env, napi_callback_info info)
+  {
+      int32_t deviceId = 0;
+      ParseInt32Arg(env, info, deviceId);
+      std::string errorMsg;
+      OH_AudioDeviceEnhanceManager *enhanceManager = GetEnhanceManager(errorMsg);
+      // ...
+      OH_AudioRenderer *renderer = CreateAudioRenderer();
+      // ...
+  
+      DeviceSearchResult search = FindDescriptorById(deviceId, AUDIO_DEVICE_USAGE_MEDIA_OUTPUT);
+      OH_AudioCommon_Result result = OH_AudioDeviceEnhanceManager_SelectOutputDeviceForAudioRenderer(
+          enhanceManager, renderer, search.targetDescriptor);
+      ReleaseDeviceSearch(search);
+      // ...
+  }
+  ```

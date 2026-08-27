@@ -4,21 +4,21 @@
 <!--Owner: @guobingbing3-->
 <!--Designer: @xwcai98-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
-ArkTS运行时是OpenHarmony上应用的默认语言运行时，支持ArkTS、TS和JS语言的字节码及相关标准库。它提供解释器、AOT和JIT高效执行方式，并通过[Node-API](../napi/napi-introduction.md)实现完善的跨语言调用接口，支持多语言混合开发。
+ArkTS运行时是OpenHarmony上应用的默认语言运行时，支持ArkTS、TS和JS语言的字节码及相关标准库。它提供解释器、AOT和JIT高效执行方式，并通过Node-API实现完善的跨语言调用接口，支持多语言混合开发。
 
 ArkTS Runtime主要由四个子系统组成：
 
 - **Core Subsystem**：主要由与语言无关的基础运行库组成，其中包括承载字节码的File组件、支持Debugger的Tooling组件以及负责适配系统调用的Base库组件等。
 
-- **Execution Subsystem**：包含执行方舟字节码的解释器、快速路径内联缓存以及[文件模块化管理运行](module-principle.md)。
+- **Execution Subsystem**：包含执行方舟字节码的解释器、快速路径内联缓存以及文件模块化管理运行。
 
 - **Compiler Subsystem**：包含Stub编译器、基于IR的编译优化框架、AOT静态编译器以及JIT动态编译器（实验中）。
 
 - **Runtime Subsystem**：包含以下ArkTS/TS/JS运行相关的模块。
 
-  - 内存管理：对象分配器与[垃圾回收器](gc-introduction.md)（并发标记和部分内存压缩的CMS-GC和Partial-Compressing-GC）。
+  - 内存管理：对象分配器与垃圾回收器（并发标记和部分内存压缩的CMS-GC和Partial-Compressing-GC）。
 
   - 分析工具：DFX工具、CPU和heap的profiling工具。
 

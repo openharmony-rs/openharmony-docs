@@ -1,10 +1,10 @@
 # 使用Node-API接口创建ArkTS运行时环境
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 场景介绍
 
@@ -49,13 +49,15 @@
   <!-- @[napi_ark_runtime_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/build-profile.json5) -->
   
   ``` JSON5
-  "buildOption": {
-    "arkOptions" : {
-      "runtimeOnly" : {
-        "sources": [
-          "./src/main/ets/pages/ObjectUtils.ets"
-        ]
-      }
+    "buildOption": {
+      "arkOptions" : {
+        "runtimeOnly" : {
+          "sources": [
+            "./src/main/ets/pages/ObjectUtils.ets"
+          ]
+        }
+      },
+  // ...
     },
   ```
 
@@ -92,7 +94,7 @@
 
 - 功能实现
 
-  新建线程并创建ArkTS基础运行时环境，加载自定义模块请参考[napi_load_module_with_info](./use-napi-load-module-with-info.md)。
+  新建线程并创建ArkTS基础运行时环境，加载自定义模块请参考napi_load_module_with_info。
 
   <!-- @[napi_ark_runtime_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->
   

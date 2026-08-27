@@ -25,7 +25,7 @@
 
 5. 资源使用过度将导致系统对应用进行管控，并提供详细的维测信息。例如，应用发生内存泄漏时，通常会生成资源泄漏类的维测日志。开发者可以通过HiAppEvent订阅RESOURCE_OVERLIMIT获取对应的事件和日志。
 
-6. 系统对应用进行管控时，部分场景无法提供详细的维测信息，比如LowMemoryKiller、应用的RSS内存超过4G、快速泄漏等。
+6. 系统对应用进行管控时，部分场景无法提供详细的维测信息，比如LowMemoryKiller、应用的RSS内存超过4GB、快速泄漏等。
 
 本节主要覆盖在场景5和6中因SIGKILL信号导致的应用终止。
 
@@ -61,9 +61,9 @@
 
 应用可以通过两种方式感知到被异常终止。
 
-1. 从元能力的Ability的onCreate回调参数中获取终止原因。具体为LaunchParam启动参数中的LastExitReason字段，请参考[元能力LastExitReason章节/apis-ability-kit/js-apis-app-ability-abilityConstant.md#lastexitreason)。
+1. 从元能力的Ability的onCreate回调参数中获取终止原因。具体为LaunchParam启动参数中的LastExitReason字段，请参考元能力LastExitReason章节。
 
-2. 通过HiAppEvent订阅APP_KILLED事件。订阅方式请参考[应用终止事件](hiappevent-watcher-app-killed-events.md)。
+2. 通过HiAppEvent订阅APP_KILLED事件。订阅方式请参考应用终止事件。
 
 ## 分析思路和分析步骤
 
@@ -99,12 +99,12 @@
     | ResourceLeak(FDLeak)               | FD泄漏。                                                         | 尝试通过HiAppEvent订阅RESOURCE_OVERLIMIT获取更多的FD泄漏日志，找到泄漏点后，及时关闭不必要的文件句柄。                                    | 是             | 是        |
     | ResourceLeak(ThreadLeak)           | 线程泄漏。                                                         | 尝试通过HiAppEvent订阅RESOURCE_OVERLIMIT获取更多的线程泄漏日志，找到泄漏点后，及时销毁不必要的线程。                                      | 是             | 是        |
     | ResourceLeak(KernelZoneLeak)       | 页表内存泄漏。                                                | 无需处理。                 | 是             | 否        |
-    | IllegalAudioRendererBySuspend      | 应用的音频播放未申请合理的后台任务，其退至后台后仍有大量音频播放。    | 应用退至后台时，应避免不必要的后台音频播放，或者合理使用后台任务，具体参考[后台任务开发服务](../task-management/background-task-overview.md)。       | 是             | 否        |
+    | IllegalAudioRendererBySuspend      | 应用的音频播放未申请合理的后台任务，其退至后台后仍有大量音频播放。    | 应用退至后台时，应避免不必要的后台音频播放，或者合理使用后台任务，具体参考后台任务开发服务。       | 是             | 否        |
     | PowerSaveClean                     | 整机切换到省电模式或应急模式。                                               | 无需处理。                                                                                                  | 否             | 否        |
     | VrsKill                            | 三方应用检测到恶意进程后，调用PC端病毒检测处置服务接口终止进程。                             | 无需处理。                                                                                                  | 否             | 否        |
     | RssThresholdKiller                 | 应用的RSS内存超一定阈值。                                                | 尝试通过HiAppEvent订阅RESOURCE_OVERLIMIT获取更多的RSS内存日志，找到泄漏点后，尝试降低应用自身的内存占用，避免出现RSS内存超过阈值的情况。                                                                        | 是             | 是        |
     | OomKiller                          | 整机低内存，触发了内核管控，按照一定策略终止应用。                                     | 尝试降低应用自身的内存占用，以减少被整机管控策略选中的概率。                                                                         | 否             | 否        |
-    | CpaKiller                          | DRM（Digital Right Management）业务申请内存但是内存不足时，会按照一定策略终止进程以回收内存。 | 尝试降低应用自身的内存占用，以减少被整机管控策略选中的概率。                                                                         | 否             | 否        |
+    | CpaKiller                          | DRM（Digital Rights Management）业务申请内存但是内存不足时，会按照一定策略终止进程以回收内存。 | 尝试降低应用自身的内存占用，以减少被整机管控策略选中的概率。                                                                         | 否             | 否        |
     | KillApplication                    | 应用主动退出。                                                       | 无需处理。                                                                                                  | 否             | 否        |
     | OnRemoteDied                       | 远程服务死亡。                                                       | 检查依赖的远程服务是否正常。                                                                                         | 否             | 否        |
     | Restart                            | 应用重启。                                                         | 无需处理。                                                                                                  | 否             | 否        |
@@ -114,17 +114,17 @@
     | Logout                             | 用户注销时，卸载应用沙箱。                                                 | 无需处理。                                                                                                  | 否             | 否        |
     | PermissionUpdate                   | 应用权限更新。                                                       | 检查应用权限使用是否合理。                                                                                          | 否             | 否        |
     | aaForceStop                        | 通过aa命令强制停止应用。                                                 | 无需处理。                                                                                                  | 否             | 否        |
-    | ThreadBlock6S                      | 应用主线程卡死超时。                                                    | 检查应用主线程是否存在阻塞操作，优化代码逻辑。                                                                                | 是             | 是，具体参考[ThreadBlock6S](./appfreeze-guidelines.md#thread_block_6s-应用主线程卡死超时)。        |
-    | AppInputBlock                      | 用户输入响应超时。                                                     | 检查应用UI响应是否及时，优化输入处理逻辑。                                                                                 | 是             | 是，具体参考[AppInputBlock](./appfreeze-guidelines.md#app_input_block-用户输入响应超时)。        |
+    | ThreadBlock6S                      | 应用主线程卡死超时。                                                    | 检查应用主线程是否存在阻塞操作，优化代码逻辑。                                                                                | 是             | 是，具体参考ThreadBlock6S。        |
+    | AppInputBlock                      | 用户输入响应超时。                                                     | 检查应用UI响应是否及时，优化输入处理逻辑。                                                                                 | 是             | 是，具体参考AppInputBlock。        |
     | LifecycleTimeout                   | 应用生命周期超时。                                                     | 检查应用生命周期回调是否存在耗时操作。                                                                                    | 是             | 否       |
-    | JsError                            | js层程序崩溃。                                                      | 检查js代码是否存在异常，优化错误处理。                                                                                   | 是             | 是，具体参考[JsError](./jscrash-guidelines.md)。        |
-    | CppCrash                           | native层程序崩溃。                                                  | 检查native代码是否存在异常，优化错误处理。                                                                               | 是             | 是，具体参考[CppCrash](./cppcrash-guidelines.md)。        |
+    | JsError                            | js层程序崩溃。                                                      | 检查js代码是否存在异常，优化错误处理。                                                                                   | 是             | 是，具体参考JsError。        |
+    | CppCrash                           | native层程序崩溃。                                                  | 检查native代码是否存在异常，优化错误处理。                                                                               | 是             | 是，具体参考CppCrash。        |
     | RSPixelMapFdOverLimit              | 应用使用图片PixelMap资源超限导致渲染服务fd泄漏。                      | 尝试降低应用使用图片pixelMap资源的频率。                                                                                       | 是             | 否        |
     | CPUHighloadNotify                  | 应用后台CPU高负载，出现弹框，用户选择停止该应用。                                    | 尝试降低应用自身的CPU负载。                                                                                        | 否             | 否        |
     | CPUHighloadUserRequest             | 应用后台CPU高负载，设置界面用户选择停止该应用。                                     | 尝试降低应用自身的CPU负载。                                                                                        | 否             | 否        |
     | IllegalAudioCapturerBySuspend      | 应用录音未申请合理的后台任务，其退至后台后仍进行录音。           | 应用退至后台时，应避免不必要的后台录音，或者合理使用后台任务。                                                                        | 是             | 否        |
     | IOHighload                         | IO高负载。                                                        | 尝试降低应用自身的I/O操作。                                                                                        | 否             | 否        |
-    | AppFreeze                          | 应用冻屏无响应。                                                      | 通过HiAppEvent订阅APP_FREEZE事件，到APP_FREEZE事件中去匹配。                                                        | 是             | 是，具体参考[AppFreeze](./appfreeze-guidelines.md)。        |
+    | AppFreeze                          | 应用冻屏无响应。                                                      | 通过HiAppEvent订阅APP_FREEZE事件，到APP_FREEZE事件中去匹配。                                                        | 是             | 是，具体参考AppFreeze。        |
     | MaliciousContinuousTaskActive      | 恶意连续任务活跃。                                                     | 检查应用是否存在恶意连续任务，优化任务调度。                                                                                 | 是             | 否        |
     | RsDataOverflow                     | RS数据溢出。                                                       | 尝试降低应用RS数据使用量。                                                                                         | 否             | 否        |
     | HighTemperature                    | 温度超限。                                                         | 尝试降低应用自身的CPU负载，减少发热。                                                                                   | 否             | 否        |

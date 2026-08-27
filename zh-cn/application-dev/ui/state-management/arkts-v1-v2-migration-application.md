@@ -11,11 +11,11 @@
 
 | V1装饰器名称/场景 | 迁移方案 |
 | -------- | -------- |
-| [LocalStorage](./arkts-localstorage.md) | [@ObservedV2](./arkts-new-observedV2-and-trace.md) [@Trace](./arkts-new-observedV2-and-trace.md) |
-| [AppStorage](./arkts-appstorage.md) | [AppStorageV2](./arkts-new-appstoragev2.md) |
-| [Environment](./arkts-environment.md) | 通过[UIAbilityContext/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1)的config属性获取系统环境变量 |
-| [PersistentStorage](./arkts-persiststorage.md) | [PersistenceV2](./arkts-new-persistencev2.md) |
-| 存量迁移场景 | \@ObservedV2、\@Trace、[@Monitor](./arkts-new-monitor.md) |
+| LocalStorage | @ObservedV2 @Trace |
+| AppStorage | AppStorageV2 |
+| Environment | 通过UIAbilityContext的config属性获取系统环境变量 |
+| PersistentStorage | PersistenceV2 |
+| 存量迁移场景 | \@ObservedV2、\@Trace、@Monitor |
 
 
 ## LocalStorage->\@ObservedV2/\@Trace
@@ -31,7 +31,7 @@ LocalStorage的目的是实现页面间的状态变量共享。由于V1状态变
 
 V1:
 
-通过windowStage.[loadContent/apis-arkui/arkts-apis-window-Window.md#loadcontent9)和this.getUIContext().[getSharedLocalStorage/apis-arkui/arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)接口实现页面间的状态变量共享。
+通过windowStage.loadContent和this.getUIContext().getSharedLocalStorage接口实现页面间的状态变量共享。
 
 <!-- @[Internal_@ObservedV2_@Trace_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV1/EntryAbility.ets) -->
 
@@ -768,9 +768,7 @@ struct NavigationContentMsgStack {
 
 ### 多实例场景LocalStorage的迁移
 
-为了解决不同Ability之间数据的共享，LocalStorage支持跨Ability存取数据。
-
-对于该场景，V2可结合\@ObservedV2+\@Trace创建可观测的全局单例对象，定义Map类型存储不同Ability页面的数据，从而实现不同Ability之间数据共享。启动Ability可以参考[specified启动模式](../../application-models/uiability-launch-type.md#specified启动模式)。
+LocalStorage支持单个UIAbility内的页面间状态共享。对于该场景，V2可结合@ObservedV2与@Trace创建可观测的全局单例对象，定义Map类型存储不同Ability页面的数据，通过不同的key值访问对应数据，从而实现UIAbility内的数据共享。启动Ability可以参考specified启动模式。
 
 **主页面**
 
@@ -790,10 +788,6 @@ struct Index {
       Text('使用文件管理器，使用本应用打开多个PDF')
         .fontSize($r('app.float.page_text_font_size'))
         .fontWeight(FontWeight.Bold)
-        .alignRules({
-          center: { anchor: '__container__', align: VerticalAlign.Center },
-          middle: { anchor: '__container__', align: HorizontalAlign.Center }
-        })
       Button('Jump to PDF_A').onClick(() => {
         let wantInfo: Want = {
           bundleName: 'com.samples.paradigmstatemanagement',
@@ -858,7 +852,7 @@ export default class PDFData {
     return this.data;
   }
 
-  setFlage(value: string) {
+  setFlag(value: string) {
     this.flag = value;
   }
 
@@ -881,7 +875,7 @@ export default class PDFAbility extends UIAbility {
     // 用单例存储数据
     const data = this.launchWant.parameters as Record<string, string>;
     PDFData.getInstance().setData(data.key, data.value);
-    PDFData.getInstance().setFlage(this.launchWant.uri || '');
+    PDFData.getInstance().setFlag(this.launchWant.uri || '');
     windowStage.loadContent('pages/internalmigrate/LocalStorageMultiInstance/PDF').catch();
   }
 }
@@ -922,11 +916,11 @@ struct PDF {
 
 ## AppStorage->AppStorageV2
 
-上一小节中，对于创建全局\@ObserveV2和\@Trace装饰实例的改造不适用于跨Ability的数据共享，可以使用AppStorageV2替代。
+上一小节中，虽然可以通过创建全局@ObservedV2和@Trace装饰的单例对象实现跨Ability的数据共享，但AppStorageV2提供了更标准、便捷的跨Ability共享方案，推荐使用AppStorageV2替代。
 
 V1:
 
-AppStorage与应用进程绑定，支持跨[Ability/apis-ability-kit/js-apis-app-ability-ability.md)数据共享。
+AppStorage与应用进程绑定，支持跨Ability数据共享。
 
 在下面的示例中，使用\@StorageLink，可以使得开发者本地的修改同步回AppStorage中。
 
@@ -1017,7 +1011,7 @@ struct Index {
 
   build() {
     Column() {
-      Text(`EntryAbility1 count: ${this.storage.count}`)
+      Text(`EntryAbility count: ${this.storage.count}`)
         .fontSize(50)
         .onClick(() => {
           this.storage.count++;
@@ -1171,13 +1165,13 @@ struct Index {
 
   @Monitor('storage.count')
   onCountChange(mon: IMonitor) {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', `Index1 ${mon.value()?.before} to ${mon.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Index ${mon.value()?.before} to ${mon.value()?.now}`);
     this.count = this.storage.count;
   }
 
   build() {
     Column() {
-      Text(`EntryAbility1 count: ${this.count}`)
+      Text(`EntryAbility count: ${this.count}`)
         .fontSize(25)
         .onClick(() => {
           this.count++;
@@ -1253,7 +1247,7 @@ struct Index1 {
 
 V1中，开发者可以通过Environment来获取环境变量，但Environment获取的结果无法直接使用，需要配合AppStorage才能得到对应环境变量的值。
 
-在切换V2的过程中，开发者无需再通过Environment来获取环境变量，可以直接通过[UIAbilityContext的config属性/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1)获取系统环境变量。
+在切换V2的过程中，开发者无需再通过Environment来获取环境变量，可以直接通过UIAbilityContext的config属性获取系统环境变量。
 
 V1:
 
@@ -1365,7 +1359,7 @@ V1中PersistentStorage提供了持久化UI数据的能力，而V2则提供了更
 
 - 与PersistenceV2关联的\@ObservedV2对象，其\@Trace属性的变化，会触发整个关联对象的自动持久化。
 
-- 开发者也可以调用[PersistenceV2.save()/apis-arkui/js-apis-stateManagement.md#save)和[PersistenceV2.globalConnect()](./arkts-new-persistencev2.md#使用globalconnect存储数据)来手动触发持久化写入和读取。
+- 开发者也可以调用PersistenceV2.save()和PersistenceV2.globalConnect()来手动触发持久化写入和读取。
 
 V1:
 
@@ -1447,9 +1441,9 @@ class V2Data {
 
 @ObservedV2
 export class Sample {
+  @Trace public num: number = 1;
   // 对于复杂对象需要@Type修饰，确保序列化成功
   @Type(V2Data)
-  @Trace public num: number = 1;
   @Trace public V2: V2Data = new V2Data();
 }
 

@@ -8,8 +8,8 @@
 
 > **说明：**
 >
-> 当前开发指导使用的接口为[Image/apis-image-kit/capi-image.md)模块下的C API，可完成图片编解码，图片接收器，处理图像数据等功能。这部分API在API version 11之前发布，在后续的版本不再增加新功能，**不再推荐使用**。<br>
-> 开发者可使用[Image_NativeModule/apis-image-kit/capi-image-nativemodule.md)模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考[图片开发指导(C/C++)](image-source-c.md)节点下的内容。这部分API从API version 12开始支持，并将持续演进，**推荐开发者使用**。<br>
+> 当前开发指导使用的接口为Image模块下的C API，可完成图片编解码，图片接收器，处理图像数据等功能。这部分API在API version 11之前发布，在后续的版本不再增加新功能，**不再推荐使用**。<br>
+> 开发者可使用Image_NativeModule模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考图片开发指导(C/C++)节点下的内容。这部分API从API version 12开始支持，并将持续演进，**推荐开发者使用**。<br>
 > 两套C API不建议同时使用，在部分场景下存在不兼容的问题。
 
 图片接收类，用于获取组件surface id，接收最新的图片和读取下一张图片，以及释放ImageReceiver实例。
@@ -44,7 +44,7 @@ EXTERN_C_END
 
 ### 添加权限申请
 
-此处通过camera图片获取输入数据，需要申请权限ohos.permission.CAMERA，申请方式请参考[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+此处通过camera图片获取输入数据，需要申请权限ohos.permission.CAMERA，申请方式请参考向用户申请授权。
 
 ### JS侧调用
 
@@ -134,7 +134,7 @@ EXTERN_C_END
 
 ### Native接口调用
 
-具体接口说明请参考[Image/apis-image-kit/capi-image.md)。
+具体接口说明请参考Image。
 
 在hello.cpp文件中获取JS的资源对象，并转为Native的资源对象，即可调用Native接口，调用方式示例代码如下：
 
@@ -143,7 +143,6 @@ EXTERN_C_END
 ```c++
 #include <multimedia/image_framework/image_mdk.h>
 #include <multimedia/image_framework/image_receiver_mdk.h>
-#include <malloc.h>
 #include <hilog/log.h>
 
 static napi_value createFromReceiver(napi_env env, napi_callback_info info)
@@ -166,9 +165,9 @@ static napi_value createFromReceiver(napi_env env, napi_callback_info info)
    int32_t format;
    OH_Image_Receiver_GetFormat(imgReceiver_c, &format);
    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "[receiver]", "format: %{public}d", format);
-   char * surfaceId = static_cast<char *>(malloc(sizeof(char)));
-   OH_Image_Receiver_GetReceivingSurfaceId(imgReceiver_c, surfaceId, sizeof(char));
-   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "[receiver]", "surfaceId: %{public}c", surfaceId[0]);
+   char surfaceId[128] = {0};
+   OH_Image_Receiver_GetReceivingSurfaceId(imgReceiver_c, surfaceId, sizeof(surfaceId));
+   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "[receiver]", "surfaceId: %{public}s", surfaceId);
    OhosImageSize size;
    OH_Image_Receiver_GetSize(imgReceiver_c, &size);
    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "[receiver]", "OH_Image_Receiver_GetSize  width: %{public}d, height:%{public}d", size.width, size.height);
@@ -184,7 +183,7 @@ static napi_value createFromReceiver(napi_env env, napi_callback_info info)
    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "[receiver]", "OH_Image_Size  width: %{public}d, height:%{public}d", imageSize.width, imageSize.height);
 
    OhosImageComponent imgComponent;
-   OH_Image_GetComponent(nextImage_native, 4, &imgComponent); // 4=jpeg
+   OH_Image_GetComponent(nextImage_native, OHOS_IMAGE_COMPONENT_FORMAT_JPEG, &imgComponent);
    
    uint8_t *img_buffer = imgComponent.byteBuffer;
    

@@ -9,7 +9,7 @@
 
 ## 概述
 
-当用户在执行应用启动、应用前后台切换、应用退出等操作时，应用的整体生命周期状态会随之发生变化。理解应用的生命周期有助于开发者在合适的时机进行资源申请与释放、业务状态管理等操作。本章节主要介绍应用的生命周期状态、应用生命周期与应用进程及应用组件（[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)、[ExtensionAbility/apis-ability-kit/js-apis-app-ability-extensionAbility.md)）的关系，以及如何监听应用生命周期状态的变化。
+当用户在执行应用启动、应用前后台切换、应用退出等操作时，应用的整体生命周期状态会随之发生变化。理解应用的生命周期有助于开发者在合适的时机进行资源申请与释放、业务状态管理等操作。本章节主要介绍应用的生命周期状态、应用生命周期与应用进程及应用组件（UIAbility、ExtensionAbility）的关系，以及如何监听应用生命周期状态的变化。
 
 ## 应用生命周期状态
 
@@ -27,9 +27,9 @@
 
     ![process-ability-lifecycle](figures/process-ability-lifecycle.png)
 
-    [UIAbility组件生命周期](./uiability-lifecycle.md)的前后台回调与进程的前后台状态密切相关，但二者并非完全等同：
+    UIAbility组件生命周期的前后台回调与进程的前后台状态密切相关，但二者并非完全等同：
 
-    - UIAbility的[onForeground()/apis-ability-kit/js-apis-app-ability-uiAbility.md#onforeground)回调表示该UIAbility实例切换至前台状态。
+    - UIAbility的onForeground()回调表示该UIAbility实例切换至前台状态。
     - 进程状态的前后台表示整个进程的前后台状态。
     - 一个进程可能包含多个UIAbility，其中某个UIAbility的`onForeground()`不一定意味着进程状态发生改变（例如，进程可能已处于前台状态）。
 
@@ -47,8 +47,8 @@
 
 ### 应用生命周期状态变化
 
-- 应用启动：应用可以运行在一个或多个进程中，一个进程中也可以运行单个或多个[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件实例。三方应用开发者开发的应用，必须包含至少一个[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件，否则没有界面对用户展示。应用启动机制详见[应用的启动](./application-startup-options.md)中的介绍。
-- 应用退出：当进程中所有的应用组件都销毁，进程进入销毁流程；当应用中的所有进程都销毁，则应用退出。应用退出机制详见[应用退出](./app-stop.md)中的介绍。
+- 应用启动：应用可以运行在一个或多个进程中，一个进程中也可以运行单个或多个UIAbility组件实例。三方应用开发者开发的应用，必须包含至少一个UIAbility组件，否则没有界面对用户展示。应用启动机制详见应用的启动中的介绍。
+- 应用退出：当进程中所有的应用组件都销毁，进程进入销毁流程；当应用中的所有进程都销毁，则应用退出。应用退出机制详见应用退出中的介绍。
 - 应用前后台切换：当应用中至少有一个进程处于前台则该应用为前台状态；如果应用中的所有进程都处于后台，则该应用处于后台状态。
     - 应用进程切换到前台的时机：
         - 应用进程内首个UIAbility启动时，系统会将应用进程切换到前台状态。
@@ -68,15 +68,19 @@
 
 ### 监听应用的启动和退出
     
-应用需要先申请[ohos.permission.RUNNING_STATE_OBSERVER](../security/AccessToken/permissions-for-enterprise-apps.md#ohospermissionrunning_state_observer)权限，然后使用[on('applicationState')/apis-ability-kit/js-apis-app-ability-appManager.md#appmanageronapplicationstate14)方法可以监听全部应用的状态；使用[on('applicationState')/apis-ability-kit/js-apis-app-ability-appManager.md#appmanageronapplicationstate14-1)方法可以监听指定应用的状态。通过实现`ApplicationStateObserver`接口中的[onAppStarted()/apis-ability-kit/js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstarted)方法，可以监听应用的启动。通过实现`ApplicationStateObserver`接口中的[onAppStopped()/apis-ability-kit/js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstopped)方法，可以监听应用的退出。
+应用需要先申请ohos.permission.RUNNING_STATE_OBSERVER权限，然后使用on('applicationState')方法可以监听全部应用的状态；使用on('applicationState')方法可以监听指定应用的状态。通过实现`ApplicationStateObserver`接口中的onAppStarted()方法，可以监听应用的启动。通过实现`ApplicationStateObserver`接口中的onAppStopped()方法，可以监听应用的退出。
 
 ### 监听应用前后台变化
     
-应用使用`ApplicationContext`的[on('applicationStateChange')/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextonapplicationstatechange10)方法可以监听应用的前后台状态变化，当应用前后台切换时，可以收到相应回调函数的通知，从而执行一些依赖前后台的方法，或者进行应用前后台切换频率等数据统计。
+应用使用`ApplicationContext`的on('applicationStateChange')方法可以监听应用的前后台状态变化，当应用前后台切换时，可以收到相应回调函数的通知，从而执行一些依赖前后台的方法，或者进行应用前后台切换频率等数据统计。
 
-以[UIAbilityContext/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中的使用为例进行说明。
+以UIAbilityContext中的使用为例进行说明。
 
 <!-- @[lifecycle_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/lifecycleability/LifecycleAbility.ets) -->
+
+> **说明：**
+>
+> 上述的回调事件均为异步回调，无严格的时序关系。
 
 ``` TypeScript
 import { UIAbility, ApplicationStateChangeCallback } from '@kit.AbilityKit';
@@ -110,6 +114,14 @@ export default class LifecycleAbility extends UIAbility {
 }
 ```
 
-> **说明：**
->
-> 上述的回调事件都是异步回调，并无严格的时序关系。
+## PC/2in1设备的应用模型特征
+
+module.json5文件的deviceTypes仅声明支持PC/2in1设备的应用，其UIAbility的生命周期回调触发机制与其他设备存在差异。
+
+  1. 当用户启动一个UIAbility时，系统会依次触发onCreate()、onWindowStageCreate()、onForeground()生命周期回调，完成组件创建、生命周期驱动等流程。
+
+  2. 当用户进行应用间切换时，UIAbility会保持前台状态，系统不会触发onBackground()生命周期回调。
+
+  3. 用户主动退出UIAbility和应用主动退出UIAbility时，系统才会触发onBackground()和onDestroy()生命周期回调，完成组件退出和销毁。
+
+进程的生命周期与UIAbility组件的生命周期密切相关。由于UIAbility运行态长期处于前台状态，故进程长期处于前台状态，仅在进程正常退出过程中短暂处于后台状态。相应地，应用也长期处于前台状态，仅在应用正常退出过程中短暂处于后台状态。

@@ -1,4 +1,4 @@
-# 模糊
+# 动态模糊
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
@@ -14,15 +14,15 @@
 
 | 接口                                                         | 说明                                         |
 | ------------------------------------------------------------ | -------------------------------------------- |
-| [backdropBlur/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backdropblur) | 为当前组件添加背景模糊效果，入参为模糊半径。 |
-| [blur/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#blur) | 为当前组件添加内容模糊效果，入参为模糊半径。 |
-| [backgroundBlurStyle/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9) | 为当前组件添加背景模糊效果，入参为模糊样式。 |
-| [foregroundBlurStyle/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#foregroundblurstyle) | 为当前组件添加内容模糊效果，入参为模糊样式。 |
-| [motionBlur/apis-arkui/arkui-ts/ts-universal-attributes-motionBlur.md#motionblur) | 为当前组件添加由缩放大小或位移变化引起的运动过程中的动态模糊效果，入参为模糊半径和锚点坐标。 |
+| backdropBlur | 为当前组件添加背景模糊效果，入参为模糊半径。 |
+| blur | 为当前组件添加内容模糊效果，入参为模糊半径。 |
+| backgroundBlurStyle | 为当前组件添加背景模糊效果，入参为模糊样式。 |
+| foregroundBlurStyle | 为当前组件添加内容模糊效果，入参为模糊样式。 |
+| motionBlur | 为当前组件添加由缩放大小或位移变化引起的运动过程中的动态模糊效果，入参为模糊半径和锚点坐标。 |
 
 >  **说明：**
 >
->  以上接口均为实时模糊接口，每帧执行实时渲染，性能负载较大。当模糊内容与模糊半径均无需变动时，推荐采用静态模糊接口[blur/apis-arkgraphics2d/js-apis-effectKit.md#blur)。最佳实践请参考：[图像模糊动效优化-使用场景](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519)。
+>  以上接口均为实时模糊接口，每帧执行实时渲染，性能负载较大。当模糊内容与模糊半径均无需变动时，推荐采用静态模糊接口blur。最佳实践请参考：[图像模糊动效优化-使用场景](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519)。
 
 ## 使用backdropBlur为组件添加背景模糊
 
@@ -53,7 +53,7 @@ struct BlurEffectsExample {
 ```
 
 
-![zh-cn_image_0000001599812870](figures/zh-cn_image_0000001599812870.png)
+![zh-cn_image_0000001599812870](figures/backdropBlur.png)
 
 
 ## 使用blur为组件添加内容模糊
@@ -119,7 +119,7 @@ struct Index {
 ```
 
 
-![zh-cn_image_0000001599813588](figures/zh-cn_image_0000001599813588.gif)
+![zh-cn_image_0000001599813588](figures/Applying-Foreground-Blur.gif)
 
 
 ## 使用backgroundBlurStyle为组件添加背景模糊效果
@@ -393,7 +393,7 @@ struct BackDropBlurStyleDemo {
 ```
 
 
-![zh-cn_image_0000001649455517](figures/zh-cn_image_0000001649455517.png)
+![zh-cn_image_0000001649455517](figures/backgroundBlurStyle.png)
 
 
 
@@ -453,7 +453,7 @@ struct ForegroundBlurStyleDemo {
           // BlurStyle.Thin: 为组件添加轻薄材质模糊效果
           // ThemeColorMode.LIGHT: 固定使用浅色模式效果
           // AdaptiveColor.DEFAULT: 不使用取色模糊，使用默认的颜色作为蒙版颜色
-          // scale: 背景材质模糊效果程度，默认值是1
+          // scale: 前景材质模糊效果程度，默认值是1
           .foregroundBlurStyle(BlurStyle.Thin, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -666,7 +666,7 @@ struct ForegroundBlurStyleDemo {
 ```
 
 
-![zh-cn_image_0000001599658168](figures/zh-cn_image_0000001599658168.png)
+![zh-cn_image_0000001599658168](figures/foregroundBlurStyle.png)
 
 
 ## 使用motionBlur为组件添加运动模糊效果

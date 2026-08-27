@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 
@@ -29,9 +29,9 @@ config.json由app、deviceConfig和module三个部分组成，缺一不可。
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| [app](app-structure.md) | 标识应用的全局配置信息。同一个应用的不同HAP的app配置必须保持一致。 | 对象 | 不可缺省。 |
-| [deviceConfig](deviceconfig-structure.md) | 标识应用在具体设备上的配置信息。 | 对象 | 不可缺省。 |
-| [module](module-structure.md) | 标识HAP的配置信息。该标签下的配置只对当前HAP生效。 | 对象 | 不可缺省。 |
+| app | 标识应用的全局配置信息。同一个应用的不同HAP的app配置必须保持一致。 | 对象 | 不可缺省。 |
+| deviceConfig | 标识应用在具体设备上的配置信息。 | 对象 | 不可缺省。 |
+| module | 标识HAP的配置信息。该标签下的配置只对当前HAP生效。 | 对象 | 不可缺省。 |
 
 config.json示例：
 

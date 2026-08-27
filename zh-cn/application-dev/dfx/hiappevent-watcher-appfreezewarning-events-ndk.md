@@ -9,7 +9,7 @@
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的C/C++接口订阅应用冻屏告警事件。接口的详细使用说明（参数限制、取值范围等）请参考[hiappevent.h/apis-performance-analysis-kit/capi-hiappevent-h.md)。
+本文介绍如何使用HiAppEvent提供的C/C++接口订阅应用冻屏告警事件。接口的详细使用说明（参数限制、取值范围等）请参考hiappevent.h。
 
 ## 接口说明
 
@@ -52,9 +52,9 @@
 3. 编辑“CMakeLists.txt”文件，添加源文件及动态库。
 
    ```cmake
-   # 新增jsoncpp.cpp(解析订阅事件中的json字符串)源文件
+   # 新增jsoncpp.cpp（解析订阅事件中的json字符串）源文件
    add_library(entry SHARED napi_init.cpp jsoncpp.cpp)
-   # 新增动态库依赖libhiappevent_ndk.z.so和libhilog_ndk.z.so(日志输出)
+   # 新增动态库依赖libhiappevent_ndk.z.so和libhilog_ndk.z.so（日志输出）
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
    ```
 

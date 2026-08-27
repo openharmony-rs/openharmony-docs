@@ -57,7 +57,7 @@
   }
   // ...
 ```
-编译运行后，通过[SmartPerf Host](./performance-optimization-using-smartperf-host.md)工具抓取Trace。如下图所示，其中红色框选的部分就是getRawFileContent的回调耗时。
+编译运行后，通过SmartPerf Host工具抓取Trace。如下图所示，其中红色框选的部分就是getRawFileContent的回调耗时。
 
 ![](./figures/trace_mainthread_callback.png)
 
@@ -65,7 +65,7 @@
 
 ### 优化思路：使用多线程能力
 
-使用系统自带的[TaskPool](../arkts-utils//taskpool-introduction.md)多线程能力。
+使用系统自带的TaskPool多线程能力。
 
 ```typescript
 import { taskpool } from '@kit.ArkTS';
@@ -156,15 +156,15 @@ async function mockRequestData(index: number, context: Context): Promise<ModelDe
 }
 ```
 
-在上面的代码里，优化的思路主要是用子线程处理耗时操作，避免在主线程中执行耗时操作影响UI渲染，编译运行后，通过[SmartPerf Host](./performance-optimization-using-smartperf-host.md)工具抓取Trace。如下图所示，原先在主线程中的getRawFileContent的标签转移到了TaskWorker线程。
+在上面的代码里，优化的思路主要是用子线程处理耗时操作，避免在主线程中执行耗时操作影响UI渲染，编译运行后，通过SmartPerf Host工具抓取Trace。如下图所示，原先在主线程中的getRawFileContent的标签转移到了TaskWorker线程。
 
 ![](./figures//trace_taskpool_callback.png) 
 
-从图中可以看到，主线程阻塞耗时明显减少，同时在右上角出现了新的trace，__H:Deserialize__，这个trace表示在反序列化taskpool线程返回的数据。依然存在一定耗时(17ms) 容易出现丢帧等问题。针对跨线程的序列化耗时问题，系统提供了[@Sendable装饰器](../arkts-utils/arkts-sendable.md#sendable装饰器)来实现内存共享。可以在返回的类对象ModelDetailVO上使用@Sendable装饰器，继续优化性能。
+从图中可以看到，主线程阻塞耗时明显减少，同时在右上角出现了新的trace，__H:Deserialize__，这个trace表示在反序列化taskpool线程返回的数据。依然存在一定耗时(17ms)，容易出现丢帧等问题。针对跨线程的序列化耗时问题，系统提供了@Sendable装饰器来实现内存共享。可以在返回的类对象ModelDetailVO上使用@Sendable装饰器，继续优化性能。
 
 ### 优化思路：可以使用@Sendable装饰器提升数据传输和同步效率
 
-多线程存在线程间通信耗时问题，如果涉及数据较大的情况，可以使用[@Sendable](../arkts-utils/arkts-sendable.md)。
+多线程存在线程间通信耗时问题，如果涉及数据较大的情况，可以使用@Sendable。
 
 ```typescript
 import { common } from '@kit.AbilityKit';
@@ -262,4 +262,4 @@ struct ViewB {
 
 ## 总结
 
-通过上面的示例代码和优化过程，可以看到在主线程的回调函数中处理耗时操作会直接阻塞主线程，用户能感知到明显的卡顿，用子线程配合@Sendable可以有效的优化该场景的性能。
+通过上面的示例代码和优化过程，可以看到在主线程的回调函数中处理耗时操作会直接阻塞主线程，用户能感知到明显的卡顿，用子线程配合@Sendable可以有效地优化该场景的性能。

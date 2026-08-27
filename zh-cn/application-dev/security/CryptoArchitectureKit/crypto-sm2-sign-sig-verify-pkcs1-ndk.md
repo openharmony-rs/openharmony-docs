@@ -1,4 +1,4 @@
-# 使用SM2密钥对签名验签 (C/C++)
+# 使用SM2密钥对签名验签(C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-对应的算法规格请查看[签名验签算法规格：SM2](crypto-sign-sig-verify-overview.md#sm2)。
+对应的算法规格请查看签名验签算法规格：SM2。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -15,15 +15,15 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
 
 ## 签名开发步骤
-1. 调用[OH_CryptoSign_Create/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_create)，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Sign实例，用于完成签名操作。
+1. 调用OH_CryptoSign_Create，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Sign实例，用于完成签名操作。
 
-2. 调用[OH_CryptoSign_Init/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_init)，使用私钥[OH_CryptoPrivKey/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoprivkey.md)初始化Sign实例。
+2. 调用OH_CryptoSign_Init，使用私钥OH_CryptoPrivKey初始化Sign实例。
 
-3. 调用[OH_CryptoSign_Update/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_update)，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。如果数据量较小，可以直接调用OH_CryptoSign_Final接口一次性传入。
+3. 调用OH_CryptoSign_Update，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。如果数据量较小，可以直接调用OH_CryptoSign_Final接口一次性传入。
 
-4. 调用[OH_CryptoSign_Final/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_final)，获取签名后的数据。
+4. 调用OH_CryptoSign_Final，获取签名后的数据。
 
-5. 调用[OH_CryptoSign_Destroy/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_destroy)等释放内存。
+5. 调用OH_CryptoSign_Destroy等释放内存。
 
 ```c++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -95,18 +95,32 @@ static OH_Crypto_ErrCode doSm2Test() {
 
 ## 验签开发步骤
 
-1. 调用[OH_CryptoVerify_Create/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_create)，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Verify实例，用于完成验签操作。
+1. 调用OH_CryptoVerify_Create，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Verify实例，用于完成验签操作。
 
-2. 调用[OH_CryptoVerify_Init/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_init)，使用公钥（OH_CryptoPubKey）初始化Verify实例。
+2. 调用OH_CryptoVerify_Init，使用公钥（OH_CryptoPubKey）初始化Verify实例。
 
-3. 调用[OH_CryptoVerify_Update/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_update)，传入待验证的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update，如果数据量较小，可以直接调用OH_CryptoVerify_Final接口一次性传入。
+3. 调用OH_CryptoVerify_Update，传入待验证的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update，如果数据量较小，可以直接调用OH_CryptoVerify_Final接口一次性传入。
 
-4. 调用[OH_CryptoVerify_Final/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_final)，对数据进行验签。
+4. 调用OH_CryptoVerify_Final，对数据进行验签。
 
 <!-- @[verify_signatures_with_sm2_key_pair_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/sm2_signature_verification.cpp) -->
 
 ``` C++
 #include "signing_signature_verification.h"
+
+static void CleanupSm2SignResources(OH_CryptoAsymKeyGenerator *keyCtx,
+    OH_CryptoKeyPair *keyPair, OH_CryptoVerify *verify)
+{
+    if (verify != nullptr) {
+        OH_CryptoVerify_Destroy(verify);
+    }
+    if (keyPair != nullptr) {
+        OH_CryptoKeyPair_Destroy(keyPair);
+    }
+    if (keyCtx != nullptr) {
+        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
+    }
+}
 
 bool DoTestSm2Signature()
 {
@@ -155,26 +169,16 @@ bool DoTestSm2Signature()
     // verify
     ret = OH_CryptoVerify_Create((const char *)"SM2_256|SM3", &verify);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoVerify_Destroy(verify);
-        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
+        CleanupSm2SignResources(keyCtx, keyPair, verify);
         return false;
     }
     ret = OH_CryptoVerify_Init(verify, pubKey);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoVerify_Destroy(verify);
-        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
+        CleanupSm2SignResources(keyCtx, keyPair, verify);
         return false;
     }
     bool res = OH_CryptoVerify_Final(verify, &msgBlob, &signBlob);
-    if (res != true) {
-        OH_CryptoVerify_Destroy(verify);
-        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-        return false;
-    }
-
-    OH_CryptoVerify_Destroy(verify);
-    OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-    OH_CryptoKeyPair_Destroy(keyPair);
+    CleanupSm2SignResources(keyCtx, keyPair, verify);
     return res;
 }
 ```

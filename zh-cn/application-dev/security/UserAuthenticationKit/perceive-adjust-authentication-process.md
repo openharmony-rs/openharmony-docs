@@ -9,13 +9,13 @@
 
 从API version 20开始，在应用发起身份认证时，可通过接口调整认证过程，以及感知认证过程。
 
-调整认证过程：应用发起认证时通过[AuthParam/apis-user-authentication-kit/js-apis-useriam-userauth.md#authparam10)参数的skipLockedBiometricAuth属性控制是否跳过已禁用的生物认证。
+调整认证过程：应用发起认证时通过AuthParam参数的skipLockedBiometricAuth属性控制是否跳过已禁用的生物认证。
 
-感知认证过程：通过[on('authTip')/apis-user-authentication-kit/js-apis-useriam-userauth.md#onauthtip20)接口注册回调来获取认证过程中控件的拉起和退出提示，以及认证过程中用户的每一次认证失败结果。正确的顺序为先通过on注册回调，再通过[start/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10)发起认证，start成功发起认证后on注册的回调才会收到信息。
+感知认证过程：通过on('authTip')接口注册回调来获取认证过程中控件的拉起和退出提示，以及认证过程中用户的每一次认证失败结果。正确的顺序为先通过on注册回调，再通过start发起认证，start成功发起认证后on注册的回调才会收到信息。
 
 ## 接口说明
 
-具体参数、返回值、错误码等描述，请参考对应的[@ohos.userIAM.userAuth (用户认证)/apis-user-authentication-kit/js-apis-useriam-userauth.md)。
+具体参数、返回值、错误码等描述，请参考对应的@ohos.userIAM.userAuth (用户认证)。
 
 | 接口名称 | 功能描述 | 
 | ------- | ------- |
@@ -25,15 +25,15 @@
 
 ## 开发步骤
 
-1. [申请权限](prerequisites.md#申请权限)：ohos.permission.ACCESS_BIOMETRIC。
+1. 申请权限：ohos.permission.ACCESS_BIOMETRIC。
 
-2. 指定用户认证相关参数[AuthParam/apis-user-authentication-kit/js-apis-useriam-userauth.md#authparam10)（包括挑战值、认证类型[UserAuthType/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthtype8)列表和认证等级[AuthTrustLevel/apis-user-authentication-kit/js-apis-useriam-userauth.md#authtrustlevel8)）、配置认证控件界面[WidgetParam/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10)，调用[getUserAuthInstance/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetuserauthinstance10)获取认证对象。
+2. 指定用户认证相关参数AuthParam（包括挑战值、认证类型UserAuthType列表和认证等级AuthTrustLevel）、配置认证控件界面WidgetParam，调用getUserAuthInstance获取认证对象。
 
-3. 调用[UserAuthInstance.on('authTip')/apis-user-authentication-kit/js-apis-useriam-userauth.md#onauthtip20)接口订阅身份认证过程中的提示信息。
+3. 调用UserAuthInstance.on('authTip')接口订阅身份认证过程中的提示信息。
 
-4. 调用[UserAuthInstance.start/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10)接口发起认证，通过[AuthTipCallback/apis-user-authentication-kit/js-apis-useriam-userauth.md#authtipcallback20)回调返回认证中间状态[AuthTipInfo/apis-user-authentication-kit/js-apis-useriam-userauth.md#authtipinfo20)。
+4. 调用UserAuthInstance.start接口发起认证，通过AuthTipCallback回调返回认证中间状态AuthTipInfo。
 
-5. 认证成功后，调用[UserAuthInstance.off('authTip')/apis-user-authentication-kit/js-apis-useriam-userauth.md#offauthtip20)接口取消订阅认证过程中的提示信息。
+5. 认证成功后，调用UserAuthInstance.off('authTip')接口取消订阅认证过程中的提示信息。
 
 以跳过禁用的生物认证，订阅认证信息为例：
 
@@ -92,4 +92,4 @@ perceiveAndAdjustAuthentication() {
 
 ## 示例代码
 
-  - [感知和调整认证过程](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [感知和调整认证过程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)

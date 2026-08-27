@@ -6,23 +6,23 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-对于基于[XComponent](../ui/napi-xcomponent-guidelines.md)进行Native开发的业务，可以请求独立的绘制帧率进行内容开发，如游戏、自绘制UI框架对接等场景。
+对于基于XComponent进行Native开发的业务，可以请求独立的绘制帧率进行内容开发，如游戏、自绘制UI框架对接等场景。
 
 ## 接口说明
 
 | 函数名称  | 说明     |
 |-----|--------|
-| OH_NativeXComponent_SetExpectedFrameRateRange (OH_NativeXComponent *component, OH_NativeXComponent_ExpectedRateRange *range) | 设置帧期望的帧率范围。 |
-| OH_NativeXComponent_RegisterOnFrameCallback (OH_NativeXComponent *component, OH_NativeXComponent_OnFrameCallback *callback) | 设置每帧回调函数，同时启动每帧回调。 |
-| OH_NativeXComponent_UnregisterOnFrameCallback (OH_NativeXComponent *component) | 取消注册的每帧回调函数，同时停止调用回调函数。 |
+| OH_NativeXComponent_SetExpectedFrameRateRange(OH_NativeXComponent* component, OH_NativeXComponent_ExpectedRateRange* range) | 设置期望的帧率范围。 |
+| OH_NativeXComponent_RegisterOnFrameCallback(OH_NativeXComponent* component, void (\*callback)(OH_NativeXComponent* component, uint64_t timestamp, uint64_t targetTimestamp)) | 设置每帧回调函数，同时启动每帧回调。 |
+| OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* component) | 取消注册的每帧回调函数，同时停止调用回调函数。 |
 
-详细的接口说明请参考[OH_NativeXComponent Native XComponent/apis-arkui/capi-oh-nativexcomponent-native-xcomponent.md)。
+详细的接口说明请参考OH_NativeXComponent Native XComponent。
 
 ## 开发步骤
 
    > **说明：**
    >
-   > 本范例是通过Drawing在Native侧实现图形的绘制，并将其呈现在NativeWindow上，具体可参考[使用Drawing实现图形绘制与显示](graphic-drawing-overview.md)。
+   > 本范例是通过Drawing在Native侧实现图形的绘制，并将其呈现在NativeWindow上，具体可参考使用Drawing实现图形绘制与显示。
 
 1. 添加开发依赖。
 

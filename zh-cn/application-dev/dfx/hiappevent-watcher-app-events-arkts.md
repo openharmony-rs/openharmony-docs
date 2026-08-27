@@ -11,7 +11,7 @@ HiAppEvent提供了事件订阅接口，用于获取应用的事件。
 
 ## 接口说明
 
-API接口使用说明，包括参数使用限制和具体取值范围。请参考[@ohos.hiviewdfx.hiAppEvent/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+API接口使用说明，包括参数使用限制和具体取值范围。请参考@ohos.hiviewdfx.hiAppEvent。
 
 **订阅接口功能介绍**：
 
@@ -26,7 +26,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 >
 > 如果选择在子线程中调用addWatcher，需要确保该子线程在整个接口使用周期内不会被销毁，以免影响接口的正常工作。
 >
-> 可参考[多线程并发概述](../arkts-utils/multi-thread-concurrency-overview.md)，以实现在子线程中调用接口。
+> 可参考多线程并发概述，以实现在子线程中调用接口。
 
 **打点接口功能介绍**：
 
@@ -39,7 +39,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 >
 > write接口涉及I/O操作，执行时间通常在毫秒级别。因此，开发者应根据实际业务需求，确定该接口是在主线程还是在子线程中调用。
 >
-> 可参考[多线程并发概述](../arkts-utils/multi-thread-concurrency-overview.md)，以实现在子线程中调用接口。
+> 可参考多线程并发概述，以实现在子线程中调用接口。
 
 ## 事件订阅开发指导
 
@@ -57,8 +57,8 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
    订阅崩溃事件，采用OnReceive类型观察者的订阅方式，观察者接收到事件后会立即触发OnReceive()回调。编辑“EntryAbility.ets”文件，定义OnReceive类型观察者相关方法：
 
-   <!-- @[AppEvent_Crash_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+   <!-- @[AppEvent_Crash_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
+   
    ``` TypeScript
    hiAppEvent.addWatcher({
      // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
@@ -171,7 +171,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
      .height('5%')
      .onClick(() => {
        // 在按钮点击函数中进行事件打点，以记录按钮点击事件
-       let eventParams: Record<string, number> = {'clickTime': 100};
+       let eventParams: Record<string, number> = { 'clickTime': 100 };
        let eventInfo: hiAppEvent.AppEventInfo = {
          // 事件领域定义
          domain: 'button',
@@ -185,7 +185,8 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
        hiAppEvent.write(eventInfo).then(() => {
          hilog.info(0x0000, 'testTag', `AppEvents writeEvent ArkTS success`);
        }).catch((err: BusinessError) => {
-         hilog.error(0x0000, 'testTag', `AppEvents HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
+         hilog.error(0x0000, 'testTag',
+           `AppEvents HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
        });
      })
    ```

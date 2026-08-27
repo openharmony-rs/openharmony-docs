@@ -6,9 +6,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了判断对象是否为可被观察对象和获取对象关联的组件信息，开发者可以使用[canBeObserved/apis-arkui/js-apis-stateManagement.md#canbeobserved23)。
+为了判断对象是否为可被观察对象和获取对象关联的组件信息，开发者可以使用canBeObserved。
 
-在使用该接口前，建议开发者对状态管理框架有基本的了解。提前阅读：[状态管理概述](./arkts-state-management-overview.md)。
+在使用该接口前，建议开发者对状态管理框架有基本的了解。提前阅读：状态管理概述。
 
 >**说明：**
 >
@@ -16,7 +16,7 @@
 
 ## 概述
 
-在开发和调试过程中，开发者会遇到修改对象的值后UI页面不刷新的问题（详见[状态管理常见问题](./arkts-state-management-faq.md)），在复杂业务中排查此类问题尤为不便。为此，提供了canBeObserved接口帮助开发者定位和分析问题。开发者使用该接口不仅可以判断对象是否为可被观察的对象，还能获取对象关联的组件信息。
+在开发和调试过程中，开发者会遇到修改对象的值后UI页面不刷新的问题（详见状态管理常见问题），在复杂业务中排查此类问题尤为不便。为此，提供了canBeObserved接口帮助开发者定位和分析问题。开发者使用该接口不仅可以判断对象是否为可被观察的对象，还能获取对象关联的组件信息。
 
 使用canBeObserved接口需要导入UIUtils工具。
 
@@ -44,15 +44,15 @@ let result: ObservedResult = UIUtils.canBeObserved(new User()); // 正确用法
 
 ## 对象可被观察场景
 
-可被观察对象调用canBeObserved接口，返回的[ObservedResult/apis-arkui/js-apis-stateManagement.md#observedresult23)结果对象中`reason`的值包含以下情况：
+可被观察对象调用canBeObserved接口，返回的ObservedResult结果对象中`reason`的值包含以下情况：
 
 | reason值 | 说明 |
 | ---- | ---- |
-| The object data is decorated with @Observed or wrapped by makeV1Observed | 对象被[@Observed](./arkts-observed-and-objectlink.md)装饰器装饰或对象是使用[makeV1Observed/apis-arkui/js-apis-stateManagement.md#makev1observed19)方法包装得到的，详见[V1组件对象可被观察场景](#v1组件对象可被观察场景) 。|
-| The object data is decorated with V2 @ObservedV2 and @Trace | 对象和对象属性被[@ObservedV2和@Trace](./arkts-new-observedV2-and-trace.md)装饰器装饰，详见[V2组件对象可被观察场景](#v2组件对象可被观察场景) 。|
-| The object data is wrapped by V2's makeObserved | 对象是使用[makeObserved/apis-arkui/js-apis-stateManagement.md#makeobserved)方法包装得到的，详见[V2组件对象可被观察场景](#v2组件对象可被观察场景) 。|
-| The object data is built-in type proxy data (Array/Map/Set/Date) decorated with @Trace | Array、Set、Map、Date类型数据对象被状态管理V2装饰器装饰或作为对象属性被[@Trace](./arkts-new-observedV2-and-trace.md)装饰器装饰，详见[V2组件对象可被观察场景](#v2组件对象可被观察场景) 。 |
-| The V1 Observed object data is wrapped by enableV2Compatibility and used in @ComponentV2 | V1组件和V2组件混用时，对象是使用[enableV2Compatibility](./arkts-v1-v2-mixusage.md#enablev2compatibility)方法包装得到的，详见[V1组件和V2组件混用对象可被观察场景](#v1组件和v2组件混用对象可被观察场景) 。|
+| The object data is decorated with @Observed or wrapped by makeV1Observed | 对象被@Observed装饰器装饰或对象是使用makeV1Observed方法包装得到的，详见V1组件对象可被观察场景 。|
+| The object data is decorated with V2 @ObservedV2 and @Trace | 对象和对象属性被@ObservedV2和@Trace装饰器装饰，详见V2组件对象可被观察场景 。|
+| The object data is wrapped by V2's makeObserved | 对象是使用makeObserved方法包装得到的，详见V2组件对象可被观察场景 。|
+| The object data is built-in type proxy data (Array/Map/Set/Date) decorated with @Trace | 被@Trace装饰器装饰的Array、Map、Set、Date等内置类型的代理数据，详见V2组件对象可被观察场景。 |
+| The V1 Observed object data is wrapped by enableV2Compatibility and used in @ComponentV2 | V1组件和V2组件混用时，V1的可被观察对象使用enableV2Compatibility方法包装并在@ComponentV2中使用，详见V1组件和V2组件混用对象可被观察场景 。|
 
 需要注意，上述情况`reason`的值结尾如果有`but not used in UI`或`but not used in @ComponentV2`则表示：对象虽然是可被观察的，但是没有被UI组件所使用，因此改变对象值的时候也无法刷新UI。
 
@@ -60,12 +60,12 @@ let result: ObservedResult = UIUtils.canBeObserved(new User()); // 正确用法
 
 在V1组件中，可被观察对象场景如下：
 - 组件内被状态管理V1装饰器装饰的对象（包括Array、Set、Map、Date类型数据对象）。
-- 被[@Observed](./arkts-observed-and-objectlink.md)装饰器装饰的对象。
-- 使用[makeV1Observed/apis-arkui/js-apis-stateManagement.md#makev1observed19)方法包装的对象。
+- 被@Observed装饰器装饰的对象。
+- 使用makeV1Observed方法包装的对象。
 
-其中状态管理V1装饰器指的是：[@State](./arkts-state.md)、[@Prop](./arkts-prop.md)、[@Link](./arkts-link.md)、[@ObjectLink](./arkts-observed-and-objectlink.md)、[@StorageLink](./arkts-appstorage.md#storagelink)、[@StorageProp](./arkts-appstorage.md#storageprop)、[@LocalStorageLink](./arkts-localstorage.md#localstoragelink)、[@LocalStorageProp](./arkts-localstorage.md#localstorageprop)、[@Provide](./arkts-provide-and-consume.md)、[@Consume](./arkts-provide-and-consume.md)。
+其中状态管理V1装饰器指的是：@State、@Prop、@Link、@ObjectLink、@StorageLink、@StorageProp、@LocalStorageLink、@LocalStorageProp、@Provide、@Consume。
 
-被[@Observed](./arkts-observed-and-objectlink.md)装饰的对象和使用[makeV1Observed/apis-arkui/js-apis-stateManagement.md#makev1observed19)包装的对象，如果在组件内没有状态管理V1装饰器装饰，调用canBeObserved接口返回结果如下：
+被@Observed装饰的对象和使用makeV1Observed包装的对象，如果在组件内没有状态管理V1装饰器装饰，调用canBeObserved接口返回结果如下：
 
 ``` json5
 {
@@ -81,7 +81,7 @@ let result: ObservedResult = UIUtils.canBeObserved(new User()); // 正确用法
 
 **组件内被状态管理V1装饰器装饰的对象**
 
-以下介绍组件中使用[@State](./arkts-state.md)装饰器装饰对象，使其变成可被观察对象的使用场景。
+以下介绍组件中使用@State装饰器装饰对象，使其变成可被观察对象的使用场景。
 
 示例代码：
 
@@ -169,7 +169,7 @@ struct V1State {
 
 **被@Observed装饰器装饰的对象**
 
-以下介绍对象使用[@Observed](./arkts-observed-and-objectlink.md)装饰器装饰，且对象属性使用[@Track](./arkts-track.md)装饰器装饰的使用场景。
+以下介绍对象使用@Observed装饰器装饰，且对象属性使用@Track装饰器装饰的使用场景。
 
 示例代码：
 
@@ -235,7 +235,7 @@ struct TrackChild {
 }
 ```
 
-对象属性使用[@Track](./arkts-track.md)装饰器时，其装饰器信息的收集规格与V2组件装饰器收集规格一致，可参考[V2组件对象可被观察场景](#v2组件对象可被观察场景)。
+对象属性使用@Track装饰器时，其装饰器信息的收集规格与V2组件装饰器收集规格一致，可参考V2组件对象可被观察场景。
 
 返回结果：
 
@@ -249,7 +249,7 @@ struct TrackChild {
     "decoratorInfo": [{
         // 对象属性使用了@Track装饰时，装饰器名称固定为@Track
         "decoratorName": "@Track",
-        // 对象属性使用了@Track装饰时，stateVariableName表示被@Track装饰是的属性名称
+        // 对象属性使用了@Track装饰时，stateVariableName表示被@Track装饰的属性名称
         "stateVariableName": "name",
         // 对象属性使用了@Track装饰时，owningComponentOrClassName表示类的名称
         "owningComponentOrClassName": "TrackUser",
@@ -277,11 +277,11 @@ struct TrackChild {
 ### V2组件对象可被观察场景
 
 V2组件中，对象可被观察场景如下：
-- 被[@ObservedV2](./arkts-new-observedV2-and-trace.md)装饰器装饰的对象。
+- 被@ObservedV2装饰器装饰的对象。
 - 被状态管理V2装饰器装饰的Array、Set、Map、Date类型数据对象。
-- 使用[makeObserved/apis-arkui/js-apis-stateManagement.md#makeobserved)方法包装的对象。
+- 使用makeObserved方法包装的对象。
 
-其中状态管理V2装饰器指的是：[@Local](./arkts-new-local.md)、[@Param](./arkts-new-param.md)、[@Provider](./arkts-new-provider-and-consumer.md)、[@Consumer](./arkts-new-provider-and-consumer.md)。
+其中状态管理V2装饰器指的是：@Local、@Param、@Provider、@Consumer。
 
 V2组件收集装饰器的规格与V1组件不同，V2组件收集装饰器信息时，是按照对象的@Trace装饰的属性进行分类收集的。以下面的TestClass为例，@Trace将以属性为单位展示关联组件的信息：
 ``` TypeScript
@@ -339,7 +339,7 @@ class TestClass {
 
 **被@ObservedV2装饰器装饰的对象**
 
-以下介绍V2组件中使用[@ObservedV2](./arkts-new-observedV2-and-trace.md)装饰器装饰对象的使用场景。
+以下介绍V2组件中使用@ObservedV2装饰器装饰对象的使用场景。
 
 示例代码：
 
@@ -431,7 +431,7 @@ struct V2Local {
 
 ### V1组件和V2组件混用对象可被观察场景
 
-V1组件和V2组件混用的场景中，要使对象能在V1组件和V2组件保持同步刷新，则需要在V1组件中使用[enableV2Compatibility](./arkts-v1-v2-mixusage.md#enablev2compatibility)方法将V1组件的可被观察对象包装后传入V2组件。
+V1组件和V2组件混用的场景中，要使对象能在V1组件和V2组件保持同步刷新，则需要在V1组件中使用enableV2Compatibility方法将V1组件的可被观察对象包装后传入V2组件。
 
 代码示例：
 
@@ -556,11 +556,11 @@ export struct V2Child {
 
 ## 状态管理常见不刷新问题分析
 
-在[状态管理常见问题](./arkts-state-management-faq.md)的案例中介绍了常见的状态管理对象不刷新UI或者页面性能不达标的问题，以下介绍如何使用canBeObserved接口来帮助开发者分析和定位问题原因。
+在状态管理常见问题的案例中介绍了常见的状态管理对象不刷新UI或者页面性能不达标的问题，以下介绍如何使用canBeObserved接口来帮助开发者分析和定位问题原因。
 
 ### a.b(this.object)案例分析
 
-在[a.b(this.object)](./arkts-state-management-faq-inner-component.md#使用abthisobject形式调用不会触发ui刷新)案例的反例中，由于b的入参传入的是this.object的原始对象，原始对象是不可被观察的，所以导致UI无法刷新。开发者可以在修改属性前调用canBeObserved接口判断入参对象是否可被观察。
+在a.b(this.object)案例的反例中，由于b的入参传入的是this.object的原始对象，原始对象是不可被观察的，所以导致UI无法刷新。开发者可以在修改属性前调用canBeObserved接口判断入参对象是否可被观察。
 
 在反例中提供了两个修改对象属性的方法，在修改属性前先使用canBeObserved接口判断对象是否可被观察，代码如下：
 
@@ -618,7 +618,7 @@ reduceVolume(balloon: Balloon) {
 }
 ```
 
-两个方法调用canBeObserved接口返回结果一样（如下所示），表示两个方法接收的入参都是都是可被观察对象，且被UI组件所使用，UI可以正常刷新。
+两个方法调用canBeObserved接口返回结果一样（如下所示），表示两个方法接收的入参都是可被观察对象，且被UI组件所使用，UI可以正常刷新。
 
 ``` json5
 {
@@ -639,7 +639,7 @@ reduceVolume(balloon: Balloon) {
 
 ### 状态变量关联的组件数过多导致性能下降案例分析
 
-在[状态变量关联的组件数过多导致性能下降](./arkts-state-management-faq-inner-component.md#状态变量关联的组件数过多导致性能下降)案例中提供了HiDumper工具来查看状态变量关联的组件，若组件关联过多，则页面性能下降。开发者也可以使用canBeObserved接口在业务代码中获取状态管理对象关联的组件，根据接口返回结果优化业务代码。
+在状态变量关联的组件数过多导致性能下降案例中提供了HiDumper工具来查看状态变量关联的组件，若组件关联过多，则页面性能下降。开发者也可以使用canBeObserved接口在业务代码中获取状态管理对象关联的组件，根据接口返回结果优化业务代码。
 
 在反例中通过`move`按钮修改`this.translateObj`对象的属性，可以在修改属性前先调用canBeObserved接口来获取对象关联的组件信息，代码如下：
 
@@ -740,7 +740,7 @@ Button('move')
 
 ### ForEach和对象数组结合使用导致UI不刷新案例分析
 
-在[ForEach和对象数组结合使用导致UI不刷新](./arkts-state-management-faq-inner-component.md#foreach和对象数组结合使用导致ui不刷新)案例中，使用canBeObserved接口获取判断对象是否是可被观察的。
+在ForEach和对象数组结合使用导致UI不刷新案例中，使用canBeObserved接口获取判断对象是否是可被观察的。
 
 在反例的`onClick`方法中，修改对象属性前先调用canBeObserved接口判断`this.styleList[i]`对象是否可被观察，代码如下：
 
@@ -760,7 +760,7 @@ Text('Font Size List')
   })
 ```
 
-返回结果如下，虽然`this.styleList[i]`（也就是`TextStyles`对象）被[@Observed](./arkts-observed-and-objectlink.md)装饰器装饰，是可被观察的，但没有被UI组件所使用，所以UI组件不刷新。
+返回结果如下，虽然`this.styleList[i]`（也就是`TextStyles`对象）被@Observed装饰器装饰，是可被观察的，但没有被UI组件所使用，所以UI组件不刷新。
 
 ``` json5
 {
@@ -812,7 +812,7 @@ Text('Font Size List')
 
 ### 数据重置导致UI不刷新使用场景
 
-在[数据重置导致UI不刷新使用场景](./arkts-state-management-faq-inner-class.md#数据重置导致ui不刷新)案例中，使用canBeObserved接口定位UI不刷新原因。
+在数据重置导致UI不刷新使用场景案例中，使用canBeObserved接口定位UI不刷新原因。
 
 在反例的`X`按钮修改对象属性前先调用canBeObserved接口判断对象是否可被观察，代码如下：
 
@@ -886,7 +886,7 @@ Button('X')
             "elementId": 16
         }]
     }, 
-    ...
+    // ...
     // 以下结果省略
   ]
 }

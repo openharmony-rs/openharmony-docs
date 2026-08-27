@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-form是一个表单容器，支持容器内[Input/apis-arkui/arkui-js/js-components-basic-input.md)组件内容的提交和重置。具体用法请参考[form API/apis-arkui/arkui-js/js-components-container-form.md)。
+form是一个表单容器，支持容器内Input组件内容的提交和重置。具体用法请参考form API。
 
 
 ## 创建form组件
@@ -33,12 +33,12 @@ form是一个表单容器，支持容器内[Input/apis-arkui/arkui-js/js-compone
 }
 ```
 
-![zh-cn_image_0000001211069339](figures/zh-cn_image_0000001211069339.png)
+![form-Component](figures/form-Component.png)
 
 
 ## 实现表单缩放
 
-为form组件添加click-effect属性，实现点击表单后的缩放效果，click-effect枚举值请参考[通用属性/apis-arkui/arkui-js/js-components-common-attributes.md)。
+为form组件添加click-effect属性，实现点击表单后的缩放效果，click-effect枚举值请参考通用属性。
 ```html
 <!-- xxx.hml -->
 <div class="container">
@@ -52,7 +52,7 @@ form是一个表单容器，支持容器内[Input/apis-arkui/arkui-js/js-compone
 ## 设置form样式
 
 
-通过为form添加background-color和border属性，来设置表单的背景颜色和边框。
+通过为form添加border属性，来设置表单的边框。
 
 
 ```css
@@ -74,7 +74,7 @@ form是一个表单容器，支持容器内[Input/apis-arkui/arkui-js/js-compone
 ```
 
 
-![zh-cn_image_0000001208771113](figures/zh-cn_image_0000001208771113.gif)
+![Form-Style](figures/Form-Style.gif)
 
 
 ## 添加响应事件
@@ -138,14 +138,14 @@ export default{
 ```
 
 
-![zh-cn_image_0000001234329539](figures/zh-cn_image_0000001234329539.gif)
+![Response-Events](figures/Response-Events.gif)
 
 
 ## 场景示例
 
 在本场景中，开发者可以选择相应选项并提交或重置数据。
 
-创建[Input/apis-arkui/arkui-js/js-components-basic-input.md)组件，分别设置type属性为checkbox（多选框）和radio（单选框），再使用form组件的onsubmit和onreset事件实现表单数据的提交与重置。
+创建Input组件，分别设置type属性为checkbox（多选框）和radio（单选框），再使用form组件的onsubmit和onreset事件实现表单数据的提交与重置。
 
 ```html
 <!-- xxx.hml -->
@@ -218,4 +218,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001234289465](figures/zh-cn_image_0000001234289465.gif)
+![Example-Scenario-2](figures/Example-Scenario-2.gif)

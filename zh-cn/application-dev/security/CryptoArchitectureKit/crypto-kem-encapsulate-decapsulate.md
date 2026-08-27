@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从API版本26.0.0开始，支持ML-KEM算法的密钥封装解封装，对应的算法规格请查看[密钥封装解封装算法规格](#算法规格)。
+从API版本26.0.0开始，支持ML-KEM算法的密钥封装解封装，对应的算法规格请查看密钥封装解封装算法规格。
 
 ML-KEM（Module-Lattice-Based Key-Encapsulation Mechanism）是一种基于格的后量子密钥封装机制，用于在不安全的通道上安全地协商共享密钥。封装方使用公钥生成共享密钥和封装密钥，解封装方使用私钥和封装密钥恢复出相同的共享密钥。
 
@@ -23,19 +23,19 @@ ML-KEM（Module-Lattice-Based Key-Encapsulation Mechanism）是一种基于格�
 
 **封装**
 
-1. 调用[cryptoFramework.createAsyKeyGenerator/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)和[AsyKeyGenerator.generateKeyPair/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，生成密钥算法为ML-KEM的非对称密钥（KeyPair）。
+1. 调用cryptoFramework.createAsyKeyGenerator和AsyKeyGenerator.generateKeyPair，生成密钥算法为ML-KEM的非对称密钥（KeyPair）。
 
-2. 调用[cryptoFramework.createKem/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekem)，指定算法参数为KemAlgNameId.ML_KEM_768，创建Kem实例。
+2. 调用cryptoFramework.createKem，指定算法参数为KemAlgNameId.ML_KEM_768，创建Kem实例。
 
-3. 调用[Kem.encapsulate/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#encapsulate)，基于传入的公钥（KeyPair.pubKey）进行密钥封装，返回封装结果（[KemEncapResult/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#kemencapresult)）。
+3. 调用Kem.encapsulate，基于传入的公钥（KeyPair.pubKey）进行密钥封装，返回封装结果（KemEncapResult）。
 
-   [KemEncapResult/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#kemencapresult)包含sharedSecret（共享密钥）和wrappedKey（封装密钥）。封装方保留sharedSecret，将wrappedKey发送给解封装方。ikme参数传入null时，由算法库内部随机生成临时密钥。
+   KemEncapResult包含sharedSecret（共享密钥）和wrappedKey（封装密钥）。封装方保留sharedSecret，将wrappedKey发送给解封装方。ikme参数传入null时，由算法库内部随机生成临时密钥。
 
 **解封装**
 
-1. 调用[cryptoFramework.createKem/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekem)，指定算法参数为KemAlgNameId.ML_KEM_768，创建Kem实例。
+1. 调用cryptoFramework.createKem，指定算法参数为KemAlgNameId.ML_KEM_768，创建Kem实例。
 
-2. 调用[Kem.decapsulate/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#decapsulate)，基于传入的私钥（KeyPair.priKey）和封装密钥（wrappedKey）进行密钥解封装，返回共享密钥。
+2. 调用Kem.decapsulate，基于传入的私钥（KeyPair.priKey）和封装密钥（wrappedKey）进行密钥解封装，返回共享密钥。
 
    解封装得到的共享密钥应与封装时生成的sharedSecret一致。
 

@@ -36,7 +36,7 @@
 
 hilog -T xxx 按tag过滤;
 
-hilog –D xxx 按domain过滤;
+hilog -D xxx 按domain过滤;
 
 hilog -e 对日志内容匹配，支持正则式tag, domain, pid都支持多重过滤,组合过滤以及反向过滤。
 
@@ -54,7 +54,7 @@ hilog -e 对日志内容匹配，支持正则式tag, domain, pid都支持多重�
 
 console是对hilog日志系统的封装，其采用默认参数，主要用于应用开发调试阶段。
 
-推荐使用hilog，可以对日志系统进行分类和统一处理，具体参考文档：[hilog日志系统/apis-performance-analysis-kit/js-apis-hilog.md)
+推荐使用hilog，可以对日志系统进行分类和统一处理，具体参考文档：@ohos.hilog (HiLog日志打印)。
 
 hilog接口参数domain的取值范围0x0~0xFFFF，建议开发者在应用内根据需要自定义划分。
 
@@ -102,11 +102,11 @@ C++代码中hilog的格式参数类型为%d或者%s时，日志打印为何显�
 
 **解决措施**
 
-faultLogger：崩溃日志收集，参考文档：[故障日志获取/apis-performance-analysis-kit/js-apis-faultLogger.md)
+faultLogger：崩溃日志收集，参考文档：故障日志获取
 
-hichecker：问题检测，参考文档：[检测模式/apis-performance-analysis-kit/js-apis-hichecker.md)
+hichecker：问题检测，参考文档：检测模式
 
-hiTraceMeter：性能打点，参考文档：[性能打点/apis-performance-analysis-kit/js-apis-hitracemeter.md)
+hiTraceMeter：性能打点，参考文档：性能打点
 
 
 ## 如何控制日志输出(API 9)

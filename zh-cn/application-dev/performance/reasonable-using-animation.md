@@ -1,5 +1,12 @@
 # 合理使用动画
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 本文列举了部分用于优化动画时延的正反案例，帮助开发者在遇到相似场景时进行优化，解决构建页面动画时遇到动画时延较长的问题。
 
 ## 减少动画丢帧
@@ -98,7 +105,7 @@ struct AttrAnimationExample1 {
 
 ![img](./figures/reasonable-using-animation-2.png)
 
-更详细的API文档请参考：[属性动画/apis-arkui/arkui-ts/ts-animatorproperty.md)。
+更详细的API文档请参考：属性动画。
 
 ### 使用系统提供的显式动效API
 
@@ -149,7 +156,7 @@ struct AnimateToExample2 {
 
 ![img](./figures/reasonable-using-animation-3.png)
 
-更详细的API文档请参考：[显式动画/apis-arkui/arkui-ts/ts-explicit-animation.md)。
+更详细的API文档请参考：显式动画。
 
 ### 优化效果
 
@@ -173,6 +180,7 @@ Tabs组件在不为BottomTabBarStyle样式时，切换页面时默认加载300ms
 struct TabsExample {
   // ...
   private controller: TabsController = new TabsController();
+  @State currentIndex: number = 0;
 
   build() {
     Column() {
@@ -200,6 +208,7 @@ struct TabsExample {
 struct TabsExample {
   // ...
   private controller: TabsController = new TabsController();
+  @State currentIndex: number = 0;
 
   build() {
     Column() {
@@ -227,7 +236,7 @@ struct TabsExample {
 
 上述示例通过减少`animationDuration`数值，减少Tabs切换完成时延。当数值设置为0且TabBar不为BottomTabBarStyle样式时，隐式动效延时为默认的300ms。开发者可根据实际场景适当减少隐式动效时延，如果应用没有特殊的动效要求时，建议设置数值为1，减少阻塞主线程，提高应用性能。
 
-更详细的API文档请参考：[Tabs-animationduration/apis-arkui/arkui-ts/ts-container-tabs.md#animationduration)。
+更详细的API文档请参考：Tabs-animationduration。
 
 ## 合理设置动效时长
 

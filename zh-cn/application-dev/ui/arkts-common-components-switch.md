@@ -7,18 +7,18 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-Toggle组件提供状态按钮样式、勾选框样式和开关样式，一般用于两种状态之间的切换。具体用法请参考[Toggle/apis-arkui/arkui-ts/ts-basic-components-toggle.md)。
+Toggle组件提供状态按钮样式、勾选框样式和开关样式，一般用于两种状态之间的切换。具体用法请参考Toggle。
 
 
 ## 创建切换按钮
 
-Toggle通过调用[ToggleOptions/apis-arkui/arkui-ts/ts-basic-components-toggle.md#toggleoptions18对象说明)来创建，具体调用形式如下：
+Toggle通过调用ToggleOptions来创建，具体调用形式如下：
 
 ```ts
 Toggle(options: { type: ToggleType, isOn?: boolean })
 ```
 
-其中，ToggleType为开关类型，包括Button、Checkbox和Switch，isOn为切换按钮的状态。
+其中，ToggleType为切换类型，包括Button、Checkbox和Switch，isOn为切换按钮的状态。
 
 API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
@@ -36,7 +36,7 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
   Toggle({ type: ToggleType.Checkbox, isOn: true }).id('toggle2') // 请开发者替换为实际的id
   ```
 
-  ![zh-cn_image_0000001562940485](figures/zh-cn_image_0000001562940485.png)
+  ![switch-checkbox-default](figures/switch-checkbox-default.png)
   
   <!-- @[create_toggle_with_switch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
   
@@ -45,7 +45,7 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
   Toggle({ type: ToggleType.Switch, isOn: true }).id('toggle4') // 请开发者替换为实际的id
   ```
   
-    ![zh-cn_image_0000001511421228](figures/zh-cn_image_0000001511421228.png)
+    ![switch-create](figures/switch-create.png)
   
 - 创建包含子组件的Toggle。
 
@@ -67,7 +67,7 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
   }.width(100).id('toggle6') // 请开发者替换为实际的id
   ```
 
-    ![zh-cn_image_0000001511900404](figures/zh-cn_image_0000001511900404.png)
+    ![switch-checkbox](figures/switch-checkbox.png)
 
 
 ## 自定义样式
@@ -93,7 +93,7 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
       // ···
   ```
 
-  ![zh-cn_image_0000001563060657](figures/zh-cn_image_0000001563060657.png)
+  ![switch-style](figures/switch-style.png)
 
 - 通过switchPointColor属性设置Switch类型的圆形滑块颜色，仅对type为ToggleType.Switch生效。
 
@@ -108,12 +108,12 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
     // ···
   ```
 
-  ![zh-cn_image_0000001511421232](figures/zh-cn_image_0000001511421232.png)
+  ![switch-custom](figures/switch-custom.png)
 
 
 ## 添加事件
 
-除支持[通用事件/apis-arkui/arkui-ts/ts-component-general-events.md)外，Toggle还用于选中和取消选中后触发某些操作，可以绑定onChange事件来响应操作后的自定义行为。
+除支持通用事件外，Toggle还用于选中和取消选中后触发某些操作，可以绑定onChange事件来响应操作后的自定义行为。
 
 
 <!-- @[create_toggle_with_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->  
@@ -185,5 +185,5 @@ export struct ToggleSample {
 ```
 
 
-![zh-cn_image_0000001511740448](figures/zh-cn_image_0000001511740448.gif)
+![switch-example](figures/switch-example.gif)
   

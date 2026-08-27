@@ -3,7 +3,7 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -11,7 +11,7 @@
 本指南主要提供了基于串口通信协议（Serial Port Profile，SPP）实现设备间连接和传输数据的开发指导。当两个设备间进行SPP通信交互时，依据设备功能的不同，可区分为客户端与服务端，本指南将分别介绍客户端与服务端的实现方法。
 
 ## 实现原理
-客户端获取到服务端的设备地址后，即可向服务端特定的UUID发起连接。服务端设备地址可以通过查找设备流程获取，详见[查找设备](br-discovery-development-guide.md)。待两端连接成功后，可向服务端发送数据或者接收服务端的数据。
+客户端获取到服务端的设备地址后，即可向服务端特定的UUID发起连接。服务端设备地址可以通过查找设备流程获取，详见查找设备。待两端连接成功后，可向服务端发送数据或者接收服务端的数据。
 
 服务端需要支持客户端连接的UUID服务，保持连接状态监听即可。待两端连接成功后，即可接收客户端数据或者向客户端发送数据。
 
@@ -20,7 +20,7 @@
 ## 开发步骤
 
 ### 申请蓝牙权限
-需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，请参考[声明权限](../../security/AccessToken/declare-permissions.md)和[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，请参考声明权限和向用户申请授权。
 
 ### 导入所需API模块
 导入socket和错误码模块。
@@ -76,7 +76,7 @@ try {
 ```
 
 **2.2 接收数据**<br>
-待客户端和服务端连接建立成功后，即可接收服务端的数据。通过订阅读取数据接口[socket.on('sppRead')/apis-connectivity-kit/js-apis-bluetooth-socket.md#socketonsppread)实现。
+待客户端和服务端连接建立成功后，即可接收服务端的数据。通过订阅读取数据接口socket.on('sppRead')实现。
 ```ts
 let clientNumber = 1; // 注意：该值需要的是客户端发起连接时，异步callback获取到的客户端socket id，此处是伪代码id
 
@@ -182,7 +182,7 @@ try {
 ```
 
 **3.2 接收数据**<br>
-待服务端和客户端的连接建立成功后，即可接收客户端的数据。通过订阅读取数据接口[socket.on('sppRead')/apis-connectivity-kit/js-apis-bluetooth-socket.md#socketonsppread)实现。
+待服务端和客户端的连接建立成功后，即可接收客户端的数据。通过订阅读取数据接口socket.on('sppRead')实现。
 ```ts
 let clientNumber = 1; // 注意：该值需要的是服务端监听连接时，异步callback获取到的客户端socket id，此处是伪代码id
 

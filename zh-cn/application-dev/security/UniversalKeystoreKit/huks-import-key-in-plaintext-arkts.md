@@ -7,19 +7,19 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-分别以导入AES256、RSA2048和X25519密钥为例。具体的场景介绍及支持的算法规格，请参考[密钥导入支持的算法](huks-key-import-overview.md#支持的算法)。
+分别以导入AES256、RSA2048和X25519密钥为例。具体的场景介绍及支持的算法规格，请参考密钥导入支持的算法。
 
 ## 开发步骤
 
-1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
+1. 指定密钥别名，密钥别名命名规范参考密钥生成介绍及算法规格。
 
 2. 封装密钥属性集和密钥材料。
-   - 密钥属性集同样与密钥生成中指定的密钥属性一致，须包含[HuksKeyAlg/apis-universal-keystore-kit/js-apis-huks.md#hukskeyalg)、[HuksKeySize/apis-universal-keystore-kit/js-apis-huks.md#hukskeysize)、[HuksKeyPurpose/apis-universal-keystore-kit/js-apis-huks.md#hukskeypurpose)属性。
-   - 密钥材料须符合[HUKS密钥材料格式](huks-concepts.md#密钥材料格式)，并以Uint8Array形式赋值给[HuksOptions/apis-universal-keystore-kit/js-apis-huks.md#huksoptions)的inData字段。
+   - 密钥属性集同样与密钥生成中指定的密钥属性一致，须包含HuksKeyAlg、HuksKeySize、HuksKeyPurpose属性。
+   - 密钥材料须符合HUKS密钥材料格式，并以Uint8Array形式赋值给HuksOptions的inData字段。
 
-3. 调用[huks.importKeyItem/apis-universal-keystore-kit/js-apis-huks.md#huksimportkeyitem9)，传入密钥别名和密钥属性集，即可导入密钥。  
+3. 调用huks.importKeyItem，传入密钥别名和密钥属性集，即可导入密钥。  
 
-    HuksParam和HuksOptions的含义参考：[HuksParam/apis-universal-keystore-kit/js-apis-huks.md#huksparam) 和 [HuksOptions/apis-universal-keystore-kit/js-apis-huks.md#huksoptions)
+    HuksParam和HuksOptions的含义参考：HuksParam 和 HuksOptions
 
 
 ### 导入AES256密钥
@@ -261,7 +261,7 @@ async function testImport() {
 
 ## 调测验证
 
-调用[huks.isKeyItemExist/apis-universal-keystore-kit/js-apis-huks.md#huksiskeyitemexist9)验证密钥是否存在，如密钥存在即表示密钥导入成功。
+调用huks.isKeyItemExist验证密钥是否存在，如密钥存在即表示密钥导入成功。
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';

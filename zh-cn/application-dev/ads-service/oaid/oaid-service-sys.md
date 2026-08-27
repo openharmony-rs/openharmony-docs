@@ -16,12 +16,12 @@ OAID会在以下场景中发生变化：
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [resetOAID()/apis-ads-kit/js-apis-oaid-sys.md#identifierresetoaid):&nbsp;void | 重置OAID，此接口为系统接口。 |
+| resetOAID():&nbsp;void | 重置OAID，此接口为系统接口。 |
 
 
 ## 开发步骤
 
-1. 在模块的module.json5文件中，申请跨应用关联权限[ohos.permission.APP_TRACKING_CONSENT](../../security/AccessToken/permissions-for-all-user.md#ohospermissionapp_tracking_consent)。示例如下：
+1. 在模块的module.json5文件中，申请跨应用关联权限ohos.permission.APP_TRACKING_CONSENT。示例如下：
     ```ts
     {
       "module": {
@@ -40,7 +40,7 @@ OAID会在以下场景中发生变化：
       }
     }
     ```
-    应用启动时触发动态授权弹框，请求用户授权。获取context的方式参见[各类Context的获取方式](../../application-models/application-context-stage.md#context的获取方式)。示例代码如下：
+    应用启动时触发动态授权弹框，请求用户授权。获取context的方式参见各类Context的获取方式。示例代码如下：
     ```ts
     import { abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';

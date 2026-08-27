@@ -7,11 +7,11 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-从API 23开始，HUKS支持群组密钥功能。群组密钥支持的HUKS密钥操作及详细介绍参考[群组密钥介绍](huks-group-key-overview.md)，本文档以[AES/CBC/PKCS7加解密](#aescbcpkcs7加解密)、[X25519非对称密钥协商](#x25519非对称密钥协商)、[PBKDF2派生密钥](#pbkdf2派生密钥)为例展示群组密钥使用方法。
+从API 23开始，HUKS支持群组密钥功能。群组密钥支持的HUKS密钥操作及详细介绍参考群组密钥介绍，本文档以AES/CBC/PKCS7加解密、X25519非对称密钥协商、PBKDF2派生密钥为例展示群组密钥使用方法。
 
 **配置文件**
 
-使用群组密钥之前，需要在app.json5文件中配置群组信息，配置方法参考[配置文件示例](../../quick-start/app-configuration-file.md#配置文件示例)中assetAccessGroups字段的配置方式。
+使用群组密钥之前，需要在app.json5文件中配置群组信息，配置方法参考配置文件示例中assetAccessGroups字段的配置方式。
 
 ## AES/CBC/PKCS7加解密
 
@@ -19,13 +19,13 @@
 
 **生成密钥**
 
-1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
+1. 指定密钥别名，密钥别名命名规范参考密钥生成介绍及算法规格。
 
-2. 初始化密钥属性集。需要添加群组密钥标签[HUKS_TAG_KEY_ACCESS_GROUP/apis-universal-keystore-kit/js-apis-huks.md#hukstag)，推荐使用[HUKS_TAG_KEY_OVERRIDE/apis-universal-keystore-kit/js-apis-huks.md#hukstag)，避免密钥被覆盖。
+2. 初始化密钥属性集。需要添加群组密钥标签HUKS_TAG_KEY_ACCESS_GROUP，推荐使用HUKS_TAG_KEY_OVERRIDE，避免密钥被覆盖。
 
-3. 调用[generateKeyItem/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9)生成密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
+3. 调用generateKeyItem生成密钥，具体请参考密钥生成。
 
-除此之外，开发者也可以参考[密钥导入](huks-key-import-overview.md)，导入已有的密钥。
+除此之外，开发者也可以参考密钥导入，导入已有的密钥。
 
 **加密**
 
@@ -33,11 +33,11 @@
 
 2. 指定待加密的数据。
 
-3. 使用[HuksParam/apis-universal-keystore-kit/js-apis-huks.md#huksparam)设置加密算法参数配置。需要添加群组密钥标签[HUKS_TAG_KEY_ACCESS_GROUP/apis-universal-keystore-kit/js-apis-huks.md#hukstag)。
+3. 使用HuksParam设置加密算法参数配置。需要添加群组密钥标签HUKS_TAG_KEY_ACCESS_GROUP。
 
-4. 调用[initSession/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
+4. 调用initSession初始化密钥会话，并获取会话的句柄handle。
 
-5. 调用[finishSession/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束密钥会话，获取加密后的密文。
+5. 调用finishSession结束密钥会话，获取加密后的密文。
 
 **解密**
 
@@ -45,19 +45,19 @@
 
 2. 指定待解密的密文。
 
-3. 使用[HuksParam/apis-universal-keystore-kit/js-apis-huks.md#huksparam)设置解密算法参数配置。需要添加群组密钥标签[HUKS_TAG_KEY_ACCESS_GROUP/apis-universal-keystore-kit/js-apis-huks.md#hukstag)。
+3. 使用HuksParam设置解密算法参数配置。需要添加群组密钥标签HUKS_TAG_KEY_ACCESS_GROUP。
 
-4. 调用[initSession/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
+4. 调用initSession初始化密钥会话，并获取会话的句柄handle。
 
-5. 调用[finishSession/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束密钥会话，获取解密后的数据。
+5. 调用finishSession结束密钥会话，获取解密后的数据。
 
 **删除密钥**
 
 1. 指定密钥别名。
 
-2. 使用[HuksParam/apis-universal-keystore-kit/js-apis-huks.md#huksparam)设置密钥删除算法参数配置。需要添加群组密钥标签[HUKS_TAG_KEY_ACCESS_GROUP/apis-universal-keystore-kit/js-apis-huks.md#hukstag)。
+2. 使用HuksParam设置密钥删除算法参数配置。需要添加群组密钥标签HUKS_TAG_KEY_ACCESS_GROUP。
 
-3. 调用[deleteKeyItem/apis-universal-keystore-kit/js-apis-huks.md#huksdeletekeyitem9)删除密钥，具体请参考[密钥删除](huks-delete-key-arkts.md)。
+3. 调用deleteKeyItem删除密钥，具体请参考密钥删除。
 
 ### 开发示例
 
@@ -299,27 +299,27 @@ async function TestGroupKeyEncryptDecrypt() {
 
 **生成密钥**
 
-设备A、设备B各自生成一个非对称密钥，具体请参考[密钥生成](huks-key-generation-overview.md)或[密钥导入](huks-key-import-overview.md)。
+设备A、设备B各自生成一个非对称密钥，具体请参考密钥生成或密钥导入。
 
-密钥生成时，指定参数[HUKS_TAG_KEY_ACCESS_GROUP/apis-universal-keystore-kit/js-apis-huks.md#hukstag)，用于生成群组密钥。
+密钥生成时，指定参数HUKS_TAG_KEY_ACCESS_GROUP，用于生成群组密钥。
 
 **导出密钥**
 
-设备A、B导出非对称密钥对的公钥材料，具体请参考[密钥导出](huks-export-key-arkts.md)。
+设备A、B导出非对称密钥对的公钥材料，具体请参考密钥导出。
 
-导出密钥时，指定参数[HUKS_TAG_KEY_ACCESS_GROUP/apis-universal-keystore-kit/js-apis-huks.md#hukstag)，用于导出群组密钥。
+导出密钥时，指定参数HUKS_TAG_KEY_ACCESS_GROUP，用于导出群组密钥。
 
 **密钥协商**
 
 设备A、B分别基于本端私钥和对端设备的公钥，协商出共享密钥。
 
-密钥协商时，指定参数[HUKS_TAG_KEY_ACCESS_GROUP/apis-universal-keystore-kit/js-apis-huks.md#hukstag)，用于协商群组密钥。
+密钥协商时，指定参数HUKS_TAG_KEY_ACCESS_GROUP，用于协商群组密钥。
 
 **删除密钥**
 
-当密钥废弃不用时，设备A、B均需要删除密钥，具体请参考[密钥删除](huks-delete-key-arkts.md)。
+当密钥废弃不用时，设备A、B均需要删除密钥，具体请参考密钥删除。
 
-删除密钥时，指定参数[HUKS_TAG_KEY_ACCESS_GROUP/apis-universal-keystore-kit/js-apis-huks.md#hukstag)，用于删除群组密钥。
+删除密钥时，指定参数HUKS_TAG_KEY_ACCESS_GROUP，用于删除群组密钥。
 
 ### 开发示例
 
@@ -569,29 +569,29 @@ async function testAgree() {
 
 **生成密钥**
 
-1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
+1. 指定密钥别名，密钥别名命名规范参考密钥生成介绍及算法规格。
 
-2. 密钥生成时，指定参数[HUKS_TAG_KEY_ACCESS_GROUP/apis-universal-keystore-kit/js-apis-huks.md#hukstag)，用于生成群组密钥。
+2. 密钥生成时，指定参数HUKS_TAG_KEY_ACCESS_GROUP，用于生成群组密钥。
 
-3. 调用[generateKeyItem/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9)生成密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
+3. 调用generateKeyItem生成密钥，具体请参考密钥生成。
 
-除此之外，开发者也可以参考[密钥导入](huks-key-import-overview.md)，导入已有的密钥。
+除此之外，开发者也可以参考密钥导入，导入已有的密钥。
 
 **密钥派生**
 
-1. 获取密钥别名，指定对应的属性参数HuksOptions，添加参数[HUKS_TAG_KEY_ACCESS_GROUP/apis-universal-keystore-kit/js-apis-huks.md#hukstag)，用于派生群组密钥。
+1. 获取密钥别名，指定对应的属性参数HuksOptions，添加参数HUKS_TAG_KEY_ACCESS_GROUP，用于派生群组密钥。
 
-2. 调用[initSession/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
+2. 调用initSession初始化密钥会话，并获取会话的句柄handle。
 
-3. 调用[updateSession/apis-universal-keystore-kit/js-apis-huks.md#huksupdatesession9)更新密钥会话。
+3. 调用updateSession更新密钥会话。
 
-4. 调用[finishSession/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束密钥会话，完成派生。
+4. 调用finishSession结束密钥会话，完成派生。
 
 **删除密钥**
 
-当密钥废弃不用时，需要调用[deleteKeyItem/apis-universal-keystore-kit/js-apis-huks.md#huksdeletekeyitem9)删除密钥，具体请参考[密钥删除](huks-delete-key-arkts.md)。
+当密钥废弃不用时，需要调用deleteKeyItem删除密钥，具体请参考密钥删除。
 
-删除密钥时，指定参数[HUKS_TAG_KEY_ACCESS_GROUP/apis-universal-keystore-kit/js-apis-huks.md#hukstag)，用于删除群组密钥。
+删除密钥时，指定参数HUKS_TAG_KEY_ACCESS_GROUP，用于删除群组密钥。
 
 ### 开发示例
 

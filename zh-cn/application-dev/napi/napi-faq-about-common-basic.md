@@ -4,7 +4,7 @@
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 模块加载失败，报错信息显示`Error message: is not callable`.
 
@@ -31,30 +31,30 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule()
 - 排查建议：  
 1. 可根据以下文档进行排查：     
 
-   [ArkTS侧import xxx from libxxx.so后，使用xxx报错显示undefined/not callable或明确的Error message](napi-faq-about-common-basic.md#arkts侧报错显示undefined)  
+   ArkTS侧import xxx from libxxx.so后，使用xxx报错显示undefined/not callable或明确的Error message  
 
-   [模块注册与模块命名](napi-guidelines.md#模块注册与模块命名)  
+   模块注册与模块命名  
 
 2. 同时也可参考动态加载能力是否可以满足该场景：  
 
-   [napi_load_module_with_info支持的场景](use-napi-load-module-with-info.md#napi_load_module_with_info支持的场景)  
+   napi_load_module_with_info支持的场景  
 
-   [napi_load_module支持的场景](use-napi-load-module.md#napi_load_module支持的场景)  
+   napi_load_module支持的场景  
 
 ## 在大量需要调用ArkTS方法进行通信的场景中如何保证异步任务的有序性
 
 - 具体问题：在大量需要通过C++调用ArkTS方法进行通信的场景，如何保证异步任务的有序性？
 - 参考方案： 
 
-可参考线程安全函数来实现，napi_call_threadsafe_function可保证异步任务执行顺序, 需要注意的是这些异步任务会投递到ArkTS线程顺序执行，如果是投递到主线程，异步任务的执行时间过长可能导致应用冻结退出，所以不建议将长耗时的任务通过线程安全函数投递到主线程执行。   
+可参考线程安全函数来实现，napi_call_threadsafe_function可保证异步任务执行顺序，需要注意的是这些异步任务会投递到ArkTS线程顺序执行，如果是投递到主线程，异步任务的执行时间过长可能导致应用冻结退出，所以不建议将长耗时的任务通过线程安全函数投递到主线程执行。   
 
-[使用Node-API接口进行线程安全开发](use-napi-thread-safety.md)
+使用Node-API接口进行线程安全开发
 
 此外，Node-API中常见的抛任务方法的差异如下：
 
 1. napi_async_work系列接口只能保证execute_cb在complete_cb之前执行，但无法保证不同napi_async_work的时序。  
 
-   [napi_queue_async_work_with_qosnative-lib/napi.md#napi_queue_async_work_with_qos)是在普通napi_queue_async_work的基础上，支持自定义qos优先级，而这里只是指定libuv调度任务时使用线程的优先级，不是指任务的优先级，所以也无法保证任务的时序。   
+   napi_queue_async_work_with_qos是在普通napi_queue_async_work的基础上，支持自定义qos优先级，而这里只是指定libuv调度任务时使用线程的优先级，不是指任务的优先级，所以也无法保证任务的时序。   
 
 2. napi_threadsafe_function系列接口内部维护了一个队列，可以保证任务执行的顺序。 
 
@@ -62,7 +62,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule()
 
    napi_call_threadsafe_function_with_priority根据指定的入队方式执行。
 
-   [使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的任务](use-call-threadsafe-function-with-priority.md)
+   使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的任务
 
 
 ## 是否存在便捷的回调ArkTS的方式
@@ -73,9 +73,9 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule()
 
 可参考文档：  
 
-[Native侧子线程与UI主线程通信](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-native-sub-main-comm) 
+[Native侧子线程与UI主线程通信](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/native_subthread-to-uimain) 
 
-[使用Node-API接口进行异步任务开发](use-napi-asynchronous-task.md)   
+使用Node-API接口进行异步任务开发   
 
 ## 如何在C++代码中回调ArkTS方法
 
@@ -95,9 +95,9 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule()
 此外，还可以使用ArkTS数组作为数据载体，其具有良好的灵活性。    
 - 参考文档：   
 
-[使用Node-API接口进行object相关开发](use-napi-about-object.md)  
+使用Node-API接口进行object相关开发  
 
-[使用Node-API接口进行array相关开发](use-napi-about-array.md)    
+使用Node-API接口进行array相关开发    
 
 ## napi_get_uv_event_loop接口错误码说明
 
@@ -172,10 +172,10 @@ napi_value NapiGenericFailure(napi_env env, napi_callback_info)
 - 解决方案参考：  
 1. 使用napi_threadsafe_function系列的Node-API接口，这系列接口，相当于在C++线程抛任务回到ArkTS线程执行ArkTS方法  
 
-   [使用Node-API接口进行线程安全开发](use-napi-thread-safety.md)  
+   使用Node-API接口进行线程安全开发  
 2. 在C++线程创建出ArkTS运行环境  
 
-   [使用Node-API接口创建ArkTS运行时环境](use-napi-ark-runtime.md)   
+   使用Node-API接口创建ArkTS运行时环境   
 
 ## 是否有不拷贝的napi_get_value_string_utf8接口或者能力
 
@@ -184,7 +184,7 @@ napi_value NapiGenericFailure(napi_env env, napi_callback_info)
 
 不支持该功能，每次napi_get_value_string_utf8都需要有一个拷贝过程。
 
-拷贝是必要的，因为会涉及到string生命周期。当触发GC的时候，ArkTS对象可能会在虚拟机里面被搬移，可能搬移到其它地方，也可能直接对象被回收。如果直接返回类似char*的地址，对象被移动或回收后，原地址的指向的内存可能发生变化。  
+拷贝是必要的，因为会涉及到string生命周期。当触发GC的时候，ArkTS对象可能会在虚拟机里面被搬移，可能搬移到其它地方，也可能直接对象被回收。如果直接返回类似char*的地址，对象被移动或回收后，原地址指向的内存可能发生变化。  
 
 ## 多线程下napi_env的使用注意事项
 
@@ -291,7 +291,7 @@ ArkTS侧import xxx from libxxx.so后，使用xxx报错显示undefined/not callab
 
 ## Node-API接口返回值不是napi_ok时如何排查定位
 
-Node-API接口正常执行后，会返回一个napi_ok的状态枚举值，若Node-API接口返回值不为napi_ok，可先参考[Node-API接口返回状态码介绍](napi_status_introduction.md)。
+Node-API接口正常执行后，会返回一个napi_ok的状态枚举值，若Node-API接口返回值不为napi_ok，可先参考Node-API接口返回状态码介绍。
 
 以下是几个常见场景：
 
@@ -370,7 +370,7 @@ void FinalizeB(napi_env env, void* data, void* hint) {
 
 问题排查：  
 
-原因一：`napi_call_threadsafe_function`函数调用返回值不为`napi_ok`。请确认调用`napi_call_threadsafe_function`相关函数的返回值是否都是`napi_ok`，若不是，请根据[Node-API接口返回状态码介绍](napi_status_introduction.md)排查返回值非`napi_ok`的原因。  
+原因一：`napi_call_threadsafe_function`函数调用返回值不为`napi_ok`。请确认调用`napi_call_threadsafe_function`相关函数的返回值是否都是`napi_ok`，若不是，请根据Node-API接口返回状态码介绍排查返回值非`napi_ok`的原因。  
 
 原因二：env所在的ArkTS线程被阻塞。`napi_call_threadsafe_function`函数的回调将执行在env所在的ArkTS线程上，若ArkTS线程被阻塞，则线程安全函数回调不会被执行。
 

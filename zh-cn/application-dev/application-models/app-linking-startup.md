@@ -9,7 +9,7 @@
 
 ## 简介
 
-使用App Linking进行跳转时，系统会根据接口传入的uri信息（HTTPS链接）将用户引导至目标应用中的特定内容，无论应用是否已安装，用户都可以访问到链接对应的内容，整个跳转体验相比[Deep Linking](deep-linking-startup.md)方式更加顺畅。
+使用App Linking进行跳转时，系统会根据接口传入的uri信息（HTTPS链接）将用户引导至目标应用中的特定内容，无论应用是否已安装，用户都可以访问到链接对应的内容，整个跳转体验相比Deep Linking方式更加顺畅。
 
 
 ## 适用场景
@@ -36,7 +36,7 @@
 
 ### 声明应用关联的网站域名
 
-在应用的[module.json5配置文件](../quick-start/module-configuration-file.md)中进行如下配置，以声明应用关联的域名地址，并开启域名校验开关。
+在应用的module.json5配置文件中进行如下配置，以声明应用关联的域名地址，并开启域名校验开关。
 
 * "actions"列表中包含"ohos.want.action.viewData"。
 * "entities"列表中包含"entity.system.browsable"。
@@ -119,7 +119,7 @@
    }
    ```
 
-   `app-identifier`是在应用签名阶段为应用分配的唯一标识，即[HarmonyAppProvision配置文件](../security/app-provision-structure.md)中声明的`app-identifier`字段的值。
+   `app-identifier`是在应用签名阶段为应用分配的唯一标识，即HarmonyAppProvision配置文件中声明的`app-identifier`字段的值。
 
 1. 将配置文件放在域名服务器的固定目录下。
 
@@ -140,6 +140,10 @@
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { url } from '@kit.ArkTS';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN_NUMBER = 0xF811;
+const TAG  = '[AppLinkEntryAbility]';
 
 export default class AppLinkEntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -210,7 +214,7 @@ struct Index {
 ```
 
 
-在拉起方应用中执行上述代码，如果能够成功拉起目标应用，表明目标应的App Linking配置正确。
+在拉起方应用中执行上述代码，如果能够成功拉起目标应用，表明目标应用的App Linking配置正确。
 
 ## FAQ
 

@@ -9,9 +9,9 @@
 
 应用访问数据或执行操作时，需评估是否需要相关权限。如需权限，应在应用安装包中申请。
 
-每个权限的等级和[授权方式](app-permission-mgmt-overview.md#授权方式)不同，因此申请权限的方式也不同。申请权限前，开发者需要：
+每个权限的等级和授权方式不同，因此申请权限的方式也不同。申请权限前，开发者需要：
 
-1. 根据API接口中的“需要权限”或“@permission”字段，确认权限名称，通过[权限列表](app-permissions.md)页面检索确认权限类型。
+1. 根据API接口中的“需要权限”或“@permission”字段，确认权限名称，通过权限列表页面检索确认权限类型。
 2. 参考操作路径，申请相应的权限。
 
 根据目标权限的开放范围和授权方式，开发者可以参考以下操作路径申请权限。
@@ -20,10 +20,10 @@
 
 | 权限类型 | 授权方式 | 操作路径 |
 | -------- | -------- | -------- |
-| [开放权限（系统授权）](permissions-for-all.md) | system_grant | [声明权限](declare-permissions.md) &gt; 访问接口 | 
-| [开放权限（用户授权）](permissions-for-all-user.md) | user_grant  | [声明权限](declare-permissions.md) &gt; [向用户申请授权](request-user-authorization.md) &gt; 访问接口 | 
-| <!--Del-->[允许通过ACL申请的系统权限（系统授权）](permissions-for-system-apps.md)<br><!--DelEnd-->[受限开放权限（系统授权）](restricted-permissions.md) | system_grant | [申请使用受限权限](declare-permissions-in-acl.md) &gt; [声明权限](declare-permissions.md) &gt; 访问接口 | 
-| <!--Del-->[允许通过ACL申请的系统权限（用户授权）](permissions-for-system-apps-user.md)<br><!--DelEnd-->[受限开放权限（用户授权）](restricted-permissions.md) | user_grant | [申请使用受限权限](declare-permissions-in-acl.md) &gt; [声明权限](declare-permissions.md) &gt; [向用户申请授权](request-user-authorization.md) &gt; 访问接口 |
+| 开放权限（系统授权） | system_grant | 声明权限 &gt; 访问接口 | 
+| 开放权限（用户授权） | user_grant  | 声明权限 &gt; 向用户申请授权 &gt; 访问接口 | 
+| <!--Del-->允许通过ACL申请的系统权限（系统授权）<br><!--DelEnd-->受限开放权限（系统授权） | system_grant | 申请使用受限权限 &gt; 声明权限 &gt; 访问接口 | 
+| <!--Del-->允许通过ACL申请的系统权限（用户授权）<br><!--DelEnd-->受限开放权限（用户授权） | user_grant | 申请使用受限权限 &gt; 声明权限 &gt; 向用户申请授权 &gt; 访问接口 |
 
 <!--Del-->
 > **说明：**
@@ -35,12 +35,12 @@
 
 | 权限等级 | 授权方式 | ACL使能 | 操作路径 | 
 | -------- | -------- | -------- | -------- |
-| normal、system_basic | system_grant | - | [声明权限](declare-permissions.md) &gt; 访问接口 | 
-| normal、system_basic | user_grant | - | [声明权限](declare-permissions.md) &gt; [向用户申请授权](request-user-authorization.md) &gt; 访问接口 | 
-| system_core | system_grant | true | [申请使用受限权限](declare-permissions-in-acl.md) &gt; [声明权限](declare-permissions.md) &gt; 访问接口 | 
-| system_core | user_grant | true | [申请使用受限权限](declare-permissions-in-acl.md) &gt; [声明权限](declare-permissions.md) &gt; [向用户申请授权](request-user-authorization.md) &gt; 访问接口 | 
+| normal、system_basic | system_grant | - | 声明权限 &gt; 访问接口 | 
+| normal、system_basic | user_grant | - | 声明权限 &gt; 向用户申请授权 &gt; 访问接口 | 
+| system_core | system_grant | true | 申请使用受限权限 &gt; 声明权限 &gt; 访问接口 | 
+| system_core | user_grant | true | 申请使用受限权限 &gt; 声明权限 &gt; 向用户申请授权 &gt; 访问接口 | 
 
-如果应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件，即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsignedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
+如果应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件，即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
 
 **修改方式如下：**
 

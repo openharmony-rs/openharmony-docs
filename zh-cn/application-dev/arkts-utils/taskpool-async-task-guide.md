@@ -4,11 +4,11 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 TaskPool支持使用异步队列来控制任务的并发度，能有效避免资源过载，减少任务阻塞，适用于网络请求、视频流处理和数据库操作等场景。
 
-此处提供使用TaskPool创建[异步队列/apis-arkts/js-apis-taskpool.md#asyncrunner18)的开发指导，以相机预览流采集数据处理的功能为例。
+此处提供使用TaskPool创建异步队列的开发指导，以相机预览流采集数据处理的功能为例。
 
 由于处理过程是一个频繁且耗时的任务，当相机采集速度过快时，将丢弃之前的采集数据，仅保留最新的一帧数据进行处理。
 
@@ -42,7 +42,7 @@ TaskPool支持使用异步队列来控制任务的并发度，能有效避免资
 
 3. 创建异步队列并执行采集任务。
 
-   <!-- @[trigger_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/TaskpoolAsyncLevel.ets) -->
+   <!-- @[trigger_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/TaskpoolAsyncLevel.ets) --> 
    
    ``` TypeScript
    // TaskpoolAsyncLevel.ets
@@ -61,17 +61,21 @@ TaskPool支持使用异步队列来控制任务的并发度，能有效避免资
              .fontWeight(FontWeight.Bold)
              .onClick(async () => {
                // 创建并发度为5的异步队列，等待队列个数为5，当加入的任务数量超过5时，等待列表中处于队头的任务会被丢弃
-               let asyncRunner:taskpool.AsyncRunner = new taskpool.AsyncRunner('async', 5, 5);
+               let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner('async', 5, 5);
                // 触发采集任务
+               let promises: Promise<void>[] = [];
                for (let i = 0; i < 20; i++) {
-                 let task:taskpool.Task = new taskpool.Task(`async${i}`,collectFrame);
-                 asyncRunner.execute(task).then(() => {
+                 let task: taskpool.Task = new taskpool.Task(`async${i}`, collectFrame);
+                 let p: Promise<void> = asyncRunner.execute(task).then(() => {
                    console.info('the current task name is ' + task.name);
-                 }).catch((e:BusinessError) => {
+                 }).catch((e: BusinessError) => {
                    console.error('async: error is ' + e);
                  });
+                 promises.push(p);
                }
-               console.info('asyncRunner task finished');
+               // 等待所有任务完成后再执行后续语句
+               await Promise.allSettled(promises);
+               console.info('asyncRunner tasks submitted');
                this.returnMessage = 'asyncRunner task finished';
                this.promptAction.showToast({ message: this.returnMessage });
              })

@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-图片编码指将[Picture/apis-image-kit/arkts-apis-image-Picture.md)对象编码成不同格式的图片文件（当前仅支持编码为JPEG 和 HEIF 格式），用于后续处理，如保存、传输等。
+图片编码指将Picture对象编码成不同格式的图片文件（当前仅支持编码为JPEG 和 HEIF 格式），用于后续处理，如保存、传输等。
 
 ## 开发步骤
 
-图片编码相关API的详细介绍请参见[ImagePacker/apis-image-kit/arkts-apis-image-ImagePacker.md)。
+图片编码相关API的详细介绍请参见ImagePacker。
 
 1. 导入相关模块包。
    
@@ -25,7 +25,7 @@
    import { resourceManager } from '@kit.LocalizationKit';
    ```
 
-2. 设置编码选项[PackingOption/apis-image-kit/arkts-apis-image-i.md#packingoption)。
+2. 设置编码选项PackingOption。
    
    > **说明：**
    >
@@ -36,16 +36,17 @@
    ``` TypeScript
    let packOpts: image.PackingOption = {
      format: 'image/jpeg',
-     quality: 95,
+     // quality默认值为0，建议不低于80；本示例统一设置为90，兼顾图片质量和文件体积。
+     quality: 90,
      needsPackProperties: true
    };
    ```
 
-3. 封装函数，传入picture，使用[packing/apis-image-kit/arkts-apis-image-ImagePacker.md#packing13)接口编码到ArrayBuffer，或使用[packToFile/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11-2)接口编码到文件。
+3. 封装函数，传入picture，使用packing接口编码到ArrayBuffer，或使用packToFile接口编码到文件。
    
    > **说明：**
    >
-   > 在进行编码前，需要先通过解码获取picture，可参考[使用ImageSource完成多图对象解码](./image-picture-decoding.md)。
+   > 在进行编码前，需要先通过解码获取picture，可参考使用ImageSource完成多图对象解码。
    
    - picture编码到ArrayBuffer。
    

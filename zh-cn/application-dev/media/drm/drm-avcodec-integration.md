@@ -1,10 +1,12 @@
 # 基于AVCodec播放DRM节目(C/C++)
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
+
 ## 功能介绍
 
 开发者可以调用DRM Kit的Native API，完成DRM节目播放。
@@ -23,11 +25,11 @@
 
 **适用场景**
 
-在创建DRM之前，需获取到DRM信息(参考[媒体数据解析](../avcodec/audio-video-demuxer.md#开发步骤)开发步骤第4步)。
+在创建DRM之前，需获取到DRM信息(参考媒体数据解析开发步骤第4步)。
 
 ## 开发指导
 
-详细的API说明请参考[Drm/apis-drm-kit/capi-drm.md)。
+详细的API说明请参考Drm。
 
 参考以下示例代码，完成DRM的全流程，包括：获取设备支持的DRM解决方案的名称和唯一标识的列表、创建MediaKeySystem、创建MediaKeySession、生成媒体密钥请求、处理媒体密钥响应、获取是否需要安全视频解码以及销毁资源。
 
@@ -67,7 +69,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
     }
     ```
 
-    获取到设备支持的DRM解决方案的名称和唯一标识的列表后，与DRM信息做匹配，创建对应的DRM解决方案。DRM信息可通过[媒体数据解析](../avcodec/audio-video-demuxer.md#开发步骤)开发步骤第4步获取，
+    获取到设备支持的DRM解决方案的名称和唯一标识的列表后，与DRM信息做匹配，创建对应的DRM解决方案。DRM信息可通过媒体数据解析开发步骤第4步获取，
 
     或者直接解析媒体协议或媒体数据得到DRM解决方案唯一标识及pssh数据以生成DRM信息。
 
@@ -147,7 +149,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
     }
     ```
 
-    根据需要设置音频解密配置(详见[音频解码开发指南开发步骤](../avcodec/audio-decoding.md#开发步骤)第4步)、设置视频解密配置(详见[视频解码开发指南开发步骤Surface模式](../avcodec/video-decoding.md#surface模式)第4步或[Buffer模式](../avcodec/video-decoding.md#buffer模式)第4步)，实现DRM内容解密。
+    根据需要设置音频解密配置(详见音频解码开发指南开发步骤第4步)、设置视频解密配置(详见视频解码开发指南开发步骤Surface模式第4步或Buffer模式第4步)，实现DRM内容解密。
 
 7. 销毁MediaKeySession实例。
 

@@ -1,7 +1,7 @@
 # 创建并使用材质资源
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
@@ -19,13 +19,13 @@ ArkGraphics 3D支持开发者创建自定义的着色器，开发者可以通过
 着色器通常配合MaterialType.SHADER材质使用，是实现个性化渲染的重要手段。其创建依赖名称及沙箱路径，创建后可绑定至材质上，替代默认的渲染行为。
 
 ## 材质类型（MaterialType）
-ArkGraphics 3D中的材质类型通过[MaterialType/apis-arkgraphics3d/js-apis-inner-scene-resources.md#materialtype)枚举指定，目前支持以下两种类型：
+ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以下两种类型：
 
 - MaterialType.SHADER：基于Shader（着色器）的材质类型，支持绑定自定义着色器，开发者可通过自定义渲染程序实现个性化的视觉表现，适用于高级图形渲染需求。
 
 - MaterialType.METALLIC_ROUGHNESS：基于金属-粗糙度模型的标准PBR材质类型，符合glTF材质规范，适合快速构建真实感渲染效果，支持设置基础色、金属度、粗糙度、法线贴图等常见属性。
 
-材质的创建一般通过[SceneResourceFactory.createMaterial()/apis-arkgraphics3d/js-apis-inner-scene.md#creatematerial)方法完成，需指定材质名称和类型。不同类型的材质支持不同的参数配置，开发者可按需选择以实现预期的渲染效果。
+材质的创建一般通过SceneResourceFactory.createMaterial()方法完成，需指定材质名称和类型。不同类型的材质支持不同的参数配置，开发者可按需选择以实现预期的渲染效果。
 
 
 ## 材质的属性
@@ -35,7 +35,7 @@ ArkGraphics 3D中的材质类型通过[MaterialType/apis-arkgraphics3d/js-apis-i
 
 
 ### 通用属性
-所有材质均具备以下基础属性（如materialType、shadowReceiver、blend等）可通过设置[Material/apis-arkgraphics3d/js-apis-inner-scene-resources.md#material)类型对象实现，用于控制材质的类型及其渲染基础行为：
+所有材质均具备以下基础属性（如materialType、shadowReceiver、blend等）可通过设置Material类型对象实现，用于控制材质的类型及其渲染基础行为：
 
 - materialType：材质类型，标识该材质是标准PBR材质还是基于Shader的自定义材质。
 
@@ -49,7 +49,7 @@ ArkGraphics 3D中的材质类型通过[MaterialType/apis-arkgraphics3d/js-apis-i
 
   适用场景：普通实体模型一般开启剔除背面提升渲染效率；透明或双面材质（如树叶、布料）需要禁用剔除以显示完整模型。
 
-- blend：是否启用材质的透明效果模式。true表示开启透明，false表示关闭透明，默认值为false。
+- blend：材质的透明效果设置，默认值为undefined，即禁用材质的透明属性。
 
   适用场景：表现透明或半透明材质时开启，如玻璃、水面、烟雾、透明塑料等。
 
@@ -61,8 +61,12 @@ ArkGraphics 3D中的材质类型通过[MaterialType/apis-arkgraphics3d/js-apis-i
 
   适用场景：多重透明材质、叠加特效、UI元素等需要严格渲染顺序的场景。
 
+- polygonMode：模型的多边形绘制模式，默认值为FILL。
+
+  适用场景：以线框模式渲染3D物体的网格，可直观显示模型的建模结构。
+
 ### PBR材质属性
-符合glTF标准的基于物理渲染（PBR）的金属-粗糙度材质，通过设置[MetallicRoughnessMaterial/apis-arkgraphics3d/js-apis-inner-scene-resources.md#metallicroughnessmaterial20)实现，其中各项属性采用[MaterialProperty/apis-arkgraphics3d/js-apis-inner-scene-resources.md#materialproperty20)类型封装，支持绑定纹理和设置因子（factor）值。具体属性包括：
+符合glTF标准的基于物理渲染（PBR）的金属-粗糙度材质，通过设置MetallicRoughnessMaterial实现，其中各项属性采用MaterialProperty类型封装，支持绑定纹理和设置因子（factor）值。具体属性包括：
 
 - baseColor：基础颜色和透明度，包含纹理及对应因子，用于定义材质表面的主色调。
 
@@ -194,9 +198,9 @@ ArkGraphics 3D中的材质类型通过[MaterialType/apis-arkgraphics3d/js-apis-i
    }
    ```
 
-6. 创建并绑定Shader资源。
+6. 创建Shader资源。
 
-   通过SceneResourceFactory.createShader()创建自定义着色器资源，并将其绑定到Shader材质上，实现自定义渲染逻辑。
+   通过SceneResourceFactory.createShader()创建自定义着色器资源，创建的shader资源可在后续步骤中绑定到Shader材质上，实现自定义渲染逻辑。
 
    <!-- @[create_shader_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
@@ -227,9 +231,9 @@ ArkGraphics 3D中的材质类型通过[MaterialType/apis-arkgraphics3d/js-apis-i
    }
    ```
 
-7. 应用Shader材质到几何体节点。
+7. 将Shader材质绑定至几何体节点。
 
-   通过按钮点击事件调用不同的函数，可在运行时动态切换模型的材质，实现从默认材质到Shader材质的过渡效果。
+   将着色器资源绑定至Shader材质，再将Shader材质绑定至几何体节点，使用自定义渲染逻辑进行绘制。通过按钮点击事件可触发材质切换，实现运行时从默认材质到Shader材质的动态过渡。
 
    <!-- @[material_button_action](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
@@ -417,9 +421,9 @@ ArkGraphics 3D中的材质类型通过[MaterialType/apis-arkgraphics3d/js-apis-i
    }
    ```
 
-8. 切换粗糙度纹理。
+8. 切换清漆层粗糙度纹理。
 
-   类似于清漆层纹理切换，用户也可以在不同的粗糙度纹理之间切换。
+   类似于清漆层纹理切换，用户也可以在不同的清漆层粗糙度纹理之间切换。
 
    <!-- @[pbr_clearcoat_changeRoughnessTexture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
    

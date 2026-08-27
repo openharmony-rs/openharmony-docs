@@ -3,7 +3,7 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -13,7 +13,7 @@
 ## 开发步骤
 
 ### 申请蓝牙权限
-需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，请参考[声明权限](../../security/AccessToken/declare-permissions.md)和[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，请参考声明权限和向用户申请授权。
 
 ### 导入所需API模块
 导入ble和错误码模块。
@@ -25,7 +25,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ### BLE扫描流程
 
 **1. 订阅扫描结果上报事件**<br>
-- 推荐使用API version 15开始支持的扫描方式，该方式支持应用发起和管理多路扫描。该方式支持的上报事件请参考[on('BLEDeviceFind')/apis-connectivity-kit/js-apis-bluetooth-ble.md#onbledevicefind15)。
+- 推荐使用API version 15开始支持的扫描方式，该方式支持应用发起和管理多路扫描。该方式支持的上报事件请参考on('BLEDeviceFind')。
 ```ts
 // 定义扫描结果上报回调函数
 function onReceiveEvent(scanReport: ble.ScanReport) {
@@ -43,7 +43,7 @@ try {
 }
 ```
 
-- API version 14及以前支持的扫描方式只支持应用发起单路扫描。该方式支持的上报事件请参考[ble.on('BLEDeviceFind')/apis-connectivity-kit/js-apis-bluetooth-ble.md#bleonbledevicefind)。
+- API version 14及以前支持的扫描方式只支持应用发起单路扫描。该方式支持的上报事件请参考ble.on('BLEDeviceFind')。
 ```ts
 // 定义扫描结果上报回调函数
 function onReceiveEvent(data: Array<ble.ScanResult>) {
@@ -58,14 +58,14 @@ try {
 }
 ```
 
-- 如何解析扫描到的广播报文，具体可参考本章节[完整示例](#完整示例)。
+- 如何解析扫描到的广播报文，具体可参考本章节完整示例。
 
 **2. 发起扫描**<br>
 通过BLE扫描周边其他设备发出的BLE广播，可以发现或者查找到应用需要的目标设备，适用于查找设备场景。
 
-若本机设备扫描到可连接的BLE广播，则可以和该设备进行通用属性协议（Generic Attribute Profile，GATT）的连接和数据传输，此时本机设备角色也被称为GATT客户端。具体操作请参考[连接和传输数据](gatt-development-guide.md)。
+若本机设备扫描到可连接的BLE广播，则可以和该设备进行通用属性协议（Generic Attribute Profile，GATT）的连接和数据传输，此时本机设备角色也被称为GATT客户端。具体操作请参考连接和传输数据。
 
-- 推荐使用API version 15开始支持的扫描方式，该方式支持应用发起和管理多路扫描。可通过[createBleScanner/apis-connectivity-kit/js-apis-bluetooth-ble.md#blecreateblescanner15)创建扫描实例[BleScanner/apis-connectivity-kit/js-apis-bluetooth-ble.md#blescanner15)，并调用[startScan/apis-connectivity-kit/js-apis-bluetooth-ble.md#startscan15)。
+- 推荐使用API version 15开始支持的扫描方式，该方式支持应用发起和管理多路扫描。可通过createBleScanner创建扫描实例BleScanner，并调用startScan。
 ```ts
 // 创建ble扫描实例
 let bleScanner: ble.BleScanner = ble.createBleScanner();
@@ -96,7 +96,7 @@ try {
 }
 ```
 
-- API version 14及以前支持的扫描方式只支持应用发起单路扫描。若要再次发起扫描，必须先停止上一路的扫描流程。详情请见[ble.startBLEScan/apis-connectivity-kit/js-apis-bluetooth-ble.md#blestartblescan)。
+- API version 14及以前支持的扫描方式只支持应用发起单路扫描。若要再次发起扫描，必须先停止上一路的扫描流程。详情请见ble.startBLEScan。
 ```ts
 // 构造扫描BLE广播的过滤条件，目标BLE广播报文需符合该过滤条件
 let manufactureId = 4567;
@@ -126,7 +126,7 @@ try {
 **3. 停止扫描**<br>
 扫描流程会消耗蓝牙硬件资源和影响设备功耗。当应用不再需要该扫描时，需要主动停止。
 
-- 搭配API version 15开始支持的多路扫描方式。详情请见[stopScan/apis-connectivity-kit/js-apis-bluetooth-ble.md#stopscan15)。
+- 搭配API version 15开始支持的多路扫描方式。详情请见stopScan。
 ```ts
 // 定义扫描结果上报回调函数
 function onReceiveEvent(scanReport: ble.ScanReport) {
@@ -146,7 +146,7 @@ try {
 }
 ```
 
-- 搭配API version 14及以前支持的单路扫描方式。详情请见[ble.stopBLEScan/apis-connectivity-kit/js-apis-bluetooth-ble.md#blestopblescan)。
+- 搭配API version 14及以前支持的单路扫描方式。详情请见ble.stopBLEScan。
 ```ts
 // 定义扫描结果上报回调函数
 function onReceiveEvent(data: Array<ble.ScanResult>) {
@@ -166,7 +166,7 @@ try {
 ### BLE广播流程
 本机设备发送BLE广播后，可以实现被其他设备发现的功能。
 
-若本机设备发送的是可连接广播，则可以接受其他设备发起的通用属性协议（Generic Attribute Profile，GATT）连接，此时本机设备角色也被称为GATT服务端。具体操作请参考[连接和传输数据](gatt-development-guide.md)。
+若本机设备发送的是可连接广播，则可以接受其他设备发起的通用属性协议（Generic Attribute Profile，GATT）连接，此时本机设备角色也被称为GATT服务端。具体操作请参考连接和传输数据。
 
 推荐使用API version 11及以后开始支持的广播操作方式。
 
@@ -186,8 +186,8 @@ try {
 
 **2. 启动广播**<br>
 - 推荐使用API version 11开始支持的广播操作方式。支持在不释放相关广播资源情况下，多次操作启动或者停止指定标识的广播，且支持设置广播持续发送的时间。<br>
-相关API请参考[ble.startAdvertising/apis-connectivity-kit/js-apis-bluetooth-ble.md#blestartadvertising11)和[ble.enableAdvertising/apis-connectivity-kit/js-apis-bluetooth-ble.md#bleenableadvertising11)。<br>
-首次启动广播接口[ble.startAdvertising/apis-connectivity-kit/js-apis-bluetooth-ble.md#blestartadvertising11)会分配广播相关资源，从API version 15开始，该接口支持应用多次调用，实现启动多路广播的功能，并通过不同的广播标识进行管理。
+相关API请参考ble.startAdvertising和ble.enableAdvertising。<br>
+首次启动广播接口ble.startAdvertising会分配广播相关资源，从API version 15开始，该接口支持应用多次调用，实现启动多路广播的功能，并通过不同的广播标识进行管理。
 ```ts
 // 设置广播发送的参数
 let setting: ble.AdvertiseSetting = {
@@ -270,7 +270,7 @@ try {
 }
 ```
 
-- API version 10及以前支持的广播操作方式只支持应用启动单路广播。若要再次启动广播，必须先停止上一路的广播流程。详情请见[ble.startAdvertising/apis-connectivity-kit/js-apis-bluetooth-ble.md#blestartadvertising)。
+- API version 10及以前支持的广播操作方式只支持应用启动单路广播。若要再次启动广播，必须先停止上一路的广播流程。详情请见ble.startAdvertising。
 ```ts
 // 设置广播发送的参数
 let setting: ble.AdvertiseSetting = {
@@ -323,8 +323,8 @@ try {
 **3. 停止广播**<br>
 广播流程会消耗蓝牙硬件资源和影响设备功耗。当应用不再需要该广播时，需要主动停止。
 
-- 搭配API version 11开始支持的广播方式。相关API请参考[ble.disableAdvertising/apis-connectivity-kit/js-apis-bluetooth-ble.md#bledisableadvertising11)和[ble.stopAdvertising/apis-connectivity-kit/js-apis-bluetooth-ble.md#blestopadvertising11)。<br>
-完全停止广播接口[ble.stopAdvertising/apis-connectivity-kit/js-apis-bluetooth-ble.md#blestopadvertising11)会释放所有广播资源，因此首次启动广播分配的广播标识将无效。
+- 搭配API version 11开始支持的广播方式。相关API请参考ble.disableAdvertising和ble.stopAdvertising。<br>
+完全停止广播接口ble.stopAdvertising会释放所有广播资源，因此首次启动广播分配的广播标识将无效。
 ```ts
 let advHandle = 1; // 注意：该值是首次启动广播时获取到的广播标识，此处是伪代码ID
 
@@ -356,7 +356,7 @@ try {
 
 ```
 
-- 搭配API version 11及以前支持的单路广播方式。相关API请参考[ble.stopAdvertising/apis-connectivity-kit/js-apis-bluetooth-ble.md#blestopadvertising)。
+- 搭配API version 11及以前支持的单路广播方式。相关API请参考ble.stopAdvertising。
 ```ts
 try {
   // 停止
@@ -371,7 +371,7 @@ try {
 ### BLE扫描流程
 ```ts
 import { ble } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const TAG: string = 'BleScanManager';
 

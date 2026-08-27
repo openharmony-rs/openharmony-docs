@@ -1,7 +1,7 @@
 # ArkGraphics 3D场景搭建以及管理
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
@@ -11,7 +11,7 @@
 - 相机：为3D场景提供一个观察者。3D渲染本质上是从一个角度观察3D场景并投影到2D图片上。没有相机就没有3D场景的观察者，也就不会得到渲染结果。
 - 模型：3D场景中的模型用于描述对象的形状、结构和外观，一般具有网格、材质、纹理、动画等属性。一些常见的3D模型格式有OBJ、FBX、glTF等。
 
-模型加载后，可以通过ArkUI的[Component3D/apis-arkui/arkui-ts/ts-basic-components-component3d.md)渲染组件呈现给用户，Component3D负责将ArkGraphics 3D场景渲染到界面中。在自定义场景模式下，开发者可以使用ArkTS API创建并管理相机和光源节点，从而设置合适的观察角度和光照效果；在自动场景模式下，框架会根据模型自动创建基础相机和光照。ArkTS API可通过napi调用AGP中由C++实现的相应能力。
+模型加载后，可以通过ArkUI的Component3D渲染组件呈现给用户，Component3D负责将ArkGraphics 3D场景渲染到界面中。在自定义场景模式下，开发者可以使用ArkTS API创建并管理相机和光源节点，从而设置合适的观察角度和光照效果；在自动场景模式下，框架会根据模型自动创建基础相机和光照。ArkTS API可通过napi调用AGP中由C++实现的相应能力。
 
 ![3D场景显示流程](./figures/scene.PNG)
 
@@ -19,6 +19,13 @@
 模型的格式多种多样，目前ArkGraphics 3D仅支持glTF模型的加载，glTF是一种对于3D场景描述的格式，glTF作为一种开源3D场景格式在业界被广泛采用。关于glTF的介绍可以参照[glTF-2.0](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html)。
 
 一个glTF模型可以包含光源、相机、模型等3D场景关键要素，如果一个glTF模型中包含相机，使用ArkGraphics 3D提供的接口加载glTF就可以直接完成该相机视角下3D场景的渲染。如果不包含相机，也可以利用ArkGraphics 3D创建一个相机完成渲染。由于3D模型往往数据量很大，通常采用异步方式进行加载，加载成功后将返回一个scene对象，通过该对象可对整个3D场景进行编辑。
+
+glTF模型中引用的纹理图片支持以下格式：
+
+| 格式 | 支持情况 |
+|------|----------|
+| JPEG（.jpg/.jpeg） | 支持识别头部携带JFIF、Exif、ICC Profile标记的JPEG文件；<br>搭载OpenHarmony 7.0.0及以上版本的设备，新增支持识别头部包含DQT、XMP、MPF、Adobe标记的JPEG文件。 |
+| PNG（.png） | 支持标准PNG文件。 |
 
 1. 导入相关模块。
 
@@ -32,7 +39,7 @@
 
 2. 加载场景资源。
 
-   ArkGraphics 3D提供Scene.load()接口用于加载glTF模型文件，模型加载成功后会返回一个Scene实例，可通过它继续创建相机或光照等组件。模型文件支持.gltf与.glb格式，其中.glb为二进制封装形式，与.gltf内容等价但更便于加载与使用。模型加载支持相对路径和绝对路径两种方式：相对路径加载使用$rawfile()，从应用的resources/rawfile/目录读取内置资源文件；绝对路径加载需从应用沙箱目录读取文件，Scene.load()仅支持访问应用自身创建或写入的沙箱文件，具体示例可参见[load()/apis-arkgraphics3d/js-apis-inner-scene.md#load)。
+   ArkGraphics 3D提供Scene.load()接口用于加载glTF模型文件，模型加载成功后会返回一个Scene实例，可通过它继续创建相机或光照等组件。模型文件支持.gltf与.glb格式，其中.glb为二进制封装形式，与.gltf内容等价但更便于加载与使用。模型加载支持相对路径和绝对路径两种方式：相对路径加载使用$rawfile()，从应用的resources/rawfile/目录读取内置资源文件；绝对路径加载需从应用沙箱目录读取文件，Scene.load()仅支持访问应用自身创建或写入的沙箱文件，具体示例可参见load()。
 
    以下示例展示通过相对路径加载.glb模型：
 
@@ -230,7 +237,7 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
 
 3. 创建灯光并配置灯光参数。
 
-   调用 SceneResourceFactory.createLight()创建灯光，并配置灯光的类型、位置、颜色等参数。灯光类型决定了光线的方向，位置决定了光线的位置，颜色决定了光线的颜色。
+   调用SceneResourceFactory.createLight()创建灯光，并配置灯光的类型、位置、颜色等参数。
 
    <!-- @[light_create_and_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
    

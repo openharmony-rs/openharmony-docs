@@ -13,7 +13,7 @@
 
 例如：当设备1上的应用A在分布式数据库中增、删、改数据后，设备2上的应用A也可以获取到该数据库变化。可在分布式图库、备忘录、联系人、文件管理器等场景中使用。
 
-不同应用间订阅数据库变化通知，请参考[跨应用数据共享](data-share-overview.md)实现。
+不同应用间订阅数据库变化通知，请参考跨应用数据共享实现。
 
 根据跨设备同步数据生命周期的不同，可以分为：
 
@@ -42,10 +42,10 @@
 
 ## 跨设备同步访问控制机制
 
-数据跨设备同步时，数据管理基于设备等级和数据安全标签进行访问控制，具体可见[跨设备同步访问控制机制](access-control-by-device-and-data-level.md#跨设备同步访问控制机制)。
+数据跨设备同步时，数据管理基于设备等级和数据安全标签进行访问控制，具体可见跨设备同步访问控制机制。
 
 ## 相关实例
 
 针对分布式开发，有以下相关实例可供参考：
 
-- [分布式组网认证（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication)
+- [分布式组网认证（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/DistributedAppDev/DistributedAuthentication)

@@ -7,12 +7,12 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-hitrace命令行工具提供trace信息采集能力，支持采集系统提供的打点和开发者使用[HitraceMeter接口](hitracemeter-intro.md)在应用中设置的打点。该工具支持多种方式采集文本格式或二进制格式的trace信息，帮助开发者观测程序运行情况和定位故障问题。
+hitrace命令行工具提供trace信息采集能力，支持采集系统提供的打点和开发者使用HiTraceMeter接口在应用中设置的打点。该工具支持多种方式采集文本格式或二进制格式的trace信息，帮助开发者观测程序运行情况和定位故障问题。
 
 
 ## 环境要求
 
-- 根据hdc命令行工具指导，完成[hdc环境准备](hdc.md#环境准备)。
+- 根据hdc命令行工具指导，完成hdc环境准备。
 
 - 确保设备已正常连接，并执行hdc shell。
 
@@ -43,6 +43,7 @@ hitrace命令行工具提供trace信息采集能力，支持采集系统提供�
 | --stop_bgsrv | 关闭快照模式trace捕获。 |
 | --trace_level | 设置trace输出级别阈值，输出级别可以是Debug、Info、Critical、Commercial或其对应缩写D、I、C、M。<br/>**说明**：从API version 19开始，支持该命令。 |
 | --get_level | 查询trace输出级别阈值。<br/>**说明**：从API version 20开始，支持该命令。 |
+| <!--DelRow-->--boot_trace | 配置开机trace（Boot trace），在后续若干次启动过程中，依据预设参数自动采集并落盘一段trace数据，详见下文配置开机trace。<br/>须以root权限执行，且受开发者模式、可调试镜像等条件约束。<br/>**说明**：从API版本26.0.0开始，支持该命令。 |
 
 > **说明：**
 >
@@ -50,7 +51,6 @@ hitrace命令行工具提供trace信息采集能力，支持采集系统提供�
 
 
 ## 常用命令
-
 
 ### 查看帮助信息
 
@@ -122,7 +122,7 @@ hitrace -l
 | accessibility      | 用户态trace标签，无障碍软件服务管理器。                      |
 | ace                | 用户态trace标签，ArkUI跨平台引擎开发框架。                   |
 | animation          | 用户态trace标签，动画模块。                                  |
-| app                | 用户态trace标签，应用模块。通过[HiTraceMeter](hitracemeter-intro.md)接口做的trace打点属于app tag。 |
+| app                | 用户态trace标签，应用模块。通过HiTraceMeter接口做的trace打点属于app tag。 |
 | ark                | 用户态trace标签，Ark模块。                                   |
 | account            | 用户态trace标签，账户管理器。                                |
 | binder             | 内核态trace标签，binder通信内核信息。                        |
@@ -264,7 +264,7 @@ $ hitrace -t 10 -b 204800 app -o /data/local/tmp/test.ftrace
 
 ### 捕获指定时长二进制格式trace
 
-命令带--raw参数时可捕获二进制格式trace，捕获二进制格式trace时不支持指定路径，固定保存在路径/data/log/hitrace下。采集结束后，采集结束后生成文件的绝对路径会显示在命令行窗口。
+命令带--raw参数时可捕获二进制格式trace，捕获二进制格式trace时不支持指定路径，固定保存在路径/data/log/hitrace下。采集结束后生成文件的绝对路径会显示在命令行窗口。
 
 ```shell
 hitrace -t 10 -b 204800 app --raw
@@ -556,7 +556,7 @@ $ hitrace -z -b 102400 -t 10 sched freq idle disk -o /data/local/tmp/test.ftrace
 
 打点级别优先级从高到低分别为 M（Commercial）、C（Critical）、I（Info）、D（Debug），低于trace输出级别阈值的打点将不会生效。
 
-开发者可使用带trace级别的打点接口（参考[@ohos.hiTraceMeter/apis-performance-analysis-kit/js-apis-hitracemeter.md)和[trace.h/apis-performance-analysis-kit/capi-trace-h.md)中的API version 19的trace打点接口），测试不同阈值下的trace输出是否符合预期。
+开发者可使用带trace级别的打点接口（参考@ohos.hiTraceMeter和trace.h中的API version 19的trace打点接口），测试不同阈值下的trace输出是否符合预期。
 
 ```shell
 // 设置trace输出级别阈值
@@ -576,6 +576,75 @@ $ hitrace --get_level
 2025/08/16 10:34:29 hitrace enter, running_state is GET_TRACE_LEVEL
 2025/08/16 10:34:29 the current trace level threshold is Info
 ```
+
+
+<!--Del-->
+### 配置开机trace
+
+开机trace用于采集系统启动早期阶段（人工难以介入）的trace数据。开发者执行`hitrace --boot_trace`写入采集配置后，系统会在后续启动过程中由init自动拉起采集任务，并将二进制trace文件保存到`/data/local/tmp/`目录。
+
+使用开机trace需满足以下条件，可通过对应命令查询：
+
+| 需满足的条件 | 查询方法 | 满足条件的查询结果 |
+| -------- | -------- | -------- |
+| 已开启开发者模式。 | `param get const.security.developermode.state` | `true` |
+| 系统为可调试镜像。 | `param get const.debuggable` | `1` |
+| 具有root权限。 | `whoami` | `root` |
+| 启动子系统init部件的init trace插件未开启。 | `param get persist.init.trace.enabled` | 不为`1` |
+
+> **注意：**
+>
+> 开机trace采集期间会占用trace管线，可能影响其他trace采集操作。建议避免同时执行其他hitrace采集、导出或录制命令。
+
+命令格式如下：
+
+```shell
+hitrace --boot_trace [参数] tag1 [tag2 ...]
+hitrace --boot_trace off
+```
+
+`tag1 tag2 ...`为要采集的tag列表，至少指定一个；须为`hitrace -l`命令输出中的具体tag，不支持tag分组名。
+
+`off`为关闭开机trace功能；不会删除已有配置文件。再次执行配置命令时，将覆盖写入同一路径。
+
+常用参数如下：
+
+| 参数 | 说明 |
+| -------- | -------- |
+| -b N/--buffer_size N | 设置采集缓冲区大小，单位为KB。未指定时，默认值为18432。 |
+| -t N/--time N | 设置单次采集时长（单位为s），须大于0。未指定时，默认值为30。 |
+| --repeat N | 设置后续启动时自动采集的次数，取值范围为[1, 100]。每触发一次计划内采集，系统参数persist.hitrace.boot_trace.count减1，直至为0后不再自动采集。 |
+| --increment | 启用增量命名。启用后，输出文件名为`{file_prefix}_{n}.sys`，序号`n`从0开始；每次采集成功后序号加1。该选项须写在`--boot_trace`之后。 |
+| --file_prefix prefix | 设置输出文件名前缀，未指定时默认值为`boot_trace`。未启用`--increment`时，输出文件名为`{file_prefix}.sys`。 |
+
+配置成功后，将生成或覆盖配置文件`/data/local/tmp/boot_trace.cfg`。系统重启时，init进程会读取该配置文件并触发trace抓取，生成`.sys`文件。生成的`.sys`文件可使用[Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host)等工具进行分析。
+
+**使用样例1**：配置后续3次启动自动采集，采集tag为`sched`和`app`，单次时长20s：
+
+```shell
+$ hitrace --boot_trace --repeat 3 -t 20 sched app
+```
+
+**使用样例2**：启用增量命名并指定文件前缀：
+
+```shell
+$ hitrace --boot_trace --repeat 2 --increment --file_prefix boot_sched -t 15 sched
+```
+
+**使用样例3**：使用完毕后关闭开机trace功能：
+
+```shell
+$ hitrace --boot_trace off
+```
+
+推荐操作流程如下：
+
+1. 通过`hdc shell`进入设备shell，并切换至root权限。
+2. 执行`hitrace --boot_trace [参数] tag...`写入开机trace配置。
+3. 重启设备，并在`/data/local/tmp/`目录下检查是否生成预期的trace文件。建议等待配置的采集时长后再检查，确保采集与落盘已完成。
+4. 使用完毕后，执行`hitrace --boot_trace off`关闭开机trace功能。
+
+<!--DelEnd-->
 
 
 ## trace文件名说明

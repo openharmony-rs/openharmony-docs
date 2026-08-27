@@ -8,6 +8,10 @@
 
 Web组件提供了应用接管网页中媒体播放的能力，用来支持应用增强网页的媒体播放，如画质增强等。
 
+## 约束与限制
+
+受系统控件回调处理能力限制，单个Web组件实例内建议同时托管的本地播放器实例不超过6个。超出建议数量可能导致页面卡顿或者冻结，建议仅托管页面可见、正在播放的视频内容。
+
 ## 使用场景
 
 网页播放媒体时，存在以下问题：网页清晰度低、网页播放器播放控件功能有限、某些视频无法播放。
@@ -43,17 +47,17 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
   > **说明：**
   >
-  > - 上图中1的详细说明见[开启接管网页媒体播放](#开启接管网页媒体播放)。
-  > - 上图中2的详细说明见[创建本地播放器](#创建本地播放器nativemediaplayer)。
-  > - 上图中3的详细说明见[绘制本地播放器组件](#绘制本地播放器组件)。
-  > - 上图中4的详细说明见[执行ArkWeb内核发送给本地播放器的播控命令](#执行arkweb内核发送给本地播放器的播控命令)。
-  > - 上图中5的详细说明见[将本地播放器的状态信息通知给ArkWeb内核](#将本地播放器的状态信息通知给arkweb内核)。
+  > - 上图中1的详细说明见开启接管网页媒体播放。
+  > - 上图中2的详细说明见创建本地播放器。
+  > - 上图中3的详细说明见绘制本地播放器组件。
+  > - 上图中4的详细说明见执行ArkWeb内核发送给本地播放器的播控命令。
+  > - 上图中5的详细说明见将本地播放器的状态信息通知给ArkWeb内核。
 
 ## 开发指导
 
 ### 开启接管网页媒体播放
 
-需要先通过[enableNativeMediaPlayer/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativemediaplayer12)接口开启接管网页媒体播放的功能。
+需要先通过enableNativeMediaPlayer接口开启接管网页媒体播放的功能。
 
   ```ts
   // xxx.ets
@@ -75,7 +79,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 ### 创建本地播放器(NativeMediaPlayer)
 
-该功能开启后，网页中有媒体需要播放时，ArkWeb内核会触发[onCreateNativeMediaPlayer/apis-arkweb/arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)注册的回调函数。
+该功能开启后，网页中有媒体需要播放时，ArkWeb内核会触发onCreateNativeMediaPlayer注册的回调函数。
 
 应用则需要调用onCreateNativeMediaPlayer来注册一个创建本地播放器的回调函数。
 
@@ -84,7 +88,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
   * 如果应用不接管当前的网页媒体资源， 需在回调函数里返回null。
   * 如果应用接管当前的网页媒体资源， 需在回调函数里返回一个本地播放器实例。
 
-本地播放器需要实现[NativeMediaPlayerBridge/apis-arkweb/arkts-apis-webview-NativeMediaPlayerBridge.md)接口，以便ArkWeb内核对本地播放器进行播控操作。
+本地播放器需要实现NativeMediaPlayerBridge接口，以便ArkWeb内核对本地播放器进行播控操作。
 
   ```ts
   // xxx.ets
@@ -144,9 +148,9 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 应用接管网页媒体后，应用需要将本地播放器组件及视频画面绘制到ArkWeb内核提供的Surface上。ArkWeb内核再将Surface与网页进行合成并显示。
 
-该流程与[同层渲染](web-same-layer.md)绘制一致。
+该流程与同层渲染绘制一致。
 
-1. 在应用启动阶段，应用应保存[UIContext/apis-arkui/arkts-apis-uicontext-uicontext.md)，以便后续的同层渲染绘制流程能够使用该UIContext。
+1. 在应用启动阶段，应用应保存UIContext，以便后续的同层渲染绘制流程能够使用该UIContext。
 
    <!-- @[allow_subsequent_rendering_to_use_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
    
@@ -246,11 +250,11 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
    }
    ```
 
-动态创建组件并绘制到Surface上的详细介绍见[同层渲染](web-same-layer.md)。
+动态创建组件并绘制到Surface上的详细介绍见同层渲染。
 
 ### 执行ArkWeb内核发送给本地播放器的播控命令
 
-为了方便ArkWeb内核对本地播放器进行播控操作，应用需要令本地播放器实现[NativeMediaPlayerBridge/apis-arkweb/arkts-apis-webview-NativeMediaPlayerBridge.md)接口，并根据每个接口方法的功能对本地播放器进行相应操作。
+为了方便ArkWeb内核对本地播放器进行播控操作，应用需要令本地播放器实现NativeMediaPlayerBridge接口，并根据每个接口方法的功能对本地播放器进行相应操作。
 
   ```ts
   // xxx.ets
@@ -317,7 +321,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：视频的宽高、播放时间、缓存时间等），因此，应用需要将本地播放器的状态信息通知给ArkWeb内核。
 
-在[onCreateNativeMediaPlayer/apis-arkweb/arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)接口中， ArkWeb内核传递一个[NativeMediaPlayerHandler/apis-arkweb/arkts-apis-webview-NativeMediaPlayerHandler.md)对象给应用。应用需要通过该对象，将本地播放器的最新状态信息通知给ArkWeb内核。
+在onCreateNativeMediaPlayer接口中， ArkWeb内核传递一个NativeMediaPlayerHandler对象给应用。应用需要通过该对象，将本地播放器的最新状态信息通知给ArkWeb内核。
 
   ```ts
   // xxx.ets
@@ -469,7 +473,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
 
 ## 完整示例
 
-- 涉及网页媒体播放，需在配置文件中配置网络访问权限。添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
+- 涉及网页媒体播放，需在配置文件中配置网络访问权限。添加方法请参考在配置文件中声明权限。
 
   ```ts
   // src/main/module.json5
@@ -480,7 +484,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
     ]
   ```
 
-- 在应用启动阶段保存[UIContext/apis-arkui/arkts-apis-uicontext-uicontext.md)。
+- 在应用启动阶段保存UIContext。
 
   ```ts
   // xxxAbility.ets
@@ -509,7 +513,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
   }
   ```
 
-- 应用侧代码，视频托管使用示例。通过[AVPlayer](../media/media/media-kit-intro.md#avplayer)托管Web媒体的播放。
+- 应用侧代码，视频托管使用示例。通过AVPlayer托管Web媒体的播放。
 
   ```ts
   // Index.ets
@@ -967,7 +971,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
                 event.result?.setGestureEventResult(false);
                 return;
               }
-              // 将触摸事件传递给NodeContrloller
+              // 将触摸事件传递给NodeController
               let ret = native_player_info.node_controller.postTouchEvent(event.touchEvent);
               console.info(`WebComponent.postTouchEvent, ret[${ret}], touchEvent[${JSON.stringify(event.touchEvent)}]`);
               event.result?.setGestureEventResult(ret);
@@ -1258,7 +1262,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
   }
   ```
 
-- 前端页面示例。通过[AVPlayer](../media/media/media-kit-intro.md#avplayer)托管Web媒体的播放，支持的媒体资源可以参考AVPlayer[支持的格式与协议](../media/media/media-kit-intro.md#支持的格式与协议)。
+- 前端页面示例。通过AVPlayer托管Web媒体的播放，支持的媒体资源可以参考AVPlayer支持的格式与协议。
 
   ```html
   <!-- main.html -->

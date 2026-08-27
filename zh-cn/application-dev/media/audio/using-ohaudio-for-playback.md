@@ -8,17 +8,18 @@
 
 OHAudio是系统在API version 10中引入的一套C API，此API在设计上实现归一，同时支持普通音频通路和低时延通路。仅支持PCM格式，适用于依赖Native层实现音频输出功能的场景。
 
+当音频流处于工作状态（非released状态）时，会占用系统的音频流资源。由于系统对音频流数量有限制，所以当客户端暂时不使用音频流时，调用OH_AudioRenderer_Release()回收音频资源，做好资源利用，避免后续创建音频流失败。
+
 OHAudio音频播放状态变化示意图：
 
 ![OHAudioRenderer status change](figures/ohaudiorenderer-status-change.png)
 
-当音频流处于工作状态（非released状态）时，需要占用系统的音频流资源。由于系统对音频流数量有限制，所以当客户端暂时不使用音频流时，调用OH_AudioRenderer_Release()回收音频资源，做好资源利用，避免后续创建音频流失败。
 
 ## 使用入门
 
 开发者要使用OHAudio提供的播放能力，需要添加对应的头文件。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRendererSampleC)。
 
 ### 在 CMake 脚本中链接动态库
 
@@ -28,7 +29,7 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 
 ### 添加头文件
 
-开发者通过引入<[native_audiostreambuilder.h/apis-audio-kit/capi-native-audiostreambuilder-h.md)>和<[native_audiorenderer.h/apis-audio-kit/capi-native-audiorenderer-h.md)>头文件，使用音频播放相关API。
+开发者通过引入<native_audiostreambuilder.h>和<native_audiorenderer.h>头文件，使用音频播放相关API。
 
 <!-- @[Render_headFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
@@ -39,18 +40,18 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 
 ## 开发步骤
 
-详细的API说明请参考[OHAudio/apis-audio-kit/capi-ohaudio.md)。
+详细的API说明请参考OHAudio。
 
 ### 音频流构造器
 
-OHAudio提供OH_AudioStreamBuilder接口，遵循构造器设计模式，用于构建音频流。开发者需要根据业务场景，指定对应的[OH_AudioStream_Type/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_type)。
+OHAudio提供OH_AudioStreamBuilder接口，遵循构造器设计模式，用于构建音频流。开发者需要根据业务场景，指定对应的OH_AudioStream_Type。
 
 `OH_AudioStream_Type`包含两种类型：
 
 - AUDIOSTREAM_TYPE_RENDERER
 - AUDIOSTREAM_TYPE_CAPTURER
 
-使用[OH_AudioStreamBuilder_Create/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建构造器示例：
+使用OH_AudioStreamBuilder_Create创建构造器示例：
 
 <!-- @[Render_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
@@ -60,7 +61,7 @@ OH_AudioStreamBuilder* builder;
     OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_RENDERER);
 ```
 
-在音频业务结束之后，开发者应该执行[OH_AudioStreamBuilder_Destroy/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_destroy)接口来销毁构造器。
+在音频业务结束之后，开发者应该执行OH_AudioStreamBuilder_Destroy接口来销毁构造器。
 
 <!-- @[Render_Destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
@@ -84,7 +85,7 @@ OH_AudioStreamBuilder_Destroy(builder);
 
 2. 配置音频流参数。
 
-   关于音频采样率可参考[配置合适的音频采样率](using-audiorenderer-for-playback.md#配置合适的音频采样率)。<br>
+   关于音频采样率可参考配置合适的音频采样率。<br>
    创建音频播放构造器后，可以设置音频流所需要的参数，可以参考下面的案例。
 
    <!-- @[Render_ConfigStream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
@@ -105,13 +106,13 @@ OH_AudioStreamBuilder_Destroy(builder);
    OH_AudioStreamBuilder_SetRendererInfo(builder, AUDIOSTREAM_USAGE_MUSIC);
    ```
 
-   注意，播放的音频数据要通过回调接口写入，开发者要实现回调接口，从API version 12开始支持使用[OH_AudioStreamBuilder_SetRendererWriteDataCallback/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererwritedatacallback)设置数据回调函数。数据回调函数的声明请查看[OH_AudioRenderer_OnWriteDataCallback/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)。
+   注意，播放的音频数据要通过回调接口写入，开发者要实现回调接口，从API version 12开始支持使用OH_AudioStreamBuilder_SetRendererWriteDataCallback设置数据回调函数。数据回调函数的声明请查看OH_AudioRenderer_OnWriteDataCallback。
 
 3. 设置音频回调函数。
 
-   多音频并发处理可参考文档[处理音频焦点事件](audio-playback-concurrency.md)，仅接口语言差异。
+   多音频并发处理可参考文档处理音频焦点事件，仅接口语言差异。
 
-   - 从API version 12开始**推荐**使用[OH_AudioRenderer_OnWriteDataCallback/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)用于写入音频数据。
+   - 从API version 12开始**推荐**使用OH_AudioRenderer_OnWriteDataCallback用于写入音频数据。
 
      > **注意：**
      > 
@@ -121,7 +122,7 @@ OH_AudioStreamBuilder_Destroy(builder);
      > 
      > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
 
-    - 从API version 12开始可通过[OH_AudioStreamBuilder_SetFrameSizeInCallback/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback)设置audioDataSize的大小。
+    - 从API version 12开始可通过OH_AudioStreamBuilder_SetFrameSizeInCallback设置audioDataSize。
 
    <!-- @[Render_Callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
    
@@ -135,8 +136,8 @@ OH_AudioStreamBuilder_Destroy(builder);
    {
        // 将待播放的数据，按audioDataSize长度写入audioData。
        // 如果开发者不希望播放某段audioData，返回AUDIO_DATA_CALLBACK_RESULT_INVALID即可。
-       int32_t readCount = fread(audioData, audioDataSize, 1, g_fp);
-       if (readCount < 0) {
+       size_t readCount = fread(audioData, audioDataSize, 1, g_fp);
+       if (readCount == 0) {
            return AUDIO_DATA_CALLBACK_RESULT_INVALID;
        }
        if (feof(g_fp)) {
@@ -217,12 +218,13 @@ OH_AudioStreamBuilder_Destroy(builder);
 
 ### 设置音频流音量
 
-开发者可使用[OH_AudioRenderer_SetVolume/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setvolume)接口设置当前音频流音量值。
+开发者可使用OH_AudioRenderer_SetVolume接口设置当前音频流音量值。
 
-<!-- @[Render_SetVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+<!-- @[Render_SetVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->  
 
 ``` C++
-float volume = 0.5f;
+static float volume = 0.1f;
+volume = volume > 0.5f ? 0.1f : 0.8f;
 
 // 设置当前音频流音量值。
 OH_AudioRenderer_SetVolume(audioRenderer, volume);
@@ -232,28 +234,30 @@ OH_AudioRenderer_SetVolume(audioRenderer, volume);
 
 当设备支持低时延通路且采样率设置为48000Hz时，开发者可以使用低时延模式创建播放器，获得更高质量的音频体验。
 
-开发流程与普通播放（[实现音频播放](#实现音频播放)）场景一致，仅需要在步骤1创建音频流构造器时，调用[OH_AudioStreamBuilder_SetLatencyMode()/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode)设置低时延模式。
+开发流程与普通播放（实现音频播放）场景一致，仅需要在步骤1创建音频流构造器时，调用OH_AudioStreamBuilder_SetLatencyMode()设置低时延模式。
 
 > **注意：**
 >
-> - 当音频播放场景[OH_AudioStream_Usage/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage)为`AUDIOSTREAM_USAGE_VOICE_COMMUNICATION`和`AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION`时，不支持主动设置低时延模式，系统会根据设备的能力，决策输出的音频通路。
+> - 当音频播放场景OH_AudioStream_Usage为`AUDIOSTREAM_USAGE_VOICE_COMMUNICATION`和`AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION`时，不支持主动设置低时延模式，系统会根据设备的能力，决策输出的音频通路。
 > - 低时延通路对于数据处理性能要求较高，应用数据生成缓慢时容易导致卡顿。普通音乐、视频播放场景下不建议设置该模式，仅推荐游戏、K歌等对时延敏感的应用设置低时延模式。
 
-<!-- @[Render_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+<!-- @[Render_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->  
 
 ``` C++
-OH_AudioStreamBuilder_SetLatencyMode(builder, AUDIOSTREAM_LATENCY_MODE_FAST);
+OH_AudioStream_LatencyMode latencyMode = g_mode == 0 ? AUDIOSTREAM_LATENCY_MODE_NORMAL :
+    AUDIOSTREAM_LATENCY_MODE_FAST;
+OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ```
 
 ### 设置音频声道布局
 
 播放音频文件时，可以通过设置音频的声道布局信息，指定渲染或播放时的扬声器摆位，使得渲染和播放效果更佳，获得更高质量的音频体验。
 
-开发流程与普通播放（[实现音频播放](#实现音频播放)）场景一致，仅需要在步骤1创建音频流构造器时，调用[OH_AudioStreamBuilder_SetChannelLayout()/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setchannellayout)设置声道布局信息。
+开发流程与普通播放（实现音频播放）场景一致，仅需要在步骤1创建音频流构造器时，调用OH_AudioStreamBuilder_SetChannelLayout()设置声道布局信息。
 
 当声道布局与声道数不匹配时，创建音频流会失败。建议在设置声道布局时，确认下发的声道布局信息是否正确。
 
-如果不知道准确的声道布局信息，或者开发者需要使用默认声道布局，可以不调用设置声道布局接口，或者下发CH_LAYOUT_UNKNOWN，以使用基于声道数的默认声道布局。
+如果不知道准确的声道布局信息，或者开发者需要使用默认声道布局，可以不调用设置声道布局接口，或者设置为CH_LAYOUT_UNKNOWN，以使用基于声道数的默认声道布局。
 
 对于HOA（高阶立体环绕声）格式的音频，想要获得正确的渲染和播放效果，必须指定声道布局信息。
 
@@ -267,9 +271,9 @@ OH_AudioStreamBuilder_SetChannelLayout(builder, CH_LAYOUT_STEREO);
 
 播放Audio Vivid（菁彩三维声）格式音频文件时，需要使用与普通播放不同的数据写入回调函数，该回调可以同时写入PCM（脉冲编码调制）数据与元数据。
 
-开发流程与普通播放（[实现音频播放](#实现音频播放)）场景一致，仅需要在步骤1创建音频流构造器时，调用[OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback()/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setwritedatawithmetadatacallback)设置PCM数据与元数据同时写入的回调函数，同时调用[OH_AudioStreamBuilder_SetEncodingType()/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setencodingtype)设置编码类型为AUDIOSTREAM_ENCODING_TYPE_AUDIOVIVID。
+开发流程与普通播放（实现音频播放）场景一致，仅需要在步骤1创建音频流构造器时，调用OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback()设置PCM数据与元数据同时写入的回调函数，同时调用OH_AudioStreamBuilder_SetEncodingType()设置编码类型为AUDIOSTREAM_ENCODING_TYPE_AUDIOVIVID。
 
-在播放Audio Vivid时，帧长是固定的，不可通过[OH_AudioStreamBuilder_SetFrameSizeInCallback()/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback)设置回调帧长。同时，在设置播放声道数和声道布局时，需要将写入音源的声床数和对象数相加后进行设置。
+在播放Audio Vivid时，帧长是固定的，不可通过OH_AudioStreamBuilder_SetFrameSizeInCallback()设置回调帧长。同时，在设置播放声道数和声道布局时，需要将写入音源的声床数和对象数相加后进行设置。
 
 <!-- @[Render_SetWriteDataWithMetadataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
@@ -301,9 +305,9 @@ int32_t MyOnWriteDataWithMetadata_New(
 
 ## 注意事项
 
-从API version 12开始**不再推荐**使用[OH_AudioRenderer_Callbacks/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md)的方式设置音频回调函数。若必须使用，需要注意在设置音频回调函数时，通过下面两种方式中的任意一种来设置音频回调函数，避免不可预期的行为。
+从API version 12开始**不再推荐**使用OH_AudioRenderer_Callbacks的方式设置音频回调函数。若必须使用，需注意通过下面两种方式中的任意一种进行配置，避免不可预期的行为。
 
-- 方式1：请确保[OH_AudioRenderer_Callbacks/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md)的每一个回调都被**自定义的回调方法**或**空指针**初始化。
+- 方式1：请确保OH_AudioRenderer_Callbacks的每一个回调都被**自定义的回调方法**或**空指针**初始化。
 
   <!-- @[Render_CustomCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
   

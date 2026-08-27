@@ -10,7 +10,7 @@
 
 ## 获取相册管理模块实例
 
-应用需要通过上下文[Context](../../application-models/application-context-stage.md)和接口[getPhotoAccessHelper/apis-media-library-kit/arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)，获取相册管理模块实例，用于访问和修改相册中的媒体数据信息，如图片和视频。
+应用需要通过上下文Context和接口getPhotoAccessHelper，获取相册管理模块实例，用于访问和修改相册中的媒体数据信息，如图片和视频。
 
 **开发步骤**
 
@@ -45,7 +45,7 @@ struct Index {
 
 ## 申请相册管理模块功能相关权限
 
-相册管理模块的读写操作需要相应权限，在申请权限前，请保证符合[权限使用的基本原则](../../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。涉及的权限如下表。
+相册管理模块的读写操作需要相应权限，在申请权限前，请保证符合权限使用的基本原则。涉及的权限如下表。
 
 | 权限名                         | 说明                                       | 授权方式   |
 | ------------------------------ | ------------------------------------------ | ---------- |
@@ -53,13 +53,13 @@ struct Index {
 | ohos.permission.WRITE_IMAGEVIDEO    | 允许应用读写媒体库的图片和视频媒体文件信息。 | user_grant |
 | ohos.permission.MEDIA_LOCATION    | 允许应用访问用户媒体文件中的地理位置信息。 | user_grant |
 
-以上权限的授权方式均为user_grant（用户授权），即开发者在[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)中配置对应的权限后，需要使用接口[abilityAccessCtrl.requestPermissionsFromUser/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)去校验当前用户是否已授权。如果已授权，应用可以直接访问和修改目标对象；否则需要弹框向用户申请授权。
+以上权限的授权方式均为user_grant（用户授权），即开发者在module.json5配置文件中配置对应的权限后，需要使用接口abilityAccessCtrl.requestPermissionsFromUser去校验当前用户是否已授权。如果已授权，应用可以直接访问和修改目标对象；否则需要弹框向用户申请授权。
 
 **开发步骤**
 <!--RP1-->
-1. 上述权限ohos.permission.READ_IMAGEVIDEO和ohos.permission.WRITE_IMAGEVIDEO为受控权限，在使用前需要额外申请ACL白名单，详情请参考[声明ACL权限](../../security/AccessToken/declare-permissions-in-acl.md)。 
-2. [在配置文件module.json5中声明权限](../../security/AccessToken/declare-permissions.md)。
-3. [向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+1. 上述权限ohos.permission.READ_IMAGEVIDEO和ohos.permission.WRITE_IMAGEVIDEO为受控权限，在使用前需要额外申请ACL白名单，详情请参考声明ACL权限。 
+2. 在配置文件module.json5中声明权限。
+3. 向用户申请授权。
 <!--RP1End-->
 
 > **说明：**

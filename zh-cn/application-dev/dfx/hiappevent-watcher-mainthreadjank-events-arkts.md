@@ -2,14 +2,14 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的ArkTS接口订阅主线程超时事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+本文介绍如何使用HiAppEvent提供的ArkTS接口订阅主线程超时事件。接口的详细使用说明（参数限制、取值范围等）请参考@ohos.hiviewdfx.hiAppEvent。
 
 ## 接口说明
 
@@ -24,7 +24,7 @@
 
 以主线程超时事件订阅为例，说明开发步骤。
 
-1. 新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入依赖模块，示例代码如下：
+1. 在DevEco Studio中，新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入依赖模块，示例代码如下：
 
    ```ts
     import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
@@ -199,7 +199,7 @@
 
    > **注意：**
    >
-   > 启动主线程超时检测抓取trace的功能的前提是开发者使用[nolog版本](performance-analysis-kit-terminology.md#nolog版本)并且关闭开发者模式。
+   > 启动主线程超时检测抓取trace的功能的前提是开发者使用nolog版本并且关闭开发者模式。
 
    ```ts
      @Entry

@@ -10,7 +10,7 @@
 本章节介绍如何拉起邮件类应用扩展面板。
 > **说明：**
 > 
-> 如果拉起方的参数为mailto协议字符串，可以[使用mailto方式拉起邮件应用](start-email-apps-by-mailto.md)。邮件应用会解析收到的mailto协议字符串，并填充发件人、收件人、邮件内容等信息。
+> 如果拉起方的参数为mailto协议字符串，可以使用mailto方式拉起邮件应用。邮件应用会解析收到的mailto协议字符串，并填充发件人、收件人、邮件内容等信息。
 
 ## 邮件类应用扩展面板参数说明
 
@@ -24,7 +24,7 @@ startAbilityByType接口中type字段为mail，对应的wantParam参数：
 | subject                               | string                                                       | 否   | 邮件主题。                                                     |
 | body                                  | string                                                       | 否   | 邮件内容。                                                     |
 | ability.params.stream                 | string[ ]                                                    | 否   | 邮件附件（附件的uri地址列表）。                                |
-| ability.want.params.uriPermissionFlag | [wantConstant.Flags/apis-ability-kit/js-apis-app-ability-wantConstant.md#flags) | 否   | 给邮件附件赋予至少读权限。邮件附件参数存在时，该参数也必须要传。 |
+| ability.want.params.uriPermissionFlag | wantConstant.Flags | 否   | 给邮件附件赋予至少读权限。邮件附件参数存在时，该参数也必须要传。 |
 | sceneType                             | number                                                       | 否   | 意图场景，表明本次请求对应的操作意图。1：发邮件。默认为1。                              |
 
 > **说明：**
@@ -95,7 +95,7 @@ startAbilityByType接口中type字段为mail，对应的wantParam参数：
 
 ## 目标方开发步骤
 
-1. 在module.json5中新增[linkFeature](../quick-start/module-configuration-file.md#skills标签)属性并设置声明当前应用支持的特性功能，从而系统可以从设备已安装应用中找到当前支持该特性的应用，取值范围如下：
+1. 在module.json5中新增linkFeature属性并设置声明当前应用支持的特性功能，从而系统可以从设备已安装应用中找到当前支持该特性的应用，取值范围如下：
 
     | 取值           | 含义                        |
     | --------------| ------------------------- |

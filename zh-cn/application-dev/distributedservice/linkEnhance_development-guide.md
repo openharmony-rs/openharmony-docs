@@ -16,7 +16,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 
 在设备互联过程中，发现对端的蓝牙地址并建立物理链路；在多设备互联场景下，通过特有的多通道合并算法，在保证设备间交互能力的前提下，减少实际物理链路的个数，达到设备间可用连接数增大、降低干扰提升通信的稳定性的效果。
 
-两个设备的交互实现如下，在使用[linkEnhance/apis-distributedservice-kit/js-apis-link-enhance.md)能力后，当两端同时发起连接时，会自动识别合并底层多余物理链路，减少实际物理链路的个数，减少蓝牙链路资源的消耗，增加可用连接数量。
+两个设备的交互实现如下，在使用linkEnhance能力后，当两端同时发起连接时，会自动识别合并底层多余物理链路，减少实际物理链路的个数，减少蓝牙链路资源的消耗，增加可用连接数量。
 
 ![linkEnhance-process](figures/linkEnhance-process.png)
 
@@ -24,7 +24,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 
 - 设备互联时需要开启蓝牙功能。
 
-- 通过蓝牙广播/扫描接口获取对端设备BLE MAC。蓝牙BLE接口参见[查找设备](../connectivity/bluetooth/ble-development-guide.md)。
+- 通过蓝牙广播/扫描接口获取对端设备BLE MAC。蓝牙BLE接口参见查找设备。
 
 - 不同设备间只有相同bundleName的应用才能进行互联。
 
@@ -44,13 +44,13 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 ### 搭建环境
 
 1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，版本要求在4.1及以上。
-2. 将public-SDK更新到API 20或以上<!--Del-->，具体操作参见[更新指南](../tools/openharmony_sdk_upgrade_assistant.md)<!--DelEnd-->。
+2. 将public-SDK更新到API 20或以上<!--Del-->，具体操作参见更新指南<!--DelEnd-->。
 3. 用USB线缆将两台调测设备（设备A和设备B）连接到PC。
 4. 打开设备A和设备B的蓝牙开关。
 
 ## 接口说明
 
-常用接口说明如下表。更多接口的详细介绍参考@ohos.distributedsched.linkEnhance[增强连接/apis-distributedservice-kit/js-apis-link-enhance.md)。
+常用接口说明如下表。更多接口的详细介绍参考@ohos.distributedsched.linkEnhance增强连接。
 
 | 接口名                                      | 功能描述                                                                                               |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
@@ -61,7 +61,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 | sendData(data:ArrayBuffer)                 | 向远端设备发送数据。                                                                                     |
 | on(type: 'connectResult')                  | 订阅连接结果通知变化的事件。                                                                              |
 | on(type: 'disconnected')                   | 订阅连接状态断开的事件。                                                                                  |
-| on(type: 'dataReceived')                   | 注册收数据的通知事件。                                                                                    |
+| on(type: 'dataReceived')                   | 订阅接收数据的通知事件。                                                                                    |
 | createConnection(deviceId: string,name:string)| 创建一个connection对象。                                                                              |
 | start()                                    | 服务端开启服务。                                                                                         |   
 | stop()                                     | 服务端停止服务。                                                                                           |
@@ -72,9 +72,9 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 
 ## 增强连接开发指导
 
-- 服务端开启蓝牙后，创建Server对象，并调用[start()接口/apis-distributedservice-kit/js-apis-link-enhance.md#start)开启服务，让服务端处于可连接状态，通过注册的事件监听，监听事件的变化通知。
-- 客户端开启蓝牙后，创建Connection对象，并调用[connect()接口/apis-distributedservice-kit/js-apis-link-enhance.md#connect)发起连接，通过注册的事件监听，监听事件的变化通知。
-- 连接成功后，可以使用[sendData接口/apis-distributedservice-kit/js-apis-link-enhance.md#senddata)发送数据。
+- 服务端开启蓝牙后，创建Server对象，并调用start()接口开启服务，让服务端处于可连接状态，通过注册的事件监听，监听事件的变化通知。
+- 客户端开启蓝牙后，创建Connection对象，并调用connect()接口发起连接，通过注册的事件监听，监听事件的变化通知。
+- 连接成功后，可以使用sendData接口发送数据。
 
 ### 服务端开发指导
 1. 导入所需的模块。
@@ -117,7 +117,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
           console.info(TAG + 'serverOnCallback');
         });
         server.on('serverStopped', (reason: number): void => {
-          console.info(TAG, 'serverStopped， reason= ' + reason);
+          console.info(TAG, 'serverStopped, reason= ' + reason);
         });
         // 启动服务
         server.start();
@@ -154,7 +154,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
     ```
 5. 断开连接并销毁Connection对象。
     ```ts
-    // 断连接。
+    // 断开连接。
     linkEnhanceDisconnect(connection: linkEnhance.Connection) {
       console.info(TAG + 'disconnect deviceId = ' + connection.getPeerDeviceId());
       try {
@@ -174,13 +174,13 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
       try {
         server.stop();
       } catch (err) {
-        console.info(TAG + 'stop server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+        console.error(TAG + 'stop server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
         (err as BusinessError).message);
       }
     }
     // Server端停止服务并取消所有的订阅事件
     linkEnhanceClose(server: linkEnhance.Server) {
-      console.info(TAG + 'close server' );
+      console.info(TAG + 'close server');
       try {
         server.close();
       } catch (err) {
@@ -218,7 +218,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
    ```
 3. 创建connection对象，订阅连接结果通知变化的事件，连接服务端。
     ```ts
-    const TAG = "testDemo";
+    const TAG = "TEST";
     // client端主动连接时调用
     linkEnhanceConnect(peerDeviceId: string) {
       console.info(TAG + 'connection server deviceId = ' + peerDeviceId);

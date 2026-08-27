@@ -8,7 +8,7 @@
 
 应用在进行图片解码操作时，需要申请对应内存。内存占用的大小与内存分配类型和像素格式密切相关。当前指导将介绍不同的内存类型、像素格式，以及如何组合使用以达到最优的解码性能。
 
-应用侧通过解码API接口获取PixelMap，并将其传递给[Image组件apis-arkui/arkui-js/js-components-basic-image.md)以进行显示。
+应用侧通过解码API接口获取PixelMap，并将其传递给Image组件以进行显示。
 
 当PixelMap较大且使用共享内存时，RS主线程将经历较长的纹理上传时间，导致卡顿现象。图形侧提供了DMA内存零拷贝功能，可在绘制图片时避免纹理上传时间消耗。此外，通过设置合适的像素格式（如YUV格式），可进一步降低内存占用。
 
@@ -19,7 +19,7 @@
 - SHARE_MEMORY：共享内存。需要进行纹理上传。
 - DMA_ALLOC：DMA内存。无需纹理上传。
 
-系统提供了[createPixelMapUsingAllocator/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmapusingallocator15)接口，以便用户能够自定义内存分配类型进行解码。接口定义及使用示例详见图片解码接口说明[Interface (ImageSource)/apis-image-kit/arkts-apis-image-ImageSource.md)。
+系统提供了createPixelMapUsingAllocator接口，以便用户能够自定义内存分配类型进行解码。接口定义及使用示例详见图片解码接口说明Interface (ImageSource)。
 
 ### SHARE_MEMORY和DMA_ALLOC的区别
 
@@ -58,7 +58,7 @@
 - 硬件解码仅支持DMA_ALLOC的内存模式。
 - SVG格式图片解码仅支持SHARE_MEMORY的内存模式。
 
-使用接口[createPixelMapUsingAllocator/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmapusingallocator15)进行解码时，若设置的内存分配模式，与图片格式或解码方式不匹配，则会抛出内存分配失败的异常。
+使用接口createPixelMapUsingAllocator进行解码时，若设置的内存分配模式，与图片格式或解码方式不匹配，则会抛出内存分配失败的异常。
 
 如果用户选择的分配类型为AUTO，系统将根据解码和渲染的时间综合评估，以决定使用DMA_ALLOC还是SHARE_MEMORY分配机制。
 
@@ -73,9 +73,9 @@ stride（步幅）描述了图片在内存中每一行像素数据的存储宽�
 - stride值需为硬件平台要求字节数的整数倍。
 - 当stride值大于等于图片宽度时，系统会自动补齐填充数据（padding）。
 
-stride的值可以通过[getImageInfo()/apis-image-kit/arkts-apis-image-ImageSource.md#getimageinfo-1) 接口获取。
+stride的值可以通过getImageInfo() 接口获取。
 
-1. 调用[getImageInfo()/apis-image-kit/arkts-apis-image-ImageSource.md#getimageinfo-1)方法，获取ImageInfo对象。
+1. 调用getImageInfo()方法，获取ImageInfo对象。
 
 2. 从ImageInfo对象中访问stride值：info.stride。
 
@@ -176,14 +176,14 @@ async CreatePixelMapWithYUV(context: Context): Promise<image.PixelMap | undefine
 
 ## 系统默认的内存分配方式
 
-在使用[createPixelMap/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmap7)接口进行解码时，不同场景下会采取不同的内存分配类型。
+在使用createPixelMap接口进行解码时，不同场景下会采取不同的内存分配类型。
 
 以下场景将使用DMA_ALLOC。
 
 - 解码HDR图片。
 - 解码HEIF格式图片。
-- 解码JPEG格式图片，当原图的宽和高均在1024像素至8192像素之间，[desiredPixelFormat/apis-image-kit/arkts-apis-image-i.md#decodingoptions7)为RGBA_8888或NV21，同时硬件不繁忙（并发数为3）。
-- 解码其他格式图片。要求[desiredSize/apis-image-kit/arkts-apis-image-i.md#decodingoptions7)大于等于512像素 * 512像素（未设置desiredSize时按原图尺寸考虑），并且宽度为64的倍数。
+- 解码JPEG格式图片，当原图的宽和高均在1024像素至8192像素之间，desiredPixelFormat为RGBA_8888或NV21，同时硬件不繁忙（并发数为3）。
+- 解码其他格式图片。要求desiredSize大于等于512像素 * 512像素（未设置desiredSize时按原图尺寸考虑），并且宽度为64的倍数。
 
 除上述场景外，其余情况均使用SHARE_MEMORY。
 
@@ -191,9 +191,9 @@ async CreatePixelMapWithYUV(context: Context): Promise<image.PixelMap | undefine
 
 为了防止内存溢出导致系统崩溃，系统对进程内存做了限制，详细说明请参考[应用被查杀问题检测方法](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-runtime-appkilled-detection)。
 
-图片框架对单张图片的解码设置了2GB的内存限制。进程需要主动管理自身内存，建议在不使用[PixelMap/apis-image-kit/arkts-apis-image-PixelMap.md)时及时释放，以避免进程被系统终止。
+图片框架对单张图片的解码设置了2GB的内存限制。进程需要主动管理自身内存，建议在不使用PixelMap时及时释放，以避免进程被系统终止。
 
-应用可使用[onMemoryLevel/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)监听系统内存变化情况。
+应用可使用onMemoryLevel监听系统内存变化情况。
 
 PixelMap申请像素内存的计算规则如下所示。
 
@@ -201,7 +201,7 @@ PixelMap申请像素内存的计算规则如下所示。
 pixels_size(像素内存大小) = stride(图片像素存储宽度) * height(图片像素高度)
 ```
 
-对于原始像素内存超过2GB且支持下采样的图片，建议开发者使用[createPixelMap/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmap7)或[createPixelMapUsingAllocator/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmapusingallocator15)接口，并在[DecodingOptions/apis-image-kit/arkts-apis-image-i.md#decodingoptions7)中设置desiredSize（期望输出大小）进行下采样解码。
+对于原始像素内存超过2GB且支持下采样的图片，建议开发者使用createPixelMap或createPixelMapUsingAllocator接口，并在DecodingOptions中设置desiredSize（期望输出大小）进行下采样解码。
 
 从API version 21开始，对于支持下采样解码的图片，设置desiredSize（期望输出大小）后，解码器将以基准梯度为1/8的最优下采样率计算PixelMap的像素内存，即按照7/8、6/8、...、1/8的采样率，逐次递减取一个清晰度最高的采样数。
 

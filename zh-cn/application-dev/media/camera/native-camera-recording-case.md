@@ -6,9 +6,9 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
+在开发相机应用时，需要先申请相关权限。
 
-当前示例提供完整的录像流程及其接口调用顺序的介绍。对于单个流程（如[设备输入](native-camera-device-input.md)、[会话管理](native-camera-session-management.md)、[录像](native-camera-recording.md)）的介绍请参考具体章节。
+当前示例提供完整的录像流程及其接口调用顺序的介绍。对于单个流程（如设备输入、会话管理、录像）的介绍请参考具体章节。
 
 ## 开发流程
 
@@ -275,7 +275,7 @@
             return;
         }
 
-        // 创建预览输出流,其中参数 surfaceId 参考下面 XComponent 组件，预览流为XComponent组件提供的surface。
+        // 创建预览输出流，其中参数 surfaceId 参考下面 XComponent 组件，预览流为XComponent组件提供的surface。
         ret = OH_CameraManager_CreatePreviewOutput(cameraManager, previewProfile, previewSurfaceId, &previewOutput);
         if (previewProfile == nullptr || previewOutput == nullptr || ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreatePreviewOutput failed.");

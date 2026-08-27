@@ -7,15 +7,15 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-在申请目标权限前，建议开发者先了解[不同权限的申请路径](determine-application-mode.md)，对权限的工作流程有基本了解后，再结合以下权限字段的具体说明，判断应用能否申请目标权限，提高开发效率。
+在申请目标权限前，建议开发者先了解不同权限的申请路径，对权限的工作流程有基本了解后，再结合以下权限字段的具体说明，判断应用能否申请目标权限，提高开发效率。
 
 > **说明：**
 >
 > - 以下权限仅对APL等级为system_basic及以上的应用开放，不向APL等级为normal的应用开放。
 > - 以下权限的授权方式均为user_grant（用户授权）。
-> - 以下权限可通过[访问控制列表（ACL）](app-permission-mgmt-overview.md#权限机制中的基本概念)的方式跨级别申请。
+> - 以下权限可通过访问控制列表（ACL）的方式跨级别申请。
 
-申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
+申请流程可参考选择申请权限的方式。
 
 ## ohos.permission.GET_INSTALLED_BUNDLE_LIST
 
@@ -264,6 +264,48 @@
 ## ohos.permission.cli.MANAGE_DISPOSED_APP_STATUS
 
 允许应用通过CLI命令设置和查询应用的处置状态。
+
+**权限级别**：system_core
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.MANAGE_WIFI_TOGGLE
+
+允许应用通过CLI命令设置Wi-Fi开关。
+
+**权限级别**：system_core
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.MANAGE_WIFI_SCAN
+
+允许应用通过CLI命令设置Wi-Fi扫描。
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.MANAGE_WIFI_CONNECT
+
+允许应用通过CLI命令设置Wi-Fi连接。
 
 **权限级别**：system_core
 

@@ -12,14 +12,14 @@ Wi-Fi扫描是指设备（如手机、电脑、路由器等）搜索周围可用
 
 ## 场景介绍
 
-- [Wi-Fi扫描](#wi-fi扫描)
-- [PNO扫描](#pno扫描)
-- [周期扫描](#周期扫描)
-- [扫描管控](#扫描管控)
+- Wi-Fi扫描
+- PNO扫描
+- 周期扫描
+- 扫描管控
 
 ## 接口说明
 
-完整的JS API说明以及示例代码请参考：[SCAN接口/apis-connectivity-kit/js-apis-wifiManager.md)。
+完整的JS API说明以及示例代码请参考：SCAN接口。
 
 接口具体说明如下表所示。
 
@@ -86,7 +86,7 @@ Wi-Fi扫描是指设备（如手机、电脑、路由器等）搜索周围可用
    }
    ```
 
-6. 错误码详情请参见[WIFI错误码/apis-connectivity-kit/errorcode-wifi.md)。
+6. 错误码详情请参见WIFI错误码。
 
  ### PNO扫描
 

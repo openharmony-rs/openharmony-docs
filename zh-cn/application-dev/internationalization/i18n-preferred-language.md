@@ -3,7 +3,7 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
@@ -13,7 +13,7 @@
 
 ## 开发步骤
 
-接口具体使用方法和说明请参考[getAppPreferredLanguage/apis-localization-kit/js-apis-i18n.md#getapppreferredlanguage9)的API文档。示例代码如下：
+接口具体使用方法和说明请参考getAppPreferredLanguage的API文档。示例代码如下：
 
 1. 导入模块。
 

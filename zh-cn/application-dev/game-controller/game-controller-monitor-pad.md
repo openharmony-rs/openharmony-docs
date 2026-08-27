@@ -1,13 +1,13 @@
 # 监听游戏手柄的轴和按键事件（C/C++）
 <!--Kit: Game Controller Kit-->
 <!--Subsystem: Game-->
-<!--Owner: @zhaoshuhao123-->
+<!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
-<!--Tester: @csp1992-->
-<!--Adviser: @luwy2025-->
+<!--Tester: @fei_0805-->
+<!--Adviser: @yuwenliang0514-->
 
 > **说明：**<br/>
-> 须先完成[监听设备上下线](game-controller-monitor-device.md)功能的开发后，才能进行游戏手柄轴事件和按键事件的监听注册。
+> 须先完成监听设备上下线功能的开发后，才能进行游戏手柄轴事件和按键事件的监听注册。
 
 
 ## 功能介绍
@@ -24,7 +24,7 @@ Game Controller Kit支持的手柄键位参考图如下：
 
 ## 接口说明
 
-接口详细介绍请参考[API参考/apis-game-controller-kit/capi-game-controller.md)。
+接口详细介绍请参考GameController。
 
 | 接口名 | 描述 | 
 | -------- | -------- |
@@ -86,6 +86,7 @@ target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 以LeftThumbstick轴事件为例。
 
 ```c
+// 注册LeftThumbstick轴事件监听
 napi_value GamePad::LeftThumbstick_RegisterAxisInputMonitor(napi_env env, napi_callback_info info) {
     napi_value result;
     GameController_ErrorCode errorCode =
@@ -100,6 +101,7 @@ napi_value GamePad::LeftThumbstick_RegisterAxisInputMonitor(napi_env env, napi_c
     return result;
 }
 
+// 取消注册LeftThumbstick轴事件监听
 napi_value GamePad::LeftThumbstick_UnregisterAxisInputMonitor(napi_env env, napi_callback_info info) {
     napi_value result;
     GameController_ErrorCode errorCode = OH_GamePad_LeftThumbstick_UnregisterAxisInputMonitor();
@@ -155,6 +157,7 @@ void GamePad::LeftThumbstick_OnAxisEvent(const struct GamePad_AxisEvent *axisEve
 以LeftShoulder按键事件为例。
 
 ```c
+// 注册LeftShoulder按键事件监听
 napi_value GamePad::LeftShoulder_RegisterButtonInputMonitor(napi_env env, napi_callback_info info) {
     napi_value result;
     GameController_ErrorCode errorCode =
@@ -169,6 +172,7 @@ napi_value GamePad::LeftShoulder_RegisterButtonInputMonitor(napi_env env, napi_c
     return result;
 }
 
+// 取消注册LeftShoulder按键事件监听
 napi_value GamePad::LeftShoulder_UnregisterButtonInputMonitor(napi_env env, napi_callback_info info) {
     napi_value result;
     GameController_ErrorCode errorCode = OH_GamePad_LeftShoulder_UnregisterButtonInputMonitor();

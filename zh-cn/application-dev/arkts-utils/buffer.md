@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 场景介绍
 
@@ -30,7 +30,7 @@ Buffer模块的核心功能包括：
 
 4. **内存操作**：支持截取部分Buffer、切片和合并多个Buffer，便于数据流的处理和管理。
 
-Buffer模块各接口使用详见：[@ohos.buffer/apis-arkts/js-apis-buffer.md)。
+Buffer模块各接口使用详见：@ohos.buffer。
 
 ## FastBuffer
 
@@ -48,4 +48,4 @@ FastBuffer模块的核心功能包括：
 
 4. **内存操作**：支持截取部分FastBuffer、切片和合并多个FastBuffer，便于数据流的处理和管理。
 
-FastBuffer模块各接口使用详见：[@ohos.fastbuffer/apis-arkts/js-apis-fastbuffer.md)。
+FastBuffer模块各接口使用详见：@ohos.fastbuffer。

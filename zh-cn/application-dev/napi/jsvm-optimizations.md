@@ -1,10 +1,10 @@
 # JSVM通用调优实践
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## JSVM调用结构
 
@@ -45,7 +45,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScript(JSVM_Env env,
                                               JSVM_Script* result);
 ```
 
-同时，code cache的生成和使用也会对编译产生影响，这部分可以参考 [使用code cache加速编译](use-jsvm-about-code-cache.md)。
+同时，code cache的生成和使用也会对编译产生影响，这部分可以参考 使用code cache加速编译。
 
 **热启动：生成足够多的code cache**
 
@@ -127,7 +127,7 @@ if (script_run_completed) {
 
 从OH_JSVM_TypeOf接口获取类型后，再判断是否与某个类型相同。
 
-这种方法需要先查询object的类型，这种方法相对于直接使用is方法会更慢，因此我们新增了针对基础类型的IsXXX系列方法，用更高效的接口代替了相对低效的接口。下面的示例中使用到的JSVM-API可以参考 [JSVM数据类型与接口说明](./jsvm-data-types-interfaces.md)，这里仅展示调用的步骤。
+这种方法需要先查询object的类型，这种方法相对于直接使用is方法会更慢，因此我们新增了针对基础类型的IsXXX系列方法，用更高效的接口代替了相对低效的接口。下面的示例中使用到的JSVM-API可以参考 JSVM数据类型与接口说明，这里仅展示调用的步骤。
 
 - 低效用例
 
@@ -163,7 +163,7 @@ bool Test::IsFunction(JSVM_Env env, JSVM_Value jsvmValue) const {
 
 在已有值的情况下，直接创建值的引用即可。
 
-下面的示例中使用的JSVM-API可以参考 [JSVM数据类型与接口说明](./jsvm-data-types-interfaces.md)，这里仅展示调用的步骤。
+下面的示例中使用的JSVM-API可以参考 JSVM数据类型与接口说明，这里仅展示调用的步骤。
 
 
 - 低效用例

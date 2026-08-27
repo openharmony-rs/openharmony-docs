@@ -18,11 +18,12 @@
 target_link_libraries(sample PUBLIC libmedia_asset_manager.so)
 ```
 
-开发者通过引入[media_asset_manager_capi.h/apis-media-library-kit/capi-media-asset-manager-capi-h.md)和[media_asset_base_capi.h/apis-media-library-kit/capi-media-asset-base-capi-h.md)头文件，使用MediaAssetManager相关API。
-详细的API说明请参考[MediaAssetManager API/apis-media-library-kit/capi-mediaassetmanager.md)。
+开发者通过引入media_asset_manager_capi.h和media_asset_base_capi.h头文件，使用MediaAssetManager相关API。
+
+详细的API说明请参考MediaAssetManager API。
 
 > **说明：**
-> 开发前，需要参考[开发准备](photoAccessHelper-preparation.md)，申请`ohos.permission.READ_IMAGEVIDEO`权限。
+> 开发前，需要参考开发准备，申请`ohos.permission.READ_IMAGEVIDEO`权限。
 
 1. 创建实例：OH_MediaAssetManager_Create()。
 2. 设置资源：设置资源请求回调、设置资源请求策略、设置源图片Uri和目标Uri。
@@ -31,7 +32,7 @@ target_link_libraries(sample PUBLIC libmedia_asset_manager.so)
 
 ## 完整示例
 
-<!-- @[request_media_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/RequestMediaAssetsCppSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[request_media_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/RequestMediaAssetsCppSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 #include "napi/native_api.h"
@@ -66,6 +67,7 @@ static napi_value RequestMediaAssets(napi_env env, napi_callback_info info)
         MediaLibrary_RequestOptions options;
         options.deliveryMode = MEDIA_LIBRARY_HIGH_QUALITY_MODE;
 
+        // URI格式为：const char *srcUri = "file://media/Photo/[albumId]/[photoName].[ext]", 实际使用时该URI需要通过媒体库接口获取。
         // 预置图片资源Uri，默认为高质量图片。注：以下Uri是示例，开发者需根据实际情况创建或获取
         const char *srcUri = "file://media/Photo/87/VID_1712195295_025/request_image_src.jpg";
 

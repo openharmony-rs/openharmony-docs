@@ -1,10 +1,10 @@
 # 使用JSVM-API接口进行debug操作
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -28,11 +28,11 @@ debug选项皆为JSVM_DebugOption类型。
  
 ## 使用示例
 
-JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅对接口对应C++相关代码进行展示。
+JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程，本文仅对接口对应C++相关代码进行展示。
 
 ### JSVM_DebugOption
 
-仅需替换[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)示例代码中的“TestJSVM()”函数即可运行。
+仅需替换使用JSVM-API实现JS与C/C++语言交互开发流程示例代码中的“TestJSVM()”函数即可运行。
 
 - 在正确的HandleScope内调用JSVM_Value类型变量。
 ```cpp
@@ -63,7 +63,7 @@ static int32_t TestJSVM()
     // 通过script调用测试函数
     JSVM_Script script;
     JSVM_Value jsSrc, result;
-    CHECK_RET(OH_JSVM_CreateStringUtf8(env, srcCallNative, JSVM_AUTO_LENGTH, &jsSrc));
+    CHECK_RET(OH_JSVM_CreateStringUtf8(env, SRC_CALL_NATIVE, JSVM_AUTO_LENGTH, &jsSrc));
     CHECK_RET(OH_JSVM_CompileScript(env, jsSrc, nullptr, 0, true, nullptr, &script));
     CHECK_RET(OH_JSVM_RunScript(env, script, &result));
 
@@ -93,17 +93,6 @@ static int32_t TestJSVM()
 hilog中有以下结果输出：
 
 ```txt
-ADD_VAL_TO_SCOPE_CHECK in function: NewString
-CHECK_SCOPE in function: OH_JSVM_CompileScript
-ADD_VAL_TO_SCOPE_CHECK in function: OH_JSVM_GetCbInfo
-ADD_VAL_TO_SCOPE_CHECK in function: OH_JSVM_GetCbInfo
-ADD_VAL_TO_SCOPE_CHECK in function: OH_JSVM_GetCbInfo
-CHECK_SCOPE in function: OH_JSVM_StrictEquals
-CHECK_SCOPE in function: OH_JSVM_StrictEquals
-JSVM OH_JSVM_StrictEquals: success: 0
-ADD_VAL_TO_SCOPE_CHECK in function: OH_JSVM_GetBoolean
-ADD_VAL_TO_SCOPE_CHECK in function: OH_JSVM_RunScript
-CHECK_SCOPE in function: OH_JSVM_IsBoolean
 JSVM OH_JSVM_IsBoolean: success: 1
 ```
 
@@ -137,7 +126,7 @@ static int32_t TestJSVM()
     // 通过script调用测试函数
     JSVM_Script script;
     JSVM_Value jsSrc, result;
-    CHECK_RET(OH_JSVM_CreateStringUtf8(env, srcCallNative, JSVM_AUTO_LENGTH, &jsSrc));
+    CHECK_RET(OH_JSVM_CreateStringUtf8(env, SRC_CALL_NATIVE, JSVM_AUTO_LENGTH, &jsSrc));
     CHECK_RET(OH_JSVM_CompileScript(env, jsSrc, nullptr, 0, true, nullptr, &script));
     CHECK_RET(OH_JSVM_RunScript(env, script, &result));
 

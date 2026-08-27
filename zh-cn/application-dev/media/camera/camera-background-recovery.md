@@ -13,7 +13,7 @@
 - 当相机应用从后台切换至前台时，相机状态回调会返回相机不可用状态，表示当前相机设备被打开，处于忙碌状态。
 - 相机应用从后台切换至前台时，需要重启相机设备的预览流、拍照流以及相机会话管理。
 
-在参考以下示例前，建议开发者查看[相机开发指导(ArkTS)](camera-device-management.md)的具体章节，了解[相机管理](camera-device-management.md)、[设备输入](camera-device-input.md)、[会话管理](camera-session-management.md)等单个操作。 
+在参考以下示例前，建议开发者查看相机开发指导(ArkTS)的具体章节，了解相机管理、设备输入、会话管理等单个操作。 
 
 ## 开发流程
 
@@ -23,7 +23,7 @@
 
 ## 完整示例
 
-Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+Context获取方式请参考：获取UIAbility的上下文信息。
 
 相机应用从后台切换至前台启动恢复需要在页面生命周期回调函数onPageShow中调用，重新初始化相机设备。
 
@@ -118,7 +118,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
         return;
       }
 
-      // 创建预览输出流,其中参数surfaceId参考上文XComponent组件，预览流为XComponent组件提供的surface。
+      // 创建预览输出流，其中参数surfaceId参考上文XComponent组件，预览流为XComponent组件提供的surface。
       let previewOutput: camera.PreviewOutput | undefined = undefined;
       try {
         previewOutput = cameraManager.createPreviewOutput(previewProfilesArray[0], surfaceId);

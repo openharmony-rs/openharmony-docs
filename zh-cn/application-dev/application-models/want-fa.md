@@ -7,4 +7,4 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-请参见[Stage模型](ability-terminology.md#stage模型)的"[信息传递载体Want](want-overview.md)"。
+请参见Stage模型的"信息传递载体Want"。

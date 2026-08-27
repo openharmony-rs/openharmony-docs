@@ -12,22 +12,22 @@
 
 ## 环境搭建
 
-请参考[环境准备](environmental-preparation.md)完成开发前的准备工作。
+请参考环境准备完成开发前的准备工作。
 
 ## 接口说明
 
-扩展外设管理基本能力如下，更多详情请查阅[@ohos.driver.deviceManager/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md)。
+扩展外设管理基本能力如下，更多详情请查阅@ohos.driver.deviceManager。
 
 **表1** 扩展外设管理基本能力接口
 
 | 接口名                                                       | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | queryDevices(busType?: number): Array&lt;Readonly&lt;Device&gt;&gt; | 查询扩展外设列表。                                           |
-| bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt;; | 绑定设备的Promise形式，API18开始支持。                       |
-| unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt; | 解绑设备的Promise形式，API18开始支持。                       |
+| bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt; | 绑定设备的Promise形式，API19开始支持。                       |
+| unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt; | 解绑设备的Promise形式，API19开始支持。                       |
 
 <!--Del-->
-扩展外设管理系统接口如下，具体请查阅[@ohos.driver.deviceManager/apis-driverdevelopment-kit/js-apis-driver-deviceManager-sys.md)。
+扩展外设管理系统接口如下，具体请查阅@ohos.driver.deviceManager。
 
 **表2** 扩展外设管理系统接口
 
@@ -189,7 +189,7 @@
    }
    ```
 
-8. 接下来请参考[开发无UI界面基础驱动](driverextensionability.md)，进行对应驱动的示例代码开发。
+8. 接下来请参考开发无UI界面基础驱动，进行对应驱动的示例代码开发。
 
 <!--RP1-->
 ## 应用签名
@@ -201,12 +201,12 @@
 应用需要配置签名文件才能在设备上运行，并且扩展外设管理客户端开发，需要配置扩展外设的权限：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER及ohos.permission.ACCESS_DDK_DRIVERS。
 - ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER（API version 10及以上版本，需要申请此权限。）
 
-  在module.json5配置文件的requestPermissions标签中[声明权限](../../security/AccessToken/declare-permissions.md)后，即可获得授权。
+  在module.json5配置文件的requestPermissions标签中声明权限后，即可获得授权。
 
 - ohos.permission.ACCESS_DDK_DRIVERS（API version 18及以上版本，需要申请此权限。）
 
-  1. 在module.json5配置文件的requestPermissions标签中[声明权限](../../security/AccessToken/declare-permissions.md)。
-  2. HarmonyAppProvision配置文件中，修改acls字段，跨级别申请权限，可参考[申请受限权限](../../security/AccessToken/declare-permissions-in-acl.md)。
+  1. 在module.json5配置文件的requestPermissions标签中声明权限。
+  2. HarmonyAppProvision配置文件中，修改acls字段，跨级别申请权限，可参考申请受限权限。
   3. 在HarmonyAppProvision配置文件（即SDK目录下的“Sdk/openharmony/_{Version} _/toolchains /lib/UnsgnedReleasedProfileTemplate.json”文件）中，配置当前客户需要连接的驱动服务端的bundleName，如果存在多个服务端，多个服务端的bundleName以逗号分隔。
 
       具体配置方法如下：

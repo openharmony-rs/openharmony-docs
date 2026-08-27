@@ -2,23 +2,23 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @tsj_20201-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-NDK提供一系列[Navigation](./arkts-navigation-architecture.md#navigation整体架构)和[页面路由](./arkts-routing.md)状态查询接口，开发者可以通过[OH_ArkUI_GetNavDestinationName/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnavdestinationname)、[OH_ArkUI_GetNavDestinationParam/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnavdestinationparam)、[OH_ArkUI_GetNavDestinationState/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnavdestinationstate)、[OH_ArkUI_GetNavigationId/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnavigationid)、[OH_ArkUI_GetNavDestinationIndex/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnavdestinationindex)等查询页面的状态、索引、名称等信息，并根据查询结果进行对应的操作，如显示不同的页面信息。
+NDK提供一系列Navigation和页面路由状态查询接口，开发者可以通过OH_ArkUI_GetNavDestinationName、OH_ArkUI_GetNavDestinationParam、OH_ArkUI_GetNavDestinationState、OH_ArkUI_GetNavigationId、OH_ArkUI_GetNavDestinationIndex等查询页面的状态、索引、名称等信息，并根据查询结果进行对应的操作，如显示不同的页面信息。
 
-本文提供页面状态查询开发指导，查询之前需要先接入ArkTS页面，具体请参考[接入ArkTS页面](./ndk-access-the-arkts-page.md)。
+本文提供页面状态查询开发指导，查询之前需要先接入ArkTS页面，具体请参考接入ArkTS页面。
 
 ## 查询页面信息
 
-查询页面信息，需要先确保目标节点已作为子节点挂载到页面中，若节点未挂载则操作会失败，例如在[aboutToAppear/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)生命周期中查询不到对应信息。页面详细生命周期以及组件挂载生命周期参考[页面生命周期](./arkts-navigation-navdestination.md#页面生命周期)。开发者可以根据查询到的页面信息加载不同的页面组件。
+查询页面信息，需要先确保目标节点已作为子节点挂载到页面中，若节点未挂载则操作会失败，例如在aboutToAppear生命周期中查询不到对应信息。页面详细生命周期以及组件挂载生命周期参考页面生命周期。开发者可以根据查询到的页面信息加载不同的页面组件。
 
-本示例仅展示核心功能代码，完整示例请参考<!--RP1-->[NDK使用页面查询接口示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKNavigation)<!--RP1End-->。
+本示例仅展示核心功能代码，完整示例请参考<!--RP1-->[NDK使用页面查询接口示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKNavigation)<!--RP1End-->。
 
 1. 查询当前页面名称。
 
-   使用[OH_ArkUI_GetNavDestinationName/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnavdestinationname)可以查询NavDestination页面名称。router页面名称可以通过[OH_ArkUI_GetRouterPageName/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getrouterpagename)接口查询。
+   使用OH_ArkUI_GetNavDestinationName可以查询NavDestination页面名称。router页面名称可以通过OH_ArkUI_GetRouterPageName接口查询。
 
    <!-- @[get_page_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKNavigation/entry/src/main/cpp/QueryNavigation.h) -->
    
@@ -31,7 +31,7 @@ NDK提供一系列[Navigation](./arkts-navigation-architecture.md#navigation整�
 
 2. 查询页面跳转参数。
 
-   使用[OH_ArkUI_GetNavDestinationParam/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnavdestinationparam)可以查询[NavDestination/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)页面跳转参数。
+   使用OH_ArkUI_GetNavDestinationParam可以查询NavDestination页面跳转参数。
 
    <!-- @[get_page_param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKNavigation/entry/src/main/cpp/QueryNavigation.h) -->
    
@@ -56,9 +56,9 @@ NDK提供一系列[Navigation](./arkts-navigation-architecture.md#navigation整�
 
 ## 查询页面状态
 
-使用[OH_ArkUI_GetNavDestinationState/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnavdestinationstate)可以查询当前占位组件所属的NavDestination页面状态。router页面可以通过[OH_ArkUI_GetRouterPageState/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getrouterpagestate)接口查询，根据查询结果进行对应的适配，如设置组件visible属性、视频播放状态。
+使用OH_ArkUI_GetNavDestinationState可以查询当前占位组件所属的NavDestination页面状态。router页面可以通过OH_ArkUI_GetRouterPageState接口查询，根据查询结果进行对应的适配，如设置组件visible属性、视频播放状态。
 
-本示例仅展示核心功能代码，完整示例请参考<!--RP1-->[NDK使用页面查询接口示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKNavigation)<!--RP1End-->。
+本示例仅展示核心功能代码，完整示例请参考<!--RP1-->[NDK使用页面查询接口示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKNavigation)<!--RP1End-->。
 
 <!-- @[get_page_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKNavigation/entry/src/main/cpp/EntryModule.cpp) -->
 
@@ -78,9 +78,9 @@ if (state == NUM_8) {
 
 ## 查询页面栈信息
 
-使用[OH_ArkUI_GetNavDestinationIndex/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnavdestinationindex)可以查询当前占位组件所属NavDestination在栈中的位置。router页面状态可以通过[OH_ArkUI_GetRouterPageIndex/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getrouterpageindex)接口查询。根据返回的页面栈信息，可在应用开发中实现DFX功能，例如性能监控与用户行为分析等参数的收集，用于数据上报和分析。
+使用OH_ArkUI_GetNavDestinationIndex可以查询当前占位组件所属NavDestination在栈中的位置。router页面索引可以通过OH_ArkUI_GetRouterPageIndex接口查询。根据返回的页面栈信息，可在应用开发中实现DFX功能，例如性能监控与用户行为分析等参数的收集，用于数据上报和分析。
 
-本示例仅展示核心功能代码，完整示例请参考<!--RP1-->[NDK使用页面查询接口示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKNavigation)<!--RP1End-->。
+本示例仅展示核心功能代码，完整示例请参考<!--RP1-->[NDK使用页面查询接口示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKNavigation)<!--RP1End-->。
 
 <!-- @[get_stack_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKNavigation/entry/src/main/cpp/EntryModule.cpp) -->
 

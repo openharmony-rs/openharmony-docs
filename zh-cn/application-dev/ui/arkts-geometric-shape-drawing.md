@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-绘制组件用于在页面绘制图形，Shape组件是绘制组件的父组件，包含所有绘制组件的通用属性。具体用法请参考[Shape/apis-arkui/arkui-ts/ts-drawing-components-shape.md)。
+绘制组件用于在页面绘制图形，Shape组件是绘制组件的父组件，包含所有绘制组件的通用属性。具体用法请参考Shape。
 
 
 ## 创建绘制组件
@@ -31,7 +31,7 @@
   ```
 
 
-- 绘制组件单独使用，用于在页面上绘制指定的图形。有7种绘制类型，分别为[Circle/apis-arkui/arkui-ts/ts-drawing-components-circle.md)（圆形）、[Ellipse/apis-arkui/arkui-ts/ts-drawing-components-ellipse.md)（椭圆形）、[Line/apis-arkui/arkui-ts/ts-drawing-components-line.md)（直线）、[Polyline/apis-arkui/arkui-ts/ts-drawing-components-polyline.md)（折线）、[Polygon/apis-arkui/arkui-ts/ts-drawing-components-polygon.md)（多边形）、[Path/apis-arkui/arkui-ts/ts-drawing-components-path.md)（路径）、[Rect/apis-arkui/arkui-ts/ts-drawing-components-rect.md)（矩形）。以Circle的接口调用为例：
+- 绘制组件单独使用，用于在页面上绘制指定的图形。有7种绘制类型，分别为Circle（圆形）、Ellipse（椭圆形）、Line（直线）、Polyline（折线）、Polygon（多边形）、Path（路径）、Rect（矩形）。以Circle的接口调用为例：
 
   ```ts
   Circle(value?: { width?: string | number, height?: string | number })
@@ -94,7 +94,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   
         Row({ space: 10 }) {
           Column() {
-            // 创建一个宽高都为150的shape组件，背景色为黄色，一个宽高都为75的viewPort。
+          // 创建一个宽高都为150的shape组件，背景色为青绿色，一个宽高都为75的viewPort。
             // 用一个蓝色的矩形来填充viewPort，在viewPort中绘制一个直径为75的圆。
             // 绘制结束，viewPort会根据组件宽高放大两倍。
             // 请将$r('app.string.EnlargedCircle')替换为实际资源文件，在本示例中该资源文件的value值为"shape内放大的Circle组件"
@@ -110,8 +110,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
           }
   
           Column() {
-            // 创建一个宽高都为150的shape组件，背景色为黄色，一个宽高都为300的viewPort。
-            // 用一个绿色的矩形来填充viewPort，在viewPort中绘制一个直径为75的圆。
+            // 创建一个宽高都为150的shape组件，背景色为青绿色，一个宽高都为300的viewPort。
+            // 用一个灰色的矩形来填充viewPort，在viewPort中绘制一个直径为75的圆。
             // 绘制结束，viewPort会根据组件宽高缩小两倍。
             // 请将$r('app.string.ShrunkCircle')替换为实际资源文件，在本示例中该资源文件的value值为"Shape内缩小的Circle组件"
             Text($r('app.string.ShrunkCircle'))
@@ -205,11 +205,11 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 > **说明：**
 >
-> 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
+> 示例通过commands来绘制路径，commands参数说明请参考SVG路径描述规范。
 
 绘制组件支持通过各种属性更改组件样式。
 
-- 通过[fill/apis-arkui/arkui-ts/ts-drawing-components-path.md#fill)可以设置组件填充区域颜色。
+- 通过fill可以设置组件填充区域颜色。
 
   <!-- @[fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Fill.ets) -->
   
@@ -224,7 +224,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   ![2023022792216](figures/2023022792216.jpg)
 
-- 通过[stroke/apis-arkui/arkui-ts/ts-drawing-components-path.md#stroke)可以设置组件边框颜色。
+- 通过stroke可以设置组件边框颜色。
 
   <!-- @[stroke](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Stroke.ets) -->
   
@@ -239,7 +239,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   ![stroke](figures/stroke.jpg)
 
-- 通过[strokeOpacity/apis-arkui/arkui-ts/ts-drawing-components-path.md#strokeopacity)可以设置边框透明度。
+- 通过strokeOpacity可以设置边框透明度。
 
   <!-- @[stroke_opacity](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeOpacity.ets) -->
   
@@ -256,7 +256,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   ![strokeopacity](figures/strokeopacity.jpg)
 
-- 通过[strokeLineJoin/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)可以设置线条拐角绘制样式。拐角绘制样式分为Bevel(使用斜角连接路径段)、Miter(使用尖角连接路径段)、Round(使用圆角连接路径段)。
+- 通过strokeLineJoin可以设置线条拐角绘制样式。拐角绘制样式分为Bevel(使用斜角连接路径段)、Miter(使用尖角连接路径段)、Round(使用圆角连接路径段)。
 
   <!-- @[stroke_line_join](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeLineJoin.ets) -->
   
@@ -274,13 +274,13 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   ![strokeLineJoin](figures/strokeLineJoin.jpg)
 
-- 通过[strokeMiterLimit/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokemiterlimit)设置斜接长度与边框宽度比值的极限值。
+- 通过strokeMiterLimit设置斜接长度与边框宽度比值的极限值。
 
-  斜接长度表示外边框外边交点到内边交点的距离，边框宽度即[strokeWidth/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth)属性的值。
+  斜接长度表示外边框外边交点到内边交点的距离，边框宽度即strokeWidth属性的值。
   
-  strokeMiterLimit取值需大于等于1，且在[strokeLineJoin/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)属性取值LineJoinStyle.Miter时生效。
+  strokeMiterLimit取值需大于等于1，且在strokeLineJoin属性取值LineJoinStyle.Miter时生效。
 
-  <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) -->
+  <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) --> 
   
   ``` TypeScript
   Polyline()
@@ -293,7 +293,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     // 设置折线拐角处为尖角
     .strokeLineJoin(LineJoinStyle.Miter)
     // 设置斜接长度与线宽的比值
-    .strokeMiterLimit(1/Math.sin(45))
+    .strokeMiterLimit(1 / Math.sin(45 * Math.PI / 180))
   Polyline()
     .width(100)
     .height(100)
@@ -307,7 +307,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   ![2023032405917](figures/2023032405917.jpg)
 
-- 通过[antiAlias/apis-arkui/arkui-ts/ts-drawing-components-circle.md#antialias)设置是否开启抗锯齿，默认值为true（开启抗锯齿）。
+- 通过antiAlias设置是否开启抗锯齿，默认值为true（开启抗锯齿）。
 
   <!-- @[antialias_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) --> 
   
@@ -338,11 +338,11 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   ![2023032411518](figures/2023032411518.jpg)
 
-- 通过[mesh/apis-arkui/arkui-ts/ts-drawing-components-shape.md#mesh8)设置网格效果，实现图像局部扭曲。
+- 通过mesh设置网格效果，实现图像局部扭曲。
 
   > **说明：**
   >
-  > 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
+  > 示例通过commands来绘制路径，commands参数说明请参考SVG路径描述规范。
 
   <!-- @[mesh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Mesh.ets) -->
   
@@ -355,19 +355,13 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   let ctx = offCanvas.getContext('2d');
   
   class DrawingRenderNode extends RenderNode {
-    private verts_: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360];
-  
-    setVerts(verts: Array<number>): void {
-      this.verts_ = verts
-    }
-  
+
     async draw(context: DrawContext) {
       const canvas = context.canvas;
       let pixelMap = ctx.getPixelMap(0, 0, 150, 150);
       const brush = new drawing.Brush(); // 只支持brush，使用pen没有绘制效果。
       canvas.attachBrush(brush);
       let verts: number[] = [0, 0, 410, 0, 50, 0, 0, 180, 50, 180, 410, 180, 0, 360, 410, 360, 50, 360];
-      ; // 18
       canvas.drawPixelMapMesh(pixelMap, 2, 2, verts, 0, null, 0);
       canvas.detachBrush();
     }
@@ -504,11 +498,11 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 ### 绘制封闭路径
 
-  在Shape的(-80, -5)点绘制一个封闭路径，填充颜色0x317AF7，线条宽度3，边框颜色红色，拐角样式锐角（默认值）。
+  在Shape的(-80, -5)点绘制一个封闭路径，填充颜色rgb(213, 213, 213)，线条宽度3，边框颜色rgb(39, 135, 217)，拐角样式锐角（默认值）。
 
   > **说明：**
   >
-  > 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
+  > 示例通过commands来绘制路径，commands参数说明请参考SVG路径描述规范。
 
   <!-- @[shape_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ShapeExample.ets) -->
   
@@ -545,7 +539,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   > **说明：**
   >
-  > 本示例通过strokeDashArray属性设置边框间隙来实现红色虚线的圆环，strokeDashArray属性参考[strokeDashArray/apis-arkui/arkui-ts/ts-drawing-components-shape.md#strokedasharray)。  
+  > 本示例通过strokeDashArray属性设置边框间隙来实现红色虚线的圆环，strokeDashArray属性参考strokeDashArray。  
 
   <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 
   
@@ -577,7 +571,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 >  **说明：**
 >
-> [backgroundColor/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[linearGradient/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient)等通用属性作用于组件的背景区域，而不会在组件具体的内容区域生效。
+> backgroundColor、linearGradient等通用属性作用于组件的背景区域，而不会在组件具体的内容区域生效。
 
 
   <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 

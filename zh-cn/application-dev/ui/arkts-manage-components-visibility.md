@@ -16,15 +16,15 @@
 
 |场景描述 |推荐接口 |说明 |
 |----- |---- |--- |
-|[组件曝光统计与分析](#组件曝光统计与分析) | onVisibleAreaApproximateChange |要监控的组件数量多，需要低频计算降低开销。 |
-|[资源按需加载与释放](#资源按需加载与释放) | onVisibleAreaChange |要监控的组件数量少，希望每帧检测确保状态及时更新。 |
-|[感知复杂视图切换](#感知复杂视图切换) | nodeRenderState监听 | 适合感知页面或页切换导致的可见性变化。 |
+|组件曝光统计与分析 | onVisibleAreaApproximateChange |要监控的组件数量多，需要低频计算降低开销。 |
+|资源按需加载与释放 | onVisibleAreaChange |要监控的组件数量少，希望每帧检测确保状态及时更新。 |
+|感知复杂视图切换 | nodeRenderState监听 | 适合感知页面或页切换导致的可见性变化。 |
 
 应用也可自行遍历计算组件可见性，但由于组件存在复杂的层次关系，自行计算涉及大量运算，通常不被推荐。
 
 ## 组件曝光统计与分析
 
-使用[onVisibleAreaApproximateChange/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17)监控关键组件（如广告、商品卡片）的曝光时长，用于用户行为分析和运营统计。
+使用onVisibleAreaApproximateChange监控关键组件（如广告、商品卡片）的曝光时长，用于用户行为分析和运营统计。
 
 该接口比onVisibleAreaChange性能更优，支持通过设置计算周期减少检测频率，适用于组件数量多、层级深的场景，可显著降低性能消耗。
 
@@ -241,14 +241,14 @@ struct ExposureTrackingPage {
 
 ## 资源按需加载与释放
 
-使用[onVisibleAreaChange/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange)监听组件可见面积占比的精细变化，当可见比例接近预设阈值时触发回调，根据可见比例的变化加载或释放资源。
+使用onVisibleAreaChange监听组件可见面积占比的精细变化，当可见比例接近预设阈值时触发回调，根据可见比例的变化加载或释放资源。
 
 > **说明：**
 > 
 > 该能力从API version 9开始支持。
 > - 可见面积以父组件边界为限，超出父组件的部分不会被计入可见面积比值计算;
 > - 由于存在浮点数比较，系统会在计算结果接近所设置的阈值时触发回调；
-> - 为确保可见性变化通知的及时性，系统在每帧进行计算可见比例的变化检测，为了减小系统负载，应尽可能少的使用这个接口。
+> - 为确保可见性变化通知的及时性，系统在每帧进行计算可见比例的变化检测，为了减小系统负载，应尽可能少地使用这个接口。
 
 ```typescript
 import { image } from '@kit.ImageKit';
@@ -360,7 +360,7 @@ struct Index {
 
     try {
       this.getUIContext().getHostContext()!.resourceManager.getMediaContent($r('app.media.startIcon').id,
-        (error, value: ArrayBuffer) => {
+        (error, value: Uint8Array) => {
           let opts: image.InitializationOptions = {
             editable: true,
             pixelFormat: 3,
@@ -383,7 +383,7 @@ struct Index {
 
 ## 感知复杂视图切换
 
-通过UIObserver提供的[on('nodeRenderState')/apis-arkui/arkts-apis-uicontext-uiobserver.md#onnoderenderstate20)方法，可以监听指定组件的渲染状态。此接口需要传入一个组件标识，以指定需要观察的组件，因此不适用于组件频繁创建和销毁的场景，适用于因页面变化导致的组件显隐变化，例如页面跳转、组件所在页面被压栈，如Swiper/Tabs组件当前显示页被划出的场景。
+通过UIObserver提供的on('nodeRenderState')方法，可以监听指定组件的渲染状态。此接口需要传入一个组件标识，以指定需要观察的组件，因此不适用于组件频繁创建和销毁的场景，适用于因页面变化导致的组件显隐变化，例如页面跳转、组件所在页面被压栈，如Swiper/Tabs组件当前显示页被划出的场景。
 
 渲染状态有两种：
 - ABOUT_TO_RENDER_IN：组件已挂载到渲染树，下一帧将被渲染；
@@ -571,7 +571,7 @@ export function PageTwoBuilder(name: string) {
 - 检查父组件是否设置clip属性，裁剪可能导致可见面积计算偏差。
 - 考虑组件透明度影响，即使 opacity为0也会被计入可见面积。
 - 结合nodeRenderState监听交叉验证。
-- 尝试将[measureFromViewport]apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange22)设置为true进行验证。
+- 尝试将measureFromViewport设置为true进行验证。
 
 ### 高频回调导致性能下降
 

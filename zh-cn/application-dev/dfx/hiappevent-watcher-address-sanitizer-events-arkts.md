@@ -8,7 +8,7 @@
 
 ## 接口说明
 
-API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+API接口的具体使用说明（参数使用限制、具体取值范围等）请参考@ohos.hiviewdfx.hiAppEvent。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -190,4 +190,5 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    HiAppEvent eventInfo.type=stack-buffer-overflow
    HiAppEvent eventInfo.external_log=["/data/storage/el2/log/hiappevent/ADDRESS_SANITIZER_1713161197960_12889.log"]
    HiAppEvent eventInfo.log_over_limit=false
+   HiAppEvent eventInfo.params.page_switch_log=" ["/data/storage/el2/log/page_switch/snapshot/page_switch-com.example.myapplication-1-1-20260627152631822.log"]"
    ```

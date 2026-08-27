@@ -6,17 +6,17 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-音频工作组是一套通过标记来帮助系统识别应用内音频关键线程的接口，系统通过应用提供的关键音频线程以及工作组运行信息可以让音频线程的运行状态更加健康。
+音频工作组是一套通过标记来帮助系统识别应用内音频关键线程的接口，系统通过应用提供的关键音频线程以及工作组运行信息可以提升音频线程的运行的稳定性。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC)。
+以下各步骤示例为代码片段，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRendererSampleC)。
 
 ## 使用说明
 
-对于播放音频类应用，开发者需要先创建音频工作组，再将工作组运行信息的周期性告知系统。当工作结束后，需要对音频工作组进行清理。
+对于播放音频类应用，开发者需要先创建音频工作组，再将工作组运行信息周期性地告知系统。当工作结束后，需要对音频工作组进行清理。
 
 ### 创建音频工作组示例
 
-开发者在使用OH_AudioWorkgroup的API前，需要先用[OH_AudioManager_GetAudioResourceManager/apis-audio-kit/capi-native-audio-resource-manager-h.md#oh_audiomanager_getaudioresourcemanager)获取OH_AudioResourceManager实例。
+开发者在使用OH_AudioWorkgroup的API前，需要先用OH_AudioManager_GetAudioResourceManager获取OH_AudioResourceManager实例。
 
 <!-- @[GetAudioResourceManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
@@ -30,7 +30,7 @@ OH_AudioResourceManager *resMgr;
 
 ### 创建音频工作组并将关键线程加入音频工作组
 
-开发者先使用[OH_AudioResourceManager_CreateWorkgroup/apis-audio-kit/capi-native-audio-resource-manager-h.md#oh_audioresourcemanager_createworkgroup)创建一个新的音频工作组，再使用[OH_AudioWorkgroup_AddCurrentThread/apis-audio-kit/capi-native-audio-resource-manager-h.md#oh_audioworkgroup_addcurrentthread)将关键线程加入音频工作组。
+开发者先使用OH_AudioResourceManager_CreateWorkgroup创建一个新的音频工作组，再使用OH_AudioWorkgroup_AddCurrentThread将关键线程加入音频工作组。
 
 <!-- @[CreateWorkgroup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
@@ -58,6 +58,7 @@ while (threadShouldRun) {
     auto now = std::chrono::system_clock::now().time_since_epoch();
     auto startTimeMs = std::chrono::duration_cast<std::chrono::milliseconds>(now).count();
     OH_AudioWorkgroup_Start(grp, startTimeMs, startTimeMs + intervalMs);
+    // 此处为示例逻辑，实际开发中应根据业务需求控制线程运行周期。
     threadShouldRun = false;
     // 应用音频数据处理。
     OH_AudioWorkgroup_Stop(grp);
@@ -69,7 +70,7 @@ while (threadShouldRun) {
 <!-- @[OH_AudioWorkgroup_RemoveThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 ``` C++
-// 当线程已经不需要接入分组时，将其从工作组中移除。
+// 当线程不再需要参与工作组任务时，将其从工作组中移除。
 OH_AudioWorkgroup_RemoveThread(grp, g_tokenId);
 
 OH_AudioResourceManager_ReleaseWorkgroup(resMgr, grp);

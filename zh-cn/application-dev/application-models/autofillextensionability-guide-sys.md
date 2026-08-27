@@ -9,18 +9,18 @@
 
 ## 概述
 
-[AutoFillExtensionAbility/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md)是AUTO_FILL_PASSWORD/AUTO_FILL_SMART类型的[ExtensionAbility/apis-ability-kit/js-apis-app-ability-extensionAbility.md)组件，提供自动填充能力。
+AutoFillExtensionAbility是AUTO_FILL_PASSWORD/AUTO_FILL_SMART类型的ExtensionAbility组件，提供自动填充能力。
 
 自动填充能力根据自动填充控件内容的不同，分为账号密码自动填充和情景化自动填充。
 
 - 账号密码自动填充：帮助用户自动填充已保存的账号密码，提高用户输入信息的效率。
 - 情景化自动填充：根据组件的使用场景实现手机号、地址等信息的自动填充。
 
-为了便于表述，本例中将提供[AutoFillExtensionAbility/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md)能力的一方称为提供方，将启动AutoFillExtensionAbility的一方称为使用方。
+为了便于表述，本例中将提供AutoFillExtensionAbility能力的一方称为提供方，将启动AutoFillExtensionAbility的一方称为使用方。
 
 ## 接口说明
 
-自动填充功能主要接口如下。其他接口介绍详情参见[AutoFillRequest/apis-ability-kit/js-apis-inner-application-autoFillRequest-sys.md)、[AutoFillExtensionAbility/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md)。
+自动填充功能主要接口如下。其他接口介绍详情参见AutoFillRequest、AutoFillExtensionAbility。
 
 | 接口名称                                                     | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -32,7 +32,7 @@
 
 ### 生命周期
 
-[AutoFillExtensionAbility/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md)提供了[onCreate/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md#oncreate)、[onSessionDestroy/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md#onsessiondestroy)、[onForeground/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md#onforeground)、[onBackground/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md#onbackground)、[onDestroy/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md#ondestroy)、[onSaveRequest/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md#onsaverequest)和[onFillRequest/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md#onfillrequest)生命周期回调，根据需要重写对应的回调方法。
+AutoFillExtensionAbility提供了onCreate、onSessionDestroy、onForeground、onBackground、onDestroy、onSaveRequest和onFillRequest生命周期回调，根据需要重写对应的回调方法。
 
 - **onCreate**：当AutoFillExtensionAbility创建时回调，执行初始化业务逻辑操作。
 - **onSessionDestroy**：当AutoFillExtensionAbility界面内容对象销毁后调用。
@@ -48,7 +48,7 @@
 
 1. 设定AutoFillExtensionAbility应用的包名。
 
-   在AppScope/[app.json5配置文件](../quick-start/app-configuration-file.md)中把bundleName设定为："com.ohos.passwordbox"，例如：
+   在AppScope/app.json5配置文件中把bundleName设定为："com.ohos.passwordbox"，例如：
 
    ```json5
    "app": {
@@ -59,7 +59,7 @@
 
 2. 配置extensionAbilities信息。
 
-   在entry/src/main/[module.json5配置文件](../quick-start/module-configuration-file.md)中配置AutoFillAbility，例如：
+   在entry/src/main/module.json5配置文件中配置AutoFillAbility，例如：
 
    ```json5
    "extensionAbilities": [
@@ -128,7 +128,7 @@
 
    2. 在autofillpages目录中，右键选择“New &gt; File”，新建一个.ets文件并命名为AutoFillPassWord.ets。
 
-   3. 当点击界面中账号或密码输入框时，自动填充框架会向自动填充服务发起自动填充请求，触发[onFillRequest/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md#onfillrequest)的生命周期。在onFillRequest生命周期中拉起账号密码备选信息页面(AutoFillPassWord.ets)。
+   3. 当点击界面中账号或密码输入框时，自动填充框架会向自动填充服务发起自动填充请求，触发onFillRequest的生命周期。在onFillRequest生命周期中拉起账号密码备选信息页面(AutoFillPassWord.ets)。
 
       ```ts
       import { autoFillManager } from '@kit.AbilityKit';
@@ -246,7 +246,7 @@
 
    1. 在autofillpages目录，右键选择“New &gt; File”，新建一个.ets文件并命名为SavePage.ets。
 
-   2. 当TextInput中存在有信息时，页面切换(点击登录按钮)将触发[onSaveRequest/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md#onsaverequest)的生命周期。在onSaveRequest中拉起保存信息处理界面(SavePage.ets)。
+   2. 当TextInput中存在有信息时，页面切换(点击登录按钮)将触发onSaveRequest的生命周期。在onSaveRequest中拉起保存信息处理界面(SavePage.ets)。
 
       ```ts
       import { autoFillManager } from '@kit.AbilityKit';
@@ -304,13 +304,13 @@
 
 ### 实现情景化自动填充功能
 
-情景化自动填充的具体类型可参考[AutoFillType/apis-ability-kit/js-apis-inner-application-autoFillType-sys.md)。
+情景化自动填充的具体类型可参考AutoFillType。
 
 开发者在实现情景化自动填充服务时，需要在DevEco Studio工程中手动新建一个SmartAutoFillExtensionAbility，具体步骤如下。
 
 1. 设定AutoFillExtensionAbility应用的包名。
 
-   在AppScope/[app.json5配置文件](../quick-start/app-configuration-file.md)中把bundleName设定为："com.ohos.textautofill"，例如：
+   在AppScope/app.json5配置文件中把bundleName设定为："com.ohos.textautofill"，例如：
 
    ```json5
    "app": {
@@ -321,7 +321,7 @@
 
 2. 配置extensionAbilities信息。
 
-   在entry/src/main/[module.json5配置文件](../quick-start/module-configuration-file.md)中配置AutoFillAbility，例如：
+   在entry/src/main/module.json5配置文件中配置AutoFillAbility，例如：
 
    ```json5
    "extensionAbilities": [
@@ -334,11 +334,11 @@
    ]
    ```
 
-3. 情景化自动填充与自动填充服务的实现基本一致。请参考[实现账号密码自动填充功能](#实现账号密码自动填充功能)。
+3. 情景化自动填充与自动填充服务的实现基本一致。请参考实现账号密码自动填充功能。
 
 ## 开发AutoFillExtensionAbility使用方
 
-开发者可以在主页面中通过点击自动填充组件启动[AutoFillExtensionAbility/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md)。如在主页面中添加如下内容：
+开发者可以在主页面中通过点击自动填充组件启动AutoFillExtensionAbility。如在主页面中添加如下内容：
 
 ### 添加支持账号密码自动填充能力的组件
 

@@ -1,10 +1,10 @@
 # 延迟加载 (lazy import)
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @DaiHuina1997-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @shilei123-->
+<!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 随着应用程序功能的扩展，冷启动时间显著增加，主要是因为启动初期加载了大量未实际执行的模块。这不仅延长了应用的初始化时间，还浪费了资源。需要精简加载流程，剔除非必需的文件执行，优化冷启动性能，确保用户体验流畅。
 
@@ -21,7 +21,7 @@
 
 ## 使用方式
 
-开发者可以参考[Launch模板基本操作](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-launch)、[可延迟加载文件检测](#可延迟加载文件检测)、<!--Del-->[<!--DelEnd-->常用Trace使用指导<!--Del-->](../performance/common-trace-using-instructions.md)<!--DelEnd-->，利用工具或日志记录等手段，识别冷启动期间未被实际调用的文件<!--RP1-->，分析方法可参考[可延迟加载文件检测](#可延迟加载文件检测)<!--RP1End-->。通过对这些数据的分析，开发者可以精准定位启动阶段不必预先加载的文件列表，并在这些文件的调用点增加lazy标识。但需要注意，后续执行的加载是同步加载，可能阻塞任务执行（如单击任务，触发了延迟加载，那么运行时会去执行冷启动未加载的文件，从而增加耗时），因此是否使用lazy需要开发者自行评估。
+开发者可以参考[Launch模板基本操作](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-launch)、可延迟加载文件检测、<!--Del--><!--DelEnd-->常用Trace使用指导<!--Del--><!--DelEnd-->，利用工具或日志记录等手段，识别冷启动期间未被实际调用的文件<!--RP1-->，分析方法可参考可延迟加载文件检测<!--RP1End-->。通过对这些数据的分析，开发者可以精准定位启动阶段不必预先加载的文件列表，并在这些文件的调用点增加lazy标识。但需要注意，后续执行的加载是同步加载，可能阻塞任务执行（如单击任务，触发了延迟加载，那么运行时会去执行冷启动未加载的文件，从而增加耗时），因此是否使用lazy需要开发者自行评估。
 
 > **说明：**
 >
@@ -117,7 +117,7 @@ main executed
 
 ## lazy-import与动态加载的区别
 
-lazy-import与[动态加载](./arkts-dynamic-import.md)都可以延后特定文件的执行时间，帮助设备分摊性能消耗，缓解特定时段的性能压力。
+lazy-import与动态加载都可以延后特定文件的执行时间，帮助设备分摊性能消耗，缓解特定时段的性能压力。
 
 | 区别项       | 动态加载                                         | lazy-import                                                 |
 |-----------|----------------------------------------------|-------------------------------------------------------------|
@@ -146,7 +146,7 @@ lazy-import 相较于动态加载的优势：
 
 - 延迟加载共享模块或依赖路径内包含共享模块。
 
-    延迟加载对于共享模块依旧生效，使用限制参考[共享模块](../arkts-utils/arkts-sendable-module.md)开发指导。
+    延迟加载对于共享模块依旧生效，使用限制参考共享模块开发指导。
 
 ### 错误示例
 
@@ -285,7 +285,7 @@ ReferenceError: module environment is undefined
 
 ### 注意事项
 
-- 不依赖该模块执行的副作用（如初始化全局变量，挂载globalThis等）。可参考：[模块加载副作用及优化](./arkts-module-side-effects.md)。
+- 不依赖该模块执行的副作用（如初始化全局变量，挂载globalThis等）。可参考：模块加载副作用及优化。
 - 使用导出对象时，触发延迟加载的耗时可能导致对应特性的功能劣化。由于lazy-import的后续加载是同步加载，可能在某些场景阻塞任务执行（比如在点击业务时触发了懒加载，那么运行时会执行冷启动未加载的文件，增加执行耗时，存在掉帧风险），是否使用延迟加载仍需要开发者自行评估。
 - 使用lazy特性可能导致模块未执行，从而引发bug。
 - 已经被动态加载的文件同时使用lazy-import时，这些文件会执行lazy标识，在动态加载的then逻辑中同步加载。
@@ -300,7 +300,7 @@ ReferenceError: module environment is undefined
 
 ### 检测步骤
 
-1. 打开工具：获取[hdc](../dfx/hdc.md)工具，连接设备，在终端直接输入下方命令执行。
+1. 打开工具：获取hdc工具，连接设备，在终端直接输入下方命令执行。
 
     ```shell
     hdc shell param set persist.ark.properties 0x200105c
@@ -312,7 +312,7 @@ ReferenceError: module environment is undefined
     hdc shell param set persist.ark.importDuration 1000
     ```
 
-3. 清除应用后台进程后，重新启动应用进程，等待抓取时间结束，会在应用沙箱下（data/app/el2/100/base/${bundlename}/files/）生成主/子线程对应文件。
+3. 清除应用后台进程后，重新启动应用进程，等待抓取时间结束，会在应用沙箱下（data/app/el2/100/base/${bundleName}/files/）生成主/子线程对应的文件。
 
     > **注意：**
     >
@@ -403,7 +403,7 @@ export function func() {
 <----Summary----> Total file number: 13, total time: 2ms, including used file:12, cost time: 1ms, and unused file: 1, cost time: 1ms
 ```
 
-上述信息表示应用当前线程在冷启动抓取时间段内加载了13个文件，共耗时2ms。其中，12个文件导出内容被其他文件加载使用，执行这12个文件共耗时1ms；1个文件执行完成，但是其导出内容没有被其他文件在冷启阶段用到，耗时1ms。
+上述信息表示应用当前线程在冷启动抓取时间段内加载了13个文件，共耗时2ms。其中，12个文件导出内容被其他文件加载使用，执行这12个文件共耗时1ms；1个文件执行完成，但是其导出内容没有被其他文件在冷启动阶段用到，耗时1ms。
 
 ### 被使用文件
 
@@ -643,7 +643,7 @@ struct Index {
 
 | 优化效果 | 加载文件耗时（微秒μs） |
 |---------| --------------------- |
-| 优化前 | 412us              |
-| 优化后 | 350us              |
+| 优化前 | 412μs              |
+| 优化后 | 350μs              |
 
 根据上述优化前后案例Trace图对比分析，使用延迟加载后应用冷启动时不再加载A文件，在资源加载阶段减少因加载冗余文件产生的耗时约15%，提高了应用冷启动性能。（由于案例仅演示场景，优化数据仅做参考，在实际业务中随着引用文件的复杂度提高，引用文件数量增多，优化效果也会随之提升。）

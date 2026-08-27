@@ -39,7 +39,7 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 
   - 用户点击某个子窗口时，该窗口的ZOrder会被提升至同zLevel中的最高位置，实现“点击置顶”。
 
-  - 若调用[setRaiseByClickEnabled()/apis-arkui/arkts-apis-window-Window.md#setraisebyclickenabled14)接口传入false，则禁用点击抬升功能，点击时层级保持不变。
+  - 若调用setRaiseByClickEnabled()接口传入false，则禁用点击抬升功能，点击时层级保持不变。
 
 ### 窗口类型层级规则
 
@@ -53,12 +53,12 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 
   | 窗口类型 | 创建方式 |
   | -------- | -------- |
-  | 模应用子窗 | 调用[createSubWindowWithOptions()/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口，并设置子窗口参数[SubWindowOptions/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的isModal为true，modalityType为APPLICATION_MODALITY。 |
-  | Toast子窗 | 调用[showToast()/apis-arkui/arkts-apis-uicontext-promptaction.md#showtoast)接口，并设置showMode为TOP_MOST。 |
-  | 文本菜单子窗 | 调用[showActionMenu()/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)接口，并设置showInSubWindow为true。 |
-  | Dialog子窗 | 调用[openCustomDialog()/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)传入dialogContent、options参数，并设置showInSubWindow为true。<br/>调用[openCustomDialog()/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)传入options参数，并设置showInSubWindow为true。<br/>调用[openCustomDialogWithController()/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)，并设置showInSubWindow为true。 |
-  | 模态子窗 | 调用[createSubWindowWithOptions()/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口，并设置子窗口参数[SubWindowOptions/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的isModal为true，modalityType为WINDOW_MODALITY。 |
-  | 普通子窗 | 调用[createSubWindowWithOptions()/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口创建的默认子窗。 |
+  | 模应用子窗 | 调用createSubWindowWithOptions()接口，并设置子窗口参数SubWindowOptions中的isModal为true，modalityType为APPLICATION_MODALITY。 |
+  | Toast子窗 | 调用showToast()接口，并设置showMode为TOP_MOST。 |
+  | 文本菜单子窗 | 调用showActionMenu()接口，并设置showInSubWindow为true。 |
+  | Dialog子窗 | 调用openCustomDialog()传入dialogContent、options参数，并设置showInSubWindow为true。<br>调用openCustomDialog()传入options参数，并设置showInSubWindow为true。<br>调用openCustomDialogWithController()，并设置showInSubWindow为true。 |
+  | 模态子窗 | 调用createSubWindowWithOptions()接口，并设置子窗口参数SubWindowOptions中的isModal为true，modalityType为WINDOW_MODALITY。 |
+  | 普通子窗 | 调用createSubWindowWithOptions()接口创建的默认子窗。 |
 
   不同类型窗口之间不能通过点击或API调整跨越层级范围。
 
@@ -66,11 +66,11 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 
 - 当父窗口被抬升时，其所有子窗口也会随之抬升；当子窗口被抬升时，其父窗口也会随之抬升。
 - 子窗口的层级始终高于其父窗口。
-- 窗口抬升可通过调用[raiseToAppTop()/apis-arkui/arkts-apis-window-Window.md#raisetoapptop14)接口或点击窗口实现。
+- 窗口抬升可通过调用raiseToAppTop()接口或点击窗口实现。
 
 ### TopMost置顶窗口层级规则
 
-- 在[自由窗口](window-terminology.md#自由窗口)状态下，应用主窗口可通过调用[setWindowTopmost()/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)接口传入true将自身置于其他应用窗口之上，以实现“不被遮挡”的常驻显示效果，需合理使用，避免影响用户体验。
+- 在自由窗口状态下，应用主窗口可通过调用setWindowTopmost()接口传入true将自身置于其他应用窗口之上，以实现“不被遮挡”的常驻显示效果，需合理使用，避免影响用户体验。
 
 - 使用该接口需要申请权限ohos.permission.WINDOW_TOPMOST。
 
@@ -88,10 +88,10 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 
 | 功能 | 典型场景 | 对应接口 |
 | -------- | -------- | -------- |
-| 设置主窗口置顶 | 用于实现将窗口置于其他应用窗口之上不被遮挡。如视频通话、导航等场景。 | [setWindowTopmost()/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14) |
-| 提升子窗口到顶层 | 将子窗口提升至当前应用内同类型子窗口的最顶层，只在当前应用同一个父窗口下相同zLevel值的子窗范围内生效。<br/>例如，视频会议中的悬浮工具栏，主窗口是视频画面，子窗口包括聊天框、共享控制栏等。点击聊天框时，可调用raiseToAppTop()将其提升到顶层，避免被其他子窗口遮挡。 | [raiseToAppTop()/apis-arkui/arkts-apis-window-Window.md#raisetoapptop14) |
-| 禁止/使能子窗点击抬升功能 | 可用于固定布局的工具面板，防止用户误操作导致层级混乱。 | [setRaiseByClickEnabled()/apis-arkui/arkts-apis-window-Window.md#setraisebyclickenabled14) |
-| 获取当前应用内层级最高的窗口 | 可判断当前最前显示的窗口（可能是主窗口或子窗口），用于日志记录或状态同步等场景。 | [getLastWindow()/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9-1) |
+| 设置主窗口置顶 | 用于实现将窗口置于其他应用窗口之上不被遮挡。如视频通话、导航等场景。 | setWindowTopmost() |
+| 提升子窗口到顶层 | 将子窗口提升至当前应用内同类型子窗口的最顶层，只在当前应用同一个父窗口下相同zLevel值的子窗范围内生效。<br>例如，视频会议中的悬浮工具栏，主窗口是视频画面，子窗口包括聊天框、共享控制栏等。点击聊天框时，可调用raiseToAppTop()将其提升到顶层，避免被其他子窗口遮挡。 | raiseToAppTop() |
+| 禁止/使能子窗点击抬升功能 | 可用于固定布局的工具面板，防止用户误操作导致层级混乱。 | setRaiseByClickEnabled() |
+| 获取当前应用内层级最高的窗口 | 可判断当前最前显示的窗口（可能是主窗口或子窗口），用于日志记录或状态同步等场景。 | getLastWindow() |
 
 > **说明：**
 >
@@ -99,6 +99,6 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 >
 > - TopMost功能谨慎使用，避免干扰系统多窗口体验。
 >
-> - 对于需要高优先级显示的关键界面，可通过[raiseToAppTop()/apis-arkui/arkts-apis-window-Window.md#raisetoapptop14)确保可见性，使用此接口前，需确保该窗口已调用showWindow()类接口（[showWindow()/apis-arkui/arkts-apis-window-Window.md#showwindow9-1)/[showWindow(options: ShowWindowOptions)/apis-arkui/arkts-apis-window-Window.md#showwindow20)）并执行完毕。
+> - 对于需要高优先级显示的关键界面，可通过raiseToAppTop()确保可见性，使用此接口前，需确保该窗口已调用showWindow()类接口（showWindow()/showWindow(options: ShowWindowOptions)）并执行完毕。
 >
-> - [setWindowTopmost()/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)仅在[自由窗口](window-terminology.md#自由窗口)状态下生效。开发者可通过[isInFreeWindowMode()/apis-arkui/arkts-apis-window-Window.md#isinfreewindowmode22)查询当前窗口是否处于自由窗口，并结合[on('freeWindowModeChange')/apis-arkui/arkts-apis-window-Window.md#onfreewindowmodechange22)事件监听器实时监听窗口模式的变化，从而准确判断何时可以安全调用[setWindowTopmost()/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)。
+> - setWindowTopmost()仅在自由窗口状态下生效。开发者可通过isInFreeWindowMode()查询当前窗口是否处于自由窗口，并结合on('freeWindowModeChange')事件监听器实时监听窗口模式的变化，从而准确判断何时可以安全调用setWindowTopmost()。

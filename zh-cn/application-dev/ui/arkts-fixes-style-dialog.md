@@ -12,13 +12,13 @@
 
 - 可以通过调用UIContext或getUIContext，在非UI页面或某些异步回调中使用本文中的接口。CalendarPickerDialog当前不支持此操作。
 
-- 操作菜单 (showActionMenu)、对话框 (showDialog)需先使用UIContext中的[getPromptAction()/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取到PromptAction对象，再通过该对象调用对应方法。
+- 操作菜单 (showActionMenu)、对话框 (showDialog)需先使用UIContext中的getPromptAction()方法获取到PromptAction对象，再通过该对象调用对应方法。
 
-- 列表选择弹出框 (ActionSheet)、警告弹出框 (AlertDialog)、选择器弹出框 (PickerDialog)中除CalendarPickerDialog都需先使用ohos.window中的[getUIContext()/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，再通过此实例调用对应方法。或者可以通过自定义组件内置方法[getUIContext()/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)获取。
+- 列表选择弹出框 (ActionSheet)、警告弹出框 (AlertDialog)、选择器弹出框 (PickerDialog)中除CalendarPickerDialog都需先使用ohos.window中的getUIContext()方法获取UIContext实例，再通过此实例调用对应方法。或者可以通过自定义组件内置方法getUIContext()获取。
 
 操作菜单 (showActionMenu)、对话框 (showDialog)、列表选择弹出框 (ActionSheet)、警告弹出框 (AlertDialog)可以设置isModal为false变成非模态弹窗。
 
-操作菜单 (showActionMenu)、对话框 (showDialog)、列表选择弹出框 (ActionSheet)和警告弹出框 (AlertDialog)不支持设置内容区的字体样式，如字体颜色、大小换行等操作，如需自定义样式，建议使用[不依赖UI组件的全局自定义弹出框](arkts-uicontext-custom-dialog.md)或者[基础自定义弹出框](./arkts-common-components-custom-dialog.md)。
+操作菜单 (showActionMenu)、对话框 (showDialog)、列表选择弹出框 (ActionSheet)和警告弹出框 (AlertDialog)不支持设置内容区的字体样式，如字体颜色、大小换行等操作，如需自定义样式，建议使用不依赖UI组件的全局自定义弹出框或者基础自定义弹出框。
 
 ## 生命周期
 
@@ -35,7 +35,7 @@
 
 ## 操作菜单 (showActionMenu)
 
-操作菜单通过UIContext中的getPromptAction方法获取到PromptAction对象，再通过该对象调用[showActionMenu/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu11)接口实现，支持在回调或开发者自定义类中使用。
+操作菜单通过UIContext中的getPromptAction方法获取到PromptAction对象，再通过该对象调用showActionMenu接口实现，支持在回调或开发者自定义类中使用。
 
 操作菜单中，title字段的字体最大放大倍数为2。
 
@@ -95,7 +95,7 @@ export struct ShowActionMenuExample {
 
 ## 对话框 (showDialog)
 
-对话框通过UIContext中的getPromptAction方法获取到PromptAction对象，再通过该对象调用[showDialog/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)接口实现，支持在回调或开发者自定义类中使用。
+对话框通过UIContext中的getPromptAction方法获取到PromptAction对象，再通过该对象调用showDialog接口实现，支持在回调或开发者自定义类中使用。
   
 对话框中，title字段的字体最大放大倍数为2。
 
@@ -144,7 +144,7 @@ export struct ShowDialogExample {
               } catch (error) {
                 let message = (error as BusinessError).message;
                 let code = (error as BusinessError).code;
-                console.error(`showdialog args error code is ${code}, message is ${message}`);
+                console.error(`showDialog args error code is ${code}, message is ${message}`);
               }
             })
         }.width('100%')
@@ -165,11 +165,11 @@ export struct ShowDialogExample {
 
 ### 日历选择器弹窗 (CalendarPickerDialog)
 
-日历选择器弹窗提供日历视图，包含年、月和星期信息，通过[CalendarPickerDialog/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)接口实现。开发者可调用show函数，定义并弹出日历选择器弹窗。
+日历选择器弹窗提供日历视图，包含年、月和星期信息，通过CalendarPickerDialog接口实现。开发者可调用show函数，定义并弹出日历选择器弹窗。
 
-日历选择器弹窗的弹出依赖UI的执行上下文，不可在[UI上下文不明确](arkts-global-interface.md#ui上下文不明确)的地方使用，具体约束参见[UIContext/apis-arkui/arkts-apis-uicontext-uicontext.md)说明。
+日历选择器弹窗的弹出依赖UI的执行上下文，不可在UI上下文不明确的地方使用，具体约束参见UIContext说明。
 
-通过配置[CalendarDialogOptions/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md#calendardialogoptions对象说明)中的acceptButtonStyle、cancelButtonStyle属性可以实现自定义按钮样式。
+通过配置CalendarDialogOptions中的acceptButtonStyle、cancelButtonStyle属性可以实现自定义按钮样式。
 
 <!-- @[calender_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/CalendarPickerDialog.ets) -->
 
@@ -231,9 +231,9 @@ export struct CalendarDialog {
 
 开发者可以利用指定的日期范围，创建日期滑动选择器弹窗，将日期信息清晰地展示在弹出的窗口上。
 
-日期滑动选择器弹窗通过UIContext中的[showDatePickerDialog/apis-arkui/arkts-apis-uicontext-uicontext.md#showdatepickerdialog)接口实现。
+日期滑动选择器弹窗通过UIContext中的showDatePickerDialog接口实现。
 
-弹窗中配置[DatePickerDialogOptions/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md#datepickerdialogoptions对象说明)的lunarSwitch、showTime属性为true时，会展示切换农历的开关和时间，当checkbox被选中时，会显示农历。当按下确定按钮时，弹窗会通过onDateAccept返回目前所选中的日期。如需弹窗再次弹出时显示选中的是上一次确定的日期，就要在回调中重新给selectTime进行赋值。
+弹窗中配置DatePickerDialogOptions的lunarSwitch、showTime属性为true时，会展示切换农历的开关和时间，当checkbox被选中时，会显示农历。当按下确定按钮时，弹窗会通过onDateAccept返回目前所选中的日期。如需弹窗再次弹出时显示选中的是上一次确定的日期，就要在回调中重新给selectTime进行赋值。
 
 <!-- @[date_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerDialog.ets) -->
 
@@ -279,7 +279,7 @@ export struct DatePickerDialogExample {
 
 ![image](figures/UIContextShowdatepickerDialog.gif)
 
-该示例通过配置disappearTextStyle、textStyle、selectedTextStyle、acceptButtonStyle、cancelButtonStyle实现了自定义文本以及按钮样式。
+该示例通过配置textStyle、selectedTextStyle、acceptButtonStyle、cancelButtonStyle实现了自定义文本以及按钮样式。
 
 
 <!-- @[date_picker_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerCustomDialog.ets) -->
@@ -330,9 +330,9 @@ export struct DatePickerCustomDialogExample {
 
 开发者可根据24小时的时间区间，创建时间滑动选择器弹窗，将时间信息清晰地展示在弹出的窗口上。
 
-时间滑动选择器弹窗通过UIContext中的[showTimePickerDialog/apis-arkui/arkts-apis-uicontext-uicontext.md#showtimepickerdialog)接口实现。
+时间滑动选择器弹窗通过UIContext中的showTimePickerDialog接口实现。
 
-该示例通过配置[disappearTextStyle/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#disappeartextstyle10)、[textStyle/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#textstyle10)、[selectedTextStyle/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#selectedtextstyle10)、[acceptButtonStyle/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md#timepickerdialogoptions对象说明)、[cancelButtonStyle/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md#timepickerdialogoptions对象说明)实现了自定义文本以及按钮样式。
+该示例通过配置disappearTextStyle、textStyle、selectedTextStyle、acceptButtonStyle、cancelButtonStyle实现了自定义文本以及按钮样式。
 
 <!-- @[time_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/TimePickerDialog.ets) -->
 
@@ -385,7 +385,7 @@ export struct TimePickerDialogExample {
 
 开发者可根据指定的选择范围，创建文本滑动选择器弹窗，将文本信息清晰地展示在弹出的窗口上。
 
-文本滑动选择器弹窗通过UIContext中的[showTextPickerDialog/apis-arkui/arkts-apis-uicontext-uicontext.md#showtextpickerdialog)接口实现。
+文本滑动选择器弹窗通过UIContext中的showTextPickerDialog接口实现。
 
 该示例通过设置range的参数类型为TextCascadePickerRangeContent[]，实现3列文本选择器弹窗。当按下确定按钮时，弹窗会通过onAccept返回目前所选中文本和索引值。如需弹窗再次弹出时显示选中的是上一次确定的文本，就要在回调中重新给select进行赋值。
 
@@ -413,42 +413,42 @@ export struct TextPickerCNDialogExample {
         { text: '牡丹江市', children: [{ text: '东安区' }, { text: '西安区' }, { text: '爱民区' }] }]
     }
   ];
-  private select: number = 0;
+  private select: number[] = [0, 0, 0];
 
   build() {
-    // ···
+    // ...
       Column() {
         Button('showTextPickerDialog')
-        // ···
+        // ...
           .margin(30)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
               range: this.fruits,
               selected: this.select,
               onAccept: (value: TextPickerResult) => {
-                this.select = value.index as number
+                this.select = value.index as number[]
               }
             });
           })
       }.width('100%').margin({ top: 5 })
-    // ···
+      // ...
   }
 }
 ```
 
 ![image](figures/UIShowTextPickerDialog.gif)
 
-## 列表选择弹窗 (ActionSheet)
+## 列表选择弹出框 (ActionSheet)
 
-列表选择器弹窗适用于呈现多个操作选项，尤其当界面中仅需展示操作列表而无其他内容时。
+列表选择弹出框适用于呈现多个操作选项，尤其当界面中仅需展示操作列表而无其他内容时。
 
-列表选择器弹窗通过UIContext中的[showActionSheet/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)接口实现。
+列表选择弹出框通过UIContext中的showActionSheet接口实现。
 
-列表选择弹窗中，title字段的字体最大放大倍数为2。
+列表选择弹出框中，title字段的字体最大放大倍数为2。
 
 该示例通过配置width、height、transition等接口，定义了弹窗的样式以及弹出动效。
 
-<!-- @[action_sheet_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ActionSheet.ets) -->
+<!-- @[action_sheet_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ActionSheet.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -484,7 +484,7 @@ export struct showActionSheetExample {
                 confirm: {
                   value: 'Confirm button',
                   action: () => {
-                    console.info('Get Alert Dialog handled');
+                    console.info('Get ActionSheet handled');
                   }
                 },
                 alignment: DialogAlignment.Center,
@@ -516,7 +516,7 @@ export struct showActionSheetExample {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
-    // 请将$r('app.string.CustomDialog_ActionSheet')替换为实际资源文件，在本示例中该资源文件的value值为"列表选择弹窗"
+    // 请将$r('app.string.CustomDialog_ActionSheet')替换为实际资源文件，在本示例中该资源文件的value值为"列表选择弹出框"
     .title($r('app.string.CustomDialog_ActionSheet'))
   }
 }
@@ -532,16 +532,15 @@ export struct showActionSheetExample {
 * 警告弹窗用来提示重要信息，但会中断当前任务，尽量提供必要的信息和有用的操作。
 * 避免仅使用警告弹窗提供信息，用户不喜欢被信息丰富但不可操作的警告打断。
 
-警告弹窗通过UIContext中的[showAlertDialog/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)接口实现。
+警告弹窗通过UIContext中的showAlertDialog接口实现。
 
 警告弹窗中，title和subtitle字段的字体最大放大倍数为2。
 
-该示例通过配置width、height、transition等接口，定义了多个按钮弹窗的样式以及弹出动效。
+该示例通过配置transition等接口，定义了多个按钮弹窗的样式以及弹出动效。
 
 <!-- @[alert_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/AlertDialog.ets) -->
 
 ``` TypeScript
-import { PromptAction } from '@kit.ArkUI';
 
 @Entry
 @Component

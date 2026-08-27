@@ -26,17 +26,17 @@
 
 | 认证类型 | 支持切换业务自定义认证方式。<br>（√表示支持，x表示不支持。）| 
 | -------- | -------- |
-| 锁屏口令认证 | × | 
+| 锁屏口令认证 | x | 
 | 人脸认证 | √ | 
 | 指纹认证 | √ | 
 | 人脸+指纹<sup>18+</sup> | √ | 
-| 人脸+锁屏口令认证 | × | 
-| 指纹+锁屏口令认证 | × | 
-| 人脸+指纹+锁屏口令认证 | × | 
+| 人脸+锁屏口令认证 | x | 
+| 指纹+锁屏口令认证 | x | 
+| 人脸+指纹+锁屏口令认证 | x | 
 
 ## 开发示例
 
-针对需要切换自定义认证方式的场景，发起认证请求的方式请参考[发起认证](start-authentication.md)，但传入的widgetParam必须包含navigationButtonText字段。
+针对需要切换自定义认证方式的场景，发起认证请求的方式请参考发起认证，但传入的widgetParam必须包含navigationButtonText字段。
 
 当前示例仅展示如何配置界面和选择切换到自定义认证界面。具体拉起的页面及对应页面的实现，请开发者自行实现，代码插入位置可参考注释提示。
 
@@ -99,5 +99,5 @@ applyingCustomAuthentication() {
 
 ## 示例代码
 
-  - [切换自定义认证](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [切换自定义认证](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
   

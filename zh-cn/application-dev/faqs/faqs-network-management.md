@@ -32,7 +32,7 @@ extraData代表发送请求的额外数据，支持如下数据：
 
 **参考链接**
 
-[http常见响应码/apis-network-kit/js-apis-http.md#responsecode)和[Curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
+http常见响应码和[Curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
 
 
 ## http请求中response错误码返回6是什么意思(API 9)
@@ -47,7 +47,7 @@ extraData代表发送请求的额外数据，支持如下数据：
 
 **参考链接**
 
-更多错误码参考[http常见响应码/apis-network-kit/js-apis-http.md#responsecode)和[Curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
+更多错误码参考http常见响应码和[Curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
 
 ## \@ohos/axios三方件post请求queryParams参数场景下如何传参(API 9)
 
@@ -136,7 +136,7 @@ this.options = {
 
 **参考链接**
 
-[上传下载/apis-basic-services-kit/js-apis-request.md)
+上传下载
 
 
 ## 设备网络正常，调用connection.hasDefaultNet()接口失败(API 9)
@@ -149,7 +149,7 @@ this.options = {
 
 connection.hasDefaultNet 接口需要注明需要权限ohos.permission.GET_NETWORK_INFO
 
-权限申请链接：[声明权限](../security/AccessToken/declare-permissions.md)
+权限申请链接：声明权限
 
 
 ## 如何理解connection.getDefaultNet返回对象netHandle中的netId(API 9)
@@ -177,21 +177,21 @@ netId的值如0、100分别代表什么含义？
 
 **参考链接**
 
-[http数据请求](../network/http-request.md)
+http数据请求
 
 
 ## 如何使用JS封装网络请求(API 9)
 
 **解决措施**
 
-网络请求支持JS语言开发方式，可直接使用。具体使用参考如下文档：[@ohos.net.http (数据请求)/apis-network-kit/js-apis-http.md)
+网络请求支持JS语言开发方式，可直接使用。具体使用参考如下文档：@ohos.net.http (数据请求)
 
 
 ## 基于JS开发智能手表应用，如何编写网络请求(API 9)
 
 **解决措施**
 
-网络请求支持JS语言开发方式，可直接使用。具体使用参考如下文档：[@ohos.net.http (数据请求)/apis-network-kit/js-apis-http.md)
+网络请求支持JS语言开发方式，可直接使用。具体使用参考如下文档：@ohos.net.http (数据请求)
 
 
 ## 应用增加权限"ohos.permission.NOTIFICATION_CONTROLLER"，编译后无法启动(API 9)
@@ -213,7 +213,7 @@ WiFi模块中使用wifi.getIpInfo().ipAddress，报错Error: assertion (wifiDevi
 
 **解决措施**
 
-权限不足。请先检查是否申请了相关的操作权限，权限相关信息可参考[权限管理](../security/AccessToken/determine-application-mode.md)。
+权限不足。请先检查是否申请了相关的操作权限，权限相关信息可参考权限管理。
 
 ## 在使用Socket连接相关接口时，NetAddress的address参数只能是IP地址，如果只有host的情况如何处理？(API 11)
 
@@ -223,7 +223,7 @@ WiFi模块中使用wifi.getIpInfo().ipAddress，报错Error: assertion (wifiDevi
 
 **参考资料**
 
-[@ohos.net.connection (网络连接管理)/apis-network-kit/js-apis-net-connection.md)
+@ohos.net.connection (网络连接管理)
 
 ## 如何使用C接口使用网络相关功能？(API 11)
  
@@ -248,4 +248,4 @@ https://gitcode.com/openharmony/interface_sdk_c/tree/master/network
 
 **参考资料**
 
-[@ohos.net.socket (Socket连接)/apis-network-kit/js-apis-socket.md)
+@ohos.net.socket (Socket连接)

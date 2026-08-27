@@ -1,10 +1,10 @@
 # 使用Node-API实现跨语言交互开发流程
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 使用Node-API实现跨语言交互，首先需要按照Node-API的机制实现模块的注册和加载等相关动作。
@@ -229,10 +229,10 @@ struct Index {
 
 ### 代码调试设备选择
 
-建议开发者优先使用真机进行代码调试，若无真机或者真机无权限则可使用模拟器进行调试，模拟器调试中遇到的问题详见[bm工具](../tools/bm-tool.md#bm工具错误码)
+建议开发者优先使用真机进行代码调试，若无真机或者真机无权限则可使用模拟器进行调试，模拟器调试中遇到的问题详见bm工具
 
 开发者不要使用预览器进行功能调试，预览器的主要功能是调试界面组件，若用于功能调试可能会出现如下报错：
 
 - TypeError: undefined is not callable
 
-部分常见错误用法已增加维测手段覆盖，详见[使用Node-API接口产生的异常日志/崩溃分析](use-napi-about-crash.md)。
+部分常见错误用法已增加维测手段覆盖，详见使用Node-API接口产生的异常日志/崩溃分析。

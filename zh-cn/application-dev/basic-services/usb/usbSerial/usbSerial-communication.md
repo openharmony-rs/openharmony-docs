@@ -13,7 +13,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
 
 ## 环境准备
 
-请参考USB串口通信服务开发概述[环境准备](usbSerial-overview.md#环境准备)。
+请参考USB串口通信服务开发概述环境准备。
 
 ## 开发指导
 
@@ -45,7 +45,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
    <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // 导入usbManager模块
+   // 导入serialManager模块
    import { serialManager } from '@kit.BasicServicesKit';
    import { BusinessError } from '@kit.BasicServicesKit'
    import { buffer } from '@kit.ArkTS';

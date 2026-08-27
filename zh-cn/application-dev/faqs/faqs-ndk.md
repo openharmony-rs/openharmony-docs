@@ -16,7 +16,7 @@ libc++_shared.so被打包到应用目录下了，每个应用都有一份独立�
 
 **解决方案**
 
-当前官方SDK只支持Cmake构建，同时对于依赖GN构建的场景提供了迁移指导
+当前官方SDK只支持CMake构建，同时对于依赖GN构建的场景提供了迁移指导
 
 **参考资料**
 
@@ -292,7 +292,7 @@ libc++_shared.so被打包到应用目录下了，每个应用都有一份独立�
 
 **参考链接**
 
-[使用Node-API接口进行线程安全开发](../napi/use-napi-thread-safety.md)
+使用Node-API接口进行线程安全开发
 
 ## 由napi_create_object创建，或者作为参数传下来的JS对象，如果想持久持有，需要怎么做？(API 10)
 
@@ -312,8 +312,8 @@ libc++_shared.so被打包到应用目录下了，每个应用都有一份独立�
 
 **解决方案**
 
-纯在ArkTS侧不可以往C++层注册对象或者函数，开发者需要回到C++层自己处理；env可以长期持有，不过使用env时，需要在特定的线程，使用env时需要在创建该env的ArkTS线程使用。
+仅在ArkTS侧不可以往C++层注册对象或者函数，开发者需要回到C++层自己处理；env可以长期持有，不过使用env时，需要在特定的线程，使用env时需要在创建该env的ArkTS线程使用。
 
 **参考资料**
 
-1. [Native与ArkTS对象绑定](../napi/use-napi-object-wrap.md)
+1. Native与ArkTS对象绑定

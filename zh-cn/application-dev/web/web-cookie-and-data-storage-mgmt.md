@@ -12,9 +12,9 @@ Cookie是服务端生成并发送到客户端的数据。客户端持有Cookie�
 
 ## Cookie管理
 
-Web组件提供[WebCookieManager/apis-arkweb/arkts-apis-webview-WebCookieManager.md)类来管理Cookie信息。
+Web组件提供WebCookieManager类来管理Cookie信息。
 
-下面以[configCookieSync()/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11)接口为例，为“www\.example.com”设置单个Cookie的值“value=test”。
+下面以configCookieSync()接口为例，为“www\.example.com”设置单个Cookie的值“value=test”。
 
 <!-- @[set_the_value_of_a_single_cookie](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/CookieManagement.ets) -->
 
@@ -44,7 +44,7 @@ struct WebComponent {
 }
 ```
 
-从API version 22开始，开发者可以通过[setLazyInitializeWebEngine()/apis-arkweb/arkts-apis-webview-WebCookieManager.md#setlazyinitializewebengine22)，为“www\.example.com”设置单个Cookie的值“value=test”时跳过初始化ArkWeb内核，以节省[configCookieSync()/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11)接口耗时。其他Cookie的相关功能及使用，请参考[WebCookieManager()/apis-arkweb/arkts-apis-webview-WebCookieManager.md)接口文档。
+从API version 22开始，开发者可以通过setLazyInitializeWebEngine()，为“www\.example.com”设置单个Cookie的值“value=test”时跳过初始化ArkWeb内核，以节省configCookieSync()接口耗时。其他Cookie的相关功能及使用，请参考WebCookieManager()接口文档。
 
 <!-- @[set_lazy_initialize_web_engine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/CookieManagement_LazyInitializeWebEngine.ets) -->
 
@@ -78,16 +78,16 @@ struct WebComponent {
 
 > **说明：**
 >
-> Cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync/apis-arkweb/arkts-apis-webview-WebCookieManager.md#savecookieasync)进行强制落盘（PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieAsync，也不会将session cookie写入磁盘）。
+> Cookie每30s周期性保存到磁盘中，也可以使用接口saveCookieAsync进行强制落盘（PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieAsync，也不会将session cookie写入磁盘）。
 
 ## 缓存与存储管理
 
-在访问网站时，网络资源请求通常需要较长的时间。开发者可以通过Cache和Dom Storage等手段将资源保存到本地，以提高访问同一网站的速度。
+在访问网站时，网络资源请求通常需要较长的时间。开发者可以通过Cache和DOM Storage等手段将资源保存到本地，以提高访问同一网站的速度。
 
 
 ### Cache
 
-使用[cacheMode()/apis-arkweb/arkts-basic-components-web-attributes.md#cachemode)配置页面资源的缓存模式，Web组件为开发者提供四种缓存模式，分别为：
+使用cacheMode()配置页面资源的缓存模式，Web组件为开发者提供四种缓存模式，分别为：
 
 - Default：优先使用未过期的缓存。如果缓存不存在，则从网络获取。
 
@@ -120,7 +120,7 @@ struct WebComponent {
 ```
 
 
-为了获取最新资源，开发者可以通过[removeCache()/apis-arkweb/arkts-apis-webview-WebviewController.md#removecache)接口清除已经缓存的资源，示例代码如下：
+为了获取最新资源，开发者可以通过removeCache()接口清除已经缓存的资源，示例代码如下：
 <!-- @[clear_the_cached_resources_that_have_been_stored](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/Cache_two.ets) -->
 
 ``` TypeScript
@@ -154,7 +154,7 @@ struct WebComponent {
 
 ### DOM Storage
 
-DOM Storage包含了Session Storage和Local Storage两类。Session Storage为临时数据，其存储与释放跟随会话生命周期；Local Storage为持久化数据，保存在应用目录下。两者的数据均通过Key-Value的形式存储，在访问需要客户端存储的页面时使用。开发者可以通过Web组件的属性接口[domStorageAccess()/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess)进行使能配置，示例如下：
+DOM Storage包含了Session Storage和Local Storage两类。Session Storage为临时数据，其存储与释放跟随会话生命周期；Local Storage为持久化数据，保存在应用目录下。两者的数据均通过Key-Value的形式存储，在访问需要客户端存储的页面时使用。开发者可以通过Web组件的属性接口domStorageAccess()进行使能配置，示例如下：
 
 
 <!-- @[enable_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/DomStorage.ets) -->

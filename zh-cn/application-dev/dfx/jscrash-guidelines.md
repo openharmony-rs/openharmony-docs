@@ -19,14 +19,14 @@
 
 2. 方舟运行时收集故障信息，并将其上报给维测进程Hiview。
 
-3. 维测进程Hiview补充仅其有权限获取的信息(如整机内存状态、应用页面切换轨迹)，生成对应的崩溃日志文件, 存储在“/data/log/faultlog/faultlogger”目录下。
+3. 维测进程Hiview补充仅其有权限获取的信息（如整机内存状态、应用页面切换轨迹），生成对应的崩溃日志文件, 存储在“/data/log/faultlog/faultlogger”目录下。
 
-4. 上报崩溃事件，开发者可通过HiAppEvent订阅[崩溃事件](hiappevent-watcher-crash-events.md)。如需了解JS Crash问题分析方法，请参见[JS Crash类问题分析方法](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-app-crash-js-way)。
+4. 上报崩溃事件，开发者可通过HiAppEvent订阅崩溃事件。如需了解JS Crash问题分析方法，请参见[JS Crash类问题分析方法](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-app-crash-js-way)。
 
 
 ## 约束与限制
 
-在async修饰的异步函数中主动抛出异常，不会产生JS Crash导致应用崩溃，开发者可以通过[errorManager.on('error')/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)观测该异常，样例代码参考[Async函数内部异常的处理机制](../arkts-utils/arkts-runtime-faq.md#async函数内部异常的处理机制)。从**API版本26.0.0**开始，当应用已注册ErrorManager观测异常，除异常为不可捕获类型（当前仅包含OutOfMemoryError）之外，其它类型异常将不会生成HiAppEvent事件上报。
+在async修饰的异步函数中主动抛出异常，不会产生JS Crash导致应用崩溃，开发者可以通过errorManager.on('error')观测该异常，样例代码参考Async函数内部异常的处理机制。
 
 
 ## 日志获取
@@ -39,7 +39,7 @@ DevEco Studio会收集设备/data/log/faultlog/faultlogger/路径下的进程崩
 
 **方式二：通过HiAppEvent接口订阅**
 
-HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hiappevent-intro.md)。参考[订阅崩溃事件（ArkTS）](hiappevent-watcher-crash-events-arkts.md)或[订阅崩溃事件（C/C++）](hiappevent-watcher-crash-events-ndk.md)完成崩溃事件订阅，再通过事件的[external_log](hiappevent-watcher-crash-events.md#事件字段说明)字段读取故障日志文件内容。
+HiAppEvent给开发者提供了故障订阅接口，详见HiAppEvent介绍。参考订阅崩溃事件（ArkTS）或订阅崩溃事件（C/C++）完成崩溃事件订阅，再通过事件的external_log字段读取故障日志文件内容。
 
 **方式三：通过hdc获取日志，需打开开发者选项**
 
@@ -72,17 +72,18 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 | App running unique id | 应用运行时唯一关联的id。 | 26.0.0 | 是 | - |
 | Process life time | 故障进程存活时间 | 22 | 是 | - |
 | Process Memory(kB) | 进程占用内存 | 20 | 是 | - |
-| Device Memory(kB) | 整机内存信息 | 20 | 否 | 依赖维测服务进程，若发生故障时维测服务进程停止或设备重启则无此字段，详见[检测原理](#检测原理)。 |
+| Device Memory(kB) | 整机内存信息 | 20 | 否 | 依赖维测服务进程，若发生故障时维测服务进程停止或设备重启则无此字段，详见检测原理。 |
 | Page switch history | 页面切换轨迹 | 20 | 否 | 如果维测服务进程出现故障或未缓存切换轨迹，则不包含此字段。 |
 | Reason | 故障原因 | 8 | 是 | - |
 | Error name | 故障类型 | 8 | 是 | - |
 | Error message | 异常信息 | 8 | 是 | - |
 | Stacktrace | 故障堆栈 | 8 | 是 | - |
 | HybridStack | CPP和JS之间跨语言的故障堆栈 | 22 | 否 | ARM 64位系统下，若Stacktrace为JS栈时，则包含此字段，至多显示256层。 |
-| SubmitterStacktrace | 提交者线程栈 | 20 | 否 | 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。<br>对于**API version 22**之前版本，**三方和系统应用**[libuv/native-lib/libuv.md)和[ffrt/apis-ffrt-kit/capi-ffrt.md)提交异步任务仅debug版本默认开启。<br>对于**API version 22**及之后版本，**三方应用**通过libuv提交异步任务debug和release版本均默认开启；**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。 |
+| SubmitterStacktrace | 提交者线程栈 | 20 | 否 | 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。<br>对于**API version 22**之前版本，**三方和系统应用**libuv和ffrt提交异步任务仅debug版本默认开启。<br>对于**API version 22**及之后版本，**三方应用**通过libuv提交异步任务debug和release版本均默认开启；**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。 |
 | HiLog | 故障之前打印的流水日志，最多1000行 | 20 | 是 | - |
 | AsyncStack | Promise异步栈 | 23 | 否 | ARM 64位系统下，若开启Promise异步栈开关，则包含此字段。 |
-| ModuleImportStack | 模块加载链路 | 26.0.0 | 否 | ARM 64位系统下，若开启[模块加载链路调试开关](../arkts-utils/arkts-module-debug.md)，则包含此字段。 |
+| ModuleImportStack | 模块加载链路 | 26.0.0 | 否 | ARM 64位系统下，若开启模块加载链路调试开关，则包含此字段。 |
+| NativeModuleErrorInfo | so加载失败信息，最多20个加载失败信息 | 26.0.0 | 是 | - |
 
 以下是JS Crash崩溃日志规格。
 ```text
@@ -103,7 +104,7 @@ Process name:com.example.myapplication <- 进程名
 App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:1s  <- 进程存活时间
 Process Memory(kB): 1897(Rss) <- 进程占用内存
-Device Memory(kB): Total 1935820, Free 482136, Available 1204216  <- 整机内存信息
+Device Memory(kB): Total 1935820, Free 482136, Available 1204216  <- 整机内存信息（非必选）
 Page switch history: <- 页面切换轨迹
   14:08:30:327 /ets/pages/Index:JsError
   14:08:28:986 /ets/pages/Index
@@ -193,7 +194,7 @@ Stacktrace:
 
 > **注意：**
 >
-> 仅在通过Navigation跳转到子页面时才会有页面名，页面名在[系统路由表](../ui/arkts-navigation-cross-package.md#系统路由表)中定义。
+> 仅在通过Navigation跳转到子页面时才会有页面名，页面名在系统路由表中定义。
 >
 > 当应用发生前后台切换时，对应的页面URL为空，但是会将enters foreground、leaves foreground作为特殊的页面名进行填充。
 >
@@ -309,9 +310,9 @@ at onPageShow har1 (har1/src/main/ets/pages/Index.ets:7:13)
 
 从API 22起，在ARM 64位系统下，HybridStack中支持打印CPP和JS之间跨语言的代码调用栈。
 
-CPP代码调用栈详细说明[CPP异常代码调用栈格式规范](cppcrash-guidelines.md#一般故障场景日志规格)。
+CPP代码调用栈详细说明CPP异常代码调用栈格式规范。
 
-JS代码调用栈详细说明[JS异常代码调用栈格式规范](#异常代码调用栈格式)。
+JS代码调用栈详细说明JS异常代码调用栈格式规范。
 
 ### Promise异步栈
 
@@ -327,7 +328,7 @@ hdc shell param set persist.ark.properties 0x105c
 hdc shell reboot
 ```
 
-Promise异步任务中抛出的异常默认不会导致JS Crash，但可以通过[on('unhandledRejection')/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronunhandledrejection12)捕获Rejected Promise后，主动将异常抛出，从而触发JS Crash。
+Promise异步任务中抛出的异常默认不会导致JS Crash，但可以通过on('unhandledRejection')捕获Rejected Promise后，主动将异常抛出，从而触发JS Crash。
 
 在启用Promise异步栈功能的情况下，当Promise任务中抛出异常并导致JS Crash时，JS Crash日志中会展示Promise异步任务创建时的栈信息。
 
@@ -371,6 +372,23 @@ HiLog:
 ...
 ```
 
+### NativeModuleErrorInfo 
+JS Crash日志中的NativeModuleErrorInfo可记录最早的20条so加载失败信息，如果总数超出20个，请在hilog根据'Load native module failed'关键字查找是否so加载失败。NativeModuleErrorInfo信息格式如下：
+
+```text
+...
+Stacktrace:
+...
+HybridStack:
+...
+NativeModuleErrorInfo:
+There are a total of 2 SO loading failure messages, and 2 of them are displayed here.
+#1 ModuleName:module1 Reason:dlopen failed: load module default/module1 failed.
+#2 ModuleName:module2 Reason:dlopen failed: load module default/module2 failed.
+...
+HiLog:
+...
+```
 ## JsCrash聚类
 
 Js Crash聚类信息以“Stacktrace:”字段开始，包含ARM 64系统的“HybridStack:”的调用栈。
@@ -397,4 +415,4 @@ HybridStack:
 ...
 ```
 
-聚类方法同Cpp Crash一致，参考[CppCrash聚类](cppcrash-guidelines.md#cppcrash聚类)。
+聚类方法同Cpp Crash一致，参考CppCrash聚类。

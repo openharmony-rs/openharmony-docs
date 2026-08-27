@@ -9,7 +9,7 @@
 
 开发者可以调用本模块的Native API接口，完成音视频封装，即将音频、视频等编码后的媒体数据，按一定的格式存储到文件里。
 
-当前支持的封装能力请参考AVCodec支持的格式中的[媒体数据封装](avcodec-support-formats.md#媒体数据封装)。
+当前支持的封装能力请参考AVCodec支持的格式中的媒体数据封装。
 
 <!--RP2--><!--RP2End-->
 
@@ -29,11 +29,11 @@
 
 ## 开发指导
 
-详细的API说明请参考[native_avmuxer.h/apis-avcodec-kit/capi-native-avmuxer-h.md)。
+详细的API说明请参考native_avmuxer.h。
 
 > **说明：**
 >
-> 如果调用封装模块写本地文件，需要[向用户申请授权](../../security/AccessToken/request-user-authorization.md)：ohos.permission.READ_MEDIA, ohos.permission.WRITE_MEDIA。
+> 如果调用封装模块写本地文件，需要向用户申请授权：ohos.permission.READ_MEDIA, ohos.permission.WRITE_MEDIA。
 
 ### 在 CMake 脚本中链接动态库
 
@@ -46,7 +46,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
 参考以下示例代码，完成音视频封装mp4的全流程。
 
-不同的封装格式需要配置的key请参考AVCodec支持的格式中的[媒体数据封装](avcodec-support-formats.md#媒体数据封装)。
+不同的封装格式需要配置的key请参考AVCodec支持的格式中的媒体数据封装。
 
 1. 添加头文件。
 
@@ -77,7 +77,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
 4. 添加文件级数据。
 
-   文件级数据已定义的key详见AVCodec支持的格式中的[媒体数据封装](avcodec-support-formats.md#媒体数据封装)。
+   文件级数据已定义的key详见AVCodec支持的格式中的媒体数据封装。
 
    用户自定义的key必须以"com.openharmony."为开头。值类型可以为int32_t、float、string，从API version 20开始增加支持uint8_t*。
 
@@ -152,7 +152,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 6. 添加视频轨。
    > **说明：**
    >
-   > - 当开发者需要设置色彩信息时，必须保证OH_MD_KEY_COLOR_PRIMARIES、OH_MD_KEY_TRANSFER_CHARACTERISTICS、OH_MD_KEY_MATRIX_COEFFICIENTS三个key设置的值都在其各自的参数范围内，系统才会识别这是有效色彩信息数据。参数设置范围可参考[OH_ColorPrimary/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_colorprimary)、[OH_TransferCharacteristic/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_transfercharacteristic)和[OH_MatrixCoefficient/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_matrixcoefficient)。
+   > - 当开发者需要设置色彩信息时，必须保证OH_MD_KEY_COLOR_PRIMARIES、OH_MD_KEY_TRANSFER_CHARACTERISTICS、OH_MD_KEY_MATRIX_COEFFICIENTS三个key设置的值都在其各自的参数范围内，系统才会识别这是有效色彩信息数据。参数设置范围可参考OH_ColorPrimary、OH_TransferCharacteristic和OH_MatrixCoefficient。
    > - 当开发者输入的色彩信息与视频码流的参数集中的色彩信息不一致时，系统以视频码流中的色彩信息为准。
 
    **方法一：用OH_AVFormat_Create创建format**
@@ -343,7 +343,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
 flv格式仅支持一个音频轨和一个视频轨，不支持设置旋转角度、封面轨和辅助轨。
 
-flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数据封装](avcodec-support-formats.md#媒体数据封装)。
+flv格式封装需要配置的key请参考AVCodec支持的格式中的媒体数据封装。
 
 1. 添加头文件。
 
@@ -368,7 +368,7 @@ flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数
 
 4. 添加文件级数据。
 
-   文件级数据已定义的key详见AVCodec支持的格式中的[媒体数据封装](avcodec-support-formats.md#媒体数据封装)。
+   文件级数据已定义的key详见AVCodec支持的格式中的媒体数据封装。
 
    用户自定义的key必须以"com.openharmony."为开头。值类型为string。
 
@@ -421,7 +421,7 @@ flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数
 
    > **说明：**
    >
-   > 当开发者需要设置色彩信息时，必须保证OH_MD_KEY_COLOR_PRIMARIES、OH_MD_KEY_TRANSFER_CHARACTERISTICS、OH_MD_KEY_MATRIX_COEFFICIENTS三个key设置的值都在其各自的参数范围内，系统才会识别这是有效色彩信息数据。参数设置范围可参考[OH_ColorPrimary/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_colorprimary)、[OH_TransferCharacteristic/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_transfercharacteristic)和[OH_MatrixCoefficient/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_matrixcoefficient)。
+   > 当开发者需要设置色彩信息时，必须保证OH_MD_KEY_COLOR_PRIMARIES、OH_MD_KEY_TRANSFER_CHARACTERISTICS、OH_MD_KEY_MATRIX_COEFFICIENTS三个key设置的值都在其各自的参数范围内，系统才会识别这是有效色彩信息数据。参数设置范围可参考OH_ColorPrimary、OH_TransferCharacteristic和OH_MatrixCoefficient。
 
    ```c++
    int videoTrackId = -1;

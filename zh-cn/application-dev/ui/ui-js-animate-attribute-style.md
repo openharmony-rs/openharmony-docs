@@ -55,7 +55,7 @@ text {
   font-size: 35px;
   animation: 2s change2 infinite linear-out-slow-in;
 }
-/* 颜色变化 */
+/* 颜色与不透明度变化 */
 @keyframes change{
   from {
     background-color: #f76160;
@@ -89,7 +89,7 @@ text {
 ```
 
 
-![zh-cn_image_0000001217168141](figures/zh-cn_image_0000001217168141.gif)
+![animation3](figures/animation3.gif)
 
 
 > **说明：** 

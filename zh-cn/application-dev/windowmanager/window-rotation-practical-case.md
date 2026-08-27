@@ -1,9 +1,9 @@
-# 窗口旋转场景实例
+# 窗口旋转实践案例
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @lizihao_73-->
-<!--Designer: @wambers584-->
+<!--Designer: @zhoulin_-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -17,13 +17,15 @@
 
 开发者可根据自身业务梳理不同设备形态下对旋转的诉求，如果单一策略（如：FOLLOW_DESKTOP、AUTO_ROTATION_UNSPECIFIED）能满足需求，推荐使用单一策略。若单一策略不能满足，可参考断点机制，实现差异化适配。
 
-比如，在三折叠设备上，期望折叠态时竖屏显示，M态时竖屏显示，G态时横屏显示；在平板设备上，期望横屏显示；在直板机设备上，期望竖屏显示；在此场景下，可采用[WidthBreakpoint/apis-arkui/arkui-ts/ts-appendix-enums.md#widthbreakpoint13)断点机制实现差异化适配。
+比如，在三折叠设备上，期望折叠态时竖屏显示，M态时竖屏显示，G态时横屏显示；在平板设备上，期望横屏显示；在直板机设备上，期望竖屏显示；在此场景下，可采用WidthBreakpoint断点机制实现差异化适配。
 
 示例代码如下：
 
-```ts
-import { window } from '@kit.ArkUI'
-import common from '@ohos.app.ability.common';
+<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+import { window } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 import { Callback } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
 
@@ -32,19 +34,22 @@ import { display } from '@kit.ArkUI';
 struct Index {
   @State currentOrientation: string = 'UNSPECIFIED';
   private stage: window.WindowStage = (this.getUIContext().getHostContext() as common.UIAbilityContext).windowStage;
+  private foldDisplayModeCallback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
+    console.info(`Listening enabled. Data: ${data}`);
+    this.getBreakPointAndSetOrientation();
+  };
 
   aboutToAppear() {
-    let ret: boolean = false;
-    ret = display.isFoldable();
+    const ret = display.isFoldable();
     if (ret) {
-      let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
-        console.info(`Listening enabled. Data: ${data}`);
-        this.getBreakPointAndSetOrientation();
-      };
-      display.on('foldDisplayModeChange', callback);
+      display.on('foldDisplayModeChange', this.foldDisplayModeCallback);
     } else {
       this.getBreakPointAndSetOrientation();
     }
+  }
+
+  aboutToDisappear() {
+    display.off('foldDisplayModeChange', this.foldDisplayModeCallback);
   }
 
   private getBreakPointAndSetOrientation(): void {
@@ -52,7 +57,7 @@ struct Index {
     let displayWidth = displayInfo.width;
     let displayHeight = displayInfo.height;
     let heightBp = displayHeight / displayWidth;
-    if(displayWidth > displayHeight) {
+    if (displayWidth > displayHeight) {
       let temp = displayWidth;
       displayWidth = displayHeight;
       displayHeight = temp;
@@ -68,13 +73,14 @@ struct Index {
       this.currentOrientation = 'PORTRAIT';
     }
   }
+
   build() {
     RelativeContainer() {
       Text(this.currentOrientation)
         .fontWeight(600)
         .fontSize(30)
         .textAlign(TextAlign.Center)
-        .position({y: 300})
+        .position({ y: 300 })
         .width('100%')
     }
     .height('100%')
@@ -95,7 +101,7 @@ struct Index {
 
 ## 实现屏幕方向和窗口的orientation的相互转换
 
-目前存在[屏幕orientation/apis-arkui/js-apis-display.md#属性)、[屏幕rotation/apis-arkui/js-apis-display.md#属性)和[窗口orientation/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)概念，它们之间存在关联，但并不相同，三者之间的区别与联系可以参考[display.orientation与window.orientation的区别](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section156337181114)、[window.orientation与display.rotation的关系](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section20201743171811)。
+目前存在屏幕orientation、屏幕rotation和窗口orientation概念，它们之间存在关联，但并不相同，可以参考[display.Orientation与display.rotation的关系](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section5175174443718)。
 
 在多设备、多形态的场景下（例如折叠屏手机、平板、外接显示器），屏幕的rotation（物理角度）和屏幕的orientation（逻辑横竖状态）并不总是一一对应。
 
@@ -117,19 +123,21 @@ struct Index {
 | 270 | PORTRAIT_INVERTED | PORTRAIT_INVERTED |
 | 0 | LANDSCAPE_INVERTED | LANDSCAPE |
 
-屏幕方向与窗口方向在横屏方向上的定义并不一致。比如在直板机上，窗口方向的横屏对应屏幕方向的反向横屏；窗口方向的反向横屏则对应屏幕方向的横屏。屏幕角度和屏幕方向也不总是一一对应。比如在三折叠全展开态上，屏幕角度为0时，屏幕方向并不是竖屏，而是反向横屏。如果开发者直接用[display.rotation/apis-arkui/js-apis-display.md#属性)或[display.orientation/apis-arkui/js-apis-display.md#属性)来判断窗口实际显示的方向，可能会出现应用显示方向错位的问题。因此，不能简单通过屏幕的orientation或rotation来判断窗口的orientation。
+屏幕方向与窗口方向在横屏方向上的定义并不一致。比如在直板机上，窗口方向的横屏对应屏幕方向的反向横屏；窗口方向的反向横屏则对应屏幕方向的横屏。屏幕角度和屏幕方向也不总是一一对应。比如在三折叠全展开态上，屏幕角度为0时，屏幕方向并不是竖屏，而是反向横屏。如果开发者直接用display.rotation或display.orientation来判断窗口实际显示的方向，可能会出现应用显示方向错位的问题。因此，不能简单通过屏幕的orientation或rotation来判断窗口的orientation。
 
-若开发者想准确知道当前窗口方向从而选择旋转策略（比如视频播放页面锁定当前方向），推荐获取到[display.rotation/apis-arkui/js-apis-display.md#属性)或[display.orientation/apis-arkui/js-apis-display.md#属性)后，再使用[convertOrientationAndRotation()/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23)将屏幕方向转化为窗口方向，具体示例如下：
+若开发者想准确知道当前窗口方向从而选择旋转策略（比如视频播放页面锁定当前方向），推荐获取到display.rotation或display.orientation后，再使用convertOrientationAndRotation()将屏幕方向转化为窗口方向，具体示例如下：
 
-1. 获取目标屏幕方向。调用[getDefaultDisplaySync()/apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获取屏幕方向。  
+1. 获取目标屏幕方向。调用getDefaultDisplaySync()获取目标屏幕的Display对象，再通过其display.orientation属性获取屏幕方向。
 
-2. 将屏幕方向转换为窗口方向。调用[convertOrientationAndRotation()/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23)可以把屏幕方向[display.orientation/apis-arkui/js-apis-display.md#属性)转换为窗口方向[orientation/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)。
+2. 将屏幕方向转换为窗口方向。调用convertOrientationAndRotation()可以把屏幕方向display.orientation转换为窗口方向orientation。
 
-3. 将窗口方向转换为旋转策略。窗口方向还需要进一步转换为系统可识别的旋转策略窗口[Orientation/apis-arkui/arkts-apis-window-e.md#orientation9)，才能传给setPreferredOrientation()。
+3. 将窗口方向转换为旋转策略。窗口方向还需要进一步转换为系统可识别的旋转策略窗口Orientation，才能传给setPreferredOrientation()。
 
-4. 调用[setPreferredOrientation()/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置旋转策略锁定显示方向。
+4. 调用setPreferredOrientation()接口设置旋转策略锁定显示方向。
 
-```ts
+<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ConvertOrientationAndRotationSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { display, window } from '@kit.ArkUI';
 
 @Entry
@@ -142,7 +150,7 @@ struct SpecificSceneSetOrientationIndex {
       const disp = display.getDefaultDisplaySync();
       const displayOrientation = disp.orientation; // 当前屏幕方向（0/1/2/3）
 
-      console.info("Current display orientation = " + displayOrientation);
+      console.info('Current display orientation = ' + displayOrientation);
       // 2.将displayOrientation转换为windowOrientation
       let windowOrientation: number =
         this.mainWindow.convertOrientationAndRotation(
@@ -167,21 +175,21 @@ struct SpecificSceneSetOrientationIndex {
           orientation = window.Orientation.LANDSCAPE;
           break;
         default:
-          throw new Error("Invalid orientation value");
+          throw new Error('Invalid orientation value');
       }
       // 4.设置旋转策略锁定窗口方向
       this.mainWindow.setPreferredOrientation(orientation, (err) => {
         if (err && err.code) {
-          console.error("setPreferredOrientation failed: " + JSON.stringify(err));
+          console.error('setPreferredOrientation failed: ' + JSON.stringify(err));
         }
       });
     } catch (exception) {
-      console.error("Exception in setOrientationByDisplay: " + JSON.stringify(exception));
+      console.error('Exception in setOrientationByDisplay: ' + JSON.stringify(exception));
     }
   }
   build() {
     Column() {
-      Text("Lock the display orientation")
+      Text('Lock the display orientation')
         .fontSize(17)
       Button('Set orientation from display')
         .onClick(() => {

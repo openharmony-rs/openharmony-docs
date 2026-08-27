@@ -1,4 +1,4 @@
-# 音频解码
+# 异步模式音频解码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
@@ -9,7 +9,7 @@
 
 开发者可以调用本模块的Native API接口，完成音频解码，即将媒体数据解码为PCM码流。
 
-当前支持的解码能力请参考[AVCodec支持的格式](avcodec-support-formats.md#音频解码)。
+当前支持的解码能力请参考AVCodec支持的格式。
 
 **适用场景**
 
@@ -28,7 +28,7 @@
 
 ## 开发指导
 
-详细的API说明请参考[native_avcodec_audiocodec.h/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md)。
+详细的API说明请参考native_avcodec_audiocodec.h。
 
 参考以下示例代码，完成音频解码的全流程，包括：创建解码器、设置解码参数（采样率/码率/声道数等）、开始、刷新、重置、销毁资源。
 
@@ -196,9 +196,9 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 4. （可选）OH_AudioCodec_SetDecryptionConfig设置解密配置。
 
-   当获取到DRM信息(参考[音视频解封装](audio-video-demuxer.md)开发步骤第4步)后，通过此接口进行解密配置。
+   当获取到DRM信息(参考音视频解封装开发步骤第4步)后，通过此接口进行解密配置。
 
-   DRM相关接口详见[DRM API文档/apis-drm-kit/capi-drm.md)。
+   DRM相关接口详见DRM API文档。
 
    此接口需在Prepare前调用。
 
@@ -259,7 +259,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ![Audio decoder format range description](figures/decoder_format.png)
    <!--RP7End-->
 
-   从API version 20开始，支持通过[OH_AVCapability_GetAudioSupportedSampleRateRanges/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getaudiosupportedsamplerateranges)接口进行采样率范围能力查询，以下几种音频解码类型支持对范围内的任意采样率进行解码：
+   从API version 20开始，支持通过OH_AVCapability_GetAudioSupportedSampleRateRanges接口进行采样率范围能力查询，以下几种音频解码类型支持对范围内的任意采样率进行解码：
 
    | 音频解码类型 |    采样率(Hz)   |
    | ----------- | --------------- |
@@ -333,7 +333,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 8. （可选）调用OH_AVCencInfo_SetAVBuffer()，设置cencInfo。
 
-   若当前播放的节目是DRM加密节目，且由上层应用做[媒体解封装](audio-video-demuxer.md)，则须调用OH_AVCencInfo_SetAVBuffer()将cencInfo设置给AVBuffer，以实现AVBuffer中媒体数据的解密。
+   若当前播放的节目是DRM加密节目，且由上层应用做媒体解封装，则须调用OH_AVCencInfo_SetAVBuffer()将cencInfo设置给AVBuffer，以实现AVBuffer中媒体数据的解密。
 
    添加头文件：
 

@@ -2,7 +2,7 @@
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -16,7 +16,7 @@
 
 ### CustomInput; 自定义输入框
 
-开发者自定义的文本输入控件，通过集成[InputMethodController/apis-ime-kit/js-apis-inputmethod.md#inputmethodcontroller)实现与输入法的绑定。
+开发者自定义的文本输入控件，通过集成InputMethodController实现与输入法的绑定。
 
 ## D
 
@@ -28,7 +28,7 @@
 
 ### EditorAttribute; 编辑框属性
 
-描述编辑框的特征属性，包含textInputType、enterKeyType、immersiveMode等字段。
+描述编辑框的特征属性，包含inputPattern、enterKeyType、immersiveMode等字段。
 
 ### ExtensionContext; 扩展能力上下文
 
@@ -50,7 +50,7 @@ Extension能力的上下文环境，提供启动、停止、绑定、解绑Abili
 
 ### Full experience mode; 完整体验模式
 
-输入法应用的完全访问模式，提供完整的输入法功能。
+输入法应用的完整体验模式，提供完整的输入法功能。
 
 ## I
 

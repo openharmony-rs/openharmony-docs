@@ -8,7 +8,7 @@
 <!--Adviser: @huipeizi-->
 
 ## 概述
-自定义组件冻结功能是指通过设置[freezeWhenInactive](../ui/state-management/arkts-create-custom-components.md#component)属性为true，对非激活页面或者自定义组件进行冻结，使其不响应状态变量引起的UI刷新。当状态变量改变时，处于非激活状态的页面或自定义组件的状态变量将不响应更新，状态变量的@Watch函数不会调用，关联的节点不会刷新。只有当页面或者自定义组件重新激活或者可见时，才会去更新状态变量。本文将介绍冻结功能的原理机制和使用场景，并且通过懒加载场景下使用冻结功能前后的性能对比，帮助开发者优化页面性能，减少页面渲染的时间，提升用户体验。
+自定义组件冻结功能是指通过设置freezeWhenInactive属性为true，对非激活页面或者自定义组件进行冻结，使其不响应状态变量引起的UI刷新。当状态变量改变时，处于非激活状态的页面或自定义组件的状态变量将不响应更新，状态变量的@Watch函数不会调用，关联的节点不会刷新。只有当页面或者自定义组件重新激活或者可见时，才会去更新状态变量。本文将介绍冻结功能的原理机制和使用场景，并且通过懒加载场景下使用冻结功能前后的性能对比，帮助开发者优化页面性能，减少页面渲染的时间，提升用户体验。
 
 ## 原理机制
 - 组件的激活状态和非激活状态并非等同于可见和不可见。比如堆叠，堆叠在下面的组件虽然不可见，但是是激活状态。
@@ -17,13 +17,13 @@
 - @Component({ freezeWhenInactive: true })中freezeWhenInactive的值后端只支持常量，不支持变量形式。
 
 ## 适用场景
-目前自定义组件冻结功能支持以下四种场景。更多自定义组件冻结的信息，请参考[自定义组件冻结功能](../ui/state-management/arkts-custom-components-freeze.md)。
+目前自定义组件冻结功能支持以下四种场景。更多自定义组件冻结的信息，请参考自定义组件冻结。
 
 **页面路由**：当页面A调用router.pushUrl接口跳转到页面B时，页面A为隐藏不可见状态，此时如果更新页面A中的状态变量，不会触发页面A刷新。
 
 **TabContent**：对Tabs中当前不可见的TabContent进行冻结，不会触发组件的更新。当切换TabContent后，会对需要刷新的组件进行刷新。
 
-**LazyforEach**：对LazyforEach中缓存的自定义组件进行冻结，不会触发组件的更新。
+**LazyForEach**：对LazyForEach中缓存的自定义组件进行冻结，不会触发组件的更新。
 
 **Navigation**：对当前不可见的页面进行冻结，不会触发组件的更新。当返回该页面时，节点重新变成激活状态，才会进行刷新。
 
@@ -308,7 +308,7 @@ struct NotUseFreezeItem {
 
 ### 不开启冻结功能
 
-如图1所示，在Grid预加载GridItem数量设置200的情况下，不开启组件冻结功能，抓取长按图片显示复选框的trace。可以看出显示复选框的UIVsyncTask（执行布局任务、执行渲染任务并通知图形进行渲染）耗时为162ms。其中FlushDirtyNodeUpdate（更新脏节点）耗时104ms,UITaskScheduler::FlushTask（主要是对懒加载的GridItem进行重新布局）耗时28ms。
+如图1所示，在Grid预加载GridItem数量设置200的情况下，不开启组件冻结功能，抓取长按图片显示复选框的trace。可以看出显示复选框的UIVsyncTask（执行布局任务、执行渲染任务并通知图形进行渲染）耗时为162ms。其中FlushDirtyNodeUpdate（更新脏节点）耗时104ms，UITaskScheduler::FlushTask（主要是对懒加载的GridItem进行重新布局）耗时28ms。
 
 图1 不开启自定义组件冻结功能
 

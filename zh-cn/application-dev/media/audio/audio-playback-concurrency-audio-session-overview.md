@@ -29,7 +29,7 @@
 
 ### 场景1：VoIP通话与系统来电处理
 
-用户正在进行[VoIP通话](./audio-call-overview.md)，此时有系统来电，需要正确处理通话状态切换。
+用户正在进行VoIP通话，此时有系统来电，需要正确处理通话状态切换。
 
 解决方案：系统来电对应音频焦点最高优先级，独占音频焦点，VoIP收到`INTERRUPT_HINT_PAUSE`后，执行暂停通话逻辑。来电结束后VoIP应用收到`INTERRUPT_HINT_RESUME`，可以恢复通话。
 
@@ -39,11 +39,11 @@
 
 后台音乐播放器正在播放，前台应用（如短视频）开始播放音频。
 
-解决方案：后台应用请求音频焦点（通过会话机制或焦点机制），后台播放器收到中断回调，根据[`InterruptHint`/apis-audio-kit/arkts-apis-audio-e.md#interrupthint)判断执行`INTERRUPT_HINT_PAUSE`或`INTERRUPT_HINT_DUCK`。当前台应用释放焦点后，后台播放器收到`INTERRUPT_HINT_RESUME`，继续播放。
+解决方案：后台应用请求音频焦点（通过会话机制或焦点机制），后台播放器收到中断回调，根据`InterruptHint`判断执行`INTERRUPT_HINT_PAUSE`或`INTERRUPT_HINT_DUCK`。当前台应用释放焦点后，后台播放器收到`INTERRUPT_HINT_RESUME`，继续播放。
 
 焦点特点：后台应用被动接收中断事件，根据`InterruptHint`响应（暂停/停止/压低音量），应用无法主动声明策略，适用于传统应用或简单播放场景。
 
-### 场景3：通话时保持音乐播放状态
+### 场景3：音乐播放与系统来电处理
 
 用户听音乐时接到来电，希望通话结束后音乐自动恢复播放。
 
@@ -63,12 +63,13 @@
 | - | 应用A | 应用B | 打断效果 | 备注 |
 |--|-------|-------|---------|------|
 | 默认场景 | 播放媒体类音频（音乐） | 播放媒体类音频（短视频） | 默认焦点策略是停止，B播放后A被打断，不恢复 | 需要应用A继续播放，参考如下方案 |
-| 方案一 | 使用音频渲染接口[setIndependentAudioSessionStrategy/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | B抢占焦点后，A会继续静音播放，B完成播放后A恢复 | 复播后会跳过之前静音的内容，对进度条敏感的场景不建议使用 |
-| 方案二 | 使用音频渲染接口[setIndependentAudioSessionStrategy/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 无需适配 | 应用B音频打断应用A时使用暂停策略，B播放完成后，A收到RESUME消息后继续播放 | 进度条敏感应用推荐使用该方案 |
+| 方案一 | 使用音频渲染接口setIndependentAudioSessionStrategy，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | B抢占焦点后，A会继续静音播放，B完成播放后A恢复 | 复播后会跳过之前静音的内容，对进度条敏感的场景不建议使用 |
+| 方案二 | 使用音频渲染接口setIndependentAudioSessionStrategy，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 无需适配 | 应用B音频打断应用A时使用暂停策略，B播放完成后，A收到RESUME消息后继续播放 | 进度条敏感应用推荐使用该方案 |
 | 方案三 | 无需适配 | 使用音频会话，在启动时使用CONCURRENCY_PAUSE_OTHERS，打断时使用PAUSE策略。当应用B释放焦点时，会给A发送RESUME事件 | B播放完成后，会发送RESUME，A继续播放 | - |
 | 方案四 | 应用A提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 无需适配 | 应用A提供设置开关，用户手动开启生效，B播放后与A同时播放 | 开关参考系统音乐设置 |
 | 方案五 | 无需适配 | 应用B提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 应用B提供设置开关，用户手动开启生效，B播放后与A同时播放 | 开关参考系统音乐设置 |
-| 方案六 | 使用音频会话接口[setAudioSessionBehavior/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 应用B提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 应用提供设置开关，用户手动开启生效，B播放后与A同时播放 | 开关参考系统音乐设置 |
+| 方案六 | 使用音频会话接口setAudioSessionBehavior，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 应用B提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 应用提供设置开关，用户手动开启生效，B播放后与A同时播放 | 开关参考系统音乐设置 |
+| 方案七 | 无需适配 | 音频会话并发策略使用`CONCURRENCY_DUCK_OTHERS` | A音量压低，B停止后A音量自动恢复 | 音量自动恢复，无需额外适配 |
 
 ### 场景2：录音被通话应用打断后，无法恢复
 
@@ -76,9 +77,9 @@
 | - | 应用A | 应用B | 打断效果 | 备注 |
 |--|-------|-------|---------|------|
 | 默认场景 | 启动音频录制 | 蜂窝通话、视频通话 | 通话和VoIP通话出于安全考虑，禁止录音 | - |
-| 方案一 | 使用[setWillMuteWhenInterrupted/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20)接口，设置录制静音打断 | 无需配置 | 应用B音频播放或录制时，应用A可以持续录制，录制为静音流 | - |
-| 方案二 | 使用音频录制接口[setIndependentAudioSessionStrategy/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需配置 | 应用B打断A录制时，应用A录制静音数据，应用B动作完成后恢复有声数据 | 与方案一效果相当，推荐方案二 |
-| 方案三 | 使用音频录制接口[setIndependentAudioSessionStrategy/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 无需配置 | 应用B打断A录制时，应用A录制暂停，应用B动作完成后，应用A收到RESUME事件恢复录制 | - |
+| 方案一 | 使用setWillMuteWhenInterrupted接口，设置录制静音打断 | 无需配置 | 应用B音频播放或录制时，应用A可以持续录制，录制为静音流 | - |
+| 方案二 | 使用音频录制接口setIndependentAudioSessionStrategy，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需配置 | 应用B打断A录制时，应用A录制静音数据，应用B动作完成后恢复有声数据 | 与方案一效果相当，推荐方案二 |
+| 方案三 | 使用音频录制接口setIndependentAudioSessionStrategy，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 无需配置 | 应用B打断A录制时，应用A录制暂停，应用B动作完成后，应用A收到RESUME事件恢复录制 | - |
 
 ### 场景3：通话过程中开启录制失败
 
@@ -86,9 +87,54 @@
 | - | 应用A | 应用B | 打断效果 | 备注 |
 |--|-------|-------|---------|------|
 | 默认场景 | 启动通话 | 开启录制 | 录制失败 | - |
-| 方案一 | 无需配置 | 使用[setWillMuteWhenInterrupted/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20)接口 | 录制可以启动，录制数据为静音流 | - |
-| 方案二 | 无需配置 | 使用音频录制接口[setIndependentAudioSessionStrategy/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 录制可以启动，录制数据为静音流 | 与方案一效果相当，推荐方案二 |
-| 方案三 | 无需配置 | 使用音频录制接口[setIndependentAudioSessionStrategy/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 录制被暂停，应用A通话结束后，应用B收到RESUME事件恢复录制 | - |
+| 方案一 | 无需配置 | 使用setWillMuteWhenInterrupted接口 | 录制可以启动，录制数据为静音流 | - |
+| 方案二 | 无需配置 | 使用音频录制接口setIndependentAudioSessionStrategy，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 录制可以启动，录制数据为静音流 | 与方案一效果相当，推荐方案二 |
+| 方案三 | 无需配置 | 使用音频录制接口setIndependentAudioSessionStrategy，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 录制被暂停，应用A通话结束后，应用B收到RESUME事件恢复录制 | - |
 
-## 同应用内不同音频流之间的焦点管理
-同应用内不同音频流默认使用相同的焦点策略，如需对各音频流进行差异化管理，应用需先将[焦点模式](./audio-playback-concurrency.md#焦点模式)设置为独立焦点模式，再分别为每条流设置对应的焦点策略。
+### 场景4：音乐播放过程中开启录制，打断音乐播放
+
+应用A正在播放音乐，应用B开始录音（语音识别、录音机等），音乐被暂停，录音结束后音乐可恢复播放。
+
+| - | 应用A | 应用B | 打断效果 | 备注 |
+|--|-------|-------|---------|------|
+| 默认场景 | 启动音乐播放 | 开启录制 | 录音抢占焦点，音乐暂停；录音结束后音乐收到RESUME提示可恢复 | RESUME事件需应用主动调用play()恢复 |
+| 方案一 | 使用音频录制接口setIndependentAudioSessionStrategy，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | 录音期间音乐静音继续播放，录音结束后音乐恢复有声 | 复播会跳过静音期内容，对进度条敏感场景不建议使用 |
+| 方案二 | 无需适配 | 音频会话并发策略使用`CONCURRENCY_DUCK_OTHERS` | 录音正常采集，音乐音量降低；录音结束后音量自动恢复 | 音量自动恢复，无需额外适配 |
+| 方案三 | 无需适配 | 音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 录音与音乐同时运行，互不影响 | - |
+
+### 场景5：提示音（TTS）打断音乐，无法恢复
+
+应用A正在播放音乐，应用B播放提示音。提示音使用通知音类型（STREAM_USAGE_NOTIFICATION）时不会打断音乐；但使用TTS播报时，TTS属于媒体类音频流，与音乐之间的默认焦点策略为STOP，音乐被打断后不恢复。
+
+| - | 应用A | 应用B | 打断效果 | 备注 |
+|--|-------|-------|---------|------|
+| 默认场景 | 启动音乐播放 | 播放提示音（TTS，媒体类流） | TTS抢占焦点，音乐停止且不恢复 | TTS与音乐同为媒体类流，默认策略为STOP |
+| 方案一 | 启动音乐播放 | 使用STREAM_USAGE_NOTIFICATION流类型播放提示音 | NOTIFICATION正常播放，音乐降低音量；提示音结束后音乐音量自动恢复 | - |
+| 方案二 | 使用音频录制接口setIndependentAudioSessionStrategy，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | B抢占焦点后，A会继续静音播放，B完成提示播报后A恢复 | 复播会跳过静音期内容，对进度条敏感场景不建议使用 |
+| 方案三 | 无需适配 | 音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | TTS与音乐同时播放，互不影响 | - |
+
+### 场景6：应用以静音状态播放音视频打断音乐，无法恢复
+
+应用希望在静音状态下播放音视频且不打断正在播放的音乐，但实际是应用在启动播放时会打断正在播放的音乐且一直无法恢复。
+
+<!--Table: 6%; 30%; 30%; 17%; 17% -->
+| - | 应用A | 应用B | 打断效果 | 备注 |
+|--|-------|-------|---------|------|
+| 默认场景 | 播放音乐 | 以静音状态开始播放音视频。 | 应用B启动时抢占焦点，应用A被打断无法恢复。 | - |
+| 方案一 | 无需适配 | 使用setSilentModeAndMixWithOthers开启静音并发播放模式。 | 应用B以静音状态开始播放，静音状态期间不抢占焦点，不影响应用A。<br>应用B解除静音后按正常策略申请焦点。 | 适用于使用AudioRenderer播放音频的场景。 |
+| 方案二 | 无需适配 | 使用setMediaMuted开启静音播放。 | 应用B以静音状态开始播放，静音状态期间不抢占焦点，不影响应用A。<br>应用B解除静音后按正常策略申请焦点。 | 适用于使用AVPlayer播放音频的场景。 |
+| 方案三 | 无需适配 | 使用OH_AudioRenderer_SetSilentModeAndMixWithOthers开启静音并发播放模式。 | 应用B以静音状态开始播放，静音状态期间不抢占焦点，不影响应用A。<br>应用B解除静音后按正常策略申请焦点。 | 适用于使用OHAudio播放音频的场景。 |
+
+## 同应用内焦点管理场景概述
+
+同一应用内会存在同时创建多条音频流的现象，例如音乐播放器在播放背景音乐的同时重新播放一首音乐，短视频播放器在播放视频的同时背景音乐也在播放。
+
+系统提供了焦点模式（InterruptMode）来管控同应用内音频流之间的焦点决策行为，焦点模式的详细介绍及实践可参考同应用内焦点管理。
+
+**常见场景：同应用内音乐和视频冲突**
+
+| - | 流A | 流B | 适配方案 | 打断效果 |
+|--|-------|-------|-------------|---------|
+| 默认场景 | 播放音乐（MUSIC） | 播放视频（MOVIE） | 默认为SHARE_MODE模式，不触发焦点策略。 | 音乐A与视频B并发播放。 |
+| 方案一（推荐） | 播放音乐（MUSIC） | 播放视频（MOVIE） | 流A和流B均为SHARE_MODE模式，应用自行管控各流的行为。如图：![SHARE_MODE](figures/audio-focus-share-mode.png) | 音乐A被视频B打断，视频B暂停，音乐A恢复。 |
+| 方案二 | 播放音乐（MUSIC） | 播放视频（MOVIE） | 流A或流B其中一个或都为INDEPENDENT_MODE模式，两条流由系统进行焦点决策。 | 音乐A被视频B打断，视频B暂停，音乐A不恢复。 |

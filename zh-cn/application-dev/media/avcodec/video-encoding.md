@@ -1,21 +1,21 @@
-# 视频编码
+# 异步模式视频编码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
 视频编码是多媒体处理流程中的重要环节，功能是将未压缩的视频数据压缩成视频码流，旨在降低原始视频数据的大小以便存储或传输。视频编码支持同步模式与异步模式两种运行机制，两者主要区别为buffer获取方式的同异步之分，开发者可根据自身业务选择适合的接口调用模式。
 
-本文档主要介绍异步模式视频编码的实现流程，同步模式视频编码请参考[视频编码同步模式](synchronous-video-encoding.md)。根据编码前数据输入方式的不同，编码器支持Surface模式和Buffer模式两种输入模式，适用于不同的应用场景。
+本文档主要介绍异步模式视频编码的实现流程，同步模式视频编码请参考同步模式视频编码。根据编码前数据输入方式的不同，编码器支持Surface模式和Buffer模式两种输入模式，适用于不同的应用场景。
 
-- Surface模式。
+- Surface模式
 
-  编码器通过[NativeWindow/apis-arkgraphics2d/capi-nativewindow-nativewindow.md)来获取输入数据，可以与其他模块对接（如相机模块）。适用于与相机、屏幕录制等数据源直接对接的编码场景。
+  编码器通过NativeWindow来获取输入数据，可以与其他模块对接（如相机模块）。适用于与相机、屏幕录制等数据源直接对接的编码场景。
 
-- Buffer模式。
+- Buffer模式
 
   编码器通过预分配的共享内存获取输入数据，开发者需将原始视频数据拷贝到预分配的共享内存中。适用于对文件或内存中的原始视频数据进行编码处理的场景。
 
@@ -25,7 +25,7 @@
 |  数据输入   | 通过OHNativeWindow获取输入帧，数据通常由生产者模块（如相机）直接写入。| 通过OnNeedInputBuffer回调函数获取共享内存buffer信息，调用OH_VideoEncoder_PushInputBuffer送入数据。 |
 |   输入结束  | 必须调用OH_VideoEncoder_NotifyEndOfStream接口通知编码器输入结束。 | 编码至最后一帧数据时，需将输入buffer的flags字段设置为AVCODEC_BUFFER_FLAGS_EOS标志，以通知编码器输入结束。|
 
-AVCodec支持的视频编码格式请参考[视频编码](avcodec-support-formats.md#视频编码)。
+AVCodec支持的视频编码格式请参考视频编码。
 
 具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
 
@@ -42,9 +42,9 @@ AVCodec支持的视频编码格式请参考[视频编码](avcodec-support-format
 4. 运行状态（Executing）。
    - Prepared状态下，调用OH_VideoEncoder_Start接口进入Executing状态。
    - Executing状态具有三个子状态：Running、Flushed和End-of-Stream。
-     - Running：调用OH_VideoEncoder_Start接口进入Running子状态。
-     - Flushed：调用OH_VideoEncoder_Flush接口进入Flushed子状态。
-     - End-of-Stream：编码器接收到输入buffer的flags为[OH_AVCodecBufferFlags/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)中的AVCODEC_BUFFER_FLAGS_EOS，或者调用OH_VideoEncoder_NotifyEndOfStream接口时，进入End-of-Stream子状态。在此状态下，编码器不再接受新的输入，但是仍然会继续生成输出，直到输出到达尾帧。
+     - 运行子状态（Running）：调用OH_VideoEncoder_Start接口进入Running子状态。
+     - 刷新子状态（Flushed）：调用OH_VideoEncoder_Flush接口进入Flushed子状态。
+     - 结束子状态（End-of-Stream）：编码器接收到输入buffer的flags为OH_AVCodecBufferFlags中的AVCODEC_BUFFER_FLAGS_EOS，或者调用OH_VideoEncoder_NotifyEndOfStream接口时，进入End-of-Stream子状态。在此状态下，编码器不再接受新的输入，但是仍然会继续生成输出，直到输出到达尾帧。
 5. 错误状态（Error）。
    - 在极少数情况下，编码器异常时进入Error状态。接口会返回错误码或通过OH_AVCodecOnError回调抛出异常。
    - Error状态下，可以调用OH_VideoEncoder_Reset接口返回Initialized状态，或者调用OH_VideoEncoder_Destroy接口进入到最后的Released状态。
@@ -57,7 +57,7 @@ AVCodec支持的视频编码格式请参考[视频编码](avcodec-support-format
 
 ## 开发指导
 
-详细的API说明请参考[native_avcodec_videoencoder.h/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md)。
+详细的API说明请参考native_avcodec_videoencoder.h。
 
 **图2** 视频编码调用关系示意图
 
@@ -223,7 +223,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    注册回调函数指针集合OH_AVCodecCallback，包括：
 
-   - OH_AVCodecOnError 编码器运行错误，返回的错误码详情请参见[OH_AVCodecOnError/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
+   - OH_AVCodecOnError 编码器运行错误，返回的错误码详情请参见OH_AVCodecOnError；
    - OH_AVCodecOnStreamChanged  码流信息变化，如格式变化等；
    - OH_AVCodecOnNeedInputBuffer 输入回调无作用，开发者通过获取的surface输入数据；
    - OH_AVCodecOnNewOutputBuffer 运行过程中产生了新的输出数据，即编码完成。
@@ -296,7 +296,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 4. （可选）调用OH_VideoEncoder_RegisterParameterCallback()在Configure接口之前注册随帧通路回调。
 
-   详情请参考[时域可分层视频编码](video-encoding-temporal-scalability.md)。
+   详情请参考时域可分层视频编码。
 
    <!--RP7-->
    ```c++
@@ -315,11 +315,11 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 5. 调用OH_VideoEncoder_Configure()配置编码器。
 
-   详细可配置选项的说明请参考[媒体数据键值对/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)中的视频专有键值对。
+   详细可配置选项的说明请参考媒体数据键值对中的视频专有键值对。
 
-   参数校验规则请参考[OH_VideoEncoder_Configure()参考文档/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)。
+   参数校验规则请参考OH_VideoEncoder_Configure()参考文档。
 
-   参数取值范围可以通过能力查询接口获取，具体示例请参考[获取支持的编解码能力文档](obtain-supported-codecs.md)。
+   参数取值范围可以通过能力查询接口获取，具体示例请参考获取支持的编解码能力文档。
 
    目前支持的所有格式都必须配置以下选项：视频帧宽度、视频帧高度、视频像素格式。
 
@@ -400,7 +400,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    // 通过OHNativeWindow*变量类型，可通过生产者接口获取待填充数据地址。
    ```
 
-   OHNativeWindow*变量类型的使用方法请参考图形子系统 [OHNativeWindow/apis-arkgraphics2d/capi-nativewindow.md)。
+   OHNativeWindow*变量类型的使用方法请参考图形子系统 OHNativeWindow。
 
 7. 调用OH_VideoEncoder_Prepare()编码器就绪。
 
@@ -497,7 +497,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     以下示例中，bufferInfo的成员变量：
 
     - index：回调函数OnNewOutputBuffer传入的参数，与buffer唯一对应的标识；
-    - buffer：回调函数OnNewOutputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针；
+    - buffer：回调函数OnNewOutputBuffer传入的参数，可以通过OH_AVBuffer_GetAddr接口得到共享内存地址的指针；
     - isValid：bufferInfo中存储的buffer实例是否有效。
 
     <!--RP6-->
@@ -653,7 +653,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 3. 调用OH_VideoEncoder_RegisterCallback()设置回调函数。
 
    注册回调函数指针集合OH_AVCodecCallback，包括：
-   - OH_AVCodecOnError 编码器运行错误，返回的错误码详情请参见[OH_AVCodecOnError/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
+   - OH_AVCodecOnError 编码器运行错误，返回的错误码详情请参见OH_AVCodecOnError；
    - OH_AVCodecOnStreamChanged 码流信息变化，如格式变化等；
    - OH_AVCodecOnNeedInputBuffer 运行过程中需要新的输入数据，即编码器已准备好，可以输入YUV/RGB数据；
    - OH_AVCodecOnNewOutputBuffer 运行过程中产生了新的输出数据，即编码完成。
@@ -817,7 +817,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    - heightStride：获取到的buffer数据的高跨距。
    
    bufferInfo的成员变量：
-   - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针；
+   - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过OH_AVBuffer_GetAddr接口得到共享内存地址的指针；
    - index：回调函数OnNeedInputBuffer传入的参数，与buffer唯一对应的标识；
    - isValid：bufferInfo中存储的buffer实例是否有效。
    
@@ -878,14 +878,16 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    }
    ```
 
-   对跨距进行偏移，以NV12图像为例，示例如下：
+   跨距偏移处理用于去除图像内存中填充占位（padding）区域，不同像素格式内存排布逻辑不同，开发者需结合图像格式进行适配。
 
-   以NV12图像为例，width、height、wStride、hStride图像排布参考下图：
+   以NV12图像为例，结合示意图讲解跨距偏移实现方式，width、height、wStride、hStride图像排布参考下图：
 
    - OH_MD_KEY_WIDTH表示width；
    - OH_MD_KEY_HEIGHT表示height；
    - OH_MD_KEY_VIDEO_STRIDE表示wStride；
    - OH_MD_KEY_VIDEO_SLICE_HEIGHT表示hStride。
+
+   **图3** NV12图像排布示意图
 
    ![copy by line](figures/copy-by-line-encoder.png)
 
@@ -956,7 +958,18 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    一般需要获取数据的宽、高、跨距、像素格式来保证编码输入数据被正确的处理。
 
-   具体实现请参考：[Buffer模式](#buffer模式)的步骤3-调用OH_VideoEncoder_RegisterCallback接口设置回调函数来获取数据的宽、高、跨距、像素格式。
+   具体实现请参考：Buffer模式的步骤3-调用OH_VideoEncoder_RegisterCallback接口设置回调函数来获取数据的宽、高、跨距、像素格式。
+
+   常见图像格式排布示意图如下：
+
+   **图4** YUVI420图像排布示意图
+
+   ![copy by line](figures/copy-yuv-encoder.png)
+
+   **图5** RGBA1010102图像排布示意图
+
+   ![copy by line](figures/copy-rgb-encoder.png)
+
 
 9. 通知编码器结束。
 
@@ -964,7 +977,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    以下示例中，bufferInfo的成员变量：
    - index：回调函数OnNeedInputBuffer传入的参数，与buffer唯一对应的标识；
-   - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针;
+   - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过OH_AVBuffer_GetAddr接口得到共享内存地址的指针;
    - isValid：bufferInfo中存储的buffer实例是否有效。
 
    ```c++
@@ -1022,7 +1035,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     }
     ```
 
-后续流程（包括刷新、重置、停止和销毁编码器）与Surface模式一致，请参考[Surface模式](#surface模式)的步骤14-17。
+后续流程（包括刷新、重置、停止和销毁编码器）与Surface模式一致，请参考Surface模式的步骤14-17。
 
 ## 注意事项
 
@@ -1035,8 +1048,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 ## 视频编码支持的能力
 
+<!--RP4-->
 |          支持的能力                       |                              使用简述                                            |
 | --------------------------------------- | ---------------------------------------------------------------------------------- |
-| 分层编码、设置LTR帧、参考帧                      | 具体可参考：[时域可分层视频编码](video-encoding-temporal-scalability.md)。       |
-| 支持历史帧repeat编码                    | 具体可参考：native_avcodec_base.h[变量][OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)中的OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER和OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT。    |
-<!--RP4--> <!--RP4End-->
+| 分层编码、设置LTR帧、参考帧                      | 具体可参考：时域可分层视频编码。       |
+| 支持历史帧重复编码                    | 具体可参考：native_avcodec_base.h[变量]OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER中的OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER和OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT。    |
+<!--RP4End-->

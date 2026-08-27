@@ -6,13 +6,13 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-[ArkUI](arkui-overview.md)开发框架在[NDK](../napi/ndk-development-overview.md)接口中提供了Text组件，用于显示文本内容。Text组件支持丰富的样式设置，包括字体、颜色、对齐方式、文字效果等，还支持多种子组件，如[Span](#添加span)、[ImageSpan](#添加imagespan)、[StyledString](./ndk-styled-string.md)等，用于实现复杂的文本显示效果。
+ArkUI开发框架在NDK接口中提供了Text组件，用于显示文本内容。Text组件支持丰富的样式设置，包括字体、颜色、对齐方式、文字效果等，还支持多种子组件，如Span、ImageSpan、StyledString等，用于实现复杂的文本显示效果。
 
 > **说明：**
 >
 > - 本篇示例仅提供核心接口的调用方法，完整的示例工程请参考<!--RP1-->[native_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/native_node_sample/)<!--RP1End-->。
 >
-> - 开发前需要先接入ArkTS页面，具体请参考[接入ArkTS页面](./ndk-access-the-arkts-page.md)。
+> - 开发前需要先接入ArkTS页面，具体请参考接入ArkTS页面。
 
 ## 创建文本组件
 
@@ -20,7 +20,7 @@ Text组件是显示文本内容的基础组件，支持多种样式设置和子�
 
 ### 创建基础文本
 
-使用[createNode/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建Text组件，节点类型为ARKUI_NODE_TEXT。
+使用createNode接口创建Text组件，节点类型为ARKUI_NODE_TEXT。
 
 <!-- @[text_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
 
@@ -36,15 +36,19 @@ Manager::nodeAPI_->setAttribute(text, NODE_HEIGHT, &textHeightItem);
 
 ### 设置文本内容
 
-通过[NODE_TEXT_CONTENT/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_content)属性设置Text组件的基本文本内容。
+- 通过NODE_TEXT_CONTENT属性设置Text组件的基本文本内容。
 
-<!-- @[text_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
+  <!-- @[text_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
 
-``` C++
-const char *textContent = "this is text 2 this is text 2 this is text 2!!!! ";
-ArkUI_AttributeItem contentItem = {.string = textContent};
-Manager::nodeAPI_->setAttribute(text2, NODE_TEXT_CONTENT, &contentItem);
-```
+  ``` C++
+  const char *textContent = "this is text 2 this is text 2 this is text 2!!!! ";
+  ArkUI_AttributeItem contentItem = {.string = textContent};
+  Manager::nodeAPI_->setAttribute(text2, NODE_TEXT_CONTENT, &contentItem);
+  ```
+
+- 通过NODE_TEXT_CONTENT_WITH_STYLED_STRING属性设置文本内容。
+
+  StyledString提供了更高级的文本排版功能，支持为文本的不同部分设置不同样式，包括字体大小、颜色、占位符等。关于StyledString的详细使用方法，请参考使用属性字符串文档。
 
 ## 设置文本样式
 
@@ -58,10 +62,10 @@ Text组件支持丰富的文本样式设置，包括字体、颜色、对齐方�
 
 | 属性 | 说明 |
 |------|------|
-| [NODE_FONT_SIZE/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_font_size) | 设置字体大小。 |
-| [NODE_FONT_WEIGHT/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_font_weight) | 设置字体粗细。 |
-| [NODE_FONT_STYLE/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_font_style) | 设置字体样式。 |
-| [NODE_FONT_FAMILY/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_font_family) | 设置字体列表。 |
+| NODE_FONT_SIZE | 设置字体大小。 |
+| NODE_FONT_WEIGHT | 设置字体粗细。 |
+| NODE_FONT_STYLE | 设置字体样式。 |
+| NODE_FONT_FAMILY | 设置字体列表。 |
 
 <!-- @[text_font_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) --> 
 
@@ -93,8 +97,8 @@ Manager::nodeAPI_->setAttribute(text2, NODE_FONT_WEIGHT, &textWeightItem);
 
 | 属性 | 说明 |
 |------|------|
-| [NODE_TEXT_ALIGN/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_align) | 设置文本水平对齐。 |
-| [NODE_TEXT_VERTICAL_ALIGN/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_vertical_align) | 设置文本垂直对齐。 |
+| NODE_TEXT_ALIGN | 设置文本水平对齐。 |
+| NODE_TEXT_VERTICAL_ALIGN | 设置文本垂直对齐。 |
 - 设置文本水平对齐。
   <!-- @[text_align](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
   
@@ -122,8 +126,8 @@ Manager::nodeAPI_->setAttribute(text2, NODE_FONT_WEIGHT, &textWeightItem);
 
 | 属性 | 说明 |
 |------|------|
-| [NODE_TEXT_DECORATION/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_decoration) | 设置文本装饰线。 |
-| [NODE_TEXT_TEXT_SHADOW/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_text_shadow) | 设置文字阴影效果。 |
+| NODE_TEXT_DECORATION | 设置文本装饰线。 |
+| NODE_TEXT_TEXT_SHADOW | 设置文字阴影效果。 |
 - 设置文本装饰线。
   <!-- @[text_decoration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
   
@@ -151,7 +155,7 @@ Text组件支持多种文本布局设置，包括换行、行高、省略等。
 
 ### 设置文本换行
 
-通过[NODE_TEXT_WORD_BREAK/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_word_break)属性设置文本的断行规则。
+通过NODE_TEXT_WORD_BREAK属性设置文本的断行规则。
 
 <!-- @[text_word_break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) --> 
 
@@ -168,13 +172,13 @@ Manager::nodeAPI_->setAttribute(text3, NODE_TEXT_WORD_BREAK, &wordBreakItem);
 
 从API version 22开始，Text组件支持使用倍数模式设置行高。
 
-**表5** 行高属性
+**表4** 行高属性
 
 | 属性 | 说明 |
 |------|------|
-| [NODE_TEXT_LINE_HEIGHT/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_line_height) | 设置行高。 |
-| [NODE_TEXT_LINE_HEIGHT_MULTIPLE/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_line_height_multiple) | 设置行高倍数。从API version 22开始支持。 |
-| [NODE_TEXT_HALF_LEADING/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_half_leading) | 设置文本垂直居中。 |
+| NODE_TEXT_LINE_HEIGHT | 设置行高。 |
+| NODE_TEXT_LINE_HEIGHT_MULTIPLE | 设置行高倍数。从API version 22开始支持。 |
+| NODE_TEXT_HALF_LEADING | 设置文本垂直居中。 |
 - 设置文本行高。
   <!-- @[text_line_height](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
   
@@ -198,13 +202,13 @@ Manager::nodeAPI_->setAttribute(text3, NODE_TEXT_WORD_BREAK, &wordBreakItem);
 
 通过如下属性设置文本溢出时的省略模式。
 
-**表6** 文本省略属性
+**表5** 文本省略属性
 
 | 属性 | 说明 |
 |------|------|
-| [NODE_TEXT_MAX_LINES/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_max_lines) | 设置最大行数。 |
-| [NODE_TEXT_OVERFLOW/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_overflow) | 设置文本溢出方式。 |
-| [NODE_TEXT_ELLIPSIS_MODE/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_ellipsis_mode) | 设置省略模式。 |
+| NODE_TEXT_MAX_LINES | 设置最大行数。 |
+| NODE_TEXT_OVERFLOW | 设置文本溢出方式。 |
+| NODE_TEXT_ELLIPSIS_MODE | 设置省略模式。 |
 
 <!-- @[text_ellipsis_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
 
@@ -229,11 +233,11 @@ Manager::nodeAPI_->setAttribute(text20, NODE_TEXT_ELLIPSIS_MODE, &ellipsisModeIt
 
 通过如下属性设置每行结尾空格是否优化。从API version 20开始，Text组件支持设置每行结尾空格是否优化处理。
 
-**表8** 每行结尾空格处理属性
+**表6** 每行结尾空格处理属性
 
 | 属性 | 说明 |
 |------|------|
-| [NODE_TEXT_OPTIMIZE_TRAILING_SPACE/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_optimize_trailing_space) | 设置每行结尾空格是否优化。从API version 20开始支持。 |
+| NODE_TEXT_OPTIMIZE_TRAILING_SPACE | 设置每行结尾空格是否优化。从API version 20开始支持。 |
 
 <!-- @[text_optimize_trailing_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
 
@@ -251,8 +255,8 @@ Manager::nodeAPI_->setAttribute(text14, NODE_TEXT_OPTIMIZE_TRAILING_SPACE, &opti
 
 | 属性 | 说明 |
 |------|------|
-| [NODE_TEXT_INDENT/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_indent) | 设置首行缩进。 |
-| [NODE_TEXT_COMPRESS_LEADING_PUNCTUATION/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_compress_leading_punctuation) | 设置行首标点压缩。从API version 23开始支持。 |
+| NODE_TEXT_INDENT | 设置首行缩进。 |
+| NODE_TEXT_COMPRESS_LEADING_PUNCTUATION | 设置行首标点压缩。从API version 23开始支持。 |
 - 设置首行缩进。
   <!-- @[text_indent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
   
@@ -272,13 +276,31 @@ Manager::nodeAPI_->setAttribute(text14, NODE_TEXT_OPTIMIZE_TRAILING_SPACE, &opti
   Manager::nodeAPI_->setAttribute(text11, NODE_TEXT_COMPRESS_LEADING_PUNCTUATION, &item0);
   ```
 
+### 设置文本尾部缩进
+
+通过如下属性设置文本尾部缩进。从API版本26.0.0开始，Text组件支持设置文本尾部缩进。
+
+**表8** 文本尾部缩进属性
+
+| 属性 | 说明 |
+|------|------|
+| NODE_TEXT_TAIL_INDENTS | 设置文本尾部缩进。 |
+
+<!-- @[text_tail_indents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
+
+``` C++
+ArkUI_NumberValue multiValues[] = { { .f32 = 0.0f }, { .f32 = 50.0f }, { .f32 = 100.0f } };
+ArkUI_AttributeItem tailIndentItem2 = { .value = multiValues, .size = 3 };
+Manager::nodeAPI_->setAttribute(text2, NODE_TEXT_TAIL_INDENTS, &tailIndentItem2);
+```
+
 ## 添加子组件
 
 Text组件支持添加多种子组件，实现图文混排等复杂效果。
 
 ### 添加Span
 
-通过[addChild/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)在Text中添加文本子组件，用于展示行内文本。Span组件需嵌入在Text组件中才能显示，单独使用时不会显示任何内容。
+通过addChild在Text中添加文本子组件，用于展示行内文本。Span组件需嵌入在Text组件中才能显示，单独使用时不会显示任何内容。
 
 <!-- @[text_add_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
 
@@ -303,7 +325,7 @@ if (span != nullptr) {
     // 文本基线的偏移量属性
     ArkUI_NumberValue baselineOffsetVal = {.f32 = VALUE_10};
     ArkUI_AttributeItem baselineOffsetItem = {&baselineOffsetVal, VALUE_1};
-    Manager::nodeAPI_->setAttribute(text, NODE_SPAN_BASELINE_OFFSET, &baselineOffsetItem);
+    Manager::nodeAPI_->setAttribute(span, NODE_SPAN_BASELINE_OFFSET, &baselineOffsetItem);
     // 设置字体粗细
     ArkUI_NumberValue fontWeight = {.i32 = ARKUI_FONT_WEIGHT_W500};
     ArkUI_AttributeItem fontWeightItem = {&fontWeight, VALUE_1};
@@ -320,7 +342,7 @@ Manager::nodeAPI_->addChild(text, span);
 
 ### 添加ImageSpan
 
-通过[addChild/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)在文本中添加图片子组件。
+通过addChild在文本中添加图片子组件。
 
 <!-- @[text_add_imagespan](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
 
@@ -354,10 +376,6 @@ void setText6(ArkUI_NodeHandle &text6)
 }
 ```
 
-### 使用StyledString
-
-StyledString提供了更高级的文本排版功能，支持为文本的不同部分设置不同样式，包括字体大小、颜色、占位符等。关于StyledString的详细使用方法，请参考[使用属性字符串](./ndk-styled-string.md)文档。
-
 ## 设置高级文本效果
 
 Text组件支持多种高级文本效果，如渐变、跑马灯等。
@@ -370,8 +388,8 @@ Text组件支持多种高级文本效果，如渐变、跑马灯等。
 
 | 属性 | 说明 |
 |------|------|
-| [NODE_TEXT_LINEAR_GRADIENT/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_linear_gradient) | 设置线性渐变。从API version 20开始支持。 |
-| [NODE_TEXT_RADIAL_GRADIENT/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_radial_gradient) | 设置径向渐变。从API version 20开始支持。 |
+| NODE_TEXT_LINEAR_GRADIENT | 设置线性渐变。从API version 20开始支持。 |
+| NODE_TEXT_RADIAL_GRADIENT | 设置径向渐变。从API version 20开始支持。 |
 
 <!-- @[text_linear_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
 
@@ -388,13 +406,12 @@ ArkUI_NumberValue linearGradient[] = {
 ArkUI_AttributeItem linearGradientItem = {
     linearGradient, sizeof(linearGradient) / sizeof(ArkUI_NumberValue)};
 linearGradientItem.object = reinterpret_cast<void *>(colorStopPtr);
-linearGradientItem.size = sizeof(linearGradientItem) / sizeof(ArkUI_NumberValue);
 Manager::nodeAPI_->setAttribute(text5, NODE_TEXT_LINEAR_GRADIENT, &linearGradientItem);
 ```
 
 ### 设置跑马灯效果
 
-从API version 23开始，Text组件支持通过[NODE_TEXT_MARQUEE_OPTIONS/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_marquee_options)属性设置跑马灯效果。
+从API version 23开始，Text组件支持通过NODE_TEXT_MARQUEE_OPTIONS属性设置跑马灯效果。
 
 <!-- @[text_marquee_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
 
@@ -413,11 +430,12 @@ ArkUI_AttributeItem marqueeOptions_item = {
     .object = marqueeOptions
 };
 Manager::nodeAPI_->setAttribute(text18, NODE_TEXT_MARQUEE_OPTIONS, &marqueeOptions_item);
+OH_ArkUI_TextMarqueeOptions_Dispose(marqueeOptions);
 ```
 
 ### 设置文本方向
 
-从API version 23开始，Text组件支持通过[NODE_TEXT_DIRECTION/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_direction)属性设置文本方向。
+从API version 23开始，Text组件支持通过NODE_TEXT_DIRECTION属性设置文本方向。
 
 <!-- @[text_direction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
 

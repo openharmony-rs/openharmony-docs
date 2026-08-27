@@ -13,7 +13,7 @@
 
 ## 入门
 
-[入门](quick-start/start-overview.md)可以帮助开发者了解应用开发的基本方法。
+入门可以帮助开发者了解应用开发的基本方法。
 
 通过这一部分内容的学习和初步实践，开发者可以快速构建出首个OpenHarmony应用，掌握应用程序包结构、资源文件的使用、以及ArkTS的核心功能和语法等基础知识，为后续的应用开发奠定基础。
 
@@ -39,4 +39,4 @@ DevEco Studio工具是OpenHarmony应用开发的推荐IDE工具。在[工具](ht
 
 ## API参考
 
-[API参考development-intro-api.md)提供了OpenHarmony SDK各Kit开放能力的全量组件和接口的说明文档，可以帮助开发者快速查找到指定接口的详细描述和调用方法。
+API参考提供了OpenHarmony SDK各Kit开放能力的全量组件和接口的说明文档，可以帮助开发者快速查找到指定接口的详细描述和调用方法。

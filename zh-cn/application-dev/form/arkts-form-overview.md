@@ -1,9 +1,9 @@
 # ArkTS卡片概述
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 以下内容介绍基于ArkTS声明式开发范式语言开发卡片。
@@ -18,8 +18,8 @@
 
 2. 卡片能力增强
 
-    - 新增了动效的能力：ArkTS卡片开放了[属性动画/apis-arkui/arkui-ts/ts-animatorproperty.md)和[显式动画/apis-arkui/arkui-ts/ts-explicit-animation.md)的能力，使卡片的交互更加友好。
-    - 新增了自定义绘制的能力：ArkTS卡片开放了[Canvas/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)画布组件的能力，卡片可以使用自定义绘制的能力构建更多样的显示和交互效果。
+    - 新增了动效的能力：ArkTS卡片开放了属性动画和显式动画的能力，使卡片的交互更加友好。
+    - 新增了自定义绘制的能力：ArkTS卡片开放了Canvas画布组件的能力，卡片可以使用自定义绘制的能力构建更多样的显示和交互效果。
     - 允许卡片中运行逻辑代码：开放逻辑代码运行能力后，部分业务逻辑可以在卡片内部实现，拓宽了业务适用场景。
 
 ## 实现原理
@@ -28,9 +28,9 @@
 
 - 卡片提供方：提供卡片显示内容的应用，控制卡片的显示内容、控件布局以及控件点击事件。
 
-- 卡片管理服务：用于管理系统中所添加卡片的常驻代理服务，提供[formProvider/apis-form-kit/js-apis-app-form-formProvider.md)<!--Del-->和[formHost/apis-form-kit/js-apis-app-form-formHost-sys.md)<!--DelEnd-->的接口能力，同时提供卡片对象的管理与使用以及卡片周期性刷新等能力。
+- 卡片管理服务：用于管理系统中所添加卡片的常驻代理服务，提供formProvider<!--Del-->和formHost<!--DelEnd-->的接口能力，同时提供卡片对象的管理与使用以及卡片周期性刷新等能力。
 
-- 卡片渲染服务：用于管理卡片渲染实例，渲染实例与卡片使用方的<!--Del-->[<!--DelEnd-->卡片组件<!--Del-->/apis-arkui/arkui-ts/ts-basic-components-formcomponent-sys.md)<!--DelEnd-->一一绑定。卡片渲染服务根据form_config.json配置的卡片信息运行widget.abc文件的卡片页面代码进行渲染，并将渲染后的数据发送至卡片使用方对应的<!--Del-->[<!--DelEnd-->卡片组件<!--Del-->/apis-arkui/arkui-ts/ts-basic-components-formcomponent-sys.md)<!--DelEnd-->。
+- 卡片渲染服务：用于管理卡片渲染实例，渲染实例与卡片使用方的<!--Del--><!--DelEnd-->卡片组件<!--Del--><!--DelEnd-->一一绑定。卡片渲染服务根据form_config.json配置的卡片信息运行widget.abc文件的卡片页面代码进行渲染，并将渲染后的数据发送至卡片使用方对应的<!--Del--><!--DelEnd-->卡片组件<!--Del--><!--DelEnd-->。
 
 **图2** ArkTS卡片实现原理  
 ![WidgetPrinciple](figures/WidgetPrinciple.png)
@@ -43,7 +43,7 @@
 ## ArkTS卡片类型
 ArkTS卡片分为动态卡片、静态卡片和互动卡片三种类型。
 
-静态卡片整体的运行框架、渲染流程与动态卡片是一致的。主要区别在于，卡片渲染服务将卡片内容渲染完毕后，卡片使用方会使用最后一帧渲染的数据作为静态图片显示，其次卡片渲染服务中的卡片实例会释放该卡片的所有运行资源以节省内存。因此频繁的刷新会导致静态卡片运行时资源不断的创建和销毁，增加卡片功耗。<br/>
+静态卡片整体的运行框架、渲染流程与动态卡片是一致的。主要区别在于，卡片渲染服务将卡片内容渲染完毕后，卡片使用方会使用最后一帧渲染的数据作为静态图片显示，其次卡片渲染服务中的卡片实例会释放该卡片的所有运行资源以节省内存。因此频繁的刷新会导致静态卡片运行时资源不断地创建和销毁，增加卡片功耗。<br/>
 
 | 卡片类型 | 支持的能力 | 适用场景 | 优缺点 |
 | ------- | ------ | ------- | ------- | 
@@ -52,21 +52,21 @@ ArkTS卡片分为动态卡片、静态卡片和互动卡片三种类型。
 | 互动卡片 | 在动态卡片基础上，额外支持破框动效能力。 | 用于有复杂业务逻辑和交互，需要执行破框动效呈现更好视觉体验的场景。例如：桌面卡片游戏等。| 功能丰富但内存开销较大。|
 
 ### 动态卡片
-ArkTS卡片中提供了[postCardAction/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口用于卡片Card.ets和FormExtensionAbility之间的交互，当前支持router、message和call三种类型的事件，仅在卡片控件的点击事件中可以调用。
+ArkTS卡片中提供了postCardAction接口用于卡片Card.ets和FormExtensionAbility之间的交互，当前支持router、message和call三种类型的事件，仅在卡片控件的点击事件中可以调用。
 
 **图4** ArkTS事件交互实现原理<br>
 ![WidgetPostCardAction](figures/WidgetPostCardAction.png)
 
 动态卡片事件的主要使用场景如下：
 - router事件：可以使用router事件跳转到应用自身的UIAbility，以完成点击卡片跳转应用内页面的交互功能。
-- call事件：可以使用call事件拉起应用自身的UIAbility到后台，再通过UIAbility申请对应后台[长时任务](../arkts-utils/long-time-task-overview.md)完成音乐播放等功能。
+- call事件：可以使用call事件拉起应用自身的UIAbility到后台，再通过UIAbility申请对应后台长时任务完成音乐播放等功能。
 - message事件：可以使用message拉起FormExtensionAbility，通过onFormEvent接口回调通知，以完成卡片内控件点击消息传递，从而更新卡片内容。
 
 ### 静态卡片
-ArkTS卡片提供FormLink静态卡片交互组件，用于静态卡片内部和提供方应用间的交互，当前支持router、message和call三种类型的事件。请参见[FormLink/apis-arkui/arkui-ts/ts-container-formlink.md)。
+ArkTS卡片提供FormLink静态卡片交互组件，用于静态卡片内部和提供方应用间的交互，当前支持router、message和call三种类型的事件。请参见FormLink。
 
 ### 互动卡片
-从API version 20开始支持互动卡片，互动卡片提供破框动效能力，并实现人机交互，提升信息提醒、浅层交互和可玩性。具体请参考[互动卡片概述](arkts-ui-liveform-overview.md)。
+从API version 20开始支持互动卡片，互动卡片提供破框动效能力，并实现人机交互，提升信息提醒、浅层交互和可玩性。具体请参考互动卡片概述。
 
 <!--RP1--><!--RP1End-->
 
@@ -77,11 +77,11 @@ ArkTS卡片支持在UI内运行逻辑代码，相较于JS卡片具备了更加�
 
 - 当导入模块时，仅支持导入标识“支持在ArkTS卡片中使用”的模块。若使用了不支持使用的API，卡片加载显示异常。
 
-- 支持导入[HAR](../quick-start/har-package.md)静态共享包，不支持导入[HSP](../quick-start/in-app-hsp.md)动态共享包。
+- 支持导入HAR静态共享包，不支持导入HSP动态共享包。
 
 - 不支持使用native语言开发，不支持加载native so。
 
-- 针对卡片UI页面开发，ArkTS卡片仅支持[声明式开发范式](../ui/arkts-ui-development-overview.md)的部分组件、事件、动效、数据管理、状态管理和API能力。对于支持在ArkTS卡片UI页面中使用的接口，会添加“卡片能力”的标记，如：从API version 12开始，该接口支持在ArkTS卡片中使用。
+- 针对卡片UI页面开发，ArkTS卡片仅支持声明式开发范式的部分组件、事件、动效、数据管理、状态管理和API能力。对于支持在ArkTS卡片UI页面中使用的接口，会添加“卡片能力”的标记，如：从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 - 卡片组件内容的事件处理和卡片使用方的事件处理是独立的，为防止手势冲突，卡片内不支持左右滑动的控件。
 
@@ -93,7 +93,7 @@ ArkTS卡片支持在UI内运行逻辑代码，相较于JS卡片具备了更加�
 
 - 不支持Hot Reload热重载。
 
-- 不支持[setTimeout/common/js-apis-timer.md#settimeout)。
+- 不支持setTimeout。
 
 - DevEco Studio的相关约束请参考[使用约束](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-service-widget#section1181172254318)。
 

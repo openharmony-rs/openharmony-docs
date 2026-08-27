@@ -1,4 +1,4 @@
-# 添加图像效果（C/C++）
+# 添加图像效果 (C/C++)
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Multimedia-->
@@ -15,7 +15,7 @@
 
 ## 接口说明
 
-使用滤镜（Filter）设置图像效果的常用接口如下表所示，详细使用和参数请见[effect_filter/apis-arkgraphics2d/capi-effect-filter-h.md)。
+使用滤镜（Filter）设置图像效果的常用接口如下表所示，详细使用和参数请见effect_filter。
 
 | 接口 | 描述 |
 | -------- | -------- |

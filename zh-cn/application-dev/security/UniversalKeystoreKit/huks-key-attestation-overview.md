@@ -18,9 +18,9 @@ HUKS为密钥提供合法性证明能力，主要应用于非对称密钥的公�
 > * <!--RP1-->轻量级设备<!--RP1End-->不支持密钥证明功能。
 > * 支持生成密钥和导入密钥进行密钥证明，业务方在服务器侧需要通过业务证书中的密钥来源字段校验密钥来源是否符合预期。
 
-从API 23开始支持[群组密钥](huks-group-key-overview.md)特性。
+从API 23开始支持群组密钥特性。
 
-密钥证明扩展域段为Asn.1 DER标准编码格式，数据结构定义如下：
+密钥证明扩展域段为ASN.1 DER标准编码格式，数据结构定义如下：
 ```asn1
 KeyAttestation ::= SEQUENCE {
   version            AttestationVersion DEFAULT v1,
@@ -63,7 +63,7 @@ ApplicationIDType类型取值说明：
 | type（OID）取值 | value取值说明 |
 | -------- | -------- |
 | 1.3.6.1.4.1.2011.2.376.2.1.3.1 | 样例：{appId:"xxx", bundleName:"xxx", appIdentifier:"xxx", appMode:"xxx"}<br>其中appIdentifier、appMode从API 20开始支持。 |
-| 1.3.6.1.4.1.2011.2.376.2.1.3.2 | 样例：{processName:"xxx", APL:"system_basic \| system_core"} <br>APL为[系统服务等级](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)。|
+| 1.3.6.1.4.1.2011.2.376.2.1.3.2 | 样例：{processName:"xxx", APL:"system_basic \| system_core"} <br>APL为系统服务等级。|
 
 密钥证明过程如下：
 
@@ -76,7 +76,7 @@ ApplicationIDType类型取值说明：
 <!--RP2-->
 当前提供了两种密钥证明方式。
 - 匿名密钥证明：不会泄露设备信息，没有权限管理。面向所有应用开放。为了保护用户设备信息，三方应用开发者只能使用匿名密钥证明。默认情况下，每个应用调用匿名密钥证明接口的瞬时流量每秒不超过35次请求。<!--RP3--><!--RP3End-->
-- 非匿名密钥证明：可以看到调用方设备信息，有权限管控，需申请[ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key)权限。
+- 非匿名密钥证明：可以看到调用方设备信息，有权限管控，需申请ohos.permission.ATTEST_KEY权限。
 <!--RP2End-->
 
 当前模拟器<!--Del-->和开发板<!--DelEnd-->支持匿名证书，调试环境中使用的证书非真实设备证书，云侧需要区分该场景，避免误用。

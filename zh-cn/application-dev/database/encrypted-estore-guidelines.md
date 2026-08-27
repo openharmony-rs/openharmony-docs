@@ -2,16 +2,16 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997; @dboy190-->
+<!--Designer: @htt1997; @ding_dong_dong-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
 
 ## 场景介绍
 
-从安全角度考虑，为满足部分敏感数据的安全特性，提供了E类加密数据库的方案以提高锁屏下数据的安全性。存有敏感信息的应用在申请ohos.permission.PROTECT_SCREEN_LOCK_DATA权限后会在[EL5/apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)路径下创建一个E类数据库。在锁屏的情况下（未调用Access接口获取保留文件密钥）会触发文件密钥的销毁，此时E类数据库不可读写。当锁屏解锁后，密钥会恢复，E类数据库恢复正常读写操作。这样的设计可以有效防止用户数据的泄露。
+从安全角度考虑，为满足部分敏感数据的安全特性，提供了E类加密数据库的方案以提高锁屏下数据的安全性。存有敏感信息的应用在申请ohos.permission.PROTECT_SCREEN_LOCK_DATA权限后会在EL5路径下创建一个E类数据库。在锁屏的情况下（未调用Access接口获取保留文件密钥）会触发文件密钥的销毁，此时E类数据库不可读写。当锁屏解锁后，密钥会恢复，E类数据库恢复正常读写操作。这样的设计可以有效防止用户数据的泄露。
 
-在锁屏的情况下，应用程序仍然可以继续写入数据。由于此时E类数据库不可读写，这可能会导致数据丢失。为了解决这个问题，当前提供了一种方案：在锁屏的情况下，将数据存储在[EL2/apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)路径下的C类数据库中。当解锁后，再将数据迁移到E类数据库中。这样可以确保数据在锁屏期间的安全性和完整性。
+在锁屏的情况下，应用程序仍然可以继续写入数据。由于此时E类数据库不可读写，这可能会导致数据丢失。为了解决这个问题，当前提供了一种方案：在锁屏的情况下，将数据存储在EL2路径下的C类数据库中。当解锁后，再将数据迁移到E类数据库中。这样可以确保数据在锁屏期间的安全性和完整性。
 
 键值型数据库和关系型数据库均支持E类加密数据库。
 
@@ -42,25 +42,28 @@ ECStoreManager类：用于管理应用的E类数据库和C类数据库。
 
 ## 键值型数据库E类加密
 
-本章节提供键值型数据库的E类加密数据库使用方式，提供[Mover](#mover)类、[Store](#store)类、[SecretKeyObserver](#secretkeyobserver)类和[ECStoreManager](#ecstoremanager)类的具体实现，并在[EntryAbility](#entryability)和[index按键事件](#index按键事件)中展示这几个类的使用方式。
+本章节提供键值型数据库的E类加密数据库使用方式，提供Mover类、Store类、SecretKeyObserver类和ECStoreManager类的具体实现，并在EntryAbility和index按键事件中展示这几个类的使用方式。
 
 ### Mover
 
 提供数据库数据迁移接口，在锁屏解锁后，若C类数据库中存在数据，使用该接口将数据迁移到E类数据库。
 
-<!-- @[Mover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Mover.ts) -->
+<!-- @[Mover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Mover.ts) --> 
 
 ``` TypeScript
 import { distributedKVStore } from '@kit.ArkData';
-// Logger为hilog封装后实现的打印功能
 import Logger from '../common/Logger';
 
 export class Mover {
   async move(eStore: distributedKVStore.SingleKVStore, cStore: distributedKVStore.SingleKVStore): Promise<void> {
     if (eStore != null && cStore != null) {
-      let entries: distributedKVStore.Entry[] = await cStore.getEntries('key_test_string');
-      await eStore.putBatch(entries);
-      Logger.info(`ECDB_Encry move success`);
+      try {
+        let entries: distributedKVStore.Entry[] = await cStore.getEntries('key_test_string');
+        await eStore.putBatch(entries);
+        Logger.info(`ECDB_Encry move success`);
+      } catch (e) {
+        Logger.info(`ECDB_Encry move failed,code is ${e.code},message is ${e.message}`);
+      }
     }
   }
 }
@@ -70,12 +73,11 @@ export class Mover {
 
 提供了获取数据库，在数据库中插入数据、删除数据、更新数据和获取当前数据数量的接口。
 
-<!-- @[Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Store.ts) -->
+<!-- @[Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Store.ts) --> 
 
 ``` TypeScript
 import { distributedKVStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
-// Logger为hilog封装后实现的打印功能
 import Logger from '../common/Logger';
 
 let kvManager: distributedKVStore.KVManager;
@@ -241,7 +243,7 @@ export let lockObserve = new SecretKeyObserver();
 
 ECStoreManager类用于管理应用的E类数据库和C类数据库。支持配置数据库信息、配置迁移函数的信息，可根据密钥状态为应用提供相应的数据库句柄，并提供了关闭E类数据库、数据迁移完成后销毁C类数据库等接口。
 
-<!-- @[ECStoreManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/ECStoreManager.ts) -->
+<!-- @[ECStoreManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/ECStoreManager.ts) --> 
 
 ``` TypeScript
 import { distributedKVStore } from '@kit.ArkData';
@@ -249,7 +251,6 @@ import { Mover } from './Mover';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { StoreInfo, Store } from './Store';
 import { SecretStatus } from './SecretKeyObserver';
-// Logger为hilog封装后实现的打印功能
 import Logger from '../common/Logger';
 
 let store = new Store();
@@ -339,7 +340,7 @@ export class ECStoreManager {
 
 模拟应用启动期间，注册对COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED公共事件的监听，并配置相应的数据库信息、密钥状态信息等。
 
-<!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets) --> 
 
 ``` TypeScript
 import { AbilityConstant, application, contextConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -352,7 +353,6 @@ import { Mover } from './Mover';
 import { SecretKeyObserver } from './SecretKeyObserver';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-// Logger为hilog封装后实现的打印功能
 import Logger from '../common/Logger';
 
 export let storeManager = new ECStoreManager();
@@ -388,57 +388,59 @@ let eInfo: StoreInfo | null = null;
 export default class EntryAbility extends UIAbility {
   async onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): Promise<void> {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    let cContext = this.context;
-    cInfo = {
-      'kvManagerConfig': {
-        context: cContext,
-        bundleName: 'com.example.ecstoresamples'
-      },
-      'storeId': 'cstore',
-      'option': {
-        createIfMissing: true,
-        encrypt: false,
-        backup: false,
-        autoSync: false,
-        // kvStoreType不填时，默认创建多设备协同数据库
-        kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-        // 多设备协同数据库：kvStoreType: distributedKVStore.KVStoreType.DEVICE_COLLABORATION
-        securityLevel: distributedKVStore.SecurityLevel.S3
-      }
-    }
-    let eContext = await application.createModuleContext(this.context,'entry');
-    eContext.area = contextConstant.AreaMode.EL5;
-    eInfo = {
-      'kvManagerConfig': {
-        context: eContext,
-        bundleName: 'com.example.ecstoresamples'
-      },
-      'storeId': 'estore',
-      'option': {
-        createIfMissing: true,
-        encrypt: false,
-        backup: false,
-        autoSync: false,
-        // kvStoreType不填时，默认创建多设备协同数据库
-        kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-        // 多设备协同数据库：kvStoreType: distributedKVStore.KVStoreType.DEVICE_COLLABORATION
-        securityLevel: distributedKVStore.SecurityLevel.S3
-      }
-    }
-    Logger.info(`ECDB_Encry store area : estore:${eContext.area},cstore${cContext.area}`);
-    // 监听COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED事件 code == 1解锁状态，code==0加锁状态
     try {
+      let cContext = this.context;
+      cInfo = {
+        'kvManagerConfig': {
+          context: cContext,
+          bundleName: 'com.example.ecstoresamples'
+        },
+        'storeId': 'cstore',
+        'option': {
+          createIfMissing: true,
+          encrypt: false,
+          backup: false,
+          autoSync: false,
+          // kvStoreType不填时，默认创建多设备协同数据库
+          kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+          // 多设备协同数据库：kvStoreType: distributedKVStore.KVStoreType.DEVICE_COLLABORATION
+          securityLevel: distributedKVStore.SecurityLevel.S3
+        }
+      }
+      let eContext = await application.createModuleContext(this.context,'entry');
+      eContext.area = contextConstant.AreaMode.EL5;
+      eInfo = {
+        'kvManagerConfig': {
+          context: eContext,
+          bundleName: 'com.example.ecstoresamples'
+        },
+        'storeId': 'estore',
+        'option': {
+          createIfMissing: true,
+          encrypt: false,
+          backup: false,
+          autoSync: false,
+          // kvStoreType不填时，默认创建多设备协同数据库
+          kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+          // 多设备协同数据库：kvStoreType: distributedKVStore.KVStoreType.DEVICE_COLLABORATION
+          securityLevel: distributedKVStore.SecurityLevel.S3
+        }
+      }
+      Logger.info(`ECDB_Encry store area : estore:${eContext.area},cstore${cContext.area}`);
+      // 监听COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED事件 code == 1解锁状态，code==0加锁状态
+
       commonEventManager.createSubscriber({
         events: [ 'COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED' ]
       }, createCB);
       Logger.info(`ECDB_Encry success subscribe`);
+
+      storeManager.config(cInfo, eInfo);
+      storeManager.configDataMover(mover);
+      e_secretKeyObserver.initialize(storeManager);
     } catch (error) {
       const err: BusinessError = error as BusinessError;
       Logger.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
     }
-    storeManager.config(cInfo, eInfo);
-    storeManager.configDataMover(mover);
-    e_secretKeyObserver.initialize(storeManager);
   }
 
   onDestroy(): void {
@@ -553,7 +555,7 @@ struct Index {
 
 ## 关系型数据库E类加密
 
-本章节提供关系型数据库的E类加密数据库使用方式，提供[Mover](#mover-1)类，[Store](#store-1)类，[SecretKeyObserver](#secretkeyobserver-1)类和[ECStoreManager](#ecstoremanager-1)类的具体实现，并在[EntryAbility](#entryability-1)和[index按键事件](#index按键事件-1)中展示这几个类的使用方式。
+本章节提供关系型数据库的E类加密数据库使用方式，提供Mover类，Store类，SecretKeyObserver类和ECStoreManager类的具体实现，并在EntryAbility和index按键事件中展示这几个类的使用方式。
 
 ### Mover
 
@@ -582,7 +584,7 @@ export class Mover {
 
 提供了获取数据库，在数据库中插入数据、删除数据、更新数据和获取当前数据数量的接口。其中StoreInfo类用于存储获取数据库相关信息。
 
-<!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Store.ts) -->
+<!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Store.ts) -->   
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
@@ -606,7 +608,7 @@ export class Store {
       rdbStore = await relationalStore.getRdbStore(storeInfo.context, storeInfo.config);
       if (rdbStore.version == 0) {
         await rdbStore.executeSql(SQL_CREATE_TABLE);
-        console.info(`ECDB_Encry succeeded in getting Store ：${storeInfo.storeId}`);
+        console.info(`ECDB_Encry succeeded in getting Store: ${storeInfo.storeId}`);
         rdbStore.version = 1;
       }
     } catch (e) {

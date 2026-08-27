@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 ## 场景介绍
@@ -12,18 +12,18 @@
 
 ## 接口说明
 
-常用接口如下表所示，具体API说明详见[Native_Bundle/apis-ability-kit/capi-native-bundle.md)。
+常用接口如下表所示，具体API说明详见Native_Bundle。
 
 | 接口名                                                       | 描述                                     |
 | :----------------------------------------------------------- | :--------------------------------------- |
-| [OH_NativeBundle_GetCurrentApplicationInfo/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_getcurrentapplicationinfo) | 获取应用自身相关信息。          |
-| [OH_NativeBundle_GetAppId/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_getappid) | 获取自身应用的appId信息。 |
-| [OH_NativeBundle_GetAppIdentifier/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_getappidentifier) | 获取自身应用的appIdentifier信息。 |
-| [OH_NativeBundle_GetMainElementName/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_getmainelementname) | 获取自身应用入口的信息。 |
-| [OH_NativeBundle_GetCompatibleDeviceType/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_getcompatibledevicetype) | 获取自身应用适用的设备类型。 |
-| [OH_NativeBundle_IsDebugMode/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_isdebugmode) | 查询当前应用的调试模式。从API version 20开始支持。|
-| [OH_NativeBundle_GetModuleMetadata/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_getmodulemetadata) | 获取当前应用的元数据信息。从API version 20开始支持。 |
-| [OH_NativeBundle_GetAbilityResourceInfo/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_getabilityresourceinfo) | 获取支持打开特定文件类型的组件资源信息列表。从API version 21开始支持。 |
+| OH_NativeBundle_GetCurrentApplicationInfo | 获取应用自身相关信息。          |
+| OH_NativeBundle_GetAppId | 获取自身应用的appId信息。 |
+| OH_NativeBundle_GetAppIdentifier | 获取自身应用的appIdentifier信息。 |
+| OH_NativeBundle_GetMainElementName | 获取自身应用入口的信息。 |
+| OH_NativeBundle_GetCompatibleDeviceType | 获取自身应用适用的设备类型。 |
+| OH_NativeBundle_IsDebugMode | 查询当前应用的调试模式。从API version 20开始支持。|
+| OH_NativeBundle_GetModuleMetadata | 获取当前应用的元数据信息。从API version 20开始支持。 |
+| OH_NativeBundle_GetAbilityResourceInfo | 获取支持打开特定文件类型的组件资源信息列表。从API version 21开始支持。 |
 
 
 ## 开发步骤
@@ -503,4 +503,4 @@
     ```
 
 
-关于包管理NDK接口说明，可参考[Native_Bundle模块介绍/apis-ability-kit/capi-native-bundle.md)。
+关于包管理NDK接口说明，可参考Native_Bundle模块介绍。

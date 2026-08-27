@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手势、长按手势、捏合手势和旋转手势，通过给指定的组件绑定不同的手势并设置相应的回调，实现期望的手势交互能力。
+ArkUI开发框架在NDK接口中主要提供点击手势、滑动手势、快滑手势、长按手势、捏合手势和旋转手势，通过给指定的组件绑定不同的手势并设置相应的回调，实现期望的手势交互能力。
 
 
 下面通过一个简单的示例来介绍如何实现手势绑定。
@@ -167,14 +167,14 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 
 可以将多个不同类型的手势组合在一起，形成一个手势组，这个手势组可以作为一个识别整体，达到对用户多个不同类型手势序列的识别目的。
 
-通过设置[ArkUI_GroupGestureMode/apis-arkui/capi-native-gesture-h.md#arkui_groupgesturemode)来指定这个手势组的识别模式，即组内的手势之间的关系，包含顺序识别SEQUENTIAL_GROUP，并行识别PARALLEL_GROUP，互斥识别EXCLUSIVE_GROUP。
+通过设置ArkUI_GroupGestureMode来指定这个手势组的识别模式，即组内的手势之间的关系，包含顺序识别SEQUENTIAL_GROUP，并行识别PARALLEL_GROUP，互斥识别EXCLUSIVE_GROUP。
 
 
 ### 顺序识别
 
-顺序识别组合手势对应的ArkUI_GroupGestureMode为SEQUENTIAL_GROUP。顺序识别组合手势将按照手势的注册顺序识别手势，直到所有的手势识别成功。当顺序识别组合手势中有一个手势识别失败时，后续手势识别均失败。顺序识别手势组仅有最后一个手势可以响应[GESTURE_EVENT_ACTION_END/apis-arkui/capi-native-gesture-h.md#arkui_gestureeventactiontype)。
+顺序识别组合手势对应的ArkUI_GroupGestureMode为SEQUENTIAL_GROUP。顺序识别组合手势将按照手势的注册顺序识别手势，直到所有的手势识别成功。当顺序识别组合手势中有一个手势识别失败时，后续手势识别均失败。顺序识别手势组仅有最后一个手势可以响应GESTURE_EVENT_ACTION_END。
 
-以顺序识别长按和滑动手势为例：
+以顺序识别长按和快滑手势为例：
 
 <!-- @[long_press_and_swipe_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/LongPressAndSwipeGesture.h) -->
 
@@ -323,7 +323,7 @@ ArkUI_NodeHandle LongPressAndSwipeGesture()
 
 **完整示例：**
 
-完整示例请参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent)。
+完整示例请参考<!--RP1-->[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent)<!--RP1End-->。
 
 ### 并行识别
 
@@ -481,7 +481,7 @@ ArkUI_NodeHandle LongPressAndFlickGesture()
 
 **完整示例：**
 
-完整示例请参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent)。
+完整示例请参考<!--RP2-->[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent)<!--RP2End-->。
 
 ### 互斥识别
 
@@ -582,7 +582,8 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
                      "NdkAddInteractionEvent_GestureSampleLog, addChildGesture panGesture");
     }
     // 创建捏合手势
-    auto pinchGesture = gestureApi->createPinchGesture(0, 0);
+    // NUMBER_2 = 2，NUMBER_10 = 10
+    auto pinchGesture = gestureApi->createPinchGesture(NUMBER_2, NUMBER_10);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(pinchGesture);
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
@@ -639,11 +640,11 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 
 **完整示例：**
 
-完整示例请参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent)。
+完整示例请参考<!--RP3-->[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent)<!--RP3End-->。
 
 ### 自定义手势判定
 
-当用户的操作符合某个手势识别器，该识别器即将触发成功时，可通过自定义手势判定能力来动态决策，是否希望该识别器被系统认定为识别成功。通过setGestureInterrupterToNode接口，绑定一个回调在该组件上，但组件上的某个手势即将识别成功时，通过返回CONTINUE或REJECT来决定是否将成功机会让给其它手势识别器。
+当用户的操作符合某个手势识别器，该识别器即将触发成功时，可通过自定义手势判定能力来动态决策，是否希望该识别器被系统认定为识别成功。通过setGestureInterrupterToNode接口，绑定一个回调在该组件上，当组件上的某个手势即将识别成功时，通过返回CONTINUE或REJECT来决定是否将成功机会让给其它手势识别器。
 
 在上文绑定手势事件的示例中按照如下方式进行调整即可实现自定义手势判定。
 
@@ -688,7 +689,7 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 
 ## 获取事件信息
 
-绑定手势事件已详细说明如何将手势绑定到节点上。在回调执行时，ArkUI框架提供了[OH_ArkUI_GestureEvent_GetRawInputEvent()/apis-arkui/capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent)接口，可从手势事件中获取基础事件对象。之后，可通过调用[OH_ArkUI_PointerEvent_GetDisplayX()/apis-arkui/capi-ui-input-event-h.md#oh_arkui_pointerevent_getdisplayx)、[OH_ArkUI_PointerEvent_GetDisplayXByIndex()/apis-arkui/capi-ui-input-event-h.md#oh_arkui_pointerevent_getdisplayxbyindex)、[OH_ArkUI_UIInputEvent_GetAction()/apis-arkui/capi-ui-input-event-h.md#oh_arkui_uiinputevent_getaction)和[OH_ArkUI_UIInputEvent_GetEventTime()/apis-arkui/capi-ui-input-event-h.md#oh_arkui_uiinputevent_geteventtime)等接口，从基础事件中获取更多信息。应用依据获取的信息，在手势事件执行过程中实现差异化交互逻辑。
+绑定手势事件已详细说明如何将手势绑定到节点上。在回调执行时，ArkUI框架提供了OH_ArkUI_GestureEvent_GetRawInputEvent()接口，可从手势事件中获取基础事件对象。之后，可通过调用OH_ArkUI_PointerEvent_GetDisplayX()、OH_ArkUI_PointerEvent_GetDisplayXByIndex()、OH_ArkUI_UIInputEvent_GetAction()和OH_ArkUI_UIInputEvent_GetEventTime()等接口，从基础事件中获取更多信息。应用依据获取的信息，在手势事件执行过程中实现差异化交互逻辑。
 
 
   <!-- @[gesture_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
@@ -745,3 +746,87 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
   gestureApi->addGestureToNode(column, TapGesture, ArkUI_GesturePriority::PARALLEL,
                                ArkUI_GestureMask::NORMAL_GESTURE_MASK);
   ```
+
+## 自定义干预事件和手势的收集结果
+
+从API版本26.0.0开始，在手势、触摸事件发起时，系统会收集已绑定手势、触摸识别器的识别结果。开发者可以在`NODE_ON_GESTURE_COLLECT_INTERCEPT`回调中对收集到的响应识别器和触摸识别器进行干预，通过设置收集干预策略来动态控制对识别器的收集行为，例如丢弃特定节点的识别结果等。
+
+下面通过示例介绍如何实现自定义干预事件和手势的收集结果。
+
+1. 注册`NODE_ON_GESTURE_COLLECT_INTERCEPT`节点事件并绑定回调处理函数。在回调中使用OH_ArkUI_GestureCollectInterceptInfo_GetResponseRecognizers获取手势识别器、OH_ArkUI_GestureCollectInterceptInfo_GetTouchRecognizers获取触摸识别器，并结合处理函数完成干预。
+
+    <!-- @[gesture_intercepting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkEventGestureIntercept/entry/src/main/cpp/function.h) -->
+    
+    ``` C
+    nodeAPI->registerNodeEvent(row2, NODE_ON_GESTURE_COLLECT_INTERCEPT, 1, &row2);
+    nodeAPI->addNodeEventReceiver(row2, [](ArkUI_NodeEvent *event) {
+        if (OH_ArkUI_NodeEvent_GetEventType(event) == NODE_ON_GESTURE_COLLECT_INTERCEPT) {
+            ArkUI_GestureCollectInterceptInfo *info = nullptr;
+            ArkUI_GestureRecognizerHandleArray array;
+            ArkUI_TouchRecognizerHandleArray arrayTouch;
+            int32_t size;
+            info = OH_ArkUI_NodeEvent_GetGestureCollectInterceptInfo(event);
+            OH_ArkUI_GestureCollectInterceptInfo_GetTouchRecognizers(info, &arrayTouch, &size);
+            OH_ArkUI_GestureCollectInterceptInfo_GetResponseRecognizers(info, &array, &size);
+            int32_t uniqueId = 0;
+            if (!GestureRecognizerModule(array, uniqueId, size, info)) {
+                return;
+            }
+            TouchRecognizerModule(arrayTouch, size);
+            OH_ArkUI_GestureCollectInterceptInfo_SetGestureCollectIntervention(
+                info, OH_ArkUI_GestureCollectIntervention::OH_ARKUI_GESTURE_COLLECT_INTERVENTION_CONTINUE);
+        } else if (OH_ArkUI_NodeEvent_GetEventType(event) == NODE_TOUCH_EVENT) {
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkEventGestureIntercept]",
+                         "NdkEventGestureIntercept_SampleLog, row2 NODE_TOUCH_EVENT NodeEvent");
+        }
+    });
+    ```
+
+2. 创建手势收集干预处理函数，在处理函数中可调用以下接口对响应识别器和触摸识别器进行干预。
+   - 通过OH_ArkUI_GetGestureBindNodeUniqueId接口获取绑定节点ID。
+   - 通过OH_ArkUI_GestureRecognizer_IsHostBelongsTo接口判断手势识别器是否为指定节点的后代。
+   - 通过OH_ArkUI_TouchRecognizer_IsHostBelongsTo接口判断触摸识别器是否为指定节点的后代。
+   - 通过OH_ArkUI_GestureCollectInterceptInfo_SetGestureCollectIntervention接口设置收集干预策略。
+
+    <!-- @[create_interception_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkEventGestureIntercept/entry/src/main/cpp/function.h) -->
+    
+    ``` C
+    // 处理手势识别器
+    bool GestureRecognizerModule(ArkUI_GestureRecognizerHandleArray &array, int32_t &uniqueId, int32_t size,
+                                 ArkUI_GestureCollectInterceptInfo *info)
+    {
+        for (auto i = 0; i < size; i++) {
+            OH_ArkUI_GetGestureBindNodeUniqueId(array[i], &uniqueId);
+            if (OH_ArkUI_GestureRecognizer_IsHostBelongsTo(array[i], uniqueId)) {
+                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkEventGestureIntercept]",
+                             "NdkEventGestureIntercept_SampleLog, gestureRecognizer isHostBelongsTo");
+            }
+            // 根据uniqueId判断事件是否来自右侧button
+            if (uniqueId == g_buttonId) {
+                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkEventGestureIntercept]",
+                             "NdkEventGestureIntercept_SampleLog, gestureRecognizer is from Button2");
+                OH_ArkUI_GestureCollectInterceptInfo_SetGestureCollectIntervention(
+                    info, OH_ArkUI_GestureCollectIntervention::OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_SELF);
+                return false;
+            }
+        }
+        return true;
+    }
+    // 处理触摸识别器
+    void TouchRecognizerModule(ArkUI_TouchRecognizerHandleArray &arrayTouch, int32_t size)
+    {
+        for (auto i = 0; i < size; i++) {
+            if (OH_ArkUI_TouchRecognizer_IsHostBelongsTo(arrayTouch[i], NODE_ID)) {
+                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkEventGestureIntercept]",
+                             "NdkEventGestureIntercept_SampleLog, touchRecognizer isHostBelongsTo");
+            } else {
+                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkEventGestureIntercept]",
+                             "NdkEventGestureIntercept_SampleLog, touchRecognizer not isHostBelongsTo");
+            }
+        }
+    }
+    ```
+
+**完整示例：**
+
+完整示例请参考<!--RP4-->[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkEventGestureIntercept)<!--RP4End-->。

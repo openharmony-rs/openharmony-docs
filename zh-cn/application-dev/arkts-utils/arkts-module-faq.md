@@ -4,13 +4,13 @@
 <!--Owner: @yao_dashuai-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HellloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## Object is not initialized
 
 **问题现象**
 
-应用运行时报错：“Object is not initialized”导致应用无法正常运行。
+应用运行时报错："Object is not initialized"导致应用无法正常运行，具体报错信息中的Object为实际使用的变量，如"a is not initialized"。
 
 **可能原因**
 
@@ -65,7 +65,7 @@ import { Animal } from './B'
 
 export let a = "this is A";
 export function A() {
-  return new Animal;
+  return new Animal();
 }
 
 // B.ets
@@ -88,15 +88,15 @@ ModuleImportStack:
 #2 &entry/src/main/ets/pages/Index&
 ```
 
-## cannot find module 'fileName'，which is application Entry Point.
+## cannot find module 'fileName', which is application Entry Point.
 
 **问题现象**
 
-应用启动时报错：cannot find module 'fileName'，which is application Entry Point。
+应用启动时报错：cannot find module 'fileName', which is application Entry Point。
 
 **可能原因**
 
-应用在升级时并未升级版本号，或者应用使用了normalized特性，但是在升级或者更新时没有重启应用。
+应用在升级时并未升级版本号，或者应用使用了[normalized](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section13181758123312)特性，但是在升级或者更新时没有重启应用。
 
 **解决措施**
 
@@ -120,17 +120,17 @@ ModuleImportStack:
 
 **参考链接**
 
-[Disassembler反汇编工具](./tool-disassembler.md)
+Disassembler反汇编工具
 
 ## cannot find record 'fileName', please check request path.
 
 **问题现象**
 
-应用运行时报错：cannot find record 'fileName', please check request path，提示无法找到指定的模块或文件，导致应用运行异常。
+应用运行时报错：cannot find record 'fileName', please check request path.提示无法找到指定的模块或文件，导致应用运行异常。
 
 **可能原因**
 
-1. 该文件为动态加载表达式、动态加载文件等，但没有进行相关文件配置。
+1. 该文件使用了动态import加载模块，但未在build-profile.json5的"buildOption"中进行相关配置。
 
 2. 文件路径配置错误，导致无法在hap包中找到对应文件。
 
@@ -158,4 +158,4 @@ ModuleImportStack:
 
 **参考链接**
 
-[动态加载](./arkts-dynamic-import.md)
+动态加载

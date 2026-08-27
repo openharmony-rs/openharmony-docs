@@ -4,12 +4,12 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
-此处提供使用任务池[TaskPool/apis-arkts/js-apis-taskpool.md)提升[WaterFlow瀑布流/apis-arkui/arkui-ts/ts-container-waterflow.md)渲染性能的开发指导。UI线程查询数据库数据，并将数据渲染到瀑布流组件，数据过大时会导致UI线程长时间等待，影响用户体验。因此，我们可以将数据查询操作放到子线程中，并通过TaskPool的接口返回数据给UI线程。
+此处提供使用任务池TaskPool提升WaterFlow瀑布流渲染性能的开发指导。UI线程查询数据库数据，并将数据渲染到瀑布流组件，数据过大时会导致UI线程长时间等待，影响用户体验。因此，我们可以将数据查询操作放到子线程中，并通过TaskPool的接口返回数据给UI线程。
 
 本示例说明以下场景：
-- 模拟子线程[读取数据库数据](batch-database-operations-guide.md)并返回给UI线程。
+- 模拟子线程读取数据库数据并返回给UI线程。
 - UI线程感知到数据更新，将子线程返回的数据渲染到瀑布流组件。
 
 1. 定义一个接口，用于子线程查询数据库并将数据返回给UI线程。
@@ -251,10 +251,11 @@
                    Text($r('app.string.Image_loading')) // 加载资源，可根据项目实际资源自定义
                      .width('100%')
                      .layoutWeight(1);
+                 } else {
+                   Text(img[item % 33])
+                     .width('100%')
+                     .layoutWeight(1);
                  }
-                 Text(img[item % 33])
-                   .width('100%')
-                   .layoutWeight(1);
                }
              }
              .onAppear(() => {
@@ -267,8 +268,8 @@
              })
              .width('100%')
              .height(this.itemHeightArray[item % 100])
-             .backgroundColor(this.colors[item % 5])
-           }, (item: string) => item)
+             .backgroundColor(this.colors[item % 6])
+           }, (item: number) => item.toString())
          }
          .columnsTemplate('1fr 1fr')
          .columnsGap(10)

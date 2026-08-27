@@ -19,7 +19,7 @@
 
 ## 约束限制
 
-- 系统默认日志方式是[WAL](data-terminology.md#wal模式)（Write Ahead Log）模式，系统默认落盘方式是[FULL模式](data-terminology.md#full模式)。
+- 系统默认日志方式是WAL（Write Ahead Log）模式，系统默认落盘方式是FULL模式。
 
 - 数据库中默认有4个读连接和1个写连接，线程获取到空闲读连接时，即可进行读取操作。当没有空闲读连接时，会创建新的读连接。
 
@@ -31,11 +31,11 @@
 
 ## 规格限制
 
-详情见[规格限制](data-persistence-by-vector-store.md#规格限制)。
+详情见规格限制。
 
 ## 接口说明
 
-详细的接口说明请参考[RDB/apis-arkdata/capi-rdb.md)。
+详细的接口说明请参考RDB。
 
 | 接口名称 | 描述 |
 | -------- | -------- |
@@ -61,13 +61,14 @@ libnative_rdb_ndk.z.so
 
 **头文件**
 
-<!--@[vector_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[vector_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->   
 
-``` C
+``` C++
 #include <hilog/log.h>
 #include <database/data/oh_data_values.h>
 #include <database/rdb/oh_cursor.h>
 #include <database/rdb/relational_store.h>
+#include <database/rdb/relational_store_error_code.h>
 ```
 
 1. 判断当前系统是否支持向量数据库，若不支持，则表示当前系统不具备向量数据库能力。示例代码如下：
@@ -327,7 +328,7 @@ libnative_rdb_ndk.z.so
 
    | 类型   | 计算符号 | 备注说明   |
    | ------ | -------- | ---------- |
-   | L2     | <->      | 欧式距离。|
+   | L2     | <->      | 欧氏距离。|
    | COSINE | <=>      | 余弦距离。|
 
    **表3** 扩展语法参数(parameter)

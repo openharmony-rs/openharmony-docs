@@ -13,19 +13,19 @@
 
 ## 约束与限制
 
-申请短时任务的按钮，不可连续点击超过3次，否则会超出短时任务数量限制并报错。使用过程中更多的约束与限制请参考短时任务（ArkTS）的[约束与限制](transient-task.md#约束与限制)。
+申请短时任务的按钮，不可连续点击超过3次，否则会超出短时任务数量限制并报错。使用过程中更多的约束与限制请参考短时任务（ArkTS）的约束与限制。
 
 ## 接口说明
 
-常用接口如下表所示，具体API说明详见[transient_task_api.h/apis-backgroundtasks-kit/capi-transient-task-api-h.md)。
+常用接口如下表所示，具体API说明详见transient_task_api.h。
 
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [int32_t OH_BackgroundTaskManager_RequestSuspendDelay(const char *reason, TransientTask_Callback callback, TransientTask_DelaySuspendInfo *info)/apis-backgroundtasks-kit/capi-transient-task-api-h.md#oh_backgroundtaskmanager_requestsuspenddelay)  | 申请短时任务。 |
-| [int32_t OH_BackgroundTaskManager_GetRemainingDelayTime(int32_t requestId, int32_t *delayTime)/apis-backgroundtasks-kit/capi-transient-task-api-h.md#oh_backgroundtaskmanager_getremainingdelaytime) | 获取对应短时任务的剩余时间。 |
-| [int32_t OH_BackgroundTaskManager_CancelSuspendDelay(int32_t requestId)/apis-backgroundtasks-kit/capi-transient-task-api-h.md#oh_backgroundtaskmanager_cancelsuspenddelay) | 取消短时任务。 |
-| [int32_t OH_BackgroundTaskManager_GetTransientTaskInfo(TransientTask_TransientTaskInfo  *transientTaskInfo)/apis-backgroundtasks-kit/capi-transient-task-api-h.md#oh_backgroundtaskmanager_gettransienttaskinfo) | 获取所有短时任务信息，如当日剩余总配额等。 |
+| int32_t OH_BackgroundTaskManager_RequestSuspendDelay(const char *reason, TransientTask_Callback callback, TransientTask_DelaySuspendInfo *info)  | 申请短时任务。 |
+| int32_t OH_BackgroundTaskManager_GetRemainingDelayTime(int32_t requestId, int32_t *delayTime) | 获取对应短时任务的剩余时间。 |
+| int32_t OH_BackgroundTaskManager_CancelSuspendDelay(int32_t requestId) | 取消短时任务。 |
+| int32_t OH_BackgroundTaskManager_GetTransientTaskInfo(TransientTask_TransientTaskInfo  *transientTaskInfo) | 获取所有短时任务信息，如当日剩余总配额等。 |
 
 ## 开发步骤
 
@@ -296,23 +296,23 @@
 
 1. 连接设备并运行程序。
 
-2. 点击 `申请短时任务` 按钮，控制台会打印日志，示例如下：
+2. 点击 `RequestSuspendDelay` 按钮，控制台会打印日志，示例如下：
 
    ```txt
    The returned requestId is 1
    ```
 
-3. 点击 `获取剩余时间` 按钮，控制台会打印日志，示例如下：
+3. 点击 `GetRemainingDelayTime` 按钮，控制台会打印日志，示例如下：
 
    ```txt
    The time is 18000
    ```
-4. 点击 `取消短时任务` 按钮，控制台会打印日志，示例如下：
+4. 点击 `CancelSuspendDelay` 按钮，控制台会打印日志，示例如下：
 
    ```txt
    The return value is 0
    ```
-5. 点击 `获取所有短时任务信息` 按钮，控制台会打印日志，示例如下：
+5. 点击 `GetTransientTaskInfo` 按钮，控制台会打印日志，示例如下：
 
    ```txt
    The transientTaskInfo is {"remainingQuota":600000,"transientTasks":[]}

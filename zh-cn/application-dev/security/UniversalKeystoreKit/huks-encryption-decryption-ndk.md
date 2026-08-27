@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-以AES256、RSA1024、SM2和DES64为例，完成加解密。具体的场景介绍及支持的算法规格，请参考[加解密支持的算法](huks-encryption-decryption-overview.md#支持的算法)。
+以AES256、RSA1024、SM2和DES64为例，完成加解密。具体的场景介绍及支持的算法规格，请参考加解密支持的算法。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -17,13 +17,13 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 **生成密钥**
 
-1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
+1. 指定密钥别名，密钥别名命名规范参考密钥生成介绍及算法规格。
 
 2. 初始化密钥属性集。
 
-3. 调用[OH_Huks_GenerateKeyItem/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_generatekeyitem)生成密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
+3. 调用OH_Huks_GenerateKeyItem生成密钥，具体请参考密钥生成。
 
-除此之外，开发者也可以参考[密钥导入](huks-key-import-overview.md)，导入已有的密钥。
+除此之外，开发者也可以参考密钥导入，导入已有的密钥。
 
 **加密**
 
@@ -31,23 +31,23 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 2. 获取待加密的数据。
 
-3. 调用[OH_Huks_InitParamSet/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。
+3. 调用OH_Huks_InitParamSet指定算法参数配置。
     
    文档中提供多个示例，当使用不同算法时，请注意配置对应参数。
-   - 使用AES算法加密，选取的分组模式为CBC、填充模式为PKCS7时，参数IV必选，请见开发案例：[AES/CBC/PKCS7](#aescbcpkcs7)。
-   - 使用AES算法加密，选取的分组模式为GCM时，参数NONCE可选，AAD可选，请见开发案例：[AES/GCM/NoPadding](#aesgcmnopadding)。
-   - 使用AES算法加密，选取的分组模式为CCM时，参数NONCE可选，AAD可选，请见开发案例：[AES/CCM/NoPadding](#aesccmnopadding)。
-   - 使用RSA算法加密，需要选择相对应的分组模式、填充模式以及摘要算法DIGEST，请见开发案例：[RSA/ECB/PKCS1_V1_5](#rsaecbpkcs1_v1_5)和[RSA/ECB/OAEP/SHA256](#rsaecboaepsha256)。
-   - 使用SM2算法加密，摘要算法DIGEST需要指定为SM3，请见开发案例：[SM2](#sm2)。
+   - 使用AES算法加密，选取的分组模式为CBC、填充模式为PKCS7时，参数IV必选，请见开发案例：AES/CBC/PKCS7。
+   - 使用AES算法加密，选取的分组模式为GCM时，参数NONCE可选，AAD可选，请见开发案例：AES/GCM/NoPadding。
+   - 使用AES算法加密，选取的分组模式为CCM时，参数NONCE可选，AAD可选，请见开发案例：AES/CCM/NoPadding。
+   - 使用RSA算法加密，需要选择相对应的分组模式、填充模式以及摘要算法DIGEST，请见开发案例：RSA/ECB/PKCS1_V1_5和RSA/ECB/OAEP/SHA256。
+   - 使用SM2算法加密，摘要算法DIGEST需要指定为SM3，请见开发案例：SM2。
    <!--Del-->
-   - 使用DES算法加密，选取的分组模式为CBC时，参数IV必选，请见开发案例：[DES/CBC/NoPadding](#descbcnopadding)。
+   - 使用DES算法加密，选取的分组模式为CBC时，参数IV必选，请见开发案例：DES/CBC/NoPadding。
    <!--DelEnd-->
    
-   详细规格请参考[加密/解密介绍及算法规格](huks-encryption-decryption-overview.md)。
+   详细规格请参考加密/解密介绍及算法规格。
 
-4. 调用[OH_Huks_InitSession/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession)初始化密钥会话，并获取会话的句柄handle。
+4. 调用OH_Huks_InitSession初始化密钥会话，并获取会话的句柄handle。
 
-5. 调用[OH_Huks_FinishSession/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_finishsession)结束密钥会话，获取加密后的密文。
+5. 调用OH_Huks_FinishSession结束密钥会话，获取加密后的密文。
 
 **解密**
 
@@ -55,21 +55,21 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 2. 获取待解密的密文。
 
-3. 调用[OH_Huks_InitParamSet/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。
+3. 调用OH_Huks_InitParamSet指定算法参数配置。
 
    文档中提供多个示例，当使用不同算法时，请注意配置对应参数。
-   - 使用AES算法解密，用例中选取的分组模式为GCM时，必须要填参数NONCE和参数AEAD，AAD可选，请见开发案例：[AES/GCM/NoPadding](#aesgcmnopadding)。
+   - 使用AES算法解密，用例中选取的分组模式为GCM时，必须要填参数NONCE和参数AEAD，AAD可选，请见开发案例：AES/GCM/NoPadding。
    - 其余示例参数与加密要求一致。
    
-   详细规格请参考[加密/解密介绍及算法规格](huks-encryption-decryption-overview.md)。
+   详细规格请参考加密/解密介绍及算法规格。
 
-4. 调用[OH_Huks_InitSession/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession)初始化密钥会话，并获取会话的句柄handle。
+4. 调用OH_Huks_InitSession初始化密钥会话，并获取会话的句柄handle。
 
-5. 调用[OH_Huks_FinishSession/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_finishsession)结束密钥会话，获取解密后的数据。
+5. 调用OH_Huks_FinishSession结束密钥会话，获取解密后的数据。
 
 **删除密钥**
 
-当密钥废弃不用时，需要调用OH_Huks_DeleteKeyItem删除密钥，具体请参考[密钥删除](huks-delete-key-ndk.md)。
+当密钥废弃不用时，需要调用OH_Huks_DeleteKeyItem删除密钥，具体请参考密钥删除。
 
 ## 开发案例
 

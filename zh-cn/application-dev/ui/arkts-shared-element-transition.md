@@ -4,7 +4,7 @@
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @ge-yafang; @Brilliantry_Rui-->
 
 共享元素转场是一种界面切换时对相同或者相似的两个元素做的一种位置和大小匹配的过渡动画效果，也称一镜到底动效。
 
@@ -12,7 +12,7 @@
 
 | 一帧切换效果 | 一镜到底效果 |
 | ------ | ---- |
-| ![zh-cn_image_0000001599644876](figures/zh-cn_image_0000001599644876.gif)|![zh-cn_image_0000001599644877](figures/zh-cn_image_0000001599644877.gif) |
+| ![Frame-transition-effect](figures/Frame-transition-effect.gif)|![one-shot-style](figures/one-shot-style.gif) |
 
 一镜到底的动效有多种实现方式，在实际开发过程中，应根据具体场景选择合适的方法进行实现。
 
@@ -26,7 +26,7 @@
 
 ## 不新建容器并直接变化原容器
 
-该方法不新建容器，通过在已有容器上增删组件触发[transition/apis-arkui/arkui-ts/ts-transition-animation-component.md)，搭配组件[属性动画](./arkts-attribute-animation-apis.md)实现一镜到底效果。
+该方法不新建容器，通过在已有容器上增删组件触发transition，搭配组件属性动画实现一镜到底效果。
 
 对于同一个容器展开，容器内兄弟组件消失或者出现的场景，可通过对同一个容器展开前后进行宽高位置变化并配置属性动画，对兄弟组件配置出现消失转场动画实现一镜到底效果。基本步骤为：
 
@@ -193,11 +193,11 @@ export default struct Post {
 }
 ```
 
-![zh-cn_image_0000001600653160](figures/zh-cn_image_0000001600653160.gif)
+![one-shot-style-container](figures/one-shot-style-container.gif)
 
 ## 新建容器并跨容器迁移组件
 
-通过[NodeContainer/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)[自定义占位节点](arkts-user-defined-place-holder.md)，利用[NodeController/apis-arkui/js-apis-arkui-nodeController.md)实现组件的跨节点迁移，配合属性动画给组件的迁移过程赋予一镜到底效果。这种一镜到底的实现方式可以结合多种转场方式使用，如导航转场（[Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)）、半模态转场（[bindSheet/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)）等。
+通过NodeContainer自定义占位节点，利用NodeController实现组件的跨节点迁移，配合属性动画给组件的迁移过程赋予一镜到底效果。这种一镜到底的实现方式可以结合多种转场方式使用，如导航转场（Navigation）、半模态转场（bindSheet）等。
 
 ### 结合Stack使用
 
@@ -581,11 +581,11 @@ export const deleteNode = (id: string) => {
 }
 ```
 
-![zh_cn_image_sharedElementsNodeTransfer](figures/zh-cn_image_sharedElementsNodeTransfer.gif)
+![sharedElementsNodeTransfer](figures/sharedElementsNodeTransfer.gif)
 
 ### 结合Navigation使用
 
-可以利用[Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)的自定义导航转场动画能力（[customNavContentTransition/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11)，可参考Navigation[示例3/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例3设置可交互转场动画)）实现一镜到底动效。共享元素转场期间，组件由消失页面迁移至出现页面。
+可以利用Navigation的自定义导航转场动画能力（customNavContentTransition，可参考Navigation示例3）实现一镜到底动效。共享元素转场期间，组件由消失页面迁移至出现页面。
 
 以展开收起缩略图的场景为例，实现步骤为：
 
@@ -1372,17 +1372,17 @@ export const getMyNode = (): MyNodeController | undefined => {
 }
 ```
 
-![zh-cn_image_NavigationNodeTransfer](figures/zh-cn_image_NavigationNodeTransfer.gif)
+![NavigationNodeTransfer](figures/NavigationNodeTransfer.gif)
 
 ### 结合BindSheet使用
 
-想实现半模态转场（[bindSheet/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)）的同时，组件从初始界面做一镜到底动画到半模态页面的效果，可以使用这样的设计思路。将[SheetOptions/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)中的mode设置为SheetMode.EMBEDDED，该模式下新起的页面可以覆盖在半模态弹窗上，页面返回后该半模态依旧存在，半模态面板内容不丢失。在半模态转场的同时设置一全模态转场（[bindContentCover/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover)）页面无转场出现，该页面仅有需要做共享元素转场的组件，通过属性动画，展示组件从初始界面至半模态页面的一镜到底动效，并在动画结束时关闭页面，并将该组件迁移至半模态页面。
+想实现半模态转场（bindSheet）的同时，组件从初始界面做一镜到底动画到半模态页面的效果，可以使用这样的设计思路。将SheetOptions中的mode设置为SheetMode.EMBEDDED，该模式下新起的页面可以覆盖在半模态弹窗上，页面返回后该半模态依旧存在，半模态面板内容不丢失。在半模态转场的同时设置一全模态转场（bindContentCover）页面无转场出现，该页面仅有需要做共享元素转场的组件，通过属性动画，展示组件从初始界面至半模态页面的一镜到底动效，并在动画结束时关闭页面，并将该组件迁移至半模态页面。
 
 以点击图片展开半模态页的场景为例，实现步骤为：
 
 - 在初始界面挂载半模态转场和全模态转场两个页面，半模态页按需布局，全模态页面仅放置一镜到底动效需要的组件，抓取布局信息，使其初始位置为初始界面图片的位置。点击初始界面图片时，同时触发半模态和全模态页面出现，因设置为SheetMode.EMBEDDED模式，此时全模态页面层级最高。
 
-- 设置不可见的占位图片置于半模态页上，作为一镜到底动效结束时图片的终止位置。利用[布局回调/apis-arkui/js-apis-arkui-inspector.md)监听该占位图片布局完成的时候，此时执行回调抓取占位图片的位置信息，随后全模态页面上的图片利用属性动画开始进行共享元素转场。
+- 设置不可见的占位图片置于半模态页上，作为一镜到底动效结束时图片的终止位置。利用布局回调监听该占位图片布局完成的时候，此时执行回调抓取占位图片的位置信息，随后全模态页面上的图片利用属性动画开始进行共享元素转场。
 
 - 全模态页面的动画结束时触发结束回调，关闭全模态页面，将共享元素图片的节点迁移至半模态页面，替换占位图片。
 
@@ -1405,7 +1405,7 @@ export const getMyNode = (): MyNodeController | undefined => {
 ```
 
 ```ts
-// index.ets
+// Index.ets
 import { MyNodeController, createMyNode, getMyNode } from '../NodeContainer/CustomComponent';
 import { ComponentAttrUtils, RectInfoInPx } from '../utils/ComponentAttrUtils';
 import { WindowUtils } from '../utils/WindowUtils';
@@ -1473,8 +1473,8 @@ struct Index {
           this.clipHeight = this.targetInfo.clipHeight;
           // 修正因半模态高度和缩放导致的高度差
           this.translateY = this.targetInfo.translateY +
-            (this.getUIContext().px2vp(WindowUtils.windowHeight_px) - this.bindSheetHeight
-              - this.getUIContext().px2vp(WindowUtils.navigationIndicatorHeight_px) - this.getUIContext().px2vp(WindowUtils.topAvoidAreaHeight_px));
+            (this.getUIContext().px2vp(WindowUtils.windowHeightPx) - this.bindSheetHeight
+              - this.getUIContext().px2vp(WindowUtils.navigationIndicatorHeightPx) - this.getUIContext().px2vp(WindowUtils.topAvoidAreaHeightPx));
           // 修正因缩放导致的圆角差异
           this.radius = this.sheetRadius / this.scaleValue
         })
@@ -1496,8 +1496,8 @@ struct Index {
     let itemInfo: RectInfoInPx =
       ComponentAttrUtils.getRectInfoById(WindowUtils.window.getUIContext(), id);
     // 首先计算图片的宽高与窗口宽高的比例
-    let widthScaleRatio = itemInfo.width / WindowUtils.windowWidth_px;
-    let heightScaleRatio = itemInfo.height / WindowUtils.windowHeight_px;
+    let widthScaleRatio = itemInfo.width / WindowUtils.windowWidthPx;
+    let heightScaleRatio = itemInfo.height / WindowUtils.windowHeightPx;
     let isUseWidthScale = widthScaleRatio > heightScaleRatio;
     let itemScale: number = isUseWidthScale ? widthScaleRatio : heightScaleRatio;
     let itemTranslateX: number = 0;
@@ -1506,15 +1506,15 @@ struct Index {
     let itemTranslateY: number = 0;
 
     if (isUseWidthScale) {
-      itemTranslateX = this.getUIContext().px2vp(itemInfo.left - (WindowUtils.windowWidth_px - itemInfo.width) / 2);
+      itemTranslateX = this.getUIContext().px2vp(itemInfo.left - (WindowUtils.windowWidthPx - itemInfo.width) / 2);
       itemClipWidth = '100%';
       itemClipHeight = this.getUIContext().px2vp((itemInfo.height) / itemScale);
       itemTranslateY = this.getUIContext().px2vp(itemInfo.top - ((this.getUIContext().vp2px(itemClipHeight) - this.getUIContext().vp2px(itemClipHeight) * itemScale) / 2));
     } else {
-      itemTranslateY = this.getUIContext().px2vp(itemInfo.top - (WindowUtils.windowHeight_px - itemInfo.height) / 2);
+      itemTranslateY = this.getUIContext().px2vp(itemInfo.top - (WindowUtils.windowHeightPx - itemInfo.height) / 2);
       itemClipHeight = '100%';
       itemClipWidth = this.getUIContext().px2vp((itemInfo.width) / itemScale);
-      itemTranslateX = this.getUIContext().px2vp(itemInfo.left - (WindowUtils.windowWidth_px / 2 - itemInfo.width / 2));
+      itemTranslateX = this.getUIContext().px2vp(itemInfo.left - (WindowUtils.windowWidthPx / 2 - itemInfo.width / 2));
     }
 
     return {
@@ -1926,11 +1926,11 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-![zh-cn_image_BindSheetNodeTransfer](figures/zh-cn_image_BindSheetNodeTransfer.gif)
+![BindSheetNodeTransfer](figures/BindSheetNodeTransfer.gif)
 
 ## 使用geometryTransition共享元素转场
 
-[geometryTransition/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md)用于组件内隐式共享元素转场，在视图状态切换过程中提供丝滑的上下文继承过渡体验。
+geometryTransition用于组件内隐式共享元素转场，在视图状态切换过程中提供丝滑的上下文继承过渡体验。
 
 geometryTransition的使用方式为对需要添加一镜到底动效的两个组件使用geometryTransition接口绑定同一id，这样在其中一个组件消失同时另一个组件创建出现的时候，系统会对二者添加一镜到底动效。
 
@@ -2002,7 +2002,7 @@ struct IfElseGeometryTransition {
 }
 ```
 
-![zh-cn_image_0000001599644878](figures/zh-cn_image_0000001599644878.gif)
+![one-shot-style-page](figures/one-shot-style-page.gif)
 
 ### geometryTransition结合模态转场使用
 
@@ -2190,6 +2190,6 @@ export default struct Post {
 
 效果为点击主页的头像后，弹出模态页面显示个人信息，并且两个页面之间的头像做一镜到底动效：
 
-![zh-cn_image_0000001597320327](figures/zh-cn_image_0000001597320327.gif)
+![one-shot-style-avatar](figures/one-shot-style-avatar.gif)
 
-<!--RP1--><!--RP1End-->
+<!--RP2--><!--RP2End-->

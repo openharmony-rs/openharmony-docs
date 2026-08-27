@@ -19,7 +19,7 @@
 - SHARE_MEMORY：共享内存。需要进行纹理上传。
 - DMA_ALLOC：DMA内存。无需纹理上传。
 
-系统提供了[OH_ImageSourceNative_CreatePixelmapUsingAllocator/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator)接口，以便用户能够自定义内存分配类型进行解码。接口定义及使用示例详见图片解码接口说明[image_source_native.h/apis-image-kit/capi-image-source-native-h.md)。
+系统提供了OH_ImageSourceNative_CreatePixelmapUsingAllocator接口，以便用户能够自定义内存分配类型进行解码。接口定义及使用示例详见图片解码接口说明image_source_native.h。
 
 ### SHARE_MEMORY和DMA_ALLOC的区别
 
@@ -58,7 +58,7 @@
 - 硬件解码仅支持DMA_ALLOC的内存模式。
 - SVG格式图片解码仅支持SHARE_MEMORY的内存模式。
 
-使用接口[OH_ImageSourceNative_CreatePixelmapUsingAllocator/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator)进行解码时，若设置的内存分配模式与图片格式或解码方式不匹配，则会抛出内存分配失败的异常。
+使用接口OH_ImageSourceNative_CreatePixelmapUsingAllocator进行解码时，若设置的内存分配模式与图片格式或解码方式不匹配，则会抛出内存分配失败的异常。
 
 如果用户选择的分配类型为AUTO，系统将根据解码和渲染的时间综合评估，以决定使用DMA_ALLOC还是SHARE_MEMORY分配机制。
 
@@ -73,10 +73,10 @@ stride（步幅）描述了图片在内存中每一行像素数据的存储宽�
 - stride值需为硬件平台要求字节数的整数倍。
 - 当stride值大于图片宽度时，系统会自动补齐填充数据（padding）。
 
-  stride的值可以通过[OH_PixelmapNative_GetImageInfo/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_getimageinfo) 接口获取。
+  stride的值可以通过OH_PixelmapNative_GetImageInfo 接口获取。
 
-1. 调用[OH_PixelmapNative_GetImageInfo/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_getimageinfo)方法，获取 `OH_Pixelmap_ImageInfo` 对象。
-2. 调用[OH_PixelmapImageInfo_GetRowStride/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getrowstride)方法，获取stride的值。
+1. 调用OH_PixelmapNative_GetImageInfo方法，获取 `OH_Pixelmap_ImageInfo` 对象。
+2. 调用OH_PixelmapImageInfo_GetRowStride方法，获取stride的值。
 
 C API 获取和操作stride示例代码如下。在使用下面的示例代码之前，开发者需要打开native工程的src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加libimage_source.so以及日志依赖libhilog_ndk.z.so。
 
@@ -131,8 +131,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
                return 8; // 每通道16位浮点数，共4通道，合计8字节。
            case PIXEL_FORMAT_NV21:
            case PIXEL_FORMAT_NV12:
-               // NV21和NV12格式是YUV 4:2:0半平面格式，返回2作为每像素字节。
-               return 2; // 每像素2字节（简化处理）。
+               // NV21和NV12是YUV 4:2:0半平面格式，不能用整数每像素字节数计算行跨度。
+               return 0;
            case PIXEL_FORMAT_RGBA_1010102:
                return 4; // 每像素4字节。
            case PIXEL_FORMAT_YCBCR_P010:
@@ -213,7 +213,16 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
            }
            return;
        }
-       uint32_t dstRowStride = srcInfo.width * GetPixelFormatBytes(srcInfo.pixelFormat);
+       int32_t pixelBytes = GetPixelFormatBytes(srcInfo.pixelFormat);
+       if (pixelBytes == 0) {
+           OH_PixelmapNative_UnaccessPixels(pixelmap);
+           OH_DecodingOptions_Release(options);
+           OH_ImageSourceNative_Release(imageSource);
+           OH_PixelmapNative_Release(pixelmap);
+           OH_PixelmapNative_Release(newPixelmap);
+           return;
+       }
+       uint32_t dstRowStride = srcInfo.width * pixelBytes;
        void *newPixels = nullptr;
        OH_PixelmapNative_AccessPixels(newPixelmap, &newPixels);
        CopyPixelRows(pixels, newPixels, srcInfo, dstRowStride, allocatorType);
@@ -364,14 +373,14 @@ napi_value CreatePixelmapWithYUV(napi_env env, napi_callback_info info)
 
 ## 系统默认的内存分配方式
 
-在使用[OH_ImageSourceNative_CreatePixelmap/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)接口进行解码时，不同场景下会采取不同的内存分配类型。
+在使用OH_ImageSourceNative_CreatePixelmap接口进行解码时，不同场景下会采取不同的内存分配类型。
 
 以下场景将使用DMA_ALLOC。
 
 - 解码HDR图片。
 - 解码HEIF格式图片。
-- 解码JPEG格式图片，当原图的宽和高均在1024像素至8192像素之间，[PIXEL_FORMAT/apis-image-kit/capi-pixelmap-native-h.md#pixel_format)为PIXEL_FORMAT_RGBA_8888或PIXEL_FORMAT_NV21，同时硬件不繁忙（并发数为3）。
-- 解码其他格式图片。要求[OH_DecodingOptions/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md)中的desiredSize大于等于512像素 * 512像素（未设置desiredSize时按原图尺寸考虑），并且宽度为64的倍数。
+- 解码JPEG格式图片，当原图的宽和高均在1024像素至8192像素之间，PIXEL_FORMAT为PIXEL_FORMAT_RGBA_8888或PIXEL_FORMAT_NV21，同时硬件不繁忙（并发数为3）。
+- 解码其他格式图片。要求OH_DecodingOptions中的desiredSize大于等于512像素 * 512像素（未设置desiredSize时按原图尺寸考虑），并且宽度为64的倍数。
 
 除上述场景外，其余情况均使用SHARE_MEMORY。
 
@@ -379,16 +388,16 @@ napi_value CreatePixelmapWithYUV(napi_env env, napi_callback_info info)
 
 为了防止内存溢出导致系统崩溃，系统对进程内存做了限制，详细说明请参考[应用被查杀问题检测方法](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-runtime-appkilled-detection)。
 
-图片框架对单张图片的解码设置了2GB的内存限制。进程需要主动管理自身内存，建议在不使用[OH_PixelmapNative/apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)时及时释放，以避免进程被系统终止。
+图片框架对单张图片的解码设置了2GB的内存限制。进程需要主动管理自身内存，建议在不使用OH_PixelmapNative时及时释放，以避免进程被系统终止。
 
-应用可使用[onMemoryLevel/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)监听系统内存变化情况。
+应用可使用onMemoryLevel监听系统内存变化情况。
 
 PixelMap申请像素内存的计算规则如下所示。
 ```TypeScript
 pixels_size(像素内存大小) = stride(图片像素存储宽度) * height(图片像素高度)
 ```
 
-对于原始像素内存超过2GB且支持下采样的图片，建议开发者使用[OH_ImageSourceNative_CreatePixelmap/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)或[OH_ImageSourceNative_CreatePixelmapUsingAllocator/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator)接口，并在[OH_DecodingOptions（解码参数）/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md)中设置desiredSize（期望输出大小）进行下采样解码。
+对于原始像素内存超过2GB且支持下采样的图片，建议开发者使用OH_ImageSourceNative_CreatePixelmap或OH_ImageSourceNative_CreatePixelmapUsingAllocator接口，并在OH_DecodingOptions（解码参数）中设置desiredSize（期望输出大小）进行下采样解码。
 
 从API version 21开始，对于支持下采样解码的图片，设置desiredSize（期望输出大小）后，解码器将以基准梯度为1/8的最优下采样率计算PixelMap的像素内存，即按照7/8、6/8、...、1/8的采样率，逐次递减取一个清晰度最高的采样数。
 

@@ -1,16 +1,16 @@
 # 使用AVPlayer播放视频(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
 当前提供两种视频播放开发的方案：
 
-- [AVPlayer](media-kit-intro.md#avplayer)：功能较完善的音视频播放ArkTS/JS API，集成了流媒体和本地资源解析，媒体资源解封装，视频解码和渲染功能，适用于对媒体资源进行端到端播放的场景，可直接播放mp4、mkv等格式的视频文件。
+- AVPlayer：功能较完善的音视频播放ArkTS/JS API，集成了流媒体和本地资源解析，媒体资源解封装，视频解码和渲染功能，适用于对媒体资源进行端到端播放的场景，可直接播放mp4、mkv等格式的视频文件。
 
-- Video组件：封装了视频播放的基础能力，需要设置数据源及基础信息即可播放视频，但相对扩展能力较弱。Video组件由ArkUI提供能力，相关指导请参考UI开发文档-[Video组件](../../ui/arkts-common-components-video-player.md)。
+- Video组件：封装了视频播放的基础能力，需要设置数据源及基础信息即可播放视频，但相对扩展能力较弱。Video组件由ArkUI提供能力，相关指导请参考UI开发文档-Video组件。
 
 本开发指导将介绍如何使用AVPlayer开发视频播放功能，以完整播放一个视频作为示例，实现端到端播放原始媒体资源。
 
@@ -20,20 +20,20 @@
 
 ![Playback status change](figures/video-playback-status-change.png)
 
-状态的详细说明请参考[AVPlayerState/apis-media-kit/arkts-apis-media-t.md#avplayerstate9)。当播放处于prepared / playing / paused / completed状态时，播放引擎处于工作状态，这需要占用系统较多的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，做好资源释放。
+状态的详细说明请参考AVPlayerState。当播放处于prepared / playing / paused / completed状态时，播放引擎处于工作状态，这需要占用系统较多的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，做好资源释放。
 
 ## 开发建议
 
 当前指导仅介绍如何实现媒体资源播放，在应用开发过程中可能会涉及后台播放、播放冲突等情况，请根据实际需要参考以下说明。
 
-- 如果要实现后台播放或熄屏播放，需要接入[AVSession（媒体会话）](../avsession/avsession-access-scene.md)和[申请长时任务](../../task-management/continuous-task.md)，避免播放被系统强制中断。
-- 应用在播放过程中，若播放的媒体数据涉及音频，根据系统音频管理策略（参考[处理音频焦点事件](../audio/audio-playback-concurrency.md)），可能会被其他应用打断，建议应用主动监听音频打断事件，根据其内容提示，做出相应的处理，避免出现应用状态与预期效果不一致的问题。
-- 面对设备同时连接多个音频输出设备的情况，应用可以通过[on('audioOutputDeviceChangeWithInfo')/apis-media-kit/arkts-apis-media-AVPlayer.md#onaudiooutputdevicechangewithinfo11)监听音频输出设备的变化，从而做出相应处理。
+- 如果要实现后台播放或熄屏播放，需要接入AVSession（媒体会话）和申请长时任务，避免播放被系统强制中断。
+- 应用在播放过程中，若播放的媒体数据涉及音频，根据系统音频管理策略（参考处理音频焦点事件），可能会被其他应用打断，建议应用主动监听音频打断事件，根据其内容提示，做出相应的处理，避免出现应用状态与预期效果不一致的问题。
+- 面对设备同时连接多个音频输出设备的情况，应用可以通过on('audioOutputDeviceChangeWithInfo')监听音频输出设备的变化，从而做出相应处理。
 - 如果需要访问在线媒体资源，需要申请 ohos.permission.INTERNET 权限。
 
 ## 开发步骤及注意事项
 
-详细的API说明请参考[AVPlayer/apis-media-kit/arkts-apis-media-AVPlayer.md)。
+详细的API说明请参考AVPlayer。
 
 1. 调用createAVPlayer()创建AVPlayer实例，初始化进入idle状态。
 
@@ -112,13 +112,13 @@
    >
    > 下面代码示例中的url仅作示意使用，开发者需根据实际情况，确认资源有效性并设置：
    > 
-   > - 如果使用本地资源播放，必须确认资源文件可用，并使用应用沙箱路径访问对应资源，参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
+   > - 如果使用本地资源播放，必须确认资源文件可用，并使用应用沙箱路径访问对应资源，参考获取应用文件路径。应用沙箱的介绍及如何向应用沙箱推送文件，请参考文件管理。
    > 
-   > - 如果使用网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
+   > - 如果使用网络播放路径，需声明权限：ohos.permission.INTERNET。
    > 
-   > - 可以使用ResourceManager.[getRawFd/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)打开HAP资源文件描述符。
+   > - 可以使用ResourceManager.getRawFd打开HAP资源文件描述符。
    > 
-   > - 需要使用[支持的播放格式与协议](media-kit-intro.md#支持的格式与协议)。
+   > - 需要使用支持的播放格式与协议。
 
     ```ts
     let url = 'https://xxx.xxx.xxx.mp4';
@@ -130,7 +130,7 @@
 
 4. 设置窗口：获取并设置属性surfaceId，用于设置显示画面。
 
-   应用需要从XComponent组件获取surfaceId，获取方式请参考[getXComponentSurfaceId/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)。
+   应用需要从XComponent组件获取surfaceId，获取方式请参考getXComponentSurfaceId。
 
     ```ts
     // 通过接口getXComponentSurfaceId获取surfaceId。

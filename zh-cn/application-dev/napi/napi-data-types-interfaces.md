@@ -1,10 +1,10 @@
 # Node-API支持的数据类型和接口
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## Node-API的数据类型
 
@@ -58,7 +58,7 @@ typedef struct {
 
 ### napi_value
 
-napi_value是一个C的结构体指针，表示一个ArkTS/JS对象的引用。napi_value持有了ArkTS/JS对象，同时，napi_value受[napi_handle_scope](#内存管理类型)管理，scope中napi_value持有的JS对象不会被释放；出scope后，napi_value将失效，不再持有对应的ArkTS/JS对象。
+napi_value是一个C的结构体指针，表示一个ArkTS/JS对象的引用。napi_value持有了ArkTS/JS对象，同时，napi_value受napi_handle_scope管理，scope中napi_value持有的JS对象不会被释放；出scope后，napi_value将失效，不再持有对应的ArkTS/JS对象。
 
 ### napi_env
 
@@ -70,7 +70,7 @@ napi_value是一个C的结构体指针，表示一个ArkTS/JS对象的引用。n
 
 ### napi_threadsafe_function
 
-[napi_threadsafe_function](use-napi-thread-safety.md)用来创建一个线程安全的ArkTS/JS函数，可以在不同的线程中调用。可以用于将异步操作的结果传递给ArkTS/JS环境，例如从另一个线程中读取数据或执行计算密集型操作。线程安全函数回调的执行仅在创建线程安全函数的ArkTS线程中执行。通过使用napi_threadsafe_function，可以实现ArkTS/JS和C++之间的高效通信，同时保持线程安全性。
+napi_threadsafe_function用来创建一个线程安全的ArkTS/JS函数，可以在不同的线程中调用。可以用于将异步操作的结果传递给ArkTS/JS环境，例如从另一个线程中读取数据或执行计算密集型操作。线程安全函数回调的执行仅在创建线程安全函数的ArkTS线程中执行。通过使用napi_threadsafe_function，可以实现ArkTS/JS和C++之间的高效通信，同时保持线程安全性。
 
 ### napi_threadsafe_function_release_mode
 
@@ -119,7 +119,7 @@ Node-API包含以下内存管理类型：
 
 **napi_handle_scope**
 
-napi_handle_scope数据类型是用来管理ArkTS/JS对象的生命周期的。它允许ArkTS/JS对象在一定范围内保持活动状态，以便在ArkTS/JS代码中使用。在创建napi_handle_scope时，所有在该范围内创建的ArkTS/JS对象都会保持活动状态，直到scope被关闭。这样可以做到ArkTS/JS对象生命周期最小化，[避免发生内存泄漏问题](napi-guidelines.md#生命周期管理)。同时，napi_handle_scope也可参考<!--RP1-->生命周期类问题注意事项。<!--RP1End-->
+napi_handle_scope数据类型是用来管理ArkTS/JS对象的生命周期的。它允许ArkTS/JS对象在一定范围内保持活动状态，以便在ArkTS/JS代码中使用。在创建napi_handle_scope时，所有在该范围内创建的ArkTS/JS对象都会保持活动状态，直到scope被关闭。这样可以做到ArkTS/JS对象生命周期最小化，避免发生内存泄漏问题。同时，napi_handle_scope也可参考<!--RP1-->生命周期类问题注意事项。<!--RP1End-->
 
 **napi_escapable_handle_scope**
 
@@ -246,7 +246,7 @@ typedef enum {
 
 ### 事件循环模式
 
-napi提供了运行底层事件循环的两种模式, 其定义如下：
+napi提供了运行底层事件循环的两种模式，其定义如下：
 
 ```c
 typedef enum {
@@ -257,12 +257,12 @@ typedef enum {
 
 | 事件循环运行模式 | 解释说明 |
 | -------- | -------- |
-| napi_event_mode_default | 阻塞式的运行底层事件循环，直到循环中没有或活跃的uv_handle句柄时退出事件循环。 |
+| napi_event_mode_default | 阻塞式的运行底层事件循环，直到循环中没有活跃的uv_handle句柄时退出事件循环。 |
 | napi_event_mode_nowait | 非阻塞式的运行底层事件循环，尝试去处理一个任务，处理完之后退出事件循环；如果事件循环中没有任务，立刻退出事件循环。 |
 
 ### 线程安全任务优先级
 
-napi提供了线程安全任务的优先级, 底层任务队列中的任务会根据其优先级被依次执行, 优先级的定义如下：
+napi提供了线程安全任务的优先级，底层任务队列中的任务会根据其优先级被依次执行，优先级的定义如下：
 
 ```c
 typedef enum {
@@ -381,8 +381,8 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_get_element | 获取给定Object指定索引处的元素。 |
 | napi_has_element | 若给定Object的指定索引处拥有属性。 |
 | napi_delete_element | 尝试删除给定Object的指定索引处的元素。 |
-| napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypeArray。 |
-| napi_is_typedarray | 判断给定ArkTS value是否为TypeArray。|
+| napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypedArray。 |
+| napi_is_typedarray | 判断给定ArkTS value是否为TypedArray。|
 | napi_get_typedarray_info | 获取给定TypedArray的各种属性（例如：类型，长度，字节偏移量，ArrayBuffer等）。 |
 | napi_create_dataview | 通过现有的ArrayBuffer创建一个ArkTS DataView。 |
 | napi_is_dataview | 判断给定ArkTS value是否为DataView。|
@@ -469,7 +469,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_is_exception_pending | 判断是否出现了异常。 |
 | napi_fatal_error | 引发致命错误以立即终止进程。 |
 | napi_get_last_error_info | 获取napi_extended_error_info结构体，其中包含最近一次出现的error信息。 |
-| napi_fatal_exception | 抛出一个致命异常并终止进程, 同时产生相应的crash日志。 |
+| napi_fatal_exception | 抛出一个致命异常并终止进程，同时产生相应的crash日志。 |
 
 ### 属性相关
 
@@ -537,7 +537,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 
 ### 扩展能力
 
-[Node-API组件扩展的接口/native-lib/napi.md#node-api组件扩展的接口)
+Node-API组件扩展的接口
 
 | 接口 | 功能说明 |
 | -------- | -------- |
@@ -566,7 +566,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_wrap_sendable | 包裹一个native实例到ArkTS对象中。 |
 | napi_wrap_sendable_with_size | 包裹一个native实例到ArkTS对象中并指定大小。 |
 | napi_unwrap_sendable | 获取ArkTS对象包裹的native实例。 |
-| napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例，移除后回调将不再触发，需手动delete释放内存。 |
+| napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例，移除后回调后续会被自动触发，需注意避免出现重复释放问题。 |
 | napi_wrap_enhance | 在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。 |
 | napi_create_ark_context| 创建一个新的上下文环境。 |
 | napi_switch_ark_context| 切换到指定的运行时上下文环境。 |
@@ -580,11 +580,12 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_create_strong_sendable_reference | 创建指向Sendable ArkTS对象的Sendable强引用。 |
 | napi_delete_strong_sendable_reference | 删除Sendable强引用。 |
 | napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。 |
-| napi_throw_business_error | 抛出一个带文本信息的ArkTS Error, 其错误对象的code属性类型为number。 |
+| napi_throw_business_error | 抛出一个带文本信息的ArkTS Error，其错误对象的code属性类型为number。 |
 | napi_create_callsite_info | 创建调用点信息句柄，用于缓存属性访问信息。 |
 | napi_delete_callsite_info | 删除调用点信息句柄，释放关联的缓存资源。 |
 | napi_get_property_with_callsite_info | 使用调用点信息快速获取对象属性值。 |
 | napi_set_property_with_callsite_info | 使用调用点信息快速设置对象属性值。 |
+| napi_get_global_handle_count | 遍历并获取global handle数量。 |
  
 **napi_queue_async_work_with_qos**
 
@@ -594,7 +595,7 @@ napi_status napi_queue_async_work_with_qos(napi_env env,
                                            napi_qos_t qos);
 ```
 
-用法同napi_queue_async_work，但可以指定QoS等级。napi_queue_async_work_with_qos使用方法可参考指定异步任务调度优先级。QoS详细介绍可参考[QoS 开发指导](../kernel-enhance/qos-guidelines.md)。
+用法同napi_queue_async_work，但可以指定QoS等级。napi_queue_async_work_with_qos使用方法可参考指定异步任务调度优先级。QoS详细介绍可参考QoS 开发指导。
 
 **napi_run_script_path**
 
@@ -647,7 +648,7 @@ napi_status napi_coerce_to_native_binding_object(napi_env env,
 ```c
 napi_status napi_create_ark_runtime(napi_env *env);
 ```
-[使用napi_create_ark_runtime、napi_destroy_ark_runtime接口创建ArkTS运行时环境](use-napi-ark-runtime.md)。
+使用napi_create_ark_runtime、napi_destroy_ark_runtime接口创建ArkTS运行时环境。
 
 **napi_destroy_ark_runtime**
 
@@ -661,7 +662,7 @@ napi_status napi_destroy_ark_runtime(napi_env *env);
 napi_status napi_run_event_loop(napi_env env, napi_event_mode mode);
 ```
 
-开发者只能在自己通过napi_create_ark_runtime创建的ArkTS运行环境中调用napi_run_event_loop与napi_stop_event_loop接口，使用方法可参考[使用扩展的Node-API接口在异步线程中运行和停止事件循环](use-napi-event-loop.md)。
+开发者只能在自己通过napi_create_ark_runtime创建的ArkTS运行环境中调用napi_run_event_loop与napi_stop_event_loop接口，使用方法可参考使用扩展的Node-API接口在异步线程中运行和停止事件循环。
 
 **napi_stop_event_loop**
 
@@ -944,6 +945,12 @@ napi_status napi_set_property_with_callsite_info(napi_env env,
                                                  napi_value value,
                                                  napi_callsite_info info,
                                                  bool* hit);
+```
+
+**napi_get_global_handle_count**
+
+```c
+napi_status napi_get_global_handle_count(napi_env env, size_t* count);
 ```
 
 ### 其他实用工具

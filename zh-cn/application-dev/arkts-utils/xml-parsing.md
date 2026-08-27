@@ -4,16 +4,16 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
-对于以XML作为载体传递的数据，实际使用中需要对相关的元素进行解析，一般包括[解析XML标签和标签值](#解析xml标签和标签值)、[解析XML属性和属性值](#解析xml属性和属性值)、[解析XML事件类型和元素信息](#解析xml事件类型和元素信息)三类操作。如在Web服务中，XML是SOAP（Simple Object Access Protocol）协议的基础，SOAP消息通常以XML格式封装，包含请求和响应参数，通过解析这些XML消息，Web服务可以处理来自客户端的请求并生成相应的响应。
+对于以XML作为载体传递的数据，实际使用中需要对相关的元素进行解析，一般包括解析XML标签和标签值、解析XML属性和属性值、解析XML事件类型和元素信息三类操作。如在Web服务中，XML是SOAP（Simple Object Access Protocol）协议的基础，SOAP消息通常以XML格式封装，包含请求和响应参数，通过解析这些XML消息，Web服务可以处理来自客户端的请求并生成相应的响应。
 
 
 XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据的ArrayBuffer或DataView，输出为结构化的解析结果。
 
 
-  **表1** XML解析选项，其详细介绍请参见[ParseOptions/apis-arkts/js-apis-xml.md#parseoptions)。
+  **表1** XML解析选项，其详细介绍请参见ParseOptions。
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
@@ -70,7 +70,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 3. 自定义回调函数，本例直接打印出标签及标签值。
 
-   <!-- @[parsingXML_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->
+   <!-- @[parsingXML_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) --> 
    
    ``` TypeScript
    function func(name: string, value: string): boolean {
@@ -84,7 +84,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
      if (name == 'title' || name == 'lens') {
        console.info('  ' + name);
      }
-     return true; //true:继续解析 false:停止解析
+     return true; // true:继续解析 false:停止解析
    }
    ```
 
@@ -224,7 +224,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
    2 2 // 2：<title>对应事件类型START_TAG值为2  2：深度为2
    4 2 // 4：Play对应事件类型TEXT值为4  2：深度为2
    3 2 // 3：</title>对应事件类型END_TAG值为3  2：深度为2
-   3 1 // 3：</note>对应事件类型END_TAG值为3  1：深度为1（与<note对应>）
+   3 1 // 3：</note>对应事件类型END_TAG值为3  1：深度为1（与<note>对应）
    1 0 // 1：对应事件类型END_DOCUMENT值为1  0：深度为0
    ```
 

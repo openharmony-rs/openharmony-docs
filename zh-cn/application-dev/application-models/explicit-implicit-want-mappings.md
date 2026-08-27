@@ -7,12 +7,12 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-在启动目标应用组件时，会通过显式[Want/apis-ability-kit/js-apis-app-ability-want.md)或者隐式[Want/apis-ability-kit/js-apis-app-ability-want.md)进行目标应用组件的匹配，这里说的匹配规则就是调用方传入的[want/apis-ability-kit/js-apis-app-ability-want.md)参数中设置的参数如何与目标应用组件声明的配置文件进行匹配。
+在启动目标应用组件时，会通过显式Want或者隐式Want进行目标应用组件的匹配，这里说的匹配规则就是调用方传入的want参数中设置的参数如何与目标应用组件声明的配置文件进行匹配。
 
 ## 显式Want匹配原理
 
 
-显式[Want/apis-ability-kit/js-apis-app-ability-want.md)匹配原理如下表所示。
+显式Want匹配原理如下表所示。
 
 | 名称 | 类型 | 匹配项 | 必选 | 规则 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -29,7 +29,7 @@
 
 ## 隐式Want匹配原理
 
-隐式[Want/apis-ability-kit/js-apis-app-ability-want.md)匹配原理如下表所示。
+隐式Want匹配原理如下表所示。
 
 | 名称        | 类型                           | 匹配项 | 必选 | 规则                                                         |
 | ----------- | ------------------------------ | ------ | ---- | ------------------------------------------------------------ |
@@ -37,10 +37,10 @@
 | abilityName | string                         | 否     | 否   | 该字段必须留空表示隐式匹配。                                 |
 | bundleName  | string                         | 是     | 否   | 匹配对应应用包内的目标应用组件。                              |
 | moduleName  | string                         | 是     | 否   | 匹配对应Module内的目标应用组件。                              |
-| uri         | string                         | 是     | 否   | 参见[want参数的uri和type匹配规则](#want参数的uri和type匹配规则)。                                                             |
-| type        | string                         | 是     | 否   | 参见[want参数的uri和type匹配规则](#want参数的uri和type匹配规则)。                                                             |
-| action      | string                         | 是     | 否   | 参见[want参数的action匹配规则](#want参数的action匹配规则)。                                                             |
-| entities    | Array&lt;string&gt;            | 是     | 否   | 参见[want参数的entities匹配规则](#want参数的entities匹配规则)。                                                             |
+| uri         | string                         | 是     | 否   | 参见want参数的uri和type匹配规则。                                                             |
+| type        | string                         | 是     | 否   | 参见want参数的uri和type匹配规则。                                                             |
+| action      | string                         | 是     | 否   | 参见want参数的action匹配规则。                                                             |
+| entities    | Array&lt;string&gt;            | 是     | 否   | 参见want参数的entities匹配规则。                                                             |
 | flags       | number                         | 否     | 否   | 不参与匹配，直接传递给系统处理，一般用来设置运行态信息，例如URI数据授权等。 |
 | parameters  | {[key:&nbsp;string]:&nbsp;Object} | 是     | 否   | 应用自定义数据将直接传递给目标应用组件。当前支持使用key为linkFeature的参数进行匹配，当linkFeature字段取值不为空时，优先进行linkFeature匹配。|
 
@@ -49,12 +49,12 @@
 
 - 调用方传入的want参数，表明调用方需要执行的操作，并提供相关数据以及其他应用类型限制。
 
-- 待匹配应用组件的skills配置，声明其具备的能力（[module.json5配置文件](../quick-start/module-configuration-file.md)中的[skills标签](../quick-start/module-configuration-file.md#skills标签)参数）。
+- 待匹配应用组件的skills配置，声明其具备的能力（module.json5配置文件中的skills标签参数）。
 
 
 系统将调用方传入的want参数（包含action、entities、uri、type和parameters属性）与已安装待匹配应用组件的skills配置（包含actions、entities、uris和type属性）进行匹配。当want参数五个属性匹配均未配置，隐式匹配失败。
 - 当parameters中的linkFeature字段取值不为空时，系统将优先进行linkFeature匹配。
-  - 如果linkFeature匹配成功，并且want中配置了uri或type，则继续匹配uri和type属性，均匹配成功则隐式匹配成功；否则，匹配失败。如果want中未配置uri和type, 则隐式匹配成功。
+  - 如果linkFeature匹配成功，并且want中配置了uri或type，则继续匹配uri和type属性，均匹配成功则隐式匹配成功；否则，匹配失败。如果want中未配置uri和type，则隐式匹配成功。
   - 如果linkFeature匹配失败，则不进行后续属性匹配，匹配失败。
 - 当parameters中的linkFeature未配置或取值为空时，只有当action、entities、uri和type四个属性均匹配通过时，此应用才会被应用选择器展示给用户进行选择。
 
@@ -110,16 +110,16 @@
 
 - 调用方传入的want参数的uri不为空，type为空。
   1. 如果待匹配应用组件的skills配置中的uris数组为空，匹配失败。
-  2. 如果待匹配应用组件的skills配置中的uris数组存在一条数据[uri匹配](#uri匹配规则)成功且type为空，则匹配成功，否则匹配失败。
+  2. 如果待匹配应用组件的skills配置中的uris数组存在一条数据uri匹配成功且type为空，则匹配成功，否则匹配失败。
   3. 如果前两条均匹配失败，并且传入的uri为文件路径uri，则根据文件后缀获取文件的MIME类型，如果该类型与skills文件中配置的type相匹配，则匹配成功。
 
 - 调用方传入的want参数的uri为空，type不为空。
   1. 如果待匹配应用组件的skills配置中的uris数组为空，匹配失败。
-  2. 如果待匹配应用组件的skills配置中的uris数组存在一条数据uri的scheme为空且[type匹配](#type匹配规则)成功，则匹配成功，否则匹配失败。
+  2. 如果待匹配应用组件的skills配置中的uris数组存在一条数据uri的scheme为空且type匹配成功，则匹配成功，否则匹配失败。
 
 - 调用方传入的want参数的uri和type都不为空，如下图所示。
   1. 如果待匹配应用组件的skills配置中的uris数组为空，匹配失败。
-  2. 如果待匹配应用组件的skills配置中的uris数组存在一条数据[uri匹配](#uri匹配规则)和[type匹配](#type匹配规则)需要均匹配成功，则匹配成功，否则匹配失败。
+  2. 如果待匹配应用组件的skills配置中的uris数组存在一条数据uri匹配和type匹配需要均匹配成功，则匹配成功，否则匹配失败。
 
 最左uri匹配：当配置文件待匹配应用组件的skills配置中的uris数组中只配置scheme；或者只配置scheme和host；或者只配置scheme、host和port时。传入want参数的uri的最左边依次需要和scheme，或者scheme和host，或者scheme、host和port都匹配，才满足最左uri匹配。
 
@@ -167,7 +167,8 @@
 > - **前缀表达式**：`scheme://host:port/pathStartWith`
 > - **正则表达式**：`scheme://host:port/pathRegex`
 >
-> 系统应用预留uri的scheme统一以`ohos`开头，例如`ohosclock://`。三方应用组件配置的uri不能与系统应用重复，否则会导致无法通过该uri拉起三方应用组件。
+> 以`ohos`为前缀的scheme为系统预留，如`ohosclock://`。建议第三方应用组件在配置scheme时避免以`ohos`开头，否则可能导致无法通过该uri拉起目标组件。
+<!--RP1--><!--RP1End-->
 
 **图5** want参数中uri的匹配规则示例
 
@@ -177,7 +178,7 @@
 
 > **说明：**
 >
-> 本章节所述的type匹配规则的适用性需建立在want参数内type不为空的基础上。当want参数内type为空时请参见[want参数的uri和type匹配规则](#want参数的uri和type匹配规则)。
+> 本章节所述的type匹配规则的适用性需建立在want参数内type不为空的基础上。当want参数内type为空时请参见want参数的uri和type匹配规则。
 
 具体的匹配规则如下：
 
@@ -195,9 +196,9 @@
 >
 > 本章节所述的linkFeature匹配规则适用于want参数中的parameters包含linkFeature键，且对应取值不为空的场景。
 
-将调用方传入的want参数的parameters与待匹配应用组件的skills配置中的uris进行匹配。为了简化描述, 称调用方传入的want参数中的linkFeature参数为w_linkFeature, 具体的匹配规则如下：
-- want参数的uri和type均为空, 只匹配linkFeature，当w_linkFeature和s_uri的linkFeature相同时匹配成功，否则匹配失败。
-- want参数的uri或type不为空, 依次匹配linkFeature、uri、type (参见[want参数的uri和type匹配规则](#want参数的uri和type匹配规则))，当三个字段均匹配成功时，则匹配成功，否则匹配失败。
+将调用方传入的want参数的parameters与待匹配应用组件的skills配置中的uris进行匹配。为了简化描述，称调用方传入的want参数中的linkFeature参数为w_linkFeature，具体的匹配规则如下：
+- want参数的uri和type均为空，只匹配linkFeature，当w_linkFeature和s_uri的linkFeature相同时匹配成功，否则匹配失败。
+- want参数的uri或type不为空，依次匹配linkFeature、uri、type (参见want参数的uri和type匹配规则)，当三个字段均匹配成功时，则匹配成功，否则匹配失败。
 
 
 

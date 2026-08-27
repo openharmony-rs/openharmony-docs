@@ -9,38 +9,41 @@
 
 从API version 12开始，ArkUI在NDK中提供了一组通用布局属性，可以控制组件的尺寸、位置、边框等布局行为。
 
-本文选取了尺寸设置（[width/apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[height/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)、[size/apis-arkui/arkui-ts/ts-universal-attributes-size.md#size)、[aspectRatio/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)、[padding/apis-arkui/arkui-ts/ts-universal-attributes-size.md#padding)、[margin/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)、[layoutWeight/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)）、位置设置（[position/apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)、[offset/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)）、边框设置（[borderWidth/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、[borderColor/apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、[borderStyle/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderstyle)、[borderRadius/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)）三个典型场景，提供NDK下通用布局属性接入的开发指导，对应属性设置和参数类型枚举可参考[ArkUI_NodeType/apis-arkui/capi-native-node-h.md#arkui_nodetype)。
+本文选取了尺寸设置（width、height、size、aspectRatio、padding、margin、layoutWeight）、位置设置（position、offset）、边框设置（borderWidth、borderColor、borderStyle、borderRadius）三个典型场景，提供NDK下通用布局属性接入的开发指导，对应属性设置和参数类型枚举可参考ArkUI_NodeType。
 
-本示例仅展示核心功能代码，完整示例请参考<!--RP1-->[NDKLayoutSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKLayoutSample)<!--RP1End-->；实现前需要先接入ArkTS页面，具体接入方式可参考[接入ArkTS页面](../ui/ndk-access-the-arkts-page.md)。
+本示例仅展示核心功能代码，完整示例请参考<!--RP1-->[NDKLayoutSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKLayoutSample)<!--RP1End-->；实现前需要先接入ArkTS页面，具体接入方式可参考接入ArkTS页面。
 
 ## 设置组件尺寸
 
 NDK通用布局属性的推荐使用方式是：先在节点类中封装属性设置方法，再在具体组件上调用。以下示例封装了一组固定尺寸与宽高比属性。
 
-<!-- @[layout_size_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->
+<!-- @[layout_size_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->  
 
-```C
+``` C
 void SetWidth(float width)
 {
     ArkUI_NumberValue value[] = {{.f32 = width}};
     ArkUI_AttributeItem item = {value, 1};
     nativeModule_->setAttribute(handle_, NODE_WIDTH, &item);
 }
-
 void SetPercentWidth(float percent)
 {
     ArkUI_NumberValue value[] = {{.f32 = percent}};
     ArkUI_AttributeItem item = {value, 1};
     nativeModule_->setAttribute(handle_, NODE_WIDTH_PERCENT, &item);
 }
-
 void SetHeight(float height)
 {
     ArkUI_NumberValue value[] = {{.f32 = height}};
     ArkUI_AttributeItem item = {value, 1};
     nativeModule_->setAttribute(handle_, NODE_HEIGHT, &item);
 }
-
+void SetPercentHeight(float percent)
+{
+    ArkUI_NumberValue value[] = {{.f32 = percent}};
+    ArkUI_AttributeItem item = {value, 1};
+    nativeModule_->setAttribute(handle_, NODE_HEIGHT_PERCENT, &item);
+}
 void SetSize(float width, float height)
 {
     ArkUI_NumberValue value[] = {{.f32 = width}, {.f32 = height}};
@@ -99,32 +102,53 @@ SetSize()同时写入宽和高，适合固定尺寸组件；SetPercentWidth()通
 
 <!-- @[layout_spacing_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->
 
-```C
+``` C
+void SetPadding(float padding)
+{
+    ArkUI_NumberValue value[] = {{.f32 = padding}};
+    ArkUI_AttributeItem item = {value, 1};
+    nativeModule_->setAttribute(handle_, NODE_PADDING, &item);
+}
 void SetPadding(float top, float right, float bottom, float left)
 {
     ArkUI_NumberValue value[] = {{.f32 = top}, {.f32 = right}, {.f32 = bottom}, {.f32 = left}};
     ArkUI_AttributeItem item = {value, 4};
     nativeModule_->setAttribute(handle_, NODE_PADDING, &item);
 }
-
+void SetPercentPadding(float percent)
+{
+    ArkUI_NumberValue value[] = {{.f32 = percent}};
+    ArkUI_AttributeItem item = {value, 1};
+    nativeModule_->setAttribute(handle_, NODE_PADDING_PERCENT, &item);
+}
 void SetPercentPadding(float top, float right, float bottom, float left)
 {
     ArkUI_NumberValue value[] = {{.f32 = top}, {.f32 = right}, {.f32 = bottom}, {.f32 = left}};
     ArkUI_AttributeItem item = {value, 4};
     nativeModule_->setAttribute(handle_, NODE_PADDING_PERCENT, &item);
 }
-
+void SetMargin(float margin)
+{
+    ArkUI_NumberValue value[] = {{.f32 = margin}};
+    ArkUI_AttributeItem item = {value, 1};
+    nativeModule_->setAttribute(handle_, NODE_MARGIN, &item);
+}
 void SetMargin(float top, float right, float bottom, float left)
 {
     ArkUI_NumberValue value[] = {{.f32 = top}, {.f32 = right}, {.f32 = bottom}, {.f32 = left}};
     ArkUI_AttributeItem item = {value, 4};
     nativeModule_->setAttribute(handle_, NODE_MARGIN, &item);
 }
-
 void SetPercentMargin(float percent)
 {
     ArkUI_NumberValue value[] = {{.f32 = percent}};
     ArkUI_AttributeItem item = {value, 1};
+    nativeModule_->setAttribute(handle_, NODE_MARGIN_PERCENT, &item);
+}
+void SetPercentMargin(float top, float right, float bottom, float left)
+{
+    ArkUI_NumberValue value[] = {{.f32 = top}, {.f32 = right}, {.f32 = bottom}, {.f32 = left}};
+    ArkUI_AttributeItem item = {value, 4};
     nativeModule_->setAttribute(handle_, NODE_MARGIN_PERCENT, &item);
 }
 ```
@@ -160,13 +184,13 @@ inline std::shared_ptr<ArkUITextNode> CreateMarginItem(const std::string &text, 
 }
 ```
 
-内边距padding用于控制组件内容区与边缘之间的留白，外边距margin用于控制组件与父容器边缘的留白间距。如果需要按父容器比例设置间距，则可使用[ArkUI_NodeType/apis-arkui/capi-native-node-h.md#arkui_nodetype)中NODE_PADDING_PERCENT和NODE_MARGIN_PERCENT对应的方法。
+内边距padding用于控制组件内容区与边缘之间的留白，外边距margin用于控制组件与父容器边缘的留白间距。如果需要按父容器比例设置间距，则可使用ArkUI_NodeType中NODE_PADDING_PERCENT和NODE_MARGIN_PERCENT对应的方法。
 
 ![UICommonAttributeLayout_2](figures/UICommonAttributeLayout_2.jpg)
 
 ## 使用位置属性
 
-当尺寸和间距已经确定后，如果需要进一步调整组件摆放位置，可以使用[position/apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)和[offset/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)。两者都会改变组件的显示位置，但含义不同。position表示相对父容器进行定位，offset表示在原有布局结果上发生偏移。
+当尺寸和间距已经确定后，如果需要进一步调整组件摆放位置，可以使用position和offset。两者都会改变组件的显示位置，但含义不同。position表示相对父容器进行定位，offset表示在原有布局结果上发生偏移。
 
 <!-- @[layout_position_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->
 
@@ -217,35 +241,61 @@ inline std::shared_ptr<ArkUITextNode> CreateOffsetItem()
 
 边框属性在NDK中的使用方式与上文一致，同样是先封装方法，再在具体组件上组合调用。方法封装如下。
 
-<!-- @[layout_border_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->
+<!-- @[layout_border_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->  
 
-```C
+``` C
 void SetBorderWidth(float width)
 {
     ArkUI_NumberValue value[] = {{.f32 = width}};
     ArkUI_AttributeItem item = {value, 1};
     nativeModule_->setAttribute(handle_, NODE_BORDER_WIDTH, &item);
 }
-
+void SetBorderWidth(float top, float right, float bottom, float left)
+{
+    ArkUI_NumberValue value[] = {{.f32 = top}, {.f32 = right}, {.f32 = bottom}, {.f32 = left}};
+    ArkUI_AttributeItem item = {value, 4};
+    nativeModule_->setAttribute(handle_, NODE_BORDER_WIDTH, &item);
+}
+void SetBorderRadius(float radius)
+{
+    ArkUI_NumberValue value[] = {{.f32 = radius}};
+    ArkUI_AttributeItem item = {value, 1};
+    nativeModule_->setAttribute(handle_, NODE_BORDER_RADIUS, &item);
+}
+void SetBorderRadius(float topLeft, float topRight, float bottomLeft, float bottomRight)
+{
+    ArkUI_NumberValue value[] = {
+        {.f32 = topLeft}, {.f32 = topRight}, {.f32 = bottomLeft}, {.f32 = bottomRight}
+    };
+    ArkUI_AttributeItem item = {value, 4};
+    nativeModule_->setAttribute(handle_, NODE_BORDER_RADIUS, &item);
+}
 void SetBorderColor(uint32_t color)
 {
     ArkUI_NumberValue value[] = {{.u32 = color}};
     ArkUI_AttributeItem item = {value, 1};
     nativeModule_->setAttribute(handle_, NODE_BORDER_COLOR, &item);
 }
-
+void SetBorderColor(uint32_t top, uint32_t right, uint32_t bottom, uint32_t left)
+{
+    ArkUI_NumberValue value[] = {{.u32 = top}, {.u32 = right}, {.u32 = bottom}, {.u32 = left}};
+    ArkUI_AttributeItem item = {value, 4};
+    nativeModule_->setAttribute(handle_, NODE_BORDER_COLOR, &item);
+}
 void SetBorderStyle(ArkUI_BorderStyle style)
 {
     ArkUI_NumberValue value[] = {{.i32 = style}};
     ArkUI_AttributeItem item = {value, 1};
     nativeModule_->setAttribute(handle_, NODE_BORDER_STYLE, &item);
 }
-
-void SetBorderRadius(float radius)
+void SetBorderStyle(
+    ArkUI_BorderStyle top, ArkUI_BorderStyle right, ArkUI_BorderStyle bottom, ArkUI_BorderStyle left)
 {
-    ArkUI_NumberValue value[] = {{.f32 = radius}};
-    ArkUI_AttributeItem item = {value, 1};
-    nativeModule_->setAttribute(handle_, NODE_BORDER_RADIUS, &item);
+    ArkUI_NumberValue value[] = {
+        {.i32 = top}, {.i32 = right}, {.i32 = bottom}, {.i32 = left}
+    };
+    ArkUI_AttributeItem item = {value, 4};
+    nativeModule_->setAttribute(handle_, NODE_BORDER_STYLE, &item);
 }
 ```
 

@@ -2,24 +2,24 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs-->
-<!--Designer: @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Owner: @guozejun-->
+<!--Designer: @guozejun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
 ArkUI开发框架从API version 12开始在NDK接口提供了网格组件，使用网格可以将页面按行列分割成单元格，并指定子组件所在单元格和占用的行列数，从而实现不同的布局需求。例如页面上大小不同的卡片和应用图标、按日期分组显示图片等。
 
-[创建网格](#创建网格)后，可以[设置子组件所占行列数](#设置子组件所占行列数)，滚动场景还可以[处理滚动事件](#处理滚动事件)。
+创建网格后，可以设置子组件所占行列数，滚动场景还可以处理滚动事件。
 
-使用NDK接口构建UI界面以及NDK基本使用，可以参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
+使用NDK接口构建UI界面以及NDK基本使用，可以参考接入ArkTS页面。
 
 ## 创建网格
 
-通过[ArkUI_NativeNodeAPI_1/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)调用[`createNode(ARKUI_NODE_GRID)`/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)得到组件对象指针，并设置[ArkUI_NodeAttributeType/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的列数`NODE_GRID_COLUMN_TEMPLATE`、行数`NODE_GRID_ROW_TEMPLATE`、列间距`NODE_GRID_COLUMN_GAP`和行间距`NODE_GRID_ROW_GAP`等属性，可以创建一个网格组件。
+通过ArkUI_NativeNodeAPI_1调用`createNode(ARKUI_NODE_GRID)`得到组件对象指针，并设置ArkUI_NodeAttributeType中的列数`NODE_GRID_COLUMN_TEMPLATE`、行数`NODE_GRID_ROW_TEMPLATE`、列间距`NODE_GRID_COLUMN_GAP`和行间距`NODE_GRID_ROW_GAP`等属性，可以创建一个网格组件。
 
-参考[示例](ndk-access-the-arkts-page.md#示例)中列表组件的实现方式，将网格组件常用的属性设置封装到自定义的`ArkUIGridNode`类中方便后续使用。
+参考示例中列表组件的实现方式，将网格组件常用的属性设置封装到自定义的`ArkUIGridNode`类中方便后续使用。
 
 <!-- @[grid_define](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/ArkUIGridNode.h) -->
 
@@ -125,18 +125,18 @@ grid->SetColumnsTemplate("1fr 2fr 1fr");  // 第二列宽度是第一、三列�
 grid->SetColumnsTemplate("repeat(auto-fill, 100vp)");  // 自动填充100vp宽的列
 ```
 
-更多形式可以参考[columnsTemplate/apis-arkui/arkui-ts/ts-container-grid.md#columnstemplate)。
+更多形式可以参考columnsTemplate。
 
 ## 设置子组件所占行列数
 
-网格组件默认所有子组件都占1行1列，这类场景通过列表组件设置[ArkUI_NodeAttributeType/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的`NODE_LIST_LANES`也可以实现。网格布局更适合用于部分子组件占用多行或多列的场景，如页面上大小不同的卡片和图标、按日期分组显示图片等。从API version 22开始，这类场景可以通过创建网格时传入合适的[ArkUI_GridLayoutOptions/apis-arkui/capi-arkui-nativemodule-arkui-gridlayoutoptions.md)实现。
+网格组件默认所有子组件都占1行1列，这类场景通过列表组件设置ArkUI_NodeAttributeType中的`NODE_LIST_LANES`也可以实现。网格布局更适合用于部分子组件占用多行或多列的场景，如页面上大小不同的卡片和图标、按日期分组显示图片等。从API version 22开始，这类场景可以通过创建网格时传入合适的ArkUI_GridLayoutOptions实现。
 
 ### 布局选项对比
 
 | 需求场景 | 推荐方法 | 说明 |
 |------|---------|------|
-| 固定行列网格，部分项占多行多列 | [OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback/apis-arkui/capi-native-type-h.md#oh_arkui_gridlayoutoptions_registergetrectbyindexcallback) | 灵活控制每个项的位置和大小。 |
-| 可滚动网格，分组标题占整行 | [OH_ArkUI_GridLayoutOptions_SetIrregularIndexes/apis-arkui/capi-native-type-h.md#oh_arkui_gridlayoutoptions_setirregularindexes) | 指定索引占整行。 |
+| 固定行列网格，部分项占多行多列 | OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback | 灵活控制每个项的位置和大小。 |
+| 可滚动网格，分组标题占整行 | OH_ArkUI_GridLayoutOptions_SetIrregularIndexes | 指定索引占整行。 |
 
 ### 设置固定行列场景下子组件的位置和大小
 
@@ -144,7 +144,7 @@ grid->SetColumnsTemplate("repeat(auto-fill, 100vp)");  // 自动填充100vp宽�
 
 ![grid_irregular](figures/grid_irregular.png)
 
-通过[OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback/apis-arkui/capi-native-type-h.md#oh_arkui_gridlayoutoptions_registergetrectbyindexcallback)给网格组件设置用于获取每一个子组件位置的回调函数，开发者可以在该回调中指定每一个子组件所在的起始行号、起始列号、占用行数和占用列数，即[ArkUI_GridItemRect/apis-arkui/capi-arkui-nativemodule-arkui-griditemrect.md)。上图布局可以通过如下代码实现。
+通过OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback给网格组件设置用于获取每一个子组件位置的回调函数，开发者可以在该回调中指定每一个子组件所在的起始行号、起始列号、占用行数和占用列数，即ArkUI_GridItemRect。上图布局可以通过如下代码实现。
 
 “0”从网格左上角开始占据2行4列，需要将其对应的`ArkUI_GridItemRect`设置为`{0, 0, 2, 4}`。其他子组件的位置和大小设置以此类推。
 
@@ -196,7 +196,7 @@ grid->SetRowsGap(10.0f);
 grid->SetScrollBar(ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF);
 ```
 
-分组显示数据，可以通过[OH_ArkUI_GridLayoutOptions_SetIrregularIndexes/apis-arkui/capi-native-type-h.md#oh_arkui_gridlayoutoptions_setirregularindexes)设置分组节点对应的index，这些index对应的子组件将占据一整行，其他子组件将占据1行1列。
+分组显示数据，可以通过OH_ArkUI_GridLayoutOptions_SetIrregularIndexes设置分组节点对应的index，这些index对应的子组件将占据一整行，其他子组件将占据1行1列。
 
 <!-- @[grid_group_indexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridIrregularIndexesExample.cpp) -->
 
@@ -208,25 +208,25 @@ OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(layoutOptions->GetLayoutOptions()
 grid->SetLayoutOptions(layoutOptions->GetLayoutOptions());
 ```
 
-网格组件支持使用[NodeAdapter/apis-arkui/capi-arkui-nativemodule-arkui-nodeadapter8h.md)按需生成子组件以提升性能。详情请参阅[NodeAdapter介绍](ndk-loading-long-list.md#nodeadapter介绍)和<!--RP1-->[分组显示数据完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridIrregularIndexesExample.cpp)。<!--RP1End-->
+网格组件支持使用NodeAdapter按需生成子组件以提升性能。详情请参阅NodeAdapter介绍和<!--RP1-->[分组显示数据完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridIrregularIndexesExample.cpp)。<!--RP1End-->
 
 ## 处理滚动事件
 
-### 监听滚动事件监听
+### 监听滚动事件
 
-参考[添加事件监听](ndk-add-component-events.md)中列表组件[ArkUI_NodeEventType/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)中的`NODE_LIST_ON_SCROLL_INDEX`事件监听示例代码，可以实现网格滚动事件监听。
+参考添加事件监听中列表组件ArkUI_NodeEventType中的`NODE_LIST_ON_SCROLL_INDEX`事件监听示例代码，可以实现网格滚动事件监听。
 
 网格组件支持以下滚动事件：
 
 | 事件枚举 | 事件说明 | API起始版本 |
 |---------|------|---------|
-| NODE_SCROLL_EVENT_ON_SCROLL_FRAME_BEGIN  | 网格组件开始时回调当前帧将要滑动的偏移量、当前滑动状态。 | 12 |
+| NODE_SCROLL_EVENT_ON_SCROLL_FRAME_BEGIN  | 网格组件每帧滑动开始时回调当前帧将要滑动的偏移量、当前滑动状态。 | 12 |
 | NODE_SCROLL_EVENT_ON_SCROLL_START | 网格组件滑动开始回调。 | 22 |
 | NODE_SCROLL_EVENT_ON_SCROLL_STOP | 网格组件滑动停止回调。 | 22 |
 | NODE_SCROLL_EVENT_ON_REACH_START | 网格组件到达起始位置回调。 | 12 |
 | NODE_SCROLL_EVENT_ON_REACH_END | 网格组件到达末尾位置回调。 | 12 |
 | NODE_SCROLL_EVENT_ON_WILL_STOP_DRAGGING | 网格组件拖划即将离手回调。 | 20 |
-| NODE_SCROLL_EVENT_ON_WILL_START_DRAGGING | 网格组件拖划开始回调。 | 21 |
+| NODE_SCROLL_EVENT_ON_WILL_START_DRAGGING | 网格组件拖划即将开始回调。 | 21 |
 | NODE_SCROLL_EVENT_ON_DID_STOP_DRAGGING | 网格组件拖划结束回调。 | 21 |
 | NODE_SCROLL_EVENT_ON_WILL_START_FLING | 网格组件滑动动画即将开始回调。 | 21 |
 | NODE_SCROLL_EVENT_ON_DID_STOP_FLING | 网格组件滑动动画结束回调。 | 21 |
@@ -237,7 +237,7 @@ grid->SetLayoutOptions(layoutOptions->GetLayoutOptions());
 
 ### 控制滚动位置
 
-参考[控制列表滚动位置](ndk-loading-long-list.md#控制列表滚动位置)设置[ArkUI_NodeAttributeType/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的`NODE_SCROLL_OFFSET`、`NODE_GRID_SCROLL_TO_INDEX`可以控制网格组件滚动位置。
+参考控制列表滚动位置设置ArkUI_NodeAttributeType中的`NODE_SCROLL_OFFSET`、`NODE_GRID_SCROLL_TO_INDEX`可以控制网格组件滚动位置。
 
 从API version 23开始，新增支持`NODE_GRID_SCROLL_TO_INDEX`。
 

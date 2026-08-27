@@ -31,7 +31,7 @@
 - 对于V1，具有一层观察能力，可观察第一层对象属性的变化、第一层数据项的变化；
 - 对于V2，具有深度观察能力，能观察到嵌套对象属性或数组项变化；
 
-下面举例说明状态变量在[@Component](./arkts-create-custom-components.md#component)或[@ComponentV2](./arkts-create-custom-components.md#componentv2)中的修改，触发UI刷新时，V1和V2的差异。
+下面举例说明状态变量在@Component或@ComponentV2中的修改，触发UI刷新时，V1和V2的差异。
 
 ```typescript
 // 如下示例代码以@ObservedV2为例，如果是V1，则对应的是@Observed和@Track。
@@ -89,7 +89,7 @@ Button('Change state variable')
     // 对于V1，只能观察一层的变化，即使this.obsObjA.obsObjB.propB被V1装饰器装饰（@Track），第4行Text不更新;
     // 对于V2，只要this.obsObjA.obsObjB.propB被V2装饰器装饰（@Trace），第4行的Text就能更新。
     this.obsObjA.obsObjB.propB = 'propB3';
-    // this.arr被V1装饰器或V2装饰器装饰，给该变量赋值，不论是V1装饰器变量还是V2装饰器变量，都会触发第5和6行的Text更新。
+    // this.arr被V1装饰器或V2装饰器装饰，给该变量赋值，不论是V1装饰器变量还是V2装饰器变量，都会触发第5、6和7行Text的更新。
     this.arr[0] = new ObsObjC('propC3');
     // 对于V1，this.arr被V1装饰器装饰，由于V1只能观察一层的变化，数组项的属性赋值是第二层的修改，第7行的Text不会更新；
     // 对于V2，this.arr被V2装饰器装饰，且propC被V2装饰器装饰（@Trace），给该变量赋值，第7行的Text会更新。
@@ -99,7 +99,7 @@ Button('Change state variable')
 
 ## V1的@Watch和V2的@Monitor差异
 
-V1的@Watch和V2的@Monitor详细差异参考[\@Watch与\@Monitor的对比](./arkts-new-monitor.md#monitor与watch对比)。下面通过例子介绍两者差异。
+V1的@Watch和V2的@Monitor详细差异参考\@Watch与\@Monitor的对比。下面通过例子介绍两者差异。
 
 ### @Watch同步执行
 V1装饰变量赋值，对象属性或数组（Map、Set）项变化，会触发@Watch的同步执行。如果状态变量被修改多次，则@Watch函数会同步执行多次。
@@ -124,9 +124,9 @@ Button('Change state variable')
 V2装饰变量赋值，对象属性或数组（Map、Set）项变化，会触发@Monitor的异步执行。如果状态变量被修改多次，则@Monitor函数只会执行一次。
 
 ```typescript
-@Local arr: Array<ObsObjC> = [new ObsObjC('propC1')];
+@Local obsObjA: ObsObjA = new ObsObjA('propANew');
 
-@Monitor('obsObjA.propA') onChange(mon : IMonitor) { // @Monitor函数在被监听的V2装饰变量obsObjA发生变化时异步执行
+@Monitor('obsObjA.propA') onChange(mon : IMonitor) { // @Monitor函数在被监听的V2装饰变量obsObjA.propA发生变化时异步执行
   console.info(`${mon.dirty[0]}`); // 执行顺序4（onClick相关逻辑执行完后，才执行onChange回调）
 }
 
@@ -137,12 +137,12 @@ Button('Change state variable')
     console.info('2'); // 执行顺序3
   })
 ```
-上述代码中，需要当前事件逻辑执行完成，如onClick执行后，才会执行@Monitor函数。给this.obsObjA.propA赋值，执行顺序是：打印日志'1', 进行状态变量赋值，打印日志'2', 最后执行@Monitor的'onChange'，打印'obsObjA.propA'。
+上述代码中，需要当前事件逻辑执行完成，如onClick执行后，才会执行@Monitor函数。给this.obsObjA.propA赋值，执行顺序是：打印日志'1'，进行状态变量赋值，打印日志'2'，最后执行@Monitor的'onChange'，打印'obsObjA.propA'。
 
 
 ## V1状态变量更新和V2状态变量更新差异
 
-如下图所示，展示V1组件和V2状态变量更新差异的流程图，相比V1状态管理，V2状态管理在状态变量变化时，会异步标脏组件。
+如下图所示，展示V1和V2组件状态变量更新差异的流程图，相比V1状态管理，V2状态管理在状态变量变化时，会异步标脏组件。
 
 ![v1v2updatedifference](figures/v1v2update.PNG)
 
@@ -156,13 +156,13 @@ Button('Change state variable')
 
 步骤4：更新脏节点列表，更新顺序是，先更新父组件，再更新子组件；
 
-步骤5: 如果状态变量再次发生变化，就会执行步骤4，步骤4在一个Vsync周期内的迭代次数不会超过3次，第3次迭代后，标脏的节点会加到脏节点列表中，在下一个Vsync到来时进行脏节点更新。
+步骤5：如果状态变量再次发生变化，就会执行步骤4，步骤4在一个Vsync周期内的迭代次数不会超过3次，第3次迭代后，标脏的节点会加到脏节点列表中，在下一个Vsync到来时进行脏节点更新。
 
 ### V2组件的更新
 
 V2状态管理相比V1状态管理，新增异步执行@Computed，@Monitor和节点标脏步骤：
 
-步骤1：事件触发修改V2状态变量， 抛[Promise](../../arkts-utils/async-concurrency-overview.md#promise)异步任务；
+步骤1：事件触发修改V2状态变量， 抛Promise异步任务；
 
 步骤2：执行事件中其他剩余逻辑，如修改其他变量。等待事件逻辑执行完成后（如onClick事件），执行Promise回调；
 
@@ -178,4 +178,4 @@ V2状态管理相比V1状态管理，新增异步执行@Computed，@Monitor和�
 
 步骤8：更新脏节点列表，更新顺序是，先更新父组件，再更新子组件；
 
-步骤9: 在更新过程中，如果状态变量再次发生变化，就会执行步骤8，步骤8在一个Vsync周期中迭代次数不会超过3次，第3次迭代后，标脏的节点会加到脏节点列表中，在下一个Vsync到来时进行脏节点更新。
+步骤9：在更新过程中，如果状态变量再次发生变化，就会执行步骤8，步骤8在一个Vsync周期中迭代次数不会超过3次，第3次迭代后，标脏的节点会加到脏节点列表中，在下一个Vsync到来时进行脏节点更新。

@@ -9,7 +9,7 @@
 
 ## 应用模型简介
     
-应用模型是系统为开发者提供的应用程序所需能力的抽象提炼，它提供了应用程序必备的组件和运行机制。有了应用模型，开发者可以基于一套统一的模型进行应用开发，使应用开发更简单、高效。
+应用模型是系统为开发者提供的应用程序所需能力的抽象提炼，它提供了应用程序必备的组件和运行机制。应用模型为开发者提供了一套统一的开发模型，使应用开发更简单、高效。
 
 目前主推且会长期演进的应用模型是从API 9开始支持的Stage模型。该模型提供了AbilityStage组件管理器和WindowStage窗口管理器，分别作为应用组件与窗口的“舞台”，故得名"Stage模型"。
 
@@ -17,24 +17,24 @@ Stage模型支持多个应用组件共享同一个ArkTS引擎实例，以及应�
 
 > **说明：**
 > 
-> - 随着应用模型的演进发展，从API 7开始支持的FA模型已经不再主推。当前FA模型主要用于Lite Wearable设备，相关指导详见[应用模型开发概述](fa-model-development-overview.md)。
+> - 随着应用模型的演进发展，从API 7开始支持的FA模型已经不再主推。当前FA模型主要用于Lite Wearable设备，相关指导详见应用模型开发概述。
 > - 除非另有说明，文档中提及的"应用模型"均指"Stage 模型"。
 
 
 ## 基本概念
 
-下图展示了[Stage模型](ability-terminology.md#stage模型)中的基本概念。
+下图展示了Stage模型中的基本概念。
 
 **图1** Stage模型概念图
 
 ![stage-concepts](figures/stage-concepts.png)
 
 
-- [AbilityStage](abilitystage.md)
+- AbilityStage
 
-  每个Entry类型或者Feature类型的[HAP](../quick-start/hap-package.md)在运行期都有一个AbilityStage实例，当[HAP](../quick-start/hap-package.md)中的代码首次被加载到进程中的时候，系统会先创建AbilityStage实例。
+  每个Entry类型或者Feature类型的HAP在运行期都有一个AbilityStage实例，当HAP中的代码首次被加载到进程中的时候，系统会先创建AbilityStage实例。
   
-- [UIAbility组件](uiability-overview.md)和[ExtensionAbility组件](extensionability-overview.md)
+- UIAbility组件和ExtensionAbility组件
   
   Stage模型提供UIAbility和ExtensionAbility两种类型的组件，这两种组件都有具体的类承载，支持面向对象的开发方式。
   
@@ -42,14 +42,14 @@ Stage模型支持多个应用组件共享同一个ArkTS引擎实例，以及应�
   
   - ExtensionAbility组件是一种面向特定场景的应用组件。开发者并不直接从ExtensionAbility组件派生，而是需要使用ExtensionAbility组件的派生类。目前ExtensionAbility组件有用于卡片场景的FormExtensionAbility，用于输入法场景的InputMethodExtensionAbility，用于延时任务场景的WorkSchedulerExtensionAbility等多种派生类，这些派生类都是基于特定场景提供的。例如，用户在桌面创建应用的卡片，需要开发者从FormExtensionAbility派生，实现其中的回调函数，并在配置文件中配置该能力。ExtensionAbility组件的派生类实例由用户触发创建，并由系统管理生命周期。在Stage模型上，三方应用开发者不能开发自定义服务，而需要根据自身的业务场景通过ExtensionAbility组件的派生类来实现。
 
-  一个HAP包中可以包含一个或多个UIAbility/ExtensionAbility组件，这些组件在运行时共用同一个AbilityStage实例。当[HAP](../quick-start/hap-package.md)中的代码（无论是UIAbility组件还是ExtensionAbility组件）首次被加载到进程中的时候，系统会先创建对应的AbilityStage实例。
-- [WindowStage/apis-arkui/arkts-apis-window-WindowStage.md)
+  一个HAP包中可以包含一个或多个UIAbility/ExtensionAbility组件，这些组件在运行时共用同一个AbilityStage实例。当HAP中的代码（无论是UIAbility组件还是ExtensionAbility组件）首次被加载到进程中的时候，系统会先创建对应的AbilityStage实例。
+- WindowStage
 
   每个UIAbility实例都会与一个WindowStage类实例绑定，该类起到了应用进程内窗口管理器的作用。它包含一个主窗口。也就是说UIAbility实例通过WindowStage持有了一个主窗口，该主窗口为ArkUI提供了绘制区域，可以加载不同的ArkUI页面。
 
-- [Context](application-context-stage.md)
+- Context
 
-  在Stage模型上，Context及其派生类向开发者提供在运行期可以调用的各种资源和能力。UIAbility组件和各种ExtensionAbility组件的派生类都有各自不同的Context类，他们都继承自基类Context，但是各自又根据所属组件，提供不同的能力。
+  在Stage模型上，Context及其派生类向开发者提供在运行期可以调用的各种资源和能力。UIAbility组件和各种ExtensionAbility组件的派生类都有各自不同的Context类，它们都继承自基类Context，但是各自又根据所属组件，提供不同的能力。
 
 - ArkUI页面
 
@@ -70,7 +70,7 @@ Stage模型支持多个应用组件共享同一个ArkTS引擎实例，以及应�
        
 应用组件是应用的基本组成单位和运行入口。
 
-在用户启动、使用和退出应用的过程中，应用组件会在不同的状态间切换，这些状态称为[应用组件的生命周期](uiability-lifecycle.md)。
+在用户启动、使用和退出应用的过程中，应用组件会在不同的状态间切换，这些状态称为应用组件的生命周期。
 
 应用组件提供生命周期回调函数，开发者通过这些回调可以感知应用状态的变化。
 
@@ -117,7 +117,7 @@ Stage模型支持多个应用组件共享同一个ArkTS引擎实例，以及应�
 **运行阶段**：当应用安装到设备运行时，系统通过一套应用进程和线程的管理机制，确保功能的有序运行。<!--Del-->此外，还提供了一套任务管理机制，用于管理任务的创建、销毁、前后台切换等。<!--DelEnd-->
  
 
-- 进程模型：在本例中，UIAbility组件默认运行在主进程中，FormExtensionAbility组件运行在独立进程中，UIAbility和FormExtensionAbility组件之间是进程隔离的。更多详情可参考[进程模型](process-model-stage.md)。
+- 进程模型：在本例中，UIAbility组件默认运行在主进程中，FormExtensionAbility组件运行在独立进程中，UIAbility和FormExtensionAbility组件之间是进程隔离的。更多详情可参考进程模型概述。
 
 - 线程模型：Stage模型提供了worker、taskpool等机制支撑应用多线程开发场景。应用如果有复杂的耗时逻辑需要处理，可以通过创建worker的方式开启worker线程，交由worker线程处理。
 

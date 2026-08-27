@@ -1,7 +1,7 @@
 # 自定义字体的注册和使用（ArkTS）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -18,7 +18,7 @@
 
 ## 接口说明
 
-自定义字体注册和使用的常用接口如下表所示，详细接口说明请见[@ohos.graphics.text (文本模块)/apis-arkgraphics2d/js-apis-graphics-text.md)。
+自定义字体注册和使用的常用接口如下表所示，详细接口说明请见@ohos.graphics.text (文本模块)。
 
 | 接口 | 描述 | 
 | -------- | -------- |
@@ -100,7 +100,7 @@
    let paragraph = paragraphBuilder.build();
    ```
 
-6. 如果需要释放自定义字体，可以使用unloadFontSync接口。
+6. 如果需要注销自定义字体，可以使用unloadFontSync接口。
 
    <!-- @[arkts_custom_font_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
    
@@ -113,5 +113,6 @@
 
 ## 效果展示
 
-![zh-cn_image_load](figures/zh-cn_image_load.png)
-![zh-cn_image_unload](figures/zh-cn_image_unload.png)
+![image-load](figures/image-load.png)
+
+![image-unload](figures/image-unload.png)

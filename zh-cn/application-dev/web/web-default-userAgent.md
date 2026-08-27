@@ -29,7 +29,7 @@ User-Agent（简称UA）是一个特殊的字符串，包含设备类型、操�
   | DeviceType            | 当前的设备类型。<br>取值范围：<br>- Phone：手机<br>- Tablet：平板设备<br>-  PC：2in1设备 |
   | OSName                | 基础操作系统名称。<br>默认取值：OpenHarmony                  |
   | OSVersion             | 基础操作系统版本，两位数字，M.S。<br>例如OpenHarmony-6.1.0.31取值为6.1       |
-  | ChromeCompatibleVersion | 兼容Chrome主版本的版本号，从114版本开始演进。<br>对应取值参考[约束与限制](./web-component-overview.md#约束与限制)，例如OpenHarmony 6.0上默认的Chrome版本为132        |
+  | ChromeCompatibleVersion | 兼容Chrome主版本的版本号，从114版本开始演进。<br>对应取值参考约束与限制，例如OpenHarmony 6.0上默认的Chrome版本为132        |
   | ArkWeb                | OpenHarmony版本Web内核名称。<br>默认取值：ArkWeb             |
   | ArkWeb VersionCode    | ArkWeb版本号，格式a.b.c.d。<br>例如4.1.6.1         |
   | DeviceCompat          | 前向兼容字段。<br>手机设备默认取值为Mobile<br>其他设备默认取值为空                |
@@ -39,7 +39,9 @@ User-Agent（简称UA）是一个特殊的字符串，包含设备类型、操�
 >
 > - 当前默认User-Agent的ArkWeb字段前有两个空格。
 >
-> - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关闭，此时可通过显性设置[metaViewport/apis-arkweb/arkts-basic-components-web-attributes.md#metaviewport12)属性为true来覆盖关闭状态。
+> - 依据[RFC 7230 Section 3.2](https://www.rfc-editor.org/info/rfc7230/#section-3.2)规范，自定义User-Agent字符串严禁包含空字符(\0)、回车符(\r)和换行符(\n)，否则会导致应用崩溃。
+>
+> - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关闭，此时可通过显式设置metaViewport属性为true来覆盖关闭状态。
 >
 > - 建议通过OpenHarmony关键字识别是否是OpenHarmony设备，同时可以通过DeviceType识别设备类型用于不同设备上的页面显示（ArkWeb关键字表示设备使用的web内核，OpenHarmony关键字表示设备使用的操作系统，因此推荐通过OpenHarmony关键字识别是否是OpenHarmony设备）。
 >
@@ -47,7 +49,7 @@ User-Agent（简称UA）是一个特殊的字符串，包含设备类型、操�
 
 ## 自定义User-Agent结构
 
-在下面的示例中，通过调用[getUserAgent()/apis-arkweb/arkts-apis-webview-WebviewController.md#getuseragent)接口获取当前默认的用户代理（User-Agent）字符串。这一接口提供的默认User-Agent信息为开发者提供了基础，使开发者能够基于这个默认信息进行定制或扩展。
+在下面的示例中，通过调用getUserAgent()接口获取当前默认的用户代理（User-Agent）字符串。这一接口提供的默认User-Agent信息为开发者提供了基础，使开发者能够基于这个默认信息进行定制或扩展。
 <!-- @[get_the_current_default_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_one.ets) -->
 
 ``` TypeScript
@@ -77,9 +79,9 @@ struct WebComponent {
 }
 ```
 
-以下示例通过[setCustomUserAgent()/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)接口设置自定义用户代理，但请注意，此操作会覆盖系统的用户代理。因此，我们建议将扩展字段追加在默认用户代理的末尾，比如三方应用程序的开发场景，可以在系统默认用户代理字符串的末尾追加特定的APP标识，这样既能保留原有用户代理信息，又能增加自定义的应用识别信息。
+以下示例通过setCustomUserAgent()接口设置自定义用户代理，但请注意，此操作会覆盖系统的用户代理。因此，我们建议将扩展字段追加在默认用户代理的末尾，比如三方应用程序的开发场景，可以在系统默认用户代理字符串的末尾追加特定的APP标识，这样既能保留原有用户代理信息，又能增加自定义的应用识别信息。
 
-当Web组件src设置了url时，建议在[onControllerAttached/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10)回调事件中设置User-Agent，设置方式请参考示例。不建议将User-Agent设置在[onLoadIntercept/apis-arkweb/arkts-basic-components-web-events.md#onloadintercept10)回调事件中，会概率性出现设置失败。若未在onControllerAttached回调事件中设置User-Agent，后续调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现象。
+当Web组件src设置了url时，建议在onControllerAttached回调事件中设置User-Agent，设置方式请参考示例。不建议将User-Agent设置在onLoadIntercept回调事件中，会概率性出现设置失败。若未在onControllerAttached回调事件中设置User-Agent，后续调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现象。
 
 当Web组件src设置为空字符串时，建议先调用setCustomUserAgent方法设置User-Agent，再通过loadUrl加载具体页面。
 <!-- @[set_up_a_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_two.ets) -->
@@ -113,9 +115,9 @@ struct WebComponent {
 }
 ```
 
-从API version 20开始，可通过[setAppCustomUserAgent()/apis-arkweb/arkts-apis-webview-WebviewController.md#setappcustomuseragent20)接口设置应用级自定义用户代理，或者通过[setUserAgentForHosts()/apis-arkweb/arkts-apis-webview-WebviewController.md#setuseragentforhosts20)对特定网站设置应用级自定义用户代理，覆盖系统的用户代理，应用内所有Web组件生效。
+从API version 20开始，可通过setAppCustomUserAgent()接口设置应用级自定义用户代理，或者通过setUserAgentForHosts()对特定网站设置应用级自定义用户代理，覆盖系统的用户代理，应用内所有Web组件生效。
 
-建议在Web组件创建前先调用静态接口[getDefaultUserAgent/apis-arkweb/arkts-apis-webview-WebviewController.md#getdefaultuseragent14)获取默认的用户代理（User-Agent）字符串，然后调用setAppCustomUserAgent，setUserAgentForHosts方法设置User-Agent，再创建指定src的Web组件或通过loadUrl加载具体页面。
+建议在Web组件创建前先调用静态接口getDefaultUserAgent获取默认的用户代理（User-Agent）字符串，然后调用setAppCustomUserAgent，setUserAgentForHosts方法设置User-Agent，再创建指定src的Web组件或通过loadUrl加载具体页面。
 <!-- @[set_app_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_four.ets) -->
 
 ``` TypeScript
@@ -153,7 +155,7 @@ struct WebComponent {
 }
 ```
 
-在下面的示例中，通过[getCustomUserAgent()/apis-arkweb/arkts-apis-webview-WebviewController.md#getcustomuseragent10)接口获取自定义用户代理。
+在下面的示例中，通过getCustomUserAgent()接口获取自定义用户代理。
 <!-- @[get_a_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_three.ets) -->
 
 ``` TypeScript
@@ -237,7 +239,7 @@ OpenHarmony设备的识别主要通过User-Agent中的系统、系统版本和�
 
 ### 如何在OpenHarmony中自定义User-Agent以实现H5兼容性
 
-OpenHarmony提供[setCustomUserAgent/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)接口以支持User-Agent的自定义设置。为适配移动端H5页面通常依赖的UA标识检测（如Mobile、OpenHarmony等），并确保不覆盖系统默认UA信息，推荐按如下方式操作：首先通过[getDefaultUserAgent/apis-arkweb/arkts-apis-webview-WebviewController.md#getdefaultuseragent14)接口获取系统默认User-Agent字符串，随后将H5兼容所需的自定义标识字段追加至该字符串末尾，最后调用setCustomUserAgent接口设置修改后的完整UA字符串。
+OpenHarmony提供setCustomUserAgent接口以支持User-Agent的自定义设置。为适配移动端H5页面通常依赖的UA标识检测（如Mobile、OpenHarmony等），并确保不覆盖系统默认UA信息，推荐按如下方式操作：首先通过getDefaultUserAgent接口获取系统默认User-Agent字符串，随后将H5兼容所需的自定义标识字段追加至该字符串末尾，最后调用setCustomUserAgent接口设置修改后的完整UA字符串。
 
 ### 如何解决H5页面的UA兼容性问题
 

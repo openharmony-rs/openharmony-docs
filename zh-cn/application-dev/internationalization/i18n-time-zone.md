@@ -3,17 +3,17 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
 ## 使用场景
 
-全球各国家和地区的经度不同，地方时间也有所不同，因此划分了不同的时区。例如，英国采用0时区，中国采用东8时区，中国时间要比英国快8小时，中国北京中午12:00，对应英国伦敦是凌晨4:00。时区模块可用于获取时区列表，应用可基于该列表实现业务逻辑，如双时钟应用。<br/>从API version 20开始，时区模块还可用于获取时区跳变时间点和偏移量等，时区的跳变逻辑参考[夏令时跳变](./i18n-dst-transition.md)。
+全球各国家和地区的经度不同，地方时间也有所不同，因此划分了不同的时区。例如，英国采用0时区，中国采用东8时区，中国时间要比英国快8小时，中国北京中午12:00，对应英国伦敦是凌晨4:00。时区模块可用于获取时区列表，应用可基于该列表实现业务逻辑，如双时钟应用。<br/>从API version 20开始，时区模块还可用于获取时区跳变时间点和偏移量等，时区的跳变逻辑参考夏令时跳变。
 
 ## 接口说明
 
-时区模块关键接口如下表所示，具体API说明详见[国际化-I18n/apis-localization-kit/js-apis-i18n.md)。
+时区模块关键接口如下表所示，具体API说明详见国际化-I18n。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -136,6 +136,7 @@
    appPreferredTimeZoneList.push(pauloTimezone);
    appPreferredTimeZoneList.push(defaultTimezone);
    
+   // ...
    let locale: Intl.Locale = i18n.System.getSystemLocaleInstance();
    for (let i = 0; i < appPreferredTimeZoneList.length; i++) {
      let timezone = appPreferredTimeZoneList[i].getID();
@@ -148,5 +149,6 @@
      let hour = calendar.get('hour');
      let minute = calendar.get('minute');
      let second = calendar.get('second');
+     // ...
    }
    ```

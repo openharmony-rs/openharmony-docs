@@ -1,8 +1,8 @@
 # ArkUI动画/交互事件开发常见问题(ArkTS)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin; @mayaolll; @hehongyang3-->
-<!--Designer: @piggyguy; @hehongyang3; @jiangdayuan-->
+<!--Owner: @yihao-lin; @huangxiaolinabc; @hehongyang3-->
+<!--Designer: @piggyguy; @hehongyang3; @fangzhiyuan1-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -19,7 +19,7 @@
 
 **参考链接**
 
-[焦点控制/apis-arkui/arkui-ts/ts-universal-attributes-focus.md)
+焦点控制
 
 
 ## scroll里面套一个grid，如何禁用grid的滑动事件(API 9)
@@ -28,12 +28,12 @@
 
 **参考链接**
 
-[容器嵌套滚动样例/apis-arkui/arkui-ts/ts-container-scroll.md#示例2嵌套滚动实现方式一)
+容器嵌套滚动示例
 
 
 ## 如何实现一个组件不停地旋转(API 9)
 
-可以通过[属性动画/apis-arkui/arkui-ts/ts-animatorproperty.md)的方式实现。
+可以通过属性动画的方式实现。
 
 
 ## 列表目前无法键盘上下滑动，是否能力不支持(API 9)
@@ -59,7 +59,7 @@
 
 ## 使用router或Navigator实现页面跳转时，如何关闭页面间转场动效(API 9)
 
-1. 参考[页面间转场示例/apis-arkui/arkui-ts/ts-page-transition-animation.md#示例)在当前页面和目标页面中定义pageTransition方法。
+1. 参考页面间转场示例在当前页面和目标页面中定义pageTransition方法。
 
 2. 将页面入场组件PageTransitionEnter和页面退场组件PageTransitionExit的动效参数duration都设置为0。
 
@@ -70,7 +70,7 @@ PanGesture用于触发拖动手势事件，滑动的最小距离distance默认�
 
 **参考链接**
 
-[PanGesture/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md)
+PanGesture
 
 
 ## 是否支持使用fontFamily属性设置不同的字体(API 9)
@@ -149,7 +149,7 @@ struct Index {
 
 **解决措施**
 
-可以使用pageTransition函数来实现页面转场效果，通过PageTransitionEnter和PageTransitionExit指定页面进入和退出的动画效果，将其slide属性设置为SlideEffect.Bottom，则页面入场时从下边划入，出场时滑出到下边，即可实现上下切换效果。
+可以使用pageTransition函数来实现页面转场效果，通过PageTransitionEnter和PageTransitionExit指定页面进入和退出的动画效果，将其slide属性设置为SlideEffect.Bottom，则页面入场时从下边滑入，出场时滑出到下边，即可实现上下切换效果。
 
 **代码示例**
 <!--deprecated_code_no_check-->
@@ -194,7 +194,7 @@ struct PageTransition2 {
 
 **参考链接**
 
-[页面间转场/apis-arkui/arkui-ts/ts-page-transition-animation.md)
+页面间转场
 
 ## 自定义组件间如何实现从底部滑入滑出的效果(API 9)
 
@@ -267,7 +267,7 @@ struct ComponentChild2 {
 
 **参考链接**
 
-[出现/消失转场](../ui/arkts-enter-exit-transition.md)
+出现/消失转场
 
 
 ## 文件管理器短按不响应(API 10)
@@ -296,11 +296,11 @@ struct ComponentChild2 {
 
 **参考链接**
 
-1.[hitTestBehavior/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md)
+1.hitTestBehavior
 
-2.[自定义事件分发/apis-arkui/arkui-ts/ts-universal-attributes-on-child-touch-test.md)
+2.自定义事件分发
 
-3.[自定义手势判定/apis-arkui/arkui-ts/ts-gesture-customize-judge.md)
+3.自定义手势判定
 
 ## 如何实现对列表的列表项进行拖动时，其他列表项自动补位和动态排列的效果(API 10)
  
@@ -376,4 +376,4 @@ Image组件默认支持拖拽，中转站感知到拖拽后会主动拉起。
 
 **参考链接**
 
-[draggable/apis-arkui/arkui-ts/ts-basic-components-image.md#draggable9)
+draggable

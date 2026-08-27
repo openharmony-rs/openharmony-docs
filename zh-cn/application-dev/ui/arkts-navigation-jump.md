@@ -1,28 +1,28 @@
 # Navigation页面路由
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-[Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)路由相关操作均基于导航控制器[NavPathStack/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)提供的方法实现，每个Navigation都需要创建并传入一个NavPathStack对象，用于管理页面。NavPathStack主要提供了页面跳转、页面返回、页面替换、页面删除、参数获取、路由拦截等功能。
+Navigation路由相关操作均基于导航控制器NavPathStack提供的方法实现，每个Navigation都需要创建并传入一个NavPathStack对象，用于管理页面。NavPathStack主要提供了页面跳转、页面返回、页面替换、页面删除、参数获取、路由拦截等功能。
 
-在API version 9，Navigation需要配合[NavRouter/apis-arkui/arkui-ts/ts-basic-components-navrouter.md)组件实现页面路由。从API version 10开始，更推荐使用NavPathStack实现页面路由。
+在API version 9，Navigation需要配合NavRouter组件实现页面路由。从API version 10开始，更推荐使用NavPathStack实现页面路由。
 
 路由相关的几个关键概念：
 
-- 路由表：定义了页面名称和[NavDestination/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)页面的映射，若跳转时传入的页面名称未在路由表里注册，会跳转失败。系统提供了[系统路由表](./arkts-navigation-cross-package.md#系统路由表)和[自定义路由表](./arkts-navigation-cross-package.md#自定义路由表)两种实现方式。
-- 路由栈：NavDestination页面以栈结构管理，每个Navigation都有自己的路由栈，不可共享。路由栈主要由NavPathStack控制，此外可通过[NavPathStack.getPathStack/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getpathstack19)获取完整路由栈信息。
+- 路由表：定义了页面名称和NavDestination页面的映射，若跳转时传入的页面名称未在路由表里注册，会跳转失败。系统提供了系统路由表和自定义路由表两种实现方式。
+- 路由栈：NavDestination页面以栈结构管理，每个Navigation都有自己的路由栈，不可共享。路由栈主要由NavPathStack控制，此外可通过NavPathStack.getPathStack获取完整路由栈信息。
 - 页面转场：页面跳转动画，Navigation默认提供了页面切换的转场动画，也支持开发者自定义转场动画。
 
 > **说明：**
 >
 > - NavPathStack对象和Navigation需要一一对应，不可复用。
 >
-> - NavPathStack主要控制的是[NavDestination/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)页面跳转、删除等，无法直接操作[NavBar导航栏](./arkts-navigation-architecture.md#navbar导航栏)，若想跳转到NavBar页面只能通过[clear/apis-arkui/arkui-ts/ts-basic-components-navigation.md#clear10)清空路由栈的方式。
+> - NavPathStack主要控制的是NavDestination页面跳转、删除等，无法直接操作NavBar导航栏，若想跳转到NavBar页面只能通过clear清空路由栈的方式。
 >
-> - 不建议开发者通过监听生命周期的方式管理自己的路由栈，可通过[NavPathStack.getPathStack/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getpathstack19)查询路由栈。
+> - 不建议开发者通过监听生命周期的方式管理自己的路由栈，可通过NavPathStack.getPathStack查询路由栈。
 >
 > - 在应用处于后台状态下，调用NavPathStack的栈操作方法，会在应用再次回到前台状态时触发刷新。
 
@@ -30,7 +30,7 @@
 
 ### 构建导航根容器
 
-首先，开发者需要创建一个[Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)作为导航根容器，并创建一个[NavPathStack/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)对象作为构造入参传给Navigation组件，以实现二者的绑定，后续的路由操作均基于该NavPathStack展开。
+首先，开发者需要创建一个Navigation作为导航根容器，并创建一个NavPathStack对象作为构造入参传给Navigation组件，以实现二者的绑定，后续的路由操作均基于该NavPathStack展开。
 
 <!-- @[NavigationCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
 
@@ -51,7 +51,7 @@ struct Index {
 
 ### 构建子页面
 
-为每个[NavDestination/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)声明对外的实例化方法，如代码中的`PageOneBuilder`，执行该方法会创建一个`PageOne`的自定义组件，该组件就是一个Navigation的子页面。
+为每个NavDestination声明对外的实例化方法，如代码中的`PageOneBuilder`，执行该方法会创建一个`PageOne`的自定义组件，该组件就是一个Navigation的子页面。
 
 <!-- @[NavDestinationPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleOne.ets) -->
 
@@ -93,15 +93,15 @@ export struct PageOne {
 }
 ```
 
-创建好路由表后，需要将其注册到工程中，在工程配置文件[module.json5](../quick-start/module-configuration-file.md)中的`module`字段里配置`"routerMap": "$profile:router_map"`。
+创建好路由表后，需要将其注册到工程中，在工程配置文件module.json5中的`module`字段里配置`"routerMap": "$profile:router_map"`。
 
 ## 路由操作
 
 ### 路由栈获取
 
-[Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)根容器和子页面以及路由表配置完成后，即可通过调用[NavPathStack/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)的API来实现页面之间的跳转。上文提到在一个Navigation容器中，只有一个NavPathStack对象，那么在子页面里执行路由操作就需要获取此NavPathStack对象，有两种方式：
+Navigation根容器和子页面以及路由表配置完成后，即可通过调用NavPathStack的API来实现页面之间的跳转。上文提到在一个Navigation容器中，只有一个NavPathStack对象，那么在子页面里执行路由操作就需要获取此NavPathStack对象，有两种方式：
 
- - 方式一：使用[AppStorage/apis-arkui/arkui-ts/ts-state-management.md#appstorage)存储与获取。
+ - 方式一：使用AppStorage存储与获取。
 
     <!-- @[AppStorageSetStack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/animation/NavigationPage.ets) -->
     
@@ -146,7 +146,7 @@ export struct PageOne {
     }
     ```
 
- - 方式二：[NavDestination.onReady/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11)生命周期回调中获取。
+ - 方式二：NavDestination.onReady生命周期回调中获取。
 
     <!-- @[NavDestinationGetStack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleOne.ets) -->
     
@@ -177,11 +177,11 @@ export struct PageOne {
 
 ### 基础操作
 
-从API version 12开始，导航控制器允许被继承。开发者可以在派生类中自定义属性和方法，也可以重写父类的方法。派生类对象可以替代基类[NavPathStack/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)对象使用。重写NavPathStack的示例代码请参考[定义导航控制器派生类/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例10定义导航控制器派生类)。下文介绍了NavPathStack里提供的基础路由操作接口。
+从API version 12开始，导航控制器允许被继承。开发者可以在派生类中自定义属性和方法，也可以重写父类的方法。派生类对象可以替代基类NavPathStack对象使用。重写NavPathStack的示例代码请参考定义导航控制器派生类。下文介绍了NavPathStack里提供的基础路由操作接口。
 
 **页面跳转**
 
-NavPathStack可以通过Push相关的接口（如[pushPath/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushpath10)、[pushPathByName/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushpathbyname10)、[pushDestination/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushdestination11)、[pushDestinationByName/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushdestinationbyname11)）实现页面跳转。跳转方式主要分为以下三种：
+NavPathStack可以通过Push相关的接口（如pushPath、pushPathByName、pushDestination、pushDestinationByName）实现页面跳转。跳转方式主要分为以下三种：
 
 1. 普通跳转：通过页面名称跳转，并可以携带参数。
 
@@ -238,7 +238,7 @@ NavPathStack可以通过Push相关的接口（如[pushPath/apis-arkui/arkui-ts/t
 
 **页面返回**
 
-NavPathStack可以通过[pop/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop11)相关接口实现页面返回，参考示例如下。
+NavPathStack可以通过pop相关接口实现页面返回，参考示例如下。
 
    <!-- @[pop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageTwo.ets) -->
 
@@ -268,7 +268,7 @@ NavPathStack可以通过[pop/apis-arkui/arkui-ts/ts-basic-components-navigation.
 
 **页面替换**
 
-NavPathStack可以通过Replace相关接口（如[replacePath/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepath11)、[replacePathByName/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepathbyname11)、[replaceDestination/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacedestination18)）实现页面替换，参考示例如下。
+NavPathStack可以通过Replace相关接口（如replacePath、replacePathByName、replaceDestination）实现页面替换，参考示例如下。
 
    <!-- @[replacePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
 
@@ -294,7 +294,7 @@ NavPathStack可以通过Replace相关接口（如[replacePath/apis-arkui/arkui-t
 
 **页面删除**
 
-NavPathStack可以通过Remove相关接口（如[removeByName/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyname11)、[removeByIndexes/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyindexes11)、[removeByNavDestinationId/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebynavdestinationid12)）实现删除路由栈中特定页面的功能，参考示例如下。
+NavPathStack可以通过Remove相关接口（如removeByName、removeByIndexes、removeByNavDestinationId）实现删除路由栈中特定页面的功能，参考示例如下。
 
    <!-- @[removeByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
 
@@ -317,7 +317,7 @@ NavPathStack可以通过Remove相关接口（如[removeByName/apis-arkui/arkui-t
 
 **移动页面**
 
-NavPathStack可以通过Move相关接口（如[moveToTop/apis-arkui/arkui-ts/ts-basic-components-navigation.md#movetotop10)、[moveIndexToTop/apis-arkui/arkui-ts/ts-basic-components-navigation.md#moveindextotop10)）实现移动路由栈中特定页面到栈顶的功能，参考示例如下。
+NavPathStack可以通过Move相关接口（如moveToTop、moveIndexToTop）实现移动路由栈中特定页面到栈顶的功能，参考示例如下。
 
    <!-- @[moveToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
 
@@ -334,18 +334,18 @@ NavPathStack可以通过Move相关接口（如[moveToTop/apis-arkui/arkui-ts/ts-
 
 ### 单例跳转
 
-通过设置[LaunchMode/apis-arkui/arkui-ts/ts-basic-components-navigation.md#launchmode12枚举说明)为LaunchMode.MOVE_TO_TOP_SINGLETON或LaunchMode.POP_TO_SINGLETON，可以实现Navigation路由栈的单实例跳转。单实例跳转的规则如下：
+通过设置LaunchMode为LaunchMode.MOVE_TO_TOP_SINGLETON或LaunchMode.POP_TO_SINGLETON，可以实现Navigation路由栈的单实例跳转。单实例跳转的规则如下：
 
 1. 如果指定为LaunchMode.MOVE_TO_TOP_SINGLETON，系统会从栈底到栈顶查找具有指定名称的NavDestination。找到后，该页面将被移动到栈顶（replace操作会用指定的NavDestination替换当前栈顶）。
 2. 如果指定为LaunchMode.POP_TO_SINGLETON，系统同样会从栈底到栈顶查找具有指定名称的NavDestination。找到后，会移除该NavDestination上方的所有页面（replace操作会用指定的NavDestination替换当前栈顶）。
 
-当栈中存在的NavDestination页面通过单实例方式移动到栈顶时，将触发[onNewParam/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onnewparam19)回调。
+当栈中存在的NavDestination页面通过单实例方式移动到栈顶时，将触发onNewParam回调。
 
-有关单实例跳转的示例代码，可以参考[使用导航控制器方法/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例2使用导航控制器方法)。
+有关单实例跳转的示例代码，可以参考使用导航控制器方法。
 
 ### 参数获取
 
-NavDestination子页第一次创建时会触发[onReady/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11)回调，可以获取此页面对应的参数。
+NavDestination子页第一次创建时会触发onReady回调，可以获取此页面对应的参数。
 
    <!-- @[onReady](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageOne.ets) -->
 
@@ -367,7 +367,7 @@ NavDestination子页第一次创建时会触发[onReady/apis-arkui/arkui-ts/ts-b
    }
    ```
 
-NavDestination组件中可以通过设置[onResult/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口，接收返回时传递的路由参数。
+NavDestination组件中可以通过设置onResult接口，接收返回时传递的路由参数。
 
    <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->  
 
@@ -396,7 +396,7 @@ NavDestination组件中可以通过设置[onResult/apis-arkui/arkui-ts/ts-basic-
    }
    ```
 
-其他业务场景，可以通过主动调用NavPathStack的获取接口（如[getAllPathName/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getallpathname10)、[getParamByIndex/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyindex10)、[getParamByName/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyname10)、[getIndexByName/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getindexbyname10)）获取指定页面的参数。
+其他业务场景，可以通过主动调用NavPathStack的获取接口（如getAllPathName、getParamByIndex、getParamByName、getIndexByName）获取指定页面的参数。
 
    <!-- @[GetParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
 
@@ -405,16 +405,16 @@ NavDestination组件中可以通过设置[onResult/apis-arkui/arkui-ts/ts-basic-
    this.pageStack.getAllPathName();
    // 获取索引为1的页面参数
    this.pageStack.getParamByIndex(1);
-   // 获取PageOne页面的参数
-   this.pageStack.getParamByName('PageOne');
-   // 获取PageOne页面的索引集合
+   // 获取pageOne页面的参数
+   this.pageStack.getParamByName('pageOne');
+   // 获取pageOne页面的索引集合
    this.pageStack.getIndexByName('pageOne');
    ```
 
 
 ### 路由拦截
 
-NavPathStack提供了[setInterception/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12)方法，用于设置Navigation页面跳转拦截回调。该方法需要传入一个[NavigationInterception/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationinterception12)对象，该对象包含多个回调函数，如willShow、didShow等，不同回调函数的调用时机不同，可根据业务需要选择拦截时机。
+NavPathStack提供了setInterception方法，用于设置Navigation页面跳转拦截回调。该方法需要传入一个NavigationInterception对象，该对象包含多个回调函数，如willShow、didShow等，不同回调函数的调用时机不同，可根据业务需要选择拦截时机。
 
 > **说明：**
 >
@@ -434,7 +434,7 @@ NavPathStack提供了[setInterception/apis-arkui/arkui-ts/ts-basic-components-na
          hilog.info(DOMAIN, 'testTag', 'target page is navigation home');
          return;
        }
-       // 将跳转到PageTwo的路由重定向到PageOne
+       // 将跳转到PageTwo的路由重定向到pageOne
        let target: NavDestinationContext = to as NavDestinationContext;
        if (target.pathInfo.name === 'pageTwo') {
          target.pathStack.pop();
@@ -535,7 +535,7 @@ struct NavigationDemo {
       }
       .width('100%')
       .mode(NavigationMode.Auto)
-      // $r('app.string.settings')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“设置”
+      // $r('app.string.settings')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“设置”
       .title($r('app.string.settings')) // 设置标题文字
     }
     .size({ width: '100%', height: '100%' })
@@ -571,7 +571,7 @@ export struct PageOne {
   build() {
     NavDestination() {
       Column() {
-        // $r('app.string.settingPage')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“设置页面”
+        // $r('app.string.settingPage')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“设置页面”
         Text(`${this.name}${this.context!.resourceManager.getStringSync($r('app.string.settingPage').id)}`)
           .width('100%')
           .fontSize(20)
@@ -590,7 +590,7 @@ export struct PageOne {
           .fontColor(0x666666)
           .textAlign(TextAlign.Center)
           .padding({ top: 45 })
-        // $r('app.string.return')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“返回”
+        // $r('app.string.return')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“返回”
         Button($r('app.string.return'))
           .width('50%')
           .height(40)
@@ -680,7 +680,7 @@ export struct PageTwo {
             }
             .width('100%')
             .onClick(() => {
-              // $r('app.string.pageSettingParam')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“页面设置参数”
+              // $r('app.string.pageSettingParam')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“页面设置参数”
               this.navPathStack.pushPathByName(`${item}`,
                 this.context!.resourceManager.getStringSync($r('app.string.pageSettingParam').id));
             })
@@ -759,6 +759,6 @@ export struct PageTwo {
    }
    ```
 
-2. 工程配置文件[module.json5](../quick-start/module-configuration-file.md)中配置`{"routerMap": "$profile:router_map"}`。
+2. 工程配置文件module.json5中配置`{"routerMap": "$profile:router_map"}`。
 
 ![zh-cn_image_0000001588458252](figures/arkts-navigation-transition_1.gif)

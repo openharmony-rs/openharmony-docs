@@ -1,16 +1,16 @@
 # 使用Node-API进行扩展能力功能开发
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
-[扩展能力](napi-data-types-interfaces.md#扩展能力)接口进一步扩展了Node-API的功能，提供了一些额外的接口，用于在Node-API模块中与ArkTS进行更灵活的交互和定制，这些接口可以用于创建自定义ArkTS对象等场景。
+扩展能力接口进一步扩展了Node-API的功能，提供了一些额外的接口，用于在Node-API模块中与ArkTS进行更灵活的交互和定制，这些接口可以用于创建自定义ArkTS对象等场景。
 
-Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程](use-napi-process.md)，本文仅对接口对应C++及ArkTS相关代码进行展示。
+Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程，本文仅对接口对应C++及ArkTS相关代码进行展示。
 
 本文cpp部分代码所需引用的头文件如下：
 ```cpp
@@ -35,18 +35,18 @@ import { taskpool } from '@kit.ArkTS';
 | 接口 | 描述 |
 | -------- | -------- |
 | napi_load_module | 用于在Node-API模块中将abc文件作为模块加载，返回模块的命名空间，适用于需要在运行时动态加载模块或资源的应用程序，从而实现灵活的扩展和定制。 |
-| napi_load_module_with_info | 用于在Node-API中进行模块的加载，当模块加载出来之后，可以使用函数napi_get_property获取模块导出的变量，也可以使用napi_get_named_property获取模块导出的函数，该函数可以在[新创建的ArkTS基础运行时环境](use-napi-ark-runtime.md)中使用。 |
+| napi_load_module_with_info | 用于在Node-API中进行模块的加载，当模块加载出来之后，可以使用函数napi_get_property获取模块导出的变量，也可以使用napi_get_named_property获取模块导出的函数，该函数可以在新创建的ArkTS基础运行时环境中使用。 |
 | napi_module_register | 有些功能可能需要通过Node-API模块来实现以获得更好的性能，通过将这些功能实现为自定义模块并注册到ArkTS环境中，可以在一定程度上提高整体的性能。 |
 
 ### 使用示例
 
 **napi_load_module**
 
-[使用Node-API接口在主线程中进行模块加载](use-napi-load-module.md)
+使用Node-API接口在主线程中进行模块加载
 
 **napi_load_module_with_info**
 
-[使用Node-API接口进行模块加载](use-napi-load-module-with-info.md)
+使用Node-API接口进行模块加载
 
 **napi_module_register**
 
@@ -54,17 +54,17 @@ import { taskpool } from '@kit.ArkTS';
 
 cpp部分代码
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[node_api_module_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->
 
-// 此模块是一个Node-API的回调函数
+``` C++
+// 模块加载
 static napi_value Add(napi_env env, napi_callback_info info)
 {
     // 接受传入两个参数
     size_t requireArgc = 2;
     size_t argc = 2;
     napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     // 将传入的napi_value类型的参数转化为double类型
     double valueLeft;
@@ -79,28 +79,32 @@ static napi_value Add(napi_env env, napi_callback_info info)
     return sum;
 }
 
+// ...
+
 // C++函数Init用于初始化插件，用于将ArkTS层的函数或属性与C++层的函数进行关联
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     // 通过napi_property_descriptor结构体，可以定义需要导出的属性，并在Node-API模块中使用。napi_define_properties将属性与实际的C++函数进行关联，使其可以被ArkTS层访问和调用
     napi_property_descriptor desc[] = {
-        { "add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr }
+        {"add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr},
+        // ...
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    // ...
     return exports;
 }
 EXTERN_C_END
 
 // 插件的初始化被定义在一个名为demoModule的结构体中，其中包含了模块的基本信息，比如模块的版本号、注册函数等
 static napi_module demoModule = {
-    .nm_version =1,
+    .nm_version = 1,
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
     .nm_modname = "entry",
-    .nm_priv = ((void*)0),
-    .reserved = { 0 },
+    .nm_priv = ((void *)0),
+    .reserved = {0},
 };
 
 // 在RegisterEntryModule函数中，使用napi_module_register函数注册并导出了这个插件
@@ -348,7 +352,7 @@ add(1, 2);
 将异步工作对象加到队列，由底层根据传入的qos优先级去调度执行。
 
 <!--Del-->
-[指定异步任务调度优先级](../performance/develop-Native-modules-using-NAPI-safely-and-efficiently.md#指定异步任务调度优先级)
+指定异步任务调度优先级
 <!--DelEnd-->
 
 ## 给ArkTS对象绑定回调和回调所需的参数
@@ -689,7 +693,7 @@ test01();
 
 **napi_run_event_loop、napi_stop_event_loop**
 
-[使用扩展的Node-API接口在异步线程中运行和停止事件循环](use-napi-event-loop.md)
+使用扩展的Node-API接口在异步线程中运行和停止事件循环
 
 ## ArkTS基础运行时环境
 
@@ -704,7 +708,7 @@ test01();
 
 **napi_create_ark_runtime、napi_destroy_ark_runtime**
 
-[使用Node-API接口创建ArkTS运行时环境](use-napi-ark-runtime.md)
+使用Node-API接口创建ArkTS运行时环境
 
 ## 序列化和反序列化
 
@@ -803,7 +807,7 @@ hilog.info(0x0000, 'testTag', ' Node-API aboutSerialize: %{public}d', testNapi.a
 
 **napi_call_threadsafe_function_with_priority**
 
-[使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的的任务](use-call-threadsafe-function-with-priority.md)
+使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的任务
 
 ## Sendable相关
 
@@ -821,7 +825,7 @@ hilog.info(0x0000, 'testTag', ' Node-API aboutSerialize: %{public}d', testNapi.a
 | napi_wrap_sendable | 包裹一个native实例到ArkTS对象中。|
 | napi_wrap_sendable_with_size | 包裹一个native实例到ArkTS对象中并指定大小。|
 | napi_unwrap_sendable | 获取ArkTS对象包裹的native实例。|
-| napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例，移除后回调将不再触发，需手动delete释放内存。|
+| napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例，移除后回调后续会被自动触发，需注意避免出现重复释放问题。|
 
 ### 使用示例
 
@@ -1078,19 +1082,22 @@ static napi_value GetSendableArrayWithLength(napi_env env, napi_callback_info in
 
 接口声明
 
-<!-- [napi_create_sendable_array_with_length_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const getSendableArrayWithLength: () => [];
+<!-- @[napi_create_sendable_array_with_length_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+
+``` TypeScript
+export const getSendableArrayWithLength: () => []; // Sendable相关 napi_create_sendable_array_with_length
 ```
 
 
 ArkTS侧示例代码
 
-<!-- [ark_napi_create_sendable_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
+<!-- @[ark_napi_create_sendable_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+// Sendable相关 napi_create_sendable_array_with_length
 let value = testNapi.getSendableArrayWithLength();
-hilog.info(0x0000, 'testTag', 'Node-API napi_create_sendable_array_with_length: %{public}s', JSON.stringify(value.length));
+hilog.info(0x0000, 'testTag', 'Node-API napi_create_sendable_array_with_length: %{public}s',
+  JSON.stringify(value.length));
 ```
 
 
@@ -1100,13 +1107,16 @@ hilog.info(0x0000, 'testTag', 'Node-API napi_create_sendable_array_with_length: 
 
 cpp部分代码
 
-<!-- [napi_create_sendable_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
-```cpp
-static napi_value GetSendableArrayBuffer(napi_env env, napi_callback_info info) {
-    static size_t LENGTH = 1024;
+<!-- @[napi_create_sendable_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) --> 
+
+``` C++
+// Sendable相关 napi_create_sendable_arraybuffer
+static napi_value GetSendableArrayBuffer(napi_env env, napi_callback_info info)
+{
+    static size_t length = 1024;
     void *data;
     napi_value result = nullptr;
-    napi_create_sendable_arraybuffer(env, LENGTH, &data, &result);
+    napi_create_sendable_arraybuffer(env, length, &data, &result);
     bool isArrayBuffer = false;
     napi_is_arraybuffer(env, result, &isArrayBuffer);
     OH_LOG_INFO(LOG_APP, "isArrayBuffer: %{public}d", isArrayBuffer);
@@ -1117,17 +1127,19 @@ static napi_value GetSendableArrayBuffer(napi_env env, napi_callback_info info) 
 
 接口声明
 
-<!-- [napi_create_sendable_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const getSendableArrayBuffer: () => ArrayBuffer;
+<!-- @[napi_create_sendable_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+
+``` TypeScript
+export const getSendableArrayBuffer: () => ArrayBuffer; // Sendable相关 napi_create_sendable_arraybuffer
 ```
 
 
 ArkTS侧示例代码
 
-<!-- [ark_napi_create_sendable_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
+<!-- @[ark_napi_create_sendable_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+// Sendable相关 napi_create_sendable_arraybuffer
 testNapi.getSendableArrayBuffer();
 ```
 
@@ -1138,17 +1150,20 @@ testNapi.getSendableArrayBuffer();
 
 cpp部分代码
 
-<!-- [napi_create_sendable_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
-```cpp
-static napi_value GetSendableTypedArray(napi_env env, napi_callback_info info) {
-    static size_t LENGTH = 1024;
-    static size_t OFFSET = 0;
+<!-- @[napi_create_sendable_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) --> 
+
+``` C++
+// Sendable相关 napi_create_sendable_typedarray
+static napi_value GetSendableTypedArray(napi_env env, napi_callback_info info)
+{
+    static size_t length = 1024;
+    static size_t offset = 0;
     void *data;
     napi_value arraybuffer = nullptr;
-    napi_create_sendable_arraybuffer(env, LENGTH, &data, &arraybuffer);
+    napi_create_sendable_arraybuffer(env, length, &data, &arraybuffer);
 
     napi_value result = nullptr;
-    napi_create_sendable_typedarray(env, napi_uint8_array, LENGTH, arraybuffer, OFFSET, &result);
+    napi_create_sendable_typedarray(env, napi_uint8_array, length, arraybuffer, offset, &result);
     bool isTypedArray = false;
     napi_is_typedarray(env, result, &isTypedArray);
     OH_LOG_INFO(LOG_APP, "isTypedArray: %{public}d", isTypedArray);
@@ -1159,20 +1174,19 @@ static napi_value GetSendableTypedArray(napi_env env, napi_callback_info info) {
 
 接口声明
 
-<!-- [napi_create_sendable_typed_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const getSendableTypedArray: () => void;
+<!-- @[napi_create_sendable_typed_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+
+``` TypeScript
+export const getSendableTypedArray: () => Uint8Array; // Sendable相关 napi_create_sendable_typedarray
 ```
 
 
 ArkTS侧示例代码
 
-<!-- [ark_napi_create_sendable_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_create_sendable_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+// Sendable相关 napi_create_sendable_typedarray
 testNapi.getSendableTypedArray();
 ```
 
@@ -1183,11 +1197,12 @@ testNapi.getSendableTypedArray();
 
 cpp部分代码
 
-<!-- [napi_wrap_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_wrap_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) --> 
 
-static napi_value WrapSendable(napi_env env, napi_callback_info info) {
+``` C++
+// Sendable相关 napi_wrap_sendable
+static napi_value WrapSendable(napi_env env, napi_callback_info info)
+{
     napi_value val_true;
     napi_get_boolean(env, true, &val_true);
     napi_property_descriptor desc1[] = {
@@ -1196,8 +1211,9 @@ static napi_value WrapSendable(napi_env env, napi_callback_info info) {
     napi_value obj;
     napi_create_sendable_object_with_properties(env, 1, desc1, &obj);
 
-    const char* testStr = "test";
-    napi_wrap_sendable(env, obj, (void*)testStr, [](napi_env env, void* data, void* hint) {}, nullptr);
+    const char *testStr = "test";
+    napi_wrap_sendable(
+        env, obj, (void *)testStr, [](napi_env env, void *data, void *hint) {}, nullptr);
 
     return nullptr;
 }
@@ -1206,20 +1222,19 @@ static napi_value WrapSendable(napi_env env, napi_callback_info info) {
 
 接口声明
 
-<!-- [napi_wrap_sendable_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const wrapSendable: () => void;
+<!-- @[napi_wrap_sendable_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+
+``` TypeScript
+export const wrapSendable: () => void; // Sendable相关 napi_wrap_sendable
 ```
 
 
 ArkTS侧示例代码
 
-<!-- [ark_napi_wrap_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_wrap_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+// Sendable相关 napi_wrap_sendable
 testNapi.wrapSendable();
 ```
 
@@ -1230,11 +1245,14 @@ testNapi.wrapSendable();
 
 cpp部分代码
 
-<!-- [napi_wrap_sendable_with_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_wrap_sendable_with_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) --> 
 
-static napi_value WrapSendableWithSize(napi_env env, napi_callback_info info) {
+``` C++
+static constexpr int INT_ARG_100 = 100; // 入参索引
+
+// Sendable相关 napi_wrap_sendable_with_size
+static napi_value WrapSendableWithSize(napi_env env, napi_callback_info info)
+{
     napi_value val_true;
     napi_get_boolean(env, true, &val_true);
     napi_property_descriptor desc1[] = {
@@ -1243,8 +1261,9 @@ static napi_value WrapSendableWithSize(napi_env env, napi_callback_info info) {
     napi_value obj;
     napi_create_sendable_object_with_properties(env, 1, desc1, &obj);
 
-    const char* testStr = "test";
-    napi_wrap_sendable_with_size(env, obj, (void*)testStr, [](napi_env env, void* data, void* hint) {}, nullptr, 100);
+    const char *testStr = "test";
+    napi_wrap_sendable_with_size(
+        env, obj, (void *)testStr, [](napi_env env, void *data, void *hint) {}, nullptr, INT_ARG_100);
 
     return nullptr;
 }
@@ -1253,20 +1272,19 @@ static napi_value WrapSendableWithSize(napi_env env, napi_callback_info info) {
 
 接口声明
 
-<!-- [napi_wrap_sendable_with_size_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const wrapSendableWithSize: () => void;
+<!-- @[napi_wrap_sendable_with_size_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+
+``` TypeScript
+export const wrapSendableWithSize: () => void; // Sendable相关 napi_wrap_sendable_with_size
 ```
 
 
 ArkTS侧示例代码
 
-<!-- [ark_napi_wrap_sendable_with_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_wrap_sendable_with_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+// Sendable相关 napi_wrap_sendable_with_size
 testNapi.wrapSendableWithSize();
 ```
 
@@ -1277,11 +1295,12 @@ testNapi.wrapSendableWithSize();
 
 cpp部分代码
 
-<!-- [napi_unwrap_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_unwrap_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) --> 
 
-static napi_value UnwrapSendable(napi_env env, napi_callback_info info) {
+``` C++
+// Sendable相关 napi_unwrap_sendable
+static napi_value UnwrapSendable(napi_env env, napi_callback_info info)
+{
     napi_value val_true;
     napi_get_boolean(env, true, &val_true);
     napi_property_descriptor desc1[] = {
@@ -1290,11 +1309,12 @@ static napi_value UnwrapSendable(napi_env env, napi_callback_info info) {
     napi_value obj;
     napi_create_sendable_object_with_properties(env, 1, desc1, &obj);
 
-    const char* testStr = "test";
-    napi_wrap_sendable(env, obj, (void*)testStr, [](napi_env env, void* data, void* hint) {}, nullptr);
+    const char *testStr = "test";
+    napi_wrap_sendable(
+        env, obj, (void *)testStr, [](napi_env env, void *data, void *hint) {}, nullptr);
 
-    char* tmpTestStr = nullptr;
-    napi_unwrap_sendable(env, obj, (void**)&tmpTestStr);
+    char *tmpTestStr = nullptr;
+    napi_unwrap_sendable(env, obj, (void **)&tmpTestStr);
     OH_LOG_INFO(LOG_APP, "native value is %{public}s", tmpTestStr);
 
     return nullptr;
@@ -1304,35 +1324,35 @@ static napi_value UnwrapSendable(napi_env env, napi_callback_info info) {
 
 接口声明
 
-<!-- [napi_unwrap_sendable_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const unwrapSendable: () => void;
+<!-- @[napi_unwrap_sendable_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+
+``` TypeScript
+export const unwrapSendable: () => void; // Sendable相关 napi_unwrap_sendable
 ```
 
 
 ArkTS侧示例代码
 
-<!-- [ark_napi_unwrap_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_unwrap_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+// Sendable相关 napi_unwrap_sendable
 testNapi.unwrapSendable();
 ```
 
 
 **napi_remove_wrap_sendable**
 
-移除并获取ArkTS对象包裹的native实例，移除后回调将不再触发，需手动delete释放内存。
+移除并获取ArkTS对象包裹的native实例，移除后回调后续会被自动触发，需注意避免出现重复释放问题。
 
 cpp部分代码
 
-<!-- [napi_remove_wrap_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_remove_wrap_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) --> 
 
-static napi_value RemoveWrapSendable(napi_env env, napi_callback_info info) {
+``` C++
+// Sendable相关 napi_remove_wrap_sendable
+static napi_value RemoveWrapSendable(napi_env env, napi_callback_info info)
+{
     napi_value val_true;
     napi_get_boolean(env, true, &val_true);
     napi_property_descriptor desc1[] = {
@@ -1341,11 +1361,12 @@ static napi_value RemoveWrapSendable(napi_env env, napi_callback_info info) {
     napi_value obj;
     napi_create_sendable_object_with_properties(env, 1, desc1, &obj);
 
-    const char* testStr = "test";
-    napi_wrap_sendable(env, obj, (void*)testStr, [](napi_env env, void* data, void* hint) {}, nullptr);
+    const char *testStr = "test";
+    napi_wrap_sendable(
+        env, obj, (void *)testStr, [](napi_env env, void *data, void *hint) {}, nullptr);
 
-    char* tmpTestStr = nullptr;
-    napi_remove_wrap_sendable(env, obj, (void**)&tmpTestStr);
+    char *tmpTestStr = nullptr;
+    napi_remove_wrap_sendable(env, obj, (void **)&tmpTestStr);
     OH_LOG_INFO(LOG_APP, "native value is %{public}s", tmpTestStr);
 
     return nullptr;
@@ -1355,20 +1376,19 @@ static napi_value RemoveWrapSendable(napi_env env, napi_callback_info info) {
 
 接口声明
 
-<!-- [napi_remove_wrap_sendable_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const removeWrapSendable: () => void;
+<!-- @[napi_remove_wrap_sendable_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+
+``` TypeScript
+export const removeWrapSendable: () => void; // Sendable相关 napi_remove_wrap_sendable
 ```
 
 
 ArkTS侧示例代码
 
-<!-- [ark_napi_remove_wrap_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_remove_wrap_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+// Sendable相关 napi_remove_wrap_sendable
 testNapi.removeWrapSendable();
 ```
 
@@ -1417,7 +1437,7 @@ static napi_value TestNapiWrapEnhance(napi_env env, napi_callback_info info)
     napi_new_instance(env, testClass, 0, nullptr, &obj);
     const char* testStr = "test";
     napi_ref wrappedRef = nullptr;
-    napi_wrap_enhance(env, obj, (void*)testStr, [](napi_env env, void* data, void* hint) {}, false, nullptr, sizeof(testStr), &wrappedRef);
+    napi_wrap_enhance(env, obj, (void*)testStr, [](napi_env env, void* data, void* hint) {}, false, nullptr, sizeof(testStr) + 1, &wrappedRef);
     return nullptr;
 }
 ```
@@ -1451,7 +1471,7 @@ testNapi.testNapiWrapEnhance();
 
 **napi_create_ark_context、napi_switch_ark_context、napi_destroy_ark_context**
 
-[使用扩展的Node-API接口创建、切换和销毁上下文环境](use-napi-about-context.md)
+使用扩展的Node-API接口创建、切换和销毁上下文环境
 
 ## napi提供通过指针访问ArkTS String内存数据的功能
 
@@ -1465,7 +1485,7 @@ testNapi.testNapiWrapEnhance();
 
 **napi_get_buffer_string_utf16_in_critical_scope**
 
-[使用扩展的Node-API接口创建和销毁临界区作用域及访问字符串内容](use-napi-about-critical.md)
+使用扩展的Node-API接口创建和销毁临界区作用域及访问字符串内容
 
 ## napi实现临界区作用域
 
@@ -1480,7 +1500,7 @@ testNapi.testNapiWrapEnhance();
 
 **napi_open_critical_scope、napi_close_critical_scope**
 
-[使用扩展的Node-API接口创建和销毁临界区作用域及访问字符串内容](use-napi-about-critical.md)
+使用扩展的Node-API接口创建和销毁临界区作用域及访问字符串内容
 
 ## napi支持创建轻量级的强引用对象
 
@@ -1494,9 +1514,9 @@ testNapi.testNapiWrapEnhance();
 
 ### 使用示例
 
-**napi_create_strong_reference、napi_delete_strong_reference、napi_get_value_strong_reference**
+**napi_create_strong_reference、napi_delete_strong_reference、napi_get_strong_reference_value**
 
-[使用扩展的Node-API接口创建、销毁和使用强引用对象](use-napi-about-strong-reference.md)
+使用扩展的Node-API接口创建、销毁和使用强引用对象
 
 ## napi支持创建Sendable的强引用
 
@@ -1512,7 +1532,7 @@ testNapi.testNapiWrapEnhance();
 
 **napi_create_strong_sendable_reference、napi_delete_strong_sendable_reference、napi_get_strong_sendable_reference_value**
 
-[使用扩展的Node-API接口创建、销毁和使用Sendable强引用](use-napi-about-sendable-reference.md)
+使用扩展的Node-API接口创建、销毁和使用Sendable强引用
 
 ## napi支持抛出错误对象的code属性类型为number的ArkTS Error
 
@@ -1527,7 +1547,7 @@ testNapi.testNapiWrapEnhance();
 
 **napi_throw_business_error**
 
-[使用扩展的Node-API接口抛出ArkTS异常](use-napi-about-error.md)
+使用扩展的Node-API接口抛出ArkTS异常
 
 ## napi支持基于调用点内联缓存的快速属性访问
 
@@ -1544,4 +1564,18 @@ testNapi.testNapiWrapEnhance();
 
 **napi_create_callsite_info、napi_delete_callsite_info、napi_get_property_with_callsite_info、napi_set_property_with_callsite_info**
 
-[使用扩展的Node-API接口加速属性访问](use-napi-about-fast-property-access.md)
+使用扩展的Node-API接口加速属性访问
+
+## napi支持获取global handle数量
+
+### 接口描述
+
+| 接口                        | 描述                                                                                                                 |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| napi_get_global_handle_count | 获取当前虚拟机环境中global handle数量，可用于根据global handle的实际数量来进一步处理业务，比如打印当前堆快照，分析当前的内存占用情况。注意：由于需要遍历，此接口可能耗时较长，在us级别。 |
+
+### 使用示例
+
+**napi_get_global_handle_count**
+
+使用扩展的Node-API接口获取global handle数量

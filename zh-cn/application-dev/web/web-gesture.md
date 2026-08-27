@@ -7,7 +7,7 @@
 <!--Adviser: @HelloShuo-->
 在移动端或支持触控的Web应用中，用户通过触摸屏与页面交互，Web组件支持了常见的手势识别，例如长按、滑动、点击等，以支持丰富的用户交互体验。
 ## ArkWeb手势识别
-ArkWeb接收ArkUI的[触摸事件](../ui/arkts-interaction-development-guide-touch-screen.md#触摸事件)，并识别出手势（触摸事件的分发策略详见[交互基础机制说明](../ui/arkts-interaction-basic-principles.md)）。ArkWeb手势符合W3C标准：Touch Events、UI Events、Pointer Events。
+ArkWeb接收ArkUI的触摸事件，并识别出手势（触摸事件的分发策略详见交互基础机制说明）。ArkWeb手势符合W3C标准：Touch Events、UI Events、Pointer Events。
 
 常见事件识别说明：
 | 手势事件 | 触发条件 |
@@ -24,13 +24,13 @@ ArkWeb接收ArkUI的[触摸事件](../ui/arkts-interaction-development-guide-tou
 | PinchEnd | 捏合结束时触发。 |
 
 ## ArkWeb手势与ArkUI手势
-ArkUI提供了[手势绑定](../ui/arkts-gesture-events-binding.md)，Web组件有独立的手势识别，因此需要区分两种手势：
+ArkUI提供了手势绑定，Web组件有独立的手势识别，因此需要区分两种手势：
 - ArkWeb手势：Web组件接收触摸事件自动生成的手势，这些手势作用于网页上。
 - ArkUI手势：Web组件作为通用组件会接收ArkUI手势，ArkUI手势并不直接作用于网页，而作用于Web组件上。
 
 以缩放为例说明两种手势的区别：
 - 在Web上使用双指捏合时，Web组件中的内容将会缩放。这是由于ArkWeb识别了Pinch事件并将其作用于网页上。
-- 使用三指捏合，Web组件本身会进行缩放。这是因为ArkWeb接收到ArkUI识别出的[PinchGesture](../ui/arkts-gesture-events-single-gesture.md#捏合手势pinchgesture)，执行绑定的回调函数。同时，ArkWeb支持scale方法，能够调整Web组件的缩放比例。
+- 使用三指捏合，Web组件本身会进行缩放。这是因为ArkWeb接收到ArkUI识别出的PinchGesture，执行绑定的回调函数。同时，ArkWeb支持scale方法，能够调整Web组件的缩放比例。
 
 > **说明：**
 >
@@ -80,19 +80,19 @@ struct Index {
 ## Web组件的手势拦截
 - ArkUI手势
 
-  ArkWeb会消费部分ArkUI手势，例如[滑动手势](../ui/arkts-gesture-events-single-gesture.md#滑动手势pangesture)，若希望自行处理这些手势而非由ArkWeb消费，可以参考ArkUI的[手势冲突处理](../ui/arkts-gesture-events-gesture-judge.md)，具体示例也可以参考[示例/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#示例)。
+  ArkWeb会消费部分ArkUI手势，例如滑动手势，若希望自行处理这些手势而非由ArkWeb消费，可以参考ArkUI的手势冲突处理，具体示例也可以参考示例。
 
 - ArkWeb手势
 
   ArkWeb手势的生成需要Web组件接收触摸事件，有两种拦截方案：
-  1. 完全禁止触摸事件发送给Web组件，详见[触摸测试](../ui/arkts-interaction-basic-principles.md#触摸测试)。
-  2. 发送TouchCancel触摸事件给Web组件，CAPI接口介绍详见[OH_ArkUI_TouchRecognizer_CancelTouch/apis-arkui/capi-native-gesture-h.md#函数)，具体示例请参考<!--RP1-->[NdkGestureSetting](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureSetting)<!--RP1End-->。
+  1. 完全禁止触摸事件发送给Web组件，详见触摸测试。
+  2. 发送TouchCancel触摸事件给Web组件，CAPI接口介绍详见OH_ArkUI_TouchRecognizer_CancelTouch，具体示例请参考<!--RP1-->[NdkGestureSetting](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureSetting)<!--RP1End-->。
 
 
 ## 常见问题
 
 ### 如何禁用缩放手势
-Web组件提供了接口[zoomAccess/apis-arkweb/arkts-basic-components-web-attributes.md#zoomaccess)，控制是否可以缩放。网页上有user-scalable属性也会影响缩放。详见[使用Web组件管理网页缩放](web-scale-zoom.md)。
+Web组件提供了接口zoomAccess，控制是否可以缩放。网页上有user-scalable属性也会影响缩放。详见使用Web组件管理网页缩放。
 ### Web组件中如何通过手势滑动返回上一个Web页面
 
 **解决措施**
@@ -101,7 +101,7 @@ Web组件提供了接口[zoomAccess/apis-arkweb/arkts-basic-components-web-attri
 
 **示例代码**
 
-<!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) --> 
+<!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -126,7 +126,7 @@ struct Index {
         return true;
       }
     } catch (err) {
-      console.error(`copyUrlPicToDir failed with error: ${err.code}, ${err.message}`);
+      console.error(`onBackPress failed with error: ${err.code}, ${err.message}`);
     }
     // 执行系统默认返回逻辑，返回上一个页面
     return false;
@@ -136,7 +136,7 @@ struct Index {
 
 ### 为什么Web组件加载后网页无法交互？
 
-网页可能基于其他平台的User-Agent进行判断。为解决此问题，可以使用[setCustomUserAgent/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)在Web组件中设置自定义User-Agent，例如：
+网页可能基于其他平台的User-Agent进行判断。为解决此问题，可以使用setCustomUserAgent在Web组件中设置自定义User-Agent，例如：
 
 <!-- @[SetUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/SetUserAgent.ets) -->
 

@@ -12,7 +12,7 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
 
 ## 开发步骤
 
-获取图片，创建ImageSource（可选），再获取XMPMetadata对象，使用XMP路径语法读写标签。XMP元数据的操作方法请参考[XMPMetadata/apis-image-kit/arkts-apis-image-XMPMetadata.md)。
+获取图片，创建ImageSource（可选），再获取XMPMetadata对象，使用XMP路径语法读写标签。XMP元数据的操作方法请参考XMPMetadata。
 
 1. 导入相关模块。
 
@@ -26,7 +26,7 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
 
 2. 获取XMPMetadata对象。
 
-   在使用XMP元数据相关接口前，需要先获取一个[XMPMetadata/apis-image-kit/arkts-apis-image-XMPMetadata.md)实例。当前支持以下方式：
+   在使用XMP元数据相关接口前，需要先获取一个XMPMetadata实例。当前支持以下方式：
 
    - 方式一：手动创建新的XMPMetadata对象。适用于需要构造全新XMP元数据的场景。
 
@@ -40,7 +40,7 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
      }
      ```
 
-   - 方式二：通过ImageSource读取图片中的XMP元数据。适用于需要读取或修改已有图片中XMP元数据的场景。<br>推荐使用[readImageMetadataByType/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadatabytype24)接口获取XMP元数据，可以直接传入`MetadataType.XMP_METADATA`，精准获取XMP类型的元数据，避免读取其他无关元数据。
+   - 方式二：通过ImageSource读取图片中的XMP元数据。适用于需要读取或修改已有图片中XMP元数据的场景。<br>推荐使用readImageMetadataByType接口获取XMP元数据，可以直接传入`MetadataType.XMP_METADATA`，精准获取XMP类型的元数据，避免读取其他无关元数据。
 
      <!-- @[read_xmp_metadata_from_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
      
@@ -66,7 +66,7 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
 
 3. 编辑XMP元数据。
 
-   使用XMP路径定位到目标标签后，调用对应的方法进行编辑。例如：通过[setValue/apis-image-kit/arkts-apis-image-XMPMetadata.md#setvalue)设置标签值，通过[getTag/apis-image-kit/arkts-apis-image-XMPMetadata.md#gettag)获取标签值，通过[removeTag/apis-image-kit/arkts-apis-image-XMPMetadata.md#removetag)删除标签。
+   使用XMP路径定位到目标标签后，调用对应的方法进行编辑。例如：通过setValue设置标签值，通过getTag获取标签值，通过removeTag删除标签。
 
    <!-- @[operate_xmp_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
    
@@ -90,7 +90,7 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
 
 4. 将编辑后的XMP元数据写回图片。
 
-   编辑后的XMPMetadata对象可通过[writeImageMetadata/apis-image-kit/arkts-apis-image-ImageSource.md#writeimagemetadata23)写回图片文件。
+   编辑后的XMPMetadata对象可通过writeImageMetadata写回图片文件。
 
    > **注意：**
    >
@@ -113,7 +113,7 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
 
 ## XMP路径语法详解
 
-XMP路径由以下语法构件组合而成。在使用[getTag/apis-image-kit/arkts-apis-image-XMPMetadata.md#gettag)、[setValue/apis-image-kit/arkts-apis-image-XMPMetadata.md#setvalue)、[removeTag/apis-image-kit/arkts-apis-image-XMPMetadata.md#removetag)等接口时，均需通过XMP路径指定目标标签。
+XMP路径由以下语法构件组合而成。在使用getTag、setValue、removeTag等接口时，均需通过XMP路径指定目标标签。
 
 ### 基本属性路径
 
@@ -121,8 +121,8 @@ XMP路径由以下语法构件组合而成。在使用[getTag/apis-image-kit/ark
 
 > **说明：**
 >
-> - 使用标准命名空间（如`xmp`、`dc`、`exif`等）时，无需额外注册。Image Kit支持但不限于[常量/apis-image-kit/arkts-apis-image-c.md#常量)中定义的标准命名空间。
-> - 使用自定义命名空间时，需要先通过[registerXMPNamespace/apis-image-kit/arkts-apis-image-XMPMetadata.md#registerxmpnamespace)完成注册。
+> - 使用标准命名空间（如`xmp`、`dc`、`exif`等）时，无需额外注册。Image Kit支持但不限于常量中定义的标准命名空间。
+> - 使用自定义命名空间时，需要先通过registerXMPNamespace完成注册。
 
 **示例：**
 
@@ -153,7 +153,7 @@ async setAndGetBasicTag(xmpMetadata: image.XMPMetadata): Promise<void> {
 
 **示例1：创建数组容器并添加元素**
 
-以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用[registerXMPNamespace/apis-image-kit/arkts-apis-image-XMPMetadata.md#registerxmpnamespace)完成注册。
+以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用registerXMPNamespace完成注册。
 
 <!-- @[create_array_and_add_elements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
 
@@ -177,7 +177,7 @@ async createArrayAndAddElements(xmpMetadata: image.XMPMetadata): Promise<void> {
 
 **示例2：通过索引获取数组元素**
 
-以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用[registerXMPNamespace/apis-image-kit/arkts-apis-image-XMPMetadata.md#registerxmpnamespace)完成注册。
+以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用registerXMPNamespace完成注册。
 
 <!-- @[get_array_elements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
 
@@ -207,7 +207,7 @@ async getArrayElements(xmpMetadata: image.XMPMetadata): Promise<void> {
 
 **示例：创建结构体父节点并操作成员**
 
-以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用[registerXMPNamespace/apis-image-kit/arkts-apis-image-XMPMetadata.md#registerxmpnamespace)完成注册。
+以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用registerXMPNamespace完成注册。
 
 <!-- @[create_struct_and_operate_members](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
 
@@ -245,7 +245,7 @@ async createStructAndOperateMembers(xmpMetadata: image.XMPMetadata): Promise<voi
 
 **示例1：设置并获取限定符的值**
 
-以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用[registerXMPNamespace/apis-image-kit/arkts-apis-image-XMPMetadata.md#registerxmpnamespace)完成注册。
+以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用registerXMPNamespace完成注册。
 
 <!-- @[set_and_get_qualifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
 
@@ -302,7 +302,7 @@ async setLanguageQualifier(xmpMetadata: image.XMPMetadata): Promise<void> {
 
 > **注意：**
 >
-> 该语法仅适用于[enumerateTags/apis-image-kit/arkts-apis-image-XMPMetadata.md#enumeratetags)和[getTags/apis-image-kit/arkts-apis-image-XMPMetadata.md#gettags)接口的`rootPath`参数。
+> 该语法仅适用于enumerateTags和getTags接口的`rootPath`参数。
 
 **示例：**
 

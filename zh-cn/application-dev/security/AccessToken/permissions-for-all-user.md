@@ -18,7 +18,7 @@
 
 ## 申请方式
 
-以下权限的授权方式均为[user_grant（用户授权）](app-permission-mgmt-overview.md#user_grant用户授权)，申请方式请参考[声明权限](declare-permissions.md) &gt; [向用户申请授权](request-user-authorization.md)。
+以下权限的授权方式均为user_grant（用户授权），申请方式请参考声明权限 &gt; 向用户申请授权。
 
 ## ohos.permission.ACCESS_BLUETOOTH
 
@@ -94,15 +94,15 @@
 
 **申请流程**：
 
-1. 在“module.json5”配置文件中[声明权限](declare-permissions.md)。
+1. 在“module.json5”配置文件中声明权限。
 
    由于在申请后台位置权限前，必须先申请前台位置权限，因此开发者在配置时，应同时配置后台位置权限和前台位置权限。前台位置权限的申请有两种允许情况：
-   - 申请前台模糊位置权限：声明权限[ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location)。
-   - 申请前台精确位置权限：同时声明权限[ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location)和[ohos.permission.LOCATION](#ohospermissionlocation)。
-2. 应用调用[requestPermissionsFromUser()/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)拉起弹窗向用户申请对应的前台位置权限。
-3. 若用户点击弹窗允许应用使用前台位置权限，应用可以引导用户在系统应用“设置”中，授予后台位置权限；若用户点击弹窗禁止应用使用前台位置权限，应用可以引导用户在系统应用“设置”中授权，或通过调用[requestPermissionOnSetting()/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissiononsetting12)再次拉起权限设置弹窗，引导用户授权。
+   - 申请前台模糊位置权限：声明权限ohos.permission.APPROXIMATELY_LOCATION。
+   - 申请前台精确位置权限：同时声明权限ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION。
+2. 应用调用requestPermissionsFromUser()拉起弹窗向用户申请对应的前台位置权限。
+3. 若用户点击弹窗允许应用使用前台位置权限，应用可以引导用户在系统应用“设置”中，授予后台位置权限；若用户点击弹窗禁止应用使用前台位置权限，应用可以引导用户在系统应用“设置”中授权，或通过调用requestPermissionOnSetting()再次拉起权限设置弹窗，引导用户授权。
 
-当前系统提供了长时任务机制，对于需要在后台使用位置的应用，结合自身业务场景，可通过申请LOCATION类型的长时任务和前台位置权限的方式在后台获取位置，而不必申请后台位置权限。请参考：[长时任务指导](../../task-management/continuous-task.md)。
+当前系统提供了长时任务机制，对于需要在后台使用位置的应用，结合自身业务场景，可通过申请LOCATION类型的长时任务和前台位置权限的方式在后台获取位置，而不必申请后台位置权限。请参考：长时任务指导。
 
 **权限级别**：normal
 
@@ -114,7 +114,7 @@
 
 允许应用获取设备位置信息。
 
-**申请条件**：需要与模糊位置权限[ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location)一起，才可申请此权限。
+**申请条件**：需要与模糊位置权限ohos.permission.APPROXIMATELY_LOCATION一起，才可申请此权限。
 
 **权限级别**：normal
 
@@ -226,11 +226,11 @@
 
 **授权方式**：用户授权（user_grant）
 
-**支持设备**：PC/2in1 | Tablet | Phone
+**支持设备**：PC/2in1 | Tablet | Phone | TV | Car | Wearable
 
 **起始版本**：14
 
-**变更信息**：API 14-20，该权限仅支持在平板、PC/2in1设备上申请；从API 21开始，增加支持在手机上申请。
+**变更信息**：API 14-20，该权限仅支持在平板、PC/2in1设备上申请；从API 21开始，增加支持在手机上申请；从API 26.1.0开始，增加支持在TV、Car、Wearable设备上申请。
 
 ## ohos.permission.READ_MEDIA
 
@@ -246,7 +246,7 @@
 
 **替代方案**：
 
-请参考[文件权限组废弃替代方案](app-permission-group-list.md#文件deprecated)。
+请参考文件权限组废弃替代方案。
 
 ## ohos.permission.WRITE_MEDIA
 
@@ -262,5 +262,4 @@
 
 **替代方案**：
 
-请参考[文件权限组废弃替代方案](app-permission-group-list.md#文件deprecated)。
-
+请参考文件权限组废弃替代方案。

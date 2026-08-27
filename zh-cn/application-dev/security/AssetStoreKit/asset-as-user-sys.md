@@ -18,7 +18,7 @@
 
 使用接口需要申请权限：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
 
-申请流程请参考：[申请应用权限](../AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
+申请流程请参考：申请应用权限。
 
 ## 接口介绍
 
@@ -26,9 +26,9 @@
 
 | 接口名称 | 说明 | 基础功能接口（不指定用户空间）<br>开发示例 |
 | -------- | -------- | ----------|
-| [addAsUser/apis-asset-store-kit/js-apis-asset-sys.md#assetaddasuser)              |   在指定用户空间中新增一条关键资产。使用Promise异步回调。           |  [add](asset-js-add.md)             |
-| [removeAsUser/apis-asset-store-kit/js-apis-asset-sys.md#assetremoveasuser)              |   从指定用户空间中删除符合条件的一条或多条关键资产。使用Promise异步回调。           |  [remove](asset-js-remove.md)             |
-| [updateAsUser/apis-asset-store-kit/js-apis-asset-sys.md#assetupdateasuser)              |   在指定用户空间中更新符合条件的一条关键资产。使用Promise异步回调。           |  [update](asset-js-update.md)             |
-| [preQueryAsUser/apis-asset-store-kit/js-apis-asset-sys.md#assetprequeryasuser)              |   在指定用户空间中查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[queryAsUser/apis-asset-store-kit/js-apis-asset-sys.md#assetqueryasuser)和[postQueryAsUser/apis-asset-store-kit/js-apis-asset-sys.md#assetpostqueryasuser)接口。使用Promise异步回调。           |  [preQuery](asset-js-query-auth.md)             |
-| [queryAsUser/apis-asset-store-kit/js-apis-asset-sys.md#assetqueryasuser)              |   在指定用户空间中查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[preQueryAsUser/apis-asset-store-kit/js-apis-asset-sys.md#assetprequeryasuser)接口，在本函数后调用[postQueryAsUser/apis-asset-store-kit/js-apis-asset-sys.md#assetpostqueryasuser)接口。使用Promise异步回调。           |  若查询需要用户认证的关键资产：[query](asset-js-query-auth.md)<br>若查询不需要用户认证的关键资产：[query](asset-js-query.md)            |
-| [postQueryAsUser/apis-asset-store-kit/js-apis-asset-sys.md#assetpostqueryasuser)              |   在指定用户空间中查询的后置处理，用于需要用户认证的关键资产（与[preQueryAsUser/apis-asset-store-kit/js-apis-asset-sys.md#assetprequeryasuser)函数成对出现）。使用Promise异步回调。           |  [postQuery](asset-js-query-auth.md)            |
+| addAsUser              |   在指定用户空间中新增一条关键资产。使用Promise异步回调。           |  add             |
+| removeAsUser              |   从指定用户空间中删除符合条件的一条或多条关键资产。使用Promise异步回调。           |  remove             |
+| updateAsUser              |   在指定用户空间中更新符合条件的一条关键资产。使用Promise异步回调。           |  update             |
+| preQueryAsUser              |   在指定用户空间中查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用queryAsUser和postQueryAsUser接口。使用Promise异步回调。           |  preQuery             |
+| queryAsUser              |   在指定用户空间中查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用preQueryAsUser接口，在本函数后调用postQueryAsUser接口。使用Promise异步回调。           |  若查询需要用户认证的关键资产：query<br>若查询不需要用户认证的关键资产：query            |
+| postQueryAsUser              |   在指定用户空间中查询的后置处理，用于需要用户认证的关键资产（与preQueryAsUser函数成对出现）。使用Promise异步回调。           |  postQuery            |

@@ -11,15 +11,15 @@
 
 ## 开发步骤
 
-1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
+1. 指定密钥别名，密钥别名命名规范参考密钥生成介绍及算法规格。
 
 2. 初始化参数集。
 
-   [HuksOptions/apis-universal-keystore-kit/js-apis-huks.md#huksoptions)中的properties字段中的参数必须包含[HUKS_TAG_ATTESTATION_CHALLENGE/apis-universal-keystore-kit/js-apis-huks.md#hukstag)属性,可选参数包含[HUKS_TAG_ATTESTATION_ID_VERSION_INFO/apis-universal-keystore-kit/js-apis-huks.md#hukstag)，[HUKS_TAG_ATTESTATION_ID_ALIAS/apis-universal-keystore-kit/js-apis-huks.md#hukstag)属性。
+   HuksOptions中的properties字段中的参数必须包含HUKS_TAG_ATTESTATION_CHALLENGE属性，可选参数包含HUKS_TAG_ATTESTATION_ID_VERSION_INFO，HUKS_TAG_ATTESTATION_ID_ALIAS属性。
 
-3. 生成非对称密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
+3. 生成非对称密钥，具体请参考密钥生成。
 
-4. 将密钥别名与参数集作为参数传入[anonAttestKeyItem/apis-universal-keystore-kit/js-apis-huks.md#huksanonattestkeyitem11)方法中，即可证明密钥。
+4. 将密钥别名与参数集作为参数传入anonAttestKeyItem方法中，即可证明密钥。
 
 ## 开发案例
 <!-- @[anonymous_key_proof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/AnonymousKeyProof/entry/src/main/ets/pages/AnonymousKeyProof.ets) -->

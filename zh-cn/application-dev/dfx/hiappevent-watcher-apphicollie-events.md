@@ -2,20 +2,20 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
 ## 简介
 
-任务执行超时指要监控的业务代码逻辑执行时长超过业务逻辑预期时间。为了更好地定位和分析问题，开发者可以利用[任务执行超时检测](apptask-timeout-guidelines.md#任务执行超时检测)机制，根据生成的[日志规格](apptask-timeout-guidelines.md#日志规格)，主动分析任务执行超时的执行情况。
+任务执行超时指要监控的业务代码逻辑执行时长超过业务逻辑预期时间。为了更好地定位和分析问题，开发者可以利用任务执行超时检测机制，根据生成的日志规格，主动分析任务执行超时的执行情况。
 
 本文面向开发者介绍任务执行超时检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅任务执行超时事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。
 
-- [订阅任务执行超时事件（ArkTS）](hiappevent-watcher-apphicollie-events-arkts.md)。
+- 订阅任务执行超时事件（ArkTS）。
 
-- [订阅任务执行超时事件（C/C++）](hiappevent-watcher-apphicollie-events-ndk.md)。
+- 订阅任务执行超时事件（C/C++）。
 
 > **说明：**
 >
@@ -23,7 +23,7 @@
 
 ## 检测原理
 
-详见[任务执行超时检测原理](apptask-timeout-guidelines.md#任务执行超时检测)。
+详见任务执行超时检测原理。
 
 ## 事件字段说明
 
@@ -40,13 +40,13 @@
 | pid | number | 应用的进程ID。 |
 | uid | number | 应用的用户ID。 |
 | uuid | string | 根据故障信息生成的故障特征码，用于标识特征相同的崩溃故障。 |
-| exception | object | 异常信息，详见exception属性。 |
+| exception | object | 异常信息，详见exception字段说明。 |
 | hilog | string[] | 日志信息。 |
 | peer_binder | string[] | binder调用信息，binder调用链及相关抓栈信息。 |
-| memory | object | 内存信息，详见memory属性。 |
+| memory | object | 内存信息，详见memory字段说明。 |
 | external_log | string[] | 故障日志文件路径。**为避免目录空间超限（限制参考log_over_limit），导致新生成的日志文件写入失败，日志文件处理完后请及时删除。** |
-| log_over_limit | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。<br>启用minidump时，上限调整至35MB；关闭minidump时，上限恢复到5MB。 |
-| external_callback_log | string | 自定义回调日志信息，可通过[OH_HiCollie_SetFreezeCallback/apis-performance-analysis-kit/capi-hicollie-h.md#oh_hicollie_setfreezecallback)写入。<br>**说明**：从API version 24开始支持。 |
+| log_over_limit | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5MB上限。true表示超过上限，日志写入失败；false表示未超过上限。<br>启用minidump时，上限调整至35MB；关闭minidump时，上限恢复到5MB。 |
+| external_callback_log | string | 自定义回调日志信息，可通过OH_HiCollie_SetFreezeCallback写入。<br>**说明**：从API version 24开始支持。 |
 
 ### exception字段说明
 
@@ -54,8 +54,8 @@ exception属性的详细描述如下：
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
-| name | string | 异常类型 |
-| message | string | 异常原因 |
+| name | string | 异常类型。 |
+| message | string | 异常原因。 |
 
 ### memory字段说明
 

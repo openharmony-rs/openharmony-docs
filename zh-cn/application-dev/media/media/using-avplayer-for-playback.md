@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-使用[AVPlayer](media-kit-intro.md#avplayer)可以实现端到端播放原始媒体资源，本开发指导将以完整播放一首音乐作为示例，向开发者讲解AVPlayer音频播放相关功能。如需播放PCM音频数据，请使用[AudioRenderer](../audio/using-audiorenderer-for-playback.md)。
+使用AVPlayer可以实现端到端播放原始媒体资源，本开发指导将以完整播放一首音乐作为示例，向开发者讲解AVPlayer音频播放相关功能。如需播放PCM音频数据，请使用AudioRenderer。
 
 播放的全流程包含：创建AVPlayer，设置播放资源，设置播放参数（音量/倍速/焦点模式），播放控制（播放/暂停/跳转/停止），重置，销毁资源。
 
@@ -17,21 +17,21 @@
 **图1** 播放状态变化示意图
 ![Playback status change](figures/playback-status-change.png)
 
-状态的详细说明请参考[AVPlayerState/apis-media-kit/arkts-apis-media-t.md#avplayerstate9)。当播放处于prepared / playing / paused / completed状态时，播放引擎处于工作状态，这需要占用系统大量的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，做好资源利用。
+状态的详细说明请参考AVPlayerState。当播放处于prepared / playing / paused / completed状态时，播放引擎处于工作状态，这需要占用系统大量的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，做好资源利用。
 
 ## 开发建议
 
 当前指导仅介绍如何实现媒体资源播放，在应用开发过程中，涉及后台播放、播放冲突等情况时，请根据实际需要参考以下说明。
 
-- 若要实现后台播放或熄屏播放，需要接入[AVSession（媒体会话）](../avsession/avsession-access-scene.md)和[申请长时任务](../../task-management/continuous-task.md)，避免播放被系统强制中断。
-- 应用在播放过程中，若播放的媒体数据涉及音频，根据系统音频管理策略（参考[处理音频焦点事件](../audio/audio-playback-concurrency.md)），可能会被其他应用打断，建议应用主动监听音频打断事件，根据内容提示做出相应处理，避免出现应用状态与预期效果不一致的问题。
-- 面对设备同时连接多个音频输出设备的情况，应用可以通过[on('audioOutputDeviceChangeWithInfo')/apis-media-kit/arkts-apis-media-AVPlayer.md#onaudiooutputdevicechangewithinfo11)监听音频输出设备的变化，做出相应处理。
+- 若要实现后台播放或熄屏播放，需要接入AVSession（媒体会话）和申请长时任务，避免播放被系统强制中断。
+- 应用在播放过程中，若播放的媒体数据涉及音频，根据系统音频管理策略（参考处理音频焦点事件），可能会被其他应用打断，建议应用主动监听音频打断事件，根据内容提示做出相应处理，避免出现应用状态与预期效果不一致的问题。
+- 面对设备同时连接多个音频输出设备的情况，应用可以通过on('audioOutputDeviceChangeWithInfo')监听音频输出设备的变化，做出相应处理。
 - 若要访问在线媒体资源，需要申请 ohos.permission.INTERNET 权限。
-- 若要切换听筒/扬声器，应用可以参考[音频输出设备路由切换](../audio/audio-output-device-switcher.md)。
+- 若要切换听筒/扬声器，应用可以参考音频输出设备路由切换。
 
 ## 开发步骤及注意事项
 
-详细的API说明请参考[AVPlayer/apis-media-kit/arkts-apis-media-AVPlayer.md)。
+详细的API说明请参考AVPlayer。
 
 1. 创建实例createAVPlayer()，AVPlayer初始化idle状态。
 
@@ -70,13 +70,13 @@
     avPlayer.on('durationUpdate', (duration: number) => {
         // 开发者根据需要写入业务逻辑。
     });
-    avPlayer.on('timeUpdate', (time:number) => {
+    avPlayer.on('timeUpdate', (time: number) => {
         // 开发者根据需要写入业务逻辑。
     });
-    avPlayer.on('seekDone', (seekDoneTime:number) => {
+    avPlayer.on('seekDone', (seekDoneTime: number) => {
         // 开发者根据需要写入业务逻辑。
     });
-    avPlayer.on('speedDone', (speed:number) => {
+    avPlayer.on('speedDone', (speed: number) => {
         // 开发者根据需要写入业务逻辑。
     });
     avPlayer.on('volumeChange', (vol: number) => {
@@ -95,13 +95,13 @@
    >
    > 下面代码示例中的url仅作示意使用，开发者需根据实际情况，确认资源有效性并设置：
    > 
-   > - 如果使用本地资源播放，必须确认资源文件可用，并使用应用沙箱路径访问对应资源，参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
+   > - 如果使用本地资源播放，必须确认资源文件可用，并使用应用沙箱路径访问对应资源，参考获取应用文件路径。应用沙箱的介绍及如何向应用沙箱推送文件，请参考文件管理。
    > 
-   > - 如果使用网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
+   > - 如果使用网络播放路径，需声明权限：ohos.permission.INTERNET。
    > 
-   > - 可以使用ResourceManager.[getRawFd/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)打开HAP资源文件描述符。
+   > - 可以使用ResourceManager.getRawFd打开HAP资源文件描述符。
    > 
-   > - 需要使用[支持的播放格式与协议](media-kit-intro.md#支持的格式与协议)。
+   > - 需要使用支持的播放格式与协议。
 
    **示例一：播放网络媒体资源**
 
@@ -117,16 +117,16 @@
 
    ```ts
    let fdPath = 'fd://'; // 此处仅为示意，请替换为真实资源文件URL。
-   let path : string = `${this.context.filesDir}/${this.fileName}`; // 此处仅为示意，请替换为真实资源文件URL。
+   let path : string = `${this.context.filesDir}/${this.fileName}`; // 此处仅为示意，请替换为真实的应用沙箱文件路径。
    let file = await fs.open(path);
    fdPath = fdPath + file.fd;
    this.avPlayer = await media.createAVPlayer();
-   this.avPlayer.url = url;
+   this.avPlayer.url = fdPath;
    ```
 
 4. （可选）设置音频渲染：只允许在initialized状态下，第一次调用prepare()之前设置，以便音频渲染器信息在之后生效。若媒体源包含视频，则usage默认值为STREAM_USAGE_MOVIE，否则usage默认值为STREAM_USAGE_MUSIC。rendererFlags默认值为0。
 
-    为了确保音频行为符合使用预期，建议根据具体业务场景和实际需求，主动配置[audio.AudioRendererInfo/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)，为音频选择恰当的流类型[usage](../../media/audio/using-right-streamusage-and-sourcetype.md)。
+    为了确保音频行为符合使用预期，建议根据具体业务场景和实际需求，主动配置audio.AudioRendererInfo，为音频选择合适的播放流类型。
     
     ```ts
     import { audio } from '@kit.AudioKit';
@@ -191,16 +191,16 @@
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
 
-    await avPlayer.reset((err: BusinessError) => {
+    avPlayer.reset((err: BusinessError) => {
         avPlayer.url = url;
         if (err) {
-            console.error('Failed to reset,error message is :' + err.message);
+            console.error('Failed to reset, error message is :' + err.message);
         } else {
             console.info('Succeeded in resetting');
         }
     });
-    // 更换url。
-    let url = 'https://xxx.xxx.xxx.mp3';
+    // 更换URL。
+    let url = 'https://example.com/audio.mp3'; // 此处仅为示意，请替换为真实资源文件URL。
     if (avPlayer == null) {
         return;
     }

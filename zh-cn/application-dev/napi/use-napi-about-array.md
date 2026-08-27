@@ -1,10 +1,10 @@
 # 使用Node-API接口进行array相关开发
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -42,7 +42,7 @@
 
 ## 使用示例
 
-Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程](use-napi-process.md)，本文仅对接口对应C++及ArkTS相关代码进行展示。具体使用见示例。
+Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程，本文仅对接口对应C++及ArkTS相关代码进行展示。具体使用见示例。
 
 本文cpp部分代码所需引用的头文件如下：
 ```cpp
@@ -423,7 +423,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[3]: %{public}s
   testNapi.napiGetElement<number | string | null | Object>(arr, 3));
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[4]: %{public}s',
   JSON.stringify(testNapi.napiGetElement(arr, 4)));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[null]: %{public}s',
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[5]: %{public}s',
   testNapi.napiGetElement<number | string | null | Object>(arr, 5));
 ```
 
@@ -948,10 +948,10 @@ static napi_value IsDataView(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_is_data_view_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_is_data_view_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
 
 ``` TypeScript
-export const isDataView: (date: DataView | string) => boolean | undefined; // 使用Node-API接口进行array相关开发 napi_is_dataview
+export const isDataView: (data: DataView | string) => boolean | undefined; // 使用Node-API接口进行array相关开发 napi_is_dataview
 ```
 
 ArkTS侧示例代码

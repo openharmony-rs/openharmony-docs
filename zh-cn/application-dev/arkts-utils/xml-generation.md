@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 XML可以作为数据交换格式，被各种系统和应用程序支持。例如Web服务，可以将结构化数据以XML格式进行传递。
@@ -28,7 +28,7 @@ XML模块提供`XmlSerializer`及`XmlDynamicSerializer`类来生成XML数据，�
 
 调用不同的方法写入不同的内容，如startElement(name: string)写入元素开始标记，setText(text: string)写入标签值。
 
-XML模块的API接口可以参考[@ohos.xml/apis-arkts/js-apis-xml.md)的详细描述，按需求调用相应的函数可以生成一份完整的XML数据。
+XML模块的API接口可以参考@ohos.xml的详细描述，按需求调用相应的函数可以生成一份完整的XML数据。
 
 使用XmlSerializer生成XML示例如下：
 

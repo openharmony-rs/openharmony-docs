@@ -1,10 +1,10 @@
 # 使用Node-API接口设置ArkTS对象的属性
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -38,7 +38,7 @@
 
 ## 使用示例
 
-Node-API接口开发流程可参考[使用Node-API实现跨语言交互开发流程](use-napi-process.md)，本文展示接口对应C++及ArkTS代码。
+Node-API接口开发流程可参考使用Node-API实现跨语言交互开发流程，本文展示接口对应C++及ArkTS代码。
 
 ### napi_get_property_names
 
@@ -180,7 +180,7 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    // 传入的第一个参数为要检测的object，第二个对象为要检测的属性，通过调用napi_get_property接口获取对应的值
+    // 传入的第一个参数为要检测的object，第二个参数为要检测的属性，通过调用napi_get_property接口获取对应的值
     napi_value result;
     napi_status status = napi_get_property(env, args[0], args[1], &result);
     if (status != napi_ok) {

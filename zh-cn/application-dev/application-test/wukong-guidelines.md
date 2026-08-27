@@ -32,7 +32,7 @@ wukong部件架构图以及部件内子模块职责如下所述。
 
 1. wukong测试工具在API 9版本开始预置使用。
 
-2. 所有命令执行前需完成<!--RP1-->[hdc环境配置](../dfx/hdc.md)<!--RP1End-->，并进入shell模式。
+2. 所有命令执行前需完成<!--RP1-->hdc环境配置<!--RP1End-->，并进入shell模式。
    <!--Del-->
 3. 在低于API 9版本，不能随版本编译，使用时需自行编译后推送至被检测设备，具体步骤如下。
 
@@ -223,7 +223,7 @@ wukong部件架构图以及部件内子模块职责如下所述。
 - 指定页面压测
 
   ```bash
-  > 显示启动
+  > 显式启动
   > hdc_std shell
   $ wukong exec -b bundlename -e abilityname -U uri
 
@@ -369,7 +369,7 @@ FileTransfer finish, Size:76492, File count = 1, time:16ms rate:4780.75kB/s
 
     | 类型                            | 描述                               |
     | -------------------------------| ---------------------------------- |
-    | type                           | 事件或控件注入的类型，事件注入类型范围请参考[随机测试命令参数](#随机测试)，控件注入类型范围请参考<!--RP2-->[ArkTS组件/apis-arkui/Readme-CN.md)<!--RP2End-->。|
+    | type                           | 事件或控件注入的类型，事件注入类型范围请参考随机测试命令参数，控件注入类型范围包括ArkUI（方舟UI框架）下的ArkTS组件和ArkWeb（方舟Web）下的ArkTS组件。|
     | execTimes                      | 事件或者控件注入执行次数。|
     | proportion                     | 当前事件操作在事件注入执行总次数里的占比。|
     | inputedTimes                   | 遍历的控件类型个数。|

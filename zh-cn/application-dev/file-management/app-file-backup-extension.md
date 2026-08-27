@@ -1,20 +1,20 @@
 # 应用接入数据备份恢复
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie-->
-<!--Designer: @chenxi0605-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 应用接入数据备份恢复需要通过BackupExtensionAbility实现。
 
-BackupExtensionAbility是[Stage模型](../application-models/stage-model-development-overview.md)中扩展组件[ExtensionAbility](../application-models/extensionability-overview.md)的派生类。开发者可以通过修改配置文件定制备份恢复框架的行为，包括是否允许备份恢复，备份哪些文件等。
+BackupExtensionAbility是Stage模型中扩展组件ExtensionAbility的派生类。开发者可以通过修改配置文件定制备份恢复框架的行为，包括是否允许备份恢复，备份哪些文件等。
 
 
 
 ## 接口说明
 
-备份恢复扩展能力关键接口如下表所示。API的接口使用指导请参见[BackupExtensionAbility API参考/apis-core-file-kit/js-apis-application-backupExtensionAbility.md#backupextensionability)和[BackupExtensionContext API参考/apis-core-file-kit/js-apis-file-backupextensioncontext.md)。
+备份恢复扩展能力关键接口如下表所示。API的接口使用指导请参见@ohos.application.BackupExtensionAbility (备份恢复扩展能力)和@ohos.file.BackupExtensionContext (备份恢复扩展能力)。
 
 | 接口名                                                       | 描述             |
 | ------------------------------------------------------------ | ---------------- |
@@ -30,12 +30,13 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 - 当备份目录时，应用进程必须拥有读取该目录及其所有子目录的权限（DAC中的`r`），否则将导致备份失败。
 - 当备份文件时，应用进程必须拥有搜索该文件所有祖父级目录的权限（DAC中的`x`），否则将导致备份失败。
 - 当备份恢复时，所有待备份恢复的文件及目录不支持相对路径(../)和软链接。
+- 针对BackupExtensionAbility接口调用限制，详情请参考API中的约束限制。
 
 ## 开发步骤
 
 1. 在应用配置文件`module.json5`中注册`extensionAbilities`相关配置
 
-   新增`"extensionAbilities"`字段，其中注册类型`"type"`设置为`"backup"`，元数据信息["metadata"/apis-ability-kit/js-apis-bundleManager-metadata.md)新增一个`"name"`为`"ohos.  extension. backup"`的条目。
+   新增`"extensionAbilities"`字段，其中注册类型`"type"`设置为`"backup"`，元数据信息"metadata"新增一个`"name"`为`"ohos.extension.backup"`的条目。
 
    BackupExtensionAbility配置文件示例：
 
@@ -198,7 +199,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 | allowToBackupRestore | 布尔值     | 是   | 是否允许备份恢复，默认为false。true为允许备份恢复，false为不允许备份恢复。                              |
 | includes             | 字符串数组 | 否   | 应用沙箱中需要备份的文件和目录。<br>当模式串以非/开始时，表示一个相对于根路径的相对路径。<br>`includes`支持的路径清单列表如下述代码段内容所示，当配置`includes`时请确保配置路径范围包含在其中，**不支持备份el3、el4路径**。<br>当`includes`已配置时，备份恢复框架会采用开发者配置的模式串，否则将会采用下述代码段内容作为默认值。 |
 | excludes             | 字符串数组 | 否   | `includes`中无需备份的例外项。格式同`includes`。<br>在配置`excludes`时，请确保其范围在`includes`的子集中。<br>当`excludes`已配置时，备份恢复框架会采用开发者配置的模式串，否则将会采用**空数组**作为默认值。 |
-| fullBackupOnly       | 布尔值     | 否   | 是否使用应用默认恢复目录，默认值为false。当值为true时，恢复数据时会通过临时路径进行缓存，临时路径可通过[backupDir/apis-core-file-kit/js-apis-file-backupextensioncontext.md#属性)获取。当值为false或者不配置该字段时，恢复数据会以'/'为根目录解压数据。 |
+| fullBackupOnly       | 布尔值     | 否   | 是否使用应用默认恢复目录，默认值为false。当值为true时，恢复数据时会通过临时路径进行缓存，临时路径可通过backupDir获取。当值为false或者不配置该字段时，恢复数据会以'/'为根目录解压数据。 |
 | restoreDeps          | 字符串     | 否   | **不推荐使用**，应用恢复时依赖其他应用数据，默认值为""，需要配置依赖应用名称。当前仅支持最多一个依赖项。配置的依赖仅在一次恢复任务上下文生效，如果一次恢复任务中没有检测到依赖应用，则忽略该依赖描述继续执行恢复任务。**依赖应用未恢复或者恢复失败都会导致本应用恢复失败**。 |
 | extraInfo            | json串     | 否   | 额外信息可通过该字段传递。             |
 
@@ -208,7 +209,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 1. **有关fullBackupOnly字段的说明**
 
    - 当fullBackupOnly为false时，恢复数据会以 **/** 为根目录解压数据，同路径下的同名文件会被覆盖。
-   - 当fullBackupOnly为true时，恢复数据会以临时目录为根目录解压数据，开发者需要在OnRestore/OnRestoreEx内自行实现恢复数据的逻辑，进行最终的恢复。
+   - 当fullBackupOnly为true时，恢复数据会以临时目录为根目录解压数据，开发者需要在onRestore/onRestoreEx内自行实现恢复数据的逻辑，进行最终的恢复。
 
    开发者可根据自身的业务场景，选择对应的恢复数据方式。
 

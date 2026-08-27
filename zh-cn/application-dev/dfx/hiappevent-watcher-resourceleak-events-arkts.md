@@ -9,7 +9,7 @@
 
 ## 接口说明
 
-本文介绍如何使用HiAppEvent提供的ArkTS接口订阅资源泄漏事件。接口的具体使用说明（参数使用限制、具体取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+本文介绍如何使用HiAppEvent提供的ArkTS接口订阅资源泄漏事件。接口的具体使用说明（参数使用限制、具体取值范围等）请参考@ohos.hiviewdfx.hiAppEvent。
 
 
 ### 自定义参数设置接口描述
@@ -108,7 +108,7 @@
 
 1. 编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，添加按钮并在其onClick函数构造资源泄漏场景，以触发资源泄漏事件。
 
-   此处需要使用[hidebug.setAppResourceLimit/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugsetappresourcelimit12)设置内存限制，造成内存泄漏，同步在“开发者选项”中打开“系统资源泄漏日志”（开关状态变更后需重启设备）。
+   此处需要使用hidebug.setAppResourceLimit设置内存限制，造成内存泄漏，同步在“开发者选项”中打开“系统资源泄漏日志”（开关状态变更后需重启设备）。
 
    <!--RP1-->
    资源泄漏问题定位可参考[内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-snapshot)。
@@ -120,18 +120,18 @@
    
    ``` TypeScript
    Button('pss leak')
-       .type(ButtonType.Capsule)
-       .margin({
-         top: 20
-       })
-       .backgroundColor('#0D9FFB')
-       .width('80%')
-       .height('5%')
-       .onClick(() => {
-         // 设置一个简单的资源泄漏场景
-         hilog.info(0x0000, 'testTag', 'click pss leak button');
-         testNapi.leakMB(3072);
-       })
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       // 设置一个简单的资源泄漏场景
+       hilog.info(0x0000, 'testTag', 'click pss leak button');
+       testNapi.leakMB(3072);
+     })
    Button('js leak')
      .type(ButtonType.Capsule)
      .margin({
@@ -329,13 +329,13 @@
    HiAppEvent eventInfo.params.page_switch_log="[\"/data/storage/el2/log/page_switch/snapshot/page_switch-com.example.myapplication-1-1-20260427162423841.log\"]"
    ```
 
-   如上，eventInfo中包含资源泄漏事件的[params字段](hiappevent-watcher-resourceleak-events.md#params字段说明)，可以根据eventInfo中的resource_type字段来判断当前的泄漏类型。
+   如上，eventInfo中包含资源泄漏事件的params字段，可以根据eventInfo中的resource_type字段来判断当前的泄漏类型。
 
-5. 提前在“开发者选项”中开启“系统资源泄漏日志”开关（开启或关闭开关均需重启设备）。点击 DevEco Studio 窗口中的运行按钮，运行应用工程。点击“js leak”按钮，等待 3 到 5 秒，应用会闪退。重新打开应用后，系统将上报js内存泄漏事件。
+5. 提前在“开发者选项”中开启“系统资源泄漏日志”开关（开启或关闭开关均需重启设备）。点击 DevEco Studio 窗口中的运行按钮，运行应用工程。点击“js leak”按钮，等待 3 到 5 秒，应用会闪退。重新打开应用后，系统将上报JS内存泄漏事件。
 
-   同一个应用，24小时内至多上报一次js内存泄漏，如果短时间内要二次上报，需要重启设备。
+   同一个应用，24小时内至多上报一次JS内存泄漏，如果短时间内要二次上报，需要重启设备。
 
-6. js内存泄漏事件上报后，系统会回调应用的onReceive函数，在该函数中可在Log窗口查看系统事件数据的处理日志。
+6. JS内存泄漏事件上报后，系统会回调应用的onReceive函数，在该函数中可在Log窗口查看系统事件数据的处理日志。
 
    ```text
    HiAppEvent onReceive: domain=OS
@@ -350,7 +350,7 @@
 
 请应用在收到该订阅事件后，首先从事件的external_log字段中获取堆快照文件存储路径，并将其尽快搬移或上传云，然后再删除原堆快照文件，以避免因应用沙箱路径目录剩余存储空间不足（最大2GB）导致下次堆快照文件无法生成。
 
-订阅后生成的.log日志文件需要将后缀名修改为.rawheap文件，再通过[translator工具](../tools/rawheap-translator.md)转换为.heapsnapshot文件，通过DevEco Studio或浏览器打开展示，详情见[离线导入内存快照](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)。
+订阅后生成的.log日志文件需要将后缀名修改为.rawheap文件，再通过translator工具转换为.heapsnapshot文件，通过DevEco Studio或浏览器打开展示，详情见[离线导入内存快照](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)。
 
 API version 14后，开发者可以将日志文件后缀名修改为.rawheap后，将其导入DevEco Studio并展示，详情见[离线导入内存快照](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)。
 

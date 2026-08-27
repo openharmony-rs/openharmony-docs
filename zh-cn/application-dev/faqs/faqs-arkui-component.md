@@ -14,7 +14,7 @@
 
 **参考链接**
 
-[自定义弹窗/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+自定义弹窗
 
 
 ## 自定义弹窗中的变量如何传递给页面(API 9)
@@ -168,7 +168,7 @@
 
 **参考链接**
 
-[组件区域变化事件/apis-arkui/arkui-ts/ts-universal-component-area-change-event.md)，[点击事件/apis-arkui/arkui-ts/ts-universal-events-click.md)，[触摸事件/apis-arkui/arkui-ts/ts-universal-events-touch.md)
+组件区域变化事件，点击事件，触摸事件
 
 
 ## 如何一键清空TextInput、TextArea组件内容(API 9)
@@ -216,7 +216,7 @@ struct Index {
 
 **问题现象**
 
-自定义弹窗当前默认在窗口居中显示，当自定义弹窗需要与窗口边框对齐是需要设置自定义弹窗的对齐方式。
+自定义弹窗当前默认在窗口居中显示，当自定义弹窗需要与窗口边框对齐时需要设置自定义弹窗的对齐方式。
 
 **解决措施**
 
@@ -224,7 +224,7 @@ struct Index {
 
 **参考链接**
 
-[自定义弹窗/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+自定义弹窗
 
 
 ## 如何隐藏容器组件的溢出内容(API 9)
@@ -239,7 +239,7 @@ struct Index {
 
 **参考链接**
 
-[形状裁剪/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md)
+形状裁剪
 
 
 ## 自定义弹窗大小如何自适应内容(API 9)
@@ -256,7 +256,7 @@ struct Index {
 
 **参考链接**
 
-[自定义弹窗/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+自定义弹窗
 
 
 ## 如何理解自定义弹窗中的gridCount参数(API 9)
@@ -267,7 +267,7 @@ gridCount参数是指弹窗宽度占栅格列数的个数。系统把窗口宽�
 
 **参考链接**
 
-[自定义弹窗/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+自定义弹窗
 
 
 ## 如何去除自定义弹窗的白色背景(API 9)
@@ -286,7 +286,7 @@ gridCount参数是指弹窗宽度占栅格列数的个数。系统把窗口宽�
 
 **参考链接**
 
-[自定义弹窗/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+自定义弹窗
 
 
 ## TextInput组件密码模式下，右边的眼睛图标能否支持自定义(API 9)
@@ -301,7 +301,7 @@ TextInput组件设置type为InputType.Password时，右侧出现眼睛图标，�
 
 **参考链接**
 
-[TextInput组件/apis-arkui/arkui-ts/ts-basic-components-textinput.md)
+TextInput组件
 
 
 ## TextInput的onSubmit事件如何使用(API 9)
@@ -316,7 +316,7 @@ onSubmit事件在外接键盘或软键盘回车时触发该回调，回调的参
 
 **参考链接**
 
-[TextInput组件/apis-arkui/arkui-ts/ts-basic-components-textinput.md)
+TextInput组件
 
 
 ## TextInput在聚焦时如何使光标回到起点(API 9)
@@ -356,7 +356,7 @@ struct TextInputDemo {
 
 **参考链接**
 
-[TextInput组件/apis-arkui/arkui-ts/ts-basic-components-textinput.md)
+TextInput组件
 
 
 ## 如何获取可滚动组件的当前滚动偏移量(API 9)
@@ -373,7 +373,7 @@ struct TextInputDemo {
 
 **参考链接**
 
-[Scroll/apis-arkui/arkui-ts/ts-container-scroll.md#currentoffset)
+Scroll
 
 
 ## 如何实现文本竖向排列(API 9)
@@ -384,7 +384,7 @@ struct TextInputDemo {
 
 **解决措施**
 
-Text组件当前文本排列方向固定为横向排列，要设置为竖向排列，可将文件拆分，使用Flex容器组件装填，设置主轴方向为竖向。
+Text组件当前文本排列方向固定为横向排列，要设置为竖向排列，可将文字拆分，使用Flex容器组件装填，设置主轴方向为竖向。
 
 **代码示例**
 
@@ -578,7 +578,7 @@ struct VideoCreateComponent {
 
 **参考链接**
 
-[Video/apis-arkui/arkui-ts/ts-media-components-video.md#start)
+Video
 
 ## 如何设置组件不同状态下的样式(API 9)
 
@@ -638,7 +638,7 @@ struct StyleExample {
 
 **参考链接**
 
-[多态样式/apis-arkui/arkui-ts/ts-universal-attributes-polymorphic-style.md)
+多态样式
 
 ## Scroll内Flex加宽高与滑动冲突(API 9)
 
@@ -712,7 +712,7 @@ struct MyComponent {
 
 **参考链接**
 
-焦点控制：[焦点控制/apis-arkui/arkui-ts/ts-universal-attributes-focus.md)
+焦点控制：焦点控制
 
 
 ## SideBarContainer如何设置controlButton属性(API 9)
@@ -779,19 +779,19 @@ struct SideBarContainerExample {
 
 **解决措施**
 
-Canvas组件最终的显示内容分两种，一种是组件通用属性的绘制内容，比如背景色，boarder等这类组件属性方法设置的渲染属性，这类属性是可以通过状态变量驱动更新的。
+Canvas组件最终的显示内容分两种，一种是组件通用属性的绘制内容，比如背景色，border等这类组件属性方法设置的渲染属性，这类属性是可以通过状态变量驱动更新的。
 
-另一种是通过CanvasRenderingContext2D绘制接口由应用自行绘制的内容。该类命令时绘制接口不响应状态变量，该类接口内置表脏功能，只要调用就会在下一帧刷新绘制内容，不需要开发者显式刷新。
+另一种是通过CanvasRenderingContext2D绘制接口由应用自行绘制的内容。该类命令式绘制接口不响应状态变量，该类接口内置标脏功能，只要调用就会在下一帧刷新绘制内容，不需要开发者显式刷新。
 
 **参考链接**
 
-[CanvasRenderingContext2D/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)
+CanvasRenderingContext2D
 
 ## 怎么解决列表组件List在不设置高度的情况下，会出现滑动不到底的问题(API 10)
 
 **原因分析**
 
-List没有设置高度时，如果子组件总高度大于List父组件的高度时，List会取List父组件高度。如果List有其他兄弟节点，可能会吧List部分顶出父组件显示区域外，看起来像是划不到底部。
+List没有设置高度时，如果子组件总高度大于List父组件的高度时，List会取List父组件高度。如果List有其他兄弟节点，可能会把List部分顶出父组件显示区域外，看起来像是滑不到底部。
 
 **解决措施**
 
@@ -799,7 +799,7 @@ List组件设置layoutWeight(1)属性，将剩余空间全部分配给List组件
 
 **参考链接**
 
-[尺寸设置/apis-arkui/arkui-ts/ts-universal-attributes-size.md)
+尺寸设置
 
 ## 如何实现瀑布流滑动时，数据的无限加载和显示(API 10)
 
@@ -811,7 +811,7 @@ List组件设置layoutWeight(1)属性，将剩余空间全部分配给List组件
 
 **参考链接**
 
-[WaterFlow高性能开发指导](../performance/waterflow_optimization.md)
+WaterFlow高性能开发指导
 
 ## customDialog中调用router.push启动新页面，会把customDialog关闭，怎么实现在不关闭弹窗的前提下启动新页面(API 10)
 
@@ -821,7 +821,7 @@ List组件设置layoutWeight(1)属性，将剩余空间全部分配给List组件
 
 **参考链接**
 
-[自定义弹窗/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+自定义弹窗
 
 ## 当前ArkUI-X的支持进展如何，有无明确路线图(API 10)
 
@@ -858,7 +858,7 @@ onCountUpdated(propName: string): void {
 
 **参考链接**
 
-[@Watch装饰器：状态变量更改通知](../ui/state-management/arkts-watch.md)
+@Watch装饰器：状态变量更改通知
 
 ## 自定义component不支持继承语法，针对其他框架支持的自定义组件继承及封装能力，ArkUI的解决方案是什么(API 10)
 
@@ -872,7 +872,7 @@ onCountUpdated(propName: string): void {
 
 屏幕像素单位px(pixel)，表示屏幕上的实际像素，1px代表设备屏幕上的一个像素点。视窗逻辑像素单位lpx，lpx单位为实际屏幕宽度与逻辑宽度（通过designWidth配置）的比值，标识页面设计基准宽度。以此为基准，根据实际设备宽度来缩放元素大小。距离使用vp(virtual pixel)，字体大小使用fp(font pixel)，虚拟像素单位vp(virtual pixel)，vp具体计算公式为：vp= px/（DPI/160）。
 
-以屏幕相对像素为单位, 是一台设备针对应用而言所具有的虚拟尺寸（区别于屏幕硬件本身的像素单位）。它提供了一种灵活的方式来适应不同屏幕密度的显示效果,使用虚拟像素，使元素在不同密度的设备上具有一致的视觉体量。字体像素单位fp(font pixel)，字体像素(font pixel)大小默认情况下与vp相同，即默认情况下1fp=1vp。如果用户在设置中选择了更大的字体，字体的实际显示大小就会在vp的基础上乘以scale系数，即1fp=1vp*scale。Percentage - 需要指定以%像素单位，如'10%'。 
+以屏幕相对像素为单位，是一台设备针对应用而言所具有的虚拟尺寸（区别于屏幕硬件本身的像素单位）。它提供了一种灵活的方式来适应不同屏幕密度的显示效果，使用虚拟像素，使元素在不同密度的设备上具有一致的视觉体量。字体像素单位fp(font pixel)，字体像素(font pixel)大小默认情况下与vp相同，即默认情况下1fp=1vp。如果用户在设置中选择了更大的字体，字体的实际显示大小就会在vp的基础上乘以scale系数，即1fp=1vp*scale。Percentage - 需要指定以%像素单位，如'10%'。 
 
 Resource - 资源引用类型，引入系统资源或者应用资源中的尺寸。 
 
@@ -880,9 +880,9 @@ Resource - 资源引用类型，引入系统资源或者应用资源中的尺寸
 
 **解决措施**
 
-当Surface模式下的XComponent组件其内容与组件尺寸不一致时，可通过设置[renderFit/apis-arkui/arkui-ts/ts-universal-attributes-renderfit.md#renderfit18)属性，以调整绘制内容在组件尺寸范围内的布局方式，例如拉伸、居中、等比缩放等。
+当Surface模式下的XComponent组件其内容与组件尺寸不一致时，可通过设置renderFit属性，以调整绘制内容在组件尺寸范围内的布局方式，例如拉伸、居中、等比缩放等。
 
-在API version 18之前，Surface模式下的XComponent组件的[renderFit/apis-arkui/arkui-ts/ts-universal-attributes-renderfit.md#renderfit18)属性仅支持设置为RenderFit.RESIZE_FILL；如果设置为其他属性值可能会在部分机型出现显示异常。如果确实需要设置RESIZE_FILL之外的属性值，可以通过升级至API version 18或在XComponent组件的id字段中包含"RenderFitSurface"关键字来修正显示效果（在API version 18前）。
+在API version 18之前，Surface模式下的XComponent组件的renderFit属性仅支持设置为RenderFit.RESIZE_FILL；如果设置为其他属性值可能会在部分机型出现显示异常。如果确实需要设置RESIZE_FILL之外的属性值，可以通过升级至API version 18或在XComponent组件的id字段中包含"RenderFitSurface"关键字来修正显示效果（在API version 18前）。
 
 示例代码如下：
 

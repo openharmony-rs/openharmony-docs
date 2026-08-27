@@ -11,11 +11,11 @@
 
 ## 约束列表
 
-预定义的账号约束条件，可以参考：[系统账号约束列表/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)。
+预定义的账号约束条件，可以参考：系统账号约束列表。
 
 ## 开发准备
 
-1. 申请权限：ohos.permission.MANAGE_LOCAL_ACCOUNTS。申请流程请参考：[申请应用权限](../../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
+1. 申请权限：ohos.permission.MANAGE_LOCAL_ACCOUNTS。申请流程请参考：申请应用权限。
 
 2. 导入系统账号模块。
 
@@ -43,7 +43,7 @@
     let constraint: string[] = [ 'constraint.wifi.set' ];
    ```
 
-2. 调用[setOsAccountConstraints/apis-basic-services-kit/js-apis-osAccount-sys.md#setosaccountconstraints)接口，使能系统账号100的约束。
+2. 调用setOsAccountConstraints接口，使能系统账号100的约束。
 
    ```ts
     try {
@@ -60,7 +60,7 @@
 
 ## 判断目标系统账号的指定约束是否使能
 
-业务应用需要判断目标系统账号的指定约束是否使能，以此来决策是否对目标系统账号的行为做管控。开发者可以使用[isOsAccountConstraintEnabled/apis-basic-services-kit/js-apis-osAccount-sys.md#isosaccountconstraintenabled11)接口完成此操作。
+业务应用需要判断目标系统账号的指定约束是否使能，以此来决策是否对目标系统账号的行为做管控。开发者可以使用isOsAccountConstraintEnabled接口完成此操作。
 
 具体开发实例如下：
 
@@ -71,7 +71,7 @@
     let constraint: string = 'constraint.wifi.set';
    ```
 
-2. 调用[isOsAccountConstraintEnabled/apis-basic-services-kit/js-apis-osAccount-sys.md#isosaccountconstraintenabled11)接口，判断指定约束是否使能。
+2. 调用isOsAccountConstraintEnabled接口，判断指定约束是否使能。
 
    ``` ts
     accountManager.isOsAccountConstraintEnabled(localId, constraint).then((isEnabled: boolean) => {

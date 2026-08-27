@@ -16,7 +16,7 @@
 
 通过创建双路预览来实现。
 
-1. Xcomponent来创建预览流。
+1. XComponent来创建预览流。
 
    ```ts
    // 获取PreviewOutput(预览输出类)实例
@@ -184,7 +184,7 @@ CAMERA_STATUS_AVAILABLE 2 相机可用。
 
 CAMERA_STATUS_UNAVAILABLE 3 相机不可用。
 
-参考文档：[CameraStatus/apis-camera-kit/arkts-apis-camera-CameraManager.md#oncamerastatus)
+参考文档：CameraStatus
 
 ## SoundPool播放的音频是否支持wmv格式？支持哪些格式？(API 10)
 **解决措施**
@@ -193,7 +193,7 @@ WMV当前是不支持，支持的格式有AAC、MPEG(MP3)、Flac、Vorbis。
 
 **参考资料**
 
-soundpool支持的格式与底层一致，支持的格式可以参考文档：[音频解码](../media/avcodec/audio-decoding.md)
+soundpool支持的格式与底层一致，支持的格式可以参考文档：音频解码
 
 ## 如何读取相机的预览图？(API 10)
 
@@ -203,7 +203,7 @@ soundpool支持的格式与底层一致，支持的格式可以参考文档：[�
 
 **参考资料**
 
-[readLatestImage/apis-image-kit/arkts-apis-image-ImageReceiver.md#readlatestimage9)
+readLatestImage
 
 ## 如何实现录音监听？(API 10)
 
@@ -213,7 +213,7 @@ soundpool支持的格式与底层一致，支持的格式可以参考文档：[�
 
 **参考资料**
 
-[onaudiocapturerchange/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiocapturerchange9)
+on('audioCapturerChange')
 
 ## 音频处理哪些场景内置了3A处理的算法(AEC、ANC、AGC)？若内置了，有无音频3A处理的相关接口，如何调用？系统3A算法AEC、ANC、AGC是否支持独立开关？录音场景系统是否支持3A，如果不支持的话，解决方案是什么？例如：如何在播放音乐时，不影响音频录制的音质？(API 10)
 
@@ -223,28 +223,28 @@ soundpool支持的格式与底层一致，支持的格式可以参考文档：[�
 
 **参考资料**
 
-[AudioCapturer/apis-audio-kit/arkts-apis-audio-AudioCapturer.md)
+AudioCapturer
 
 ## 如何实现低时延音频采集？(API 11)
 
 **解决措施**
 
-支持通过OHAudio C API接口AudioCapturer使用系统低时延采集，具体实现参考：[推荐使用OHAudio开发音频录制功能(C/C++)](../media/audio/using-ohaudio-for-recording.md)。
+支持通过OHAudio C API接口AudioCapturer使用系统低时延采集，具体实现参考：推荐使用OHAudio开发音频录制功能(C/C++)。
 
 **参考资料**
 
-[OHAudio/apis-audio-kit/capi-ohaudio.md)
+OHAudio
 
 ## 如何实现实时视频流传输？如何实现直播场景？(API 10)
 
 **解决措施**
 
-当前版本AVPlayer支持http、https、HLS。在直播场景中，将直播地址传给Avplayer，即可进行播放对端发来的数据；当前不支持推流，即Avplayer不支持使用当前设备进行直播。
+当前版本AVPlayer支持http、https、HLS。在直播场景中，将直播地址传给AVPlayer，即可进行播放对端发来的数据；当前不支持推流，即AVPlayer不支持使用当前设备进行直播。
 
 **参考资料**
 
-1. [Media Kit](../media/media/media-kit-intro.md)
-2. [AVPlayer](../media/media/using-avplayer-for-playback.md)
+1. Media Kit
+2. AVPlayer
 
 ## 音频播放器AVPlayer如何在后台进行播放？(API 10)
 
@@ -254,8 +254,8 @@ soundpool支持的格式与底层一致，支持的格式可以参考文档：[�
 
 **参考资料**
 
-1. [长时任务](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/ContinuousTask)
-2. [应用接入AVSession场景介绍](../media/avsession/avsession-access-scene.md)
+1. [长时任务](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/ContinuousTask)
+2. 应用接入AVSession场景介绍
 
 ## 三方应用为什么无法创建相册？(API 10)
 
@@ -281,5 +281,5 @@ soundpool支持的格式与底层一致，支持的格式可以参考文档：[�
 
 **参考资料**
 
-1. [scale/apis-image-kit/arkts-apis-image-PixelMap.md#scale9)
-2. [packing/apis-image-kit/arkts-apis-image-ImagePacker.md#packing13)
+1. scale
+2. packing

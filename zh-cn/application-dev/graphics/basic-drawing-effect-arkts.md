@@ -16,12 +16,12 @@
 
 ## 填充效果
 
-可以通过画刷设置基础的填充颜色，还可以通过画刷使用混合模式、着色器效果、滤波器效果等实现更多复杂绘制效果，具体可见[复杂绘制效果](complex-drawing-effect-arkts.md)。
+可以通过画刷设置基础的填充颜色，还可以通过画刷使用混合模式、着色器效果、滤波器效果等实现更多复杂绘制效果，具体可见复杂绘制效果。
 
 
 ### 接口说明
 
-使用画刷（Brush）设置绘制效果的常用接口如下表所示，详细的使用和参数请见[drawing.Brush/apis-arkgraphics2d/arkts-apis-graphics-drawing-Brush.md)。
+使用画刷（Brush）设置绘制效果的常用接口如下表所示，详细的使用和参数请见drawing.Brush和drawing.Canvas。
 
 | 接口 | 描述 |
 | -------- | -------- |
@@ -71,7 +71,7 @@
    canvas.attachBrush(brush);
    ```
 
-4. 按需绘制图元，具体可见[图元绘制](primitive-drawing-overview.md)一节。
+4. 按需绘制图元，具体可见图元绘制一节。
 
 5. 当不需要填充效果时，可以使用detachBrush()接口去除画布中的画刷。
 
@@ -85,12 +85,12 @@
 
 ## 描边效果
 
-可以通过画笔设置基础的描边颜色，还可以通过画笔使用混合模式、路径效果、着色器效果、滤波器效果等实现更多复杂绘制效果，具体可见[复杂绘制效果](complex-drawing-effect-arkts.md)。
+可以通过画笔设置基础的描边颜色，还可以通过画笔使用混合模式、路径效果、着色器效果、滤波器效果等实现更多复杂绘制效果，具体可见复杂绘制效果。
 
 
 ### 接口说明
 
-使用画笔（Pen）设置绘制效果的常用接口如下表所示，详细的使用和参数请见[drawing.Pen/apis-arkgraphics2d/arkts-apis-graphics-drawing-Pen.md)。
+使用画笔（Pen）设置绘制效果的常用接口如下表所示，详细的使用和参数请见drawing.Pen和drawing.Canvas。
 
 
 | 接口 | 描述 |
@@ -174,9 +174,9 @@
 
       | 转角样式 | 说明 | 示意图 |
       | -------- | -------- | -------- |
-      | MITER_JOIN | 转角类型为尖角 | ![zh-cn_image_0000002158744154](figures/zh-cn_image_0000002158744154.png) |
-      | ROUND_JOIN | 转角类型为圆头 | ![zh-cn_image_0000002158744146](figures/zh-cn_image_0000002158744146.png) |
-      | BEVEL_JOIN | 转角类型为平头 | ![zh-cn_image_0000002194025257](figures/zh-cn_image_0000002194025257.png) |
+      | MITER_JOIN | 转角类型为尖角 | ![MITER-JOIN](figures/MITER-JOIN.png) |
+      | ROUND_JOIN | 转角类型为圆头 | ![ROUND-JOIN](figures/ROUND-JOIN.png) |
+      | BEVEL_JOIN | 转角类型为平头 | ![BEVEL-JOIN](figures/BEVEL-JOIN.png) |
 
 3. 使用attachPen()接口给Canvas画布设置画笔。画布将会使用设置的画笔样式和颜色等绘制图形轮廓。
 
@@ -187,7 +187,7 @@
    canvas.attachPen(pen);
    ```
 
-4. 按需绘制图元，具体可见[图元绘制](primitive-drawing-overview.md)一节。
+4. 按需绘制图元，具体可见图元绘制一节。
 
 5. 当不需要描边效果时，可以使用detachPen()接口去除画布中的画笔。
 

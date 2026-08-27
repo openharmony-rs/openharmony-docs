@@ -18,7 +18,7 @@ PageAbility相关的能力通过featureAbility提供，启动本地Ability通过
 | startAbilityForResult(parameter:&nbsp;StartAbilityParameter) | 启动Ability，并在该Ability被销毁时返回执行结果。 |
 
 
-如下示例通过startAbility显式启动PageAbility。启动Ability的参数包含want，关于want的说明详见[对象间信息传递载体Want](want-fa.md)，相应的，隐式启动与显式启动也不在此赘述。
+如下示例通过startAbility显式启动PageAbility。启动Ability的参数包含want，关于want的说明详见对象间信息传递载体Want，相应的，隐式启动与显式启动也不在此赘述。
 
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';
@@ -37,8 +37,12 @@ const domain: number = 0xFF00;
       moduleName: 'entry',
       abilityName: 'com.samples.famodelabilitydevelop.PageAbilitySingleton'
     };
-    await featureAbility.startAbility({ want: want });
-    hilog.info(domain, TAG, `Start ability succeed`);
+    let code: number = await featureAbility.startAbility({ want: want });
+    if (code === 0) {
+      hilog.info(domain, TAG, `Start ability succeed`);
+    } else {
+      hilog.error(domain, TAG, `Start ability failed with code ${code}`);
+    }
   }
   catch (error) {
     hilog.error(domain, TAG, 'Start ability failed with ' + error);

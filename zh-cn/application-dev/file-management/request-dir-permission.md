@@ -8,26 +8,17 @@
 
 ## 通过 ArkTS 接口获取并访问公共目录
 
-目录环境能力接口（[ohos.file.environment/apis-core-file-kit/js-apis-file-environment.md)）提供获取公共目录路径的能力，支持三方应用在公共文件用户目录下进行文件访问操作。
+目录环境能力接口（ohos.file.environment）提供获取公共目录路径的能力，支持三方应用在公共文件用户目录下进行文件访问操作。
 
  **约束限制**
- - 使用此方式，需确认设备具有以下系统能力：SystemCapability.FileManagement.File.Environment.FolderObtain，当前仅支持2in1设备。
+ - 使用此方式，需确认设备具有以下系统能力：SystemCapability.FileManagement.File.Environment.FolderObtain，当前支持2in1设备。<br>从API版本26.0.0开始，支持tablet设备。
    ```ts
    if (!canIUse('SystemCapability.FileManagement.File.Environment.FolderObtain')) {
        console.error('this api is not supported on this device');
        return;
    }
    ```
- - 公共目录获取接口仅用于获取公共目录路径，不对公共目录访问权限进行校验。若需访问公共目录需申请对应的公共目录访问权限。三方应用需要访问公共目录时，需通过弹窗授权向用户申请授予 Download 目录权限、Documents 目录权限或 Desktop 目录权限，具体参考[访问控制-向用户申请授权](../security/AccessToken/request-user-authorization.md)。
-   <!--RP1-->
-   ```json
-   "requestPermissions" : [
-       "ohos.permission.READ_WRITE_DOWNLOAD_DIRECTORY",
-       "ohos.permission.READ_WRITE_DOCUMENTS_DIRECTORY",
-       "ohos.permission.READ_WRITE_DESKTOP_DIRECTORY",
-   ]
-   ```
-   <!--RP1End-->
+ - 公共目录获取接口仅用于获取公共目录路径，不对公共目录访问权限进行校验。若需访问公共目录需申请对应的公共目录访问权限。三方应用需要访问公共目录时，需向用户申请授予Download目录权限、Documents目录权限或Desktop目录权限，具体参考访问控制-向用户申请授权。
 
 ### 示例
 
@@ -130,21 +121,21 @@
 
 ## 通过 C/C++ 接口获取并使用公共目录
 
-除了通过ArkTS访问公共目录的方式，也可通过C/C++接口进行目录访问，具体可以参考 [oh_environment.h/apis-core-file-kit/capi-oh-environment-h.md)。
+除了通过ArkTS访问公共目录的方式，也可通过C/C++接口进行目录访问，具体可以参考 oh_environment.h。
 
  **约束限制**
  - 使用此接口，需确认设备具有以下系统能力：SystemCapability.FileManagement.File.Environment.FolderObtain。
- - 三方应用需要访问公共目录时，需通过弹窗授权向用户申请授予Download目录权限、Documents目录权限或Desktop目录权限，具体参考[访问控制-向用户申请授权](../security/AccessToken/request-user-authorization.md)。
+ - 三方应用需要访问公共目录时，需通过弹窗授权向用户申请授予Download目录权限、Documents目录权限或Desktop目录权限，具体参考访问控制-向用户申请授权。
 
 ### 接口说明
 
-接口的详细说明，请参考[oh_environment.h/apis-core-file-kit/capi-oh-environment-h.md)。
+接口的详细说明，请参考oh_environment.h。
 
 | 接口名称                                                                 | 描述                           |
 | ------------------------------------------------------------------------ | ------------------------------ |
-| FileManagement_ErrCode OH_Environment_GetUserDownloadDir (char **result) | 获取用户Download目录沙箱路径。只支持2in1设备 |
-| FileManagement_ErrCode OH_Environment_GetUserDesktopDir (char **result)  | 获取用户Desktop目录沙箱路径。只支持2in1设备  |
-| FileManagement_ErrCode OH_Environment_GetUserDocumentDir (char **result) | 获取用户Document目录沙箱路径。只支持2in1设备 |
+| FileManagement_ErrCode OH_Environment_GetUserDownloadDir (char **result) | 获取用户Download目录沙箱路径。支持2in1设备。<br>从API版本26.0.0开始，支持tablet设备 |
+| FileManagement_ErrCode OH_Environment_GetUserDesktopDir (char **result)  | 获取用户Desktop目录沙箱路径。支持2in1设备。<br>从API版本26.0.0开始，支持tablet设备  |
+| FileManagement_ErrCode OH_Environment_GetUserDocumentDir (char **result) | 获取用户Document目录沙箱路径。支持2in1设备。<br>从API版本26.0.0开始，支持tablet设备 |
 
 ### 开发步骤
 

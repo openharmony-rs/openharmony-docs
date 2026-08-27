@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
+在开发相机应用时，需要先申请相关权限。
 
 相机启动性能受限于底层器件上电、流程Pipeline初始化等耗时操作影响，本文档将为开发者提供更进一步的指导，以提升相机启动速度以及拍照返回缩略图速度。相关能力与底层器件相关，请开发者在使用前确认是否支持相关特性。
 
@@ -26,12 +26,12 @@
 
 ### 接口说明
 
-详细的API参考说明，请参考[@ohos.multimedia.camera (相机管理)/apis-camera-kit/arkts-apis-camera.md)。
+详细的API参考说明，请参考@ohos.multimedia.camera (相机管理)。
 
 | 接口 | 说明 |
 | ---- | ---- |
 | createDeferredPreviewOutput(profile: Profile): Promise\<PreviewOutput> | 创建延迟预览输出对象，在配流时替代普通的预览输出对象加入数据流。 |
-| addDeferredSurface(surfaceId: string): Promise\<void> | 配置延迟预览的Surface，可以在[session.commitConfig/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)配流和[session.start/apis-camera-kit/arkts-apis-camera-Session.md#start11)启流之后运行。 |
+| addDeferredSurface(surfaceId: string): Promise\<void> | 配置延迟预览的Surface，可以在session.commitConfig配流和session.start启流之后运行。 |
 
 ### 开发示例
 
@@ -39,7 +39,7 @@
 
 ![](figures/deferred-surface-sequence-diagram.png)
 
-Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+Context获取方式请参考：获取UIAbility的上下文信息。
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -99,7 +99,7 @@ async function preview(baseContext: common.BaseContext, cameraInfo: camera.Camer
 
 ### 接口说明
 
-详细的API参考说明，请参考[@ohos.multimedia.camera (相机管理)/apis-camera-kit/arkts-apis-camera.md)。
+详细的API参考说明，请参考@ohos.multimedia.camera (相机管理)。
 
 | 接口 | 说明 |
 | ---- | ---- |
@@ -109,8 +109,8 @@ async function preview(baseContext: common.BaseContext, cameraInfo: camera.Camer
 
 > **说明：**
 >
-> - [isQuickThumbnailSupported/apis-camera-kit/js-apis-camera-sys.md#isquickthumbnailsupported)及[enableQuickThumbnail/apis-camera-kit/js-apis-camera-sys.md#enablequickthumbnail)接口的调用需要在[addOutput/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)、[addInput/apis-camera-kit/arkts-apis-camera-Session.md#addinput11)后，[commitConfig/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)之前。
-> - on接口需要在[enableQuickThumbnail(true)/apis-camera-kit/js-apis-camera-sys.md#enablequickthumbnail)之后生效。
+> - isQuickThumbnailSupported及enableQuickThumbnail接口的调用需要在addOutput、addInput后，commitConfig之前。
+> - on接口需要在enableQuickThumbnail(true)之后生效。
 
 ### 开发示例
 
@@ -118,7 +118,7 @@ async function preview(baseContext: common.BaseContext, cameraInfo: camera.Camer
 
 ![](figures/quick-thumbnail-sequence-diagram.png)
 
-Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+Context获取方式请参考：获取UIAbility的上下文信息。
 ```ts
 import { camera } from '@kit.CameraKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -200,7 +200,7 @@ function showOrSavePicture(pixelMap: image.PixelMap): void {
 
 ### 接口说明
 
-详细的API参考说明，请参考[@ohos.multimedia.camera (相机管理)/apis-camera-kit/arkts-apis-camera.md)。
+详细的API参考说明，请参考@ohos.multimedia.camera (相机管理)。
 
 | 接口 | 说明 |
 | ---- | ---- |
@@ -214,7 +214,7 @@ function showOrSavePicture(pixelMap: image.PixelMap): void {
 
 ![](figures/prelaunch-sequence-diagram.png)
 
-Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+Context获取方式请参考：获取UIAbility的上下文信息。
 
 - **桌面应用**
 
@@ -246,7 +246,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 
   使用该功能前，应用需要**申请权限**：ohos.permission.CAMERA
 
-  具体申请方式及校验方式，请参考[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+  具体申请方式及校验方式，请参考向用户申请授权。
 
   ```ts
   import { camera } from '@kit.CameraKit';

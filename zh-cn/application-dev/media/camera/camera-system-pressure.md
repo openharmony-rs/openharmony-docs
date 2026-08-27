@@ -12,11 +12,11 @@
 
 ## 状态监听
 
-可以通过注册[systemPressureLevelChange/apis-camera-kit/arkts-apis-camera-PhotoSession.md#onsystempressurelevelchange20)的回调函数获取系统压力的监听结果。
+可以通过注册systemPressureLevelChange的回调函数获取系统压力的监听结果。
 
 当系统压力发生变化时，callback返回SystemPressureLevel参数。
 
-参数的具体内容可参考相机管理器回调接口实例[SystemPressureLevel/apis-camera-kit/arkts-apis-camera-e.md#systempressurelevel20)。
+参数的具体内容可参考相机管理器回调接口实例SystemPressureLevel。
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

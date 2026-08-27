@@ -7,25 +7,25 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-以X25519，DH和ECDH三个协商密钥类型为例，在密钥由HUKS管理的情况下，完成密钥协商。具体的场景介绍及支持的算法规格，请参考[密钥协商支持的算法](huks-key-agreement-overview.md#支持的算法)。
+以X25519，DH和ECDH三个协商密钥类型为例，在密钥由HUKS管理的情况下，完成密钥协商。具体的场景介绍及支持的算法规格，请参考密钥协商支持的算法。
 
 ## 开发步骤
 
 **生成密钥**
 
-设备A、设备B各自生成一个非对称密钥，具体请参考[密钥生成](huks-key-generation-overview.md)或[密钥导入](huks-key-import-overview.md)。
+设备A、设备B各自生成一个非对称密钥，具体请参考密钥生成或密钥导入。
 
-密钥生成时，可指定参数[HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG/apis-universal-keystore-kit/js-apis-huks.md#hukstag)（可选），用于标识基于该密钥协商出的密钥是否由HUKS管理。
+密钥生成时，可指定参数HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG（可选），用于标识基于该密钥协商出的密钥是否由HUKS管理。
 
-- 当TAG设置为[HUKS_STORAGE_ONLY_USED_IN_HUKS/apis-universal-keystore-kit/js-apis-huks.md#hukskeystoragetype)时，表示基于该密钥协商出的密钥，由HUKS管理，可保证协商密钥全生命周期不出安全环境。
+- 当TAG设置为HUKS_STORAGE_ONLY_USED_IN_HUKS时，表示基于该密钥协商出的密钥，由HUKS管理，可保证协商密钥全生命周期不出安全环境。
 
-- 当TAG设置为[HUKS_STORAGE_KEY_EXPORT_ALLOWED/apis-universal-keystore-kit/js-apis-huks.md#hukskeystoragetype)时，表示基于该密钥协商出的密钥，返回给调用方管理，由业务自行保证密钥安全。
+- 当TAG设置为HUKS_STORAGE_KEY_EXPORT_ALLOWED时，表示基于该密钥协商出的密钥，返回给调用方管理，由业务自行保证密钥安全。
 
 - 若业务未设置TAG的具体值，表示基于该密钥协商出的密钥，可由HUKS管理，也可返回给调用方管理，业务可在后续协商时再选择使用何种方式保护密钥。
 
 **导出密钥**
 
-设备A、B导出非对称密钥对的公钥材料，具体请参考[密钥导出](huks-export-key-arkts.md)。
+设备A、B导出非对称密钥对的公钥材料，具体请参考密钥导出。
 
 **密钥协商**
 
@@ -45,7 +45,7 @@
 
 **删除密钥**
 
-当密钥废弃不用时，设备A、B均需要删除密钥，具体请参考[密钥删除](huks-delete-key-arkts.md)。
+当密钥废弃不用时，设备A、B均需要删除密钥，具体请参考密钥删除。
 
 ## 开发案例
 下面分别以X25519、DH和ECDH密钥为例，进行协商。  
@@ -292,7 +292,7 @@ async function testAgree() {
 <!-- -->
 
 ### DH密钥协商用例
-<!-- @[key_agreement_dh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/DH.ets) -->
+<!-- @[key_agreement_dh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/DH.ets) -->  
 
 ``` TypeScript
 
@@ -509,13 +509,13 @@ async function huksDhAgreeInHuks(keyAlias: string, peerPubKey: Uint8Array,
     properties: [...dhAgree, ...onlyUsedInHuks],
     inData: peerPubKey
   };
-  await huks.updateSession(handle, dhAgreeUpdatePubKey);
-  const dhAgreeAliceFinnish: huks.HuksOptions = {
+  await updateSession(handle, dhAgreeUpdatePubKey);
+  const dhAgreeAliceFinish: huks.HuksOptions = {
     properties: [...dhAgreeFinishParams, {
       tag: huks.HuksTag.HUKS_TAG_KEY_ALIAS, value: stringToUint8Array(aliasAgreedKey)
     }], inData: new Uint8Array([])
   };
-  await finishSession(handle, dhAgreeAliceFinnish);
+  await finishSession(handle, dhAgreeAliceFinish);
 }
 
 async function huksDhAgreeInHuksTest(
@@ -524,11 +524,11 @@ async function huksDhAgreeInHuksTest(
   aliasAgreedKeyFromA: string, aliasAgreedKeyFromB: string) {
 
   await huksDhAgreeInHuks(aliasA, pubKeyB, aliasAgreedKeyFromA);
-  const aliceAgreedExist = await huks.isKeyItemExist(aliasAgreedKeyFromA, emptyOptions);
+  const aliceAgreedExist = await isKeyItemExist(aliasAgreedKeyFromA, emptyOptions);
   console.info(`ok! aliceAgreedExist in huks is ${aliceAgreedExist}`);
 
   await huksDhAgreeInHuks(aliasB, pubKeyA, aliasAgreedKeyFromB);
-  const bobAgreedExist = await huks.isKeyItemExist(aliasAgreedKeyFromB, emptyOptions);
+  const bobAgreedExist = await isKeyItemExist(aliasAgreedKeyFromB, emptyOptions);
   console.info(`ok! bobAgreedExist in huks is ${bobAgreedExist}`);
 
   await deleteKeyItem(aliasAgreedKeyFromA, emptyOptions);

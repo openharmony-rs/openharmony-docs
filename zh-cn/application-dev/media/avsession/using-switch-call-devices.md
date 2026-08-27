@@ -8,7 +8,7 @@
 
 ## 切换通话输出设备
 
-本文主要介绍AVCastPicker组件接入，实现通话设备切换功能。相关参数可参考[@ohos.multimedia.avCastPicker(投播组件)/apis-avsession-kit/ohos-multimedia-avcastpicker.md)和[@ohos.multimedia.avCastPickerParam（投播组件参数）/apis-avsession-kit/js-apis-avCastPickerParam.md)。如果希望实现音频输出设备路由切换的效果，请参考[实现音频输出设备路由切换](../audio/audio-output-device-switcher.md)。
+本文主要介绍AVCastPicker组件接入，实现通话设备切换功能。相关参数可参考@ohos.multimedia.avCastPicker (投播组件)和@ohos.multimedia.avCastPickerParam (投播组件参数)。如果希望实现音频输出设备路由切换的效果，请参考实现音频输出设备路由切换。
 
 当前系统支持两种组件样式的显示方式：默认样式显示和自定义样式显示。
 - 如果应用选择显示默认样式，当设备切换时，系统将根据当前选择的设备显示系统默认的组件样式。
@@ -16,7 +16,7 @@
 
 ### 默认样式实现
 
-1. 创建voice_call类型的AVSession，AVSession在构造方法中支持不同的类型参数，由AVSessionType定义，voice_call表示通话类型，如果不创建，将显示空列表。
+1. 创建voice_call类型的AVSession。AVSession在创建方法中支持不同的类型参数，由AVSessionType定义。voice_call表示通话类型，如果不创建，将显示空列表。
 
    <!-- @[create_voiceCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/Index.ets) -->    
    
@@ -35,7 +35,7 @@
        try {
          let context = this.getUIContext().getHostContext() as Context;
          // 通话开始时创建voice_call类型的avsession。
-         this.session = await avSession.createAVSession(context, 'voiptest', 'voice_call');
+         this.session = await avSession.createAVSession(context, 'SESSION_NAME', 'voice_call');
        } catch (err) {
          console.error(`AVSession create :  Error: Code: ${err.code}, message: ${err.message}`);
        }
@@ -66,7 +66,6 @@
            AVCastPicker({
              normalColor: this.normalColor,
              activeColor: this.activeColor,
-             customPicker: this.ImageBuilder.bind(this), // 新增自定义参数。
            })
              .size({ width: '50%', height: '20%' })
              .id('AVCastPicker')
@@ -78,16 +77,6 @@
        .alignItems(VerticalAlign.Center)
        .width('100%')
        .height('100%')
-     }
-   
-     // 自定义内容。
-     @Builder
-     ImageBuilder() {
-       Text($r('app.string.switch_OutputDevice'))
-       Image(this.pickerImage)
-         .size({ width: '100%', height: '100%' })
-         .backgroundColor('#00000000')
-         .fillColor(Color.Black)
      }
    }
    ```
@@ -122,7 +111,7 @@
    }
    ```
 
-3. 创建VOICE_COMMUNICATION类型的AudioRenderer，并开始播放。具体通话音频播放等实现，请参考[开发音频通话功能](../audio/audio-call-development.md)。
+3. 创建VOICE_COMMUNICATION类型的AudioRenderer，并开始播放。具体通话音频播放等实现，请参考开发音频通话功能。
 
    <!-- @[start_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AudioRenderer.ets) -->         
    
@@ -169,7 +158,7 @@
        if (this.audioRenderer !== undefined) {
          return;
        }
-       this.getStageFileDescriptor(this.audioSource).then((res) => {
+       await this.getStageFileDescriptor(this.audioSource).then((res) => {
          this.fileDescriptor = res;
        });
        if (!this.fileDescriptor) {
@@ -277,9 +266,9 @@
 
 ### 自定义样式实现
 
-自定义样式通过设置[CustomBuilder/apis-arkui/arkui-ts/ts-types.md#custombuilder8)类型的参数[customPicker/apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker)实现。
+自定义样式通过设置CustomBuilder类型的参数customPicker实现。
 
-实现自定义样式的步骤与实现默认样式基本相同，开发者可参考[默认样式实现](#默认样式实现)，完成创建AVSession、实现音频播放等步骤。
+实现自定义样式的步骤与实现默认样式基本相同，开发者可参考默认样式实现，完成创建AVSession、实现音频播放等步骤。
 
 存在差异的步骤如下所示。
 
@@ -319,7 +308,7 @@
    }
    ```
 
-2. 如果应用要根据出声设备变化而改变自定义样式，必须监听设备切换，然后实时刷新自定义样式（对应默认样式实现步骤4）。
+2. 如果应用要根据发声设备变化而改变自定义样式，必须监听设备切换，然后实时刷新自定义样式（对应默认样式实现步骤4）。
 
    <!-- @[device_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SelfAVCastPicker.ets) -->    
    
@@ -362,7 +351,7 @@
 
 ## 切换通话输入设备
 
-系统不再提供音频输入设备切换的API，如果需要在应用内切换音频输入设备，并实现AVInputCastPicker组件，相关参数可参考[@ohos.multimedia.avInputCastPicker/apis-avsession-kit/ohos-multimedia-avinputcastpicker.md) 和 [@ohos.multimedia.avCastPickerParam/apis-avsession-kit/js-apis-avCastPickerParam.md)。
+系统不再提供音频输入设备切换的API，如果需要在应用内切换音频输入设备，可通过接入AVInputCastPicker组件来完成。相关参数可参考@ohos.multimedia.avInputCastPicker和@ohos.multimedia.avCastPickerParam。
 
 本文将主要介绍AVInputCastPicker组件接入，实现通话输入设备切换功能。
 
@@ -370,7 +359,7 @@
 - 如果应用选择显示默认样式，当设备切换时，系统将根据当前选择的设备显示系统默认的组件样式。
 - 如果应用选择显示自定义样式，那么需要应用根据设备的变化刷新自己定义的样式。
 
-### 默认实现方式
+### 默认样式实现
 
 1. 在需要切换设备的通话界面创建AVInputCastPicker组件。
 
@@ -403,11 +392,11 @@
      }
    ```
 
-2. 实现通话功能，请参考[开发音频通话功能](../audio/audio-call-development.md)。
+2. 实现通话功能，请参考开发音频通话功能。
 
-### 自定义实现方式
+### 自定义样式实现
 
-自定义样式通过设置[AVInputCastPicker/apis-avsession-kit/ohos-multimedia-avinputcastpicker.md#avinputcastpicker)中的参数customPicker实现。
+自定义样式通过设置AVInputCastPicker中的参数customPicker实现。
 
 1. 创建自定义AVInputCastPicker，需要新增自定义参数。
 
@@ -436,7 +425,7 @@
          Column() {
            AVInputCastPicker(
              {
-               customPicker: this.ImageBuilder.bind(this), // 新增自定义参数。
+               customPicker: (): void => this.ImageBuilder(), // 新增自定义参数。
                onStateChange: this.onStateChange
              }
            )
@@ -464,4 +453,4 @@
    }
    ```
 
-2. 实现通话功能，请参考[开发音频通话功能](../audio/audio-call-development.md)。
+2. 实现通话功能，请参考开发音频通话功能。

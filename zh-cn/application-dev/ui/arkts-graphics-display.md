@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-开发者经常需要在应用中显示一些图片，例如：按钮中的icon、网络图片、本地图片等。在应用中显示图片需要使用Image组件实现，Image支持多种图片格式，包括png、jpg、jpeg等格式，不支持apng和svga格式，具体支持格式和用法请参考[Image/apis-arkui/arkui-ts/ts-basic-components-image.md)组件。
+开发者经常需要在应用中显示一些图片，例如：按钮中的icon、网络图片、本地图片等。在应用中显示图片需要使用Image组件实现，Image支持多种图片格式，包括png、jpg、jpeg等格式，不支持apng和svga格式，具体支持格式和用法请参考Image组件。
 
 
 Image通过调用接口来创建，接口调用形式如下：
@@ -16,7 +16,7 @@ Image(src: PixelMap | ResourceStr | DrawableDescriptor)
 ```
 
 
-该接口通过图片数据源获取图片，支持本地图片和网络图片的渲染展示。其中，src是图片的数据源，加载方式请参考[加载图片资源](#加载图片资源)。
+该接口通过图片数据源获取图片，支持本地图片和网络图片的渲染展示。其中，src是图片的数据源，加载方式请参考加载图片资源。
 
 如果图片加载过程中出现白色块，请参考[Image白块解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-image-white-lump-solution)。如果图片加载时间过长，请参考[预置图片资源加载优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-texture-compression-improve-performance)。
 
@@ -38,7 +38,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
   > **说明：**
   > 
-  > 从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使相关模块：build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+  > 从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使相关模块：build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
 
   <!-- @[local_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
@@ -52,21 +52,21 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
 - 网络资源
 
-  引入网络图片需申请权限ohos.permission.INTERNET，具体申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。此时，Image组件的src参数为网络图片的链接。
+  引入网络图片需申请权限ohos.permission.INTERNET，具体申请方式请参考声明权限。此时，Image组件的src参数为网络图片的链接。
 
   当前Image组件仅支持加载简单网络图片。
 
   首次加载网络图片时，Image组件需要请求网络资源；非首次加载时，默认从缓存中直接读取图片。
   
-  更多图片缓存设置请参考[setImageCacheCount/apis-arkui/js-apis-system-app.md#setimagecachecount7)、[setImageRawDataCacheSize/apis-arkui/js-apis-system-app.md#setimagerawdatacachesize7)和[setImageFileCacheSize/apis-arkui/js-apis-system-app.md#setimagefilecachesize7)。这三个图片缓存接口主要用于支持简单、通用的场景，后续不再继续演进，且在灵活和扩展性方面存在一定限制，例如：
+  更多图片缓存设置请参考setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize。这三个图片缓存接口主要用于支持简单、通用的场景，后续不再继续演进，且在灵活和扩展性方面存在一定限制，例如：
   - 无法获取当前缓存占用信息。Image组件目前不支持查询磁盘缓存的实时状态，包括文件总大小和文件数量。
   - 缓存策略不可定制，缺乏缓存状态观测能力。开发者无法通过接口感知缓存命中率、淘汰次数等运行时的指标，难以基于实际缓存效果进行动态调优。
 
-  对于复杂情况，推荐使用[ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife)，该图像库提供了更灵活、可扩展的缓存策略以及完善的生命周期管理能力，更适合复杂业务需求。
+  对于复杂情况，推荐使用[ImageKnife](https://gitcode.com/CPF-ApplicationTPC/ImageKnife)，该图像库提供了更灵活、可扩展的缓存策略以及完善的生命周期管理能力，更适合复杂业务需求。
 
-  网络图片必须支持RFC 9113标准，否则会导致加载失败。如果下载的网络图片大于10MB或一次下载的网络图片数量较多，建议使用[HTTP](../network/http-request.md)工具提前下载，提高图片加载性能，方便应用侧管理数据。
+  网络图片必须支持RFC 9113标准，否则会导致加载失败。如果下载的网络图片大于10MB或一次下载的网络图片数量较多，建议使用HTTP工具提前下载，提高图片加载性能，方便应用侧管理数据。
 
-  在显示网络图片时，Image组件在机制上会依赖[缓存下载模块/apis-basic-services-kit/js-apis-request-cacheDownload.md)，开发者可参考[示例3（下载与显示网络gif图片）/apis-arkui/arkui-ts/ts-basic-components-image.md#示例3下载与显示网络gif图片)了解具体用法。
+  在显示网络图片时，Image组件在机制上会依赖@ohos.request.cacheDownload (缓存下载)，开发者可参考示例3（下载与显示网络gif图片）了解具体用法。
   
   缓存下载模块提供独立的预下载接口，允许应用开发者在创建Image组件前预下载所需图片。组件创建后，Image组件可直接从缓存下载模块中获取已下载的图片数据，从而加快图片的显示速度，优化加载体验，并有效避免网络图片加载延迟。网络缓存的位置位于应用根目录下的cache目录中。
 
@@ -109,9 +109,9 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   Image($rawfile('example1.png'))
   ```
 
-- 媒体库file://data/storage
+- 媒体库资源（file://路径前缀）
   
-  支持file://路径前缀的字符串，用于访问通过[选择器/apis-core-file-kit/js-apis-file-picker.md)提供的图片路径。
+  支持file://路径前缀的字符串，用于访问通过选择器提供的图片路径。
   1. 调用接口获取图库的照片url。
       <!-- @[media_libraryfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadImageResources.ets) -->    
   
@@ -172,7 +172,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
        <!-- @[fileLibrary_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
        ``` TypeScript
-       // 'file://media/Photos/5'需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
+       // 'file://media/Photos/5'为媒体库URL示例，实际使用时需通过选择器（PhotoViewPicker）动态获取真实媒体库图片URL
        Image('file://media/Photos/5')
          .width(200)
        ```
@@ -187,63 +187,65 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
 ### 多媒体像素图
 
-PixelMap是图片解码后的像素图，具体用法请参考[Image Kit简介](../media/image/image-overview.md)。以下示例将加载的网络图片返回的数据解码成PixelMap格式，再显示在Image组件上。
+PixelMap是图片解码后的像素图，具体用法请参考Image Kit简介。以下示例将加载的网络图片返回的数据解码成PixelMap格式，再显示在Image组件上。
 
 
-  <!-- @[multimedia_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets) -->    
-  
-  ``` TypeScript
-  import { http } from '@kit.NetworkKit';
-  import { image } from '@kit.ImageKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  const DOMAIN = 0x0001;
-  const TAG = 'Sample_imagecomponent';
-  
-  @Entry
-  @Component
-  struct HttpExample {
-    outData: http.HttpResponse | undefined = undefined;
-    code: http.ResponseCode | number | undefined = undefined;
-    @State image: PixelMap | undefined = undefined; // 创建PixelMap状态变量
-  
-    // 使用createHttp接口将加载的网络图片返回的数据解码成PixelMap格式，再显示在Image组件上
-    aboutToAppear(): void {
-      http.createHttp().request('xxx://xxx.xxx.xxx/example.png', // 需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
-        (error: BusinessError, data: http.HttpResponse) => {
-          if (error) {
-            hilog.error(DOMAIN, TAG, `hello http request failed. Code: ${error.code}, message: ${error.message}`);
-            return;
+<!-- @[multimedia_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets) -->
+
+``` TypeScript
+import { http } from '@kit.NetworkKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'Sample_imagecomponent';
+
+@Entry
+@Component
+struct HttpExample {
+  outData: http.HttpResponse | undefined = undefined;
+  code: http.ResponseCode | number | undefined = undefined;
+  @State image: PixelMap | undefined = undefined; // 创建PixelMap状态变量
+
+  // 使用createHttp接口将加载的网络图片返回的数据解码成PixelMap格式，再显示在Image组件上
+  aboutToAppear(): void {
+    http.createHttp().request('xxx://xxx.xxx.xxx/example.png', // 需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
+      (error: BusinessError, data: http.HttpResponse) => {
+        if (error) {
+          hilog.error(DOMAIN, TAG, `hello http request failed. Code: ${error.code}, message: ${error.message}`);
+          return;
+        };
+        this.outData = data;
+        // 将网络地址成功返回的数据，解码成PixelMap格式
+        if (http.ResponseCode.OK === this.outData.responseCode) {
+          let imageData: ArrayBuffer = this.outData.result as ArrayBuffer;
+          let imageSource: image.ImageSource = image.createImageSource(imageData);
+          let options: image.DecodingOptions = {
+            'desiredPixelFormat': image.PixelMapFormat.RGBA_8888,
           };
-          this.outData = data;
-          // 将网络地址成功返回的数据，编码转码成pixelMap的图片格式
-          if (http.ResponseCode.OK === this.outData.responseCode) {
-            let imageData: ArrayBuffer = this.outData.result as ArrayBuffer;
-            let imageSource: image.ImageSource = image.createImageSource(imageData);
-            let options: image.DecodingOptions = {
-              'desiredPixelFormat': image.PixelMapFormat.RGBA_8888,
-            };
-            imageSource.createPixelMap(options).then((pixelMap: PixelMap) => {
-              this.image = pixelMap;
-            });
-          };
-        });
-    };
-  
-    build() {
-      Column() {
-        // 显示图片
-        Image(this.image)
-          .height(100)
-          .width(100)
-      }
+          imageSource.createPixelMap(options).then((pixelMap: PixelMap) => {
+            this.image = pixelMap;
+            imageSource.release();
+          });
+        };
+      });
+  };
+
+  build() {
+    Column() {
+      // 显示图片
+      Image(this.image)
+        .height(100)
+        .width(100)
     }
   }
-  ```
+}
+```
+  
 
 ### 可绘制描述符
 
-DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将图片资源封装为可编程对象，实现了传统Image组件难以实现的动态组合与运行时控制功能。开发者可利用它实现图片的分层叠加（如徽章图标）、动态属性调整（如颜色滤镜）、复杂动画序列等高级效果，适用于需要灵活控制图片展现或实现复杂视觉交互的场景。详细使用方法，请参考[DrawableDescriptorapis-arkui/js-apis-arkui-drawableDescriptor.md)。
+DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将图片资源封装为可编程对象，实现了传统Image组件难以实现的动态组合与运行时控制功能。开发者可利用它实现图片的分层叠加（如徽章图标）、动态属性调整（如颜色滤镜）、复杂动画序列等高级效果，适用于需要灵活控制图片展现或实现复杂视觉交互的场景。详细使用方法，请参考DrawableDescriptor。
 
 通过DrawableDescriptor显示图片及动画的示例如下所示：
 
@@ -371,9 +373,9 @@ DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将
 
 ## 显示矢量图
 
-Image组件可显示矢量图（SVG格式的图片），SVG标签文档请参考[SVG标签说明apis-arkui/arkui-ts/ts-basic-svg.md)。
+Image组件可显示矢量图（SVG格式的图片），SVG标签文档请参考SVG标签说明。
 
-如果SVG图片没有原始大小，需要给Image组件设置宽高，否则不显示。SVG图片不支持通过image标签引用SVG格式和gif格式的本地其他图片。
+如果SVG图片没有原始大小，需要给Image组件设置宽高，否则不显示。SVG图片不支持通过`<image>`标签引用SVG格式和gif格式的本地其他图片。
 
 SVG格式的图片可以使用fillColor属性改变图片的绘制颜色。
 
@@ -403,7 +405,7 @@ Image加载的SVG图源路径设置方法如下所示：
 
 > **说明：**
 > 
-> 从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使相关模块：build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+> 从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使相关模块：build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
 
   <!-- @[local_svg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->    
   
@@ -426,11 +428,11 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 
 ## 添加属性
 
-给Image组件设置属性可以使图片显示更灵活，达到一些自定义的效果。以下是几个常用属性的使用示例，完整属性信息详见[Image/apis-arkui/arkui-ts/ts-basic-components-image.md)。
+给Image组件设置属性可以使图片显示更灵活，达到一些自定义的效果。以下是几个常用属性的使用示例，完整属性信息详见Image。
 
 ### 设置图片缩放类型
 
-通过设置[objectFit/apis-arkui/arkui-ts/ts-basic-components-imagespan.md#objectfit)属性，可以使图片在高度和宽度确定的框内进行缩放。
+通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放。
 
 
   <!-- @[image_objectfit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageZoomType.ets) -->   
@@ -521,12 +523,12 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   }
   ```
 
-![zh-cn_image_0000001622804833](figures/zh-cn_image_0000001622804833.png)
+![zh-cn_image_0000001622804833](figures/Image-Scale-Mode.png)
 
 
 ### 图片插值
 
-当原图分辨率较低并放大显示时，图片会变得模糊并出现锯齿。这时可以使用[interpolation/apis-arkui/arkui-ts/ts-basic-components-image.md#interpolation)属性对图片进行插值，以提高显示清晰度。
+当原图分辨率较低并放大显示时，图片会变得模糊并出现锯齿。这时可以使用interpolation属性对图片进行插值，以提高显示清晰度。
 
 
   <!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/ImageInterpolation.ets) -->    
@@ -586,12 +588,12 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   }
   ```
 
-![zh-cn_image_0000001643127365](figures/zh-cn_image_0000001643127365.png)
+![zh-cn_image_0000001643127365](figures/Image-Interpolation.png)
 
 
 ### 设置图片重复样式
 
-通过objectRepeat属性设置图片的重复样式方式，重复样式请参考[ImageRepeat/apis-arkui/arkui-ts/ts-appendix-enums.md#imagerepeat)枚举说明。
+通过objectRepeat属性设置图片的重复样式方式，重复样式请参考ImageRepeat枚举说明。
 
 
   <!-- @[image_repetitionstyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRepetitionStyle.ets) -->    
@@ -642,7 +644,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   }
   ```
 
-![zh-cn_image_0000001593444112](figures/zh-cn_image_0000001593444112.png)
+![zh-cn_image_0000001593444112](figures/Setting-Image-Repeat.png)
 
 
 ### 设置图片渲染模式
@@ -683,7 +685,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   }
   ```
 
-![zh-cn_image_0000001593293100](figures/zh-cn_image_0000001593293100.png)
+![zh-cn_image_0000001593293100](figures/Setting-Image-Rendering.png)
 
 
 ### 设置图片解码尺寸
@@ -735,12 +737,12 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   }
   ```
 
-![zh-cn_image_0000001593769844](figures/zh-cn_image_0000001593769844.png)
+![zh-cn_image_0000001593769844](figures/Image-Decoding-Size.png)
 
 
 ### 为图片添加滤镜效果
 
-通过colorFilter调整图片的像素颜色，为图片添加滤镜。
+通过colorFilter调整图片的像素颜色，为图片添加滤镜。<!--RP1--><!--RP1End-->
 
 
   <!-- @[image_filtereffect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/AddFilterEffectsToImages.ets) -->    
@@ -773,7 +775,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   }
   ```
 
-![zh-cn_image_0000001643171357](figures/zh-cn_image_0000001643171357.png)
+![zh-cn_image_0000001643171357](figures/Adding-Filter-Image.png)
 
 
 ### 同步加载图片
@@ -789,6 +791,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
     .syncLoad(true)
   ```
 
+<!--RP2--><!--RP2End-->
 
 ## 事件调用
 
@@ -843,7 +846,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   }
   ```
 
-![zh-cn_image_0000001511740460](figures/zh-cn_image_0000001511740460.png)
+![zh-cn_image_0000001511740460](figures/Adding-Events.png)
 
 ## 相关实例
 

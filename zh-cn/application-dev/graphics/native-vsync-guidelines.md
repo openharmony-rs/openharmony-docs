@@ -13,12 +13,12 @@ NativeVSync模块用于获取系统VSync信号，提供OH_NativeVSync实例的�
 
 | 接口名 | 描述 | 
 | -------- | -------- |
-| OH_NativeVSync_Create (const char \*name, unsigned int length) | 创建一个OH_NativeVSync实例，每次调用都会产生一个新的实例并创建一个vsync线程接收处理回调。本接口需要与OH_NativeVSync_Destroy接口配合使用，否则会存在内存泄露。 |
+| OH_NativeVSync_Create (const char \*name, unsigned int length) | 创建一个OH_NativeVSync实例，每次调用都会产生一个新的实例并创建一个vsync线程接收处理回调。本接口需要与OH_NativeVSync_Destroy接口配合使用，否则会存在内存泄漏。 |
 | OH_NativeVSync_Destroy (OH_NativeVSync \*nativeVsync) | 销毁OH_NativeVSync实例。 | 
 | OH_NativeVSync_FrameCallback (long long timestamp, void \*data) | 回调函数的形式，timestamp表示时间戳，data为回调函数入参。回调的处理在vsync初始化时创建的线程内。 | 
 | OH_NativeVSync_RequestFrame (OH_NativeVSync \*nativeVsync, OH_NativeVSync_FrameCallback callback, void \*data) | 请求下一次VSync信号，当信号到来时，调用回调函数callback。 | 
 
-详细的接口说明请参考[native_vsync/apis-arkgraphics2d/capi-nativevsync.md)。
+详细的接口说明请参考native_vsync。
 
 ## 开发步骤
 

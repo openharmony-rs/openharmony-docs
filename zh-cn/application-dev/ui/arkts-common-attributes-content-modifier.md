@@ -8,7 +8,7 @@
 
 当开发者期望自定义组件的内容区时，比如Checkbox的内部显示一个五角星等场景时，可以使用此功能。
 
-仅[Button/apis-arkui/arkui-ts/ts-basic-components-button.md)、[Checkbox/apis-arkui/arkui-ts/ts-basic-components-checkbox.md)、[DataPanel/apis-arkui/arkui-ts/ts-basic-components-datapanel.md)、[TextTimer/apis-arkui/arkui-ts/ts-basic-components-texttimer.md)、[Slider/apis-arkui/arkui-ts/ts-basic-components-slider.md)、[Select/apis-arkui/arkui-ts/ts-basic-components-select.md)、[Rating/apis-arkui/arkui-ts/ts-basic-components-rating.md)、[Radio/apis-arkui/arkui-ts/ts-basic-components-radio.md)、[Gauge/apis-arkui/arkui-ts/ts-basic-components-gauge.md)、[Toggle/apis-arkui/arkui-ts/ts-basic-components-toggle.md)、[TextClock/apis-arkui/arkui-ts/ts-basic-components-textclock.md)组件支持该能力。
+仅Button、Checkbox、DataPanel、TextTimer、Slider、Select、Rating、Radio、Gauge、Toggle、TextClock组件支持该能力。
 
 使用ContentModifier自定义Checkbox样式，用五边形Checkbox替换默认Checkbox。选中时，五边形内部显示红色三角图案，标题显示“选中”；取消选中时，红色三角图案消失，标题显示“非选中”。
 
@@ -88,7 +88,7 @@
    build() {
      Row() {
        Column() {
-         //选中和不选中按钮
+         // 选中和不选中按钮
          // 请将$r('app.string.checkbox_status')替换为实际资源文件，在本示例中该资源文件的value值为"复选框状态"
          Checkbox({ name: this.resmg?.getStringSync($r('app.string.checkbox_status').id), group: 'checkboxGroup' })
            .select(true)

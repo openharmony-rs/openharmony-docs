@@ -1,10 +1,10 @@
 # 使用Node-API接口创建和获取string值
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -36,7 +36,7 @@
 
 ## 使用示例
 
-Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程](use-napi-process.md)，本文仅对接口对应C++及ArkTS相关代码进行展示。
+Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程，本文仅对接口对应C++及ArkTS相关代码进行展示。
 
 ### napi_get_value_string_utf8
 
@@ -338,6 +338,8 @@ static void StringFinalizerUTF16(void* data, void* hint)
 {
     // 释放外部资源
     delete[] static_cast<char16_t*>(data);
+    // 重要：析构回调执行的时候会挂起其它js线程，因此需要保证回调执行过程中无锁操作，否则可能导致死锁。
+    // 由于回调是在其它非注册线程执行，因此需要保证回调是线程安全的。
 }
 
 static napi_value CreateExternalStringUtf16(napi_env env, napi_callback_info info)
@@ -356,8 +358,9 @@ static napi_value CreateExternalStringUtf16(napi_env env, napi_callback_info inf
         NAPI_AUTO_LENGTH,       // 字符串长度，如果传入NAPI_AUTO_LENGTH，则字符串需要以'\0'结尾
         StringFinalizerUTF16,   // 字符串的析构回调函数
         nullptr,                // 传递给析构回调函数的hint参数，本例不需要
-        &result                 // 接受创建的ArkTS字符串值
-    );
+        &result);               // 接收创建的ArkTS字符串值
+    // 重要：str指向的内存必须在ArkTS string对象的整个生命周期内保持有效。
+    // 而且在调用此接口后，str指向的内存内容必须保持不可变。任何对该内存的写入操作都可能导致程序崩溃。
     if (status != napi_ok) {
         // 处理错误
         delete[] str;
@@ -401,6 +404,8 @@ static void StringFinalizerASCII(void* data, void* hint)
 {
     // 释放外部资源
     delete[] static_cast<char*>(data);
+    // 重要：析构回调执行的时候会挂起其它js线程，因此需要保证回调执行过程中无锁操作，否则可能导致死锁。
+    // 由于回调是在其它非注册线程执行，因此需要保证回调是线程安全的。
 }
 
 static napi_value CreateExternalStringAscii(napi_env env, napi_callback_info info)
@@ -420,8 +425,7 @@ static napi_value CreateExternalStringAscii(napi_env env, napi_callback_info inf
         NAPI_AUTO_LENGTH,       // 字符串长度，如果传入NAPI_AUTO_LENGTH，则字符串需要以'\0'结尾
         StringFinalizerASCII,   // 字符串的析构回调函数
         nullptr,                // 传递给析构回调函数的hint参数，本例不需要
-        &result                 // 接受创建的ArkTS字符串值
-    );
+        &result);               // 接收创建的ArkTS字符串值
     // 重要：str指向的内存必须在ArkTS string对象的整个生命周期内保持有效。
     // 而且在调用此接口后，str指向的内存内容必须保持不可变。任何对该内存的写入操作都可能导致程序崩溃。
     if (status != napi_ok) {
