@@ -4,8 +4,6 @@
 
 **起始版本：** 19
 
-<!--Device-unnamed-declare enum EventQueryType--><!--Device-unnamed-declare enum EventQueryType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ON_CLICK
@@ -22,7 +20,4 @@ ON_CLICK = 0
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EventQueryType-ON_CLICK = 0--><!--Device-EventQueryType-ON_CLICK = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

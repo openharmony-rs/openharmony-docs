@@ -4,8 +4,6 @@
 
 **起始版本：** 20
 
-<!--Device-unnamed-declare interface IMEClient--><!--Device-unnamed-declare interface IMEClient-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -26,8 +24,6 @@ setExtraConfig(config: InputMethodExtraConfig): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-IMEClient-setExtraConfig(config: InputMethodExtraConfig): void--><!--Device-IMEClient-setExtraConfig(config: InputMethodExtraConfig): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,7 +49,4 @@ nodeId: number
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-IMEClient-nodeId: number--><!--Device-IMEClient-nodeId: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -27,15 +27,16 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [native_node_napi.h](capi-native-node-napi-h.md) | 提供ArkTS侧的{@link FrameNode}转换{@link NodeHandle}的方式。 |
 | [styled_string.h](capi-styled-string-h.md) | 在Native侧定义[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)为ARKUI_NODE_TEXT的组件的文本样式和文本布局管理器。 |
 | [custom_span.h](capi-custom-span-h.md) | Defines a set of CustomSpan enum and interface. |
-| [node_water_flow.h](capi-node-water-flow-h.md) | 定义WaterFlow组件相关的枚举和接口。 |
+| [water_flow.h](capi-water-flow-h.md) | 定义WaterFlow组件相关的枚举和接口。 |
 | [swiper.h](capi-swiper-h.md) | 定义Swiper组件的枚举和接口。 |
 | [common_attributes.h](capi-common-attributes-h.md) | Defines the common property and method types for the native module. |
 | [navigation_router.h](capi-navigation-router-h.md) | 定义Navigation或Router组件的枚举和接口。 |
-| [node_scroll.h](capi-node-scroll-h.md) | 提供滚动方向、边缘效果、滚动条状态、内容裁剪、嵌套滚动、滚动状态和滚动来源等枚举，用于配置和监听Scroll组件及相关可滚动组件的行为。 |
-| [node_grid.h](capi-node-grid-h.md) | 定义Grid组件相关的枚举和接口。 |
+| [scroll.h](capi-scroll-h.md) | 提供滚动方向、边缘效果、滚动条状态、内容裁剪、嵌套滚动、滚动状态和滚动来源等枚举，用于配置和监听Scroll组件及相关可滚动组件的行为。 |
+| [list_item.h](capi-list-item-h.md) | Provides shared list item-related type and function definitions for <b>NativeNode</b> APIs. |
+| [grid.h](capi-grid-h.md) | 定义Grid组件相关的枚举和接口。 |
 | [custom_attributes.h](capi-custom-attributes-h.md) | 为NativeNode API提供自定义节点事件定义。 |
 | [xcomponent.h](capi-xcomponent-h.md) | XComponent组件的枚举类型定义。 |
-| [rich_editor.h](capi-rich-editor-h.md) | Defines a set of RichEditor enum and interface. |
+| [rich_editor.h](capi-rich-editor-h.md) | 定义文本编辑器相关的结构体、枚举和函数。文本编辑器提供富文本编辑能力，支持自定义文本选择菜单、属性字符串控制器、段落样式和文本样式设置，以及触感反馈控制等功能，适用于需要在应用中实现富文本编辑和自定义交互菜单的场景。 |
 | [image_span.h](capi-image-span-h.md) | Defines a set of ImageSpan enum and interface. |
 | [progress.h](capi-progress-h.md) | Defines a set of Progress enum and interface. |
 | [slider.h](capi-slider-h.md) | Provides Slider node type definitions for <b>NativeNode</b> APIs. |
@@ -44,7 +45,7 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [text_common.h](capi-text-common-h.md) | Defines a set of text common enum and interface. |
 | [text_input.h](capi-text-input-h.md) | Defines a set of TextInput enum and interface. |
 | [checkbox.h](capi-checkbox-h.md) | Provides Checkbox node type definitions for <b>NativeNode</b> APIs. |
-| [node_list.h](capi-node-list-h.md) | 定义List组件相关的枚举和接口。 |
+| [list.h](capi-list-h.md) | 定义List组件相关的枚举和接口。 |
 | [text.h](capi-text-h.md) | Defines a set of Text enum and interface. |
 | [image.h](capi-image-h.md) | 为NativeNode API提供Image节点类型定义。 |
 | [embedded_component.h](capi-embedded-component-h.md) | EmbeddedComponent组件相关的结构体和方法定义。 |

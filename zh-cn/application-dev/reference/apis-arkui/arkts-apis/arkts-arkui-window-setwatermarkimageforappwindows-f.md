@@ -3,8 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -16,9 +14,7 @@ function setWatermarkImageForAppWindows(pixelMap: image.PixelMap | undefined): P
 
 设置或取消本应用进程下窗口的水印图片，使用Promise异步回调。该接口需要在 [loadContent()](arkts-arkui-window-window-i.md#loadcontent) 或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent)调用生效后使 用。
 
-**起始版本：** 23
-
-<!--Device-window-function setWatermarkImageForAppWindows(pixelMap: image.PixelMap | undefined): Promise<void>--><!--Device-window-function setWatermarkImageForAppWindows(pixelMap: image.PixelMap | undefined): Promise<void>-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -26,20 +22,20 @@ function setWatermarkImageForAppWindows(pixelMap: image.PixelMap | undefined): P
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pixelMap | image.PixelMap \| undefined | 是 | 传入`image.PixelMap`表示设置水印图片，传入`undefined`表示取消水印显示。<br/>如果图片尺寸的宽和高 同时超过窗口尺寸以及屏幕尺寸的宽和高，返回错误码1300016。<br/>如果图片尺寸的宽或高超过窗口尺寸的宽或高，超出窗口宽或高的部分会被裁剪。<br/>如果图片尺寸的宽或高小于窗口尺寸的宽或高，小于的部分会自动重复补充 。 |
+| pixelMap | image.PixelMap \| undefined | 是 | 传入`image.PixelMap`表示设置水印图片，传入`undefined`表示取消水印显示。如果图片尺寸的宽和高 同时超过窗口尺寸以及屏幕尺寸的宽和高，返回错误码1300016。如果图片尺寸的宽或高超过窗口尺寸的宽或高，超出窗口宽或高的部分会被裁剪。如果图片尺寸的宽或高小于窗口尺寸的宽或高，小于的部分会自动重复补充 。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Function setWatermarkImageForAppWindows can not work correctly due to limited device capabilities. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **示例**
@@ -73,4 +69,3 @@ image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMa
   console.error(`Failed to create PixelMap. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-

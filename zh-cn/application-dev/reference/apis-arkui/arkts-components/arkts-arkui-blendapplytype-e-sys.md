@@ -1,10 +1,8 @@
 # BlendApplyType
 
-指示如何将指定的混合模式应用于视图的内容。
+指示如何将指定的混合模式应用于视图的内容。@enum { number }
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare enum BlendApplyType--><!--Device-unnamed-declare enum BlendApplyType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,9 +20,6 @@ OFFSCREEN_WITH_BACKGROUND = 2
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BlendApplyType-OFFSCREEN_WITH_BACKGROUND = 2--><!--Device-BlendApplyType-OFFSCREEN_WITH_BACKGROUND = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

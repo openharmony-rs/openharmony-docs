@@ -14,11 +14,9 @@ function isCaptured(): boolean
 
 检查设备的屏幕显示信息是否被获取。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-display-function isCaptured(): boolean--><!--Device-display-function isCaptured(): boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -57,15 +55,13 @@ function isCaptured(bundleNameList: Array<string>): boolean
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-display-function isCaptured(bundleNameList: Array<string>): boolean--><!--Device-display-function isCaptured(bundleNameList: Array<string>): boolean-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleNameList | Array&lt;string&gt; | 是 | 需要检查的应用包名称列表。数组的最大大小为100。 |
+| bundleNameList | Array & lt;string & gt; | 是 | 需要检查的应用包名称列表。数组的最大大小为100。 |
 
 **返回值：**
 
@@ -77,8 +73,8 @@ function isCaptured(bundleNameList: Array<string>): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1400004](../errorcode-display.md#1400004-参数异常) | Parameter error. Possible cause: 1.The size of bundleNameList is larger than 100. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
+| [1400004](../errorcode-display.md#1400004-参数异常) | Parameter error. Possible cause: 1.The size of bundleNameList is larger than 100. |
 
 **示例**
 
@@ -91,4 +87,3 @@ try {
   console.error(`Failed to get display isCaptured. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

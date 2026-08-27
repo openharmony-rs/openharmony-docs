@@ -1,12 +1,10 @@
 # Effect
 
-特效类型，继承自SceneResource。由createEffect接口获得。
+特效类型，继承自SceneResource。由createEffect接口获得。@extends SceneResource @interface Effect
 
 **继承/实现关系：** Effect extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface Effect--><!--Device-unnamed-export interface Effect-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -22,8 +20,6 @@ getPropertyValue(propertyName: string): Object | null | undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Effect-getPropertyValue(propertyName: string): Object | null | undefined--><!--Device-Effect-getPropertyValue(propertyName: string): Object | null | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
@@ -36,7 +32,7 @@ getPropertyValue(propertyName: string): Object | null | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| Object | 特效属性值。 若当前Effect类型下不存在与传入的propertyName匹配的属性，则获取属性值失败，返回null； 若propertyName对应的可选属性未设置，则返回undefined。 |
+| Object \| null \| undefined | 特效属性值。 若当前Effect类型下不存在与传入的propertyName匹配的属性，则获取属性值失败，返回null； 若propertyName对应的可选属性未设置，则返回undefined。 |
 
 **示例**
 
@@ -70,8 +66,6 @@ setPropertyValue(propertyName: string, value: Object | undefined): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Effect-setPropertyValue(propertyName: string, value: Object | undefined): boolean--><!--Device-Effect-setPropertyValue(propertyName: string, value: Object | undefined): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
@@ -79,7 +73,7 @@ setPropertyValue(propertyName: string, value: Object | undefined): boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | propertyName | string | 是 | 特定特效属性的名称。目前支持的字符串为： -'exposure'：该属性表示图像的曝光度。 -'vibrance'：该属性表示图像的自然饱和度。 |
-| value | Object \| undefined | 是 | 要设置的特效属性值。 'exposure'：value实际类型为number，推荐取值范围[-5, 5]。取值越大，图像越亮。 'vibrance'：value实际类型为number，推荐取值范围 [-1, 1]。取值越大，图像颜色越鲜艳。 |
+| value | Object \| undefined | 是 | 要设置的特效属性值。'exposure'：value实际类型为number，推荐取值范围[-5, 5]。取值越大，图像越亮。'vibrance'：value实际类型为number，推荐取值范围 [-1, 1]。取值越大，图像颜色越鲜艳。 |
 
 **返回值：**
 
@@ -117,9 +111,7 @@ readonly effectId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Effect-readonly effectId: string--><!--Device-Effect-readonly effectId: string-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -133,9 +125,6 @@ enabled: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Effect-enabled: boolean--><!--Device-Effect-enabled: boolean-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

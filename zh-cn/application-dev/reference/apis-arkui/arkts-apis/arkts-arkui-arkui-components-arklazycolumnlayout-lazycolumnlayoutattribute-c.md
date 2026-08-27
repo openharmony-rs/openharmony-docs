@@ -1,12 +1,10 @@
 # LazyColumnLayoutAttribute
 
-定义懒加载列布局属性。
+定义懒加载列布局属性。@extends CommonMethod&lt;LazyColumnLayoutAttribute&gt;
 
 **继承/实现关系：** LazyColumnLayoutAttribute extends CommonMethod<LazyColumnLayoutAttribute>
 
 **起始版本：** 26.0.0
-
-<!--Device-unnamed-export declare class LazyColumnLayoutAttribute--><!--Device-unnamed-export declare class LazyColumnLayoutAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,15 +28,13 @@ alignItems(value: HorizontalAlign | undefined): LazyColumnLayoutAttribute
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LazyColumnLayoutAttribute-alignItems(value: HorizontalAlign | undefined): LazyColumnLayoutAttribute--><!--Device-LazyColumnLayoutAttribute-alignItems(value: HorizontalAlign | undefined): LazyColumnLayoutAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [HorizontalAlign](../../apis-na/arkts-apis/arkts-na-enums-horizontalalign-e.md) \| undefined | 是 | 行内容的水平对齐。 <br>默认值为HorizontalAlign.Center。 |
+| value | [HorizontalAlign](arkts-arkui-horizontalalign-e.md) \| undefined | 是 | 行内容的水平对齐。 默认值为HorizontalAlign.Center。 |
 
 **返回值：**
 
@@ -60,15 +56,13 @@ footer(builder: CustomBuilder | undefined): LazyColumnLayoutAttribute
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LazyColumnLayoutAttribute-footer(builder: CustomBuilder | undefined): LazyColumnLayoutAttribute--><!--Device-LazyColumnLayoutAttribute-footer(builder: CustomBuilder | undefined): LazyColumnLayoutAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| builder | CustomBuilder \| undefined | 是 | footer生成器函数 <br>传入undefined移除footer。 |
+| builder | [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md) \| undefined | 是 | footer生成器函数 传入undefined移除footer。 |
 
 **返回值：**
 
@@ -90,15 +84,13 @@ header(builder: CustomBuilder | undefined): LazyColumnLayoutAttribute
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LazyColumnLayoutAttribute-header(builder: CustomBuilder | undefined): LazyColumnLayoutAttribute--><!--Device-LazyColumnLayoutAttribute-header(builder: CustomBuilder | undefined): LazyColumnLayoutAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| builder | CustomBuilder \| undefined | 是 | header生成器函数 <br>传递undefined将移除header。 |
+| builder | [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md) \| undefined | 是 | header生成器函数 传递undefined将移除header。 |
 
 **返回值：**
 
@@ -120,15 +112,13 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): La
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LazyColumnLayoutAttribute-onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): LazyColumnLayoutAttribute--><!--Device-LazyColumnLayoutAttribute-onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): LazyColumnLayoutAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnVisibleIndexesChangeCallback](../../apis-na/arkts-apis/arkts-na-onvisibleindexeschangecallback-t.md) \| undefined | 是 | 回调函数，当可见区域中子组件的索引发生变化时触发。 <br>传递undefined将取消注册回调。 |
+| callback | [OnVisibleIndexesChangeCallback](../arkts-components/arkts-arkui-onvisibleindexeschangecallback-t.md) \| undefined | 是 | 回调函数，当可见区域中子组件的索引发生变化时触发。 传递undefined将取消注册回调。 |
 
 **返回值：**
 
@@ -150,15 +140,13 @@ space(space: LengthMetrics | undefined): LazyColumnLayoutAttribute
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LazyColumnLayoutAttribute-space(space: LengthMetrics | undefined): LazyColumnLayoutAttribute--><!--Device-LazyColumnLayoutAttribute-space(space: LengthMetrics | undefined): LazyColumnLayoutAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| space | [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md) \| undefined | 是 | 行之间的间距。 <br>默认值为0。<br>范围：[0, +∞)。 |
+| space | LengthMetrics \| undefined | 是 | 行之间的间距。 默认值为0。范围：[0, +∞)。 |
 
 **返回值：**
 
@@ -180,19 +168,16 @@ sticky(sticky: StickyStyle | undefined): LazyColumnLayoutAttribute
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LazyColumnLayoutAttribute-sticky(sticky: StickyStyle | undefined): LazyColumnLayoutAttribute--><!--Device-LazyColumnLayoutAttribute-sticky(sticky: StickyStyle | undefined): LazyColumnLayoutAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sticky | [StickyStyle](../../apis-na/arkts-apis/arkts-na-list-stickystyle-e.md) \| undefined | 是 | header和footer吸顶吸底样式。 |
+| sticky | [StickyStyle](../arkts-components/arkts-arkui-stickystyle-e.md) \| undefined | 是 | header和footer吸顶吸底样式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | [LazyColumnLayoutAttribute](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutattribute-c.md) |  |
-

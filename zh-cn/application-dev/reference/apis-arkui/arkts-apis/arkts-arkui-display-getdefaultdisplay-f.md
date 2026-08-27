@@ -20,15 +20,13 @@ function getDefaultDisplay(callback: AsyncCallback<Display>): void
 
 **替代接口：** [getDefaultDisplaySync](arkts-arkui-display-getdefaultdisplaysync-f.md)
 
-<!--Device-display-function getDefaultDisplay(callback: AsyncCallback<Display>): void--><!--Device-display-function getDefaultDisplay(callback: AsyncCallback<Display>): void-End-->
-
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Display](arkts-arkui-display-display-i.md)&gt; | 是 | 回调函数。返回当前默认的Display对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Display](arkts-arkui-display-display-i.md)&gt; | 是 | 回调函数。返回当前默认的Display对象。 |
 
 **示例**
 
@@ -62,8 +60,6 @@ function getDefaultDisplay(): Promise<Display>
 
 **替代接口：** [getDefaultDisplaySync](arkts-arkui-display-getdefaultdisplaysync-f.md)
 
-<!--Device-display-function getDefaultDisplay(): Promise<Display>--><!--Device-display-function getDefaultDisplay(): Promise<Display>-End-->
-
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **返回值：**
@@ -86,4 +82,3 @@ promise.then((data: display.Display) => {
   console.error(`Failed to obtain the default display object. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-

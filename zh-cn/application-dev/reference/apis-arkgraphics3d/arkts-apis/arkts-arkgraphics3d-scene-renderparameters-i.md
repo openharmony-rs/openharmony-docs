@@ -1,10 +1,8 @@
 # RenderParameters
 
-渲染参数接口。
+渲染参数接口。@interface RenderParameters
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface RenderParameters--><!--Device-unnamed-export interface RenderParameters-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -18,9 +16,6 @@ alwaysRender?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-RenderParameters-alwaysRender?: boolean--><!--Device-RenderParameters-alwaysRender?: boolean-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

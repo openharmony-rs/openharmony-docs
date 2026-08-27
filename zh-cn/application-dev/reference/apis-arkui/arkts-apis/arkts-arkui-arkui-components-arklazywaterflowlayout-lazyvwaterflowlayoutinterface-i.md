@@ -1,10 +1,8 @@
 # LazyVWaterFlowLayoutInterface
 
-定义懒加载垂直瀑布流布局组件。
+定义懒加载垂直瀑布流布局组件。@interface LazyVWaterFlowLayoutInterface
 
 **起始版本：** 26.0.0
-
-<!--Device-unnamed-export interface LazyVWaterFlowLayoutInterface--><!--Device-unnamed-export interface LazyVWaterFlowLayoutInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -14,7 +12,7 @@
 import { LazyVWaterFlowLayout, LazyVWaterFlowLayoutAttribute, LazyWaterFlowLayoutAttribute } from '@kit.ArkUI';
 ```
 
-## constructor
+## [[Call]]
 
 ```TypeScript
 (): LazyVWaterFlowLayoutAttribute
@@ -28,8 +26,6 @@ import { LazyVWaterFlowLayout, LazyVWaterFlowLayoutAttribute, LazyWaterFlowLayou
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LazyVWaterFlowLayoutInterface-(): LazyVWaterFlowLayoutAttribute--><!--Device-LazyVWaterFlowLayoutInterface-(): LazyVWaterFlowLayoutAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -37,4 +33,3 @@ import { LazyVWaterFlowLayout, LazyVWaterFlowLayoutAttribute, LazyWaterFlowLayou
 | 类型 | 说明 |
 | --- | --- |
 | [LazyVWaterFlowLayoutAttribute](arkts-arkui-arkui-components-arklazywaterflowlayout-lazyvwaterflowlayoutattribute-c.md) |  |
-

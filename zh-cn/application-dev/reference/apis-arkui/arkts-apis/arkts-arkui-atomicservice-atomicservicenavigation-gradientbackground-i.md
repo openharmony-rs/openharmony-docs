@@ -4,8 +4,6 @@
 
 **起始版本：** 18
 
-<!--Device-unnamed-export interface GradientBackground--><!--Device-unnamed-export interface GradientBackground-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,8 +26,6 @@ alpha?: GradientAlpha
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GradientBackground-alpha?: GradientAlpha--><!--Device-GradientBackground-alpha?: GradientAlpha-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundTheme
@@ -45,8 +41,6 @@ backgroundTheme?: BackgroundTheme
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GradientBackground-backgroundTheme?: BackgroundTheme--><!--Device-GradientBackground-backgroundTheme?: BackgroundTheme-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,8 +58,6 @@ mixMode?: MixMode
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GradientBackground-mixMode?: MixMode--><!--Device-GradientBackground-mixMode?: MixMode-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryColor
@@ -76,13 +68,11 @@ primaryColor: ResourceColor
 
 单色渐变色彩值和双色渐变第一色彩值。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GradientBackground-primaryColor: ResourceColor--><!--Device-GradientBackground-primaryColor: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,13 +84,10 @@ secondaryColor?: ResourceColor
 
 双色渐变色第二色彩值。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GradientBackground-secondaryColor?: ResourceColor--><!--Device-GradientBackground-secondaryColor?: ResourceColor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

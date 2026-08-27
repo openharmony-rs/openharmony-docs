@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-unnamed-declare enum GestureMask--><!--Device-unnamed-declare enum GestureMask-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Normal
@@ -19,8 +17,6 @@ Normal
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GestureMask-Normal--><!--Device-GestureMask-Normal-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +32,4 @@ Ignore internal gestures and recognize the current gesture first.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GestureMask-IgnoreInternal--><!--Device-GestureMask-IgnoreInternal-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

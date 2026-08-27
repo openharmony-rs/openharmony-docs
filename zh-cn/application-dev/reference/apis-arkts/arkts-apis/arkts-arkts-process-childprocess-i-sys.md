@@ -4,8 +4,6 @@ childprocess 对象可用于创建新的进程。
 
 **起始版本：** 7
 
-<!--Device-process-export interface ChildProcess--><!--Device-process-export interface ChildProcess-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
@@ -26,8 +24,6 @@ close(): void
 
 **起始版本：** 7
 
-<!--Device-ChildProcess-close(): void--><!--Device-ChildProcess-close(): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
@@ -42,8 +38,6 @@ getErrorOutput(): Promise<Uint8Array>
 
 **起始版本：** 7
 
-<!--Device-ChildProcess-getErrorOutput(): Promise<Uint8Array>--><!--Device-ChildProcess-getErrorOutput(): Promise<Uint8Array>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
@@ -52,7 +46,7 @@ getErrorOutput(): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | 返回子进程的标准错误输出。 |
+| Promise & lt;Uint8Array & gt; | 返回子进程的标准错误输出。 |
 
 ## getOutput
 
@@ -64,8 +58,6 @@ getOutput(): Promise<Uint8Array>
 
 **起始版本：** 7
 
-<!--Device-ChildProcess-getOutput(): Promise<Uint8Array>--><!--Device-ChildProcess-getOutput(): Promise<Uint8Array>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
@@ -74,7 +66,7 @@ getOutput(): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | 返回子进程的标准输出。 |
+| Promise & lt;Uint8Array & gt; | 返回子进程的标准输出。 |
 
 ## kill
 
@@ -86,8 +78,6 @@ kill(signal: number | string): void
 
 **起始版本：** 7
 
-<!--Device-ChildProcess-kill(signal: number | string): void--><!--Device-ChildProcess-kill(signal: number | string): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
@@ -97,6 +87,22 @@ kill(signal: number | string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | signal | number \| string | 是 | number 或 string，表示发送的信号。 |
+
+**示例**
+
+```TypeScript
+let pid = process.pid;
+let result = process.kill(28, pid);
+```
+
+```TypeScript
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
+// 获取当前进程pid
+let pres = process.pid;
+// 发送信号28结束当前进程
+let result = processManager.kill(28, pres);
+```
 
 ## wait
 
@@ -108,8 +114,6 @@ wait(): Promise<number>
 
 **起始版本：** 7
 
-<!--Device-ChildProcess-wait(): Promise<number>--><!--Device-ChildProcess-wait(): Promise<number>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
@@ -118,7 +122,7 @@ wait(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | 返回目标进程的退出码。 |
+| Promise & lt;number & gt; | 返回目标进程的退出码。 |
 
 ## exitCode
 
@@ -131,8 +135,6 @@ readonly exitCode: number
 **类型：** number
 
 **起始版本：** 7
-
-<!--Device-ChildProcess-readonly exitCode: number--><!--Device-ChildProcess-readonly exitCode: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -150,8 +152,6 @@ readonly killed: boolean
 
 **起始版本：** 7
 
-<!--Device-ChildProcess-readonly killed: boolean--><!--Device-ChildProcess-readonly killed: boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
@@ -167,8 +167,6 @@ readonly pid: number
 **类型：** number
 
 **起始版本：** 7
-
-<!--Device-ChildProcess-readonly pid: number--><!--Device-ChildProcess-readonly pid: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -186,9 +184,6 @@ readonly ppid: number
 
 **起始版本：** 7
 
-<!--Device-ChildProcess-readonly ppid: number--><!--Device-ChildProcess-readonly ppid: number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
-

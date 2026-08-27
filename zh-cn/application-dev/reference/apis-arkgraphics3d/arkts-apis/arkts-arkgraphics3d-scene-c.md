@@ -2,9 +2,7 @@
 
 用于设置场景。Scene采用树状层次结构组织场景节点，根节点（root）作为场景的入口。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export declare class Scene--><!--Device-unnamed-export declare class Scene-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -17,8 +15,6 @@ cloneNode(node: Node, parent: Node, name: string): Node | null
 在当前所在场景中克隆节点，不支持跨场景克隆节点。
 
 **起始版本：** 23
-
-<!--Device-Scene-cloneNode(node: Node, parent: Node, name: string): Node | null--><!--Device-Scene-cloneNode(node: Node, parent: Node, name: string): Node | null-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -34,7 +30,7 @@ cloneNode(node: Node, parent: Node, name: string): Node | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 返回克隆节点。克隆失败则返回null。 |
+| [Node](arkts-arkgraphics3d-scenenodes-node-i.md) \| null | 返回克隆节点。克隆失败则返回null。 |
 
 **示例**
 
@@ -66,9 +62,7 @@ createComponent(node: Node, name: string): Promise<SceneComponent>
 
 在指定节点上创建新的组件，根据组件名称异步创建并附加到节点上，使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-Scene-createComponent(node: Node, name: string): Promise<SceneComponent>--><!--Device-Scene-createComponent(node: Node, name: string): Promise<SceneComponent>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -117,9 +111,7 @@ destroy(): void
 
 销毁场景，释放所有的场景资源。
 
-**起始版本：** 23
-
-<!--Device-Scene-destroy(): void--><!--Device-Scene-destroy(): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -148,9 +140,7 @@ getComponent(node: Node, name: string): SceneComponent | null
 
 根据指定的组件名称，从给定节点上获取对应的组件实例。
 
-**起始版本：** 23
-
-<!--Device-Scene-getComponent(node: Node, name: string): SceneComponent | null--><!--Device-Scene-getComponent(node: Node, name: string): SceneComponent | null-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -165,7 +155,7 @@ getComponent(node: Node, name: string): SceneComponent | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [SceneComponent](arkts-arkgraphics3d-scene-scenecomponent-i.md) | 返回对应名称的组件对象，若未找到则返回null。 |
+| [SceneComponent](arkts-arkgraphics3d-scene-scenecomponent-i.md) \| null | 返回对应名称的组件对象，若未找到则返回null。 |
 
 **示例**
 
@@ -199,9 +189,7 @@ static getDefaultRenderContext(): RenderContext | null
 
 获取当前图形对象所关联的渲染上下文。
 
-**起始版本：** 23
-
-<!--Device-Scene-static getDefaultRenderContext(): RenderContext | null--><!--Device-Scene-static getDefaultRenderContext(): RenderContext | null-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -209,7 +197,7 @@ static getDefaultRenderContext(): RenderContext | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [RenderContext](arkts-arkgraphics3d-scene-rendercontext-i.md) | 返回当前对象关联的渲染上下文，若对象尚未关联任何渲染上下文，则返回null。 |
+| [RenderContext](arkts-arkgraphics3d-scene-rendercontext-i.md) \| null | 返回当前对象关联的渲染上下文，若对象尚未关联任何渲染上下文，则返回null。 |
 
 **示例**
 
@@ -235,9 +223,7 @@ getNodeByPath(path: string, type?: NodeType): Node | null
 
 通过路径获取节点。
 
-**起始版本：** 23
-
-<!--Device-Scene-getNodeByPath(path: string, type?: NodeType): Node | null--><!--Device-Scene-getNodeByPath(path: string, type?: NodeType): Node | null-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -252,7 +238,7 @@ getNodeByPath(path: string, type?: NodeType): Node | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 返回请求节点的实例，如果没有找到或者找到的节点类型与传入的参数不相符则返回空。 |
+| [Node](arkts-arkgraphics3d-scenenodes-node-i.md) \| null | 返回请求节点的实例，如果没有找到或者找到的节点类型与传入的参数不相符则返回空。 |
 
 **示例**
 
@@ -279,9 +265,7 @@ getResourceFactory(): SceneResourceFactory
 
 获取场景资源工厂对象。
 
-**起始版本：** 23
-
-<!--Device-Scene-getResourceFactory(): SceneResourceFactory--><!--Device-Scene-getResourceFactory(): SceneResourceFactory-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -316,9 +300,7 @@ importNode(name: string, node: Node, parent: Node | null): Node
 
 一般用于从其他场景导入节点。
 
-**起始版本：** 23
-
-<!--Device-Scene-importNode(name: string, node: Node, parent: Node | null): Node--><!--Device-Scene-importNode(name: string, node: Node, parent: Node | null): Node-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -368,9 +350,7 @@ importScene(name: string, scene: Scene, parent: Node | null): Node
 
 在当前场景中导入其他场景。
 
-**起始版本：** 23
-
-<!--Device-Scene-importScene(name: string, scene: Scene, parent: Node | null): Node--><!--Device-Scene-importScene(name: string, scene: Scene, parent: Node | null): Node-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -414,9 +394,7 @@ static load(uri? : ResourceStr): Promise<Scene>
 
 通过传入的资源路径加载资源，使用Promise异步回调。 调用后，应该在Scene使用完毕时调用destroy释放资源，否则可能导致资源泄漏。
 
-**起始版本：** 23
-
-<!--Device-Scene-static load(uri? : ResourceStr): Promise<Scene>--><!--Device-Scene-static load(uri? : ResourceStr): Promise<Scene>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -488,9 +466,7 @@ renderFrame(params?: RenderParameters): boolean
 
 通过该接口可以实现按需渲染，例如控制渲染帧率。
 
-**起始版本：** 23
-
-<!--Device-Scene-renderFrame(params?: RenderParameters): boolean--><!--Device-Scene-renderFrame(params?: RenderParameters): boolean-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -524,3 +500,58 @@ function RenderFrameTest() {
 }
 ```
 
+## animations
+
+```TypeScript
+get animations(): Animation[]
+```
+
+动画数组，用于保存3D场景中的动画对象。@return { Animation[] } @readonly
+
+**类型：** [Animation](arkts-arkgraphics3d-sceneresources-animation-i.md)[]
+
+**起始版本：** 12
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+## environment
+
+```TypeScript
+set environment(value: Environment)
+```
+
+环境对象。
+
+**类型：** [Environment](arkts-arkgraphics3d-sceneresources-environment-i.md)
+
+**起始版本：** 12
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+## renderConfiguration
+
+```TypeScript
+get renderConfiguration(): RenderConfiguration
+```
+
+渲染配置接口。
+
+**类型：** [RenderConfiguration](arkts-arkgraphics3d-scene-renderconfiguration-i.md)
+
+**起始版本：** 23
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+## root
+
+```TypeScript
+get root(): Node | null
+```
+
+3D场景树根节点。@return { Node | null } @readonly
+
+**类型：** [Node](arkts-arkgraphics3d-scenenodes-node-i.md)
+
+**起始版本：** 12
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D

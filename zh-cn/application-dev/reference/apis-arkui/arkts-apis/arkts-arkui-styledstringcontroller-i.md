@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface StyledStringController--><!--Device-unnamed-declare interface StyledStringController-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,15 +25,13 @@ getStyledString(): MutableStyledString
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-StyledStringController-getStyledString(): MutableStyledString--><!--Device-StyledStringController-getStyledString(): MutableStyledString-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| MutableStyledString | 富文本组件显示的属性字符串。 |
+| [MutableStyledString](arkts-arkui-mutablestyledstring-c.md) | 富文本组件显示的属性字符串。 |
 
 ## setStyledString
 
@@ -51,13 +47,10 @@ setStyledString(styledString: StyledString): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-StyledStringController-setStyledString(styledString: StyledString): void--><!--Device-StyledStringController-setStyledString(styledString: StyledString): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| styledString | StyledString | 是 | 属性字符串。 <br>**说明：** <br>StyledString的子类MutableStyledString也可以作为入参值。 |
-
+| styledString | [StyledString](arkts-arkui-styledstring-c.md) | 是 | 属性字符串。    **说明：** StyledString的子类[MutableStyledString](arkts-arkui-mutablestyledstring-c.md)也可以作为入参值。 |

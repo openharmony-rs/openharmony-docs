@@ -1,10 +1,8 @@
 # AppRotation
 
-Enumerates the app rotation.
+Enumerates the app rotation.@enum { number }
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare enum AppRotation--><!--Device-unnamed-declare enum AppRotation-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,8 +20,6 @@ App does not rotate to display vertically.
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AppRotation-ROTATION_0 = 0--><!--Device-AppRotation-ROTATION_0 = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ROTATION_90
@@ -39,8 +35,6 @@ App rotates 90 degrees clockwise to display horizontally.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AppRotation-ROTATION_90 = 1--><!--Device-AppRotation-ROTATION_90 = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,8 +52,6 @@ App rotates 180 degrees clockwise to display vertically in reverse.
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AppRotation-ROTATION_180 = 2--><!--Device-AppRotation-ROTATION_180 = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ROTATION_270
@@ -76,7 +68,4 @@ App rotates 270 degrees clockwise to display horizontally in reverse.
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AppRotation-ROTATION_270 = 3--><!--Device-AppRotation-ROTATION_270 = 3-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

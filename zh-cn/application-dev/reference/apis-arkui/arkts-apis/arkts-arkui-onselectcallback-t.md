@@ -10,8 +10,6 @@ declare type OnSelectCallback = (index: number, selectValue: string) => void
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type OnSelectCallback = (index: number, selectValue: string) => void--><!--Device-unnamed-declare type OnSelectCallback = (index: number, selectValue: string) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -20,4 +18,3 @@ declare type OnSelectCallback = (index: number, selectValue: string) => void
 | --- | --- | --- | --- |
 | index | number | 是 | 选中项的索引，索引从0开始。 |
 | selectValue | string | 是 | 选中项的值。 |
-

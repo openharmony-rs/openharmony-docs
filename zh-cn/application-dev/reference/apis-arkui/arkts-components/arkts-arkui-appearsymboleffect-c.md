@@ -6,8 +6,6 @@ AppearSymbolEffect继承自父类SymbolEffect。
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class AppearSymbolEffect--><!--Device-unnamed-declare class AppearSymbolEffect-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,15 +29,13 @@ AppearSymbolEffect的构造函数，出现动效。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-AppearSymbolEffect-constructor(scope?: EffectScope)--><!--Device-AppearSymbolEffect-constructor(scope?: EffectScope)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scope | [EffectScope](arkts-arkui-effectscope-e.md) | 否 | 动效范围。具体枚举值及说明请参考EffectScope枚举说明。 <br>默认值：EffectScope.LAYER |
+| scope | [EffectScope](arkts-arkui-effectscope-e.md) | 否 | 动效范围。具体枚举值及说明请参考EffectScope枚举说明。 默认值：EffectScope.LAYER |
 
 ## scope
 
@@ -47,7 +43,7 @@ AppearSymbolEffect的构造函数，出现动效。
 scope?: EffectScope
 ```
 
-动效范围。具体枚举值及说明请参考EffectScope枚举说明。 默认值：EffectScope.LAYER
+动效范围。具体枚举值及说明请参考EffectScope枚举说明。默认值：EffectScope.LAYER
 
 **类型：** [EffectScope](arkts-arkui-effectscope-e.md)
 
@@ -59,7 +55,4 @@ scope?: EffectScope
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-AppearSymbolEffect-scope?: EffectScope--><!--Device-AppearSymbolEffect-scope?: EffectScope-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

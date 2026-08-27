@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface CommonProgressStyleOptions--><!--Device-unnamed-declare interface CommonProgressStyleOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,7 +17,7 @@
 enableSmoothEffect?: boolean
 ```
 
-进度平滑动效的开关。开启平滑动效后设置进度，进度会从当前值渐变至设定值，页面会有进度变化的动效；否则进度从当前值突变至设定值，页面无动效。 true：表示开启进度平滑动效。 false：表示关闭进度平滑动效。 默认值：true
+进度平滑动效的开关。开启平滑动效后设置进度，进度会从当前值渐变至设定值，页面会有进度变化的动效；否则进度从当前值突变至设定值，页面无动效。true：表示开启进度平滑动效。false：表示关闭进度平滑动效。默认值：true
 
 **类型：** boolean
 
@@ -31,7 +29,4 @@ enableSmoothEffect?: boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CommonProgressStyleOptions-enableSmoothEffect?: boolean--><!--Device-CommonProgressStyleOptions-enableSmoothEffect?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

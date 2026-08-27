@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface TextRange--><!--Device-unnamed-declare interface TextRange-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,8 +29,6 @@ end?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextRange-end?: number--><!--Device-TextRange-end?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -53,7 +49,4 @@ start?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextRange-start?: number--><!--Device-TextRange-start?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

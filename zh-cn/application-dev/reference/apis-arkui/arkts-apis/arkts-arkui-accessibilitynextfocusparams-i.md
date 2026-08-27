@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-declare interface AccessibilityNextFocusParams--><!--Device-unnamed-declare interface AccessibilityNextFocusParams-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,7 +29,4 @@ descendantMode -确定焦点搜索是否应考虑 在下一个可访问性焦点
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-AccessibilityNextFocusParams-isConsiderDescendants?: boolean--><!--Device-AccessibilityNextFocusParams-isConsiderDescendants?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

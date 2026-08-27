@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-mediaquery-interface MediaQueryResult--><!--Device-mediaquery-interface MediaQueryResult-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,8 +28,6 @@ readonly matches: boolean
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-MediaQueryResult-readonly matches: boolean--><!--Device-MediaQueryResult-readonly matches: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## media
@@ -50,7 +46,4 @@ readonly media: string
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-MediaQueryResult-readonly media: string--><!--Device-MediaQueryResult-readonly media: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

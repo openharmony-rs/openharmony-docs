@@ -4,14 +4,11 @@ NativeMediaPlayerBridge 是[CreateNativeMediaPlayerCallback](arkts-arkweb-webvie
 
 **起始版本：** 12
 
-<!--Device-webview-interface NativeMediaPlayerBridge--><!--Device-webview-interface NativeMediaPlayerBridge-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { webview } from '@kit.ArkWeb';
 ```
 
 ## enterFullscreen
@@ -26,9 +23,11 @@ enterFullscreen(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NativeMediaPlayerBridge-enterFullscreen(): void--><!--Device-NativeMediaPlayerBridge-enterFullscreen(): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**示例**
+
+完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
 
 ## exitFullscreen
 
@@ -42,9 +41,11 @@ exitFullscreen(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NativeMediaPlayerBridge-exitFullscreen(): void--><!--Device-NativeMediaPlayerBridge-exitFullscreen(): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**示例**
+
+完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
 
 ## pause
 
@@ -58,9 +59,89 @@ pause(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NativeMediaPlayerBridge-pause(): void--><!--Device-NativeMediaPlayerBridge-pause(): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**示例**
+
+完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+  download: webview.WebDownloadItem = new webview.WebDownloadItem();
+  failedData: Uint8Array = new Uint8Array();
+
+  build() {
+    Column() {
+      Button('setDownloadDelegate')
+        .onClick(() => {
+          try {
+            this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("will start a download.");
+              // 传入一个下载路径，并开始下载。
+              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+            })
+            this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+              this.download = webDownloadItem;
+            })
+            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
+              console.error("download failed guid: " + webDownloadItem.getGuid());
+              // 序列化失败的下载到一个字节数组。
+              this.failedData = webDownloadItem.serialize();
+            })
+            this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download finish guid: " + webDownloadItem.getGuid());
+            })
+            this.controller.setDownloadDelegate(this.delegate);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('startDownload')
+        .onClick(() => {
+          try {
+            this.controller.startDownload('https://www.example.com');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('resumeDownload')
+        .onClick(() => {
+          try {
+            webview.WebDownloadManager.resumeDownload(webview.WebDownloadItem.deserialize(this.failedData));
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('cancel')
+        .onClick(() => {
+          try {
+            this.download.cancel();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('pause')
+        .onClick(() => {
+          try {
+            this.download.pause();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
 
 ## play
 
@@ -74,9 +155,11 @@ play(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NativeMediaPlayerBridge-play(): void--><!--Device-NativeMediaPlayerBridge-play(): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**示例**
+
+完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
 
 ## release
 
@@ -90,9 +173,11 @@ release(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NativeMediaPlayerBridge-release(): void--><!--Device-NativeMediaPlayerBridge-release(): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**示例**
+
+完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
 
 ## resumePlayer
 
@@ -104,9 +189,11 @@ resumePlayer?(): void
 
 **起始版本：** 12
 
-<!--Device-NativeMediaPlayerBridge-resumePlayer?(): void--><!--Device-NativeMediaPlayerBridge-resumePlayer?(): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**示例**
+
+完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
 
 ## seek
 
@@ -120,15 +207,17 @@ seek(targetTime: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NativeMediaPlayerBridge-seek(targetTime: number): void--><!--Device-NativeMediaPlayerBridge-seek(targetTime: number): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetTime | number | 是 | 播放跳转到的时间点，从媒体开始播放时计算。 <br>单位：秒。 |
+| targetTime | number | 是 | 播放跳转到的时间点，从媒体开始播放时计算。 单位：秒。 |
+
+**示例**
+
+完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
 
 ## setMuted
 
@@ -142,15 +231,17 @@ setMuted(muted: boolean): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NativeMediaPlayerBridge-setMuted(muted: boolean): void--><!--Device-NativeMediaPlayerBridge-setMuted(muted: boolean): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| muted | boolean | 是 | 是否静音。 <br>true表示静音，false表示未静音。 |
+| muted | boolean | 是 | 是否静音。 true表示静音，false表示未静音。 |
+
+**示例**
+
+完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
 
 ## setPlaybackRate
 
@@ -164,15 +255,17 @@ setPlaybackRate(playbackRate: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NativeMediaPlayerBridge-setPlaybackRate(playbackRate: number): void--><!--Device-NativeMediaPlayerBridge-setPlaybackRate(playbackRate: number): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| playbackRate | number | 是 | 播放速率。 <br>取值范围：[0, 10.0]，其中1表示原速播放。超出取值范围时，按边界值自动修正。 |
+| playbackRate | number | 是 | 播放速率。 取值范围：[0, 10.0]，其中1表示原速播放。超出取值范围时，按边界值自动修正。 |
+
+**示例**
+
+完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
 
 ## setVolume
 
@@ -186,15 +279,17 @@ setVolume(volume: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NativeMediaPlayerBridge-setVolume(volume: number): void--><!--Device-NativeMediaPlayerBridge-setVolume(volume: number): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volume | number | 是 | 播放器的音量。 <br>取值范围：[0, 1.0]，其中0表示静音，1.0表示最大音量。超出取值范围时，按边界值自动修正。 |
+| volume | number | 是 | 播放器的音量。 取值范围：[0, 1.0]，其中0表示静音，1.0表示最大音量。超出取值范围时，按边界值自动修正。 |
+
+**示例**
+
+完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
 
 ## suspendPlayer
 
@@ -206,8 +301,6 @@ suspendPlayer?(type: SuspendType): void
 
 **起始版本：** 12
 
-<!--Device-NativeMediaPlayerBridge-suspendPlayer?(type: SuspendType): void--><!--Device-NativeMediaPlayerBridge-suspendPlayer?(type: SuspendType): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -215,6 +308,10 @@ suspendPlayer?(type: SuspendType): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | [SuspendType](arkts-arkweb-webview-suspendtype-e.md) | 是 | 播放器挂起类型，用于指定播放器挂起的方式。不同 SuspendType 取值对应不同的挂起场景。 |
+
+**示例**
+
+完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
 
 ## updateRect
 
@@ -228,16 +325,17 @@ updateRect(x: number, y: number, width: number, height: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NativeMediaPlayerBridge-updateRect(x: number, y: number, width: number, height: number): void--><!--Device-NativeMediaPlayerBridge-updateRect(x: number, y: number, width: number, height: number): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | surface相对于Web组件的x坐标信息。 <br>单位：px。 |
-| y | number | 是 | surface相对于Web组件的y坐标信息。 <br>单位：px。 |
-| width | number | 是 | surface的宽度。 <br>单位：px。 |
-| height | number | 是 | surface的高度。 <br>单位：px。 |
+| x | number | 是 | surface相对于Web组件的x坐标信息。 单位：px。 |
+| y | number | 是 | surface相对于Web组件的y坐标信息。 单位：px。 |
+| width | number | 是 | surface的宽度。 单位：px。 |
+| height | number | 是 | surface的高度。 单位：px。 |
 
+**示例**
+
+完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。

@@ -12,9 +12,6 @@ SymbolGlyph类型的FrameNode节点类型。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-type SymbolGlyph = TypedFrameNode<SymbolGlyphInterface, SymbolGlyphAttribute>--><!--Device-typeNode-type SymbolGlyph = TypedFrameNode<SymbolGlyphInterface, SymbolGlyphAttribute>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** TypedFrameNode<SymbolGlyphInterface, SymbolGlyphAttribute>
-
+**属性类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;SymbolGlyphInterface, [SymbolGlyphAttribute](../arkts-components/arkts-arkui-symbolglyph-attribute.md)&gt;

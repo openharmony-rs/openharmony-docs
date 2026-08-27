@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-unnamed-declare class Storage--><!--Device-unnamed-declare class Storage-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -25,8 +23,6 @@ clear(): void
 
 **起始版本：** 7
 
-<!--Device-Storage-clear(): void--><!--Device-Storage-clear(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -40,8 +36,6 @@ constructor(needCrossThread?: boolean, file?: string)
 创建Storage实例的构造函数。
 
 **起始版本：** 7
-
-<!--Device-Storage-constructor(needCrossThread?: boolean, file?: string)--><!--Device-Storage-constructor(needCrossThread?: boolean, file?: string)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,8 +58,6 @@ delete(key: string): void
 
 **起始版本：** 7
 
-<!--Device-Storage-delete(key: string): void--><!--Device-Storage-delete(key: string): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -86,8 +78,6 @@ get(key: string): string | undefined
 
 **起始版本：** 7
 
-<!--Device-Storage-get(key: string): string | undefined--><!--Device-Storage-get(key: string): string | undefined-End-->
-
 **系统接口：** 此接口为系统接口。
 
 **参数：**
@@ -100,7 +90,7 @@ get(key: string): string | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| string | key对应的值；key不存在时返回undefined。 |
+| string \| undefined | key对应的值；key不存在时返回undefined。 |
 
 ## set
 
@@ -112,8 +102,6 @@ set(key: string, val: any): void
 
 **起始版本：** 7
 
-<!--Device-Storage-set(key: string, val: any): void--><!--Device-Storage-set(key: string, val: any): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -124,4 +112,3 @@ set(key: string, val: any): void
 | --- | --- | --- | --- |
 | key | string | 是 | 要设置的存储key名称。 |
 | val | any | 是 | 要存储的数据，支持string、number、boolean等基本类型以及可序列化的对象和数组，数据将被序列化后持久化到存储文件中。 |
-

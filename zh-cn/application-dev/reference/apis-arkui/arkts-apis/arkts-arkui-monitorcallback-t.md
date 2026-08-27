@@ -4,7 +4,7 @@
 export declare type MonitorCallback = (monitorValue: IMonitor) => void
 ```
 
-参数为IMonitor类型的监听回调函数。
+参数为[IMonitor](../arkts-components/arkts-arkui-imonitor-i.md)类型的监听回调函数。
 
 **起始版本：** 20
 
@@ -12,13 +12,10 @@ export declare type MonitorCallback = (monitorValue: IMonitor) => void
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-export declare type MonitorCallback = (monitorValue: IMonitor) => void--><!--Device-unnamed-export declare type MonitorCallback = (monitorValue: IMonitor) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| monitorValue | IMonitor | 是 | 回调函数传入的变化信息，包含状态变量变化的路径（dirty）、变化前后的值（通过value方法获取）等详细信息。具体属性和方法详见IMonitor。 |
-
+| monitorValue | [IMonitor](../arkts-components/arkts-arkui-imonitor-i.md) | 是 | 回调函数传入的变化信息，包含状态变量变化的路径（dirty）、变化前后的值（通过value方法获取）等详细信息。具体属性和方法详见IMonitor。 |

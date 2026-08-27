@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-export declare interface DialogOptions--><!--Device-unnamed-export declare interface DialogOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,8 +26,6 @@ backgroundImage?: Resource
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogOptions-backgroundImage?: Resource--><!--Device-DialogOptions-backgroundImage?: Resource-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottomOffsetType
@@ -45,8 +41,6 @@ bottomOffsetType?: BottomOffset
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DialogOptions-bottomOffsetType?: BottomOffset--><!--Device-DialogOptions-bottomOffsetType?: BottomOffset-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,8 +58,6 @@ foregroundImage?: Resource
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogOptions-foregroundImage?: Resource--><!--Device-DialogOptions-foregroundImage?: Resource-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconStyle
@@ -81,8 +73,6 @@ iconStyle?: IconStyle
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DialogOptions-iconStyle?: IconStyle--><!--Device-DialogOptions-iconStyle?: IconStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,8 +90,6 @@ onDialogClick?: Callback<void>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogOptions-onDialogClick?: Callback<void>--><!--Device-DialogOptions-onDialogClick?: Callback<void>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDialogClose
@@ -118,8 +106,6 @@ onDialogClose?: Callback<void>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogOptions-onDialogClose?: Callback<void>--><!--Device-DialogOptions-onDialogClose?: Callback<void>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## subtitle
@@ -130,13 +116,11 @@ subtitle?: ResourceStr
 
 弹框副标题文本。默认为空字符串。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DialogOptions-subtitle?: ResourceStr--><!--Device-DialogOptions-subtitle?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,13 +132,11 @@ subtitleColor?: ResourceStr | Color
 
 弹框副标题文本颜色。默认为\$r('sys.color.ohos_id_color_text_secondary_contrary')。
 
-**类型：** ResourceStr \| Color
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md) \| Color
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DialogOptions-subtitleColor?: ResourceStr | Color--><!--Device-DialogOptions-subtitleColor?: ResourceStr | Color-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,13 +148,11 @@ title?: ResourceStr
 
 弹框主标题文本。默认为空字符串。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DialogOptions-title?: ResourceStr--><!--Device-DialogOptions-title?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -184,13 +164,11 @@ titleColor?: ResourceStr | Color
 
 弹框主标题文本颜色。默认为\$r('sys.color.ohos_id_color_text_primary_contrary')。
 
-**类型：** ResourceStr \| Color
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md) \| Color
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DialogOptions-titleColor?: ResourceStr | Color--><!--Device-DialogOptions-titleColor?: ResourceStr | Color-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -208,8 +186,6 @@ titlePosition?: TitlePosition
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogOptions-titlePosition?: TitlePosition--><!--Device-DialogOptions-titlePosition?: TitlePosition-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## uiContext
@@ -220,13 +196,10 @@ uiContext: UIContext
 
 UI上下文实例。
 
-**类型：** [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)
+**类型：** [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogOptions-uiContext: UIContext--><!--Device-DialogOptions-uiContext: UIContext-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

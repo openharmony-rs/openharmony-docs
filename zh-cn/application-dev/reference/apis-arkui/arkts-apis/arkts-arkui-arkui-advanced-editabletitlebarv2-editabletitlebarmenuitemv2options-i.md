@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export declare interface EditableTitleBarMenuItemV2Options--><!--Device-unnamed-export declare interface EditableTitleBarMenuItemV2Options-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -14,15 +12,13 @@
 import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, EditableLeftIconV2Options, EditableTitleV2, EditableTitleV2Options, EditableTitleBarItemV2, EditableTitleBarItemV2Options, EditableTitleBarMenuItemV2, EditableTitleBarMenuItemV2Options, EditableSaveButtonV2, EditableSaveButtonV2Options, EditableTitleBarStyleV2, EditableTitleBarStyleV2Options } from '@kit.ArkUI';
 ```
 
-## accessibilityDescription
+## action
 
 ```TypeScript
-accessibilityDescription?: ResourceStr
+action?: OnActionCallback
 ```
 
-可访问性描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属 性，随后播报无障碍说明属性的内容。 默认值："单指双击即可执行"。
-
-**类型：** ResourceStr
+点击菜单项的回调函数。
 
 **起始版本：** 26.0.0
 
@@ -30,7 +26,23 @@ accessibilityDescription?: ResourceStr
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EditableTitleBarMenuItemV2Options-accessibilityDescription?: ResourceStr--><!--Device-EditableTitleBarMenuItemV2Options-accessibilityDescription?: ResourceStr-End-->
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## accessibilityDescription
+
+```TypeScript
+accessibilityDescription?: ResourceStr
+```
+
+可访问性描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属 性，随后播报无障碍说明属性的内容。默认值："单指双击即可执行"。
+
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +52,7 @@ accessibilityDescription?: ResourceStr
 accessibilityLevel?: string
 ```
 
-可访问性级别，用于控制当前项是否可被无障碍辅助服务所识别。 支持的值为： "auto"：当前组件会转换为"yes"。 "yes"：当前组件可被无障碍辅助服务所识别。 "no"：当前组件不可被无障碍辅助服务所识别。 "no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。 默认值："auto"
+可访问性级别，用于控制当前项是否可被无障碍辅助服务所识别。支持的值为："auto"：当前组件会转换为"yes"。"yes"：当前组件可被无障碍辅助服务所识别。"no"：当前组件不可被无障碍辅助服务所识别。"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。默认值："auto"
 
 **类型：** string
 
@@ -52,8 +64,6 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EditableTitleBarMenuItemV2Options-accessibilityLevel?: string--><!--Device-EditableTitleBarMenuItemV2Options-accessibilityLevel?: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -62,37 +72,15 @@ accessibilityLevel?: string
 accessibilityText?: ResourceStr
 ```
 
-屏幕阅读器的可访问性文本。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容。 默认值：有label时默认值为当前项label属性内容，没有设置label时，默认值为" "。
+屏幕阅读器的可访问性文本。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容。默认值：有label时默认值为当前项label属性内容，没有设置label时，默认值为" "。
 
-**类型：** ResourceStr
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EditableTitleBarMenuItemV2Options-accessibilityText?: ResourceStr--><!--Device-EditableTitleBarMenuItemV2Options-accessibilityText?: ResourceStr-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## action
-
-```TypeScript
-action?: OnActionCallback
-```
-
-点击菜单项的回调函数。
-
-**类型：** [OnActionCallback](arkts-arkui-onactioncallback-t.md)
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EditableTitleBarMenuItemV2Options-action?: OnActionCallback--><!--Device-EditableTitleBarMenuItemV2Options-action?: OnActionCallback-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,7 +90,7 @@ action?: OnActionCallback
 defaultFocus?: boolean
 ```
 
-是否默认获取焦点。 true：获焦。 false：不获焦。 默认值：false。
+是否默认获取焦点。true：获焦。false：不获焦。默认值：false。
 
 **类型：** boolean
 
@@ -114,8 +102,6 @@ defaultFocus?: boolean
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EditableTitleBarMenuItemV2Options-defaultFocus?: boolean--><!--Device-EditableTitleBarMenuItemV2Options-defaultFocus?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isEnabled
@@ -124,7 +110,7 @@ defaultFocus?: boolean
 isEnabled?: boolean
 ```
 
-是否启用。 默认值：true，表示启用。 isEnabled为false时，表示禁用。
+是否启用。默认值：true，表示启用。isEnabled为false时，表示禁用。
 
 **类型：** boolean
 
@@ -136,8 +122,6 @@ isEnabled?: boolean
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EditableTitleBarMenuItemV2Options-isEnabled?: boolean--><!--Device-EditableTitleBarMenuItemV2Options-isEnabled?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## label
@@ -148,15 +132,13 @@ label?: ResourceStr
 
 长按对话框的标签文本。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EditableTitleBarMenuItemV2Options-label?: ResourceStr--><!--Device-EditableTitleBarMenuItemV2Options-label?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,8 +158,6 @@ Symbol图标样式修饰器，优先级大于value。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EditableTitleBarMenuItemV2Options-symbolStyle?: SymbolGlyphModifier--><!--Device-EditableTitleBarMenuItemV2Options-symbolStyle?: SymbolGlyphModifier-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -188,7 +168,7 @@ value?: ResourceStr
 
 图标资源，支持Symbol类型图标或Image类型图标。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 26.0.0
 
@@ -196,7 +176,4 @@ value?: ResourceStr
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EditableTitleBarMenuItemV2Options-value?: ResourceStr--><!--Device-EditableTitleBarMenuItemV2Options-value?: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

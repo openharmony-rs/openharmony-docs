@@ -18,8 +18,6 @@ function has(obj: object, property: string): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-json-function has(obj: object, property: string): boolean--><!--Device-json-function has(obj: object, property: string): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -35,3 +33,14 @@ function has(obj: object, property: string): boolean
 | --- | --- |
 | boolean | 返回ArkTS对象是否包含指定属性的结果。true表示对象包含指定属性；false表示对象不包含指定属性。 |
 
+**示例**
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+
+const jsonText = '{"name": "John", "age": 30, "city": "ChongQing"}';
+let inputObj = JSON.parse(jsonText);
+let hasNameResult = JSON.has(inputObj, "name");
+console.info("hasNameResult = " + hasNameResult);
+// 打印结果：hasNameResult = true
+```

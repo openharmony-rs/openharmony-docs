@@ -1,5 +1,8 @@
 # Graphics
 
+自定义节点（RenderNode）相关的图形属性定义，提供几何变换（缩放、旋转、平移）、颜色与长度的统一表示、形状定义、图形遮罩与裁剪、模糊效果等能力，适用于需要在自定义节点上进行精细化图形绘制与视觉效果处理的场景。
+
+
 ## 汇总
 
 ### 函数
@@ -62,7 +65,7 @@
 | --- | --- |
 | [BorderRadiuses](arkts-arkui-borderradiuses-t.md) | 设置四个角的圆角半径。 |
 | [CornerRadius](arkts-arkui-cornerradius-t.md) | 设置四个角的圆角x轴与y轴的半轴长。 |
-| [Matrix4](arkts-arkui-matrix4-t.md) | 用于设置四阶矩阵。 用于设置组件的变换信息，该类型为一个 4x4 矩阵，使用一个长度为16的`number[]`进行表示，例如： ``` const transform: Matrix4 = [ 1, 0, 45, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ]。 ``` |
+| [Matrix4](arkts-arkui-matrix4-t.md) | 用于设置四阶矩阵。用于设置组件的变换信息，该类型为一个 4x4 矩阵，使用一个长度为16的`number[]`进行表示，例如：  ``` const transform: Matrix4 = [ 1, 0, 45, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ]。 ``` |
 | [Offset](arkts-arkui-offset-t.md) | 用于设置组件或效果的偏移。 |
 | [Pivot](arkts-arkui-pivot-t.md) | 用于设置组件的轴心坐标，轴心会作为组件的旋转/缩放中心点，影响旋转和缩放效果。 |
 | [Position](arkts-arkui-position-t.md) | 用于设置或返回组件的位置。 |
@@ -71,4 +74,3 @@
 | [Rotation](arkts-arkui-rotation-t.md) | 用于设置组件的旋转角度。 |
 | [Scale](arkts-arkui-scale-t.md) | 用于设置组件的缩放比例。 |
 | [Translation](arkts-arkui-translation-t.md) | 用于设置组件的平移量。 |
-

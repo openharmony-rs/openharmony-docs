@@ -4,8 +4,6 @@ Defined the draw modifier of node. Provides draw callbacks for the associated No
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class DrawModifier--><!--Device-unnamed-declare class DrawModifier-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -26,8 +24,6 @@ drawBehind Method. Executed before drawing associated Node.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DrawModifier-drawBehind?(drawContext: DrawContext): void--><!--Device-DrawModifier-drawBehind?(drawContext: DrawContext): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,8 +51,6 @@ drawContent Method. Executed when associated Node is drawing, the default drawCo
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DrawModifier-drawContent?(drawContext: DrawContext): void--><!--Device-DrawModifier-drawContent?(drawContext: DrawContext): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -82,8 +76,6 @@ drawForeground(drawContext: DrawContext): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DrawModifier-drawForeground(drawContext: DrawContext): void--><!--Device-DrawModifier-drawForeground(drawContext: DrawContext): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -111,8 +103,6 @@ drawFront Method. Executed after drawing associated Node.
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DrawModifier-drawFront?(drawContext: DrawContext): void--><!--Device-DrawModifier-drawFront?(drawContext: DrawContext): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -131,15 +121,15 @@ drawFront Method. Executed after drawing associated Node.
 drawOverlay(drawContext: DrawContext): void
 ```
 
-在关联的Node及其所有子节点绘制完成后，在悬浮层中绘制内容。 自定义绘制包含五个层级：内容背景层、内容层、内容前景层、前景层和悬浮层。 - 前景层和悬浮层在子节点之后绘制。 - 悬浮层与前景层的区别在于：悬浮层可以在组件的边界范围外进行绘制。
+在关联的Node及其所有子节点绘制完成后，在悬浮层中绘制内容。自定义绘制包含五个层级：内容背景层、内容层、内容前景层、前景层和悬浮层。  
+- 前景层和悬浮层在子节点之后绘制。  
+- 悬浮层与前景层的区别在于：悬浮层可以在组件的边界范围外进行绘制。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DrawModifier-drawOverlay(drawContext: DrawContext): void--><!--Device-DrawModifier-drawOverlay(drawContext: DrawContext): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -224,11 +214,8 @@ Invalidate the component, which will cause a re-render of the component.
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DrawModifier-invalidate(): void--><!--Device-DrawModifier-invalidate(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例**
 
 请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
-

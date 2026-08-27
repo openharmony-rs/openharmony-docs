@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-window-enum AcrossDisplayPresentation--><!--Device-window-enum AcrossDisplayPresentation-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## FOLLOW_ACROSS_DISPLAY_SETTING
@@ -19,8 +17,6 @@ FOLLOW_ACROSS_DISPLAY_SETTING = 0
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AcrossDisplayPresentation-FOLLOW_ACROSS_DISPLAY_SETTING = 0--><!--Device-AcrossDisplayPresentation-FOLLOW_ACROSS_DISPLAY_SETTING = 0-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -36,8 +32,6 @@ ENTER_ACROSS_DISPLAY_MODE = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AcrossDisplayPresentation-ENTER_ACROSS_DISPLAY_MODE = 1--><!--Device-AcrossDisplayPresentation-ENTER_ACROSS_DISPLAY_MODE = 1-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## EXIT_ACROSS_DISPLAY_MODE
@@ -52,7 +46,4 @@ EXIT_ACROSS_DISPLAY_MODE = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AcrossDisplayPresentation-EXIT_ACROSS_DISPLAY_MODE = 2--><!--Device-AcrossDisplayPresentation-EXIT_ACROSS_DISPLAY_MODE = 2-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
-

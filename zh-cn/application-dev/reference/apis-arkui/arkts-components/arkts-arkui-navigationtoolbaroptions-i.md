@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare interface NavigationToolbarOptions--><!--Device-unnamed-declare interface NavigationToolbarOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ backgroundBlurStyle?: BlurStyle
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NavigationToolbarOptions-backgroundBlurStyle?: BlurStyle--><!--Device-NavigationToolbarOptions-backgroundBlurStyle?: BlurStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundBlurStyleOptions
@@ -39,17 +35,16 @@ backgroundBlurStyle?: BlurStyle
 backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 ```
 
-工具栏背景模糊选项。 **说明：** 只在设置了backgroundBlurStyle时生效。 不建议与backgroundEffect同时使用。
+工具栏背景模糊选项。  
+**说明：**只在设置了backgroundBlurStyle时生效。不建议与backgroundEffect同时使用。
 
-**类型：** BackgroundBlurStyleOptions
+**类型：** [BackgroundBlurStyleOptions](arkts-arkui-backgroundblurstyleoptions-i.md)
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NavigationToolbarOptions-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions--><!--Device-NavigationToolbarOptions-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,15 +56,13 @@ backgroundColor?: ResourceColor
 
 工具栏背景颜色，设置后，工具栏背景将显示为指定颜色；不设置时为系统默认颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NavigationToolbarOptions-backgroundColor?: ResourceColor--><!--Device-NavigationToolbarOptions-backgroundColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,17 +72,16 @@ backgroundColor?: ResourceColor
 backgroundEffect?: BackgroundEffectOptions
 ```
 
-设置工具栏背景属性包括：模糊半径，亮度，饱和度，颜色等。 **说明：** 不建议与backgroundBlurStyleOptions同时使用。
+设置工具栏背景属性包括：模糊半径，亮度，饱和度，颜色等。  
+**说明：**不建议与backgroundBlurStyleOptions同时使用。
 
-**类型：** BackgroundEffectOptions
+**类型：** [BackgroundEffectOptions](arkts-arkui-backgroundeffectoptions-i.md)
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NavigationToolbarOptions-backgroundEffect?: BackgroundEffectOptions--><!--Device-NavigationToolbarOptions-backgroundEffect?: BackgroundEffectOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,7 +91,7 @@ backgroundEffect?: BackgroundEffectOptions
 barStyle?: BarStyle
 ```
 
-设置工具栏布局方式。 默认值：BarStyle.STANDARD
+设置工具栏布局方式。默认值：BarStyle.STANDARD
 
 **类型：** [BarStyle](arkts-arkui-barstyle-e.md)
 
@@ -111,8 +103,6 @@ barStyle?: BarStyle
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NavigationToolbarOptions-barStyle?: BarStyle--><!--Device-NavigationToolbarOptions-barStyle?: BarStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## hideItemValue
@@ -121,7 +111,7 @@ barStyle?: BarStyle
 hideItemValue?: boolean
 ```
 
-设置是否隐藏工具栏的文本，默认显示文本。 true：隐藏工具栏的文本；false：不隐藏工具栏的文本。 默认值：false
+设置是否隐藏工具栏的文本，默认显示文本。true：隐藏工具栏的文本；false：不隐藏工具栏的文本。默认值：false
 
 **类型：** boolean
 
@@ -132,8 +122,6 @@ hideItemValue?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NavigationToolbarOptions-hideItemValue?: boolean--><!--Device-NavigationToolbarOptions-hideItemValue?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,7 +141,4 @@ moreButtonOptions?: MoreButtonOptions
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NavigationToolbarOptions-moreButtonOptions?: MoreButtonOptions--><!--Device-NavigationToolbarOptions-moreButtonOptions?: MoreButtonOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

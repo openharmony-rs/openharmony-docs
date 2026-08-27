@@ -12,15 +12,18 @@ import { router } from '@kit.ArkUI';
 function push(options: RouterOptions): void
 ```
 
-跳转到应用内的指定页面。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [pushUrl](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-router-c.md#pushurl)替代。
+跳转到应用内的指定页面。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 9开始废弃，建议使用
+> [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [pushUrl](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-router-c.md#pushurl)(options: router.RouterOptions)
-
-<!--Device-router-function push(options: RouterOptions): void--><!--Device-router-function push(options: RouterOptions): void-End-->
+**替代接口：** [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl)(options: router.RouterOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +38,7 @@ function push(options: RouterOptions): void
 ```TypeScript
 import { router } from '@kit.ArkUI';
 
-class innerParams {
+class InnerParams {
   data3: number[];
 
   constructor(tuple: number[]) {
@@ -45,11 +48,11 @@ class innerParams {
 
 class RouterParams {
   data1: string;
-  data2: innerParams;
+  data2: InnerParams;
 
   constructor(str: string, tuple: number[]) {
     this.data1 = str;
-    this.data2 = new innerParams(tuple);
+    this.data2 = new InnerParams(tuple);
   }
 }
 
@@ -58,4 +61,3 @@ router.push({
   params: new RouterParams('message', [123, 456, 789])
 });
 ```
-

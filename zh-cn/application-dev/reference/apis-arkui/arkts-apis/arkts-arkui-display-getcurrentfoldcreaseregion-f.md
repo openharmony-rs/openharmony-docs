@@ -14,11 +14,9 @@ function getCurrentFoldCreaseRegion(): FoldCreaseRegion
 
 在当前显示模式下获取折叠折痕区域。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-display-function getCurrentFoldCreaseRegion(): FoldCreaseRegion--><!--Device-display-function getCurrentFoldCreaseRegion(): FoldCreaseRegion-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -40,4 +38,3 @@ function getCurrentFoldCreaseRegion(): FoldCreaseRegion
 let data: display.FoldCreaseRegion = display.getCurrentFoldCreaseRegion();
 console.info(`Succeeded in obtaining current fold crease region. Data: ${JSON.stringify(data)}`);
 ```
-

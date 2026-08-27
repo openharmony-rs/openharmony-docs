@@ -1,17 +1,14 @@
 # WebMessageExt
 
-WebMessageExt是[WebMessagePort](arkts-arkweb-webview-webmessageport-i.md)接口中用于接收和发送的拓展数据对象，支持多种数据类型：字符串（STRING）、数值（NUMBER）、布尔值（ BOOLEAN）、二进制数据（ARRAY_BUFFER）、数组（ARRAY）和错误对象（ERROR）。该类为ArkTS侧与HTML5侧之间的跨语言消息通信提供了结构化的数据载体，通过setType/getType设置和获取数据类 型，再通过对应的setter/getter方法读写具体数据。 WebMessageExt与WebMessagePort配合使用：WebMessagePort负责消息通道的建立和消息的收发，WebMessageExt作为消息的有效载荷在不同语言运行时之间传递。使用扩展接口 [postMessageEventExt](arkts-arkweb-webview-webmessageport-i.md#postmessageeventext)/ onMessageEventExt时，消息载 体即为WebMessageExt对象。
+WebMessageExt是[WebMessagePort](arkts-arkweb-webview-webmessageport-i.md)接口中用于接收和发送的拓展数据对象，支持多种数据类型：字符串（STRING）、数值（NUMBER）、布尔值（ BOOLEAN）、二进制数据（ARRAY_BUFFER）、数组（ARRAY）和错误对象（ERROR）。该类为ArkTS侧与HTML5侧之间的跨语言消息通信提供了结构化的数据载体，通过setType/getType设置和获取数据类 型，再通过对应的setter/getter方法读写具体数据。WebMessageExt与WebMessagePort配合使用：WebMessagePort负责消息通道的建立和消息的收发，WebMessageExt作为消息的有效载荷在不同语言运行时之间传递。使用扩展接口 [postMessageEventExt](arkts-arkweb-webview-webmessageport-i.md#postmessageeventext)/ onMessageEventExt时，消息载 体即为WebMessageExt对象。
 
 **起始版本：** 10
-
-<!--Device-webview-class WebMessageExt--><!--Device-webview-class WebMessageExt-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { webview } from '@kit.ArkWeb';
 ```
 
 ## getArray
@@ -26,15 +23,13 @@ getArray(): Array<string | number | boolean>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebMessageExt-getArray(): Array<string | number | boolean>--><!--Device-WebMessageExt-getArray(): Array<string | number | boolean>-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string \| number \| boolean&gt; | 返回数组类型的数据。 |
+| Array & lt;string \ | number \| boolean & gt; | 返回数组类型的数据。 |
 
 **错误码：**
 
@@ -53,8 +48,6 @@ getArrayBuffer(): ArrayBuffer
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebMessageExt-getArrayBuffer(): ArrayBuffer--><!--Device-WebMessageExt-getArrayBuffer(): ArrayBuffer-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -82,8 +75,6 @@ getBoolean(): boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebMessageExt-getBoolean(): boolean--><!--Device-WebMessageExt-getBoolean(): boolean-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -109,8 +100,6 @@ getError(): Error
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebMessageExt-getError(): Error--><!--Device-WebMessageExt-getError(): Error-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -138,8 +127,6 @@ getNumber(): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebMessageExt-getNumber(): number--><!--Device-WebMessageExt-getNumber(): number-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -165,8 +152,6 @@ getString(): string
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebMessageExt-getString(): string--><!--Device-WebMessageExt-getString(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -194,8 +179,6 @@ getType(): WebMessageType
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebMessageExt-getType(): WebMessageType--><!--Device-WebMessageExt-getType(): WebMessageType-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -216,21 +199,19 @@ setArray(message: Array<string | number | boolean>): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebMessageExt-setArray(message: Array<string | number | boolean>): void--><!--Device-WebMessageExt-setArray(message: Array<string | number | boolean>): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | Array&lt;string \| number \| boolean&gt; | 是 | 数组类型数据。 |
+| message | Array & lt;string \ | number \| boolean & gt; | 是 | 数组类型数据。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
 ## setArrayBuffer
@@ -245,8 +226,6 @@ setArrayBuffer(message: ArrayBuffer): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebMessageExt-setArrayBuffer(message: ArrayBuffer): void--><!--Device-WebMessageExt-setArrayBuffer(message: ArrayBuffer): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -259,7 +238,7 @@ setArrayBuffer(message: ArrayBuffer): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
 ## setBoolean
@@ -274,8 +253,6 @@ setBoolean(message: boolean): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebMessageExt-setBoolean(message: boolean): void--><!--Device-WebMessageExt-setBoolean(message: boolean): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -288,7 +265,7 @@ setBoolean(message: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
 ## setError
@@ -303,8 +280,6 @@ setError(message: Error): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebMessageExt-setError(message: Error): void--><!--Device-WebMessageExt-setError(message: Error): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -317,7 +292,7 @@ setError(message: Error): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
 ## setNumber
@@ -332,8 +307,6 @@ setNumber(message: number): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebMessageExt-setNumber(message: number): void--><!--Device-WebMessageExt-setNumber(message: number): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -346,7 +319,7 @@ setNumber(message: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
 ## setString
@@ -361,8 +334,6 @@ setString(message: string): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebMessageExt-setString(message: string): void--><!--Device-WebMessageExt-setString(message: string): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -375,7 +346,7 @@ setString(message: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
 ## setType
@@ -390,8 +361,6 @@ setType(type: WebMessageType): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebMessageExt-setType(type: WebMessageType): void--><!--Device-WebMessageExt-setType(type: WebMessageType): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -404,6 +373,5 @@ setType(type: WebMessageType): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
-

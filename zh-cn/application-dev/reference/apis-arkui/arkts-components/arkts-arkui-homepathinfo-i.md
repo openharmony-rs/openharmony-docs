@@ -4,8 +4,6 @@
 
 **起始版本：** 20
 
-<!--Device-unnamed-declare interface HomePathInfo--><!--Device-unnamed-declare interface HomePathInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ name: string
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HomePathInfo-name: string--><!--Device-HomePathInfo-name: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## param
@@ -49,7 +45,4 @@ param?: Object
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HomePathInfo-param?: Object--><!--Device-HomePathInfo-param?: Object-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

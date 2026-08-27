@@ -4,18 +4,11 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface OnTouchIconUrlReceivedEvent--><!--Device-unnamed-declare interface OnTouchIconUrlReceivedEvent-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## precomposed
@@ -24,15 +17,13 @@ import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 precomposed: boolean
 ```
 
-对应apple-touch-icon是否为预合成。 true表示对应apple-touch-icon为预合成，false表示对应apple-touch-icon不是预合成。
+对应apple-touch-icon是否为预合成。true表示对应apple-touch-icon为预合成，false表示对应apple-touch-icon不是预合成。
 
 **类型：** boolean
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OnTouchIconUrlReceivedEvent-precomposed: boolean--><!--Device-OnTouchIconUrlReceivedEvent-precomposed: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -50,7 +41,4 @@ url: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnTouchIconUrlReceivedEvent-url: string--><!--Device-OnTouchIconUrlReceivedEvent-url: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

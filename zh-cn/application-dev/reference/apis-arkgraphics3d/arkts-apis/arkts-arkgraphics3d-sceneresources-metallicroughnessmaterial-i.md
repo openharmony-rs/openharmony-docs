@@ -1,12 +1,10 @@
 # MetallicRoughnessMaterial
 
-用于实现真实感外观的材质资源。 采用基于物理渲染（PBR）的金属-粗糙度模型，通过调节金属度和粗糙度参数，可模拟金属、塑料等不同材质的表面光照与反射效果，继承自Material。
+用于实现真实感外观的材质资源。 采用基于物理渲染（PBR）的金属-粗糙度模型，通过调节金属度和粗糙度参数，可模拟金属、塑料等不同材质的表面光照与反射效果，继承自Material。@extends Material @interface MetallicRoughnessMaterial
 
 **继承/实现关系：** MetallicRoughnessMaterial extends [Material](arkts-arkgraphics3d-sceneresources-material-i.md)
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface MetallicRoughnessMaterial--><!--Device-unnamed-export interface MetallicRoughnessMaterial-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -20,9 +18,7 @@ ambientOcclusion: MaterialProperty
 
 **类型：** [MaterialProperty](arkts-arkgraphics3d-sceneresources-materialproperty-i.md)
 
-**起始版本：** 23
-
-<!--Device-MetallicRoughnessMaterial-ambientOcclusion: MaterialProperty--><!--Device-MetallicRoughnessMaterial-ambientOcclusion: MaterialProperty-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -36,9 +32,7 @@ baseColor: MaterialProperty
 
 **类型：** [MaterialProperty](arkts-arkgraphics3d-sceneresources-materialproperty-i.md)
 
-**起始版本：** 23
-
-<!--Device-MetallicRoughnessMaterial-baseColor: MaterialProperty--><!--Device-MetallicRoughnessMaterial-baseColor: MaterialProperty-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -52,9 +46,7 @@ clearCoat: MaterialProperty
 
 **类型：** [MaterialProperty](arkts-arkgraphics3d-sceneresources-materialproperty-i.md)
 
-**起始版本：** 23
-
-<!--Device-MetallicRoughnessMaterial-clearCoat: MaterialProperty--><!--Device-MetallicRoughnessMaterial-clearCoat: MaterialProperty-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -68,9 +60,7 @@ clearCoatNormal: MaterialProperty
 
 **类型：** [MaterialProperty](arkts-arkgraphics3d-sceneresources-materialproperty-i.md)
 
-**起始版本：** 23
-
-<!--Device-MetallicRoughnessMaterial-clearCoatNormal: MaterialProperty--><!--Device-MetallicRoughnessMaterial-clearCoatNormal: MaterialProperty-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -84,9 +74,7 @@ clearCoatRoughness: MaterialProperty
 
 **类型：** [MaterialProperty](arkts-arkgraphics3d-sceneresources-materialproperty-i.md)
 
-**起始版本：** 23
-
-<!--Device-MetallicRoughnessMaterial-clearCoatRoughness: MaterialProperty--><!--Device-MetallicRoughnessMaterial-clearCoatRoughness: MaterialProperty-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -100,9 +88,7 @@ emissive: MaterialProperty
 
 **类型：** [MaterialProperty](arkts-arkgraphics3d-sceneresources-materialproperty-i.md)
 
-**起始版本：** 23
-
-<!--Device-MetallicRoughnessMaterial-emissive: MaterialProperty--><!--Device-MetallicRoughnessMaterial-emissive: MaterialProperty-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -116,9 +102,7 @@ material: MaterialProperty
 
 **类型：** [MaterialProperty](arkts-arkgraphics3d-sceneresources-materialproperty-i.md)
 
-**起始版本：** 23
-
-<!--Device-MetallicRoughnessMaterial-material: MaterialProperty--><!--Device-MetallicRoughnessMaterial-material: MaterialProperty-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -132,9 +116,7 @@ normal: MaterialProperty
 
 **类型：** [MaterialProperty](arkts-arkgraphics3d-sceneresources-materialproperty-i.md)
 
-**起始版本：** 23
-
-<!--Device-MetallicRoughnessMaterial-normal: MaterialProperty--><!--Device-MetallicRoughnessMaterial-normal: MaterialProperty-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -148,9 +130,7 @@ sheen: MaterialProperty
 
 **类型：** [MaterialProperty](arkts-arkgraphics3d-sceneresources-materialproperty-i.md)
 
-**起始版本：** 23
-
-<!--Device-MetallicRoughnessMaterial-sheen: MaterialProperty--><!--Device-MetallicRoughnessMaterial-sheen: MaterialProperty-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -164,9 +144,6 @@ specular: MaterialProperty
 
 **类型：** [MaterialProperty](arkts-arkgraphics3d-sceneresources-materialproperty-i.md)
 
-**起始版本：** 23
-
-<!--Device-MetallicRoughnessMaterial-specular: MaterialProperty--><!--Device-MetallicRoughnessMaterial-specular: MaterialProperty-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

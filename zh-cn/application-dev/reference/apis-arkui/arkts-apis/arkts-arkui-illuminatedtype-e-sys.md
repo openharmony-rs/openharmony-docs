@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare enum IlluminatedType--><!--Device-unnamed-declare enum IlluminatedType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -21,8 +19,6 @@ NONE = 0
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-IlluminatedType-NONE = 0--><!--Device-IlluminatedType-NONE = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ BORDER = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-IlluminatedType-BORDER = 1--><!--Device-IlluminatedType-BORDER = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -57,8 +51,6 @@ CONTENT = 2
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-IlluminatedType-CONTENT = 2--><!--Device-IlluminatedType-CONTENT = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,8 +68,6 @@ BORDER_CONTENT = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-IlluminatedType-BORDER_CONTENT = 3--><!--Device-IlluminatedType-BORDER_CONTENT = 3-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -93,8 +83,6 @@ BLOOM_BORDER = 4
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-IlluminatedType-BLOOM_BORDER = 4--><!--Device-IlluminatedType-BLOOM_BORDER = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,9 +100,6 @@ BLOOM_BORDER_CONTENT = 5
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-IlluminatedType-BLOOM_BORDER_CONTENT = 5--><!--Device-IlluminatedType-BLOOM_BORDER_CONTENT = 5-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

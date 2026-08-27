@@ -11,8 +11,6 @@ ArkTS Array断言函数类型，被Array类的'some'和'every'接口使用，用
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-collections-type ArrayPredicateFn<ElementType, ArrayType> =    (value: ElementType, index: number, array: ArrayType) => boolean--><!--Device-collections-type ArrayPredicateFn<ElementType, ArrayType> =    (value: ElementType, index: number, array: ArrayType) => boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -28,4 +26,3 @@ ArkTS Array断言函数类型，被Array类的'some'和'every'接口使用，用
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 断言函数的结果，该结果作为判断当前元素是否通过测试条件。为true时表示当前或之前的某个元素已满足条件，为false时表示尚未找到符合条件的元素。 |
-

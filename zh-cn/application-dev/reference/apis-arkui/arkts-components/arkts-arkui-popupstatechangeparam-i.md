@@ -1,10 +1,8 @@
 # PopupStateChangeParam
 
-气泡的显示状态。
+气泡的显示状态。@interface PopupStateChangeParam
 
 **起始版本：** 18
-
-<!--Device-unnamed-declare interface PopupStateChangeParam--><!--Device-unnamed-declare interface PopupStateChangeParam-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,7 +27,4 @@ isVisible: boolean
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PopupStateChangeParam-isVisible: boolean--><!--Device-PopupStateChangeParam-isVisible: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

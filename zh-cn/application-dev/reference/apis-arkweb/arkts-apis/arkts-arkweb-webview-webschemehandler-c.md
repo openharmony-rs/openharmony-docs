@@ -1,17 +1,14 @@
 # WebSchemeHandler
 
-WebSchemeHandler是用于拦截指定scheme（协议）的网络请求的拦截器类，支持自定义协议处理、本地资源替换、特定请求拦截等场景。开发者通过实现onRequestStart回调来决定是否拦截某个请求，被拦截的请求可通过 WebResourceHandler自定义响应内容。通过WebviewController的 [setWebSchemeHandler](arkts-arkweb-webview-webviewcontroller-c.md#setwebschemehandler)方法将WebSchemeHandler实例注册到指定的scheme上，从而实现对该 scheme所有请求的截获和处理。 WebSchemeHandler与[WebSchemeHandlerRequest](arkts-arkweb-webview-webschemehandlerrequest-c.md)、 [WebResourceHandler](arkts-arkweb-webview-webresourcehandler-c.md)、 [WebSchemeHandlerResponse](arkts-arkweb-webview-webschemehandlerresponse-c.md)配合使用：onRequestStart回调接收WebSchemeHandlerRequest（被拦 截的请求信息）和WebResourceHandler（用于返回自定义响应的处理器），返回boolean值表示是否拦截。onRequestStop在请求结束时触发（仅对已拦截的请求），用于资源清理。
+WebSchemeHandler是用于拦截指定scheme（协议）的网络请求的拦截器类，支持自定义协议处理、本地资源替换、特定请求拦截等场景。开发者通过实现onRequestStart回调来决定是否拦截某个请求，被拦截的请求可通过 WebResourceHandler自定义响应内容。通过WebviewController的 [setWebSchemeHandler](arkts-arkweb-webview-webviewcontroller-c.md#setwebschemehandler)方法将WebSchemeHandler实例注册到指定的scheme上，从而实现对该 scheme所有请求的截获和处理。WebSchemeHandler与[WebSchemeHandlerRequest](arkts-arkweb-webview-webschemehandlerrequest-c.md)、 [WebResourceHandler](arkts-arkweb-webview-webresourcehandler-c.md)、 [WebSchemeHandlerResponse](arkts-arkweb-webview-webschemehandlerresponse-c.md)配合使用：onRequestStart回调接收WebSchemeHandlerRequest（被拦 截的请求信息）和WebResourceHandler（用于返回自定义响应的处理器），返回boolean值表示是否拦截。onRequestStop在请求结束时触发（仅对已拦截的请求），用于资源清理。
 
 **起始版本：** 12
-
-<!--Device-webview-class WebSchemeHandler--><!--Device-webview-class WebSchemeHandler-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { webview } from '@kit.ArkWeb';
 ```
 
 ## onRequestStart
@@ -21,13 +18,15 @@ onRequestStart(
       callback: (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean): void
 ```
 
-当请求开始时的回调，在该回调函数中可以决定是否拦截该请求。当回调返回false时，表示不拦截此请求，此时handler失效；当回调返回true时，表示拦截此请求。 > **说明：** > > - 重定向后的URL无法单独拦截。如需拦截，必须同时对原始请求URL进行拦截。
+当请求开始时的回调，在该回调函数中可以决定是否拦截该请求。当回调返回false时，表示不拦截此请求，此时handler失效；当回调返回true时，表示拦截此请求。
+
+> **说明：**
+> 
+> - 重定向后的URL无法单独拦截。如需拦截，必须同时对原始请求URL进行拦截。
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebSchemeHandler-onRequestStart(      callback: (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean): void--><!--Device-WebSchemeHandler-onRequestStart(      callback: (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -35,13 +34,110 @@ onRequestStart(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (request: WebSchemeHandlerRequest, handler: WebResourceHandler) =&gt; boolean | 是 | 拦截对应scheme请求开始时触发的回调。request为请求，handler用于提供自定义的返回头以及返回体给Web组件，返回值true表示拦截此请求，false 表示不拦截此请求，handler失效。 |
+| callback | (request: WebSchemeHandlerRequest, handler: WebResourceHandler) = & gt; boolean | 是 | 拦截对应scheme请求开始时触发的回调。request为请求，handler用于提供自定义的返回头以及返回体给Web组件，返回值true表示拦截此请求，false 表示不拦截此请求，handler失效。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview, WebNetErrorList } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { buffer } from '@kit.ArkTS';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
+  htmlData: string = "<html><body bgcolor=\"white\">Source:<pre>source</pre></body></html>";
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          try {
+            this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+              console.info("[schemeHandler] onRequestStart");
+              try {
+                console.info("[schemeHandler] onRequestStart url:" + request.getRequestUrl());
+                console.info("[schemeHandler] onRequestStart method:" + request.getRequestMethod());
+                console.info("[schemeHandler] onRequestStart referrer:" + request.getReferrer());
+                console.info("[schemeHandler] onRequestStart isMainFrame:" + request.isMainFrame());
+                console.info("[schemeHandler] onRequestStart hasGesture:" + request.hasGesture());
+                console.info("[schemeHandler] onRequestStart header size:" + request.getHeader().length);
+                console.info("[schemeHandler] onRequestStart resource type:" + request.getRequestResourceType());
+                console.info("[schemeHandler] onRequestStart frame url:" + request.getFrameUrl());
+                let header = request.getHeader();
+                for (let i = 0; i < header.length; i++) {
+                  console.info("[schemeHandler] onRequestStart header:" + header[i].headerKey + " " + header[i].headerValue);
+                }
+                let stream = request.getHttpBodyStream();
+                if (stream) {
+                  console.info("[schemeHandler] onRequestStart has http body stream");
+                } else {
+                  console.info("[schemeHandler] onRequestStart has no http body stream");
+                }
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+
+              if (request.getRequestUrl().endsWith("example.com")) {
+                return false;
+              }
+
+              let response = new webview.WebSchemeHandlerResponse();
+              try {
+                response.setNetErrorCode(WebNetErrorList.NET_OK);
+                response.setStatus(200);
+                response.setStatusText("OK");
+                response.setMimeType("text/html");
+                response.setEncoding("utf-8");
+                response.setHeaderByName("header1", "value1", false);
+              } catch (error) {
+                console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+
+              // 调用 didFinish/didFail 前需调用 didReceiveResponse 将构造的响应头传递给被拦截的请求。
+              let buf = buffer.from(this.htmlData)
+              try {
+                if (buf.length == 0) {
+                  console.info("[schemeHandler] length 0");
+                  resourceHandler.didReceiveResponse(response);
+                  // 如果认为buf.length为0是正常情况，则调用resourceHandler.didFinish，否则调用resourceHandler.didFail
+                  resourceHandler.didFail(WebNetErrorList.ERR_FAILED);
+                } else {
+                  console.info("[schemeHandler] length 1");
+                  resourceHandler.didReceiveResponse(response);
+                  resourceHandler.didReceiveResponseBody(buf.buffer);
+                  resourceHandler.didFinish();
+                }
+              } catch (error) {
+                console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              return true;
+            })
+
+            this.schemeHandler.onRequestStop((request: webview.WebSchemeHandlerRequest) => {
+              console.info("[schemeHandler] onRequestStop");
+            });
+
+            this.controller.setWebSchemeHandler('https', this.schemeHandler);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        .javaScriptAccess(true)
+        .domStorageAccess(true)
+    }
+  }
+}
+```
 
 ## onRequestStop
 
@@ -49,13 +145,13 @@ onRequestStart(
 onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void
 ```
 
-当请求完成时的回调，仅当 onRequestStart 回调决定拦截此请求时触发。触发的时机有以下两点： 1. WebResourceHandler调用didFail或者didFinish。 2. 此请求因为其他原因中断（如网络错误、系统异常等）。
+当请求完成时的回调，仅当 onRequestStart 回调决定拦截此请求时触发。触发的时机有以下两点：
+1. WebResourceHandler调用didFail或者didFinish。
+2. 此请求因为其他原因中断（如网络错误、系统异常等）。
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebSchemeHandler-onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void--><!--Device-WebSchemeHandler-onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -63,7 +159,7 @@ onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[WebSchemeHandlerRequest](arkts-arkweb-webview-webschemehandlerrequest-c.md)&gt; | 是 | 对应请求结束的回调函数。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WebSchemeHandlerRequest](arkts-arkweb-webview-webschemehandlerrequest-c.md)&gt; | 是 | 对应请求结束的回调函数。 |
 
 **错误码：**
 
@@ -71,3 +167,6 @@ onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Invalid input parameter. |
 
+**示例**
+
+完整示例代码参考[onRequestStart](#onrequeststart)。

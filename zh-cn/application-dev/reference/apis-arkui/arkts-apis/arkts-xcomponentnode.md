@@ -6,5 +6,4 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [XComponentNode](arkts-arkui-xcomponentnode-c.md) | 定义XComponent Node。 |
-
+| [XComponentNode](arkts-arkui-xcomponentnode-c.md) | 定义XComponent Node。@extends FrameNode |

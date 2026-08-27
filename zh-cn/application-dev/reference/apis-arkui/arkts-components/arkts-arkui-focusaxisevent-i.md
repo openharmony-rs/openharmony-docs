@@ -6,8 +6,6 @@
 
 **起始版本：** 15
 
-<!--Device-unnamed-declare interface FocusAxisEvent--><!--Device-unnamed-declare interface FocusAxisEvent-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -23,15 +21,13 @@ axisMap: Map<AxisModel, number>
 
 焦点轴事件的轴值表。
 
-**类型：** Map&lt;AxisModel, number&gt;
+**类型：** Map&lt;[AxisModel](../arkts-apis/arkts-arkui-axismodel-e.md), number&gt;
 
 **起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FocusAxisEvent-axisMap: Map<AxisModel, number>--><!--Device-FocusAxisEvent-axisMap: Map<AxisModel, number>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,7 +47,4 @@ stopPropagation: Callback<void>
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FocusAxisEvent-stopPropagation: Callback<void>--><!--Device-FocusAxisEvent-stopPropagation: Callback<void>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

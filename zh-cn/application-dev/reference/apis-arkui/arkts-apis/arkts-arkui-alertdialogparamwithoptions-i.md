@@ -1,12 +1,10 @@
-# AlertDialogParamWithOptions(AlertDialog)
+# AlertDialogParamWithOptions
 
 继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md)。
 
 **继承/实现关系：** AlertDialogParamWithOptions extends [AlertDialogParam](arkts-arkui-alertdialogparam-i.md)
 
 **起始版本：** 10
-
-<!--Device-unnamed-declare interface AlertDialogParamWithOptions--><!--Device-unnamed-declare interface AlertDialogParamWithOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,8 +31,6 @@ buttonDirection?: DialogButtonDirection
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AlertDialogParamWithOptions-buttonDirection?: DialogButtonDirection--><!--Device-AlertDialogParamWithOptions-buttonDirection?: DialogButtonDirection-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttons
@@ -53,7 +49,4 @@ buttons: Array<AlertDialogButtonOptions>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AlertDialogParamWithOptions-buttons: Array<AlertDialogButtonOptions>--><!--Device-AlertDialogParamWithOptions-buttons: Array<AlertDialogButtonOptions>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

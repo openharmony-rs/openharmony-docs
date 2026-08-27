@@ -1,12 +1,10 @@
 # Environment
 
-环境类型，继承自SceneResource。
+环境类型，继承自SceneResource。@extends SceneResource @interface Environment
 
 **继承/实现关系：** Environment extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface Environment--><!--Device-unnamed-export interface Environment-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -20,9 +18,7 @@ backgroundType: EnvironmentBackgroundType
 
 **类型：** [EnvironmentBackgroundType](arkts-arkgraphics3d-sceneresources-environmentbackgroundtype-e.md)
 
-**起始版本：** 23
-
-<!--Device-Environment-backgroundType: EnvironmentBackgroundType--><!--Device-Environment-backgroundType: EnvironmentBackgroundType-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -36,9 +32,7 @@ environmentImage?: Image | null
 
 **类型：** [Image](arkts-arkgraphics3d-sceneresources-image-i.md) \| null
 
-**起始版本：** 23
-
-<!--Device-Environment-environmentImage?: Image | null--><!--Device-Environment-environmentImage?: Image | null-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -52,9 +46,7 @@ environmentMapFactor: Vec4
 
 **类型：** [Vec4](arkts-arkgraphics3d-scenetypes-vec4-i.md)
 
-**起始版本：** 23
-
-<!--Device-Environment-environmentMapFactor: Vec4--><!--Device-Environment-environmentMapFactor: Vec4-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -74,8 +66,6 @@ environmentRotation?: Quaternion
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Environment-environmentRotation?: Quaternion--><!--Device-Environment-environmentRotation?: Quaternion-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## indirectDiffuseFactor
@@ -88,9 +78,7 @@ indirectDiffuseFactor: Vec4
 
 **类型：** [Vec4](arkts-arkgraphics3d-scenetypes-vec4-i.md)
 
-**起始版本：** 23
-
-<!--Device-Environment-indirectDiffuseFactor: Vec4--><!--Device-Environment-indirectDiffuseFactor: Vec4-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -104,9 +92,7 @@ indirectSpecularFactor: Vec4
 
 **类型：** [Vec4](arkts-arkgraphics3d-scenetypes-vec4-i.md)
 
-**起始版本：** 23
-
-<!--Device-Environment-indirectSpecularFactor: Vec4--><!--Device-Environment-indirectSpecularFactor: Vec4-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -120,9 +106,7 @@ irradianceCoefficients?: Vec3[]
 
 **类型：** [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md)[]
 
-**起始版本：** 23
-
-<!--Device-Environment-irradianceCoefficients?: Vec3[]--><!--Device-Environment-irradianceCoefficients?: Vec3[]-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -136,9 +120,6 @@ radianceImage?: Image | null
 
 **类型：** [Image](arkts-arkgraphics3d-sceneresources-image-i.md) \| null
 
-**起始版本：** 23
-
-<!--Device-Environment-radianceImage?: Image | null--><!--Device-Environment-radianceImage?: Image | null-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

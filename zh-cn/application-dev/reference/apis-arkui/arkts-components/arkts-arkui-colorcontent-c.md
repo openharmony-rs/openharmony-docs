@@ -4,14 +4,11 @@
 
 **起始版本：** 15
 
-<!--Device-unnamed-declare class ColorContent--><!--Device-unnamed-declare class ColorContent-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
 
 ```TypeScript
-import { imageGeneration } from '@kit.ArkUI';
 ```
 
 ## ORIGIN
@@ -20,7 +17,7 @@ import { imageGeneration } from '@kit.ArkUI';
 static readonly ORIGIN: ColorContent
 ```
 
-重置fillColor接口，效果上与不设置 fillColor一致。
+重置[fillColor](arkts-arkui-image-attribute.md#fillcolor)接口，效果上与不设置 [fillColor](arkts-arkui-image-attribute.md#fillcolor)一致。
 
 **类型：** [ColorContent](arkts-arkui-colorcontent-c.md)
 
@@ -30,7 +27,4 @@ static readonly ORIGIN: ColorContent
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ColorContent-static readonly ORIGIN: ColorContent--><!--Device-ColorContent-static readonly ORIGIN: ColorContent-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

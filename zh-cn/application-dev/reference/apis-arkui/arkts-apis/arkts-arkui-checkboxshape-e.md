@@ -1,10 +1,8 @@
 # CheckBoxShape
 
-common enum of the checkbox shape
+common enum of the checkbox shape@enum { number }
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare enum CheckBoxShape--><!--Device-unnamed-declare enum CheckBoxShape-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,8 +22,6 @@ Circle.
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-CheckBoxShape-CIRCLE = 0--><!--Device-CheckBoxShape-CIRCLE = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ROUNDED_SQUARE
@@ -44,7 +40,4 @@ Rounded Square.
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-CheckBoxShape-ROUNDED_SQUARE = 1--><!--Device-CheckBoxShape-ROUNDED_SQUARE = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

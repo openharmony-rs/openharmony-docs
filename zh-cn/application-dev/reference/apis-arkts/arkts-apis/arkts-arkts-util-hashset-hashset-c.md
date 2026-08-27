@@ -2,61 +2,13 @@
 
 HashSet是一种非线性容器，用于存储不重复的元素集合，支持高效的元素增删和存在性判断。HashSet基于HashMap实现，仅操作元素的值对象，不涉及键的概念。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare class HashSet--><!--Device-unnamed-declare class HashSet-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { HashSet } from '@kit.ArkTS';
-import { HashSetCbFn } from '@kit.ArkTS';
-```
-
-## $_iterator
-
-```TypeScript
-$_iterator(): IterableIterator<T>
-```
-
-返回一个迭代器，迭代器的每一项为HashSet中的元素。
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HashSet-$_iterator(): IterableIterator<T>--><!--Device-HashSet-$_iterator(): IterableIterator<T>-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| IterableIterator&lt;T&gt; | 返回包含此HashSet中所有元素的迭代器对象。 |
-
-**示例**
-
-```TypeScript
-let hashSet: HashSet<string> = new HashSet<string>();
-hashSet.add("squirrel");
-hashSet.add("sparrow");
-
-// 使用方法一：
-let val: Array<string> = Array.from(hashSet.values())
-for (let item of val) {
-  console.info("value: " + item);
-}
-
-// 使用方法二：
-let iter = hashSet.$_iterator();
-let temp: IteratorResult<string> = iter.next();
-while(!temp.done) {
-  console.info("value: " + temp.value);
-  temp = iter.next();
-}
 ```
 
 ## [Symbol.iterator]
@@ -65,13 +17,14 @@ while(!temp.done) {
 [Symbol.iterator](): IterableIterator<T>
 ```
 
-返回一个迭代器，迭代器的每一项为HashSet中的元素。 > **说明：** > > 不建议在Symbol.iterator中使用add、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
+返回一个迭代器，迭代器的每一项为HashSet中的元素。   
+> **说明：**
+> 
+> 不建议在Symbol.iterator中使用add、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HashSet-[Symbol.iterator](): IterableIterator<T>--><!--Device-HashSet-[Symbol.iterator](): IterableIterator<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -79,7 +32,7 @@ while(!temp.done) {
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;T&gt; | 返回包含此HashSet中所有元素的迭代器对象。 |
+| IterableIterator & lt;T & gt; | 返回包含此HashSet中所有元素的迭代器对象。 |
 
 **错误码：**
 
@@ -132,11 +85,9 @@ add(value: T): boolean
 
 向HashSet添加元素。成功添加后HashSet的length增加1；若待添加元素已存在则不会重复添加，返回false且length不变。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HashSet-add(value: T): boolean--><!--Device-HashSet-add(value: T): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -176,11 +127,9 @@ clear(): void
 
 清除HashSet中的所有元素，并将length置为0。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HashSet-clear(): void--><!--Device-HashSet-clear(): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -210,11 +159,9 @@ constructor()
 
 HashSet的构造函数，用于创建一个空的HashSet实例。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HashSet-constructor()--><!--Device-HashSet-constructor()-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -226,16 +173,8 @@ HashSet的构造函数，用于创建一个空的HashSet实例。
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 let hashSet = new HashSet<number>();
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let hashSet: HashSet<int> = new HashSet<int>();
 ```
 
 ## entries
@@ -244,13 +183,14 @@ let hashSet: HashSet<int> = new HashSet<int>();
 entries(): IterableIterator<[T, T]>
 ```
 
-返回包含此HashSet中所有元素的新迭代器对象，每个元素以[value, value]形式返回。 > **说明：** > > 不建议在entries迭代过程中使用add、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
+返回包含此HashSet中所有元素的新迭代器对象，每个元素以[value, value]形式返回。   
+> **说明：**
+> 
+> 不建议在entries迭代过程中使用add、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HashSet-entries(): IterableIterator<[T, T]>--><!--Device-HashSet-entries(): IterableIterator<[T, T]>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -258,7 +198,7 @@ entries(): IterableIterator<[T, T]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[T, T]&gt; | 返回包含此HashSet中所有元素的迭代器对象。 |
+| IterableIterator & lt;[T, T] & gt; | 返回包含此HashSet中所有元素的迭代器对象。 |
 
 **错误码：**
 
@@ -295,10 +235,6 @@ for(let i = 0; i < 10; i++) {
 for(let i = 0; i < 10; i++) {
   hashSet.remove("sparrow" + i);
 }
-// key:squirrel
-// value:squirrel
-// key:sparrow
-// value:sparrow
 ```
 
 ## forEach
@@ -313,15 +249,13 @@ forEach(callbackFn: (value?: T, key?: T, set?: HashSet<T>) => void, thisArg?: Ob
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HashSet-forEach(callbackFn: (value?: T, key?: T, set?: HashSet<T>) => void, thisArg?: Object): void--><!--Device-HashSet-forEach(callbackFn: (value?: T, key?: T, set?: HashSet<T>) => void, thisArg?: Object): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value?: T, key?: T, set?: HashSet&lt;T&gt;) =&gt; void | 是 | 回调函数，在遍历过程中对每个元素调用一次。回调参数包括value、key和set，详见callbackFn的参数说明。 |
+| callbackFn | (value?: T, key?: T, set?: HashSet & lt;T & gt;) = & gt; void | 是 | 回调函数，在遍历过程中对每个元素调用一次。回调参数包括value、key和set，详见callbackFn的参数说明。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值。当需要改变回调函数内this指向时传入此参数，不传入时默认值为当前实例对象。 |
 
 **错误码：**
@@ -355,44 +289,6 @@ for(let i = 0; i < 10; i++) {
 }
 ```
 
-## forEach
-
-```TypeScript
-forEach(callbackFn: HashSetCbFn<T>): void
-```
-
-遍历HashSet中的所有元素，并对每个元素执行回调函数。
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HashSet-forEach(callbackFn: HashSetCbFn<T>): void--><!--Device-HashSet-forEach(callbackFn: HashSetCbFn<T>): void-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callbackFn | [HashSetCbFn](arkts-arkts-hashsetcbfn-t.md)&lt;T&gt; | 是 | 对每个元素执行的回调函数。 |
-
-**示例**
-
-```TypeScript
-import { HashSetCbFn } from '@kit.ArkTS';
-
-let hashSet: HashSet<string> = new HashSet<string>();
-hashSet.add("sparrow");
-hashSet.add("squirrel");
-let hashSetCb: HashSetCbFn<string> = (value: string, key: string, set: HashSet<string>): void => {
-  console.info("value: " + value, " key: " + key);
-};
-hashSet.forEach(hashSetCb);
-// value:squirrel key:squirrel 
-// value:sparrow key:sparrow
-```
-
 ## has
 
 ```TypeScript
@@ -401,11 +297,9 @@ has(value: T): boolean
 
 判断HashSet是否包含指定元素，基于哈希值进行查找，具有O(1)的时间复杂度。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HashSet-has(value: T): boolean--><!--Device-HashSet-has(value: T): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -445,11 +339,9 @@ isEmpty(): boolean
 
 判断HashSet是否为空。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HashSet-isEmpty(): boolean--><!--Device-HashSet-isEmpty(): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -467,19 +359,9 @@ isEmpty(): boolean
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 // 创建HashSet实例，判断是否为空
 const hashSet = new HashSet<number>();
-let result = hashSet.isEmpty();
-console.info("result:", result);  // result: true
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-const hashSet: HashSet<int> = new HashSet<int>();
 let result = hashSet.isEmpty();
 console.info("result:", result);  // result: true
 ```
@@ -492,11 +374,9 @@ remove(value: T): boolean
 
 从HashSet中删除指定的元素。成功删除后HashSet的length减少1；若指定元素不存在则集合不变，返回false。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HashSet-remove(value: T): boolean--><!--Device-HashSet-remove(value: T): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -535,13 +415,14 @@ console.info("result:", result);  // result: true
 values(): IterableIterator<T>
 ```
 
-返回包含此HashSet中所有值的新迭代器对象。 > **说明：** > > 不建议在values迭代过程中使用add、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
+返回包含此HashSet中所有值的新迭代器对象。   
+> **说明：**
+> 
+> 不建议在values迭代过程中使用add、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HashSet-values(): IterableIterator<T>--><!--Device-HashSet-values(): IterableIterator<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -549,7 +430,7 @@ values(): IterableIterator<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;T&gt; | 返回包含此HashSet中所有值的迭代器对象。 |
+| IterableIterator & lt;T & gt; | 返回包含此HashSet中所有值的迭代器对象。 |
 
 **错误码：**
 
@@ -586,7 +467,4 @@ HashSet的元素个数。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HashSet-length: number--><!--Device-HashSet-length: number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

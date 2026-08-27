@@ -4,18 +4,11 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface OnBeforeUnloadEvent--><!--Device-unnamed-declare interface OnBeforeUnloadEvent-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## isReload
@@ -24,13 +17,11 @@ import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 isReload?: boolean
 ```
 
-页面是否刷新。 当页面因刷新即将离开时，isReload为true；当页面因关闭即将离开时，isReload为false。 默认值：false。
+页面是否刷新。当页面因刷新即将离开时，isReload为true；当页面因关闭即将离开时，isReload为false。默认值：false。
 
 **类型：** boolean
 
 **起始版本：** 20
-
-<!--Device-OnBeforeUnloadEvent-isReload?: boolean--><!--Device-OnBeforeUnloadEvent-isReload?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -48,8 +39,6 @@ message: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnBeforeUnloadEvent-message: string--><!--Device-OnBeforeUnloadEvent-message: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## result
@@ -65,8 +54,6 @@ result: JsResult
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OnBeforeUnloadEvent-result: JsResult--><!--Device-OnBeforeUnloadEvent-result: JsResult-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -84,7 +71,4 @@ url: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnBeforeUnloadEvent-url: string--><!--Device-OnBeforeUnloadEvent-url: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

@@ -12,8 +12,6 @@ declare type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => voi
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => void--><!--Device-unnamed-declare type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -21,4 +19,3 @@ declare type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | [OnFoldStatusChangeInfo](arkts-arkui-onfoldstatuschangeinfo-i.md) | 是 | 折叠状态改变时的信息，仅在横屏状态下生效。 |
-

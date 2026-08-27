@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export declare interface EditableTitleV2Options--><!--Device-unnamed-export declare interface EditableTitleV2Options-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -22,15 +20,13 @@ mainTitle?: ResourceStr
 
 主标题内容。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EditableTitleV2Options-mainTitle?: ResourceStr--><!--Device-EditableTitleV2Options-mainTitle?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +38,7 @@ subTitle?: ResourceStr
 
 副标题内容。需要在标题下方显示补充说明信息时传入此参数。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 26.0.0
 
@@ -50,7 +46,4 @@ subTitle?: ResourceStr
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EditableTitleV2Options-subTitle?: ResourceStr--><!--Device-EditableTitleV2Options-subTitle?: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

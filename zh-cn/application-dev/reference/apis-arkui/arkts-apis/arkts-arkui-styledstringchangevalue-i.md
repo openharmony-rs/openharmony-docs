@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-interface StyledStringChangeValue--><!--Device-unnamed-interface StyledStringChangeValue-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,17 +17,15 @@
 previewText?: StyledString
 ```
 
-预览内容属性字符串。 该属性用于表示语音输入、拍摄输入、输入法预上屏场景下的未提交上屏的临时输入内容。
+预览内容属性字符串。该属性用于表示语音输入、拍摄输入、输入法预上屏场景下的未提交上屏的临时输入内容。
 
-**类型：** StyledString
+**类型：** [StyledString](arkts-arkui-styledstring-c.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-StyledStringChangeValue-previewText?: StyledString--><!--Device-StyledStringChangeValue-previewText?: StyledString-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,8 +45,6 @@ range: TextRange
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-StyledStringChangeValue-range: TextRange--><!--Device-StyledStringChangeValue-range: TextRange-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## replacementString
@@ -61,7 +55,7 @@ replacementString: StyledString
 
 用于替换的属性字符串。
 
-**类型：** StyledString
+**类型：** [StyledString](arkts-arkui-styledstring-c.md)
 
 **起始版本：** 12
 
@@ -69,7 +63,4 @@ replacementString: StyledString
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-StyledStringChangeValue-replacementString: StyledString--><!--Device-StyledStringChangeValue-replacementString: StyledString-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

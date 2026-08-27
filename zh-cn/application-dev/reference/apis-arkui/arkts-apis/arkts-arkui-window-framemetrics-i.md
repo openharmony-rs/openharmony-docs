@@ -2,17 +2,13 @@
 
 帧率指标。
 
-**起始版本：** 23
-
-<!--Device-window-interface FrameMetrics--><!--Device-window-interface FrameMetrics-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -26,57 +22,48 @@ firstDrawFrame: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-FrameMetrics-firstDrawFrame: boolean--><!--Device-FrameMetrics-firstDrawFrame: boolean-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## inputHandlingDuration
 
 ```TypeScript
-inputHandlingDuration: long
+inputHandlingDuration: number
 ```
 
 一帧中的手势处理耗时（单位：纳秒）。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-FrameMetrics-inputHandlingDuration: long--><!--Device-FrameMetrics-inputHandlingDuration: long-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## layoutMeasureDuration
 
 ```TypeScript
-layoutMeasureDuration: long
+layoutMeasureDuration: number
 ```
 
 一帧中的布局测量耗时（单位：纳秒）。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-FrameMetrics-layoutMeasureDuration: long--><!--Device-FrameMetrics-layoutMeasureDuration: long-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## vsyncTimestamp
 
 ```TypeScript
-vsyncTimestamp: long
+vsyncTimestamp: number
 ```
 
 当前帧的开始时间戳（单位：纳秒）。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-FrameMetrics-vsyncTimestamp: long--><!--Device-FrameMetrics-vsyncTimestamp: long-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Window.SessionManager
-

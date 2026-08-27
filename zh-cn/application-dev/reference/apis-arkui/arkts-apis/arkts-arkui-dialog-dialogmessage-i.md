@@ -6,8 +6,6 @@
 
 **起始版本：** 26.1.0
 
-<!--Device-dialog-declare interface DialogMessage--><!--Device-dialog-declare interface DialogMessage-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -24,7 +22,7 @@ content: ResourceStr
 
 对话框消息内容。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 26.1.0
 
@@ -32,7 +30,4 @@ content: ResourceStr
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogMessage-content: ResourceStr--><!--Device-DialogMessage-content: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

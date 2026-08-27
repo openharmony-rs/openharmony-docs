@@ -1,10 +1,8 @@
 # Display
 
-屏幕实例。描述Display对象的属性和方法。 下列API示例中都需先使用[getAllDisplays()](arkts-arkui-display-getalldisplays-f.md)、 [getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md)中的任一方法获取到Display实例，再通过此实例调用对应方法。
+屏幕实例。描述Display对象的属性和方法。下列API示例中都需先使用[getAllDisplays()](arkts-arkui-display-getalldisplays-f.md)、 [getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md)中的任一方法获取到Display实例，再通过此实例调用对应方法。
 
-**起始版本：** 23
-
-<!--Device-display-interface Display--><!--Device-display-interface Display-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -22,9 +20,7 @@ hasImmersiveWindow(callback: AsyncCallback<boolean>): void
 
 判断当前屏幕是否包含沉浸式窗口，使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-Display-hasImmersiveWindow(callback: AsyncCallback<boolean>): void--><!--Device-Display-hasImmersiveWindow(callback: AsyncCallback<boolean>): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -34,20 +30,18 @@ hasImmersiveWindow(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示当前屏幕包含沉浸式窗口，false表示不包含。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示当前屏幕包含沉浸式窗口，false表示不包含。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -67,24 +61,6 @@ displayClass.hasImmersiveWindow((err: BusinessError, data: boolean) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
-
-let displayClass: display.Display | null = null;
-displayClass = display.getDefaultDisplaySync();
-displayClass.hasImmersiveWindow((err: BusinessError | null, data) => {
-    const errCode = err?.code;
-    if (errCode) {
-      console.error(`Failed to check whether there is immersive window. Code: ${err?.code} , message: ${err?.message}`);
-      return;
-    }
-    console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
-});
-```
-
 ## hasImmersiveWindow
 
 ```TypeScript
@@ -93,9 +69,7 @@ hasImmersiveWindow(): Promise<boolean>
 
 判断当前屏幕是否包含沉浸式窗口，使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-Display-hasImmersiveWindow(): Promise<boolean>--><!--Device-Display-hasImmersiveWindow(): Promise<boolean>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -105,20 +79,18 @@ hasImmersiveWindow(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前屏幕包含沉浸式窗口，false表示不包含。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示当前屏幕包含沉浸式窗口，false表示不包含。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -132,23 +104,6 @@ let promise = displayClass.hasImmersiveWindow();
 promise.then((data) => {
   console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to check whether there is immersive window. Code: ${err.code} , message: ${err.message}`);
-})
+  console.error(`Failed to check whether there is immersive window. Code: ${err.code}, message: ${err.message}`);
+});
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
-
-let displayClass: display.Display | null = null;
-displayClass = display.getDefaultDisplaySync();
-let promise = displayClass.hasImmersiveWindow();
-promise.then((data: boolean) => {
-  console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
-}).catch((err: Error) => {
-  console.error(`Failed to check whether there is immersive window. Code: ${err?.code} , message: ${err?.message}`);
-})
-```
-

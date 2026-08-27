@@ -4,8 +4,6 @@ Web组件使用HTTPDNS的模式。
 
 **起始版本：** 10
 
-<!--Device-webview-enum SecureDnsMode--><!--Device-webview-enum SecureDnsMode-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## OFF
@@ -19,8 +17,6 @@ OFF = 0
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SecureDnsMode-OFF = 0--><!--Device-SecureDnsMode-OFF = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,8 +32,6 @@ AUTO = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SecureDnsMode-AUTO = 1--><!--Device-SecureDnsMode-AUTO = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## SECURE_ONLY
@@ -52,7 +46,4 @@ SECURE_ONLY = 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SecureDnsMode-SECURE_ONLY = 2--><!--Device-SecureDnsMode-SECURE_ONLY = 2-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

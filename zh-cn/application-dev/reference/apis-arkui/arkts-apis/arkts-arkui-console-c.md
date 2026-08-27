@@ -4,8 +4,6 @@
 
 **起始版本：** 3
 
-<!--Device-unnamed-export declare class console--><!--Device-unnamed-export declare class console-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 ## debug
@@ -19,8 +17,6 @@ static debug(message: string): void
 **起始版本：** 3
 
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-console-static debug(message: string): void--><!--Device-console-static debug(message: string): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -42,8 +38,6 @@ static error(message: string): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-console-static error(message: string): void--><!--Device-console-static error(message: string): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 **参数：**
@@ -63,8 +57,6 @@ static info(message: string): void
 **起始版本：** 3
 
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-console-static info(message: string): void--><!--Device-console-static info(message: string): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -86,8 +78,6 @@ static log(message: string): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-console-static log(message: string): void--><!--Device-console-static log(message: string): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 **参数：**
@@ -108,8 +98,6 @@ static warn(message: string): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-console-static warn(message: string): void--><!--Device-console-static warn(message: string): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 **参数：**
@@ -117,4 +105,3 @@ static warn(message: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | message | string | 是 | 要打印的警告信息。 @static |
-

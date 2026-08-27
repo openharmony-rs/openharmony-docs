@@ -18,8 +18,6 @@ Called when a indicator is set.
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-IndicatorComponentInterface-(controller?: IndicatorComponentController): IndicatorComponentAttribute--><!--Device-IndicatorComponentInterface-(controller?: IndicatorComponentController): IndicatorComponentAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**
@@ -29,4 +27,3 @@ Called when a indicator is set.
 | controller | [IndicatorComponentController](arkts-arkui-indicatorcomponentcontroller-c.md) | 否 | indicator component controller. |
 
 ## 汇总
-

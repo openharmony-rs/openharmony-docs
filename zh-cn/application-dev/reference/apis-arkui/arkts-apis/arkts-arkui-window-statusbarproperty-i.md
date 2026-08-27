@@ -2,17 +2,13 @@
 
 状态栏的属性。在获取状态栏属性信息时返回。
 
-**起始版本：** 23
-
-<!--Device-window-interface StatusBarProperty--><!--Device-window-interface StatusBarProperty-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -26,11 +22,8 @@ contentColor: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-StatusBarProperty-contentColor: string--><!--Device-StatusBarProperty-contentColor: string-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
-

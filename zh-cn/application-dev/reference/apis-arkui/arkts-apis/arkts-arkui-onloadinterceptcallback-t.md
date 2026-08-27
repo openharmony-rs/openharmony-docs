@@ -10,8 +10,6 @@ export type OnLoadInterceptCallback = (event: OnLoadInterceptEvent) => boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-export type OnLoadInterceptCallback = (event: OnLoadInterceptEvent) => boolean--><!--Device-unnamed-export type OnLoadInterceptCallback = (event: OnLoadInterceptEvent) => boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -25,4 +23,3 @@ export type OnLoadInterceptCallback = (event: OnLoadInterceptEvent) => boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 返回资源是否被拦截，true表示被拦截，false表示不被拦截。 |
-

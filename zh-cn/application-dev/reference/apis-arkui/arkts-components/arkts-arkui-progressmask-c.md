@@ -4,8 +4,6 @@ ProgressMask设置遮罩的进度、最大值和颜色。
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare class ProgressMask--><!--Device-unnamed-declare class ProgressMask-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,17 +25,28 @@ constructor(value: number, total: number, color: ResourceColor)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ProgressMask-constructor(value: number, total: number, color: ResourceColor)--><!--Device-ProgressMask-constructor(value: number, total: number, color: ResourceColor)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 进度遮罩的当前值。<br/> 取值范围：[0.0, +∞) |
-| total | number | 是 | 进度遮罩的最大值。<br/> 取值范围：[0.0, +∞) |
-| color | ResourceColor | 是 | 进度遮罩的颜色。 |
+| value | number | 是 | 进度遮罩的当前值。取值范围：[0.0, +∞) |
+| total | number | 是 | 进度遮罩的最大值。取值范围：[0.0, +∞) |
+| color | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 进度遮罩的颜色。 |
+
+**示例**
+
+```TypeScript
+@Builder
+function myBuilder(value: string, size: number) {
+  Text(value)
+    .fontSize(size)
+}
+
+// 使用WrappedBuilder封装myBuilder
+let builderVar: WrappedBuilder<[string, number]> = new WrappedBuilder<[string, number]>(myBuilder);
+```
 
 ## enableBreathingAnimation
 
@@ -53,15 +62,13 @@ enableBreathingAnimation(value: boolean): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ProgressMask-enableBreathingAnimation(value: boolean): void--><!--Device-ProgressMask-enableBreathingAnimation(value: boolean): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 是否开启呼吸光晕动画。<br/>true：开启呼吸光晕动画。<br/>false：关闭呼吸光晕动画。 |
+| value | boolean | 是 | 是否开启呼吸光晕动画。true：开启呼吸光晕动画。false：关闭呼吸光晕动画。 |
 
 ## updateColor
 
@@ -77,15 +84,13 @@ updateColor(value: ResourceColor): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ProgressMask-updateColor(value: ResourceColor): void--><!--Device-ProgressMask-updateColor(value: ResourceColor): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor | 是 | 进度遮罩的颜色。 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 进度遮罩的颜色。 |
 
 ## updateProgress
 
@@ -101,8 +106,6 @@ updateProgress(value: number): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ProgressMask-updateProgress(value: number): void--><!--Device-ProgressMask-updateProgress(value: number): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -110,4 +113,3 @@ updateProgress(value: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 进度遮罩的当前值。 |
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare enum ImageContent--><!--Device-unnamed-declare enum ImageContent-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## EMPTY
@@ -24,7 +22,4 @@ EMPTY = 0
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ImageContent-EMPTY = 0--><!--Device-ImageContent-EMPTY = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

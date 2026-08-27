@@ -12,14 +12,11 @@ declare type AreaChangeCallback = (oldValue: Area, newValue: Area) => void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type AreaChangeCallback = (oldValue: Area, newValue: Area) => void--><!--Device-unnamed-declare type AreaChangeCallback = (oldValue: Area, newValue: Area) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| oldValue | Area | 是 | 区域变化前的信息，包括：目标元素的宽度、高度、相对于父元素的坐标和目标元素左上角在当前窗口坐标系中的位置坐标。 |
-| newValue | Area | 是 | 区域变化后的信息，包括：目标元素的宽度、高度、相对于父元素的坐标和目标元素左上角在当前窗口坐标系中的位置坐标。 |
-
+| oldValue | [Area](../arkts-apis/arkts-arkui-area-i.md) | 是 | 区域变化前的信息，包括：目标元素的宽度、高度、相对于父元素的坐标和目标元素左上角在当前窗口坐标系中的位置坐标。 |
+| newValue | [Area](../arkts-apis/arkts-arkui-area-i.md) | 是 | 区域变化后的信息，包括：目标元素的宽度、高度、相对于父元素的坐标和目标元素左上角在当前窗口坐标系中的位置坐标。 |

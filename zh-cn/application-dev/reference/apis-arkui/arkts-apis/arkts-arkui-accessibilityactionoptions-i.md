@@ -1,10 +1,8 @@
 # AccessibilityActionOptions
 
-包含无障碍操作的参数的结构体。
+包含无障碍操作的参数的结构体。@interface AccessibilityActionOptions
 
 **起始版本：** 23
-
-<!--Device-unnamed-declare interface AccessibilityActionOptions--><!--Device-unnamed-declare interface AccessibilityActionOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,7 +29,4 @@ scrollStep - 无障碍手势触发的无障碍滚动操作中的组件操作步�
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-AccessibilityActionOptions-scrollStep?: number--><!--Device-AccessibilityActionOptions-scrollStep?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

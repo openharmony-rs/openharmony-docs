@@ -12,13 +12,10 @@ declare type OnUIPickerComponentCallback = (selectedIndex: number) => void
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type OnUIPickerComponentCallback = (selectedIndex: number) => void--><!--Device-unnamed-declare type OnUIPickerComponentCallback = (selectedIndex: number) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectedIndex | number | 是 | 当前选中项的索引值。 <br>取值范围：[0, 子组件的个数-1]内的整数。 |
-
+| selectedIndex | number | 是 | 当前选中项的索引值。  取值范围：[0, 子组件的个数-1]内的整数。 |

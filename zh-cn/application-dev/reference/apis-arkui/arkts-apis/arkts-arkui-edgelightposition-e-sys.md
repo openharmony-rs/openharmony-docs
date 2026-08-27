@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-declare enum EdgeLightPosition--><!--Device-unnamed-declare enum EdgeLightPosition-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -21,8 +19,6 @@ TOP_LEFT = 0
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-EdgeLightPosition-TOP_LEFT = 0--><!--Device-EdgeLightPosition-TOP_LEFT = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ TOP_RIGHT = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EdgeLightPosition-TOP_RIGHT = 1--><!--Device-EdgeLightPosition-TOP_RIGHT = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -57,8 +51,6 @@ BOTTOM_LEFT = 2
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-EdgeLightPosition-BOTTOM_LEFT = 2--><!--Device-EdgeLightPosition-BOTTOM_LEFT = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,8 +68,6 @@ BOTTOM_RIGHT = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EdgeLightPosition-BOTTOM_RIGHT = 3--><!--Device-EdgeLightPosition-BOTTOM_RIGHT = 3-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -93,8 +83,6 @@ TOP = 4
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-EdgeLightPosition-TOP = 4--><!--Device-EdgeLightPosition-TOP = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,8 +100,6 @@ BOTTOM = 5
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EdgeLightPosition-BOTTOM = 5--><!--Device-EdgeLightPosition-BOTTOM = 5-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -129,8 +115,6 @@ LEFT = 6
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-EdgeLightPosition-LEFT = 6--><!--Device-EdgeLightPosition-LEFT = 6-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,9 +132,6 @@ RIGHT = 7
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EdgeLightPosition-RIGHT = 7--><!--Device-EdgeLightPosition-RIGHT = 7-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

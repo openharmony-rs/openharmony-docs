@@ -14,9 +14,6 @@ declare type CircleShape = import('../api/@ohos.arkui.shape').CircleShape
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare type CircleShape = import('../api/@ohos.arkui.shape').CircleShape--><!--Device-unnamed-declare type CircleShape = import('../api/@ohos.arkui.shape').CircleShape-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **属性类型：** import('../api/@ohos.arkui.shape').CircleShape
-

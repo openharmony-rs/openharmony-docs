@@ -4,18 +4,11 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface OnWindowNewEvent--><!--Device-unnamed-declare interface OnWindowNewEvent-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## handler
@@ -31,8 +24,6 @@ handler: ControllerHandler
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OnWindowNewEvent-handler: ControllerHandler--><!--Device-OnWindowNewEvent-handler: ControllerHandler-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -50,8 +41,6 @@ true代表请求创建对话框，false代表新标签页。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnWindowNewEvent-isAlert: boolean--><!--Device-OnWindowNewEvent-isAlert: boolean-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## isUserTrigger
@@ -67,8 +56,6 @@ true代表用户触发，false代表非用户触发。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OnWindowNewEvent-isUserTrigger: boolean--><!--Device-OnWindowNewEvent-isUserTrigger: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -86,7 +73,4 @@ targetUrl: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnWindowNewEvent-targetUrl: string--><!--Device-OnWindowNewEvent-targetUrl: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

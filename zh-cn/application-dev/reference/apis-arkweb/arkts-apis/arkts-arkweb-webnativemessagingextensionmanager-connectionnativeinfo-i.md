@@ -4,8 +4,6 @@
 
 **起始版本：** 21
 
-<!--Device-webNativeMessagingExtensionManager-interface ConnectionNativeInfo--><!--Device-webNativeMessagingExtensionManager-interface ConnectionNativeInfo-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -28,8 +26,6 @@ Web原生消息扩展应用的包名。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ConnectionNativeInfo-bundleName: string--><!--Device-ConnectionNativeInfo-bundleName: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## connectionId
@@ -45,8 +41,6 @@ Web原生消息扩展连接的唯一标识，由connectNative方法返回，用�
 **起始版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ConnectionNativeInfo-connectionId: number--><!--Device-ConnectionNativeInfo-connectionId: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,8 +58,6 @@ extensionOrigin: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ConnectionNativeInfo-extensionOrigin: string--><!--Device-ConnectionNativeInfo-extensionOrigin: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## extensionPid
@@ -82,7 +74,4 @@ Web原生消息扩展的进程ID。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ConnectionNativeInfo-extensionPid: number--><!--Device-ConnectionNativeInfo-extensionPid: number-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

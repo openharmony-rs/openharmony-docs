@@ -4,8 +4,6 @@
 
 **起始版本：** 18
 
-<!--Device-unnamed-declare interface PopupMaskType--><!--Device-unnamed-declare interface PopupMaskType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -21,7 +19,7 @@ color: ResourceColor
 
 设置遮罩层颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 18
 
@@ -29,7 +27,4 @@ color: ResourceColor
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PopupMaskType-color: ResourceColor--><!--Device-PopupMaskType-color: ResourceColor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

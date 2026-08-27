@@ -12,14 +12,11 @@ export declare type NodeRenderStateChangeCallback = (state: NodeRenderState, nod
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-export declare type NodeRenderStateChangeCallback = (state: NodeRenderState, node?: FrameNode) => void--><!--Device-unnamed-export declare type NodeRenderStateChangeCallback = (state: NodeRenderState, node?: FrameNode) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| state | [NodeRenderState](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-noderenderstate-e.md) | 是 | 触发事件监听的手势事件的相关信息。 |
-| node | FrameNode | 否 | 触发事件监听的手势事件所绑定的组件，如果组件被释放将返回null。 |
-
+| state | [NodeRenderState](arkts-arkui-arkui-uicontext-noderenderstate-e.md) | 是 | 触发事件监听的手势事件的相关信息。 |
+| node | [FrameNode](arkts-arkui-framenode-c.md) | 否 | 触发事件监听的手势事件所绑定的组件，如果组件被释放将返回null。 |

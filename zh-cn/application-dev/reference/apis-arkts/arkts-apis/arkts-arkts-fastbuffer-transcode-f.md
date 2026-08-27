@@ -18,8 +18,6 @@ function transcode(source: FastBuffer | Uint8Array, fromEnc: string, toEnc: stri
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-fastbuffer-function transcode(source: FastBuffer | Uint8Array, fromEnc: string, toEnc: string): FastBuffer--><!--Device-fastbuffer-function transcode(source: FastBuffer | Uint8Array, fromEnc: string, toEnc: string): FastBuffer-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -45,4 +43,3 @@ let newBuf = fastbuffer.transcode(fastbuffer.from('buffer'), 'utf-8', 'ascii');
 console.info('newBuf = ' + newBuf.toString('ascii'));
 // 输出结果：newBuf = buffer
 ```
-

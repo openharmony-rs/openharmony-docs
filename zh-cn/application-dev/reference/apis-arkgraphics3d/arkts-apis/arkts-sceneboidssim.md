@@ -20,4 +20,3 @@
 | [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) | 群组模拟参数，用于配置每个个体的行为属性。 |
 | [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) | 斥力场参数，用于配置场景中的斥力场。 |
 <!--DelEnd-->
-

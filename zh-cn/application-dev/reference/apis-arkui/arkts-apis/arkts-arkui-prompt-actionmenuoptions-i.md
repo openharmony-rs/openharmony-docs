@@ -6,9 +6,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [ActionMenuOptions](../../apis-na/arkts-apis/arkts-na-promptaction-actionmenuoptions-i.md)
-
-<!--Device-prompt-interface ActionMenuOptions--><!--Device-prompt-interface ActionMenuOptions-End-->
+**替代接口：** [ActionMenuOptions](arkts-arkui-promptaction-actionmenuoptions-i.md)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,7 +14,6 @@
 
 ```TypeScript
 import { prompt } from '@kit.ArkUI';
-import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 ```
 
 ## buttons
@@ -33,9 +30,7 @@ buttons: [Button, Button?, Button?, Button?, Button?, Button?]
 
 **废弃版本：** 9
 
-**替代接口：** [buttons](../../apis-na/arkts-apis/arkts-na-promptaction-actionmenuoptions-i.md#buttons)
-
-<!--Device-ActionMenuOptions-buttons: [Button, Button?, Button?, Button?, Button?, Button?]--><!--Device-ActionMenuOptions-buttons: [Button, Button?, Button?, Button?, Button?, Button?]-End-->
+**替代接口：** [buttons](arkts-arkui-promptaction-actionmenuoptions-i.md#buttons)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,9 +48,6 @@ title?: string
 
 **废弃版本：** 9
 
-**替代接口：** [title](../../apis-na/arkts-apis/arkts-na-promptaction-actionmenuoptions-i.md#title)
-
-<!--Device-ActionMenuOptions-title?: string--><!--Device-ActionMenuOptions-title?: string-End-->
+**替代接口：** [title](arkts-arkui-promptaction-actionmenuoptions-i.md#title)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

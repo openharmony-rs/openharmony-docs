@@ -6,8 +6,6 @@
 
 **起始版本：** 20
 
-<!--Device-unnamed-declare class RadialGradientStyle--><!--Device-unnamed-declare class RadialGradientStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,15 +27,13 @@ constructor(options: RadialGradientOptions)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RadialGradientStyle-constructor(options: RadialGradientOptions)--><!--Device-RadialGradientStyle-constructor(options: RadialGradientOptions)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | RadialGradientOptions | 是 | 显示为径向渐变效果。 |
+| options | [RadialGradientOptions](../arkts-components/arkts-arkui-radialgradientoptions-i.md) | 是 | 显示为径向渐变效果。 |
 
 ## options
 
@@ -47,7 +43,7 @@ options: RadialGradientOptions
 
 显示为径向渐变效果。
 
-**类型：** RadialGradientOptions
+**类型：** [RadialGradientOptions](../arkts-components/arkts-arkui-radialgradientoptions-i.md)
 
 **起始版本：** 20
 
@@ -55,7 +51,4 @@ options: RadialGradientOptions
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RadialGradientStyle-options: RadialGradientOptions--><!--Device-RadialGradientStyle-options: RadialGradientOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

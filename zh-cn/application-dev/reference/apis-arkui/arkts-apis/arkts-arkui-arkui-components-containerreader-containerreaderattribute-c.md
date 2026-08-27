@@ -6,8 +6,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export declare class ContainerReaderAttribute--><!--Device-unnamed-export declare class ContainerReaderAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,8 +30,6 @@ breakpointConfig(value?: BreakpointOptions): ContainerReaderAttribute
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ContainerReaderAttribute-breakpointConfig(value?: BreakpointOptions): ContainerReaderAttribute--><!--Device-ContainerReaderAttribute-breakpointConfig(value?: BreakpointOptions): ContainerReaderAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -47,4 +43,3 @@ breakpointConfig(value?: BreakpointOptions): ContainerReaderAttribute
 | 类型 | 说明 |
 | --- | --- |
 | [ContainerReaderAttribute](arkts-arkui-arkui-components-containerreader-containerreaderattribute-c.md) |  |
-

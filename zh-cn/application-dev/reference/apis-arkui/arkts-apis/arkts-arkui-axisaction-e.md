@@ -4,8 +4,6 @@
 
 **起始版本：** 17
 
-<!--Device-unnamed-declare enum AxisAction--><!--Device-unnamed-declare enum AxisAction-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NONE
@@ -21,8 +19,6 @@ NONE = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AxisAction-NONE = 0--><!--Device-AxisAction-NONE = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ BEGIN = 1
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AxisAction-BEGIN = 1--><!--Device-AxisAction-BEGIN = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## UPDATE
@@ -57,8 +51,6 @@ UPDATE = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AxisAction-UPDATE = 2--><!--Device-AxisAction-UPDATE = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,8 +68,6 @@ END = 3
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AxisAction-END = 3--><!--Device-AxisAction-END = 3-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CANCEL
@@ -94,7 +84,4 @@ CANCEL = 4
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AxisAction-CANCEL = 4--><!--Device-AxisAction-CANCEL = 4-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

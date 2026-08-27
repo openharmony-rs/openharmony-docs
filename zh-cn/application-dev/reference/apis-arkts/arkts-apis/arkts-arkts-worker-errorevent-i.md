@@ -6,8 +6,6 @@
 
 **起始版本：** 7
 
-<!--Device-unnamed-export interface ErrorEvent--><!--Device-unnamed-export interface ErrorEvent-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
@@ -30,8 +28,6 @@ readonly colno: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ErrorEvent-readonly colno: number--><!--Device-ErrorEvent-readonly colno: number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## error
@@ -47,8 +43,6 @@ readonly error: Object
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ErrorEvent-readonly error: Object--><!--Device-ErrorEvent-readonly error: Object-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -66,8 +60,6 @@ readonly filename: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ErrorEvent-readonly filename: string--><!--Device-ErrorEvent-readonly filename: string-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## lineno
@@ -83,8 +75,6 @@ readonly lineno: number
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ErrorEvent-readonly lineno: number--><!--Device-ErrorEvent-readonly lineno: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -102,7 +92,4 @@ readonly message: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ErrorEvent-readonly message: string--><!--Device-ErrorEvent-readonly message: string-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

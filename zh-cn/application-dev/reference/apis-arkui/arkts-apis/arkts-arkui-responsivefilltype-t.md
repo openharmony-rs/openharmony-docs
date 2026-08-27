@@ -12,9 +12,6 @@ declare type ResponsiveFillType = PresetFillType
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type ResponsiveFillType = PresetFillType--><!--Device-unnamed-declare type ResponsiveFillType = PresetFillType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** PresetFillType
-
+**属性类型：** [PresetFillType](arkts-arkui-presetfilltype-e.md)

@@ -1,4 +1,4 @@
-# URLSearchParams(URL字符串解析)
+# URLSearchParams
 
 URLSearchParams接口定义了一些处理URL查询字符串的实用方法，从API version 9开始废弃，建议使用[URLParams](arkts-arkts-url-urlparams-c.md)。
 
@@ -8,14 +8,11 @@ URLSearchParams接口定义了一些处理URL查询字符串的实用方法，�
 
 **替代接口：** [URLParams](arkts-arkts-url-urlparams-c.md)
 
-<!--Device-url-class URLSearchParams--><!--Device-url-class URLSearchParams-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { url } from '@kit.ArkTS';
 ```
 
 ## [Symbol.iterator]
@@ -30,9 +27,7 @@ import { url } from '@kit.ArkTS';
 
 **废弃版本：** 9
 
-**替代接口：** iterator]
-
-<!--Device-URLSearchParams-[Symbol.iterator](): IterableIterator<[string, string]>--><!--Device-URLSearchParams-[Symbol.iterator](): IterableIterator<[string, string]>-End-->
+**替代接口：** [Symbol.iterator]
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -40,9 +35,22 @@ import { url } from '@kit.ArkTS';
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[string, string]&gt; | 返回一个迭代器，迭代器的每一项为包含name和value的[string, string]数组。 |
+| IterableIterator & lt;[string, string] & gt; | 返回一个迭代器，迭代器的每一项为包含name和value的[string, string]数组。 |
 
 **示例**
+
+```TypeScript
+// 构造URLParams对象
+const paramsObject = new url.URLParams('fod=bay&edg=bap');
+// 获取Symbol.iterator迭代器
+let iter = paramsObject[Symbol.iterator]();
+// 遍历键值对
+for (let pair of iter) {
+  console.info(pair[0] + ', ' + pair[1]);
+}
+// fod, bay
+// edg, bap
+```
 
 ```TypeScript
 const paramsObject = new url.URLSearchParams('fod=bay&edg=bap');
@@ -68,8 +76,6 @@ append(name: string, value: string): void
 
 **替代接口：** append
 
-<!--Device-URLSearchParams-append(name: string, value: string): void--><!--Device-URLSearchParams-append(name: string, value: string): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -80,6 +86,15 @@ append(name: string, value: string): void
 | value | string | 是 | 需要插入搜索参数的值。 |
 
 **示例**
+
+```TypeScript
+// 解析URL字符串
+let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
+// 构造URLParams对象
+let paramsObject = new url.URLParams(urlObject.search.slice(1));
+// 追加键值对
+paramsObject.append('fod', '3');
+```
 
 ```TypeScript
 let urlObject = new url.URL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -101,15 +116,13 @@ URLSearchParams的构造函数。
 
 **替代接口：** constructor
 
-<!--Device-URLSearchParams-constructor(init?: string[][] | Record<string, string> | string | URLSearchParams)--><!--Device-URLSearchParams-constructor(init?: string[][] | Record<string, string> | string | URLSearchParams)-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| init | string[][] \| Record&lt;string, string&gt; \| string \| [URLSearchParams](arkts-arkts-url-urlsearchparams-c.md) | 否 | 入参对象。 <br/>- string[][]：字符串二维数组，每个内部数组包含两个元素，分别为键名和键值。 <br/>- Record&lt;string, string&gt;：对象列表。 <br/>- string：字符串，需遵循URL查询参数格式，如'key=value&key2=value2'。 <br/>- URLSearchParams：对象。 <br/>- 默认值：undefined。 |
+| init | string[][] \| Record & lt;string, string & gt; \ | string \| URLSearchParams | 否 | 入参对象。    - string[][]：字符串二维数组，每个内部数组包含两个元素，分别为键名和键值。    - Record & lt;string, string & gt;：对象列表。    - string：字符串，需遵循URL查询参数格式，如'key=value & key2=value2'。    - URLSearchParams：对象。    - 默认值：undefined。 |
 
 **示例**
 
@@ -135,8 +148,6 @@ delete(name: string): void
 
 **替代接口：** delete
 
-<!--Device-URLSearchParams-delete(name: string): void--><!--Device-URLSearchParams-delete(name: string): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -146,6 +157,15 @@ delete(name: string): void
 | name | string | 是 | 需要删除的键值名称。 |
 
 **示例**
+
+```TypeScript
+// 解析URL字符串
+let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
+// 构造URLParams对象
+let paramsObject = new url.URLParams(urlObject.search.slice(1));
+// 删除指定名称的键值对
+paramsObject.delete('fod');
+```
 
 ```TypeScript
 let urlObject = new url.URL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -167,17 +187,28 @@ entries(): IterableIterator<[string, string]>
 
 **替代接口：** entries
 
-<!--Device-URLSearchParams-entries(): IterableIterator<[string, string]>--><!--Device-URLSearchParams-entries(): IterableIterator<[string, string]>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[string, string]&gt; | 返回一个ES6的迭代器。 |
+| IterableIterator & lt;[string, string] & gt; | 返回一个ES6的迭代器。 |
 
 **示例**
+
+```TypeScript
+// 构造URLParams对象
+let paramsObject = new url.URLParams('keyName1=valueName1&keyName2=valueName2');
+// 获取entries迭代器
+let pair = paramsObject.entries();
+// 遍历键值对
+for (let item of pair) {
+  console.info(item[0] + '=' + item[1]);
+}
+// keyName1=valueName1
+// keyName2=valueName2
+```
 
 ```TypeScript
 let searchParamsObject = new url.URLSearchParams("keyName1=valueName1&keyName2=valueName2");
@@ -203,15 +234,13 @@ forEach(callbackFn: (value: string, key: string, searchParams: URLSearchParams) 
 
 **替代接口：** forEach
 
-<!--Device-URLSearchParams-forEach(callbackFn: (value: string, key: string, searchParams: URLSearchParams) => void, thisArg?: Object): void--><!--Device-URLSearchParams-forEach(callbackFn: (value: string, key: string, searchParams: URLSearchParams) => void, thisArg?: Object): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: string, key: string, searchParams: URLSearchParams) =&gt; void | 是 | 回调函数。 |
+| callbackFn | (value: string, key: string, searchParams: URLSearchParams) = & gt; void | 是 | 回调函数。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值是本对象。 |
 
 **示例**
@@ -237,8 +266,6 @@ get(name: string): string | null
 
 **替代接口：** get
 
-<!--Device-URLSearchParams-get(name: string): string | null--><!--Device-URLSearchParams-get(name: string): string | null-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -251,9 +278,16 @@ get(name: string): string | null
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 返回第一个值，如果没找到，返回 null。 |
+| string \| null | 返回第一个值，如果没找到，返回 null。 |
 
 **示例**
+
+```TypeScript
+let paramsObject = new url.URLParams('name=Jonathan&age=18');
+let name = paramsObject.get('name'); // is the string "Jonathan"
+let age = paramsObject.get('age'); // is the string "18"
+let absentValue = paramsObject.get('abc'); // undefined
+```
 
 ```TypeScript
 let paramsObject = new url.URLSearchParams('name=Jonathan&age=18');
@@ -276,8 +310,6 @@ getAll(name: string): string[]
 
 **替代接口：** getAll
 
-<!--Device-URLSearchParams-getAll(name: string): string[]--><!--Device-URLSearchParams-getAll(name: string): string[]-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -293,6 +325,15 @@ getAll(name: string): string[]
 | string[] | 返回指定名称的所有键对应值的集合。 |
 
 **示例**
+
+```TypeScript
+// 解析URL并构造URLParams对象
+let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
+let params = new url.URLParams(urlObject.search.slice(1));
+params.append('fod', '3'); // 追加第二个fod参数值
+// 获取指定名称fod的所有值
+console.info(params.getAll('fod').toString()); // Output ["1","3"]
+```
 
 ```TypeScript
 let urlObject = new url.URL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -315,8 +356,6 @@ has(name: string): boolean
 
 **替代接口：** has
 
-<!--Device-URLSearchParams-has(name: string): boolean--><!--Device-URLSearchParams-has(name: string): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -332,6 +371,15 @@ has(name: string): boolean
 | boolean | 是否存在相对应的key值，存在返回true，否则返回false。 |
 
 **示例**
+
+```TypeScript
+// 解析URL字符串
+let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
+// 构造URLParams对象
+let paramsObject = new url.URLParams(urlObject.search.slice(1));
+// 判断键名bard是否存在
+let result = paramsObject.has('bard');
+```
 
 ```TypeScript
 let urlObject = new url.URL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -353,17 +401,28 @@ keys(): IterableIterator<string>
 
 **替代接口：** keys
 
-<!--Device-URLSearchParams-keys(): IterableIterator<string>--><!--Device-URLSearchParams-keys(): IterableIterator<string>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;string&gt; | 返回一个所有键值对的name的迭代器。 |
+| IterableIterator & lt;string & gt; | 返回一个所有键值对的name的迭代器。 |
 
 **示例**
+
+```TypeScript
+// 构造URLParams对象
+let paramsObject = new url.URLParams("key1=value1&key2=value2");
+// 获取所有键名的迭代器
+let keys = paramsObject.keys();
+// 遍历输出键名
+for (let key of keys) {
+  console.info(key);
+}
+// key1
+// key2
+```
 
 ```TypeScript
 let searchParamsObject = new url.URLSearchParams("key1=value1&key2=value2");
@@ -389,8 +448,6 @@ set(name: string, value: string): void
 
 **替代接口：** set
 
-<!--Device-URLSearchParams-set(name: string, value: string): void--><!--Device-URLSearchParams-set(name: string, value: string): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -401,6 +458,12 @@ set(name: string, value: string): void
 | value | string | 是 | 所要设置的参数值。 |
 
 **示例**
+
+```TypeScript
+let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
+let paramsObject = new url.URLParams(urlObject.search.slice(1));
+paramsObject.set('baz', '3'); // Add a third parameter.
+```
 
 ```TypeScript
 let urlObject = new url.URL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -422,11 +485,15 @@ sort(): void
 
 **替代接口：** sort
 
-<!--Device-URLSearchParams-sort(): void--><!--Device-URLSearchParams-sort(): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **示例**
+
+```TypeScript
+let paramsObject = new url.URLParams("c=3&a=9&b=4&d=2"); // Create a test URLParams object
+paramsObject.sort(); // Sort the key/value pairs
+console.info(paramsObject.toString()); // Display the sorted query string // Output a=9&b=4&c=3&d=2
+```
 
 ```TypeScript
 let searchParamsObject = new url.URLSearchParams("c=3&a=9&b=4&d=2"); // Create a test URLSearchParams object
@@ -448,8 +515,6 @@ toString(): string
 
 **替代接口：** toString
 
-<!--Device-URLSearchParams-toString(): string--><!--Device-URLSearchParams-toString(): string-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -459,6 +524,22 @@ toString(): string
 | string | 返回序列化为字符串的搜索参数，必要时对字符进行百分比编码。 |
 
 **示例**
+
+```TypeScript
+// 解析URL字符串
+let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
+// 构造URLParams对象
+let params = new url.URLParams(urlObject.search.slice(1));
+// 追加参数
+params.append('fod', '3');
+// 将参数序列化为字符串
+console.info(params.toString()); // Output 'fod=1&bard=2&fod=3'
+```
+
+```TypeScript
+const urlObject = url.URL.parseURL('https://username:password@host:8080/directory/file?query=pppppp#qwer=da');
+let result = urlObject.toString(); // Output 'https://username:password@host:8080/directory/file?query=pppppp#qwer=da'
+```
 
 ```TypeScript
 let urlObject = new url.URL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -481,17 +562,28 @@ values(): IterableIterator<string>
 
 **替代接口：** values
 
-<!--Device-URLSearchParams-values(): IterableIterator<string>--><!--Device-URLSearchParams-values(): IterableIterator<string>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;string&gt; | 返回一个所有键值对的value的迭代器。 |
+| IterableIterator & lt;string & gt; | 返回一个所有键值对的value的迭代器。 |
 
 **示例**
+
+```TypeScript
+// 构造URLParams对象
+let paramsObject = new url.URLParams("key1=value1&key2=value2");
+// 获取所有值的迭代器
+let values = paramsObject.values();
+// 遍历输出值
+for (let value of values) {
+  console.info(value);
+}
+// value1
+// value2
+```
 
 ```TypeScript
 let searchParams = new url.URLSearchParams("key1=value1&key2=value2");
@@ -502,4 +594,3 @@ for (let value of values) {
 // value1
 // value2
 ```
-

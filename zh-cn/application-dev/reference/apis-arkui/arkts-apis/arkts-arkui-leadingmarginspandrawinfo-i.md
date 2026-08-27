@@ -4,8 +4,6 @@
 
 **起始版本：** 22
 
-<!--Device-unnamed-declare interface LeadingMarginSpanDrawInfo--><!--Device-unnamed-declare interface LeadingMarginSpanDrawInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,7 +17,7 @@
 baseline: number
 ```
 
-当前行的基线与组件上边缘的距离。 单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) 取值范围：大于等于0。
+当前行的基线与组件上边缘的距离。单位：[px](arkts-arkui-length-t.md)取值范围：大于等于0。
 
 **类型：** number
 
@@ -28,8 +26,6 @@ baseline: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LeadingMarginSpanDrawInfo-baseline: number--><!--Device-LeadingMarginSpanDrawInfo-baseline: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,7 +35,7 @@ baseline: number
 bottom: number
 ```
 
-行底与组件上边缘的距离。 单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) 取值范围：大于等于0。
+行底与组件上边缘的距离。单位：[px](arkts-arkui-length-t.md)取值范围：大于等于0。
 
 **类型：** number
 
@@ -48,8 +44,6 @@ bottom: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LeadingMarginSpanDrawInfo-bottom: number--><!--Device-LeadingMarginSpanDrawInfo-bottom: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,8 +63,6 @@ direction: TextDirection
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LeadingMarginSpanDrawInfo-direction: TextDirection--><!--Device-LeadingMarginSpanDrawInfo-direction: TextDirection-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## end
@@ -79,7 +71,7 @@ direction: TextDirection
 end: number
 ```
 
-当前行的结束索引。 取值范围：大于等于0。
+当前行的结束索引。取值范围：大于等于0。
 
 **类型：** number
 
@@ -88,8 +80,6 @@ end: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LeadingMarginSpanDrawInfo-end: number--><!--Device-LeadingMarginSpanDrawInfo-end: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,7 +89,7 @@ end: number
 first: boolean
 ```
 
-当前行是否是段落的首行。 true：首行；false：非首行。
+当前行是否是段落的首行。true：首行；false：非首行。
 
 **类型：** boolean
 
@@ -109,8 +99,6 @@ first: boolean
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LeadingMarginSpanDrawInfo-first: boolean--><!--Device-LeadingMarginSpanDrawInfo-first: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -119,7 +107,7 @@ first: boolean
 start: number
 ```
 
-当前行的起始索引。 取值范围：大于等于0。
+当前行的起始索引。取值范围：大于等于0。
 
 **类型：** number
 
@@ -128,8 +116,6 @@ start: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LeadingMarginSpanDrawInfo-start: number--><!--Device-LeadingMarginSpanDrawInfo-start: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,7 +125,7 @@ start: number
 top: number
 ```
 
-行顶与组件上边缘的距离。 单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) 取值范围：大于等于0。
+行顶与组件上边缘的距离。单位：[px](arkts-arkui-length-t.md)取值范围：大于等于0。
 
 **类型：** number
 
@@ -148,8 +134,6 @@ top: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LeadingMarginSpanDrawInfo-top: number--><!--Device-LeadingMarginSpanDrawInfo-top: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -159,7 +143,7 @@ top: number
 x: number
 ```
 
-当前行相对于组件的水平偏移。direction为RTL时，返回当前行右侧与组件右边缘的距离。 单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) 取值范围：大于等于0。
+当前行相对于组件的水平偏移。direction为RTL时，返回当前行右侧与组件右边缘的距离。单位：[px](arkts-arkui-length-t.md)取值范围：大于等于0。
 
 **类型：** number
 
@@ -169,7 +153,4 @@ x: number
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LeadingMarginSpanDrawInfo-x: number--><!--Device-LeadingMarginSpanDrawInfo-x: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

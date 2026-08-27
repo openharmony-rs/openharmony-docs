@@ -1,12 +1,10 @@
 # TextEditControllerEx
 
-文本扩展编辑控制器。 继承自[TextBaseController](arkts-arkui-textbasecontroller-i.md)。
+文本扩展编辑控制器。继承自[TextBaseController](arkts-arkui-textbasecontroller-i.md)。
 
 **继承/实现关系：** TextEditControllerEx extends [TextBaseController](arkts-arkui-textbasecontroller-i.md)
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare interface TextEditControllerEx--><!--Device-unnamed-declare interface TextEditControllerEx-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,8 +26,6 @@ getCaretOffset(): number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextEditControllerEx-getCaretOffset(): number--><!--Device-TextEditControllerEx-getCaretOffset(): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,8 +49,6 @@ getPreviewText?(): PreviewText
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextEditControllerEx-getPreviewText?(): PreviewText--><!--Device-TextEditControllerEx-getPreviewText?(): PreviewText-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -76,8 +70,6 @@ isEditing(): boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextEditControllerEx-isEditing(): boolean--><!--Device-TextEditControllerEx-isEditing(): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,8 +93,6 @@ setCaretOffset(offset: number): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextEditControllerEx-setCaretOffset(offset: number): boolean--><!--Device-TextEditControllerEx-setCaretOffset(offset: number): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -115,7 +105,7 @@ setCaretOffset(offset: number): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 光标是否设置成功。 <br>true表示光标设置成功，false表示设置失败。 |
+| boolean | 光标是否设置成功。 |
 
 ## stopEditing
 
@@ -131,7 +121,4 @@ stopEditing(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextEditControllerEx-stopEditing(): void--><!--Device-TextEditControllerEx-stopEditing(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

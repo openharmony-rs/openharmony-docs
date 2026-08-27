@@ -4,18 +4,11 @@
 
 **起始版本：** 22
 
-<!--Device-unnamed-declare interface BlankScreenDetectionEventInfo--><!--Device-unnamed-declare interface BlankScreenDetectionEventInfo-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## blankScreenDetails
@@ -29,8 +22,6 @@ blankScreenDetails?: BlankScreenDetails
 **类型：** [BlankScreenDetails](arkts-arkweb-blankscreendetails-i.md)
 
 **起始版本：** 22
-
-<!--Device-BlankScreenDetectionEventInfo-blankScreenDetails?: BlankScreenDetails--><!--Device-BlankScreenDetectionEventInfo-blankScreenDetails?: BlankScreenDetails-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -46,8 +37,6 @@ blankScreenReason: DetectedBlankScreenReason
 
 **起始版本：** 22
 
-<!--Device-BlankScreenDetectionEventInfo-blankScreenReason: DetectedBlankScreenReason--><!--Device-BlankScreenDetectionEventInfo-blankScreenReason: DetectedBlankScreenReason-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## url
@@ -62,7 +51,4 @@ url: string
 
 **起始版本：** 22
 
-<!--Device-BlankScreenDetectionEventInfo-url: string--><!--Device-BlankScreenDetectionEventInfo-url: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

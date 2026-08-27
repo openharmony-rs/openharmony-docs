@@ -3,8 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -16,11 +14,9 @@ function setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback<voi
 
 设置窗口布局模式，使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **废弃版本：** 26.0.0
-
-<!--Device-window-function setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback<void>): void--><!--Device-window-function setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -31,15 +27,15 @@ function setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback<voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mode | [WindowLayoutMode](arkts-arkui-window-windowlayoutmode-e-sys.md) | 是 | 设置的窗口布局模式。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
 
@@ -60,25 +56,6 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  window.setWindowLayoutMode(window.WindowLayoutMode.WINDOW_LAYOUT_MODE_CASCADE, (err: BusinessError<void> | null) => {
-    if (err?.code) {
-      console.error(`Failed to set window layout mode. Cause code: ${err?.code}, message: ${err?.message}`);
-      return;
-    }
-    console.info('Succeeded in setting window layout mode.');
-  });
-} catch (exception) {
-    let err = exception as BusinessError;
-    console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
-}
-```
-
 
 ## setWindowLayoutMode
 
@@ -88,11 +65,9 @@ function setWindowLayoutMode(mode: WindowLayoutMode): Promise<void>
 
 设置窗口布局模式，使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **废弃版本：** 26.0.0
-
-<!--Device-window-function setWindowLayoutMode(mode: WindowLayoutMode): Promise<void>--><!--Device-window-function setWindowLayoutMode(mode: WindowLayoutMode): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -108,15 +83,15 @@ function setWindowLayoutMode(mode: WindowLayoutMode): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
 
@@ -134,22 +109,3 @@ try {
   console.error(`Failed to set window layout mode. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let promise = window.setWindowLayoutMode(window.WindowLayoutMode.WINDOW_LAYOUT_MODE_CASCADE);
-  promise.then(() => {
-    console.info('Succeeded in setting window layout mode.');
-  }).catch((err: Error) => {
-    console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  let err = exception as BusinessError;
-  console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
-}
-```
-

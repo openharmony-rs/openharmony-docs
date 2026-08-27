@@ -1,10 +1,8 @@
 # DisplayIntentType（系统接口）
 
-枚举截图显示意图类型。
+枚举截图显示意图类型。@enum { number }
 
 **起始版本：** 24
-
-<!--Device-screenshot-enum DisplayIntentType--><!--Device-screenshot-enum DisplayIntentType-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -22,8 +20,6 @@ CANONICAL = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DisplayIntentType-CANONICAL = 0--><!--Device-DisplayIntentType-CANONICAL = 0-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -40,9 +36,6 @@ LOCAL = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DisplayIntentType-LOCAL = 1--><!--Device-DisplayIntentType-LOCAL = 1-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
-

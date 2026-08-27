@@ -4,8 +4,6 @@ ArkWeb的网络协议栈错误列表。
 
 **起始版本：** 12
 
-<!--Device-unnamed-export declare enum WebNetErrorList--><!--Device-unnamed-export declare enum WebNetErrorList-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## NET_OK
@@ -19,8 +17,6 @@ NET_OK = 0
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-NET_OK = 0--><!--Device-WebNetErrorList-NET_OK = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,8 +32,6 @@ ERR_IO_PENDING = -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_IO_PENDING = -1--><!--Device-WebNetErrorList-ERR_IO_PENDING = -1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_FAILED
@@ -51,8 +45,6 @@ ERR_FAILED = -2
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_FAILED = -2--><!--Device-WebNetErrorList-ERR_FAILED = -2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -68,8 +60,6 @@ ERR_ABORTED = -3
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_ABORTED = -3--><!--Device-WebNetErrorList-ERR_ABORTED = -3-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_INVALID_ARGUMENT
@@ -83,8 +73,6 @@ ERR_INVALID_ARGUMENT = -4
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_INVALID_ARGUMENT = -4--><!--Device-WebNetErrorList-ERR_INVALID_ARGUMENT = -4-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -100,8 +88,6 @@ ERR_INVALID_HANDLE = -5
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_INVALID_HANDLE = -5--><!--Device-WebNetErrorList-ERR_INVALID_HANDLE = -5-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_FILE_NOT_FOUND
@@ -115,8 +101,6 @@ ERR_FILE_NOT_FOUND = -6
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_FILE_NOT_FOUND = -6--><!--Device-WebNetErrorList-ERR_FILE_NOT_FOUND = -6-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -132,8 +116,6 @@ ERR_TIMED_OUT = -7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_TIMED_OUT = -7--><!--Device-WebNetErrorList-ERR_TIMED_OUT = -7-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_FILE_TOO_LARGE
@@ -147,8 +129,6 @@ ERR_FILE_TOO_LARGE = -8
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_FILE_TOO_LARGE = -8--><!--Device-WebNetErrorList-ERR_FILE_TOO_LARGE = -8-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -164,8 +144,6 @@ ERR_UNEXPECTED = -9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_UNEXPECTED = -9--><!--Device-WebNetErrorList-ERR_UNEXPECTED = -9-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_ACCESS_DENIED
@@ -179,8 +157,6 @@ ERR_ACCESS_DENIED = -10
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_ACCESS_DENIED = -10--><!--Device-WebNetErrorList-ERR_ACCESS_DENIED = -10-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -196,8 +172,6 @@ ERR_NOT_IMPLEMENTED = -11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_NOT_IMPLEMENTED = -11--><!--Device-WebNetErrorList-ERR_NOT_IMPLEMENTED = -11-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_INSUFFICIENT_RESOURCES
@@ -211,8 +185,6 @@ ERR_INSUFFICIENT_RESOURCES = -12
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_INSUFFICIENT_RESOURCES = -12--><!--Device-WebNetErrorList-ERR_INSUFFICIENT_RESOURCES = -12-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -228,8 +200,6 @@ ERR_OUT_OF_MEMORY = -13
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_OUT_OF_MEMORY = -13--><!--Device-WebNetErrorList-ERR_OUT_OF_MEMORY = -13-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_UPLOAD_FILE_CHANGED
@@ -243,8 +213,6 @@ ERR_UPLOAD_FILE_CHANGED = -14
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_UPLOAD_FILE_CHANGED = -14--><!--Device-WebNetErrorList-ERR_UPLOAD_FILE_CHANGED = -14-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -260,8 +228,6 @@ ERR_SOCKET_NOT_CONNECTED = -15
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SOCKET_NOT_CONNECTED = -15--><!--Device-WebNetErrorList-ERR_SOCKET_NOT_CONNECTED = -15-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_FILE_EXISTS
@@ -275,8 +241,6 @@ ERR_FILE_EXISTS = -16
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_FILE_EXISTS = -16--><!--Device-WebNetErrorList-ERR_FILE_EXISTS = -16-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -292,8 +256,6 @@ ERR_FILE_PATH_TOO_LONG = -17
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_FILE_PATH_TOO_LONG = -17--><!--Device-WebNetErrorList-ERR_FILE_PATH_TOO_LONG = -17-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_FILE_NO_SPACE
@@ -307,8 +269,6 @@ ERR_FILE_NO_SPACE = -18
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_FILE_NO_SPACE = -18--><!--Device-WebNetErrorList-ERR_FILE_NO_SPACE = -18-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -324,8 +284,6 @@ ERR_FILE_VIRUS_INFECTED = -19
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_FILE_VIRUS_INFECTED = -19--><!--Device-WebNetErrorList-ERR_FILE_VIRUS_INFECTED = -19-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_BLOCKED_BY_CLIENT
@@ -339,8 +297,6 @@ ERR_BLOCKED_BY_CLIENT = -20
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_BLOCKED_BY_CLIENT = -20--><!--Device-WebNetErrorList-ERR_BLOCKED_BY_CLIENT = -20-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -356,8 +312,6 @@ ERR_NETWORK_CHANGED = -21
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_NETWORK_CHANGED = -21--><!--Device-WebNetErrorList-ERR_NETWORK_CHANGED = -21-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_BLOCKED_BY_ADMINISTRATOR
@@ -371,8 +325,6 @@ ERR_BLOCKED_BY_ADMINISTRATOR = -22
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_BLOCKED_BY_ADMINISTRATOR = -22--><!--Device-WebNetErrorList-ERR_BLOCKED_BY_ADMINISTRATOR = -22-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -388,8 +340,6 @@ socket已经处于连接状态。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SOCKET_CONNECTED = -23--><!--Device-WebNetErrorList-ERR_SOCKET_CONNECTED = -23-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED
@@ -403,8 +353,6 @@ ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED = -25
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED = -25--><!--Device-WebNetErrorList-ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED = -25-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -420,8 +368,6 @@ ERR_CONTEXT_SHUT_DOWN = -26
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CONTEXT_SHUT_DOWN = -26--><!--Device-WebNetErrorList-ERR_CONTEXT_SHUT_DOWN = -26-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_BLOCKED_BY_RESPONSE
@@ -435,8 +381,6 @@ ERR_BLOCKED_BY_RESPONSE = -27
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_BLOCKED_BY_RESPONSE = -27--><!--Device-WebNetErrorList-ERR_BLOCKED_BY_RESPONSE = -27-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -452,8 +396,6 @@ ERR_CLEARTEXT_NOT_PERMITTED = -29
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CLEARTEXT_NOT_PERMITTED = -29--><!--Device-WebNetErrorList-ERR_CLEARTEXT_NOT_PERMITTED = -29-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_BLOCKED_BY_CSP
@@ -467,8 +409,6 @@ ERR_BLOCKED_BY_CSP = -30
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_BLOCKED_BY_CSP = -30--><!--Device-WebNetErrorList-ERR_BLOCKED_BY_CSP = -30-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -484,8 +424,6 @@ ERR_H2_OR_QUIC_REQUIRED = -31
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_H2_OR_QUIC_REQUIRED = -31--><!--Device-WebNetErrorList-ERR_H2_OR_QUIC_REQUIRED = -31-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_BLOCKED_BY_ORB
@@ -499,8 +437,6 @@ ERR_BLOCKED_BY_ORB = -32
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_BLOCKED_BY_ORB = -32--><!--Device-WebNetErrorList-ERR_BLOCKED_BY_ORB = -32-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -516,8 +452,6 @@ ERR_CONNECTION_CLOSED = -100
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CONNECTION_CLOSED = -100--><!--Device-WebNetErrorList-ERR_CONNECTION_CLOSED = -100-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CONNECTION_RESET
@@ -531,8 +465,6 @@ ERR_CONNECTION_RESET = -101
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CONNECTION_RESET = -101--><!--Device-WebNetErrorList-ERR_CONNECTION_RESET = -101-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -548,8 +480,6 @@ ERR_CONNECTION_REFUSED = -102
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CONNECTION_REFUSED = -102--><!--Device-WebNetErrorList-ERR_CONNECTION_REFUSED = -102-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CONNECTION_ABORTED
@@ -563,8 +493,6 @@ ERR_CONNECTION_ABORTED = -103
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CONNECTION_ABORTED = -103--><!--Device-WebNetErrorList-ERR_CONNECTION_ABORTED = -103-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -580,8 +508,6 @@ ERR_CONNECTION_FAILED = -104
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CONNECTION_FAILED = -104--><!--Device-WebNetErrorList-ERR_CONNECTION_FAILED = -104-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_NAME_NOT_RESOLVED
@@ -595,8 +521,6 @@ ERR_NAME_NOT_RESOLVED = -105
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_NAME_NOT_RESOLVED = -105--><!--Device-WebNetErrorList-ERR_NAME_NOT_RESOLVED = -105-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -612,8 +536,6 @@ ERR_INTERNET_DISCONNECTED = -106
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_INTERNET_DISCONNECTED = -106--><!--Device-WebNetErrorList-ERR_INTERNET_DISCONNECTED = -106-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_PROTOCOL_ERROR
@@ -627,8 +549,6 @@ SSL 协议错误。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_SSL_PROTOCOL_ERROR = -107--><!--Device-WebNetErrorList-ERR_SSL_PROTOCOL_ERROR = -107-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -644,8 +564,6 @@ IP地址或端口号无效（例如，无法连接到IP地址0或端口0）。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_ADDRESS_INVALID = -108--><!--Device-WebNetErrorList-ERR_ADDRESS_INVALID = -108-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_ADDRESS_UNREACHABLE
@@ -659,8 +577,6 @@ ERR_ADDRESS_UNREACHABLE = -109
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_ADDRESS_UNREACHABLE = -109--><!--Device-WebNetErrorList-ERR_ADDRESS_UNREACHABLE = -109-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -676,8 +592,6 @@ ERR_SSL_CLIENT_AUTH_CERT_NEEDED = -110
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_CERT_NEEDED = -110--><!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_CERT_NEEDED = -110-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_TUNNEL_CONNECTION_FAILED
@@ -691,8 +605,6 @@ ERR_TUNNEL_CONNECTION_FAILED = -111
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_TUNNEL_CONNECTION_FAILED = -111--><!--Device-WebNetErrorList-ERR_TUNNEL_CONNECTION_FAILED = -111-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -708,8 +620,6 @@ ERR_NO_SSL_VERSIONS_ENABLED = -112
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_NO_SSL_VERSIONS_ENABLED = -112--><!--Device-WebNetErrorList-ERR_NO_SSL_VERSIONS_ENABLED = -112-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_VERSION_OR_CIPHER_MISMATCH
@@ -723,8 +633,6 @@ ERR_SSL_VERSION_OR_CIPHER_MISMATCH = -113
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_SSL_VERSION_OR_CIPHER_MISMATCH = -113--><!--Device-WebNetErrorList-ERR_SSL_VERSION_OR_CIPHER_MISMATCH = -113-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -740,8 +648,6 @@ ERR_SSL_RENEGOTIATION_REQUESTED = -114
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SSL_RENEGOTIATION_REQUESTED = -114--><!--Device-WebNetErrorList-ERR_SSL_RENEGOTIATION_REQUESTED = -114-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_PROXY_AUTH_UNSUPPORTED
@@ -755,8 +661,6 @@ ERR_PROXY_AUTH_UNSUPPORTED = -115
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_PROXY_AUTH_UNSUPPORTED = -115--><!--Device-WebNetErrorList-ERR_PROXY_AUTH_UNSUPPORTED = -115-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -772,8 +676,6 @@ SSL 客户端证书错误。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_BAD_SSL_CLIENT_AUTH_CERT = -117--><!--Device-WebNetErrorList-ERR_BAD_SSL_CLIENT_AUTH_CERT = -117-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CONNECTION_TIMED_OUT
@@ -787,8 +689,6 @@ ERR_CONNECTION_TIMED_OUT = -118
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CONNECTION_TIMED_OUT = -118--><!--Device-WebNetErrorList-ERR_CONNECTION_TIMED_OUT = -118-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -804,8 +704,6 @@ ERR_HOST_RESOLVER_QUEUE_TOO_LARGE = -119
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_HOST_RESOLVER_QUEUE_TOO_LARGE = -119--><!--Device-WebNetErrorList-ERR_HOST_RESOLVER_QUEUE_TOO_LARGE = -119-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_SOCKS_CONNECTION_FAILED
@@ -819,8 +717,6 @@ ERR_SOCKS_CONNECTION_FAILED = -120
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_SOCKS_CONNECTION_FAILED = -120--><!--Device-WebNetErrorList-ERR_SOCKS_CONNECTION_FAILED = -120-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -836,8 +732,6 @@ ERR_SOCKS_CONNECTION_HOST_UNREACHABLE = -121
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SOCKS_CONNECTION_HOST_UNREACHABLE = -121--><!--Device-WebNetErrorList-ERR_SOCKS_CONNECTION_HOST_UNREACHABLE = -121-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_ALPN_NEGOTIATION_FAILED
@@ -851,8 +745,6 @@ ERR_ALPN_NEGOTIATION_FAILED = -122
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_ALPN_NEGOTIATION_FAILED = -122--><!--Device-WebNetErrorList-ERR_ALPN_NEGOTIATION_FAILED = -122-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -868,8 +760,6 @@ ERR_SSL_NO_RENEGOTIATION = -123
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SSL_NO_RENEGOTIATION = -123--><!--Device-WebNetErrorList-ERR_SSL_NO_RENEGOTIATION = -123-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES
@@ -883,8 +773,6 @@ Winsock有时会报告写入的数据多于传递的数据。这可能是由于L
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES = -124--><!--Device-WebNetErrorList-ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES = -124-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -900,8 +788,6 @@ SSL对等端向本端发送了致命的解压失败警报。当对等方错误�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SSL_DECOMPRESSION_FAILURE_ALERT = -125--><!--Device-WebNetErrorList-ERR_SSL_DECOMPRESSION_FAILURE_ALERT = -125-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_BAD_RECORD_MAC_ALERT
@@ -915,8 +801,6 @@ SSL对等端向本端发送了致命的bad_record_mac警报。一个对DEFLATE�
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_SSL_BAD_RECORD_MAC_ALERT = -126--><!--Device-WebNetErrorList-ERR_SSL_BAD_RECORD_MAC_ALERT = -126-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -932,8 +816,6 @@ ERR_PROXY_AUTH_REQUESTED = -127
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_PROXY_AUTH_REQUESTED = -127--><!--Device-WebNetErrorList-ERR_PROXY_AUTH_REQUESTED = -127-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_PROXY_CONNECTION_FAILED
@@ -947,8 +829,6 @@ ERR_PROXY_CONNECTION_FAILED = -130
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_PROXY_CONNECTION_FAILED = -130--><!--Device-WebNetErrorList-ERR_PROXY_CONNECTION_FAILED = -130-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -964,8 +844,6 @@ ERR_MANDATORY_PROXY_CONFIGURATION_FAILED = -131
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_MANDATORY_PROXY_CONFIGURATION_FAILED = -131--><!--Device-WebNetErrorList-ERR_MANDATORY_PROXY_CONFIGURATION_FAILED = -131-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_PRECONNECT_MAX_SOCKET_LIMIT
@@ -979,8 +857,6 @@ ERR_PRECONNECT_MAX_SOCKET_LIMIT = -133
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_PRECONNECT_MAX_SOCKET_LIMIT = -133--><!--Device-WebNetErrorList-ERR_PRECONNECT_MAX_SOCKET_LIMIT = -133-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -996,8 +872,6 @@ ERR_SSL_CLIENT_AUTH_PRIVATE_KEY_ACCESS_DENIED = -134
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_PRIVATE_KEY_ACCESS_DENIED = -134--><!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_PRIVATE_KEY_ACCESS_DENIED = -134-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY
@@ -1011,8 +885,6 @@ SSL客户端证书没有私钥。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY = -135--><!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY = -135-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1028,8 +900,6 @@ HTTPS 代理提供的证书无效。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_PROXY_CERTIFICATE_INVALID = -136--><!--Device-WebNetErrorList-ERR_PROXY_CERTIFICATE_INVALID = -136-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_NAME_RESOLUTION_FAILED
@@ -1043,8 +913,6 @@ ERR_NAME_RESOLUTION_FAILED = -137
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_NAME_RESOLUTION_FAILED = -137--><!--Device-WebNetErrorList-ERR_NAME_RESOLUTION_FAILED = -137-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1060,8 +928,6 @@ ERR_NETWORK_ACCESS_DENIED = -138
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_NETWORK_ACCESS_DENIED = -138--><!--Device-WebNetErrorList-ERR_NETWORK_ACCESS_DENIED = -138-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_TEMPORARILY_THROTTLED
@@ -1075,8 +941,6 @@ ERR_TEMPORARILY_THROTTLED = -139
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_TEMPORARILY_THROTTLED = -139--><!--Device-WebNetErrorList-ERR_TEMPORARILY_THROTTLED = -139-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1092,8 +956,6 @@ ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140--><!--Device-WebNetErrorList-ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED
@@ -1107,8 +969,6 @@ ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141--><!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1124,8 +984,6 @@ ERR_MSG_TOO_BIG = -142
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_MSG_TOO_BIG = -142--><!--Device-WebNetErrorList-ERR_MSG_TOO_BIG = -142-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_WS_PROTOCOL_ERROR
@@ -1139,8 +997,6 @@ WebSocket协议错误。表示由于帧格式错误或其他协议冲突，正�
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_WS_PROTOCOL_ERROR = -145--><!--Device-WebNetErrorList-ERR_WS_PROTOCOL_ERROR = -145-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1156,8 +1012,6 @@ ERR_ADDRESS_IN_USE = -147
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_ADDRESS_IN_USE = -147--><!--Device-WebNetErrorList-ERR_ADDRESS_IN_USE = -147-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_HANDSHAKE_NOT_COMPLETED
@@ -1171,8 +1025,6 @@ ERR_SSL_HANDSHAKE_NOT_COMPLETED = -148
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_SSL_HANDSHAKE_NOT_COMPLETED = -148--><!--Device-WebNetErrorList-ERR_SSL_HANDSHAKE_NOT_COMPLETED = -148-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1188,8 +1040,6 @@ SSL 公钥错误。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SSL_BAD_PEER_PUBLIC_KEY = -149--><!--Device-WebNetErrorList-ERR_SSL_BAD_PEER_PUBLIC_KEY = -149-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN
@@ -1203,8 +1053,6 @@ ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN = -150
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN = -150--><!--Device-WebNetErrorList-ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN = -150-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1220,8 +1068,6 @@ ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED = -151
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED = -151--><!--Device-WebNetErrorList-ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED = -151-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_DECRYPT_ERROR_ALERT
@@ -1235,8 +1081,6 @@ SSL对等端向本端发送了致命的decrypt_error警报。当对等方无法�
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_SSL_DECRYPT_ERROR_ALERT = -153--><!--Device-WebNetErrorList-ERR_SSL_DECRYPT_ERROR_ALERT = -153-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1252,8 +1096,6 @@ ERR_WS_THROTTLE_QUEUE_TOO_LARGE = -154
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_WS_THROTTLE_QUEUE_TOO_LARGE = -154--><!--Device-WebNetErrorList-ERR_WS_THROTTLE_QUEUE_TOO_LARGE = -154-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_SERVER_CERT_CHANGED
@@ -1267,8 +1109,6 @@ SSL服务器证书在重新协商中更改。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_SSL_SERVER_CERT_CHANGED = -156--><!--Device-WebNetErrorList-ERR_SSL_SERVER_CERT_CHANGED = -156-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1284,8 +1124,6 @@ SSL服务器向本端发送了致命的未识别名称警报。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SSL_UNRECOGNIZED_NAME_ALERT = -159--><!--Device-WebNetErrorList-ERR_SSL_UNRECOGNIZED_NAME_ALERT = -159-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR
@@ -1299,8 +1137,6 @@ ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR = -160
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR = -160--><!--Device-WebNetErrorList-ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR = -160-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1316,8 +1152,6 @@ ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR = -161
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR = -161--><!--Device-WebNetErrorList-ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR = -161-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE
@@ -1331,8 +1165,6 @@ ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE = -162
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE = -162--><!--Device-WebNetErrorList-ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE = -162-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1348,8 +1180,6 @@ ERR_SOCKET_SEND_BUFFER_SIZE_UNCHANGEABLE = -163
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SOCKET_SEND_BUFFER_SIZE_UNCHANGEABLE = -163--><!--Device-WebNetErrorList-ERR_SOCKET_SEND_BUFFER_SIZE_UNCHANGEABLE = -163-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_CLIENT_AUTH_CERT_BAD_FORMAT
@@ -1363,8 +1193,6 @@ ERR_SSL_CLIENT_AUTH_CERT_BAD_FORMAT = -164
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_CERT_BAD_FORMAT = -164--><!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_CERT_BAD_FORMAT = -164-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1380,8 +1208,6 @@ ERR_ICANN_NAME_COLLISION = -166
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_ICANN_NAME_COLLISION = -166--><!--Device-WebNetErrorList-ERR_ICANN_NAME_COLLISION = -166-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_SERVER_CERT_BAD_FORMAT
@@ -1395,8 +1221,6 @@ SSL服务器提供了一个无法解码的证书。这不是证书错误代码�
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_SSL_SERVER_CERT_BAD_FORMAT = -167--><!--Device-WebNetErrorList-ERR_SSL_SERVER_CERT_BAD_FORMAT = -167-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1412,8 +1236,6 @@ Certificate Transparency: 解析signed tree head失败。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CT_STH_PARSING_FAILED = -168--><!--Device-WebNetErrorList-ERR_CT_STH_PARSING_FAILED = -168-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CT_STH_INCOMPLETE
@@ -1427,8 +1249,6 @@ Certificate Transparency: 解析signed tree head成功，但是缺少了一些�
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CT_STH_INCOMPLETE = -169--><!--Device-WebNetErrorList-ERR_CT_STH_INCOMPLETE = -169-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1444,8 +1264,6 @@ ERR_UNABLE_TO_REUSE_CONNECTION_FOR_PROXY_AUTH = -170
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_UNABLE_TO_REUSE_CONNECTION_FOR_PROXY_AUTH = -170--><!--Device-WebNetErrorList-ERR_UNABLE_TO_REUSE_CONNECTION_FOR_PROXY_AUTH = -170-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CT_CONSISTENCY_PROOF_PARSING_FAILED
@@ -1459,8 +1277,6 @@ Certificate Transparency: 一致性验证解析失败。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CT_CONSISTENCY_PROOF_PARSING_FAILED = -171--><!--Device-WebNetErrorList-ERR_CT_CONSISTENCY_PROOF_PARSING_FAILED = -171-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1476,8 +1292,6 @@ SSL服务器需要一个不受支持的密码套件，该套件已被删除。�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SSL_OBSOLETE_CIPHER = -172--><!--Device-WebNetErrorList-ERR_SSL_OBSOLETE_CIPHER = -172-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_WS_UPGRADE
@@ -1491,8 +1305,6 @@ ERR_WS_UPGRADE = -173
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_WS_UPGRADE = -173--><!--Device-WebNetErrorList-ERR_WS_UPGRADE = -173-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1508,8 +1320,6 @@ ERR_READ_IF_READY_NOT_IMPLEMENTED = -174
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_READ_IF_READY_NOT_IMPLEMENTED = -174--><!--Device-WebNetErrorList-ERR_READ_IF_READY_NOT_IMPLEMENTED = -174-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_NO_BUFFER_SPACE
@@ -1523,8 +1333,6 @@ ERR_NO_BUFFER_SPACE = -176
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_NO_BUFFER_SPACE = -176--><!--Device-WebNetErrorList-ERR_NO_BUFFER_SPACE = -176-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1540,8 +1348,6 @@ ERR_SSL_CLIENT_AUTH_NO_COMMON_ALGORITHMS = -177
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_NO_COMMON_ALGORITHMS = -177--><!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_NO_COMMON_ALGORITHMS = -177-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_EARLY_DATA_REJECTED
@@ -1555,8 +1361,6 @@ TLS 1.3 early data 被服务器拒绝。这将在从套接字返回任何数据�
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_EARLY_DATA_REJECTED = -178--><!--Device-WebNetErrorList-ERR_EARLY_DATA_REJECTED = -178-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1572,8 +1376,6 @@ TLS 1.3 early data 版本错误。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_WRONG_VERSION_ON_EARLY_DATA = -179--><!--Device-WebNetErrorList-ERR_WRONG_VERSION_ON_EARLY_DATA = -179-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_TLS13_DOWNGRADE_DETECTED
@@ -1587,8 +1389,6 @@ TLS 1.3已启用，但已协商更低的版本，服务器返回一个值，表�
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_TLS13_DOWNGRADE_DETECTED = -180--><!--Device-WebNetErrorList-ERR_TLS13_DOWNGRADE_DETECTED = -180-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1604,8 +1404,6 @@ ERR_SSL_KEY_USAGE_INCOMPATIBLE = -181
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SSL_KEY_USAGE_INCOMPATIBLE = -181--><!--Device-WebNetErrorList-ERR_SSL_KEY_USAGE_INCOMPATIBLE = -181-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_INVALID_ECH_CONFIG_LIST
@@ -1619,8 +1417,6 @@ ERR_INVALID_ECH_CONFIG_LIST = -182
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_INVALID_ECH_CONFIG_LIST = -182--><!--Device-WebNetErrorList-ERR_INVALID_ECH_CONFIG_LIST = -182-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1636,8 +1432,6 @@ ECH已启用，但服务器无法解密加密的ClientHello。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_ECH_NOT_NEGOTIATED = -183--><!--Device-WebNetErrorList-ERR_ECH_NOT_NEGOTIATED = -183-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_ECH_FALLBACK_CERTIFICATE_INVALID
@@ -1651,8 +1445,6 @@ ECH已启用，服务器无法解密加密的ClientHello，并且没有提供对
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_ECH_FALLBACK_CERTIFICATE_INVALID = -184--><!--Device-WebNetErrorList-ERR_ECH_FALLBACK_CERTIFICATE_INVALID = -184-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1668,8 +1460,6 @@ ERR_CERT_COMMON_NAME_INVALID = -200
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CERT_COMMON_NAME_INVALID = -200--><!--Device-WebNetErrorList-ERR_CERT_COMMON_NAME_INVALID = -200-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_DATE_INVALID
@@ -1678,13 +1468,12 @@ ERR_CERT_COMMON_NAME_INVALID = -200
 ERR_CERT_DATE_INVALID = -201
 ```
 
-证书已过期。这可能意味着： 1.攻击者正在出示一个旧证书，他们已设法获得该证书的私钥。 2.服务器配置错误，没有提供有效的证书。 3.设备的时钟错了。
+证书已过期。这可能意味着：
+1.攻击者正在出示一个旧证书，他们已设法获得该证书的私钥。 2.服务器配置错误，没有提供有效的证书。 3.设备的时钟错了。
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CERT_DATE_INVALID = -201--><!--Device-WebNetErrorList-ERR_CERT_DATE_INVALID = -201-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1700,8 +1489,6 @@ ERR_CERT_AUTHORITY_INVALID = -202
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CERT_AUTHORITY_INVALID = -202--><!--Device-WebNetErrorList-ERR_CERT_AUTHORITY_INVALID = -202-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_CONTAINS_ERRORS
@@ -1715,8 +1502,6 @@ ERR_CERT_CONTAINS_ERRORS = -203
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CERT_CONTAINS_ERRORS = -203--><!--Device-WebNetErrorList-ERR_CERT_CONTAINS_ERRORS = -203-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1732,8 +1517,6 @@ ERR_CERT_NO_REVOCATION_MECHANISM = -204
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CERT_NO_REVOCATION_MECHANISM = -204--><!--Device-WebNetErrorList-ERR_CERT_NO_REVOCATION_MECHANISM = -204-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_UNABLE_TO_CHECK_REVOCATION
@@ -1742,13 +1525,12 @@ ERR_CERT_NO_REVOCATION_MECHANISM = -204
 ERR_CERT_UNABLE_TO_CHECK_REVOCATION = -205
 ```
 
-此网站的安全证书的吊销信息不可用。这可能意味着： 1.一个攻击者破坏了证书中的私钥，并阻止了本端发现证书已被吊销的尝试。 2.证书未被吊销，但吊销服务器正忙或不可用。
+此网站的安全证书的吊销信息不可用。这可能意味着：
+1.一个攻击者破坏了证书中的私钥，并阻止了本端发现证书已被吊销的尝试。 2.证书未被吊销，但吊销服务器正忙或不可用。
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CERT_UNABLE_TO_CHECK_REVOCATION = -205--><!--Device-WebNetErrorList-ERR_CERT_UNABLE_TO_CHECK_REVOCATION = -205-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1764,8 +1546,6 @@ ERR_CERT_REVOKED = -206
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CERT_REVOKED = -206--><!--Device-WebNetErrorList-ERR_CERT_REVOKED = -206-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_INVALID
@@ -1779,8 +1559,6 @@ ERR_CERT_INVALID = -207
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CERT_INVALID = -207--><!--Device-WebNetErrorList-ERR_CERT_INVALID = -207-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1796,8 +1574,6 @@ ERR_CERT_WEAK_SIGNATURE_ALGORITHM = -208
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CERT_WEAK_SIGNATURE_ALGORITHM = -208--><!--Device-WebNetErrorList-ERR_CERT_WEAK_SIGNATURE_ALGORITHM = -208-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_NON_UNIQUE_NAME
@@ -1811,8 +1587,6 @@ ERR_CERT_NON_UNIQUE_NAME = -210
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CERT_NON_UNIQUE_NAME = -210--><!--Device-WebNetErrorList-ERR_CERT_NON_UNIQUE_NAME = -210-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1828,8 +1602,6 @@ ERR_CERT_WEAK_KEY = -211
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CERT_WEAK_KEY = -211--><!--Device-WebNetErrorList-ERR_CERT_WEAK_KEY = -211-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_NAME_CONSTRAINT_VIOLATION
@@ -1843,8 +1615,6 @@ ERR_CERT_NAME_CONSTRAINT_VIOLATION = -212
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CERT_NAME_CONSTRAINT_VIOLATION = -212--><!--Device-WebNetErrorList-ERR_CERT_NAME_CONSTRAINT_VIOLATION = -212-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1860,8 +1630,6 @@ ERR_CERT_VALIDITY_TOO_LONG = -213
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CERT_VALIDITY_TOO_LONG = -213--><!--Device-WebNetErrorList-ERR_CERT_VALIDITY_TOO_LONG = -213-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CERTIFICATE_TRANSPARENCY_REQUIRED
@@ -1875,8 +1643,6 @@ ERR_CERTIFICATE_TRANSPARENCY_REQUIRED = -214
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CERTIFICATE_TRANSPARENCY_REQUIRED = -214--><!--Device-WebNetErrorList-ERR_CERTIFICATE_TRANSPARENCY_REQUIRED = -214-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1892,8 +1658,6 @@ ERR_CERT_SYMANTEC_LEGACY = -215
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CERT_SYMANTEC_LEGACY = -215--><!--Device-WebNetErrorList-ERR_CERT_SYMANTEC_LEGACY = -215-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_KNOWN_INTERCEPTION_BLOCKED
@@ -1907,8 +1671,6 @@ ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217--><!--Device-WebNetErrorList-ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1924,8 +1686,6 @@ ERR_SSL_OBSOLETE_VERSION_OR_CIPHER = -218
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SSL_OBSOLETE_VERSION_OR_CIPHER = -218--><!--Device-WebNetErrorList-ERR_SSL_OBSOLETE_VERSION_OR_CIPHER = -218-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_END
@@ -1939,8 +1699,6 @@ ERR_CERT_END = -219
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CERT_END = -219--><!--Device-WebNetErrorList-ERR_CERT_END = -219-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1956,8 +1714,6 @@ ERR_INVALID_URL = -300
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_INVALID_URL = -300--><!--Device-WebNetErrorList-ERR_INVALID_URL = -300-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_DISALLOWED_URL_SCHEME
@@ -1971,8 +1727,6 @@ ERR_DISALLOWED_URL_SCHEME = -301
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_DISALLOWED_URL_SCHEME = -301--><!--Device-WebNetErrorList-ERR_DISALLOWED_URL_SCHEME = -301-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1988,8 +1742,6 @@ ERR_UNKNOWN_URL_SCHEME = -302
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_UNKNOWN_URL_SCHEME = -302--><!--Device-WebNetErrorList-ERR_UNKNOWN_URL_SCHEME = -302-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_INVALID_REDIRECT
@@ -2003,8 +1755,6 @@ ERR_INVALID_REDIRECT = -303
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_INVALID_REDIRECT = -303--><!--Device-WebNetErrorList-ERR_INVALID_REDIRECT = -303-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2020,8 +1770,6 @@ ERR_TOO_MANY_REDIRECTS = -310
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_TOO_MANY_REDIRECTS = -310--><!--Device-WebNetErrorList-ERR_TOO_MANY_REDIRECTS = -310-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_UNSAFE_REDIRECT
@@ -2035,8 +1783,6 @@ ERR_UNSAFE_REDIRECT = -311
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_UNSAFE_REDIRECT = -311--><!--Device-WebNetErrorList-ERR_UNSAFE_REDIRECT = -311-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2052,8 +1798,6 @@ ERR_UNSAFE_PORT = -312
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_UNSAFE_PORT = -312--><!--Device-WebNetErrorList-ERR_UNSAFE_PORT = -312-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_INVALID_RESPONSE
@@ -2067,8 +1811,6 @@ ERR_INVALID_RESPONSE = -320
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_INVALID_RESPONSE = -320--><!--Device-WebNetErrorList-ERR_INVALID_RESPONSE = -320-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2084,8 +1826,6 @@ ERR_INVALID_CHUNKED_ENCODING = -321
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_INVALID_CHUNKED_ENCODING = -321--><!--Device-WebNetErrorList-ERR_INVALID_CHUNKED_ENCODING = -321-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_METHOD_UNSUPPORTED
@@ -2099,8 +1839,6 @@ ERR_METHOD_UNSUPPORTED = -322
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_METHOD_UNSUPPORTED = -322--><!--Device-WebNetErrorList-ERR_METHOD_UNSUPPORTED = -322-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2116,8 +1854,6 @@ ERR_UNEXPECTED_PROXY_AUTH = -323
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_UNEXPECTED_PROXY_AUTH = -323--><!--Device-WebNetErrorList-ERR_UNEXPECTED_PROXY_AUTH = -323-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_EMPTY_RESPONSE
@@ -2131,8 +1867,6 @@ ERR_EMPTY_RESPONSE = -324
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_EMPTY_RESPONSE = -324--><!--Device-WebNetErrorList-ERR_EMPTY_RESPONSE = -324-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2148,8 +1882,6 @@ HTTP响应标头过大。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_TOO_BIG = -325--><!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_TOO_BIG = -325-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_PAC_SCRIPT_FAILED
@@ -2163,8 +1895,6 @@ PAC 脚本错误。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_PAC_SCRIPT_FAILED = -327--><!--Device-WebNetErrorList-ERR_PAC_SCRIPT_FAILED = -327-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2180,8 +1910,6 @@ ERR_REQUEST_RANGE_NOT_SATISFIABLE = -328
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_REQUEST_RANGE_NOT_SATISFIABLE = -328--><!--Device-WebNetErrorList-ERR_REQUEST_RANGE_NOT_SATISFIABLE = -328-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_MALFORMED_IDENTITY
@@ -2195,8 +1923,6 @@ ERR_MALFORMED_IDENTITY = -329
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_MALFORMED_IDENTITY = -329--><!--Device-WebNetErrorList-ERR_MALFORMED_IDENTITY = -329-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2212,8 +1938,6 @@ ERR_CONTENT_DECODING_FAILED = -330
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CONTENT_DECODING_FAILED = -330--><!--Device-WebNetErrorList-ERR_CONTENT_DECODING_FAILED = -330-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_NETWORK_IO_SUSPENDED
@@ -2227,8 +1951,6 @@ ERR_NETWORK_IO_SUSPENDED = -331
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_NETWORK_IO_SUSPENDED = -331--><!--Device-WebNetErrorList-ERR_NETWORK_IO_SUSPENDED = -331-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2244,8 +1966,6 @@ ERR_SYN_REPLY_NOT_RECEIVED = -332
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_SYN_REPLY_NOT_RECEIVED = -332--><!--Device-WebNetErrorList-ERR_SYN_REPLY_NOT_RECEIVED = -332-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_ENCODING_CONVERSION_FAILED
@@ -2259,8 +1979,6 @@ ERR_ENCODING_CONVERSION_FAILED = -333
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_ENCODING_CONVERSION_FAILED = -333--><!--Device-WebNetErrorList-ERR_ENCODING_CONVERSION_FAILED = -333-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2276,8 +1994,6 @@ ERR_UNRECOGNIZED_FTP_DIRECTORY_LISTING_FORMAT = -334
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_UNRECOGNIZED_FTP_DIRECTORY_LISTING_FORMAT = -334--><!--Device-WebNetErrorList-ERR_UNRECOGNIZED_FTP_DIRECTORY_LISTING_FORMAT = -334-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_NO_SUPPORTED_PROXIES
@@ -2291,8 +2007,6 @@ ERR_NO_SUPPORTED_PROXIES = -336
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_NO_SUPPORTED_PROXIES = -336--><!--Device-WebNetErrorList-ERR_NO_SUPPORTED_PROXIES = -336-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2308,8 +2022,6 @@ HTTP/2协议错误。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_HTTP2_PROTOCOL_ERROR = -337--><!--Device-WebNetErrorList-ERR_HTTP2_PROTOCOL_ERROR = -337-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_INVALID_AUTH_CREDENTIALS
@@ -2323,8 +2035,6 @@ ERR_INVALID_AUTH_CREDENTIALS = -338
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_INVALID_AUTH_CREDENTIALS = -338--><!--Device-WebNetErrorList-ERR_INVALID_AUTH_CREDENTIALS = -338-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2340,8 +2050,6 @@ ERR_UNSUPPORTED_AUTH_SCHEME = -339
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_UNSUPPORTED_AUTH_SCHEME = -339--><!--Device-WebNetErrorList-ERR_UNSUPPORTED_AUTH_SCHEME = -339-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_ENCODING_DETECTION_FAILED
@@ -2355,8 +2063,6 @@ ERR_ENCODING_DETECTION_FAILED = -340
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_ENCODING_DETECTION_FAILED = -340--><!--Device-WebNetErrorList-ERR_ENCODING_DETECTION_FAILED = -340-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2372,8 +2078,6 @@ ERR_MISSING_AUTH_CREDENTIALS = -341
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_MISSING_AUTH_CREDENTIALS = -341--><!--Device-WebNetErrorList-ERR_MISSING_AUTH_CREDENTIALS = -341-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS
@@ -2387,8 +2091,6 @@ ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS = -342
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS = -342--><!--Device-WebNetErrorList-ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS = -342-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2404,8 +2106,6 @@ ERR_MISCONFIGURED_AUTH_ENVIRONMENT = -343
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_MISCONFIGURED_AUTH_ENVIRONMENT = -343--><!--Device-WebNetErrorList-ERR_MISCONFIGURED_AUTH_ENVIRONMENT = -343-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS
@@ -2419,8 +2119,6 @@ ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS = -344
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS = -344--><!--Device-WebNetErrorList-ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS = -344-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2436,8 +2134,6 @@ ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN = -345
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN = -345--><!--Device-WebNetErrorList-ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN = -345-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH
@@ -2451,8 +2147,6 @@ HTTP响应包含了多个不同的Content-Length响应头。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH = -346--><!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH = -346-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2468,8 +2162,6 @@ ERR_INCOMPLETE_HTTP2_HEADERS = -347
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_INCOMPLETE_HTTP2_HEADERS = -347--><!--Device-WebNetErrorList-ERR_INCOMPLETE_HTTP2_HEADERS = -347-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_PAC_NOT_IN_DHCP
@@ -2483,8 +2175,6 @@ PAC 不在 DHCP 中。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_PAC_NOT_IN_DHCP = -348--><!--Device-WebNetErrorList-ERR_PAC_NOT_IN_DHCP = -348-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2500,8 +2190,6 @@ ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION = -349
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION = -349--><!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION = -349-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION
@@ -2515,8 +2203,6 @@ ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION = -350
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION = -350--><!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION = -350-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2532,8 +2218,6 @@ HTTP/2 服务器拒绝流。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_HTTP2_SERVER_REFUSED_STREAM = -351--><!--Device-WebNetErrorList-ERR_HTTP2_SERVER_REFUSED_STREAM = -351-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_HTTP2_PING_FAILED
@@ -2547,8 +2231,6 @@ HTTP/2 ping 失败。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_HTTP2_PING_FAILED = -352--><!--Device-WebNetErrorList-ERR_HTTP2_PING_FAILED = -352-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2564,8 +2246,6 @@ ERR_CONTENT_LENGTH_MISMATCH = -354
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CONTENT_LENGTH_MISMATCH = -354--><!--Device-WebNetErrorList-ERR_CONTENT_LENGTH_MISMATCH = -354-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_INCOMPLETE_CHUNKED_ENCODING
@@ -2579,8 +2259,6 @@ HTTP 响应体使用分块编码传输，但在连接关闭时从未发送终止
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_INCOMPLETE_CHUNKED_ENCODING = -355--><!--Device-WebNetErrorList-ERR_INCOMPLETE_CHUNKED_ENCODING = -355-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2596,8 +2274,6 @@ ERR_QUIC_PROTOCOL_ERROR = -356
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_QUIC_PROTOCOL_ERROR = -356--><!--Device-WebNetErrorList-ERR_QUIC_PROTOCOL_ERROR = -356-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_RESPONSE_HEADERS_TRUNCATED
@@ -2611,8 +2287,6 @@ HTTP 头部信息被文件结束符（EOF）截断。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_TRUNCATED = -357--><!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_TRUNCATED = -357-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2628,8 +2302,6 @@ QUIC 加密握手失败。这意味着服务器无法读取发送的任何请求
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_QUIC_HANDSHAKE_FAILED = -358--><!--Device-WebNetErrorList-ERR_QUIC_HANDSHAKE_FAILED = -358-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_HTTP2_INADEQUATE_TRANSPORT_SECURITY
@@ -2643,8 +2315,6 @@ ERR_HTTP2_INADEQUATE_TRANSPORT_SECURITY = -360
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_HTTP2_INADEQUATE_TRANSPORT_SECURITY = -360--><!--Device-WebNetErrorList-ERR_HTTP2_INADEQUATE_TRANSPORT_SECURITY = -360-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2660,8 +2330,6 @@ ERR_HTTP2_FLOW_CONTROL_ERROR = -361
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_HTTP2_FLOW_CONTROL_ERROR = -361--><!--Device-WebNetErrorList-ERR_HTTP2_FLOW_CONTROL_ERROR = -361-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_HTTP2_FRAME_SIZE_ERROR
@@ -2675,8 +2343,6 @@ ERR_HTTP2_FRAME_SIZE_ERROR = -362
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_HTTP2_FRAME_SIZE_ERROR = -362--><!--Device-WebNetErrorList-ERR_HTTP2_FRAME_SIZE_ERROR = -362-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2692,8 +2358,6 @@ ERR_HTTP2_COMPRESSION_ERROR = -363
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_HTTP2_COMPRESSION_ERROR = -363--><!--Device-WebNetErrorList-ERR_HTTP2_COMPRESSION_ERROR = -363-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_PROXY_AUTH_REQUESTED_WITH_NO_CONNECTION
@@ -2707,8 +2371,6 @@ ERR_PROXY_AUTH_REQUESTED_WITH_NO_CONNECTION = -364
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_PROXY_AUTH_REQUESTED_WITH_NO_CONNECTION = -364--><!--Device-WebNetErrorList-ERR_PROXY_AUTH_REQUESTED_WITH_NO_CONNECTION = -364-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2724,8 +2386,6 @@ ERR_HTTP_1_1_REQUIRED = -365
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_HTTP_1_1_REQUIRED = -365--><!--Device-WebNetErrorList-ERR_HTTP_1_1_REQUIRED = -365-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_PROXY_HTTP_1_1_REQUIRED
@@ -2739,8 +2399,6 @@ ERR_PROXY_HTTP_1_1_REQUIRED = -366
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_PROXY_HTTP_1_1_REQUIRED = -366--><!--Device-WebNetErrorList-ERR_PROXY_HTTP_1_1_REQUIRED = -366-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2756,8 +2414,6 @@ PAC 脚本已终止并必须重新加载。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_PAC_SCRIPT_TERMINATED = -367--><!--Device-WebNetErrorList-ERR_PAC_SCRIPT_TERMINATED = -367-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_INVALID_HTTP_RESPONSE
@@ -2771,8 +2427,6 @@ ERR_INVALID_HTTP_RESPONSE = -370
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_INVALID_HTTP_RESPONSE = -370--><!--Device-WebNetErrorList-ERR_INVALID_HTTP_RESPONSE = -370-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2788,8 +2442,6 @@ ERR_CONTENT_DECODING_INIT_FAILED = -371
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CONTENT_DECODING_INIT_FAILED = -371--><!--Device-WebNetErrorList-ERR_CONTENT_DECODING_INIT_FAILED = -371-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_HTTP2_RST_STREAM_NO_ERROR_RECEIVED
@@ -2803,8 +2455,6 @@ ERR_HTTP2_RST_STREAM_NO_ERROR_RECEIVED = -372
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_HTTP2_RST_STREAM_NO_ERROR_RECEIVED = -372--><!--Device-WebNetErrorList-ERR_HTTP2_RST_STREAM_NO_ERROR_RECEIVED = -372-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2820,8 +2470,6 @@ ERR_HTTP2_PUSHED_STREAM_NOT_AVAILABLE = -373
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_HTTP2_PUSHED_STREAM_NOT_AVAILABLE = -373--><!--Device-WebNetErrorList-ERR_HTTP2_PUSHED_STREAM_NOT_AVAILABLE = -373-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_HTTP2_CLAIMED_PUSHED_STREAM_RESET_BY_SERVER
@@ -2835,8 +2483,6 @@ ERR_HTTP2_CLAIMED_PUSHED_STREAM_RESET_BY_SERVER = -374
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_HTTP2_CLAIMED_PUSHED_STREAM_RESET_BY_SERVER = -374--><!--Device-WebNetErrorList-ERR_HTTP2_CLAIMED_PUSHED_STREAM_RESET_BY_SERVER = -374-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2852,8 +2498,6 @@ ERR_TOO_MANY_RETRIES = -375
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_TOO_MANY_RETRIES = -375--><!--Device-WebNetErrorList-ERR_TOO_MANY_RETRIES = -375-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_HTTP2_STREAM_CLOSED
@@ -2867,8 +2511,6 @@ ERR_HTTP2_STREAM_CLOSED = -376
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_HTTP2_STREAM_CLOSED = -376--><!--Device-WebNetErrorList-ERR_HTTP2_STREAM_CLOSED = -376-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2884,8 +2526,6 @@ ERR_HTTP2_CLIENT_REFUSED_STREAM = -377
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_HTTP2_CLIENT_REFUSED_STREAM = -377--><!--Device-WebNetErrorList-ERR_HTTP2_CLIENT_REFUSED_STREAM = -377-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_HTTP2_PUSHED_RESPONSE_DOES_NOT_MATCH
@@ -2899,8 +2539,6 @@ ERR_HTTP2_PUSHED_RESPONSE_DOES_NOT_MATCH = -378
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_HTTP2_PUSHED_RESPONSE_DOES_NOT_MATCH = -378--><!--Device-WebNetErrorList-ERR_HTTP2_PUSHED_RESPONSE_DOES_NOT_MATCH = -378-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2916,8 +2554,6 @@ ERR_HTTP_RESPONSE_CODE_FAILURE = -379
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_HTTP_RESPONSE_CODE_FAILURE = -379--><!--Device-WebNetErrorList-ERR_HTTP_RESPONSE_CODE_FAILURE = -379-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_QUIC_UNKNOWN_CERT_ROOT
@@ -2931,8 +2567,6 @@ ERR_QUIC_UNKNOWN_CERT_ROOT = -380
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_QUIC_UNKNOWN_CERT_ROOT = -380--><!--Device-WebNetErrorList-ERR_QUIC_UNKNOWN_CERT_ROOT = -380-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2948,8 +2582,6 @@ ERR_QUIC_GOAWAY_REQUEST_CAN_BE_RETRIED = -381
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_QUIC_GOAWAY_REQUEST_CAN_BE_RETRIED = -381--><!--Device-WebNetErrorList-ERR_QUIC_GOAWAY_REQUEST_CAN_BE_RETRIED = -381-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_TOO_MANY_ACCEPT_CH_RESTARTS
@@ -2963,8 +2595,6 @@ ACCEPT_CH 重启已被触发太多次。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_TOO_MANY_ACCEPT_CH_RESTARTS = -382--><!--Device-WebNetErrorList-ERR_TOO_MANY_ACCEPT_CH_RESTARTS = -382-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2980,8 +2610,6 @@ ERR_INCONSISTENT_IP_ADDRESS_SPACE = -383
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_INCONSISTENT_IP_ADDRESS_SPACE = -383--><!--Device-WebNetErrorList-ERR_INCONSISTENT_IP_ADDRESS_SPACE = -383-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY
@@ -2995,8 +2623,6 @@ ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY = -384
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY = -384--><!--Device-WebNetErrorList-ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY = -384-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3012,8 +2638,6 @@ ERR_CACHE_MISS = -400
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CACHE_MISS = -400--><!--Device-WebNetErrorList-ERR_CACHE_MISS = -400-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CACHE_READ_FAILURE
@@ -3027,8 +2651,6 @@ ERR_CACHE_READ_FAILURE = -401
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CACHE_READ_FAILURE = -401--><!--Device-WebNetErrorList-ERR_CACHE_READ_FAILURE = -401-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3044,8 +2666,6 @@ ERR_CACHE_WRITE_FAILURE = -402
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CACHE_WRITE_FAILURE = -402--><!--Device-WebNetErrorList-ERR_CACHE_WRITE_FAILURE = -402-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CACHE_OPERATION_UNSUPPORTED
@@ -3059,8 +2679,6 @@ ERR_CACHE_OPERATION_UNSUPPORTED = -403
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CACHE_OPERATION_UNSUPPORTED = -403--><!--Device-WebNetErrorList-ERR_CACHE_OPERATION_UNSUPPORTED = -403-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3076,8 +2694,6 @@ ERR_CACHE_OPEN_FAILURE = -404
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CACHE_OPEN_FAILURE = -404--><!--Device-WebNetErrorList-ERR_CACHE_OPEN_FAILURE = -404-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CACHE_CREATE_FAILURE
@@ -3091,8 +2707,6 @@ ERR_CACHE_CREATE_FAILURE = -405
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CACHE_CREATE_FAILURE = -405--><!--Device-WebNetErrorList-ERR_CACHE_CREATE_FAILURE = -405-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3108,8 +2722,6 @@ ERR_CACHE_RACE = -406
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CACHE_RACE = -406--><!--Device-WebNetErrorList-ERR_CACHE_RACE = -406-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CACHE_CHECKSUM_READ_FAILURE
@@ -3123,8 +2735,6 @@ ERR_CACHE_CHECKSUM_READ_FAILURE = -407
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CACHE_CHECKSUM_READ_FAILURE = -407--><!--Device-WebNetErrorList-ERR_CACHE_CHECKSUM_READ_FAILURE = -407-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3140,8 +2750,6 @@ ERR_CACHE_CHECKSUM_MISMATCH = -408
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CACHE_CHECKSUM_MISMATCH = -408--><!--Device-WebNetErrorList-ERR_CACHE_CHECKSUM_MISMATCH = -408-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CACHE_LOCK_TIMEOUT
@@ -3155,8 +2763,6 @@ HTTP缓存的内部错误代码。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CACHE_LOCK_TIMEOUT = -409--><!--Device-WebNetErrorList-ERR_CACHE_LOCK_TIMEOUT = -409-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3172,8 +2778,6 @@ ERR_CACHE_AUTH_FAILURE_AFTER_READ = -410
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CACHE_AUTH_FAILURE_AFTER_READ = -410--><!--Device-WebNetErrorList-ERR_CACHE_AUTH_FAILURE_AFTER_READ = -410-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CACHE_ENTRY_NOT_SUITABLE
@@ -3187,8 +2791,6 @@ HTTP缓存的内部不完全错误代码。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CACHE_ENTRY_NOT_SUITABLE = -411--><!--Device-WebNetErrorList-ERR_CACHE_ENTRY_NOT_SUITABLE = -411-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3204,8 +2806,6 @@ ERR_CACHE_DOOM_FAILURE = -412
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CACHE_DOOM_FAILURE = -412--><!--Device-WebNetErrorList-ERR_CACHE_DOOM_FAILURE = -412-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CACHE_OPEN_OR_CREATE_FAILURE
@@ -3219,8 +2819,6 @@ ERR_CACHE_OPEN_OR_CREATE_FAILURE = -413
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CACHE_OPEN_OR_CREATE_FAILURE = -413--><!--Device-WebNetErrorList-ERR_CACHE_OPEN_OR_CREATE_FAILURE = -413-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3236,8 +2834,6 @@ ERR_INSECURE_RESPONSE = -501
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_INSECURE_RESPONSE = -501--><!--Device-WebNetErrorList-ERR_INSECURE_RESPONSE = -501-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_NO_PRIVATE_KEY_FOR_CERT
@@ -3251,8 +2847,6 @@ ERR_NO_PRIVATE_KEY_FOR_CERT = -502
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_NO_PRIVATE_KEY_FOR_CERT = -502--><!--Device-WebNetErrorList-ERR_NO_PRIVATE_KEY_FOR_CERT = -502-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3268,8 +2862,6 @@ ERR_ADD_USER_CERT_FAILED = -503
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_ADD_USER_CERT_FAILED = -503--><!--Device-WebNetErrorList-ERR_ADD_USER_CERT_FAILED = -503-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_INVALID_SIGNED_EXCHANGE
@@ -3283,8 +2875,6 @@ ERR_INVALID_SIGNED_EXCHANGE = -504
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_INVALID_SIGNED_EXCHANGE = -504--><!--Device-WebNetErrorList-ERR_INVALID_SIGNED_EXCHANGE = -504-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3300,8 +2890,6 @@ ERR_INVALID_WEB_BUNDLE = -505
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_INVALID_WEB_BUNDLE = -505--><!--Device-WebNetErrorList-ERR_INVALID_WEB_BUNDLE = -505-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_TRUST_TOKEN_OPERATION_FAILED
@@ -3315,8 +2903,6 @@ ERR_TRUST_TOKEN_OPERATION_FAILED = -506
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_TRUST_TOKEN_OPERATION_FAILED = -506--><!--Device-WebNetErrorList-ERR_TRUST_TOKEN_OPERATION_FAILED = -506-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3332,8 +2918,6 @@ ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST = -507
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST = -507--><!--Device-WebNetErrorList-ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST = -507-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_FTP_FAILED
@@ -3347,8 +2931,6 @@ FTP控制连接命令失败的通用错误。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_FTP_FAILED = -601--><!--Device-WebNetErrorList-ERR_FTP_FAILED = -601-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3364,8 +2946,6 @@ ERR_FTP_SERVICE_UNAVAILABLE = -602
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_FTP_SERVICE_UNAVAILABLE = -602--><!--Device-WebNetErrorList-ERR_FTP_SERVICE_UNAVAILABLE = -602-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_FTP_TRANSFER_ABORTED
@@ -3379,8 +2959,6 @@ ERR_FTP_TRANSFER_ABORTED = -603
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_FTP_TRANSFER_ABORTED = -603--><!--Device-WebNetErrorList-ERR_FTP_TRANSFER_ABORTED = -603-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3396,8 +2974,6 @@ ERR_FTP_FILE_BUSY = -604
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_FTP_FILE_BUSY = -604--><!--Device-WebNetErrorList-ERR_FTP_FILE_BUSY = -604-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_FTP_SYNTAX_ERROR
@@ -3411,8 +2987,6 @@ ERR_FTP_SYNTAX_ERROR = -605
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_FTP_SYNTAX_ERROR = -605--><!--Device-WebNetErrorList-ERR_FTP_SYNTAX_ERROR = -605-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3428,8 +3002,6 @@ ERR_FTP_COMMAND_UNSUPPORTED = -606
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_FTP_COMMAND_UNSUPPORTED = -606--><!--Device-WebNetErrorList-ERR_FTP_COMMAND_UNSUPPORTED = -606-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_FTP_BAD_COMMAND_SEQUENCE
@@ -3443,8 +3015,6 @@ ERR_FTP_BAD_COMMAND_SEQUENCE = -607
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_FTP_BAD_COMMAND_SEQUENCE = -607--><!--Device-WebNetErrorList-ERR_FTP_BAD_COMMAND_SEQUENCE = -607-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3460,8 +3030,6 @@ ERR_PKCS12_IMPORT_BAD_PASSWORD = -701
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_BAD_PASSWORD = -701--><!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_BAD_PASSWORD = -701-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_PKCS12_IMPORT_FAILED
@@ -3475,8 +3043,6 @@ ERR_PKCS12_IMPORT_FAILED = -702
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_FAILED = -702--><!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_FAILED = -702-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3492,8 +3058,6 @@ CA导入失败-不是CA证书。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_IMPORT_CA_CERT_NOT_CA = -703--><!--Device-WebNetErrorList-ERR_IMPORT_CA_CERT_NOT_CA = -703-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_IMPORT_CERT_ALREADY_EXISTS
@@ -3507,8 +3071,6 @@ ERR_IMPORT_CERT_ALREADY_EXISTS = -704
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_IMPORT_CERT_ALREADY_EXISTS = -704--><!--Device-WebNetErrorList-ERR_IMPORT_CERT_ALREADY_EXISTS = -704-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3524,8 +3086,6 @@ ERR_IMPORT_CA_CERT_FAILED = -705
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_IMPORT_CA_CERT_FAILED = -705--><!--Device-WebNetErrorList-ERR_IMPORT_CA_CERT_FAILED = -705-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_IMPORT_SERVER_CERT_FAILED
@@ -3539,8 +3099,6 @@ ERR_IMPORT_SERVER_CERT_FAILED = -706
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_IMPORT_SERVER_CERT_FAILED = -706--><!--Device-WebNetErrorList-ERR_IMPORT_SERVER_CERT_FAILED = -706-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3556,8 +3114,6 @@ PKCS #12 导入失败，因为 MAC（消息认证码）无效。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_INVALID_MAC = -707--><!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_INVALID_MAC = -707-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_PKCS12_IMPORT_INVALID_FILE
@@ -3571,8 +3127,6 @@ PKCS #12 导入失败，因为文件无效或已损坏。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_INVALID_FILE = -708--><!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_INVALID_FILE = -708-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3588,8 +3142,6 @@ ERR_PKCS12_IMPORT_UNSUPPORTED = -709
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_UNSUPPORTED = -709--><!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_UNSUPPORTED = -709-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_KEY_GENERATION_FAILED
@@ -3603,8 +3155,6 @@ ERR_KEY_GENERATION_FAILED = -710
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_KEY_GENERATION_FAILED = -710--><!--Device-WebNetErrorList-ERR_KEY_GENERATION_FAILED = -710-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3620,8 +3170,6 @@ ERR_PRIVATE_KEY_EXPORT_FAILED = -712
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_PRIVATE_KEY_EXPORT_FAILED = -712--><!--Device-WebNetErrorList-ERR_PRIVATE_KEY_EXPORT_FAILED = -712-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_SELF_SIGNED_CERT_GENERATION_FAILED
@@ -3635,8 +3183,6 @@ ERR_SELF_SIGNED_CERT_GENERATION_FAILED = -713
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_SELF_SIGNED_CERT_GENERATION_FAILED = -713--><!--Device-WebNetErrorList-ERR_SELF_SIGNED_CERT_GENERATION_FAILED = -713-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3652,8 +3198,6 @@ ERR_CERT_DATABASE_CHANGED = -714
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_CERT_DATABASE_CHANGED = -714--><!--Device-WebNetErrorList-ERR_CERT_DATABASE_CHANGED = -714-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_VERIFIER_CHANGED
@@ -3667,8 +3211,6 @@ ERR_CERT_VERIFIER_CHANGED = -716
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_CERT_VERIFIER_CHANGED = -716--><!--Device-WebNetErrorList-ERR_CERT_VERIFIER_CHANGED = -716-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3684,8 +3226,6 @@ DNS解析程序收到格式错误的响应。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_DNS_MALFORMED_RESPONSE = -800--><!--Device-WebNetErrorList-ERR_DNS_MALFORMED_RESPONSE = -800-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_DNS_SERVER_REQUIRES_TCP
@@ -3699,8 +3239,6 @@ DNS服务器需要TCP。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_DNS_SERVER_REQUIRES_TCP = -801--><!--Device-WebNetErrorList-ERR_DNS_SERVER_REQUIRES_TCP = -801-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3716,8 +3254,6 @@ DNS服务器失败。对于以下所有错误情况，都会返回此错误。 1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_DNS_SERVER_FAILED = -802--><!--Device-WebNetErrorList-ERR_DNS_SERVER_FAILED = -802-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_DNS_TIMED_OUT
@@ -3731,8 +3267,6 @@ DNS事务超时。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_DNS_TIMED_OUT = -803--><!--Device-WebNetErrorList-ERR_DNS_TIMED_OUT = -803-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3748,8 +3282,6 @@ ERR_DNS_CACHE_MISS = -804
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_DNS_CACHE_MISS = -804--><!--Device-WebNetErrorList-ERR_DNS_CACHE_MISS = -804-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_DNS_SEARCH_EMPTY
@@ -3763,8 +3295,6 @@ ERR_DNS_SEARCH_EMPTY = -805
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_DNS_SEARCH_EMPTY = -805--><!--Device-WebNetErrorList-ERR_DNS_SEARCH_EMPTY = -805-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3780,8 +3310,6 @@ ERR_DNS_SORT_ERROR = -806
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_DNS_SORT_ERROR = -806--><!--Device-WebNetErrorList-ERR_DNS_SORT_ERROR = -806-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED
@@ -3795,8 +3323,6 @@ ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808--><!--Device-WebNetErrorList-ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3812,8 +3338,6 @@ DNS已识别请求因不安全的连接（HTTP/WS）而被禁止。应用程序�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_DNS_NAME_HTTPS_ONLY = -809--><!--Device-WebNetErrorList-ERR_DNS_NAME_HTTPS_ONLY = -809-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ERR_DNS_REQUEST_CANCELED
@@ -3827,8 +3351,6 @@ ERR_DNS_REQUEST_CANCELED = -810
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebNetErrorList-ERR_DNS_REQUEST_CANCELED = -810--><!--Device-WebNetErrorList-ERR_DNS_REQUEST_CANCELED = -810-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3844,7 +3366,4 @@ HTTPS记录的主机名解析未能使用受支持协议的ALPN值进行解析�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebNetErrorList-ERR_DNS_NO_MATCHING_SUPPORTED_ALPN = -811--><!--Device-WebNetErrorList-ERR_DNS_NO_MATCHING_SUPPORTED_ALPN = -811-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

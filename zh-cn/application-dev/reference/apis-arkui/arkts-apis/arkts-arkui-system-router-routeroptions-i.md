@@ -1,4 +1,4 @@
-# RouterOptions(页面路由)
+# RouterOptions
 
 定义路由器的选项。
 
@@ -7,8 +7,6 @@
 **废弃版本：** 8
 
 **替代接口：** RouterOptions
-
-<!--Device-unnamed-export interface RouterOptions--><!--Device-unnamed-export interface RouterOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -34,8 +32,6 @@ params?: Object
 
 **替代接口：** params
 
-<!--Device-RouterOptions-params?: Object--><!--Device-RouterOptions-params?: Object-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 ## uri
@@ -44,7 +40,11 @@ params?: Object
 uri: string
 ```
 
-目标页面的uri，可以是以下的两种格式： 1. 页面的绝对路径，由config.json文件中的页面列表提供。例如： - pages/index/index - pages/detail/detail 2. 特定路径。如果URI为斜杠（/），则显示主页。
+目标页面的uri，可以是以下的两种格式：
+1. 页面的绝对路径，由config.json文件中的页面列表提供。例如：  
+- pages/index/index  
+- pages/detail/detail  
+2. 特定路径。如果URI为斜杠（/），则显示主页。
 
 **类型：** string
 
@@ -54,7 +54,4 @@ uri: string
 
 **替代接口：** url
 
-<!--Device-RouterOptions-uri: string--><!--Device-RouterOptions-uri: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
-

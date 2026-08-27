@@ -12,9 +12,6 @@ Defines the SizeT type.
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type SizeT<T> = import('../api/arkui/Graphics').SizeT<T>--><!--Device-unnamed-declare type SizeT<T> = import('../api/arkui/Graphics').SizeT<T>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** import('../api/arkui/Graphics').SizeT<T>
-
+**属性类型：** import('../api/arkui/Graphics').SizeT&lt;T&gt;

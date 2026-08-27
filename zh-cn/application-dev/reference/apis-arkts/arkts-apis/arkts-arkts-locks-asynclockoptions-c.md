@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-locks-class AsyncLockOptions--><!--Device-locks-class AsyncLockOptions-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
@@ -26,8 +24,6 @@ constructor()
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AsyncLockOptions-constructor()--><!--Device-AsyncLockOptions-constructor()-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## isAvailable
@@ -43,8 +39,6 @@ isAvailable: boolean
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AsyncLockOptions-isAvailable: boolean--><!--Device-AsyncLockOptions-isAvailable: boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -62,8 +56,6 @@ signal: AbortSignal<T> | null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AsyncLockOptions-signal: AbortSignal<T> | null--><!--Device-AsyncLockOptions-signal: AbortSignal<T> | null-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## timeout
@@ -80,7 +72,4 @@ timeout: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AsyncLockOptions-timeout: number--><!--Device-AsyncLockOptions-timeout: number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-interface SearchButtonOptions--><!--Device-unnamed-interface SearchButtonOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,7 +17,7 @@
 autoDisable?: Boolean
 ```
 
-Search无文本内容时按钮置灰且不可点击。 默认值：false true表示开启按钮置灰功能，false表示不开启。
+Search无文本内容时按钮置灰且不可点击。默认值：false true表示开启按钮置灰功能，false表示不开启。
 
 **类型：** Boolean
 
@@ -31,8 +29,6 @@ Search无文本内容时按钮置灰且不可点击。 默认值：false true表
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchButtonOptions-autoDisable?: Boolean--><!--Device-SearchButtonOptions-autoDisable?: Boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -43,15 +39,13 @@ fontColor?: ResourceColor
 
 文本按钮字体颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchButtonOptions-fontColor?: ResourceColor--><!--Device-SearchButtonOptions-fontColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,9 +55,9 @@ fontColor?: ResourceColor
 fontSize?: Length
 ```
 
-文本按钮字体大小，不传入单位时默认单位为vp，不支持百分比。传入百分比时，不生效。 默认值：跟随主题。
+文本按钮字体大小，不传入单位时默认单位为vp，不支持百分比。传入百分比时，不生效。默认值：跟随主题。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 10
 
@@ -71,7 +65,4 @@ fontSize?: Length
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchButtonOptions-fontSize?: Length--><!--Device-SearchButtonOptions-fontSize?: Length-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

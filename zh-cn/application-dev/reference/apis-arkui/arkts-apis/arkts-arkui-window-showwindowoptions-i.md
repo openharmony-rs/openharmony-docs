@@ -2,17 +2,13 @@
 
 显示子窗口或系统窗口时的参数。
 
-**起始版本：** 23
-
-<!--Device-window-interface ShowWindowOptions--><!--Device-window-interface ShowWindowOptions-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -26,11 +22,8 @@ focusOnShow?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 20
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowWindowOptions-focusOnShow?: boolean--><!--Device-ShowWindowOptions-focusOnShow?: boolean-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
-

@@ -21,4 +21,3 @@ import { App, AppResponse, RequestFullWindowOptions, ScreenOnVisibleOptions } fr
 | [AppResponse](arkts-arkui-system-app-appresponse-i.md) | 定义AppResponse信息。 |
 | [RequestFullWindowOptions](arkts-arkui-system-app-requestfullwindowoptions-i.md) | 定义RequestFullWindow接口的选项。 |
 | [ScreenOnVisibleOptions](arkts-arkui-system-app-screenonvisibleoptions-i.md) | 定义屏幕上可见接口的选项。 |
-

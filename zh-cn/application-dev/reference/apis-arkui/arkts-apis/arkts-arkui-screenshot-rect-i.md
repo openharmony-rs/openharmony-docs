@@ -2,9 +2,7 @@
 
 表示截取图像的区域。
 
-**起始版本：** 23
-
-<!--Device-screenshot-interface Rect--><!--Device-screenshot-interface Rect-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -17,72 +15,63 @@ import { screenshot } from '@kit.ArkUI';
 ## height
 
 ```TypeScript
-height: long
+height: number
 ```
 
 表示截取图像区域的高度，单位为px，该参数应为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Rect-height: long--><!--Device-Rect-height: long-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## left
 
 ```TypeScript
-left: long
+left: number
 ```
 
 表示截取图像区域的左边界，单位为px，该参数应为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Rect-left: long--><!--Device-Rect-left: long-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## top
 
 ```TypeScript
-top: long
+top: number
 ```
 
 表示截取图像区域的上边界，单位为px，该参数应为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Rect-top: long--><!--Device-Rect-top: long-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## width
 
 ```TypeScript
-width: long
+width: number
 ```
 
 表示截取图像区域的宽度，单位为px，该参数应为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Rect-width: long--><!--Device-Rect-width: long-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
-

@@ -18,8 +18,6 @@ function isEncoding(encoding: string): boolean
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-fastbuffer-function isEncoding(encoding: string): boolean--><!--Device-fastbuffer-function isEncoding(encoding: string): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -48,4 +46,3 @@ console.info(fastbuffer.isEncoding('utf/8').toString());
 console.info(fastbuffer.isEncoding('').toString());
 // 输出结果：false
 ```
-

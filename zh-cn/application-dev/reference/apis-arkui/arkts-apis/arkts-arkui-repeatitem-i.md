@@ -1,10 +1,8 @@
-# RepeatItem(Defines Repeat component.)
+# RepeatItem
 
 数据项类型。
 
 **起始版本：** 12
-
-<!--Device-unnamed-interface RepeatItem--><!--Device-unnamed-interface RepeatItem-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,8 +29,6 @@ index: number
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RepeatItem-index: number--><!--Device-RepeatItem-index: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## item
@@ -53,7 +49,4 @@ arr中每一个数据项。T为开发者传入的数据类型。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RepeatItem-item: T--><!--Device-RepeatItem-item: T-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

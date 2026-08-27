@@ -1,8 +1,8 @@
 # LinearGradientBlurOptions
 
-**起始版本：** 12
+@interface LinearGradientBlurOptions
 
-<!--Device-unnamed-declare interface LinearGradientBlurOptions--><!--Device-unnamed-declare interface LinearGradientBlurOptions-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -17,17 +17,15 @@
 direction: GradientDirection
 ```
 
-渐变模糊方向。 默认值： GradientDirection.Bottom
+渐变模糊方向。默认值：GradientDirection.Bottom
 
-**类型：** GradientDirection
+**类型：** [GradientDirection](../arkts-apis/arkts-arkui-gradientdirection-e.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LinearGradientBlurOptions-direction: GradientDirection--><!--Device-LinearGradientBlurOptions-direction: GradientDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,7 +45,4 @@ fractionStops: FractionStop[]
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LinearGradientBlurOptions-fractionStops: FractionStop[]--><!--Device-LinearGradientBlurOptions-fractionStops: FractionStop[]-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

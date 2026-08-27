@@ -23,8 +23,6 @@ Converts a number in units of px to a number in units of vp. By default, the vir
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare function px2vp(value: number): number--><!--Device-unnamed-declare function px2vp(value: number): number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -38,4 +36,3 @@ Converts a number in units of px to a number in units of vp. By default, the vir
 | 类型 | 说明 |
 | --- | --- |
 | number | Value range of the return value: (-∞, +∞). |
-

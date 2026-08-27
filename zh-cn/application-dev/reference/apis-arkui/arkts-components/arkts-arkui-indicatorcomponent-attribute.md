@@ -1,12 +1,10 @@
 # IndicatorComponent属性/事件
 
-除支持通用属性外，还支持以下属性。
+除支持通用属性外，还支持以下属性。@extends CommonMethod&lt;IndicatorComponentAttribute&gt;
 
 **继承/实现关系：** IndicatorComponentAttribute extends CommonMethod<IndicatorComponentAttribute>
 
 **起始版本：** 15
-
-<!--Device-unnamed-declare class IndicatorComponentAttribute--><!--Device-unnamed-declare class IndicatorComponentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -21,7 +19,7 @@
 count(totalCount: number)
 ```
 
-设置导航点总数量。 单独导航点组件和Swiper绑定的时候，以Swiper的页面数量为准。
+设置导航点总数量。单独导航点组件和Swiper绑定的时候，以Swiper的页面数量为准。
 
 **起始版本：** 15
 
@@ -30,8 +28,6 @@ count(totalCount: number)
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-IndicatorComponentAttribute-count(totalCount: number): IndicatorComponentAttribute--><!--Device-IndicatorComponentAttribute-count(totalCount: number): IndicatorComponentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,7 +43,7 @@ count(totalCount: number)
 initialIndex(index: number)
 ```
 
-设置首次显示时当前导航点的索引值。传入值小于0或大于等于导航点数量时，按照默认值0处理。 单独导航点组件和Swiper绑定的时候，该属性不生效。
+设置首次显示时当前导航点的索引值。传入值小于0或大于等于导航点数量时，按照默认值0处理。单独导航点组件和Swiper绑定的时候，该属性不生效。
 
 **起始版本：** 15
 
@@ -56,8 +52,6 @@ initialIndex(index: number)
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-IndicatorComponentAttribute-initialIndex(index: number): IndicatorComponentAttribute--><!--Device-IndicatorComponentAttribute-initialIndex(index: number): IndicatorComponentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +67,7 @@ initialIndex(index: number)
 loop(isLoop: boolean)
 ```
 
-设置是否开启循环。 单独导航点组件和Swiper绑定的时候，该属性不生效。
+设置是否开启循环。单独导航点组件和Swiper绑定的时候，该属性不生效。
 
 **起始版本：** 15
 
@@ -82,8 +76,6 @@ loop(isLoop: boolean)
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-IndicatorComponentAttribute-loop(isLoop: boolean): IndicatorComponentAttribute--><!--Device-IndicatorComponentAttribute-loop(isLoop: boolean): IndicatorComponentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,15 +101,13 @@ Called when the index value changes.
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-IndicatorComponentAttribute-onChange(event: Callback<number>): IndicatorComponentAttribute--><!--Device-IndicatorComponentAttribute-onChange(event: Callback<number>): IndicatorComponentAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback&lt;number&gt; | 是 |  |
+| event | Callback & lt;number & gt; | 是 |  |
 
 ## style
 
@@ -135,15 +125,13 @@ style(indicatorStyle: DotIndicator | DigitIndicator)
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-IndicatorComponentAttribute-style(indicatorStyle: DotIndicator | DigitIndicator): IndicatorComponentAttribute--><!--Device-IndicatorComponentAttribute-style(indicatorStyle: DotIndicator | DigitIndicator): IndicatorComponentAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| indicatorStyle | DotIndicator \| DigitIndicator | 是 | 可选导航点指示器样式。<br/> - DotIndicator：圆点指示器样式。<br/> - DigitIndicator：数字指示器样式。<br/>  默认类型：DotIndicator。 |
+| indicatorStyle | [DotIndicator](arkts-arkui-dotindicator-c.md) \| [DigitIndicator](arkts-arkui-digitindicator-c.md) | 是 | 可选导航点指示器样式。    - DotIndicator：圆点指示器样式。    - DigitIndicator：数字指示器样式。     默认类型：DotIndicator。 |
 
 ## vertical
 
@@ -151,7 +139,7 @@ style(indicatorStyle: DotIndicator | DigitIndicator)
 vertical(isVertical: boolean)
 ```
 
-设置是否为纵向滑动。 单独导航点组件和Swiper绑定的时候，该属性不生效。
+设置是否为纵向滑动。单独导航点组件和Swiper绑定的时候，该属性不生效。
 
 **起始版本：** 15
 
@@ -161,8 +149,6 @@ vertical(isVertical: boolean)
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-IndicatorComponentAttribute-vertical(isVertical: boolean): IndicatorComponentAttribute--><!--Device-IndicatorComponentAttribute-vertical(isVertical: boolean): IndicatorComponentAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -170,4 +156,3 @@ vertical(isVertical: boolean)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | isVertical | boolean | 是 |  |
-

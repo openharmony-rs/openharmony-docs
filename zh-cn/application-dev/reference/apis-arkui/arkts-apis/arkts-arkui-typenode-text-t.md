@@ -12,9 +12,6 @@ Text类型的FrameNode节点类型。不允许添加子组件。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-type Text = TypedFrameNode<TextInterface, TextAttribute>--><!--Device-typeNode-type Text = TypedFrameNode<TextInterface, TextAttribute>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** TypedFrameNode<TextInterface, TextAttribute>
-
+**属性类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextInterface, [TextAttribute](../arkts-components/arkts-arkui-text-attribute.md)&gt;

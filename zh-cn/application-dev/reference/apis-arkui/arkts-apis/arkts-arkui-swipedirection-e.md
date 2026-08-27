@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-<!--Device-unnamed-declare enum SwipeDirection--><!--Device-unnamed-declare enum SwipeDirection-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -19,8 +17,6 @@ None
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SwipeDirection-None--><!--Device-SwipeDirection-None-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,8 +32,6 @@ Sliding horizontally.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SwipeDirection-Horizontal--><!--Device-SwipeDirection-Horizontal-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Vertical
@@ -51,8 +45,6 @@ Vertical
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SwipeDirection-Vertical--><!--Device-SwipeDirection-Vertical-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,7 +60,4 @@ Sliding in all directions.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SwipeDirection-All--><!--Device-SwipeDirection-All-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

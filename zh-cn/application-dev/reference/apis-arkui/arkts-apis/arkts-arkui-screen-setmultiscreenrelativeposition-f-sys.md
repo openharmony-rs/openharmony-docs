@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { screen } from '@kit.ArkUI';
-import { screenshot } from '@kit.ArkUI';
 ```
 
 ## setMultiScreenRelativePosition
@@ -16,9 +15,7 @@ function setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOp
 
 仅在扩展模式下，设置主屏和扩展屏幕的位置信息，使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-screen-function setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOptions,    secondaryScreenOptions: MultiScreenPositionOptions): Promise<void>--><!--Device-screen-function setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOptions,    secondaryScreenOptions: MultiScreenPositionOptions): Promise<void>-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -35,20 +32,18 @@ function setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOp
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, non-system application uses system API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, non-system application uses system API. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -73,26 +68,3 @@ screen.setMultiScreenRelativePosition(mainScreenOptions, secondaryScreenOptions)
   console.error(`Failed to set multi screen relative position. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let mainScreenOptions: screen.MultiScreenPositionOptions = {
-  id : 0,
-  startX : 0,
-  startY : 0
-};
-
-let secondaryScreenOptions: screen.MultiScreenPositionOptions = {
-  id : 12,
-  startX : 1000,
-  startY : 1000
-};
-
-screen.setMultiScreenRelativePosition(mainScreenOptions, secondaryScreenOptions).then(() => {
-  console.info('Succeeded in setting multi screen relative position.');
-}).catch((err: Error) => {
-  console.error(`Failed to set multi screen relative position. Code: ${err?.code}, message: ${err?.message}`);
-});
-```
-

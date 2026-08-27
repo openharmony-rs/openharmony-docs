@@ -10,8 +10,6 @@ type OnSslErrorEventCallback = (sslErrorEvent: SslErrorEvent) => void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-type OnSslErrorEventCallback = (sslErrorEvent: SslErrorEvent) => void--><!--Device-unnamed-type OnSslErrorEventCallback = (sslErrorEvent: SslErrorEvent) => void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -19,4 +17,3 @@ type OnSslErrorEventCallback = (sslErrorEvent: SslErrorEvent) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sslErrorEvent | [SslErrorEvent](arkts-arkweb-sslerrorevent-i.md) | 是 | 用户加载资源时发生SSL错误时传递的详细信息。 |
-

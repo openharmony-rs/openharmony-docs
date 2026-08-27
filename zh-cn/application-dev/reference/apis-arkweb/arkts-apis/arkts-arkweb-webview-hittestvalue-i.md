@@ -4,14 +4,11 @@
 
 **起始版本：** 9
 
-<!--Device-webview-interface HitTestValue--><!--Device-webview-interface HitTestValue-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { webview } from '@kit.ArkWeb';
 ```
 
 ## extra
@@ -27,8 +24,6 @@ extra: string
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HitTestValue-extra: string--><!--Device-HitTestValue-extra: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -46,7 +41,4 @@ type: WebHitTestType
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HitTestValue-type: WebHitTestType--><!--Device-HitTestValue-type: WebHitTestType-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

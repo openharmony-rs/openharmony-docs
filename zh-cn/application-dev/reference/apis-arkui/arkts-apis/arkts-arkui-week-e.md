@@ -1,10 +1,8 @@
 # Week
 
-定义星期枚举值。
+定义星期枚举值。@enum { number }
 
 **起始版本：** 11
-
-<!--Device-unnamed-declare enum Week--><!--Device-unnamed-declare enum Week-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,8 +18,6 @@ Monday.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Week-Mon--><!--Device-Week-Mon-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Tue
@@ -35,8 +31,6 @@ Tuesday.
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Week-Tue--><!--Device-Week-Tue-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,8 +46,6 @@ Wednesday.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Week-Wed--><!--Device-Week-Wed-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Thur
@@ -67,8 +59,6 @@ Thursday.
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Week-Thur--><!--Device-Week-Thur-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,8 +74,6 @@ Friday.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Week-Fri--><!--Device-Week-Fri-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Sat
@@ -99,8 +87,6 @@ Saturday.
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Week-Sat--><!--Device-Week-Sat-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,7 +102,4 @@ Sunday.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Week-Sun--><!--Device-Week-Sun-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

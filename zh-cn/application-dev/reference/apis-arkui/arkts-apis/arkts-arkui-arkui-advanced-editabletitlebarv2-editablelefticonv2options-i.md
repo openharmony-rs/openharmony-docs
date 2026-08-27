@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export declare interface EditableLeftIconV2Options--><!--Device-unnamed-export declare interface EditableLeftIconV2Options-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -14,13 +12,29 @@
 import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, EditableLeftIconV2Options, EditableTitleV2, EditableTitleV2Options, EditableTitleBarItemV2, EditableTitleBarItemV2Options, EditableTitleBarMenuItemV2, EditableTitleBarMenuItemV2Options, EditableSaveButtonV2, EditableSaveButtonV2Options, EditableTitleBarStyleV2, EditableTitleBarStyleV2Options } from '@kit.ArkUI';
 ```
 
+## onAction
+
+```TypeScript
+onAction?: OnActionCallback
+```
+
+点击左侧图标的回调函数。未设置时，Back类型默认执行路由返回，Cancel类型无操作。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## defaultFocus
 
 ```TypeScript
 defaultFocus?: boolean
 ```
 
-是否默认获取焦点。 true：获焦。 false：不获焦。 默认值：false。
+是否默认获取焦点。true：获焦。false：不获焦。默认值：false。
 
 **类型：** boolean
 
@@ -31,8 +45,6 @@ defaultFocus?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EditableLeftIconV2Options-defaultFocus?: boolean--><!--Device-EditableLeftIconV2Options-defaultFocus?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,27 +64,4 @@ iconType?: EditableLeftIconTypeV2
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EditableLeftIconV2Options-iconType?: EditableLeftIconTypeV2--><!--Device-EditableLeftIconV2Options-iconType?: EditableLeftIconTypeV2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## onAction
-
-```TypeScript
-onAction?: OnActionCallback
-```
-
-点击左侧图标的回调函数。未设置时，Back类型默认执行路由返回，Cancel类型无操作。
-
-**类型：** [OnActionCallback](arkts-arkui-onactioncallback-t.md)
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EditableLeftIconV2Options-onAction?: OnActionCallback--><!--Device-EditableLeftIconV2Options-onAction?: OnActionCallback-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

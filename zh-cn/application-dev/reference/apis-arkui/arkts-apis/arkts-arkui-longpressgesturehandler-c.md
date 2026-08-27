@@ -6,8 +6,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class LongPressGestureHandler--><!--Device-unnamed-declare class LongPressGestureHandler-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,8 +26,6 @@ constructor(options?: LongPressGestureHandlerOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LongPressGestureHandler-constructor(options?: LongPressGestureHandlerOptions)--><!--Device-LongPressGestureHandler-constructor(options?: LongPressGestureHandlerOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,8 +48,6 @@ onAction(event: Callback<GestureEvent>): LongPressGestureHandler
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LongPressGestureHandler-onAction(event: Callback<GestureEvent>): LongPressGestureHandler--><!--Device-LongPressGestureHandler-onAction(event: Callback<GestureEvent>): LongPressGestureHandler-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,15 +77,13 @@ onActionCancel(event: Callback<void>): LongPressGestureHandler
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LongPressGestureHandler-onActionCancel(event: Callback<void>): LongPressGestureHandler--><!--Device-LongPressGestureHandler-onActionCancel(event: Callback<void>): LongPressGestureHandler-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback&lt;void&gt; | 是 | 长按手势处理器取消回调。 |
+| event | Callback & lt;void & gt; | 是 | 长按手势处理器取消回调。 |
 
 **返回值：**
 
@@ -112,8 +104,6 @@ onActionCancel(event: Callback<GestureEvent>): LongPressGestureHandler
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LongPressGestureHandler-onActionCancel(event: Callback<GestureEvent>): LongPressGestureHandler--><!--Device-LongPressGestureHandler-onActionCancel(event: Callback<GestureEvent>): LongPressGestureHandler-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,8 +133,6 @@ onActionEnd(event: Callback<GestureEvent>): LongPressGestureHandler
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LongPressGestureHandler-onActionEnd(event: Callback<GestureEvent>): LongPressGestureHandler--><!--Device-LongPressGestureHandler-onActionEnd(event: Callback<GestureEvent>): LongPressGestureHandler-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -158,4 +146,3 @@ onActionEnd(event: Callback<GestureEvent>): LongPressGestureHandler
 | 类型 | 说明 |
 | --- | --- |
 | [LongPressGestureHandler](arkts-arkui-longpressgesturehandler-c.md) | 返回当前长按手势处理器对象。 |
-

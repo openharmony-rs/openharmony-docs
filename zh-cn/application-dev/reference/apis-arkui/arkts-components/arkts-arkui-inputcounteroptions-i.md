@@ -1,10 +1,8 @@
 # InputCounterOptions
 
-Define the ratio of characters entered by the the percentage of InputCounterOptions.
+Define the ratio of characters entered by the the percentage of InputCounterOptions.@interface InputCounterOptions
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare interface InputCounterOptions--><!--Device-unnamed-declare interface InputCounterOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,8 +27,6 @@ It is the color of counter when textField hasn't wanted to exceed the maximum ch
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-InputCounterOptions-counterTextColor?: ColorMetrics--><!--Device-InputCounterOptions-counterTextColor?: ColorMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## counterTextOverflowColor
@@ -49,8 +45,6 @@ It is the color of counter when textField wants to exceed the maximum character 
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-InputCounterOptions-counterTextOverflowColor?: ColorMetrics--><!--Device-InputCounterOptions-counterTextOverflowColor?: ColorMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## highlightBorder
@@ -59,7 +53,7 @@ It is the color of counter when textField wants to exceed the maximum character 
 highlightBorder?: boolean
 ```
 
-If the current input character count reaches the maximum character count and users want to exceed the normal input, the border will turn red. If this parameter is true, the red border displayed. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: <br>Whether to highlight the text box border and character counter subscript in red. <br>If options is not set, the text box border and character counter subscript turn red <br>when the number of characters entered reaches the limit. <br>If the character counter is displayed and thresholdPercentage is set to a valid value, the text box border and character counter subscript turn red when the number of entered characters exceeds the limit. <br>The value true (default) means to highlight the text box border and character counter subscript in red. &lt;/p&gt;
+If the current input character count reaches the maximum character count and users want to exceed the normal input, the border will turn red. If this parameter is true, the red border displayed.<p>&lt;strong&gt;NOTE&lt;/strong&gt;: Whether to highlight the text box border and character counter subscript in red. If options is not set, the text box border and character counter subscript turn red when the number of characters entered reaches the limit. If the character counter is displayed and thresholdPercentage is set to a valid value, the text box border and character counter subscript turn red when the number of entered characters exceeds the limit. The value true (default) means to highlight the text box border and character counter subscript in red. </p>
 
 **类型：** boolean
 
@@ -71,8 +65,6 @@ If the current input character count reaches the maximum character count and use
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-InputCounterOptions-highlightBorder?: boolean--><!--Device-InputCounterOptions-highlightBorder?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## thresholdPercentage
@@ -81,7 +73,7 @@ If the current input character count reaches the maximum character count and use
 thresholdPercentage?: number
 ```
 
-It is the numerator bit of the percentage and used as a threshold. If the number of characters input reaches the maximum number of characters multiplied by this threshold, the counter is displayed. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: <br>Threshold percentage for displaying the character counter. <br>The character counter is displayed when the number of characters that have been entered is greater than the maximum number of characters multiplied by the threshold percentage value. <br>When displayed, the character counter is in the following format: <br>Number of characters that have been entered/Maximum number of characters allowed. <br>It is visible when the number of characters entered is greater than the character limit multiplied by the threshold percentage value. <br>Value range: [1, 100] <br>If the value is not an integer, it is rounded down to the nearest integer. <br>If the value exceeds the valid value range, the character counter is not displayed. <br>If the value is &lt;em&gt;undefined&lt;/em&gt;, the character counter is displayed, but this parameter has no effect. &lt;/p&gt;
+It is the numerator bit of the percentage and used as a threshold. If the number of characters input reaches the maximum number of characters multiplied by this threshold, the counter is displayed.<p>&lt;strong&gt;NOTE&lt;/strong&gt;: Threshold percentage for displaying the character counter. The character counter is displayed when the number of characters that have been entered is greater than the maximum number of characters multiplied by the threshold percentage value. When displayed, the character counter is in the following format: Number of characters that have been entered/Maximum number of characters allowed. It is visible when the number of characters entered is greater than the character limit multiplied by the threshold percentage value. Value range: [1, 100] If the value is not an integer, it is rounded down to the nearest integer. If the value exceeds the valid value range, the character counter is not displayed. If the value is &lt;em&gt;undefined&lt;/em&gt;, the character counter is displayed, but this parameter has no effect. </p>
 
 **类型：** number
 
@@ -91,7 +83,4 @@ It is the numerator bit of the percentage and used as a threshold. If the number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-InputCounterOptions-thresholdPercentage?: number--><!--Device-InputCounterOptions-thresholdPercentage?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

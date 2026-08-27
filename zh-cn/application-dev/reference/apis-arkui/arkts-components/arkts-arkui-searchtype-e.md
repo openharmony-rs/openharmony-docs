@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare enum SearchType--><!--Device-unnamed-declare enum SearchType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NORMAL
@@ -21,8 +19,6 @@ NORMAL = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchType-NORMAL = 0--><!--Device-SearchType-NORMAL = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ NUMBER = 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchType-NUMBER = 2--><!--Device-SearchType-NUMBER = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PHONE_NUMBER
@@ -50,15 +44,13 @@ NUMBER = 2
 PHONE_NUMBER = 3
 ```
 
-电话号码输入模式。 支持输入数字、空格、+ 、-、*、#、(、)，长度不限。
+电话号码输入模式。支持输入数字、空格、+ 、-、*、#、(、)，长度不限。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchType-PHONE_NUMBER = 3--><!--Device-SearchType-PHONE_NUMBER = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,15 +60,13 @@ PHONE_NUMBER = 3
 EMAIL = 5
 ```
 
-邮箱地址输入模式。 支持数字、字母、下划线、小数点、!、#、\$、%、&、'、*、+、-、/、=、?、^、`、{、|、}、~以及@字符（只能存在一个@字符）。
+邮箱地址输入模式。支持数字、字母、下划线、小数点、!、#、\$、%、&、'、*、+、-、/、=、?、^、`、{、|、}、~以及@字符（只能存在一个@字符）。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchType-EMAIL = 5--><!--Device-SearchType-EMAIL = 5-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,15 +76,13 @@ EMAIL = 5
 NUMBER_DECIMAL = 12
 ```
 
-带小数点的数字输入模式。 支持数字、小数点（只能存在一个小数点）。
+带小数点的数字输入模式。支持数字、小数点（只能存在一个小数点）。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchType-NUMBER_DECIMAL = 12--><!--Device-SearchType-NUMBER_DECIMAL = 12-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,8 +100,6 @@ URL = 13
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchType-URL = 13--><!--Device-SearchType-URL = 13-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ONE_TIME_CODE
@@ -130,7 +116,4 @@ ONE_TIME_CODE = 14
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchType-ONE_TIME_CODE = 14--><!--Device-SearchType-ONE_TIME_CODE = 14-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

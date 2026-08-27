@@ -1,10 +1,13 @@
 # ButtonOptions
 
-> **说明：** > > buttonStyle和role优先级高于fontColor和background。当buttonStyle和role设置的是默认值时，fontColor和background生效。 > > 若同时给多个按钮设置defaultFocus，则默认焦点为设置defaultFocus按钮中显示顺序的第一个按钮。
+
+> **说明：**
+> 
+> buttonStyle和role优先级高于fontColor和background。当buttonStyle和role设置的是默认值时，fontColor和background生效。
+> 
+> 若同时给多个按钮设置defaultFocus，则默认焦点为设置defaultFocus按钮中显示顺序的第一个按钮。
 
 **起始版本：** 10
-
-<!--Device-unnamed-export declare class ButtonOptions--><!--Device-unnamed-export declare class ButtonOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -12,7 +15,6 @@
 
 ```TypeScript
 import { AlertDialog, ButtonOptions, ConfirmDialog, LoadingDialog, SelectDialog, TipsDialog, CustomContentDialog, PopoverDialog, PopoverOptions } from '@kit.ArkUI';
-import { AlertDialogV2, AdvancedDialogV2Button, AdvancedDialogV2ButtonOptions, AdvancedDialogV2ButtonAction, AdvancedDialogV2OnCheckedChange, ConfirmDialogV2, LoadingDialogV2, SelectDialogV2, TipsDialogV2, CustomContentDialogV2, PopoverDialogV2, PopoverDialogV2OnVisibleChange, PopoverDialogV2Options } from '@kit.ArkUI';
 ```
 
 ## action
@@ -23,15 +25,11 @@ action?: () => void
 
 按钮的点击事件。
 
-**类型：** () =&gt; void
-
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ButtonOptions-action?: () => void--><!--Device-ButtonOptions-action?: () => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,17 +39,15 @@ action?: () => void
 background?: ResourceColor
 ```
 
-按钮的背景色。 默认值跟随buttonStyle。
+按钮的背景色。默认值跟随buttonStyle。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ButtonOptions-background?: ResourceColor--><!--Device-ButtonOptions-background?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,9 +57,9 @@ background?: ResourceColor
 buttonStyle?: ButtonStyleMode
 ```
 
-按钮的样式。 默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。
+按钮的样式。默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。
 
-**类型：** ButtonStyleMode
+**类型：** [ButtonStyleMode](../arkts-components/arkts-arkui-buttonstylemode-e.md)
 
 **默认值：** ButtonStyleMode.TEXTUAL
 
@@ -73,8 +69,6 @@ buttonStyle?: ButtonStyleMode
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ButtonOptions-buttonStyle?: ButtonStyleMode--><!--Device-ButtonOptions-buttonStyle?: ButtonStyleMode-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## defaultFocus
@@ -83,7 +77,7 @@ buttonStyle?: ButtonStyleMode
 defaultFocus?: boolean
 ```
 
-按钮是否设置默认焦点。 true：按钮是默认焦点。 false：按钮不是默认焦点。 默认值：false
+按钮是否设置默认焦点。true：按钮是默认焦点。false：按钮不是默认焦点。默认值：false
 
 **类型：** boolean
 
@@ -95,8 +89,6 @@ defaultFocus?: boolean
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ButtonOptions-defaultFocus?: boolean--><!--Device-ButtonOptions-defaultFocus?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -105,17 +97,15 @@ defaultFocus?: boolean
 fontColor?: ResourceColor
 ```
 
-按钮的字体颜色。 默认值跟随buttonStyle。
+按钮的字体颜色。默认值跟随buttonStyle。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ButtonOptions-fontColor?: ResourceColor--><!--Device-ButtonOptions-fontColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -125,9 +115,9 @@ fontColor?: ResourceColor
 role?: ButtonRole
 ```
 
-按钮的角色。 默认值：ButtonRole.NORMAL
+按钮的角色。默认值：ButtonRole.NORMAL
 
-**类型：** ButtonRole
+**类型：** [ButtonRole](../arkts-components/arkts-arkui-buttonrole-e.md)
 
 **默认值：** ButtonRole.NORMAL
 
@@ -137,8 +127,6 @@ role?: ButtonRole
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ButtonOptions-role?: ButtonRole--><!--Device-ButtonOptions-role?: ButtonRole-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## textAlign
@@ -147,7 +135,7 @@ role?: ButtonRole
 textAlign?: TextAlign
 ```
 
-按钮文本的对齐方式。 默认值：TextAlign.Start
+按钮文本的对齐方式。默认值：TextAlign.Start
 
 **类型：** TextAlign
 
@@ -159,8 +147,6 @@ textAlign?: TextAlign
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ButtonOptions-textAlign?: TextAlign--><!--Device-ButtonOptions-textAlign?: TextAlign-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -171,7 +157,7 @@ value: ResourceStr
 
 按钮的内容。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 10
 
@@ -179,7 +165,4 @@ value: ResourceStr
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ButtonOptions-value: ResourceStr--><!--Device-ButtonOptions-value: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

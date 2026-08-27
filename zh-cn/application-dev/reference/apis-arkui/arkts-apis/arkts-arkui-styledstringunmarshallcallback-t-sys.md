@@ -10,8 +10,6 @@ declare type StyledStringUnmarshallCallback = (buf: ArrayBuffer) => StyledString
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-declare type StyledStringUnmarshallCallback = (buf: ArrayBuffer) => StyledStringMarshallingValue--><!--Device-unnamed-declare type StyledStringUnmarshallCallback = (buf: ArrayBuffer) => StyledStringMarshallingValue-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -27,4 +25,3 @@ declare type StyledStringUnmarshallCallback = (buf: ArrayBuffer) => StyledString
 | 类型 | 说明 |
 | --- | --- |
 | [StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md) | 反序列化得到的自定义数据片段对象，用于恢复用户自定义的样式数据。 |
-

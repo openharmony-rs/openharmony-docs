@@ -12,8 +12,6 @@ declare type EditableTextOnChangeCallback = (value: string, previewText?: Previe
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, options?: TextChangeOptions) => void--><!--Device-unnamed-declare type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, options?: TextChangeOptions) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -23,4 +21,3 @@ declare type EditableTextOnChangeCallback = (value: string, previewText?: Previe
 | value | string | 是 | Text displayed in the text box. |
 | previewText | [PreviewText](arkts-arkui-previewtext-i.md) | 否 | Information about the preview text, including its start position and text content. |
 | options | [TextChangeOptions](arkts-arkui-textchangeoptions-i.md) | 否 | Information about the text change, including the selection range, text displayed in the text box, and preview text. |
-

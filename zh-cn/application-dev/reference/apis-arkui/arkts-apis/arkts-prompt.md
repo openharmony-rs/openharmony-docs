@@ -1,14 +1,16 @@
 # @ohos.prompt
 
-创建并显示文本提示框、对话框和操作菜单。 > **说明：** > > 从API version 9 开始，该接口不再维护，推荐使用新接口[@ohos.promptAction (弹窗)](../../apis-na/arkts-apis/arkts-na-promptaction-n.md)。
+创建并显示文本提示框、对话框和操作菜单。
+
+> **说明：**
+> 
+> 从API version 9 开始，该接口不再维护，推荐使用新接口[@ohos.promptAction (弹窗)](arkts-arkui-promptaction-n.md)。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [promptAction/promptAction](../../apis-na/arkts-apis/arkts-na-promptaction-n.md)
-
-<!--Device-unnamed-declare namespace prompt--><!--Device-unnamed-declare namespace prompt-End-->
+**替代接口：** [promptAction/promptAction](arkts-arkui-promptaction-n.md)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,7 +18,6 @@
 
 ```TypeScript
 import { prompt } from '@kit.ArkUI';
-import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 ```
 
 ## 汇总
@@ -41,4 +42,3 @@ import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 | [ShowDialogOptions](arkts-arkui-prompt-showdialogoptions-i.md) | 对话框的选项。 |
 | [ShowDialogSuccessResponse](arkts-arkui-prompt-showdialogsuccessresponse-i.md) | 对话框的响应结果。 |
 | [ShowToastOptions](arkts-arkui-prompt-showtoastoptions-i.md) | 文本提示框的选项。 |
-

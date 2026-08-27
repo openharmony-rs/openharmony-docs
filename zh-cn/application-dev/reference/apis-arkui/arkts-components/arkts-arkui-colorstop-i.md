@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface ColorStop--><!--Device-unnamed-declare interface ColorStop-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -21,15 +19,13 @@ color: ResourceColor
 
 渐变色断点处的颜色值。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ColorStop-color: ResourceColor--><!--Device-ColorStop-color: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,9 +35,10 @@ color: ResourceColor
 offset: Length
 ```
 
-渐变色断点（0~1之间的比例值，若该值小于0则置为0，若该值大于1则置为1）。 **说明：** 若传入字符串类型且内容为数字，则转换为对应的数值。 例如'10vp'转换为10，'10%'转换为0.1。
+渐变色断点（0~1之间的比例值，若该值小于0则置为0，若该值大于1则置为1）。  
+**说明：**若传入字符串类型且内容为数字，则转换为对应的数值。例如'10vp'转换为10，'10%'转换为0.1。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 10
 
@@ -49,7 +46,4 @@ offset: Length
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ColorStop-offset: Length--><!--Device-ColorStop-offset: Length-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

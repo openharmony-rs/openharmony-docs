@@ -6,8 +6,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-interface PinchGestureHandlerOptions--><!--Device-unnamed-interface PinchGestureHandlerOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -21,7 +19,8 @@
 distance?: number
 ```
 
-最小识别距离，单位为vp。 默认值：5 **说明：** 当识别距离的值小于等于0时，会被转化为默认值。
+最小识别距离，单位为vp。默认值：5  
+**说明：**当识别距离的值小于等于0时，会被转化为默认值。
 
 **类型：** number
 
@@ -30,8 +29,6 @@ distance?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PinchGestureHandlerOptions-distance?: number--><!--Device-PinchGestureHandlerOptions-distance?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,7 +38,7 @@ distance?: number
 fingers?: number
 ```
 
-触发捏合的最少手指数，最小为2指，最大为5指。 默认值：2 取值范围：[2, 5] 触发手势手指可以多于fingers数目，但只有先落下的与fingers相同数目的手指参与手势计算。
+触发捏合的最少手指数，最小为2指，最大为5指。默认值：2取值范围：[2, 5]触发手势手指可以多于fingers数目，但只有先落下的与fingers相同数目的手指参与手势计算。
 
 **类型：** number
 
@@ -51,7 +48,4 @@ fingers?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PinchGestureHandlerOptions-fingers?: number--><!--Device-PinchGestureHandlerOptions-fingers?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -1,12 +1,10 @@
-# IDataSourcePrefetching(Prefetching)
+# IDataSourcePrefetching
 
-继承自IDataSource。实现该接口，提供具备预取能力的数据源。
+继承自[IDataSource](../arkts-components/arkts-arkui-idatasource-i.md)。实现该接口，提供具备预取能力的数据源。
 
-**继承/实现关系：** IDataSourcePrefetching extends IDataSource
+**继承/实现关系：** IDataSourcePrefetching extends [IDataSource](../arkts-components/arkts-arkui-idatasource-i.md)
 
 **起始版本：** 12
-
-<!--Device-unnamed-export interface IDataSourcePrefetching--><!--Device-unnamed-export interface IDataSourcePrefetching-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,8 +28,6 @@ cancel?(index: number): Promise<void> | void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-IDataSourcePrefetching-cancel?(index: number): Promise<void> | void--><!--Device-IDataSourcePrefetching-cancel?(index: number): Promise<void> | void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -44,7 +40,7 @@ cancel?(index: number): Promise<void> | void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 异步执行时返回Promise对象，同步执行时无返回值。Promise仅表示操作完成，无实际返回内容。 |
+| Promise & lt;void & gt; \ | void | 异步执行时返回Promise对象，同步执行时无返回值。Promise仅表示操作完成，无实际返回内容。 |
 
 ## prefetch
 
@@ -60,8 +56,6 @@ prefetch(index: number): Promise<void> | void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-IDataSourcePrefetching-prefetch(index: number): Promise<void> | void--><!--Device-IDataSourcePrefetching-prefetch(index: number): Promise<void> | void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -74,5 +68,4 @@ prefetch(index: number): Promise<void> | void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 异步执行时返回Promise对象，同步执行时无返回值。Promise仅表示操作完成，无实际返回内容。 |
-
+| Promise & lt;void & gt; \ | void | 异步执行时返回Promise对象，同步执行时无返回值。Promise仅表示操作完成，无实际返回内容。 |

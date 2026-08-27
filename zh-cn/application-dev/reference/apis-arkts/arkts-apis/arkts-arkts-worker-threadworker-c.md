@@ -1,12 +1,16 @@
 # ThreadWorker
 
-使用以下方法前，需先构造ThreadWorker实例。ThreadWorker类继承WorkerEventTarget。 使用Worker模块时，API version 18及之后的版本建议在宿主线程中注册onAllErrors回调，以捕获Worker线程生命周期内的各种异常。API version 18之前的版本应注册onerror回调。 如果未注册onAllErrors或onerror回调，当Worker线程出现异常时会发生崩溃问题。 注意，onerror接口仅能捕获onmessage回调中的同步异常，捕获异常后，Worker线程将进入销毁流程，无法继续使用。 onAllErrors接口与onerror接口之间的行为差异如下： 1. 异常捕获范围 onAllErrors接口可以捕获Worker线程的onmessage回调、timer回调以及文件执行等流程中产生的全局异常。 onerror接口仅能捕获Worker线程的onmessage回调中同步方法产生的异常，无法捕获多线程回调和模块化相关异常。 2. 异常捕获后的线程状态 onAllErrors接口捕获异常后，Worker线程仍然存活并可以继续使用。这使开发者可以在捕获异常后执行其他操作，无需担心线程终止。 onerror接口捕获异常后，Worker线程会进入销毁流程，无法继续使用。这意味着在onerror触发后，Worker线程将被终止，后续操作将无法进行。 3. 适用场景 onAllErrors接口适用于捕获Worker线程中所有类型异常的场景，特别是确保异常发生后Worker线程仍能继续运行的复杂场景。 onerror接口适用于只需要捕获onmessage回调中同步异常的简单场景。由于捕获异常后线程会被销毁，适用于不需要继续使用Worker线程的情况。 推荐使用onAllErrors接口，因为它提供了更全面的异常捕获能力，并且不会导致线程终止。
+使用以下方法前，需先构造ThreadWorker实例。ThreadWorker类继承WorkerEventTarget。使用Worker模块时，API version 18及之后的版本建议在宿主线程中注册onAllErrors回调，以捕获Worker线程生命周期内的各种异常。API version 18之前的版本应注册onerror回调。 如果未注册onAllErrors或onerror回调，当Worker线程出现异常时会发生崩溃问题。 注意，onerror接口仅能捕获onmessage回调中的同步异常，捕获异常后，Worker线程将进入销毁流程，无法继续使用。onAllErrors接口与onerror接口之间的行为差异如下：
+1. 异常捕获范围
+onAllErrors接口可以捕获Worker线程的onmessage回调、timer回调以及文件执行等流程中产生的全局异常。onerror接口仅能捕获Worker线程的onmessage回调中同步方法产生的异常，无法捕获多线程回调和模块化相关异常。
+2. 异常捕获后的线程状态
+onAllErrors接口捕获异常后，Worker线程仍然存活并可以继续使用。这使开发者可以在捕获异常后执行其他操作，无需担心线程终止。onerror接口捕获异常后，Worker线程会进入销毁流程，无法继续使用。这意味着在onerror触发后，Worker线程将被终止，后续操作将无法进行。
+3. 适用场景
+onAllErrors接口适用于捕获Worker线程中所有类型异常的场景，特别是确保异常发生后Worker线程仍能继续运行的复杂场景。onerror接口适用于只需要捕获onmessage回调中同步异常的简单场景。由于捕获异常后线程会被销毁，适用于不需要继续使用Worker线程的情况。推荐使用onAllErrors接口，因为它提供了更全面的异常捕获能力，并且不会导致线程终止。
 
 **继承/实现关系：** ThreadWorker implements [WorkerEventTarget](arkts-arkts-worker-workereventtarget-i.md)
 
 **起始版本：** 9
-
-<!--Device-worker-class ThreadWorker--><!--Device-worker-class ThreadWorker-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -28,8 +32,6 @@ addEventListener(type: string, listener: WorkerEventListener): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ThreadWorker-addEventListener(type: string, listener: WorkerEventListener): void--><!--Device-ThreadWorker-addEventListener(type: string, listener: WorkerEventListener): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -43,8 +45,8 @@ addEventListener(type: string, listener: WorkerEventListener): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
 
 **示例**
 
@@ -62,6 +64,19 @@ workerInstance.addEventListener("alert", () => {
 workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未支持
 ```
 
+```TypeScript
+// worker.ets
+import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+
+workerPort.onmessage = (event: MessageEvents) => {
+  workerPort.addEventListener("alert", () => {
+    console.info("alert listener callback");
+  })
+};
+```
+
 ## constructor
 
 ```TypeScript
@@ -73,8 +88,6 @@ ThreadWorker构造函数。
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-constructor(scriptURL: string, options?: WorkerOptions)--><!--Device-ThreadWorker-constructor(scriptURL: string, options?: WorkerOptions)-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -104,6 +117,16 @@ import { worker } from '@kit.ArkTS';
 const workerInstance = new worker.ThreadWorker('entry/ets/workers/worker.ets', {name: "WorkerThread"});
 ```
 
+此处以在Stage模型的entry模块Index.ets文件中加载Worker线程文件为例，使用Library加载Worker线程文件的场景参考[文件路径注意事项](../../../arkts-utils/worker-introduction.md#文件路径注意事项)。
+
+```TypeScript
+// Index.ets
+import { worker } from '@kit.ArkTS';
+
+// worker文件所在路径："entry/src/main/ets/workers/worker.ets"
+const workerInstance = new worker.Worker('entry/ets/workers/worker.ets', {name: "WorkerThread"});
+```
+
 ## dispatchEvent
 
 ```TypeScript
@@ -115,8 +138,6 @@ dispatchEvent(event: Event): boolean
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-dispatchEvent(event: Event): boolean--><!--Device-ThreadWorker-dispatchEvent(event: Event): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -155,7 +176,63 @@ let result: boolean = workerInstance.dispatchEvent({type: "alert", timeStamp: 0}
 console.info("dispatchEvent result is: ", result);
 ```
 
-## off_string
+```TypeScript
+// worker.ets
+import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+
+workerPort.onmessage = (event: MessageEvents) => {
+  workerPort.addEventListener("alert", () => {
+    console.info("alert listener callback");
+  });
+
+  workerPort.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未支持
+};
+```
+
+```TypeScript
+// worker.ets
+import { DedicatedWorkerGlobalScope, ErrorEvent, MessageEvents, worker } from '@kit.ArkTS';
+
+const workerPort: DedicatedWorkerGlobalScope = worker.parentPort;
+
+workerPort.addEventListener("alert_add", ()=>{
+  console.info("alert listener callback");
+})
+
+workerPort.dispatchEvent({type: 'alert_add', timeStamp: 0}); // timeStamp暂未支持
+```
+
+分发事件（dispatchEvent）可与监听接口（addEventListener）搭配使用，示例如下：
+
+```TypeScript
+// Index.ets
+import { worker } from '@kit.ArkTS';
+
+const workerInstance = new worker.Worker("entry/ets/workers/worker.ets");
+workerInstance.postMessage("hello world");
+workerInstance.onmessage = (): void => {
+    console.info("receive data from worker.ets");
+}
+```
+
+```TypeScript
+// worker.ets
+import { DedicatedWorkerGlobalScope, ErrorEvent, MessageEvents, worker } from '@kit.ArkTS';
+
+const workerPort: DedicatedWorkerGlobalScope = worker.parentPort;
+
+workerPort.addEventListener("alert", ()=>{
+  console.info("alert listener callback");
+})
+
+workerPort.onmessage = (event: MessageEvents) => {
+  workerPort.dispatchEvent({type:"alert", timeStamp:0}); // timeStamp暂未支持
+}
+```
+
+## off
 
 ```TypeScript
 off(type: string, listener?: WorkerEventListener): void
@@ -166,8 +243,6 @@ off(type: string, listener?: WorkerEventListener): void
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-off(type: string, listener?: WorkerEventListener): void--><!--Device-ThreadWorker-off(type: string, listener?: WorkerEventListener): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -182,8 +257,8 @@ off(type: string, listener?: WorkerEventListener): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
 
 **示例**
 
@@ -213,7 +288,7 @@ workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未�
 workerInstance.off("alert");
 ```
 
-## on_string
+## on
 
 ```TypeScript
 on(type: string, listener: WorkerEventListener): void
@@ -224,8 +299,6 @@ on(type: string, listener: WorkerEventListener): void
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-on(type: string, listener: WorkerEventListener): void--><!--Device-ThreadWorker-on(type: string, listener: WorkerEventListener): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -240,8 +313,8 @@ on(type: string, listener: WorkerEventListener): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
 
 **示例**
 
@@ -260,7 +333,28 @@ workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未�
 workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未支持
 ```
 
-## once_string
+## onAllErrors
+
+```TypeScript
+onAllErrors?: ErrorCallback
+```
+
+回调函数。表示Worker线程生命周期内发生异常被调用的事件处理程序，处理程序在宿主线程中执行。默认值为undefined。
+
+**起始版本：** 18
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
+
+## once
 
 ```TypeScript
 once(type: string, listener: WorkerEventListener): void
@@ -271,8 +365,6 @@ once(type: string, listener: WorkerEventListener): void
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-once(type: string, listener: WorkerEventListener): void--><!--Device-ThreadWorker-once(type: string, listener: WorkerEventListener): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -287,8 +379,8 @@ once(type: string, listener: WorkerEventListener): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
 
 **示例**
 
@@ -305,6 +397,114 @@ workerInstance.once("alert", () => {
 workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未支持
 ```
 
+## onerror
+
+```TypeScript
+onerror?: (err: ErrorEvent) => void
+```
+
+回调函数，用于处理onmessage回调函数中同步代码产生的异常，处理程序在宿主线程中执行。 回调函数的err类型为ErrorEvent，表示收到的异常数据。默认值为undefined。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| err | [ErrorEvent](arkts-arkts-worker-errorevent-i.md) | 是 |  |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
+
+## onexit
+
+```TypeScript
+onexit?: (code: number) => void
+```
+
+回调函数。表示Worker线程销毁时被调用的事件处理程序，该处理程序在宿主线程中执行。回调函数的code参数类型为number， 异常退出时code为1，正常退出时code为0。默认值为undefined。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| code | number | 是 |  |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
+
+## onmessage
+
+```TypeScript
+onmessage?: (event: MessageEvents) => void
+```
+
+回调函数。表示宿主线程接收到来自其创建的Worker通过workerPort.postMessage或workerPort.postMessageWithSharedSendable接口发送的消息时 被调用的事件处理程序，处理程序在宿主线程中执行。其中回调函数中event类型为MessageEvents， 表示收到的Worker线程发送的消息数据。默认值为undefined。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | [MessageEvents](arkts-arkts-worker-messageevents-i.md) | 是 |  |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
+
+## onmessageerror
+
+```TypeScript
+onmessageerror?: (event: MessageEvents) => void
+```
+
+回调函数。用于处理Worker对象接收到的无法被序列化的消息。该处理程序在宿主线程中执行， event类型为MessageEvents，表示收到的Worker消息数据。默认值为undefined。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | [MessageEvents](arkts-arkts-worker-messageevents-i.md) | 是 |  |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
+
 ## postMessage
 
 ```TypeScript
@@ -316,8 +516,6 @@ postMessage(message: Object, transfer: ArrayBuffer[]): void
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-postMessage(message: Object, transfer: ArrayBuffer[]): void--><!--Device-ThreadWorker-postMessage(message: Object, transfer: ArrayBuffer[]): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -332,8 +530,8 @@ postMessage(message: Object, transfer: ArrayBuffer[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
 **示例**
 
@@ -410,6 +608,16 @@ struct Index {
 }
 ```
 
+```TypeScript
+// Index.ets
+import { worker } from '@kit.ArkTS';
+
+const workerInstance = new worker.Worker("entry/ets/workers/worker.ets");
+
+let buffer = new ArrayBuffer(8);
+workerInstance.postMessage(buffer, [buffer]);
+```
+
 ## postMessage
 
 ```TypeScript
@@ -421,8 +629,6 @@ postMessage(message: Object, options?: PostMessageOptions): void
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-postMessage(message: Object, options?: PostMessageOptions): void--><!--Device-ThreadWorker-postMessage(message: Object, options?: PostMessageOptions): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -437,8 +643,8 @@ postMessage(message: Object, options?: PostMessageOptions): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
 **示例**
 
@@ -455,6 +661,18 @@ let buffer = new ArrayBuffer(8);
 workerInstance.postMessage(buffer, {transfer: [buffer]});
 ```
 
+```TypeScript
+// Index.ets
+import { worker } from '@kit.ArkTS';
+
+const workerInstance = new worker.Worker("entry/ets/workers/worker.ets");
+
+workerInstance.postMessage("hello world");
+
+let buffer = new ArrayBuffer(8);
+workerInstance.postMessage(buffer, [buffer]);
+```
+
 ## postMessageWithSharedSendable
 
 ```TypeScript
@@ -466,8 +684,6 @@ postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void--><!--Device-ThreadWorker-postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -482,8 +698,8 @@ postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
 **示例**
 
@@ -528,6 +744,46 @@ workerPort.onmessage = (e: MessageEvents) => {
 }
 ```
 
+```TypeScript
+// worker文件路径为：entry/src/main/ets/workers/Worker.ets
+// Worker.ets
+// 新建SendableObject实例并通过Worker线程传递至宿主线程
+
+import { SendableObject } from '../pages/sendable';
+import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent } from '@kit.ArkTS';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+workerPort.onmessage = (e: MessageEvents) => {
+  let object: SendableObject = new SendableObject();
+  workerPort.postMessageWithSharedSendable(object);
+}
+```
+
+```TypeScript
+// sendable.ets
+// 定义SendableObject
+
+@Sendable
+export class SendableObject {
+  a:number = 45;
+}
+```
+
+```TypeScript
+// Index.ets
+// 接收Worker线程传递至宿主线程的数据并访问其属性
+
+import { worker, MessageEvents } from '@kit.ArkTS';
+import { SendableObject } from './sendable';
+
+const workerInstance = new worker.ThreadWorker("entry/ets/workers/Worker.ets");
+workerInstance.postMessage(1);
+workerInstance.onmessage = (e: MessageEvents) => {
+  let obj: SendableObject = e.data;
+  console.info("sendable index obj is: " + obj.a);
+}
+```
+
 ## registerGlobalCallObject
 
 ```TypeScript
@@ -539,8 +795,6 @@ registerGlobalCallObject(instanceName: string, globalCallObject: Object): void
 **起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-registerGlobalCallObject(instanceName: string, globalCallObject: Object): void--><!--Device-ThreadWorker-registerGlobalCallObject(instanceName: string, globalCallObject: Object): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -616,8 +870,6 @@ removeAllListener(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ThreadWorker-removeAllListener(): void--><!--Device-ThreadWorker-removeAllListener(): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **错误码：**
@@ -639,6 +891,34 @@ workerInstance.addEventListener("alert", () => {
 workerInstance.removeAllListener();
 ```
 
+```TypeScript
+// worker.ets
+import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+
+workerPort.onmessage = (event: MessageEvents) => {
+  workerPort.addEventListener("alert", () => {
+    console.info("alert listener callback");
+  });
+
+  workerPort.removeAllListener();
+};
+```
+
+```TypeScript
+// worker.ets
+import { DedicatedWorkerGlobalScope, ErrorEvent, MessageEvents, worker } from '@kit.ArkTS';
+
+const workerPort: DedicatedWorkerGlobalScope = worker.parentPort;
+
+workerPort.addEventListener("alert_add", ()=>{
+  console.info("alert listener callback");
+})
+
+workerPort.removeAllListener();
+```
+
 ## removeEventListener
 
 ```TypeScript
@@ -650,8 +930,6 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-removeEventListener(type: string, callback?: WorkerEventListener): void--><!--Device-ThreadWorker-removeEventListener(type: string, callback?: WorkerEventListener): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -685,6 +963,21 @@ workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未�
 workerInstance.removeEventListener("alert");
 ```
 
+```TypeScript
+// worker.ets
+import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+
+workerPort.onmessage = (event: MessageEvents) => {
+  workerPort.addEventListener("alert", () => {
+    console.info("alert listener callback");
+  });
+
+  workerPort.removeEventListener("alert");
+};
+```
+
 ## terminate
 
 ```TypeScript
@@ -696,8 +989,6 @@ terminate(): void
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-terminate(): void--><!--Device-ThreadWorker-terminate(): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -717,6 +1008,14 @@ const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
 workerInstance.terminate();
 ```
 
+```TypeScript
+// Index.ets
+import { worker } from '@kit.ArkTS';
+
+const workerInstance = new worker.Worker("entry/ets/workers/worker.ets");
+workerInstance.terminate();
+```
+
 ## unregisterGlobalCallObject
 
 ```TypeScript
@@ -728,8 +1027,6 @@ unregisterGlobalCallObject(instanceName?: string): void
 **起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-unregisterGlobalCallObject(instanceName?: string): void--><!--Device-ThreadWorker-unregisterGlobalCallObject(instanceName?: string): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -768,94 +1065,3 @@ workerInstance.unregisterGlobalCallObject("myObj");
 // 取消ThreadWorker实例上的所有对象注册
 workerInstance.postMessage("start worker");
 ```
-
-## onAllErrors
-
-```TypeScript
-onAllErrors?: ErrorCallback
-```
-
-回调函数。表示Worker线程生命周期内发生异常被调用的事件处理程序，处理程序在宿主线程中执行。默认值为undefined。
-
-**类型：** [ErrorCallback](arkts-arkts-errorcallback-t.md)
-
-**起始版本：** 18
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-onAllErrors?: ErrorCallback--><!--Device-ThreadWorker-onAllErrors?: ErrorCallback-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## onerror
-
-```TypeScript
-onerror?: (err: ErrorEvent) => void
-```
-
-回调函数，用于处理onmessage回调函数中同步代码产生的异常，处理程序在宿主线程中执行。 回调函数的err类型为ErrorEvent，表示收到的异常数据。默认值为undefined。
-
-**类型：** (err: ErrorEvent) =&gt; void
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-onerror?: (err: ErrorEvent) => void--><!--Device-ThreadWorker-onerror?: (err: ErrorEvent) => void-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## onexit
-
-```TypeScript
-onexit?: (code: number) => void
-```
-
-回调函数。表示Worker线程销毁时被调用的事件处理程序，该处理程序在宿主线程中执行。回调函数的code参数类型为number， 异常退出时code为1，正常退出时code为0。默认值为undefined。
-
-**类型：** (code: number) =&gt; void
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-onexit?: (code: number) => void--><!--Device-ThreadWorker-onexit?: (code: number) => void-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## onmessage
-
-```TypeScript
-onmessage?: (event: MessageEvents) => void
-```
-
-回调函数。表示宿主线程接收到来自其创建的Worker通过workerPort.postMessage或workerPort.postMessageWithSharedSendable接口发送的消息时 被调用的事件处理程序，处理程序在宿主线程中执行。其中回调函数中event类型为MessageEvents， 表示收到的Worker线程发送的消息数据。默认值为undefined。
-
-**类型：** (event: MessageEvents) =&gt; void
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-onmessage?: (event: MessageEvents) => void--><!--Device-ThreadWorker-onmessage?: (event: MessageEvents) => void-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## onmessageerror
-
-```TypeScript
-onmessageerror?: (event: MessageEvents) => void
-```
-
-回调函数。用于处理Worker对象接收到的无法被序列化的消息。该处理程序在宿主线程中执行， event类型为MessageEvents，表示收到的Worker消息数据。默认值为undefined。
-
-**类型：** (event: MessageEvents) =&gt; void
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorker-onmessageerror?: (event: MessageEvents) => void--><!--Device-ThreadWorker-onmessageerror?: (event: MessageEvents) => void-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-

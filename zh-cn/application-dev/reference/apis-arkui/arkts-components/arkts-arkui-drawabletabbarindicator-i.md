@@ -4,8 +4,6 @@
 
 **起始版本：** 22
 
-<!--Device-unnamed-declare interface DrawableTabBarIndicator--><!--Device-unnamed-declare interface DrawableTabBarIndicator-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,9 +17,9 @@
 borderRadius?: Length
 ```
 
-下划线的圆角半径（不支持百分比设置）。 默认值：0.0 单位：vp 取值范围：[0, +∞)。异常值时取默认值。
+下划线的圆角半径（不支持百分比设置）。默认值：0.0单位：vp取值范围：[0, +∞)。异常值时取默认值。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **默认值：** 0
 
@@ -30,8 +28,6 @@ borderRadius?: Length
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DrawableTabBarIndicator-borderRadius?: Length--><!--Device-DrawableTabBarIndicator-borderRadius?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,8 +47,6 @@ drawable?: DrawableDescriptor
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DrawableTabBarIndicator-drawable?: DrawableDescriptor--><!--Device-DrawableTabBarIndicator-drawable?: DrawableDescriptor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -61,9 +55,9 @@ drawable?: DrawableDescriptor
 height?: Length
 ```
 
-下划线的高度（不支持百分比设置）。 默认值：2.0 单位：vp 取值范围：[0, +∞)。异常值时取默认值。
+下划线的高度（不支持百分比设置）。默认值：2.0单位：vp取值范围：[0, +∞)。异常值时取默认值。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **默认值：** 2vp
 
@@ -73,8 +67,6 @@ height?: Length
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DrawableTabBarIndicator-height?: Length--><!--Device-DrawableTabBarIndicator-height?: Length-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## marginTop
@@ -83,9 +75,9 @@ height?: Length
 marginTop?: Length
 ```
 
-下划线与文字的间距（不支持百分比设置）。 默认值：8.0 单位：vp 取值范围：[0, +∞)。异常值时取默认值。
+下划线与文字的间距（不支持百分比设置）。默认值：8.0单位：vp取值范围：[0, +∞)。异常值时取默认值。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **默认值：** 8vp
 
@@ -95,8 +87,6 @@ marginTop?: Length
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DrawableTabBarIndicator-marginTop?: Length--><!--Device-DrawableTabBarIndicator-marginTop?: Length-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -105,9 +95,9 @@ marginTop?: Length
 width?: Length
 ```
 
-下划线的宽度（不支持百分比设置）。 默认值：0.0 单位：vp 取值范围：[0, +∞)。异常值时取默认值。 宽度设置为0时，按页签文本宽度显示。
+下划线的宽度（不支持百分比设置）。默认值：0.0单位：vp取值范围：[0, +∞)。异常值时取默认值。宽度设置为0时，按页签文本宽度显示。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **默认值：** 0
 
@@ -117,7 +107,4 @@ width?: Length
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DrawableTabBarIndicator-width?: Length--><!--Device-DrawableTabBarIndicator-width?: Length-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

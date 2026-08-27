@@ -1,10 +1,8 @@
 # ProcessManager
 
-提供进程管理相关接口，包括进程 UID 判断、用户信息查询、线程优先级获取、环境变量获取、进程退出和信号发送等功能。 通过 `new process.ProcessManager()` 构造 ProcessManager 对象。
+提供进程管理相关接口，包括进程 UID 判断、用户信息查询、线程优先级获取、环境变量获取、进程退出和信号发送等功能。通过 `new process.ProcessManager()` 构造 ProcessManager 对象。
 
 **起始版本：** 9
-
-<!--Device-process-export class ProcessManager--><!--Device-process-export class ProcessManager-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -20,13 +18,11 @@ import { process } from '@kit.ArkTS';
 exit(code: number): void
 ```
 
-终止程序。 请谨慎使用此接口，此接口调用后应用会退出，如果输入参数非0，可能会导致数据丢失或出现未定义的运行异常。
+终止程序。请谨慎使用此接口，此接口调用后应用会退出，如果输入参数非0，可能会导致数据丢失或出现未定义的运行异常。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ProcessManager-exit(code: number): void--><!--Device-ProcessManager-exit(code: number): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -37,6 +33,10 @@ exit(code: number): void
 | code | number | 是 | 进程的退出码。 |
 
 **示例**
+
+```TypeScript
+process.exit(0);
+```
 
 ```TypeScript
 let processManager = new process.ProcessManager();
@@ -55,8 +55,6 @@ getEnvironmentVar(name: string): string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ProcessManager-getEnvironmentVar(name: string): string--><!--Device-ProcessManager-getEnvironmentVar(name: string): string-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -72,6 +70,10 @@ getEnvironmentVar(name: string): string
 | string | 返回指定环境变量名对应的值。如果环境变量不存在，返回undefined。 |
 
 **示例**
+
+```TypeScript
+let pres = process.getEnvironmentVar("PATH");
+```
 
 ```TypeScript
 // 创建ProcessManager实例
@@ -92,8 +94,6 @@ getSystemConfig(name: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ProcessManager-getSystemConfig(name: number): number--><!--Device-ProcessManager-getSystemConfig(name: number): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -109,6 +109,11 @@ getSystemConfig(name: number): number
 | number | 返回系统配置信息。如果配置不存在，返回 -1。 |
 
 **示例**
+
+```TypeScript
+let _SC_ARG_MAX = 0;
+let pres = process.getSystemConfig(_SC_ARG_MAX);
+```
 
 ```TypeScript
 // 创建ProcessManager实例
@@ -131,8 +136,6 @@ getThreadPriority(v: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ProcessManager-getThreadPriority(v: number): number--><!--Device-ProcessManager-getThreadPriority(v: number): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -148,6 +151,11 @@ getThreadPriority(v: number): number
 | number | 返回线程的优先级。优先级顺序取决于当前操作系统。 |
 
 **示例**
+
+```TypeScript
+let tid = process.tid;
+let pres = process.getThreadPriority(tid);
+```
 
 ```TypeScript
 // 创建ProcessManager实例
@@ -170,8 +178,6 @@ getUidForName(v: string): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ProcessManager-getUidForName(v: string): number--><!--Device-ProcessManager-getUidForName(v: string): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -187,6 +193,10 @@ getUidForName(v: string): number
 | number | 获取用户 uid，如果用户不存在则返回 -1。 |
 
 **示例**
+
+```TypeScript
+let pres = process.getUidForName("tool");
+```
 
 ```TypeScript
 // 创建ProcessManager实例
@@ -207,8 +217,6 @@ isAppUid(v: number): boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ProcessManager-isAppUid(v: number): boolean--><!--Device-ProcessManager-isAppUid(v: number): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -224,6 +232,12 @@ isAppUid(v: number): boolean
 | boolean | 返回判断结果。如果是应用程序的 uid 则返回 true； 否则返回 false。 |
 
 **示例**
+
+```TypeScript
+// uid通过process.uid获取
+let pres = process.uid;
+let result = process.isAppUid(pres);
+```
 
 ```TypeScript
 // 创建ProcessManager实例
@@ -247,15 +261,13 @@ kill(signal: number, pid: number): boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ProcessManager-kill(signal: number, pid: number): boolean--><!--Device-ProcessManager-kill(signal: number, pid: number): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| signal | number | 是 | 发送特定的信号给指定进程。取值范围：1 &lt;= signal &lt;= 64。 |
+| signal | number | 是 | 发送特定的信号给指定进程。取值范围：1 & lt;= signal & lt;= 64。 |
 | pid | number | 是 | 进程的id。可通过process.pid获取。 |
 
 **返回值：**
@@ -267,6 +279,11 @@ kill(signal: number, pid: number): boolean
 **示例**
 
 ```TypeScript
+let pid = process.pid;
+let result = process.kill(28, pid);
+```
+
+```TypeScript
 // 创建ProcessManager实例
 let processManager = new process.ProcessManager();
 // 获取当前进程pid
@@ -274,4 +291,3 @@ let pres = process.pid;
 // 发送信号28结束当前进程
 let result = processManager.kill(28, pres);
 ```
-

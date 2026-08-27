@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface AnimatableArithmetic--><!--Device-unnamed-declare interface AnimatableArithmetic-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -26,8 +24,6 @@ equals(rhs: AnimatableArithmetic<T>): boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AnimatableArithmetic-equals(rhs: AnimatableArithmetic<T>): boolean--><!--Device-AnimatableArithmetic-equals(rhs: AnimatableArithmetic<T>): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,8 +53,6 @@ multiply(scale: number): AnimatableArithmetic<T>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AnimatableArithmetic-multiply(scale: number): AnimatableArithmetic<T>--><!--Device-AnimatableArithmetic-multiply(scale: number): AnimatableArithmetic<T>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -86,8 +80,6 @@ plus(rhs: AnimatableArithmetic<T>): AnimatableArithmetic<T>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AnimatableArithmetic-plus(rhs: AnimatableArithmetic<T>): AnimatableArithmetic<T>--><!--Device-AnimatableArithmetic-plus(rhs: AnimatableArithmetic<T>): AnimatableArithmetic<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -117,8 +109,6 @@ subtract(rhs: AnimatableArithmetic<T>): AnimatableArithmetic<T>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AnimatableArithmetic-subtract(rhs: AnimatableArithmetic<T>): AnimatableArithmetic<T>--><!--Device-AnimatableArithmetic-subtract(rhs: AnimatableArithmetic<T>): AnimatableArithmetic<T>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -132,4 +122,3 @@ subtract(rhs: AnimatableArithmetic<T>): AnimatableArithmetic<T>
 | 类型 | 说明 |
 | --- | --- |
 | [AnimatableArithmetic](arkts-arkui-animatablearithmetic-i.md)&lt;T&gt; | 减法运算的结果。 |
-

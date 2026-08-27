@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-unnamed-declare interface CanvasParams--><!--Device-unnamed-declare interface CanvasParams-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,17 +17,15 @@
 imageAIOptions?: ImageAIOptions
 ```
 
-给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。 异常值null和undefined按不开启AI分析功能处理。 默认值：不开启AI分析功能。
+给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。异常值null和undefined按不开启AI分析功能处理。默认值：不开启AI分析功能。
 
-**类型：** ImageAIOptions
+**类型：** [ImageAIOptions](arkts-arkui-imageaioptions-i.md)
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CanvasParams-imageAIOptions?: ImageAIOptions--><!--Device-CanvasParams-imageAIOptions?: ImageAIOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,7 +35,7 @@ imageAIOptions?: ImageAIOptions
 unit?: LengthMetricsUnit
 ```
 
-用于描述Canvas绘制时所采用的单位模式，不同单位模式会影响绘制时的坐标和尺寸计算方式，具体说明见 [LengthMetricsUnit](arkts-arkui-graphics-lengthmetricsunit-e.md)。 仅可在创建Canvas时设置，后续不可修改。 默认值：LengthMetricsUnit.DEFAULT
+用于描述Canvas绘制时所采用的单位模式，不同单位模式会影响绘制时的坐标和尺寸计算方式，具体说明见 [LengthMetricsUnit](arkts-arkui-graphics-lengthmetricsunit-e.md)。仅可在创建Canvas时设置，后续不可修改。默认值：LengthMetricsUnit.DEFAULT
 
 **类型：** LengthMetricsUnit
 
@@ -49,7 +45,4 @@ unit?: LengthMetricsUnit
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CanvasParams-unit?: LengthMetricsUnit--><!--Device-CanvasParams-unit?: LengthMetricsUnit-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

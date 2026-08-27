@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-webview-enum OfflineResourceType--><!--Device-webview-enum OfflineResourceType-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## IMAGE
@@ -17,8 +15,6 @@ IMAGE = 0
 图片类型的资源。
 
 **起始版本：** 12
-
-<!--Device-OfflineResourceType-IMAGE = 0--><!--Device-OfflineResourceType-IMAGE = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -32,8 +28,6 @@ CSS类型的资源。
 
 **起始版本：** 12
 
-<!--Device-OfflineResourceType-CSS = 1--><!--Device-OfflineResourceType-CSS = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## CLASSIC_JS
@@ -45,8 +39,6 @@ CLASSIC_JS = 2
 通过&lt;script src="" /&gt;标签加载的JavaScript资源。
 
 **起始版本：** 12
-
-<!--Device-OfflineResourceType-CLASSIC_JS = 2--><!--Device-OfflineResourceType-CLASSIC_JS = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -60,7 +52,4 @@ MODULE_JS = 3
 
 **起始版本：** 12
 
-<!--Device-OfflineResourceType-MODULE_JS = 3--><!--Device-OfflineResourceType-MODULE_JS = 3-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

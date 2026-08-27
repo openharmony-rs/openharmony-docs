@@ -4,15 +4,12 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-export declare struct SelectDialog--><!--Device-unnamed-export declare struct SelectDialog-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
 
 ```TypeScript
 import { AlertDialog, ButtonOptions, ConfirmDialog, LoadingDialog, SelectDialog, TipsDialog, CustomContentDialog, PopoverDialog, PopoverOptions } from '@kit.ArkUI';
-import { AlertDialogV2, AdvancedDialogV2Button, AdvancedDialogV2ButtonOptions, AdvancedDialogV2ButtonAction, AdvancedDialogV2OnCheckedChange, ConfirmDialogV2, LoadingDialogV2, SelectDialogV2, TipsDialogV2, CustomContentDialogV2, PopoverDialogV2, PopoverDialogV2OnVisibleChange, PopoverDialogV2Options } from '@kit.ArkUI';
 ```
 
 ## confirm
@@ -31,8 +28,6 @@ confirm?: ButtonOptions
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SelectDialog-confirm?: ButtonOptions--><!--Device-SelectDialog-confirm?: ButtonOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## content
@@ -41,17 +36,15 @@ confirm?: ButtonOptions
 content?: ResourceStr
 ```
 
-选择弹出框内容。 默认不设置或设置为undefined，弹出框内容不显示。
+选择弹出框内容。默认不设置或设置为undefined，弹出框内容不显示。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SelectDialog-content?: ResourceStr--><!--Device-SelectDialog-content?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,17 +54,16 @@ content?: ResourceStr
 controller: CustomDialogController
 ```
 
-选择弹出框控制器，用于控制弹出框的显示和隐藏。 **说明：** 未使用@Require装饰，构造时不强制校验参数。
+选择弹出框控制器，用于控制弹出框的显示和隐藏。  
+**说明：** 未使用@Require装饰，构造时不强制校验参数。
 
-**类型：** CustomDialogController
+**类型：** [CustomDialogController](arkts-arkui-customdialogcontroller-c.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SelectDialog-controller: CustomDialogController--><!--Device-SelectDialog-controller: CustomDialogController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,15 +75,13 @@ radioContent: Array<SheetInfo>
 
 选择弹出框的子项内容列表，每个选择项支持设置文本和选中的回调事件。
 
-**类型：** Array&lt;SheetInfo&gt;
+**类型：** Array&lt;[SheetInfo](arkts-arkui-sheetinfo-i.md)&gt;
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SelectDialog-radioContent: Array<SheetInfo>--><!--Device-SelectDialog-radioContent: Array<SheetInfo>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,7 +91,7 @@ radioContent: Array<SheetInfo>
 selectedIndex?: number
 ```
 
-选择弹出框的选中项。 取值范围：大于等于-1的整数。 默认值：-1，没有选中项。若设置数值小于-1，按没有选中项处理。
+选择弹出框的选中项。取值范围：大于等于-1的整数。默认值：-1，没有选中项。若设置数值小于-1，按没有选中项处理。
 
 **类型：** number
 
@@ -110,8 +100,6 @@ selectedIndex?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SelectDialog-selectedIndex?: number--><!--Device-SelectDialog-selectedIndex?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,8 +119,6 @@ theme?: Theme | CustomTheme
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SelectDialog-theme?: Theme | CustomTheme--><!--Device-SelectDialog-theme?: Theme | CustomTheme-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## themeColorMode
@@ -141,17 +127,15 @@ theme?: Theme | CustomTheme
 themeColorMode?: ThemeColorMode
 ```
 
-自定义弹出框深浅色模式。 默认值：ThemeColorMode.SYSTEM
+自定义弹出框深浅色模式。默认值：ThemeColorMode.SYSTEM
 
-**类型：** ThemeColorMode
+**类型：** [ThemeColorMode](../arkts-components/arkts-arkui-themecolormode-e.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SelectDialog-themeColorMode?: ThemeColorMode--><!--Device-SelectDialog-themeColorMode?: ThemeColorMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -161,9 +145,10 @@ themeColorMode?: ThemeColorMode
 title: ResourceStr
 ```
 
-选择弹出框标题。 **说明：** 标题超过两行会显示“...”。
+选择弹出框标题。  
+**说明：** 标题超过两行会显示“...”。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 10
 
@@ -171,7 +156,4 @@ title: ResourceStr
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SelectDialog-title: ResourceStr--><!--Device-SelectDialog-title: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

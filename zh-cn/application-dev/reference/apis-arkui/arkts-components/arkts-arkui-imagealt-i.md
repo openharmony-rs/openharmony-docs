@@ -4,14 +4,11 @@
 
 **起始版本：** 22
 
-<!--Device-unnamed-declare interface ImageAlt--><!--Device-unnamed-declare interface ImageAlt-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
 
 ```TypeScript
-import { imageGeneration } from '@kit.ArkUI';
 ```
 
 ## error
@@ -22,7 +19,7 @@ error?: ResourceStr | PixelMap
 
 加载失败的占位图。
 
-**类型：** ResourceStr \| PixelMap
+**类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) \| PixelMap
 
 **起始版本：** 22
 
@@ -31,8 +28,6 @@ error?: ResourceStr | PixelMap
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-ImageAlt-error?: ResourceStr | PixelMap--><!--Device-ImageAlt-error?: ResourceStr | PixelMap-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,7 +39,7 @@ placeholder?: ResourceStr | PixelMap
 
 加载过程中的占位图。
 
-**类型：** ResourceStr \| PixelMap
+**类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) \| PixelMap
 
 **起始版本：** 22
 
@@ -54,7 +49,4 @@ placeholder?: ResourceStr | PixelMap
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ImageAlt-placeholder?: ResourceStr | PixelMap--><!--Device-ImageAlt-placeholder?: ResourceStr | PixelMap-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

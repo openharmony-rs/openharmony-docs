@@ -9,18 +9,16 @@ import { curves } from '@kit.ArkUI';
 ## interpolatingSpring
 
 ```TypeScript
-export function interpolatingSpring(velocity: double, mass: double, stiffness: double, damping: double): ICurve
+function interpolatingSpring(velocity: number, mass: number, stiffness: number, damping: number): ICurve
 ```
 
 构造插值器弹簧曲线对象，生成一条从0到1的动画曲线，实际动画值根据曲线进行插值计算。动画时间由曲线参数决定，不受animation、animateTo中的duration参数控制。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-curves-export function interpolatingSpring(velocity: double, mass: double, stiffness: double, damping: double): ICurve--><!--Device-curves-export function interpolatingSpring(velocity: double, mass: double, stiffness: double, damping: double): ICurve-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,14 +26,20 @@ export function interpolatingSpring(velocity: double, mass: double, stiffness: d
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| velocity | double | 是 | Initial velocity. It is applied by external factors to the spring animation, designed to help ensure the smooth transition from the previous motion state. The velocity is the normalized velocity, and its value is equal to the actual velocity at the beginning of the animation divided by the animation attribute change value.<br>Value range: (-∞, +∞). |
-| mass | double | 是 | Mass, which influences the inertia in the spring system. The greater the mass, the greater the amplitude of the oscillation, and the slower the speed of restoring to the equilibrium position. <br>Value range: (0, +∞). &lt;p&gt;**NOTE：**: <br>If this parameter is set to a value less than or equal to 0, the value **1** is used. &lt;/p&gt; |
-| stiffness | double | 是 | Stiffness. It is the degree to which an object deforms by resisting the force applied. In an elastic system, the greater the stiffness, the stronger the ability to resist deformation, and the faster the speed of restoring to the equilibrium position.<br>Value range: (0, +∞). &lt;p&gt;**NOTE：**: <br>If this parameter is set to a value less than or equal to 0, the value **1** is used. &lt;/p&gt; |
-| damping | double | 是 | Damping. It is used to describe the oscillation and attenuation of the system after being disturbed. The larger the damping, the smaller the number of oscillations of elastic motion, and the smaller the oscillation amplitude.<br>Value range: (0, +∞)<br> &lt;p&gt;**NOTE：**: <br>If this parameter is set to a value less than or equal to 0, the value **1** is used. &lt;/p&gt; |
+| velocity | number | 是 | Initial velocity. It is applied by external factors to the spring animation, designed to help ensure the smooth transition from the previous motion state. The velocity is the normalized velocity, and its value is equal to the actual velocity at the beginning of the animation divided by the animation attribute change value.Value range: (-∞, +∞). |
+| mass | number | 是 | Mass, which influences the inertia in the spring system. The greater the mass, the greater the amplitude of the oscillation, and the slower the speed of restoring to the equilibrium position. Value range: (0, +∞). & lt;p & gt;**NOTE：**: If this parameter is set to a value less than or equal to 0, the value **1** is used. & lt;/p & gt; |
+| stiffness | number | 是 | Stiffness. It is the degree to which an object deforms by resisting the force applied. In an elastic system, the greater the stiffness, the stronger the ability to resist deformation, and the faster the speed of restoring to the equilibrium position.Value range: (0, +∞). & lt;p & gt;**NOTE：**: If this parameter is set to a value less than or equal to 0, the value **1** is used. & lt;/p & gt; |
+| damping | number | 是 | Damping. It is used to describe the oscillation and attenuation of the system after being disturbed. The larger the damping, the smaller the number of oscillations of elastic motion, and the smaller the oscillation amplitude.Value range: (0, +∞) & lt;p & gt;**NOTE：**: If this parameter is set to a value less than or equal to 0, the value **1** is used. & lt;/p & gt; |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ICurve | 曲线对象。 <br>**说明:** 弹性动画曲线为物理曲线，[animation]{ |
+| ICurve | 曲线对象。 |
 
+**示例**
+
+```TypeScript
+import { curves } from '@kit.ArkUI';
+curves.interpolatingSpring(10, 1, 228, 30); // 创建一个时长由弹簧参数决定的弹簧插值曲线
+```

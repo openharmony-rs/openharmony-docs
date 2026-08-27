@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface CustomSpanMeasureInfo--><!--Device-unnamed-declare interface CustomSpanMeasureInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,7 +17,7 @@
 fontSize: number
 ```
 
-设置文本字体大小。 单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
+设置文本字体大小。单位：[fp](arkts-arkui-length-t.md)
 
 **类型：** number
 
@@ -29,8 +27,6 @@ fontSize: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CustomSpanMeasureInfo-fontSize: number--><!--Device-CustomSpanMeasureInfo-fontSize: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## layoutPolicy
@@ -39,17 +35,16 @@ fontSize: number
 layoutPolicy?: LayoutPolicy
 ```
 
-自定义span所在父组件的宽度布局策略。 **说明：** 当值为null或undefined时，表示父组件没有设置宽度布局策略。
+自定义span所在父组件的宽度布局策略。  
+**说明：**当值为null或undefined时，表示父组件没有设置宽度布局策略。
 
-**类型：** LayoutPolicy
+**类型：** [LayoutPolicy](../arkts-components/arkts-arkui-layoutpolicy-c.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CustomSpanMeasureInfo-layoutPolicy?: LayoutPolicy--><!--Device-CustomSpanMeasureInfo-layoutPolicy?: LayoutPolicy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,7 +54,7 @@ layoutPolicy?: LayoutPolicy
 maxWidth?: number
 ```
 
-自定义span所在父组件的内容区的最大宽度约束。 默认值：使用自身宽度。 单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
+自定义span所在父组件的内容区的最大宽度约束。默认值：使用自身宽度。单位：[px](arkts-arkui-length-t.md)
 
 **类型：** number
 
@@ -69,7 +64,4 @@ maxWidth?: number
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CustomSpanMeasureInfo-maxWidth?: number--><!--Device-CustomSpanMeasureInfo-maxWidth?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

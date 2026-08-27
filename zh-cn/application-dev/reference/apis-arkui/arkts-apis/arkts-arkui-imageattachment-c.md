@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class ImageAttachment--><!--Device-unnamed-declare class ImageAttachment-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,8 +25,6 @@ constructor(value: ImageAttachmentInterface)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ImageAttachment-constructor(value: ImageAttachmentInterface)--><!--Device-ImageAttachment-constructor(value: ImageAttachmentInterface)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -43,7 +39,7 @@ constructor(value: ImageAttachmentInterface)
 constructor(attachment: Optional<AttachmentType>)
 ```
 
-图片对象的构造函数。与value类型入参构造函数相比，attachment参数增加了对undefined类型和ResourceStr类型图片的支持。
+图片对象的构造函数。与value类型入参构造函数相比，attachment参数增加了对undefined类型和[ResourceStr](arkts-arkui-resourcestr-t.md)类型图片的支持。
 
 **起始版本：** 15
 
@@ -51,15 +47,13 @@ constructor(attachment: Optional<AttachmentType>)
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ImageAttachment-constructor(attachment: Optional<AttachmentType>)--><!--Device-ImageAttachment-constructor(attachment: Optional<AttachmentType>)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| attachment | Optional&lt;[AttachmentType](arkts-arkui-attachmenttype-t.md)&gt; | 是 | PixelMap类型或ResourceStr类型图片设置项。 |
+| attachment | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;[AttachmentType](arkts-arkui-attachmenttype-t.md)&gt; | 是 | PixelMap类型或[ResourceStr](arkts-arkui-resourcestr-t.md)类型图片设置项。 |
 
 ## colorFilter
 
@@ -76,8 +70,6 @@ readonly colorFilter?: ColorFilterType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ImageAttachment-readonly colorFilter?: ColorFilterType--><!--Device-ImageAttachment-readonly colorFilter?: ColorFilterType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,8 +89,6 @@ readonly layoutStyle?: ImageAttachmentLayoutStyle
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ImageAttachment-readonly layoutStyle?: ImageAttachmentLayoutStyle--><!--Device-ImageAttachment-readonly layoutStyle?: ImageAttachmentLayoutStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## objectFit
@@ -109,7 +99,7 @@ readonly objectFit?: ImageFit
 
 获取属性字符串的图片缩放类型。
 
-**类型：** ImageFit
+**类型：** [ImageFit](arkts-arkui-imagefit-e.md)
 
 **起始版本：** 12
 
@@ -117,7 +107,23 @@ readonly objectFit?: ImageFit
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ImageAttachment-readonly objectFit?: ImageFit--><!--Device-ImageAttachment-readonly objectFit?: ImageFit-End-->
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## resizable
+
+```TypeScript
+readonly resizable?: ResizableOptions
+```
+
+获取属性字符串的图片拉伸选项。
+
+**类型：** [ResizableOptions](../arkts-components/arkts-arkui-resizableoptions-i.md)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -127,17 +133,15 @@ readonly objectFit?: ImageFit
 readonly size?: SizeOptions
 ```
 
-获取属性字符串的图片尺寸。 返回number类型值的单位为`px`。
+获取属性字符串的图片尺寸。返回number类型值的单位为`px`。
 
-**类型：** SizeOptions
+**类型：** [SizeOptions](arkts-arkui-sizeoptions-i.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ImageAttachment-readonly size?: SizeOptions--><!--Device-ImageAttachment-readonly size?: SizeOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,17 +151,15 @@ readonly size?: SizeOptions
 readonly sizeInVp?: SizeOptions
 ```
 
-获取属性字符串的图片尺寸。 返回number类型值的单位为`vp`。 当ImageAttachment尺寸设置为负数值或undefined时，返回为undefined。
+获取属性字符串的图片尺寸。返回number类型值的单位为`vp`。当ImageAttachment尺寸设置为负数值或undefined时，返回为undefined。
 
-**类型：** SizeOptions
+**类型：** [SizeOptions](arkts-arkui-sizeoptions-i.md)
 
 **起始版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ImageAttachment-readonly sizeInVp?: SizeOptions--><!--Device-ImageAttachment-readonly sizeInVp?: SizeOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -167,7 +169,7 @@ readonly sizeInVp?: SizeOptions
 readonly supportSvg2?: boolean
 ```
 
-获取属性字符串是否开启[SVG标签解析能力增强功能](../../../reference/apis-arkui/arkui-ts/ts-image-svg2-capabilities.md)。 true：支持SVG解析新能力；false：保持原有SVG解析能力。 默认值：false
+获取属性字符串是否开启SVG标签解析能力增强功能。true：支持SVG解析新能力；false：保持原有SVG解析能力。默认值：false
 
 **类型：** boolean
 
@@ -176,8 +178,6 @@ readonly supportSvg2?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ImageAttachment-readonly supportSvg2?: boolean--><!--Device-ImageAttachment-readonly supportSvg2?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -197,8 +197,6 @@ readonly value: PixelMap
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ImageAttachment-readonly value: PixelMap--><!--Device-ImageAttachment-readonly value: PixelMap-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## verticalAlign
@@ -209,7 +207,7 @@ readonly verticalAlign?: ImageSpanAlignment
 
 获取属性字符串的图片对齐方式。
 
-**类型：** ImageSpanAlignment
+**类型：** [ImageSpanAlignment](arkts-arkui-imagespanalignment-e.md)
 
 **起始版本：** 12
 
@@ -217,7 +215,4 @@ readonly verticalAlign?: ImageSpanAlignment
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ImageAttachment-readonly verticalAlign?: ImageSpanAlignment--><!--Device-ImageAttachment-readonly verticalAlign?: ImageSpanAlignment-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

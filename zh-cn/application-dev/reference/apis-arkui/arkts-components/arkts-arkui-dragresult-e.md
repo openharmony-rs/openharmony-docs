@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare enum DragResult--><!--Device-unnamed-declare enum DragResult-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## UNKNOWN
@@ -21,8 +19,6 @@ UNKNOWN = -1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DragResult-UNKNOWN = -1--><!--Device-DragResult-UNKNOWN = -1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ DRAG_SUCCESSFUL = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DragResult-DRAG_SUCCESSFUL = 0--><!--Device-DragResult-DRAG_SUCCESSFUL = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DRAG_FAILED
@@ -57,8 +51,6 @@ DRAG_FAILED = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DragResult-DRAG_FAILED = 1--><!--Device-DragResult-DRAG_FAILED = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,8 +68,6 @@ DRAG_CANCELED = 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DragResult-DRAG_CANCELED = 2--><!--Device-DragResult-DRAG_CANCELED = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DROP_ENABLED
@@ -93,8 +83,6 @@ DROP_ENABLED = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DragResult-DROP_ENABLED = 3--><!--Device-DragResult-DROP_ENABLED = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,7 +100,4 @@ DROP_DISABLED = 4
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DragResult-DROP_DISABLED = 4--><!--Device-DragResult-DROP_DISABLED = 4-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

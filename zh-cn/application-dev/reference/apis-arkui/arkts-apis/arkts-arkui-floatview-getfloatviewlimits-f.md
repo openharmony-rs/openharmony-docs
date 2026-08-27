@@ -18,8 +18,6 @@ function getFloatViewLimits(templateType: FloatViewTemplateType): FloatViewLimit
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-floatView-function getFloatViewLimits(templateType: FloatViewTemplateType): FloatViewLimits--><!--Device-floatView-function getFloatViewLimits(templateType: FloatViewTemplateType): FloatViewLimits-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -38,15 +36,15 @@ function getFloatViewLimits(templateType: FloatViewTemplateType): FloatViewLimit
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Possible cause: Call the API on unsupported device. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: Invalid template type. |
 
 **示例**
 
 ```TypeScript
+// 获取圆角矩形模板的闪控窗窗口限制
 let limits: floatView.FloatViewLimits = floatView.getFloatViewLimits(floatView.FloatViewTemplateType.ROUNDED_RECTANGLE);
 console.info('Float view limits: ' + JSON.stringify(limits));
 ```
-

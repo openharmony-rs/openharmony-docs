@@ -4,15 +4,11 @@
 
 **起始版本：** 23
 
-<!--Device-window-interface UIEnvAvoidAreaVP--><!--Device-window-interface UIEnvAvoidAreaVP-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -28,8 +24,6 @@ bottomRect: RectInVP
 
 **起始版本：** 23
 
-<!--Device-UIEnvAvoidAreaVP-bottomRect: RectInVP--><!--Device-UIEnvAvoidAreaVP-bottomRect: RectInVP-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## leftRect
@@ -43,8 +37,6 @@ leftRect: RectInVP
 **类型：** [RectInVP](arkts-arkui-window-rectinvp-i.md)
 
 **起始版本：** 23
-
-<!--Device-UIEnvAvoidAreaVP-leftRect: RectInVP--><!--Device-UIEnvAvoidAreaVP-leftRect: RectInVP-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -60,8 +52,6 @@ rightRect: RectInVP
 
 **起始版本：** 23
 
-<!--Device-UIEnvAvoidAreaVP-rightRect: RectInVP--><!--Device-UIEnvAvoidAreaVP-rightRect: RectInVP-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## topRect
@@ -75,8 +65,6 @@ topRect: RectInVP
 **类型：** [RectInVP](arkts-arkui-window-rectinvp-i.md)
 
 **起始版本：** 23
-
-<!--Device-UIEnvAvoidAreaVP-topRect: RectInVP--><!--Device-UIEnvAvoidAreaVP-topRect: RectInVP-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -92,7 +80,4 @@ visible: boolean
 
 **起始版本：** 23
 
-<!--Device-UIEnvAvoidAreaVP-visible: boolean--><!--Device-UIEnvAvoidAreaVP-visible: boolean-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
-

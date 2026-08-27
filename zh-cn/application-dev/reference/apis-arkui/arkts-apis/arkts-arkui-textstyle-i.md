@@ -1,10 +1,8 @@
-# TextStyle(AlertDialog)
+# TextStyle
 
 弹窗中message的文本样式，包含文本截断方式等。
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare interface TextStyle--><!--Device-unnamed-declare interface TextStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -19,7 +17,7 @@
 wordBreak?: WordBreak
 ```
 
-弹窗message内容的文本截断方式。 默认值：WordBreak.BREAK_ALL
+弹窗message内容的文本截断方式。默认值：WordBreak.BREAK_ALL
 
 **类型：** WordBreak
 
@@ -29,7 +27,4 @@ wordBreak?: WordBreak
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextStyle-wordBreak?: WordBreak--><!--Device-TextStyle-wordBreak?: WordBreak-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare interface BackgroundEffectOptions--><!--Device-unnamed-declare interface BackgroundEffectOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,8 +29,6 @@ adaptiveColor?: AdaptiveColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BackgroundEffectOptions-adaptiveColor?: AdaptiveColor--><!--Device-BackgroundEffectOptions-adaptiveColor?: AdaptiveColor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## blurOptions
@@ -52,8 +48,6 @@ blurOptions?: BlurOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BackgroundEffectOptions-blurOptions?: BlurOptions--><!--Device-BackgroundEffectOptions-blurOptions?: BlurOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,8 +69,6 @@ brightness?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BackgroundEffectOptions-brightness?: number--><!--Device-BackgroundEffectOptions-brightness?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -87,7 +79,7 @@ color?: ResourceColor
 
 颜色，默认透明色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **默认值：** Color.Transparent
 
@@ -96,8 +88,6 @@ color?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BackgroundEffectOptions-color?: ResourceColor--><!--Device-BackgroundEffectOptions-color?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,7 +99,7 @@ inactiveColor?: ResourceColor
 
 模糊不生效时使用的背景色。该参数需配合policy参数使用。当policy使模糊失效时，控件模糊效果会被移除，如果设置了inactiveColor会使用inactiveColor作为控件背景色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **默认值：** Color.Transparent
 
@@ -119,8 +109,6 @@ inactiveColor?: ResourceColor
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BackgroundEffectOptions-inactiveColor?: ResourceColor--><!--Device-BackgroundEffectOptions-inactiveColor?: ResourceColor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## policy
@@ -129,7 +117,7 @@ inactiveColor?: ResourceColor
 policy?: BlurStyleActivePolicy
 ```
 
-模糊激活策略。 默认值：BlurStyleActivePolicy.ALWAYS_ACTIVE
+模糊激活策略。默认值：BlurStyleActivePolicy.ALWAYS_ACTIVE
 
 **类型：** [BlurStyleActivePolicy](arkts-arkui-blurstyleactivepolicy-e.md)
 
@@ -140,8 +128,6 @@ policy?: BlurStyleActivePolicy
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BackgroundEffectOptions-policy?: BlurStyleActivePolicy--><!--Device-BackgroundEffectOptions-policy?: BlurStyleActivePolicy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,8 +146,6 @@ radius: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BackgroundEffectOptions-radius: number--><!--Device-BackgroundEffectOptions-radius: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -183,7 +167,4 @@ saturation?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BackgroundEffectOptions-saturation?: number--><!--Device-BackgroundEffectOptions-saturation?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

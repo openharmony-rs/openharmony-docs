@@ -2,16 +2,13 @@
 
 将数据处理为blob类型。
 
-**起始版本：** 23
-
-<!--Device-buffer-class Blob--><!--Device-buffer-class Blob-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { buffer } from '@kit.ArkTS';
 ```
 
 ## arrayBuffer
@@ -22,11 +19,9 @@ arrayBuffer(): Promise<ArrayBuffer>
 
 将Blob数据放入ArrayBuffer中返回，使用Promise进行异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Blob-arrayBuffer(): Promise<ArrayBuffer>--><!--Device-Blob-arrayBuffer(): Promise<ArrayBuffer>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -34,7 +29,7 @@ arrayBuffer(): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;ArrayBuffer&gt; | Promise对象，resolve返回包含Blob数据的ArrayBuffer，reject返回错误信息。 |
+| Promise & lt;ArrayBuffer & gt; | Promise对象，resolve返回包含Blob数据的ArrayBuffer，reject返回错误信息。 |
 
 **示例**
 
@@ -62,8 +57,6 @@ constructor(sources: string[] | ArrayBuffer[] | TypedArray[] | DataView[] | Blob
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Blob-constructor(sources: string[] | ArrayBuffer[] | TypedArray[] | DataView[] | Blob[], options?: Object)--><!--Device-Blob-constructor(sources: string[] | ArrayBuffer[] | TypedArray[] | DataView[] | Blob[], options?: Object)-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -71,7 +64,7 @@ constructor(sources: string[] | ArrayBuffer[] | TypedArray[] | DataView[] | Blob
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sources | string[] \| ArrayBuffer[] \| TypedArray[] \| DataView[] \| [Blob](arkts-arkts-buffer-blob-c.md)[] | 是 | Blob实例的数据源。 |
-| options | Object | 否 | options:<br/>- endings：含义为结束符'\n'的字符串如何被输出，为'transparent'或'native'。native代表行结束符会跟随系 统。'transparent'代表会保持Blob中保存的结束符不变。此参数非必填，默认值为'transparent'。<br/>- type：Blob内容类型。其目的是让类型传达数据的MIME媒体类型，但是不执行类型格 式的验证。此参数非必填，默认参数为''。 |
+| options | Object | 否 | options:   - endings：含义为结束符'\n'的字符串如何被输出，为'transparent'或'native'。native代表行结束符会跟随系 统。'transparent'代表会保持Blob中保存的结束符不变。此参数非必填，默认值为'transparent'。   - type：Blob内容类型。其目的是让类型传达数据的MIME媒体类型，但是不执行类型格 式的验证。此参数非必填，默认参数为''。 |
 
 **示例**
 
@@ -88,52 +81,17 @@ let o1: option = {endings:'native', type: 'MIME'}
 let blob1: buffer.Blob = new buffer.Blob(['a', 'b', 'c'], o1);
 ```
 
-## constructor
-
-```TypeScript
-constructor(sources: ArrayUnionType, options?: BlobOptions)
-```
-
-根据传入的数据源和可选配置项创建Blob对象，Blob实例将包含数据源中的内容。
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Blob-constructor(sources: ArrayUnionType, options?: BlobOptions)--><!--Device-Blob-constructor(sources: ArrayUnionType, options?: BlobOptions)-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| sources | [ArrayUnionType](arkts-arkts-buffer-arrayuniontype-t.md) | 是 | Blob实例的数据源。 |
-| options | [BlobOptions](arkts-arkts-buffer-bloboptions-i.md) | 否 | options:<br/>- endings：含义为结束符'\n'的字符串如何被输出，为'transparent'或'native'。native代表行结束符会跟随系 统。'transparent'代表会保持Blob中保存的结束符不变。此参数非必填，默认值为'transparent'。<br/>- type：Blob内容类型。其目的是让类型传达数据的MIME媒体类型，但是不执行类型格 式的验证。此参数非必填，默认参数为''。 |
-
-**示例**
-
-```TypeScript
-import { buffer } from '@kit.ArkTS';
-
-let blob: buffer.Blob  = new buffer.Blob(['a', 'b', 'c']);
-
-let blob1: buffer.Blob = new buffer.Blob(['a', 'b', 'c'], {endings:'native', type: 'MIME'} as buffer.BlobOptions);
-```
-
 ## slice
 
 ```TypeScript
-slice(start?: int, end?: int, type?: string): Blob
+slice(start?: number, end?: number, type?: string): Blob
 ```
 
 创建并返回一个包含原Blob对象中指定长度数据的新Blob对象。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Blob-slice(start?: int, end?: int, type?: string): Blob--><!--Device-Blob-slice(start?: int, end?: int, type?: string): Blob-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -141,8 +99,8 @@ slice(start?: int, end?: int, type?: string): Blob
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | int | 否 | 起始位置。默认值：0。 |
-| end | int | 否 | 结束位置。默认值：原Blob对象中的数据长度。 |
+| start | number | 否 | 起始位置。默认值：0。 |
+| end | number | 否 | 结束位置。默认值：原Blob对象中的数据长度。 |
 | type | string | 否 | 内容类型。默认值：''。 |
 
 **返回值：**
@@ -170,11 +128,9 @@ text(): Promise<string>
 
 使用utf8解码并返回字符串。使用Promise进行异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Blob-text(): Promise<string>--><!--Device-Blob-text(): Promise<string>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -182,7 +138,7 @@ text(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，resolve返回以utf8解码后的字符串，reject返回错误信息。 |
+| Promise & lt;string & gt; | Promise对象，resolve返回以utf8解码后的字符串，reject返回错误信息。 |
 
 **示例**
 
@@ -197,3 +153,34 @@ pro.then((val: string) => {
 });
 ```
 
+## size
+
+```TypeScript
+get size(): number
+```
+
+Blob实例的总字节大小。
+
+**类型：** number
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## type
+
+```TypeScript
+get type(): string
+```
+
+Blob实例的内容类型。
+
+**类型：** string
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang

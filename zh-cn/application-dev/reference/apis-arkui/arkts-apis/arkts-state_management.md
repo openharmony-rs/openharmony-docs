@@ -21,4 +21,3 @@
 | --- | --- |
 | [ColorMode](arkts-arkui-colormode-e.md) | 系统当前深浅色模式。 |
 | [LayoutDirection](arkts-arkui-layoutdirection-e.md) | 系统的布局方向类型。 |
-

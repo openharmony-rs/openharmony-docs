@@ -1,10 +1,8 @@
 # DismissReason
 
-关闭原因类型。
+关闭原因类型。@enum { number }
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare enum DismissReason--><!--Device-unnamed-declare enum DismissReason-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,8 +20,6 @@ PRESS_BACK = 0
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DismissReason-PRESS_BACK = 0--><!--Device-DismissReason-PRESS_BACK = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TOUCH_OUTSIDE
@@ -39,8 +35,6 @@ TOUCH_OUTSIDE = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DismissReason-TOUCH_OUTSIDE = 1--><!--Device-DismissReason-TOUCH_OUTSIDE = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,8 +52,6 @@ CLOSE_BUTTON = 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DismissReason-CLOSE_BUTTON = 2--><!--Device-DismissReason-CLOSE_BUTTON = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SLIDE_DOWN
@@ -68,15 +60,14 @@ CLOSE_BUTTON = 2
 SLIDE_DOWN = 3
 ```
 
-下拉关闭。 **说明：** 该接口仅支持在半模态转场中使用。
+下拉关闭。  
+**说明：**该接口仅支持在半模态转场中使用。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-DismissReason-SLIDE_DOWN = 3--><!--Device-DismissReason-SLIDE_DOWN = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,7 +85,4 @@ SLIDE = 4
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DismissReason-SLIDE = 4--><!--Device-DismissReason-SLIDE = 4-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

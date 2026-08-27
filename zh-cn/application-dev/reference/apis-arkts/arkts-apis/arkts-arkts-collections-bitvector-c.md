@@ -1,17 +1,19 @@
 # BitVector
 
-一种线性数据结构，底层基于数组实现。BitVector 中存储的元素为 bit 值，能够存储和处理 bit 级别的操作。 > **NOTE：**> > - 此模块仅支持在 ArkTS 文件（文件后缀为 .ets）中导入使用。 > **装饰器**：\@Sendable
+一种线性数据结构，底层基于数组实现。BitVector 中存储的元素为 bit 值，能够存储和处理 bit 级别的操作。
+
+> **NOTE：**
+> 
+> - 此模块仅支持在 ArkTS 文件（文件后缀为 .ets）中导入使用。
+> **装饰器**：\@Sendable
 
 **起始版本：** 12
-
-<!--Device-collections-class BitVector--><!--Device-collections-class BitVector-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { collections } from '@kit.ArkTS';
 ```
 
 ## [Symbol.iterator]
@@ -26,15 +28,13 @@ import { collections } from '@kit.ArkTS';
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BitVector-[Symbol.iterator](): IterableIterator<number>--><!--Device-BitVector-[Symbol.iterator](): IterableIterator<number>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;number&gt; | 一个新的可迭代迭代器对象。 |
+| IterableIterator & lt;number & gt; | 一个新的可迭代迭代器对象。 |
 
 **错误码：**
 
@@ -53,8 +53,6 @@ BitVector 的构造函数。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BitVector-constructor(length: number)--><!--Device-BitVector-constructor(length: number)-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -76,8 +74,6 @@ flipBitByIndex(index: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BitVector-flipBitByIndex(index: number): void--><!--Device-BitVector-flipBitByIndex(index: number): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -90,9 +86,9 @@ flipBitByIndex(index: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The flipBitByIndex method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
 ## flipBitsByRange
 
@@ -105,8 +101,6 @@ flipBitsByRange(fromIndex: number, toIndex: number): void
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BitVector-flipBitsByRange(fromIndex: number, toIndex: number): void--><!--Device-BitVector-flipBitsByRange(fromIndex: number, toIndex: number): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -121,9 +115,9 @@ flipBitsByRange(fromIndex: number, toIndex: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The flipBitsByRange method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 
 ## getBitCountByRange
 
@@ -136,8 +130,6 @@ getBitCountByRange(element: number, fromIndex: number, toIndex: number): number
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BitVector-getBitCountByRange(element: number, fromIndex: number, toIndex: number): number--><!--Device-BitVector-getBitCountByRange(element: number, fromIndex: number, toIndex: number): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -159,9 +151,9 @@ getBitCountByRange(element: number, fromIndex: number, toIndex: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getBitCountByRange method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 
 ## getBitsByRange
 
@@ -174,8 +166,6 @@ getBitsByRange(fromIndex: number, toIndex: number): BitVector
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BitVector-getBitsByRange(fromIndex: number, toIndex: number): BitVector--><!--Device-BitVector-getBitsByRange(fromIndex: number, toIndex: number): BitVector-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -190,15 +180,15 @@ getBitsByRange(fromIndex: number, toIndex: number): BitVector
 
 | 类型 | 说明 |
 | --- | --- |
-| [BitVector](../../apis-na/arkts-apis/arkts-na-collections-bitvector-c.md) | 包含所获取 bit 值的 BitVector。可能的原因： 1.必填参数未指定。 2.参数类型不正确。 |
+| [BitVector](arkts-arkts-collections-bitvector-c.md) | 包含所获取 bit 值的 BitVector。可能的原因： 1.必填参数未指定。 2.参数类型不正确。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getBitsByRange method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 
 ## getIndexOf
 
@@ -211,8 +201,6 @@ getIndexOf(element: number, fromIndex: number, toIndex: number): number
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BitVector-getIndexOf(element: number, fromIndex: number, toIndex: number): number--><!--Device-BitVector-getIndexOf(element: number, fromIndex: number, toIndex: number): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -234,9 +222,9 @@ getIndexOf(element: number, fromIndex: number, toIndex: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getIndexOf method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 
 ## getLastIndexOf
 
@@ -249,8 +237,6 @@ getLastIndexOf(element: number, fromIndex: number, toIndex: number): number
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BitVector-getLastIndexOf(element: number, fromIndex: number, toIndex: number): number--><!--Device-BitVector-getLastIndexOf(element: number, fromIndex: number, toIndex: number): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -272,9 +258,9 @@ getLastIndexOf(element: number, fromIndex: number, toIndex: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getLastIndexOf method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 
 ## has
 
@@ -287,8 +273,6 @@ has(element: number, fromIndex: number, toIndex: number): boolean
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BitVector-has(element: number, fromIndex: number, toIndex: number): boolean--><!--Device-BitVector-has(element: number, fromIndex: number, toIndex: number): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -310,9 +294,9 @@ has(element: number, fromIndex: number, toIndex: number): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The has method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 
 ## pop
 
@@ -325,8 +309,6 @@ pop(): number
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BitVector-pop(): number--><!--Device-BitVector-pop(): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -354,8 +336,6 @@ push(element: number): boolean
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BitVector-push(element: number): boolean--><!--Device-BitVector-push(element: number): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -390,8 +370,6 @@ resize(size: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BitVector-resize(size: number): void--><!--Device-BitVector-resize(size: number): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -418,8 +396,6 @@ setAllBits(element: number): void
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BitVector-setAllBits(element: number): void--><!--Device-BitVector-setAllBits(element: number): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -448,8 +424,6 @@ setBitsByRange(element: number, fromIndex: number, toIndex: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BitVector-setBitsByRange(element: number, fromIndex: number, toIndex: number): void--><!--Device-BitVector-setBitsByRange(element: number, fromIndex: number, toIndex: number): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -464,9 +438,9 @@ setBitsByRange(element: number, fromIndex: number, toIndex: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The setBitsByRange method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 
 ## values
 
@@ -480,15 +454,13 @@ values(): IterableIterator<number>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BitVector-values(): IterableIterator<number>--><!--Device-BitVector-values(): IterableIterator<number>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;number&gt; | BitVector 迭代器对象。 |
+| IterableIterator & lt;number & gt; | BitVector 迭代器对象。 |
 
 **错误码：**
 
@@ -496,6 +468,22 @@ values(): IterableIterator<number>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The values method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
+
+## [index: number]
+
+```TypeScript
+[index: number]: number
+```
+
+返回指定索引位置的元素。
+
+**类型：** number
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 ## length
 
@@ -511,7 +499,4 @@ BitVector 的元素个数。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BitVector-readonly length: number--><!--Device-BitVector-readonly length: number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

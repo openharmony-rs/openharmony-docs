@@ -4,8 +4,6 @@ AI会话操作的结果状态。
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-declare enum AISessionResultType--><!--Device-unnamed-declare enum AISessionResultType-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## SUCCESS
@@ -19,8 +17,6 @@ SUCCESS = 0
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AISessionResultType-SUCCESS = 0--><!--Device-AISessionResultType-SUCCESS = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,8 +32,6 @@ FAILURE = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AISessionResultType-FAILURE = 1--><!--Device-AISessionResultType-FAILURE = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## RUNNING
@@ -52,7 +46,4 @@ RUNNING = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AISessionResultType-RUNNING = 2--><!--Device-AISessionResultType-RUNNING = 2-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

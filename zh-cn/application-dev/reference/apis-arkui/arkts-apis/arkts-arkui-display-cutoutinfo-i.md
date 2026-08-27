@@ -2,9 +2,7 @@
 
 挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。
 
-**起始版本：** 23
-
-<!--Device-display-interface CutoutInfo--><!--Device-display-interface CutoutInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -24,11 +22,9 @@ readonly boundingRects: Array<Rect>
 
 **类型：** Array&lt;Rect&gt;
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CutoutInfo-readonly boundingRects: Array<Rect>--><!--Device-CutoutInfo-readonly boundingRects: Array<Rect>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -42,11 +38,8 @@ readonly waterfallDisplayAreaRects: WaterfallDisplayAreaRects
 
 **类型：** [WaterfallDisplayAreaRects](arkts-arkui-display-waterfalldisplayarearects-i.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CutoutInfo-readonly waterfallDisplayAreaRects: WaterfallDisplayAreaRects--><!--Device-CutoutInfo-readonly waterfallDisplayAreaRects: WaterfallDisplayAreaRects-End-->
-
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
-

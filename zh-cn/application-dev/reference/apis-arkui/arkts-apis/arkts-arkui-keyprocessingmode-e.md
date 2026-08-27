@@ -1,10 +1,8 @@
-# KeyProcessingMode(Provide some common interface for focus.)
+# KeyProcessingMode
 
 设置按键事件处理的优先级。
 
 **起始版本：** 15
-
-<!--Device-unnamed-declare enum KeyProcessingMode--><!--Device-unnamed-declare enum KeyProcessingMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,8 +20,6 @@ FOCUS_NAVIGATION = 0
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-KeyProcessingMode-FOCUS_NAVIGATION = 0--><!--Device-KeyProcessingMode-FOCUS_NAVIGATION = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ANCESTOR_EVENT
@@ -40,7 +36,4 @@ ANCESTOR_EVENT = 1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-KeyProcessingMode-ANCESTOR_EVENT = 1--><!--Device-KeyProcessingMode-ANCESTOR_EVENT = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

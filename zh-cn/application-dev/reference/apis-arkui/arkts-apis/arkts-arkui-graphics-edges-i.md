@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-export interface Edges--><!--Device-unnamed-export interface Edges-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -23,8 +21,6 @@ bottom: T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Edges-bottom: T--><!--Device-Edges-bottom: T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,8 +40,6 @@ left: T
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Edges-left: T--><!--Device-Edges-left: T-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## right
@@ -63,8 +57,6 @@ right: T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Edges-right: T--><!--Device-Edges-right: T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,7 +76,4 @@ top: T
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Edges-top: T--><!--Device-Edges-top: T-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

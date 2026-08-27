@@ -2,9 +2,7 @@
 
 本模块提供管理屏幕的一些基础能力，包括获取屏幕对象，监听屏幕变化，创建和销毁虚拟屏幕等。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace screen--><!--Device-unnamed-declare namespace screen-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -14,7 +12,6 @@
 
 ```TypeScript
 import { screen } from '@kit.ArkUI';
-import { screenshot } from '@kit.ArkUI';
 ```
 
 ## 汇总
@@ -38,18 +35,12 @@ import { screenshot } from '@kit.ArkUI';
 | [makeMirror](arkts-arkui-screen-makemirror-f-sys.md) | 将屏幕设置为镜像模式，使用Promise异步回调。 |
 | [makeMirrorWithRegion](arkts-arkui-screen-makemirrorwithregion-f-sys.md) | 将屏幕的某一矩形区域设置为镜像模式，使用Promise异步回调。调用该接口后，不建议再进行屏幕的旋转/折叠，否则可能导致镜像内容异常。 |
 | [makeUnique](arkts-arkui-screen-makeunique-f-sys.md) | 将屏幕设置为异源模式，使用Promise异步回调。 |
-| [offChange](arkts-arkui-screen-offchange-f-sys.md) | Unregister the callback for screen changes. |
-| [offConnect](arkts-arkui-screen-offconnect-f-sys.md) | Unregister the callback for screen connection events. |
-| [offDisconnect](arkts-arkui-screen-offdisconnect-f-sys.md) | Unregister the callback for screen disconnection events. |
-| off_change | 关闭屏幕状态变化的监听。 |
-| off_connect | 关闭屏幕状态变化的监听。 |
-| off_disconnect | 关闭屏幕状态变化的监听。 |
-| [onChange](arkts-arkui-screen-onchange-f-sys.md) | Register the callback for screen change. |
-| [onConnect](arkts-arkui-screen-onconnect-f-sys.md) | Register the callback for screen connection events. |
-| [onDisconnect](arkts-arkui-screen-ondisconnect-f-sys.md) | Register the callback for screen disconnection events. |
-| on_change | 开启屏幕状态变化的监听。 |
-| on_connect | 开启屏幕状态变化的监听。 |
-| on_disconnect | 开启屏幕状态变化的监听。 |
+| [off](arkts-arkui-screen-off-f-sys.md) | 关闭屏幕状态变化的监听。 |
+| [off](arkts-arkui-screen-off-f-sys.md) | 关闭屏幕状态变化的监听。 |
+| [off](arkts-arkui-screen-off-f-sys.md) | 关闭屏幕状态变化的监听。 |
+| [on](arkts-arkui-screen-on-f-sys.md) | 开启屏幕状态变化的监听。 |
+| [on](arkts-arkui-screen-on-f-sys.md) | 开启屏幕状态变化的监听。 |
+| [on](arkts-arkui-screen-on-f-sys.md) | 开启屏幕状态变化的监听。 |
 | [resizeVirtualScreen](arkts-arkui-screen-resizevirtualscreen-f-sys.md) | 修改指定虚拟屏的尺寸，使用Promise异步回调。 |
 | [setMultiScreenMode](arkts-arkui-screen-setmultiscreenmode-f-sys.md) | 设置扩展屏幕的显示模式（镜像/扩展），使用Promise异步回调。primaryScreenId和secondaryScreenId均为0时，仅在扩展屏显示。 |
 | [setMultiScreenRelativePosition](arkts-arkui-screen-setmultiscreenrelativeposition-f-sys.md) | 仅在扩展模式下，设置主屏和扩展屏幕的位置信息，使用Promise异步回调。 |
@@ -73,7 +64,7 @@ import { screenshot } from '@kit.ArkUI';
 | [MultiScreenPositionOptions](arkts-arkui-screen-multiscreenpositionoptions-i-sys.md) | 屏幕位置信息。 |
 | [OrientationOptions](arkts-arkui-screen-orientationoptions-i-sys.md) | 设置旋转行为的参数 |
 | [Rect](arkts-arkui-screen-rect-i-sys.md) | 矩形信息。 |
-| [Screen](arkts-arkui-screen-screen-i-sys.md) | [物理屏](../../../displaymanager/display-terminology.md#物理屏)屏幕实例。 下列API示例中都需先使用[getAllScreens()](arkts-arkui-screen-getallscreens-f-sys.md)、 [createVirtualScreen()](arkts-arkui-screen-createvirtualscreen-f-sys.md) 中的任一方法获取到Screen实例，再通过此实例调用对应方法。 |
+| [Screen](arkts-arkui-screen-screen-i-sys.md) | [物理屏](../../../displaymanager/display-terminology.md#物理屏)屏幕实例。下列API示例中都需先使用[getAllScreens()](arkts-arkui-screen-getallscreens-f-sys.md)、 [createVirtualScreen()](arkts-arkui-screen-createvirtualscreen-f-sys.md) 中的任一方法获取到Screen实例，再通过此实例调用对应方法。 |
 | [ScreenModeInfo](arkts-arkui-screen-screenmodeinfo-i-sys.md) | 屏幕显示模式信息。 |
 | [VirtualScreenOption](arkts-arkui-screen-virtualscreenoption-i-sys.md) | 创建虚拟屏幕的参数。 |
 <!--DelEnd-->
@@ -88,4 +79,3 @@ import { screenshot } from '@kit.ArkUI';
 | [ScreenSourceMode](arkts-arkui-screen-screensourcemode-e-sys.md) | 屏幕显示内容来源模式枚举。 |
 | [ScreenType](arkts-arkui-screen-screentype-e-sys.md) | 屏幕类型枚举。 |
 <!--DelEnd-->
-

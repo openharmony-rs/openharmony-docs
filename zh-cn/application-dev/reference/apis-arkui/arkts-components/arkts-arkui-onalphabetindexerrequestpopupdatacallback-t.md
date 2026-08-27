@@ -12,8 +12,6 @@ declare type OnAlphabetIndexerRequestPopupDataCallback  = (index: number) => Arr
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type OnAlphabetIndexerRequestPopupDataCallback  = (index: number) => Array<string>--><!--Device-unnamed-declare type OnAlphabetIndexerRequestPopupDataCallback  = (index: number) => Array<string>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -26,5 +24,4 @@ declare type OnAlphabetIndexerRequestPopupDataCallback  = (index: number) => Arr
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | string array corresponding to the index |
-
+| Array & lt;string & gt; | string array corresponding to the index |

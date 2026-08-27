@@ -4,14 +4,11 @@
 
 **起始版本：** 12
 
-<!--Device-webview-interface SnapshotResult--><!--Device-webview-interface SnapshotResult-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { webview } from '@kit.ArkWeb';
 ```
 
 ## id
@@ -27,8 +24,6 @@ snapshot的id。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SnapshotResult-id?: string--><!--Device-SnapshotResult-id?: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -46,8 +41,6 @@ imagePixelMap?: image.PixelMap
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SnapshotResult-imagePixelMap?: image.PixelMap--><!--Device-SnapshotResult-imagePixelMap?: image.PixelMap-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## size
@@ -58,13 +51,11 @@ size?: SizeOptions
 
 Web绘制的真实尺寸，SizeOptions对象包含width和height属性，均为number类型，单位vp。
 
-**类型：** SizeOptions
+**类型：** [SizeOptions](../../apis-arkui/arkts-apis/arkts-arkui-sizeoptions-i.md)
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SnapshotResult-size?: SizeOptions--><!--Device-SnapshotResult-size?: SizeOptions-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -82,7 +73,4 @@ snapshot的状态，正常为true，失败为false，获取全量绘制结果失
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SnapshotResult-status?: boolean--><!--Device-SnapshotResult-status?: boolean-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

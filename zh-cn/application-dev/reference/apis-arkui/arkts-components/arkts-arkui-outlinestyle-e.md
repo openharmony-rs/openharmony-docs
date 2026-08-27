@@ -1,10 +1,8 @@
 # OutlineStyle
 
-外描边样式。
+外描边样式。@enum { number }
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare enum OutlineStyle--><!--Device-unnamed-declare enum OutlineStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,8 +22,6 @@ SOLID = 0
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-OutlineStyle-SOLID = 0--><!--Device-OutlineStyle-SOLID = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DASHED
@@ -43,8 +39,6 @@ DASHED = 1
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-OutlineStyle-DASHED = 1--><!--Device-OutlineStyle-DASHED = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,7 +58,4 @@ Dotted border. The radius of a dot is half of **outlineWidth**.
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-OutlineStyle-DOTTED = 2--><!--Device-OutlineStyle-DOTTED = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

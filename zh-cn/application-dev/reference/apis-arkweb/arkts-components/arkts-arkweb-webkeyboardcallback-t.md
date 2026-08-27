@@ -10,8 +10,6 @@ type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => We
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => WebKeyboardOptions--><!--Device-unnamed-type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => WebKeyboardOptions-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -25,4 +23,3 @@ type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => We
 | 类型 | 说明 |
 | --- | --- |
 | [WebKeyboardOptions](arkts-arkweb-webkeyboardoptions-i.md) | 回调函数通过返回[WebKeyboardOptions]{ |
-

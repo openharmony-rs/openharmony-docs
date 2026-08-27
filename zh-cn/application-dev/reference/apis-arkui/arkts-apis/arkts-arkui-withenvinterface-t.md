@@ -1,4 +1,4 @@
-# WithEnvInterface(定义WithEnv组件，允许为子组件设置环境属性。)
+# WithEnvInterface
 
 ```TypeScript
 export declare type WithEnvInterface = () => WithEnvAttribute
@@ -12,7 +12,4 @@ export declare type WithEnvInterface = () => WithEnvAttribute
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-export declare type WithEnvInterface = () => WithEnvAttribute--><!--Device-unnamed-export declare type WithEnvInterface = () => WithEnvAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

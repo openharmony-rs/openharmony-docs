@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface SwiperAutoFill--><!--Device-unnamed-declare interface SwiperAutoFill-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,7 +17,7 @@
 minSize: VP
 ```
 
-设置元素显示最小宽度。 默认值：0
+设置元素显示最小宽度。默认值：0
 
 **类型：** VP
 
@@ -31,7 +29,4 @@ minSize: VP
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-SwiperAutoFill-minSize: VP--><!--Device-SwiperAutoFill-minSize: VP-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

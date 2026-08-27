@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码。开发者在使用ArkUI相关接口时如遇到接口调用异常，可参考本文档中的错误码信息定位问题原因并采取相应处理步骤。通用错误码请参考[通用错误码](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码。开发者在使用ArkUI相关接口时如遇到接口调用异常，可参考本文档中的错误码信息定位问题原因并采取相应处理步骤。通用错误码请参考通用错误码。
 
 ## 100001 接口调用异常错误码
 
@@ -20,7 +20,7 @@
 
 作为@ohos.router的错误码时，错误信息为："Internal error. UI execution context is not found."。
 
-作为[Navigation](arkui-ts/ts-basic-components-navigation.md)路由框架的错误码时，错误信息为："Internal error. Create NavDestination failed, probably caused by wrong UIContext."。
+作为Navigation路由框架的错误码时，错误信息为："Internal error. Create NavDestination failed, probably caused by wrong UIContext."。
 
 作为@ohos.arkui.componentSnapshot的错误码时，错误信息为："The builder is not a valid build function."。
 
@@ -32,7 +32,7 @@
 
 作为@ohos.router的错误码时，该错误码为string类型。
 
-作为[Navigation](arkui-ts/ts-basic-components-navigation.md)路由框架的错误码时，该错误码为number类型。
+作为Navigation路由框架的错误码时，该错误码为number类型。
 
 作为@ohos.arkui.componentSnapshot的错误码时，该错误码在内部状态出现异常时被触发。
 
@@ -40,7 +40,7 @@
 
 **可能原因**
 
-作为@ohos.animator、@ohos.router和[Navigation](arkui-ts/ts-basic-components-navigation.md)路由框架的错误码时，可能原因为：未成功获取渲染引擎、解析参数失败等。
+作为@ohos.animator、@ohos.router和Navigation路由框架的错误码时，可能原因为：未成功获取渲染引擎、解析参数失败等。
 
 作为@ohos.promptAction的错误码时，可能原因为：未成功获取渲染引擎、解析参数失败、UI上下文不明确等。
 
@@ -50,5 +50,5 @@
 
 **处理步骤**
 
-针对[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)问题，可以使用UIContext中的接口进行替换，详细说明可参考[使用UI上下文接口操作界面](../../ui/arkts-global-interface.md)。
+针对UI上下文不明确问题，可以使用UIContext中的接口进行替换，详细说明可参考使用UI上下文接口操作界面。
 

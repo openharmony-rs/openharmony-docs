@@ -12,8 +12,6 @@ Defines the callback type used in accessibility hover transparent event.
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type AccessibilityTransparentCallback = (event: TouchEvent) => void--><!--Device-unnamed-declare type AccessibilityTransparentCallback = (event: TouchEvent) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -21,4 +19,3 @@ Defines the callback type used in accessibility hover transparent event.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | [TouchEvent](arkts-arkui-touchevent-i.md) | 是 | The value of event contains information about original accessibility hover event. |
-

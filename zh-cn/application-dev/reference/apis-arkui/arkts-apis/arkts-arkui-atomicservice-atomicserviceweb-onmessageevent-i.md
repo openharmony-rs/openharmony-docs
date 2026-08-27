@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-export declare interface OnMessageEvent--><!--Device-unnamed-export declare interface OnMessageEvent-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,7 +26,4 @@ data: object[]
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnMessageEvent-data: object[]--><!--Device-OnMessageEvent-data: object[]-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

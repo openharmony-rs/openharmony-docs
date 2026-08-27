@@ -1,10 +1,8 @@
 # TextDecorationStyle
 
-Type of text decoration line style.
+Type of text decoration line style.@enum {number}
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare enum TextDecorationStyle--><!--Device-unnamed-declare enum TextDecorationStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,8 +20,6 @@ Solid line.
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextDecorationStyle-SOLID = 0--><!--Device-TextDecorationStyle-SOLID = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DOUBLE
@@ -39,8 +35,6 @@ Double lines.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextDecorationStyle-DOUBLE = 1--><!--Device-TextDecorationStyle-DOUBLE = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,8 +52,6 @@ Dotted line.
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextDecorationStyle-DOTTED = 2--><!--Device-TextDecorationStyle-DOTTED = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DASHED
@@ -75,8 +67,6 @@ Dashed line.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextDecorationStyle-DASHED = 3--><!--Device-TextDecorationStyle-DASHED = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,7 +84,4 @@ Wavy line.
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextDecorationStyle-WAVY = 4--><!--Device-TextDecorationStyle-WAVY = 4-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -20,15 +20,13 @@ function getAllDisplay(callback: AsyncCallback<Array<Display>>): void
 
 **替代接口：** [getAllDisplays](arkts-arkui-display-getalldisplays-f.md)(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;)
 
-<!--Device-display-function getAllDisplay(callback: AsyncCallback<Array<Display>>): void--><!--Device-display-function getAllDisplay(callback: AsyncCallback<Array<Display>>): void-End-->
-
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[Display](arkts-arkui-display-display-i.md)&gt;&gt; | 是 | 回调函数。返回当前所有的Display对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[Display](arkts-arkui-display-display-i.md)&gt;&gt; | 是 | 回调函数。返回当前所有的Display对象。 |
 
 **示例**
 
@@ -60,8 +58,6 @@ function getAllDisplay(): Promise<Array<Display>>
 
 **替代接口：** [getAllDisplays](arkts-arkui-display-getalldisplays-f.md)()
 
-<!--Device-display-function getAllDisplay(): Promise<Array<Display>>--><!--Device-display-function getAllDisplay(): Promise<Array<Display>>-End-->
-
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **返回值：**
@@ -82,4 +78,3 @@ promise.then((data: Array<display.Display>) => {
   console.error(`Failed to obtain all the display objects. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-

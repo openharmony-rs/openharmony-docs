@@ -4,49 +4,11 @@
 
 **起始版本：** 9
 
-<!--Device-util-class LRUCache--><!--Device-util-class LRUCache-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { ArrayList } from '@kit.ArkTS';
-import { ArrayListComparatorFn } from '@kit.ArkTS';
-import { ArrayListForEachCb } from '@kit.ArkTS';
-import { ArrayListReplaceCb } from '@kit.ArkTS';
-import { util } from '@kit.ArkTS';
-import { Deque } from '@kit.ArkTS';
-import { DequeForEachCb } from '@kit.ArkTS';
-import { HashMap } from '@kit.ArkTS';
-import { HashMapCbFn } from '@kit.ArkTS';
-import { HashSet } from '@kit.ArkTS';
-import { HashSetCbFn } from '@kit.ArkTS';
-import { LightWeightMap } from '@kit.ArkTS';
-import { LightWeightMapCbFn } from '@kit.ArkTS';
-import { LightWeightSet } from '@kit.ArkTS';
-import { LightWeightSetForEachCb } from '@kit.ArkTS';
-import { LinkedList } from '@kit.ArkTS';
-import { LinkedListForEachCb } from '@kit.ArkTS';
-import { List } from '@kit.ArkTS';
-import { ListComparatorFn } from '@kit.ArkTS';
-import { ListForEachCb } from '@kit.ArkTS';
-import { ListReplaceCb } from '@kit.ArkTS';
-import { PlainArray } from '@kit.ArkTS';
-import { PlainArrayForEachCb } from '@kit.ArkTS';
-import { Queue } from '@kit.ArkTS';
-import { QueueForEachCb } from '@kit.ArkTS';
-import { Stack } from '@kit.ArkTS';
-import { StackForEachCb } from '@kit.ArkTS';
-import { TreeMap } from '@kit.ArkTS';
-import { TreeMapForEachCb } from '@kit.ArkTS';
-import { TreeMapComparator } from '@kit.ArkTS';
-import { TreeSet } from '@kit.ArkTS';
-import { TreeSetForEachCb } from '@kit.ArkTS';
-import { TreeSetComparator } from '@kit.ArkTS';
-import { stream } from '@kit.ArkTS';
-import { Vector } from '@kit.ArkTS';
-import { JSON } from '@kit.ArkTS';
 ```
 
 ## [Symbol.iterator]
@@ -61,15 +23,13 @@ import { JSON } from '@kit.ArkTS';
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LRUCache-[Symbol.iterator](): IterableIterator<[K, V]>--><!--Device-LRUCache-[Symbol.iterator](): IterableIterator<[K, V]>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[K, V]&gt; | 返回以键值对形式的二维数组。 |
+| IterableIterator & lt;[K, V] & gt; | 返回以键值对形式的二维数组。 |
 
 **示例**
 
@@ -86,19 +46,29 @@ for (let value of pro) {
 // 3, 15
 ```
 
+```TypeScript
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+pro.put(2,10);
+let result = pro[Symbol.iterator]();
+```
+
 ## afterRemoval
 
 ```TypeScript
 afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 ```
 
-在移除值后执行后续操作。后续操作必须由开发者实现。该 API 在删除操作期间会被调用，例如 [get&lt;sup&gt;9+&lt;/sup&gt;](#get)、[put&lt;sup&gt;9+&lt;/sup&gt;](#put)、 [remove&lt;sup&gt;9+&lt;/sup&gt;](#remove)、[clear&lt;sup&gt;9+&lt;/sup&gt;](#clear) 和 [updateCapacity&lt;sup&gt;9+&lt;/sup&gt;](#updatecapacity)。 > **NOTE：**> > 如果在调用 [clear&lt;sup&gt;9+&lt;/sup&gt;](#clear) 和 > [updateCapacity&lt;sup&gt;9+&lt;/sup&gt;](#updatecapacity) 后执行回调方法，并且输入的 **key** 和 > **value** 参数为 MapIterator 类型，请参考示例 2 执行后续操作。
+在移除值后执行后续操作。后续操作必须由开发者实现。该 API 在删除操作期间会被调用，例如 [get&lt;sup&gt;9+&lt;/sup&gt;](#get)、[put&lt;sup&gt;9+&lt;/sup&gt;](#put)、 [remove&lt;sup&gt;9+&lt;/sup&gt;](#remove)、[clear&lt;sup&gt;9+&lt;/sup&gt;](#clear) 和 [updateCapacity&lt;sup&gt;9+&lt;/sup&gt;](#updatecapacity)。
+
+> **NOTE：**
+> 
+> 如果在调用 [clear&lt;sup&gt;9+&lt;/sup&gt;](#clear) 和
+> [updateCapacity&lt;sup&gt;9+&lt;/sup&gt;](#updatecapacity) 后执行回调方法，并且输入的 **key** 和
+> **value** 参数为 MapIterator 类型，请参考示例 2 执行后续操作。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LRUCache-afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void--><!--Device-LRUCache-afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -110,6 +80,31 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 | key | K | 是 | 被移除的 key。 |
 | value | V | 是 | 被移除的值。 |
 | newValue | V | 是 | 如果调用了 **put()** 方法并且要添加的 key 已存在时该 key 的新值。其他情况下此参数为空。 |
+
+**示例**
+
+```TypeScript
+class ChildLruBuffer<K, V> extends util.LruBuffer<K, V> {
+  constructor(capacity?: number) {
+    super(capacity);
+  }
+
+  afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void {
+    if (isEvict === true) {
+      console.info('key: ' + key);
+      // 输出结果：key: 11
+      console.info('value: ' + value);
+      // 输出结果：value: 1
+      console.info('newValue: ' + newValue);
+      // 输出结果：newValue: null
+    }
+  }
+}
+let lru: ChildLruBuffer<number, number> = new ChildLruBuffer(2);
+lru.put(11, 1);
+lru.put(22, 2);
+lru.put(33, 3);
+```
 
 ## clear
 
@@ -123,13 +118,9 @@ clear(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LRUCache-clear(): void--><!--Device-LRUCache-clear(): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 let pro = new util.LRUCache<number, number>();
@@ -143,18 +134,11 @@ console.info('res = ' + res);
 // 输出结果：res = 0
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-let pro = new util.LRUCache<int, int>();
-pro.put(2, 10);
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+pro.put(2,10);
 let result = pro.length;
 pro.clear();
-let res = pro.length;
-console.info('result = ' + result);
-console.info('res = ' + res);
-// 输出结果：result = 1
-// 输出结果：res = 0
 ```
 
 ## constructor
@@ -169,8 +153,6 @@ constructor(capacity?: number)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LRUCache-constructor(capacity?: number)--><!--Device-LRUCache-constructor(capacity?: number)-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -181,16 +163,12 @@ constructor(capacity?: number)
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 let lruCache = new util.LRUCache<number, number>();
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-let lruCache = new util.LRUCache<int, int>();
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
 ```
 
 ## contains
@@ -204,8 +182,6 @@ contains(key: K): boolean
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LRUCache-contains(key: K): boolean--><!--Device-LRUCache-contains(key: K): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -223,8 +199,6 @@ contains(key: K): boolean
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 let pro = new util.LRUCache<number, number>();
 pro.put(2, 10);
@@ -233,14 +207,12 @@ console.info('result = ' + result);
 // 输出结果：result = true
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-let pro = new util.LRUCache<int, int>();
-pro.put(2, 10);
-let result = pro.contains(2);
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+pro.put(2,10);
+let result = pro.contains(20);
 console.info('result = ' + result);
-// 输出结果：result = true
+// 输出结果：result = false
 ```
 
 ## createDefault
@@ -254,8 +226,6 @@ createDefault(key: K): V
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LRUCache-createDefault(key: K): V--><!--Device-LRUCache-createDefault(key: K): V-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -280,6 +250,11 @@ console.info('result = ' + result);
 // 输出结果：result = undefined
 ```
 
+```TypeScript
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+let result = pro.createDefault(50);
+```
+
 ## entries
 
 ```TypeScript
@@ -292,19 +267,15 @@ entries(): IterableIterator<[K, V]>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LRUCache-entries(): IterableIterator<[K, V]>--><!--Device-LRUCache-entries(): IterableIterator<[K, V]>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[K, V]&gt; | 可迭代的数组。 |
+| IterableIterator & lt;[K, V] & gt; | 可迭代的数组。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 let pro = new util.LRUCache<number, number>();
@@ -319,20 +290,10 @@ for (let value of pair) {
 // 3, 15
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-let pro = new util.LRUCache<int, int>();
-pro.put(2, 10);
-pro.put(3, 15);
-let pair = pro.entries()
-let arrayValue = Array.from(pair);
-for (let value of arrayValue) {
-  console.info(value[0]+ ', '+ value[1]);
-  // 输出结果：
-  // 2, 10
-  // 3, 15
-}
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+pro.put(2,10);
+let result = pro.entries();
 ```
 
 ## get
@@ -347,8 +308,6 @@ get(key: K): V | undefined
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LRUCache-get(key: K): V | undefined--><!--Device-LRUCache-get(key: K): V | undefined-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -361,11 +320,9 @@ get(key: K): V | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| V | key 对应的值。如果未找到匹配项，则返回 **createDefault** 中指定的值。 |
+| V \| undefined | key 对应的值。如果未找到匹配项，则返回 **createDefault** 中指定的值。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 let pro = new util.LRUCache<number, number>();
@@ -375,13 +332,11 @@ console.info('result = ' + result);
 // 输出结果：result = 10
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-let pro = new util.LRUCache<int, int>();
-pro.put(2, 10);
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+pro.put(2,10);
 let result  = pro.get(2);
-console.info('result = ' + result);
+console.info("result = " + result);
 // 输出结果：result = 10
 ```
 
@@ -397,8 +352,6 @@ getCapacity(): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LRUCache-getCapacity(): number--><!--Device-LRUCache-getCapacity(): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -409,8 +362,6 @@ getCapacity(): number
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 let pro = new util.LRUCache<number, number>();
 let result = pro.getCapacity();
@@ -418,12 +369,10 @@ console.info('result = ' + result);
 // 输出结果：result = 64
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-let pro = new util.LRUCache<int, int>();
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
 let result = pro.getCapacity();
-console.info('result = ' + result);
+console.info("result = " + result);
 // 输出结果：result = 64
 ```
 
@@ -439,8 +388,6 @@ getCreateCount(): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LRUCache-getCreateCount(): number--><!--Device-LRUCache-getCreateCount(): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -450,8 +397,6 @@ getCreateCount(): number
 | number | 创建对象的次数。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 // 创建新类ChildLRUCache继承LRUCache，重写createDefault方法，返回一个非undefined的值。
@@ -473,26 +418,12 @@ console.info('res = ' + res);
 // 输出结果：res = 2
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-// 创建新类ChildLRUCache继承LRUCache，重写createDefault方法，返回一个非undefined的值。
-class ChildLRUCache extends util.LRUCache<int, int> {
-  constructor() {
-    super();
-  }
-
-  createDefault(key: int): int {
-    return key;
-  }
-}
-let lru = new ChildLRUCache();
-lru.put(2, 10);
-lru.get(3);
-lru.get(5);
-let res = lru.getCreateCount();
-console.info('res = ' + res);
-// 输出结果：res = 2
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+pro.put(1,8);
+let result = pro.getCreateCount();
+console.info("result = " + result);
+// 输出结果：result = 0
 ```
 
 ## getMatchCount
@@ -507,8 +438,6 @@ getMatchCount(): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LRUCache-getMatchCount(): number--><!--Device-LRUCache-getMatchCount(): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -519,8 +448,6 @@ getMatchCount(): number
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 let pro = new util.LRUCache<number, number>();
 pro.put(2, 10);
@@ -530,14 +457,12 @@ console.info('result = ' + result);
 // 输出结果：result = 1
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-let pro = new util.LRUCache<int, int>();
-pro.put(2, 10);
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+pro.put(2,10);
 pro.get(2);
 let result = pro.getMatchCount();
-console.info('result = ' + result);
+console.info("result = " + result);
 // 输出结果：result = 1
 ```
 
@@ -553,8 +478,6 @@ getMissCount(): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LRUCache-getMissCount(): number--><!--Device-LRUCache-getMissCount(): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -565,8 +488,6 @@ getMissCount(): number
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 let pro = new util.LRUCache<number, number>();
 pro.put(2, 10);
@@ -576,14 +497,12 @@ console.info('result = ' + result);
 // 输出结果：result = 0
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-let pro = new util.LRUCache<int, int>();
-pro.put(2, 10);
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+pro.put(2,10);
 pro.get(2);
 let result = pro.getMissCount();
-console.info('result = ' + result);
+console.info("result = " + result);
 // 输出结果：result = 0
 ```
 
@@ -599,8 +518,6 @@ getPutCount(): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LRUCache-getPutCount(): number--><!--Device-LRUCache-getPutCount(): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -611,8 +528,6 @@ getPutCount(): number
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 let pro = new util.LRUCache<number, number>();
 pro.put(2, 10);
@@ -621,13 +536,11 @@ console.info('result = ' + result);
 // 输出结果：result = 1
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-let pro = new util.LRUCache<int, int>();
-pro.put(2, 10);
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+pro.put(2,10);
 let result = pro.getPutCount();
-console.info('result = ' + result);
+console.info("result = " + result);
 // 输出结果：result = 1
 ```
 
@@ -643,8 +556,6 @@ getRemovalCount(): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LRUCache-getRemovalCount(): number--><!--Device-LRUCache-getRemovalCount(): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -654,8 +565,6 @@ getRemovalCount(): number
 | number | 此缓存中键值对被回收的次数。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 let pro = new util.LRUCache<number, number>();
@@ -667,15 +576,13 @@ console.info('result = ' + result);
 // 输出结果：result = 0
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-let pro = new util.LRUCache<int, int>();
-pro.put(2, 10);
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+pro.put(2,10);
 pro.updateCapacity(2);
-pro.put(50, 22);
+pro.put(50,22);
 let result = pro.getRemovalCount();
-console.info('result = ' + result);
+console.info("result = " + result);
 // 输出结果：result = 0
 ```
 
@@ -691,8 +598,6 @@ isEmpty(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LRUCache-isEmpty(): boolean--><!--Device-LRUCache-isEmpty(): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -703,8 +608,6 @@ isEmpty(): boolean
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 let pro = new util.LRUCache<number, number>();
 pro.put(2, 10);
@@ -713,13 +616,11 @@ console.info('result = ' + result);
 // 输出结果：result = false
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-let pro = new util.LRUCache<int, int>();
-pro.put(2, 10);
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+pro.put(2,10);
 let result = pro.isEmpty();
-console.info('result = ' + result);
+console.info("result = " + result);
 // 输出结果：result = false
 ```
 
@@ -734,8 +635,6 @@ keys(): K[]
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LRUCache-keys(): K[]--><!--Device-LRUCache-keys(): K[]-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -765,6 +664,14 @@ console.info('result = ' + result);
 // 输出结果：result = 1,2,4,6,5,3
 ```
 
+```TypeScript
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+pro.put(2,10);
+let result = pro.keys();
+console.info("result = " + result);
+// 输出结果：result = 2
+```
+
 ## put
 
 ```TypeScript
@@ -776,8 +683,6 @@ put(key: K, value: V): V
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LRUCache-put(key: K, value: V): V--><!--Device-LRUCache-put(key: K, value: V): V-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -803,6 +708,13 @@ console.info('result = ' + result);
 // 输出结果：result = 10
 ```
 
+```TypeScript
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+let result = pro.put(2,10);
+console.info("result = " + result);
+// 输出结果：result = 10
+```
+
 ## remove
 
 ```TypeScript
@@ -814,8 +726,6 @@ remove(key: K): V | undefined
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LRUCache-remove(key: K): V | undefined--><!--Device-LRUCache-remove(key: K): V | undefined-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -829,11 +739,9 @@ remove(key: K): V | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| V | 如果 key 存在于缓存中，则返回包含被移除键值对的 **Optional** 对象；如果 key 不存在 则返回 **undefined**；如果 **key** 传入 **null**，则抛出错误。 |
+| V \| undefined | 如果 key 存在于缓存中，则返回包含被移除键值对的 **Optional** 对象；如果 key 不存在 则返回 **undefined**；如果 **key** 传入 **null**，则抛出错误。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 let pro = new util.LRUCache<number, number>();
@@ -843,13 +751,11 @@ console.info('result = ' + result);
 // 输出结果：result = undefined
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-let pro = new util.LRUCache<int, int>();
-pro.put(2, 10);
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+pro.put(2,10);
 let result = pro.remove(20);
-console.info('result = ' + result);
+console.info("result = " + result);
 // 输出结果：result = undefined
 ```
 
@@ -865,8 +771,6 @@ toString(): string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LRUCache-toString(): string--><!--Device-LRUCache-toString(): string-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -877,7 +781,21 @@ toString(): string
 
 **示例**
 
-ArkTS-Dyn示例：
+```TypeScript
+let rationalNumber = new util.RationalNumber(1,2);
+let result = rationalNumber.toString();
+console.info("result = " + result);
+// 输出结果：result = 1/2
+```
+
+API 9及以上建议使用以下写法：
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
+let result = rationalNumber.toString();
+console.info("result = " + result);
+// 输出结果：result = 1/2
+```
 
 ```TypeScript
 let pro = new util.LRUCache<number, number>();
@@ -889,16 +807,72 @@ console.info(pro.toString());
 // maxSize: 缓存区最大值 hits: 查询值匹配成功的次数 misses: 查询值匹配失败的次数 hitRate: 查询值匹配率
 ```
 
-ArkTS-Sta示例：
+```TypeScript
+class Temperature implements util.ScopeComparable {
+  private readonly _temp: number;
+
+  constructor(value: number) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp() {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+
+let tempLower = new Temperature(30);
+let tempUpper = new Temperature(40);
+let range = new util.ScopeHelper(tempLower, tempUpper);
+let result = range.toString();
+console.info("result = " + result);
+// 输出结果：result = [30, 40]
+```
 
 ```TypeScript
-let pro = new util.LRUCache<int, int>();
-pro.put(2, 10);
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+pro.put(2,10);
 pro.get(2);
-pro.get(3);
-console.info(pro.toString());
-// 输出结果：LRUCache[ maxSize = 64, hits = 1, misses = 1, hitRate = 50% ]
-// maxSize: 缓存区最大值 hits: 查询值匹配成功的次数 misses: 查询值匹配失败的次数 hitRate: 查询值匹配率
+pro.remove(20);
+let result = pro.toString();
+console.info("result = " + result);
+// 输出结果：result = Lrubuffer[ maxSize = 64, hits = 1, misses = 0, hitRate = 100% ]
+```
+
+```TypeScript
+class Temperature implements util.ScopeComparable {
+  private readonly _temp: number;
+
+  constructor(value: number) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp() {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+
+let tempLower = new Temperature(30);
+let tempUpper = new Temperature(40);
+let range = new util.Scope(tempLower, tempUpper);
+let result = range.toString();
+console.info("result = " + result);
+// 输出结果：result = [30, 40]
 ```
 
 ## updateCapacity
@@ -913,8 +887,6 @@ updateCapacity(newCapacity: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LRUCache-updateCapacity(newCapacity: number): void--><!--Device-LRUCache-updateCapacity(newCapacity: number): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -925,17 +897,13 @@ updateCapacity(newCapacity: number): void
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 let pro = new util.LRUCache<number, number>();
 pro.updateCapacity(100);
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-let pro = new util.LRUCache<int, int>();
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
 pro.updateCapacity(100);
 ```
 
@@ -950,8 +918,6 @@ values(): V[]
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LRUCache-values(): V[]--><!--Device-LRUCache-values(): V[]-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -981,6 +947,16 @@ console.info('result = ' + result);
 // 输出结果：result = C,D,E,F,A,B
 ```
 
+```TypeScript
+let pro : util.LruBuffer<number|string,number|string> = new util.LruBuffer();
+pro.put(2,10);
+pro.put(2,"anhu");
+pro.put("afaf","grfb");
+let result = pro.values();
+console.info("result = " + result);
+// 输出结果：result = anhu,grfb
+```
+
 ## length
 
 ```TypeScript
@@ -995,7 +971,4 @@ length: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LRUCache-length: number--><!--Device-LRUCache-length: number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

@@ -12,9 +12,6 @@ declare type Filter = import('../api/@ohos.graphics.uiEffect').default.Filter
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type Filter = import('../api/@ohos.graphics.uiEffect').default.Filter--><!--Device-unnamed-declare type Filter = import('../api/@ohos.graphics.uiEffect').default.Filter-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **属性类型：** import('../api/@ohos.graphics.uiEffect').default.Filter
-

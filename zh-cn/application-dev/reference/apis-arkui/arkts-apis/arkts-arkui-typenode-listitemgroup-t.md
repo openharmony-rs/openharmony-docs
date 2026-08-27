@@ -12,9 +12,6 @@ ListItemGroup类型的FrameNode节点类型。只允许添加ListItem类型子�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-type ListItemGroup = TypedFrameNode<ListItemGroupInterface, ListItemGroupAttribute>--><!--Device-typeNode-type ListItemGroup = TypedFrameNode<ListItemGroupInterface, ListItemGroupAttribute>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** TypedFrameNode<ListItemGroupInterface, ListItemGroupAttribute>
-
+**属性类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;ListItemGroupInterface, [ListItemGroupAttribute](../arkts-components/arkts-arkui-listitemgroup-attribute.md)&gt;

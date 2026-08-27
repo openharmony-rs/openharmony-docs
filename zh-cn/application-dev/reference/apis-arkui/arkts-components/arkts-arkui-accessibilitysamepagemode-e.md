@@ -1,10 +1,8 @@
 # AccessibilitySamePageMode
 
-当前跨进程嵌入式显示的组件和宿主应用的同page模式。
+当前跨进程嵌入式显示的组件和宿主应用的同page模式。 @enum { number }
 
 **起始版本：** 18
-
-<!--Device-unnamed-declare enum AccessibilitySamePageMode--><!--Device-unnamed-declare enum AccessibilitySamePageMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,8 +22,6 @@ SEMI_SILENT = 0
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-AccessibilitySamePageMode-SEMI_SILENT = 0--><!--Device-AccessibilitySamePageMode-SEMI_SILENT = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FULL_SILENT
@@ -44,7 +40,4 @@ FULL_SILENT = 1
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-AccessibilitySamePageMode-FULL_SILENT = 1--><!--Device-AccessibilitySamePageMode-FULL_SILENT = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

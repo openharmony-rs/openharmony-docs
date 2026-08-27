@@ -2,9 +2,7 @@
 
 单个导航栏或状态栏回调信息。
 
-**起始版本：** 23
-
-<!--Device-window-interface SystemBarRegionTint--><!--Device-window-interface SystemBarRegionTint-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -13,8 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -28,9 +24,7 @@ backgroundColor?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SystemBarRegionTint-backgroundColor?: string--><!--Device-SystemBarRegionTint-backgroundColor?: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -46,9 +40,7 @@ contentColor?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SystemBarRegionTint-contentColor?: string--><!--Device-SystemBarRegionTint-contentColor?: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -64,9 +56,7 @@ isEnable?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-SystemBarRegionTint-isEnable?: boolean--><!--Device-SystemBarRegionTint-isEnable?: boolean-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -82,9 +72,7 @@ region?: Rect
 
 **类型：** Rect
 
-**起始版本：** 23
-
-<!--Device-SystemBarRegionTint-region?: Rect--><!--Device-SystemBarRegionTint-region?: Rect-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -100,11 +88,8 @@ type: WindowType
 
 **类型：** WindowType
 
-**起始版本：** 23
-
-<!--Device-SystemBarRegionTint-type: WindowType--><!--Device-SystemBarRegionTint-type: WindowType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
-

@@ -1,10 +1,8 @@
 # SubMesh
 
-子网格类型。
+子网格类型。@interface SubMesh
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface SubMesh--><!--Device-unnamed-export interface SubMesh-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -18,9 +16,7 @@ readonly aabb: Aabb
 
 **类型：** [Aabb](arkts-arkgraphics3d-scenetypes-aabb-i.md)
 
-**起始版本：** 23
-
-<!--Device-SubMesh-readonly aabb: Aabb--><!--Device-SubMesh-readonly aabb: Aabb-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -34,9 +30,7 @@ material: Material
 
 **类型：** [Material](arkts-arkgraphics3d-sceneresources-material-i.md)
 
-**起始版本：** 23
-
-<!--Device-SubMesh-material: Material--><!--Device-SubMesh-material: Material-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -50,9 +44,6 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SubMesh-name: string--><!--Device-SubMesh-name: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

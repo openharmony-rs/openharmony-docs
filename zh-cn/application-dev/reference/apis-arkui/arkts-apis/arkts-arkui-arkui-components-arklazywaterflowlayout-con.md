@@ -14,8 +14,6 @@ export declare const LazyVWaterFlowLayout: LazyVWaterFlowLayoutInterface
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-export declare const LazyVWaterFlowLayout: LazyVWaterFlowLayoutInterface--><!--Device-unnamed-export declare const LazyVWaterFlowLayout: LazyVWaterFlowLayoutInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LazyVWaterFlowLayoutInstance
@@ -32,7 +30,4 @@ export declare const LazyVWaterFlowLayoutInstance: LazyVWaterFlowLayoutAttribute
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-export declare const LazyVWaterFlowLayoutInstance: LazyVWaterFlowLayoutAttribute--><!--Device-unnamed-export declare const LazyVWaterFlowLayoutInstance: LazyVWaterFlowLayoutAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

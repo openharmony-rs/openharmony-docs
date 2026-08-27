@@ -1,10 +1,8 @@
-# UIExtensionProxy(System API)（系统接口）
+# UIExtensionProxy（系统接口）
 
-该接口用于向UIExtensionAbility发送数据。<br/> 当UIExtensionAbility连接成功时，<br/> 它从UIExtensionComponent的onRemoteReady回调中返回。
+该接口用于向UIExtensionAbility发送数据。当UIExtensionAbility连接成功时，它从UIExtensionComponent的onRemoteReady回调中返回。
 
 **起始版本：** 10
-
-<!--Device-unnamed-declare interface UIExtensionProxy--><!--Device-unnamed-declare interface UIExtensionProxy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,8 +24,6 @@ off(type: 'asyncReceiverRegister', callback?: Callback<UIExtensionProxy>): void
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UIExtensionProxy-off(type: 'asyncReceiverRegister', callback?: Callback<UIExtensionProxy>): void--><!--Device-UIExtensionProxy-off(type: 'asyncReceiverRegister', callback?: Callback<UIExtensionProxy>): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,8 +48,6 @@ off(type: 'syncReceiverRegister', callback?: Callback<UIExtensionProxy>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UIExtensionProxy-off(type: 'syncReceiverRegister', callback?: Callback<UIExtensionProxy>): void--><!--Device-UIExtensionProxy-off(type: 'syncReceiverRegister', callback?: Callback<UIExtensionProxy>): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -76,8 +70,6 @@ on(type: 'asyncReceiverRegister', callback: Callback<UIExtensionProxy>): void
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UIExtensionProxy-on(type: 'asyncReceiverRegister', callback: Callback<UIExtensionProxy>): void--><!--Device-UIExtensionProxy-on(type: 'asyncReceiverRegister', callback: Callback<UIExtensionProxy>): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,8 +94,6 @@ on(type: 'syncReceiverRegister', callback: Callback<UIExtensionProxy>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UIExtensionProxy-on(type: 'syncReceiverRegister', callback: Callback<UIExtensionProxy>): void--><!--Device-UIExtensionProxy-on(type: 'syncReceiverRegister', callback: Callback<UIExtensionProxy>): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -127,8 +117,6 @@ send(data: Record<string, Object>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UIExtensionProxy-send(data: Record<string, Object>): void--><!--Device-UIExtensionProxy-send(data: Record<string, Object>): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -137,7 +125,7 @@ send(data: Record<string, Object>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record&lt;string, Object&gt; | 是 | 异步发送给被拉起的UIExtensionAbility的数据。 API version 18之前的版本，data的类型为Object。<br>**起始版本：** 18 |
+| data | Record & lt;string, Object & gt; | 是 | 异步发送给被拉起的UIExtensionAbility的数据。 API version 18之前的版本，data的类型为Object。<br>**起始版本：** 18 |
 
 ## sendSync
 
@@ -151,8 +139,6 @@ sendSync(data: Record<string, Object>): Record<string, Object>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UIExtensionProxy-sendSync(data: Record<string, Object>): Record<string, Object>--><!--Device-UIExtensionProxy-sendSync(data: Record<string, Object>): Record<string, Object>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -161,14 +147,14 @@ sendSync(data: Record<string, Object>): Record<string, Object>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record&lt;string, Object&gt; | 是 | 发送给UIExtensionAbility的数据。<br>**起始版本：** 18 |
+| data | Record & lt;string, Object & gt; | 是 | 发送给UIExtensionAbility的数据。<br>**起始版本：** 18 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | object | data - 从UIExtensionAbility传输回来的数据<br>**适用版本：** 11 - 17 |
-| Record&lt;string, Object&gt; | data - 从UIExtensionAbility传输回来的数据。<br>**适用版本：** 18+ |
+| Record & lt;string, Object & gt; | data - 从UIExtensionAbility传输回来的数据。<br>**适用版本：** 18+ |
 
 **错误码：**
 
@@ -176,4 +162,3 @@ sendSync(data: Record<string, Object>): Record<string, Object>
 | --- | --- |
 | [100011](../errorcode-uiextension.md#100011-未注册同步回调) | 没有注册响应该请求的回调。 |
 | [100012](../errorcode-uiextension.md#100012-数据发送失败) | 传输数据失败。 |
-

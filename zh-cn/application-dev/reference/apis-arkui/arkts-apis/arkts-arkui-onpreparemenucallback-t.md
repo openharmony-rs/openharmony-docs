@@ -12,19 +12,16 @@ type OnPrepareMenuCallback = (menuItems: Array<TextMenuItem>) => Array<TextMenuI
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-type OnPrepareMenuCallback = (menuItems: Array<TextMenuItem>) => Array<TextMenuItem>--><!--Device-unnamed-type OnPrepareMenuCallback = (menuItems: Array<TextMenuItem>) => Array<TextMenuItem>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| menuItems | Array&lt;[TextMenuItem](arkts-arkui-textmenuitem-i.md)&gt; | 是 | 将要显示的菜单项。 <br>**说明：** <br>对默认菜单项的名称、图标、快捷键提示修改不生效。 |
+| menuItems | Array&lt;[TextMenuItem](arkts-arkui-textmenuitem-i.md)&gt; | 是 | 将要显示的菜单项。  **说明：**  对默认菜单项的名称、图标、快捷键提示修改不生效。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | Array&lt;[TextMenuItem](arkts-arkui-textmenuitem-i.md)&gt; | 处理后的菜单项。 |
-

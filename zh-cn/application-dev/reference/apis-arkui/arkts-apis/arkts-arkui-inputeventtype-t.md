@@ -12,13 +12,10 @@ declare type InputEventType = TouchEvent | MouseEvent | AxisEvent
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type InputEventType = TouchEvent | MouseEvent | AxisEvent--><!--Device-unnamed-declare type InputEventType = TouchEvent | MouseEvent | AxisEvent-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | --- | --- |
 | TouchEvent | 触摸事件。 |
 | MouseEvent | 鼠标事件。 |
-| AxisEvent | 轴事件。 |
-
+| [AxisEvent](../arkts-components/arkts-arkui-axisevent-i.md) | 轴事件。 |

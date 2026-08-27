@@ -8,8 +8,6 @@
 
 **替代接口：** Navigation
 
-<!--Device-unnamed-declare enum NavigationType--><!--Device-unnamed-declare enum NavigationType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Push
@@ -18,7 +16,8 @@
 Push
 ```
 
-跳转到应用内的指定页面。 **说明：**&lt;br/
+跳转到应用内的指定页面。  
+**说明：**&lt;br/
 
 **起始版本：** 7
 
@@ -27,8 +26,6 @@ Push
 **替代接口：** pushPath
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NavigationType-Push--><!--Device-NavigationType-Push-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,8 +43,6 @@ Back
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NavigationType-Back--><!--Device-NavigationType-Back-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Replace
@@ -64,7 +59,4 @@ Replace
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NavigationType-Replace--><!--Device-NavigationType-Replace-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

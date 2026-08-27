@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { prompt } from '@kit.ArkUI';
-import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 ```
 
 ## showToast
@@ -20,8 +19,6 @@ function showToast(options: ShowToastOptions): void
 **废弃版本：** 9
 
 **替代接口：** showToast
-
-<!--Device-prompt-function showToast(options: ShowToastOptions): void--><!--Device-prompt-function showToast(options: ShowToastOptions): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,4 +37,3 @@ prompt.showToast({
   duration: 2000
 });
 ```
-

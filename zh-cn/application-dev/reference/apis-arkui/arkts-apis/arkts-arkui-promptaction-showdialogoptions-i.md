@@ -4,8 +4,6 @@
 
 **起始版本：** 9
 
-<!--Device-promptAction-interface ShowDialogOptions--><!--Device-promptAction-interface ShowDialogOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -20,17 +18,16 @@ import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 alignment?: DialogAlignment
 ```
 
-对话框在竖直方向上的对齐方式。 <br/>默认值：DialogAlignment.Default <br/>**说明：** <br/>若在UIExtension中设置showInSubWindow为true, 弹窗将基于UIExtension的宿主窗口对齐。
+对话框在竖直方向上的对齐方式。 默认值：DialogAlignment.Default   
+**说明：** 若在UIExtension中设置showInSubWindow为true, 弹窗将基于UIExtension的宿主窗口对齐。
 
-**类型：** DialogAlignment
+**类型：** [DialogAlignment](arkts-arkui-dialogalignment-e.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowDialogOptions-alignment?: DialogAlignment--><!--Device-ShowDialogOptions-alignment?: DialogAlignment-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +37,8 @@ alignment?: DialogAlignment
 backgroundBlurStyle?: BlurStyle
 ```
 
-对话框背板模糊材质。 <br/>默认值：从API版本26.0.0开始，为BlurStyle.NONE，API版本26.0.0之前，为BlurStyle.COMPONENT_ULTRA_THICK。 <br/>**说明：** <br/>设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。
+对话框背板模糊材质。 默认值：从API版本26.0.0开始，为BlurStyle.NONE，API版本26.0.0之前，为BlurStyle.COMPONENT_ULTRA_THICK。   
+**说明：** 设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。
 
 **类型：** BlurStyle
 
@@ -52,8 +50,6 @@ backgroundBlurStyle?: BlurStyle
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ShowDialogOptions-backgroundBlurStyle?: BlurStyle--><!--Device-ShowDialogOptions-backgroundBlurStyle?: BlurStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundBlurStyleOptions
@@ -64,15 +60,13 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。
 
-**类型：** BackgroundBlurStyleOptions
+**类型：** [BackgroundBlurStyleOptions](../arkts-components/arkts-arkui-backgroundblurstyleoptions-i.md)
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowDialogOptions-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions--><!--Device-ShowDialogOptions-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,9 +76,10 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 backgroundColor?: ResourceColor
 ```
 
-对话框背板颜色。 <br/>默认值：Color.Transparent <br/>**说明：** <br/>backgroundColor会与模糊属性backgroundBlurStyle叠加产生效果，如果不符合预期，可将backgroundBlurStyle设置为BlurStyle.NONE，即可取消模糊。
+对话框背板颜色。 默认值：Color.Transparent   
+**说明：** backgroundColor会与模糊属性backgroundBlurStyle叠加产生效果，如果不符合预期，可将backgroundBlurStyle设置为BlurStyle.NONE，即可取消模糊。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
 **默认值：** Color.Transparent
 
@@ -93,8 +88,6 @@ backgroundColor?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowDialogOptions-backgroundColor?: ResourceColor--><!--Device-ShowDialogOptions-backgroundColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,15 +99,13 @@ backgroundEffect?: BackgroundEffectOptions
 
 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。
 
-**类型：** BackgroundEffectOptions
+**类型：** [BackgroundEffectOptions](../arkts-components/arkts-arkui-backgroundeffectoptions-i.md)
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowDialogOptions-backgroundEffect?: BackgroundEffectOptions--><!--Device-ShowDialogOptions-backgroundEffect?: BackgroundEffectOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,8 +123,6 @@ buttons?: Array<Button>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ShowDialogOptions-buttons?: Array<Button>--><!--Device-ShowDialogOptions-buttons?: Array<Button>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableHoverMode
@@ -142,7 +131,8 @@ buttons?: Array<Button>
 enableHoverMode?: boolean
 ```
 
-是否响应悬停态，值为true时，响应悬停态。 &lt;br /&gt;默认值：false，默认不响应。 &lt;br /&gt;**说明：** &lt;br /&gt;PC/2in1设备弹窗默认显示在上半屏，在enableHoverMode设置为true时，可以通过设置hoverModeArea参数显示在下半屏。 其他设备弹窗在enableHoverMode设置为true时默认显示在下半屏，可以通过设置hoverModeArea参数显示在上半屏。
+是否响应悬停态，值为true时，响应悬停态。 默认值：false，默认不响应。   
+**说明：** PC/2in1设备弹窗默认显示在上半屏，在enableHoverMode设置为true时，可以通过设置hoverModeArea参数显示在下半屏。 其他设备弹窗在enableHoverMode设置为true时默认显示在下半屏，可以通过设置hoverModeArea参数显示在上半屏。
 
 **类型：** boolean
 
@@ -154,8 +144,6 @@ enableHoverMode?: boolean
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ShowDialogOptions-enableHoverMode?: boolean--><!--Device-ShowDialogOptions-enableHoverMode?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## hoverModeArea
@@ -164,9 +152,9 @@ enableHoverMode?: boolean
 hoverModeArea?: HoverModeAreaType
 ```
 
-设置悬停态下对话框的默认展示区域。 &lt;br /&gt;默认值：HoverModeAreaType.BOTTOM_SCREEN
+设置悬停态下对话框的默认展示区域。 默认值：HoverModeAreaType.BOTTOM_SCREEN
 
-**类型：** HoverModeAreaType
+**类型：** [HoverModeAreaType](../arkts-components/arkts-arkui-hovermodeareatype-e.md)
 
 **默认值：** HoverModeAreaType.BOTTOM_SCREEN
 
@@ -176,8 +164,6 @@ hoverModeArea?: HoverModeAreaType
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ShowDialogOptions-hoverModeArea?: HoverModeAreaType--><!--Device-ShowDialogOptions-hoverModeArea?: HoverModeAreaType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## immersiveMode
@@ -186,9 +172,12 @@ hoverModeArea?: HoverModeAreaType
 immersiveMode?: ImmersiveMode
 ```
 
-设置页面内对话框蒙层效果。 &lt;br /&gt;**说明：** &lt;br /&gt;- 默认值：ImmersiveMode.DEFAULT &lt;br /&gt;- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
+设置页面内对话框蒙层效果。   
+**说明：**
+- 默认值：ImmersiveMode.DEFAULT
+- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
 
-**类型：** [ImmersiveMode](../../apis-na/arkts-apis/arkts-na-promptaction-immersivemode-e.md)
+**类型：** [ImmersiveMode](arkts-arkui-promptaction-immersivemode-e.md)
 
 **默认值：** ImmersiveMode.DEFAULT
 
@@ -198,8 +187,6 @@ immersiveMode?: ImmersiveMode
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ShowDialogOptions-immersiveMode?: ImmersiveMode--><!--Device-ShowDialogOptions-immersiveMode?: ImmersiveMode-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isModal
@@ -208,7 +195,7 @@ immersiveMode?: ImmersiveMode
 isModal?: boolean
 ```
 
-对话框是否为模态窗口。值为true表示为模态窗口且有蒙层，不可与对话框周围其他控件进行交互，即蒙层区域无法事件透传。 值为false表示为非模态窗口且无蒙层，可以与对话框周围其他控件进行交互。 <br/>默认值：true
+对话框是否为模态窗口。值为true表示为模态窗口且有蒙层，不可与对话框周围其他控件进行交互，即蒙层区域无法事件透传。 值为false表示为非模态窗口且无蒙层，可以与对话框周围其他控件进行交互。 默认值：true
 
 **类型：** boolean
 
@@ -220,8 +207,6 @@ isModal?: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ShowDialogOptions-isModal?: boolean--><!--Device-ShowDialogOptions-isModal?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelMode
@@ -230,9 +215,12 @@ isModal?: boolean
 levelMode?: LevelMode
 ```
 
-设置对话框显示层级。 &lt;br /&gt;**说明：** &lt;br /&gt;- 默认值：LevelMode.OVERLAY &lt;br /&gt;- 当且仅当showInSubWindow属性设置为false时生效。
+设置对话框显示层级。   
+**说明：**
+- 默认值：LevelMode.OVERLAY
+- 当且仅当showInSubWindow属性设置为false时生效。
 
-**类型：** [LevelMode](../../apis-na/arkts-apis/arkts-na-promptaction-levelmode-e.md)
+**类型：** [LevelMode](arkts-arkui-promptaction-levelmode-e.md)
 
 **默认值：** LevelMode.OVERLAY
 
@@ -242,8 +230,6 @@ levelMode?: LevelMode
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ShowDialogOptions-levelMode?: LevelMode--><!--Device-ShowDialogOptions-levelMode?: LevelMode-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelOrder
@@ -252,9 +238,12 @@ levelMode?: LevelMode
 levelOrder?: LevelOrder
 ```
 
-设置对话框显示的顺序。 &lt;br /&gt;**说明：** &lt;br /&gt;- 默认值：LevelOrder.clamp(0) &lt;br /&gt;- 不支持动态刷新顺序。
+设置对话框显示的顺序。   
+**说明：**
+- 默认值：LevelOrder.clamp(0)
+- 不支持动态刷新顺序。
 
-**类型：** [LevelOrder](../../apis-na/arkts-apis/arkts-na-promptaction-levelorder-c.md)
+**类型：** [LevelOrder](arkts-arkui-promptaction-levelorder-c.md)
 
 **默认值：** The value returned by LevelOrder.clamp(0)
 
@@ -264,8 +253,6 @@ levelOrder?: LevelOrder
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ShowDialogOptions-levelOrder?: LevelOrder--><!--Device-ShowDialogOptions-levelOrder?: LevelOrder-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelUniqueId
@@ -274,7 +261,9 @@ levelOrder?: LevelOrder
 levelUniqueId?: number
 ```
 
-置页面级对话框需要显示的层级下的节点UniqueID。 <br/>取值范围：大于等于0的数字。 &lt;br /&gt;**说明：** &lt;br /&gt;- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
+置页面级对话框需要显示的层级下的节点UniqueID。 取值范围：大于等于0的数字。   
+**说明：**
+- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
 
 **类型：** number
 
@@ -284,8 +273,6 @@ levelUniqueId?: number
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ShowDialogOptions-levelUniqueId?: number--><!--Device-ShowDialogOptions-levelUniqueId?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## maskRect
@@ -294,17 +281,16 @@ levelUniqueId?: number
 maskRect?: Rectangle
 ```
 
-对话框遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。 <br/>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } <br/>**说明：** <br/>showInSubWindow为true时，maskRect不生效。 <br/>maskRect在设置[Rectangle](../arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明)中的部分属性后，若未设置其余的属性， 则其余属性的默认值为0。
+对话框遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。 默认值：{ x: 0, y: 0, width: '100%', height: '100%' }   
+**说明：** showInSubWindow为true时，maskRect不生效。 maskRect在设置[Rectangle](../arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明)中的部分属性后，若未设置其余的属性， 则其余属性的默认值为0。
 
-**类型：** Rectangle
+**类型：** [Rectangle](../arkts-components/arkts-arkui-rectangle-i.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowDialogOptions-maskRect?: Rectangle--><!--Device-ShowDialogOptions-maskRect?: Rectangle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -314,15 +300,13 @@ maskRect?: Rectangle
 message?: string | Resource
 ```
 
-内容文本。<br/>默认值：undefined，取值为undefined默认不显示内容。
+内容文本。默认值：undefined，取值为undefined默认不显示内容。
 
 **类型：** string \| Resource
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowDialogOptions-message?: string | Resource--><!--Device-ShowDialogOptions-message?: string | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -332,7 +316,7 @@ message?: string | Resource
 offset?: Offset
 ```
 
-对话框相对alignment所在位置的偏移量。 <br/>默认值：{&nbsp;dx:&nbsp;0&nbsp;,&nbsp;dy:&nbsp;0&nbsp;}
+对话框相对alignment所在位置的偏移量。 默认值：{&nbsp;dx:&nbsp;0&nbsp;,&nbsp;dy:&nbsp;0&nbsp;}
 
 **类型：** Offset
 
@@ -342,8 +326,6 @@ offset?: Offset
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ShowDialogOptions-offset?: Offset--><!--Device-ShowDialogOptions-offset?: Offset-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDidAppear
@@ -352,17 +334,20 @@ offset?: Offset
 onDidAppear?: Callback<void>
 ```
 
-对话框弹出后的事件回调。 &lt;br /&gt;**说明：** &lt;br /&gt;1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。 &lt;br /&gt;2.在onDidAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。 &lt;br /&gt;3.快速点击弹出，关闭对话框时，onWillDisappear在onDidAppear前生效。 <br/>4.对话框入场动效未完成时彻底关闭对话框，动效打断，onDidAppear不会触发。
+对话框弹出后的事件回调。   
+**说明：**
+1.正常时序依次为：onWillAppear&gt;&gt;onDidAppear&gt;&gt;onWillDisappear&gt;&gt;onDidDisappear。 
+2.在onDidAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。 
+3.快速点击弹出，关闭对话框时，onWillDisappear在onDidAppear前生效。 
+4.对话框入场动效未完成时彻底关闭对话框，动效打断，onDidAppear不会触发。
 
-**类型：** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt;
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowDialogOptions-onDidAppear?: Callback<void>--><!--Device-ShowDialogOptions-onDidAppear?: Callback<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -372,17 +357,17 @@ onDidAppear?: Callback<void>
 onDidDisappear?: Callback<void>
 ```
 
-对话框消失后的事件回调。 &lt;br /&gt;**说明：** &lt;br /&gt;1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。
+对话框消失后的事件回调。   
+**说明：**
+1.正常时序依次为：onWillAppear&gt;&gt;onDidAppear&gt;&gt;onWillDisappear&gt;&gt;onDidDisappear。
 
-**类型：** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt;
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowDialogOptions-onDidDisappear?: Callback<void>--><!--Device-ShowDialogOptions-onDidDisappear?: Callback<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -392,17 +377,18 @@ onDidDisappear?: Callback<void>
 onWillAppear?: Callback<void>
 ```
 
-对话框显示动效前的事件回调。 &lt;br /&gt;**说明：** &lt;br /&gt;1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。 &lt;br /&gt;2.在onWillAppear内设置改变对话框显示效果的回调事件，二次弹出生效。
+对话框显示动效前的事件回调。   
+**说明：**
+1.正常时序依次为：onWillAppear&gt;&gt;onDidAppear&gt;&gt;onWillDisappear&gt;&gt;onDidDisappear。 
+2.在onWillAppear内设置改变对话框显示效果的回调事件，二次弹出生效。
 
-**类型：** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt;
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowDialogOptions-onWillAppear?: Callback<void>--><!--Device-ShowDialogOptions-onWillAppear?: Callback<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -412,17 +398,17 @@ onWillAppear?: Callback<void>
 onWillDisappear?: Callback<void>
 ```
 
-对话框退出动效前的事件回调。 &lt;br /&gt;**说明：** &lt;br /&gt;1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。
+对话框退出动效前的事件回调。   
+**说明：**
+1.正常时序依次为：onWillAppear&gt;&gt;onDidAppear&gt;&gt;onWillDisappear&gt;&gt;onDidDisappear。
 
-**类型：** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt;
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowDialogOptions-onWillDisappear?: Callback<void>--><!--Device-ShowDialogOptions-onWillDisappear?: Callback<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -432,17 +418,15 @@ onWillDisappear?: Callback<void>
 shadow?: ShadowOptions | ShadowStyle
 ```
 
-设置对话框背板的阴影。 &lt;br /&gt; 当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。
+设置对话框背板的阴影。 当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。
 
-**类型：** ShadowOptions \| ShadowStyle
+**类型：** [ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md) \| [ShadowStyle](../arkts-components/arkts-arkui-shadowstyle-e.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowDialogOptions-shadow?: ShadowOptions | ShadowStyle--><!--Device-ShowDialogOptions-shadow?: ShadowOptions | ShadowStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -452,7 +436,8 @@ shadow?: ShadowOptions | ShadowStyle
 showInSubWindow?: boolean
 ```
 
-某对话框需要显示在主窗口之外时，是否在子窗口显示此对话框。值为true表示在子窗口显示对话框。 <br/>默认值：false，对话框显示在应用内，而非独立子窗口。 <br/>**说明：** showInSubWindow为true的对话框无法触发显示另一个showInSubWindow为true的对话框。
+某对话框需要显示在主窗口之外时，是否在子窗口显示此对话框。值为true表示在子窗口显示对话框。 默认值：false，对话框显示在应用内，而非独立子窗口。   
+**说明：** showInSubWindow为true的对话框无法触发显示另一个showInSubWindow为true的对话框。
 
 **类型：** boolean
 
@@ -464,8 +449,6 @@ showInSubWindow?: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ShowDialogOptions-showInSubWindow?: boolean--><!--Device-ShowDialogOptions-showInSubWindow?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## systemMaterial
@@ -474,17 +457,18 @@ showInSubWindow?: boolean
 systemMaterial?: SystemUiMaterial
 ```
 
-设置弹窗的系统材质。 &lt;br /&gt;**说明：** <br/>- 默认值：[ImmersiveOptions](arkts-arkui-uimaterial-immersiveoptions-i.md)的style为ImmersiveStyle.ULTRA_THICK的 [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)对象。设置undefined时与默认值保持一致。 <br/>- 不同的材质具有不同的效果，该接口影响 背景色[backgroundColor](../arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、 背景模糊[backgroundBlurStyle](../arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)、 背景效果[backgroundEffect](../arkui-ts/ts-universal-attributes-background.md#backgroundeffect11)、 阴影[shadow](../arkui-ts/ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。
+设置弹窗的系统材质。   
+**说明：**
+- 默认值：[ImmersiveOptions](arkts-arkui-uimaterial-immersiveoptions-i.md)的style为ImmersiveStyle.ULTRA_THICK的 [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)对象。设置undefined时与默认值保持一致。
+- 不同的材质具有不同的效果，该接口影响 背景色[backgroundColor](../arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、 背景模糊[backgroundBlurStyle](../arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)、 背景效果[backgroundEffect](../arkui-ts/ts-universal-attributes-background.md#backgroundeffect11)、 阴影[shadow](../arkui-ts/ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。
 
-**类型：** SystemUiMaterial
+**类型：** [SystemUiMaterial](../arkts-components/arkts-arkui-systemuimaterial-t-sys.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowDialogOptions-systemMaterial?: SystemUiMaterial--><!--Device-ShowDialogOptions-systemMaterial?: SystemUiMaterial-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -494,7 +478,7 @@ systemMaterial?: SystemUiMaterial
 title?: string | Resource
 ```
 
-标题文本。<br/>默认值：undefined，取值为undefined默认不显示标题。
+标题文本。默认值：undefined，取值为undefined默认不显示标题。
 
 **类型：** string \| Resource
 
@@ -502,7 +486,4 @@ title?: string | Resource
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ShowDialogOptions-title?: string | Resource--><!--Device-ShowDialogOptions-title?: string | Resource-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

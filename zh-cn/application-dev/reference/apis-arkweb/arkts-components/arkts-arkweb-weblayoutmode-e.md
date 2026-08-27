@@ -4,8 +4,6 @@ Web布局模式的配置，用于控制Web内容的页面布局方式，帮助�
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare enum WebLayoutMode--><!--Device-unnamed-declare enum WebLayoutMode-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## NONE
@@ -19,8 +17,6 @@ Web布局跟随系统。适用于传统网页布局场景，保持与系统默�
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WebLayoutMode-NONE = 0--><!--Device-WebLayoutMode-NONE = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,7 +32,4 @@ Web基于页面大小的自适应网页布局。适用于需要根据屏幕尺�
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-WebLayoutMode-FIT_CONTENT = 1--><!--Device-WebLayoutMode-FIT_CONTENT = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

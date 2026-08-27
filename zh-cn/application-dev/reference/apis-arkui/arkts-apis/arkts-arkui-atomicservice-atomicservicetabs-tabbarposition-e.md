@@ -1,10 +1,8 @@
-# TabBarPosition(Provides an advanced struct of tabs for atomic services)
+# TabBarPosition
 
 设置页签栏位置，默认值为TabBarPosition.BOTTOM。
 
 **起始版本：** 12
-
-<!--Device-unnamed-export declare enum TabBarPosition--><!--Device-unnamed-export declare enum TabBarPosition-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,8 +18,6 @@ LEFT = 0
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TabBarPosition-LEFT = 0--><!--Device-TabBarPosition-LEFT = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOTTOM
@@ -36,7 +32,4 @@ BOTTOM = 1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TabBarPosition-BOTTOM = 1--><!--Device-TabBarPosition-BOTTOM = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

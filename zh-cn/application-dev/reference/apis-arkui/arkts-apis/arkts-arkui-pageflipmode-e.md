@@ -1,10 +1,8 @@
 # PageFlipMode
 
-Page flip mode of Swiper and Tabs on mouse wheel event.
+Page flip mode of Swiper and Tabs on mouse wheel event.@enum { number } PageFlipMode
 
 **起始版本：** 15
-
-<!--Device-unnamed-declare enum PageFlipMode--><!--Device-unnamed-declare enum PageFlipMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,8 +22,6 @@ Turn pages continuously according to the number of mouse wheel events.
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-PageFlipMode-CONTINUOUS = 0--><!--Device-PageFlipMode-CONTINUOUS = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SINGLE
@@ -44,7 +40,4 @@ The page-turning animation remains unresponsive to other mouse wheel events unti
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-PageFlipMode-SINGLE = 1--><!--Device-PageFlipMode-SINGLE = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

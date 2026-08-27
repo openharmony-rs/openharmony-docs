@@ -4,8 +4,6 @@ An enumeration type that identifies the current node's rendering state. The UI c
 
 **起始版本：** 20
 
-<!--Device-unnamed-export const enum NodeRenderState--><!--Device-unnamed-export const enum NodeRenderState-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ABOUT_TO_RENDER_IN
@@ -21,8 +19,6 @@ The node has been mount on to the render tree and will soon be rendered. General
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NodeRenderState-ABOUT_TO_RENDER_IN = 0--><!--Device-NodeRenderState-ABOUT_TO_RENDER_IN = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +36,4 @@ The node has been removed from the render tree and will no longer be rendered sh
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NodeRenderState-ABOUT_TO_RENDER_OUT = 1--><!--Device-NodeRenderState-ABOUT_TO_RENDER_OUT = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-display-enum CornerType--><!--Device-display-enum CornerType-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## TOP_LEFT
@@ -19,8 +17,6 @@ TOP_LEFT = 0
 **起始版本：** 23
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CornerType-TOP_LEFT = 0--><!--Device-CornerType-TOP_LEFT = 0-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -36,8 +32,6 @@ TOP_RIGHT = 1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CornerType-TOP_RIGHT = 1--><!--Device-CornerType-TOP_RIGHT = 1-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## BOTTOM_RIGHT
@@ -51,8 +45,6 @@ BOTTOM_RIGHT  = 2
 **起始版本：** 23
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CornerType-BOTTOM_RIGHT  = 2--><!--Device-CornerType-BOTTOM_RIGHT  = 2-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -68,7 +60,4 @@ BOTTOM_LEFT  = 3
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CornerType-BOTTOM_LEFT  = 3--><!--Device-CornerType-BOTTOM_LEFT  = 3-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
-

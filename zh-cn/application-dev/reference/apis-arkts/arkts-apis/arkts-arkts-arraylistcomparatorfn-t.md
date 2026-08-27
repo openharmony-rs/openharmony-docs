@@ -1,7 +1,7 @@
 # ArrayListComparatorFn
 
 ```TypeScript
-export type ArrayListComparatorFn<T> = (firstValue: T, secondValue: T) => double
+export type ArrayListComparatorFn<T> = (firstValue: T, secondValue: T) => number
 ```
 
 ArrayList中sort方法的比较器类型。
@@ -11,8 +11,6 @@ ArrayList中sort方法的比较器类型。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-unnamed-export type ArrayListComparatorFn<T> = (firstValue: T, secondValue: T) => double--><!--Device-unnamed-export type ArrayListComparatorFn<T> = (firstValue: T, secondValue: T) => double-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -27,5 +25,4 @@ ArrayList中sort方法的比较器类型。
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 通过回调函数返回的值，ArrayList根据该比较规则维护元素的顺序。返回负数表示firstValue小于secondValue（firstValue排在secondValue之前）， 返回0表示两者相等，返回正数表示firstValue大于secondValue（firstValue排在secondValue之后）。 |
-
+| number | 通过回调函数返回的值，ArrayList根据该比较规则维护元素的顺序。返回负数表示firstValue小于secondValue（firstValue排在secondValue之前）， 返回0表示两者相等，返回正数表示firstValue大于secondValue（firstValue排在secondValue之后）。 |

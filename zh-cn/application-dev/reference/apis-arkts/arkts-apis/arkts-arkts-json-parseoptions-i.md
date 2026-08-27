@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-json-interface ParseOptions--><!--Device-json-interface ParseOptions-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
@@ -28,7 +26,4 @@ bigIntMode: BigIntMode
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ParseOptions-bigIntMode: BigIntMode--><!--Device-ParseOptions-bigIntMode: BigIntMode-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

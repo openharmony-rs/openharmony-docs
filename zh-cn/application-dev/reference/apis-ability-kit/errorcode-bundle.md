@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 17700001 指定的bundleName不存在
 
@@ -29,7 +29,7 @@ The specified bundle name is not found.
 **处理步骤**
 
 1. 检查bundleName拼写是否正确。
-2. 可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看应用是否安装。查看输出的打印信息，应用未安装时，该命令执行会报错。
+2. 可以使用查询应用信息命令（dump）查看应用是否安装。查看输出的打印信息，应用未安装时，该命令执行会报错。
     ```shell
     # 需要将com.xxx.demo替换为实际查询的bundleName
     hdc shell bm dump -n com.xxx.demo
@@ -53,7 +53,7 @@ The specified module name is not found.
 **处理步骤**
 
 1. 检查moduleName拼写是否正确。
-2. 可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看对应的模块是否安装。查看输出的打印信息中hapModuleNames字段对应的列表是否存在该moduleName，不存在则说明应用未安装该模块。
+2. 可以使用查询应用信息命令（dump）查看对应的模块是否安装。查看输出的打印信息中hapModuleNames字段对应的列表是否存在该moduleName，不存在则说明应用未安装该模块。
     ```shell
     # 需要将com.xxx.demo替换为实际查询的bundleName
     hdc shell bm dump -n com.xxx.demo
@@ -78,8 +78,8 @@ The specified ability name is not found.
 **处理步骤**
 
 1. 检查abilityName拼写是否正确。
-2. 可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看对应的应用是否存在这个abilityName。查看输出的打印信息中hapModuleInfos字段对应的abilityInfos下是否包含name等于该abilityName，不包含则说明该abilityName不存在。
-3. 可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看输出的打印信息中hapModuleNames字段对应的列表是否存在对应的moduleName，不存在则说明应用未安装该模块，对应模块下的ability也不存在。
+2. 可以使用查询应用信息命令（dump）查看对应的应用是否存在这个abilityName。查看输出的打印信息中hapModuleInfos字段对应的abilityInfos下是否包含name等于该abilityName，不包含则说明该abilityName不存在。
+3. 可以使用查询应用信息命令（dump）查看输出的打印信息中hapModuleNames字段对应的列表是否存在对应的moduleName，不存在则说明应用未安装该模块，对应模块下的ability也不存在。
     ```shell
     # 需要将com.xxx.demo替换为实际查询的bundleName
     hdc shell bm dump -n com.xxx.demo
@@ -179,7 +179,7 @@ Failed to install the HAP because the HAP fails to be parsed.
 1. HAP或APP的格式不是zip格式。
 2. HAP的配置文件不满足json格式。
 3. HAP的配置文件缺少必要的字段。
-4. HAP中配置了可执行二进制文件（即module.json5中配置了[executableBinaryPaths标签](../../quick-start/module-configuration-file.md#executablebinarypaths标签)），但是没有配置解压模式，或当前设备不支持安装配置了该标签的HAP。
+4. HAP中配置了可执行二进制文件（即module.json5中配置了executableBinaryPaths标签），但是没有配置解压模式，或当前设备不支持安装配置了该标签的HAP。
 5. 传入的安装路径中或目录下存在多个APP。
 6. APP中不包含适合在当前设备类型上安装的HAP。
 7. 应用配置了skill，但配置的skill名称、skill目录名与SKILL.md中frontmatter的name不一致。
@@ -187,9 +187,9 @@ Failed to install the HAP because the HAP fails to be parsed.
 **处理步骤**
 
 1. 确认HAP或APP的格式是zip。
-2. 确认HAP的配置文件满足[配置文件json格式](../../quick-start/application-configuration-file-overview-stage.md)。
+2. 确认HAP的配置文件满足配置文件json格式。
 3. 检查DevEco Studio编译HAP或APP时是否有错误提示，缺省字段时会有相应的报错。
-4. 配置应用为解压模式，即在应用的[module.json5配置文件](../../quick-start/module-configuration-file.md#配置文件标签)中设置compressNativeLibs标签为true；或更换为PC/2in1设备。
+4. 配置应用为解压模式，即在应用的module.json5配置文件中设置compressNativeLibs标签为true；或更换为PC/2in1设备。
 5. 检查传入的路径下是否包含多个APP。
 6. 确认APP内是否存在支持当前设备类型的HAP。
 7. 检查module.json中skillProfiles下skill的name、skills目录下的子目录名称、SKILL.md中frontmatter的name，确保三者一致。
@@ -295,7 +295,7 @@ Failed to install the HAP since the version of the HAP to install is too early.
 
 确认新安装的应用版本号是否不低于已安装的同应用版本号。
 
-1. 已安装应用版本号查询，依赖[hdc工具](../../dfx/hdc.md#环境准备)。执行命令行后会输出已安装应用的版本号versionCode，如果输出多个versionCode，选择大于0的。如果该命令无打印值输出，表示应用未安装。
+1. 已安装应用版本号查询，依赖hdc工具。执行命令行后会输出已安装应用的版本号versionCode，如果输出多个versionCode，选择大于0的。如果该命令无打印值输出，表示应用未安装。
     ```shell
     # 需要将com.xxx.demo替换为查询的bundleName
     hdc shell "bm dump -n com.xxx.demo |grep versionCode"
@@ -361,7 +361,7 @@ The specified uid is invalid.
 
 **处理步骤**
 
-检查系统中是否存在对应的应用uid值。可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看已安装应用的uid。执行命令行后会输出对应已安装应用的uid，如果输出多个uid，选择大于0的。如果该命令无打印值输出，表示应用未安装。
+检查系统中是否存在对应的应用uid值。可以使用查询应用信息命令（dump）查看已安装应用的uid。执行命令行后会输出对应已安装应用的uid，如果输出多个uid，选择大于0的。如果该命令无打印值输出，表示应用未安装。
 ```shell
 # 需要将com.xxx.demo替换为实际查询的bundleName
 hdc shell "bm dump -n com.xxx.demo |grep uid"
@@ -517,7 +517,7 @@ The specified ability is disabled.
 
 **处理步骤**
 
-确认指定的ability是否被禁用，可以使用[bm工具](../../tools/bm-tool.md)查询对应的应用信息。
+确认指定的ability是否被禁用，可以使用bm工具查询对应的应用信息。
 <!--Del-->
 ## 17700030 指定的应用不支持清除缓存文件
 
@@ -535,8 +535,8 @@ The specified bundle does not support clearing of cache files.
 
 **处理步骤**
 
-1. 确认指定的应用是否为系统应用，可以使用[bm工具](../../tools/bm-tool.md)查询对应的应用信息，查看isSystemApp是否为true。
-2. 确认指定的应用是否配置了能清除缓存(AllowAppDataNotCleared)的字段，可以使用[bm工具](../../tools/bm-tool.md)查询对应的应用信息，查看userDataClearable是否为true。
+1. 确认指定的应用是否为系统应用，可以使用bm工具查询对应的应用信息，查看isSystemApp是否为true。
+2. 确认指定的应用是否配置了能清除缓存(AllowAppDataNotCleared)的字段，可以使用bm工具查询对应的应用信息，查看userDataClearable是否为true。
 
 ## 17700031 Overlay特征校验失败导致HAP安装失败
 
@@ -703,7 +703,7 @@ Failed to install the HSP because installing a shared bundle specified by hapFil
 
 **可能原因**
 
-1. 通过[bm工具](../../tools/bm-tool.md)安装应用时，-p参数传入了应用间共享库的安装包路径。
+1. 通过bm工具安装应用时，-p参数传入了应用间共享库的安装包路径。
 2. 通过install接口安装应用时，hapFilePaths参数传入了应用间共享库的安装包路径。
 
 **处理步骤**
@@ -722,7 +722,7 @@ The specified bundle is a shared bundle which cannot be uninstalled.
 
 **可能原因**
 
-1. 通过[bm工具](../../tools/bm-tool.md)卸载应用时，-n参数传入了应用间共享库的包名。
+1. 通过bm工具卸载应用时，-n参数传入了应用间共享库的包名。
 2. 通过uninstall接口卸载应用时，bundleName传入的是应用间共享库的包名。
 
 **处理步骤**
@@ -836,7 +836,7 @@ Failed to install the HAP because the VersionCode to be updated is not greater t
 
 **处理步骤**
 
-1. 设置应用的版本号大于当前版本，查看版本号的方法请参考错误码[17700017](#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败)的操作步骤。
+1. 设置应用的版本号大于当前版本，查看版本号的方法请参考错误码17700017的操作步骤。
 2. 如果希望应用更新但版本号不升级，需要设置installFlag为REPLACE_EXISTING。
 <!--DelEnd-->
 
@@ -890,7 +890,7 @@ Failed to install the HAP because an enterprise normal/MDM bundle cannot be inst
 
 **可能原因**
 
-当前设备不允许安装[Profile签名文件](../../security/app-provision-structure.md)中如下两种类型的应用：enterprise_mdm（企业MDM应用）、enterprise_normal（普通企业应用）。Profile签名文件类型的取值及含义请参考ApplicationInfo.appDistributionType。
+当前设备不允许安装Profile签名文件中如下两种类型的应用：enterprise_mdm（企业MDM应用）、enterprise_normal（普通企业应用）。Profile签名文件类型的取值及含义请参考ApplicationInfo.appDistributionType。
 
 **处理步骤**
 
@@ -965,8 +965,8 @@ Failed to install the HAP because the HAP requests wrong permissions.
 
 **处理步骤**
 
-1. 排查是否申请了[MDM类型的权限](../../security/AccessToken/permissions-for-mdm-apps.md)，MDM类型的权限仅针对应用类型为MDM的应用开放。
-2. 排查申请的权限是否为开放权限。详情请见[权限列表](../../security/AccessToken/app-permissions.md)。<!--DelEnd-->
+1. 排查是否申请了MDM类型的权限，MDM类型的权限仅针对应用类型为MDM的应用开放。
+2. 排查申请的权限是否为开放权限。详情请见权限列表。<!--DelEnd-->
 
 ## 17700055 指定的link无效
 
@@ -1002,7 +1002,7 @@ The scheme of the specified link is not in the querySchemes.
 
 **处理步骤**
 
-检查是否在querySchemes字段下配置了相应的URL scheme，可以参考[使用canOpenLink判断应用是否可访问](../../application-models/canopenlink.md)。
+检查是否在querySchemes字段下配置了相应的URL scheme，可以参考使用canOpenLink判断应用是否可访问。
 <!--Del-->
 ## 17700057 指定的应用不是预置应用
 
@@ -1192,7 +1192,7 @@ The app does not support the creation of an appClone instance.
 
 **处理步骤**
 
-1. 检查应用是否配置了分身模式。详见[创建应用分身](../../quick-start/app-clone.md)。
+1. 检查应用是否配置了分身模式。详见创建应用分身。
 2. 检查企业设备是否设置了不支持创建分身的企业安全策略，可以通过打开设备->设置>系统->应用分身，查看应用是否支持创建分身。<!--DelEnd-->
 
 ## 17700070 指定的快捷方式id不合法
@@ -1495,7 +1495,7 @@ Failed to install the plugin because the current device does not support plugins
 
 **处理步骤**
 
-使用[param工具](../../tools/param-tool.md)设置const.bms.support_plugin的值为true，即执行hdc shell param set const.bms.support_plugin true。
+使用param工具设置const.bms.support_plugin的值为true，即执行hdc shell param set const.bms.support_plugin true。
 
 <!--Del-->
 ## 17700088 应用缺少安装插件的权限
@@ -1515,8 +1515,8 @@ Failed to install the plugin because the host application lacks ohos.permission.
 
 **处理步骤**
 
-1. 参考[权限申请指导](../../security/AccessToken/declare-permissions.md)申请[ohos.permission.kernel.SUPPORT_PLUGIN权限](../../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin)。
-2. 该权限等级为system_basic，若[应用APL等级](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)低于system_basic，请[申请受限权限](../../security/AccessToken/declare-permissions-in-acl.md)。
+1. 参考权限申请指导申请ohos.permission.kernel.SUPPORT_PLUGIN权限。
+2. 该权限等级为system_basic，若应用APL等级低于system_basic，请申请受限权限。
 
 ## 17700089 插件的 pluginDistributionIDs 解析失败
 
@@ -1534,7 +1534,7 @@ Failed to install the plugin because the plugin id fails to be parsed.
 
 **处理步骤**
 
-参考如下格式，重新配置插件[profile文件](../../security/app-provision-structure.md)中的"app-services-capabilities"字段。
+参考如下格式，重新配置插件profile文件中的"app-services-capabilities"字段。
 ```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
@@ -1560,7 +1560,7 @@ Failed to install the plugin because the plugin id fails to be verified.
 
 **处理步骤**
 
-重新配置应用或者插件[profile文件](../../security/app-provision-structure.md)中的pluginDistributionIDs。配置格式如下：
+重新配置应用或者插件profile文件中的pluginDistributionIDs。配置格式如下：
 ```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
@@ -1604,7 +1604,7 @@ Failed to uninstall the plugin because the specified plugin is not found.
 
 **处理步骤**
 
-使用[bm dump -n 命令](../../tools/bm-tool.md#查询应用信息命令dump)查询应用信息，确认插件是否安装。
+使用bm dump -n 命令查询应用信息，确认插件是否安装。
 
 
 ## 17700093 指定的skillName不存在
@@ -1625,7 +1625,7 @@ The specified skillName is not found.
 **处理步骤**
 
 1. 排查skillName，确认拼写无误。
-2. 使用[bm工具](../../tools/bm-tool.md)安装对应Skill所在的应用。
+2. 使用bm工具安装对应Skill所在的应用。
 
 <!--Del-->
 ## 17700094 指定的应用未创建分身
@@ -1868,16 +1868,16 @@ The alternateIconName must match the name field under alternateIcons in the app.
 
 **错误描述**
 
-备用图标名称必须与app.json5中[alternateIcons标签](../../quick-start/app-configuration-file.md#alternateicons标签)配置的name字段匹配。
+备用图标名称必须与app.json5中alternateIcons标签配置的name字段匹配。
 
 **可能原因**
 
-传入的alternateIconName在app.json5的[alternateIcons标签](../../quick-start/app-configuration-file.md#alternateicons标签)中未配置。
+传入的alternateIconName在app.json5的alternateIcons标签中未配置。
 
 **处理步骤**
 
-1. alternateIconName传入app.json5的[alternateIcons标签](../../quick-start/app-configuration-file.md#alternateicons标签)中配置的name。
-2. 在app.json5的[alternateIcons标签](../../quick-start/app-configuration-file.md#alternateicons标签)中配置接口传入的alternateIconName。
+1. alternateIconName传入app.json5的alternateIcons标签中配置的name。
+2. 在app.json5的alternateIcons标签中配置接口传入的alternateIconName。
 
 ## 17700309 当前没有设置备用图标
 **错误信息**

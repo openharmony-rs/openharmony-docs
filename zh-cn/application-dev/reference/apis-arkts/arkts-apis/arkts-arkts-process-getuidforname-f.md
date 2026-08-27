@@ -20,8 +20,6 @@ function getUidForName(v: string): number
 
 **替代接口：** [getUidForName](arkts-arkts-process-processmanager-c.md#getuidforname)
 
-<!--Device-process-function getUidForName(v: string): number--><!--Device-process-function getUidForName(v: string): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -42,3 +40,9 @@ function getUidForName(v: string): number
 let pres = process.getUidForName("tool");
 ```
 
+```TypeScript
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
+// 根据用户名获取uid
+let pres = processManager.getUidForName("tool");
+```

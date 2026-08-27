@@ -3,22 +3,19 @@
 ## 导入模块
 
 ```TypeScript
-import { buffer } from '@kit.ArkTS';
 ```
 
 ## from
 
 ```TypeScript
-function from(array: double[]): Buffer
+function from(array: number[]): Buffer
 ```
 
 根据指定数组创建新的Buffer对象，数组中的每个元素作为对应位置的字节存储。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-buffer-function from(array: double[]): Buffer--><!--Device-buffer-function from(array: double[]): Buffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -26,13 +23,13 @@ function from(array: double[]): Buffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| array | double[] | 是 | 由0~255范围内的整数组成的数组，用于根据数组内容创建新的Buffer对象。 |
+| array | number[] | 是 | 由0~255范围内的整数组成的数组，用于根据数组内容创建新的Buffer对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Buffer](arkts-arkts-buffer-buffer-c.md) | 新的Buffer对象。 |
+| Buffer | 新的Buffer对象。 |
 
 **示例**
 
@@ -57,8 +54,6 @@ function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number,
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-buffer-function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?: number): Buffer--><!--Device-buffer-function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?: number): Buffer-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -73,13 +68,13 @@ function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number,
 
 | 类型 | 说明 |
 | --- | --- |
-| [Buffer](arkts-arkts-buffer-buffer-c.md) | 返回一个Buffer对象，该对象与入参对象`arrayBuffer`共享相同的内存区域。 |
+| Buffer | 返回一个Buffer对象，该对象与入参对象`arrayBuffer`共享相同的内存区域。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[byteOffset/length]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [byteOffset/length] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[byteOffset/length]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [byteOffset/length] |
 
 **示例**
 
@@ -95,63 +90,14 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0]}
 ## from
 
 ```TypeScript
-function from(arrayBuffer: ArrayBuffer, byteOffset?: int, length?: int): Buffer
-```
-
-创建ArrayBuffer的视图，不复制底层内存。
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-buffer-function from(arrayBuffer: ArrayBuffer, byteOffset?: int, length?: int): Buffer--><!--Device-buffer-function from(arrayBuffer: ArrayBuffer, byteOffset?: int, length?: int): Buffer-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| arrayBuffer | ArrayBuffer | 是 | 用于创建视图的ArrayBuffer。 |
-| byteOffset | int | 否 | byteOffset [byteOffset = 0] 暴露的第一个字节的索引。 该值应为整数。 |
-| length | int | 否 | length [length = arrayBuffer.byteLength - byteOffset] 暴露的字节数。 该值应为整数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [Buffer](arkts-arkts-buffer-buffer-c.md) | 返回ArrayBuffer的视图。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[byteOffset/length]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [byteOffset/length] |
-
-**示例**
-
-```TypeScript
-import { buffer } from '@kit.ArkTS';
-
-let ab = new ArrayBuffer(10);
-let buf = buffer.from(ab, 0, 2);
-console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0]}
-```
-
-
-## from
-
-```TypeScript
 function from(buffer: Buffer | Uint8Array): Buffer
 ```
 
 当入参为Buffer对象时，创建新的Buffer对象并复制入参Buffer对象的数据，然后返回新对象。 基于Uint8Array对象的内存创建新的Buffer对象并返回，新Buffer与原Uint8Array共享同一底层ArrayBuffer内存区域。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-buffer-function from(buffer: Buffer | Uint8Array): Buffer--><!--Device-buffer-function from(buffer: Buffer | Uint8Array): Buffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -159,13 +105,13 @@ function from(buffer: Buffer | Uint8Array): Buffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buffer | [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 用于创建新Buffer的Buffer或Uint8Array对象。 |
+| buffer | Buffer \| Uint8Array | 是 | 用于创建新Buffer的Buffer或Uint8Array对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Buffer](arkts-arkts-buffer-buffer-c.md) | 新的Buffer对象。 |
+| Buffer | 新的Buffer对象。 |
 
 **示例**
 
@@ -188,16 +134,14 @@ console.info("uint8Array:", uint8Array);
 ## from
 
 ```TypeScript
-function from(object: Object, offsetOrEncoding: int | string, length: int): Buffer
+function from(object: Object, offsetOrEncoding: number | string, length: number): Buffer
 ```
 
 根据指定的`object`类型数据，创建新的Buffer对象。当object的valueOf()返回ArrayBuffer时，按字节偏移量和长度创建Buffer；其他类型则根据编码格式将对象值转换为Buffer。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-buffer-function from(object: Object, offsetOrEncoding: int | string, length: int): Buffer--><!--Device-buffer-function from(object: Object, offsetOrEncoding: int | string, length: int): Buffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -206,14 +150,14 @@ function from(object: Object, offsetOrEncoding: int | string, length: int): Buff
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | object | Object | 是 | 支持Symbol.toPrimitive或valueOf()的对象，valueOf()或Symbol.toPrimitive的返回值支持string和ArrayBuffer等类型。 |
-| offsetOrEncoding | int \| string | 是 | 字节偏移量或编码格式。当object的valueOf()返回值为ArrayBuffer时，作为字节偏移量；其他情况下作为编码格式。 |
-| length | int | 是 | 字节长度（此入参仅在object的valueOf()返回值为ArrayBuffer时生效，取值范围：0 &lt;= length &lt;= ArrayBuffer.byteLength，超出范 围时报错: 10200001）。其他情况下可填任意number类型值，该参数不会对结果产生影响。 |
+| offsetOrEncoding | number \| string | 是 | 字节偏移量或编码格式。当object的valueOf()返回值为ArrayBuffer时，作为字节偏移量；其他情况下作为编码格式。 |
+| length | number | 是 | 字节长度（此入参仅在object的valueOf()返回值为ArrayBuffer时生效，取值范围：0 & lt;= length & lt;= ArrayBuffer.byteLength，超出范 围时报错: 10200001）。其他情况下可填任意number类型值，该参数不会对结果产生影响。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Buffer](arkts-arkts-buffer-buffer-c.md) | 返回新的Buffer对象。 |
+| Buffer | 返回新的Buffer对象。 |
 
 **示例**
 
@@ -233,11 +177,9 @@ function from(string: String, encoding?: BufferEncoding): Buffer
 
 根据指定编码格式的字符串，创建新的Buffer对象，字符串按编码格式转换为字节序列存入Buffer。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-buffer-function from(string: String, encoding?: BufferEncoding): Buffer--><!--Device-buffer-function from(string: String, encoding?: BufferEncoding): Buffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -252,7 +194,7 @@ function from(string: String, encoding?: BufferEncoding): Buffer
 
 | 类型 | 说明 |
 | --- | --- |
-| [Buffer](arkts-arkts-buffer-buffer-c.md) | 返回新的Buffer对象。 |
+| Buffer | 返回新的Buffer对象。 |
 
 **示例**
 
@@ -267,4 +209,3 @@ console.info(buf1.toString());
 console.info(buf2.toString());
 // 输出结果：this is a tést
 ```
-

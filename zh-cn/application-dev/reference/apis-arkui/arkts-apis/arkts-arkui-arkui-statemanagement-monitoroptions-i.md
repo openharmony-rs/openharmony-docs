@@ -4,8 +4,6 @@
 
 **起始版本：** 20
 
-<!--Device-unnamed-export interface MonitorOptions--><!--Device-unnamed-export interface MonitorOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,8 +30,6 @@ enableWildcard?: boolean
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MonitorOptions-enableWildcard?: boolean--><!--Device-MonitorOptions-enableWildcard?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isSynchronous
@@ -54,7 +50,4 @@ isSynchronous?: boolean
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MonitorOptions-isSynchronous?: boolean--><!--Device-MonitorOptions-isSynchronous?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

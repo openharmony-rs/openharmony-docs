@@ -1,4 +1,4 @@
-# ShowToastOptions(弹窗)
+# ShowToastOptions
 
 定义ShowToast的选项。
 
@@ -6,9 +6,7 @@
 
 **废弃版本：** 8
 
-**替代接口：** [ShowToastOptions](../../apis-na/arkts-apis/arkts-na-promptaction-showtoastoptions-i.md)
-
-<!--Device-unnamed-export interface ShowToastOptions--><!--Device-unnamed-export interface ShowToastOptions-End-->
+**替代接口：** [ShowToastOptions](arkts-arkui-promptaction-showtoastoptions-i.md)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,9 +30,7 @@ bottom?: string | number
 
 **废弃版本：** 8
 
-**替代接口：** [bottom](../../apis-na/arkts-apis/arkts-na-promptaction-showtoastoptions-i.md#bottom)
-
-<!--Device-ShowToastOptions-bottom?: string | number--><!--Device-ShowToastOptions-bottom?: string | number-End-->
+**替代接口：** [bottom](arkts-arkui-promptaction-showtoastoptions-i.md#bottom)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,9 +48,7 @@ duration?: number
 
 **废弃版本：** 8
 
-**替代接口：** [duration](../../apis-na/arkts-apis/arkts-na-promptaction-showtoastoptions-i.md#duration)
-
-<!--Device-ShowToastOptions-duration?: number--><!--Device-ShowToastOptions-duration?: number-End-->
+**替代接口：** [duration](arkts-arkui-promptaction-showtoastoptions-i.md#duration)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,9 +66,6 @@ message: string
 
 **废弃版本：** 8
 
-**替代接口：** [message](../../apis-na/arkts-apis/arkts-na-promptaction-showtoastoptions-i.md#message)
-
-<!--Device-ShowToastOptions-message: string--><!--Device-ShowToastOptions-message: string-End-->
+**替代接口：** [message](arkts-arkui-promptaction-showtoastoptions-i.md#message)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

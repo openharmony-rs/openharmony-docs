@@ -6,8 +6,6 @@ BadgeParamWithNumber继承自[BadgeParam](arkts-arkui-badgeparam-i.md)，具有B
 
 **起始版本：** 7
 
-<!--Device-unnamed-declare interface BadgeParamWithNumber--><!--Device-unnamed-declare interface BadgeParamWithNumber-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -21,7 +19,8 @@ BadgeParamWithNumber继承自[BadgeParam](arkts-arkui-badgeparam-i.md)，具有B
 count: number
 ```
 
-设置提醒消息数。 **说明：** 当该值小于等于0且小于maxCount时不显示信息标记。 取值范围：[-2147483648, 2147483647]。超出范围时会加上或减去4294967296，使得值仍在范围内，非整数时会舍去小数部分取整数部分，如5.5取5。
+设置提醒消息数。  
+**说明：**当该值小于等于0且小于maxCount时不显示信息标记。取值范围：[-2147483648, 2147483647]。超出范围时会加上或减去4294967296，使得值仍在范围内，非整数时会舍去小数部分取整数部分，如5.5取5。
 
 **类型：** number
 
@@ -31,8 +30,6 @@ count: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BadgeParamWithNumber-count: number--><!--Device-BadgeParamWithNumber-count: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## maxCount
@@ -41,7 +38,7 @@ count: number
 maxCount?: number
 ```
 
-最大消息数，超过最大消息时仅显示maxCount+，如maxCount是99时，显示`99+`。 默认值：99 取值范围：[-2147483648, 2147483647]。超出范围时会加上或减去4294967296，使得值仍在范围内，非整数时会舍去小数部分取整数部分，如5.5取5。
+最大消息数，超过最大消息时仅显示maxCount+，如maxCount是99时，显示`99+`。默认值：99取值范围：[-2147483648, 2147483647]。超出范围时会加上或减去4294967296，使得值仍在范围内，非整数时会舍去小数部分取整数部分，如5.5取5。
 
 **类型：** number
 
@@ -53,7 +50,4 @@ maxCount?: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BadgeParamWithNumber-maxCount?: number--><!--Device-BadgeParamWithNumber-maxCount?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

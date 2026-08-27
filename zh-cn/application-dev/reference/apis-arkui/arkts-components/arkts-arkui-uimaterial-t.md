@@ -12,9 +12,6 @@ declare type UIMaterial = import('../api/@ohos.arkui.uiMaterial').uiMaterial
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type UIMaterial = import('../api/@ohos.arkui.uiMaterial').uiMaterial--><!--Device-unnamed-declare type UIMaterial = import('../api/@ohos.arkui.uiMaterial').uiMaterial-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **属性类型：** import('../api/@ohos.arkui.uiMaterial').uiMaterial
-

@@ -4,8 +4,6 @@ TextContentControllerBase
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare abstract class TextContentControllerBase--><!--Device-unnamed-declare abstract class TextContentControllerBase-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -26,8 +24,6 @@ Add a text.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextContentControllerBase-addText(text: string, textOperationOptions?: TextContentControllerOptions): number--><!--Device-TextContentControllerBase-addText(text: string, textOperationOptions?: TextContentControllerOptions): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,8 +54,6 @@ Clear the content of preview.
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextContentControllerBase-clearPreviewText(): void--><!--Device-TextContentControllerBase-clearPreviewText(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## deleteBackward
@@ -75,8 +69,6 @@ deleteBackward(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextContentControllerBase-deleteBackward(): void--><!--Device-TextContentControllerBase-deleteBackward(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,15 +86,13 @@ Delete text in TextRange.
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextContentControllerBase-deleteText(range?: TextRange): void--><!--Device-TextContentControllerBase-deleteText(range?: TextRange): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | TextRange | 否 | range for deleting. |
+| range | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | 否 | range for deleting. |
 
 ## getCaretOffset
 
@@ -110,15 +100,13 @@ Delete text in TextRange.
 getCaretOffset() : CaretOffset
 ```
 
-Get the index and relative position of the CaretOffset. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: <br>If this API is called when the caret position is updated in the current frame, it will not take effect. <br>For the Search component, the returned position information is the offset of the first character relative to the search icon in the component. <br>If no text is entered in the Search component, the return value contains the position information relative to the component. <br>The location information in the return value is the location of the caret relative to the editable component. &lt;/p&gt;
+Get the index and relative position of the CaretOffset.<p>&lt;strong&gt;NOTE&lt;/strong&gt;: If this API is called when the caret position is updated in the current frame, it will not take effect. For the Search component, the returned position information is the offset of the first character relative to the search icon in the component. If no text is entered in the Search component, the return value contains the position information relative to the component. The location information in the return value is the location of the caret relative to the editable component. </p>
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextContentControllerBase-getCaretOffset() : CaretOffset--><!--Device-TextContentControllerBase-getCaretOffset() : CaretOffset-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,15 +130,13 @@ Gets the selected range of text content.
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextContentControllerBase-getSelection(): TextRange--><!--Device-TextContentControllerBase-getSelection(): TextRange-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| TextRange | range for selecting. |
+| [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | range for selecting. |
 
 ## getTextContentLineCount
 
@@ -166,8 +152,6 @@ Get the lines number of the text content. The getTextContentLineCount type is us
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextContentControllerBase-getTextContentLineCount() : number--><!--Device-TextContentControllerBase-getTextContentLineCount() : number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -182,15 +166,13 @@ Get the lines number of the text content. The getTextContentLineCount type is us
 getTextContentRect() : RectResult
 ```
 
-Get the start and end positions of the text content. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: <br>If no text is entered, the return value contains the position information, but the size is 0. <br>The position information is the offset of the first character relative to the editable area. <br>For the Search component, the returned position information is the offset of the first character relative to the search icon in the component. <br>If there is input, the width in the return value is the fixed width of the editable area. &lt;/p&gt;
+Get the start and end positions of the text content.<p>&lt;strong&gt;NOTE&lt;/strong&gt;: If no text is entered, the return value contains the position information, but the size is 0. The position information is the offset of the first character relative to the editable area. For the Search component, the returned position information is the offset of the first character relative to the search icon in the component. If there is input, the width in the return value is the fixed width of the editable area. </p>
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextContentControllerBase-getTextContentRect() : RectResult--><!--Device-TextContentControllerBase-getTextContentRect() : RectResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -214,15 +196,13 @@ scrollToVisible(range?: TextRange): void
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextContentControllerBase-scrollToVisible(range?: TextRange): void--><!--Device-TextContentControllerBase-scrollToVisible(range?: TextRange): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | TextRange | 否 | 可见区范围。 若该参数非法，则本方法不会生效。 |
+| range | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | 否 | 可见区范围。 若该参数非法，则本方法不会生效。 |
 
 ## setStyledPlaceholder
 
@@ -238,13 +218,10 @@ setStyledPlaceholder(styledString: StyledString): void
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextContentControllerBase-setStyledPlaceholder(styledString: StyledString): void--><!--Device-TextContentControllerBase-setStyledPlaceholder(styledString: StyledString): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| styledString | StyledString | 是 | 设置提示文本样式的属性字符串 若传入的入参无效，则本接口不生效 |
-
+| styledString | [StyledString](../arkts-apis/arkts-arkui-styledstring-c.md) | 是 | 设置提示文本样式的属性字符串 若传入的入参无效，则本接口不生效 |

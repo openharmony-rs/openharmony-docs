@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export interface ContainerReaderInterface--><!--Device-unnamed-export interface ContainerReaderInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -14,7 +12,7 @@
 import { ContainerReader, ContainerReaderAttribute, BreakpointOptions } from '@kit.ArkUI';
 ```
 
-## constructor
+## [[Call]]
 
 ```TypeScript
 (value: ContainerReaderInfo): ContainerReaderAttribute
@@ -30,8 +28,6 @@ import { ContainerReader, ContainerReaderAttribute, BreakpointOptions } from '@k
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ContainerReaderInterface-(value: ContainerReaderInfo): ContainerReaderAttribute--><!--Device-ContainerReaderInterface-(value: ContainerReaderInfo): ContainerReaderAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -45,4 +41,3 @@ import { ContainerReader, ContainerReaderAttribute, BreakpointOptions } from '@k
 | 类型 | 说明 |
 | --- | --- |
 | [ContainerReaderAttribute](arkts-arkui-arkui-components-containerreader-containerreaderattribute-c.md) |  |
-

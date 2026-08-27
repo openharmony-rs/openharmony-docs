@@ -6,8 +6,6 @@
 
 **起始版本：** 7
 
-<!--Device-unnamed-declare interface TouchEvent--><!--Device-unnamed-declare interface TouchEvent-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ getHistoricalPoints(): Array<HistoricalPoint>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TouchEvent-getHistoricalPoints(): Array<HistoricalPoint>--><!--Device-TouchEvent-getHistoricalPoints(): Array<HistoricalPoint>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -38,6 +34,43 @@ getHistoricalPoints(): Array<HistoricalPoint>
 | 类型 | 说明 |
 | --- | --- |
 | Array&lt;[HistoricalPoint](arkts-arkui-historicalpoint-i.md)&gt; | 由历史点组成的数组。 |
+
+## preventDefault
+
+```TypeScript
+preventDefault: () => void
+```
+
+阻止默认事件。  
+**说明：** 该接口仅支持部分组件使用，当前支持组件：Hyperlink，不支持的组件在使用时会抛出异常。暂不支持异步调用和提供Modifier接口。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [100017](../errorcode-event.md#100017-组件不支持阻止默认事件) | Component does not support prevent function. |
+
+## stopPropagation
+
+```TypeScript
+stopPropagation: () => void
+```
+
+阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## changedTouches
 
@@ -53,8 +86,6 @@ changedTouches: TouchObject[]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TouchEvent-changedTouches: TouchObject[]--><!--Device-TouchEvent-changedTouches: TouchObject[]-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## eventHandleId
@@ -63,7 +94,8 @@ changedTouches: TouchObject[]
 eventHandleId?: number
 ```
 
-用于事件处理的唯一标识。 取值范围：[0, +∞) **说明：** 在使用[postInputEventWithStrategy](../arkts-apis/arkts-arkui-buildernode-c.md#postinputeventwithstrategy)接口分发事件时会使用该字段，事件每分 发一次字段会增加100000。 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。
+用于事件处理的唯一标识。取值范围：[0, +∞)  
+**说明：** 在使用[postInputEventWithStrategy](../arkts-apis/arkts-arkui-buildernode-c.md#postinputeventwithstrategy)接口分发事件时会使用该字段，事件每分 发一次字段会增加100000。多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。
 
 **类型：** number
 
@@ -72,46 +104,6 @@ eventHandleId?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TouchEvent-eventHandleId?: number--><!--Device-TouchEvent-eventHandleId?: number-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## preventDefault
-
-```TypeScript
-preventDefault: () => void
-```
-
-阻止默认事件。 **说明：** 该接口仅支持部分组件使用，当前支持组件：Hyperlink，不支持的组件在使用时会抛出异常。暂不支持异步调用和提供Modifier接口。
-
-**类型：** () =&gt; void
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TouchEvent-preventDefault: () => void--><!--Device-TouchEvent-preventDefault: () => void-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## stopPropagation
-
-```TypeScript
-stopPropagation: () => void
-```
-
-阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。
-
-**类型：** () =&gt; void
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TouchEvent-stopPropagation: () => void--><!--Device-TouchEvent-stopPropagation: () => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -129,8 +121,6 @@ touches: TouchObject[]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TouchEvent-touches: TouchObject[]--><!--Device-TouchEvent-touches: TouchObject[]-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -141,13 +131,10 @@ type: TouchType
 
 触摸事件的类型。
 
-**类型：** TouchType
+**类型：** [TouchType](../arkts-apis/arkts-arkui-touchtype-e.md)
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TouchEvent-type: TouchType--><!--Device-TouchEvent-type: TouchType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 20
 
-<!--Device-asset-interface SyncResult--><!--Device-asset-interface SyncResult-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 ## 导入模块
@@ -26,8 +24,6 @@ readonly failedCount?: number
 
 **起始版本：** 20
 
-<!--Device-SyncResult-readonly failedCount?: number--><!--Device-SyncResult-readonly failedCount?: number-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 ## resultCode
@@ -41,8 +37,6 @@ readonly resultCode: number
 **类型：** number
 
 **起始版本：** 20
-
-<!--Device-SyncResult-readonly resultCode: number--><!--Device-SyncResult-readonly resultCode: number-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -58,7 +52,4 @@ readonly totalCount?: number
 
 **起始版本：** 20
 
-<!--Device-SyncResult-readonly totalCount?: number--><!--Device-SyncResult-readonly totalCount?: number-End-->
-
 **系统能力：** SystemCapability.Security.Asset
-

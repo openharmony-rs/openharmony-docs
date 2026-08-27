@@ -1,10 +1,8 @@
 # RenderStrategy
 
-RenderStrategy 的枚举。 定义图形渲染策略。
+RenderStrategy 的枚举。 定义图形渲染策略。@enum { number }
 
 **起始版本：** 22
-
-<!--Device-unnamed-declare enum RenderStrategy--><!--Device-unnamed-declare enum RenderStrategy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,8 +22,6 @@ FAST = 0
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RenderStrategy-FAST = 0--><!--Device-RenderStrategy-FAST = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## OFFSCREEN
@@ -44,7 +40,4 @@ OFFSCREEN = 1
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RenderStrategy-OFFSCREEN = 1--><!--Device-RenderStrategy-OFFSCREEN = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

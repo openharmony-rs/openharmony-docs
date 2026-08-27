@@ -6,8 +6,6 @@
 
 **起始版本：** 20
 
-<!--Device-unnamed-declare class LinearGradientStyle--><!--Device-unnamed-declare class LinearGradientStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,15 +27,13 @@ constructor(options: LinearGradientOptions)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LinearGradientStyle-constructor(options: LinearGradientOptions)--><!--Device-LinearGradientStyle-constructor(options: LinearGradientOptions)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | LinearGradientOptions | 是 | 显示为线性渐变效果。 <br>LinearGradientOptions中的direction默认值按 GradientDirection中的NONE处理。 |
+| options | [LinearGradientOptions](../arkts-components/arkts-arkui-lineargradientoptions-i.md) | 是 | 显示为线性渐变效果。    [LinearGradientOptions](../arkts-components/arkts-arkui-lineargradientoptions-i.md)中的direction默认值按 [GradientDirection](arkts-arkui-gradientdirection-e.md)中的NONE处理。 |
 
 ## options
 
@@ -47,7 +43,7 @@ options: LinearGradientOptions
 
 显示为线性渐变效果。
 
-**类型：** LinearGradientOptions
+**类型：** [LinearGradientOptions](../arkts-components/arkts-arkui-lineargradientoptions-i.md)
 
 **起始版本：** 20
 
@@ -55,7 +51,4 @@ options: LinearGradientOptions
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LinearGradientStyle-options: LinearGradientOptions--><!--Device-LinearGradientStyle-options: LinearGradientOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -2,9 +2,7 @@
 
 当前系统栏回调信息集合。
 
-**起始版本：** 23
-
-<!--Device-window-interface SystemBarTintState--><!--Device-window-interface SystemBarTintState-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -13,24 +11,20 @@
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
 ## displayId
 
 ```TypeScript
-displayId: long
+displayId: number
 ```
 
 当前窗口所在屏幕id，该参数应为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SystemBarTintState-displayId: long--><!--Device-SystemBarTintState-displayId: long-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -46,11 +40,8 @@ regionTint: Array<SystemBarRegionTint>
 
 **类型：** Array&lt;[SystemBarRegionTint](arkts-arkui-window-systembarregiontint-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-SystemBarTintState-regionTint: Array<SystemBarRegionTint>--><!--Device-SystemBarTintState-regionTint: Array<SystemBarRegionTint>-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
-

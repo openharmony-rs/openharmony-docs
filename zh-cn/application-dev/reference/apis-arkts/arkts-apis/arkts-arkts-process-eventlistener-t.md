@@ -10,8 +10,6 @@ type EventListener = (evt: Object) => void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-process-type EventListener = (evt: Object) => void--><!--Device-process-type EventListener = (evt: Object) => void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -19,4 +17,3 @@ type EventListener = (evt: Object) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | evt | Object | 是 | 用户事件。 |
-

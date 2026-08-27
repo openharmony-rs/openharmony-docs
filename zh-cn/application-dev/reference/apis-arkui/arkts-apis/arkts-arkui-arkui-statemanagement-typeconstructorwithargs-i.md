@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-export interface TypeConstructorWithArgs--><!--Device-unnamed-export interface TypeConstructorWithArgs-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -14,7 +12,7 @@
 import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, MutableBinding, CustomComponentLifecycle, CustomComponentLifecycleObserver, CustomComponentLifecycleState, ComponentInit, ComponentAppear, ComponentBuilt, ComponentReuse, ComponentActive, ComponentInactive, ComponentRecycle, ComponentDisappear, CollectionType, ConnectOptionsCollections, CustomComponentContext, IReusePool, IReusableInfo } from '@kit.ArkUI';
 ```
 
-## constructor
+## [[Construct]]
 
 ```TypeScript
 new(...args: any): T
@@ -27,8 +25,6 @@ new(...args: any): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TypeConstructorWithArgs-new(...args: any): T--><!--Device-TypeConstructorWithArgs-new(...args: any): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,4 +39,3 @@ new(...args: any): T
 | 类型 | 说明 |
 | --- | --- |
 | T | 通过new方法创建的T类型实例。默认不传入任何构造参数。 |
-

@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 103801 ForEach 键值生成失败
 
@@ -18,7 +18,7 @@ use of default id generator function not possible on provided data structure.Nee
 
 **错误描述**
 
-[ForEach](./arkui-ts/ts-rendering-control-foreach.md)使用默认的键值生成函数无法基于提供的数据结构生成键值。
+ForEach使用默认的键值生成函数无法基于提供的数据结构生成键值。
 
 **可能原因**
 
@@ -26,7 +26,7 @@ use of default id generator function not possible on provided data structure.Nee
 
 **处理步骤**
 
-修改数据源对象，或手动实现一个键值生成函数，请参考[键值生成规则](../../ui/rendering-control/arkts-rendering-control-foreach.md#键值生成规则)。
+修改数据源对象，或手动实现一个键值生成函数，请参考键值生成规则。
 
 ## 103802 渲染子节点异常
 
@@ -36,7 +36,7 @@ lacks mandatory '.each' attribute function, i.e. has no default item builder. Ap
 
 **错误描述**
 
-缺少[each](./arkui-ts/ts-rendering-control-repeat.md#each)属性。
+缺少each属性。
 
 **可能原因**
 
@@ -72,7 +72,7 @@ onLazyLoading function executed illegal operation.
 
 **错误描述**
 
-[懒加载](../../ui/rendering-control/arkts-new-rendering-control-repeat.md#懒加载能力说明)场景下对数据的非法操作。
+懒加载场景下对数据的非法操作。
 
 **可能原因**
 
@@ -80,7 +80,7 @@ onLazyLoading function executed illegal operation.
 
 **处理步骤**
 
-遵循懒加载接口的数据操作约束调用方法，请参考[数据精准懒加载](../../ui/rendering-control/arkts-new-rendering-control-repeat.md#数据精准懒加载)。
+遵循懒加载接口的数据操作约束调用方法，请参考数据精准懒加载。
 
 ## 103805 默认键值生成失败
 
@@ -90,7 +90,7 @@ Repeat(). Default key gen failed. Application Error!
 
 **错误描述**
 
-[Repeat](./arkui-ts/ts-rendering-control-repeat.md)的默认[键值](../../ui/rendering-control/arkts-new-rendering-control-repeat.md#键值生成规则)生成失败。
+Repeat的默认键值生成失败。
 
 **可能原因**
 
@@ -98,4 +98,4 @@ Repeat(). Default key gen failed. Application Error!
 
 **处理步骤**
 
-修改数据源使其能生成唯一键值，或手动实现一个键值生成函数，请参考[键值生成规则](../../ui/rendering-control/arkts-new-rendering-control-repeat.md#键值生成规则)。
+修改数据源使其能生成唯一键值，或手动实现一个键值生成函数，请参考键值生成规则。

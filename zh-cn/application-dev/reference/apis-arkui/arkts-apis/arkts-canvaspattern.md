@@ -12,5 +12,4 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [CanvasPattern](arkts-arkui-canvaspattern-canvaspattern-i.md) | 描述一个模板的不透明对象，该对象通过createPattern()方法创建。 |
-
+| [CanvasPattern](arkts-arkui-canvaspattern-canvaspattern-i.md) | 描述一个模板的不透明对象，该对象通过createPattern()方法创建。@interface CanvasPattern |

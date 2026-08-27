@@ -1,10 +1,8 @@
 # StartAnimationSystemParams（系统接口）
 
-启动动画配置，仅对全屏应用生效。 不同应用间跳转场景不生效，仍保持系统默认动效。
+启动动画配置，仅对全屏应用生效。不同应用间跳转场景不生效，仍保持系统默认动效。
 
-**起始版本：** 23
-
-<!--Device-window-interface StartAnimationSystemParams--><!--Device-window-interface StartAnimationSystemParams-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -13,8 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -28,9 +24,7 @@ animationConfig?: WindowAnimationConfig
 
 **类型：** [WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md)
 
-**起始版本：** 23
-
-<!--Device-StartAnimationSystemParams-animationConfig?: WindowAnimationConfig--><!--Device-StartAnimationSystemParams-animationConfig?: WindowAnimationConfig-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -46,11 +40,8 @@ type: AnimationType
 
 **类型：** [AnimationType](arkts-arkui-window-animationtype-e.md)
 
-**起始版本：** 23
-
-<!--Device-StartAnimationSystemParams-type: AnimationType--><!--Device-StartAnimationSystemParams-type: AnimationType-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
-

@@ -4,8 +4,6 @@ TextContentControllerBase
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare abstract class TextContentControllerBase--><!--Device-unnamed-declare abstract class TextContentControllerBase-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,8 +25,6 @@ Gets the text content of the selected range.
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextContentControllerBase-getText(range?: TextRange): string--><!--Device-TextContentControllerBase-getText(range?: TextRange): string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -37,11 +33,10 @@ Gets the text content of the selected range.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | TextRange | 否 | selected range. |
+| range | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | 否 | selected range. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | string | text content of the selected range. |
-

@@ -1,10 +1,8 @@
-# PluginComponentTemplate(System API)（系统接口）
+# PluginComponentTemplate（系统接口）
 
 定义插件组件模板信息，用于与提供方定义的组件绑定。
 
 **起始版本：** 9
-
-<!--Device-unnamed-interface PluginComponentTemplate--><!--Device-unnamed-interface PluginComponentTemplate-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,8 +25,6 @@ bundleName: string
 
 **起始版本：** 9
 
-<!--Device-PluginComponentTemplate-bundleName: string--><!--Device-PluginComponentTemplate-bundleName: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -45,9 +41,6 @@ source: string
 
 **起始版本：** 9
 
-<!--Device-PluginComponentTemplate-source: string--><!--Device-PluginComponentTemplate-source: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

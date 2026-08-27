@@ -1,6 +1,7 @@
 # ContentSlot
 
-用于渲染Native侧使用C-API创建的组件，并通过Content管理器管理这些组件。 支持混合模式开发，当容器是ArkTS组件，子组件在Native侧创建时，推荐使用ContentSlot占位组件。
+用于渲染Native侧使用C-API创建的组件，并通过Content管理器管理这些组件。
+支持混合模式开发，当容器是ArkTS组件，子组件在Native侧创建时，推荐使用ContentSlot占位组件。
 
 ## ContentSlot
 
@@ -15,8 +16,6 @@ ContentSlot(content: Content)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ContentSlotInterface-(content: Content): ContentSlotAttribute--><!--Device-ContentSlotInterface-(content: Content): ContentSlotAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,3 +33,29 @@ ContentSlot(content: Content)
 | --- | --- |
 | [Content](arkts-arkui-content-t.md) | 定义ComponentContent和NodeContent的基类。 |
 
+## 示例
+
+下面的示例展示了ContentSlot的基本用法。
+
+```TypeScript
+import { nativeNode } from 'libNativeNode.so'; // 开发者自己实现的so
+import { NodeContent, Content } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Parent {
+  private nodeContent: Content = new NodeContent();
+
+  aboutToAppear() {
+    // 通过C-API创建节点，并添加到管理器nodeContent上
+    nativeNode.createNativeNode(this.nodeContent);
+  }
+
+  build() {
+    Column() {
+      // 显示nodeContent管理器里存放的Native侧的组件
+      ContentSlot(this.nodeContent)
+    }
+  }
+}
+```

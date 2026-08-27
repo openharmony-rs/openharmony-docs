@@ -14,9 +14,7 @@ function setFoldDisplayMode(mode: FoldDisplayMode): void
 
 更改可折叠设备的显示模式。
 
-**起始版本：** 23
-
-<!--Device-display-function setFoldDisplayMode(mode: FoldDisplayMode): void--><!--Device-display-function setFoldDisplayMode(mode: FoldDisplayMode): void-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -32,13 +30,11 @@ function setFoldDisplayMode(mode: FoldDisplayMode): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
-| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. |
+| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { display } from '@kit.ArkUI';
@@ -52,20 +48,6 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { display } from '@kit.ArkUI';
-
-try {
-  let mode: display.FoldDisplayMode = display.FoldDisplayMode.FOLD_DISPLAY_MODE_FULL;
-  display.setFoldDisplayMode(mode);
-} catch (exception) {
-  let error = exception as BusinessError;
-  console.error(`Failed to change the fold display mode. Code: ${error.code} , message: ${error.message}`);
-}
-```
-
 
 ## setFoldDisplayMode
 
@@ -75,9 +57,7 @@ function setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void
 
 更改可折叠设备的显示模式，并指明更改原因。
 
-**起始版本：** 23
-
-<!--Device-display-function setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void--><!--Device-display-function setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -94,12 +74,10 @@ function setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { display } from '@kit.ArkUI';
@@ -112,18 +90,3 @@ try {
   console.error(`Failed to change the fold display mode. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { display } from '@kit.ArkUI';
-
-try {
-  let mode: display.FoldDisplayMode = display.FoldDisplayMode.FOLD_DISPLAY_MODE_MAIN;
-  display.setFoldDisplayMode(mode, 'backSelfie');
-} catch (exception) {
-  let error = exception as BusinessError;
-  console.error(`Failed to change the fold display mode. Code: ${error.code} , message: ${error.message}`);
-}
-```
-

@@ -18,8 +18,6 @@ function postQuery(handle: AssetMap): Promise<void>
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-asset-function postQuery(handle: AssetMap): Promise<void>--><!--Device-asset-function postQuery(handle: AssetMap): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 **参数：**
@@ -32,19 +30,19 @@ function postQuery(handle: AssetMap): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [24000012](../errorcode-asset.md#24000012-账号系统服务异常) | Calling the OS Account service failed. |
-| [24000013](../errorcode-asset.md#24000013-访问控制服务异常) | Calling the Access Token service failed. |
+| [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
+| [24000006](../errorcode-asset.md#24000006-系统内存不足) | Insufficient memory. |
 | [24000010](../errorcode-asset.md#24000010-进程通信错误) | IPC failed. |
 | [24000011](../errorcode-asset.md#24000011-包管理服务异常) | Calling the Bundle Manager service failed. |
-| [24000006](../errorcode-asset.md#24000006-系统内存不足) | Insufficient memory. |
-| [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
+| [24000012](../errorcode-asset.md#24000012-账号系统服务异常) | Calling the OS Account service failed. |
+| [24000013](../errorcode-asset.md#24000013-访问控制服务异常) | Calling the Access Token service failed. |
 
 **示例**
 
@@ -58,4 +56,3 @@ asset.postQuery(handle).then(() => {
   console.info(`Succeeded in post-querying Asset.`);
 });
 ```
-

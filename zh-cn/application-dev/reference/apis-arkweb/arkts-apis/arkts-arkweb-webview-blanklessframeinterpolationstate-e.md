@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-webview-enum BlanklessFrameInterpolationState--><!--Device-webview-enum BlanklessFrameInterpolationState-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## FRAME_INTERPOLATION_SUCCEEDED
@@ -19,8 +17,6 @@ FRAME_INTERPOLATION_SUCCEEDED = 0
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BlanklessFrameInterpolationState-FRAME_INTERPOLATION_SUCCEEDED = 0--><!--Device-BlanklessFrameInterpolationState-FRAME_INTERPOLATION_SUCCEEDED = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,8 +32,6 @@ FRAME_INTERPOLATION_FAILED = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BlanklessFrameInterpolationState-FRAME_INTERPOLATION_FAILED = 1--><!--Device-BlanklessFrameInterpolationState-FRAME_INTERPOLATION_FAILED = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## FRAME_INTERPOLATION_REMOVED
@@ -52,7 +46,4 @@ FRAME_INTERPOLATION_REMOVED = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BlanklessFrameInterpolationState-FRAME_INTERPOLATION_REMOVED = 2--><!--Device-BlanklessFrameInterpolationState-FRAME_INTERPOLATION_REMOVED = 2-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

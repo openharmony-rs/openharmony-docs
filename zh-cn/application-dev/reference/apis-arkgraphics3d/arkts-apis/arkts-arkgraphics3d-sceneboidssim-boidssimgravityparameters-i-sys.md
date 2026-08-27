@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export interface BoidsSimGravityParameters--><!--Device-unnamed-export interface BoidsSimGravityParameters-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **系统接口：** 此接口为系统接口。
@@ -13,18 +11,16 @@
 ## accelerationMag
 
 ```TypeScript
-accelerationMag?: double
+accelerationMag?: number
 ```
 
-施加于个体的吸引加速度大小，其方向指向引力场实体。取值 >= 0。默认值为0.0。
+施加于个体的吸引加速度大小，其方向指向引力场实体。取值 &gt;= 0。默认值为0.0。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BoidsSimGravityParameters-accelerationMag?: double--><!--Device-BoidsSimGravityParameters-accelerationMag?: double-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -33,20 +29,17 @@ accelerationMag?: double
 ## radius
 
 ```TypeScript
-radius?: double
+radius?: number
 ```
 
-引力场的作用半径。仅严格在该距离内的个体受到吸引（边界处力为0）。取值 >= 0。默认值为0.0。
+引力场的作用半径。仅严格在该距离内的个体受到吸引（边界处力为0）。取值 &gt;= 0。默认值为0.0。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BoidsSimGravityParameters-radius?: double--><!--Device-BoidsSimGravityParameters-radius?: double-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **系统接口：** 此接口为系统接口。
-

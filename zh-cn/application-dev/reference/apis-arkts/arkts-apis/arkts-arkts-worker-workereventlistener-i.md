@@ -4,8 +4,6 @@
 
 **起始版本：** 9
 
-<!--Device-unnamed-export interface WorkerEventListener--><!--Device-unnamed-export interface WorkerEventListener-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
@@ -14,7 +12,7 @@
 import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, EventTarget, MessageEvent, MessageEvents, PostMessageOptions, ThreadWorkerGlobalScope, WorkerEventListener, WorkerEventTarget, WorkerOptions, ThreadWorkerPriority, Priority } from '@kit.ArkTS';
 ```
 
-## constructor
+## [[Call]]
 
 ```TypeScript
 (event: Event): void | Promise<void>
@@ -25,8 +23,6 @@ import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, E
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-WorkerEventListener-(event: Event): void | Promise<void>--><!--Device-WorkerEventListener-(event: Event): void | Promise<void>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -40,8 +36,8 @@ import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, E
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
 
 **示例**
 
@@ -58,4 +54,3 @@ workerInstance.addEventListener("alert", (event: Event) => {
 const eventToDispatch : Event = { type: "alert", timeStamp: 0 }; // timeStamp暂未支持
 workerInstance.dispatchEvent(eventToDispatch);
 ```
-

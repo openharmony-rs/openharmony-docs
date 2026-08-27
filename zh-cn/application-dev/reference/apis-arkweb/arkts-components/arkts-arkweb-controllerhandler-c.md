@@ -4,18 +4,11 @@ ControllerHandler是ArkWeb提供的处理新建Web组件控制器分配的帮助
 
 **起始版本：** 9
 
-<!--Device-unnamed-declare class ControllerHandler--><!--Device-unnamed-declare class ControllerHandler-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## constructor
@@ -29,8 +22,6 @@ ControllerHandler的构造函数。
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ControllerHandler-constructor()--><!--Device-ControllerHandler-constructor()-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -46,8 +37,6 @@ setWebController(controller: WebviewController): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ControllerHandler-setWebController(controller: WebviewController): void--><!--Device-ControllerHandler-setWebController(controller: WebviewController): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -55,4 +44,3 @@ setWebController(controller: WebviewController): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | controller | [WebviewController](arkts-arkweb-webviewcontroller-t.md) | 是 | 新建Web组件的WebviewController对象，如果不需要打开新窗口请设置为null。 |
-

@@ -12,9 +12,6 @@ Scroll类型的FrameNode节点类型。允许添加一个子组件。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-type Scroll = TypedFrameNode<ScrollInterface, ScrollAttribute>--><!--Device-typeNode-type Scroll = TypedFrameNode<ScrollInterface, ScrollAttribute>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** TypedFrameNode<ScrollInterface, ScrollAttribute>
-
+**属性类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;ScrollInterface, [ScrollAttribute](../arkts-components/arkts-arkui-scroll-attribute.md)&gt;

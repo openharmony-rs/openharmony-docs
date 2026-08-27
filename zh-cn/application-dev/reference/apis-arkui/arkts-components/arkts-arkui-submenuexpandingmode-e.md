@@ -4,8 +4,6 @@ Menu子菜单展开样式枚举。
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare enum SubMenuExpandingMode--><!--Device-unnamed-declare enum SubMenuExpandingMode-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SIDE_EXPAND
@@ -21,8 +19,6 @@ SIDE_EXPAND = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SubMenuExpandingMode-SIDE_EXPAND = 0--><!--Device-SubMenuExpandingMode-SIDE_EXPAND = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ EMBEDDED_EXPAND = 1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SubMenuExpandingMode-EMBEDDED_EXPAND = 1--><!--Device-SubMenuExpandingMode-EMBEDDED_EXPAND = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## STACK_EXPAND
@@ -58,7 +52,4 @@ STACK_EXPAND = 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SubMenuExpandingMode-STACK_EXPAND = 2--><!--Device-SubMenuExpandingMode-STACK_EXPAND = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

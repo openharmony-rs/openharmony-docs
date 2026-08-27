@@ -1,6 +1,6 @@
 # XComponentNode
 
-定义XComponent Node。
+定义XComponent Node。@extends FrameNode
 
 **继承/实现关系：** XComponentNode extends FrameNode
 
@@ -9,8 +9,6 @@
 **废弃版本：** 12
 
 **替代接口：** XComponent
-
-<!--Device-unnamed-export declare class XComponentNode--><!--Device-unnamed-export declare class XComponentNode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,8 +27,6 @@ changeRenderType(type: NodeRenderType): boolean
 **替代接口：** appendChild
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-XComponentNode-changeRenderType(type: NodeRenderType): boolean--><!--Device-XComponentNode-changeRenderType(type: NodeRenderType): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,18 +59,16 @@ constructor(uiContext: UIContext, options: RenderOptions,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-XComponentNode-constructor(uiContext: UIContext, options: RenderOptions,    id: string, type: XComponentType, libraryName?: string)--><!--Device-XComponentNode-constructor(uiContext: UIContext, options: RenderOptions,    id: string, type: XComponentType, libraryName?: string)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md) | 是 | 用于创建FrameNode的UIContext |
+| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 用于创建FrameNode的UIContext |
 | options | [RenderOptions](arkts-arkui-buildernode-renderoptions-i.md) | 是 | Builder Node的渲染选项 |
 | id | string | 是 | 应用定义的XComponent id |
-| type | XComponentType | 是 | XComponent类型 |
+| type | [XComponentType](arkts-arkui-xcomponenttype-e.md) | 是 | XComponent类型 |
 | libraryName | string | 否 | XComponent要加载的库名称 |
 
 ## onCreate
@@ -92,8 +86,6 @@ onCreate(event?: Object): void
 **替代接口：** onLoad
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-XComponentNode-onCreate(event?: Object): void--><!--Device-XComponentNode-onCreate(event?: Object): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -119,7 +111,4 @@ onDestroy(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-XComponentNode-onDestroy(): void--><!--Device-XComponentNode-onDestroy(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

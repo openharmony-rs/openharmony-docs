@@ -1,10 +1,8 @@
 # Screen（系统接口）
 
-[物理屏](../../../displaymanager/display-terminology.md#物理屏)屏幕实例。 下列API示例中都需先使用[getAllScreens()](arkts-arkui-screen-getallscreens-f-sys.md)、 [createVirtualScreen()](arkts-arkui-screen-createvirtualscreen-f-sys.md) 中的任一方法获取到Screen实例，再通过此实例调用对应方法。
+[物理屏](../../../displaymanager/display-terminology.md#物理屏)屏幕实例。下列API示例中都需先使用[getAllScreens()](arkts-arkui-screen-getallscreens-f-sys.md)、 [createVirtualScreen()](arkts-arkui-screen-createvirtualscreen-f-sys.md) 中的任一方法获取到Screen实例，再通过此实例调用对应方法。
 
-**起始版本：** 23
-
-<!--Device-screen-interface Screen--><!--Device-screen-interface Screen-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -14,20 +12,17 @@
 
 ```TypeScript
 import { screen } from '@kit.ArkUI';
-import { screenshot } from '@kit.ArkUI';
 ```
 
 ## setDensityDpi
 
 ```TypeScript
-setDensityDpi(densityDpi: double, callback: AsyncCallback<void>): void
+setDensityDpi(densityDpi: number, callback: AsyncCallback<void>): void
 ```
 
 设置屏幕的像素密度，使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-Screen-setDensityDpi(densityDpi: double, callback: AsyncCallback<void>): void--><!--Device-Screen-setDensityDpi(densityDpi: double, callback: AsyncCallback<void>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -37,20 +32,18 @@ setDensityDpi(densityDpi: double, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| densityDpi | double | 是 | 像素密度。支持的输入范围为[80, 640]，该参数仅支持整数输入。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置屏幕的像素密度成功，err为undefined，否则为错误对象。 |
+| densityDpi | number | 是 | 像素密度。支持的输入范围为[80, 640]，该参数仅支持整数输入。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置屏幕的像素密度成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
-| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. |
+| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -92,48 +85,15 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let densityDpi: double = 320;
-
-let option : screen.VirtualScreenOption = {
-  name: 'screen01',
-  width: 1080,
-  height: 2340,
-  density: 2,
-  surfaceId: ''
-};
-
-screen.createVirtualScreen(option).then((data: screen.Screen) => {
-  let screenClass: screen.Screen = data;
-  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
-  screenClass.setDensityDpi(densityDpi, (err: BusinessError | null) => {
-    const errCode = err?.code;
-    if (errCode) {
-      console.error(`Failed to set the pixel density of the screen to 320. Code: ${err?.code}, message: ${err?.message}`);
-      return;
-    }
-    console.info('Succeeded in setting the density dpi.');
-  });
-}).catch((err: Error) => {
-  console.error(`Failed to create the virtual screen. Code: ${err?.code}, message: ${err?.message}`);
-});
-```
-
 ## setDensityDpi
 
 ```TypeScript
-setDensityDpi(densityDpi: double): Promise<void>
+setDensityDpi(densityDpi: number): Promise<void>
 ```
 
 设置屏幕的像素密度，使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-Screen-setDensityDpi(densityDpi: double): Promise<void>--><!--Device-Screen-setDensityDpi(densityDpi: double): Promise<void>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -143,25 +103,23 @@ setDensityDpi(densityDpi: double): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| densityDpi | double | 是 | 像素密度。支持的输入范围为[80, 640]，该参数仅支持整数输入。 |
+| densityDpi | number | 是 | 像素密度。支持的输入范围为[80, 640]，该参数仅支持整数输入。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
-| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. |
+| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -200,34 +158,6 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-ArkTS-Sta:示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let densityDpi: double = 320;
-
-let option : screen.VirtualScreenOption = {
-  name: 'screen01',
-  width: 1080,
-  height: 2340,
-  density: 2,
-  surfaceId: ''
-};
-
-screen.createVirtualScreen(option).then((data: screen.Screen) => {
-  let screenClass: screen.Screen = data;
-  let promise: Promise<void> = screenClass.setDensityDpi(densityDpi);
-  promise.then(() => {
-    console.info('Succeeded in setting the pixel density of the screen to 320.');
-  }).catch((err: Error) => {
-    console.error(`Failed to set the pixel density of the screen to 320. Code: ${err?.code}, message: ${err?.message}`);
-  });
-}).catch((err: Error) => {
-  console.error(`Failed to create the virtual screen. Code: ${err?.code}, message: ${err?.message}`);
-});
-```
-
 ## setOrientation
 
 ```TypeScript
@@ -236,9 +166,7 @@ setOrientation(orientation: Orientation, callback: AsyncCallback<void>): void
 
 设置屏幕方向，使用callback异步回调。当设置的方向符合[应用旋转策略](../../../quick-start/module-configuration-file.md#abilities标签)（可通过配置 module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛异常。
 
-**起始版本：** 23
-
-<!--Device-Screen-setOrientation(orientation: Orientation, callback: AsyncCallback<void>): void--><!--Device-Screen-setOrientation(orientation: Orientation, callback: AsyncCallback<void>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -249,19 +177,17 @@ setOrientation(orientation: Orientation, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | orientation | Orientation | 是 | 屏幕方向。orientation值必须来自Orientation枚举方向。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置屏幕方向成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置屏幕方向成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
-| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -302,35 +228,6 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let option : screen.VirtualScreenOption = {
-  name: 'screen01',
-  width: 1080,
-  height: 2340,
-  density: 2,
-  surfaceId: ''
-};
-
-screen.createVirtualScreen(option).then((data: screen.Screen) => {
-  let screenClass: screen.Screen = data;
-  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
-  screenClass.setOrientation(screen.Orientation.VERTICAL, (err: BusinessError | null) => {
-    const errCode = err?.code;
-    if (errCode) {
-      console.error(`Failed to set the vertical orientation. Code: ${err?.code}, message: ${err?.message}`);
-      return;
-    }
-    console.info('Succeeded in setting the vertical orientation.');
-  });
-}).catch((err: Error) => {
-  console.error(`Failed to create the virtual screen. Code: ${err?.code}, message: ${err?.message}`);
-});
-```
-
 ## setOrientation
 
 ```TypeScript
@@ -339,9 +236,7 @@ setOrientation(orientation: Orientation): Promise<void>
 
 设置屏幕方向，使用Promise异步回调。当设置的方向符合[应用旋转策略](../../../quick-start/module-configuration-file.md#abilities标签)（可通过配置 module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛异常。
 
-**起始版本：** 23
-
-<!--Device-Screen-setOrientation(orientation: Orientation): Promise<void>--><!--Device-Screen-setOrientation(orientation: Orientation): Promise<void>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -357,19 +252,17 @@ setOrientation(orientation: Orientation): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
-| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -408,33 +301,6 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let option : screen.VirtualScreenOption = {
-  name: 'screen01',
-  width: 1080,
-  height: 2340,
-  density: 2,
-  surfaceId: ''
-};
-
-screen.createVirtualScreen(option).then((data: screen.Screen) => {
-  let screenClass: screen.Screen = data;
-  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
-  let promise: Promise<void> = screenClass.setOrientation(screen.Orientation.VERTICAL);
-  promise.then(() => {
-    console.info('Succeeded in setting the vertical orientation.');
-  }).catch((err: Error) => {
-    console.error(`Failed to set the vertical orientation. Code: ${err?.code}, message: ${err?.message}`);
-  });
-}).catch((err: Error) => {
-  console.error(`Failed to create the virtual screen. Code: ${err?.code}, message: ${err?.message}`);
-});
-```
-
 ## setOrientation
 
 ```TypeScript
@@ -446,8 +312,6 @@ setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Screen-setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions): Promise<void>--><!--Device-Screen-setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -464,19 +328,17 @@ setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Promise & lt;void & gt; | Promise that returns no value. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. Possible cause: The screen is not a wired external display in extended mode. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -505,43 +367,15 @@ screensPromise.then((data: Array<screen.Screen>) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let orientationOptions : screen.OrientationOptions = {
-  needAnimation: true,
-  ignoreRotationLock: false,
-};
-
-let screensPromise: Promise<Array<screen.Screen>> = screen.getAllScreens();
-screensPromise.then((data: Array<screen.Screen>) => {
-  if (data.length > 0) {
-    let screenClass: screen.Screen = data[0];
-    let promise: Promise<void> = screenClass.setOrientation(screen.Orientation.VERTICAL, orientationOptions);
-    promise.then(() => {
-      console.info('Succeeded in setting the vertical orientation with orientationOptions.');
-    }).catch((err: Error) => {
-      console.error(`Failed to set the vertical orientation with orientationOptions. Code: ${err?.code}, message: ${err?.message}`);
-    });
-  }
-}).catch((err: Error) => {
-  console.error(`Failed to get all screens. Code: ${err?.code}, message: ${err?.message}`);
-});
-```
-
 ## setScreenActiveMode
 
 ```TypeScript
-setScreenActiveMode(modeIndex: long, callback: AsyncCallback<void>): void
+setScreenActiveMode(modeIndex: number, callback: AsyncCallback<void>): void
 ```
 
 设置屏幕当前显示模式，使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-Screen-setScreenActiveMode(modeIndex: long, callback: AsyncCallback<void>): void--><!--Device-Screen-setScreenActiveMode(modeIndex: long, callback: AsyncCallback<void>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -551,20 +385,18 @@ setScreenActiveMode(modeIndex: long, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modeIndex | long | 是 | 模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化，该参数仅支持整数输入。索引为screen中 [ScreenModeInfo](arkts-arkui-screen-screenmodeinfo-i-sys.md)属性的模式id。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置屏幕当前显示模式成功，err为undefined，否则为错误对象。 |
+| modeIndex | number | 是 | 模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化，该参数仅支持整数输入。索引为screen中 [ScreenModeInfo](arkts-arkui-screen-screenmodeinfo-i-sys.md)属性的模式id。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置屏幕当前显示模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
-| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. |
+| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -606,47 +438,15 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let option : screen.VirtualScreenOption = {
-  name: 'screen01',
-  width: 1080,
-  height: 2340,
-  density: 2,
-  surfaceId: ''
-};
-
-screen.createVirtualScreen(option).then((data: screen.Screen) => {
-  let screenClass: screen.Screen = data;
-  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
-  let modeIndex: long = 0;
-  screenClass.setScreenActiveMode(modeIndex, (err: BusinessError | null) => {
-    const errCode = err?.code;
-    if (errCode) {
-      console.error(`Failed to set screen active mode 0. Code: ${err?.code}, message: ${err?.message}`);
-      return;
-    }
-    console.info('Succeeded in setting the screen active mode 0.');
-  });
-}).catch((err: Error) => {
-  console.error(`Failed to create the virtual screen. Code: ${err?.code}, message: ${err?.message}`);
-});
-```
-
 ## setScreenActiveMode
 
 ```TypeScript
-setScreenActiveMode(modeIndex: long): Promise<void>
+setScreenActiveMode(modeIndex: number): Promise<void>
 ```
 
 设置屏幕当前显示模式，使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-Screen-setScreenActiveMode(modeIndex: long): Promise<void>--><!--Device-Screen-setScreenActiveMode(modeIndex: long): Promise<void>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -656,25 +456,23 @@ setScreenActiveMode(modeIndex: long): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modeIndex | long | 是 | 模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化，该参数仅支持整数输入。 |
+| modeIndex | number | 是 | 模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化，该参数仅支持整数输入。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
-| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. |
+| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -714,47 +512,17 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let option : screen.VirtualScreenOption = {
-  name: 'screen01',
-  width: 1080,
-  height: 2340,
-  density: 2,
-  surfaceId: ''
-};
-
-screen.createVirtualScreen(option).then((data: screen.Screen) => {
-  let screenClass: screen.Screen = data;
-  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
-  let modeIndex: number = 0;
-  let promise: Promise<void> = screenClass.setScreenActiveMode(modeIndex);
-  promise.then(() => {
-    console.info('Succeeded in setting screen active mode 0.');
-  }).catch((err: Error) => {
-    console.error(`Failed to set screen active mode 0. Code: ${err?.code}, message: ${err?.message}`);
-  });
-}).catch((err: Error) => {
-  console.error(`Failed to create the virtual screen. Code: ${err?.code}, message: ${err?.message}`);
-});
-```
-
 ## activeModeIndex
 
 ```TypeScript
-readonly activeModeIndex: long
+readonly activeModeIndex: number
 ```
 
 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Screen-readonly activeModeIndex: long--><!--Device-Screen-readonly activeModeIndex: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -763,16 +531,14 @@ readonly activeModeIndex: long
 ## id
 
 ```TypeScript
-readonly id: long
+readonly id: number
 ```
 
 屏幕的id，该参数应为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Screen-readonly id: long--><!--Device-Screen-readonly id: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -788,9 +554,7 @@ readonly orientation: Orientation
 
 **类型：** Orientation
 
-**起始版本：** 23
-
-<!--Device-Screen-readonly orientation: Orientation--><!--Device-Screen-readonly orientation: Orientation-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -799,16 +563,14 @@ readonly orientation: Orientation
 ## parent
 
 ```TypeScript
-readonly parent: long
+readonly parent: number
 ```
 
 屏幕所属群组的id，该参数为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Screen-readonly parent: long--><!--Device-Screen-readonly parent: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -817,16 +579,14 @@ readonly parent: long
 ## rsId
 
 ```TypeScript
-readonly rsId: long
+readonly rsId: number
 ```
 
 屏幕端口的id，该参数为整数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Screen-readonly rsId: long--><!--Device-Screen-readonly rsId: long-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -846,8 +606,6 @@ readonly screenType?: ScreenType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Screen-readonly screenType?: ScreenType--><!--Device-Screen-readonly screenType?: ScreenType-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -862,9 +620,7 @@ readonly serialNumber?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Screen-readonly serialNumber?: string--><!--Device-Screen-readonly serialNumber?: string-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -880,9 +636,7 @@ readonly sourceMode: ScreenSourceMode
 
 **类型：** [ScreenSourceMode](arkts-arkui-screen-screensourcemode-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-Screen-readonly sourceMode: ScreenSourceMode--><!--Device-Screen-readonly sourceMode: ScreenSourceMode-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -898,11 +652,8 @@ readonly supportedModeInfo: Array<ScreenModeInfo>
 
 **类型：** Array&lt;[ScreenModeInfo](arkts-arkui-screen-screenmodeinfo-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-Screen-readonly supportedModeInfo: Array<ScreenModeInfo>--><!--Device-Screen-readonly supportedModeInfo: Array<ScreenModeInfo>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
-

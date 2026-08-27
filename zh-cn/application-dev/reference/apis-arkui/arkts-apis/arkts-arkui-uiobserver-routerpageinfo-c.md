@@ -4,8 +4,6 @@ RouterPageInfo包含的信息，由系统返回给开发者。
 
 **起始版本：** 11
 
-<!--Device-uiObserver-export class RouterPageInfo--><!--Device-uiObserver-export class RouterPageInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -22,15 +20,13 @@ context: UIAbilityContext | UIContext
 
 触发生命周期的routerPage页面对应的上下文信息。
 
-**类型：** [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md) \| [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)
+**类型：** [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md) \| UIContext
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RouterPageInfo-context: UIAbilityContext | UIContext--><!--Device-RouterPageInfo-context: UIAbilityContext | UIContext-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,8 +46,6 @@ index: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RouterPageInfo-index: number--><!--Device-RouterPageInfo-index: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## name
@@ -69,8 +63,6 @@ name: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RouterPageInfo-name: string--><!--Device-RouterPageInfo-name: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,8 +82,6 @@ pageId: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RouterPageInfo-pageId: string--><!--Device-RouterPageInfo-pageId: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## path
@@ -109,8 +99,6 @@ path: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RouterPageInfo-path: string--><!--Device-RouterPageInfo-path: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,8 +118,6 @@ routerPage页面的大小，单位是vp。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RouterPageInfo-size?: Size--><!--Device-RouterPageInfo-size?: Size-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## state
@@ -150,7 +136,4 @@ state: RouterPageState
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RouterPageInfo-state: RouterPageState--><!--Device-RouterPageInfo-state: RouterPageState-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

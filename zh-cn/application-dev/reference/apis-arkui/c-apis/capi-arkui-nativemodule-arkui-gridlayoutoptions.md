@@ -12,5 +12,5 @@ typedef struct ArkUI_GridLayoutOptions ArkUI_GridLayoutOptions
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [node_grid.h](capi-node-grid-h.md)
+**所在头文件：** [grid.h](capi-grid-h.md)
 

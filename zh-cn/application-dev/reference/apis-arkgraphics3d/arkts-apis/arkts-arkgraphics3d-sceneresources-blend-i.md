@@ -1,10 +1,8 @@
 # Blend
 
-用于控制材质的透明效果。
+用于控制材质的透明效果。@interface Blend
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface Blend--><!--Device-unnamed-export interface Blend-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -18,9 +16,6 @@ enabled: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Blend-enabled: boolean--><!--Device-Blend-enabled: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

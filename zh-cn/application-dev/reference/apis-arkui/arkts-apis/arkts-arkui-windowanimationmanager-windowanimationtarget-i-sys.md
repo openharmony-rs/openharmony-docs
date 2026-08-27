@@ -2,9 +2,7 @@
 
 动画目标窗口，用来实现动画。
 
-**起始版本：** 23
-
-<!--Device-windowAnimationManager-export interface WindowAnimationTarget--><!--Device-windowAnimationManager-export interface WindowAnimationTarget-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -22,13 +20,11 @@ import { windowAnimationManager } from '@kit.ArkUI';
 readonly abilityName: string
 ```
 
-/* 动画目标窗口所对应的Ability名称。
+/* 动画目标窗口所对应的Ability名称。 @readonly
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WindowAnimationTarget-readonly abilityName: string--><!--Device-WindowAnimationTarget-readonly abilityName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -40,13 +36,11 @@ readonly abilityName: string
 readonly bundleName: string
 ```
 
-动画目标窗口所对应的包名。
+动画目标窗口所对应的包名。 @readonly
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WindowAnimationTarget-readonly bundleName: string--><!--Device-WindowAnimationTarget-readonly bundleName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -55,16 +49,14 @@ readonly bundleName: string
 ## missionId
 
 ```TypeScript
-readonly missionId: int
+readonly missionId: number
 ```
 
-/* 任务ID，多任务中用于与ability进行匹配。
+/* 任务ID，多任务中用于与ability进行匹配。 @readonly
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-WindowAnimationTarget-readonly missionId: int--><!--Device-WindowAnimationTarget-readonly missionId: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -76,15 +68,12 @@ readonly missionId: int
 readonly windowBounds: RRect
 ```
 
-/* 动画目标窗口所对应的实际大小。
+/* 动画目标窗口所对应的实际大小。 @readonly
 
 **类型：** RRect
 
-**起始版本：** 23
-
-<!--Device-WindowAnimationTarget-readonly windowBounds: RRect--><!--Device-WindowAnimationTarget-readonly windowBounds: RRect-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
-

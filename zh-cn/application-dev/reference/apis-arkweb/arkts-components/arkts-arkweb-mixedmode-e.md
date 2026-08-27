@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-<!--Device-unnamed-declare enum MixedMode--><!--Device-unnamed-declare enum MixedMode-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## All
@@ -19,8 +17,6 @@ All = 0
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MixedMode-All = 0--><!--Device-MixedMode-All = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,8 +32,6 @@ Compatible = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MixedMode-Compatible = 1--><!--Device-MixedMode-Compatible = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## None
@@ -52,7 +46,4 @@ None = 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MixedMode-None = 2--><!--Device-MixedMode-None = 2-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

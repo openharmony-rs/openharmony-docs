@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-floatView-interface FloatViewConfiguration--><!--Device-floatView-interface FloatViewConfiguration-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -28,8 +26,6 @@ context: BaseContext
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewConfiguration-context: BaseContext--><!--Device-FloatViewConfiguration-context: BaseContext-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## isConfirmOnClose
@@ -45,8 +41,6 @@ isConfirmOnClose?: boolean
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FloatViewConfiguration-isConfirmOnClose?: boolean--><!--Device-FloatViewConfiguration-isConfirmOnClose?: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -64,7 +58,4 @@ templateType: FloatViewTemplateType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewConfiguration-templateType: FloatViewTemplateType--><!--Device-FloatViewConfiguration-templateType: FloatViewTemplateType-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
-

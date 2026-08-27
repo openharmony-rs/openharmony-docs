@@ -1,12 +1,8 @@
 # GetItemsInShapePathParams（系统接口）
 
-Image options setted when need to get the image objects.
+需要获取图像对象时设置的图像选项。@interface GetItemsInShapePathParams
 
 **起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-componentUtils-interface GetItemsInShapePathParams--><!--Device-componentUtils-interface GetItemsInShapePathParams-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,17 +20,13 @@ import { componentUtils } from '@kit.ArkUI';
 images: Array<ImageItem>
 ```
 
-image information.
+图片信息
 
 **类型：** Array&lt;[ImageItem](arkts-arkui-componentutils-imageitem-i-sys.md)&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-GetItemsInShapePathParams-images: Array<ImageItem>--><!--Device-GetItemsInShapePathParams-images: Array<ImageItem>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,20 +35,16 @@ image information.
 ## ratio
 
 ```TypeScript
-ratio?: double
+ratio?: number
 ```
 
-The proportion of non-transparent blank pixels in the selected area relative to the total pixels of the image. Default value is 0.15.
+所选区域中非透明空白像素的比例 相对于图像总像素的比例。默认值为0.15。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-GetItemsInShapePathParams-ratio?: double--><!--Device-GetItemsInShapePathParams-ratio?: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,19 +56,14 @@ The proportion of non-transparent blank pixels in the selected area relative to 
 shapePath: Array<common2D.Point>
 ```
 
-Indicates the path points information.
+表示路径的点信息
 
 **类型：** Array&lt;common2D.Point&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-GetItemsInShapePathParams-shapePath: Array<common2D.Point>--><!--Device-GetItemsInShapePathParams-shapePath: Array<common2D.Point>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

@@ -4,18 +4,11 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface NativeEmbedVisibilityInfo--><!--Device-unnamed-declare interface NativeEmbedVisibilityInfo-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## embedId
@@ -30,8 +23,6 @@ embedId: string
 
 **起始版本：** 12
 
-<!--Device-NativeEmbedVisibilityInfo-embedId: string--><!--Device-NativeEmbedVisibilityInfo-embedId: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## visibility
@@ -40,13 +31,10 @@ embedId: string
 visibility: boolean
 ```
 
-可见性。 true表示可见，false表示不可见。
+可见性。true表示可见，false表示不可见。
 
 **类型：** boolean
 
 **起始版本：** 12
 
-<!--Device-NativeEmbedVisibilityInfo-visibility: boolean--><!--Device-NativeEmbedVisibilityInfo-visibility: boolean-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

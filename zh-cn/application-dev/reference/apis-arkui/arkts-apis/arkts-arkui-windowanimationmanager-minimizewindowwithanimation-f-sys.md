@@ -15,9 +15,7 @@ function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget,
 
 最小化动画目标窗口，并返回动画完成的回调。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-windowAnimationManager-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget,    callback: AsyncCallback<WindowAnimationFinishedCallback>): void--><!--Device-windowAnimationManager-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget,    callback: AsyncCallback<WindowAnimationFinishedCallback>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -28,7 +26,7 @@ function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | windowTarget | WindowAnimationTarget | 是 | 动画目标窗口。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md)&gt; | 是 | 回调函数。当最小化动画目标窗口成功，err为undefined，data为获取到的 WindowAnimationFinishedCallback；否则返回err.code为-1，data为undefined。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md)&gt; | 是 | 回调函数。当最小化动画目标窗口成功，err为undefined，data为获取到的 WindowAnimationFinishedCallback；否则返回err.code为-1，data为undefined。 |
 
 **示例**
 
@@ -41,7 +39,7 @@ let controller: windowAnimationManager.WindowAnimationController = {
         console.info('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
         target = startingWindowTarget;
         finishCallback.onAnimationFinish();
-      },
+    },
     onStartAppFromRecent(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
         target = startingWindowTarget;
@@ -103,9 +101,7 @@ function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget): Promi
 
 最小化动画目标窗口，并返回动画完成的回调。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-windowAnimationManager-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget): Promise<WindowAnimationFinishedCallback>--><!--Device-windowAnimationManager-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget): Promise<WindowAnimationFinishedCallback>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -133,7 +129,7 @@ let controller: windowAnimationManager.WindowAnimationController = {
     onStartAppFromLauncher(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
-      },
+    },
     onStartAppFromRecent(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
@@ -175,4 +171,3 @@ promise.then((data: windowAnimationManager.WindowAnimationFinishedCallback) => {
     return;
 });
 ```
-

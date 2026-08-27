@@ -33,4 +33,3 @@
 | 名称 | 说明 |
 | --- | --- |
 | [PromptActionCommonState(CustomDialog)](arkts-arkui-promptactioncommonstate-t.md) | 自定义弹窗的状态。 |
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare interface NavigationAnimatedTransition--><!--Device-unnamed-declare interface NavigationAnimatedTransition-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -13,13 +11,57 @@
 ```TypeScript
 ```
 
+## onTransitionEnd
+
+```TypeScript
+onTransitionEnd?: (success: boolean) => void
+```
+
+转场完成回调。success：转场是否成功。
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| success | boolean | 是 |  |
+
+## transition
+
+```TypeScript
+transition: (transitionProxy: NavigationTransitionProxy) => void
+```
+
+自定义转场动画执行回调。transitionProxy：自定义转场动画代理对象。
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| transitionProxy | [NavigationTransitionProxy](arkts-arkui-navigationtransitionproxy-i.md) | 是 |  |
+
 ## isInteractive
 
 ```TypeScript
 isInteractive?: boolean
 ```
 
-本次转场动画是否为可交互转场。 true：本次转场动画是可交互转场；false：本次转场动画不是可交互转场。 默认值：false
+本次转场动画是否为可交互转场。true：本次转场动画是可交互转场；false：本次转场动画不是可交互转场。默认值：false
 
 **类型：** boolean
 
@@ -31,28 +73,6 @@ isInteractive?: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NavigationAnimatedTransition-isInteractive?: boolean--><!--Device-NavigationAnimatedTransition-isInteractive?: boolean-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## onTransitionEnd
-
-```TypeScript
-onTransitionEnd?: (success: boolean) => void
-```
-
-转场完成回调。 success：转场是否成功。
-
-**类型：** (success: boolean) =&gt; void
-
-**起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NavigationAnimatedTransition-onTransitionEnd?: (success: boolean) => void--><!--Device-NavigationAnimatedTransition-onTransitionEnd?: (success: boolean) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## timeout
@@ -61,7 +81,7 @@ onTransitionEnd?: (success: boolean) => void
 timeout?: number
 ```
 
-动画超时结束时间。 单位：ms。 取值范围：[0, +∞)。 默认值：可交互动画无默认值，不可交互动画默认超时时间为1000ms。
+动画超时结束时间。单位：ms。取值范围：[0, +∞)。默认值：可交互动画无默认值，不可交互动画默认超时时间为1000ms。
 
 **类型：** number
 
@@ -71,27 +91,4 @@ timeout?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NavigationAnimatedTransition-timeout?: number--><!--Device-NavigationAnimatedTransition-timeout?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## transition
-
-```TypeScript
-transition: (transitionProxy: NavigationTransitionProxy) => void
-```
-
-自定义转场动画执行回调。 transitionProxy：自定义转场动画代理对象。
-
-**类型：** (transitionProxy: NavigationTransitionProxy) =&gt; void
-
-**起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NavigationAnimatedTransition-transition: (transitionProxy: NavigationTransitionProxy) => void--><!--Device-NavigationAnimatedTransition-transition: (transitionProxy: NavigationTransitionProxy) => void-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

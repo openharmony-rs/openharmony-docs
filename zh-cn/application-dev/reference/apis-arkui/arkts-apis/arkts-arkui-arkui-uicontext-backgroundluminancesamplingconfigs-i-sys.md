@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-unnamed-export interface BackgroundLuminanceSamplingConfigs--><!--Device-unnamed-export interface BackgroundLuminanceSamplingConfigs-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -25,7 +23,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 brightThreshold?: number
 ```
 
-浅色亮度阈值：[0, 255]内的整数，设置的深色亮度阈值应小于浅色亮度阈值。 默认值：220
+浅色亮度阈值：[0, 255]内的整数，设置的深色亮度阈值应小于浅色亮度阈值。默认值：220
 
 **类型：** number
 
@@ -34,8 +32,6 @@ brightThreshold?: number
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BackgroundLuminanceSamplingConfigs-brightThreshold?: number--><!--Device-BackgroundLuminanceSamplingConfigs-brightThreshold?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,7 +43,7 @@ brightThreshold?: number
 darkThreshold?: number
 ```
 
-深色亮度阈值：[0, 255]内的整数，设置的深色亮度阈值应小于浅色亮度阈值。 默认值：150
+深色亮度阈值：[0, 255]内的整数，设置的深色亮度阈值应小于浅色亮度阈值。默认值：150
 
 **类型：** number
 
@@ -56,8 +52,6 @@ darkThreshold?: number
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BackgroundLuminanceSamplingConfigs-darkThreshold?: number--><!--Device-BackgroundLuminanceSamplingConfigs-darkThreshold?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,15 +63,13 @@ darkThreshold?: number
 region?: Edges<LengthMetrics>
 ```
 
-相对组件的取色区域偏移，以组件自身的左上点为基准进行偏移计算。 默认使用组件自身区域
+相对组件的取色区域偏移，以组件自身的左上点为基准进行偏移计算。默认使用组件自身区域
 
-**类型：** Edges&lt;LengthMetrics&gt;
+**类型：** [Edges](arkts-arkui-graphics-edges-i.md)&lt;[LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)&gt;
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BackgroundLuminanceSamplingConfigs-region?: Edges<LengthMetrics>--><!--Device-BackgroundLuminanceSamplingConfigs-region?: Edges<LengthMetrics>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +81,7 @@ region?: Edges<LengthMetrics>
 samplingInterval?: number
 ```
 
-取色间隔，单位为毫秒，最小值180ms。 默认值：500
+取色间隔，单位为毫秒，最小值180ms。默认值：500
 
 **类型：** number
 
@@ -99,9 +91,6 @@ samplingInterval?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BackgroundLuminanceSamplingConfigs-samplingInterval?: number--><!--Device-BackgroundLuminanceSamplingConfigs-samplingInterval?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

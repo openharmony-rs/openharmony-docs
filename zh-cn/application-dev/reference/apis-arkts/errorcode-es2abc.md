@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 本节列出 es2abc（ECMAScript to Ark Bytecode）编译器模块的专有错误码说明。通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 本节列出 es2abc（ECMAScript to Ark Bytecode）编译器模块的专有错误码说明。通用错误码请参考通用错误码说明文档。
 
 ## 10705000 语法错误
 

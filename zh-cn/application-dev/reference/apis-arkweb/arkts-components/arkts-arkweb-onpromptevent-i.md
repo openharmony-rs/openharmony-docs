@@ -4,18 +4,11 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface OnPromptEvent--><!--Device-unnamed-declare interface OnPromptEvent-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## message
@@ -31,8 +24,6 @@ message: string
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OnPromptEvent-message: string--><!--Device-OnPromptEvent-message: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -50,8 +41,6 @@ result: JsResult
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnPromptEvent-result: JsResult--><!--Device-OnPromptEvent-result: JsResult-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## url
@@ -67,8 +56,6 @@ url: string
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OnPromptEvent-url: string--><!--Device-OnPromptEvent-url: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -86,7 +73,4 @@ value: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnPromptEvent-value: string--><!--Device-OnPromptEvent-value: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

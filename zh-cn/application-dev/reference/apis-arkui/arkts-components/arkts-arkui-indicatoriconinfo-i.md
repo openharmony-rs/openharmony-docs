@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-declare interface IndicatorIconInfo--><!--Device-unnamed-declare interface IndicatorIconInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -21,7 +19,7 @@ icon: ResourceStr | SymbolGlyphModifier
 
 需要设置的图标。
 
-**类型：** ResourceStr \| SymbolGlyphModifier
+**类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) \| SymbolGlyphModifier
 
 **起始版本：** 26.0.0
 
@@ -30,20 +28,18 @@ icon: ResourceStr | SymbolGlyphModifier
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-IndicatorIconInfo-icon: ResourceStr | SymbolGlyphModifier--><!--Device-IndicatorIconInfo-icon: ResourceStr | SymbolGlyphModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## index
 
 ```TypeScript
-index: int
+index: number
 ```
 
 指定索引。 取值限定为整数。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
@@ -53,7 +49,4 @@ index: int
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-IndicatorIconInfo-index: int--><!--Device-IndicatorIconInfo-index: int-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

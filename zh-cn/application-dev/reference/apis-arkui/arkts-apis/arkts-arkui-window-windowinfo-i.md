@@ -1,38 +1,58 @@
-# WindowInfo（系统接口）
+# WindowInfo
 
 当前窗口的详细信息。
 
-**起始版本：** 23
-
-<!--Device-window-interface WindowInfo--><!--Device-window-interface WindowInfo-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Window.SessionManager
-
-**系统接口：** 此接口为系统接口。
 
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
+
+## abilityName
+
+```TypeScript
+abilityName: string
+```
+
+Ability的名称。
+
+**类型：** string
+
+**起始版本：** 18
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+## bundleName
+
+```TypeScript
+bundleName: string
+```
+
+应用Bundle的名称。
+
+**类型：** string
+
+**起始版本：** 18
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 ## displayId
 
 ```TypeScript
-displayId?: int
+displayId?: number
 ```
 
 Indicates the ID of the display where the window is located.
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowInfo-displayId?: int--><!--Device-WindowInfo-displayId?: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -46,9 +66,7 @@ globalDisplayRect?: Rect
 
 **类型：** Rect
 
-**起始版本：** 23
-
-<!--Device-WindowInfo-globalDisplayRect?: Rect--><!--Device-WindowInfo-globalDisplayRect?: Rect-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -66,7 +84,71 @@ globalRect?: Rect
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowInfo-globalRect?: Rect--><!--Device-WindowInfo-globalRect?: Rect-End-->
+**系统能力：** SystemCapability.Window.SessionManager
+
+## isFocused
+
+```TypeScript
+isFocused?: boolean
+```
+
+窗口是否获焦。true表示窗口获焦；false表示窗口未获焦。返回值与[isFocused()](arkts-arkui-window-window-i.md#isfocused)接口一致。
+
+**类型：** boolean
+
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**示例**
+
+```TypeScript
+try {
+  let focus = windowClass.isFocused();
+  console.info(`Succeeded in checking whether the window is focused. Data: ${focus}`);
+} catch (exception) {
+  console.error(`Failed to check whether the window is focused. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## rect
+
+```TypeScript
+rect: Rect
+```
+
+窗口尺寸。
+
+**类型：** Rect
+
+**起始版本：** 18
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+## windowId
+
+```TypeScript
+windowId: number
+```
+
+窗口ID。
+
+**类型：** number
+
+**起始版本：** 18
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+## windowStatusType
+
+```TypeScript
+windowStatusType: WindowStatusType
+```
+
+窗口模式枚举。
+
+**类型：** WindowStatusType
+
+**起始版本：** 18
+
+**系统能力：** SystemCapability.Window.SessionManager

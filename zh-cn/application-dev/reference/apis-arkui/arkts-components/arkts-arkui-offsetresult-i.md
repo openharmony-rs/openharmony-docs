@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare interface OffsetResult--><!--Device-unnamed-declare interface OffsetResult-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,7 +17,7 @@
 xOffset: number
 ```
 
-水平滑动偏移。 单位：vp。
+水平滑动偏移。单位：vp。
 
 **类型：** number
 
@@ -28,8 +26,6 @@ xOffset: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OffsetResult-xOffset: number--><!--Device-OffsetResult-xOffset: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,7 +35,7 @@ xOffset: number
 yOffset: number
 ```
 
-竖直滑动偏移。 单位：vp。
+竖直滑动偏移。单位：vp。
 
 **类型：** number
 
@@ -49,7 +45,4 @@ yOffset: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OffsetResult-yOffset: number--><!--Device-OffsetResult-yOffset: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

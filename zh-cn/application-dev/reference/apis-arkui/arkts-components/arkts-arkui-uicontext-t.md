@@ -12,9 +12,24 @@ UIContext
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type UIContext = import('../api/@ohos.arkui.UIContext').UIContext--><!--Device-unnamed-declare type UIContext = import('../api/@ohos.arkui.UIContext').UIContext-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **属性类型：** import('../api/@ohos.arkui.UIContext').UIContext
 
+**示例**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyComponent {
+  aboutToAppear() {
+    let uiContext: UIContext = this.getUIContext();
+  }
+
+  build() {
+    // ...
+  }
+}
+```

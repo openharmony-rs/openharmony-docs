@@ -4,14 +4,11 @@ UserAgentMetadata是ArkWeb框架中用于配置User-Agent Client Hints（UA客�
 
 **起始版本：** 24
 
-<!--Device-webview-class UserAgentMetadata--><!--Device-webview-class UserAgentMetadata-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { webview } from '@kit.ArkWeb';
 ```
 
 ## getArchitecture
@@ -26,8 +23,6 @@ getArchitecture(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-getArchitecture(): string--><!--Device-UserAgentMetadata-getArchitecture(): string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -35,6 +30,10 @@ getArchitecture(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 平台架构类型。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## getBitness
 
@@ -48,8 +47,6 @@ getBitness(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-getBitness(): string--><!--Device-UserAgentMetadata-getBitness(): string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -57,6 +54,10 @@ getBitness(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 平台位数。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## getBrandVersionList
 
@@ -70,8 +71,6 @@ getBrandVersionList(): Array<UserAgentBrandVersion>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-getBrandVersionList(): Array<UserAgentBrandVersion>--><!--Device-UserAgentMetadata-getBrandVersionList(): Array<UserAgentBrandVersion>-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -79,6 +78,10 @@ getBrandVersionList(): Array<UserAgentBrandVersion>
 | 类型 | 说明 |
 | --- | --- |
 | Array&lt;[UserAgentBrandVersion](arkts-arkweb-webview-useragentbrandversion-c.md)&gt; | 品牌和版本信息列表。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## getFormFactors
 
@@ -92,8 +95,6 @@ getFormFactors(): Array<UserAgentFormFactor>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-getFormFactors(): Array<UserAgentFormFactor>--><!--Device-UserAgentMetadata-getFormFactors(): Array<UserAgentFormFactor>-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -101,6 +102,10 @@ getFormFactors(): Array<UserAgentFormFactor>
 | 类型 | 说明 |
 | --- | --- |
 | Array&lt;[UserAgentFormFactor](arkts-arkweb-webview-useragentformfactor-e.md)&gt; | 设备形态信息。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## getFullVersion
 
@@ -114,8 +119,6 @@ getFullVersion(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-getFullVersion(): string--><!--Device-UserAgentMetadata-getFullVersion(): string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -123,6 +126,10 @@ getFullVersion(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 完整版本号。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## getMobile
 
@@ -136,8 +143,6 @@ getMobile(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-getMobile(): boolean--><!--Device-UserAgentMetadata-getMobile(): boolean-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -145,6 +150,10 @@ getMobile(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 是否为移动设备，true为移动设备，false为不是移动设备。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## getModel
 
@@ -158,8 +167,6 @@ getModel(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-getModel(): string--><!--Device-UserAgentMetadata-getModel(): string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -167,6 +174,10 @@ getModel(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 设备型号。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## getPlatform
 
@@ -180,8 +191,6 @@ getPlatform(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-getPlatform(): string--><!--Device-UserAgentMetadata-getPlatform(): string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -189,6 +198,10 @@ getPlatform(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 操作系统名称。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## getPlatformVersion
 
@@ -202,8 +215,6 @@ getPlatformVersion(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-getPlatformVersion(): string--><!--Device-UserAgentMetadata-getPlatformVersion(): string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -211,6 +222,10 @@ getPlatformVersion(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 操作系统版本号。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## getWow64
 
@@ -224,8 +239,6 @@ getWow64(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-getWow64(): boolean--><!--Device-UserAgentMetadata-getWow64(): boolean-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -233,6 +246,10 @@ getWow64(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 表示二进制文件是否在64位Windows上以32位模式运行。true为是，false为不是。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## setArchitecture
 
@@ -246,8 +263,6 @@ setArchitecture(arch: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-setArchitecture(arch: string): void--><!--Device-UserAgentMetadata-setArchitecture(arch: string): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -255,6 +270,10 @@ setArchitecture(arch: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | arch | string | 是 | 对应请求标头的Sec-CH-UA-Arch。空代表使用ArkWeb默认值。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## setBitness
 
@@ -268,8 +287,6 @@ setBitness(bitness: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-setBitness(bitness: string): void--><!--Device-UserAgentMetadata-setBitness(bitness: string): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -277,6 +294,10 @@ setBitness(bitness: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bitness | string | 是 | 对应请求标头的Sec-CH-UA-Bitness。空代表使用ArkWeb默认值。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## setBrandVersionList
 
@@ -290,8 +311,6 @@ setBrandVersionList(brandVersionList: Array<UserAgentBrandVersion>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-setBrandVersionList(brandVersionList: Array<UserAgentBrandVersion>): void--><!--Device-UserAgentMetadata-setBrandVersionList(brandVersionList: Array<UserAgentBrandVersion>): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -299,6 +318,10 @@ setBrandVersionList(brandVersionList: Array<UserAgentBrandVersion>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | brandVersionList | Array&lt;[UserAgentBrandVersion](arkts-arkweb-webview-useragentbrandversion-c.md)&gt; | 是 | 对应请求标头的Sec-CH-UA-Full-Version-List。空代表使用ArkWeb默认值。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## setFormFactors
 
@@ -312,8 +335,6 @@ setFormFactors(formFactors: Array<UserAgentFormFactor>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-setFormFactors(formFactors: Array<UserAgentFormFactor>): void--><!--Device-UserAgentMetadata-setFormFactors(formFactors: Array<UserAgentFormFactor>): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -321,6 +342,10 @@ setFormFactors(formFactors: Array<UserAgentFormFactor>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | formFactors | Array&lt;[UserAgentFormFactor](arkts-arkweb-webview-useragentformfactor-e.md)&gt; | 是 | 对应请求标头的Sec-CH-UA-Form-Factor。空代表使用ArkWeb默认值。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## setFullVersion
 
@@ -334,8 +359,6 @@ setFullVersion(fullVersion: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-setFullVersion(fullVersion: string): void--><!--Device-UserAgentMetadata-setFullVersion(fullVersion: string): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -343,6 +366,10 @@ setFullVersion(fullVersion: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fullVersion | string | 是 | 对应请求标头的Sec-CH-UA-Full-Version。空代表使用ArkWeb默认值。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## setMobile
 
@@ -356,8 +383,6 @@ setMobile(isMobile: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-setMobile(isMobile: boolean): void--><!--Device-UserAgentMetadata-setMobile(isMobile: boolean): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -365,6 +390,10 @@ setMobile(isMobile: boolean): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | isMobile | boolean | 是 | 对应请求标头的Sec-CH-UA-Mobile。表示设备是否为移动设备。true为是移动设备，false为不是移动设备。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## setModel
 
@@ -378,8 +407,6 @@ setModel(model: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-setModel(model: string): void--><!--Device-UserAgentMetadata-setModel(model: string): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -387,6 +414,10 @@ setModel(model: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | model | string | 是 | 对应请求标头的Sec-CH-UA-Model。 空代表使用ArkWeb默认值。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## setPlatform
 
@@ -400,8 +431,6 @@ setPlatform(platform: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-setPlatform(platform: string): void--><!--Device-UserAgentMetadata-setPlatform(platform: string): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -409,6 +438,10 @@ setPlatform(platform: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | platform | string | 是 | 对应请求标头的Sec-CH-UA-Platform。空代表使用ArkWeb默认值。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## setPlatformVersion
 
@@ -422,8 +455,6 @@ setPlatformVersion(platformVersion: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-setPlatformVersion(platformVersion: string): void--><!--Device-UserAgentMetadata-setPlatformVersion(platformVersion: string): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -431,6 +462,10 @@ setPlatformVersion(platformVersion: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | platformVersion | string | 是 | 对应请求标头的Sec-CH-UA-Platform-Version。空代表使用ArkWeb默认值。 |
+
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
 
 ## setWow64
 
@@ -444,8 +479,6 @@ setWow64(isWow64: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserAgentMetadata-setWow64(isWow64: boolean): void--><!--Device-UserAgentMetadata-setWow64(isWow64: boolean): void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -454,3 +487,6 @@ setWow64(isWow64: boolean): void
 | --- | --- | --- | --- |
 | isWow64 | boolean | 是 | 对应请求标头的Sec-CH-UA-WoW64。表示二进制文件是否在64位Windows上以32位模式运行。true为是，false为不是。 |
 
+**示例**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。

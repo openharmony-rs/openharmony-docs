@@ -23,8 +23,6 @@ Converts a number in units of lpx to a number in units of px.
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare function lpx2px(value: number): number--><!--Device-unnamed-declare function lpx2px(value: number): number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -38,4 +36,3 @@ Converts a number in units of lpx to a number in units of px.
 | 类型 | 说明 |
 | --- | --- |
 | number | Value range of the return value: (-∞, +∞). |
-

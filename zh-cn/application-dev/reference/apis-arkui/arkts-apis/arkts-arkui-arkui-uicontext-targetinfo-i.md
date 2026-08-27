@@ -4,8 +4,6 @@
 
 **起始版本：** 18
 
-<!--Device-unnamed-export interface TargetInfo--><!--Device-unnamed-export interface TargetInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -33,8 +31,6 @@ componentId?: number
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TargetInfo-componentId?: number--><!--Device-TargetInfo-componentId?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -43,7 +39,13 @@ componentId?: number
 id: string | number
 ```
 
-指定popup或menu绑定的目标节点。<br/>**说明：** <br/> 1. 当id是number时，对应组件实例的UniqueID，此id由系统保证唯一性。<br/> 2. 当id是string时，对应通用属性id所指定的组件 此id的唯一性需由开发者确保，但实际可能会有多个。
+指定popup或menu绑定的目标节点。  
+**说明：**
+
+1. 当id是number时，对应组件实例的UniqueID，此id由系统保证唯一性。
+
+2. 当id是string时，对应通用属性id所指定的组件
+此id的唯一性需由开发者确保，但实际可能会有多个。
 
 **类型：** string \| number
 
@@ -53,7 +55,4 @@ id: string | number
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TargetInfo-id: string | number--><!--Device-TargetInfo-id: string | number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

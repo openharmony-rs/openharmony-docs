@@ -18,8 +18,6 @@ function getTaskPoolInfo(): TaskPoolInfo
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-taskpool-function getTaskPoolInfo(): TaskPoolInfo--><!--Device-taskpool-function getTaskPoolInfo(): TaskPoolInfo-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -33,4 +31,3 @@ function getTaskPoolInfo(): TaskPoolInfo
 ```TypeScript
 let taskpoolInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
 ```
-

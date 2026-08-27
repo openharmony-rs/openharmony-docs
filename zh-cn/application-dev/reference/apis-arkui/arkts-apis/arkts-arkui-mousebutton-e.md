@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-<!--Device-unnamed-declare enum MouseButton--><!--Device-unnamed-declare enum MouseButton-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Left
@@ -19,8 +17,6 @@ Left
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MouseButton-Left--><!--Device-MouseButton-Left-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,8 +32,6 @@ Right
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MouseButton-Right--><!--Device-MouseButton-Right-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Middle
@@ -51,8 +45,6 @@ Middle
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MouseButton-Middle--><!--Device-MouseButton-Middle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,8 +60,6 @@ Back
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MouseButton-Back--><!--Device-MouseButton-Back-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Forward
@@ -83,8 +73,6 @@ Forward
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MouseButton-Forward--><!--Device-MouseButton-Forward-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,7 +88,4 @@ None
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MouseButton-None--><!--Device-MouseButton-None-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

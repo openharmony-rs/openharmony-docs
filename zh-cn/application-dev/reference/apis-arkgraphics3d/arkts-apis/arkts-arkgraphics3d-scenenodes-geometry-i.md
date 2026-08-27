@@ -1,12 +1,10 @@
 # Geometry
 
-几何节点类型，用于承载可渲染的网格数据，并支持可选的形变功能，继承自Node。
+几何节点类型，用于承载可渲染的网格数据，并支持可选的形变功能，继承自Node。@extends Node @interface Geometry
 
 **继承/实现关系：** Geometry extends [Node](arkts-arkgraphics3d-scenenodes-node-i.md)
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface Geometry--><!--Device-unnamed-export interface Geometry-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -20,9 +18,7 @@ readonly mesh: Mesh
 
 **类型：** [Mesh](arkts-arkgraphics3d-sceneresources-mesh-i.md)
 
-**起始版本：** 23
-
-<!--Device-Geometry-readonly mesh: Mesh--><!--Device-Geometry-readonly mesh: Mesh-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -36,9 +32,6 @@ readonly morpher?: Morpher
 
 **类型：** [Morpher](arkts-arkgraphics3d-sceneresources-morpher-i.md)
 
-**起始版本：** 23
-
-<!--Device-Geometry-readonly morpher?: Morpher--><!--Device-Geometry-readonly morpher?: Morpher-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

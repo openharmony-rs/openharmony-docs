@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class BaselineOffsetStyle--><!--Device-unnamed-declare class BaselineOffsetStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,8 +25,6 @@ constructor(value: LengthMetrics)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BaselineOffsetStyle-constructor(value: LengthMetrics)--><!--Device-BaselineOffsetStyle-constructor(value: LengthMetrics)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -43,7 +39,7 @@ constructor(value: LengthMetrics)
 readonly baselineOffset: number
 ```
 
-获取属性字符串的文本基线偏移量。 单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
+获取属性字符串的文本基线偏移量。单位：[vp](arkts-arkui-length-t.md)
 
 **类型：** number
 
@@ -53,7 +49,4 @@ readonly baselineOffset: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BaselineOffsetStyle-readonly baselineOffset: number--><!--Device-BaselineOffsetStyle-readonly baselineOffset: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

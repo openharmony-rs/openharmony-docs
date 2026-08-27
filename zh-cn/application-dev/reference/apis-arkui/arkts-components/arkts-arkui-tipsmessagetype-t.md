@@ -12,12 +12,9 @@ declare type TipsMessageType = ResourceStr | StyledString
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type TipsMessageType = ResourceStr | StyledString--><!--Device-unnamed-declare type TipsMessageType = ResourceStr | StyledString-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | --- | --- |
-| ResourceStr | 字符串类型，用于描述字符串入参可以使用的类型。 |
-| StyledString | 属性字符串。 |
-
+| [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 字符串类型，用于描述字符串入参可以使用的类型。 |
+| [StyledString](../arkts-apis/arkts-arkui-styledstring-c.md) | 属性字符串。 |

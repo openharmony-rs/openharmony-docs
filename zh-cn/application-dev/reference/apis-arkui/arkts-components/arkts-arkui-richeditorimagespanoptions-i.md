@@ -4,14 +4,28 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface RichEditorImageSpanOptions--><!--Device-unnamed-declare interface RichEditorImageSpanOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
 
 ```TypeScript
 ```
+
+## onHover
+
+```TypeScript
+onHover?: OnHoverCallback
+```
+
+鼠标悬停触发回调。省略时，不执行鼠标悬停回调行为。
+
+**起始版本：** 14
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## gesture
 
@@ -28,8 +42,6 @@ gesture?: RichEditorGesture
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RichEditorImageSpanOptions-gesture?: RichEditorGesture--><!--Device-RichEditorImageSpanOptions-gesture?: RichEditorGesture-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,8 +61,6 @@ imageStyle?: RichEditorImageSpanStyle
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorImageSpanOptions-imageStyle?: RichEditorImageSpanStyle--><!--Device-RichEditorImageSpanOptions-imageStyle?: RichEditorImageSpanStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -59,7 +69,7 @@ imageStyle?: RichEditorImageSpanStyle
 offset?: number
 ```
 
-添加图片的位置。省略时，添加到所有内容的末尾。 当值小于0时，设置在所有内容最前面；当值大于所有内容长度时，设置在所有内容最后面。
+添加图片的位置。省略时，添加到所有内容的末尾。当值小于0时，设置在所有内容最前面；当值大于所有内容长度时，设置在所有内容最后面。
 
 **类型：** number
 
@@ -69,27 +79,4 @@ offset?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorImageSpanOptions-offset?: number--><!--Device-RichEditorImageSpanOptions-offset?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## onHover
-
-```TypeScript
-onHover?: OnHoverCallback
-```
-
-鼠标悬停触发回调。省略时，不执行鼠标悬停回调行为。
-
-**类型：** [OnHoverCallback](arkts-arkui-onhovercallback-t.md)
-
-**起始版本：** 14
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RichEditorImageSpanOptions-onHover?: OnHoverCallback--><!--Device-RichEditorImageSpanOptions-onHover?: OnHoverCallback-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

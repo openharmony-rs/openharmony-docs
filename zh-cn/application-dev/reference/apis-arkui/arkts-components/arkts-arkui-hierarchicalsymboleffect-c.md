@@ -6,8 +6,6 @@ HierarchicalSymbolEffect继承自父类SymbolEffect。
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class HierarchicalSymbolEffect--><!--Device-unnamed-declare class HierarchicalSymbolEffect-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,15 +29,13 @@ HierarchicalSymbolEffect的构造函数，层级动效。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-HierarchicalSymbolEffect-constructor(fillStyle?: EffectFillStyle)--><!--Device-HierarchicalSymbolEffect-constructor(fillStyle?: EffectFillStyle)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fillStyle | [EffectFillStyle](arkts-arkui-effectfillstyle-e.md) | 否 | 动效模式。具体枚举值及说明请参考EffectFillStyle枚举说明。 <br>默认值：EffectFillStyle.CUMULATIVE |
+| fillStyle | [EffectFillStyle](arkts-arkui-effectfillstyle-e.md) | 否 | 动效模式。具体枚举值及说明请参考EffectFillStyle枚举说明。 默认值：EffectFillStyle.CUMULATIVE |
 
 ## fillStyle
 
@@ -47,7 +43,7 @@ HierarchicalSymbolEffect的构造函数，层级动效。
 fillStyle?: EffectFillStyle
 ```
 
-动效模式。 默认值：EffectFillStyle.CUMULATIVE
+动效模式。默认值：EffectFillStyle.CUMULATIVE
 
 **类型：** [EffectFillStyle](arkts-arkui-effectfillstyle-e.md)
 
@@ -59,7 +55,4 @@ fillStyle?: EffectFillStyle
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-HierarchicalSymbolEffect-fillStyle?: EffectFillStyle--><!--Device-HierarchicalSymbolEffect-fillStyle?: EffectFillStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

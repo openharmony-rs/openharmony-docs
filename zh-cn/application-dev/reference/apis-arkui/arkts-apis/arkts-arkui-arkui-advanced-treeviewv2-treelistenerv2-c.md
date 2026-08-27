@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export declare class TreeListenerV2--><!--Device-unnamed-export declare class TreeListenerV2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,15 +26,13 @@ offNodeAdd(callback?: OnChangedCallback): void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TreeListenerV2-offNodeAdd(callback?: OnChangedCallback): void--><!--Device-TreeListenerV2-offNodeAdd(callback?: OnChangedCallback): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md) | 否 |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | 否 |  |
 
 ## offNodeClick
 
@@ -52,15 +48,13 @@ offNodeClick(callback?: OnChangedCallback): void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TreeListenerV2-offNodeClick(callback?: OnChangedCallback): void--><!--Device-TreeListenerV2-offNodeClick(callback?: OnChangedCallback): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md) | 否 |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | 否 |  |
 
 ## offNodeDelete
 
@@ -76,15 +70,13 @@ offNodeDelete(callback?: OnChangedCallback): void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TreeListenerV2-offNodeDelete(callback?: OnChangedCallback): void--><!--Device-TreeListenerV2-offNodeDelete(callback?: OnChangedCallback): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md) | 否 |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | 否 |  |
 
 ## offNodeModify
 
@@ -100,15 +92,13 @@ offNodeModify(callback?: OnChangedCallback): void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TreeListenerV2-offNodeModify(callback?: OnChangedCallback): void--><!--Device-TreeListenerV2-offNodeModify(callback?: OnChangedCallback): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md) | 否 |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | 否 |  |
 
 ## offNodeMove
 
@@ -124,135 +114,13 @@ offNodeMove(callback?: OnChangedCallback): void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TreeListenerV2-offNodeMove(callback?: OnChangedCallback): void--><!--Device-TreeListenerV2-offNodeMove(callback?: OnChangedCallback): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md) | 否 |  |
-
-## onNodeAdd
-
-```TypeScript
-onNodeAdd(callback: OnChangedCallback): void
-```
-
-注册节点添加事件监听，持续监听节点添加事件。使用callback回调。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TreeListenerV2-onNodeAdd(callback: OnChangedCallback): void--><!--Device-TreeListenerV2-onNodeAdd(callback: OnChangedCallback): void-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md) | 是 |  |
-
-## onNodeClick
-
-```TypeScript
-onNodeClick(callback: OnChangedCallback): void
-```
-
-注册节点点击事件监听，持续监听节点点击事件。使用callback回调。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TreeListenerV2-onNodeClick(callback: OnChangedCallback): void--><!--Device-TreeListenerV2-onNodeClick(callback: OnChangedCallback): void-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md) | 是 |  |
-
-## onNodeDelete
-
-```TypeScript
-onNodeDelete(callback: OnChangedCallback): void
-```
-
-注册节点删除事件监听，持续监听节点删除事件。使用callback回调。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TreeListenerV2-onNodeDelete(callback: OnChangedCallback): void--><!--Device-TreeListenerV2-onNodeDelete(callback: OnChangedCallback): void-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md) | 是 |  |
-
-## onNodeModify
-
-```TypeScript
-onNodeModify(callback: OnChangedCallback): void
-```
-
-注册节点修改事件监听，持续监听节点修改事件。使用callback回调。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TreeListenerV2-onNodeModify(callback: OnChangedCallback): void--><!--Device-TreeListenerV2-onNodeModify(callback: OnChangedCallback): void-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md) | 是 |  |
-
-## onNodeMove
-
-```TypeScript
-onNodeMove(callback: OnChangedCallback): void
-```
-
-注册节点移动事件监听，持续监听节点移动事件。节点移动通过拖拽操作触发。使用callback回调。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TreeListenerV2-onNodeMove(callback: OnChangedCallback): void--><!--Device-TreeListenerV2-onNodeMove(callback: OnChangedCallback): void-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md) | 是 |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | 否 |  |
 
 ## onceNodeAdd
 
@@ -268,15 +136,13 @@ onceNodeAdd(callback: OnChangedCallback): void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TreeListenerV2-onceNodeAdd(callback: OnChangedCallback): void--><!--Device-TreeListenerV2-onceNodeAdd(callback: OnChangedCallback): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md) | 是 |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | 是 |  |
 
 ## onceNodeClick
 
@@ -292,15 +158,13 @@ onceNodeClick(callback: OnChangedCallback): void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TreeListenerV2-onceNodeClick(callback: OnChangedCallback): void--><!--Device-TreeListenerV2-onceNodeClick(callback: OnChangedCallback): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md) | 是 |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | 是 |  |
 
 ## onceNodeDelete
 
@@ -316,15 +180,13 @@ onceNodeDelete(callback: OnChangedCallback): void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TreeListenerV2-onceNodeDelete(callback: OnChangedCallback): void--><!--Device-TreeListenerV2-onceNodeDelete(callback: OnChangedCallback): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md) | 是 |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | 是 |  |
 
 ## onceNodeModify
 
@@ -340,15 +202,13 @@ onceNodeModify(callback: OnChangedCallback): void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TreeListenerV2-onceNodeModify(callback: OnChangedCallback): void--><!--Device-TreeListenerV2-onceNodeModify(callback: OnChangedCallback): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md) | 是 |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | 是 |  |
 
 ## onceNodeMove
 
@@ -364,7 +224,27 @@ onceNodeMove(callback: OnChangedCallback): void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TreeListenerV2-onceNodeMove(callback: OnChangedCallback): void--><!--Device-TreeListenerV2-onceNodeMove(callback: OnChangedCallback): void-End-->
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | 是 |  |
+
+## onNodeAdd
+
+```TypeScript
+onNodeAdd(callback: OnChangedCallback): void
+```
+
+注册节点添加事件监听，持续监听节点添加事件。使用callback回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -372,5 +252,92 @@ onceNodeMove(callback: OnChangedCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md) | 是 |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | 是 |  |
 
+## onNodeClick
+
+```TypeScript
+onNodeClick(callback: OnChangedCallback): void
+```
+
+注册节点点击事件监听，持续监听节点点击事件。使用callback回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | 是 |  |
+
+## onNodeDelete
+
+```TypeScript
+onNodeDelete(callback: OnChangedCallback): void
+```
+
+注册节点删除事件监听，持续监听节点删除事件。使用callback回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | 是 |  |
+
+## onNodeModify
+
+```TypeScript
+onNodeModify(callback: OnChangedCallback): void
+```
+
+注册节点修改事件监听，持续监听节点修改事件。使用callback回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | 是 |  |
+
+## onNodeMove
+
+```TypeScript
+onNodeMove(callback: OnChangedCallback): void
+```
+
+注册节点移动事件监听，持续监听节点移动事件。节点移动通过拖拽操作触发。使用callback回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | 是 |  |

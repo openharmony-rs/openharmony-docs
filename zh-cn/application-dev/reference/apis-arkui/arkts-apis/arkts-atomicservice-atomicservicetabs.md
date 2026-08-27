@@ -38,4 +38,3 @@ import { AtomicServiceTabs, TabBarOptions, TabBarPosition, TabContentBuilder, On
 | --- | --- |
 | [OnContentWillChangeCallback(Provides an advanced struct of tabs for atomic services)](arkts-arkui-oncontentwillchangecallback-t.md) | 页面内容即将发生变化时触发的回调函数，用于拦截页面切换，开发者可通过返回值控制是否允许切换。 |
 | [TabContentBuilder(Provides an advanced struct of tabs for atomic services)](arkts-arkui-tabcontentbuilder-t.md) | 内容视图构建器，用于构建TabContent页签内容的函数。 |
-

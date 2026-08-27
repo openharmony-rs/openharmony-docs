@@ -2,7 +2,21 @@
 
 导航组件，默认提供点击响应处理，不需要开发者自定义点击事件逻辑。
 
-## 子组件 必须包含两个子组件，其中第二个子组件必须为NavDestination。 > **说明：** > > 子组件个数异常时： > > 1. 有且仅有1个时，触发路由到NavDestination的能力失效。 > > 2. 有且仅有1个时，且使用NavDestination场景下，不进行路由。 > > 3. 大于2个时，后续的子组件不显示。 > > 4. 第二个子组件不为NavDestination时，触发路由功能失效。
+## 子组件
+
+必须包含两个子组件，其中第二个子组件必须为NavDestination。
+
+> **说明：**
+> 
+> 子组件个数异常时：
+> 
+> 1. 有且仅有1个时，触发路由到NavDestination的能力失效。
+> 
+> 2. 有且仅有1个时，且使用NavDestination场景下，不进行路由。
+> 
+> 3. 大于2个时，后续的子组件不显示。
+> 
+> 4. 第二个子组件不为NavDestination时，触发路由功能失效。
 
 ## NavRouter
 
@@ -16,11 +30,9 @@ NavRouter()
 
 **废弃版本：** 13
 
-**替代接口：** NavDestinationAttribute
+**替代接口：** [NavDestinationAttribute](arkts-arkui-navdestination-attribute.md)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NavRouterInterface-(): NavRouterAttribute--><!--Device-NavRouterInterface-(): NavRouterAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,13 +48,11 @@ NavRouter(value: RouteInfo)
 
 **废弃版本：** 13
 
-**替代接口：** NavPathInfo
+**替代接口：** [NavPathInfo](arkts-arkui-navpathinfo-c.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-NavRouterInterface-(value: RouteInfo): NavRouterAttribute--><!--Device-NavRouterInterface-(value: RouteInfo): NavRouterAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,3 +76,84 @@ NavRouter(value: RouteInfo)
 | --- | --- |
 | [NavRouteMode](arkts-arkui-navroutemode-e.md) | 路由模式。 |
 
+## 示例
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct NavRouterExample {
+  @State isActiveWLAN: boolean = false
+  @State isActiveBluetooth: boolean = false
+
+  build() {
+    Navigation() {
+      NavRouter() {
+        Row() {
+          Row()
+            .width(30)
+            .height(30)
+            .borderRadius(30)
+            .margin({ left: 3, right: 10 })
+            .backgroundColor(Color.Pink)
+          Text(`WLAN`)
+            .fontSize(22)
+            .fontWeight(500)
+            .textAlign(TextAlign.Center)
+        }
+        .width('90%')
+        .height(60)
+
+        NavDestination() {
+          Flex({ direction: FlexDirection.Row }) {
+            Text('未找到可用WLAN').fontSize(30).padding({ left: 15 })
+          }
+        }.title("WLAN")
+      }
+      .margin({ top: 10, bottom: 10 })
+      .backgroundColor(this.isActiveWLAN ? '#ccc' : '#fff')
+      .borderRadius(20)
+      .mode(NavRouteMode.PUSH_WITH_RECREATE)
+      .onStateChange((isActivated: boolean) => {
+        this.isActiveWLAN = isActivated
+      })
+
+      NavRouter() {
+        Row() {
+          Row()
+            .width(30)
+            .height(30)
+            .borderRadius(30)
+            .margin({ left: 3, right: 10 })
+            .backgroundColor(Color.Pink)
+          Text(`蓝牙`)
+            .fontSize(22)
+            .fontWeight(500)
+            .textAlign(TextAlign.Center)
+        }
+        .width('90%')
+        .height(60)
+
+        NavDestination() {
+          Flex({ direction: FlexDirection.Row }) {
+            Text('未找到可用蓝牙').fontSize(30).padding({ left: 15 })
+          }
+        }.title("蓝牙")
+      }
+      .margin({ top: 10, bottom: 10 })
+      .backgroundColor(this.isActiveBluetooth ? '#ccc' : '#fff')
+      .borderRadius(20)
+      .mode(NavRouteMode.REPLACE)
+      .onStateChange((isActivated: boolean) => {
+        this.isActiveBluetooth = isActivated
+      })
+    }
+    .height('100%')
+    .width('100%')
+    .title('设置')
+    .backgroundColor("#F2F3F5")
+    .titleMode(NavigationTitleMode.Free)
+    .mode(NavigationMode.Auto)
+  }
+}
+```

@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-unnamed-declare enum ColorMode--><!--Device-unnamed-declare enum ColorMode-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LIGHT
@@ -19,8 +17,6 @@ LIGHT = 0
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ColorMode-LIGHT = 0--><!--Device-ColorMode-LIGHT = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +32,4 @@ DARK
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ColorMode-DARK--><!--Device-ColorMode-DARK-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

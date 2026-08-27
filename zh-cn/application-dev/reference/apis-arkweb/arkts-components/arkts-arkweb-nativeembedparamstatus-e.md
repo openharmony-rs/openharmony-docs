@@ -4,8 +4,6 @@
 
 **起始版本：** 21
 
-<!--Device-unnamed-declare enum NativeEmbedParamStatus--><!--Device-unnamed-declare enum NativeEmbedParamStatus-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ADD
@@ -17,8 +15,6 @@ ADD = 0
 添加param元素。
 
 **起始版本：** 21
-
-<!--Device-NativeEmbedParamStatus-ADD = 0--><!--Device-NativeEmbedParamStatus-ADD = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -32,8 +28,6 @@ UPDATE = 1
 
 **起始版本：** 21
 
-<!--Device-NativeEmbedParamStatus-UPDATE = 1--><!--Device-NativeEmbedParamStatus-UPDATE = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## DELETE
@@ -46,7 +40,4 @@ DELETE = 2
 
 **起始版本：** 21
 
-<!--Device-NativeEmbedParamStatus-DELETE = 2--><!--Device-NativeEmbedParamStatus-DELETE = 2-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

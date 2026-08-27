@@ -1,19 +1,23 @@
 # Array
 
-一种线性数据结构，底层基于数组实现，可以在ArkTS上并发实例间传递。 当需要在ArkTS上并发实例间传递Array时，可以通过传递Array引用提升传递性能。 > **说明：**> > - 本模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 > 本节使用以下标识来表示泛型的使用： - T：Type，支持 [Sendable支持的数据类型](../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。 **装饰器**：\@Sendable
+一种线性数据结构，底层基于数组实现，可以在ArkTS上并发实例间传递。当需要在ArkTS上并发实例间传递Array时，可以通过传递Array引用提升传递性能。
+
+> **说明：**
+> 
+> - 本模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
+> 本节使用以下标识来表示泛型的使用：
+- T：Type，支持
+[Sendable支持的数据类型](../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。 **装饰器**：\@Sendable
 
 **继承/实现关系：** Array implements ConcatArray<T>
 
 **起始版本：** 12
-
-<!--Device-collections-class Array--><!--Device-collections-class Array-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { collections } from '@kit.ArkTS';
 ```
 
 ## [Symbol.iterator]
@@ -28,15 +32,13 @@ import { collections } from '@kit.ArkTS';
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-[Symbol.iterator](): IterableIterator<T>--><!--Device-Array-[Symbol.iterator](): IterableIterator<T>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;T&gt; | 迭代器对象。 |
+| IterableIterator & lt;T & gt; | 迭代器对象。 |
 
 **错误码：**
 
@@ -56,8 +58,6 @@ at(index: number): T | undefined
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-at(index: number): T | undefined--><!--Device-Array-at(index: number): T | undefined-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -70,7 +70,7 @@ at(index: number): T | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| T | 返回指定索引处的元素；如果索引超出范围或无效， 则返回**undefined**。 |
+| T \| undefined | 返回指定索引处的元素；如果索引超出范围或无效， 则返回**undefined**。 |
 
 **错误码：**
 
@@ -91,21 +91,19 @@ concat(...items: ConcatArray<T>[]): Array<T>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-concat(...items: ConcatArray<T>[]): Array<T>--><!--Device-Array-concat(...items: ConcatArray<T>[]): Array<T>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | [ConcatArray](arkts-arkts-collections-concatarray-i.md)&lt;T&gt;[] | 是 | 用于拼接ArkTS Array的一个或多个数组，省略时返回原数组的浅拷贝。 |
+| items | ConcatArray & lt;T & gt;[] | 是 | 用于拼接ArkTS Array的一个或多个数组，省略时返回原数组的浅拷贝。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 拼接后生成的新Array。 |
+| Array & lt;T & gt; | 拼接后生成的新Array。 |
 
 **错误码：**
 
@@ -126,8 +124,6 @@ constructor()
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-constructor()--><!--Device-Array-constructor()-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **错误码：**
@@ -147,8 +143,6 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Array-constructor(first: T, ...left: T[])--><!--Device-Array-constructor(first: T, ...left: T[])-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -177,8 +171,6 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-constructor(...items: T[])--><!--Device-Array-constructor(...items: T[])-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -193,6 +185,76 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Array's constructor cannot be directly invoked. |
 
+## containsAll
+
+```TypeScript
+containsAll(elements: Array<T>): boolean
+```
+
+检查指定ArkTS Array中的所有元素是否均包含在此ArkTS Array中。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| elements | Array & lt;T & gt; | 是 | 要检查的ArkTS Array。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果指定的所有元素均包含在此Array中，则返回**true**； 否则返回**false**。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The containsAll method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification exception |
+
+## containsAll
+
+```TypeScript
+containsAll(elements: BuiltinArray<T>): boolean
+```
+
+检查指定内建Array中的所有元素是否均包含在此ArkTS Array中。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| elements | [BuiltinArray](arkts-arkts-builtinarray-t.md)&lt;T&gt; | 是 | 要检查的内建Array。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果指定的所有元素均包含在此Array中，则返回**true**； 否则返回**false**。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The containsAll method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification exception |
+
 ## copyWithin
 
 ```TypeScript
@@ -204,8 +266,6 @@ copyWithin(target: number, start: number, end?: number): Array<T>
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Array-copyWithin(target: number, start: number, end?: number): Array<T>--><!--Device-Array-copyWithin(target: number, start: number, end?: number): Array<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -221,7 +281,7 @@ copyWithin(target: number, start: number, end?: number): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 修改后的ArkTS Array。可能的原因： 1. 必填参数未指定。 2. 参数类型不正确。 3. 参数校验失败。 |
+| Array & lt;T & gt; | 修改后的ArkTS Array。可能的原因： |
 
 **错误码：**
 
@@ -242,8 +302,6 @@ static create<T>(arrayLength: number, initialValue: T): Array<T>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-static create<T>(arrayLength: number, initialValue: T): Array<T>--><!--Device-Array-static create<T>(arrayLength: number, initialValue: T): Array<T>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -257,7 +315,7 @@ static create<T>(arrayLength: number, initialValue: T): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
+| Array & lt;T & gt; | 新创建的ArkTS Array实例。 |
 
 **错误码：**
 
@@ -277,15 +335,13 @@ entries(): IterableIterator<[number, T]>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-entries(): IterableIterator<[number, T]>--><!--Device-Array-entries(): IterableIterator<[number, T]>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[number, T]&gt; | 包含Array中每个元素的键值对的 迭代器对象。 |
+| IterableIterator & lt;[number, T] & gt; | 包含Array中每个元素的键值对的 迭代器对象。 |
 
 **错误码：**
 
@@ -305,8 +361,6 @@ every(predicate: ArrayPredicateFn<T, Array<T>>): boolean
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Array-every(predicate: ArrayPredicateFn<T, Array<T>>): boolean--><!--Device-Array-every(predicate: ArrayPredicateFn<T, Array<T>>): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -341,8 +395,6 @@ extendTo(arrayLength: number, initialValue: T): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-extendTo(arrayLength: number, initialValue: T): void--><!--Device-Array-extendTo(arrayLength: number, initialValue: T): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -371,8 +423,6 @@ fill(value: T, start?: number, end?: number): Array<T>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-fill(value: T, start?: number, end?: number): Array<T>--><!--Device-Array-fill(value: T, start?: number, end?: number): Array<T>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -387,7 +437,7 @@ fill(value: T, start?: number, end?: number): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 填充后的Array。 |
+| Array & lt;T & gt; | 填充后的Array。 |
 
 **错误码：**
 
@@ -408,21 +458,19 @@ filter(predicate: (value: T, index: number, array: Array<T>) => boolean): Array<
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-filter(predicate: (value: T, index: number, array: Array<T>) => boolean): Array<T>--><!--Device-Array-filter(predicate: (value: T, index: number, array: Array<T>) => boolean): Array<T>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | (value: T, index: number, array: Array&lt;T&gt;) =&gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为 **true**表示当前元素通过测试，应保留在新数组中；返回值为**false**表示当前元素未通过 测试，应被排除在新数组外。 |
+| predicate | (value: T, index: number, array: Array & lt;T & gt;) = & gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为 **true**表示当前元素通过测试，应保留在新数组中；返回值为**false**表示当前元素未通过 测试，应被排除在新数组外。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 包含通过测试的元素的新Array。 |
+| Array & lt;T & gt; | 包含通过测试的元素的新Array。 |
 
 **错误码：**
 
@@ -443,21 +491,19 @@ find(predicate: (value: T, index: number, obj: Array<T>) => boolean): T | undefi
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-find(predicate: (value: T, index: number, obj: Array<T>) => boolean): T | undefined--><!--Device-Array-find(predicate: (value: T, index: number, obj: Array<T>) => boolean): T | undefined-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | (value: T, index: number, obj: Array&lt;T&gt;) =&gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为 **true**表示当前元素满足条件，会立即停止遍历，并将该元素作为结果返回；返回值为 **false**表示当前元素不满足条件，会继续检查下一个元素，直到找到符合条件的元素或遍历 完整个数组。 |
+| predicate | (value: T, index: number, obj: Array & lt;T & gt;) = & gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为 **true**表示当前元素满足条件，会立即停止遍历，并将该元素作为结果返回；返回值为 **false**表示当前元素不满足条件，会继续检查下一个元素，直到找到符合条件的元素或遍历 完整个数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| T | 第一个满足条件的元素的值；如果所有元素都不满足条件 ，则返回**undefined**。 |
+| T \| undefined | 第一个满足条件的元素的值；如果所有元素都不满足条件 ，则返回**undefined**。 |
 
 **错误码：**
 
@@ -478,15 +524,13 @@ findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): numbe
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): number--><!--Device-Array-findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | (value: T, index: number, obj: Array&lt;T&gt;) =&gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为 **true**表示当前元素满足条件，会立即停止遍历，并返回该元素的索引；返回值为**false** 表示当前元素不满足条件，会继续检查下一个元素，直到找到符合条件的元素或遍历完整个 数组。 |
+| predicate | (value: T, index: number, obj: Array & lt;T & gt;) = & gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为 **true**表示当前元素满足条件，会立即停止遍历，并返回该元素的索引；返回值为**false** 表示当前元素不满足条件，会继续检查下一个元素，直到找到符合条件的元素或遍历完整个 数组。 |
 
 **返回值：**
 
@@ -513,15 +557,13 @@ forEach(callbackFn: (value: T, index: number, array: Array<T>) => void): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-forEach(callbackFn: (value: T, index: number, array: Array<T>) => void): void--><!--Device-Array-forEach(callbackFn: (value: T, index: number, array: Array<T>) => void): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index: number, array: Array&lt;T&gt;) =&gt; void | 是 | 用于对每个元素执行的回调函数。 |
+| callbackFn | (value: T, index: number, array: Array & lt;T & gt;) = & gt; void | 是 | 用于对每个元素执行的回调函数。 |
 
 **错误码：**
 
@@ -542,21 +584,19 @@ static from<T>(arrayLike: ArrayLike<T>): Array<T>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-static from<T>(arrayLike: ArrayLike<T>): Array<T>--><!--Device-Array-static from<T>(arrayLike: ArrayLike<T>): Array<T>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLike | [ArrayLike](../../apis-na/arkts-apis/arkts-na-arraylike-i.md)&lt;T&gt; | 是 | 用于构造ArkTS Array的对象。 |
+| arrayLike | ArrayLike & lt;T & gt; | 是 | 用于构造ArkTS Array的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
+| Array & lt;T & gt; | 新创建的ArkTS Array实例。 |
 
 **错误码：**
 
@@ -576,21 +616,19 @@ static from<T>(iterable: Iterable<T>): Array<T>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-static from<T>(iterable: Iterable<T>): Array<T>--><!--Device-Array-static from<T>(iterable: Iterable<T>): Array<T>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| iterable | Iterable&lt;T&gt; | 是 | 用于构造ArkTS Array的对象。 |
+| iterable | Iterable & lt;T & gt; | 是 | 用于构造ArkTS Array的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
+| Array & lt;T & gt; | 新创建的ArkTS Array实例。 |
 
 **错误码：**
 
@@ -610,22 +648,20 @@ static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T>): Array<T>--><!--Device-Array-static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T>): Array<T>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLike | [ArrayLike](../../apis-na/arkts-apis/arkts-na-arraylike-i.md)&lt;T&gt; \| Iterable&lt;T&gt; | 是 | 用于构造ArkTS Array的对象。 |
+| arrayLike | ArrayLike & lt;T & gt; \ | Iterable & lt;T & gt; | 是 | 用于构造ArkTS Array的对象。 |
 | mapFn | [ArrayFromMapFn](arkts-arkts-collections-arrayfrommapfn-t.md)&lt;T, T&gt; | 是 | 用于处理数组元素的函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
+| Array & lt;T & gt; | 新创建的ArkTS Array实例。 |
 
 ## from
 
@@ -639,22 +675,20 @@ static from<U, T>(arrayLike: ArrayLike<U> | Iterable<U>, mapFn: ArrayFromMapFn<U
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-static from<U, T>(arrayLike: ArrayLike<U> | Iterable<U>, mapFn: ArrayFromMapFn<U, T>): Array<T>--><!--Device-Array-static from<U, T>(arrayLike: ArrayLike<U> | Iterable<U>, mapFn: ArrayFromMapFn<U, T>): Array<T>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLike | [ArrayLike](../../apis-na/arkts-apis/arkts-na-arraylike-i.md)&lt;U&gt; \| Iterable&lt;U&gt; | 是 | 用于构造ArkTS Array的对象。 |
+| arrayLike | ArrayLike & lt;U & gt; \ | Iterable & lt;U & gt; | 是 | 用于构造ArkTS Array的对象。 |
 | mapFn | [ArrayFromMapFn](arkts-arkts-collections-arrayfrommapfn-t.md)&lt;U, T&gt; | 是 | 用于处理数组元素的函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
+| Array & lt;T & gt; | 新创建的ArkTS Array实例。 |
 
 ## includes
 
@@ -667,8 +701,6 @@ includes(searchElement: T, fromIndex?: number): boolean
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Array-includes(searchElement: T, fromIndex?: number): boolean--><!--Device-Array-includes(searchElement: T, fromIndex?: number): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -704,8 +736,6 @@ indexOf(searchElement: T, fromIndex?: number): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-indexOf(searchElement: T, fromIndex?: number): number--><!--Device-Array-indexOf(searchElement: T, fromIndex?: number): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -740,8 +770,6 @@ static isArray(value: Object | undefined | null): boolean
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-static isArray(value: Object | undefined | null): boolean--><!--Device-Array-static isArray(value: Object | undefined | null): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -754,7 +782,7 @@ static isArray(value: Object | undefined | null): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果传入的参数是ArkTS Array，则返回**true**； 否则返回**false**。可能的原因： 1. 必填参数未指定。 2. 参数类型不正确。 3. 参数校验失败。 |
+| boolean | 检查结果。如果传入的参数是ArkTS Array，则返回**true**； 否则返回**false**。可能的原因： |
 
 ## join
 
@@ -767,8 +795,6 @@ join(separator?: string): string
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Array-join(separator?: string): string--><!--Device-Array-join(separator?: string): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -803,15 +829,13 @@ keys(): IterableIterator<number>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-keys(): IterableIterator<number>--><!--Device-Array-keys(): IterableIterator<number>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;number&gt; | 包含Array中每个元素的索引的迭代器对象。 |
+| IterableIterator & lt;number & gt; | 包含Array中每个元素的索引的迭代器对象。 |
 
 **错误码：**
 
@@ -831,8 +855,6 @@ lastIndexOf(searchElement: T, fromIndex?: number): number
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Array-lastIndexOf(searchElement: T, fromIndex?: number): number--><!--Device-Array-lastIndexOf(searchElement: T, fromIndex?: number): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -868,21 +890,19 @@ map<U>(callbackFn: (value: T, index: number, array: Array<T>) => U): Array<U>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-map<U>(callbackFn: (value: T, index: number, array: Array<T>) => U): Array<U>--><!--Device-Array-map<U>(callbackFn: (value: T, index: number, array: Array<T>) => U): Array<U>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index: number, array: Array&lt;T&gt;) =&gt; U | 是 | 用于对每个元素执行的回调函数。 |
+| callbackFn | (value: T, index: number, array: Array & lt;T & gt;) = & gt; U | 是 | 用于对每个元素执行的回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;U&gt; | 包含回调函数结果的新Array。 |
+| Array & lt;U & gt; | 包含回调函数结果的新Array。 |
 
 **错误码：**
 
@@ -903,8 +923,6 @@ static of<T>(...items: T[]): Array<T>
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-static of<T>(...items: T[]): Array<T>--><!--Device-Array-static of<T>(...items: T[]): Array<T>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -917,7 +935,7 @@ static of<T>(...items: T[]): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 新创建的ArkTS Array实例。可能的原因： 1. 必填参数未指定。 2. 参数类型不正确。 3. 参数校验失败。 |
+| Array & lt;T & gt; | 新创建的ArkTS Array实例。可能的原因： |
 
 ## pop
 
@@ -931,15 +949,13 @@ pop(): T | undefined
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-pop(): T | undefined--><!--Device-Array-pop(): T | undefined-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| T | 从Array中移除的元素；如果Array为空，则返回**undefined**。 |
+| T \| undefined | 从Array中移除的元素；如果Array为空，则返回**undefined**。 |
 
 **错误码：**
 
@@ -959,8 +975,6 @@ push(...items: T[]): number
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Array-push(...items: T[]): number--><!--Device-Array-push(...items: T[]): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -995,15 +1009,13 @@ reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, arr
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, array: Array<T>) => T): T--><!--Device-Array-reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, array: Array<T>) => T): T-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (previousValue: T, currentValue: T, currentIndex: number, array: Array&lt;T&gt;) =&gt; T | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将 结果作为累加值传递给下一个元素。 |
+| callbackFn | (previousValue: T, currentValue: T, currentIndex: number, array: Array & lt;T & gt;) = & gt; T | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将 结果作为累加值传递给下一个元素。 |
 
 **返回值：**
 
@@ -1033,15 +1045,13 @@ reduce<U>(
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-reduce<U>(      callbackFn: (previousValue: U, currentValue: T, currentIndex: number, array: Array<T>) => U,      initialValue: U    ): U--><!--Device-Array-reduce<U>(      callbackFn: (previousValue: U, currentValue: T, currentIndex: number, array: Array<T>) => U,      initialValue: U    ): U-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (previousValue: U, currentValue: T, currentIndex: number, array: Array&lt;T&gt;) =&gt; U | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将 结果作为累加值传递给下一个元素。 |
+| callbackFn | (previousValue: U, currentValue: T, currentIndex: number, array: Array & lt;T & gt;) = & gt; U | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将 结果作为累加值传递给下一个元素。 |
 | initialValue | U | 是 | 用于初始化累加器的值。 |
 
 **返回值：**
@@ -1068,8 +1078,6 @@ reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Array-reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue: U): U--><!--Device-Array-reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue: U): U-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1105,8 +1113,6 @@ reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T--><!--Device-Array-reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1128,6 +1134,111 @@ reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+## retainAll
+
+```TypeScript
+retainAll(elements: Array<T>): boolean
+```
+
+仅保留此ArkTS Array中包含在指定ArkTS Array中的元素。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| elements | Array & lt;T & gt; | 是 | 允许保留元素的ArkTS Array。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 操作结果。如果从此Array中移除了任意元素，则返回**true**； 否则返回**false**。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The retainAll method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification exception |
+
+## retainAll
+
+```TypeScript
+retainAll(elements: BuiltinArray<T>): boolean
+```
+
+仅保留此ArkTS Array中包含在指定内建Array中的元素。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| elements | [BuiltinArray](arkts-arkts-builtinarray-t.md)&lt;T&gt; | 是 | 允许保留元素的内建Array。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 操作结果。如果从此Array中移除了任意元素，则返回**true**； 否则返回**false**。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The retainAll method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification exception |
+
+## retainAll
+
+```TypeScript
+retainAll(predicate: ArrayElementPredicateFn<T>): boolean
+```
+
+仅保留此ArkTS Array中满足指定判定函数的元素。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| predicate | [ArrayElementPredicateFn](arkts-arkts-collections-arrayelementpredicatefn-t.md)&lt;T&gt; | 是 | 用于测试每个元素的判定函数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 操作结果。如果从此Array中移除了任意元素，则返回**true**； 否则返回**false**。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The retainAll method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification exception |
+
 ## reverse
 
 ```TypeScript
@@ -1140,15 +1251,13 @@ reverse(): Array<T>
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-reverse(): Array<T>--><!--Device-Array-reverse(): Array<T>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 反转后的ArkTS Array对象。 |
+| Array & lt;T & gt; | 反转后的ArkTS Array对象。 |
 
 **错误码：**
 
@@ -1169,15 +1278,13 @@ shift(): T | undefined
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-shift(): T | undefined--><!--Device-Array-shift(): T | undefined-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| T | 从Array中移除的元素；如果Array为空，则返回**undefined**。 |
+| T \| undefined | 从Array中移除的元素；如果Array为空，则返回**undefined**。 |
 
 **错误码：**
 
@@ -1197,8 +1304,6 @@ shrinkTo(arrayLength: number): void
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Array-shrinkTo(arrayLength: number): void--><!--Device-Array-shrinkTo(arrayLength: number): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1227,8 +1332,6 @@ slice(start?: number, end?: number): Array<T>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-slice(start?: number, end?: number): Array<T>--><!--Device-Array-slice(start?: number, end?: number): Array<T>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1242,7 +1345,7 @@ slice(start?: number, end?: number): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 包含选取元素的新Array。 |
+| Array & lt;T & gt; | 包含选取元素的新Array。 |
 
 **错误码：**
 
@@ -1262,8 +1365,6 @@ some(predicate: ArrayPredicateFn<T, Array<T>>): boolean
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Array-some(predicate: ArrayPredicateFn<T, Array<T>>): boolean--><!--Device-Array-some(predicate: ArrayPredicateFn<T, Array<T>>): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1298,21 +1399,19 @@ sort(compareFn?: (a: T, b: T) => number): Array<T>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-sort(compareFn?: (a: T, b: T) => number): Array<T>--><!--Device-Array-sort(compareFn?: (a: T, b: T) => number): Array<T>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| compareFn | (a: T, b: T) =&gt; number | 否 | 用于确定元素顺序的函数。默认使用升序排序。 |
+| compareFn | (a: T, b: T) = & gt; number | 否 | 用于确定元素顺序的函数。默认使用升序排序。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 排序后的Array。 |
+| Array & lt;T & gt; | 排序后的Array。 |
 
 **错误码：**
 
@@ -1333,8 +1432,6 @@ splice(start: number): Array<T>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-splice(start: number): Array<T>--><!--Device-Array-splice(start: number): Array<T>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1347,7 +1444,7 @@ splice(start: number): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除， 返回一个空的**Array**对象。可能的原因： 1.必填参数未指定。 2.参数类型不正确。 |
+| Array & lt;T & gt; | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除， 返回一个空的**Array**对象。可能的原因： 1.必填参数未指定。 2.参数类型不正确。 |
 
 **错误码：**
 
@@ -1368,8 +1465,6 @@ splice(start: number, deleteCount: number, ...items: T[]): Array<T>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-splice(start: number, deleteCount: number, ...items: T[]): Array<T>--><!--Device-Array-splice(start: number, deleteCount: number, ...items: T[]): Array<T>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1384,7 +1479,7 @@ splice(start: number, deleteCount: number, ...items: T[]): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除， 返回一个空的**Array**对象。可能的原因： 1.必填参数未指定。 2.参数类型不正确。 |
+| Array & lt;T & gt; | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除， 返回一个空的**Array**对象。可能的原因： 1.必填参数未指定。 2.参数类型不正确。 |
 
 **错误码：**
 
@@ -1404,8 +1499,6 @@ toLocaleString(): string
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Array-toLocaleString(): string--><!--Device-Array-toLocaleString(): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1434,8 +1527,6 @@ toString(): string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-toString(): string--><!--Device-Array-toString(): string-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -1462,8 +1553,6 @@ unshift(...items: T[]): number
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Array-unshift(...items: T[]): number--><!--Device-Array-unshift(...items: T[]): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1498,15 +1587,13 @@ values(): IterableIterator<T>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-values(): IterableIterator<T>--><!--Device-Array-values(): IterableIterator<T>-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;T&gt; | 包含Array中每个元素的值的迭代器对象。 |
+| IterableIterator & lt;T & gt; | 包含Array中每个元素的值的迭代器对象。 |
 
 **错误码：**
 
@@ -1514,6 +1601,22 @@ values(): IterableIterator<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The values method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
+
+## [index: number]
+
+```TypeScript
+[index: number]: T
+```
+
+返回Array中指定索引位置的元素。
+
+**类型：** T
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 ## length
 
@@ -1529,7 +1632,4 @@ Array的元素个数。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Array-readonly length: number--><!--Device-Array-readonly length: number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

@@ -4,18 +4,11 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface OnFirstContentfulPaintEvent--><!--Device-unnamed-declare interface OnFirstContentfulPaintEvent-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## firstContentfulPaintMs
@@ -31,8 +24,6 @@ firstContentfulPaintMs: number
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OnFirstContentfulPaintEvent-firstContentfulPaintMs: number--><!--Device-OnFirstContentfulPaintEvent-firstContentfulPaintMs: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -50,7 +41,4 @@ navigationStartTick: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnFirstContentfulPaintEvent-navigationStartTick: number--><!--Device-OnFirstContentfulPaintEvent-navigationStartTick: number-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

@@ -37,4 +37,3 @@
 | 名称 | 说明 |
 | --- | --- |
 | [console](arkts-arkui-global-console-c.md) | 提供一个简单的调试控制台，类似于浏览器提供的JavaScript控制台机制。 |
-

@@ -4,8 +4,6 @@ NavDestination通用标题。
 
 **起始版本：** 9
 
-<!--Device-unnamed-declare interface NavDestinationCommonTitle--><!--Device-unnamed-declare interface NavDestinationCommonTitle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,8 +25,6 @@ main: string | Resource
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NavDestinationCommonTitle-main: string | Resource--><!--Device-NavDestinationCommonTitle-main: string | Resource-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## sub
@@ -45,7 +41,4 @@ sub: string | Resource
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-NavDestinationCommonTitle-sub: string | Resource--><!--Device-NavDestinationCommonTitle-sub: string | Resource-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

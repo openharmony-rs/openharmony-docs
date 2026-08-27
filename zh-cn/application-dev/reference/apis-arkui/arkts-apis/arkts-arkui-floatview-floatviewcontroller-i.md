@@ -1,10 +1,8 @@
 # FloatViewController
 
-标准悬浮窗控制器实例。用于启动、停止标准悬浮窗以及注册回调等操作。 下列API示例中都需先使用[floatView.create()](arkts-arkui-floatview-create-f.md)方法获取到标准悬浮窗控制器实例（即floatViewController），再通过此实例调用对应方法。
+标准悬浮窗控制器实例。用于启动、停止标准悬浮窗以及注册回调等操作。下列API示例中都需先使用[floatView.create()](arkts-arkui-floatview-create-f.md)方法获取到标准悬浮窗控制器实例（即floatViewController），再通过此实例调用对应方法。
 
 **起始版本：** 26.0.0
-
-<!--Device-floatView-interface FloatViewController--><!--Device-floatView-interface FloatViewController-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -26,8 +24,6 @@ getWindowProperties(): FloatViewProperties
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewController-getWindowProperties(): FloatViewProperties--><!--Device-FloatViewController-getWindowProperties(): FloatViewProperties-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **返回值：**
@@ -47,9 +43,10 @@ getWindowProperties(): FloatViewProperties
 
 ```TypeScript
 try {
+  // 获取闪控窗窗口属性
   let properties: floatView.FloatViewProperties | undefined = this.floatViewController?.getWindowProperties();
   console.info('Float view properties: ' + JSON.stringify(properties));
-} catch(e) {
+} catch (e) {
   console.error(`Failed to get window properties. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -66,15 +63,13 @@ offLimitsChange(callback?: Callback<FloatViewLimits>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewController-offLimitsChange(callback?: Callback<FloatViewLimits>): void--><!--Device-FloatViewController-offLimitsChange(callback?: Callback<FloatViewLimits>): void-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FloatViewLimits](arkts-arkui-floatview-floatviewlimits-i.md)&gt; | 否 | 回调函数。返回当前的标准悬浮窗限制变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗限制变化的监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[FloatViewLimits](arkts-arkui-floatview-floatviewlimits-i.md)&gt; | 否 | 回调函数。返回当前的标准悬浮窗限制变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗限制变化的监听。 |
 
 **错误码：**
 
@@ -85,12 +80,14 @@ offLimitsChange(callback?: Callback<FloatViewLimits>): void
 **示例**
 
 ```TypeScript
+// 定义限制变化回调函数
 let onLimitsChange = (limits: floatView.FloatViewLimits) => {
   console.info('Float view limitsChange: ' + JSON.stringify(limits));
 };
 try {
+  // 取消闪控窗限制变化监听
   this.floatViewController?.offLimitsChange(onLimitsChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to off limitsChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -107,15 +104,13 @@ offRectChange(callback?: Callback<FloatViewRectChangeInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewController-offRectChange(callback?: Callback<FloatViewRectChangeInfo>): void--><!--Device-FloatViewController-offRectChange(callback?: Callback<FloatViewRectChangeInfo>): void-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FloatViewRectChangeInfo](arkts-arkui-floatview-floatviewrectchangeinfo-i.md)&gt; | 否 | 回调函数。返回当前的标准悬浮窗矩形区域变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗矩 形区域变化的监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[FloatViewRectChangeInfo](arkts-arkui-floatview-floatviewrectchangeinfo-i.md)&gt; | 否 | 回调函数。返回当前的标准悬浮窗矩形区域变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗矩 形区域变化的监听。 |
 
 **错误码：**
 
@@ -126,12 +121,14 @@ offRectChange(callback?: Callback<FloatViewRectChangeInfo>): void
 **示例**
 
 ```TypeScript
+// 定义矩形区域变化回调函数
 let onRectChange = (info: floatView.FloatViewRectChangeInfo) => {
   console.info('Float view rectChange: ' + JSON.stringify(info));
 };
 try {
+  // 取消闪控窗矩形区域变化监听
   this.floatViewController?.offRectChange(onRectChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to off rectChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -148,15 +145,13 @@ offStateChange(callback?: Callback<FloatViewStateChangeInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewController-offStateChange(callback?: Callback<FloatViewStateChangeInfo>): void--><!--Device-FloatViewController-offStateChange(callback?: Callback<FloatViewStateChangeInfo>): void-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FloatViewStateChangeInfo](arkts-arkui-floatview-floatviewstatechangeinfo-i.md)&gt; | 否 | 回调函数。返回当前的标准悬浮窗状态变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗状态 变化的监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[FloatViewStateChangeInfo](arkts-arkui-floatview-floatviewstatechangeinfo-i.md)&gt; | 否 | 回调函数。返回当前的标准悬浮窗状态变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗状态 变化的监听。 |
 
 **错误码：**
 
@@ -167,12 +162,14 @@ offStateChange(callback?: Callback<FloatViewStateChangeInfo>): void
 **示例**
 
 ```TypeScript
+// 定义状态变化回调函数
 let onStateChange = (info: floatView.FloatViewStateChangeInfo) => {
   console.info('Float view stateChange: ' + JSON.stringify(info));
 };
 try {
+  // 取消闪控窗状态变化监听
   this.floatViewController?.offStateChange(onStateChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to off stateChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -189,15 +186,13 @@ onLimitsChange(callback: Callback<FloatViewLimits>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewController-onLimitsChange(callback: Callback<FloatViewLimits>): void--><!--Device-FloatViewController-onLimitsChange(callback: Callback<FloatViewLimits>): void-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FloatViewLimits](arkts-arkui-floatview-floatviewlimits-i.md)&gt; | 是 | 回调函数。返回当前的标准悬浮窗限制变化信息。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[FloatViewLimits](arkts-arkui-floatview-floatviewlimits-i.md)&gt; | 是 | 回调函数。返回当前的标准悬浮窗限制变化信息。 |
 
 **错误码：**
 
@@ -209,12 +204,14 @@ onLimitsChange(callback: Callback<FloatViewLimits>): void
 **示例**
 
 ```TypeScript
+// 定义限制变化回调函数
 let onLimitsChange = (limits: floatView.FloatViewLimits) => {
   console.info('Float view limitsChange: ' + JSON.stringify(limits));
 };
 try {
+  // 注册闪控窗限制变化监听
   this.floatViewController?.onLimitsChange(onLimitsChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to on limitsChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -231,15 +228,13 @@ onRectChange(callback: Callback<FloatViewRectChangeInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewController-onRectChange(callback: Callback<FloatViewRectChangeInfo>): void--><!--Device-FloatViewController-onRectChange(callback: Callback<FloatViewRectChangeInfo>): void-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FloatViewRectChangeInfo](arkts-arkui-floatview-floatviewrectchangeinfo-i.md)&gt; | 是 | 回调函数。返回当前的标准悬浮窗矩形区域变化信息。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[FloatViewRectChangeInfo](arkts-arkui-floatview-floatviewrectchangeinfo-i.md)&gt; | 是 | 回调函数。返回当前的标准悬浮窗矩形区域变化信息。 |
 
 **错误码：**
 
@@ -251,12 +246,14 @@ onRectChange(callback: Callback<FloatViewRectChangeInfo>): void
 **示例**
 
 ```TypeScript
+// 定义矩形区域变化回调函数
 let onRectChange = (info: floatView.FloatViewRectChangeInfo) => {
   console.info('Float view rectChange: ' + JSON.stringify(info));
 };
 try {
+  // 注册闪控窗矩形区域变化监听
   this.floatViewController?.onRectChange(onRectChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to on rectChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -273,15 +270,13 @@ onStateChange(callback: Callback<FloatViewStateChangeInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewController-onStateChange(callback: Callback<FloatViewStateChangeInfo>): void--><!--Device-FloatViewController-onStateChange(callback: Callback<FloatViewStateChangeInfo>): void-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FloatViewStateChangeInfo](arkts-arkui-floatview-floatviewstatechangeinfo-i.md)&gt; | 是 | 回调函数。返回当前的标准悬浮窗状态变化信息。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[FloatViewStateChangeInfo](arkts-arkui-floatview-floatviewstatechangeinfo-i.md)&gt; | 是 | 回调函数。返回当前的标准悬浮窗状态变化信息。 |
 
 **错误码：**
 
@@ -293,12 +288,14 @@ onStateChange(callback: Callback<FloatViewStateChangeInfo>): void
 **示例**
 
 ```TypeScript
+// 定义状态变化回调函数
 let onStateChange = (info: floatView.FloatViewStateChangeInfo) => {
   console.info('Float view stateChange: ' + JSON.stringify(info));
 };
 try {
+  // 注册闪控窗状态变化监听
   this.floatViewController?.onStateChange(onStateChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to on stateChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -315,47 +312,48 @@ restoreMainWindow(wantParameters?: Record<string, Object>): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewController-restoreMainWindow(wantParameters?: Record<string, Object>): Promise<void>--><!--Device-FloatViewController-restoreMainWindow(wantParameters?: Record<string, Object>): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wantParameters | Record&lt;string, Object&gt; | 否 | 恢复标准悬浮窗的主窗口时会给主窗口传递的自定义参数，主窗口会在触发 onNewWant 回调时收到。默认值为空，代表不向主窗传入任何自定义参数。 |
+| wantParameters | Record & lt;string, Object & gt; | 否 | 恢复标准悬浮窗的主窗口时会给主窗口传递的自定义参数，主窗口会在触发 onNewWant 回调时收到。默认值为空，代表不向主窗传入任何自定义参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The float view controller object is null. |
-| [1300032](../errorcode-window.md#1300032-恢复主窗口失败) | Failed to restore the main window. Possible cause: 1. User has never clicked the float view window before restore. 2. The float view window is not in the foreground. 3. The main window is in PAUSED lifecycle state. 4. The main window is in background during recent. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [1300031](../errorcode-window.md#1300031-闪控窗状态不支持该操作) | This operation is not supported on the float view in the current state. Possible cause: The float view window is not started when restoring. |
+| [1300032](../errorcode-window.md#1300032-恢复主窗口失败) | Failed to restore the main window. Possible cause: 1. User has never clicked the float view window before restore. 2. The float view window is not in the foreground. 3. The main window is in PAUSED lifecycle state. 4. The main window is in background during recent. |
 
 **示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
+import { floatView } from '@kit.ArkUI';
 
+// 创建恢复主窗口的参数
 let param: Record<string, Object> = {
-  "info": "helloworld",
+  'info': 'helloworld',
 };
 // 闪控窗状态需是STARTED
 try {
+  // 恢复闪控窗的主窗口到前台显示
   this.floatViewController?.restoreMainWindow(param).then(() => {
     console.info('Succeeded in restoring main window.');
   }).catch((err: BusinessError): void => {
     console.error(`Failed to restore main window. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to restore main window. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -366,13 +364,11 @@ try {
 setFloatViewVisibilityInApp(isVisible: boolean): Promise<void>
 ```
 
-设置应用在前台时标准悬浮窗窗口是否可见。使用Promise异步回调。 创建标准悬浮窗后未调用此接口前，默认其在应用处于前台时为可见状态。
+设置应用在前台时标准悬浮窗窗口是否可见。使用Promise异步回调。创建标准悬浮窗后未调用此接口前，默认其在应用处于前台时为可见状态。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FloatViewController-setFloatViewVisibilityInApp(isVisible: boolean): Promise<void>--><!--Device-FloatViewController-setFloatViewVisibilityInApp(isVisible: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -386,27 +382,29 @@ setFloatViewVisibilityInApp(isVisible: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The float view controller object is null. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 
 **示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
+import { floatView } from '@kit.ArkUI';
 
 try {
+  // 设置应用在前台时闪控窗可见
   this.floatViewController?.setFloatViewVisibilityInApp(true).then(() => {
     console.info('Succeeded in setting float view visibility in app.');
   }).catch((err: BusinessError): void => {
     console.error(`Failed to set float view visibility in app. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to set float view visibility in app. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -423,8 +421,6 @@ setUIContext(path: string, storage?: LocalStorage): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewController-setUIContext(path: string, storage?: LocalStorage): Promise<void>--><!--Device-FloatViewController-setUIContext(path: string, storage?: LocalStorage): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -438,7 +434,7 @@ setUIContext(path: string, storage?: LocalStorage): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -451,14 +447,17 @@ setUIContext(path: string, storage?: LocalStorage): Promise<void>
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
+import { floatView } from '@kit.ArkUI';
 
 try {
+  // floatViewController需通过floatView.create()获取，详见floatView.create()示例
+  // 设置闪控窗的页面内容路径
   this.floatViewController?.setUIContext('pages/Index').then(() => {
     console.info('Succeeded in setting UI context.');
   }).catch((err: BusinessError): void => {
     console.error(`Failed to set UI context. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to set UI context. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -475,8 +474,6 @@ setUIContextByName(name: string, storage?: LocalStorage): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewController-setUIContextByName(name: string, storage?: LocalStorage): Promise<void>--><!--Device-FloatViewController-setUIContextByName(name: string, storage?: LocalStorage): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -490,7 +487,7 @@ setUIContextByName(name: string, storage?: LocalStorage): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -505,6 +502,7 @@ setUIContextByName(name: string, storage?: LocalStorage): Promise<void>
 // Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 import { entryName } from './Hello'; // 导入命名路由页面
+import { floatView } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -514,6 +512,7 @@ struct Index {
   // ...
   public setUIContextByName(): void {
     try {
+      // 根据命名路由名称设置闪控窗的页面内容
       this.floatViewController?.setUIContextByName(entryName).then(() => {
         console.info('Succeeded in loading the content.');
       }).catch((err: BusinessError): void => {
@@ -557,8 +556,6 @@ setWindowSize(size: window.Size): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewController-setWindowSize(size: window.Size): Promise<void>--><!--Device-FloatViewController-setWindowSize(size: window.Size): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -571,33 +568,35 @@ setWindowSize(size: window.Size): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The float view controller object is null. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: The value of the size is less than or equal to 0. |
 
 **示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-import { window } from '@kit.ArkUI';
+import { floatView, window } from '@kit.ArkUI';
 
+// 设置窗口大小
 let size: window.Size = {
   width: 400,
   height: 600
 };
 try {
+  // 设置闪控窗窗口大小
   this.floatViewController?.setWindowSize(size).then(() => {
     console.info('Succeeded in setting window size.');
   }).catch((err: BusinessError): void => {
     console.error(`Failed to set window size. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to set window size. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -616,40 +615,40 @@ start(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewController-start(): Promise<void>--><!--Device-FloatViewController-start(): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The float view controller object is null. |
-| [1300034](../errorcode-window.md#1300034-闪控窗与其他悬浮窗口操作冲突) | This operation conflicts with other floating windows. Possible cause: App has already started floating ball or pip window. |
-| [1300033](../errorcode-window.md#1300033-启动闪控窗失败) | Failed to start float view. Possible causes: 1. Start multiple float views. 2. The main window of context is not foreground. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. Possible cause: The application does not have the permission required to call the API. |
-| [1300031](../errorcode-window.md#1300031-闪控窗状态不支持该操作) | The float view state does not support this operation. Possible cause: The float view is stopping. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The float view controller object is null. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [1300030](../errorcode-window.md#1300030-重复操作闪控窗) | Repeated operations on the float view. Possible cause: The float view is starting or has already started. |
+| [1300031](../errorcode-window.md#1300031-闪控窗状态不支持该操作) | The float view state does not support this operation. Possible cause: The float view is stopping. |
+| [1300033](../errorcode-window.md#1300033-启动闪控窗失败) | Failed to start float view. Possible causes: 1. Start multiple float views. 2. The main window of context is not foreground. |
+| [1300034](../errorcode-window.md#1300034-闪控窗与其他悬浮窗口操作冲突) | This operation conflicts with other floating windows. Possible cause: App has already started floating ball or pip window. |
 
 **示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
+import { floatView } from '@kit.ArkUI';
 
 try {
+  // 启动闪控窗
   this.floatViewController?.start().then(() => {
     console.info('Succeeded in starting float view.');
   }).catch((err: BusinessError): void => {
     console.error(`Failed to start float view. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to start float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -666,37 +665,37 @@ stop(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewController-stop(): Promise<void>--><!--Device-FloatViewController-stop(): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The float view controller object is null. |
-| [1300031](../errorcode-window.md#1300031-闪控窗状态不支持该操作) | This operation is not supported on the float view in the current state. Possible cause: The float view window is not started. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [1300030](../errorcode-window.md#1300030-重复操作闪控窗) | Repeated operations on the float view. Possible cause: The float view is stopping or has already stopped. |
+| [1300031](../errorcode-window.md#1300031-闪控窗状态不支持该操作) | This operation is not supported on the float view in the current state. Possible cause: The float view window is not started. |
 
 **示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
+import { floatView } from '@kit.ArkUI';
 
 try {
+  // 停止闪控窗
   this.floatViewController?.stop().then(() => {
     console.info('Succeeded in stopping float view.');
   }).catch((err: BusinessError): void => {
     console.error(`Failed to stop float view. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to stop float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -713,8 +712,6 @@ switchTemplate(templateProperty: TemplateProperty): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewController-switchTemplate(templateProperty: TemplateProperty): Promise<void>--><!--Device-FloatViewController-switchTemplate(templateProperty: TemplateProperty): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -727,38 +724,40 @@ switchTemplate(templateProperty: TemplateProperty): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The float view controller object is null. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: 1. Invalid template type. 2. The value of the size is less than or equal to 0. |
 
 **示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-import { window } from '@kit.ArkUI';
+import { floatView, window } from '@kit.ArkUI';
 
+// 设置新窗口大小
 let newSize: window.Size = {
   width: 800,
   height: 100
 };
+// 设置模板属性
 let templateProperty: floatView.TemplateProperty = {
   templateType: floatView.FloatViewTemplateType.HORIZONTAL_BAR,
-  size: newSize,
+  size: newSize
 };
 try {
+  // 切换闪控窗模板并改变窗口尺寸
   this.floatViewController?.switchTemplate(templateProperty).then(() => {
     console.info('Succeeded in switching window type and size.');
   }).catch((err: BusinessError): void => {
     console.error(`Failed to switch window type and size. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to switch window type and size. Cause:${e.code}, message:${e.message}`);
 }
 ```
-

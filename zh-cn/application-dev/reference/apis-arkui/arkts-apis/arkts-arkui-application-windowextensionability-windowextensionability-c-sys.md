@@ -6,8 +6,6 @@ WindowExtensionAbility类。
 
 **废弃版本：** 21
 
-<!--Device-unnamed-declare class WindowExtensionAbility--><!--Device-unnamed-declare class WindowExtensionAbility-End-->
-
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -31,8 +29,6 @@ onConnect(want: Want): void
 **废弃版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowExtensionAbility-onConnect(want: Want): void--><!--Device-WindowExtensionAbility-onConnect(want: Want): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -71,8 +67,6 @@ onDisconnect(want: Want): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowExtensionAbility-onDisconnect(want: Want): void--><!--Device-WindowExtensionAbility-onDisconnect(want: Want): void-End-->
-
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -109,8 +103,6 @@ onWindowReady(window: window.Window): void
 **废弃版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowExtensionAbility-onWindowReady(window: window.Window): void--><!--Device-WindowExtensionAbility-onWindowReady(window: window.Window): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -155,9 +147,6 @@ Indicates window extension ability context.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowExtensionAbility-context: WindowExtensionContext--><!--Device-WindowExtensionAbility-context: WindowExtensionContext-End-->
-
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
-

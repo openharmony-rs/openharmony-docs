@@ -1,10 +1,8 @@
 # ItemFillPolicy
 
-定义一个适合WaterFlow、Grid、List和Swiper组件的响应式item布局。
+定义一个适合WaterFlow、Grid、List和Swiper组件的响应式item布局。@interface ItemFillPolicy
 
 **起始版本：** 22
-
-<!--Device-unnamed-declare interface ItemFillPolicy--><!--Device-unnamed-declare interface ItemFillPolicy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,7 +29,4 @@ fillType?: ResponsiveFillType
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ItemFillPolicy-fillType?: ResponsiveFillType--><!--Device-ItemFillPolicy-fillType?: ResponsiveFillType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class GestureRecognizer--><!--Device-unnamed-declare class GestureRecognizer-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -26,8 +24,6 @@ getEventTargetInfo(): EventTargetInfo
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GestureRecognizer-getEventTargetInfo(): EventTargetInfo--><!--Device-GestureRecognizer-getEventTargetInfo(): EventTargetInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,15 +47,13 @@ getFingerCount(): number
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GestureRecognizer-getFingerCount(): number--><!--Device-GestureRecognizer-getFingerCount(): number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 预设手指识别数阈值。<br/>取值范围：[1, 10], 整数。 |
+| number | 预设手指识别数阈值。 |
 
 ## getState
 
@@ -74,8 +68,6 @@ getState(): GestureRecognizerState
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GestureRecognizer-getState(): GestureRecognizerState--><!--Device-GestureRecognizer-getState(): GestureRecognizerState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,8 +91,6 @@ getTag(): string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GestureRecognizer-getTag(): string--><!--Device-GestureRecognizer-getTag(): string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -122,8 +112,6 @@ getType(): GestureControl.GestureType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GestureRecognizer-getType(): GestureControl.GestureType--><!--Device-GestureRecognizer-getType(): GestureControl.GestureType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,8 +135,6 @@ isBuiltIn(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GestureRecognizer-isBuiltIn(): boolean--><!--Device-GestureRecognizer-isBuiltIn(): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -170,8 +156,6 @@ isEnabled(): boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GestureRecognizer-isEnabled(): boolean--><!--Device-GestureRecognizer-isEnabled(): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -195,8 +179,6 @@ isFingerCountLimit(): boolean
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GestureRecognizer-isFingerCountLimit(): boolean--><!--Device-GestureRecognizer-isFingerCountLimit(): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -208,7 +190,7 @@ isFingerCountLimit(): boolean
 ## isHostBelongsTo
 
 ```TypeScript
-isHostBelongsTo(uniqueId: int): boolean
+isHostBelongsTo(uniqueId: number): boolean
 ```
 
 返回当前手势识别器绑定节点是否为传入组件的后代节点。
@@ -219,15 +201,13 @@ isHostBelongsTo(uniqueId: int): boolean
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GestureRecognizer-isHostBelongsTo(uniqueId: int): boolean--><!--Device-GestureRecognizer-isHostBelongsTo(uniqueId: int): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uniqueId | int | 是 | 组件的唯一ID。可以通过[getUniqueId](arkts-arkui-eventtargetinfo-c.md#getuniqueid)接口获取该ID。 |
+| uniqueId | number | 是 | 组件的唯一ID。可以通过[getUniqueId](arkts-arkui-eventtargetinfo-c.md#getuniqueid)接口获取该ID。 |
 
 **返回值：**
 
@@ -247,15 +227,13 @@ isValid(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-GestureRecognizer-isValid(): boolean--><!--Device-GestureRecognizer-isValid(): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 当前手势识别器是否有效。<br/>当该识别器绑定的组件被析构或该识别器不在响应链上时返回false。<br/>当该识别器绑定的组件未被析构且该识别器在响应链上时返回true。 |
+| boolean | 当前手势识别器是否有效。 |
 
 ## preventBegin
 
@@ -270,8 +248,6 @@ preventBegin(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GestureRecognizer-preventBegin(): void--><!--Device-GestureRecognizer-preventBegin(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -289,8 +265,6 @@ setEnabled(isEnabled: boolean): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GestureRecognizer-setEnabled(isEnabled: boolean): void--><!--Device-GestureRecognizer-setEnabled(isEnabled: boolean): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -298,4 +272,3 @@ setEnabled(isEnabled: boolean): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | isEnabled | boolean | 是 | 手势识别器的使能状态。true表示当前手势识别器能够回调应用事件，false表示当前手势识别器不回调应用事件。 |
-

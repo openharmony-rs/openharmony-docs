@@ -1,10 +1,8 @@
 # Alignment
 
-Alignment enumeration description.
+Alignment enumeration description.@enum { number }
 
 **起始版本：** 11
-
-<!--Device-unnamed-declare enum Alignment--><!--Device-unnamed-declare enum Alignment-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,8 +20,6 @@ Top Start.
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Alignment-TopStart--><!--Device-Alignment-TopStart-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Top
@@ -39,8 +35,6 @@ The top is centered horizontally.
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-Alignment-Top--><!--Device-Alignment-Top-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,8 +52,6 @@ Top tail end.
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Alignment-TopEnd--><!--Device-Alignment-TopEnd-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Start
@@ -75,8 +67,6 @@ The starting end is centered longitudinally.
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-Alignment-Start--><!--Device-Alignment-Start-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,8 +84,6 @@ Center horizontal and vertical.
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Alignment-Center--><!--Device-Alignment-Center-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## End
@@ -111,8 +99,6 @@ The tail end is centered longitudinally.
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-Alignment-End--><!--Device-Alignment-End-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,8 +116,6 @@ Bottom starting end.
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Alignment-BottomStart--><!--Device-Alignment-BottomStart-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Bottom
@@ -147,8 +131,6 @@ The bottom is centered horizontally.
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-Alignment-Bottom--><!--Device-Alignment-Bottom-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,7 +148,4 @@ Bottom end.
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Alignment-BottomEnd--><!--Device-Alignment-BottomEnd-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -12,8 +12,6 @@ declare type CanvasLineCap = "butt" | "round" | "square"
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare type CanvasLineCap = "butt" | "round" | "square"--><!--Device-unnamed-declare type CanvasLineCap = "butt" | "round" | "square"-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
@@ -21,4 +19,3 @@ declare type CanvasLineCap = "butt" | "round" | "square"
 | "butt" | 线条两端为平行线，不额外扩展。 |
 | "round" | 在线条两端延伸半个圆，直径等于线宽。 |
 | "square" | 在线条两端延伸一个矩形，宽度等于线宽的一半，高度等于线宽。 |
-

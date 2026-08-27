@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-webview-enum SecurityLevel--><!--Device-webview-enum SecurityLevel-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## NONE
@@ -19,8 +17,6 @@ NONE = 0
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SecurityLevel-NONE = 0--><!--Device-SecurityLevel-NONE = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,8 +32,6 @@ SECURE = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SecurityLevel-SECURE = 1--><!--Device-SecurityLevel-SECURE = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## WARNING
@@ -51,8 +45,6 @@ WARNING = 2
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SecurityLevel-WARNING = 2--><!--Device-SecurityLevel-WARNING = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -68,7 +60,4 @@ DANGEROUS = 3
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SecurityLevel-DANGEROUS = 3--><!--Device-SecurityLevel-DANGEROUS = 3-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

@@ -1,10 +1,8 @@
 # LocalizedAlignRuleOptions
 
-Defines the Localized align rule options of relative container.
+Defines the Localized align rule options of relative container.@interface LocalizedAlignRuleOptions
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare interface LocalizedAlignRuleOptions--><!--Device-unnamed-declare interface LocalizedAlignRuleOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -21,7 +19,7 @@ bias?: Bias
 
 设置组件在锚点约束下的偏移参数，其值为到左/上侧锚点的距离与锚点间总距离的比值。
 
-**类型：** Bias
+**类型：** [Bias](../arkts-apis/arkts-arkui-bias-i.md)
 
 **默认值：** {horizontal:0.5,vertical:0.5}
 
@@ -30,8 +28,6 @@ bias?: Bias
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LocalizedAlignRuleOptions-bias?: Bias--><!--Device-LocalizedAlignRuleOptions-bias?: Bias-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,8 +47,6 @@ bottom?: LocalizedVerticalAlignParam
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LocalizedAlignRuleOptions-bottom?: LocalizedVerticalAlignParam--><!--Device-LocalizedAlignRuleOptions-bottom?: LocalizedVerticalAlignParam-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## center
@@ -70,8 +64,6 @@ center?: LocalizedVerticalAlignParam
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LocalizedAlignRuleOptions-center?: LocalizedVerticalAlignParam--><!--Device-LocalizedAlignRuleOptions-center?: LocalizedVerticalAlignParam-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,8 +83,6 @@ end?: LocalizedHorizontalAlignParam
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LocalizedAlignRuleOptions-end?: LocalizedHorizontalAlignParam--><!--Device-LocalizedAlignRuleOptions-end?: LocalizedHorizontalAlignParam-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## middle
@@ -110,8 +100,6 @@ middle?: LocalizedHorizontalAlignParam
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LocalizedAlignRuleOptions-middle?: LocalizedHorizontalAlignParam--><!--Device-LocalizedAlignRuleOptions-middle?: LocalizedHorizontalAlignParam-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,8 +119,6 @@ start?: LocalizedHorizontalAlignParam
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LocalizedAlignRuleOptions-start?: LocalizedHorizontalAlignParam--><!--Device-LocalizedAlignRuleOptions-start?: LocalizedHorizontalAlignParam-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -151,7 +137,4 @@ top?: LocalizedVerticalAlignParam
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LocalizedAlignRuleOptions-top?: LocalizedVerticalAlignParam--><!--Device-LocalizedAlignRuleOptions-top?: LocalizedVerticalAlignParam-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

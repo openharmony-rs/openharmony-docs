@@ -6,9 +6,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [ActionMenuSuccessResponse](../../apis-na/arkts-apis/arkts-na-promptaction-actionmenusuccessresponse-i.md)
-
-<!--Device-prompt-interface ActionMenuSuccessResponse--><!--Device-prompt-interface ActionMenuSuccessResponse-End-->
+**替代接口：** [ActionMenuSuccessResponse](arkts-arkui-promptaction-actionmenusuccessresponse-i.md)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,7 +14,6 @@
 
 ```TypeScript
 import { prompt } from '@kit.ArkUI';
-import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 ```
 
 ## index
@@ -33,9 +30,6 @@ index: number
 
 **废弃版本：** 9
 
-**替代接口：** [index](../../apis-na/arkts-apis/arkts-na-promptaction-actionmenusuccessresponse-i.md#index)
-
-<!--Device-ActionMenuSuccessResponse-index: number--><!--Device-ActionMenuSuccessResponse-index: number-End-->
+**替代接口：** [index](arkts-arkui-promptaction-actionmenusuccessresponse-i.md#index)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

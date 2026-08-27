@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-<!--Device-pluginComponentManager-interface PushParameters--><!--Device-pluginComponentManager-interface PushParameters-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,8 +26,6 @@ data: KVObject
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PushParameters-data: KVObject--><!--Device-PushParameters-data: KVObject-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## extraData
@@ -45,8 +41,6 @@ extraData: KVObject
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PushParameters-extraData: KVObject--><!--Device-PushParameters-extraData: KVObject-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,8 +58,6 @@ jsonPath?: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PushParameters-jsonPath?: string--><!--Device-PushParameters-jsonPath?: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## name
@@ -81,8 +73,6 @@ name: string
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PushParameters-name: string--><!--Device-PushParameters-name: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,7 +90,4 @@ want: Want
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PushParameters-want: Want--><!--Device-PushParameters-want: Want-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

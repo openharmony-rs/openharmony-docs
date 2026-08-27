@@ -1,8 +1,11 @@
 # RowSplit
 
-将子组件横向布局，并在每个子组件之间插入纵向分割线。适用于需要横向多区域布局且支持动态调整子组件宽度的场景，如文件管理器的左右分栏、设置页面的双栏布局等。通过可拖拽的分割线，用户可以灵活调整各区域宽度。 > **说明：** > > 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+将子组件横向布局，并在每个子组件之间插入纵向分割线。适用于需要横向多区域布局且支持动态调整子组件宽度的场景，如文件管理器的左右分栏、设置页面的双栏布局等。通过可拖拽的分割线，用户可以灵活调整各区域宽度。
+> **说明：** > > 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-## 子组件 可以包含子组件。 RowSplit通过分割线限制子组件的宽度。初始化时，分割线位置根据子组件的宽度来计算。初始化后，动态修改子组件的宽度不会改变分割线位置，分割线位置保持不变。可以通过拖动分割线改变子组件宽度。 初始化后，动态修改margin、border、 padding通用属性可能导致子组件宽度大于相邻分割线间距。在此异常情况下，不支持拖动分割线改变子组件的宽度。这是因为分割线的位置在初始化时已确定，动态修改边距、边框、内边距 等属性会破坏原有的布局计算，导致分割线无法正确响应拖动操作。建议在初始化时合理设置子组件的尺寸和边距属性。
+## 子组件
+
+可以包含子组件。RowSplit通过分割线限制子组件的宽度。初始化时，分割线位置根据子组件的宽度来计算。初始化后，动态修改子组件的宽度不会改变分割线位置，分割线位置保持不变。可以通过拖动分割线改变子组件宽度。初始化后，动态修改margin、[border](arkts-arkui-commonmethod-c.md#border)、 padding通用属性可能导致子组件宽度大于相邻分割线间距。在此异常情况下，不支持拖动分割线改变子组件的宽度。这是因为分割线的位置在初始化时已确定，动态修改边距、边框、内边距 等属性会破坏原有的布局计算，导致分割线无法正确响应拖动操作。建议在初始化时合理设置子组件的尺寸和边距属性。
 
 ## RowSplit
 
@@ -16,9 +19,33 @@ RowSplit()
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RowSplitInterface-(): RowSplitAttribute--><!--Device-RowSplitInterface-(): RowSplitAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 汇总
 
+## 示例
+
+RowSplit的基本用法。实现分割线可拖动的横向布局。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct RowSplitExample {
+  build() {
+    Column() {
+      Text('The second line can be dragged').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      // 创建RowSplit组件，实现横向布局
+      RowSplit() {
+        Text('1').width('10%').height(100).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('2').width('10%').height(100).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('3').width('10%').height(100).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('4').width('10%').height(100).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('5').width('10%').height(100).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+      }
+      .resizeable(true) // 可拖拽
+      .width('90%').height(100)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```

@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-interface MoveIndex--><!--Device-unnamed-interface MoveIndex-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ from: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MoveIndex-from: number--><!--Device-MoveIndex-from: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## to
@@ -49,7 +45,4 @@ to: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MoveIndex-to: number--><!--Device-MoveIndex-to: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

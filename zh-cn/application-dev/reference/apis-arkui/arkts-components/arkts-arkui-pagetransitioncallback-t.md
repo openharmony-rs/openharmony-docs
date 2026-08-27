@@ -12,8 +12,6 @@ declare type PageTransitionCallback = (type: RouteType, progress: number) => voi
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type PageTransitionCallback = (type: RouteType, progress: number) => void--><!--Device-unnamed-declare type PageTransitionCallback = (type: RouteType, progress: number) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -22,4 +20,3 @@ declare type PageTransitionCallback = (type: RouteType, progress: number) => voi
 | --- | --- | --- | --- |
 | type | [RouteType](arkts-arkui-routetype-e.md) | 是 | transition route type |
 | progress | number | 是 | transition progess |
-

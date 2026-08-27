@@ -4,15 +4,12 @@ PopupIconOptions定义图标的属性。
 
 **起始版本：** 11
 
-<!--Device-unnamed-export interface PopupIconOptions--><!--Device-unnamed-export interface PopupIconOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
 
 ```TypeScript
 import { Popup, PopupButtonOptions, PopupIconOptions, PopupOptions, PopupTextOptions } from '@kit.ArkUI';
-import { PopupV2, PopupV2InitInfo, PopupV2Button } from '@kit.ArkUI';
 ```
 
 ## borderRadius
@@ -21,17 +18,15 @@ import { PopupV2, PopupV2InitInfo, PopupV2Button } from '@kit.ArkUI';
 borderRadius?: Length | BorderRadiuses
 ```
 
-设置图标圆角。单位：vp。 默认值：`\$r('sys.float.ohos_id_corner_radius_default_s')`
+设置图标圆角。单位：vp。默认值：`\$r('sys.float.ohos_id_corner_radius_default_s')`
 
-**类型：** Length \| BorderRadiuses
+**类型：** [Length](arkts-arkui-length-t.md) \| [BorderRadiuses](arkts-arkui-borderradiuses-t.md)
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PopupIconOptions-borderRadius?: Length | BorderRadiuses--><!--Device-PopupIconOptions-borderRadius?: Length | BorderRadiuses-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,17 +36,15 @@ borderRadius?: Length | BorderRadiuses
 fillColor?: ResourceColor
 ```
 
-设置图标填充颜色。仅针对svg图源生效。 默认不改变图标颜色。
+设置图标填充颜色。仅针对svg图源生效。默认不改变图标颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PopupIconOptions-fillColor?: ResourceColor--><!--Device-PopupIconOptions-fillColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,17 +54,15 @@ fillColor?: ResourceColor
 height?: Dimension
 ```
 
-设置图标高度。单位：vp。 默认值：32VP
+设置图标高度。单位：vp。默认值：32VP
 
-**类型：** Dimension
+**类型：** [Dimension](arkts-arkui-dimension-t.md)
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PopupIconOptions-height?: Dimension--><!--Device-PopupIconOptions-height?: Dimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,15 +74,13 @@ image: ResourceStr
 
 设置图标内容。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PopupIconOptions-image: ResourceStr--><!--Device-PopupIconOptions-image: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,9 +90,9 @@ image: ResourceStr
 width?: Dimension
 ```
 
-设置图标宽度。单位：vp。 默认值：32VP
+设置图标宽度。单位：vp。默认值：32VP
 
-**类型：** Dimension
+**类型：** [Dimension](arkts-arkui-dimension-t.md)
 
 **起始版本：** 11
 
@@ -111,7 +100,4 @@ width?: Dimension
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PopupIconOptions-width?: Dimension--><!--Device-PopupIconOptions-width?: Dimension-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

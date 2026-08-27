@@ -12,15 +12,15 @@ import { matrix4 } from '@kit.ArkUI';
 function translate(options: TranslateOption): Matrix4Transit
 ```
 
-Matrix的平移函数，可以为当前矩阵增加x轴/y轴/z轴平移效果。 > **说明：**
+Matrix的平移函数，可以为当前矩阵增加x轴/y轴/z轴平移效果。
+
+> **说明：**
 
 **起始版本：** 7
 
 **废弃版本：** 10
 
 **替代接口：** [translate](arkts-arkui-matrix4-matrix4transit-i.md#translate)
-
-<!--Device-matrix4-function translate(options: TranslateOption): Matrix4Transit--><!--Device-matrix4-function translate(options: TranslateOption): Matrix4Transit-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,3 +36,24 @@ Matrix的平移函数，可以为当前矩阵增加x轴/y轴/z轴平移效果。
 | --- | --- |
 | Matrix4Transit | 平移后的矩阵对象。 |
 
+**示例**
+
+```TypeScript
+// xxx.ets
+import { matrix4 } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Test {
+  private matrix1 = matrix4.identity().translate({ x: 100, y: 200, z: 30 });
+
+  build() {
+    Column() {
+      // $r("app.media.bg1")需要替换为开发者所需的图像资源文件。
+      Image($r("app.media.bg1")).transform(this.matrix1)
+        .width('40%')
+        .height(100)
+    }
+  }
+}
+```

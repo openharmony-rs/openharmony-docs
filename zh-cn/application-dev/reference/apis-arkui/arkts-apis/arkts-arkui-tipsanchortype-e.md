@@ -1,10 +1,8 @@
 # TipsAnchorType
 
-Follow position type.
+Follow position type.@enum { number }
 
 **起始版本：** 20
-
-<!--Device-unnamed-declare enum TipsAnchorType--><!--Device-unnamed-declare enum TipsAnchorType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,8 +20,6 @@ Follow the component.
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TipsAnchorType-TARGET--><!--Device-TipsAnchorType-TARGET-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CURSOR
@@ -40,7 +36,4 @@ Follow the cursor.
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TipsAnchorType-CURSOR--><!--Device-TipsAnchorType-CURSOR-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

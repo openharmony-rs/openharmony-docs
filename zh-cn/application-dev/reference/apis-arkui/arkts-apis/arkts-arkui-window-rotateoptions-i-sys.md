@@ -2,9 +2,7 @@
 
 旋转参数。
 
-**起始版本：** 23
-
-<!--Device-window-interface RotateOptions--><!--Device-window-interface RotateOptions-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -13,24 +11,20 @@
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
 ## pivotX
 
 ```TypeScript
-pivotX?: double
+pivotX?: number
 ```
 
 旋转中心点X轴坐标。该参数为浮点数，默认值为0.5， 取值范围为[0.0, 1.0]。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RotateOptions-pivotX?: double--><!--Device-RotateOptions-pivotX?: double-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -39,16 +33,14 @@ pivotX?: double
 ## pivotY
 
 ```TypeScript
-pivotY?: double
+pivotY?: number
 ```
 
 旋转中心点Y轴坐标。该参数为浮点数，默认值为0.5， 取值范围为[0.0, 1.0]。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RotateOptions-pivotY?: double--><!--Device-RotateOptions-pivotY?: double-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -57,16 +49,14 @@ pivotY?: double
 ## x
 
 ```TypeScript
-x?: double
+x?: number
 ```
 
 绕X轴的旋转角度。该参数为浮点数，默认值为0.0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RotateOptions-x?: double--><!--Device-RotateOptions-x?: double-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -75,16 +65,14 @@ x?: double
 ## y
 
 ```TypeScript
-y?: double
+y?: number
 ```
 
 绕Y轴的旋转角度。该参数为浮点数，默认值为0.0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RotateOptions-y?: double--><!--Device-RotateOptions-y?: double-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -93,18 +81,15 @@ y?: double
 ## z
 
 ```TypeScript
-z?: double
+z?: number
 ```
 
 绕Z轴的旋转角度。该参数为浮点数，默认值为0.0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RotateOptions-z?: double--><!--Device-RotateOptions-z?: double-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
-

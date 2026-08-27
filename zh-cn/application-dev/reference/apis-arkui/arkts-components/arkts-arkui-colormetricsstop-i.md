@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-unnamed-declare interface ColorMetricsStop--><!--Device-unnamed-declare interface ColorMetricsStop-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ color: ColorMetrics
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ColorMetricsStop-color: ColorMetrics--><!--Device-ColorMetricsStop-color: ColorMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -39,9 +35,10 @@ color: ColorMetrics
 offset: Length
 ```
 
-线性渐变颜色断点的断点值，取值为0~1之间的比例值。小于0置为0，大于1置为1。 **说明：** 如果传入字符串类型且内容为数字，则转换为对应的数值。例如'10vp'转换为10，'10%'转换为0.1。
+线性渐变颜色断点的断点值，取值为0~1之间的比例值。小于0置为0，大于1置为1。  
+**说明：**如果传入字符串类型且内容为数字，则转换为对应的数值。例如'10vp'转换为10，'10%'转换为0.1。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 23
 
@@ -49,7 +46,4 @@ offset: Length
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ColorMetricsStop-offset: Length--><!--Device-ColorMetricsStop-offset: Length-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

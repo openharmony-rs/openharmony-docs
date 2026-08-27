@@ -2,11 +2,7 @@
 
 缩放信息。
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-componentUtils-export interface ScaleResult--><!--Device-componentUtils-export interface ScaleResult-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -19,100 +15,89 @@ import { componentUtils } from '@kit.ArkUI';
 ## centerX
 
 ```TypeScript
-centerX: double
+centerX: number
 ```
 
-变换中心点x轴坐标。 单位: vp
+变换中心点x轴坐标。单位: vp
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ScaleResult-centerX: double--><!--Device-ScaleResult-centerX: double-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## centerY
 
 ```TypeScript
-centerY: double
+centerY: number
 ```
 
-变换中心点y轴坐标。 单位: vp
+变换中心点y轴坐标。单位: vp
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ScaleResult-centerY: double--><!--Device-ScaleResult-centerY: double-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
 
 ```TypeScript
-x: double
+x: number
 ```
 
 x轴缩放倍数。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ScaleResult-x: double--><!--Device-ScaleResult-x: double-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
 
 ```TypeScript
-y: double
+y: number
 ```
 
 y轴缩放倍数。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ScaleResult-y: double--><!--Device-ScaleResult-y: double-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## z
 
 ```TypeScript
-z: double
+z: number
 ```
 
 z轴缩放倍数。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ScaleResult-z: double--><!--Device-ScaleResult-z: double-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

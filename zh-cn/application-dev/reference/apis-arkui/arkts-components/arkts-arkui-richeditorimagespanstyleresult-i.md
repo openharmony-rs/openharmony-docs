@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface RichEditorImageSpanStyleResult--><!--Device-unnamed-declare interface RichEditorImageSpanStyleResult-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ layoutStyle?: RichEditorLayoutStyle
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorImageSpanStyleResult-layoutStyle?: RichEditorLayoutStyle--><!--Device-RichEditorImageSpanStyleResult-layoutStyle?: RichEditorLayoutStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## objectFit
@@ -41,7 +37,7 @@ objectFit: ImageFit
 
 图片缩放类型。
 
-**类型：** ImageFit
+**类型：** [ImageFit](../arkts-apis/arkts-arkui-imagefit-e.md)
 
 **起始版本：** 10
 
@@ -49,7 +45,23 @@ objectFit: ImageFit
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorImageSpanStyleResult-objectFit: ImageFit--><!--Device-RichEditorImageSpanStyleResult-objectFit: ImageFit-End-->
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## resizable
+
+```TypeScript
+resizable?: ResizableOptions
+```
+
+图片拉伸选项。
+
+**类型：** [ResizableOptions](arkts-arkui-resizableoptions-i.md)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,8 +81,6 @@ size: [number, number]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorImageSpanStyleResult-size: [number, number]--><!--Device-RichEditorImageSpanStyleResult-size: [number, number]-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## verticalAlign
@@ -81,7 +91,7 @@ verticalAlign: ImageSpanAlignment
 
 图片垂直对齐方式。
 
-**类型：** ImageSpanAlignment
+**类型：** [ImageSpanAlignment](../arkts-apis/arkts-arkui-imagespanalignment-e.md)
 
 **起始版本：** 10
 
@@ -89,7 +99,4 @@ verticalAlign: ImageSpanAlignment
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorImageSpanStyleResult-verticalAlign: ImageSpanAlignment--><!--Device-RichEditorImageSpanStyleResult-verticalAlign: ImageSpanAlignment-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

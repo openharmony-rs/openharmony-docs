@@ -6,8 +6,6 @@ Worker线程用于与宿主线程通信的类。其中postMessage接口用于向
 
 **起始版本：** 9
 
-<!--Device-unnamed-export interface ThreadWorkerGlobalScope--><!--Device-unnamed-export interface ThreadWorkerGlobalScope-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
@@ -28,8 +26,6 @@ Worker线程调用宿主线程上注册的对象的指定方法，此调用对Wo
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ThreadWorkerGlobalScope-callGlobalCallObjectMethod(instanceName: string, methodName: string, timeout: number, ...args: Object[]): Object--><!--Device-ThreadWorkerGlobalScope-callGlobalCallObjectMethod(instanceName: string, methodName: string, timeout: number, ...args: Object[]): Object-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -38,7 +34,7 @@ Worker线程调用宿主线程上注册的对象的指定方法，此调用对Wo
 | --- | --- | --- | --- |
 | instanceName | string | 是 | 注册对象时使用的键，用于在宿主线程中查找对象。 |
 | methodName | string | 是 | 在已注册对象上调用的方法名。该方法不能使用async修饰， 也不能基于底层异步机制返回结果，否则会抛出异常。 |
-| timeout | number | 是 | 表示从Worker线程发起调用开始到在主线程中执行目标方法的最大等待时间， 单位为ms，取整数，取值范围为[1-5000]。也可取特殊值0，此时表示本次调用等待时间为5000ms。 该值应为整数。 <br>单位：ms。 |
+| timeout | number | 是 | 表示从Worker线程发起调用开始到在主线程中执行目标方法的最大等待时间， 单位为ms，取整数，取值范围为[1-5000]。也可取特殊值0，此时表示本次调用等待时间为5000ms。 该值应为整数。 单位：ms。 |
 | args | Object[] | 是 | 注册对象上所调用方法的参数数组。 |
 
 **返回值：**
@@ -51,11 +47,11 @@ Worker线程调用宿主线程上注册的对象的指定方法，此调用对Wo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200019](../errorcode-utils.md#10200019-调用未注册对象的方法错误) | The globalCallObject is not registered. |
-| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
-| [10200021](../errorcode-utils.md#10200021-全局调用等待超时错误) | The global call exceeds the timeout. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
+| [10200019](../errorcode-utils.md#10200019-调用未注册对象的方法错误) | The globalCallObject is not registered. |
 | [10200020](../errorcode-utils.md#10200020-调用注册对象上的方法类型错误) | The method to be called is not callable or is an async method or a generator. |
+| [10200021](../errorcode-utils.md#10200021-全局调用等待超时错误) | The global call exceeds the timeout. |
 
 **示例**
 
@@ -116,8 +112,6 @@ close(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ThreadWorkerGlobalScope-close(): void--><!--Device-ThreadWorkerGlobalScope-close(): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **错误码：**
@@ -146,6 +140,80 @@ workerPort.onmessage = (e: MessageEvents): void => {
 }
 ```
 
+```TypeScript
+// Index.ets
+import { worker } from '@kit.ArkTS';
+
+const workerInstance = new worker.Worker("entry/ets/workers/worker.ets");
+workerInstance.postMessage("hello world");
+```
+
+```TypeScript
+// worker.ets
+import { worker } from '@kit.ArkTS';
+
+const parentPort = worker.parentPort;
+parentPort.onmessage = (): void => {
+    parentPort.close()
+}
+```
+
+## onmessage
+
+```TypeScript
+onmessage?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void
+```
+
+回调函数。表示Worker线程收到来自其宿主线程通过postMessage或postMessageWithSharedSendable接口发送的消息时被调用的事件处理程序，处理程序在Worker线程中执行。 其中this指调用者对象本身ThreadWorkerGlobalScope，ev类型为MessageEvents，表示收到的宿主线程发送的消息数据。默认值为undefined。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| this | [ThreadWorkerGlobalScope](arkts-arkts-worker-threadworkerglobalscope-i.md) | 是 |  |
+| ev | [MessageEvents](arkts-arkts-worker-messageevents-i.md) | 是 |  |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
+
+## onmessageerror
+
+```TypeScript
+onmessageerror?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void
+```
+
+回调函数。表示当Worker线程的Worker对象接收到一条无法被反序列化的消息时被调用的事件处理程序，处理程序在Worker线程中执行。其中this指调用者对象本身ThreadWorkerGlobalScope， ev类型为MessageEvents，表示收到的消息数据。默认值为undefined。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| this | [ThreadWorkerGlobalScope](arkts-arkts-worker-threadworkerglobalscope-i.md) | 是 |  |
+| ev | [MessageEvents](arkts-arkts-worker-messageevents-i.md) | 是 |  |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
+
 ## postMessage
 
 ```TypeScript
@@ -157,8 +225,6 @@ Worker线程通过转移对象所有权的方式向宿主线程发送消息。
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorkerGlobalScope-postMessage(messageObject: Object, transfer: ArrayBuffer[]): void--><!--Device-ThreadWorkerGlobalScope-postMessage(messageObject: Object, transfer: ArrayBuffer[]): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -173,8 +239,8 @@ Worker线程通过转移对象所有权的方式向宿主线程发送消息。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
 **示例**
 
@@ -200,6 +266,31 @@ workerPort.onmessage = (e: MessageEvents): void => {
 }
 ```
 
+```TypeScript
+// Index.ets
+import { worker } from '@kit.ArkTS';
+
+const workerInstance = new worker.Worker("entry/ets/workers/worker.ets");
+workerInstance.postMessage("hello world");
+workerInstance.onmessage = (e: MessageEvents): void => {
+    // let data = e.data;
+    console.info("receive data from worker.ets");
+}
+```
+
+```TypeScript
+// worker.ets
+import { DedicatedWorkerGlobalScope, worker } from '@kit.ArkTS';
+
+const workerPort: DedicatedWorkerGlobalScope = worker.parentPort;
+
+workerPort.onmessage = (): void => {
+    // let data = e.data;
+    let buffer = new ArrayBuffer(5)
+    workerPort.postMessage(buffer, [buffer]);
+}
+```
+
 ## postMessage
 
 ```TypeScript
@@ -211,8 +302,6 @@ Worker线程通过转移对象所有权或拷贝数据的方式向宿主线程�
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorkerGlobalScope-postMessage(messageObject: Object, options?: PostMessageOptions): void--><!--Device-ThreadWorkerGlobalScope-postMessage(messageObject: Object, options?: PostMessageOptions): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -227,8 +316,8 @@ Worker线程通过转移对象所有权或拷贝数据的方式向宿主线程�
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
 **示例**
 
@@ -253,21 +342,48 @@ workerPort.onmessage = (e: MessageEvents): void => {
 }
 ```
 
+```TypeScript
+// Index.ets
+import { worker } from '@kit.ArkTS';
+
+const workerInstance = new worker.Worker("entry/ets/workers/worker.ets");
+workerInstance.postMessage("hello world");
+workerInstance.onmessage = (): void => {
+    console.info("receive data from worker.ets");
+}
+```
+
+```TypeScript
+// worker.ets
+import { ErrorEvent, MessageEvents, worker } from '@kit.ArkTS';
+
+const parentPort = worker.parentPort;
+parentPort.onmessage = (e: MessageEvents) => {
+  parentPort.postMessage("receive data from main thread");
+}
+```
+
 ## postMessageAtFront
 
 ```TypeScript
 postMessageAtFront?(message: Object, priority: Priority, transfer?: ArrayBuffer[]): void
 ```
 
-Worker线程通过转移对象所有权的方式向宿主线程发送插队消息，并插入到对应优先级队列的队头。 除Worker线程向主线程发送的场景外，该接口与postMessage功能一致。 > **说明：** > > - 如果是Worker线程向宿主线程发送插队的消息，消息能够插队并且按优先级进行发送。 > > - 如果是Worker线程之间发送插队的消息，消息只能插队，没有优先级。 > > - postMessage和postMessageWithSharedSendable接口向宿主线程发送消息，默认是HIGH优先级，无插队效果。
+Worker线程通过转移对象所有权的方式向宿主线程发送插队消息，并插入到对应优先级队列的队头。 除Worker线程向主线程发送的场景外，该接口与postMessage功能一致。
+
+> **说明：**
+> 
+> - 如果是Worker线程向宿主线程发送插队的消息，消息能够插队并且按优先级进行发送。
+> 
+> - 如果是Worker线程之间发送插队的消息，消息只能插队，没有优先级。
+> 
+> - postMessage和postMessageWithSharedSendable接口向宿主线程发送消息，默认是HIGH优先级，无插队效果。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorkerGlobalScope-postMessageAtFront?(message: Object, priority: Priority, transfer?: ArrayBuffer[]): void--><!--Device-ThreadWorkerGlobalScope-postMessageAtFront?(message: Object, priority: Priority, transfer?: ArrayBuffer[]): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -283,8 +399,8 @@ Worker线程通过转移对象所有权的方式向宿主线程发送插队消�
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
 **示例**
 
@@ -380,8 +496,6 @@ Worker线程向宿主线程发送消息，消息中的Sendable对象通过引用
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ThreadWorkerGlobalScope-postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void--><!--Device-ThreadWorkerGlobalScope-postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -395,10 +509,51 @@ Worker线程向宿主线程发送消息，消息中的Sendable对象通过引用
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
 **示例**
+
+```TypeScript
+// Index.ets
+// 新建SendableObject实例并通过宿主线程传递至Worker线程
+
+import { worker } from '@kit.ArkTS';
+import { SendableObject } from './sendable';
+
+const workerInstance = new worker.ThreadWorker("entry/ets/workers/Worker.ets");
+let object: SendableObject = new SendableObject();
+workerInstance.postMessageWithSharedSendable(object);
+
+// 使用postMessage接口传递Sendable对象，使用拷贝数据的方式传递
+workerInstance.postMessage(object);
+```
+
+```TypeScript
+// sendable.ets
+// 定义SendableObject
+
+@Sendable
+export class SendableObject {
+  value:number = 45;
+}
+```
+
+```TypeScript
+// worker文件路径为：entry/src/main/ets/workers/Worker.ets
+// Worker.ets
+// 接收宿主线程传递至Worker线程的数据并访问
+
+import { SendableObject } from '../pages/sendable';
+import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent } from '@kit.ArkTS';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+
+workerPort.onmessage = (e: MessageEvents) => {
+  let obj: SendableObject = e.data;
+  console.info("sendable obj is: " + obj.value);
+}
+```
 
 ```TypeScript
 // worker文件路径为：entry/src/main/ets/workers/Worker.ets
@@ -439,40 +594,3 @@ workerInstance.onmessage = (e: MessageEvents) => {
   console.info("sendable index obj is: " + obj.a);
 }
 ```
-
-## onmessage
-
-```TypeScript
-onmessage?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void
-```
-
-回调函数。表示Worker线程收到来自其宿主线程通过postMessage或postMessageWithSharedSendable接口发送的消息时被调用的事件处理程序，处理程序在Worker线程中执行。 其中this指调用者对象本身ThreadWorkerGlobalScope，ev类型为MessageEvents，表示收到的宿主线程发送的消息数据。默认值为undefined。
-
-**类型：** (this: ThreadWorkerGlobalScope, ev: MessageEvents) =&gt; void
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorkerGlobalScope-onmessage?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void--><!--Device-ThreadWorkerGlobalScope-onmessage?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## onmessageerror
-
-```TypeScript
-onmessageerror?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void
-```
-
-回调函数。表示当Worker线程的Worker对象接收到一条无法被反序列化的消息时被调用的事件处理程序，处理程序在Worker线程中执行。其中this指调用者对象本身ThreadWorkerGlobalScope， ev类型为MessageEvents，表示收到的消息数据。默认值为undefined。
-
-**类型：** (this: ThreadWorkerGlobalScope, ev: MessageEvents) =&gt; void
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ThreadWorkerGlobalScope-onmessageerror?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void--><!--Device-ThreadWorkerGlobalScope-onmessageerror?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-

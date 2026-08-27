@@ -4,8 +4,6 @@
 
 **起始版本：** 18
 
-<!--Device-unnamed-export declare struct ConfirmDialogV2--><!--Device-unnamed-export declare struct ConfirmDialogV2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -14,16 +12,13 @@
 import { AlertDialogV2, AdvancedDialogV2Button, AdvancedDialogV2ButtonOptions, AdvancedDialogV2ButtonAction, AdvancedDialogV2OnCheckedChange, ConfirmDialogV2, LoadingDialogV2, SelectDialogV2, TipsDialogV2, CustomContentDialogV2, PopoverDialogV2, PopoverDialogV2OnVisibleChange, PopoverDialogV2Options } from '@kit.ArkUI';
 ```
 
-## checkTips
+## onCheckedChange
 
 ```TypeScript
-@Param
-  checkTips?: ResourceStr
+onCheckedChange?: AdvancedDialogV2OnCheckedChange
 ```
 
-checkbox的提示内容。 默认不显示。
-
-**类型：** ResourceStr
+checkbox的选中状态改变事件。默认无事件。
 
 **起始版本：** 18
 
@@ -31,18 +26,15 @@ checkbox的提示内容。 默认不显示。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConfirmDialogV2-@Param  checkTips?: ResourceStr--><!--Device-ConfirmDialogV2-@Param  checkTips?: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## checked
 
 ```TypeScript
-@Param
-  checked?: boolean
+checked?: boolean
 ```
 
-checked为true时，表示checkbox已选中，为false时，表示未选中。 默认值：false
+checked为true时，表示checkbox已选中，为false时，表示未选中。默认值：false
 
 **类型：** boolean
 
@@ -52,60 +44,51 @@ checked为true时，表示checkbox已选中，为false时，表示未选中。 �
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConfirmDialogV2-@Param  checked?: boolean--><!--Device-ConfirmDialogV2-@Param  checked?: boolean-End-->
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## checkTips
+
+```TypeScript
+checkTips?: ResourceStr
+```
+
+checkbox的提示内容。默认不显示。
+
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## content
 
 ```TypeScript
-@Param
-  content?: ResourceStr
+content?: ResourceStr
 ```
 
-确认弹出框内容。 默认不显示。
+确认弹出框内容。默认不显示。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ConfirmDialogV2-@Param  content?: ResourceStr--><!--Device-ConfirmDialogV2-@Param  content?: ResourceStr-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## onCheckedChange
-
-```TypeScript
-@Param
-  onCheckedChange?: AdvancedDialogV2OnCheckedChange
-```
-
-checkbox的选中状态改变事件。 默认无事件。
-
-**类型：** [AdvancedDialogV2OnCheckedChange](arkts-arkui-advanceddialogv2oncheckedchange-t.md)
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ConfirmDialogV2-@Param  onCheckedChange?: AdvancedDialogV2OnCheckedChange--><!--Device-ConfirmDialogV2-@Param  onCheckedChange?: AdvancedDialogV2OnCheckedChange-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryButton
 
 ```TypeScript
-@Param
-  primaryButton?: AdvancedDialogV2Button
+primaryButton?: AdvancedDialogV2Button
 ```
 
-确认弹出框左侧按钮。 默认不显示。
+确认弹出框左侧按钮。默认不显示。
 
 **类型：** [AdvancedDialogV2Button](arkts-arkui-arkui-advanced-dialogv2-advanceddialogv2button-c.md)
 
@@ -114,19 +97,16 @@ checkbox的选中状态改变事件。 默认无事件。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ConfirmDialogV2-@Param  primaryButton?: AdvancedDialogV2Button--><!--Device-ConfirmDialogV2-@Param  primaryButton?: AdvancedDialogV2Button-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryButton
 
 ```TypeScript
-@Param
-  secondaryButton?: AdvancedDialogV2Button
+secondaryButton?: AdvancedDialogV2Button
 ```
 
-确认弹出框右侧按钮。 默认不显示。
+确认弹出框右侧按钮。默认不显示。
 
 **类型：** [AdvancedDialogV2Button](arkts-arkui-arkui-advanced-dialogv2-advanceddialogv2button-c.md)
 
@@ -136,21 +116,18 @@ checkbox的选中状态改变事件。 默认无事件。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConfirmDialogV2-@Param  secondaryButton?: AdvancedDialogV2Button--><!--Device-ConfirmDialogV2-@Param  secondaryButton?: AdvancedDialogV2Button-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
 
 ```TypeScript
-@Require
-  @Param
-  title: ResourceStr
+title: ResourceStr
 ```
 
-确认弹出框标题。 **说明：** 标题超过两行会显示“...”。
+确认弹出框标题。  
+**说明：** 标题超过两行会显示“...”。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 18
 
@@ -158,7 +135,4 @@ checkbox的选中状态改变事件。 默认无事件。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConfirmDialogV2-@Require  @Param  title: ResourceStr--><!--Device-ConfirmDialogV2-@Require  @Param  title: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

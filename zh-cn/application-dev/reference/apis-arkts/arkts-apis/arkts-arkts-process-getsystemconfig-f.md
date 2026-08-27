@@ -20,8 +20,6 @@ function getSystemConfig(name: number): number
 
 **替代接口：** [getSystemConfig](arkts-arkts-process-processmanager-c.md#getsystemconfig)
 
-<!--Device-process-function getSystemConfig(name: number): number--><!--Device-process-function getSystemConfig(name: number): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -43,3 +41,11 @@ let _SC_ARG_MAX = 0;
 let pres = process.getSystemConfig(_SC_ARG_MAX);
 ```
 
+```TypeScript
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
+// 定义系统配置参数
+let _SC_ARG_MAX = 0;
+// 获取系统配置信息
+let pres = processManager.getSystemConfig(_SC_ARG_MAX);
+```

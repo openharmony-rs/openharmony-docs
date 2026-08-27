@@ -1,10 +1,15 @@
 # RenderNode
 
-提供自绘制渲染节点RenderNode，支持开发者通过C API进行开发，完成自定义绘制需求。RenderNode还支持渲染节点树管理（添加、删除、查询子节点）、背景色与不透明度等视觉属性设置、变换（缩放、旋转、平移、变换矩阵）、阴影 、边框、遮罩与裁剪、模糊效果等能力，适用于在Stage模型下进行自定义渲染与节点树管理的场景。 > **说明：** > > - 不建议对BuilderNode中的RenderNode进行修改操作。BuilderNode中持有的FrameNode仅用于将该 > BuilderNode作为子节点挂载到其他FrameNode上，对该FrameNode或对应的RenderNode进行属性设置与子节点操作可能会产生未定义行为，包括但不限于显示异常、事件异常、稳定性问题等。 > > - RenderNode对象不支持使用JSON序列化。
+提供自绘制渲染节点RenderNode，支持开发者通过C API进行开发，完成自定义绘制需求。RenderNode还支持渲染节点树管理（添加、删除、查询子节点）、背景色与不透明度等视觉属性设置、变换（缩放、旋转、平移、变换矩阵）、阴影 、边框、遮罩与裁剪、模糊效果等能力，适用于在Stage模型下进行自定义渲染与节点树管理的场景。
+
+> **说明：**
+> 
+> - 不建议对BuilderNode中的RenderNode进行修改操作。BuilderNode中持有的FrameNode仅用于将该
+> BuilderNode作为子节点挂载到其他FrameNode上，对该FrameNode或对应的RenderNode进行属性设置与子节点操作可能会产生未定义行为，包括但不限于显示异常、事件异常、稳定性问题等。
+> 
+> - RenderNode对象不支持使用JSON序列化。
 
 **起始版本：** 11
-
-<!--Device-unnamed-export class RenderNode--><!--Device-unnamed-export class RenderNode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,15 +27,13 @@ appendChild(node: RenderNode): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RenderNode-appendChild(node: RenderNode): void--><!--Device-RenderNode-appendChild(node: RenderNode): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md) | 是 | 需要添加的RenderNode。 |
+| node | [RenderNode](arkts-arkui-rendernode-c.md) | 是 | 需要添加的RenderNode。 |
 
 **错误码：**
 
@@ -105,8 +108,6 @@ clearChildren(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RenderNode-clearChildren(): void--><!--Device-RenderNode-clearChildren(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例**
@@ -174,8 +175,6 @@ RenderNode的构造函数。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RenderNode-constructor()--><!--Device-RenderNode-constructor()-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例**
@@ -227,15 +226,13 @@ struct Index {
 dispose(): void
 ```
 
-立即释放当前RenderNode。调用此方法后，RenderNode将解除与后端实体节点的引用关系，再次调用该节点的接口可能会出现crash或返回默认值。可通过 [isDisposed](../../apis-na/arkts-apis/arkts-na-rendernode-c.md#isdisposed)接口查询节点是否已释放。
+立即释放当前RenderNode。调用此方法后，RenderNode将解除与后端实体节点的引用关系，再次调用该节点的接口可能会出现crash或返回默认值。可通过 [isDisposed](#isdisposed)接口查询节点是否已释放。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RenderNode-dispose(): void--><!--Device-RenderNode-dispose(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -299,15 +296,17 @@ struct Index {
 draw(context: DrawContext): void
 ```
 
-绘制方法，需要开发者进行实现。该方法会在RenderNode进行绘制时被调用。 该接口的[DrawContext](arkts-arkui-graphics-drawcontext-c.md)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见 [调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-arktsNode-renderNode.md#调整自定义绘制canvas的变换矩阵)。 > **说明：** > > RenderNode初始化时，会调用两次draw方法。第一次调用是在首次创建FrameNode时触发Render流程，第二次调用是在首次设置modifier时触发绘制。后续绘制流程皆由modifier触发。
+绘制方法，需要开发者进行实现。该方法会在RenderNode进行绘制时被调用。该接口的[DrawContext](arkts-arkui-graphics-drawcontext-c.md)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见 [调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-arktsNode-renderNode.md#调整自定义绘制canvas的变换矩阵)。
+
+> **说明：**
+> 
+> RenderNode初始化时，会调用两次draw方法。第一次调用是在首次创建FrameNode时触发Render流程，第二次调用是在首次设置modifier时触发绘制。后续绘制流程皆由modifier触发。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RenderNode-draw(context: DrawContext): void--><!--Device-RenderNode-draw(context: DrawContext): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -477,8 +476,6 @@ getChild(index: number): RenderNode | null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RenderNode-getChild(index: number): RenderNode | null--><!--Device-RenderNode-getChild(index: number): RenderNode | null-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -491,11 +488,9 @@ getChild(index: number): RenderNode | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md) | 子节点。若该RenderNode不包含所查询的子节点，则返回空对象null。 |
+| [RenderNode](arkts-arkui-rendernode-c.md) \| null | 子节点。若该RenderNode不包含所查询的子节点，则返回空对象null。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -556,74 +551,6 @@ struct Index {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import {
-  Entry,
-  RenderNode,
-  FrameNode,
-  NodeController,
-  UIContext,
-  Component,
-  Column,
-  NodeContainer,
-  Button
-} from '@kit.ArkUI';
-
-const renderNode = new RenderNode();
-renderNode.size = { width: 200, height: 300 };
-for (let i = 0; i < 10; i++) {
-  let childNode = new RenderNode();
-  childNode.size = { width: i * 10, height: i * 10 };
-  childNode.position = { x: i * 10, y: i * 10 };
-  childNode.backgroundColor = 0xFF0000FF.toInt() - 0X11 * i;
-  renderNode.appendChild(childNode);
-}
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const rootRenderNode = this.rootNode!.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Column() {
-      NodeContainer(this.myNodeController)
-        .borderWidth(1)
-        .width(200)
-        .height(300)
-      Button("getChild")
-        .onClick(() => {
-          for (let i = 0; i < 11; i++) {
-            let childNode: RenderNode | null = renderNode.getChild(i);
-            if (childNode == null) {
-              console.info(`the ${i} of renderNode's childNode is null`);
-            } else {
-              console.info(`the ${i} of renderNode's childNode has a size of {${childNode.size.width},${childNode.size.height}}`);
-            }
-          }
-
-        })
-    }.width("100%")
-  }
-}
-```
-
 ## getFirstChild
 
 ```TypeScript
@@ -638,15 +565,13 @@ getFirstChild(): RenderNode | null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RenderNode-getFirstChild(): RenderNode | null--><!--Device-RenderNode-getFirstChild(): RenderNode | null-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md) | 首个子节点。若该RenderNode不包含子节点，则返回空对象null。 |
+| [RenderNode](arkts-arkui-rendernode-c.md) \| null | 首个子节点。若该RenderNode不包含子节点，则返回空对象null。 |
 
 **示例**
 
@@ -728,15 +653,13 @@ getNextSibling(): RenderNode | null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RenderNode-getNextSibling(): RenderNode | null--><!--Device-RenderNode-getNextSibling(): RenderNode | null-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md) | 当前RenderNode的下一个同级节点。若该RenderNode不包含下一个同级节点，则返回空对象null。 |
+| [RenderNode](arkts-arkui-rendernode-c.md) \| null | 当前RenderNode的下一个同级节点。若该RenderNode不包含下一个同级节点，则返回空对象null。 |
 
 **示例**
 
@@ -823,15 +746,13 @@ getPreviousSibling(): RenderNode | null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RenderNode-getPreviousSibling(): RenderNode | null--><!--Device-RenderNode-getPreviousSibling(): RenderNode | null-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md) | 当前RenderNode的上一个同级节点。若该RenderNode不包含上一个同级节点，则返回空对象null。 |
+| [RenderNode](arkts-arkui-rendernode-c.md) \| null | 当前RenderNode的上一个同级节点。若该RenderNode不包含上一个同级节点，则返回空对象null。 |
 
 **示例**
 
@@ -918,16 +839,14 @@ insertChildAfter(child: RenderNode, sibling: RenderNode | null): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RenderNode-insertChildAfter(child: RenderNode, sibling: RenderNode | null): void--><!--Device-RenderNode-insertChildAfter(child: RenderNode, sibling: RenderNode | null): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| child | [RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md) | 是 | 需要添加的子节点。 |
-| sibling | [RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md) \| null | 是 | 新节点将插入到该节点之后。若该参数设置为空，则新节点将插入到首个子节点之前。 |
+| child | [RenderNode](arkts-arkui-rendernode-c.md) | 是 | 需要添加的子节点。 |
+| sibling | [RenderNode](arkts-arkui-rendernode-c.md) \| null | 是 | 新节点将插入到该节点之后。若该参数设置为空，则新节点将插入到首个子节点之前。 |
 
 **错误码：**
 
@@ -1007,15 +926,13 @@ struct Index {
 invalidate(): void
 ```
 
-该方法会触发RenderNode的重新渲染，重新渲染时会调用[draw](../../apis-na/arkts-apis/arkts-na-rendernode-c.md#draw)方法。若开发者继承了RenderNode并实现了draw方法，调用invalidate()后将重新执行draw方 法中的绘制逻辑。
+该方法会触发RenderNode的重新渲染，重新渲染时会调用[draw](#draw)方法。若开发者继承了RenderNode并实现了draw方法，调用invalidate()后将重新执行draw方 法中的绘制逻辑。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RenderNode-invalidate(): void--><!--Device-RenderNode-invalidate(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1095,8 +1012,6 @@ isDisposed(): boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RenderNode-isDisposed(): boolean--><!--Device-RenderNode-isDisposed(): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1198,15 +1113,13 @@ removeChild(node: RenderNode): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RenderNode-removeChild(node: RenderNode): void--><!--Device-RenderNode-removeChild(node: RenderNode): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md) | 是 | 需要删除的子节点。 |
+| node | [RenderNode](arkts-arkui-rendernode-c.md) | 是 | 需要删除的子节点。 |
 
 **示例**
 
@@ -1266,3 +1179,1995 @@ struct Index {
 }
 ```
 
+## backgroundBlur
+
+```TypeScript
+get backgroundBlur(): BackgroundBlur
+```
+
+获取背景模糊效果。
+
+**类型：** [BackgroundBlur](arkts-arkui-graphics-backgroundblur-i.md)
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+// 继承RenderNode，实现自定义绘制方法
+class MyRenderNode extends RenderNode {
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+    this.frame = {
+      x: 0,
+      y: 0,
+      width: 150,
+      height: 150
+    };
+  }
+
+  // 绘制RenderNode时调用此函数
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 74,
+      blue: 175
+    });
+    canvas.attachBrush(brush);
+    canvas.drawRect({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 300
+    });
+    canvas.detachBrush();
+  }
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode.commonAttribute
+      .width(200)
+      .height(200)
+      .backgroundImage($r('app.media.cubic')) // 需要替换为开发者所需的图像资源文件。
+      .backgroundImageSize({ width: 200, height: 200 });
+    let renderNode = this.rootNode.getRenderNode();
+    if (renderNode !== null) {
+      let myRenderNode = new MyRenderNode(uiContext);
+      // 设置背景模糊效果。
+      myRenderNode.backgroundBlur = {
+        radius: 20,
+        grayscale: [50, 50]
+      };
+      renderNode.appendChild(myRenderNode);
+      const backgroundBlurConfig = myRenderNode.backgroundBlur;
+      console.info(`background blur radius: ${backgroundBlurConfig.radius} grayscale: [${backgroundBlurConfig.grayscale}]`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 10 }) {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+## backgroundColor
+
+```TypeScript
+get backgroundColor(): number
+```
+
+获取当前RenderNode的背景颜色。
+
+**类型：** number
+
+**默认值：** 0X00000000 [since 11 - 11]
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
+// 设置renderNode的背景颜色
+renderNode.backgroundColor = 0XFF00FF00;
+// 获取renderNode的背景颜色
+const backgroundColor = renderNode.backgroundColor;
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## borderColor
+
+```TypeScript
+get borderColor(): Edges<number>
+```
+
+获取当前RenderNode的边框颜色。
+
+**类型：** [Edges](arkts-arkui-graphics-edges-i.md)&lt;number&gt;
+
+**默认值：** 0XFF000000
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
+// 设置renderNode的边框颜色
+renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
+// 获取renderNode的边框颜色
+const borderColor = renderNode.borderColor;
+
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## borderRadius
+
+```TypeScript
+get borderRadius(): BorderRadiuses
+```
+
+获取当前RenderNode的边框圆角。
+
+**类型：** [BorderRadiuses](arkts-arkui-borderradiuses-t.md)
+
+**默认值：** 0
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+// 设置renderNode的边框圆角
+renderNode.borderRadius = { topLeft: 32, topRight: 32, bottomLeft: 32, bottomRight: 32 };
+// 获取renderNode的边框圆角
+const borderRadius = renderNode.borderRadius;
+
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## borderStyle
+
+```TypeScript
+get borderStyle(): Edges<BorderStyle>
+```
+
+获取当前RenderNode的边框样式。
+
+**类型：** [Edges](arkts-arkui-graphics-edges-i.md)&lt;[BorderStyle](arkts-arkui-borderstyle-e.md)&gt;
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
+// 设置renderNode的边框样式
+renderNode.borderStyle = {
+  left: BorderStyle.Solid,
+  top: BorderStyle.Dotted,
+  right: BorderStyle.Dashed,
+  bottom: BorderStyle.Solid
+};
+// 获取renderNode的边框样式
+const borderStyle = renderNode.borderStyle;
+
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## borderWidth
+
+```TypeScript
+get borderWidth(): Edges<number>
+```
+
+获取当前RenderNode的边框宽度。
+
+**类型：** [Edges](arkts-arkui-graphics-edges-i.md)&lt;number&gt;
+
+**默认值：** 0
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+// 设置renderNode的边框宽度
+renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
+// 获取renderNode的边框宽度
+const borderWidth = renderNode.borderWidth;
+
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## clipToFrame
+
+```TypeScript
+get clipToFrame(): boolean
+```
+
+获取当前RenderNode是否需要进行剪裁。
+
+**类型：** boolean
+
+**默认值：** true [since 11 - 11]
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
+renderNode.backgroundColor = 0xffff0000;
+// 设置renderNode是否需要剪裁
+renderNode.clipToFrame = true;
+// 获取renderNode是否需要剪裁
+const clipToFrame = renderNode.clipToFrame;
+
+const childNode = new RenderNode();
+childNode.frame = { x: 10, y: 10, width: 150, height: 50 };
+childNode.backgroundColor = 0xffffff00;
+renderNode.appendChild(childNode);
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## contentBlur
+
+```TypeScript
+get contentBlur(): ContentBlur
+```
+
+背景模糊效果。默认值为{radius: 0}。
+
+**类型：** [ContentBlur](arkts-arkui-graphics-contentblur-i.md)
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+// 继承RenderNode，实现自定义绘制方法
+class MyRenderNode extends RenderNode {
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+    this.frame = {
+      x: 0,
+      y: 0,
+      width: 150,
+      height: 150
+    };
+  }
+
+  // 绘制RenderNode时调用此函数
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 74,
+      blue: 175
+    });
+    canvas.attachBrush(brush);
+    canvas.drawRect({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 300
+    });
+    canvas.detachBrush();
+  }
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode.commonAttribute
+      .width(200)
+      .height(200)
+      .backgroundImage($r('app.media.cubic')) // 需要替换为开发者所需的图像资源文件。
+      .backgroundImageSize({ width: 200, height: 200 });
+    let renderNode = this.rootNode.getRenderNode();
+    if (renderNode !== null) {
+      let myRenderNode = new MyRenderNode(uiContext);
+      // 设置内容模糊效果。
+      myRenderNode.contentBlur = {
+        radius: 20,
+        grayscale: [50, 50]
+      };
+      renderNode.appendChild(myRenderNode);
+      const contentBlurConfig = myRenderNode.contentBlur;
+      console.info(`content blur radius: ${contentBlurConfig.radius} grayscale: [${contentBlurConfig.grayscale}]`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 10 }) {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+## foregroundBlur
+
+```TypeScript
+get foregroundBlur(): ForegroundBlur
+```
+
+获取内容模糊效果。
+
+**类型：** [ForegroundBlur](arkts-arkui-graphics-foregroundblur-i.md)
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+// 继承RenderNode，实现自定义绘制方法
+class MyRenderNode extends RenderNode {
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+    this.frame = {
+      x: 0,
+      y: 0,
+      width: 150,
+      height: 150
+    };
+  }
+
+  // 绘制RenderNode时调用此函数
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 74,
+      blue: 175
+    });
+    canvas.attachBrush(brush);
+    canvas.drawRect({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 300
+    });
+    canvas.detachBrush();
+  }
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode.commonAttribute
+      .width(200)
+      .height(200)
+      .backgroundImage($r('app.media.cubic')) // 需要替换为开发者所需的图像资源文件。
+      .backgroundImageSize({ width: 200, height: 200 });
+    let renderNode = this.rootNode.getRenderNode();
+    if (renderNode !== null) {
+      let myRenderNode = new MyRenderNode(uiContext);
+      // 设置前景模糊效果。
+      myRenderNode.foregroundBlur = {
+        radius: 20
+      };
+      renderNode.appendChild(myRenderNode);
+      const foregroundBlurConfig = myRenderNode.foregroundBlur;
+      console.info(`foreground blur radius: ${foregroundBlurConfig.radius}`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 10 }) {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+## frame
+
+```TypeScript
+get frame(): Frame
+```
+
+获取当前RenderNode的大小和位置。
+
+**类型：** [Frame](arkts-arkui-graphics-frame-i.md)
+
+**默认值：** Frame { x: 0, y: 0, width: 0, height: 0 } [since 11 - 11]
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.backgroundColor = 0xffff0000;
+// 设置renderNode的大小和位置
+renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
+// 获取renderNode的大小和位置
+const frame = renderNode.frame;
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## label
+
+```TypeScript
+get label(): string
+```
+
+获取当前RenderNode的标签。
+
+**类型：** string
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    const renderNode: RenderNode | null = this.rootNode.getRenderNode();
+    if (renderNode !== null) {
+      const renderChildNode: RenderNode = new RenderNode();
+      renderChildNode.frame = { x: 0, y: 0, width: 100, height: 100 };
+      renderChildNode.backgroundColor = 0xffff0000;
+      // 设置renderNode的标签
+      renderChildNode.label = 'customRenderChildNode';
+      // 获取renderNode的标签并打印日志
+      console.info('label:', renderChildNode.label);
+      renderNode.appendChild(renderChildNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+        .width(300)
+        .height(700)
+        .backgroundColor(Color.Gray)
+    }
+  }
+}
+```
+
+## lengthMetricsUnit
+
+```TypeScript
+get lengthMetricsUnit(): LengthMetricsUnit
+```
+
+获取RenderNode各个属性使用的单位。
+
+**类型：** [LengthMetricsUnit](arkts-arkui-graphics-lengthmetricsunit-e.md)
+
+**默认值：** LengthMetricsUnit.DEFAULT
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+import { LengthMetricsUnit } from '@kit.ArkUI';
+
+// 继承RenderNode，设置RenderNode各个属性使用的单位
+class BaseRenderNode extends RenderNode {
+  constructor() {
+    super();
+    this.lengthMetricsUnit = LengthMetricsUnit.PX;
+  }
+}
+
+// 继承BaseRenderNode，实现自定义绘制方法
+class MyRenderNode extends BaseRenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    canvas.attachBrush(brush);
+    canvas.drawRect({ left: 0, right: 200, top: 0, bottom: 200 });
+    canvas.detachBrush();
+  }
+}
+
+const renderNode = new MyRenderNode();
+renderNode.frame = { x: 100, y: 100, width: 200, height: 200 };
+renderNode.backgroundColor = 0xff0000ff;
+renderNode.rotation = { x: 0, y: 0, z: 45 };
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## markNodeGroup
+
+```TypeScript
+get markNodeGroup(): boolean
+```
+
+获取当前节点是否标记了优先绘制。
+
+**类型：** boolean
+
+**默认值：** false
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+// 继承RenderNode，实现自定义绘制方法
+class MyRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    canvas.attachBrush(brush);
+    canvas.drawRect({ left: 0, right: 200, top: 0, bottom: 200 });
+    canvas.detachBrush();
+
+    brush.setColor({ alpha: 255, red: 0, green: 255, blue: 0 });
+    canvas.attachBrush(brush);
+    canvas.drawRect({ left: 100, right: 300, top: 100, bottom: 300 });
+    canvas.detachBrush();
+  }
+}
+
+const renderNode = new MyRenderNode();
+renderNode.frame = { x: 100, y: 100, width: 200, height: 200 };
+renderNode.backgroundColor = 0xff0000ff;
+// 标记当前renderNode为优先绘制
+renderNode.markNodeGroup = true;
+renderNode.opacity = 0.5;
+
+const isNodeGroup = renderNode.markNodeGroup;
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## opacity
+
+```TypeScript
+get opacity(): number
+```
+
+获取当前RenderNode的不透明度。
+
+**类型：** number
+
+**默认值：** 1 [since 11 - 11]
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
+renderNode.backgroundColor = 0xffff0000;
+// 设置renderNode的不透明度
+renderNode.opacity = 0.5;
+// 获取renderNode的不透明度
+const opacity = renderNode.opacity;
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## pivot
+
+```TypeScript
+get pivot(): Pivot
+```
+
+获取当前RenderNode的轴心。
+
+**类型：** [Pivot](arkts-arkui-pivot-t.md)
+
+**默认值：** Pivot { x: 0.5, y: 0.5 } [since 11 - 11]
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.backgroundColor = 0xffff0000;
+renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
+// 设置renderNode的轴心
+renderNode.pivot = { x: 0.5, y: 0.6 };
+// 获取renderNode的轴心
+const pivot = renderNode.pivot;
+
+renderNode.rotation = { x: 15, y: 0, z: 0 };
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## position
+
+```TypeScript
+get position(): Position
+```
+
+获取当前RenderNode的位置。
+
+**类型：** [Position](arkts-arkui-position-t.md)
+
+**默认值：** Position { x: 0, y: 0 } [since 11 - 11]
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.backgroundColor = 0xffff0000;
+renderNode.size = { width: 100, height: 100 };
+// 设置renderNode的位置
+renderNode.position = { x: 10, y: 10 };
+// 获取renderNode的位置
+const position = renderNode.position;
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## rotation
+
+```TypeScript
+get rotation(): Rotation
+```
+
+获取当前RenderNode的旋转角度。
+
+**类型：** [Rotation](arkts-arkui-rotation-t.md)
+
+**默认值：** Rotation { x: 0, y: 0, z: 0 } [since 11 - 11]
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.backgroundColor = 0xffff0000;
+renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
+// 设置renderNode的旋转角度
+renderNode.rotation = { x: 45, y: 0, z: 0 };
+// 获取renderNode的旋转角度
+const rotation = renderNode.rotation;
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## scale
+
+```TypeScript
+get scale(): Scale
+```
+
+获取当前RenderNode的缩放比例。
+
+**类型：** [Scale](arkts-arkui-scale-t.md)
+
+**默认值：** Scale { x: 1, y: 1 } [since 11 - 11]
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.backgroundColor = 0xffff0000;
+renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
+// 设置renderNode的比例
+renderNode.scale = { x: 0.5, y: 1 };
+// 获取renderNode的比例
+const scale = renderNode.scale;
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## shadowAlpha
+
+```TypeScript
+get shadowAlpha(): number
+```
+
+获取当前RenderNode的阴影颜色的Alpha值。
+
+**类型：** number
+
+**默认值：** 0 [since 11 - 11]
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.backgroundColor = 0xffff0000;
+renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
+renderNode.shadowElevation = 10;
+renderNode.shadowColor = 0XFF00FF00;
+renderNode.shadowOffset = { x: 10, y: 10 };
+// 设置renderNode的阴影颜色Alpha值
+renderNode.shadowAlpha = 0.1;
+// 获取renderNode的阴影颜色Alpha值
+const shadowAlpha = renderNode.shadowAlpha;
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## shadowColor
+
+```TypeScript
+get shadowColor(): number
+```
+
+获取当前RenderNode的阴影颜色。
+
+**类型：** number
+
+**默认值：** 0X00000000 [since 11 - 11]
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.backgroundColor = 0xffff0000;
+renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
+renderNode.shadowElevation = 10;
+// 设置renderNode的阴影颜色
+renderNode.shadowColor = 0XFF00FF00;
+// 获取renderNode的阴影颜色
+const shadowColor = renderNode.shadowColor;
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## shadowElevation
+
+```TypeScript
+get shadowElevation(): number
+```
+
+获取当前RenderNode的阴影的光照高度。
+
+**类型：** number
+
+**默认值：** 0 [since 11 - 11]
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.backgroundColor = 0xffff0000;
+renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
+renderNode.shadowOffset = { x: 10, y: 10 };
+renderNode.shadowAlpha = 0.7;
+// 设置renderNode的阴影光照高度
+renderNode.shadowElevation = 30;
+// 获取renderNode的阴影光照高度
+const shadowElevation = renderNode.shadowElevation;
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## shadowOffset
+
+```TypeScript
+get shadowOffset(): Offset
+```
+
+获取当前RenderNode的阴影偏移。
+
+**类型：** [Offset](arkts-arkui-offset-t.md)
+
+**默认值：** Offset { x: 0, y: 0 } [since 11 - 11]
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.backgroundColor = 0xffff0000;
+renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
+renderNode.shadowElevation = 10;
+renderNode.shadowColor = 0XFF00FF00;
+// 设置renderNode的阴影偏移
+renderNode.shadowOffset = { x: 10, y: 10 };
+// 获取renderNode的阴影偏移
+const shadowOffset = renderNode.shadowOffset;
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## shadowRadius
+
+```TypeScript
+get shadowRadius(): number
+```
+
+获取当前RenderNode的阴影模糊半径。
+
+**类型：** number
+
+**默认值：** 0 [since 11 - 11]
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.backgroundColor = 0xff0000ff;
+renderNode.frame = {
+  x: 100,
+  y: 100,
+  width: 100,
+  height: 100
+};
+renderNode.shadowOffset = { x: 10, y: 10 };
+renderNode.shadowAlpha = 0.7;
+// 设置renderNode的阴影模糊半径
+renderNode.shadowRadius = 30;
+// 获取renderNode的阴影模糊半径
+const shadowRadius = renderNode.shadowRadius;
+console.info(`RenderNode shadowRadius: ${shadowRadius}`);
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## shapeClip
+
+```TypeScript
+get shapeClip(): ShapeClip
+```
+
+获取当前RenderNode的裁剪形状。
+
+**类型：** [ShapeClip](arkts-arkui-graphics-shapeclip-c.md)
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
+
+// 创建图形裁剪形状并设置路径绘制指令
+const clip = new ShapeClip();
+clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
+
+const renderNode = new RenderNode();
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
+renderNode.backgroundColor = 0XFF00FF00;
+// 设置renderNode的裁剪形状
+renderNode.shapeClip = clip;
+// 获取renderNode的裁剪形状
+const shapeClip = renderNode.shapeClip;
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+        .borderWidth(1)
+      Button('setRectShape')
+        .onClick(() => {
+          shapeClip.setRectShape({
+            left: 0,
+            right: 150,
+            top: 0,
+            bottom: 150
+          });
+          renderNode.shapeClip = shapeClip;
+        })
+      Button('setRoundRectShape')
+        .onClick(() => {
+          shapeClip.setRoundRectShape({
+            rect: {
+              left: 0,
+              top: 0,
+              right: this.getUIContext().vp2px(150),
+              bottom: this.getUIContext().vp2px(150)
+            },
+            corners: {
+              topLeft: { x: 32, y: 32 },
+              topRight: { x: 32, y: 32 },
+              bottomLeft: { x: 32, y: 32 },
+              bottomRight: { x: 32, y: 32 }
+            }
+          });
+          renderNode.shapeClip = shapeClip;
+        })
+      Button('setCircleShape')
+        .onClick(() => {
+          shapeClip.setCircleShape({ centerY: 75, centerX: 75, radius: 75 });
+          renderNode.shapeClip = shapeClip;
+        })
+      Button('setOvalShape')
+        .onClick(() => {
+          shapeClip.setOvalShape({
+            left: 0,
+            right: this.getUIContext().vp2px(150),
+            top: 0,
+            bottom: this.getUIContext().vp2px(100)
+          });
+          renderNode.shapeClip = shapeClip;
+        })
+      Button('setCommandPath')
+        .onClick(() => {
+          shapeClip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
+          renderNode.shapeClip = shapeClip;
+        })
+    }
+  }
+}
+```
+
+## shapeMask
+
+```TypeScript
+get shapeMask(): ShapeMask
+```
+
+获取当前RenderNode的遮罩。
+
+**类型：** [ShapeMask](arkts-arkui-graphics-shapemask-c.md)
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
+
+// 创建遮罩并设置填充颜色、边框颜色、边框宽度
+const mask = new ShapeMask();
+mask.setRectShape({ left: 0, right: 150, top: 0, bottom: 150 });
+mask.fillColor = 0X55FF0000;
+mask.strokeColor = 0XFFFF0000;
+mask.strokeWidth = 24;
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+// 设置renderNode的遮罩
+renderNode.shapeMask = mask;
+// 获取renderNode的遮罩
+const shapeMask = renderNode.shapeMask;
+
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## size
+
+```TypeScript
+get size(): Size
+```
+
+获取当前RenderNode的大小。
+
+**类型：** Size
+
+**默认值：** Size { width: 0, height: 0 } [since 11 - 11]
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.backgroundColor = 0xffff0000;
+// 设置renderNode的大小
+renderNode.size = { width: 100, height: 100 };
+// 获取renderNode的大小
+const size = renderNode.size;
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## transform
+
+```TypeScript
+get transform(): Matrix4
+```
+
+获取当前RenderNode的变换矩阵。默认值为：  
+```ts
+[
+ 1, 0, 0, 0,
+ 0, 1, 0, 0,
+ 0, 0, 1, 0,
+ 0, 0, 0, 1
+]
+```
+
+**类型：** [Matrix4](arkts-arkui-matrix4-t.md)
+
+**默认值：** Matrix4 [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ] [since 11 - 11]
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.backgroundColor = 0xffff0000;
+renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
+// 设置renderNode的变换矩阵
+renderNode.transform = [
+  1, 0, 0, 0,
+  0, 2, 0, 0,
+  0, 0, 1, 0,
+  0, 0, 0, 1
+];
+// 获取renderNode的变换矩阵
+const transform = renderNode.transform;
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+## translation
+
+```TypeScript
+get translation(): Translation
+```
+
+获取当前RenderNode的平移量。
+
+**类型：** [Translation](arkts-arkui-translation-t.md)
+
+**默认值：** Translation { x: 0, y: 0 } [since 11 - 11]
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.backgroundColor = 0xffff0000;
+renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
+// 设置renderNode的平移量
+renderNode.translation = { x: 100, y: 0 };
+// 获取renderNode的平移量
+const translation = renderNode.translation;
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```

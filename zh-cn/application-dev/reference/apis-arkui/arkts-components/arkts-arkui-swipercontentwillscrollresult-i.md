@@ -4,8 +4,6 @@
 
 **起始版本：** 15
 
-<!--Device-unnamed-declare interface SwiperContentWillScrollResult--><!--Device-unnamed-declare interface SwiperContentWillScrollResult-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,8 +29,6 @@ comingIndex: number
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-SwiperContentWillScrollResult-comingIndex: number--><!--Device-SwiperContentWillScrollResult-comingIndex: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## currentIndex
@@ -53,8 +49,6 @@ currentIndex: number
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-SwiperContentWillScrollResult-currentIndex: number--><!--Device-SwiperContentWillScrollResult-currentIndex: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -63,7 +57,7 @@ currentIndex: number
 offset: number
 ```
 
-此次滑动的位移，带有符号，正负分别指示不同的翻页方向。正数表示从index=1向index=0翻页，负数表示从index=0向index=1翻页。 在手指滑动的场景中，该值为滑动事件中每帧传递下来的偏移量。在滚动鼠标滚轮和使用键盘方向键导航的场景中，该值代表即将翻页的距离。
+此次滑动的位移，带有符号，正负分别指示不同的翻页方向。正数表示从index=1向index=0翻页，负数表示从index=0向index=1翻页。在手指滑动的场景中，该值为滑动事件中每帧传递下来的偏移量。在滚动鼠标滚轮和使用键盘方向键导航的场景中，该值代表即将翻页的距离。
 
 **类型：** number
 
@@ -75,7 +69,4 @@ offset: number
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-SwiperContentWillScrollResult-offset: number--><!--Device-SwiperContentWillScrollResult-offset: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

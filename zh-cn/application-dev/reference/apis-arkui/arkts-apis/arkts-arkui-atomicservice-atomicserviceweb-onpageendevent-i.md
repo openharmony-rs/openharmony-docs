@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-export declare interface OnPageEndEvent--><!--Device-unnamed-export declare interface OnPageEndEvent-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,7 +26,4 @@ url: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OnPageEndEvent-url: string--><!--Device-OnPageEndEvent-url: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

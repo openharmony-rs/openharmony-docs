@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-export declare class AtomicServiceWebController--><!--Device-unnamed-export declare class AtomicServiceWebController-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -25,8 +23,6 @@ accessBackward(): boolean
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AtomicServiceWebController-accessBackward(): boolean--><!--Device-AtomicServiceWebController-accessBackward(): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,8 +50,6 @@ accessForward(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AtomicServiceWebController-accessForward(): boolean--><!--Device-AtomicServiceWebController-accessForward(): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -82,8 +76,6 @@ accessStep(step: number): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AtomicServiceWebController-accessStep(step: number): boolean--><!--Device-AtomicServiceWebController-accessStep(step: number): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -102,7 +94,7 @@ accessStep(step: number): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../../apis-arkweb/errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The AtomicServiceWebController must be associated with a AtomicServiceWeb component. |
 
 ## backward
@@ -116,8 +108,6 @@ backward(): void
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AtomicServiceWebController-backward(): void--><!--Device-AtomicServiceWebController-backward(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,8 +129,6 @@ forward(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AtomicServiceWebController-forward(): void--><!--Device-AtomicServiceWebController-forward(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **错误码：**
@@ -160,8 +148,6 @@ getCustomUserAgent(): string
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AtomicServiceWebController-getCustomUserAgent(): string--><!--Device-AtomicServiceWebController-getCustomUserAgent(): string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,8 +175,6 @@ getUserAgent(): string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AtomicServiceWebController-getUserAgent(): string--><!--Device-AtomicServiceWebController-getUserAgent(): string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -217,8 +201,6 @@ loadUrl(url: string | Resource, headers?: Array<WebHeader>): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AtomicServiceWebController-loadUrl(url: string | Resource, headers?: Array<WebHeader>): void--><!--Device-AtomicServiceWebController-loadUrl(url: string | Resource, headers?: Array<WebHeader>): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -232,7 +214,7 @@ loadUrl(url: string | Resource, headers?: Array<WebHeader>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../../apis-arkweb/errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The AtomicServiceWebController must be associated with a AtomicServiceWeb component. |
 | [17100002](../../apis-arkweb/errorcode-webview.md#17100002-url格式错误) | Invalid url. |
 | [17100003](../../apis-arkweb/errorcode-webview.md#17100003-resource路径错误) | Invalid resource path or file type. |
@@ -249,8 +231,6 @@ refresh(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AtomicServiceWebController-refresh(): void--><!--Device-AtomicServiceWebController-refresh(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **错误码：**
@@ -265,13 +245,16 @@ refresh(): void
 setCustomUserAgent(userAgent: string): void
 ```
 
-设置自定义用户代理，会覆盖系统的用户代理。 建议在onControllerAttached回调事件中设置User-Agent，设置方式请参考示例。不建议将User-Agent设置在onLoadIntercept回调事件中，在部分场景下可能出现设置失败。 > **说明：** > > 当Web组件src设置了url，且未在onControllerAttached回调事件中设置User-Agent，再调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现 > 象。
+设置自定义用户代理，会覆盖系统的用户代理。建议在onControllerAttached回调事件中设置User-Agent，设置方式请参考示例。不建议将User-Agent设置在onLoadIntercept回调事件中，在部分场景下可能出现设置失败。
+
+> **说明：**
+> 
+> 当Web组件src设置了url，且未在onControllerAttached回调事件中设置User-Agent，再调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现
+> 象。
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AtomicServiceWebController-setCustomUserAgent(userAgent: string): void--><!--Device-AtomicServiceWebController-setCustomUserAgent(userAgent: string): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -285,6 +268,5 @@ setCustomUserAgent(userAgent: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. |
 | [17100001](../../apis-arkweb/errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The AtomicServiceWebController must be associated with a AtomicServiceWeb component. |
-

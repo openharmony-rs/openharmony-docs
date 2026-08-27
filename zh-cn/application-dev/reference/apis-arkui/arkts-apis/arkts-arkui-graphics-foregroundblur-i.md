@@ -4,19 +4,17 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export interface ForegroundBlur--><!--Device-unnamed-export interface ForegroundBlur-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## radius
 
 ```TypeScript
-radius: double
+radius: number
 ```
 
-模糊半径。 单位：px 取值范围为[0, +∞)，默认值为0，负数、NaN和Infinity按默认值处理。值越大前景模糊效果越明显，为0时不模糊。
+模糊半径。单位：px取值范围为[0, +∞)，默认值为0，负数、NaN和Infinity按默认值处理。值越大前景模糊效果越明显，为0时不模糊。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
@@ -24,7 +22,4 @@ radius: double
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ForegroundBlur-radius: double--><!--Device-ForegroundBlur-radius: double-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

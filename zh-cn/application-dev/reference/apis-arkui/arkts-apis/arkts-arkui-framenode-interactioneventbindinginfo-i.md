@@ -4,8 +4,6 @@
 
 **起始版本：** 19
 
-<!--Device-unnamed-declare interface InteractionEventBindingInfo--><!--Device-unnamed-declare interface InteractionEventBindingInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## baseEventRegistered
@@ -14,7 +12,7 @@
 baseEventRegistered: boolean
 ```
 
-是否以声明方式绑定事件。 true表示以声明方式绑定事件，false表示没有以声明方式绑定事件。
+是否以声明方式绑定事件。true表示以声明方式绑定事件，false表示没有以声明方式绑定事件。
 
 **类型：** boolean
 
@@ -23,8 +21,6 @@ baseEventRegistered: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-InteractionEventBindingInfo-baseEventRegistered: boolean--><!--Device-InteractionEventBindingInfo-baseEventRegistered: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +30,7 @@ baseEventRegistered: boolean
 builtInEventRegistered: boolean
 ```
 
-组件是否绑定内置事件（组件内部定义的事件，无需开发者手动绑定）。 true表示组件绑定内置事件，false表示组件没有绑定内置事件。
+组件是否绑定内置事件（组件内部定义的事件，无需开发者手动绑定）。true表示组件绑定内置事件，false表示组件没有绑定内置事件。
 
 **类型：** boolean
 
@@ -43,8 +39,6 @@ builtInEventRegistered: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-InteractionEventBindingInfo-builtInEventRegistered: boolean--><!--Device-InteractionEventBindingInfo-builtInEventRegistered: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +48,7 @@ builtInEventRegistered: boolean
 nativeEventRegistered: boolean
 ```
 
-是否以注册节点事件（ [registerNodeEvent](../../../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent) ）的方式绑定事件。 true表示以注册节点事件的方式绑定事件，false表示没有以注册节点事件的方式绑定事件。
+是否以注册节点事件（ [registerNodeEvent](../../../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent) ）的方式绑定事件。true表示以注册节点事件的方式绑定事件，false表示没有以注册节点事件的方式绑定事件。
 
 **类型：** boolean
 
@@ -63,8 +57,6 @@ nativeEventRegistered: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-InteractionEventBindingInfo-nativeEventRegistered: boolean--><!--Device-InteractionEventBindingInfo-nativeEventRegistered: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,7 +66,7 @@ nativeEventRegistered: boolean
 nodeEventRegistered: boolean
 ```
 
-是否以自定义组件节点的方式绑定事件，请参考基础事件示例。 true表示以自定义组件节点的方式绑定事件，false表示没有以自定义组件节点的方式绑定事件。
+是否以自定义组件节点的方式绑定事件，请参考[基础事件示例](../../../reference/apis-arkui/js-apis-arkui-frameNode.md#基础事件示例)。true表示以自定义组件节点的方式绑定事件，false表示没有以自定义组件节点的方式绑定事件。
 
 **类型：** boolean
 
@@ -84,7 +76,4 @@ nodeEventRegistered: boolean
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-InteractionEventBindingInfo-nodeEventRegistered: boolean--><!--Device-InteractionEventBindingInfo-nodeEventRegistered: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

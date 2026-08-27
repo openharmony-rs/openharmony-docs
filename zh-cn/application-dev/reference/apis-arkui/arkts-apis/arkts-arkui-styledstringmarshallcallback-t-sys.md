@@ -10,8 +10,6 @@ declare type StyledStringMarshallCallback = (marshallableVal: StyledStringMarsha
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-declare type StyledStringMarshallCallback = (marshallableVal: StyledStringMarshallingValue) => ArrayBuffer--><!--Device-unnamed-declare type StyledStringMarshallCallback = (marshallableVal: StyledStringMarshallingValue) => ArrayBuffer-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -27,4 +25,3 @@ declare type StyledStringMarshallCallback = (marshallableVal: StyledStringMarsha
 | 类型 | 说明 |
 | --- | --- |
 | ArrayBuffer | [StyledStringMarshallingValue]{ |
-

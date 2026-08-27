@@ -1,10 +1,8 @@
 # RichEditorTextStyleResult
 
-后端返回的文本样式信息。 在RichEditorTextStyle中，fontWeight是设置字体粗细的输入参数。 而在RichEditorTextStyleResult中，会将之前设置的字体粗细转换为数字后返回。 RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转换关系，与RichEditorTextStyle和 RichEditorTextStyleResult中fontWeight的转换关系一致。
+后端返回的文本样式信息。在RichEditorTextStyle中，fontWeight是设置字体粗细的输入参数。而在RichEditorTextStyleResult中，会将之前设置的字体粗细转换为数字后返回。转换关系如下： | RichEditorTextStyle中的fontWeight | RichEditorTextStyleResult中的fontWeight | | ---- | ----------------------------------- | | 100 | 0 | | 200 | 1 | | 300 | 2 | | 400 | 3 | | 500 | 4 | | 600 | 5 | | 700 | 6 | | 800 | 7 | | 900 | 8 | | Lighter | 12 | | Normal | 10 | | Regular | 14 | | Medium | 13 | | Bold | 9 | | Bolder | 11 |RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转换关系，与RichEditorTextStyle和 RichEditorTextStyleResult中fontWeight的转换关系一致。
 
 **起始版本：** 10
-
-<!--Device-unnamed-declare interface RichEditorTextStyleResult--><!--Device-unnamed-declare interface RichEditorTextStyleResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -21,15 +19,13 @@ decoration: DecorationStyleResult
 
 文本装饰线样式信息。
 
-**类型：** DecorationStyleResult
+**类型：** [DecorationStyleResult](../arkts-apis/arkts-arkui-decorationstyleresult-i.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RichEditorTextStyleResult-decoration: DecorationStyleResult--><!--Device-RichEditorTextStyleResult-decoration: DecorationStyleResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,15 +37,13 @@ fontColor: ResourceColor
 
 文本颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RichEditorTextStyleResult-fontColor: ResourceColor--><!--Device-RichEditorTextStyleResult-fontColor: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,8 +63,6 @@ fontFamily: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorTextStyleResult-fontFamily: string--><!--Device-RichEditorTextStyleResult-fontFamily: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontFeature
@@ -88,8 +80,6 @@ fontFeature?: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RichEditorTextStyleResult-fontFeature?: string--><!--Device-RichEditorTextStyleResult-fontFeature?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,8 +99,6 @@ fontSize: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorTextStyleResult-fontSize: number--><!--Device-RichEditorTextStyleResult-fontSize: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontStyle
@@ -128,8 +116,6 @@ fontStyle: FontStyle
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RichEditorTextStyleResult-fontStyle: FontStyle--><!--Device-RichEditorTextStyleResult-fontStyle: FontStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -149,8 +135,6 @@ fontWeight: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorTextStyleResult-fontWeight: number--><!--Device-RichEditorTextStyleResult-fontWeight: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## halfLeading
@@ -159,7 +143,7 @@ fontWeight: number
 halfLeading?: boolean
 ```
 
-文本是否将行间距平分至行的顶部与底部。 true表示将行间距平分至行的顶部与底部，false则不平分。 默认值：false。
+文本是否将行间距平分至行的顶部与底部。true表示将行间距平分至行的顶部与底部，false则不平分。默认值：false。
 
 **类型：** boolean
 
@@ -168,8 +152,6 @@ halfLeading?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RichEditorTextStyleResult-halfLeading?: boolean--><!--Device-RichEditorTextStyleResult-halfLeading?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,8 +171,6 @@ letterSpacing?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorTextStyleResult-letterSpacing?: number--><!--Device-RichEditorTextStyleResult-letterSpacing?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## lineHeight
@@ -209,8 +189,6 @@ lineHeight?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorTextStyleResult-lineHeight?: number--><!--Device-RichEditorTextStyleResult-lineHeight?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeColor
@@ -221,15 +199,13 @@ strokeColor?: ResourceColor
 
 文本描边颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RichEditorTextStyleResult-strokeColor?: ResourceColor--><!--Device-RichEditorTextStyleResult-strokeColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,17 +215,15 @@ strokeColor?: ResourceColor
 strokeJoinStyle?: StrokeJoinStyle
 ```
 
-文本描边拐角样式。 默认值：StrokeJoinStyle.MITER_JOIN。
+文本描边拐角样式。默认值：StrokeJoinStyle.MITER_JOIN。
 
-**类型：** StrokeJoinStyle
+**类型：** [StrokeJoinStyle](../arkts-apis/arkts-arkui-strokejoinstyle-e.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RichEditorTextStyleResult-strokeJoinStyle?: StrokeJoinStyle--><!--Device-RichEditorTextStyleResult-strokeJoinStyle?: StrokeJoinStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -259,7 +233,7 @@ strokeJoinStyle?: StrokeJoinStyle
 strokeWidth?: number
 ```
 
-文本描边宽度。 单位为[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。
+文本描边宽度。单位为[vp](../arkts-apis/arkts-arkui-length-t.md)。
 
 **类型：** number
 
@@ -268,8 +242,6 @@ strokeWidth?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RichEditorTextStyleResult-strokeWidth?: number--><!--Device-RichEditorTextStyleResult-strokeWidth?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -281,15 +253,13 @@ textBackgroundStyle?: TextBackgroundStyle
 
 文本背景样式。
 
-**类型：** TextBackgroundStyle
+**类型：** [TextBackgroundStyle](arkts-arkui-textbackgroundstyle-i.md)
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RichEditorTextStyleResult-textBackgroundStyle?: TextBackgroundStyle--><!--Device-RichEditorTextStyleResult-textBackgroundStyle?: TextBackgroundStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -299,9 +269,10 @@ textBackgroundStyle?: TextBackgroundStyle
 textShadow?: Array<ShadowOptions>
 ```
 
-文字阴影效果。 **说明：** 仅支持查询阴影模糊半径、颜色和偏移量。
+文字阴影效果。  
+**说明：**仅支持查询阴影模糊半径、颜色和偏移量。
 
-**类型：** Array&lt;ShadowOptions&gt;
+**类型：** Array&lt;[ShadowOptions](arkts-arkui-shadowoptions-i.md)&gt;
 
 **起始版本：** 12
 
@@ -309,7 +280,4 @@ textShadow?: Array<ShadowOptions>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorTextStyleResult-textShadow?: Array<ShadowOptions>--><!--Device-RichEditorTextStyleResult-textShadow?: Array<ShadowOptions>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

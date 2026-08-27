@@ -1,8 +1,8 @@
 # IMonitorValue
 
-**起始版本：** 12
+@Monitor监听状态变量变化的具体信息，通过IMonitor的value接口获取。T为状态变量类型。
 
-<!--Device-unnamed-declare interface IMonitorValue--><!--Device-unnamed-declare interface IMonitorValue-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,8 +29,6 @@ before: T
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-IMonitorValue-before: T--><!--Device-IMonitorValue-before: T-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## now
@@ -50,8 +48,6 @@ now: T
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-IMonitorValue-now: T--><!--Device-IMonitorValue-now: T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +69,4 @@ path: string
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-IMonitorValue-path: string--><!--Device-IMonitorValue-path: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

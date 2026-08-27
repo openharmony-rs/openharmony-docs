@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class ColorMetrics--><!--Device-unnamed-declare class ColorMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## autoRefresh
@@ -22,21 +20,40 @@ autoRefresh?(value: boolean): ColorMetrics
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ColorMetrics-autoRefresh?(value: boolean): ColorMetrics--><!--Device-ColorMetrics-autoRefresh?(value: boolean): ColorMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 使用[resourceColor](#resourcecolor)方法构造的ColorMetrics对象是否在系统配置变化时自动刷新颜色值。 <br>true表示主动监听系统配置变化，变化时值刷新为对应配置下的资源值。 <br>false表示不主动监听系统配置变化。 |
+| value | boolean | 是 | 使用[resourceColor](#resourcecolor)方法构造的ColorMetrics对象是否在系统配置变化时自动刷新颜色值。 true表示主动监听系统配置变化，变化时值刷新为对应配置下的资源值。 false表示不主动监听系统配置变化。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md) | 返回设置自动刷新属性后的ColorMetrics对象。 |
+
+**示例**
+
+```TypeScript
+import { ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State colorMetrics: ColorMetrics = ColorMetrics.resourceColor($r('sys.color.font_primary')).autoRefresh!(true);
+
+  build() {
+    Column() {
+      Text('Test ColorMetrics')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(this.colorMetrics)
+  }
+}
+```
 
 ## blendColor
 
@@ -51,8 +68,6 @@ blendColor(overlayColor: ColorMetrics): ColorMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ColorMetrics-blendColor(overlayColor: ColorMetrics): ColorMetrics--><!--Device-ColorMetrics-blendColor(overlayColor: ColorMetrics): ColorMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,8 +103,6 @@ static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: 
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ColorMetrics-static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics--><!--Device-ColorMetrics-static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -100,7 +113,7 @@ static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: 
 | red | number | 是 | 颜色的R分量（红色），值是0~1的浮点数。超出范围时按边界值处理。 |
 | green | number | 是 | 颜色的G分量（绿色），值是0~1的浮点数。超出范围时按边界值处理。 |
 | blue | number | 是 | 颜色的B分量（蓝色），值是0~1的浮点数。超出范围时按边界值处理。 |
-| alpha | number | 否 | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。 <br> **说明：** alpha小于0为全透明，大于1为不透明。 |
+| alpha | number | 否 | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。    **说明：** alpha小于0为全透明，大于1为不透明。 |
 
 **返回值：**
 
@@ -122,15 +135,13 @@ static numeric(value: number): ColorMetrics
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ColorMetrics-static numeric(value: number): ColorMetrics--><!--Device-ColorMetrics-static numeric(value: number): ColorMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | HEX格式颜色，支持RGB或者ARGB。 <br>取值范围：[0, 0xffffffff] <br>超出范围时按边界值处理。 |
+| value | number | 是 | HEX格式颜色，支持RGB或者ARGB。 取值范围：[0, 0xffffffff] 超出范围时按边界值处理。 |
 
 **返回值：**
 
@@ -152,15 +163,13 @@ static resourceColor(color: ResourceColor): ColorMetrics
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ColorMetrics-static resourceColor(color: ResourceColor): ColorMetrics--><!--Device-ColorMetrics-static resourceColor(color: ResourceColor): ColorMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | ResourceColor | 是 | 资源格式颜色。 |
+| color | [ResourceColor](arkts-arkui-resourcecolor-t.md) | 是 | 资源格式颜色。 |
 
 **返回值：**
 
@@ -189,8 +198,6 @@ static rgba(red: number, green: number, blue: number, alpha?: number): ColorMetr
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ColorMetrics-static rgba(red: number, green: number, blue: number, alpha?: number): ColorMetrics--><!--Device-ColorMetrics-static rgba(red: number, green: number, blue: number, alpha?: number): ColorMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -200,7 +207,7 @@ static rgba(red: number, green: number, blue: number, alpha?: number): ColorMetr
 | red | number | 是 | 颜色的R分量（红色），值是0~255的整数。超出范围时按边界值处理。 |
 | green | number | 是 | 颜色的G分量（绿色），值是0~255的整数。超出范围时按边界值处理。 |
 | blue | number | 是 | 颜色的B分量（蓝色），值是0~255的整数。超出范围时按边界值处理。 |
-| alpha | number | 否 | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。 <br> **说明：** alpha小于0为全透明，大于1为不透明。 |
+| alpha | number | 否 | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。    **说明：** alpha小于0为全透明，大于1为不透明。 |
 
 **返回值：**
 
@@ -208,3 +215,149 @@ static rgba(red: number, green: number, blue: number, alpha?: number): ColorMetr
 | --- | --- |
 | [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md) | rgb或rgba格式颜色对应的颜色对象。 |
 
+## alpha
+
+```TypeScript
+get alpha(): number
+```
+
+获取ColorMetrics颜色的A分量（透明度）。
+
+**类型：** number
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { ColorMetrics } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getBlendColor(baseColor: ResourceColor): ColorMetrics {
+  let sourceColor: ColorMetrics;
+  try {
+    // 在使用ColorMetrics的resourceColor和blendColor需要追加捕获异常处理
+    // 可能返回的arkui子系统错误码有401和180003
+    // 61 157 180
+    sourceColor = ColorMetrics.resourceColor(baseColor).blendColor(ColorMetrics.resourceColor('#083d9db4'));
+    console.info(`current color is ${sourceColor.color} r:${sourceColor.red} g:${sourceColor.green} b:${sourceColor.blue} a :${sourceColor.alpha}`);
+  } catch (error) {
+    console.error(`getBlendColor failed. Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+    sourceColor = ColorMetrics.resourceColor('#19000000');
+  }
+  return sourceColor;
+}
+
+@Entry
+@Component
+struct ColorMetricsSample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button('ColorMetrics blendColor')
+        .width('80%')
+        .align(Alignment.Center)
+        .height(50)
+        .backgroundColor(getBlendColor('#ff3d9db4').color)
+        .margin(10)
+      Button('ColorMetrics numeric')
+        .width('80%')
+        .align(Alignment.Center)
+        .height(50)
+        .backgroundColor(ColorMetrics.numeric(0xff707070).color)
+        .margin(10)
+      Button('ColorMetrics rgba')
+        .width('80%')
+        .align(Alignment.Center)
+        .height(50)
+        .backgroundColor(ColorMetrics.rgba(0, 74, 175, 1.0).color)
+        .margin(10)
+      Button('ColorMetrics colorWithSpace')
+        .width('80%')
+        .align(Alignment.Center)
+        .height(50)
+        .backgroundColor(ColorMetrics.colorWithSpace(ColorSpace.SRGB, 0.4392, 0.4392, 0.4392).color)
+        .margin(10)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## blue
+
+```TypeScript
+get blue(): number
+```
+
+获取ColorMetrics颜色的B分量（蓝色）。
+
+**类型：** number
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## color
+
+```TypeScript
+get color(): string
+```
+
+获取ColorMetrics的颜色，返回的是rgba字符串的格式。
+
+**类型：** string
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## green
+
+```TypeScript
+get green(): number
+```
+
+获取ColorMetrics颜色的G分量（绿色）。
+
+**类型：** number
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## red
+
+```TypeScript
+get red(): number
+```
+
+获取ColorMetrics颜色的R分量（红色）。
+
+**类型：** number
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full

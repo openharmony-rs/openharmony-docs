@@ -2,9 +2,7 @@
 
 闪控球窗口信息。
 
-**起始版本：** 23
-
-<!--Device-floatingBall-interface FloatingBallWindowInfo--><!--Device-floatingBall-interface FloatingBallWindowInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -17,16 +15,13 @@ import { floatingBall } from '@kit.ArkUI';
 ## windowId
 
 ```TypeScript
-readonly windowId: int
+readonly windowId: number
 ```
 
 闪控球窗口ID。 取值范围为全体整数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-FloatingBallWindowInfo-readonly windowId: int--><!--Device-FloatingBallWindowInfo-readonly windowId: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
-

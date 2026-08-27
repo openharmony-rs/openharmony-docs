@@ -36,4 +36,3 @@ import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, Dial
 | [DialogBaseAlignment](arkts-arkui-arkui-dialog-dialogbasealignment-e.md) | 对话框的对齐方式。 |
 | [DialogButtonOrientation](arkts-arkui-arkui-dialog-dialogbuttonorientation-e.md) | 对话框中按钮的排列。 |
 | [DialogState](arkts-arkui-arkui-dialog-dialogstate-e.md) | Dialog状态的枚举。 |
-

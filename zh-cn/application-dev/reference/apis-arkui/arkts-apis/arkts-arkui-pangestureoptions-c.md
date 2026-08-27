@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-unnamed-declare class PanGestureOptions--><!--Device-unnamed-declare class PanGestureOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -25,15 +23,13 @@ constructor(value?: { fingers?: number; direction?: PanDirection; distance?: num
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PanGestureOptions-constructor(value?: { fingers?: number; direction?: PanDirection; distance?: number })--><!--Device-PanGestureOptions-constructor(value?: { fingers?: number; direction?: PanDirection; distance?: number })-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | { fingers?: number; direction?: PanDirection; distance?: number } | 否 | 滑动手势配置参数对象。<br/>fingers用于指定触发滑动的最少手指数，最小为1指， 最大取值为10指。<br/>默认值：1 <br/>direction用于指定触发滑动的手 势方向，此枚举值支持逻辑与(&)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br/>distance用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认 值：5<br/>**说明：**<br/>[Tabs](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-customelement-i.md#tabs)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。 <br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。<br/>当组件应用了scale缩放 变换时，distance的实际识别距离会按照scale比例进行缩放。 |
+| value | { fingers?: number; direction?: PanDirection; distance?: number } | 否 | 滑动手势配置参数对象。fingers用于指定触发滑动的最少手指数，最小为1指， 最大取值为10指。默认值：1 direction用于指定触发滑动的手 势方向，此枚举值支持逻辑与( & )和逻辑或（\ |）运算。默认值：PanDirection.All distance用于指定触发滑动手势事件的最小滑动距离，单位为vp。手写笔默认值：8，其余输入源默认 值：5   **说明：** [Tabs](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-customelement-i.md#tabs)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。当设定的值小于0时，按默认值处理。 建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。当组件应用了scale缩放 变换时，distance的实际识别距离会按照scale比例进行缩放。 |
 
 ## getDirection
 
@@ -48,8 +44,6 @@ getDirection(): PanDirection
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PanGestureOptions-getDirection(): PanDirection--><!--Device-PanGestureOptions-getDirection(): PanDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,8 +67,6 @@ getDistance(): number
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PanGestureOptions-getDistance(): number--><!--Device-PanGestureOptions-getDistance(): number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -95,15 +87,13 @@ setDirection(value: PanDirection)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PanGestureOptions-setDirection(value: PanDirection)--><!--Device-PanGestureOptions-setDirection(value: PanDirection)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [PanDirection](arkts-arkui-pandirection-e.md) | 是 | 用于指定触发滑动的手势方向，此枚举值支持逻辑与(&)和逻辑或（\|）运算。<br/>默认值：PanDirection.All |
+| value | [PanDirection](arkts-arkui-pandirection-e.md) | 是 | 用于指定触发滑动的手势方向，此枚举值支持逻辑与( & )和逻辑或（\ |）运算。默认值：PanDirection.All |
 
 ## setDistance
 
@@ -117,15 +107,13 @@ setDistance(value: number)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PanGestureOptions-setDistance(value: number)--><!--Device-PanGestureOptions-setDistance(value: number)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-customelement-i.md#tabs)滑动与该滑动 手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。<br/> 当组件应用了scale缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
+| value | number | 是 | 触发滑动手势事件的最小滑动距离，单位为vp。手写笔默认值：8，其余输入源默认值：5   **说明：** [Tabs组件](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-customelement-i.md#tabs)滑动与该滑动 手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。当设定的值小于0时，按默认值处理。建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。当组件应用了scale缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
 
 ## setFingers
 
@@ -139,13 +127,10 @@ setFingers(value: number)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PanGestureOptions-setFingers(value: number)--><!--Device-PanGestureOptions-setFingers(value: number)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 触发滑动的最少手指数，最小为1指， 最大取值为10指。<br/>默认值：1 |
-
+| value | number | 是 | 触发滑动的最少手指数，最小为1指， 最大取值为10指。默认值：1 |

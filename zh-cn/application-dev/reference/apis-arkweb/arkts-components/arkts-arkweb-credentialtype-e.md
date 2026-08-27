@@ -4,8 +4,6 @@
 
 **起始版本：** 22
 
-<!--Device-unnamed-declare enum CredentialType--><!--Device-unnamed-declare enum CredentialType-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## CREDENTIAL_USER
@@ -17,8 +15,6 @@ CREDENTIAL_USER = 2
 用户凭证。
 
 **起始版本：** 22
-
-<!--Device-CredentialType-CREDENTIAL_USER = 2--><!--Device-CredentialType-CREDENTIAL_USER = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -32,8 +28,6 @@ CREDENTIAL_APP = 3
 
 **起始版本：** 22
 
-<!--Device-CredentialType-CREDENTIAL_APP = 3--><!--Device-CredentialType-CREDENTIAL_APP = 3-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## CREDENTIAL_UKEY
@@ -46,7 +40,4 @@ ukey凭证。
 
 **起始版本：** 22
 
-<!--Device-CredentialType-CREDENTIAL_UKEY = 4--><!--Device-CredentialType-CREDENTIAL_UKEY = 4-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

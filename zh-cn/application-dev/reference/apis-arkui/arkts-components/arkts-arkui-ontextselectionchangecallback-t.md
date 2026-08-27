@@ -12,8 +12,6 @@ declare type OnTextSelectionChangeCallback = (selectionStart: number, selectionE
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type OnTextSelectionChangeCallback = (selectionStart: number, selectionEnd: number) => void--><!--Device-unnamed-declare type OnTextSelectionChangeCallback = (selectionStart: number, selectionEnd: number) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -22,4 +20,3 @@ declare type OnTextSelectionChangeCallback = (selectionStart: number, selectionE
 | --- | --- | --- | --- |
 | selectionStart | number | 是 | 所选文本的起始位置，文字的起始位置为0。 |
 | selectionEnd | number | 是 | 所选文本的结束位置。 |
-

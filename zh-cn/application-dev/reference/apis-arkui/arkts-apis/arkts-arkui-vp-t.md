@@ -14,12 +14,9 @@ declare type VP = `${number}vp` | number
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-unnamed-declare type VP = `${number}vp` | number--><!--Device-unnamed-declare type VP = `${number}vp` | number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | --- | --- |
 | `\${number}vp` |  |
 | number |  |
-

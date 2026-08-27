@@ -12,9 +12,6 @@ declare type RectHeightStyle = import('../api/@ohos.graphics.text').default.Rect
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type RectHeightStyle = import('../api/@ohos.graphics.text').default.RectHeightStyle--><!--Device-unnamed-declare type RectHeightStyle = import('../api/@ohos.graphics.text').default.RectHeightStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **属性类型：** import('../api/@ohos.graphics.text').default.RectHeightStyle
-

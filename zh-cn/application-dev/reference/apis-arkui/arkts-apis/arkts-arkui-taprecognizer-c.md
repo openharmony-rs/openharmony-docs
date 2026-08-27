@@ -6,8 +6,6 @@
 
 **起始版本：** 18
 
-<!--Device-unnamed-declare class TapRecognizer--><!--Device-unnamed-declare class TapRecognizer-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,13 +27,10 @@ getTapCount(): number
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TapRecognizer-getTapCount(): number--><!--Device-TapRecognizer-getTapCount(): number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 预设点击手势识别器连续点击次数阈值。<br/>取值范围：[0, +∞) |
-
+| number | 预设点击手势识别器连续点击次数阈值。 |

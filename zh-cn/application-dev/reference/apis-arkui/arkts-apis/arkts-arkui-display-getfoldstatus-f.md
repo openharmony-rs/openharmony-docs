@@ -14,11 +14,9 @@ function getFoldStatus(): FoldStatus
 
 获取可折叠设备当前的折叠状态。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-display-function getFoldStatus(): FoldStatus--><!--Device-display-function getFoldStatus(): FoldStatus-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -40,4 +38,3 @@ function getFoldStatus(): FoldStatus
 let data: display.FoldStatus = display.getFoldStatus();
 console.info(`Succeeded in obtaining fold status. Data: ${data}`);
 ```
-

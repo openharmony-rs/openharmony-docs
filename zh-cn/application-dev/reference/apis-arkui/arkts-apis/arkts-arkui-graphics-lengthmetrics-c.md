@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class LengthMetrics--><!--Device-unnamed-declare class LengthMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## autoRefresh
@@ -22,21 +20,38 @@ autoRefresh?(value: boolean): LengthMetrics
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LengthMetrics-autoRefresh?(value: boolean): LengthMetrics--><!--Device-LengthMetrics-autoRefresh?(value: boolean): LengthMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 使用[resource](#resource)方法构造的LengthMetrics对象是否在系统配置变化时自动刷新值。 <br>true表示主动监听系统配置变化，在变化时值刷新为对应配置下的资源值。 <br>false表示不主动监听系统配置变化。 |
+| value | boolean | 是 | 使用[resource](#resource)方法构造的LengthMetrics对象是否在系统配置变化时自动刷新值。 true表示主动监听系统配置变化，在变化时值刷新为对应配置下的资源值。 false表示不主动监听系统配置变化。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md) | 返回设置自动刷新属性后的LengthMetrics对象。 |
+
+**示例**
+
+```TypeScript
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State lengthMetrics: LengthMetrics = LengthMetrics.resource($r('sys.float.ohos_id_button_min_width')).autoRefresh!(true);
+
+  build() {
+    Column() {
+      Button('Test LengthMetrics')
+        .padding({ top: this.lengthMetrics })
+    }
+  }
+}
+```
 
 ## constructor
 
@@ -52,15 +67,13 @@ LengthMetrics的构造函数。若参数unit不传入值或传入undefined，返
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LengthMetrics-constructor(value: number, unit?:LengthUnit)--><!--Device-LengthMetrics-constructor(value: number, unit?:LengthUnit)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 长度属性的值。 <br>取值范围：(-∞, +∞) |
+| value | number | 是 | 长度属性的值。 取值范围：(-∞, +∞) |
 | unit | [LengthUnit](arkts-arkui-graphics-lengthunit-e.md) | 否 | 长度属性的单位，默认为VP。 |
 
 ## fp
@@ -77,15 +90,13 @@ static fp(value: number): LengthMetrics
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LengthMetrics-static fp(value: number): LengthMetrics--><!--Device-LengthMetrics-static fp(value: number): LengthMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 长度属性的值。 <br>取值范围：(-∞, +∞) |
+| value | number | 是 | 长度属性的值。 取值范围：(-∞, +∞) |
 
 **返回值：**
 
@@ -107,15 +118,13 @@ static lpx(value: number): LengthMetrics
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LengthMetrics-static lpx(value: number): LengthMetrics--><!--Device-LengthMetrics-static lpx(value: number): LengthMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 长度属性的值。 <br>取值范围：(-∞, +∞) |
+| value | number | 是 | 长度属性的值。 取值范围：(-∞, +∞) |
 
 **返回值：**
 
@@ -137,15 +146,13 @@ static percent(value: number): LengthMetrics
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LengthMetrics-static percent(value: number): LengthMetrics--><!--Device-LengthMetrics-static percent(value: number): LengthMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 长度属性的值。 <br>取值范围：[0, 1] <br>超出范围时按边界值处理。 |
+| value | number | 是 | 长度属性的值。 取值范围：[0, 1] 超出范围时按边界值处理。 |
 
 **返回值：**
 
@@ -167,15 +174,13 @@ static px(value: number): LengthMetrics
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LengthMetrics-static px(value: number): LengthMetrics--><!--Device-LengthMetrics-static px(value: number): LengthMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 长度属性的值。 <br>取值范围：(-∞, +∞) |
+| value | number | 是 | 长度属性的值。 取值范围：(-∞, +∞) |
 
 **返回值：**
 
@@ -196,8 +201,6 @@ static resource(value: Resource): LengthMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LengthMetrics-static resource(value: Resource): LengthMetrics--><!--Device-LengthMetrics-static resource(value: Resource): LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -273,15 +276,13 @@ static vp(value: number): LengthMetrics
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LengthMetrics-static vp(value: number): LengthMetrics--><!--Device-LengthMetrics-static vp(value: number): LengthMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 长度属性的值。 <br>取值范围：(-∞, +∞) |
+| value | number | 是 | 长度属性的值。 取值范围：(-∞, +∞) |
 
 **返回值：**
 
@@ -307,8 +308,6 @@ public unit: LengthUnit
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LengthMetrics-public unit: LengthUnit--><!--Device-LengthMetrics-public unit: LengthUnit-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -317,7 +316,7 @@ public unit: LengthUnit
 public value: number
 ```
 
-长度属性的值。 取值范围：(-∞, +∞)。 当unit为PERCENT时，value表示百分比（1表示100%），参考尺寸取决于具体使用场景；其余单位表示对应单位的绝对长度。
+长度属性的值。取值范围：(-∞, +∞)。当unit为PERCENT时，value表示百分比（1表示100%），参考尺寸取决于具体使用场景；其余单位表示对应单位的绝对长度。
 
 **类型：** number
 
@@ -327,7 +326,4 @@ public value: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LengthMetrics-public value: number--><!--Device-LengthMetrics-public value: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

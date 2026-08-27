@@ -1,7 +1,7 @@
 # ListComparatorFn
 
 ```TypeScript
-export type ListComparatorFn<T> = (firstValue: T, secondValue: T) => double
+export type ListComparatorFn<T> = (firstValue: T, secondValue: T) => number
 ```
 
 List中sort方法的回调函数。
@@ -9,8 +9,6 @@ List中sort方法的回调函数。
 **起始版本：** 23
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-unnamed-export type ListComparatorFn<T> = (firstValue: T, secondValue: T) => double--><!--Device-unnamed-export type ListComparatorFn<T> = (firstValue: T, secondValue: T) => double-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -25,5 +23,4 @@ List中sort方法的回调函数。
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 通过回调函数返回的值，List能够根据自定义的比较规则维护元素的顺序。 |
-
+| number | 通过回调函数返回的值，List能够根据自定义的比较规则维护元素的顺序。 |

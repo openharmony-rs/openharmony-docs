@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare enum TextDataDetectorType--><!--Device-unnamed-declare enum TextDataDetectorType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PHONE_NUMBER
@@ -21,8 +19,6 @@ PHONE_NUMBER = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextDataDetectorType-PHONE_NUMBER = 0--><!--Device-TextDataDetectorType-PHONE_NUMBER = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ URL = 1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextDataDetectorType-URL = 1--><!--Device-TextDataDetectorType-URL = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## EMAIL
@@ -57,8 +51,6 @@ EMAIL = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextDataDetectorType-EMAIL = 2--><!--Device-TextDataDetectorType-EMAIL = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,8 +68,6 @@ ADDRESS = 3
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextDataDetectorType-ADDRESS = 3--><!--Device-TextDataDetectorType-ADDRESS = 3-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DATE_TIME
@@ -94,7 +84,4 @@ DATE_TIME = 4
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextDataDetectorType-DATE_TIME = 4--><!--Device-TextDataDetectorType-DATE_TIME = 4-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

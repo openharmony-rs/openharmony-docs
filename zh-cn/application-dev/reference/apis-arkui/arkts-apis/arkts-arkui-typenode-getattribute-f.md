@@ -14,8 +14,6 @@ export function getAttribute(node: FrameNode, nodeType: 'Text'): TextAttribute |
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Text'): TextAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Text'): TextAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -29,7 +27,48 @@ export function getAttribute(node: FrameNode, nodeType: 'Text'): TextAttribute |
 
 | 类型 | 说明 |
 | --- | --- |
-| TextAttribute | Text节点类型的属性，若获取失败，则返回undefined。 |
+| [TextAttribute](../arkts-components/arkts-arkui-text-attribute.md) \| undefined | Text节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext);
+    node.commonAttribute;
+    let col = typeNode.createNode(uiContext, 'Column');
+    col.initialize({ space: 5 });
+    node.appendChild(col);
+    // 创建Text
+    let text = typeNode.createNode(uiContext, 'Text');
+    text.initialize('Hello');
+    // 获取Text的属性
+    typeNode.getAttribute(text, 'Text')?.fontColor(Color.Red)
+    col.appendChild(text);
+    // 创建另一个Text用于对比
+    let text2 = typeNode.createNode(uiContext, 'Text');
+    text2.initialize('world');
+    col.appendChild(text2);
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 5 }) {
+      Text('Text sample');
+      NodeContainer(this.myNodeController);
+    }
+  }
+}
+```
 
 
 ## getAttribute
@@ -46,8 +85,6 @@ export function getAttribute(node: FrameNode, nodeType: 'Column'): ColumnAttribu
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Column'): ColumnAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Column'): ColumnAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -61,7 +98,47 @@ export function getAttribute(node: FrameNode, nodeType: 'Column'): ColumnAttribu
 
 | 类型 | 说明 |
 | --- | --- |
-| ColumnAttribute | Column节点类型的属性，若获取失败，则返回undefined。 |
+| [ColumnAttribute](../arkts-components/arkts-arkui-column-attribute.md) \| undefined | Column节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
+
+class MyNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext);
+    node.commonAttribute;
+    let col = typeNode.createNode(uiContext, 'Column');
+    col.initialize({ space: 5 });
+    node.appendChild(col);
+    // 创建Column
+    let col1 = typeNode.createNode(uiContext, 'Column');
+    col1.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
+    // 获取Column的属性
+    typeNode.getAttribute(col1, 'Column')?.backgroundColor(Color.Blue).width('100%');
+    col.appendChild(col1);
+    // 创建另一个Column用于对比
+    let col2 = typeNode.createNode(uiContext, 'Column');
+    col2.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
+    col.appendChild(col2);
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 5 }) {
+      Text('Column sample');
+      NodeContainer(this.myNodeController);
+    }
+  }
+}
+```
 
 
 ## getAttribute
@@ -78,8 +155,6 @@ export function getAttribute(node: FrameNode, nodeType: 'Row'): RowAttribute | u
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Row'): RowAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Row'): RowAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -93,7 +168,47 @@ export function getAttribute(node: FrameNode, nodeType: 'Row'): RowAttribute | u
 
 | 类型 | 说明 |
 | --- | --- |
-| RowAttribute | Row节点类型的属性，若获取失败，则返回undefined。 |
+| [RowAttribute](../arkts-components/arkts-arkui-row-attribute.md) \| undefined | Row节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
+
+class MyNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext);
+    node.commonAttribute;
+    let col = typeNode.createNode(uiContext, 'Column');
+    col.initialize({ space: 5 });
+    node.appendChild(col);
+    // 创建Row
+    let row1 = typeNode.createNode(uiContext, 'Row');
+    row1.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
+    // 获取Row的属性
+    typeNode.getAttribute(row1, 'Row')?.backgroundColor(Color.Blue).width('100%');
+    col.appendChild(row1);
+    // 创建另一个Row用于对比
+    let row2 = typeNode.createNode(uiContext, 'Row');
+    row2.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
+    col.appendChild(row2);
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 5 }) {
+      Text('Row sample');
+      NodeContainer(this.myNodeController);
+    }
+  }
+}
+```
 
 
 ## getAttribute
@@ -110,8 +225,6 @@ export function getAttribute(node: FrameNode, nodeType: 'Stack'): StackAttribute
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Stack'): StackAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Stack'): StackAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -125,7 +238,47 @@ export function getAttribute(node: FrameNode, nodeType: 'Stack'): StackAttribute
 
 | 类型 | 说明 |
 | --- | --- |
-| StackAttribute | Stack节点类型的属性，若获取失败，则返回undefined。 |
+| [StackAttribute](../arkts-components/arkts-arkui-stack-attribute.md) \| undefined | Stack节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
+
+class MyNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext);
+    node.commonAttribute;
+    let col = typeNode.createNode(uiContext, 'Column');
+    col.initialize({ space: 5 });
+    node.appendChild(col);
+    // 创建Stack
+    let stack1 = typeNode.createNode(uiContext, 'Stack');
+    stack1.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
+    // 获取Stack的属性
+    typeNode.getAttribute(stack1, 'Stack')?.backgroundColor(Color.Blue).width('100%')
+    col.appendChild(stack1);
+    // 创建另一个Stack用于对比
+    let stack2 = typeNode.createNode(uiContext, 'Stack');
+    stack2.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
+    col.appendChild(stack2);
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 5 }) {
+      Text('Row sample');
+      NodeContainer(this.myNodeController);
+    }
+  }
+}
+```
 
 
 ## getAttribute
@@ -142,8 +295,6 @@ export function getAttribute(node: FrameNode, nodeType: 'Flex'): FlexAttribute |
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Flex'): FlexAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Flex'): FlexAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -157,7 +308,47 @@ export function getAttribute(node: FrameNode, nodeType: 'Flex'): FlexAttribute |
 
 | 类型 | 说明 |
 | --- | --- |
-| FlexAttribute | Flex节点类型的属性，若获取失败，则返回undefined。 |
+| [FlexAttribute](../arkts-components/arkts-arkui-flex-attribute.md) \| undefined | Flex节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
+
+class MyNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext);
+    node.commonAttribute;
+    let col = typeNode.createNode(uiContext, 'Column');
+    col.initialize({ space: 5 });
+    node.appendChild(col);
+    // 创建Flex
+    let flex1 = typeNode.createNode(uiContext, 'Flex');
+    flex1.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
+    // 获取Flex的属性
+    typeNode.getAttribute(flex1, 'Flex')?.backgroundColor(Color.Blue).width('100%')
+    col.appendChild(flex1);
+    // 创建另一个Flex用于对比
+    let flex2 = typeNode.createNode(uiContext, 'Flex');
+    flex2.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
+    col.appendChild(flex2);
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 5 }) {
+      Text('Flex sample');
+      NodeContainer(this.myNodeController);
+    }
+  }
+}
+```
 
 
 ## getAttribute
@@ -174,8 +365,6 @@ export function getAttribute(node: FrameNode, nodeType: 'Swiper'): SwiperAttribu
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Swiper'): SwiperAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Swiper'): SwiperAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -189,7 +378,11 @@ export function getAttribute(node: FrameNode, nodeType: 'Swiper'): SwiperAttribu
 
 | 类型 | 说明 |
 | --- | --- |
-| SwiperAttribute | Swiper节点类型的属性，若获取失败，则返回undefined。 |
+| [SwiperAttribute](../arkts-components/arkts-arkui-swiper-attribute.md) \| undefined | Swiper节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+请参考createNode('Swiper')12+示例。
 
 
 ## getAttribute
@@ -206,8 +399,6 @@ export function getAttribute(node: FrameNode, nodeType: 'Progress'): ProgressAtt
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Progress'): ProgressAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Progress'): ProgressAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -221,7 +412,46 @@ export function getAttribute(node: FrameNode, nodeType: 'Progress'): ProgressAtt
 
 | 类型 | 说明 |
 | --- | --- |
-| ProgressAttribute | Progress节点类型的属性，若获取失败，则返回undefined。 |
+| [ProgressAttribute](../arkts-components/arkts-arkui-progress-attribute.md) \| undefined | Progress节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
+
+// 继承NodeController实现自定义Progress控制器
+class MyProgressNodeController extends NodeController {
+  public uiContext: UIContext | null = null;
+  public rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.uiContext = uiContext;
+    this.rootNode = new FrameNode(uiContext);
+    let node = typeNode.createNode(uiContext, 'Progress');
+    node.initialize({
+      value: 15,
+      total: 200,
+      type: ProgressType.ScaleRing
+    }).width(100)
+      .height(100)
+    // 获取Progress的属性
+    typeNode.getAttribute(node, 'Progress');
+    this!.rootNode!.appendChild(node);
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Sample {
+  build() {
+    Column({ space: 10 }) {
+      NodeContainer(new MyProgressNodeController()).margin(5)
+    }.width('100%').height('100%')
+
+  }
+}
+```
 
 
 ## getAttribute
@@ -238,8 +468,6 @@ function getAttribute(node: FrameNode, nodeType: 'Scroll'): ScrollAttribute | un
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-function getAttribute(node: FrameNode, nodeType: 'Scroll'): ScrollAttribute | undefined--><!--Device-typeNode-function getAttribute(node: FrameNode, nodeType: 'Scroll'): ScrollAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -253,7 +481,11 @@ function getAttribute(node: FrameNode, nodeType: 'Scroll'): ScrollAttribute | un
 
 | 类型 | 说明 |
 | --- | --- |
-| ScrollAttribute | Scroll节点类型的属性，若获取失败，则返回undefined。 |
+| [ScrollAttribute](../arkts-components/arkts-arkui-scroll-attribute.md) \| undefined | Scroll节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+完整示例请参考createNode('Scroll')的示例。
 
 
 ## getAttribute
@@ -270,8 +502,6 @@ export function getAttribute(node: FrameNode, nodeType: 'RelativeContainer'): Re
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'RelativeContainer'): RelativeContainerAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'RelativeContainer'): RelativeContainerAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -285,7 +515,47 @@ export function getAttribute(node: FrameNode, nodeType: 'RelativeContainer'): Re
 
 | 类型 | 说明 |
 | --- | --- |
-| RelativeContainerAttribute | RelativeContainer节点类型的属性，若获取失败，则返回undefined。 |
+| [RelativeContainerAttribute](../arkts-components/arkts-arkui-relativecontainer-attribute.md) \| undefined | RelativeContainer节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
+
+class MyNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext);
+    node.commonAttribute;
+    let col = typeNode.createNode(uiContext, 'Column');
+    col.initialize({ space: 5 });
+    node.appendChild(col);
+    // 创建RelativeContainer
+    let relative1 = typeNode.createNode(uiContext, 'RelativeContainer');
+    relative1.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
+    // 获取RelativeContainer的属性
+    typeNode.getAttribute(relative1, 'RelativeContainer')?.backgroundColor(Color.Blue).width('100%')
+    col.appendChild(relative1);
+    // 创建另一个RelativeContainer用于对比
+    let relative2 = typeNode.createNode(uiContext, 'RelativeContainer');
+    relative2.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
+    col.appendChild(relative2);
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 5 }) {
+      Text('RelativeContainer sample');
+      NodeContainer(this.myNodeController);
+    }
+  }
+}
+```
 
 
 ## getAttribute
@@ -302,8 +572,6 @@ export function getAttribute(node: FrameNode, nodeType: 'LoadingProgress'): Load
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'LoadingProgress'): LoadingProgressAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'LoadingProgress'): LoadingProgressAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -317,7 +585,44 @@ export function getAttribute(node: FrameNode, nodeType: 'LoadingProgress'): Load
 
 | 类型 | 说明 |
 | --- | --- |
-| LoadingProgressAttribute | LoadingProgress节点类型的属性，若获取失败，则返回undefined。 |
+| [LoadingProgressAttribute](../arkts-components/arkts-arkui-loadingprogress-attribute.md) \| undefined | LoadingProgress节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
+
+// 继承NodeController实现自定义LoadingProgress控制器
+class MyLoadingProgressNodeController extends NodeController {
+  public uiContext: UIContext | null = null;
+  public rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.uiContext = uiContext;
+    this.rootNode = new FrameNode(uiContext);
+    let node = typeNode.createNode(uiContext, 'LoadingProgress');
+    node.initialize()
+      .width(100)
+      .height(100)
+      .color(Color.Red)
+      .enableLoading(true)
+    // 获取LoadingProgress的属性
+    typeNode.getAttribute(node, 'LoadingProgress');
+    this!.rootNode!.appendChild(node);
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Sample {
+  build() {
+    Column({ space: 10 }) {
+      NodeContainer(new MyLoadingProgressNodeController()).margin(5)
+    }.width('100%').height('100%')
+  }
+}
+```
 
 
 ## getAttribute
@@ -334,8 +639,6 @@ export function getAttribute(node: FrameNode, nodeType: 'Image'): ImageAttribute
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Image'): ImageAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Image'): ImageAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -349,7 +652,53 @@ export function getAttribute(node: FrameNode, nodeType: 'Image'): ImageAttribute
 
 | 类型 | 说明 |
 | --- | --- |
-| ImageAttribute | Image节点类型的属性，若获取失败，则返回undefined。 |
+| [ImageAttribute](../arkts-components/arkts-arkui-image-attribute.md) \| undefined | Image节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
+
+// 继承NodeController实现自定义Image控制器
+class MyImageController extends NodeController {
+  public uiContext: UIContext | null = null;
+  public rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.uiContext = uiContext;
+    this.rootNode = new FrameNode(uiContext);
+    let imageNode = typeNode.createNode(uiContext, 'Image');
+    imageNode
+      // $r('app.media.img')需要替换为开发者所需的图像资源文件
+      .initialize($r('app.media.img'))
+      .width(100)
+      .height(100)
+      .fillColor(Color.Red)
+      .objectFit(ImageFit.Contain)
+      .renderMode(ImageRenderMode.Template)
+      .fitOriginalSize(true)
+      .matchTextDirection(true)
+      .objectRepeat(ImageRepeat.X)
+      .autoResize(true)
+    // 获取Image的属性
+    typeNode.getAttribute(imageNode, 'Image');
+    this!.rootNode!.appendChild(imageNode);
+    return this.rootNode;
+
+  }
+}
+
+@Entry
+@Component
+struct Sample {
+  build() {
+    Column({ space: 10 }) {
+      NodeContainer(new MyImageController()).margin(5)
+    }.width('100%').height('100%')
+
+  }
+}
+```
 
 
 ## getAttribute
@@ -366,8 +715,6 @@ export function getAttribute(node: FrameNode, nodeType: 'List'): ListAttribute |
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'List'): ListAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'List'): ListAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -381,7 +728,11 @@ export function getAttribute(node: FrameNode, nodeType: 'List'): ListAttribute |
 
 | 类型 | 说明 |
 | --- | --- |
-| ListAttribute | List节点类型的属性，若获取失败，则返回undefined。 |
+| [ListAttribute](../arkts-components/arkts-arkui-list-attribute.md) \| undefined | List节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+完整示例请参考createNode('List')的示例。
 
 
 ## getAttribute
@@ -398,8 +749,6 @@ export function getAttribute(node: FrameNode, nodeType: 'ListItem'): ListItemAtt
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'ListItem'): ListItemAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'ListItem'): ListItemAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -413,7 +762,11 @@ export function getAttribute(node: FrameNode, nodeType: 'ListItem'): ListItemAtt
 
 | 类型 | 说明 |
 | --- | --- |
-| ListItemAttribute | ListItem节点类型的属性，若获取失败，则返回undefined。 |
+| [ListItemAttribute](../arkts-components/arkts-arkui-listitem-attribute.md) \| undefined | ListItem节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+完整示例请参考createNode('List')的示例。
 
 
 ## getAttribute
@@ -430,8 +783,6 @@ export function getAttribute(node: FrameNode, nodeType: 'TextInput'): TextInputA
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'TextInput'): TextInputAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'TextInput'): TextInputAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -445,7 +796,44 @@ export function getAttribute(node: FrameNode, nodeType: 'TextInput'): TextInputA
 
 | 类型 | 说明 |
 | --- | --- |
-| TextInputAttribute | TextInput节点类型的属性，若获取失败，则返回undefined。 |
+| [TextInputAttribute](../arkts-components/arkts-arkui-textinput-attribute.md) \| undefined | TextInput节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext);
+    node.commonAttribute;
+    let col = typeNode.createNode(uiContext, 'Column');
+    col.initialize({ space: 5 });
+    node.appendChild(col);
+    // 创建TextInput
+    let textInput = typeNode.createNode(uiContext, 'TextInput');
+    textInput.initialize({ placeholder: 'TextInput placeholderColor' });
+    // 获取TextInput的属性
+    typeNode.getAttribute(textInput, 'TextInput')?.placeholderColor(Color.Red);
+    col.appendChild(textInput);
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 5 }) {
+      Text('TextInput getAttribute sample');
+      NodeContainer(this.myNodeController);
+    }
+  }
+}
+```
 
 
 ## getAttribute
@@ -462,8 +850,6 @@ export function getAttribute(node: FrameNode, nodeType: 'Button'): ButtonAttribu
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Button'): ButtonAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Button'): ButtonAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -477,7 +863,50 @@ export function getAttribute(node: FrameNode, nodeType: 'Button'): ButtonAttribu
 
 | 类型 | 说明 |
 | --- | --- |
-| ButtonAttribute | Button节点类型的属性，若获取失败，则返回undefined。 |
+| [ButtonAttribute](../arkts-components/arkts-arkui-button-attribute.md) \| undefined | Button节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+
+// 继承NodeController实现自定义Button控制器
+class MyButtonController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext)
+    node.commonAttribute
+    let col = typeNode.createNode(uiContext, 'Column')
+    col.initialize({ space: 5 })
+      .width('100%')
+      .height('100%')
+    node.appendChild(col)
+    let button = typeNode.createNode(uiContext, 'Button')
+    button.initialize('This is Button')
+      .onClick(() => {
+        uiContext.getPromptAction().showToast({ message: 'Button clicked' })
+      })
+    // 获取Button属性
+    typeNode.getAttribute(button, 'Button')?.buttonStyle(ButtonStyleMode.TEXTUAL);
+    col.appendChild(button)
+
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private myButtonController: MyButtonController = new MyButtonController();
+
+  build() {
+    Column({ space: 5 }) {
+      Text('ButtonSample')
+      NodeContainer(this.myButtonController);
+
+    }.width('100%')
+  }
+}
+```
 
 
 ## getAttribute
@@ -494,8 +923,6 @@ export function getAttribute(node: FrameNode, nodeType: 'ListItemGroup'): ListIt
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'ListItemGroup'): ListItemGroupAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'ListItemGroup'): ListItemGroupAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -509,7 +936,13 @@ export function getAttribute(node: FrameNode, nodeType: 'ListItemGroup'): ListIt
 
 | 类型 | 说明 |
 | --- | --- |
-| ListItemGroupAttribute | ListItemGroup节点类型的属性，若获取失败，则返回undefined。 |
+| [ListItemGroupAttribute](../arkts-components/arkts-arkui-listitemgroup-attribute.md) \| undefined | ListItemGroup节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+typeNode.getAttribute(node, 'ListItemGroup');
+```
 
 
 ## getAttribute
@@ -526,8 +959,6 @@ export function getAttribute(node: FrameNode, nodeType: 'WaterFlow'): WaterFlowA
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'WaterFlow'): WaterFlowAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'WaterFlow'): WaterFlowAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -541,7 +972,11 @@ export function getAttribute(node: FrameNode, nodeType: 'WaterFlow'): WaterFlowA
 
 | 类型 | 说明 |
 | --- | --- |
-| WaterFlowAttribute | WaterFlow节点类型的属性，若获取失败，则返回undefined。 |
+| [WaterFlowAttribute](../arkts-components/arkts-arkui-waterflow-attribute.md) \| undefined | WaterFlow节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+完整示例请参考createNode('WaterFlow')的示例。
 
 
 ## getAttribute
@@ -558,8 +993,6 @@ export function getAttribute(node: FrameNode, nodeType: 'FlowItem'): FlowItemAtt
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'FlowItem'): FlowItemAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'FlowItem'): FlowItemAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -573,7 +1006,11 @@ export function getAttribute(node: FrameNode, nodeType: 'FlowItem'): FlowItemAtt
 
 | 类型 | 说明 |
 | --- | --- |
-| FlowItemAttribute | FlowItem节点类型的属性，若获取失败，则返回undefined。 |
+| [FlowItemAttribute](../arkts-components/arkts-arkui-flowitem-attribute.md) \| undefined | FlowItem节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+完整示例请参考createNode('WaterFlow')的示例。
 
 
 ## getAttribute
@@ -590,8 +1027,6 @@ export function getAttribute(node: FrameNode, nodeType: 'XComponent'): XComponen
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'XComponent'): XComponentAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'XComponent'): XComponentAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -605,7 +1040,13 @@ export function getAttribute(node: FrameNode, nodeType: 'XComponent'): XComponen
 
 | 类型 | 说明 |
 | --- | --- |
-| XComponentAttribute | XComponent节点类型的属性，若获取失败，则返回undefined。 |
+| [XComponentAttribute](../arkts-components/arkts-arkui-xcomponent-attribute.md) \| undefined | XComponent节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+typeNode.getAttribute(node, 'XComponent');
+```
 
 
 ## getAttribute
@@ -622,8 +1063,6 @@ export function getAttribute(node: FrameNode, nodeType: 'Checkbox'): CheckboxAtt
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Checkbox'): CheckboxAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Checkbox'): CheckboxAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -637,7 +1076,52 @@ export function getAttribute(node: FrameNode, nodeType: 'Checkbox'): CheckboxAtt
 
 | 类型 | 说明 |
 | --- | --- |
-| CheckboxAttribute | Checkbox节点类型的属性，若获取失败，则返回undefined。 |
+| [CheckboxAttribute](../arkts-components/arkts-arkui-checkbox-attribute.md) \| undefined | Checkbox节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+
+// 继承NodeController实现自定义Checkbox控制器
+class MyCheckboxController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext)
+    node.commonAttribute
+    let col = typeNode.createNode(uiContext, 'Column')
+    col.initialize({ space: 5 })
+      .width('100%')
+      .height('100%')
+    node.appendChild(col)
+    // 创建Checkbox
+    let checkbox = typeNode.createNode(uiContext, 'Checkbox')
+    checkbox.initialize({ name: 'checkbox1', group: 'checkboxGroup1' })
+
+    // 创建另一个Checkbox
+    let checkbox1 = typeNode.createNode(uiContext, 'Checkbox')
+    checkbox1.initialize({ name: 'checkbox2', group: 'checkboxGroup1' })
+    // 给另一个Checkbox设置形状属性
+    typeNode.getAttribute(checkbox1,'Checkbox')?.shape(CheckBoxShape.ROUNDED_SQUARE)
+    // 将两个checkbox添加至col进行比较
+    col.appendChild(checkbox)
+    col.appendChild(checkbox1)
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private myCheckboxController: MyCheckboxController = new MyCheckboxController();
+
+  build() {
+    Column({ space: 5 }) {
+      Text('CheckboxSample')
+      NodeContainer(this.myCheckboxController);
+    }.width('100%')
+  }
+}
+```
 
 
 ## getAttribute
@@ -654,8 +1138,6 @@ export function getAttribute(node: FrameNode, nodeType: 'Radio'): RadioAttribute
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Radio'): RadioAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Radio'): RadioAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -669,7 +1151,51 @@ export function getAttribute(node: FrameNode, nodeType: 'Radio'): RadioAttribute
 
 | 类型 | 说明 |
 | --- | --- |
-| RadioAttribute | Radio节点类型的属性，若获取失败，则返回undefined。 |
+| [RadioAttribute](../arkts-components/arkts-arkui-radio-attribute.md) \| undefined | Radio节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+
+// 继承NodeController实现自定义Radio控制器
+class MyRadioController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext)
+    node.commonAttribute
+    let col = typeNode.createNode(uiContext, 'Column')
+    col.initialize({ space: 5 })
+      .width('100%')
+      .height('100%')
+    node.appendChild(col)
+    // 创建radio
+    let radio1 = typeNode.createNode(uiContext, 'Radio')
+    radio1.initialize({ value: 'radio1', group: 'radioGroup' })
+    typeNode.getAttribute(radio1,'Radio')?.checked(true)
+    // 创建另一个radio用于对比
+    let radio2 = typeNode.createNode(uiContext, 'Radio')
+    radio2.initialize({ value: 'radio2', group: 'radioGroup' })
+
+
+    col.appendChild(radio1)
+    col.appendChild(radio2)
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private myRadioController: MyRadioController = new MyRadioController();
+
+  build() {
+    Column({ space: 5 }) {
+      Text('RadioSample')
+      NodeContainer(this.myRadioController);
+    }.width('100%')
+  }
+}
+```
 
 
 ## getAttribute
@@ -686,8 +1212,6 @@ export function getAttribute(node: FrameNode, nodeType: 'Slider'): SliderAttribu
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Slider'): SliderAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Slider'): SliderAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -701,7 +1225,46 @@ export function getAttribute(node: FrameNode, nodeType: 'Slider'): SliderAttribu
 
 | 类型 | 说明 |
 | --- | --- |
-| SliderAttribute | Slider节点类型的属性，若获取失败，则返回undefined。 |
+| [SliderAttribute](../arkts-components/arkts-arkui-slider-attribute.md) \| undefined | Slider节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+
+// 继承NodeController实现自定义Slider控制器
+class MySliderController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext)
+    node.commonAttribute
+    let col = typeNode.createNode(uiContext, 'Column')
+    col.initialize({ space: 5 })
+      .width('100%')
+      .height('100%')
+    node.appendChild(col)
+    // 创建Slider
+    let slider = typeNode.createNode(uiContext, 'Slider')
+    slider.initialize({value:50})
+    typeNode.getAttribute(slider,'Slider')?.selectedColor(Color.Pink)
+    col.appendChild(slider)
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private mySliderController: MySliderController = new MySliderController();
+
+  build() {
+    Column({ space: 5 }) {
+      Text('SliderSample')
+      NodeContainer(this.mySliderController);
+
+    }.width('100%')
+  }
+}
+```
 
 
 ## getAttribute
@@ -718,8 +1281,6 @@ export function getAttribute(node: FrameNode, nodeType: 'Toggle'): ToggleAttribu
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Toggle'): ToggleAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Toggle'): ToggleAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -733,7 +1294,46 @@ export function getAttribute(node: FrameNode, nodeType: 'Toggle'): ToggleAttribu
 
 | 类型 | 说明 |
 | --- | --- |
-| ToggleAttribute | Toggle节点类型的属性，若获取失败，则返回undefined。 |
+| [ToggleAttribute](../arkts-components/arkts-arkui-toggle-attribute.md) \| undefined | Toggle节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+
+// 继承NodeController实现自定义Toggle控制器
+class MyToggleController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext)
+    node.commonAttribute
+    let col = typeNode.createNode(uiContext, 'Column')
+    col.initialize({ space: 5 })
+      .width('100%')
+      .height('100%')
+    node.appendChild(col)
+    // 创建Toggle
+    let toggleSwitch = typeNode.createNode(uiContext, 'Toggle')
+    toggleSwitch.initialize({ type: ToggleType.Switch })
+    typeNode.getAttribute(toggleSwitch,'Toggle')?.selectedColor(Color.Orange)
+    col.appendChild(toggleSwitch)
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private myToggleController: MyToggleController = new MyToggleController();
+
+  build() {
+    Column({ space: 5 }) {
+      Text('ToggleSample')
+      NodeContainer(this.myToggleController);
+
+    }.width('100%')
+  }
+}
+```
 
 
 ## getAttribute
@@ -750,8 +1350,6 @@ export function getAttribute(node: FrameNode, nodeType: 'TextArea'): TextAreaAtt
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'TextArea'): TextAreaAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'TextArea'): TextAreaAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -765,7 +1363,44 @@ export function getAttribute(node: FrameNode, nodeType: 'TextArea'): TextAreaAtt
 
 | 类型 | 说明 |
 | --- | --- |
-| TextAreaAttribute | TextArea节点类型的属性，若获取失败，则返回undefined。 |
+| [TextAreaAttribute](../arkts-components/arkts-arkui-textarea-attribute.md) \| undefined | TextArea节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+```TypeScript
+import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext);
+    node.commonAttribute;
+    let col = typeNode.createNode(uiContext, 'Column');
+    col.initialize({ space: 5 });
+    node.appendChild(col);
+    // 创建TextArea
+    let textArea = typeNode.createNode(uiContext, 'TextArea');
+    textArea.initialize({ placeholder: 'TextArea placeholderColor' });
+    col.appendChild(textArea);
+    // 获取TextArea节点的属性
+    typeNode.getAttribute(textArea, 'TextArea')?.placeholderColor(Color.Red);
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 5 }) {
+      Text('TextArea getAttribute sample');
+      NodeContainer(this.myNodeController);
+    }
+  }
+}
+```
 
 
 ## getAttribute
@@ -782,8 +1417,6 @@ export function getAttribute(node: FrameNode, nodeType: 'Grid'): GridAttribute |
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Grid'): GridAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'Grid'): GridAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -797,7 +1430,11 @@ export function getAttribute(node: FrameNode, nodeType: 'Grid'): GridAttribute |
 
 | 类型 | 说明 |
 | --- | --- |
-| GridAttribute | Grid节点类型的属性，若获取失败，则返回undefined。 |
+| [GridAttribute](../arkts-components/arkts-arkui-grid-attribute.md) \| undefined | Grid节点类型的属性，若获取失败，则返回undefined。 |
+
+**示例**
+
+完整示例请参考createNode('Grid')的示例。
 
 
 ## getAttribute
@@ -814,8 +1451,6 @@ export function getAttribute(node: FrameNode, nodeType: 'GridItem'): GridItemAtt
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'GridItem'): GridItemAttribute | undefined--><!--Device-typeNode-export function getAttribute(node: FrameNode, nodeType: 'GridItem'): GridItemAttribute | undefined-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -829,5 +1464,8 @@ export function getAttribute(node: FrameNode, nodeType: 'GridItem'): GridItemAtt
 
 | 类型 | 说明 |
 | --- | --- |
-| GridItemAttribute | GridItem节点类型的属性，若获取失败，则返回undefined。 |
+| [GridItemAttribute](../arkts-components/arkts-arkui-griditem-attribute.md) \| undefined | GridItem节点类型的属性，若获取失败，则返回undefined。 |
 
+**示例**
+
+完整示例请参考createNode('Grid')的示例。

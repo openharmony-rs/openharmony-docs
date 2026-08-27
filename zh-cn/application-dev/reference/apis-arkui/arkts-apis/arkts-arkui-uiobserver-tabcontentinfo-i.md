@@ -4,8 +4,6 @@ TabContent页面的切换信息。
 
 **起始版本：** 12
 
-<!--Device-uiObserver-export interface TabContentInfo--><!--Device-uiObserver-export interface TabContentInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,8 +28,6 @@ Tabs组件的id。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TabContentInfo-id: string--><!--Device-TabContentInfo-id: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## index
@@ -50,8 +46,6 @@ TabContent组件的下标索引。索引从0开始。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TabContentInfo-index: number--><!--Device-TabContentInfo-index: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## lastIndex
@@ -60,7 +54,7 @@ TabContent组件的下标索引。索引从0开始。
 lastIndex?: number
 ```
 
-最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在 [on('tabChange')](arkts-arkui-arkui-uicontext-uiobserver-c.md#onnavdestinationupdate)的回调函数中存在。
+最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在 on('tabChange')的回调函数中存在。
 
 **类型：** number
 
@@ -69,8 +63,6 @@ lastIndex?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TabContentInfo-lastIndex?: number--><!--Device-TabContentInfo-lastIndex?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,8 +82,6 @@ TabContent组件的状态。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TabContentInfo-state: TabContentState--><!--Device-TabContentInfo-state: TabContentState-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## tabContentId
@@ -109,8 +99,6 @@ TabContent id.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TabContentInfo-tabContentId: string--><!--Device-TabContentInfo-tabContentId: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,8 +118,6 @@ TabContent uniqueId.
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TabContentInfo-tabContentUniqueId: number--><!--Device-TabContentInfo-tabContentUniqueId: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## uniqueId
@@ -150,7 +136,4 @@ Tabs组件的uniqueId。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TabContentInfo-uniqueId: number--><!--Device-TabContentInfo-uniqueId: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

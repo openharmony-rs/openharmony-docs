@@ -12,12 +12,9 @@ declare type DialogOptionsBorderStyle = BorderStyle | EdgeStyles
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-promptAction-declare type DialogOptionsBorderStyle = BorderStyle | EdgeStyles--><!--Device-promptAction-declare type DialogOptionsBorderStyle = BorderStyle | EdgeStyles-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | --- | --- |
-| BorderStyle |  |
+| [BorderStyle](arkts-arkui-borderstyle-e.md) |  |
 | EdgeStyles |  |
-

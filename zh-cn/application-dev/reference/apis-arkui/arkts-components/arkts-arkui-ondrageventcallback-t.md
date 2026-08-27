@@ -12,8 +12,6 @@ declare type OnDragEventCallback = (event: DragEvent, extraParams?: string) => v
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type OnDragEventCallback = (event: DragEvent, extraParams?: string) => void--><!--Device-unnamed-declare type OnDragEventCallback = (event: DragEvent, extraParams?: string) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -22,4 +20,3 @@ declare type OnDragEventCallback = (event: DragEvent, extraParams?: string) => v
 | --- | --- | --- | --- |
 | event | [DragEvent](arkts-arkui-dragevent-i.md) | 是 | event为拖拽事件信息，包括拖拽点坐标。 |
 | extraParams | string | 否 | extraParams为拖拽事件额外信息，需要解析为JSON格式。 |
-

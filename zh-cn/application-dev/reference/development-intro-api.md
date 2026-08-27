@@ -20,28 +20,28 @@ API参考采用两种方式标记组件或接口开始支持的版本号：
 
 ## 系统能力说明
 
-系统能力（SystemCapability，简称SysCap），指操作系统中每一个相对独立的特性。不同的设备对应不同的系统能力集，每个系统能力对应多个接口。开发者可根据系统能力来判断是否可以使用某接口。具体可参考[系统能力SystemCapability使用指南](syscap.md)。
+系统能力（SystemCapability，简称SysCap），指操作系统中每一个相对独立的特性。不同的设备对应不同的系统能力集，每个系统能力对应多个接口。开发者可根据系统能力来判断是否可以使用某接口。具体可参考系统能力SystemCapability使用指南。
 
 文档在每一个接口描述中说明了接口的系统能力，如：**系统能力**：SystemCapability.xxx.xxx
 
 <!--Del-->
-- 通过[系统能力SystemCapability列表](phone-syscap-list.md)，可以速查具体能力集支持的设备；<!--DelEnd-->
-- 系统提供了canIUse接口，可[使用canIUse判断SysCap是否可调用](./syscap.md#使用caniuse判断syscap是否可调用)；
-- 相同的系统能力，在不同的设备下，也会有能力的差异。开发者可以进行[多设备应用开发场景下的适配开发](./syscap.md#多设备应用开发场景下的适配开发)。
+- 通过系统能力SystemCapability列表，可以速查具体能力集支持的设备；<!--DelEnd-->
+- 系统提供了canIUse接口，可使用canIUse判断SysCap是否可调用；
+- 相同的系统能力，在不同的设备下，也会有能力的差异。开发者可以进行多设备应用开发场景下的适配开发。
 
 <!--RP1--><!--RP1End-->
 
 ## 服务卡片说明
 
-将应用/元服务的重要信息或操作前置到[服务卡片](../form/formkit-overview.md)（简称“卡片”），可达到服务直达、减少跳转层级的体验效果。
+将应用/元服务的重要信息或操作前置到服务卡片（简称“卡片”），可达到服务直达、减少跳转层级的体验效果。
 - 对于支持在ArkTS卡片UI界面中使用的接口，将会添加“**卡片能力**”的标记，如：从API version 12开始，该接口支持在ArkTS卡片UI界面中使用。
 - 如果接口不支持在ArkTS卡片UI界面中使用，则不做特殊说明。
 
 ## 权限说明
 
-默认情况下，应用只能访问有限的系统资源。但某些情况下，应用为了扩展功能的诉求，需要访问额外的系统或其他应用的数据（包括用户个人数据）、功能。具体可参考[访问控制开发概述](../security/AccessToken/app-permission-mgmt-overview.md)。
+默认情况下，应用只能访问有限的系统资源。但某些情况下，应用为了扩展功能的诉求，需要访问额外的系统或其他应用的数据（包括用户个人数据）、功能。具体可参考访问控制开发概述。
 
-当调用接口访问这些资源时，需要申请对应的权限。申请方式可参考[访问控制开发指导](../security/AccessToken/determine-application-mode.md)。
+当调用接口访问这些资源时，需要申请对应的权限。申请方式可参考访问控制开发指导。
 
 - 如果应用需要具备某个权限才能调用该接口，会在具体的接口描述中说明：**需要权限**：ohos.permission.xxxx
 - 如果应用不需要任何权限即可调用该接口，则不做特殊说明。
@@ -84,8 +84,8 @@ OpenHarmony中提供的接口，部分是仅供OEM厂商使用的system api，�
 
 随DevEco下载的SDK为public-SDK，不包括系统接口。如需使用系统接口，需要：
 
-- 参考[full-SDK替换指南](../faqs/full-sdk-switch-guide.md)将SDK替换为full-SDK。
-- 参考[HarmonyAppProvision配置文件的说明](../security/app-provision-structure.md)修改HarmonyAppProvision配置文件中的app-feature字段为hos_system_app（系统应用）。
+- 参考full-SDK替换指南将SDK替换为full-SDK。
+- 参考HarmonyAppProvision配置文件的说明修改HarmonyAppProvision配置文件中的app-feature字段为hos_system_app（系统应用）。
 <!--DelEnd-->
 
 ## 废弃接口说明

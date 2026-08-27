@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-declare interface EdgeLightParams--><!--Device-unnamed-declare interface EdgeLightParams-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -21,17 +19,15 @@
 color?: ResourceColor
 ```
 
-边缘流光颜色。 默认值：#FFFFFF，显示为白色。
+边缘流光颜色。默认值：#FFFFFF，显示为白色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **默认值：** #FFFFFF
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-EdgeLightParams-color?: ResourceColor--><!--Device-EdgeLightParams-color?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,18 +36,17 @@ color?: ResourceColor
 ## intensity
 
 ```TypeScript
-intensity?: double
+intensity?: number
 ```
 
-边缘流光效果的发光强度。 取值范围：[0, 1] 默认值：1 **说明：** 值为0时，流光效果完全不可见。 值为1时，流光效果达到最大亮度。 设置大于1的值时，按值为1处理。 设置小于0的值时，按值为0处理。
+边缘流光效果的发光强度。取值范围：[0, 1]默认值：1  
+**说明：**值为0时，流光效果完全不可见。值为1时，流光效果达到最大亮度。设置大于1的值时，按值为1处理。设置小于0的值时，按值为0处理。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-EdgeLightParams-intensity?: double--><!--Device-EdgeLightParams-intensity?: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,15 +58,14 @@ intensity?: double
 length: Length
 ```
 
-沿流动方向的边缘流光的投影长度（不支持百分比）。 取值范围：[0, +∞) 单位：vp **说明：** 设置小于0的值时，按值为0处理。
+沿流动方向的边缘流光的投影长度（不支持百分比）。取值范围：[0, +∞)单位：vp  
+**说明：**设置小于0的值时，按值为0处理。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-EdgeLightParams-length: Length--><!--Device-EdgeLightParams-length: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,13 +79,11 @@ position: EdgeLightPosition
 
 边缘流光位置。
 
-**类型：** EdgeLightPosition
+**类型：** [EdgeLightPosition](../arkts-apis/arkts-arkui-edgelightposition-e-sys.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-EdgeLightParams-position: EdgeLightPosition--><!--Device-EdgeLightParams-position: EdgeLightPosition-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,9 +95,10 @@ position: EdgeLightPosition
 thickness?: Length
 ```
 
-边缘流光线条粗细（不支持百分比）。 取值范围：[0, +∞) 单位：vp 默认值：0 **说明：** 设置小于0的值时，按值为0处理。
+边缘流光线条粗细（不支持百分比）。取值范围：[0, +∞)单位：vp默认值：0  
+**说明：**设置小于0的值时，按值为0处理。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **默认值：** 0vp
 
@@ -113,9 +106,6 @@ thickness?: Length
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EdgeLightParams-thickness?: Length--><!--Device-EdgeLightParams-thickness?: Length-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

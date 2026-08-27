@@ -48,4 +48,3 @@ import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, E
 | --- | --- |
 | [ErrorCallback](arkts-arkts-errorcallback-t.md) | 表示异常回调类型。 |
 | [MessageType](arkts-arkts-messagetype-t.md) | 表示消息类型。预留数据类型，暂未实现。 |
-

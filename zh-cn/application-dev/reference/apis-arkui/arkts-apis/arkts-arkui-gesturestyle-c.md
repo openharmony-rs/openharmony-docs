@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class GestureStyle--><!--Device-unnamed-declare class GestureStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,13 +25,10 @@ constructor(value?: GestureStyleInterface)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GestureStyle-constructor(value?: GestureStyleInterface)--><!--Device-GestureStyle-constructor(value?: GestureStyleInterface)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [GestureStyleInterface](arkts-arkui-gesturestyleinterface-i.md) | 否 | 事件手势设置项。 <br>默认值：不传入时不绑定任何手势事件。 |
-
+| value | [GestureStyleInterface](arkts-arkui-gesturestyleinterface-i.md) | 否 | 事件手势设置项。 默认值：不传入时不绑定任何手势事件。 |

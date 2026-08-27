@@ -12,9 +12,6 @@ Select类型的FrameNode节点类型。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-typeNode-type Select = TypedFrameNode<SelectInterface, SelectAttribute>--><!--Device-typeNode-type Select = TypedFrameNode<SelectInterface, SelectAttribute>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** TypedFrameNode<SelectInterface, SelectAttribute>
-
+**属性类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;SelectInterface, [SelectAttribute](../arkts-components/arkts-arkui-select-attribute.md)&gt;

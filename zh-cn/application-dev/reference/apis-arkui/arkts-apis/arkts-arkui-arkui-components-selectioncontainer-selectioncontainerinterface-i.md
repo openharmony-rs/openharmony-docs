@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export interface SelectionContainerInterface--><!--Device-unnamed-export interface SelectionContainerInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -14,7 +12,7 @@
 import { OnMenuItemClickWithTextCallback, SelectionContainer, SelectionContainerAttribute, SelectionContainerEditMenuOptions, SelectionContainerInstance, SelectionContainerMenuOptions, SelectionContainerTextJoinStyle, SelectionContainerOptions, SelectionContainerController } from '@kit.ArkUI';
 ```
 
-## constructor
+## [[Call]]
 
 ```TypeScript
 (value?: SelectionContainerOptions): SelectionContainerAttribute
@@ -27,8 +25,6 @@ import { OnMenuItemClickWithTextCallback, SelectionContainer, SelectionContainer
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SelectionContainerInterface-(value?: SelectionContainerOptions): SelectionContainerAttribute--><!--Device-SelectionContainerInterface-(value?: SelectionContainerOptions): SelectionContainerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,4 +39,3 @@ import { OnMenuItemClickWithTextCallback, SelectionContainer, SelectionContainer
 | 类型 | 说明 |
 | --- | --- |
 | [SelectionContainerAttribute](arkts-arkui-arkui-components-selectioncontainer-selectioncontainerattribute-c.md) |  |
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare enum SafeAreaType--><!--Device-unnamed-declare enum SafeAreaType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SYSTEM
@@ -21,8 +19,6 @@ SYSTEM = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SafeAreaType-SYSTEM = 0--><!--Device-SafeAreaType-SYSTEM = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ CUTOUT = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SafeAreaType-CUTOUT = 1--><!--Device-SafeAreaType-CUTOUT = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## KEYBOARD
@@ -58,7 +52,4 @@ KEYBOARD = 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SafeAreaType-KEYBOARD = 2--><!--Device-SafeAreaType-KEYBOARD = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

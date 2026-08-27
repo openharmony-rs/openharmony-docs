@@ -6,8 +6,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface GeometryInfo--><!--Device-unnamed-declare interface GeometryInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -23,15 +21,13 @@ borderWidth: EdgeWidth
 
 父组件（自定义组件）边框宽度。 单位为： vp。
 
-**类型：** EdgeWidth
+**类型：** [EdgeWidth](../arkts-apis/arkts-arkui-edgewidth-t.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GeometryInfo-borderWidth: EdgeWidth--><!--Device-GeometryInfo-borderWidth: EdgeWidth-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,15 +39,13 @@ margin: Margin
 
 父组件（自定义组件）margin信息。 单位为： vp。
 
-**类型：** Margin
+**类型：** [Margin](../arkts-apis/arkts-arkui-margin-t.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GeometryInfo-margin: Margin--><!--Device-GeometryInfo-margin: Margin-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,7 +65,4 @@ padding: Padding
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GeometryInfo-padding: Padding--><!--Device-GeometryInfo-padding: Padding-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

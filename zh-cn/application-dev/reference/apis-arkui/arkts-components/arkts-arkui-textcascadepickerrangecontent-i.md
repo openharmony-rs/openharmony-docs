@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare interface TextCascadePickerRangeContent--><!--Device-unnamed-declare interface TextCascadePickerRangeContent-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ children?: TextCascadePickerRangeContent[]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextCascadePickerRangeContent-children?: TextCascadePickerRangeContent[]--><!--Device-TextCascadePickerRangeContent-children?: TextCascadePickerRangeContent[]-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -39,7 +35,9 @@ children?: TextCascadePickerRangeContent[]
 text: string | Resource
 ```
 
-文本信息。 > **说明：**当文本长度大于列宽时，文本被截断。
+文本信息。
+
+> **说明：**当文本长度大于列宽时，文本被截断。
 
 **类型：** string \| Resource
 
@@ -49,7 +47,4 @@ text: string | Resource
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextCascadePickerRangeContent-text: string | Resource--><!--Device-TextCascadePickerRangeContent-text: string | Resource-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 3
 
-<!--Device-unnamed-export default class App--><!--Device-unnamed-export default class App-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 ## 导入模块
@@ -20,13 +18,11 @@ import { App, AppResponse, RequestFullWindowOptions, ScreenOnVisibleOptions } fr
 static getInfo(): AppResponse
 ```
 
-获取当前应用配置文件中声明的信息。在Stage模型下接口返回值为null。 从API version9开始，推荐使用 [bundleManager.getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md) 。
+获取当前应用配置文件中声明的信息。在Stage模型下接口返回值为null。从API version9开始，推荐使用 [bundleManager.getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md) 。
 
 **起始版本：** 3
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-App-static getInfo(): AppResponse--><!--Device-App-static getInfo(): AppResponse-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -165,8 +161,6 @@ Requests the application to run in full window. In some scenarios, such as semi-
 
 **替代接口：** startAbility
 
-<!--Device-App-static requestFullWindow(options?: RequestFullWindowOptions): void--><!--Device-App-static requestFullWindow(options?: RequestFullWindowOptions): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -194,13 +188,11 @@ export default class Req {
 static screenOnVisible(options?: ScreenOnVisibleOptions): void
 ```
 
-定义屏幕唤醒时是否保持应用可见。 该接口从API version 8 开始废弃。
+定义屏幕唤醒时是否保持应用可见。该接口从API version 8 开始废弃。
 
 **起始版本：** 3
 
 **废弃版本：** 8
-
-<!--Device-App-static screenOnVisible(options?: ScreenOnVisibleOptions): void--><!--Device-App-static screenOnVisible(options?: ScreenOnVisibleOptions): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -221,8 +213,6 @@ Set image cache capacity of decoded image count. if not set, the application wil
 **起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-App-static setImageCacheCount(value: number): void--><!--Device-App-static setImageCacheCount(value: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -267,13 +257,11 @@ struct Index {
 static setImageFileCacheSize(value: number): void
 ```
 
-设置图像文件在解码前在磁盘上的缓存大小（字节）。 如果未设置，应用程序将在磁盘上缓存 100MB 的图像文件。
+设置图像文件在解码前在磁盘上的缓存大小（字节）。如果未设置，应用程序将在磁盘上缓存 100MB 的图像文件。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-App-static setImageFileCacheSize(value: number): void--><!--Device-App-static setImageFileCacheSize(value: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -312,8 +300,6 @@ Set image cache capacity of raw image data size in bytes before decode. if not s
 **起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-App-static setImageRawDataCacheSize(value: number): void--><!--Device-App-static setImageRawDataCacheSize(value: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -358,13 +344,11 @@ struct Index {
 static terminate(): void
 ```
 
-退出当前Ability。在Stage模型下接口功能不生效。 从API version 7开始，推荐使用[`@ohos.ability.featureAbility`](../../apis-ability-kit/arkts-apis/arkts-ability-featureability.md)。
+退出当前Ability。在Stage模型下接口功能不生效。从API version 7开始，推荐使用[`@ohos.ability.featureAbility`](../../apis-ability-kit/arkts-apis/arkts-ability-featureability.md)。
 
 **起始版本：** 3
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-App-static terminate(): void--><!--Device-App-static terminate(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -446,4 +430,3 @@ export default {
     }
 }
 ```
-

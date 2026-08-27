@@ -1,0 +1,53 @@
+# $r
+
+## 导入模块
+
+```TypeScript
+```
+
+## $r
+
+```TypeScript
+declare function $r(value: string, ...params: any[]): Resource
+```
+
+global \$r function
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | string | 是 | The value format is 'belonging.type.name'. belonging: group to which the resource belongs, which can be 'sys' or 'app'. type: resource type, which can be 'boolean', 'color', 'float', 'intarray', 'integer', 'pattern', 'plural','strarray', 'string', or 'media'. name: resource name, which is determined during resource definition. |
+| params | any[] | 是 |  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Resource |  |
+
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct Page {
+  build() {
+    Row() {
+      Column() {
+        Text($r('app.string.app_name'))
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```

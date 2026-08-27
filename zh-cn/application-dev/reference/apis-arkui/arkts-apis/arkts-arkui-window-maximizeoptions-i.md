@@ -4,15 +4,11 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-window-interface MaximizeOptions--><!--Device-window-interface MaximizeOptions-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -32,8 +28,6 @@ acrossDisplayPresentation?: AcrossDisplayPresentation
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MaximizeOptions-acrossDisplayPresentation?: AcrossDisplayPresentation--><!--Device-MaximizeOptions-acrossDisplayPresentation?: AcrossDisplayPresentation-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## maximizePresentation
@@ -52,8 +46,6 @@ maximizePresentation?: MaximizePresentation
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MaximizeOptions-maximizePresentation?: MaximizePresentation--><!--Device-MaximizeOptions-maximizePresentation?: MaximizePresentation-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## snapshotAnimationConfig
@@ -70,7 +62,4 @@ snapshotAnimationConfig?: WindowSnapshotAnimationConfig
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MaximizeOptions-snapshotAnimationConfig?: WindowSnapshotAnimationConfig--><!--Device-MaximizeOptions-snapshotAnimationConfig?: WindowSnapshotAnimationConfig-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
-

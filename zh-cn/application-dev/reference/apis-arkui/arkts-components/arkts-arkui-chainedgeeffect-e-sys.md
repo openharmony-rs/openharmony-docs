@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare enum ChainEdgeEffect--><!--Device-unnamed-declare enum ChainEdgeEffect-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -16,13 +14,11 @@
 DEFAULT
 ```
 
-默认效果，列表滚动到边缘以后继续拖动，拖拽方向上的列表项间距缩小， 拖拽反方向上的列表项间距扩大，适用于需要方向性拉伸、回弹反馈的场景。
+默认效果，列表滚动到边缘以后继续拖动，拖拽方向上的列表项间距缩小，拖拽反方向上的列表项间距扩大，适用于需要方向性拉伸、回弹反馈的场景。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ChainEdgeEffect-DEFAULT--><!--Device-ChainEdgeEffect-DEFAULT-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,9 +36,6 @@ STRETCH
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ChainEdgeEffect-STRETCH--><!--Device-ChainEdgeEffect-STRETCH-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

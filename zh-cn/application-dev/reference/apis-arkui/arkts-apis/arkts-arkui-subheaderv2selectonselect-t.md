@@ -12,8 +12,6 @@ export type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-export type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?: string) => void--><!--Device-unnamed-export type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?: string) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -22,4 +20,3 @@ export type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?
 | --- | --- | --- | --- |
 | selectedIndex | number | 是 | 选中的下拉菜单项的索引值，索引从0开始计数。 |
 | selectedContent | string | 否 | 选中的下拉菜单项的文本内容，即用户选择的菜单项显示的文本。 |
-

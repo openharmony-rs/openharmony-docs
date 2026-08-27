@@ -2,9 +2,7 @@
 
 轴对齐边界盒，主要用于判断空间中的物体是否重叠。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface Aabb--><!--Device-unnamed-export interface Aabb-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -18,9 +16,7 @@ aabbMax: Vec3
 
 **类型：** [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md)
 
-**起始版本：** 23
-
-<!--Device-Aabb-aabbMax: Vec3--><!--Device-Aabb-aabbMax: Vec3-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -34,9 +30,6 @@ aabbMin: Vec3
 
 **类型：** [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md)
 
-**起始版本：** 23
-
-<!--Device-Aabb-aabbMin: Vec3--><!--Device-Aabb-aabbMin: Vec3-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

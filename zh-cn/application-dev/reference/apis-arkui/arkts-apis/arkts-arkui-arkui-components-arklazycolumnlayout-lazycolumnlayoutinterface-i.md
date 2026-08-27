@@ -1,10 +1,8 @@
 # LazyColumnLayoutInterface
 
-定义懒加载列布局组件。
+定义懒加载列布局组件。@interface LazyColumnLayoutInterface
 
 **起始版本：** 26.0.0
-
-<!--Device-unnamed-export interface LazyColumnLayoutInterface--><!--Device-unnamed-export interface LazyColumnLayoutInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -14,7 +12,7 @@
 import { LazyColumnLayout, LazyColumnLayoutAttribute } from '@kit.ArkUI';
 ```
 
-## constructor
+## [[Call]]
 
 ```TypeScript
 (): LazyColumnLayoutAttribute
@@ -28,8 +26,6 @@ import { LazyColumnLayout, LazyColumnLayoutAttribute } from '@kit.ArkUI';
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LazyColumnLayoutInterface-(): LazyColumnLayoutAttribute--><!--Device-LazyColumnLayoutInterface-(): LazyColumnLayoutAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -37,4 +33,3 @@ import { LazyColumnLayout, LazyColumnLayoutAttribute } from '@kit.ArkUI';
 | 类型 | 说明 |
 | --- | --- |
 | [LazyColumnLayoutAttribute](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutattribute-c.md) |  |
-

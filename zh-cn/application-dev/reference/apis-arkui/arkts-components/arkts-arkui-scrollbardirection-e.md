@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-<!--Device-unnamed-declare enum ScrollBarDirection--><!--Device-unnamed-declare enum ScrollBarDirection-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Vertical
@@ -19,8 +17,6 @@ Vertical = 0
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ScrollBarDirection-Vertical = 0--><!--Device-ScrollBarDirection-Vertical = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +32,4 @@ Horizontal = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ScrollBarDirection-Horizontal = 1--><!--Device-ScrollBarDirection-Horizontal = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

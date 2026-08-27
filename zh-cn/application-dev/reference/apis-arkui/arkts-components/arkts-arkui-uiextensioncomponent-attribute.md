@@ -6,8 +6,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare class UIExtensionComponentAttribute--><!--Device-unnamed-declare class UIExtensionComponentAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -16,4 +14,3 @@
 
 ```TypeScript
 ```
-

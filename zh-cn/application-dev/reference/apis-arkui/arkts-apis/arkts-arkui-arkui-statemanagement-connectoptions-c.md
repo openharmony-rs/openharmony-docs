@@ -4,8 +4,6 @@ globalConnect参数类型。
 
 **起始版本：** 18
 
-<!--Device-unnamed-export class ConnectOptions--><!--Device-unnamed-export class ConnectOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -13,6 +11,22 @@ globalConnect参数类型。
 ```TypeScript
 import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, MutableBinding, CustomComponentLifecycle, CustomComponentLifecycleObserver, CustomComponentLifecycleState, ComponentInit, ComponentAppear, ComponentBuilt, ComponentReuse, ComponentActive, ComponentInactive, ComponentRecycle, ComponentDisappear, CollectionType, ConnectOptionsCollections, CustomComponentContext, IReusePool, IReusableInfo } from '@kit.ArkUI';
 ```
+
+## defaultCreator
+
+```TypeScript
+defaultCreator?: StorageDefaultCreator<T>
+```
+
+默认数据的构造器，建议传递，如果globalConnect是第一次连接key，不传会报错。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## areaMode
 
@@ -29,28 +43,6 @@ areaMode?: contextConstant.AreaMode
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ConnectOptions-areaMode?: contextConstant.AreaMode--><!--Device-ConnectOptions-areaMode?: contextConstant.AreaMode-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## defaultCreator
-
-```TypeScript
-defaultCreator?: StorageDefaultCreator<T>
-```
-
-默认数据的构造器，建议传递，如果globalConnect是第一次连接key，不传会报错。
-
-**类型：** [StorageDefaultCreator](arkts-arkui-storagedefaultcreator-t.md)&lt;T&gt;
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ConnectOptions-defaultCreator?: StorageDefaultCreator<T>--><!--Device-ConnectOptions-defaultCreator?: StorageDefaultCreator<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,8 +62,6 @@ key?: string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConnectOptions-key?: string--><!--Device-ConnectOptions-key?: string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -90,7 +80,4 @@ type: TypeConstructorWithArgs<T>
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConnectOptions-type: TypeConstructorWithArgs<T>--><!--Device-ConnectOptions-type: TypeConstructorWithArgs<T>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

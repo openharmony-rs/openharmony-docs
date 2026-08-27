@@ -6,8 +6,6 @@
 
 **废弃版本：** 12
 
-<!--Device-unnamed-declare enum PanelType--><!--Device-unnamed-declare enum PanelType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Minibar
@@ -23,8 +21,6 @@ Minibar = 0
 **废弃版本：** 12
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PanelType-Minibar = 0--><!--Device-PanelType-Minibar = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,8 +38,6 @@ Foldable = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PanelType-Foldable = 1--><!--Device-PanelType-Foldable = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Temporary
@@ -59,8 +53,6 @@ Temporary = 2
 **废弃版本：** 12
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PanelType-Temporary = 2--><!--Device-PanelType-Temporary = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,7 +70,4 @@ CUSTOM = 3
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PanelType-CUSTOM = 3--><!--Device-PanelType-CUSTOM = 3-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

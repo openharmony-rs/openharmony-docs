@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-<!--Device-unnamed-declare interface BaseEvent--><!--Device-unnamed-declare interface BaseEvent-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,7 +17,11 @@
 getModifierKeyState?(keys: Array<string>): boolean
 ```
 
-获取功能键按压状态。报错信息请参考以下错误码。支持功能键'Ctrl'\|'Alt'\|'Shift'。 > **说明：** > > 此接口不支持在手写笔场景下使用。
+获取功能键按压状态。报错信息请参考以下错误码。支持功能键'Ctrl'\|'Alt'\|'Shift'。
+
+> **说明：**
+> 
+> 此接口不支持在手写笔场景下使用。
 
 **起始版本：** 12
 
@@ -27,15 +29,13 @@ getModifierKeyState?(keys: Array<string>): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BaseEvent-getModifierKeyState?(keys: Array<string>): boolean--><!--Device-BaseEvent-getModifierKeyState?(keys: Array<string>): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keys | Array&lt;string&gt; | 是 | 功能键列表。 |
+| keys | Array & lt;string & gt; | 是 | 功能键列表。 |
 
 **返回值：**
 
@@ -55,7 +55,8 @@ getModifierKeyState?(keys: Array<string>): boolean
 axisHorizontal?: number
 ```
 
-水平轴值。 默认值：0 **说明：** 当前仅在鼠标滚轮或触控板双指滑动触发的Pan手势，或使用Ctrl+鼠标滚轮触发的Pinch手势中可以获取。 对于Shift+鼠标滚轮触发的横向滚动场景，axisHorizontal为0，滚动值体现在axisVertical中。
+水平轴值。默认值：0  
+**说明：**当前仅在鼠标滚轮或触控板双指滑动触发的Pan手势，或使用Ctrl+鼠标滚轮触发的Pinch手势中可以获取。对于Shift+鼠标滚轮触发的横向滚动场景，axisHorizontal为0，滚动值体现在axisVertical中。
 
 **类型：** number
 
@@ -67,8 +68,6 @@ axisHorizontal?: number
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BaseEvent-axisHorizontal?: number--><!--Device-BaseEvent-axisHorizontal?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## axisPinch
@@ -77,7 +76,8 @@ axisHorizontal?: number
 axisPinch?: number
 ```
 
-双指缩放比例。 默认值：0 **说明：** 仅在触控板上通过双指缩放操作触发的Pinch手势，或在轴事件中，可以获取该值；在其他场景下，获取到的将是默认值。 缩放比例是指在双指缩放事件触发过程中，双指当前距离与最初按下时距离的比值。 取值范围：[0, +∞)
+双指缩放比例。默认值：0  
+**说明：**仅在触控板上通过双指缩放操作触发的Pinch手势，或在轴事件中，可以获取该值；在其他场景下，获取到的将是默认值。缩放比例是指在双指缩放事件触发过程中，双指当前距离与最初按下时距离的比值。取值范围：[0, +∞)
 
 **类型：** number
 
@@ -89,8 +89,6 @@ axisPinch?: number
 
 **卡片能力：** 从API版本21开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BaseEvent-axisPinch?: number--><!--Device-BaseEvent-axisPinch?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## axisVertical
@@ -99,7 +97,8 @@ axisPinch?: number
 axisVertical?: number
 ```
 
-垂直轴值。 默认值：0 **说明：** 当前仅在鼠标滚轮或触控板双指滑动触发的Pan手势，或使用Ctrl+鼠标滚轮触发的Pinch手势中可以获取。 对于Shift+鼠标滚轮触发的横向滚动场景，滚动值体现在axisVertical中。
+垂直轴值。默认值：0  
+**说明：**当前仅在鼠标滚轮或触控板双指滑动触发的Pan手势，或使用Ctrl+鼠标滚轮触发的Pinch手势中可以获取。对于Shift+鼠标滚轮触发的横向滚动场景，滚动值体现在axisVertical中。
 
 **类型：** number
 
@@ -111,8 +110,6 @@ axisVertical?: number
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BaseEvent-axisVertical?: number--><!--Device-BaseEvent-axisVertical?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## deviceId
@@ -121,7 +118,7 @@ axisVertical?: number
 deviceId?: number
 ```
 
-触发当前事件的输入设备ID。 默认值：0 取值范围：[0, +∞)
+触发当前事件的输入设备ID。默认值：0取值范围：[0, +∞)
 
 **类型：** number
 
@@ -131,8 +128,6 @@ deviceId?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BaseEvent-deviceId?: number--><!--Device-BaseEvent-deviceId?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## pressure
@@ -141,7 +136,7 @@ deviceId?: number
 pressure: number
 ```
 
-按压的压力大小。 默认值：0 取值范围：[0,1]，典型值0.913168，压感大小与数值正相关。在部分设备中，由于设备的硬件参数配置不同，可能会返回大于1的值。
+按压的压力大小。默认值：0取值范围：[0,1]，典型值0.913168，压感大小与数值正相关。在部分设备中，由于设备的硬件参数配置不同，可能会返回大于1的值。
 
 **类型：** number
 
@@ -151,8 +146,6 @@ pressure: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BaseEvent-pressure: number--><!--Device-BaseEvent-pressure: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## rollAngle
@@ -161,7 +154,7 @@ pressure: number
 rollAngle?: number
 ```
 
-手写笔与设备平面的夹角。 单位：deg
+手写笔与设备平面的夹角。单位：deg
 
 **类型：** number
 
@@ -172,8 +165,6 @@ rollAngle?: number
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本17开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BaseEvent-rollAngle?: number--><!--Device-BaseEvent-rollAngle?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -193,8 +184,6 @@ source: SourceType
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BaseEvent-source: SourceType--><!--Device-BaseEvent-source: SourceType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## sourceTool
@@ -212,8 +201,6 @@ sourceTool: SourceTool
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BaseEvent-sourceTool: SourceTool--><!--Device-BaseEvent-sourceTool: SourceTool-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -233,8 +220,6 @@ target: EventTarget
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BaseEvent-target: EventTarget--><!--Device-BaseEvent-target: EventTarget-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## targetDisplayId
@@ -243,7 +228,7 @@ target: EventTarget
 targetDisplayId?: number
 ```
 
-事件发生的屏幕ID。 默认值：0 取值范围：[0, +∞)
+事件发生的屏幕ID。默认值：0取值范围：[0, +∞)
 
 **类型：** number
 
@@ -253,8 +238,6 @@ targetDisplayId?: number
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BaseEvent-targetDisplayId?: number--><!--Device-BaseEvent-targetDisplayId?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## tiltX
@@ -263,7 +246,7 @@ targetDisplayId?: number
 tiltX: number
 ```
 
-手写笔在设备平面上的投影与设备平面X轴的夹角。 单位：deg 默认值：0
+手写笔在设备平面上的投影与设备平面X轴的夹角。单位：deg默认值：0
 
 **类型：** number
 
@@ -272,8 +255,6 @@ tiltX: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BaseEvent-tiltX: number--><!--Device-BaseEvent-tiltX: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -283,7 +264,7 @@ tiltX: number
 tiltY: number
 ```
 
-手写笔在设备平面上的投影与设备平面Y轴的夹角。 单位：deg 默认值：0
+手写笔在设备平面上的投影与设备平面Y轴的夹角。单位：deg默认值：0
 
 **类型：** number
 
@@ -293,8 +274,6 @@ tiltY: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BaseEvent-tiltY: number--><!--Device-BaseEvent-tiltY: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## timestamp
@@ -303,7 +282,7 @@ tiltY: number
 timestamp: number
 ```
 
-事件时间戳，触发事件时距离系统启动的时间间隔。 单位：ns
+事件时间戳，触发事件时距离系统启动的时间间隔。单位：ns
 
 **类型：** number
 
@@ -313,7 +292,4 @@ timestamp: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BaseEvent-timestamp: number--><!--Device-BaseEvent-timestamp: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

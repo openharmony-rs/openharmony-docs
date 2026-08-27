@@ -4,14 +4,11 @@
 
 **起始版本：** 12
 
-<!--Device-webview-interface MediaInfo--><!--Device-webview-interface MediaInfo-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { webview } from '@kit.ArkWeb';
 ```
 
 ## attributes
@@ -25,8 +22,6 @@ attributes: Record<string, string>
 **类型：** Record&lt;string, string&gt;
 
 **起始版本：** 12
-
-<!--Device-MediaInfo-attributes: Record<string, string>--><!--Device-MediaInfo-attributes: Record<string, string>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -44,8 +39,6 @@ controlList: string[]
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MediaInfo-controlList: string[]--><!--Device-MediaInfo-controlList: string[]-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## controlsShown
@@ -54,15 +47,13 @@ controlList: string[]
 controlsShown: boolean
 ```
 
-`&lt;video&gt;` 或 `&lt;audio&gt;` 中是否有 `controls` 属性。 true 表示有，false 表示没有。
+`&lt;video&gt;` 或 `&lt;audio&gt;` 中是否有 `controls` 属性。true 表示有，false 表示没有。
 
 **类型：** boolean
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MediaInfo-controlsShown: boolean--><!--Device-MediaInfo-controlsShown: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -78,8 +69,6 @@ embedID: string
 
 **起始版本：** 12
 
-<!--Device-MediaInfo-embedID: string--><!--Device-MediaInfo-embedID: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## headers
@@ -93,8 +82,6 @@ headers: Record<string, string>
 **类型：** Record&lt;string, string&gt;
 
 **起始版本：** 12
-
-<!--Device-MediaInfo-headers: Record<string, string>--><!--Device-MediaInfo-headers: Record<string, string>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -112,8 +99,6 @@ mediaSrcList: MediaSourceInfo[]
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MediaInfo-mediaSrcList: MediaSourceInfo[]--><!--Device-MediaInfo-mediaSrcList: MediaSourceInfo[]-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## mediaType
@@ -130,8 +115,6 @@ mediaType: MediaType
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MediaInfo-mediaType: MediaType--><!--Device-MediaInfo-mediaType: MediaType-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## muted
@@ -140,15 +123,13 @@ mediaType: MediaType
 muted: boolean
 ```
 
-是否要求静音播放。 true 表示静音播放，false 表示未静音播放。
+是否要求静音播放。true 表示静音播放，false 表示未静音播放。
 
 **类型：** boolean
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MediaInfo-muted: boolean--><!--Device-MediaInfo-muted: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -166,8 +147,6 @@ posterUrl: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MediaInfo-posterUrl: string--><!--Device-MediaInfo-posterUrl: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## preload
@@ -183,8 +162,6 @@ preload: Preload
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MediaInfo-preload: Preload--><!--Device-MediaInfo-preload: Preload-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -202,7 +179,4 @@ surfaceInfo: NativeMediaPlayerSurfaceInfo
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MediaInfo-surfaceInfo: NativeMediaPlayerSurfaceInfo--><!--Device-MediaInfo-surfaceInfo: NativeMediaPlayerSurfaceInfo-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

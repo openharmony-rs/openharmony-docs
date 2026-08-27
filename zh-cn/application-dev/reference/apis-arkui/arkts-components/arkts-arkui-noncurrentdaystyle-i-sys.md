@@ -6,8 +6,6 @@ Non current day style.
 
 **废弃版本：** 20
 
-<!--Device-unnamed-interface NonCurrentDayStyle--><!--Device-unnamed-interface NonCurrentDayStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -25,15 +23,13 @@ nonCurrentMonthDayColor?: ResourceColor
 
 Non-current month day color.
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 7
 
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-NonCurrentDayStyle-nonCurrentMonthDayColor?: ResourceColor--><!--Device-NonCurrentDayStyle-nonCurrentMonthDayColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,15 +43,13 @@ nonCurrentMonthLunarColor?: ResourceColor
 
 Lunar style of non-current month.
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 7
 
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-NonCurrentDayStyle-nonCurrentMonthLunarColor?: ResourceColor--><!--Device-NonCurrentDayStyle-nonCurrentMonthLunarColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,15 +63,13 @@ nonCurrentMonthOffDayMarkColor?: ResourceColor
 
 Non-Current Month Off Day Marker Color.
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 7
 
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-NonCurrentDayStyle-nonCurrentMonthOffDayMarkColor?: ResourceColor--><!--Device-NonCurrentDayStyle-nonCurrentMonthOffDayMarkColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,7 +83,7 @@ nonCurrentMonthWorkDayMarkColor?: ResourceColor
 
 Non-Current Month Workday Marker Color.
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 7
 
@@ -99,9 +91,6 @@ Non-Current Month Workday Marker Color.
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-NonCurrentDayStyle-nonCurrentMonthWorkDayMarkColor?: ResourceColor--><!--Device-NonCurrentDayStyle-nonCurrentMonthWorkDayMarkColor?: ResourceColor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

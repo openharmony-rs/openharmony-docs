@@ -4,8 +4,6 @@ ConsoleMessage的日志来源。
 
 **起始版本：** 23
 
-<!--Device-unnamed-declare enum ConsoleMessageSource--><!--Device-unnamed-declare enum ConsoleMessageSource-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## XML
@@ -17,8 +15,6 @@ XML = 0
 由Web的 XML/HTML 解析器生成的日志（如 HTML 语法错误、XML 格式异常），比如HTML 标签未闭合导致的解析警告。
 
 **起始版本：** 23
-
-<!--Device-ConsoleMessageSource-XML = 0--><!--Device-ConsoleMessageSource-XML = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -32,8 +28,6 @@ JAVASCRIPT = 1
 
 **起始版本：** 23
 
-<!--Device-ConsoleMessageSource-JAVASCRIPT = 1--><!--Device-ConsoleMessageSource-JAVASCRIPT = 1-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## NETWORK
@@ -45,8 +39,6 @@ NETWORK = 2
 加载网页资源失败，比如资源（JS/CSS/ 图片）404 加载失败。
 
 **起始版本：** 23
-
-<!--Device-ConsoleMessageSource-NETWORK = 2--><!--Device-ConsoleMessageSource-NETWORK = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -60,8 +52,6 @@ CONSOLE_API = 3
 
 **起始版本：** 23
 
-<!--Device-ConsoleMessageSource-CONSOLE_API = 3--><!--Device-ConsoleMessageSource-CONSOLE_API = 3-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## STORAGE
@@ -73,8 +63,6 @@ STORAGE = 4
 存储相关模块（LocalStorage、SessionStorage、IndexedDB、Cookie）生成的日志（如存储配额超限、操作异常）。
 
 **起始版本：** 23
-
-<!--Device-ConsoleMessageSource-STORAGE = 4--><!--Device-ConsoleMessageSource-STORAGE = 4-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -88,8 +76,6 @@ RENDERING = 5
 
 **起始版本：** 23
 
-<!--Device-ConsoleMessageSource-RENDERING = 5--><!--Device-ConsoleMessageSource-RENDERING = 5-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## SECURITY
@@ -101,8 +87,6 @@ SECURITY = 6
 违反网页安全策略，HTTPS 证书错误、混合内容（HTTP 资源在 HTTPS 页面加载）。
 
 **起始版本：** 23
-
-<!--Device-ConsoleMessageSource-SECURITY = 6--><!--Device-ConsoleMessageSource-SECURITY = 6-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -116,8 +100,6 @@ OTHER = 7
 
 **起始版本：** 23
 
-<!--Device-ConsoleMessageSource-OTHER = 7--><!--Device-ConsoleMessageSource-OTHER = 7-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## DEPRECATION
@@ -129,8 +111,6 @@ DEPRECATION = 8
 使用了过期语法，比如slider-vertical。
 
 **起始版本：** 23
-
-<!--Device-ConsoleMessageSource-DEPRECATION = 8--><!--Device-ConsoleMessageSource-DEPRECATION = 8-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -144,8 +124,6 @@ service worker，shared worker里面的错误，比如service worker navigation 
 
 **起始版本：** 23
 
-<!--Device-ConsoleMessageSource-WORKER = 9--><!--Device-ConsoleMessageSource-WORKER = 9-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## VIOLATION
@@ -157,8 +135,6 @@ VIOLATION = 10
 违反规则，比如一段js执行超过50ms。
 
 **起始版本：** 23
-
-<!--Device-ConsoleMessageSource-VIOLATION = 10--><!--Device-ConsoleMessageSource-VIOLATION = 10-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -172,8 +148,6 @@ INTERVENTION = 11
 
 **起始版本：** 23
 
-<!--Device-ConsoleMessageSource-INTERVENTION = 11--><!--Device-ConsoleMessageSource-INTERVENTION = 11-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## RECOMMENDATION
@@ -186,7 +160,4 @@ RECOMMENDATION = 12
 
 **起始版本：** 23
 
-<!--Device-ConsoleMessageSource-RECOMMENDATION = 12--><!--Device-ConsoleMessageSource-RECOMMENDATION = 12-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

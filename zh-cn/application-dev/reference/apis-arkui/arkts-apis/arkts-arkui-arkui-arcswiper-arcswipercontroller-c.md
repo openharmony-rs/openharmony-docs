@@ -4,8 +4,6 @@ ArcSwiper容器组件的控制器，可以将此对象绑定至ArcSwiper组件�
 
 **起始版本：** 18
 
-<!--Device-unnamed-export class ArcSwiperController--><!--Device-unnamed-export class ArcSwiperController-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -26,8 +24,6 @@ ArcSwiperController的构造函数。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSwiperController-constructor()--><!--Device-ArcSwiperController-constructor()-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## finishAnimation
@@ -42,15 +38,13 @@ finishAnimation(handler?: FinishAnimationHandler)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSwiperController-finishAnimation(handler?: FinishAnimationHandler)--><!--Device-ArcSwiperController-finishAnimation(handler?: FinishAnimationHandler)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [FinishAnimationHandler](arkts-arkui-finishanimationhandler-t.md) | 否 | 动画结束的回调。<br>默认值：不传入时无回调。 |
+| handler | [FinishAnimationHandler](arkts-arkui-finishanimationhandler-t.md) | 否 | 动画结束的回调。默认值：不传入时无回调。 |
 
 ## showNext
 
@@ -58,13 +52,11 @@ finishAnimation(handler?: FinishAnimationHandler)
 showNext()
 ```
 
-翻至下一页。翻页带动效切换过程，时长通过[duration](../../apis-na/arkts-apis/arkts-na-arkui-arcswiper-arcswiperattribute-i.md#duration)指定。通过此方法控制翻页时，effectMode设置的回弹效果不生效。
+翻至下一页。翻页带动效切换过程，时长通过[duration](arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md#duration)指定。通过此方法控制翻页时，effectMode设置的回弹效果不生效。
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ArcSwiperController-showNext()--><!--Device-ArcSwiperController-showNext()-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -74,13 +66,10 @@ showNext()
 showPrevious()
 ```
 
-翻至上一页。翻页带动效切换过程，时长通过[duration](../../apis-na/arkts-apis/arkts-na-arkui-arcswiper-arcswiperattribute-i.md#duration)指定。通过此方法控制翻页时，effectMode设置的回弹效果不生效。
+翻至上一页。翻页带动效切换过程，时长通过[duration](arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md#duration)指定。通过此方法控制翻页时，effectMode设置的回弹效果不生效。
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSwiperController-showPrevious()--><!--Device-ArcSwiperController-showPrevious()-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
-

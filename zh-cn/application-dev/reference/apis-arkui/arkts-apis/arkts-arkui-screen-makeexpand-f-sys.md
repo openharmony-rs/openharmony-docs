@@ -4,13 +4,12 @@
 
 ```TypeScript
 import { screen } from '@kit.ArkUI';
-import { screenshot } from '@kit.ArkUI';
 ```
 
 ## makeExpand
 
 ```TypeScript
-function makeExpand(options:Array<ExpandOption>, callback: AsyncCallback<long>): void
+function makeExpand(options:Array<ExpandOption>, callback: AsyncCallback<number>): void
 ```
 
 将屏幕设置为扩展模式，使用callback异步回调。
@@ -18,8 +17,6 @@ function makeExpand(options:Array<ExpandOption>, callback: AsyncCallback<long>):
 **起始版本：** 9
 
 **废弃版本：** 20
-
-<!--Device-screen-function makeExpand(options:Array<ExpandOption>, callback: AsyncCallback<long>): void--><!--Device-screen-function makeExpand(options:Array<ExpandOption>, callback: AsyncCallback<long>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -30,15 +27,15 @@ function makeExpand(options:Array<ExpandOption>, callback: AsyncCallback<long>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | Array&lt;[ExpandOption](arkts-arkui-screen-expandoption-i-sys.md)&gt; | 是 | 设置扩展屏幕的参数集合。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数。返回扩展屏幕的群组id，其中id为整数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。返回扩展屏幕的群组id，其中id为整数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
-| [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. |
+| [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
 **示例**
 
@@ -71,7 +68,7 @@ screen.makeExpand(expandOptionArray, (err: BusinessError, data: number) => {
 ## makeExpand
 
 ```TypeScript
-function makeExpand(options:Array<ExpandOption>): Promise<long>
+function makeExpand(options:Array<ExpandOption>): Promise<number>
 ```
 
 将屏幕设置为扩展模式，使用Promise异步回调。
@@ -79,8 +76,6 @@ function makeExpand(options:Array<ExpandOption>): Promise<long>
 **起始版本：** 9
 
 **废弃版本：** 20
-
-<!--Device-screen-function makeExpand(options:Array<ExpandOption>): Promise<long>--><!--Device-screen-function makeExpand(options:Array<ExpandOption>): Promise<long>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -96,15 +91,15 @@ function makeExpand(options:Array<ExpandOption>): Promise<long>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;long&gt; | Promise对象。返回扩展屏幕的群组id，其中id为整数。 |
+| Promise & lt;number & gt; | Promise对象。返回扩展屏幕的群组id，其中id为整数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
-| [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. |
+| [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
 **示例**
 
@@ -126,4 +121,3 @@ screen.makeExpand(expandOptionArray).then((data: number) => {
   console.error(`Failed to expand the screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-

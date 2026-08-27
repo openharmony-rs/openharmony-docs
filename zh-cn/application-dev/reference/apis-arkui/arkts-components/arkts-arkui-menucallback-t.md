@@ -12,8 +12,6 @@ declare type MenuCallback = (start: number, end: number) => void
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type MenuCallback = (start: number, end: number) => void--><!--Device-unnamed-declare type MenuCallback = (start: number, end: number) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -22,4 +20,3 @@ declare type MenuCallback = (start: number, end: number) => void
 | --- | --- | --- | --- |
 | start | number | 是 | 选中内容的起始位置。 |
 | end | number | 是 | 选中内容的终止位置。 |
-

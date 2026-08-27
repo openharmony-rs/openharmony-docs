@@ -1,10 +1,8 @@
-# DismissDialogAction(CustomDialog)
+# DismissDialogAction
 
 Dialog关闭的信息。
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare interface DismissDialogAction--><!--Device-unnamed-declare interface DismissDialogAction-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,8 +27,6 @@ Dialog关闭回调函数。开发者需要退出时调用，不需要退出时�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DismissDialogAction-dismiss: Callback<void>--><!--Device-DismissDialogAction-dismiss: Callback<void>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## reason
@@ -41,7 +37,7 @@ reason: DismissReason
 
 Dialog无法关闭原因。根据开发者需要选择不同操作下，Dialog是否需要关闭。
 
-**类型：** DismissReason
+**类型：** [DismissReason](../arkts-components/arkts-arkui-dismissreason-e.md)
 
 **起始版本：** 12
 
@@ -49,7 +45,4 @@ Dialog无法关闭原因。根据开发者需要选择不同操作下，Dialog�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DismissDialogAction-reason: DismissReason--><!--Device-DismissDialogAction-reason: DismissReason-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

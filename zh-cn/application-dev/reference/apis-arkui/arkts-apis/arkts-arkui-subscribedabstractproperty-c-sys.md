@@ -1,14 +1,14 @@
-# SubscribedAbstractProperty(System API)（系统接口）
+# SubscribedAbstractProperty
 
-SubscribedAbstractProperty是[AppStorage](../../../ui/state-management/arkts-appstorage.md)/ [LocalStorage](../../../ui/state-management/arkts-localstorage.md)中属性的单/双向同步绑定对象，用于与AppStorage/LocalStorage中的属性建立数据同 步关系。SubscribedAbstractProperty实例需要通过[aboutToBeDeleted](arkts-arkui-subscribedabstractproperty-c.md#abouttobedeleted)接口手动释放，以取消同步 关系并无效化实例。 > **说明：** > > 从API version 12开始，AppStorage/LocalStorage支持Map、Set、Date类型，支持null、undefined以及联合类型。
+SubscribedAbstractProperty是[AppStorage](../../../ui/state-management/arkts-appstorage.md)/ [LocalStorage](../../../ui/state-management/arkts-localstorage.md)中属性的单/双向同步绑定对象，用于与AppStorage/LocalStorage中的属性建立数据同 步关系。SubscribedAbstractProperty实例需要通过[aboutToBeDeleted](arkts-arkui-subscribedabstractproperty-c.md#abouttobedeleted)接口手动释放，以取消同步 关系并无效化实例。
 
-**起始版本：** 7
+> **说明：**
+> 
+> 从API version 12开始，AppStorage/LocalStorage支持Map、Set、Date类型，支持null、undefined以及联合类型。
 
-<!--Device-unnamed-declare abstract class SubscribedAbstractProperty--><!--Device-unnamed-declare abstract class SubscribedAbstractProperty-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**系统接口：** 此接口为系统接口。
 
 ## 导入模块
 
@@ -44,8 +44,6 @@ constructor(
 
 **起始版本：** 7
 
-<!--Device-SubscribedAbstractProperty-constructor(    /**     * 订阅者，用于接收属性变化通知；不传入则不建立订阅关系。     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @systemapi     * @since 7     *      */    subscribeMe?: IPropertySubscriber,    /**     * 变量信息，用于标识该订阅关系；不传入时默认为undefined。     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @systemapi     * @since 7     *      */    info?: string,  )--><!--Device-SubscribedAbstractProperty-constructor(    /**     * 订阅者，用于接收属性变化通知；不传入则不建立订阅关系。     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @systemapi     * @since 7     *      */    subscribeMe?: IPropertySubscriber,    /**     * 变量信息，用于标识该订阅关系；不传入时默认为undefined。     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @systemapi     * @since 7     *      */    info?: string,  )-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -57,6 +55,13 @@ constructor(
 | subscribeMe | [IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md) | 否 | 订阅者，用于接收属性变化通知；不传入则不建立订阅关系。 |
 | info | string | 否 | 变量信息，用于标识该订阅关系；不传入时默认为undefined。 |
 
+**示例**
+
+```TypeScript
+let initialData: Record<string, number> = { 'PropA': 47 };
+let storage: LocalStorage = new LocalStorage(initialData);
+```
+
 ## createOneWaySync
 
 ```TypeScript
@@ -66,8 +71,6 @@ createOneWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedProper
 创建单向同步属性。数据变更仅从数据源向订阅者单向传播。订阅关系不再需要时，应调用[unlinkSuscriber()](#unlinksuscriber)解除 订阅（订阅者ID通过[IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md).[id()](arkts-arkui-ipropertysubscriber-i-sys.md#id)获取）， 或由返回的[SyncedPropertyOneWay](arkts-arkui-syncedpropertyoneway-c-sys.md)对象 的[aboutToBeDeleted()](arkts-arkui-syncedpropertyoneway-c-sys.md#abouttobedeleted)方法处理取消订阅。
 
 **起始版本：** 7
-
-<!--Device-SubscribedAbstractProperty-createOneWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedPropertyOneWay<T>--><!--Device-SubscribedAbstractProperty-createOneWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedPropertyOneWay<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,8 +99,6 @@ createTwoWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedProper
 
 **起始版本：** 7
 
-<!--Device-SubscribedAbstractProperty-createTwoWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedPropertyTwoWay<T>--><!--Device-SubscribedAbstractProperty-createTwoWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedPropertyTwoWay<T>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -125,8 +126,6 @@ id(): number
 
 **起始版本：** 7
 
-<!--Device-SubscribedAbstractProperty-id(): number--><!--Device-SubscribedAbstractProperty-id(): number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -146,8 +145,6 @@ protected notifyHasChanged(newValue: T): void
 通知变化时调用。
 
 **起始版本：** 7
-
-<!--Device-SubscribedAbstractProperty-protected notifyHasChanged(newValue: T): void--><!--Device-SubscribedAbstractProperty-protected notifyHasChanged(newValue: T): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -169,8 +166,6 @@ protected notifyPropertyRead(): void
 
 **起始版本：** 7
 
-<!--Device-SubscribedAbstractProperty-protected notifyPropertyRead(): void--><!--Device-SubscribedAbstractProperty-protected notifyPropertyRead(): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -184,8 +179,6 @@ numberOfSubscrbers(): number
 获取订阅者数量时调用。
 
 **起始版本：** 7
-
-<!--Device-SubscribedAbstractProperty-numberOfSubscrbers(): number--><!--Device-SubscribedAbstractProperty-numberOfSubscrbers(): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -207,8 +200,6 @@ unlinkSuscriber(subscriberId: number): void
 
 **起始版本：** 7
 
-<!--Device-SubscribedAbstractProperty-unlinkSuscriber(subscriberId: number): void--><!--Device-SubscribedAbstractProperty-unlinkSuscriber(subscriberId: number): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -229,8 +220,6 @@ private id_
 
 **起始版本：** 7
 
-<!--Device-SubscribedAbstractProperty-private id_--><!--Device-SubscribedAbstractProperty-private id_-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -244,8 +233,6 @@ private info_?
 变量信息，用于标识该订阅关系。
 
 **起始版本：** 7
-
-<!--Device-SubscribedAbstractProperty-private info_?--><!--Device-SubscribedAbstractProperty-private info_?-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -263,9 +250,6 @@ protected subscribers_: Set<number>
 
 **起始版本：** 7
 
-<!--Device-SubscribedAbstractProperty-protected subscribers_: Set<number>--><!--Device-SubscribedAbstractProperty-protected subscribers_: Set<number>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

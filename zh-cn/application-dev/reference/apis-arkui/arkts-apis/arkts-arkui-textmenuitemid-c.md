@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class TextMenuItemId--><!--Device-unnamed-declare class TextMenuItemId-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,8 +25,6 @@ equals(id: TextMenuItemId): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextMenuItemId-equals(id: TextMenuItemId): boolean--><!--Device-TextMenuItemId-equals(id: TextMenuItemId): boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -41,7 +37,7 @@ equals(id: TextMenuItemId): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 两个TextMenuItemId是否相等。 <br>true表示相等，false表示不相等。 |
+| boolean | 两个TextMenuItemId是否相等。 |
 
 ## of
 
@@ -57,221 +53,19 @@ static of(id: ResourceStr): TextMenuItemId
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextMenuItemId-static of(id: ResourceStr): TextMenuItemId--><!--Device-TextMenuItemId-static of(id: ResourceStr): TextMenuItemId-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | ResourceStr | 是 | 菜单项标识，用于创建TextMenuItemId对象以识别菜单选项。 |
+| id | [ResourceStr](arkts-arkui-resourcestr-t.md) | 是 | 菜单项标识，用于创建TextMenuItemId对象以识别菜单选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | [TextMenuItemId](arkts-arkui-textmenuitemid-c.md) | 根据传入id创建的菜单项标识对象，用于识别菜单选项。 |
-
-## AI_WRITER
-
-```TypeScript
-static readonly AI_WRITER: TextMenuItemId
-```
-
-<!--RP1--><!--RP1End-->可对选中的文本进行润色、摘要提取、排版等，为一级菜单项。该菜单项依赖大模型能力，否则不生效。
-
-**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
-
-**起始版本：** 13
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextMenuItemId-static readonly AI_WRITER: TextMenuItemId--><!--Device-TextMenuItemId-static readonly AI_WRITER: TextMenuItemId-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## CAMERA_INPUT
-
-```TypeScript
-static readonly CAMERA_INPUT: TextMenuItemId
-```
-
-拍摄输入，为一级菜单项。
-
-**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextMenuItemId-static readonly CAMERA_INPUT: TextMenuItemId--><!--Device-TextMenuItemId-static readonly CAMERA_INPUT: TextMenuItemId-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## COLLABORATION_SERVICE
-
-```TypeScript
-static readonly COLLABORATION_SERVICE: TextMenuItemId
-```
-
-互通服务，为一级菜单项。
-
-**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextMenuItemId-static readonly COLLABORATION_SERVICE: TextMenuItemId--><!--Device-TextMenuItemId-static readonly COLLABORATION_SERVICE: TextMenuItemId-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## COPY
-
-```TypeScript
-static readonly COPY: TextMenuItemId
-```
-
-默认复制，为一级菜单项。
-
-**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextMenuItemId-static readonly COPY: TextMenuItemId--><!--Device-TextMenuItemId-static readonly COPY: TextMenuItemId-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## CUT
-
-```TypeScript
-static readonly CUT: TextMenuItemId
-```
-
-默认剪切，为一级菜单项。
-
-**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextMenuItemId-static readonly CUT: TextMenuItemId--><!--Device-TextMenuItemId-static readonly CUT: TextMenuItemId-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## PASTE
-
-```TypeScript
-static readonly PASTE: TextMenuItemId
-```
-
-默认粘贴，为一级菜单项。
-
-**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextMenuItemId-static readonly PASTE: TextMenuItemId--><!--Device-TextMenuItemId-static readonly PASTE: TextMenuItemId-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## SEARCH
-
-```TypeScript
-static readonly SEARCH: TextMenuItemId
-```
-
-搜索，为一级菜单项。对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。
-
-**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextMenuItemId-static readonly SEARCH: TextMenuItemId--><!--Device-TextMenuItemId-static readonly SEARCH: TextMenuItemId-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## SELECT_ALL
-
-```TypeScript
-static readonly SELECT_ALL: TextMenuItemId
-```
-
-默认全选，为一级菜单项。
-
-**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextMenuItemId-static readonly SELECT_ALL: TextMenuItemId--><!--Device-TextMenuItemId-static readonly SELECT_ALL: TextMenuItemId-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## SHARE
-
-```TypeScript
-static readonly SHARE: TextMenuItemId
-```
-
-分享，为一级菜单项。对选中的文本提供分享服务，拉起分享窗口分享选中文本内容。
-
-**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextMenuItemId-static readonly SHARE: TextMenuItemId--><!--Device-TextMenuItemId-static readonly SHARE: TextMenuItemId-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## TRANSLATE
-
-```TypeScript
-static readonly TRANSLATE: TextMenuItemId
-```
-
-翻译，为一级菜单项。对选中的文本提供翻译服务。
-
-**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
-
-**起始版本：** 15
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextMenuItemId-static readonly TRANSLATE: TextMenuItemId--><!--Device-TextMenuItemId-static readonly TRANSLATE: TextMenuItemId-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## address
 
@@ -289,7 +83,23 @@ static readonly address: TextMenuItemId
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextMenuItemId-static readonly address: TextMenuItemId--><!--Device-TextMenuItemId-static readonly address: TextMenuItemId-End-->
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## AI_WRITER
+
+```TypeScript
+static readonly AI_WRITER: TextMenuItemId
+```
+
+<!--RP1--><!--RP1End-->可对选中的文本进行润色、摘要提取、排版等，为一级菜单项。该菜单项依赖大模型能力，否则不生效。
+
+**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
+
+**起始版本：** 13
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -309,8 +119,6 @@ static readonly askAI: TextMenuItemId
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextMenuItemId-static readonly askAI: TextMenuItemId--><!--Device-TextMenuItemId-static readonly askAI: TextMenuItemId-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## autoFill
@@ -329,7 +137,77 @@ static readonly autoFill: TextMenuItemId
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextMenuItemId-static readonly autoFill: TextMenuItemId--><!--Device-TextMenuItemId-static readonly autoFill: TextMenuItemId-End-->
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## CAMERA_INPUT
+
+```TypeScript
+static readonly CAMERA_INPUT: TextMenuItemId
+```
+
+拍摄输入，为一级菜单项。
+
+**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## COLLABORATION_SERVICE
+
+```TypeScript
+static readonly COLLABORATION_SERVICE: TextMenuItemId
+```
+
+互通服务，为一级菜单项。
+
+**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## COPY
+
+```TypeScript
+static readonly COPY: TextMenuItemId
+```
+
+默认复制，为一级菜单项。
+
+**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## CUT
+
+```TypeScript
+static readonly CUT: TextMenuItemId
+```
+
+默认剪切，为一级菜单项。
+
+**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -349,8 +227,6 @@ static readonly dateTime: TextMenuItemId
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextMenuItemId-static readonly dateTime: TextMenuItemId--><!--Device-TextMenuItemId-static readonly dateTime: TextMenuItemId-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## email
@@ -368,8 +244,6 @@ static readonly email: TextMenuItemId
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextMenuItemId-static readonly email: TextMenuItemId--><!--Device-TextMenuItemId-static readonly email: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -389,7 +263,23 @@ static readonly passwordVault: TextMenuItemId
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextMenuItemId-static readonly passwordVault: TextMenuItemId--><!--Device-TextMenuItemId-static readonly passwordVault: TextMenuItemId-End-->
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## PASTE
+
+```TypeScript
+static readonly PASTE: TextMenuItemId
+```
+
+默认粘贴，为一级菜单项。
+
+**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -409,7 +299,77 @@ static readonly phoneNumber: TextMenuItemId
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextMenuItemId-static readonly phoneNumber: TextMenuItemId--><!--Device-TextMenuItemId-static readonly phoneNumber: TextMenuItemId-End-->
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## SEARCH
+
+```TypeScript
+static readonly SEARCH: TextMenuItemId
+```
+
+搜索，为一级菜单项。对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。
+
+**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## SELECT_ALL
+
+```TypeScript
+static readonly SELECT_ALL: TextMenuItemId
+```
+
+默认全选，为一级菜单项。
+
+**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## SHARE
+
+```TypeScript
+static readonly SHARE: TextMenuItemId
+```
+
+分享，为一级菜单项。对选中的文本提供分享服务，拉起分享窗口分享选中文本内容。
+
+**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## TRANSLATE
+
+```TypeScript
+static readonly TRANSLATE: TextMenuItemId
+```
+
+翻译，为一级菜单项。对选中的文本提供翻译服务。
+
+**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
+
+**起始版本：** 15
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -429,7 +389,4 @@ static readonly url: TextMenuItemId
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextMenuItemId-static readonly url: TextMenuItemId--><!--Device-TextMenuItemId-static readonly url: TextMenuItemId-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

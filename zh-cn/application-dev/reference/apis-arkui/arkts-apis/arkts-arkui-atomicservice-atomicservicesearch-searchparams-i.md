@@ -4,8 +4,6 @@ AtomicServiceSearch中“搜索区”的可选属性。
 
 **起始版本：** 18
 
-<!--Device-unnamed-export interface SearchParams--><!--Device-unnamed-export interface SearchParams-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -14,21 +12,75 @@ AtomicServiceSearch中“搜索区”的可选属性。
 import { AtomicServiceSearch, InputFilterParams, SearchButtonParams, MenuAlignParams, SearchParams, SelectParams, OperationParams, } from '@kit.ArkUI';
 ```
 
+## onChange
+
+```TypeScript
+onChange?: EditableTextOnChangeCallback
+```
+
+输入内容发生变化时，触发该回调。默认值为`undefined`。
+
+**起始版本：** 18
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## onContentScroll
+
+```TypeScript
+onContentScroll?: OnContentScrollCallback
+```
+
+文本内容滚动时，触发该回调。默认值为`undefined`。
+
+**起始版本：** 18
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## onPaste
+
+```TypeScript
+onPaste?: OnPasteCallback
+```
+
+进行粘贴操作时，触发该回调。默认值为`undefined`。
+
+**起始版本：** 18
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## onTextSelectionChange
+
+```TypeScript
+onTextSelectionChange?: OnTextSelectionChangeCallback
+```
+
+文本选择的位置发生变化或编辑状态下光标位置发生变化时，触发该回调。默认值为`undefined`。
+
+**起始版本：** 18
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## cancelIcon
 
 ```TypeScript
 cancelIcon?: IconOptions
 ```
 
-右侧清除按钮样式。默认值：`{style: CancelButtonStyle.INPUT, icon: {size: '16vp', color: '#99ffffff', src: ' '}}`。 当style为CancelButtonStyle.CONSTANT时，默认显示清除样式。
+右侧清除按钮样式。默认值：`{style: CancelButtonStyle.INPUT, icon: {size: '16vp', color: '#99ffffff', src: ' '}}`。当style为CancelButtonStyle.CONSTANT时，默认显示清除样式。
 
 **类型：** IconOptions
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-cancelIcon?: IconOptions--><!--Device-SearchParams-cancelIcon?: IconOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,13 +92,11 @@ caretStyle?: CaretStyle
 
 光标样式。默认值：`{width: '1.5vp', color: '#007DFF'}`。
 
-**类型：** CaretStyle
+**类型：** [CaretStyle](arkts-arkui-caretstyle-i.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-caretStyle?: CaretStyle--><!--Device-SearchParams-caretStyle?: CaretStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,13 +108,11 @@ componentBackgroundColor?: ResourceColor
 
 设置组件的背景色。默认值：`\$r('sys.color.ohos_id_color_text_field_sub_bg')`。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-componentBackgroundColor?: ResourceColor--><!--Device-SearchParams-componentBackgroundColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,8 +130,6 @@ copyOptions?: CopyOptions
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchParams-copyOptions?: CopyOptions--><!--Device-SearchParams-copyOptions?: CopyOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## decoration
@@ -94,13 +140,11 @@ decoration?: TextDecorationOptions
 
 文本装饰线对象。默认值：`{type: TextDecorationType.None, color: Color.Black, style: TextDecorationStyle.SOLID}`。
 
-**类型：** TextDecorationOptions
+**类型：** [TextDecorationOptions](../arkts-components/arkts-arkui-textdecorationoptions-i.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-decoration?: TextDecorationOptions--><!--Device-SearchParams-decoration?: TextDecorationOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,13 +156,11 @@ editMenuOptions?: EditMenuOptions
 
 设置自定义菜单扩展项，允许用户设置扩展项的文本内容、图标、回调方法。默认值为`undefined`。
 
-**类型：** EditMenuOptions
+**类型：** [EditMenuOptions](arkts-arkui-editmenuoptions-i.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-editMenuOptions?: EditMenuOptions--><!--Device-SearchParams-editMenuOptions?: EditMenuOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,8 +178,6 @@ enableHapticFeedback?: boolean
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchParams-enableHapticFeedback?: boolean--><!--Device-SearchParams-enableHapticFeedback?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableKeyboardOnFocus
@@ -154,8 +194,6 @@ Search获焦时，是否主动拉起软键盘。true表示Search获焦时主动�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchParams-enableKeyboardOnFocus?: boolean--><!--Device-SearchParams-enableKeyboardOnFocus?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## enablePreviewText
@@ -164,15 +202,13 @@ Search获焦时，是否主动拉起软键盘。true表示Search获焦时主动�
 enablePreviewText?: boolean
 ```
 
-是否开启输入预上屏。true表示开启输入预上屏。false表示不开启输入预上屏。默认值：`true`。 需要配合开启输入法的预上屏功能。预上屏内容定义为文字暂存态，目前不支持文字拦截功能，因此该值为true时不触发onWillInsert、onDidInsert回调。
+是否开启输入预上屏。true表示开启输入预上屏。false表示不开启输入预上屏。默认值：`true`。需要配合开启输入法的预上屏功能。预上屏内容定义为文字暂存态，目前不支持文字拦截功能，因此该值为true时不触发onWillInsert、onDidInsert回调。
 
 **类型：** boolean
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-enablePreviewText?: boolean--><!--Device-SearchParams-enablePreviewText?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -190,8 +226,6 @@ enterKeyType?: EnterKeyType
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchParams-enterKeyType?: EnterKeyType--><!--Device-SearchParams-enterKeyType?: EnterKeyType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -202,13 +236,11 @@ fontColor?: ResourceColor
 
 输入文本的字体颜色。默认值：`\$r('sys.color.ohos_id_color_text_secondary')`。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-fontColor?: ResourceColor--><!--Device-SearchParams-fontColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -218,15 +250,13 @@ fontColor?: ResourceColor
 fontFeature?: ResourceStr
 ```
 
-设置文字特性效果，比如数字等宽的特性。 格式为：normal | &lt;feature-tag-value&gt; &lt;feature-tag-value&gt;的格式为：&lt;string&gt; [ &lt;integer&gt; | on | off ] &lt;feature-tag-value&gt;的个数可以有多个，中间用','隔开。 例如，使用等宽数字的输入格式为："ss01" on。默认值为`undefined`。
+设置文字特性效果，比如数字等宽的特性。格式为：normal | &lt;feature-tag-value&gt;&lt;feature-tag-value&gt;的格式为：&lt;string&gt; [ &lt;integer&gt; | on | off ]&lt;feature-tag-value&gt;的个数可以有多个，中间用','隔开。例如，使用等宽数字的输入格式为："ss01" on。默认值为`undefined`。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-fontFeature?: ResourceStr--><!--Device-SearchParams-fontFeature?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -236,15 +266,13 @@ fontFeature?: ResourceStr
 hideSelectionMenu?: boolean
 ```
 
-是否隐藏系统文本选择菜单。 设置为true时，单击输入框光标、长按输入框、双击输入框、三击输入框或者右键输入框，不弹出系统文本选择菜单。设置为false时，弹出系统文本选择菜单。默认值：`false`。
+是否隐藏系统文本选择菜单。设置为true时，单击输入框光标、长按输入框、双击输入框、三击输入框或者右键输入框，不弹出系统文本选择菜单。设置为false时，弹出系统文本选择菜单。默认值：`false`。
 
 **类型：** boolean
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-hideSelectionMenu?: boolean--><!--Device-SearchParams-hideSelectionMenu?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -254,15 +282,15 @@ hideSelectionMenu?: boolean
 inputFilter?: InputFilterParams
 ```
 
-通过正则表达式设置输入过滤器。匹配表达式的输入允许显示，不匹配的输入将被过滤。仅支持单个字符匹配，不支持字符串匹配。默认值为`undefined`。 -value: 正则表达式。 -error: 正则匹配失败时，返回被过滤的内容。
+通过正则表达式设置输入过滤器。匹配表达式的输入允许显示，不匹配的输入将被过滤。仅支持单个字符匹配，不支持字符串匹配。默认值为`undefined`。  
+-value: 正则表达式。  
+-error: 正则匹配失败时，返回被过滤的内容。
 
 **类型：** [InputFilterParams](arkts-arkui-atomicservice-atomicservicesearch-inputfilterparams-i.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-inputFilter?: InputFilterParams--><!--Device-SearchParams-inputFilter?: InputFilterParams-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -280,8 +308,6 @@ letterSpacing?: number | string | Resource
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchParams-letterSpacing?: number | string | Resource--><!--Device-SearchParams-letterSpacing?: number | string | Resource-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## maxFontSize
@@ -297,8 +323,6 @@ maxFontSize?: number | string | Resource
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-maxFontSize?: number | string | Resource--><!--Device-SearchParams-maxFontSize?: number | string | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -316,8 +340,6 @@ maxLength?: number
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchParams-maxLength?: number--><!--Device-SearchParams-maxLength?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## minFontSize
@@ -333,44 +355,6 @@ minFontSize?: number | string | Resource
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-minFontSize?: number | string | Resource--><!--Device-SearchParams-minFontSize?: number | string | Resource-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## onChange
-
-```TypeScript
-onChange?: EditableTextOnChangeCallback
-```
-
-输入内容发生变化时，触发该回调。默认值为`undefined`。
-
-**类型：** EditableTextOnChangeCallback
-
-**起始版本：** 18
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-onChange?: EditableTextOnChangeCallback--><!--Device-SearchParams-onChange?: EditableTextOnChangeCallback-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## onContentScroll
-
-```TypeScript
-onContentScroll?: OnContentScrollCallback
-```
-
-文本内容滚动时，触发该回调。默认值为`undefined`。
-
-**类型：** [OnContentScrollCallback](arkts-arkui-oncontentscrollcallback-t.md)
-
-**起始版本：** 18
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-onContentScroll?: OnContentScrollCallback--><!--Device-SearchParams-onContentScroll?: OnContentScrollCallback-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -388,8 +372,6 @@ onCopy?: Callback<string>
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchParams-onCopy?: Callback<string>--><!--Device-SearchParams-onCopy?: Callback<string>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onCut
@@ -406,8 +388,6 @@ onCut?: Callback<string>
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchParams-onCut?: Callback<string>--><!--Device-SearchParams-onCut?: Callback<string>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDidDelete
@@ -418,13 +398,11 @@ onDidDelete?: Callback<DeleteValue>
 
 在删除完成时触发该回调，在onWillDelete之后触发。当onWillDelete返回false拦截删除操作时，该回调不触发。默认值为`undefined`。
 
-**类型：** Callback&lt;DeleteValue&gt;
+**类型：** Callback&lt;[DeleteValue](arkts-arkui-deletevalue-i.md)&gt;
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-onDidDelete?: Callback<DeleteValue>--><!--Device-SearchParams-onDidDelete?: Callback<DeleteValue>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -436,13 +414,11 @@ onDidInsert?: Callback<InsertValue>
 
 在输入完成时触发该回调，在onWillInsert之后触发。当onWillInsert返回false拦截插入操作时，该回调不触发。默认值为`undefined`。 当enablePreviewText为true时，不触发本回调。
 
-**类型：** Callback&lt;InsertValue&gt;
+**类型：** Callback&lt;[InsertValue](arkts-arkui-insertvalue-i.md)&gt;
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-onDidInsert?: Callback<InsertValue>--><!--Device-SearchParams-onDidInsert?: Callback<InsertValue>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -460,26 +436,6 @@ onEditChange?: Callback<boolean>
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchParams-onEditChange?: Callback<boolean>--><!--Device-SearchParams-onEditChange?: Callback<boolean>-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## onPaste
-
-```TypeScript
-onPaste?: OnPasteCallback
-```
-
-进行粘贴操作时，触发该回调。默认值为`undefined`。
-
-**类型：** [OnPasteCallback](arkts-arkui-onpastecallback-t.md)
-
-**起始版本：** 18
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-onPaste?: OnPasteCallback--><!--Device-SearchParams-onPaste?: OnPasteCallback-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onSubmit
@@ -490,31 +446,11 @@ onSubmit?: Callback<string> | SearchSubmitCallback
 
 点击搜索图标、搜索按钮或者按下软键盘搜索按钮时触发该回调。string为当前搜索框中输入的文本内容。默认值为`undefined`。
 
-**类型：** Callback&lt;string&gt; \| SearchSubmitCallback
+**类型：** Callback&lt;string&gt; \| [SearchSubmitCallback](../arkts-components/arkts-arkui-searchsubmitcallback-t.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-onSubmit?: Callback<string> | SearchSubmitCallback--><!--Device-SearchParams-onSubmit?: Callback<string> | SearchSubmitCallback-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## onTextSelectionChange
-
-```TypeScript
-onTextSelectionChange?: OnTextSelectionChangeCallback
-```
-
-文本选择的位置发生变化或编辑状态下光标位置发生变化时，触发该回调。默认值为`undefined`。
-
-**类型：** [OnTextSelectionChangeCallback](arkts-arkui-ontextselectionchangecallback-t.md)
-
-**起始版本：** 18
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-onTextSelectionChange?: OnTextSelectionChangeCallback--><!--Device-SearchParams-onTextSelectionChange?: OnTextSelectionChangeCallback-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -526,13 +462,11 @@ onWillDelete?: Callback<DeleteValue, boolean>
 
 在将要删除时，触发该回调。true表示正常删除，false表示不删除。默认值为`undefined`。
 
-**类型：** Callback&lt;DeleteValue, boolean&gt;
+**类型：** Callback&lt;[DeleteValue](arkts-arkui-deletevalue-i.md), boolean&gt;
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-onWillDelete?: Callback<DeleteValue, boolean>--><!--Device-SearchParams-onWillDelete?: Callback<DeleteValue, boolean>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -544,13 +478,11 @@ onWillInsert?: Callback<InsertValue, boolean>
 
 在将要输入时，触发该回调。true表示将输入内容正常插入结果字符串，false表示不插入。默认值为`undefined`。 当enablePreviewText为true时，不触发本回调。
 
-**类型：** Callback&lt;InsertValue, boolean&gt;
+**类型：** Callback&lt;[InsertValue](arkts-arkui-insertvalue-i.md), boolean&gt;
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-onWillInsert?: Callback<InsertValue, boolean>--><!--Device-SearchParams-onWillInsert?: Callback<InsertValue, boolean>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -562,13 +494,11 @@ placeholderColor?: ResourceColor
 
 placeholder文本颜色。默认值：`\$r('sys.color.ohos_id_color_text_secondary')`。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-placeholderColor?: ResourceColor--><!--Device-SearchParams-placeholderColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -586,8 +516,6 @@ placeholderFont?: Font
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchParams-placeholderFont?: Font--><!--Device-SearchParams-placeholderFont?: Font-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## pressedBackgroundColor
@@ -598,13 +526,11 @@ pressedBackgroundColor?: ResourceColor
 
 设置组件按压态的背景色。默认值：`\$r('sys.color.ohos_id_color_click_effect')`。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-pressedBackgroundColor?: ResourceColor--><!--Device-SearchParams-pressedBackgroundColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -614,15 +540,15 @@ pressedBackgroundColor?: ResourceColor
 searchButton?: SearchButtonParams
 ```
 
-设置搜索框末尾搜索按钮。点击搜索按钮，触发onSubmit回调。默认值为`undefined` -searchButtonValue: 搜索框末尾搜索按钮文本内容。 -options: 配置搜索框文本样式。默认值：`{fontSize: '16fp', fontColor: '#ff3f97e9'}`。
+设置搜索框末尾搜索按钮。点击搜索按钮，触发onSubmit回调。默认值为`undefined`  
+-searchButtonValue: 搜索框末尾搜索按钮文本内容。  
+-options: 配置搜索框文本样式。默认值：`{fontSize: '16fp', fontColor: '#ff3f97e9'}`。
 
 **类型：** [SearchButtonParams](arkts-arkui-atomicservice-atomicservicesearch-searchbuttonparams-i.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-searchButton?: SearchButtonParams--><!--Device-SearchParams-searchButton?: SearchButtonParams-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -632,15 +558,13 @@ searchButton?: SearchButtonParams
 searchIcon?: IconOptions | SymbolGlyphModifier
 ```
 
-左侧搜索图标样式。 浅色模式默认值：`{size: '16vp', color: '#99182431', src: ' '}`。 深色模式默认值：`{size: '16vp', color: '#99ffffff', src: ' '}`。
+左侧搜索图标样式。浅色模式默认值：`{size: '16vp', color: '#99182431', src: ' '}`。深色模式默认值：`{size: '16vp', color: '#99ffffff', src: ' '}`。
 
 **类型：** IconOptions \| SymbolGlyphModifier
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-searchIcon?: IconOptions | SymbolGlyphModifier--><!--Device-SearchParams-searchIcon?: IconOptions | SymbolGlyphModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -652,13 +576,11 @@ searchKey?: ResourceStr
 
 用作标识内部search组件的唯一键值，便于外部通过该键值引用或查找对应的Search组件。默认值：`undefined`。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-searchKey?: ResourceStr--><!--Device-SearchParams-searchKey?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -670,13 +592,11 @@ selectedBackgroundColor?: ResourceColor
 
 文本选中底板颜色。默认值：系统默认底板颜色，20%不透明度。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-selectedBackgroundColor?: ResourceColor--><!--Device-SearchParams-selectedBackgroundColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -694,8 +614,6 @@ textAlign?: TextAlign
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchParams-textAlign?: TextAlign--><!--Device-SearchParams-textAlign?: TextAlign-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## textFont
@@ -712,8 +630,6 @@ textFont?: Font
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchParams-textFont?: Font--><!--Device-SearchParams-textFont?: Font-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## textIndent
@@ -724,13 +640,11 @@ textIndent?: Dimension
 
 首行文本缩进。默认值：`0`。单位：vp。
 
-**类型：** Dimension
+**类型：** [Dimension](arkts-arkui-dimension-t.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchParams-textIndent?: Dimension--><!--Device-SearchParams-textIndent?: Dimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -742,13 +656,10 @@ type?: SearchType
 
 输入框类型。默认值：`SearchType.Normal`。
 
-**类型：** SearchType
+**类型：** [SearchType](../arkts-components/arkts-arkui-searchtype-e.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchParams-type?: SearchType--><!--Device-SearchParams-type?: SearchType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

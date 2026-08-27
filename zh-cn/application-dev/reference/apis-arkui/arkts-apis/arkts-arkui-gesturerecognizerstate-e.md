@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare enum GestureRecognizerState--><!--Device-unnamed-declare enum GestureRecognizerState-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## READY
@@ -21,8 +19,6 @@ READY = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GestureRecognizerState-READY = 0--><!--Device-GestureRecognizerState-READY = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ DETECTING = 1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GestureRecognizerState-DETECTING = 1--><!--Device-GestureRecognizerState-DETECTING = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PENDING
@@ -57,8 +51,6 @@ PENDING = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GestureRecognizerState-PENDING = 2--><!--Device-GestureRecognizerState-PENDING = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,8 +68,6 @@ BLOCKED = 3
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GestureRecognizerState-BLOCKED = 3--><!--Device-GestureRecognizerState-BLOCKED = 3-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SUCCESSFUL
@@ -93,8 +83,6 @@ SUCCESSFUL = 4
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GestureRecognizerState-SUCCESSFUL = 4--><!--Device-GestureRecognizerState-SUCCESSFUL = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,7 +100,4 @@ FAILED = 5
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GestureRecognizerState-FAILED = 5--><!--Device-GestureRecognizerState-FAILED = 5-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

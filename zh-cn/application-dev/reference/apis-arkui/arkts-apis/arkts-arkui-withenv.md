@@ -24,6 +24,5 @@ import { WithEnv, WithEnvAttribute} from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [WithEnv(定义WithEnv组件，允许为子组件设置环境属性。)](arkts-arkui-arkui-withenv-con.md#withenv) | WithEnv组件用于为子组件树设置局部环境变量作用域。开发者可以通过该组件为后代组件提供自定义环境变量，或设置系统环境变量。 |
+| [WithEnv(定义WithEnv组件，允许为子组件设置环境属性。)](arkts-arkui-arkui-withenv-con.md) | WithEnv组件用于为子组件树设置局部环境变量作用域。开发者可以通过该组件为后代组件提供自定义环境变量，或设置系统环境变量。 |
 | [WithEnvInstance(定义WithEnv组件，允许为子组件设置环境属性。)](arkts-arkui-arkui-withenv-con.md#withenvinstance) | 定义WithEnv逻辑组件实例。 |
-

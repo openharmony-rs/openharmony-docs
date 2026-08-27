@@ -12,7 +12,4 @@ declare type ReuseIdCallback = () => string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type ReuseIdCallback = () => string--><!--Device-unnamed-declare type ReuseIdCallback = () => string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

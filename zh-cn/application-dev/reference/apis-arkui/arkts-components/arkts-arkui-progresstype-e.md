@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-<!--Device-unnamed-declare enum ProgressType--><!--Device-unnamed-declare enum ProgressType-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Linear
@@ -21,8 +19,6 @@ Linear = 0
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-ProgressType-Linear = 0--><!--Device-ProgressType-Linear = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +36,6 @@ Ring = 1
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ProgressType-Ring = 1--><!--Device-ProgressType-Ring = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Eclipse
@@ -57,8 +51,6 @@ Eclipse = 2
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-ProgressType-Eclipse = 2--><!--Device-ProgressType-Eclipse = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,8 +68,6 @@ ScaleRing = 3
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ProgressType-ScaleRing = 3--><!--Device-ProgressType-ScaleRing = 3-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Capsule
@@ -94,7 +84,4 @@ Capsule = 4
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ProgressType-Capsule = 4--><!--Device-ProgressType-Capsule = 4-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -1,10 +1,8 @@
 # UIFontAdjustInfo
 
-**起始版本：** 23
+系统的UI字体配置信息。
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
-
-<!--Device-font-interface UIFontAdjustInfo--><!--Device-font-interface UIFontAdjustInfo-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -17,40 +15,35 @@ import { font } from '@kit.ArkUI';
 ## to
 
 ```TypeScript
-to: int
+to: number
 ```
 
-字体在应用中显示的weight值。 可返回的值有100、400、700、900。
+字体在应用中显示的weight值。可返回的值有100、400、700、900。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UIFontAdjustInfo-to: int--><!--Device-UIFontAdjustInfo-to: int-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## weight
 
 ```TypeScript
-weight: double
+weight: number
 ```
 
-字体原本的weight值。 可返回的值有50、80、100、200。
+字体原本的weight值。可返回的值有50、80、100、200。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UIFontAdjustInfo-weight: double--><!--Device-UIFontAdjustInfo-weight: double-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

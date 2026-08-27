@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-declare interface RichEditorSymbolSpanStyleResult--><!--Device-unnamed-declare interface RichEditorSymbolSpanStyleResult-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,17 +17,15 @@
 effectStrategy: SymbolEffectStrategy
 ```
 
-SymbolSpan组件动效策略。 默认值：SymbolEffectStrategy.NONE。
+SymbolSpan组件动效策略。默认值：SymbolEffectStrategy.NONE。
 
-**类型：** SymbolEffectStrategy
+**类型：** [SymbolEffectStrategy](arkts-arkui-symboleffectstrategy-e.md)
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RichEditorSymbolSpanStyleResult-effectStrategy: SymbolEffectStrategy--><!--Device-RichEditorSymbolSpanStyleResult-effectStrategy: SymbolEffectStrategy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,17 +35,15 @@ SymbolSpan组件动效策略。 默认值：SymbolEffectStrategy.NONE。
 fontColor: Array<ResourceColor>
 ```
 
-SymbolSpan组件颜色。 默认值：不同渲染策略下默认值不同。
+SymbolSpan组件颜色。默认值：不同渲染策略下默认值不同。
 
-**类型：** Array&lt;ResourceColor&gt;
+**类型：** Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt;
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RichEditorSymbolSpanStyleResult-fontColor: Array<ResourceColor>--><!--Device-RichEditorSymbolSpanStyleResult-fontColor: Array<ResourceColor>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,7 +53,7 @@ SymbolSpan组件颜色。 默认值：不同渲染策略下默认值不同。
 fontSize: number | string | Resource
 ```
 
-SymbolSpan组件大小，默认单位为fp。 默认值：跟随主题。
+SymbolSpan组件大小，默认单位为fp。默认值：跟随主题。
 
 **类型：** number \| string \| Resource
 
@@ -69,8 +63,6 @@ SymbolSpan组件大小，默认单位为fp。 默认值：跟随主题。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorSymbolSpanStyleResult-fontSize: number | string | Resource--><!--Device-RichEditorSymbolSpanStyleResult-fontSize: number | string | Resource-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontWeight
@@ -79,7 +71,7 @@ SymbolSpan组件大小，默认单位为fp。 默认值：跟随主题。
 fontWeight: number | FontWeight | string
 ```
 
-SymbolSpan组件粗细。 number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。 string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular” 、“medium”分别对应FontWeight中相应的枚举值。 默认值：FontWeight.Normal。
+SymbolSpan组件粗细。number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular” 、“medium”分别对应FontWeight中相应的枚举值。默认值：FontWeight.Normal。
 
 **类型：** number \| FontWeight \| string
 
@@ -89,8 +81,6 @@ SymbolSpan组件粗细。 number类型取值[100,900]，取值间隔为100，默
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorSymbolSpanStyleResult-fontWeight: number | FontWeight | string--><!--Device-RichEditorSymbolSpanStyleResult-fontWeight: number | FontWeight | string-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## renderingStrategy
@@ -99,9 +89,9 @@ SymbolSpan组件粗细。 number类型取值[100,900]，取值间隔为100，默
 renderingStrategy: SymbolRenderingStrategy
 ```
 
-SymbolSpan组件渲染策略。 默认值：SymbolRenderingStrategy.SINGLE。
+SymbolSpan组件渲染策略。默认值：SymbolRenderingStrategy.SINGLE。
 
-**类型：** SymbolRenderingStrategy
+**类型：** [SymbolRenderingStrategy](arkts-arkui-symbolrenderingstrategy-e.md)
 
 **起始版本：** 11
 
@@ -109,7 +99,4 @@ SymbolSpan组件渲染策略。 默认值：SymbolRenderingStrategy.SINGLE。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RichEditorSymbolSpanStyleResult-renderingStrategy: SymbolRenderingStrategy--><!--Device-RichEditorSymbolSpanStyleResult-renderingStrategy: SymbolRenderingStrategy-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

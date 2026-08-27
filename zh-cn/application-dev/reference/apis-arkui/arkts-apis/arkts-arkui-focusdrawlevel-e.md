@@ -1,10 +1,8 @@
 # FocusDrawLevel
 
-Type of focus draw level.
+Type of focus draw level.@enum {number}
 
 **起始版本：** 19
-
-<!--Device-unnamed-declare enum FocusDrawLevel--><!--Device-unnamed-declare enum FocusDrawLevel-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,8 +22,6 @@ Draw focus on node self level.
 
 **卡片能力：** 从API版本19开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-FocusDrawLevel-SELF = 0--><!--Device-FocusDrawLevel-SELF = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TOP
@@ -44,7 +40,4 @@ Draw focus on top level.
 
 **卡片能力：** 从API版本19开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-FocusDrawLevel-TOP = 1--><!--Device-FocusDrawLevel-TOP = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

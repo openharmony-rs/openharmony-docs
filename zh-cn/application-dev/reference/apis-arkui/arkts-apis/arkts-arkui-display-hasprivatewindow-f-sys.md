@@ -9,14 +9,12 @@ import { display } from '@kit.ArkUI';
 ## hasPrivateWindow
 
 ```TypeScript
-function hasPrivateWindow(displayId: long): boolean
+function hasPrivateWindow(displayId: number): boolean
 ```
 
 查询指定display对象上是否有可见的隐私窗口。可通过 [setWindowPrivacyMode()](../../../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9)接口设置隐私窗口。 隐私窗口内容将无法被截屏或录屏。
 
-**起始版本：** 23
-
-<!--Device-display-function hasPrivateWindow(displayId: long): boolean--><!--Device-display-function hasPrivateWindow(displayId: long): boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -26,7 +24,7 @@ function hasPrivateWindow(displayId: long): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayId | long | 是 | 屏幕ID，该参数仅支持整数输入。该参数大于等于0。 |
+| displayId | number | 是 | 屏幕ID，该参数仅支持整数输入。该参数大于等于0。 |
 
 **返回值：**
 
@@ -38,13 +36,11 @@ function hasPrivateWindow(displayId: long): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
-| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { display } from '@kit.ArkUI';
@@ -70,34 +66,3 @@ try {
   console.error(`Failed to obtain the default display object. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { display } from '@kit.ArkUI';
-
-let displayClass: display.Display | null = null;
-try {
-  displayClass = display.getDefaultDisplaySync();
-
-  let ret: boolean = true;
-  try {
-    ret = display.hasPrivateWindow(displayClass.id);
-  } catch (exception) {
-    let error = exception as BusinessError;
-    console.error(`Failed to check has privateWindow or not. Code: ${error.code} , message: ${error.message}`);
-  }
-  if (ret == undefined) {
-    console.error("Failed to check has privateWindow or not.");
-  }
-  if (ret) {
-    console.info("There has privateWindow.");
-  } else if (!ret) {
-    console.info("There has no privateWindow.");
-  }
-} catch (exception) {
-  let error = exception as BusinessError;
-  console.error(`Failed to obtain the default display object. Code: ${error.code} , message: ${error.message}`);
-}
-```
-

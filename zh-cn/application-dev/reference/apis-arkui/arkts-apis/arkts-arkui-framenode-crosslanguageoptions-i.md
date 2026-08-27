@@ -4,8 +4,6 @@
 
 **起始版本：** 15
 
-<!--Device-unnamed-declare interface CrossLanguageOptions--><!--Device-unnamed-declare interface CrossLanguageOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## attributeSetting
@@ -14,7 +12,7 @@
 attributeSetting?: boolean
 ```
 
-FrameNode是否支持跨ArkTS语言进行属性设置。 true表示支持跨ArkTS语言进行属性设置，false表示不支持跨ArkTS语言进行属性设置。 默认值为false。
+FrameNode是否支持跨ArkTS语言进行属性设置。true表示支持跨ArkTS语言进行属性设置，false表示不支持跨ArkTS语言进行属性设置。默认值为false。
 
 **类型：** boolean
 
@@ -26,8 +24,6 @@ FrameNode是否支持跨ArkTS语言进行属性设置。 true表示支持跨ArkT
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CrossLanguageOptions-attributeSetting?: boolean--><!--Device-CrossLanguageOptions-attributeSetting?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## treeOperating
@@ -36,7 +32,8 @@ FrameNode是否支持跨ArkTS语言进行属性设置。 true表示支持跨ArkT
 treeOperating?: boolean
 ```
 
-FrameNode是否支持跨ArkTS语言进行组件树操作。 true表示支持跨ArkTS语言进行组件树操作，false表示不支持跨ArkTS语言进行组件树操作。 默认值为false。 **说明：** 当FrameNode启用了跨ArkTS语言进行组件树操作的选项后，支持该FrameNode跨ArkTS语言调用 [addChild](../../../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)、 [insertChildAfter](../../../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildafter) 、[insertChildAt](../../../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildat)、 [insertChildBefore](../../../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildbefore) 和[removeChild](../../../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removechild)。
+FrameNode是否支持跨ArkTS语言进行组件树操作。true表示支持跨ArkTS语言进行组件树操作，false表示不支持跨ArkTS语言进行组件树操作。默认值为false。  
+**说明：** 当FrameNode启用了跨ArkTS语言进行组件树操作的选项后，支持该FrameNode跨ArkTS语言调用 addChild、 insertChildAfter 、insertChildAt、 insertChildBefore 和removeChild。
 
 **类型：** boolean
 
@@ -48,7 +45,4 @@ FrameNode是否支持跨ArkTS语言进行组件树操作。 true表示支持跨A
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CrossLanguageOptions-treeOperating?: boolean--><!--Device-CrossLanguageOptions-treeOperating?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

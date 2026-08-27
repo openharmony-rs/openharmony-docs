@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-screen-interface OrientationOptions--><!--Device-screen-interface OrientationOptions-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -14,7 +12,6 @@
 
 ```TypeScript
 import { screen } from '@kit.ArkUI';
-import { screenshot } from '@kit.ArkUI';
 ```
 
 ## ignoreRotationLock
@@ -32,8 +29,6 @@ ignoreRotationLock?: boolean
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-OrientationOptions-ignoreRotationLock?: boolean--><!--Device-OrientationOptions-ignoreRotationLock?: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -55,9 +50,6 @@ needAnimation?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-OrientationOptions-needAnimation?: boolean--><!--Device-OrientationOptions-needAnimation?: boolean-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 20
 
-<!--Device-unnamed-declare enum AudioSessionType--><!--Device-unnamed-declare enum AudioSessionType-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## AMBIENT
@@ -18,7 +16,4 @@ AMBIENT = 3
 
 **起始版本：** 20
 
-<!--Device-AudioSessionType-AMBIENT = 3--><!--Device-AudioSessionType-AMBIENT = 3-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

@@ -6,8 +6,6 @@ Defines the struct of CalendarRequestedData.
 
 **废弃版本：** 20
 
-<!--Device-unnamed-declare interface CalendarRequestedData--><!--Device-unnamed-declare interface CalendarRequestedData-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -33,8 +31,6 @@ Current Month
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-CalendarRequestedData-currentMonth: number--><!--Device-CalendarRequestedData-currentMonth: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -54,8 +50,6 @@ Current Year
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-CalendarRequestedData-currentYear: number--><!--Device-CalendarRequestedData-currentYear: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,8 +71,6 @@ Previous month
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-CalendarRequestedData-month: number--><!--Device-CalendarRequestedData-month: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -98,8 +90,6 @@ State of month
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-CalendarRequestedData-monthState: number--><!--Device-CalendarRequestedData-monthState: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,9 +111,6 @@ Previous year
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-CalendarRequestedData-year: number--><!--Device-CalendarRequestedData-year: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

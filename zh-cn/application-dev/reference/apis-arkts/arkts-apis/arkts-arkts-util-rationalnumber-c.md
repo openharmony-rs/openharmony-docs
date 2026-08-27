@@ -4,49 +4,11 @@
 
 **起始版本：** 8
 
-<!--Device-util-class RationalNumber--><!--Device-util-class RationalNumber-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { ArrayList } from '@kit.ArkTS';
-import { ArrayListComparatorFn } from '@kit.ArkTS';
-import { ArrayListForEachCb } from '@kit.ArkTS';
-import { ArrayListReplaceCb } from '@kit.ArkTS';
-import { util } from '@kit.ArkTS';
-import { Deque } from '@kit.ArkTS';
-import { DequeForEachCb } from '@kit.ArkTS';
-import { HashMap } from '@kit.ArkTS';
-import { HashMapCbFn } from '@kit.ArkTS';
-import { HashSet } from '@kit.ArkTS';
-import { HashSetCbFn } from '@kit.ArkTS';
-import { LightWeightMap } from '@kit.ArkTS';
-import { LightWeightMapCbFn } from '@kit.ArkTS';
-import { LightWeightSet } from '@kit.ArkTS';
-import { LightWeightSetForEachCb } from '@kit.ArkTS';
-import { LinkedList } from '@kit.ArkTS';
-import { LinkedListForEachCb } from '@kit.ArkTS';
-import { List } from '@kit.ArkTS';
-import { ListComparatorFn } from '@kit.ArkTS';
-import { ListForEachCb } from '@kit.ArkTS';
-import { ListReplaceCb } from '@kit.ArkTS';
-import { PlainArray } from '@kit.ArkTS';
-import { PlainArrayForEachCb } from '@kit.ArkTS';
-import { Queue } from '@kit.ArkTS';
-import { QueueForEachCb } from '@kit.ArkTS';
-import { Stack } from '@kit.ArkTS';
-import { StackForEachCb } from '@kit.ArkTS';
-import { TreeMap } from '@kit.ArkTS';
-import { TreeMapForEachCb } from '@kit.ArkTS';
-import { TreeMapComparator } from '@kit.ArkTS';
-import { TreeSet } from '@kit.ArkTS';
-import { TreeSetForEachCb } from '@kit.ArkTS';
-import { TreeSetComparator } from '@kit.ArkTS';
-import { stream } from '@kit.ArkTS';
-import { Vector } from '@kit.ArkTS';
-import { JSON } from '@kit.ArkTS';
 ```
 
 ## compare
@@ -61,8 +23,6 @@ compare(another: RationalNumber): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RationalNumber-compare(another: RationalNumber): number--><!--Device-RationalNumber-compare(another: RationalNumber): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -76,6 +36,16 @@ compare(another: RationalNumber): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 根据比较结果返回 0、1 或 -1。 |
+
+**示例**
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
+let rational = util.RationalNumber.createRationalFromString("3/4");
+let result = rationalNumber.compare(rational);
+console.info("result = " + result);
+// 输出结果：result = -1
+```
 
 ## compareTo
 
@@ -91,8 +61,6 @@ compareTo(another: RationalNumber): number
 
 **替代接口：** compare
 
-<!--Device-RationalNumber-compareTo(another: RationalNumber): number--><!--Device-RationalNumber-compareTo(another: RationalNumber): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -107,6 +75,16 @@ compareTo(another: RationalNumber): number
 | --- | --- |
 | number | 根据比较结果返回 0、1 或 -1。 |
 
+**示例**
+
+```TypeScript
+let rationalNumber = new util.RationalNumber(1,2);
+let rational = util.RationalNumber.createRationalFromString("3/4");
+let result = rationalNumber.compareTo(rational);
+console.info("result = " + result);
+// 输出结果：result = -1
+```
+
 ## constructor
 
 ```TypeScript
@@ -120,8 +98,6 @@ constructor(numerator: number, denominator: number)
 **废弃版本：** 9
 
 **替代接口：** [parseRationalNumber](#parserationalnumber)
-
-<!--Device-RationalNumber-constructor(numerator: number, denominator: number)--><!--Device-RationalNumber-constructor(numerator: number, denominator: number)-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -150,14 +126,35 @@ constructor()
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RationalNumber-constructor()--><!--Device-RationalNumber-constructor()-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **示例**
 
 ```TypeScript
+let textDecoder = new util.TextDecoder();
+let retStr = textDecoder.encoding;
+console.info('retStr = ' + retStr);
+// 输出结果：retStr = utf-8
+```
+
+```TypeScript
+let textEncoder = new util.TextEncoder();
+```
+
+```TypeScript
 let rationalNumber = new util.RationalNumber();
+```
+
+```TypeScript
+let base64 = new util.Base64Helper();
+```
+
+```TypeScript
+let type = new util.types();
+```
+
+```TypeScript
+let base64 = new  util.Base64();
 ```
 
 ## createRationalFromString
@@ -166,13 +163,16 @@ let rationalNumber = new util.RationalNumber();
 static createRationalFromString(rationalString: string): RationalNumber
 ```
 
-根据给定的字符串创建一个 **RationalNumber** 对象。 > **NOTE：**> > **rationalString** 参数必须为字符串。如果传入小数字符串，该函数不会被拦截，但会显示错误信息 > "createRationalFromString: The type of Parameter must be integer string"。
+根据给定的字符串创建一个 **RationalNumber** 对象。
+
+> **NOTE：**
+> 
+> **rationalString** 参数必须为字符串。如果传入小数字符串，该函数不会被拦截，但会显示错误信息
+> "createRationalFromString: The type of Parameter must be integer string"。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RationalNumber-static createRationalFromString(rationalString: string): RationalNumber--><!--Device-RationalNumber-static createRationalFromString(rationalString: string): RationalNumber-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -188,6 +188,12 @@ static createRationalFromString(rationalString: string): RationalNumber
 | --- | --- |
 | [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 返回根据给定字符串生成的 RationalNumber 对象。 |
 
+**示例**
+
+```TypeScript
+let rational = util.RationalNumber.createRationalFromString("3/4");
+```
+
 ## equals
 
 ```TypeScript
@@ -199,8 +205,6 @@ equals(obj: Object): boolean
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RationalNumber-equals(obj: Object): boolean--><!--Device-RationalNumber-equals(obj: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -250,8 +254,6 @@ static getCommonDivisor(number1: number, number2: number): number
 
 **替代接口：** [getCommonFactor](#getcommonfactor)
 
-<!--Device-RationalNumber-static getCommonDivisor(number1: number, number2: number): number--><!--Device-RationalNumber-static getCommonDivisor(number1: number, number2: number): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -273,13 +275,16 @@ static getCommonDivisor(number1: number, number2: number): number
 static getCommonFactor(number1: number, number2: number): number
 ```
 
-获取两个指定整数的最大公约数。 > **NOTE：**> > **number1** 和 **number2** 参数必须为整数。如果传入小数，该函数不会被拦截，但会显示错误信息 > "getCommonFactor: The type of Parameter must be integer"。
+获取两个指定整数的最大公约数。
+
+> **NOTE：**
+> 
+> **number1** 和 **number2** 参数必须为整数。如果传入小数，该函数不会被拦截，但会显示错误信息
+> "getCommonFactor: The type of Parameter must be integer"。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RationalNumber-static getCommonFactor(number1: number, number2: number): number--><!--Device-RationalNumber-static getCommonFactor(number1: number, number2: number): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -287,8 +292,8 @@ static getCommonFactor(number1: number, number2: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| number1 | number | 是 | 用于获取最大公约数的第一个整数。取值范围：-Number.MAX_VALUE &lt;= number1 &lt;= Number.MAX_VALUE。 |
-| number2 | number | 是 | 用于获取最大公约数的第二个整数。取值范围：-Number.MAX_VALUE &lt;= number2 &lt;= Number.MAX_VALUE。 |
+| number1 | number | 是 | 用于获取最大公约数的第一个整数。取值范围：-Number.MAX_VALUE & lt;= number1 & lt;= Number.MAX_VALUE。 |
+| number2 | number | 是 | 用于获取最大公约数的第二个整数。取值范围：-Number.MAX_VALUE & lt;= number2 & lt;= Number.MAX_VALUE。 |
 
 **返回值：**
 
@@ -315,8 +320,6 @@ getDenominator(): number
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RationalNumber-getDenominator(): number--><!--Device-RationalNumber-getDenominator(): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -356,8 +359,6 @@ getNumerator(): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RationalNumber-getNumerator(): number--><!--Device-RationalNumber-getNumerator(): number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -395,8 +396,6 @@ isFinite(): boolean
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RationalNumber-isFinite(): boolean--><!--Device-RationalNumber-isFinite(): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -436,8 +435,6 @@ isNaN(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RationalNumber-isNaN(): boolean--><!--Device-RationalNumber-isNaN(): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -476,8 +473,6 @@ isZero(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RationalNumber-isZero(): boolean--><!--Device-RationalNumber-isZero(): boolean-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -510,13 +505,16 @@ console.info("result = " + result);
 static parseRationalNumber(numerator: number, denominator: number): RationalNumber
 ```
 
-根据给定的分子和分母创建一个 **RationalNumber** 实例。 > **NOTE：**> > **numerator** 和 **denominator** 参数必须为整数。如果传入小数，该函数不会被拦截，但会显示错误信息 > "parseRationalNumber: The type of Parameter must be integer"。
+根据给定的分子和分母创建一个 **RationalNumber** 实例。
+
+> **NOTE：**
+> 
+> **numerator** 和 **denominator** 参数必须为整数。如果传入小数，该函数不会被拦截，但会显示错误信息
+> "parseRationalNumber: The type of Parameter must be integer"。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RationalNumber-static parseRationalNumber(numerator: number, denominator: number): RationalNumber--><!--Device-RationalNumber-static parseRationalNumber(numerator: number, denominator: number): RationalNumber-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -524,8 +522,8 @@ static parseRationalNumber(numerator: number, denominator: number): RationalNumb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| numerator | number | 是 | 分子，为整数。取值范围：-Number.MAX_VALUE &lt;= numerator &lt;= Number.MAX_VALUE。 |
-| denominator | number | 是 | 分母，为整数。取值范围：-Number.MAX_VALUE &lt;= denominator &lt;= Number.MAX_VALUE。 |
+| numerator | number | 是 | 分子，为整数。取值范围：-Number.MAX_VALUE & lt;= numerator & lt;= Number.MAX_VALUE。 |
+| denominator | number | 是 | 分母，为整数。取值范围：-Number.MAX_VALUE & lt;= denominator & lt;= Number.MAX_VALUE。 |
 
 **返回值：**
 
@@ -550,8 +548,6 @@ toString(): string
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RationalNumber-toString(): string--><!--Device-RationalNumber-toString(): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -579,6 +575,84 @@ console.info("result = " + result);
 // 输出结果：result = 1/2
 ```
 
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+pro.put(2, 10);
+pro.get(2);
+pro.get(3);
+console.info(pro.toString());
+// 输出结果：LRUCache[ maxSize = 64, hits = 1, misses = 1, hitRate = 50% ]
+// maxSize: 缓存区最大值 hits: 查询值匹配成功的次数 misses: 查询值匹配失败的次数 hitRate: 查询值匹配率
+```
+
+```TypeScript
+class Temperature implements util.ScopeComparable {
+  private readonly _temp: number;
+
+  constructor(value: number) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp() {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+
+let tempLower = new Temperature(30);
+let tempUpper = new Temperature(40);
+let range = new util.ScopeHelper(tempLower, tempUpper);
+let result = range.toString();
+console.info("result = " + result);
+// 输出结果：result = [30, 40]
+```
+
+```TypeScript
+let pro : util.LruBuffer<number,number> = new util.LruBuffer();
+pro.put(2,10);
+pro.get(2);
+pro.remove(20);
+let result = pro.toString();
+console.info("result = " + result);
+// 输出结果：result = Lrubuffer[ maxSize = 64, hits = 1, misses = 0, hitRate = 100% ]
+```
+
+```TypeScript
+class Temperature implements util.ScopeComparable {
+  private readonly _temp: number;
+
+  constructor(value: number) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp() {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+
+let tempLower = new Temperature(30);
+let tempUpper = new Temperature(40);
+let range = new util.Scope(tempLower, tempUpper);
+let result = range.toString();
+console.info("result = " + result);
+// 输出结果：result = [30, 40]
+```
+
 ## valueOf
 
 ```TypeScript
@@ -590,8 +664,6 @@ valueOf(): number
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RationalNumber-valueOf(): number--><!--Device-RationalNumber-valueOf(): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -618,4 +690,3 @@ let result = rationalNumber.valueOf();
 console.info("result = " + result);
 // 输出结果：result = 0.5
 ```
-

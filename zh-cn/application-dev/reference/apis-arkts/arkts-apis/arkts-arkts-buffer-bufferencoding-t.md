@@ -6,11 +6,9 @@ type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' 
 
 表示支持的编码格式类型。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-buffer-type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'--><!--Device-buffer-type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -27,4 +25,3 @@ type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' 
 | 'latin1' | iso-8859-1的别名，向下兼容ascii格式。 |
 | 'binary' | 表示二进制格式。 |
 | 'hex' | 表示十六进制格式。 |
-

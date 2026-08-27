@@ -4,8 +4,6 @@
 
 **起始版本：** 15
 
-<!--Device-unnamed-interface BaseHandlerOptions--><!--Device-unnamed-interface BaseHandlerOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,7 +17,7 @@
 isFingerCountLimited?: boolean
 ```
 
-是否检查触摸屏幕的手指数量。true表示检查触摸屏幕的手指数量，false表示不检查触摸屏幕的手指数量。 默认值：false
+是否检查触摸屏幕的手指数量。true表示检查触摸屏幕的手指数量，false表示不检查触摸屏幕的手指数量。默认值：false
 
 **类型：** boolean
 
@@ -29,7 +27,4 @@ isFingerCountLimited?: boolean
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BaseHandlerOptions-isFingerCountLimited?: boolean--><!--Device-BaseHandlerOptions-isFingerCountLimited?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

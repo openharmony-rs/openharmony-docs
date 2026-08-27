@@ -1,17 +1,19 @@
 # ArrayBuffer
 
-ArkTS TypedArray（[Int8Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Uint8Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Int16Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Uint16Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Int32Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Uint32Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Uint8ClampedArray](../../apis-na/arkts-apis/arkts-collections.md)、 [Float32Array](../../apis-na/arkts-apis/arkts-collections.md)）的底层数据结构。 > **说明：**> > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 > **装饰器类型**：\@Sendable
+ArkTS TypedArray（[Int8Array](arkts-arkts-collections-int8array-c.md)、 [Uint8Array](arkts-arkts-collections-uint8array-c.md)、 [Int16Array](arkts-arkts-collections-int16array-c.md)、 [Uint16Array](arkts-arkts-collections-uint16array-c.md)、 [Int32Array](arkts-arkts-collections-int32array-c.md)、 [Uint32Array](arkts-arkts-collections-uint32array-c.md)、 [Uint8ClampedArray](arkts-arkts-collections-uint8clampedarray-c.md)、 [Float32Array](arkts-arkts-collections-float32array-c.md)）的底层数据结构。
+
+> **说明：**
+> 
+> - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
+> **装饰器类型**：\@Sendable
 
 **起始版本：** 12
-
-<!--Device-collections-class ArrayBuffer--><!--Device-collections-class ArrayBuffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { collections } from '@kit.ArkTS';
 ```
 
 ## constructor
@@ -25,8 +27,6 @@ constructor(byteLength: number)
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ArrayBuffer-constructor(byteLength: number)--><!--Device-ArrayBuffer-constructor(byteLength: number)-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -53,8 +53,6 @@ slice(begin: number, end?: number): ArrayBuffer
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ArrayBuffer-slice(begin: number, end?: number): ArrayBuffer--><!--Device-ArrayBuffer-slice(begin: number, end?: number): ArrayBuffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -92,7 +90,4 @@ buffer所占的字节数。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArrayBuffer-readonly byteLength: number--><!--Device-ArrayBuffer-readonly byteLength: number-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

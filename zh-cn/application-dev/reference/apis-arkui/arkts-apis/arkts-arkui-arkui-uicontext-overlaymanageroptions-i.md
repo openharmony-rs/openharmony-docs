@@ -1,10 +1,8 @@
 # OverlayManagerOptions
 
-the property of OverlayManager.
+the property of OverlayManager.@interface OverlayManagerOptions
 
 **起始版本：** 15
-
-<!--Device-unnamed-export interface OverlayManagerOptions--><!--Device-unnamed-export interface OverlayManagerOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,8 +33,6 @@ Set whether support backPressed event or not.
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OverlayManagerOptions-enableBackPressedEvent?: boolean--><!--Device-OverlayManagerOptions-enableBackPressedEvent?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## renderRootOverlay
@@ -57,7 +53,4 @@ the render property of overlay node.
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OverlayManagerOptions-renderRootOverlay?: boolean--><!--Device-OverlayManagerOptions-renderRootOverlay?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

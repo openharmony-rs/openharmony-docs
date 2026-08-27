@@ -1,10 +1,8 @@
 # MaterialProperty
 
-材质属性接口，用于定义材质所使用的纹理、属性因子及纹理采样器信息。
+材质属性接口，用于定义材质所使用的纹理、属性因子及纹理采样器信息。@interface MaterialProperty
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface MaterialProperty--><!--Device-unnamed-export interface MaterialProperty-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -18,9 +16,7 @@ factor: Vec4
 
 **类型：** [Vec4](arkts-arkgraphics3d-scenetypes-vec4-i.md)
 
-**起始版本：** 23
-
-<!--Device-MaterialProperty-factor: Vec4--><!--Device-MaterialProperty-factor: Vec4-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -34,9 +30,7 @@ image: Image | null
 
 **类型：** [Image](arkts-arkgraphics3d-sceneresources-image-i.md) \| null
 
-**起始版本：** 23
-
-<!--Device-MaterialProperty-image: Image | null--><!--Device-MaterialProperty-image: Image | null-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -50,9 +44,6 @@ sampler?: Sampler
 
 **类型：** [Sampler](arkts-arkgraphics3d-sceneresources-sampler-i.md)
 
-**起始版本：** 23
-
-<!--Device-MaterialProperty-sampler?: Sampler--><!--Device-MaterialProperty-sampler?: Sampler-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-

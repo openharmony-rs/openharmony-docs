@@ -6,8 +6,6 @@ BadgeParamWithNumber继承自[BadgeParam](arkts-arkui-badgeparam-i.md)，具有B
 
 **起始版本：** 7
 
-<!--Device-unnamed-declare interface BadgeParamWithString--><!--Device-unnamed-declare interface BadgeParamWithString-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -21,9 +19,10 @@ BadgeParamWithNumber继承自[BadgeParam](arkts-arkui-badgeparam-i.md)，具有B
 value: ResourceStr
 ```
 
-提示内容的文本字符串。 **说明：** value为空字符串时不显示文本，仅显示圆点标记。 从API version 20开始，支持ResourceStr类型。
+提示内容的文本字符串。  
+**说明：**value为空字符串时不显示文本，仅显示圆点标记。从API version 20开始，支持ResourceStr类型。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 7
 
@@ -31,7 +30,4 @@ value: ResourceStr
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BadgeParamWithString-value: ResourceStr--><!--Device-BadgeParamWithString-value: ResourceStr-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

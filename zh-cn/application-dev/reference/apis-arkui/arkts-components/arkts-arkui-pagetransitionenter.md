@@ -14,8 +14,6 @@ PageTransitionEnter(value: PageTransitionOptions)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PageTransitionEnterInterface-(value: PageTransitionOptions): PageTransitionEnterInterface--><!--Device-PageTransitionEnterInterface-(value: PageTransitionOptions): PageTransitionEnterInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**
@@ -36,8 +34,6 @@ PageTransitionEnter(event: PageTransitionCallback)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PageTransitionEnterInterface-onEnter(event: PageTransitionCallback): PageTransitionEnterInterface--><!--Device-PageTransitionEnterInterface-onEnter(event: PageTransitionCallback): PageTransitionEnterInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**
@@ -52,6 +48,7 @@ PageTransitionEnter(event: PageTransitionCallback)
 
 | 名称 | 说明 |
 | --- | --- |
+| [PageTransitionExitInterface](arkts-arkui-pagetransitionexitinterface-i.md) | 当前页面的自定义退场动效。继承自[CommonTransition](arkts-arkui-commontransition-c.md)。 |
 | [PageTransitionOptions](arkts-arkui-pagetransitionoptions-i.md) | 退场/进场动效的参数。 |
 
 ### 类型
@@ -67,3 +64,14 @@ PageTransitionEnter(event: PageTransitionCallback)
 | [RouteType](arkts-arkui-routetype-e.md) | 页面转场类型。 |
 | [SlideEffect](arkts-arkui-slideeffect-e.md) | 页面转场时的滑入滑出效果。 |
 
+## 示例
+
+```TypeScript
+pageTransition() {
+    PageTransitionEnter({ duration: 1200, curve: Curve.Linear })
+      // 转场动画时入场动画 type 为路由类型 ，progress为从0到1逐渐变大
+      .onEnter((type: RouteType, progress: number) => {
+        // 业务逻辑代码
+      })
+  }
+```

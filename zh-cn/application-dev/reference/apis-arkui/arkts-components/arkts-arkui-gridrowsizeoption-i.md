@@ -4,8 +4,6 @@
 
 **起始版本：** 9
 
-<!--Device-unnamed-declare interface GridRowSizeOption--><!--Device-unnamed-declare interface GridRowSizeOption-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,17 +17,15 @@
 lg?: Length
 ```
 
-在大宽度类型设备上，栅格子组件的间距。取值范围：大于等于0的数值或字符串。 默认值：0vp 单位：vp 非法值：按默认值处理。
+在大宽度类型设备上，栅格子组件的间距。取值范围：大于等于0的数值或字符串。默认值：0vp单位：vp非法值：按默认值处理。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-GridRowSizeOption-lg?: Length--><!--Device-GridRowSizeOption-lg?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,17 +35,15 @@ lg?: Length
 md?: Length
 ```
 
-在中等宽度类型设备上，栅格子组件的间距。取值范围：大于等于0的数值或字符串。 默认值：0vp 单位：vp 非法值：按默认值处理。
+在中等宽度类型设备上，栅格子组件的间距。取值范围：大于等于0的数值或字符串。默认值：0vp单位：vp非法值：按默认值处理。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-GridRowSizeOption-md?: Length--><!--Device-GridRowSizeOption-md?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,17 +53,15 @@ md?: Length
 sm?: Length
 ```
 
-在小宽度类型设备上，栅格子组件的间距。取值范围：大于等于0的数值或字符串。 默认值：0vp 单位：vp 非法值：按默认值处理。
+在小宽度类型设备上，栅格子组件的间距。取值范围：大于等于0的数值或字符串。默认值：0vp单位：vp非法值：按默认值处理。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-GridRowSizeOption-sm?: Length--><!--Device-GridRowSizeOption-sm?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,17 +71,15 @@ sm?: Length
 xl?: Length
 ```
 
-在特大宽度类型设备上，栅格子组件的间距。取值范围：大于等于0的数值或字符串。 默认值：0vp 单位：vp 非法值：按默认值处理。
+在特大宽度类型设备上，栅格子组件的间距。取值范围：大于等于0的数值或字符串。默认值：0vp单位：vp非法值：按默认值处理。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-GridRowSizeOption-xl?: Length--><!--Device-GridRowSizeOption-xl?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,17 +89,15 @@ xl?: Length
 xs?: Length
 ```
 
-在最小宽度类型设备上，栅格子组件的间距。取值范围：大于等于0的数值或字符串。 默认值：0vp 单位：vp 非法值：按默认值处理。
+在最小宽度类型设备上，栅格子组件的间距。取值范围：大于等于0的数值或字符串。默认值：0vp单位：vp非法值：按默认值处理。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-GridRowSizeOption-xs?: Length--><!--Device-GridRowSizeOption-xs?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -119,9 +107,9 @@ xs?: Length
 xxl?: Length
 ```
 
-在超大宽度类型设备上，栅格子组件的间距。取值范围：大于等于0的数值或字符串。 默认值：0vp 单位：vp 非法值：按默认值处理。
+在超大宽度类型设备上，栅格子组件的间距。取值范围：大于等于0的数值或字符串。默认值：0vp单位：vp非法值：按默认值处理。
 
-**类型：** Length
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 9
 
@@ -129,7 +117,4 @@ xxl?: Length
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-GridRowSizeOption-xxl?: Length--><!--Device-GridRowSizeOption-xxl?: Length-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -1,12 +1,10 @@
 # ProgressConfiguration
 
-进度条配置。继承自CommonConfiguration。
+进度条配置。继承自[CommonConfiguration](arkts-arkui-commonconfiguration-i.md)。
 
 **继承/实现关系：** ProgressConfiguration extends CommonConfiguration<ProgressConfiguration>
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare interface ProgressConfiguration--><!--Device-unnamed-declare interface ProgressConfiguration-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -21,7 +19,8 @@
 total: number
 ```
 
-进度总长。 取值范围：(0, +∞) **说明：** total小于等于0时，按照100处理。
+进度总长。取值范围：(0, +∞)  
+**说明：**total小于等于0时，按照100处理。
 
 **类型：** number
 
@@ -30,8 +29,6 @@ total: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ProgressConfiguration-total: number--><!--Device-ProgressConfiguration-total: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,7 +38,8 @@ total: number
 value: number
 ```
 
-当前进度值。当设置的数值小于0时，将其置为0。当设置的数值大于total时，将其置为total。 默认值：0 取值范围：[0, total] **说明：** 当Ring类型进度条的status设置为ProgressStatus.LOADING时，设置进度值不生效。
+当前进度值。当设置的数值小于0时，将其置为0。当设置的数值大于total时，将其置为total。默认值：0取值范围：[0, total]  
+**说明：** 当Ring类型进度条的status设置为ProgressStatus.LOADING时，设置进度值不生效。
 
 **类型：** number
 
@@ -51,7 +49,4 @@ value: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ProgressConfiguration-value: number--><!--Device-ProgressConfiguration-value: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

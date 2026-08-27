@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-<!--Device-unnamed-declare interface TextMetrics--><!--Device-unnamed-declare interface TextMetrics-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,8 +27,6 @@ readonly actualBoundingBoxAscent: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextMetrics-readonly actualBoundingBoxAscent: number--><!--Device-TextMetrics-readonly actualBoundingBoxAscent: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## actualBoundingBoxDescent
@@ -48,8 +44,6 @@ readonly actualBoundingBoxDescent: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-TextMetrics-readonly actualBoundingBoxDescent: number--><!--Device-TextMetrics-readonly actualBoundingBoxDescent: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,8 +63,6 @@ readonly actualBoundingBoxLeft: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextMetrics-readonly actualBoundingBoxLeft: number--><!--Device-TextMetrics-readonly actualBoundingBoxLeft: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## actualBoundingBoxRight
@@ -88,8 +80,6 @@ readonly actualBoundingBoxRight: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-TextMetrics-readonly actualBoundingBoxRight: number--><!--Device-TextMetrics-readonly actualBoundingBoxRight: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,8 +99,6 @@ readonly alphabeticBaseline: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextMetrics-readonly alphabeticBaseline: number--><!--Device-TextMetrics-readonly alphabeticBaseline: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## emHeightAscent
@@ -128,8 +116,6 @@ readonly emHeightAscent: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-TextMetrics-readonly emHeightAscent: number--><!--Device-TextMetrics-readonly emHeightAscent: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -149,8 +135,6 @@ readonly emHeightDescent: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextMetrics-readonly emHeightDescent: number--><!--Device-TextMetrics-readonly emHeightDescent: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontBoundingBoxAscent
@@ -168,8 +152,6 @@ readonly fontBoundingBoxAscent: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-TextMetrics-readonly fontBoundingBoxAscent: number--><!--Device-TextMetrics-readonly fontBoundingBoxAscent: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,8 +171,6 @@ readonly fontBoundingBoxDescent: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextMetrics-readonly fontBoundingBoxDescent: number--><!--Device-TextMetrics-readonly fontBoundingBoxDescent: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## hangingBaseline
@@ -208,8 +188,6 @@ readonly hangingBaseline: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-TextMetrics-readonly hangingBaseline: number--><!--Device-TextMetrics-readonly hangingBaseline: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -229,9 +207,41 @@ readonly height: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextMetrics-readonly height: number--><!--Device-TextMetrics-readonly height: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct OffscreenCanvasPage {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(200, 300);
+
+  build() {
+    Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Start, justifyContent: FlexAlign.Start }) {
+      Column() {
+        Canvas(this.context)
+          .width('100%')
+          .height('100%')
+          .borderWidth(5)
+          .borderColor('#057D02')
+          .backgroundColor('#FFFFFF')
+          .onReady(() => {
+            let offContext = this.offCanvas.getContext("2d", this.settings)
+            offContext.fillStyle = '#CDCDCD'
+            offContext.fillRect(0, 0, 100, this.offCanvas.height)
+            let image = this.offCanvas.transferToImageBitmap()
+            this.context.setTransform(1, 0, 0, 1, 50, 200)
+            this.context.transferFromImageBitmap(image)
+          })
+      }
+    }.width('100%').height('100%')
+  }
+}
+```
 
 ## ideographicBaseline
 
@@ -248,8 +258,6 @@ readonly ideographicBaseline: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-TextMetrics-readonly ideographicBaseline: number--><!--Device-TextMetrics-readonly ideographicBaseline: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -269,7 +277,38 @@ readonly width: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextMetrics-readonly width: number--><!--Device-TextMetrics-readonly width: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**示例**
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct OffscreenCanvasPage {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(200, 300);
+
+  build() {
+    Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Start, justifyContent: FlexAlign.Start }) {
+      Column() {
+        Canvas(this.context)
+          .width('100%')
+          .height('100%')
+          .borderWidth(5)
+          .borderColor('#057D02')
+          .backgroundColor('#FFFFFF')
+          .onReady(() => {
+            let offContext = this.offCanvas.getContext("2d", this.settings)
+            offContext.fillStyle = '#CDCDCD'
+            offContext.fillRect(0, 0, this.offCanvas.width, 150)
+            let image = this.offCanvas.transferToImageBitmap()
+            this.context.setTransform(1, 0, 0, 1, 50, 200)
+            this.context.transferFromImageBitmap(image)
+          })
+      }
+    }.width('100%').height('100%')
+  }
+}
+```

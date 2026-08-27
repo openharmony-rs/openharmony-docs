@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare class TransitionEffect--><!--Device-unnamed-declare class TransitionEffect-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,15 +27,13 @@ animation(value: AnimateParam): TransitionEffect
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TransitionEffect-animation(value: AnimateParam): TransitionEffect--><!--Device-TransitionEffect-animation(value: AnimateParam): TransitionEffect-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [AnimateParam](arkts-arkui-animateparam-i.md) | 是 | 动画参数。&lt;/br&gt;该参数只用来指定动画参数，其入参AnimateParam的onFinish回调不生效。&lt;/br&gt;如果通过combine进行 TransitionEffect的组合，前一TransitionEffect的动画参数也可用于后一TransitionEffect。 |
+| value | [AnimateParam](arkts-arkui-animateparam-i.md) | 是 | 动画参数。 & lt;/br & gt;该参数只用来指定动画参数，其入参AnimateParam的onFinish回调不生效。 & lt;/br & gt;如果通过combine进行 TransitionEffect的组合，前一TransitionEffect的动画参数也可用于后一TransitionEffect。 |
 
 **返回值：**
 
@@ -64,16 +60,14 @@ static asymmetric(
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TransitionEffect-static asymmetric(    appear: TransitionEffect,    disappear: TransitionEffect  ): TransitionEffect<"asymmetric">--><!--Device-TransitionEffect-static asymmetric(    appear: TransitionEffect,    disappear: TransitionEffect  ): TransitionEffect<"asymmetric">-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appear | [TransitionEffect](arkts-arkui-transitioneffect-c.md) | 是 | 指定出现的转场效果。<br/>如不通过asymmetric函数构造TransitionEffect，则表明该效果在组件出现和消失时均生效。 |
-| disappear | [TransitionEffect](arkts-arkui-transitioneffect-c.md) | 是 | 指定消失的转场效果。<br/>如不通过asymmetric函数构造TransitionEffect，则表明该效果在组件出现和消失时均生效。 |
+| appear | [TransitionEffect](arkts-arkui-transitioneffect-c.md) | 是 | 指定出现的转场效果。如不通过asymmetric函数构造TransitionEffect，则表明该效果在组件出现和消失时均生效。 |
+| disappear | [TransitionEffect](arkts-arkui-transitioneffect-c.md) | 是 | 指定消失的转场效果。如不通过asymmetric函数构造TransitionEffect，则表明该效果在组件出现和消失时均生效。 |
 
 **返回值：**
 
@@ -96,8 +90,6 @@ combine(transitionEffect: TransitionEffect): TransitionEffect
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-TransitionEffect-combine(transitionEffect: TransitionEffect): TransitionEffect--><!--Device-TransitionEffect-combine(transitionEffect: TransitionEffect): TransitionEffect-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -129,8 +121,6 @@ constructor(type: Type, effect: Effect)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TransitionEffect-constructor(type: Type, effect: Effect)--><!--Device-TransitionEffect-constructor(type: Type, effect: Effect)-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -139,6 +129,19 @@ constructor(type: Type, effect: Effect)
 | --- | --- | --- | --- |
 | type | [Type](../../apis-arkts/arkts-apis/arkts-arkts-util-type-e.md) | 是 | 转场类型。 |
 | effect | [Effect](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-effect-i.md) | 是 | 转场参数。 |
+
+**示例**
+
+```TypeScript
+@Builder
+function myBuilder(value: string, size: number) {
+  Text(value)
+    .fontSize(size)
+}
+
+// 使用WrappedBuilder封装myBuilder
+let builderVar: WrappedBuilder<[string, number]> = new WrappedBuilder<[string, number]>(myBuilder);
+```
 
 ## move
 
@@ -155,8 +158,6 @@ static move(edge: TransitionEdge): TransitionEffect<"move">
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-TransitionEffect-static move(edge: TransitionEdge): TransitionEffect<"move">--><!--Device-TransitionEffect-static move(edge: TransitionEdge): TransitionEffect<"move">-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,15 +189,13 @@ static opacity(alpha: number): TransitionEffect<"opacity">
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TransitionEffect-static opacity(alpha: number): TransitionEffect<"opacity">--><!--Device-TransitionEffect-static opacity(alpha: number): TransitionEffect<"opacity">-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alpha | number | 是 | 组件转场时的透明度效果，为插入时起点和删除时终点的值。<br/>取值范围：[0, 1]<br/>**说明：** <br/>设置小于0的非法值按0处理，大于1的非法值按1处理。 |
+| alpha | number | 是 | 组件转场时的透明度效果，为插入时起点和删除时终点的值。取值范围：[0, 1]   **说明：** 设置小于0的非法值按0处理，大于1的非法值按1处理。 |
 
 **返回值：**
 
@@ -220,15 +219,13 @@ static rotate(options: RotateOptions): TransitionEffect<"rotate">
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TransitionEffect-static rotate(options: RotateOptions): TransitionEffect<"rotate">--><!--Device-TransitionEffect-static rotate(options: RotateOptions): TransitionEffect<"rotate">-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [RotateOptions](arkts-arkui-rotateoptions-i.md) | 是 | 组件转场时的旋转效果，为插入时起点和删除时终点的值。<br/>-x：横向的旋转向量分量。<br/>-y：纵向的旋转向量分量。<br/>-z：竖向的旋转向量分量。 <br/>- centerX、centerY指旋转中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为旋转中心点。<br/>- 中心点为(0, 0)代表组件的左上角。<br/>-centerZ指 z轴锚点，即3D旋转中心点的z轴分量，centerZ默认值是0。<br/>-perspective指视距，不支持perspective属性做转场动画。 |
+| options | [RotateOptions](arkts-arkui-rotateoptions-i.md) | 是 | 组件转场时的旋转效果，为插入时起点和删除时终点的值。   -x：横向的旋转向量分量。   -y：纵向的旋转向量分量。   -z：竖向的旋转向量分量。    - centerX、centerY指旋转中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为旋转中心点。   - 中心点为(0, 0)代表组件的左上角。   -centerZ指 z轴锚点，即3D旋转中心点的z轴分量，centerZ默认值是0。   -perspective指视距，不支持perspective属性做转场动画。 |
 
 **返回值：**
 
@@ -252,15 +249,13 @@ static scale(options: ScaleOptions): TransitionEffect<"scale">
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TransitionEffect-static scale(options: ScaleOptions): TransitionEffect<"scale">--><!--Device-TransitionEffect-static scale(options: ScaleOptions): TransitionEffect<"scale">-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [ScaleOptions](arkts-arkui-scaleoptions-i.md) | 是 | 组件转场时的缩放效果，为插入时起点和删除时终点的值。设置的缩放值在组件当前的scale属性上进行叠加，如组件当前scale值为0.8，当转场缩放值设置为0.5时， 组件入场动画的缩放值将从0.4开始执行。<br/>-x：横向放大倍数（或缩小比例）。<br/>-y：纵向放大倍数（或缩小比例）。<br/>-z：当前为二维显示，该参数无效。<br/>- centerX、centerY指缩放 中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为缩放中心点。<br/>- 中心点为(0, 0)代表组件的左上角。<br>**说明：** <br>设置centerX、centerY为非法字符串 时（例如，"illegalString"），默认值为"0"。 |
+| options | [ScaleOptions](arkts-arkui-scaleoptions-i.md) | 是 | 组件转场时的缩放效果，为插入时起点和删除时终点的值。设置的缩放值在组件当前的scale属性上进行叠加，如组件当前scale值为0.8，当转场缩放值设置为0.5时， 组件入场动画的缩放值将从0.4开始执行。   -x：横向放大倍数（或缩小比例）。   -y：纵向放大倍数（或缩小比例）。   -z：当前为二维显示，该参数无效。   - centerX、centerY指缩放 中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为缩放中心点。   - 中心点为(0, 0)代表组件的左上角。   **说明：** 设置centerX、centerY为非法字符串 时（例如，"illegalString"），默认值为"0"。 |
 
 **返回值：**
 
@@ -284,15 +279,13 @@ static translate(options: TranslateOptions): TransitionEffect<"translate">
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TransitionEffect-static translate(options: TranslateOptions): TransitionEffect<"translate">--><!--Device-TransitionEffect-static translate(options: TranslateOptions): TransitionEffect<"translate">-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [TranslateOptions](arkts-arkui-translateoptions-i.md) | 是 | 组件转场时的平移效果，为插入时起点和删除时终点的值。<br/>-x：横向的平移距离。<br/>-y：纵向的平移距离。<br/>-z：竖向的平移距离。 |
+| options | [TranslateOptions](arkts-arkui-translateoptions-i.md) | 是 | 组件转场时的平移效果，为插入时起点和删除时终点的值。   -x：横向的平移距离。   -y：纵向的平移距离。   -z：竖向的平移距离。 |
 
 **返回值：**
 
@@ -318,8 +311,6 @@ static readonly IDENTITY: TransitionEffect<"identity">
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TransitionEffect-static readonly IDENTITY: TransitionEffect<"identity">--><!--Device-TransitionEffect-static readonly IDENTITY: TransitionEffect<"identity">-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## OPACITY
@@ -340,8 +331,6 @@ static readonly OPACITY: TransitionEffect<"opacity">
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TransitionEffect-static readonly OPACITY: TransitionEffect<"opacity">--><!--Device-TransitionEffect-static readonly OPACITY: TransitionEffect<"opacity">-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SLIDE
@@ -356,7 +345,7 @@ static readonly SLIDE: TransitionEffect<
   >
 ```
 
-相当于TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move( TransitionEdge.END))。从START边滑入，END边滑出。即在LTR模式下，从左侧滑入，右侧滑出；在RTL模式下，从右侧滑入，左侧滑出。
+相当于TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))。从START边滑入，END边滑出。即在LTR模式下，从左侧滑入，右侧滑出；在RTL模式下，从右侧滑入，左侧滑出。
 
 **类型：** [TransitionEffect](arkts-arkui-transitioneffect-c.md)&lt;"asymmetric", {       appear: TransitionEffect&lt;"move", [TransitionEdge](arkts-arkui-transitionedge-e.md)&gt;;       disappear: TransitionEffect&lt;"move", TransitionEdge&gt;;     }&gt;
 
@@ -367,8 +356,6 @@ static readonly SLIDE: TransitionEffect<
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-TransitionEffect-static readonly SLIDE: TransitionEffect<    "asymmetric",    {      appear: TransitionEffect<"move", TransitionEdge>;      disappear: TransitionEffect<"move", TransitionEdge>;    }  >--><!--Device-TransitionEffect-static readonly SLIDE: TransitionEffect<    "asymmetric",    {      appear: TransitionEffect<"move", TransitionEdge>;      disappear: TransitionEffect<"move", TransitionEdge>;    }  >-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -390,7 +377,4 @@ static readonly SLIDE_SWITCH: TransitionEffect<"slideSwitch">
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TransitionEffect-static readonly SLIDE_SWITCH: TransitionEffect<"slideSwitch">--><!--Device-TransitionEffect-static readonly SLIDE_SWITCH: TransitionEffect<"slideSwitch">-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

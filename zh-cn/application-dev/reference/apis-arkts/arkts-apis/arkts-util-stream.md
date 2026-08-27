@@ -2,16 +2,13 @@
 
 本模块提供基本流类型的处理能力，支持数据分块读取或写入，避免一次性加载整个数据到内存。 包括可写流（[Writable](arkts-arkts-stream-writable-c.md)）、可读流（[Readable](arkts-arkts-stream-readable-c.md)）、双工流（[Duplex](arkts-arkts-stream-duplex-c.md)）和转换流（[Transform](arkts-arkts-stream-transform-c.md)）。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace stream--><!--Device-unnamed-declare namespace stream-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
 
 ```TypeScript
-import { stream } from '@kit.ArkTS';
 ```
 
 ## 汇总
@@ -30,4 +27,3 @@ import { stream } from '@kit.ArkTS';
 | 名称 | 说明 |
 | --- | --- |
 | [ReadableOptions](arkts-arkts-stream-readableoptions-i.md) | 描述**Readable**构造函数中使用的选项。 |
-

@@ -1,8 +1,11 @@
 # Line
 
-Line组件用于在应用界面中绘制直线，支持自定义直线的起点、终点、颜色、宽度、透明度、虚线样式、端点样式等属性。适用于绘制分隔线、装饰性线条、图表中的坐标轴或连接线、自定义图形边框等场景。 > **说明：** > > 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。 > > 该组件从API version 20开始支持使用AttributeUpdater类的 > updateConstructorParams接口更新构造参数。 > > - Line组件无法形成闭合区域，fill和fillOpacity属性设置无效。 > > - Line组件不支持拐角，strokeLineJoin和strokeMiterLimit属性设置无效。
+Line组件用于在应用界面中绘制直线，支持自定义直线的起点、终点、颜色、宽度、透明度、虚线样式、端点样式等属性。适用于绘制分隔线、装饰性线条、图表中的坐标轴或连接线、自定义图形边框等场景。
+> **说明：** > > 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。 > > 该组件从API version 20开始支持使用AttributeUpdater类的 > [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。 > > - Line组件无法形成闭合区域，fill和fillOpacity属性设置无效。 > > - Line组件不支持拐角，strokeLineJoin和strokeMiterLimit属性设置无效。
 
-## 子组件 无
+## 子组件
+
+无
 
 ## Line
 
@@ -17,8 +20,6 @@ Uses new to create the line. Anonymous Object Rectification.
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-LineInterface-new (options?: LineOptions): LineAttribute--><!--Device-LineInterface-new (options?: LineOptions): LineAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,15 +43,13 @@ Line(options?: LineOptions)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LineInterface-(options?: LineOptions): LineAttribute--><!--Device-LineInterface-(options?: LineOptions): LineAttribute-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [LineOptions](arkts-arkui-lineoptions-i.md) | 否 | Line组件绘制区域，包含width和height属性，用于设置Line组件的宽高。不传递此参数时，Line组件的width和height属性将按照各自属性的缺 省逻辑处理（参见LineOptions对象说明）。 <br>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| options | [LineOptions](arkts-arkui-lineoptions-i.md) | 否 | Line组件绘制区域，包含width和height属性，用于设置Line组件的宽高。不传递此参数时，Line组件的width和height属性将按照各自属性的缺 省逻辑处理（参见LineOptions对象说明）。  异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ## 汇总
 
@@ -58,5 +57,233 @@ Line(options?: LineOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [LineOptions](arkts-arkui-lineoptions-i.md) | 用于描述Line组件绘制属性。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
+| [LineOptions](arkts-arkui-lineoptions-i.md) | 用于描述Line组件绘制属性。 |
 
+## 示例
+
+通过startPoint、endPoint、strokeOpacity、stroke、strokeWidth、strokeDashArray、strokeDashOffset属性分别绘制直线的起始点、结束点、透明度、直线颜色、线条宽度、边框间隙、绘制起点。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct LineExample {
+  build() {
+    Column({ space: 10 }) {
+      // 线条绘制的起止点坐标均是相对于Line组件本身绘制区域的坐标
+      Line()
+        .width(200)
+        .height(150)
+        .startPoint([0, 0])
+        .endPoint([50, 100])
+        .stroke(Color.Black)
+        .backgroundColor('#F5F5F5')
+      // 设置起始点为(50, 50)，终点为(150, 150)，线条宽度为5，线条颜色为橙色，线条透明度为0.5
+      Line()
+        .width(200)
+        .height(150)
+        .startPoint([50, 50])
+        .endPoint([150, 150])
+        .strokeWidth(5)
+        .stroke(Color.Orange)
+        .strokeOpacity(0.5)
+        .backgroundColor('#F5F5F5')
+      // strokeDashOffset用于定义关联虚线strokeDashArray数组渲染时的偏移
+      Line()
+        .width(200)
+        .height(150)
+        .startPoint([0, 0])
+        .endPoint([100, 100])
+        .stroke(Color.Black)
+        .strokeWidth(3)
+        .strokeDashArray([10, 3])
+        .strokeDashOffset(5)
+        .backgroundColor('#F5F5F5')
+      // 当坐标点设置的值超出Line组件的宽高范围时，线条会画出组件绘制区域。设置虚线模式：线段长度10，间隙长度3
+      Line()
+        .width(50)
+        .height(50)
+        .startPoint([0, 0])
+        .endPoint([100, 100])
+        .stroke(Color.Black)
+        .strokeWidth(3)
+        .strokeDashArray([10, 3])
+        .backgroundColor('#F5F5F5')
+    }
+  }
+}
+```
+
+通过strokeLineCap属性绘制直线的线条端点样式。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct LineExample1 {
+  build() {
+    Row({ space: 10 }) {
+      // 当LineCapStyle值为Butt时
+      Line()
+        .width(100)
+        .height(200)
+        .startPoint([50, 50])
+        .endPoint([50, 200])
+        .stroke(Color.Black)
+        .strokeWidth(20)
+        .strokeLineCap(LineCapStyle.Butt)
+        .backgroundColor('#F5F5F5')
+        .margin(10)
+      // 当LineCapStyle值为Round时
+      Line()
+        .width(100)
+        .height(200)
+        .startPoint([50, 50])
+        .endPoint([50, 200])
+        .stroke(Color.Black)
+        .strokeWidth(20)
+        .strokeLineCap(LineCapStyle.Round)
+        .backgroundColor('#F5F5F5')
+      // 当LineCapStyle值为Square时
+      Line()
+        .width(100)
+        .height(200)
+        .startPoint([50, 50])
+        .endPoint([50, 200])
+        .stroke(Color.Black)
+        .strokeWidth(20)
+        .strokeLineCap(LineCapStyle.Square)
+        .backgroundColor('#F5F5F5')
+    }
+  }
+}
+```
+
+通过strokeDashArray属性绘制直线的线条间隙。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct LineExample {
+  build() {
+    Column() {
+      Line()
+        .width(300)
+        .height(30)
+        .startPoint([50, 30])
+        .endPoint([300, 30])
+        .stroke(Color.Black)
+        .strokeWidth(10)
+      // 设置strokeDashArray的数组间隔为 50
+      Line()
+        .width(300)
+        .height(30)
+        .startPoint([50, 20])
+        .endPoint([300, 20])
+        .stroke(Color.Black)
+        .strokeWidth(10)
+        .strokeDashArray([50])
+      // 设置strokeDashArray的数组间隔为 50, 10
+      Line()
+        .width(300)
+        .height(30)
+        .startPoint([50, 20])
+        .endPoint([300, 20])
+        .stroke(Color.Black)
+        .strokeWidth(10)
+        .strokeDashArray([50, 10])
+      // 设置strokeDashArray的数组间隔为 50, 10, 20
+      Line()
+        .width(300)
+        .height(30)
+        .startPoint([50, 20])
+        .endPoint([300, 20])
+        .stroke(Color.Black)
+        .strokeWidth(10)
+        .strokeDashArray([50, 10, 20])
+      // 设置strokeDashArray的数组间隔为 50, 10, 20, 30
+      Line()
+        .width(300)
+        .height(30)
+        .startPoint([50, 20])
+        .endPoint([300, 20])
+        .stroke(Color.Black)
+        .strokeWidth(10)
+        .strokeDashArray([50, 10, 20, 30])
+    }
+  }
+}
+```
+
+width、height属性分别使用不同的长度类型绘制直线。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct LineTypeExample {
+  build() {
+    Column({ space: 10 }) {
+      // 在200 * 200的区域内绘制一个起始点为（0,0），终点为（150,150），线条宽度为10的直线
+      Line({ width: '200', height: '200' })// 使用string类型
+        .startPoint([0, 0])
+        .endPoint([150, 150])
+        .stroke(Color.Black)
+        .strokeWidth(10)
+        .backgroundColor('#F5F5F5')
+        .margin(10)
+      // 在200 * 200的区域内绘制一个起始点为（0,50），终点为（150,150），线条宽度为10的直线
+      Line({ width: 200, height: 200 })// 使用number类型
+        .startPoint([0, 50])
+        .endPoint([150, 150])
+        .stroke(Color.Black)
+        .strokeWidth(10)
+        .backgroundColor('#F5F5F5')
+        .margin(10)
+      // 在200 * 200的区域内绘制一个起始点为（0,100），终点为（150,150），线条宽度为10的直线
+      Line({ width: $r('app.string.LineWidth'), height: $r('app.string.LineHeight') })// 使用Resource类型，需用户自定义
+        .startPoint([0, 100])
+        .endPoint([150, 150])
+        .stroke(Color.Black)
+        .strokeWidth(10)
+        .backgroundColor('#F5F5F5')
+        .margin(10)
+    }.width('100%')
+  }
+}
+```
+
+以下示例展示了如何使用attributeModifier动态设置Line组件的startPoint、endPoint、stroke、strokeDashArray、strokeDashOffset、strokeLineCap、strokeOpacity、strokeWidth和antiAlias属性。
+
+```TypeScript
+// xxx.ets
+class MyLineModifier implements AttributeModifier<LineAttribute> {
+  applyNormalAttribute(instance: LineAttribute): void {
+    // 一个起始点为（10, 10），终点为（120, 10）的直线，线条颜色#2787D9，线条间隙[20]，设置虚线偏移量为15，线条两端样式为半圆，线条透明度0.5，线条宽度10，抗锯齿开启
+    instance.startPoint([10, 10])
+    instance.endPoint([120, 10])
+    instance.stroke('#2787D9')
+    instance.strokeDashArray([20])
+    instance.strokeDashOffset('15')
+    instance.strokeLineCap(LineCapStyle.Round)
+    instance.strokeOpacity(0.5)
+    instance.strokeWidth(10)
+    instance.antiAlias(true)
+  }
+}
+
+@Entry
+@Component
+struct LineModifierDemo {
+  @State modifier: MyLineModifier = new MyLineModifier()
+
+  build() {
+    Column() {
+      Line()
+        .attributeModifier(this.modifier)
+        .offset({ x: 20, y: 20 })
+    }
+  }
+}
+```

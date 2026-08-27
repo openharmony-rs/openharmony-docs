@@ -1,10 +1,8 @@
 # DialogButtonStyle
 
-The Button Style of dialog,
+The Button Style of dialog, @enum { number }
 
 **起始版本：** 11
-
-<!--Device-unnamed-declare enum DialogButtonStyle--><!--Device-unnamed-declare enum DialogButtonStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,8 +20,6 @@ Default Style.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogButtonStyle-DEFAULT = 0--><!--Device-DialogButtonStyle-DEFAULT = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## HIGHLIGHT
@@ -40,7 +36,4 @@ Highlight Style.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DialogButtonStyle-HIGHLIGHT = 1--><!--Device-DialogButtonStyle-HIGHLIGHT = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

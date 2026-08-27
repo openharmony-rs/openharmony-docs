@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-uiMaterial-interface LightEffectOptions--><!--Device-uiMaterial-interface LightEffectOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -20,9 +18,9 @@ import { uiMaterial } from '@kit.ArkUI';
 color?: ResourceColor
 ```
 
-自定义交互反馈光感的颜色。 默认值：Color.White
+自定义交互反馈光感的颜色。默认值：Color.White
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
 **默认值：** Color.White
 
@@ -32,7 +30,4 @@ color?: ResourceColor
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LightEffectOptions-color?: ResourceColor--><!--Device-LightEffectOptions-color?: ResourceColor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

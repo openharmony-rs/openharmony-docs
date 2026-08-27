@@ -6,8 +6,6 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-declare namespace dialog--><!--Device-unnamed-declare namespace dialog-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -37,4 +35,3 @@ import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, Dial
 | --- | --- |
 | [DialogBaseOptions](arkts-arkui-dialog-dialogbaseoptions-i-sys.md) | 所有Dialog类型共享的基本选项。 |
 <!--DelEnd-->
-

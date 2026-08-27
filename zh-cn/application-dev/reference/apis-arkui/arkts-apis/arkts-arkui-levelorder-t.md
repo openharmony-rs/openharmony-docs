@@ -1,4 +1,4 @@
-# LevelOrder(AlertDialog)
+# LevelOrder
 
 ```TypeScript
 declare type LevelOrder = import('../api/@ohos.promptAction').LevelOrder
@@ -12,9 +12,6 @@ declare type LevelOrder = import('../api/@ohos.promptAction').LevelOrder
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type LevelOrder = import('../api/@ohos.promptAction').LevelOrder--><!--Device-unnamed-declare type LevelOrder = import('../api/@ohos.promptAction').LevelOrder-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **属性类型：** import('../api/@ohos.promptAction').LevelOrder
-

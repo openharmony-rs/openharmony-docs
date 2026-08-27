@@ -1,21 +1,14 @@
 # LoadCommittedDetails
 
-提供已提交跳转的网页详细信息，包括是否主文档、导航类型等。适用于需要监控页面导航行为的场景，提升导航状态管理的准确性和用户体验。
+提供已提交跳转的网页详细信息，包括是否主文档、导航类型等。适用于需要监控页面导航行为的场景，提升导航状态管理的准确性和用户体验。@interface LoadCommittedDetails [since 11 - 11]
 
 **起始版本：** 11
-
-<!--Device-unnamed-declare interface LoadCommittedDetails--><!--Device-unnamed-declare interface LoadCommittedDetails-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
 
 ```TypeScript
-import { WebNetErrorList } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
-import { webview } from '@kit.ArkWeb';
-import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## didReplaceEntry
@@ -24,15 +17,13 @@ import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 didReplaceEntry: boolean
 ```
 
-是否提交的新节点替换了已有的节点。 true表示提交的新节点替换了已有的节点，false表示提交的新节点未替换已有的节点。 另外在一些子文档跳转的场景，虽然没有实际替换已有节点，但是有一些属性发生了变更。
+是否提交的新节点替换了已有的节点。true表示提交的新节点替换了已有的节点，false表示提交的新节点未替换已有的节点。另外在一些子文档跳转的场景，虽然没有实际替换已有节点，但是有一些属性发生了变更。
 
 **类型：** boolean
 
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LoadCommittedDetails-didReplaceEntry: boolean--><!--Device-LoadCommittedDetails-didReplaceEntry: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -42,15 +33,13 @@ didReplaceEntry: boolean
 isMainFrame: boolean
 ```
 
-是否是主文档。 true表示主文档，false表示非主文档。
+是否是主文档。true表示主文档，false表示非主文档。
 
 **类型：** boolean
 
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LoadCommittedDetails-isMainFrame: boolean--><!--Device-LoadCommittedDetails-isMainFrame: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -60,15 +49,13 @@ isMainFrame: boolean
 isSameDocument: boolean
 ```
 
-是否在不更改文档的情况下进行的网页跳转。 true表示在不更改文档的情况下进行的网页跳转，false表示在更改文档的情况下进行的网页跳转。 同文档跳转示例：1.参考片段跳转；2.pushState或replaceState触发的跳转；3.同一页面历史跳转。
+是否在不更改文档的情况下进行的网页跳转。true表示在不更改文档的情况下进行的网页跳转，false表示在更改文档的情况下进行的网页跳转。同文档跳转示例：1.参考片段跳转；2.pushState或replaceState触发的跳转；3.同一页面历史跳转。
 
 **类型：** boolean
 
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-LoadCommittedDetails-isSameDocument: boolean--><!--Device-LoadCommittedDetails-isSameDocument: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -86,8 +73,6 @@ navigationType: WebNavigationType
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LoadCommittedDetails-navigationType: WebNavigationType--><!--Device-LoadCommittedDetails-navigationType: WebNavigationType-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## url
@@ -104,7 +89,4 @@ url: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LoadCommittedDetails-url: string--><!--Device-LoadCommittedDetails-url: string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

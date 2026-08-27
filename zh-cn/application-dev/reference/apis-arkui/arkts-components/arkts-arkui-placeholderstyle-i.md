@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface PlaceholderStyle--><!--Device-unnamed-declare interface PlaceholderStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,7 +17,7 @@
 font?: Font
 ```
 
-设置提示文本样式。 默认值遵循主题设置。
+设置提示文本样式。默认值遵循主题设置。
 
 **类型：** Font
 
@@ -29,8 +27,6 @@ font?: Font
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PlaceholderStyle-font?: Font--><!--Device-PlaceholderStyle-font?: Font-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -39,9 +35,9 @@ font?: Font
 fontColor?: ResourceColor
 ```
 
-设置提示文本颜色。 默认值遵循主题设置。
+设置提示文本颜色。默认值遵循主题设置。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
 **起始版本：** 12
 
@@ -49,7 +45,4 @@ fontColor?: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PlaceholderStyle-fontColor?: ResourceColor--><!--Device-PlaceholderStyle-fontColor?: ResourceColor-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

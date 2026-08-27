@@ -4,8 +4,6 @@
 
 **起始版本：** 20
 
-<!--Device-unnamed-declare interface EventLocationInfo--><!--Device-unnamed-declare interface EventLocationInfo-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,15 +25,13 @@ getCurrentLocalPosition?(): Coordinate2D
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EventLocationInfo-getCurrentLocalPosition?(): Coordinate2D--><!--Device-EventLocationInfo-getCurrentLocalPosition?(): Coordinate2D-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Coordinate2D | 点击位置相对于当前组件实时位置的左上角坐标。 |
+| [Coordinate2D](arkts-arkui-coordinate2d-i.md) | 点击位置相对于当前组件实时位置的左上角坐标。 |
 
 ## displayX
 
@@ -43,7 +39,7 @@ getCurrentLocalPosition?(): Coordinate2D
 displayX: number
 ```
 
-相对于屏幕的左上角X坐标。 取值范围：[0, +∞) 单位：vp
+相对于屏幕的左上角X坐标。取值范围：[0, +∞)单位：vp
 
 **类型：** number
 
@@ -52,8 +48,6 @@ displayX: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EventLocationInfo-displayX: number--><!--Device-EventLocationInfo-displayX: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,7 +57,7 @@ displayX: number
 displayY: number
 ```
 
-相对于屏幕的左上角Y坐标。 取值范围：[0, +∞) 单位：vp
+相对于屏幕的左上角Y坐标。取值范围：[0, +∞)单位：vp
 
 **类型：** number
 
@@ -72,8 +66,6 @@ displayY: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EventLocationInfo-displayY: number--><!--Device-EventLocationInfo-displayY: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,7 +75,7 @@ displayY: number
 globalDisplayX?: number
 ```
 
-相对于主屏幕左上角为原点的坐标系中的X坐标。 单位：vp 取值范围：[0, +∞)
+相对于主屏幕左上角为原点的坐标系中的X坐标。单位：vp取值范围：[0, +∞)
 
 **类型：** number
 
@@ -92,8 +84,6 @@ globalDisplayX?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EventLocationInfo-globalDisplayX?: number--><!--Device-EventLocationInfo-globalDisplayX?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,7 +93,7 @@ globalDisplayX?: number
 globalDisplayY?: number
 ```
 
-相对于主屏幕左上角为原点的坐标系中的Y坐标。 单位：vp 取值范围：[0, +∞)
+相对于主屏幕左上角为原点的坐标系中的Y坐标。单位：vp取值范围：[0, +∞)
 
 **类型：** number
 
@@ -113,8 +103,6 @@ globalDisplayY?: number
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EventLocationInfo-globalDisplayY?: number--><!--Device-EventLocationInfo-globalDisplayY?: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## windowX
@@ -123,7 +111,7 @@ globalDisplayY?: number
 windowX: number
 ```
 
-相对于窗口的左上角X坐标。 取值范围：[0, +∞) 单位：vp
+相对于窗口的左上角X坐标。取值范围：[0, +∞)单位：vp
 
 **类型：** number
 
@@ -132,8 +120,6 @@ windowX: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EventLocationInfo-windowX: number--><!--Device-EventLocationInfo-windowX: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,7 +129,7 @@ windowX: number
 windowY: number
 ```
 
-相对于窗口的左上角Y坐标。 取值范围：[0, +∞) 单位：vp
+相对于窗口的左上角Y坐标。取值范围：[0, +∞)单位：vp
 
 **类型：** number
 
@@ -152,8 +138,6 @@ windowY: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EventLocationInfo-windowY: number--><!--Device-EventLocationInfo-windowY: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -163,7 +147,7 @@ windowY: number
 x: number
 ```
 
-相对于组件左上角的X坐标。 取值范围：[0, +∞) 单位：vp
+相对于组件左上角的X坐标。取值范围：[0, +∞)单位：vp
 
 **类型：** number
 
@@ -172,8 +156,6 @@ x: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EventLocationInfo-x: number--><!--Device-EventLocationInfo-x: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -183,7 +165,7 @@ x: number
 y: number
 ```
 
-相对于组件左上角的Y坐标。 取值范围：[0, +∞) 单位：vp
+相对于组件左上角的Y坐标。取值范围：[0, +∞)单位：vp
 
 **类型：** number
 
@@ -193,7 +175,4 @@ y: number
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-EventLocationInfo-y: number--><!--Device-EventLocationInfo-y: number-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

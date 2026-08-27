@@ -12,8 +12,6 @@ declare type SubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => vo
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type SubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => void--><!--Device-unnamed-declare type SubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -21,5 +19,4 @@ declare type SubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enterKey | EnterKeyType | 是 | 软键盘输入法回车键类型。具体类型见EnterKeyType枚举说明。 |
-| event | SubmitEvent | 是 | 当提交的时候，提供保持组件编辑状态的方法。EnterKeyType指定为NEW_LINE时，默认保持编辑态。 |
-
+| event | [SubmitEvent](arkts-arkui-submitevent-i.md) | 是 | 当提交的时候，提供保持组件编辑状态的方法。EnterKeyType指定为NEW_LINE时，默认保持编辑态。 |

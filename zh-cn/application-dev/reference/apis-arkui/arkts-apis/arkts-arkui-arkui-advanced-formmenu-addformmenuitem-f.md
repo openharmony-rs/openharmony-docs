@@ -9,7 +9,6 @@ import { AddFormMenuItem, FormMenuItemStyle, AddFormOptions } from '@kit.ArkUI';
 ## AddFormMenuItem
 
 ```TypeScript
-@Builder
 export declare function AddFormMenuItem(
   want: Want,
   componentId: string,
@@ -17,11 +16,9 @@ export declare function AddFormMenuItem(
 ): void
 ```
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-unnamed-@Builderexport declare function AddFormMenuItem(  want: Want,  componentId: string,  options?: AddFormOptions): void--><!--Device-unnamed-@Builderexport declare function AddFormMenuItem(  want: Want,  componentId: string,  options?: AddFormOptions): void-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,5 +28,4 @@ export declare function AddFormMenuItem(
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 待发布功能组件的want信息。 |
 | componentId | string | 是 | 应用内功能组件ID，组件ID对应的界面与待添加的服务卡片界面相似。 |
-| options | AddFormOptions | 否 | 添加卡片选项。 |
-
+| options | [AddFormOptions](arkts-arkui-arkui-advanced-formmenu-addformoptions-i.md) | 否 | 添加卡片选项。 |

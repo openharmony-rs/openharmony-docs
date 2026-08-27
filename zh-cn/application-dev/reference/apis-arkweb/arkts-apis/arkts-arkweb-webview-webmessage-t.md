@@ -10,12 +10,9 @@ type WebMessage = ArrayBuffer | string
 
 **原子化服务API：** 从API版本9开始，该接口支持在原子化服务API中使用。
 
-<!--Device-webview-type WebMessage = ArrayBuffer | string--><!--Device-webview-type WebMessage = ArrayBuffer | string-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 类型 | 说明 |
 | --- | --- |
 | ArrayBuffer | 二进制类型数据。 [since 11] |
 | string | 字符串类型数据。 [since 11] |
-

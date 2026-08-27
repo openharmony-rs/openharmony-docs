@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare enum PasteIconStyle--><!--Device-unnamed-declare enum PasteIconStyle-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LINES
@@ -22,7 +20,4 @@ LINES = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PasteIconStyle-LINES = 0--><!--Device-PasteIconStyle-LINES = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

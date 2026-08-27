@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { Popup, PopupButtonOptions, PopupIconOptions, PopupOptions, PopupTextOptions } from '@kit.ArkUI';
-import { PopupV2, PopupV2InitInfo, PopupV2Button } from '@kit.ArkUI';
 ```
 
 ## 汇总
@@ -23,4 +22,3 @@ import { PopupV2, PopupV2InitInfo, PopupV2Button } from '@kit.ArkUI';
 | [PopupIconOptions](arkts-arkui-arkui-advanced-popup-popupiconoptions-i.md) | PopupIconOptions定义图标的属性。 |
 | [PopupOptions](arkts-arkui-arkui-advanced-popup-popupoptions-i.md) | PopupOptions定义Popup的具体样式参数。 |
 | [PopupTextOptions](arkts-arkui-arkui-advanced-popup-popuptextoptions-i.md) | 设置文本样式。 |
-

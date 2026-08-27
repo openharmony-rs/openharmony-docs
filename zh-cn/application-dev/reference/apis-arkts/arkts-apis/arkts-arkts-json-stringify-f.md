@@ -18,8 +18,6 @@ function stringify(value: Object, replacer?: (number | string)[] | null, space?:
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-json-function stringify(value: Object, replacer?: (number | string)[] | null, space?: string | number): string--><!--Device-json-function stringify(value: Object, replacer?: (number | string)[] | null, space?: string | number): string-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -36,6 +34,48 @@ function stringify(value: Object, replacer?: (number | string)[] | null, space?:
 | --- | --- |
 | string | 表示对象或数组经序列化处理后生成的JSON格式文本字符串。 |
 
+**示例**
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+
+interface Person {
+  name: string;
+  age: number;
+  city: string;
+}
+
+let person: Person = { name: "John", age: 30, city: "New York" };
+
+let rstArrStr = JSON.stringify(person, ["name", "age"]);
+console.info(rstArrStr);
+// 打印结果：{"name":"John","age":30}
+
+let rstStrSpace = JSON.stringify(person, ["name", "age"], '  ');
+console.info(rstStrSpace);
+/*
+打印结果：
+{
+  "name": "John",
+  "age": 30
+}
+ */
+
+let rstStrStar = JSON.stringify(person, ["name", "age"], '  &&');
+console.info(rstStrStar);
+/*
+打印结果：
+{
+  &&"name": "John",
+  &&"age": 30
+}
+ */
+
+let bigIntObj = BigInt(112233445566778899n);
+console.info(JSON.stringify(bigIntObj));
+// 打印结果：112233445566778899
+```
+
 
 ## stringify
 
@@ -48,8 +88,6 @@ function stringify(value: Object, replacer?: Transformer, space?: string | numbe
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-json-function stringify(value: Object, replacer?: Transformer, space?: string | number): string--><!--Device-json-function stringify(value: Object, replacer?: Transformer, space?: string | number): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -67,3 +105,35 @@ function stringify(value: Object, replacer?: Transformer, space?: string | numbe
 | --- | --- |
 | string | 表示对象或数组经序列化处理后生成的JSON格式文本字符串。 |
 
+**示例**
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+
+function replacer(key: string, value: Object): Object {
+  if (typeof value === 'string') {
+    return value.toUpperCase();
+  }
+  return value;
+}
+
+interface Person {
+  name: string;
+  age: number;
+  city: string;
+}
+let inputObj = {"name": "John", "age": 30, "city": "ChongQing"} as Person;
+
+console.info(JSON.stringify(inputObj, replacer));
+// 打印结果：{"name":"JOHN","age":30,"city":"CHONGQING"}
+
+console.info(JSON.stringify(inputObj, replacer, '  '));
+/*
+打印结果：
+{
+  "name": "JOHN",
+  "age": 30,
+  "city": "CHONGQING"
+}
+ */
+```

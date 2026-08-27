@@ -12,12 +12,9 @@ SubHeaderV2OperationItemType
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type SubHeaderV2OperationItemType = ResourceStr | SymbolGlyphModifier--><!--Device-unnamed-declare type SubHeaderV2OperationItemType = ResourceStr | SymbolGlyphModifier-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | --- | --- |
-| ResourceStr |  |
+| [ResourceStr](arkts-arkui-resourcestr-t.md) |  |
 | SymbolGlyphModifier |  |
-

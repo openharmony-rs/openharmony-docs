@@ -1,10 +1,8 @@
 # ConstraintSizeOptions
 
-Defines the constrain size options.
+Defines the constrain size options.@interface ConstraintSizeOptions
 
 **起始版本：** 11
-
-<!--Device-unnamed-declare interface ConstraintSizeOptions--><!--Device-unnamed-declare interface ConstraintSizeOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,8 +27,6 @@ Defines the max height.
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ConstraintSizeOptions-maxHeight?: Length--><!--Device-ConstraintSizeOptions-maxHeight?: Length-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## maxWidth
@@ -48,8 +44,6 @@ Defines the max width.
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-ConstraintSizeOptions-maxWidth?: Length--><!--Device-ConstraintSizeOptions-maxWidth?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,8 +63,6 @@ Defines the min height.
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ConstraintSizeOptions-minHeight?: Length--><!--Device-ConstraintSizeOptions-minHeight?: Length-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## minWidth
@@ -89,7 +81,4 @@ Defines the min width.
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ConstraintSizeOptions-minWidth?: Length--><!--Device-ConstraintSizeOptions-minWidth?: Length-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

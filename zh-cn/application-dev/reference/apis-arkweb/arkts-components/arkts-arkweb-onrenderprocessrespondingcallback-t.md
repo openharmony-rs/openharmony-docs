@@ -8,7 +8,4 @@ type OnRenderProcessRespondingCallback = () => void
 
 **起始版本：** 12
 
-<!--Device-unnamed-type OnRenderProcessRespondingCallback = () => void--><!--Device-unnamed-type OnRenderProcessRespondingCallback = () => void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
-

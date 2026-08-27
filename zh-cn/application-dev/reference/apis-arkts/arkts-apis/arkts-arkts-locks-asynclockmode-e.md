@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-locks-enum AsyncLockMode--><!--Device-locks-enum AsyncLockMode-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## SHARED
@@ -19,8 +17,6 @@ SHARED = 1
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AsyncLockMode-SHARED = 1--><!--Device-AsyncLockMode-SHARED = 1-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -36,7 +32,4 @@ EXCLUSIVE = 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AsyncLockMode-EXCLUSIVE = 2--><!--Device-AsyncLockMode-EXCLUSIVE = 2-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

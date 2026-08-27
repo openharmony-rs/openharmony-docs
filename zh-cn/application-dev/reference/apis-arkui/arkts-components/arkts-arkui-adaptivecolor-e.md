@@ -1,10 +1,8 @@
 # AdaptiveColor
 
-取色模式。
+取色模式。@enum { number }
 
 **起始版本：** 11
-
-<!--Device-unnamed-declare enum AdaptiveColor--><!--Device-unnamed-declare enum AdaptiveColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,8 +20,6 @@ DEFAULT = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AdaptiveColor-DEFAULT = 0--><!--Device-AdaptiveColor-DEFAULT = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## AVERAGE
@@ -40,7 +36,4 @@ AVERAGE = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AdaptiveColor-AVERAGE = 1--><!--Device-AdaptiveColor-AVERAGE = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

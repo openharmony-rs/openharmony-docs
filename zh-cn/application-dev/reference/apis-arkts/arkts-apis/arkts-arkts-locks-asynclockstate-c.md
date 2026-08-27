@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-locks-class AsyncLockState--><!--Device-locks-class AsyncLockState-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
@@ -28,8 +26,6 @@ held: AsyncLockInfo[]
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AsyncLockState-held: AsyncLockInfo[]--><!--Device-AsyncLockState-held: AsyncLockInfo[]-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## pending
@@ -46,7 +42,4 @@ pending: AsyncLockInfo[]
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AsyncLockState-pending: AsyncLockInfo[]--><!--Device-AsyncLockState-pending: AsyncLockInfo[]-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

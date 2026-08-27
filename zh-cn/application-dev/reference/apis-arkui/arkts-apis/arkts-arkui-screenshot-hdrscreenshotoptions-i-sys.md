@@ -2,9 +2,7 @@
 
 设置截取HDR图像的信息。
 
-**起始版本：** 23
-
-<!--Device-screenshot-interface HdrScreenshotOptions--><!--Device-screenshot-interface HdrScreenshotOptions-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -19,18 +17,16 @@ import { screenshot } from '@kit.ArkUI';
 ## displayId
 
 ```TypeScript
-displayId?: long
+displayId?: number
 ```
 
 表示截取图像的显示设备[Display](arkts-arkui-display-displaystate-e.md)的ID号，该参数应为整数。默认为0。
 
-**类型：** long
+**类型：** number
 
 **默认值：** The ID of the current display. The value is a positive integer greater than or equal to 0.
 
-**起始版本：** 23
-
-<!--Device-HdrScreenshotOptions-displayId?: long--><!--Device-HdrScreenshotOptions-displayId?: long-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -52,8 +48,6 @@ displayIntent?: DisplayIntentType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-HdrScreenshotOptions-displayIntent?: DisplayIntentType--><!--Device-HdrScreenshotOptions-displayIntent?: DisplayIntentType-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -70,9 +64,7 @@ isCaptureFullOfScreen?: boolean
 
 **默认值：** false
 
-**起始版本：** 23
-
-<!--Device-HdrScreenshotOptions-isCaptureFullOfScreen?: boolean--><!--Device-HdrScreenshotOptions-isCaptureFullOfScreen?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -90,11 +82,8 @@ isNotificationNeeded?: boolean
 
 **默认值：** true
 
-**起始版本：** 23
-
-<!--Device-HdrScreenshotOptions-isNotificationNeeded?: boolean--><!--Device-HdrScreenshotOptions-isNotificationNeeded?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
-

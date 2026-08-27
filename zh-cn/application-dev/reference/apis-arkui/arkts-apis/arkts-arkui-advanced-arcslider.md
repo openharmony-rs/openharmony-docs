@@ -45,4 +45,3 @@ import { ArcSlider, ArcSliderPosition, ArcSliderOptions, ArcSliderOptionsConstru
 | [ArcSliderChangeHandler](arkts-arkui-arcsliderchangehandler-t.md) | 弧形Slider的进度值发生变化时触发回调。 |
 | [ArcSliderEnlargeHandler](arkts-arkui-arcsliderenlargehandler-t.md) | 弧形Slider放大或缩小时触发回调。 |
 | [ArcSliderTouchHandler](arkts-arkui-arcslidertouchhandler-t.md) | 弧形Slider被触摸时触发回调。 |
-

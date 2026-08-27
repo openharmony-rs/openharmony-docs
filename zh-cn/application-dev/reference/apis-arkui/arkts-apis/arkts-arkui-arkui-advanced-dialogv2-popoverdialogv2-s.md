@@ -4,8 +4,6 @@
 
 **起始版本：** 18
 
-<!--Device-unnamed-export declare struct PopoverDialogV2--><!--Device-unnamed-export declare struct PopoverDialogV2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -17,13 +15,10 @@ import { AlertDialogV2, AdvancedDialogV2Button, AdvancedDialogV2ButtonOptions, A
 ## $visible
 
 ```TypeScript
-@Event
-  $visible?: PopoverDialogV2OnVisibleChange
+$visible?: PopoverDialogV2OnVisibleChange
 ```
 
-修改跟手弹出框的显示状态时触发的回调函数，建议在visible后使用!!语法（如`visible: this.isShow!!`）设置双向同步，当弹出框内部改变显示状态时会同步更新外部变量。 默认无事件。
-
-**类型：** [PopoverDialogV2OnVisibleChange](arkts-arkui-popoverdialogv2onvisiblechange-t.md)
+修改跟手弹出框的显示状态时触发的回调函数，建议在visible后使用!!语法（如`visible: this.isShow!!`）设置双向同步，当弹出框内部改变显示状态时会同步更新外部变量。默认无事件。
 
 **起始版本：** 18
 
@@ -31,16 +26,12 @@ import { AlertDialogV2, AdvancedDialogV2Button, AdvancedDialogV2ButtonOptions, A
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PopoverDialogV2-@Event  $visible?: PopoverDialogV2OnVisibleChange--><!--Device-PopoverDialogV2-@Event  $visible?: PopoverDialogV2OnVisibleChange-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## popover
 
 ```TypeScript
-@Require
-  @Param
-  popover: PopoverDialogV2Options
+popover: PopoverDialogV2Options
 ```
 
 配置跟手弹出框的参数。
@@ -53,20 +44,17 @@ import { AlertDialogV2, AdvancedDialogV2Button, AdvancedDialogV2ButtonOptions, A
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PopoverDialogV2-@Require  @Param  popover: PopoverDialogV2Options--><!--Device-PopoverDialogV2-@Require  @Param  popover: PopoverDialogV2Options-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## targetBuilder
 
 ```TypeScript
-@BuilderParam
-  targetBuilder: CustomBuilder
+targetBuilder: CustomBuilder
 ```
 
 跟手弹出框基于的目标组件。
 
-**类型：** CustomBuilder
+**类型：** [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md)
 
 **起始版本：** 18
 
@@ -74,19 +62,15 @@ import { AlertDialogV2, AdvancedDialogV2Button, AdvancedDialogV2ButtonOptions, A
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PopoverDialogV2-@BuilderParam  targetBuilder: CustomBuilder--><!--Device-PopoverDialogV2-@BuilderParam  targetBuilder: CustomBuilder-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## visible
 
 ```TypeScript
-@Require
-  @Param
-  visible: boolean
+visible: boolean
 ```
 
-跟手弹出框的显示状态。 值为true时跟手弹出框显示，为false时隐藏。
+跟手弹出框的显示状态。值为true时跟手弹出框显示，为false时隐藏。
 
 **类型：** boolean
 
@@ -96,7 +80,4 @@ import { AlertDialogV2, AdvancedDialogV2Button, AdvancedDialogV2ButtonOptions, A
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PopoverDialogV2-@Require  @Param  visible: boolean--><!--Device-PopoverDialogV2-@Require  @Param  visible: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

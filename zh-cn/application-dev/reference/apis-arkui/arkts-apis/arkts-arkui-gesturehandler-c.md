@@ -6,8 +6,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class GestureHandler--><!--Device-unnamed-declare class GestureHandler-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,15 +27,13 @@ allowedTypes(types: Array<SourceTool>): T
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GestureHandler-allowedTypes(types: Array<SourceTool>): T--><!--Device-GestureHandler-allowedTypes(types: Array<SourceTool>): T-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| types | Array&lt;SourceTool&gt; | 是 | 手势处理器所支持的事件输入源。 |
+| types | Array&lt;[SourceTool](../arkts-components/arkts-arkui-sourcetool-e.md)&gt; | 是 | 手势处理器所支持的事件输入源。 |
 
 **返回值：**
 
@@ -59,8 +55,6 @@ tag(tag: string): T
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GestureHandler-tag(tag: string): T--><!--Device-GestureHandler-tag(tag: string): T-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -74,4 +68,3 @@ tag(tag: string): T
 | 类型 | 说明 |
 | --- | --- |
 | T | 返回当前组件。 |
-

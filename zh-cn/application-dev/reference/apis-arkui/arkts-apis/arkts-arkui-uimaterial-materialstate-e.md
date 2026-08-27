@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-uiMaterial-enum MaterialState--><!--Device-uiMaterial-enum MaterialState-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DEFAULT
@@ -22,8 +20,6 @@ DEFAULT = 0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MaterialState-DEFAULT = 0--><!--Device-MaterialState-DEFAULT = 0-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ENABLE
@@ -32,15 +28,13 @@ DEFAULT = 0
 ENABLE = 1
 ```
 
-使能模式。[弹出框Dialog](../../../ui/arkts-base-dialog-overview.md)、[即时反馈（Toast）](../../../ui/arkts-create-toast.md)、 AlphabetIndexer、ChipGroup、 [Chip](arkts-arkui-arkui-advanced-chip-chip-f.md)、Select、菜单控制、Toggle、 [SegmentButton](arkts-arkui-arkui-advanced-segmentbutton-segmentbutton-s.md)、 SegmentButtonV2、Slider、 bindSheet、[SelectionMenu](arkts-arkui-arkui-advanced-selectionmenu-selectionmenu-f.md)组件默认开启沉浸式系统材质； Text设置copyOption后长按或双击触发的文本菜单默认开启沉浸式系统材质。此模式下，沉浸式系统材质样式生效的优先级高于组件 本身设置的背景色、模糊、阴影和边框样式。其他组件需开发者主动设置。
+使能模式。[弹出框Dialog](../../../ui/arkts-base-dialog-overview.md)、[即时反馈（Toast）](../../../ui/arkts-create-toast.md)、 AlphabetIndexer、[ChipGroup](arkts-arkui-arkui-advanced-chipgroup-chipgroup-s.md)、 Chip、Select、菜单控制、Toggle、 [SegmentButton](arkts-arkui-arkui-advanced-segmentbutton-segmentbutton-s.md)、 SegmentButtonV2、Slider、 [bindSheet](../arkts-components/arkts-arkui-commonmethod-c.md#bindsheet)、SelectionMenu组件默认开启沉浸式系统材质； Text设置copyOption后长按或双击触发的文本菜单默认开启沉浸式系统材质。此模式下，沉浸式系统材质样式生效的优先级高于组件 本身设置的背景色、模糊、阴影和边框样式。其他组件需开发者主动设置。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MaterialState-ENABLE = 1--><!--Device-MaterialState-ENABLE = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,7 +52,4 @@ DISABLE = 2
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-MaterialState-DISABLE = 2--><!--Device-MaterialState-DISABLE = 2-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

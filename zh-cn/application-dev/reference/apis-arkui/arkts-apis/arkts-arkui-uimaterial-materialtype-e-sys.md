@@ -1,14 +1,10 @@
-# MaterialType（系统接口）
+# MaterialType
 
-系统材质类型枚举。
+系统材质类型枚举。@enum { number } [since 23 - 24]
 
-**起始版本：** 23
-
-<!--Device-uiMaterial-enum MaterialType--><!--Device-uiMaterial-enum MaterialType-End-->
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**系统接口：** 此接口为系统接口。
 
 ## NONE
 
@@ -16,15 +12,14 @@
 NONE = 0
 ```
 
-无系统材质效果。对应的效果为背景色 [backgroundColor](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)为 透明色，边框颜色borderColor为透明色，边框宽度borderWidth为0，无阴影 shadow。 **系统接口：** 此接口为系统接口。
+无系统材质效果。对应的效果为背景色 backgroundColor为 透明色，边框颜色borderColor为透明色，边框宽度borderWidth为0，无阴影 shadow。  
+**系统接口：** 此接口为系统接口。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-MaterialType-NONE = 0--><!--Device-MaterialType-NONE = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +31,8 @@ NONE = 0
 SEMI_TRANSPARENT = 1
 ```
 
-半透明系统材质效果。对应的效果为： 背景色 [backgroundColor](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)： 浅色模式为"#f2f1f3f5"，深色模式为"#f2303131"。 边框颜色borderColor为混合10%的透明度的theme.colors.compForegroundPrimary的 [token](../../../ui/theme_skinning.md#系统缺省token色值)值。 边框宽度borderWidth为1vp。 阴影shadow为ShadowStyle.OUTER_DEFAULT_SM。 **系统接口：** 此接口为系统接口。
+半透明系统材质效果。对应的效果为：背景色 backgroundColor： 浅色模式为"#f2f1f3f5"，深色模式为"#f2303131"。边框颜色borderColor为混合10%的透明度的theme.colors.compForegroundPrimary的 [token](../../../ui/theme_skinning.md#系统缺省token色值)值。边框宽度borderWidth为1vp。阴影shadow为ShadowStyle.OUTER_DEFAULT_SM。  
+**系统接口：** 此接口为系统接口。
 
 **起始版本：** 23
 
@@ -44,9 +40,6 @@ SEMI_TRANSPARENT = 1
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-MaterialType-SEMI_TRANSPARENT = 1--><!--Device-MaterialType-SEMI_TRANSPARENT = 1-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-

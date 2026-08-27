@@ -1,10 +1,8 @@
 # DismissContentCoverAction
 
-Component content cover dismiss
+Component content cover dismiss@interface DismissContentCoverAction
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare interface DismissContentCoverAction--><!--Device-unnamed-declare interface DismissContentCoverAction-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,8 +27,6 @@ dismiss: Callback<void>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DismissContentCoverAction-dismiss: Callback<void>--><!--Device-DismissContentCoverAction-dismiss: Callback<void>-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## reason
@@ -49,7 +45,4 @@ reason: DismissReason
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DismissContentCoverAction-reason: DismissReason--><!--Device-DismissContentCoverAction-reason: DismissReason-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

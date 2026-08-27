@@ -9,7 +9,7 @@ import { display } from '@kit.ArkUI';
 ## onChangeWithAttribute
 
 ```TypeScript
-function onChangeWithAttribute(displayAttributeOption: Array<string>, callback: Callback<long>): void
+function onChangeWithAttribute(displayAttributeOption: Array<string>, callback: Callback<number>): void
 ```
 
 开启显示设备指定属性变化的监听。
@@ -18,16 +18,14 @@ function onChangeWithAttribute(displayAttributeOption: Array<string>, callback: 
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-display-function onChangeWithAttribute(displayAttributeOption: Array<string>, callback: Callback<long>): void--><!--Device-display-function onChangeWithAttribute(displayAttributeOption: Array<string>, callback: Callback<long>): void-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayAttributeOption | Array&lt;string&gt; | 是 | 指定需要监听的屏幕属性名称，且仅限于 [display属性](arkts-display.md)中包含的属性。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;long&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
+| displayAttributeOption | Array & lt;string & gt; | 是 | 指定需要监听的屏幕属性名称，且仅限于 [display属性](../../../reference/apis-arkui/js-apis-display.md#属性)中包含的属性。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
 
 **错误码：**
 
@@ -47,4 +45,3 @@ let attributesChangeCallback: Callback<number> = (data: number) => {
 let attributes: Array<string> = ['rotation', 'width'];
 display.onChangeWithAttribute(attributes, attributesChangeCallback);
 ```
-

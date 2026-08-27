@@ -8,8 +8,6 @@ type OnRenderProcessNotRespondingCallback = (data : RenderProcessNotRespondingDa
 
 **起始版本：** 12
 
-<!--Device-unnamed-type OnRenderProcessNotRespondingCallback = (data : RenderProcessNotRespondingData) => void--><!--Device-unnamed-type OnRenderProcessNotRespondingCallback = (data : RenderProcessNotRespondingData) => void-End-->
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -17,4 +15,3 @@ type OnRenderProcessNotRespondingCallback = (data : RenderProcessNotRespondingDa
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | [RenderProcessNotRespondingData](arkts-arkweb-renderprocessnotrespondingdata-i.md) | 是 | 渲染进程无响应的详细信息。 |
-

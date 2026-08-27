@@ -1,12 +1,10 @@
 # CustomGeometry
 
-自定义几何类型，继承自GeometryDefinition。
+自定义几何类型，继承自GeometryDefinition。@extends GeometryDefinition
 
 **继承/实现关系：** CustomGeometry extends [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md)
 
-**起始版本：** 23
-
-<!--Device-unnamed-export declare class CustomGeometry--><!--Device-unnamed-export declare class CustomGeometry-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -22,25 +20,21 @@ colors?: Color[]
 
 **起始版本：** 18
 
-<!--Device-CustomGeometry-colors?: Color[]--><!--Device-CustomGeometry-colors?: Color[]-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## indices
 
 ```TypeScript
-indices?: int[]
+indices?: number[]
 ```
 
 顶点索引数组，数组中元素的取值范围大于等于0，默认值为undefined。
 
-**类型：** int[]
+**类型：** number[]
 
 **默认值：** undefined
 
 **起始版本：** 18
-
-<!--Device-CustomGeometry-indices?: int[]--><!--Device-CustomGeometry-indices?: int[]-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -55,8 +49,6 @@ normals?: Vec3[]
 **类型：** [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md)[]
 
 **起始版本：** 18
-
-<!--Device-CustomGeometry-normals?: Vec3[]--><!--Device-CustomGeometry-normals?: Vec3[]-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -74,8 +66,6 @@ topology?: PrimitiveTopology
 
 **起始版本：** 18
 
-<!--Device-CustomGeometry-topology?: PrimitiveTopology--><!--Device-CustomGeometry-topology?: PrimitiveTopology-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## uvs
@@ -90,7 +80,18 @@ uvs?: Vec2[]
 
 **起始版本：** 18
 
-<!--Device-CustomGeometry-uvs?: Vec2[]--><!--Device-CustomGeometry-uvs?: Vec2[]-End-->
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+## vertices
+
+```TypeScript
+set vertices(value: Vec3[])
+```
+
+模型的顶点数组。
+
+**类型：** [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md)[]
+
+**起始版本：** 18
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D

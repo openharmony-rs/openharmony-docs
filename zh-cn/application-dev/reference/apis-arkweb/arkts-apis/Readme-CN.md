@@ -1,12 +1,12 @@
 # ArkTS API<!--arkts-arkweb-->
 
+- [@ohos.web.netErrorList](arkts-web-neterrorlist.md)
+  - [WebNetErrorList](arkts-arkweb-web-neterrorlist-webneterrorlist-e.md)
 - [@ohos.web.WebNativeMessagingExtensionAbility](arkts-web-webnativemessagingextensionability.md)
   - [WebNativeMessagingExtensionAbility](arkts-arkweb-web-webnativemessagingextensionability-webnativemessagingextensionability-c.md)
   - [ConnectionInfo](arkts-arkweb-web-webnativemessagingextensionability-connectioninfo-i.md)
 - [@ohos.web.WebNativeMessagingExtensionContext](arkts-web-webnativemessagingextensioncontext.md)
   - [WebNativeMessagingExtensionContext](arkts-arkweb-web-webnativemessagingextensioncontext-webnativemessagingextensioncontext-c.md)
-- [@ohos.web.netErrorList](arkts-web-neterrorlist.md)
-  - [WebNetErrorList](arkts-arkweb-web-neterrorlist-webneterrorlist-e.md)
 - [@ohos.web.webNativeMessagingExtensionManager](arkts-web-webnativemessagingextensionmanager.md)
   - [connectNative](arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md)
   - [disconnectNative](arkts-arkweb-webnativemessagingextensionmanager-disconnectnative-f.md)
@@ -14,7 +14,7 @@
   - [WebExtensionConnectionCallback](arkts-arkweb-webnativemessagingextensionmanager-webextensionconnectioncallback-i.md)
   - [NmErrorCode](arkts-arkweb-webnativemessagingextensionmanager-nmerrorcode-e.md)
 - [@ohos.web.webview](arkts-web-webview.md)
-  - [once_string](arkts-arkweb-webview-oncestring-f.md)
+  - [once](arkts-arkweb-webview-once-f.md)
   - [AdsBlockManager](arkts-arkweb-webview-adsblockmanager-c.md)
   - [BackForwardCacheOptions](arkts-arkweb-webview-backforwardcacheoptions-c.md)
   - [BackForwardCacheSupportedFeatures](arkts-arkweb-webview-backforwardcachesupportedfeatures-c.md)

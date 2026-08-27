@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-unnamed-export interface PostMessageOptions--><!--Device-unnamed-export interface PostMessageOptions-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
 
 ## 导入模块
@@ -28,7 +26,4 @@ ArrayBuffer数组，用于传递所有权。该数组中不可传入null。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PostMessageOptions-transfer?: Object[]--><!--Device-PostMessageOptions-transfer?: Object[]-End-->
-
 **系统能力：** SystemCapability.Utils.Lang
-

@@ -12,7 +12,7 @@ typedef struct ArkUI_Margin {...} ArkUI_Margin
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [node_water_flow.h](capi-node-water-flow-h.md)
+**所在头文件：** [water_flow.h](capi-water-flow-h.md)
 
 ## 汇总
 

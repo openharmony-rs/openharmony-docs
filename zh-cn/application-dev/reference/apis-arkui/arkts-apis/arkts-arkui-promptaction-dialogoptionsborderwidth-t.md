@@ -12,12 +12,9 @@ declare type DialogOptionsBorderWidth = Dimension | EdgeWidths
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-promptAction-declare type DialogOptionsBorderWidth = Dimension | EdgeWidths--><!--Device-promptAction-declare type DialogOptionsBorderWidth = Dimension | EdgeWidths-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | --- | --- |
-| Dimension |  |
+| [Dimension](arkts-arkui-dimension-t.md) |  |
 | EdgeWidths |  |
-

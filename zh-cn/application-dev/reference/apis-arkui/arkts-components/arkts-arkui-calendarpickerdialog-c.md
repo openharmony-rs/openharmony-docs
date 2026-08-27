@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare class CalendarPickerDialog--><!--Device-unnamed-declare class CalendarPickerDialog-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,8 +25,6 @@ static show(options?: CalendarDialogOptions): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CalendarPickerDialog-static show(options?: CalendarDialogOptions): void--><!--Device-CalendarPickerDialog-static show(options?: CalendarDialogOptions): void-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -36,4 +32,3 @@ static show(options?: CalendarDialogOptions): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [CalendarDialogOptions](arkts-arkui-calendardialogoptions-i.md) | 否 | 配置日历选择器弹窗的参数，缺省时无法弹出弹窗。 |
-

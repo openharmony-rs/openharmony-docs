@@ -18,8 +18,6 @@ function preQuerySync(query: AssetMap): Uint8Array
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
-<!--Device-asset-function preQuerySync(query: AssetMap): Uint8Array--><!--Device-asset-function preQuerySync(query: AssetMap): Uint8Array-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 **参数：**
@@ -32,24 +30,24 @@ function preQuerySync(query: AssetMap): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| Uint8Array | 挑战值。 <br>**说明：** 挑战值用于后续用户认证。 |
+| Uint8Array | 挑战值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [24000012](../errorcode-asset.md#24000012-账号系统服务异常) | Calling the OS Account service failed. |
-| [24000013](../errorcode-asset.md#24000013-访问控制服务异常) | Calling the Access Token service failed. |
-| [24000010](../errorcode-asset.md#24000010-进程通信错误) | IPC failed. |
-| [24000011](../errorcode-asset.md#24000011-包管理服务异常) | Calling the Bundle Manager service failed. |
-| [24000008](../errorcode-asset.md#24000008-数据库操作失败) | The database operation failed. |
-| [24000009](../errorcode-asset.md#24000009-算法库操作失败) | The cryptography operation failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
+| [24000002](../errorcode-asset.md#24000002-未找到关键资产) | The asset is not found. |
+| [24000005](../errorcode-asset.md#24000005-锁屏状态不匹配) | The screen lock status does not match. |
 | [24000006](../errorcode-asset.md#24000006-系统内存不足) | Insufficient memory. |
 | [24000007](../errorcode-asset.md#24000007-关键资产损坏) | The asset is corrupted. |
-| [24000005](../errorcode-asset.md#24000005-锁屏状态不匹配) | The screen lock status does not match. |
-| [24000002](../errorcode-asset.md#24000002-未找到关键资产) | The asset is not found. |
-| [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [24000008](../errorcode-asset.md#24000008-数据库操作失败) | The database operation failed. |
+| [24000009](../errorcode-asset.md#24000009-算法库操作失败) | The cryptography operation failed. |
+| [24000010](../errorcode-asset.md#24000010-进程通信错误) | IPC failed. |
+| [24000011](../errorcode-asset.md#24000011-包管理服务异常) | Calling the Bundle Manager service failed. |
+| [24000012](../errorcode-asset.md#24000012-账号系统服务异常) | Calling the OS Account service failed. |
+| [24000013](../errorcode-asset.md#24000013-访问控制服务异常) | Calling the Access Token service failed. |
 | [24000016](../errorcode-asset.md#24000016-缓存数量超限) | The cache exceeds the limit. |
 | [24000017](../errorcode-asset.md#24000017-该子功能不支持) | The capability is not supported. |
 
@@ -69,4 +67,3 @@ query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
 let challenge: Uint8Array = asset.preQuerySync(query);
 console.info(`Succeeded in pre-querying with sync, the challenge is: `, challenge);
 ```
-

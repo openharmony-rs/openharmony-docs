@@ -12,8 +12,6 @@ Defines GestureGroup Component.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare const GestureGroup: GestureGroupInterface--><!--Device-unnamed-declare const GestureGroup: GestureGroupInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LongPressGesture
@@ -27,8 +25,6 @@ Defines LongPressGesture Component.
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-unnamed-declare const LongPressGesture: LongPressGestureInterface--><!--Device-unnamed-declare const LongPressGesture: LongPressGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,8 +40,6 @@ Defines PanGesture Component.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare const PanGesture: PanGestureInterface--><!--Device-unnamed-declare const PanGesture: PanGestureInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PinchGesture
@@ -59,8 +53,6 @@ Defines PinchGesture Component.
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-unnamed-declare const PinchGesture: PinchGestureInterface--><!--Device-unnamed-declare const PinchGesture: PinchGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,8 +68,6 @@ Defines RotationGesture Component.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare const RotationGesture: RotationGestureInterface--><!--Device-unnamed-declare const RotationGesture: RotationGestureInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SwipeGesture
@@ -91,8 +81,6 @@ Defines SwipeGesture Component.
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-unnamed-declare const SwipeGesture: SwipeGestureInterface--><!--Device-unnamed-declare const SwipeGesture: SwipeGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,7 +96,4 @@ Defines TapGesture Component.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare const TapGesture: TapGestureInterface--><!--Device-unnamed-declare const TapGesture: TapGestureInterface-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

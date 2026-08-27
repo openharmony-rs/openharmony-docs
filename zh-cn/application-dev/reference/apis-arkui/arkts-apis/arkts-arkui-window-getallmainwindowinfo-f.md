@@ -3,8 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -16,11 +14,9 @@ function getAllMainWindowInfo(): Promise<Array<MainWindowInfo>>
 
 获取全部主窗口信息，使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 21
 
 **需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
-
-<!--Device-window-function getAllMainWindowInfo(): Promise<Array<MainWindowInfo>>--><!--Device-window-function getAllMainWindowInfo(): Promise<Array<MainWindowInfo>>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -34,9 +30,9 @@ function getAllMainWindowInfo(): Promise<Array<MainWindowInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
 
@@ -88,4 +84,3 @@ function reqPermissionsFromUser(permissions: Array<Permissions>, context: common
   })
 }
 ```
-

@@ -2,11 +2,11 @@
 
 DatePickerComponent组件用于选择日期（年月日）和时间（时分秒）。
 
-## 子组件 无
+## 子组件
+
+无
 
 **起始版本：** 26.0.0
-
-<!--Device-unnamed-export declare struct DatePickerComponent--><!--Device-unnamed-export declare struct DatePickerComponent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -19,13 +19,12 @@ import { DatePickerComponent, DatePickerComponentOptions, DisplayMode, DateMode,
 ## options
 
 ```TypeScript
-@Prop
-  options: DatePickerComponentOptions
+options: DatePickerComponentOptions
 ```
 
 定义日期时间选择器组件的选项。
 
-**类型：** [DatePickerComponentOptions](../../apis-na/arkts-apis/arkts-na-arkui-advanced-datepickercomponent-datepickercomponentoptions-c.md)
+**类型：** [DatePickerComponentOptions](arkts-arkui-arkui-advanced-datepickercomponent-datepickercomponentoptions-c.md)
 
 **起始版本：** 26.0.0
 
@@ -33,7 +32,4 @@ import { DatePickerComponent, DatePickerComponentOptions, DisplayMode, DateMode,
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-DatePickerComponent-@Prop  options: DatePickerComponentOptions--><!--Device-DatePickerComponent-@Prop  options: DatePickerComponentOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

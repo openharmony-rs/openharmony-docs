@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare interface SurfaceRotationOptions--><!--Device-unnamed-declare interface SurfaceRotationOptions-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -19,7 +17,9 @@
 lock?: boolean
 ```
 
-屏幕旋转时是否锁定surface的方向。 如果不设置此参数，默认值为false，表示不锁定方向。 **true**：屏幕旋转时锁定surface的方向。 **false**：屏幕旋转时不锁定surface的方向。
+屏幕旋转时是否锁定surface的方向。 如果不设置此参数，默认值为false，表示不锁定方向。  
+**true**：屏幕旋转时锁定surface的方向。  
+**false**：屏幕旋转时不锁定surface的方向。
 
 **类型：** boolean
 
@@ -29,7 +29,4 @@ lock?: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SurfaceRotationOptions-lock?: boolean--><!--Device-SurfaceRotationOptions-lock?: boolean-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-

@@ -12,9 +12,6 @@ declare type Theme = import('../api/@ohos.arkui.theme').Theme
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare type Theme = import('../api/@ohos.arkui.theme').Theme--><!--Device-unnamed-declare type Theme = import('../api/@ohos.arkui.theme').Theme-End-->
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **属性类型：** import('../api/@ohos.arkui.theme').Theme
-

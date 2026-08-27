@@ -3,8 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { floatingBall } from '@kit.ArkUI';
-import { floatView } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 ```
 
@@ -20,8 +18,6 @@ function onApplicationFocusStateChange(callback: Callback<boolean>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-window-function onApplicationFocusStateChange(callback: Callback<boolean>): void--><!--Device-window-function onApplicationFocusStateChange(callback: Callback<boolean>): void-End-->
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -36,11 +32,10 @@ function onApplicationFocusStateChange(callback: Callback<boolean>): void
 import { window } from '@kit.ArkUI';
 
 try {
-  window.onApplicationFocusStateChange((data) =>{
+  window.onApplicationFocusStateChange((data) => {
       console.info(`Succeeded in enabling the listener for application focus state changes. Data: ${data}`);
   })
 } catch (exception){
   console.error(`Failed to enable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
