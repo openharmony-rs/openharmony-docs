@@ -25,14 +25,14 @@
     - [使用Node-API实现跨语言交互开发流程](use-napi-process.md)
     - Node-API使用指导<!--napi-use-->
       - [使用Node-API进行扩展能力功能开发](use-napi-about-extension.md)
-      - [使用Node-API进行array相关开发](use-napi-about-array.md)
-      - [使用Node-API进行arraybuffer相关开发](use-napi-about-arraybuffer.md)
+      - [使用Node-API接口进行array相关开发](use-napi-about-array.md)
+      - [使用Node-API接口进行ArrayBuffer相关开发](use-napi-about-arraybuffer.md)
       - [使用Node-API接口操作bigint类型值](use-napi-about-bigint.md)
       - [使用Node-API接口进行buffer相关开发](use-napi-about-buffer.md)
       - [使用Node-API接口创建基本数据类型](use-napi-basic-data-types.md)
       - [使用Node-API进行class相关开发](use-napi-about-class.md)
       - [使用Node-API接口注册和使用环境清理钩子](use-napi-about-cleanuphook.md)
-      - [使用Node-API接口进行date相关开发](use-napi-about-date.md)
+      - [使用Node-API接口进行Date相关开发](use-napi-about-date.md)
       - [使用Node-API接口进行错误处理开发](use-napi-about-error.md)
       - [使用Node-API接口关联数据，使其生命周期与当前环境的生命周期相关联](use-napi-about-environmental-life-cycle.md)
       - [使用Node-API接口进行函数创建和调用](use-napi-about-function.md)
@@ -53,7 +53,7 @@
       - [使用Node-API接口在主线程中进行模块加载](use-napi-load-module.md)
       - [使用扩展的Node-API接口在异步线程中运行和停止事件循环](use-napi-event-loop.md)
       - [使用Node-API接口进行模块加载](use-napi-load-module-with-info.md)
-      - [使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式任务](use-call-threadsafe-function-with-priority.md)
+      - [使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的任务](use-call-threadsafe-function-with-priority.md)
       - [使用扩展的Node-API接口在当前线程中创建、切换和销毁上下文环境](use-napi-about-context.md)
       - [使用扩展的Node-API接口创建对ArkTS对象的强引用](use-napi-about-strong-reference.md)
       - [使用扩展的Node-API接口创建和销毁临界区作用域及访问字符串内容](use-napi-about-critical.md)
@@ -87,7 +87,7 @@
       - [使用JSVM-API接口进行Date相关开发](use-jsvm-about-date.md)
       - [使用JSVM-API接口进行debug操作](use-jsvm-about-debug-option.md)
       - [使用JSVM-API接口进行object相关开发](use-jsvm-about-object.md)
-      - [使用JSVM-API接口进行primitive类相关开发](use-jsvm-about-primitive.md)
+      - [使用JSVM-API接口进行primitive类型相关开发](use-jsvm-about-primitive.md)
       - [使用JSVM-API接口处理异步操作](use-jsvm-about-promise.md)
       - [使用JSVM-API接口设置JavaScript对象的属性](use-jsvm-about-property.md)
       - [使用JSVM-API接口创建和获取string值](use-jsvm-about-string.md)
@@ -109,7 +109,7 @@
     - JSVM-API典型使用场景指导<!--jsvm-scenarios-->
       - [JSVM-API调试&定位](jsvm-debugger-cpuprofiler-heapsnapshot.md)
       - [使用JSVM-API接口进行Trace相关开发](use-jsvm-about-trace.md)
-      - [JSVM 申请JIT权限指导](jsvm-apply-jit-profile.md)
+      - [JSVM-API 申请JIT权限指导](jsvm-apply-jit-profile.md)
       - [JSVM-API 坚盾守护模式](jsvm-secure-shield-mode.md)
       - [JSVM 定位内存泄漏问题指导](jsvm-locate-memory-leak.md)
       - JSVM-API调优&高性能使用示例<!--jsvm-usage-examples-->
@@ -117,7 +117,7 @@
         - [使用code cache加速编译](use-jsvm-about-code-cache.md)
         - [JSVM通用调优实践](jsvm-optimizations.md)
     - JSVM性能调试指导<!--jsvm-performance-->
-      - [使用HiSmartPerf采集V8 trace](use-jsvm-about-v8-trace.md)
+      - [使用HiSmartPerf采集JSVM trace](use-jsvm-about-v8-trace.md)
       - [使用DevTools进行网页内存分析](use-jsvm-about-analyze-memory-usage.md)
   - Longque-JS-API<!--longque-->
     - [Longque-JS-API使用指导](use-longque-js-api.md)

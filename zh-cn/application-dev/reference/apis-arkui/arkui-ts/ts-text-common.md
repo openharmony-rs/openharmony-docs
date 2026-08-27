@@ -126,6 +126,8 @@ getCharacterPositionAtCoordinate(x: number, y: number, encoding?: TextEncoding):
 
 根据指定编码类型，获取距离指定坐标最近的字符位置信息。
 
+相比[getCharacterPositionAtCoordinate](#getcharacterpositionatcoordinate24)，本接口支持通过encoding参数指定字符位置使用的编码类型（UTF-8或UTF-16）。
+
 > **说明：**
 >
 > 文本内容变更后，需等待布局完成才可获取到最新的位置信息。
@@ -194,6 +196,8 @@ getGlyphRangeForCharacterRange(charRange: [TextRange](#textrange12)): Array&lt;[
 getGlyphRangeForCharacterRange(charRange: TextRange, encoding?: TextEncoding): Array&lt;TextRange&gt; | undefined
 
 根据指定编码类型和文本字符范围，获取字形范围以及实际的字符范围。
+
+相比[getGlyphRangeForCharacterRange](#getglyphrangeforcharacterrange24)，本接口支持通过encoding参数指定字符范围使用的编码类型（UTF-8或UTF-16）。
 
 > **说明：**
 >
@@ -275,6 +279,8 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange, encoding?: TextEncoding): 
 
 根据指定编码类型和文本字形范围，获取字符范围以及实际的字形范围。
 
+相比[getCharacterRangeForGlyphRange](#getcharacterrangeforglyphrange24)，本接口支持通过encoding参数指定字符范围使用的编码类型（UTF-8或UTF-16）。
+
 > **说明：**
 >
 > 文本内容变更后，需等待布局完成才可获取到最新的字符范围信息。
@@ -336,7 +342,7 @@ getLineMetrics(lineNumber: number): LineMetrics
 
 | 类型                                       | 说明       |
 | ---------------------------------------- | -------- |
-| [LineMetrics](#linemetrics12) | 行信息、文本样式信息、以及字体属性信息。<br>当行号小于0或超出实际行，返回无效值。当[LayoutManager](#layoutmanager12)没有和组件绑定时，返回无效值。 |
+| [LineMetrics](#linemetrics12) | 行信息、文本样式信息、以及字体属性信息。<br>当行号小于0或超出实际行数，返回无效值。当[LayoutManager](#layoutmanager12)没有和组件绑定时，返回无效值。 |
 
 ### getRectsForRange<sup>14+</sup>
 
@@ -763,7 +769,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => void
 
-文本变换后回调。
+文本变化后回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

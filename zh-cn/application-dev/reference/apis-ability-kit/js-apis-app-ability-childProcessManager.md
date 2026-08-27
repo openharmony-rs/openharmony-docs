@@ -88,7 +88,7 @@ startChildProcess(srcEntry: string, startMode: StartMode): Promise&lt;number&gt;
 **示例：**
 
 ```ts
-// 在entry模块的src/main/ets/process下创建DemoProcess.ets子进程类:
+// 在entry模块的src/main/ets/process下创建DemoProcess.ets子进程类：
 // entry/src/main/ets/process/DemoProcess.ets
 import { ChildProcess } from '@kit.AbilityKit';
 
@@ -101,7 +101,7 @@ export default class DemoProcess extends ChildProcess {
 
 <!--code_no_check-->
 ```ts
-// 使用childProcessManager.startChildProcess方法启动子进程:
+// 使用childProcessManager.startChildProcess方法启动子进程：
 // entry/src/main/ets/tool/Tool.ets
 import { childProcessManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -158,7 +158,7 @@ startChildProcess(srcEntry: string, startMode: StartMode, callback: AsyncCallbac
 **示例：**
 
 ```ts
-// 在entry模块的src/main/ets/process下创建DemoProcess.ets子进程类:
+// 在entry模块的src/main/ets/process下创建DemoProcess.ets子进程类：
 // entry/src/main/ets/process/DemoProcess.ets
 import { ChildProcess } from '@kit.AbilityKit';
 
@@ -171,7 +171,7 @@ export default class DemoProcess extends ChildProcess {
 
 <!--code_no_check-->
 ```ts
-// 使用childProcessManager.startChildProcess方法启动子进程:
+// 使用childProcessManager.startChildProcess方法启动子进程：
 // entry/src/main/ets/tool/Tool.ets
 import { childProcessManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -239,7 +239,7 @@ startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildPr
 子进程部分：
 
 ```ts
-// 在module1模块的src/main/ets/process下创建DemoProcess.ets子进程类:
+// 在module1模块的src/main/ets/process下创建DemoProcess.ets子进程类：
 // module1/src/main/ets/process/DemoProcess.ets
 import { ChildProcess, ChildProcessArgs } from '@kit.AbilityKit';
 
@@ -257,7 +257,7 @@ export default class DemoProcess extends ChildProcess {
 
 <!--code_no_check-->
 ```ts
-// 使用childProcessManager.startArkChildProcess方法启动子进程:
+// 使用childProcessManager.startArkChildProcess方法启动子进程：
 // module1/src/main/ets/tool/Tool.ets
 import { common, ChildProcessArgs, ChildProcessOptions, childProcessManager } from '@kit.AbilityKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -386,7 +386,7 @@ void Main(NativeChildProcess_Args args)
 
 ```ts
 // 主进程：
-// 使用childProcessManager.startNativeChildProcess方法启动子进程:
+// 使用childProcessManager.startNativeChildProcess方法启动子进程：
 import { common, ChildProcessArgs, ChildProcessOptions, childProcessManager } from '@kit.AbilityKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -529,4 +529,51 @@ struct Index {
     .height('100%')
   }
 }
+```
+
+## childProcessManager.getChildProcessInfos
+
+getChildProcessInfos(): Promise&lt;Array&lt;ChildProcessInformation&gt;&gt;
+
+获取当前应用的所有子进程信息，使用Promise异步回调。包括通过以下方式启动的子进程：
+- [OH_Ability_CreateNativeChildProcess](capi-native-child-process-h.md#oh_ability_createnativechildprocess) / [OH_Ability_CreateNativeChildProcessWithConfigs](capi-native-child-process-h.md#oh_ability_createnativechildprocesswithconfigs)
+- [OH_Ability_StartNativeChildProcess](capi-native-child-process-h.md#oh_ability_startnativechildprocess) / [OH_Ability_StartNativeChildProcessWithConfigs](capi-native-child-process-h.md#oh_ability_startnativechildprocesswithconfigs)
+- [childProcessManager.startChildProcess](#childprocessmanagerstartchildprocess)（非SELF_FORK模式）
+- [childProcessManager.startArkChildProcess](#childprocessmanagerstartarkchildprocess12)
+- [childProcessManager.startNativeChildProcess](#childprocessmanagerstartnativechildprocess13)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;Array&lt;[ChildProcessInformation](js-apis-inner-application-childProcessRunningInfo.md)&gt;&gt; | Promise对象，返回当前应用的子进程信息。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 16000050 | 连接系统服务失败。 |
+
+**示例：**
+
+```ts
+import { childProcessManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+childProcessManager.getChildProcessInfos().then((data) => {
+  console.info(`getChildProcessInfos success, count: ${data.length}`);
+  for (let info of data) {
+    console.info(`pid: ${info.pid}, parentPid: ${info.parentPid}, processName: ${info.processName}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`getChildProcessInfos failed, code: ${err.code}, msg: ${err.message}`);
+});
 ```

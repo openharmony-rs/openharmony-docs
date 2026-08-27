@@ -246,7 +246,7 @@ struct Parent {
 
 - 复杂类型：如果传递的是复杂对象且需要严格的单向数据绑定，需要深拷贝对象，防止子组件修改父组件的数据。
 
-- 子组件修改变量：如果子组件需要修改传入的参数，使用\@Once允许子组件在本地修改该变量。但需要注意，使用\@Once修饰符后，当前子组件只会被初始化一次，后续无父组件到子组件的同步能力。
+- 子组件修改变量：如果子组件需要修改传入的参数，使用\@Param和\@Once允许子组件在本地修改该变量。但需要注意，使用\@Once装饰器后，当前子组件只会被初始化一次，后续无父组件到子组件的同步能力。
 
 **示例**
 
@@ -928,7 +928,7 @@ V1的\@Provide和\@Consume与V2的\@Provider和\@Consumer定位和作用类似�
 
 **alias和属性名匹配规则**
 
-在V1中，\@Provide和\@Consume的匹配既可以通过alias，也可以通过属性名。在V2中，alias成为唯一的key，如果在\@Consumer中制定了alias，只能通过alias而非属性名进行匹配。
+在V1中，\@Provide和\@Consume的匹配既可以通过alias，也可以通过属性名。在V2中，alias成为唯一的key，如果在\@Consumer中指定了alias，只能通过alias而非属性名进行匹配。
 
 V1实现：
 
@@ -1118,7 +1118,7 @@ struct Child {
 }
 ```
 
-V2迁移策略：使用\@Param接收初始值，再赋值给\@Provider。
+V2迁移策略：使用\@Param和\@Once接收初始值，再赋值给\@Provider。
 
 <!-- @[Parent22_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentNoInitV2.ets) -->
 

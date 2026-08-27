@@ -1435,7 +1435,7 @@ export default class EntryAbility extends UIAbility {
 
 setMissionIcon(icon: image.PixelMap): Promise\<void>
 
-设置当前UIAbility在任务中显示的图标, 图标大小最大为600M。使用Promise异步回调。
+设置当前UIAbility在任务中显示的图标，图标大小最大为600M。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

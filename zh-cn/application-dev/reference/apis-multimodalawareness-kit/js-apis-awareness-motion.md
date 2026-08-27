@@ -33,7 +33,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 ## HoldingHandStatus<sup>20+</sup>
 
-握持手状态信息，表示握持手状态变化感知事件的结果。订阅握持手状态变化感知事件后，返回当前握持手状态信息。
+握持手状态信息，表示握持手状态变化感知事件的结果。订阅事件后，返回当前握持手状态信息。
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -49,7 +49,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;): void
 
-订阅触控操作手感知事件。调用on()订阅事件后，建议在使用完毕后调用off()取消订阅以释放资源，避免多余的性能功耗开销。相关方法：off('operatingHandChanged')：取消订阅触控操作手感知事件。
+订阅触控操作手感知事件。系统通过触控屏传感器采集用户触控数据，结合手势识别算法判断当前操作手是左手还是右手。适用于手势交付、单双手操作适配等场景，通过识别用户的触控操作手状态优化界面布局和交互方式。建议在使用完毕后调用off()取消订阅以释放资源，避免多余的性能功耗开销。相关方法：off('operatingHandChanged')：取消订阅触控操作手感知事件。
 
 如果设备不支持此功能，将返回801错误码。
 
@@ -63,7 +63,7 @@ on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;):
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | 是   | 事件类型。type为“operatingHandChanged”，表示操作手状态变化。 |
+| type     | string                           | 是   | 事件类型。固定传入'operatingHandChanged'，表示操作手状态变化。 |
 | callback | Callback&lt;[OperatingHandStatus](#operatinghandstatus)&gt; | 是   | 回调函数，返回操作手状态信息。 |
 
 **错误码**：
@@ -81,7 +81,8 @@ on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;):
 **示例**：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
+import { motion } from '@kit.MultimodalAwarenessKit';
 
 let callback:Callback<motion.OperatingHandStatus> = (data:motion.OperatingHandStatus) => {
     console.info('operatingHandStatus: ' + data);
@@ -112,7 +113,7 @@ off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | 是   | 事件类型。type为“operatingHandChanged”，表示操作手状态变化。 |
+| type     | string                           | 是   | 事件类型。固定传入'operatingHandChanged'，表示操作手状态变化。 |
 | callback | Callback&lt;[OperatingHandStatus](#operatinghandstatus)&gt; | 否   | 回调函数，返回操作手状态信息。需要取消监听的回调函数，需与订阅时传入的回调函数一致。若不填，则取消当前监听该事件的所有回调函数。 |
 
 **错误码**：
@@ -145,7 +146,7 @@ try {
 
 getRecentOperatingHandStatus(): OperatingHandStatus
 
-获取最新触控操作手状态。
+获取最新触控操作手状态。该方法直接返回最新的操作手状态，无需订阅事件即可调用。
 
 **需要权限**：
 - API版本20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
@@ -187,7 +188,7 @@ try {
 
 on(type: 'holdingHandChanged', callback: Callback&lt;HoldingHandStatus&gt;): void
 
-订阅握持手状态变化感知事件。调用on()订阅事件后，建议在使用完毕后调用off()取消订阅以释放资源，避免多余的性能功耗开销。相关方法：off('holdingHandChanged')：取消订阅握持手状态变化感知事件。
+订阅握持手状态变化感知事件。系统通过传感器数据，结合识别算法判断当前握持手是左手还是右手。适用于阅读应用、视频播放等需要根据用户握持手状态调整界面布局或功能的场景。建议在使用完毕后调用off()取消订阅以释放资源，避免多余的性能功耗开销。相关方法：off('holdingHandChanged')：取消订阅握持手状态变化感知事件。
 
 **需要权限**：ohos.permission.DETECT_GESTURE
 
@@ -197,7 +198,7 @@ on(type: 'holdingHandChanged', callback: Callback&lt;HoldingHandStatus&gt;): voi
 
 | 参数名   | 类型                                              | 必填 | 说明                                   |
 | -------- | ------------------------------------------------- | ---- | -------------------------------------- |
-| type     | string                                            | 是   | 事件类型，type为"holdingHandChanged"。 |
+| type     | string                                            | 是   | 事件类型，固定传入'holdingHandChanged'，表示握持手状态变化。 |
 | callback | Callback&lt;[HoldingHandStatus](#holdinghandstatus20)&gt; | 是   | 回调函数，返回握持手状态信息。 |
 
 **错误码**：
@@ -213,7 +214,7 @@ on(type: 'holdingHandChanged', callback: Callback&lt;HoldingHandStatus&gt;): voi
 
 **示例**：
 
-```typescript
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let callback:Callback<motion.HoldingHandStatus> = (data:motion.HoldingHandStatus) => {
@@ -243,7 +244,7 @@ off(type: 'holdingHandChanged', callback?: Callback&lt;HoldingHandStatus&gt;): v
 
 | 参数名   | 类型                                              | 必填 | 说明                                           |
 | -------- | ------------------------------------------------- | ---- | ---------------------------------------------- |
-| type     | string                                            | 是   | 事件类型，type为"holdingHandChanged"。         |
+| type     | string                                            | 是   | 事件类型，固定传入'holdingHandChanged'，表示握持手状态变化。         |
 | callback | Callback&lt;[HoldingHandStatus](#holdinghandstatus20)&gt; | 否   | 回调函数，返回握持手状态信息。需要取消监听的回调函数，需与订阅时传入的回调函数一致。若不填，则取消当前监听该事件的所有回调函数。 |
 
 **错误码**：
@@ -259,7 +260,7 @@ off(type: 'holdingHandChanged', callback?: Callback&lt;HoldingHandStatus&gt;): v
 
 **示例**：
 
-```typescript
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {

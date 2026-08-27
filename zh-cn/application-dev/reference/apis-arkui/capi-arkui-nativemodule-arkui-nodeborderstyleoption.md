@@ -1,4 +1,4 @@
-# ArkUI_NodeBorderStyleOption
+# ArkUI_NodeBorderStyle
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

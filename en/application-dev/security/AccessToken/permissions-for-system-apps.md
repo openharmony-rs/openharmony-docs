@@ -7960,7 +7960,7 @@ Allows an application to configure the encryption policy for a volume.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -9019,6 +9019,20 @@ Allows an application to enable the VoIP recording stream while another applicat
 
 **Valid since**: 26.0.0
 
+## ohos.permission.MULTI_SCREEN_MANAGER
+
+Allows a system application to manage the on/off states of multiple screens.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
 ## ohos.permission.vehicle.DEVICE_AUTH
 
 Allows an application on the rear armrest screen to connect to the head unit for device authentication.
@@ -9030,6 +9044,34 @@ Allows an application on the rear armrest screen to connect to the head unit for
 **Certificate-based authorization**: true
 
 **Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.AutoWiredProjection
+
+Allows an application to use the wired projection service to query information such as DP device information and projection status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.AUTH_MODEL_DOWNLOAD
+
+Allows a system application to send the authorization results for model download requests to the model management service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.1.0
 
@@ -9088,5 +9130,33 @@ Allows a system application to connect to near-field devices and send/receive da
 **Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices | cars | phones | wearables | tablets | TVs
+
+**Valid since**: 26.1.0
+
+## ohos.permission.SET_WORK_SCHEDULER_PROPERTY
+
+Allows a system application to modify the delayed task parameters of specified applications.
+    
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.FACTORYRESET_WRITE_CONFIG
+
+Allows an application to restore the vehicle system to factory settings.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
 
 **Valid since**: 26.1.0

@@ -609,12 +609,14 @@ NODE_TEXT_LINE_SPACING = 1023
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].f32 | 表示行间距值，单位为fp。取值范围：[0, +∞)。传入负数时参数不生效。 |
+| ?.object | 可选。指向[OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)对象的指针，用于设置行间距选项。从API版本26.1.0开始支持。使用[OH_ArkUI_NativeModule_LineSpacingOptions_Create](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_create)创建对象，使用[OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy)销毁对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].f32 | 表示行间距值，单位为fp。 |
+| .object | 指向[OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)对象的指针，用于获取行间距选项。从API版本26.1.0开始支持。 |
 
 ## NODE_FONT_FEATURE
 
