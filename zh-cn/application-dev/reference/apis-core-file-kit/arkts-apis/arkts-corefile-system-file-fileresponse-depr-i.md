@@ -6,8 +6,6 @@
 
 **废弃版本：** 10
 
-<!--Device-unnamed-export interface FileResponse--><!--Device-unnamed-export interface FileResponse-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## 导入模块
@@ -29,8 +27,6 @@ lastModifiedTime: number
 
 **废弃版本：** 10
 
-<!--Device-FileResponse-lastModifiedTime: number--><!--Device-FileResponse-lastModifiedTime: number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## length
@@ -46,8 +42,6 @@ length: number
 **起始版本：** 3
 
 **废弃版本：** 10
-
-<!--Device-FileResponse-length: number--><!--Device-FileResponse-length: number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -65,8 +59,6 @@ subFiles?: Array<FileResponse>
 
 **废弃版本：** 10
 
-<!--Device-FileResponse-subFiles?: Array<FileResponse>--><!--Device-FileResponse-subFiles?: Array<FileResponse>-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## type
@@ -82,8 +74,6 @@ type: 'dir' | 'file'
 **起始版本：** 3
 
 **废弃版本：** 10
-
-<!--Device-FileResponse-type: 'dir' | 'file'--><!--Device-FileResponse-type: 'dir' | 'file'-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -101,7 +91,4 @@ uri: string
 
 **废弃版本：** 10
 
-<!--Device-FileResponse-uri: string--><!--Device-FileResponse-uri: string-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
-

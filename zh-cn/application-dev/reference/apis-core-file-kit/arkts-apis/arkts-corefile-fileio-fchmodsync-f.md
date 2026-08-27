@@ -17,8 +17,6 @@ declare function fchmodSync(fd: number, mode: number): void
 
 **废弃版本：** 9
 
-<!--Device-unnamed-declare function fchmodSync(fd: number, mode: number): void--><!--Device-unnamed-declare function fchmodSync(fd: number, mode: number): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -26,5 +24,13 @@ declare function fchmodSync(fd: number, mode: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fd | number | 是 | 待改变文件的文件描述符。 |
-| mode | number | 是 | 若创建文件，则指定文件的权限，可给定如下权限，以按位或的方式追加权限。<br/>-?0o700：所有者具有读、写及可执行权限。<br/>-?0o400：所有者具有读权限。<br/>-? 0o200：所有者具有写权限。<br/>-?0o100：所有者具有可执行权限。<br/>-?0o070：所有用户组具有读、写及可执行权限。<br/>-?0o040：所有用户组具有读权限。<br/>-?0o020：所有用户组具有 写权限。<br/>-?0o010：所有用户组具有可执行权限。<br/>-?0o007：其余用户具有读、写及可执行权限。<br/>-?0o004：其余用户具有读权限。<br/>-?0o002：其余用户具有写权限。<br/>-?0 o001：其余用户具有可执行权限。 |
+| mode | number | 是 | 若创建文件，则指定文件的权限，可给定如下权限，以按位或的方式追加权限。   - 0o700：所有者具有读、写及可执行权限。   - 0o400：所有者具有读权限。   - 0o200：所有者具有写权限。   - 0o100：所有者具有可执行权限。   - 0o070：所有用户组具有读、写及可执行权限。   - 0o040：所有用户组具有读权限。   - 0o020：所有用户组具有 写权限。   - 0o010：所有用户组具有可执行权限。   - 0o007：其余用户具有读、写及可执行权限。   - 0o004：其余用户具有读权限。   - 0o002：其余用户具有写权限。   - 0 o001：其余用户具有可执行权限。 |
 
+**示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+let fd = fileio.openSync(filePath);
+let mode: number = 0o700;
+fileio.fchmodSync(fd, mode);
+```

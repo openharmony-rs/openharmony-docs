@@ -2,18 +2,13 @@
 
 表示X.509信任锚，用于校验证书链。使用信任锚中的证书或者公钥作为可信根，对证书链进行校验。
 
-**起始版本：** 23
-
-<!--Device-cert-interface X509TrustAnchor--><!--Device-cert-interface X509TrustAnchor-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.Cert
 
 ## 导入模块
 
 ```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## CACert
@@ -26,11 +21,9 @@ CACert?: X509Cert
 
 **类型：** X509Cert
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-X509TrustAnchor-CACert?: X509Cert--><!--Device-X509TrustAnchor-CACert?: X509Cert-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -44,11 +37,9 @@ CAPubKey?: Uint8Array
 
 **类型：** Uint8Array
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-X509TrustAnchor-CAPubKey?: Uint8Array--><!--Device-X509TrustAnchor-CAPubKey?: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -62,11 +53,9 @@ CASubject?: Uint8Array
 
 **类型：** Uint8Array
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-X509TrustAnchor-CASubject?: Uint8Array--><!--Device-X509TrustAnchor-CASubject?: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -80,11 +69,8 @@ nameConstraints?: Uint8Array
 
 **类型：** Uint8Array
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-X509TrustAnchor-nameConstraints?: Uint8Array--><!--Device-X509TrustAnchor-nameConstraints?: Uint8Array-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Security.Cert
-

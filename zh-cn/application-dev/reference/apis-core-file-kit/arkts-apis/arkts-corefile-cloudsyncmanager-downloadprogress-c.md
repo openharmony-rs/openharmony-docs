@@ -2,9 +2,7 @@
 
 全量下载任务的进度信息。
 
-**起始版本：** 23
-
-<!--Device-cloudSyncManager-class DownloadProgress--><!--Device-cloudSyncManager-class DownloadProgress-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -17,32 +15,28 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 ## downloadedSize
 
 ```TypeScript
-downloadedSize: long
+downloadedSize: number
 ```
 
 已下载数据大小，取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DownloadProgress-downloadedSize: long--><!--Device-DownloadProgress-downloadedSize: long-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 ## failedCount
 
 ```TypeScript
-failedCount: int
+failedCount: number
 ```
 
 下载失败的文件个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DownloadProgress-failedCount: int--><!--Device-DownloadProgress-failedCount: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -56,9 +50,7 @@ state: DownloadState
 
 **类型：** [DownloadState](arkts-corefile-cloudsyncmanager-downloadstate-e.md)
 
-**起始版本：** 23
-
-<!--Device-DownloadProgress-state: DownloadState--><!--Device-DownloadProgress-state: DownloadState-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -72,57 +64,48 @@ stopReason: DownloadStopReason
 
 **类型：** [DownloadStopReason](arkts-corefile-cloudsyncmanager-downloadstopreason-e.md)
 
-**起始版本：** 23
-
-<!--Device-DownloadProgress-stopReason: DownloadStopReason--><!--Device-DownloadProgress-stopReason: DownloadStopReason-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 ## successfulCount
 
 ```TypeScript
-successfulCount: int
+successfulCount: number
 ```
 
 已下载的文件个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DownloadProgress-successfulCount: int--><!--Device-DownloadProgress-successfulCount: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 ## totalCount
 
 ```TypeScript
-totalCount: int
+totalCount: number
 ```
 
 待下载文件总个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DownloadProgress-totalCount: int--><!--Device-DownloadProgress-totalCount: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 ## totalSize
 
 ```TypeScript
-totalSize: long
+totalSize: number
 ```
 
 需要下载文件的总大小，取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DownloadProgress-totalSize: long--><!--Device-DownloadProgress-totalSize: long-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
-

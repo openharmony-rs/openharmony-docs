@@ -8,8 +8,6 @@
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
-<!--Device-unnamed-declare interface Dirent--><!--Device-unnamed-declare interface Dirent-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## 导入模块
@@ -31,8 +29,6 @@ isBlockDevice(): boolean
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
-<!--Device-Dirent-isBlockDevice(): boolean--><!--Device-Dirent-isBlockDevice(): boolean-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **返回值：**
@@ -42,6 +38,11 @@ isBlockDevice(): boolean
 | boolean | 表示当前目录项是否是块特殊设备。true为是，false为不是。 |
 
 **示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+let isBLockDevice = fileio.statSync(filePath).isBlockDevice();
+```
 
 ```TypeScript
 let dir = fileio.opendirSync(pathDir);
@@ -62,8 +63,6 @@ isCharacterDevice(): boolean
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
-<!--Device-Dirent-isCharacterDevice(): boolean--><!--Device-Dirent-isCharacterDevice(): boolean-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **返回值：**
@@ -73,6 +72,11 @@ isCharacterDevice(): boolean
 | boolean | 表示当前目录项是否是字符特殊设备。true为是，false为不是。 |
 
 **示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+let isCharacterDevice = fileio.statSync(filePath).isCharacterDevice();
+```
 
 ```TypeScript
 let dir = fileio.opendirSync(pathDir);
@@ -93,8 +97,6 @@ isDirectory(): boolean
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
-<!--Device-Dirent-isDirectory(): boolean--><!--Device-Dirent-isDirectory(): boolean-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **返回值：**
@@ -104,6 +106,11 @@ isDirectory(): boolean
 | boolean | 表示当前目录项是否是目录。true为是，false为不是。 |
 
 **示例**
+
+```TypeScript
+let dirPath = pathDir + "/test";
+let isDirectory = fileio.statSync(dirPath).isDirectory();
+```
 
 ```TypeScript
 let dir = fileio.opendirSync(pathDir);
@@ -124,8 +131,6 @@ isFIFO(): boolean
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
-<!--Device-Dirent-isFIFO(): boolean--><!--Device-Dirent-isFIFO(): boolean-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **返回值：**
@@ -135,6 +140,11 @@ isFIFO(): boolean
 | boolean | 表示当前目录项是否是FIFO。true为是，false为不是。 |
 
 **示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+let isFIFO = fileio.statSync(filePath).isFIFO();
+```
 
 ```TypeScript
 let dir = fileio.opendirSync(pathDir);
@@ -155,8 +165,6 @@ isFile(): boolean
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
-<!--Device-Dirent-isFile(): boolean--><!--Device-Dirent-isFile(): boolean-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **返回值：**
@@ -166,6 +174,11 @@ isFile(): boolean
 | boolean | 表示当前目录项是否是普通文件。true为是，false为不是。 |
 
 **示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+let isFile = fileio.statSync(filePath).isFile();
+```
 
 ```TypeScript
 let dir = fileio.opendirSync(pathDir);
@@ -186,8 +199,6 @@ isSocket(): boolean
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
-<!--Device-Dirent-isSocket(): boolean--><!--Device-Dirent-isSocket(): boolean-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **返回值：**
@@ -197,6 +208,11 @@ isSocket(): boolean
 | boolean | 表示当前目录项是否是套接字。true为是，false为不是。 |
 
 **示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+let isSocket = fileio.statSync(filePath).isSocket();
+```
 
 ```TypeScript
 let dir = fileio.opendirSync(pathDir);
@@ -217,8 +233,6 @@ isSymbolicLink(): boolean
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
-<!--Device-Dirent-isSymbolicLink(): boolean--><!--Device-Dirent-isSymbolicLink(): boolean-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **返回值：**
@@ -228,6 +242,11 @@ isSymbolicLink(): boolean
 | boolean | 表示当前目录项是否是符号链接。true为是，false为不是。 |
 
 **示例**
+
+```TypeScript
+let filePath = pathDir + "/test";
+let isSymbolicLink = fileio.statSync(filePath).isSymbolicLink();
+```
 
 ```TypeScript
 let dir = fileio.opendirSync(pathDir);
@@ -250,7 +269,4 @@ readonly name: string
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
-<!--Device-Dirent-readonly name: string--><!--Device-Dirent-readonly name: string-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
-

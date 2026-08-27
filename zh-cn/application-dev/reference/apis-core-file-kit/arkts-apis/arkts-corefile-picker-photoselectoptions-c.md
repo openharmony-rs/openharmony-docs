@@ -8,8 +8,6 @@
 
 **替代接口：** [PhotoSelectOptions](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoselectoptions-c.md)
 
-<!--Device-picker-class PhotoSelectOptions--><!--Device-picker-class PhotoSelectOptions-End-->
-
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 ## 导入模块
@@ -17,28 +15,6 @@
 ```TypeScript
 import { picker } from '@kit.CoreFileKit';
 ```
-
-## MIMEType
-
-```TypeScript
-MIMEType?: PhotoViewMIMETypes
-```
-
-可选择的媒体文件类型。若无此参数，则默认为图片和视频类型。
-
-**类型：** PhotoViewMIMETypes
-
-**起始版本：** 9
-
-**废弃版本：** 18
-
-**替代接口：** MIMEType
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoSelectOptions-MIMEType?: PhotoViewMIMETypes--><!--Device-PhotoSelectOptions-MIMEType?: PhotoViewMIMETypes-End-->
-
-**系统能力：** SystemCapability.FileManagement.UserFileService
 
 ## maxSelectNumber
 
@@ -58,7 +34,24 @@ maxSelectNumber?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PhotoSelectOptions-maxSelectNumber?: number--><!--Device-PhotoSelectOptions-maxSelectNumber?: number-End-->
-
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
+## MIMEType
+
+```TypeScript
+MIMEType?: PhotoViewMIMETypes
+```
+
+可选择的媒体文件类型。若无此参数，则默认为图片和视频类型。
+
+**类型：** PhotoViewMIMETypes
+
+**起始版本：** 9
+
+**废弃版本：** 18
+
+**替代接口：** MIMEType
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.FileManagement.UserFileService

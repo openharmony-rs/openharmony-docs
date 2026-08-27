@@ -2,17 +2,13 @@
 
 表示证书简要信息。
 
-**起始版本：** 23
-
-<!--Device-certificateManager-export interface CertAbstract--><!--Device-certificateManager-export interface CertAbstract-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 ## 导入模块
 
 ```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## certAlias
@@ -25,9 +21,7 @@ certAlias: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-CertAbstract-certAlias: string--><!--Device-CertAbstract-certAlias: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -41,9 +35,7 @@ state: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-CertAbstract-state: boolean--><!--Device-CertAbstract-state: boolean-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -57,9 +49,7 @@ subjectName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-CertAbstract-subjectName: string--><!--Device-CertAbstract-subjectName: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -73,9 +63,6 @@ uri: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-CertAbstract-uri: string--><!--Device-CertAbstract-uri: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
-

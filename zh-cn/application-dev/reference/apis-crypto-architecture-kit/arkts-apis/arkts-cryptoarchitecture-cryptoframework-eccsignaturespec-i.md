@@ -1,10 +1,12 @@
 # EccSignatureSpec
 
-包含（r、s）的ECC/SM2签名数据的对象。 > **说明：** > > r和s的长度各为256位。
+包含（r、s）的ECC/SM2签名数据的对象。
 
-**起始版本：** 23
+> **说明：**
+> 
+> r和s的长度各为256位。
 
-<!--Device-cryptoFramework-interface EccSignatureSpec--><!--Device-cryptoFramework-interface EccSignatureSpec-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -24,11 +26,9 @@ r分量。
 
 **类型：** bigint
 
-**起始版本：** 23
+**起始版本：** 20
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EccSignatureSpec-r: bigint--><!--Device-EccSignatureSpec-r: bigint-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -42,11 +42,8 @@ s分量。
 
 **类型：** bigint
 
-**起始版本：** 23
+**起始版本：** 20
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EccSignatureSpec-s: bigint--><!--Device-EccSignatureSpec-s: bigint-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
-

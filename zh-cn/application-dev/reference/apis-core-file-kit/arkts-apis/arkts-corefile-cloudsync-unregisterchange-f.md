@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { cloudSync } from '@kit.CoreFileKit';
-import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
 ## unregisterChange
@@ -15,9 +14,7 @@ function unregisterChange(uri: string): void
 
 取消订阅监听指定文件的变化通知。
 
-**起始版本：** 23
-
-<!--Device-cloudSync-function unregisterChange(uri: string): void--><!--Device-cloudSync-function unregisterChange(uri: string): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -31,15 +28,13 @@ function unregisterChange(uri: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;  2.Incorrect parameter types. |
 | 13900001 | Operation not permitted |
 | 13900002 | No such file or directory. |
-| 14000002 | Invalid uri. |
 | 13900012 | Permission denied |
+| 14000002 | Invalid uri. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { fileUri } from '@kit.CoreFileKit';
@@ -57,23 +52,3 @@ cloudSync.registerChange(uri, false, onCallback1);
 // 取消注册监听
 cloudSync.unregisterChange(uri);
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { fileUri } from '@kit.CoreFileKit';
-
-let path: string = "/data/storage/el2/cloud/1.txt";
-let uri: string = fileUri.getUriFromPath(path);
-let onCallback1 = (changeData: cloudSync.ChangeData): void => {
-  if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-    // file has been added, do something
-  } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-    // file has been removed, do something
-  }
-}
-cloudSync.registerChange(uri, false, onCallback1);
-// 取消注册监听
-cloudSync.unregisterChange(uri);
-```
-

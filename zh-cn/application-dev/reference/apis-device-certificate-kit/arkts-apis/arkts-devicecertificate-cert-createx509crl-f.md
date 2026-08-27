@@ -3,9 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## createX509CRL
@@ -16,11 +13,9 @@ function createX509CRL(inStream: EncodingBlob, callback: AsyncCallback<X509CRL>)
 
 表示创建X.509证书吊销列表对象。使用Callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-cert-function createX509CRL(inStream: EncodingBlob, callback: AsyncCallback<X509CRL>): void--><!--Device-cert-function createX509CRL(inStream: EncodingBlob, callback: AsyncCallback<X509CRL>): void-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -29,13 +24,13 @@ function createX509CRL(inStream: EncodingBlob, callback: AsyncCallback<X509CRL>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | 是 | 表示证书吊销列表序列化数据。当前支持的数据长度不超过8192字节。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[X509CRL](arkts-devicecertificate-cert-x509crl-i.md)&gt; | 是 | 回调函数。当创建X.509证书吊销列表对象成功时，err为undefined，data为获取到的 X509CRL实例；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[X509CRL](arkts-devicecertificate-cert-x509crl-i.md)&gt; | 是 | 回调函数。当创建X.509证书吊销列表对象成功时，err为undefined，data为获取到的 X509CRL实例；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 
@@ -87,11 +82,9 @@ function createX509CRL(inStream: EncodingBlob): Promise<X509CRL>
 
 表示创建X.509证书吊销列表对象。使用Promise方式返回结果。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-cert-function createX509CRL(inStream: EncodingBlob): Promise<X509CRL>--><!--Device-cert-function createX509CRL(inStream: EncodingBlob): Promise<X509CRL>-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -111,13 +104,11 @@ function createX509CRL(inStream: EncodingBlob): Promise<X509CRL>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
@@ -154,45 +145,3 @@ cert.createX509CRL(encodingBlob).then(_X509CRL => {
   console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@ohos.base';
-
-// string转Uint8Array。
-function stringToUint8Array(str: string): Uint8Array {
-  let arr: Array<number> = [];
-  for (let i = 0, j = str.length; i < j; i++) {
-    arr.push(str.charCodeAt(i));
-  }
-  return new Uint8Array(arr);
-}
-
-async function TestCreateX509CRL() {
-  let crlData = '-----BEGIN X509 CRL-----\n' +
-    'MIHzMF4CAQMwDQYJKoZIhvcNAQEEBQAwFTETMBEGA1UEAxMKQ1JMIGlzc3VlchcN\n' +
-    'MTcwODA3MTExOTU1WhcNMzIxMjE0MDA1MzIwWjAVMBMCAgPoFw0zMjEyMTQwMDUz\n' +
-    'MjBaMA0GCSqGSIb3DQEBBAUAA4GBACEPHhlaCTWA42ykeaOyR0SGQIHIOUR3gcDH\n' +
-    'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
-    '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
-    'eavsH0Q3\n' +
-    '-----END X509 CRL-----\n';
-
-  // 证书吊销列表二进制数据，需业务自行赋值。
-  let encodingBlob: cert.EncodingBlob = {
-    data: stringToUint8Array(crlData),
-    // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
-    encodingFormat: cert.EncodingFormat.FORMAT_PEM
-  };
-  try {
-    let X509CRL = await cert.createX509CRL(encodingBlob);
-    console.info('createX509CRL result: success.');
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error(`createX509CRL failed, ${e.code}, ${e.message}`);
-  }
-}
-```
-

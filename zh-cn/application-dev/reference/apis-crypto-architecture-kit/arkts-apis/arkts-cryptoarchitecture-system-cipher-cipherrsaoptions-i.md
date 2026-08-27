@@ -8,8 +8,6 @@
 
 **替代接口：** Cipher
 
-<!--Device-unnamed-export interface CipherRsaOptions--><!--Device-unnamed-export interface CipherRsaOptions-End-->
-
 **系统能力：** SystemCapability.Security.Cipher
 
 ## 导入模块
@@ -17,26 +15,6 @@
 ```TypeScript
 import { Cipher, CipherAesOptions, CipherResponse, CipherRsaOptions } from '@kit.CryptoArchitectureKit';
 ```
-
-## action
-
-```TypeScript
-action: string
-```
-
-加解密操作类型，可选项有： 1. encrypt 加密； 2. decrypt 解密。
-
-**类型：** string
-
-**起始版本：** 3
-
-**废弃版本：** 11
-
-**替代接口：** Cipher
-
-<!--Device-CipherRsaOptions-action: string--><!--Device-CipherRsaOptions-action: string-End-->
-
-**系统能力：** SystemCapability.Security.Cipher
 
 ## complete
 
@@ -46,15 +24,11 @@ complete: () => void
 
 接口调用结束的回调函数。
 
-**类型：** () =&gt; void
-
 **起始版本：** 3
 
 **废弃版本：** 11
 
 **替代接口：** Cipher
-
-<!--Device-CipherRsaOptions-complete: () => void--><!--Device-CipherRsaOptions-complete: () => void-End-->
 
 **系统能力：** SystemCapability.Security.Cipher
 
@@ -66,7 +40,28 @@ fail: (data: string, code: number) => void
 
 接口调用失败的回调函数。
 
-**类型：** (data: string, code: number) =&gt; void
+**起始版本：** 3
+
+**废弃版本：** 11
+
+**替代接口：** Cipher
+
+**系统能力：** SystemCapability.Security.Cipher
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| data | string | 是 |  |
+| code | number | 是 |  |
+
+## success
+
+```TypeScript
+success: (data: CipherResponse) => void
+```
+
+接口调用成功的回调函数。
 
 **起始版本：** 3
 
@@ -74,7 +69,31 @@ fail: (data: string, code: number) => void
 
 **替代接口：** Cipher
 
-<!--Device-CipherRsaOptions-fail: (data: string, code: number) => void--><!--Device-CipherRsaOptions-fail: (data: string, code: number) => void-End-->
+**系统能力：** SystemCapability.Security.Cipher
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| data | [CipherResponse](arkts-cryptoarchitecture-system-cipher-cipherresponse-i.md) | 是 |  |
+
+## action
+
+```TypeScript
+action: string
+```
+
+加解密操作类型，可选项有：
+1. encrypt 加密；
+2. decrypt 解密。
+
+**类型：** string
+
+**起始版本：** 3
+
+**废弃版本：** 11
+
+**替代接口：** Cipher
 
 **系统能力：** SystemCapability.Security.Cipher
 
@@ -94,28 +113,6 @@ key: string
 
 **替代接口：** Cipher
 
-<!--Device-CipherRsaOptions-key: string--><!--Device-CipherRsaOptions-key: string-End-->
-
-**系统能力：** SystemCapability.Security.Cipher
-
-## success
-
-```TypeScript
-success: (data: CipherResponse) => void
-```
-
-接口调用成功的回调函数。
-
-**类型：** (data: CipherResponse) =&gt; void
-
-**起始版本：** 3
-
-**废弃版本：** 11
-
-**替代接口：** Cipher
-
-<!--Device-CipherRsaOptions-success: (data: CipherResponse) => void--><!--Device-CipherRsaOptions-success: (data: CipherResponse) => void-End-->
-
 **系统能力：** SystemCapability.Security.Cipher
 
 ## text
@@ -133,8 +130,6 @@ text: string
 **废弃版本：** 11
 
 **替代接口：** Cipher
-
-<!--Device-CipherRsaOptions-text: string--><!--Device-CipherRsaOptions-text: string-End-->
 
 **系统能力：** SystemCapability.Security.Cipher
 
@@ -154,7 +149,4 @@ RSA算法的填充项，默认为RSA/None/OAEPWithSHA256AndMGF1Padding。
 
 **替代接口：** Cipher
 
-<!--Device-CipherRsaOptions-transformation?: string--><!--Device-CipherRsaOptions-transformation?: string-End-->
-
 **系统能力：** SystemCapability.Security.Cipher
-

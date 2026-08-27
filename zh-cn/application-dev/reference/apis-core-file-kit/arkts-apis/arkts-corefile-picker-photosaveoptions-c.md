@@ -8,8 +8,6 @@
 
 **替代接口：** [SaveButtonOptions](../../apis-arkui/arkts-components/arkts-arkui-savebuttonoptions-i.md)
 
-<!--Device-picker-class PhotoSaveOptions--><!--Device-picker-class PhotoSaveOptions-End-->
-
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 ## 导入模块
@@ -34,7 +32,4 @@ newFileNames?: Array<string>
 
 **替代接口：** [SaveButtonOptions](../../apis-arkui/arkts-components/arkts-arkui-savebuttonoptions-i.md)
 
-<!--Device-PhotoSaveOptions-newFileNames?: Array<string>--><!--Device-PhotoSaveOptions-newFileNames?: Array<string>-End-->
-
 **系统能力：** SystemCapability.FileManagement.UserFileService
-

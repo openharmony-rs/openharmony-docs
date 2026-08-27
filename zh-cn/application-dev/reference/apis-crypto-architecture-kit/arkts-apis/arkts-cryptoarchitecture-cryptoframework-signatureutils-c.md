@@ -2,9 +2,7 @@
 
 用于ECC/SM2签名数据转换的工具类。
 
-**起始版本：** 23
-
-<!--Device-cryptoFramework-class SignatureUtils--><!--Device-cryptoFramework-class SignatureUtils-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -22,11 +20,9 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array
 
 将（r、s）的ECC/SM2签名数据转换为ASN.1 DER编码。
 
-**起始版本：** 23
+**起始版本：** 20
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SignatureUtils-static genEccSignature(spec: EccSignatureSpec): Uint8Array--><!--Device-SignatureUtils-static genEccSignature(spec: EccSignatureSpec): Uint8Array-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -46,10 +42,10 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
-| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes: <br>1. The r or s value of the spec parameter is 0 or too large. |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes:  1. The r or s value of the spec parameter is 0 or too large. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 
 **示例**
 
@@ -82,11 +78,9 @@ static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
 
 从ASN.1 DER编码的ECC/SM2签名数据获取r和s。
 
-**起始版本：** 23
+**起始版本：** 20
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SignatureUtils-static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec--><!--Device-SignatureUtils-static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -106,10 +100,10 @@ static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
-| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes: <br>1. The length of the data parameter is 0 or too large. |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes:  1. The length of the data parameter is 0 or too large. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 
 **示例**
 
@@ -131,4 +125,3 @@ function testGenEccSignatureSpec() {
   }
 }
 ```
-

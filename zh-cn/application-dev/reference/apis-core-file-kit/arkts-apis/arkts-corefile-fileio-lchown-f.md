@@ -17,8 +17,6 @@ declare function lchown(path: string, uid: number, gid: number): Promise<void>
 
 **废弃版本：** 9
 
-<!--Device-unnamed-declare function lchown(path: string, uid: number, gid: number): Promise<void>--><!--Device-unnamed-declare function lchown(path: string, uid: number, gid: number): Promise<void>-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -33,7 +31,20 @@ declare function lchown(path: string, uid: number, gid: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise & lt;void & gt; | Promise对象。无返回值。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let filePath = pathDir + "/test.txt";
+let stat = fileio.statSync(filePath);
+fileio.lchown(filePath, stat.uid, stat.gid).then(() => {
+  console.info("chown succeed");
+}).catch((err: BusinessError) => {
+  console.error("chown failed with error:" + err);
+});
+```
 
 
 ## lchown
@@ -48,8 +59,6 @@ declare function lchown(path: string, uid: number, gid: number, callback: AsyncC
 
 **废弃版本：** 9
 
-<!--Device-unnamed-declare function lchown(path: string, uid: number, gid: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function lchown(path: string, uid: number, gid: number, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -59,5 +68,15 @@ declare function lchown(path: string, uid: number, gid: number, callback: AsyncC
 | path | string | 是 | 待打开文件的应用沙箱路径。 |
 | uid | number | 是 | 新的UID。 |
 | gid | number | 是 | 新的GID。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步改变文件所有者之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步改变文件所有者之后的回调。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let filePath = pathDir + "/test.txt";
+let stat = fileio.statSync(filePath);
+fileio.lchown(filePath, stat.uid, stat.gid, (err: BusinessError) => {
+  // do something
+});
+```

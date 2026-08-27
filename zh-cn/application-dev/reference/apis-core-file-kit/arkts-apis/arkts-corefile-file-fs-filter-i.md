@@ -4,16 +4,12 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-export interface Filter--><!--Device-unnamed-export interface Filter-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## 导入模块
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## displayName
@@ -29,8 +25,6 @@ displayName?: Array<string>
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Filter-displayName?: Array<string>--><!--Device-Filter-displayName?: Array<string>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -48,8 +42,6 @@ excludeMedia?: boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Filter-excludeMedia?: boolean--><!--Device-Filter-excludeMedia?: boolean-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## fileSizeOver
@@ -65,8 +57,6 @@ fileSizeOver?: number
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Filter-fileSizeOver?: number--><!--Device-Filter-fileSizeOver?: number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -84,8 +74,6 @@ lastModifiedAfter?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Filter-lastModifiedAfter?: number--><!--Device-Filter-lastModifiedAfter?: number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## mimeType
@@ -101,8 +89,6 @@ mime类型完全匹配，各个关键词OR关系。预留字段，暂不支持�
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Filter-mimeType?: Array<string>--><!--Device-Filter-mimeType?: Array<string>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -120,7 +106,4 @@ suffix?: Array<string>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Filter-suffix?: Array<string>--><!--Device-Filter-suffix?: Array<string>-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
-

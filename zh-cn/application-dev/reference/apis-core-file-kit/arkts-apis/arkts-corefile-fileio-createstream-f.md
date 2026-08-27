@@ -19,8 +19,6 @@ declare function createStream(path: string, mode: string): Promise<Stream>
 
 **替代接口：** [createStream](arkts-corefile-file-fs-createstream-f.md)
 
-<!--Device-unnamed-declare function createStream(path: string, mode: string): Promise<Stream>--><!--Device-unnamed-declare function createStream(path: string, mode: string): Promise<Stream>-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -28,13 +26,25 @@ declare function createStream(path: string, mode: string): Promise<Stream>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 待打开文件的应用沙箱路径。 |
-| mode | string | 是 | ?r：打开只读文件，该文件必须存在。<br/>-?r+：打开可读写的文件，该文件必须存在。<br/>-?w：打开只写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则 建立该文件。<br/>-?w+：打开可读写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则建立该文件。<br/>-?a：以附加的方式打开只写文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到 文件尾，即文件原先的内容会被保留。<br/>-?a+：以附加方式打开可读写的文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾后，即文件原先的内容会被保留。 |
+| mode | string | 是 | r：打开只读文件，该文件必须存在。   - r+：打开可读写的文件，该文件必须存在。   - w：打开只写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则 建立该文件。   - w+：打开可读写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则建立该文件。   - a：以附加的方式打开只写文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到 文件尾，即文件原先的内容会被保留。   - a+：以附加方式打开可读写的文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾后，即文件原先的内容会被保留。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[Stream](arkts-corefile-fileio-stream-depr-i.md)&gt; | Promise对象。返回文件流的结果。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let filePath = pathDir + "/test.txt";
+fileio.createStream(filePath, "r+").then((stream: fileio.Stream) => {
+  console.info("createStream succeed");
+}).catch((err: BusinessError) => {
+  console.error("createStream failed with error:" + err);
+});
+```
 
 
 ## createStream
@@ -51,8 +61,6 @@ declare function createStream(path: string, mode: string, callback: AsyncCallbac
 
 **替代接口：** [createStream](arkts-corefile-file-fs-createstream-f.md)
 
-<!--Device-unnamed-declare function createStream(path: string, mode: string, callback: AsyncCallback<Stream>): void--><!--Device-unnamed-declare function createStream(path: string, mode: string, callback: AsyncCallback<Stream>): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -60,6 +68,15 @@ declare function createStream(path: string, mode: string, callback: AsyncCallbac
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 待打开文件的应用沙箱路径。 |
-| mode | string | 是 | ?r：打开只读文件，该文件必须存在。<br/>-?r+：打开可读写的文件，该文件必须存在。<br/>-?w：打开只写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则 建立该文件。<br/>-?w+：打开可读写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则建立该文件。<br/>-?a：以附加的方式打开只写文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到 文件尾，即文件原先的内容会被保留。<br/>-?a+：以附加方式打开可读写的文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾后，即文件原先的内容会被保留。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Stream](arkts-corefile-fileio-stream-depr-i.md)&gt; | 是 | 异步打开文件流之后的回调。 |
+| mode | string | 是 | r：打开只读文件，该文件必须存在。   - r+：打开可读写的文件，该文件必须存在。   - w：打开只写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则 建立该文件。   - w+：打开可读写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则建立该文件。   - a：以附加的方式打开只写文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到 文件尾，即文件原先的内容会被保留。   - a+：以附加方式打开可读写的文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾后，即文件原先的内容会被保留。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Stream](arkts-corefile-fileio-stream-depr-i.md)&gt; | 是 | 异步打开文件流之后的回调。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let filePath = pathDir + "/test.txt";
+fileio.createStream(filePath, "r+", (err: BusinessError, stream: fileio.Stream) => {
+  // do something
+});
+```

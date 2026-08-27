@@ -4,16 +4,12 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-export interface ConflictFiles--><!--Device-unnamed-export interface ConflictFiles-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## 导入模块
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## destFile
@@ -27,8 +23,6 @@ destFile: string
 **类型：** string
 
 **起始版本：** 10
-
-<!--Device-ConflictFiles-destFile: string--><!--Device-ConflictFiles-destFile: string-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -44,7 +38,4 @@ srcFile: string
 
 **起始版本：** 10
 
-<!--Device-ConflictFiles-srcFile: string--><!--Device-ConflictFiles-srcFile: string-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
-

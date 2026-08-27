@@ -3,8 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## getAllUserTrustedCertificates
@@ -15,11 +13,9 @@ function getAllUserTrustedCertificates(): Promise<CMResult>
 
 表示获取当前用户和设备公共位置的所有用户根CA证书列表。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
-
-<!--Device-certificateManager-function getAllUserTrustedCertificates(): Promise<CMResult>--><!--Device-certificateManager-function getAllUserTrustedCertificates(): Promise<CMResult>-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -34,7 +30,7 @@ function getAllUserTrustedCertificates(): Promise<CMResult>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
+| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;  2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**
 
@@ -70,11 +66,9 @@ function getAllUserTrustedCertificates(scope: CertScope): Promise<CMResult>
 
 表示根据证书的位置获取用户根CA证书列表。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
-
-<!--Device-certificateManager-function getAllUserTrustedCertificates(scope: CertScope): Promise<CMResult>--><!--Device-certificateManager-function getAllUserTrustedCertificates(scope: CertScope): Promise<CMResult>-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -94,9 +88,9 @@ function getAllUserTrustedCertificates(scope: CertScope): Promise<CMResult>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types; 3. Parameter verification failed. |
+| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;  2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**
 
@@ -105,7 +99,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  /* 获取当前用户下的用户根CA证书列表; 如果需要获取设备公共位置的用户根CA列表，则传入GLOBAL_USER */
+  /* 获取当前用户下的用户根CA证书列表，如果需要获取设备公共位置的用户根CA列表，则传入GLOBAL_USER */
   let scope: certificateManager.CertScope = certificateManager.CertScope.CURRENT_USER;
   certificateManager.getAllUserTrustedCertificates(scope).then((cmResult) => {
     if (cmResult === undefined) { // 用户根CA证书个数为0时，返回cmResult为undefined。
@@ -124,4 +118,3 @@ try {
   console.error(`Failed to get current user trusted certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-

@@ -9,8 +9,6 @@
   - [document](arkts-corefile-document-depr-n.md)
   - [choose](arkts-corefile-document-choose-f.md)
   - [show](arkts-corefile-document-show-f.md)
-- [@ohos.file.BackupExtensionContext](arkts-file-backupextensioncontext.md)
-  - [BackupExtensionContext](arkts-corefile-file-backupextensioncontext-backupextensioncontext-c.md)
 <!--Del-->
 - [@ohos.file.backup](arkts-file-backup.md)<!--DelEnd-->
   <!--Del-->
@@ -52,15 +50,11 @@
   <!--Del-->
   - [PathInfo(系统接口)](arkts-corefile-backup-pathinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [BundlePara(系统接口)](arkts-corefile-backup-bundlepara-t-sys.md)<!--DelEnd-->
-  <!--Del-->
   - [OnBackupSizeReport(系统接口)](arkts-corefile-backup-onbackupsizereport-t-sys.md)<!--DelEnd-->
   <!--Del-->
   - [OnFileReadyBatch(系统接口)](arkts-corefile-backup-onfilereadybatch-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [OnProcess(系统接口)](arkts-corefile-backup-onprocess-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [OnResultReport(系统接口)](arkts-corefile-backup-onresultreport-t-sys.md)<!--DelEnd-->
+- [@ohos.file.BackupExtensionContext](arkts-file-backupextensioncontext.md)
+  - [BackupExtensionContext](arkts-corefile-file-backupextensioncontext-backupextensioncontext-c.md)
 <!--Del-->
 - [@ohos.file.cloudDiskManager](arkts-file-clouddiskmanager.md)<!--DelEnd-->
   <!--Del-->
@@ -342,10 +336,6 @@
   - [PhotoSelectOptions](arkts-corefile-picker-photoselectoptions-c.md)
   - [PhotoSelectResult](arkts-corefile-picker-photoselectresult-c.md)
   - [PhotoViewPicker](arkts-corefile-picker-photoviewpicker-c.md)
-  - [AudioSaveOptions](arkts-corefile-picker-audiosaveoptions-i.md)
-  - [AudioSelectOptions](arkts-corefile-picker-audioselectoptions-i.md)
-  - [DocumentSaveOptions](arkts-corefile-picker-documentsaveoptions-i.md)
-  - [DocumentSelectOptions](arkts-corefile-picker-documentselectoptions-i.md)
   - [DocumentPickerMode](arkts-corefile-picker-documentpickermode-e.md)
   - [DocumentSelectMode](arkts-corefile-picker-documentselectmode-e.md)
   - [MergeTypeMode](arkts-corefile-picker-mergetypemode-e.md)
@@ -381,23 +371,19 @@
   <!--Del-->
   - [getExtBundleStats(系统接口)](arkts-corefile-storagestatistics-getextbundlestats-f-sys.md)<!--DelEnd-->
   - [getFreeInodes](arkts-corefile-storagestatistics-getfreeinodes-f.md)
-  <!--Del-->
-  - [getFreeSize(系统接口)](arkts-corefile-storagestatistics-getfreesize-f-sys.md)<!--DelEnd-->
+  - [getFreeSize](arkts-corefile-storagestatistics-getfreesize-f.md)
   <!--Del-->
   - [getFreeSizeOfVolume(系统接口)](arkts-corefile-storagestatistics-getfreesizeofvolume-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [getFreeSizeSync(系统接口)](arkts-corefile-storagestatistics-getfreesizesync-f-sys.md)<!--DelEnd-->
+  - [getFreeSizeSync](arkts-corefile-storagestatistics-getfreesizesync-f.md)
   <!--Del-->
   - [getSystemDataSize(系统接口)](arkts-corefile-storagestatistics-getsystemdatasize-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getSystemSize(系统接口)](arkts-corefile-storagestatistics-getsystemsize-f-sys.md)<!--DelEnd-->
   - [getTotalInodes](arkts-corefile-storagestatistics-gettotalinodes-f.md)
-  <!--Del-->
-  - [getTotalSize(系统接口)](arkts-corefile-storagestatistics-gettotalsize-f-sys.md)<!--DelEnd-->
+  - [getTotalSize](arkts-corefile-storagestatistics-gettotalsize-f.md)
   <!--Del-->
   - [getTotalSizeOfVolume(系统接口)](arkts-corefile-storagestatistics-gettotalsizeofvolume-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [getTotalSizeSync(系统接口)](arkts-corefile-storagestatistics-gettotalsizesync-f-sys.md)<!--DelEnd-->
+  - [getTotalSizeSync](arkts-corefile-storagestatistics-gettotalsizesync-f.md)
   <!--Del-->
   - [getUserStorageStats(系统接口)](arkts-corefile-storagestatistics-getuserstoragestats-f-sys.md)<!--DelEnd-->
   <!--Del-->

@@ -1,12 +1,10 @@
 # FileUri
 
-FileUri表示文件的URI，继承自uri.URI。
+FileUri表示文件的URI，继承自uri.URI。@extends uri.URI
 
 **继承/实现关系：** FileUri extends uri.URI
 
-**起始版本：** 23
-
-<!--Device-fileUri-class FileUri--><!--Device-fileUri-class FileUri-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
@@ -24,11 +22,9 @@ constructor(uriOrPath: string)
 
 FileUri的构造函数，用于创建FileUri实例。
 
-**起始版本：** 23
+**起始版本：** 15
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FileUri-constructor(uriOrPath: string)--><!--Device-FileUri-constructor(uriOrPath: string)-End-->
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
@@ -42,10 +38,10 @@ FileUri的构造函数，用于创建FileUri实例。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
 | 13900005 | I/O error |
-| 14300002 | Invalid uri |
+| 13900020 | Invalid argument |
 | 13900042 | Unknown error |
+| 14300002 | Invalid uri |
 
 **示例**
 
@@ -65,11 +61,9 @@ getFullDirectoryUri(): string
 
 获取当前文件URI所在路径的完整目录URI。URI指向目录时直接返回原URI。
 
-**起始版本：** 23
+**起始版本：** 15
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FileUri-getFullDirectoryUri(): string--><!--Device-FileUri-getFullDirectoryUri(): string-End-->
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
@@ -110,11 +104,9 @@ isRemoteUri(): boolean
 
 判断当前URI是否为包含远端标识networkid的远端URI。
 
-**起始版本：** 23
+**起始版本：** 15
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FileUri-isRemoteUri(): boolean--><!--Device-FileUri-isRemoteUri(): boolean-End-->
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
@@ -143,25 +135,18 @@ function isRemoteUriExample() {
 }
 ```
 
-## toString
+## name
 
 ```TypeScript
-toString(): string
+get name(): string
 ```
 
-将当前URI转换为序列化字符串。
+通过传入的URI获取文件名称。如果文件名中存在百分号编码字符，将解码后拼接在原处。
 
-**起始版本：** 23
+**类型：** string
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**起始版本：** 15
 
-<!--Device-FileUri-toString(): string--><!--Device-FileUri-toString(): string-End-->
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Utils.Lang
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| string | 返回字符串类型的URI。 |
-
+**系统能力：** SystemCapability.FileManagement.AppFileService

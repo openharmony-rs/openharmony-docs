@@ -4,16 +4,12 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-export interface Watcher--><!--Device-unnamed-export interface Watcher-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## 导入模块
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## start
@@ -26,28 +22,26 @@ start(): void
 
 **起始版本：** 10
 
-<!--Device-Watcher-start(): void--><!--Device-Watcher-start(): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900021 | File table overflow |
-| 13900022 | Too many open files |
-| 13900018 | Not a directory |
-| 13900030 | File name too long |
-| 13900025 | No space left on device |
-| 13900005 | I/O error |
 | 13900002 | No such file or directory |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900011 | Out of memory |
 | 13900012 | Permission denied |
 | 13900013 | Bad address |
 | 13900015 | File exists |
-| 13900008 | Bad file descriptor |
+| 13900018 | Not a directory |
+| 13900020 | Invalid argument |
+| 13900021 | File table overflow |
+| 13900022 | Too many open files |
+| 13900025 | No space left on device |
+| 13900030 | File name too number |
 | 13900042 | Unknown error |
-| 13900011 | Out of memory |
 
 **示例**
 
@@ -68,28 +62,26 @@ stop(): void
 
 **起始版本：** 10
 
-<!--Device-Watcher-stop(): void--><!--Device-Watcher-stop(): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900021 | File table overflow |
-| 13900022 | Too many open files |
-| 13900018 | Not a directory |
-| 13900030 | File name too long |
-| 13900025 | No space left on device |
-| 13900005 | I/O error |
 | 13900002 | No such file or directory |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900011 | Out of memory |
 | 13900012 | Permission denied |
 | 13900013 | Bad address |
 | 13900015 | File exists |
-| 13900008 | Bad file descriptor |
+| 13900018 | Not a directory |
+| 13900020 | Invalid argument |
+| 13900021 | File table overflow |
+| 13900022 | Too many open files |
+| 13900025 | No space left on device |
+| 13900030 | File name too number |
 | 13900042 | Unknown error |
-| 13900011 | Out of memory |
 
 **示例**
 
@@ -99,4 +91,3 @@ let watcher = fileIo.createWatcher(filePath, 0xfff, () => {});
 watcher.start();
 watcher.stop();
 ```
-

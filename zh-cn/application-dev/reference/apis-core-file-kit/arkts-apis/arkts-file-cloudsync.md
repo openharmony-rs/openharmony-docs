@@ -2,9 +2,7 @@
 
 该模块向应用提供端云同步能力，包括启动/停止端云同步以及启动/停止原图下载功能。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace cloudSync--><!--Device-unnamed-declare namespace cloudSync-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { cloudSync } from '@kit.CoreFileKit';
-import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
 ## 汇总
@@ -34,7 +31,7 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 | [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md) | 异步方法获取文件同步状态。使用callback异步回调。 |
 | [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md) | 获取文件同步状态。 |
 | [optimizeStorage](arkts-corefile-cloudsync-optimizestorage-f-sys.md) | 优化图库已同步云空间的本地资源，按照本地剩余空间执行自动老化策略。使用Promise异步回调。 |
-| [startOptimizeSpace](arkts-corefile-cloudsync-startoptimizespace-f-sys.md) | 优化图库已同步云空间的本地资源，执行立即优化空间策略，对老化天数前未访问的本地图片/视频进行优化。使用Promise异步回调。callback返回优化进度。 startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复开启将返回其他任务正在执行的错误信息（22400006）。 |
+| [startOptimizeSpace](arkts-corefile-cloudsync-startoptimizespace-f-sys.md) | 优化图库已同步云空间的本地资源，执行立即优化空间策略，对老化天数前未访问的本地图片/视频进行优化。使用Promise异步回调。callback返回优化进度。startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复开启将返回其他任务正在执行的错误信息（22400006）。 |
 | [stopOptimizeSpace](arkts-corefile-cloudsync-stopoptimizespace-f-sys.md) | 同步方法停止图库云图资源空间优化，和startOptimizeSpace配对使用。 |
 <!--DelEnd-->
 
@@ -85,7 +82,7 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 | --- | --- |
 | [DownloadErrorType](arkts-corefile-cloudsync-downloaderrortype-e.md) | 端云下载错误类型，为枚举类型。 |
 | [DownloadFileType](arkts-corefile-cloudsync-downloadfiletype-e.md) | 云盘缓存文件类型的枚举。 |
-| [ErrorType](arkts-corefile-cloudsync-errortype-e.md) | 端云同步失败类型，为枚举类型。 - 当前阶段，同步过程中，当开启无限量使用移动数据网络，移动数据网络和WIFI均不可用时，才会返回NETWORK_UNAVAILABLE；开启无限量使用移动数据网络，若有一种类型网络可用，则能正常同步。 - 同步过程中，非充电场景下，电量低于10%，完成当前批上行同步后停止同步，返回低电量； - 触发同步时，非充电场景下，若电量低于10%，则不允许同步 - 上行时，若云端空间不足，则文件上行失败，云端无该文件记录。 |
+| [ErrorType](arkts-corefile-cloudsync-errortype-e.md) | 端云同步失败类型，为枚举类型。  - 当前阶段，同步过程中，当开启无限量使用移动数据网络，移动数据网络和WIFI均不可用时，才会返回NETWORK_UNAVAILABLE；开启无限量使用移动数据网络，若有一种类型网络可用，则能正常同步。  - 同步过程中，非充电场景下，电量低于10%，完成当前批上行同步后停止同步，返回低电量；  - 触发同步时，非充电场景下，若电量低于10%，则不允许同步  - 上行时，若云端空间不足，则文件上行失败，云端无该文件记录。 |
 | [FileState](arkts-corefile-cloudsync-filestate-e.md) | 端云文件同步状态，为枚举类型。 |
 | [NotifyType](arkts-corefile-cloudsync-notifytype-e.md) | 数据变更通知类型。 |
 | [State](arkts-corefile-cloudsync-state-e.md) | 云文件下载状态，为枚举类型。 |
@@ -96,10 +93,9 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [ErrorType](arkts-corefile-cloudsync-errortype-e-sys.md) | 端云同步失败类型，为枚举类型。 - 当前阶段，同步过程中，当开启无限量使用移动数据网络，移动数据网络和WIFI均不可用时，才会返回NETWORK_UNAVAILABLE；开启无限量使用移动数据网络，若有一种类型网络可用，则能正常同步。 - 同步过程中，非充电场景下，电量低于10%，完成当前批上行同步后停止同步，返回低电量； - 触发同步时，非充电场景下，若电量低于10%，则不允许同步 - 上行时，若云端空间不足，则文件上行失败，云端无该文件记录。 |
+| [ErrorType](arkts-corefile-cloudsync-errortype-e-sys.md) | 端云同步失败类型，为枚举类型。  - 当前阶段，同步过程中，当开启无限量使用移动数据网络，移动数据网络和WIFI均不可用时，才会返回NETWORK_UNAVAILABLE；开启无限量使用移动数据网络，若有一种类型网络可用，则能正常同步。  - 同步过程中，非充电场景下，电量低于10%，完成当前批上行同步后停止同步，返回低电量；  - 触发同步时，非充电场景下，若电量低于10%，则不允许同步  - 上行时，若云端空间不足，则文件上行失败，云端无该文件记录。 |
 | [FileSyncState](arkts-corefile-cloudsync-filesyncstate-e-sys.md) | 端云文件同步状态，为枚举类型。 |
 | [OptimizeState](arkts-corefile-cloudsync-optimizestate-e-sys.md) | 优化空间状态，为枚举类型。 |
 | [State](arkts-corefile-cloudsync-state-e-sys.md) | 云文件下载状态，为枚举类型。 |
 | [UploadState](arkts-corefile-cloudsync-uploadstate-e-sys.md) | 文件上传状态的枚举。 |
 <!--DelEnd-->
-

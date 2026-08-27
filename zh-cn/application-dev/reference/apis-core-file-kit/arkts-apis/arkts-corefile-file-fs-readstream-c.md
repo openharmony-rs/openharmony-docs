@@ -6,16 +6,12 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-declare class ReadStream--><!--Device-unnamed-declare class ReadStream-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## 导入模块
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## close
@@ -27,8 +23,6 @@ close(): void
 关闭可读流。
 
 **起始版本：** 12
-
-<!--Device-ReadStream-close(): void--><!--Device-ReadStream-close(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -46,9 +40,21 @@ close(): void
 **示例**
 
 ```TypeScript
+let filePath = pathDir + "/test.txt";
+let randomAccessFile = fileIo.createRandomAccessFileSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+randomAccessFile.close();
+```
+
+```TypeScript
 const filePath = pathDir + "/test.txt";
 const rs = fileIo.createReadStream(filePath);
 rs.close();
+```
+
+```TypeScript
+const filePath = pathDir + "/test.txt";
+const ws = fileIo.createWriteStream(filePath);
+ws.close();
 ```
 
 ## constructor
@@ -61,8 +67,6 @@ constructor()
 
 **起始版本：** 12
 
-<!--Device-ReadStream-constructor()--><!--Device-ReadStream-constructor()-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## seek
@@ -74,8 +78,6 @@ seek(offset: number, whence?: WhenceType): number
 调整可读流偏移指针位置。
 
 **起始版本：** 12
-
-<!--Device-ReadStream-seek(offset: number, whence?: WhenceType): number--><!--Device-ReadStream-seek(offset: number, whence?: WhenceType): number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -96,8 +98,8 @@ seek(offset: number, whence?: WhenceType): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
+| 13900020 | Invalid argument |
 | 13900026 | Illegal seek |
 | 13900042 | Unknown error |
 
@@ -111,6 +113,14 @@ console.info(`Succeeded in seeking, current offset is ${curOff}`);
 rs.close();
 ```
 
+```TypeScript
+const filePath = pathDir + "/test.txt";
+const ws = fileIo.createWriteStream(filePath);
+const curOff = ws.seek(5, fileIo.WhenceType.SEEK_SET);
+console.info(`Succeeded in seeking, current offset is ${curOff}`);
+ws.close();
+```
+
 ## bytesRead
 
 ```TypeScript
@@ -122,8 +132,6 @@ readonly bytesRead: number
 **类型：** number
 
 **起始版本：** 12
-
-<!--Device-ReadStream-readonly bytesRead: number--><!--Device-ReadStream-readonly bytesRead: number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -139,7 +147,4 @@ readonly path: string
 
 **起始版本：** 12
 
-<!--Device-ReadStream-readonly path: string--><!--Device-ReadStream-readonly path: string-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-cryptoFramework-interface Kem--><!--Device-cryptoFramework-interface Kem-End-->
-
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
 ## 导入模块
@@ -28,8 +26,6 @@ decapsulate(priKey: PriKey, wrappedKey: Uint8Array): Promise<Uint8Array>
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Kem-decapsulate(priKey: PriKey, wrappedKey: Uint8Array): Promise<Uint8Array>--><!--Device-Kem-decapsulate(priKey: PriKey, wrappedKey: Uint8Array): Promise<Uint8Array>-End-->
-
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
 **参数：**
@@ -43,16 +39,16 @@ decapsulate(priKey: PriKey, wrappedKey: Uint8Array): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | Promise对象，返回共享密钥。 |
+| Promise & lt;Uint8Array & gt; | Promise对象，返回共享密钥。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 
 **示例**
 
@@ -82,15 +78,15 @@ async function kemDecapsulate() {
 decapsulateSync(priKey: PriKey, wrappedKey: Uint8Array): Uint8Array
 ```
 
-密钥解封装操作。使用接收方的私钥，由接收方执行，从密文中解封装出共享密钥。 <br><br>**说明：** <br>建议优先使用异步API，[decapsulate](#decapsulate)。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
+密钥解封装操作。使用接收方的私钥，由接收方执行，从密文中解封装出共享密钥。
+
+**说明：** 建议优先使用异步API，[decapsulate](#decapsulate)。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Kem-decapsulateSync(priKey: PriKey, wrappedKey: Uint8Array): Uint8Array--><!--Device-Kem-decapsulateSync(priKey: PriKey, wrappedKey: Uint8Array): Uint8Array-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -111,10 +107,10 @@ decapsulateSync(priKey: PriKey, wrappedKey: Uint8Array): Uint8Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 
 **示例**
 
@@ -152,8 +148,6 @@ encapsulate(pubKey: PubKey, ikme: Uint8Array | null): Promise<KemEncapResult>
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Kem-encapsulate(pubKey: PubKey, ikme: Uint8Array | null): Promise<KemEncapResult>--><!--Device-Kem-encapsulate(pubKey: PubKey, ikme: Uint8Array | null): Promise<KemEncapResult>-End-->
-
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
 **参数：**
@@ -173,10 +167,10 @@ encapsulate(pubKey: PubKey, ikme: Uint8Array | null): Promise<KemEncapResult>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 
 **示例**
 
@@ -206,15 +200,15 @@ async function kemEncapsulate() {
 encapsulateSync(pubKey: PubKey, ikme: Uint8Array | null): KemEncapResult
 ```
 
-密钥封装操作。使用接收方的公钥，由发送方执行，生成并封装一个共享密钥。 <br><br>**说明：** <br>建议优先使用异步API，[encapsulate](#encapsulate)。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
+密钥封装操作。使用接收方的公钥，由发送方执行，生成并封装一个共享密钥。
+
+**说明：** 建议优先使用异步API，[encapsulate](#encapsulate)。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Kem-encapsulateSync(pubKey: PubKey, ikme: Uint8Array | null): KemEncapResult--><!--Device-Kem-encapsulateSync(pubKey: PubKey, ikme: Uint8Array | null): KemEncapResult-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -235,10 +229,10 @@ encapsulateSync(pubKey: PubKey, ikme: Uint8Array | null): KemEncapResult
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 
 **示例**
 
@@ -261,4 +255,3 @@ function kemEncapsulateSync() {
   }
 }
 ```
-

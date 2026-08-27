@@ -12,11 +12,13 @@ import { hash } from '@kit.CoreFileKit';
 function createHash(algorithm: string): HashStream
 ```
 
-创建并返回HashStream对象，用于生成哈希摘要。可以指定哈希计算采用的算法。HashStream采用流式处理机制，支持分批次更新数据，适用于大文件或数据流的哈希计算，避免一次性加载大文件到内存。 > **说明：** > > HashStream采用流式处理机制，支持分批次更新数据，适用于大文件或数据流的哈希计算，避免一次性加载大文件到内存。
+创建并返回HashStream对象，用于生成哈希摘要。可以指定哈希计算采用的算法。HashStream采用流式处理机制，支持分批次更新数据，适用于大文件或数据流的哈希计算，避免一次性加载大文件到内存。
 
-**起始版本：** 23
+> **说明：**
+> 
+> HashStream采用流式处理机制，支持分批次更新数据，适用于大文件或数据流的哈希计算，避免一次性加载大文件到内存。
 
-<!--Device-hash-function createHash(algorithm: string): HashStream--><!--Device-hash-function createHash(algorithm: string): HashStream-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -36,8 +38,8 @@ function createHash(algorithm: string): HashStream
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
+| 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
 **示例**
@@ -63,4 +65,3 @@ function hashFileWithStream() {
   });
 }
 ```
-

@@ -2,9 +2,7 @@
 
 云盘文件缓存对象，用来支撑文件管理应用原文件下载流程。
 
-**起始版本：** 23
-
-<!--Device-cloudSync-class CloudFileCache--><!--Device-cloudSync-class CloudFileCache-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { cloudSync } from '@kit.CoreFileKit';
-import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
 ## cleanCache
@@ -23,11 +20,9 @@ cleanCache(uri: string): void
 
 同步方法删除文件缓存。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
-
-<!--Device-CloudFileCache-cleanCache(uri: string): void--><!--Device-CloudFileCache-cleanCache(uri: string): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -43,16 +38,14 @@ cleanCache(uri: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
-| 13900002 | No such file or directory. |
-| 14000002 | Invalid uri. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;  2.Incorrect parameter types. |
 | 13600001 | IPC error. |
+| 13900002 | No such file or directory. |
+| 14000002 | Invalid uri. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -70,22 +63,6 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-let fileCache = new cloudSync.CloudFileCache();
-let path: string = "/data/storage/el2/cloud/1.txt";
-let uri: string = fileUri.getUriFromPath(path);
-try {
-  fileCache.cleanCache(uri);
-} catch (err) {
-  console.error("clean cache failed with error message: " + err.message + ", error code: " + err.code);
-}
-```
-
 ## constructor
 
 ```TypeScript
@@ -97,8 +74,6 @@ A constructor used to create a CloudFileCache object.
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CloudFileCache-constructor(bundleName: string)--><!--Device-CloudFileCache-constructor(bundleName: string)-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -119,6 +94,10 @@ A constructor used to create a CloudFileCache object.
 **示例**
 
 ```TypeScript
+let fileSync = new cloudSync.FileSync("com.ohos.demo")
+```
+
+```TypeScript
 let fileCache = new cloudSync.CloudFileCache("com.ohos.demo");
 ```
 
@@ -136,8 +115,6 @@ getDownloadList(uris: Array<string>): Promise<Array<DownloadProgress>>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CloudFileCache-getDownloadList(uris: Array<string>): Promise<Array<DownloadProgress>>--><!--Device-CloudFileCache-getDownloadList(uris: Array<string>): Promise<Array<DownloadProgress>>-End-->
-
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口：** 此接口为系统接口。
@@ -146,26 +123,24 @@ getDownloadList(uris: Array<string>): Promise<Array<DownloadProgress>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uris | Array&lt;string&gt; | 是 | 待查询下载进度的文件URI数组，数组长度取值范围[1,100]。 |
+| uris | Array & lt;string & gt; | 是 | 待查询下载进度的文件URI数组，数组长度取值范围[1,100]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;DownloadProgress&gt;&gt; | Promise对象，返回文件下载进度列表的结果。 |
+| Promise & lt;Array & lt;DownloadProgress & gt; & gt; | Promise对象，返回文件下载进度列表的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument. Possible causes: <br>1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit. <br>3.The input parameter contains an invalid uri. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 | 13900010 | Try again. |
+| 13900020 | Invalid argument. Possible causes:  1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit.  3.The input parameter contains an invalid uri. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -194,34 +169,3 @@ try {
   console.error("get download list failed with error message: " + error.message + ", error code: " + error.code);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-let fileCache: cloudSync.CloudFileCache = new cloudSync.CloudFileCache();
-let path1: string = "/data/storage/el2/cloud/1.txt";
-let path2: string = "/data/storage/el2/cloud/2.txt";
-let uri1: string = fileUri.getUriFromPath(path1);
-let uri2: string = fileUri.getUriFromPath(path2);
-let uriArray: Array<string> = [uri1, uri2];
-
-try {
-  fileCache.getDownloadList(uriArray).then((downloadList: Array<cloudSync.DownloadProgress>): void => {
-    console.info("get download list successfully");
-    for (let i = 0; i < downloadList.length; i++) {
-      console.info("download progress - uri: ".concat(downloadList[i].uri, ", state: ").concat(downloadList[i].state.toString()));
-      console.info("processed: ".concat(downloadList[i].processed.toString(), ", size: ").concat(downloadList[i].size.toString()));
-      console.info("error: ".concat(downloadList[i].error.toString()));
-    }
-  }).catch((error: BusinessError): void => {
-    console.error("get download list failed with error message: " + error.message + ", error code: " + error.code);
-  });
-} catch (err: Error) {
-  let error: BusinessError = err as BusinessError;
-  console.error("get download list failed with error message: " + error.message + ", error code: " + error.code);
-}
-```
-

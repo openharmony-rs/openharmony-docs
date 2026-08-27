@@ -1,10 +1,12 @@
 # @ohos.file.picker
 
-Picker（选择器）是一个封装DocumentViewPicker、AudioViewPicker、PhotoViewPicker的API模块，具有选择与保存的能力。 通过Picker拉起系统文件选择界面，用户可在安全可控的环境下选择或保存文件，应用无需申请权限即可使用该接口。 应用可以选择使用以下API来实现文件的选择和保存的功能。 该类接口需要应用在UIAbility界面中调用，否则无法拉起FilePicker应用、AudioPicker应用或PhotoPicker应用。 调用本模块接口返回的URI数组，URI中的中文及非数字字母的特殊字符会被编码为对应的ASCII码并拼接到URI中。 > **说明：** > > 该模块接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+Picker（选择器）是一个封装DocumentViewPicker、AudioViewPicker、PhotoViewPicker的API模块，具有选择与保存的能力。 通过Picker拉起系统文件选择界面，用户可在安全可控的环境下选择或保存文件，应用无需申请权限即可使用该接口。 应用可以选择使用以下API来实现文件的选择和保存的功能。 该类接口需要应用在UIAbility界面中调用，否则无法拉起FilePicker应用、AudioPicker应用或PhotoPicker应用。 调用本模块接口返回的URI数组，URI中的中文及非数字字母的特殊字符会被编码为对应的ASCII码并拼接到URI中。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 该模块接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-<!--Device-unnamed-declare namespace picker--><!--Device-unnamed-declare namespace picker-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
@@ -40,15 +42,6 @@ import { picker } from '@kit.CoreFileKit';
 | [DocumentSelectOptions](arkts-corefile-picker-documentselectoptions-c-sys.md) | 文档选择选项。 |
 <!--DelEnd-->
 
-### 接口
-
-| 名称 | 说明 |
-| --- | --- |
-| [AudioSaveOptions](arkts-corefile-picker-audiosaveoptions-i.md) | 音频保存选项。 |
-| [AudioSelectOptions](arkts-corefile-picker-audioselectoptions-i.md) | 音频选择选项。 |
-| [DocumentSaveOptions](arkts-corefile-picker-documentsaveoptions-i.md) | 文档保存选项。 |
-| [DocumentSelectOptions](arkts-corefile-picker-documentselectoptions-i.md) | 文档选择选项。 |
-
 ### 枚举
 
 | 名称 | 说明 |
@@ -57,4 +50,3 @@ import { picker } from '@kit.CoreFileKit';
 | [DocumentSelectMode](arkts-corefile-picker-documentselectmode-e.md) | Enumerates the types of documents selected. |
 | [MergeTypeMode](arkts-corefile-picker-mergetypemode-e.md) | Enumerates file aggregation types. |
 | [PhotoViewMIMETypes](arkts-corefile-picker-photoviewmimetypes-e.md) | Enumerates the media file types that can be selected. |
-

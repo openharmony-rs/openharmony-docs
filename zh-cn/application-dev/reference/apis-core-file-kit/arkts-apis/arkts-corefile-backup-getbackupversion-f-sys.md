@@ -14,11 +14,9 @@ function getBackupVersion(): string
 
 获取备份版本信息。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **需要权限：** ohos.permission.BACKUP
-
-<!--Device-backup-function getBackupVersion(): string--><!--Device-backup-function getBackupVersion(): string-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -59,4 +57,3 @@ function getBackupVersion() {
 ```TypeScript
 { "backupVersion" : "16.0" }
 ```
-

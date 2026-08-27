@@ -19,8 +19,6 @@ declare function fdatasyncSync(fd: number): void
 
 **替代接口：** [fdatasyncSync](arkts-corefile-file-fs-fdatasyncsync-f.md)
 
-<!--Device-unnamed-declare function fdatasyncSync(fd: number): void--><!--Device-unnamed-declare function fdatasyncSync(fd: number): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -29,3 +27,10 @@ declare function fdatasyncSync(fd: number): void
 | --- | --- | --- | --- |
 | fd | number | 是 | 待同步文件的文件描述符。 |
 
+**示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+let fd = fileio.openSync(filePath);
+let stat = fileio.fdatasyncSync(fd);
+```

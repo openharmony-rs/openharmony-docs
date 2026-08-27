@@ -14,11 +14,9 @@ function format(volumeId: string, fsType: string, callback: AsyncCallback<void>)
 
 对指定卷设备进行格式化，使用callback异步回调。当前仅支持vfat和exfat两种文件系统类型的格式化，只有处于卸载状态的 卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.MOUNT_FORMAT_MANAGER
-
-<!--Device-volumeManager-function format(volumeId: string, fsType: string, callback: AsyncCallback<void>): void--><!--Device-volumeManager-function format(volumeId: string, fsType: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
@@ -30,20 +28,36 @@ function format(volumeId: string, fsType: string, callback: AsyncCallback<void>)
 | --- | --- | --- | --- |
 | volumeId | string | 是 | 卷设备id。 |
 | fsType | string | 是 | 文件系统类型(vfat或者exfat)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 对指定卷设备格式化后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 对指定卷设备格式化后的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
-| 13600008 | No such object. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| 13600005 | Incorrect volume state. |
-| 13600002 | Not supported filesystem. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;  2.Incorrect parameter types. |
 | 13600001 | IPC error. |
+| 13600002 | Not supported filesystem. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
 | 13900042 | Unknown error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// volumeId可通过getAllVolumes()接口获取
+let volumeId: string = "";
+let fsType: string = "";
+volumeManager.format(volumeId, fsType, (error: BusinessError) => {
+  if (error) {
+    console.error(`format failed, code is: ${error.code}, message is: ${error.message}`);
+    return;
+  }
+  // 对指定卷设备格式化成功的回调
+});
+```
 
 
 ## format
@@ -54,11 +68,9 @@ function format(volumeId: string, fsType: string): Promise<void>
 
 对指定卷设备进行格式化，使用Promise异步回调。当前仅支持vfat和exfat两种文件系统类型的格式化，只有处于卸载状态的 卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.MOUNT_FORMAT_MANAGER
-
-<!--Device-volumeManager-function format(volumeId: string, fsType: string): Promise<void>--><!--Device-volumeManager-function format(volumeId: string, fsType: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
@@ -75,18 +87,31 @@ function format(volumeId: string, fsType: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
-| 13600008 | No such object. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| 13600005 | Incorrect volume state. |
-| 13600002 | Not supported filesystem. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;  2.Incorrect parameter types. |
 | 13600001 | IPC error. |
+| 13600002 | Not supported filesystem. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
 | 13900042 | Unknown error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// volumeId可通过getAllVolumes()接口获取
+let volumeId: string = "";
+let fsType: string = "";
+volumeManager.format(volumeId, fsType).then(() => {
+  console.info("format successfully");
+}).catch((error: BusinessError) => {
+  console.error(`Failed to format. Code: ${error.code}, message: ${error.message}`);
+});
+```

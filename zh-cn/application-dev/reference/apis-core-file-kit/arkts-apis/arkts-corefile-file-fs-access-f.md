@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## access
@@ -14,13 +12,11 @@ import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, Watch
 declare function access(path: string, mode?: AccessModeType): Promise<boolean>
 ```
 
-检查文件或目录是否存在，或校验操作权限。使用Promise异步回调。 校验读、写或读写权限不通过会抛出13900012（Permission denied）错误码。
+检查文件或目录是否存在，或校验操作权限。使用Promise异步回调。校验读、写或读写权限不通过会抛出13900012（Permission denied）错误码。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-unnamed-declare function access(path: string, mode?: AccessModeType): Promise<boolean>--><!--Device-unnamed-declare function access(path: string, mode?: AccessModeType): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -35,24 +31,41 @@ declare function access(path: string, mode?: AccessModeType): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示文件或目录存在；返回false表示文件或目录不存在。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示文件或目录存在；返回false表示文件或目录不存在。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900005 | I/O error |
-| 13900023 | Text file busy |
-| 13900033 | Too many symbolic links encountered |
 | 13900002 | No such file or directory |
-| 13900018 | Not a directory |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900011 | Out of memory |
 | 13900012 | Permission denied |
 | 13900013 | Bad address |
-| 13900030 | File name too long |
-| 13900008 | Bad file descriptor |
+| 13900018 | Not a directory |
+| 13900020 | Invalid argument |
+| 13900023 | Text file busy |
+| 13900030 | File name too number |
+| 13900033 | Too many symbolic links encountered |
 | 13900042 | Unknown error |
-| 13900011 | Out of memory |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.access(filePath).then((res: boolean) => {
+  if (res) {
+    console.info(`Succeeded in checking file, file exists.`);
+  } else {
+    console.info(`Succeeded in checking file, file does not exist.`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to access. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 
 ## access
@@ -67,8 +80,6 @@ declare function access(path: string, callback: AsyncCallback<boolean>): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare function access(path: string, callback: AsyncCallback<boolean>): void--><!--Device-unnamed-declare function access(path: string, callback: AsyncCallback<boolean>): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -76,24 +87,43 @@ declare function access(path: string, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 文件或目录的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 异步检查文件或目录是否存在的回调。如果存在，回调返回true；否则返回false。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 异步检查文件或目录是否存在的回调。如果存在，回调返回true；否则返回false。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900005 | I/O error |
-| 13900023 | Text file busy |
-| 13900033 | Too many symbolic links encountered |
 | 13900002 | No such file or directory |
-| 13900018 | Not a directory |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900011 | Out of memory |
 | 13900012 | Permission denied |
 | 13900013 | Bad address |
-| 13900030 | File name too long |
-| 13900008 | Bad file descriptor |
+| 13900018 | Not a directory |
+| 13900020 | Invalid argument |
+| 13900023 | Text file busy |
+| 13900030 | File name too number |
+| 13900033 | Too many symbolic links encountered |
 | 13900042 | Unknown error |
-| 13900011 | Out of memory |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.access(filePath, (err: BusinessError, res: boolean) => {
+  if (err) {
+    console.error(`Failed to access. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    if (res) {
+      console.info(`Succeeded in checking file, file exists.`);
+    } else {
+      console.info(`Succeeded in checking file, file does not exist.`);
+    }
+  }
+});
+```
 
 
 ## access
@@ -102,11 +132,9 @@ declare function access(path: string, callback: AsyncCallback<boolean>): void
 declare function access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise<boolean>
 ```
 
-检查文件或目录是否在本地，或校验操作权限。使用Promise异步回调。 校验读、写或读写权限不通过会抛出13900012（Permission denied）错误码。
+检查文件或目录是否在本地，或校验操作权限。使用Promise异步回调。校验读、写或读写权限不通过会抛出13900012（Permission denied）错误码。
 
 **起始版本：** 12
-
-<!--Device-unnamed-declare function access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise<boolean>--><!--Device-unnamed-declare function access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -122,20 +150,36 @@ declare function access(path: string, mode: AccessModeType, flag: AccessFlagType
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示文件或目录在本地且校验权限存在；返回false表示文件或目录不存在或者文件或目录在云端或其他分布式设备上。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示文件或目录在本地且校验权限存在；返回false表示文件或目录不存在或者文件或目录在云端或其他分布式设备上。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;  2.Incorrect parameter types. |
 | 13900005 | I/O error |
-| 13900023 | Text file busy |
-| 13900033 | Too many symbolic links encountered |
-| 13900018 | Not a directory |
+| 13900011 | Out of memory |
 | 13900012 | Permission denied |
 | 13900013 | Bad address |
-| 13900030 | File name too long |
-| 13900011 | Out of memory |
+| 13900018 | Not a directory |
+| 13900020 | Invalid argument |
+| 13900023 | Text file busy |
+| 13900030 | File name too number |
+| 13900033 | Too many symbolic links encountered |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.access(filePath, fileIo.AccessModeType.EXIST, fileIo.AccessFlagType.LOCAL).then((res: boolean) => {
+  if (res) {
+    console.info(`Succeeded in checking file, file exists.`);
+  } else {
+    console.info(`Succeeded in checking file, file does not exist.`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to access. Code: ${err.code}, message: ${err.message}`);
+});
+```

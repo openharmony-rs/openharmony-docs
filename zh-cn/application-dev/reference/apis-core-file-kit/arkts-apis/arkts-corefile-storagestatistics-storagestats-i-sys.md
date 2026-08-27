@@ -1,8 +1,6 @@
 # StorageStats（系统接口）
 
-**起始版本：** 23
-
-<!--Device-storageStatistics-export interface StorageStats--><!--Device-storageStatistics-export interface StorageStats-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -17,16 +15,14 @@ import { storageStatistics } from '@kit.CoreFileKit';
 ## app
 
 ```TypeScript
-app: long
+app: number
 ```
 
 应用数据大小，单位为Byte。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-StorageStats-app: long--><!--Device-StorageStats-app: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -35,16 +31,14 @@ app: long
 ## audio
 
 ```TypeScript
-audio: long
+audio: number
 ```
 
 音频数据大小，单位为Byte。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-StorageStats-audio: long--><!--Device-StorageStats-audio: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -53,16 +47,14 @@ audio: long
 ## file
 
 ```TypeScript
-file: long
+file: number
 ```
 
 文件数据大小，单位为Byte。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-StorageStats-file: long--><!--Device-StorageStats-file: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -71,16 +63,14 @@ file: long
 ## image
 
 ```TypeScript
-image: long
+image: number
 ```
 
 图像数据大小，单位为Byte。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-StorageStats-image: long--><!--Device-StorageStats-image: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -89,16 +79,14 @@ image: long
 ## total
 
 ```TypeScript
-total: long
+total: number
 ```
 
 内置存储总空间大小，单位为Byte。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-StorageStats-total: long--><!--Device-StorageStats-total: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -107,18 +95,15 @@ total: long
 ## video
 
 ```TypeScript
-video: long
+video: number
 ```
 
 视频数据大小，单位为Byte。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-StorageStats-video: long--><!--Device-StorageStats-video: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **系统接口：** 此接口为系统接口。
-

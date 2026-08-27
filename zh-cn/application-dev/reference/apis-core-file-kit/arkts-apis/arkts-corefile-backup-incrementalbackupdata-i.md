@@ -1,12 +1,10 @@
 # IncrementalBackupData（系统接口）
 
-一次增量备份对象，包含最后一次增量备份时间和增量清单。
+一次增量备份对象，包含最后一次增量备份时间和增量清单。@extends IncrementalBackupTime, FileManifestData, BackupParams, BackupPriority @interface IncrementalBackupData
 
 **继承/实现关系：** IncrementalBackupData extends [IncrementalBackupTime](arkts-corefile-backup-incrementalbackuptime-i-sys.md), [FileManifestData](arkts-corefile-backup-filemanifestdata-i-sys.md), [BackupParams](arkts-corefile-backup-backupparams-i-sys.md), [BackupPriority](arkts-corefile-backup-backuppriority-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-backup-interface IncrementalBackupData--><!--Device-backup-interface IncrementalBackupData-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -17,4 +15,3 @@
 ```TypeScript
 import { backup } from '@kit.CoreFileKit';
 ```
-

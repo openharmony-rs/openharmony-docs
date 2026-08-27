@@ -6,8 +6,6 @@
 
 **废弃版本：** 10
 
-<!--Device-unnamed-export default class File--><!--Device-unnamed-export default class File-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## 导入模块
@@ -28,8 +26,6 @@ static access(options: FileAccessOption): void
 **废弃版本：** 10
 
 **替代接口：** [access](arkts-corefile-file-fs-access-f.md)
-
-<!--Device-File-static access(options: FileAccessOption): void--><!--Device-File-static access(options: FileAccessOption): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -133,8 +129,6 @@ static copy(options: FileCopyOption): void
 **废弃版本：** 10
 
 **替代接口：** [copyFile](arkts-corefile-file-fs-copyfile-f.md)
-
-<!--Device-File-static copy(options: FileCopyOption): void--><!--Device-File-static copy(options: FileCopyOption): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -241,8 +235,6 @@ static delete(options: FileDeleteOption): void
 
 **替代接口：** [unlink](arkts-corefile-file-fs-unlink-f.md)
 
-<!--Device-File-static delete(options: FileDeleteOption): void--><!--Device-File-static delete(options: FileDeleteOption): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
 **参数：**
@@ -345,8 +337,6 @@ static get(options: FileGetOption): void
 **废弃版本：** 10
 
 **替代接口：** [stat](arkts-corefile-file-fs-stat-f.md)
-
-<!--Device-File-static get(options: FileGetOption): void--><!--Device-File-static get(options: FileGetOption): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -451,8 +441,6 @@ static list(options: FileListOption): void
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
-<!--Device-File-static list(options: FileListOption): void--><!--Device-File-static list(options: FileListOption): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
 **参数：**
@@ -556,8 +544,6 @@ static mkdir(options: FileMkdirOption): void
 
 **替代接口：** [mkdir](arkts-corefile-file-fs-mkdir-f.md)
 
-<!--Device-File-static mkdir(options: FileMkdirOption): void--><!--Device-File-static mkdir(options: FileMkdirOption): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
 **参数：**
@@ -660,8 +646,6 @@ static move(options: FileMoveOption): void
 **废弃版本：** 10
 
 **替代接口：** [moveFile](arkts-corefile-file-fs-movefile-f.md)
-
-<!--Device-File-static move(options: FileMoveOption): void--><!--Device-File-static move(options: FileMoveOption): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -767,8 +751,6 @@ static readArrayBuffer(options: FileReadArrayBufferOption): void
 **废弃版本：** 10
 
 **替代接口：** [read](arkts-corefile-file-fs-read-f.md)
-
-<!--Device-File-static readArrayBuffer(options: FileReadArrayBufferOption): void--><!--Device-File-static readArrayBuffer(options: FileReadArrayBufferOption): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -877,8 +859,6 @@ static readText(options: FileReadTextOption): void
 
 **替代接口：** [readText](arkts-corefile-file-fs-readtext-f.md)
 
-<!--Device-File-static readText(options: FileReadTextOption): void--><!--Device-File-static readText(options: FileReadTextOption): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
 **参数：**
@@ -982,8 +962,6 @@ static rmdir(options: FileRmdirOption): void
 
 **替代接口：** [rmdir](arkts-corefile-file-fs-rmdir-f.md)
 
-<!--Device-File-static rmdir(options: FileRmdirOption): void--><!--Device-File-static rmdir(options: FileRmdirOption): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
 **参数：**
@@ -1086,8 +1064,6 @@ static writeArrayBuffer(options: FileWriteArrayBufferOption): void
 **废弃版本：** 10
 
 **替代接口：** [write](arkts-corefile-file-fs-write-f.md)
-
-<!--Device-File-static writeArrayBuffer(options: FileWriteArrayBufferOption): void--><!--Device-File-static writeArrayBuffer(options: FileWriteArrayBufferOption): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -1194,8 +1170,6 @@ static writeText(options: FileWriteTextOption): void
 
 **替代接口：** [write](arkts-corefile-file-fs-write-f.md)
 
-<!--Device-File-static writeText(options: FileWriteTextOption): void--><!--Device-File-static writeText(options: FileWriteTextOption): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
 **参数：**
@@ -1286,4 +1260,3 @@ export default {
   }
 }
 ```
-

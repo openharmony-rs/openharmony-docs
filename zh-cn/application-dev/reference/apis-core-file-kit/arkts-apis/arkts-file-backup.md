@@ -1,10 +1,8 @@
 # @ohos.file.backup
 
-提供备份和恢复能力的模块。
+提供备份和恢复能力的模块。@namespace backup
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace backup--><!--Device-unnamed-declare namespace backup-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -47,22 +45,22 @@ import { backup } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [File](arkts-corefile-backup-file-i.md) | 文件对象，包含文件元数据、文件数据和清单文件信息。 用于客户端与备份服务进行IPC。 |
-| [IncrementalBackupData](arkts-corefile-backup-incrementalbackupdata-i.md) | 一次增量备份对象，包含最后一次增量备份时间和增量清单。 |
+| [File](arkts-corefile-backup-file-i.md) | 文件对象，包含文件元数据、文件数据和清单文件信息。 用于客户端与备份服务进行IPC。@extends FileMeta, FileData, FileManifestData @interface File |
+| [IncrementalBackupData](arkts-corefile-backup-incrementalbackupdata-i.md) | 一次增量备份对象，包含最后一次增量备份时间和增量清单。@extends IncrementalBackupTime, FileManifestData, BackupParams, BackupPriority @interface IncrementalBackupData |
 
 <!--Del-->
 ### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [BackupParams](arkts-corefile-backup-backupparams-i-sys.md) | 为备份恢复提供可选配置参数。 |
-| [BackupPriority](arkts-corefile-backup-backuppriority-i-sys.md) | 控制备份和恢复的优先级顺序。 |
-| [FileData](arkts-corefile-backup-filedata-i-sys.md) | 文件数据，包含一个已经打开的文件描述符，在与备份服务进行IPC时使用。 |
-| [FileManifestData](arkts-corefile-backup-filemanifestdata-i-sys.md) | 增量数据中的清单文件信息，用于描述应用增量备份、恢复时对应文件的基础信息。 |
-| [FileMeta](arkts-corefile-backup-filemeta-i-sys.md) | 文件的元数据，包含应用名称及文件URI，在与备份服务进行IPC时使用。 |
-| [FileSystemRequestConfig](arkts-corefile-backup-filesystemrequestconfig-i-sys.md) | 配置系统执行碎片清理所需的参数。 |
-| [GeneralCallbacks](arkts-corefile-backup-generalcallbacks-i-sys.md) | 备份和恢复过程中的通用回调。 备份服务通过这些回调向客户端通知备份或恢复阶段。 |
-| [IncrementalBackupTime](arkts-corefile-backup-incrementalbackuptime-i-sys.md) | 记录最后一次增量备份时间，用于描述备份增量的时间点。 |
+| [BackupParams](arkts-corefile-backup-backupparams-i-sys.md) | 为备份恢复提供可选配置参数。@interface BackupParams |
+| [BackupPriority](arkts-corefile-backup-backuppriority-i-sys.md) | 控制备份和恢复的优先级顺序。@interface BackupPriority |
+| [FileData](arkts-corefile-backup-filedata-i-sys.md) | 文件数据，包含一个已经打开的文件描述符，在与备份服务进行IPC时使用。@interface FileData |
+| [FileManifestData](arkts-corefile-backup-filemanifestdata-i-sys.md) | 增量数据中的清单文件信息，用于描述应用增量备份、恢复时对应文件的基础信息。@interface FileManifestData |
+| [FileMeta](arkts-corefile-backup-filemeta-i-sys.md) | 文件的元数据，包含应用名称及文件URI，在与备份服务进行IPC时使用。@interface FileMeta |
+| [FileSystemRequestConfig](arkts-corefile-backup-filesystemrequestconfig-i-sys.md) | 配置系统执行碎片清理所需的参数。@interface FileSystemRequestConfig |
+| [GeneralCallbacks](arkts-corefile-backup-generalcallbacks-i-sys.md) | 备份和恢复过程中的通用回调。 备份服务通过这些回调向客户端通知备份或恢复阶段。@interface GeneralCallbacks |
+| [IncrementalBackupTime](arkts-corefile-backup-incrementalbackuptime-i-sys.md) | 记录最后一次增量备份时间，用于描述备份增量的时间点。@interface IncrementalBackupTime |
 | [PathInfo](arkts-corefile-backup-pathinfo-i-sys.md) | 文件迁移的路径信息。 |
 <!--DelEnd-->
 
@@ -71,10 +69,6 @@ import { backup } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [BundlePara](arkts-corefile-backup-bundlepara-t-sys.md) | 备份或恢复回调的应用名称参数类型。 |
 | [OnBackupSizeReport](arkts-corefile-backup-onbackupsizereport-t-sys.md) | 返回应用备份数据量信息的回调函数。 |
 | [OnFileReadyBatch](arkts-corefile-backup-onfilereadybatch-t-sys.md) | 一批文件准备好发送给客户端时触发的回调函数。 |
-| [OnProcess](arkts-corefile-backup-onprocess-t-sys.md) | 返回应用备份数据量信息的回调函数。 备份服务返回结果或进度信息时触发的回调。 返回应用的处理结果或进度信息。 |
-| [OnResultReport](arkts-corefile-backup-onresultreport-t-sys.md) | 备份服务返回结果信息时触发的回调。 第一个字符串参数表示触发回调的应用名称。 第二个字符串参数表示应用的处理结果。 |
 <!--DelEnd-->
-

@@ -19,8 +19,6 @@ declare function close(fd: number): Promise<void>
 
 **替代接口：** [close](arkts-corefile-file-fs-close-f.md)
 
-<!--Device-unnamed-declare function close(fd: number): Promise<void>--><!--Device-unnamed-declare function close(fd: number): Promise<void>-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -33,7 +31,20 @@ declare function close(fd: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise & lt;void & gt; | Promise对象。无返回值。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let filePath = pathDir + "/test.txt";
+let fd = fileio.openSync(filePath);
+fileio.close(fd).then(() => {
+  console.info("close file succeed");
+}).catch((err: BusinessError) => {
+  console.error("close file failed with error:" + err);
+});
+```
 
 
 ## close
@@ -50,8 +61,6 @@ declare function close(fd: number, callback: AsyncCallback<void>): void
 
 **替代接口：** [close](arkts-corefile-file-fs-close-f.md)
 
-<!--Device-unnamed-declare function close(fd: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function close(fd: number, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -59,5 +68,15 @@ declare function close(fd: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fd | number | 是 | 待关闭文件的文件描述符。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步关闭文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步关闭文件之后的回调。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let filePath = pathDir + "/test.txt";
+let fd = fileio.openSync(filePath);
+fileio.close(fd, (err: BusinessError) => {
+  // do something
+});
+```

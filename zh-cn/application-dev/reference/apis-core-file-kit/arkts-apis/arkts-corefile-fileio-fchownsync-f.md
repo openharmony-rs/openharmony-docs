@@ -17,8 +17,6 @@ declare function fchownSync(fd: number, uid: number, gid: number): void
 
 **废弃版本：** 9
 
-<!--Device-unnamed-declare function fchownSync(fd: number, uid: number, gid: number): void--><!--Device-unnamed-declare function fchownSync(fd: number, uid: number, gid: number): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -29,3 +27,11 @@ declare function fchownSync(fd: number, uid: number, gid: number): void
 | uid | number | 是 | 文件所有者的UID。 |
 | gid | number | 是 | 文件所有组的GID。 |
 
+**示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+let fd = fileio.openSync(filePath);
+let stat = fileio.statSync(filePath);
+fileio.fchownSync(fd, stat.uid, stat.gid);
+```

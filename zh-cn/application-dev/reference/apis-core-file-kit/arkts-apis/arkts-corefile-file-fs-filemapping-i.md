@@ -4,16 +4,12 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-declare interface FileMapping--><!--Device-unnamed-declare interface FileMapping-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## 导入模块
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## capacity
@@ -28,8 +24,6 @@ capacity(): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileMapping-capacity(): number--><!--Device-FileMapping-capacity(): number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **返回值：**
@@ -43,8 +37,8 @@ capacity(): number
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900052 | Mmap buffer released |
 | 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
 
 **示例**
 
@@ -64,13 +58,11 @@ fileIo.closeSync(file);
 flip(): void
 ```
 
-翻转文件映射区，将写入准备状态切换为读取准备状态。调用后，limit被设置为当前position的值，position被重置为0。 推荐在一系列[write()](#write)操作完成后，调用此方法准备后续的[read()](#read)操作。
+翻转文件映射区，将写入准备状态切换为读取准备状态。调用后，limit被设置为当前position的值，position被重置为0。推荐在一系列[write()](#write)操作完成后，调用此方法准备后续的[read()](#read)操作。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FileMapping-flip(): void--><!--Device-FileMapping-flip(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -79,8 +71,8 @@ flip(): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900052 | Mmap buffer released |
 | 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
 
 **示例**
 
@@ -113,8 +105,6 @@ getLimit(): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileMapping-getLimit(): number--><!--Device-FileMapping-getLimit(): number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **返回值：**
@@ -128,8 +118,8 @@ getLimit(): number
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900052 | Mmap buffer released |
 | 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
 
 **示例**
 
@@ -155,8 +145,6 @@ getPosition(): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileMapping-getPosition(): number--><!--Device-FileMapping-getPosition(): number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **返回值：**
@@ -170,8 +158,8 @@ getPosition(): number
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900052 | Mmap buffer released |
 | 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
 
 **示例**
 
@@ -197,30 +185,26 @@ msync(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileMapping-msync(): Promise<void>--><!--Device-FileMapping-msync(): Promise<void>-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise & lt;void & gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| 13900011 | Out of memory |
+| 13900014 | Device or resource busy |
 | 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
 | 13900052 | Mmap buffer released |
 | 13900055 | Mmap operation not supported |
-| 13900050 | Internal resource error |
-| 13900014 | Device or resource busy |
-| 13900011 | Out of memory |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -235,29 +219,6 @@ mapping.write(buffer);
 mapping.msync().then(() => {
   console.info("Succeeded in msync.");
 }).catch((err: BusinessError) => {
-  console.error(`Failed to msync. Code: ${err.code}, message: ${err.message}`);
-}).finally(() => {
-  mapping.unmapSync();
-  fileIo.closeSync(file);
-});
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
-
-let buffer = new ArrayBuffer(11);
-mapping.write(buffer);
-
-mapping.msync().then(() => {
-  console.info("Succeeded in msync.");
-}).catch((error: Error) => {
-  let err: BusinessError = error as BusinessError;
   console.error(`Failed to msync. Code: ${err.code}, message: ${err.message}`);
 }).finally(() => {
   mapping.unmapSync();
@@ -277,8 +238,6 @@ msync(position: number, length: number): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileMapping-msync(position: number, length: number): Promise<void>--><!--Device-FileMapping-msync(position: number, length: number): Promise<void>-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -292,22 +251,20 @@ msync(position: number, length: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise & lt;void & gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| 13900011 | Out of memory |
+| 13900014 | Device or resource busy |
 | 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
 | 13900052 | Mmap buffer released |
 | 13900055 | Mmap operation not supported |
-| 13900050 | Internal resource error |
-| 13900014 | Device or resource busy |
-| 13900011 | Out of memory |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -329,29 +286,6 @@ mapping.msync(50, buffer.byteLength).then(() => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
-
-let buffer = new ArrayBuffer(11);
-mapping.write(50, buffer);
-
-mapping.msync(50, buffer.byteLength).then(() => {
-  console.info("Succeeded in msync.");
-}).catch((error: Error) => {
-  let err: BusinessError = error as BusinessError;
-  console.error(`Failed to msync. Code: ${err.code}, message: ${err.message}`);
-}).finally(() => {
-  mapping.unmapSync();
-  fileIo.closeSync(file);
-});
-```
-
 ## msyncSync
 
 ```TypeScript
@@ -364,20 +298,18 @@ msyncSync(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileMapping-msyncSync(): void--><!--Device-FileMapping-msyncSync(): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| 13900011 | Out of memory |
+| 13900014 | Device or resource busy |
 | 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
 | 13900052 | Mmap buffer released |
 | 13900055 | Mmap operation not supported |
-| 13900050 | Internal resource error |
-| 13900014 | Device or resource busy |
-| 13900011 | Out of memory |
 
 **示例**
 
@@ -410,8 +342,6 @@ msyncSync(position: number, length: number): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileMapping-msyncSync(position: number, length: number): void--><!--Device-FileMapping-msyncSync(position: number, length: number): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -425,12 +355,12 @@ msyncSync(position: number, length: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| 13900011 | Out of memory |
+| 13900014 | Device or resource busy |
 | 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
 | 13900052 | Mmap buffer released |
 | 13900055 | Mmap operation not supported |
-| 13900050 | Internal resource error |
-| 13900014 | Device or resource busy |
-| 13900011 | Out of memory |
 
 **示例**
 
@@ -463,8 +393,6 @@ read(buffer: ArrayBuffer, length?: number): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileMapping-read(buffer: ArrayBuffer, length?: number): number--><!--Device-FileMapping-read(buffer: ArrayBuffer, length?: number): number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -485,10 +413,10 @@ read(buffer: ArrayBuffer, length?: number): number
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900052 | Mmap buffer released |
-| 13900054 | Mmap buffer is inaccessible |
 | 13900050 | Internal resource error |
 | 13900051 | Buffer read/write out of bounds |
+| 13900052 | Mmap buffer released |
+| 13900054 | Mmap buffer is inaccessible |
 
 **示例**
 
@@ -517,8 +445,6 @@ read(position: number, buffer: ArrayBuffer, length?: number): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileMapping-read(position: number, buffer: ArrayBuffer, length?: number): number--><!--Device-FileMapping-read(position: number, buffer: ArrayBuffer, length?: number): number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -540,10 +466,10 @@ read(position: number, buffer: ArrayBuffer, length?: number): number
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900052 | Mmap buffer released |
-| 13900054 | Mmap buffer is inaccessible |
 | 13900050 | Internal resource error |
 | 13900051 | Buffer read/write out of bounds |
+| 13900052 | Mmap buffer released |
+| 13900054 | Mmap buffer is inaccessible |
 
 **示例**
 
@@ -572,8 +498,6 @@ remaining(): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileMapping-remaining(): number--><!--Device-FileMapping-remaining(): number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **返回值：**
@@ -587,8 +511,8 @@ remaining(): number
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900052 | Mmap buffer released |
 | 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
 
 **示例**
 
@@ -617,8 +541,6 @@ setLimit(limit: number): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileMapping-setLimit(limit: number): void--><!--Device-FileMapping-setLimit(limit: number): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -632,8 +554,8 @@ setLimit(limit: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900052 | Mmap buffer released |
 | 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
 
 **示例**
 
@@ -659,8 +581,6 @@ setPosition(position: number): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileMapping-setPosition(position: number): void--><!--Device-FileMapping-setPosition(position: number): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -674,8 +594,8 @@ setPosition(position: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900052 | Mmap buffer released |
 | 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
 
 **示例**
 
@@ -701,15 +621,13 @@ unmap(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileMapping-unmap(): Promise<void>--><!--Device-FileMapping-unmap(): Promise<void>-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise & lt;void & gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -719,8 +637,6 @@ unmap(): Promise<void>
 | 13900050 | Internal resource error |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -740,27 +656,6 @@ mapping.unmap().then(() => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
-
-let buffer = new ArrayBuffer(11);
-mapping.write(buffer);
-mapping.unmap().then(() => {
-  console.info("Succeeded in unmap.");
-}).catch((error: Error) => {
-  let err: BusinessError = error as BusinessError;
-  console.error(`Failed to unmap. Code: ${err.code}, message: ${err.message}`);
-}).finally(() => {
-  fileIo.closeSync(file);
-});
-```
-
 ## unmapSync
 
 ```TypeScript
@@ -772,8 +667,6 @@ unmapSync(): void
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FileMapping-unmapSync(): void--><!--Device-FileMapping-unmapSync(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -810,8 +703,6 @@ write(data: ArrayBuffer, length?: number): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileMapping-write(data: ArrayBuffer, length?: number): number--><!--Device-FileMapping-write(data: ArrayBuffer, length?: number): number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -832,11 +723,11 @@ write(data: ArrayBuffer, length?: number): number
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900051 | Buffer read/write out of bounds |
 | 13900052 | Mmap buffer released |
 | 13900053 | Read-only mmap buffer |
 | 13900054 | Mmap buffer is inaccessible |
-| 13900050 | Internal resource error |
-| 13900051 | Buffer read/write out of bounds |
 
 **示例**
 
@@ -866,8 +757,6 @@ write(position: number, data: ArrayBuffer, length?: number): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileMapping-write(position: number, data: ArrayBuffer, length?: number): number--><!--Device-FileMapping-write(position: number, data: ArrayBuffer, length?: number): number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -889,11 +778,11 @@ write(position: number, data: ArrayBuffer, length?: number): number
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900051 | Buffer read/write out of bounds |
 | 13900052 | Mmap buffer released |
 | 13900053 | Read-only mmap buffer |
 | 13900054 | Mmap buffer is inaccessible |
-| 13900050 | Internal resource error |
-| 13900051 | Buffer read/write out of bounds |
 
 **示例**
 
@@ -910,4 +799,3 @@ mapping.msyncSync();
 mapping.unmapSync();
 fileIo.closeSync(file);
 ```
-

@@ -19,8 +19,6 @@ declare function symlink(target: string, srcPath: string): Promise<void>
 
 **替代接口：** [symlink](arkts-corefile-file-fs-symlink-f.md)
 
-<!--Device-unnamed-declare function symlink(target: string, srcPath: string): Promise<void>--><!--Device-unnamed-declare function symlink(target: string, srcPath: string): Promise<void>-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -34,7 +32,20 @@ declare function symlink(target: string, srcPath: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise & lt;void & gt; | Promise对象。无返回值。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let srcFile = pathDir + "/test.txt";
+let dstFile = pathDir + '/test';
+fileio.symlink(srcFile, dstFile).then(() => {
+  console.info("symlink succeed");
+}).catch((err: BusinessError) => {
+  console.error("symlink failed with error:" + err);
+});
+```
 
 
 ## symlink
@@ -51,8 +62,6 @@ declare function symlink(target: string, srcPath: string, callback: AsyncCallbac
 
 **替代接口：** [symlink](arkts-corefile-file-fs-symlink-f.md)
 
-<!--Device-unnamed-declare function symlink(target: string, srcPath: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function symlink(target: string, srcPath: string, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -61,5 +70,15 @@ declare function symlink(target: string, srcPath: string, callback: AsyncCallbac
 | --- | --- | --- | --- |
 | target | string | 是 | 目标文件的应用沙箱路径。 |
 | srcPath | string | 是 | 符号链接文件的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步创建符号链接信息之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步创建符号链接信息之后的回调。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let srcFile = pathDir + "/test.txt";
+let dstFile = pathDir + '/test';
+fileio.symlink(srcFile, dstFile, (err: BusinessError) => {
+  // do something
+});
+```

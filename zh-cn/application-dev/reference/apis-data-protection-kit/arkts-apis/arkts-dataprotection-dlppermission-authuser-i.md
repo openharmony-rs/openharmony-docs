@@ -1,14 +1,10 @@
-# AuthUser（系统接口）
+# AuthUser
 
 表示授权用户数据。
 
-**起始版本：** 10
-
-<!--Device-dlpPermission-export interface AuthUser--><!--Device-dlpPermission-export interface AuthUser-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
-
-**系统接口：** 此接口为系统接口。
 
 ## 导入模块
 
@@ -26,13 +22,9 @@ authAccount: string
 
 **类型：** string
 
-**起始版本：** 10
-
-<!--Device-AuthUser-authAccount: string--><!--Device-AuthUser-authAccount: string-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
-
-**系统接口：** 此接口为系统接口。
 
 ## authAccountType
 
@@ -44,13 +36,9 @@ authAccountType: AccountType
 
 **类型：** [AccountType](arkts-dataprotection-dlppermission-accounttype-e.md)
 
-**起始版本：** 10
-
-<!--Device-AuthUser-authAccountType: AccountType--><!--Device-AuthUser-authAccountType: AccountType-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
-
-**系统接口：** 此接口为系统接口。
 
 ## dlpFileAccess
 
@@ -62,13 +50,9 @@ dlpFileAccess: DLPFileAccess
 
 **类型：** [DLPFileAccess](arkts-dataprotection-dlppermission-dlpfileaccess-e.md)
 
-**起始版本：** 10
-
-<!--Device-AuthUser-dlpFileAccess: DLPFileAccess--><!--Device-AuthUser-dlpFileAccess: DLPFileAccess-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
-
-**系统接口：** 此接口为系统接口。
 
 ## permExpiryTime
 
@@ -80,11 +64,6 @@ permExpiryTime: number
 
 **类型：** number
 
-**起始版本：** 10
-
-<!--Device-AuthUser-permExpiryTime: number--><!--Device-AuthUser-permExpiryTime: number-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
-
-**系统接口：** 此接口为系统接口。
-

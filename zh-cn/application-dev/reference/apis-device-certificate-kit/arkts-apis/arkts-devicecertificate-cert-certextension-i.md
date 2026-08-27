@@ -2,33 +2,26 @@
 
 提供操作X.509证书扩展的API。
 
-**起始版本：** 23
-
-<!--Device-cert-interface CertExtension--><!--Device-cert-interface CertExtension-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Security.Cert
 
 ## 导入模块
 
 ```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## checkCA
 
 ```TypeScript
-checkCA(): int
+checkCA(): number
 ```
 
 检查证书是否为CA证书。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CertExtension-checkCA(): int--><!--Device-CertExtension-checkCA(): int-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -36,19 +29,17 @@ checkCA(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 当证书扩展中密钥用途扩展包含keyCertSign位，并且基本约束中cA字段为true时，表示证书为CA证书。 如果证书不是CA证书，则返回-1；否则返回基本约束中的路径长度。 如果证书是CA证书，但是基本约束中未给定路径长度，则返回-2，表示无路径长度限制。 |
+| number | 当证书扩展中密钥用途扩展包含keyCertSign位，并且基本约束中cA字段为true时，表示证书为CA证书。 如果证书不是CA证书，则返回-1；否则返回基本约束中的路径长度。 如果证书是CA证书，但是基本约束中未给定路径长度，则返回-2，表示无路径长度限制。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes:  1. Memory copy failed;  2. A null pointer occurs inside the system;  3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
@@ -88,51 +79,6 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@ohos.base';
-
-function TestCheckCA() {
-  // 证书扩展域段二进制数据，需业务自行赋值。
-  let extData = new Uint8Array([
-    0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
-    0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
-    0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
-    0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
-    0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
-    0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
-    0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
-    0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
-    0xD9, 0xE4
-  ]);
-
-  let encodingBlob: cert.EncodingBlob = {
-    data: extData,
-    // 根据encodingData的格式进行赋值，仅支持FORMAT_DER。
-    encodingFormat: cert.EncodingFormat.FORMAT_DER
-  };
-  cert.createCertExtension(encodingBlob, (error, certExt) => {
-    if (error) {
-      console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
-    } else {
-      console.info('createCertExtension result: success.');
-      if (certExt != undefined) {
-        try {
-          let res = certExt.checkCA();
-          console.info('res = ' + res);
-          console.info('checkCA result: success.');
-        } catch (err) {
-          let e: BusinessError = err as BusinessError;
-          console.error('ext checkCA failed, errCode: ' + e.code + ', errMsg: ' + e.message);
-        }
-      }
-    }
-  });
-}
-```
-
 ## getEncoded
 
 ```TypeScript
@@ -141,11 +87,9 @@ getEncoded(): EncodingBlob
 
 获取证书扩展的序列化数据。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CertExtension-getEncoded(): EncodingBlob--><!--Device-CertExtension-getEncoded(): EncodingBlob-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -159,13 +103,11 @@ getEncoded(): EncodingBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes:  1. Memory copy failed;  2. A null pointer occurs inside the system;  3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
@@ -206,49 +148,26 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 });
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function TestGetEncoded() {
-  // 证书扩展域段二进制数据，需业务自行赋值。
-  let extData = new Uint8Array([
-    0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
-    0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
-    0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
-    0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
-    0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
-    0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
-    0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
-    0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
-    0xD9, 0xE4
-  ]);
-
-  let encodingBlob: cert.EncodingBlob = {
-    data: extData,
-    // 根据encodingData的格式进行赋值，仅支持FORMAT_DER。
-    encodingFormat: cert.EncodingFormat.FORMAT_DER
-  };
-
-  cert.createCertExtension(encodingBlob, (error, certExt) => {
-    if (error) {
-      console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
-    } else {
-      console.info('createCertExtension result: success.');
-      if (certExt != undefined) {
-        try {
-          let extEncodedBlob = certExt.getEncoded();
-          console.info('extEncodedBlob = ' + extEncodedBlob.data);
-          console.info('getEncoded result: success.');
-        } catch (err) {
-          let e: BusinessError = err as BusinessError;
-          console.error('ext getEncoded failed, errCode: ' + e.code + ', errMsg: ' + e.message);
-        }
-      }
-    }
-  });
+let nameStr = '/CN=Example CA/OU=test cert/O=test/L=XA/ST=SX/C=CN/CN=RSA CA/CN=XTS';
+async function getEncoded() {
+  try {
+    cert.createX500DistinguishedName(nameStr)
+      .then((data) => {
+        console.info('createX500DistinguishedName result: success.');
+        let encodingBlobData = data.getEncoded();
+        console.info('encodingBlobData = ' + encodingBlobData.data);
+      })
+      .catch((err: BusinessError) => {
+        console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      });
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -260,11 +179,9 @@ getEntry(valueType: ExtensionEntryType, oid: DataBlob): DataBlob
 
 根据OID获取证书扩展项的值。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CertExtension-getEntry(valueType: ExtensionEntryType, oid: DataBlob): DataBlob--><!--Device-CertExtension-getEntry(valueType: ExtensionEntryType, oid: DataBlob): DataBlob-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -285,14 +202,12 @@ getEntry(valueType: ExtensionEntryType, oid: DataBlob): DataBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes:  1. Memory copy failed;  2. A null pointer occurs inside the system;  3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
@@ -337,56 +252,6 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@ohos.base';
-
-function TestGetEntry() {
-  // 证书扩展域段二进制数据，需业务自行赋值。
-  let extData = new Uint8Array([
-    0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
-    0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
-    0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
-    0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
-    0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
-    0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
-    0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
-    0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
-    0xD9, 0xE4
-  ]);
-
-  let encodingBlob: cert.EncodingBlob = {
-    data: extData,
-    // 根据encodingData的格式进行赋值，仅支持FORMAT_DER。
-    encodingFormat: cert.EncodingFormat.FORMAT_DER
-  };
-
-  cert.createCertExtension(encodingBlob, (error, certExt) => {
-    if (error) {
-      console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
-    } else {
-      console.info('createCertExtension result: success.');
-      let oid = new Uint8Array([0x32, 0x2e, 0x35, 0x2e, 0x32, 0x39, 0x2e, 0x31, 0x35]);
-      let oidBlob: cert.DataBlob = {
-        data: oid
-      };
-      if (certExt != undefined) {
-        try {
-          let entry = certExt.getEntry(cert.ExtensionEntryType.EXTENSION_ENTRY_TYPE_ENTRY, oidBlob);
-          console.info('entry = ' + entry.data);
-          console.info('getEntry result: success.');
-        } catch (err) {
-          let e: BusinessError = err as BusinessError;
-          console.error('ext getEntry failed, errCode: ' + e.code + ', errMsg: ' + e.message);
-        }
-      }
-    }
-  });
-}
-```
-
 ## getOidList
 
 ```TypeScript
@@ -395,11 +260,9 @@ getOidList(valueType: ExtensionOidType): DataArray
 
 获取证书扩展的OID列表。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CertExtension-getOidList(valueType: ExtensionOidType): DataArray--><!--Device-CertExtension-getOidList(valueType: ExtensionOidType): DataArray-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -419,14 +282,12 @@ getOidList(valueType: ExtensionOidType): DataArray
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes:  1. Memory copy failed;  2. A null pointer occurs inside the system;  3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
@@ -467,52 +328,6 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@ohos.base';
-
-function TestGetOidList() {
-  // 证书扩展域段二进制数据，需业务自行赋值。
-  let extData = new Uint8Array([
-    0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
-    0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
-    0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
-    0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
-    0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
-    0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
-    0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
-    0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
-    0xD9, 0xE4
-  ]);
-
-  let encodingBlob: cert.EncodingBlob = {
-    data: extData,
-    // 根据encodingData的格式进行赋值，仅支持FORMAT_DER。
-    encodingFormat: cert.EncodingFormat.FORMAT_DER
-  };
-
-  cert.createCertExtension(encodingBlob, (error, certExt) => {
-    if (error) {
-      console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
-    } else {
-      console.info('createCertExtension result: success.');
-      if (certExt != undefined) {
-        try {
-          let oidList = certExt.getOidList(cert.ExtensionOidType.EXTENSION_OID_TYPE_ALL);
-          console.info('oidList = ' + oidList.data);
-          console.info('getOidList result: success.');
-        } catch (err) {
-          let e: BusinessError = err as BusinessError;
-          console.error('ext getOidList failed, errCode: ' + e.code + ', errMsg: ' + e.message);
-        }
-      }
-    }
-  });
-}
-```
-
 ## hasUnsupportedCriticalExtension
 
 ```TypeScript
@@ -521,11 +336,9 @@ hasUnsupportedCriticalExtension(): boolean
 
 判断是否存在不支持的关键扩展。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CertExtension-hasUnsupportedCriticalExtension(): boolean--><!--Device-CertExtension-hasUnsupportedCriticalExtension(): boolean-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -539,13 +352,11 @@ hasUnsupportedCriticalExtension(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes:  1. Memory copy failed;  2. A null pointer occurs inside the system;  3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
@@ -575,38 +386,3 @@ cert.createCertExtension(encodingBlob).then((extensionObj) => {
   console.error(`createCertExtension failed, errCode: ${err.code}, errMsg: ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@ohos.base';
-
-async function TestHasUnsupportedCriticalExtension() {
-  let encodingData = new Uint8Array([
-    0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
-    0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
-    0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
-    0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
-    0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
-    0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
-    0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
-    0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
-    0xD9, 0xE4
-  ]);
-  let encodingBlob: cert.EncodingBlob = {
-    data: new Uint8Array(encodingData),
-    encodingFormat: cert.EncodingFormat.FORMAT_DER
-  };
-  try {
-    let extensionObj = await cert.createCertExtension(encodingBlob);
-    console.info('createCertExtension result: success.');
-    const result = extensionObj.hasUnsupportedCriticalExtension();
-    console.info('has unsupported critical extension result = ' + result);
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error(`createCertExtension failed, ${e.code}, ${e.message}`);
-  }
-}
-```
-

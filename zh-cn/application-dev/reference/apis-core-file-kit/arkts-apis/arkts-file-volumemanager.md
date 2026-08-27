@@ -2,9 +2,7 @@
 
 该模块提供卷设备、磁盘设备查询和管理的相关功能：包括查询卷设备信息，对卷设备的挂载卸载、对磁盘设备分区以及卷设备的格式化等功能。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace volumeManager--><!--Device-unnamed-declare namespace volumeManager-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
@@ -48,4 +46,3 @@ import { volumeManager } from '@kit.CoreFileKit';
 | --- | --- |
 | [Volume](arkts-corefile-volumemanager-volume-i-sys.md) | 获取所有卷。 |
 <!--DelEnd-->
-

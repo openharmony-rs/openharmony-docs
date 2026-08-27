@@ -2,9 +2,7 @@
 
 恢复流程对象，用于支撑应用全量恢复流程。
 
-**起始版本：** 23
-
-<!--Device-backup-class SessionRestore--><!--Device-backup-class SessionRestore-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -19,16 +17,14 @@ import { backup } from '@kit.CoreFileKit';
 ## appendBundles
 
 ```TypeScript
-appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], infos?: string[]): Promise<void>
+appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], infos?: string[]): Promise<void>
 ```
 
 添加需要恢复的应用及其扩展信息。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **需要权限：** ohos.permission.BACKUP
-
-<!--Device-SessionRestore-appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], infos?: string[]): Promise<void>--><!--Device-SessionRestore-appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], infos?: string[]): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -38,7 +34,7 @@ appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], infos?: stri
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| remoteCapabilitiesFd | int | 是 | 保存远端设备能力信息的已打开JSON文件描述符。 可通过getLocalCapabilities方法获取该值。 |
+| remoteCapabilitiesFd | number | 是 | 保存远端设备能力信息的已打开JSON文件描述符。 可通过getLocalCapabilities方法获取该值。 |
 | bundlesToBackup | string[] | 是 | 需要恢复的应用名称数组。 |
 | infos | string[] | 否 | 恢复时各应用所需扩展信息的数组。 |
 
@@ -46,19 +42,19 @@ appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], infos?: stri
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900005 | I/O error |
-| 13900001 | Operation not permitted |
-| 13900025 | No space left on device |
 | 13600001 | IPC error |
-| 13900042 | Unknown error |
+| 13900001 | Operation not permitted |
+| 13900005 | I/O error |
 | 13900011 | Out of memory |
+| 13900020 | Invalid argument |
+| 13900025 | No space left on device |
+| 13900042 | Unknown error |
 
 **示例**
 
@@ -156,16 +152,14 @@ async function appendBundles() {
 ## appendBundles
 
 ```TypeScript
-appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], callback: AsyncCallback<void>): void
+appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], callback: AsyncCallback<void>): void
 ```
 
 添加需要恢复的应用。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.BACKUP
-
-<!--Device-SessionRestore-appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], callback: AsyncCallback<void>): void--><!--Device-SessionRestore-appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -175,21 +169,21 @@ appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], callback: As
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| remoteCapabilitiesFd | int | 是 | 保存远端设备能力信息的已打开JSON文件描述符。 可通过getLocalCapabilities方法获取该值。 |
+| remoteCapabilitiesFd | number | 是 | 保存远端设备能力信息的已打开JSON文件描述符。 可通过getLocalCapabilities方法获取该值。 |
 | bundlesToBackup | string[] | 是 | 需要恢复的应用名称数组。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 添加恢复应用完成后的异步回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 添加恢复应用完成后的异步回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900005 | I/O error |
-| 13900001 | Operation not permitted |
-| 13900025 | No space left on device |
 | 13600001 | IPC error |
-| 13900042 | Unknown error |
+| 13900001 | Operation not permitted |
+| 13900005 | I/O error |
 | 13900011 | Out of memory |
+| 13900020 | Invalid argument |
+| 13900025 | No space left on device |
+| 13900042 | Unknown error |
 
 **示例**
 
@@ -267,16 +261,14 @@ async function appendBundles() {
 ## cancel
 
 ```TypeScript
-cancel(bundleName: string): int
+cancel(bundleName: string): number
 ```
 
 取消指定应用的恢复任务。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **需要权限：** ohos.permission.BACKUP
-
-<!--Device-SessionRestore-cancel(bundleName: string): int--><!--Device-SessionRestore-cancel(bundleName: string): int-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -292,17 +284,76 @@ cancel(bundleName: string): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 取消结果，0表示成功，13500011表示失败，13500012表示没有对应任务。 |
+| number | 取消结果，0表示成功，13500011表示失败，13500012表示没有对应任务。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo, backup } from '@kit.CoreFileKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      // 文件fd传输失败，调用取消接口，取消此应用的备份任务
+      let result = sessionBackup.cancel(file.bundleName);
+      console.info('cancel result:' + result);
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onFileReady success');
+    fileIo.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+    console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+let sessionBackup = new backup.SessionBackup(generalCallbacks); // 创建备份流程
+async function cancelTest() {
+  let backupBundles: Array<string> = ['com.example.helloWorld'];
+  try {
+    await sessionBackup.appendBundles(backupBundles);
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -369,6 +420,68 @@ async function cancelTest() {
 }
 ```
 
+```TypeScript
+import { fileIo, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      // 文件fd传输失败，调用取消接口，取消此应用的增量备份任务
+      let result = incrementalBackupSession.cancel(err.name);
+      console.info('cancel result:' + result);
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onFileReady success');
+    fileIo.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+    console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+let backupBundles: Array<backup.IncrementalBackupData> = [];
+let bundleData: backup.IncrementalBackupData = {
+  bundleName: 'com.example.helloWorld',
+  lastIncrementalTime: 1700107870, // 调用者传递上一次备份的时间戳
+  manifestFd: fileIo.openSync('/data/storage/el2/base/backup/manifest.json').fd // 调用者传递上一次备份的manifest文件句柄
+}
+backupBundles.push(bundleData);
+incrementalBackupSession.appendBundles(backupBundles).then(() => {
+  console.info('appendBundles success');
+}).catch((err: BusinessError) => {
+  console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## cleanBundleTempDir
 
 ```TypeScript
@@ -377,11 +490,9 @@ cleanBundleTempDir(bundleName: string): Promise<boolean>
 
 清理指定应用的临时目录。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.BACKUP
-
-<!--Device-SessionRestore-cleanBundleTempDir(bundleName: string): Promise<boolean>--><!--Device-SessionRestore-cleanBundleTempDir(bundleName: string): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -397,7 +508,7 @@ cleanBundleTempDir(bundleName: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | 清理结果，true表示成功，false表示失败。 |
+| Promise & lt;boolean & gt; | 清理结果，true表示成功，false表示失败。 |
 
 **错误码：**
 
@@ -407,6 +518,70 @@ cleanBundleTempDir(bundleName: string): Promise<boolean>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
 **示例**
+
+```TypeScript
+import { fileIo, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function cleanBundleTempDir(bundleName: string) {
+  try {
+    let res = await sessionBackup.cleanBundleTempDir(bundleName);
+    if (res) {
+      console.info(`cleanBundleTempDir succeeded.`);
+    } else {
+      console.info(`cleanBundleTempDir fail.`);
+    }
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`cleanBundleTempDir failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+
+let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
+  // 文件发送成功回调
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onFileReady succeeded.`);
+    fileIo.closeSync(file.fd);
+  },
+  // 应用备份/恢复开始回调
+  onBundleBegin: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onBundleBegin succeeded.`);
+  },
+  // 应用备份/恢复结束回调，在此处调用cleanBundleTempDir进行清理
+  onBundleEnd: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    cleanBundleTempDir(bundleName);
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onAllBundlesEnd success`);
+  },
+  onBackupServiceDied: () => {
+    console.info(`service died`);
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+let sessionBackup = new backup.SessionBackup(generalCallbacks); // 创建备份流程
+```
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -472,6 +647,70 @@ let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程�
 let sessionRestore = new backup.SessionRestore(generalCallbacks); // 创建恢复流程
 ```
 
+```TypeScript
+import { fileIo, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function cleanBundleTempDir(bundleName: string) {
+  try {
+    let res = await incrementalBackupSession.cleanBundleTempDir(bundleName);
+    if (res) {
+      console.info(`cleanBundleTempDir succeeded.`);
+    } else {
+      console.info(`cleanBundleTempDir fail.`);
+    }
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`cleanBundleTempDir failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+
+let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
+  // 文件发送成功回调
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onFileReady succeeded.`);
+    fileIo.closeSync(file.fd);
+  },
+  // 应用备份/恢复开始回调
+  onBundleBegin: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onBundleBegin succeeded.`);
+  },
+  // 应用备份/恢复结束回调，在此处调用cleanBundleTempDir进行清理
+  onBundleEnd: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    cleanBundleTempDir(bundleName);
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onAllBundlesEnd success`);
+  },
+  onBackupServiceDied: () => {
+    console.info(`service died`);
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+```
+
 ## constructor
 
 ```TypeScript
@@ -480,11 +719,9 @@ constructor(callbacks: GeneralCallbacks)
 
 构造SessionRestore实例。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.BACKUP
-
-<!--Device-SessionRestore-constructor(callbacks: GeneralCallbacks)--><!--Device-SessionRestore-constructor(callbacks: GeneralCallbacks)-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -497,6 +734,53 @@ constructor(callbacks: GeneralCallbacks)
 | callbacks | [GeneralCallbacks](arkts-corefile-backup-generalcallbacks-i-sys.md) | 是 | 恢复流程所需的回调。 |
 
 **示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo, backup } from '@kit.CoreFileKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onFileReady success');
+    fileIo.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+    console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+let sessionBackup = new backup.SessionBackup(generalCallbacks); // 创建备份流程
+```
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -545,6 +829,53 @@ let generalCallbacks: backup.GeneralCallbacks = {
 let sessionRestore = new backup.SessionRestore(generalCallbacks); // 创建恢复流程
 ```
 
+```TypeScript
+import { fileIo, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onFileReady success');
+    fileIo.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+    console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+```
+
 ## getApkFileHandle
 
 ```TypeScript
@@ -558,8 +889,6 @@ getApkFileHandle(path: string, fileName: string): Promise<FileData>
 **需要权限：** ohos.permission.BACKUP
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SessionRestore-getApkFileHandle(path: string, fileName: string): Promise<FileData>--><!--Device-SessionRestore-getApkFileHandle(path: string, fileName: string): Promise<FileData>-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -582,11 +911,11 @@ getApkFileHandle(path: string, fileName: string): Promise<FileData>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900001 | Operation not permitted |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 13600001 | IPC error |
+| 13900001 | Operation not permitted |
+| 13900020 | Invalid argument |
 
 **示例**
 
@@ -665,11 +994,9 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>
 
 获取指定应用的兼容性信息。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.BACKUP
-
-<!--Device-SessionRestore-getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>--><!--Device-SessionRestore-getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -686,7 +1013,7 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回应用的兼容性信息。 |
+| Promise & lt;string & gt; | Promise对象，返回应用的兼容性信息。 |
 
 **错误码：**
 
@@ -696,6 +1023,69 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
 **示例**
+
+```TypeScript
+import { fileIo, backup } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onFileReady succeeded.`);
+    fileIo.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onBundleBegin succeeded.`);
+  },
+  onBundleEnd: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onBundleEnd succeeded.`);
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onAllBundlesEnd success`);
+  },
+  onBackupServiceDied: () => {
+    console.info(`service died`);
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+
+async function getBackupCompatibilityInfo() {
+  let sessionBackup = new backup.SessionBackup(generalCallbacks); // 创建备份流程
+  let bundleName = "com.example.helloWorld";
+  let extInfo = ""; // 空表示无需给应用传额外信息
+  try {
+    let retInfo = await sessionBackup.getCompatibilityInfo(bundleName, extInfo);
+    if (retInfo) {
+      console.info(`getCompatibilityInfo success ` + retInfo);
+    } else {
+      console.info(`bundle ` + bundleName + ' may not support getCompatibilityInfo');
+    }
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`getCompatibilityInfo failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
 
 ```TypeScript
 import { fileIo, backup } from '@kit.CoreFileKit';
@@ -760,6 +1150,69 @@ async function getRestoreCompatibilityInfo() {
 }
 ```
 
+```TypeScript
+import { fileIo, backup } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onFileReady succeeded.`);
+    fileIo.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onBundleBegin succeeded.`);
+  },
+  onBundleEnd: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onBundleEnd succeeded.`);
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onAllBundlesEnd success`);
+  },
+  onBackupServiceDied: () => {
+    console.info(`service died`);
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+
+async function getIncBackupCompatibilityInfo() {
+  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+  let bundleName = "com.example.helloWorld";
+  let extInfo = ""; // 空表示无需给应用传额外信息
+  try {
+    let retInfo = await incrementalBackupSession.getCompatibilityInfo(bundleName, extInfo);
+    if (retInfo) {
+      console.info(`getCompatibilityInfo success ` + retInfo);
+    } else {
+      console.info(`bundle ` + bundleName + ' may not support getCompatibilityInfo');
+    }
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`getCompatibilityInfo failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
 ## getFileHandle
 
 ```TypeScript
@@ -768,11 +1221,9 @@ getFileHandle(fileMeta: FileMeta): Promise<void>
 
 向服务端请求共享文件，该接口属于零拷贝能力。 开发者可通过onFileReady回调获取文件。 客户端完成文件处理后，调用publishFile发布文件。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.BACKUP
-
-<!--Device-SessionRestore-getFileHandle(fileMeta: FileMeta): Promise<void>--><!--Device-SessionRestore-getFileHandle(fileMeta: FileMeta): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -788,15 +1239,15 @@ getFileHandle(fileMeta: FileMeta): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900001 | Operation not permitted |
 | 13600001 | IPC error |
+| 13900001 | Operation not permitted |
+| 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
 **示例**
@@ -869,11 +1320,9 @@ getFileHandle(fileMeta: FileMeta, callback: AsyncCallback<void>): void
 
 向服务端请求共享文件，该接口属于零拷贝能力。 开发者可通过onFileReady回调获取文件。 客户端完成文件处理后，调用publishFile发布文件。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.BACKUP
-
-<!--Device-SessionRestore-getFileHandle(fileMeta: FileMeta, callback: AsyncCallback<void>): void--><!--Device-SessionRestore-getFileHandle(fileMeta: FileMeta, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -884,15 +1333,15 @@ getFileHandle(fileMeta: FileMeta, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fileMeta | [FileMeta](arkts-corefile-backup-filemeta-i-sys.md) | 是 | 待发送文件的元数据。所有文件都应来自 备份流程或getLocalCapabilities方法。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 获取文件句柄完成后的异步回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 获取文件句柄完成后的异步回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900001 | Operation not permitted |
 | 13600001 | IPC error |
+| 13900001 | Operation not permitted |
+| 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
 **示例**
@@ -968,8 +1417,6 @@ getFileHandles(fileMeta: FileMeta): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SessionRestore-getFileHandles(fileMeta: FileMeta): Promise<void>--><!--Device-SessionRestore-getFileHandles(fileMeta: FileMeta): Promise<void>-End-->
-
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
 **系统接口：** 此接口为系统接口。
@@ -984,17 +1431,17 @@ getFileHandles(fileMeta: FileMeta): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900001 | Operation not permitted |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 13600001 | IPC error |
+| 13900001 | Operation not permitted |
+| 13900020 | Invalid argument |
 
 **示例**
 
@@ -1079,11 +1526,9 @@ getLocalCapabilities(): Promise<FileData>
 
 获取描述本地能力的JSON文件。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **需要权限：** ohos.permission.BACKUP
-
-<!--Device-SessionRestore-getLocalCapabilities(): Promise<FileData>--><!--Device-SessionRestore-getLocalCapabilities(): Promise<FileData>-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -1099,14 +1544,157 @@ getLocalCapabilities(): Promise<FileData>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900001 | Operation not permitted |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 13600001 | IPC error |
+| 13900001 | Operation not permitted |
+| 13900020 | Invalid argument |
 | 13900042 | Internal error |
 
 **示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo, backup } from '@kit.CoreFileKit';
+
+async function getLocalCapabilities() {
+  try {
+    let fileData = await backup.getLocalCapabilities();
+    console.info('getLocalCapabilities success');
+    console.info('fileData info:' + fileData.fd);
+    fileIo.closeSync(fileData.fd);
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+能力文件可以通过[@ohos.file.fs](arkts-corefile-fileio-n.md)提供的fileIo.stat等相关接口获取，能力文件内容示例：
+
+```TypeScript
+{
+ "backupVersion" : "16.0",
+ "bundleInfos" :[{
+   "allToBackup" : true,
+   "extensionName" : "BackupExtensionAbility",
+   "name" : "com.example.hiworld",
+   "needToInstall" : false,
+   "spaceOccupied" : 0,
+   "versionCode" : 1000000,
+   "versionName" : "1.0.0"
+   }],
+ "deviceType" : "default",
+ "systemFullName" : "OpenHarmony-4.0.0.0"
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo, backup } from '@kit.CoreFileKit';
+
+interface LocalCapabilities { // 用于解析能力文件
+  bundleInfos: BundleInfo[];
+  deviceType: string;
+  systemFullName: string;
+}
+
+interface BundleInfo { // 用于获取单个应用的本地能力信息
+  name: string;
+  appIndex: number;
+  versionCode: number;
+  versionName: string;
+  spaceOccupied: number;
+  allToBackup: boolean;
+  increSpaceOccupied?: number;
+  fullBackupOnly: boolean;
+  extensionName: string;
+  restoreDeps: string;
+  supportScene: string;
+  extraInfo: Record<string, Object>;
+}
+
+let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onFileReady success');
+    fileIo.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+    console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+async function getLocalCapabilitiesTest() {
+  let sessionBackup = new backup.SessionBackup(generalCallbacks); // 创建备份流程
+  let basePath = '/data/storage/el2/base/backup'; 
+  let path = basePath + '/localCapabilities.json'; // 本地保存能力文件的路径
+  try {
+    let fileData = await sessionBackup.getLocalCapabilities(); // 获取本地能力文件
+    if (fileData) {
+      console.info('getLocalCapabilities success');
+      console.info('fileData info:' + fileData.fd);
+      if (!fileIo.accessSync(basePath)) {
+        fileIo.mkdirSync(basePath);
+        console.info('create success' + basePath);
+      }
+      fileIo.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
+      fileIo.closeSync(fileData.fd);
+    }
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
+  }
+  let data = fileIo.readTextSync(path, 'utf8'); // 从本地的能力文件中获取信息
+  try {
+    const jsonsObj: LocalCapabilities | null = JSON.parse(data); // 解析本地的能力文件并打印部分信息
+    if (jsonsObj) {
+      const infos:BundleInfo [] = jsonsObj.bundleInfos;
+      for (let i = 0; i < infos.length; i++) {
+        console.info('name: ' + infos[i].name);
+        console.info('appIndex: ' + infos[i].appIndex);
+        console.info('allToBackup: ' + infos[i].allToBackup);
+      }
+      const systemFullName: string = jsonsObj.systemFullName;
+      console.info('systemFullName: ' + systemFullName);
+      const deviceType: string = jsonsObj.deviceType;
+      console.info('deviceType: ' + deviceType);
+    }
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`parse failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1215,12 +1803,119 @@ async function getLocalCapabilitiesTest() {
 }
 ```
 
-能力文件可以通过@ohos.file.fs提供的fileIo.stat等相关接口获取，能力文件内容示例：
+```TypeScript
+import { fileIo, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+interface LocalCapabilities { // 用于解析能力文件
+  bundleInfos: BundleInfo[];
+  deviceType: string;
+  systemFullName: string;
+}
+
+interface BundleInfo { // 用于获取单个应用的本地能力信息
+  name: string;
+  appIndex: number;
+  versionCode: number;
+  versionName: string;
+  spaceOccupied: number;
+  allToBackup: boolean;
+  increSpaceOccupied?: number;
+  fullBackupOnly: boolean;
+  extensionName: string;
+  restoreDeps: string;
+  supportScene: string;
+  extraInfo: Record<string, Object>;
+}
+
+let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onFileReady success');
+    fileIo.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+    console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+async function getLocalCapabilitiesTest() {
+  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+  let basePath = '/data/storage/el2/base/backup';
+  let path = basePath + '/localCapabilities.json'; // 本地保存能力文件的路径
+  try {
+    let fileData = await incrementalBackupSession.getLocalCapabilities(); // 获取本地能力文件
+    if (fileData) {
+      console.info('getLocalCapabilities success');
+      console.info('fileData info:' + fileData.fd);
+      if (!fileIo.accessSync(basePath)) {
+        fileIo.mkdirSync(basePath);
+        console.info('create success' + basePath);
+      }
+      fileIo.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
+      fileIo.closeSync(fileData.fd);
+    }
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
+  }
+  let data = fileIo.readTextSync(path, 'utf8'); // 从本地的能力文件中获取信息
+  try {
+    const jsonsObj: LocalCapabilities | null = JSON.parse(data); // 解析本地的能力文件并打印部分信息
+    if (jsonsObj) {
+      const infos:BundleInfo [] = jsonsObj.bundleInfos;
+      for (let i = 0; i < infos.length; i++) {
+        console.info('name: ' + infos[i].name);
+        console.info('appIndex: ' + infos[i].appIndex);
+        console.info('allToBackup: ' + infos[i].allToBackup);
+      }
+      const systemFullName: string = jsonsObj.systemFullName;
+      console.info('systemFullName: ' + systemFullName);
+      const deviceType: string = jsonsObj.deviceType;
+      console.info('deviceType: ' + deviceType);
+    }
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`parse failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+能力文件可以通过[@ohos.file.fs](arkts-corefile-fileio-n.md)提供的fileIo.stat等相关接口获取，能力文件内容示例：
 
 ```TypeScript
 {
  "backupVersion" : "16.0",
- "bundleInfos" :[{
+ "bundleInfos" : [{
    "allToBackup" : true,
    "extensionName" : "BackupExtensionAbility",
    "name" : "com.example.hiworld",
@@ -1248,8 +1943,6 @@ migrateFile(pathInfo: PathInfo, fileMeta: FileMeta): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SessionRestore-migrateFile(pathInfo: PathInfo, fileMeta: FileMeta): Promise<void>--><!--Device-SessionRestore-migrateFile(pathInfo: PathInfo, fileMeta: FileMeta): Promise<void>-End-->
-
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
 **系统接口：** 此接口为系统接口。
@@ -1265,17 +1958,17 @@ migrateFile(pathInfo: PathInfo, fileMeta: FileMeta): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900001 | Operation not permitted |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 13600001 | IPC error |
+| 13900001 | Operation not permitted |
+| 13900020 | Invalid argument |
 
 **示例**
 
@@ -1361,11 +2054,9 @@ publishFile(fileMeta: FileMeta): Promise<void>
 
 向备份服务发布文件句柄，通知服务端文件内容已准备完成。 该接口属于零拷贝能力。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.BACKUP
-
-<!--Device-SessionRestore-publishFile(fileMeta: FileMeta): Promise<void>--><!--Device-SessionRestore-publishFile(fileMeta: FileMeta): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -1381,15 +2072,15 @@ publishFile(fileMeta: FileMeta): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900001 | Operation not permitted |
 | 13600001 | IPC error |
+| 13900001 | Operation not permitted |
+| 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
 **示例**
@@ -1474,11 +2165,9 @@ publishFile(fileMeta: FileMeta, callback: AsyncCallback<void>): void
 
 向备份服务发布文件句柄，通知服务端文件内容已准备完成。 该接口属于零拷贝能力。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.BACKUP
-
-<!--Device-SessionRestore-publishFile(fileMeta: FileMeta, callback: AsyncCallback<void>): void--><!--Device-SessionRestore-publishFile(fileMeta: FileMeta, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -1489,15 +2178,15 @@ publishFile(fileMeta: FileMeta, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fileMeta | [FileMeta](arkts-corefile-backup-filemeta-i-sys.md) | 是 | 待发送文件的元数据。应确保备份框架已持有 通过getFileHandle获取的文件。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 发布文件句柄完成后的异步回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 发布文件句柄完成后的异步回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900001 | Operation not permitted |
 | 13600001 | IPC error |
+| 13900001 | Operation not permitted |
+| 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
 **示例**
@@ -1584,11 +2273,9 @@ release(): Promise<void>
 
 结束恢复流程，断开应用与备份恢复服务的连接。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **需要权限：** ohos.permission.BACKUP
-
-<!--Device-SessionRestore-release(): Promise<void>--><!--Device-SessionRestore-release(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -1598,21 +2285,77 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
-| 13900005 | I/O error |
-| 13900001 | Operation not permitted |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3.Parameter verification failed. |
 | 13600001 | IPC error |
+| 13900001 | Operation not permitted |
+| 13900005 | I/O error |
 | 13900042 | Unknown error |
 
 **示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo, backup } from '@kit.CoreFileKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onFileReady success');
+    fileIo.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+    console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+let sessionBackup = new backup.SessionBackup(generalCallbacks); // 创建备份流程
+async function release() {
+  try {
+    await sessionBackup.release(); // 备份业务执行完成后，释放session
+    console.info('release success');
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`release failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -1697,3 +2440,58 @@ async function releaseSession() {
 }
 ```
 
+```TypeScript
+import { fileIo, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onFileReady success');
+    fileIo.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+    console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+async function release() {
+  try {
+    await incrementalBackupSession.release(); // 结束增量备份流程
+    console.info('release success');
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`release failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```

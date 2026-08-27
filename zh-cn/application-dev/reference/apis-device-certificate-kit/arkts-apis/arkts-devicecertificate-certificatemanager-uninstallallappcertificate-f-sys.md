@@ -3,8 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## uninstallAllAppCertificate
@@ -21,8 +19,6 @@ function uninstallAllAppCertificate() : Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-certificateManager-function uninstallAllAppCertificate() : Promise<void>--><!--Device-certificateManager-function uninstallAllAppCertificate() : Promise<void>-End-->
-
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
@@ -31,15 +27,15 @@ function uninstallAllAppCertificate() : Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. <br> The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
+| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;  2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**
 
@@ -58,4 +54,3 @@ try {
   console.error(`Failed to uninstall all app certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-

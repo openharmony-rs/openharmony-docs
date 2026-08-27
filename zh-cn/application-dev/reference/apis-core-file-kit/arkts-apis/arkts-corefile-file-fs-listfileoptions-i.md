@@ -4,16 +4,12 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-export interface ListFileOptions--><!--Device-unnamed-export interface ListFileOptions-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## 导入模块
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## filter
@@ -24,13 +20,11 @@ filter?: Filter
 
 文件过滤配置项。 可选，设置过滤条件。
 
-**类型：** [Filter](../../apis-na/arkts-apis/arkts-na-file-fs-filter-i.md)
+**类型：** [Filter](arkts-corefile-file-fs-filter-i.md)
 
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ListFileOptions-filter?: Filter--><!--Device-ListFileOptions-filter?: Filter-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -48,8 +42,6 @@ listNum?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ListFileOptions-listNum?: number--><!--Device-ListFileOptions-listNum?: number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## recursion
@@ -66,7 +58,4 @@ recursion?: boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ListFileOptions-recursion?: boolean--><!--Device-ListFileOptions-recursion?: boolean-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
-

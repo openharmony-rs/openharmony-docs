@@ -8,8 +8,6 @@
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
-<!--Device-unnamed-declare interface Dir--><!--Device-unnamed-declare interface Dir-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## 导入模块
@@ -31,17 +29,26 @@ close(): Promise<void>
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
-<!--Device-Dir-close(): Promise<void>--><!--Device-Dir-close(): Promise<void>-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | return Promise |
+| Promise & lt;void & gt; | return Promise |
 
 **示例**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let filePath = pathDir + "/test.txt";
+let ss = fileio.createStreamSync(filePath, "r+");
+ss.close().then(() => {
+  console.info("close fileStream succeed");
+}).catch((err: BusinessError) => {
+  console.error("close fileStream  failed with error:" + err);
+});
+```
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -64,17 +71,24 @@ close(callback: AsyncCallback<void>): void
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
-<!--Device-Dir-close(callback: AsyncCallback<void>): void--><!--Device-Dir-close(callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | callback. |
 
 **示例**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let filePath = pathDir + "/test.txt";
+let ss = fileio.createStreamSync(filePath, "r+");
+ss.close((err: BusinessError) => {
+  // do something
+});
+```
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -97,11 +111,15 @@ closeSync(): void
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
-<!--Device-Dir-closeSync(): void--><!--Device-Dir-closeSync(): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+let ss = fileio.createStreamSync(filePath, "r+");
+ss.closeSync();
+```
 
 ```TypeScript
 dir.closeSync();
@@ -120,8 +138,6 @@ read(): Promise<Dirent>
 **废弃版本：** 9
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
-
-<!--Device-Dir-read(): Promise<Dirent>--><!--Device-Dir-read(): Promise<Dirent>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -156,15 +172,13 @@ read(callback: AsyncCallback<Dirent>): void
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
-<!--Device-Dir-read(callback: AsyncCallback<Dirent>): void--><!--Device-Dir-read(callback: AsyncCallback<Dirent>): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Dirent](arkts-corefile-fileio-dirent-depr-i.md)&gt; | 是 | 异步读取下一个目录项之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Dirent](arkts-corefile-fileio-dirent-depr-i.md)&gt; | 是 | 异步读取下一个目录项之后的回调。 |
 
 **示例**
 
@@ -192,8 +206,6 @@ readSync(): Dirent
 
 **替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
-<!--Device-Dir-readSync(): Dirent--><!--Device-Dir-readSync(): Dirent-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **返回值：**
@@ -207,4 +219,3 @@ readSync(): Dirent
 ```TypeScript
 let dirent = dir.readSync();
 ```
-

@@ -33,4 +33,3 @@
 | [FileRmdirOption](arkts-corefile-system-file-filermdiroption-depr-i.md) | 可选项类型，支持rmdir接口使用。 |
 | [FileWriteArrayBufferOption](arkts-corefile-system-file-filewritearraybufferoption-depr-i.md) | 可选项类型，支持writeArrayBuffer接口使用。 |
 | [FileWriteTextOption](arkts-corefile-system-file-filewritetextoption-depr-i.md) | 可选项类型，支持writeText接口使用。 |
-

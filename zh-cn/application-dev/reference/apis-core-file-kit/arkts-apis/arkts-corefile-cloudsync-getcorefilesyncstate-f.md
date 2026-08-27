@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { cloudSync } from '@kit.CoreFileKit';
-import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
 ## getCoreFileSyncState
@@ -15,9 +14,7 @@ function getCoreFileSyncState(uri: string): FileState
 
 同步方法获取云盘文件同步上行状态。
 
-**起始版本：** 23
-
-<!--Device-cloudSync-function getCoreFileSyncState(uri: string): FileState--><!--Device-cloudSync-function getCoreFileSyncState(uri: string): FileState-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -37,19 +34,17 @@ function getCoreFileSyncState(uri: string): FileState
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900004 | Interrupted system call |
-| 13900020 | Invalid argument. Possible causes: <br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 22400005 | Inner error. Possible causes: <br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 13600001 | IPC error. Possible causes:  1.IPC failed or timed out. 2.Failed to load the service. |
 | 13900002 | No such file or directory. |
-| 14000002 | Invalid URI. |
-| 13900012 | Permission denied by the file system |
-| 13900031 | Function not implemented |
-| 13600001 | IPC error. Possible causes: <br>1.IPC failed or timed out. 2.Failed to load the service. |
+| 13900004 | Interrupted system call |
 | 13900010 | Try again |
+| 13900012 | Permission denied by the file system |
+| 13900020 | Invalid argument. Possible causes:  1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900031 | Function not implemented |
+| 14000002 | Invalid URI. |
+| 22400005 | Inner error. Possible causes:  1.Failed to access the database or execute the SQL statement.  2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -64,20 +59,3 @@ try {
   console.error(`getCoreFileSyncState failed with error ${error.code}, message is ${error.message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-let path: string = "/data/storage/el2/cloud/1.txt";
-let uri: string = fileUri.getUriFromPath(path);
-try {
-  let state: cloudSync.FileState = cloudSync.getCoreFileSyncState(uri);
-} catch (e) {
-  const error = e as BusinessError;
-  console.error(`getCoreFileSyncState failed with error ${error.code}, message is ${error.message}`);
-}
-```
-

@@ -2,9 +2,7 @@
 
 本模块是为系统文件管理应用提供获取三方网盘注册的同步根信息的能力。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace cloudDiskManager--><!--Device-unnamed-declare namespace cloudDiskManager-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
@@ -41,4 +39,3 @@ import { cloudDiskManager } from '@kit.CoreFileKit';
 | --- | --- |
 | [SyncFolderState](arkts-corefile-clouddiskmanager-syncfolderstate-e-sys.md) | 枚举，云盘的同步根的状态。 |
 <!--DelEnd-->
-

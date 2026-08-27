@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## utimes
@@ -17,8 +15,6 @@ declare function utimes(path: string, mtime: number): void
 更改文件的上次修改时间。
 
 **起始版本：** 11
-
-<!--Device-unnamed-declare function utimes(path: string, mtime: number): void--><!--Device-unnamed-declare function utimes(path: string, mtime: number): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -33,10 +29,19 @@ declare function utimes(path: string, mtime: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
 | 13900001 | Operation not permitted |
 | 13900002 | No such file or directory |
 | 13900012 | Permission denied |
-| 13900042 | Unknown error |
+| 13900020 | Invalid argument |
 | 13900027 | Read-only file system |
+| 13900042 | Unknown error |
 
+**示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+fileIo.writeSync(file.fd, 'test data');
+fileIo.closeSync(file);
+fileIo.utimes(filePath, new Date().getTime());
+```

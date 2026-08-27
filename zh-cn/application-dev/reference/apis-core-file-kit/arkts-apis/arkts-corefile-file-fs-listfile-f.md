@@ -4,8 +4,6 @@
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## listFile
@@ -17,13 +15,11 @@ declare function listFile(
 ): Promise<string[]>
 ```
 
-默认列出当前目录下所有文件名和目录名，返回文件名数组，支持按后缀、文件名等条件过滤。使用Promise异步回调。 可通过配置ListFileOptions中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
+默认列出当前目录下所有文件名和目录名，返回文件名数组，支持按后缀、文件名等条件过滤。使用Promise异步回调。可通过配置ListFileOptions中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-unnamed-declare function listFile(  path: string,  options?: ListFileOptions): Promise<string[]>--><!--Device-unnamed-declare function listFile(  path: string,  options?: ListFileOptions): Promise<string[]>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -32,23 +28,48 @@ declare function listFile(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 目录的应用沙箱路径。 |
-| options | [ListFileOptions](../../apis-na/arkts-apis/arkts-na-file-fs-listfileoptions-i.md) | 否 | 文件过滤选项。默认不进行过滤。<br>**起始版本：** 11 |
+| options | [ListFileOptions](arkts-corefile-file-fs-listfileoptions-i.md) | 否 | 文件过滤选项。默认不进行过滤。<br>**起始版本：** 11 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string[]&gt; | Promise对象。返回文件名数组，默认以'utf-8'编码。 default. |
+| Promise & lt;string[] & gt; | Promise对象。返回文件名数组，默认以'utf-8'编码。 default. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900002 | No such file or directory |
-| 13900018 | Not a directory |
 | 13900008 | Bad file descriptor |
-| 13900042 | Unknown error |
 | 13900011 | Out of memory |
+| 13900018 | Not a directory |
+| 13900042 | Unknown error |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Filter, ListFileOptions } from '@kit.CoreFileKit';
+
+let listFileOption: ListFileOptions = {
+  recursion: false,
+  listNum: 0,
+  filter: {
+    suffix: [".png", ".jpg", ".jpeg"],
+    displayName: ["*abc", "efg*"],
+    fileSizeOver: 1024
+  }
+}
+fileIo.listFile(pathDir, listFileOption).then((filenames: Array<string>) => {
+  console.info(`Succeeded in listing file.`);
+  for (let i = 0; i < filenames.length; i++) {
+    console.info(`Succeeded in listing file, file name: ${filenames[i]}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to list file. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 
 ## listFile
@@ -63,8 +84,6 @@ declare function listFile(path: string, callback: AsyncCallback<string[]>): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-declare function listFile(path: string, callback: AsyncCallback<string[]>): void--><!--Device-unnamed-declare function listFile(path: string, callback: AsyncCallback<string[]>): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -72,17 +91,34 @@ declare function listFile(path: string, callback: AsyncCallback<string[]>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 目录的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string[]&gt; | 是 | 异步列出文件名数组之后的回调，默认以'utf-8'编码。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string[]&gt; | 是 | 异步列出文件名数组之后的回调，默认以'utf-8'编码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900002 | No such file or directory |
-| 13900018 | Not a directory |
 | 13900008 | Bad file descriptor |
-| 13900042 | Unknown error |
 | 13900011 | Out of memory |
+| 13900018 | Not a directory |
+| 13900042 | Unknown error |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+fileIo.listFile(pathDir, (err: BusinessError, filenames: Array<string>) => {
+  if (err) {
+    console.error(`Failed to list file. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in listing file.`);
+    for (let i = 0; i < filenames.length; i++) {
+      console.info(`Succeeded in listing file, file name: ${filenames[i]}`);
+    }
+  }
+});
+```
 
 
 ## listFile
@@ -95,13 +131,11 @@ declare function listFile(
 ): void
 ```
 
-默认列出当前目录下所有文件名和目录名，返回文件名数组，支持按后缀、文件名等条件过滤。使用callback异步回调。 可通过配置ListFileOptions中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
+默认列出当前目录下所有文件名和目录名，返回文件名数组，支持按后缀、文件名等条件过滤。使用callback异步回调。可通过配置ListFileOptions中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-unnamed-declare function listFile(  path: string,  options: ListFileOptions,  callback: AsyncCallback<string[]>): void--><!--Device-unnamed-declare function listFile(  path: string,  options: ListFileOptions,  callback: AsyncCallback<string[]>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -110,16 +144,42 @@ declare function listFile(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 目录的应用沙箱路径。 |
-| options | [ListFileOptions](../../apis-na/arkts-apis/arkts-na-file-fs-listfileoptions-i.md) | 是 | 文件过滤选项。默认不进行过滤。<br>**起始版本：** 11 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string[]&gt; | 是 | 异步列出文件名数组之后的回调，默认以'utf-8'编码。 |
+| options | [ListFileOptions](arkts-corefile-file-fs-listfileoptions-i.md) | 是 | 文件过滤选项。默认不进行过滤。<br>**起始版本：** 11 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string[]&gt; | 是 | 异步列出文件名数组之后的回调，默认以'utf-8'编码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900002 | No such file or directory |
-| 13900018 | Not a directory |
 | 13900008 | Bad file descriptor |
-| 13900042 | Unknown error |
 | 13900011 | Out of memory |
+| 13900018 | Not a directory |
+| 13900042 | Unknown error |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Filter, ListFileOptions } from '@kit.CoreFileKit';
+
+let listFileOption: ListFileOptions = {
+  recursion: false,
+  listNum: 0,
+  filter: {
+    suffix: [".png", ".jpg", ".jpeg"],
+    displayName: ["*abc", "efg*"],
+    fileSizeOver: 1024
+  }
+};
+fileIo.listFile(pathDir, listFileOption, (err: BusinessError, filenames: Array<string>) => {
+  if (err) {
+    console.error(`Failed to list file. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in listing file.`);
+    for (let i = 0; i < filenames.length; i++) {
+      console.info(`Succeeded in listing file, file name: ${filenames[i]}`);
+    }
+  }
+});
+```

@@ -12,17 +12,17 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 function createMd(algName: string): Md
 ```
 
-创建消息摘要实例。 <br>支持的规格详见 [MD消息摘要算法规格](../../../security/CryptoArchitectureKit/crypto-generate-message-digest-overview.md#支持的算法与规格)。
+创建消息摘要实例。
 
-**起始版本：** 23
+支持的规格详见 [MD消息摘要算法规格](../../../security/CryptoArchitectureKit/crypto-generate-message-digest-overview.md#支持的算法与规格)。
+
+**起始版本：** 9
 
 **模型约束：** 
 - API版本12+：此接口可在Stage模型和FA模型下使用。
 - API版本9-11：此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-cryptoFramework-function createMd(algName: string): Md--><!--Device-cryptoFramework-function createMd(algName: string): Md-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.MessageDigest
@@ -44,7 +44,7 @@ function createMd(algName: string): Md
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 
 **示例**
@@ -60,4 +60,3 @@ try {
   console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
-

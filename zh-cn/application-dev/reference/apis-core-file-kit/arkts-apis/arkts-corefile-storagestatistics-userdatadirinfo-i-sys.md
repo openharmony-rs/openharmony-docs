@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-storageStatistics-export interface UserdataDirInfo--><!--Device-storageStatistics-export interface UserdataDirInfo-End-->
-
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **系统接口：** 此接口为系统接口。
@@ -30,8 +28,6 @@ path: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserdataDirInfo-path: string--><!--Device-UserdataDirInfo-path: string-End-->
-
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **系统接口：** 此接口为系统接口。
@@ -39,18 +35,16 @@ path: string
 ## totalCnt
 
 ```TypeScript
-totalCnt: int
+totalCnt: number
 ```
 
 路径下目录和文件总数量。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserdataDirInfo-totalCnt: int--><!--Device-UserdataDirInfo-totalCnt: int-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -59,20 +53,17 @@ totalCnt: int
 ## totalSize
 
 ```TypeScript
-totalSize: long
+totalSize: number
 ```
 
 路径占用的总空间大小，单位Byte。
 
-**类型：** long
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserdataDirInfo-totalSize: long--><!--Device-UserdataDirInfo-totalSize: long-End-->
-
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **系统接口：** 此接口为系统接口。
-

@@ -12,13 +12,11 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 function generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty): Promise<DLPFile>
 ```
 
-DLP管理应用调用该接口，将明文文件加密生成DLPFile管理对象，对象仅在授权列表内的用户可以打开，授权又分为完全控制权限和只读权限。使用Promise异步回调。 调用generateDLPFile成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile释放资源。
+DLP管理应用调用该接口，将明文文件加密生成DLPFile管理对象，对象仅在授权列表内的用户可以打开，授权又分为完全控制权限和只读权限。使用Promise异步回调。调用generateDLPFile成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile释放资源。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.ACCESS_DLP_FILE
-
-<!--Device-dlpPermission-function generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty): Promise<DLPFile>--><!--Device-dlpPermission-function generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty): Promise<DLPFile>-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -28,8 +26,8 @@ DLP管理应用调用该接口，将明文文件加密生成DLPFile管理对象�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| plaintextFd | number | 是 | 待加密明文文件的fd。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2&lt;sup&gt;31&lt;/sup&gt;-1 时，fd的值被截断。 |
-| ciphertextFd | number | 是 | 目标加密文件的fd。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2&lt;sup&gt;31&lt;/sup&gt;-1 时，fd的值被截断。 |
+| plaintextFd | number | 是 | 待加密明文文件的fd。取值范围为[0, 2 & lt;sup & gt;31 & lt;/sup & gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 & lt;sup & gt;31 & lt;/sup & gt;-1 时，fd的值被截断。 |
+| ciphertextFd | number | 是 | 目标加密文件的fd。取值范围为[0, 2 & lt;sup & gt;31 & lt;/sup & gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 & lt;sup & gt;31 & lt;/sup & gt;-1 时，fd的值被截断。 |
 | property | [DLPProperty](arkts-dataprotection-dlppermission-dlpproperty-i.md) | 是 | 授权用户信息：授权用户列表、owner账号、联系人账号。 |
 
 **返回值：**
@@ -42,16 +40,16 @@ DLP管理应用调用该接口，将明文文件加密生成DLPFile管理对象�
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19100003](../errorcode-dlp.md#19100003-加解密超时) | Credential task time out. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
-| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
-| [19100005](../errorcode-dlp.md#19100005-凭据认证服务器错误) | Credential authentication server error. |
-| [19100004](../errorcode-dlp.md#19100004-凭据服务错误) | Credential service error. |
-| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
+| [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
+| [19100003](../errorcode-dlp.md#19100003-加解密超时) | Credential task time out. |
+| [19100004](../errorcode-dlp.md#19100004-凭据服务错误) | Credential service error. |
+| [19100005](../errorcode-dlp.md#19100005-凭据认证服务器错误) | Credential authentication server error. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
+| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
 **示例**
 
@@ -98,13 +96,11 @@ ExampleFunction();
 function generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty, callback: AsyncCallback<DLPFile>): void
 ```
 
-DLP管理应用调用该接口，将明文文件加密生成权限受控文件，仅在授权列表内的用户可以打开，授权又分为完全控制权限和只读权限。获取DLPFile管理对象，使用callback异步回调。使用完DLPFile对象后，应调用 closeDLPFile释放对象，避免资源泄露。 调用generateDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
+DLP管理应用调用该接口，将明文文件加密生成权限受控文件，仅在授权列表内的用户可以打开，授权又分为完全控制权限和只读权限。获取DLPFile管理对象，使用callback异步回调。使用完DLPFile对象后，应调用 closeDLPFile释放对象，避免资源泄露。调用generateDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.ACCESS_DLP_FILE
-
-<!--Device-dlpPermission-function generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty, callback: AsyncCallback<DLPFile>): void--><!--Device-dlpPermission-function generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty, callback: AsyncCallback<DLPFile>): void-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -114,25 +110,25 @@ DLP管理应用调用该接口，将明文文件加密生成权限受控文件�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| plaintextFd | number | 是 | 待加密明文文件的fd。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2&lt;sup&gt;31&lt;/sup&gt;-1 时，fd的值被截断。 |
-| ciphertextFd | number | 是 | 目标加密文件的fd。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2&lt;sup&gt;31&lt;/sup&gt;-1 时，fd的值被截断。 |
+| plaintextFd | number | 是 | 待加密明文文件的fd。取值范围为[0, 2 & lt;sup & gt;31 & lt;/sup & gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 & lt;sup & gt;31 & lt;/sup & gt;-1 时，fd的值被截断。 |
+| ciphertextFd | number | 是 | 目标加密文件的fd。取值范围为[0, 2 & lt;sup & gt;31 & lt;/sup & gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 & lt;sup & gt;31 & lt;/sup & gt;-1 时，fd的值被截断。 |
 | property | [DLPProperty](arkts-dataprotection-dlppermission-dlpproperty-i.md) | 是 | 授权用户信息：授权用户列表、owner账号、联系人账号。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DLPFile](arkts-dataprotection-dlppermission-dlpfile-i-sys.md)&gt; | 是 | 回调函数。当生成DLP文件成功，err为undefined，data为获取到的DLP文件信息；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DLPFile](arkts-dataprotection-dlppermission-dlpfile-i-sys.md)&gt; | 是 | 回调函数。当生成DLP文件成功，err为undefined，data为获取到的DLP文件信息；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19100003](../errorcode-dlp.md#19100003-加解密超时) | Credential task time out. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
-| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
-| [19100005](../errorcode-dlp.md#19100005-凭据认证服务器错误) | Credential authentication server error. |
-| [19100004](../errorcode-dlp.md#19100004-凭据服务错误) | Credential service error. |
-| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
+| [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
+| [19100003](../errorcode-dlp.md#19100003-加解密超时) | Credential task time out. |
+| [19100004](../errorcode-dlp.md#19100004-凭据服务错误) | Credential service error. |
+| [19100005](../errorcode-dlp.md#19100005-凭据认证服务器错误) | Credential authentication server error. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
+| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
 **示例**
 
@@ -166,4 +162,3 @@ dlpPermission.generateDLPFile(file, dlp, dlpProperty, (err, res) => { // 生成D
   fileIo.closeSync(dlp);
 });
 ```
-

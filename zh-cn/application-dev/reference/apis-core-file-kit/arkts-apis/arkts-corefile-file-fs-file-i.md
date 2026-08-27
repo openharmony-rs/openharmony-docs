@@ -4,16 +4,12 @@
 
 **起始版本：** 9
 
-<!--Device-unnamed-declare interface File--><!--Device-unnamed-declare interface File-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## 导入模块
 
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
-import { fileIo } from '@kit.CoreFileKit'
-import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
 ```
 
 ## getParent
@@ -25,8 +21,6 @@ getParent(): string
 获取File对象对应文件的父目录路径。
 
 **起始版本：** 11
-
-<!--Device-File-getParent(): string--><!--Device-File-getParent(): string-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -41,8 +35,8 @@ getParent(): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900005 | I/O error |
-| 14300002 | Invalid URI |
 | 13900042 | Unknown error |
+| 14300002 | Invalid URI |
 
 **示例**
 
@@ -63,8 +57,6 @@ lock(exclusive?: boolean): Promise<void>
 
 **起始版本：** 9
 
-<!--Device-File-lock(exclusive?: boolean): Promise<void>--><!--Device-File-lock(exclusive?: boolean): Promise<void>-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -77,22 +69,20 @@ lock(exclusive?: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise & lt;void & gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900004 | Interrupted system call |
+| 13900008 | Bad file descriptor |
 | 13900020 | Invalid argument |
 | 13900034 | Operation would block |
-| 13900008 | Bad file descriptor |
 | 13900042 | Unknown error |
 | 13900043 | No record locks available |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -102,23 +92,6 @@ let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMod
 file.lock(true).then(() => {
   console.info(`Succeeded in locking file.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to lock file. Code: ${err.code}, message: ${err.message}`);
-}).finally(() => {
-  fileIo.closeSync(file);
-});
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath,fileIo.OpenMode.READ_WRITE |fileIo.OpenMode.CREATE);
-file.lock(true).then(() => {
-  console.info('Succeeded in locking file');
-}).catch((error: Error) => {
-  let err: BusinessError = error as BusinessError;
   console.error(`Failed to lock file. Code: ${err.code}, message: ${err.message}`);
 }).finally(() => {
   fileIo.closeSync(file);
@@ -135,30 +108,26 @@ lock(callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-<!--Device-File-lock(callback: AsyncCallback<void>): void--><!--Device-File-lock(callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当文件上锁成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当文件上锁成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900004 | Interrupted system call |
+| 13900008 | Bad file descriptor |
 | 13900020 | Invalid argument |
 | 13900034 | Operation would block |
-| 13900008 | Bad file descriptor |
 | 13900042 | Unknown error |
 | 13900043 | No record locks available |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -175,23 +144,6 @@ file.lock((err: BusinessError) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath,fileIo.OpenMode.READ_WRITE |fileIo.OpenMode.CREATE);
-file.lock((err: BusinessError | null) => {
-  if (err) {
-    console.error(`Failed to lock file. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Succeeded in locking file');
-  }
-  fileIo.closeSync(file);
-});
-```
-
 ## lock
 
 ```TypeScript
@@ -202,8 +154,6 @@ lock(exclusive: boolean, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-<!--Device-File-lock(exclusive: boolean, callback: AsyncCallback<void>): void--><!--Device-File-lock(exclusive: boolean, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -211,22 +161,20 @@ lock(exclusive: boolean, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | exclusive | boolean | 是 | 是否施加独占锁。true：施加独占锁；false：不施加独占锁。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当文件上锁成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当文件上锁成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900004 | Interrupted system call |
+| 13900008 | Bad file descriptor |
 | 13900020 | Invalid argument |
 | 13900034 | Operation would block |
-| 13900008 | Bad file descriptor |
 | 13900042 | Unknown error |
 | 13900043 | No record locks available |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -243,23 +191,6 @@ file.lock(true, (err: BusinessError) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath,fileIo.OpenMode.READ_WRITE |fileIo.OpenMode.CREATE);
-file.lock(true, (err: BusinessError | null) => {
-  if (err) {
-    console.error(`Failed to lock file. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Succeeded in locking file');
-  }
-  fileIo.closeSync(file);
-});
-```
-
 ## tryLock
 
 ```TypeScript
@@ -269,8 +200,6 @@ tryLock(exclusive?: boolean): void
 文件非阻塞式施加共享锁或独占锁。
 
 **起始版本：** 9
-
-<!--Device-File-tryLock(exclusive?: boolean): void--><!--Device-File-tryLock(exclusive?: boolean): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -285,9 +214,9 @@ tryLock(exclusive?: boolean): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900004 | Interrupted system call |
+| 13900008 | Bad file descriptor |
 | 13900020 | Invalid argument |
 | 13900034 | Operation would block |
-| 13900008 | Bad file descriptor |
 | 13900042 | Unknown error |
 | 13900043 | No record locks available |
 
@@ -311,8 +240,6 @@ unlock(): void
 
 **起始版本：** 9
 
-<!--Device-File-unlock(): void--><!--Device-File-unlock(): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **错误码：**
@@ -320,9 +247,9 @@ unlock(): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900004 | Interrupted system call |
+| 13900008 | Bad file descriptor |
 | 13900020 | Invalid argument |
 | 13900034 | Operation would block |
-| 13900008 | Bad file descriptor |
 | 13900042 | Unknown error |
 | 13900043 | No record locks available |
 
@@ -351,8 +278,6 @@ readonly fd: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-File-readonly fd: number--><!--Device-File-readonly fd: number-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## name
@@ -366,8 +291,6 @@ readonly name: string
 **类型：** string
 
 **起始版本：** 10
-
-<!--Device-File-readonly name: string--><!--Device-File-readonly name: string-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -383,7 +306,4 @@ readonly path: string
 
 **起始版本：** 10
 
-<!--Device-File-readonly path: string--><!--Device-File-readonly path: string-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
-

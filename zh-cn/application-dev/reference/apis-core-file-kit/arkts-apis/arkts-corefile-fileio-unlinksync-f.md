@@ -19,8 +19,6 @@ declare function unlinkSync(path: string): void
 
 **替代接口：** [unlinkSync](arkts-corefile-file-fs-unlinksync-f.md)
 
-<!--Device-unnamed-declare function unlinkSync(path: string): void--><!--Device-unnamed-declare function unlinkSync(path: string): void-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -29,3 +27,9 @@ declare function unlinkSync(path: string): void
 | --- | --- | --- | --- |
 | path | string | 是 | 待删除文件的应用沙箱路径。 |
 
+**示例**
+
+```TypeScript
+let filePath = pathDir + "/test.txt";
+fileio.unlinkSync(filePath);
+```

@@ -19,8 +19,6 @@ declare function opendirSync(path: string): Dir
 
 **替代接口：** [listFileSync](arkts-corefile-file-fs-listfilesync-f.md)
 
-<!--Device-unnamed-declare function opendirSync(path: string): Dir--><!--Device-unnamed-declare function opendirSync(path: string): Dir-End-->
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -35,3 +33,10 @@ declare function opendirSync(path: string): Dir
 | --- | --- |
 | [Dir](arkts-corefile-fileio-dir-depr-i.md) | 返回Dir对象。 |
 
+**示例**
+
+```TypeScript
+let dir = fileio.opendirSync(pathDir);
+// example code in Dir struct
+// use read/readSync/close
+```

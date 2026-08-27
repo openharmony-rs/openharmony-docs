@@ -14,8 +14,6 @@ const REPRESENTS_DIR = 0b10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DocumentFlag-const REPRESENTS_DIR = 0b10--><!--Device-DocumentFlag-const REPRESENTS_DIR = 0b10-End-->
-
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
@@ -33,8 +31,6 @@ const REPRESENTS_FILE = 0b1
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DocumentFlag-const REPRESENTS_FILE = 0b1--><!--Device-DocumentFlag-const REPRESENTS_FILE = 0b1-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
@@ -54,8 +50,6 @@ const SUPPORTS_READ = 0b100
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DocumentFlag-const SUPPORTS_READ = 0b100--><!--Device-DocumentFlag-const SUPPORTS_READ = 0b100-End-->
-
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
@@ -74,9 +68,6 @@ const SUPPORTS_WRITE = 0b1000
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DocumentFlag-const SUPPORTS_WRITE = 0b1000--><!--Device-DocumentFlag-const SUPPORTS_WRITE = 0b1000-End-->
-
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
-

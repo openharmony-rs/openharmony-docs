@@ -1,10 +1,20 @@
 # Sign
 
-签名接口，定义基于私钥对数据进行签名的方法。调用前，需通过 [createSign(algName: string): Sign](arkts-cryptoarchitecture-cryptoframework-createsign-f.md)方法创建一个Sign实例。按序调用Sign实例中的init、 update（可选）、sign方法完成签名操作。签名操作的示例代码详见 [签名验签开发指导](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。 <br>Sign实例不支持重复初始化，当业务方需要使用新密钥签名时，需要重新创建新Sign实例并调用init初始化。 <br>业务方使用时，调用createSign接口确定签名的模式，调用init接口设置密钥。 <br>当待签名数据长度较短时，可在初始化后直接调用sign接口传入数据进行签名，无需调用update。 <br>当待签名数据较长时，可通过update接口分段传入切分后的原文数据，最后调用sign接口对整体原文数据进行签名。 <br>当使用update分段传入原文时，sign接口API 10之前只支持传入DataBlob， API 10之后增加支持null。业务方可在循环中调用update接口，循环 结束后调用sign进行签名。 <br>使用DSA算法签名时，如果摘要算法设置为NoHash，则不支持update操作，调用update接口将返回错误码ERR_CRYPTO_OPERATION。
+签名接口，定义基于私钥对数据进行签名的方法。调用前，需通过 [createSign(algName: string): Sign](arkts-cryptoarchitecture-cryptoframework-createsign-f.md)方法创建一个Sign实例。按序调用Sign实例中的init、 update（可选）、sign方法完成签名操作。签名操作的示例代码详见 [签名验签开发指导](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
 
-**起始版本：** 23
+Sign实例不支持重复初始化，当业务方需要使用新密钥签名时，需要重新创建新Sign实例并调用init初始化。
 
-<!--Device-cryptoFramework-interface Sign--><!--Device-cryptoFramework-interface Sign-End-->
+业务方使用时，调用createSign接口确定签名的模式，调用init接口设置密钥。
+
+当待签名数据长度较短时，可在初始化后直接调用sign接口传入数据进行签名，无需调用update。
+
+当待签名数据较长时，可通过update接口分段传入切分后的原文数据，最后调用sign接口对整体原文数据进行签名。
+
+当使用update分段传入原文时，sign接口API 10之前只支持传入DataBlob， API 10之后增加支持null。业务方可在循环中调用update接口，循环 结束后调用sign进行签名。
+
+使用DSA算法签名时，如果摘要算法设置为NoHash，则不支持update操作，调用update接口将返回错误码ERR_CRYPTO_OPERATION。
+
+**起始版本：** 9
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -19,16 +29,14 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ## getSignSpec
 
 ```TypeScript
-getSignSpec(itemType: SignSpecItem): string | int
+getSignSpec(itemType: SignSpecItem): string | number
 ```
 
 获取签名参数。当前仅支持RSA算法。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Sign-getSignSpec(itemType: SignSpecItem): string | int--><!--Device-Sign-getSignSpec(itemType: SignSpecItem): string | int-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -44,16 +52,16 @@ getSignSpec(itemType: SignSpecItem): string | int
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 返回获取的签名参数值。 |
+| string \| number | 返回获取的签名参数值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed.<br>**适用版本：** 26.0.0+ |
 
 **示例**
@@ -75,13 +83,13 @@ function testGetSignSpec() {
 init(priKey: PriKey, callback: AsyncCallback<void>): void
 ```
 
-使用私钥初始化Sign实例。使用callback异步回调。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。 <br>Sign实例不支持重复初始化。
+使用私钥初始化Sign实例。使用callback异步回调。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
 
-**起始版本：** 23
+Sign实例不支持重复初始化。
+
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Sign-init(priKey: PriKey, callback: AsyncCallback<void>): void--><!--Device-Sign-init(priKey: PriKey, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -92,17 +100,17 @@ init(priKey: PriKey, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | priKey | [PriKey](arkts-cryptoarchitecture-cryptoframework-prikey-i.md) | 是 | 用于Sign的初始化。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当签名初始化成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当签名初始化成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
-| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes: <br>1. Incorrect key type.<br>**适用版本：** 26.0.0+ |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes:  1. Incorrect key type.<br>**适用版本：** 26.0.0+ |
 
 ## init
 
@@ -110,13 +118,13 @@ init(priKey: PriKey, callback: AsyncCallback<void>): void
 init(priKey: PriKey): Promise<void>
 ```
 
-使用私钥初始化Sign实例。使用Promise异步回调。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。 <br>Sign实例不支持重复初始化。
+使用私钥初始化Sign实例。使用Promise异步回调。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
 
-**起始版本：** 23
+Sign实例不支持重复初始化。
+
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Sign-init(priKey: PriKey): Promise<void>--><!--Device-Sign-init(priKey: PriKey): Promise<void>-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -132,17 +140,17 @@ init(priKey: PriKey): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
-| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes: <br>1. Incorrect key type.<br>**适用版本：** 26.0.0+ |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes:  1. Incorrect key type.<br>**适用版本：** 26.0.0+ |
 
 ## initSync
 
@@ -150,13 +158,15 @@ init(priKey: PriKey): Promise<void>
 initSync(priKey: PriKey): void
 ```
 
-使用私钥初始化Sign实例，通过同步方式获取结果。initSync、updateSync、signSync为三段式接口，需要成组使用。其中initSync和signSync 必选，updateSync可选。 <br>Sign实例不支持重复调用initSync。 <br><br>**说明：** <br>建议优先使用异步API，init。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
+使用私钥初始化Sign实例，通过同步方式获取结果。initSync、updateSync、signSync为三段式接口，需要成组使用。其中initSync和signSync 必选，updateSync可选。
 
-**起始版本：** 23
+Sign实例不支持重复调用initSync。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**说明：** 建议优先使用异步API，init。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
 
-<!--Device-Sign-initSync(priKey: PriKey): void--><!--Device-Sign-initSync(priKey: PriKey): void-End-->
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -170,25 +180,25 @@ initSync(priKey: PriKey): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
-| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes: <br>1. Incorrect key type.<br>**适用版本：** 26.0.0+ |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes:  1. Incorrect key type.<br>**适用版本：** 26.0.0+ |
 
 ## setSignSpec
 
 ```TypeScript
-setSignSpec(itemType: SignSpecItem, itemValue: int): void
+setSignSpec(itemType: SignSpecItem, itemValue: number): void
 ```
 
-设置签名参数。常用签名参数可通过 [createSign](arkts-cryptoarchitecture-cryptoframework-createsign-f.md) 指定，其他参数则通过本接口设置。 <br>当前仅支持RSA算法、SM2算法，从API version11开始，支持SM2算法设置签名参数。
+设置签名参数。常用签名参数可通过 [createSign](arkts-cryptoarchitecture-cryptoframework-createsign-f.md) 指定，其他参数则通过本接口设置。
+
+当前仅支持RSA算法、SM2算法，从API version11开始，支持SM2算法设置签名参数。
 
 **起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Sign-setSignSpec(itemType: SignSpecItem, itemValue: int): void--><!--Device-Sign-setSignSpec(itemType: SignSpecItem, itemValue: int): void-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -199,16 +209,16 @@ setSignSpec(itemType: SignSpecItem, itemValue: int): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | itemType | [SignSpecItem](arkts-cryptoarchitecture-cryptoframework-signspecitem-e.md) | 是 | 用于指定需要设置的签名参数。 |
-| itemValue | int | 是 | 用于指定签名参数的具体值。 |
+| itemValue | number | 是 | 用于指定签名参数的具体值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed.<br>**适用版本：** 26.0.0+ |
 
 **示例**
@@ -217,98 +227,11 @@ setSignSpec(itemType: SignSpecItem, itemValue: int): void
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 function testSetSignSpec() {
-  let signer = cryptoFramework.createSign("RSA|PSS|SHA256|MGF1_SHA256");
+  let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
   let setN = 20;
   signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
 }
 ```
-
-## setSignSpec
-
-```TypeScript
-setSignSpec(itemType: SignSpecItem, itemValue: int | Uint8Array): void
-```
-
-为Sign实例设置指定参数。 <br>当前仅支持RSA算法中的PSS_SALT_LEN参数和SM2算法中的USER_ID参数。
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Sign-setSignSpec(itemType: SignSpecItem, itemValue: int | Uint8Array): void--><!--Device-Sign-setSignSpec(itemType: SignSpecItem, itemValue: int | Uint8Array): void-End-->
-
-**系统能力：** 
-- API版本12+：SystemCapability.Security.CryptoFramework.Signature
-- API版本11：SystemCapability.Security.CryptoFramework
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| itemType | [SignSpecItem](arkts-cryptoarchitecture-cryptoframework-signspecitem-e.md) | 是 | 用于指定需要设置的签名参数类型。 |
-| itemValue | int \| Uint8Array | 是 | 指定签名参数的具体值。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
-| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | Invalid function call.<br>**适用版本：** 26.0.0+ |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
-| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
-| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters.<br>**适用版本：** 26.0.0+ |
-| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed.<br>**适用版本：** 26.0.0+ |
-
-**示例**
-
-```TypeScript
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
-function testSetSignSpec() {
-  let signer = cryptoFramework.createSign("RSA|PSS|SHA256|MGF1_SHA256");
-  let setN = 20;
-  signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-}
-```
-
-## setSignSpec
-
-```TypeScript
-setSignSpec(itemType: SignSpecItem, itemValue: int | Uint8Array | boolean): void
-```
-
-为Sign实例设置指定参数。 <br>当前仅支持RSA算法中的PSS_SALT_LEN参数、SM2算法中的USER_ID参数以及ML-DSA算法中的ML_DSA_DETERMINISTIC、ML_DSA_MU和 ML_DSA_CONTEXT参数。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Sign-setSignSpec(itemType: SignSpecItem, itemValue: int | Uint8Array | boolean): void--><!--Device-Sign-setSignSpec(itemType: SignSpecItem, itemValue: int | Uint8Array | boolean): void-End-->
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| itemType | [SignSpecItem](arkts-cryptoarchitecture-cryptoframework-signspecitem-e.md) | 是 | 用于指定需要设置的签名参数类型。 |
-| itemValue | int \| Uint8Array \| boolean | 是 | 指定签名参数的具体值。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
-| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | Invalid function call. |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
-| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
-| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
-| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. |
-
-**示例**
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -322,18 +245,67 @@ function testSetSignSpec() {
 ## setSignSpec
 
 ```TypeScript
-setSignSpec(itemType: SignSpecItem, itemValue: boolean): void
+setSignSpec(itemType: SignSpecItem, itemValue: number | Uint8Array): void
 ```
 
-为Sign实例设置指定参数。 <br>当前仅支持ML-DSA算法中的ML_DSA_DETERMINISTIC和ML_DSA_MU参数。ML_DSA_CONTEXT参数请使用 [setSignSpec()](#setsignspec)。
+为Sign实例设置指定参数。
+
+当前仅支持RSA算法中的PSS_SALT_LEN参数和SM2算法中的USER_ID参数。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本11：SystemCapability.Security.CryptoFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| itemType | [SignSpecItem](arkts-cryptoarchitecture-cryptoframework-signspecitem-e.md) | 是 | 用于指定需要设置的签名参数类型。 |
+| itemValue | number \| Uint8Array | 是 | 指定签名参数的具体值。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters.<br>**适用版本：** 26.0.0+ |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed.<br>**适用版本：** 26.0.0+ |
+| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | Invalid function call.<br>**适用版本：** 26.0.0+ |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+
+**示例**
+
+```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function testSetSignSpec() {
+  let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
+  let setN = 20;
+  signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+}
+```
+
+## setSignSpec
+
+```TypeScript
+setSignSpec(itemType: SignSpecItem, itemValue: number | Uint8Array | boolean): void
+```
+
+为Sign实例设置指定参数。
+
+当前仅支持RSA算法中的PSS_SALT_LEN参数、SM2算法中的USER_ID参数以及ML-DSA算法中的ML_DSA_DETERMINISTIC、ML_DSA_MU和 ML_DSA_CONTEXT参数。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Sign-setSignSpec(itemType: SignSpecItem, itemValue: boolean): void--><!--Device-Sign-setSignSpec(itemType: SignSpecItem, itemValue: boolean): void-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -342,15 +314,18 @@ setSignSpec(itemType: SignSpecItem, itemValue: boolean): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | itemType | [SignSpecItem](arkts-cryptoarchitecture-cryptoframework-signspecitem-e.md) | 是 | 用于指定需要设置的签名参数类型。 |
-| itemValue | boolean | 是 | 指定签名参数的具体值。 |
+| itemValue | number \| Uint8Array \| boolean | 是 | 指定签名参数的具体值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | Invalid function call. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. |
+| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | Invalid function call. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 
 **示例**
 
@@ -375,8 +350,6 @@ sign(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Sign-sign(data: DataBlob, callback: AsyncCallback<DataBlob>): void--><!--Device-Sign-sign(data: DataBlob, callback: AsyncCallback<DataBlob>): void-End-->
-
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
 - API版本9-11：SystemCapability.Security.CryptoFramework
@@ -386,16 +359,16 @@ sign(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | DataBlob | 是 | 待签名的数据。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;DataBlob&gt; | 是 | 回调函数。当签名成功时，err为undefined，data为获取到的签名结果DataBlob；否则 为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当签名成功时，err为undefined，data为获取到的签名结果DataBlob；否则 为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed.<br>**适用版本：** 26.0.0+ |
 
 ## sign
@@ -406,11 +379,9 @@ sign(data: DataBlob | null, callback: AsyncCallback<DataBlob>): void
 
 对数据进行签名。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Sign-sign(data: DataBlob | null, callback: AsyncCallback<DataBlob>): void--><!--Device-Sign-sign(data: DataBlob | null, callback: AsyncCallback<DataBlob>): void-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -421,16 +392,16 @@ sign(data: DataBlob | null, callback: AsyncCallback<DataBlob>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | DataBlob \| null | 是 | 传入的消息。API 10之前只支持DataBlob， API 10之后增加支持null。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;DataBlob&gt; | 是 | 回调函数。当签名成功时，err为undefined，data为获取到的签名结果DataBlob；否则 为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当签名成功时，err为undefined，data为获取到的签名结果DataBlob；否则 为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed.<br>**适用版本：** 26.0.0+ |
 
 ## sign
@@ -444,8 +415,6 @@ sign(data: DataBlob): Promise<DataBlob>
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Sign-sign(data: DataBlob): Promise<DataBlob>--><!--Device-Sign-sign(data: DataBlob): Promise<DataBlob>-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -461,16 +430,16 @@ sign(data: DataBlob): Promise<DataBlob>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DataBlob&gt; | Promise对象，返回签名结果。 |
+| Promise & lt;DataBlob & gt; | Promise对象，返回签名结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed.<br>**适用版本：** 26.0.0+ |
 
 ## sign
@@ -481,11 +450,9 @@ sign(data: DataBlob | null): Promise<DataBlob>
 
 对数据进行签名。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Sign-sign(data: DataBlob | null): Promise<DataBlob>--><!--Device-Sign-sign(data: DataBlob | null): Promise<DataBlob>-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -501,16 +468,16 @@ sign(data: DataBlob | null): Promise<DataBlob>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DataBlob&gt; | Promise对象，返回签名结果。 |
+| Promise & lt;DataBlob & gt; | Promise对象，返回签名结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed.<br>**适用版本：** 26.0.0+ |
 
 ## signSync
@@ -519,13 +486,13 @@ sign(data: DataBlob | null): Promise<DataBlob>
 signSync(data: DataBlob | null): DataBlob
 ```
 
-对数据进行签名，通过同步方式返回签名结果。 <br><br>**说明：** <br>建议优先使用异步API，[sign](#sign)。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
+对数据进行签名，通过同步方式返回签名结果。
 
-**起始版本：** 23
+**说明：** 建议优先使用异步API，[sign](#sign)。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**起始版本：** 12
 
-<!--Device-Sign-signSync(data: DataBlob | null): DataBlob--><!--Device-Sign-signSync(data: DataBlob | null): DataBlob-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -545,15 +512,15 @@ signSync(data: DataBlob | null): DataBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed.<br>**适用版本：** 26.0.0+ |
 
 **示例**
 
-ArkTS-Dyn示例：
+此外，更多签名验签的完整示例可参考[签名验签开发指导](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -611,72 +578,6 @@ function signByCallback() {
         });
       });
     });
-  });
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { buffer } from '@kit.ArkTS';
-
-function signByCallback() {
-  let inputUpdate: cryptoFramework.DataBlob =
-    { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let inputVerify: cryptoFramework.DataBlob =
-    { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
-  let pkData =
-    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
-      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
-      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
-      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
-      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
-      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
-      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
-  let skData =
-    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
-      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
-      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
-      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
-      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
-      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
-      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
-      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
-      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
-      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
-      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
-      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
-      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
-      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
-      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
-      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
-      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
-      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
-      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
-      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
-      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
-      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
-      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
-      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
-      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
-      207, 254, 61, 71, 184, 167, 184]);
-  let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
-  let priKeyBlob: cryptoFramework.DataBlob = { data: skData };
-  let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
-  rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
-    if (keyPair != undefined) {
-      signer.init(keyPair.priKey, err => {
-        signer.update(inputUpdate, err => {
-          signer.sign(inputVerify, (err, signData) => {
-            if (signData != undefined) {
-              console.info('sign output is ' + signData.data);
-            }
-          });
-        });
-      });
-    }
   });
 }
 ```
@@ -815,13 +716,29 @@ function signBySync() {
 update(data: DataBlob, callback: AsyncCallback<void>): void
 ```
 
-追加待签名数据，使用callback异步回调完成更新。 <br>必须在对[Sign](#sign)实例使用[init](#init)或 [initSync](#initsync)初始化后，才能使用本函数。 > **说明：** > > 根据数据量，可以不调用update（即[init](#init)完成后直接调用 > [sign](#sign)）或多次调用update。 > > 算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的签名操作，采用多次update的方式传入数据，避免一次性申请 > 过大内存。 > > 签名使用多次update操作的示例代码详见 > [使用RSA密钥对分段签名验签](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)， > 其余算法操作类似。 > OnlySign模式下，不支持update操作，需要直接使用sign传入数据。 > 当使用DSA算法进行签名，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
+追加待签名数据，使用callback异步回调完成更新。
 
-**起始版本：** 23
+必须在对[Sign](#sign)实例使用[init](#init)或 [initSync](#initsync)初始化后，才能使用本函数。
+
+> **说明：**
+> 
+> 根据数据量，可以不调用update（即[init](#init)完成后直接调用
+> [sign](#sign)）或多次调用update。
+> 
+> 算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的签名操作，采用多次update的方式传入数据，避免一次性申请
+> 过大内存。
+> 
+> 签名使用多次update操作的示例代码详见
+> [使用RSA密钥对分段签名验签](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)，
+> 其余算法操作类似。
+
+> OnlySign模式下，不支持update操作，需要直接使用sign传入数据。
+
+> 当使用DSA算法进行签名，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
+
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Sign-update(data: DataBlob, callback: AsyncCallback<void>): void--><!--Device-Sign-update(data: DataBlob, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -832,17 +749,17 @@ update(data: DataBlob, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | DataBlob | 是 | 传入的消息。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当签名更新成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当签名更新成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | Invalid function call.<br>**适用版本：** 26.0.0+ |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | Invalid function call.<br>**适用版本：** 26.0.0+ |
 
 ## update
 
@@ -850,13 +767,29 @@ update(data: DataBlob, callback: AsyncCallback<void>): void
 update(data: DataBlob): Promise<void>
 ```
 
-追加待签名数据，使用Promise异步回调方式完成更新。 <br>在使用本函数前，必须先使用[init](#init)对[Sign](#sign)实例进行初始化。 > **说明：** > > 根据数据量，可以不调用update（即[init](#init) > 完成后直接调用[sign](#sign)） > 或多次调用update。 > > 算法库不对单次或累计的update数据量设置大小限制。建议在处理大数据量的签名操作时，采用多次update方式传入数据，以避免一次性申请过大内 > 存。 > 签名使用多次update操作的示例代码详见 > [使用RSA密钥对分段签名验签](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)， > 其余算法操作类似。 > > OnlySign模式下，不支持update操作，需要直接使用sign传入数据。 > > 当使用DSA算法进行签名，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
+追加待签名数据，使用Promise异步回调方式完成更新。
 
-**起始版本：** 23
+在使用本函数前，必须先使用[init](#init)对[Sign](#sign)实例进行初始化。
+
+> **说明：**
+> 
+> 根据数据量，可以不调用update（即[init](#init)
+> 完成后直接调用[sign](#sign)）
+> 或多次调用update。
+> 
+> 算法库不对单次或累计的update数据量设置大小限制。建议在处理大数据量的签名操作时，采用多次update方式传入数据，以避免一次性申请过大内
+> 存。
+> 签名使用多次update操作的示例代码详见
+> [使用RSA密钥对分段签名验签](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)，
+> 其余算法操作类似。
+> 
+> OnlySign模式下，不支持update操作，需要直接使用sign传入数据。
+> 
+> 当使用DSA算法进行签名，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
+
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Sign-update(data: DataBlob): Promise<void>--><!--Device-Sign-update(data: DataBlob): Promise<void>-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -872,17 +805,17 @@ update(data: DataBlob): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | Invalid function call.<br>**适用版本：** 26.0.0+ |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | Invalid function call.<br>**适用版本：** 26.0.0+ |
 
 ## updateSync
 
@@ -890,13 +823,31 @@ update(data: DataBlob): Promise<void>
 updateSync(data: DataBlob): void
 ```
 
-追加待签名数据，通过同步方式完成更新。 <br>必须在对[Sign](#sign)实例使用[initSync()](#initsync)初始化 后，才能使用本函数。 > **说明：** > > 根据数据量，可以不调用updateSync（即[initSync](#initsync)完成后直接调用 > [signSync](#signsync)）或多次调用updateSync。 > > 算法库目前没有对updateSync（单次或累计）的数据量设置大小限制，建议对于大数据量的签名操作，采用多次updateSync的方式传入数据，避免 > 一次性申请过大内存。 > > 签名使用多次updateSync操作的示例代码详见 > [使用RSA密钥对分段签名验签](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)， > 其余算法操作类似。 > > OnlySign模式下，不支持updateSync操作，需要直接使用signSync传入数据。 > > 当使用DSA算法进行签名，并设置了摘要算法为NoHash时，则不支持updateSync操作，updateSync接口会返回错误码ERR_CRYPTO_OPERATION。 <br><br>**说明：** <br>建议优先使用异步API，update。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
+追加待签名数据，通过同步方式完成更新。
 
-**起始版本：** 23
+必须在对[Sign](#sign)实例使用[initSync()](#initsync)初始化 后，才能使用本函数。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+> **说明：**
+> 
+> 根据数据量，可以不调用updateSync（即[initSync](#initsync)完成后直接调用
+> [signSync](#signsync)）或多次调用updateSync。
+> 
+> 算法库目前没有对updateSync（单次或累计）的数据量设置大小限制，建议对于大数据量的签名操作，采用多次updateSync的方式传入数据，避免
+> 一次性申请过大内存。
+> 
+> 签名使用多次updateSync操作的示例代码详见
+> [使用RSA密钥对分段签名验签](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)，
+> 其余算法操作类似。
+> 
+> OnlySign模式下，不支持updateSync操作，需要直接使用signSync传入数据。
+> 
+> 当使用DSA算法进行签名，并设置了摘要算法为NoHash时，则不支持updateSync操作，updateSync接口会返回错误码ERR_CRYPTO_OPERATION。
 
-<!--Device-Sign-updateSync(data: DataBlob): void--><!--Device-Sign-updateSync(data: DataBlob): void-End-->
+**说明：** 建议优先使用异步API，update。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -910,11 +861,11 @@ updateSync(data: DataBlob): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | Invalid function call.<br>**适用版本：** 26.0.0+ |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
+| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | Invalid function call.<br>**适用版本：** 26.0.0+ |
 
 ## algName
 
@@ -926,13 +877,10 @@ readonly algName: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Sign-readonly algName: string--><!--Device-Sign-readonly algName: string-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
 - API版本9-11：SystemCapability.Security.CryptoFramework
-

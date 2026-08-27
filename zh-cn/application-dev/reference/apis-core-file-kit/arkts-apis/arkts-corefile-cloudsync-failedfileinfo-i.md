@@ -2,9 +2,7 @@
 
 云文件批量缓存失败列表及失败原因。
 
-**起始版本：** 23
-
-<!--Device-cloudSync-interface FailedFileInfo--><!--Device-cloudSync-interface FailedFileInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -12,7 +10,6 @@
 
 ```TypeScript
 import { cloudSync } from '@kit.CoreFileKit';
-import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
 ## error
@@ -25,9 +22,7 @@ error: DownloadErrorType
 
 **类型：** [DownloadErrorType](arkts-corefile-cloudsync-downloaderrortype-e.md)
 
-**起始版本：** 23
-
-<!--Device-FailedFileInfo-error: DownloadErrorType--><!--Device-FailedFileInfo-error: DownloadErrorType-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -41,9 +36,6 @@ uri: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-FailedFileInfo-uri: string--><!--Device-FailedFileInfo-uri: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-

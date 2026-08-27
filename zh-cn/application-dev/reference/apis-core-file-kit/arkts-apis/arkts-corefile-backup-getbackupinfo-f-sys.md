@@ -14,11 +14,9 @@ function getBackupInfo(bundleToBackup: string): string
 
 获取需要备份的应用信息。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **需要权限：** ohos.permission.BACKUP
-
-<!--Device-backup-function getBackupInfo(bundleToBackup: string): string--><!--Device-backup-function getBackupInfo(bundleToBackup: string): string-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -40,9 +38,9 @@ function getBackupInfo(bundleToBackup: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例**
 
@@ -61,4 +59,3 @@ function getBackupInfo() {
   }
 }
 ```
-

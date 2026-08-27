@@ -12,11 +12,9 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 function getOriginalFileName(fileName: string): string
 ```
 
-获取指定DLP文件名的原始文件名。该接口为同步接口。 根据原始文件名后缀判断文件类型，选择对应的应用打开。
+获取指定DLP文件名的原始文件名。该接口为同步接口。根据原始文件名后缀判断文件类型，选择对应的应用打开。
 
 **起始版本：** 10
-
-<!--Device-dlpPermission-function getOriginalFileName(fileName: string): string--><!--Device-dlpPermission-function getOriginalFileName(fileName: string): string-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -47,4 +45,3 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 let originalFileName = dlpPermission.getOriginalFileName('test.txt.dlp'); // 获取原始文件名。
 console.info('originalFileName:', originalFileName);
 ```
-

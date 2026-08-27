@@ -2,16 +2,13 @@
 
 证书凭据授权请求信息。
 
-**起始版本：** 23
-
-<!--Device-certificateManagerDialog-export interface AuthorizeRequest--><!--Device-certificateManagerDialog-export interface AuthorizeRequest-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
 ## 导入模块
 
 ```TypeScript
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## certPurpose
@@ -24,11 +21,9 @@ certPurpose?: certificateManager.CertificatePurpose
 
 **类型：** certificateManager.CertificatePurpose
 
-**起始版本：** 23
+**起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AuthorizeRequest-certPurpose?: certificateManager.CertificatePurpose--><!--Device-AuthorizeRequest-certPurpose?: certificateManager.CertificatePurpose-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
@@ -42,11 +37,9 @@ certTypes: Array<CertificateType>
 
 **类型：** Array&lt;[CertificateType](arkts-devicecertificate-certificatemanagerdialog-certificatetype-e.md)&gt;
 
-**起始版本：** 23
+**起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AuthorizeRequest-certTypes: Array<CertificateType>--><!--Device-AuthorizeRequest-certTypes: Array<CertificateType>-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
@@ -56,15 +49,14 @@ certTypes: Array<CertificateType>
 issuers?: Array<Uint8Array>
 ```
 
-表示以DER格式编码的证书颁发者，用于筛选凭据授权对话框中的证书列表，仅显示匹配的证书。 如果issuers数组中存在长度为0的元素，则issuers筛选器不会生效。 数组最大长度为20。 26.0.0
+表示以DER格式编码的证书颁发者，用于筛选凭据授权对话框中的证书列表，仅显示匹配的证书。如果issuers数组中存在长度为0的元素，则issuers筛选器不会生效。数组最大长度为20。
+26.0.0
 
 **类型：** Array&lt;Uint8Array&gt;
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AuthorizeRequest-issuers?: Array<Uint8Array>--><!--Device-AuthorizeRequest-issuers?: Array<Uint8Array>-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
@@ -82,8 +74,6 @@ keyAlgIDs?: Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AuthorizeRequest-keyAlgIDs?: Array<string>--><!--Device-AuthorizeRequest-keyAlgIDs?: Array<string>-End-->
-
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
 ## uri
@@ -100,7 +90,4 @@ uri?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AuthorizeRequest-uri?: string--><!--Device-AuthorizeRequest-uri?: string-End-->
-
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
-

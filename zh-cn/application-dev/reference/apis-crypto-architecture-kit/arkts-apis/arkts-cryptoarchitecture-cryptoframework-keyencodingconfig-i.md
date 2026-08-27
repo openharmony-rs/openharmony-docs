@@ -1,10 +1,14 @@
 # KeyEncodingConfig
 
-RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数，生成指定算法、密码的编码后的私钥字符串。 > **说明：** > > - password是必选参数，表示编码用到的密码。 > > - cipherName是必选参数，指定编码用到的算法。当前仅支持AES-128-CBC、AES-192-CBC、AES-256-CBC、DES-EDE3-CBC。
+RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数，生成指定算法、密码的编码后的私钥字符串。
 
-**起始版本：** 23
+> **说明：**
+> 
+> - password是必选参数，表示编码用到的密码。
+> 
+> - cipherName是必选参数，指定编码用到的算法。当前仅支持AES-128-CBC、AES-192-CBC、AES-256-CBC、DES-EDE3-CBC。
 
-<!--Device-cryptoFramework-interface KeyEncodingConfig--><!--Device-cryptoFramework-interface KeyEncodingConfig-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -24,11 +28,9 @@ cipherName: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-KeyEncodingConfig-cipherName: string--><!--Device-KeyEncodingConfig-cipherName: string-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -42,11 +44,8 @@ password: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-KeyEncodingConfig-password: string--><!--Device-KeyEncodingConfig-password: string-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-

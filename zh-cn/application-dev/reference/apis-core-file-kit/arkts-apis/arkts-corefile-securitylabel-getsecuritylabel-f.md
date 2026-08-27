@@ -14,9 +14,7 @@ function getSecurityLabel(path: string): Promise<string>
 
 获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-securityLabel-function getSecurityLabel(path: string): Promise<string>--><!--Device-securityLabel-function getSecurityLabel(path: string): Promise<string>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -30,18 +28,18 @@ function getSecurityLabel(path: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回数据安全等级。 |
+| Promise & lt;string & gt; | Promise对象，返回数据安全等级。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900037 | No data available |
-| 13900007 | Arg list too long |
 | 13900001 | Operation not permitted |
+| 13900007 | Arg list too number |
 | 13900015 | File exists |
+| 13900020 | Invalid argument |
 | 13900025 | No space left on device |
+| 13900037 | No data available |
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
@@ -66,9 +64,7 @@ function getSecurityLabel(path: string, callback: AsyncCallback<string>): void
 
 获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-securityLabel-function getSecurityLabel(path: string, callback: AsyncCallback<string>): void--><!--Device-securityLabel-function getSecurityLabel(path: string, callback: AsyncCallback<string>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -77,18 +73,18 @@ function getSecurityLabel(path: string, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 文件或目录的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回数据安全等级。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回数据安全等级。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| 13900037 | No data available |
-| 13900007 | Arg list too long |
 | 13900001 | Operation not permitted |
+| 13900007 | Arg list too number |
 | 13900015 | File exists |
+| 13900020 | Invalid argument |
 | 13900025 | No space left on device |
+| 13900037 | No data available |
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
@@ -105,4 +101,3 @@ securityLabel.getSecurityLabel(filePath, (err: BusinessError, type: string) => {
   }
 });
 ```
-

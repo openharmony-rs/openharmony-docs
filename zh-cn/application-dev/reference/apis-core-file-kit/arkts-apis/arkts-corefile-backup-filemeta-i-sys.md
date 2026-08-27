@@ -1,10 +1,8 @@
 # FileMeta（系统接口）
 
-文件的元数据，包含应用名称及文件URI，在与备份服务进行IPC时使用。
+文件的元数据，包含应用名称及文件URI，在与备份服务进行IPC时使用。@interface FileMeta
 
-**起始版本：** 23
-
-<!--Device-backup-interface FileMeta--><!--Device-backup-interface FileMeta-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -26,9 +24,7 @@ bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-FileMeta-bundleName: string--><!--Device-FileMeta-bundleName: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -44,9 +40,7 @@ uri: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-FileMeta-uri: string--><!--Device-FileMeta-uri: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -66,9 +60,6 @@ uris?: Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FileMeta-uris?: Array<string>--><!--Device-FileMeta-uris?: Array<string>-End-->
-
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
 **系统接口：** 此接口为系统接口。
-

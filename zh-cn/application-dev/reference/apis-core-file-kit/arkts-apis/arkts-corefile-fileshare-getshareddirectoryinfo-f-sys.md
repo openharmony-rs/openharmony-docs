@@ -20,8 +20,6 @@ function getSharedDirectoryInfo(): Promise<Array<SharedDirectoryInfo>>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-fileShare-function getSharedDirectoryInfo(): Promise<Array<SharedDirectoryInfo>>--><!--Device-fileShare-function getSharedDirectoryInfo(): Promise<Array<SharedDirectoryInfo>>-End-->
-
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **系统接口：** 此接口为系统接口。
@@ -36,15 +34,13 @@ function getSharedDirectoryInfo(): Promise<Array<SharedDirectoryInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| 13900001 | Operation not permitted. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| 13900001 | Operation not permitted. |
 | 13900011 | Out of memory. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -64,24 +60,3 @@ async function getSharedDirectoryInfo() {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileShare } from '@kit.CoreFileKit';
-
-async function getSharedDirectoryInfo() {
-  try {
-    let sharedInfos = await fileShare.getSharedDirectoryInfo();
-    console.info("getSharedDirectoryInfo success.");
-    for (let info of sharedInfos) {
-      console.info("bundleName=" + info.bundleName + " path=" + info.path + " mode=" + info.permissionMode)
-    }
-  }
-  catch (error) {
-    console.error('getSharedDirectoryInfo error, Code: ' + error.code + ', message: ' + error.message);
-  }
-}
-```
-

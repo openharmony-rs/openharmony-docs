@@ -12,13 +12,15 @@ import { hash } from '@kit.CoreFileKit';
 function hash(path: string, algorithm: string): Promise<string>
 ```
 
-计算文件的哈希值，基于指定算法对文件完整内容进行哈希摘要计算。使用Promise异步回调。 > **说明：** > > 该接口会读取整个文件内容并计算哈希值，适用于中小文件。对于大文件处理，建议使用HashStream流式计算。
+计算文件的哈希值，基于指定算法对文件完整内容进行哈希摘要计算。使用Promise异步回调。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 该接口会读取整个文件内容并计算哈希值，适用于中小文件。对于大文件处理，建议使用HashStream流式计算。
+
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-hash-function hash(path: string, algorithm: string): Promise<string>--><!--Device-hash-function hash(path: string, algorithm: string): Promise<string>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -33,7 +35,7 @@ function hash(path: string, algorithm: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回文件的哈希值。表示为十六进制数字串，所有字母均大写。 |
+| Promise & lt;string & gt; | Promise对象，返回文件的哈希值。表示为十六进制数字串，所有字母均大写。 |
 
 **错误码：**
 
@@ -62,13 +64,15 @@ hash.hash(filePath, "sha256").then((str: string) => {
 function hash(path: string, algorithm: string, callback: AsyncCallback<string>): void
 ```
 
-计算文件的哈希值，基于指定算法对文件完整内容进行哈希摘要计算。使用callback异步回调。 > **说明：** > > 该接口会读取整个文件内容并计算哈希值，适用于中小文件。对于大文件处理，建议使用HashStream流式计算。
+计算文件的哈希值，基于指定算法对文件完整内容进行哈希摘要计算。使用callback异步回调。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 该接口会读取整个文件内容并计算哈希值，适用于中小文件。对于大文件处理，建议使用HashStream流式计算。
+
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-hash-function hash(path: string, algorithm: string, callback: AsyncCallback<string>): void--><!--Device-hash-function hash(path: string, algorithm: string, callback: AsyncCallback<string>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -78,7 +82,7 @@ function hash(path: string, algorithm: string, callback: AsyncCallback<string>):
 | --- | --- | --- | --- |
 | path | string | 是 | 待计算哈希值文件的应用沙箱路径。文件必须存在且可读。 |
 | algorithm | string | 是 | 哈希计算采用的算法。可选 "md5"、"sha1" 或 "sha256"。建议采用安全强度更高的 "sha256"。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回哈希值（哈希值表示为十六进制数字串，所有字母均大写）。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回哈希值（哈希值表示为十六进制数字串，所有字母均大写）。 |
 
 **错误码：**
 
@@ -100,4 +104,3 @@ hash.hash(filePath, "sha256", (err: BusinessError, str: string) => {
   }
 });
 ```
-

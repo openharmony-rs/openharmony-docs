@@ -4,8 +4,6 @@
 
 **起始版本：** 21
 
-<!--Device-unnamed-declare namespace identifySensitiveContent--><!--Device-unnamed-declare namespace identifySensitiveContent-End-->
-
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 ## 导入模块
@@ -28,4 +26,3 @@ import { identifySensitiveContent } from '@kit.DataProtectionKit';
 | --- | --- |
 | [MatchResult(Identify sensitive file)](arkts-dataprotection-identifysensitivecontent-matchresult-i.md) | 表示敏感内容的识别结果。 |
 | [Policy(Identify sensitive file)](arkts-dataprotection-identifysensitivecontent-policy-i.md) | 定义敏感内容识别策略。 单个策略内，关键字与正则表达式为顺序组合关系，实行两级匹配：首先进行关键字匹配，若命中，则仅在该关键字匹配位置的前后50字节窗口内，进行正则表达式匹配。 若只设置关键字，则仅进行关键字匹配。若只设置正则表达式，则仅进行正则表达式匹配。 多个Policy策略之间独立，扫描时会分别应用每个策略。 sensitiveLabel用于标记匹配结果，便于识别具体匹配的策略。 |
-

@@ -2,17 +2,13 @@
 
 表示凭据详细信息。
 
-**起始版本：** 23
-
-<!--Device-certificateManager-export interface Credential--><!--Device-certificateManager-export interface Credential-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 ## 导入模块
 
 ```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ```
 
 ## alias
@@ -25,25 +21,21 @@ alias: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Credential-alias: string--><!--Device-Credential-alias: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 ## certNum
 
 ```TypeScript
-certNum: int
+certNum: number
 ```
 
 表示凭据中包含的证书个数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Credential-certNum: int--><!--Device-Credential-certNum: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -57,9 +49,7 @@ certPurpose?: CertificatePurpose
 
 **类型：** [CertificatePurpose](arkts-devicecertificate-certificatemanager-certificatepurpose-e.md)
 
-**起始版本：** 23
-
-<!--Device-Credential-certPurpose?: CertificatePurpose--><!--Device-Credential-certPurpose?: CertificatePurpose-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -73,25 +63,21 @@ credentialData: Uint8Array
 
 **类型：** Uint8Array
 
-**起始版本：** 23
-
-<!--Device-Credential-credentialData: Uint8Array--><!--Device-Credential-credentialData: Uint8Array-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 ## keyNum
 
 ```TypeScript
-keyNum: int
+keyNum: number
 ```
 
 表示凭据中包含的密钥个数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Credential-keyNum: int--><!--Device-Credential-keyNum: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -105,9 +91,7 @@ keyUri: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Credential-keyUri: string--><!--Device-Credential-keyUri: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -121,9 +105,6 @@ type: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Credential-type: string--><!--Device-Credential-type: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.CertificateManager
-
