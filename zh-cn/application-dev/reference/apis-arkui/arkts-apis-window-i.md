@@ -508,7 +508,7 @@
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | animationParams             | [StartAnimationParams](arkts-apis-window-i.md#startanimationparams20)                 | 否   | 是   | 启动动画参数配置。默认值为undefined，若不配置将保持系统默认动效。 |
 | needAnimation<sup>23+</sup> | boolean | 否 | 是 | 是否启用窗口创建动效。<br>传入true时，跟随系统默认动效。传入false时，表示关闭窗口创建动效，仅在[自由窗口状态](../../windowmanager/window-terminology.md#freeform-window自由窗口)的情况下生效。<br>此参数不填时，默认为undefined，跟随系统默认动效。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
-| windowMinimizedWhenStart<sup>26+</sup> | boolean | 否 | 是 | 窗口是否以最小化状态启动。<br>传入true时，窗口将不会拉起到前台。传入false时，表示窗口正常启动。<br>此参数不填时，窗口正常启动。<br> **模型约束：** 此接口仅可在Stage模型下使用。 <br> **注意**：该参数只在 PC/2in1 设备上生效。|
+| minimizeOnStart<sup>26+</sup> | boolean | 否 | 是 | 窗口是否以最小化状态启动。<br>传入true时，窗口将不会拉起到前台。传入false时，表示窗口正常启动。<br>此参数不填时，窗口正常启动。<br> **模型约束：** 此接口仅可在Stage模型下使用。 <br> **注意**：该参数只在 PC/2in1 设备上生效。|
 | excludeFromDock<sup>26+</sup> | boolean | 否 | 是 | 是否屏蔽Dock栏图标及Hover缩略图。<br>传入true时，则当前窗口不会在Dock栏上显示图标及Hover缩略图。<br>此参数不填时，窗口正常启动。<br> **模型约束：** 此接口仅可在Stage模型下使用。 <br> **注意**：1. 该参数只在 PC/2in1 设备上生效；2. 该参数需要绑定托盘图标。|
 | excludeFromRecent<sup>26+</sup> | boolean | 否 | 是 | 是否屏蔽多任务视图。<br>传入true时，则当前窗口不会在多任务视图中显示。传入false时，表示窗口正常启动。<br>此参数不填时，窗口正常启动。<br> **模型约束：** 此接口仅可在Stage模型下使用。 <br> **注意**：1. 该参数只在 PC/2in1 设备上生效；2. 该参数需要绑定托盘图标。|
 
