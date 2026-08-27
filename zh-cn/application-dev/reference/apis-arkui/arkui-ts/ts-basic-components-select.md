@@ -1836,7 +1836,7 @@ struct Index {
 
 ### 示例11（设置Select和下拉菜单沉浸光感效果）
 
-该示例通过调用[menuSystemMaterial](#menusystemmaterial)接口实现下拉菜单沉浸光感效果，通过[SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial)接口实现Select组件沉浸光感效果。
+该示例通过调用[menuSystemMaterial](#menusystemmaterial)接口设置下拉菜单的系统材质，实现沉浸光感效果；通过[SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial)接口设置Select组件的系统材质，实现沉浸光感效果。
 
 组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
@@ -1876,10 +1876,10 @@ struct Index {
   }
 }
 ```
-未设置沉浸光感时：
+未设置系统材质时：
 
-![未设置沉浸光感时](figures/selectWithoutNewMaterial.gif)
+![未设置系统材质时](figures/selectWithoutNewMaterial.gif)
 
-设置沉浸光感后：
+设置系统材质后：
 
-![设置沉浸光感后](figures/selectNewMaterial.gif)
+![设置系统材质后](figures/selectNewMaterial.gif)

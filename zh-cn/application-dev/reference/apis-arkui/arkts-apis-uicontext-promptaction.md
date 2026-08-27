@@ -363,13 +363,13 @@ struct Index {
 }
 ```
 
-未设置沉浸光感时：
+未设置系统材质时：
 
-![未设置沉浸光感时](figures/toastwithoutmaterial.gif)
+![未设置系统材质时](figures/toastwithoutmaterial.gif)
 
-设置沉浸光感后：
+设置系统材质后：
 
-![设置沉浸光感后](figures/toastwithmaterial.gif)
+![设置系统材质后](figures/toastwithmaterial.gif)
 
 ## showDialog
 

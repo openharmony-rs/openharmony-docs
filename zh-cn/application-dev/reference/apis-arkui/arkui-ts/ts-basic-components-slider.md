@@ -1850,7 +1850,7 @@ struct SliderExample {
 
 ### 示例10（设置滑动条的沉浸光感效果）
 
-该示例通过通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)为滑动条设置沉浸光感。
+该示例通过通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)设置滑动条的系统材质，实现沉浸光感效果。
 
 组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
@@ -1883,10 +1883,10 @@ struct SliderSystemMaterial {
   }
 }
 ```
-未设置沉浸光感时：
+未设置系统材质时：
 
-![未设置沉浸光感时](figures/slider_10_without_new_material.gif)
+![未设置系统材质时](figures/slider_10_without_new_material.gif)
 
-设置沉浸光感后：
+设置系统材质后：
 
-![设置沉浸光感后](figures/slider_10_new_material.gif)
+![设置系统材质后](figures/slider_10_new_material.gif)
