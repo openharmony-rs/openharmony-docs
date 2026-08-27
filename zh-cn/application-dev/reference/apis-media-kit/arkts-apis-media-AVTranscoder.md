@@ -84,14 +84,14 @@ import { image } from '@kit.ImageKit';
 async function test(context: Context) {
   // 创建转码实例。
   let avTranscoder = await media.createAVTranscoder();
-
+  
   // 配置水印参数。
   let watermarkConfig: media.WatermarkConfiguration = {
-    // 根据实际需求配置水印参数，单位为像素（px）。
-    top: 40,
-    left: 40,
-    width: 200,
-    height: 300,
+      // 根据实际需求配置水印参数，单位为像素（px）。
+      top : 40,
+      left : 40,
+      width: 200,
+      height: 300,
   };
 
   // 获取资源管理器
