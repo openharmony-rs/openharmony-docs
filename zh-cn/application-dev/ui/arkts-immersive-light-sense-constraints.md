@@ -43,8 +43,7 @@ struct MaterialAreaExample {
       Navigation() {
         // 页面内容
       }
-      .title(this.NavigationTitle)
-      .titleMode(NavigationTitleMode.Full)
+      .title({ builder: this.NavigationTitle, height: '100%' })
     }.width('100%').height('100%')
   }
 }

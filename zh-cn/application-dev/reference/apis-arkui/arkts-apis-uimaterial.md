@@ -22,6 +22,10 @@ import { uiMaterial } from '@kit.ArkUI';
 
 沉浸式材质类，继承自[Material](#material)。
 
+组件上设置ImmersiveMaterial时，沉浸式材质的生效需满足任一条件：
+   - 组件位于Navigation或NavDestination的标题栏，或横向Tabs中barPosition为BarPosition.End的底部TabBar。
+   - 组件为Popup、Tips、Menu、Sheet、AlertDialog、CustomDialog、ActionSheet、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、Toast、Select下拉菜单、AlphabetIndexer气泡弹窗等弹窗类组件以及Slider、Toggle组件。
+
 沉浸式材质根据设备是否支持沉浸式材质和设备算力有分档表现，可通过[uiMaterial.isImmersiveMaterialSupported](#uimaterialisimmersivematerialsupported)判断设备是否支持沉浸式材质，通过[uiMaterial.getGlobalMaterialLevel](#uimaterialgetglobalmateriallevel)获取设备的材质等级。在不支持沉浸式材质的设备上可设置沉浸式材质但无效果。在支持沉浸式材质的高算力和中算力设备上，通过材质层滤镜属性[materialFilter](arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)和阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)属性实现材质效果，当[systemMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性生效后，已设置的背景色属性[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)会被恢复为透明色，已设置的边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)属性会被恢复为无边框效果。在支持沉浸式材质的低算力设备上，通过背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)属性实现材质效果。同一材质的效果，会受到系统设置应用中沉浸光感配置项的影响，不同强弱程度的沉浸光感配置下，材质的参数和效果存在差异。
 
 ### constructor
@@ -312,7 +316,8 @@ import { uiMaterial } from '@kit.ArkUI';
 @Component
 struct SystemMaterialPage {
 
-  build() {
+  @Builder
+  NavigationTitle() {
     Column() {
       Stack() {
         Image($r('app.media.bg1')) // $r('app.media.bg1')需要替换为开发者所需的图像资源文件
@@ -384,10 +389,18 @@ struct SystemMaterialPage {
       .height('90%')
       .width('90%')
     }
-    .height('100%')
     .width('100%')
     .alignItems(HorizontalAlign.Center)
     .justifyContent(FlexAlign.Center)
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
   }
 }
 ```
@@ -434,7 +447,8 @@ import { uiMaterial } from '@kit.ArkUI';
 struct MaterialInfoPage {
   // 获取材质配置信息
   private info: uiMaterial.MaterialInfo = uiMaterial.getMaterialInfo();
-  build() {
+  @Builder
+  NavigationTitle() {
     Column() {
       Text(`MaterialState: ${this.info.state}`)
         .fontSize(16)
@@ -466,11 +480,19 @@ struct MaterialInfoPage {
       }
     }
     .width('100%')
-    .height('100%')
     .justifyContent(FlexAlign.Center)
     // $r('app.media.img')需要替换为开发者所需的图像资源文件
     .backgroundImage($r('app.media.img'))
     .backgroundImageSize(ImageSize.FILL)
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
   }
 }
 ```
@@ -499,7 +521,8 @@ import { uiMaterial } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  build() {
+  @Builder
+  NavigationTitle() {
     Stack() {
       // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.startIcon'))
@@ -522,6 +545,15 @@ struct Index {
       .width('100%')
       .justifyContent(FlexAlign.Center)
     }
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
   }
 }
 ```
@@ -549,7 +581,8 @@ struct LightEffect {
     interactive: true,
     lightEffect: { color: undefined },
   });
-  build() {
+  @Builder
+  NavigationTitle() {
     Column() {
       Row() {
         Row({ space: this.spaceValue }) {
@@ -567,8 +600,16 @@ struct LightEffect {
       .width('100%')
       .padding(20)
     }
-    .height('100%')
     .width('100%')
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
   }
 }
 ```
@@ -590,7 +631,8 @@ struct MaterialLevelPage {
   private materialLevel: uiMaterial.MaterialLevel = uiMaterial.getGlobalMaterialLevel(); // 材质档位由设备决定，应用运行后不会改变
   private isSupported: boolean = uiMaterial.isImmersiveMaterialSupported(); // 是否支持沉浸式材质由设备决定，应用运行后不会改变
 
-  build() {
+  @Builder
+  NavigationTitle() {
     Column({ space: 20 }) {
       Text(`MaterialLevel: ${this.materialLevel}`)
         .fontSize(16)
@@ -643,8 +685,16 @@ struct MaterialLevelPage {
       .justifyContent(FlexAlign.Center)
     }
     .width('100%')
-    .height('100%')
     .justifyContent(FlexAlign.Center)
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
   }
 }
 ```

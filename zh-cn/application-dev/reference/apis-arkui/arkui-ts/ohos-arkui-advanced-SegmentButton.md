@@ -1363,7 +1363,8 @@ struct Index {
   });
   @State tabSelectedIndexes: number[] = [0];
 
-  build() {
+  @Builder
+  NavigationTitle() {
     Column({ space: 20 }) {
       SegmentButton({
         options: this.tabOptions,
@@ -1381,6 +1382,15 @@ struct Index {
         ['#3B324C', 1.0] // 结束颜色及位置（1.0表示终点）。
       ]
     })
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
   }
 }
 ```

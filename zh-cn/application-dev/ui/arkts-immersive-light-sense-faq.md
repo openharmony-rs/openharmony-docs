@@ -19,11 +19,11 @@
 **可能原因**
 
 - 沉浸式系统材质的视觉层级位于组件的[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等属性之下。如果同时设置了不透明的背景色或背景模糊样式，这些属性会覆盖在材质层之上，导致材质效果被遮挡不可见。
-- 沉浸式系统材质对生效范围有约束。通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)为组件设置的沉浸式系统材质仅在Navigation/NavDestination标题栏子树，或横向Tabs中barPosition为BarPosition.End的底部TabBar子树中生效，范围外的普通组件不显示材质效果。Slider、Toggle不受此范围限制；Popup、Tips、Menu、Sheet、AlertDialog、CustomDialog、ActionSheet、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、Toast、Select下拉菜单、AlphabetIndexer等弹窗类组件不受此范围限制。
+- 沉浸式系统材质在组件上生效存在约束。通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)为组件设置的沉浸式系统材质仅在Navigation/NavDestination标题栏子树，或横向Tabs中barPosition为BarPosition.End的底部TabBar子树中生效，范围外的普通组件不显示材质效果。Slider、Toggle不受此范围限制；Popup、Tips、Menu、Sheet、AlertDialog、CustomDialog、ActionSheet、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、Toast、Select下拉菜单、AlphabetIndexer气泡弹窗等弹窗类组件不受此范围限制。
 
 **解决措施**
 
-1. 将需要沉浸光感效果的组件置于Navigation/NavDestination标题栏子树，或横向Tabs中`barPosition`为`BarPosition.End`的底部TabBar子树中。
+1. 将需要沉浸光感效果的组件置于Navigation/NavDestination标题栏子树，或横向Tabs中barPosition为BarPosition.End的底部TabBar子树中。
 2. 若置于上述有效区域后仍未生效，将组件的背景色设置为透明（`Color.Transparent`）或移除背景色设置。
 3. 移除[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等背景模糊样式，避免模糊效果覆盖材质层。
 
@@ -64,8 +64,7 @@ struct MaterialScopeExample {
       Navigation() {
         // 页面内容
       }
-      .title(this.NavigationTitle)
-      .titleMode(NavigationTitleMode.Full)
+      .title({ builder: this.NavigationTitle, height: '100%' })
     }.width('100%').height('100%')
   }
 }

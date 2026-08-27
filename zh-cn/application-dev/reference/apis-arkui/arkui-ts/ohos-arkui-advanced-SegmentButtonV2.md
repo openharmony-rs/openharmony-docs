@@ -1072,7 +1072,8 @@ struct SegmentButtonV2Example {
   ]);
   @Local imageSelectedIndex: number = 0;
 
-  build() {
+  @Builder
+  NavigationTitle() {
     Column({ space: 12 }) {
       VCard({ title: '纯文本选项' }) {
         TabSegmentButtonV2({
@@ -1107,7 +1108,6 @@ struct SegmentButtonV2Example {
           })
         })
       }
-
     }
     .linearGradient({
       angle: 180, // 渐变角度，180度是从上到下。
@@ -1120,6 +1120,15 @@ struct SegmentButtonV2Example {
     .height(225)
     .justifyContent(FlexAlign.Start)
     .padding(16)
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
   }
 }
 

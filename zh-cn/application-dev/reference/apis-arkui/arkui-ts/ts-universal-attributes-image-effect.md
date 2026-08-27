@@ -1187,7 +1187,7 @@ systemMaterial(material: SystemUiMaterial \| undefined): T
 
 > **说明：**
 >
-> - 除Popup、Tips、Menu、Sheet、AlertDialog、CustomDialog、ActionSheet、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、Toast、Select下拉菜单、AlphabetIndexer等弹窗类组件以及Slider、Toggle组件，其他组件通过该属性设置系统材质时，仅在Navigation或NavDestination的标题栏子树，或横向Tabs中barPosition为BarPosition.End的底部TabBar子树中生效。
+> - 通过该属性设置组件的系统材质时，仅在Navigation或NavDestination的标题栏，或横向Tabs中barPosition为BarPosition.End的底部TabBar中生效。
 >
 > - [ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)只有支持沉浸式材质的设备上设置才有效果，在不支持沉浸式材质的设备上可设置但无效果，可通过[isImmersiveMaterialSupported](../arkts-apis-uimaterial.md#uimaterialisimmersivematerialsupported)判断设备是否支持沉浸式材质。在不支持沉浸式材质的设备上，设置ImmersiveMaterial后，组件的样式仍由已设置的通用属性决定，ImmersiveMaterial不会覆盖任何通用属性。
 > - 在同时设置了材质影响的通用属性发生冲突时，除阴影外，总体原则为后设置的生效，对于阴影属性取决于[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)的applyShadow参数。
