@@ -2,9 +2,7 @@
 
 Provides the API to obtain the color effects supported.
 
-**起始版本：** 23
-
-<!--Device-camera-interface ColorEffectQuery--><!--Device-camera-interface ColorEffectQuery-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13,8 +11,6 @@ Provides the API to obtain the color effects supported.
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## getSupportedColorEffects
@@ -25,9 +21,7 @@ getSupportedColorEffects(): Array<ColorEffectType>
 
 Obtains the supported color effects.
 
-**起始版本：** 23
-
-<!--Device-ColorEffectQuery-getSupportedColorEffects(): Array<ColorEffectType>--><!--Device-ColorEffectQuery-getSupportedColorEffects(): Array<ColorEffectType>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -43,8 +37,8 @@ Obtains the supported color effects.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 
 **示例**
 
@@ -54,4 +48,3 @@ function getSupportedColorEffects(session: camera.PhotoSessionForSys): Array<cam
   return colorEffects;
 }
 ```
-

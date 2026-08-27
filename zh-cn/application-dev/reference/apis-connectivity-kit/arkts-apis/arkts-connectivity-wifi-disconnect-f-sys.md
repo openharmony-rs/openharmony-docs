@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## disconnect
@@ -24,8 +21,6 @@ function disconnect(): boolean
 **替代接口：** [disconnect](arkts-connectivity-wifimanager-disconnect-f.md)
 
 **需要权限：** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
-
-<!--Device-wifi-function disconnect(): boolean--><!--Device-wifi-function disconnect(): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -48,4 +43,3 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
-

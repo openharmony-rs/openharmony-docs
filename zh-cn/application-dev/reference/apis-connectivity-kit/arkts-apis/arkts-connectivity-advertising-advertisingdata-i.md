@@ -1,10 +1,8 @@
 # AdvertisingData
 
-广播数据。
+表示广播数据包。
 
 **起始版本：** 26.0.0
-
-<!--Device-advertising-interface AdvertisingData--><!--Device-advertising-interface AdvertisingData-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -20,15 +18,13 @@ import { advertising } from '@kit.ConnectivityKit';
 includeDeviceName?: boolean
 ```
 
-指示是否包含设备名称。 默认值： 默认值：false。
+指示广播数据中是否携带本机设备名。true：表示包含设备名称。false：表示不包含设备名称。默认值为false。
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AdvertisingData-includeDeviceName?: boolean--><!--Device-AdvertisingData-includeDeviceName?: boolean-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -38,15 +34,13 @@ includeDeviceName?: boolean
 manufacturerData?: ManufacturerData[]
 ```
 
-制造商数据。
+厂商数据。若未配置则默认不携带该字段。
 
 **类型：** [ManufacturerData](arkts-connectivity-advertising-manufacturerdata-i.md)[]
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AdvertisingData-manufacturerData?: ManufacturerData[]--><!--Device-AdvertisingData-manufacturerData?: ManufacturerData[]-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -56,15 +50,13 @@ manufacturerData?: ManufacturerData[]
 serviceData?: ServiceData[]
 ```
 
-服务数据。
+服务数据。若未配置则默认不携带该字段。
 
 **类型：** [ServiceData](arkts-connectivity-advertising-servicedata-i.md)[]
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AdvertisingData-serviceData?: ServiceData[]--><!--Device-AdvertisingData-serviceData?: ServiceData[]-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -74,7 +66,7 @@ serviceData?: ServiceData[]
 serviceUuids?: string[]
 ```
 
-指定的服务UUID。 UUID的长度必须为36，由36位十六进制数字和“-”组成。 例如：FFFFFFFF-1234-5678-ABCD-000000001234，表示128位的标识符。
+服务UUID列表。UUID长度必须为36个字符，由32个十六进制数字和4个连字符（-）组成。若未配置则默认不携带该字段。
 
 **类型：** string[]
 
@@ -82,7 +74,4 @@ serviceUuids?: string[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AdvertisingData-serviceUuids?: string[]--><!--Device-AdvertisingData-serviceUuids?: string[]-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

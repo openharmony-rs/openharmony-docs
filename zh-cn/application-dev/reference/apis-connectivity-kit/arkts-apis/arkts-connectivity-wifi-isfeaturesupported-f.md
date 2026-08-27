@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## isFeatureSupported
@@ -24,8 +21,6 @@ function isFeatureSupported(featureId: number): boolean
 **替代接口：** [isFeatureSupported](arkts-connectivity-wifimanager-isfeaturesupported-f.md)
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
-
-<!--Device-wifi-function isFeatureSupported(featureId: number): boolean--><!--Device-wifi-function isFeatureSupported(featureId: number): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
@@ -54,4 +49,3 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
-

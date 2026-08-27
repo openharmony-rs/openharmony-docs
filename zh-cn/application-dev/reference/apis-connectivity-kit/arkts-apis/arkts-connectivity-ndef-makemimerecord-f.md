@@ -1,0 +1,40 @@
+# makeMimeRecord
+
+## 导入模块
+
+```TypeScript
+import { tag } from '@kit.ConnectivityKit';
+```
+
+## makeMimeRecord
+
+```TypeScript
+function makeMimeRecord(mimeType: string, mimeData: number[]): NdefRecord
+```
+
+根据输入的MIME数据和类型，构建NDEF标签的Record。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Communication.NFC.Tag
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| mimeType | string | 是 | 符合RFC规则的MIME类型，比如"text/plain"或"image/jpeg"。 |
+| mimeData | number[] | 是 | MIME数据内容，每个number十六进制表示，范围是0x00~0xFF。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [NdefRecord](arkts-connectivity-tag-ndefrecord-i.md) | NDEF标签的Record，详见NDEF技术规范《NFCForum-TS-NDEF_1.0》。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes:   1. Mandatory parameters are left unspecified.   2. Incorrect parameters types.   3. Parameter verification failed. |

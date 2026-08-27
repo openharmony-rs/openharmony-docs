@@ -1,12 +1,10 @@
-# @ohos.nearlink.advertising
+# @ohos.nearlink.advertising(星闪广播能力)
 
-提供与广播相关的方法。附近的设备可以扫描并发现该设备。
+本模块提供了发送星闪广播的相关功能，包括启动广播、停止广播、订阅广播状态等。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-unnamed-declare namespace advertising--><!--Device-unnamed-declare namespace advertising-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -22,26 +20,25 @@ import { advertising } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [offAdvertisingStateChange](arkts-connectivity-advertising-offadvertisingstatechange-f.md) | 取消订阅广播状态变更事件。 |
-| [onAdvertisingStateChange](arkts-connectivity-advertising-onadvertisingstatechange-f.md) | 订阅广播状态变化事件。 只有授予了ohos.permission.NEARLINK_ACCESS权限的系统应用程序才能访问此事件。 |
-| [startAdvertising](arkts-connectivity-advertising-startadvertising-f.md) | 开始广播。 |
-| [stopAdvertising](arkts-connectivity-advertising-stopadvertising-f.md) | 停止广播ID对应的广播。 |
+| [offAdvertisingStateChange(星闪广播能力)](arkts-connectivity-advertising-offadvertisingstatechange-f.md) | 取消订阅星闪广播状态变化事件。使用callback异步回调。 |
+| [onAdvertisingStateChange(星闪广播能力)](arkts-connectivity-advertising-onadvertisingstatechange-f.md) | 订阅星闪广播状态变化事件。使用callback异步回调。当调用[advertising.startAdvertising](arkts-connectivity-advertising-startadvertising-f.md)启动广播或 [advertising.stopAdvertising](arkts-connectivity-advertising-stopadvertising-f.md)停止广播时，回调函数会被触发，返回对应的广播ID与广播状态。需与 [advertising.offAdvertisingStateChange](arkts-connectivity-advertising-offadvertisingstatechange-f.md)配对使用。应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。 |
+| [startAdvertising(星闪广播能力)](arkts-connectivity-advertising-startadvertising-f.md) | 发送星闪广播。使用Promise异步回调。适用于设备发现、设备信息广播等需要将本端设备能力或数据对外发布的业务场景，配合 [advertising.onAdvertisingStateChange](arkts-connectivity-advertising-onadvertisingstatechange-f.md)可监听广播启停状态。 |
+| [stopAdvertising(星闪广播能力)](arkts-connectivity-advertising-stopadvertising-f.md) | 停止发送星闪广播。使用Promise异步回调。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [AdvertisingData](arkts-connectivity-advertising-advertisingdata-i.md) | 广播数据。 |
-| [AdvertisingParams](arkts-connectivity-advertising-advertisingparams-i.md) | 广播参数。 |
-| [AdvertisingSettings](arkts-connectivity-advertising-advertisingsettings-i.md) | 广播设置。 |
-| [AdvertisingStateChangeInfo](arkts-connectivity-advertising-advertisingstatechangeinfo-i.md) | 广播状态变化信息。 |
-| [ManufacturerData](arkts-connectivity-advertising-manufacturerdata-i.md) | 描述制造商数据。 |
-| [ServiceData](arkts-connectivity-advertising-servicedata-i.md) | 服务数据。 |
+| [AdvertisingData(星闪广播能力)](arkts-connectivity-advertising-advertisingdata-i.md) | 表示广播数据包。 |
+| [AdvertisingParams(星闪广播能力)](arkts-connectivity-advertising-advertisingparams-i.md) | 表示发送广播携带的参数。 |
+| [AdvertisingSettings(星闪广播能力)](arkts-connectivity-advertising-advertisingsettings-i.md) | 表示广播配置参数。 |
+| [AdvertisingStateChangeInfo(星闪广播能力)](arkts-connectivity-advertising-advertisingstatechangeinfo-i.md) | 表示广播启停状态变化信息。 |
+| [ManufacturerData(星闪广播能力)](arkts-connectivity-advertising-manufacturerdata-i.md) | 表示厂商数据。 |
+| [ServiceData(星闪广播能力)](arkts-connectivity-advertising-servicedata-i.md) | 表示服务相关数据。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [AdvertisingState](arkts-connectivity-advertising-advertisingstate-e.md) | 广播状态的枚举。 |
-| [TxPowerMode](arkts-connectivity-advertising-txpowermode-e.md) | 广播模式的枚举。 |
-
+| [AdvertisingState(星闪广播能力)](arkts-connectivity-advertising-advertisingstate-e.md) | 表示广播状态，为枚举值。 |
+| [TxPowerMode(星闪广播能力)](arkts-connectivity-advertising-txpowermode-e.md) | 表示广播发送模式，为枚举值。 |

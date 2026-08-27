@@ -1,10 +1,8 @@
 # AdvertisingParams
 
-广播参数。
+表示发送广播携带的参数。
 
 **起始版本：** 26.0.0
-
-<!--Device-advertising-interface AdvertisingParams--><!--Device-advertising-interface AdvertisingParams-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -20,15 +18,13 @@ import { advertising } from '@kit.ConnectivityKit';
 advertisingData: AdvertisingData
 ```
 
-广播数据。
+广播数据包。
 
 **类型：** [AdvertisingData](arkts-connectivity-advertising-advertisingdata-i.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AdvertisingParams-advertisingData: AdvertisingData--><!--Device-AdvertisingParams-advertisingData: AdvertisingData-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -38,7 +34,7 @@ advertisingData: AdvertisingData
 advertisingSettings: AdvertisingSettings
 ```
 
-广播设置。
+广播配置参数。
 
 **类型：** [AdvertisingSettings](arkts-connectivity-advertising-advertisingsettings-i.md)
 
@@ -46,7 +42,4 @@ advertisingSettings: AdvertisingSettings
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AdvertisingParams-advertisingSettings: AdvertisingSettings--><!--Device-AdvertisingParams-advertisingSettings: AdvertisingSettings-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

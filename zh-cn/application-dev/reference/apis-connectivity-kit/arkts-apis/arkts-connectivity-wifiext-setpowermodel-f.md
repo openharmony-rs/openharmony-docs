@@ -22,8 +22,6 @@ function setPowerModel(model: PowerModel): boolean
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
 
-<!--Device-wifiext-function setPowerModel(model: PowerModel): boolean--><!--Device-wifiext-function setPowerModel(model: PowerModel): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.AP.Extension
 
 **参数：**
@@ -37,4 +35,3 @@ function setPowerModel(model: PowerModel): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 操作结果， true: 成功， false: 失败。 |
-

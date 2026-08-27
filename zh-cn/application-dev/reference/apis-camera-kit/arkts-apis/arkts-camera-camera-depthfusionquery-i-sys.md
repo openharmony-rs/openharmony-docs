@@ -2,9 +2,7 @@
 
 A class for querying depth fusion capabilities.
 
-**起始版本：** 23
-
-<!--Device-camera-interface DepthFusionQuery--><!--Device-camera-interface DepthFusionQuery-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13,21 +11,17 @@ A class for querying depth fusion capabilities.
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## getDepthFusionThreshold
 
 ```TypeScript
-getDepthFusionThreshold(): Array<double>
+getDepthFusionThreshold(): Array<number>
 ```
 
 Obtains the depth fusion threshold.
 
-**起始版本：** 23
-
-<!--Device-DepthFusionQuery-getDepthFusionThreshold(): Array<double>--><!--Device-DepthFusionQuery-getDepthFusionThreshold(): Array<double>-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -37,14 +31,14 @@ Obtains the depth fusion threshold.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;double&gt; | Depth fusion threshold. |
+| Array & lt;number & gt; | Depth fusion threshold. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 
 **示例**
 
@@ -70,9 +64,7 @@ isDepthFusionSupported(): boolean
 
 Checks whether depth fusion is supported.
 
-**起始版本：** 23
-
-<!--Device-DepthFusionQuery-isDepthFusionSupported(): boolean--><!--Device-DepthFusionQuery-isDepthFusionSupported(): boolean-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -88,8 +80,8 @@ Checks whether depth fusion is supported.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 
 **示例**
 
@@ -106,4 +98,3 @@ function isDepthFusionSupported(DepthFusionQuery: camera.DepthFusionQuery): void
   }
 }
 ```
-

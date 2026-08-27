@@ -41,7 +41,7 @@ Bluetooth disabled.
 
 **可能原因**
 
-蓝牙开关已关闭。
+蓝牙开关被用户手动关闭，或因系统异常导致蓝牙服务自动关闭。
 
 **处理步骤**
 
@@ -99,7 +99,7 @@ The maximum number of connections has been reached.
 
 **处理步骤**
 
-检查已配对设备数量，是否超出阈值。
+检查已配对设备数量，若超出阈值，请先断开部分已连接的设备，再重新尝试连接。
 
 ## 2900007 异步接口调用超时
 
@@ -135,7 +135,7 @@ pimpl或proxy为空。
 
 **处理步骤**
 
-重新打开蓝牙开关，执行配对流程。
+尝试重新打开蓝牙开关，执行配对流程后，再调用相关接口。
 
 ## 2900009 硬件资源不足
 
@@ -173,7 +173,7 @@ Resources have reached the upper limit.
 
 **处理步骤**
 
-调用对应接口释放资源。
+调用对应的资源释放接口释放资源，例如调用停止扫描接口或断开已建立的连接后重试。
 
 ## 2900011 操作频繁
 
@@ -207,7 +207,7 @@ The user does not respond.
 
 **可能原因**
 
-用户在一定时间内未执行规定操作，导致前置操作超时。
+用户在系统规定的超时时限内未完成前置操作，导致前置操作超时。
 
 **处理步骤**
 
@@ -288,7 +288,7 @@ Operation failed.
 
 **处理步骤**
 
-检查接口调用的前置依赖条件，具体处理步骤可参考蓝牙接口调用报错2900099。
+检查接口调用的前置依赖条件。
 
 ### 无效参数
 **错误信息**
@@ -665,6 +665,86 @@ Operation failed. Bas request busy.
 
 等待电量服务处理完当前请求后再进行操作。
 
+以下为BLE蓝牙业务返回错误码`2900099`时的常见问题案例。
+
+### 调用setCharacteristicChangeNotification失败-server端未创建描述符写入监听
+
+调用setCharacteristicChangeNotification返回错误码`2900099`时，根据以下场景进行排查。
+
+server端未创建on('descriptorWrite')监听，client端setCharacteristicChangeNotification接口处于持续请求的阻塞状态。
+
+**可能原因**
+
+server端未创建on('descriptorWrite')监听，无法接收到client端发来的描述符请求。
+
+**处理步骤**
+
+server端创建on('descriptorWrite')监听。
+
+### 调用setCharacteristicChangeNotification失败-server端未及时应答
+
+server端接收到client端发来的描述符请求后，未及时调用sendResponse接口应答（检查日志是否返回OnSetNotifyCharacteristic关键字），client端setCharacteristicChangeNotification接口处于持续请求的阻塞状态。
+
+**典型日志信息**
+
+```text
+bta gattc enqueue: already has a pending command
+```
+
+**可能原因**
+
+server端在接收到client端发来的描述符请求后，没有及时调用sendResponse接口应答。
+
+**处理步骤**
+
+server端在接收到client端发来的描述符请求后，及时调用sendResponse接口向client返回数据。
+
+### 调用setCharacteristicChangeNotification失败-前序异步接口调用未完成
+
+调用setCharacteristicChangeNotification接口时，有其它异步接口调用未完成，导致setCharacteristicChangeNotification接口调用被阻塞。排查方式如下：
+
+- 在接口回调中设置日志打印，查看接口调用的完整顺序流程。从创建对象实例到数据传输，BLE蓝牙client端接口调用顺序参考如下：
+  - 调用createGattClientDevice接口创建client实例。
+  - 创建BLE蓝牙连接状态监听、MTU变化监听、特征值变化监听等接口。
+  - 调用connect接口连接BLE蓝牙。
+  - 调用setBLEMtuSize接口协商MTU。
+  - 调用getServices接口获取server端支持的所有服务能力。
+  - 调用setCharacteristicChangeNotification接口设置server端特征值内容变更通知的能力。
+  - 调用writeCharacteristicValue接口向server端写入特征值数据。
+- 排查系统日志输出。可在问题复现后生成hilog日志，查看日志中各接口调用开始/完成时，系统日志输出的时间点，从而判断是否出现了接口调用阻塞情况。如：setCharacteristicChangeNotification接口调用开始时，系统日志中会打印出关键字setCharacteristicChangeNotification；接口调用完成时，可通过setCharacteristicChangeNotification接口Callback回调中自定义的日志进行判断。
+
+**可能原因**
+
+在调用setCharacteristicChangeNotification接口前，一般会先调用setBLEMtuSize异步接口，与server端协商MTU数据传输大小，然后再调用getServices接口，获取server端的特征值服务列表。这些前序异步接口调用未完成，导致setCharacteristicChangeNotification接口调用被阻塞。
+
+**处理步骤**
+
+在setBLEMtuSize和getServices接口依次调用成功后，再调用setCharacteristicChangeNotification接口，设置接收server端特征值内容变更通知的能力。完整调用顺序请参考连接和传输数据开发指导。
+
+### 调用writeCharacteristicValue失败-前序接口调用未完成
+
+当上一个非监听类BLE蓝牙接口（setBLEMtuSize、getServices和setCharacteristicChangeNotification）回调还未返回时写入数据，出现2900099报错提示，导致写入数据失败。
+
+**可能原因**
+
+前序非监听类BLE蓝牙接口调用未完成。
+
+**处理步骤**
+
+保证在其它非监听类BLE接口回调触发完成后，再调用writeCharacteristicValue接口写入数据。
+
+### GATT设备重连后接口调用失败-gattClient对象未及时销毁
+
+每次重连GATT设备时都会重新创建新的gattClient对象，建立一路新的GATT连接。每次连接关闭后未及时调用close接口销毁gattClient对象实例。
+
+**可能原因**
+
+gattClient对象实例未及时销毁，导致每次重连时重复多次调用setCharacteristicChangeNotification和getServices，出现busy现象，进而导致报错2900099。
+
+**处理步骤**
+
+每次连接关闭后，及时调用close接口销毁gattClient对象。
+
 ## 2900100 IPC传输失败
 
 **错误信息**
@@ -781,7 +861,7 @@ The connection is not authenticated.
 
 **错误描述**
 
-GATT处于未认证的状态下，执行需要认证权限的特征值或描述符读写操作。此操作是否需要加密由server端特征值或描述符的权限指定。
+GATT处于未认证的状态下，执行需要认证权限的特征值或描述符读写操作。此操作是否需要认证由server端特征值或描述符的权限指定。
 
 **可能原因**
 
@@ -857,11 +937,11 @@ Failed to start scan as Ble scan is already started by the app.
 
 **可能原因**
 
-Ble扫描已被app开启。
+BLE扫描已被应用开启。
 
 **处理步骤**
 
-检查是否已经开启扫描。
+检查是否已经开启扫描。若已开启，请先调用停止扫描接口停止当前扫描后，再重新开启扫描。
 
 ## 2902054 广播报文超限
 
@@ -903,7 +983,7 @@ Invalid advertising id.
 
 **错误信息**
 
-HID application is not int the foreground.
+HID application is not in the foreground.
 
 **错误描述**
 
@@ -921,7 +1001,7 @@ HID application is not int the foreground.
 
 **错误信息**
 
-Any HID application has been registered.
+Another HID application has been registered.
 
 **错误描述**
 

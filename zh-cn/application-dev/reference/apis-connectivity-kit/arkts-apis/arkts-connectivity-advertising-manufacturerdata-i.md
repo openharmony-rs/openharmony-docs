@@ -1,10 +1,8 @@
 # ManufacturerData
 
-描述制造商数据。
+表示厂商数据。
 
 **起始版本：** 26.0.0
-
-<!--Device-advertising-interface ManufacturerData--><!--Device-advertising-interface ManufacturerData-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -20,7 +18,7 @@ import { advertising } from '@kit.ConnectivityKit';
 manufacturerData: ArrayBuffer
 ```
 
-制造商数据。
+厂商数据。
 
 **类型：** ArrayBuffer
 
@@ -28,25 +26,20 @@ manufacturerData: ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ManufacturerData-manufacturerData: ArrayBuffer--><!--Device-ManufacturerData-manufacturerData: ArrayBuffer-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 ## manufacturerId
 
 ```TypeScript
-manufacturerId: int
+manufacturerId: number
 ```
 
-厂商ID。 取值范围为全体整数。
+厂商ID。取值范围[1, 65535]。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ManufacturerData-manufacturerId: int--><!--Device-ManufacturerData-manufacturerId: int-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

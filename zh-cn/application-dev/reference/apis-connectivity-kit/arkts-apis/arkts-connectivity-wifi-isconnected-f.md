@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## isConnected
@@ -25,8 +22,6 @@ function isConnected(): boolean
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
-<!--Device-wifi-function isConnected(): boolean--><!--Device-wifi-function isConnected(): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **返回值：**
@@ -34,4 +29,3 @@ function isConnected(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | true:已连接，false:未连接。 |
-

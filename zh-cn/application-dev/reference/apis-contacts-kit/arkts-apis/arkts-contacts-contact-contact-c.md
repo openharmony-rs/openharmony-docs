@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-contact-class Contact--><!--Device-contact-class Contact-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## 导入模块
@@ -13,24 +11,6 @@
 ```TypeScript
 import { contact } from '@kit.ContactsKit';
 ```
-
-## INVALID_CONTACT_ID
-
-```TypeScript
-static readonly INVALID_CONTACT_ID: -1
-```
-
-默认联系人的id，值为-1。
-
-**类型：** -1
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Contact-static readonly INVALID_CONTACT_ID: -1--><!--Device-Contact-static readonly INVALID_CONTACT_ID: -1-End-->
-
-**系统能力：** SystemCapability.Applications.ContactsData
 
 ## contactAttributes
 
@@ -45,8 +25,6 @@ contactAttributes?: ContactAttributes
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Contact-contactAttributes?: ContactAttributes--><!--Device-Contact-contactAttributes?: ContactAttributes-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -64,8 +42,6 @@ emails?: Email[]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Contact-emails?: Email[]--><!--Device-Contact-emails?: Email[]-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## events
@@ -81,8 +57,6 @@ events?: Event[]
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Contact-events?: Event[]--><!--Device-Contact-events?: Event[]-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -100,8 +74,6 @@ groups?: Group[]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Contact-groups?: Group[]--><!--Device-Contact-groups?: Group[]-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## id
@@ -117,8 +89,6 @@ readonly id?: number
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Contact-readonly id?: number--><!--Device-Contact-readonly id?: number-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -136,7 +106,21 @@ imAddresses?: ImAddress[]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Contact-imAddresses?: ImAddress[]--><!--Device-Contact-imAddresses?: ImAddress[]-End-->
+**系统能力：** SystemCapability.Applications.ContactsData
+
+## INVALID_CONTACT_ID
+
+```TypeScript
+static readonly INVALID_CONTACT_ID: -1
+```
+
+默认联系人的id，值为-1。
+
+**类型：** -1
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -154,8 +138,6 @@ readonly key?: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Contact-readonly key?: string--><!--Device-Contact-readonly key?: string-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## name
@@ -171,8 +153,6 @@ name?: Name
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Contact-name?: Name--><!--Device-Contact-name?: Name-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -190,8 +170,6 @@ nickName?: NickName
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Contact-nickName?: NickName--><!--Device-Contact-nickName?: NickName-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## note
@@ -207,8 +185,6 @@ note?: Note
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Contact-note?: Note--><!--Device-Contact-note?: Note-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -226,8 +202,6 @@ organization?: Organization
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Contact-organization?: Organization--><!--Device-Contact-organization?: Organization-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## phoneNumbers
@@ -243,8 +217,6 @@ phoneNumbers?: PhoneNumber[]
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Contact-phoneNumbers?: PhoneNumber[]--><!--Device-Contact-phoneNumbers?: PhoneNumber[]-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -262,8 +234,6 @@ portrait?: Portrait
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Contact-portrait?: Portrait--><!--Device-Contact-portrait?: Portrait-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## postalAddresses
@@ -279,8 +249,6 @@ postalAddresses?: PostalAddress[]
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Contact-postalAddresses?: PostalAddress[]--><!--Device-Contact-postalAddresses?: PostalAddress[]-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -298,8 +266,6 @@ relations?: Relation[]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Contact-relations?: Relation[]--><!--Device-Contact-relations?: Relation[]-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## sipAddresses
@@ -315,8 +281,6 @@ sipAddresses?: SipAddress[]
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Contact-sipAddresses?: SipAddress[]--><!--Device-Contact-sipAddresses?: SipAddress[]-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -334,7 +298,25 @@ websites?: Website[]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Contact-websites?: Website[]--><!--Device-Contact-websites?: Website[]-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
+**示例**
+
+使用JSON格式创建联系人数据。
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+
+let myContact: contact.Contact = {
+    phoneNumbers: [{
+        phoneNumber: '138xxxxxxxx'
+    }],
+    name: {
+        fullName: 'fullName',
+        namePrefix: 'namePrefix'
+    },
+    nickName: {
+        nickName: 'nickName'
+    }
+};
+```

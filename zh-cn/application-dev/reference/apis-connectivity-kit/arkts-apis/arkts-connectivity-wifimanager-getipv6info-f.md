@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## getIpv6Info
@@ -15,11 +14,9 @@ function getIpv6Info(): Ipv6Info
 
 获取WLAN连接的IPv6信息。 IPv6信息包括主机IP地址、网关地址和DNS信息。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
-
-<!--Device-wifiManager-function getIpv6Info(): Ipv6Info--><!--Device-wifiManager-function getIpv6Info(): Ipv6Info-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -33,8 +30,8 @@ function getIpv6Info(): Ipv6Info
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
 
 **示例**
@@ -49,4 +46,3 @@ import { wifiManager } from '@kit.ConnectivityKit';
     console.error("failed:" + JSON.stringify(error));
   }
 ```
-

@@ -55,7 +55,7 @@ The device address has already been bound with PartnerAgentExtensionAbility.
 
 **错误描述**
 
-该设备地址已经注册过PartnerAgentExtensionAbility。
+该设备地址已经绑定过PartnerAgentExtensionAbility。
 
 **可能原因**
 

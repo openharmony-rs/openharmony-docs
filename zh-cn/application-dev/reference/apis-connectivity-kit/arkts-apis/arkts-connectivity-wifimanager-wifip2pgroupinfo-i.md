@@ -2,9 +2,7 @@
 
 P2P群组信息。
 
-**起始版本：** 23
-
-<!--Device-wifiManager-interface WifiP2pGroupInfo--><!--Device-wifiManager-interface WifiP2pGroupInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -12,7 +10,6 @@ P2P群组信息。
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## clientDevices
@@ -25,25 +22,21 @@ clientDevices: WifiP2pDevice[]
 
 **类型：** WifiP2pDevice[]
 
-**起始版本：** 23
-
-<!--Device-WifiP2pGroupInfo-clientDevices: WifiP2pDevice[]--><!--Device-WifiP2pGroupInfo-clientDevices: WifiP2pDevice[]-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
 ## frequency
 
 ```TypeScript
-frequency: int
+frequency: number
 ```
 
 频率
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-WifiP2pGroupInfo-frequency: int--><!--Device-WifiP2pGroupInfo-frequency: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -57,9 +50,7 @@ goIpAddress: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiP2pGroupInfo-goIpAddress: string--><!--Device-WifiP2pGroupInfo-goIpAddress: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -73,9 +64,7 @@ groupName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiP2pGroupInfo-groupName: string--><!--Device-WifiP2pGroupInfo-groupName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -91,24 +80,6 @@ interface: string
 
 **起始版本：** 9
 
-<!--Device-WifiP2pGroupInfo-interface: string--><!--Device-WifiP2pGroupInfo-interface: string-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
-## interfaceName
-
-```TypeScript
-interfaceName: string
-```
-
-接口名称
-
-**类型：** string
-
-**起始版本：** 23
-
-<!--Device-WifiP2pGroupInfo-interfaceName: string--><!--Device-WifiP2pGroupInfo-interfaceName: string-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
 ## isP2pGo
@@ -121,25 +92,21 @@ isP2pGo: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-WifiP2pGroupInfo-isP2pGo: boolean--><!--Device-WifiP2pGroupInfo-isP2pGo: boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
 ## networkId
 
 ```TypeScript
-networkId: int
+networkId: number
 ```
 
 网络ID
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-WifiP2pGroupInfo-networkId: int--><!--Device-WifiP2pGroupInfo-networkId: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -153,9 +120,7 @@ ownerInfo: WifiP2pDevice
 
 **类型：** WifiP2pDevice
 
-**起始版本：** 23
-
-<!--Device-WifiP2pGroupInfo-ownerInfo: WifiP2pDevice--><!--Device-WifiP2pGroupInfo-ownerInfo: WifiP2pDevice-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -169,9 +134,6 @@ passphrase: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiP2pGroupInfo-passphrase: string--><!--Device-WifiP2pGroupInfo-passphrase: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-

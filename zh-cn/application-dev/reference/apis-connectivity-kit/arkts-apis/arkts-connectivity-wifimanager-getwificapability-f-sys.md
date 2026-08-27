@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## getWifiCapability
@@ -20,8 +19,6 @@ function getWifiCapability(capability: WifiCapability): boolean
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-wifiManager-function getWifiCapability(capability: WifiCapability): boolean--><!--Device-wifiManager-function getWifiCapability(capability: WifiCapability): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -43,9 +40,9 @@ function getWifiCapability(capability: WifiCapability): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | System API is not allowed called by Non-system application. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
 
 **示例**
@@ -56,4 +53,3 @@ import { wifiManager } from '@kit.ConnectivityKit';
 let result = wifiManager.getWifiCapability(wifiManager.WifiCapability.WIFI_AUTO_ENABLE);
 console.info("result:" + result);
 ```
-

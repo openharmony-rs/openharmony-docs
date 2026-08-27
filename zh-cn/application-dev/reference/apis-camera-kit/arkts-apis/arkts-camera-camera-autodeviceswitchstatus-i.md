@@ -2,17 +2,13 @@
 
 自动切换镜头状态信息。
 
-**起始版本：** 23
-
-<!--Device-camera-interface AutoDeviceSwitchStatus--><!--Device-camera-interface AutoDeviceSwitchStatus-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## isDeviceCapabilityChanged
@@ -25,11 +21,9 @@ readonly isDeviceCapabilityChanged: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 13
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AutoDeviceSwitchStatus-readonly isDeviceCapabilityChanged: boolean--><!--Device-AutoDeviceSwitchStatus-readonly isDeviceCapabilityChanged: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -43,11 +37,8 @@ readonly isDeviceSwitched: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 13
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AutoDeviceSwitchStatus-readonly isDeviceSwitched: boolean--><!--Device-AutoDeviceSwitchStatus-readonly isDeviceSwitched: boolean-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-

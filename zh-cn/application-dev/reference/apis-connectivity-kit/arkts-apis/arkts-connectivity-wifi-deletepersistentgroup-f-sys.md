@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## deletePersistentGroup
@@ -24,8 +21,6 @@ function deletePersistentGroup(netId: number): boolean
 **替代接口：** deletePersistentP2pGroup
 
 **需要权限：** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
-
-<!--Device-wifi-function deletePersistentGroup(netId: number): boolean--><!--Device-wifi-function deletePersistentGroup(netId: number): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -55,4 +50,3 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
-

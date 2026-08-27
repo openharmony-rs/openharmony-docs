@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## getIpInfo
@@ -15,7 +12,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 function getIpInfo(): IpInfo
 ```
 
-获取IP信息。 &lt;p&gt;IP信息包括主机IP地址、网关地址和DNS信息。
+获取IP信息。<p>IP信息包括主机IP地址、网关地址和DNS信息。
 
 **起始版本：** 7
 
@@ -24,8 +21,6 @@ function getIpInfo(): IpInfo
 **替代接口：** [getIpInfo](arkts-connectivity-wifimanager-getipinfo-f.md)
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
-
-<!--Device-wifi-function getIpInfo(): IpInfo--><!--Device-wifi-function getIpInfo(): IpInfo-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -47,4 +42,3 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
-

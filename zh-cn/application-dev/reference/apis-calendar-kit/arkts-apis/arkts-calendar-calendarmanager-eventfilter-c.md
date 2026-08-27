@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-calendarManager-class EventFilter--><!--Device-calendarManager-class EventFilter-End-->
-
 **系统能力：** SystemCapability.Applications.CalendarData
 
 ## 导入模块
@@ -23,8 +21,6 @@ static filterById(ids: number[]): EventFilter
 根据日程id过滤日程。
 
 **起始版本：** 10
-
-<!--Device-EventFilter-static filterById(ids: number[]): EventFilter--><!--Device-EventFilter-static filterById(ids: number[]): EventFilter-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
@@ -104,8 +100,6 @@ static filterByTime(start: number, end: number): EventFilter
 
 **起始版本：** 10
 
-<!--Device-EventFilter-static filterByTime(start: number, end: number): EventFilter--><!--Device-EventFilter-static filterByTime(start: number, end: number): EventFilter-End-->
-
 **系统能力：** SystemCapability.Applications.CalendarData
 
 **参数：**
@@ -180,8 +174,6 @@ static filterByTitle(title: string): EventFilter
 
 **起始版本：** 10
 
-<!--Device-EventFilter-static filterByTitle(title: string): EventFilter--><!--Device-EventFilter-static filterByTitle(title: string): EventFilter-End-->
-
 **系统能力：** SystemCapability.Applications.CalendarData
 
 **参数：**
@@ -234,4 +226,3 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
   }
 });
 ```
-

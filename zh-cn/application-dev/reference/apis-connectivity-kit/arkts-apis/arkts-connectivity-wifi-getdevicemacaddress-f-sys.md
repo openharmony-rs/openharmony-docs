@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## getDeviceMacAddress
@@ -15,7 +12,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 function getDeviceMacAddress(): string[]
 ```
 
-获取设备的MAC地址。WLAN必须已使能。 &lt;p&gt;MAC地址是唯一的，无法更改。
+获取设备的MAC地址。WLAN必须已使能。<p>MAC地址是唯一的，无法更改。
 
 **起始版本：** 7
 
@@ -24,8 +21,6 @@ function getDeviceMacAddress(): string[]
 **替代接口：** [getDeviceMacAddress](arkts-connectivity-wifimanager-getdevicemacaddress-f.md)
 
 **需要权限：** ohos.permission.GET_WIFI_LOCAL_MAC and ohos.permission.GET_WIFI_INFO
-
-<!--Device-wifi-function getDeviceMacAddress(): string[]--><!--Device-wifi-function getDeviceMacAddress(): string[]-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -49,4 +44,3 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
-

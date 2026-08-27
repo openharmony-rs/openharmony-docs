@@ -2,9 +2,7 @@
 
 Enumerates the policy types.
 
-**起始版本：** 23
-
-<!--Device-camera-enum PolicyType--><!--Device-camera-enum PolicyType-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -18,11 +16,8 @@ PRIVACY = 1
 
 Privacy.
 
-**起始版本：** 23
-
-<!--Device-PolicyType-PRIVACY = 1--><!--Device-PolicyType-PRIVACY = 1-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
-

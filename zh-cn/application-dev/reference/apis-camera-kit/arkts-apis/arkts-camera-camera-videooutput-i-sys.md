@@ -4,17 +4,13 @@
 
 **继承/实现关系：** VideoOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
 
-**起始版本：** 23
-
-<!--Device-camera-interface VideoOutput--><!--Device-camera-interface VideoOutput-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## attachMetaSurface
@@ -25,9 +21,7 @@ attachMetaSurface(surfaceId: string, type: VideoMetaType): void
 
 Attach a meta surface to VideoOutput.
 
-**起始版本：** 23
-
-<!--Device-VideoOutput-attachMetaSurface(surfaceId: string, type: VideoMetaType): void--><!--Device-VideoOutput-attachMetaSurface(surfaceId: string, type: VideoMetaType): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -44,9 +38,9 @@ Attach a meta surface to VideoOutput.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
 ## enableAutoDeferredVideoEnhancement
 
@@ -56,9 +50,7 @@ enableAutoDeferredVideoEnhancement(enabled: boolean): void
 
 Enable auto deferred video enhancement if needed.
 
-**起始版本：** 23
-
-<!--Device-VideoOutput-enableAutoDeferredVideoEnhancement(enabled: boolean): void--><!--Device-VideoOutput-enableAutoDeferredVideoEnhancement(enabled: boolean): void-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -74,9 +66,9 @@ Enable auto deferred video enhancement if needed.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
 ## enableAutoVideoFrameRate
 
@@ -86,9 +78,7 @@ enableAutoVideoFrameRate(enabled: boolean): void
 
 Enable auto frame rate for video capture.
 
-**起始版本：** 23
-
-<!--Device-VideoOutput-enableAutoVideoFrameRate(enabled: boolean): void--><!--Device-VideoOutput-enableAutoVideoFrameRate(enabled: boolean): void-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -104,40 +94,8 @@ Enable auto frame rate for video capture.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
-
-## enableMirror
-
-```TypeScript
-enableMirror(enabled: boolean): void
-```
-
-启用/关闭镜像录像。 - 调用该接口前，需要通过[isMirrorSupported](#ismirrorsupported)查询是否支录像镜像功能。 - 启用/关闭录像镜像后，需要通过[getVideoRotation](arkts-camera-camera-videooutput-i.md#getvideorotation)获取录像旋转角度以及 updateRotation更新旋转角度。
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-VideoOutput-enableMirror(enabled: boolean): void--><!--Device-VideoOutput-enableMirror(enabled: boolean): void-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| enabled | boolean | 是 | 启用/关闭镜像录像。true为开启镜像录像，false为关闭镜像录像。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 12 - 14 |
 
 ## getSupportedRotations
 
@@ -147,9 +105,7 @@ getSupportedRotations(): Array<ImageRotation>
 
 Get supported video rotations.
 
-**起始版本：** 23
-
-<!--Device-VideoOutput-getSupportedRotations(): Array<ImageRotation>--><!--Device-VideoOutput-getSupportedRotations(): Array<ImageRotation>-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -175,9 +131,7 @@ getSupportedVideoMetaTypes(): Array<VideoMetaType>
 
 Get supported video meta types.
 
-**起始版本：** 23
-
-<!--Device-VideoOutput-getSupportedVideoMetaTypes(): Array<VideoMetaType>--><!--Device-VideoOutput-getSupportedVideoMetaTypes(): Array<VideoMetaType>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -193,8 +147,8 @@ Get supported video meta types.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
 ## isAutoDeferredVideoEnhancementEnabled
 
@@ -204,9 +158,7 @@ isAutoDeferredVideoEnhancementEnabled(): boolean
 
 Confirm if auto deferred video enhancement is enabled.
 
-**起始版本：** 23
-
-<!--Device-VideoOutput-isAutoDeferredVideoEnhancementEnabled(): boolean--><!--Device-VideoOutput-isAutoDeferredVideoEnhancementEnabled(): boolean-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -222,8 +174,8 @@ Confirm if auto deferred video enhancement is enabled.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
 ## isAutoDeferredVideoEnhancementSupported
 
@@ -233,9 +185,7 @@ isAutoDeferredVideoEnhancementSupported(): boolean
 
 Confirm if auto deferred video enhancement is supported in the specific device.
 
-**起始版本：** 23
-
-<!--Device-VideoOutput-isAutoDeferredVideoEnhancementSupported(): boolean--><!--Device-VideoOutput-isAutoDeferredVideoEnhancementSupported(): boolean-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -251,8 +201,8 @@ Confirm if auto deferred video enhancement is supported in the specific device.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
 ## isAutoVideoFrameRateSupported
 
@@ -262,9 +212,7 @@ isAutoVideoFrameRateSupported(): boolean
 
 Determine whether auto frame rate is supported.
 
-**起始版本：** 23
-
-<!--Device-VideoOutput-isAutoVideoFrameRateSupported(): boolean--><!--Device-VideoOutput-isAutoVideoFrameRateSupported(): boolean-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -282,36 +230,6 @@ Determine whether auto frame rate is supported.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## isMirrorSupported
-
-```TypeScript
-isMirrorSupported(): boolean
-```
-
-查询是否支持镜像录像。
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-VideoOutput-isMirrorSupported(): boolean--><!--Device-VideoOutput-isMirrorSupported(): boolean-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**系统接口：** 此接口为系统接口。
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | 返回是否支持镜像录像，true表示支持，false表示不支持。若接口调用失败，返回undefined。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 12 - 14 |
-
 ## isRotationSupported
 
 ```TypeScript
@@ -320,9 +238,7 @@ isRotationSupported(): boolean
 
 Determine whether video rotation is supported.
 
-**起始版本：** 23
-
-<!--Device-VideoOutput-isRotationSupported(): boolean--><!--Device-VideoOutput-isRotationSupported(): boolean-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -340,34 +256,6 @@ Determine whether video rotation is supported.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## offDeferredVideoEnhancementInfo
-
-```TypeScript
-offDeferredVideoEnhancementInfo(callback?: AsyncCallback<DeferredVideoEnhancementInfo>): void
-```
-
-Unsubscribes from deferred video enhancement info callback.
-
-**起始版本：** 23
-
-<!--Device-VideoOutput-offDeferredVideoEnhancementInfo(callback?: AsyncCallback<DeferredVideoEnhancementInfo>): void--><!--Device-VideoOutput-offDeferredVideoEnhancementInfo(callback?: AsyncCallback<DeferredVideoEnhancementInfo>): void-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DeferredVideoEnhancementInfo](arkts-camera-camera-deferredvideoenhancementinfo-i-sys.md)&gt; | 否 | Callback used to return the result. |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
-
 ## off('deferredVideoEnhancementInfo')
 
 ```TypeScript
@@ -378,8 +266,6 @@ Unsubscribes from deferred video enhancement info callback.
 
 **起始版本：** 13
 
-<!--Device-VideoOutput-off(type: 'deferredVideoEnhancementInfo', callback?: AsyncCallback<DeferredVideoEnhancementInfo>): void--><!--Device-VideoOutput-off(type: 'deferredVideoEnhancementInfo', callback?: AsyncCallback<DeferredVideoEnhancementInfo>): void-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
@@ -389,35 +275,7 @@ Unsubscribes from deferred video enhancement info callback.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deferredVideoEnhancementInfo' | 是 | Event type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DeferredVideoEnhancementInfo](arkts-camera-camera-deferredvideoenhancementinfo-i-sys.md)&gt; | 否 | Callback used to return the result. |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
-
-## onDeferredVideoEnhancementInfo
-
-```TypeScript
-onDeferredVideoEnhancementInfo(callback: AsyncCallback<DeferredVideoEnhancementInfo>): void
-```
-
-Subscribes deferred video enhancement info callback.
-
-**起始版本：** 23
-
-<!--Device-VideoOutput-onDeferredVideoEnhancementInfo(callback: AsyncCallback<DeferredVideoEnhancementInfo>): void--><!--Device-VideoOutput-onDeferredVideoEnhancementInfo(callback: AsyncCallback<DeferredVideoEnhancementInfo>): void-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DeferredVideoEnhancementInfo](arkts-camera-camera-deferredvideoenhancementinfo-i-sys.md)&gt; | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DeferredVideoEnhancementInfo](arkts-camera-camera-deferredvideoenhancementinfo-i-sys.md)&gt; | 否 | Callback used to return the result. |
 
 **错误码：**
 
@@ -435,8 +293,6 @@ Subscribes deferred video enhancement info callback.
 
 **起始版本：** 13
 
-<!--Device-VideoOutput-on(type: 'deferredVideoEnhancementInfo', callback: AsyncCallback<DeferredVideoEnhancementInfo>): void--><!--Device-VideoOutput-on(type: 'deferredVideoEnhancementInfo', callback: AsyncCallback<DeferredVideoEnhancementInfo>): void-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
@@ -446,7 +302,7 @@ Subscribes deferred video enhancement info callback.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deferredVideoEnhancementInfo' | 是 | Event type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DeferredVideoEnhancementInfo](arkts-camera-camera-deferredvideoenhancementinfo-i-sys.md)&gt; | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DeferredVideoEnhancementInfo](arkts-camera-camera-deferredvideoenhancementinfo-i-sys.md)&gt; | 是 | Callback used to return the result. |
 
 **错误码：**
 
@@ -462,9 +318,7 @@ setRotation(rotation: ImageRotation): void
 
 Set a video rotation.
 
-**起始版本：** 23
-
-<!--Device-VideoOutput-setRotation(rotation: ImageRotation): void--><!--Device-VideoOutput-setRotation(rotation: ImageRotation): void-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -480,6 +334,5 @@ Set a video rotation.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
-
+| [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |

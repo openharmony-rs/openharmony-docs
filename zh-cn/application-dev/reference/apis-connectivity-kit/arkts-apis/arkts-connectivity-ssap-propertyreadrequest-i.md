@@ -1,10 +1,8 @@
 # PropertyReadRequest
 
-SSAP客户端属性读请求参数说明。
+表示客户端的Property读请求参数。
 
 **起始版本：** 26.0.0
-
-<!--Device-ssap-interface PropertyReadRequest--><!--Device-ssap-interface PropertyReadRequest-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -20,15 +18,13 @@ import { ssap } from '@kit.ConnectivityKit';
 address: string
 ```
 
-设备地址。 长度必须为17，由16进制数字和冒号组成，形如 "11:22:33:AA:BB:FF"。
+表示客户端设备地址。地址格式参考：11:22:33:AA:BB:FF。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PropertyReadRequest-address: string--><!--Device-PropertyReadRequest-address: string-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -38,7 +34,7 @@ address: string
 propertyUuid: string
 ```
 
-客户端请求读取的属性实例的UUID。 长度必须为36，由16进制数字字符和连字符共36个字符组成，形如“FFFFFFFF-1234-5678-ABCD-000000001234”，代表128比特标识。 <br>禁止使用星闪标准服务UUID。
+表示Property的UUID，数据格式同serviceUuid。
 
 **类型：** string
 
@@ -46,25 +42,21 @@ propertyUuid: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PropertyReadRequest-propertyUuid: string--><!--Device-PropertyReadRequest-propertyUuid: string-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 ## requestId
 
 ```TypeScript
-requestId: int
+requestId: number
 ```
 
-请求ID。 取值范围为全体整数。
+表示请求ID。取值范围[0, 65535]。服务端回复响应时需携带该ID，以便客户端关联请求与响应。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PropertyReadRequest-requestId: int--><!--Device-PropertyReadRequest-requestId: int-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -74,7 +66,7 @@ requestId: int
 serviceUuid: string
 ```
 
-属性所属的[Service](arkts-connectivity-ssap-service-i.md)实例的UUID 长度必须为32，禁止使用星闪标准服务UUID。 <br>不允许使用NearLink标准UUID。
+星闪服务UUID，个字符，由32个十六进制数字和4个连字符（-）组成，例如： FFFFFFFF-1234-5678-ABCD-000000001234，表示一个128位标识符。 不允许使用星闪标准UUID。
 
 **类型：** string
 
@@ -82,7 +74,4 @@ serviceUuid: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PropertyReadRequest-serviceUuid: string--><!--Device-PropertyReadRequest-serviceUuid: string-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

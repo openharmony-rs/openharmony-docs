@@ -9,10 +9,10 @@ import { contact } from '@kit.ContactsKit';
 ## syncContacts
 
 ```TypeScript
-function syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgress, contacts: Array<Contact>): Promise<Array<int>>
+function syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgress, contacts: Array<Contact>): Promise<Array<number>>
 ```
 
-批量同步多个联系人至联系人数据库。 每次最多可批量同步400个联系人。调用方必须处于前台。
+批量同步多个联系人至联系人数据库。每次最多可批量同步400个联系人。调用方必须处于前台。
 
 **起始版本：** 26.0.0
 
@@ -21,8 +21,6 @@ function syncContacts(context: Context, mode: ContactSyncMode, progress: Contact
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-contact-function syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgress, contacts: Array<Contact>): Promise<Array<int>>--><!--Device-contact-function syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgress, contacts: Array<Contact>): Promise<Array<int>>-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -39,18 +37,18 @@ function syncContacts(context: Context, mode: ContactSyncMode, progress: Contact
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;int&gt;&gt; | 返回联系人创建结果的数组。有效的联系人ID (可为通过 { |
+| Promise & lt;Array & lt;number & gt; & gt; | 返回联系人创建结果的数组。有效的联系人ID (可为通过 { |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [16700103](../errorcode-contacts.md#16700103-用户取消) | User cancel. |
-| [16700004](../errorcode-contacts.md#16700004-联系人数量超过限制) | The number of contacts exceeds the limit. |
+| [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
 | [16700002](../errorcode-contacts.md#16700002-参数检查失败) | Invalid parameter value. |
 | [16700003](../errorcode-contacts.md#16700003-禁止后台调用) | Background usage is prohibited. |
-| [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
+| [16700004](../errorcode-contacts.md#16700004-联系人数量超过限制) | The number of contacts exceeds the limit. |
+| [16700103](../errorcode-contacts.md#16700103-用户取消) | User cancel. |
 
 **示例**
 
@@ -103,4 +101,3 @@ for (let batch: number = 1; batch <= totalBatches; batch++) {
   }
 }
 ```
-

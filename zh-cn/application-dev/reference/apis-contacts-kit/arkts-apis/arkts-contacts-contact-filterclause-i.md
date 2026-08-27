@@ -4,8 +4,6 @@
 
 **起始版本：** 15
 
-<!--Device-contact-interface FilterClause--><!--Device-contact-interface FilterClause-End-->
-
 **系统能力：** SystemCapability.Applications.Contacts
 
 ## 导入模块
@@ -28,8 +26,6 @@ dataItem?: DataFilter
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FilterClause-dataItem?: DataFilter--><!--Device-FilterClause-dataItem?: DataFilter-End-->
-
 **系统能力：** SystemCapability.Applications.Contacts
 
 ## focusModeList
@@ -45,8 +41,6 @@ focusModeList?: Array<FilterOptions>
 **起始版本：** 15
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FilterClause-focusModeList?: Array<FilterOptions>--><!--Device-FilterClause-focusModeList?: Array<FilterOptions>-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts
 
@@ -64,8 +58,6 @@ id?: Array<FilterOptions>
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FilterClause-id?: Array<FilterOptions>--><!--Device-FilterClause-id?: Array<FilterOptions>-End-->
-
 **系统能力：** SystemCapability.Applications.Contacts
 
 ## name
@@ -82,7 +74,4 @@ name?: Array<FilterOptions>
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FilterClause-name?: Array<FilterOptions>--><!--Device-FilterClause-name?: Array<FilterOptions>-End-->
-
 **系统能力：** SystemCapability.Applications.Contacts
-

@@ -22,8 +22,6 @@ function queryKey(id: number, callback: AsyncCallback<string>): void
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
-<!--Device-contact-function queryKey(id: number, callback: AsyncCallback<string>): void--><!--Device-contact-function queryKey(id: number, callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
@@ -31,7 +29,7 @@ function queryKey(id: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | number | 是 | 联系人对象的id属性。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
 **示例**
 
@@ -61,8 +59,6 @@ function queryKey(context: Context, id: number, callback: AsyncCallback<string>)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
-<!--Device-contact-function queryKey(context: Context, id: number, callback: AsyncCallback<string>): void--><!--Device-contact-function queryKey(context: Context, id: number, callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
@@ -71,14 +67,14 @@ function queryKey(context: Context, id: number, callback: AsyncCallback<string>)
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文Context。 |
 | id | number | 是 | 联系人对象的id属性，是联系人对象在数据库中的唯一标识符。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **示例**
 
@@ -117,8 +113,6 @@ function queryKey(id: number, holder: Holder, callback: AsyncCallback<string>): 
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
-<!--Device-contact-function queryKey(id: number, holder: Holder, callback: AsyncCallback<string>): void--><!--Device-contact-function queryKey(id: number, holder: Holder, callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
@@ -127,7 +121,7 @@ function queryKey(id: number, holder: Holder, callback: AsyncCallback<string>): 
 | --- | --- | --- | --- |
 | id | number | 是 | 联系人对象的id属性。 |
 | holder | [Holder](arkts-contacts-contact-holder-c.md) | 是 | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
 **示例**
 
@@ -161,8 +155,6 @@ function queryKey(context: Context, id: number, holder: Holder, callback: AsyncC
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
-<!--Device-contact-function queryKey(context: Context, id: number, holder: Holder, callback: AsyncCallback<string>): void--><!--Device-contact-function queryKey(context: Context, id: number, holder: Holder, callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
@@ -172,14 +164,14 @@ function queryKey(context: Context, id: number, holder: Holder, callback: AsyncC
 | context | Context | 是 | 应用上下文Context。 |
 | id | number | 是 | 联系人对象的id属性。 |
 | holder | [Holder](arkts-contacts-contact-holder-c.md) | 是 | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **示例**
 
@@ -222,8 +214,6 @@ function queryKey(id: number, holder?: Holder): Promise<string>
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
-<!--Device-contact-function queryKey(id: number, holder?: Holder): Promise<string>--><!--Device-contact-function queryKey(id: number, holder?: Holder): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
@@ -237,7 +227,7 @@ function queryKey(id: number, holder?: Holder): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象。返回查询到的联系人对应的key。 |
+| Promise & lt;string & gt; | Promise对象。返回查询到的联系人对应的key。 |
 
 **示例**
 
@@ -267,8 +257,6 @@ function queryKey(context: Context, id: number, holder?: Holder): Promise<string
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
-<!--Device-contact-function queryKey(context: Context, id: number, holder?: Holder): Promise<string>--><!--Device-contact-function queryKey(context: Context, id: number, holder?: Holder): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
@@ -283,14 +271,14 @@ function queryKey(context: Context, id: number, holder?: Holder): Promise<string
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象。返回查询到的联系人对应的key。 |
+| Promise & lt;string & gt; | Promise对象。返回查询到的联系人对应的key。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **示例**
 
@@ -311,4 +299,3 @@ promise.then((data) => {
   console.info(`Succeeded in querying Key. data->${JSON.stringify(data)}`);
 });
 ```
-

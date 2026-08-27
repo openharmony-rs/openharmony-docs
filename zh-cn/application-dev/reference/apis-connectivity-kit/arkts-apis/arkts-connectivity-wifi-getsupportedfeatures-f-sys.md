@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## getSupportedFeatures
@@ -15,7 +12,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 function getSupportedFeatures(): number
 ```
 
-查询设备支持的特性。 &lt;p&gt;检查设备是否支持指定特性。
+查询设备支持的特性。<p>检查设备是否支持指定特性。
 
 **起始版本：** 7
 
@@ -24,8 +21,6 @@ function getSupportedFeatures(): number
 **替代接口：** [getSupportedFeatures](arkts-connectivity-wifimanager-getsupportedfeatures-f-sys.md)
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
-
-<!--Device-wifi-function getSupportedFeatures(): number--><!--Device-wifi-function getSupportedFeatures(): number-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
@@ -36,4 +31,3 @@ function getSupportedFeatures(): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 支持的特性值。 |
-

@@ -4,13 +4,12 @@
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## getDeviceConfig
 
 ```TypeScript
-function getDeviceConfig(networkId: int): WifiDeviceConfig
+function getDeviceConfig(networkId: number): WifiDeviceConfig
 ```
 
 根据网络ID获取单条WLAN配置。
@@ -21,8 +20,6 @@ function getDeviceConfig(networkId: int): WifiDeviceConfig
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-wifiManager-function getDeviceConfig(networkId: int): WifiDeviceConfig--><!--Device-wifiManager-function getDeviceConfig(networkId: int): WifiDeviceConfig-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **系统接口：** 此接口为系统接口。
@@ -31,7 +28,7 @@ function getDeviceConfig(networkId: int): WifiDeviceConfig
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| networkId | int | 是 | 待获取的WLAN配置的网络ID。 |
+| networkId | number | 是 | 待获取的WLAN配置的网络ID。 |
 
 **返回值：**
 
@@ -43,8 +40,21 @@ function getDeviceConfig(networkId: int): WifiDeviceConfig
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | System API is not allowed called by Non-system application. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
 
+**示例**
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+
+  try {
+    let networkId = 0;
+    let config = wifiManager.getDeviceConfig(networkId);
+    console.info(`config: ${JSON.stringify(config)}`);    
+  }catch(error){
+    console.error(`failed: ${JSON.stringify(error)}`);
+  }
+```

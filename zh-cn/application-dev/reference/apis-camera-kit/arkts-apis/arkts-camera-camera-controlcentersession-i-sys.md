@@ -1,12 +1,10 @@
 # ControlCenterSession（系统接口）
 
-Control center session object.
+Control center session object.@extends Beauty, Aperture [since 20 - 24] @extends Beauty, Aperture, ColorEffect [since 26.0.0]
 
-**继承/实现关系：** ControlCenterSession extends [Beauty](arkts-camera-camera-beauty-i-sys.md), [Aperture](arkts-camera-camera-aperture-i-sys.md), [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)
+**继承/实现关系：** ControlCenterSession extends [Beauty](arkts-camera-camera-beauty-i-sys.md), [Aperture](arkts-camera-camera-aperture-i.md), [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-camera-interface ControlCenterSession--><!--Device-camera-interface ControlCenterSession-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -15,8 +13,6 @@ Control center session object.
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## enableAutoFraming
@@ -28,8 +24,6 @@ enableAutoFraming(enabled: boolean): void
 Enable auto-framing effect.
 
 **起始版本：** 24
-
-<!--Device-ControlCenterSession-enableAutoFraming(enabled: boolean): void--><!--Device-ControlCenterSession-enableAutoFraming(enabled: boolean): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -45,9 +39,9 @@ Enable auto-framing effect.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
 ## getAutoFramingStatus
 
@@ -58,8 +52,6 @@ getAutoFramingStatus(): boolean
 Gets the status of auto-framing effect.
 
 **起始版本：** 24
-
-<!--Device-ControlCenterSession-getAutoFramingStatus(): boolean--><!--Device-ControlCenterSession-getAutoFramingStatus(): boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -80,7 +72,7 @@ Gets the status of auto-framing effect.
 ## getControlCenterHeight
 
 ```TypeScript
-getControlCenterHeight(): double
+getControlCenterHeight(): number
 ```
 
 Gets the control center height.
@@ -88,8 +80,6 @@ Gets the control center height.
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ControlCenterSession-getControlCenterHeight(): double--><!--Device-ControlCenterSession-getControlCenterHeight(): double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -99,7 +89,7 @@ Gets the control center height.
 
 | 类型 | 说明 |
 | --- | --- |
-| double | the control center height, in units of vp. |
+| number | the control center height, in units of vp. |
 
 **错误码：**
 
@@ -119,8 +109,6 @@ Gets the current camera device.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ControlCenterSession-getCurrentDevice(): CameraDevice--><!--Device-ControlCenterSession-getCurrentDevice(): CameraDevice-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
@@ -135,8 +123,8 @@ Gets the current camera device.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 
 ## isAutoFramingSupported
 
@@ -147,8 +135,6 @@ isAutoFramingSupported(): boolean
 Checks whether auto-framing is supported.
 
 **起始版本：** 24
-
-<!--Device-ControlCenterSession-isAutoFramingSupported(): boolean--><!--Device-ControlCenterSession-isAutoFramingSupported(): boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -174,9 +160,7 @@ release(): Promise<void>
 
 Release control center session object.
 
-**起始版本：** 23
-
-<!--Device-ControlCenterSession-release(): Promise<void>--><!--Device-ControlCenterSession-release(): Promise<void>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -186,13 +170,85 @@ Release control center session object.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise & lt;void & gt; | Promise used to return the result. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+
+**示例**
+
+```TypeScript
+async function releaseDepthData(depthData: camera.DepthData): Promise<void> {
+  await depthData.release();
+}
+```
+
+```TypeScript
+async function releaseDeferredPhotoProxy(proxyObj: camera.DeferredPhotoProxy): Promise<void> {
+  await proxyObj.release();
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function releasePreviewOutput(previewOutput: camera.PreviewOutput): void {
+  previewOutput.release().then(() => {
+    console.info('Promise returned to indicate that the preview output instance is released successfully.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to preview output release, error code: ${error.code}`);
+  });
+}
+
+function releaseVideoOutput(videoOutput: camera.VideoOutput): void {
+  videoOutput.release().then(() => {
+    console.info('Promise returned to indicate that the video output instance is released successfully.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to video output release, error code: ${error.code}`);
+  });
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function releaseCaptureSession(captureSession: camera.CaptureSession): void {
+  captureSession.release().then(() => {
+    console.info('Promise returned to indicate that the CaptureSession instance is released successfully.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to release the CaptureSession instance, error code: ${err.code}.`);
+  });
+}
+```
+
+```TypeScript
+async function releasePhoto(photo: camera.Photo): Promise<void> {
+  await photo.release();
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function releaseCaptureSession(session: camera.Session): void {
+  session.release().then(() => {
+    console.info('Promise returned to indicate that the session instance is released successfully.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to release the session instance, error code: ${error.code}.`);
+  });
+}
+```
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+
+async function releaseCapturePhoto(capturePhoto: camera.CapturePhoto): Promise<void> {
+  await capturePhoto.release();
+}
+```
 
 ## usedAsPosition
 
@@ -205,8 +261,6 @@ Sets the camera to be used as a camera at the specified position.
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ControlCenterSession-usedAsPosition(position: CameraPosition): void--><!--Device-ControlCenterSession-usedAsPosition(position: CameraPosition): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -222,7 +276,6 @@ Sets the camera to be used as a camera at the specified position.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
-

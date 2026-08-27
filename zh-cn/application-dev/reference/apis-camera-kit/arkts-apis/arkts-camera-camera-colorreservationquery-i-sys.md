@@ -2,9 +2,7 @@
 
 Provides APIs for querying the color retention type supported by the device.
 
-**起始版本：** 23
-
-<!--Device-camera-interface ColorReservationQuery--><!--Device-camera-interface ColorReservationQuery-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13,8 +11,6 @@ Provides APIs for querying the color retention type supported by the device.
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## getSupportedColorReservationTypes
@@ -25,9 +21,7 @@ getSupportedColorReservationTypes(): Array<ColorReservationType>
 
 Obtains the supported color reservation types.
 
-**起始版本：** 23
-
-<!--Device-ColorReservationQuery-getSupportedColorReservationTypes(): Array<ColorReservationType>--><!--Device-ColorReservationQuery-getSupportedColorReservationTypes(): Array<ColorReservationType>-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -43,8 +37,8 @@ Obtains the supported color reservation types.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 
 **示例**
 
@@ -63,4 +57,3 @@ function getSupportedColorReservationTypes(session: camera.VideoSessionForSys): 
   return colorReservationTypes;
 }
 ```
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-contact-class PostalAddress--><!--Device-contact-class PostalAddress-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## 导入模块
@@ -28,8 +26,6 @@ static readonly ADDR_HOME: 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PostalAddress-static readonly ADDR_HOME: 1--><!--Device-PostalAddress-static readonly ADDR_HOME: 1-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## ADDR_OTHER
@@ -45,8 +41,6 @@ static readonly ADDR_OTHER: 3
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PostalAddress-static readonly ADDR_OTHER: 3--><!--Device-PostalAddress-static readonly ADDR_OTHER: 3-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -64,44 +58,6 @@ static readonly ADDR_WORK: 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PostalAddress-static readonly ADDR_WORK: 2--><!--Device-PostalAddress-static readonly ADDR_WORK: 2-End-->
-
-**系统能力：** SystemCapability.Applications.ContactsData
-
-## CUSTOM_LABEL
-
-```TypeScript
-static readonly CUSTOM_LABEL: 0
-```
-
-自定义邮政地址类型，默认值为0。
-
-**类型：** 0
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PostalAddress-static readonly CUSTOM_LABEL: 0--><!--Device-PostalAddress-static readonly CUSTOM_LABEL: 0-End-->
-
-**系统能力：** SystemCapability.Applications.ContactsData
-
-## INVALID_LABEL_ID
-
-```TypeScript
-static readonly INVALID_LABEL_ID: -1
-```
-
-无效地址类型，默认值为-1。
-
-**类型：** -1
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PostalAddress-static readonly INVALID_LABEL_ID: -1--><!--Device-PostalAddress-static readonly INVALID_LABEL_ID: -1-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## city
@@ -117,8 +73,6 @@ city?: string
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PostalAddress-city?: string--><!--Device-PostalAddress-city?: string-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -136,7 +90,37 @@ country?: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PostalAddress-country?: string--><!--Device-PostalAddress-country?: string-End-->
+**系统能力：** SystemCapability.Applications.ContactsData
+
+## CUSTOM_LABEL
+
+```TypeScript
+static readonly CUSTOM_LABEL: 0
+```
+
+自定义邮政地址类型，默认值为0。
+
+**类型：** 0
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.Applications.ContactsData
+
+## INVALID_LABEL_ID
+
+```TypeScript
+static readonly INVALID_LABEL_ID: -1
+```
+
+无效地址类型，默认值为-1。
+
+**类型：** -1
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -154,8 +138,6 @@ labelId?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PostalAddress-labelId?: number--><!--Device-PostalAddress-labelId?: number-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## labelName
@@ -171,8 +153,6 @@ labelName?: string
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PostalAddress-labelName?: string--><!--Device-PostalAddress-labelName?: string-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -190,8 +170,6 @@ neighborhood?: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PostalAddress-neighborhood?: string--><!--Device-PostalAddress-neighborhood?: string-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## pobox
@@ -207,8 +185,6 @@ pobox?: string
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PostalAddress-pobox?: string--><!--Device-PostalAddress-pobox?: string-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -226,8 +202,6 @@ postalAddress: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PostalAddress-postalAddress: string--><!--Device-PostalAddress-postalAddress: string-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## postcode
@@ -243,8 +217,6 @@ postcode?: string
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PostalAddress-postcode?: string--><!--Device-PostalAddress-postcode?: string-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -262,8 +234,6 @@ region?: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PostalAddress-region?: string--><!--Device-PostalAddress-region?: string-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## street
@@ -280,7 +250,27 @@ street?: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PostalAddress-street?: string--><!--Device-PostalAddress-street?: string-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
+**示例**
+
+使用JSON格式创建数据。
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+
+let postalAddress: contact.PostalAddress = {
+    city: 'city',
+    postalAddress: 'postalAddress'
+};
+```
+
+或使用new一个PostalAddress对象的方式创建数据。
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+
+let postalAddress = new contact.PostalAddress();
+postalAddress.city = 'city';
+postalAddress.postalAddress = 'postalAddress';
+```

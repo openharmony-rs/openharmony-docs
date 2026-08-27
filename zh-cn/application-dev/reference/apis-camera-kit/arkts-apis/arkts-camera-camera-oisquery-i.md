@@ -4,21 +4,17 @@ OIS (Optical Image Stabilization) query interface.
 
 **起始版本：** 24
 
-<!--Device-camera-interface OISQuery--><!--Device-camera-interface OISQuery-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## getCurrentCustomOISBias
 
 ```TypeScript
-getCurrentCustomOISBias(oisAxis: OISAxes): double
+getCurrentCustomOISBias(oisAxis: OISAxes): number
 ```
 
 Gets the current custom bias value for the specified OIS axis.
@@ -28,8 +24,6 @@ Gets the current custom bias value for the specified OIS axis.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OISQuery-getCurrentCustomOISBias(oisAxis: OISAxes): double--><!--Device-OISQuery-getCurrentCustomOISBias(oisAxis: OISAxes): double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -43,7 +37,7 @@ Gets the current custom bias value for the specified OIS axis.
 
 | 类型 | 说明 |
 | --- | --- |
-| double | The current bias value. |
+| number | The current bias value. |
 
 **错误码：**
 
@@ -66,8 +60,6 @@ Gets the current OIS mode.
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OISQuery-getCurrentOISMode(): OISMode--><!--Device-OISQuery-getCurrentOISMode(): OISMode-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **返回值：**
@@ -86,7 +78,7 @@ Gets the current OIS mode.
 ## getSupportedOISBiasRange
 
 ```TypeScript
-getSupportedOISBiasRange(oisAxis: OISAxes): Array<double>
+getSupportedOISBiasRange(oisAxis: OISAxes): Array<number>
 ```
 
 Gets the supported bias range for the specified OIS axis.
@@ -96,8 +88,6 @@ Gets the supported bias range for the specified OIS axis.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OISQuery-getSupportedOISBiasRange(oisAxis: OISAxes): Array<double>--><!--Device-OISQuery-getSupportedOISBiasRange(oisAxis: OISAxes): Array<double>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -111,7 +101,7 @@ Gets the supported bias range for the specified OIS axis.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;double&gt; | The bias range. |
+| Array & lt;number & gt; | The bias range. |
 
 **错误码：**
 
@@ -123,7 +113,7 @@ Gets the supported bias range for the specified OIS axis.
 ## getSupportedOISBiasStep
 
 ```TypeScript
-getSupportedOISBiasStep(oisAxis: OISAxes): double
+getSupportedOISBiasStep(oisAxis: OISAxes): number
 ```
 
 Gets the bias step for the specified OIS axis.
@@ -133,8 +123,6 @@ Gets the bias step for the specified OIS axis.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-OISQuery-getSupportedOISBiasStep(oisAxis: OISAxes): double--><!--Device-OISQuery-getSupportedOISBiasStep(oisAxis: OISAxes): double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -148,7 +136,7 @@ Gets the bias step for the specified OIS axis.
 
 | 类型 | 说明 |
 | --- | --- |
-| double | The bias step value. |
+| number | The bias step value. |
 
 **错误码：**
 
@@ -171,8 +159,6 @@ Checks if the specified OIS mode is supported.
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-OISQuery-isOISModeSupported(mode: OISMode): boolean--><!--Device-OISQuery-isOISModeSupported(mode: OISMode): boolean-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **参数：**
@@ -193,4 +179,3 @@ Checks if the specified OIS mode is supported.
 | --- | --- |
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed, the inputDevice or the session is abnormal. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
-

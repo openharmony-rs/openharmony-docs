@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-contact-class Holder--><!--Device-contact-class Holder-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## 导入模块
@@ -26,8 +24,6 @@ Bundle名称，默认值为com.ohos.contacts。
 
 **起始版本：** 7
 
-<!--Device-Holder-readonly bundleName: string--><!--Device-Holder-readonly bundleName: string-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
 ## displayName
@@ -41,8 +37,6 @@ readonly displayName?: string
 **类型：** string
 
 **起始版本：** 7
-
-<!--Device-Holder-readonly displayName?: string--><!--Device-Holder-readonly displayName?: string-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -58,7 +52,16 @@ holderId?: number
 
 **起始版本：** 7
 
-<!--Device-Holder-holderId?: number--><!--Device-Holder-holderId?: number-End-->
-
 **系统能力：** SystemCapability.Applications.ContactsData
 
+**示例**
+
+使用JSON格式创建数据。
+
+```TypeScript
+let holder: contact.Holder = {
+  bundleName: 'com.ohos.contacts',
+  displayName: 'displayName',
+  holderId: 1
+};
+```

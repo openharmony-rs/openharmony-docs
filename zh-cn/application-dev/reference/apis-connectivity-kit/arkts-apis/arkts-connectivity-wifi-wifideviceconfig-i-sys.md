@@ -1,6 +1,6 @@
 # WifiDeviceConfig
 
-WLAN设备配置信息。
+WLAN设备配置信息。@interface WifiDeviceConfig
 
 **起始版本：** 6
 
@@ -8,17 +8,12 @@ WLAN设备配置信息。
 
 **替代接口：** [WifiDeviceConfig](arkts-connectivity-wifimanager-wifideviceconfig-i.md)
 
-<!--Device-wifi-interface WifiDeviceConfig--><!--Device-wifi-interface WifiDeviceConfig-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 ## 导入模块
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## creatorUid
@@ -36,8 +31,6 @@ WLAN配置创建者的UID
 **废弃版本：** 9
 
 **替代接口：** [creatorUid](arkts-connectivity-wifimanager-wifideviceconfig-i-sys.md#creatoruid)
-
-<!--Device-WifiDeviceConfig-creatorUid: number--><!--Device-WifiDeviceConfig-creatorUid: number-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -59,8 +52,6 @@ disableReason: number
 
 **替代接口：** [disableReason](arkts-connectivity-wifimanager-wifideviceconfig-i-sys.md#disablereason)
 
-<!--Device-WifiDeviceConfig-disableReason: number--><!--Device-WifiDeviceConfig-disableReason: number-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **系统接口：** 此接口为系统接口。
@@ -81,8 +72,6 @@ IP类型
 
 **替代接口：** [ipType](arkts-connectivity-wifimanager-wifideviceconfig-i-sys.md#iptype)
 
-<!--Device-WifiDeviceConfig-ipType: IpType--><!--Device-WifiDeviceConfig-ipType: IpType-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **系统接口：** 此接口为系统接口。
@@ -101,9 +90,7 @@ netId: number
 
 **废弃版本：** 9
 
-**替代接口：** [netId](arkts-connectivity-wifimanager-wifideviceconfig-i.md#netid)
-
-<!--Device-WifiDeviceConfig-netId: number--><!--Device-WifiDeviceConfig-netId: number-End-->
+**替代接口：** [netId](arkts-connectivity-wifimanager-wifideviceconfig-i-sys.md#netid)
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -125,8 +112,6 @@ randomMacAddr: string
 
 **替代接口：** [randomMacAddr](arkts-connectivity-wifimanager-wifideviceconfig-i-sys.md#randommacaddr)
 
-<!--Device-WifiDeviceConfig-randomMacAddr: string--><!--Device-WifiDeviceConfig-randomMacAddr: string-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **系统接口：** 此接口为系统接口。
@@ -146,8 +131,6 @@ randomMacType: number
 **废弃版本：** 9
 
 **替代接口：** [randomMacType](arkts-connectivity-wifimanager-wifideviceconfig-i-sys.md#randommactype)
-
-<!--Device-WifiDeviceConfig-randomMacType: number--><!--Device-WifiDeviceConfig-randomMacType: number-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -169,9 +152,6 @@ staticIp: IpConfig
 
 **替代接口：** [staticIp](arkts-connectivity-wifimanager-wifideviceconfig-i-sys.md#staticip)
 
-<!--Device-WifiDeviceConfig-staticIp: IpConfig--><!--Device-WifiDeviceConfig-staticIp: IpConfig-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **系统接口：** 此接口为系统接口。
-

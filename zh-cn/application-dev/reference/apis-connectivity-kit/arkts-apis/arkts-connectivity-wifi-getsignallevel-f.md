@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## getSignalLevel
@@ -24,8 +21,6 @@ function getSignalLevel(rssi: number, band: number): number
 **替代接口：** [getSignalLevel](arkts-connectivity-wifimanager-getsignallevel-f.md)
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
-
-<!--Device-wifi-function getSignalLevel(rssi: number, band: number): number--><!--Device-wifi-function getSignalLevel(rssi: number, band: number): number-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -50,10 +45,9 @@ import wifi from '@ohos.wifi';
 try {
   let rssi = 0;
   let band = 0;
-  let level = wifi.getSignalLevel(rssi,band);
+  let level = wifi.getSignalLevel(rssi, band);
   console.info("level:" + JSON.stringify(level));
 }catch(error){
   console.error("failed:" + JSON.stringify(error));
 }
 ```
-

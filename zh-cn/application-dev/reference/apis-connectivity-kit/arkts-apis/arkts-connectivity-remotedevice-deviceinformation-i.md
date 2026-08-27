@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-remoteDevice-interface DeviceInformation--><!--Device-remoteDevice-interface DeviceInformation-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 ## 导入模块
@@ -28,8 +26,6 @@ manufacturerData: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DeviceInformation-manufacturerData: string--><!--Device-DeviceInformation-manufacturerData: string-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 ## modelData
@@ -46,7 +42,4 @@ modelData: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DeviceInformation-modelData: string--><!--Device-DeviceInformation-modelData: string-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

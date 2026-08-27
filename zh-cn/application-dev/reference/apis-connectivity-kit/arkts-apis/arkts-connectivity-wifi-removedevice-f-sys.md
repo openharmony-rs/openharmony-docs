@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## removeDevice
@@ -15,7 +12,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 function removeDevice(id: number): boolean
 ```
 
-移除指定的网络配置。 &lt;p&gt;删除WLAN网络后，其配置将从网络配置列表中删除。 如果正在连接该WLAN网络，连接将被中断。 应用只能删除自己创建的WLAN网络。
+移除指定的网络配置。<p>删除WLAN网络后，其配置将从网络配置列表中删除。 如果正在连接该WLAN网络，连接将被中断。 应用只能删除自己创建的WLAN网络。
 
 **起始版本：** 7
 
@@ -24,8 +21,6 @@ function removeDevice(id: number): boolean
 **替代接口：** removeDeviceConfig
 
 **需要权限：** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
-
-<!--Device-wifi-function removeDevice(id: number): boolean--><!--Device-wifi-function removeDevice(id: number): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -55,4 +50,3 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
-

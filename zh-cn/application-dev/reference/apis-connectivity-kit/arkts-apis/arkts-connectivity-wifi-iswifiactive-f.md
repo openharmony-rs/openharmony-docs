@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## isWifiActive
@@ -25,8 +22,6 @@ function isWifiActive(): boolean
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
-<!--Device-wifi-function isWifiActive(): boolean--><!--Device-wifi-function isWifiActive(): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **返回值：**
@@ -43,8 +38,7 @@ import wifi from '@ohos.wifi';
 try {
   let isWifiActive = wifi.isWifiActive();
   console.info("isWifiActive:" + isWifiActive);
-}catch(error){
+} catch (error) {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
-

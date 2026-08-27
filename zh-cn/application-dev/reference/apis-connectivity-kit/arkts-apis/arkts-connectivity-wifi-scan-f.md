@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## scan
@@ -15,7 +12,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 function scan(): boolean
 ```
 
-启动WLAN扫描。 &lt;p&gt;该接口工作在异步模式。&lt;/p&gt;
+启动WLAN扫描。<p>该接口工作在异步模式。</p>
 
 **起始版本：** 6
 
@@ -24,8 +21,6 @@ function scan(): boolean
 **替代接口：** [scan](arkts-connectivity-wifimanager-scan-f.md)
 
 **需要权限：** ohos.permission.SET_WIFI_INFO and ohos.permission.LOCATION
-
-<!--Device-wifi-function scan(): boolean--><!--Device-wifi-function scan(): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -46,4 +41,3 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
-

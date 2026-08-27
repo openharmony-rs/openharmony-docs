@@ -4,8 +4,6 @@
 
 **起始版本：** 15
 
-<!--Device-contact-interface FilterOptions--><!--Device-contact-interface FilterOptions-End-->
-
 **系统能力：** SystemCapability.Applications.Contacts
 
 ## 导入模块
@@ -28,8 +26,6 @@ filterCondition: FilterCondition
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FilterOptions-filterCondition: FilterCondition--><!--Device-FilterOptions-filterCondition: FilterCondition-End-->
-
 **系统能力：** SystemCapability.Applications.Contacts
 
 ## value
@@ -46,7 +42,4 @@ value?: string | ValueType[]
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FilterOptions-value?: string | ValueType[]--><!--Device-FilterOptions-value?: string | ValueType[]-End-->
-
 **系统能力：** SystemCapability.Applications.Contacts
-

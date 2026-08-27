@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## getCountryCode
@@ -24,8 +21,6 @@ function getCountryCode(): string
 **替代接口：** [getCountryCode](arkts-connectivity-wifimanager-getcountrycode-f.md)
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
-
-<!--Device-wifi-function getCountryCode(): string--><!--Device-wifi-function getCountryCode(): string-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
@@ -47,4 +42,3 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
-

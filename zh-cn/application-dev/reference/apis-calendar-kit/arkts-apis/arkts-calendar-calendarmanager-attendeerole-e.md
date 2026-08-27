@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-calendarManager-export enum AttendeeRole--><!--Device-calendarManager-export enum AttendeeRole-End-->
-
 **系统能力：** SystemCapability.Applications.CalendarData
 
 ## ORGANIZER
@@ -19,8 +17,6 @@ ORGANIZER = 'organizer'
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AttendeeRole-ORGANIZER = 'organizer'--><!--Device-AttendeeRole-ORGANIZER = 'organizer'-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
@@ -36,7 +32,4 @@ PARTICIPANT = 'participant'
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AttendeeRole-PARTICIPANT = 'participant'--><!--Device-AttendeeRole-PARTICIPANT = 'participant'-End-->
-
 **系统能力：** SystemCapability.Applications.CalendarData
-

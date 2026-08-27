@@ -2,17 +2,13 @@
 
 相机管理器回调返回的接口实例，表示折叠机折叠状态信息。
 
-**起始版本：** 23
-
-<!--Device-camera-interface FoldStatusInfo--><!--Device-camera-interface FoldStatusInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## foldStatus
@@ -25,11 +21,9 @@ readonly foldStatus: FoldStatus
 
 **类型：** FoldStatus
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FoldStatusInfo-readonly foldStatus: FoldStatus--><!--Device-FoldStatusInfo-readonly foldStatus: FoldStatus-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -43,11 +37,8 @@ readonly supportedCameras: Array<CameraDevice>
 
 **类型：** Array&lt;[CameraDevice](arkts-camera-camera-cameradevice-i.md)&gt;
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FoldStatusInfo-readonly supportedCameras: Array<CameraDevice>--><!--Device-FoldStatusInfo-readonly supportedCameras: Array<CameraDevice>-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-

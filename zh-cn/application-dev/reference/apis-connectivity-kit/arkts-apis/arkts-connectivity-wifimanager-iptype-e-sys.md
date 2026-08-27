@@ -1,10 +1,8 @@
 # IpType（系统接口）
 
-WLAN IP类型枚举。
+WLAN IP类型枚举。@enum { number }
 
-**起始版本：** 23
-
-<!--Device-wifiManager-enum IpType--><!--Device-wifiManager-enum IpType-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -18,9 +16,7 @@ STATIC
 
 使用静态配置的IP设置
 
-**起始版本：** 23
-
-<!--Device-IpType-STATIC--><!--Device-IpType-STATIC-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -34,9 +30,7 @@ DHCP
 
 使用动态配置的IP设置
 
-**起始版本：** 23
-
-<!--Device-IpType-DHCP--><!--Device-IpType-DHCP-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -50,11 +44,8 @@ UNKNOWN
 
 未分配IP详情
 
-**起始版本：** 23
-
-<!--Device-IpType-UNKNOWN--><!--Device-IpType-UNKNOWN-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **系统接口：** 此接口为系统接口。
-

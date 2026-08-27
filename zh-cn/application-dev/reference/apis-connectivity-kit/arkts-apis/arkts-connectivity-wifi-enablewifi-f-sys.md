@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## enableWifi
@@ -25,8 +22,6 @@ function enableWifi(): boolean
 
 **需要权限：** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
-<!--Device-wifi-function enableWifi(): boolean--><!--Device-wifi-function enableWifi(): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **系统接口：** 此接口为系统接口。
@@ -44,8 +39,7 @@ import wifi from '@ohos.wifi';
 
 try {
     wifi.enableWifi();
-}catch(error){
+} catch (error) {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
-

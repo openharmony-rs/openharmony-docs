@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## enableHotspot
@@ -15,7 +12,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 function enableHotspot(): boolean
 ```
 
-使能热点。 &lt;p&gt;该方法是异步的。使能热点后，WLAN可能会被去使能。
+使能热点。<p>该方法是异步的。使能热点后，WLAN可能会被去使能。
 
 **起始版本：** 7
 
@@ -24,8 +21,6 @@ function enableHotspot(): boolean
 **替代接口：** [enableHotspot](arkts-connectivity-wifimanager-enablehotspot-f-sys.md)
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
-
-<!--Device-wifi-function enableHotspot(): boolean--><!--Device-wifi-function enableHotspot(): boolean-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
@@ -48,4 +43,3 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
-

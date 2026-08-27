@@ -1,10 +1,8 @@
 # DeviceClass
 
-The enum of device class.
+表示设备类型，为枚举值。
 
 **起始版本：** 26.0.0
-
-<!--Device-nearlinkConstant-export enum DeviceClass--><!--Device-nearlinkConstant-export enum DeviceClass-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -14,13 +12,11 @@ The enum of device class.
 DEVICE_INVALID_CLASS = -1
 ```
 
-无效的设备类别。缺少设备类信息。
+无效的设备类型，设备类型信息缺失。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_INVALID_CLASS = -1--><!--Device-DeviceClass-DEVICE_INVALID_CLASS = -1-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -30,13 +26,11 @@ DEVICE_INVALID_CLASS = -1
 DEVICE_UNCATEGORIZED = 0x000100
 ```
 
-Unclassified device.
+未分类设备。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_UNCATEGORIZED = 0x000100--><!--Device-DeviceClass-DEVICE_UNCATEGORIZED = 0x000100-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -46,13 +40,11 @@ Unclassified device.
 DEVICE_PHONE = 0x000200
 ```
 
-General phone.
+电话。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_PHONE = 0x000200--><!--Device-DeviceClass-DEVICE_PHONE = 0x000200-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -62,13 +54,11 @@ General phone.
 DEVICE_SMARTPHONE = 0x000201
 ```
 
-Smartphone.
+智能手机。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_SMARTPHONE = 0x000201--><!--Device-DeviceClass-DEVICE_SMARTPHONE = 0x000201-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -78,13 +68,11 @@ Smartphone.
 DEVICE_COMPUTER = 0x000300
 ```
 
-General computer.
+计算机。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_COMPUTER = 0x000300--><!--Device-DeviceClass-DEVICE_COMPUTER = 0x000300-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -94,13 +82,11 @@ General computer.
 DEVICE_LAPTOP = 0x000301
 ```
 
-Laptop.
+笔记本电脑。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_LAPTOP = 0x000301--><!--Device-DeviceClass-DEVICE_LAPTOP = 0x000301-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -110,13 +96,11 @@ Laptop.
 DEVICE_TABLET = 0x000302
 ```
 
-Tablet.
+平板。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_TABLET = 0x000302--><!--Device-DeviceClass-DEVICE_TABLET = 0x000302-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -126,13 +110,11 @@ Tablet.
 DEVICE_ALL_IN_ONE_COMPUTER = 0x000303
 ```
 
-All-in-one computer.
+一体机。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_ALL_IN_ONE_COMPUTER = 0x000303--><!--Device-DeviceClass-DEVICE_ALL_IN_ONE_COMPUTER = 0x000303-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -142,13 +124,11 @@ All-in-one computer.
 DEVICE_MINI_PC = 0x000304
 ```
 
-Mini PC.
+迷你PC。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_MINI_PC = 0x000304--><!--Device-DeviceClass-DEVICE_MINI_PC = 0x000304-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -158,13 +138,11 @@ Mini PC.
 DEVICE_WATCH = 0x000400
 ```
 
-General watch.
+手表。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_WATCH = 0x000400--><!--Device-DeviceClass-DEVICE_WATCH = 0x000400-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -174,13 +152,11 @@ General watch.
 DEVICE_SMART_WATCH = 0x000401
 ```
 
-Smart watch.
+智能手表。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_SMART_WATCH = 0x000401--><!--Device-DeviceClass-DEVICE_SMART_WATCH = 0x000401-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -190,13 +166,11 @@ Smart watch.
 DEVICE_HUMAN_INTERFACE = 0x000500
 ```
 
-General human interface device.
+人机接口。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_HUMAN_INTERFACE = 0x000500--><!--Device-DeviceClass-DEVICE_HUMAN_INTERFACE = 0x000500-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -206,13 +180,11 @@ General human interface device.
 DEVICE_KEYBOARD = 0x000501
 ```
 
-Keyboard.
+键盘。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_KEYBOARD = 0x000501--><!--Device-DeviceClass-DEVICE_KEYBOARD = 0x000501-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -222,13 +194,11 @@ Keyboard.
 DEVICE_MOUSE = 0x000502
 ```
 
-Mouse.
+鼠标。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_MOUSE = 0x000502--><!--Device-DeviceClass-DEVICE_MOUSE = 0x000502-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -238,13 +208,11 @@ Mouse.
 DEVICE_HANDLE = 0x000503
 ```
 
-Handle.
+手柄。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_HANDLE = 0x000503--><!--Device-DeviceClass-DEVICE_HANDLE = 0x000503-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -254,13 +222,11 @@ Handle.
 DEVICE_STYLUS = 0x000504
 ```
 
-Stylus pen.
+手写笔。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_STYLUS = 0x000504--><!--Device-DeviceClass-DEVICE_STYLUS = 0x000504-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -270,13 +236,11 @@ Stylus pen.
 DEVICE_TOUCHPAD = 0x000505
 ```
 
-Touchpad.
+触摸板。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_TOUCHPAD = 0x000505--><!--Device-DeviceClass-DEVICE_TOUCHPAD = 0x000505-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -286,13 +250,11 @@ Touchpad.
 DEVICE_AUDIO_PLAYBACK = 0x000600
 ```
 
-General audio playback device.
+音频播放器。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_AUDIO_PLAYBACK = 0x000600--><!--Device-DeviceClass-DEVICE_AUDIO_PLAYBACK = 0x000600-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -302,13 +264,11 @@ General audio playback device.
 DEVICE_SMART_SPEAKER = 0x000601
 ```
 
-Smart speaker.
+智能扬声器。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_SMART_SPEAKER = 0x000601--><!--Device-DeviceClass-DEVICE_SMART_SPEAKER = 0x000601-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -318,13 +278,11 @@ Smart speaker.
 DEVICE_ECHO_WALL = 0x000602
 ```
 
-Echo Wall.
+回音设备。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_ECHO_WALL = 0x000602--><!--Device-DeviceClass-DEVICE_ECHO_WALL = 0x000602-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -334,13 +292,11 @@ Echo Wall.
 DEVICE_AUDIO_CAPTURE = 0x000700
 ```
 
-General audio capture device.
+录音器。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_AUDIO_CAPTURE = 0x000700--><!--Device-DeviceClass-DEVICE_AUDIO_CAPTURE = 0x000700-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -350,13 +306,11 @@ General audio capture device.
 DEVICE_KARAOKE_MICROPHONE = 0x000701
 ```
 
-Karaoke microphone.
+卡拉OK麦克风。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_KARAOKE_MICROPHONE = 0x000701--><!--Device-DeviceClass-DEVICE_KARAOKE_MICROPHONE = 0x000701-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -366,13 +320,11 @@ Karaoke microphone.
 DEVICE_LAPEL_MICROPHONE = 0x000702
 ```
 
-Lapel Microphone.
+佩戴式话筒。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_LAPEL_MICROPHONE = 0x000702--><!--Device-DeviceClass-DEVICE_LAPEL_MICROPHONE = 0x000702-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -382,13 +334,11 @@ Lapel Microphone.
 DEVICE_WEARABLE_AUDIO = 0x000800
 ```
 
-General wearable audio device.
+穿戴音频设备。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_WEARABLE_AUDIO = 0x000800--><!--Device-DeviceClass-DEVICE_WEARABLE_AUDIO = 0x000800-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -398,13 +348,11 @@ General wearable audio device.
 DEVICE_IN_EAR_EARPHONE = 0x000801
 ```
 
-In-ear earphone.
+入耳式耳机。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_IN_EAR_EARPHONE = 0x000801--><!--Device-DeviceClass-DEVICE_IN_EAR_EARPHONE = 0x000801-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -414,13 +362,11 @@ In-ear earphone.
 DEVICE_HEADSET = 0x000802
 ```
 
-Headset.
+头戴式耳麦。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_HEADSET = 0x000802--><!--Device-DeviceClass-DEVICE_HEADSET = 0x000802-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -430,13 +376,11 @@ Headset.
 DEVICE_OVER_EAR_HEADPHONE = 0x000803
 ```
 
-Over-ear headphone.
+头戴式耳机。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_OVER_EAR_HEADPHONE = 0x000803--><!--Device-DeviceClass-DEVICE_OVER_EAR_HEADPHONE = 0x000803-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -446,13 +390,11 @@ Over-ear headphone.
 DEVICE_NECKBAND_EARPHONE = 0x000804
 ```
 
-Neck-worn earphone.
+颈带式耳机。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_NECKBAND_EARPHONE = 0x000804--><!--Device-DeviceClass-DEVICE_NECKBAND_EARPHONE = 0x000804-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -462,13 +404,11 @@ Neck-worn earphone.
 DEVICE_PERSONAL_CARE = 0x000900
 ```
 
-General personal care.
+个人护理。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_PERSONAL_CARE = 0x000900--><!--Device-DeviceClass-DEVICE_PERSONAL_CARE = 0x000900-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -478,13 +418,11 @@ General personal care.
 DEVICE_INTELLIGENT_TOOTHBRUSH = 0x000901
 ```
 
-Intelligent toothbrush.
+智能牙刷。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_INTELLIGENT_TOOTHBRUSH = 0x000901--><!--Device-DeviceClass-DEVICE_INTELLIGENT_TOOTHBRUSH = 0x000901-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -494,13 +432,11 @@ Intelligent toothbrush.
 DEVICE_SMART_CUP = 0x000902
 ```
 
-Smart cup.
+智能杯。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_SMART_CUP = 0x000902--><!--Device-DeviceClass-DEVICE_SMART_CUP = 0x000902-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -510,13 +446,11 @@ Smart cup.
 DEVICE_INTELLIGENT_SHAVER = 0x000903
 ```
 
-Intelligent shaver.
+智能剃刀。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_INTELLIGENT_SHAVER = 0x000903--><!--Device-DeviceClass-DEVICE_INTELLIGENT_SHAVER = 0x000903-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -526,13 +460,11 @@ Intelligent shaver.
 DEVICE_HVAC = 0x000A00
 ```
 
-General HVAC.
+通用暖通空调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_HVAC = 0x000A00--><!--Device-DeviceClass-DEVICE_HVAC = 0x000A00-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -542,13 +474,11 @@ General HVAC.
 DEVICE_AIR_PURIFIER = 0x000A01
 ```
 
-Air purifier.
+空气净化器。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_AIR_PURIFIER = 0x000A01--><!--Device-DeviceClass-DEVICE_AIR_PURIFIER = 0x000A01-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -558,13 +488,11 @@ Air purifier.
 DEVICE_HUMIDIFIER = 0x000A02
 ```
 
-Humidifier.
+加湿器。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_HUMIDIFIER = 0x000A02--><!--Device-DeviceClass-DEVICE_HUMIDIFIER = 0x000A02-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -574,13 +502,11 @@ Humidifier.
 DEVICE_AIR_CIRCULATION_FAN = 0x000A03
 ```
 
-Air circulation fan.
+空气循环风机。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_AIR_CIRCULATION_FAN = 0x000A03--><!--Device-DeviceClass-DEVICE_AIR_CIRCULATION_FAN = 0x000A03-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -590,13 +516,11 @@ Air circulation fan.
 DEVICE_ELECTRIC_RIDE = 0x000B00
 ```
 
-General electric riding.
+电动骑行工具。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_ELECTRIC_RIDE = 0x000B00--><!--Device-DeviceClass-DEVICE_ELECTRIC_RIDE = 0x000B00-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -606,13 +530,11 @@ General electric riding.
 DEVICE_ELECTRIC_SCOOTER = 0x000B01
 ```
 
-Electric scooter.
+电动滑板车。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_ELECTRIC_SCOOTER = 0x000B01--><!--Device-DeviceClass-DEVICE_ELECTRIC_SCOOTER = 0x000B01-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -622,13 +544,11 @@ Electric scooter.
 DEVICE_ELECTRIC_BICYCLE = 0x000B02
 ```
 
-Electric bicycle.
+电动自行车。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_ELECTRIC_BICYCLE = 0x000B02--><!--Device-DeviceClass-DEVICE_ELECTRIC_BICYCLE = 0x000B02-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -638,13 +558,11 @@ Electric bicycle.
 DEVICE_LIGHT_FITTING = 0x000C00
 ```
 
-General light fitting.
+灯具配件。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_LIGHT_FITTING = 0x000C00--><!--Device-DeviceClass-DEVICE_LIGHT_FITTING = 0x000C00-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -654,13 +572,11 @@ General light fitting.
 DEVICE_SMART_TABLE_LAMP = 0x000C01
 ```
 
-Smart table lamp.
+智能台灯。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_SMART_TABLE_LAMP = 0x000C01--><!--Device-DeviceClass-DEVICE_SMART_TABLE_LAMP = 0x000C01-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -670,13 +586,11 @@ Smart table lamp.
 DEVICE_REMOTE_CONTROL = 0x000D00
 ```
 
-General remote control.
+远程控制设备。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_REMOTE_CONTROL = 0x000D00--><!--Device-DeviceClass-DEVICE_REMOTE_CONTROL = 0x000D00-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -686,13 +600,11 @@ General remote control.
 DEVICE_TV_REMOTE_CONTROL = 0x000D01
 ```
 
-TV remote control.
+电视遥控器。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_TV_REMOTE_CONTROL = 0x000D01--><!--Device-DeviceClass-DEVICE_TV_REMOTE_CONTROL = 0x000D01-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -702,13 +614,11 @@ TV remote control.
 DEVICE_IMAGING = 0x000E00
 ```
 
-General imaging device.
+成像设备。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_IMAGING = 0x000E00--><!--Device-DeviceClass-DEVICE_IMAGING = 0x000E00-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -718,13 +628,11 @@ General imaging device.
 DEVICE_SMART_TV = 0x000E01
 ```
 
-Smart TV.
+智能电视。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_SMART_TV = 0x000E01--><!--Device-DeviceClass-DEVICE_SMART_TV = 0x000E01-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -734,13 +642,11 @@ Smart TV.
 DEVICE_IP_CAMERA = 0x000E02
 ```
 
-IP camera.
+网络摄像机。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_IP_CAMERA = 0x000E02--><!--Device-DeviceClass-DEVICE_IP_CAMERA = 0x000E02-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -750,13 +656,11 @@ IP camera.
 DEVICE_SCREEN_CASTER = 0x000E03
 ```
 
-Screen caster.
+投影仪。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_SCREEN_CASTER = 0x000E03--><!--Device-DeviceClass-DEVICE_SCREEN_CASTER = 0x000E03-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -766,13 +670,11 @@ Screen caster.
 DEVICE_NETWORKING = 0x000F00
 ```
 
-General network device.
+网络设备。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_NETWORKING = 0x000F00--><!--Device-DeviceClass-DEVICE_NETWORKING = 0x000F00-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -782,13 +684,11 @@ General network device.
 DEVICE_IOT_GATEWAY = 0x000F01
 ```
 
-IoT gateway.
+物联网网关。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_IOT_GATEWAY = 0x000F01--><!--Device-DeviceClass-DEVICE_IOT_GATEWAY = 0x000F01-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -798,13 +698,11 @@ IoT gateway.
 DEVICE_ACCESS_CONTROL = 0x001000
 ```
 
-General access control.
+门禁设备。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_ACCESS_CONTROL = 0x001000--><!--Device-DeviceClass-DEVICE_ACCESS_CONTROL = 0x001000-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -814,13 +712,11 @@ General access control.
 DEVICE_INTELLIGENT_LOCK = 0x001001
 ```
 
-Intelligent Lock.
+智能锁。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_INTELLIGENT_LOCK = 0x001001--><!--Device-DeviceClass-DEVICE_INTELLIGENT_LOCK = 0x001001-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -830,13 +726,11 @@ Intelligent Lock.
 DEVICE_SMART_KEY = 0x001002
 ```
 
-Smart key.
+智能钥匙。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_SMART_KEY = 0x001002--><!--Device-DeviceClass-DEVICE_SMART_KEY = 0x001002-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -846,13 +740,11 @@ Smart key.
 DEVICE_VEHICLE_KEY = 0x001003
 ```
 
-Vehicle key.
+车钥匙。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceClass-DEVICE_VEHICLE_KEY = 0x001003--><!--Device-DeviceClass-DEVICE_VEHICLE_KEY = 0x001003-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -862,13 +754,10 @@ Vehicle key.
 DEVICE_VEHICLE_LOCK = 0x001004
 ```
 
-Vehicle lock.
+车锁。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DeviceClass-DEVICE_VEHICLE_LOCK = 0x001004--><!--Device-DeviceClass-DEVICE_VEHICLE_LOCK = 0x001004-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

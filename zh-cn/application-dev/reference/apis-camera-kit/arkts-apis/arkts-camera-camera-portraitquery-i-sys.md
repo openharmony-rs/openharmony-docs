@@ -2,9 +2,7 @@
 
 Queries portrait parameters.
 
-**起始版本：** 23
-
-<!--Device-camera-interface PortraitQuery--><!--Device-camera-interface PortraitQuery-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13,8 +11,6 @@ Queries portrait parameters.
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## getSupportedPortraitEffects
@@ -25,9 +21,7 @@ getSupportedPortraitEffects(): Array<PortraitEffect>
 
 Obtains the supported portrait effects.
 
-**起始版本：** 23
-
-<!--Device-PortraitQuery-getSupportedPortraitEffects(): Array<PortraitEffect>--><!--Device-PortraitQuery-getSupportedPortraitEffects(): Array<PortraitEffect>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -54,4 +48,3 @@ function getSupportedPortraitEffects(portraitPhotoSession: camera.PortraitPhotoS
   return portraitEffects;
 }
 ```
-

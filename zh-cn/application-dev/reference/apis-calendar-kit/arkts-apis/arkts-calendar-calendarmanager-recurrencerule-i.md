@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-calendarManager-export interface RecurrenceRule--><!--Device-calendarManager-export interface RecurrenceRule-End-->
-
 **系统能力：** SystemCapability.Applications.CalendarData
 
 ## 导入模块
@@ -28,8 +26,6 @@ count?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RecurrenceRule-count?: number--><!--Device-RecurrenceRule-count?: number-End-->
-
 **系统能力：** SystemCapability.Applications.CalendarData
 
 ## daysOfMonth
@@ -45,8 +41,6 @@ daysOfMonth?: number[]
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RecurrenceRule-daysOfMonth?: number[]--><!--Device-RecurrenceRule-daysOfMonth?: number[]-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
@@ -64,8 +58,6 @@ daysOfWeek?: number[]
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RecurrenceRule-daysOfWeek?: number[]--><!--Device-RecurrenceRule-daysOfWeek?: number[]-End-->
-
 **系统能力：** SystemCapability.Applications.CalendarData
 
 ## daysOfYear
@@ -81,8 +73,6 @@ daysOfYear?: number[]
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RecurrenceRule-daysOfYear?: number[]--><!--Device-RecurrenceRule-daysOfYear?: number[]-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
@@ -100,8 +90,6 @@ excludedDates?: number[]
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RecurrenceRule-excludedDates?: number[]--><!--Device-RecurrenceRule-excludedDates?: number[]-End-->
-
 **系统能力：** SystemCapability.Applications.CalendarData
 
 ## expire
@@ -110,15 +98,13 @@ excludedDates?: number[]
 expire?: number
 ```
 
-重复周期截止日。格式为13位时间戳，不填时则日程无截止日期。 当expire与count和interval同时设置时，以先到达的限制条件及效果为准。
+重复周期截止日。格式为13位时间戳，不填时则日程无截止日期。当expire与count和interval同时设置时，以先到达的限制条件及效果为准。
 
 **类型：** number
 
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RecurrenceRule-expire?: number--><!--Device-RecurrenceRule-expire?: number-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
@@ -136,8 +122,6 @@ interval?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RecurrenceRule-interval?: number--><!--Device-RecurrenceRule-interval?: number-End-->
-
 **系统能力：** SystemCapability.Applications.CalendarData
 
 ## monthsOfYear
@@ -153,8 +137,6 @@ monthsOfYear?: number[]
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RecurrenceRule-monthsOfYear?: number[]--><!--Device-RecurrenceRule-monthsOfYear?: number[]-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
@@ -172,8 +154,6 @@ recurrenceFrequency: RecurrenceFrequency
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RecurrenceRule-recurrenceFrequency: RecurrenceFrequency--><!--Device-RecurrenceRule-recurrenceFrequency: RecurrenceFrequency-End-->
-
 **系统能力：** SystemCapability.Applications.CalendarData
 
 ## weeksOfMonth
@@ -189,8 +169,6 @@ weeksOfMonth?: number[]
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RecurrenceRule-weeksOfMonth?: number[]--><!--Device-RecurrenceRule-weeksOfMonth?: number[]-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
@@ -208,7 +186,4 @@ weeksOfYear?: number[]
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RecurrenceRule-weeksOfYear?: number[]--><!--Device-RecurrenceRule-weeksOfYear?: number[]-End-->
-
 **系统能力：** SystemCapability.Applications.CalendarData
-

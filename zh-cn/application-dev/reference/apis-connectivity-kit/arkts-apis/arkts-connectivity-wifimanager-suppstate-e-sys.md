@@ -1,10 +1,8 @@
 # SuppState（系统接口）
 
-supplicant状态枚举。
+supplicant状态枚举。@enum { number }
 
-**起始版本：** 23
-
-<!--Device-wifiManager-export enum SuppState--><!--Device-wifiManager-export enum SuppState-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -18,9 +16,7 @@ DISCONNECTED
 
 supplicant未与AP关联或已断开连接。
 
-**起始版本：** 23
-
-<!--Device-SuppState-DISCONNECTED--><!--Device-SuppState-DISCONNECTED-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -34,9 +30,7 @@ INTERFACE_DISABLED
 
 网络接口已去使能。
 
-**起始版本：** 23
-
-<!--Device-SuppState-INTERFACE_DISABLED--><!--Device-SuppState-INTERFACE_DISABLED-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -50,9 +44,7 @@ INACTIVE
 
 supplicant已去使能。
 
-**起始版本：** 23
-
-<!--Device-SuppState-INACTIVE--><!--Device-SuppState-INACTIVE-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -66,9 +58,7 @@ SCANNING
 
 supplicant正在扫描WLAN连接。
 
-**起始版本：** 23
-
-<!--Device-SuppState-SCANNING--><!--Device-SuppState-SCANNING-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -82,9 +72,7 @@ AUTHENTICATING
 
 supplicant正在与指定AP进行认证。
 
-**起始版本：** 23
-
-<!--Device-SuppState-AUTHENTICATING--><!--Device-SuppState-AUTHENTICATING-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -98,9 +86,7 @@ ASSOCIATING
 
 supplicant正在与指定AP进行关联。
 
-**起始版本：** 23
-
-<!--Device-SuppState-ASSOCIATING--><!--Device-SuppState-ASSOCIATING-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -114,9 +100,7 @@ ASSOCIATED
 
 supplicant已与指定AP关联。
 
-**起始版本：** 23
-
-<!--Device-SuppState-ASSOCIATED--><!--Device-SuppState-ASSOCIATED-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -130,9 +114,7 @@ FOUR_WAY_HANDSHAKE
 
 四次握手正在进行中。
 
-**起始版本：** 23
-
-<!--Device-SuppState-FOUR_WAY_HANDSHAKE--><!--Device-SuppState-FOUR_WAY_HANDSHAKE-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -146,9 +128,7 @@ GROUP_HANDSHAKE
 
 群组握手正在进行中。
 
-**起始版本：** 23
-
-<!--Device-SuppState-GROUP_HANDSHAKE--><!--Device-SuppState-GROUP_HANDSHAKE-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -162,9 +142,7 @@ COMPLETED
 
 所有认证已完成。
 
-**起始版本：** 23
-
-<!--Device-SuppState-COMPLETED--><!--Device-SuppState-COMPLETED-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -178,9 +156,7 @@ UNINITIALIZED
 
 与supplicant建立连接失败。
 
-**起始版本：** 23
-
-<!--Device-SuppState-UNINITIALIZED--><!--Device-SuppState-UNINITIALIZED-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -194,11 +170,8 @@ INVALID
 
 supplicant处于未知或无效状态。
 
-**起始版本：** 23
-
-<!--Device-SuppState-INVALID--><!--Device-SuppState-INVALID-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **系统接口：** 此接口为系统接口。
-

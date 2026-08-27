@@ -2,9 +2,7 @@
 
 Describes the aperture information.
 
-**起始版本：** 23
-
-<!--Device-camera-interface ApertureInfo--><!--Device-camera-interface ApertureInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13,25 +11,20 @@ Describes the aperture information.
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## aperture
 
 ```TypeScript
-readonly aperture?: double
+readonly aperture?: number
 ```
 
 Aperture.
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ApertureInfo-readonly aperture?: double--><!--Device-ApertureInfo-readonly aperture?: double-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
-

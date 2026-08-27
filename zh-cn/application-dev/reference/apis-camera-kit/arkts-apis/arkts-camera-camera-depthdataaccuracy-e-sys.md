@@ -2,9 +2,7 @@
 
 Describes the accuracy of depth data.
 
-**起始版本：** 23
-
-<!--Device-camera-enum DepthDataAccuracy--><!--Device-camera-enum DepthDataAccuracy-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -18,9 +16,7 @@ DEPTH_DATA_ACCURACY_RELATIVE = 0
 
 Relative accuracy, which is the depth map calculated based on the disparity.
 
-**起始版本：** 23
-
-<!--Device-DepthDataAccuracy-DEPTH_DATA_ACCURACY_RELATIVE = 0--><!--Device-DepthDataAccuracy-DEPTH_DATA_ACCURACY_RELATIVE = 0-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -34,11 +30,8 @@ DEPTH_DATA_ACCURACY_ABSOLUTE = 1
 
 Absolute accuracy, which is the depth map calculated from distance measurement.
 
-**起始版本：** 23
-
-<!--Device-DepthDataAccuracy-DEPTH_DATA_ACCURACY_ABSOLUTE = 1--><!--Device-DepthDataAccuracy-DEPTH_DATA_ACCURACY_ABSOLUTE = 1-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
-

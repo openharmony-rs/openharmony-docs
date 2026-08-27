@@ -2,9 +2,7 @@
 
 WLAN设备配置信息。
 
-**起始版本：** 23
-
-<!--Device-wifiManager-interface WifiDeviceConfig--><!--Device-wifiManager-interface WifiDeviceConfig-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -12,22 +10,19 @@ WLAN设备配置信息。
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## configStatus
 
 ```TypeScript
-configStatus?: int
+configStatus?: number
 ```
 
 设备配置状态：0 - 使能，1 - 去使能，2 - 永久去使能，3 - 未知。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-WifiDeviceConfig-configStatus?: int--><!--Device-WifiDeviceConfig-configStatus?: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -36,16 +31,14 @@ configStatus?: int
 ## creatorUid
 
 ```TypeScript
-creatorUid?: int
+creatorUid?: number
 ```
 
 WLAN配置创建者的UID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-WifiDeviceConfig-creatorUid?: int--><!--Device-WifiDeviceConfig-creatorUid?: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -54,16 +47,14 @@ WLAN配置创建者的UID。
 ## disableReason
 
 ```TypeScript
-disableReason?: int
+disableReason?: number
 ```
 
 去使能原因
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-WifiDeviceConfig-disableReason?: int--><!--Device-WifiDeviceConfig-disableReason?: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -72,16 +63,14 @@ disableReason?: int
 ## family
 
 ```TypeScript
-family?: int
+family?: number
 ```
 
 静态IP族：0 - IPv4，1 - Ipv6。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-WifiDeviceConfig-family?: int--><!--Device-WifiDeviceConfig-family?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -97,9 +86,7 @@ IP类型
 
 **类型：** IpType
 
-**起始版本：** 23
-
-<!--Device-WifiDeviceConfig-ipType?: IpType--><!--Device-WifiDeviceConfig-ipType?: IpType-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -115,9 +102,7 @@ isAutoConnectAllowed?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-WifiDeviceConfig-isAutoConnectAllowed?: boolean--><!--Device-WifiDeviceConfig-isAutoConnectAllowed?: boolean-End-->
+**起始版本：** 17
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -133,9 +118,23 @@ isSecureWifi?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 20
 
-<!--Device-WifiDeviceConfig-isSecureWifi?: boolean--><!--Device-WifiDeviceConfig-isSecureWifi?: boolean-End-->
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**系统接口：** 此接口为系统接口。
+
+## netId
+
+```TypeScript
+netId?: number
+```
+
+分配的networkId
+
+**类型：** number
+
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -151,9 +150,7 @@ proxyConfig?: WifiProxyConfig
 
 **类型：** [WifiProxyConfig](arkts-connectivity-wifimanager-wifiproxyconfig-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-WifiDeviceConfig-proxyConfig?: WifiProxyConfig--><!--Device-WifiDeviceConfig-proxyConfig?: WifiProxyConfig-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -169,9 +166,7 @@ randomMacAddr?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-WifiDeviceConfig-randomMacAddr?: string--><!--Device-WifiDeviceConfig-randomMacAddr?: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -180,16 +175,14 @@ randomMacAddr?: string
 ## randomMacType
 
 ```TypeScript
-randomMacType?: int
+randomMacType?: number
 ```
 
 随机MAC类型
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-WifiDeviceConfig-randomMacType?: int--><!--Device-WifiDeviceConfig-randomMacType?: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -205,9 +198,7 @@ staticIp?: IpConfig
 
 **类型：** IpConfig
 
-**起始版本：** 23
-
-<!--Device-WifiDeviceConfig-staticIp?: IpConfig--><!--Device-WifiDeviceConfig-staticIp?: IpConfig-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -223,11 +214,8 @@ staticIpv6?: Ipv6Config
 
 **类型：** [Ipv6Config](arkts-connectivity-wifimanager-ipv6config-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-WifiDeviceConfig-staticIpv6?: Ipv6Config--><!--Device-WifiDeviceConfig-staticIpv6?: Ipv6Config-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **系统接口：** 此接口为系统接口。
-

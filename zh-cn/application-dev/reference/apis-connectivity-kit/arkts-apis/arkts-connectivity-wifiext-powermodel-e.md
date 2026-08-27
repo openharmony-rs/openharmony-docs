@@ -1,14 +1,12 @@
 # PowerModel
 
-表示功率模式的枚举。
+表示功率模式的枚举。@enum { number } PowerModel
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
-
-<!--Device-wifiext-export enum PowerModel--><!--Device-wifiext-export enum PowerModel-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Extension
 
@@ -26,8 +24,6 @@ SLEEPING = 0
 
 **替代接口：** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
 
-<!--Device-PowerModel-SLEEPING = 0--><!--Device-PowerModel-SLEEPING = 0-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.AP.Extension
 
 ## GENERAL
@@ -43,8 +39,6 @@ GENERAL = 1
 **废弃版本：** 9
 
 **替代接口：** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
-
-<!--Device-PowerModel-GENERAL = 1--><!--Device-PowerModel-GENERAL = 1-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Extension
 
@@ -62,7 +56,4 @@ THROUGH_WALL = 2
 
 **替代接口：** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
 
-<!--Device-PowerModel-THROUGH_WALL = 2--><!--Device-PowerModel-THROUGH_WALL = 2-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.AP.Extension
-

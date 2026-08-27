@@ -20,8 +20,6 @@ function setPowerMode(mode: PowerMode): void
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
 
-<!--Device-wifiManagerExt-function setPowerMode(mode: PowerMode): void--><!--Device-wifiManagerExt-function setPowerMode(mode: PowerMode): void-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.AP.Extension
 
 **参数：**
@@ -34,9 +32,9 @@ function setPowerMode(mode: PowerMode): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [2701000](../errorcode-wifi.md#2701000-ap扩展模块异常) | Operation failed. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
 **示例**
 
@@ -50,4 +48,3 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
       console.error("failed: " + JSON.stringify(error));
   }
 ```
-

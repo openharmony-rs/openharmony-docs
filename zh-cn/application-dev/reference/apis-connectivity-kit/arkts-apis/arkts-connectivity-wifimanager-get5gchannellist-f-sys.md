@@ -4,22 +4,19 @@
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## get5GChannelList
 
 ```TypeScript
-function get5GChannelList(): Array<int>
+function get5GChannelList(): Array<number>
 ```
 
 获取设备支持的5G信道列表。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.GET_WIFI_INFO and ohos.permission.GET_WIFI_CONFIG
-
-<!--Device-wifiManager-function get5GChannelList(): Array<int>--><!--Device-wifiManager-function get5GChannelList(): Array<int>-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -29,15 +26,15 @@ function get5GChannelList(): Array<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;int&gt; | 返回5G信道列表。 |
+| Array & lt;number & gt; | 返回5G信道列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | System API is not allowed called by Non-system application. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
 
 **示例**
@@ -52,4 +49,3 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
-

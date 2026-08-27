@@ -1,10 +1,8 @@
 # PairingType
 
-配对类型的枚举。
+星闪配对类型，为枚举值。
 
 **起始版本：** 26.0.0
-
-<!--Device-remoteDevice-enum PairingType--><!--Device-remoteDevice-enum PairingType-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -14,13 +12,11 @@
 NO_PASSKEY_CONFIRMATION = 0
 ```
 
-如果没有通行密钥，用户需要接受或拒绝配对请求。
+表示不需要passkey的配对方式，用户无需检查配对码。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PairingType-NO_PASSKEY_CONFIRMATION = 0--><!--Device-PairingType-NO_PASSKEY_CONFIRMATION = 0-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -30,13 +26,11 @@ NO_PASSKEY_CONFIRMATION = 0
 PAIRING_TYPE_PASSCODE = 1
 ```
 
-用户需要输入对端设备显示的passcode。
+表示通行码鉴权方式，用户需在一端设备输入另一端设备显示的配对码。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PairingType-PAIRING_TYPE_PASSCODE = 1--><!--Device-PairingType-PAIRING_TYPE_PASSCODE = 1-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -46,13 +40,10 @@ PAIRING_TYPE_PASSCODE = 1
 PAIRING_TYPE_NUMBER_COMPARE = 2
 ```
 
-用户需要比较两台设备上显示的数字。
+表示数字比较鉴权方式，用户需在两端设备确认配对码一致。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PairingType-PAIRING_TYPE_NUMBER_COMPARE = 2--><!--Device-PairingType-PAIRING_TYPE_NUMBER_COMPARE = 2-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

@@ -1,10 +1,8 @@
 # CdsmConnectionState
 
-成员连接状态的枚举。
+表示合作设备集合中成员设备的连接状态，为枚举值。
 
 **起始版本：** 26.0.0
-
-<!--Device-cdsm-enum CdsmConnectionState--><!--Device-cdsm-enum CdsmConnectionState-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -14,13 +12,11 @@
 DISCONNECTED = 0
 ```
 
-成员已断开连接
+表示已断连。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CdsmConnectionState-DISCONNECTED = 0--><!--Device-CdsmConnectionState-DISCONNECTED = 0-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -30,13 +26,10 @@ DISCONNECTED = 0
 CONNECTED = 1
 ```
 
-成员已连接
+表示已连接。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CdsmConnectionState-CONNECTED = 1--><!--Device-CdsmConnectionState-CONNECTED = 1-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

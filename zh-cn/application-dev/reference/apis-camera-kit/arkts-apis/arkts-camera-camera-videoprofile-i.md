@@ -4,17 +4,13 @@
 
 **继承/实现关系：** VideoProfile extends [Profile](arkts-camera-camera-profile-i.md)
 
-**起始版本：** 23
-
-<!--Device-camera-interface VideoProfile--><!--Device-camera-interface VideoProfile-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## frameRateRange
@@ -27,11 +23,8 @@ readonly frameRateRange: FrameRateRange
 
 **类型：** [FrameRateRange](arkts-camera-camera-frameraterange-i.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
-<!--Device-VideoProfile-readonly frameRateRange: FrameRateRange--><!--Device-VideoProfile-readonly frameRateRange: FrameRateRange-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-

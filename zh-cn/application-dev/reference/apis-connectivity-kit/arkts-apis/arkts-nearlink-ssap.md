@@ -1,12 +1,10 @@
-# @ohos.nearlink.ssap
+# @ohos.nearlink.ssap(星闪SSAP连接能力)
 
-提供操作或管理星闪服务的方法。
+本模块提供了SSAP（星闪服务交互协议 SparkLink Service Access Protocol）连接功能，包括客户端创建与连接、调用服务端方法、读写描述符、订阅事件通知等。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-unnamed-declare namespace ssap--><!--Device-unnamed-declare namespace ssap-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -22,45 +20,44 @@ import { ssap } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createClient](arkts-connectivity-ssap-createclient-f.md) | 创建SSAP客户端实例。 |
-| [createServer](arkts-connectivity-ssap-createserver-f.md) | 创建SSAP服务端实例。 |
+| [createClient(星闪SSAP连接能力)](arkts-connectivity-ssap-createclient-f.md) | 创建SSAP客户端实例。 |
+| [createServer(星闪SSAP连接能力)](arkts-connectivity-ssap-createserver-f.md) | 创建SSAP服务端实例。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [Client](arkts-connectivity-ssap-client-i.md) | 管理SSAP客户端。在调用ssap客户端方法之前，必须使用[createClient](arkts-connectivity-ssap-createclient-f.md)创建ssap客户端实例。 |
-| [ConnectionChangeState](arkts-connectivity-ssap-connectionchangestate-i.md) | 描述SSAP连接状态。 |
-| [Property](arkts-connectivity-ssap-property-i.md) | SSAP属性。 |
-| [PropertyDescriptor](arkts-connectivity-ssap-propertydescriptor-i.md) | 属性的SSAP描述符。 |
-| [PropertyReadRequest](arkts-connectivity-ssap-propertyreadrequest-i.md) | SSAP客户端属性读请求参数说明。 |
-| [PropertyWriteRequest](arkts-connectivity-ssap-propertywriterequest-i.md) | SSAP客户端属性写请求参数说明。 |
-| [Server](arkts-connectivity-ssap-server-i.md) | 管理SSAP服务端。在调用SSAP服务端方法之前，必须使用[createServer](arkts-connectivity-ssap-createserver-f.md)创建SSAP服务端实例。 |
-| [ServerResponse](arkts-connectivity-ssap-serverresponse-i.md) | 服务端对指定读或写请求的响应的参数。 |
-| [Service](arkts-connectivity-ssap-service-i.md) | SSAP服务。 |
+| [Client(星闪SSAP连接能力)](arkts-connectivity-ssap-client-i.md) | SSAP客户端类，提供了和服务端进行连接和数据传输等操作方法。使用该类的方法前，需通过[ssap.createClient](arkts-connectivity-ssap-createclient-f.md)方法构造该类的实例。同一应用针对同一远端设备创建一个[Client](arkts-connectivity-ssap-client-i.md)实例即可，重复创建会增加不必要的资源开销。 |
+| [ConnectionChangeState(星闪SSAP连接能力)](arkts-connectivity-ssap-connectionchangestate-i.md) | 表示连接状态上报参数。 |
+| [Property(星闪SSAP连接能力)](arkts-connectivity-ssap-property-i.md) | 表示服务的Property。 |
+| [PropertyDescriptor(星闪SSAP连接能力)](arkts-connectivity-ssap-propertydescriptor-i.md) | 表示Property的描述符。 |
+| [PropertyReadRequest(星闪SSAP连接能力)](arkts-connectivity-ssap-propertyreadrequest-i.md) | 表示客户端的Property读请求参数。 |
+| [PropertyWriteRequest(星闪SSAP连接能力)](arkts-connectivity-ssap-propertywriterequest-i.md) | 表示客户端的Property写请求参数。 |
+| [Server(星闪SSAP连接能力)](arkts-connectivity-ssap-server-i.md) | SSAP服务端类，提供了和客户端进行连接和数据交互等操作方法。使用该类的方法前，需通过[ssap.createServer](arkts-connectivity-ssap-createserver-f.md)方法构造该类的实例。同一应用创建一个[Server](arkts-connectivity-ssap-server-i.md)实例即可，重复创建会增加不必要的资源开销。 |
+| [ServerResponse(星闪SSAP连接能力)](arkts-connectivity-ssap-serverresponse-i.md) | 表示回复客户端请求的响应。 |
+| [Service(星闪SSAP连接能力)](arkts-connectivity-ssap-service-i.md) | 表示星闪服务。 |
 
 <!--Del-->
 ### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [Client](arkts-connectivity-ssap-client-i-sys.md) | 管理SSAP客户端。在调用ssap客户端方法之前，必须使用[createClient](arkts-connectivity-ssap-createclient-f.md)创建ssap客户端实例。 |
-| [Event](arkts-connectivity-ssap-event-i-sys.md) | SSAP事件。 |
-| [Method](arkts-connectivity-ssap-method-i-sys.md) | SSAP方法。 |
-| [Service](arkts-connectivity-ssap-service-i-sys.md) | SSAP服务。 |
+| [Client(星闪SSAP连接能力)](arkts-connectivity-ssap-client-i-sys.md) | SSAP客户端类，提供了和服务端进行连接和数据传输等操作方法。使用该类的方法前，需通过[ssap.createClient](arkts-connectivity-ssap-createclient-f.md)方法构造该类的实例。同一应用针对同一远端设备创建一个[Client](arkts-connectivity-ssap-client-i.md)实例即可，重复创建会增加不必要的资源开销。 |
+| [Event(星闪SSAP连接能力)](arkts-connectivity-ssap-event-i-sys.md) | 表示服务的事件。 |
+| [Method(星闪SSAP连接能力)](arkts-connectivity-ssap-method-i-sys.md) | 表示服务的方法。 |
+| [Service(星闪SSAP连接能力)](arkts-connectivity-ssap-service-i-sys.md) | 表示星闪服务。 |
 <!--DelEnd-->
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [Operation](arkts-connectivity-ssap-operation-e.md) | 属性操作指示的枚举。 |
-| [PropertyDescriptorType](arkts-connectivity-ssap-propertydescriptortype-e.md) | 属性描述符类型的枚举。 |
-| [PropertyWriteType](arkts-connectivity-ssap-propertywritetype-e.md) | 属性写入类型的枚举。 |
+| [Operation(星闪SSAP连接能力)](arkts-connectivity-ssap-operation-e.md) | 表示Property支持的操作类型，为枚举值。 |
+| [PropertyDescriptorType(星闪SSAP连接能力)](arkts-connectivity-ssap-propertydescriptortype-e.md) | 表示Property的描述符类型，为枚举值。 |
+| [PropertyWriteType(星闪SSAP连接能力)](arkts-connectivity-ssap-propertywritetype-e.md) | 表示Property支持的写类型，为枚举值。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [ConnectionState](arkts-connectivity-ssap-connectionstate-t.md) | 连接状态。 |
-
+| [ConnectionState(星闪SSAP连接能力)](arkts-connectivity-ssap-connectionstate-t.md) | 表示和远端设备的连接状态，为枚举值。 |

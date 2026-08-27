@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-unnamed-declare namespace calendarManager--><!--Device-unnamed-declare namespace calendarManager-End-->
-
 **系统能力：** SystemCapability.Applications.CalendarData
 
 ## 导入模块
@@ -53,4 +51,3 @@ import { calendarManager } from '@kit.CalendarKit';
 | [EventType](arkts-calendar-calendarmanager-eventtype-e.md) | 日程类型枚举。 |
 | [RecurrenceFrequency](arkts-calendar-calendarmanager-recurrencefrequency-e.md) | 日程重复规则类型枚举。 |
 | [ServiceType](arkts-calendar-calendarmanager-servicetype-e.md) | 日程服务类型枚举。 |
-

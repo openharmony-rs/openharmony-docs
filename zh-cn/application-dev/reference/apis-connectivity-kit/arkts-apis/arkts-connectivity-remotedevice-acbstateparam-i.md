@@ -1,10 +1,8 @@
 # AcbStateParam
 
-ACB连接状态参数。
+订阅的逻辑链路连接状态变化事件上报结果。
 
 **起始版本：** 26.0.0
-
-<!--Device-remoteDevice-interface AcbStateParam--><!--Device-remoteDevice-interface AcbStateParam-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -20,15 +18,13 @@ import { remoteDevice } from '@kit.ConnectivityKit';
 address: string
 ```
 
-设备地址。 长度必须为17，由16进制数字和冒号组成，形如 "11:22:33:AA:BB:FF"。
+设备地址，表示和该设备的逻辑链路连接状态发生变化。地址格式参考：11:22:33:AA:BB:FF。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AcbStateParam-address: string--><!--Device-AcbStateParam-address: string-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -38,7 +34,7 @@ address: string
 state: AcbState
 ```
 
-ACB连接状态
+当前逻辑链路连接状态。
 
 **类型：** AcbState
 
@@ -46,7 +42,4 @@ ACB连接状态
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AcbStateParam-state: AcbState--><!--Device-AcbStateParam-state: AcbState-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

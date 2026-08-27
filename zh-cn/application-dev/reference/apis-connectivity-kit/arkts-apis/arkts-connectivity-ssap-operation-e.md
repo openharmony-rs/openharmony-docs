@@ -1,10 +1,8 @@
 # Operation
 
-属性操作指示的枚举。
+表示Property支持的操作类型，为枚举值。
 
 **起始版本：** 26.0.0
-
-<!--Device-ssap-enum Operation--><!--Device-ssap-enum Operation-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -14,13 +12,11 @@
 READABLE = 0x01
 ```
 
-当该比特置位后，属性值可被读取。
+表示可读。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Operation-READABLE = 0x01--><!--Device-Operation-READABLE = 0x01-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -30,13 +26,11 @@ READABLE = 0x01
 WRITE_NO_RESPONSE = 0x02
 ```
 
-当该比特置位后，属性值可被写入，写入后无反馈。
+表示支持无响应的写请求。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Operation-WRITE_NO_RESPONSE = 0x02--><!--Device-Operation-WRITE_NO_RESPONSE = 0x02-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -46,13 +40,11 @@ WRITE_NO_RESPONSE = 0x02
 WRITE_WITH_RESPONSE = 0x04
 ```
 
-当该比特置位后，属性值可被写入，写入后产生反 馈给客户端。 写操作完成后，会反馈给客户端。
+表示支持有响应的写请求。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Operation-WRITE_WITH_RESPONSE = 0x04--><!--Device-Operation-WRITE_WITH_RESPONSE = 0x04-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -62,13 +54,10 @@ WRITE_WITH_RESPONSE = 0x04
 NOTIFY = 0x08
 ```
 
-当该比特置位后，属性值通过通知方式传递给客户 端。
+表示支持通知。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Operation-NOTIFY = 0x08--><!--Device-Operation-NOTIFY = 0x08-End-->
-
 **系统能力：** SystemCapability.Communication.NearLink.Base
-

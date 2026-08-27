@@ -4,8 +4,6 @@
 
 **起始版本：** 24
 
-<!--Device-camera-enum FlashState--><!--Device-camera-enum FlashState-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## FLASH_STATE_UNAVAILABLE
@@ -21,8 +19,6 @@ FLASH_STATE_UNAVAILABLE = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FlashState-FLASH_STATE_UNAVAILABLE = 0--><!--Device-FlashState-FLASH_STATE_UNAVAILABLE = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -40,8 +36,6 @@ FLASH_STATE_READY = 1
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FlashState-FLASH_STATE_READY = 1--><!--Device-FlashState-FLASH_STATE_READY = 1-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## FLASH_STATE_FLASHING
@@ -58,7 +52,4 @@ FLASH_STATE_FLASHING = 2
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FlashState-FLASH_STATE_FLASHING = 2--><!--Device-FlashState-FLASH_STATE_FLASHING = 2-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-

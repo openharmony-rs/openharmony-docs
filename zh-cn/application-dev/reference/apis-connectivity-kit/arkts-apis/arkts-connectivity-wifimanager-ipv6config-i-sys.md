@@ -2,9 +2,7 @@
 
 WLAN Ipv6配置信息。
 
-**起始版本：** 23
-
-<!--Device-wifiManager-interface Ipv6Config--><!--Device-wifiManager-interface Ipv6Config-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -14,7 +12,6 @@ WLAN Ipv6配置信息。
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## dnsServers
@@ -27,9 +24,7 @@ DNS服务器。
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
-
-<!--Device-Ipv6Config-dnsServers: Array<string>--><!--Device-Ipv6Config-dnsServers: Array<string>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -45,9 +40,7 @@ domains: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
-
-<!--Device-Ipv6Config-domains: Array<string>--><!--Device-Ipv6Config-domains: Array<string>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -63,9 +56,7 @@ gateway: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Ipv6Config-gateway: string--><!--Device-Ipv6Config-gateway: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -81,9 +72,7 @@ IPv6地址。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Ipv6Config-ipAddress: string--><!--Device-Ipv6Config-ipAddress: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -92,18 +81,15 @@ IPv6地址。
 ## prefixLength
 
 ```TypeScript
-prefixLength: int
+prefixLength: number
 ```
 
 前缀长度。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Ipv6Config-prefixLength: int--><!--Device-Ipv6Config-prefixLength: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **系统接口：** 此接口为系统接口。
-

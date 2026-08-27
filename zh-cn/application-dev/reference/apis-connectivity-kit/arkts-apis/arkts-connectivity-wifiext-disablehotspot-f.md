@@ -22,8 +22,6 @@ function disableHotspot(): boolean
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
 
-<!--Device-wifiext-function disableHotspot(): boolean--><!--Device-wifiext-function disableHotspot(): boolean-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.AP.Extension
 
 **返回值：**
@@ -31,4 +29,3 @@ function disableHotspot(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 操作结果， true: 成功， false: 失败。 |
-

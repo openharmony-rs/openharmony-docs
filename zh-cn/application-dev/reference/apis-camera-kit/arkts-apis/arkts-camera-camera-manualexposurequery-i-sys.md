@@ -1,33 +1,25 @@
-# ManualExposureQuery（系统接口）
+# ManualExposureQuery
 
 Provides APIs to obtain the manual exposure range supported.
 
-**起始版本：** 23
-
-<!--Device-camera-interface ManualExposureQuery--><!--Device-camera-interface ManualExposureQuery-End-->
+**起始版本：** 24
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**系统接口：** 此接口为系统接口。
 
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## getSupportedExposureRange
 
 ```TypeScript
-getSupportedExposureRange(): Array<int>
+getSupportedExposureRange(): Array<number>
 ```
 
 Obtains the supported manual exposure durations.
 
-**起始版本：** 23
-
-<!--Device-ManualExposureQuery-getSupportedExposureRange(): Array<int>--><!--Device-ManualExposureQuery-getSupportedExposureRange(): Array<int>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -37,15 +29,15 @@ Obtains the supported manual exposure durations.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;int&gt; | Array of manual exposure durations supported, in ms. |
+| Array & lt;number & gt; | Array of manual exposure durations supported, in ms. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect.<br>**适用版本：** 12+ |
-| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
+| [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -55,4 +47,3 @@ function getSupportedExposureRange(nightPhotoSession: camera.NightPhotoSession):
   return exposureRange;
 }
 ```
-

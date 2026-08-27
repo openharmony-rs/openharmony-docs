@@ -4,9 +4,6 @@
 
 ```TypeScript
 import { wifi } from '@kit.ConnectivityKit';
-import { wifiext } from '@kit.ConnectivityKit';
-import { wifiManager } from '@kit.ConnectivityKit';
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
 ## getDeviceConfigs
@@ -15,7 +12,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 function getDeviceConfigs(): Array<WifiDeviceConfig>
 ```
 
-获取网络配置。 &lt;p&gt;只能获取本应用创建的网络配置。
+获取网络配置。<p>只能获取本应用创建的网络配置。
 
 **起始版本：** 7
 
@@ -25,8 +22,6 @@ function getDeviceConfigs(): Array<WifiDeviceConfig>
 
 **需要权限：** ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION and ohos.permission.GET_WIFI_CONFIG
 
-<!--Device-wifi-function getDeviceConfigs(): Array<WifiDeviceConfig>--><!--Device-wifi-function getDeviceConfigs(): Array<WifiDeviceConfig>-End-->
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **系统接口：** 此接口为系统接口。
@@ -35,7 +30,7 @@ function getDeviceConfigs(): Array<WifiDeviceConfig>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;WifiDeviceConfig&gt; | 网络配置信息的数组。 |
+| Array & lt;WifiDeviceConfig & gt; | 网络配置信息的数组。 |
 
 **示例**
 
@@ -49,4 +44,3 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
-

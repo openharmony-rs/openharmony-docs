@@ -2,16 +2,13 @@
 
 相机选择器的处理结果。
 
-**起始版本：** 23
-
-<!--Device-cameraPicker-class PickerResult--><!--Device-cameraPicker-class PickerResult-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## 导入模块
 
 ```TypeScript
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## mediaType
@@ -24,29 +21,25 @@ mediaType: PickerMediaType
 
 **类型：** [PickerMediaType](arkts-camera-camerapicker-pickermediatype-e.md)
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PickerResult-mediaType: PickerMediaType--><!--Device-PickerResult-mediaType: PickerMediaType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## resultCode
 
 ```TypeScript
-resultCode: int
+resultCode: number
 ```
 
 处理的结果，成功返回0，失败返回-1。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PickerResult-resultCode: int--><!--Device-PickerResult-resultCode: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -60,11 +53,8 @@ resultUri: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PickerResult-resultUri: string--><!--Device-PickerResult-resultUri: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-

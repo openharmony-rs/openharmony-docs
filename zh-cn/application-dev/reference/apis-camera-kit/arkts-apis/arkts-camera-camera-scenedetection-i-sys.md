@@ -4,9 +4,7 @@ Provides the scene detection capability. It inherits from [SceneDetectionQuery](
 
 **继承/实现关系：** SceneDetection extends [SceneDetectionQuery](arkts-camera-camera-scenedetectionquery-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-camera-interface SceneDetection--><!--Device-camera-interface SceneDetection-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -15,8 +13,6 @@ Provides the scene detection capability. It inherits from [SceneDetectionQuery](
 ## 导入模块
 
 ```TypeScript
-import { camera } from '@kit.CameraKit';
-import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## enableSceneFeature
@@ -27,9 +23,7 @@ enableSceneFeature(type: SceneFeatureType, enabled: boolean): void
 
 Enables or disables a scene feature. This API must be called after [SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md) of the corresponding scene feature is received.
 
-**起始版本：** 23
-
-<!--Device-SceneDetection-enableSceneFeature(type: SceneFeatureType, enabled: boolean): void--><!--Device-SceneDetection-enableSceneFeature(type: SceneFeatureType, enabled: boolean): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -46,8 +40,8 @@ Enables or disables a scene feature. This API must be called after [SceneFeature
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 
 **示例**
 
@@ -79,4 +73,3 @@ function enableSceneFeature(photoSession: camera.PhotoSessionForSys, cameraInput
     });
 }
 ```
-
